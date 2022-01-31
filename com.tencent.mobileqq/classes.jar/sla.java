@@ -1,19 +1,16 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.Conversation;
+import android.graphics.drawable.Drawable;
+import java.util.List;
 
-class sla
-  implements Runnable
+public class sla
 {
-  sla(sky paramsky) {}
-  
-  public void run()
+  public static Drawable a(List<String> paramList)
   {
-    this.a.a.c.removeAllViews();
+    return slb.a(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sla
  * JD-Core Version:    0.7.0.1
  */

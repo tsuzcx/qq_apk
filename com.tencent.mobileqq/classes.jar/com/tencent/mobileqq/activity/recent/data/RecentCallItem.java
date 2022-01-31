@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity.recent.data;
 
+import ajjy;
 import android.content.Context;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -8,21 +9,24 @@ import com.tencent.mobileqq.data.QCallRecent;
 public class RecentCallItem
   extends RecentBaseData
 {
-  protected QCallRecent a;
+  public static final int CALL_STATE_CALLIN = 1;
+  public static final int CALL_STATE_CALLOUT = 2;
+  private static final String TAG = "RecentCallItem";
+  protected QCallRecent call;
   
   public int a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataQCallRecent.type;
+    return this.call.type;
   }
   
   public long a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataQCallRecent.lastCallTime;
+    return this.call.lastCallTime;
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataQCallRecent.uin;
+    return this.call.uin;
   }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
@@ -30,16 +34,16 @@ public class RecentCallItem
     if ((paramQQAppInterface == null) || (paramContext == null)) {
       return;
     }
-    this.b = "123123123";
-    this.jdField_c_of_type_JavaLangCharSequence = this.jdField_a_of_type_ComTencentMobileqqDataQCallRecent.lastCallMsg;
-    this.jdField_a_of_type_Int = 0;
-    this.h = 4;
-    this.d = 1;
-    this.jdField_c_of_type_JavaLangString = "0";
-    this.jdField_c_of_type_Int = 0;
-    this.f = 12288;
-    this.e = "视频";
-    this.jdField_a_of_type_ComTencentMobileqqDataQCallRecent.isVideo = 1;
+    this.mTitleName = "123123123";
+    this.mLastMsg = this.call.lastCallMsg;
+    this.mStatus = 0;
+    this.mOnlineStatus = 4;
+    this.mAuthenIconId = 1;
+    this.mShowTime = "0";
+    this.mUnreadNum = 0;
+    this.mMenuFlag = 12288;
+    this.mCallingText = ajjy.a(2131647360);
+    this.call.isVideo = 1;
   }
   
   public long b()

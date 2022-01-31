@@ -1,51 +1,40 @@
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.dating.widget.InputBar;
-import com.tencent.widget.AbsListView.LayoutParams;
-import com.tencent.widget.ListView;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class acfx
-  implements Runnable
+  implements baqd
 {
-  public acfx(InputBar paramInputBar, int paramInt) {}
+  public acfx(VisitorsActivity paramVisitorsActivity, String paramString) {}
   
-  public void run()
+  public void a()
   {
-    if (InputBar.a(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar) <= this.jdField_a_of_type_Int - InputBar.b(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar))
-    {
-      InputBar.a(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar).setSelectionFromTop(InputBar.d(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar) + InputBar.c(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar), this.jdField_a_of_type_Int - InputBar.e(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar) - InputBar.b(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar));
-      return;
+    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app.getCurrentAccountUin(), "thumbup", "click_getit", "", 1, 0, 0, "", this.jdField_a_of_type_JavaLangString, "");
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity, QQBrowserActivity.class);
+    localIntent.putExtra("fragmentStyle", 3);
+    localIntent.putExtra("url", "https://m.vip.qq.com/freedom/dbzan.html?_nav_alpha=0");
+    localIntent.putExtra("isTransparentTitle", true);
+    localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
+    this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.startActivity(localIntent);
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VisitorsActivity", 2, "ZanDoubleDialog: onRightClick: ");
     }
-    if (InputBar.a(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar).getAdapter() == null) {}
-    for (int i = 0;; i = InputBar.a(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar).getAdapter().getCount())
-    {
-      int j = InputBar.c(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar);
-      int k = InputBar.a(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar).getFooterViewsCount();
-      float f = this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar.getResources().getDisplayMetrics().density;
-      int m = (int)(61.0F * f);
-      j = InputBar.b(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar) - this.jdField_a_of_type_Int + InputBar.a(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar).getBottom() - (i - j - k - InputBar.d(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar) - 1) * m;
-      i = j;
-      if (InputBar.a(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar).getFooterViewsCount() > 0) {
-        i = (int)(j - f * 60.0F);
-      }
-      if (i <= 0) {
-        break;
-      }
-      if (InputBar.a(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar) != null) {
-        InputBar.a(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar).removeFooterView(InputBar.a(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar));
-      }
-      InputBar.a(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar, new View(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar.getContext()));
-      InputBar.a(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar).setLayoutParams(new AbsListView.LayoutParams(-1, i));
-      InputBar.a(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar).addFooterView(InputBar.a(this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar));
-      break;
-    }
+    VasWebviewUtil.reportCommercialDrainage(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.app.getCurrentAccountUin(), "thumbup", "click_pay", "", 1, 0, 0, "", this.jdField_a_of_type_JavaLangString, "");
+    baoz.a(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity, "mvip.n.a.dbzan_dbzan", "CJCLUBT", 3, false, true);
+    VisitorsActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity).set(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acfx
  * JD-Core Version:    0.7.0.1
  */

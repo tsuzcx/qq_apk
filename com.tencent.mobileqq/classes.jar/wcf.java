@@ -1,43 +1,75 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.ViewGroup;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.subscribe.component.extendsadapter.ComponentRvInnerView;
+import java.util.ArrayList;
 
-public class wcf
-  implements Runnable
+public abstract class wcf
+  extends wbp
 {
-  public wcf(PublicAccountChatPie paramPublicAccountChatPie, List paramList) {}
+  private ComponentRvInnerView a;
   
-  public void run()
+  public wcf(Bundle paramBundle)
   {
-    try
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        ChatMessage localChatMessage = (ChatMessage)localIterator.next();
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localChatMessage.uniseq, "extStr", localChatMessage.extStr);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.aio.BaseChatPie", 2, "saveReadedToDB uin=" + this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString + " uniseq=" + localChatMessage.uniseq + " extstr=" + localChatMessage.extStr);
-        }
-      }
-      return;
+    super(paramBundle);
+  }
+  
+  public int a()
+  {
+    return 3;
+  }
+  
+  public abstract wcg a(ViewGroup paramViewGroup, int paramInt);
+  
+  public abstract void a(RecyclerView.ViewHolder paramViewHolder, int paramInt);
+  
+  public abstract void a(ComponentRvInnerView paramComponentRvInnerView);
+  
+  public void a(ArrayList paramArrayList)
+  {
+    b().clear();
+    b().addAll(paramArrayList);
+    if (this.a != null) {
+      this.a.setData(paramArrayList);
     }
-    catch (Exception localException)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.aio.BaseChatPie", 4, localException.getMessage());
-      }
+  }
+  
+  public abstract int b();
+  
+  protected boolean c()
+  {
+    return false;
+  }
+  
+  public int getItemCount()
+  {
+    if ((!c()) || (b().size() > 0)) {
+      return 1;
     }
+    return 0;
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    if ((paramViewHolder.itemView instanceof ComponentRvInnerView)) {
+      this.a.setData(b());
+    }
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    this.a = new ComponentRvInnerView(paramViewGroup.getContext(), this);
+    this.a.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+    paramViewGroup = new wbo(this, this.a);
+    paramViewGroup.setIsRecyclable(false);
+    a(this.a);
+    return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wcf
  * JD-Core Version:    0.7.0.1
  */

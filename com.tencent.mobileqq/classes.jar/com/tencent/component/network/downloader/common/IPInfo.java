@@ -3,14 +3,13 @@ package com.tencent.component.network.downloader.common;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import pof;
 
 public class IPInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new pof();
-  public int a;
-  public String a;
+  public static final Parcelable.Creator<IPInfo> CREATOR = new IPInfo.1();
+  public String ip;
+  public int port;
   
   public IPInfo() {}
   
@@ -19,32 +18,32 @@ public class IPInfo
     if (paramParcel == null) {
       return;
     }
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.ip = paramParcel.readString();
+    this.port = paramParcel.readInt();
   }
   
   public IPInfo(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.ip = paramString;
+    this.port = paramInt;
   }
   
-  public IPInfo a()
+  public IPInfo clone()
   {
-    return new IPInfo(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-  }
-  
-  public boolean a(String paramString1, String paramString2)
-  {
-    if (paramString1 != null) {
-      return paramString1.equals(paramString2);
-    }
-    return paramString2 == null;
+    return new IPInfo(this.ip, this.port);
   }
   
   public int describeContents()
   {
     return 0;
+  }
+  
+  public boolean equalWith(String paramString1, String paramString2)
+  {
+    if (paramString1 != null) {
+      return paramString1.equals(paramString2);
+    }
+    return paramString2 == null;
   }
   
   public boolean equals(Object paramObject)
@@ -57,14 +56,14 @@ public class IPInfo
         break;
       }
       paramObject = (IPInfo)paramObject;
-    } while ((a(paramObject.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)) && (paramObject.jdField_a_of_type_Int == this.jdField_a_of_type_Int));
+    } while ((equalWith(paramObject.ip, this.ip)) && (paramObject.port == this.port));
     return false;
     return false;
   }
   
   public String toString()
   {
-    return new String(this.jdField_a_of_type_JavaLangString + ":" + this.jdField_a_of_type_Int);
+    return new String(this.ip + ":" + this.port);
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -72,8 +71,8 @@ public class IPInfo
     if (paramParcel == null) {
       return;
     }
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeString(this.ip);
+    paramParcel.writeInt(this.port);
   }
 }
 

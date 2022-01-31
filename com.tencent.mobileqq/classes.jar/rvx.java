@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
-
-public class rvx
-  implements Runnable
+class rvx
+  implements psh<String, String>
 {
-  public rvx(BaseChatPie paramBaseChatPie) {}
+  rvx(rvw paramrvw) {}
   
-  public void run()
+  public String a(String paramString)
   {
-    this.a.a.setSelectionFromBottom(this.a.a.getCount() - 1, 0);
+    return rvw.a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rvx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,23 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.biz.troop.feeds.TroopNewGuidePopWindow;
-import com.tencent.mobileqq.troop.data.TroopFeedsDataManager.TroopNotify;
-import com.tencent.mobileqq.utils.DisplayUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import java.util.List;
 
-public class pcn
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class pcn
+  implements ViewBase.OnClickListener
 {
-  public pcn(TroopNewGuidePopWindow paramTroopNewGuidePopWindow) {}
+  pcn(pck parampck) {}
   
-  public void onGlobalLayout()
+  public void onClick(ViewBase paramViewBase)
   {
-    int i = this.a.c.getMeasuredWidth();
-    i = (int)(this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredWidth() - i - DisplayUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 5.0F));
-    this.a.b.setMaxWidth(i);
-    this.a.b.setText(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify.g);
+    oag.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
+    if ((pcj.a(this.a.jdField_a_of_type_Pcj) != null) && (this.a.jdField_a_of_type_Int < pcj.a(this.a.jdField_a_of_type_Pcj).size()))
+    {
+      obz.a(pcj.a(this.a.jdField_a_of_type_Pcj).getContext(), (BaseArticleInfo)pcj.a(this.a.jdField_a_of_type_Pcj).get(this.a.jdField_a_of_type_Int), paramViewBase.getEventAttachedData());
+      return;
+    }
+    obz.a(pcj.a(this.a.jdField_a_of_type_Pcj).getContext(), paramViewBase.getEventAttachedData());
   }
 }
 

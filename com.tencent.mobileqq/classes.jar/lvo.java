@@ -1,25 +1,21 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
-import com.tencent.mobileqq.pb.PBStringField;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.PackJumpInfo;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
 
 public class lvo
   implements View.OnClickListener
 {
-  public lvo(ReadInJoyFooterPresenter paramReadInJoyFooterPresenter, oidb_cmd0x68b.PackJumpInfo paramPackJumpInfo) {}
+  public lvo(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
   public void onClick(View paramView)
   {
-    paramView = this.jdField_a_of_type_TencentImOidbCmd0x68bOidb_cmd0x68b$PackJumpInfo.str_url.get();
-    ReadInJoyUtils.a(ReadInJoyFooterPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPresenterReadInJoyFooterPresenter), paramView);
-    ReadInJoyFooterPresenter.a(2, this.jdField_a_of_type_TencentImOidbCmd0x68bOidb_cmd0x68b$PackJumpInfo.str_wording.get());
+    awqx.b(null, "P_CliOper", "Grp_qiqiqun", "", "show_middle", "Clk_video", 0, 0, this.a.b, "", "", "");
+    this.a.d(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lvo
  * JD-Core Version:    0.7.0.1
  */

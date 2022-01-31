@@ -1,42 +1,34 @@
-import android.os.CountDownTimer;
-import android.widget.TextView;
-import com.tencent.mobileqq.portal.PrepareView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleView;
 
 public class agrl
-  extends CountDownTimer
+  implements agsk
 {
-  public agrl(PrepareView paramPrepareView, long paramLong1, long paramLong2)
+  public agrl(DoodleView paramDoodleView) {}
+  
+  public void a()
   {
-    super(paramLong1, paramLong2);
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).a();
+    }
   }
   
-  public void onFinish()
+  public void a(int paramInt1, int paramInt2)
   {
-    PrepareView.a(this.a).setText("00");
-    PrepareView.b(this.a).setText("00");
-    this.a.a();
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).a(paramInt1, paramInt2);
+    }
   }
   
-  public void onTick(long paramLong)
+  public void b()
   {
-    int j = (int)(paramLong / 1000L);
-    int i = j / 60;
-    j %= 60;
-    String str1 = Integer.toString(i);
-    String str2 = Integer.toString(j);
-    if (i < 10) {
-      str1 = "0" + Integer.toString(i);
+    if (DoodleView.a(this.a) != null) {
+      DoodleView.a(this.a).b();
     }
-    if (j < 10) {
-      str2 = "0" + Integer.toString(j);
-    }
-    PrepareView.a(this.a).setText(str1);
-    PrepareView.b(this.a).setText(str2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agrl
  * JD-Core Version:    0.7.0.1
  */

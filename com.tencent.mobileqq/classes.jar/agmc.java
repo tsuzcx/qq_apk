@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
 
-class agmc
-  implements Runnable
+public class agmc
+  extends RecyclerView.OnScrollListener
 {
-  agmc(agmb paramagmb) {}
+  public agmc(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void run()
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    ScanTorchActivity.d(this.a.a.a, ScanTorchActivity.b(this.a.a.a));
+    if (paramInt != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      aean.a(bool);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agmc
  * JD-Core Version:    0.7.0.1
  */

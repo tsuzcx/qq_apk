@@ -1,15 +1,9 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.VideoLocalCacheFilter;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
+import java.util.List;
 
-public class nih
-  implements BatchGetVideoInfo.VideoLocalCacheFilter
+public abstract interface nih
 {
-  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
-  {
-    return (!StoryVideoItem.isPlayable(paramStoryVideoItem.mVid, true)) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex <= 0L);
-  }
+  public abstract void a(List<TabChannelCoverInfo> paramList);
 }
 
 

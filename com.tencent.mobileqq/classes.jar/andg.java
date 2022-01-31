@@ -1,20 +1,10 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-
-public class andg
-  implements Runnable
+public abstract interface andg
 {
-  public andg(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
-  
-  public void run()
-  {
-    RemoteHandleManager.a().a().f();
-  }
+  public abstract void a_(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     andg
  * JD-Core Version:    0.7.0.1
  */

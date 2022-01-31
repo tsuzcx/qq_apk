@@ -1,25 +1,29 @@
-import com.tencent.mobileqq.filemanager.fileviewer.model.DatalineFileModel;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnTransEventListener;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.qphone.base.util.QLog;
 
 class adkw
-  implements FMDialogUtil.FMDialogInterface
+  extends atqo
 {
-  adkw(adkv paramadkv) {}
+  adkw(adkt paramadkt, BaseChatItemLayout paramBaseChatItemLayout) {}
   
-  public void a()
+  public void a(int paramInt, atpw paramatpw)
   {
-    DatalineFileModel.a(this.a.a);
-    if (this.a.a.a != null) {
-      this.a.a.a.d();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setProgressVisable(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("PicItemBuilder", 2, "2g diy gif onDownload");
     }
   }
   
-  public void b() {}
+  public void a_(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PicItemBuilder", 2, "2g diy gif onUpdateProgress");
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adkw
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class msg_svc$NearByDatingTmp
-  extends MessageMicro
+  extends MessageMicro<NearByDatingTmp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField reply = PBField.initBool(false);

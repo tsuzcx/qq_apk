@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingBottom="25.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/ix8" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include layout="@layout/af6" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/d0l" android:background="@android:color/white" android:paddingLeft="12.0dip" android:paddingTop="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/j0d" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip">
+        <TextView android:textSize="14.0sp" android:textColor="#ff777777" android:id="@id/a5l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="15.0dip" android:layout_marginBottom="8.0dip" android:text="@string/q3s" />
+        <View style="@style/sr" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/e3q" android:background="@android:color/white" android:paddingTop="19.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <View style="@style/sr" />
+        <TextView android:textSize="12.0dip" android:textColor="#ffe62555" android:gravity="center" android:id="@id/kd7" android:background="#ffffd6da" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="26.5dip" android:text="@string/q4c" />
+    </LinearLayout>
+    <Button android:textColor="@color/ue" android:id="@id/b7m" android:layout_height="44.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" style="@style/t8" />
+    <TextView android:textSize="14.0sp" android:textColor="#ff808080" android:gravity="center_horizontal" android:id="@id/kyt" android:paddingTop="9.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/q2f" />
+</LinearLayout>

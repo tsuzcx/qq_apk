@@ -1,35 +1,19 @@
-import cooperation.qappcenter.remote.RecvMsg;
-import cooperation.qappcenter.remote.RemoteServiceProxy;
-import cooperation.qappcenter.remote.SendMsg;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class amui
-  extends Thread
+class amui
+  implements DialogInterface.OnClickListener
 {
-  public amui(RemoteServiceProxy paramRemoteServiceProxy) {}
+  amui(amua paramamua) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    while (!this.a.a.isEmpty())
-    {
-      SendMsg localSendMsg = (SendMsg)this.a.a.poll();
-      if (localSendMsg != null) {
-        try
-        {
-          this.a.a(localSendMsg);
-        }
-        catch (Exception localException)
-        {
-          RecvMsg localRecvMsg = this.a.a(localSendMsg, "sendMsgToServiceFailed，" + localException.toString());
-          this.a.a(localSendMsg, localRecvMsg);
-        }
-      }
-    }
+    paramDialogInterface.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amui
  * JD-Core Version:    0.7.0.1
  */

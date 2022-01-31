@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class im_common$GroupInfo
-  extends MessageMicro
+  extends MessageMicro<GroupInfo>
 {
   public static final int GROUP_ID_FIELD_NUMBER = 1;
   public static final int GROUP_TYPE_FIELD_NUMBER = 2;

@@ -1,19 +1,33 @@
-import com.tencent.mobileqq.app.BaseActivity;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.ad.tangram.thread.AdThreadManagerAdapter;
+import com.tencent.gdtad.adapter.GdtThreadManagerAdapter.1;
 
-class yji
-  implements Runnable
+public final class yji
+  implements AdThreadManagerAdapter
 {
-  yji(yjf paramyjf) {}
-  
-  public void run()
+  public boolean postDelayed(Runnable paramRunnable, int paramInt, long paramLong)
   {
-    this.a.a.setResult(0);
-    this.a.a.finish();
+    int j = 16;
+    int i;
+    if (paramInt == 4) {
+      i = 128;
+    }
+    do
+    {
+      do
+      {
+        return new Handler(Looper.getMainLooper()).postDelayed(new GdtThreadManagerAdapter.1(this, paramRunnable, i), paramLong);
+        i = j;
+      } while (paramInt == 3);
+      i = j;
+    } while (paramInt != 0);
+    return new Handler(Looper.getMainLooper()).postDelayed(paramRunnable, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yji
  * JD-Core Version:    0.7.0.1
  */

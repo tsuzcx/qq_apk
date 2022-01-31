@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
-import com.tencent.mobileqq.arcard.ARcardSound;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class aagv
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aagv(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
+  public aagv(ChatHistory paramChatHistory) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (ARWorldCupGlobalSceneRenderable.a(this.a) != null)
-    {
-      ARWorldCupGlobalSceneRenderable.a(this.a).a();
-      ARWorldCupGlobalSceneRenderable.a(this.a, null);
-    }
+    this.a.k();
+    awqx.b(this.a.app, "CliOper", "", "", "0X800568E", "0X800568E", this.a.k, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aagv
  * JD-Core Version:    0.7.0.1
  */

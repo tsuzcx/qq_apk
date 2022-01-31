@@ -1,20 +1,24 @@
-import com.tencent.mobileqq.ark.ArkActionAppMgr;
-import com.tencent.mobileqq.ark.ArkActionAppMgr.IUpdateActionAppCallback;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
 public class aaxw
-  implements ArkActionAppMgr.IUpdateActionAppCallback
+  implements View.OnClickListener
 {
-  public aaxw(ArkActionAppMgr paramArkActionAppMgr) {}
+  public aaxw(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void a(boolean paramBoolean, Object paramObject, String paramString1, String paramString2, long paramLong1, long paramLong2)
+  public void onClick(View paramView)
   {
-    paramObject = (aaya)paramObject;
-    ArkActionAppMgr.a(this.a, paramObject);
+    paramView = new Intent(this.a, FontSettingActivity.class);
+    this.a.startActivity(paramView);
+    awqx.b(this.a.app, "CliOper", "", "", "Setting_tab", "0X8004FA2", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaxw
  * JD-Core Version:    0.7.0.1
  */

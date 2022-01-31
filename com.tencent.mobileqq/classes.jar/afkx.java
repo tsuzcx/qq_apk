@@ -1,25 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class afkx
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public afkx(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  public afkx(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (!this.a.a.onBackEvent())
-    {
-      this.a.a.finish();
-      this.a.a.b(false);
+    paramDialogInterface = (afry)paramDialogInterface;
+    paramDialogInterface.a();
+    int i = paramDialogInterface.a();
+    paramDialogInterface = (ajmp)this.a.a.getManager(92);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.history.C2CAllFragment", 2, "onDismiss, recordCount : " + i + ",showRoamFlag" + paramDialogInterface.e());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afkx
  * JD-Core Version:    0.7.0.1
  */

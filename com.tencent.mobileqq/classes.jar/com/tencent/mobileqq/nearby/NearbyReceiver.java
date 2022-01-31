@@ -3,6 +3,7 @@ package com.tencent.mobileqq.nearby;
 import android.content.Context;
 import android.content.Intent;
 import android.os.ResultReceiver;
+import asfc;
 import com.tencent.mobileqq.olympic.ScannerResultReceiver;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
@@ -30,7 +31,7 @@ public class NearbyReceiver
           paramContext.send(0, null);
         }
         int i = paramIntent.getIntExtra("nearby_preload_from", 0);
-        NearbySPUtil.b(paramAppRuntime.getAccount());
+        asfc.b(paramAppRuntime.getAccount());
         ((NearbyAppInterface)paramAppRuntime).a(1, i);
       }
     } while (!QLog.isColorLevel());

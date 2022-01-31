@@ -1,27 +1,46 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.GalleryImageStruct;
+import android.view.MotionEvent;
+import android.view.View;
 
-class vro
-  implements Runnable
+public class vro
+  implements vrm
 {
-  vro(vrn paramvrn, String paramString) {}
+  protected final vrq a;
+  protected final vrs a;
   
-  public void run()
+  public vro(vrs paramvrs)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    this.jdField_a_of_type_Vrq = new vrq();
+    this.jdField_a_of_type_Vrs = paramvrs;
+  }
+  
+  public void a(vrm paramvrm) {}
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    View localView = this.jdField_a_of_type_Vrs.a();
+    vrn localvrn = this.jdField_a_of_type_Vrs.jdField_a_of_type_Vrn;
+    if (!localvrn.a(localView, this.jdField_a_of_type_Vrq, paramMotionEvent)) {}
+    vrr localvrr;
+    do
     {
-      this.jdField_a_of_type_Vrn.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a(this.jdField_a_of_type_Vrn.jdField_a_of_type_Int, true);
-      this.jdField_a_of_type_Vrn.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a(this.jdField_a_of_type_Vrn.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, null, this.jdField_a_of_type_Vrn.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct, false);
-      if (AIOGalleryAdapter.a(this.jdField_a_of_type_Vrn.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter) != null) {
-        AIOGalleryAdapter.a(this.jdField_a_of_type_Vrn.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter).a(this.jdField_a_of_type_Vrn.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_Vrn.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct.a());
-      }
-    }
+      return false;
+      localvrr = this.jdField_a_of_type_Vrs.jdField_a_of_type_Vrr;
+    } while (((!localvrn.a(localView)) || (!this.jdField_a_of_type_Vrq.jdField_a_of_type_Boolean)) && ((!localvrn.b(localView)) || (this.jdField_a_of_type_Vrq.jdField_a_of_type_Boolean)));
+    localvrr.jdField_a_of_type_Int = paramMotionEvent.getPointerId(0);
+    localvrr.jdField_a_of_type_Float = this.jdField_a_of_type_Vrq.jdField_a_of_type_Float;
+    localvrr.jdField_a_of_type_Boolean = this.jdField_a_of_type_Vrq.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Vrs.a(this.jdField_a_of_type_Vrs.jdField_a_of_type_Vrt);
+    return this.jdField_a_of_type_Vrs.jdField_a_of_type_Vrt.a(paramMotionEvent);
+  }
+  
+  public boolean b(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vro
  * JD-Core Version:    0.7.0.1
  */

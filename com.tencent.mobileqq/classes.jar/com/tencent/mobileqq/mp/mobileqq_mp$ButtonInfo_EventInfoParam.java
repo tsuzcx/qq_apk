@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class mobileqq_mp$ButtonInfo_EventInfoParam
-  extends MessageMicro
+  extends MessageMicro<ButtonInfo_EventInfoParam>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "key", "value" }, new Object[] { "", "" }, ButtonInfo_EventInfoParam.class);
   public final PBStringField key = PBField.initString("");

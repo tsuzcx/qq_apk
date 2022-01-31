@@ -1,14 +1,16 @@
-import android.widget.TextView;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
 
-class nch
-  implements Runnable
+public class nch
+  implements DialogInterface.OnClickListener
 {
-  nch(nby paramnby) {}
+  public nch(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment, String paramString) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a.setText("" + PublicAccountImageCollectionMainActivity.c(this.a.a));
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.a(paramDialogInterface, false, this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,19 +1,33 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class zzx
-  implements Runnable
+public class zzx
+  implements DialogInterface.OnClickListener
 {
-  public zzx(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2) {}
+  public zzx(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    MsgProxyUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+    QLog.e("vip_ptt.AssistantSettingActivity", 1, "click pay for auto ptt");
+    paramDialogInterface = amir.c();
+    if (TextUtils.isEmpty(paramDialogInterface.a)) {
+      bahl.a(this.a, "https://h5.vip.qq.com/proxy/domain/imgcache.qq.com/club/platform/lib/pay/wv_proxy.html?_wv=524289&_fv=0&type=!svip&aid=mvip.n.a.zdzwz");
+    }
+    for (;;)
+    {
+      this.a.b();
+      return;
+      paramDialogInterface = paramDialogInterface.a.replace("{aid}", "mvip.n.a.zdzwz");
+      bahl.a(this.a, paramDialogInterface);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zzx
  * JD-Core Version:    0.7.0.1
  */

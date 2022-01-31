@@ -1,22 +1,13 @@
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class ozu
-  implements TVK_IMediaPlayer.OnCompletionListener
+  implements ViewBase.IBuilder
 {
-  public ozu(TribeVideoPlugin paramTribeVideoPlugin, paf parampaf) {}
-  
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public ViewBase build(VafContext paramVafContext)
   {
-    if (TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin) != null)
-    {
-      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).removeMessages(6, paf.a(this.jdField_a_of_type_Paf));
-      paramTVK_IMediaPlayer = TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).obtainMessage();
-      paramTVK_IMediaPlayer.obj = paf.a(this.jdField_a_of_type_Paf);
-      paramTVK_IMediaPlayer.what = 6;
-      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).sendMessage(paramTVK_IMediaPlayer);
-    }
+    return new ozt(paramVafContext);
   }
 }
 

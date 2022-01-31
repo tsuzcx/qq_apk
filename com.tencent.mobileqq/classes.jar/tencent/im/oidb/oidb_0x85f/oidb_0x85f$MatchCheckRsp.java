@@ -6,14 +6,14 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class oidb_0x85f$MatchCheckRsp
-  extends MessageMicro
+  extends MessageMicro<MatchCheckRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "msg_match_item" }, new Object[] { null }, MatchCheckRsp.class);
-  public final PBRepeatMessageField msg_match_item = PBField.initRepeatMessage(oidb_0x85f.MatchItem.class);
+  public final PBRepeatMessageField<oidb_0x85f.MatchItem> msg_match_item = PBField.initRepeatMessage(oidb_0x85f.MatchItem.class);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.oidb_0x85f.oidb_0x85f.MatchCheckRsp
  * JD-Core Version:    0.7.0.1
  */

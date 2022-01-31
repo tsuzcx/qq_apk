@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="27" android:drawable="@drawable/gse" />
+    <item android:duration="27" android:drawable="@drawable/gs3" />
+    <item android:duration="27" android:drawable="@drawable/gs4" />
+    <item android:duration="27" android:drawable="@drawable/gs7" />
+    <item android:duration="27" android:drawable="@drawable/gs8" />
+    <item android:duration="27" android:drawable="@drawable/gs9" />
+    <item android:duration="27" android:drawable="@drawable/gs_" />
+    <item android:duration="27" android:drawable="@drawable/gsa" />
+    <item android:duration="27" android:drawable="@drawable/gsb" />
+    <item android:duration="27" android:drawable="@drawable/gsc" />
+    <item android:duration="27" android:drawable="@drawable/gsd" />
+    <item android:duration="27" android:drawable="@drawable/gs5" />
+    <item android:duration="27" android:drawable="@drawable/gs6" />
+    <item android:duration="27" android:drawable="@drawable/gsg" />
+</animation-list>

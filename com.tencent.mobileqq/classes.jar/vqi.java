@@ -1,55 +1,93 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks.UnlimitedState;
+import android.content.Context;
 
 public class vqi
-  implements Animator.AnimatorListener
 {
-  private vqi(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  protected int a;
+  Context a;
+  protected beqz a;
+  protected vqk a;
+  protected boolean a;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public vqi(beqz parambeqz, Context paramContext)
   {
-    if (UnlimitedBladeWorks.a(this.a).a)
+    this.jdField_a_of_type_Int = 5;
+    this.jdField_a_of_type_Beqz = parambeqz;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(vqk paramvqk)
+  {
+    this.jdField_a_of_type_Vqk = paramvqk;
+    if (paramvqk != null)
     {
-      if (UnlimitedBladeWorks.a(this.a) != 2.0D) {
-        break label55;
-      }
-      UnlimitedBladeWorks.a(this.a);
-      UnlimitedBladeWorks.a(this.a, 5);
+      a(true);
+      a(true, false);
     }
-    for (;;)
-    {
-      UnlimitedBladeWorks.a(this.a).setImageDrawable(null);
+    this.jdField_a_of_type_Beqz.setOnClickListener(new vqj(this));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Boolean == paramBoolean) {
       return;
-      label55:
-      UnlimitedBladeWorks.b(this.a).setImageDrawable(UnlimitedBladeWorks.a(this.a));
-      UnlimitedBladeWorks.a(this.a).a(UnlimitedBladeWorks.a(this.a));
-      UnlimitedBladeWorks.a(this.a).a(new vqj(this));
-      UnlimitedBladeWorks.a(this.a).c();
-      UnlimitedBladeWorks.a(this.a, 1);
+    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Beqz.a(3);
+      return;
+    }
+    this.jdField_a_of_type_Beqz.a(0);
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (!paramBoolean1)
+    {
+      this.jdField_a_of_type_Beqz.a(5);
+      return;
+    }
+    if (paramBoolean2) {}
+    for (int i = 3;; i = 4)
+    {
+      this.jdField_a_of_type_Beqz.a(i);
+      if ((!this.jdField_a_of_type_Beqz.b(i)) || (this.jdField_a_of_type_Vqk == null)) {
+        break;
+      }
+      this.jdField_a_of_type_Vqk.a();
+      return;
     }
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public void b(boolean paramBoolean)
   {
-    if (UnlimitedBladeWorks.a(this.a))
+    if (!this.jdField_a_of_type_Boolean) {}
+    boolean bool;
+    do
     {
-      UnlimitedBladeWorks.a(this.a).setImageDrawable(UnlimitedBladeWorks.a(this.a));
-      return;
-    }
-    UnlimitedBladeWorks.a(this.a).setImageBitmap(UnlimitedBladeWorks.a(this.a));
+      do
+      {
+        return;
+      } while ((this.jdField_a_of_type_Beqz.a() == 0) || (!this.jdField_a_of_type_Beqz.b(2)));
+      bool = true;
+      if (this.jdField_a_of_type_Vqk != null) {
+        bool = this.jdField_a_of_type_Vqk.a(paramBoolean);
+      }
+    } while (!bool);
+    this.jdField_a_of_type_Beqz.a(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vqi
  * JD-Core Version:    0.7.0.1
  */

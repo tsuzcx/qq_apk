@@ -1,40 +1,22 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.startup.step.ProcessInfoUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
 
-public final class aikg
-  implements Runnable
+public class aikg
+  implements AdapterView.OnItemClickListener
 {
-  public aikg(String paramString) {}
+  public aikg(CmGameDebugView paramCmGameDebugView) {}
   
-  public void run()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    SharedPreferences localSharedPreferences = ProcessInfoUtil.a();
-    int i;
-    if (localSharedPreferences != null)
-    {
-      i = ProcessInfoUtil.a(BaseApplicationImpl.getContext(), this.a);
-      if (i != -1) {
-        break label27;
-      }
-    }
-    label27:
-    long l;
-    do
-    {
-      return;
-      l = System.currentTimeMillis();
-      localSharedPreferences.edit().putInt("pid" + this.a, i);
-      localSharedPreferences.edit().putLong("start_time" + this.a, l).apply();
-    } while (!QLog.isColorLevel());
-    QLog.d("ProcessUtils", 2, "recordProcessStart - " + this.a + ":" + i + "|" + l);
+    CmGameDebugView.a(this.a, paramInt);
+    this.a.a(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aikg
  * JD-Core Version:    0.7.0.1
  */

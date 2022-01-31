@@ -1,22 +1,26 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
+import android.support.v7.widget.RecyclerView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class wsm
-  implements Runnable
+class wsm
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public wsm(DeviceFragment paramDeviceFragment) {}
+  wsm(wsj paramwsj) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    Intent localIntent = new Intent();
-    localIntent.setAction("SmartDevice_clickOnDeviceList");
-    BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
+    paramCompoundButton = wsj.b(this.a);
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
+    {
+      paramCompoundButton.setVisibility(i);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wsm
  * JD-Core Version:    0.7.0.1
  */

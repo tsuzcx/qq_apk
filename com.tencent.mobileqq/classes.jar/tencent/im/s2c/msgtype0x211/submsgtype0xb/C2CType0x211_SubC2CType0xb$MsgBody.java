@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class C2CType0x211_SubC2CType0xb$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   public static final int MSG_MSG_HEADER_FIELD_NUMBER = 1;
   public static final int MSG_REJECT_MOTIFY_FIELD_NUMBER = 2;

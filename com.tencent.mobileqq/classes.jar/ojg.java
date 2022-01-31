@@ -1,33 +1,43 @@
-import android.os.Bundle;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import org.json.JSONObject;
 
 public class ojg
-  implements Runnable
+  implements rhg
 {
-  public ojg(EditVideoFilterNeo paramEditVideoFilterNeo, AddressDataProvider.AddressInfo paramAddressInfo) {}
+  public ojg(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment) {}
   
-  public void run()
+  public void a(BaseArticleInfo paramBaseArticleInfo, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilterNeo.a.a(Message.obtain(null, 5, 0, 0, this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo));
-    String str;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo.c)) {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo.b)) {
-        str = this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo.a;
-      }
-    }
-    for (;;)
+    this.a.a.a(paramBaseArticleInfo, paramInt);
+    JSONObject localJSONObject = nzv.a(this.a.getActivity(), this.a.a(), 3, paramInt, (ArticleInfo)paramBaseArticleInfo);
+    try
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilterNeo.a.a.a.putString("extra_local_address_city_name", str);
+      localJSONObject.put("card_type", 8);
+      nzx localnzx = new nzx(paramBaseArticleInfo);
+      localnzx.e = String.valueOf(paramBaseArticleInfo.mArticleID);
+      localnzx.f = String.valueOf(paramBaseArticleInfo.mStrategyId);
+      localnzx.g = localJSONObject.toString();
+      if (paramBaseArticleInfo.mSocialFeedInfo.a != null) {
+        localnzx.a = String.valueOf(paramBaseArticleInfo.mSocialFeedInfo.a.a);
+      }
+      localnzx.b = "0X8009A79";
+      localnzx.c = "0X8009A79";
+      nzv.a(localnzx);
+      localJSONObject = new JSONObject();
+      localJSONObject.put("time", System.currentTimeMillis() / 1000L);
+      localJSONObject.put("channel_id", this.a.a());
+      localJSONObject.put("folder_status", obz.d);
+      localJSONObject.put("kandian_mode", obz.e());
+      localJSONObject.put("feeds_type", "" + obz.a(paramBaseArticleInfo));
+      localJSONObject.put("rowkey", rvf.a(paramBaseArticleInfo));
+      paramBaseArticleInfo = localJSONObject.toString();
+      ndn.a(null, "", "0X8009990", "0X8009990", 0, 0, "4", "", ajjy.a(2131647347), paramBaseArticleInfo, false);
       return;
-      str = this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo.b;
-      continue;
-      str = this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo.c;
     }
+    catch (Exception paramBaseArticleInfo) {}
   }
 }
 

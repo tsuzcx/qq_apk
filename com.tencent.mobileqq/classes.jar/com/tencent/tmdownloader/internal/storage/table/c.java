@@ -3,7 +3,7 @@ package com.tencent.tmdownloader.internal.storage.table;
 import android.content.ContentValues;
 import android.database.sqlite.SQLiteDatabase;
 import com.tencent.tmassistant.common.a.d;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ac;
 import com.tencent.tmdownloader.internal.storage.a.a;
 
 public class c
@@ -30,7 +30,7 @@ public class c
       }
       catch (Exception paramc)
       {
-        r.c("DownloadInfoTable", "exception: ", paramc);
+        ac.c("DownloadInfoTable", "exception: ", paramc);
         paramc.printStackTrace();
       }
     }
@@ -102,7 +102,7 @@ public class c
     //   100: ldc 41
     //   102: ldc 43
     //   104: aload_3
-    //   105: invokestatic 49	com/tencent/tmassistantbase/util/r:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   105: invokestatic 49	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   108: aload_1
     //   109: astore_2
     //   110: aload_3
@@ -170,7 +170,7 @@ public class c
     {
       for (;;)
       {
-        r.c("DownloadInfoTable", "exception: ", paramc);
+        ac.c("DownloadInfoTable", "exception: ", paramc);
         paramc.printStackTrace();
       }
     }
@@ -190,7 +190,7 @@ public class c
     }
     catch (Exception paramString)
     {
-      r.c("DownloadInfoTable", "exception: ", paramString);
+      ac.c("DownloadInfoTable", "exception: ", paramString);
       paramString.printStackTrace();
     }
   }
@@ -242,7 +242,7 @@ public class c
     //   80: ldc 41
     //   82: ldc 43
     //   84: aload_0
-    //   85: invokestatic 49	com/tencent/tmassistantbase/util/r:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   85: invokestatic 49	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   88: aload_0
     //   89: invokevirtual 52	java/lang/Exception:printStackTrace	()V
     //   92: aload_1
@@ -375,7 +375,7 @@ public class c
     //   117: ldc 41
     //   119: ldc 43
     //   121: aload_2
-    //   122: invokestatic 49	com/tencent/tmassistantbase/util/r:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   122: invokestatic 49	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   125: aload_0
     //   126: astore_1
     //   127: aload_2
@@ -540,7 +540,7 @@ public class c
     //   216: ldc 41
     //   218: ldc 43
     //   220: aload 4
-    //   222: invokestatic 49	com/tencent/tmassistantbase/util/r:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   222: invokestatic 49	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   225: aload_2
     //   226: astore_3
     //   227: aload 4
@@ -636,7 +636,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.storage.table.c
  * JD-Core Version:    0.7.0.1
  */

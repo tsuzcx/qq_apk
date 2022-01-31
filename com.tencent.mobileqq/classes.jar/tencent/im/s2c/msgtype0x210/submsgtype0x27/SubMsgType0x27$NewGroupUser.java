@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0x27$NewGroupUser
-  extends MessageMicro
+  extends MessageMicro<NewGroupUser>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_distance = PBField.initBytes(ByteStringMicro.EMPTY);

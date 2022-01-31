@@ -5,13 +5,13 @@ import android.os.Parcelable.Creator;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Locale;
-import lrr;
+import ooe;
 
 public final class CgF
   extends PFile
 {
-  public static final Parcelable.Creator CREATOR = new lrr();
-  public final ArrayList groups;
+  public static final Parcelable.Creator<CgF> CREATOR = new ooe();
+  public final ArrayList<CG> groups;
   
   private CgF(Parcel paramParcel)
   {

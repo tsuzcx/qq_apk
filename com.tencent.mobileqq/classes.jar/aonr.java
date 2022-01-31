@@ -1,21 +1,23 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
 
-public class aonr
-  implements AdapterView.OnItemClickListener
+public final class aonr
+  implements Parcelable.Creator<FileInfo>
 {
-  public aonr(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
-  
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public FileInfo a(Parcel paramParcel)
   {
-    HorizontalSelectColorLayout.a(this.a, paramInt);
+    return new FileInfo(paramParcel, null);
+  }
+  
+  public FileInfo[] a(int paramInt)
+  {
+    return new FileInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aonr
  * JD-Core Version:    0.7.0.1
  */

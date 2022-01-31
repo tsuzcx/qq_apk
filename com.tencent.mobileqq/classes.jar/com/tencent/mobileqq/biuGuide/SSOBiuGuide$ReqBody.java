@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SSOBiuGuide$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "uint64_uin", "uint32_want_count" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0) }, ReqBody.class);
   public final PBUInt32Field uint32_want_count = PBField.initUInt32(0);

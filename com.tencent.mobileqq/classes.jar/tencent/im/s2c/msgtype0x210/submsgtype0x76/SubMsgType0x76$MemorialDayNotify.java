@@ -6,10 +6,10 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class SubMsgType0x76$MemorialDayNotify
-  extends MessageMicro
+  extends MessageMicro<MemorialDayNotify>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "rpt_anniversary_info" }, new Object[] { null }, MemorialDayNotify.class);
-  public final PBRepeatMessageField rpt_anniversary_info = PBField.initRepeatMessage(SubMsgType0x76.OneMemorialDayInfo.class);
+  public final PBRepeatMessageField<SubMsgType0x76.OneMemorialDayInfo> rpt_anniversary_info = PBField.initRepeatMessage(SubMsgType0x76.OneMemorialDayInfo.class);
 }
 
 

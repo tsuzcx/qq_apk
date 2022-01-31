@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.shortvideo.facedancegame;
 
+import android.graphics.PointF;
 import java.util.List;
 
 public class FaceDanceDetectTask$FaceDetectTaskResult
 {
-  public List a;
-  public boolean a = false;
-  public float[] a;
+  public float[] angles;
+  public List<PointF> pointFs;
+  public boolean vaild = false;
 }
 
 

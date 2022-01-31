@@ -1,40 +1,30 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.app.EmoticonHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.view.DragSortListView.RemoveListener;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.model.filter.FilterItem;
+import com.tencent.biz.qqstory.model.filter.FilterItem.FilterItemIllegalException;
 
 public class sra
-  implements DragSortListView.RemoveListener
 {
-  public sra(EmosmActivity paramEmosmActivity) {}
+  public int a;
+  public long a;
+  public String a;
+  public String b;
+  public String c;
   
-  public void a(int paramInt)
+  public FilterItem a()
   {
-    Object localObject = (EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    if (!NetworkUtil.d(this.a))
+    try
     {
-      localObject = new QQToast(this.a);
-      ((QQToast)localObject).a(2130838723);
-      ((QQToast)localObject).d(1500);
-      ((QQToast)localObject).a("无网络连接，删除失败");
-      ((QQToast)localObject).b(0);
-      return;
+      FilterItem localFilterItem = new FilterItem(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c, null);
+      return localFilterItem;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.a.getString(2131436110));
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-    ((EmoticonHandler)this.a.app.a(12)).a(Integer.parseInt(((EmoticonPackage)localObject).epId));
-    URLDrawable.clearMemoryCache();
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      throw new FilterItem.FilterItemIllegalException("create FilterItem instance failed", localIllegalArgumentException);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sra
  * JD-Core Version:    0.7.0.1
  */

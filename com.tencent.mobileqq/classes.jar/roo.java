@@ -1,21 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderFollowTabFragment;
 
 public class roo
-  implements DialogInterface.OnClickListener
+  implements wbr<vya>
 {
-  public roo(AddRequestActivity paramAddRequestActivity) {}
+  public roo(FolderFollowTabFragment paramFolderFollowTabFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(wca paramwca, vya paramvya)
   {
-    this.a.a.cancel();
+    if (paramwca.e()) {
+      FolderFollowTabFragment.a(this.a, paramvya);
+    }
+    while ((!paramwca.d()) && (!paramwca.c())) {
+      return;
+    }
+    FolderFollowTabFragment.b(this.a, paramvya);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     roo
  * JD-Core Version:    0.7.0.1
  */

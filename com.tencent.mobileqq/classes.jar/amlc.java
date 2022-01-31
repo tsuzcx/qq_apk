@@ -1,60 +1,105 @@
-import com.tencent.widget.TCWDatePicker;
-import com.tencent.widget.TCWNumberPicker;
-import com.tencent.widget.TCWNumberPicker.OnChangedListener;
-import java.util.Calendar;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amlc
-  implements TCWNumberPicker.OnChangedListener
 {
-  public amlc(TCWDatePicker paramTCWDatePicker) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString = "";
+  private String b = "";
+  private String c = "";
+  private String d = "";
+  private String e = "";
   
-  public void a(TCWNumberPicker paramTCWNumberPicker, int paramInt1, int paramInt2)
+  public static amlc a(alzs[] paramArrayOfalzs)
   {
-    TCWDatePicker.b(this.a).setTimeInMillis(TCWDatePicker.a(this.a).getTimeInMillis());
-    int i;
-    if (paramTCWNumberPicker == TCWDatePicker.a(this.a))
-    {
-      i = TCWDatePicker.b(this.a).getActualMaximum(5);
-      if ((paramInt1 == i) && (paramInt2 == 1)) {
-        TCWDatePicker.b(this.a).add(5, 1);
-      }
+    if ((paramArrayOfalzs == null) || (paramArrayOfalzs.length <= 0)) {
+      return null;
     }
-    for (;;)
+    Object localObject = paramArrayOfalzs[0].jdField_a_of_type_JavaLangString;
+    paramArrayOfalzs = new amlc();
+    if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      TCWDatePicker.a(this.a, TCWDatePicker.b(this.a).get(1), TCWDatePicker.b(this.a).get(2), TCWDatePicker.b(this.a).get(5));
-      TCWDatePicker.b(this.a);
-      TCWDatePicker.c(this.a);
-      return;
-      if ((paramInt1 == 1) && (paramInt2 == i))
+      QLog.e("TencentDocBannerBean", 1, " FileAssistantBannerSetting updata Config, content is null !");
+      return paramArrayOfalzs;
+    }
+    do
+    {
+      File localFile;
+      try
       {
-        TCWDatePicker.b(this.a).add(5, -1);
-      }
-      else
-      {
-        TCWDatePicker.b(this.a).add(5, paramInt2 - paramInt1);
-        continue;
-        if (paramTCWNumberPicker == TCWDatePicker.b(this.a))
+        localObject = new JSONObject((String)localObject).optJSONObject("Banner");
+        paramArrayOfalzs.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("md5");
+        if (TextUtils.isEmpty(paramArrayOfalzs.jdField_a_of_type_JavaLangString))
         {
-          TCWDatePicker.a(this.a);
-          if ((paramInt1 == 11) && (paramInt2 == 0)) {
-            TCWDatePicker.b(this.a).add(2, 1);
-          } else if ((paramInt1 == 0) && (paramInt2 == 11)) {
-            TCWDatePicker.b(this.a).add(2, -1);
-          } else {
-            TCWDatePicker.b(this.a).add(2, paramInt2 - paramInt1);
-          }
-        }
-        else if (paramTCWNumberPicker == TCWDatePicker.c(this.a))
-        {
-          TCWDatePicker.b(this.a).set(1, paramInt2);
+          QLog.e("TencentDocBannerBean", 1, "server config error: picMd5 is null");
+          return paramArrayOfalzs;
         }
       }
-    }
+      catch (JSONException localJSONException)
+      {
+        QLog.e("TencentDocBannerBean", 1, "FileAssistantBannerSetting updata Config, Exception :", localJSONException);
+        localFile = new File(ajed.bk);
+        if (!localFile.exists()) {
+          localFile.mkdirs();
+        }
+        paramArrayOfalzs.e = new File(ajed.bk, paramArrayOfalzs.jdField_a_of_type_JavaLangString).getPath();
+        return paramArrayOfalzs;
+      }
+      paramArrayOfalzs.b = localFile.optString("pic");
+      if (TextUtils.isEmpty(paramArrayOfalzs.b))
+      {
+        QLog.e("TencentDocBannerBean", 1, "server config error: mPicUrl is null");
+        return paramArrayOfalzs;
+      }
+      paramArrayOfalzs.jdField_a_of_type_Int = localFile.optInt("duration");
+      paramArrayOfalzs.c = localFile.optString("actionItemName");
+      paramArrayOfalzs.d = localFile.optString("actionURLForAndroid");
+    } while ((!TextUtils.isEmpty(paramArrayOfalzs.c)) || (!TextUtils.isEmpty(paramArrayOfalzs.d)));
+    QLog.w("TencentDocBannerBean", 1, "server config error: mActionItem or mActionUrl is null");
+    return paramArrayOfalzs;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(String paramString)
+  {
+    this.e = paramString;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public String d()
+  {
+    return this.d;
+  }
+  
+  public String e()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amlc
  * JD-Core Version:    0.7.0.1
  */

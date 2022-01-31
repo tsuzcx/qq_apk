@@ -1,39 +1,53 @@
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import java.util.Iterator;
+import java.util.List;
 
 public class aetx
-  implements Runnable
+  implements qst
 {
-  public aetx(NearbyAppInterface paramNearbyAppInterface) {}
+  public aetx(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    synchronized (this.a.a)
+    Object localObject;
+    if (paramString != null)
     {
-      boolean bool = this.a.d;
-      if (!bool) {}
-      try
+      Iterator localIterator = this.a.c.iterator();
+      do
       {
-        DeviceProfileManager.a(this.a, 214).a(this.a);
-        this.a.d = true;
-        return;
-      }
-      catch (Exception localException)
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject = (ChannelInfo)localIterator.next();
+      } while (!paramString.equals(((ChannelInfo)localObject).mChannelName));
+    }
+    for (paramString = (String)localObject;; paramString = null)
+    {
+      if (paramString != null)
       {
-        for (;;)
+        if (!TextUtils.isEmpty(paramString.mJumpUrl))
         {
-          if (QLog.isColorLevel()) {
-            QLog.e("NearbyAppInterface", 2, "onDestroy: ", localException);
-          }
+          localObject = new Intent(this.a, QQBrowserActivity.class);
+          ((Intent)localObject).putExtra("hide_operation_bar", true);
+          ((Intent)localObject).putExtra("url", paramString.mJumpUrl);
+          this.a.startActivity((Intent)localObject);
         }
       }
+      else {
+        return;
+      }
+      nji.a(this.a, paramString.mChannelID, paramString.mChannelName, paramString.mChannelType, 0);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aetx
  * JD-Core Version:    0.7.0.1
  */

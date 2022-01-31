@@ -1,63 +1,44 @@
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.adapter.TroopMessageSettingAdapter;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.LinkedHashSet;
+import java.util.List;
 
 public class uam
-  extends FriendListObserver
+  extends QQUIEventReceiver<StoryPickerFragment, sys>
 {
-  public uam(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
-  
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  public uam(@NonNull StoryPickerFragment paramStoryPickerFragment)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!paramBoolean1);
-      this.a.jdField_a_of_type_JavaUtilMap = TroopAssistantManager.a().a(this.a.app, this.a.jdField_a_of_type_JavaUtilList);
-    } while (this.a.jdField_a_of_type_JavaUtilMap == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.a(this.a.jdField_a_of_type_JavaUtilMap);
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.notifyDataSetChanged();
-    this.a.b();
+    super(paramStoryPickerFragment);
   }
   
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map paramMap)
+  public void a(@NonNull StoryPickerFragment paramStoryPickerFragment, @NonNull sys paramsys)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter == null) {
-      return;
-    }
-    if ((paramBoolean) && (paramMap != null))
+    urk.b(this.TAG, "GetSimpleInfoListEventReceiver. event=%s", paramsys.toString());
+    if ((paramsys.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramsys.jdField_a_of_type_JavaUtilList != null) && (!paramsys.jdField_a_of_type_JavaUtilList.isEmpty()))
     {
-      Iterator localIterator = paramMap.keySet().iterator();
+      Iterator localIterator = paramsys.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
-        String str = (String)localIterator.next();
-        Integer localInteger = (Integer)paramMap.get(str);
-        if (localInteger != null) {
-          this.a.jdField_a_of_type_JavaUtilMap.put(str, localInteger);
+        uhj localuhj = (uhj)localIterator.next();
+        if (paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.contains(localuhj.jdField_a_of_type_JavaLangString)) {
+          localuhj.jdField_a_of_type_Boolean = true;
         }
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.a(this.a.jdField_a_of_type_JavaUtilMap);
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.notifyDataSetChanged();
-      this.a.b();
-      return;
+      paramStoryPickerFragment.jdField_a_of_type_Uau.a(paramsys.jdField_a_of_type_JavaLangString, paramsys.jdField_a_of_type_JavaUtilList);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopMessageSettingAdapter.notifyDataSetChanged();
-    this.a.b();
-    QQToast.a(this.a.app.getApp(), 1, this.a.getString(2131434530), 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public Class acceptEventClass()
+  {
+    return sys.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uam
  * JD-Core Version:    0.7.0.1
  */

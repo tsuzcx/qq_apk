@@ -1,21 +1,19 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.now.NowProxy;
-import com.tencent.mobileqq.nearby.NearbyProxy;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-public class aevc
-  implements Runnable
+class aevc
 {
-  public aevc(NearbyProxy paramNearbyProxy, Context paramContext) {}
+  public int a;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
   
-  public void run()
-  {
-    ((NowProxy)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyProxy.a.getManager(181)).a(this.jdField_a_of_type_AndroidContentContext);
-  }
+  aevc(aeva paramaeva) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aevc
  * JD-Core Version:    0.7.0.1
  */

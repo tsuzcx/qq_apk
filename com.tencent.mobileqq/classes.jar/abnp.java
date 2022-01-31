@@ -1,21 +1,35 @@
-import com.tencent.mobileqq.armap.POIInfo;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog.LbsRedBagExtraData;
-import java.util.List;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.QuickLoginActivity;
+import mqq.observer.AccountObserver;
 
-class abnp
-  implements Runnable
+public class abnp
+  extends AccountObserver
 {
-  abnp(abno paramabno, POIInfo paramPOIInfo, ARGridMapViewDialog.LbsRedBagExtraData paramLbsRedBagExtraData, List paramList, int paramInt1, int paramInt2) {}
+  public abnp(QuickLoginActivity paramQuickLoginActivity) {}
   
-  public void run()
+  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt, byte[] paramArrayOfByte)
   {
-    ARGridMapViewDialog.a(this.jdField_a_of_type_Abno.a, this.jdField_a_of_type_ComTencentMobileqqArmapPOIInfo, this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog$LbsRedBagExtraData.b, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Int, this.b);
+    Toast.makeText(this.a.getApplicationContext(), "login failure! check you qq and password!", 0).show();
+  }
+  
+  public void onLoginSuccess(String paramString1, String paramString2)
+  {
+    Toast.makeText(this.a.getApplicationContext(), "login suc", 0).show();
+  }
+  
+  public void onLoginTimeout(String paramString)
+  {
+    Toast.makeText(this.a.getApplicationContext(), "login outtime", 0).show();
+  }
+  
+  public void onUserCancel(String paramString)
+  {
+    Toast.makeText(this.a.getApplicationContext(), "login cancel", 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abnp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,20 @@
-import com.tencent.mobileqq.surfaceviewaction.action.Action;
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.surfaceviewaction.action.ScaleAction;
-import com.tencent.mobileqq.surfaceviewaction.action.SequenceAction;
-import com.tencent.mobileqq.surfaceviewaction.gl.ImageButton;
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+import android.graphics.Bitmap;
 
 public class akda
-  implements Action.OnActionEndListener
 {
-  public akda(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView) {}
-  
-  public void a()
-  {
-    SequenceAction localSequenceAction = new SequenceAction(new Action[] { new ScaleAction(400, TroopGiftToAllSurfaceView.a(this.a), TroopGiftToAllSurfaceView.a(this.a) * 0.95F), new ScaleAction(400, TroopGiftToAllSurfaceView.a(this.a) * 0.95F, TroopGiftToAllSurfaceView.a(this.a)) });
-    localSequenceAction.a = true;
-    TroopGiftToAllSurfaceView.a(this.a).a(new Action[] { localSequenceAction });
-  }
+  public int a;
+  public long a;
+  public Bitmap a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public String c;
+  public String d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akda
  * JD-Core Version:    0.7.0.1
  */

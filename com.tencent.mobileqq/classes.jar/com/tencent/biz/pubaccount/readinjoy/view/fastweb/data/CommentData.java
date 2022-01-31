@@ -9,7 +9,7 @@ public class CommentData
   
   public CommentData()
   {
-    this.d = 12;
+    super(12);
   }
 }
 

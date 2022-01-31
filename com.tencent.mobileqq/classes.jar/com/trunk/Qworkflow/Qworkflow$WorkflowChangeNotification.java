@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Qworkflow$WorkflowChangeNotification
-  extends MessageMicro
+  extends MessageMicro<WorkflowChangeNotification>
 {
   public static final int DENY_END = 3;
   public static final int HASTEN_RECVED = 4;

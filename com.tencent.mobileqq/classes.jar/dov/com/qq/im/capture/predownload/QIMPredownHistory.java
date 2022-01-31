@@ -1,12 +1,12 @@
 package dov.com.qq.im.capture.predownload;
 
+import atmo;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="resId,resType")
 public class QIMPredownHistory
-  extends Entity
+  extends atmo
 {
   public String resId;
   public String resType;

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="vertical" android:paddingTop="7.0dip" android:clipToPadding="false" android:layout_width="55.0dip" android:layout_height="68.0dip">
+        <com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView android:id="@id/drx" android:background="@color/al3" android:layout_width="33.0dip" android:layout_height="33.0dip" android:scaleType="centerCrop" android:layout_centerHorizontal="true" android:layerType="software" />
+        <ImageView android:id="@id/dry" android:visibility="gone" android:layout_width="33.0dip" android:layout_height="33.0dip" android:src="@drawable/gks" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="12.0sp" android:textColor="#ff262626" android:ellipsize="end" android:id="@id/k4o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:maxEms="4" android:singleLine="true" android:layout_below="@id/drx" android:layout_centerHorizontal="true" />
+        <ImageView android:layout_gravity="right" android:id="@id/drz" android:visibility="gone" android:layout_width="9.0dip" android:layout_height="9.0dip" android:layout_marginTop="-6.0dip" android:layout_marginRight="-6.0dip" android:src="@drawable/skin_tips_dot" android:layout_alignTop="@id/drx" android:layout_alignRight="@id/drx" />
+    </RelativeLayout>
+</FrameLayout>

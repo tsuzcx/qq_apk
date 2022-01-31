@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.biz.qqstory.view.widget.DragFrameLayout android:id="@id/bpw" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto">
+    <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCustomFrameLayout android:id="@id/root_layout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGradientMaskView android:layout_gravity="top" android:id="@id/dm8" android:layout_width="fill_parent" android:layout_height="58.0dip" tencent:mask_mode="9" />
+        <FrameLayout android:layout_gravity="top" android:id="@id/eq9" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:layout_width="fill_parent" android:layout_height="58.0dip">
+            <ImageView android:layout_gravity="left" android:id="@id/epv" android:background="@null" android:layout_width="36.0dip" android:layout_height="fill_parent" android:src="@drawable/dry" android:scaleType="centerInside" android:contentDescription="@string/pzp" />
+            <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/lkk" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                <com.tencent.image.URLImageView android:id="@id/lki" android:layout_width="18.0dip" android:layout_height="18.0dip" android:scaleType="centerInside" />
+                <TextView android:textSize="14.0dip" android:textColor="#daffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/lkj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" />
+            </LinearLayout>
+            <ImageView android:layout_gravity="center|right" android:id="@id/eq8" android:visibility="gone" android:layout_width="36.0dip" android:layout_height="fill_parent" android:layout_marginRight="36.0dip" android:src="@drawable/dpt" android:scaleType="center" android:contentDescription="@string/pws" />
+            <ImageView android:layout_gravity="right" android:id="@id/ir3" android:visibility="gone" android:layout_width="36.0dip" android:layout_height="fill_parent" android:src="@drawable/dt7" android:scaleType="centerInside" android:contentDescription="@string/pv7" />
+        </FrameLayout>
+    </com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCustomFrameLayout>
+</com.tencent.biz.qqstory.view.widget.DragFrameLayout>

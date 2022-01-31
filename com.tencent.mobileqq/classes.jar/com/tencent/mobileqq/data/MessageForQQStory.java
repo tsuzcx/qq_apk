@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.data;
 
+import ajjy;
 import android.graphics.Color;
 import android.text.TextUtils;
+import befm;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.URLUtil;
 import java.util.Map;
 import org.json.JSONObject;
 
@@ -16,6 +17,8 @@ public class MessageForQQStory
   public static final String KEY_COVER_IMG_URL = "coverImgUrl";
   public static final String KEY_HEAD_TIP = "headtip";
   public static final String KEY_LOGO_IMG_URL = "logoImgUrl";
+  public static final String KEY_STORY_BRIEF = "storyBrief";
+  public static final String KEY_STORY_TITLE = "storyTitle";
   public static final String KEY_TYPE = "type";
   public static final String KEY_VID = "vid";
   public static final String TAG = "MessageForQQStory";
@@ -38,21 +41,23 @@ public class MessageForQQStory
   public int briefBgColor;
   public String coverImgUrl;
   public String logoImgUrl;
-  public Map mAttrMap;
+  public Map<String, String> mAttrMap;
   public String mHeadTip;
   public int mShareType;
   public String mVid;
   public String msgAction;
   public String srcAction;
   public String srcName;
+  public String storyBrief;
+  public String storyTitle;
   public int type = 1;
   
   public static String buildCompatibleText(String paramString1, String paramString2, String paramString3)
   {
     if (TextUtils.isEmpty(paramString1)) {
-      return paramString2 + "[来自" + paramString3 + "，请使用新版手机" + "QQ" + "查看]";
+      return paramString2 + ajjy.a(2131640831) + paramString3 + ajjy.a(2131640827) + "QQ" + ajjy.a(2131640799);
     }
-    return paramString1 + "-" + paramString2 + "[来自" + paramString3 + "，请使用新版手机" + "QQ" + "查看]";
+    return paramString1 + "-" + paramString2 + ajjy.a(2131640810) + paramString3 + ajjy.a(2131640825) + "QQ" + ajjy.a(2131640794);
   }
   
   public void doParse()
@@ -71,7 +76,7 @@ public class MessageForQQStory
       this.briefBgColor = localJSONObject.optInt("briefBgColor");
       this.mHeadTip = localJSONObject.optString("headtip");
       this.mVid = localJSONObject.optString("vid");
-      this.mAttrMap = URLUtil.a(this.msgAction);
+      this.mAttrMap = befm.a(this.msgAction);
       if (TextUtils.isEmpty(this.mVid))
       {
         this.mVid = ((String)this.mAttrMap.get("videoId"));
@@ -85,6 +90,8 @@ public class MessageForQQStory
       this.briefBgColor &= 0xFFFFFF;
       this.briefBgColor |= 0xD8000000;
       this.authorName = localJSONObject.optString("authorName");
+      this.storyTitle = localJSONObject.optString("storyTitle");
+      this.storyBrief = localJSONObject.optString("storyBrief");
       this.type = localJSONObject.optInt("type");
     }
     catch (Exception localException)
@@ -125,6 +132,8 @@ public class MessageForQQStory
       ((StringBuilder)localObject2).append(", msgAction='").append(this.msgAction).append('\'');
       ((StringBuilder)localObject2).append(", authorName='").append(this.authorName).append('\'');
       ((StringBuilder)localObject2).append(", type='").append(this.type).append('\'');
+      ((StringBuilder)localObject2).append(", storyTitle='").append(this.storyTitle).append('\'');
+      ((StringBuilder)localObject2).append(", storyBrief='").append(this.storyBrief).append('\'');
       ((StringBuilder)localObject2).append('}');
       return ((StringBuilder)localObject2).toString();
     }

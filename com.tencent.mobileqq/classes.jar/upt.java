@@ -1,94 +1,172 @@
-import android.graphics.BitmapFactory.Options;
-import android.os.Bundle;
-import android.os.Parcelable;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.aio.qwallet.elem.SkinRedPkgElem;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_710_message.ReqStoryMessageList;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.MessageNotifySegment.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.widget.AbsListView.LayoutParams;
+import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
 
-class upt
-  implements PreloadManager.OnGetPathListener
+public class upt
+  extends vpv<oidb_0x791.RedDotInfo>
+  implements View.OnClickListener
 {
-  upt(ups paramups) {}
+  public static final String KEY = "MessageNotifySegment";
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private Integer jdField_a_of_type_JavaLangInteger;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public upt(Context paramContext)
   {
-    paramPathResult = paramPathResult.folderPath;
-    if (paramInt == 0) {}
-    try
+    super(paramContext);
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public View a(int paramInt, unw paramunw, ViewGroup paramViewGroup)
+  {
+    if (this.jdField_a_of_type_Int == 0)
     {
-      if (this.a.a.skinType != 1) {
-        break label373;
-      }
-      paramPathResult = paramPathResult + File.separator;
-      localObject2 = paramPathResult + "corner.png";
-      localObject1 = paramPathResult + "base_bg.png";
-      str = paramPathResult + "anim_fg";
-      paramInt = (int)(CustomizeStrategyFactory.a * 50.0F + 0.5D);
-      j = (int)(CustomizeStrategyFactory.a * 300.0F + 0.5D);
-      i = (int)(CustomizeStrategyFactory.a * 50.0F + 0.5D);
-      BitmapFactory.Options localOptions = ImageUtil.a((String)localObject2, paramInt);
-      this.a.a.corner = SafeBitmapFactory.decodeFile((String)localObject2, localOptions);
-      localObject2 = ImageUtil.a((String)localObject1, j);
-      this.a.a.background = SafeBitmapFactory.decodeFile((String)localObject1, (BitmapFactory.Options)localObject2);
-      this.a.a.animInfo = AnimationView.AnimationInfo.loadFromFolder(str);
-      localObject1 = SkinRedPkgElem.a;
-      j = localObject1.length;
-      paramInt = 0;
+      paramunw.a(2131311502).setVisibility(8);
+      paramunw.a().setLayoutParams(new AbsListView.LayoutParams(-1, 0));
+      return paramunw.a();
     }
-    catch (Throwable paramPathResult)
+    paramInt = vms.a(paramunw.a().getContext(), 52.0F);
+    paramunw.a(2131311502).setVisibility(0);
+    paramunw.a().setLayoutParams(new AbsListView.LayoutParams(-1, paramInt));
+    paramunw.a().setVisibility(0);
+    ImageView localImageView = (ImageView)paramunw.a(2131302061);
+    Drawable localDrawable = bacm.b();
+    QQStoryContext.a();
+    if (QQStoryContext.a() == null) {
+      localImageView.setImageDrawable(localDrawable);
+    }
+    for (;;)
     {
-      for (;;)
+      return paramunw.a();
+      if ((localImageView.getTag() != null) && ((this.jdField_a_of_type_JavaLangInteger == null) || (this.jdField_a_of_type_JavaLangInteger.equals(localImageView.getTag())))) {
+        return paramunw.a();
+      }
+      localImageView.setTag(this.jdField_a_of_type_JavaLangInteger);
+      localImageView.setImageDrawable(localDrawable);
+      TextView localTextView = (TextView)paramunw.a(2131299132);
+      StringBuilder localStringBuilder = new StringBuilder();
+      if (this.jdField_a_of_type_Int > 99) {}
+      for (paramViewGroup = "99+";; paramViewGroup = Integer.valueOf(this.jdField_a_of_type_Int))
       {
-        Object localObject2;
-        Object localObject1;
-        String str;
-        int j;
-        int i;
-        label373:
-        paramPathResult.printStackTrace();
-        continue;
-        paramInt += 1;
-      }
-    }
-    if (paramInt < j)
-    {
-      str = localObject1[paramInt];
-      localObject2 = paramPathResult + str + ".png";
-      localObject2 = SafeBitmapFactory.decodeFile((String)localObject2, ImageUtil.a((String)localObject2, i));
-      if (localObject2 != null) {
-        this.a.a.attribute.putParcelable(str, (Parcelable)localObject2);
-      }
-    }
-    else
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "TYPE_AIO_REDPACKET background=" + this.a.a.background + ",animInfo=" + this.a.a.animInfo);
-      }
-      for (;;)
-      {
-        CustomizeStrategyFactory.a().a(this.a.a);
-        return;
-        if (this.a.a.skinType == 2)
-        {
-          this.a.a.resPath = paramPathResult;
-          if (QLog.isColorLevel()) {
-            QLog.d("CustomizeStrategyFactory", 2, "TYPE_POP_REDPACKET path=" + paramPathResult);
-          }
+        localTextView.setText(paramViewGroup + ajjy.a(2131640854));
+        if (this.jdField_a_of_type_Long > 0L) {
+          break label272;
         }
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "uin <=0. fetch first message.");
+        }
+        a(localImageView);
+        break;
       }
+      label272:
+      ThreadManager.post(new MessageNotifySegment.1(this, localImageView, localDrawable), 8, null, true);
+    }
+  }
+  
+  public String a()
+  {
+    return "MessageNotifySegment";
+  }
+  
+  public unw a(int paramInt, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495709, paramViewGroup, false);
+    paramViewGroup.findViewById(2131311502).setOnClickListener(this);
+    return new unw(paramViewGroup);
+  }
+  
+  public void a(ImageView paramImageView)
+  {
+    qqstory_710_message.ReqStoryMessageList localReqStoryMessageList = new qqstory_710_message.ReqStoryMessageList();
+    localReqStoryMessageList.num.set(1);
+    localReqStoryMessageList.start_time.set(0);
+    localReqStoryMessageList.source.set(0);
+    localReqStoryMessageList.version_ctrl.set(775);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "fetch first message from gray, start=0");
+    }
+    QQStoryContext.a();
+    mmj.a(QQStoryContext.a(), new upu(this, paramImageView), localReqStoryMessageList.toByteArray(), skt.a("StorySvc.get_710_message_list"));
+  }
+  
+  public void a(oidb_0x791.RedDotInfo paramRedDotInfo)
+  {
+    if ((paramRedDotInfo != null) && (paramRedDotInfo.uint32_appid.get() == 52) && (paramRedDotInfo.bool_display_reddot.get()) && (paramRedDotInfo.uint32_number.get() > 0))
+    {
+      this.jdField_a_of_type_Int = paramRedDotInfo.uint32_number.get();
+      this.jdField_a_of_type_Long = paramRedDotInfo.uint64_cmd_uin.get();
+      this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramRedDotInfo.uint32_last_time.get());
+      this.jdField_a_of_type_JavaLangString = paramRedDotInfo.str_face_url.get().toStringUtf8();
+      return;
+    }
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  protected void c()
+  {
+    QQStoryContext.a();
+    QQAppInterface localQQAppInterface = QQStoryContext.a();
+    if (localQQAppInterface != null)
+    {
+      a(((mmy)localQQAppInterface.getManager(70)).a(52));
+      return;
+    }
+    urk.e("Q.qqstory.home.MessageNotifySegment", "Get the QQAppInterface is null,we dont know the red point state");
+  }
+  
+  public void onClick(View paramView)
+  {
+    paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, StoryMessageListActivity.class);
+    paramView.putExtra("qqstory_message_list_source", 0);
+    paramView.putExtra("qqstory_jump_source", "2");
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    paramView = ((sqs)sqg.a(2)).b(QQStoryContext.a().b());
+    if ((paramView != null) && (paramView.isVip))
+    {
+      i = 1;
+      if (i == 0) {
+        break label124;
+      }
+    }
+    label124:
+    for (int i = 1;; i = 2)
+    {
+      urp.a("play_video", "clk_grey", i, 0, new String[] { "", "", "", "" });
+      return;
+      i = 0;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     upt
  * JD-Core Version:    0.7.0.1
  */

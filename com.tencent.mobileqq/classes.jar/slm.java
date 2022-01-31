@@ -1,26 +1,27 @@
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.qqstory.storyHome.memory.QQStoryMemoriesActivity;
 
-class slm
-  implements Runnable
+public class slm
 {
-  slm(sll paramsll) {}
-  
-  public void run()
+  public static Intent a(Context paramContext, int paramInt, String paramString)
   {
-    if (this.a.a.a != null)
-    {
-      this.a.a.a.d();
-      if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, "Conversation onUpdateFriendList");
-      }
-    }
+    return QQStoryMemoriesActivity.a(paramContext, paramInt, paramString);
+  }
+  
+  public static void a(Context paramContext, int paramInt, long paramLong)
+  {
+    QQStoryMemoriesActivity.a(paramContext, paramInt, paramLong);
+  }
+  
+  public static void a(Context paramContext, int paramInt, String paramString)
+  {
+    paramContext.startActivity(a(paramContext, paramInt, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     slm
  * JD-Core Version:    0.7.0.1
  */

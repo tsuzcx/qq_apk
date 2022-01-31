@@ -1,54 +1,38 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
-import com.tencent.mobileqq.emosm.favroaming.SyncListener;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.IntimateTitleSwitchView;
 
 public class acmm
-  extends SyncListener
+  implements Animator.AnimatorListener
 {
-  public acmm(EmoticonMainPanel paramEmoticonMainPanel) {}
+  public acmm(IntimateTitleSwitchView paramIntimateTitleSwitchView) {}
   
-  public void a()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "upload_finish");
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_AndroidViewViewGroup.setTranslationX(0.0F);
+      this.a.b.setTranslationX(this.a.f);
+      return;
     }
+    this.a.jdField_a_of_type_AndroidViewViewGroup.setTranslationX(this.a.f);
+    this.a.b.setTranslationX(0.0F);
   }
   
-  public void a(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "download_finish");
-    }
-    ThreadManager.getUIHandler().post(new acmn(this));
-    this.a.i();
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005CEE", "0X8005CEE", 0, 0, paramInt + "", "", "", "");
+    onAnimationCancel(paramAnimator);
+    IntimateTitleSwitchView.f(this.a);
   }
   
-  public void a(CustomEmotionData paramCustomEmotionData, int paramInt1, int paramInt2)
-  {
-    this.a.i();
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonMainPanel", 2, "roaming_finish");
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      ((FavroamingManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(102)).b(this.a.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingSyncListener);
-    }
-    this.a.i();
-  }
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acmm
  * JD-Core Version:    0.7.0.1
  */

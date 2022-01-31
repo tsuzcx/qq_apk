@@ -1,22 +1,19 @@
-import com.tencent.biz.troop.file.ZipFilesListAdapter;
-import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class acwh
-  extends FMObserver
+class acwh
+  implements DialogInterface.OnClickListener
 {
-  public acwh(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity) {}
+  acwh(acwe paramacwe) {}
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.notifyDataSetChanged();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acwh
  * JD-Core Version:    0.7.0.1
  */

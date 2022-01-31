@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x89a$GroupGeoInfo
-  extends MessageMicro
+  extends MessageMicro<GroupGeoInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField string_geo_content = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -26,7 +26,7 @@ public final class oidb_0x89a$GroupGeoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x89a.oidb_0x89a.GroupGeoInfo
  * JD-Core Version:    0.7.0.1
  */

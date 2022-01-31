@@ -1,26 +1,19 @@
-import android.widget.BaseAdapter;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.AnimationScrollListener;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
 
-public class wym
-  implements Runnable
+class wym
+  implements SurfaceTexture.OnFrameAvailableListener
 {
-  public wym(AvatarPendantActivity.AnimationScrollListener paramAnimationScrollListener) {}
+  wym(wyl paramwyl) {}
   
-  public void run()
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
-    if (this.a.b.r == 0)
-    {
-      URLDrawable.resume();
-      this.a.b.a.a = false;
-      this.a.b.a.notifyDataSetChanged();
-    }
+    wyl.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wym
  * JD-Core Version:    0.7.0.1
  */

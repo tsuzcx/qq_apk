@@ -1,60 +1,96 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import com.tencent.mobileqq.activity.aio.stickerbubble.ManualDecodeGifImage;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import java.util.Map;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StQQGroup;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalDetailHeadItemView;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class whb
-  implements Runnable
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  public whb(StickerBubbleAnimationView paramStickerBubbleAnimationView, String paramString) {}
+  private CertifiedAccountMeta.StQQGroup jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup;
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
   
-  public void run()
+  public whb(RelativePersonalDetailHeadItemView paramRelativePersonalDetailHeadItemView, View paramView)
   {
-    Object localObject = new File(this.jdField_a_of_type_JavaLangString);
-    if (((File)localObject).exists()) {
-      try
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131312436));
+    this.b = ((TextView)paramView.findViewById(2131312452));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131298051));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+  }
+  
+  public void a(CertifiedAccountMeta.StQQGroup paramStQQGroup)
+  {
+    String str;
+    if (paramStQQGroup != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramStQQGroup.name.get());
+      this.b.setText(paramStQQGroup.memberNum.get() + ajjy.a(2131647583));
+      this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup = paramStQQGroup;
+      Button localButton = this.jdField_a_of_type_AndroidWidgetButton;
+      if (paramStQQGroup.joinState.get() != 1) {
+        break label143;
+      }
+      str = ajjy.a(2131647579);
+      localButton.setText(str);
+      if (RelativePersonalDetailHeadItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView).user != null)
       {
-        ManualDecodeGifImage localManualDecodeGifImage = new ManualDecodeGifImage((File)localObject, false);
-        StickerBubbleAnimationView.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView).put(this.jdField_a_of_type_JavaLangString, Integer.valueOf(localManualDecodeGifImage.a()));
-        BitmapDrawable[] arrayOfBitmapDrawable = new BitmapDrawable[localManualDecodeGifImage.b()];
-        localObject = StickerBubbleAnimationView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView, localManualDecodeGifImage.a(), 0.7D);
-        Resources localResources = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView.getResources();
-        if (localObject != null) {}
-        for (;;)
-        {
-          arrayOfBitmapDrawable[0] = new BitmapDrawable(localResources, (Bitmap)localObject);
-          StickerBubbleAnimationView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView, localManualDecodeGifImage, arrayOfBitmapDrawable, this.jdField_a_of_type_JavaLangString, localManualDecodeGifImage.a());
-          StickerBubbleAnimationView.d(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView).put(this.jdField_a_of_type_JavaLangString, arrayOfBitmapDrawable);
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("StickerBubbleAnimationView", 2, "decoded first frame of gif: " + this.jdField_a_of_type_JavaLangString);
-          return;
-          localObject = localManualDecodeGifImage.a();
+        str = RelativePersonalDetailHeadItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalDetailHeadItemView).user.id.get();
+        if (paramStQQGroup.joinState.get() != 1) {
+          break label152;
         }
-        QLog.e("StickerBubbleAnimationView", 1, "gifFile " + this.jdField_a_of_type_JavaLangString + " is not exist");
-      }
-      catch (IOException localIOException)
-      {
-        QLog.e("StickerBubbleAnimationView", 1, "decode gif fail: " + localIOException);
-        return;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        QLog.e("StickerBubbleAnimationView", 1, "oom when decode gif or scale first frame, " + localOutOfMemoryError);
-        return;
       }
     }
+    label143:
+    label152:
+    for (paramStQQGroup = "open_butten";; paramStQQGroup = "enter_butten")
+    {
+      wye.a(str, "auth_fan", paramStQQGroup, 0, 0, new String[0]);
+      return;
+      str = ajjy.a(2131647578);
+      break;
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup != null) && (paramView != null) && (paramView.getContext() != null))
+    {
+      if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.joinState.get() == 1)
+      {
+        localObject = aciy.a(new Intent(paramView.getContext(), SplashActivity.class), new int[] { 2 });
+        ((Intent)localObject).putExtra("uin", String.valueOf(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.id.get()));
+        ((Intent)localObject).putExtra("uintype", 1);
+        ((Intent)localObject).putExtra("uinname", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.name.get());
+        paramView.getContext().startActivity((Intent)localObject);
+      }
+    }
+    else {
+      return;
+    }
+    Object localObject = TroopInfoActivity.a(String.valueOf(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StQQGroup.id.get()), 4);
+    ((Bundle)localObject).putInt("t_s_f", 1001);
+    azlj.a(paramView.getContext(), (Bundle)localObject, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     whb
  * JD-Core Version:    0.7.0.1
  */

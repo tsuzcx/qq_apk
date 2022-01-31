@@ -1,23 +1,20 @@
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 
-public final class ajiu
-  implements Comparator
+public class ajiu
+  implements DialogInterface.OnDismissListener
 {
-  public int a(String paramString1, String paramString2)
+  public ajiu(FrameHelperActivity paramFrameHelperActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    try
-    {
-      int i = paramString1.getBytes("utf-8").length;
-      int j = paramString2.getBytes("utf-8").length;
-      return i - j;
-    }
-    catch (Exception localException) {}
-    return paramString1.getBytes().length - paramString2.getBytes().length;
+    FrameHelperActivity.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajiu
  * JD-Core Version:    0.7.0.1
  */

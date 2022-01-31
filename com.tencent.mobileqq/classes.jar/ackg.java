@@ -1,35 +1,12 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.profile.like.PraiseManager;
-import com.tencent.mobileqq.profile.like.PraiseManager.OnPraiseSetCallback;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class ackg
-  implements PraiseManager.OnPraiseSetCallback
+public abstract interface ackg
 {
-  ackg(acjg paramacjg) {}
-  
-  public void a(int paramInt1, int paramInt2, String paramString, Bundle paramBundle)
-  {
-    MessengerService localMessengerService = (MessengerService)this.a.a.get();
-    if (localMessengerService != null)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("id", paramInt2);
-      localBundle.putInt("code", paramInt1);
-      localBundle.putString("url", paramString);
-      paramBundle.putBundle("response", localBundle);
-      localMessengerService.a(paramBundle);
-      if ((paramInt1 == 0) && (MessengerService.e(localMessengerService) != null) && ((MessengerService.f(localMessengerService) instanceof QQAppInterface))) {
-        ((PraiseManager)((QQAppInterface)MessengerService.g(localMessengerService)).getManager(208)).a(paramInt2, true, "from_praise_mall");
-      }
-    }
-  }
+  public abstract void a(MessageRecord paramMessageRecord);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ackg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.startup.step;
 
-import aikd;
+import awoy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginRecoverReceiver;
 
 public class SetPlugin
   extends Step
 {
-  protected boolean a()
+  protected boolean doStep()
   {
-    PluginRecoverReceiver.register(BaseApplicationImpl.sApplication, new aikd());
+    PluginRecoverReceiver.register(BaseApplicationImpl.sApplication, new awoy());
     return true;
   }
 }

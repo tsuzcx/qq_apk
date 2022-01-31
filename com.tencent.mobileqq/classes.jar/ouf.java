@@ -1,14 +1,14 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-
-public class ouf
-  implements Runnable
+class ouf
+  implements pjw
 {
-  public ouf(StoryVideoPlayer paramStoryVideoPlayer, Bundle paramBundle) {}
+  ouf(ouc paramouc, opw paramopw) {}
   
-  public void run()
+  public void a()
   {
-    StoryVideoPlayer.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer, this.jdField_a_of_type_AndroidOsBundle);
+    qpj localqpj = this.jdField_a_of_type_Opw.a().a();
+    if (localqpj != null) {
+      localqpj.a(null, this.jdField_a_of_type_Opw.a(), 1);
+    }
   }
 }
 

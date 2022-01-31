@@ -1,41 +1,55 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.QZonePhotoWall;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.util.WeakReferenceHandler;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqForbidVideo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspForbidVideo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
 
 public class syf
-  implements Runnable
+  extends slz<syg>
 {
-  public syf(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public final String a;
+  public String b = "";
   
-  public void run()
+  public syf(sye paramsye, String paramString)
   {
-    Object localObject1 = ((FriendsManager)this.a.app.getManager(50)).b(this.a.app.getCurrentAccountUin());
-    this.a.a((Card)localObject1);
-    this.a.app.runOnUiThread(new syg(this, (Card)localObject1));
-    this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.h();
-    Object localObject2 = (QZonePhotoWall)this.a.app.getEntityManagerFactory().createEntityManager().a(QZonePhotoWall.class, this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
-    localObject1 = new ArrayList();
-    if (localObject2 != null) {
-      this.a.a(((QZonePhotoWall)localObject2).totalPic, ((QZonePhotoWall)localObject2).hasMore, ((QZonePhotoWall)localObject2).attachInfo, ((QZonePhotoWall)localObject2).unpackPhotoWallData(), (List)localObject1);
+    this.jdField_a_of_type_JavaLangString = skt.a("StorySvc.forbid_video");
+    this.b = paramString;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public syg a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspForbidVideo localRspForbidVideo = new qqstory_service.RspForbidVideo();
+    try
+    {
+      localRspForbidVideo.mergeFrom(paramArrayOfByte);
+      return new syg(this.jdField_a_of_type_Sye, localRspForbidVideo);
     }
-    localObject2 = this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage(1001);
-    ((Message)localObject2).obj = localObject1;
-    this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage((Message)localObject2);
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqForbidVideo localReqForbidVideo = new qqstory_service.ReqForbidVideo();
+    localReqForbidVideo.vid.set(this.b);
+    return localReqForbidVideo.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "ReportIgnoreVideoRequest{, vid='" + this.b + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     syf
  * JD-Core Version:    0.7.0.1
  */

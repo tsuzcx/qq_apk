@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager.Listener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class uqs
-  implements Runnable
+class uqs
+  implements View.OnClickListener
 {
-  public uqs(MediaPlayerManager paramMediaPlayerManager, int paramInt) {}
+  uqs(uqq paramuqq) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager) != null) {
-      MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager).e(this.jdField_a_of_type_Int);
-    }
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uqs
  * JD-Core Version:    0.7.0.1
  */

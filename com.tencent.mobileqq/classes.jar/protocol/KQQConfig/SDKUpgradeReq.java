@@ -8,25 +8,25 @@ import java.util.ArrayList;
 public final class SDKUpgradeReq
   extends JceStruct
 {
-  static ArrayList cache_vAppid;
-  static ArrayList cache_vUin;
+  static ArrayList<Integer> cache_vAppid;
+  static ArrayList<String> cache_vUin;
   public byte bJailbreak;
   public boolean bSdkUpdateFlag = true;
   public byte cProtocolVer;
   public int iActionType;
   public int iHeight;
   public int iWidth;
-  public ArrayList vAppid;
-  public ArrayList vUin;
+  public ArrayList<Integer> vAppid;
+  public ArrayList<String> vUin;
   
   public SDKUpgradeReq() {}
   
-  public SDKUpgradeReq(byte paramByte1, ArrayList paramArrayList1, boolean paramBoolean, ArrayList paramArrayList2, int paramInt1, int paramInt2, int paramInt3, byte paramByte2)
+  public SDKUpgradeReq(byte paramByte1, ArrayList<String> paramArrayList, boolean paramBoolean, ArrayList<Integer> paramArrayList1, int paramInt1, int paramInt2, int paramInt3, byte paramByte2)
   {
     this.cProtocolVer = paramByte1;
-    this.vUin = paramArrayList1;
+    this.vUin = paramArrayList;
     this.bSdkUpdateFlag = paramBoolean;
-    this.vAppid = paramArrayList2;
+    this.vAppid = paramArrayList1;
     this.iActionType = paramInt1;
     this.iWidth = paramInt2;
     this.iHeight = paramInt3;

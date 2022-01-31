@@ -1,25 +1,12 @@
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.mobileqq.data.CameraEmotionData;
 
-public final class anbk
-  implements Comparator
+public abstract interface anbk
 {
-  public int a(File paramFile1, File paramFile2)
-  {
-    long l1 = paramFile1.lastModified();
-    long l2 = paramFile2.lastModified();
-    if (l1 > l2) {
-      return -1;
-    }
-    if (l1 < l2) {
-      return 1;
-    }
-    return 0;
-  }
+  public abstract void a(int paramInt, CameraEmotionData paramCameraEmotionData);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anbk
  * JD-Core Version:    0.7.0.1
  */

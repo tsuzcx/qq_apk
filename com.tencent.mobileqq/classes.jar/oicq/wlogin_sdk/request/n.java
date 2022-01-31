@@ -11,7 +11,7 @@ import oicq.wlogin_sdk.tools.util;
 public class n
   extends oicq_request
 {
-  public static boolean I = false;
+  public static boolean K = false;
   
   public n(t paramt)
   {
@@ -71,7 +71,7 @@ public class n
     localObject1 = ((tlv_t8)localObject1).get_tlv_8(0, t.u, 0);
     localObject2 = ((tlv_t104)localObject2).get_tlv_104(paramArrayOfByte1);
     paramArrayOfLong = localtlv_t116.get_tlv_116(paramInt1, paramInt2, paramArrayOfLong);
-    if (I) {}
+    if (K) {}
     for (paramArrayOfByte1 = localtlv_t193.get_tlv_193(paramArrayOfByte2);; paramArrayOfByte1 = localtlv_t2.get_tlv_2(paramArrayOfByte2, paramArrayOfByte3))
     {
       paramArrayOfByte2 = new byte[paramArrayOfByte1.length + localObject1.length + localObject2.length + paramArrayOfLong.length];

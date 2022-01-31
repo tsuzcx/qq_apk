@@ -4,52 +4,51 @@ import android.content.Context;
 import android.content.IntentFilter;
 import com.tencent.component.network.utils.NetworkUtils;
 import com.tencent.component.network.utils.NetworkUtils.DNS;
-import ppb;
 
 public class NetworkStatus
 {
-  private static volatile NetworkStatus jdField_a_of_type_ComTencentComponentNetworkModuleCommonNetworkStatus;
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private NetworkUtils.DNS jdField_a_of_type_ComTencentComponentNetworkUtilsNetworkUtils$DNS;
+  private static volatile NetworkStatus sInstance;
+  private final Context mContext;
+  private NetworkUtils.DNS mDNS;
   
   private NetworkStatus(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-    a();
+    this.mContext = paramContext.getApplicationContext();
+    init();
   }
   
-  public static NetworkStatus a(Context paramContext)
+  public static NetworkStatus getInstance(Context paramContext)
   {
-    if (jdField_a_of_type_ComTencentComponentNetworkModuleCommonNetworkStatus != null) {
-      return jdField_a_of_type_ComTencentComponentNetworkModuleCommonNetworkStatus;
+    if (sInstance != null) {
+      return sInstance;
     }
     try
     {
-      if (jdField_a_of_type_ComTencentComponentNetworkModuleCommonNetworkStatus != null)
+      if (sInstance != null)
       {
-        paramContext = jdField_a_of_type_ComTencentComponentNetworkModuleCommonNetworkStatus;
+        paramContext = sInstance;
         return paramContext;
       }
     }
     finally {}
     paramContext = new NetworkStatus(paramContext);
-    jdField_a_of_type_ComTencentComponentNetworkModuleCommonNetworkStatus = paramContext;
+    sInstance = paramContext;
     return paramContext;
   }
   
-  private void a()
+  private void init()
   {
-    b();
-    ppb localppb = new ppb(this);
+    refreshDNS();
+    NetworkStatus.1 local1 = new NetworkStatus.1(this);
     IntentFilter localIntentFilter = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
-    this.jdField_a_of_type_AndroidContentContext.registerReceiver(localppb, localIntentFilter);
+    this.mContext.registerReceiver(local1, localIntentFilter);
   }
   
-  private void b()
+  private void refreshDNS()
   {
     try
     {
-      this.jdField_a_of_type_ComTencentComponentNetworkUtilsNetworkUtils$DNS = NetworkUtils.getDNS(this.jdField_a_of_type_AndroidContentContext);
+      this.mDNS = NetworkUtils.getDNS(this.mContext);
       return;
     }
     finally
@@ -59,9 +58,9 @@ public class NetworkStatus
     }
   }
   
-  public NetworkUtils.DNS a()
+  public NetworkUtils.DNS getDNS()
   {
-    return this.jdField_a_of_type_ComTencentComponentNetworkUtilsNetworkUtils$DNS;
+    return this.mDNS;
   }
 }
 

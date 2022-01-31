@@ -1,60 +1,26 @@
-import android.content.Intent;
-import android.os.Build.VERSION;
-import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ShowReactiveActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class vyl
-  implements View.OnTouchListener
+class vyl
+  implements wem
 {
-  public vyl(FriendChatPie paramFriendChatPie) {}
+  vyl(vyk paramvyk) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(int paramInt, boolean paramBoolean, String paramString, Object... paramVarArgs)
   {
-    switch (paramMotionEvent.getAction())
+    if (paramBoolean)
     {
-    }
-    for (;;)
-    {
-      return true;
-      if (Build.VERSION.SDK_INT >= 16)
-      {
-        this.a.e.setImageAlpha(127);
+      if ((paramVarArgs != null) && (paramVarArgs.length > 0) && ((paramVarArgs[0] instanceof ArrayList))) {
+        this.a.a((ArrayList)paramVarArgs[0]);
       }
-      else
-      {
-        this.a.e.setAlpha(127);
-        continue;
-        if (Build.VERSION.SDK_INT >= 16) {
-          this.a.e.setImageAlpha(255);
-        }
-        for (;;)
-        {
-          ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007602", "0X8007602", 0, 0, "", "", "", "");
-          paramView = new Intent(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, ShowReactiveActivity.class);
-          paramView.putExtra("friendUin", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-          this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity(paramView);
-          break;
-          this.a.e.setAlpha(255);
-        }
-        if (Build.VERSION.SDK_INT >= 16) {
-          this.a.e.setImageAlpha(255);
-        } else {
-          this.a.e.setAlpha(255);
-        }
-      }
+      return;
     }
+    QLog.d(vyk.a, 4, "get drafts failed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vyl
  * JD-Core Version:    0.7.0.1
  */

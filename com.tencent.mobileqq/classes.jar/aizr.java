@@ -1,27 +1,18 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
-import com.tencent.mobileqq.troop.activity.PublicCommentWindow;
-
-public class aizr
-  implements Runnable
+public final class aizr
+  implements ajac
 {
-  public aizr(PublicCommentWindow paramPublicCommentWindow) {}
+  public aizr(ajab paramajab) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    this.a.b = false;
-    if ((this.a.isShowing()) && (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel != null))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844610);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131430345));
+    if (this.a != null) {
+      this.a.a(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aizr
  * JD-Core Version:    0.7.0.1
  */

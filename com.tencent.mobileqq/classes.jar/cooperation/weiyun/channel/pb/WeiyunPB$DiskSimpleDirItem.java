@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class WeiyunPB$DiskSimpleDirItem
-  extends MessageMicro
+  extends MessageMicro<DiskSimpleDirItem>
 {
   public static final int DIR_KEY_FIELD_NUMBER = 1;
   public static final int DIR_NAME_FIELD_NUMBER = 2;
@@ -30,7 +30,7 @@ public final class WeiyunPB$DiskSimpleDirItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cooperation.weiyun.channel.pb.WeiyunPB.DiskSimpleDirItem
  * JD-Core Version:    0.7.0.1
  */

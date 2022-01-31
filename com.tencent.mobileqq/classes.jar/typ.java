@@ -1,52 +1,73 @@
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.subaccount.SubAccountProtocManager;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity.DeleteStoryVideoEventReceiver.1;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.observer.SubAccountObserver;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class typ
-  extends SubAccountObserver
+public class typ
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, spl>
 {
-  typ(tyo paramtyo, SimpleAccount paramSimpleAccount) {}
-  
-  protected void onGetKeyBack(String paramString1, String paramString2, String paramString3)
+  public typ(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    if (TextUtils.isEmpty(paramString3))
-    {
-      paramString1 = new HashMap();
-      paramString1.put("param_FailCode", "12005");
-      paramString1.put("fail_step", "getKeyEmpty");
-      paramString1.put("fail_location", "SubBind");
-      StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_Tyo.a.app.getCurrentAccountUin(), "actSBDLoginGetkey", false, 0L, 0L, paramString1, "");
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onGetKeyBack: key is empty? why? shit");
-      }
-      this.jdField_a_of_type_Tyo.a.runOnUiThread(new tyq(this));
-    }
-    do
-    {
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull spl paramspl)
+  {
+    if (!paramQQStoryShareGroupProfileActivity.jdField_b_of_type_JavaLangString.equals(paramspl.c)) {}
+    while ((!paramspl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) || (TextUtils.isEmpty(paramspl.d)) || (!((spt)sqg.a(19)).a(paramspl.d).contains(paramspl.jdField_a_of_type_JavaLangString))) {
       return;
-      paramString1 = new HashMap();
-      paramString1.put("param_FailCode", "12006");
-      paramString1.put("fail_step", "getKeyNotEmpty");
-      paramString1.put("fail_location", "SubBind");
-      StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_Tyo.a.app.getCurrentAccountUin(), "actSBDLoginGetkey", true, 0L, 0L, paramString1, "");
-      paramString1 = (SubAccountProtocManager)this.jdField_a_of_type_Tyo.a.app.getManager(27);
-      if (paramString1 != null) {
-        paramString1.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.getUin(), paramString3, this.jdField_a_of_type_Tyo.a.b);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "get delete event. groupId=" + paramQQStoryShareGroupProfileActivity.jdField_b_of_type_JavaLangString + ", feedId=" + paramspl.d);
+    }
+    ShareGroupItem localShareGroupItem;
+    if (paramQQStoryShareGroupProfileActivity.a != null)
+    {
+      localShareGroupItem = paramQQStoryShareGroupProfileActivity.a;
+      int i = localShareGroupItem.videoCount - 1;
+      localShareGroupItem.videoCount = i;
+      if (i == 0)
+      {
+        ThreadManager.getUIHandler().postDelayed(new QQStoryShareGroupProfileActivity.DeleteStoryVideoEventReceiver.1(this, paramQQStoryShareGroupProfileActivity), 400L);
+        return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onGetKeyBack:getA2 subAccount = " + paramString2 + ".....subA2 = " + paramString3);
+    }
+    if (paramQQStoryShareGroupProfileActivity.isResume())
+    {
+      if (paramspl.jdField_b_of_type_Boolean)
+      {
+        localShareGroupItem = ((uac)sqg.a(7)).a(paramQQStoryShareGroupProfileActivity.jdField_b_of_type_JavaLangString);
+        if ((localShareGroupItem != null) && (localShareGroupItem.headerUnionIdList.contains(paramspl.jdField_b_of_type_JavaLangString))) {
+          QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, true);
+        }
+      }
+      paramQQStoryShareGroupProfileActivity.b(false);
+      return;
+    }
+    if (paramspl.jdField_b_of_type_Boolean)
+    {
+      paramQQStoryShareGroupProfileActivity.jdField_b_of_type_Boolean = true;
+      paramQQStoryShareGroupProfileActivity.c = true;
+      return;
+    }
+    paramQQStoryShareGroupProfileActivity.jdField_b_of_type_Boolean = true;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return spl.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     typ
  * JD-Core Version:    0.7.0.1
  */

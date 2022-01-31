@@ -1,18 +1,21 @@
-import com.tencent.gdtad.views.canvas.framework.GdtCanvasViewPager;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class qrd
-  implements Runnable
+  extends omr
 {
-  public qrd(GdtCanvasViewPager paramGdtCanvasViewPager, int paramInt) {}
-  
-  public void run()
+  public qrd(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
   {
-    this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasViewPager.setCurrentItem(this.jdField_a_of_type_Int, true);
+    super(paramString);
+  }
+  
+  public void a(oml paramoml)
+  {
+    paramoml.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qrd
  * JD-Core Version:    0.7.0.1
  */

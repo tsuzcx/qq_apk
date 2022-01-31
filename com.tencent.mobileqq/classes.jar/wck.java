@@ -1,22 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Bundle;
+import com.tencent.biz.subscribe.event.SimpleEventBus.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
+import mqq.os.MqqHandler;
 
 public class wck
-  implements DialogInterface.OnDismissListener
+  extends QIPCModule
 {
-  public wck(PublicAccountChatPie paramPublicAccountChatPie) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  wck(wcj paramwcj, String paramString)
   {
-    this.a.ac = false;
-    ReportController.b(this.a.a, "CliOper", "", "", "0X8004EFA", "0X8004EFA", 0, 0, "", "", "", "");
+    super(paramString);
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    ThreadManager.getUIHandler().post(new SimpleEventBus.1.1(this, paramString, paramBundle));
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wck
  * JD-Core Version:    0.7.0.1
  */

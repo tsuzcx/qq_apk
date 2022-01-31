@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.ar.ARNativeBridge;
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 
-public class aagd
-  implements Runnable
+public final class aagd
+  implements DialogInterface.OnCancelListener
 {
-  public aagd(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
+  public aagd(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((ARWorldCupGlobalSceneRenderable.a(this.a) != null) && (this.a.b <= 4)) {
-      ARWorldCupGlobalSceneRenderable.a(this.a).native_startTranversalAnimation();
+    if (this.a != null) {
+      this.a.onClick(paramDialogInterface, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aagd
  * JD-Core Version:    0.7.0.1
  */

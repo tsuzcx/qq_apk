@@ -4,14 +4,12 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
 class MinFileUtils
 {
   static void a(File paramFile)
-    throws IOException
   {
     File localFile = paramFile.getParentFile();
     if ((!localFile.isDirectory()) && (!localFile.mkdirs())) {
@@ -35,13 +33,12 @@ class MinFileUtils
         }
         i += 1;
       }
-      Collections.sort(localLinkedList, new Comparator() {});
+      Collections.sort(localLinkedList, new MinFileUtils.1());
     }
     return localLinkedList;
   }
   
   static void c(File paramFile)
-    throws IOException
   {
     if (!paramFile.exists()) {
       throw new IllegalArgumentException(paramFile + " does not exist");
@@ -53,63 +50,48 @@ class MinFileUtils
     if (arrayOfFile == null) {
       throw new IOException("Failed to list contents of " + paramFile);
     }
-    Object localObject = null;
     int j = arrayOfFile.length;
+    paramFile = null;
     int i = 0;
-    label310:
+    label267:
     for (;;)
     {
-      File localFile;
-      if (i < j)
-      {
-        localFile = arrayOfFile[i];
-        paramFile = (File)localObject;
+      File localFile2;
+      if (i < j) {
+        localFile2 = arrayOfFile[i];
       }
       try
       {
-        if (localFile.isDirectory())
+        if (localFile2.isDirectory())
         {
-          paramFile = (File)localObject;
-          paramFile = (File)localObject;
-          if (!localFile.exists()) {
-            break label310;
+          localFile1 = paramFile;
+          if (!localFile2.exists()) {
+            break label267;
           }
-          paramFile = (File)localObject;
-          c(localFile);
-          paramFile = (File)localObject;
-          paramFile = (File)localObject;
-          if (localFile.delete()) {
-            break label310;
+          c(localFile2);
+          localFile1 = paramFile;
+          if (localFile2.delete()) {
+            break label267;
           }
-          paramFile = (File)localObject;
-          localObject = "Unable to delete directory " + localFile + ".";
-          paramFile = (File)localObject;
-          throw new IOException((String)localObject);
+          throw new IOException("Unable to delete directory " + localFile2 + ".");
         }
-        paramFile = (File)localObject;
-        boolean bool = localFile.exists();
-        paramFile = (File)localObject;
-        paramFile = (File)localObject;
-        if (localFile.delete()) {
-          break label310;
+        boolean bool = localFile2.exists();
+        File localFile1 = paramFile;
+        if (localFile2.delete()) {
+          break label267;
         }
-        if (!bool)
-        {
-          paramFile = (File)localObject;
-          throw new FileNotFoundException("File does not exist: " + localFile);
+        if (!bool) {
+          throw new FileNotFoundException("File does not exist: " + localFile2);
         }
-        paramFile = (File)localObject;
-        localObject = "Unable to delete file: " + localFile;
-        paramFile = (File)localObject;
-        throw new IOException((String)localObject);
+        throw new IOException("Unable to delete file: " + localFile2);
       }
-      catch (IOException paramFile)
+      catch (IOException localIOException)
       {
         i += 1;
-        localObject = paramFile;
+        paramFile = localIOException;
       }
-      if (localObject != null) {
-        throw ((Throwable)localObject);
+      if (paramFile != null) {
+        throw paramFile;
       }
       return;
     }

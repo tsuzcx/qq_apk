@@ -20,7 +20,7 @@ public final class JsonCompositionLoader
   
   protected LottieComposition doInBackground(JSONObject... paramVarArgs)
   {
-    return LottieComposition.Factory.fromJsonSync(this.res, paramVarArgs[0], null);
+    return LottieComposition.Factory.fromJsonSync(this.res, paramVarArgs[0]);
   }
   
   protected void onPostExecute(LottieComposition paramLottieComposition)
@@ -30,7 +30,7 @@ public final class JsonCompositionLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.model.JsonCompositionLoader
  * JD-Core Version:    0.7.0.1
  */

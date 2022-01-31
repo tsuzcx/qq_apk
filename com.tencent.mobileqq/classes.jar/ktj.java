@@ -1,117 +1,109 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.troop.utils.TroopBindPublicAccountMgr;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.core.VcControllerImpl;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.oidb.cmd0x487.oidb_0x487.GroupList;
-import tencent.im.oidb.cmd0x487.oidb_0x487.RspBody;
 
 public class ktj
-  extends ProtoUtils.TroopProtocolObserver
+  implements mhg
 {
-  public ktj(AccountDetailGroupListContainer paramAccountDetailGroupListContainer) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public ktj(VideoController paramVideoController)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, "onResult, errorCode=" + paramInt);
+      QLog.d(VideoController.jdField_a_of_type_JavaLangString, 2, "new QQPhoneStatusListener");
     }
-    int i;
-    if ((paramInt != -1) && (paramArrayOfByte != null))
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    kvq localkvq = this.a.a();
+    boolean bool2 = localkvq.R;
+    long l = AudioHelper.b();
+    boolean bool1;
+    if (QLog.isColorLevel())
     {
-      try
+      String str = VideoController.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder().append("onCallStateChanged, isCalling[").append(localkvq.b).append("->").append(paramBoolean).append("], mVcCtrl[");
+      if (this.a.jdField_a_of_type_ComTencentAvCoreVcControllerImpl != null)
       {
-        paramBundle = new oidb_0x487.RspBody();
-        paramBundle.mergeFrom(paramArrayOfByte);
-        k = paramBundle.uint32_result.get();
-        if (k != 0) {
-          break label463;
-        }
-        paramArrayOfByte = new ArrayList();
-        if (!paramBundle.msg_groups.has()) {
-          break label458;
-        }
-        localObject1 = paramBundle.msg_groups.get();
-        if (localObject1 == null) {
-          break label458;
-        }
-        int j = ((List)localObject1).size();
-        i = 0;
-        paramInt = j;
-        if (i < j)
-        {
-          localObject2 = ((oidb_0x487.GroupList)((List)localObject1).get(i)).uint64_groupcode.get() + "";
-          ((oidb_0x487.GroupList)((List)localObject1).get(i)).bytes_group_name.get().toStringUtf8();
-          paramArrayOfByte.add(localObject2);
-          if (paramArrayOfByte.size() < 3) {
-            break label469;
-          }
-          paramInt = j;
-        }
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        int k;
-        Object localObject1;
-        Object localObject2;
-        while (QLog.isColorLevel())
-        {
-          QLog.e("PubAccountMoreInfoActivity.bindTroop", 2, "getBindedTroops, exception=" + paramArrayOfByte.toString());
-          return;
-          paramInt = 0;
-          continue;
-          paramInt = 0;
-        }
-      }
-      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.a.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayOfByte);
-      if (paramBundle.uint32_privilege_flag.has())
-      {
-        localObject1 = this.a;
-        if (paramBundle.uint32_privilege_flag.get() != 1) {
-          break label478;
-        }
+        bool1 = true;
+        QLog.w(str, 1, bool1 + "], sessionInfo[" + localkvq + "], isPeerOnPhone[" + bool2 + "], seq[" + l + "]");
       }
     }
-    label458:
-    label463:
-    label469:
-    label478:
-    for (boolean bool = true;; bool = false)
+    else
     {
-      ((AccountDetailGroupListContainer)localObject1).c = bool;
-      localObject1 = (TroopBindPublicAccountMgr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(131);
-      localObject2 = new Bundle();
-      ((Bundle)localObject2).putBoolean("mIsAbleBindTroop", this.a.c);
-      ((Bundle)localObject2).putStringArrayList("mBindedTroopUins", paramArrayOfByte);
-      ((TroopBindPublicAccountMgr)localObject1).a(this.a.jdField_a_of_type_JavaLangString, (Bundle)localObject2);
-      this.a.d();
-      if (QLog.isColorLevel())
-      {
-        if (paramBundle.bytes_errmsg.has()) {}
-        for (paramArrayOfByte = paramBundle.bytes_errmsg.get().toStringUtf8();; paramArrayOfByte = "")
-        {
-          QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, "onResult, ret=" + k + "," + paramInt + "," + paramArrayOfByte + "," + this.a.c);
-          return;
-        }
+      if (this.a.jdField_a_of_type_ComTencentAvCoreVcControllerImpl != null) {
+        break label144;
       }
+    }
+    for (;;)
+    {
       return;
-      i += 1;
+      bool1 = false;
       break;
+      label144:
+      if (paramBoolean) {
+        switch (localkvq.jdField_g_of_type_Int)
+        {
+        }
+      }
+      while (!bool2)
+      {
+        this.a.a(true, paramBoolean);
+        return;
+        this.a.a(localkvq.d, 218);
+        this.a.b(218);
+        this.a.b(localkvq.d, 0);
+        continue;
+        this.a.jdField_a_of_type_ComTencentAvCoreVcControllerImpl.rejectVideo(localkvq.d, this.a.c(), 65535);
+        this.a.a(localkvq.d, 219);
+        this.a.b(219);
+        this.a.b(localkvq.d, 1);
+        continue;
+        this.a.a(l, 3, Long.valueOf(localkvq.d).longValue());
+        if (QLog.isColorLevel())
+        {
+          QLog.e(VideoController.jdField_a_of_type_JavaLangString, 2, "Reject Video Request when chating");
+          continue;
+          this.a.b(true);
+          continue;
+          this.a.a(l, this.a.n, this.a.d);
+          this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(67), Long.valueOf(this.a.d), Integer.valueOf(3) });
+          continue;
+          this.a.a(mjg.b(localkvq.i), localkvq.jdField_g_of_type_Long, 86);
+          this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(66), Long.valueOf(localkvq.jdField_g_of_type_Long) });
+          continue;
+          switch (localkvq.jdField_g_of_type_Int)
+          {
+          case 2: 
+          case 5: 
+          case 6: 
+          case 7: 
+          case 8: 
+          default: 
+            break;
+          case 3: 
+          case 4: 
+          case 9: 
+          case 10: 
+            this.a.b(false);
+          }
+        }
+      }
+    }
+  }
+  
+  protected void finalize()
+  {
+    super.finalize();
+    if (QLog.isColorLevel()) {
+      QLog.d(VideoController.jdField_a_of_type_JavaLangString, 2, "finalize QQPhoneStatusListener");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ktj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,78 +1,71 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.stroke.HorizontalStroke;
+import android.util.SparseArray;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 
 public class oqr
-  extends BaseAdapter
 {
-  int jdField_a_of_type_Int = -1;
-  Context jdField_a_of_type_AndroidContentContext;
-  ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static oqr jdField_a_of_type_Oqr;
+  private SparseArray<ChannelInfo> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private HashSet<Integer> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public oqr(HorizontalSelectColorLayout paramHorizontalSelectColorLayout, Context paramContext)
+  public static oqr a()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    notifyDataSetChanged();
-  }
-  
-  public void a(ArrayList paramArrayList)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    HorizontalStroke localHorizontalStroke = (HorizontalStroke)getItem(paramInt);
-    View localView;
-    if (paramView == null)
+    if (jdField_a_of_type_Oqr == null) {}
+    try
     {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970728, paramViewGroup, false);
-      paramView = new oqs(this);
-      paramView.a = ((ImageView)localView.findViewById(2131364403));
-      paramView.b = ((ImageView)localView.findViewById(2131371709));
-      localView.setTag(paramView);
-      paramViewGroup = paramView;
+      if (jdField_a_of_type_Oqr == null) {
+        jdField_a_of_type_Oqr = new oqr();
+      }
+      return jdField_a_of_type_Oqr;
     }
+    finally {}
+  }
+  
+  public void a(List<Integer> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {}
     for (;;)
     {
-      paramViewGroup.a.setImageDrawable(localHorizontalStroke.a);
-      if (paramInt != this.jdField_a_of_type_Int) {
-        break;
+      return;
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        int i = ((Integer)paramList.next()).intValue();
+        this.jdField_a_of_type_AndroidUtilSparseArray.remove(i);
+        this.jdField_a_of_type_JavaUtilHashSet.remove(Integer.valueOf(i));
       }
-      paramViewGroup.b.setVisibility(0);
-      return localView;
-      paramViewGroup = (oqs)paramView.getTag();
-      localView = paramView;
     }
-    paramViewGroup.b.setVisibility(8);
-    return localView;
+  }
+  
+  public void b(List<Integer> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {}
+    for (;;)
+    {
+      return;
+      ArrayList localArrayList = new ArrayList();
+      int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
+      int i = 0;
+      while (i < j)
+      {
+        int k = this.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
+        if ((!obz.a(k)) && (!paramList.contains(Integer.valueOf(k)))) {
+          localArrayList.add(Integer.valueOf(k));
+        }
+        i += 1;
+      }
+      paramList = localArrayList.iterator();
+      while (paramList.hasNext())
+      {
+        i = ((Integer)paramList.next()).intValue();
+        this.jdField_a_of_type_AndroidUtilSparseArray.remove(i);
+        this.jdField_a_of_type_JavaUtilHashSet.remove(Integer.valueOf(i));
+      }
+    }
   }
 }
 

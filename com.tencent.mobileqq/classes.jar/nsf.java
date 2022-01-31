@@ -1,15 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playvideo.QQStoryWarningActivity;
-
 public class nsf
-  implements View.OnClickListener
 {
-  public nsf(QQStoryWarningActivity paramQQStoryWarningActivity) {}
+  private static Boolean jdField_a_of_type_JavaLangBoolean;
+  private static Integer jdField_a_of_type_JavaLangInteger;
   
-  public void onClick(View paramView)
+  public static void a()
   {
-    this.a.superFinish();
+    jdField_a_of_type_JavaLangBoolean = null;
+    jdField_a_of_type_JavaLangInteger = null;
   }
 }
 

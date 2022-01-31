@@ -1,14 +1,16 @@
 package com.tencent.mobileqq.app.automator;
 
+import ajwr;
+
 public class ParallGroup
   extends StepGroup
-  implements IResultListener
+  implements ajwr
 {
-  private int e;
+  protected int d;
   
   protected int a()
   {
-    this.e = this.jdField_a_of_type_ArrayOfJavaLangString.length;
+    this.d = this.jdField_a_of_type_ArrayOfJavaLangString.length;
     for (;;)
     {
       AsyncStep localAsyncStep = a();
@@ -25,8 +27,8 @@ public class ParallGroup
   {
     try
     {
-      paramInt = this.e - 1;
-      this.e = paramInt;
+      paramInt = this.d - 1;
+      this.d = paramInt;
       if (paramInt == 0)
       {
         a(7);

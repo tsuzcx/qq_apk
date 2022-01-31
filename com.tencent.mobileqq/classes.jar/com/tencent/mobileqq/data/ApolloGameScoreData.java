@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.data;
 
+import atmo;
+import atnz;
+import atoc;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
-import com.tencent.mobileqq.persistence.unique;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.ABORT, columnNames="mGameId,mUin")
 public class ApolloGameScoreData
-  extends Entity
+  extends atmo
 {
-  @notColumn
+  @atnz
   public boolean mFromDb = true;
-  @unique
+  @atoc
   public int mGameId;
   public int mScore;
   public String mUin;

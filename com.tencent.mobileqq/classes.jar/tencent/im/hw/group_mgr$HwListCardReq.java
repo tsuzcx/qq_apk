@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class group_mgr$HwListCardReq
-  extends MessageMicro
+  extends MessageMicro<HwListCardReq>
 {
   public static final int GID_FIELD_NUMBER = 1;
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8 }, new String[] { "gid" }, new Object[] { Long.valueOf(0L) }, HwListCardReq.class);
@@ -14,7 +14,7 @@ public final class group_mgr$HwListCardReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.hw.group_mgr.HwListCardReq
  * JD-Core Version:    0.7.0.1
  */

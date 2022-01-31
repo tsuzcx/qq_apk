@@ -1,22 +1,31 @@
-import com.tencent.mobileqq.apollo.ApolloGameManager;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.gdtad.views.canvas.components.fixedbutton.GdtCanvasFixedButtonWithComplexStyle;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
 
 public class ypz
-  implements Runnable
+  implements yrk
 {
-  public ypz(ApolloGameManager paramApolloGameManager) {}
+  public ypz(GdtCanvasFixedButtonWithComplexStyle paramGdtCanvasFixedButtonWithComplexStyle) {}
   
-  public void run()
+  public void a(URLDrawable paramURLDrawable)
   {
-    if (ApolloGameManager.a(this.a) != null) {
-      ((ApolloManager)ApolloGameManager.a(this.a).getManager(152)).d();
+    yny.b(GdtCanvasFixedButtonWithComplexStyle.a(this.a), "onLoadSuccessful");
+    if ((GdtCanvasFixedButtonWithComplexStyle.a(this.a) != null) && (GdtCanvasFixedButtonWithComplexStyle.a(this.a) != null)) {
+      GdtCanvasFixedButtonWithComplexStyle.a(this.a).setImageDrawable(GdtCanvasFixedButtonWithComplexStyle.a(this.a).a());
+    }
+  }
+  
+  public void b(URLDrawable paramURLDrawable)
+  {
+    yny.b(GdtCanvasFixedButtonWithComplexStyle.a(this.a), "onLoadFailed");
+    if ((GdtCanvasFixedButtonWithComplexStyle.a(this.a) != null) && (GdtCanvasFixedButtonWithComplexStyle.a(this.a) != null)) {
+      GdtCanvasFixedButtonWithComplexStyle.a(this.a).setImageDrawable(GdtCanvasFixedButtonWithComplexStyle.a(this.a).a());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ypz
  * JD-Core Version:    0.7.0.1
  */

@@ -6,10 +6,10 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class SubMsgType0x3f$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "rpt_msg_pubunikey" }, new Object[] { null }, MsgBody.class);
-  public final PBRepeatMessageField rpt_msg_pubunikey = PBField.initRepeatMessage(SubMsgType0x3f.PubUniKey.class);
+  public final PBRepeatMessageField<SubMsgType0x3f.PubUniKey> rpt_msg_pubunikey = PBField.initRepeatMessage(SubMsgType0x3f.PubUniKey.class);
 }
 
 

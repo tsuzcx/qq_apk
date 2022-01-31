@@ -6,10 +6,14 @@ import android.media.MediaCodecInfo;
 import android.media.MediaCodecInfo.CodecCapabilities;
 import android.os.Build;
 import android.os.Build.VERSION;
-import com.tencent.av.config.ConfigInfo;
-import com.tencent.av.mediacodec.config.CodecConfigParser;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
+import kvz;
+import lao;
+import lef;
+import lek;
+import lel;
 
 @SuppressLint({"NewApi"})
 public class DeviceCheck
@@ -125,15 +129,15 @@ public class DeviceCheck
   @TargetApi(16)
   public static boolean c()
   {
-    List localList = AndroidCodec.a(AndroidCodec.b);
+    List localList = lef.a(lef.b);
     int i = 0;
     for (;;)
     {
       MediaCodecInfo.CodecCapabilities localCodecCapabilities;
       if (i < localList.size())
       {
-        localCodecCapabilities = AndroidCodec.a((MediaCodecInfo)localList.get(i), AndroidCodec.b);
-        if (localCodecCapabilities != null) {}
+        localCodecCapabilities = lef.a((MediaCodecInfo)localList.get(i), lef.b);
+        if ((localCodecCapabilities != null) && (localCodecCapabilities.colorFormats != null)) {}
       }
       else
       {
@@ -155,14 +159,14 @@ public class DeviceCheck
   @TargetApi(16)
   public static boolean d()
   {
-    List localList = AndroidCodec.b(AndroidCodec.b);
+    List localList = lef.b(lef.b);
     int i = 0;
     for (;;)
     {
       MediaCodecInfo.CodecCapabilities localCodecCapabilities;
       if (i < localList.size())
       {
-        localCodecCapabilities = AndroidCodec.a((MediaCodecInfo)localList.get(i), AndroidCodec.b);
+        localCodecCapabilities = lef.a((MediaCodecInfo)localList.get(i), lef.b);
         if (localCodecCapabilities != null) {}
       }
       else
@@ -186,14 +190,14 @@ public class DeviceCheck
   public static boolean e()
   {
     boolean bool2 = false;
-    List localList = AndroidCodec.a(AndroidCodec.a);
+    List localList = lef.a(lef.a);
     int i = 0;
     boolean bool1 = bool2;
     MediaCodecInfo.CodecCapabilities localCodecCapabilities;
     if (i < localList.size())
     {
-      localCodecCapabilities = AndroidCodec.a((MediaCodecInfo)localList.get(i), AndroidCodec.a);
-      if (localCodecCapabilities != null) {}
+      localCodecCapabilities = lef.a((MediaCodecInfo)localList.get(i), lef.a);
+      if ((localCodecCapabilities != null) && (localCodecCapabilities.colorFormats != null)) {}
     }
     for (;;)
     {
@@ -217,7 +221,7 @@ public class DeviceCheck
   public static boolean f()
   {
     boolean bool2 = false;
-    List localList = AndroidCodec.b(AndroidCodec.a);
+    List localList = lef.b(lef.a);
     int i = 0;
     for (;;)
     {
@@ -226,7 +230,7 @@ public class DeviceCheck
       int j;
       if (i < localList.size())
       {
-        localCodecCapabilities = AndroidCodec.a((MediaCodecInfo)localList.get(i), AndroidCodec.a);
+        localCodecCapabilities = lef.a((MediaCodecInfo)localList.get(i), lef.a);
         if (localCodecCapabilities != null) {
           j = 0;
         }
@@ -250,23 +254,19 @@ public class DeviceCheck
   public static boolean g()
   {
     if (h()) {}
-    Object localObject;
+    lao locallao;
+    lek locallek;
+    lel locallel;
     do
     {
       do
       {
-        do
-        {
-          return false;
-        } while (Build.VERSION.SDK_INT < 21);
-        localObject = ConfigInfo.instance();
-      } while (localObject == null);
-      localObject = ((ConfigInfo)localObject).getSharpConfigPayloadFromFile();
-      if (QLog.isColorLevel()) {
-        QLog.d("DeviceCheck", 2, "isSupportAsyncAPI sharpConfigPayload:\n" + (String)localObject);
-      }
-      localObject = new CodecConfigParser((String)localObject);
-    } while ((!((CodecConfigParser)localObject).d()) || (!((CodecConfigParser)localObject).a(2)) || (!((CodecConfigParser)localObject).c()) || (!((CodecConfigParser)localObject).a(1)));
+        return false;
+      } while (Build.VERSION.SDK_INT < 21);
+      locallao = kvz.a(BaseApplicationImpl.getContext());
+      locallek = new lek();
+      locallel = new lel();
+    } while (((!locallek.d(locallao)) || (!locallek.a(locallao, 2)) || (!locallek.c(locallao)) || (!locallek.a(locallao, 1))) && ((!locallel.d(locallao)) || (!locallel.a(locallao, 2)) || (!locallel.c(locallao)) || (!locallel.a(locallao, 1))));
     if (QLog.isColorLevel()) {
       QLog.d("DeviceCheck", 2, "SUPPORT Async API");
     }
@@ -282,7 +282,7 @@ public class DeviceCheck
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.mediacodec.DeviceCheck
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SCUpdatePB$UpdateInfo
-  extends MessageMicro
+  extends MessageMicro<UpdateInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field bid = PBField.initUInt32(0);
@@ -34,7 +34,7 @@ public final class SCUpdatePB$UpdateInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.scupdate.SCUpdatePB.UpdateInfo
  * JD-Core Version:    0.7.0.1
  */

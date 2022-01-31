@@ -1,22 +1,26 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qzone.share.QZoneShareActivity;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class angp
-  implements Runnable
+class angp
+  implements DialogInterface.OnDismissListener
 {
-  public angp(QZoneShareActivity paramQZoneShareActivity) {}
+  angp(ango paramango) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    int i = this.a.b();
-    int j = this.a.a();
-    ThreadManager.getUIHandler().post(new angq(this, i - j));
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmojiTaskController", 2, "func onDismiss begins, mCurTaskId:" + this.a.a);
+    }
+    this.a.a(this.a.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("SogouEmojiTaskController", 2, "func onDismiss ends");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     angp
  * JD-Core Version:    0.7.0.1
  */

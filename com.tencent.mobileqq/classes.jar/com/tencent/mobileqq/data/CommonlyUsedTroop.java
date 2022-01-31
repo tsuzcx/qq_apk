@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class CommonlyUsedTroop
-  extends Entity
+  extends atmo
 {
   public long addedTimestamp;
-  @unique
+  @atoc
   public String troopUin;
 }
 

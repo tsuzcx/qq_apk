@@ -1,6 +1,9 @@
 package com.tencent.mobileqq.data;
 
+import android.text.TextUtils;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import tencent.im.msg.hummer.resv3.CustomFaceExtPb.AnimationImageShow;
@@ -14,8 +17,15 @@ public class PicMessageExtraData
   public String doutuSupplier = "";
   public String emojiId;
   public String emojiPkgId;
+  public int from;
+  public String iconUrl;
   public int imageBizType;
+  public String mTemplateId;
+  public String packageName;
+  public String source;
   public EmojiStickerManager.StickerInfo stickerInfo;
+  public String textSummary = "";
+  public String webUrl;
   
   public PicMessageExtraData() {}
   
@@ -27,6 +37,15 @@ public class PicMessageExtraData
     this.emojiId = String.valueOf(paramResvAttr.uint32_emoji_id.get());
     this.doutuSupplier = String.valueOf(paramResvAttr.string_doutu_suppliers.get());
     this.animationImageShow = ((CustomFaceExtPb.AnimationImageShow)paramResvAttr.msg_image_show.get());
+    if (paramResvAttr.bytes_text_summary.has()) {
+      this.textSummary = paramResvAttr.bytes_text_summary.get().toStringUtf8();
+    }
+    this.from = paramResvAttr.uint32_emoji_from.get();
+    this.source = paramResvAttr.string_emoji_source.get();
+    this.webUrl = paramResvAttr.string_emoji_webUrl.get();
+    this.iconUrl = paramResvAttr.string_emoji_iconUrl.get();
+    this.packageName = paramResvAttr.string_emoji_marketFaceName.get();
+    this.mTemplateId = paramResvAttr.string_camera_capture_templateinfo.get();
   }
   
   public PicMessageExtraData(NotOnlineImageExtPb.ResvAttr paramResvAttr)
@@ -36,6 +55,15 @@ public class PicMessageExtraData
     this.emojiPkgId = String.valueOf(paramResvAttr.uint32_emoji_packageid.get());
     this.emojiId = String.valueOf(paramResvAttr.uint32_emoji_id.get());
     this.doutuSupplier = paramResvAttr.string_doutu_suppliers.get();
+    if (paramResvAttr.bytes_text_summary.has()) {
+      this.textSummary = paramResvAttr.bytes_text_summary.get().toStringUtf8();
+    }
+    this.from = paramResvAttr.uint32_emoji_from.get();
+    this.source = paramResvAttr.string_emoji_source.get();
+    this.webUrl = paramResvAttr.string_emoji_webUrl.get();
+    this.iconUrl = paramResvAttr.string_emoji_iconUrl.get();
+    this.packageName = paramResvAttr.string_emoji_marketFaceName.get();
+    this.mTemplateId = paramResvAttr.string_camera_capture_templateinfo.get();
   }
   
   public CustomFaceExtPb.ResvAttr getCustomFaceResvAttr()
@@ -46,12 +74,12 @@ public class PicMessageExtraData
     localResvAttr.string_doutu_suppliers.set(this.doutuSupplier);
     try
     {
-      localResvAttr.uint32_emoji_packageid.set(Integer.parseInt(this.emojiPkgId));
-      localResvAttr.uint32_emoji_id.set(Integer.parseInt(this.emojiId));
-      if ((this.animationImageShow != null) && (this.animationImageShow.has())) {
-        localResvAttr.msg_image_show.set(this.animationImageShow);
+      if (this.emojiPkgId != null) {
+        localResvAttr.uint32_emoji_packageid.set(Integer.parseInt(this.emojiPkgId));
       }
-      return localResvAttr;
+      if (this.emojiId != null) {
+        localResvAttr.uint32_emoji_id.set(Integer.parseInt(this.emojiId));
+      }
     }
     catch (NumberFormatException localNumberFormatException)
     {
@@ -60,6 +88,29 @@ public class PicMessageExtraData
         localNumberFormatException.printStackTrace();
       }
     }
+    if ((this.animationImageShow != null) && (this.animationImageShow.has())) {
+      localResvAttr.msg_image_show.set(this.animationImageShow);
+    }
+    if (!TextUtils.isEmpty(this.textSummary)) {
+      localResvAttr.bytes_text_summary.set(ByteStringMicro.copyFromUtf8(this.textSummary));
+    }
+    localResvAttr.uint32_emoji_from.set(this.from);
+    if (!TextUtils.isEmpty(this.source)) {
+      localResvAttr.string_emoji_source.set(this.source);
+    }
+    if (!TextUtils.isEmpty(this.webUrl)) {
+      localResvAttr.string_emoji_webUrl.set(this.webUrl);
+    }
+    if (!TextUtils.isEmpty(this.iconUrl)) {
+      localResvAttr.string_emoji_iconUrl.set(this.iconUrl);
+    }
+    if (!TextUtils.isEmpty(this.packageName)) {
+      localResvAttr.string_emoji_marketFaceName.set(this.packageName);
+    }
+    if (!TextUtils.isEmpty(this.mTemplateId)) {
+      localResvAttr.string_camera_capture_templateinfo.set(this.mTemplateId);
+    }
+    return localResvAttr;
   }
   
   public NotOnlineImageExtPb.ResvAttr getOfflineImageResvAttr()
@@ -76,11 +127,32 @@ public class PicMessageExtraData
       if (this.emojiId != null) {
         localResvAttr.uint32_emoji_id.set(Integer.parseInt(this.emojiId));
       }
-      return localResvAttr;
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      localNumberFormatException.printStackTrace();
+      for (;;)
+      {
+        localNumberFormatException.printStackTrace();
+      }
+    }
+    if (!TextUtils.isEmpty(this.textSummary)) {
+      localResvAttr.bytes_text_summary.set(ByteStringMicro.copyFromUtf8(this.textSummary));
+    }
+    localResvAttr.uint32_emoji_from.set(this.from);
+    if (!TextUtils.isEmpty(this.source)) {
+      localResvAttr.string_emoji_source.set(this.source);
+    }
+    if (!TextUtils.isEmpty(this.webUrl)) {
+      localResvAttr.string_emoji_webUrl.set(this.webUrl);
+    }
+    if (!TextUtils.isEmpty(this.iconUrl)) {
+      localResvAttr.string_emoji_iconUrl.set(this.iconUrl);
+    }
+    if (!TextUtils.isEmpty(this.packageName)) {
+      localResvAttr.string_emoji_marketFaceName.set(this.packageName);
+    }
+    if (!TextUtils.isEmpty(this.mTemplateId)) {
+      localResvAttr.string_camera_capture_templateinfo.set(this.mTemplateId);
     }
     return localResvAttr;
   }
@@ -98,6 +170,21 @@ public class PicMessageExtraData
   public boolean isHotPics()
   {
     return this.imageBizType == 2;
+  }
+  
+  public boolean isSelfieFace()
+  {
+    return this.imageBizType == 8;
+  }
+  
+  public boolean isStickerPics()
+  {
+    return this.imageBizType == 7;
+  }
+  
+  public boolean isZhitu()
+  {
+    return this.imageBizType == 4;
   }
 }
 

@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class qqavopensdkSsoTunnel$STAudioVideoRsp
-  extends MessageMicro
+  extends MessageMicro<STAudioVideoRsp>
 {
   public static final int RSPBODY_FIELD_NUMBER = 1;
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "rspbody" }, new Object[] { null }, STAudioVideoRsp.class);

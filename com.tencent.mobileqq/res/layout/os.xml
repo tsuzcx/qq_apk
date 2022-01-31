@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/mi" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/ct7" android:layout_width="fill_parent" android:layout_height="35.0dip" android:layout_weight="1.0" />
+    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/ctp" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="7.0dip">
+            <View android:id="@id/ctq" android:background="@drawable/etl" android:layout_width="7.0dip" android:layout_height="7.0dip" />
+            <View android:id="@id/ctr" android:background="@drawable/etl" android:layout_width="7.0dip" android:layout_height="7.0dip" android:layout_marginLeft="5.0dip" />
+            <View android:id="@id/cts" android:background="@drawable/etl" android:layout_width="7.0dip" android:layout_height="7.0dip" android:layout_marginLeft="5.0dip" />
+        </LinearLayout>
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="7.0dip" android:layout_marginTop="5.0dip">
+            <View android:id="@id/ctt" android:background="@drawable/etl" android:layout_width="7.0dip" android:layout_height="7.0dip" />
+            <View android:id="@id/ctu" android:background="@drawable/etl" android:layout_width="7.0dip" android:layout_height="7.0dip" android:layout_marginLeft="5.0dip" />
+            <View android:id="@id/ctv" android:background="@drawable/etl" android:layout_width="7.0dip" android:layout_height="7.0dip" android:layout_marginLeft="5.0dip" />
+        </LinearLayout>
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="7.0dip" android:layout_marginTop="5.0dip">
+            <View android:id="@id/ctw" android:background="@drawable/etl" android:layout_width="7.0dip" android:layout_height="7.0dip" />
+            <View android:id="@id/ctx" android:background="@drawable/etl" android:layout_width="7.0dip" android:layout_height="7.0dip" android:layout_marginLeft="5.0dip" />
+            <View android:id="@id/cty" android:background="@drawable/etl" android:layout_width="7.0dip" android:layout_height="7.0dip" android:layout_marginLeft="5.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+    <View android:id="@id/ct8" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_weight="0.0" />
+    <TextView android:textSize="16.0sp" android:textColor="@color/f5" android:gravity="center_horizontal" android:id="@id/ctd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="40.0dip" android:layout_marginTop="0.0dip" android:layout_marginRight="40.0dip" android:text="@string/bhy" />
+    <View android:id="@id/ct9" android:layout_width="fill_parent" android:layout_height="15.0dip" android:layout_weight="0.0" />
+    <com.tencent.mobileqq.gesturelock.LockPatternView android:layout_gravity="center_horizontal" android:id="@id/ctc" android:layout_width="288.0dip" android:layout_height="288.0dip" android:layout_marginTop="0.0dip" />
+    <View android:id="@id/ct_" android:layout_width="fill_parent" android:layout_height="150.0dip" android:layout_weight="1.0" />
+</LinearLayout>

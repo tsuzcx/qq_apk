@@ -1,62 +1,76 @@
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningTaskInfo;
-import android.content.ComponentName;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
 
 public class tnv
-  implements Runnable
+  implements tpx
 {
-  public tnv(QQLSActivity paramQQLSActivity) {}
+  public tnv(StoryPlayerGroupHolder paramStoryPlayerGroupHolder) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    Object localObject1 = (ActivityManager)this.a.getSystemService("activity");
-    try
+    urk.a(this.a.jdField_a_of_type_JavaLangString, "onPageSelected : position = %d", Integer.valueOf(paramInt));
+    int i = this.a.b;
+    this.a.b = paramInt;
+    Object localObject = this.a.a();
+    if (localObject != null)
     {
-      Object localObject2 = ((ActivityManager)localObject1).getRunningTasks(1);
-      localObject1 = AppSetting.b;
-      if ((localObject2 != null) && (((List)localObject2).size() > 0))
-      {
-        localObject2 = ((ActivityManager.RunningTaskInfo)((List)localObject2).get(0)).topActivity.getClassName();
-        boolean bool = QQLSActivity.e(this.a);
-        if (QLog.isColorLevel()) {
-          QLog.d("QQLSActivity", 2, "qqlsActivity onpause by :" + (String)localObject2);
-        }
-        if ((((String)localObject2).equals("com.tencent.mobileqq.activity.GesturePWDUnlockActivity")) && (bool))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QQLSActivity", 2, "qqlsActivity onpause by locking activity need to front");
-          }
-          if (QQLSActivity.a(this.a).hasMessages(10)) {
-            QQLSActivity.a(this.a).removeMessages(10);
-          }
-          localObject2 = QQLSActivity.a(this.a).obtainMessage(10);
-          if (((String)localObject1).equalsIgnoreCase("Xiaomi-2013022"))
-          {
-            QQLSActivity.a(this.a).sendMessageDelayed((Message)localObject2, 600L);
-            return;
-          }
-          QQLSActivity.a(this.a).sendMessage((Message)localObject2);
-          return;
-        }
+      localObject = (toi)((tog)localObject).a(toi.class);
+      if ((localObject != null) && (((toi)localObject).b.getVisibility() != 0)) {
+        this.a.a(true, true);
       }
     }
-    catch (Exception localException)
+    localObject = (tmv)this.a.b(tmv.class);
+    if (localObject != null) {
+      ((tmv)localObject).a().a(paramInt);
+    }
+    c(paramInt);
+    if (StoryPlayerGroupHolder.a(this.a) != null) {
+      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, i, paramInt);
+    }
+  }
+  
+  public void a(int paramInt1, float paramFloat, int paramInt2)
+  {
+    if (StoryPlayerGroupHolder.a(this.a) != null) {
+      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, paramInt1, paramFloat, paramInt2);
+    }
+    tmv localtmv = (tmv)this.a.b(tmv.class);
+    if (localtmv != null) {
+      localtmv.a().a(paramInt1, paramFloat, paramInt2);
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if ((paramInt == 1) && (this.a.d()) && (this.a.c()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQLSActivity", 2, "qqlsActivity MSG_SETTO_FRONT by locking activity not to front e=" + localException);
-      }
+      ((tmv)this.a.b(tmv.class)).d();
+      urk.a(this.a.jdField_a_of_type_JavaLangString + "Q.qqstory.weishi", "onPageScrolled, showLoadingMoreWidget position=%d", Integer.valueOf(this.a.b));
+    }
+    tmv localtmv = (tmv)this.a.b(tmv.class);
+    if (localtmv != null) {
+      localtmv.a().b(paramInt);
+    }
+    if (StoryPlayerGroupHolder.a(this.a) != null) {
+      StoryPlayerGroupHolder.a(this.a).a(this.a.jdField_a_of_type_Int, paramInt);
+    }
+  }
+  
+  public void c(int paramInt)
+  {
+    urk.a(this.a.jdField_a_of_type_JavaLangString, "onIdlePageSelected : position = %d", Integer.valueOf(paramInt));
+    tog localtog = this.a.a();
+    if ((localtog != null) && (TextUtils.equals(StoryPlayerGroupHolder.a(this.a).a().jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Tjs.jdField_a_of_type_JavaLangString)) && (!localtog.c()))
+    {
+      urk.a(this.a.jdField_a_of_type_JavaLangString, "onIdlePageSelected, setSelected => %s", localtog);
+      this.a.a(localtog);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tnv
  * JD-Core Version:    0.7.0.1
  */

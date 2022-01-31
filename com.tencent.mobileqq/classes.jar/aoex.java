@@ -1,20 +1,14 @@
-import android.os.Message;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import android.os.Bundle;
 
-public class aoex
-  implements Runnable
+public abstract interface aoex
 {
-  public aoex(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer, int paramInt) {}
+  public abstract void a(String paramString, Bundle paramBundle);
   
-  public void run()
-  {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer.a.a(Message.obtain(null, 8, 1, this.jdField_a_of_type_Int));
-  }
+  public abstract void a(String paramString, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoex
  * JD-Core Version:    0.7.0.1
  */

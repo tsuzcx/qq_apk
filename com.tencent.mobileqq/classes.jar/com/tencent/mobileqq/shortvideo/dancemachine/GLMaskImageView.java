@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.shortvideo.dancemachine;
 
-import aiff;
 import android.graphics.RectF;
 import android.opengl.GLES20;
 import java.nio.FloatBuffer;
@@ -9,55 +8,62 @@ import java.util.HashMap;
 public class GLMaskImageView
   extends GLImageView
 {
-  RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private String jdField_a_of_type_JavaLangString = "";
-  protected GLImage b = new GLImage();
+  protected GLImage mMask = new GLImage();
+  private String mMaskPath = "";
+  RectF region = new RectF();
   
   public GLMaskImageView(GLViewContext paramGLViewContext, String paramString)
   {
     super(paramGLViewContext, paramString);
-    f(4);
+    initView(4);
   }
   
-  protected void an_()
+  public void release()
   {
-    super.an_();
-    int i = ((Integer)this.jdField_a_of_type_Aiff.a.get("a_texCoordMask")).intValue();
-    GLES20.glVertexAttribPointer(i, 2, 5126, false, 0, this.jdField_a_of_type_Aiff.d() * this.i * 4);
-    GLES20.glEnableVertexAttribArray(i);
-    i = ((Integer)this.jdField_a_of_type_Aiff.b.get("u_texture_mask")).intValue();
-    GLES20.glActiveTexture(33985);
-    GLES20.glBindTexture(3553, this.b.a());
-    GLES20.glUniform1i(i, 1);
+    super.release();
+    this.mMask.release();
+    this.mMaskPath = "";
   }
   
-  protected void ao_()
+  public void setMaskImage(String paramString)
   {
-    super.ao_();
-    RectF localRectF1 = b();
-    RectF localRectF2 = new RectF(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext.a());
-    this.jdField_a_of_type_AndroidGraphicsRectF.setIntersect(localRectF1, localRectF2);
-    float f1 = (this.jdField_a_of_type_AndroidGraphicsRectF.left - localRectF2.left) / localRectF2.width();
-    float f2 = (localRectF2.right - this.jdField_a_of_type_AndroidGraphicsRectF.right) / localRectF2.width();
-    float f3 = (this.jdField_a_of_type_AndroidGraphicsRectF.top - localRectF2.top) / localRectF2.height();
-    float f4 = (localRectF2.bottom - this.jdField_a_of_type_AndroidGraphicsRectF.bottom) / localRectF2.height();
-    this.jdField_a_of_type_JavaNioFloatBuffer.put(f1);
-    this.jdField_a_of_type_JavaNioFloatBuffer.put(f3);
-    this.jdField_a_of_type_JavaNioFloatBuffer.put(f1);
-    this.jdField_a_of_type_JavaNioFloatBuffer.put(1.0F - f4);
-    this.jdField_a_of_type_JavaNioFloatBuffer.put(1.0F - f2);
-    this.jdField_a_of_type_JavaNioFloatBuffer.put(1.0F - f4);
-    this.jdField_a_of_type_JavaNioFloatBuffer.put(1.0F - f2);
-    this.jdField_a_of_type_JavaNioFloatBuffer.put(f3);
-  }
-  
-  public void b(String paramString)
-  {
-    if (!this.jdField_a_of_type_JavaLangString.equals(paramString))
+    if (!this.mMaskPath.equals(paramString))
     {
-      this.b.a(paramString);
-      this.jdField_a_of_type_JavaLangString = paramString;
+      this.mMask.loadTextureSync(paramString);
+      this.mMaskPath = paramString;
     }
+  }
+  
+  protected void transferVertexData()
+  {
+    super.transferVertexData();
+    RectF localRectF1 = getCurrentDrawRegionSize();
+    RectF localRectF2 = new RectF(this.context.getViewPort());
+    this.region.setIntersect(localRectF1, localRectF2);
+    float f1 = (this.region.left - localRectF2.left) / localRectF2.width();
+    float f2 = (localRectF2.right - this.region.right) / localRectF2.width();
+    float f3 = (this.region.top - localRectF2.top) / localRectF2.height();
+    float f4 = (localRectF2.bottom - this.region.bottom) / localRectF2.height();
+    this.mVertexBuffer.put(f1);
+    this.mVertexBuffer.put(f3);
+    this.mVertexBuffer.put(f1);
+    this.mVertexBuffer.put(1.0F - f4);
+    this.mVertexBuffer.put(1.0F - f2);
+    this.mVertexBuffer.put(1.0F - f4);
+    this.mVertexBuffer.put(1.0F - f2);
+    this.mVertexBuffer.put(f3);
+  }
+  
+  protected void updateAttribute()
+  {
+    super.updateAttribute();
+    int i = ((Integer)this.mProgramObject.attribute.get("a_texCoordMask")).intValue();
+    GLES20.glVertexAttribPointer(i, 2, 5126, false, 0, this.mProgramObject.getMaskOffset() * this.mVertexPointCount * 4);
+    GLES20.glEnableVertexAttribArray(i);
+    i = ((Integer)this.mProgramObject.uniform.get("u_texture_mask")).intValue();
+    GLES20.glActiveTexture(33985);
+    GLES20.glBindTexture(3553, this.mMask.getTexture());
+    GLES20.glUniform1i(i, 1);
   }
 }
 

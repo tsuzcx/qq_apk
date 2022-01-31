@@ -1,22 +1,22 @@
 package cooperation.qqfav;
 
+import bfin;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
 import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
-import cooperation.qqfav.ipc.FavoritesRemoteCommand;
 
 public class QfavPluginProxyService
   extends PluginProxyService
 {
-  private static FavoritesRemoteCommand a;
+  private static bfin a;
   
-  public static FavoritesRemoteCommand a()
+  public static bfin a()
   {
     if (a == null) {}
     try
     {
       if (a == null) {
-        a = new FavoritesRemoteCommand(BaseApplicationImpl.getApplication().getRuntime());
+        a = new bfin(BaseApplicationImpl.getApplication().getRuntime());
       }
       return a;
     }
@@ -25,10 +25,10 @@ public class QfavPluginProxyService
   
   public static boolean a()
   {
-    FavoritesRemoteCommand localFavoritesRemoteCommand = a();
-    if (!PluginCommunicationHandler.getInstance().containsCmd(localFavoritesRemoteCommand.getCmd()))
+    bfin localbfin = a();
+    if (!PluginCommunicationHandler.getInstance().containsCmd(localbfin.getCmd()))
     {
-      PluginCommunicationHandler.getInstance().register(localFavoritesRemoteCommand);
+      PluginCommunicationHandler.getInstance().register(localbfin);
       return true;
     }
     return false;

@@ -1,22 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager.BaikeClickListener;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agiw
-  implements View.OnClickListener
+class agiw
+  implements DialogInterface.OnClickListener
 {
-  public agiw(ARTipsManager paramARTipsManager, agjf paramagjf) {}
+  agiw(agiu paramagiu) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).removeMessages(101);
-    ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).obtainMessage(101).sendToTarget();
-    if (this.jdField_a_of_type_Agjf.a != null) {
-      this.jdField_a_of_type_Agjf.a.a();
-    }
+    agit.a(this.a.a).dismiss();
   }
 }
 

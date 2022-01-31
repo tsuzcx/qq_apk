@@ -1,48 +1,30 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.webview.swift.utils.SwiftBrowserIdleTaskHelper;
-import com.tencent.mobileqq.webview.swift.utils.SwiftBrowserIdleTaskHelper.IdleTask;
-import java.util.ArrayList;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
 
 public class akyf
-  implements MessageQueue.IdleHandler
+  implements View.OnTouchListener
 {
-  public akyf(SwiftBrowserIdleTaskHelper paramSwiftBrowserIdleTaskHelper) {}
+  public akyf(QRScanEntryView paramQRScanEntryView) {}
   
-  public boolean queueIdle()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Object localObject;
-    int i;
-    if (!SwiftBrowserIdleTaskHelper.a().isEmpty())
+    switch (paramMotionEvent.getAction())
     {
-      localObject = (SwiftBrowserIdleTaskHelper.IdleTask)SwiftBrowserIdleTaskHelper.a().remove(0);
-      i = ((SwiftBrowserIdleTaskHelper.IdleTask)localObject).a();
-      if (2 == i) {
-        SwiftBrowserIdleTaskHelper.a().add(localObject);
-      }
     }
-    else
+    for (;;)
     {
-      label38:
-      localObject = this.a;
-      if (SwiftBrowserIdleTaskHelper.a().isEmpty()) {
-        break label75;
-      }
-    }
-    label75:
-    for (boolean bool = true;; bool = false)
-    {
-      ((SwiftBrowserIdleTaskHelper)localObject).a = bool;
-      return this.a.a;
-      if (1 != i) {
-        break;
-      }
-      break label38;
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akyf
  * JD-Core Version:    0.7.0.1
  */

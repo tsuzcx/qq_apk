@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
+import ayhl;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
 import com.tencent.qphone.base.util.QLog;
@@ -15,10 +16,20 @@ import com.tencent.smtt.sdk.WebView;
 public abstract class TroopCreateBaseActivity
   extends AbsBaseWebViewActivity
 {
-  CustomWebView a;
-  protected TroopCreateBaseActivity.TopBarBtnClickListener a;
+  protected ayhl a;
+  public CustomWebView a;
   
-  protected void a()
+  public void a(int paramInt)
+  {
+    ((InputMethodManager)getSystemService("input_method")).hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.getWindowToken(), 2);
+  }
+  
+  public void a(WebView paramWebView, String paramString)
+  {
+    setTitle(paramString);
+  }
+  
+  public void b()
   {
     if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.canGoBack())
     {
@@ -28,38 +39,15 @@ public abstract class TroopCreateBaseActivity
     finish();
   }
   
-  protected void a(int paramInt)
-  {
-    ((InputMethodManager)getSystemService("input_method")).hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.getWindowToken(), 2);
-  }
+  public void c() {}
   
-  protected void a(WebView paramWebView, String paramString)
-  {
-    setTitle(paramString);
-  }
+  public void d() {}
   
-  protected void b() {}
-  
-  protected void b(String paramString1, String paramString2)
-  {
-    if ((TextUtils.isEmpty(paramString1)) || (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView == null)) {
-      return;
-    }
-    String str = paramString2;
-    if (!TextUtils.isEmpty(paramString2)) {
-      str = paramString2.replace("\"", "\\\"");
-    }
-    paramString1 = "javascript:" + paramString1 + "(\"" + str + "\")";
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramString1);
-  }
-  
-  protected void d() {}
-  
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = b((ViewGroup)null);
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.setId(2131362578);
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.setId(2131313562);
     setContentView(this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView);
     paramBundle = getIntent().getStringExtra("url");
     if (TextUtils.isEmpty(paramBundle)) {
@@ -75,7 +63,7 @@ public abstract class TroopCreateBaseActivity
     {
       this.b = Long.parseLong((String)localObject, 10);
       this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramBundle);
-      this.leftView.setOnClickListener(new TroopCreateBaseActivity.TopBarBtnClickListener(this, 0, null));
+      this.leftView.setOnClickListener(new ayhl(this, 0, null));
       return true;
     }
     catch (NumberFormatException localNumberFormatException)
@@ -94,11 +82,11 @@ public abstract class TroopCreateBaseActivity
     return false;
   }
   
-  protected boolean onBackEvent()
+  public boolean onBackEvent()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity$TopBarBtnClickListener != null)
+    if (this.jdField_a_of_type_Ayhl != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity$TopBarBtnClickListener.onClick(this.leftView);
+      this.jdField_a_of_type_Ayhl.onClick(this.leftView);
       return true;
     }
     return false;
@@ -106,7 +94,7 @@ public abstract class TroopCreateBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopCreateBaseActivity
  * JD-Core Version:    0.7.0.1
  */

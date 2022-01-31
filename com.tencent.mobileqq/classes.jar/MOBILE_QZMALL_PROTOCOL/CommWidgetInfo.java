@@ -17,6 +17,7 @@ public final class CommWidgetInfo
   public DescInfo stDescInfo;
   public NumberInfo stNumberInfo;
   public WidgetMargin stWidgetMargin;
+  public String strDownloadAppPackageName = "";
   public String strJumpUrl = "";
   public String strTraceInfo = "";
   public String strWidgetUrl = "";
@@ -33,7 +34,7 @@ public final class CommWidgetInfo
   
   public CommWidgetInfo() {}
   
-  public CommWidgetInfo(boolean paramBoolean, int paramInt, String paramString1, ArrowInfo paramArrowInfo, String paramString2, long paramLong1, WidgetMargin paramWidgetMargin, DescInfo paramDescInfo, NumberInfo paramNumberInfo, long paramLong2, long paramLong3, String paramString3)
+  public CommWidgetInfo(boolean paramBoolean, int paramInt, String paramString1, ArrowInfo paramArrowInfo, String paramString2, long paramLong1, WidgetMargin paramWidgetMargin, DescInfo paramDescInfo, NumberInfo paramNumberInfo, long paramLong2, long paramLong3, String paramString3, String paramString4)
   {
     this.bShow = paramBoolean;
     this.type = paramInt;
@@ -47,6 +48,7 @@ public final class CommWidgetInfo
     this.uiFrameIntervalMs = paramLong2;
     this.uiLoopIntervalMs = paramLong3;
     this.strTraceInfo = paramString3;
+    this.strDownloadAppPackageName = paramString4;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -63,6 +65,7 @@ public final class CommWidgetInfo
     this.uiFrameIntervalMs = paramJceInputStream.read(this.uiFrameIntervalMs, 9, false);
     this.uiLoopIntervalMs = paramJceInputStream.read(this.uiLoopIntervalMs, 10, false);
     this.strTraceInfo = paramJceInputStream.readString(11, false);
+    this.strDownloadAppPackageName = paramJceInputStream.readString(12, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -92,6 +95,9 @@ public final class CommWidgetInfo
     paramJceOutputStream.write(this.uiLoopIntervalMs, 10);
     if (this.strTraceInfo != null) {
       paramJceOutputStream.write(this.strTraceInfo, 11);
+    }
+    if (this.strDownloadAppPackageName != null) {
+      paramJceOutputStream.write(this.strDownloadAppPackageName, 12);
     }
   }
 }

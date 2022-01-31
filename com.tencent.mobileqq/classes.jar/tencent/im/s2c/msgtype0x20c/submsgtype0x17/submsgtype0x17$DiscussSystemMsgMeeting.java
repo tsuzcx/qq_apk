@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class submsgtype0x17$DiscussSystemMsgMeeting
-  extends MessageMicro
+  extends MessageMicro<DiscussSystemMsgMeeting>
 {
   public static final int UINT32_OPERATION_FIELD_NUMBER = 2;
   public static final int UINT32_TIME_FIELD_NUMBER = 4;
@@ -19,7 +19,7 @@ public final class submsgtype0x17$DiscussSystemMsgMeeting
   public final PBUInt32Field uint32_operation = PBField.initUInt32(0);
   public final PBUInt32Field uint32_time = PBField.initUInt32(0);
   public final PBUInt64Field uint64_discuss_uin = PBField.initUInt64(0L);
-  public final PBRepeatField uint64_meeting_seq = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> uint64_meeting_seq = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBUInt64Field uint64_uin = PBField.initUInt64(0L);
 }
 

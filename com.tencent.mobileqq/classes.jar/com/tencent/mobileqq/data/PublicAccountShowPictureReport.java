@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
+import awqx;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
 import java.util.HashSet;
 import java.util.Iterator;
 import org.json.JSONException;
@@ -14,7 +14,7 @@ public class PublicAccountShowPictureReport
   public String imgCount;
   public boolean isReport;
   public int leave_mode = 2;
-  private HashSet pic_index_arr;
+  private HashSet<Integer> pic_index_arr;
   public String puin;
   public int slide_number;
   private long time_on_show_end;
@@ -68,7 +68,7 @@ public class PublicAccountShowPictureReport
         localStringBuilder.append((Integer)localIterator.next()).append(",");
       }
     }
-    ReportController.b(paramQQAppInterface, "dc00899", "Pb_account_lifeservice", this.puin, "0X80066AB", "0X80066AB", this.slide_number - 1, Integer.parseInt(this.imgCount), 0, this.articleId, localStringBuilder.toString(), this.leave_mode + "", this.time_on_show_end - this.time_on_show_start + "");
+    awqx.b(paramQQAppInterface, "dc00899", "Pb_account_lifeservice", this.puin, "0X80066AB", "0X80066AB", this.slide_number - 1, Integer.parseInt(this.imgCount), 0, this.articleId, localStringBuilder.toString(), this.leave_mode + "", this.time_on_show_end - this.time_on_show_start + "");
   }
   
   public void reset()

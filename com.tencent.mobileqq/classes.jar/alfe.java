@@ -1,21 +1,28 @@
-import android.graphics.Xfermode;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.widget.DrawableContainer.ContainerState;
-import com.tencent.mobileqq.widget.XfermodeDrawable;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
-public class alfe
-  extends DrawableContainer.ContainerState
+class alfe
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public Xfermode a;
+  alfe(alfd paramalfd) {}
   
-  public Drawable newDrawable()
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    return new XfermodeDrawable(this, null, null);
+    if (paramBitmap != null)
+    {
+      this.a.a.b.setVisibility(0);
+      this.a.a.a.setVisibility(0);
+      this.a.a.a.setImageBitmap(paramBitmap);
+      return;
+    }
+    this.a.a.a.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alfe
  * JD-Core Version:    0.7.0.1
  */

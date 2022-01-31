@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/d3o" android:paddingLeft="@dimen/b99" android:paddingRight="@dimen/b99" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="34.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/d2q" android:background="@drawable/a_0" android:padding="2.0dip" android:layout_width="36.0dip" android:layout_height="36.0dip" android:scaleType="fitXY" />
+    <com.tencent.image.URLImageView android:id="@id/d2r" android:background="@drawable/a_0" android:padding="2.0dip" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginLeft="@dimen/b98" android:scaleType="fitXY" android:layout_toRightOf="@id/d2q" />
+</RelativeLayout>

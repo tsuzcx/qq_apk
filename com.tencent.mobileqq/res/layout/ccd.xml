@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/wy" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@color/w_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="35.0dip" />
+    <Button android:textColor="@color/ue" android:id="@id/agd" android:layout_height="40.0dip" android:layout_marginLeft="@dimen/b7r" android:layout_marginRight="@dimen/b7r" android:layout_marginBottom="42.0dip" android:layout_alignParentBottom="true" style="@style/t8" />
+    <ScrollView android:background="@drawable/hhl" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/b7r" android:layout_marginRight="@dimen/b7r" android:layout_marginBottom="100.0dip">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:paddingLeft="@dimen/b7q" android:paddingRight="@dimen/b7q" android:layout_width="fill_parent" android:layout_height="70.0dip">
+                <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/tr" android:gravity="center_vertical" android:id="@id/mcz" android:paddingRight="20.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/rfu" android:drawableRight="@drawable/hw0" android:drawablePadding="5.0dip" android:layout_centerVertical="true" />
+                <TextView android:textSize="15.0sp" android:textColor="#ff000000" android:id="@id/md3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/ehr" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                <EditText android:textSize="36.0sp" android:textColor="@color/tr" android:textColorHint="#ffb0b3bf" android:gravity="center|right" android:id="@id/ro" android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" android:hint="0.00" android:singleLine="true" android:maxLength="7" android:layout_toLeftOf="@id/md3" android:inputType="numberDecimal" />
+                <View android:layout_alignParentBottom="true" style="@style/sr" />
+            </RelativeLayout>
+            <RelativeLayout android:paddingLeft="@dimen/b7q" android:layout_width="fill_parent" android:layout_height="70.0dip">
+                <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/tr" android:id="@id/mc2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rfx" android:layout_centerVertical="true" />
+                <ImageView android:id="@id/lnd" android:paddingRight="17.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@drawable/dvh" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                <LinearLayout android:gravity="center|right" android:orientation="horizontal" android:id="@id/lq_" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/lnd" android:layout_toRightOf="@id/mc2" />
+                <View android:layout_alignParentBottom="true" style="@style/sr" />
+            </RelativeLayout>
+            <RelativeLayout android:paddingLeft="@dimen/b7q" android:layout_width="fill_parent" android:layout_height="70.0dip">
+                <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/tr" android:id="@id/md2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rfw" android:layout_centerVertical="true" />
+                <EditText android:textSize="15.0sp" android:textColor="@color/tr" android:textColorHint="@color/wb" android:ellipsize="end" android:gravity="right" android:id="@id/lgj" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="@dimen/b7q" android:hint="@string/rfv" android:singleLine="true" android:maxLength="14" android:layout_toRightOf="@id/md2" android:layout_centerVertical="true" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

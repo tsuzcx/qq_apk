@@ -3,8 +3,8 @@ package com.tencent.mobileqq.vaswebviewplugin;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
+import bbac;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQReaderJsPlugin
@@ -43,7 +43,7 @@ public class QQReaderJsPlugin
     }
   }
   
-  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if (QLog.isColorLevel()) {
       QLog.d("QQReaderJsPlugin", 2, "handleJsRequest, url=" + paramString1);
@@ -56,12 +56,12 @@ public class QQReaderJsPlugin
     return true;
   }
   
-  protected void onCreate()
+  public void onCreate()
   {
     super.onCreate();
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     super.onDestroy();
     unregisterReceiver();
@@ -69,7 +69,7 @@ public class QQReaderJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QQReaderJsPlugin
  * JD-Core Version:    0.7.0.1
  */

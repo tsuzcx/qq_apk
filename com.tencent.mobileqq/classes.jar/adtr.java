@@ -1,23 +1,27 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForTroopStory;
 
 class adtr
-  implements DialogInterface.OnClickListener
+  implements begw
 {
-  adtr(adtq paramadtq) {}
+  adtr(adtq paramadtq, MessageForTroopStory paramMessageForTroopStory, begr parambegr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.a.a(false);
-    com.tencent.mobileqq.app.PhoneContactManagerImp.g = false;
-    this.a.a.a.finish();
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Begr.dismiss();
+      return;
+      vjx.a(this.jdField_a_of_type_Adtq.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory).f();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adtr
  * JD-Core Version:    0.7.0.1
  */

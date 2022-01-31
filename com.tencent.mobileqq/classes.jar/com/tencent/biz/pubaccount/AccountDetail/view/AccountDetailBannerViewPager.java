@@ -10,21 +10,21 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewParent;
+import beez;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MqqWeakReferenceHandler;
 import java.util.List;
-import ksy;
 import mqq.os.MqqHandler;
+import mup;
 
 public class AccountDetailBannerViewPager
   extends ViewPager
   implements Handler.Callback
 {
   private final int jdField_a_of_type_Int = 2000;
-  private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new ksy(this);
+  private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new mup(this);
   private AccountDetailBannerIndicator jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailBannerIndicator;
-  private List jdField_a_of_type_JavaUtilList;
-  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this, true);
+  private List<ViewPager.OnPageChangeListener> jdField_a_of_type_JavaUtilList;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler = new beez(Looper.getMainLooper(), this, true);
   private boolean jdField_a_of_type_Boolean;
   private int b = 0;
   private final int c = 1;

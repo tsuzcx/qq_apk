@@ -1,15 +1,33 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetMyStoryVideoListStep;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
-import com.tencent.biz.qqstory.utils.UncheckedCallable;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.cgi.ReadInJoyCGIDynamicChannelFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.pull2refresh.XRecyclerView;
 
 public class ofp
-  implements UncheckedCallable
+  implements berv
 {
-  public ofp(NewMyStorySegment paramNewMyStorySegment) {}
+  public ofp(ReadInJoyCGIDynamicChannelFragment paramReadInJoyCGIDynamicChannelFragment) {}
   
-  public GetMyStoryVideoListStep a()
+  public void a()
   {
-    return new GetMyStoryVideoListStep();
+    QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "endOfRefresh.");
+  }
+  
+  public void a(XRecyclerView paramXRecyclerView, int paramInt)
+  {
+    QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "startLoadMore.");
+    paramXRecyclerView = ofz.a();
+    if (paramXRecyclerView != null) {
+      paramXRecyclerView.a(ReadInJoyCGIDynamicChannelFragment.f(this.a), ReadInJoyCGIDynamicChannelFragment.a(this.a).a(), 10);
+    }
+  }
+  
+  public void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
+  {
+    QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, "startTopRefresh.");
+    paramXRecyclerView = ofz.a();
+    if (paramXRecyclerView != null) {
+      paramXRecyclerView.a(ReadInJoyCGIDynamicChannelFragment.e(this.a));
+    }
   }
 }
 

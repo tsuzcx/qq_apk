@@ -1,26 +1,33 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter.AvatarInfo;
-import com.tencent.mobileqq.troop.widget.BorderURLImageView;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
 class ajze
-  implements Runnable
+  implements Animator.AnimatorListener
 {
-  ajze(ajzd paramajzd) {}
+  ajze(ajzc paramajzc) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    Bitmap localBitmap = this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter$AvatarInfo.a;
-    if ((localBitmap != null) && (!localBitmap.isRecycled()))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView.setImageBitmap(localBitmap);
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView.setImageDrawable(null);
+    ajzc.a(this.a, false);
+    ajzc.a(this.a);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    ajzc.a(this.a, false);
+    ajzc.a(this.a);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    ajzc.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajze
  * JD-Core Version:    0.7.0.1
  */

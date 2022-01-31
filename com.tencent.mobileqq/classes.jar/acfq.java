@@ -1,31 +1,26 @@
-import com.tencent.mobileqq.app.HotChatHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.dating.NearbyTransitActivity;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
+import android.view.animation.Transformation;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class acfq
-  implements Runnable
+  implements bajj<Integer>
 {
-  public acfq(NearbyTransitActivity paramNearbyTransitActivity, Common.WifiPOIInfo paramWifiPOIInfo) {}
+  public acfq(VisitorsActivity paramVisitorsActivity) {}
   
-  public void run()
+  public void a(bajd<Integer> parambajd, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    boolean bool = true;
-    HotChatHandler localHotChatHandler = (HotChatHandler)this.jdField_a_of_type_ComTencentMobileqqDatingNearbyTransitActivity.app.a(35);
-    Common.WifiPOIInfo localWifiPOIInfo = this.jdField_a_of_type_TencentImOidbHotchatCommon$WifiPOIInfo;
-    if (this.jdField_a_of_type_TencentImOidbHotchatCommon$WifiPOIInfo.uint32_wifi_poi_type.get() == 1) {}
-    for (;;)
+    this.a.c.setText(paramInteger + "");
+    if (paramInteger.intValue() > 9999)
     {
-      localHotChatHandler.a(localWifiPOIInfo, bool, 4, NearbyTransitActivity.c(this.jdField_a_of_type_ComTencentMobileqqDatingNearbyTransitActivity));
+      this.a.c.setTextSize(36.0F);
       return;
-      bool = false;
     }
+    this.a.c.setTextSize(44.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acfq
  * JD-Core Version:    0.7.0.1
  */

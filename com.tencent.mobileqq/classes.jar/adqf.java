@@ -1,54 +1,23 @@
-import android.graphics.Bitmap;
-import com.dataline.util.file.MediaStoreUtil;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
 
-public final class adqf
-  implements Runnable
+public class adqf
+  implements View.OnClickListener
 {
-  public adqf(String paramString1, String paramString2, int paramInt1, int paramInt2) {}
+  public adqf(StructingMsgItemBuilder paramStructingMsgItemBuilder, BaseChatPie paramBaseChatPie, AbsShareMsg paramAbsShareMsg) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (FileUtil.b(this.jdField_a_of_type_JavaLangString)) {}
-    Bitmap localBitmap;
-    do
-    {
-      return;
-      localBitmap = MediaStoreUtil.a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    } while (localBitmap == null);
-    try
-    {
-      FileUtil.a(localBitmap, this.jdField_a_of_type_JavaLangString);
-      localBitmap.recycle();
-      int i = MediaStoreUtil.a(this.jdField_b_of_type_JavaLangString);
-      MediaStoreUtil.a(this.jdField_a_of_type_JavaLangString, i);
-      return;
-    }
-    catch (FileNotFoundException localFileNotFoundException)
-    {
-      localFileNotFoundException.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail FileNotFoundException:" + localFileNotFoundException.getMessage());
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      localIOException.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail IOException:" + localIOException.getMessage());
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      localOutOfMemoryError.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail OutOfMemoryError:" + localOutOfMemoryError.getMessage());
-    }
+    paramView = ((aegy)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg);
+    ((aegy)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adqf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,247 @@
+{
+  "ReadInjoy_brief_content_collection_cell": {
+    "view_type": "cell",
+    "direction": "vertical",
+    "height": {
+      "type": "wrap_content"
+    },
+    "width": {
+      "type": "relative",
+      "value": "342"
+    },
+    "subviews": [
+      {
+        "view_type": "UIView",
+        "view_id": "id_article_large_imge_cover",
+        "event_type":"cmd_url_click_card_report",
+        "layout_type": "layout_relative",
+        "margin_left": "2",
+        "height": {
+          "type": "relative",
+          "value": "151"
+        },
+        "width": {
+          "type": "relative",
+          "value": "340"
+        },
+        "attributes": {
+          "setAttatchInfo:":"$url",
+          "setBackgroundColorString:": "#F5F6FA"
+        },
+        "data_attributes": {
+          "setLocalInfo:": {
+            "click_area":"2"
+          },
+          "setRemoteInfo:": {
+            "rowkey": "$rowkey",
+            "jump_src": "$jump_src_img",
+            "jump_page": "$jump_page_img",
+            "feeds_type": "$feeds_type"
+          }
+        },
+        "subviews": [
+          {
+            "view_type": "container",
+            "visible_depend_on_children" : "YES",
+            "layout_type" : "layout_relative",
+            "margin_top": "24",
+            "margin_right": "12",
+            "align_parent_right": "YES",
+            "height": {
+              "type": "relative",
+              "value": "74"
+            },
+            "width": {
+              "type": "relative",
+              "value": "74"
+            },
+            "view_id" : "id_image_wrapper",
+            "subviews": [
+              {
+                "view_type": "ReadInjoyAsynImageView",
+                "view_id": "id_brief_small_imge",
+                "height": {
+                  "type": "relative",
+                  "value": "74"
+                },
+                "width": {
+                  "type": "relative",
+                  "value": "74"
+                },
+                "attributes": {
+                  "setFrameString:": "-1",
+                  "setImageWithURLString:lineup:": [
+                    "$article_large_imge_url",
+                    "-1"
+                  ]
+                }
+              },
+              {
+                "view_type": "UIView",
+                "view_id": "id_play_wrapper",
+                "layout_type": "layout_relative",
+                "visible_depend_on_children": "YES",
+                "align_parent_right": "YES",
+                "align_parent_bottom": "YES",
+                "margin_right": "4",
+                "margin_bottom": "4",
+                "height": {
+                  "type": "absolutely",
+                  "value": "15"
+                },
+                "width": {
+                  "type": "wrap_content"
+                },
+                "attributes": {
+                  "setBackgroundColorString:": "#40000000",
+                  "setCornerRadiusString:": "2"
+                },
+                "subviews": [
+                  {
+                    "view_type": "UIImageView",
+                    "view_id": "id_play_icon",
+                    "align_parent_center_vertical": "YES",
+                    "visible_depend_on_brother": "id_video_play_duration",
+                    "margin_left": "3",
+                    "height": {
+                      "type": "absolutely",
+                      "value": "10"
+                    },
+                    "width": {
+                      "type": "absolutely",
+                      "value": "10"
+                    },
+                    "attributes": {
+                      "loadImageWithPath:": "ReadInJoy/small_video_play_icon.png"
+                    }
+                  },
+                  {
+                    "view_type": "UILabel",
+                    "view_id": "id_video_play_duration",
+                    "margin_left": "3",
+                    "align_parent_center_vertical": "YES",
+                    "right_of_view": "id_play_icon",
+                    "margin_right": "3",
+                    "height": {
+                      "type": "match_parent"
+                    },
+                    "width": {
+                      "type": "wrap_content"
+                    },
+                    "attributes": {
+                      "setText:": "$video_play_duration",
+                      "setTextColorString:": "#FFFFFF",
+                      "setFontSizeString:": "10"
+                    }
+                  },
+                  {
+                    "view_type": "UILabel",
+                    "view_id": "id_image_type",
+                    "align_parent_center_vertical": "YES",
+                    "margin_right": "3",
+                    "height": {
+                      "type": "match_parent"
+                    },
+                    "width": {
+                      "type": "wrap_content"
+                    },
+                    "attributes": {
+                      "setText:": "$image_type_text",
+                      "setTextColorString:": "#FFFFFF",
+                      "setFontSizeString:": "10"
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "view_type": "UIImageView",
+            "view_id": "id_brief_content_icon",
+            "margin_left": "13",
+            "align_parent_top": "YES",
+            "default_visible": "YES",
+            "height": {
+              "type": "relative",
+              "value": "36.5"
+            },
+            "width": {
+              "type": "relative",
+              "value": "61.5"
+            },
+            "attributes": {
+              "loadImageWithPath:": "ReadInJoy/brief_content_icon.png"
+            }
+          },
+          {
+            "view_type": "UILabel",
+            "view_id": "id_brief_content_text",
+            "align_parent_left": "YES",
+            "left_of_view": "id_image_wrapper",
+            "margin_left": "12",
+            "margin_top": "25",
+            "margin_right": "12",
+            "height": {
+              "type": "wrap_content"
+            },
+            "width": {
+              "type": "match_parent"
+            },
+            "attributes": {
+              "setFrameString:": "-1",
+              "setText:lineSpace:": [
+                "$artilce_title_text",
+                "2"
+              ],
+              "setTextColorString:": "#262626",
+              "setFontSizeString:": "16",
+              "setNumberOfLinesString:": "3"
+            }
+          },
+          {
+            "view_type": "ReadInJoyAvatarView",
+            "view_id": "id_info_avator",
+            "align_parent_bottom": "YES",
+            "margin_left": "9",
+            "margin_bottom": "24",
+            "height": {
+              "type": "absolutely",
+              "value": "18"
+            },
+            "width": {
+              "type": "absolutely",
+              "value": "18"
+            },
+            "attributes": {
+              "loadAvatarByUin:": "$subscribe_id",
+              "setFrameString:": "-1"
+            }
+          },
+          {
+            "view_type": "UILabel",
+            "view_id": "id_info_nick",
+            "layout_type": "layout_relative",
+            "right_of_view": "id_info_avator",
+            "margin_left": "6",
+            "margin_bottom": "24",
+            "align_parent_bottom": "YES",
+            "height": {
+              "type": "relative",
+              "value": "16"
+            },
+            "width": {
+              "type": "wrap_content"
+            },
+            "attributes": {
+              "setFrameString:": "-1",
+              "setText:": "$subcribe_name_text",
+              "setTextColorString:": "#8C000000",
+              "setFontSizeString:": "12",
+              "setNumberOfLinesString:": "1"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

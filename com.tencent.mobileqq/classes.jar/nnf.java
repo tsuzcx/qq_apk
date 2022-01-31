@@ -1,22 +1,47 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class nnf
-  implements Runnable
+  implements AladdinConfigHandler
 {
-  public nnf(VideoPlayModeBase paramVideoPlayModeBase, QQStoryLoadingView paramQQStoryLoadingView, QQStoryVideoPlayerErrorView paramQQStoryVideoPlayerErrorView, int paramInt, StoryVideoItem paramStoryVideoItem) {}
-  
-  public void run()
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.getVisibility() == 0) || (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.getVisibility() == 0))
+    QLog.d("VideoSoftAdConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = ocx.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.a.postDelayed(this, 50L);
-      return;
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("VideoSoftAdConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (paramInt1 == 200)
+      {
+        if ((TextUtils.equals(str1, "ad_guide_area")) && (!TextUtils.isEmpty(str2))) {
+          bgmq.a("sp_key_ad_soft_total_area", str2.trim());
+        }
+        if ((TextUtils.equals(str1, "ad_max_num")) && (!TextUtils.isEmpty(str2))) {
+          bgmq.a("sp_key_ad_soft_ad_max", str2.trim());
+        }
+        if ((TextUtils.equals(str1, "kd_max_num")) && (!TextUtils.isEmpty(str2))) {
+          bgmq.a("sp_key_ad_soft_kd_max", str2.trim());
+        }
+      }
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    if (paramInt == 200)
+    {
+      bgmq.a("sp_key_ad_soft_total_area", "0");
+      bgmq.a("sp_key_ad_soft_ad_max", "25");
+      bgmq.a("sp_key_ad_soft_kd_max", "25");
+    }
   }
 }
 

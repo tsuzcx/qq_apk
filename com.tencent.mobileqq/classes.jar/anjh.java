@@ -1,20 +1,19 @@
-import cooperation.qzone.video.QzoneVerticalVideoGpuProxyActivity;
-import cooperation.qzone.video.QzoneVerticalVideoPluginProxyActivity;
-import cooperation.qzone.video.QzoneVerticalVideoTransparentActivity;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.emoticonview.EmotionInvalidPanelLinearLayout;
 
 public class anjh
+  extends angv
 {
-  public static Class a(String paramString)
-  {
-    if (QzoneVerticalVideoPluginProxyActivity.a(QzoneVerticalVideoPluginProxyActivity.a(), paramString)) {
-      return QzoneVerticalVideoTransparentActivity.class;
-    }
-    return QzoneVerticalVideoGpuProxyActivity.class;
-  }
+  public Button a;
+  public LinearLayout a;
+  public TextView a;
+  public EmotionInvalidPanelLinearLayout a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anjh
  * JD-Core Version:    0.7.0.1
  */

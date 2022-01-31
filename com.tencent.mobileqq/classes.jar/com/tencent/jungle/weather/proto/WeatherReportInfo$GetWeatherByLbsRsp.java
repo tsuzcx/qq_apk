@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class WeatherReportInfo$GetWeatherByLbsRsp
-  extends MessageMicro
+  extends MessageMicro<GetWeatherByLbsRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 56 }, new String[] { "pbRspMsgHead", "area", "o_wea_code", "t_wea_code", "wea_desc", "temper", "show_flag" }, new Object[] { null, null, "", "", "", "", Integer.valueOf(0) }, GetWeatherByLbsRsp.class);
   public WeatherReportInfo.Area area = new WeatherReportInfo.Area();

@@ -5,89 +5,92 @@ import com.tencent.component.media.ImageManagerEnv;
 import com.tencent.component.media.utils.BitmapUtils;
 import com.tencent.component.media.utils.ImageManagerLog;
 import com.tencent.component.media.utils.LruCache;
+import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.TreeMap;
-import pme;
 
 public class ReuseBitmapPool
 {
   public static final String TAG = "NewBucketPool";
-  private int jdField_a_of_type_Int;
-  private LruCache jdField_a_of_type_ComTencentComponentMediaUtilsLruCache;
-  private TreeMap jdField_a_of_type_JavaUtilTreeMap = new TreeMap();
-  private int b;
+  private LruCache<Integer, Bitmap> bitmapItemSetLruCache;
+  private TreeMap<Integer, List<Integer>> bitmapKeySet = new TreeMap();
+  private int limit;
+  private int maxSizePerKey;
   
   public ReuseBitmapPool(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.b = paramInt2;
-    this.jdField_a_of_type_Int = Math.min(paramInt1, paramInt3);
+    this.limit = paramInt2;
+    this.maxSizePerKey = Math.min(paramInt1, paramInt3);
     paramInt2 = paramInt1;
     if (paramInt1 <= 0)
     {
       ImageManagerLog.w("NewBucketPool", "ReuseBitmapPool maxSize<=0:" + paramInt1);
       paramInt2 = 1;
     }
-    this.jdField_a_of_type_ComTencentComponentMediaUtilsLruCache = new pme(this, paramInt2);
+    this.bitmapItemSetLruCache = new ReuseBitmapPool.1(this, paramInt2);
   }
   
-  private Bitmap a(Integer paramInteger)
-  {
-    Object localObject2 = null;
-    LinkedList localLinkedList = (LinkedList)this.jdField_a_of_type_JavaUtilTreeMap.get(paramInteger);
-    Object localObject1 = localObject2;
-    if (localLinkedList != null)
-    {
-      localObject1 = localObject2;
-      if (!localLinkedList.isEmpty()) {
-        localObject1 = (Bitmap)this.jdField_a_of_type_ComTencentComponentMediaUtilsLruCache.remove(localLinkedList.poll());
-      }
-    }
-    if (localLinkedList.isEmpty()) {
-      this.jdField_a_of_type_JavaUtilTreeMap.remove(paramInteger);
-    }
-    return localObject1;
-  }
-  
-  private boolean a(Bitmap paramBitmap)
+  private boolean addIntoPoolInternal(Bitmap paramBitmap)
   {
     int i = BitmapUtils.getBitmapAllocSize(paramBitmap);
-    if ((i > this.b) || (i <= 0))
+    if ((i > this.limit) || (i <= 0))
     {
       ImageManagerEnv.getLogger();
       return false;
     }
-    if (this.jdField_a_of_type_ComTencentComponentMediaUtilsLruCache.size() + i > this.jdField_a_of_type_ComTencentComponentMediaUtilsLruCache.maxSize())
+    if (this.bitmapItemSetLruCache.size() + i > this.bitmapItemSetLruCache.maxSize())
     {
-      localObject1 = (Integer)this.jdField_a_of_type_JavaUtilTreeMap.ceilingKey(Integer.valueOf(i));
+      localObject1 = (Integer)this.bitmapKeySet.ceilingKey(Integer.valueOf(i));
       if ((localObject1 != null) && (((Integer)localObject1).intValue() * 0.8D < i))
       {
         ImageManagerEnv.getLogger();
         return false;
       }
     }
-    Object localObject2 = (LinkedList)this.jdField_a_of_type_JavaUtilTreeMap.get(Integer.valueOf(i));
+    Object localObject2 = (List)this.bitmapKeySet.get(Integer.valueOf(i));
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      localObject1 = new LinkedList();
-      this.jdField_a_of_type_JavaUtilTreeMap.put(Integer.valueOf(i), localObject1);
+      localObject1 = Collections.synchronizedList(new LinkedList());
+      this.bitmapKeySet.put(Integer.valueOf(i), localObject1);
     }
-    if (i * ((LinkedList)localObject1).size() > this.jdField_a_of_type_Int)
+    if (i * ((List)localObject1).size() > this.maxSizePerKey)
     {
       ImageManagerEnv.getLogger();
       return false;
     }
     localObject2 = Integer.valueOf(paramBitmap.hashCode());
-    ((LinkedList)localObject1).add(localObject2);
-    this.jdField_a_of_type_ComTencentComponentMediaUtilsLruCache.put(localObject2, paramBitmap);
+    ((List)localObject1).add(localObject2);
+    this.bitmapItemSetLruCache.put(localObject2, paramBitmap);
     return true;
+  }
+  
+  private Bitmap removeFromPoolInternal(Integer paramInteger)
+  {
+    Object localObject2 = null;
+    List localList = (List)this.bitmapKeySet.get(paramInteger);
+    Object localObject1 = localObject2;
+    if (localList != null)
+    {
+      localObject1 = localObject2;
+      if (!localList.isEmpty())
+      {
+        localObject1 = (Integer)localList.remove(localList.size() - 1);
+        localObject1 = (Bitmap)this.bitmapItemSetLruCache.remove(localObject1);
+      }
+    }
+    if (localList.isEmpty()) {
+      this.bitmapKeySet.remove(paramInteger);
+    }
+    return localObject1;
   }
   
   public boolean addBitMapIntoPool(Bitmap paramBitmap)
   {
     try
     {
-      boolean bool = a(paramBitmap);
+      boolean bool = addIntoPoolInternal(paramBitmap);
       return bool;
     }
     finally
@@ -97,6 +100,11 @@ public class ReuseBitmapPool
     }
   }
   
+  public void clear()
+  {
+    this.bitmapItemSetLruCache.evictAll();
+  }
+  
   /* Error */
   public Bitmap getBitmapFromPool(int paramInt)
   {
@@ -104,15 +112,15 @@ public class ReuseBitmapPool
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 23	com/tencent/component/media/image/ReuseBitmapPool:jdField_a_of_type_JavaUtilTreeMap	Ljava/util/TreeMap;
+    //   3: getfield 27	com/tencent/component/media/image/ReuseBitmapPool:bitmapKeySet	Ljava/util/TreeMap;
     //   6: iload_1
-    //   7: invokestatic 113	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   10: invokevirtual 116	java/util/TreeMap:ceilingKey	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   13: checkcast 109	java/lang/Integer
+    //   7: invokestatic 98	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   10: invokevirtual 102	java/util/TreeMap:ceilingKey	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   13: checkcast 94	java/lang/Integer
     //   16: astore_2
     //   17: aload_2
     //   18: ifnonnull +13 -> 31
-    //   21: invokestatic 100	com/tencent/component/media/ImageManagerEnv:getLogger	()Lcom/tencent/component/media/ILog;
+    //   21: invokestatic 83	com/tencent/component/media/ImageManagerEnv:getLogger	()Lcom/tencent/component/media/ILog;
     //   24: pop
     //   25: aconst_null
     //   26: astore_2
@@ -121,25 +129,25 @@ public class ReuseBitmapPool
     //   29: aload_2
     //   30: areturn
     //   31: aload_2
-    //   32: invokevirtual 119	java/lang/Integer:intValue	()I
+    //   32: invokevirtual 105	java/lang/Integer:intValue	()I
     //   35: iload_1
     //   36: iconst_2
     //   37: imul
     //   38: if_icmple +12 -> 50
-    //   41: invokestatic 100	com/tencent/component/media/ImageManagerEnv:getLogger	()Lcom/tencent/component/media/ILog;
+    //   41: invokestatic 83	com/tencent/component/media/ImageManagerEnv:getLogger	()Lcom/tencent/component/media/ILog;
     //   44: pop
     //   45: aconst_null
     //   46: astore_2
     //   47: goto -20 -> 27
     //   50: aload_0
     //   51: aload_2
-    //   52: invokespecial 142	com/tencent/component/media/image/ReuseBitmapPool:a	(Ljava/lang/Integer;)Landroid/graphics/Bitmap;
+    //   52: invokespecial 162	com/tencent/component/media/image/ReuseBitmapPool:removeFromPoolInternal	(Ljava/lang/Integer;)Landroid/graphics/Bitmap;
     //   55: astore_3
     //   56: aload_3
     //   57: astore_2
     //   58: aload_3
     //   59: ifnull -32 -> 27
-    //   62: invokestatic 100	com/tencent/component/media/ImageManagerEnv:getLogger	()Lcom/tencent/component/media/ILog;
+    //   62: invokestatic 83	com/tencent/component/media/ImageManagerEnv:getLogger	()Lcom/tencent/component/media/ILog;
     //   65: pop
     //   66: aload_3
     //   67: astore_2
@@ -149,13 +157,22 @@ public class ReuseBitmapPool
     //   73: monitorexit
     //   74: aload_2
     //   75: athrow
+    //   76: astore_2
+    //   77: ldc 8
+    //   79: aload_2
+    //   80: invokestatic 168	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   83: invokestatic 171	com/tencent/component/media/utils/ImageManagerLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   86: aconst_null
+    //   87: astore_3
+    //   88: goto -32 -> 56
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	76	0	this	ReuseBitmapPool
-    //   0	76	1	paramInt	int
+    //   0	91	0	this	ReuseBitmapPool
+    //   0	91	1	paramInt	int
     //   16	52	2	localObject1	Object
     //   71	4	2	localObject2	Object
-    //   55	12	3	localBitmap	Bitmap
+    //   76	4	2	localThrowable	java.lang.Throwable
+    //   55	33	3	localBitmap	Bitmap
     // Exception table:
     //   from	to	target	type
     //   2	17	71	finally
@@ -163,6 +180,18 @@ public class ReuseBitmapPool
     //   31	45	71	finally
     //   50	56	71	finally
     //   62	66	71	finally
+    //   77	86	71	finally
+    //   50	56	76	java/lang/Throwable
+  }
+  
+  public void resizeCahce(float paramFloat)
+  {
+    BitmapUtils.resize(this.bitmapItemSetLruCache, paramFloat);
+  }
+  
+  public void trimToSize(float paramFloat)
+  {
+    BitmapUtils.trimToSize(this.bitmapItemSetLruCache, paramFloat);
   }
 }
 

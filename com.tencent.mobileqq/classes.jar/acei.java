@@ -1,34 +1,26 @@
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
-class acei
-  implements Runnable
+public class acei
+  implements DialogInterface.OnClickListener
 {
-  acei(aceg paramaceg, boolean paramBoolean, String paramString1, String paramString2) {}
+  public acei(UpgradeActivity paramUpgradeActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Aceg.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) && (this.jdField_a_of_type_Aceg.a.jdField_a_of_type_JavaUtilList != null))
-    {
-      Iterator localIterator = this.jdField_a_of_type_Aceg.a.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        RecentBaseData localRecentBaseData = (RecentBaseData)localIterator.next();
-        if (localRecentBaseData.a().equals(this.jdField_a_of_type_JavaLangString))
-        {
-          localRecentBaseData.b = this.b;
-          this.jdField_a_of_type_Aceg.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aceg.a.jdField_a_of_type_Int);
-        }
-      }
+    awqx.b(this.a.app, "CliOper", "", "", "0X800417F", "0X800417F", 0, 0, "", "", "", "");
+    if (UpgradeActivity.a(this.a)) {
+      awqx.b(this.a.app, "CliOper", "", "", "0X800714D", "0X800714D", 0, 0, "", "", "", "");
     }
+    awqx.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, akgn.b(), String.valueOf(2), akgo.a(), "0");
+    akgo.a().a(this.a.app);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acei
  * JD-Core Version:    0.7.0.1
  */

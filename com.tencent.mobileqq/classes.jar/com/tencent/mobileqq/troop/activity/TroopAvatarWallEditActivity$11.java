@@ -1,0 +1,18 @@
+package com.tencent.mobileqq.troop.activity;
+
+class TroopAvatarWallEditActivity$11
+  implements Runnable
+{
+  TroopAvatarWallEditActivity$11(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity) {}
+  
+  public void run()
+  {
+    TroopAvatarWallEditActivity.b(this.this$0);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+ * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity.11
+ * JD-Core Version:    0.7.0.1
+ */

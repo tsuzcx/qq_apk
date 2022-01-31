@@ -1,29 +1,154 @@
-import android.text.Editable;
-import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.widget.AdapterView;
+import dov.com.qq.im.AECamera.qudong.AETemplateInfoFragment;
+import java.util.ArrayList;
+import mqq.util.WeakReference;
 
 public class aghm
-  implements TextView.OnEditorActionListener
+  extends aggm
 {
-  public aghm(OCRTextSearchActivity paramOCRTextSearchActivity) {}
-  
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  private aghm(NewPhotoListActivity paramNewPhotoListActivity)
   {
-    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
+    super(paramNewPhotoListActivity);
+  }
+  
+  public static aggh b(NewPhotoListActivity paramNewPhotoListActivity)
+  {
+    if ((jdField_a_of_type_Aggh == null) || (jdField_a_of_type_Aggh.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoListActivity)) {}
+    try
     {
-      OCRTextSearchActivity.a(this.a);
-      this.a.a.setSelection(this.a.a.getText().length());
-      return true;
+      if ((jdField_a_of_type_Aggh == null) || (jdField_a_of_type_Aggh.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoListActivity)) {
+        jdField_a_of_type_Aggh = new aghm(paramNewPhotoListActivity);
+      }
+      return jdField_a_of_type_Aggh;
+    }
+    finally {}
+  }
+  
+  private void b(String paramString)
+  {
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Aggg.e >= 1000L)
+    {
+      this.jdField_a_of_type_Aggg.e = l;
+      bbmy.a((Context)this.jdField_a_of_type_MqqUtilWeakReference.get(), paramString, 0).b(((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).g);
+    }
+  }
+  
+  private boolean b()
+  {
+    if ((this.jdField_a_of_type_MqqUtilWeakReference.get() != null) && (((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getIntent() != null)) {
+      return ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getIntent().getBooleanExtra("pic_back_type_result", false);
     }
     return false;
+  }
+  
+  private boolean c()
+  {
+    return this.jdField_a_of_type_Aggf.jdField_a_of_type_JavaUtilArrayList.size() < this.jdField_a_of_type_Aggf.jdField_a_of_type_Int;
+  }
+  
+  private void f(Intent paramIntent)
+  {
+    ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).setResult(-1, paramIntent);
+    ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).finish();
+  }
+  
+  public void a(View paramView, int paramInt, CheckBox paramCheckBox)
+  {
+    if ((!c()) && (((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).a.a(paramInt).selectStatus != 1))
+    {
+      b(String.format(((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getString(2131624248), new Object[] { Integer.valueOf(this.jdField_a_of_type_Aggf.jdField_a_of_type_Int) }));
+      return;
+    }
+    super.a(paramView, paramInt, paramCheckBox);
+  }
+  
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    paramAdapterView = ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).a.a(paramInt);
+    paramView = new Intent();
+    if (b())
+    {
+      if (paramAdapterView == null) {}
+      for (paramAdapterView = "";; paramAdapterView = paramAdapterView.path)
+      {
+        paramView.putExtra("PhotoConst.SELECTED_PATHS", paramAdapterView);
+        f(paramView);
+        return;
+      }
+    }
+    if (paramAdapterView == null) {}
+    for (paramAdapterView = "";; paramAdapterView = paramAdapterView.path)
+    {
+      paramView.putExtra("PhotoConst.SELECTED_PATHS", paramAdapterView);
+      paramView.putExtra("pic_choose_in_node_id", ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getIntent().getIntExtra("pic_choose_in_node_id", 0));
+      paramView.putExtra("pic_result_back_type", 1);
+      AETemplateInfoFragment.a((Context)this.jdField_a_of_type_MqqUtilWeakReference.get(), paramView);
+      break;
+    }
+  }
+  
+  protected boolean a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  {
+    if (paramLocalMediaInfo == null) {
+      return false;
+    }
+    if ((paramLocalMediaInfo.selectStatus == 2) && (paramBoolean) && (!c()))
+    {
+      b(String.format(((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getString(2131624248), new Object[] { Integer.valueOf(this.jdField_a_of_type_Aggf.jdField_a_of_type_Int) }));
+      return false;
+    }
+    return super.a(paramLocalMediaInfo, paramBoolean);
+  }
+  
+  protected void c(View paramView)
+  {
+    super.c(paramView);
+  }
+  
+  protected void d()
+  {
+    super.d();
+    String str = ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getString(2131651310);
+    int i = this.jdField_a_of_type_Aggf.jdField_a_of_type_JavaUtilArrayList.size();
+    str = str + " " + i + "/" + this.jdField_a_of_type_Aggf.jdField_a_of_type_Int;
+    ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).c.setText(str);
+    ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).c.setEnabled(true);
+    if (c())
+    {
+      ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).c.setBackgroundResource(2130848461);
+      return;
+    }
+    ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).c.setBackgroundResource(2130837660);
+  }
+  
+  protected void d(View paramView)
+  {
+    if (c())
+    {
+      b(String.format(((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getString(2131624249), new Object[] { Integer.valueOf(this.jdField_a_of_type_Aggf.jdField_a_of_type_Int) }));
+      return;
+    }
+    ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).c.setClickable(false);
+    paramView = new Intent();
+    paramView.putStringArrayListExtra("PhotoConst.SELECTED_PATHS", this.jdField_a_of_type_Aggf.jdField_a_of_type_JavaUtilArrayList);
+    paramView.putExtra("pic_choose_in_node_id", ((NewPhotoListActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getIntent().getIntExtra("pic_choose_in_node_id", 0));
+    paramView.putExtra("pic_result_back_type", 0);
+    AETemplateInfoFragment.a((Context)this.jdField_a_of_type_MqqUtilWeakReference.get(), paramView);
+    bhci.a().v();
+    f(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aghm
  * JD-Core Version:    0.7.0.1
  */

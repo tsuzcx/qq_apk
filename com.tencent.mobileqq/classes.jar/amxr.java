@@ -1,39 +1,44 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.richstatus.StatusObserver;
-import cooperation.qqindividuality.ipc.IndividualityRemoteCommandHandler;
-import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
-import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy;
-import java.util.ArrayList;
+import android.view.View;
+import android.widget.ProgressBar;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener;
+import com.tencent.mobileqq.doutu.DoutuData;
+import java.util.HashMap;
 
-public class amxr
-  extends StatusObserver
+class amxr
+  implements URLDrawableDownListener
 {
-  private amxr(IndividualityRemoteCommandHandler paramIndividualityRemoteCommandHandler) {}
+  amxr(amxq paramamxq) {}
   
-  protected void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList paramArrayList, boolean paramBoolean3)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("isSuccess", paramBoolean1);
-    localBundle.putInt("start", paramInt1);
-    localBundle.putInt("end", paramInt2);
-    localBundle.putBoolean("over", paramBoolean2);
-    localBundle.putSerializable("data", paramArrayList);
-    localBundle.putBoolean("isAddFromCard", paramBoolean3);
-    localBundle.putInt("which_method", 0);
-    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 5, localBundle);
-  }
+  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
   
-  protected void a(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt)
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putByteArray("key", paramArrayOfByte);
-    localBundle.putInt("which_method", 1);
-    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 5, localBundle);
+    paramView = paramView.getTag();
+    if ((paramView != null) && ((paramView instanceof amxs)))
+    {
+      paramView = (amxs)paramView;
+      if (paramView.jdField_a_of_type_AndroidWidgetProgressBar != null) {
+        paramView.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
+      }
+      if (this.a.a == null) {
+        this.a.a = new HashMap();
+      }
+      if ((paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData != null) && (paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_md5 != null) && (paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_down_url != null)) {
+        this.a.a.put(paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_md5, paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_down_url);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amxr
  * JD-Core Version:    0.7.0.1
  */

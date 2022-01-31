@@ -1,38 +1,52 @@
-import android.app.Activity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewStub;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
-import java.lang.ref.WeakReference;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
+import com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView;
 
 public class mxn
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public mxn(SubscriptRecommendController paramSubscriptRecommendController) {}
+  public mxn(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_AndroidViewViewStub.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    ((ViewGroup)this.a.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.a.jdField_a_of_type_AndroidViewView);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if ((this.a.b > 0) && (this.a.c > 0)) {
-      ((ImageView)((Activity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).findViewById(2131368318)).setLayoutParams(new LinearLayout.LayoutParams(this.a.c, this.a.b));
+    switch (paramView.getId())
+    {
+    default: 
+    case 2131313110: 
+    case 2131313130: 
+      do
+      {
+        return;
+        PublicAccountAdvertisementActivity.a(this.a);
+        PublicAccountAdvertisementActivity.c(this.a);
+        PublicAccountAdvertisementActivity.b(this.a);
+        myd.a().a(this.a.getAppInterface(), 4, PublicAccountAdvertisementActivity.a(this.a));
+        PublicAccountAdvertisementActivity.a(this.a).setVisibility(8);
+        this.a.finish();
+        return;
+      } while ((!PublicAccountAdvertisementActivity.c(this.a)) || (PublicAccountAdvertisementActivity.a(this.a) == null));
+      PublicAccountAdvertisementActivity.a(this.a).setCurrentPage(1);
+      PublicAccountAdvertisementActivity.b(this.a, 1);
+      return;
+    case 2131313123: 
+      this.a.b();
+      return;
+    case 2131296503: 
+      awqx.b(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X8009032", "0X8009032", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
+      PublicAccountAdvertisementActivity.d(this.a);
+      return;
+    case 2131304756: 
+      PublicAccountAdvertisementActivity.a(this.a, 2);
+      return;
     }
+    PublicAccountAdvertisementActivity.a(this.a, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     mxn
  * JD-Core Version:    0.7.0.1
  */

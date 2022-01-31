@@ -13,11 +13,11 @@ public final class AnimatorSet
   private ValueAnimator mDelayAnim = null;
   private long mDuration = -1L;
   private boolean mNeedsSort = true;
-  private HashMap<Animator, Node> mNodeMap = new HashMap();
-  private ArrayList<Node> mNodes = new ArrayList();
+  private HashMap<Animator, AnimatorSet.Node> mNodeMap = new HashMap();
+  private ArrayList<AnimatorSet.Node> mNodes = new ArrayList();
   private ArrayList<Animator> mPlayingSet = new ArrayList();
-  private AnimatorSetListener mSetListener = null;
-  private ArrayList<Node> mSortedNodes = new ArrayList();
+  private AnimatorSet.AnimatorSetListener mSetListener = null;
+  private ArrayList<AnimatorSet.Node> mSortedNodes = new ArrayList();
   private long mStartDelay = 0L;
   private boolean mStarted = false;
   boolean mTerminated = false;
@@ -46,8 +46,8 @@ public final class AnimatorSet
             break label288;
           }
           throw new IllegalStateException("Circular dependencies cannot exist in AnimatorSet");
-          localObject2 = (Node)this.mNodes.get(i);
-          if ((((Node)localObject2).dependencies == null) || (((Node)localObject2).dependencies.size() == 0)) {
+          localObject2 = (AnimatorSet.Node)this.mNodes.get(i);
+          if ((((AnimatorSet.Node)localObject2).dependencies == null) || (((AnimatorSet.Node)localObject2).dependencies.size() == 0)) {
             ((ArrayList)localObject1).add(localObject2);
           }
           i += 1;
@@ -62,7 +62,7 @@ public final class AnimatorSet
         ((ArrayList)localObject1).addAll((Collection)localObject2);
         ((ArrayList)localObject2).clear();
       }
-      Node localNode1 = (Node)((ArrayList)localObject1).get(i);
+      AnimatorSet.Node localNode1 = (AnimatorSet.Node)((ArrayList)localObject1).get(i);
       this.mSortedNodes.add(localNode1);
       if (localNode1.nodeDependents != null)
       {
@@ -76,7 +76,7 @@ public final class AnimatorSet
           i += 1;
           break;
         }
-        Node localNode2 = (Node)localNode1.nodeDependents.get(j);
+        AnimatorSet.Node localNode2 = (AnimatorSet.Node)localNode1.nodeDependents.get(j);
         localNode2.nodeDependencies.remove(localNode1);
         if (localNode2.nodeDependencies.size() == 0) {
           ((ArrayList)localObject2).add(localNode2);
@@ -90,26 +90,26 @@ public final class AnimatorSet
       label288:
       return;
     }
-    Object localObject1 = (Node)this.mNodes.get(i);
-    if ((((Node)localObject1).dependencies != null) && (((Node)localObject1).dependencies.size() > 0))
+    Object localObject1 = (AnimatorSet.Node)this.mNodes.get(i);
+    if ((((AnimatorSet.Node)localObject1).dependencies != null) && (((AnimatorSet.Node)localObject1).dependencies.size() > 0))
     {
-      m = ((Node)localObject1).dependencies.size();
+      m = ((AnimatorSet.Node)localObject1).dependencies.size();
       j = 0;
     }
     for (;;)
     {
       if (j >= m)
       {
-        ((Node)localObject1).done = false;
+        ((AnimatorSet.Node)localObject1).done = false;
         i += 1;
         break;
       }
-      localObject2 = (Dependency)((Node)localObject1).dependencies.get(j);
-      if (((Node)localObject1).nodeDependencies == null) {
-        ((Node)localObject1).nodeDependencies = new ArrayList();
+      localObject2 = (AnimatorSet.Dependency)((AnimatorSet.Node)localObject1).dependencies.get(j);
+      if (((AnimatorSet.Node)localObject1).nodeDependencies == null) {
+        ((AnimatorSet.Node)localObject1).nodeDependencies = new ArrayList();
       }
-      if (!((Node)localObject1).nodeDependencies.contains(((Dependency)localObject2).node)) {
-        ((Node)localObject1).nodeDependencies.add(((Dependency)localObject2).node);
+      if (!((AnimatorSet.Node)localObject1).nodeDependencies.contains(((AnimatorSet.Dependency)localObject2).node)) {
+        ((AnimatorSet.Node)localObject1).nodeDependencies.add(((AnimatorSet.Dependency)localObject2).node);
       }
       j += 1;
     }
@@ -122,44 +122,47 @@ public final class AnimatorSet
     Iterator localIterator;
     if (isStarted())
     {
-      localObject = null;
-      if (this.mListeners != null)
-      {
-        localObject = (ArrayList)this.mListeners.clone();
-        localIterator = ((ArrayList)localObject).iterator();
-        if (localIterator.hasNext()) {
-          break label94;
-        }
+      if (this.mListeners == null) {
+        break label173;
       }
-      if ((this.mDelayAnim == null) || (!this.mDelayAnim.isRunning())) {
-        break label112;
-      }
-      this.mDelayAnim.cancel();
-      label70:
-      if (localObject != null) {
-        localObject = ((ArrayList)localObject).iterator();
+      localObject = (ArrayList)this.mListeners.clone();
+      localIterator = ((ArrayList)localObject).iterator();
+      if (localIterator.hasNext()) {
+        break label92;
       }
     }
     for (;;)
     {
-      if (!((Iterator)localObject).hasNext())
+      if ((this.mDelayAnim != null) && (this.mDelayAnim.isRunning()))
       {
-        this.mStarted = false;
-        return;
-        label94:
-        ((Animator.AnimatorListener)localIterator.next()).onAnimationCancel(this);
-        break;
-        label112:
-        if (this.mSortedNodes.size() <= 0) {
-          break label70;
+        this.mDelayAnim.cancel();
+        label68:
+        if (localObject != null) {
+          localObject = ((ArrayList)localObject).iterator();
         }
-        localIterator = this.mSortedNodes.iterator();
-        while (localIterator.hasNext()) {
-          ((Node)localIterator.next()).animation.cancel();
-        }
-        break label70;
       }
-      ((Animator.AnimatorListener)((Iterator)localObject).next()).onAnimationEnd(this);
+      for (;;)
+      {
+        if (!((Iterator)localObject).hasNext())
+        {
+          this.mStarted = false;
+          return;
+          label92:
+          ((Animator.AnimatorListener)localIterator.next()).onAnimationCancel(this);
+          break;
+          if (this.mSortedNodes.size() <= 0) {
+            break label68;
+          }
+          localIterator = this.mSortedNodes.iterator();
+          while (localIterator.hasNext()) {
+            ((AnimatorSet.Node)localIterator.next()).animation.cancel();
+          }
+          break label68;
+        }
+        ((Animator.AnimatorListener)((Iterator)localObject).next()).onAnimationEnd(this);
+      }
+      label173:
+      localObject = null;
     }
   }
   
@@ -185,21 +188,21 @@ public final class AnimatorSet
       if (!((Iterator)localObject1).hasNext())
       {
         return localAnimatorSet;
-        localObject1 = (Node)((Iterator)localObject3).next();
-        localObject2 = ((Node)localObject1).clone();
+        localObject1 = (AnimatorSet.Node)((Iterator)localObject3).next();
+        localObject2 = ((AnimatorSet.Node)localObject1).clone();
         localHashMap.put(localObject1, localObject2);
         localAnimatorSet.mNodes.add(localObject2);
-        localAnimatorSet.mNodeMap.put(((Node)localObject2).animation, localObject2);
-        ((Node)localObject2).dependencies = null;
-        ((Node)localObject2).tmpDependencies = null;
-        ((Node)localObject2).nodeDependents = null;
-        ((Node)localObject2).nodeDependencies = null;
-        localObject4 = ((Node)localObject2).animation.getListeners();
+        localAnimatorSet.mNodeMap.put(((AnimatorSet.Node)localObject2).animation, localObject2);
+        ((AnimatorSet.Node)localObject2).dependencies = null;
+        ((AnimatorSet.Node)localObject2).tmpDependencies = null;
+        ((AnimatorSet.Node)localObject2).nodeDependents = null;
+        ((AnimatorSet.Node)localObject2).nodeDependencies = null;
+        localObject4 = ((AnimatorSet.Node)localObject2).animation.getListeners();
         if (localObject4 == null) {
           break;
         }
-        localObject1 = null;
         Iterator localIterator = ((ArrayList)localObject4).iterator();
+        localObject1 = null;
         for (;;)
         {
           if (!localIterator.hasNext())
@@ -214,7 +217,7 @@ public final class AnimatorSet
             break;
           }
           Animator.AnimatorListener localAnimatorListener = (Animator.AnimatorListener)localIterator.next();
-          if ((localAnimatorListener instanceof AnimatorSetListener))
+          if ((localAnimatorListener instanceof AnimatorSet.AnimatorSetListener))
           {
             localObject2 = localObject1;
             if (localObject1 == null) {
@@ -225,15 +228,15 @@ public final class AnimatorSet
           }
         }
       }
-      localObject3 = (Node)((Iterator)localObject1).next();
-      Object localObject2 = (Node)localHashMap.get(localObject3);
-      if (((Node)localObject3).dependencies != null)
+      localObject3 = (AnimatorSet.Node)((Iterator)localObject1).next();
+      Object localObject2 = (AnimatorSet.Node)localHashMap.get(localObject3);
+      if (((AnimatorSet.Node)localObject3).dependencies != null)
       {
-        localObject3 = ((Node)localObject3).dependencies.iterator();
+        localObject3 = ((AnimatorSet.Node)localObject3).dependencies.iterator();
         while (((Iterator)localObject3).hasNext())
         {
-          localObject4 = (Dependency)((Iterator)localObject3).next();
-          ((Node)localObject2).addDependency(new Dependency((Node)localHashMap.get(((Dependency)localObject4).node), ((Dependency)localObject4).rule));
+          localObject4 = (AnimatorSet.Dependency)((Iterator)localObject3).next();
+          ((AnimatorSet.Node)localObject2).addDependency(new AnimatorSet.Dependency((AnimatorSet.Node)localHashMap.get(((AnimatorSet.Dependency)localObject4).node), ((AnimatorSet.Dependency)localObject4).rule));
         }
       }
     }
@@ -275,14 +278,14 @@ public final class AnimatorSet
         this.mStarted = false;
         return;
         label127:
-        Node localNode = (Node)localIterator.next();
+        AnimatorSet.Node localNode = (AnimatorSet.Node)localIterator.next();
         if (this.mSetListener == null) {
-          this.mSetListener = new AnimatorSetListener(this);
+          this.mSetListener = new AnimatorSet.AnimatorSetListener(this, this);
         }
         localNode.animation.addListener(this.mSetListener);
         break;
         label171:
-        ((Node)localIterator.next()).animation.end();
+        ((AnimatorSet.Node)localIterator.next()).animation.end();
         break label82;
       }
       ((Animator.AnimatorListener)localIterator.next()).onAnimationEnd(this);
@@ -298,7 +301,7 @@ public final class AnimatorSet
       if (!localIterator.hasNext()) {
         return localArrayList;
       }
-      localArrayList.add(((Node)localIterator.next()).animation);
+      localArrayList.add(((AnimatorSet.Node)localIterator.next()).animation);
     }
   }
   
@@ -320,7 +323,7 @@ public final class AnimatorSet
       if (!localIterator.hasNext()) {
         return false;
       }
-    } while (!((Node)localIterator.next()).animation.isRunning());
+    } while (!((AnimatorSet.Node)localIterator.next()).animation.isRunning());
     return true;
   }
   
@@ -329,12 +332,12 @@ public final class AnimatorSet
     return this.mStarted;
   }
   
-  public Builder play(Animator paramAnimator)
+  public AnimatorSet.Builder play(Animator paramAnimator)
   {
     if (paramAnimator != null)
     {
       this.mNeedsSort = true;
-      return new Builder(paramAnimator);
+      return new AnimatorSet.Builder(this, paramAnimator);
     }
     return null;
   }
@@ -364,44 +367,40 @@ public final class AnimatorSet
   
   public void playSequentially(Animator... paramVarArgs)
   {
+    int i = 0;
     if (paramVarArgs != null)
     {
       this.mNeedsSort = true;
-      if (paramVarArgs.length != 1) {
-        break label24;
+      if (paramVarArgs.length == 1) {
+        play(paramVarArgs[0]);
       }
-      play(paramVarArgs[0]);
     }
-    for (;;)
+    else
     {
       return;
-      label24:
-      int i = 0;
-      while (i < paramVarArgs.length - 1)
-      {
-        play(paramVarArgs[i]).before(paramVarArgs[(i + 1)]);
-        i += 1;
-      }
+    }
+    while (i < paramVarArgs.length - 1)
+    {
+      play(paramVarArgs[i]).before(paramVarArgs[(i + 1)]);
+      i += 1;
     }
   }
   
   public void playTogether(Collection<Animator> paramCollection)
   {
-    Animator localAnimator;
     Iterator localIterator;
     if ((paramCollection != null) && (paramCollection.size() > 0))
     {
       this.mNeedsSort = true;
-      localAnimator = null;
       localIterator = paramCollection.iterator();
-      paramCollection = localAnimator;
+      paramCollection = null;
     }
     for (;;)
     {
       if (!localIterator.hasNext()) {
         return;
       }
-      localAnimator = (Animator)localIterator.next();
+      Animator localAnimator = (Animator)localIterator.next();
       if (paramCollection == null) {
         paramCollection = play(localAnimator);
       } else {
@@ -412,13 +411,12 @@ public final class AnimatorSet
   
   public void playTogether(Animator... paramVarArgs)
   {
-    Builder localBuilder;
-    int i;
+    int i = 1;
+    AnimatorSet.Builder localBuilder;
     if (paramVarArgs != null)
     {
       this.mNeedsSort = true;
       localBuilder = play(paramVarArgs[0]);
-      i = 1;
     }
     for (;;)
     {
@@ -443,7 +441,7 @@ public final class AnimatorSet
         this.mDuration = paramLong;
         return this;
       }
-      ((Node)localIterator.next()).animation.setDuration(paramLong);
+      ((AnimatorSet.Node)localIterator.next()).animation.setDuration(paramLong);
     }
   }
   
@@ -455,7 +453,7 @@ public final class AnimatorSet
       if (!localIterator.hasNext()) {
         return;
       }
-      ((Node)localIterator.next()).animation.setInterpolator(paramInterpolator);
+      ((AnimatorSet.Node)localIterator.next()).animation.setInterpolator(paramInterpolator);
     }
   }
   
@@ -472,7 +470,7 @@ public final class AnimatorSet
       if (!localIterator.hasNext()) {
         return;
       }
-      Animator localAnimator = ((Node)localIterator.next()).animation;
+      Animator localAnimator = ((AnimatorSet.Node)localIterator.next()).animation;
       if ((localAnimator instanceof AnimatorSet)) {
         ((AnimatorSet)localAnimator).setTarget(paramObject);
       } else if ((localAnimator instanceof ObjectAnimator)) {
@@ -489,7 +487,7 @@ public final class AnimatorSet
       if (!localIterator.hasNext()) {
         return;
       }
-      ((Node)localIterator.next()).animation.setupEndValues();
+      ((AnimatorSet.Node)localIterator.next()).animation.setupEndValues();
     }
   }
   
@@ -501,44 +499,45 @@ public final class AnimatorSet
       if (!localIterator.hasNext()) {
         return;
       }
-      ((Node)localIterator.next()).animation.setupStartValues();
+      ((AnimatorSet.Node)localIterator.next()).animation.setupStartValues();
     }
   }
   
   public void start()
   {
+    int k = 0;
     this.mTerminated = false;
     this.mStarted = true;
     sortNodes();
-    int k = this.mSortedNodes.size();
+    int m = this.mSortedNodes.size();
     int i = 0;
     Object localObject1;
-    label40:
-    label61:
-    label71:
+    label44:
+    label66:
+    label76:
     int j;
-    if (i >= k)
+    if (i >= m)
     {
       localObject1 = new ArrayList();
       i = 0;
-      if (i < k) {
-        break label268;
+      if (i < m) {
+        break label273;
       }
       if (this.mStartDelay > 0L) {
-        break label467;
+        break label472;
       }
       localObject1 = ((ArrayList)localObject1).iterator();
       if (((Iterator)localObject1).hasNext()) {
-        break label431;
+        break label436;
       }
       if (this.mListeners != null)
       {
         localObject1 = (ArrayList)this.mListeners.clone();
         j = ((ArrayList)localObject1).size();
         i = 0;
-        label98:
+        label103:
         if (i < j) {
-          break label524;
+          break label529;
         }
       }
       if ((this.mNodes.size() == 0) && (this.mStartDelay == 0L))
@@ -548,7 +547,7 @@ public final class AnimatorSet
         {
           localObject1 = (ArrayList)this.mListeners.clone();
           j = ((ArrayList)localObject1).size();
-          i = 0;
+          i = k;
         }
       }
     }
@@ -557,8 +556,8 @@ public final class AnimatorSet
       if (i >= j)
       {
         return;
-        localObject1 = (Node)this.mSortedNodes.get(i);
-        Object localObject2 = ((Node)localObject1).animation.getListeners();
+        localObject1 = (AnimatorSet.Node)this.mSortedNodes.get(i);
+        Object localObject2 = ((AnimatorSet.Node)localObject1).animation.getListeners();
         if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0)) {
           localObject2 = new ArrayList((Collection)localObject2).iterator();
         }
@@ -571,357 +570,53 @@ public final class AnimatorSet
             break;
           }
           localObject3 = (Animator.AnimatorListener)((Iterator)localObject2).next();
-          if (((localObject3 instanceof DependencyListener)) || ((localObject3 instanceof AnimatorSetListener))) {
-            ((Node)localObject1).animation.removeListener((Animator.AnimatorListener)localObject3);
+          if (((localObject3 instanceof AnimatorSet.DependencyListener)) || ((localObject3 instanceof AnimatorSet.AnimatorSetListener))) {
+            ((AnimatorSet.Node)localObject1).animation.removeListener((Animator.AnimatorListener)localObject3);
           }
         }
-        label268:
-        localObject2 = (Node)this.mSortedNodes.get(i);
+        label273:
+        localObject2 = (AnimatorSet.Node)this.mSortedNodes.get(i);
         if (this.mSetListener == null) {
-          this.mSetListener = new AnimatorSetListener(this);
+          this.mSetListener = new AnimatorSet.AnimatorSetListener(this, this);
         }
-        if ((((Node)localObject2).dependencies == null) || (((Node)localObject2).dependencies.size() == 0))
+        if ((((AnimatorSet.Node)localObject2).dependencies == null) || (((AnimatorSet.Node)localObject2).dependencies.size() == 0))
         {
           ((ArrayList)localObject1).add(localObject2);
-          ((Node)localObject2).animation.addListener(this.mSetListener);
+          ((AnimatorSet.Node)localObject2).animation.addListener(this.mSetListener);
           i += 1;
-          break label40;
+          break label44;
         }
-        int m = ((Node)localObject2).dependencies.size();
+        int n = ((AnimatorSet.Node)localObject2).dependencies.size();
         j = 0;
         for (;;)
         {
-          if (j >= m)
+          if (j >= n)
           {
-            ((Node)localObject2).tmpDependencies = ((ArrayList)((Node)localObject2).dependencies.clone());
+            ((AnimatorSet.Node)localObject2).tmpDependencies = ((ArrayList)((AnimatorSet.Node)localObject2).dependencies.clone());
             break;
           }
-          localObject3 = (Dependency)((Node)localObject2).dependencies.get(j);
-          ((Dependency)localObject3).node.animation.addListener(new DependencyListener(this, (Node)localObject2, ((Dependency)localObject3).rule));
+          localObject3 = (AnimatorSet.Dependency)((AnimatorSet.Node)localObject2).dependencies.get(j);
+          ((AnimatorSet.Dependency)localObject3).node.animation.addListener(new AnimatorSet.DependencyListener(this, (AnimatorSet.Node)localObject2, ((AnimatorSet.Dependency)localObject3).rule));
           j += 1;
         }
-        label431:
-        localObject2 = (Node)((Iterator)localObject1).next();
-        ((Node)localObject2).animation.start();
-        this.mPlayingSet.add(((Node)localObject2).animation);
-        break label61;
-        label467:
+        label436:
+        localObject2 = (AnimatorSet.Node)((Iterator)localObject1).next();
+        ((AnimatorSet.Node)localObject2).animation.start();
+        this.mPlayingSet.add(((AnimatorSet.Node)localObject2).animation);
+        break label66;
+        label472:
         this.mDelayAnim = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
         this.mDelayAnim.setDuration(this.mStartDelay);
-        this.mDelayAnim.addListener(new AnimatorListenerAdapter()
-        {
-          boolean canceled = false;
-          
-          public void onAnimationCancel(Animator paramAnonymousAnimator)
-          {
-            this.canceled = true;
-          }
-          
-          public void onAnimationEnd(Animator paramAnonymousAnimator)
-          {
-            int j;
-            int i;
-            if (!this.canceled)
-            {
-              j = this.val$nodesToStart.size();
-              i = 0;
-            }
-            for (;;)
-            {
-              if (i >= j) {
-                return;
-              }
-              paramAnonymousAnimator = (AnimatorSet.Node)this.val$nodesToStart.get(i);
-              paramAnonymousAnimator.animation.start();
-              AnimatorSet.this.mPlayingSet.add(paramAnonymousAnimator.animation);
-              i += 1;
-            }
-          }
-        });
+        this.mDelayAnim.addListener(new AnimatorSet.1(this, (ArrayList)localObject1));
         this.mDelayAnim.start();
-        break label71;
-        label524:
+        break label76;
+        label529:
         ((Animator.AnimatorListener)((ArrayList)localObject1).get(i)).onAnimationStart(this);
         i += 1;
-        break label98;
+        break label103;
       }
       ((Animator.AnimatorListener)((ArrayList)localObject1).get(i)).onAnimationEnd(this);
       i += 1;
-    }
-  }
-  
-  private class AnimatorSetListener
-    implements Animator.AnimatorListener
-  {
-    private AnimatorSet mAnimatorSet;
-    
-    AnimatorSetListener(AnimatorSet paramAnimatorSet)
-    {
-      this.mAnimatorSet = paramAnimatorSet;
-    }
-    
-    public void onAnimationCancel(Animator paramAnimator)
-    {
-      int j;
-      int i;
-      if ((!AnimatorSet.this.mTerminated) && (AnimatorSet.this.mPlayingSet.size() == 0) && (AnimatorSet.this.mListeners != null))
-      {
-        j = AnimatorSet.this.mListeners.size();
-        i = 0;
-      }
-      for (;;)
-      {
-        if (i >= j) {
-          return;
-        }
-        ((Animator.AnimatorListener)AnimatorSet.this.mListeners.get(i)).onAnimationCancel(this.mAnimatorSet);
-        i += 1;
-      }
-    }
-    
-    public void onAnimationEnd(Animator paramAnimator)
-    {
-      paramAnimator.removeListener(this);
-      AnimatorSet.this.mPlayingSet.remove(paramAnimator);
-      ((AnimatorSet.Node)this.mAnimatorSet.mNodeMap.get(paramAnimator)).done = true;
-      int j;
-      int i;
-      if (!AnimatorSet.this.mTerminated)
-      {
-        paramAnimator = this.mAnimatorSet.mSortedNodes;
-        j = 1;
-        int k = paramAnimator.size();
-        i = 0;
-        if (i < k) {
-          break label120;
-        }
-        i = j;
-        label71:
-        if (i != 0) {
-          if (AnimatorSet.this.mListeners != null)
-          {
-            paramAnimator = (ArrayList)AnimatorSet.this.mListeners.clone();
-            j = paramAnimator.size();
-            i = 0;
-          }
-        }
-      }
-      for (;;)
-      {
-        if (i >= j)
-        {
-          this.mAnimatorSet.mStarted = false;
-          return;
-          label120:
-          if (!((AnimatorSet.Node)paramAnimator.get(i)).done)
-          {
-            i = 0;
-            break label71;
-          }
-          i += 1;
-          break;
-        }
-        ((Animator.AnimatorListener)paramAnimator.get(i)).onAnimationEnd(this.mAnimatorSet);
-        i += 1;
-      }
-    }
-    
-    public void onAnimationRepeat(Animator paramAnimator) {}
-    
-    public void onAnimationStart(Animator paramAnimator) {}
-  }
-  
-  public class Builder
-  {
-    private AnimatorSet.Node mCurrentNode;
-    
-    Builder(Animator paramAnimator)
-    {
-      this.mCurrentNode = ((AnimatorSet.Node)AnimatorSet.this.mNodeMap.get(paramAnimator));
-      if (this.mCurrentNode == null)
-      {
-        this.mCurrentNode = new AnimatorSet.Node(paramAnimator);
-        AnimatorSet.this.mNodeMap.put(paramAnimator, this.mCurrentNode);
-        AnimatorSet.this.mNodes.add(this.mCurrentNode);
-      }
-    }
-    
-    public Builder after(long paramLong)
-    {
-      ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-      localValueAnimator.setDuration(paramLong);
-      after(localValueAnimator);
-      return this;
-    }
-    
-    public Builder after(Animator paramAnimator)
-    {
-      AnimatorSet.Node localNode2 = (AnimatorSet.Node)AnimatorSet.this.mNodeMap.get(paramAnimator);
-      AnimatorSet.Node localNode1 = localNode2;
-      if (localNode2 == null)
-      {
-        localNode1 = new AnimatorSet.Node(paramAnimator);
-        AnimatorSet.this.mNodeMap.put(paramAnimator, localNode1);
-        AnimatorSet.this.mNodes.add(localNode1);
-      }
-      paramAnimator = new AnimatorSet.Dependency(localNode1, 1);
-      this.mCurrentNode.addDependency(paramAnimator);
-      return this;
-    }
-    
-    public Builder before(Animator paramAnimator)
-    {
-      AnimatorSet.Node localNode2 = (AnimatorSet.Node)AnimatorSet.this.mNodeMap.get(paramAnimator);
-      AnimatorSet.Node localNode1 = localNode2;
-      if (localNode2 == null)
-      {
-        localNode1 = new AnimatorSet.Node(paramAnimator);
-        AnimatorSet.this.mNodeMap.put(paramAnimator, localNode1);
-        AnimatorSet.this.mNodes.add(localNode1);
-      }
-      localNode1.addDependency(new AnimatorSet.Dependency(this.mCurrentNode, 1));
-      return this;
-    }
-    
-    public Builder with(Animator paramAnimator)
-    {
-      AnimatorSet.Node localNode2 = (AnimatorSet.Node)AnimatorSet.this.mNodeMap.get(paramAnimator);
-      AnimatorSet.Node localNode1 = localNode2;
-      if (localNode2 == null)
-      {
-        localNode1 = new AnimatorSet.Node(paramAnimator);
-        AnimatorSet.this.mNodeMap.put(paramAnimator, localNode1);
-        AnimatorSet.this.mNodes.add(localNode1);
-      }
-      localNode1.addDependency(new AnimatorSet.Dependency(this.mCurrentNode, 0));
-      return this;
-    }
-  }
-  
-  private static class Dependency
-  {
-    static final int AFTER = 1;
-    static final int WITH = 0;
-    public AnimatorSet.Node node;
-    public int rule;
-    
-    public Dependency(AnimatorSet.Node paramNode, int paramInt)
-    {
-      this.node = paramNode;
-      this.rule = paramInt;
-    }
-  }
-  
-  private static class DependencyListener
-    implements Animator.AnimatorListener
-  {
-    private AnimatorSet mAnimatorSet;
-    private AnimatorSet.Node mNode;
-    private int mRule;
-    
-    public DependencyListener(AnimatorSet paramAnimatorSet, AnimatorSet.Node paramNode, int paramInt)
-    {
-      this.mAnimatorSet = paramAnimatorSet;
-      this.mNode = paramNode;
-      this.mRule = paramInt;
-    }
-    
-    private void startIfReady(Animator paramAnimator)
-    {
-      if (this.mAnimatorSet.mTerminated) {
-        return;
-      }
-      Object localObject = null;
-      int j = this.mNode.tmpDependencies.size();
-      int i = 0;
-      for (;;)
-      {
-        if (i >= j) {}
-        for (;;)
-        {
-          this.mNode.tmpDependencies.remove(localObject);
-          if (this.mNode.tmpDependencies.size() != 0) {
-            break;
-          }
-          this.mNode.animation.start();
-          this.mAnimatorSet.mPlayingSet.add(this.mNode.animation);
-          return;
-          AnimatorSet.Dependency localDependency = (AnimatorSet.Dependency)this.mNode.tmpDependencies.get(i);
-          if ((localDependency.rule != this.mRule) || (localDependency.node.animation != paramAnimator)) {
-            break label139;
-          }
-          localObject = localDependency;
-          paramAnimator.removeListener(this);
-        }
-        label139:
-        i += 1;
-      }
-    }
-    
-    public void onAnimationCancel(Animator paramAnimator) {}
-    
-    public void onAnimationEnd(Animator paramAnimator)
-    {
-      if (this.mRule == 1) {
-        startIfReady(paramAnimator);
-      }
-    }
-    
-    public void onAnimationRepeat(Animator paramAnimator) {}
-    
-    public void onAnimationStart(Animator paramAnimator)
-    {
-      if (this.mRule == 0) {
-        startIfReady(paramAnimator);
-      }
-    }
-  }
-  
-  private static class Node
-    implements Cloneable
-  {
-    public Animator animation;
-    public ArrayList<AnimatorSet.Dependency> dependencies = null;
-    public boolean done = false;
-    public ArrayList<Node> nodeDependencies = null;
-    public ArrayList<Node> nodeDependents = null;
-    public ArrayList<AnimatorSet.Dependency> tmpDependencies = null;
-    
-    public Node(Animator paramAnimator)
-    {
-      this.animation = paramAnimator;
-    }
-    
-    public void addDependency(AnimatorSet.Dependency paramDependency)
-    {
-      if (this.dependencies == null)
-      {
-        this.dependencies = new ArrayList();
-        this.nodeDependencies = new ArrayList();
-      }
-      this.dependencies.add(paramDependency);
-      if (!this.nodeDependencies.contains(paramDependency.node)) {
-        this.nodeDependencies.add(paramDependency.node);
-      }
-      paramDependency = paramDependency.node;
-      if (paramDependency.nodeDependents == null) {
-        paramDependency.nodeDependents = new ArrayList();
-      }
-      paramDependency.nodeDependents.add(this);
-    }
-    
-    public Node clone()
-    {
-      try
-      {
-        Node localNode = (Node)super.clone();
-        localNode.animation = this.animation.clone();
-        return localNode;
-      }
-      catch (CloneNotSupportedException localCloneNotSupportedException)
-      {
-        throw new AssertionError();
-      }
     }
   }
 }

@@ -1,23 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
-import com.tencent.widget.Switch;
+import com.rookery.translate.type.Language;
+import com.rookery.translate.type.TranslateError;
 
-public class krc
-  implements DialogInterface.OnCancelListener
+public abstract interface krc
 {
-  public krc(EqqAccountDetailActivity paramEqqAccountDetailActivity, PaConfigAttr.PaConfigInfo paramPaConfigInfo, Switch paramSwitch) {}
+  public abstract void a(long paramLong, String paramString1, Language paramLanguage, String paramString2, adrn paramadrn);
   
-  public void onCancel(DialogInterface paramDialogInterface)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo, this.jdField_a_of_type_ComTencentWidgetSwitch);
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b = false;
-  }
+  public abstract void a(long paramLong, String paramString, TranslateError paramTranslateError, adrn paramadrn);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     krc
  * JD-Core Version:    0.7.0.1
  */

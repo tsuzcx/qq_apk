@@ -1,22 +1,23 @@
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService.1;
 
 public class aosv
-  implements FMDialogUtil.FMDialogInterface
+  implements MediaPlayer.OnPreparedListener
 {
-  public aosv(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public aosv(FileViewMusicService.1 param1, MediaPlayer paramMediaPlayer) {}
   
-  public void a()
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    ShortVideoPreviewActivity.b(this.a);
-    this.a.setResult(-1);
+    int i = this.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration();
+    this.jdField_a_of_type_AndroidMediaMediaPlayer.stop();
+    this.jdField_a_of_type_AndroidMediaMediaPlayer.release();
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewMusicService$1.a.a(i);
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aosv
  * JD-Core Version:    0.7.0.1
  */

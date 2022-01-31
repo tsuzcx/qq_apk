@@ -93,7 +93,7 @@ public class LzmaUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.vas.LzmaUtils
  * JD-Core Version:    0.7.0.1
  */

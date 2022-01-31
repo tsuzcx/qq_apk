@@ -1,114 +1,23 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
 
 public class abuz
-  extends BaseAdapter
+  implements atgq
 {
-  public abuz(CardPicGalleryActivity paramCardPicGalleryActivity) {}
+  public abuz(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  public String a(int paramInt)
+  public void a(int paramInt, atgr paramatgr)
   {
-    if ((this.a.jdField_a_of_type_JavaUtilArrayList != null) && (paramInt < this.a.jdField_a_of_type_JavaUtilArrayList.size()) && (paramInt >= 0)) {
-      return (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public int getCount()
-  {
-    if (this.a.jdField_a_of_type_JavaUtilArrayList != null) {
-      return this.a.jdField_a_of_type_JavaUtilArrayList.size();
-    }
-    return 0;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    Object localObject;
-    if (paramView == null)
+    if ((paramatgr != null) && (!TextUtils.isEmpty(TextPreviewTranslateActivity.b(this.a))) && (!TextPreviewTranslateActivity.b(this.a).equals(paramatgr.b)))
     {
-      paramView = this.a.getLayoutInflater().inflate(2130970272, null);
-      paramViewGroup = new abva();
-      paramViewGroup.a = ((URLImageView)paramView.findViewById(2131369879));
-      paramView.setTag(paramViewGroup);
-      localObject = a(paramInt);
-      if ((this.a.jdField_a_of_type_Int != 0) && (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
-        this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.a.getResources().getDrawable(this.a.jdField_a_of_type_Int);
-      }
-      if (localObject == null) {}
-    }
-    else
-    {
-      for (;;)
-      {
-        try
-        {
-          localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-          if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-            continue;
-          }
-          localObject = URLDrawable.getDrawable((String)localObject, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-          paramViewGroup.a.setImageDrawable((Drawable)localObject);
-        }
-        catch (Exception paramViewGroup)
-        {
-          URLDrawable.URLDrawableOptions localURLDrawableOptions;
-          paramViewGroup.printStackTrace();
-          continue;
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-          return paramView;
-        }
-        if ((this.a.c != 1) || (this.a.jdField_a_of_type_Boolean)) {
-          continue;
-        }
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        return paramView;
-        paramViewGroup = (abva)paramView.getTag();
-        break;
-        localObject = URLDrawable.getDrawable((String)localObject, localURLDrawableOptions);
-      }
-    }
-    try
-    {
-      if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-      {
-        localObject = URLDrawable.getDrawable("http://aaa", this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-        paramViewGroup.a.setImageDrawable((Drawable)localObject);
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        return paramView;
-        paramViewGroup.a.setImageDrawable(null);
-      }
-    }
-    catch (Exception paramViewGroup)
-    {
-      for (;;)
-      {
-        paramViewGroup.printStackTrace();
-      }
+      TextPreviewTranslateActivity.b(this.a, paramatgr.b);
+      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.c(this.a), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abuz
  * JD-Core Version:    0.7.0.1
  */

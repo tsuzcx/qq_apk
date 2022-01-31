@@ -1,27 +1,20 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
 
 public class aobk
-  extends AnimatorListenerAdapter
+  implements View.OnClickListener
 {
-  public aobk(EditVideoButton paramEditVideoButton) {}
+  public aobk(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    EditVideoButton.a(this.a).setVisibility(8);
-    EditVideoButton.a(this.a).setVisibility(8);
-    EditVideoButton.a(this.a, EditVideoButton.b(this.a));
-    if (this.a.a != null) {
-      this.a.a(2131363427);
-    }
+    this.a.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aobk
  * JD-Core Version:    0.7.0.1
  */

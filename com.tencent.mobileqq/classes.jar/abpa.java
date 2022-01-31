@@ -1,25 +1,62 @@
-import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity.4.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+import mqq.observer.AccountObserver;
 
 public class abpa
-  implements Runnable
+  extends AccountObserver
 {
-  public abpa(ARMapLoadingActivity paramARMapLoadingActivity, int paramInt1, int paramInt2, String paramString) {}
+  public abpa(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
   
-  public void run()
+  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt, byte[] paramArrayOfByte)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("failType", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("subType", String.valueOf(this.b));
-    localHashMap.put("failInfo", this.jdField_a_of_type_JavaLangString);
-    StatisticCollector.a(BaseApplication.getContext()).a("", "REPORT_TAG_LOADING_FAIL", false, 0L, 0L, localHashMap, "", false);
+    super.onLoginFailed(paramString1, paramString2, paramString3, paramInt, paramArrayOfByte);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("RegisterQQNumberActivity", 4, String.format(Locale.getDefault(), "onLoginFailed, ret: %s, uin: %s, msg: %s, alias: %s", new Object[] { Integer.valueOf(paramInt), RegisterQQNumberActivity.a(this.a), paramString2, paramString1 }));
+    }
+    RegisterQQNumberActivity.a(this.a);
+    paramString1 = new Intent(this.a, LoginActivity.class);
+    paramString1.putExtra("uin", RegisterQQNumberActivity.a(this.a));
+    paramString1.putExtra("tab_index", MainFragment.b);
+    paramString1.addFlags(131072);
+    this.a.startActivity(paramString1);
+    this.a.finish();
+  }
+  
+  public void onLoginSuccess(String paramString1, String paramString2)
+  {
+    super.onLoginSuccess(paramString1, paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterQQNumberActivity", 2, "AccountObserver ,onLoginSuccess ");
+    }
+  }
+  
+  public void onLoginTimeout(String paramString)
+  {
+    super.onLoginTimeout(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterQQNumberActivity", 2, "AccountObserver ,onLoginTimeout ");
+    }
+    RegisterQQNumberActivity.a(this.a);
+    this.a.a.post(new RegisterQQNumberActivity.4.1(this));
+  }
+  
+  public void onUserCancel(String paramString)
+  {
+    super.onUserCancel(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterQQNumberActivity", 2, "AccountObserver ,onUserCancel ");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abpa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-
 class tqq
-  implements Runnable
+  implements tql
 {
-  tqq(tqn paramtqn) {}
+  public tql a;
   
-  public void run()
+  private tqq(tqm paramtqm) {}
+  
+  public void a_(tqg paramtqg)
   {
-    this.a.a.B();
+    if (tqm.a(this.jdField_a_of_type_Tqm) != null) {
+      tqm.a(this.jdField_a_of_type_Tqm).a(0L, paramtqg.b(), paramtqg);
+    }
+    if (this.jdField_a_of_type_Tql != null) {
+      this.jdField_a_of_type_Tql.a_(paramtqg);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tqq
  * JD-Core Version:    0.7.0.1
  */

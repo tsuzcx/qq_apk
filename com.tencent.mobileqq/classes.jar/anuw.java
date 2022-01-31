@@ -1,42 +1,21 @@
-import android.os.Handler;
-import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
-import com.tencent.mobileqq.richmedia.capture.audio.AudioDataCache;
-import com.tencent.util.WeakReferenceHandler;
-import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
-import dov.com.qq.im.capture.music.humrecognition.humming.IRecognizer;
-import java.io.File;
+import android.graphics.Rect;
+import android.view.View;
 
-public class anuw
-  implements Runnable
+public abstract interface anuw
 {
-  public anuw(HummingActivity paramHummingActivity) {}
+  public abstract int a();
   
-  public void run()
-  {
-    HummingActivity.a(this.a);
-    if (HummingActivity.a(this.a)) {
-      HummingActivity.a(this.a).sendEmptyMessage(4);
-    }
-    do
-    {
-      return;
-      if (HummingActivity.b(this.a) >= 5)
-      {
-        HummingActivity.a(this.a).sendEmptyMessage(5);
-        return;
-      }
-    } while (HummingActivity.a(this.a).a == null);
-    File localFile = new File(HummingActivity.a(this.a).a.b());
-    if (localFile.exists()) {
-      HummingActivity.a(this.a).a(localFile);
-    }
-    HummingActivity.a(this.a).a();
-    HummingActivity.a(this.a).postDelayed(this, 3000L);
-  }
+  public abstract Rect a(int paramInt);
+  
+  public abstract View a(int paramInt);
+  
+  public abstract int b();
+  
+  public abstract int c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anuw
  * JD-Core Version:    0.7.0.1
  */

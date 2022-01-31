@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class im_msg_body$Elem
-  extends MessageMicro
+  extends MessageMicro<Elem>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public im_msg_body.AnonymousGroupMsg anon_group_msg = new im_msg_body.AnonymousGroupMsg();

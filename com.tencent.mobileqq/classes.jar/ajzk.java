@@ -1,34 +1,56 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPager;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPager.RollViewPager;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import java.lang.ref.WeakReference;
 
-public class ajzk
-  extends Handler
+class ajzk
+  extends ajjh
 {
-  public ajzk(AvatarWallViewPager paramAvatarWallViewPager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  ajzk(ajzj paramajzj) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void onReqLastChatTime(boolean paramBoolean, String paramString1, String paramString2, Long paramLong)
   {
-    if (AvatarWallViewPager.a(this.a)) {}
-    while (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.getCount() <= 1) {
-      return;
+    int j = 1;
+    ajjj localajjj;
+    int i;
+    Object localObject;
+    if (paramBoolean)
+    {
+      localajjj = (ajjj)this.a.a.getManager(51);
+      ExtensionInfo localExtensionInfo = localajjj.a(paramString2, true);
+      i = 0;
+      localObject = localExtensionInfo;
+      if (localExtensionInfo == null)
+      {
+        localObject = new ExtensionInfo();
+        ((ExtensionInfo)localObject).uin = paramString2;
+        i = 1;
+      }
+      if (((ExtensionInfo)localObject).lastIceBreakChatTs >= paramLong.longValue()) {
+        break label152;
+      }
+      ((ExtensionInfo)localObject).lastIceBreakChatTs = paramLong.longValue();
+      i = j;
     }
-    paramMessage = this.a;
-    paramMessage.d += 1;
-    this.a.d %= this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.getCount();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager$RollViewPager.setCurrentItem(this.a.d, true);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(), this.a.c);
+    label152:
+    for (;;)
+    {
+      if (i != 0) {
+        localajjj.a((ExtensionInfo)localObject);
+      }
+      if (ajzj.a(this.a) == null) {}
+      for (localObject = null;; localObject = (ajzn)ajzj.a(this.a).get())
+      {
+        if (localObject != null) {
+          ((ajzn)localObject).a(paramBoolean, paramString1, paramString2, paramLong);
+        }
+        return;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajzk
  * JD-Core Version:    0.7.0.1
  */

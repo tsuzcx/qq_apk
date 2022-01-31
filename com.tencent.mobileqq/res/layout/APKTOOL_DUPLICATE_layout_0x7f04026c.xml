@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:paddingTop="66.0dip" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.GridView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ec3" android:focusable="false" android:focusableInTouchMode="false" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:cacheColorHint="@null" android:horizontalSpacing="2.0dip" android:verticalSpacing="0.0dip" android:stretchMode="none" android:numColumns="2" />
-    <TextView android:textSize="14.0sp" android:textColor="#e6ffffff" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ec4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2cf8" android:layout_centerHorizontal="true" />
-    <com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ec5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</RelativeLayout>

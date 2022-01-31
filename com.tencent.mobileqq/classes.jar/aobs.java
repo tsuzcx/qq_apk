@@ -1,22 +1,23 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.POIPostersRequestCallback;
-import java.util.Collections;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1.1;
 
 public class aobs
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aobs(EditVideoDoodle paramEditVideoDoodle) {}
+  public aobs(QfileLocalFileAppTabView.1.1 param1) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.jdField_a_of_type_Boolean) {
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiManager$POIPostersRequestCallback.a(1, Collections.EMPTY_LIST);
-    }
+    QfileLocalFileAppTabView.a(this.a.a.this$0);
+    this.a.a.this$0.c(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aobs
  * JD-Core Version:    0.7.0.1
  */

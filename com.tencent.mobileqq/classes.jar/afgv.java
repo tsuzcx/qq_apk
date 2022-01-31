@@ -1,25 +1,22 @@
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarDownloadManager;
-import com.tencent.mobileqq.nearby.profilecard.NearbyAuthVideoPlayerFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class afgv
-  implements Runnable
 {
-  public afgv(NearbyAuthVideoPlayerFragment paramNearbyAuthVideoPlayerFragment, String paramString) {}
-  
-  public void run()
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    if (NearbyAuthVideoPlayerFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment) != null)
+    if (paramQQAppInterface == null) {}
+    do
     {
-      NearbyAuthVideoPlayerFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyAuthVideoPlayerFragment).a(this.jdField_a_of_type_JavaLangString);
       return;
-    }
-    QLog.i("NearbyAuthVideoPlayerFragment", 1, "mDynamicAvatarDownloadManager is NULL!!!");
+      asfc.a(paramQQAppInterface.getAccount(), "sp_key_card_redpoint_count", Integer.valueOf(paramInt));
+    } while (!QLog.isColorLevel());
+    QLog.i("CardUtil", 2, String.format("updateCardRedPoint count:%d", new Object[] { Integer.valueOf(paramInt) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afgv
  * JD-Core Version:    0.7.0.1
  */

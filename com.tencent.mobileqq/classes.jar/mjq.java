@@ -1,76 +1,45 @@
-import android.media.AudioManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.HashMap;
 
 public class mjq
-  implements Runnable
 {
-  public mjq(VideoVolumeControl paramVideoVolumeControl) {}
+  public int a;
+  public String a;
+  public HashMap<String, String> a;
+  public mjr a;
+  public int b;
+  public int c = 60000;
   
-  public void run()
+  public mjq()
   {
-    if (VideoVolumeControl.a(this.a)) {
-      if (VideoVolumeControl.a(this.a) != null)
-      {
-        VideoVolumeControl.a(this.a).requestAudioFocus(null, 3, 2);
-        break label71;
-      }
+    this.jdField_a_of_type_Int = 3;
+    this.jdField_b_of_type_Int = 5000;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mUrl = ").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",mConnectionTimeout = ").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(",mSocketTimeout = ").append(this.c);
+    if (this.jdField_a_of_type_Mjr != null)
+    {
+      localStringBuilder.append(",mResult.mIsSucc = ").append(this.jdField_a_of_type_Mjr.jdField_a_of_type_Boolean);
+      localStringBuilder.append(",mResult.mFileLength = ").append(this.jdField_a_of_type_Mjr.jdField_a_of_type_Long);
+      localStringBuilder.append(",mResult.mErrCode = ").append(this.jdField_a_of_type_Mjr.jdField_a_of_type_Int);
+      localStringBuilder.append(",mResult.mErrStr = ").append(this.jdField_a_of_type_Mjr.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(",mResult.mTryCount = ").append(this.jdField_a_of_type_Mjr.jdField_b_of_type_Int);
+      localStringBuilder.append(",mResult.mCostTime = ").append(this.jdField_a_of_type_Mjr.jdField_b_of_type_Long).append("ms");
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "mRequestOrAbandonAudioFocusCallBack isFocusAudio:" + VideoVolumeControl.a(this.a));
-      }
-      label71:
-      return;
-      if (VideoVolumeControl.a(this.a) != null)
-      {
-        Iterator localIterator = VideoVolumeControl.a(this.a).keySet().iterator();
-        Object localObject;
-        for (;;)
-        {
-          if (localIterator.hasNext())
-          {
-            localObject = (VideoPlayManager)localIterator.next();
-            if ((localObject != null) && (((VideoPlayManager)localObject).a()))
-            {
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "checkPlayState  IsPlaying When abandonAudioFocus:" + localObject);
-              return;
-            }
-          }
-        }
-        localIterator = VideoVolumeControl.b(this.a).keySet().iterator();
-        for (;;)
-        {
-          if (localIterator.hasNext())
-          {
-            localObject = (VideoFeedsPlayManager)localIterator.next();
-            if ((localObject != null) && (((VideoFeedsPlayManager)localObject).c()))
-            {
-              if (!QLog.isColorLevel()) {
-                break;
-              }
-              QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "checkPlayState  IsPlaying When abandonAudioFocus:" + localObject);
-              return;
-            }
-          }
-        }
-        VideoVolumeControl.a(this.a).abandonAudioFocus(null);
-      }
+      return localStringBuilder.toString();
+      localStringBuilder.append(",mResult = null");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mjq
  * JD-Core Version:    0.7.0.1
  */

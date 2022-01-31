@@ -1,35 +1,28 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.QSecFramework;
-import com.tencent.qqprotect.qsec.QSecFramework.IGoingUpHandler;
+import android.text.TextUtils;
 
 public class amex
-  implements QSecFramework.IGoingUpHandler
 {
-  public amex(QSecFramework paramQSecFramework) {}
+  public String a;
+  public boolean a;
   
-  public int a(int paramInt1, int paramInt2, int paramInt3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
+  public amex(amew paramamew)
   {
-    if (paramInt1 != 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSecFramework", 2, String.format("Native msg, cookie: %08X, delay: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-      }
-      if (paramInt2 != 0) {
-        QSecFramework.a(this.a).sendMessageDelayed(QSecFramework.a(this.a).obtainMessage(1, paramInt1, 0), paramInt2 * 1000);
-      }
-    }
-    else
-    {
-      return 0;
-    }
-    QSecFramework.a(this.a).sendMessage(QSecFramework.a(this.a).obtainMessage(1, paramInt1, 0));
-    return 0;
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+  }
+  
+  public String toString()
+  {
+    return "WebBundleConfig{enable=" + this.jdField_a_of_type_Boolean + ", preloadUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amex
  * JD-Core Version:    0.7.0.1
  */

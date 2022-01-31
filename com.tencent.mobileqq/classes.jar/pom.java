@@ -1,47 +1,28 @@
-import com.squareup.okhttp.Request.Builder;
-import com.tencent.component.network.downloader.Downloader;
-import com.tencent.component.network.downloader.impl.ImageDownloaderInitializer;
-import com.tencent.component.network.downloader.strategy.DownloadPreprocessStrategy;
-import com.tencent.component.network.downloader.strategy.DownloadPreprocessStrategy.DownloadPool;
-import com.tencent.component.network.downloader.strategy.KeepAliveStrategy;
-import com.tencent.component.network.module.base.Config;
-import org.apache.http.HttpRequest;
+import java.util.Deque;
+import java.util.LinkedList;
 
-public final class pom
-  implements DownloadPreprocessStrategy
+class pom
 {
-  public pom(Downloader paramDownloader) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  Deque<poo> jdField_a_of_type_JavaUtilDeque = new LinkedList();
+  int b;
+  int c = 0;
+  private final int d = 50;
   
-  public DownloadPreprocessStrategy.DownloadPool a(String paramString1, String paramString2)
-  {
-    if (Config.a(paramString2)) {
-      return DownloadPreprocessStrategy.DownloadPool.HTTP2;
-    }
-    if (ImageDownloaderInitializer.a(paramString2)) {
-      return DownloadPreprocessStrategy.DownloadPool.SPECIFIC1;
-    }
-    paramString1 = this.a.getKeepAliveStrategy();
-    if ((paramString1 != null) && (paramString1.a(paramString2))) {
-      return DownloadPreprocessStrategy.DownloadPool.SPECIFIC;
-    }
-    return DownloadPreprocessStrategy.DownloadPool.COMMON;
-  }
+  pom(pol parampol) {}
   
-  public String a(String paramString)
+  boolean a(poo parampoo)
   {
-    return paramString;
-  }
-  
-  public void a(String paramString1, String paramString2, HttpRequest paramHttpRequest, Request.Builder paramBuilder, int paramInt)
-  {
-    if ((paramHttpRequest != null) && (paramString2 != null) && (ImageDownloaderInitializer.b(paramString2))) {
-      paramHttpRequest.addHeader("Cookie", "uin=o" + Config.a() + ";");
+    if (this.jdField_a_of_type_JavaUtilDeque.size() >= 50) {
+      this.jdField_a_of_type_JavaUtilDeque.poll();
     }
+    return this.jdField_a_of_type_JavaUtilDeque.offer(parampoo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pom
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package dov.com.tencent.mobileqq.shortvideo;
 
+import ajed;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -7,24 +8,24 @@ import android.media.MediaPlayer;
 import android.os.Build;
 import android.text.TextUtils;
 import android.text.format.Formatter;
-import aoyc;
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper;
+import awei;
+import bace;
+import bjlx;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoConstants;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.util.VidUtil;
 import java.io.File;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.os.MqqHandler;
+import sjj;
 
 public class ShortVideoUtils
-  implements ShortVideoConstants
+  implements awei
 {
   private static int jdField_a_of_type_Int;
   private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
@@ -45,7 +46,7 @@ public class ShortVideoUtils
     jdField_a_of_type_Int = 2;
     jdField_b_of_type_Int = 1;
     jdField_a_of_type_ArrayOfInt = new int[] { 1, 97, 125 };
-    ThreadManager.getSubThreadHandler().post(new aoyc());
+    ThreadManager.getSubThreadHandler().post(new ShortVideoUtils.1());
   }
   
   public static long a(String paramString)
@@ -270,7 +271,7 @@ public class ShortVideoUtils
   
   public static String a()
   {
-    StringBuilder localStringBuilder = new StringBuilder(e());
+    StringBuilder localStringBuilder = new StringBuilder(c());
     localStringBuilder.append("thumbs");
     localStringBuilder.append(File.separator);
     Object localObject = new File(localStringBuilder.toString());
@@ -279,7 +280,7 @@ public class ShortVideoUtils
     }
     localObject = localStringBuilder.toString() + ".nomedia";
     if (!new File((String)localObject).exists()) {
-      FileUtils.c((String)localObject);
+      bace.c((String)localObject);
     }
     return localStringBuilder.toString();
   }
@@ -352,17 +353,17 @@ public class ShortVideoUtils
       if (paramMessageForShortVideo.isSendFromLocal())
       {
         bool2 = bool1;
-        if (FileUtils.b(paramString)) {
+        if (bace.b(paramString)) {
           bool2 = false;
         }
       }
-      paramMessageForShortVideo = d(paramMessageForShortVideo.getMd5());
+      paramMessageForShortVideo = c(paramMessageForShortVideo.getMd5());
       localObject = new File(paramMessageForShortVideo);
       if (((File)localObject).exists()) {
         break;
       }
       ((File)localObject).mkdirs();
-      FileUtils.c(paramMessageForShortVideo + ".nomedia");
+      bace.c(paramMessageForShortVideo + ".nomedia");
       return paramString;
     }
     Object localObject = ((File)localObject).list();
@@ -391,7 +392,7 @@ public class ShortVideoUtils
         if (paramMessageForShortVideo.equals(paramString)) {
           return paramString;
         }
-        FileUtils.d(paramMessageForShortVideo, paramString);
+        bace.d(paramMessageForShortVideo, paramString);
         if (QLog.isColorLevel()) {
           QLog.i("ShortVideoUtils", 2, "copy " + paramMessageForShortVideo + " to " + paramString);
         }
@@ -409,15 +410,18 @@ public class ShortVideoUtils
     if (paramFile == null) {
       return null;
     }
-    Object localObject = VidUtil.a(paramFile);
-    paramFile = new StringBuilder(AppConstants.aW);
-    paramFile.append((String)localObject);
-    paramFile.append(".mp4");
-    localObject = new File(AppConstants.aW);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
-    }
-    return paramFile.toString();
+    paramFile = bjlx.a(paramFile);
+    StringBuilder localStringBuilder = new StringBuilder(ajed.aU);
+    localStringBuilder.append("shortvideo");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("temp");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("source");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramFile);
+    localStringBuilder.append("_local");
+    localStringBuilder.append(".mp4");
+    return localStringBuilder.toString();
   }
   
   public static String a(String paramString)
@@ -425,8 +429,8 @@ public class ShortVideoUtils
     if (paramString == null) {
       return null;
     }
-    paramString = VidUtil.a(new File(paramString));
-    StringBuilder localStringBuilder = new StringBuilder(AppConstants.aK);
+    paramString = bjlx.a(new File(paramString));
+    StringBuilder localStringBuilder = new StringBuilder(ajed.aU);
     localStringBuilder.append("shortvideo");
     localStringBuilder.append(File.separator);
     localStringBuilder.append("temp");
@@ -434,7 +438,8 @@ public class ShortVideoUtils
     localStringBuilder.append("source");
     localStringBuilder.append(File.separator);
     localStringBuilder.append(paramString);
-    localStringBuilder.append(File.separator);
+    localStringBuilder.append("watermark");
+    localStringBuilder.append(".png");
     return localStringBuilder.toString();
   }
   
@@ -447,14 +452,20 @@ public class ShortVideoUtils
     return localStringBuilder.toString();
   }
   
-  public static String a(String paramString1, String paramString2, long paramLong, String paramString3)
+  public static String a(HashSet<Integer> paramHashSet)
   {
-    paramString1 = new StringBuilder(d(paramString1));
-    paramString1.append(paramString2);
-    paramString1.append(Math.abs(paramLong));
-    paramString1.append(".");
-    paramString1.append(paramString3);
-    return paramString1.toString();
+    StringBuilder localStringBuilder = new StringBuilder(128);
+    paramHashSet = paramHashSet.iterator();
+    int i = 1;
+    while (paramHashSet.hasNext())
+    {
+      if (i == 0) {
+        localStringBuilder.append(",");
+      }
+      i = 0;
+      localStringBuilder.append(paramHashSet.next());
+    }
+    return localStringBuilder.toString();
   }
   
   public static void a(AppInterface paramAppInterface)
@@ -495,22 +506,16 @@ public class ShortVideoUtils
   @TargetApi(14)
   public static long b(String paramString)
   {
-    if (!FileUtils.a(paramString)) {
+    if (!bace.a(paramString)) {
       return 0L;
     }
-    return VideoCompositeHelper.a(paramString);
+    return sjj.a(paramString);
   }
   
   public static String b()
   {
-    StringBuilder localStringBuilder;
-    do
-    {
-      String str = VidUtil.a();
-      localStringBuilder = new StringBuilder(c());
-      localStringBuilder.append(str).append(".mp4");
-    } while (new File(localStringBuilder.toString()).exists());
-    return localStringBuilder.toString();
+    String str = bjlx.a();
+    return ajed.aU + "shortvideo" + File.separator + "temp" + File.separator + "source" + File.separator + str + "watermark.png";
   }
   
   public static String b(int paramInt)
@@ -557,7 +562,7 @@ public class ShortVideoUtils
   
   public static String b(MessageForShortVideo paramMessageForShortVideo, String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder(d(paramMessageForShortVideo.getMd5()));
+    StringBuilder localStringBuilder = new StringBuilder(c(paramMessageForShortVideo.getMd5()));
     localStringBuilder.append(paramMessageForShortVideo.frienduin);
     localStringBuilder.append(Math.abs(paramMessageForShortVideo.uniseq));
     localStringBuilder.append(".");
@@ -570,13 +575,13 @@ public class ShortVideoUtils
     if (paramFile == null) {
       return null;
     }
-    paramFile = VidUtil.a(paramFile);
-    StringBuilder localStringBuilder = new StringBuilder(AppConstants.aK);
+    paramFile = bjlx.a(paramFile);
+    StringBuilder localStringBuilder = new StringBuilder(ajed.aU);
     localStringBuilder.append("shortvideo");
     localStringBuilder.append(File.separator);
     localStringBuilder.append("temp");
     localStringBuilder.append(File.separator);
-    localStringBuilder.append("source");
+    localStringBuilder.append("audio");
     localStringBuilder.append(File.separator);
     localStringBuilder.append(paramFile);
     localStringBuilder.append(".mp4");
@@ -585,20 +590,8 @@ public class ShortVideoUtils
   
   public static String b(String paramString)
   {
-    if (paramString == null) {
-      return null;
-    }
-    paramString = VidUtil.a(new File(paramString));
-    StringBuilder localStringBuilder = new StringBuilder(AppConstants.aK);
-    localStringBuilder.append("shortvideo");
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append("temp");
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append("source");
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append(paramString);
-    localStringBuilder.append("watermark");
-    localStringBuilder.append(".png");
+    StringBuilder localStringBuilder = new StringBuilder("QIM视频");
+    localStringBuilder.append("_").append(paramString);
     return localStringBuilder.toString();
   }
   
@@ -608,7 +601,7 @@ public class ShortVideoUtils
     if (!TextUtils.isEmpty(paramString1))
     {
       String str = MD5.toMD5(paramString1);
-      StringBuilder localStringBuilder = new StringBuilder(AppConstants.aK);
+      StringBuilder localStringBuilder = new StringBuilder(ajed.aU);
       localStringBuilder.append("shortvideo");
       localStringBuilder.append(File.separator);
       localStringBuilder.append(str);
@@ -642,22 +635,12 @@ public class ShortVideoUtils
     return bool;
   }
   
-  public static String c()
+  private static String c()
   {
-    String str = Build.MODEL.toUpperCase();
-    if (str.contains("GN9000L")) {
-      return AppConstants.cr;
-    }
-    if ((str.contains("MX4")) || (str.contains("MX6")) || (str.contains("MX5")) || (str.contains("M355")) || (str.contains("M571C"))) {
-      return AppConstants.cq;
-    }
-    if (str.contains("M040")) {
-      return AppConstants.ct;
-    }
-    if ((str.contains("VIVO X7")) || (str.contains("VIVO X6A")) || (str.contains("VIVO XPLAY6")) || (str.contains("VIVO X5PRO"))) {
-      return AppConstants.cs;
-    }
-    return AppConstants.aW;
+    StringBuilder localStringBuilder = new StringBuilder(ajed.aU);
+    localStringBuilder.append("shortvideo");
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
   }
   
   public static String c(int paramInt)
@@ -678,36 +661,14 @@ public class ShortVideoUtils
     return " shortvideo_cmd_reforward ";
   }
   
-  public static String c(File paramFile)
+  private static String c(String paramString)
   {
-    if (paramFile == null) {
-      return null;
-    }
-    paramFile = VidUtil.a(paramFile);
-    StringBuilder localStringBuilder = new StringBuilder(AppConstants.aK);
+    StringBuilder localStringBuilder = new StringBuilder(ajed.aU);
     localStringBuilder.append("shortvideo");
     localStringBuilder.append(File.separator);
-    localStringBuilder.append("temp");
+    localStringBuilder.append(paramString);
     localStringBuilder.append(File.separator);
-    localStringBuilder.append("source");
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append(paramFile);
-    localStringBuilder.append("_local");
-    localStringBuilder.append(".mp4");
     return localStringBuilder.toString();
-  }
-  
-  public static String c(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder("QIM视频");
-    localStringBuilder.append("_").append(paramString);
-    return localStringBuilder.toString();
-  }
-  
-  public static String d()
-  {
-    String str = VidUtil.a();
-    return AppConstants.aK + "shortvideo" + File.separator + "temp" + File.separator + "source" + File.separator + str + "watermark.png";
   }
   
   public static String d(int paramInt)
@@ -724,42 +685,6 @@ public class ShortVideoUtils
       return "3G";
     }
     return "4G";
-  }
-  
-  public static String d(File paramFile)
-  {
-    if (paramFile == null) {
-      return null;
-    }
-    paramFile = VidUtil.a(paramFile);
-    StringBuilder localStringBuilder = new StringBuilder(AppConstants.aK);
-    localStringBuilder.append("shortvideo");
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append("temp");
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append("audio");
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append(paramFile);
-    localStringBuilder.append(".mp4");
-    return localStringBuilder.toString();
-  }
-  
-  private static String d(String paramString)
-  {
-    StringBuilder localStringBuilder = new StringBuilder(AppConstants.aK);
-    localStringBuilder.append("shortvideo");
-    localStringBuilder.append(File.separator);
-    localStringBuilder.append(paramString);
-    localStringBuilder.append(File.separator);
-    return localStringBuilder.toString();
-  }
-  
-  private static String e()
-  {
-    StringBuilder localStringBuilder = new StringBuilder(AppConstants.aK);
-    localStringBuilder.append("shortvideo");
-    localStringBuilder.append(File.separator);
-    return localStringBuilder.toString();
   }
 }
 

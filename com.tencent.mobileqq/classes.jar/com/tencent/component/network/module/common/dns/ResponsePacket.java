@@ -7,89 +7,33 @@ import java.util.ArrayList;
 
 public class ResponsePacket
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 0L;
-  private DNSInput jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsDNSInput;
-  private String jdField_a_of_type_JavaLangString = "";
-  private StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder();
-  private byte[] jdField_a_of_type_ArrayOfByte = new byte[64];
-  private int[] jdField_a_of_type_ArrayOfInt = new int[4];
-  private ArrayList[] jdField_a_of_type_ArrayOfJavaUtilArrayList;
-  private int b;
+  private static final int LABEL_COMPRESSION = 192;
+  private static final int LABEL_MASK = 192;
+  private static final int LABEL_NORMAL = 0;
+  private static final int MAXLABEL = 64;
+  private static final int SECTION_ADDRESS = 1;
+  private static final int SECTION_QUESTION = 0;
+  private int[] counts = new int[4];
+  private long expireTime = 0L;
+  private int flags;
+  private String host = "";
+  private DNSInput in;
+  private byte[] label = new byte[64];
+  private StringBuilder nameBuilder = new StringBuilder();
+  private int reqId;
+  private ArrayList[] sections;
   
   public ResponsePacket(DNSInput paramDNSInput, String paramString)
   {
-    this.jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsDNSInput = paramDNSInput;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ArrayOfJavaUtilArrayList = new ArrayList[4];
-    a();
-    a(this.b);
-    b();
+    this.in = paramDNSInput;
+    this.host = paramString;
+    this.sections = new ArrayList[4];
+    initHeader();
+    check(this.flags);
+    parseAnswer();
   }
   
-  private String a()
-  {
-    if (this.jdField_a_of_type_JavaLangStringBuilder.length() > 0) {
-      this.jdField_a_of_type_JavaLangStringBuilder.delete(0, this.jdField_a_of_type_JavaLangStringBuilder.length());
-    }
-    int j = 0;
-    int i = 0;
-    while (i == 0)
-    {
-      int k = this.jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsDNSInput.c();
-      switch (k & 0xC0)
-      {
-      default: 
-        throw new WireParseException("bad label type");
-      case 0: 
-        if (k == 0)
-        {
-          i = 1;
-        }
-        else
-        {
-          this.jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsDNSInput.a(this.jdField_a_of_type_ArrayOfByte, 0, k);
-          this.jdField_a_of_type_JavaLangStringBuilder.append(ByteBase.a(this.jdField_a_of_type_ArrayOfByte, k));
-          this.jdField_a_of_type_JavaLangStringBuilder.append(".");
-        }
-        break;
-      case 192: 
-        int m = ((k & 0xFFFFFF3F) << 8) + this.jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsDNSInput.c();
-        if (m >= this.jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsDNSInput.a() - 2) {
-          throw new WireParseException("bad compression");
-        }
-        k = j;
-        if (j == 0)
-        {
-          this.jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsDNSInput.a();
-          k = 1;
-        }
-        this.jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsDNSInput.b(m);
-        j = k;
-      }
-    }
-    if (j != 0) {
-      this.jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsDNSInput.b();
-    }
-    if (this.jdField_a_of_type_JavaLangStringBuilder.length() > 0) {
-      this.jdField_a_of_type_JavaLangStringBuilder.deleteCharAt(this.jdField_a_of_type_JavaLangStringBuilder.length() - 1);
-    }
-    return this.jdField_a_of_type_JavaLangStringBuilder.toString();
-  }
-  
-  private void a()
-  {
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsDNSInput.d();
-    this.b = this.jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsDNSInput.d();
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfInt.length)
-    {
-      this.jdField_a_of_type_ArrayOfInt[i] = this.jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsDNSInput.d();
-      i += 1;
-    }
-  }
-  
-  private void a(int paramInt)
+  private void check(int paramInt)
   {
     String str = Integer.toBinaryString(paramInt);
     if (str.length() < 4) {
@@ -97,21 +41,26 @@ public class ResponsePacket
     }
     str = str.substring(str.length() - 4);
     if (str.equals("0011")) {
-      throw new UnknownHostException("Unable to resolve host \"" + this.jdField_a_of_type_JavaLangString + "\": No address associated with hostname");
+      throw new UnknownHostException("Unable to resolve host \"" + this.host + "\": No address associated with hostname");
     }
     if (!str.equals("0000")) {
-      throw new Exception("exception cause [RCODE - " + str + "][HOST - " + this.jdField_a_of_type_JavaLangString + "]");
+      throw new Exception("exception cause [RCODE - " + str + "][HOST - " + this.host + "]");
     }
   }
   
-  private void a(long paramLong)
+  private void initHeader()
   {
-    if ((this.jdField_a_of_type_Long == 0L) && (paramLong > 0L)) {
-      this.jdField_a_of_type_Long = (System.currentTimeMillis() + 1000L * paramLong);
+    this.reqId = this.in.readU16();
+    this.flags = this.in.readU16();
+    int i = 0;
+    while (i < this.counts.length)
+    {
+      this.counts[i] = this.in.readU16();
+      i += 1;
     }
   }
   
-  private void b()
+  private void parseAnswer()
   {
     int i = 0;
     if (i < 2) {}
@@ -120,11 +69,11 @@ public class ResponsePacket
       int j;
       try
       {
-        k = this.jdField_a_of_type_ArrayOfInt[i];
+        k = this.counts[i];
         if (k <= 0) {
           break label223;
         }
-        this.jdField_a_of_type_ArrayOfJavaUtilArrayList[i] = new ArrayList(k);
+        this.sections[i] = new ArrayList(k);
       }
       catch (WireParseException localWireParseException)
       {
@@ -137,24 +86,24 @@ public class ResponsePacket
         localAnswerRecord = new AnswerRecord();
         if (i == 0)
         {
-          localAnswerRecord.jdField_a_of_type_JavaLangString = a();
-          localAnswerRecord.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsDNSInput.d();
-          localAnswerRecord.b = this.jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsDNSInput.d();
-          this.jdField_a_of_type_ArrayOfJavaUtilArrayList[i].add(localAnswerRecord);
+          localAnswerRecord.domain = retrieveName();
+          localAnswerRecord.type = this.in.readU16();
+          localAnswerRecord.qclass = this.in.readU16();
+          this.sections[i].add(localAnswerRecord);
         }
         else
         {
-          a();
-          localAnswerRecord.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-          localAnswerRecord.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsDNSInput.d();
-          localAnswerRecord.b = this.jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsDNSInput.d();
-          localAnswerRecord.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsDNSInput.a();
-          this.jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsDNSInput.a(this.jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsDNSInput.d());
-          localAnswerRecord.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ComTencentComponentNetworkModuleCommonDnsDNSInput.a();
-          if (localAnswerRecord.jdField_a_of_type_Int == 1)
+          retrieveName();
+          localAnswerRecord.domain = this.host;
+          localAnswerRecord.type = this.in.readU16();
+          localAnswerRecord.qclass = this.in.readU16();
+          localAnswerRecord.ttl = this.in.readU32();
+          this.in.setActive(this.in.readU16());
+          localAnswerRecord.ip = this.in.readByteArray();
+          if (localAnswerRecord.type == 1)
           {
-            a(localAnswerRecord.jdField_a_of_type_Long);
-            this.jdField_a_of_type_ArrayOfJavaUtilArrayList[i].add(localAnswerRecord);
+            setExpireTime(localAnswerRecord.ttl);
+            this.sections[i].add(localAnswerRecord);
           }
         }
       }
@@ -171,31 +120,83 @@ public class ResponsePacket
     }
   }
   
-  public int a()
+  private String retrieveName()
   {
-    return this.jdField_a_of_type_Int;
+    if (this.nameBuilder.length() > 0) {
+      this.nameBuilder.delete(0, this.nameBuilder.length());
+    }
+    int j = 0;
+    int i = 0;
+    while (i == 0)
+    {
+      int k = this.in.readU8();
+      switch (k & 0xC0)
+      {
+      default: 
+        throw new WireParseException("bad label type");
+      case 0: 
+        if (k == 0)
+        {
+          i = 1;
+        }
+        else
+        {
+          this.in.readByteArray(this.label, 0, k);
+          this.nameBuilder.append(ByteBase.byteString(this.label, k));
+          this.nameBuilder.append(".");
+        }
+        break;
+      case 192: 
+        int m = ((k & 0xFFFFFF3F) << 8) + this.in.readU8();
+        if (m >= this.in.current() - 2) {
+          throw new WireParseException("bad compression");
+        }
+        k = j;
+        if (j == 0)
+        {
+          this.in.save();
+          k = 1;
+        }
+        this.in.jump(m);
+        j = k;
+      }
+    }
+    if (j != 0) {
+      this.in.restore();
+    }
+    if (this.nameBuilder.length() > 0) {
+      this.nameBuilder.deleteCharAt(this.nameBuilder.length() - 1);
+    }
+    return this.nameBuilder.toString();
   }
   
-  public long a()
+  private void setExpireTime(long paramLong)
   {
-    return this.jdField_a_of_type_Long;
+    if ((this.expireTime == 0L) && (paramLong > 0L)) {
+      this.expireTime = (System.currentTimeMillis() + 1000L * paramLong);
+    }
   }
   
-  public InetAddress[] a()
+  public ArrayList<AnswerRecord> getAnswers()
   {
-    if ((this.jdField_a_of_type_ArrayOfJavaUtilArrayList[1] != null) && (this.jdField_a_of_type_ArrayOfJavaUtilArrayList[1].size() > 0))
+    return this.sections[1];
+  }
+  
+  public InetAddress[] getByAddress()
+  {
+    if ((this.sections[1] != null) && (this.sections[1].size() > 0))
     {
       ArrayList localArrayList = new ArrayList();
       int i = 0;
       for (;;)
       {
-        if (i >= this.jdField_a_of_type_ArrayOfJavaUtilArrayList[1].size()) {
+        if (i >= this.sections[1].size()) {
           break label120;
         }
-        Object localObject = (AnswerRecord)this.jdField_a_of_type_ArrayOfJavaUtilArrayList[1].get(i);
+        Object localObject = (AnswerRecord)this.sections[1].get(i);
         try
         {
-          localObject = InetAddress.getByAddress(((AnswerRecord)localObject).jdField_a_of_type_JavaLangString, ((AnswerRecord)localObject).jdField_a_of_type_ArrayOfByte);
+          localObject = InetAddress.getByAddress(((AnswerRecord)localObject).domain, ((AnswerRecord)localObject).ip);
           if ((localObject != null) && (((InetAddress)localObject).getHostName() != null) && (!((InetAddress)localObject).getHostName().equals(((InetAddress)localObject).getHostAddress()))) {
             localArrayList.add(localObject);
           }
@@ -204,7 +205,7 @@ public class ResponsePacket
         {
           for (;;)
           {
-            QDLog.d("ResponsePacket", "getByAddress>>>", localUnknownHostException);
+            QDLog.e("ResponsePacket", "getByAddress>>>", localUnknownHostException);
           }
         }
         i += 1;
@@ -213,6 +214,16 @@ public class ResponsePacket
       return (InetAddress[])localArrayList.toArray(new InetAddress[localArrayList.size()]);
     }
     return null;
+  }
+  
+  public long getExpireTime()
+  {
+    return this.expireTime;
+  }
+  
+  public int getReqId()
+  {
+    return this.reqId;
   }
 }
 

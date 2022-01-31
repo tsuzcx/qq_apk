@@ -1,17 +1,58 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.doutu.DoutuManager;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.activity.activateFriend.ActivatePageAdapter;
 
-public final class acgq
-  implements Runnable
+public class acgq
+  extends ajfo
 {
-  public void run()
+  public acgq(ActivateFriendActivity paramActivateFriendActivity) {}
+  
+  protected void onGetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
   {
-    DoutuManager.a(BaseApplicationImpl.getApplication().getBaseContext());
+    if ((ActivateFriendActivity.a(this.a) != paramBoolean2) && (paramBoolean2 == true))
+    {
+      ajvl.a(this.a.app, false, true, false, true);
+      this.a.a();
+    }
+    ActivateFriendActivity.a(this.a, paramBoolean2);
+  }
+  
+  protected void onSetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((ActivateFriendActivity.a(this.a) != paramBoolean2) && (paramBoolean2 == true))
+    {
+      ajvl.a(this.a.app, false, true, false, true);
+      this.a.a();
+    }
+    if (!this.a.isFinishing())
+    {
+      if (!paramBoolean1) {
+        break label161;
+      }
+      ActivateFriendActivity.a(this.a, paramBoolean2);
+      if (!ActivateFriendActivity.a(this.a)) {
+        break label148;
+      }
+    }
+    label148:
+    for (String str = this.a.getString(2131624063);; str = this.a.getString(2131624064))
+    {
+      str = this.a.getString(2131624066, new Object[] { str });
+      bbmy.a(this.a, 2, str, 0).b(this.a.getTitleBarHeight());
+      if (ActivateFriendActivity.a(this.a) != null)
+      {
+        ActivateFriendActivity.a(this.a).c();
+        ActivateFriendActivity.b(this.a);
+      }
+      return;
+    }
+    label161:
+    bbmy.a(this.a, 1, this.a.getResources().getString(2131653546), 0).b(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acgq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.opengl.GLES20;
 
 public class lhc
-  implements ActionSheet.OnDismissListener
+  extends lhd
 {
-  public lhc(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
-  
-  public void onDismiss()
+  public lhc(String paramString)
   {
-    ReadInJoySettingActivity.c(this.a).cancel();
+    super(paramString);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = GLES20.glGetAttribLocation(paramInt, this.jdField_a_of_type_JavaLangString);
+    lie.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lhc
  * JD-Core Version:    0.7.0.1
  */

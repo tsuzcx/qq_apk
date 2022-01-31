@@ -1,43 +1,31 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import java.io.File;
-import mqq.os.MqqHandler;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
-public class ajwn
-  implements Runnable
+class ajwn
+  implements Comparator<Map.Entry<String, atmo>>
 {
-  public ajwn(TroopFileTransferManager paramTroopFileTransferManager, TroopFileTransferManager.Item paramItem) {}
+  ajwn(ajwm paramajwm) {}
   
-  public void run()
+  public int a(Map.Entry<String, atmo> paramEntry1, Map.Entry<String, atmo> paramEntry2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item == null) {
-      return;
+    paramEntry1 = ((String)paramEntry1.getKey()).split("&")[1];
+    int i = Integer.parseInt(paramEntry1.split("-")[0]);
+    int j = Integer.parseInt(paramEntry1.split("-")[1]);
+    paramEntry1 = ((String)paramEntry2.getKey()).split("&")[1];
+    int k = Integer.parseInt(paramEntry1.split("-")[0]);
+    int m = Integer.parseInt(paramEntry1.split("-")[1]);
+    if (i > k) {
+      return 1;
     }
-    switch (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Status)
-    {
-    default: 
-      return;
-    case 9: 
-    case 10: 
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.TmpFile != null) {
-        new File(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.TmpFile).delete();
-      }
-      break;
+    if (i == k) {
+      return j - m;
     }
-    for (;;)
-    {
-      ThreadManager.getUIHandler().post(new ajwo(this));
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile != null) {
-        new File(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.LocalFile).delete();
-      }
-    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajwn
  * JD-Core Version:    0.7.0.1
  */

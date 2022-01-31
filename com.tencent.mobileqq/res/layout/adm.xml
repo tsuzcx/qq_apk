@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/wy" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/j1w" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+    <RelativeLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/root_layout" android:background="@drawable/a4t" android:layout_width="fill_parent" android:layout_height="399.0dip" android:layout_alignParentBottom="true">
+        <include android:id="@id/jo9" layout="@layout/afk" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/wr" android:id="@id/bce" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_below="@id/jo9" android:layout_centerHorizontal="true" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/bcb" android:layout_below="@id/bce">
+            <ImageView android:id="@id/dce" android:visibility="invisible" android:layout_width="150.0dip" android:layout_height="100.0dip" android:src="@drawable/dw8" android:layout_centerInParent="true" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <Button android:id="@id/bcb" android:visibility="invisible" android:layout_height="40.0dip" android:layout_marginLeft="75.0dip" android:layout_marginRight="75.0dip" android:layout_above="@id/bcc" android:layout_centerHorizontal="true" style="@style/sv" />
+        <TextView android:textSize="16.0sp" android:textColor="#ff12b7f5" android:id="@id/bcc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

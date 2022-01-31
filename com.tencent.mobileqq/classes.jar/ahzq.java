@@ -1,40 +1,25 @@
-import com.tencent.mobileqq.search.searchengine.ApproximateSearchEngine;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PhoneContact;
 
 public class ahzq
+  extends aiac
 {
-  boolean jdField_a_of_type_Boolean;
+  public View a;
+  public Button a;
+  public CheckBox a;
+  public TextView a;
+  public PhoneContact a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
   
-  public ahzq(ApproximateSearchEngine paramApproximateSearchEngine, boolean paramBoolean)
+  public ahzq()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    try
-    {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public boolean a()
-  {
-    try
-    {
-      boolean bool = this.jdField_a_of_type_Boolean;
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    this.c = 11;
   }
 }
 

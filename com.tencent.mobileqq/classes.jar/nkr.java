@@ -1,21 +1,23 @@
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.newshare.job.UploadImageJob;
-import com.tencent.biz.qqstory.newshare.mode.ShareGroupCardShareMode;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupManager;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import java.lang.ref.WeakReference;
 
 public class nkr
-  extends UploadImageJob
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public nkr(ShareGroupCardShareMode paramShareGroupCardShareMode, String paramString)
+  private WeakReference<nhw> a;
+  
+  public nkr(nhw paramnhw)
   {
-    super(paramString);
+    this.a = new WeakReference(paramnhw);
   }
   
-  public boolean b()
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    ShareGroupCardShareMode.a(this.a, (String)a("UploadImageJob_out_image_url"));
-    ((ShareGroupManager)SuperManager.a(7)).a(this.a.d, ShareGroupCardShareMode.a(this.a));
-    return true;
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((nhw)this.a.get()).a(true);
+    }
+    return false;
   }
 }
 

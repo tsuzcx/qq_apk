@@ -1,19 +1,16 @@
-import cooperation.comic.utils.QQComicPluginBridge.PluginInstallObserver;
-import cooperation.plugin.IPluginManager;
+import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
 
-public final class amrx
-  implements Runnable
+public abstract interface amrx
 {
-  public amrx(IPluginManager paramIPluginManager, QQComicPluginBridge.PluginInstallObserver paramPluginInstallObserver) {}
+  public abstract boolean getHasPulledSourceMsg();
   
-  public void run()
-  {
-    this.jdField_a_of_type_CooperationPluginIPluginManager.installPlugin("comic_plugin.apk", new amry(this));
-  }
+  public abstract MessageForReplyText.SourceMsgInfo getSourceMsgInfo();
+  
+  public abstract void setPulledSourceMsg();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amrx
  * JD-Core Version:    0.7.0.1
  */

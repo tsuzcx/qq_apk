@@ -1,21 +1,29 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity.ColorScreenLoader;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-class swe
-  implements Runnable
+public class swe
+  extends swc
 {
-  swe(swd paramswd) {}
+  protected TextView c = (TextView)a(2131312820);
   
-  public void run()
+  public swe(ViewGroup paramViewGroup, int paramInt)
   {
-    this.a.a.a.a.removeAnimatorListener(this.a);
-    this.a.a.a.a.removeUpdateListener(this.a);
+    super(paramViewGroup, paramInt);
+  }
+  
+  public void a(ssm paramssm)
+  {
+    if (paramssm.b > 99)
+    {
+      this.c.setText("99+");
+      return;
+    }
+    this.c.setText(String.valueOf(paramssm.b));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     swe
  * JD-Core Version:    0.7.0.1
  */

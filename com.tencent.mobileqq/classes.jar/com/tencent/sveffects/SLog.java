@@ -2,39 +2,39 @@ package com.tencent.sveffects;
 
 public class SLog
 {
-  public static void a(String paramString1, String paramString2)
-  {
-    SdkContext.a().a().a(paramString1, paramString2);
-  }
-  
-  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    SdkContext.a().a().a(paramString1, paramString2, paramThrowable);
-  }
-  
-  public static void a(String paramString, Throwable paramThrowable)
-  {
-    SdkContext.a().a().a(paramString, paramThrowable);
-  }
-  
-  public static final boolean a()
-  {
-    return SdkContext.a().a().a();
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    SdkContext.a().a().b(paramString1, paramString2);
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    SdkContext.a().a().c(paramString1, paramString2);
-  }
-  
   public static void d(String paramString1, String paramString2)
   {
-    SdkContext.a().a().d(paramString1, paramString2);
+    SdkContext.getInstance().getLogger().d(paramString1, paramString2);
+  }
+  
+  public static void e(String paramString1, String paramString2)
+  {
+    SdkContext.getInstance().getLogger().e(paramString1, paramString2);
+  }
+  
+  public static void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    SdkContext.getInstance().getLogger().e(paramString1, paramString2, paramThrowable);
+  }
+  
+  public static void e(String paramString, Throwable paramThrowable)
+  {
+    SdkContext.getInstance().getLogger().e(paramString, paramThrowable);
+  }
+  
+  public static void i(String paramString1, String paramString2)
+  {
+    SdkContext.getInstance().getLogger().i(paramString1, paramString2);
+  }
+  
+  public static final boolean isEnable()
+  {
+    return SdkContext.getInstance().getLogger().isEnable();
+  }
+  
+  public static void w(String paramString1, String paramString2)
+  {
+    SdkContext.getInstance().getLogger().w(paramString1, paramString2);
   }
 }
 

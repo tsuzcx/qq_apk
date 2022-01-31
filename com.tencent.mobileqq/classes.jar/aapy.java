@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.ar.config.MainDownAni;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import java.util.Comparator;
 
-class aapy
-  implements Runnable
+public class aapy
+  implements Comparator<aapw>
 {
-  aapy(aapx paramaapx) {}
+  private aapy(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public void run()
+  public int a(aapw paramaapw1, aapw paramaapw2)
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni.c(this.a.a.jdField_a_of_type_Aapz);
+    return paramaapw1.c.compareToIgnoreCase(paramaapw2.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aapy
  * JD-Core Version:    0.7.0.1
  */

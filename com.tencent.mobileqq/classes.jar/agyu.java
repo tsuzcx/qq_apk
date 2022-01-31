@@ -1,36 +1,29 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.vipav.VipFunCallObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class agyu
-  extends VipFunCallObserver
+class agyu
+  implements View.OnClickListener
 {
-  public agyu(QCallDetailActivity paramQCallDetailActivity) {}
+  agyu(agxq paramagxq) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
+    if (akgo.a().a() == 4) {
+      awqx.b(agxq.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, akgn.b(), akgo.b(), akgo.a(), "0");
     }
-    do
+    for (;;)
     {
-      do
-      {
-        return;
-        paramObject = (Bundle)paramObject;
-      } while ((paramObject == null) || (TextUtils.isEmpty(QCallDetailActivity.a(this.a))) || (!QCallDetailActivity.a(this.a).equals(paramObject.getString("uin"))));
-      if (this.a.app != null) {
-        this.a.app.removeObserver(this);
-      }
-    } while (!paramBoolean);
-    this.a.runOnUiThread(new agyv(this));
+      this.a.a(14, 0);
+      this.a.a(-1, null);
+      return;
+      awqx.b(agxq.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, akgn.b(), akgo.b(), akgo.a(), "0");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agyu
  * JD-Core Version:    0.7.0.1
  */

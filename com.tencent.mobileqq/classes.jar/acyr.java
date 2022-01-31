@@ -1,34 +1,20 @@
-import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelMediaTabView;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Set;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
 class acyr
-  implements Runnable
+  implements alnw
 {
-  acyr(acyq paramacyq, HashMap paramHashMap) {}
+  acyr(acyp paramacyp, int paramInt1, int paramInt2) {}
   
-  public void run()
+  public void a()
   {
-    QfileLocalFileDelMediaTabView.a(this.jdField_a_of_type_Acyq.a).clear();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      List localList = (List)this.jdField_a_of_type_JavaUtilHashMap.get(str);
-      if (localList.size() != 0) {
-        QfileLocalFileDelMediaTabView.b(this.jdField_a_of_type_Acyq.a).put(str, localList);
-      }
-    }
-    this.jdField_a_of_type_Acyq.a.i();
-    this.jdField_a_of_type_Acyq.a.setSelect(0);
+    acyp.a(this.jdField_a_of_type_Acyp).a.setOnMeasureListener(null);
+    acyp.a(this.jdField_a_of_type_Acyp).a.setSelectionFromBottom(this.jdField_a_of_type_Int, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acyr
  * JD-Core Version:    0.7.0.1
  */

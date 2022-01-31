@@ -56,8 +56,8 @@ class Trampoline
   {
     Logger.d("Trampoline", "create trampoline." + this.segments);
     byte[] arrayOfByte1 = new byte[getSize()];
-    int i = 0;
     Object localObject = this.segments.iterator();
+    int i = 0;
     for (;;)
     {
       if (!((Iterator)localObject).hasNext())
@@ -125,7 +125,6 @@ class Trampoline
   }
   
   protected void finalize()
-    throws Throwable
   {
     free();
     super.finalize();

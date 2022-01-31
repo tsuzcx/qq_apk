@@ -1,32 +1,23 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.statistics.PushReportController;
-import com.tencent.mobileqq.utils.QQUtils;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
 public class akxq
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public akxq(SwiftBrowserStatistics paramSwiftBrowserStatistics, AppRuntime paramAppRuntime) {}
+  public akxq(ARScanEntryView paramARScanEntryView) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (!PushReportController.a)
-    {
-      boolean bool = QQUtils.a(BaseApplicationImpl.getApplication());
-      if (QLog.isColorLevel()) {
-        QLog.d("SwiftBrowserStatistics", 1, new Object[] { "reportPushEvent isScreenLock=", Boolean.valueOf(bool), ",isBackground=", Boolean.valueOf(this.jdField_a_of_type_MqqAppAppRuntime.isBackground_Stop) });
-      }
-      if ((bool) || (this.jdField_a_of_type_MqqAppAppRuntime.isBackground_Stop)) {
-        SwiftBrowserStatistics.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics);
-      }
-    }
+    ARScanEntryView.a(this.a, null);
+    ARScanEntryView.a(this.a, null);
+    ARScanEntryView.a(this.a).g();
+    ARScanEntryView.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akxq
  * JD-Core Version:    0.7.0.1
  */

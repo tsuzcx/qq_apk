@@ -1,23 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
-import com.tencent.widget.ActionSheet;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
 public class myz
-  implements View.OnClickListener
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public myz(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin, String paramString) {}
+  public myz(VideoCoverView paramVideoCoverView) {}
   
-  public void onClick(View paramView)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.j();
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.n = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.a.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverView", 2, "is prepare");
+    }
+    if (VideoCoverView.a(this.a) == 1) {
+      com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity.jdField_a_of_type_Long = System.currentTimeMillis();
+    }
+    awqx.a(null, "dc00898", "", VideoCoverView.a(this.a).a.jdField_a_of_type_JavaLangString, "0X8008F64", "0X8008F64", 0, 0, VideoCoverView.a(this.a).a.c, "", this.a.jdField_a_of_type_JavaLangString, VideoCoverView.a(this.a).a.b);
+    mye.a().b(this.a.jdField_a_of_type_JavaLangString, VideoCoverView.a(this.a));
+    this.a.jdField_a_of_type_Long = VideoCoverView.a(this.a).getDuration();
+    if ((this.a.jdField_a_of_type_Int == 3) || (this.a.jdField_a_of_type_Int == 4))
+    {
+      VideoCoverView.a(this.a).start();
+      this.a.jdField_a_of_type_Int = 4;
+      this.a.g();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     myz
  * JD-Core Version:    0.7.0.1
  */

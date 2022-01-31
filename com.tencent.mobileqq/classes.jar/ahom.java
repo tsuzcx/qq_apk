@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.activity.richmedia.view.GLVideoClipUtil;
 
-class ahom
-  implements Runnable
+public class ahom
 {
-  ahom(ahoj paramahoj) {}
+  public int a;
   
-  public void run()
-  {
-    EffectsCameraCaptureFragment.a(this.a.a, false);
-  }
+  private ahom(GLVideoClipUtil paramGLVideoClipUtil) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahom
  * JD-Core Version:    0.7.0.1
  */

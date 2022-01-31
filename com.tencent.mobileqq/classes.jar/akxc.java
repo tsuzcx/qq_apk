@@ -1,64 +1,48 @@
 import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.biz.common.util.ImageUtil;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.AppInterface;
 
-public class akxc
-  implements Runnable
+public abstract class akxc
 {
-  public akxc(SwiftBrowserScreenShotHandler paramSwiftBrowserScreenShotHandler, String paramString, Bundle paramBundle, boolean paramBoolean) {}
+  public long a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
   
-  public void run()
+  public akxc()
   {
-    boolean bool3 = false;
-    String str = ImageUtil.a(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
-    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      boolean bool2 = bool3;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        bool2 = bool3;
-        if (this.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.h)) {
-          bool2 = true;
-        }
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.d("SwiftBrowserScreenShotHandler", 2, "doMultiShare download Finish!");
-        QLog.d("SwiftBrowserScreenShotHandler", 2, "isGif:" + this.jdField_a_of_type_Boolean + ", imgUrl:" + this.jdField_a_of_type_JavaLangString);
-        QLog.d("SwiftBrowserScreenShotHandler", 2, "isLastMultiShare:" + bool2 + ", mLastMultiShareUrl:" + this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.h);
-        QLog.d("SwiftBrowserScreenShotHandler", 2, "isDialogShowing:" + bool1 + ", localPath:" + str);
-      }
-      if ((bool1) && (bool2))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.jdField_a_of_type_AndroidOsHandler.post(new akxd(this));
-        if (TextUtils.isEmpty(str)) {
-          break label304;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.e = str;
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.b = 3;
-        if (!this.jdField_a_of_type_Boolean) {
-          break;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.g(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.e);
-      }
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_JavaLangString = "0";
+    this.jdField_c_of_type_JavaLangString = "0";
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public abstract void a(AppInterface paramAppInterface, Bundle paramBundle);
+  
+  public final void b(AppInterface paramAppInterface, Bundle paramBundle)
+  {
+    if (paramBundle == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserScreenShotHandler.jdField_a_of_type_AndroidOsHandler.post(new akxe(this));
-    return;
-    label304:
-    QRUtils.a(1, 2131438492);
+    this.jdField_a_of_type_Long = paramBundle.getLong("RecoglizeMask", 0L);
+    this.jdField_b_of_type_JavaLangString = paramBundle.getString("H5Source", "0");
+    this.jdField_c_of_type_JavaLangString = paramBundle.getString("version", "0");
+    if (!paramBundle.getBoolean("disablecloud", false)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      this.jdField_c_of_type_Boolean = paramBundle.getBoolean("is_from_h5_entry", false);
+      this.jdField_b_of_type_Boolean = false;
+      a(paramAppInterface, paramBundle);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akxc
  * JD-Core Version:    0.7.0.1
  */

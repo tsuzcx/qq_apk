@@ -8,10 +8,10 @@ public final class CustomSigContent
   extends JceStruct
 {
   static byte[] cache_SigContent;
-  public byte[] SigContent;
-  public long length;
-  public short sResult;
-  public long ulSigType;
+  public byte[] SigContent = null;
+  public long length = 0L;
+  public short sResult = 0;
+  public long ulSigType = 0L;
   
   public CustomSigContent() {}
   

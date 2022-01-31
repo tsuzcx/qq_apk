@@ -1,167 +1,106 @@
 package c.t.m.g;
 
-import android.location.Location;
-import java.util.LinkedList;
+import android.util.Base64;
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 
 public final class dq
 {
-  private static dq a = new dq();
-  private int b = a.a;
-  private LinkedList<ef> c = new LinkedList();
+  private static final byte[] a = { 84, 101, 110, 99, 101, 110, 116, 76, 111, 99, 97, 116, 105, 111, 110, 49 };
   
-  public static dq a()
+  public static String a(String paramString1, String paramString2)
   {
-    return a;
+    return a(paramString1, paramString2, 1);
   }
   
-  public final int a(ef paramef)
+  private static String a(String paramString1, String paramString2, int paramInt)
   {
-    if (paramef != null)
-    {
-      try
-      {
-        while (this.c.size() > 9) {
-          this.c.remove(0);
-        }
-        if (this.c.size() <= 0) {
-          break label136;
-        }
-      }
-      finally {}
-      for (;;)
-      {
-        localef = (ef)this.c.getFirst();
-        long l1 = paramef.b;
-        long l2 = localef.b;
-        double d = ev.a(localef.a.getLatitude(), localef.a.getLongitude(), paramef.a.getLatitude(), paramef.a.getLongitude());
-        if ((l1 - l2 <= 180000L) || (d <= 500.0D)) {
-          break;
-        }
-        this.c.remove(0);
-      }
-      label136:
-      ef localef = new ef(paramef);
-      this.c.add(localef);
-      paramef.a.getSpeed();
+    Object localObject = null;
+    if ((paramInt != 1) && (paramInt != 2)) {
+      throw new IllegalArgumentException("wrong mode.");
     }
-    int i = this.c.size();
-    return i;
-  }
-  
-  public final long b()
-  {
+    if ((paramString1 == null) || (paramString1.length() == 0))
+    {
+      paramString1 = "";
+      return paramString1;
+    }
+    if (paramInt == 1) {}
     for (;;)
     {
-      double d1;
-      long l;
-      double d2;
       try
       {
-        int j;
-        int i;
-        ef localef2;
-        if (this.c.size() < 2)
+        paramString1 = paramString1.getBytes();
+        if (paramString1 == null) {
+          break label124;
+        }
+        if (paramString1.length == 0)
         {
-          d1 = 0.0D;
-          if (this.c.size() < 2) {
-            continue;
-          }
-          j = this.c.size();
-          l = 0L;
-          d2 = 0.0D;
-          i = 1;
-          if (i < j)
-          {
-            localef1 = (ef)this.c.get(i);
-            localef2 = (ef)this.c.get(i - 1);
-            double d3 = ev.a(localef2.a.getLatitude(), localef2.a.getLongitude(), localef1.a.getLatitude(), localef1.a.getLongitude());
-            l = localef1.b - localef2.b + l;
-            d2 += d3;
-            i += 1;
-            continue;
+          break label124;
+          if (paramInt == 2) {
+            paramString1 = Base64.decode(paramString1.getBytes(), 2);
           }
         }
         else
         {
-          i = this.c.size() - 1;
-          localef1 = (ef)this.c.get(i);
-          localef2 = (ef)this.c.get(i - 1);
-          if (localef1.b == localef2.b) {
-            break label515;
+          paramString2 = a(paramString1, paramString1.length, paramString2, paramInt);
+          if (paramInt == 1) {
+            return Base64.encodeToString(paramString2, 2);
           }
-          l = localef1.b - localef2.b;
-          d1 = ev.a(localef2.a.getLatitude(), localef2.a.getLongitude(), localef1.a.getLatitude(), localef1.a.getLongitude()) / l * 1000.0D;
-          continue;
-        }
-        if (l > 0L)
-        {
-          d2 = 1000.0D * (d2 / l);
-          if ((dt.b() != null) && (this.c.size() > 0)) {
-            dt.b().a(2, d2, d1, ((ef)this.c.getLast()).b);
+          paramString1 = localObject;
+          if (paramInt != 2) {
+            break;
           }
-          if (this.c.size() < 2)
-          {
-            l = 0L;
-            i = this.c.size();
-            if (i >= 2) {
-              continue;
-            }
-            this.b = a.a;
-            i = this.b;
-            j = a.c;
-            if (i != j) {
-              break label507;
-            }
-            l = 90000L;
-            return l;
-          }
-        }
-        else
-        {
-          d2 = 0.0D;
-          continue;
-        }
-        ef localef1 = (ef)this.c.getFirst();
-        l = ((ef)this.c.getLast()).b - localef1.b;
-        continue;
-        if ((i > 6) && (d1 < 3.0D) && (d2 < 6.0D))
-        {
-          this.b = a.c;
-          continue;
-        }
-        if (l <= 60000L) {
-          break label497;
+          paramString1 = new String(paramString2);
+          return paramString1;
         }
       }
-      finally {}
-      if ((d1 < 3.0D) && (d2 < 3.0D))
+      catch (Throwable paramString1)
       {
-        this.b = a.c;
+        return "";
       }
-      else
-      {
-        label497:
-        this.b = a.b;
-        continue;
-        label507:
-        l = 30000L;
-        continue;
-        label515:
-        l = 500L;
-      }
+      paramString1 = null;
     }
+    label124:
+    return "";
   }
   
-  static enum a
+  private static byte[] a(byte[] paramArrayOfByte, int paramInt1, String paramString, int paramInt2)
   {
-    public static final int a = 1;
-    public static final int b = 2;
-    public static final int c = 3;
+    if ((paramInt2 != 1) && (paramInt2 != 2)) {
+      throw new IllegalArgumentException("wrong mode.");
+    }
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0) || (paramInt1 == 0)) {
+      return dn.a;
+    }
+    try
+    {
+      paramString = new SecretKeySpec(paramString.getBytes("UTF-8"), "AES");
+      Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+      localCipher.init(paramInt2, paramString, new IvParameterSpec(a));
+      if (localCipher == null) {
+        return dn.a;
+      }
+      paramArrayOfByte = localCipher.doFinal(paramArrayOfByte, 0, paramInt1);
+      return paramArrayOfByte;
+    }
+    catch (Throwable paramArrayOfByte) {}
+    return dn.a;
+  }
+  
+  public static byte[] a(byte[] paramArrayOfByte, String paramString)
+  {
+    return a(paramArrayOfByte, paramArrayOfByte.length, paramString, 1);
+  }
+  
+  public static String b(String paramString1, String paramString2)
+  {
+    return a(paramString1, paramString2, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     c.t.m.g.dq
  * JD-Core Version:    0.7.0.1
  */

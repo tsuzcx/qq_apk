@@ -1,12 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import java.util.ArrayList;
-import java.util.List;
-
-public class muo
+public abstract interface muo
 {
-  public ViewBase a;
-  public final List a = new ArrayList();
-  public final List b = new ArrayList();
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void h();
 }
 
 

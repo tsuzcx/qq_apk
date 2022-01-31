@@ -7,17 +7,17 @@ import java.util.List;
 public class AVRedPacketManager$GameInfoFromBusiServer
   implements Serializable
 {
-  String authKey;
-  int currScores;
-  List emojiIds = Collections.emptyList();
-  int gameRestTime;
-  int gameStartTime;
-  int gameStatus = -1;
-  String key;
-  int maxScore;
-  String receiveRedPacketUin;
-  String sendRedPacketUin;
-  int winMoney;
+  public String authKey;
+  public int currScores;
+  public List<Integer> emojiIds = Collections.emptyList();
+  public int gameRestTime;
+  public int gameStartTime;
+  public int gameStatus = -1;
+  public String key;
+  public int maxScore;
+  public String receiveRedPacketUin;
+  public String sendRedPacketUin;
+  public int winMoney;
   
   public String toString()
   {
@@ -33,7 +33,7 @@ public class AVRedPacketManager$GameInfoFromBusiServer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.redpacket.AVRedPacketManager.GameInfoFromBusiServer
  * JD-Core Version:    0.7.0.1
  */

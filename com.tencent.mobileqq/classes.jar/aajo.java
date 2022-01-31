@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.ar.ArResourceDownload;
-import com.tencent.mobileqq.ar.ArResourceManager;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
 public class aajo
-  implements Runnable
+  implements avck
 {
-  public aajo(ArResourceManager paramArResourceManager, ArConfigInfo paramArConfigInfo, boolean paramBoolean1, boolean paramBoolean2) {}
+  public aajo(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArArResourceManager.a.a(this.jdField_a_of_type_ComTencentMobileqqArAidlArConfigInfo, this.jdField_a_of_type_Boolean, this.b);
+    if ((this.a.f != null) && (this.a.a != null) && (this.a.a.actionId == paramInt1) && (paramBitmap != null) && (paramInt2 == 200)) {
+      ChatSettingActivity.a(this.a, this.a.a, this.a.f);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aajo
  * JD-Core Version:    0.7.0.1
  */

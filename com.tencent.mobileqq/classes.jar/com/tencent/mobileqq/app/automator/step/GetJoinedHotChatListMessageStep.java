@@ -12,11 +12,11 @@ import java.util.List;
 public class GetJoinedHotChatListMessageStep
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
-    if (HotChatManager.a(this.a.b))
+    if (HotChatManager.a(this.a.app))
     {
-      HotChatManager localHotChatManager = (HotChatManager)this.a.b.getManager(59);
+      HotChatManager localHotChatManager = (HotChatManager)this.a.app.getManager(60);
       Object localObject = localHotChatManager.b();
       if (QLog.isColorLevel())
       {
@@ -38,7 +38,7 @@ public class GetJoinedHotChatListMessageStep
   
   public void a() {}
   
-  public void c() {}
+  public void d() {}
 }
 
 

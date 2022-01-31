@@ -1,22 +1,31 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
-
-public class aofx
-  extends AnimatorListenerAdapter
+class aofx
 {
-  public aofx(FaceLayer.FaceItem paramFaceItem) {}
+  private int jdField_a_of_type_Int;
+  private aofr jdField_a_of_type_Aofr;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public aofx(aofv paramaofv, aofr paramaofr)
   {
-    this.a.p = 12.0F;
-    this.a.b.k();
+    this.jdField_a_of_type_Aofr = paramaofr;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public aofr a()
+  {
+    return this.jdField_a_of_type_Aofr;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aofx
  * JD-Core Version:    0.7.0.1
  */

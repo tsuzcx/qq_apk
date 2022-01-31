@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class GetOpenidProto$GetOpenidEntry
-  extends MessageMicro
+  extends MessageMicro<GetOpenidEntry>
 {
   public static final int ID_FIELD_NUMBER = 2;
   public static final int OPENID_FIELD_NUMBER = 3;

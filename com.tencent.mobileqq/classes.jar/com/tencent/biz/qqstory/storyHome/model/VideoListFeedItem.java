@@ -8,9 +8,11 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import srk;
+import ukt;
 
-public abstract class VideoListFeedItem
-  extends CommentLikeFeedItem
+public abstract class VideoListFeedItem<T extends ukt, E extends srk>
+  extends CommentLikeFeedItem<T, E>
 {
   public static final String TAG = "VideoListFeedItem";
   public boolean isReportedAutoPlay;
@@ -22,11 +24,6 @@ public abstract class VideoListFeedItem
   public String mVideoNextCookie = "";
   public int mVideoPullType = 0;
   public int mVideoSeq = -1;
-  
-  public static boolean isFakeFeedId(String paramString)
-  {
-    return paramString.startsWith("fake-");
-  }
   
   @NonNull
   public static String makeFakeFeedId(String paramString1, String paramString2)
@@ -219,7 +216,7 @@ public abstract class VideoListFeedItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem
  * JD-Core Version:    0.7.0.1
  */

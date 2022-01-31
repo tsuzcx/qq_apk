@@ -1,10 +1,10 @@
 package com.tencent.qidian.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class BmqqAccountType
-  extends Entity
+  extends atmo
 {
   public static final int TYPE_ACCOUNT_BMQQ_EXT = 0;
   public static final int TYPE_ACCOUNT_CRM_EXT = 2;
@@ -14,7 +14,7 @@ public class BmqqAccountType
   public static final int TYPE_ACCOUNT_QIDIAN_MAIN = 6;
   public static final int TYPE_ACCOUNT_UNKNOW = 4;
   public int mAccountType;
-  @unique
+  @atoc
   public String mUin = "";
   
   public BmqqAccountType() {}
@@ -42,7 +42,7 @@ public class BmqqAccountType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.qidian.data.BmqqAccountType
  * JD-Core Version:    0.7.0.1
  */

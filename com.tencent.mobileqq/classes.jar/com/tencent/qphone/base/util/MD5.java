@@ -12,8 +12,8 @@ public class MD5
 {
   static final char[] Digit = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
   private static final String TAG = "MD5";
-  public static boolean isLoaded;
-  public static int soLoadResultCode;
+  public static boolean isLoaded = false;
+  public static int soLoadResultCode = 0;
   private byte[] buffer = new byte[64];
   private byte[] digest = new byte[16];
   public String digestHexStr;

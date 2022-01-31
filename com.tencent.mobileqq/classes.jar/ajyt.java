@@ -1,20 +1,33 @@
-import com.tencent.mobileqq.troop.data.TroopTopicDetailInfo;
-import com.tencent.mobileqq.troop.utils.TroopTopicMgr;
+import android.os.Message;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
+import mqq.os.MqqHandler;
 
-class ajyt
-  implements Runnable
+public class ajyt
+  extends MqqHandler
 {
-  ajyt(ajyr paramajyr, TroopTopicDetailInfo paramTroopTopicDetailInfo) {}
+  public ajyt(HiddenChatFragment paramHiddenChatFragment) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Ajyr.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopTopicDetailInfo);
-    this.jdField_a_of_type_Ajyr.a.b(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopTopicDetailInfo);
+    if ((this.a.getActivity() == null) || (!this.a.getActivity().app.isLogin())) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.a();
+      return;
+    }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajyt
  * JD-Core Version:    0.7.0.1
  */

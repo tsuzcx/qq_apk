@@ -1,37 +1,30 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback.1;
 
-class sly
-  implements Runnable
+public abstract class sly<Request extends slz, Respond extends slu>
+  implements slx<Request, Respond>
 {
-  sly(slw paramslw, boolean paramBoolean) {}
+  public static Handler a = new Handler(Looper.getMainLooper());
   
-  public void run()
+  public void a(@NonNull Request paramRequest, @Nullable Respond paramRespond, @NonNull ErrorMessage paramErrorMessage)
   {
-    Conversation.a(this.jdField_a_of_type_Slw.a, 800L);
-    PullRefreshHeader localPullRefreshHeader;
-    if (this.jdField_a_of_type_Slw.a.a != null)
+    if (Thread.currentThread() == a.getLooper().getThread())
     {
-      localPullRefreshHeader = this.jdField_a_of_type_Slw.a.a;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label66;
-      }
-    }
-    label66:
-    for (int i = 0;; i = 2)
-    {
-      localPullRefreshHeader.a(i);
-      if (QLog.isColorLevel()) {
-        QLog.d("AutoMonitor", 2, "ConversationTab[onRefleshRecentListFinished_ui]");
-      }
+      b(paramRequest, paramRespond, paramErrorMessage);
       return;
     }
+    a.post(new CmdTaskManger.UIThreadCallback.1(this, paramRequest, paramRespond, paramErrorMessage));
   }
+  
+  public abstract void b(@NonNull Request paramRequest, @Nullable Respond paramRespond, @NonNull ErrorMessage paramErrorMessage);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sly
  * JD-Core Version:    0.7.0.1
  */

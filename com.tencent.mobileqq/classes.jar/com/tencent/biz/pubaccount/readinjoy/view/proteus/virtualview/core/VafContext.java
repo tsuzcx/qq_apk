@@ -2,38 +2,63 @@ package com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core;
 
 import android.app.Activity;
 import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.factory.BaseTemplateFactory;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
 
 public class VafContext
 {
-  private Activity jdField_a_of_type_AndroidAppActivity;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ViewFactory jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsViewFactory = new ViewFactory();
+  public static final int SLOP = 5;
+  private Context context;
+  private Activity curActivity;
+  private BaseTemplateFactory templateFactory;
+  private ViewFactory viewFactory = new ViewFactory();
   
-  public Context a()
+  public Context getContext()
   {
-    return this.jdField_a_of_type_AndroidContentContext;
+    return this.context;
   }
   
-  public ViewFactory a()
+  public Activity getCurActivity()
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsViewFactory;
+    return this.curActivity;
   }
   
-  public void a(Activity paramActivity)
+  public BaseTemplateFactory getTemplateFactory()
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    return this.templateFactory;
   }
   
-  public void a(Context paramContext)
+  public ViewFactory getViewFactory()
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewUtilsViewFactory.a(paramContext);
+    return this.viewFactory;
+  }
+  
+  public void setContext(Context paramContext)
+  {
+    this.context = paramContext;
+    this.viewFactory.init(paramContext);
+  }
+  
+  public void setCurActivity(Activity paramActivity)
+  {
+    this.curActivity = paramActivity;
+  }
+  
+  public void setTemplateFactory(BaseTemplateFactory paramBaseTemplateFactory)
+  {
+    this.templateFactory = paramBaseTemplateFactory;
+  }
+  
+  public void setViewFactory(ViewFactory paramViewFactory)
+  {
+    if (paramViewFactory != null) {
+      this.viewFactory = paramViewFactory;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext
  * JD-Core Version:    0.7.0.1
  */

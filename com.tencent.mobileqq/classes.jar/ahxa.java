@@ -1,35 +1,17 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.activity.VADActivity;
-import com.tencent.mobileqq.search.searchengine.ApproximateSearchEngine;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
-import com.tencent.mobileqq.search.util.ObjectTransfer;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class ahxa
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ahxa(VADActivity paramVADActivity) {}
+  public ahxa(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public void run()
-  {
-    Object localObject = new ApproximateSearchEngine(this.a.app, 2, 793, null);
-    ((ApproximateSearchEngine)localObject).a();
-    if (!VADActivity.a(this.a).get())
-    {
-      VADActivity.a(this.a, (ApproximateSearchEngine)localObject);
-      VADActivity.a(this.a).set(true);
-    }
-    localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    VADActivity.a(this.a, new GroupSearchEngine((QQAppInterface)localObject, VADActivity.b()));
-    VADActivity.a(this.a).a();
-    VADActivity.a(this.a, ObjectTransfer.a().a(VADActivity.a(this.a)));
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahxa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,15 @@
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.troop.widget.RedDotImageView;
 
 public class adzt
-  implements Runnable
 {
-  public adzt(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout, int paramInt) {}
-  
-  public void run()
-  {
-    HotVideoMongoliaRelativeLayout.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout, this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-  }
+  public int a;
+  public Drawable a;
+  public RedDotImageView a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adzt
  * JD-Core Version:    0.7.0.1
  */

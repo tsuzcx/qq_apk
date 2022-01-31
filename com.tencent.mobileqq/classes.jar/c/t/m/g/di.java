@@ -1,51 +1,117 @@
 package c.t.m.g;
 
-import android.location.Location;
-import android.os.Bundle;
-import android.util.Pair;
-import android.util.SparseArray;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
+import android.support.annotation.Nullable;
 
-final class di
-  extends dh
+public abstract class di
+  extends dl
 {
-  private SparseArray<Pair<Double, Double>> a = new SparseArray();
+  public di.a a = null;
+  private HandlerThread d = null;
   
-  public di(String paramString)
+  public final int a(@Nullable Looper paramLooper)
   {
-    super(paramString, "check cell");
-  }
-  
-  public final void a()
-  {
-    super.a();
-    this.a.clear();
-  }
-  
-  protected final boolean a(Bundle paramBundle)
-  {
-    int i = paramBundle.getInt("lac");
-    int j = paramBundle.getInt("cid");
-    paramBundle = (Location)paramBundle.getParcelable("location");
-    if ((i == 0) || (j == 0) || (paramBundle == null)) {
-      return false;
-    }
-    i <<= j + 16;
-    Pair localPair = (Pair)this.a.get(i);
-    if (localPair == null)
+    synchronized (this.c)
     {
-      paramBundle = Pair.create(Double.valueOf(paramBundle.getLatitude()), Double.valueOf(paramBundle.getLongitude()));
-      this.a.put(i, paramBundle);
-      if (this.a.size() > 320) {
-        this.a.delete(this.a.keyAt(0));
+      if (e()) {
+        return -1;
       }
-      return true;
+      this.b = true;
     }
-    return ev.a(paramBundle.getLatitude(), paramBundle.getLongitude(), ((Double)localPair.first).doubleValue(), ((Double)localPair.second).doubleValue()) < 6000.0D;
+    try
+    {
+      if (co.e())
+      {
+        c();
+        co.a("startup()");
+      }
+      if (paramLooper == null)
+      {
+        this.d = new HandlerThread("thread_" + c());
+        this.d.start();
+      }
+      for (this.a = new di.a(this, this.d.getLooper());; this.a = new di.a(this, paramLooper))
+      {
+        this.a.getLooper();
+        int i = a();
+        return i;
+        paramLooper = finally;
+        throw paramLooper;
+      }
+      return -1;
+    }
+    catch (Throwable paramLooper)
+    {
+      if (co.e())
+      {
+        c();
+        co.a("startup error.", paramLooper);
+      }
+    }
+  }
+  
+  public abstract void a(Message paramMessage);
+  
+  public final boolean a(int paramInt, long paramLong)
+  {
+    return co.a(this.a, paramInt, paramLong);
+  }
+  
+  public final void d()
+  {
+    for (;;)
+    {
+      try
+      {
+        synchronized (this.c)
+        {
+          boolean bool = this.b;
+          if (!bool) {
+            return;
+          }
+          if (co.e())
+          {
+            c();
+            co.a("shutdown()");
+          }
+          b();
+        }
+      }
+      catch (Throwable localThrowable2)
+      {
+        if (!co.e()) {
+          continue;
+        }
+        c();
+        co.a("shutdown error.", localThrowable2);
+        continue;
+      }
+      try
+      {
+        dr.a(this.d, this.a, 100L);
+        this.d = null;
+        this.a = null;
+        this.b = false;
+        return;
+        localObject = finally;
+        throw localObject;
+      }
+      catch (Throwable localThrowable1)
+      {
+        if (!co.e()) {
+          continue;
+        }
+        c();
+        co.a("shutdown thread error.", localThrowable1);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     c.t.m.g.di
  * JD-Core Version:    0.7.0.1
  */

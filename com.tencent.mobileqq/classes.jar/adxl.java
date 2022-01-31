@@ -1,68 +1,123 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hiboom.HiBoomManager;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.vas.VasH5PayUtil;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import java.util.concurrent.atomic.AtomicBoolean;
-import tencent.hiboom.hiboomauth.hiboom_auth.TTipsInfo;
+import android.view.View;
+import com.tencent.common.galleryactivity.AbstractImageAdapter;
+import com.tencent.mobileqq.activity.aio.photo.AIOFilePicData;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.activity.aio.photo.AIOLightVideoData;
+import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.GestureSelectGridView;
 
-public final class adxl
-  implements DialogInterface.OnClickListener
+class adxl
+  implements behi
 {
-  public adxl(int paramInt, String paramString, Context paramContext, hiboom_auth.TTipsInfo paramTTipsInfo) {}
+  adxl(adxg paramadxg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    switch (this.jdField_a_of_type_Int)
+    boolean bool = true;
+    Object localObject1 = this.a.a.a(paramInt);
+    if (!adyb.class.isInstance(localObject1)) {}
+    label646:
+    for (;;)
     {
-    default: 
-    case 1: 
+      return;
+      localObject1 = (adyb)localObject1;
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOImageListScene", 2, "onItemClick" + paramInt + " FirstVisiblePosition " + adxg.a(this.a).getFirstVisiblePosition() + " LastVisiblePosition " + adxg.b(this.a).getLastVisiblePosition());
+      }
+      Object localObject2;
+      int i;
+      if (adxg.a(this.a))
+      {
+        localObject2 = ((adyb)localObject1).a;
+        if (AIOFilePicData.class.isInstance(localObject2))
+        {
+          if ((((AIOFilePicData)localObject2).a(20) == null) && (((AIOFilePicData)localObject2).a(18) == null) && (((AIOFilePicData)localObject2).a(16) == null))
+          {
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("AIOImageListScene", 2, "AIOFilePicData has null path,onItemClick: " + paramInt);
+          }
+        }
+        else if (AIOLightVideoData.class.isInstance(((adyb)localObject1).a))
+        {
+          bbmy.a(adxg.n(this.a), ajjy.a(2131634290), 0).a();
+          return;
+        }
+        i = this.a.a();
+        if (i == 1)
+        {
+          if (AIOShortVideoData.class.isInstance(localObject2)) {
+            bbmy.a(adxg.o(this.a), ajjy.a(2131634297), 0).a();
+          }
+        }
+        else if (i == 2)
+        {
+          if (AIOImageData.class.isInstance(localObject2)) {
+            bbmy.a(adxg.p(this.a), ajjy.a(2131634295), 0).a();
+          }
+        }
+        else {
+          if ((i == 0) && (!AIOImageData.class.isInstance(localObject2))) {
+            break label481;
+          }
+        }
+        if (((adyb)localObject1).b() == 1)
+        {
+          i = 1;
+          label343:
+          localObject2 = this.a;
+          if (i != 0) {
+            break label510;
+          }
+          label354:
+          ((adxg)localObject2).a((adyb)localObject1, bool, false);
+          if (!this.a.a(paramView, (xgy)localObject1)) {
+            ((AbstractImageAdapter)paramAdapterView.getAdapter()).notifyDataSetChanged();
+          }
+          this.a.w();
+        }
+      }
       for (;;)
       {
-        paramDialogInterface.dismiss();
+        if (!QLog.isColorLevel()) {
+          break label646;
+        }
+        QLog.d("AIOImageListScene", 2, "onItemClick" + paramInt + " FirstVisiblePosition " + adxg.e(this.a).getFirstVisiblePosition() + " LastVisiblePosition " + adxg.f(this.a).getLastVisiblePosition() + " SelectedIndex = " + this.a.a.b());
         return;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          VasWebviewUtil.openQQBrowserActivity(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, -1L, null, false, -1);
-        }
-      }
-    }
-    Object localObject = this.jdField_a_of_type_TencentHiboomHiboomauthHiboom_auth$TTipsInfo.str_vip_type.get();
-    String str1 = this.jdField_a_of_type_TencentHiboomHiboomauthHiboom_auth$TTipsInfo.str_month.get();
-    String str2 = this.jdField_a_of_type_TencentHiboomHiboomauthHiboom_auth$TTipsInfo.str_aid.get();
-    if (((String)localObject).startsWith("!")) {
-      localObject = ((String)localObject).substring(1, ((String)localObject).length());
-    }
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if (str1.startsWith("!")) {
-        str1 = str1.substring(1, str1.length());
-      }
-      for (boolean bool2 = true;; bool2 = false)
-      {
-        VasH5PayUtil.a(this.jdField_a_of_type_AndroidContentContext, str2, (String)localObject, Integer.parseInt(str1), bool2, bool1);
-        if (!(this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)) {
+        label481:
+        if ((AIOFilePicData.class.isInstance(localObject2)) || (!AIOShortVideoData.class.isInstance(localObject2))) {
           break;
         }
-        localObject = (FragmentActivity)this.jdField_a_of_type_AndroidContentContext;
-        if ((((FragmentActivity)localObject).getChatFragment() == null) || (((FragmentActivity)localObject).getChatFragment().a() == null)) {
-          break;
-        }
-        ((HiBoomManager)((FragmentActivity)localObject).getChatFragment().a().a.getManager(218)).b.set(false);
         break;
+        i = 0;
+        break label343;
+        label510:
+        bool = false;
+        break label354;
+        if (AIOLightVideoData.class.isInstance(((adyb)localObject1).a))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("AIOImageListScene", 2, "lightvideo could not be opened");
+          }
+          bbmy.a(adxg.q(this.a), ajjy.a(2131634300), 0).a();
+          return;
+        }
+        if (AIOShortVideoData.class.isInstance(((adyb)localObject1).a)) {}
+        this.a.a.e(paramInt);
+        this.a.a.b(adxg.c(this.a).getFirstVisiblePosition());
+        this.a.a.c(adxg.d(this.a).getLastVisiblePosition());
+        this.a.t();
+        this.a.a("Multi_Pic_big", 1);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adxl
  * JD-Core Version:    0.7.0.1
  */

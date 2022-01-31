@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class StatItem
   extends JceStruct
 {
-  static ArrayList<String> a = new ArrayList();
+  static ArrayList<String> cache_records = new ArrayList();
   public ArrayList<String> records = null;
   public int type = 0;
   
   static
   {
-    a.add("");
+    cache_records.add("");
   }
   
   public StatItem() {}
@@ -28,7 +28,7 @@ public final class StatItem
   public void readFrom(JceInputStream paramJceInputStream)
   {
     this.type = paramJceInputStream.read(this.type, 0, true);
-    this.records = ((ArrayList)paramJceInputStream.read(a, 1, true));
+    this.records = ((ArrayList)paramJceInputStream.read(cache_records, 1, true));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -39,7 +39,7 @@ public final class StatItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmassistant.common.jce.StatItem
  * JD-Core Version:    0.7.0.1
  */

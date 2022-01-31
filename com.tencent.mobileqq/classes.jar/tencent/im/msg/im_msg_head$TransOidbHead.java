@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class im_msg_head$TransOidbHead
-  extends MessageMicro
+  extends MessageMicro<TransOidbHead>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "uint32_command", "uint32_service_type", "uint32_result", "str_error_msg" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "" }, TransOidbHead.class);
   public final PBStringField str_error_msg = PBField.initString("");

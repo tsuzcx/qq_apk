@@ -1,37 +1,45 @@
 package c.t.m.g;
 
-import android.location.Location;
-import android.os.Bundle;
+import android.content.Context;
 
 public final class do
 {
-  public static final Location a = new Location("Empty");
+  protected static volatile boolean a = false;
+  private static volatile Context b;
   
-  static
+  public static final Context a()
   {
-    new Bundle();
+    try
+    {
+      if (b != null)
+      {
+        Context localContext = b;
+        return localContext;
+      }
+      throw new NullPointerException("u should init first.");
+    }
+    finally {}
   }
   
-  public static String a(int paramInt1, int paramInt2)
+  public static final void a(Context paramContext)
   {
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    boolean bool = dc.a().d("https");
-    StringBuilder localStringBuilder2 = new StringBuilder("http");
-    if (bool) {}
-    for (String str = "s";; str = "")
+    try
     {
-      localStringBuilder1.append(str + "://lbs.map.qq.com/loc");
-      localStringBuilder1.append("?");
-      localStringBuilder1.append("c=1");
-      localStringBuilder1.append("&mars=").append(paramInt1);
-      localStringBuilder1.append("&obs=").append(paramInt2);
-      return localStringBuilder1.toString();
+      if ((b != null) && (b.getApplicationContext() != null)) {
+        break label52;
+      }
+      if ((paramContext == null) || (paramContext.getApplicationContext() == null)) {
+        throw new NullPointerException("context cannot be null.");
+      }
     }
+    finally {}
+    b = paramContext.getApplicationContext();
+    label52:
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     c.t.m.g.do
  * JD-Core Version:    0.7.0.1
  */

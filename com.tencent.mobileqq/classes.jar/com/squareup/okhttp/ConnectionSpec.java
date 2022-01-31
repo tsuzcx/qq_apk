@@ -8,9 +8,9 @@ import javax.net.ssl.SSLSocket;
 public final class ConnectionSpec
 {
   private static final CipherSuite[] APPROVED_CIPHER_SUITES = { CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256, CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256, CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256, CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA, CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA, CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA, CipherSuite.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA, CipherSuite.TLS_DHE_RSA_WITH_AES_128_CBC_SHA, CipherSuite.TLS_DHE_RSA_WITH_AES_256_CBC_SHA, CipherSuite.TLS_RSA_WITH_AES_128_GCM_SHA256, CipherSuite.TLS_RSA_WITH_AES_128_CBC_SHA, CipherSuite.TLS_RSA_WITH_AES_256_CBC_SHA, CipherSuite.TLS_RSA_WITH_3DES_EDE_CBC_SHA };
-  public static final ConnectionSpec CLEARTEXT = new Builder(false).build();
+  public static final ConnectionSpec CLEARTEXT = new ConnectionSpec.Builder(false).build();
   public static final ConnectionSpec COMPATIBLE_TLS;
-  public static final ConnectionSpec MODERN_TLS = new Builder(true).cipherSuites(APPROVED_CIPHER_SUITES).tlsVersions(new TlsVersion[] { TlsVersion.TLS_1_2, TlsVersion.TLS_1_1, TlsVersion.TLS_1_0 }).supportsTlsExtensions(true).build();
+  public static final ConnectionSpec MODERN_TLS = new ConnectionSpec.Builder(true).cipherSuites(APPROVED_CIPHER_SUITES).tlsVersions(new TlsVersion[] { TlsVersion.TLS_1_2, TlsVersion.TLS_1_1, TlsVersion.TLS_1_0 }).supportsTlsExtensions(true).build();
   private final String[] cipherSuites;
   private final boolean supportsTlsExtensions;
   private final boolean tls;
@@ -18,15 +18,15 @@ public final class ConnectionSpec
   
   static
   {
-    COMPATIBLE_TLS = new Builder(MODERN_TLS).tlsVersions(new TlsVersion[] { TlsVersion.TLS_1_0 }).supportsTlsExtensions(true).build();
+    COMPATIBLE_TLS = new ConnectionSpec.Builder(MODERN_TLS).tlsVersions(new TlsVersion[] { TlsVersion.TLS_1_0 }).supportsTlsExtensions(true).build();
   }
   
-  private ConnectionSpec(Builder paramBuilder)
+  private ConnectionSpec(ConnectionSpec.Builder paramBuilder)
   {
-    this.tls = paramBuilder.tls;
-    this.cipherSuites = paramBuilder.cipherSuites;
-    this.tlsVersions = paramBuilder.tlsVersions;
-    this.supportsTlsExtensions = paramBuilder.supportsTlsExtensions;
+    this.tls = ConnectionSpec.Builder.access$000(paramBuilder);
+    this.cipherSuites = ConnectionSpec.Builder.access$100(paramBuilder);
+    this.tlsVersions = ConnectionSpec.Builder.access$200(paramBuilder);
+    this.supportsTlsExtensions = ConnectionSpec.Builder.access$300(paramBuilder);
   }
   
   private static boolean nonEmptyIntersection(String[] paramArrayOfString1, String[] paramArrayOfString2)
@@ -68,7 +68,7 @@ public final class ConnectionSpec
           arrayOfString3 = Util.concat(arrayOfString1, "TLS_FALLBACK_SCSV");
         }
       }
-      return new Builder(this).cipherSuites(arrayOfString3).tlsVersions(arrayOfString2).build();
+      return new ConnectionSpec.Builder(this).cipherSuites(arrayOfString3).tlsVersions(arrayOfString2).build();
       arrayOfString1 = paramSSLSocket.getEnabledCipherSuites();
       break;
     }
@@ -130,7 +130,7 @@ public final class ConnectionSpec
     label53:
     for (i = 0;; i = 1)
     {
-      i = ((j + 527) * 31 + k) * 31 + i;
+      i += ((j + 527) * 31 + k) * 31;
       return i;
     }
   }
@@ -188,113 +188,6 @@ public final class ConnectionSpec
       return "ConnectionSpec(cipherSuites=" + str1 + ", tlsVersions=" + str2 + ", supportsTlsExtensions=" + this.supportsTlsExtensions + ")";
       str1 = "[all enabled]";
       break;
-    }
-  }
-  
-  public static final class Builder
-  {
-    private String[] cipherSuites;
-    private boolean supportsTlsExtensions;
-    private boolean tls;
-    private String[] tlsVersions;
-    
-    public Builder(ConnectionSpec paramConnectionSpec)
-    {
-      this.tls = paramConnectionSpec.tls;
-      this.cipherSuites = paramConnectionSpec.cipherSuites;
-      this.tlsVersions = paramConnectionSpec.tlsVersions;
-      this.supportsTlsExtensions = paramConnectionSpec.supportsTlsExtensions;
-    }
-    
-    Builder(boolean paramBoolean)
-    {
-      this.tls = paramBoolean;
-    }
-    
-    public Builder allEnabledCipherSuites()
-    {
-      if (!this.tls) {
-        throw new IllegalStateException("no cipher suites for cleartext connections");
-      }
-      this.cipherSuites = null;
-      return this;
-    }
-    
-    public Builder allEnabledTlsVersions()
-    {
-      if (!this.tls) {
-        throw new IllegalStateException("no TLS versions for cleartext connections");
-      }
-      this.tlsVersions = null;
-      return this;
-    }
-    
-    public ConnectionSpec build()
-    {
-      return new ConnectionSpec(this, null);
-    }
-    
-    public Builder cipherSuites(CipherSuite... paramVarArgs)
-    {
-      if (!this.tls) {
-        throw new IllegalStateException("no cipher suites for cleartext connections");
-      }
-      String[] arrayOfString = new String[paramVarArgs.length];
-      int i = 0;
-      while (i < paramVarArgs.length)
-      {
-        arrayOfString[i] = paramVarArgs[i].javaName;
-        i += 1;
-      }
-      return cipherSuites(arrayOfString);
-    }
-    
-    public Builder cipherSuites(String... paramVarArgs)
-    {
-      if (!this.tls) {
-        throw new IllegalStateException("no cipher suites for cleartext connections");
-      }
-      if (paramVarArgs.length == 0) {
-        throw new IllegalArgumentException("At least one cipher suite is required");
-      }
-      this.cipherSuites = ((String[])paramVarArgs.clone());
-      return this;
-    }
-    
-    public Builder supportsTlsExtensions(boolean paramBoolean)
-    {
-      if (!this.tls) {
-        throw new IllegalStateException("no TLS extensions for cleartext connections");
-      }
-      this.supportsTlsExtensions = paramBoolean;
-      return this;
-    }
-    
-    public Builder tlsVersions(TlsVersion... paramVarArgs)
-    {
-      if (!this.tls) {
-        throw new IllegalStateException("no TLS versions for cleartext connections");
-      }
-      String[] arrayOfString = new String[paramVarArgs.length];
-      int i = 0;
-      while (i < paramVarArgs.length)
-      {
-        arrayOfString[i] = paramVarArgs[i].javaName;
-        i += 1;
-      }
-      return tlsVersions(arrayOfString);
-    }
-    
-    public Builder tlsVersions(String... paramVarArgs)
-    {
-      if (!this.tls) {
-        throw new IllegalStateException("no TLS versions for cleartext connections");
-      }
-      if (paramVarArgs.length == 0) {
-        throw new IllegalArgumentException("At least one TLS version is required");
-      }
-      this.tlsVersions = ((String[])paramVarArgs.clone());
-      return this;
     }
   }
 }

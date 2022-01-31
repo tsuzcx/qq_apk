@@ -1,31 +1,98 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.common.galleryactivity.AbstractGalleryScene;
-import com.tencent.common.galleryactivity.GalleryPageView;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentHotQuestion;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import java.util.List;
+import org.json.JSONObject;
 
 public class pjx
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public pjx(GalleryPageView paramGalleryPageView) {}
+  public pjx(ComponentContentHotQuestion paramComponentContentHotQuestion) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (!this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene.d()) {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    opw localopw = this.a.jdField_a_of_type_Pjg.a();
+    ArticleInfo localArticleInfo = localopw.a();
+    Object localObject1 = (ppv)localArticleInfo.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.get(0);
+    Object localObject2;
+    if ((localArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int == 12) && (((ppv)localObject1).jdField_a_of_type_Ppx != null))
+    {
+      localObject2 = new Intent((Activity)this.a.jdField_a_of_type_AndroidContentContext, ReadInJoyDeliverUGCActivity.class);
+      ((Intent)localObject2).putExtra("arg_topic_id", String.valueOf(String.valueOf(((ppv)localObject1).jdField_a_of_type_Ppx.jdField_b_of_type_Int)));
+      ((Intent)localObject2).putExtra("support_topic", true);
+      ((Intent)localObject2).putExtra("support_linkify", true);
+    }
+    try
+    {
+      paramView = new String(baaw.decode(((ppv)localObject1).jdField_a_of_type_Ppx.jdField_b_of_type_JavaLangString, 0));
+      ((Intent)localObject2).putExtra("is_from_poly_topic", true);
+      if (localopw.e() == 70)
+      {
+        bool = true;
+        ((Intent)localObject2).putExtra("is_from_dian_dian", bool);
+        ((Intent)localObject2).putExtra("arg_topic_name", paramView);
+        ((Intent)localObject2).putExtra("arg_ad_tag", ((ppv)localObject1).jdField_a_of_type_Ppx.c);
+        this.a.getContext().startActivity((Intent)localObject2);
+        localObject2 = new JSONObject();
+      }
+      try
+      {
+        ((JSONObject)localObject2).put("channel_id", localopw.e());
+        if (((ppv)localObject1).jdField_a_of_type_Ppw == null) {
+          break label388;
+        }
+        paramView = ((ppv)localObject1).jdField_a_of_type_Ppw.a;
+        ((JSONObject)localObject2).put("rowkey", paramView);
+        if (((ppv)localObject1).jdField_a_of_type_Ppx == null) {
+          break label396;
+        }
+        i = ((ppv)localObject1).jdField_a_of_type_Ppx.jdField_b_of_type_Int;
+        ((JSONObject)localObject2).put("topicid", i);
+      }
+      catch (Exception paramView)
+      {
+        for (;;)
+        {
+          int i;
+          paramView.printStackTrace();
+          continue;
+          paramView = "2";
+        }
+      }
+      localObject1 = localArticleInfo.mFeedId + "";
+      if (obz.o(localArticleInfo))
+      {
+        paramView = "1";
+        ndn.a(null, "CliOper", "", "", "0X800982C", "0X800982C", 0, 0, (String)localObject1, paramView, localArticleInfo.mStrategyId + "", ((JSONObject)localObject2).toString(), false);
+        return;
+      }
+    }
+    catch (Exception paramView)
+    {
+      for (;;)
+      {
+        paramView.printStackTrace();
+        paramView = "";
+        continue;
+        boolean bool = false;
+        continue;
+        label388:
+        paramView = Integer.valueOf(0);
+        continue;
+        label396:
+        i = 0;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pjx
  * JD-Core Version:    0.7.0.1
  */

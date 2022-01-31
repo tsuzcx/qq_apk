@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_group$RspGetGroupHotRankVideo
-  extends MessageMicro
+  extends MessageMicro<RspGetGroupHotRankVideo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field is_end = PBField.initUInt32(0);
@@ -18,7 +18,7 @@ public final class qqstory_group$RspGetGroupHotRankVideo
   public qqstory_struct.ErrorInfo result = new qqstory_struct.ErrorInfo();
   public final PBUInt64Field seq = PBField.initUInt64(0L);
   public final PBUInt32Field total = PBField.initUInt32(0);
-  public final PBRepeatMessageField video_card_list = PBField.initRepeatMessage(qqstory_group.HotVideoCard.class);
+  public final PBRepeatMessageField<qqstory_group.HotVideoCard> video_card_list = PBField.initRepeatMessage(qqstory_group.HotVideoCard.class);
   
   static
   {
@@ -28,7 +28,7 @@ public final class qqstory_group$RspGetGroupHotRankVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_group.RspGetGroupHotRankVideo
  * JD-Core Version:    0.7.0.1
  */

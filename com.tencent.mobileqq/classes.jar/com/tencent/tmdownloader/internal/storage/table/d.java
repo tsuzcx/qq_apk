@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import com.tencent.tmassistant.common.a.c;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ac;
 import com.tencent.tmdownloader.internal.storage.a.a;
 import java.util.HashMap;
 
@@ -36,7 +36,7 @@ public class d
       catch (Exception paramString1)
       {
         paramString1 = paramString1;
-        r.c("DownloadSettingTable", "exception: ", paramString1);
+        ac.c("DownloadSettingTable", "exception: ", paramString1);
         paramString1.printStackTrace();
         return -2;
       }
@@ -92,7 +92,7 @@ public class d
         do
         {
           localObject1 = localCursor1;
-          r.c("DownloadSettingTable", "exception: ", localException);
+          ac.c("DownloadSettingTable", "exception: ", localException);
           localObject1 = localCursor1;
           localException.printStackTrace();
         } while (localCursor1 == null);
@@ -130,7 +130,7 @@ public class d
     }
     catch (Exception paramString1)
     {
-      r.c("DownloadSettingTable", "exception: ", paramString1);
+      ac.c("DownloadSettingTable", "exception: ", paramString1);
       paramString1.printStackTrace();
     }
   }
@@ -152,7 +152,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.storage.table.d
  * JD-Core Version:    0.7.0.1
  */

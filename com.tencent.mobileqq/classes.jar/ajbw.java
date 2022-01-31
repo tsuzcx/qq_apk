@@ -1,22 +1,10 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-
-class ajbw
-  implements Runnable
+public abstract interface ajbw
 {
-  ajbw(ajbv paramajbv) {}
-  
-  public void run()
-  {
-    if (this.a.a.b == null) {
-      return;
-    }
-    this.a.a.b.setVisibility(8);
-  }
+  public abstract void a(boolean paramBoolean, aipq paramaipq);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajbw
  * JD-Core Version:    0.7.0.1
  */

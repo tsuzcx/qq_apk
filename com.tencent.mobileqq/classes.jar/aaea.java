@@ -1,26 +1,13 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.ar.ARLBSPOIDialog;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class aaea
-  implements Animation.AnimationListener
+  implements adzi
 {
-  public aaea(ARLBSPOIDialog paramARLBSPOIDialog) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a.setVisibility(8);
-    this.a.dismiss();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public aaea(BaseChatPie paramBaseChatPie) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaea
  * JD-Core Version:    0.7.0.1
  */

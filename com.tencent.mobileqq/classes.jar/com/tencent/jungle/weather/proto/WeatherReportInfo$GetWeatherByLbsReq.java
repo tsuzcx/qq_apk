@@ -7,9 +7,10 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class WeatherReportInfo$GetWeatherByLbsReq
-  extends MessageMicro
+  extends MessageMicro<GetWeatherByLbsReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "pbReqMsgHead", "uin", "lat", "lng" }, new Object[] { null, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0) }, GetWeatherByLbsReq.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40 }, new String[] { "pbReqMsgHead", "uin", "lat", "lng", "adcode_from_mapsdk" }, new Object[] { null, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, GetWeatherByLbsReq.class);
+  public final PBUInt32Field adcode_from_mapsdk = PBField.initUInt32(0);
   public final PBUInt32Field lat = PBField.initUInt32(0);
   public final PBUInt32Field lng = PBField.initUInt32(0);
   public WeatherReportInfo.PbReqMsgHead pbReqMsgHead = new WeatherReportInfo.PbReqMsgHead();

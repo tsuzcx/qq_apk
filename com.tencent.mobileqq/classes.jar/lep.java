@@ -1,27 +1,39 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-
 public class lep
-  implements TextWatcher
 {
-  public lep(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  private short jdField_a_of_type_Short;
+  private byte[] jdField_a_of_type_ArrayOfByte;
+  private short b;
   
-  public void afterTextChanged(Editable paramEditable)
+  public lep(short paramShort1, short paramShort2, byte[] paramArrayOfByte)
   {
-    this.a.a(paramEditable);
+    this.jdField_a_of_type_Short = paramShort1;
+    this.b = paramShort2;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public int a()
   {
-    this.a.a(paramCharSequence, paramInt1, paramInt2, paramInt3);
+    return b() + 4;
+  }
+  
+  public short a()
+  {
+    return this.jdField_a_of_type_Short;
+  }
+  
+  public byte[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfByte;
+  }
+  
+  public short b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lep
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,17 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
-
 public class aoml
-  extends Property
 {
-  public aoml(GroundDrawable paramGroundDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public int a;
+  String a;
   
-  public Float a(GroundDrawable paramGroundDrawable)
+  public aoml(String paramString, int paramInt)
   {
-    if (paramGroundDrawable != null) {
-      return Float.valueOf(GroundDrawable.a(paramGroundDrawable));
-    }
-    return Float.valueOf(0.0F);
-  }
-  
-  public void a(GroundDrawable paramGroundDrawable, Float paramFloat)
-  {
-    if (paramGroundDrawable != null) {
-      GroundDrawable.a(paramGroundDrawable, paramFloat.floatValue());
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoml
  * JD-Core Version:    0.7.0.1
  */

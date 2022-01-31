@@ -8,33 +8,18 @@ public final class UploadRoute
   private static final long serialVersionUID = 100L;
   private String mIp;
   private int mPort;
-  private String mProxyIp;
-  private int mProxyPort;
-  private c.a mRouteCategory;
+  private IUploadRouteStrategy.RouteCategoryType mRouteCategory;
   
-  public UploadRoute(String paramString, int paramInt, c.a parama)
+  public UploadRoute(String paramString, int paramInt, IUploadRouteStrategy.RouteCategoryType paramRouteCategoryType)
   {
-    this(paramString, paramInt, null, 0, parama);
-  }
-  
-  public UploadRoute(String paramString1, int paramInt1, String paramString2, int paramInt2, c.a parama)
-  {
-    this.mIp = paramString1;
-    this.mPort = paramInt1;
-    this.mProxyIp = paramString2;
-    this.mProxyPort = paramInt2;
-    this.mRouteCategory = parama;
-  }
-  
-  public void clearProxy()
-  {
-    this.mProxyIp = null;
-    this.mProxyPort = 0;
+    this.mIp = paramString;
+    this.mPort = paramInt;
+    this.mRouteCategory = paramRouteCategoryType;
   }
   
   public UploadRoute clone()
   {
-    return new UploadRoute(this.mIp, this.mPort, this.mProxyIp, this.mProxyPort, this.mRouteCategory);
+    return new UploadRoute(this.mIp, this.mPort, this.mRouteCategory);
   }
   
   public String getIp()
@@ -47,17 +32,7 @@ public final class UploadRoute
     return this.mPort;
   }
   
-  public int getPorxyPort()
-  {
-    return this.mProxyPort;
-  }
-  
-  public String getProxyIp()
-  {
-    return this.mProxyIp;
-  }
-  
-  public c.a getRouteCategory()
+  public IUploadRouteStrategy.RouteCategoryType getRouteCategory()
   {
     return this.mRouteCategory;
   }
@@ -81,25 +56,9 @@ public final class UploadRoute
     this.mPort = paramInt;
   }
   
-  public void setPorxyPort(int paramInt)
+  public void setRouteCategory(IUploadRouteStrategy.RouteCategoryType paramRouteCategoryType)
   {
-    this.mProxyPort = paramInt;
-  }
-  
-  public void setProxy(String paramString, int paramInt)
-  {
-    this.mProxyIp = paramString;
-    this.mProxyPort = paramInt;
-  }
-  
-  public void setProxyIp(String paramString)
-  {
-    this.mProxyIp = paramString;
-  }
-  
-  public void setRouteCategory(c.a parama)
-  {
-    this.mRouteCategory = parama;
+    this.mRouteCategory = paramRouteCategoryType;
   }
   
   public String toString()
@@ -108,26 +67,17 @@ public final class UploadRoute
     if (this.mIp == null)
     {
       str = "null";
-      localStringBuilder = localStringBuilder.append(str).append(", port:").append(this.mPort).append(", pIp:");
-      if (this.mProxyIp != null) {
-        break label111;
-      }
-      str = "null";
-      label56:
-      localStringBuilder = localStringBuilder.append(str).append(", pPort:").append(this.mProxyPort).append(", ");
+      localStringBuilder = localStringBuilder.append(str).append(", port:").append(this.mPort).append(", ");
       if (this.mRouteCategory != null) {
-        break label119;
+        break label78;
       }
     }
-    label111:
-    label119:
-    for (String str = "null";; str = this.mRouteCategory.b())
+    label78:
+    for (String str = "null";; str = this.mRouteCategory.getDesc())
     {
       return str + ")";
       str = this.mIp;
       break;
-      str = this.mProxyIp;
-      break label56;
     }
   }
 }

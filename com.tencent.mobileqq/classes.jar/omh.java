@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media.MediaGifView;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media.MediaVideoView;
 
-public final class omh
-  implements Animation.AnimationListener
+public class omh
 {
-  public omh(View paramView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public static omg a(int paramInt, Context paramContext)
   {
-    this.a.setAnimation(null);
+    switch (paramInt)
+    {
+    default: 
+      return new MediaGifView(paramContext);
+    case 0: 
+      return new MediaGifView(paramContext);
+    }
+    return new MediaVideoView(paramContext);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

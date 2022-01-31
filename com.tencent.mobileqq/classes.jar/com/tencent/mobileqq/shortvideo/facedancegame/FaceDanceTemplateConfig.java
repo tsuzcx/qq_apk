@@ -6,12 +6,12 @@ import org.json.JSONObject;
 
 public class FaceDanceTemplateConfig
 {
-  public float a;
-  public ExpressionTemplateConfig a;
-  public String a;
-  public String b;
+  public ExpressionTemplateConfig mExpressionConfig;
+  public String mGestureType;
+  public String mTemplateID;
+  public float threshold;
   
-  public static FaceDanceTemplateConfig a(String paramString, List paramList)
+  public static FaceDanceTemplateConfig parseConfig(String paramString, List<ExpressionTemplateConfig> paramList)
   {
     if ((paramList == null) || (paramList.size() == 0)) {
       return null;
@@ -25,16 +25,16 @@ public class FaceDanceTemplateConfig
       while (paramList.hasNext())
       {
         ExpressionTemplateConfig localExpressionTemplateConfig = (ExpressionTemplateConfig)paramList.next();
-        if (localExpressionTemplateConfig.jdField_a_of_type_JavaLangString.equals(str)) {
-          localFaceDanceTemplateConfig.jdField_a_of_type_ComTencentMobileqqShortvideoFacedancegameExpressionTemplateConfig = localExpressionTemplateConfig;
+        if (localExpressionTemplateConfig.expressionID.equals(str)) {
+          localFaceDanceTemplateConfig.mExpressionConfig = localExpressionTemplateConfig;
         }
       }
-      if (localFaceDanceTemplateConfig.jdField_a_of_type_ComTencentMobileqqShortvideoFacedancegameExpressionTemplateConfig == null) {
+      if (localFaceDanceTemplateConfig.mExpressionConfig == null) {
         return null;
       }
-      localFaceDanceTemplateConfig.jdField_a_of_type_JavaLangString = paramString.getString("id");
-      localFaceDanceTemplateConfig.b = paramString.getString("gesture");
-      localFaceDanceTemplateConfig.jdField_a_of_type_Float = ((float)paramString.getDouble("expression_threshold"));
+      localFaceDanceTemplateConfig.mTemplateID = paramString.getString("id");
+      localFaceDanceTemplateConfig.mGestureType = paramString.getString("gesture");
+      localFaceDanceTemplateConfig.threshold = ((float)paramString.getDouble("expression_threshold"));
       return localFaceDanceTemplateConfig;
     }
     catch (Exception paramString)

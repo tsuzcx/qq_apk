@@ -1,39 +1,36 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.GuardManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.observer.QZoneObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Point;
 
-public class wwb
-  extends QZoneObserver
+abstract interface wwb
 {
-  public wwb(MainAssistObserver paramMainAssistObserver) {}
+  public abstract float a(Point paramPoint, int paramInt1, int paramInt2);
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
-  {
-    if ((paramBoolean1) && (paramBoolean2))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MainActivity", 2, "inform onGetQZoneFeedCountFin");
-      }
-      if ((this.a.a != null) && (this.a.a.app != null)) {}
-    }
-    else
-    {
-      return;
-    }
-    QQAppInterface localQQAppInterface = this.a.a.app;
-    if (!GuardManager.a.a()) {
-      ThreadManager.post(new wwc(this, localQQAppInterface), 8, null, false);
-    }
-    this.a.g();
-  }
+  public abstract int a(int paramInt);
+  
+  public abstract int a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt, wwn paramwwn);
+  
+  public abstract void a(Point paramPoint1, int paramInt, Point paramPoint2);
+  
+  public abstract void a(wwe paramwwe, int paramInt, Point paramPoint);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(Point paramPoint, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract boolean a(wvn paramwvn);
+  
+  public abstract int b(int paramInt);
+  
+  public abstract int b(int paramInt1, int paramInt2);
+  
+  public abstract boolean b();
+  
+  public abstract int c(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wwb
  * JD-Core Version:    0.7.0.1
  */

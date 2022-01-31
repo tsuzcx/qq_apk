@@ -1,19 +1,18 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder.SignVideoItemHolder;
+import android.database.DataSetObserver;
 
 class vpt
-  implements Runnable
+  extends DataSetObserver
 {
   vpt(vps paramvps) {}
   
-  public void run()
+  public void onChanged()
   {
-    this.a.a.d.setVisibility(8);
+    vps.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vpt
  * JD-Core Version:    0.7.0.1
  */

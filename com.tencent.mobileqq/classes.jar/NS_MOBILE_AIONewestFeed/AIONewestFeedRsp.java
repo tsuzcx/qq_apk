@@ -10,10 +10,10 @@ import java.util.Map;
 public final class AIONewestFeedRsp
   extends JceStruct
 {
-  static Map cache_mapEx;
-  static ArrayList cache_uFeedInfos = new ArrayList();
-  public Map mapEx;
-  public ArrayList uFeedInfos;
+  static Map<String, String> cache_mapEx;
+  static ArrayList<NewestFeedInfo> cache_uFeedInfos = new ArrayList();
+  public Map<String, String> mapEx;
+  public ArrayList<NewestFeedInfo> uFeedInfos;
   public long uOpFlag;
   public long uOpuin;
   public long uTime;
@@ -28,7 +28,7 @@ public final class AIONewestFeedRsp
   
   public AIONewestFeedRsp() {}
   
-  public AIONewestFeedRsp(long paramLong1, long paramLong2, ArrayList paramArrayList, long paramLong3, Map paramMap)
+  public AIONewestFeedRsp(long paramLong1, long paramLong2, ArrayList<NewestFeedInfo> paramArrayList, long paramLong3, Map<String, String> paramMap)
   {
     this.uOpuin = paramLong1;
     this.uTime = paramLong2;
@@ -61,7 +61,7 @@ public final class AIONewestFeedRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_AIONewestFeed.AIONewestFeedRsp
  * JD-Core Version:    0.7.0.1
  */

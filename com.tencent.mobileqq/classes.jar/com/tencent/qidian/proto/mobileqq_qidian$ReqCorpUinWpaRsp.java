@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class mobileqq_qidian$ReqCorpUinWpaRsp
-  extends MessageMicro
+  extends MessageMicro<ReqCorpUinWpaRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_sigmsg = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -23,7 +23,7 @@ public final class mobileqq_qidian$ReqCorpUinWpaRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.qidian.proto.mobileqq_qidian.ReqCorpUinWpaRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.Stranger;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.List;
+import tencent.im.oidb.cmd0x5d4.oidb_0x5d4.DelResult;
 
 public class ajsp
-  implements View.OnClickListener
+  implements ajfe
 {
-  public ajsp(TextItem paramTextItem) {}
+  public void a(boolean paramBoolean, PBRepeatMessageField<oidb_0x5d4.DelResult> paramPBRepeatMessageField) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, List<Stranger> paramList) {}
+  
+  public void b(boolean paramBoolean, List<Stranger> paramList) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (!paramView.hasFocus())
-    {
-      paramView.setFocusable(true);
-      paramView.setFocusableInTouchMode(true);
-      ThreadManager.getUIHandler().post(new ajsq(this, paramView));
+    if (paramInt == 4) {
+      a(paramBoolean, (PBRepeatMessageField)paramObject);
     }
+    do
+    {
+      return;
+      if (paramInt == 2)
+      {
+        a(paramBoolean, (List)paramObject);
+        return;
+      }
+    } while (paramInt != 3);
+    b(paramBoolean, (List)paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajsp
  * JD-Core Version:    0.7.0.1
  */

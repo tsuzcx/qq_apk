@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.app.RoamSettingManager;
-import com.tencent.mobileqq.data.RoamSetting;
+import android.os.Bundle;
 
-public class zte
-  implements Runnable
+class zte
+  extends zsa
 {
-  public zte(RoamSettingManager paramRoamSettingManager, RoamSetting paramRoamSetting) {}
+  zte(ztd paramztd, zrt paramzrt) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppRoamSettingManager.b(this.jdField_a_of_type_ComTencentMobileqqDataRoamSetting);
+    if (paramBundle != null)
+    {
+      zva.a(this.jdField_a_of_type_Zrt, zrv.a(paramBundle));
+      return;
+    }
+    zva.a(this.jdField_a_of_type_Zrt, 1, "get user info error, try again");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zte
  * JD-Core Version:    0.7.0.1
  */

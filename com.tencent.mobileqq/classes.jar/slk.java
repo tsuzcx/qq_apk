@@ -1,44 +1,18 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.now.enter.ConversationNowController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 
 public class slk
-  implements Runnable
 {
-  public slk(Conversation paramConversation) {}
-  
-  public void run()
+  public static void a(Object paramObject)
   {
-    boolean bool;
-    PullRefreshHeader localPullRefreshHeader;
-    if (this.a.j)
-    {
-      Conversation.a(this.a, 800L);
-      bool = NetworkUtil.d(BaseApplication.getContext());
-      if (this.a.a != null)
-      {
-        localPullRefreshHeader = this.a.a;
-        if (!bool) {
-          break label78;
-        }
-      }
-    }
-    label78:
-    for (int i = 0;; i = 2)
-    {
-      localPullRefreshHeader.a(i);
-      if (Conversation.a(this.a) != null) {
-        Conversation.a(this.a).a(bool);
-      }
-      return;
+    if ((paramObject instanceof QQAppInterface)) {
+      sll.a = new WeakReference((QQAppInterface)paramObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     slk
  * JD-Core Version:    0.7.0.1
  */

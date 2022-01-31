@@ -1,49 +1,40 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity;
-import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity.LoadingTimeStamp;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashView;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class aboy
-  implements View.OnClickListener
+  extends WtloginObserver
 {
-  public aboy(ARMapLoadingActivity paramARMapLoadingActivity) {}
+  public aboy(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
   
-  public void onClick(View paramView)
+  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapLoadingActivity", 2, "onClick to retry...");
-    }
-    ARMapLoadingActivity.a(this.a).a();
-    ARMapLoadingActivity.a(this.a).a = System.currentTimeMillis();
-    ARMapLoadingActivity.a(this.a).setWealthGodInfo(ARMapLoadingActivity.a(this.a), ARMapLoadingActivity.d(this.a));
-    ARMapLoadingActivity.a(this.a).setLoadStatus(0);
-    ARMapLoadingActivity.b(this.a, ARMapLoadingActivity.a(this.a).a());
-    if (ARMapLoadingActivity.a(this.a) == null)
+    if (QLog.isColorLevel())
     {
-      ARMapLoadingActivity.a(this.a).removeMessages(100);
-      ARMapLoadingActivity.a(this.a).sendEmptyMessageDelayed(100, 200L);
-    }
-    for (;;)
-    {
-      ARMapLoadingActivity.c(this.a);
-      ARMapLoadingActivity.d(this.a);
-      ARMapLoadingActivity.c(this.a, false);
-      ARMapLoadingActivity.d(this.a, false);
-      return;
-      if (ARMapLoadingActivity.b(this.a) == 5) {
-        ARMapLoadingActivity.a(this.a).c();
+      QLog.d("RegisterQQNumberActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
+      if (paramErrMsg != null) {
+        QLog.d("RegisterQQNumberActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
       }
-      ARMapLoadingActivity.a(this.a).removeMessages(102);
-      ARMapLoadingActivity.a(this.a).sendEmptyMessageDelayed(102, 200L);
     }
+    if (paramInt2 == 0) {
+      return;
+    }
+    RegisterQQNumberActivity.a(this.a);
+    paramString = new Intent(this.a, LoginActivity.class);
+    paramString.putExtra("uin", RegisterQQNumberActivity.a(this.a));
+    paramString.putExtra("tab_index", MainFragment.b);
+    paramString.addFlags(131072);
+    this.a.startActivity(paramString);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aboy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,28 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.util.ProfileParams;
 
-class mwh
-  implements Runnable
+public class mwh
+  implements DialogInterface.OnClickListener
 {
-  mwh(mwc parammwc) {}
+  public mwh(AccountDetailActivity paramAccountDetailActivity, Activity paramActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SubscriptFeedsActivity.a(this.a.a).g = 0;
-    SubscriptFeedsActivity.a(this.a.a, true, false, false);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.i = true;
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.doOnBackPressed();
+      apln.a(this.jdField_a_of_type_AndroidAppActivity, true, "shareToQQ", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.a.a()).longValue());
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.f();
+    paramDialogInterface.dismiss();
   }
 }
 

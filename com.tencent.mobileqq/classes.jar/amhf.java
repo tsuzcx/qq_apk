@@ -1,33 +1,93 @@
-import android.annotation.TargetApi;
-import android.view.VelocityTracker;
-import com.tencent.util.VersionUtils;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.OverScroller;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-class amhf
-  implements Runnable
+public class amhf
+  extends alzl<amhd>
 {
-  amhf(amhe paramamhe) {}
-  
-  @TargetApi(8)
-  public void run()
+  public static amhd a()
   {
-    int i = AbsListView.access$1200(this.a.a);
-    VelocityTracker localVelocityTracker = AbsListView.access$1300(this.a.a);
-    OverScroller localOverScroller = amhe.a(this.a);
-    if ((localVelocityTracker == null) || (i == -1)) {
-      return;
+    amhd localamhd2 = (amhd)alzw.a().a(583);
+    amhd localamhd1 = localamhd2;
+    if (localamhd2 == null) {
+      localamhd1 = new amhd();
     }
-    localVelocityTracker.computeCurrentVelocity(1000, AbsListView.access$1400(this.a.a));
-    if (VersionUtils.b()) {}
-    for (float f = -localVelocityTracker.getYVelocity(i); (Math.abs(f) >= AbsListView.access$1500(this.a.a)) && (localOverScroller.a(0.0F, f)); f = -localVelocityTracker.getYVelocity())
+    return localamhd1;
+  }
+  
+  public int a()
+  {
+    return 583;
+  }
+  
+  @NonNull
+  public amhd a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ExtendFriendBannerProcessor", 2, "migrateOldOrDefaultContent ");
+    }
+    return new amhd();
+  }
+  
+  @Nullable
+  public amhd a(alzs[] paramArrayOfalzs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendBannerProcessor", 2, "onParsed start");
+    }
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
     {
-      this.a.a.postDelayed(this, 40L);
+      if (QLog.isColorLevel()) {
+        QLog.d("ExtendFriendBannerProcessor", 2, "onParsed " + paramArrayOfalzs.length);
+      }
+      return amhd.a(paramArrayOfalzs[0]);
+    }
+    return null;
+  }
+  
+  public Class<amhd> a()
+  {
+    return amhd.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ExtendFriendBannerProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void a(amhd paramamhd)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramamhd == null) {
+        break label43;
+      }
+    }
+    label43:
+    for (paramamhd = paramamhd.toString();; paramamhd = " empty")
+    {
+      QLog.d("ExtendFriendBannerProcessor", 2, paramamhd);
       return;
     }
-    this.a.a();
-    this.a.a.mTouchMode = 3;
-    this.a.a.reportScrollStateChange(1);
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

@@ -1,21 +1,24 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper;
-import mqq.os.MqqHandler;
+import java.util.Comparator;
 
 class agto
-  implements Runnable
+  implements Comparator<agtv>
 {
-  agto(agtj paramagtj, long paramLong) {}
+  agto(agtk paramagtk) {}
   
-  public void run()
+  public int a(agtv paramagtv1, agtv paramagtv2)
   {
-    String str = ShareHelper.a(this.jdField_a_of_type_Agtj.a);
-    ThreadManager.getUIHandler().post(new agtp(this, str));
+    if (paramagtv1.a == paramagtv2.a) {
+      return 0;
+    }
+    if (paramagtv1.a > paramagtv2.a) {
+      return 1;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agto
  * JD-Core Version:    0.7.0.1
  */

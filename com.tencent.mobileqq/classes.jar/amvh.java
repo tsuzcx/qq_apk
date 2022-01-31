@@ -1,21 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkShareJumpActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
-public class amvh
-  implements DialogInterface.OnClickListener
+class amvh
+  implements Animation.AnimationListener
 {
-  public amvh(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
+  amvh(amvg paramamvg) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    this.a.a.a.setVisibility(8);
+    this.a.a.d();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amvh
  * JD-Core Version:    0.7.0.1
  */

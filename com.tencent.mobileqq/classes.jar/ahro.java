@@ -1,28 +1,15 @@
-import com.tencent.biz.widgets.ElasticHorScrView;
-import com.tencent.mobileqq.richmedia.capture.view.ShareActionSheet;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class ahro
-  implements Runnable
+  extends ajjh
 {
-  public ahro(ShareActionSheet paramShareActionSheet) {}
+  public ahro(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void run()
-  {
-    if (this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.a.jdField_a_of_type_Int) {
-      this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
-    }
-    while (this.a.b.getWidth() < ShareActionSheet.a(this.a))
-    {
-      this.a.b.setMove(true);
-      return;
-      this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
-    }
-    this.a.b.setMove(false);
-  }
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahro
  * JD-Core Version:    0.7.0.1
  */

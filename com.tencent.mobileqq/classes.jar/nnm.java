@@ -1,62 +1,106 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.IPlayVideoStatusChangeListener;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase.VideoOnCompletionListener;
-import com.tencent.biz.qqstory.playmode.util.ViewPagerScroller;
-import com.tencent.biz.qqstory.playvideo.ProgressControler;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerBigPicItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import org.json.JSONObject;
 
-public class nnm
-  implements Runnable
+class nnm
+  extends qxr
 {
-  public nnm(VideoPlayModeBase.VideoOnCompletionListener paramVideoOnCompletionListener) {}
+  private ProteusItemData jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData;
+  private Container jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer;
   
-  public void run()
+  public nnm(nnl paramnnl, View paramView, BaseData paramBaseData)
   {
-    if ((this.a.jdField_a_of_type_Int < 0) || (this.a.jdField_a_of_type_Int >= this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size())) {
-      if (QLog.isColorLevel()) {
-        QLog.i("VideoPlayModeBase", 2, "video onCompletion go next but found no data.");
+    super(paramView, paramBaseData);
+    if ((paramView instanceof Container)) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = ((Container)paramView);
+    }
+  }
+  
+  private void a(BaseData paramBaseData, Context paramContext, JSONObject paramJSONObject)
+  {
+    paramJSONObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView();
+    ViewFactory.findClickableViewListener(paramJSONObject, new nnn(this, paramBaseData, paramContext, paramJSONObject));
+  }
+  
+  private void a(Container paramContainer, ProteusItemData paramProteusItemData)
+  {
+    if (paramContainer != null)
+    {
+      ViewBase localViewBase = paramContainer.getVirtualView();
+      Object localObject = localViewBase.findViewBaseByName("id_view_AdDownloadView");
+      if ((localObject != null) && ((localObject instanceof nrw)))
+      {
+        localObject = (nrw)localObject;
+        ((nrw)localObject).a(false);
+        ((nrw)localObject).b(false);
+        ((nrw)localObject).a(null, true);
+      }
+      if (((paramProteusItemData instanceof AdData)) && (((AdData)paramProteusItemData).a != null) && (npa.a((AdData)paramProteusItemData)))
+      {
+        localViewBase = localViewBase.findViewBaseByName("id_game_small_img");
+        if ((localViewBase != null) && ((localViewBase instanceof pap)) && (!TextUtils.isEmpty(((AdData)paramProteusItemData).J)))
+        {
+          int i = aciy.a(40.0F, paramContainer.getContext().getResources());
+          npa.a(paramContainer.getContext(), localViewBase, ((AdData)paramProteusItemData).J, 10, i, i);
+        }
       }
     }
+  }
+  
+  private void a(ViewBase paramViewBase)
+  {
+    if (paramViewBase == null) {}
     do
     {
       return;
-      ((StoryVideoItem)this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.get(this.a.jdField_a_of_type_Int)).mIsPlaying = 0;
-      int i = this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoProgressControler.a();
-      int j = this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.a(this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.b);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.b = (this.a.jdField_a_of_type_Int + 1);
-      if ((this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.d == 3) && (j + 1 == i))
+      paramViewBase = paramViewBase.findViewBaseByName("id_view_AdDownloadView");
+    } while ((paramViewBase == null) || (!(paramViewBase instanceof nrw)));
+    ((nrw)paramViewBase).a(false);
+  }
+  
+  public void a(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null) || (paramBaseData2 == null)) {}
+    TemplateBean localTemplateBean;
+    do
+    {
+      do
       {
-        VideoPlayModeBase localVideoPlayModeBase = this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase;
-        localVideoPlayModeBase.b -= i;
-        this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.setCurrentItem(this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.b, false);
-        this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryPlaymodeIPlayVideoStatusChangeListener.b(this.a.jdField_a_of_type_Int);
         return;
-      }
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.b < this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size())
+      } while (!(paramBaseData2 instanceof ProteusItemData));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData = ((ProteusItemData)paramBaseData2);
+      localTemplateBean = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a;
+    } while (localTemplateBean == null);
+    if ((paramBaseData1 == paramBaseData2) && ((paramBaseData2 instanceof ProteusBannerBigPicItemData))) {
+      a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData);
+    }
+    if (paramBaseData1 != paramBaseData2) {}
+    try
+    {
+      localTemplateBean.getViewBean().bindData(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.b, localTemplateBean.getViewDataBinding());
+      oag.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.a.getViewBean());
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData;
+      a(paramBaseData2, nnl.a(this.jdField_a_of_type_Nnl), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.b);
+      this.jdField_a_of_type_AndroidViewView.setTag(2131296492, paramBaseData2);
+      return;
+    }
+    catch (Exception paramBaseData1)
+    {
+      for (;;)
       {
-        boolean bool = this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.a(this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.b);
-        if (bool) {
-          this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilViewPagerScroller.a(this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.jdField_a_of_type_ComTencentBizQqstoryPlayvideoCustomViewPager);
-        }
-        this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.setCurrentItem(this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.b, bool);
-        this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryPlaymodeIPlayVideoStatusChangeListener.b(this.a.jdField_a_of_type_Int);
-        return;
+        paramBaseData1.printStackTrace();
       }
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.d == 2)
-      {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.b = 0;
-        this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.setCurrentItem(this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.b, false);
-        this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryPlaymodeIPlayVideoStatusChangeListener.b(this.a.jdField_a_of_type_Int);
-        return;
-      }
-    } while (!this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.a());
-    this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.b = (this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size() - 1);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.a(this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.b);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryPlaymodeIPlayVideoStatusChangeListener.h(this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.b);
+    }
   }
 }
 

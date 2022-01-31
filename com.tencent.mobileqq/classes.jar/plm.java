@@ -1,17 +1,6 @@
-import android.os.Handler;
-import android.os.Looper;
-
-public final class plm
-  extends Handler
-{
-  public plm(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
-}
-
+// INTERNAL ERROR //
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     plm
  * JD-Core Version:    0.7.0.1
  */

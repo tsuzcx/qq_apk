@@ -1,42 +1,34 @@
-import com.tencent.biz.common.util.ZipUtils;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aidq
-  implements INetEngine.INetEngineListener
+public class aidq
 {
-  aidq(aidp paramaidp) {}
-  
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
-  
-  public void a(NetResp paramNetResp)
+  public static aidv a(int paramInt, atmo paramatmo, QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PtvTemplateManager", 2, "onResp url: " + this.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl + " resultcode: " + paramNetResp.c);
+    if (paramInt == 0) {
+      return new aidt(paramQQAppInterface, paramContext, paramatmo);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = this.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.a(this.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable) {}
-    try
-    {
-      ZipUtils.a(new File(PtvTemplateManager.jdField_a_of_type_JavaIoFile, this.a.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name), PtvTemplateManager.jdField_a_of_type_JavaLangString);
-      return;
+    if (paramInt == 5) {
+      return new aidr(paramQQAppInterface, paramContext, paramatmo);
     }
-    catch (IOException paramNetResp)
-    {
-      while (!QLog.isColorLevel()) {}
-      paramNetResp.printStackTrace();
+    if (paramInt == 1) {
+      return new aidz(paramQQAppInterface, paramContext, paramatmo);
     }
+    if (paramInt == 2) {
+      return new aieb(paramQQAppInterface, paramContext, paramatmo, 2);
+    }
+    if (paramInt == 3) {
+      return new aieb(paramQQAppInterface, paramContext, paramatmo, 3);
+    }
+    if (paramInt == 4) {
+      return new aidt(paramQQAppInterface, paramContext, paramatmo);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aidq
  * JD-Core Version:    0.7.0.1
  */

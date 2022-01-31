@@ -1,34 +1,37 @@
-import android.content.Intent;
-import android.os.AsyncTask;
-import com.tencent.common.app.BaseApplicationImpl;
-import cooperation.dingdong.DingdongPluginHelper;
-import cooperation.dingdong.DingdongPluginProxyBroadcastReceiver;
-import mqq.app.AppRuntime;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Video;
 
 public final class amsf
-  extends AsyncTask
+  implements Parcelable.Creator
 {
-  public amsf(Intent paramIntent, int paramInt) {}
-  
-  protected Boolean a(Void... paramVarArgs)
+  public IPSiteModel.Video a(Parcel paramParcel)
   {
-    return Boolean.valueOf(DingdongPluginHelper.a(BaseApplicationImpl.getApplication().getRuntime().getApplication()));
+    IPSiteModel.Video localVideo = new IPSiteModel.Video();
+    localVideo.id = paramParcel.readString();
+    localVideo.buttonDesc = paramParcel.readString();
+    localVideo.content = paramParcel.readString();
+    localVideo.cover = paramParcel.readString();
+    localVideo.desc = paramParcel.readString();
+    localVideo.name = paramParcel.readString();
+    localVideo.endTime = paramParcel.readString();
+    localVideo.isShow = paramParcel.readInt();
+    localVideo.newStartTime = paramParcel.readLong();
+    localVideo.newEndTime = paramParcel.readLong();
+    localVideo.redirectUrl = paramParcel.readString();
+    localVideo.videoSource = paramParcel.readString();
+    localVideo.showDate = paramParcel.readString();
+    return localVideo;
   }
   
-  protected void a(Boolean paramBoolean)
+  public IPSiteModel.Video[] a(int paramInt)
   {
-    if (paramBoolean.booleanValue())
-    {
-      paramBoolean = BaseApplicationImpl.getApplication().getRuntime();
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentIntent);
-      localIntent.putExtra("_inner_cmd_", this.jdField_a_of_type_Int);
-      DingdongPluginProxyBroadcastReceiver.a(paramBoolean, localIntent);
-    }
+    return new IPSiteModel.Video[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amsf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
 
 public class wcp
-  implements Runnable
+  implements alut
 {
-  public wcp(PublicAccountChatPie paramPublicAccountChatPie, int paramInt) {}
+  public wcp(SubscribeBaseFragment paramSubscribeBaseFragment) {}
   
-  public void run()
+  public void onColorNoteAnimFinish()
   {
-    if (PublicAccountChatPie.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie) > 0) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.v(this.jdField_a_of_type_Int);
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wcp
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class youtu$NameCardOcrRsp
-  extends MessageMicro
+  extends MessageMicro<NameCardOcrRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field errorcode = PBField.initInt32(0);

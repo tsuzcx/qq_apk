@@ -1,23 +1,22 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.intervideo.groupvideo.GVideoLoadingUI;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
 
-public class aeby
+class aeby
   implements View.OnClickListener
 {
-  private aeby(GroupVideoLoadingFragment paramGroupVideoLoadingFragment) {}
+  aeby(aebk paramaebk) {}
   
   public void onClick(View paramView)
   {
-    GroupVideoLoadingFragment.a(this.a).a("正在检查环境", "群视频体验群，可尝鲜更酷炫的多人互动");
-    GroupVideoLoadingFragment.a(this.a).c();
-    GroupVideoLoadingFragment.a(this.a, false);
+    aciy.n = true;
+    awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
+    acnc.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
+    awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Qidian", "", "0X8008FEB", "qidianMasterVideo", 1, 1, 0, "2", "0", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeby
  * JD-Core Version:    0.7.0.1
  */

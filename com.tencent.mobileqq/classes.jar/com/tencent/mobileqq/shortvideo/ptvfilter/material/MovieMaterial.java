@@ -2,23 +2,23 @@ package com.tencent.mobileqq.shortvideo.ptvfilter.material;
 
 public class MovieMaterial
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public boolean b;
-  public String c;
-  public boolean c;
-  public String d;
-  public boolean d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
+  public String atmosphereAudioPath;
+  public String atmosphereName;
+  public String atmosphereVideoPath;
+  public String doodleAudioPath;
+  public String doodleName;
+  public String doodleVideoPath;
+  public boolean hasAtmosphere;
+  public String hintImagePath;
+  public String hintsContent;
+  public String hintsImageName;
+  public boolean isTouchable;
+  public boolean loopAtmosphere;
+  public boolean loopDoodle;
   
   public String toString()
   {
-    return "MovieInfo{isTouchable='" + this.jdField_a_of_type_Boolean + '\'' + ", hasAtmosphere='" + this.jdField_b_of_type_Boolean + '\'' + ", loopAtmosphere='" + this.c + '\'' + ", loopDoodle='" + this.d + '\'' + ", doodleName='" + this.jdField_a_of_type_JavaLangString + '\'' + ", atmosphereName='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
+    return "MovieInfo{isTouchable='" + this.isTouchable + '\'' + ", hasAtmosphere='" + this.hasAtmosphere + '\'' + ", loopAtmosphere='" + this.loopAtmosphere + '\'' + ", loopDoodle='" + this.loopDoodle + '\'' + ", doodleName='" + this.doodleName + '\'' + ", atmosphereName='" + this.atmosphereName + '\'' + '}';
   }
 }
 

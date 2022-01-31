@@ -1,32 +1,18 @@
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import com.tencent.mobileqq.activity.contacts.base.ContactsViewController;
-import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class wsg
-  extends ViewPager.SimpleOnPageChangeListener
+public final class wsg
 {
-  public wsg(ContactsViewController paramContactsViewController) {}
+  public View a;
+  public ImageView a;
+  public TextView a;
   
-  public void onPageScrollStateChanged(int paramInt)
-  {
-    if (paramInt == 1) {
-      ContactsViewController.a(this.a, ContactsViewController.a(this.a).getCurrentItem());
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    ContactsViewController.a(this.a, paramInt);
-    if (!ContactsViewController.a(this.a)) {
-      ReportController.b(this.a.a, "dc00898", "", "", "0X8008059", "0X8008059", 0, 0, "", "", "", "");
-    }
-    ContactsViewController.a(this.a, false);
-  }
+  public wsg(wse paramwse) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wsg
  * JD-Core Version:    0.7.0.1
  */

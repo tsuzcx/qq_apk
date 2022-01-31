@@ -1,37 +1,14 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-
 public class kub
-  implements ActionSheet.OnButtonClickListener
 {
-  public kub(AccountDetailActivity paramAccountDetailActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  @Deprecated
+  public static boolean a(int paramInt1, int paramInt2)
   {
-    if (this.a.q) {
-      return;
-    }
-    this.a.q = true;
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.a.a.dismiss();
-      return;
-      this.a.q();
-      continue;
-      this.a.D();
-      continue;
-      this.a.F();
-    }
+    return (paramInt2 == 2) || (paramInt2 == 3) || (paramInt1 == 25) || (paramInt1 == 26);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     kub
  * JD-Core Version:    0.7.0.1
  */

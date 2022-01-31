@@ -1,39 +1,39 @@
 package com.tencent.mobileqq.startup.step;
 
+import android.os.Debug;
+import android.widget.Toast;
+import aqjz;
+import aqod;
+import awoh;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
-import com.tencent.hydevteam.pluginframework.pluginloader.DynamicPluginContainerLoader;
-import com.tencent.hydevteam.pluginframework.pluginmanager.UpgradeablePluginManager;
-import com.tencent.mobileqq.intervideo.huayang.HuayangPluginNewDownloader;
+import com.tencent.image.URLDrawable;
+import com.tencent.shadow.core.common.LoggerFactory;
+import com.tencent.shadow.dynamic.host.DynamicRuntime;
+import com.tencent.shadow.dynamic.host.PluginProcessService;
 import java.io.File;
-import java.util.List;
 
 public class HuayangPluginContainer
   extends Step
 {
-  protected boolean a()
+  private static final int a = Runtime.getRuntime().availableProcessors();
+  private static final int b = a + 1;
+  private static final int c = a * 2 + 1;
+  
+  protected boolean doStep()
   {
-    Object localObject1 = HuayangPluginNewDownloader.a(BaseApplicationImpl.getContext());
-    Object localObject2 = new UpgradeablePluginManager((File)localObject1, "group_video");
-    UpgradeablePluginManager localUpgradeablePluginManager = new UpgradeablePluginManager((File)localObject1, "hy_sixgod");
-    localObject1 = new DynamicPluginContainerLoader();
-    localObject2 = ((UpgradeablePluginManager)localObject2).getCachedLatestPlugin("group_video");
-    if (localObject2 != null) {}
-    try
+    if (new File("/data/local/tmp/troophomework.debug").exists())
     {
-      if (!((List)localObject2).isEmpty())
-      {
-        ((DynamicPluginContainerLoader)localObject1).load((InstalledPlugin)((List)localObject2).get(0));
-      }
-      else
-      {
-        localObject2 = localUpgradeablePluginManager.getCachedLatestPlugin("hy_sixgod");
-        if ((localObject2 != null) && (!((List)localObject2).isEmpty())) {
-          ((DynamicPluginContainerLoader)localObject1).load((InstalledPlugin)((List)localObject2).get(0));
-        }
-      }
+      Toast.makeText(BaseApplicationImpl.getContext(), "waitForDebugger", 1).show();
+      Debug.waitForDebugger();
     }
-    catch (Exception localException) {}
+    LoggerFactory.setILoggerFactory(aqjz.a());
+    BaseApplicationImpl.getApplication().registerActivityLifecycleCallbacks(PluginProcessService.getActivityHolder());
+    DynamicRuntime.recoveryRuntime(BaseApplicationImpl.getContext());
+    aqod.d();
+    awoh localawoh = new awoh(BaseApplicationImpl.getApplication());
+    URLDrawable.init(BaseApplicationImpl.getApplication(), localawoh);
+    new InitUrlDrawable().step();
+    new InitMemoryCache().step();
     return true;
   }
 }

@@ -1,43 +1,49 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.GeneralClickHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.util.SparseArray;
+import com.tencent.mobileqq.data.ApolloGameData;
+import java.util.Comparator;
 
-public class aimu
-  implements Runnable
+class aimu
+  implements Comparator<ApolloGameData>
 {
-  public aimu(StructMsgForGeneralShare.GeneralClickHandler paramGeneralClickHandler, Bundle paramBundle) {}
+  SparseArray<Long> a;
   
-  public void run()
+  aimu(SparseArray paramSparseArray)
   {
-    if ((this.jdField_a_of_type_AndroidOsBundle.containsKey("msgSeq")) && (this.jdField_a_of_type_AndroidOsBundle.containsKey("uin")) && (this.jdField_a_of_type_AndroidOsBundle.containsKey("sessionType")))
+    this.a = paramSparseArray;
+  }
+  
+  public int a(ApolloGameData paramApolloGameData1, ApolloGameData paramApolloGameData2)
+  {
+    long l2 = 0L;
+    long l1;
+    if (this.a.get(paramApolloGameData1.gameId) == null)
     {
-      l = this.jdField_a_of_type_AndroidOsBundle.getLong("msgSeq");
-      localObject = this.jdField_a_of_type_AndroidOsBundle.getString("uin");
-      i = this.jdField_a_of_type_AndroidOsBundle.getInt("sessionType");
-      localQQMessageFacade = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare$GeneralClickHandler.a.a();
-      localObject = localQQMessageFacade.a((String)localObject, i, l);
-      ((MessageRecord)localObject).saveExtInfoToExtStr("receipt_msg_is_read", "1");
-      localQQMessageFacade.a(((MessageRecord)localObject).frienduin, ((MessageRecord)localObject).istroop, ((MessageRecord)localObject).uniseq, "extLong", Integer.valueOf(((MessageRecord)localObject).extLong));
-      localQQMessageFacade.a(((MessageRecord)localObject).frienduin, ((MessageRecord)localObject).istroop, ((MessageRecord)localObject).uniseq, "extStr", ((MessageRecord)localObject).extStr);
+      l1 = 0L;
+      if (this.a.get(paramApolloGameData2.gameId) != null) {
+        break label63;
+      }
     }
-    while (!QLog.isColorLevel())
+    for (;;)
     {
-      long l;
-      Object localObject;
-      int i;
-      QQMessageFacade localQQMessageFacade;
-      return;
+      if (l1 <= l2) {
+        break label85;
+      }
+      return -1;
+      l1 = ((Long)this.a.get(paramApolloGameData1.gameId)).longValue();
+      break;
+      label63:
+      l2 = ((Long)this.a.get(paramApolloGameData2.gameId)).longValue();
     }
-    QLog.w(StructMsgForGeneralShare.access$000(), 2, "set receipt msg read missing param");
+    label85:
+    if (l1 < l2) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aimu
  * JD-Core Version:    0.7.0.1
  */

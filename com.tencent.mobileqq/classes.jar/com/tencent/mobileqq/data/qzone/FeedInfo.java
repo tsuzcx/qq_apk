@@ -1,28 +1,29 @@
 package com.tencent.mobileqq.data.qzone;
 
+import atmo;
+import atnz;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="ownerUin")
 public class FeedInfo
-  extends Entity
+  extends atmo
 {
   public int appid;
   public String content;
   public long feedTime;
   public int hasPic;
-  @notColumn
+  @atnz
   public boolean isExpose;
   public long ownerUin;
   public boolean showInTab = true;
+  public String strImgUrl;
   public String strkey;
   public int typeId;
   
   public String toString()
   {
-    return "ownerUin:" + this.ownerUin + "  appid:" + this.appid + "  typeid:" + this.typeId + "  feedTime:" + this.feedTime + "  strKey:" + this.strkey + "  hasPic:" + this.hasPic + "  content:" + this.content;
+    return "ownerUin:" + this.ownerUin + "  appid:" + this.appid + "  typeid:" + this.typeId + "  feedTime:" + this.feedTime + "  strKey:" + this.strkey + "  hasPic:" + this.hasPic + "  content:" + this.content + "  strImgUrl:" + this.strImgUrl;
   }
 }
 

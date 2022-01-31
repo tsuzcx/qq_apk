@@ -1,7 +1,6 @@
 package okio;
 
 import java.io.EOFException;
-import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
 
@@ -21,7 +20,6 @@ final class RealBufferedSource
   }
   
   private boolean rangeEquals(long paramLong, ByteString paramByteString)
-    throws IOException
   {
     return (request(paramByteString.size() + paramLong)) && (this.buffer.rangeEquals(paramLong, paramByteString));
   }
@@ -32,7 +30,6 @@ final class RealBufferedSource
   }
   
   public void close()
-    throws IOException
   {
     if (this.closed) {
       return;
@@ -43,7 +40,6 @@ final class RealBufferedSource
   }
   
   public boolean exhausted()
-    throws IOException
   {
     if (this.closed) {
       throw new IllegalStateException("closed");
@@ -52,30 +48,25 @@ final class RealBufferedSource
   }
   
   public long indexOf(byte paramByte)
-    throws IOException
   {
     return indexOf(paramByte, 0L);
   }
   
   public long indexOf(byte paramByte, long paramLong)
-    throws IOException
   {
     if (this.closed) {
       throw new IllegalStateException("closed");
     }
     while (paramLong >= this.buffer.size) {
-      if (this.source.read(this.buffer, 8192L) == -1L)
-      {
-        paramLong = -1L;
-        return paramLong;
+      if (this.source.read(this.buffer, 8192L) == -1L) {
+        return -1L;
       }
     }
     do
     {
-      long l = this.buffer.indexOf(paramByte, paramLong);
-      paramLong = l;
-      if (l != -1L) {
-        break;
+      paramLong = this.buffer.indexOf(paramByte, paramLong);
+      if (paramLong != -1L) {
+        return paramLong;
       }
       paramLong = this.buffer.size;
     } while (this.source.read(this.buffer, 8192L) != -1L);
@@ -83,13 +74,11 @@ final class RealBufferedSource
   }
   
   public long indexOf(ByteString paramByteString)
-    throws IOException
   {
     return indexOf(paramByteString, 0L);
   }
   
   public long indexOf(ByteString paramByteString, long paramLong)
-    throws IOException
   {
     if (paramByteString.size() == 0) {
       throw new IllegalArgumentException("bytes is empty");
@@ -106,30 +95,25 @@ final class RealBufferedSource
   }
   
   public long indexOfElement(ByteString paramByteString)
-    throws IOException
   {
     return indexOfElement(paramByteString, 0L);
   }
   
   public long indexOfElement(ByteString paramByteString, long paramLong)
-    throws IOException
   {
     if (this.closed) {
       throw new IllegalStateException("closed");
     }
     while (paramLong >= this.buffer.size) {
-      if (this.source.read(this.buffer, 8192L) == -1L)
-      {
-        paramLong = -1L;
-        return paramLong;
+      if (this.source.read(this.buffer, 8192L) == -1L) {
+        return -1L;
       }
     }
     do
     {
-      long l = this.buffer.indexOfElement(paramByteString, paramLong);
-      paramLong = l;
-      if (l != -1L) {
-        break;
+      paramLong = this.buffer.indexOfElement(paramByteString, paramLong);
+      if (paramLong != -1L) {
+        return paramLong;
       }
       paramLong = this.buffer.size;
     } while (this.source.read(this.buffer, 8192L) != -1L);
@@ -138,63 +122,15 @@ final class RealBufferedSource
   
   public InputStream inputStream()
   {
-    new InputStream()
-    {
-      public int available()
-        throws IOException
-      {
-        if (RealBufferedSource.this.closed) {
-          throw new IOException("closed");
-        }
-        return (int)Math.min(RealBufferedSource.this.buffer.size, 2147483647L);
-      }
-      
-      public void close()
-        throws IOException
-      {
-        RealBufferedSource.this.close();
-      }
-      
-      public int read()
-        throws IOException
-      {
-        if (RealBufferedSource.this.closed) {
-          throw new IOException("closed");
-        }
-        if ((RealBufferedSource.this.buffer.size == 0L) && (RealBufferedSource.this.source.read(RealBufferedSource.this.buffer, 8192L) == -1L)) {
-          return -1;
-        }
-        return RealBufferedSource.this.buffer.readByte() & 0xFF;
-      }
-      
-      public int read(byte[] paramAnonymousArrayOfByte, int paramAnonymousInt1, int paramAnonymousInt2)
-        throws IOException
-      {
-        if (RealBufferedSource.this.closed) {
-          throw new IOException("closed");
-        }
-        Util.checkOffsetAndCount(paramAnonymousArrayOfByte.length, paramAnonymousInt1, paramAnonymousInt2);
-        if ((RealBufferedSource.this.buffer.size == 0L) && (RealBufferedSource.this.source.read(RealBufferedSource.this.buffer, 8192L) == -1L)) {
-          return -1;
-        }
-        return RealBufferedSource.this.buffer.read(paramAnonymousArrayOfByte, paramAnonymousInt1, paramAnonymousInt2);
-      }
-      
-      public String toString()
-      {
-        return RealBufferedSource.this + ".inputStream()";
-      }
-    };
+    return new RealBufferedSource.1(this);
   }
   
   public int read(byte[] paramArrayOfByte)
-    throws IOException
   {
     return read(paramArrayOfByte, 0, paramArrayOfByte.length);
   }
   
   public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-    throws IOException
   {
     Util.checkOffsetAndCount(paramArrayOfByte.length, paramInt1, paramInt2);
     if ((this.buffer.size == 0L) && (this.source.read(this.buffer, 8192L) == -1L)) {
@@ -205,7 +141,6 @@ final class RealBufferedSource
   }
   
   public long read(Buffer paramBuffer, long paramLong)
-    throws IOException
   {
     if (paramBuffer == null) {
       throw new IllegalArgumentException("sink == null");
@@ -224,7 +159,6 @@ final class RealBufferedSource
   }
   
   public long readAll(Sink paramSink)
-    throws IOException
   {
     if (paramSink == null) {
       throw new IllegalArgumentException("sink == null");
@@ -252,42 +186,36 @@ final class RealBufferedSource
   }
   
   public byte readByte()
-    throws IOException
   {
     require(1L);
     return this.buffer.readByte();
   }
   
   public byte[] readByteArray()
-    throws IOException
   {
     this.buffer.writeAll(this.source);
     return this.buffer.readByteArray();
   }
   
   public byte[] readByteArray(long paramLong)
-    throws IOException
   {
     require(paramLong);
     return this.buffer.readByteArray(paramLong);
   }
   
   public ByteString readByteString()
-    throws IOException
   {
     this.buffer.writeAll(this.source);
     return this.buffer.readByteString();
   }
   
   public ByteString readByteString(long paramLong)
-    throws IOException
   {
     require(paramLong);
     return this.buffer.readByteString(paramLong);
   }
   
   public long readDecimalLong()
-    throws IOException
   {
     require(1L);
     int i = 0;
@@ -309,7 +237,6 @@ final class RealBufferedSource
   }
   
   public void readFully(Buffer paramBuffer, long paramLong)
-    throws IOException
   {
     try
     {
@@ -325,7 +252,6 @@ final class RealBufferedSource
   }
   
   public void readFully(byte[] paramArrayOfByte)
-    throws IOException
   {
     int i;
     try
@@ -352,7 +278,6 @@ final class RealBufferedSource
   }
   
   public long readHexadecimalUnsignedLong()
-    throws IOException
   {
     require(1L);
     int i = 0;
@@ -374,49 +299,42 @@ final class RealBufferedSource
   }
   
   public int readInt()
-    throws IOException
   {
     require(4L);
     return this.buffer.readInt();
   }
   
   public int readIntLe()
-    throws IOException
   {
     require(4L);
     return this.buffer.readIntLe();
   }
   
   public long readLong()
-    throws IOException
   {
     require(8L);
     return this.buffer.readLong();
   }
   
   public long readLongLe()
-    throws IOException
   {
     require(8L);
     return this.buffer.readLongLe();
   }
   
   public short readShort()
-    throws IOException
   {
     require(2L);
     return this.buffer.readShort();
   }
   
   public short readShortLe()
-    throws IOException
   {
     require(2L);
     return this.buffer.readShortLe();
   }
   
   public String readString(long paramLong, Charset paramCharset)
-    throws IOException
   {
     require(paramLong);
     if (paramCharset == null) {
@@ -426,7 +344,6 @@ final class RealBufferedSource
   }
   
   public String readString(Charset paramCharset)
-    throws IOException
   {
     if (paramCharset == null) {
       throw new IllegalArgumentException("charset == null");
@@ -436,21 +353,18 @@ final class RealBufferedSource
   }
   
   public String readUtf8()
-    throws IOException
   {
     this.buffer.writeAll(this.source);
     return this.buffer.readUtf8();
   }
   
   public String readUtf8(long paramLong)
-    throws IOException
   {
     require(paramLong);
     return this.buffer.readUtf8(paramLong);
   }
   
   public int readUtf8CodePoint()
-    throws IOException
   {
     require(1L);
     int i = this.buffer.getByte(0L);
@@ -469,7 +383,6 @@ final class RealBufferedSource
   }
   
   public String readUtf8Line()
-    throws IOException
   {
     long l = indexOf((byte)10);
     if (l == -1L)
@@ -483,7 +396,6 @@ final class RealBufferedSource
   }
   
   public String readUtf8LineStrict()
-    throws IOException
   {
     long l = indexOf((byte)10);
     if (l == -1L)
@@ -496,7 +408,6 @@ final class RealBufferedSource
   }
   
   public boolean request(long paramLong)
-    throws IOException
   {
     if (paramLong < 0L) {
       throw new IllegalArgumentException("byteCount < 0: " + paramLong);
@@ -513,7 +424,6 @@ final class RealBufferedSource
   }
   
   public void require(long paramLong)
-    throws IOException
   {
     if (!request(paramLong)) {
       throw new EOFException();
@@ -521,7 +431,6 @@ final class RealBufferedSource
   }
   
   public void skip(long paramLong)
-    throws IOException
   {
     if (this.closed) {
       throw new IllegalStateException("closed");

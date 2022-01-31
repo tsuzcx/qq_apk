@@ -1,51 +1,29 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.utils.FileUtils;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.album.view.AlbumImageView;
 
-public class sew
-  implements FMDialogUtil.FMDialogInterface
+class sew
+  implements Animation.AnimationListener
 {
-  public sew(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, FileManagerEngine paramFileManagerEngine) {}
+  sew(sev paramsev) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Iterator localIterator;
-    if (this.jdField_a_of_type_JavaUtilList.size() > 1)
+    if (ser.a(this.a.a) == 1)
     {
-      FMToastUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.getString(2131428195));
-      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    }
-    for (;;)
-    {
-      if (!localIterator.hasNext()) {
-        return;
-      }
-      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
-      if (!localFileManagerEntity.sendCloudUnsuccessful())
-      {
-        if (FileUtils.b(localFileManagerEntity.getFilePath()))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileManagerEngine.a(localFileManagerEntity.getFilePath(), "", this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.getCurrentAccountUin(), 0, false);
-          continue;
-          FMToastUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.getString(2131428195));
-          break;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileManagerEngine.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
-      }
+      this.a.a.b.setVisibility(8);
+      ser.a(this.a.a).sendEmptyMessage(1);
     }
   }
   
-  public void b() {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sew
  * JD-Core Version:    0.7.0.1
  */

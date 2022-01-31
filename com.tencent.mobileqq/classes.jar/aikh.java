@@ -1,31 +1,18 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.app.QFixApplicationImpl;
-import com.tencent.hotpatch.PatchSecurityMode;
-import com.tencent.hotpatch.config.PatchConfig;
-import com.tencent.hotpatch.config.PatchConfigManager;
-import com.tencent.hotpatch.utils.PatchSharedPreUtil;
-import com.tencent.mobileqq.startup.step.Rdm;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
 
 public class aikh
-  implements Runnable
+  implements aikn
 {
-  public aikh(Rdm paramRdm, String paramString) {}
+  public aikh(CmGameDebugView paramCmGameDebugView) {}
   
-  public void run()
+  public void a()
   {
-    if (BaseApplicationImpl.sProcessId == 1) {
-      PatchSecurityMode.a(BaseApplicationImpl.sApplication, 0);
-    }
-    PatchConfig localPatchConfig = PatchConfigManager.a(BaseApplicationImpl.sApplication, "dex");
-    if ((localPatchConfig != null) && (localPatchConfig.a(BaseApplicationImpl.sApplication, true))) {
-      PatchSharedPreUtil.b(BaseApplicationImpl.sApplication, this.jdField_a_of_type_JavaLangString, localPatchConfig.b(), 0);
-    }
-    QFixApplicationImpl.a(BaseApplicationImpl.sApplication);
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aikh
  * JD-Core Version:    0.7.0.1
  */

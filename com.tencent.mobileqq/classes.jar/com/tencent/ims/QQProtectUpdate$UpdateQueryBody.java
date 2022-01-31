@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class QQProtectUpdate$UpdateQueryBody
-  extends MessageMicro
+  extends MessageMicro<UpdateQueryBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "uint32_file_id", "uint32_file_local_version" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0) }, UpdateQueryBody.class);
   public final PBUInt32Field uint32_file_id = PBField.initUInt32(0);

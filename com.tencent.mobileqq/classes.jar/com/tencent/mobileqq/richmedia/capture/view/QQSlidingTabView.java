@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import ahrl;
-import ahrm;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -22,8 +20,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import auwe;
+import auwf;
+import auwg;
+import auwh;
+import awmc;
 import com.tencent.mobileqq.R.styleable;
-import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import com.tencent.mobileqq.widget.RedDotTextView;
 import java.util.ArrayList;
 
@@ -35,8 +37,8 @@ public class QQSlidingTabView
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private LinearLayout.LayoutParams jdField_a_of_type_AndroidWidgetLinearLayout$LayoutParams;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  private QQSlidingTabView.IOnTabCheckListener jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView$IOnTabCheckListener;
-  private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
+  private auwg jdField_a_of_type_Auwg;
+  private ArrayList<View> jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
   private boolean jdField_a_of_type_Boolean;
   private int b = -16777216;
   private int c = Color.parseColor("#E62555");
@@ -73,7 +75,7 @@ public class QQSlidingTabView
     if (paramInt < 0) {
       return -1;
     }
-    paramView.setOnClickListener(new ahrl(this, paramInt));
+    paramView.setOnClickListener(new auwe(this, paramInt));
     this.jdField_a_of_type_JavaUtilArrayList.add(paramInt, paramView);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramView, paramInt);
     return 0;
@@ -119,15 +121,15 @@ public class QQSlidingTabView
     this.g = ((int)TypedValue.applyDimension(1, this.g, localDisplayMetrics));
     paramContext.obtainStyledAttributes(paramAttributeSet, jdField_a_of_type_ArrayOfInt).recycle();
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.QIMSlidingTabViewStyle);
-    this.e = paramContext.getDimensionPixelSize(0, this.e);
-    this.f = paramContext.getDimensionPixelSize(1, this.f);
-    this.k = paramContext.getColor(3, this.k);
-    this.j = paramContext.getDimensionPixelSize(4, this.j);
-    this.jdField_a_of_type_Int = paramContext.getColor(7, this.jdField_a_of_type_Int);
-    this.b = paramContext.getColor(8, this.b);
-    this.m = paramContext.getColor(5, this.m);
-    this.l = paramContext.getDimensionPixelSize(6, this.l);
-    this.d = paramContext.getDimensionPixelSize(9, this.d);
+    this.e = paramContext.getDimensionPixelSize(4, this.e);
+    this.f = paramContext.getDimensionPixelSize(3, this.f);
+    this.k = paramContext.getColor(0, this.k);
+    this.j = paramContext.getDimensionPixelSize(1, this.j);
+    this.jdField_a_of_type_Int = paramContext.getColor(6, this.jdField_a_of_type_Int);
+    this.b = paramContext.getColor(5, this.b);
+    this.m = paramContext.getColor(8, this.m);
+    this.l = paramContext.getDimensionPixelSize(9, this.l);
+    this.d = paramContext.getDimensionPixelSize(7, this.d);
     this.g = paramContext.getDimensionPixelSize(2, this.g);
     paramContext.recycle();
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
@@ -137,7 +139,7 @@ public class QQSlidingTabView
     setFillViewport(true);
     setWillNotDraw(false);
     setHorizontalScrollBarEnabled(false);
-    this.q = ScreenUtil.a(this.p);
+    this.q = awmc.a(this.p);
   }
   
   @TargetApi(11)
@@ -164,7 +166,7 @@ public class QQSlidingTabView
       this.jdField_a_of_type_Boolean = false;
       localObject = ValueAnimator.ofInt(new int[] { i1, i2 });
       ((ValueAnimator)localObject).setDuration(100L);
-      ((ValueAnimator)localObject).addUpdateListener(new ahrm(this));
+      ((ValueAnimator)localObject).addUpdateListener(new auwf(this));
       ((ValueAnimator)localObject).start();
       return;
     }
@@ -191,7 +193,7 @@ public class QQSlidingTabView
         }
         localObject = (Bundle)localView.getTag();
         if (localObject != null) {
-          ((ImageView)localView).setImageResource(((Bundle)localObject).getInt("checked_image_bg_id", 2130843654));
+          ((ImageView)localView).setImageResource(((Bundle)localObject).getInt("checked_image_bg_id", 2130845565));
         }
       }
       for (;;)
@@ -220,7 +222,7 @@ public class QQSlidingTabView
           {
             localObject = (Bundle)localView.getTag();
             if (localObject != null) {
-              ((ImageView)localView).setImageResource(((Bundle)localObject).getInt("normal_image_bg_id", 2130843653));
+              ((ImageView)localView).setImageResource(((Bundle)localObject).getInt("normal_image_bg_id", 2130845564));
             }
           }
           else if ((localView instanceof RedDotTextView))
@@ -259,7 +261,7 @@ public class QQSlidingTabView
     smoothScrollBy(paramInt, 0);
   }
   
-  public ArrayList a()
+  public ArrayList<View> a()
   {
     return this.jdField_a_of_type_JavaUtilArrayList;
   }
@@ -273,13 +275,13 @@ public class QQSlidingTabView
     b(paramInt);
     c(paramInt);
     b();
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView$IOnTabCheckListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView$IOnTabCheckListener.a(paramInt);
+    if (this.jdField_a_of_type_Auwg != null) {
+      this.jdField_a_of_type_Auwg.a(paramInt);
     }
     this.o = this.n;
   }
   
-  public void a(ArrayList paramArrayList)
+  public void a(ArrayList<auwh> paramArrayList)
   {
     if ((paramArrayList == null) || (paramArrayList.size() == 0))
     {
@@ -293,14 +295,14 @@ public class QQSlidingTabView
     while (i1 < paramArrayList.size())
     {
       RedDotTextView localRedDotTextView = new RedDotTextView(getContext());
-      localRedDotTextView.setText(((QQSlidingTabView.TabIcon)paramArrayList.get(i1)).jdField_a_of_type_JavaLangString);
-      localRedDotTextView.setContentDescription(((QQSlidingTabView.TabIcon)paramArrayList.get(i1)).jdField_a_of_type_JavaLangString);
+      localRedDotTextView.setText(((auwh)paramArrayList.get(i1)).jdField_a_of_type_JavaLangString);
+      localRedDotTextView.setContentDescription(((auwh)paramArrayList.get(i1)).jdField_a_of_type_JavaLangString);
       localRedDotTextView.setGravity(17);
       localRedDotTextView.setSingleLine();
       localRedDotTextView.setTextSize(0, this.d);
       localRedDotTextView.setPadding(this.f, 0, this.f, 0);
-      localRedDotTextView.a(((QQSlidingTabView.TabIcon)paramArrayList.get(i1)).jdField_a_of_type_Boolean);
-      if (((QQSlidingTabView.TabIcon)paramArrayList.get(i1)).b) {
+      localRedDotTextView.a(((auwh)paramArrayList.get(i1)).jdField_a_of_type_Boolean);
+      if (((auwh)paramArrayList.get(i1)).b) {
         i2 = i1;
       }
       a(i1, localRedDotTextView);
@@ -308,6 +310,7 @@ public class QQSlidingTabView
     }
     this.r = i2;
     a();
+    b(this.n);
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -349,14 +352,14 @@ public class QQSlidingTabView
     invalidate();
   }
   
-  public void setTabCheckListener(QQSlidingTabView.IOnTabCheckListener paramIOnTabCheckListener)
+  public void setTabCheckListener(auwg paramauwg)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView$IOnTabCheckListener = paramIOnTabCheckListener;
+    this.jdField_a_of_type_Auwg = paramauwg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.QQSlidingTabView
  * JD-Core Version:    0.7.0.1
  */

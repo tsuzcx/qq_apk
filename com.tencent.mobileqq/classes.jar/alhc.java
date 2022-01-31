@@ -1,20 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.msfmqpsdkbridge.MSFIntChkStrike;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import mqq.util.WeakReference;
 
-public class alhc
-  implements DialogInterface.OnClickListener
+class alhc
+  implements apca
 {
-  public alhc(MSFIntChkStrike paramMSFIntChkStrike, int paramInt) {}
+  alhc(alhb paramalhb) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    MSFIntChkStrike.a(this.jdField_a_of_type_ComTencentMsfmqpsdkbridgeMSFIntChkStrike, paramDialogInterface, paramInt, this.jdField_a_of_type_Int);
+    alhb.a(this.a);
+  }
+  
+  public void b()
+  {
+    ((NewPhotoListActivity)this.a.a.get()).c.setClickable(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alhc
  * JD-Core Version:    0.7.0.1
  */

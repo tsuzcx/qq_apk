@@ -1,26 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.CompoundButton;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.commonsdk.pool.RecyclablePool.Recyclable;
 
 public class ajow
-  implements DialogInterface.OnClickListener
+  extends RecyclablePool.Recyclable
 {
-  public ajow(PublishHomeWorkFragment paramPublishHomeWorkFragment, CompoundButton paramCompoundButton) {}
+  public int a;
+  public long a;
+  public String a;
+  public long b;
+  public long c;
+  public long d;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void recycle()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetCompoundButton.setChecked(true);
+    super.recycle();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajow
  * JD-Core Version:    0.7.0.1
  */

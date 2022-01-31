@@ -1,27 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
+import android.content.Context;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class ades
-  implements Runnable
+class ades
+  implements apca
 {
-  public ades(FileVideoManager.VideoControl paramVideoControl, QQAppInterface paramQQAppInterface) {}
+  ades(adeq paramadeq, ChatMessage paramChatMessage, Context paramContext) {}
   
-  public void run()
+  public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.a == null)
-    {
-      FileVideoManager.VideoControl.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.a();
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 3, null);
-    }
-    FileVideoManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl);
+    apck.a(this.jdField_a_of_type_Adeq.a, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_AndroidContentContext);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ades
  * JD-Core Version:    0.7.0.1
  */

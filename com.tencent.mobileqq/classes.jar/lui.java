@@ -1,64 +1,22 @@
-import android.content.SharedPreferences;
-import android.util.Base64;
-import com.tencent.biz.pubaccount.readinjoy.model.FollowCoverInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo;
-import cooperation.readinjoy.ReadInJoyHelper;
-import java.util.HashMap;
-import java.util.Iterator;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.TopicRecommendFeedsInfo;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class lui
-  implements Runnable
+class lui
+  implements View.OnLayoutChangeListener
 {
-  public lui(FollowCoverInfoModule paramFollowCoverInfoModule) {}
+  lui(luh paramluh) {}
   
-  public void run()
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    Object localObject1 = ReadInJoyHelper.a(FollowCoverInfoModule.a(this.a), true, false);
-    if (localObject1 != null) {
-      try
-      {
-        FollowCoverInfoModule.a(this.a, ((SharedPreferences)localObject1).getInt("follow_tab_topic_update_info_exists", 0));
-        if (FollowCoverInfoModule.a(this.a) == 1)
-        {
-          Object localObject2 = ((SharedPreferences)localObject1).getString("follow_tab_topic_update_info", null);
-          Object localObject3;
-          if (localObject2 != null)
-          {
-            localObject2 = Base64.decode((String)localObject2, 0);
-            localObject3 = new oidb_cmd0x68b.TopicRecommendFeedsInfo();
-            ((oidb_cmd0x68b.TopicRecommendFeedsInfo)localObject3).mergeFrom((byte[])localObject2);
-            FollowCoverInfoModule.a(this.a, TopicRecommendFeedsInfo.a((oidb_cmd0x68b.TopicRecommendFeedsInfo)localObject3));
-          }
-          localObject1 = ((SharedPreferences)localObject1).getString("follow_tab_topic_update_info_exposure", null);
-          if (localObject1 != null)
-          {
-            localObject1 = new JSONObject((String)localObject1);
-            localObject2 = ((JSONObject)localObject1).keys();
-            while (((Iterator)localObject2).hasNext())
-            {
-              localObject3 = (String)((Iterator)localObject2).next();
-              Long localLong = Long.valueOf(((JSONObject)localObject1).optLong((String)localObject3, 0L));
-              if (localLong.longValue() != 0L) {
-                FollowCoverInfoModule.a(this.a).put(Long.valueOf((String)localObject3), localLong);
-              }
-            }
-          }
-        }
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        FollowCoverInfoModule.a(this.a, 0);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.e("MemberPagerAdapter", 2, String.format("view : left[%s], top[%s], right[%s], bottom[%s], oldLeft[%s], oldTop[%s], oldRight[%s], oldBottom[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), Integer.valueOf(paramInt8) }));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lui
  * JD-Core Version:    0.7.0.1
  */

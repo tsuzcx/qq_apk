@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.FormItemRelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/izf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/al3" android:layout_marginTop="28.0dip" android:layout_marginRight="@dimen/al3">
+        <View android:id="@id/gt2" android:background="@drawable/aj3" android:layout_width="wrap_content" android:layout_height="20.0dip" />
+        <View android:id="@id/fmz" android:background="@drawable/rw" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginLeft="2.0dip" />
+        <View android:id="@id/fm8" android:background="@drawable/ru" android:layout_width="wrap_content" android:layout_height="20.0dip" android:layout_marginLeft="2.0dip" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/izd" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginLeft="@dimen/al3" android:layout_marginTop="8.0dip" android:layout_below="@id/izf">
+        <View android:id="@id/gmq" android:background="@drawable/ain" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_centerVertical="true" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/skin_black" android:id="@id/gmr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/ftx" android:includeFontPadding="false" android:layout_toRightOf="@id/gmq" android:layout_centerVertical="true" />
+        <View android:id="@id/fm6" android:background="@drawable/ain" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="24.0dip" android:layout_toRightOf="@id/gmr" android:layout_centerVertical="true" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/skin_black" android:id="@id/fm7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/ct_" android:includeFontPadding="false" android:layout_toRightOf="@id/fm6" android:layout_centerVertical="true" />
+        <View android:id="@id/fm4" android:background="@drawable/ain" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="24.0dip" android:layout_toRightOf="@id/fm7" android:layout_centerVertical="true" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/skin_black" android:id="@id/fm5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/cr9" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/fm4" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <TextView android:textSize="12.0sp" android:textColor="@color/skin_black" android:id="@id/gt0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/al3" android:layout_marginTop="24.0dip" android:text="@string/ftx" android:includeFontPadding="false" android:layout_below="@id/izd" android:layout_alignParentLeft="true" />
+    <TextView android:textSize="32.0sp" android:textColor="@color/skin_black" android:id="@id/gt1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/al3" android:layout_marginTop="12.0dip" android:includeFontPadding="false" android:layout_below="@id/gt0" android:layout_alignParentLeft="true" />
+    <TextView android:textSize="12.0sp" android:textColor="@color/skin_gray2" android:id="@id/b7y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/al3" android:layout_marginTop="12.0dip" android:layout_marginBottom="28.0dip" android:includeFontPadding="false" android:layout_below="@id/gt1" android:layout_alignParentLeft="true" />
+</com.tencent.mobileqq.widget.FormItemRelativeLayout>

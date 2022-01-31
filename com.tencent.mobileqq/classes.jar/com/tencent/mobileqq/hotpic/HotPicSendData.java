@@ -6,7 +6,7 @@ import com.tencent.mobileqq.persistence.uniqueConstraints;
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="md5")
 public class HotPicSendData
   extends HotPicData
-  implements Comparable
+  implements Comparable<HotPicSendData>
 {
   public long sendTime;
   
@@ -48,7 +48,7 @@ public class HotPicSendData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicSendData
  * JD-Core Version:    0.7.0.1
  */

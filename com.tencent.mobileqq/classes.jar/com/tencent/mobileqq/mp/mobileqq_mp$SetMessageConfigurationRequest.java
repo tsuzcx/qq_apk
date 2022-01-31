@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class mobileqq_mp$SetMessageConfigurationRequest
-  extends MessageMicro
+  extends MessageMicro<SetMessageConfigurationRequest>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "uin", "type", "versionInfo" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), "" }, SetMessageConfigurationRequest.class);
   public final PBInt32Field type = PBField.initInt32(0);

@@ -19,9 +19,9 @@ public class SkinnableActivityProcesser
 {
   public static final String TAG = "[SkinnableActivityProcesser]";
   private final Activity a;
-  private final Callback b;
+  private final SkinnableActivityProcesser.Callback b;
   
-  public SkinnableActivityProcesser(Activity paramActivity, Callback paramCallback)
+  public SkinnableActivityProcesser(Activity paramActivity, SkinnableActivityProcesser.Callback paramCallback)
   {
     this.a = paramActivity;
     this.b = paramCallback;
@@ -35,29 +35,34 @@ public class SkinnableActivityProcesser
   
   static boolean a(Drawable paramDrawable)
   {
-    boolean bool2 = false;
     if (!(paramDrawable instanceof DrawableContainer)) {
       return false;
     }
     paramDrawable = (DrawableContainer.DrawableContainerState)paramDrawable.getConstantState();
-    Object localObject = paramDrawable.getChildren();
-    int j = paramDrawable.getChildCount();
-    int i = 0;
-    if (i < j)
+    Object localObject;
+    boolean bool2;
+    if (paramDrawable != null)
     {
-      Drawable localDrawable = localObject[i];
-      boolean bool1;
-      if ((localDrawable instanceof SkinnableNinePatchDrawable)) {
-        bool1 = true;
-      }
-      for (;;)
+      localObject = paramDrawable.getChildren();
+      int j = paramDrawable.getChildCount();
+      int i = 0;
+      bool2 = false;
+      if (i < j)
       {
-        i += 1;
-        bool2 = bool1;
-        break;
-        bool1 = bool2;
-        if ((localDrawable instanceof DrawableContainer)) {
-          bool1 = bool2 | a(localDrawable);
+        Drawable localDrawable = localObject[i];
+        boolean bool1;
+        if ((localDrawable instanceof SkinnableNinePatchDrawable)) {
+          bool1 = true;
+        }
+        for (;;)
+        {
+          i += 1;
+          bool2 = bool1;
+          break;
+          bool1 = bool2;
+          if ((localDrawable instanceof DrawableContainer)) {
+            bool1 = bool2 | a(localDrawable);
+          }
         }
       }
     }
@@ -66,7 +71,7 @@ public class SkinnableActivityProcesser
       localObject = DrawableContainer.DrawableContainerState.class.getDeclaredField("mComputedConstantSize");
       ((Field)localObject).setAccessible(true);
       ((Field)localObject).setBoolean(paramDrawable, false);
-      label109:
+      label111:
       if (bool2) {
         try
         {
@@ -83,11 +88,11 @@ public class SkinnableActivityProcesser
           return true;
         }
       }
-      return bool2;
+      return false;
     }
     catch (Exception localException)
     {
-      break label109;
+      break label111;
     }
   }
   
@@ -105,66 +110,70 @@ public class SkinnableActivityProcesser
   {
     j = 0;
     if (paramIntent.getIntExtra("pid", Process.myPid()) != Process.myPid()) {}
-    do
+    View[] arrayOfView;
+    for (;;)
     {
-      View[] arrayOfView;
-      for (;;)
+      return;
+      i.a("SkinEngine", 1, "SkinnableActivityProcesser on pre theme changed");
+      if (this.b != null) {
+        this.b.onPreThemeChanged();
+      }
+      try
       {
+        paramContext = this.a.getWindow().getDecorView();
+        if (paramContext != null)
+        {
+          paramIntent = (ViewGroup)paramContext;
+          arrayOfView = new View[paramIntent.getChildCount()];
+          i = 0;
+          while (i < paramIntent.getChildCount())
+          {
+            arrayOfView[i] = paramIntent.getChildAt(i);
+            i += 1;
+          }
+        }
+      }
+      catch (Exception paramContext)
+      {
+        for (;;)
+        {
+          paramContext = null;
+        }
+      }
+    }
+    try
+    {
+      paramIntent.removeAllViews();
+      i = j;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      try
+      {
+        for (;;)
+        {
+          View localView;
+          paramIntent.addView(localView);
+          i += 1;
+        }
+        SkinEngine.invalidateAll(paramContext);
+        if (this.b == null) {
+          break label157;
+        }
+        this.b.onPostThemeChanged();
+        i.a("SkinEngine", 1, "SkinnableActivityProcesser on post theme changed");
         return;
-        if (this.b != null) {
-          this.b.onPreThemeChanged();
-        }
-        try
-        {
-          paramContext = this.a.getWindow().getDecorView();
-          if (paramContext != null)
-          {
-            paramIntent = (ViewGroup)paramContext;
-            arrayOfView = new View[paramIntent.getChildCount()];
-            i = 0;
-            while (i < paramIntent.getChildCount())
-            {
-              arrayOfView[i] = paramIntent.getChildAt(i);
-              i += 1;
-            }
-          }
-        }
-        catch (Exception paramContext)
-        {
-          for (;;)
-          {
-            paramContext = null;
-          }
-        }
+        localIllegalArgumentException = localIllegalArgumentException;
+        i = j;
       }
-      for (;;)
+      catch (Exception localException)
       {
-        try
-        {
-          paramIntent.removeAllViews();
-          i = j;
-        }
-        catch (IllegalArgumentException localIllegalArgumentException)
-        {
-          i = j;
-          continue;
-        }
-        if (i >= arrayOfView.length) {
-          continue;
-        }
-        paramIntent.addView(arrayOfView[i]);
-        i += 1;
+        break label130;
       }
-      SkinEngine.invalidateAll(paramContext);
-    } while (this.b == null);
-    this.b.onPostThemeChanged();
-  }
-  
-  public static abstract interface Callback
-  {
-    public abstract void onPostThemeChanged();
-    
-    public abstract void onPreThemeChanged();
+    }
+    if (i < arrayOfView.length) {
+      localView = arrayOfView[i];
+    }
   }
 }
 

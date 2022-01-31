@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.activity.aio.anim.SigTlpAnimation;
+import com.tencent.qphone.base.util.QLog;
 
 class usv
-  implements Runnable
+  implements bbmj
 {
-  usv(usu paramusu) {}
+  usv(uss paramuss) {}
   
-  public void run()
+  public void a(bbmh parambbmh)
   {
-    this.a.a.a(true);
+    if (QLog.isColorLevel()) {
+      QLog.i("EditPicSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambbmh);
+    }
   }
+  
+  public void a(bbmh parambbmh, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     usv
  * JD-Core Version:    0.7.0.1
  */

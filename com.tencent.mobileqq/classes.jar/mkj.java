@@ -1,24 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-
 public class mkj
-  implements Runnable
 {
-  public mkj(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter) {}
-  
-  public void run()
+  public static int a(int paramInt1, int paramInt2)
   {
-    if (this.a.h)
+    return (paramInt1 % paramInt2 + paramInt2) % paramInt2;
+  }
+  
+  public static int a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  {
+    paramInt1 = a(paramInt1, paramInt3);
+    paramInt2 = a(paramInt2, paramInt3);
+    if (paramBoolean)
     {
-      this.a.h = false;
-      ReadInJoyBaseAdapter.a(this.a);
-      return;
+      if (paramInt1 > paramInt2) {
+        return paramInt1 - paramInt2;
+      }
+      return paramInt1 + (paramInt3 - paramInt2);
     }
-    ReadInJoyBaseAdapter.b(this.a);
+    if (paramInt1 > paramInt2) {
+      return paramInt3 - paramInt1 + paramInt2;
+    }
+    return paramInt2 - paramInt1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mkj
  * JD-Core Version:    0.7.0.1
  */

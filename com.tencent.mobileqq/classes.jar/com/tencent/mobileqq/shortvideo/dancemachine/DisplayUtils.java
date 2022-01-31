@@ -7,24 +7,30 @@ import com.tencent.sveffects.SdkContext;
 
 public class DisplayUtils
 {
-  private static float a = 0.0F;
+  private static float DENSITY = 0.0F;
+  private static final float DIP = 2.0F;
   
-  private static float a(float paramFloat)
+  private static float dip2px(float paramFloat)
   {
-    if (a == 0.0F) {
-      a = SdkContext.a().a().getResources().getDisplayMetrics().density;
+    if (DENSITY == 0.0F) {
+      DENSITY = SdkContext.getInstance().getApplication().getResources().getDisplayMetrics().density;
     }
-    return a * paramFloat + 0.5F;
+    return DENSITY * paramFloat + 0.5F;
   }
   
-  public static int a(float paramFloat)
+  public static int pixelToRealPixel(float paramFloat)
   {
-    return (int)b(paramFloat);
+    return (int)pixelToRealPixelF(paramFloat);
   }
   
-  private static float b(float paramFloat)
+  public static int pixelToRealPixel(float paramFloat1, float paramFloat2)
   {
-    return a(paramFloat / 2.0F);
+    return (int)(pixelToRealPixelF(paramFloat1) * paramFloat2);
+  }
+  
+  private static float pixelToRealPixelF(float paramFloat)
+  {
+    return dip2px(paramFloat / 2.0F);
   }
 }
 

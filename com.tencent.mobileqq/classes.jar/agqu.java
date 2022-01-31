@@ -1,31 +1,25 @@
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.portal.FormalView;
-import com.tencent.mobileqq.portal.StrokeTextView;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import mqq.observer.BusinessObserver;
 
 public class agqu
-  extends AnimateUtils.AnimationAdapter
+  implements BusinessObserver
 {
-  public agqu(FormalView paramFormalView, View paramView) {}
+  public agqu(RedPacketManager paramRedPacketManager) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.d();
-    this.jdField_a_of_type_ComTencentMobileqqPortalFormalView.a = true;
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    if (FormalView.a(this.jdField_a_of_type_ComTencentMobileqqPortalFormalView) != null) {
-      FormalView.a(this.jdField_a_of_type_ComTencentMobileqqPortalFormalView).setVisibility(0);
+    switch (paramInt)
+    {
+    default: 
+      return;
     }
+    this.a.a(paramBoolean, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agqu
  * JD-Core Version:    0.7.0.1
  */

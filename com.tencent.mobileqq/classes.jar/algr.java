@@ -1,24 +1,26 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mqp.app.sec.MQPSensitiveMsgUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.widget.TextView;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment.6.1;
 
 public class algr
-  implements Runnable
+  extends algu
 {
-  public algr(MQPSensitiveMsgUtil paramMQPSensitiveMsgUtil, String paramString1, String paramString2) {}
+  public algr(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    Object localObject = "sp_confirmed_sensmsg_" + MQPSensitiveMsgUtil.a();
-    localObject = BaseApplication.getContext().getSharedPreferences((String)localObject, 0).edit();
-    ((SharedPreferences.Editor)localObject).putString(this.jdField_a_of_type_JavaLangString, this.b);
-    ((SharedPreferences.Editor)localObject).commit();
+    if (ArkIDESettingFragment.a(this.a) != null)
+    {
+      TextView localTextView = ArkIDESettingFragment.a(this.a);
+      ArkAppCenter.a().postToMainThread(new ArkIDESettingFragment.6.1(this, paramInt, localTextView));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     algr
  * JD-Core Version:    0.7.0.1
  */

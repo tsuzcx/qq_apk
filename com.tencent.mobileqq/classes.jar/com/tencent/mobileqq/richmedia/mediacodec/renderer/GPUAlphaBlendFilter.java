@@ -3,24 +3,20 @@ package com.tencent.mobileqq.richmedia.mediacodec.renderer;
 import android.opengl.GLES20;
 import android.opengl.Matrix;
 import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
 import java.nio.FloatBuffer;
 
 public class GPUAlphaBlendFilter
   extends GPUBaseFilter
 {
-  private static final FloatBuffer a;
-  private static final FloatBuffer b;
+  private static final String TAG = "GPUAlphaBlendFilter";
+  private static final FloatBuffer TEXTURE_BUF = GlUtil.createFloatBuffer(TEXUTURE_COORDS);
+  private static final FloatBuffer VERTEXT_BUF = GlUtil.createFloatBuffer(VERTEXT_COORDS);
   
-  static
+  public void drawTexture(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    jdField_a_of_type_JavaNioFloatBuffer = GlUtil.a(jdField_a_of_type_ArrayOfFloat);
-    jdField_b_of_type_JavaNioFloatBuffer = GlUtil.a(jdField_b_of_type_ArrayOfFloat);
-  }
-  
-  public void a(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
-  {
-    a("onDrawFrame start");
-    int m = a();
+    checkGlError("onDrawFrame start");
+    int m = getProgram();
     float[] arrayOfFloat = paramArrayOfFloat1;
     if (paramArrayOfFloat1 == null)
     {
@@ -34,34 +30,35 @@ public class GPUAlphaBlendFilter
       Matrix.setIdentityM(paramArrayOfFloat1, 0);
     }
     GLES20.glUseProgram(m);
-    a("glUseProgram");
+    checkGlError("glUseProgram");
     int i = GLES20.glGetAttribLocation(m, "aPosition");
-    a(i, "aPosition");
+    checkLocation(i, "aPosition");
     int j = GLES20.glGetAttribLocation(m, "aTextureCoord");
-    a(j, "aTextureCoord");
+    checkLocation(j, "aTextureCoord");
     int k = GLES20.glGetUniformLocation(m, "uMVPMatrix");
-    a(k, "uMVPMatrix");
+    checkLocation(k, "uMVPMatrix");
     m = GLES20.glGetUniformLocation(m, "uTextureMatrix");
-    a(m, "uTextureMatrix");
-    GLES20.glVertexAttribPointer(i, 2, 5126, false, 8, jdField_a_of_type_JavaNioFloatBuffer);
-    a("glVertexAttribPointer aPosition");
+    checkLocation(m, "uTextureMatrix");
+    GLES20.glVertexAttribPointer(i, 2, 5126, false, 8, VERTEXT_BUF);
+    checkGlError("glVertexAttribPointer aPosition");
     GLES20.glEnableVertexAttribArray(i);
-    a("glEnableVertexAttribArray mPositionHandle");
-    GLES20.glVertexAttribPointer(j, 2, 5126, false, 8, jdField_b_of_type_JavaNioFloatBuffer);
-    a("glVertexAttribPointer mTextureHandle");
+    checkGlError("glEnableVertexAttribArray mPositionHandle");
+    GLES20.glVertexAttribPointer(j, 2, 5126, false, 8, TEXTURE_BUF);
+    checkGlError("glVertexAttribPointer mTextureHandle");
     GLES20.glEnableVertexAttribArray(j);
-    a("glEnableVertexAttribArray mTextureHandle");
+    checkGlError("glEnableVertexAttribArray mTextureHandle");
     GLES20.glUniformMatrix4fv(k, 1, false, paramArrayOfFloat1, 0);
     GLES20.glUniformMatrix4fv(m, 1, false, arrayOfFloat, 0);
     GLES20.glActiveTexture(33984);
-    GLES20.glBindTexture(this.c, paramInt);
-    f();
+    GLES20.glBindTexture(this.mTextureType, paramInt);
+    onDrawTexture();
     GLES20.glEnable(3042);
     GLES20.glBlendFunc(1, 771);
     GLES20.glDrawArrays(5, 0, 4);
-    a("glDrawArrays");
+    checkGlError("glDrawArrays");
     GLES20.glActiveTexture(33984);
-    GLES20.glBindTexture(this.c, 0);
+    GLES20.glBindTexture(this.mTextureType, 0);
+    GLES20.glDisable(3042);
   }
 }
 

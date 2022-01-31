@@ -1,167 +1,293 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.LocationFacePackage;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import mqq.manager.ProxyIpManager;
+import mqq.manager.ProxyIpManager.ProxyIp;
 
 public class aojs
-  extends LinearLayout
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  private int b;
-  private int c;
-  private final int d = 5;
+  private String jdField_a_of_type_JavaLangString;
+  private Iterator<String> jdField_a_of_type_JavaUtilIterator;
+  private List<String> jdField_a_of_type_JavaUtilList;
+  private ProxyIpManager.ProxyIp jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp;
+  private boolean jdField_a_of_type_Boolean;
+  private Iterator<ProxyIpManager.ProxyIp> jdField_b_of_type_JavaUtilIterator;
+  private List<ProxyIpManager.ProxyIp> jdField_b_of_type_JavaUtilList;
+  private boolean jdField_b_of_type_Boolean;
   
-  public aojs(Context paramContext, int paramInt1, int paramInt2, float paramFloat, View.OnClickListener paramOnClickListener)
+  public aojs(QQAppInterface paramQQAppInterface, String paramString)
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Float = paramFloat;
-    paramInt1 = DisplayUtil.a(getContext(), 6.0F);
-    this.c = ((this.jdField_a_of_type_Int - paramInt1 * ((this.b - 1) * 2)) / this.b);
-    a();
-  }
-  
-  private void a()
-  {
-    setOrientation(0);
-    setGravity(17);
-    int j = DisplayUtil.a(getContext(), 12.0F);
-    int k = (int)((this.c - j * 2) * this.jdField_a_of_type_Float);
-    int i = 0;
-    if (i < this.b)
+    int i = paramString.indexOf("://");
+    int j;
+    if (i == -1)
     {
-      View localView = LayoutInflater.from(getContext()).inflate(2130968956, null);
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(this.c, this.c);
-      if (i == 0) {
-        localLayoutParams.setMargins(0, j, j / 2, 0);
+      i = 0;
+      j = paramString.substring(i).indexOf("/") + i;
+      if ((-1 != j) || (-1 != j)) {
+        break label116;
+      }
+      paramString = null;
+    }
+    for (;;)
+    {
+      if ((localObject != null) && (paramString != null))
+      {
+        this.jdField_a_of_type_JavaUtilList = new ArrayList(1);
+        this.jdField_a_of_type_JavaUtilList.add(localObject);
+        this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        this.jdField_a_of_type_JavaLangString = paramString;
+      }
+      a(paramQQAppInterface);
+      return;
+      i += 3;
+      break;
+      label116:
+      int k = paramString.indexOf("&bHost=");
+      if (-1 == k) {
+        localObject = str;
       }
       for (;;)
       {
-        localView.setLayoutParams(localLayoutParams);
-        ((ImageView)localView.findViewById(2131364412)).setPadding(k, k, k, k);
-        addView(localView);
-        i += 1;
+        if (localObject != null) {
+          break label238;
+        }
+        localObject = paramString.substring(i, j);
+        paramString = paramString.substring(j);
         break;
-        if (this.b - 1 == i) {
-          localLayoutParams.setMargins(j / 2, j, 0, 0);
-        } else {
-          localLayoutParams.setMargins(j / 2, j, j / 2, 0);
+        int m = paramString.indexOf("&bPort=", k);
+        localObject = str;
+        if (-1 != m)
+        {
+          localObject = paramString.substring("&bHost=".length() + k, m);
+          str = paramString.substring(m + "&bPort=".length());
+          localObject = (String)localObject + ":" + str;
         }
       }
+      label238:
+      paramString = paramString.substring(j, k);
     }
   }
   
-  private void a(int paramInt)
+  public aojs(QQAppInterface paramQQAppInterface, List<String> paramList, String paramString)
   {
-    int i = 0;
-    int j;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    }
+    a(paramQQAppInterface);
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_b_of_type_JavaUtilList = ((ProxyIpManager)paramQQAppInterface.getManager(3)).getProxyIp(5);
+    if (this.jdField_b_of_type_JavaUtilList == null)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("HttpUrlProcessor", 4, "HttpUrlProcessor: getProxyIp return null, so new empty ProxyList");
+      }
+      this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    }
+    a();
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    String str2 = null;
     for (;;)
     {
-      j = paramInt;
-      if (i >= paramInt) {
-        break;
+      try
+      {
+        int i = paramString.indexOf("://");
+        if (i == -1)
+        {
+          i = 0;
+          String str1 = paramString.substring(i);
+          if (TextUtils.isEmpty(str1)) {
+            break;
+          }
+          int k = str1.indexOf("/");
+          int j = k;
+          if (-1 == k) {
+            j = str1.length() - 1;
+          }
+          k = paramString.indexOf("&bHost=");
+          if (-1 == k)
+          {
+            str1 = str2;
+            if (str2 == null) {
+              str1 = paramString.substring(i, j + i);
+            }
+            if (str1 == null) {
+              break;
+            }
+            i = str1.indexOf(":");
+            paramString = str1;
+            if (i >= 0) {
+              paramString = str1.substring(0, i);
+            }
+            return b(paramString);
+          }
+          int m = paramString.indexOf("&bPort=", k);
+          if (-1 == m) {
+            continue;
+          }
+          str1 = paramString.substring("&bHost=".length() + k, m);
+          str2 = paramString.substring("&bPort=".length() + m);
+          str2 = str1 + ":" + str2;
+          continue;
+        }
+        i += 3;
       }
-      j = paramInt;
-      if (i >= getChildCount()) {
-        break;
+      catch (Exception paramString)
+      {
+        return false;
       }
-      getChildAt(i).setVisibility(0);
-      i += 1;
-    }
-    while ((j < this.b) && (j < getChildCount()))
-    {
-      getChildAt(j).setVisibility(4);
-      j += 1;
     }
   }
   
-  public void a(LocationFacePackage paramLocationFacePackage, int paramInt1, int paramInt2, boolean paramBoolean)
+  public static boolean b(String paramString)
   {
-    int i = paramInt1 * this.b;
-    label31:
-    URLImageView localURLImageView;
-    ProgressBar localProgressBar;
-    String str;
-    if (paramInt1 == paramInt2 - 1)
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
     {
-      paramInt1 = paramLocationFacePackage.b();
-      a(paramInt1 - i);
-      paramInt2 = i;
-      if (paramInt2 >= paramInt1) {
-        return;
+      return false;
+      int i;
+      if ((paramString.length() >= 7) && (paramString.length() <= 15))
+      {
+        paramString = paramString.split("\\.");
+        if ((paramString != null) && (paramString.length == 4))
+        {
+          i = 0;
+          if (i >= 4) {}
+        }
       }
-      localObject1 = getChildAt(paramInt2 - i);
-      localObject2 = ((View)localObject1).findViewById(2131364410);
-      localURLImageView = (URLImageView)((View)localObject1).findViewById(2131364412);
-      localObject3 = (TextView)((View)localObject1).findViewById(2131364411);
-      localProgressBar = (ProgressBar)((View)localObject1).findViewById(2131364413);
-      str = paramLocationFacePackage.b(paramInt2);
-      localObject1 = paramLocationFacePackage.a(paramInt2);
-      if (localObject1 != null) {
-        break label146;
+      try
+      {
+        int j = Integer.parseInt(paramString[i]);
+        if ((j >= 0) && (j <= 255)) {
+          i += 1;
+        }
       }
-      SLog.e("LocationFaceAdapter", "FacePackage's thumbUri is empty , pkg : %s", new Object[] { paramLocationFacePackage.toString() });
+      catch (Exception paramString) {}
+    }
+    return true;
+    return false;
+  }
+  
+  public String a()
+  {
+    Object localObject1 = null;
+    Object localObject2;
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
+    {
+      localObject2 = localObject1;
+      if (QLog.isDevelopLevel())
+      {
+        QLog.d("HttpUrlProcessor", 4, "getNextUrl: no host, so return null");
+        localObject2 = localObject1;
+      }
+      return localObject2;
+    }
+    if (!this.jdField_a_of_type_JavaUtilIterator.hasNext())
+    {
+      if (this.jdField_b_of_type_JavaUtilIterator.hasNext())
+      {
+        this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp = ((ProxyIpManager.ProxyIp)this.jdField_b_of_type_JavaUtilIterator.next());
+        this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      }
+    }
+    else
+    {
+      label94:
+      localObject2 = (String)this.jdField_a_of_type_JavaUtilIterator.next();
+      QLog.e("HttpUrlProcessor", 4, "waterLog- getNextUrl: host[" + (String)localObject2 + "]");
+      if (!this.jdField_a_of_type_Boolean) {
+        break label418;
+      }
+      int i = ((String)localObject2).indexOf(":");
+      if (i <= 0) {
+        break label330;
+      }
+      localObject1 = ((String)localObject2).substring(0, i);
+      String str = ((String)localObject2).substring(i + 1);
+      localObject2 = localObject1;
+      localObject1 = str;
+      label176:
+      if (!this.jdField_b_of_type_Boolean) {
+        break label349;
+      }
+      localObject1 = "https://" + this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp.ip + ":" + this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp.port + this.jdField_a_of_type_JavaLangString + "&bHost=" + (String)localObject2 + "&bPort=" + (String)localObject1;
     }
     for (;;)
     {
-      paramInt2 += 1;
-      break label31;
-      paramInt1 = this.b + i;
-      break;
-      label146:
-      ((TextView)localObject3).setText(str);
-      ((View)localObject2).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      localURLImageView.setTag(2131362362, Integer.valueOf(paramInt2));
-      if (paramBoolean) {
-        break label193;
+      localObject2 = localObject1;
+      if (!QLog.isDevelopLevel()) {
+        break;
       }
-      localProgressBar.setVisibility(4);
-      localURLImageView.setImageDrawable(null);
+      QLog.d("HttpUrlProcessor", 4, "getNextUrl: url:" + (String)localObject1);
+      return localObject1;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        break label94;
+      }
+      localObject2 = localObject1;
+      if (!QLog.isDevelopLevel()) {
+        break;
+      }
+      QLog.d("HttpUrlProcessor", 4, "getNextUrl: no proxy no host, so return null");
+      return null;
+      label330:
+      if (this.jdField_b_of_type_Boolean)
+      {
+        localObject1 = "443";
+        break label176;
+      }
+      localObject1 = "80";
+      break label176;
+      label349:
+      localObject1 = "http://" + this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp.ip + ":" + this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp.port + this.jdField_a_of_type_JavaLangString + "&bHost=" + (String)localObject2 + "&bPort=" + (String)localObject1;
+      continue;
+      label418:
+      if (this.jdField_b_of_type_Boolean) {
+        localObject1 = "https://" + (String)localObject2 + this.jdField_a_of_type_JavaLangString;
+      } else {
+        localObject1 = "http://" + (String)localObject2 + this.jdField_a_of_type_JavaLangString;
+      }
     }
-    label193:
-    localURLImageView.setTag(2131362363, localObject1);
-    localURLImageView.setTag(2131362364, Boolean.valueOf(false));
-    localProgressBar.setVisibility(0);
-    Object localObject2 = new aojt((String)localObject1, localURLImageView, localProgressBar);
-    localURLImageView.setURLDrawableDownListener((URLDrawableDownListener)localObject2);
-    Object localObject3 = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = URLDrawableHelper.a;
-    ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = URLDrawableHelper.a;
-    ((URLDrawable.URLDrawableOptions)localObject3).mUseAutoScaleParams = false;
-    Object localObject1 = URLDrawable.getDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject3);
-    if (((URLDrawable)localObject1).getStatus() == 1) {
-      ((aojt)localObject2).onLoadSuccessed(localURLImageView, (URLDrawable)localObject1);
+  }
+  
+  public void a()
+  {
+    this.jdField_b_of_type_JavaUtilIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+    if (this.jdField_b_of_type_JavaUtilIterator.hasNext()) {
+      this.jdField_a_of_type_MqqManagerProxyIpManager$ProxyIp = ((ProxyIpManager.ProxyIp)this.jdField_b_of_type_JavaUtilIterator.next());
     }
-    if (paramBoolean) {}
-    for (;;)
+    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
     {
-      localURLImageView.setImageDrawable((Drawable)localObject1);
-      break;
-      localObject1 = null;
+      if (this.jdField_a_of_type_JavaUtilList != null) {
+        this.jdField_a_of_type_JavaUtilIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      }
+      return;
     }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aojs
  * JD-Core Version:    0.7.0.1
  */

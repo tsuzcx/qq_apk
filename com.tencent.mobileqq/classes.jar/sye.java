@@ -1,22 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class sye
-  implements DialogInterface.OnClickListener
+  implements slx<syf, syg>
 {
-  public sye(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString)
   {
-    paramDialogInterface.dismiss();
-    FriendProfileMoreInfoActivity.a(this.a, true);
-    this.a.a("0X80081E6", 2);
+    paramString = new syf(this, paramString);
+    slv.a().a(paramString, this);
+  }
+  
+  public void a(@NonNull syf paramsyf, @Nullable syg paramsyg, @NonNull ErrorMessage paramErrorMessage)
+  {
+    new syh(paramErrorMessage, paramsyf.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sye
  * JD-Core Version:    0.7.0.1
  */

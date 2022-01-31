@@ -1,144 +1,181 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager;
-import com.tencent.mobileqq.teamwork.spread.BaseTimAIOTipsProcessor;
-import com.tencent.mobileqq.teamwork.spread.BuddyFileAIOMsgTips;
-import com.tencent.mobileqq.teamwork.spread.ConfigSetting;
-import com.tencent.mobileqq.teamwork.spread.TeamWorkTextMsgTipsProcessor;
-import com.tencent.mobileqq.teamwork.spread.TroopFileAIOMsgTips;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.script.SpriteBackgroundManager.1;
+import com.tencent.mobileqq.apollo.script.SpriteBackgroundManager.2;
+import com.tencent.mobileqq.apollo.script.SpriteBackgroundManager.3;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import mqq.os.MqqHandler;
 
 public class airz
-  implements Runnable
+  implements aiij
 {
-  public airz(AIOMessageSpreadManager paramAIOMessageSpreadManager, ChatMessage paramChatMessage) {}
+  private aisd jdField_a_of_type_Aisd;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new SpriteBackgroundManager.1(this);
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<ApolloTextureView> jdField_a_of_type_JavaLangRefWeakReference;
+  private ConcurrentLinkedQueue jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+  private volatile boolean jdField_a_of_type_Boolean;
+  private Runnable jdField_b_of_type_JavaLangRunnable = new SpriteBackgroundManager.2(this);
+  private volatile boolean jdField_b_of_type_Boolean;
   
-  public void run()
+  public airz(aisd paramaisd, ApolloTextureView paramApolloTextureView)
   {
-    if (QLog.isDebugVersion()) {
-      QLog.i("AIOMessageSpreadManager", 1, "SubThread Process Start");
+    this.jdField_a_of_type_Aisd = paramaisd;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramApolloTextureView);
+  }
+  
+  private void a(int paramInt)
+  {
+    ApolloTextureView localApolloTextureView = (ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localApolloTextureView == null) {
+      return;
     }
-    if (!AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("AIOMessageSpreadManager", 1, "config return false!");
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteBackgroundManager", 2, new Object[] { "[execAction], ready to play, actionId:", Integer.valueOf(paramInt) });
     }
-    label279:
+    String[] arrayOfString = aiwi.a(paramInt);
+    this.jdField_a_of_type_JavaLangString = arrayOfString[1];
+    localApolloTextureView.getRenderImpl().a(1, null, paramInt, 0, arrayOfString[0], arrayOfString[1]);
+  }
+  
+  private void b(int paramInt)
+  {
+    ApolloTextureView localApolloTextureView = (ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localApolloTextureView != null) && (localApolloTextureView.getVisibility() != paramInt)) {
+      ThreadManager.getUIHandler().post(new SpriteBackgroundManager.3(this, localApolloTextureView, paramInt));
+    }
+  }
+  
+  public void a()
+  {
+    if (((ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_a_of_type_JavaLangString == null)) {}
     do
     {
       return;
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForText))
-      {
-        AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager, new TeamWorkTextMsgTipsProcessor(AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager), this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager)));
-        if (QLog.isDebugVersion()) {
-          QLog.i("AIOMessageSpreadManager", 1, "message is MessageForText");
-        }
-      }
-      for (;;)
-      {
-        if (AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).a()) {
-          break label294;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.i("AIOMessageSpreadManager", 1, "file[" + AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).a() + "] is not support!");
-        return;
-        if ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForFile))
-        {
-          if (QLog.isDebugVersion()) {
-            QLog.i("AIOMessageSpreadManager", 1, "message is MessageForFile");
-          }
-          AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager, new BuddyFileAIOMsgTips(AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager), this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager)));
-        }
-        else
-        {
-          if (!(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForTroopFile)) {
-            break label279;
-          }
-          if (QLog.isDebugVersion()) {
-            QLog.i("AIOMessageSpreadManager", 1, "message is MessageForTroopFile");
-          }
-          AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager, new TroopFileAIOMsgTips(AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager), this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager)));
-        }
-      }
-    } while (!QLog.isDebugVersion());
-    QLog.i("AIOMessageSpreadManager", 1, "message is unknown");
-    return;
-    label294:
-    String str = AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).a();
-    if (QLog.isColorLevel()) {
-      QLog.i("AIOMessageSpreadManager", 1, "recv new File name is :" + str);
-    }
-    Object localObject2 = AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).a(AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager));
-    Object localObject1;
-    if (QLog.isDebugVersion())
-    {
-      localObject1 = new StringBuilder();
-      j = localObject2.length;
-      i = 0;
-      while (i < j)
-      {
-        ((StringBuilder)localObject1).append(localObject2[i]).append(",");
-        i += 1;
-      }
-      if (((StringBuilder)localObject1).length() > 0) {
-        ((StringBuilder)localObject1).deleteCharAt(((StringBuilder)localObject1).length() - 1);
-      }
-      QLog.i("AIOMessageSpreadManager", 1, "getConfig keyWords:" + ((StringBuilder)localObject1).toString());
-    }
-    int j = localObject2.length;
-    int i = 0;
-    label455:
-    if (i < j)
-    {
-      localObject1 = localObject2[i];
-      if (!str.contains((CharSequence)localObject1)) {}
-    }
-    for (i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("AIOMessageSpreadManager", 1, "keyWord[" + (String)localObject1 + "] find!");
-        }
-        localObject2 = AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).a(AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager));
-        str = AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).b(AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager));
-        if ((TextUtils.isEmpty((CharSequence)localObject2)) && (QLog.isColorLevel())) {
-          QLog.i("AIOMessageSpreadManager", 1, "tips is null! return, tips[" + (String)localObject2 + "], link[" + str + "]");
-        }
-        localObject2 = (String)localObject2 + "。" + str;
-        if (((AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager) instanceof BuddyFileAIOMsgTips)) || ((AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager) instanceof TroopFileAIOMsgTips)))
-        {
-          AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, (String)localObject2, str, "keyword", null);
-          return;
-          i += 1;
-          break label455;
-        }
-        if (!(AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager) instanceof TeamWorkTextMsgTipsProcessor)) {
-          break;
-        }
-        AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, (String)localObject2, str, "text_keyword", AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).a((String)localObject1));
-        return;
-      }
       if (QLog.isColorLevel()) {
-        QLog.i("AIOMessageSpreadManager", 1, "keyWords not find!");
+        QLog.d("cmshow_scripted_SpriteBackgroundManager", 2, new Object[] { "removeBackgroundAction isRunning:", Boolean.valueOf(this.jdField_a_of_type_Boolean), ",actionName:", this.jdField_a_of_type_JavaLangString });
       }
-      if ((AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager) instanceof TeamWorkTextMsgTipsProcessor)) {
-        break;
+      if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue != null) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty())) {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
       }
-      AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager).a(new aisa(this, str));
-      return;
-      localObject1 = "";
+    } while (!this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void a(int paramInt1, int paramInt2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteBackgroundManager", 2, "[onCompleteRender]");
     }
+    this.jdField_a_of_type_Boolean = false;
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue != null) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty()))
+    {
+      paramString = (Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+      if (paramString != null) {
+        a(paramString.intValue());
+      }
+    }
+    while (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    b(8);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteBackgroundManager", 2, "[onStartRender]");
+    }
+    this.jdField_a_of_type_Boolean = true;
+    b(0);
+  }
+  
+  public void a(List<Integer> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0) || (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue == null)) {}
+    do
+    {
+      do
+      {
+        return;
+        if (this.jdField_a_of_type_Boolean) {
+          a();
+        }
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.addAll(paramList);
+      } while (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty());
+      paramList = (Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
+    } while (paramList == null);
+    a(paramList.intValue());
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Aisd == null) || (this.jdField_a_of_type_Aisd.a() == null)) {}
+    aisi localaisi;
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("cmshow_scripted_SpriteBackgroundManager", 2, "[onSurfaceReady]");
+      }
+      this.jdField_a_of_type_Aisd.d(true);
+      localaisi = (aisi)this.jdField_a_of_type_Aisd.a().getManager(249);
+    } while ((!this.jdField_a_of_type_Aisd.c()) || (localaisi.a().b(null)));
+    e();
+  }
+  
+  public void c()
+  {
+    if (!this.jdField_a_of_type_Boolean) {}
+    ApolloTextureView localApolloTextureView;
+    do
+    {
+      return;
+      this.jdField_b_of_type_Boolean = true;
+      localApolloTextureView = (ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localApolloTextureView == null);
+    localApolloTextureView.queueEvent(this.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  public void d()
+  {
+    this.jdField_b_of_type_Boolean = false;
+    ApolloTextureView localApolloTextureView = (ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localApolloTextureView != null) {
+      localApolloTextureView.queueEvent(this.jdField_b_of_type_JavaLangRunnable);
+    }
+  }
+  
+  public void e()
+  {
+    b(8);
+    a();
+  }
+  
+  public void f()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
+    }
+    Object localObject = (ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject != null)
+    {
+      localObject = ((ApolloTextureView)localObject).getRenderImpl();
+      if (localObject != null) {
+        ((aigt)localObject).c();
+      }
+    }
+    this.jdField_a_of_type_Aisd = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     airz
  * JD-Core Version:    0.7.0.1
  */

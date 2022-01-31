@@ -1,23 +1,104 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.magic.models.AndroidAPs;
+import android.text.TextUtils;
+import com.tencent.av.ui.ConferenceFlyTicketActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public final class lro
-  implements Parcelable.Creator
+public class lro
+  extends ajhi
 {
-  public AndroidAPs a(Parcel paramParcel)
+  public lro(ConferenceFlyTicketActivity paramConferenceFlyTicketActivity) {}
+  
+  protected void a(boolean paramBoolean, int paramInt, long paramLong1, String paramString1, String paramString2, long paramLong2)
   {
-    return new AndroidAPs(paramParcel);
+    QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onGetFlyTicket, isSuccess[" + paramBoolean + "], errorCode[" + paramInt + "], validTime[" + paramLong1 + "], sigUrl[" + paramString1 + "], shortUrl[" + paramString2 + "], discussionUin[" + paramLong2 + "], mDiscID[" + this.a.h + "]");
+    if (paramBoolean)
+    {
+      if (!TextUtils.isEmpty(this.a.h))
+      {
+        this.a.jdField_a_of_type_Lrp = new lrp(this.a);
+        paramString1 = new ArrayList();
+        mjq localmjq = new mjq();
+        localmjq.jdField_a_of_type_JavaLangString = ("http://pubacc.mobile.qq.com/mqqweb-rtx2qq/mqqweb/createConfCallback?feedkey=" + this.a.b);
+        this.a.d = paramString2.substring("http://url.cn/".length(), paramString2.length() - "#flyticket".length());
+        QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onGetFlyTicket, mTicket[" + this.a.d + "]");
+        localmjq.jdField_a_of_type_JavaLangString = (localmjq.jdField_a_of_type_JavaLangString + "&ret=0&ticket=" + this.a.d);
+        paramString1.add(localmjq);
+        this.a.jdField_a_of_type_Lrp.execute(new ArrayList[] { paramString1 });
+      }
+      return;
+    }
+    this.a.jdField_a_of_type_Ajhf.c(paramLong2);
+    this.a.a(1, paramInt);
   }
   
-  public AndroidAPs[] a(int paramInt)
+  protected void a(boolean paramBoolean, long paramLong, int paramInt)
   {
-    return new AndroidAPs[paramInt];
+    QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "onJoinDiscussionByFlyTicket, isSuccess[" + paramBoolean + "], discussUin[" + paramLong + "], errorCode[" + paramInt + "], mDiscID[" + this.a.h + "]");
+    if (paramBoolean)
+    {
+      this.a.h = String.valueOf(paramLong);
+      if (!TextUtils.isEmpty(this.a.h)) {
+        ((ajhf)this.a.app.a(6)).a(paramLong);
+      }
+      return;
+    }
+    this.a.a(1, paramInt);
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "DiscussObserver.onUpdate, type[" + paramInt + "], isSuccess[" + paramBoolean + "], mDiscID[" + this.a.h + "]");
+    if (paramInt == 1001)
+    {
+      AudioHelper.b("获取讨论组资料_rsp");
+      if ((paramObject instanceof ArrayList))
+      {
+        paramObject = (ArrayList)paramObject;
+        paramObject = new Object[] { String.valueOf(paramObject.get(0)), paramObject.get(1) };
+        str = (String)paramObject[0];
+        ((Boolean)paramObject[1]).booleanValue();
+        if ((this.a.h.equals(str)) && (paramBoolean))
+        {
+          this.a.c();
+          this.a.a(this.a.h, this.a.c);
+        }
+        this.a.finish();
+      }
+    }
+    while (1014 != paramInt) {
+      for (;;)
+      {
+        String str;
+        return;
+        paramObject = (Object[])paramObject;
+      }
+    }
+    AudioHelper.b("通过签名加入讨论组_rsp");
+    paramObject = (Long[])paramObject;
+    long l = paramObject[1].longValue();
+    paramInt = paramObject[0].intValue();
+    QLog.w(this.a.jdField_a_of_type_JavaLangString, 1, "NOTIFY_TYPE_JOIN_DISCUSSION_BY_FLYY_TICKET, discussUin[" + l + "], errCode[" + paramInt + "], mDiscID[" + this.a.h + "]");
+    if (paramInt == 0)
+    {
+      if (TextUtils.equals(String.valueOf(l), this.a.h))
+      {
+        this.a.c();
+        AudioHelper.b(ajjy.a(2131636587));
+        ((ajhf)this.a.app.a(6)).a(l);
+        return;
+      }
+      this.a.finish();
+      return;
+    }
+    this.a.finish();
+    this.a.a(1, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lro
  * JD-Core Version:    0.7.0.1
  */

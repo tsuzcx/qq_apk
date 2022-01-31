@@ -1,21 +1,33 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public class anjw
-  implements Runnable
+class anjw
+  extends anfw
 {
-  public anjw(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime) {}
+  anjw(anju paramanju) {}
   
-  public void run()
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin$PluginRuntime.a().getContext(), "抱歉，你未安装微信客户端，无法进行微信分享", 0).a();
+    this.a.b(paramEmoticonPackage);
+  }
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
+  {
+    this.a.a(paramEmoticonPackage, paramInt);
+  }
+  
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
+  {
+    this.a.a(paramEmoticonPackage);
+  }
+  
+  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
+  {
+    this.a.a(paramEmoticonPackage, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anjw
  * JD-Core Version:    0.7.0.1
  */

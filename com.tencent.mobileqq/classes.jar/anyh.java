@@ -1,33 +1,37 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import android.graphics.Color;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class anyh
-  implements Animator.AnimatorListener
+  implements TextWatcher
 {
-  public anyh(QIMProviderContainerView paramQIMProviderContainerView) {}
+  public anyh(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UserGuideManager", 2, "ProviderContainerView  startDownAnimation onAnimationEnd");
+    paramEditable = MPFileVerifyPwdView.a(this.a).getText().toString();
+    if ((!TextUtils.isEmpty(paramEditable)) && (paramEditable.length() >= 16)) {
+      apcb.a(BaseApplicationImpl.getContext().getString(2131628729));
     }
+    while (TextUtils.isEmpty(paramEditable)) {
+      return;
+    }
+    MPFileVerifyPwdView.b(this.a).setEnabled(true);
+    MPFileVerifyPwdView.b(this.a).setTextColor(Color.parseColor("#00a5e0"));
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.c.setVisibility(8);
-  }
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anyh
  * JD-Core Version:    0.7.0.1
  */

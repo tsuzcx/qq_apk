@@ -1,24 +1,15 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity.QueryPhotoTask;
+import java.util.List;
 
 public class xdd
-  implements Runnable
 {
-  public xdd(PhotoListActivity paramPhotoListActivity) {}
-  
-  public void run()
-  {
-    if (this.a.a == null)
-    {
-      this.a.a = new PhotoListActivity.QueryPhotoTask(this.a);
-      this.a.a.execute(new Object[0]);
-    }
-  }
+  public int a;
+  public String a;
+  public List<xdc> a;
+  public List<String> b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xdd
  * JD-Core Version:    0.7.0.1
  */

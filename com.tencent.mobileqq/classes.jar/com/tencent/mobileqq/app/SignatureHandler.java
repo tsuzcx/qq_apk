@@ -1,25 +1,40 @@
 package com.tencent.mobileqq.app;
 
+import ajfb;
+import ajfe;
+import ajjh;
+import ajjj;
+import ajsf;
+import ajsg;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.text.TextUtils;
+import avcq;
+import avfc;
+import avfd;
+import baip;
 import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.richstatus.HistorySignItem;
 import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.RichStatus.SigZanInfo;
+import com.tencent.mobileqq.richstatus.comment.bean.CommentItem;
 import com.tencent.pb.signature.SigActPb.RspBody;
 import com.tencent.pb.signature.SigActPb.SigactRsp;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -42,76 +57,34 @@ import tencent.im.oidb.cmd0x798.oidb_0x798.RspBody;
 import tencent.im.oidb.cmd0x799.oidb_0x799.LongNickInfo;
 import tencent.im.oidb.cmd0x799.oidb_0x799.ReqBody;
 import tencent.im.oidb.cmd0x799.oidb_0x799.RspBody;
+import tencent.im.oidb.oidb_0xd9e.oidb_0xd9e.ReqBody;
+import tencent.im.oidb.oidb_0xd9e.oidb_0xd9e.RspBody;
+import tencent.im.oidb.oidb_0xd9e.oidb_0xd9e.UserTopicItem;
+import tencent.im.oidb.oidb_0xda6.oidb_0xda6.ReqBody;
+import tencent.im.oidb.oidb_0xda6.oidb_0xda6.RspBody;
+import tencent.im.oidb.oidb_0xda6.oidb_0xda6.UserTopicItem;
+import tencent.im.oidb.oidb_0xdd6.oidb_0xdd6.ReqBody;
+import tencent.im.oidb.oidb_0xdd6.oidb_0xdd6.RspBody;
+import tencent.im.oidb.oidb_0xde5.oidb_0xde5.ReqBody;
+import tencent.im.oidb.oidb_0xde5.oidb_0xde5.RspBody;
+import tencent.im.oidb.oidb_0xde7.oidb_0xde7.ReqBody;
+import tencent.im.oidb.oidb_0xde7.oidb_0xde7.RspBody;
+import tencent.im.oidb.oidb_0xde8.oidb_0xde8.CommentItem;
+import tencent.im.oidb.oidb_0xde8.oidb_0xde8.NickInfo;
+import tencent.im.oidb.oidb_0xde8.oidb_0xde8.ReqBody;
+import tencent.im.oidb.oidb_0xde8.oidb_0xde8.RspBody;
+import tencent.im.oidb.oidb_0xde8.oidb_0xde8.lightCommentInfo;
+import tencent.im.oidb.oidb_0xde8.oidb_0xde8.lightCommentItem;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class SignatureHandler
-  extends BusinessHandler
+  extends ajfb
 {
   private int a;
   
   protected SignatureHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-  }
-  
-  private void a(Intent paramIntent, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
-  {
-    oidb_0x798.RspBody localRspBody = new oidb_0x798.RspBody();
-    localRspBody.mergeFrom(paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray());
-    int i = localRspBody.uint32_result.get();
-    String str;
-    if (i == 0) {
-      if ((localRspBody.stInfos.has()) && (localRspBody.stInfos.get().size() > 0))
-      {
-        paramOIDBSSOPkg = paramIntent.getStringExtra("uin");
-        str = paramIntent.getStringExtra("feedsid");
-        paramIntent = ((FriendsManager)this.b.getManager(50)).a(paramOIDBSSOPkg);
-        if (paramIntent == null) {
-          break label423;
-        }
-        paramIntent = paramIntent.getRichStatus();
-        if (paramIntent != null) {}
-      }
-      else
-      {
-        return;
-      }
-    }
-    for (;;)
-    {
-      if ((!TextUtils.isEmpty(paramIntent.feedsId)) && (paramIntent.feedsId.equals(str)) && (paramIntent.sigZanInfo == null)) {
-        paramIntent.sigZanInfo = new HashMap(localRspBody.stInfos.get().size());
-      }
-      List localList = localRspBody.stInfos.get();
-      i = 0;
-      while (i < localList.size())
-      {
-        RichStatus.SigZanInfo localSigZanInfo = new RichStatus.SigZanInfo();
-        oidb_0x798.Info localInfo = (oidb_0x798.Info)localList.get(i);
-        localSigZanInfo.jdField_a_of_type_JavaLangString = str;
-        localSigZanInfo.b = localInfo.uint32_count.get();
-        localSigZanInfo.jdField_a_of_type_Int = localInfo.uint32_type.get();
-        localSigZanInfo.c = localInfo.uint32_flag.get();
-        paramIntent.sigZanInfo.put(Integer.valueOf(localSigZanInfo.jdField_a_of_type_Int), localSigZanInfo);
-        i += 1;
-      }
-      long l1 = localRspBody.uint64_sleeptime.get();
-      long l2 = System.currentTimeMillis();
-      this.b.getPreferences().edit().putLong("sigCommentUpdateTimeStamp_" + paramOIDBSSOPkg, l1 * 1000L + l2).commit();
-      if (paramIntent.sigZanInfo.get(Integer.valueOf(255)) == null) {
-        break;
-      }
-      this.jdField_a_of_type_Int = 94;
-      a(this.jdField_a_of_type_Int, true, paramIntent.sigZanInfo.get(Integer.valueOf(255)));
-      return;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("SignatureHandler", 2, "handleGetSigZanInfo fail ret=" + i);
-      return;
-      label423:
-      paramIntent = null;
-    }
   }
   
   private boolean a(String[] paramArrayOfString, byte[] paramArrayOfByte)
@@ -133,14 +106,14 @@ public class SignatureHandler
     ((oidb_sso.OIDBSSOPkg)localObject).uint32_command.set(1945);
     ((oidb_sso.OIDBSSOPkg)localObject).uint32_service_type.set(0);
     ((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramArrayOfString.toByteArray()));
-    paramArrayOfString = new NewIntent(this.b.getApp(), SignatureServlet.class);
+    paramArrayOfString = new NewIntent(this.app.getApp(), ajsg.class);
     if (paramArrayOfByte != null) {
       paramArrayOfString.putExtra("reqData", paramArrayOfByte);
     }
     paramArrayOfString.putExtra("cmd", "OidbSvc.0x799_0");
     paramArrayOfString.putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject).toByteArray());
     paramArrayOfString.putExtra("timeout", 10000L);
-    this.b.startServlet(paramArrayOfString);
+    this.app.startServlet(paramArrayOfString);
     return true;
   }
   
@@ -150,38 +123,99 @@ public class SignatureHandler
     paramIntent.mergeFrom(paramArrayOfByte);
     if (paramIntent.ret.get() == 0)
     {
-      a(7, true, Integer.valueOf(((SigActPb.SigactRsp)paramIntent.rsp.get()).rank.get()));
+      notifyUI(7, true, Integer.valueOf(((SigActPb.SigactRsp)paramIntent.rsp.get()).rank.get()));
       return;
     }
-    a(7, false, Integer.valueOf(paramIntent.ret.get()));
+    notifyUI(7, false, Integer.valueOf(paramIntent.ret.get()));
   }
   
-  private void b(Intent paramIntent, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
+  private void c(Intent paramIntent, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
+  {
+    oidb_0x798.RspBody localRspBody = new oidb_0x798.RspBody();
+    localRspBody.mergeFrom(paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray());
+    int i = localRspBody.uint32_result.get();
+    String str;
+    if (i == 0) {
+      if ((localRspBody.stInfos.has()) && (localRspBody.stInfos.get().size() > 0))
+      {
+        paramOIDBSSOPkg = paramIntent.getStringExtra("uin");
+        str = paramIntent.getStringExtra("feedsid");
+        paramIntent = ((ajjj)this.app.getManager(51)).a(paramOIDBSSOPkg);
+        if (paramIntent == null) {
+          break label426;
+        }
+        paramIntent = paramIntent.getRichStatus();
+        if (paramIntent != null) {}
+      }
+      else
+      {
+        return;
+      }
+    }
+    for (;;)
+    {
+      if ((!TextUtils.isEmpty(paramIntent.feedsId)) && (paramIntent.feedsId.equals(str)) && (paramIntent.sigZanInfo == null)) {
+        paramIntent.sigZanInfo = new HashMap(localRspBody.stInfos.get().size());
+      }
+      List localList = localRspBody.stInfos.get();
+      i = 0;
+      while (i < localList.size())
+      {
+        avcq localavcq = new avcq();
+        oidb_0x798.Info localInfo = (oidb_0x798.Info)localList.get(i);
+        localavcq.jdField_a_of_type_JavaLangString = str;
+        localavcq.b = localInfo.uint32_count.get();
+        localavcq.jdField_a_of_type_Int = localInfo.uint32_type.get();
+        localavcq.c = localInfo.uint32_flag.get();
+        paramIntent.sigZanInfo.put(Integer.valueOf(localavcq.jdField_a_of_type_Int), localavcq);
+        i += 1;
+      }
+      long l1 = localRspBody.uint64_sleeptime.get();
+      long l2 = System.currentTimeMillis();
+      this.app.getPreferences().edit().putLong("sigCommentUpdateTimeStamp_" + paramOIDBSSOPkg, l1 * 1000L + l2).commit();
+      if (paramIntent.sigZanInfo.get(Integer.valueOf(255)) == null) {
+        break;
+      }
+      this.jdField_a_of_type_Int = 94;
+      notifyUI(this.jdField_a_of_type_Int, true, paramIntent.sigZanInfo.get(Integer.valueOf(255)));
+      return;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("SignatureHandler", 2, "handleGetSigZanInfo fail ret=" + i);
+      return;
+      label426:
+      paramIntent = null;
+    }
+  }
+  
+  private void d(Intent paramIntent, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
   {
     boolean bool = false;
     oidb_0x795.RspBody localRspBody = new oidb_0x795.RspBody();
     localRspBody.mergeFrom(paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray());
-    String str = paramIntent.getStringExtra("feedid");
-    paramOIDBSSOPkg = paramIntent.getStringExtra("uin");
-    int i = paramIntent.getIntExtra("action", 0);
-    ExtensionInfo localExtensionInfo = ((FriendsManager)this.b.getManager(50)).a(paramOIDBSSOPkg);
+    String str1 = paramIntent.getStringExtra("feedid");
+    String str2 = paramIntent.getStringExtra("uin");
+    int j = paramIntent.getIntExtra("action", 0);
+    int k = paramIntent.getIntExtra("type", 0);
+    ExtensionInfo localExtensionInfo = ((ajjj)this.app.getManager(51)).a(str2);
     paramOIDBSSOPkg = null;
     this.jdField_a_of_type_Int = 94;
     paramIntent = paramOIDBSSOPkg;
     if (localExtensionInfo != null)
     {
       paramIntent = paramOIDBSSOPkg;
-      if (str.equals(localExtensionInfo.getRichStatus().feedsId))
+      if (str1.equals(localExtensionInfo.getRichStatus().feedsId))
       {
         paramIntent = paramOIDBSSOPkg;
         if (localExtensionInfo.getRichStatus().sigZanInfo != null)
         {
-          paramOIDBSSOPkg = (RichStatus.SigZanInfo)localExtensionInfo.getRichStatus().sigZanInfo.get(Integer.valueOf(255));
+          paramOIDBSSOPkg = (avcq)localExtensionInfo.getRichStatus().sigZanInfo.get(Integer.valueOf(255));
           paramIntent = paramOIDBSSOPkg;
           if (localRspBody.uint32_result.get() == 0)
           {
-            if (1 != i) {
-              break label201;
+            if (1 != j) {
+              break label267;
             }
             paramOIDBSSOPkg.b += 1;
             paramOIDBSSOPkg.c = 1;
@@ -190,13 +224,16 @@ public class SignatureHandler
         }
       }
     }
-    i = this.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.i("SignatureHandler", 2, String.format("handleInteractiveSigature[%s %s %d %d]", new Object[] { baip.e(str2), str1, Integer.valueOf(k), Integer.valueOf(j) }));
+    }
+    int i = this.jdField_a_of_type_Int;
     if (localRspBody.uint32_result.get() == 0) {
       bool = true;
     }
-    a(i, bool, paramIntent);
+    notifyUI(i, bool, paramIntent);
     return;
-    label201:
+    label267:
     i = paramOIDBSSOPkg.b - 1;
     paramOIDBSSOPkg.b = i;
     if (i > 0) {}
@@ -209,7 +246,7 @@ public class SignatureHandler
     }
   }
   
-  private void c(Intent paramIntent, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
+  private void e(Intent paramIntent, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
   {
     Object localObject1 = new oidb_0x796.RspBody();
     ((oidb_0x796.RspBody)localObject1).mergeFrom(paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray());
@@ -225,10 +262,10 @@ public class SignatureHandler
         ((oidb_0x796.RspBody)localObject1).uint32_need_update.get();
         paramIntent = (oidb_0x796.ItemInfo)((oidb_0x796.RspBody)localObject1).stPagePointItem.get();
         if (!bool1) {
-          this.b.getPreferences().edit().putLong("sigCommentDetailUin_" + paramOIDBSSOPkg, paramIntent.uint64_uin.get()).putLong("sigCommentDetailTime_" + paramOIDBSSOPkg, paramIntent.uint64_time.get()).commit();
+          this.app.getPreferences().edit().putLong("sigCommentDetailUin_" + paramOIDBSSOPkg, paramIntent.uint64_uin.get()).putLong("sigCommentDetailTime_" + paramOIDBSSOPkg, paramIntent.uint64_time.get()).commit();
         }
         if ((((oidb_0x796.RspBody)localObject1).rpt_items == null) || (((oidb_0x796.RspBody)localObject1).rpt_items.size() <= 0)) {
-          break label440;
+          break label441;
         }
         paramIntent = new ArrayList(((oidb_0x796.RspBody)localObject1).rpt_items.get().size());
         localObject1 = ((oidb_0x796.RspBody)localObject1).rpt_items.get().iterator();
@@ -249,14 +286,14 @@ public class SignatureHandler
       if (QLog.isColorLevel()) {
         QLog.d("SignatureHandler", 2, "oidb796cmd feedid=" + paramOIDBSSOPkg + ", firstFlag=" + bool2 + ", overFlag=" + bool1 + ",num:" + paramIntent.size());
       }
-      a(3, true, localObject1);
-      label440:
+      notifyUI(3, true, localObject1);
+      label441:
       return;
     }
-    a(3, false, Integer.valueOf(i));
+    notifyUI(3, false, Integer.valueOf(i));
   }
   
-  private void d(Intent paramIntent, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
+  private void f(Intent paramIntent, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
   {
     paramIntent = new oidb_0x792.RspBody();
     byte[] arrayOfByte = paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray();
@@ -269,13 +306,13 @@ public class SignatureHandler
       i = paramIntent.uint32_newnum.get();
       j = paramIntent.uint32_sleeptime.get();
       l = paramIntent.uint64_lastuin.get();
-      this.b.getPreferences().edit().putLong("sigNewCommentLastFetchTime", System.currentTimeMillis() + j * 1000);
+      this.app.getPreferences().edit().putLong("sigNewCommentLastFetchTime", System.currentTimeMillis() + j * 1000);
       if ((i != 0) && (0L != l))
       {
         paramIntent = new Bundle();
         paramIntent.putInt("unReadNum", i);
         paramIntent.putLong("lastUin", l);
-        a(5, true, paramIntent);
+        notifyUI(5, true, paramIntent);
       }
     }
     label149:
@@ -289,7 +326,7 @@ public class SignatureHandler
     QLog.d("SignatureHandler", 2, "handleGetNewCommentNum fial retcode:" + paramIntent.uint32_result.get());
   }
   
-  private void e(Intent paramIntent, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
+  private void g(Intent paramIntent, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
   {
     oidb_0x793.RspBody localRspBody;
     if (paramOIDBSSOPkg.uint32_result.get() == 0)
@@ -305,7 +342,7 @@ public class SignatureHandler
           if (localRspBody.uint32_result.get() != 0) {
             break;
           }
-          SignatureManager localSignatureManager = (SignatureManager)this.b.getManager(57);
+          SignatureManager localSignatureManager = (SignatureManager)this.app.getManager(58);
           paramIntent = null;
           localArrayList = new ArrayList();
           paramOIDBSSOPkg = new ArrayList();
@@ -325,7 +362,7 @@ public class SignatureHandler
               {
                 paramIntent.rs = ((RichStatus)localObject);
                 paramOIDBSSOPkg.add(paramIntent);
-                break label573;
+                break label574;
               }
             }
             localArrayList.add(paramIntent.feedsid);
@@ -333,7 +370,7 @@ public class SignatureHandler
         }
         catch (Exception paramIntent)
         {
-          a(6, false, Integer.valueOf(-1));
+          notifyUI(6, false, Integer.valueOf(-1));
           if (QLog.isColorLevel()) {
             QLog.d("SignatureHandler", 2, "handleGetNewComment fail retcode=" + localRspBody.uint32_result.get() + ",msg=" + paramIntent.getMessage());
           }
@@ -341,45 +378,45 @@ public class SignatureHandler
         }
         int i = localRspBody.uint32_flag.get();
         if ((i == 0) && (paramIntent != null)) {
-          this.b.getPreferences().edit().putLong("sigNewCommentLastUin_", paramIntent.uin).putLong("sigNewCommentLastFetchTime", paramIntent.time).putString("sigNewCommentLastFeedsId_", paramIntent.feedsid).commit();
+          this.app.getPreferences().edit().putLong("sigNewCommentLastUin_", paramIntent.uin).putLong("sigNewCommentLastFetchTime", paramIntent.time).putString("sigNewCommentLastFeedsId_", paramIntent.feedsid).commit();
         }
         if (localArrayList.size() > 0)
         {
           if (!a((String[])localArrayList.toArray(new String[localArrayList.size()]), arrayOfByte)) {
-            a(6, false, Integer.valueOf(-1000));
+            notifyUI(6, false, Integer.valueOf(-1000));
           }
         }
         else
         {
           paramIntent = new SignatureManager.SigComments();
           if (i != 1) {
-            break label576;
+            break label577;
           }
         }
       }
     }
-    label573:
-    label576:
+    label574:
+    label577:
     for (boolean bool = true;; bool = false)
     {
       paramIntent.isOver = bool;
       paramIntent.mlist = paramOIDBSSOPkg;
       paramOIDBSSOPkg = new Bundle();
       paramOIDBSSOPkg.putSerializable("data", paramIntent);
-      a(6, true, paramOIDBSSOPkg);
+      notifyUI(6, true, paramOIDBSSOPkg);
       return;
       if (QLog.isColorLevel()) {
         QLog.d("SignatureHandler", 2, "handleGetNewComment fail ret=" + localRspBody.uint32_result.get() + ",msg=" + localRspBody.errMsg.get());
       }
-      a(6, false, Integer.valueOf(localRspBody.uint32_result.get()));
+      notifyUI(6, false, Integer.valueOf(localRspBody.uint32_result.get()));
       return;
-      a(6, false, Integer.valueOf(paramOIDBSSOPkg.uint32_result.get()));
+      notifyUI(6, false, Integer.valueOf(paramOIDBSSOPkg.uint32_result.get()));
       return;
       break;
     }
   }
   
-  private void f(Intent paramIntent, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
+  private void h(Intent paramIntent, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
   {
     if (paramOIDBSSOPkg.uint32_result.get() == 0)
     {
@@ -400,7 +437,7 @@ public class SignatureHandler
           ((RichStatus)localObject2).feedsId = ((String)localObject3);
           ((List)localObject1).add(localObject2);
         }
-        paramOIDBSSOPkg = (SignatureManager)this.b.getManager(57);
+        paramOIDBSSOPkg = (SignatureManager)this.app.getManager(58);
         if (paramOIDBSSOPkg != null) {
           paramOIDBSSOPkg.a((List)localObject1);
         }
@@ -436,25 +473,264 @@ public class SignatureHandler
           paramIntent.mlist = ((List)localObject1);
           paramOIDBSSOPkg = new Bundle();
           paramOIDBSSOPkg.putSerializable("data", paramIntent);
-          a(6, true, paramOIDBSSOPkg);
+          notifyUI(6, true, paramOIDBSSOPkg);
           return;
         }
       }
       if (QLog.isColorLevel()) {
         QLog.d("SignatureHandler", 2, "handleGetRichStatusByFeedsId fail ret=" + ((oidb_0x799.RspBody)localObject1).uint32_result.get());
       }
-      a(6, false, Integer.valueOf(((oidb_0x799.RspBody)localObject1).uint32_result.get()));
+      notifyUI(6, false, Integer.valueOf(((oidb_0x799.RspBody)localObject1).uint32_result.get()));
       return;
     }
-    a(6, false, Integer.valueOf(paramOIDBSSOPkg.uint32_result.get()));
+    notifyUI(6, false, Integer.valueOf(paramOIDBSSOPkg.uint32_result.get()));
   }
   
-  protected Class a()
+  private void i(Intent paramIntent, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
   {
-    if (this.jdField_a_of_type_Int == 94) {
-      return FriendListObserver.class;
+    int i = 0;
+    if (paramOIDBSSOPkg.uint32_result.get() == 0)
+    {
+      Object localObject = new oidb_0xd9e.RspBody();
+      ((oidb_0xd9e.RspBody)localObject).mergeFrom(paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray());
+      paramIntent = new ArrayList();
+      if (((oidb_0xd9e.RspBody)localObject).rpt_topic_item.get() == null) {}
+      for (;;)
+      {
+        localObject = new ArrayList();
+        while (i < paramIntent.size())
+        {
+          SignatureManager.TopicInfo localTopicInfo = new SignatureManager.TopicInfo();
+          localTopicInfo.topicId = ((oidb_0xd9e.UserTopicItem)paramIntent.get(i)).uint32_topic_id.get();
+          localTopicInfo.topicStr = ((oidb_0xd9e.UserTopicItem)paramIntent.get(i)).str_topic.get();
+          localTopicInfo.totalNum = ((oidb_0xd9e.UserTopicItem)paramIntent.get(i)).uint32_total_num.get();
+          localTopicInfo.friendNum = ((oidb_0xd9e.UserTopicItem)paramIntent.get(i)).uint32_frd_num.get();
+          ((ArrayList)localObject).add(localTopicInfo);
+          i += 1;
+        }
+        paramIntent = ((oidb_0xd9e.RspBody)localObject).rpt_topic_item.get();
+      }
+      paramIntent = new Bundle();
+      paramIntent.putSerializable("param_topicInfoList", (Serializable)localObject);
+      paramIntent.putInt("param_searchResult", paramOIDBSSOPkg.uint32_result.get());
+      notifyUI(8, true, paramIntent);
+      return;
     }
-    return SignatureObserver.class;
+    paramIntent = new Bundle();
+    paramIntent.putSerializable("param_topicInfoList", null);
+    paramIntent.putInt("param_searchResult", paramOIDBSSOPkg.uint32_result.get());
+    notifyUI(8, false, paramIntent);
+  }
+  
+  private void j(Intent paramIntent, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
+  {
+    if (paramOIDBSSOPkg.uint32_result.get() == 0)
+    {
+      paramIntent = new oidb_0xde5.RspBody();
+      paramIntent.mergeFrom(paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray());
+      notifyUI(11, true, Long.valueOf(paramIntent.uint64_comment_id.get()));
+      return;
+    }
+    notifyUI(11, false, Long.valueOf(-1L));
+  }
+  
+  private void k(Intent paramIntent, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
+  {
+    if (paramOIDBSSOPkg.uint32_result.get() == 0)
+    {
+      new oidb_0xde7.RspBody().mergeFrom(paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray());
+      notifyUI(12, true, Integer.valueOf(0));
+      return;
+    }
+    notifyUI(12, false, Integer.valueOf(-1));
+  }
+  
+  private void l(Intent paramIntent, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
+  {
+    boolean bool = false;
+    if (paramOIDBSSOPkg.uint32_result.get() == 0)
+    {
+      paramIntent = new oidb_0xde8.RspBody();
+      paramIntent.mergeFrom(paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray());
+      paramOIDBSSOPkg = new SignatureHandler.RspGetHistorySig();
+      if (paramIntent.uint32_is_over.get() != 0) {
+        bool = true;
+      }
+      paramOIDBSSOPkg.over = bool;
+      paramOIDBSSOPkg.historySignItems = a(paramIntent.rpt_info.get());
+      notifyUI(13, true, paramOIDBSSOPkg);
+      return;
+    }
+    notifyUI(13, false, null);
+  }
+  
+  public String a(long paramLong)
+  {
+    Friends localFriends = ((ajjj)this.app.getManager(51)).e(String.valueOf(paramLong));
+    if (localFriends != null) {
+      return localFriends.getFriendNickWithAlias();
+    }
+    return String.valueOf(paramLong);
+  }
+  
+  public List<HistorySignItem> a(List<oidb_0xde8.NickInfo> paramList)
+  {
+    if ((paramList == null) || (paramList.size() <= 0)) {
+      return new ArrayList();
+    }
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      Object localObject = (oidb_0xde8.NickInfo)paramList.next();
+      HistorySignItem localHistorySignItem = new HistorySignItem();
+      localHistorySignItem.richStatus = RichStatus.parseStatus(((oidb_0xde8.NickInfo)localObject).bytes_nick.get().toByteArray());
+      if (localHistorySignItem.richStatus != null)
+      {
+        localHistorySignItem.richStatus.feedsId = new String(((oidb_0xde8.NickInfo)localObject).bytes_feedid.get().toByteArray());
+        localHistorySignItem.richStatus.time = ((oidb_0xde8.NickInfo)localObject).uint32_create_time.get();
+        if (((oidb_0xde8.NickInfo)localObject).rpt_item.get() != null) {
+          localHistorySignItem.commentItemList = a(((oidb_0xde8.NickInfo)localObject).rpt_item.get(), localHistorySignItem.richStatus.feedsId);
+        }
+        localObject = (oidb_0xde8.lightCommentInfo)((oidb_0xde8.NickInfo)localObject).msg_light_comment.get();
+        if (localObject != null)
+        {
+          localHistorySignItem.totalLikeNum = ((oidb_0xde8.lightCommentInfo)localObject).uint64_total_num.get();
+          localHistorySignItem.likeItemList = b(((oidb_0xde8.lightCommentInfo)localObject).rpt_items.get());
+        }
+        localArrayList.add(localHistorySignItem);
+      }
+    }
+    return localArrayList;
+  }
+  
+  public List<CommentItem> a(List<oidb_0xde8.CommentItem> paramList, String paramString)
+  {
+    if ((paramList == null) || (paramList.size() <= 0)) {
+      return new ArrayList();
+    }
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    if (paramList.hasNext())
+    {
+      oidb_0xde8.CommentItem localCommentItem = (oidb_0xde8.CommentItem)paramList.next();
+      CommentItem localCommentItem1 = new CommentItem();
+      localCommentItem1.feedId = paramString;
+      localCommentItem1.id = localCommentItem.uint64_comment_id.get();
+      localCommentItem1.targetId = localCommentItem.uint64_target_comment_id.get();
+      localCommentItem1.timeStamp = localCommentItem.uint64_time.get();
+      localCommentItem1.content = localCommentItem.str_comment.get();
+      long l = localCommentItem.uint64_comment_uin.get();
+      localCommentItem1.user = new avfd(String.valueOf(l), a(l));
+      if (localCommentItem1.targetId != 0L) {
+        l = localCommentItem.uint64_target_uin.get();
+      }
+      for (localCommentItem1.toReplyUser = new avfd(String.valueOf(l), a(l));; localCommentItem1.toReplyUser = null)
+      {
+        localArrayList.add(localCommentItem1);
+        break;
+      }
+    }
+    return localArrayList;
+  }
+  
+  public void a()
+  {
+    long l = this.app.getPreferences().getLong("sigNewCommentLastFetchTime", 0L);
+    if (System.currentTimeMillis() < Long.valueOf(l).longValue())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SignatureHandler", 2, "getNewCommentNum freq limit");
+      }
+      return;
+    }
+    Object localObject = new oidb_0x792.ReqBody();
+    ((oidb_0x792.ReqBody)localObject).uint64_uin.set(Long.valueOf(this.app.getAccount()).longValue());
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    localOIDBSSOPkg.uint32_command.set(1938);
+    localOIDBSSOPkg.uint32_service_type.set(0);
+    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x792.ReqBody)localObject).toByteArray()));
+    localObject = new NewIntent(this.app.getApp(), ajsg.class);
+    ((NewIntent)localObject).putExtra("cmd", "OidbSvc.0x792_0");
+    ((NewIntent)localObject).putExtra("data", localOIDBSSOPkg.toByteArray());
+    ((NewIntent)localObject).putExtra("timeout", 30000L);
+    this.app.startServlet((NewIntent)localObject);
+  }
+  
+  public void a(long paramLong)
+  {
+    Object localObject = new oidb_0xdd6.ReqBody();
+    ((oidb_0xdd6.ReqBody)localObject).uint64_uin.set(paramLong);
+    ((oidb_0xdd6.ReqBody)localObject).uint64_start_time.set(0L);
+    ((oidb_0xdd6.ReqBody)localObject).uint64_end_time.set(NetConnInfoCenter.getServerTimeMillis() / 1000L);
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    localOIDBSSOPkg.uint32_command.set(3542);
+    localOIDBSSOPkg.uint32_service_type.set(1);
+    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0xdd6.ReqBody)localObject).toByteArray()));
+    localObject = new NewIntent(this.app.getApp(), ajsg.class);
+    ((NewIntent)localObject).putExtra("cmd", "OidbSvc.0xdd6_1");
+    ((NewIntent)localObject).putExtra("data", localOIDBSSOPkg.toByteArray());
+    ((NewIntent)localObject).putExtra("timeout", 10000L);
+    this.app.startServlet((NewIntent)localObject);
+  }
+  
+  public void a(long paramLong, int paramInt1, int paramInt2)
+  {
+    Object localObject = new oidb_0xde8.ReqBody();
+    ((oidb_0xde8.ReqBody)localObject).uint64_to_uin.set(paramLong);
+    ((oidb_0xde8.ReqBody)localObject).uint32_check_fri_type.set(2);
+    ((oidb_0xde8.ReqBody)localObject).uint32_start_time.set(paramInt1);
+    ((oidb_0xde8.ReqBody)localObject).uint32_end_time.set(paramInt2);
+    ((oidb_0xde8.ReqBody)localObject).uint32_start.set(0);
+    ((oidb_0xde8.ReqBody)localObject).uint32_type.set(0);
+    ((oidb_0xde8.ReqBody)localObject).uint32_num.set(6);
+    ((oidb_0xde8.ReqBody)localObject).uint32_comment_size.set(60);
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    localOIDBSSOPkg.uint32_command.set(3560);
+    localOIDBSSOPkg.uint32_service_type.set(1);
+    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0xde8.ReqBody)localObject).toByteArray()));
+    localObject = new NewIntent(this.app.getApp(), ajsg.class);
+    ((NewIntent)localObject).putExtra("cmd", "OidbSvc.0xde8_1");
+    ((NewIntent)localObject).putExtra("data", localOIDBSSOPkg.toByteArray());
+    ((NewIntent)localObject).putExtra("timeout", 10000L);
+    this.app.startServlet((NewIntent)localObject);
+  }
+  
+  public void a(long paramLong1, String paramString, long paramLong2, long paramLong3)
+  {
+    Object localObject = new oidb_0xde7.ReqBody();
+    ((oidb_0xde7.ReqBody)localObject).uint64_longnick_uin.set(paramLong1);
+    ((oidb_0xde7.ReqBody)localObject).str_longnick_id.set(paramString);
+    ((oidb_0xde7.ReqBody)localObject).uint64_comment_id.set(paramLong3);
+    ((oidb_0xde7.ReqBody)localObject).uint64_from_uin.set(paramLong2);
+    paramString = new oidb_sso.OIDBSSOPkg();
+    paramString.uint32_command.set(3559);
+    paramString.uint32_service_type.set(1);
+    paramString.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0xde7.ReqBody)localObject).toByteArray()));
+    localObject = new NewIntent(this.app.getApp(), ajsg.class);
+    ((NewIntent)localObject).putExtra("cmd", "OidbSvc.0xde7_1");
+    ((NewIntent)localObject).putExtra("data", paramString.toByteArray());
+    ((NewIntent)localObject).putExtra("timeout", 10000L);
+    this.app.startServlet((NewIntent)localObject);
+  }
+  
+  public void a(long paramLong1, String paramString1, long paramLong2, long paramLong3, String paramString2)
+  {
+    oidb_0xde5.ReqBody localReqBody = new oidb_0xde5.ReqBody();
+    localReqBody.uint64_longnick_uin.set(paramLong1);
+    localReqBody.str_longnick_id.set(paramString1);
+    localReqBody.uint64_target_comment_id.set(paramLong2);
+    localReqBody.uint64_from_uin.set(paramLong3);
+    localReqBody.str_comment.set(paramString2);
+    paramString1 = new oidb_sso.OIDBSSOPkg();
+    paramString1.uint32_command.set(3557);
+    paramString1.uint32_service_type.set(1);
+    paramString1.bytes_bodybuffer.set(ByteStringMicro.copyFrom(localReqBody.toByteArray()));
+    paramString2 = new NewIntent(this.app.getApp(), ajsg.class);
+    paramString2.putExtra("cmd", "OidbSvc.0xde5_1");
+    paramString2.putExtra("data", paramString1.toByteArray());
+    paramString2.putExtra("timeout", 10000L);
+    this.app.startServlet(paramString2);
   }
   
   public void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg, byte[] paramArrayOfByte)
@@ -475,8 +751,7 @@ public class SignatureHandler
         int j = paramFromServiceMsg.uint32_command.get();
         switch (j)
         {
-        case 1940: 
-        case 1943: 
+        case 1938: 
           throw new Exception("Unknow oidb cmd" + j);
         }
       }
@@ -487,20 +762,32 @@ public class SignatureHandler
         {
           QLog.e("SignatureHandler", 2, "sign handler onRecive fail err:" + paramIntent.getMessage());
           return;
-          d(paramIntent, paramFromServiceMsg);
+          f(paramIntent, paramFromServiceMsg);
           if (QLog.isColorLevel())
           {
             QLog.d("SignatureHandler", 2, "oidb_0x792|OIDBSSOPkg.result " + i);
             return;
-            e(paramIntent, paramFromServiceMsg);
+            g(paramIntent, paramFromServiceMsg);
             continue;
-            b(paramIntent, paramFromServiceMsg);
+            d(paramIntent, paramFromServiceMsg);
+            continue;
+            e(paramIntent, paramFromServiceMsg);
             continue;
             c(paramIntent, paramFromServiceMsg);
             continue;
+            h(paramIntent, paramFromServiceMsg);
+            continue;
+            i(paramIntent, paramFromServiceMsg);
+            continue;
             a(paramIntent, paramFromServiceMsg);
             continue;
-            f(paramIntent, paramFromServiceMsg);
+            b(paramIntent, paramFromServiceMsg);
+            continue;
+            j(paramIntent, paramFromServiceMsg);
+            continue;
+            k(paramIntent, paramFromServiceMsg);
+            continue;
+            l(paramIntent, paramFromServiceMsg);
             continue;
           }
         }
@@ -509,7 +796,80 @@ public class SignatureHandler
     }
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
+  public void a(Intent paramIntent, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
+  {
+    if (paramOIDBSSOPkg.uint32_result.get() == 0)
+    {
+      localObject1 = new oidb_0xda6.RspBody();
+      ((oidb_0xda6.RspBody)localObject1).mergeFrom(paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray());
+      paramOIDBSSOPkg = new ArrayList();
+      if (((oidb_0xda6.RspBody)localObject1).rpt_topic_item.get() == null) {}
+      for (;;)
+      {
+        localObject1 = new ArrayList();
+        i = 0;
+        while (i < paramOIDBSSOPkg.size())
+        {
+          localObject2 = new SignatureManager.TopicInfo();
+          ((SignatureManager.TopicInfo)localObject2).topicId = ((oidb_0xda6.UserTopicItem)paramOIDBSSOPkg.get(i)).uint32_topic_id.get();
+          ((SignatureManager.TopicInfo)localObject2).topicStr = ((oidb_0xda6.UserTopicItem)paramOIDBSSOPkg.get(i)).str_topic.get();
+          ((SignatureManager.TopicInfo)localObject2).totalNum = ((oidb_0xda6.UserTopicItem)paramOIDBSSOPkg.get(i)).uint32_total_num.get();
+          ((SignatureManager.TopicInfo)localObject2).friendNum = ((oidb_0xda6.UserTopicItem)paramOIDBSSOPkg.get(i)).uint32_frd_num.get();
+          ((ArrayList)localObject1).add(localObject2);
+          i += 1;
+        }
+        paramOIDBSSOPkg = ((oidb_0xda6.RspBody)localObject1).rpt_topic_item.get();
+      }
+      paramOIDBSSOPkg = new Bundle();
+      paramOIDBSSOPkg.putSerializable("param_topicInfoList", (Serializable)localObject1);
+      i = paramIntent.getIntExtra("param_atIndex", 0);
+      j = paramIntent.getIntExtra("param_atKeyLen", 0);
+      localObject1 = paramIntent.getStringExtra("param_atKey");
+      l = paramIntent.getLongExtra("param_reqTs", 0L);
+      paramOIDBSSOPkg.putInt("param_atIndex", i);
+      paramOIDBSSOPkg.putInt("param_atKeyLen", j);
+      paramOIDBSSOPkg.putString("param_atKey", (String)localObject1);
+      paramOIDBSSOPkg.putLong("param_reqTs", l);
+      notifyUI(9, true, paramOIDBSSOPkg);
+      return;
+    }
+    Object localObject1 = new Bundle();
+    int i = paramIntent.getIntExtra("param_atIndex", 0);
+    int j = paramIntent.getIntExtra("param_atKeyLen", 0);
+    Object localObject2 = paramIntent.getStringExtra("param_atKey");
+    long l = paramIntent.getLongExtra("param_reqTs", 0L);
+    ((Bundle)localObject1).putInt("param_atIndex", i);
+    ((Bundle)localObject1).putInt("param_atKeyLen", j);
+    ((Bundle)localObject1).putString("param_atKey", (String)localObject2);
+    ((Bundle)localObject1).putLong("param_reqTs", l);
+    ((Bundle)localObject1).putInt("param_searchResult", paramOIDBSSOPkg.uint32_result.get());
+    notifyUI(9, false, localObject1);
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("SignatureHandler", 2, String.format("getTopicListWithKey key=[%s] [atIndex=%d, keyLen=%d] reqTs=%d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong) }));
+    }
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    Object localObject = new oidb_0xda6.ReqBody();
+    ((oidb_0xda6.ReqBody)localObject).keyword.set(paramString);
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    localOIDBSSOPkg.uint32_command.set(3494);
+    localOIDBSSOPkg.uint32_service_type.set(4);
+    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0xda6.ReqBody)localObject).toByteArray()));
+    localObject = new NewIntent(this.app.getApp(), ajsg.class);
+    ((NewIntent)localObject).putExtra("cmd", "OidbSvc.0xda6_4");
+    ((NewIntent)localObject).putExtra("data", localOIDBSSOPkg.toByteArray());
+    ((NewIntent)localObject).putExtra("timeout", 10000L);
+    ((NewIntent)localObject).putExtra("param_atIndex", paramInt1);
+    ((NewIntent)localObject).putExtra("param_atKeyLen", paramInt2);
+    ((NewIntent)localObject).putExtra("param_atKey", paramString);
+    ((NewIntent)localObject).putExtra("param_reqTs", paramLong);
+    this.app.startServlet((NewIntent)localObject);
+  }
   
   public void a(String paramString1, String paramString2)
   {
@@ -518,7 +878,7 @@ public class SignatureHandler
     do
     {
       return;
-      l = this.b.getPreferences().getLong("sigCommentUpdateTimeStamp_" + paramString1, 0L);
+      l = this.app.getPreferences().getLong("sigCommentUpdateTimeStamp_" + paramString1, 0L);
       if (System.currentTimeMillis() >= l) {
         break;
       }
@@ -534,22 +894,25 @@ public class SignatureHandler
     localOIDBSSOPkg.uint32_command.set(1944);
     localOIDBSSOPkg.uint32_service_type.set(0);
     localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x798.ReqBody)localObject).toByteArray()));
-    localObject = new NewIntent(this.b.getApp(), SignatureServlet.class);
+    localObject = new NewIntent(this.app.getApp(), ajsg.class);
     ((NewIntent)localObject).putExtra("uin", paramString1);
     ((NewIntent)localObject).putExtra("feedsid", paramString2);
     ((NewIntent)localObject).putExtra("cmd", "OidbSvc.0x798_0");
     ((NewIntent)localObject).putExtra("data", localOIDBSSOPkg.toByteArray());
     ((NewIntent)localObject).putExtra("timeout", 10000L);
-    this.b.startServlet((NewIntent)localObject);
+    this.app.startServlet((NewIntent)localObject);
   }
   
   public void a(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
+    if (QLog.isColorLevel()) {
+      QLog.i("SignatureHandler", 2, String.format("InteractiveSignature[%s %s %d %d]", new Object[] { baip.e(paramString1), paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+    }
     if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString1))) {}
     do
     {
       return;
-      localObject1 = ((FriendsManager)this.b.getManager(50)).a(paramString1);
+      localObject1 = ((ajjj)this.app.getManager(51)).a(paramString1);
     } while (localObject1 == null);
     Object localObject2 = ((ExtensionInfo)localObject1).getRichStatus();
     Object localObject1 = new oidb_0x795.ReqBody();
@@ -562,7 +925,7 @@ public class SignatureHandler
     ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(1941);
     ((oidb_sso.OIDBSSOPkg)localObject2).uint32_service_type.set(0);
     ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x795.ReqBody)localObject1).toByteArray()));
-    localObject1 = new NewIntent(this.b.getApp(), SignatureServlet.class);
+    localObject1 = new NewIntent(this.app.getApp(), ajsg.class);
     ((NewIntent)localObject1).putExtra("uin", paramString1);
     ((NewIntent)localObject1).putExtra("feedid", paramString2);
     ((NewIntent)localObject1).putExtra("type", paramInt1);
@@ -570,7 +933,7 @@ public class SignatureHandler
     ((NewIntent)localObject1).putExtra("cmd", "OidbSvc.0x795_0");
     ((NewIntent)localObject1).putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject2).toByteArray());
     ((NewIntent)localObject1).putExtra("timeout", 10000L);
-    this.b.startServlet((NewIntent)localObject1);
+    this.app.startServlet((NewIntent)localObject1);
   }
   
   public void a(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
@@ -579,7 +942,7 @@ public class SignatureHandler
     do
     {
       return;
-      localObject1 = ((FriendsManager)this.b.getManager(50)).a(paramString1);
+      localObject1 = ((ajjj)this.app.getManager(51)).a(paramString1);
     } while (localObject1 == null);
     Object localObject1 = ((ExtensionInfo)localObject1).getRichStatus();
     oidb_0x796.ReqBody localReqBody = new oidb_0x796.ReqBody();
@@ -591,7 +954,7 @@ public class SignatureHandler
     localObject1 = Long.valueOf(0L);
     if (!paramBoolean)
     {
-      localObject1 = this.b.getPreferences();
+      localObject1 = this.app.getPreferences();
       localObject2 = Long.valueOf(((SharedPreferences)localObject1).getLong("sigCommentDetailUin_" + paramString2, 0L));
       localObject1 = Long.valueOf(((SharedPreferences)localObject1).getLong("sigCommentDetailTime_" + paramString2, 0L));
     }
@@ -604,14 +967,14 @@ public class SignatureHandler
     ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(1942);
     ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(0);
     ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom(localReqBody.toByteArray()));
-    localObject2 = new NewIntent(this.b.getApp(), SignatureServlet.class);
+    localObject2 = new NewIntent(this.app.getApp(), ajsg.class);
     ((NewIntent)localObject2).putExtra("uin", paramString1);
     ((NewIntent)localObject2).putExtra("feedid", paramString2);
     ((NewIntent)localObject2).putExtra("firstFlag", paramBoolean);
     ((NewIntent)localObject2).putExtra("cmd", "OidbSvc.0x796_0");
     ((NewIntent)localObject2).putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject1).toByteArray());
     ((NewIntent)localObject2).putExtra("timeout", 10000L);
-    this.b.startServlet((NewIntent)localObject2);
+    this.app.startServlet((NewIntent)localObject2);
   }
   
   public void a(boolean paramBoolean)
@@ -621,7 +984,7 @@ public class SignatureHandler
     Object localObject1 = Long.valueOf(0L);
     if (!paramBoolean)
     {
-      localObject3 = this.b.getPreferences();
+      localObject3 = this.app.getPreferences();
       localObject2 = Long.valueOf(((SharedPreferences)localObject3).getLong("sigNewCommentLastUin_", 0L));
       localObject1 = Long.valueOf(((SharedPreferences)localObject3).getLong("sigNewCommentLastFetchTime", 0L));
       localObject3 = ((SharedPreferences)localObject3).getString("sigNewCommentLastFeedsId_", "0");
@@ -635,36 +998,68 @@ public class SignatureHandler
     ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(1939);
     ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(0);
     ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom(localReqBody.toByteArray()));
-    localObject2 = new NewIntent(this.b.getApp(), SignatureServlet.class);
+    localObject2 = new NewIntent(this.app.getApp(), ajsg.class);
     ((NewIntent)localObject2).putExtra("feedsId", "OidbSvc.0x793_0");
     ((NewIntent)localObject2).putExtra("cmd", "OidbSvc.0x793_0");
     ((NewIntent)localObject2).putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject1).toByteArray());
     ((NewIntent)localObject2).putExtra("timeout", 10000L);
-    this.b.startServlet((NewIntent)localObject2);
+    this.app.startServlet((NewIntent)localObject2);
+  }
+  
+  public List<avfc> b(List<oidb_0xde8.lightCommentItem> paramList)
+  {
+    if ((paramList == null) || (paramList.size() <= 0)) {
+      return new ArrayList();
+    }
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      oidb_0xde8.lightCommentItem locallightCommentItem = (oidb_0xde8.lightCommentItem)paramList.next();
+      avfc localavfc = new avfc();
+      localavfc.jdField_a_of_type_Long = locallightCommentItem.uint64_time.get();
+      long l = locallightCommentItem.uint64_uin.get();
+      localavfc.jdField_a_of_type_Avfd = new avfd(String.valueOf(l), a(l));
+      localArrayList.add(localavfc);
+    }
+    return localArrayList;
   }
   
   public void b()
   {
-    long l = this.b.getPreferences().getLong("sigNewCommentLastFetchTime", 0L);
-    if (System.currentTimeMillis() < Long.valueOf(l).longValue())
+    Object localObject = new oidb_0xd9e.ReqBody();
+    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    localOIDBSSOPkg.uint32_command.set(3486);
+    localOIDBSSOPkg.uint32_service_type.set(3);
+    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0xd9e.ReqBody)localObject).toByteArray()));
+    localObject = new NewIntent(this.app.getApp(), ajsg.class);
+    ((NewIntent)localObject).putExtra("cmd", "OidbSvc.0xd9e_3");
+    ((NewIntent)localObject).putExtra("data", localOIDBSSOPkg.toByteArray());
+    ((NewIntent)localObject).putExtra("timeout", 10000L);
+    this.app.startServlet((NewIntent)localObject);
+  }
+  
+  public void b(Intent paramIntent, oidb_sso.OIDBSSOPkg paramOIDBSSOPkg)
+  {
+    if (paramOIDBSSOPkg.uint32_result.get() == 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SignatureHandler", 2, "getNewCommentNum freq limit");
-      }
+      paramIntent = new oidb_0xdd6.RspBody();
+      paramIntent.mergeFrom(paramOIDBSSOPkg.bytes_bodybuffer.get().toByteArray());
+      notifyUI(10, true, Integer.valueOf(paramIntent.uint32_num.get()));
       return;
     }
-    Object localObject = new oidb_0x792.ReqBody();
-    ((oidb_0x792.ReqBody)localObject).uint64_uin.set(Long.valueOf(this.b.getAccount()).longValue());
-    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
-    localOIDBSSOPkg.uint32_command.set(1938);
-    localOIDBSSOPkg.uint32_service_type.set(0);
-    localOIDBSSOPkg.bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x792.ReqBody)localObject).toByteArray()));
-    localObject = new NewIntent(this.b.getApp(), SignatureServlet.class);
-    ((NewIntent)localObject).putExtra("cmd", "OidbSvc.0x792_0");
-    ((NewIntent)localObject).putExtra("data", localOIDBSSOPkg.toByteArray());
-    ((NewIntent)localObject).putExtra("timeout", 30000L);
-    this.b.startServlet((NewIntent)localObject);
+    notifyUI(10, false, Integer.valueOf(-1));
   }
+  
+  public Class<? extends ajfe> observerClass()
+  {
+    if (this.jdField_a_of_type_Int == 94) {
+      return ajjh.class;
+    }
+    return ajsf.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 

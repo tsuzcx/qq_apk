@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectConfig;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectConfig.GrayTipsConfig;
-import java.util.Comparator;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ajkg
-  implements Comparator
+final class ajkg
+  implements DialogInterface.OnClickListener
 {
-  public ajkg(TroopEnterEffectConfig paramTroopEnterEffectConfig) {}
+  ajkg(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
   
-  public int a(TroopEnterEffectConfig.GrayTipsConfig paramGrayTipsConfig1, TroopEnterEffectConfig.GrayTipsConfig paramGrayTipsConfig2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return paramGrayTipsConfig2.b - paramGrayTipsConfig1.b;
+    HotChatManager.a(this.jdField_a_of_type_AndroidAppActivity, false);
+    awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004C6B", "0X8004C6B", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajkg
  * JD-Core Version:    0.7.0.1
  */

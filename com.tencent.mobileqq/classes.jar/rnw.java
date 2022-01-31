@@ -1,30 +1,30 @@
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemCover;
-import org.xmlpull.v1.XmlSerializer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
+import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity.5.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class rnw
-  extends StructMsgItemCover
+  implements DialogInterface.OnClickListener
 {
-  public rnw(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString)
-  {
-    super(paramString);
-  }
+  public rnw(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
   
-  public void a(XmlSerializer paramXmlSerializer)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramXmlSerializer.startTag(null, "picture");
-    if (this.u == null) {}
-    for (String str = "";; str = this.u)
+    switch (paramInt)
     {
-      paramXmlSerializer.attribute(null, "cover", str);
-      paramXmlSerializer.endTag(null, "picture");
+    default: 
+      return;
+    case 1: 
+      ThreadManager.post(new ReadInJoyNewSearchActivity.5.1(this), 10, null, true);
       return;
     }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rnw
  * JD-Core Version:    0.7.0.1
  */

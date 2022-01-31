@@ -1,26 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypePgcPlain;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnSubRegionClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.QavPanelSoundWaveView;
 
 public class lxt
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public lxt(FeedItemCellTypePgcPlain paramFeedItemCellTypePgcPlain) {}
+  public lxt(QavPanel paramQavPanel) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramView = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
-    if (paramView != null) {
-      paramView.a(null, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
-    }
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    do
+    {
+      do
+      {
+        return;
+        if (!"android.intent.action.SCREEN_ON".equals(paramIntent.getAction())) {
+          break;
+        }
+      } while ((this.a.a == null) || (!this.a.b) || (this.a.a.getVisibility() != 0));
+      this.a.a.f();
+      return;
+    } while ((!"android.intent.action.SCREEN_OFF".equals(paramIntent.getAction())) || (this.a.a == null));
+    this.a.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lxt
  * JD-Core Version:    0.7.0.1
  */

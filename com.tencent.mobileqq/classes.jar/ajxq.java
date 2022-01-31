@@ -1,42 +1,30 @@
-import android.support.annotation.NonNull;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.GetJoinedHotChatListStep;
 
-class ajxq
-  implements Comparable
+public class ajxq
+  extends ajkn
 {
-  String jdField_a_of_type_JavaLangString;
-  boolean jdField_a_of_type_Boolean;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean;
-  String c;
-  String d;
-  String e;
-  String f;
+  private ajxq(GetJoinedHotChatListStep paramGetJoinedHotChatListStep) {}
   
-  ajxq(ajxp paramajxp) {}
-  
-  public int a(@NonNull ajxq paramajxq)
+  protected void a(int paramInt)
   {
-    int i = -1;
-    if ((this.f != null) && (paramajxq.f != null)) {
-      i = this.f.compareTo(paramajxq.f);
-    }
-    do
+    if (GetJoinedHotChatListStep.a(this.a) != null)
     {
-      do
-      {
-        return i;
-        if (this.f != null) {
-          break;
-        }
-      } while (paramajxq.f == null);
-      return 1;
-    } while (paramajxq.f == null);
-    return 0;
+      this.a.a.app.removeObserver(GetJoinedHotChatListStep.a(this.a));
+      GetJoinedHotChatListStep.a(this.a, null);
+    }
+    if (paramInt == 0)
+    {
+      this.a.a(7);
+      return;
+    }
+    this.a.a(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajxq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,21 @@
-import com.tencent.mobileqq.widget.ProgressPieDrawable;
-import com.tencent.mobileqq.widget.ProgressPieDrawable.OnProgressListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoSave;
-
-public class aods
-  implements ProgressPieDrawable.OnProgressListener
+class aods
+  extends aoft
 {
-  public aods(EditVideoSave paramEditVideoSave) {}
+  aods(aodq paramaodq, aodv paramaodv) {}
   
-  public void a(ProgressPieDrawable paramProgressPieDrawable)
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditVideoSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + paramProgressPieDrawable);
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Aodv.a(paramString2);
+      return;
     }
+    this.jdField_a_of_type_Aodv.a(paramInt, paramString1);
   }
-  
-  public void a(ProgressPieDrawable paramProgressPieDrawable, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aods
  * JD-Core Version:    0.7.0.1
  */

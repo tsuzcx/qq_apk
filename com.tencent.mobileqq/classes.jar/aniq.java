@@ -1,19 +1,12 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.NetworkState;
+import android.view.KeyEvent;
 
-public final class aniq
-  implements INetEventHandler
+public abstract interface aniq
 {
-  public void onNetChangeEvent(boolean paramBoolean)
-  {
-    QLog.i("NetworkState", 1, "--onNetChangeEvent isNetEffective:" + paramBoolean);
-    NetworkState.access$000(paramBoolean);
-  }
+  public abstract boolean a(KeyEvent paramKeyEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aniq
  * JD-Core Version:    0.7.0.1
  */

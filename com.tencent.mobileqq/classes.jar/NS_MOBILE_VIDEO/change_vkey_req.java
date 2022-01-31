@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class change_vkey_req
   extends JceStruct
 {
-  static ArrayList cache_video_urls;
-  public ArrayList video_urls;
+  static ArrayList<String> cache_video_urls;
+  public ArrayList<String> video_urls;
   
   public change_vkey_req() {}
   
-  public change_vkey_req(ArrayList paramArrayList)
+  public change_vkey_req(ArrayList<String> paramArrayList)
   {
     this.video_urls = paramArrayList;
   }

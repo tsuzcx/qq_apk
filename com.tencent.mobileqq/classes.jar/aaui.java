@@ -1,31 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.arcard.ArCardSelectMemberActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aaui
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public aaui(ArCardSelectMemberActivity paramArCardSelectMemberActivity) {}
+  public aaui(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (!NetworkUtil.g(this.a.getApplicationContext())) {
-      QQToast.a(this.a, 2131437550, 1).a();
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      ArCardSelectMemberActivity.a(this.a, null);
-      return;
-      this.a.u();
+    this.a.G();
+    this.a.finish();
+    if ((this.a.a.a != null) && (this.a.a.a.a) && (this.a.app != null) && (!"0".equals(this.a.app.getCurrentAccountUin()))) {
+      this.a.app.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaui
  * JD-Core Version:    0.7.0.1
  */

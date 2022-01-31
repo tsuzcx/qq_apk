@@ -1,14 +1,20 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePackage;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.Comparator;
 
-public class oos
-  implements Runnable
+class oos
+  implements Comparator<ArticleInfo>
 {
-  public oos(FaceListPage paramFaceListPage, FacePackage paramFacePackage) {}
+  oos(ooq paramooq) {}
   
-  public void run()
+  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFaceListPage.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage);
+    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
+      return 0;
+    }
+    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
+      return -1;
+    }
+    return 1;
   }
 }
 

@@ -1,20 +1,21 @@
 package com.tencent.mobileqq.activity.photo;
 
+import afzw;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import cooperation.qzone.util.PanoramaUtil;
-import cooperation.qzone.util.XMPCoreUtil;
+import bgfl;
+import bggp;
 import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
-import xbx;
 
 public class LocalMediaInfo
-  implements Parcelable, Serializable, Comparable
+  implements Parcelable, Serializable, Comparable<LocalMediaInfo>
 {
-  public static final Parcelable.Creator CREATOR = new xbx();
+  public static final Parcelable.Creator<LocalMediaInfo> CREATOR = new afzw();
   public static final int PHOTO_LAST_SELECTED = 3;
   public static final int PHOTO_SELECTED = 1;
   public static final int PHOTO_UNSELECTED = 2;
@@ -35,20 +36,29 @@ public class LocalMediaInfo
   public boolean isMakeVideo;
   public boolean isRecord;
   public boolean isRegionThumbUseNewDecoder;
+  public boolean isSyncToWeishi;
   public boolean isSystemMeidaStore = true;
   public int latitude;
   public int listViewPosition = -1;
   public int longitude;
+  public String mAlbumName;
+  public String mAudioPath;
   public boolean mChecked;
   public String mCloudPhotoId = "";
   public String mCloudPhotoOwnerAlbumId = "";
   public long mCloudPhotoOwnerUin;
   public long mDuration;
+  public boolean mHasAudioTrack;
   public boolean mIsUploadOrigin;
+  public int mMediaType;
   public String mMimeType;
+  public int mSampleRate = 1;
   public long mStartTime;
+  public int mTextId = -1;
+  public String mTextStr;
   public long mTotalDuration;
-  public ArrayList mTransferPosList;
+  public String mTransId;
+  public ArrayList<Long> mTransferPosList;
   public int mVideoType;
   public int mediaHeight;
   public int mediaWidth;
@@ -63,6 +73,7 @@ public class LocalMediaInfo
   public int selectStatus;
   public int specialVideoType;
   public int thumbHeight;
+  public Rect thumbRect;
   public int thumbSize;
   public int thumbWidth;
   public String thumbnailPath;
@@ -133,7 +144,7 @@ public class LocalMediaInfo
   
   public boolean isPanoramaPhoto()
   {
-    if (!PanoramaUtil.a().b()) {}
+    if (!bgfl.a().b()) {}
     do
     {
       return false;
@@ -146,13 +157,13 @@ public class LocalMediaInfo
   
   public void setPanoramaType()
   {
-    if ((this.panoramaPhotoType != 0) || (!PanoramaUtil.a().b())) {}
+    if ((this.panoramaPhotoType != 0) || (!bgfl.a().b())) {}
     while ((this.mediaWidth == 0) || (this.mediaHeight == 0)) {
       return;
     }
     if ((this.mediaHeight >= 1000) && (this.mediaWidth / this.mediaHeight == 2.0F))
     {
-      if (XMPCoreUtil.a().a(this.path))
+      if (bggp.a().a(this.path))
       {
         this.panoramaPhotoType = 2;
         return;
@@ -170,7 +181,7 @@ public class LocalMediaInfo
   
   public String toString()
   {
-    return "LocalMediaInfo{_id=" + this._id + ", path='" + this.path + '\'' + ", fileSize=" + this.fileSize + ", addedDate=" + this.addedDate + ", modifiedDate=" + this.modifiedDate + ", orientation=" + this.orientation + ", mDuration=" + this.mDuration + ", mChecked=" + this.mChecked + ", selectStatus=" + this.selectStatus + ", rotation=" + this.rotation + ", thumbWidth=" + this.thumbWidth + ", thumbHeight=" + this.thumbHeight + ", index=" + this.index + ", position=" + this.position + ", mMimeType='" + this.mMimeType + '\'' + ", mediaWidth=" + this.mediaWidth + ", mediaHeight=" + this.mediaHeight + ", isSystemMeidaStore=" + this.isSystemMeidaStore + ", isRegionThumbUseNewDecoder=" + this.isRegionThumbUseNewDecoder + ", panoramaPhotoType=" + this.panoramaPhotoType + '}';
+    return "LocalMediaInfo{_id=" + this._id + ", path='" + this.path + '\'' + ", fileSize=" + this.fileSize + ", addedDate=" + this.addedDate + ", modifiedDate=" + this.modifiedDate + ", orientation=" + this.orientation + ", mDuration=" + this.mDuration + ", mChecked=" + this.mChecked + ", selectStatus=" + this.selectStatus + ", rotation=" + this.rotation + ", thumbWidth=" + this.thumbWidth + ", thumbHeight=" + this.thumbHeight + ", index=" + this.index + ", position=" + this.position + ", mMimeType='" + this.mMimeType + '\'' + ", mediaWidth=" + this.mediaWidth + ", mediaHeight=" + this.mediaHeight + ", isSystemMeidaStore=" + this.isSystemMeidaStore + ", isRegionThumbUseNewDecoder=" + this.isRegionThumbUseNewDecoder + ", panoramaPhotoType=" + this.panoramaPhotoType + ", mediaType=" + this.mMediaType + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -194,20 +205,21 @@ public class LocalMediaInfo
       paramParcel.writeInt(this.index);
       paramParcel.writeInt(this.position.intValue());
       paramParcel.writeString(this.mMimeType);
+      paramParcel.writeInt(this.mMediaType);
       paramParcel.writeInt(this.mediaWidth);
       paramParcel.writeInt(this.mediaHeight);
       if (!this.isSystemMeidaStore) {
-        break label240;
+        break label248;
       }
       paramInt = 1;
-      label157:
+      label165:
       paramParcel.writeByte((byte)paramInt);
       if (!this.isRegionThumbUseNewDecoder) {
-        break label245;
+        break label253;
       }
     }
-    label240:
-    label245:
+    label248:
+    label253:
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
@@ -222,7 +234,7 @@ public class LocalMediaInfo
       paramInt = 0;
       break;
       paramInt = 0;
-      break label157;
+      break label165;
     }
   }
 }

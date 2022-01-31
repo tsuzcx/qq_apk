@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.activity.contact.troop.RecommendTroopView;
+import android.os.Environment;
+import java.io.File;
 
 public class wqf
-  implements Runnable
 {
-  public wqf(RecommendTroopView paramRecommendTroopView) {}
-  
-  public void run()
-  {
-    this.a.n();
-  }
+  public static final String a = ajjy.a(2131650605);
+  public static final String b = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Tencent/MobileQQ/dov_ptv_template_dov/ptv_template_usable/AISceneGuide/";
+  public static final String c = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Tencent/MobileQQ/dov_ptv_template_dov/ptv_template_usable/GifGuide/";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wqf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:descendantFocusability="blocksDescendants" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.FeedImageView android:id="@id/fou" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" android:adjustViewBounds="true" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/kpu" android:layout_alignLeft="@id/fou" android:layout_alignRight="@id/fou" android:layout_alignBottom="@id/fou" style="@style/fp" />
+    <ImageView android:id="@id/qi" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginTop="4.0dip" android:src="@drawable/gai" android:layout_alignLeft="@id/fou" android:layout_alignTop="@id/fou" />
+    <ImageView android:id="@id/qc" android:layout_marginLeft="6.0dip" android:layout_marginBottom="4.0dip" android:layout_alignLeft="@id/fou" android:layout_alignBottom="@id/fou" style="@style/h" />
+    <TextView android:layout_gravity="bottom|center" android:id="@id/qd" android:layout_marginBottom="2.0dip" android:text="22" android:layout_toRightOf="@id/qc" android:layout_alignBottom="@id/fou" style="@style/ks" />
+    <ImageView android:id="@id/kva" android:layout_marginLeft="6.0dip" android:layout_marginBottom="5.5dip" android:layout_toRightOf="@id/qd" android:layout_alignBottom="@id/fou" android:layout_alignWithParentIfMissing="true" style="@style/fq" />
+    <TextView android:layout_gravity="bottom|center" android:id="@id/kuy" android:visibility="gone" android:layout_marginBottom="2.0dip" android:layout_toRightOf="@id/kva" android:layout_alignBottom="@id/fou" style="@style/ks" />
+    <RelativeLayout android:id="@id/fq8" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="4.0dip" android:layout_alignTop="@id/fou" android:layout_alignRight="@id/fou">
+        <com.tencent.mobileqq.widget.NumberCheckBox android:id="@id/fq9" android:clickable="false" android:layout_margin="4.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_centerInParent="true" style="@style/hy" />
+        <CheckBox android:id="@id/fol" android:background="@drawable/bw1" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_margin="4.0dip" android:button="@null" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</merge>

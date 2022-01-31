@@ -1,24 +1,19 @@
-import com.tencent.biz.webviewplugin.NewerGuidePlugin;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
-public class pgg
-  implements IphonePickerView.PickerViewAdapter
+class pgg
+  implements View.OnTouchListener
 {
-  public pgg(NewerGuidePlugin paramNewerGuidePlugin, String[] paramArrayOfString) {}
+  pgg(pgb parampgb, LinearLayout paramLinearLayout) {}
   
-  public int getColumnCount()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    return 1;
-  }
-  
-  public int getRowCount(int paramInt)
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString.length;
-  }
-  
-  public String getText(int paramInt1, int paramInt2)
-  {
-    return this.jdField_a_of_type_ArrayOfJavaLangString[paramInt2];
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    }
+    return false;
   }
 }
 

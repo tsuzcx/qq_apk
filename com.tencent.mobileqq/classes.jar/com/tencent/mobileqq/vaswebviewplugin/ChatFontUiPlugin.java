@@ -8,7 +8,7 @@ public class ChatFontUiPlugin
   private static final String TAG = "ChatFontUiPlugin";
   private boolean mIsDpcWriteUser;
   
-  protected boolean excuteEvent(String paramString, long paramLong, Map paramMap)
+  protected boolean excuteEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
     if (8589934593L == paramLong) {}
     return false;
@@ -21,7 +21,7 @@ public class ChatFontUiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ChatFontUiPlugin
  * JD-Core Version:    0.7.0.1
  */

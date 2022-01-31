@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class cmd0x5fb$UserProfile
-  extends MessageMicro
+  extends MessageMicro<UserProfile>
 {
   public static final int INT32_ID_TYPE_FIELD_NUMBER = 2;
   public static final int INT32_PIC_TYPE_FIELD_NUMBER = 4;
@@ -32,7 +32,7 @@ public final class cmd0x5fb$UserProfile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x5fb.UserProfile
  * JD-Core Version:    0.7.0.1
  */

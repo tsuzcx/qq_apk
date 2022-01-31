@@ -1,25 +1,39 @@
-import android.os.Bundle;
-import com.tencent.biz.qrcode.CodeMaskManager;
-import com.tencent.biz.qrcode.CodeMaskManager.Callback;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-class owz
-  implements Runnable
+public class owz
+  implements ViewBase.OnClickListener
 {
-  owz(owy paramowy, Bundle paramBundle) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   
-  public void run()
+  public owz(Context paramContext, ArticleInfo paramArticleInfo)
   {
-    if (this.jdField_a_of_type_Owy.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.a) {
-      return;
-    }
-    if (this.jdField_a_of_type_AndroidOsBundle == null) {
-      this.jdField_a_of_type_Owy.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$Callback.a(CodeMaskManager.a(this.jdField_a_of_type_Owy.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager));
-    }
-    for (;;)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    paramViewBase = bgmq.a("kd_topic_recommend_card_jump_url");
+    if ((paramViewBase instanceof String)) {}
+    for (paramViewBase = (String)paramViewBase;; paramViewBase = "")
     {
-      CodeMaskManager.a(this.jdField_a_of_type_Owy.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager);
+      if (QLog.isColorLevel()) {
+        QLog.d("OnJumpWrapperClickListener", 2, new Object[] { "jumpUrl = ", paramViewBase });
+      }
+      if (!TextUtils.isEmpty(paramViewBase))
+      {
+        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) {
+          qoe.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+        }
+        obz.a(this.jdField_a_of_type_AndroidContentContext, paramViewBase);
+      }
       return;
-      this.jdField_a_of_type_Owy.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$Callback.a((Bundle)this.jdField_a_of_type_AndroidOsBundle.clone());
     }
   }
 }

@@ -1,21 +1,24 @@
-import java.util.Comparator;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
 
-public final class mxs
-  implements Comparator
+public class mxs
+  implements View.OnClickListener
 {
-  public int a(mxw parammxw1, mxw parammxw2)
+  public mxs(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Dialog paramDialog) {}
+  
+  public void onClick(View paramView)
   {
-    int j = parammxw1.a - parammxw2.a;
-    int i = j;
-    if (j == 0) {
-      i = parammxw1.b - parammxw2.b;
+    PublicAccountAdvertisementActivity.h(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementActivityPublicAccountAdvertisementActivity);
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     mxs
  * JD-Core Version:    0.7.0.1
  */

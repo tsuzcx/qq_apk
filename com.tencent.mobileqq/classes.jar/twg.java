@@ -1,23 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SendMultiPictureHelper;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-
-public class twg
-  implements DialogInterface.OnClickListener
+public abstract interface twg
 {
-  public twg(SendMultiPictureHelper paramSendMultiPictureHelper) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.show();
-    this.a.b = false;
-    SendMultiPictureHelper.c(this.a);
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     twg
  * JD-Core Version:    0.7.0.1
  */

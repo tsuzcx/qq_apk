@@ -1,24 +1,25 @@
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.adapter.AvatarPendantAdapter;
-import java.util.List;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.Downloader.DownloadListener;
 
-public class wxn
-  implements Runnable
+class wxn
+  implements Downloader.DownloadListener
 {
-  public wxn(AvatarPendantActivity paramAvatarPendantActivity, List paramList) {}
+  wxn(wxm paramwxm, www paramwww, String paramString) {}
   
-  public void run()
+  public void onDownloadCanceled(String paramString) {}
+  
+  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult) {}
+  
+  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
+  
+  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    if ((this.jdField_a_of_type_JavaUtilList.size() > 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a != null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a.a(this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a.b();
-    }
+    wxm.a(this.jdField_a_of_type_Wxm, this.jdField_a_of_type_Www, wxj.a().b(this.jdField_a_of_type_JavaLangString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wxn
  * JD-Core Version:    0.7.0.1
  */

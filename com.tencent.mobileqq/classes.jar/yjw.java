@@ -1,67 +1,65 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Message;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
 
 public class yjw
-  extends MqqHandler
 {
-  public yjw(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
-  
-  public void handleMessage(Message paramMessage)
+  private static EIPCResult a()
   {
-    switch (paramMessage.what)
+    if (BaseApplicationImpl.getApplication() == null) {}
+    while ((BaseApplicationImpl.getApplication().getRuntime() == null) || ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) || (QIPCClientHelper.getInstance() == null) || (QIPCClientHelper.getInstance().getClient() == null))
     {
+      yny.b("GdtAnalysisConfigIPCUtil", "send error");
+      return EIPCResult.createResult(-102, null);
     }
-    do
+    yny.b("GdtAnalysisConfigIPCUtil", "send");
+    return QIPCClientHelper.getInstance().getClient().callServer("gdt_ipc", "analysis_update_config", null);
+  }
+  
+  public static EIPCResult a(ymt paramymt, String paramString, Bundle paramBundle, int paramInt)
+  {
+    if (BaseApplicationImpl.getApplication() == null) {}
+    while ((BaseApplicationImpl.getApplication().getRuntime() == null) || (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) || (!TextUtils.equals(paramString, "analysis_update_config")))
     {
-      do
-      {
-        do
-        {
-          return;
-          QQToast.a(this.a, 2131437381, 0).a();
-          return;
-          String str = this.a.getString(2131437382);
-          paramMessage = (String)paramMessage.obj;
-          QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 2, str + paramMessage, 0).a();
-          ImageUtil.a(this.a, paramMessage);
-          return;
-          paramMessage = DialogUtil.b(this.a.jdField_a_of_type_AndroidContentContext, 232, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131437409), this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131437410), 2131437411, 2131434603, new yjx(this), new yjy(this));
-          ShortVideoPlayActivity.a(this.a, paramMessage);
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.d("ShortVideoPlayActivity", 2, "...mobile/none => wifi...");
-          }
-        } while (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null);
-        this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setDownloadNetworkChange(1);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoPlayActivity", 2, "...wifi/none => mobile...");
-        }
-        if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-          this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setDownloadNetworkChange(2);
-        }
-        if ((this.a.b != 1) && (this.a.b != 2)) {
-          break;
-        }
-      } while (!this.a.b());
-      this.a.j();
-      this.a.r();
-      return;
-    } while (this.a.b != 0);
-    ShortVideoPlayActivity.a(this.a);
+      yny.b("GdtAnalysisConfigIPCUtil", "receive error");
+      return EIPCResult.createResult(-1, null);
+    }
+    paramymt = new Bundle();
+    paramymt.putBoolean("enabled", yjx.a());
+    yny.b("GdtAnalysisConfigIPCUtil", String.format("receive enabled:%b", new Object[] { Boolean.valueOf(yjx.a()) }));
+    return EIPCResult.createSuccessResult(paramymt);
+  }
+  
+  public static boolean a()
+  {
+    EIPCResult localEIPCResult = a();
+    boolean bool;
+    if (localEIPCResult == null) {
+      bool = false;
+    }
+    for (;;)
+    {
+      yny.b("GdtAnalysisConfigIPCUtil", String.format("send threadId:%d enabled:%b", new Object[] { Long.valueOf(Thread.currentThread().getId()), Boolean.valueOf(bool) }));
+      return bool;
+      if (!localEIPCResult.isSuccess()) {
+        bool = false;
+      } else if (localEIPCResult.data == null) {
+        bool = false;
+      } else if (!localEIPCResult.data.containsKey("enabled")) {
+        bool = false;
+      } else {
+        bool = localEIPCResult.data.getBoolean("enabled");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yjw
  * JD-Core Version:    0.7.0.1
  */

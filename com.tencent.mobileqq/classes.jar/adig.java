@@ -1,40 +1,28 @@
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr.SucDownloadInfo;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadNfn;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadPkgInstallReceiver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.LightVideoItemBuilder;
+import com.tencent.mobileqq.data.MessageForLightVideo;
 
 public class adig
-  implements Runnable
+  implements begw
 {
-  public adig(UniformDownloadPkgInstallReceiver paramUniformDownloadPkgInstallReceiver, String paramString1, String paramString2) {}
+  public adig(LightVideoItemBuilder paramLightVideoItemBuilder, MessageForLightVideo paramMessageForLightVideo, adik paramadik, begr parambegr) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (("android.intent.action.PACKAGE_ADDED".equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) || ("android.intent.action.PACKAGE_REPLACED".equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)))
+    switch (paramInt)
     {
-      Object localObject = UniformDownloadMgr.a().a(this.b, true);
-      if ((localObject != null) && (((List)localObject).size() > 0))
-      {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          UniformDownloadMgr.SucDownloadInfo localSucDownloadInfo = (UniformDownloadMgr.SucDownloadInfo)((Iterator)localObject).next();
-          if (localSucDownloadInfo != null)
-          {
-            QLog.i("UniformDownloadPkgInstallReceiver<FileAssistant>", 1, "[UniformDL] send cancel notification.pkgName:" + this.b + " notificationId:" + localSucDownloadInfo.a);
-            UniformDownloadNfn.a().c(localSucDownloadInfo.a, null);
-          }
-        }
-      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Begr.dismiss();
+      return;
+      LightVideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemLightVideoItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForLightVideo, this.jdField_a_of_type_Adik);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adig
  * JD-Core Version:    0.7.0.1
  */

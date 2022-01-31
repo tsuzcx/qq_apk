@@ -1,25 +1,30 @@
-import android.content.Context;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihInput;
-import java.lang.ref.SoftReference;
-import java.util.TimerTask;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
 public class akmm
-  extends TimerTask
+  extends aklv
 {
-  public akmm(QQCustomDialogWtihInput paramQQCustomDialogWtihInput) {}
+  public ArCloudConfigInfo a;
   
-  public void run()
+  public akmm(String paramString, int paramInt1, int paramInt2, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    Context localContext = (Context)QQCustomDialogWtihInput.a(this.a).get();
-    if (localContext != null) {
-      ((InputMethodManager)localContext.getSystemService("input_method")).toggleSoftInput(0, 2);
-    }
+    super(paramString, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
+    this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = paramArCloudConfigInfo;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("MultiFragmentAnimARResourceInfo{");
+    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", trackMode=").append(this.b);
+    localStringBuilder.append(", arResourceInfo=").append(this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akmm
  * JD-Core Version:    0.7.0.1
  */

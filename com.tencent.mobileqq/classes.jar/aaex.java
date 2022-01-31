@@ -1,15 +1,36 @@
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class aaex
-  implements Runnable
+public final class aaex
+  implements DialogInterface.OnCancelListener
 {
-  public aaex(ARVideoRecordUIControllerImpl paramARVideoRecordUIControllerImpl) {}
+  public aaex(aagn paramaagn, int paramInt, aagm paramaagm) {}
   
-  public void run() {}
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    if (this.jdField_a_of_type_Aagn.a)
+    {
+      if (this.jdField_a_of_type_Int != 2) {
+        break label59;
+      }
+      awqx.b(null, "CliOper", "", "", "Two_call", "Clk_2G_tips_btn", 0, 0, "3", "", "", "");
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Aagm != null) {
+        this.jdField_a_of_type_Aagm.a();
+      }
+      return;
+      label59:
+      if ((this.jdField_a_of_type_Int == 3) || (this.jdField_a_of_type_Int == 4)) {
+        awqx.b(null, "CliOper", "", "", "Two_call", "Clk_3G_tips_btn", 0, 0, "3", "", "", "");
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaex
  * JD-Core Version:    0.7.0.1
  */

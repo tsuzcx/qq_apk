@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SecVerifyApk$ReportDetectResultPacket
-  extends MessageMicro
+  extends MessageMicro<ReportDetectResultPacket>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_guid = PBField.initBytes(ByteStringMicro.EMPTY);

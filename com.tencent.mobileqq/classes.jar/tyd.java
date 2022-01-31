@@ -1,21 +1,25 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import android.support.annotation.NonNull;
 
-public class tyd
-  implements Runnable
+public abstract class tyd
+  implements txu
 {
-  public tyd(SplashActivity paramSplashActivity) {}
+  protected void a(Error paramError) {}
   
-  public void run()
+  protected void a(txr paramtxr) {}
+  
+  public final void a(@NonNull txs paramtxs)
   {
-    if (ImmersiveUtils.a(this.a.getWindow())) {
-      this.a.recreate();
-    }
+    a(new txr(paramtxs.a()));
+  }
+  
+  public final void b(@NonNull txs paramtxs)
+  {
+    a(paramtxs.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tyd
  * JD-Core Version:    0.7.0.1
  */

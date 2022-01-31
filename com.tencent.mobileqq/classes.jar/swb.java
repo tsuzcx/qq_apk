@@ -1,33 +1,36 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity.ColorScreenLoader;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.mobileqq.vas.VasMonitorHandler;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
 
-public class swb
-  implements OnCompositionLoadedListener
+class swb
+  extends svu
 {
-  public swb(FriendProfileCardActivity.ColorScreenLoader paramColorScreenLoader) {}
-  
-  public void onCompositionLoaded(LottieComposition paramLottieComposition)
+  public swb(ViewGroup paramViewGroup)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorScreenManager", 2, "onCompositionLoaded: composition= " + paramLottieComposition);
-    }
-    if (paramLottieComposition == null)
-    {
-      VasMonitorHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "individual_v2_colorscreen_parse_fail", "0", "", Integer.toString(this.a.jdField_a_of_type_Int), null, null, 0.0F, 0.0F);
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition = paramLottieComposition;
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b.postDelayed(this.a, 500L);
+    super(paramViewGroup, 2131495711);
+  }
+  
+  public void a(String paramString)
+  {
+    b(paramString);
+  }
+  
+  public void a(ssm paramssm)
+  {
+    super.a(paramssm);
+    urk.a("Q.qqstory.msgTab.WeiShiRecommendNodeViewHolder", "bindData %s", paramssm);
+    a(vmp.b(paramssm.g));
+    this.a.setNodeName(paramssm.c, 2130845561);
+  }
+  
+  protected void b(ssm paramssm)
+  {
+    this.a.setDisplayState(6);
+    this.a.a(paramssm);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     swb
  * JD-Core Version:    0.7.0.1
  */

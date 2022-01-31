@@ -1,39 +1,18 @@
-import com.tencent.mobileqq.apollo.ApolloPanelManager;
-import com.tencent.mobileqq.apollo.script.SpriteActionMessage;
-import com.tencent.mobileqq.apollo.script.SpriteScriptManager;
-import com.tencent.mobileqq.apollo.script.SpriteUtil;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.ad.tangram.net.AdHttp.Params;
 
-public class yqy
-  implements Runnable
+class yqy
+  extends AdHttp.Params
 {
-  public yqy(ApolloPanelManager paramApolloPanelManager) {}
+  public int a = -2147483648;
   
-  public void run()
+  public boolean isSuccess()
   {
-    Object localObject = this.a;
-    int i = this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloInfo != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ((ApolloPanelManager)localObject).a(i, bool, ApolloPanelManager.a(this.a));
-      if ((this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 0) && (!ApolloPanelManager.a(this.a)) && (this.a.a() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloInfo != null))
-      {
-        localObject = SpriteUtil.a(this.a.a()).a();
-        if (localObject != null) {
-          ((SpriteActionMessage)localObject).a(this.a.b);
-        }
-      }
-      if (((ApolloPanelManager.a(this.a)) || (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0)) && (this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloInfo != null)) {
-        ApolloPanelManager.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloInfo);
-      }
-      return;
-    }
+    return (super.isSuccess()) && (this.responseData != null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yqy
  * JD-Core Version:    0.7.0.1
  */

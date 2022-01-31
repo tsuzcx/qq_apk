@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:scrollbars="vertical" android:fadingEdge="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:scrollbarStyle="outsideInset" android:orientation="vertical" android:paddingLeft="10.0dip" android:paddingTop="15.0dip" android:paddingRight="10.0dip" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:id="@id/jfr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sb8" />
+            <ToggleButton android:id="@id/h23" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ToggleButton" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:paddingTop="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/scp" />
+            <ToggleButton android:id="@id/d0x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ToggleButton" />
+        </LinearLayout>
+        <LinearLayout android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sd_" />
+            <EditText android:id="@id/ehe" android:layout_width="100.0dip" android:layout_height="45.0dip" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sbk" />
+        </LinearLayout>
+        <LinearLayout android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ses" />
+            <EditText android:id="@id/aac" android:layout_width="100.0dip" android:layout_height="45.0dip" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="kbps" />
+        </LinearLayout>
+        <LinearLayout android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sc8" />
+            <EditText android:id="@id/clb" android:layout_width="100.0dip" android:layout_height="45.0dip" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sax" />
+        </LinearLayout>
+        <LinearLayout android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sbh" />
+            <EditText android:id="@id/dbk" android:layout_width="100.0dip" android:layout_height="45.0dip" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/scu" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:paddingTop="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="profile: " />
+            <TextView android:id="@id/g1a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="baseline" />
+        </LinearLayout>
+        <SeekBar android:id="@id/g0w" android:layout_width="fill_parent" android:layout_height="15.0dip" android:max="2" android:progress="0" />
+        <LinearLayout android:orientation="horizontal" android:paddingTop="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="level: " />
+            <TextView android:id="@id/e8i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2.0" />
+        </LinearLayout>
+        <SeekBar android:id="@id/e8h" android:layout_width="fill_parent" android:layout_height="15.0dip" android:max="8" android:progress="0" />
+        <LinearLayout android:orientation="horizontal" android:paddingTop="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/se_" />
+            <TextView android:id="@id/fy4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ultrafast" />
+        </LinearLayout>
+        <SeekBar android:id="@id/fy3" android:layout_width="fill_parent" android:layout_height="15.0dip" android:max="8" android:progress="0" />
+        <LinearLayout android:orientation="horizontal" android:paddingTop="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/se4" />
+            <TextView android:id="@id/k4_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="film" />
+        </LinearLayout>
+        <SeekBar android:id="@id/k49" android:layout_width="fill_parent" android:layout_height="15.0dip" android:max="7" android:progress="0" />
+        <LinearLayout android:orientation="horizontal" android:paddingTop="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sdu" />
+            <ToggleButton android:id="@id/fdd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ToggleButton" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:paddingTop="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/saz" />
+            <TextView android:id="@id/bx9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="film" />
+        </LinearLayout>
+        <SeekBar android:id="@id/bx8" android:layout_width="fill_parent" android:layout_height="15.0dip" android:max="2" android:progress="0" />
+    </LinearLayout>
+</ScrollView>

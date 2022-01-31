@@ -1,25 +1,72 @@
-import com.tencent.mqp.app.sec.d;
-import com.tencent.qqprotect.qsec.QSecFramework;
-import com.tencent.qqprotect.qsec.QSecLibMgr;
-import com.tencent.qqprotect.qsec.QSecLibMgr.LibEventListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class amey
-  implements QSecLibMgr.LibEventListener
+  extends alzl<amew>
 {
-  public amey(QSecFramework paramQSecFramework) {}
-  
-  public void a(int paramInt1, int paramInt2)
+  public int a()
   {
-    if ((paramInt1 == 1) && (paramInt2 == 1))
+    return 534;
+  }
+  
+  @NonNull
+  public amew a(int paramInt)
+  {
+    return new amew();
+  }
+  
+  @Nullable
+  public amew a(alzs[] paramArrayOfalzs)
+  {
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0) && (paramArrayOfalzs[0] != null))
     {
-      d.e(1, d.x(), null);
-      QSecFramework.a(this.a).b(this);
+      amew localamew = amew.a(paramArrayOfalzs[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQComicConfProcessor", 2, "onParsed  " + paramArrayOfalzs[0].a);
+      }
+      return localamew;
     }
+    return null;
+  }
+  
+  public Class<amew> a()
+  {
+    return amew.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amew paramamew)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQComicConfProcessor", 2, "onUpdate " + paramamew.toString());
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amey
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.qphone.base.util.QLog;
 public class VerifyCodeActivity2
   extends VerifyCodeActivity
 {
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     try
     {

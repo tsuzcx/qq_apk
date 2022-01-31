@@ -1,57 +1,33 @@
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.share.FilterComboSharePlugin;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
 public class anyw
-  implements WXShareHelper.WXShareListener
+  implements DialogInterface.OnKeyListener
 {
-  public anyw(FilterComboSharePlugin paramFilterComboSharePlugin, int paramInt) {}
+  public anyw(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public void a(BaseResp paramBaseResp)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    boolean bool = true;
-    if ((this.jdField_a_of_type_DovComQqImCaptureViewShareFilterComboSharePlugin.b == null) || (!this.jdField_a_of_type_DovComQqImCaptureViewShareFilterComboSharePlugin.b.equals(paramBaseResp.transaction)))
+    boolean bool = false;
+    if (paramInt == 4)
     {
-      if (!QLog.isColorLevel()) {
-        break label162;
-      }
-      QLog.i("FilterComboShare", 2, "on share null");
-      bool = false;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("FilterComboShare", 2, "on share code " + paramBaseResp.errCode + " result " + bool);
-      }
-      if (bool)
+      if (this.a.a != null)
       {
-        FilterComboSharePlugin.a(this.jdField_a_of_type_DovComQqImCaptureViewShareFilterComboSharePlugin, this.jdField_a_of_type_DovComQqImCaptureViewShareFilterComboSharePlugin.a, bool);
-        this.jdField_a_of_type_DovComQqImCaptureViewShareFilterComboSharePlugin.a(bool, this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_DovComQqImCaptureViewShareFilterComboSharePlugin.a();
+        this.a.a.dismiss();
+        this.a.a = null;
       }
-      return;
-      switch (paramBaseResp.errCode)
-      {
-      case -1: 
-      default: 
-        QRUtils.a(1, 2131435319);
-        bool = false;
-        break;
-      case 0: 
-        QRUtils.a(2, 2131435318);
-        break;
-      case -2: 
-        label162:
-        bool = false;
-      }
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+      bool = true;
     }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anyw
  * JD-Core Version:    0.7.0.1
  */

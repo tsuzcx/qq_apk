@@ -1,39 +1,21 @@
-import android.os.Bundle;
-import com.tencent.biz.webviewbase.WebAIOController;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
-public class pfq
-  extends Client.onRemoteRespObserver
+class pfq
+  implements View.OnTouchListener
 {
-  public pfq(WebAIOController paramWebAIOController) {}
+  pfq(pfl parampfl, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2) {}
   
-  public void onBindedToClient()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOBanner", 2, "-->onBindedToClient");
+    if (paramMotionEvent.getAction() == 0)
+    {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
+      this.b.setDuplicateParentStateEnabled(true);
     }
-  }
-  
-  public void onDisconnectWithService()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOBanner", 2, "-->onDisconnectWithService");
-    }
-  }
-  
-  public void onPushMsg(Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOBanner", 2, "-->onPushMsg");
-    }
-  }
-  
-  public void onResponse(Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOBanner", 2, "-->onResponse");
-    }
+    return false;
   }
 }
 

@@ -1,28 +1,19 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-
-public class wdv
-  implements Runnable
+final class wdv
+  implements begy
 {
-  public wdv(PublicAccountChatPie paramPublicAccountChatPie) {}
+  wdv(begr parambegr, wea paramwea) {}
   
-  public void run()
+  public void onDismiss()
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
-    {
-      localObject = (WebProcessManager)((QQAppInterface)localObject).getManager(12);
-      if ((localObject != null) && (((WebProcessManager)localObject).e())) {
-        ((WebProcessManager)localObject).a(-1, new wdw(this));
-      }
+    this.jdField_a_of_type_Begr.dismiss();
+    if (this.jdField_a_of_type_Wea != null) {
+      this.jdField_a_of_type_Wea.a(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wdv
  * JD-Core Version:    0.7.0.1
  */

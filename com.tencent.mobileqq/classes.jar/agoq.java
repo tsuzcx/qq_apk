@@ -1,34 +1,21 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView.PopUpListener;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class agoq
-  implements Animator.AnimatorListener
 {
-  public agoq(ScanIconAnimateView paramScanIconAnimateView) {}
+  public int a;
+  public MessageRecord a;
+  public String a;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public agoq(int paramInt, String paramString, MessageRecord paramMessageRecord)
   {
-    if (this.a.a != null) {
-      this.a.a.b();
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agoq
  * JD-Core Version:    0.7.0.1
  */

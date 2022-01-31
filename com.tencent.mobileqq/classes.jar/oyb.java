@@ -1,52 +1,52 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.util.TroopReportor;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtil.ProteusLog;
+import com.tencent.qphone.base.util.QLog;
 
 public class oyb
-  implements WXShareHelper.WXShareListener
+  implements LogUtil.ProteusLog
 {
-  public oyb(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  public void a(BaseResp paramBaseResp)
+  public void d(String paramString1, int paramInt, String paramString2)
   {
-    if ((this.a.g == null) || (!this.a.g.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    String str1;
-    label53:
-    String str3;
-    int i;
-    if (this.a.jdField_c_of_type_Int == 2)
-    {
-      if (this.a.h != 2) {
-        break label151;
-      }
-      str1 = "qr_wechat";
-      str3 = this.a.jdField_c_of_type_JavaLangString;
-      i = this.a.a;
-      if (paramBaseResp.errCode != 0) {
-        break label157;
-      }
-    }
-    label151:
-    label157:
-    for (String str2 = "0";; str2 = "1")
-    {
-      TroopReportor.a("Grp_share", "grpData_admin", str1, 0, 0, new String[] { str3, String.valueOf(i), str2 });
-      switch (paramBaseResp.errCode)
-      {
-      case -2: 
-      case -1: 
-      default: 
-        QRUtils.a(1, 2131435319);
-        return;
-        str1 = "qr_circle";
-        break label53;
-      }
-    }
-    QRUtils.a(2, 2131435318);
+    QLog.d(paramString1, paramInt, paramString2);
+  }
+  
+  public void d(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
+  {
+    QLog.d(paramString1, paramInt, paramString2, paramThrowable);
+  }
+  
+  public void e(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.e(paramString1, paramInt, paramString2);
+  }
+  
+  public void e(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
+  {
+    QLog.e(paramString1, paramInt, paramString2, paramThrowable);
+  }
+  
+  public void i(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.i(paramString1, paramInt, paramString2);
+  }
+  
+  public void i(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
+  {
+    QLog.i(paramString1, paramInt, paramString2, paramThrowable);
+  }
+  
+  public boolean isColorLevel()
+  {
+    return QLog.isColorLevel();
+  }
+  
+  public void w(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.w(paramString1, paramInt, paramString2);
+  }
+  
+  public void w(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
+  {
+    QLog.w(paramString1, paramInt, paramString2, paramThrowable);
   }
 }
 

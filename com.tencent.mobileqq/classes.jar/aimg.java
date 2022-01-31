@@ -1,19 +1,21 @@
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingFragment;
+import com.tencent.mobileqq.apollo.lightGame.CmGameLoadingView;
 
 public class aimg
-  implements Runnable
+  extends aimm
 {
-  public aimg(StructMsgForAudioShare paramStructMsgForAudioShare, URLImageView paramURLImageView) {}
+  public aimg(CmGameLoadingFragment paramCmGameLoadingFragment) {}
   
-  public void run()
+  public void a(boolean paramBoolean, long paramLong, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130842780);
+    if (CmGameLoadingFragment.a(this.a) != null) {
+      CmGameLoadingFragment.a(this.a).a(paramBoolean, paramLong);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aimg
  * JD-Core Version:    0.7.0.1
  */

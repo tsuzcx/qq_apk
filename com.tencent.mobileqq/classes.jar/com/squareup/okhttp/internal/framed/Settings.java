@@ -40,7 +40,7 @@ public final class Settings
   {
     int i = 0;
     if (isPersisted(paramInt)) {
-      i = 0x0 | 0x2;
+      i = 2;
     }
     int j = i;
     if (persistValue(paramInt)) {
@@ -56,7 +56,7 @@ public final class Settings
   
   int getClientCertificateVectorSize(int paramInt)
   {
-    if ((this.set & 0x100) != 0) {
+    if ((0x100 & this.set) != 0) {
       paramInt = this.values[8];
     }
     return paramInt;
@@ -64,7 +64,7 @@ public final class Settings
   
   int getCurrentCwnd(int paramInt)
   {
-    if ((this.set & 0x20) != 0) {
+    if ((0x20 & this.set) != 0) {
       paramInt = this.values[5];
     }
     return paramInt;
@@ -72,7 +72,7 @@ public final class Settings
   
   int getDownloadBandwidth(int paramInt)
   {
-    if ((this.set & 0x4) != 0) {
+    if ((0x4 & this.set) != 0) {
       paramInt = this.values[2];
     }
     return paramInt;
@@ -80,7 +80,7 @@ public final class Settings
   
   int getDownloadRetransRate(int paramInt)
   {
-    if ((this.set & 0x40) != 0) {
+    if ((0x40 & this.set) != 0) {
       paramInt = this.values[6];
     }
     return paramInt;
@@ -89,7 +89,7 @@ public final class Settings
   boolean getEnablePush(boolean paramBoolean)
   {
     int i;
-    if ((this.set & 0x4) != 0) {
+    if ((0x4 & this.set) != 0) {
       i = this.values[2];
     }
     while (i == 1)
@@ -106,7 +106,7 @@ public final class Settings
   
   int getHeaderTableSize()
   {
-    if ((this.set & 0x2) != 0) {
+    if ((0x2 & this.set) != 0) {
       return this.values[1];
     }
     return -1;
@@ -114,7 +114,7 @@ public final class Settings
   
   int getInitialWindowSize(int paramInt)
   {
-    if ((this.set & 0x80) != 0) {
+    if ((0x80 & this.set) != 0) {
       paramInt = this.values[7];
     }
     return paramInt;
@@ -122,7 +122,7 @@ public final class Settings
   
   int getMaxConcurrentStreams(int paramInt)
   {
-    if ((this.set & 0x10) != 0) {
+    if ((0x10 & this.set) != 0) {
       paramInt = this.values[4];
     }
     return paramInt;
@@ -130,7 +130,7 @@ public final class Settings
   
   int getMaxFrameSize(int paramInt)
   {
-    if ((this.set & 0x20) != 0) {
+    if ((0x20 & this.set) != 0) {
       paramInt = this.values[5];
     }
     return paramInt;
@@ -138,7 +138,7 @@ public final class Settings
   
   int getMaxHeaderListSize(int paramInt)
   {
-    if ((this.set & 0x40) != 0) {
+    if ((0x40 & this.set) != 0) {
       paramInt = this.values[6];
     }
     return paramInt;
@@ -146,7 +146,7 @@ public final class Settings
   
   int getRoundTripTime(int paramInt)
   {
-    if ((this.set & 0x8) != 0) {
+    if ((0x8 & this.set) != 0) {
       paramInt = this.values[3];
     }
     return paramInt;
@@ -154,7 +154,7 @@ public final class Settings
   
   int getUploadBandwidth(int paramInt)
   {
-    if ((this.set & 0x2) != 0) {
+    if ((0x2 & this.set) != 0) {
       paramInt = this.values[1];
     }
     return paramInt;
@@ -163,7 +163,7 @@ public final class Settings
   boolean isFlowControlDisabled()
   {
     boolean bool = false;
-    if ((this.set & 0x400) != 0) {}
+    if ((0x400 & this.set) != 0) {}
     for (int i = this.values[10];; i = 0)
     {
       if ((i & 0x1) != 0) {
@@ -175,12 +175,12 @@ public final class Settings
   
   boolean isPersisted(int paramInt)
   {
-    return (this.persisted & 1 << paramInt) != 0;
+    return (1 << paramInt & this.persisted) != 0;
   }
   
   boolean isSet(int paramInt)
   {
-    return (this.set & 1 << paramInt) != 0;
+    return (1 << paramInt & this.set) != 0;
   }
   
   void merge(Settings paramSettings)
@@ -200,7 +200,7 @@ public final class Settings
   
   boolean persistValue(int paramInt)
   {
-    return (this.persistValue & 1 << paramInt) != 0;
+    return (1 << paramInt & this.persistValue) != 0;
   }
   
   Settings set(int paramInt1, int paramInt2, int paramInt3)
@@ -218,7 +218,7 @@ public final class Settings
       }
     }
     label86:
-    for (this.persisted |= i;; this.persisted &= (i ^ 0xFFFFFFFF))
+    for (this.persisted = (i | this.persisted);; this.persisted = ((i ^ 0xFFFFFFFF) & this.persisted))
     {
       this.values[paramInt1] = paramInt3;
       return this;

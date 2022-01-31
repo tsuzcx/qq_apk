@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:descendantFocusability="blocksDescendants" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.AsyncImageView android:id="@id/enh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" android:adjustViewBounds="true" android:layout_centerInParent="true" />
+    <com.qzone.widget.AsyncImageView android:id="@id/fou" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" android:adjustViewBounds="true" android:layout_centerInParent="true" />
+    <cooperation.qzone.widget.LocalPhotoLinearGradientView android:id="@id/ad3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <cooperation.qzone.widget.LocalPhotoLinearGradientView android:id="@id/jto" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
+    <TextView android:layout_gravity="bottom|center" android:id="@id/kuy" android:layout_marginLeft="7.0dip" android:layout_marginBottom="6.0dip" android:text="02:22" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" style="@style/ks" />
+    <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:id="@id/cos" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:layout_marginRight="9.0dip" android:layout_marginBottom="6.0dip" android:maxLines="2" android:layout_above="@id/kuy" />
+    <LinearLayout android:id="@id/ad0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="9.0dip" android:layout_marginBottom="6.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true">
+        <ImageView android:layout_gravity="bottom|center" android:id="@id/ql" style="@style/i" />
+        <TextView android:layout_gravity="bottom|center" android:id="@id/qm" android:visibility="gone" android:layout_marginLeft="6.0dip" android:text="22" style="@style/kt" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/he6" android:layout_marginLeft="6.0dip" style="@style/k" />
+        <TextView android:layout_gravity="bottom|center" android:id="@id/he7" android:visibility="gone" android:layout_marginLeft="6.0dip" android:text="22" style="@style/kt" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/cnu" android:paddingLeft="10.0dip" android:paddingTop="10.0dip" android:paddingRight="10.0dip" android:focusable="false" android:visibility="gone" android:clickable="false" android:layout_width="fill_parent" android:layout_height="65.0dip" android:layout_alignParentTop="true">
+        <com.qzone.widget.AvatarImageView android:id="@id/cns" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="35.0dip" android:layout_height="35.0dip" android:scaleType="fitXY" android:adjustViewBounds="true" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip">
+            <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:id="@id/co_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:maxLines="1" />
+            <TextView android:textSize="10.0dip" android:textColor="#ffffffff" android:id="@id/cot" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+</merge>

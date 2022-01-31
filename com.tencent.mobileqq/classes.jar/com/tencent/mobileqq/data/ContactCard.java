@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class ContactCard
-  extends Entity
+  extends atmo
 {
   public byte bAge;
   public byte bSex = -1;
   public boolean bindQQ;
   public String mobileCode;
-  @unique
+  @atoc
   public String mobileNo;
   public String nationCode;
   public String nickName;

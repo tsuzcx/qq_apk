@@ -1,21 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.KandianAppInPush;
+import android.app.Activity;
+import android.view.View;
 
 class mpj
-  implements Runnable
+  implements begw
 {
-  mpj(mpi parammpi) {}
+  mpj(mpf parammpf, Activity paramActivity, String paramString, begr parambegr) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    Kandian210Msg0xeeInfo localKandian210Msg0xeeInfo = KandianAppInPush.a(this.a.a);
-    KandianAppInPush.b(this.a.a, null);
-    this.a.a.a(localKandian210Msg0xeeInfo);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Begr.dismiss();
+      return;
+      mpf.b(this.jdField_a_of_type_Mpf, this.jdField_a_of_type_AndroidAppActivity);
+      continue;
+      mpf.a(this.jdField_a_of_type_Mpf, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     mpj
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class cmd0xca02$Result
-  extends MessageMicro
+  extends MessageMicro<Result>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField bool_can_remove = PBField.initBool(false);
@@ -35,7 +35,7 @@ public final class cmd0xca02$Result
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.inner.cmd0xca02.cmd0xca02.Result
  * JD-Core Version:    0.7.0.1
  */

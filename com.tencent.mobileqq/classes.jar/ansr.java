@@ -1,39 +1,17 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.PeakService;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
 
-public final class ansr
-  implements Runnable
+public class ansr
+  implements DialogInterface.OnClickListener
 {
-  public ansr(Context paramContext) {}
+  public ansr(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
   
-  public void run()
-  {
-    Intent localIntent = new Intent(this.a, PeakService.class);
-    localIntent.putExtra("ServiceAction", 2);
-    try
-    {
-      this.a.startService(localIntent);
-      if (QLog.isColorLevel()) {
-        QLog.d("QIMShortVideoUtils", 2, "preLoadPeakProcess");
-      }
-      return;
-    }
-    catch (SecurityException localSecurityException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QIMShortVideoUtils", 2, "onShow_otherThings, e = " + localSecurityException.getStackTrace());
-        }
-      }
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ansr
  * JD-Core Version:    0.7.0.1
  */

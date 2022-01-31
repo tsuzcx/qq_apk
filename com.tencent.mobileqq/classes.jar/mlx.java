@@ -1,21 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
+import com.tencent.biz.PoiMapActivity;
 
 public class mlx
-  implements Runnable
 {
-  public mlx(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
   
-  public void run()
-  {
-    KandianOx210MsgInfo localKandianOx210MsgInfo = ((KandianMergeManager)ReadInJoyUtils.a().getManager(161)).f();
-    ThreadManager.getUIHandler().post(new mly(this, localKandianOx210MsgInfo));
-  }
+  public mlx(PoiMapActivity paramPoiMapActivity) {}
 }
 
 

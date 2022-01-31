@@ -18,45 +18,46 @@ class OptionalMethod<T>
   
   private Method getMethod(Class<?> paramClass)
   {
-    Class<?> localClass = null;
     if (this.methodName != null)
     {
       paramClass = getPublicMethod(paramClass, this.methodName, this.methodParams);
-      localClass = paramClass;
-      if (paramClass != null)
-      {
-        localClass = paramClass;
-        if (this.returnType != null)
-        {
-          localClass = paramClass;
-          if (!this.returnType.isAssignableFrom(paramClass.getReturnType())) {
-            localClass = null;
-          }
-        }
-      }
+      if ((paramClass == null) || (this.returnType == null) || (this.returnType.isAssignableFrom(paramClass.getReturnType()))) {}
     }
-    return localClass;
+    else
+    {
+      return null;
+    }
+    return paramClass;
   }
   
   private static Method getPublicMethod(Class<?> paramClass, String paramString, Class[] paramArrayOfClass)
   {
-    Class<?> localClass = null;
     try
     {
       paramClass = paramClass.getMethod(paramString, paramArrayOfClass);
-      localClass = paramClass;
-      int i = paramClass.getModifiers();
-      if ((i & 0x1) == 0) {
-        paramClass = null;
-      }
+      int i;
       return paramClass;
     }
-    catch (NoSuchMethodException paramClass) {}
-    return localClass;
+    catch (NoSuchMethodException paramClass)
+    {
+      try
+      {
+        i = paramClass.getModifiers();
+        if ((i & 0x1) != 0) {
+          return paramClass;
+        }
+        return null;
+      }
+      catch (NoSuchMethodException paramString)
+      {
+        return paramClass;
+      }
+      paramClass = paramClass;
+      return null;
+    }
   }
   
   public Object invoke(T paramT, Object... paramVarArgs)
-    throws InvocationTargetException
   {
     Method localMethod = getMethod(paramT.getClass());
     if (localMethod == null) {
@@ -76,7 +77,6 @@ class OptionalMethod<T>
   }
   
   public Object invokeOptional(T paramT, Object... paramVarArgs)
-    throws InvocationTargetException
   {
     Method localMethod = getMethod(paramT.getClass());
     if (localMethod == null) {

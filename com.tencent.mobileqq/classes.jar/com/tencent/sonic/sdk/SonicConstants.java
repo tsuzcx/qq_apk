@@ -20,7 +20,7 @@ public class SonicConstants
   public static final String SONIC_REMAIN_PARAMETER_NAMES = "sonic_remain_params";
   public static final String SONIC_REMAIN_PARAMETER_SPLIT_CHAR = ";";
   public static final String SONIC_SDK_LOG_PREFIX = "SonicSdk_";
-  public static final String SONIC_VERSION_NUM = "2.0.0";
+  public static final String SONIC_VERSION_NUM = "3.0.2";
 }
 
 

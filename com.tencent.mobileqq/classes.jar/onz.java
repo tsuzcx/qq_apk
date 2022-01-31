@@ -1,14 +1,9 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.pubaccount.readinjoy.magic.models.AndroidAPs;
+import java.util.Set;
 
-public class onz
-  implements Runnable
+public abstract interface onz
 {
-  public onz(DoodleLayout paramDoodleLayout) {}
-  
-  public void run()
-  {
-    DoodleLayout.a(this.a);
-  }
+  public abstract void a(Set<AndroidAPs> paramSet);
 }
 
 

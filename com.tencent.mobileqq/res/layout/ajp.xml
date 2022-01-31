@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <View android:layout_width="fill_parent" android:layout_height="@dimen/ln" />
+    <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/au_" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="jsv" formItem:leftText="@string/a06" formItem:showArrow="true" />
+    <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/ir6" android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:contentDescription="@string/dsy" formItem:bgType="evy" formItem:switchChecked="false" formItem:switchText="@string/dsy" />
+    <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/b6a" android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:contentDescription="@string/dsq" formItem:bgType="evy" formItem:switchChecked="false" formItem:switchText="@string/dsq" />
+    <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/it0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:contentDescription="@string/dt2" formItem:bgType="abp" formItem:switchChecked="false" formItem:switchText="@string/dt2" />
+    <View android:layout_width="fill_parent" android:layout_height="@dimen/ln" />
+    <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/j1_" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:leftText="@string/evl" formItem:showArrow="true" />
+    <Button android:gravity="center" android:id="@id/bfm" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="15.0dip" android:text="@string/g3n" style="@style/bb" />
+    <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <TextView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/jwh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="20.0dip" android:text="@string/c0" style="@style/l_" />
+</LinearLayout>

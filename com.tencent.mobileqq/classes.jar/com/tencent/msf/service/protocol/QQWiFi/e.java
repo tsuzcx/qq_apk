@@ -9,8 +9,8 @@ public final class e
   extends JceStruct
 {
   static LBSInfo c;
-  public LBSInfo a;
-  public long b;
+  public LBSInfo a = null;
+  public long b = 0L;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {

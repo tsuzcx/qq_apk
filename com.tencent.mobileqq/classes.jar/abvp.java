@@ -1,62 +1,33 @@
-import android.annotation.TargetApi;
 import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 
-@TargetApi(11)
-public final class abvp
+public class abvp
+  implements View.OnClickListener
 {
-  public static float a(View paramView)
-  {
-    return paramView.getScaleX();
-  }
+  public abvp(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public static void a(View paramView, float paramFloat)
+  public void onClick(View paramView)
   {
-    paramView.setPivotX(paramFloat);
-  }
-  
-  public static float b(View paramView)
-  {
-    return paramView.getTranslationY();
-  }
-  
-  public static void b(View paramView, float paramFloat)
-  {
-    paramView.setPivotY(paramFloat);
-  }
-  
-  public static void c(View paramView, float paramFloat)
-  {
-    paramView.setAlpha(paramFloat);
-  }
-  
-  public static void d(View paramView, float paramFloat)
-  {
-    paramView.setScaleX(paramFloat);
-  }
-  
-  public static void e(View paramView, float paramFloat)
-  {
-    paramView.setScaleY(paramFloat);
-  }
-  
-  public static void f(View paramView, float paramFloat)
-  {
-    paramView.setTranslationX(paramFloat);
-  }
-  
-  public static void g(View paramView, float paramFloat)
-  {
-    paramView.setTranslationY(paramFloat);
-  }
-  
-  public static void h(View paramView, float paramFloat)
-  {
-    paramView.setX(paramFloat);
+    if (this.a.isFinishing()) {
+      return;
+    }
+    this.a.c = false;
+    if (this.a.a != null)
+    {
+      this.a.a.a(4);
+      this.a.d();
+      this.a.c();
+    }
+    if (ariz.a().c()) {
+      ariz.a().f(this.a.app);
+    }
+    TroopAssistantActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abvp
  * JD-Core Version:    0.7.0.1
  */

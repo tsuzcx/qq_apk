@@ -1,23 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.businessCard.data.BusinessCard;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
 
-public final class abvh
-  implements Parcelable.Creator
+public class abvh
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public BusinessCard a(Parcel paramParcel)
-  {
-    return new BusinessCard(paramParcel);
-  }
+  public abvh(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  public BusinessCard[] a(int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return new BusinessCard[paramInt];
+    switch (paramCompoundButton.getId())
+    {
+    default: 
+      return;
+    }
+    ariz.a().a(this.a.app, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abvh
  * JD-Core Version:    0.7.0.1
  */

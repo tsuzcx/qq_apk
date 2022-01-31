@@ -7,7 +7,7 @@ import java.util.concurrent.ThreadPoolExecutor.DiscardPolicy;
 public final class GifRenderingExecutor
   extends ScheduledThreadPoolExecutor
 {
-  private static volatile GifRenderingExecutor a = null;
+  private static volatile GifRenderingExecutor instance = null;
   
   private GifRenderingExecutor()
   {
@@ -17,13 +17,13 @@ public final class GifRenderingExecutor
   
   public static GifRenderingExecutor getInstance()
   {
-    if (a == null) {}
+    if (instance == null) {}
     try
     {
-      if (a == null) {
-        a = new GifRenderingExecutor();
+      if (instance == null) {
+        instance = new GifRenderingExecutor();
       }
-      return a;
+      return instance;
     }
     finally {}
   }

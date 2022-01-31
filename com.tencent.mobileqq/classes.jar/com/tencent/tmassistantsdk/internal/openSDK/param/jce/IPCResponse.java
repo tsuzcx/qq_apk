@@ -7,8 +7,8 @@ import com.qq.taf.jce.JceStruct;
 public final class IPCResponse
   extends JceStruct
 {
-  static IPCHead a;
-  static byte[] b;
+  static byte[] cache_body;
+  static IPCHead cache_head;
   public byte[] body = null;
   public IPCHead head = null;
   
@@ -22,16 +22,16 @@ public final class IPCResponse
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
-    if (a == null) {
-      a = new IPCHead();
+    if (cache_head == null) {
+      cache_head = new IPCHead();
     }
-    this.head = ((IPCHead)paramJceInputStream.read(a, 0, true));
-    if (b == null)
+    this.head = ((IPCHead)paramJceInputStream.read(cache_head, 0, true));
+    if (cache_body == null)
     {
-      b = (byte[])new byte[1];
-      ((byte[])b)[0] = 0;
+      cache_body = (byte[])new byte[1];
+      ((byte[])cache_body)[0] = 0;
     }
-    this.body = ((byte[])paramJceInputStream.read(b, 1, true));
+    this.body = ((byte[])paramJceInputStream.read(cache_body, 1, true));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -42,7 +42,7 @@ public final class IPCResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.param.jce.IPCResponse
  * JD-Core Version:    0.7.0.1
  */

@@ -21,33 +21,7 @@ public final class ConnectionPool
 {
   private static final long DEFAULT_KEEP_ALIVE_DURATION_MS = 300000L;
   private static final ConnectionPool systemDefault;
-  private Runnable cleanupRunnable = new Runnable()
-  {
-    public void run()
-    {
-      long l1;
-      do
-      {
-        l1 = ConnectionPool.this.cleanup(System.nanoTime());
-        if (l1 == -1L) {
-          return;
-        }
-      } while (l1 <= 0L);
-      long l2 = l1 / 1000000L;
-      try
-      {
-        label57:
-        synchronized (ConnectionPool.this)
-        {
-          ConnectionPool.this.wait(l2, (int)(l1 - l2 * 1000000L));
-        }
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        break label57;
-      }
-    }
-  };
+  private Runnable cleanupRunnable = new ConnectionPool.1(this);
   private final Deque<RealConnection> connections = new ArrayDeque();
   private final Executor executor = new ThreadPoolExecutor(0, 1, 60L, TimeUnit.SECONDS, new LinkedBlockingQueue(), Util.threadFactory("OkHttp ConnectionPool", true));
   private final long keepAliveDurationNs;
@@ -136,52 +110,55 @@ public final class ConnectionPool
   
   long cleanup(long paramLong)
   {
-    int j = 0;
-    int i = 0;
     Object localObject1 = null;
     long l1 = -9223372036854775808L;
-    try
+    for (;;)
     {
-      Iterator localIterator = this.connections.iterator();
-      while (localIterator.hasNext())
+      int j;
+      int i;
+      try
       {
-        RealConnection localRealConnection = (RealConnection)localIterator.next();
-        if (pruneAndGetAllocationCount(localRealConnection, paramLong) > 0)
+        Iterator localIterator = this.connections.iterator();
+        j = 0;
+        i = 0;
+        if (localIterator.hasNext())
         {
-          j += 1;
-        }
-        else
-        {
-          int k = i + 1;
-          long l2 = paramLong - localRealConnection.idleAtNanos;
-          i = k;
-          if (l2 > l1)
+          RealConnection localRealConnection = (RealConnection)localIterator.next();
+          if (pruneAndGetAllocationCount(localRealConnection, paramLong) > 0)
           {
-            l1 = l2;
-            localObject1 = localRealConnection;
-            i = k;
+            i += 1;
+            continue;
           }
+          long l2 = paramLong - localRealConnection.idleAtNanos;
+          if (l2 <= l1) {
+            break label179;
+          }
+          localObject1 = localRealConnection;
+          l1 = l2;
+          break label179;
+        }
+        if ((l1 >= this.keepAliveDurationNs) || (j > this.maxIdleConnections))
+        {
+          this.connections.remove(localObject1);
+          Util.closeQuietly(localObject1.getSocket());
+          return 0L;
+        }
+        if (j > 0)
+        {
+          paramLong = this.keepAliveDurationNs;
+          return paramLong - l1;
         }
       }
-      if ((l1 >= this.keepAliveDurationNs) || (i > this.maxIdleConnections))
-      {
-        this.connections.remove(localObject1);
-        Util.closeQuietly(localObject1.getSocket());
-        return 0L;
-      }
+      finally {}
       if (i > 0)
       {
         paramLong = this.keepAliveDurationNs;
-        return paramLong - l1;
+        return paramLong;
       }
+      return -1L;
+      label179:
+      j += 1;
     }
-    finally {}
-    if (j > 0)
-    {
-      paramLong = this.keepAliveDurationNs;
-      return paramLong;
-    }
-    return -1L;
   }
   
   boolean connectionBecameIdle(RealConnection paramRealConnection)
@@ -268,37 +245,49 @@ public final class ConnectionPool
   public int getIdleConnectionCount()
   {
     int i = 0;
-    try
+    for (;;)
     {
-      Iterator localIterator = this.connections.iterator();
-      while (localIterator.hasNext())
+      try
       {
-        boolean bool = ((RealConnection)localIterator.next()).allocations.isEmpty();
-        if (bool) {
-          i += 1;
+        Iterator localIterator = this.connections.iterator();
+        if (localIterator.hasNext())
+        {
+          boolean bool = ((RealConnection)localIterator.next()).allocations.isEmpty();
+          if (bool) {
+            i += 1;
+          }
+        }
+        else
+        {
+          return i;
         }
       }
-      return i;
+      finally {}
     }
-    finally {}
   }
   
   public int getMultiplexedConnectionCount()
   {
     int i = 0;
-    try
+    for (;;)
     {
-      Iterator localIterator = this.connections.iterator();
-      while (localIterator.hasNext())
+      try
       {
-        boolean bool = ((RealConnection)localIterator.next()).isMultiplexed();
-        if (bool) {
-          i += 1;
+        Iterator localIterator = this.connections.iterator();
+        if (localIterator.hasNext())
+        {
+          boolean bool = ((RealConnection)localIterator.next()).isMultiplexed();
+          if (bool) {
+            i += 1;
+          }
+        }
+        else
+        {
+          return i;
         }
       }
-      return i;
+      finally {}
     }
-    finally {}
   }
   
   @Deprecated

@@ -1,21 +1,10 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-
-class tqk
-  implements Runnable
+public abstract interface tqk
 {
-  tqk(tqi paramtqi) {}
-  
-  public void run()
-  {
-    if (QQSettingMe.a(this.a.a) != null) {
-      QQSettingMe.a(this.a.a).a(this.a.a.a);
-    }
-  }
+  public abstract boolean a(tqg paramtqg, int paramInt, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tqk
  * JD-Core Version:    0.7.0.1
  */

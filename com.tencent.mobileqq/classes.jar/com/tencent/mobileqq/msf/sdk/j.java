@@ -16,7 +16,6 @@ public class j
   boolean d = true;
   
   public j(File paramFile, boolean paramBoolean)
-    throws IOException
   {
     if (paramBoolean) {}
     label169:
@@ -103,15 +102,15 @@ public class j
     //   1: astore 6
     //   3: iconst_1
     //   4: istore 5
-    //   6: new 40	java/io/FileInputStream
+    //   6: new 38	java/io/FileInputStream
     //   9: dup
     //   10: aload_0
-    //   11: invokespecial 79	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   11: invokespecial 78	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   14: astore_0
-    //   15: new 52	java/io/FileOutputStream
+    //   15: new 50	java/io/FileOutputStream
     //   18: dup
     //   19: aload_1
-    //   20: invokespecial 80	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   20: invokespecial 79	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   23: astore_1
     //   24: aload_1
     //   25: astore 6
@@ -135,7 +134,7 @@ public class j
     //   57: aload 8
     //   59: iconst_0
     //   60: iconst_5
-    //   61: invokevirtual 83	java/io/FileInputStream:read	([BII)I
+    //   61: invokevirtual 82	java/io/FileInputStream:read	([BII)I
     //   64: iconst_5
     //   65: if_icmpne +226 -> 291
     //   68: aload 8
@@ -155,13 +154,13 @@ public class j
     //   89: aload 9
     //   91: iconst_0
     //   92: iload 4
-    //   94: invokevirtual 86	java/io/FileOutputStream:write	([BII)V
+    //   94: invokevirtual 85	java/io/FileOutputStream:write	([BII)V
     //   97: aload_1
     //   98: astore 6
     //   100: aload_0
     //   101: astore 7
     //   103: aload_0
-    //   104: invokevirtual 90	java/io/FileInputStream:available	()I
+    //   104: invokevirtual 89	java/io/FileInputStream:available	()I
     //   107: ifle +159 -> 266
     //   110: aload_1
     //   111: astore 6
@@ -169,7 +168,7 @@ public class j
     //   114: astore 7
     //   116: aload_0
     //   117: aload 8
-    //   119: invokevirtual 47	java/io/FileInputStream:read	([B)I
+    //   119: invokevirtual 45	java/io/FileInputStream:read	([B)I
     //   122: istore 4
     //   124: iconst_0
     //   125: istore_3
@@ -202,11 +201,11 @@ public class j
     //   166: aload_1
     //   167: ifnull +7 -> 174
     //   170: aload_1
-    //   171: invokevirtual 50	java/io/FileInputStream:close	()V
+    //   171: invokevirtual 48	java/io/FileInputStream:close	()V
     //   174: aload_0
     //   175: ifnull +7 -> 182
     //   178: aload_0
-    //   179: invokevirtual 91	java/io/FileOutputStream:close	()V
+    //   179: invokevirtual 90	java/io/FileOutputStream:close	()V
     //   182: iconst_0
     //   183: istore 5
     //   185: iload 5
@@ -221,19 +220,19 @@ public class j
     //   197: aload_0
     //   198: astore 7
     //   200: aload 8
-    //   202: invokevirtual 92	java/io/IOException:printStackTrace	()V
+    //   202: invokevirtual 91	java/io/IOException:printStackTrace	()V
     //   205: aload_0
     //   206: ifnull +7 -> 213
     //   209: aload_0
-    //   210: invokevirtual 50	java/io/FileInputStream:close	()V
+    //   210: invokevirtual 48	java/io/FileInputStream:close	()V
     //   213: aload_1
     //   214: ifnull -32 -> 182
     //   217: aload_1
-    //   218: invokevirtual 91	java/io/FileOutputStream:close	()V
+    //   218: invokevirtual 90	java/io/FileOutputStream:close	()V
     //   221: goto -39 -> 182
     //   224: astore_0
     //   225: aload_0
-    //   226: invokevirtual 92	java/io/IOException:printStackTrace	()V
+    //   226: invokevirtual 91	java/io/IOException:printStackTrace	()V
     //   229: goto -47 -> 182
     //   232: astore_1
     //   233: aconst_null
@@ -243,40 +242,40 @@ public class j
     //   238: aload_0
     //   239: ifnull +7 -> 246
     //   242: aload_0
-    //   243: invokevirtual 50	java/io/FileInputStream:close	()V
+    //   243: invokevirtual 48	java/io/FileInputStream:close	()V
     //   246: aload 6
     //   248: ifnull +8 -> 256
     //   251: aload 6
-    //   253: invokevirtual 91	java/io/FileOutputStream:close	()V
+    //   253: invokevirtual 90	java/io/FileOutputStream:close	()V
     //   256: aload_1
     //   257: athrow
     //   258: astore_0
     //   259: aload_0
-    //   260: invokevirtual 92	java/io/IOException:printStackTrace	()V
+    //   260: invokevirtual 91	java/io/IOException:printStackTrace	()V
     //   263: goto -7 -> 256
     //   266: aload_0
     //   267: ifnull +7 -> 274
     //   270: aload_0
-    //   271: invokevirtual 50	java/io/FileInputStream:close	()V
+    //   271: invokevirtual 48	java/io/FileInputStream:close	()V
     //   274: aload_1
     //   275: ifnull -90 -> 185
     //   278: aload_1
-    //   279: invokevirtual 91	java/io/FileOutputStream:close	()V
+    //   279: invokevirtual 90	java/io/FileOutputStream:close	()V
     //   282: iconst_1
     //   283: ireturn
     //   284: astore_0
     //   285: aload_0
-    //   286: invokevirtual 92	java/io/IOException:printStackTrace	()V
+    //   286: invokevirtual 91	java/io/IOException:printStackTrace	()V
     //   289: iconst_1
     //   290: ireturn
     //   291: aload_0
     //   292: ifnull +7 -> 299
     //   295: aload_0
-    //   296: invokevirtual 50	java/io/FileInputStream:close	()V
+    //   296: invokevirtual 48	java/io/FileInputStream:close	()V
     //   299: aload_1
     //   300: ifnull -118 -> 182
     //   303: aload_1
-    //   304: invokevirtual 91	java/io/FileOutputStream:close	()V
+    //   304: invokevirtual 90	java/io/FileOutputStream:close	()V
     //   307: goto -125 -> 182
     //   310: astore_0
     //   311: goto -86 -> 225
@@ -435,7 +434,6 @@ public class j
   }
   
   public void a()
-    throws IOException
   {
     if (this.a != null) {
       this.a.flush();
@@ -443,7 +441,6 @@ public class j
   }
   
   public void a(String paramString)
-    throws IOException
   {
     if ((this.a == null) || (paramString == null) || (paramString.length() == 0)) {
       return;
@@ -474,7 +471,6 @@ public class j
   }
   
   public void b()
-    throws IOException
   {
     if (this.a != null) {
       this.a.close();

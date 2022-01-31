@@ -1,30 +1,35 @@
-import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.biz.ui.CustomMenuBar;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class pel
-  implements View.OnTouchListener
 {
-  public pel(CustomMenuBar paramCustomMenuBar, ImageView paramImageView) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static void a()
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
+    pep.a.a();
+  }
+  
+  private static void a(Context paramContext)
+  {
+    Intent localIntent = new Intent();
+    String str = pds.a().a("3978");
+    localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.AppName", "daily_feeds");
+    pdu.a().getClass();
+    localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.AppPath", str);
+    QLog.i("PTSHelper", 1, "[jumpToPTSDailyPage], dailyAppPath = " + str);
+    PublicFragmentActivity.a(paramContext, localIntent, PTSFragment.class);
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    if (!pep.a.a()) {}
+    while ((!pdu.a().a()) || (!pds.a().a("daily_feeds"))) {
       return false;
-      if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b)
-      {
-        this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
-        this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidViewView.setVisibility(4);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840949);
-      }
     }
+    a(paramContext);
+    return true;
   }
 }
 

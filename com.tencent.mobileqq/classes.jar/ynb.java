@@ -1,29 +1,37 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.AvatarPendantAdapter;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.view.View.OnClickListener;
+import android.widget.Toast;
+import com.tencent.gdtad.api.GdtAd;
 
-public class ynb
-  implements View.OnLayoutChangeListener
+class ynb
+  implements View.OnClickListener
 {
-  public ynb(AvatarPendantAdapter paramAvatarPendantAdapter) {}
+  ynb(ymz paramymz) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void onClick(View paramView)
   {
-    View localView = paramView.findViewById(2131372287);
-    TextView localTextView = (TextView)paramView.findViewById(2131372288);
-    paramInt1 = ((ImageView)paramView.findViewById(2131372289)).getRight() - localView.getWidth();
-    if (paramInt1 > 0) {
-      ThreadManager.getUIHandler().post(new ync(this, localTextView, paramInt1));
+    if (this.a.a() == null)
+    {
+      Toast.makeText(this.a.getActivity().getApplicationContext(), "error", 0).show();
+      return;
     }
+    if (!this.a.a().isLoaded())
+    {
+      Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is not loaded", 0).show();
+      return;
+    }
+    if (this.a.a().isInvalidated())
+    {
+      Toast.makeText(this.a.getActivity().getApplicationContext(), "ad is invalidated", 0).show();
+      return;
+    }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ynb
  * JD-Core Version:    0.7.0.1
  */

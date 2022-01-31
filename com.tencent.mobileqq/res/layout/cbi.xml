@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.hiboom.SquareRelativeLayout android:id="@id/cg7" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/dq3" android:focusable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="2.0dip" android:scaleType="centerCrop" android:adjustViewBounds="true" />
+    <ImageView android:id="@id/dq4" android:background="#33000000" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" android:layout_alignLeft="@id/dq3" android:layout_alignTop="@id/dq3" android:layout_alignRight="@id/dq3" android:layout_alignBottom="@id/dq3" />
+    <com.tencent.mobileqq.widget.NumberCheckBox android:id="@id/dpo" android:layout_margin="4.0dip" android:layout_alignTop="@id/dq3" android:layout_alignRight="@id/dq3" style="@style/hy" />
+    <View android:id="@id/fov" android:background="@drawable/eo1" android:visibility="invisible" android:layout_width="27.0dip" android:layout_height="27.0dip" android:layout_margin="2.0dip" android:layout_alignTop="@id/dq3" android:layout_alignRight="@id/dq3" />
+    <ImageView android:id="@id/dri" android:focusable="false" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="4.0dip" android:src="@drawable/cgy" android:layout_alignLeft="@id/dq3" android:layout_alignBottom="@id/dq3" />
+    <TextView android:textSize="10.0dip" android:textColor="#ffffffff" android:id="@id/drh" android:padding="0.0dip" android:focusable="false" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="4.0dip" android:layout_alignRight="@id/dq3" android:layout_alignBottom="@id/dq3" />
+</com.tencent.mobileqq.hiboom.SquareRelativeLayout>

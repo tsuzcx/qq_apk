@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class nearfield_discuss$ReqExit
-  extends MessageMicro
+  extends MessageMicro<ReqExit>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32 }, new String[] { "msg_head", "msg_lbs_info", "str_number", "uint32_session_id" }, new Object[] { null, null, "", Integer.valueOf(0) }, ReqExit.class);
   public nearfield_discuss.BusiReqHead msg_head = new nearfield_discuss.BusiReqHead();
@@ -17,7 +17,7 @@ public final class nearfield_discuss$ReqExit
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.nearfield_discuss.nearfield_discuss.ReqExit
  * JD-Core Version:    0.7.0.1
  */

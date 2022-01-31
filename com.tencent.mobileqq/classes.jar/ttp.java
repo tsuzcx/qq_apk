@@ -1,20 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.content.Intent;
 
 public class ttp
-  implements DialogInterface.OnClickListener
+  extends tnm
 {
-  public ttp(RegisterActivity paramRegisterActivity) {}
+  private tto a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    paramDialogInterface.dismiss();
+    if (this.a != null) {
+      this.a.a(paramInt1, paramInt2, paramIntent);
+    }
+  }
+  
+  public void a(tto paramtto)
+  {
+    this.a = paramtto;
+  }
+  
+  public void f()
+  {
+    if (this.a != null) {
+      this.a.c();
+    }
+  }
+  
+  public void g()
+  {
+    if (this.a != null) {
+      this.a.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ttp
  * JD-Core Version:    0.7.0.1
  */

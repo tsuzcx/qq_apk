@@ -1,17 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.support.annotation.Nullable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketPopFragment;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
 public class aglf
-  implements DialogInterface.OnClickListener
+  implements OnCompositionLoadedListener
 {
-  public aglf(ScanTorchActivity paramScanTorchActivity) {}
+  public aglf(RedPacketPopFragment paramRedPacketPopFragment, ImageView paramImageView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  {
+    LottieDrawable localLottieDrawable = new LottieDrawable();
+    localLottieDrawable.setComposition(paramLottieComposition);
+    localLottieDrawable.loop(true);
+    localLottieDrawable.playAnimation();
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localLottieDrawable);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aglf
  * JD-Core Version:    0.7.0.1
  */

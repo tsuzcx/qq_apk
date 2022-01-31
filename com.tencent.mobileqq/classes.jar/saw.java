@@ -1,23 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public final class saw
-  implements DialogInterface.OnClickListener
+class saw
+  implements View.OnTouchListener
 {
-  public saw(ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
+  saw(sau paramsau, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a != null) {
-      this.a.a();
-    }
-    paramDialogInterface.dismiss();
+    sau.a(this.jdField_a_of_type_Sau, paramView);
+    this.jdField_a_of_type_Sau.d = this.jdField_a_of_type_Int;
+    sau.a(this.jdField_a_of_type_Sau).onTouchEvent(paramMotionEvent);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     saw
  * JD-Core Version:    0.7.0.1
  */

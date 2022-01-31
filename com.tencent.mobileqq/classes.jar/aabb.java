@@ -1,30 +1,22 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.msgnotify.MsgNotifyPushDialog;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AuthDevActivity;
 
 public class aabb
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public aabb(MsgNotifyPushDialog paramMsgNotifyPushDialog) {}
+  public aabb(AuthDevActivity paramAuthDevActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ReportController.b(null, "CliOper", "", "", "0X8006B16", "0X8006B16", 0, 0, "", "", "", "");
-    paramView = PreferenceManager.getDefaultSharedPreferences(MsgNotifyPushDialog.a(this.a));
-    int i = paramView.getInt("push_msg_notify_cancle", 0);
-    paramView = paramView.edit();
-    paramView.putInt("push_msg_notify_cancle", i + 1);
-    paramView.commit();
-    this.a.dismiss();
+    if (paramDialogInterface == AuthDevActivity.a(this.a)) {
+      AuthDevActivity.a(this.a, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aabb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.ChannelInfoModule;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
 
 public class lud
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public lud(ChannelInfoModule paramChannelInfoModule, int paramInt) {}
+  public lud(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ReadInJoyLogicEngineEventDispatcher.a().d(this.jdField_a_of_type_Int);
+    this.a.b("onDismiss");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lud
  * JD-Core Version:    0.7.0.1
  */

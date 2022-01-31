@@ -1,14 +1,18 @@
-import com.tencent.biz.qqstory.newshare.callback.StoryShareCallback;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
 
-class nmc
-  implements Runnable
+public class nmc
+  implements begw
 {
-  nmc(nmb paramnmb) {}
+  public nmc(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity, ChannelInfo paramChannelInfo) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback.a(this.a.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData);
+    if (paramInt == 0)
+    {
+      ReadInJoyVideoSubChannelActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelInfo, false);
+      ReadInJoyVideoSubChannelActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyVideoSubChannelActivity).dismiss();
     }
   }
 }

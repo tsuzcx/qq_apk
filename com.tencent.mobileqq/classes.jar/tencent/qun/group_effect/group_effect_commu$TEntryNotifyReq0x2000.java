@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class group_effect_commu$TEntryNotifyReq0x2000
-  extends MessageMicro
+  extends MessageMicro<TEntryNotifyReq0x2000>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8 }, new String[] { "group_id" }, new Object[] { Long.valueOf(0L) }, TEntryNotifyReq0x2000.class);
   public final PBUInt64Field group_id = PBField.initUInt64(0L);

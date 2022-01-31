@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.av.ui.GVideoMessageItem android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020ac4" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <com.tencent.av.ui.GVideoMessageItem android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020ac4" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <com.tencent.av.ui.GVideoMessageItem android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020ac4" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <com.tencent.av.ui.GVideoMessageItem android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020ac4" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <com.tencent.av.ui.GVideoMessageItem android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020ac4" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-</merge>

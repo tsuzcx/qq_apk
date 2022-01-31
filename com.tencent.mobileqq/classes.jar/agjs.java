@@ -1,21 +1,45 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class agjs
-  implements Runnable
+class agjs
+  extends BroadcastReceiver
 {
-  public agjs(ScanTorchActivity paramScanTorchActivity) {}
+  private agjs(agjk paramagjk) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ScanTorchActivity.i(this.a);
-    ScanTorchActivity.j(this.a);
-    ScanTorchActivity.k(this.a);
-    ScanTorchActivity.c(this.a, false);
+    int i;
+    String str1;
+    if ("grap_idiom_hb_result_action".equals(paramIntent.getAction()))
+    {
+      i = paramIntent.getIntExtra("grap_hb_state", 0);
+      paramContext = paramIntent.getStringExtra("listid");
+      str1 = paramIntent.getStringExtra("grap_hb_frienduin");
+      if ((i != 1) && (i != 10)) {
+        break label59;
+      }
+      agjk.a(this.a, paramContext, str1, 1, true);
+    }
+    label59:
+    String str2;
+    do
+    {
+      do
+      {
+        return;
+      } while (i != 12);
+      str2 = paramIntent.getStringExtra("grap_hb_idiom");
+      i = paramIntent.getIntExtra("grap_hb_seq", 0);
+      paramIntent = paramIntent.getStringExtra("grap_idiom_alpha");
+    } while (this.a.a(paramContext) == null);
+    agjk.a(this.a, paramContext, str1, 1, false);
+    this.a.a(paramContext, str2, paramIntent, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agjs
  * JD-Core Version:    0.7.0.1
  */

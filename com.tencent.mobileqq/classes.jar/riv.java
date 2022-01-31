@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAppInfoHelper;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ticker.TickerView;
 
-public final class riv
-  implements Runnable
+public class riv
+  extends AnimatorListenerAdapter
 {
-  public void run()
+  public riv(TickerView paramTickerView) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    DefaultDoraemonAppInfoHelper localDefaultDoraemonAppInfoHelper = DefaultDoraemonAppInfoHelper.a();
-    localDefaultDoraemonAppInfoHelper.a();
-    localDefaultDoraemonAppInfoHelper.b();
+    TickerView.a(this.a).a();
+    TickerView.a(this.a);
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     riv
  * JD-Core Version:    0.7.0.1
  */

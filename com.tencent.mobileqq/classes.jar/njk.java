@@ -1,38 +1,24 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.mobileqq.now.enter.widget.HongBao2018ListView;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class njk
-  extends RecyclerView.OnScrollListener
+  implements wiu
 {
-  boolean jdField_a_of_type_Boolean = false;
+  public njk(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
   
-  public njk(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void a(Bundle paramBundle)
   {
-    paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
-    if (paramInt == 0)
+    synchronized (this.a.jdField_a_of_type_JavaLangObject)
     {
-      if ((paramRecyclerView.findLastCompletelyVisibleItemPosition() == paramRecyclerView.getItemCount() - 1) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.d();
+      ReadInJoyArticleDetailActivity.a(this.a, paramBundle.getByteArray("decryptResult"));
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyArticleDetail", 2, "请求返回时间" + System.currentTimeMillis());
       }
-      return;
-    }
-    MsgTabStoryNodeListManager.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager);
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    if (paramInt1 > 0) {}
-    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.isDirty()) {
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.invalidate();
+      if (ReadInJoyArticleDetailActivity.a(this.a) == null) {
+        this.a.jdField_a_of_type_JavaLangString = null;
       }
+      this.a.jdField_a_of_type_JavaLangObject.notifyAll();
       return;
     }
   }

@@ -1,28 +1,29 @@
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.adapter.HotChatPostListAdapter;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import com.tencent.widget.XListView;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.pb.PBStringField;
 
-public class wam
-  implements AbsListView.OnScrollListener
+class wam
+  implements View.OnClickListener
 {
-  public wam(HotChatPie paramHotChatPie) {}
+  wam(wai paramwai, CertifiedAccountMeta.StReply paramStReply) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXListView != null) && (this.a.jdField_a_of_type_ComTencentWidgetXListView.getLastVisiblePosition() == this.a.jdField_a_of_type_ComTencentWidgetXListView.getCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqAdapterHotChatPostListAdapter != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAdapterHotChatPostListAdapter.a() != 0) && (this.a.jdField_a_of_type_ComTencentMobileqqAdapterHotChatPostListAdapter.a()))
+    paramView = (ClipboardManager)vzz.i(this.jdField_a_of_type_Wai.a).getSystemService("clipboard");
+    if (paramView != null)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterHotChatPostListAdapter.b();
-      HotChatPie.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqAdapterHotChatPostListAdapter.a(), 10);
+      paramView.setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply.content.get()));
+      vzz.a(this.jdField_a_of_type_Wai.a).dismiss();
     }
   }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wam
  * JD-Core Version:    0.7.0.1
  */

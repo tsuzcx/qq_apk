@@ -1,30 +1,18 @@
-import com.tencent.biz.qqstory.base.preload.cachecleaner.AbsCleanStep;
-import com.tencent.biz.qqstory.base.preload.cachecleaner.AbsCleanStep.CleanContext;
-import com.tencent.biz.qqstory.base.preload.cachecleaner.CacheCleaner;
-import com.tencent.biz.qqstory.base.preload.cachecleaner.CapacityCleanStep;
-import com.tencent.biz.qqstory.base.preload.cachecleaner.MyVideoCleanStep;
-import com.tencent.biz.qqstory.base.preload.cachecleaner.TimeCleanStep;
-import com.tencent.biz.qqstory.base.preload.cachecleaner.UploadTmpVideoCleanStep;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.FileUtils;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo;
 
-public class ned
-  implements Runnable
+public final class ned
+  implements Parcelable.Creator<VideoInfo>
 {
-  public ned(CacheCleaner paramCacheCleaner) {}
-  
-  public void run()
+  public VideoInfo a(Parcel paramParcel)
   {
-    SLog.d("Q.qqstory.cleaner:CacheCleaner", "start clean cache");
-    Object localObject = new TimeCleanStep(CacheCleaner.a);
-    CapacityCleanStep localCapacityCleanStep = new CapacityCleanStep(CacheCleaner.b);
-    MyVideoCleanStep localMyVideoCleanStep = new MyVideoCleanStep(CacheCleaner.c);
-    UploadTmpVideoCleanStep localUploadTmpVideoCleanStep = new UploadTmpVideoCleanStep(CacheCleaner.d);
-    localCapacityCleanStep.a(localMyVideoCleanStep).a(localUploadTmpVideoCleanStep).a((AbsCleanStep)localObject);
-    localObject = new AbsCleanStep.CleanContext();
-    ((AbsCleanStep.CleanContext)localObject).jdField_a_of_type_Boolean = FileUtils.a();
-    ((AbsCleanStep.CleanContext)localObject).jdField_a_of_type_Long = System.currentTimeMillis();
-    localCapacityCleanStep.a((AbsCleanStep.CleanContext)localObject);
+    return new VideoInfo(paramParcel);
+  }
+  
+  public VideoInfo[] a(int paramInt)
+  {
+    return new VideoInfo[paramInt];
   }
 }
 

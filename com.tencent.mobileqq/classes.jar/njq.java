@@ -1,13 +1,16 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseActivity;
 
 public class njq
   implements View.OnClickListener
 {
-  public njq(MsgTabStoryNodeView paramMsgTabStoryNodeView) {}
+  public njq(ReadInJoyBaseActivity paramReadInJoyBaseActivity) {}
   
-  public void onClick(View paramView) {}
+  public void onClick(View paramView)
+  {
+    this.a.onBackEvent();
+  }
 }
 
 

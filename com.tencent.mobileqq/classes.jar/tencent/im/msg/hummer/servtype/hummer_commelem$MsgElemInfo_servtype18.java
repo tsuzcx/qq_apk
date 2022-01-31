@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class hummer_commelem$MsgElemInfo_servtype18
-  extends MessageMicro
+  extends MessageMicro<MsgElemInfo_servtype18>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_auth_key = PBField.initBytes(ByteStringMicro.EMPTY);

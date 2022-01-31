@@ -1,6 +1,7 @@
 package com.tencent.hydevteam.pluginframework.pluginmanager;
 
 import com.tencent.hydevteam.common.annotation.API;
+import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
 
 @API
 public abstract interface VersionChecker
@@ -13,8 +14,10 @@ public abstract interface VersionChecker
   public static final String SOURCE_CGI = "SOURCE_CGI";
   
   @API
-  public abstract TargetDownloadInfo check(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
-    throws VersionCheckException;
+  public abstract TargetDownloadInfo check(String paramString1, String paramString2, String paramString3, boolean paramBoolean);
+  
+  @API
+  public abstract TargetDownloadInfo checkForceUpdate(String paramString1, String paramString2, String paramString3, boolean paramBoolean, InstalledPlugin paramInstalledPlugin);
 }
 
 

@@ -1,37 +1,26 @@
-import com.tencent.mobileqq.richmedia.mediacodec.widget.HWVideoPlayView;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame.7.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import java.util.List;
 
 public class ahtp
-  implements Runnable
+  extends ajuc
 {
-  public ahtp(HWVideoPlayView paramHWVideoPlayView) {}
+  public ahtp(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
   
-  public void run()
+  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DIDI", 1, "reStartPlaySolveDanceBlackScreen mHaveSurfaceChangedPlayStart=" + this.a.c);
-    }
-    try
-    {
-      if (!this.a.c)
-      {
-        this.a.b();
-        if (HWVideoPlayView.a(this.a)) {
-          this.a.c();
-        }
-      }
+    if ((!TextUtils.isEmpty(this.a.b)) && (!this.a.b.equals(paramString))) {
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("DIDI", 1, "reStartPlaySolveDanceBlackScreen mHaveSurfaceChangedPlayStart=" + this.a.c, localThrowable);
-    }
+    ThreadManager.post(new TroopMemberListInnerFrame.7.1(this, paramList), 5, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahtp
  * JD-Core Version:    0.7.0.1
  */

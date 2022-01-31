@@ -1,45 +1,60 @@
-import android.text.TextUtils;
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.sdk.download.WyDownloader.IDownloadListener;
-import java.io.File;
+import com.tencent.mobileqq.data.MessageForText;
 
-public class adio
-  implements WyDownloader.IDownloadListener
+class adio
+  implements View.OnClickListener
 {
-  public adio(WeiYunLogicCenter paramWeiYunLogicCenter, String paramString, int paramInt, Object paramObject) {}
+  adio(adin paramadin) {}
   
-  public void a(String paramString, long paramLong, float paramFloat) {}
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
+  public void onClick(View paramView)
   {
-    int i;
-    if ((paramBoolean) && (paramString1 != null) && (!TextUtils.isEmpty(paramString2)) && (new File(paramString2).exists()))
-    {
-      i = 1;
-      if (i == 0) {
-        break label128;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "getWeiYunThumb onSucceed. filePath[" + paramString2 + "]");
-      }
-      WeiYunLogicCenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter).a().a(true, 39, new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), paramString2, this.jdField_a_of_type_JavaLangObject });
-    }
-    label128:
-    while (!QLog.isColorLevel())
+    aciy.n = true;
+    if (this.a.a()) {}
+    do
     {
       return;
-      i = 0;
-      break;
-    }
-    QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getWeiYunThumb onFailed: errcode[" + paramInt + "], errmsg[" + paramString3 + "]");
+      MessageForText localMessageForText = (MessageForText)aciy.a(paramView);
+      try
+      {
+        ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a().aJ();
+        paramView = new Intent(paramView.getContext(), PoiMapActivity.class).putExtra("lat", localMessageForText.latitude).putExtra("lon", localMessageForText.longitude).putExtra("url", localMessageForText.url).putExtra("loc", localMessageForText.location).putExtra("uin", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+        ((BaseActivity)this.a.jdField_a_of_type_AndroidContentContext).startActivityForResult(paramView, 18);
+        i = 1;
+      }
+      catch (Exception paramView)
+      {
+        for (;;)
+        {
+          try
+          {
+            ((Activity)this.a.jdField_a_of_type_AndroidContentContext).startActivityForResult(new Intent("android.intent.action.VIEW", Uri.parse(localMessageForText.url)), 0);
+            i = 1;
+          }
+          catch (Exception paramView)
+          {
+            int i = 0;
+          }
+        }
+      }
+    } while ((i == 0) || ((!(this.a.jdField_a_of_type_AndroidContentContext instanceof SplashActivity)) && (!(this.a.jdField_a_of_type_AndroidContentContext instanceof ChatActivity))));
+    ((BaseActivity)this.a.jdField_a_of_type_AndroidContentContext).setCanLock(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adio
  * JD-Core Version:    0.7.0.1
  */

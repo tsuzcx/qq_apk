@@ -1,7 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -14,6 +13,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import obz;
 import org.json.JSONObject;
 import tencent.im.s2c.msgtype0x210.submsgtype0xee.submsgtype0xee.AccountInfo;
 import tencent.im.s2c.msgtype0x210.submsgtype0xee.submsgtype0xee.ContextInfo;
@@ -44,7 +44,7 @@ public class Kandian210Msg0xeeInfo
   public int bid;
   public String msgId;
   public long msgSeq;
-  public ArrayList notifyInfos;
+  public ArrayList<Kandian210Msg0xeeInfo.NotifyInfo> notifyInfos;
   
   public static Kandian210Msg0xeeInfo decodeFromPbBytes(byte[] paramArrayOfByte)
   {
@@ -333,17 +333,17 @@ public class Kandian210Msg0xeeInfo
   
   public static Kandian210Msg0xeeInfo getKandian210Msg0xeeInfoFromSp(QQAppInterface paramQQAppInterface)
   {
-    return (Kandian210Msg0xeeInfo)ReadInJoyUtils.a(paramQQAppInterface, "kandian_push_0x210_ee", true);
+    return (Kandian210Msg0xeeInfo)obz.a(paramQQAppInterface, "kandian_push_0x210_ee", true);
   }
   
   public static void removeKandian210Msg0xeeInfoFromSp()
   {
-    ReadInJoyUtils.a("kandian_push_0x210_ee", true);
+    obz.a("kandian_push_0x210_ee", true);
   }
   
   public static void writeToSpAsync(Kandian210Msg0xeeInfo paramKandian210Msg0xeeInfo)
   {
-    ReadInJoyUtils.a("kandian_push_0x210_ee", paramKandian210Msg0xeeInfo, true);
+    obz.a("kandian_push_0x210_ee", paramKandian210Msg0xeeInfo, true);
   }
   
   public boolean isArticleAppInPush()

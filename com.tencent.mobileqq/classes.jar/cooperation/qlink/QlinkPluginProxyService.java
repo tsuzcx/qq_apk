@@ -2,10 +2,11 @@ package cooperation.qlink;
 
 import android.content.Intent;
 import android.content.ServiceConnection;
+import bfcz;
+import bfdi;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.IPluginManager;
-import cooperation.plugin.IPluginManager.PluginParams;
+import cooperation.plugin.PluginInfo;
 import mqq.app.AppRuntime;
 
 public class QlinkPluginProxyService
@@ -15,20 +16,21 @@ public class QlinkPluginProxyService
   {
     Intent localIntent = new Intent(paramAppRuntime.getApplication(), QlinkPluginProxyService.class);
     localIntent.putExtra("useSkinEngine", 1);
-    IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-    localPluginParams.b = QlinkPluginProxyActivity.a();
-    localPluginParams.d = "近场传输";
-    localPluginParams.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
-    localPluginParams.e = "com.tencent.qlink.service.QlinkService";
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = localIntent;
-    localPluginParams.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+    localIntent.putExtra("userQqResources", 2);
+    bfdi localbfdi = new bfdi(0);
+    localbfdi.b = QlinkPluginProxyActivity.a();
+    localbfdi.d = PluginInfo.c;
+    localbfdi.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
+    localbfdi.e = "com.tencent.qlink.service.QlinkService";
+    localbfdi.jdField_a_of_type_AndroidContentIntent = localIntent;
+    localbfdi.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
     QLog.d("QLinkLog", 4, "Bind Qlink Service");
-    IPluginManager.b(paramAppRuntime.getApplication(), localPluginParams);
+    bfcz.c(paramAppRuntime.getApplication(), localbfdi);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cooperation.qlink.QlinkPluginProxyService
  * JD-Core Version:    0.7.0.1
  */

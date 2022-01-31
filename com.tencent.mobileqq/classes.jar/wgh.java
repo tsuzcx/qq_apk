@@ -1,24 +1,23 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troop.widget.TroopAIORobotPanel.GetListDataCallback;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.subscribe.widget.comment.component.richtext.element.ContentElement;
 
-public class wgh
-  implements TroopAIORobotPanel.GetListDataCallback
+public final class wgh
+  implements Parcelable.Creator<ContentElement>
 {
-  public wgh(TroopChatPie paramTroopChatPie) {}
-  
-  public void a(boolean paramBoolean, String paramString)
+  public ContentElement a(Parcel paramParcel)
   {
-    if ((paramBoolean) && (this.a.f.equals(paramString)))
-    {
-      TroopChatPie.a(this.a, true);
-      return;
-    }
-    TroopChatPie.a(this.a, false);
+    return new ContentElement();
+  }
+  
+  public ContentElement[] a(int paramInt)
+  {
+    return new ContentElement[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wgh
  * JD-Core Version:    0.7.0.1
  */

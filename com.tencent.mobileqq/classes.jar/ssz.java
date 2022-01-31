@@ -1,26 +1,54 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class ssz
-  extends BroadcastReceiver
+  extends JobSegment<List<tfv>, List<tfv>>
 {
-  public ssz(ForwardRecentActivity paramForwardRecentActivity) {}
+  private final tfu a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public ssz()
   {
-    if (!this.a.isFinishing())
+    this(new sta());
+  }
+  
+  public ssz(tfu paramtfu)
+  {
+    this.a = paramtfu;
+  }
+  
+  protected void a(JobContext paramJobContext, List<tfv> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty()))
     {
-      this.a.finish();
-      QLog.i("ForwardOption.ForwardEntranceActivity", 1, "ForwardRecentActivity has finished by broadcastReceiver.");
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqstory.msgTab.jobPullBasicInfo", 2, "list empty");
+      }
+      notifyResult(paramList);
+      return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqstory.msgTab.jobPullBasicInfo", 2, "pull video info start");
+    }
+    paramJobContext = new ArrayList();
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext()) {
+      paramJobContext.add(((tfv)localIterator.next()).b);
+    }
+    paramJobContext = new tfp(paramJobContext);
+    if (this.a != null) {
+      paramJobContext.a = this.a;
+    }
+    paramJobContext.a(new stb(this, paramList));
+    paramJobContext.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ssz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,20 @@
-import com.tencent.mobileqq.armap.Sound;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
-public class ablr
+class ablr
+  implements DialogInterface.OnClickListener
 {
-  public int a;
-  public int b;
-  public int c;
+  ablr(ablp paramablp) {}
   
-  public ablr(Sound paramSound, int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.b = paramInt1;
-    this.c = paramInt2;
-  }
-  
-  public boolean a()
-  {
-    return this.c == 1;
-  }
-  
-  public boolean b()
-  {
-    return this.c == 2;
-  }
-  
-  public boolean c()
-  {
-    return this.c == 3;
-  }
-  
-  public boolean d()
-  {
-    return this.c == 4;
+    this.a.a.p();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ablr
  * JD-Core Version:    0.7.0.1
  */

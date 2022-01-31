@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class Qworkflow$WorkflowState
-  extends MessageMicro
+  extends MessageMicro<WorkflowState>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_state_userdef = PBField.initBytes(ByteStringMicro.EMPTY);

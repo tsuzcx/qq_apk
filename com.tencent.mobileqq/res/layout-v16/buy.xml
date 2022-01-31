@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qzone.commoncode.module.videorecommend.widget.QzoneRelativeLayoutView android:orientation="horizontal" android:id="@id/ffa" android:visibility="gone" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/pr" android:layout_marginRight="@dimen/pu"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0dip" android:textColor="#ff878b99" android:gravity="center" android:id="@id/lyf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="48.0dip" />
+    <RelativeLayout android:id="@id/ff5" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.qzone.module.feedcomponent.ui.VisitView android:id="@id/c9_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/pq" android:layout_alignParentLeft="true" />
+        <com.qzone.widget.AsyncImageView android:id="@id/c98" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="@dimen/pq" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:importantForAccessibility="no" />
+        <TextView android:textSize="13.0dip" android:id="@id/c99" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/pq" android:layout_toRightOf="@id/c98" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/lhh" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/c9_" android:layout_alignTop="@id/c9_">
+            <TextView android:textSize="12.0sp" android:textColor="#ff878b99" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=" · " />
+            <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="12.0sp" android:textColor="#ff878b99" android:id="@id/lhi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ioj" />
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:src="@drawable/hxi" />
+        </LinearLayout>
+        <RelativeLayout android:id="@id/c7s" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="48.0dip" android:layout_alignParentRight="true">
+            <ImageView android:id="@id/c7r" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/ayy" android:scaleType="fitXY" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/c7n" android:layout_width="wrap_content" android:layout_height="48.0dip" android:layout_toLeftOf="@id/c7s" android:layout_alignWithParentIfMissing="true">
+            <ImageView android:id="@id/c7m" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/ayx" android:scaleType="fitXY" android:layout_centerVertical="true" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/bp" android:id="@id/c7o" android:paddingLeft="1.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.5dip" android:layout_toRightOf="@id/c7m" android:importantForAccessibility="no" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/c7k" android:layout_width="58.0dip" android:layout_height="48.0dip" android:layout_toLeftOf="@id/c7n" android:layout_alignWithParentIfMissing="true">
+            <ImageView android:id="@id/c7j" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/ayu" android:scaleType="fitXY" android:layout_centerVertical="true" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/bp" android:id="@id/c7l" android:paddingLeft="1.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.5dip" android:layout_toRightOf="@id/c7j" android:importantForAccessibility="no" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/ff6" android:layout_width="58.0dip" android:layout_height="48.0dip" android:layout_toLeftOf="@id/c7k" android:layout_alignWithParentIfMissing="true">
+            <com.qzone.module.feedcomponent.ui.common.SuperLikeView android:id="@id/c7p" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/ayw" android:scaleType="fitXY" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/ff7" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:scaleType="fitXY" android:layout_centerVertical="true" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/bp" android:id="@id/c7q" android:paddingLeft="1.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.5dip" android:layout_toRightOf="@id/c7p" android:importantForAccessibility="no" />
+        </RelativeLayout>
+        <View android:id="@id/ff8" android:background="@drawable/b46" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="50.0dip" />
+        <View android:id="@id/ff_" android:layout_width="fill_parent" android:layout_height="10.0dip" android:layout_marginLeft="2.0dip" android:layout_marginTop="50.0dip" android:layout_marginRight="5.0dip" />
+    </RelativeLayout>
+</com.qzone.commoncode.module.videorecommend.widget.QzoneRelativeLayoutView>

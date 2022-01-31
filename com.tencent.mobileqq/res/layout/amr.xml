@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/c_p" android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.DragView android:id="@id/bq8" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.activity.photo.DragGallery android:id="@id/gallery" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.widget.DragView>
+    <ImageButton android:id="@id/bs3" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/n2" android:layout_marginBottom="@dimen/n3" android:src="@drawable/ap" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:contentDescription="@string/ioi" />
+    <LinearLayout android:gravity="center" android:id="@id/fdo" android:background="@drawable/bg_texture" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_alignParentBottom="true">
+        <TextView android:textSize="@dimen/ayq" android:gravity="center_horizontal" android:id="@id/fdn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:text="@string/q_b" style="@style/i1" />
+    </LinearLayout>
+    <RelativeLayout android:gravity="center" android:id="@id/jvt" android:background="@drawable/bg_texture" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxHeight="100.0dip" android:minHeight="50.0dip" android:layout_alignParentBottom="true">
+        <TextView android:textSize="12.0dip" android:textColor="@color/bn" android:id="@id/jvc" android:visibility="visible" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:includeFontPadding="false" android:layout_centerHorizontal="true" />
+        <ProgressBar android:id="@id/jv8" android:layout_width="fill_parent" android:layout_height="4.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="20.0dip" android:maxHeight="4.0dip" android:max="100" android:progress="0" android:progressDrawable="@drawable/am" android:minHeight="4.0dip" android:layout_toLeftOf="@id/jv7" android:layout_below="@id/jvc" style="?android:progressBarStyleHorizontal" />
+        <Button android:id="@id/jv7" android:background="@drawable/a92" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="13.0dip" android:layout_alignParentRight="true" android:layout_centerInParent="true" android:contentDescription="@string/bfp" />
+    </RelativeLayout>
+</RelativeLayout>

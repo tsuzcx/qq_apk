@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class mobileqq_bmqq$CorpcardRspHead
-  extends MessageMicro
+  extends MessageMicro<CorpcardRspHead>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "rspHead" }, new Object[] { null }, CorpcardRspHead.class);
   public mobileqq_bmqq.HRTXHead rspHead = new mobileqq_bmqq.HRTXHead();

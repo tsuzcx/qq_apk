@@ -4,8 +4,8 @@ import java.util.List;
 
 public class ChatHistorySearchData
 {
-  public List mSearchData1;
-  public List mSearchData2;
+  public List<MessageRecord> mSearchData1;
+  public List<Integer> mSearchData2;
   public int offset;
 }
 

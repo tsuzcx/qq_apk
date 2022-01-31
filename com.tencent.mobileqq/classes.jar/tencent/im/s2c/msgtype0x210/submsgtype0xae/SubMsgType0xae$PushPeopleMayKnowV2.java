@@ -9,12 +9,12 @@ import com.tencent.mobileqq.pb.PBFixed32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class SubMsgType0xae$PushPeopleMayKnowV2
-  extends MessageMicro
+  extends MessageMicro<PushPeopleMayKnowV2>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_role_name = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBFixed32Field fixed32_timestamp = PBField.initFixed32(0);
-  public final PBRepeatMessageField rpt_msg_friend_list = PBField.initRepeatMessage(SubMsgType0xae.PersonMayKnow.class);
+  public final PBRepeatMessageField<SubMsgType0xae.PersonMayKnow> rpt_msg_friend_list = PBField.initRepeatMessage(SubMsgType0xae.PersonMayKnow.class);
   
   static
   {

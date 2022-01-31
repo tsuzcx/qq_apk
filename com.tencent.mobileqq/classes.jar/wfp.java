@@ -1,29 +1,31 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troop.utils.TroopNotificationHelper;
-import mqq.os.MqqHandler;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.mobileqq.pb.PBStringField;
 
-class wfp
-  implements Runnable
+public class wfp
+  implements View.OnClickListener
 {
-  wfp(wfo paramwfo) {}
+  public wfp(VideoPlayerView paramVideoPlayerView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (TroopChatPie.d(this.a.a)) {
-      return;
+    if (VideoPlayerView.a(this.a)) {
+      VideoPlayerView.c(this.a);
     }
-    TroopNotificationHelper.c(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    TroopNotificationHelper.c(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    Message localMessage = TroopChatPie.h(this.a.a).obtainMessage(29);
-    localMessage.arg1 = 2;
-    TroopChatPie.i(this.a.a).sendMessage(localMessage);
+    do
+    {
+      return;
+      VideoPlayerView.d(this.a);
+    } while (VideoPlayerView.a(this.a) == null);
+    wye.b(VideoPlayerView.a(this.a).poster.id.get(), "auth_video", "fullscreen", 0, 0, new String[] { "", "", VideoPlayerView.a(this.a).poster.nick.get(), VideoPlayerView.a(this.a).title.get() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wfp
  * JD-Core Version:    0.7.0.1
  */

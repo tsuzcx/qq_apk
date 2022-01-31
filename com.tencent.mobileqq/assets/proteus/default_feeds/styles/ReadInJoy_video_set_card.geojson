@@ -1,0 +1,54 @@
+{
+    "ReadInJoy_video_set_card": {
+        "view_type": "UIView",
+        "view_id": "id_wrapper_view",
+        "default_visible": "YES",
+        "direction": "vertical",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "event_type": "cmd_video_set_card_click",
+        "attributes": {
+            "setAttatchInfo:": "$cardJumpDataModel"
+        },
+        "data_attributes": {
+            "setRemoteInfo:": "$card_jump_report_info"
+        },
+        "subviews": [
+            {
+                "$includeComponet": "componet/video_set_header.geojson"
+            },
+            {
+                "view_type": "ProteusCollectionView",
+                "view_id": "id_proteus_collection_view",
+                "height": {
+                    "type": "wrap_content"
+                },
+                "width": {
+                    "type": "match_parent"
+                },
+                "margin_bottom": "8",
+                "attributes": {
+                    "setCellArray:": "$video_datas",
+                    "setScrollTypeString:": "0",
+                    "setScrollBounceString:": "$canEdgeDrag",
+                    "setEdgeDragString:": "$canEdgeDrag",
+                    "setScrollJumpUrl:": "cmd_video_set_card_cell_Drag",
+                    "setScrollInsetLeft:right:top:bottom:": [
+                        "2",
+                        "5",
+                        "0",
+                        "0"
+                    ]
+                }
+            },
+            {
+                "$includeComponet": "componet/separator.geojson"
+            }
+        ]
+    }
+}

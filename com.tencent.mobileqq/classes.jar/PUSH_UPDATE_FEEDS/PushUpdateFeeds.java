@@ -9,17 +9,17 @@ import java.util.Map;
 public final class PushUpdateFeeds
   extends JceStruct
 {
-  static Map cache_cell_checksum;
-  static Map cache_cell_infos;
+  static Map<Integer, String> cache_cell_checksum;
+  static Map<Integer, String> cache_cell_infos;
   static CommentReplyInfo cache_commmet_reply_info;
-  static Map cache_extendinfo;
-  static Map cache_feeds_data = new HashMap();
+  static Map<String, String> cache_extendinfo;
+  static Map<Integer, byte[]> cache_feeds_data = new HashMap();
   public boolean all_pull = true;
-  public Map cell_checksum;
-  public Map cell_infos;
+  public Map<Integer, String> cell_checksum;
+  public Map<Integer, String> cell_infos;
   public CommentReplyInfo commmet_reply_info;
-  public Map extendinfo;
-  public Map feeds_data;
+  public Map<String, String> extendinfo;
+  public Map<Integer, byte[]> feeds_data;
   public long feeds_update_time;
   public boolean need_pull = true;
   public String ugc_key = "";
@@ -40,16 +40,16 @@ public final class PushUpdateFeeds
   
   public PushUpdateFeeds() {}
   
-  public PushUpdateFeeds(String paramString, Map paramMap1, Map paramMap2, Map paramMap3, CommentReplyInfo paramCommentReplyInfo, long paramLong, boolean paramBoolean1, Map paramMap4, boolean paramBoolean2)
+  public PushUpdateFeeds(String paramString, Map<Integer, byte[]> paramMap, Map<String, String> paramMap1, Map<Integer, String> paramMap2, CommentReplyInfo paramCommentReplyInfo, long paramLong, boolean paramBoolean1, Map<Integer, String> paramMap3, boolean paramBoolean2)
   {
     this.ugc_key = paramString;
-    this.feeds_data = paramMap1;
-    this.extendinfo = paramMap2;
-    this.cell_infos = paramMap3;
+    this.feeds_data = paramMap;
+    this.extendinfo = paramMap1;
+    this.cell_infos = paramMap2;
     this.commmet_reply_info = paramCommentReplyInfo;
     this.feeds_update_time = paramLong;
     this.need_pull = paramBoolean1;
-    this.cell_checksum = paramMap4;
+    this.cell_checksum = paramMap3;
     this.all_pull = paramBoolean2;
   }
   

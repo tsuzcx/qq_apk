@@ -1,23 +1,223 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.openapi.config.BeautyRealConfig.TYPE;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
-class lfa
-  implements AsyncBack
+public class lfa
 {
-  lfa(ley paramley) {}
+  private final LinkedHashMap<String, lfb> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap(12);
+  private boolean jdField_a_of_type_Boolean;
   
-  public void loaded(String paramString, int paramInt)
+  public lfa()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseActivity", 2, "load 2464 html web resource finish");
+    d();
+  }
+  
+  private void d()
+  {
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("BEAUTY_SKIN", new lfb(null, 1, 50, 0));
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("COLOR_TONE", new lfb(BeautyRealConfig.TYPE.COLOR_TONE, 2, 50, 50));
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("EYE_LIGHTEN", new lfb(BeautyRealConfig.TYPE.EYE_LIGHTEN, 2, 0, 0));
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("TOOTH_WHITEN", new lfb(BeautyRealConfig.TYPE.TOOTH_WHITEN, 2, 0, 0));
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("ENLARGE_EYE", new lfb(BeautyRealConfig.TYPE.EYE, 3, 0, 0));
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("MOUTH_SHAPE", new lfb(BeautyRealConfig.TYPE.MOUTH_SHAPE, 3, 50, 50));
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("CHIN", new lfb(BeautyRealConfig.TYPE.CHIN, 3, 50, 50));
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("FACE_THIN", new lfb(BeautyRealConfig.TYPE.FACE_THIN, 3, 0, 0));
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("FACE_V", new lfb(BeautyRealConfig.TYPE.FACE_V, 3, 0, 0));
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("FACE_SHAPE_4", new lfb(BeautyRealConfig.TYPE.BASIC4, 3, 40, 0));
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("FACE_SHORTEN", new lfb(BeautyRealConfig.TYPE.FACE_SHORTEN, 3, 0, 0));
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put("NOSE_THIN", new lfb(BeautyRealConfig.TYPE.NOSE, 3, 0, 0));
+  }
+  
+  public int a(String paramString)
+  {
+    paramString = (lfb)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString);
+    if (paramString != null) {
+      return paramString.d;
+    }
+    return 0;
+  }
+  
+  public String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilLinkedHashMap.keySet());
+    Collections.sort(localArrayList);
+    int i = 0;
+    if (i < localArrayList.size())
+    {
+      String str = (String)localArrayList.get(i);
+      lfb locallfb = (lfb)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(str);
+      if (locallfb == null) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        if (i != 0) {
+          localStringBuilder.append(",");
+        }
+        localStringBuilder.append(str).append(":").append(locallfb.d);
+      }
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  void a(int paramInt, List<lfb> paramList)
+  {
+    if (paramList == null) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        lfb locallfb = (lfb)((Map.Entry)localIterator.next()).getValue();
+        if ((locallfb != null) && ((paramInt == 0) || (locallfb.a == paramInt))) {
+          paramList.add(locallfb);
+        }
+      }
     }
   }
   
-  public void progress(int paramInt) {}
+  public void a(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {
+      return;
+    }
+    paramString = paramString.split(",");
+    int j = paramString.length;
+    int i = 0;
+    label24:
+    Object localObject1;
+    if (i < j)
+    {
+      localObject1 = paramString[i];
+      if (localObject1 != null) {
+        break label46;
+      }
+    }
+    for (;;)
+    {
+      i += 1;
+      break label24;
+      break;
+      label46:
+      localObject1 = ((String)localObject1).split(":");
+      if (localObject1.length == 2)
+      {
+        Object localObject2 = localObject1[0];
+        try
+        {
+          int k = Integer.parseInt(localObject1[1]);
+          localObject1 = (lfb)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject2);
+          if (localObject1 != null) {
+            ((lfb)localObject1).d = k;
+          }
+        }
+        catch (NumberFormatException localNumberFormatException)
+        {
+          localNumberFormatException.printStackTrace();
+        }
+      }
+    }
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    paramString = (lfb)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString);
+    if ((paramString != null) && (paramString.d != paramInt))
+    {
+      paramString.d = paramInt;
+      this.jdField_a_of_type_Boolean = true;
+    }
+  }
+  
+  public void a(lfa paramlfa)
+  {
+    if (paramlfa == null) {}
+    for (;;)
+    {
+      return;
+      Iterator localIterator = paramlfa.jdField_a_of_type_JavaUtilLinkedHashMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        lfb locallfb = (lfb)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(str);
+        if (locallfb != null) {
+          locallfb.d = paramlfa.a(str);
+        }
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int b(String paramString)
+  {
+    paramString = (lfb)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString);
+    if (paramString != null) {
+      return paramString.c;
+    }
+    return 0;
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      lfb locallfb = (lfb)((Map.Entry)localIterator.next()).getValue();
+      if ((locallfb != null) && (locallfb.d != locallfb.b))
+      {
+        locallfb.d = locallfb.b;
+        this.jdField_a_of_type_Boolean = true;
+      }
+    }
+  }
+  
+  public boolean b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      lfb locallfb = (lfb)((Map.Entry)localIterator.next()).getValue();
+      if ((locallfb != null) && (locallfb.d != locallfb.c)) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public void c()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      lfb locallfb = (lfb)((Map.Entry)localIterator.next()).getValue();
+      if ((locallfb != null) && (locallfb.d != locallfb.c))
+      {
+        locallfb.d = locallfb.c;
+        this.jdField_a_of_type_Boolean = true;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lfa
  * JD-Core Version:    0.7.0.1
  */

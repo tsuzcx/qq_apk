@@ -1,27 +1,26 @@
-import com.tencent.mobileqq.app.message.ConversationProxy;
-import com.tencent.mobileqq.persistence.NoColumnError;
-import com.tencent.mobileqq.persistence.NoColumnErrorHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
 public class zzl
-  implements NoColumnErrorHandler
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public zzl(ConversationProxy paramConversationProxy) {}
+  public zzl(AssistantSettingActivity paramAssistantSettingActivity, amxv paramamxv) {}
   
-  public void a(NoColumnError paramNoColumnError)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((paramNoColumnError != null) && (("unreadGiftCount".equals(paramNoColumnError.mColumnName)) || ("unreadMark".equals(paramNoColumnError.mColumnName))))
+    this.jdField_a_of_type_Amxv.a(paramBoolean);
+    if (!paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.unread.Proxy", 2, paramNoColumnError.getMessage(), paramNoColumnError);
-      }
-      ConversationProxy.a(this.a, true);
+      awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app, "dc00898", "", "", "0X80081DD", "0X80081DD", 0, 0, "", "", "", "");
+      return;
     }
+    awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app, "dc00898", "", "", "0X80081F1", "0X80081F1", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zzl
  * JD-Core Version:    0.7.0.1
  */

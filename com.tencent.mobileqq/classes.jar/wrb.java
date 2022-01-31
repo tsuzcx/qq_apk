@@ -1,80 +1,28 @@
-import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.RedDotTextView;
-import com.tencent.mobileqq.widget.TabBarView;
-import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
-import com.tencent.util.MqqWeakReferenceHandler;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class wrb
-  implements TabBarView.OnTabChangeListener
+class wrb
+  implements Animator.AnimatorListener
 {
-  public wrb(TroopActivity paramTroopActivity) {}
+  wrb(wqq paramwqq) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView.b();
-    }
-    if (this.a.b != 2)
-    {
-      switch (paramInt2)
-      {
-      default: 
-        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_mygrp", 0, 0, "", "", "", "");
-        ReportController.b(this.a.app, "CliOper", "", "", "0X8006620", "0X8006620", 0, 0, "", "", "", "");
-        this.a.jdField_a_of_type_Int = 0;
-      }
-      for (;;)
-      {
-        this.a.a(this.a.jdField_a_of_type_Int);
-        this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(1234);
-        TroopActivity.a(this.a, paramInt2);
-        return;
-        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_mygrp", 0, 0, "", "", "", "");
-        ReportController.b(this.a.app, "CliOper", "", "", "0X8006620", "0X8006620", 0, 0, "", "", "", "");
-        this.a.jdField_a_of_type_Int = 0;
-        continue;
-        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "discuss", "contact_discuss_tab", 0, 0, "", "", "", "");
-        ReportController.b(this.a.app, "CliOper", "", "", "0X8006621", "0X8006621", 0, 0, "", "", "", "");
-        this.a.jdField_a_of_type_Int = 1;
-      }
-    }
-    switch (paramInt2)
-    {
-    default: 
-      if (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).a()) {
-        break;
-      }
-    }
-    for (String str = "0";; str = "1")
-    {
-      ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grpnotice", 0, 0, "", str, "", "");
-      ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_verify", 0, 0, "", "", "", "");
-      this.a.jdField_a_of_type_Int = 0;
-      break;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).a()) {}
-      for (str = "0";; str = "1")
-      {
-        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grpnotice", 0, 0, "", str, "", "");
-        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_verify", 0, 0, "", "", "", "");
-        this.a.jdField_a_of_type_Int = 0;
-        break;
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).a()) {}
-      for (str = "0";; str = "1")
-      {
-        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_grprecom", 0, 0, "", str, "", "");
-        ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "notice", "enter_recom", 0, 0, "", "", "", "");
-        this.a.jdField_a_of_type_Int = 1;
-        break;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("AEWaterMarkListPart", 2, "Watermark Panel Opened!");
     }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wrb
  * JD-Core Version:    0.7.0.1
  */

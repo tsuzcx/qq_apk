@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public final class FragmentState
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new FragmentState.1();
+  public static final Parcelable.Creator<FragmentState> CREATOR = new FragmentState.1();
   final Bundle mArguments;
   final String mClassName;
   final int mContainerId;

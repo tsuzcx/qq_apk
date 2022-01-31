@@ -1,21 +1,30 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qqfav.QfavBuilder;
-import cooperation.qqfav.QfavHelper;
+import android.os.Handler.Callback;
+import android.os.Message;
 
 public class amwi
-  implements Runnable
+  implements Handler.Callback
 {
-  public amwi(QfavBuilder paramQfavBuilder, Activity paramActivity, QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString) {}
+  private String a;
   
-  public void run()
+  public amwi(String paramString)
   {
-    QfavHelper.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, false);
+    this.a = paramString;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return true;
+    }
+    aseo.a(this.a, 1);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amwi
  * JD-Core Version:    0.7.0.1
  */

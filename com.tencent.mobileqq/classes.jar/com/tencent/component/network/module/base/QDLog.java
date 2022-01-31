@@ -2,80 +2,9 @@ package com.tencent.component.network.module.base;
 
 public class QDLog
 {
-  private static com.tencent.component.network.module.base.inter.Log a;
-  
-  private static int a()
-  {
-    if (a != null) {
-      return a.a();
-    }
-    return 1;
-  }
-  
-  public static void a(com.tencent.component.network.module.base.inter.Log paramLog)
-  {
-    a = paramLog;
-  }
-  
-  public static void a(String paramString1, String paramString2)
-  {
-    a(paramString1, paramString2, null);
-  }
-  
-  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (a != null)
-    {
-      a.a(paramString1, paramString2, paramThrowable);
-      return;
-    }
-    android.util.Log.d(paramString1, paramString2, paramThrowable);
-  }
-  
-  public static boolean a()
-  {
-    return 2 >= a();
-  }
-  
-  public static void b(String paramString1, String paramString2)
-  {
-    if (a != null)
-    {
-      a.a(paramString1, paramString2);
-      return;
-    }
-    android.util.Log.i(paramString1, paramString2);
-  }
-  
-  public static void b(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (a != null)
-    {
-      a.c(paramString1, paramString2, paramThrowable);
-      return;
-    }
-    android.util.Log.i(paramString1, paramString2, paramThrowable);
-  }
-  
-  public static boolean b()
-  {
-    return 3 >= a();
-  }
-  
-  public static void c(String paramString1, String paramString2)
-  {
-    c(paramString1, paramString2, null);
-  }
-  
-  public static void c(String paramString1, String paramString2, Throwable paramThrowable)
-  {
-    if (a != null)
-    {
-      a.d(paramString1, paramString2, paramThrowable);
-      return;
-    }
-    android.util.Log.w(paramString1, paramString2, paramThrowable);
-  }
+  public static final String TAG_DOWNLOAD = "downloader";
+  public static final String TAG_DOWNLOAD_RESULT = "downloader_result";
+  private static com.tencent.component.network.module.base.inter.Log sLog;
   
   public static void d(String paramString1, String paramString2)
   {
@@ -84,12 +13,100 @@ public class QDLog
   
   public static void d(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (a != null)
+    if (sLog != null)
     {
-      a.b(paramString1, paramString2, paramThrowable);
+      sLog.d(paramString1, paramString2, paramThrowable);
+      return;
+    }
+    android.util.Log.d(paramString1, paramString2, paramThrowable);
+  }
+  
+  public static void e(String paramString1, String paramString2)
+  {
+    e(paramString1, paramString2, null);
+  }
+  
+  public static void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (sLog != null)
+    {
+      sLog.e(paramString1, paramString2, paramThrowable);
       return;
     }
     android.util.Log.e(paramString1, paramString2, paramThrowable);
+  }
+  
+  public static com.tencent.component.network.module.base.inter.Log getLog()
+  {
+    return sLog;
+  }
+  
+  private static int getLogLevel()
+  {
+    if (sLog != null) {
+      return sLog.getLogLevel();
+    }
+    return 1;
+  }
+  
+  public static void i(String paramString1, String paramString2)
+  {
+    if (sLog != null)
+    {
+      sLog.i(paramString1, paramString2);
+      return;
+    }
+    android.util.Log.i(paramString1, paramString2);
+  }
+  
+  public static void i(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (sLog != null)
+    {
+      sLog.i(paramString1, paramString2, paramThrowable);
+      return;
+    }
+    android.util.Log.i(paramString1, paramString2, paramThrowable);
+  }
+  
+  public static boolean isDebugEnable()
+  {
+    return 2 >= getLogLevel();
+  }
+  
+  public static boolean isErrorEnable()
+  {
+    return 5 >= getLogLevel();
+  }
+  
+  public static boolean isInfoEnable()
+  {
+    return 3 >= getLogLevel();
+  }
+  
+  public static boolean isWarningEnable()
+  {
+    return 4 >= getLogLevel();
+  }
+  
+  public static void setLog(com.tencent.component.network.module.base.inter.Log paramLog)
+  {
+    sLog = paramLog;
+  }
+  
+  public static void w(String paramString1, String paramString2)
+  {
+    w(paramString1, paramString2, null);
+  }
+  
+  public static void w(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    if (sLog != null)
+    {
+      sLog.w(paramString1, paramString2, paramThrowable);
+      return;
+    }
+    android.util.Log.w(paramString1, paramString2, paramThrowable);
   }
 }
 

@@ -1,42 +1,105 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.RotateAnimation;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.av.gaudio.AVObserver.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Observable;
+import java.util.Observer;
 
 public class ldc
-  implements Runnable
+  implements Observer
 {
-  public ldc(ReadInJoyNaviController paramReadInJoyNaviController) {}
+  Handler a = null;
   
-  public void run()
+  protected void a(int paramInt, long paramLong) {}
+  
+  protected void a(int paramInt, long paramLong1, long paramLong2) {}
+  
+  protected void a(int paramInt, String paramString1, String paramString2) {}
+  
+  protected void a(long paramLong1, int paramInt1, long paramLong2, int paramInt2) {}
+  
+  protected void a(long paramLong1, int paramInt, long paramLong2, String paramString) {}
+  
+  public void a(Object paramObject)
   {
-    Object localObject = ReadInJoyNaviController.a(this.a).a();
-    ReadInJoyNaviController.a(this.a, 1000L);
-    if ((localObject != null) && (ReadInJoyNaviController.a(this.a)))
+    paramObject = (Object[])paramObject;
+    int i = ((Integer)paramObject[0]).intValue();
+    switch (i)
     {
-      ReadInJoyNaviController.a(this.a, false);
-      TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, -((View)localObject).getHeight(), this.a.e);
-      localTranslateAnimation.setDuration(300L);
-      localTranslateAnimation.setAnimationListener(new ldd(this, (View)localObject));
-      ((View)localObject).startAnimation(localTranslateAnimation);
-      if (ReadInJoyNaviController.a(this.a) != null)
-      {
-        localObject = new RotateAnimation(0.0F, 180.0F, 1, 0.5F, 1, 0.5F);
-        ((Animation)localObject).setDuration(200L);
-        ((Animation)localObject).setFillEnabled(true);
-        ((Animation)localObject).setFillAfter(true);
-        ReadInJoyNaviController.a(this.a).startAnimation((Animation)localObject);
+    default: 
+      int j = ((Integer)paramObject[1]).intValue();
+      long l1 = ((Long)paramObject[2]).longValue();
+      long l2 = ((Long)paramObject[3]).longValue();
+      if (QLog.isDevelopLevel()) {
+        QLog.w("GAudioObserver", 1, "OnUpdate, relationType[" + j + "], discussId[" + l1 + "], memberUin[" + l2 + "], msg[" + i + "]");
       }
-      ReadInJoyNaviController.a(0, ReadInJoyNaviController.a(0, null));
+      a(j, l1, l2);
+      return;
+    case 21: 
+      a(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), ((Long)paramObject[3]).longValue());
+      return;
+    case 22: 
+      b(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), ((Long)paramObject[3]).longValue());
+      return;
+    case 23: 
+      c(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue(), ((Long)paramObject[3]).longValue());
+      return;
+    case 28: 
+      a(((Integer)paramObject[1]).intValue(), (String)paramObject[2], (String)paramObject[3]);
+      return;
+    case 29: 
+      a((String)paramObject[2], (String)paramObject[3]);
+      return;
+    case 32: 
+      i = ((Integer)paramObject[1]).intValue();
+      a(((Long)paramObject[2]).longValue(), i, ((Long)paramObject[3]).longValue(), ((Integer)paramObject[4]).intValue());
+      return;
+    case 33: 
+      i = ((Integer)paramObject[1]).intValue();
+      a(((Long)paramObject[2]).longValue(), i, ((Long)paramObject[3]).longValue(), (String)paramObject[4]);
+      return;
+    case 36: 
+      a(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue());
+      return;
+    case 37: 
+      b(((Integer)paramObject[1]).intValue(), ((Long)paramObject[2]).longValue());
+      return;
+    case 408: 
+      a(((Boolean)paramObject[1]).booleanValue(), (String)paramObject[2]);
+      return;
     }
+    a((String)paramObject[1]);
+  }
+  
+  protected void a(String paramString) {}
+  
+  protected void a(String paramString1, String paramString2) {}
+  
+  protected void a(boolean paramBoolean, String paramString) {}
+  
+  protected void b(int paramInt, long paramLong) {}
+  
+  protected void b(int paramInt, long paramLong1, long paramLong2) {}
+  
+  protected void c(int paramInt, long paramLong1, long paramLong2) {}
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    paramObservable = Looper.getMainLooper();
+    if (Thread.currentThread() != paramObservable.getThread())
+    {
+      if (this.a == null) {
+        this.a = new Handler(paramObservable);
+      }
+      this.a.post(new AVObserver.1(this, paramObject));
+      return;
+    }
+    a(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ldc
  * JD-Core Version:    0.7.0.1
  */

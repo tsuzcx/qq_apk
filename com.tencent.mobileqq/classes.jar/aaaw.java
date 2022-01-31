@@ -1,25 +1,31 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.message.UncommonMessageProcessor;
-import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
 
 public class aaaw
-  extends SendMessageHandler.SendMessageRunnable
+  extends ajss
 {
-  public aaaw(UncommonMessageProcessor paramUncommonMessageProcessor, ToServiceMsg paramToServiceMsg) {}
+  public aaaw(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, axau paramaxau)
   {
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.setTimeout(this.c);
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.putInt("retryIndex", this.b);
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.putLong("timeOut", this.c);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageUncommonMessageProcessor.a.c(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg);
+    this.a.c();
+    AssociatedAccountManageActivity.b(this.a);
+  }
+  
+  protected void b(boolean paramBoolean, axau paramaxau)
+  {
+    this.a.c();
+    AssociatedAccountManageActivity.b(this.a);
+  }
+  
+  protected void c(boolean paramBoolean, axau paramaxau)
+  {
+    this.a.c();
+    AssociatedAccountManageActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaaw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
-class tyn
-  implements DialogInterface.OnClickListener
+public class tyn
+  implements begw
 {
-  tyn(tym paramtym, SubAccountBackProtocData paramSubAccountBackProtocData) {}
+  public tyn(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, begr parambegr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramInt == 1) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData.c)))
+    if (vms.b()) {}
+    do
     {
-      paramDialogInterface = new Intent(this.jdField_a_of_type_Tym.a, SubLoginActivity.class);
-      paramDialogInterface.putExtra("subuin", this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData.c);
-      paramDialogInterface.putExtra("fromWhere", this.jdField_a_of_type_Tym.a.b);
-      this.jdField_a_of_type_Tym.a.startActivity(paramDialogInterface);
-    }
+      return;
+      this.jdField_a_of_type_Begr.e();
+      paramView = this.jdField_a_of_type_Begr.a(paramInt);
+    } while (!ajjy.a(2131645251).equals(paramView));
+    paramView = TroopInfoActivity.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.c, 0);
+    paramView.putInt("extra_last_open_from", this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.a);
+    azlj.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity, paramView, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tyn
  * JD-Core Version:    0.7.0.1
  */

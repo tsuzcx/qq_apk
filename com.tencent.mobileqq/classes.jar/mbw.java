@@ -1,18 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import android.database.DataSetObserver;
+import com.tencent.av.ui.funchat.filter.EffectCycleViewPager;
 
-public class mbw
-  implements Runnable
+class mbw
+  extends DataSetObserver
 {
-  public mbw(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  mbw(mbv parammbv, EffectCycleViewPager paramEffectCycleViewPager) {}
   
-  public void run()
+  public void onChanged()
   {
-    ReadInJoyDeliverVideoActivity.e(this.a);
+    this.jdField_a_of_type_Mbv.notifyDataSetChanged();
+  }
+  
+  public void onInvalidated()
+  {
+    this.jdField_a_of_type_Mbv.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mbw
  * JD-Core Version:    0.7.0.1
  */

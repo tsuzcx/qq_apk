@@ -1,21 +1,28 @@
-import com.tencent.mobileqq.app.QQGAudioMsgHandler;
-import cooperation.groupvideo.GroupVideoWrapper;
-import cooperation.groupvideo.GroupVideoWrapper.OnGVideoReadyListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
-public class zsn
-  implements GroupVideoWrapper.OnGVideoReadyListener
+class zsn
+  extends JobSegment<armr, armr>
 {
-  public zsn(QQGAudioMsgHandler paramQQGAudioMsgHandler, byte[] paramArrayOfByte) {}
+  zsn(zsi paramzsi, String paramString, int paramInt) {}
   
-  public void a(GroupVideoWrapper paramGroupVideoWrapper)
+  protected void a(JobContext paramJobContext, armr paramarmr)
   {
-    paramGroupVideoWrapper.a(this.jdField_a_of_type_ArrayOfByte);
-    paramGroupVideoWrapper.a();
+    if (paramarmr.b())
+    {
+      notifyResult(paramarmr);
+      if (QLog.isColorLevel()) {
+        QLog.i("DoraemonOpenAPI.permissionHelper", 2, "appBaseInfo cache is valid");
+      }
+      return;
+    }
+    armw.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1, true, new zso(this, this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zsn
  * JD-Core Version:    0.7.0.1
  */

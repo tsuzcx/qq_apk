@@ -1,38 +1,22 @@
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil.Log;
-import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadWorker;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.qphone.base.util.MD5;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class ajlt
-  implements Runnable
+class ajlt
+  implements BusinessObserver
 {
-  public ajlt(TroopFileDownloadWorker paramTroopFileDownloadWorker) {}
+  ajlt(ajls paramajls, String paramString) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      TroopFileTransferUtil.Log.b("TroopFileDownloadWorker", TroopFileTransferUtil.Log.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] start. had stoped");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("MayknowRecommendManager", 2, "setRecommendTroopDeleted uin: " + this.jdField_a_of_type_JavaLangString + " isSuccess: " + paramBoolean);
     }
-    this.a.b();
-    String str = MD5.toMD5(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath);
-    this.a.d = (this.a.c + str);
-    str = this.a.c + HexUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath.getBytes()) + ".tmp";
-    if (FileUtil.a(str) > 0L)
-    {
-      TroopFileTransferUtil.Log.b("TroopFileDownloadWorker", TroopFileTransferUtil.Log.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] start. use oldVerTmpPath to resume.");
-      this.a.d = str;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.TmpFile = this.a.d;
-    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajlt
  * JD-Core Version:    0.7.0.1
  */

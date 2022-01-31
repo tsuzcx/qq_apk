@@ -1,98 +1,258 @@
-import android.os.Vibrator;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.magicface.magicfaceaction.Action;
-import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
-import com.tencent.mobileqq.magicface.model.MagicfaceDecoder.MagicPlayListener;
-import com.tencent.mobileqq.magicface.model.MagicfacePlayRes;
-import com.tencent.mobileqq.magicface.service.MagicfacePlayManager;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.CountDownLatch;
+import android.text.TextUtils;
 
 public class aemc
-  implements MagicfaceDecoder.MagicPlayListener
+  extends aelr
 {
-  public aemc(Action paramAction) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private String jdField_b_of_type_JavaLangString;
+  private boolean jdField_b_of_type_Boolean;
+  private int jdField_c_of_type_Int;
+  private String jdField_c_of_type_JavaLangString;
+  private int jdField_d_of_type_Int;
+  private String jdField_d_of_type_JavaLangString;
+  private int jdField_e_of_type_Int;
+  private String jdField_e_of_type_JavaLangString;
+  private int jdField_f_of_type_Int;
+  private String jdField_f_of_type_JavaLangString;
+  private int jdField_g_of_type_Int;
+  private String jdField_g_of_type_JavaLangString;
+  private String h;
+  private String i;
+  private String j;
   
-  public void a()
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Action", 2, "fun startMagicPlay begins, sumPlayTimes:" + this.a.jdField_c_of_type_Int + ",actionGlobalData.openSound:" + this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.d);
-    }
-    Object localObject;
-    if (this.a.jdField_c_of_type_Int == 0)
-    {
-      this.a.b();
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes.c != null) && (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes.c.length() > 0) && (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.d))
-      {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes.e > 0)
-        {
-          localObject = this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes;
-          ((MagicfacePlayRes)localObject).e -= 1;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Action", 2, "fun startMagicPlay begins, start play Sound.");
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager.a(this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes.c, this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes.e);
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes.a)
-      {
-        this.a.jdField_a_of_type_AndroidOsVibrator = ((Vibrator)BaseApplicationImpl.getContext().getSystemService("vibrator"));
-        if (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes.h != -1) {
-          break label311;
-        }
-        this.a.jdField_a_of_type_AndroidOsVibrator.vibrate(new long[] { 0L, 1000L }, 0);
-      }
-    }
-    for (;;)
-    {
-      localObject = this.a;
-      ((Action)localObject).jdField_c_of_type_Int += 1;
-      if (QLog.isColorLevel()) {
-        QLog.d("Action", 2, "fun startMagicPlay ends, sumPlayTimes:" + this.a.jdField_c_of_type_Int);
-      }
-      return;
-      label311:
-      this.a.jdField_a_of_type_AndroidOsVibrator.vibrate(this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes.h * 1000);
-    }
+    return 0;
   }
   
-  public void b()
+  public long a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Action", 2, "func endMagicPlay begins, isStop:" + this.a.jdField_c_of_type_Boolean + ",timeout:" + this.a.jdField_a_of_type_Int + ",playTimes:" + this.a.jdField_b_of_type_Int + ",sumPlayTimes:" + this.a.jdField_c_of_type_Int + ",isTimeout:" + this.a.jdField_b_of_type_Boolean);
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_f_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public String b()
+  {
+    return this.jdField_c_of_type_JavaLangString;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void b(long paramLong)
+  {
+    this.jdField_b_of_type_Long = paramLong;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_c_of_type_Int = paramInt;
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int d()
+  {
+    return this.jdField_e_of_type_Int;
+  }
+  
+  public String d()
+  {
+    return this.jdField_f_of_type_JavaLangString;
+  }
+  
+  public void d(int paramInt)
+  {
+    this.jdField_d_of_type_Int = paramInt;
+  }
+  
+  public void d(String paramString)
+  {
+    this.jdField_c_of_type_JavaLangString = paramString;
+  }
+  
+  public int e()
+  {
+    return this.jdField_f_of_type_Int;
+  }
+  
+  public String e()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void e(int paramInt)
+  {
+    this.jdField_e_of_type_Int = paramInt;
+  }
+  
+  public void e(String paramString)
+  {
+    this.jdField_d_of_type_JavaLangString = paramString;
+  }
+  
+  public int f()
+  {
+    return this.jdField_g_of_type_Int;
+  }
+  
+  public String f()
+  {
+    return this.jdField_d_of_type_JavaLangString;
+  }
+  
+  public void f(int paramInt)
+  {
+    this.jdField_f_of_type_Int = paramInt;
+  }
+  
+  public void f(String paramString)
+  {
+    this.jdField_g_of_type_JavaLangString = paramString;
+  }
+  
+  public int g()
+  {
+    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      return this.jdField_a_of_type_Int;
     }
-    if (this.a.jdField_c_of_type_Boolean) {
-      this.a.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public String g()
+  {
+    return this.jdField_g_of_type_JavaLangString;
+  }
+  
+  public void g(int paramInt)
+  {
+    this.jdField_g_of_type_Int = paramInt;
+  }
+  
+  public void g(String paramString)
+  {
+    this.h = paramString;
+  }
+  
+  public int h()
+  {
+    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      return this.jdField_b_of_type_Int;
     }
-    do
-    {
-      return;
-      if (this.a.jdField_a_of_type_Int == -1)
-      {
-        if (this.a.jdField_b_of_type_Int == -1)
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager.a(this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes);
-          return;
-        }
-        if (this.a.jdField_b_of_type_Int > this.a.jdField_c_of_type_Int)
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager.a(this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes);
-          return;
-        }
-        if (this.a.jdField_b_of_type_Int == this.a.jdField_c_of_type_Int)
-        {
-          this.a.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-          return;
-        }
-      }
-    } while (this.a.jdField_b_of_type_Boolean);
-    this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager.a(this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfacePlayRes);
+    return this.jdField_d_of_type_Int;
+  }
+  
+  public String h()
+  {
+    return this.h;
+  }
+  
+  public void h(String paramString)
+  {
+    this.i = paramString;
+  }
+  
+  public String i()
+  {
+    return this.j;
+  }
+  
+  public void i(String paramString)
+  {
+    this.j = paramString;
+  }
+  
+  public String j()
+  {
+    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      return this.jdField_c_of_type_JavaLangString;
+    }
+    return this.jdField_d_of_type_JavaLangString;
+  }
+  
+  public String k()
+  {
+    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      return this.jdField_a_of_type_JavaLangString;
+    }
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public String l()
+  {
+    if (TextUtils.isEmpty(this.jdField_e_of_type_JavaLangString)) {
+      this.jdField_e_of_type_JavaLangString = aemi.d(k());
+    }
+    return this.jdField_e_of_type_JavaLangString;
+  }
+  
+  public String toString()
+  {
+    return "imgUrl=" + this.jdField_a_of_type_JavaLangString + " thumbUrl=" + this.jdField_b_of_type_JavaLangString + " imgMd5=" + this.jdField_c_of_type_JavaLangString + " thumbMd5=" + this.jdField_d_of_type_JavaLangString + " imgWidth=" + this.jdField_a_of_type_Int + " imgHeight=" + this.jdField_b_of_type_Int + " thumbWidth=" + this.jdField_c_of_type_Int + " thumbHeight=" + this.jdField_d_of_type_Int + " imgFileSize=" + this.jdField_a_of_type_Long + " thumbFileSize=" + this.jdField_b_of_type_Long;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aemc
  * JD-Core Version:    0.7.0.1
  */

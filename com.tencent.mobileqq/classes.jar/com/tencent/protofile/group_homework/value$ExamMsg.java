@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class value$ExamMsg
-  extends MessageMicro
+  extends MessageMicro<ExamMsg>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field difficulty = PBField.initUInt32(0);

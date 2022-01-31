@@ -1,27 +1,51 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.util.List;
 
-public class ucm
-  implements View.OnClickListener
+class ucm
+  implements slx<szn, szo>
 {
-  public ucm(TroopInfoActivity paramTroopInfoActivity, Dialog paramDialog, long paramLong1, int paramInt, long paramLong2, long paramLong3, String paramString) {}
+  ucm(ucl paramucl, JobContext paramJobContext, uiv paramuiv) {}
   
-  public void onClick(View paramView)
+  public void a(@NonNull szn paramszn, @Nullable szo paramszo, @NonNull ErrorMessage paramErrorMessage)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    {
+      urk.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed comment info pull segment cancel on net respond");
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.finish();
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopName, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTags, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mPoiId, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mRichFingerMemo);
+    if ((paramszo == null) || (paramErrorMessage.isFail()))
+    {
+      urk.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for comment request");
+      ucl.a(this.jdField_a_of_type_Ucl, paramErrorMessage);
+      return;
+    }
+    if (this.jdField_a_of_type_Uiv.b == 0) {}
+    for (boolean bool1 = false;; bool1 = true)
+    {
+      ((spd)sqg.a(17)).a(paramszo.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Uiv.jdField_a_of_type_JavaLangString, bool1, true);
+      boolean bool3 = paramszo.jdField_a_of_type_Boolean;
+      boolean bool2 = bool3;
+      if (!paramszo.jdField_a_of_type_Boolean)
+      {
+        bool2 = bool3;
+        if (paramszo.jdField_a_of_type_JavaUtilList.size() == 0)
+        {
+          urk.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "comment pull should be end!!!!!!!!!!!!");
+          bool2 = true;
+        }
+      }
+      paramszn = new uci(bool1, paramszo.jdField_a_of_type_JavaUtilList, paramszo.b, bool2, paramszo.jdField_a_of_type_JavaLangString);
+      ucl.a(this.jdField_a_of_type_Ucl, paramszn);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ucm
  * JD-Core Version:    0.7.0.1
  */

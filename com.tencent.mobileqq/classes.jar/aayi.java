@@ -1,31 +1,26 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer.ArkAppModuleCallback;
-import com.tencent.mobileqq.ark.ArkAiAppPanel;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aayi
-  implements ArkAppContainer.ArkAppModuleCallback
+  extends ajjh
 {
-  public aayi(ArkAiAppPanel paramArkAiAppPanel) {}
+  public aayi(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public boolean a(ArkAppContainer paramArkAppContainer)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if (ArkAiAppPanel.a(this.a) != null)
-    {
-      ArkAiAppPanel.a(this.a).ai();
-      return true;
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(this.a.app.getCurrentAccountUin()))) {}
+    while (this.a.a == null) {
+      return;
     }
-    return false;
-  }
-  
-  public boolean a(ArkAppContainer paramArkAppContainer, String paramString1, String paramString2)
-  {
-    return false;
+    paramString = this.a.app.a(this.a.app.getCurrentAccountUin(), (byte)3, false);
+    this.a.a.setImageBitmap(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aayi
  * JD-Core Version:    0.7.0.1
  */

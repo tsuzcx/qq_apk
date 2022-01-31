@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0x87$MsgNotify
-  extends MessageMicro
+  extends MessageMicro<MsgNotify>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50 }, new String[] { "uint64_uin", "uint64_fuin", "uint32_time", "uint32_reqsubtype", "uint32_max_count", "msg_clone_info" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null }, MsgNotify.class);
   public SubMsgType0x87.CloneInfo msg_clone_info = new SubMsgType0x87.CloneInfo();

@@ -1,24 +1,44 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemLongClickListener;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class ajas
-  implements AdapterView.OnItemLongClickListener
+public final class ajas
 {
-  ajas(ajap paramajap) {}
+  private static HashMap<String, Long> a = new HashMap();
+  private static HashMap<String, Long> b = new HashMap();
   
-  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static void a()
   {
-    if ((this.a.a.a.c) || (this.a.a.a.b)) {
-      TroopAvatarWallEditActivity.a(this.a.a.a);
+    a.clear();
+    b.clear();
+  }
+  
+  public static void a(String paramString)
+  {
+    if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(paramString))) {
+      a.put(paramString, Long.valueOf(SystemClock.uptimeMillis()));
     }
-    return true;
+  }
+  
+  public static void b(String paramString)
+  {
+    if ((QLog.isColorLevel()) && (!TextUtils.isEmpty(paramString)) && (a.containsKey(paramString)))
+    {
+      Long localLong = (Long)a.get(paramString);
+      if (localLong != null)
+      {
+        long l1 = localLong.longValue();
+        long l2 = SystemClock.uptimeMillis();
+        b.put(paramString, Long.valueOf(l2));
+        QLog.d("TraceReport_CmShowStatUtil", 1, new Object[] { "eventName=", paramString, ", cost=", Long.valueOf(l2 - l1) });
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajas
  * JD-Core Version:    0.7.0.1
  */

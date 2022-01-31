@@ -1,40 +1,29 @@
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
-import cooperation.qzone.util.AlbumLibDownloaderUtil;
-import cooperation.qzone.util.FileUtils;
-import java.io.File;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewParent;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 
 public class anil
-  implements ModuleDownloadListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public anil(AlbumLibDownloaderUtil paramAlbumLibDownloaderUtil) {}
+  public anil(EmoticonMainPanel paramEmoticonMainPanel, int paramInt) {}
   
-  public void onDownloadCanceled(String paramString) {}
-  
-  public void onDownloadFailed(String paramString) {}
-  
-  public void onDownloadProgress(String paramString, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (!paramString.equals("pictureMarkerSo.so")) {
-      return;
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (i == this.jdField_a_of_type_Int) {
+      AbstractGifImage.resumeAll();
     }
-    String str = AlbumLibDownloaderUtil.a.getPath();
-    paramString = new File(QzoneModuleManager.getInstance().getModuleFilePath(paramString));
-    if (paramString.exists()) {
-      paramString.renameTo(new File(AlbumLibDownloaderUtil.a.getPath() + "/photoQulatitySo.zip"));
+    com.tencent.widget.XPanelContainer.jdField_a_of_type_Int = i;
+    if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.getParent() != null) {
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.getParent().requestLayout();
     }
-    paramString = new File(str);
-    if (!paramString.exists()) {
-      paramString.mkdirs();
-    }
-    FileUtils.b(new File(AlbumLibDownloaderUtil.a.getPath() + "/photoQulatitySo.zip"), paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anil
  * JD-Core Version:    0.7.0.1
  */

@@ -129,7 +129,7 @@ public class o
         localObject = new tlv_t401().get_tlv_401(paramArrayOfByte4);
         continue;
         localObject = new tlv_t(408);
-        ((tlv_t)localObject).set_data(new byte[] { (byte)r.I }, 1);
+        ((tlv_t)localObject).set_data(new byte[] { (byte)r.K }, 1);
         localObject = ((tlv_t)localObject).get_buf();
       }
     }

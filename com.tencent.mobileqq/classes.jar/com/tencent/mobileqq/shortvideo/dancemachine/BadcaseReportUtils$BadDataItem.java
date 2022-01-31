@@ -2,18 +2,21 @@ package com.tencent.mobileqq.shortvideo.dancemachine;
 
 public class BadcaseReportUtils$BadDataItem
 {
-  public int a;
-  public String a;
-  public int b;
+  public static final int MATCH_PROBLEM = 3;
+  public static final int MODEL_PROBLEM = 2;
+  public static final int USER_PROBLEM = 1;
+  public String boyID;
+  public int mIndex;
+  public int problemKind;
   
   public BadcaseReportUtils$BadDataItem(int paramInt1, String paramString, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.b = paramInt2;
+    this.problemKind = paramInt1;
+    this.boyID = paramString;
+    this.mIndex = paramInt2;
   }
   
-  public static String a(int paramInt)
+  public static String getErrMsg(int paramInt)
   {
     switch (paramInt)
     {

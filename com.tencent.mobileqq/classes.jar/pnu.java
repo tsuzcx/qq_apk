@@ -1,18 +1,20 @@
-import com.tencent.component.media.ILog;
-import com.tencent.component.media.ImageManagerEnv;
-import com.tencent.youtu.android.rapidnet.ILogCallbackInterface;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.AppInterface;
+import mqq.app.MobileQQ;
 
-public final class pnu
-  implements ILogCallbackInterface
+class pnu
+  extends pnc
 {
-  public void printLog(int paramInt, String paramString1, String paramString2)
+  pnu(pnn parampnn, AppInterface paramAppInterface) {}
+  
+  public Drawable a()
   {
-    ImageManagerEnv.getLogger().w("SuperResolution.RapidNetUtils", new Object[] { "prio: " + paramInt + ", tag: " + paramString1 + ", info: " + paramString2 });
+    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_kandian_selected");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     pnu
  * JD-Core Version:    0.7.0.1
  */

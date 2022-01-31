@@ -1,38 +1,30 @@
-import android.media.MediaPlayer;
-import com.tencent.mobileqq.ptt.player.AmrPlayer;
-import com.tencent.mobileqq.ptt.player.IPttPlayerListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class agyb
-  implements Runnable
+class agyb
+  implements View.OnClickListener
 {
-  public agyb(AmrPlayer paramAmrPlayer) {}
+  agyb(agxq paramagxq) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AmrPlayer", 2, "playAmr " + AmrPlayer.a(this.a));
-    }
-    try
+    switch (paramView.getId())
     {
-      AmrPlayer.a(this.a).b();
-      AmrPlayer.a(this.a).start();
-      if (AmrPlayer.a(this.a, AmrPlayer.a(this.a) - 1000) > 0) {
-        AmrPlayer.a(this.a).seekTo(AmrPlayer.a(this.a));
-      }
+    default: 
       return;
     }
-    catch (Exception localException)
-    {
-      while (AmrPlayer.a(this.a) == null) {}
-      AmrPlayer.a(this.a).sendEmptyMessage(1);
-    }
+    paramView = new Bundle();
+    paramView.putBoolean("string_from", false);
+    paramView.putBoolean("string_uin", true);
+    paramView.putLong("device_din", 0L);
+    paramView.putInt("sTitleID", 0);
+    bfgz.a(agxq.a(this.a), paramView, "com.qqdataline.activity.LiteWifiphotoActivity");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agyb
  * JD-Core Version:    0.7.0.1
  */

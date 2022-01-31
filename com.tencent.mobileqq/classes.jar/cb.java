@@ -1,49 +1,93 @@
-import com.dataline.activities.LiteMutiPicViewerActivity;
-import com.tencent.mobileqq.app.DataLineObserver;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import com.dataline.activities.LiteActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import java.util.ArrayList;
+import java.util.List;
 
 public class cb
-  extends DataLineObserver
+  extends AsyncTask<Bundle, Integer, Void>
 {
-  public cb(LiteMutiPicViewerActivity paramLiteMutiPicViewerActivity) {}
+  public cb(LiteActivity paramLiteActivity) {}
   
-  protected void a(long paramLong)
+  DataLineMsgRecord a(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.runOnUiThread(new ch(this));
+    DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
+    localDataLineMsgRecord.path = paramString;
+    localDataLineMsgRecord.msgtype = -2000;
+    localDataLineMsgRecord.groupId = paramInt1;
+    localDataLineMsgRecord.groupSize = paramInt2;
+    localDataLineMsgRecord.groupIndex = paramInt3;
+    return localDataLineMsgRecord;
   }
   
-  protected void a(long paramLong, float paramFloat)
+  protected Void a(Bundle... paramVarArgs)
   {
-    super.a(paramLong, paramFloat);
-    this.a.runOnUiThread(new cg(this));
+    paramVarArgs = paramVarArgs[0].getStringArrayList("PhotoConst.PHOTO_PATHS");
+    if (paramVarArgs == null) {
+      return null;
+    }
+    a(paramVarArgs);
+    return null;
   }
   
-  protected void a(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
+  protected void a(Void paramVoid)
   {
-    super.a(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
-    this.a.runOnUiThread(new cc(this));
+    this.a.a(false);
   }
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  void a(List<String> paramList)
   {
-    super.a(paramBoolean, paramLong, paramString);
-    this.a.runOnUiThread(new cf(this));
-  }
-  
-  protected void b(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
-  {
-    super.b(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
-    this.a.runOnUiThread(new cd(this));
-  }
-  
-  protected void b(boolean paramBoolean, long paramLong, String paramString)
-  {
-    super.b(paramBoolean, paramLong, paramString);
-    this.a.runOnUiThread(new ce(this));
+    ajgm localajgm = (ajgm)this.a.app.a(8);
+    for (;;)
+    {
+      int j = paramList.size();
+      if (j <= 3)
+      {
+        i = 0;
+        while (i < j)
+        {
+          localajgm.a(a((String)paramList.get(i), 0, 0, 0), false);
+          i += 1;
+        }
+      }
+      if ((j > 3) && (j < 50))
+      {
+        localArrayList = new ArrayList();
+        int k = localajgm.a();
+        i = 0;
+        while (i < j)
+        {
+          localArrayList.add(a((String)paramList.get(i), k, j, i));
+          i += 1;
+        }
+        dj.n(this.a.app);
+        localajgm.a(localArrayList, false);
+        return;
+      }
+      ArrayList localArrayList = new ArrayList();
+      j = localajgm.a();
+      int i = 0;
+      while (i < 50)
+      {
+        localArrayList.add(a((String)paramList.get(i), j, 50, i));
+        i += 1;
+      }
+      dj.n(this.a.app);
+      localajgm.a(localArrayList, false);
+      i = 0;
+      while (i < 50)
+      {
+        paramList.remove(0);
+        i += 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     cb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,15 @@
-import android.os.Looper;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.Doraemon.monitor.APIQuotaItem;
+import java.util.HashMap;
 
-public final class zui
-  extends MqqHandler
+public abstract interface zui
 {
-  public zui(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public abstract void a(String paramString1, int paramInt, String paramString2, String paramString3, long paramLong1, long paramLong2);
   
-  public void removeCallbacksAndMessages(Object paramObject)
-  {
-    if (paramObject == null)
-    {
-      QLog.e("ThreadManager", 1, "global SubHandler cannot excute removeCallbacksAndMessages");
-      return;
-    }
-    super.removeCallbacksAndMessages(paramObject);
-  }
+  public abstract void a(String paramString, HashMap<String, APIQuotaItem> paramHashMap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zui
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c26" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022175" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d00b7"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/search_box" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d00b7" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040b98" />
-</RelativeLayout>

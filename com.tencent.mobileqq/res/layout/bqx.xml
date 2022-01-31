@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qzone.widget.LinerLayoutForListViewItem android:orientation="vertical" android:id="@id/f27" android:background="@drawable/aup" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:qzone="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <View android:id="@id/c5r" android:background="#ffd7d7d7" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="9.0dip">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <com.qzone.widget.AvatarImageView android:id="@id/deo" android:layout_width="38.0dip" android:layout_height="38.0dip" android:layout_marginTop="9.0dip" android:src="@drawable/g69" qzone:avatarSize="38.0dip" />
+                <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="14.0dip" android:layout_weight="1.0">
+                    <LinearLayout android:gravity="left" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="4.0dip">
+                        <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="@dimen/q1" android:textColor="@color/a83" android:ellipsize="end" android:layout_gravity="top" android:id="@id/jj8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="200.0dip" android:singleLine="true" />
+                        <ImageView android:id="@id/i6l" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" />
+                    </LinearLayout>
+                    <TextView android:textSize="11.0sp" android:textColor="#ffa9a9a9" android:id="@id/jj3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="昨天23:55" android:singleLine="true" />
+                </LinearLayout>
+            </LinearLayout>
+            <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="@dimen/pl" android:textColor="@color/a3t" android:id="@id/jgg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/s7s" android:lineSpacingExtra="@dimen/p7" />
+        </LinearLayout>
+        <com.qzone.widget.FeedImageView android:id="@id/de8" android:layout_width="55.0dip" android:layout_height="55.0dip" android:layout_marginTop="10.0dip" android:adjustViewBounds="true" android:contentDescription="@string/gqp" />
+        <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="@dimen/py" android:textColor="@color/a3t" android:id="@id/ji6" android:background="#ffeeeeee" android:visibility="gone" android:layout_width="55.0dip" android:layout_height="55.0dip" android:layout_marginTop="10.0dip" android:maxLines="3" />
+    </LinearLayout>
+</com.qzone.widget.LinerLayoutForListViewItem>

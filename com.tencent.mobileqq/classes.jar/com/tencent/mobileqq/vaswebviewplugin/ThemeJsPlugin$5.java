@@ -1,22 +1,24 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
+import android.content.Context;
+import bafb;
 
 class ThemeJsPlugin$5
-  implements DialogInterface.OnClickListener
+  extends bafb
 {
-  ThemeJsPlugin$5(ThemeJsPlugin paramThemeJsPlugin, String paramString1, String paramString2, Bundle paramBundle, String paramString3) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  ThemeJsPlugin$5(ThemeJsPlugin paramThemeJsPlugin, Context paramContext, int paramInt, String paramString1, String paramString2, boolean paramBoolean, String paramString3)
   {
-    this.this$0.gotoDownload(-2, this.val$id, this.val$version, this.val$reqData, this.val$callbackId);
+    super(paramContext, paramInt);
+  }
+  
+  public void onBackPressed()
+  {
+    this.this$0.gotoDownload(-1, this.val$id, this.val$version, this.val$isVoiceTheme, this.val$callbackId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ThemeJsPlugin.5
  * JD-Core Version:    0.7.0.1
  */

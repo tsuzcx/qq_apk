@@ -1,94 +1,20 @@
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
-import com.tencent.mobileqq.widget.PinnedDividerListView.DividerAdapter;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
 
-public class wzv
-  extends PinnedDividerListView.DividerAdapter
+class wzv
+  implements View.OnClickListener
 {
-  private wzv(CountryActivity paramCountryActivity) {}
+  wzv(wzt paramwzt) {}
   
-  public int a()
+  public void onClick(View paramView)
   {
-    return 2130969162;
-  }
-  
-  public void a(View paramView, int paramInt)
-  {
-    paramInt = ((Integer)this.a.jdField_a_of_type_JavaUtilLinkedHashMap.get(((wzw)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString)).intValue();
-    ((TextView)paramView).setText(((wzw)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_JavaLangString);
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return ((wzw)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Boolean;
-  }
-  
-  public int getCount()
-  {
-    return this.a.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    if (((wzw)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Boolean) {
-      return 0;
-    }
-    return 1;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    wzw localwzw = (wzw)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    if (getItemViewType(paramInt) == 0)
-    {
-      if (paramView != null) {
-        break label107;
-      }
-      paramView = this.a.getLayoutInflater().inflate(a(), paramViewGroup, false);
-    }
-    label107:
-    for (;;)
-    {
-      ((TextView)paramView).setText(localwzw.jdField_a_of_type_JavaLangString);
-      for (;;)
-      {
-        paramView.setVisibility(0);
-        return paramView;
-        View localView = paramView;
-        if (paramView == null)
-        {
-          localView = CountryActivity.a(paramViewGroup, this.a.getLayoutInflater(), false);
-          localView.setOnClickListener(this.a);
-        }
-        CountryActivity.a(localView, localwzw);
-        paramView = localView;
-      }
-    }
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 2;
+    wzt.a(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wzv
  * JD-Core Version:    0.7.0.1
  */

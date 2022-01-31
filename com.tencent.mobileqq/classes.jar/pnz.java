@@ -1,23 +1,11 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.component.network.downloader.DownloadResult.Content;
-
-public final class pnz
-  implements Parcelable.Creator
+class pnz
+  extends pnb
 {
-  public DownloadResult.Content a(Parcel paramParcel)
-  {
-    return new DownloadResult.Content(paramParcel);
-  }
-  
-  public DownloadResult.Content[] a(int paramInt)
-  {
-    return new DownloadResult.Content[paramInt];
-  }
+  pnz(pnn parampnn) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     pnz
  * JD-Core Version:    0.7.0.1
  */

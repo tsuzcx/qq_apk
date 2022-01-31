@@ -1,158 +1,227 @@
-import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.LoginVerifyCodeActivity2;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqconnect.wtlogin.OpenSDKAppInterface;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 public class tfp
-  extends WtloginObserver
 {
-  public tfp(LoginVerifyCodeActivity2 paramLoginVerifyCodeActivity2) {}
+  public int a;
+  public ArrayList<String> a;
+  public tft a;
+  public tfu a;
   
-  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, ErrMsg paramErrMsg)
+  public tfp(List<String> paramList)
   {
-    String str1 = null;
-    if (QLog.isColorLevel())
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Tfu = new tfq(this);
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_Tft = null;
+  }
+  
+  public void a(List<String> paramList)
+  {
+    Object localObject = paramList;
+    if (paramList == null) {
+      localObject = Collections.emptyList();
+    }
+    urk.d("BatchGetVideoInfo", "runPuller vid list size = %d", new Object[] { Integer.valueOf(((List)localObject).size()) });
+    paramList = swi.a((List)localObject);
+    paramList.a("BatchGetVideoInfo");
+    paramList.a(new tfr(this, paramList));
+    paramList.b();
+  }
+  
+  public void a(tft paramtft)
+  {
+    this.jdField_a_of_type_Tft = paramtft;
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
     {
-      QLog.d("LoginVerifyCodeActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
-      if (paramErrMsg != null) {
-        QLog.d("LoginVerifyCodeActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
+      if (QLog.isColorLevel()) {
+        QLog.e("BatchGetVideoInfo", 2, "doBatchGetVideoInfo, vidList ==  null || vidList.isEmpty()");
+      }
+      if (this.jdField_a_of_type_Tft != null) {
+        this.jdField_a_of_type_Tft.a();
       }
     }
-    if (paramInt2 == 0)
+    ArrayList localArrayList1;
+    ArrayList localArrayList2;
+    do
     {
-      QLog.d("LoginVerifyCodeActivity", 2, "OnGetStViaSMSVerifyLogin  login success ret =  " + paramInt2);
-      if ((LoginVerifyCodeActivity2.c(this.a) == 2) || (LoginVerifyCodeActivity2.c(this.a) == 3))
+      return;
+      localArrayList1 = new ArrayList();
+      localArrayList2 = new ArrayList();
+      sqd localsqd = (sqd)sqg.a(5);
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
       {
-        this.a.c();
-        paramErrMsg = new Intent();
-        paramErrMsg.putExtra("last_account", paramString);
-        this.a.setResult(-1, paramErrMsg);
-        this.a.finish();
+        String str = (String)localIterator.next();
+        StoryVideoItem localStoryVideoItem = localsqd.a(str);
+        if (localStoryVideoItem != null)
+        {
+          if ((this.jdField_a_of_type_Tfu != null) && (this.jdField_a_of_type_Tfu.a(localStoryVideoItem)))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("BatchGetVideoInfo", 2, "TextUtils.isEmpty(video.mVideoUrl), vid:" + str);
+            }
+            localArrayList1.add(str);
+          }
+          else
+          {
+            localArrayList2.add(localStoryVideoItem);
+          }
+        }
+        else
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("BatchGetVideoInfo", 2, "storyVideoItem != null, vid:" + str);
+          }
+          localArrayList1.add(str);
+        }
+      }
+      if (!localArrayList1.isEmpty()) {
+        break;
+      }
+    } while (this.jdField_a_of_type_Tft == null);
+    this.jdField_a_of_type_Tft.a(localArrayList2);
+    return;
+    a(localArrayList1);
+  }
+  
+  public void c()
+  {
+    Object localObject1 = new ArrayList();
+    ArrayList localArrayList1 = new ArrayList();
+    sqd localsqd = (sqd)sqg.a(5);
+    ArrayList localArrayList2 = new ArrayList();
+    ArrayList localArrayList3 = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject2 = (String)localIterator.next();
+      StoryVideoItem localStoryVideoItem = localsqd.a((String)localObject2);
+      if (localStoryVideoItem == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("BatchGetVideoInfo", 2, "handleVidInfoBack, vid can't find storyvideoitem vid:" + (String)localObject2);
+        }
+        localArrayList1.add(localObject2);
+      }
+      else if (!TextUtils.isEmpty(localStoryVideoItem.mOwnerUid))
+      {
+        localObject2 = ((sqs)sqg.a(2)).b(localStoryVideoItem.mOwnerUid);
+        if (localObject2 == null)
+        {
+          if (!localArrayList2.contains(localStoryVideoItem.mOwnerUid)) {
+            localArrayList2.add(localStoryVideoItem.mOwnerUid);
+          }
+        }
+        else
+        {
+          localStoryVideoItem.mOwnerUid = ((QQUserUIItem)localObject2).uid;
+          localArrayList3.add(localStoryVideoItem);
+          ((ArrayList)localObject1).add(localStoryVideoItem);
+        }
+      }
+      else
+      {
+        ((ArrayList)localObject1).add(localStoryVideoItem);
+      }
+    }
+    if (!localArrayList1.isEmpty())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("BatchGetVideoInfo", 2, "handleVidInfoBack, vid can't find storyvideoitem.");
+      }
+      int i = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Int = (i + 1);
+      if (i < 3) {
+        a(localArrayList1);
+      }
+    }
+    do
+    {
+      do
+      {
         return;
+      } while (this.jdField_a_of_type_Tft == null);
+      this.jdField_a_of_type_Tft.a();
+      return;
+      this.jdField_a_of_type_Int = 0;
+      if (!localArrayList3.isEmpty()) {
+        localsqd.a(localArrayList3);
       }
-      LoginVerifyCodeActivity2.a(this.a).ssoGetTicketNoPasswd(paramString, 4096, this.a.a);
-      return;
-    }
-    this.a.c();
-    if (paramInt2 == -20160326)
-    {
-      this.a.finish();
-      return;
-    }
-    if (paramInt2 == 2008)
-    {
-      this.a.a(2131433232, 0);
-      this.a.finish();
-      return;
-    }
-    String str3;
-    if (paramErrMsg != null)
-    {
-      str3 = paramErrMsg.getMessage();
-      str2 = str3;
-      if (paramErrMsg.getType() == 1) {
-        str1 = paramErrMsg.getOtherinfo();
+      if (!localArrayList2.isEmpty()) {
+        break;
       }
-    }
-    for (String str2 = str3;; str2 = null)
+    } while (this.jdField_a_of_type_Tft == null);
+    this.jdField_a_of_type_Tft.a((ArrayList)localObject1);
+    return;
+    localObject1 = swi.a(localArrayList2);
+    ((swi)localObject1).a("BatchGetVideoInfo");
+    ((swi)localObject1).a(new tfs(this, (swi)localObject1));
+    ((swi)localObject1).b();
+  }
+  
+  public void d()
+  {
+    ArrayList localArrayList1 = new ArrayList();
+    sqd localsqd = (sqd)sqg.a(5);
+    ArrayList localArrayList2 = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
     {
-      if (!TextUtils.isEmpty(str1))
+      StoryVideoItem localStoryVideoItem = localsqd.a((String)localIterator.next());
+      if (localStoryVideoItem == null)
       {
-        paramErrMsg = new Intent(this.a, NotificationActivity.class);
-        paramErrMsg.putExtra("type", 8);
-        if (paramInt2 == 40) {
-          paramErrMsg.putExtra("msg", str2);
+        urk.d("BatchGetVideoInfo", "user -> video empty ,strange");
+      }
+      else
+      {
+        QQUserUIItem localQQUserUIItem;
+        if (!TextUtils.isEmpty(localStoryVideoItem.mOwnerUid))
+        {
+          localQQUserUIItem = ((sqs)sqg.a(2)).b(localStoryVideoItem.mOwnerUid);
+          if (localQQUserUIItem != null) {
+            break label152;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.e("BatchGetVideoInfo", 2, "unionid can't find QQUserUIItem:" + localStoryVideoItem.mOwnerUid);
+          }
         }
         for (;;)
         {
-          paramErrMsg.putExtra("loginalias", paramString);
-          paramErrMsg.putExtra("loginret", paramInt2);
-          this.a.startActivity(paramErrMsg);
-          return;
-          paramErrMsg.putExtra("msg", str2 + " " + str1);
+          localArrayList1.add(localStoryVideoItem);
+          break;
+          label152:
+          localStoryVideoItem.mOwnerUid = localQQUserUIItem.uid;
+          localArrayList2.add(localStoryVideoItem);
         }
       }
-      if (TextUtils.isEmpty(str2)) {
-        this.a.a();
-      }
-      while (paramInt2 == 155)
-      {
-        this.a.finish();
-        return;
-        this.a.a(str2, 0);
-      }
-      break;
     }
-  }
-  
-  public void OnRefreshSMSVerifyLoginAccount(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("LoginVerifyCodeActivity", 2, "OnRefreshSMSVerifyLoginAccount.mobile=" + paramString1 + " msg=" + paramString2 + " timeLimit=" + paramInt2);
-      QLog.d("LoginVerifyCodeActivity", 2, "OnRefreshSMSVerifyLoginAccount.ret=" + paramInt3);
-      if (paramErrMsg != null) {
-        QLog.d("LoginVerifyCodeActivity", 2, "OnRefreshSMSVerifyLoginAccount.errMsg=" + paramErrMsg);
-      }
+    if (!localArrayList2.isEmpty()) {
+      localsqd.a(localArrayList2);
     }
-    if (this.a.isFinishing()) {
-      return;
+    if (this.jdField_a_of_type_Tft != null) {
+      this.jdField_a_of_type_Tft.a(localArrayList1);
     }
-    this.a.c();
-    if (paramInt3 != 0)
-    {
-      paramString1 = null;
-      if (paramErrMsg != null) {
-        paramString1 = paramErrMsg.getMessage();
-      }
-      if (TextUtils.isEmpty(paramString1))
-      {
-        this.a.a();
-        return;
-      }
-      this.a.a(paramString1, 0);
-      return;
-    }
-    LoginVerifyCodeActivity2.a(this.a, 60);
-  }
-  
-  public void OnVerifySMSVerifyLoginAccount(String paramString1, String paramString2, int paramInt, ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("LoginVerifyCodeActivity", 2, "OnVerifySMSVerifyLoginAccount mobile=" + paramString1 + " msgCode=" + paramString2 + " ret=" + paramInt);
-      if (paramErrMsg != null) {
-        QLog.d("LoginVerifyCodeActivity", 2, "OnVerifySMSVerifyLoginAccount errMsg=" + paramErrMsg.getMessage());
-      }
-    }
-    if (this.a.isFinishing()) {
-      return;
-    }
-    if (paramInt != 0)
-    {
-      this.a.c();
-      paramString1 = null;
-      if (paramErrMsg != null) {
-        paramString1 = paramErrMsg.getMessage();
-      }
-      if (TextUtils.isEmpty(paramString1))
-      {
-        this.a.a();
-        return;
-      }
-      this.a.a(paramString1, 0);
-      return;
-    }
-    LoginVerifyCodeActivity2.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tfp
  * JD-Core Version:    0.7.0.1
  */

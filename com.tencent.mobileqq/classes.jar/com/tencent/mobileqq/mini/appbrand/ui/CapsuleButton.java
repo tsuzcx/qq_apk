@@ -1,0 +1,1866 @@
+package com.tencent.mobileqq.mini.appbrand.ui;
+
+import ajjy;
+import alrv;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import bati;
+import baup;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
+import com.tencent.mobileqq.activity.miniaio.MiniMsgIPCClient;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.MemoryManager;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.mini.MiniAppInterface;
+import com.tencent.mobileqq.mini.apkg.ApkgInfo;
+import com.tencent.mobileqq.mini.apkg.AppConfigInfo;
+import com.tencent.mobileqq.mini.apkg.AppMode;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.app.AppLoaderFactory;
+import com.tencent.mobileqq.mini.app.BaseAppLoaderManager;
+import com.tencent.mobileqq.mini.app.MiniAppStateManager;
+import com.tencent.mobileqq.mini.appbrand.AppBrandRuntime;
+import com.tencent.mobileqq.mini.appbrand.jsapi.plugins.JsPluginEngine;
+import com.tencent.mobileqq.mini.appbrand.page.AbsAppBrandPage;
+import com.tencent.mobileqq.mini.appbrand.page.AppBrandPageContainer;
+import com.tencent.mobileqq.mini.appbrand.page.PageWebview;
+import com.tencent.mobileqq.mini.appbrand.utils.AppBrandTask;
+import com.tencent.mobileqq.mini.appbrand.utils.AppBrandUtil;
+import com.tencent.mobileqq.mini.appbrand.utils.ShortcutUtils;
+import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.mini.mainpage.MainPageFragment;
+import com.tencent.mobileqq.mini.report.MiniAppReportManager2;
+import com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239;
+import com.tencent.mobileqq.mini.report.MiniReportManager;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil;
+import com.tencent.mobileqq.mini.sdk.LaunchParam;
+import com.tencent.mobileqq.mini.sdk.ShareChatModel;
+import com.tencent.mobileqq.mini.util.DisplayUtil;
+import com.tencent.mobileqq.mini.util.StorageUtil;
+import com.tencent.mobileqq.mini.utils.MiniAppGlobal;
+import com.tencent.mobileqq.mini.utils.NavigateBackUtils;
+import com.tencent.mobileqq.mini.webview.JsRuntime;
+import com.tencent.mobileqq.minigame.jsapi.GameBrandRuntime;
+import com.tencent.mobileqq.minigame.jsapi.GameJsPluginEngine;
+import com.tencent.mobileqq.minigame.jsapi.GameJsRuntime;
+import com.tencent.mobileqq.minigame.manager.GameInfoManager;
+import com.tencent.mobileqq.minigame.ui.GameActivity;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashMap<Ljava.lang.String;Ljava.lang.Integer;>;
+import mqq.app.AppRuntime;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class CapsuleButton
+  extends RelativeLayout
+  implements Handler.Callback, View.OnClickListener, View.OnLongClickListener
+{
+  public static final String KEY_TAP_INDEX_QQ = "tapIndexQQ";
+  public static final String KEY_TAP_INDEX_QZONE = "tapIndexQZONE";
+  public static final String KEY_TAP_INDEX_WX = "tapIndexWX";
+  public static final String KEY_TAP_INDEX_WX_MOMENTS = "tapIndexWXMoments";
+  private static final int MINI_APP_INNER_SHARE_BUTTON = 1;
+  private static final int MINI_APP_MORE_BUTTON = 0;
+  public static final int MSG_ADD_SHORTCUT = 11;
+  public static final int MSG_BACK_HOME = 10;
+  public static final int MSG_COLOR_NOTE_CLICK = 14;
+  public static final int MSG_COMPLAINT = 12;
+  public static final int MSG_DEBUG_CLICK = 3;
+  public static final int MSG_DETAIL_CLICK = 4;
+  public static final int MSG_FORWARD_CLICK = 2;
+  public static final int MSG_FORWARD_QZONE_CLICK = 6;
+  public static final int MSG_FORWARD_SHARE_CHAT_CLICK = 13;
+  public static final int MSG_FORWARD_WECHAT_CLICK = 7;
+  public static final int MSG_FORWARD_WECHAT_MOMENT_CLICK = 8;
+  public static final int MSG_MONITOR_CLICK = 5;
+  public static final int MSG_MORE_CLICK = 1;
+  public static final int MSG_QIPC_TIMEOUT = 1000;
+  public static final int MSG_SET_TOP = 9;
+  public static final int REQUEST_CODE = 1001;
+  public static final String TAG = "CapsuleButton";
+  private static int unReadCount;
+  private String KINGCARD_GUIDE_KEY_PREFFIX = "mini_app_kingcard_guide_";
+  private int actionSheetCallbackId = -1;
+  private ArrayList<Integer> backHomeSceneList = new CapsuleButton.1(this);
+  private boolean isMiniMsgTabShow;
+  private boolean isOpenMonitorPanel;
+  private int launchFrom = -1;
+  private baup lottieLoader;
+  private AppBrandRuntime mAppBrandRuntime;
+  private Drawable mCloseBtnBgDrawable;
+  private Drawable mCloseBtnWhiteBgDrawable;
+  private ImageView mCloseView;
+  private GameBrandRuntime mGameBrandRuntime;
+  private GameJsPluginEngine mGameJsPluginEngine;
+  private Handler mHandler;
+  private String mKingCardText;
+  private Drawable mMoreBtnBgDrawable;
+  private Drawable mMoreBtnWhiteBgDrawable;
+  private DiniFlyAnimationView mMoreView;
+  private TextView mRedDot;
+  private View mSplider;
+  private int mStyle = -1;
+  private HashMap<String, Integer> tapIndexMap;
+  
+  public CapsuleButton(Context paramContext)
+  {
+    super(paramContext);
+    initUI();
+    this.mHandler = new Handler(Looper.getMainLooper(), this);
+  }
+  
+  private void backToHomePage()
+  {
+    if (this.mAppBrandRuntime == null) {
+      return;
+    }
+    String str = this.mAppBrandRuntime.apkgInfo.getAppConfigInfo().entryPagePath;
+    this.mAppBrandRuntime.reload(str, true);
+  }
+  
+  private Activity getActivity()
+  {
+    Activity localActivity = null;
+    if (isMiniGameRuntime()) {
+      if (this.mGameBrandRuntime != null) {
+        localActivity = this.mGameBrandRuntime.activity;
+      }
+    }
+    while (this.mAppBrandRuntime == null) {
+      return localActivity;
+    }
+    return this.mAppBrandRuntime.activity;
+  }
+  
+  private View getContainerView()
+  {
+    this.mMoreView = new DiniFlyAnimationView(getContext());
+    this.mMoreView.setId(2131298036);
+    this.mMoreView.setContentDescription(ajjy.a(2131635558));
+    Object localObject = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 40.0F), -1);
+    ((RelativeLayout.LayoutParams)localObject).addRule(9, -1);
+    this.mMoreView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+    addView(this.mMoreView, (ViewGroup.LayoutParams)localObject);
+    localObject = new ImageView(getContext());
+    ((ImageView)localObject).setId(2131297953);
+    ((ImageView)localObject).setContentDescription(ajjy.a(2131635554));
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 40.0F), -1);
+    localLayoutParams.addRule(11, -1);
+    localLayoutParams.addRule(1, 2131298036);
+    ((ImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+    addView((View)localObject, localLayoutParams);
+    localObject = new View(getContext());
+    ((View)localObject).setId(2131303557);
+    localLayoutParams = new RelativeLayout.LayoutParams(DisplayUtil.dip2px(getContext(), 0.5F), DisplayUtil.dip2px(getContext(), 18.0F));
+    localLayoutParams.addRule(13, -1);
+    ((View)localObject).setBackgroundColor(436207616);
+    addView((View)localObject, localLayoutParams);
+    localObject = new TextView(getContext());
+    ((TextView)localObject).setId(2131308447);
+    localLayoutParams = new RelativeLayout.LayoutParams(-2, DisplayUtil.dip2px(getContext(), 19.0F));
+    localLayoutParams.leftMargin = DisplayUtil.dip2px(getContext(), 21.5F);
+    localLayoutParams.topMargin = DisplayUtil.dip2px(getContext(), -9.5F);
+    addView((View)localObject, localLayoutParams);
+    return this;
+  }
+  
+  private MiniAppInfo getMiniAppInfo()
+  {
+    Object localObject2 = null;
+    Object localObject1;
+    if (isMiniGameRuntime())
+    {
+      localObject1 = localObject2;
+      if (this.mGameBrandRuntime != null)
+      {
+        localObject1 = localObject2;
+        if (this.mGameBrandRuntime.getApkgInfo() != null)
+        {
+          localObject1 = localObject2;
+          if (this.mGameBrandRuntime.getApkgInfo().appConfig != null) {
+            localObject1 = this.mGameBrandRuntime.getApkgInfo().appConfig.config;
+          }
+        }
+      }
+    }
+    do
+    {
+      do
+      {
+        do
+        {
+          return localObject1;
+          localObject1 = localObject2;
+        } while (this.mAppBrandRuntime == null);
+        localObject1 = localObject2;
+      } while (this.mAppBrandRuntime.apkgInfo == null);
+      localObject1 = localObject2;
+    } while (this.mAppBrandRuntime.apkgInfo.appConfig == null);
+    return this.mAppBrandRuntime.apkgInfo.appConfig.config;
+  }
+  
+  private void handleForwardClick()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    Object localObject2 = "onShareAppMessage";
+    Object localObject1 = localObject2;
+    label213:
+    label247:
+    do
+    {
+      do
+      {
+        for (;;)
+        {
+          try
+          {
+            if (this.launchFrom == 1)
+            {
+              String str = "showActionSheet";
+              localObject2 = str;
+              localObject1 = str;
+              if (this.tapIndexMap == null) {
+                continue;
+              }
+              localObject1 = str;
+              localJSONObject.put("tapIndex", this.tapIndexMap.get("tapIndexQQ"));
+              localObject1 = "showActionSheet";
+              localObject2 = localObject1;
+            }
+          }
+          catch (JSONException localJSONException1) {}
+          try
+          {
+            if (!isMiniGameRuntime())
+            {
+              localObject2 = localObject1;
+              if (this.mAppBrandRuntime != null)
+              {
+                localObject2 = localObject1;
+                if (this.mAppBrandRuntime.pageContainer.getCurrentPage() != null)
+                {
+                  localJSONObject.put("webViewUrl", this.mAppBrandRuntime.pageContainer.getCurrentPage().getUrl());
+                  localObject2 = localObject1;
+                }
+              }
+            }
+            if (!isMiniGameRuntime()) {
+              break label257;
+            }
+            this.mGameBrandRuntime.fromShareMenuBtn = 0;
+            if ((this.mGameJsPluginEngine == null) || (this.mGameJsPluginEngine.getGameJsRuntime(1) == null)) {
+              break label247;
+            }
+            if (this.launchFrom != 1) {
+              break;
+            }
+            this.mGameJsPluginEngine.callbackJsEventOK(this.mGameJsPluginEngine.getGameJsRuntime(1), (String)localObject2, localJSONObject, this.actionSheetCallbackId);
+            return;
+          }
+          catch (JSONException localJSONException2)
+          {
+            Object localObject3;
+            break label213;
+          }
+          localObject1 = localObject2;
+          localJSONObject.put("fromShareButton", 0);
+          localObject1 = localObject2;
+          localJSONObject.put("shareTarget", 0);
+          localObject1 = localObject2;
+          continue;
+          QLog.e("CapsuleButton", 1, "on forward aio click exception ", localJSONException1);
+          localObject3 = localObject1;
+        }
+        this.mGameJsPluginEngine.getGameJsRuntime(1).evaluateSubcribeJS(localObject3, localJSONObject.toString(), -1);
+        return;
+        QLog.e("CapsuleButton", 1, "on forward aio click exception mGameJsPluginEngine==null");
+        return;
+      } while (this.mAppBrandRuntime == null);
+      if (this.launchFrom == 1)
+      {
+        this.mAppBrandRuntime.jsPluginEngine.callbackJsEventOK(this.mAppBrandRuntime.serviceRuntime, localObject3, localJSONObject, this.actionSheetCallbackId);
+        return;
+      }
+      this.mAppBrandRuntime.getPageWebView().fromShareMenuBtn = 0;
+      localObject1 = this.mAppBrandRuntime.pageContainer.getCurrentPageWebview();
+    } while (localObject1 == null);
+    label257:
+    this.mAppBrandRuntime.serviceRuntime.evaluateSubcribeJS(localObject3, localJSONObject.toString(), ((PageWebview)localObject1).pageWebviewId);
+  }
+  
+  private void handleForwardQZoneClick()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    Object localObject2 = "onShareAppMessage";
+    Object localObject1 = localObject2;
+    label213:
+    label247:
+    do
+    {
+      do
+      {
+        for (;;)
+        {
+          try
+          {
+            if (this.launchFrom == 1)
+            {
+              String str = "showActionSheet";
+              localObject2 = str;
+              localObject1 = str;
+              if (this.tapIndexMap == null) {
+                continue;
+              }
+              localObject1 = str;
+              localJSONObject.put("tapIndex", this.tapIndexMap.get("tapIndexQZONE"));
+              localObject1 = "showActionSheet";
+              localObject2 = localObject1;
+            }
+          }
+          catch (JSONException localJSONException1) {}
+          try
+          {
+            if (!isMiniGameRuntime())
+            {
+              localObject2 = localObject1;
+              if (this.mAppBrandRuntime != null)
+              {
+                localObject2 = localObject1;
+                if (this.mAppBrandRuntime.pageContainer.getCurrentPage() != null)
+                {
+                  localJSONObject.put("webViewUrl", this.mAppBrandRuntime.pageContainer.getCurrentPage().getUrl());
+                  localObject2 = localObject1;
+                }
+              }
+            }
+            if (!isMiniGameRuntime()) {
+              break label257;
+            }
+            this.mGameBrandRuntime.fromShareMenuBtn = 1;
+            if ((this.mGameJsPluginEngine == null) || (this.mGameJsPluginEngine.getGameJsRuntime(1) == null)) {
+              break label247;
+            }
+            if (this.launchFrom != 1) {
+              break;
+            }
+            this.mGameJsPluginEngine.callbackJsEventOK(this.mGameJsPluginEngine.getGameJsRuntime(1), (String)localObject2, localJSONObject, this.actionSheetCallbackId);
+            return;
+          }
+          catch (JSONException localJSONException2)
+          {
+            Object localObject3;
+            break label213;
+          }
+          localObject1 = localObject2;
+          localJSONObject.put("fromShareButton", 0);
+          localObject1 = localObject2;
+          localJSONObject.put("shareTarget", 1);
+          localObject1 = localObject2;
+          continue;
+          QLog.e("CapsuleButton", 1, "on forward qzone click exception ", localJSONException1);
+          localObject3 = localObject1;
+        }
+        this.mGameJsPluginEngine.getGameJsRuntime(1).evaluateSubcribeJS(localObject3, localJSONObject.toString(), -1);
+        return;
+        QLog.e("CapsuleButton", 1, "on forward qzone click exception mGameJsPluginEngine==null");
+        return;
+      } while (this.mAppBrandRuntime == null);
+      if (this.launchFrom == 1)
+      {
+        this.mAppBrandRuntime.jsPluginEngine.callbackJsEventOK(this.mAppBrandRuntime.serviceRuntime, localObject3, localJSONObject, this.actionSheetCallbackId);
+        return;
+      }
+      this.mAppBrandRuntime.getPageWebView().fromShareMenuBtn = 1;
+      localObject1 = this.mAppBrandRuntime.pageContainer.getCurrentPageWebview();
+    } while (localObject1 == null);
+    label257:
+    this.mAppBrandRuntime.serviceRuntime.evaluateSubcribeJS(localObject3, localJSONObject.toString(), ((PageWebview)localObject1).pageWebviewId);
+  }
+  
+  private void handleForwardWeChatFriends()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    Object localObject1 = "onShareAppMessage";
+    Object localObject2;
+    label214:
+    label224:
+    do
+    {
+      do
+      {
+        try
+        {
+          if (this.launchFrom == 1)
+          {
+            localObject2 = "showActionSheet";
+            localObject1 = localObject2;
+            if (this.tapIndexMap != null)
+            {
+              localJSONObject.put("tapIndex", this.tapIndexMap.get("tapIndexWX"));
+              localObject1 = localObject2;
+            }
+          }
+          for (;;)
+          {
+            if ((!isMiniGameRuntime()) && (this.mAppBrandRuntime != null) && (this.mAppBrandRuntime.pageContainer.getCurrentPage() != null)) {
+              localJSONObject.put("webViewUrl", this.mAppBrandRuntime.pageContainer.getCurrentPage().getUrl());
+            }
+            if (!isMiniGameRuntime()) {
+              break label224;
+            }
+            this.mGameBrandRuntime.fromShareMenuBtn = 3;
+            if ((this.mGameJsPluginEngine == null) || (this.mGameJsPluginEngine.getGameJsRuntime(1) == null)) {
+              break label214;
+            }
+            if (this.launchFrom != 1) {
+              break;
+            }
+            this.mGameJsPluginEngine.callbackJsEventOK(this.mGameJsPluginEngine.getGameJsRuntime(1), (String)localObject1, localJSONObject, this.actionSheetCallbackId);
+            return;
+            localJSONObject.put("fromShareButton", 0);
+            localJSONObject.put("shareTarget", 3);
+          }
+          this.mGameJsPluginEngine.getGameJsRuntime(1).evaluateSubcribeJS(localJSONException, localJSONObject.toString(), -1);
+        }
+        catch (JSONException localJSONException)
+        {
+          QLog.e("CapsuleButton", 1, "on forward wechat friends click exception ", localJSONException);
+          return;
+        }
+        return;
+        QLog.e("CapsuleButton", 1, "on forward wechat friends click exception mGameJsPluginEngine==null");
+        return;
+      } while (this.mAppBrandRuntime == null);
+      if (this.launchFrom == 1)
+      {
+        this.mAppBrandRuntime.jsPluginEngine.callbackJsEventOK(this.mAppBrandRuntime.serviceRuntime, localJSONException, localJSONObject, this.actionSheetCallbackId);
+        return;
+      }
+      localObject2 = this.mAppBrandRuntime.pageContainer.getCurrentPageWebview();
+    } while (localObject2 == null);
+    this.mAppBrandRuntime.getPageWebView().fromShareMenuBtn = 3;
+    this.mAppBrandRuntime.serviceRuntime.evaluateSubcribeJS(localJSONException, localJSONObject.toString(), ((PageWebview)localObject2).pageWebviewId);
+  }
+  
+  private void handleForwardWeChatMoment()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    Object localObject2 = "onShareAppMessage";
+    Object localObject1 = localObject2;
+    label213:
+    label247:
+    do
+    {
+      do
+      {
+        for (;;)
+        {
+          try
+          {
+            if (this.launchFrom == 1)
+            {
+              String str = "showActionSheet";
+              localObject2 = str;
+              localObject1 = str;
+              if (this.tapIndexMap == null) {
+                continue;
+              }
+              localObject1 = str;
+              localJSONObject.put("tapIndex", this.tapIndexMap.get("tapIndexWXMoments"));
+              localObject1 = "showActionSheet";
+              localObject2 = localObject1;
+            }
+          }
+          catch (JSONException localJSONException1) {}
+          try
+          {
+            if (!isMiniGameRuntime())
+            {
+              localObject2 = localObject1;
+              if (this.mAppBrandRuntime != null)
+              {
+                localObject2 = localObject1;
+                if (this.mAppBrandRuntime.pageContainer.getCurrentPage() != null)
+                {
+                  localJSONObject.put("webViewUrl", this.mAppBrandRuntime.pageContainer.getCurrentPage().getUrl());
+                  localObject2 = localObject1;
+                }
+              }
+            }
+            if (!isMiniGameRuntime()) {
+              break label257;
+            }
+            this.mGameBrandRuntime.fromShareMenuBtn = 4;
+            if ((this.mGameJsPluginEngine == null) || (this.mGameJsPluginEngine.getGameJsRuntime(1) == null)) {
+              break label247;
+            }
+            if (this.launchFrom != 1) {
+              break;
+            }
+            this.mGameJsPluginEngine.callbackJsEventOK(this.mGameJsPluginEngine.getGameJsRuntime(1), (String)localObject2, localJSONObject, this.actionSheetCallbackId);
+            return;
+          }
+          catch (JSONException localJSONException2)
+          {
+            Object localObject3;
+            break label213;
+          }
+          localObject1 = localObject2;
+          localJSONObject.put("fromShareButton", 0);
+          localObject1 = localObject2;
+          localJSONObject.put("shareTarget", 4);
+          localObject1 = localObject2;
+          continue;
+          QLog.e("CapsuleButton", 1, "on forward wechat moment exception ", localJSONException1);
+          localObject3 = localObject1;
+        }
+        this.mGameJsPluginEngine.getGameJsRuntime(1).evaluateSubcribeJS(localObject3, localJSONObject.toString(), -1);
+        return;
+        QLog.e("CapsuleButton", 1, "on forward wechat moment exception mGameJsPluginEngine==null");
+        return;
+      } while (this.mAppBrandRuntime == null);
+      if (this.launchFrom == 1)
+      {
+        this.mAppBrandRuntime.jsPluginEngine.callbackJsEventOK(this.mAppBrandRuntime.serviceRuntime, localObject3, localJSONObject, this.actionSheetCallbackId);
+        return;
+      }
+      localObject1 = this.mAppBrandRuntime.pageContainer.getCurrentPageWebview();
+    } while (localObject1 == null);
+    label257:
+    this.mAppBrandRuntime.getPageWebView().fromShareMenuBtn = 4;
+    this.mAppBrandRuntime.serviceRuntime.evaluateSubcribeJS(localObject3, localJSONObject.toString(), ((PageWebview)localObject1).pageWebviewId);
+  }
+  
+  private void handleMoreClick()
+  {
+    QLog.d("CapsuleButton", 1, "handleMoreClick --  isMiniMsgTabShow : " + this.isMiniMsgTabShow);
+    if (this.isMiniMsgTabShow) {
+      return;
+    }
+    this.launchFrom = 0;
+    int i = 1;
+    int m = -1;
+    boolean bool4 = false;
+    boolean bool7 = false;
+    boolean bool3 = false;
+    boolean bool5 = false;
+    boolean bool6 = false;
+    boolean bool2 = false;
+    int j = 0;
+    int k = 0;
+    int n = 0;
+    if (isMiniGameRuntime()) {
+      if ((this.mGameBrandRuntime != null) && (this.mGameBrandRuntime.activity != null) && (!this.isMiniMsgTabShow))
+      {
+        if ((this.mGameBrandRuntime.getApkgInfo() == null) || (this.mGameBrandRuntime.getApkgInfo().appConfig.config.verType == 3)) {
+          break label1581;
+        }
+        bool2 = true;
+      }
+    }
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      String str2 = this.mGameBrandRuntime.getApkgInfo().appId;
+      String str1 = this.mGameBrandRuntime.getApkgInfo().apkgName;
+      bool6 = this.mGameBrandRuntime.withShareQQ;
+      bool4 = this.mGameBrandRuntime.withShareQzone;
+      boolean bool8 = this.mGameBrandRuntime.withShareWeChatFriend;
+      bool3 = this.mGameBrandRuntime.withShareWeChatMoment;
+      k = this.mGameBrandRuntime.getApkgInfo().appConfig.config.topType;
+      bool5 = ((GameActivity)this.mGameBrandRuntime.activity).getIsOrientationLandscape();
+      Object localObject1 = ((GameActivity)this.mGameBrandRuntime.activity).getMenuStyle();
+      bool7 = bool1;
+      bool1 = bool4;
+      bool4 = bool8;
+      if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_share_to_wx_switcher", 1) != 1)
+      {
+        bool8 = false;
+        bool3 = false;
+      }
+      for (;;)
+      {
+        Object localObject2;
+        label336:
+        label363:
+        boolean bool9;
+        if ((this.mGameBrandRuntime.activity instanceof GameActivity))
+        {
+          localObject2 = ((GameActivity)this.mGameBrandRuntime.activity).getColorNoteController();
+          if (localObject2 != null)
+          {
+            bool4 = ((alrv)localObject2).a();
+            if (bool4) {
+              if (((alrv)localObject2).c())
+              {
+                j = 2;
+                QLog.d("CapsuleButton", 1, "handleMoreClick, shouldDisplayColorNote : " + bool4);
+                m = j;
+                j = i;
+                bool4 = bool2;
+                i = -1;
+                bool2 = bool3;
+                bool9 = false;
+                bool3 = bool1;
+                bool1 = bool9;
+              }
+            }
+          }
+        }
+        for (;;)
+        {
+          if (j == 0) {
+            break label1572;
+          }
+          localObject2 = new Intent();
+          ((Intent)localObject2).putExtra("miniAppID", str2);
+          ((Intent)localObject2).putExtra("miniAppName", str1);
+          if (isMiniGameRuntime())
+          {
+            bool9 = this.isOpenMonitorPanel;
+            label437:
+            ((Intent)localObject2).putExtra("isOpenMonitorPanel", bool9);
+            ((Intent)localObject2).putExtra("debugEnable", getEnableDebug());
+            ((Intent)localObject2).putExtra("showDebug", bool4);
+            ((Intent)localObject2).putExtra("showMonitor", bool7);
+            ((Intent)localObject2).putExtra("menuStyle", (String)localObject1);
+            ((Intent)localObject2).putExtra("showShareQQ", bool6);
+            ((Intent)localObject2).putExtra("showShareQzone", bool3);
+            ((Intent)localObject2).putExtra("showShareWeChatFriends", bool8);
+            ((Intent)localObject2).putExtra("showShareWeChatMoment", bool2);
+            ((Intent)localObject2).putExtra("topType", k);
+            ((Intent)localObject2).putExtra("showDetail", true);
+            ((Intent)localObject2).putExtra("showComplaint", true);
+            if (Build.VERSION.SDK_INT < 21) {
+              break label1404;
+            }
+            bool2 = true;
+            label579:
+            ((Intent)localObject2).putExtra("addShortcut", bool2);
+            ((Intent)localObject2).putExtra("showBackHome", i);
+            ((Intent)localObject2).putExtra("isLandscape", bool5);
+            ((Intent)localObject2).putExtra("isSpecialMiniApp", bool1);
+            ((Intent)localObject2).putExtra("showKingcardTip", shouldShowKingCardTip());
+            ((Intent)localObject2).putExtra("key_mini_msgtab_type", 1);
+            ((Intent)localObject2).putExtra("key_mini_msgtab_need_action_sheet", true);
+            if (!isMiniGameRuntime()) {
+              break label1410;
+            }
+            if ((this.mGameBrandRuntime != null) && (this.mGameBrandRuntime.getApkgInfo() != null))
+            {
+              ((Intent)localObject2).putExtra("key_mini_app_version_type", 1);
+              ((Intent)localObject2).putExtra("key_mini_app_config", this.mGameBrandRuntime.getApkgInfo().appConfig);
+              ((Intent)localObject2).putExtra("key_mini_app_is_game", true);
+              ((Intent)localObject2).putExtra("key_color_note", m);
+            }
+            label729:
+            if ((!isMiniGameRuntime()) || (this.mGameBrandRuntime.activity == null)) {
+              break label1486;
+            }
+            MiniChatActivity.a(this.mGameBrandRuntime.activity, (Intent)localObject2, 1001);
+            label761:
+            this.mRedDot.setVisibility(8);
+            this.isMiniMsgTabShow = true;
+            unReadCount = 0;
+            if (QLog.isColorLevel()) {
+              QLog.d("CapsuleButton", 1, "isMiniMsgTabShow true");
+            }
+            reportClick("open");
+            return;
+            i = 0;
+            bool5 = false;
+            k = 0;
+            str1 = "";
+            str2 = "";
+            bool4 = false;
+            bool6 = false;
+            bool7 = false;
+            bool3 = false;
+            bool1 = false;
+            bool2 = false;
+            localObject1 = "light";
+            break;
+            j = 1;
+            break label336;
+            if ((this.mAppBrandRuntime != null) && (this.mAppBrandRuntime.activity != null) && (!this.isMiniMsgTabShow))
+            {
+              localObject1 = this.mAppBrandRuntime.pageContainer.getCurrentPageWebview();
+              if (this.mAppBrandRuntime.apkgInfo.appConfig.config.verType == 3) {
+                break label1521;
+              }
+              bool2 = true;
+            }
+          }
+          for (bool1 = true;; bool1 = false)
+          {
+            i = m;
+            if (this.mAppBrandRuntime.apkgInfo.isEngineTypeMiniApp())
+            {
+              str1 = AppBrandUtil.getUrlWithoutParams(this.mAppBrandRuntime.apkgInfo.getAppConfigInfo().entryPagePath);
+              if ((this.mAppBrandRuntime.pageContainer.getCurrentPage() == null) || (this.mAppBrandRuntime.getCurPage().getCurrentPageWebview() == null) || (!this.mAppBrandRuntime.getCurPage().getCurrentPageWebview().enableShowBackHome())) {
+                break label1335;
+              }
+              str2 = AppBrandUtil.getUrlWithoutParams(this.mAppBrandRuntime.pageContainer.getCurrentPage().getUrl());
+              i = m;
+              if (!TextUtils.isEmpty(str1))
+              {
+                i = m;
+                if (!str1.equals(str2)) {
+                  i = 1;
+                }
+              }
+            }
+            label1032:
+            str2 = this.mAppBrandRuntime.apkgInfo.appId;
+            str1 = this.mAppBrandRuntime.apkgInfo.apkgName;
+            bool3 = bool7;
+            if (localObject1 != null)
+            {
+              bool4 = ((PageWebview)localObject1).withShareQQ;
+              bool3 = ((PageWebview)localObject1).withShareQzone;
+              bool5 = ((PageWebview)localObject1).withShareWeChatFriend;
+              bool6 = ((PageWebview)localObject1).withShareWeChatMoment;
+            }
+            n = this.mAppBrandRuntime.apkgInfo.appConfig.config.topType;
+            bool7 = this.mAppBrandRuntime.apkgInfo.appConfig.config.isSpecialMiniApp();
+            if (bool7)
+            {
+              bool4 = false;
+              bool3 = false;
+              bool5 = false;
+              bool6 = false;
+            }
+            if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_share_to_wx_switcher", 1) != 1)
+            {
+              bool5 = false;
+              bool6 = false;
+            }
+            bool8 = this.mAppBrandRuntime.apkgInfo.appConfig.isInternalApp();
+            m = k;
+            if ((this.mAppBrandRuntime.activity instanceof AppBrandUI))
+            {
+              m = k;
+              if (!bool8)
+              {
+                localObject1 = ((AppBrandUI)this.mAppBrandRuntime.activity).getColorNoteController();
+                m = k;
+                if (localObject1 != null)
+                {
+                  bool8 = ((alrv)localObject1).a();
+                  if (bool8) {
+                    if (!((alrv)localObject1).c()) {
+                      break label1340;
+                    }
+                  }
+                }
+              }
+            }
+            label1335:
+            label1340:
+            for (j = 2;; j = 1)
+            {
+              QLog.d("CapsuleButton", 1, "handleMoreClick, shouldDisplayColorNote : " + bool8);
+              m = j;
+              j = 1;
+              bool8 = bool2;
+              bool2 = bool7;
+              bool9 = bool5;
+              bool7 = bool1;
+              localObject1 = "light";
+              bool5 = false;
+              k = n;
+              bool1 = bool2;
+              bool2 = bool6;
+              bool6 = bool4;
+              bool4 = bool8;
+              bool8 = bool9;
+              break;
+              i = -1;
+              break label1032;
+            }
+            bool8 = false;
+            bool6 = false;
+            bool7 = false;
+            j = 0;
+            bool4 = false;
+            localObject1 = "light";
+            bool5 = false;
+            k = 0;
+            str1 = "";
+            str2 = "";
+            bool1 = false;
+            i = m;
+            m = n;
+            break;
+            bool9 = this.mAppBrandRuntime.isOpenMonitorPanel();
+            break label437;
+            label1404:
+            bool2 = false;
+            break label579;
+            label1410:
+            if ((this.mAppBrandRuntime == null) || (this.mAppBrandRuntime.apkgInfo == null)) {
+              break label729;
+            }
+            ((Intent)localObject2).putExtra("key_mini_app_version_type", this.mAppBrandRuntime.versionType);
+            ((Intent)localObject2).putExtra("key_mini_app_config", this.mAppBrandRuntime.apkgInfo.appConfig);
+            ((Intent)localObject2).putExtra("key_mini_app_is_game", false);
+            ((Intent)localObject2).putExtra("key_color_note", m);
+            break label729;
+            label1486:
+            if ((isMiniGameRuntime()) || (this.mAppBrandRuntime.activity == null)) {
+              break label761;
+            }
+            MiniChatActivity.a(this.mAppBrandRuntime.activity, (Intent)localObject2, 1001);
+            break label761;
+            label1521:
+            bool2 = false;
+          }
+          j = 0;
+          break label336;
+          j = 0;
+          break label363;
+          bool4 = bool2;
+          m = -1;
+          bool9 = bool1;
+          bool2 = bool3;
+          bool1 = false;
+          j = i;
+          bool3 = bool9;
+          i = m;
+          m = n;
+        }
+        label1572:
+        break;
+        bool8 = bool4;
+      }
+      label1581:
+      bool2 = false;
+    }
+  }
+  
+  private void handleShareChatDirectly(Bundle paramBundle)
+  {
+    Object localObject = paramBundle.getString("key_mini_app_share_chat_uin");
+    int i = paramBundle.getInt("key_mini_app_share_chat_type");
+    paramBundle = paramBundle.getString("key_mini_app_share_chat_name");
+    long l2 = -1L;
+    long l1 = l2;
+    if (localObject != null) {}
+    JSONObject localJSONObject;
+    label309:
+    label342:
+    label352:
+    do
+    {
+      ShareChatModel localShareChatModel;
+      do
+      {
+        for (;;)
+        {
+          try
+          {
+            l1 = Long.valueOf((String)localObject).longValue();
+            localShareChatModel = new ShareChatModel(i, l1, paramBundle);
+            localJSONObject = new JSONObject();
+            localObject = "onShareAppMessage";
+            paramBundle = (Bundle)localObject;
+          }
+          catch (Throwable localThrowable)
+          {
+            try
+            {
+              if (this.launchFrom == 1)
+              {
+                String str = "showActionSheet";
+                localObject = str;
+                paramBundle = str;
+                if (this.tapIndexMap == null) {
+                  continue;
+                }
+                paramBundle = str;
+                localJSONObject.put("tapIndex", -1);
+                paramBundle = "showActionSheet";
+              }
+            }
+            catch (JSONException localJSONException1) {}
+            try
+            {
+              if ((!isMiniGameRuntime()) && (this.mAppBrandRuntime != null) && (this.mAppBrandRuntime.pageContainer.getCurrentPage() != null)) {
+                localJSONObject.put("webViewUrl", this.mAppBrandRuntime.pageContainer.getCurrentPage().getUrl());
+              }
+              localJSONObject.put("chatDataHash", localShareChatModel.getEntryHash());
+              if (!isMiniGameRuntime()) {
+                break label352;
+              }
+              this.mGameBrandRuntime.fromShareMenuBtn = 0;
+              this.mGameBrandRuntime.shareChatModel = localShareChatModel;
+              if ((this.mGameJsPluginEngine == null) || (this.mGameJsPluginEngine.getGameJsRuntime(1) == null)) {
+                break label342;
+              }
+              if (this.launchFrom != 1) {
+                break;
+              }
+              this.mGameJsPluginEngine.callbackJsEventOK(this.mGameJsPluginEngine.getGameJsRuntime(1), paramBundle, localJSONObject, this.actionSheetCallbackId);
+              return;
+            }
+            catch (JSONException localJSONException2)
+            {
+              PageWebview localPageWebview;
+              break label309;
+            }
+            localThrowable = localThrowable;
+            QLog.e("CapsuleButton", 1, "handleShareChatDirectly get an exception ", localThrowable);
+            l1 = l2;
+            continue;
+            paramBundle = localThrowable;
+            localJSONObject.put("fromShareButton", 0);
+            paramBundle = localThrowable;
+            localJSONObject.put("shareTarget", 5);
+            paramBundle = localThrowable;
+            continue;
+          }
+          QLog.e("CapsuleButton", 1, "on forward aio click exception ", localJSONException1);
+        }
+        this.mGameJsPluginEngine.getGameJsRuntime(1).evaluateSubcribeJS(paramBundle, localJSONObject.toString(), -1);
+        return;
+        QLog.e("CapsuleButton", 1, "on forward aio click exception mGameJsPluginEngine==null");
+        return;
+      } while (this.mAppBrandRuntime == null);
+      this.mAppBrandRuntime.getPageWebView().shareChatModel = localShareChatModel;
+      if (this.launchFrom == 1)
+      {
+        this.mAppBrandRuntime.jsPluginEngine.callbackJsEventOK(this.mAppBrandRuntime.serviceRuntime, paramBundle, localJSONObject, this.actionSheetCallbackId);
+        return;
+      }
+      this.mAppBrandRuntime.getPageWebView().fromShareMenuBtn = 0;
+      localPageWebview = this.mAppBrandRuntime.pageContainer.getCurrentPageWebview();
+    } while (localPageWebview == null);
+    this.mAppBrandRuntime.serviceRuntime.evaluateSubcribeJS(paramBundle, localJSONObject.toString(), localPageWebview.pageWebviewId);
+  }
+  
+  private boolean hasKingCardGuideShowed()
+  {
+    String str = this.KINGCARD_GUIDE_KEY_PREFFIX + BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    return StorageUtil.getPreference().getBoolean(str, false);
+  }
+  
+  private void initUI()
+  {
+    setClipChildren(false);
+    getContainerView();
+    this.mCloseView = ((ImageView)findViewById(2131297953));
+    this.mRedDot = ((TextView)findViewById(2131308447));
+    this.mSplider = findViewById(2131303557);
+    this.mRedDot.setTextSize(12.0F);
+    this.mRedDot.setTextColor(-1);
+    this.mRedDot.setGravity(17);
+    this.mRedDot.setIncludeFontPadding(false);
+    this.mMoreView.setOnClickListener(this);
+    this.mMoreView.setOnLongClickListener(this);
+    this.mCloseView.setOnClickListener(this);
+    this.mMoreBtnWhiteBgDrawable = getResources().getDrawable(2130840817);
+    this.mCloseBtnWhiteBgDrawable = getResources().getDrawable(2130840811);
+    this.mMoreBtnBgDrawable = getResources().getDrawable(2130840814);
+    this.mCloseBtnBgDrawable = getResources().getDrawable(2130840808);
+    if ((!TextUtils.isEmpty(MiniAppGlobal.CAPSULE_CLOSE_URL)) && (!TextUtils.isEmpty(MiniAppGlobal.CAPSULE_CLOSE_DARK_URL)))
+    {
+      this.mCloseBtnWhiteBgDrawable = MiniAppUtils.getIcon(getContext(), MiniAppGlobal.CAPSULE_CLOSE_DARK_URL, true, 2130840811, 40, 30);
+      this.mCloseBtnBgDrawable = MiniAppUtils.getIcon(getContext(), MiniAppGlobal.CAPSULE_CLOSE_URL, true, 2130840808, 40, 30);
+    }
+    if (!TextUtils.isEmpty(MiniAppGlobal.KINGCARD_GUIDE_TEXT)) {}
+    for (String str = MiniAppGlobal.KINGCARD_GUIDE_TEXT;; str = getResources().getString(2131628623))
+    {
+      this.mKingCardText = str;
+      this.lottieLoader = new baup(null, super.getContext());
+      int i = (int)(MemoryManager.a() / 2L);
+      this.lottieLoader.a(i);
+      return;
+    }
+  }
+  
+  private boolean isMiniGameRuntime()
+  {
+    return (this.mAppBrandRuntime == null) && (this.mGameBrandRuntime != null);
+  }
+  
+  private void onMoreClick()
+  {
+    Bundle localBundle = null;
+    this.mHandler.sendEmptyMessageDelayed(1000, 500L);
+    if (isMiniGameRuntime())
+    {
+      if (this.mGameBrandRuntime != null) {}
+      for (localApkgInfo = this.mGameBrandRuntime.getApkgInfo();; localApkgInfo = null)
+      {
+        int j = 3;
+        int i = j;
+        Object localObject = localBundle;
+        if (localApkgInfo != null)
+        {
+          i = j;
+          localObject = localBundle;
+          if (localApkgInfo.appConfig != null)
+          {
+            i = j;
+            localObject = localBundle;
+            if (localApkgInfo.appConfig.config != null)
+            {
+              i = localApkgInfo.appConfig.config.verType;
+              localObject = localApkgInfo.appConfig.config.appId;
+            }
+          }
+        }
+        localBundle = new Bundle();
+        localBundle.putString("appid", (String)localObject);
+        localBundle.putInt("verType", i);
+        QIPCClientHelper.getInstance().callServer("MiniAppTransferModule", "query_mini_app_data", localBundle, new CapsuleButton.3(this, localApkgInfo));
+        return;
+      }
+    }
+    if (this.mAppBrandRuntime != null) {}
+    for (ApkgInfo localApkgInfo = this.mAppBrandRuntime.apkgInfo;; localApkgInfo = null) {
+      break;
+    }
+  }
+  
+  private void performMiniGameClose()
+  {
+    MiniReportManager.reportEventType(GameInfoManager.g().getMiniAppConfig(), 1025, "1");
+    MiniProgramLpReportDC04239.reportPageView(GameInfoManager.g().getMiniAppConfig(), "1", null, "close", "inner_page");
+    MiniAppReportManager2.reportPageView("2close", "inner_page", null, GameInfoManager.g().getMiniAppConfig());
+    Object localObject = this.mGameBrandRuntime.activity;
+    if ((localObject instanceof GameActivity)) {
+      ((GameActivity)localObject).doOnBackPressed();
+    }
+    localObject = GameInfoManager.g().getMiniAppConfig();
+    if ((localObject != null) && (((MiniAppConfig)localObject).launchParam != null) && (!TextUtils.isEmpty(((MiniAppConfig)localObject).launchParam.fromMiniAppId))) {
+      NavigateBackUtils.writeTagAppid(((MiniAppConfig)localObject).launchParam.fromMiniAppId);
+    }
+  }
+  
+  private void reportClick(String paramString)
+  {
+    String str1 = null;
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return;
+      if (isMiniGameRuntime())
+      {
+        MiniProgramLpReportDC04239.reportUserClick(this.mGameBrandRuntime.getApkgInfo().appConfig, MiniProgramLpReportDC04239.getAppType(this.mGameBrandRuntime.getApkgInfo().appConfig), null, "user_click", "more_button", paramString);
+        return;
+      }
+    } while ((this.mAppBrandRuntime == null) || (this.mAppBrandRuntime.pageContainer == null) || (this.mAppBrandRuntime.apkgInfo == null));
+    PageWebview localPageWebview = this.mAppBrandRuntime.pageContainer.getCurrentPageWebview();
+    MiniAppConfig localMiniAppConfig = this.mAppBrandRuntime.apkgInfo.appConfig;
+    String str2 = MiniProgramLpReportDC04239.getAppType(this.mAppBrandRuntime.apkgInfo.appConfig);
+    if (localPageWebview != null) {
+      str1 = localPageWebview.getUrl();
+    }
+    MiniProgramLpReportDC04239.reportUserClick(localMiniAppConfig, str2, str1, "user_click", "more_button", paramString);
+  }
+  
+  private void saveKingCardGuideShowed()
+  {
+    String str = this.KINGCARD_GUIDE_KEY_PREFFIX + BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    StorageUtil.getPreference().edit().putBoolean(str, true).apply();
+  }
+  
+  private void sendSetUserAppTopRequest(MiniAppInfo paramMiniAppInfo)
+  {
+    if (paramMiniAppInfo == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("CapsuleButton", 1, "sendSetUserAppTopRequest, miniAppInfo = " + paramMiniAppInfo);
+      }
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("appid", paramMiniAppInfo.appId);
+    localBundle.putInt("topType", paramMiniAppInfo.topType);
+    localBundle.putInt("verType", paramMiniAppInfo.verType);
+    QIPCClientHelper.getInstance().callServer("MiniAppTransferModule", "sync_mini_app_data", localBundle, new CapsuleButton.5(this, paramMiniAppInfo));
+  }
+  
+  private void setMiniAppTop(MiniAppInfo paramMiniAppInfo)
+  {
+    if (paramMiniAppInfo == null)
+    {
+      QLog.e("CapsuleButton", 1, "setMiniAppTop, miniAppInfo = null.");
+      return;
+    }
+    MiniAppCmdUtil.getInstance().setUserAppTop(paramMiniAppInfo.appId, paramMiniAppInfo.topType, paramMiniAppInfo.verType, null, new CapsuleButton.6(this));
+  }
+  
+  private boolean shouldShowKingCardTip()
+  {
+    boolean bool = true;
+    if (!AppNetConnInfo.isMobileConn())
+    {
+      QLog.i("CapsuleButton", 1, "shouldShowKingCardTip network type is wifi + " + AppNetConnInfo.isWifiConn());
+      return false;
+    }
+    MiniAppInfo localMiniAppInfo = getMiniAppInfo();
+    if ((localMiniAppInfo != null) && (localMiniAppInfo.appMode != null) && (localMiniAppInfo.appMode.isWangKa)) {}
+    for (int i = 1; i == 0; i = 0)
+    {
+      QLog.i("CapsuleButton", 1, "shouldShowKingCardTip， not wangka app");
+      return false;
+    }
+    i = bati.a();
+    QLog.i("CapsuleButton", 1, "shouldShowKingCardTip， king card status = " + i);
+    if (i == 1) {}
+    for (;;)
+    {
+      return bool;
+      bool = false;
+    }
+  }
+  
+  private void startReportPage()
+  {
+    MiniAppConfig localMiniAppConfig;
+    Object localObject1;
+    if (isMiniGameRuntime())
+    {
+      if ((this.mGameBrandRuntime.getApkgInfo() == null) || (this.mGameBrandRuntime.getApkgInfo().appConfig == null)) {
+        break label351;
+      }
+      localMiniAppConfig = this.mGameBrandRuntime.getApkgInfo().appConfig;
+      localObject1 = this.mGameBrandRuntime.getApkgInfo().appConfig.config;
+    }
+    for (;;)
+    {
+      Object localObject3 = this.mGameBrandRuntime.activity;
+      Object localObject2 = localObject1;
+      localObject1 = localObject3;
+      for (;;)
+      {
+        if ((localObject2 != null) && (localObject1 != null)) {
+          localObject3 = "";
+        }
+        try
+        {
+          String str = URLEncoder.encode("https://support.qq.com/data/1368/2018/0927/5e6c84b68d1f3ad390e7beeb6c2f83b0.jpeg", "UTF-8");
+          localObject3 = str;
+        }
+        catch (UnsupportedEncodingException localUnsupportedEncodingException)
+        {
+          for (;;)
+          {
+            QLog.e("CapsuleButton", 1, "startComplainAndCallback, url = " + "");
+            localUnsupportedEncodingException.printStackTrace();
+            continue;
+            localObject1 = null;
+            localMiniAppConfig = null;
+          }
+          localObject1 = null;
+          localObject2 = null;
+          localMiniAppConfig = null;
+        }
+        localObject3 = "https://tucao.qq.com/qq_miniprogram/tucao?appid=" + ((MiniAppInfo)localObject2).appId + "&openid=" + MainPageFragment.getUin() + "&avatar=" + (String)localObject3 + ajjy.a(2131635557);
+        localObject2 = new Intent((Context)localObject1, QQBrowserActivity.class);
+        ((Intent)localObject2).putExtra("url", (String)localObject3);
+        localObject3 = new Bundle();
+        ((Bundle)localObject3).putBoolean("hide_more_button", true);
+        ((Intent)localObject2).putExtras((Bundle)localObject3);
+        ((Context)localObject1).startActivity((Intent)localObject2);
+        MiniProgramLpReportDC04239.reportUserClick(localMiniAppConfig, MiniProgramLpReportDC04239.getAppType(localMiniAppConfig), null, "user_click", "more_button", "report");
+        return;
+        if (this.mAppBrandRuntime != null) {
+          if ((this.mAppBrandRuntime.apkgInfo != null) && (this.mAppBrandRuntime.apkgInfo.appConfig != null))
+          {
+            localMiniAppConfig = this.mAppBrandRuntime.apkgInfo.appConfig;
+            localObject1 = this.mAppBrandRuntime.apkgInfo.appConfig.config;
+            localObject3 = this.mAppBrandRuntime.activity;
+            localObject2 = localObject1;
+            localObject1 = localObject3;
+            continue;
+          }
+        }
+      }
+      label351:
+      localObject1 = null;
+      localMiniAppConfig = null;
+    }
+  }
+  
+  public void attachAppBrandRuntime(AppBrandRuntime paramAppBrandRuntime)
+  {
+    this.mAppBrandRuntime = paramAppBrandRuntime;
+  }
+  
+  public void attachGameBrandRuntime(GameBrandRuntime paramGameBrandRuntime, GameJsPluginEngine paramGameJsPluginEngine)
+  {
+    this.mGameBrandRuntime = paramGameBrandRuntime;
+    this.mGameJsPluginEngine = paramGameJsPluginEngine;
+  }
+  
+  public void changeNavIcon(int paramInt)
+  {
+    this.mStyle = paramInt;
+    if (paramInt == -1)
+    {
+      this.mMoreView.setImageDrawable(this.mMoreBtnWhiteBgDrawable);
+      this.mCloseView.setImageDrawable(this.mCloseBtnWhiteBgDrawable);
+      this.mSplider.setBackgroundColor(Color.parseColor("#4DFFFFFF"));
+      return;
+    }
+    this.mMoreView.setImageDrawable(this.mMoreBtnBgDrawable);
+    this.mCloseView.setImageDrawable(this.mCloseBtnBgDrawable);
+    this.mSplider.setBackgroundColor(Color.parseColor("#1A000000"));
+  }
+  
+  public void detachAppBrandRuntime()
+  {
+    if (this.mAppBrandRuntime != null) {
+      this.mAppBrandRuntime = null;
+    }
+    if (this.mGameBrandRuntime != null) {
+      this.mGameBrandRuntime = null;
+    }
+  }
+  
+  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if (paramInt1 == 1001)
+    {
+      this.isMiniMsgTabShow = false;
+      QLog.d("CapsuleButton", 1, "isMiniMsgTabShow false");
+      if (paramInt2 == -1)
+      {
+        if ((this.mAppBrandRuntime != null) && (this.mAppBrandRuntime.pageContainer != null)) {
+          this.mAppBrandRuntime.pageContainer.reportPageViewShow("bring_to_front");
+        }
+        localObject = paramIntent.getStringExtra("miniAppID");
+        if (((!isMiniGameRuntime()) || (!this.mGameBrandRuntime.appId.equals(localObject))) && ((this.mAppBrandRuntime == null) || (this.mAppBrandRuntime.apkgInfo == null) || (this.mAppBrandRuntime.apkgInfo.appId == null) || (!this.mAppBrandRuntime.apkgInfo.appId.equals(localObject)))) {
+          break label484;
+        }
+        paramInt1 = paramIntent.getIntExtra("clickID", -1);
+        localObject = "";
+        switch (paramInt1)
+        {
+        default: 
+          paramIntent = (Intent)localObject;
+          reportClick(paramIntent);
+          updateRedDotVisible();
+        }
+      }
+    }
+    label484:
+    while (!QLog.isColorLevel()) {
+      for (;;)
+      {
+        return;
+        this.mHandler.sendEmptyMessage(2);
+        paramIntent = (Intent)localObject;
+        continue;
+        this.mHandler.sendEmptyMessage(6);
+        paramIntent = (Intent)localObject;
+        continue;
+        this.mHandler.sendEmptyMessage(7);
+        paramIntent = "share_WX";
+        continue;
+        this.mHandler.sendEmptyMessage(8);
+        paramIntent = "share_Moments";
+        continue;
+        Message localMessage = new Message();
+        localMessage.what = 13;
+        localMessage.setData(paramIntent.getExtras());
+        this.mHandler.sendMessage(localMessage);
+        paramIntent = (Intent)localObject;
+        continue;
+        this.mHandler.sendEmptyMessage(3);
+        paramIntent = (Intent)localObject;
+        continue;
+        this.mHandler.sendEmptyMessage(4);
+        paramIntent = "about";
+        continue;
+        this.mHandler.sendEmptyMessage(5);
+        paramIntent = (Intent)localObject;
+        continue;
+        paramIntent = "cancel";
+        continue;
+        paramIntent = "cancel_system";
+        continue;
+        this.mHandler.sendEmptyMessage(9);
+        paramIntent = (Intent)localObject;
+        continue;
+        this.mHandler.sendEmptyMessage(11);
+        paramIntent = (Intent)localObject;
+        continue;
+        this.mHandler.sendEmptyMessage(10);
+        paramIntent = "back_home";
+        continue;
+        this.mHandler.sendEmptyMessage(12);
+        paramIntent = (Intent)localObject;
+        continue;
+        this.mHandler.sendEmptyMessage(14);
+        paramIntent = (Intent)localObject;
+      }
+    }
+    Object localObject = new StringBuilder().append("intent appID : ").append((String)localObject).append("; current appid : ");
+    if ((this.mAppBrandRuntime != null) && (this.mAppBrandRuntime.apkgInfo != null)) {}
+    for (paramIntent = this.mAppBrandRuntime.apkgInfo.appId;; paramIntent = Integer.valueOf(0))
+    {
+      QLog.d("CapsuleButton", 1, paramIntent);
+      return;
+    }
+  }
+  
+  public boolean getEnableDebug()
+  {
+    if (isMiniGameRuntime()) {
+      if (this.mGameBrandRuntime != null) {}
+    }
+    while (this.mAppBrandRuntime == null)
+    {
+      return false;
+      return StorageUtil.getPreference().getBoolean(this.mGameBrandRuntime.getApkgInfo().appId + "_debug", false);
+    }
+    return StorageUtil.getPreference().getBoolean(this.mAppBrandRuntime.apkgInfo.appId + "_debug", false);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    Object localObject2 = null;
+    Object localObject1 = null;
+    if (paramMessage == null) {
+      if (QLog.isColorLevel()) {
+        QLog.e("CapsuleButton", 2, "handleMessage error, msg is null.");
+      }
+    }
+    label322:
+    label453:
+    label861:
+    label864:
+    for (;;)
+    {
+      return false;
+      switch (paramMessage.what)
+      {
+      case 4: 
+      default: 
+        return false;
+      case 1: 
+        onMoreClick();
+        return false;
+      case 1000: 
+        handleMoreClick();
+        return false;
+      case 2: 
+        handleForwardClick();
+        return false;
+      case 6: 
+        handleForwardQZoneClick();
+        return false;
+      case 7: 
+        handleForwardWeChatFriends();
+        return false;
+      case 8: 
+        handleForwardWeChatMoment();
+        return false;
+      case 13: 
+        handleShareChatDirectly(paramMessage.getData());
+        return false;
+      case 3: 
+        if (getEnableDebug()) {
+          setEnableDebug(false);
+        }
+        for (;;)
+        {
+          AppLoaderFactory.getAppLoaderManager().getMiniAppInterface().exitProcess();
+          return false;
+          setEnableDebug(true);
+        }
+      case 5: 
+        if (isMiniGameRuntime())
+        {
+          if ((this.mGameBrandRuntime != null) && (this.mGameBrandRuntime.activity != null))
+          {
+            paramMessage = this.mGameBrandRuntime.activity;
+            if (((paramMessage instanceof GameActivity)) && (((GameActivity)paramMessage).getNavBar() != null))
+            {
+              ((GameActivity)paramMessage).clickMonitorPanel();
+              if (this.isOpenMonitorPanel) {
+                break label322;
+              }
+            }
+            for (boolean bool = true;; bool = false)
+            {
+              this.isOpenMonitorPanel = bool;
+              setIsOpenMonitorPanel(this.isOpenMonitorPanel);
+              return false;
+            }
+          }
+        }
+        else if (this.mAppBrandRuntime != null)
+        {
+          setIsOpenMonitorPanel(((AppBrandPageContainer)this.mAppBrandRuntime.getContainer()).clickMonitorPanel());
+          return false;
+        }
+        break;
+      case 9: 
+        int i;
+        if (isMiniGameRuntime())
+        {
+          paramMessage = this.mGameBrandRuntime.getApkgInfo().appConfig.config;
+          if (this.mGameBrandRuntime.getApkgInfo().appConfig.config.topType == 0)
+          {
+            i = 1;
+            paramMessage.topType = i;
+            sendSetUserAppTopRequest(this.mGameBrandRuntime.getApkgInfo().appConfig.config);
+            if (this.mGameBrandRuntime.getApkgInfo().appConfig.config.topType != 1) {
+              break label453;
+            }
+          }
+          for (paramMessage = "settop_on";; paramMessage = "settop_off")
+          {
+            reportClick(paramMessage);
+            return false;
+            i = 0;
+            break;
+          }
+        }
+        if (this.mAppBrandRuntime != null)
+        {
+          paramMessage = this.mAppBrandRuntime.apkgInfo.appConfig.config;
+          if (this.mAppBrandRuntime.apkgInfo.appConfig.config.topType == 0)
+          {
+            i = 1;
+            paramMessage.topType = i;
+            sendSetUserAppTopRequest(this.mAppBrandRuntime.apkgInfo.appConfig.config);
+            if (this.mAppBrandRuntime.apkgInfo.appConfig.config.topType != 1) {
+              break label560;
+            }
+          }
+          for (paramMessage = "settop_on";; paramMessage = "settop_off")
+          {
+            reportClick(paramMessage);
+            return false;
+            i = 0;
+            break;
+          }
+        }
+        break;
+      case 11: 
+        if (isMiniGameRuntime()) {
+          if (this.mGameBrandRuntime.activity != null)
+          {
+            paramMessage = localObject1;
+            if ((this.mGameBrandRuntime.activity instanceof BaseActivity)) {
+              paramMessage = (BaseActivity)this.mGameBrandRuntime.activity;
+            }
+            ShortcutUtils.addShortcut(paramMessage, this.mGameBrandRuntime.getApkgInfo());
+          }
+        }
+        for (;;)
+        {
+          reportClick("add_desktop");
+          return false;
+          if ((this.mAppBrandRuntime != null) && (this.mAppBrandRuntime.activity != null))
+          {
+            paramMessage = localObject2;
+            if ((this.mAppBrandRuntime.activity instanceof BaseActivity)) {
+              paramMessage = (BaseActivity)this.mAppBrandRuntime.activity;
+            }
+            ShortcutUtils.addShortcut(paramMessage, this.mAppBrandRuntime.apkgInfo);
+          }
+        }
+      case 10: 
+        backToHomePage();
+        return false;
+      case 12: 
+        startReportPage();
+        return false;
+      case 14: 
+        if (isMiniGameRuntime())
+        {
+          if ((this.mGameBrandRuntime.activity == null) || (!(this.mGameBrandRuntime.activity instanceof GameActivity))) {
+            break label861;
+          }
+          paramMessage = ((GameActivity)this.mGameBrandRuntime.activity).getColorNoteController();
+        }
+        for (;;)
+        {
+          if (paramMessage == null) {
+            break label864;
+          }
+          if (!paramMessage.c())
+          {
+            if (paramMessage.b())
+            {
+              if ((this.mAppBrandRuntime != null) && ((this.mAppBrandRuntime.getContainer() instanceof AppBrandPageContainer))) {
+                ((AppBrandPageContainer)this.mAppBrandRuntime.getContainer()).notifyOnAddColorNote();
+              }
+              paramMessage.e();
+              return false;
+              if ((this.mAppBrandRuntime != null) && ((this.mAppBrandRuntime.activity instanceof AppBrandUI))) {
+                paramMessage = ((AppBrandUI)this.mAppBrandRuntime.activity).getColorNoteController();
+              }
+            }
+            else
+            {
+              paramMessage.i();
+              return false;
+            }
+          }
+          else
+          {
+            if (!paramMessage.c()) {
+              break;
+            }
+            paramMessage.f();
+            return false;
+          }
+          paramMessage = null;
+        }
+      }
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    MiniAppStateManager.getInstance().notifyChange("hideKeyboard");
+    switch (paramView.getId())
+    {
+    default: 
+    case 2131298036: 
+      do
+      {
+        return;
+      } while (this.mHandler == null);
+      this.mHandler.sendEmptyMessage(1);
+      return;
+    }
+    QLog.e("CapsuleButton", 1, "[btn_close, inner page close]");
+    MiniAppStateManager.getInstance().notifyChange("hideInput");
+    if (isMiniGameRuntime()) {
+      if ((this.mGameBrandRuntime.activity instanceof GameActivity)) {
+        if (!((GameActivity)this.mGameBrandRuntime.activity).handleMiniGameCloseButtonClick(new CapsuleButton.2(this))) {
+          performMiniGameClose();
+        }
+      }
+    }
+    for (;;)
+    {
+      MiniMsgIPCClient.getInstance().clearBusiness(0);
+      return;
+      performMiniGameClose();
+      continue;
+      if (this.mAppBrandRuntime != null)
+      {
+        if (this.mAppBrandRuntime.apkgInfo != null)
+        {
+          MiniReportManager.reportEventType(this.mAppBrandRuntime.apkgInfo.appConfig, 1025, "0");
+          MiniProgramLpReportDC04239.reportPageView(this.mAppBrandRuntime.apkgInfo.appConfig, "0", null, "close", "inner_page");
+          MiniAppReportManager2.reportPageView("2close", "inner_page", null, this.mAppBrandRuntime.apkgInfo.appConfig);
+          if ((this.mAppBrandRuntime.apkgInfo.appConfig != null) && (this.mAppBrandRuntime.apkgInfo.appConfig.launchParam != null) && (!TextUtils.isEmpty(this.mAppBrandRuntime.apkgInfo.appConfig.launchParam.fromMiniAppId))) {
+            NavigateBackUtils.writeTagAppid(this.mAppBrandRuntime.apkgInfo.appConfig.launchParam.fromMiniAppId);
+          }
+        }
+        this.mAppBrandRuntime.moveAppBrandToBack();
+      }
+    }
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    paramView.getId();
+    return true;
+  }
+  
+  public void onNetChangeEvent(boolean paramBoolean)
+  {
+    QLog.i("CapsuleButton", 1, "onNetChangeEvent =" + paramBoolean);
+  }
+  
+  public void setEnableDebug(boolean paramBoolean)
+  {
+    if (isMiniGameRuntime()) {
+      if ((this.mGameBrandRuntime != null) && (this.mGameBrandRuntime.getApkgInfo() != null)) {}
+    }
+    while (this.mAppBrandRuntime == null)
+    {
+      return;
+      StorageUtil.getPreference().edit().putBoolean(this.mGameBrandRuntime.getApkgInfo().appId + "_debug", paramBoolean).apply();
+      return;
+    }
+    StorageUtil.getPreference().edit().putBoolean(this.mAppBrandRuntime.apkgInfo.appId + "_debug", paramBoolean).apply();
+  }
+  
+  public void setIsOpenMonitorPanel(boolean paramBoolean)
+  {
+    if (isMiniGameRuntime()) {
+      this.isOpenMonitorPanel = paramBoolean;
+    }
+    while (this.mAppBrandRuntime == null) {
+      return;
+    }
+    this.mAppBrandRuntime.setOpenMonitorPanel(paramBoolean);
+  }
+  
+  public void setUnReadCount(int paramInt, boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      unReadCount = paramInt;
+      if (QLog.isColorLevel()) {
+        QLog.d("CapsuleButton", 2, "forceUpdate : " + paramBoolean + "; setUnReadCount : " + paramInt);
+      }
+    }
+    if (this.isMiniMsgTabShow) {
+      return;
+    }
+    unReadCount = paramInt;
+    if (QLog.isColorLevel()) {
+      QLog.d("CapsuleButton", 2, "forceUpdate : " + paramBoolean + "; setUnReadCount : " + paramInt);
+    }
+    updateRedDotVisible();
+  }
+  
+  public void showKingCardTips()
+  {
+    QLog.i("CapsuleButton", 1, "showKingCardTips trigger");
+    if (getVisibility() != 0) {
+      QLog.i("CapsuleButton", 1, "showKingCardTips 小程序官方模式下是 GONE状态，不需要展示");
+    }
+    Activity localActivity;
+    do
+    {
+      return;
+      localActivity = getActivity();
+    } while ((this.mMoreView == null) || (localActivity == null) || (localActivity.isFinishing()) || (!shouldShowKingCardTip()));
+    AppBrandTask.runTaskOnUiThreadIfNot(new CapsuleButton.7(this, localActivity));
+  }
+  
+  public void showShareMenuForInnerShareButton(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, HashMap<String, Integer> paramHashMap, int paramInt)
+  {
+    QLog.d("CapsuleButton", 1, "showShareMenuForInnerShareButton --  isMiniMsgTabShow : " + this.isMiniMsgTabShow);
+    if (this.isMiniMsgTabShow) {}
+    label163:
+    label211:
+    label987:
+    label1010:
+    for (;;)
+    {
+      return;
+      this.launchFrom = 1;
+      this.tapIndexMap = paramHashMap;
+      this.actionSheetCallbackId = paramInt;
+      paramInt = 1;
+      int i = -1;
+      String str = "";
+      Object localObject1 = "";
+      boolean bool1 = false;
+      paramHashMap = "light";
+      Object localObject2;
+      boolean bool2;
+      if (isMiniGameRuntime()) {
+        if ((this.mGameBrandRuntime != null) && (this.mGameBrandRuntime.activity != null) && (!this.isMiniMsgTabShow))
+        {
+          str = this.mGameBrandRuntime.getApkgInfo().appId;
+          localObject1 = this.mGameBrandRuntime.getApkgInfo().apkgName;
+          bool1 = ((GameActivity)this.mGameBrandRuntime.activity).getIsOrientationLandscape();
+          paramHashMap = ((GameActivity)this.mGameBrandRuntime.activity).getMenuStyle();
+          if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_share_to_wx_switcher", 1) == 1) {
+            break label987;
+          }
+          paramBoolean3 = false;
+          paramBoolean4 = false;
+          localObject2 = localObject1;
+          int j = -1;
+          bool2 = false;
+          i = paramInt;
+          paramInt = j;
+          localObject1 = paramHashMap;
+          paramHashMap = (HashMap<String, Integer>)localObject2;
+        }
+      }
+      for (;;)
+      {
+        if (i == 0) {
+          break label1010;
+        }
+        localObject2 = new Intent();
+        ((Intent)localObject2).putExtra("miniAppID", str);
+        ((Intent)localObject2).putExtra("miniAppName", paramHashMap);
+        boolean bool3;
+        if (isMiniGameRuntime())
+        {
+          bool3 = this.isOpenMonitorPanel;
+          ((Intent)localObject2).putExtra("isOpenMonitorPanel", bool3);
+          ((Intent)localObject2).putExtra("debugEnable", getEnableDebug());
+          ((Intent)localObject2).putExtra("showDebug", false);
+          ((Intent)localObject2).putExtra("showMonitor", false);
+          ((Intent)localObject2).putExtra("menuStyle", (String)localObject1);
+          ((Intent)localObject2).putExtra("showShareQQ", paramBoolean1);
+          ((Intent)localObject2).putExtra("showShareQzone", paramBoolean2);
+          ((Intent)localObject2).putExtra("showShareWeChatFriends", paramBoolean3);
+          ((Intent)localObject2).putExtra("showShareWeChatMoment", paramBoolean4);
+          ((Intent)localObject2).putExtra("topType", -11);
+          ((Intent)localObject2).putExtra("showDetail", false);
+          ((Intent)localObject2).putExtra("showComplaint", false);
+          ((Intent)localObject2).putExtra("addShortcut", false);
+          ((Intent)localObject2).putExtra("showBackHome", paramInt);
+          ((Intent)localObject2).putExtra("isLandscape", bool1);
+          ((Intent)localObject2).putExtra("isSpecialMiniApp", bool2);
+          ((Intent)localObject2).putExtra("showKingcardTip", shouldShowKingCardTip());
+          ((Intent)localObject2).putExtra("key_mini_msgtab_type", 1);
+          ((Intent)localObject2).putExtra("key_mini_msgtab_need_action_sheet", true);
+          if (!isMiniGameRuntime()) {
+            break label887;
+          }
+          if ((this.mGameBrandRuntime != null) && (this.mGameBrandRuntime.getApkgInfo() != null))
+          {
+            ((Intent)localObject2).putExtra("key_mini_app_version_type", 1);
+            ((Intent)localObject2).putExtra("key_mini_app_config", this.mGameBrandRuntime.getApkgInfo().appConfig);
+            ((Intent)localObject2).putExtra("key_mini_app_is_game", true);
+          }
+          if ((!isMiniGameRuntime()) || (this.mGameBrandRuntime == null) || (this.mGameBrandRuntime.activity == null)) {
+            break label952;
+          }
+          MiniChatActivity.a(this.mGameBrandRuntime.activity, (Intent)localObject2, 1001);
+        }
+        for (;;)
+        {
+          this.mRedDot.setVisibility(8);
+          this.isMiniMsgTabShow = true;
+          unReadCount = 0;
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("CapsuleButton", 1, "isMiniMsgTabShow true");
+          return;
+          paramInt = 0;
+          break label163;
+          if ((this.mAppBrandRuntime != null) && (this.mAppBrandRuntime.activity != null) && (!this.isMiniMsgTabShow))
+          {
+            if (this.mAppBrandRuntime.pageContainer.getCurrentPageWebview() == null) {
+              break;
+            }
+            paramInt = i;
+            if (this.mAppBrandRuntime.apkgInfo.isEngineTypeMiniApp())
+            {
+              paramHashMap = AppBrandUtil.getUrlWithoutParams(this.mAppBrandRuntime.apkgInfo.getAppConfigInfo().entryPagePath);
+              if ((this.mAppBrandRuntime.pageContainer.getCurrentPage() == null) || (this.mAppBrandRuntime.getCurPage().getCurrentPageWebview() == null) || (!this.mAppBrandRuntime.getCurPage().getCurrentPageWebview().enableShowBackHome())) {
+                break label844;
+              }
+              localObject1 = AppBrandUtil.getUrlWithoutParams(this.mAppBrandRuntime.pageContainer.getCurrentPage().getUrl());
+              paramInt = i;
+              if (!TextUtils.isEmpty(paramHashMap))
+              {
+                paramInt = i;
+                if (paramHashMap.equals(localObject1)) {}
+              }
+            }
+            for (paramInt = 1;; paramInt = -1)
+            {
+              str = this.mAppBrandRuntime.apkgInfo.appId;
+              paramHashMap = this.mAppBrandRuntime.apkgInfo.apkgName;
+              bool2 = this.mAppBrandRuntime.apkgInfo.appConfig.config.isSpecialMiniApp();
+              if (QzoneConfig.getInstance().getConfig("qqminiapp", "mini_app_share_to_wx_switcher", 1) != 1)
+              {
+                paramBoolean3 = false;
+                paramBoolean4 = false;
+              }
+              bool1 = false;
+              localObject1 = "light";
+              i = 1;
+              break;
+            }
+          }
+          paramHashMap = "";
+          bool1 = false;
+          localObject1 = "light";
+          i = 0;
+          paramInt = -1;
+          bool2 = false;
+          break label211;
+          bool3 = this.mAppBrandRuntime.isOpenMonitorPanel();
+          break label260;
+          label887:
+          if ((this.mAppBrandRuntime == null) || (this.mAppBrandRuntime.apkgInfo == null)) {
+            break label526;
+          }
+          ((Intent)localObject2).putExtra("key_mini_app_version_type", this.mAppBrandRuntime.versionType);
+          ((Intent)localObject2).putExtra("key_mini_app_config", this.mAppBrandRuntime.apkgInfo.appConfig);
+          ((Intent)localObject2).putExtra("key_mini_app_is_game", false);
+          break label526;
+          if ((!isMiniGameRuntime()) && (this.mAppBrandRuntime.activity != null)) {
+            MiniChatActivity.a(this.mAppBrandRuntime.activity, (Intent)localObject2, 1001);
+          }
+        }
+        localObject2 = paramHashMap;
+        i = paramInt;
+        paramInt = -1;
+        bool2 = false;
+        paramHashMap = (HashMap<String, Integer>)localObject1;
+        localObject1 = localObject2;
+      }
+    }
+  }
+  
+  public void updateRedDotVisible()
+  {
+    AppBrandTask.runTaskOnUiThreadIfNot(new CapsuleButton.4(this));
+  }
+  
+  public void updateStyle(int paramInt)
+  {
+    if ((this.mMoreView != null) && (this.mCloseView != null) && (this.mSplider != null))
+    {
+      if (paramInt == -1)
+      {
+        this.mMoreView.setImageResource(2130840817);
+        this.mCloseView.setImageResource(2130840811);
+        this.mSplider.setBackgroundColor(Color.parseColor("#4DFFFFFF"));
+      }
+    }
+    else {
+      return;
+    }
+    this.mMoreView.setImageResource(2130840814);
+    this.mCloseView.setImageResource(2130840808);
+    this.mSplider.setBackgroundColor(Color.parseColor("#1A000000"));
+  }
+  
+  public void updateUI() {}
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.CapsuleButton
+ * JD-Core Version:    0.7.0.1
+ */

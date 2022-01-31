@@ -1,29 +1,17 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public class ajao
-  implements Runnable
+public final class ajao
+  implements FilenameFilter
 {
-  public ajao(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, Bundle paramBundle) {}
-  
-  public void run()
+  public boolean accept(File paramFile, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.app == null) {
-      return;
-    }
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.app.getEntityManagerFactory().createEntityManager();
-    Setting localSetting = (Setting)localEntityManager.a(Setting.class, "troop_" + this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.a);
-    localEntityManager.a();
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.runOnUiThread(new ajap(this, localSetting));
+    return (paramString.toLowerCase().endsWith(".amr")) || (paramString.toLowerCase().endsWith(".mp3"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajao
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,38 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.RedPackRainCloudView;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
-class abgq
-  implements Runnable
+public class abgq
+  extends aqjp
 {
-  abgq(abgo paramabgo) {}
+  public abgq(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((!this.a.a.isFinishing()) && (this.a.a.a.getVisibility() == 0))
+    int i = 1;
+    if (!paramBoolean1)
     {
-      this.a.a.a.setVisibility(8);
-      ARMapActivity.d(this.a.a, false);
-      ARMapActivity.c(this.a.a);
+      this.a.a(2131653546, 1);
+      return;
+    }
+    PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean2) {
+      i = 2;
+    }
+    awqx.b(localQQAppInterface, "dc00898", "", "", "0X8009D11", "0X8009D11", 0, 0, String.valueOf(i), "", "", "");
+  }
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {
+      PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abgq
  * JD-Core Version:    0.7.0.1
  */

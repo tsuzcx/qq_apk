@@ -23,7 +23,7 @@ public class FaceData
   public String photo_id = "";
   public String quanid = "";
   public int quanstate;
-  public ArrayList recommend_infos;
+  public ArrayList<FaceRecommendInfo> recommend_infos;
   public String targetGroupid;
   public String targetnick = "";
   public long targetuin;
@@ -118,7 +118,7 @@ public class FaceData
     return localFaceData;
   }
   
-  public static ArrayList toFaceDataList(ArrayList paramArrayList, String paramString, long paramLong)
+  public static ArrayList<FaceData> toFaceDataList(ArrayList<stFaceItem> paramArrayList, String paramString, long paramLong)
   {
     if (paramArrayList == null)
     {

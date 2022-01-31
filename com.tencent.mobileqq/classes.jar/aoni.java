@@ -1,32 +1,83 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.PickerContainer;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
 
 public class aoni
-  extends Property
+  extends BaseAdapter
 {
-  public aoni(PickerContainer paramPickerContainer, Class paramClass, String paramString)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private bbkf jdField_a_of_type_Bbkf;
+  private Object jdField_a_of_type_JavaLangObject;
+  
+  public aoni(Context paramContext, View.OnClickListener paramOnClickListener)
   {
-    super(paramClass, paramString);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
   }
   
-  public Float a(PickerContainer paramPickerContainer)
+  public void a(bbkf parambbkf)
   {
-    if (paramPickerContainer != null) {
-      return PickerContainer.a(paramPickerContainer);
-    }
-    return Float.valueOf(1.0F);
+    this.jdField_a_of_type_Bbkf = parambbkf;
   }
   
-  public void a(PickerContainer paramPickerContainer, Float paramFloat)
+  public void a(Object paramObject)
   {
-    if (paramPickerContainer != null) {
-      PickerContainer.a(paramPickerContainer, paramFloat);
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+  }
+  
+  public boolean a(int paramInt, View paramView, ShaderAnimLayout paramShaderAnimLayout, Button paramButton, Object paramObject)
+  {
+    boolean bool = false;
+    if (paramShaderAnimLayout != null)
+    {
+      if ((this.jdField_a_of_type_JavaLangObject != null) && (this.jdField_a_of_type_JavaLangObject.equals(paramObject)))
+      {
+        bool = true;
+        paramShaderAnimLayout.a();
+        if (this.jdField_a_of_type_Bbkf != null) {
+          this.jdField_a_of_type_Bbkf.setMotionView(paramView, paramInt);
+        }
+        paramButton.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+        paramButton.setTag(Integer.valueOf(paramInt));
+      }
     }
+    else {
+      return bool;
+    }
+    paramShaderAnimLayout.d();
+    paramButton.setOnClickListener(null);
+    paramButton.setTag(null);
+    return false;
+  }
+  
+  public int getCount()
+  {
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoni
  * JD-Core Version:    0.7.0.1
  */

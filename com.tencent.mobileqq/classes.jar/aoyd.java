@@ -1,19 +1,20 @@
-import dov.com.tencent.mobileqq.shortvideo.filter.QQEncodeFilterRender;
-import dov.com.tencent.mobileqq.shortvideo.musicwavesupport.MusicSoundFile.ProgressListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.11;
 
 public class aoyd
-  implements MusicSoundFile.ProgressListener
+  implements DialogInterface.OnClickListener
 {
-  public aoyd(QQEncodeFilterRender paramQQEncodeFilterRender) {}
+  public aoyd(VideoFilePresenter.11 param11) {}
   
-  public boolean a(double paramDouble)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return QQEncodeFilterRender.a(this.a);
+    this.a.this$0.aF_();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoyd
  * JD-Core Version:    0.7.0.1
  */

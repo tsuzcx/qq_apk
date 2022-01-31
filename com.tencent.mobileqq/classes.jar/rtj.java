@@ -1,24 +1,22 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin.5;
 
-public class rtj
-  implements Runnable
+class rtj
+  implements DialogInterface.OnClickListener
 {
-  public rtj(BaseChatPie paramBaseChatPie) {}
+  rtj(rti paramrti) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, "mRunOnShow 800 hasDestory=" + this.a.I);
-    }
-    if (!this.a.I) {
-      this.a.j(3);
-    }
+    ajia.a();
+    this.a.a.this$0.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rtj
  * JD-Core Version:    0.7.0.1
  */

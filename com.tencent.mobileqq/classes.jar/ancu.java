@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.music.BroadcastOneShow;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public final class ancu
-  implements Parcelable.Creator
+class ancu
+  implements DialogInterface.OnClickListener
 {
-  public BroadcastOneShow a(Parcel paramParcel)
-  {
-    return new BroadcastOneShow(paramParcel);
-  }
+  ancu(ancs paramancs, EmoticonPackage paramEmoticonPackage, View paramView) {}
   
-  public BroadcastOneShow[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new BroadcastOneShow[paramInt];
+    ancr.a(this.jdField_a_of_type_Ancs.a, this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage, this.jdField_a_of_type_AndroidViewView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ancu
  * JD-Core Version:    0.7.0.1
  */

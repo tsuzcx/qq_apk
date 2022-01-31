@@ -1,35 +1,22 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.open.agent.report.ReportCenter;
+import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.2.1;
 
 public class ssu
-  implements View.OnClickListener
+  implements slx<stq, str>
 {
-  public ssu(ForwardRecentActivity paramForwardRecentActivity) {}
+  ssu(ssr paramssr) {}
   
-  public void onClick(View paramView)
+  public void a(@NonNull stq paramstq, @Nullable str paramstr, @NonNull ErrorMessage paramErrorMessage)
   {
-    paramView = new Bundle();
-    paramView.putString("uin", String.valueOf(AppConstants.J));
-    paramView.putInt("uintype", -1);
-    paramView.putBoolean("forward_report_confirm", true);
-    paramView.putString("forward_report_confirm_action_name", "0X8005A13");
-    paramView.putString("forward_report_confirm_reverse2", "2");
-    this.a.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.a(ForwardAbility.ForwardAbilityType.g.intValue(), paramView);
-    if (this.a.jdField_a_of_type_Boolean) {
-      ReportCenter.a().a(this.a.app.getAccount(), "", this.a.b, "1000", "35", "0", false);
-    }
+    this.a.b.post(new MsgTabNodeListLoader.2.1(this, paramstq, paramstr, paramErrorMessage));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ssu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,25 @@
-import com.tencent.mobileqq.activity.bless.BlessManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class wkk
-  implements Runnable
+class wkk
+  extends wkp
 {
-  public wkk(BlessManager paramBlessManager) {}
-  
-  public void run()
+  wkk(wkf paramwkf, long paramLong, wkc paramwkc, File paramFile)
   {
-    if (BlessManager.a(this.a) != null)
-    {
-      if (!BlessManager.a(this.a))
-      {
-        BlessManager.b(this.a, BlessManager.a(this.a, BlessManager.a(this.a), false));
-        BlessManager.a(this.a, BlessManager.a(this.a));
-        BlessManager.a(this.a, BlessManager.a(this.a), true);
-      }
-      return;
+    super(paramwkf.a);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.trace_video_combine", 2, "combineVideos total = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
-    BlessManager.a(this.a, false);
+    this.jdField_a_of_type_Wkc.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), paramBoolean, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wkk
  * JD-Core Version:    0.7.0.1
  */

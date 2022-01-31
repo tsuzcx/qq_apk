@@ -4,7 +4,6 @@ import android.content.Context;
 import com.tencent.stat.StatAccount;
 import com.tencent.stat.StatSpecifyReportedInfo;
 import com.tencent.stat.common.Util;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 public class a
@@ -24,7 +23,6 @@ public class a
   }
   
   public boolean a(JSONObject paramJSONObject)
-    throws JSONException
   {
     Util.jsonPut(paramJSONObject, "qq", this.a.getAccount());
     paramJSONObject.put("acc", this.a.toJsonString());

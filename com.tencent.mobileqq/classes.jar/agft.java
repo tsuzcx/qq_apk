@@ -1,28 +1,36 @@
-import android.hardware.Camera.Size;
-import com.tencent.mobileqq.ocr.OcrCamera;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
 public class agft
-  implements Comparator
+  implements View.OnClickListener
 {
-  public agft(OcrCamera paramOcrCamera) {}
+  int jdField_a_of_type_Int;
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
   
-  public int a(Camera.Size paramSize1, Camera.Size paramSize2)
+  public agft(NewPhotoListActivity paramNewPhotoListActivity) {}
+  
+  public void a(int paramInt)
   {
-    int i = paramSize1.height * paramSize1.width;
-    int j = paramSize2.height * paramSize2.width;
-    if (j < i) {
-      return 1;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(CheckBox paramCheckBox)
+  {
+    this.jdField_a_of_type_AndroidWidgetCheckBox = paramCheckBox;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.a.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumNewPhotoListActivity.a.a.a(paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidWidgetCheckBox);
     }
-    if (j > i) {
-      return -1;
-    }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agft
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ymg
-  implements Animation.AnimationListener
+class ymg
+  implements DialogInterface.OnClickListener
 {
-  public ymg(SpecailCareListActivity paramSpecailCareListActivity) {}
+  ymg(yme paramyme) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.leftView.clearAnimation();
-    this.a.a.clearAnimation();
-    this.a.leftView.setVisibility(0);
-    this.a.a.setVisibility(0);
-    this.a.rightViewText.setClickable(true);
-    this.a.rightViewText.setText("管理");
-    this.a.rightViewText.setContentDescription("管理 按钮");
-    this.a.c = false;
+    yny.b("GdtMvViewController", " DialogInterface onClick confirm");
+    yme.a(this.a, false);
+    yme.b(this.a);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ymg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,53 @@
-import com.tencent.mobileqq.magicface.magicfaceaction.Action;
-import com.tencent.mobileqq.magicface.model.RecordVolume.RecordVolumeListener;
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aemm
-  implements RecordVolume.RecordVolumeListener
 {
-  public aemm(MagicfaceActionManager paramMagicfaceActionManager) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
   
-  public void a(int paramInt)
+  public JSONObject a()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionAction != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionAction.a(paramInt, this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceSensorOperation);
+    JSONObject localJSONObject1 = new JSONObject();
+    try
+    {
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("user_id", this.a);
+      localJSONObject2.put("keyword", this.b);
+      localJSONObject2.put("appid", this.c);
+      localJSONObject2.put("expose_md5s", this.d);
+      localJSONObject2.put("expose_urls", this.e);
+      localJSONObject2.put("click_md5", this.f);
+      localJSONObject2.put("click_url", this.g);
+      localJSONObject2.put("aio_type", this.h);
+      localJSONObject2.put("mobile_type", this.i);
+      localJSONObject2.put("to_user_id", this.j);
+      localJSONObject2.put("passthough", this.k);
+      localJSONObject1.put("dcId", this.l);
+      localJSONObject1.put("data", localJSONObject2);
+      return localJSONObject1;
     }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("StickerRecReportData", 2, "convert error:" + localException);
+    }
+    return localJSONObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aemm
  * JD-Core Version:    0.7.0.1
  */

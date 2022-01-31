@@ -1,79 +1,45 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.app.Activity;
 
-public class tck
-  implements Runnable
+class tck
+  implements tcm
 {
-  public tck(Leba paramLeba) {}
+  tck(tci paramtci) {}
   
-  public void run()
+  public void a(tet paramtet)
   {
-    QZoneManagerImp localQZoneManagerImp = (QZoneManagerImp)this.a.a.getManager(9);
-    int j;
-    ArrayList localArrayList;
-    label40:
-    int i;
-    if (localQZoneManagerImp != null)
+    tci.a(this.a).c();
+    Activity localActivity = tci.a(this.a).a();
+    if (localActivity == null)
     {
-      j = localQZoneManagerImp.a(1);
-      if (localQZoneManagerImp == null) {
-        break label132;
-      }
-      localArrayList = localQZoneManagerImp.a();
-      if (j > 0) {
-        break label207;
-      }
-      if (localQZoneManagerImp == null) {
-        break label137;
-      }
-      i = localQZoneManagerImp.a(2);
-      label56:
-      if ((i <= 0) || (localArrayList == null) || (localArrayList.size() <= 0)) {
-        break label142;
-      }
-      if ((!QLog.isColorLevel()) || (QLog.isColorLevel())) {
-        QLog.d("UndealCount.Q.lebatab.leba", 2, "TYPE_ACTIVE_FEED updateQZoneFlag.mQzoneFeedSubIcon setImageDrawable");
-      }
-      this.a.a(new tcl(this, localArrayList));
-      i = 1;
-    }
-    for (;;)
-    {
-      this.a.a(new tco(this, i, j));
+      c(paramtet);
       return;
-      j = 0;
-      break;
-      label132:
-      localArrayList = null;
-      break label40;
-      label137:
-      i = 0;
-      break label56;
-      label142:
-      if (QLog.isColorLevel()) {
-        QLog.d("UndealCount.Q.lebatab.leba", 2, "updateQZoneFlag.noflag count=" + i);
-      }
-      this.a.a(new tcm(this));
-      if (QLog.isColorLevel()) {
-        QLog.d("UndealCount.ZebraAlbum.Q.lebatab.leba", 2, "freshEntryItemUI set style NOTETXT_STYLE_DEFAULT and mQzoneFeedSubIcon GONE");
-      }
-      i = 0;
-      continue;
-      label207:
-      if (QLog.isColorLevel()) {
-        QLog.d("UndealCount.Q.lebatab.leba", 2, "TYPE_PASSIVE_FEED freshEntryItemUI num=" + j);
-      }
-      i = 3;
-      this.a.a(new tcn(this));
+    }
+    tff.a(localActivity, paramtet, tci.a(this.a));
+  }
+  
+  public void b(tet paramtet)
+  {
+    tci.a(this.a).c();
+    if (tci.a(this.a) != null)
+    {
+      tci.a(this.a).c(paramtet.a);
+      tci.a(this.a).a();
+    }
+  }
+  
+  public void c(tet paramtet)
+  {
+    tci.a(this.a).c();
+    if (tci.a(this.a) != null)
+    {
+      tci.a(this.a).d(paramtet.a);
+      tci.a(this.a).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tck
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,17 @@
 package com.tencent.component.network.downloader.strategy;
 
-public class StrategyProvider$ExecuteResult {}
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.protocol.HttpContext;
+
+public class StrategyProvider$ExecuteResult
+{
+  public HttpContext context;
+  public Throwable exception;
+  public HttpGet request;
+  public HttpResponse response;
+  public DownloadGlobalStrategy.StrategyInfo strategyInfo;
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

@@ -1,41 +1,18 @@
-import com.tencent.biz.qqstory.newshare.StoryShare;
-import com.tencent.biz.qqstory.newshare.callback.OnShareListener;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.ui.OnShareUIListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
 
 public class nki
-  implements OnShareUIListener
+  implements TopGestureLayout.OnGestureListener
 {
-  public nki(StoryShare paramStoryShare) {}
+  public nki(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
   
-  public void a()
+  public void flingLToR()
   {
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).c();
-    }
+    ReadInJoyChannelActivity.a(this.a, true);
+    this.a.finish();
   }
   
-  public void a(int paramInt)
-  {
-    StoryShare.a(this.a).a(paramInt);
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).b(paramInt);
-    }
-  }
-  
-  public void b()
-  {
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).d();
-    }
-  }
-  
-  public void c()
-  {
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).d(-1);
-    }
-  }
+  public void flingRToL() {}
 }
 
 

@@ -1,28 +1,19 @@
 import android.view.View;
-import com.tencent.biz.qrcode.activity.ScannerActivity.QQDialogCancelListener;
-import com.tencent.biz.qrcode.ipc.QrHandleResultCallBack;
-import com.tencent.biz.qrcode.ipc.ScannerParams;
-import mqq.app.AppActivity;
+import android.view.View.OnAttachStateChangeListener;
 
 class ozk
-  extends ScannerActivity.QQDialogCancelListener
+  implements View.OnAttachStateChangeListener
 {
-  ozk(ozj paramozj) {}
+  ozk(ozi paramozi, ohe paramohe) {}
   
-  public void a()
+  public void onViewAttachedToWindow(View paramView)
   {
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    if (this.a.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.i)
-    {
-      this.a.jdField_a_of_type_ComTencentBizQrcodeIpcQrHandleResultCallBack.a();
-      return;
-    }
-    if (this.a.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.e)
-    {
-      this.a.jdField_a_of_type_MqqAppAppActivity.finish();
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentBizQrcodeIpcQrHandleResultCallBack.b();
+    ohb.a().a(this.jdField_a_of_type_Ohe);
+  }
+  
+  public void onViewDetachedFromWindow(View paramView)
+  {
+    ohb.a().b(this.jdField_a_of_type_Ohe);
   }
 }
 

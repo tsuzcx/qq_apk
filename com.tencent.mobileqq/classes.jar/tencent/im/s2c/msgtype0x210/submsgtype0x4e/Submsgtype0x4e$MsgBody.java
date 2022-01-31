@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Submsgtype0x4e$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   public static final int MSG_GROUP_BULLETIN_FIELD_NUMBER = 4;
   public static final int UINT32_APPID_FIELD_NUMBER = 3;

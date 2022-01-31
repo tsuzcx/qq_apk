@@ -1,19 +1,14 @@
-import com.tencent.biz.pubaccount.util.SwipeBackLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class nar
-  implements Runnable
+class nar
+  implements View.OnClickListener
 {
-  public nar(SwipeBackLayout paramSwipeBackLayout) {}
+  nar(naq paramnaq) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_SwipeBackLayout", 2, "isFling:" + SwipeBackLayout.b(this.a));
-    }
-    if (!SwipeBackLayout.b(this.a)) {
-      SwipeBackLayout.a(this.a);
-    }
+    this.a.a.d();
   }
 }
 

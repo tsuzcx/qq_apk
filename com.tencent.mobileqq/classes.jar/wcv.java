@@ -1,21 +1,31 @@
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.biz.ui.CustomMenuBar.OnMenuItemClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
 
 public class wcv
-  implements CustomMenuBar.OnMenuItemClickListener
+  implements wah
 {
-  public wcv(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public wcv(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
   
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public void a(int paramInt)
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
-    this.a.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.a(paramString, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), paramInt1, PublicAccountChatPie.a(this.a), PublicAccountChatPie.b(this.a), paramInt2, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    SubscribeHybirdFragment.a(this.a).a(paramInt);
+  }
+  
+  public void a(CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp, boolean paramBoolean, long paramLong, String paramString)
+  {
+    if ((paramStGetFeedDetailRsp == null) || (paramStGetFeedDetailRsp.feed.get() == null))
+    {
+      bbmy.a(this.a.a(), ajjy.a(2131648849), 0).a();
+      return;
+    }
+    SubscribeHybirdFragment.a(this.a, paramStGetFeedDetailRsp, paramLong, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wcv
  * JD-Core Version:    0.7.0.1
  */

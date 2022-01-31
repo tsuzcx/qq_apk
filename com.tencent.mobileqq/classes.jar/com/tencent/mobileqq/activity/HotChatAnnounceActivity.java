@@ -1,5 +1,11 @@
 package com.tencent.mobileqq.activity;
 
+import aazi;
+import aazj;
+import aazk;
+import ajjy;
+import ajkc;
+import ajkn;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -8,31 +14,26 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
-import com.tencent.mobileqq.app.HotChatHandler;
+import awqx;
+import badq;
+import bbms;
+import bbmy;
 import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.HotChatObserver;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.HotChatInfo;
 import com.tencent.mobileqq.freshnews.BlockableEditTextView;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import tac;
-import tad;
-import tae;
 
 public class HotChatAnnounceActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
+  ajkn jdField_a_of_type_Ajkn = new aazi(this);
   View jdField_a_of_type_AndroidViewView;
   public TextView a;
-  HotChatObserver jdField_a_of_type_ComTencentMobileqqAppHotChatObserver = new tac(this);
+  bbms jdField_a_of_type_Bbms;
   BlockableEditTextView jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView;
-  QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   public String a;
   boolean jdField_a_of_type_Boolean;
   public View b;
@@ -46,13 +47,13 @@ public class HotChatAnnounceActivity
   {
     try
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) && (!isFinishing()))
+      if ((this.jdField_a_of_type_Bbms == null) && (!isFinishing()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435086);
+        this.jdField_a_of_type_Bbms = new bbms(this, getTitleBarHeight());
+        this.jdField_a_of_type_Bbms.c(2131629253);
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+      if ((this.jdField_a_of_type_Bbms != null) && (!this.jdField_a_of_type_Bbms.isShowing())) {
+        this.jdField_a_of_type_Bbms.show();
       }
       return;
     }
@@ -69,12 +70,12 @@ public class HotChatAnnounceActivity
   {
     try
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()))
+      if ((this.jdField_a_of_type_Bbms != null) && (this.jdField_a_of_type_Bbms.isShowing()))
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
+        this.jdField_a_of_type_Bbms.dismiss();
+        this.jdField_a_of_type_Bbms.cancel();
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+      this.jdField_a_of_type_Bbms = null;
       return;
     }
     catch (Throwable localThrowable)
@@ -86,21 +87,21 @@ public class HotChatAnnounceActivity
     }
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970378);
-    setTitle("热聊公告");
-    setRightButton(2131433940, this);
-    setLeftViewName(2131432425);
-    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView = ((BlockableEditTextView)super.findViewById(2131370251));
-    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.addTextChangedListener(new tad(this));
-    this.jdField_b_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView = ((BlockableEditTextView)super.findViewById(2131370254));
-    this.jdField_b_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.addTextChangedListener(new tae(this));
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131370255);
+    super.setContentView(2131495216);
+    setTitle(ajjy.a(2131639739));
+    setRightButton(2131628116, this);
+    setLeftViewName(2131624770);
+    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView = ((BlockableEditTextView)super.findViewById(2131297013));
+    this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.addTextChangedListener(new aazj(this));
+    this.jdField_b_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView = ((BlockableEditTextView)super.findViewById(2131303585));
+    this.jdField_b_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.addTextChangedListener(new aazk(this));
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131313458);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131370252));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131370253);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131303474));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131303595);
     paramBundle = getIntent();
     this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("TROOPUIN");
     this.jdField_a_of_type_Boolean = paramBundle.getBooleanExtra("CANADDLINK", false);
@@ -116,17 +117,17 @@ public class HotChatAnnounceActivity
       if ((this.c != null) && (this.c.trim().length() > 0)) {
         this.jdField_b_of_type_AndroidViewView.setEnabled(true);
       }
-      this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver);
+      this.app.addObserver(this.jdField_a_of_type_Ajkn);
       return true;
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver != null) {
-      this.app.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver);
+    if (this.jdField_a_of_type_Ajkn != null) {
+      this.app.removeObserver(this.jdField_a_of_type_Ajkn);
     }
   }
   
@@ -145,45 +146,45 @@ public class HotChatAnnounceActivity
     Object localObject;
     if (paramView == this.rightViewText)
     {
-      if (!NetworkUtil.d(this))
+      if (!badq.d(this))
       {
-        QQToast.a(this, 0, 2131433023, 0).b(getTitleBarHeight());
+        bbmy.a(this, 0, 2131626719, 0).b(getTitleBarHeight());
         return;
       }
       localObject = this.jdField_a_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.getText().toString();
       paramView = this.jdField_b_of_type_ComTencentMobileqqFreshnewsBlockableEditTextView.getText().toString();
       if (TextUtils.isEmpty((CharSequence)localObject))
       {
-        QQToast.a(this, 0, "公告内容不能为空", 0).b(getTitleBarHeight());
+        bbmy.a(this, 0, ajjy.a(2131639744), 0).b(getTitleBarHeight());
         return;
       }
       if (((String)localObject).getBytes().length / 3 > 40)
       {
-        QQToast.a(this, 0, "公告内容过长", 0).b(getTitleBarHeight());
+        bbmy.a(this, 0, ajjy.a(2131639738), 0).b(getTitleBarHeight());
         return;
       }
       if ((paramView != null) && (!TextUtils.isEmpty(paramView.trim()))) {
-        break label440;
+        break label452;
       }
       paramView = null;
     }
-    label440:
+    label452:
     for (;;)
     {
       if ((!TextUtils.isEmpty(paramView)) && (paramView.length() > 1024))
       {
-        QQToast.a(this, 0, "链接过长", 0).b(getTitleBarHeight());
+        bbmy.a(this, 0, ajjy.a(2131639746), 0).b(getTitleBarHeight());
         return;
       }
-      HotChatHandler localHotChatHandler = (HotChatHandler)this.app.a(35);
-      HotChatInfo localHotChatInfo = ((HotChatManager)this.app.getManager(59)).a(this.jdField_a_of_type_JavaLangString);
+      ajkc localajkc = (ajkc)this.app.a(35);
+      HotChatInfo localHotChatInfo = ((HotChatManager)this.app.getManager(60)).a(this.jdField_a_of_type_JavaLangString);
       a();
       if (QLog.isColorLevel()) {
         QLog.i("HotChatAnnounceActivity", 2, "onClick.contnet=" + (String)localObject + ",link=" + paramView);
       }
-      ReportController.b(this.app, "CliOper", "", "", "0X8005D54", "0X8005D54", 0, 0, "", "", "", "");
+      awqx.b(this.app, "CliOper", "", "", "0X8005D54", "0X8005D54", 0, 0, "", "", "", "");
       if (localHotChatInfo.userCreate == 1) {}
-      for (boolean bool = localHotChatHandler.a(localHotChatInfo.troopUin, (String)localObject);; bool = localHotChatHandler.a(localHotChatInfo.uuid.getBytes(), (String)localObject, paramView))
+      for (boolean bool = localajkc.a(localHotChatInfo.troopUin, (String)localObject);; bool = localajkc.a(localHotChatInfo.uuid.getBytes(), (String)localObject, paramView))
       {
         this.d = ((String)localObject);
         this.e = paramView;
@@ -191,7 +192,7 @@ public class HotChatAnnounceActivity
           break;
         }
         b();
-        QQToast.a(this, 0, "输入有误！", 0).b(getTitleBarHeight());
+        bbmy.a(this, 0, ajjy.a(2131639742), 0).b(getTitleBarHeight());
         return;
       }
       if (paramView != this.jdField_b_of_type_AndroidViewView) {

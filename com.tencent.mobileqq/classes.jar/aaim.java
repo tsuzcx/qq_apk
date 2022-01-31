@@ -1,29 +1,30 @@
-import com.tencent.mobileqq.ar.ARRenderModel.SensorTrackManager;
-import com.tencent.mobileqq.ar.ARRenderModel.SensorTrackManager.ARSensorTrackCallback;
-import com.tencent.mobileqq.armap.sensor.SimpleSensorChangeListener;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
 
 public class aaim
-  extends SimpleSensorChangeListener
+  implements apca
 {
-  public aaim(SensorTrackManager paramSensorTrackManager) {}
+  public aaim(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, aodw paramaodw) {}
   
-  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat)
+  public void a()
   {
-    if (SensorTrackManager.a(this.a) != null) {
-      SensorTrackManager.a(this.a).a(paramArrayOfFloat);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+        this.jdField_a_of_type_Aodw.b(localFileManagerEntity);
+      }
     }
   }
   
-  public void updateAccelerometer(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
-  {
-    if (SensorTrackManager.a(this.a) != null) {
-      SensorTrackManager.a(this.a).a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    }
-  }
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaim
  * JD-Core Version:    0.7.0.1
  */

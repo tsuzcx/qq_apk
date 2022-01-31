@@ -7,7 +7,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class TraeAudioSessionHost
 {
-  private ArrayList<SessionInfo> _sessionInfoList = new ArrayList();
+  private ArrayList<TraeAudioSessionHost.SessionInfo> _sessionInfoList = new ArrayList();
   private ReentrantLock mLock = new ReentrantLock();
   
   public void add(TraeAudioSession paramTraeAudioSession, long paramLong, Context paramContext)
@@ -15,7 +15,7 @@ public class TraeAudioSessionHost
     if (find(paramLong) != null) {
       return;
     }
-    paramContext = new SessionInfo();
+    paramContext = new TraeAudioSessionHost.SessionInfo(this);
     paramContext.sessionId = paramLong;
     paramContext._traeAs = paramTraeAudioSession;
     this.mLock.lock();
@@ -23,14 +23,14 @@ public class TraeAudioSessionHost
     this.mLock.unlock();
   }
   
-  public SessionInfo find(long paramLong)
+  public TraeAudioSessionHost.SessionInfo find(long paramLong)
   {
     this.mLock.lock();
     int i = 0;
-    SessionInfo localSessionInfo;
+    TraeAudioSessionHost.SessionInfo localSessionInfo;
     if (i < this._sessionInfoList.size())
     {
-      localSessionInfo = (SessionInfo)this._sessionInfoList.get(i);
+      localSessionInfo = (TraeAudioSessionHost.SessionInfo)this._sessionInfoList.get(i);
       if (localSessionInfo.sessionId != paramLong) {}
     }
     for (;;)
@@ -51,7 +51,7 @@ public class TraeAudioSessionHost
     {
       if (i < this._sessionInfoList.size())
       {
-        if (((SessionInfo)this._sessionInfoList.get(i)).sessionId == paramLong) {
+        if (((TraeAudioSessionHost.SessionInfo)this._sessionInfoList.get(i)).sessionId == paramLong) {
           this._sessionInfoList.remove(i);
         }
       }
@@ -70,23 +70,15 @@ public class TraeAudioSessionHost
     int i = 0;
     while (i < this._sessionInfoList.size())
     {
-      ((SessionInfo)this._sessionInfoList.get(i))._traeAs.onReceiveCallback(paramIntent);
+      ((TraeAudioSessionHost.SessionInfo)this._sessionInfoList.get(i))._traeAs.onReceiveCallback(paramIntent);
       i += 1;
     }
     this.mLock.unlock();
   }
-  
-  public class SessionInfo
-  {
-    public TraeAudioSession _traeAs;
-    public long sessionId;
-    
-    public SessionInfo() {}
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.TMG.audio.TraeAudioSessionHost
  * JD-Core Version:    0.7.0.1
  */

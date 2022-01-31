@@ -1,20 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.videostory.widget.view.smartmusicview.VsMusicItemInfo;
 
-public class xad
-  implements DialogInterface.OnDismissListener
+class xad
+  implements View.OnClickListener
 {
-  public xad(DialogBaseActivity paramDialogBaseActivity) {}
+  xad(xac paramxac, int paramInt, VsMusicItemInfo paramVsMusicItemInfo) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.a = null;
+    if (xac.a(this.jdField_a_of_type_Xac) != null) {
+      xac.a(this.jdField_a_of_type_Xac).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizVideostoryWidgetViewSmartmusicviewVsMusicItemInfo);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xad
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,34 @@
-import com.tencent.mobileqq.activity.aio.PokePanel;
-import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.biz.qqstory.takevideo.CommonPicUploadFragment;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class urr
-  implements Runnable
+public class urr
+  implements DialogInterface.OnKeyListener
 {
-  urr(urq paramurq, QQAppInterface paramQQAppInterface) {}
+  public urr(CommonPicUploadFragment paramCommonPicUploadFragment) {}
   
-  public void run()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_Urq.a.a(PokeItemHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface));
+    if (paramInt == 84) {
+      return true;
+    }
+    if (paramInt == 4)
+    {
+      this.a.a();
+      paramDialogInterface = this.a.a;
+      paramKeyEvent = this.a.a;
+      paramDialogInterface.setResult(0);
+      this.a.a.finish();
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     urr
  * JD-Core Version:    0.7.0.1
  */

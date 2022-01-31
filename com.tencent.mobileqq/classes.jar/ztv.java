@@ -1,133 +1,97 @@
-import android.annotation.TargetApi;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SignatureManager;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
-import com.tencent.mobileqq.vas.IndividuationUrlHelper;
-import com.tencent.mobileqq.vas.SignatureTemplateConfig;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.util.LruCache;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
+import com.tencent.mobileqq.Doraemon.impl.webview.VerifyUrlJobSegment;
+import com.tencent.mobileqq.Doraemon.impl.webview.VerifyUrlJobSegment.UrlNotauthorizedError;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import mqq.os.MqqHandler;
+import tencent.im.oidb.oidb_0xb60.CheckUrlRsp;
+import tencent.im.oidb.oidb_0xb60.RspBody;
 
 public class ztv
-  extends DownloadListener
+  extends mmn
 {
-  public ztv(SignatureManager paramSignatureManager) {}
+  public ztv(VerifyUrlJobSegment paramVerifyUrlJobSegment, armr paramarmr, String paramString) {}
   
-  public void onCancel(DownloadTask paramDownloadTask)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("SignatureManager", 2, "sigTplResDownloadListener.onCancel| task:" + paramDownloadTask);
+      QLog.i("DoraemonOpenAPI.jobVerifyUrl", 2, "onResult type=" + this.jdField_a_of_type_Armr.jdField_a_of_type_Int + ", appid=" + this.jdField_a_of_type_Armr.jdField_a_of_type_JavaLangString + ", url=" + this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewVerifyUrlJobSegment.jdField_a_of_type_JavaLangString + ", code=" + paramInt);
     }
-  }
-  
-  @TargetApi(9)
-  public void onDone(DownloadTask paramDownloadTask)
-  {
-    super.onDone(paramDownloadTask);
-    if (QLog.isColorLevel()) {
-      QLog.d("SignatureManager", 2, "sigTplResDownloadListener.onDone| task:" + paramDownloadTask);
-    }
-    Object localObject2 = paramDownloadTask.a();
-    if (localObject2 != null) {}
-    for (int i = ((Bundle)localObject2).getInt("resType");; i = 0)
+    if ((paramInt != 0) || (paramArrayOfByte == null))
     {
-      switch (i)
-      {
+      VerifyUrlJobSegment.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewVerifyUrlJobSegment, new AppInfoError(7, "jobVerifyUrl req error " + paramInt));
+      if ((QLog.isColorLevel()) && (paramArrayOfByte == null)) {
+        break label444;
       }
-      label256:
-      label385:
-      for (;;)
+    }
+    for (;;)
+    {
+      try
       {
-        return;
-        if ((3 == paramDownloadTask.a()) || (paramDownloadTask.a() == 0))
+        paramBundle = ((oidb_0xb60.RspBody)new oidb_0xb60.RspBody().mergeFrom(paramArrayOfByte)).wording.get();
+        StringBuilder localStringBuilder = new StringBuilder().append("req error code=").append(paramInt);
+        if (paramArrayOfByte == null)
         {
-          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-          label177:
-          Object localObject1;
-          if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-          {
-            paramDownloadTask = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("sigResUpt", 0);
-            i = paramDownloadTask.getInt("sigTplCfgVerTemp", 0);
-            paramDownloadTask = paramDownloadTask.edit();
-            paramDownloadTask.putInt("sigTplCfgVer", i);
-            if (Build.VERSION.SDK_INT <= 8) {
-              paramDownloadTask.commit();
-            }
-          }
-          else
-          {
-            if (SignatureManager.a(this.a) == null) {
-              break label256;
-            }
-            paramDownloadTask = new File(SignatureManager.b);
-            localObject1 = SignatureManager.a(this.a);
-            localObject2 = IndividuationUrlHelper.a("signatureTemplate");
-            if (!paramDownloadTask.exists()) {
-              break label258;
-            }
-          }
-          label258:
-          for (long l = paramDownloadTask.length();; l = -1L)
-          {
-            ((PreDownloadController)localObject1).a((String)localObject2, l);
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("SignatureManager", 2, "[preDownload]:preDownload individual sign Success");
-            return;
-            paramDownloadTask.apply();
-            break label177;
-            break;
-          }
-          if ((3 == paramDownloadTask.a()) || (paramDownloadTask.a() == 0))
-          {
-            i = ((Bundle)localObject2).getInt("dynamicType");
-            localObject1 = ((Bundle)localObject2).getString("tplId");
-            localObject2 = ((Bundle)localObject2).getString("fileName");
-            paramDownloadTask = null;
-            switch (i)
-            {
-            }
-            for (;;)
-            {
-              if (paramDownloadTask == null) {
-                break label385;
-              }
-              paramDownloadTask = new File(paramDownloadTask);
-              if (!DownloaderFactory.a(new File(SignatureTemplateConfig.a((String)localObject1, (String)localObject2)), paramDownloadTask, true)) {
-                break;
-              }
-              this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(3);
-              return;
-              paramDownloadTask = SignatureTemplateConfig.a((String)localObject1, "dynamic_aio");
-            }
-          }
+          paramArrayOfByte = ", data=null";
+          QLog.i("DoraemonOpenAPI.jobVerifyUrl", 2, paramArrayOfByte);
+          return;
         }
       }
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        paramBundle = "";
+        continue;
+        paramArrayOfByte = ", msg=" + paramBundle;
+        continue;
+      }
+      paramBundle = new oidb_0xb60.RspBody();
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (paramBundle.check_url_rsp.has()) {
+          break label313;
+        }
+        VerifyUrlJobSegment.b(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewVerifyUrlJobSegment, new AppInfoError(7, "jobVerifyUrl rsp invalid"));
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("DoraemonOpenAPI.jobVerifyUrl", 2, "rsp invalid");
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        VerifyUrlJobSegment.d(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewVerifyUrlJobSegment, new AppInfoError(7, "jobVerifyUrl parse rsp error"));
+      }
+      if (QLog.isColorLevel())
+      {
+        QLog.i("DoraemonOpenAPI.jobVerifyUrl", 2, "parse rsp error", paramArrayOfByte);
+        return;
+        label313:
+        if (QLog.isColorLevel()) {
+          QLog.d("DoraemonOpenAPI.jobVerifyUrl", 2, "receive is_auth:" + paramBundle.check_url_rsp.is_authed.get() + ", duration:" + paramBundle.check_url_rsp.next_req_duration.get());
+        }
+        if (paramBundle.check_url_rsp.is_authed.get())
+        {
+          VerifyUrlJobSegment.jdField_a_of_type_AndroidUtilLruCache.put(this.jdField_a_of_type_JavaLangString, Long.valueOf(NetConnInfoCenter.getServerTimeMillis() + paramBundle.check_url_rsp.next_req_duration.get() * 1000L));
+          VerifyUrlJobSegment.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewVerifyUrlJobSegment, this.jdField_a_of_type_Armr);
+          return;
+        }
+        VerifyUrlJobSegment.c(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewVerifyUrlJobSegment, new VerifyUrlJobSegment.UrlNotauthorizedError());
+        return;
+        label444:
+        paramBundle = "";
+      }
     }
-  }
-  
-  public boolean onStart(DownloadTask paramDownloadTask)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SignatureManager", 2, "sigTplResDownloadListener.onStart| task:" + paramDownloadTask);
-    }
-    super.onStart(paramDownloadTask);
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ztv
  * JD-Core Version:    0.7.0.1
  */

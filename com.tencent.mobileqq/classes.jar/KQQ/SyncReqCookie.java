@@ -9,13 +9,13 @@ public final class SyncReqCookie
   extends JceStruct
 {
   static byte[] cache_vCookie;
-  static ArrayList cache_vServiceId;
+  static ArrayList<Long> cache_vServiceId;
   public byte[] vCookie;
-  public ArrayList vServiceId;
+  public ArrayList<Long> vServiceId;
   
   public SyncReqCookie() {}
   
-  public SyncReqCookie(ArrayList paramArrayList, byte[] paramArrayOfByte)
+  public SyncReqCookie(ArrayList<Long> paramArrayList, byte[] paramArrayOfByte)
   {
     this.vServiceId = paramArrayList;
     this.vCookie = paramArrayOfByte;
@@ -47,7 +47,7 @@ public final class SyncReqCookie
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     KQQ.SyncReqCookie
  * JD-Core Version:    0.7.0.1
  */

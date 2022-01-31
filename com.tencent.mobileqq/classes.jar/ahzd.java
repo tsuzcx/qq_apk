@@ -1,16 +1,16 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
-import com.tencent.mobileqq.search.presenter.SearchResultGroupTitlePresenter;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
-public class ahzd
+class ahzd
   implements View.OnClickListener
 {
-  public ahzd(SearchResultGroupTitlePresenter paramSearchResultGroupTitlePresenter, ISearchResultGroupModel paramISearchResultGroupModel) {}
+  ahzd(ahzb paramahzb) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultGroupModel.a(paramView);
+    GroupManagerActivity.a(this.a.a);
+    awqx.b(ahzb.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
   }
 }
 

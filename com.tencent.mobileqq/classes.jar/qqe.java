@@ -1,18 +1,25 @@
-import com.tencent.gdtad.net.GdtHttp.Params;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-class qqe
-  extends GdtHttp.Params
+public class qqe
+  implements ViewFactory.FoundClickableViewListener
 {
-  public int d = -2147483648;
+  public qqe(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, ProteusItemData paramProteusItemData, FastWebActivity paramFastWebActivity) {}
   
-  public boolean b()
+  public void onFound(ViewBase paramViewBase)
   {
-    return (super.b()) && (this.b != null);
+    if ((paramViewBase instanceof oyl)) {
+      ((oyl)paramViewBase).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataProteusItemData.b, 2);
+    }
+    paramViewBase.setOnClickListener(new qqf(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qqe
  * JD-Core Version:    0.7.0.1
  */

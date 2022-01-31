@@ -1,26 +1,56 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.search.FileSearchFragment;
+import com.tencent.widget.ListView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class aoom
-  implements Runnable
+  extends avkk<avon, avww>
 {
-  public aoom(FlowCameraActivity2 paramFlowCameraActivity2) {}
-  
-  public void run()
+  public aoom(ListView paramListView, azwg paramazwg, List<avon> paramList, String paramString, QQAppInterface paramQQAppInterface)
   {
-    if (!this.a.b)
+    super(paramazwg, paramList);
+    if (paramString == null) {
+      return;
+    }
+    if (paramString.size() == 1)
     {
-      this.a.a.a(2002, "抱歉，摄像头可能被禁止了", false);
-      if (QLog.isColorLevel()) {
-        QLog.d("FlowCameraActivity", 2, "[@] ERR_CODE_CAMERA_CREATE  黑名单机型,2秒还没有获取到预览帧,可能没有权限");
+      paramListView = (aooj)paramString.get(0);
+      if (paramListView.jdField_a_of_type_JavaUtilList.size() > 1)
+      {
+        paramazwg = new ArrayList();
+        paramList = paramListView.jdField_a_of_type_JavaUtilList.iterator();
+        while (paramList.hasNext())
+        {
+          paramString = (FileManagerEntity)paramList.next();
+          paramQQAppInterface = new aooj();
+          paramQQAppInterface.jdField_a_of_type_JavaLangString = paramListView.jdField_a_of_type_JavaLangString;
+          paramQQAppInterface.jdField_a_of_type_JavaUtilList.add(paramString);
+          paramazwg.add(paramQQAppInterface);
+        }
+        a(paramazwg);
+        return;
       }
     }
+    a(paramString);
+  }
+  
+  protected avri<avon, avww> a(int paramInt)
+  {
+    return new aooo(FileSearchFragment.a(this.a));
+  }
+  
+  protected avwx a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new aoop(paramViewGroup);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoom
  * JD-Core Version:    0.7.0.1
  */

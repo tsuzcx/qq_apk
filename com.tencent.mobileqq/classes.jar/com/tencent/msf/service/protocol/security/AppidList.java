@@ -9,8 +9,8 @@ public final class AppidList
   extends JceStruct
 {
   static ArrayList cache_AppidVector;
-  public ArrayList AppidVector;
-  public long nReserved;
+  public ArrayList AppidVector = null;
+  public long nReserved = 0L;
   
   public AppidList() {}
   

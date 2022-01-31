@@ -1,20 +1,20 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public class rhn
-  implements Runnable
+class rhn
+  extends AnimatorListenerAdapter
 {
-  public rhn(LiteTransferWrapper paramLiteTransferWrapper, String paramString) {}
+  rhn(rhl paramrhl, int paramInt) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper) != 0L) {
-      this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SetDefaultPathToJNI(LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_JavaLangString);
-    }
+    this.jdField_a_of_type_Rhl.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Rhl.jdField_a_of_type_Float = 0.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rhn
  * JD-Core Version:    0.7.0.1
  */

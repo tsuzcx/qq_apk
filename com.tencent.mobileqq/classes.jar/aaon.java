@@ -1,36 +1,24 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class aaon
-  implements INetEngine.IBreakDownFix
+public class aaon
+  implements DialogInterface.OnClickListener
 {
-  public void a(NetReq paramNetReq, NetResp paramNetResp)
+  public aaon(DialogActivity paramDialogActivity) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramNetReq == null) || (paramNetResp == null)) {}
-    while (!(paramNetReq instanceof HttpNetReq)) {
-      return;
-    }
-    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetReq;
-    localHttpNetReq.jdField_a_of_type_Long += paramNetResp.c;
-    paramNetResp.c = 0L;
-    paramNetResp = "bytes=" + localHttpNetReq.jdField_a_of_type_Long + "-";
-    localHttpNetReq.jdField_a_of_type_JavaUtilHashMap.put("Range", paramNetResp);
-    paramNetResp = localHttpNetReq.jdField_a_of_type_JavaLangString;
-    if (paramNetResp.contains("range="))
-    {
-      paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
-      localHttpNetReq.jdField_a_of_type_JavaLangString = (paramNetResp + "range=" + localHttpNetReq.jdField_a_of_type_Long);
-    }
-    QLog.i("AREngine_ARPreSoResourceDownload", 1, "IBreakDownFix. url = " + ((HttpNetReq)paramNetReq).jdField_a_of_type_JavaLangString + ", offset=" + localHttpNetReq.jdField_a_of_type_Long);
+    paramDialogInterface = this.a.app.a();
+    paramDialogInterface.e();
+    paramDialogInterface.d();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaon
  * JD-Core Version:    0.7.0.1
  */

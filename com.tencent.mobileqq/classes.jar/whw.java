@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.activity.aio.tips.ComicTipsBar;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
+import android.text.SpannableStringBuilder;
 
-class whw
-  implements Runnable
+public class whw
+  extends SpannableStringBuilder
 {
-  whw(whv paramwhv) {}
+  public boolean a;
+  public boolean b;
+  public boolean c;
   
-  public void run()
+  public whw(CharSequence paramCharSequence)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.b();
-    }
+    super(paramCharSequence);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     whw
  * JD-Core Version:    0.7.0.1
  */

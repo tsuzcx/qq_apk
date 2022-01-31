@@ -1,84 +1,93 @@
 package com.tencent.mobileqq.activity;
 
+import aavs;
+import aavt;
+import aavu;
 import android.os.Bundle;
+import aphb;
+import bapb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
-import com.tencent.mobileqq.floatscr.ColorScreenConfig;
-import com.tencent.mobileqq.vas.VasManager.CompleteListener;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import swb;
-import swc;
-import swd;
 
 public class FriendProfileCardActivity$ColorScreenLoader
-  implements VasManager.CompleteListener, Runnable
+  implements bapb<aphb>, Runnable
 {
   public int a;
+  public aphb a;
   public LottieComposition a;
-  public ColorScreenConfig a;
   
   public FriendProfileCardActivity$ColorScreenLoader(FriendProfileCardActivity paramFriendProfileCardActivity, int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(ColorScreenConfig paramColorScreenConfig, Object paramObject)
+  public void a(aphb paramaphb, Object paramObject)
   {
-    if (paramColorScreenConfig == null)
+    if ((paramaphb == null) || (!this.this$0.isValidate()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorScreenManager", 2, "onComplete, config is null");
-      }
+      QLog.e("ColorScreenManager", 1, "early return, config is " + paramaphb);
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("ColorScreenManager", 2, "onComplete, anim file is " + paramColorScreenConfig.jdField_a_of_type_JavaLangString);
+      QLog.d("ColorScreenManager", 2, "onComplete, anim file is " + paramaphb.jdField_a_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_ComTencentMobileqqFloatscrColorScreenConfig = paramColorScreenConfig;
+    this.jdField_a_of_type_Aphb = paramaphb;
     try
     {
-      paramColorScreenConfig = new FileInputStream(paramColorScreenConfig.jdField_a_of_type_JavaLangString);
+      paramaphb = new FileInputStream(paramaphb.jdField_a_of_type_JavaLangString);
       paramObject = new Bundle();
       paramObject.putString("key", "lottie_colorscreen_" + String.valueOf(this.jdField_a_of_type_Int) + "unzip");
-      paramObject.putString("path", this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getFilesDir().getAbsolutePath() + "/" + "color_screen" + "/" + this.jdField_a_of_type_Int + "/" + "unzip" + "/images/");
-      LottieComposition.Factory.fromInputStreamWithCacheBitmap(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, paramColorScreenConfig, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.getLottieDrawable(), new swb(this), paramObject, BaseApplicationImpl.sImageCache);
+      paramObject.putString("path", this.this$0.getFilesDir().getAbsolutePath() + "/" + "color_screen" + "/" + this.jdField_a_of_type_Int + "/" + "unzip" + "/images/");
+      LottieComposition.Factory.fromInputStreamWithCacheBitmap(this.this$0, paramaphb, this.this$0.a.getLottieDrawable(), new aavs(this), paramObject, BaseApplicationImpl.sImageCache);
       return;
     }
-    catch (FileNotFoundException paramColorScreenConfig)
+    catch (FileNotFoundException paramaphb)
     {
-      QLog.e("ColorScreenManager", 1, "colorScreen", paramColorScreenConfig);
+      QLog.e("ColorScreenManager", 1, "colorScreen", paramaphb);
     }
   }
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.d == this.jdField_a_of_type_Int)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorScreenManager", 2, "play : " + this.jdField_a_of_type_Int);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.cancelAnimation();
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.setImageAssetDelegate(new swc(this));
-      localswd = new swd(this, this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition.getDuration());
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.setComposition(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.setProgress(0.0F);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.setRepeatCount(this.jdField_a_of_type_ComTencentMobileqqFloatscrColorScreenConfig.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.addAnimatorListener(localswd);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.addAnimatorUpdateListener(localswd);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.playAnimation();
+    if (!this.this$0.isValidate()) {
+      QLog.e("ColorScreenManager", 1, "early return, invalid before setComposition");
     }
-    while (!QLog.isColorLevel())
+    do
     {
-      swd localswd;
       return;
-    }
-    QLog.d("ColorScreenManager", 2, "won't play old anim: " + this.jdField_a_of_type_Int + " because have new anim: " + this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.d);
+      if (this.this$0.d == this.jdField_a_of_type_Int)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ColorScreenManager", 2, "play : " + this.jdField_a_of_type_Int);
+        }
+        this.this$0.a.cancelAnimation();
+        this.this$0.a.setImageAssetDelegate(new aavt(this));
+        try
+        {
+          aavu localaavu = new aavu(this, this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition.getDuration());
+          this.this$0.a.setComposition(this.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition);
+          this.this$0.a.setProgress(0.0F);
+          this.this$0.a.setRepeatCount(this.jdField_a_of_type_Aphb.jdField_a_of_type_Int);
+          this.this$0.a.addAnimatorListener(localaavu);
+          this.this$0.a.addAnimatorUpdateListener(localaavu);
+          this.this$0.a.setVisibility(0);
+          this.this$0.a.playAnimation();
+          return;
+        }
+        catch (Exception localException)
+        {
+          QLog.e("ColorScreenManager", 1, "", localException);
+          return;
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ColorScreenManager", 2, "won't play old anim: " + this.jdField_a_of_type_Int + " because have new anim: " + this.this$0.d);
   }
 }
 

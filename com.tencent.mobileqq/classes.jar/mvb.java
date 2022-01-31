@@ -1,28 +1,15 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class mvb
-  implements TextWatcher
+class mvb
+  implements DialogInterface.OnDismissListener
 {
-  public mvb(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
+  mvb(mut parammut) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (TextUtils.isEmpty(ReadInJoyNewSearchActivity.a(this.a).getText().toString()))
-    {
-      ReadInJoyNewSearchActivity.a(this.a).setVisibility(8);
-      return;
-    }
-    ReadInJoyNewSearchActivity.a(this.a).setVisibility(0);
+    this.a.f = false;
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

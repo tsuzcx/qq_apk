@@ -15,22 +15,23 @@ import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import bacc;
+import bajq;
 import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
-import com.tencent.mobileqq.utils.DisplayUtils;
-import com.tencent.mobileqq.utils.ViewUtils;
 import java.util.Iterator;
 import java.util.List;
-import mmw;
+import qss;
+import qst;
 
 public class ReadInJoySearchTipsContainer
   extends ViewGroup
   implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int = ViewUtils.a(260.0F);
-  public ReadInJoySearchTipsContainer.OnTipClickListener a;
-  private List jdField_a_of_type_JavaUtilList;
+  private int jdField_a_of_type_Int = bajq.a(260.0F);
+  private List<ReadInJoySearchTipsContainer.TipsInfo> jdField_a_of_type_JavaUtilList;
+  public qst a;
   private int jdField_b_of_type_Int = 5;
-  private List jdField_b_of_type_JavaUtilList;
+  private List<SearchProtocol.WordItem> jdField_b_of_type_JavaUtilList;
   
   public ReadInJoySearchTipsContainer(Context paramContext)
   {
@@ -55,12 +56,12 @@ public class ReadInJoySearchTipsContainer
       return;
     }
     Button localButton = new Button(getContext());
-    localButton.setBackgroundResource(2130845503);
+    localButton.setBackgroundResource(2130848240);
     GradientDrawable localGradientDrawable = (GradientDrawable)((android.graphics.drawable.DrawableContainer.DrawableContainerState)((android.graphics.drawable.StateListDrawable)localButton.getBackground()).getConstantState()).getChildren()[1];
     if (paramInt2 != 0)
     {
       localGradientDrawable.setStroke(1, paramInt2);
-      localButton.setPadding(ViewUtils.a(15.0F), ViewUtils.a(5.0F), ViewUtils.a(15.0F), ViewUtils.a(6.0F));
+      localButton.setPadding(bajq.a(15.0F), bajq.a(5.0F), bajq.a(15.0F), bajq.a(6.0F));
       localButton.setText(paramString1);
       localButton.setTextSize(14.0F);
       localButton.setSingleLine();
@@ -87,14 +88,14 @@ public class ReadInJoySearchTipsContainer
     }
   }
   
-  public int a(int paramInt)
+  protected int a(int paramInt)
   {
-    int i6 = (int)DisplayUtils.a(getContext(), 7.0F);
-    int i1 = (int)DisplayUtils.a(getContext(), 10.0F);
-    int i7 = (int)DisplayUtils.a(getContext(), 10.0F);
-    int i8 = (int)DisplayUtils.a(getContext(), 4.0F);
-    int m = (int)DisplayUtils.a(getContext(), 12.0F);
-    int i9 = (int)DisplayUtils.a(getContext(), 12.0F);
+    int i6 = (int)bacc.a(getContext(), 7.0F);
+    int i1 = (int)bacc.a(getContext(), 10.0F);
+    int i7 = (int)bacc.a(getContext(), 10.0F);
+    int i8 = (int)bacc.a(getContext(), 4.0F);
+    int m = (int)bacc.a(getContext(), 12.0F);
+    int i9 = (int)bacc.a(getContext(), 12.0F);
     int i10 = getChildCount();
     int n = 0;
     int k = m;
@@ -140,7 +141,7 @@ public class ReadInJoySearchTipsContainer
     }
   }
   
-  public void a(List paramList)
+  public void a(List<ReadInJoySearchTipsContainer.TipsInfo> paramList)
   {
     removeAllViews();
     this.jdField_a_of_type_JavaUtilList = paramList;
@@ -152,7 +153,7 @@ public class ReadInJoySearchTipsContainer
     }
   }
   
-  public void b(List paramList)
+  public void b(List<SearchProtocol.WordItem> paramList)
   {
     removeAllViews();
     this.jdField_b_of_type_JavaUtilList = paramList;
@@ -166,19 +167,19 @@ public class ReadInJoySearchTipsContainer
   
   public void onClick(View paramView)
   {
-    mmw localmmw = new mmw(this, Looper.getMainLooper());
-    Message localMessage = localmmw.obtainMessage();
+    qss localqss = new qss(this, Looper.getMainLooper());
+    Message localMessage = localqss.obtainMessage();
     localMessage.obj = paramView.getTag();
-    localmmw.sendMessage(localMessage);
+    localqss.sendMessage(localMessage);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int i2 = (int)DisplayUtils.a(getContext(), 7.0F);
-    int k = (int)DisplayUtils.a(getContext(), 10.0F);
-    int i3 = (int)DisplayUtils.a(getContext(), 4.0F);
-    paramInt4 = (int)DisplayUtils.a(getContext(), 12.0F);
-    int i4 = (int)DisplayUtils.a(getContext(), 12.0F);
+    int i2 = (int)bacc.a(getContext(), 7.0F);
+    int k = (int)bacc.a(getContext(), 10.0F);
+    int i3 = (int)bacc.a(getContext(), 4.0F);
+    paramInt4 = (int)bacc.a(getContext(), 12.0F);
+    int i4 = (int)bacc.a(getContext(), 12.0F);
     int i5 = getChildCount();
     int i = 0;
     int j = 1;
@@ -246,9 +247,9 @@ public class ReadInJoySearchTipsContainer
     }
   }
   
-  public void setOnTipsClickListener(ReadInJoySearchTipsContainer.OnTipClickListener paramOnTipClickListener)
+  public void setOnTipsClickListener(qst paramqst)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySearchTipsContainer$OnTipClickListener = paramOnTipClickListener;
+    this.jdField_a_of_type_Qst = paramqst;
   }
   
   public void setmMaxLines(int paramInt)

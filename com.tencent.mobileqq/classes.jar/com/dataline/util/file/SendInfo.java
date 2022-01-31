@@ -3,12 +3,12 @@ package com.dataline.util.file;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import dn;
+import ez;
 
 public class SendInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new dn();
+  public static final Parcelable.Creator<SendInfo> CREATOR = new ez();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
@@ -73,7 +73,7 @@ public class SendInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.dataline.util.file.SendInfo
  * JD-Core Version:    0.7.0.1
  */

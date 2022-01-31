@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.component.network.downloader.DownloadResult;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.AppInterface;
+import mqq.app.MobileQQ;
 
-public final class pny
-  implements Parcelable.Creator
+class pny
+  extends pnc
 {
-  public DownloadResult a(Parcel paramParcel)
-  {
-    return new DownloadResult(paramParcel);
-  }
+  pny(pnn parampnn, AppInterface paramAppInterface) {}
   
-  public DownloadResult[] a(int paramInt)
+  public Drawable a()
   {
-    return new DownloadResult[paramInt];
+    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_diandian_selected");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     pny
  * JD-Core Version:    0.7.0.1
  */

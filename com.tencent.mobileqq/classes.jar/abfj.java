@@ -1,31 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
 
 public class abfj
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public abfj(ArkIDESettingFragment paramArkIDESettingFragment) {}
+  public abfj(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = (ActionSheet)ActionSheetHelper.a(BaseActivity.sTopActivity, null);
-    paramView.a(BaseActivity.sTopActivity.getString(2131438862));
-    paramView.a(2131438864, 3);
-    paramView.c(2131438866);
-    paramView.setOnDismissListener(new abfk(this, paramView));
-    paramView.a(new abfl(this, paramView));
-    if (!paramView.isShowing()) {
-      paramView.show();
-    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abfj
  * JD-Core Version:    0.7.0.1
  */

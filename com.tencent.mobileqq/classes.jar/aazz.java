@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.ark.ArkAppCGI;
+import com.tencent.mobileqq.activity.JumpActivity;
 
 public class aazz
-  implements abac
+  implements aagm
 {
-  public aazz(ArkAppCGI paramArkAppCGI) {}
+  public aazz(JumpActivity paramJumpActivity) {}
   
-  public void a(abad paramabad, boolean paramBoolean, byte[] paramArrayOfByte)
+  public void a()
   {
-    this.a.a((abag)paramabad, paramBoolean, paramArrayOfByte);
+    this.a.finish();
+  }
+  
+  public void b() {}
+  
+  public void c()
+  {
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aazz
  * JD-Core Version:    0.7.0.1
  */

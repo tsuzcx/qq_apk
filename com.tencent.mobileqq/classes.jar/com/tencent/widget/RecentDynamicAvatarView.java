@@ -1,6 +1,7 @@
 package com.tencent.widget;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -8,15 +9,18 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.support.v4.util.MQLruCache;
 import android.util.AttributeSet;
+import azvq;
+import bekh;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
-import com.tencent.mobileqq.util.BitmapManager;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecentDynamicAvatarView
   extends DynamicAvatarView
-  implements IRecentImgv
+  implements bekh
 {
+  private static boolean e = false;
   protected float a;
   protected long a;
   protected Bitmap a;
@@ -27,6 +31,14 @@ public class RecentDynamicAvatarView
   protected boolean c;
   protected float d;
   protected boolean d;
+  
+  static
+  {
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getContext().getSharedPreferences("isShow_setting", 4);
+    if (localSharedPreferences != null) {
+      e = localSharedPreferences.getBoolean("isShow", false);
+    }
+  }
   
   public RecentDynamicAvatarView(Context paramContext)
   {
@@ -61,7 +73,7 @@ public class RecentDynamicAvatarView
     Object localObject = "";
     if (paramLong == 1L)
     {
-      i = 2130846162;
+      i = 2130849093;
       localObject = "StatusIcon_TroopPermanentBlockStatusBigIconKey";
       if (i >= 0) {
         break label58;
@@ -75,7 +87,7 @@ public class RecentDynamicAvatarView
       if (paramLong != 2L) {
         break;
       }
-      i = 2130846164;
+      i = 2130849095;
       localObject = "StatusIcon_TroopTmpBlockStatusBigIcon";
       break;
       if (BaseApplicationImpl.sImageCache != null) {
@@ -84,7 +96,7 @@ public class RecentDynamicAvatarView
       localBitmap1 = localBitmap2;
       if (localBitmap2 == null)
       {
-        localBitmap2 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), i);
+        localBitmap2 = azvq.b(BaseApplicationImpl.getApplication().getResources(), i);
         localBitmap1 = localBitmap2;
         if (localBitmap2 != null)
         {
@@ -100,6 +112,11 @@ public class RecentDynamicAvatarView
     } while (!QLog.isColorLevel());
     QLog.i("FixSizeImageView", 2, "getTroopCreditStatusIcon:" + (System.currentTimeMillis() - l));
     return localBitmap1;
+  }
+  
+  public static void setNeedRequestLayout(boolean paramBoolean)
+  {
+    e = paramBoolean;
   }
   
   public void a(long paramLong)
@@ -169,11 +186,16 @@ public class RecentDynamicAvatarView
     }
   }
   
-  public void requestLayout() {}
+  public void requestLayout()
+  {
+    if (e) {
+      super.requestLayout();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.widget.RecentDynamicAvatarView
  * JD-Core Version:    0.7.0.1
  */

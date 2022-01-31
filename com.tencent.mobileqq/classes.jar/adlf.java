@@ -1,38 +1,34 @@
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerCallback;
-import com.tencent.mobileqq.filemanager.fileviewer.model.DefaultFileModel;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnVideoDataEventListener;
+import android.os.SystemClock;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForPokeEmo;
 
-public class adlf
-  implements FileVideoManager.FileVideoManagerCallback
+class adlf
+  implements begw
 {
-  public adlf(DefaultFileModel paramDefaultFileModel, FileBrowserModelBase.OnVideoDataEventListener paramOnVideoDataEventListener) {}
+  adlf(adle paramadle, MessageForPokeEmo paramMessageForPokeEmo, begr parambegr) {}
   
-  public void a(int paramInt, String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener.a(paramInt, paramString);
+    switch (paramInt)
+    {
     }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener.a(paramString1, paramString2);
-    }
-  }
-  
-  public void ag_() {}
-  
-  public void ah_()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener.a();
+    for (;;)
+    {
+      this.jdField_a_of_type_Begr.dismiss();
+      long l;
+      do
+      {
+        return;
+        l = SystemClock.uptimeMillis();
+      } while (l - this.jdField_a_of_type_Adle.c < 500L);
+      this.jdField_a_of_type_Adle.c = l;
+      aael.b(this.jdField_a_of_type_Adle.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adle.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adle.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPokeEmo.uniseq);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adlf
  * JD-Core Version:    0.7.0.1
  */

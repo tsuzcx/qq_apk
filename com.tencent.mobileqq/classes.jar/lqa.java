@@ -1,18 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
-
-public class lqa
-  implements Runnable
+public abstract interface lqa
 {
-  public lqa(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment) {}
+  public abstract void a();
   
-  public void run()
-  {
-    this.a.a(3, "当前网络不可用，请检查你的网络设置\n点击屏幕刷新");
-  }
+  public abstract boolean a();
+  
+  public abstract boolean a(lqd paramlqd);
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract boolean b(lqd paramlqd);
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lqa
  * JD-Core Version:    0.7.0.1
  */

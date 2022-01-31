@@ -1,34 +1,59 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.biz.now.PluginRecordHelper;
-import com.tencent.biz.now.PluginRecordHelper.cigHelperCallback;
+import android.content.Context;
+import android.util.Pair;
+import com.rookery.translate.type.Language;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class kqn
-  extends Handler
+  extends kqk
 {
-  public kqn(PluginRecordHelper paramPluginRecordHelper) {}
+  private static kqn a;
   
-  public void handleMessage(Message paramMessage)
+  public static kqn a()
   {
-    if ((paramMessage.what == 1001) && (this.a.jdField_a_of_type_ComTencentBizNowPluginRecordHelper$cigHelperCallback != null))
+    try
     {
-      paramMessage = this.a.jdField_a_of_type_ComTencentBizNowPluginRecordHelper$cigHelperCallback;
-      if (TextUtils.isEmpty(this.a.b)) {
-        break label65;
+      if (a == null) {
+        a = new kqn();
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public void a(Context paramContext, List<String> paramList, Language paramLanguage, String paramString, Long paramLong, krd paramkrd)
+  {
+    if (paramLanguage == null) {
+      paramLanguage = Language.CHINESE_SIMPLIFIED.toString();
+    }
+    Object localObject;
+    for (;;)
+    {
+      localObject = new ArrayList();
+      ((List)localObject).add(new Pair("key", paramString));
+      ((List)localObject).add(new Pair("target", paramLanguage));
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        ((List)localObject).add(new Pair("q", (String)paramList.next()));
+      }
+      localObject = paramLanguage.toString();
+      if (localObject != null)
+      {
+        paramLanguage = (Language)localObject;
+        if (((String)localObject).length() != 0) {}
+      }
+      else
+      {
+        paramLanguage = Language.CHINESE_SIMPLIFIED.toString();
       }
     }
-    label65:
-    for (boolean bool = true;; bool = false)
-    {
-      paramMessage.a(bool, this.a.c, this.a.jdField_a_of_type_Long);
-      return;
-    }
+    kqm.a(paramContext, null, (List)localObject, new kqo(this, paramkrd, paramLong));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     kqn
  * JD-Core Version:    0.7.0.1
  */

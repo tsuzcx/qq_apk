@@ -1,51 +1,22 @@
-import android.app.ProgressDialog;
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.log.ReportLog;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.manager.ServerConfigManager.ConfigType;
-import mqq.manager.TicketManager;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerActivity;
 
 public class tht
-  implements View.OnClickListener
+  extends AnimatorListenerAdapter
 {
-  public tht(NotificationActivity paramNotificationActivity) {}
+  public tht(StoryPlayerActivity paramStoryPlayerActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ProgressDialog localProgressDialog = DialogUtil.a(this.a, this.a.getResources().getDrawable(2130845550), 2131435068);
-    localProgressDialog.setOnDismissListener(new thu(this));
-    ReportLog.a(this.a.app.getAccount());
-    this.a.app.a(ServerConfigManager.ConfigType.app, "log_upload");
-    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-    if (localObject != null)
-    {
-      paramView = (TicketManager)((AppRuntime)localObject).getManager(2);
-      localObject = ((AppRuntime)localObject).getAccount();
-      if (paramView == null) {
-        break label161;
-      }
-    }
-    label161:
-    for (paramView = paramView.getSkey((String)localObject);; paramView = "")
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("qqBaseActivity", 2, new Object[] { " NotificationActivity crash uin=", localObject, ",skey=", paramView });
-      }
-      ReportLog.a(this.a.app.getHttpCommunicatort(), this.a.app.getApp(), localProgressDialog, (String)localObject, paramView);
-      return;
-    }
+    super.onAnimationEnd(paramAnimator);
+    StoryPlayerActivity.a(this.a);
+    StoryPlayerActivity.a(this.a, 0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tht
  * JD-Core Version:    0.7.0.1
  */

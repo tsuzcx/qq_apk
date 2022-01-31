@@ -1,26 +1,58 @@
-import android.graphics.drawable.ColorDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.item.FileVideoItemBuilder;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class vci
-  implements Runnable
+public abstract class vci
+  implements vch
 {
-  vci(vch paramvch) {}
+  private List<vcf> a = new ArrayList();
   
-  public void run()
+  public void a()
   {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(-16777216);
-    URLDrawable.getDrawable(new File(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath), localURLDrawableOptions);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.b();
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((vcf)localIterator.next()).a();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      ((vcf)localIterator.next()).a(paramInt);
+    }
+  }
+  
+  public void a(vcf paramvcf)
+  {
+    if (paramvcf == null) {
+      throw new IllegalArgumentException("the observer is null.");
+    }
+    if (this.a.contains(paramvcf)) {
+      throw new IllegalStateException("Observer " + paramvcf + " is already registered.");
+    }
+    this.a.add(paramvcf);
+  }
+  
+  public void b(vcf paramvcf)
+  {
+    if (paramvcf == null) {
+      throw new IllegalArgumentException("The observer is null.");
+    }
+    int i;
+    synchronized (this.a)
+    {
+      i = this.a.indexOf(paramvcf);
+      if (i == -1) {
+        throw new IllegalStateException("Observer " + paramvcf + " was not registered.");
+      }
+    }
+    this.a.remove(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vci
  * JD-Core Version:    0.7.0.1
  */

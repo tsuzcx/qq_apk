@@ -1,175 +1,103 @@
-import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_rsp;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-import com.tencent.mobileqq.app.CardObserver;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.Utils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
-import java.util.ArrayList;
-import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class sxu
-  extends CardObserver
+  implements slx<tar, tcc>
 {
-  public sxu(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private Queue<ssm> jdField_a_of_type_JavaUtilQueue;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private AtomicBoolean b = new AtomicBoolean(false);
   
-  protected void a(boolean paramBoolean, int paramInt, Card paramCard)
+  public sxu(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileMoreInfoActivity", 2, String.format("onSetDetailInfo success=%s resultCode=%s mDelayRemoveCardObserver=%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), Boolean.valueOf(this.a.jdField_a_of_type_Boolean) }));
-    }
-    if ((!paramBoolean) || (paramInt != 0)) {
-      this.a.a(2131437545, 1);
-    }
-    if (this.a.jdField_a_of_type_Boolean)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    b();
+  }
+  
+  private void a(tar paramtar, tcc paramtcc)
+  {
+    sgj localsgj = (sgj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(197);
+    List localList = paramtcc.a();
+    localsgj.a(paramtcc.a());
+    if (paramtar.a() == 3)
     {
-      this.a.removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
-      this.a.jdField_a_of_type_Boolean = false;
-    }
-    if ((this.a.jdField_b_of_type_Int & 0x1) == 1)
-    {
-      if (paramBoolean)
+      paramtar = localList.iterator();
+      while (paramtar.hasNext())
       {
-        ReportController.b(this.a.app, "dc00898", "", "", "0X8007EC3", "0X8007EC3", 0, 0, "", "", "", "");
-        String str;
-        if (this.a.jdField_a_of_type_Syi.b)
-        {
-          str = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-          if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(str.trim()))) {
-            break label578;
-          }
-        }
-        if (this.a.jdField_c_of_type_Boolean) {
-          ReportController.b(this.a.app, "dc00898", "", "", "0X8007EC8", "0X8007EC8", 0, 0, "", "", "", "");
-        }
-        if (this.a.d) {
-          ReportController.b(this.a.app, "dc00898", "", "", "0X8007EC9", "0X8007EC9", 0, 0, "", "", "", "");
-        }
-        if (this.a.e) {
-          ReportController.b(this.a.app, "dc00898", "", "", "0X8007ECA", "0X8007ECA", 0, 0, "", "", "", "");
-        }
-        if (this.a.jdField_b_of_type_Syi.b) {
-          ReportController.b(this.a.app, "dc00898", "", "", "0X8007ECB", "0X8007ECB", 0, 0, "", "", "", "");
-        }
-        if (this.a.f) {
-          ReportController.b(this.a.app, "dc00898", "", "", "0X8007ECD", "0X8007ECD", 0, 0, "", "", "", "");
-        }
-        if (this.a.g) {
-          ReportController.b(this.a.app, "dc00898", "", "", "0X8007ECE", "0X8007ECE", 0, 0, "", "", "", "");
-        }
-        if (this.a.jdField_c_of_type_Syi.b)
-        {
-          str = this.a.jdField_c_of_type_AndroidWidgetEditText.getText().toString();
-          Matcher localMatcher = SearchBaseActivity.a.matcher(str);
-          if ((TextUtils.isEmpty(str)) || (localMatcher.matches())) {
-            break label611;
-          }
-        }
-      }
-      for (;;)
-      {
-        if (this.a.h) {
-          ReportController.b(this.a.app, "dc00898", "", "", "0X8007ED0", "0X8007ED0", 0, 0, "", "", "", "");
-        }
-        if (this.a.jdField_a_of_type_AndroidOsBundle == null) {
-          this.a.jdField_a_of_type_AndroidOsBundle = new Bundle();
-        }
-        this.a.jdField_a_of_type_AndroidOsBundle.putShort("key_personality_label_switch", paramCard.switch_disable_personality_label);
-        this.a.b(1);
-        return;
-        label578:
-        ReportController.b(this.a.app, "dc00898", "", "", "0X8007EC7", "0X8007EC7", 0, 0, "", "", "", "");
-        break;
-        label611:
-        ReportController.b(this.a.app, "dc00898", "", "", "0X8007ECF", "0X8007ECF", 0, 0, "", "", "", "");
+        paramtcc = (ssm)paramtar.next();
+        localsgj.b(paramtcc);
+        localsgj.c(paramtcc);
+        localsgj.d(paramtcc);
       }
     }
-    FriendProfileMoreInfoActivity.a(this.a, paramCard, true);
+    localsgj.a(localList);
+    localsgj.a(localList, true);
   }
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  private void b()
   {
-    if ((paramBoolean) && ((paramObject instanceof Card)) && (Utils.a(this.a.app.getCurrentAccountUin(), ((Card)paramObject).uin))) {
-      FriendProfileMoreInfoActivity.a(this.a, (Card)paramObject, true);
-    }
+    this.jdField_a_of_type_JavaUtilQueue = new ConcurrentLinkedQueue();
   }
   
-  protected void a(boolean paramBoolean, String paramString1, mobile_sub_get_photo_wall_rsp parammobile_sub_get_photo_wall_rsp, String paramString2)
+  private void c()
   {
-    if ((paramBoolean) && (parammobile_sub_get_photo_wall_rsp != null))
-    {
-      paramString1 = new ArrayList();
-      this.a.a(parammobile_sub_get_photo_wall_rsp.total_pic, parammobile_sub_get_photo_wall_rsp.iHasMore, parammobile_sub_get_photo_wall_rsp.attachInfo, parammobile_sub_get_photo_wall_rsp.vecUrls, paramString1);
-      parammobile_sub_get_photo_wall_rsp = this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage(1002);
-      parammobile_sub_get_photo_wall_rsp.obj = paramString1;
-      this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage(parammobile_sub_get_photo_wall_rsp);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, Card paramCard)
-  {
-    if ((paramBoolean) && (paramCard != null) && (Utils.a(this.a.app.getCurrentAccountUin(), paramCard.uin))) {
-      FriendProfileMoreInfoActivity.a(this.a, paramCard, true);
-    }
-  }
-  
-  protected void b(boolean paramBoolean, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.profilecard.FrdProfileCard", 2, String.format(Locale.getDefault(), "onGetCampusInfo isSuc: %b", new Object[] { Boolean.valueOf(paramBoolean) }));
-    }
-    Card localCard;
-    int i;
-    if ((paramBoolean) && ((paramObject instanceof Card)) && (Utils.a(this.a.app.getCurrentAccountUin(), ((Card)paramObject).uin))) {
-      if ((this.a.l) && (this.a.n))
-      {
-        this.a.n = false;
-        localCard = null;
-        if ((paramObject instanceof Card)) {
-          localCard = (Card)paramObject;
-        }
-        if ((localCard != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataCard != null)) {
-          break label155;
-        }
-        i = 0;
-      }
-    }
+    Object localObject = (sgj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(197);
+    if (!this.b.get()) {}
     for (;;)
     {
-      if (i != 0) {
-        this.a.a("0X80081E8", i);
+      ssm localssm = (ssm)this.jdField_a_of_type_JavaUtilQueue.poll();
+      if (localssm == null)
+      {
+        localObject = new sxv(true);
+        sgi.a().dispatch((Dispatcher.Dispatchable)localObject);
+        return;
       }
-      FriendProfileMoreInfoActivity.a(this.a, (Card)paramObject, true);
-      return;
-      label155:
-      if ((localCard.nCampusStatus != this.a.jdField_a_of_type_ComTencentMobileqqDataCard.nCampusStatus) || (!Utils.a(localCard.strCampusName, this.a.jdField_a_of_type_ComTencentMobileqqDataCard.strCampusName)) || (!Utils.a(localCard.strCampusSchool, this.a.jdField_a_of_type_ComTencentMobileqqDataCard.strCampusSchool))) {
-        i = 1;
-      } else if ((localCard.nCampusEnrolYear != this.a.jdField_a_of_type_ComTencentMobileqqDataCard.nCampusEnrolYear) || (!Utils.a(localCard.strCampusCollege, this.a.jdField_a_of_type_ComTencentMobileqqDataCard.strCampusCollege)) || (!Utils.a(localCard.strCampusClass, this.a.jdField_a_of_type_ComTencentMobileqqDataCard.strCampusClass))) {
-        i = 2;
-      } else {
-        i = 0;
-      }
+      ((sgj)localObject).a(localssm);
     }
   }
   
-  protected void c(boolean paramBoolean, String paramString, Card paramCard)
+  public void a()
   {
-    if ((paramBoolean) && (paramCard != null) && (Utils.a(this.a.app.getCurrentAccountUin(), paramCard.uin))) {
-      FriendProfileMoreInfoActivity.a(this.a, paramCard, true);
-    }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+  }
+  
+  public void a(@NonNull tar paramtar, @Nullable tcc paramtcc, @NonNull ErrorMessage paramErrorMessage)
+  {
+    if (a()) {}
+    do
+    {
+      return;
+      this.b.set(true);
+      if ((paramtcc != null) && (!paramErrorMessage.isFail())) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("RecentTabHaloBatchLoader", 2, "onEvent: failed. Message: exception: " + paramErrorMessage);
+    return;
+    a(paramtar, paramtcc);
+    this.b.set(false);
+    c();
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sxu
  * JD-Core Version:    0.7.0.1
  */

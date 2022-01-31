@@ -1,35 +1,45 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
-import com.tencent.util.LRULinkedHashMap;
+import android.text.TextUtils;
+import java.util.ArrayList;
 
 public class vno
-  implements Runnable
 {
-  public vno(TextItemBuilder paramTextItemBuilder, CharSequence paramCharSequence, long paramLong1, long paramLong2) {}
+  public int a;
+  public String a;
+  public ArrayList<Object> a;
+  public vnq a;
+  public String[] a;
   
-  public void run()
+  public vno() {}
+  
+  public vno(String[] paramArrayOfString, String paramString, vnq paramvnq)
   {
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.a(this.jdField_a_of_type_JavaLangCharSequence, this.jdField_a_of_type_Long);
-    if (localObject1 != null) {}
-    synchronized (TextItemBuilder.a)
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_Vnq = paramvnq;
+  }
+  
+  public String toString()
+  {
+    String str1;
+    if (this.jdField_a_of_type_ArrayOfJavaLangString == null)
     {
-      TextItemBuilder.a.put(Long.valueOf(this.b), localObject1);
-      ??? = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.b.obtainMessage();
-      ((Message)???).what = 1;
-      ((Message)???).obj = localObject1;
-      localObject1 = new Bundle();
-      ((Bundle)localObject1).putLong("msg_id", this.b);
-      ((Message)???).setData((Bundle)localObject1);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder.b.sendMessage((Message)???);
-      return;
+      str1 = "null";
+      if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+        break label86;
+      }
+    }
+    label86:
+    for (String str2 = "null";; str2 = TextUtils.join(",", this.jdField_a_of_type_JavaUtilArrayList.toArray()))
+    {
+      return "FFmpegCommandUnit{ cmdType :" + this.jdField_a_of_type_Int + "\n cmd: " + str1 + "\n output: " + this.jdField_a_of_type_JavaLangString + "\n arguments: " + str2;
+      str1 = TextUtils.join(" ", this.jdField_a_of_type_ArrayOfJavaLangString);
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vno
  * JD-Core Version:    0.7.0.1
  */

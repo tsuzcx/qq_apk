@@ -1,19 +1,15 @@
-import com.tencent.mobileqq.widget.QQToast;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter;
+import android.view.View;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Mode;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.State;
 
-class antn
-  implements Runnable
+public abstract interface antn<V extends View>
 {
-  antn(antl paramantl) {}
-  
-  public void run()
-  {
-    QQToast.a(this.a.a.a, "网络出问题了，一会儿再试试。", 0).a();
-  }
+  public abstract void a(PullToRefreshBase<V> paramPullToRefreshBase, PullToRefreshBase.State paramState, PullToRefreshBase.Mode paramMode);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     antn
  * JD-Core Version:    0.7.0.1
  */

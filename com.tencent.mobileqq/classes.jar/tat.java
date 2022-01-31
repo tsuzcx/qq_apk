@@ -1,33 +1,65 @@
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.equipmentlock.DevlockPhoneStatus;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqReportEvil;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspReportEvil;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class tat
-  extends WtloginObserver
+  extends slz<tce>
 {
-  public tat(JumpActivity paramJumpActivity) {}
+  public static final String a = skt.a("StorySvc.video_report_evil");
+  public long b;
+  public String b;
+  public final int c;
+  public String c;
   
-  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public String a()
   {
-    if (paramDevlockInfo != null) {
-      DevlockPhoneStatus.a().a(paramDevlockInfo.TransferInfo);
-    }
-    paramWUserSigInfo = this.a;
-    if (paramInt == 0) {}
-    for (;;)
+    return a;
+  }
+  
+  public tce a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspReportEvil localRspReportEvil = new qqstory_service.RspReportEvil();
+    try
     {
-      paramWUserSigInfo.a(paramDevlockInfo);
-      return;
-      paramDevlockInfo = null;
+      localRspReportEvil.mergeFrom(paramArrayOfByte);
+      return new tce(localRspReportEvil);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqReportEvil localReqReportEvil = new qqstory_service.ReqReportEvil();
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+      localReqReportEvil.vid.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
+    }
+    if (this.jdField_b_of_type_Long != 0L) {
+      localReqReportEvil.tuin.set(this.jdField_b_of_type_Long);
+    }
+    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+      localReqReportEvil.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_c_of_type_JavaLangString));
+    }
+    localReqReportEvil.type.set(this.jdField_c_of_type_Int);
+    return localReqReportEvil.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "ReportEvilRequest{impeachType=" + this.jdField_c_of_type_Int + ", vid='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tat
  * JD-Core Version:    0.7.0.1
  */

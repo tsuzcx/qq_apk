@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.qphone.base.util.QLog;
-import joz;
+import lmk;
 
 public class LBSInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new joz();
+  public static final Parcelable.Creator<LBSInfo> CREATOR = new lmk();
   static String jdField_a_of_type_JavaLangString = "LBSInfo";
   double jdField_a_of_type_Double = 0.0D;
   String[] jdField_a_of_type_ArrayOfJavaLangString = null;
@@ -47,11 +47,6 @@ public class LBSInfo
     this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
   }
   
-  public double a()
-  {
-    return this.jdField_a_of_type_Double;
-  }
-  
   public void a(Parcel paramParcel)
   {
     try
@@ -80,11 +75,6 @@ public class LBSInfo
   public String[] a()
   {
     return this.jdField_a_of_type_ArrayOfJavaLangString;
-  }
-  
-  public double b()
-  {
-    return this.jdField_b_of_type_Double;
   }
   
   public int describeContents()
@@ -133,7 +123,7 @@ public class LBSInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.service.LBSInfo
  * JD-Core Version:    0.7.0.1
  */

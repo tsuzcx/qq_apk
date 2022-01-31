@@ -30,7 +30,6 @@ public class CrashStrategyBean
   private boolean t = true;
   
   public CrashStrategyBean clone()
-    throws CloneNotSupportedException
   {
     try
     {

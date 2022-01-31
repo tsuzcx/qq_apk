@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class gallery_report$GallerySocialReported
-  extends MessageMicro
+  extends MessageMicro<GallerySocialReported>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field action = PBField.initInt32(0);
@@ -34,7 +34,7 @@ public final class gallery_report$GallerySocialReported
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.gallery.gallery_report.GallerySocialReported
  * JD-Core Version:    0.7.0.1
  */

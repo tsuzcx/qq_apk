@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.activity.contacts.view.pullrefresh.ContactRefreshHeader android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/i5j" android:layout_width="fill_parent" android:layout_height="@dimen/auf">
+        <LinearLayout android:orientation="vertical" android:id="@id/g5l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <TextView android:textSize="14.0dip" android:textColor="@color/skin_over_header" android:gravity="center" android:layout_gravity="center" android:id="@id/i5m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hqh" />
+            <TextView android:textSize="13.0dip" android:textColor="@color/skin_over_header" android:gravity="center" android:layout_gravity="center" android:id="@id/i5q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="@string/hqh" />
+        </LinearLayout>
+        <FrameLayout android:layout_width="33.0dip" android:layout_height="33.0dip" android:layout_marginRight="8.0dip" android:layout_toLeftOf="@id/g5l" android:layout_centerVertical="true">
+            <ProgressBar android:layout_gravity="center" android:id="@id/i5n" android:visibility="invisible" android:layout_width="18.0dip" android:layout_height="18.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" />
+            <ImageView android:layout_gravity="center" android:id="@id/i5l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/refresh_arrow" android:scaleType="fitCenter" android:contentDescription="@string/image" />
+        </FrameLayout>
+    </RelativeLayout>
+</com.tencent.mobileqq.activity.contacts.view.pullrefresh.ContactRefreshHeader>

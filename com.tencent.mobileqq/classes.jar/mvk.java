@@ -1,15 +1,14 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeed;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeedAdapter;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
+import android.os.Bundle;
+import org.json.JSONObject;
 
-public class mvk
-  implements Runnable
+class mvk
+  implements azgl
 {
-  public mvk(ServiceAccountFolderFeedAdapter paramServiceAccountFolderFeedAdapter, ServiceAccountFolderFeed paramServiceAccountFolderFeed) {}
+  mvk(mut parammut) {}
   
-  public void run()
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    ServiceAccountFolderManager.a().a(ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter), this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed, true);
+    mut.a(this.a, paramJSONObject);
   }
 }
 

@@ -1,31 +1,26 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import java.util.ArrayList;
 
-public class aldr
-  implements View.OnClickListener
+class aldr
+  implements aldw
 {
-  public aldr(ProfileCardMoreInfoView paramProfileCardMoreInfoView, Card paramCard) {}
+  aldr(aldo paramaldo) {}
   
-  public void onClick(View paramView)
+  public void a(aldz paramaldz, boolean paramBoolean, byte[] paramArrayOfByte)
   {
-    paramView = new Intent();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataCard != null) {
-      paramView.putExtra("key_extend_friend_info", new ExtendFriendProfileEditFragment.ExtendFriendInfo(this.jdField_a_of_type_ComTencentMobileqqDataCard));
+    int i = 0;
+    while (i < paramaldz.b.size())
+    {
+      aldv localaldv = (aldv)paramaldz.b.get(i);
+      if (localaldv != null) {
+        localaldv.b(paramBoolean, paramaldz.a, paramArrayOfByte);
+      }
+      i += 1;
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092DB", "0X80092DB", 0, 0, "", "", "", "");
-    PublicFragmentActivity.a(this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramView, ExtendFriendEditFragment.class, 4097);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aldr
  * JD-Core Version:    0.7.0.1
  */

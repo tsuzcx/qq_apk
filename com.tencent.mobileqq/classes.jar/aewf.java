@@ -1,55 +1,29 @@
-import android.util.SparseArray;
+import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
 
 public class aewf
-  implements WerewolvesHandler.Callback
+  implements View.OnClickListener
 {
-  public aewf(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public aewf(TroopView paramTroopView) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 0) || (paramInt == 1004))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomAVController.d();
-      SharedPreUtils.a(this.a, this.a.app.getCurrentAccountUin(), false, System.currentTimeMillis());
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.jdField_b_of_type_Long = this.a.app.getLongAccountUin();
-      this.a.jdField_b_of_type_JavaLangString = null;
-      GameRoomInviteActivity.jdField_a_of_type_JavaLangString = null;
-      this.a.jdField_a_of_type_JavaUtilList = null;
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      if (this.a.jdField_b_of_type_JavaUtilList != null) {
-        this.a.jdField_b_of_type_JavaUtilList.clear();
-      }
-      this.a.f = false;
-      this.a.a();
-      paramRspBody = this.a.a();
-      if ((paramRspBody != null) && (paramRspBody.jdField_a_of_type_Boolean)) {
-        QQToast.a(this.a, "已成功退出组队", 0).a();
-      }
-      this.a.jdField_a_of_type_Aexd.notifyDataSetChanged();
-      this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    }
-    for (;;)
-    {
-      this.a.jdField_b_of_type_AndroidViewView.setEnabled(true);
-      return;
-      this.a.a(paramInt, paramRspBody, (String)GameRoomInviteActivity.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
-    }
+    paramView = new Intent(this.a.jdField_a_of_type_Aeuo.a(), SearchContactsActivity.class);
+    paramView.putExtra("from_key", 1);
+    paramView.putExtra("fromType", 13);
+    this.a.jdField_a_of_type_Aeuo.a().startActivity(paramView);
+    this.a.jdField_a_of_type_Aeuo.a().overridePendingTransition(0, 0);
+    avwf.a("add_page", "search", "active_frame", 2, 0, new String[] { "" });
+    awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004BEC", "0X8004BEC", 2, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aewf
  * JD-Core Version:    0.7.0.1
  */

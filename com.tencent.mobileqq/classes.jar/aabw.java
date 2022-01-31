@@ -1,20 +1,64 @@
-import com.tencent.mobileqq.app.proxy.MpfileTaskProxy;
-import com.tencent.mobileqq.app.proxy.ProxyListener;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
+import java.lang.ref.WeakReference;
+import tencent.im.oidb.oidb_0x87a.RspBody;
+import tencent.im.oidb.oidb_0x87c.RspBody;
 
 public class aabw
-  implements Runnable
+  extends atdj
 {
-  public aabw(MpfileTaskProxy paramMpfileTaskProxy, String paramString1, String paramString2, String[] paramArrayOfString, ProxyListener paramProxyListener) {}
+  private WeakReference<atdj> a;
   
-  public void run()
+  public aabw(atdj paramatdj)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppProxyMpfileTaskProxy.a.a(String.valueOf(0), 0, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_ArrayOfJavaLangString, 2, this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyListener);
+    this.a = new WeakReference(paramatdj);
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    atdj localatdj = (atdj)this.a.get();
+    if (localatdj != null)
+    {
+      localatdj.a(paramString1, paramInt, paramString2);
+      return;
+    }
+    super.a(paramString1, paramInt, paramString2);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    atdj localatdj = (atdj)this.a.get();
+    if (localatdj != null)
+    {
+      localatdj.a(paramString1, paramString2);
+      return;
+    }
+    super.a(paramString1, paramString2);
+  }
+  
+  public void a(oidb_0x87a.RspBody paramRspBody)
+  {
+    atdj localatdj = (atdj)this.a.get();
+    if (localatdj != null)
+    {
+      localatdj.a(paramRspBody);
+      return;
+    }
+    super.a(paramRspBody);
+  }
+  
+  public void a(oidb_0x87c.RspBody paramRspBody)
+  {
+    atdj localatdj = (atdj)this.a.get();
+    if (localatdj != null)
+    {
+      localatdj.a(paramRspBody);
+      return;
+    }
+    super.a(paramRspBody);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aabw
  * JD-Core Version:    0.7.0.1
  */

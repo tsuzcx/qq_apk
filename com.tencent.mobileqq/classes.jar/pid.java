@@ -1,39 +1,140 @@
-import com.tencent.biz.SoftKeyboardObserver.OnSoftKeyboardToggledListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.webviewplugin.UrlCheckPlugin;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTopicItemMulti;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.util.ArrayList;
+import java.util.List;
 
 public class pid
-  implements SoftKeyboardObserver.OnSoftKeyboardToggledListener
+  extends pez
 {
-  public pid(UrlCheckPlugin paramUrlCheckPlugin) {}
+  TextView a;
+  TextView b;
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  public pid(Context paramContext, azwg paramazwg, qoe paramqoe)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.TAG, 2, "onSoftKeyboardToggled");
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.TAG, 2, "isCheatDialogShow:" + this.a.e);
-    }
-    if ((!paramBoolean) || (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) || (this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView == null)) {}
-    do
+    super(paramContext, paramazwg, paramqoe);
+  }
+  
+  public pez a()
+  {
+    return l().t().n();
+  }
+  
+  public pez d()
+  {
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    localLinearLayout.setOnClickListener(new pie(this));
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() >= 2))
     {
-      do
+      RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131494360, localLinearLayout, false);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localRelativeLayout.findViewById(2131311534));
+      this.b = ((TextView)localRelativeLayout.findViewById(2131304741));
+      Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics();
+      if (localObject != null)
       {
-        return;
-      } while ((this.a.f < 1) || (this.a.f > 2) || (this.a.jdField_a_of_type_Boolean));
-      if (this.a.e != UrlCheckPlugin.c) {
-        break;
+        this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(((DisplayMetrics)localObject).widthPixels / 2);
+        this.b.setMaxWidth(((DisplayMetrics)localObject).widthPixels / 4);
       }
-    } while (this.a.f != 2);
-    this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    this.a.a();
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.a(2131437487);
-    return;
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.a(2131437487);
+      localObject = (LinearLayout)localRelativeLayout.findViewById(2131299134);
+      int i = 0;
+      while (i < 2)
+      {
+        ComponentTopicItemMulti localComponentTopicItemMulti = (ComponentTopicItemMulti)this.jdField_a_of_type_JavaUtilList.get(i);
+        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+        localLayoutParams.weight = 1.0F;
+        if (i < 1) {
+          localLayoutParams.rightMargin = aciy.a(0.75F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        }
+        if (i > 0) {
+          localLayoutParams.leftMargin = aciy.a(0.75F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        }
+        localComponentTopicItemMulti.setLayoutParams(localLayoutParams);
+        ((LinearLayout)localObject).addView(localComponentTopicItemMulti);
+        i += 1;
+      }
+      localLinearLayout.addView(localRelativeLayout);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localLinearLayout);
+    return this;
+  }
+  
+  public pez e()
+  {
+    return null;
+  }
+  
+  public pez o()
+  {
+    super.o();
+    ArticleInfo localArticleInfo;
+    prv localprv;
+    if ((this.jdField_a_of_type_JavaLangObject instanceof opw))
+    {
+      localArticleInfo = ((opw)this.jdField_a_of_type_JavaLangObject).a();
+      localprv = localArticleInfo.mTopicRecommendFeedsInfo;
+      if ((localprv != null) && (localprv.jdField_a_of_type_JavaUtilArrayList != null) && (localprv.jdField_a_of_type_JavaUtilArrayList.size() >= 2)) {
+        break label57;
+      }
+    }
+    label271:
+    label281:
+    for (;;)
+    {
+      return this;
+      label57:
+      if (localprv.jdField_a_of_type_Prw != null)
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(localprv.jdField_a_of_type_Prw.a);
+        label78:
+        if ((localprv.b == null) || (TextUtils.isEmpty(localprv.b.a))) {
+          break label271;
+        }
+        this.b.setVisibility(0);
+        this.b.setText(localprv.b.a);
+        if (!TextUtils.isEmpty(localprv.b.b)) {
+          break label251;
+        }
+        this.b.setCompoundDrawables(null, null, null, null);
+        this.b.setOnClickListener(null);
+      }
+      for (;;)
+      {
+        if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() < 2)) {
+          break label281;
+        }
+        int i = 0;
+        while (i < 2)
+        {
+          ((ComponentTopicItemMulti)this.jdField_a_of_type_JavaUtilList.get(i)).a(localprv.jdField_a_of_type_JavaUtilArrayList.get(i));
+          ((ComponentTopicItemMulti)this.jdField_a_of_type_JavaUtilList.get(i)).setArticleInfo(localArticleInfo, ((opw)this.jdField_a_of_type_JavaLangObject).e());
+          i += 1;
+        }
+        break;
+        this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+        break label78;
+        label251:
+        this.b.setOnClickListener(new pif(this, localArticleInfo, localprv));
+        continue;
+        this.b.setVisibility(8);
+      }
+    }
   }
 }
 

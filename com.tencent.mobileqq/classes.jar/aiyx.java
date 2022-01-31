@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
-public class aiyx
-  implements Runnable
+class aiyx
+  implements Comparator<ApolloActionData>
 {
-  public aiyx(AbsPublishActivity paramAbsPublishActivity) {}
+  aiyx(aiyu paramaiyu) {}
   
-  public void run()
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    this.a.c(true);
+    if (paramApolloActionData2.version == paramApolloActionData1.version) {
+      return 0;
+    }
+    if (paramApolloActionData2.version > paramApolloActionData1.version) {
+      return 1;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiyx
  * JD-Core Version:    0.7.0.1
  */

@@ -11,23 +11,32 @@ import android.view.Display;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.biz.AuthorizeConfig;
-import com.tencent.biz.common.offline.HtmlOffline;
+import apxk;
+import apxm;
+import apyl;
+import bajr;
+import bazb;
+import bcdn;
+import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.ui.TouchWebView;
-import com.tencent.biz.webviewplugin.OfflinePlugin;
 import com.tencent.common.app.AppInterface;
 import com.tencent.gamecenter.common.util.ReportInfoManager;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
+import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePadFaceFragment;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.open.base.APNUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
 import com.tencent.smtt.sdk.WebView;
+import mkw;
+import mof;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
-import qnv;
+import xce;
+import yet;
+import yeu;
+import yez;
+import yfn;
 
 public class GameCenterActivity$GameCenterFragment
   extends WebViewFragment
@@ -68,6 +77,28 @@ public class GameCenterActivity$GameCenterFragment
     return null;
   }
   
+  private void a(WebView paramWebView)
+  {
+    if (!yez.b("gamecenter_shot_switch")) {
+      return;
+    }
+    QLog.i("GameCenterFragment", 1, "startMaskOpt murl=" + this.jdField_b_of_type_JavaLangString);
+    Object localObject = null;
+    try
+    {
+      String str = Uri.parse(this.jdField_b_of_type_JavaLangString).getQueryParameter("preMask");
+      localObject = str;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.e("GameCenterFragment", 1, "GAMECENTER_MASK_KEY error=" + localException.toString());
+      }
+    }
+    yfn.a().b(paramWebView, localObject, new yet(this, paramWebView));
+  }
+  
   private void b(String paramString)
   {
     String str3 = null;
@@ -94,10 +125,10 @@ public class GameCenterActivity$GameCenterFragment
                 this.jdField_a_of_type_AndroidUtilDisplayMetrics = new DisplayMetrics();
                 super.getActivity().getWindowManager().getDefaultDisplay().getMetrics(this.jdField_a_of_type_AndroidUtilDisplayMetrics);
               }
-              str3 = APNUtil.a(super.getActivity().getApplicationContext());
+              str3 = bcdn.a(super.getActivity().getApplicationContext());
               String str4 = this.jdField_a_of_type_AndroidUtilDisplayMetrics.widthPixels + " * " + this.jdField_a_of_type_AndroidUtilDisplayMetrics.heightPixels;
-              paramString = ReportInfoManager.a().a(this.jdField_a_of_type_JavaLangString, str1, paramString, str3, str4);
-              ReportInfoManager.a().a(paramString);
+              paramString = ReportInfoManager.getInstance().genClickReportInfo(this.jdField_a_of_type_JavaLangString, str1, paramString, str3, str4);
+              ReportInfoManager.getInstance().postClickReportInfo(paramString);
             }
           }
           else {
@@ -138,7 +169,16 @@ public class GameCenterActivity$GameCenterFragment
     return true;
   }
   
-  private void h()
+  private String i()
+  {
+    String str = "https://speed.gamecenter.qq.com/pushgame/v1/home/index?ADTAG=no_config&_wv=18950115&_wwv=393&plat=qq&_wv=5127";
+    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
+      str = "https://speed.gamecenter.qq.com/pushgame/v1/home/index?ADTAG=no_config&_wv=18950115&_wwv=393&plat=qq&_wv=5127" + "&" + this.jdField_c_of_type_JavaLangString;
+    }
+    return str + "&st=" + this.d;
+  }
+  
+  private void i()
   {
     if (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
       this.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web"));
@@ -151,14 +191,14 @@ public class GameCenterActivity$GameCenterFragment
     }
     for (;;)
     {
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.g)) && (d(this.g))) {}
+      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.h)) && (d(this.h))) {}
       try
       {
-        String str = Uri.parse(this.g).getQueryParameter("uin");
+        String str = Uri.parse(this.h).getQueryParameter("uin");
         if (str == null)
         {
-          this.g = HtmlOffline.a(this.g, "uin=" + this.jdField_a_of_type_JavaLangString);
-          this.jdField_a_of_type_AndroidContentIntent.putExtra("url", this.g);
+          this.h = mof.a(this.h, "uin=" + this.jdField_a_of_type_JavaLangString);
+          this.jdField_a_of_type_AndroidContentIntent.putExtra("url", this.h);
         }
         return;
         if (!QLog.isColorLevel()) {
@@ -177,23 +217,14 @@ public class GameCenterActivity$GameCenterFragment
     }
   }
   
-  private String i()
-  {
-    String str = "http://gamecenter.qq.com/front/release/index/index.html?plat=qq&_wv=5127";
-    if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
-      str = "http://gamecenter.qq.com/front/release/index/index.html?plat=qq&_wv=5127" + "&" + this.jdField_c_of_type_JavaLangString;
-    }
-    return str + "&st=" + this.d;
-  }
-  
-  protected int a(Bundle paramBundle)
+  public int a(Bundle paramBundle)
   {
     int i = super.a(paramBundle);
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b != null)
+    if (this.jdField_a_of_type_Bazb.b != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b.setVisibility(0);
-      if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b instanceof TextView)) {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b.setText(2131431799);
+      this.jdField_a_of_type_Bazb.b.setVisibility(0);
+      if ((this.jdField_a_of_type_Bazb.b instanceof TextView)) {
+        this.jdField_a_of_type_Bazb.b.setText(2131625321);
       }
     }
     return i;
@@ -204,30 +235,77 @@ public class GameCenterActivity$GameCenterFragment
     return "gamecenter";
   }
   
+  public void a()
+  {
+    int i = 0;
+    super.a();
+    if (mkw.a().i(this.h)) {
+      i();
+    }
+    if (d(this.jdField_b_of_type_JavaLangString))
+    {
+      Object localObject2 = getWebView().getX5WebViewExtension();
+      if (localObject2 != null)
+      {
+        localObject1 = apxk.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+        if ((((apxm)localObject1).jdField_b_of_type_Long != 0L) && (((apxm)localObject1).jdField_a_of_type_Long != ((apxm)localObject1).jdField_b_of_type_Long))
+        {
+          if (!TextUtils.isEmpty(((apxm)localObject1).jdField_a_of_type_JavaLangString))
+          {
+            ((IX5WebViewExtension)localObject2).updateServiceWorkerBackground(this.jdField_b_of_type_JavaLangString);
+            localObject2 = mof.a(((apxm)localObject1).jdField_a_of_type_JavaLangString, "jump_url=" + this.h);
+            this.h = ((String)localObject2);
+            this.jdField_b_of_type_JavaLangString = ((String)localObject2);
+            this.jdField_a_of_type_AndroidContentIntent.putExtra("url", this.h);
+            QLog.e("GameCenterFragment", 1, new Object[] { "doCreateLoopStep_InitWebView: replace url with: ", this.h });
+          }
+          apxk.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, ((apxm)localObject1).jdField_b_of_type_Long);
+        }
+      }
+      Object localObject1 = apxk.a(getActivity().getIntent());
+      if (localObject1 != null)
+      {
+        if ((((PadFaceAd)localObject1).isValid()) || (((PadFaceAd)localObject1).redPointId > 0)) {
+          i = 1;
+        }
+        if (i != 0) {
+          QQGamePadFaceFragment.a(getActivity(), (PadFaceAd)localObject1);
+        }
+      }
+    }
+  }
+  
   public void a(WebView paramWebView, String paramString)
   {
-    if ((this.jdField_b_of_type_Boolean) && (!this.h))
+    if ((this.jdField_b_of_type_Boolean) && (!this.i))
     {
-      if ((this.jdField_a_of_type_ComTencentBizUiTouchWebView == null) || (!this.jdField_a_of_type_ComTencentBizUiTouchWebView.canGoBack()) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a == null)) {
-        break label70;
+      if ((this.jdField_a_of_type_ComTencentBizUiTouchWebView == null) || (!this.jdField_a_of_type_ComTencentBizUiTouchWebView.canGoBack()) || (this.jdField_a_of_type_Bazb.a == null)) {
+        break label116;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.setText(2131432425);
+      this.jdField_a_of_type_Bazb.a.setText(2131624770);
     }
     for (;;)
     {
       a(paramString);
       this.jdField_b_of_type_Boolean = false;
+      if ((!TextUtils.isEmpty(paramString)) && (d(paramString)) && (yfn.a().a()))
+      {
+        yfn.a().a(paramWebView, new yeu(this));
+        yfn.a().b();
+      }
       super.a(paramWebView, paramString);
       return;
-      label70:
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a(this.jdField_a_of_type_AndroidContentIntent);
+      label116:
+      this.jdField_a_of_type_Bazb.a(this.jdField_a_of_type_AndroidContentIntent);
     }
   }
   
   public void a(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    if ((!this.jdField_c_of_type_Boolean) && (!TextUtils.isEmpty(paramString)) && (d(paramString))) {
+    if ((!this.jdField_c_of_type_Boolean) && (!TextUtils.isEmpty(paramString)) && (d(paramString)))
+    {
       jdField_b_of_type_Long = System.currentTimeMillis();
+      a(paramWebView);
     }
     super.a(paramWebView, paramString, paramBitmap);
   }
@@ -241,19 +319,19 @@ public class GameCenterActivity$GameCenterFragment
     while ((!this.jdField_c_of_type_Boolean) && (!paramString.startsWith("data")) && (localObject != null))
     {
       localObject = ((WebViewPluginEngine)localObject).a("offline");
-      if ((localObject != null) && ((localObject instanceof OfflinePlugin)))
+      if ((localObject != null) && ((localObject instanceof xce)))
       {
-        if (((OfflinePlugin)localObject).b == 0) {
+        if (((xce)localObject).b == 0) {
           b("0");
         }
       }
       else
       {
         return;
-        localObject = this.jdField_a_of_type_ComTencentBizUiTouchWebView.a();
+        localObject = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getPluginEngine();
         continue;
       }
-      b(HtmlOffline.a(a(paramString)));
+      b(mof.a(a(paramString)));
       return;
     }
     this.jdField_c_of_type_Boolean = false;
@@ -261,6 +339,9 @@ public class GameCenterActivity$GameCenterFragment
   
   public boolean a(Bundle paramBundle)
   {
+    if (QLog.isColorLevel()) {
+      QLog.d("GameCenterFragment", 2, "game center fragment doOnCreate");
+    }
     jdField_a_of_type_Int += 1;
     this.d = System.currentTimeMillis();
     if (this.jdField_a_of_type_AndroidContentIntent != null)
@@ -272,41 +353,37 @@ public class GameCenterActivity$GameCenterFragment
         this.jdField_b_of_type_JavaLangString = i();
         this.jdField_a_of_type_AndroidContentIntent.putExtra("url", this.jdField_b_of_type_JavaLangString);
       }
+      Object localObject;
       if ((!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (d(this.jdField_b_of_type_JavaLangString)))
       {
         jdField_a_of_type_Long = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("plugin_start_time", 0L);
-        if (jdField_a_of_type_Long != 0L) {}
+        if (jdField_a_of_type_Long == 0L) {
+          localObject = null;
+        }
+      }
+      try
+      {
+        String str = Uri.parse(this.jdField_b_of_type_JavaLangString).getQueryParameter("st");
+        localObject = str;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          localException.printStackTrace();
+        }
+      }
+      if (!TextUtils.isEmpty(localObject)) {
+        jdField_a_of_type_Long = Long.valueOf(localObject).longValue();
       }
     }
     for (;;)
     {
-      try
-      {
-        String str = Uri.parse(this.jdField_b_of_type_JavaLangString).getQueryParameter("st");
-        if (!TextUtils.isEmpty(str)) {
-          jdField_a_of_type_Long = Long.valueOf(str).longValue();
-        }
-        super.a(paramBundle);
-        this.jdField_a_of_type_Boolean = false;
-        ThreadManager.postImmediately(new qnv(this), null, false);
-        return true;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        Object localObject = null;
-        continue;
-      }
-      Toast.makeText(super.getActivity().getApplicationContext(), 2131431802, 0).show();
+      super.a(paramBundle);
+      this.jdField_a_of_type_Boolean = false;
+      return true;
+      Toast.makeText(super.getActivity().getApplicationContext(), 2131625319, 0).show();
       super.getActivity().finish();
-    }
-  }
-  
-  protected void c()
-  {
-    super.c();
-    if (AuthorizeConfig.a().e(this.g)) {
-      h();
     }
   }
   
@@ -320,10 +397,12 @@ public class GameCenterActivity$GameCenterFragment
       if (QLog.isColorLevel()) {
         QLog.d("GameCenterFragment", 2, "enterGameCenterTime = " + jdField_a_of_type_Long + " , startLoadGameCenterTime = " + jdField_b_of_type_Long + " , exitGameCenterTime = " + this.jdField_c_of_type_Long);
       }
-      VipUtils.a(null, "vip", "0X8004BFB", "0X8004BFB", 0, 0, new String[] { String.valueOf(jdField_a_of_type_Long), String.valueOf(jdField_b_of_type_Long), String.valueOf(this.jdField_c_of_type_Long) });
+      bajr.a(null, "vip", "0X8004BFB", "0X8004BFB", 0, 0, new String[] { String.valueOf(jdField_a_of_type_Long), String.valueOf(jdField_b_of_type_Long), String.valueOf(this.jdField_c_of_type_Long) });
     }
     super.onDestroy();
+    apyl.a().a();
     System.gc();
+    yfn.a().a();
   }
 }
 

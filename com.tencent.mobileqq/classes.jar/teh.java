@@ -1,34 +1,22 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.kingkong.Common;
-import com.tencent.mobileqq.activity.recent.RecentDataListManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public final class teh
-  implements Runnable
+class teh
+  extends tcq
 {
-  public teh(QQAppInterface paramQQAppInterface, String paramString) {}
-  
-  public void run()
+  teh(tdo paramtdo, StoryVideoItem paramStoryVideoItem, tex paramtex)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b = NetConnInfoCenter.getServerTime();
-    RecentDataListManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.sApplication, false);
-    try
-    {
-      Common.OnLogin(BaseApplicationImpl.sApplication, this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("login", 2, "loginSuccessInit kingkong OnLogin throwable: " + localThrowable);
-    }
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Tex.e = ((String)a("result"));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     teh
  * JD-Core Version:    0.7.0.1
  */

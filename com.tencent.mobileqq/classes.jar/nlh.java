@@ -1,13 +1,18 @@
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-
 public class nlh
-  implements Runnable
 {
-  public nlh(ShareModeBase paramShareModeBase) {}
+  public int a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void run()
+  public nlh(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    ShareModeBase.a(this.a, ShareModeBase.a(this.a));
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+    this.d = paramInt4;
   }
 }
 

@@ -8,57 +8,63 @@ import java.util.List;
 
 public class GLLyricsManager
 {
-  private long jdField_a_of_type_Long;
-  private GLLyricsView jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView;
-  private GLViewContext jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext;
-  private String jdField_a_of_type_JavaLangString;
+  private GLViewContext mContext;
+  private String mKey;
+  private GLLyricsView mLyricsView;
+  private long mStartRecordMis;
   
   public GLLyricsManager(GLViewContext paramGLViewContext, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext = paramGLViewContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView = new GLLyricsView(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView.a(DisplayUtils.a(56.0F));
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView.b(DisplayUtils.a(20.0F));
+    this.mContext = paramGLViewContext;
+    this.mKey = paramString;
+    this.mLyricsView = new GLLyricsView(this.mContext, this.mKey);
+    this.mLyricsView.setTextSize(DisplayUtils.pixelToRealPixel(56.0F));
+    this.mLyricsView.setShadowPadding(DisplayUtils.pixelToRealPixel(20.0F));
   }
   
-  private int a(ResourceManager.LyricItem paramLyricItem)
+  private void ResetLyricsViewLayout(String paramString)
   {
-    long l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
-    if (paramLyricItem.b > l) {
+    if (paramString == null)
+    {
+      this.mLyricsView.setVisibility(false);
+      return;
+    }
+    this.mLyricsView.clearTextCache();
+    this.mLyricsView.setText(paramString, -1);
+    paramString = this.mContext.getSurfaceViewSize();
+    int i = paramString.width();
+    int j = paramString.height();
+    paramString = new RectF(0.0F, 0.0F, i, j);
+    float f1 = (i - this.mLyricsView.getTextWidth() - this.mLyricsView.getShadowPadding()) / 2.0F;
+    float f2 = j - DisplayUtils.pixelToRealPixel(100.0F) - this.mLyricsView.getTextHeight() - this.mLyricsView.getShadowPadding();
+    paramString.set(f1, f2, i - f1, this.mLyricsView.getTextHeight() + f2 + this.mLyricsView.getShadowPadding());
+    this.mLyricsView.setImageRegion(paramString);
+    this.mLyricsView.setImageClipDrawRegion(paramString);
+    this.mLyricsView.setVisibility(true);
+  }
+  
+  private int calculateNewStatus(ResourceManager.LyricItem paramLyricItem)
+  {
+    long l = SystemClock.uptimeMillis() - this.mStartRecordMis;
+    if (paramLyricItem.startTime > l) {
       return 0;
     }
-    if ((paramLyricItem.b <= l) && (paramLyricItem.c > l)) {
+    if ((paramLyricItem.startTime <= l) && (paramLyricItem.endTime > l)) {
       return 1;
     }
     return 2;
   }
   
-  private void a(String paramString)
+  public void clearStatus()
   {
-    if (paramString == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView.f_(false);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView.b();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView.a(paramString, -1);
-    paramString = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext.b();
-    int i = paramString.width();
-    int j = paramString.height();
-    paramString = new RectF(0.0F, 0.0F, i, j);
-    float f1 = (i - this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView.a() - this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView.a()) / 2.0F;
-    float f2 = j - DisplayUtils.a(100.0F) - this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView.b() - this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView.a();
-    paramString.set(f1, f2, i - f1, this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView.b() + f2 + this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView.a());
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView.b(paramString);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView.d(paramString);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView.f_(true);
+    this.mStartRecordMis = 0L;
+    this.mLyricsView.setVisibility(false);
   }
   
-  public void a()
+  public void drawFrame()
   {
-    Object localObject = ResourceManager.a().c();
-    if ((localObject != null) && (((List)localObject).size() > 0) && (this.jdField_a_of_type_Long > 0L)) {
+    Object localObject = ResourceManager.getInstance().getLyricsList();
+    if ((localObject != null) && (((List)localObject).size() > 0) && (this.mStartRecordMis > 0L)) {
       localObject = ((List)localObject).iterator();
     }
     for (;;)
@@ -68,17 +74,17 @@ public class GLLyricsManager
       if (((Iterator)localObject).hasNext())
       {
         localLyricItem = (ResourceManager.LyricItem)((Iterator)localObject).next();
-        if (localLyricItem.jdField_a_of_type_Int == 2) {
+        if (localLyricItem.status == 2) {
           continue;
         }
-        if (localLyricItem.jdField_a_of_type_Int != 1) {
+        if (localLyricItem.status != 1) {
           break label108;
         }
-        i = a(localLyricItem);
+        i = calculateNewStatus(localLyricItem);
         if (i == 2)
         {
-          a(null);
-          localLyricItem.jdField_a_of_type_Int = i;
+          ResetLyricsViewLayout(null);
+          localLyricItem.status = i;
           continue;
         }
         if (i != 1) {
@@ -87,33 +93,27 @@ public class GLLyricsManager
       }
       for (;;)
       {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView.a();
+        this.mLyricsView.draw();
         return;
         label108:
-        i = a(localLyricItem);
+        i = calculateNewStatus(localLyricItem);
         if (i != 1) {
           break;
         }
-        a(localLyricItem.jdField_a_of_type_JavaLangString);
-        localLyricItem.jdField_a_of_type_Int = i;
+        ResetLyricsViewLayout(localLyricItem.text);
+        localLyricItem.status = i;
       }
       if (i == 2)
       {
-        a(null);
-        localLyricItem.jdField_a_of_type_Int = i;
+        ResetLyricsViewLayout(null);
+        localLyricItem.status = i;
       }
     }
   }
   
-  public void a(long paramLong)
+  public void updateStartTimestamp(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLyricsView.f_(false);
+    this.mStartRecordMis = paramLong;
   }
 }
 

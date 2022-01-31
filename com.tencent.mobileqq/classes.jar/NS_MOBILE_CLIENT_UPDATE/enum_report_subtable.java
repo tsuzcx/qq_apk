@@ -27,18 +27,32 @@ public final class enum_report_subtable
   public static final int _ENUM_REDBAG_REPORT = 10;
   public static final int _ENUM_SHUOSHUO_USER_ACT_REPORT = 30;
   public static final int _ENUM_SPACE_CITY_REPORT = 11;
-  public static final int _ENUM_TABLE_AP0042_REPORT = 44;
-  public static final int _ENUM_TABLE_DC02727_REPORT = 35;
-  public static final int _ENUM_TABLE_DC02795_REPORT = 39;
+  public static final int _ENUM_TABLE_APP042_REPORT = 44;
+  public static final int _ENUM_TABLE_DC0307_REPORT = 57;
+  public static final int _ENUM_TABLE_DC0518_REPORT = 48;
   public static final int _ENUM_TABLE_DC2216_REPORT = 40;
+  public static final int _ENUM_TABLE_DC2301_REPORT = 37;
   public static final int _ENUM_TABLE_DC2506_REPORT = 31;
   public static final int _ENUM_TABLE_DC2543_REPORT = 32;
+  public static final int _ENUM_TABLE_DC2629_REPORT = 33;
+  public static final int _ENUM_TABLE_DC2655_REPORT = 34;
+  public static final int _ENUM_TABLE_DC2727_REPORT = 35;
+  public static final int _ENUM_TABLE_DC2749_REPORT = 36;
+  public static final int _ENUM_TABLE_DC2778_REPORT = 38;
+  public static final int _ENUM_TABLE_DC2795_REPORT = 39;
   public static final int _ENUM_TABLE_DC2817_REPORT = 41;
   public static final int _ENUM_TABLE_DC2880_REPORT = 43;
   public static final int _ENUM_TABLE_DC2910_REPORT = 42;
   public static final int _ENUM_TABLE_DC3164_REPORT = 46;
   public static final int _ENUM_TABLE_DC3179_REPORT = 45;
   public static final int _ENUM_TABLE_DC3208_REPORT = 47;
+  public static final int _ENUM_TABLE_DC3701_REPORT = 50;
+  public static final int _ENUM_TABLE_DC3950_REPORT = 56;
+  public static final int _ENUM_TABLE_DC4021_REPORT = 51;
+  public static final int _ENUM_TABLE_DC4171_REPORT = 52;
+  public static final int _ENUM_TABLE_DC4233_REPORT = 53;
+  public static final int _ENUM_TABLE_DC4466_REPORT = 54;
+  public static final int _ENUM_TABLE_DC4483_REPORT = 55;
   public static final int _ENUM_TABLE_PF0034_REPORT = 49;
   public static final int _ENUM_TERMINAL_MACHINE_ALBUM_EVENT_REPORT = 17;
   public static final int _ENUM_TERMINAL_MACHINE_ALBUM_USER_REPORT = 18;
@@ -52,7 +66,7 @@ public final class enum_report_subtable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_CLIENT_UPDATE.enum_report_subtable
  * JD-Core Version:    0.7.0.1
  */

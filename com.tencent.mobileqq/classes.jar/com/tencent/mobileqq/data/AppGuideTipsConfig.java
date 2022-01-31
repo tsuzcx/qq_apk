@@ -1,37 +1,37 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atnz;
+import atoc;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
 public class AppGuideTipsConfig
-  extends Entity
+  extends atmo
 {
   public static final String SWITCH_KEY_OFF = "0";
   public static final String TAIL_ID = "app_tail_id";
   public static final String TAIL_QIM_ID = "app_qim_tail_id";
   public static final String TIPS_TYPE_TIM = "1";
   public int addCount;
-  @notColumn
+  @atnz
   public String aioTypeStr;
-  @notColumn
-  public HashSet aioTypes = new HashSet();
-  @notColumn
+  @atnz
+  public HashSet<Integer> aioTypes = new HashSet();
+  @atnz
   public boolean allow;
   public long duration;
   public long lastAddTime;
   public int maxCount;
-  @notColumn
-  public Map msgTypeMap = new HashMap();
+  @atnz
+  public Map<Integer, Boolean> msgTypeMap = new HashMap();
   public String msgTypeStr;
   public String opkey;
   public String switchKey;
   public String tipsHighLight;
   public String tipsMsg;
-  @unique
+  @atoc
   public String tipsType;
   public String tipsUrl;
 }

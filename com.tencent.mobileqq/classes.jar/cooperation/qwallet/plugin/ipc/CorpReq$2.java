@@ -2,13 +2,13 @@ package cooperation.qwallet.plugin.ipc;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import azzz;
+import babh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -85,7 +85,7 @@ class CorpReq$2
             if (QLog.isColorLevel())
             {
               ((StringBuffer)localObject3).append(" nick=");
-              ((StringBuffer)localObject3).append(Utils.a((String)localObject1));
+              ((StringBuffer)localObject3).append(azzz.a((String)localObject1));
               paramBundle = (Bundle)localObject1;
             }
             ((Map)localObject2).put(localObject5, paramBundle);
@@ -111,7 +111,7 @@ class CorpReq$2
           localObject2 = this.val$resp;
           paramBundle = (Bundle)localObject1;
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            paramBundle = ContactUtils.g(this.val$app, this.this$0.troopUin, this.this$0.memUin);
+            paramBundle = babh.h(this.val$app, this.this$0.troopUin, this.this$0.memUin);
           }
           ((CorpResp)localObject2).memNick = paramBundle;
           this.val$resp.toBundle((Bundle)localObject3);
@@ -131,7 +131,7 @@ class CorpReq$2
           ((JSONObject)localObject6).put("memUin", localObject7);
           paramBundle = (Bundle)localObject1;
           if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            paramBundle = ContactUtils.g(this.val$app, this.this$0.troopUin, (String)localObject7);
+            paramBundle = babh.h(this.val$app, this.this$0.troopUin, (String)localObject7);
           }
           ((JSONObject)localObject6).put("memNick", paramBundle);
           ((JSONArray)localObject4).put(localObject6);
@@ -157,7 +157,7 @@ class CorpReq$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cooperation.qwallet.plugin.ipc.CorpReq.2
  * JD-Core Version:    0.7.0.1
  */

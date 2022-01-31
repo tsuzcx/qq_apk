@@ -1,20 +1,22 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyVideoChannelFragment;
+import java.util.Comparator;
 
-public class lqw
-  implements Runnable
+class lqw
+  implements Comparator<leb>
 {
-  public lqw(ReadInJoyVideoChannelFragment paramReadInJoyVideoChannelFragment) {}
+  lqw(lqu paramlqu) {}
   
-  public void run()
+  public int a(leb paramleb1, leb paramleb2)
   {
-    PublicAccountReportUtils.a(null, "", "0X8007C41", "0X8007C41", 0, 0, "0", "0", "", VideoReporter.a(56, null), false);
+    if (paramleb1.a) {}
+    while (paramleb2.a) {
+      return -1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lqw
  * JD-Core Version:    0.7.0.1
  */

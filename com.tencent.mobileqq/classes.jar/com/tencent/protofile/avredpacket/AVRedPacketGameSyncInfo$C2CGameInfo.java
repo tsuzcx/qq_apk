@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class AVRedPacketGameSyncInfo$C2CGameInfo
-  extends MessageMicro
+  extends MessageMicro<C2CGameInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 50, 56, 66, 72, 80, 88, 96 }, new String[] { "key", "state", "exceptionType", "fromWho", "musicId", "money", "resultCode", "resultState", "scores", "enterType", "maxScore", "totalEmojiNum" }, new Object[] { "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, C2CGameInfo.class);
   public final PBUInt32Field enterType = PBField.initUInt32(0);

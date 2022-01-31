@@ -1,46 +1,39 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextUtils;
-import android.util.Pair;
-import com.tencent.biz.widgets.ScannerView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.Button;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 
 public class aglx
-  implements Runnable
+  implements TextWatcher
 {
-  public aglx(ScanTorchActivity paramScanTorchActivity, String paramString) {}
+  public aglx(TransactionActivity paramTransactionActivity) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      ScanTorchActivity.r(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.runOnUiThread(new agly(this));
-      return;
-      Pair localPair = ScannerView.a(Uri.parse("file://" + this.jdField_a_of_type_JavaLangString), this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.getBaseContext());
-      if (localPair != null)
+    if (TransactionActivity.b(this.a).getText().length() > 4) {
+      if (!TransactionActivity.b(this.a).isEnabled())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ScanTorchActivity", 2, "scan photo QRCode finish");
-        }
-        Intent localIntent = new Intent();
-        localIntent.putExtra("scannerResult", String.valueOf(localPair.first).trim());
-        localIntent.putExtra("scannerType", String.valueOf(localPair.second).trim());
-        this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.setResult(13, localIntent);
-        this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.finish();
-        this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.overridePendingTransition(0, 0);
-        return;
+        TransactionActivity.b(this.a).setEnabled(true);
+        TransactionActivity.b(this.a).setClickable(true);
+        this.a.a(TransactionActivity.b(this.a), 128, "transfer.qqid.enable", "", "", TransactionActivity.b(this.a), "");
       }
-      ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, this.jdField_a_of_type_JavaLangString);
     }
+    while (!TransactionActivity.b(this.a).isEnabled()) {
+      return;
+    }
+    TransactionActivity.b(this.a).setClickable(false);
+    TransactionActivity.b(this.a).setEnabled(false);
+    this.a.a(TransactionActivity.b(this.a), 128, "transfer.qqid.disable", "", "", TransactionActivity.b(this.a), "");
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aglx
  * JD-Core Version:    0.7.0.1
  */

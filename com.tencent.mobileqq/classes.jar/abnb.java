@@ -1,42 +1,35 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.armap.ipc.ArMapIPCProxy;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
 
 public class abnb
-  implements EIPCResultCallback
+  extends akgd
 {
-  public abnb(ArMapIPCProxy paramArMapIPCProxy) {}
-  
-  public void onCallback(EIPCResult paramEIPCResult)
+  public abnb(QQSettingMe paramQQSettingMe, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramEIPCResult != null)
-    {
-      localObject1 = localObject2;
-      if (paramEIPCResult.isSuccess()) {
-        localObject1 = paramEIPCResult.data.getString("action");
-      }
-    }
-    if (TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("ArMapIPCProxy", 2, "onCallback error");
-      }
-      return;
-    }
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
     if (QLog.isColorLevel()) {
-      QLog.i("ArMapIPCProxy", 2, "onCallback action:" + (String)localObject1);
+      QLog.d("QQSettingRedesign", 2, "onLocationFinish errCode:" + paramInt + ",info:" + paramSosoLbsInfo);
     }
-    this.a.a((String)localObject1, paramEIPCResult);
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    {
+      paramInt = (int)(paramSosoLbsInfo.a.a * 1000000.0D);
+      int i = (int)(paramSosoLbsInfo.a.b * 1000000.0D);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSettingRedesign", 2, "onLocationFinish latitude:" + paramInt + ",longtitude:" + i);
+      }
+      ahyg.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramInt, i, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abnb
  * JD-Core Version:    0.7.0.1
  */

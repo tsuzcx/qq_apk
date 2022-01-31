@@ -6,14 +6,14 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class qqshop_report$SQQSHPCliLogReq
-  extends MessageMicro
+  extends MessageMicro<SQQSHPCliLogReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "logs" }, new Object[] { null }, SQQSHPCliLogReq.class);
-  public final PBRepeatMessageField logs = PBField.initRepeatMessage(qqshop_report.SQQSHPCliLogInfo.class);
+  public final PBRepeatMessageField<qqshop_report.SQQSHPCliLogInfo> logs = PBField.initRepeatMessage(qqshop_report.SQQSHPCliLogInfo.class);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.qqshop.qqshop_report.SQQSHPCliLogReq
  * JD-Core Version:    0.7.0.1
  */

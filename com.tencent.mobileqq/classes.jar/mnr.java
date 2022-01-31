@@ -1,25 +1,19 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.ScaleAnimation;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
+import mqq.app.AppRuntime;
 
 public class mnr
-  extends AnimateUtils.AnimationAdapter
 {
-  public mnr(ReadinjoyTabFrame paramReadinjoyTabFrame, View paramView) {}
+  TroopMemberApiService a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public mnr(TroopMemberApiService paramTroopMemberApiService)
   {
-    paramAnimation = new ScaleAnimation(1.05F, 0.72F, 1.05F, 0.72F, 1, 0.5F, 1, 0.5F);
-    paramAnimation.setDuration(170L);
-    paramAnimation.setAnimationListener(new mns(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
+    this.a = paramTroopMemberApiService;
   }
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void a(AppRuntime paramAppRuntime, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+    if (paramBundle == null) {}
   }
 }
 

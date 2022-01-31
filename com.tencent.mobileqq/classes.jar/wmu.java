@@ -1,31 +1,27 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.StringUtil;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class wmu
-  implements Runnable
 {
-  public wmu(AddContactsView paramAddContactsView, String paramString, SharedPreferences paramSharedPreferences) {}
-  
-  public void run()
-  {
-    List localList = AddContactsView.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView);
-    String str = AddContactsView.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView, localList);
-    if (!this.jdField_a_of_type_JavaLangString.equals(str))
-    {
-      AddContactsView.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView, localList);
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(AddContactsView.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView), StringUtil.a(AddContactsView.b(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactAddContactsView), ",")).commit();
-      ThreadManager.getUIHandler().post(new wmv(this, str));
-    }
-  }
+  public View a;
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public wnb a;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  public TextView f;
+  public TextView g;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wmu
  * JD-Core Version:    0.7.0.1
  */

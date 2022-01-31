@@ -1,21 +1,21 @@
 package com.tencent.mobileqq.app.automator.step;
 
+import ardv;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.log.ReportLog;
 import mqq.manager.ServerConfigManager.ConfigType;
 
 public class SetLogOn
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
-    String str = this.a.b.a(ServerConfigManager.ConfigType.common, "QQIniUrl");
+    String str = this.a.app.a(ServerConfigManager.ConfigType.common, "QQIniUrl");
     if ((str != null) && (str.length() > 0)) {
-      ReportLog.b = str.trim();
+      ardv.b = str.trim();
     }
-    ReportLog.a(this.a.b.getApp(), true);
+    ardv.a(this.a.app.getApp(), true);
     return 7;
   }
 }

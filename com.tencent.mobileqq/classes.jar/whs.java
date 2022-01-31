@@ -1,28 +1,20 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.theme.SkinEngine;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.subscribe.widget.textview.FollowTextView;
 
-public final class whs
-  implements Runnable
+public class whs
+  implements DialogInterface.OnDismissListener
 {
-  public whs(TextView paramTextView) {}
+  public whs(FollowTextView paramFollowTextView) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Drawable localDrawable1 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845961);
-    Drawable localDrawable2 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845963);
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { 16842910 }, localDrawable1);
-    localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable2);
-    ThreadManager.getUIHandler().post(new wht(this, localStateListDrawable));
+    FollowTextView.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     whs
  * JD-Core Version:    0.7.0.1
  */

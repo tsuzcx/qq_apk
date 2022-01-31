@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.msf.sdk;
 
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
@@ -18,8 +17,8 @@ public class v
   implements Serializable
 {
   private static final long d = -387911632671998426L;
-  transient d a;
-  transient d b;
+  transient v.d a;
+  transient v.d b;
   final ReentrantLock c = new ReentrantLock();
   private transient int e;
   private final int f;
@@ -62,7 +61,7 @@ public class v
       {
         localReentrantLock.unlock();
       }
-      if (!c(new d(localObject))) {
+      if (!c(new v.d(localObject))) {
         throw new IllegalStateException("Deque full");
       }
     }
@@ -70,7 +69,6 @@ public class v
   }
   
   private void a(ObjectInputStream paramObjectInputStream)
-    throws IOException, ClassNotFoundException
   {
     paramObjectInputStream.defaultReadObject();
     this.e = 0;
@@ -87,14 +85,13 @@ public class v
   }
   
   private void a(ObjectOutputStream paramObjectOutputStream)
-    throws IOException
   {
     ReentrantLock localReentrantLock = this.c;
     localReentrantLock.lock();
     try
     {
       paramObjectOutputStream.defaultWriteObject();
-      for (d locald = this.a; locald != null; locald = locald.c) {
+      for (v.d locald = this.a; locald != null; locald = locald.c) {
         paramObjectOutputStream.writeObject(locald.a);
       }
       paramObjectOutputStream.writeObject(null);
@@ -106,12 +103,12 @@ public class v
     }
   }
   
-  private boolean b(d paramd)
+  private boolean b(v.d paramd)
   {
     if (this.e >= this.f) {
       return false;
     }
-    d locald = this.a;
+    v.d locald = this.a;
     paramd.c = locald;
     this.a = paramd;
     if (this.b == null) {
@@ -126,12 +123,12 @@ public class v
     }
   }
   
-  private boolean c(d paramd)
+  private boolean c(v.d paramd)
   {
     if (this.e >= this.f) {
       return false;
     }
-    d locald = this.b;
+    v.d locald = this.b;
     paramd.b = locald;
     this.b = paramd;
     if (this.a == null) {
@@ -148,11 +145,11 @@ public class v
   
   private Object o()
   {
-    d locald1 = this.a;
+    v.d locald1 = this.a;
     if (locald1 == null) {
       return null;
     }
-    d locald2 = locald1.c;
+    v.d locald2 = locald1.c;
     Object localObject = locald1.a;
     locald1.a = null;
     locald1.c = locald1;
@@ -171,11 +168,11 @@ public class v
   
   private Object p()
   {
-    d locald1 = this.b;
+    v.d locald1 = this.b;
     if (locald1 == null) {
       return null;
     }
-    d locald2 = locald1.b;
+    v.d locald2 = locald1.b;
     Object localObject = locald1.a;
     locald1.a = null;
     locald1.b = locald1;
@@ -240,20 +237,19 @@ public class v
   
   /* Error */
   public Object a(long paramLong, TimeUnit paramTimeUnit)
-    throws InterruptedException
   {
     // Byte code:
     //   0: aload_3
     //   1: lload_1
-    //   2: invokevirtual 168	java/util/concurrent/TimeUnit:toNanos	(J)J
+    //   2: invokevirtual 155	java/util/concurrent/TimeUnit:toNanos	(J)J
     //   5: lstore_1
     //   6: aload_0
-    //   7: getfield 43	com/tencent/mobileqq/msf/sdk/v:c	Ljava/util/concurrent/locks/ReentrantLock;
+    //   7: getfield 35	com/tencent/mobileqq/msf/sdk/v:c	Ljava/util/concurrent/locks/ReentrantLock;
     //   10: astore 5
     //   12: aload 5
-    //   14: invokevirtual 171	java/util/concurrent/locks/ReentrantLock:lockInterruptibly	()V
+    //   14: invokevirtual 158	java/util/concurrent/locks/ReentrantLock:lockInterruptibly	()V
     //   17: aload_0
-    //   18: invokespecial 154	com/tencent/mobileqq/msf/sdk/v:o	()Ljava/lang/Object;
+    //   18: invokespecial 143	com/tencent/mobileqq/msf/sdk/v:o	()Ljava/lang/Object;
     //   21: astore_3
     //   22: aload_3
     //   23: astore 4
@@ -266,18 +262,18 @@ public class v
     //   35: aconst_null
     //   36: astore 4
     //   38: aload 5
-    //   40: invokevirtual 82	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   40: invokevirtual 74	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   43: aload 4
     //   45: areturn
     //   46: aload_0
-    //   47: getfield 49	com/tencent/mobileqq/msf/sdk/v:g	Ljava/util/concurrent/locks/Condition;
+    //   47: getfield 41	com/tencent/mobileqq/msf/sdk/v:g	Ljava/util/concurrent/locks/Condition;
     //   50: lload_1
-    //   51: invokeinterface 174 3 0
+    //   51: invokeinterface 161 3 0
     //   56: lstore_1
     //   57: goto -40 -> 17
     //   60: astore_3
     //   61: aload 5
-    //   63: invokevirtual 82	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   63: invokevirtual 74	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   66: aload_3
     //   67: athrow
     // Local variable table:
@@ -293,10 +289,10 @@ public class v
     //   46	57	60	finally
   }
   
-  void a(d paramd)
+  void a(v.d paramd)
   {
-    d locald1 = paramd.b;
-    d locald2 = paramd.c;
+    v.d locald1 = paramd.b;
+    v.d locald2 = paramd.c;
     if (locald1 == null)
     {
       o();
@@ -323,32 +319,31 @@ public class v
   
   /* Error */
   public boolean a(Object paramObject, long paramLong, TimeUnit paramTimeUnit)
-    throws InterruptedException
   {
     // Byte code:
     //   0: aload_1
     //   1: ifnonnull +11 -> 12
-    //   4: new 78	java/lang/NullPointerException
+    //   4: new 70	java/lang/NullPointerException
     //   7: dup
-    //   8: invokespecial 79	java/lang/NullPointerException:<init>	()V
+    //   8: invokespecial 71	java/lang/NullPointerException:<init>	()V
     //   11: athrow
-    //   12: new 17	com/tencent/mobileqq/msf/sdk/v$d
+    //   12: new 76	com/tencent/mobileqq/msf/sdk/v$d
     //   15: dup
     //   16: aload_1
-    //   17: invokespecial 85	com/tencent/mobileqq/msf/sdk/v$d:<init>	(Ljava/lang/Object;)V
+    //   17: invokespecial 79	com/tencent/mobileqq/msf/sdk/v$d:<init>	(Ljava/lang/Object;)V
     //   20: astore_1
     //   21: aload 4
     //   23: lload_2
-    //   24: invokevirtual 168	java/util/concurrent/TimeUnit:toNanos	(J)J
+    //   24: invokevirtual 155	java/util/concurrent/TimeUnit:toNanos	(J)J
     //   27: lstore_2
     //   28: aload_0
-    //   29: getfield 43	com/tencent/mobileqq/msf/sdk/v:c	Ljava/util/concurrent/locks/ReentrantLock;
+    //   29: getfield 35	com/tencent/mobileqq/msf/sdk/v:c	Ljava/util/concurrent/locks/ReentrantLock;
     //   32: astore 4
     //   34: aload 4
-    //   36: invokevirtual 171	java/util/concurrent/locks/ReentrantLock:lockInterruptibly	()V
+    //   36: invokevirtual 158	java/util/concurrent/locks/ReentrantLock:lockInterruptibly	()V
     //   39: aload_0
     //   40: aload_1
-    //   41: invokespecial 182	com/tencent/mobileqq/msf/sdk/v:b	(Lcom/tencent/mobileqq/msf/sdk/v$d;)Z
+    //   41: invokespecial 169	com/tencent/mobileqq/msf/sdk/v:b	(Lcom/tencent/mobileqq/msf/sdk/v$d;)Z
     //   44: istore 5
     //   46: iload 5
     //   48: ifne +34 -> 82
@@ -359,13 +354,13 @@ public class v
     //   57: iconst_0
     //   58: istore 5
     //   60: aload 4
-    //   62: invokevirtual 82	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   62: invokevirtual 74	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   65: iload 5
     //   67: ireturn
     //   68: aload_0
-    //   69: getfield 51	com/tencent/mobileqq/msf/sdk/v:h	Ljava/util/concurrent/locks/Condition;
+    //   69: getfield 43	com/tencent/mobileqq/msf/sdk/v:h	Ljava/util/concurrent/locks/Condition;
     //   72: lload_2
-    //   73: invokeinterface 174 3 0
+    //   73: invokeinterface 161 3 0
     //   78: lstore_2
     //   79: goto -40 -> 39
     //   82: iconst_1
@@ -373,7 +368,7 @@ public class v
     //   85: goto -25 -> 60
     //   88: astore_1
     //   89: aload 4
-    //   91: invokevirtual 82	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   91: invokevirtual 74	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   94: aload_1
     //   95: athrow
     // Local variable table:
@@ -406,20 +401,19 @@ public class v
   
   /* Error */
   public Object b(long paramLong, TimeUnit paramTimeUnit)
-    throws InterruptedException
   {
     // Byte code:
     //   0: aload_3
     //   1: lload_1
-    //   2: invokevirtual 168	java/util/concurrent/TimeUnit:toNanos	(J)J
+    //   2: invokevirtual 155	java/util/concurrent/TimeUnit:toNanos	(J)J
     //   5: lstore_1
     //   6: aload_0
-    //   7: getfield 43	com/tencent/mobileqq/msf/sdk/v:c	Ljava/util/concurrent/locks/ReentrantLock;
+    //   7: getfield 35	com/tencent/mobileqq/msf/sdk/v:c	Ljava/util/concurrent/locks/ReentrantLock;
     //   10: astore 5
     //   12: aload 5
-    //   14: invokevirtual 171	java/util/concurrent/locks/ReentrantLock:lockInterruptibly	()V
+    //   14: invokevirtual 158	java/util/concurrent/locks/ReentrantLock:lockInterruptibly	()V
     //   17: aload_0
-    //   18: invokespecial 177	com/tencent/mobileqq/msf/sdk/v:p	()Ljava/lang/Object;
+    //   18: invokespecial 164	com/tencent/mobileqq/msf/sdk/v:p	()Ljava/lang/Object;
     //   21: astore_3
     //   22: aload_3
     //   23: astore 4
@@ -432,18 +426,18 @@ public class v
     //   35: aconst_null
     //   36: astore 4
     //   38: aload 5
-    //   40: invokevirtual 82	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   40: invokevirtual 74	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   43: aload 4
     //   45: areturn
     //   46: aload_0
-    //   47: getfield 49	com/tencent/mobileqq/msf/sdk/v:g	Ljava/util/concurrent/locks/Condition;
+    //   47: getfield 41	com/tencent/mobileqq/msf/sdk/v:g	Ljava/util/concurrent/locks/Condition;
     //   50: lload_1
-    //   51: invokeinterface 174 3 0
+    //   51: invokeinterface 161 3 0
     //   56: lstore_1
     //   57: goto -40 -> 17
     //   60: astore_3
     //   61: aload 5
-    //   63: invokevirtual 82	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   63: invokevirtual 74	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   66: aload_3
     //   67: athrow
     // Local variable table:
@@ -468,32 +462,31 @@ public class v
   
   /* Error */
   public boolean b(Object paramObject, long paramLong, TimeUnit paramTimeUnit)
-    throws InterruptedException
   {
     // Byte code:
     //   0: aload_1
     //   1: ifnonnull +11 -> 12
-    //   4: new 78	java/lang/NullPointerException
+    //   4: new 70	java/lang/NullPointerException
     //   7: dup
-    //   8: invokespecial 79	java/lang/NullPointerException:<init>	()V
+    //   8: invokespecial 71	java/lang/NullPointerException:<init>	()V
     //   11: athrow
-    //   12: new 17	com/tencent/mobileqq/msf/sdk/v$d
+    //   12: new 76	com/tencent/mobileqq/msf/sdk/v$d
     //   15: dup
     //   16: aload_1
-    //   17: invokespecial 85	com/tencent/mobileqq/msf/sdk/v$d:<init>	(Ljava/lang/Object;)V
+    //   17: invokespecial 79	com/tencent/mobileqq/msf/sdk/v$d:<init>	(Ljava/lang/Object;)V
     //   20: astore_1
     //   21: aload 4
     //   23: lload_2
-    //   24: invokevirtual 168	java/util/concurrent/TimeUnit:toNanos	(J)J
+    //   24: invokevirtual 155	java/util/concurrent/TimeUnit:toNanos	(J)J
     //   27: lstore_2
     //   28: aload_0
-    //   29: getfield 43	com/tencent/mobileqq/msf/sdk/v:c	Ljava/util/concurrent/locks/ReentrantLock;
+    //   29: getfield 35	com/tencent/mobileqq/msf/sdk/v:c	Ljava/util/concurrent/locks/ReentrantLock;
     //   32: astore 4
     //   34: aload 4
-    //   36: invokevirtual 171	java/util/concurrent/locks/ReentrantLock:lockInterruptibly	()V
+    //   36: invokevirtual 158	java/util/concurrent/locks/ReentrantLock:lockInterruptibly	()V
     //   39: aload_0
     //   40: aload_1
-    //   41: invokespecial 88	com/tencent/mobileqq/msf/sdk/v:c	(Lcom/tencent/mobileqq/msf/sdk/v$d;)Z
+    //   41: invokespecial 82	com/tencent/mobileqq/msf/sdk/v:c	(Lcom/tencent/mobileqq/msf/sdk/v$d;)Z
     //   44: istore 5
     //   46: iload 5
     //   48: ifne +34 -> 82
@@ -504,13 +497,13 @@ public class v
     //   57: iconst_0
     //   58: istore 5
     //   60: aload 4
-    //   62: invokevirtual 82	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   62: invokevirtual 74	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   65: iload 5
     //   67: ireturn
     //   68: aload_0
-    //   69: getfield 51	com/tencent/mobileqq/msf/sdk/v:h	Ljava/util/concurrent/locks/Condition;
+    //   69: getfield 43	com/tencent/mobileqq/msf/sdk/v:h	Ljava/util/concurrent/locks/Condition;
     //   72: lload_2
-    //   73: invokeinterface 174 3 0
+    //   73: invokeinterface 161 3 0
     //   78: lstore_2
     //   79: goto -40 -> 39
     //   82: iconst_1
@@ -518,7 +511,7 @@ public class v
     //   85: goto -25 -> 60
     //   88: astore_1
     //   89: aload 4
-    //   91: invokevirtual 82	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   91: invokevirtual 74	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   94: aload_1
     //   95: athrow
     // Local variable table:
@@ -550,7 +543,6 @@ public class v
   }
   
   public Object c(long paramLong, TimeUnit paramTimeUnit)
-    throws InterruptedException
   {
     return a(paramLong, paramTimeUnit);
   }
@@ -560,7 +552,7 @@ public class v
     if (paramObject == null) {
       throw new NullPointerException();
     }
-    d locald = new d(paramObject);
+    v.d locald = new v.d(paramObject);
     paramObject = this.c;
     paramObject.lock();
     try
@@ -575,7 +567,6 @@ public class v
   }
   
   public boolean c(Object paramObject, long paramLong, TimeUnit paramTimeUnit)
-    throws InterruptedException
   {
     return b(paramObject, paramLong, paramTimeUnit);
   }
@@ -586,13 +577,13 @@ public class v
     localReentrantLock.lock();
     try
     {
-      d locald;
+      v.d locald;
       for (Object localObject1 = this.a; localObject1 != null; localObject1 = locald)
       {
-        ((d)localObject1).a = null;
-        locald = ((d)localObject1).c;
-        ((d)localObject1).b = null;
-        ((d)localObject1).c = null;
+        ((v.d)localObject1).a = null;
+        locald = ((v.d)localObject1).c;
+        ((v.d)localObject1).b = null;
+        ((v.d)localObject1).c = null;
       }
       this.b = null;
       this.a = null;
@@ -617,12 +608,12 @@ public class v
     //   6: iconst_0
     //   7: ireturn
     //   8: aload_0
-    //   9: getfield 43	com/tencent/mobileqq/msf/sdk/v:c	Ljava/util/concurrent/locks/ReentrantLock;
+    //   9: getfield 35	com/tencent/mobileqq/msf/sdk/v:c	Ljava/util/concurrent/locks/ReentrantLock;
     //   12: astore 5
     //   14: aload 5
-    //   16: invokevirtual 60	java/util/concurrent/locks/ReentrantLock:lock	()V
+    //   16: invokevirtual 52	java/util/concurrent/locks/ReentrantLock:lock	()V
     //   19: aload_0
-    //   20: getfield 109	com/tencent/mobileqq/msf/sdk/v:a	Lcom/tencent/mobileqq/msf/sdk/v$d;
+    //   20: getfield 99	com/tencent/mobileqq/msf/sdk/v:a	Lcom/tencent/mobileqq/msf/sdk/v$d;
     //   23: astore 4
     //   25: iload_3
     //   26: istore_2
@@ -630,24 +621,24 @@ public class v
     //   29: ifnull +19 -> 48
     //   32: aload_1
     //   33: aload 4
-    //   35: getfield 128	com/tencent/mobileqq/msf/sdk/v$d:a	Ljava/lang/Object;
-    //   38: invokevirtual 202	java/lang/Object:equals	(Ljava/lang/Object;)Z
+    //   35: getfield 117	com/tencent/mobileqq/msf/sdk/v$d:a	Ljava/lang/Object;
+    //   38: invokevirtual 189	java/lang/Object:equals	(Ljava/lang/Object;)Z
     //   41: istore_2
     //   42: iload_2
     //   43: ifeq +12 -> 55
     //   46: iconst_1
     //   47: istore_2
     //   48: aload 5
-    //   50: invokevirtual 82	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   50: invokevirtual 74	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   53: iload_2
     //   54: ireturn
     //   55: aload 4
-    //   57: getfield 133	com/tencent/mobileqq/msf/sdk/v$d:c	Lcom/tencent/mobileqq/msf/sdk/v$d;
+    //   57: getfield 122	com/tencent/mobileqq/msf/sdk/v$d:c	Lcom/tencent/mobileqq/msf/sdk/v$d;
     //   60: astore 4
     //   62: goto -37 -> 25
     //   65: astore_1
     //   66: aload 5
-    //   68: invokevirtual 82	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   68: invokevirtual 74	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   71: aload_1
     //   72: athrow
     // Local variable table:
@@ -656,7 +647,7 @@ public class v
     //   0	73	1	paramObject	Object
     //   26	28	2	bool1	boolean
     //   1	25	3	bool2	boolean
-    //   23	38	4	locald	d
+    //   23	38	4	locald	v.d
     //   12	55	5	localReentrantLock	ReentrantLock
     // Exception table:
     //   from	to	target	type
@@ -685,7 +676,7 @@ public class v
     if (paramObject == null) {
       throw new NullPointerException();
     }
-    d locald = new d(paramObject);
+    v.d locald = new v.d(paramObject);
     paramObject = this.c;
     paramObject.lock();
     try
@@ -700,7 +691,6 @@ public class v
   }
   
   public Object e()
-    throws InterruptedException
   {
     ReentrantLock localReentrantLock = this.c;
     localReentrantLock.lock();
@@ -723,12 +713,11 @@ public class v
   }
   
   public void e(Object paramObject)
-    throws InterruptedException
   {
     if (paramObject == null) {
       throw new NullPointerException();
     }
-    d locald = new d(paramObject);
+    v.d locald = new v.d(paramObject);
     paramObject = this.c;
     paramObject.lock();
     try
@@ -750,7 +739,6 @@ public class v
   }
   
   public Object f()
-    throws InterruptedException
   {
     ReentrantLock localReentrantLock = this.c;
     localReentrantLock.lock();
@@ -773,12 +761,11 @@ public class v
   }
   
   public void f(Object paramObject)
-    throws InterruptedException
   {
     if (paramObject == null) {
       throw new NullPointerException();
     }
-    d locald = new d(paramObject);
+    v.d locald = new v.d(paramObject);
     paramObject = this.c;
     paramObject.lock();
     try
@@ -814,12 +801,12 @@ public class v
     //   6: iconst_0
     //   7: ireturn
     //   8: aload_0
-    //   9: getfield 43	com/tencent/mobileqq/msf/sdk/v:c	Ljava/util/concurrent/locks/ReentrantLock;
+    //   9: getfield 35	com/tencent/mobileqq/msf/sdk/v:c	Ljava/util/concurrent/locks/ReentrantLock;
     //   12: astore 5
     //   14: aload 5
-    //   16: invokevirtual 60	java/util/concurrent/locks/ReentrantLock:lock	()V
+    //   16: invokevirtual 52	java/util/concurrent/locks/ReentrantLock:lock	()V
     //   19: aload_0
-    //   20: getfield 109	com/tencent/mobileqq/msf/sdk/v:a	Lcom/tencent/mobileqq/msf/sdk/v$d;
+    //   20: getfield 99	com/tencent/mobileqq/msf/sdk/v:a	Lcom/tencent/mobileqq/msf/sdk/v$d;
     //   23: astore 4
     //   25: iload_3
     //   26: istore_2
@@ -827,25 +814,25 @@ public class v
     //   29: ifnull +23 -> 52
     //   32: aload_1
     //   33: aload 4
-    //   35: getfield 128	com/tencent/mobileqq/msf/sdk/v$d:a	Ljava/lang/Object;
-    //   38: invokevirtual 202	java/lang/Object:equals	(Ljava/lang/Object;)Z
+    //   35: getfield 117	com/tencent/mobileqq/msf/sdk/v$d:a	Ljava/lang/Object;
+    //   38: invokevirtual 189	java/lang/Object:equals	(Ljava/lang/Object;)Z
     //   41: ifeq +18 -> 59
     //   44: aload_0
     //   45: aload 4
-    //   47: invokevirtual 213	com/tencent/mobileqq/msf/sdk/v:a	(Lcom/tencent/mobileqq/msf/sdk/v$d;)V
+    //   47: invokevirtual 200	com/tencent/mobileqq/msf/sdk/v:a	(Lcom/tencent/mobileqq/msf/sdk/v$d;)V
     //   50: iconst_1
     //   51: istore_2
     //   52: aload 5
-    //   54: invokevirtual 82	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   54: invokevirtual 74	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   57: iload_2
     //   58: ireturn
     //   59: aload 4
-    //   61: getfield 133	com/tencent/mobileqq/msf/sdk/v$d:c	Lcom/tencent/mobileqq/msf/sdk/v$d;
+    //   61: getfield 122	com/tencent/mobileqq/msf/sdk/v$d:c	Lcom/tencent/mobileqq/msf/sdk/v$d;
     //   64: astore 4
     //   66: goto -41 -> 25
     //   69: astore_1
     //   70: aload 5
-    //   72: invokevirtual 82	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   72: invokevirtual 74	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   75: aload_1
     //   76: athrow
     // Local variable table:
@@ -854,7 +841,7 @@ public class v
     //   0	77	1	paramObject	Object
     //   26	32	2	bool1	boolean
     //   1	25	3	bool2	boolean
-    //   23	42	4	locald	d
+    //   23	42	4	locald	v.d
     //   12	59	5	localReentrantLock	ReentrantLock
     // Exception table:
     //   from	to	target	type
@@ -883,12 +870,12 @@ public class v
     //   6: iconst_0
     //   7: ireturn
     //   8: aload_0
-    //   9: getfield 43	com/tencent/mobileqq/msf/sdk/v:c	Ljava/util/concurrent/locks/ReentrantLock;
+    //   9: getfield 35	com/tencent/mobileqq/msf/sdk/v:c	Ljava/util/concurrent/locks/ReentrantLock;
     //   12: astore 5
     //   14: aload 5
-    //   16: invokevirtual 60	java/util/concurrent/locks/ReentrantLock:lock	()V
+    //   16: invokevirtual 52	java/util/concurrent/locks/ReentrantLock:lock	()V
     //   19: aload_0
-    //   20: getfield 111	com/tencent/mobileqq/msf/sdk/v:b	Lcom/tencent/mobileqq/msf/sdk/v$d;
+    //   20: getfield 101	com/tencent/mobileqq/msf/sdk/v:b	Lcom/tencent/mobileqq/msf/sdk/v$d;
     //   23: astore 4
     //   25: iload_3
     //   26: istore_2
@@ -896,25 +883,25 @@ public class v
     //   29: ifnull +23 -> 52
     //   32: aload_1
     //   33: aload 4
-    //   35: getfield 128	com/tencent/mobileqq/msf/sdk/v$d:a	Ljava/lang/Object;
-    //   38: invokevirtual 202	java/lang/Object:equals	(Ljava/lang/Object;)Z
+    //   35: getfield 117	com/tencent/mobileqq/msf/sdk/v$d:a	Ljava/lang/Object;
+    //   38: invokevirtual 189	java/lang/Object:equals	(Ljava/lang/Object;)Z
     //   41: ifeq +18 -> 59
     //   44: aload_0
     //   45: aload 4
-    //   47: invokevirtual 213	com/tencent/mobileqq/msf/sdk/v:a	(Lcom/tencent/mobileqq/msf/sdk/v$d;)V
+    //   47: invokevirtual 200	com/tencent/mobileqq/msf/sdk/v:a	(Lcom/tencent/mobileqq/msf/sdk/v$d;)V
     //   50: iconst_1
     //   51: istore_2
     //   52: aload 5
-    //   54: invokevirtual 82	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   54: invokevirtual 74	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   57: iload_2
     //   58: ireturn
     //   59: aload 4
-    //   61: getfield 139	com/tencent/mobileqq/msf/sdk/v$d:b	Lcom/tencent/mobileqq/msf/sdk/v$d;
+    //   61: getfield 128	com/tencent/mobileqq/msf/sdk/v$d:b	Lcom/tencent/mobileqq/msf/sdk/v$d;
     //   64: astore 4
     //   66: goto -41 -> 25
     //   69: astore_1
     //   70: aload 5
-    //   72: invokevirtual 82	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   72: invokevirtual 74	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   75: aload_1
     //   76: athrow
     // Local variable table:
@@ -923,7 +910,7 @@ public class v
     //   0	77	1	paramObject	Object
     //   26	32	2	bool1	boolean
     //   1	25	3	bool2	boolean
-    //   23	42	4	locald	d
+    //   23	42	4	locald	v.d
     //   12	59	5	localReentrantLock	ReentrantLock
     // Exception table:
     //   from	to	target	type
@@ -937,29 +924,29 @@ public class v
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 43	com/tencent/mobileqq/msf/sdk/v:c	Ljava/util/concurrent/locks/ReentrantLock;
+    //   1: getfield 35	com/tencent/mobileqq/msf/sdk/v:c	Ljava/util/concurrent/locks/ReentrantLock;
     //   4: astore_2
     //   5: aload_2
-    //   6: invokevirtual 60	java/util/concurrent/locks/ReentrantLock:lock	()V
+    //   6: invokevirtual 52	java/util/concurrent/locks/ReentrantLock:lock	()V
     //   9: aload_0
-    //   10: getfield 109	com/tencent/mobileqq/msf/sdk/v:a	Lcom/tencent/mobileqq/msf/sdk/v$d;
+    //   10: getfield 99	com/tencent/mobileqq/msf/sdk/v:a	Lcom/tencent/mobileqq/msf/sdk/v$d;
     //   13: astore_1
     //   14: aload_1
     //   15: ifnonnull +11 -> 26
     //   18: aconst_null
     //   19: astore_1
     //   20: aload_2
-    //   21: invokevirtual 82	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   21: invokevirtual 74	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   24: aload_1
     //   25: areturn
     //   26: aload_0
-    //   27: getfield 109	com/tencent/mobileqq/msf/sdk/v:a	Lcom/tencent/mobileqq/msf/sdk/v$d;
-    //   30: getfield 128	com/tencent/mobileqq/msf/sdk/v$d:a	Ljava/lang/Object;
+    //   27: getfield 99	com/tencent/mobileqq/msf/sdk/v:a	Lcom/tencent/mobileqq/msf/sdk/v$d;
+    //   30: getfield 117	com/tencent/mobileqq/msf/sdk/v$d:a	Ljava/lang/Object;
     //   33: astore_1
     //   34: goto -14 -> 20
     //   37: astore_1
     //   38: aload_2
-    //   39: invokevirtual 82	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   39: invokevirtual 74	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   42: aload_1
     //   43: athrow
     // Local variable table:
@@ -975,14 +962,13 @@ public class v
   }
   
   public void i(Object paramObject)
-    throws InterruptedException
   {
     f(paramObject);
   }
   
   public Iterator iterator()
   {
-    return new c(null);
+    return new v.c(this, null);
   }
   
   /* Error */
@@ -990,29 +976,29 @@ public class v
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 43	com/tencent/mobileqq/msf/sdk/v:c	Ljava/util/concurrent/locks/ReentrantLock;
+    //   1: getfield 35	com/tencent/mobileqq/msf/sdk/v:c	Ljava/util/concurrent/locks/ReentrantLock;
     //   4: astore_2
     //   5: aload_2
-    //   6: invokevirtual 60	java/util/concurrent/locks/ReentrantLock:lock	()V
+    //   6: invokevirtual 52	java/util/concurrent/locks/ReentrantLock:lock	()V
     //   9: aload_0
-    //   10: getfield 111	com/tencent/mobileqq/msf/sdk/v:b	Lcom/tencent/mobileqq/msf/sdk/v$d;
+    //   10: getfield 101	com/tencent/mobileqq/msf/sdk/v:b	Lcom/tencent/mobileqq/msf/sdk/v$d;
     //   13: astore_1
     //   14: aload_1
     //   15: ifnonnull +11 -> 26
     //   18: aconst_null
     //   19: astore_1
     //   20: aload_2
-    //   21: invokevirtual 82	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   21: invokevirtual 74	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   24: aload_1
     //   25: areturn
     //   26: aload_0
-    //   27: getfield 111	com/tencent/mobileqq/msf/sdk/v:b	Lcom/tencent/mobileqq/msf/sdk/v$d;
-    //   30: getfield 128	com/tencent/mobileqq/msf/sdk/v$d:a	Ljava/lang/Object;
+    //   27: getfield 101	com/tencent/mobileqq/msf/sdk/v:b	Lcom/tencent/mobileqq/msf/sdk/v$d;
+    //   30: getfield 117	com/tencent/mobileqq/msf/sdk/v$d:a	Ljava/lang/Object;
     //   33: astore_1
     //   34: goto -14 -> 20
     //   37: astore_1
     //   38: aload_2
-    //   39: invokevirtual 82	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   39: invokevirtual 74	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   42: aload_1
     //   43: athrow
     // Local variable table:
@@ -1033,7 +1019,6 @@ public class v
   }
   
   public Object k()
-    throws InterruptedException
   {
     return e();
   }
@@ -1061,7 +1046,7 @@ public class v
   
   public Iterator n()
   {
-    return new b(null);
+    return new v.b(this, null);
   }
   
   public boolean offer(Object paramObject)
@@ -1113,7 +1098,7 @@ public class v
     {
       arrayOfObject = new Object[this.e];
       int i = 0;
-      d locald = this.a;
+      v.d locald = this.a;
       while (locald != null)
       {
         arrayOfObject[i] = locald.a;
@@ -1162,305 +1147,83 @@ public class v
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 43	com/tencent/mobileqq/msf/sdk/v:c	Ljava/util/concurrent/locks/ReentrantLock;
+    //   1: getfield 35	com/tencent/mobileqq/msf/sdk/v:c	Ljava/util/concurrent/locks/ReentrantLock;
     //   4: astore 4
     //   6: aload 4
-    //   8: invokevirtual 60	java/util/concurrent/locks/ReentrantLock:lock	()V
+    //   8: invokevirtual 52	java/util/concurrent/locks/ReentrantLock:lock	()V
     //   11: aload_0
-    //   12: getfield 109	com/tencent/mobileqq/msf/sdk/v:a	Lcom/tencent/mobileqq/msf/sdk/v$d;
+    //   12: getfield 99	com/tencent/mobileqq/msf/sdk/v:a	Lcom/tencent/mobileqq/msf/sdk/v$d;
     //   15: astore_1
     //   16: aload_1
-    //   17: ifnonnull +14 -> 31
-    //   20: ldc_w 264
-    //   23: astore_1
-    //   24: aload 4
-    //   26: invokevirtual 82	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   29: aload_1
-    //   30: areturn
-    //   31: new 266	java/lang/StringBuilder
-    //   34: dup
-    //   35: invokespecial 267	java/lang/StringBuilder:<init>	()V
-    //   38: astore 5
-    //   40: aload 5
-    //   42: bipush 91
-    //   44: invokevirtual 271	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   47: pop
-    //   48: aload_1
-    //   49: getfield 128	com/tencent/mobileqq/msf/sdk/v$d:a	Ljava/lang/Object;
-    //   52: astore_3
-    //   53: aload_3
-    //   54: astore_2
-    //   55: aload_3
-    //   56: aload_0
-    //   57: if_acmpne +7 -> 64
-    //   60: ldc_w 273
-    //   63: astore_2
-    //   64: aload 5
-    //   66: aload_2
-    //   67: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   70: pop
-    //   71: aload_1
-    //   72: getfield 133	com/tencent/mobileqq/msf/sdk/v$d:c	Lcom/tencent/mobileqq/msf/sdk/v$d;
-    //   75: astore_1
-    //   76: aload_1
-    //   77: ifnonnull +17 -> 94
-    //   80: aload 5
-    //   82: bipush 93
-    //   84: invokevirtual 271	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   87: invokevirtual 278	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   90: astore_1
-    //   91: goto -67 -> 24
-    //   94: aload 5
-    //   96: bipush 44
-    //   98: invokevirtual 271	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   101: bipush 32
-    //   103: invokevirtual 271	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   106: pop
-    //   107: goto -59 -> 48
-    //   110: astore_1
-    //   111: aload 4
-    //   113: invokevirtual 82	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   116: aload_1
-    //   117: athrow
+    //   17: ifnonnull +13 -> 30
+    //   20: ldc 255
+    //   22: astore_1
+    //   23: aload 4
+    //   25: invokevirtual 74	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   28: aload_1
+    //   29: areturn
+    //   30: new 257	java/lang/StringBuilder
+    //   33: dup
+    //   34: invokespecial 258	java/lang/StringBuilder:<init>	()V
+    //   37: astore 5
+    //   39: aload 5
+    //   41: bipush 91
+    //   43: invokevirtual 262	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   46: pop
+    //   47: aload_1
+    //   48: getfield 117	com/tencent/mobileqq/msf/sdk/v$d:a	Ljava/lang/Object;
+    //   51: astore_3
+    //   52: aload_3
+    //   53: astore_2
+    //   54: aload_3
+    //   55: aload_0
+    //   56: if_acmpne +7 -> 63
+    //   59: ldc_w 264
+    //   62: astore_2
+    //   63: aload 5
+    //   65: aload_2
+    //   66: invokevirtual 267	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   69: pop
+    //   70: aload_1
+    //   71: getfield 122	com/tencent/mobileqq/msf/sdk/v$d:c	Lcom/tencent/mobileqq/msf/sdk/v$d;
+    //   74: astore_1
+    //   75: aload_1
+    //   76: ifnonnull +17 -> 93
+    //   79: aload 5
+    //   81: bipush 93
+    //   83: invokevirtual 262	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   86: invokevirtual 269	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   89: astore_1
+    //   90: goto -67 -> 23
+    //   93: aload 5
+    //   95: bipush 44
+    //   97: invokevirtual 262	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   100: bipush 32
+    //   102: invokevirtual 262	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   105: pop
+    //   106: goto -59 -> 47
+    //   109: astore_1
+    //   110: aload 4
+    //   112: invokevirtual 74	java/util/concurrent/locks/ReentrantLock:unlock	()V
+    //   115: aload_1
+    //   116: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	118	0	this	v
-    //   15	76	1	localObject1	Object
-    //   110	7	1	localObject2	Object
-    //   54	13	2	localObject3	Object
-    //   52	4	3	localObject4	Object
-    //   4	108	4	localReentrantLock	ReentrantLock
-    //   38	57	5	localStringBuilder	java.lang.StringBuilder
+    //   0	117	0	this	v
+    //   15	75	1	localObject1	Object
+    //   109	7	1	localObject2	Object
+    //   53	13	2	localObject3	Object
+    //   51	4	3	localObject4	Object
+    //   4	107	4	localReentrantLock	ReentrantLock
+    //   37	57	5	localStringBuilder	java.lang.StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   11	16	110	finally
-    //   31	48	110	finally
-    //   48	53	110	finally
-    //   64	76	110	finally
-    //   80	91	110	finally
-    //   94	107	110	finally
-  }
-  
-  private abstract class a
-    implements Iterator
-  {
-    v.d a;
-    Object b;
-    private v.d d;
-    
-    /* Error */
-    a()
-    {
-      // Byte code:
-      //   0: aload_0
-      //   1: aload_1
-      //   2: putfield 19	com/tencent/mobileqq/msf/sdk/v$a:c	Lcom/tencent/mobileqq/msf/sdk/v;
-      //   5: aload_0
-      //   6: invokespecial 22	java/lang/Object:<init>	()V
-      //   9: aload_1
-      //   10: getfield 25	com/tencent/mobileqq/msf/sdk/v:c	Ljava/util/concurrent/locks/ReentrantLock;
-      //   13: astore_2
-      //   14: aload_2
-      //   15: invokevirtual 30	java/util/concurrent/locks/ReentrantLock:lock	()V
-      //   18: aload_0
-      //   19: aload_0
-      //   20: invokevirtual 33	com/tencent/mobileqq/msf/sdk/v$a:a	()Lcom/tencent/mobileqq/msf/sdk/v$d;
-      //   23: putfield 35	com/tencent/mobileqq/msf/sdk/v$a:a	Lcom/tencent/mobileqq/msf/sdk/v$d;
-      //   26: aload_0
-      //   27: getfield 35	com/tencent/mobileqq/msf/sdk/v$a:a	Lcom/tencent/mobileqq/msf/sdk/v$d;
-      //   30: ifnonnull +15 -> 45
-      //   33: aconst_null
-      //   34: astore_1
-      //   35: aload_0
-      //   36: aload_1
-      //   37: putfield 37	com/tencent/mobileqq/msf/sdk/v$a:b	Ljava/lang/Object;
-      //   40: aload_2
-      //   41: invokevirtual 40	java/util/concurrent/locks/ReentrantLock:unlock	()V
-      //   44: return
-      //   45: aload_0
-      //   46: getfield 35	com/tencent/mobileqq/msf/sdk/v$a:a	Lcom/tencent/mobileqq/msf/sdk/v$d;
-      //   49: getfield 44	com/tencent/mobileqq/msf/sdk/v$d:a	Ljava/lang/Object;
-      //   52: astore_1
-      //   53: goto -18 -> 35
-      //   56: astore_1
-      //   57: aload_2
-      //   58: invokevirtual 40	java/util/concurrent/locks/ReentrantLock:unlock	()V
-      //   61: aload_1
-      //   62: athrow
-      // Local variable table:
-      //   start	length	slot	name	signature
-      //   0	63	0	this	a
-      //   0	63	1	this$1	v
-      //   13	45	2	localReentrantLock	ReentrantLock
-      // Exception table:
-      //   from	to	target	type
-      //   18	33	56	finally
-      //   35	40	56	finally
-      //   45	53	56	finally
-    }
-    
-    private v.d b(v.d paramd)
-    {
-      for (;;)
-      {
-        v.d locald1 = a(paramd);
-        v.d locald2;
-        if (locald1 == null) {
-          locald2 = null;
-        }
-        do
-        {
-          return locald2;
-          locald2 = locald1;
-        } while (locald1.a != null);
-        if (locald1 == paramd) {
-          return a();
-        }
-        paramd = locald1;
-      }
-    }
-    
-    abstract v.d a();
-    
-    abstract v.d a(v.d paramd);
-    
-    /* Error */
-    void b()
-    {
-      // Byte code:
-      //   0: aload_0
-      //   1: getfield 19	com/tencent/mobileqq/msf/sdk/v$a:c	Lcom/tencent/mobileqq/msf/sdk/v;
-      //   4: getfield 25	com/tencent/mobileqq/msf/sdk/v:c	Ljava/util/concurrent/locks/ReentrantLock;
-      //   7: astore_2
-      //   8: aload_2
-      //   9: invokevirtual 30	java/util/concurrent/locks/ReentrantLock:lock	()V
-      //   12: aload_0
-      //   13: aload_0
-      //   14: aload_0
-      //   15: getfield 35	com/tencent/mobileqq/msf/sdk/v$a:a	Lcom/tencent/mobileqq/msf/sdk/v$d;
-      //   18: invokespecial 50	com/tencent/mobileqq/msf/sdk/v$a:b	(Lcom/tencent/mobileqq/msf/sdk/v$d;)Lcom/tencent/mobileqq/msf/sdk/v$d;
-      //   21: putfield 35	com/tencent/mobileqq/msf/sdk/v$a:a	Lcom/tencent/mobileqq/msf/sdk/v$d;
-      //   24: aload_0
-      //   25: getfield 35	com/tencent/mobileqq/msf/sdk/v$a:a	Lcom/tencent/mobileqq/msf/sdk/v$d;
-      //   28: ifnonnull +15 -> 43
-      //   31: aconst_null
-      //   32: astore_1
-      //   33: aload_0
-      //   34: aload_1
-      //   35: putfield 37	com/tencent/mobileqq/msf/sdk/v$a:b	Ljava/lang/Object;
-      //   38: aload_2
-      //   39: invokevirtual 40	java/util/concurrent/locks/ReentrantLock:unlock	()V
-      //   42: return
-      //   43: aload_0
-      //   44: getfield 35	com/tencent/mobileqq/msf/sdk/v$a:a	Lcom/tencent/mobileqq/msf/sdk/v$d;
-      //   47: getfield 44	com/tencent/mobileqq/msf/sdk/v$d:a	Ljava/lang/Object;
-      //   50: astore_1
-      //   51: goto -18 -> 33
-      //   54: astore_1
-      //   55: aload_2
-      //   56: invokevirtual 40	java/util/concurrent/locks/ReentrantLock:unlock	()V
-      //   59: aload_1
-      //   60: athrow
-      // Local variable table:
-      //   start	length	slot	name	signature
-      //   0	61	0	this	a
-      //   32	19	1	localObject1	Object
-      //   54	6	1	localObject2	Object
-      //   7	49	2	localReentrantLock	ReentrantLock
-      // Exception table:
-      //   from	to	target	type
-      //   12	31	54	finally
-      //   33	38	54	finally
-      //   43	51	54	finally
-    }
-    
-    public boolean hasNext()
-    {
-      return this.a != null;
-    }
-    
-    public Object next()
-    {
-      if (this.a == null) {
-        throw new NoSuchElementException();
-      }
-      this.d = this.a;
-      Object localObject = this.b;
-      b();
-      return localObject;
-    }
-    
-    public void remove()
-    {
-      v.d locald = this.d;
-      if (locald == null) {
-        throw new IllegalStateException();
-      }
-      this.d = null;
-      ReentrantLock localReentrantLock = v.this.c;
-      localReentrantLock.lock();
-      try
-      {
-        if (locald.a != null) {
-          v.this.a(locald);
-        }
-        return;
-      }
-      finally
-      {
-        localReentrantLock.unlock();
-      }
-    }
-  }
-  
-  private class b
-    extends v.a
-  {
-    private b()
-    {
-      super();
-    }
-    
-    v.d a()
-    {
-      return v.this.b;
-    }
-    
-    v.d a(v.d paramd)
-    {
-      return paramd.b;
-    }
-  }
-  
-  private class c
-    extends v.a
-  {
-    private c()
-    {
-      super();
-    }
-    
-    v.d a()
-    {
-      return v.this.a;
-    }
-    
-    v.d a(v.d paramd)
-    {
-      return paramd.c;
-    }
-  }
-  
-  static final class d
-  {
-    Object a;
-    d b;
-    d c;
-    
-    d(Object paramObject)
-    {
-      this.a = paramObject;
-    }
+    //   11	16	109	finally
+    //   30	47	109	finally
+    //   47	52	109	finally
+    //   63	75	109	finally
+    //   79	90	109	finally
+    //   93	106	109	finally
   }
 }
 

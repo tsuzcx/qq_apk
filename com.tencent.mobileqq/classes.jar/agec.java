@@ -1,48 +1,24 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.now.enter.ConversationNowController;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agec
-  implements Handler.Callback
+final class agec
+  implements DialogInterface.OnClickListener
 {
-  public agec(ConversationNowController paramConversationNowController) {}
+  agec(Activity paramActivity, String paramString1, String paramString2) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
+    if (paramInt == 0)
     {
-    }
-    for (;;)
-    {
-      return false;
-      QLog.d("ConversationNowController", 1, "preload eve packet list");
-      continue;
-      QLog.d("ConversationNowController", 1, "report pendant show data");
-      try
-      {
-        this.a.c();
-      }
-      catch (Exception paramMessage)
-      {
-        QLog.e("ConversationNowController", 1, "MSG_PENDANT_SHOW_REPORT, exception=", paramMessage);
-      }
-      continue;
-      QLog.d("ConversationNowController", 1, "report saved pendant show");
-      try
-      {
-        this.a.d();
-      }
-      catch (Exception paramMessage)
-      {
-        QLog.e("ConversationNowController", 1, "MSG_SAVED_PENDANT_SHOW_REPORT, exception=", paramMessage);
-      }
+      agdx.a(this.jdField_a_of_type_AndroidAppActivity, false, this.jdField_a_of_type_JavaLangString, this.b, false);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agec
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ public final class e_thumb_media_type
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.e_thumb_media_type
  * JD-Core Version:    0.7.0.1
  */

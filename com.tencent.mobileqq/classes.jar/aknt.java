@@ -1,31 +1,36 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public final class aknt
-  extends MessageObserver
+final class aknt
+  implements axrs
 {
-  public void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
+  public void a(axsp paramaxsp, axsq paramaxsq)
   {
-    if (paramStatictisInfo != null)
+    if ((paramaxsp == null) || (paramaxsq == null)) {}
+    do
     {
-      StringBuilder localStringBuilder = new StringBuilder(256);
-      localStringBuilder.append("StatictisInfo[ ");
-      localStringBuilder.append("appSeq: " + paramStatictisInfo.jdField_a_of_type_Int);
-      localStringBuilder.append("errCode: " + paramStatictisInfo.b);
-      localStringBuilder.append("retryCount: " + paramStatictisInfo.c);
-      localStringBuilder.append("detailErrorReason: " + paramStatictisInfo.jdField_a_of_type_Long);
-      localStringBuilder.append("timeoutReason: " + paramStatictisInfo.jdField_a_of_type_JavaLangString);
-      localStringBuilder.append(" ]");
-      QLog.d("RedPacketStructMsg", 1, "onNotifyResultAfterSendRich isSuccess:" + paramBoolean + "," + localStringBuilder.toString());
-      return;
-    }
-    QLog.d("RedPacketStructMsg", 1, "onNotifyResultAfterSendRich isSuccess:" + paramBoolean + ",statictisInfo == null");
+      do
+      {
+        return;
+      } while (!(paramaxsp instanceof axro));
+      paramaxsp = (axro)paramaxsp;
+      paramaxsp.jdField_a_of_type_Long += paramaxsq.c;
+      paramaxsq.c = 0L;
+      paramaxsq = "bytes=" + paramaxsp.jdField_a_of_type_Long + "-";
+      paramaxsp.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaxsq);
+      paramaxsq = paramaxsp.jdField_a_of_type_JavaLangString;
+      if (paramaxsq.contains("range="))
+      {
+        String str = paramaxsq.substring(0, paramaxsq.lastIndexOf("range="));
+        paramaxsp.jdField_a_of_type_JavaLangString = (str + "range=" + paramaxsp.jdField_a_of_type_Long);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("ArConfig_ArResourceDownload", 2, "IBreakDownFix, " + paramaxsq + ", offset=" + paramaxsp.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aknt
  * JD-Core Version:    0.7.0.1
  */

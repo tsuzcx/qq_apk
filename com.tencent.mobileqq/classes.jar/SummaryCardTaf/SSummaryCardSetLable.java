@@ -9,16 +9,16 @@ public final class SSummaryCardSetLable
   extends JceStruct
 {
   static int cache_cmd;
-  static ArrayList cache_lables;
+  static ArrayList<Long> cache_lables;
   public int cmd = 4;
-  public ArrayList lables;
+  public ArrayList<Long> lables;
   public long platform;
   public long uin;
   public String version = "5.2.0";
   
   public SSummaryCardSetLable() {}
   
-  public SSummaryCardSetLable(int paramInt, long paramLong1, String paramString, long paramLong2, ArrayList paramArrayList)
+  public SSummaryCardSetLable(int paramInt, long paramLong1, String paramString, long paramLong2, ArrayList<Long> paramArrayList)
   {
     this.cmd = paramInt;
     this.uin = paramLong1;

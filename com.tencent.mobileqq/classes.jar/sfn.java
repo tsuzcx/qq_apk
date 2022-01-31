@@ -1,27 +1,27 @@
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.mobileqq.app.MessageRoamManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.app.QQStoryContext.StoryBroadcastReceiver;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-class sfn
-  implements Runnable
+public class sfn
+  extends SimpleJob<Void>
 {
-  sfn(sfm paramsfm) {}
-  
-  public void run()
+  public sfn(QQStoryContext.StoryBroadcastReceiver paramStoryBroadcastReceiver, String paramString)
   {
-    if (this.a.a.b)
-    {
-      this.a.a.b = false;
-      MessageRoamManager localMessageRoamManager = (MessageRoamManager)this.a.a.app.getManager(91);
-      if (localMessageRoamManager != null) {
-        localMessageRoamManager.d();
-      }
-    }
+    super(paramString);
+  }
+  
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    int i = sis.a();
+    urk.d(QQStoryContext.StoryBroadcastReceiver.a(), "onReceive : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(i) });
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sfn
  * JD-Core Version:    0.7.0.1
  */

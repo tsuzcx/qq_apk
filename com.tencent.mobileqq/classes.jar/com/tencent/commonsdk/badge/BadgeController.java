@@ -12,7 +12,7 @@ import android.os.Bundle;
 
 public final class BadgeController
 {
-  private static final String[] LAUNCHER_WHITE_LIST = { "com.tct.launcher", "com.bbk.studyos.launcher", "com.android.launcher3", "com.gionee.amisystem" };
+  private static final String[] LAUNCHER_WHITE_LIST = { "com.tct.launcher", "com.bbk.studyos.launcher", "com.android.launcher3", "com.gionee.amisystem", "com.oppo.launcher", "com.ape.launcher3" };
   private static final String TAG = "BadgeUtils";
   private static Context sApplication;
   private static String sCurBadgeProviderAuthorities;
@@ -46,9 +46,9 @@ public final class BadgeController
   
   public static void init(Context paramContext)
   {
+    int k = 0;
     sApplication = paramContext.getApplicationContext();
     paramContext = getCurLauncherPackageName();
-    int k = 0;
     String[] arrayOfString = LAUNCHER_WHITE_LIST;
     int m = arrayOfString.length;
     int i = 0;
@@ -103,24 +103,26 @@ public final class BadgeController
   
   public static boolean setBadge(int paramInt)
   {
-    if (!sResumed) {}
-    boolean bool;
-    for (sNextCount = Integer.valueOf(paramInt);; sNextCount = null)
+    if (!sResumed)
     {
-      bool = false;
+      sNextCount = Integer.valueOf(paramInt);
       if (sCurBadgeProviderAuthorities != null) {
-        break;
+        break label28;
       }
+    }
+    label28:
+    Object localObject;
+    do
+    {
       return false;
-    }
-    Object localObject = Uri.parse("content://" + sCurBadgeProviderAuthorities + "/badge");
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("count", paramInt);
-    localObject = sApplication.getContentResolver().call((Uri)localObject, "setBadge", "", localBundle);
-    if (localObject != null) {
-      bool = ((Bundle)localObject).getBoolean("result");
-    }
-    return bool;
+      sNextCount = null;
+      break;
+      localObject = Uri.parse("content://" + sCurBadgeProviderAuthorities + "/badge");
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("count", paramInt);
+      localObject = sApplication.getContentResolver().call((Uri)localObject, "setBadge", "", localBundle);
+    } while (localObject == null);
+    return ((Bundle)localObject).getBoolean("result");
   }
 }
 

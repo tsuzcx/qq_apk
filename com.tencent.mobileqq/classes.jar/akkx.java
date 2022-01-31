@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.utils.NewUpgradeDialog;
-import com.tencent.mobileqq.utils.NewUpgradeDialog.YYBDownloadListener;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
 
 public class akkx
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public akkx(NewUpgradeDialog.YYBDownloadListener paramYYBDownloadListener, DownloadInfo paramDownloadInfo) {}
+  public akkx(ARVideoRecordButtonView paramARVideoRecordButtonView) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsNewUpgradeDialog$YYBDownloadListener.a.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.a());
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    ARVideoRecordButtonView.b(this.a, paramValueAnimator.floatValue());
+    ARVideoRecordButtonView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akkx
  * JD-Core Version:    0.7.0.1
  */

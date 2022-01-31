@@ -1,37 +1,23 @@
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
-import mqq.manager.TicketManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArAwardInfo;
 
 public final class akwc
-  implements Runnable
+  implements Parcelable.Creator<ArAwardInfo>
 {
-  public void run()
+  public ArAwardInfo a(Parcel paramParcel)
   {
-    if (SwiftBrowserCookieMonster.a == null) {
-      synchronized (SwiftBrowserCookieMonster.a())
-      {
-        if (SwiftBrowserCookieMonster.a == null)
-        {
-          Object localObject1 = MobileQQ.sMobileQQ.waitAppRuntime(null);
-          if (localObject1 != null)
-          {
-            localObject1 = (TicketManager)((AppRuntime)localObject1).getManager(2);
-            if (localObject1 != null)
-            {
-              SwiftBrowserCookieMonster.a = new akwd();
-              ((TicketManager)localObject1).registTicketManagerListener(SwiftBrowserCookieMonster.a);
-            }
-          }
-        }
-        return;
-      }
-    }
+    return new ArAwardInfo(paramParcel);
+  }
+  
+  public ArAwardInfo[] a(int paramInt)
+  {
+    return new ArAwardInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akwc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,56 @@
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.Drawable;
-import android.widget.TextView;
-import com.tencent.mobileqq.trooponline.TroopOnlineMemberBar;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class akeb
-  implements Runnable
+class akeb
+  implements View.OnClickListener
 {
-  public akeb(TroopOnlineMemberBar paramTroopOnlineMemberBar) {}
+  akeb(akdz paramakdz) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (TroopOnlineMemberBar.a(this.a) != 0)
+    try
     {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      if ((TroopOnlineMemberBar.a(this.a) != 2) && (NetworkUtil.g(this.a.jdField_a_of_type_AndroidContentContext))) {
-        break label118;
+      awqx.b(null, "dc00898", "", "", "0X8009ACC", "0X8009ACC", 0, 0, "", "", "", "");
+      if (akdt.a != null) {
+        akdz.a(this.a).startActivity(akdt.a);
       }
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131429901);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-      if ((this.a.jdField_a_of_type_AndroidGraphicsDrawableAnimatable != null) && (this.a.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.isRunning())) {
-        this.a.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.stop();
+      for (;;)
+      {
+        this.a.dismiss();
+        return;
+        if (akdz.a(this.a) == null) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(akdz.a(), 2, "init MsgNotifyPushDialog.initPushOpeNotifyConfig");
+        }
+        akdt.a(akdz.a(this.a));
+        akdz.a(this.a).startActivity(akdt.a);
       }
-      TroopOnlineMemberBar.a(this.a, 2);
     }
-    label118:
-    while (TroopOnlineMemberBar.a(this.a) != 1) {
-      return;
+    catch (Exception paramView)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel())
+        {
+          QLog.d(akdz.a(), 2, "Start Activity Failed");
+          akdz.a(this.a).startActivity(badh.c(akdz.a(this.a)));
+          continue;
+          if (QLog.isColorLevel()) {
+            QLog.d(akdz.a(), 2, "mAppInterface=null, use default intent");
+          }
+          akdz.a(this.a).startActivity(badh.a(akdz.a(this.a)));
+        }
+      }
     }
-    if (this.a.jdField_a_of_type_AndroidGraphicsDrawableAnimatable == null) {
-      this.a.jdField_a_of_type_AndroidGraphicsDrawableAnimatable = ((Animatable)this.a.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838602));
-    }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(null);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds((Drawable)this.a.jdField_a_of_type_AndroidGraphicsDrawableAnimatable, null, null, null);
-    this.a.jdField_a_of_type_AndroidGraphicsDrawableAnimatable.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akeb
  * JD-Core Version:    0.7.0.1
  */

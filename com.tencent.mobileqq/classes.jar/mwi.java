@@ -1,13 +1,30 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
-class mwi
-  implements Runnable
+public class mwi
+  implements begw
 {
-  mwi(mwc parammwc) {}
+  public mwi(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    SubscriptFeedsActivity.b(this.a.a, true);
+    if (this.a.o) {
+      return;
+    }
+    this.a.o = true;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.a.a.dismiss();
+      return;
+      this.a.q();
+      continue;
+      this.a.E();
+      continue;
+      this.a.G();
+    }
   }
 }
 

@@ -1,19 +1,30 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class sxv
-  implements Runnable
+  extends sfo
 {
-  public sxv(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity, String paramString, int paramInt) {}
+  private tcc a;
+  public boolean a;
   
-  public void run()
+  public sxv(ErrorMessage paramErrorMessage)
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.app, "dc00898", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+  }
+  
+  public sxv(boolean paramBoolean)
+  {
+    this(new ErrorMessage());
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public tcc a()
+  {
+    return this.jdField_a_of_type_Tcc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sxv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package cooperation.qzone.report.lp;
 
-import cooperation.qzone.QUA;
+import bfpk;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,10 +18,10 @@ public class LpreportInfo_dc02910
     return String.format("dc02910 traceinfo:%s ,index:%d,operType:%d operTime:%d", new Object[] { this.traceInfo, Integer.valueOf(this.index), Integer.valueOf(this.operType), Integer.valueOf(this.operTimes) });
   }
   
-  public Map toMap()
+  public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("qua", QUA.a());
+    localHashMap.put("qua", bfpk.a());
     localHashMap.put("uin", String.valueOf(this.uin));
     localHashMap.put("traceinfo", String.valueOf(this.traceInfo));
     localHashMap.put("idx", String.valueOf(this.index));

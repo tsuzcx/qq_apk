@@ -1,46 +1,31 @@
-import android.content.SharedPreferences;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.List;
-import mqq.app.MobileQQ;
+import android.view.GestureDetector;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.gdtad.views.canvas.components.picture.GdtCanvasPictureComponentData;
+import com.tencent.gdtad.views.canvas.components.pictures.GdtCanvasMultiPictureComponentView;
 
-public final class yqh
-  implements Runnable
+public class yqh
+  implements View.OnTouchListener
 {
-  public yqh(AppInterface paramAppInterface) {}
+  private GestureDetector.OnGestureListener jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener = new yqi(this);
+  private final GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener);
+  private GdtCanvasPictureComponentData jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsPictureGdtCanvasPictureComponentData;
   
-  public void run()
+  public yqh(GdtCanvasMultiPictureComponentView paramGdtCanvasMultiPictureComponentView, GdtCanvasPictureComponentData paramGdtCanvasPictureComponentData)
   {
-    if (this.a != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloManager", 2, "[checkJsonParse]");
-      }
-      Object localObject = (ApolloDaoManager)this.a.getManager(154);
-      ApolloManager localApolloManager = (ApolloManager)this.a.getManager(152);
-      List localList = ((ApolloDaoManager)localObject).a();
-      boolean bool = this.a.getApplication().getSharedPreferences("apollo_sp", 0).getBoolean("7.6.8" + this.a.getCurrentAccountUin(), false);
-      if ((localList == null) || (localList.size() == 0) || (!bool))
-      {
-        localApolloManager.b();
-        QLog.d("ApolloManager", 1, "[checkJsonParse] parse action json");
-      }
-      localObject = ((ApolloDaoManager)localObject).f();
-      if (((localObject == null) || (((List)localObject).size() == 0)) && (new File(ApolloUtil.b).exists()))
-      {
-        localApolloManager.c();
-        QLog.d("ApolloManager", 1, "[checkJsonParse] parse game json");
-      }
-    }
+    this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsPictureGdtCanvasPictureComponentData = paramGdtCanvasPictureComponentData;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    return this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yqh
  * JD-Core Version:    0.7.0.1
  */

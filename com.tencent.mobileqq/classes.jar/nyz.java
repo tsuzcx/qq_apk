@@ -1,25 +1,18 @@
-import com.tencent.biz.qqstory.channel.CmdTaskManger;
-import com.tencent.biz.qqstory.network.request.GetFeedCommentRequest;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment;
-import com.tencent.biz.qqstory.storyHome.model.FeedCommentSync;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.parallel.ParallelJobSegment;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class nyz
-  extends ParallelJobSegment
+  implements ViewBase.IBuilder
 {
-  public nyz(DetailFeedAllInfoPullSegment paramDetailFeedAllInfoPullSegment) {}
-  
-  protected void a(JobContext paramJobContext, FeedCommentSync paramFeedCommentSync)
+  public ViewBase build(VafContext paramVafContext)
   {
-    GetFeedCommentRequest localGetFeedCommentRequest = new GetFeedCommentRequest();
-    localGetFeedCommentRequest.a = paramFeedCommentSync;
-    CmdTaskManger.a().a(localGetFeedCommentRequest, new nza(this, paramJobContext, paramFeedCommentSync));
+    return new nyy(paramVafContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nyz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,25 @@
-import java.nio.ByteBuffer;
+import com.tencent.mobileqq.app.FrameFragment;
+import com.tencent.mobileqq.widget.QQTabHost;
 
 public class ajik
+  implements bbmw
 {
-  public final long a;
-  public final long b;
-  public final long c;
-  public final long d;
+  public ajik(FrameFragment paramFrameFragment) {}
   
-  public ajik(long paramLong)
+  public void a(int paramInt1, int paramInt2, QQTabHost paramQQTabHost)
   {
-    this.a = 2882377846L;
-    this.b = 1007L;
-    this.c = 0L;
-    this.d = paramLong;
-  }
-  
-  public ajik(ByteBuffer paramByteBuffer)
-  {
-    this.a = (paramByteBuffer.getInt() & 0xFFFFFFFF);
-    this.b = (paramByteBuffer.getInt() & 0xFFFFFFFF);
-    this.c = (paramByteBuffer.getInt() & 0xFFFFFFFF);
-    this.d = (paramByteBuffer.getInt() & 0xFFFFFFFF);
-  }
-  
-  public void a(ByteBuffer paramByteBuffer)
-  {
-    paramByteBuffer.putInt((int)(this.a & 0xFFFFFFFF));
-    paramByteBuffer.putInt((int)(this.b & 0xFFFFFFFF));
-    paramByteBuffer.putInt((int)(this.c & 0xFFFFFFFF));
-    paramByteBuffer.putInt((int)(this.d & 0xFFFFFFFF));
+    if (paramInt1 == paramInt2)
+    {
+      paramQQTabHost = this.a.b();
+      if (paramQQTabHost != null) {
+        paramQQTabHost.d();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajik
  * JD-Core Version:    0.7.0.1
  */

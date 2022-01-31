@@ -1,22 +1,31 @@
-import com.tencent.mobileqq.ar.ARNativeBridge;
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
-import com.tencent.mobileqq.armap.sensor.rotation.Vector3;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.ChatFragment;
 
 public class aagq
-  implements Runnable
 {
-  public aagq(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable, Vector3 paramVector3) {}
+  public aagq(ChatFragment paramChatFragment) {}
   
-  public void run()
+  public void a()
   {
-    if (ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable) != null) {
-      ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable).native_updateBallTanslateFromXYZ(this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationVector3.x, this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationVector3.y, this.jdField_a_of_type_ComTencentMobileqqArmapSensorRotationVector3.z);
+    if ((ChatFragment.b()) && (this.a.jdField_a_of_type_Boolean))
+    {
+      baio.b("AIO_Start_cost", null);
+      baio.a("AIO_onDrawView", "AIO_SysMsgCost");
+      ChatFragment.a(this.a);
+      if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getIntExtra("uintype", -1) == 1008)
+      {
+        String str = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("uin");
+        badx.a("pubAcc_aio_open", null, str);
+        badx.a("pubAcc_structMsg_display", null, str);
+      }
+      ChatFragment.a(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aagq
  * JD-Core Version:    0.7.0.1
  */

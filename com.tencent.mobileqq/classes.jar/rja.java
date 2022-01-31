@@ -1,88 +1,254 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.squareup.okhttp.Call;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request.Builder;
-import com.squareup.okhttp.Response;
-import com.squareup.okhttp.ResponseBody;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAppInfoHelper;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeSummaryView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BiuCommentInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import mqq.app.AppRuntime;
-import mqq.manager.TicketManager;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
 
 public class rja
-  implements Runnable
 {
-  public rja(DefaultDoraemonAppInfoHelper paramDefaultDoraemonAppInfoHelper) {}
-  
-  public void run()
+  static CharSequence a(BaseArticleInfo paramBaseArticleInfo, oqi paramoqi)
   {
-    Object localObject7;
-    long l1;
-    long l2;
-    try
+    if (paramBaseArticleInfo == null) {
+      return "";
+    }
+    SocializeFeedsInfo localSocializeFeedsInfo;
+    int i;
+    if ((paramBaseArticleInfo != null) && (paramBaseArticleInfo.mSocialFeedInfo != null))
     {
-      ??? = "https://cgi.connect.qq.com/mqqapi/privilege_group_config?platform=1&platform_version=7.6.8&data_version=" + this.a.b;
-      localObject7 = BaseApplicationImpl.getApplication().getRuntime();
-      if (localObject7 == null)
+      localSocializeFeedsInfo = paramBaseArticleInfo.mSocialFeedInfo;
+      if ((localSocializeFeedsInfo.jdField_a_of_type_Pqm != null) && (localSocializeFeedsInfo.jdField_a_of_type_Pqm.a != null) && (localSocializeFeedsInfo.jdField_a_of_type_Pqm.a.size() > 0) && ((localSocializeFeedsInfo.jdField_a_of_type_Pqm.a.size() != 1) || ((!TextUtils.isEmpty(((SocializeFeedsInfo.BiuCommentInfo)localSocializeFeedsInfo.jdField_a_of_type_Pqm.a.get(0)).jdField_a_of_type_JavaLangString)) && (!TextUtils.equals(((SocializeFeedsInfo.BiuCommentInfo)localSocializeFeedsInfo.jdField_a_of_type_Pqm.a.get(0)).jdField_a_of_type_JavaLangString, ":")) && (!TextUtils.equals(((SocializeFeedsInfo.BiuCommentInfo)localSocializeFeedsInfo.jdField_a_of_type_Pqm.a.get(0)).jdField_a_of_type_JavaLangString, "：")))))
       {
-        QLog.e("DoraemonOpenAPI.permissionHelper", 1, "app is null");
-        return;
+        SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+        paramoqi = localSocializeFeedsInfo.jdField_a_of_type_Pqm.a((ArticleInfo)paramBaseArticleInfo, "5", paramoqi);
+        if (!TextUtils.isEmpty(paramoqi)) {
+          localSpannableStringBuilder.append(paramoqi);
+        }
+        i = 1;
+        paramoqi = localSpannableStringBuilder;
       }
-      Object localObject4 = (TicketManager)((AppRuntime)localObject7).getManager(2);
-      localObject7 = ((AppRuntime)localObject7).getAccount();
-      localObject4 = ((TicketManager)localObject4).getSkey((String)localObject7);
-      ??? = new JSONObject(new OkHttpClient().newCall(new Request.Builder().addHeader("Cookie", "uin=" + (String)localObject7 + ";skey=" + (String)localObject4).url((String)???).build()).execute().body().string());
-      int i = ((JSONObject)???).getInt("retcode");
-      QLog.i("DoraemonOpenAPI.permissionHelper", 1, "checkup code=" + i);
-      if (i != 0) {
-        return;
-      }
-      ??? = ((JSONObject)???).getJSONObject("result");
-      l1 = ((JSONObject)???).getLong("version");
-      l2 = ((JSONObject)???).getLong("next_req_duration") * 1000L;
-      if (this.a.b == l1)
+    }
+    for (;;)
+    {
+      QLog.d("Utils", 2, "makeBiuComment: " + paramBaseArticleInfo.rawkey + " ssb: " + paramoqi + " condition flag: " + i);
+      return paramoqi;
+      if (!TextUtils.isEmpty(localSocializeFeedsInfo.jdField_a_of_type_JavaLangString))
       {
-        QLog.i("DoraemonOpenAPI.permissionHelper", 1, "no update, next=" + l2 + ", ver=" + l1);
-        synchronized (this.a.jdField_a_of_type_JavaLangObject)
-        {
-          this.a.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() + Math.max(300000L, l2));
-          return;
+        if (localSocializeFeedsInfo.jdField_a_of_type_JavaLangString.length() >= 100) {
+          localSocializeFeedsInfo.jdField_a_of_type_JavaLangString = (localSocializeFeedsInfo.jdField_a_of_type_JavaLangString.substring(0, 99) + '…');
+        }
+        paramoqi = localSocializeFeedsInfo.jdField_a_of_type_JavaLangString;
+        i = 1;
+      }
+      else
+      {
+        i = 0;
+        paramoqi = "";
+      }
+    }
+  }
+  
+  public static opw a(ArticleInfo paramArticleInfo)
+  {
+    return new oqh(null, paramArticleInfo, qoe.c(paramArticleInfo), (int)paramArticleInfo.mChannelID, 0, 0, false, 0, null, null);
+  }
+  
+  static CharSequence b(BaseArticleInfo paramBaseArticleInfo, oqi paramoqi)
+  {
+    int i1 = 0;
+    int n = 0;
+    Object localObject3 = (ArticleInfo)paramBaseArticleInfo;
+    if (localObject3 == null) {
+      return "";
+    }
+    Object localObject2 = "";
+    int j;
+    int k;
+    int m;
+    Object localObject1;
+    switch (qoe.c((ArticleInfo)localObject3))
+    {
+    default: 
+      j = 0;
+      k = 0;
+      m = 0;
+      i = n;
+      localObject1 = localObject2;
+      if (paramBaseArticleInfo.mSocialFeedInfo != null)
+      {
+        if (!paramBaseArticleInfo.isPGCShortContent()) {
+          break label329;
+        }
+        i = 9;
+        if ((localObject3 != null) && (((ArticleInfo)localObject3).mSocialFeedInfo != null) && (((ArticleInfo)localObject3).mSocialFeedInfo.jdField_a_of_type_Pqz != null) && (!TextUtils.isEmpty(((ArticleInfo)localObject3).mSocialFeedInfo.jdField_a_of_type_Pqz.jdField_a_of_type_JavaLangString))) {
+          localObject1 = ((ArticleInfo)localObject3).mSocialFeedInfo.jdField_a_of_type_Pqz.jdField_a_of_type_JavaLangString;
         }
       }
-      localJSONObject = localThrowable.getJSONObject("list");
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("DoraemonOpenAPI.permissionHelper", 1, "checkup error", localThrowable);
-      return;
-    }
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      JSONObject localJSONObject;
-      this.a.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() + Math.max(300000L, l2));
-      this.a.b = l1;
-      localObject7 = localJSONObject.toString();
-      if (QLog.isColorLevel()) {
-        QLog.d("DoraemonOpenAPI.permissionHelper", 2, "checkup, next=" + l2 + ", ver=" + l1 + ", list=" + (String)localObject7);
-      }
-      synchronized (this.a)
+      else
       {
-        this.a.jdField_a_of_type_OrgJsonJSONObject = localJSONObject;
-        this.a.jdField_a_of_type_JavaUtilMap.clear();
-        BaseApplicationImpl.getApplication().getSharedPreferences("DoraemonApiGroup.json", 4).edit().putString("content", (String)localObject7).putLong("version", l1).apply();
-        return;
+        label222:
+        QLog.d("Utils", 2, "makeNonBiuComment: " + paramBaseArticleInfo.rawkey + " ssb: " + localObject1 + " condition flag: " + i);
+        return localObject1;
+      }
+      break;
+    }
+    for (int i = 1;; i = 0)
+    {
+      k = 0;
+      j = 1;
+      m = i;
+      break;
+      j = 0;
+      k = 1;
+      m = 0;
+      break;
+      if ((localObject3 != null) && (!TextUtils.isEmpty(((ArticleInfo)localObject3).mTitle)))
+      {
+        localObject1 = ((ArticleInfo)localObject3).mTitle;
+        break label222;
+      }
+      localObject1 = "";
+      break label222;
+      label329:
+      if (k != 0)
+      {
+        localObject1 = ((ArticleInfo)localObject3).mTitle;
+        i = 1;
+        break label222;
+      }
+      if ((qoe.a((ArticleInfo)localObject3)) || (qoe.c((BaseArticleInfo)localObject3)) || (qoe.h((ArticleInfo)localObject3)))
+      {
+        if (m != 0)
+        {
+          localObject1 = new SpannableStringBuilder();
+          if ((((ArticleInfo)localObject3).mSocialFeedInfo != null) && (((ArticleInfo)localObject3).mSocialFeedInfo.jdField_a_of_type_Pqz != null) && (((ArticleInfo)localObject3).mSocialFeedInfo.jdField_a_of_type_Pqz.jdField_a_of_type_JavaLangString != null))
+          {
+            ((SpannableStringBuilder)localObject1).append(((ArticleInfo)localObject3).mSocialFeedInfo.jdField_a_of_type_Pqz.jdField_a_of_type_JavaLangString);
+            if (QLog.isColorLevel()) {
+              QLog.d("Q.readinjoy.ui", 2, "Comment String: " + ((ArticleInfo)localObject3).mSocialFeedInfo.jdField_a_of_type_Pqz.jdField_a_of_type_JavaLangString);
+            }
+          }
+          for (;;)
+          {
+            i = 2;
+            break;
+            if (((ArticleInfo)localObject3).mTitle != null) {
+              ((SpannableStringBuilder)localObject1).append(((ArticleInfo)localObject3).mTitle);
+            }
+          }
+        }
+        if (j != 0)
+        {
+          if (!TextUtils.isEmpty(((ArticleInfo)localObject3).mTitle)) {}
+          for (paramoqi = ((ArticleInfo)localObject3).mTitle;; paramoqi = ((ArticleInfo)localObject3).mSummary)
+          {
+            i = 3;
+            localObject1 = paramoqi;
+            break;
+          }
+        }
+        if (qoe.c((BaseArticleInfo)localObject3))
+        {
+          localObject1 = new StringBuilder(ajjy.a(2131650238));
+          if (!qoe.f(paramBaseArticleInfo))
+          {
+            localObject2 = (prx)paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_Prv.a.get(0);
+            localObject3 = ((StringBuilder)localObject1).append("“");
+            if (!TextUtils.isEmpty(((prx)localObject2).c)) {
+              break label650;
+            }
+            paramoqi = "";
+            label611:
+            localObject3 = ((StringBuilder)localObject3).append(paramoqi);
+            if (!TextUtils.isEmpty(((prx)localObject2).jdField_a_of_type_JavaLangString)) {
+              break label659;
+            }
+          }
+          label650:
+          label659:
+          for (paramoqi = "";; paramoqi = ((prx)localObject2).jdField_a_of_type_JavaLangString)
+          {
+            ((StringBuilder)localObject3).append(paramoqi).append("”");
+            i = 4;
+            break;
+            paramoqi = ((prx)localObject2).c;
+            break label611;
+          }
+        }
+        localObject1 = ((ArticleInfo)localObject3).mSummary;
+        i = 5;
+        break label222;
+      }
+      i = n;
+      localObject1 = localObject2;
+      if (((ArticleInfo)localObject3).mSocialFeedInfo.jdField_a_of_type_Pre == null) {
+        break label222;
+      }
+      pre localpre = ((ArticleInfo)localObject3).mSocialFeedInfo.jdField_a_of_type_Pre;
+      if (obz.a(localpre))
+      {
+        localObject1 = localpre.jdField_a_of_type_Pqm.a((ArticleInfo)localObject3, "3", paramoqi);
+        i = 6;
+        break label222;
+      }
+      if ((pjg.c((ArticleInfo)localObject3)) && (!qoe.q((ArticleInfo)localObject3)))
+      {
+        localObject2 = ((prg)((ArticleInfo)localObject3).mSocialFeedInfo.jdField_a_of_type_Pre.b.get(0)).e;
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          break label890;
+        }
+        localObject1 = obj.a((String)localObject2);
+        paramoqi = (oqi)localObject1;
+        if (TextUtils.equals((CharSequence)localObject1, (CharSequence)localObject2)) {
+          paramoqi = awbk.b((String)localObject2);
+        }
+        paramoqi = new axkd(paramoqi, 7, 16);
+      }
+      for (i = 7;; i = i1)
+      {
+        localObject1 = paramoqi;
+        break;
+        i = n;
+        localObject1 = localObject2;
+        if (TextUtils.isEmpty(localpre.jdField_a_of_type_JavaLangString)) {
+          break;
+        }
+        paramoqi = null;
+        try
+        {
+          localObject1 = awbk.b(localpre.jdField_a_of_type_JavaLangString);
+          paramoqi = (oqi)localObject1;
+        }
+        catch (Exception localException)
+        {
+          label865:
+          break label865;
+        }
+        localObject1 = new axkd(paramoqi, 7, 16);
+        i = 8;
+        break;
+        label890:
+        paramoqi = "";
       }
     }
+  }
+  
+  public static CharSequence c(BaseArticleInfo paramBaseArticleInfo, oqi paramoqi)
+  {
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    paramBaseArticleInfo = a((ArticleInfo)paramBaseArticleInfo);
+    NativeSummaryView.a(paramBaseArticleInfo, localSpannableStringBuilder, paramoqi);
+    NativeSummaryView.b(paramBaseArticleInfo, localSpannableStringBuilder, paramoqi);
+    return localSpannableStringBuilder;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rja
  * JD-Core Version:    0.7.0.1
  */

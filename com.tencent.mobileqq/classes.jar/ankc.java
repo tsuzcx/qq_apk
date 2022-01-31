@@ -1,22 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-
-public final class ankc
-  implements DialogInterface.OnClickListener
+public abstract interface ankc
 {
-  public ankc(QQCustomDialog paramQQCustomDialog) {}
+  public abstract boolean a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (this.a.isShowing()) {
-      this.a.dismiss();
-    }
-  }
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ankc
  * JD-Core Version:    0.7.0.1
  */

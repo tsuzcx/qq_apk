@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.ar.ArConfigService;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class aajf
-  implements Runnable
+public abstract interface aajf
 {
-  aajf(aaje paramaaje, ArConfigService paramArConfigService, int paramInt) {}
+  public abstract void a();
   
-  public void run()
-  {
-    ArConfigService.a(this.jdField_a_of_type_ComTencentMobileqqArArConfigService, this.jdField_a_of_type_Int);
-  }
+  public abstract void a(adyb paramadyb);
+  
+  public abstract void a(ChatMessage paramChatMessage);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(adyb paramadyb);
+  
+  public abstract void b(ChatMessage paramChatMessage);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aajf
  * JD-Core Version:    0.7.0.1
  */

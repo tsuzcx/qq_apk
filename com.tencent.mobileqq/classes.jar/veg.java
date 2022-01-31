@@ -1,32 +1,45 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.data.FlowMusic;
+import com.tencent.qphone.base.util.QLog;
 
 class veg
-  implements ActionSheet.OnButtonClickListener
+  implements bhgl
 {
-  veg(vec paramvec, ActionSheet paramActionSheet) {}
+  veg(vee paramvee) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    switch (paramInt)
+    String str = vee.a(this.a).getResources().getString(2131632582);
+    Object localObject = str;
+    if (paramBoolean)
     {
-    default: 
-      return;
+      paramObject = (FlowMusic)paramObject;
+      if (QLog.isColorLevel()) {
+        QLog.d("MusicCache", 2, "onGetSingleMusicInfo flowMusic:" + paramObject.toString());
+      }
+      if ((paramObject.playable == 1) && (!TextUtils.isEmpty(paramObject.url)))
+      {
+        localObject = new ver();
+        ((ver)localObject).jdField_b_of_type_JavaLangString = paramObject.songName;
+        ((ver)localObject).d = paramObject.url;
+        ((ver)localObject).jdField_b_of_type_Int = 2;
+        ((ver)localObject).a = String.valueOf(paramObject.songId);
+        this.a.a(12, localObject);
+        return;
+      }
+      localObject = str;
+      if (paramObject.playable != 1) {
+        localObject = vee.a(this.a).getResources().getString(2131632583);
+      }
     }
-    ChatActivityUtils.a(this.jdField_a_of_type_Vec.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_Vec.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Vec.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Vec.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, true, true, null, null);
-    ReportController.b(this.jdField_a_of_type_Vec.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005976", "0X8005976", 0, 0, "", "", "", "");
+    this.a.a(7, localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     veg
  * JD-Core Version:    0.7.0.1
  */

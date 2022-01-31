@@ -1,19 +1,20 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
 
-public class adzg
-  implements Runnable
+class adzg
+  implements View.OnClickListener
 {
-  public adzg(HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder, String paramString) {}
+  adzg(adzf paramadzf, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.c.setText(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Adzf.a.a(paramView, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adzg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,26 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.model.ISearchResultModel;
-import com.tencent.mobileqq.search.presenter.ContactSearchResultMobilePresenter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.widget.GridView;
 
 public class ahyv
-  implements View.OnClickListener
 {
-  public ahyv(ContactSearchResultMobilePresenter paramContactSearchResultMobilePresenter, ISearchResultModel paramISearchResultModel) {}
+  public int a;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  GridView jdField_a_of_type_ComTencentWidgetGridView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
+  TextView d;
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel.a(paramView);
-  }
+  public ahyv(ahyo paramahyo) {}
 }
 
 

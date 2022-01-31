@@ -1,27 +1,35 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.troop.feeds.TroopNewGuidePopWindow;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
 public class pck
-  extends Handler
+  implements ViewFactory.FoundClickableViewListener
 {
-  public pck(TroopNewGuidePopWindow paramTroopNewGuidePopWindow) {}
+  pck(pcj parampcj, int paramInt, TemplateBean paramTemplateBean) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onFound(ViewBase paramViewBase)
   {
-    switch (paramMessage.what)
+    if (pcj.a(this.jdField_a_of_type_Pcj) != null)
+    {
+      paramViewBase.setOnClickListener(new pcl(this));
+      return;
+    }
+    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
     {
     default: 
       return;
+    case 1038: 
+      paramViewBase.setOnClickListener(new pco(this));
+      return;
+    case 1116: 
+      paramViewBase.setOnClickListener(new pcm(this));
+      return;
+    case 1040: 
+      paramViewBase.setOnClickListener(new pcn(this));
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopTipsPopWindow", 2, "MSG_SHOW_WINDOW mTroopNotify = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify + ", mTroopNotifyAd = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotifyAd);
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotifyAd != null) {
-      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotifyAd);
-    }
-    this.a.a();
+    paramViewBase.setOnClickListener(new pcp(this));
   }
 }
 

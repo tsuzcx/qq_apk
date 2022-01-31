@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202cb" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.PinnedDividerListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e68" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" />
-    <com.tencent.mobileqq.widget.IndexView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e4b" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0206d7" android:paddingLeft="8.0dip" android:paddingTop="8.0dip" android:paddingRight="10.0dip" android:paddingBottom="8.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="5.0dip" android:layout_marginBottom="5.0dip" android:layout_alignParentRight="true" />
-</RelativeLayout>

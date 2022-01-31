@@ -1,24 +1,25 @@
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import com.tencent.image.URLImageView;
 
 class xda
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  xda(xcz paramxcz) {}
+  xda(xcv paramxcv, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.b != null)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.b.setChecked(this.a.jdField_a_of_type_Boolean);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.F = this.a.jdField_a_of_type_Boolean;
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.e();
-    }
+    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xda
  * JD-Core Version:    0.7.0.1
  */

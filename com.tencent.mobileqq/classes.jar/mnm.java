@@ -1,31 +1,99 @@
-import android.annotation.SuppressLint;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
+import android.os.Bundle;
 
 public class mnm
-  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public mnm(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
+  wis a;
   
-  @SuppressLint({"NewApi"})
-  public void onGlobalLayout()
+  public mnm(wis paramwis)
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
-    for (;;)
+    this.a = paramwis;
+  }
+  
+  public void a()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(mnn.a, 2);
+    this.a.a(8, localBundle);
+  }
+  
+  public void a(int paramInt)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(mnn.a, 5);
+    localBundle.putInt("mode", paramInt);
+    this.a.a(8, localBundle);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (paramBundle == null) {}
+    wiu localwiu;
+    do
     {
-      ReadinjoySlidingIndicator.a(this.a, ReadinjoySlidingIndicator.a(this.a));
-      View localView = ReadinjoySlidingIndicator.a(this.a).getChildAt(ReadinjoySlidingIndicator.a(this.a));
-      ReadinjoySlidingIndicator.a(this.a, localView.getLeft());
-      this.a.invalidate();
+      int i;
+      do
+      {
+        return;
+        i = paramBundle.getInt("seq", -1);
+      } while (i == -1);
+      localwiu = this.a.a(i);
+    } while (localwiu == null);
+    localwiu.a(paramBundle);
+  }
+  
+  public void a(String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(mnn.a, 1);
+    localBundle.putString("music", paramString);
+    this.a.a(8, localBundle);
+  }
+  
+  public void a(wiu paramwiu)
+  {
+    if (paramwiu == null) {
       return;
-      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(mnn.a, 4);
+    localBundle.putInt("seq", this.a.a(paramwiu));
+    this.a.a(8, localBundle);
+  }
+  
+  public void b()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(mnn.a, 3);
+    this.a.a(8, localBundle);
+  }
+  
+  public void b(wiu paramwiu)
+  {
+    if (paramwiu == null) {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(mnn.a, 6);
+    localBundle.putInt("seq", this.a.a(paramwiu));
+    this.a.a(8, localBundle);
+  }
+  
+  public void c()
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(mnn.a, 8);
+    this.a.a(8, localBundle);
+  }
+  
+  public void c(wiu paramwiu)
+  {
+    if (paramwiu == null) {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt(mnn.a, 7);
+    localBundle.putInt("seq", this.a.a(paramwiu));
+    this.a.a(8, localBundle);
   }
 }
 

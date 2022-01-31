@@ -1,111 +1,106 @@
-import com.tencent.mobileqq.magicface.magicfaceaction.Action;
-import com.tencent.mobileqq.magicface.magicfaceaction.MagicfaceActionDecoder;
-import com.tencent.mobileqq.magicface.model.MagicfaceResLoader;
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.stickerrecommended.BloomFilter;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import java.io.File;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class aemk
-  implements Runnable
+class aemk
+  implements axrt
 {
-  public aemk(MagicfaceActionManager paramMagicfaceActionManager, int paramInt1, int paramInt2) {}
+  aemk(aemi paramaemi, String paramString1, boolean paramBoolean, String paramString2) {}
   
-  public void run()
+  public void onResp(axsq paramaxsq)
   {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.i("StickerRecManager", 2, "onResp resultcode: " + paramaxsq.c + " threadid=" + Thread.currentThread().getId());
+    }
+    long l1;
+    if ((paramaxsq.c == 200) && (aemi.a(this.jdField_a_of_type_Aemi, aemi.a(this.jdField_a_of_type_Aemi), aemi.b(this.jdField_a_of_type_Aemi), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean)))
     {
-      bool1 = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.c;
-      if (bool1) {
-        return;
+      if (!aemi.b(this.jdField_a_of_type_Aemi).exists()) {
+        break label423;
       }
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.a(this.jdField_a_of_type_Int);
-      localObject1 = null;
-      if (this.b != 0) {
-        break label277;
-      }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceResLoader.a("send.xml");
       if (QLog.isColorLevel()) {
-        QLog.d("MagicfaceActionManager", 2, "func doAction. step 1");
+        QLog.d("StickerRecManager", 2, "pull words success");
       }
-      if (localObject1 == null) {
-        break label248;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionMagicfaceActionDecoder.a((String)localObject1);
-      if (this.b == 1) {
-        this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.e();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData);
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionMagicfaceActionDecoder.a((String)localObject1);
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.d();
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_JavaUtilList.iterator();
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        boolean bool1;
-        Object localObject1;
-        Action localAction;
-        boolean bool2;
-        label248:
-        if (QLog.isColorLevel()) {
-          QLog.d("MagicfaceActionManager", 2, "doaction=Exception=" + localException.toString());
-        }
-        label277:
-        label301:
-        return;
-        label383:
-        if (bool1)
-        {
-          bool1 = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.b;
-          if (!bool1) {}
-        }
-      }
-    }
-    finally
-    {
-      if (!QLog.isColorLevel()) {
-        break label417;
-      }
-      QLog.d("MagicfaceActionManager", 2, "func doAction, 【magic end】");
-      label417:
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.b(this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData);
-    }
-    if (((Iterator)localObject1).hasNext())
-    {
-      localAction = (Action)((Iterator)localObject1).next();
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionAction = localAction;
-      localAction.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfacePlayManager;
-      localAction.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData;
-      bool1 = localAction.a();
-      bool2 = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.b;
-      if (!bool2) {
-        break label301;
-      }
+      l1 = 0L;
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MagicfaceActionManager", 2, "func doAction, 【magic end】");
+      int i;
+      try
+      {
+        long l2 = SystemClock.elapsedRealtime();
+        l1 = l2;
+        Object localObject = new JSONObject(bace.b(aemi.b(this.jdField_a_of_type_Aemi)));
+        l1 = l2;
+        paramaxsq = ((JSONObject)localObject).optString("version", null);
+        l1 = l2;
+        localObject = ((JSONObject)localObject).optJSONArray("words");
+        l1 = l2;
+        BloomFilter localBloomFilter = new BloomFilter();
+        l1 = l2;
+        localBloomFilter.version = paramaxsq;
+        i = 0;
+        l1 = l2;
+        if (i < ((JSONArray)localObject).length())
+        {
+          l1 = l2;
+          paramaxsq = ((JSONArray)localObject).optString(i);
+          l1 = l2;
+          if (TextUtils.isEmpty(paramaxsq)) {
+            break label438;
+          }
+          l1 = l2;
+          localBloomFilter.add(paramaxsq);
+          break label438;
+        }
+        l1 = l2;
+        bace.d(aemi.c(this.jdField_a_of_type_Aemi).getAbsolutePath());
+        l1 = l2;
+        aemi.a(this.jdField_a_of_type_Aemi, aemi.c(this.jdField_a_of_type_Aemi).getAbsolutePath(), localBloomFilter);
+        l1 = l2;
+        bace.d(aemi.b(this.jdField_a_of_type_Aemi).getAbsolutePath());
+        l1 = l2;
+        baig.d(aemi.a(this.jdField_a_of_type_Aemi).getApp(), "words_version_key805_gray_one", aemi.a(this.jdField_a_of_type_Aemi).c(), this.b);
+        l1 = l2;
+        this.jdField_a_of_type_Aemi.b();
+        l1 = l2;
+        if (QLog.isColorLevel())
+        {
+          l1 = l2;
+          QLog.d("StickerRecManager", 2, "generate encode table time cost : " + (SystemClock.elapsedRealtime() - l2));
+        }
+        return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.b(this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData);
-      return;
-      if (this.b != 1) {
-        break;
+      catch (Exception paramaxsq)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("StickerRecManager", 2, "generate encode table time error cost : " + (SystemClock.elapsedRealtime() - l1));
+        QLog.d("StickerRecManager", 2, "build EncodeTable error !");
+        return;
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.jdField_a_of_type_ComTencentMobileqqMagicfaceModelMagicfaceResLoader.a("receive.xml");
-      break;
-      if (!localAction.d) {
-        break label383;
+      label423:
+      if (QLog.isColorLevel())
+      {
+        QLog.d("StickerRecManager", 2, "updateWords fail: words file is not exist.");
+        return;
+        label438:
+        i += 1;
       }
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.c();
     }
   }
+  
+  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aemk
  * JD-Core Version:    0.7.0.1
  */

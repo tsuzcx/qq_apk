@@ -1,27 +1,31 @@
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.data.PhoneContact;
+import WEISHI_USER_GROWTH.WEISHI.stGetPersonalPageRsp;
+import java.lang.ref.WeakReference;
 
-public class wzq
+final class wzq
+  implements wxx<WEISHI.stGetPersonalPageRsp>
 {
-  public int a;
-  public View a;
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public PhoneContact a;
-  public String a;
-  public Button b;
-  public ImageView b;
-  public TextView b;
-  public Button c;
-  public TextView c;
+  private final WeakReference<wzm> a;
+  
+  public wzq(wzm paramwzm)
+  {
+    this.a = new WeakReference(paramwzm);
+  }
+  
+  public void a(boolean paramBoolean, long paramLong, String paramString, WEISHI.stGetPersonalPageRsp paramstGetPersonalPageRsp)
+  {
+    paramString = (wzm)this.a.get();
+    if (paramString == null) {}
+    do
+    {
+      return;
+      paramString.a(paramstGetPersonalPageRsp, false);
+    } while (paramstGetPersonalPageRsp == null);
+    wzm.a(paramString, paramstGetPersonalPageRsp.toByteArray());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wzq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tribe.async.reactive;
 
-import android.support.annotation.NonNull;
 import com.tribe.async.utils.AssertUtils;
 
 public class OperatorFilter<T>
@@ -14,33 +13,15 @@ public class OperatorFilter<T>
     this.mPredicate = paramPredicate;
   }
   
-  public Observer<T> apply(final Observer<T> paramObserver)
+  public Observer<T> apply(Observer<T> paramObserver)
   {
     AssertUtils.checkNotNull(paramObserver);
-    new SimpleObserver()
-    {
-      public void onComplete()
-      {
-        paramObserver.onComplete();
-      }
-      
-      public void onError(@NonNull Error paramAnonymousError)
-      {
-        paramObserver.onError(paramAnonymousError);
-      }
-      
-      public void onNext(T paramAnonymousT)
-      {
-        if (OperatorFilter.this.mPredicate.test(paramAnonymousT)) {
-          paramObserver.onNext(paramAnonymousT);
-        }
-      }
-    };
+    return new OperatorFilter.1(this, paramObserver);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tribe.async.reactive.OperatorFilter
  * JD-Core Version:    0.7.0.1
  */

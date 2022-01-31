@@ -1,41 +1,18 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent;
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tencent.biz.qqstory.storyHome.memory.controller.QQStoryMemoriesPresenter;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.Context;
 
-public class oca
-  extends QQUIEventReceiver
+final class oca
+  implements rjj
 {
-  public oca(@NonNull QQStoryMemoriesPresenter paramQQStoryMemoriesPresenter)
-  {
-    super(paramQQStoryMemoriesPresenter);
-  }
+  oca(Context paramContext, String paramString) {}
   
-  public void a(@NonNull QQStoryMemoriesPresenter paramQQStoryMemoriesPresenter, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
+  public void a()
   {
-    if ((paramUpdateUserInfoEvent.errorInfo.isSuccess()) && (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (TextUtils.equals(paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.getUnionId(), paramQQStoryMemoriesPresenter.jdField_a_of_type_JavaLangString)))
-    {
-      SLog.b("Q.qqstory.memories.QQStoryMemoriesPresenter", "receive user info event. %s. from others.", paramUpdateUserInfoEvent);
-      paramQQStoryMemoriesPresenter.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
-      QQStoryMemoriesPresenter.a(paramQQStoryMemoriesPresenter).d();
-      QQStoryMemoriesPresenter.a(paramQQStoryMemoriesPresenter).b();
-      QQStoryMemoriesPresenter.a(paramQQStoryMemoriesPresenter).c();
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return GetUserInfoHandler.UpdateUserInfoEvent.class;
+    obz.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oca
  * JD-Core Version:    0.7.0.1
  */

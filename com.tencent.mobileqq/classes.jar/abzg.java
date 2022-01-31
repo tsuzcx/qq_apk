@@ -1,40 +1,27 @@
-import android.graphics.Color;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.confess.ConfessPlugin;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class abzg
   implements View.OnTouchListener
 {
-  public abzg(ConfessPlugin paramConfessPlugin) {}
+  public abzg(TroopMemberListActivity paramTroopMemberListActivity) {}
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    if (paramMotionEvent.getAction() == 1)
     {
+      this.a.j();
+      paramView = this.a.n;
+      this.a.a("Clk_find", paramView, "");
     }
-    for (;;)
-    {
-      return false;
-      if ((paramView instanceof TextView))
-      {
-        int i = ((TextView)paramView).getCurrentTextColor();
-        ((TextView)paramView).setTextColor(Color.argb(128, Color.red(i), Color.green(i), Color.blue(i)));
-        continue;
-        if ((paramView instanceof TextView))
-        {
-          i = ((TextView)paramView).getCurrentTextColor();
-          ((TextView)paramView).setTextColor(Color.argb(255, Color.red(i), Color.green(i), Color.blue(i)));
-        }
-      }
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abzg
  * JD-Core Version:    0.7.0.1
  */

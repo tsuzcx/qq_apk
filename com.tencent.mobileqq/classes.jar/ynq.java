@@ -1,25 +1,54 @@
-import com.tencent.mobileqq.adapter.ForwardRecentListAdapter;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class ynq
-  implements Runnable
+class ynq
+  implements ynl
 {
-  public ynq(ForwardRecentListAdapter paramForwardRecentListAdapter, List paramList) {}
-  
-  public void run()
+  public boolean a(ymw paramymw, String paramString, String... paramVarArgs)
   {
-    ArrayList localArrayList = ForwardRecentListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterForwardRecentListAdapter, this.jdField_a_of_type_JavaUtilList);
-    if ((localArrayList != null) && (localArrayList.size() > 0)) {
-      ThreadManager.getUIHandler().post(new ynr(this, localArrayList));
+    Object localObject = null;
+    if (paramymw != null) {}
+    for (paramVarArgs = paramymw.a(); (paramymw == null) || (paramVarArgs == null); paramVarArgs = null)
+    {
+      yny.d("GdtNetTypeJsCallHandler", "handleJsCallRequest error");
+      return true;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("netType", yoa.a(paramVarArgs));
+    }
+    catch (JSONException localJSONException)
+    {
+      try
+      {
+        for (;;)
+        {
+          paramymw.callJs(paramString, new String[] { localJSONObject.toString() });
+          paramString = localObject;
+          if (paramymw != null) {
+            paramString = paramymw.a();
+          }
+          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getNetType", paramString);
+          return true;
+          localJSONException = localJSONException;
+          yny.d("GdtNetTypeJsCallHandler", "handleJsCallRequest error", localJSONException);
+        }
+      }
+      catch (Throwable paramString)
+      {
+        for (;;)
+        {
+          yny.d("GdtNetTypeJsCallHandler", "handleJsCallRequest error", paramString);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ynq
  * JD-Core Version:    0.7.0.1
  */

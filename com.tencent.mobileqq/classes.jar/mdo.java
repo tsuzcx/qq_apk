@@ -1,23 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.guide.GuideHelper;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
 
 public class mdo
-  implements mdp
+  implements View.OnTouchListener
 {
-  public mdo(ReadInJoyWebDataManager paramReadInJoyWebDataManager) {}
+  public mdo(GuideHelper paramGuideHelper, long paramLong) {}
   
-  public void a(JSONObject paramJSONObject)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ReadInJoyWebDataManager.a(this.a, paramJSONObject.toString());
-    if (QLog.isColorLevel()) {
-      QLog.w("ReadInJoyWebDataManager", 2, "preLoadMsgBox HttpFetchBizCallback jsonRetData result" + ReadInJoyWebDataManager.a(this.a));
-    }
+    QLog.w("GuideHelper", 1, "onTouch to hide, seq[" + this.jdField_a_of_type_Long + "]");
+    GuideHelper.a(this.jdField_a_of_type_ComTencentAvUiGuideGuideHelper, this.jdField_a_of_type_Long);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mdo
  * JD-Core Version:    0.7.0.1
  */

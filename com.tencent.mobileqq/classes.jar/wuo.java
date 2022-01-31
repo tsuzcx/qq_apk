@@ -1,30 +1,18 @@
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-import com.tencent.mobileqq.activity.emogroupstore.PicSelectAdapter;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-public class wuo
-  implements Runnable
+class wuo
+  implements wpy
 {
-  public wuo(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  wuo(wuh paramwuh, Runnable paramRunnable) {}
   
-  public void run()
+  public void a()
   {
-    if (!EmoticonGroupStoreFragment.c(this.a).isEmpty())
-    {
-      ArrayList localArrayList = new ArrayList(EmoticonGroupStoreFragment.c(this.a));
-      Map localMap = EmoticonGroupStoreFragment.a(this.a).a(localArrayList);
-      if (localMap != null) {
-        EmoticonGroupStoreFragment.a(this.a).a(localMap, localArrayList);
-      }
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wuo
  * JD-Core Version:    0.7.0.1
  */

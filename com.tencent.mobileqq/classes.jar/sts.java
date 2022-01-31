@@ -1,41 +1,92 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
+import android.os.Build;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqMsgTabNodeVideoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeVideoList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
-class sts
-  implements Runnable
+public class sts
+  extends slz<stt>
 {
-  sts(stq paramstq, String paramString1, String paramString2) {}
+  static final String jdField_a_of_type_JavaLangString = skt.a("StorySvc.get_tab_node_vid_list");
+  ssm jdField_a_of_type_Ssm;
+  String b = "";
+  String c = "";
   
-  public void run()
+  public sts(ssm paramssm, String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.profilecard.FrdProfileCard", 2, "onUpdateAddFriend, uin: " + this.jdField_a_of_type_JavaLangString + ", mobileNum = " + this.b);
-    }
-    Object localObject1 = (FriendsManager)this.jdField_a_of_type_Stq.a.app.getManager(50);
-    if (localObject1 == null) {}
-    for (localObject1 = null;; localObject1 = ((FriendsManager)localObject1).a(this.jdField_a_of_type_Stq.a.a.a.jdField_a_of_type_JavaLangString))
+    this.jdField_a_of_type_Ssm = paramssm;
+    this.b = paramString1;
+    this.c = paramString2;
+  }
+  
+  public static stt a(ssm paramssm, byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspMsgTabNodeVideoList localRspMsgTabNodeVideoList = new qqstory_service.RspMsgTabNodeVideoList();
+    if (paramArrayOfByte != null) {}
+    try
     {
-      Message localMessage = Message.obtain();
-      localMessage.what = 3;
-      Object localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = this.jdField_a_of_type_JavaLangString;
-      }
-      localMessage.obj = localObject2;
-      this.jdField_a_of_type_Stq.a.b.sendMessage(localMessage);
-      return;
+      localRspMsgTabNodeVideoList.mergeFrom(paramArrayOfByte);
+      return new stt(paramssm, localRspMsgTabNodeVideoList, paramArrayOfByte);
     }
+    catch (InvalidProtocolBufferMicroException paramssm)
+    {
+      urk.d("Q.qqstory:ReqMsgTabNodeVideoList", "" + paramssm);
+    }
+    return null;
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public stt a(byte[] paramArrayOfByte)
+  {
+    return a(this.jdField_a_of_type_Ssm, paramArrayOfByte);
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqMsgTabNodeVideoList localReqMsgTabNodeVideoList = new qqstory_service.ReqMsgTabNodeVideoList();
+    localReqMsgTabNodeVideoList.unionID.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Ssm.jdField_a_of_type_JavaLangString));
+    localReqMsgTabNodeVideoList.req_time_stamp.set(this.jdField_a_of_type_Ssm.c);
+    localReqMsgTabNodeVideoList.node_type.set(this.jdField_a_of_type_Ssm.jdField_a_of_type_Int);
+    localReqMsgTabNodeVideoList.recommend_id.set(this.jdField_a_of_type_Ssm.e);
+    localReqMsgTabNodeVideoList.source.set(this.jdField_a_of_type_Ssm.f);
+    if (this.jdField_a_of_type_Ssm.jdField_a_of_type_Int == 12)
+    {
+      if ((TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty(this.c))) {
+        localReqMsgTabNodeVideoList.start_vid.set(this.c);
+      }
+      if (!TextUtils.isEmpty(this.b)) {
+        localReqMsgTabNodeVideoList.cookie.set(this.b);
+      }
+      localReqMsgTabNodeVideoList.page_size.set(20);
+    }
+    Long localLong = vls.a();
+    if (localLong != null) {
+      localReqMsgTabNodeVideoList.adcode.set(localLong.longValue());
+    }
+    localReqMsgTabNodeVideoList.device.set(ByteStringMicro.copyFromUtf8(Build.DEVICE));
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Ssm.k)) {
+      localReqMsgTabNodeVideoList.passthrough.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_Ssm.k));
+    }
+    return localReqMsgTabNodeVideoList.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "MsgTabNodeVidListRequest{nodeInfo.unionId=" + this.jdField_a_of_type_Ssm.jdField_a_of_type_JavaLangString + ", mCookie='" + this.b + '\'' + ", mStartVid='" + this.c + '\'' + "} " + super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sts
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,45 @@
 package com.tencent.mobileqq.activity;
 
+import java.io.Serializable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class NearbyActivity$TabInfo
-  implements Comparable
+  implements Serializable, Comparable<TabInfo>
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public int d;
-  public int e;
+  public static final int TAB_HOT_CHAT = 3;
+  public static final int TAB_NEARBY = 1;
+  public static final int TAB_NEARBY_HYBRID = 5;
+  public static final int TAB_NEARBY_MSG = 6;
+  public static final int TAB_NEARBY_YULIAO = 7;
+  public static final int TAB_NOW = 2;
+  public static final int TAB_WEB = 4;
+  public int autoEnter;
+  public int disableScroll;
+  public int needLoc;
+  public int reportId;
+  public int tabIndex;
+  public String tabName;
+  public int tabType;
+  public String tabUrl;
   
-  public int a(TabInfo paramTabInfo)
+  public int compareTo(TabInfo paramTabInfo)
   {
-    return this.jdField_a_of_type_Int - paramTabInfo.jdField_a_of_type_Int;
+    return this.tabIndex - paramTabInfo.tabIndex;
   }
   
-  public String a()
-  {
-    return "android:switcher:" + 2131365255 + ":" + this.jdField_a_of_type_Int;
-  }
-  
-  public void a(String paramString)
+  public void fromJson(String paramString)
   {
     try
     {
       paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_JavaLangString = paramString.optString("tabName");
-      this.jdField_b_of_type_JavaLangString = paramString.optString("tabUrl");
-      this.jdField_a_of_type_Int = paramString.optInt("tabIndex");
-      this.jdField_b_of_type_Int = paramString.optInt("tabType");
-      this.c = paramString.optInt("disableScroll");
-      this.d = paramString.optInt("needLoc");
+      this.tabName = paramString.optString("tabName");
+      this.tabUrl = paramString.optString("tabUrl");
+      this.tabIndex = paramString.optInt("tabIndex");
+      this.tabType = paramString.optInt("tabType");
+      this.disableScroll = paramString.optInt("disableScroll");
+      this.needLoc = paramString.optInt("needLoc");
+      this.reportId = paramString.optInt("reportId");
       return;
     }
     catch (JSONException paramString)
@@ -43,17 +48,23 @@ public class NearbyActivity$TabInfo
     }
   }
   
-  public String b()
+  public String getTabTag()
+  {
+    return "android:switcher:" + 2131313504 + ":" + this.tabIndex;
+  }
+  
+  public String toJson()
   {
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("tabName", this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("tabUrl", this.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("tabIndex", this.jdField_a_of_type_Int);
-      localJSONObject.put("tabType", this.jdField_b_of_type_Int);
-      localJSONObject.put("disableScroll", this.c);
-      localJSONObject.put("needLoc", this.d);
+      localJSONObject.put("tabName", this.tabName);
+      localJSONObject.put("tabUrl", this.tabUrl);
+      localJSONObject.put("tabIndex", this.tabIndex);
+      localJSONObject.put("tabType", this.tabType);
+      localJSONObject.put("disableScroll", this.disableScroll);
+      localJSONObject.put("needLoc", this.needLoc);
+      localJSONObject.put("reportId", this.reportId);
       return localJSONObject.toString();
     }
     catch (JSONException localJSONException)

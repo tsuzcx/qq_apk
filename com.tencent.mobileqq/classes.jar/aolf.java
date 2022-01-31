@@ -1,33 +1,34 @@
-import android.graphics.Bitmap;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader;
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader.VideoFrameLoaderListener;
-import java.lang.ref.WeakReference;
-import java.util.List;
 
-public class aolf
-  implements Runnable
+class aolf
+  extends aoko
 {
-  public aolf(VideoFrameLoader paramVideoFrameLoader, int paramInt, Bitmap paramBitmap) {}
-  
-  public void run()
+  public aolf(aokk paramaokk)
   {
-    if ((this.jdField_a_of_type_Int != VideoFrameLoader.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader).size()) && (QLog.isColorLevel())) {
-      QLog.d("VideoFrameLoader", 2, "onloadframe index error!");
+    super(paramaokk);
+  }
+  
+  protected String a()
+  {
+    return "StateRefuseByPCWhenPause";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
+    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
     }
-    VideoFrameLoader.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader).add(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    VideoFrameLoader.VideoFrameLoaderListener localVideoFrameLoaderListener = null;
-    if (VideoFrameLoader.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader) != null) {
-      localVideoFrameLoaderListener = (VideoFrameLoader.VideoFrameLoaderListener)VideoFrameLoader.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoVideoFrameLoader).get();
-    }
-    if (localVideoFrameLoaderListener != null) {
-      localVideoFrameLoaderListener.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsBitmap);
-    }
+    aokk.b(this.jdField_a_of_type_Aokk, 11, 6);
+    aokk.c(this.jdField_a_of_type_Aokk, 11, 6);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aoko.a() + "->StateRefuseByPC)");
+    this.jdField_a_of_type_Aoko = new aole(this.jdField_a_of_type_Aokk);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aolf
  * JD-Core Version:    0.7.0.1
  */

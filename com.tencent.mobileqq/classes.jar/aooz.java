@@ -1,48 +1,276 @@
-import com.tencent.maxvideo.mediadevice.AVCodec;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowSendTask;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.RecordManager;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.Context;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import java.util.ArrayList;
+import java.util.UUID;
 
 public class aooz
-  implements Runnable
+  implements avon
 {
-  public aooz(FlowSendTask paramFlowSendTask) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private aysk jdField_a_of_type_Aysk;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private String jdField_a_of_type_JavaLangString;
+  private CharSequence b;
   
-  public void run()
+  public aooz(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, aysk paramaysk)
   {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.j, 2, "FlowSendTask(): isPTV:" + this.a.d + ", mVideoCacheDir:" + this.a.jdField_a_of_type_JavaLangString + ",is to call AVideoCodec.recordSubmit()");
-      }
-      RecordManager.a().a().recordSubmit();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Aysk = paramaysk;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    a();
+  }
+  
+  private void a()
+  {
+    if (this.jdField_a_of_type_Aysk == null) {
       return;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    Object localObject4 = "";
+    long l1 = this.jdField_a_of_type_Aysk.jdField_a_of_type_Long;
+    long l2 = this.jdField_a_of_type_Aysk.jdField_b_of_type_Long;
+    long l3 = this.jdField_a_of_type_Aysk.jdField_c_of_type_Long;
+    ayoq localayoq = this.jdField_a_of_type_Aysk.jdField_a_of_type_Ayoq;
+    Object localObject1 = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(String.valueOf(l1), String.valueOf(l2));
+    int i;
+    Object localObject2;
+    label107:
+    Object localObject3;
+    if ((localObject1 != null) && (babh.a(((TroopMemberInfo)localObject1).troopnick, String.valueOf(l3))))
     {
+      i = 1;
+      if (i == 0) {
+        break label444;
+      }
+      localObject2 = ((TroopMemberInfo)localObject1).troopnick;
+      if (this.jdField_a_of_type_Aysk.jdField_c_of_type_Long <= 0L) {
+        break label593;
+      }
+      localObject3 = String.valueOf(this.jdField_a_of_type_Aysk.jdField_c_of_type_Long);
+      localObject4 = aysl.a();
+      localObject1 = ((aysl)localObject4).a((String)localObject3);
+      if (localObject1 == null) {
+        break label450;
+      }
+      i = aysl.a(this.jdField_a_of_type_JavaLangString, (String)localObject2, this.jdField_a_of_type_Aysk.jdField_c_of_type_JavaLangString, ((avhq)localObject1).jdField_c_of_type_JavaLangString, ((avhq)localObject1).d, this.jdField_a_of_type_Aysk.d, ((avhq)localObject1).jdField_a_of_type_JavaLangString, ((avhq)localObject1).jdField_b_of_type_JavaLangString);
+      localObject1 = aysl.a((String)localObject2, this.jdField_a_of_type_Aysk.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Aysk.d, i);
+      label216:
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        break label515;
+      }
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Aysk.jdField_c_of_type_JavaLangString)) {
+        break label503;
+      }
+      localObject1 = this.jdField_a_of_type_Aysk.d;
+      label246:
+      localObject3 = "";
+      localObject2 = localObject1;
+      localObject1 = localObject3;
+    }
+    for (;;)
+    {
+      label258:
+      localObject3 = localObject2;
+      if ((this.jdField_a_of_type_Aysk.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_Aysk.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+      {
+        localObject2 = (String)this.jdField_a_of_type_Aysk.jdField_a_of_type_JavaUtilArrayList.get(0);
+        if ((TextUtils.isEmpty(localayoq.jdField_c_of_type_JavaLangString)) || (!localayoq.jdField_c_of_type_JavaLangString.toLowerCase().contains(((String)localObject2).toLowerCase()))) {}
+      }
       for (;;)
       {
-        localUnsatisfiedLinkError.printStackTrace();
-        this.a.k = -6;
-        synchronized (this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a)
-        {
-          this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.set(true);
-          this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.notifyAll();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d(this.a.j, 2, "FlowSendTask(): isPTV:" + this.a.d + ", mVideoCacheDir:" + this.a.jdField_a_of_type_JavaLangString + ", call AVideoCodec.recordSubmit() fail, error = " + localUnsatisfiedLinkError.getMessage());
-          return;
+        this.jdField_a_of_type_JavaLangCharSequence = localayoq.jdField_c_of_type_JavaLangString;
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          this.jdField_a_of_type_JavaLangCharSequence = avwf.a(localayoq.jdField_c_of_type_JavaLangString, (String)localObject2);
         }
+        localObject2 = localayoq.a();
+        localObject4 = localayoq.l;
+        Object localObject5 = new SpannableStringBuilder();
+        ((SpannableStringBuilder)localObject5).append((CharSequence)localObject4).append("  ");
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          ((SpannableStringBuilder)localObject5).append(avwf.a((String)localObject3, (String)localObject1)).append("  ");
+        }
+        for (;;)
+        {
+          ((SpannableStringBuilder)localObject5).append((CharSequence)localObject2);
+          this.b = ((CharSequence)localObject5);
+          return;
+          i = 0;
+          break;
+          label444:
+          localObject2 = null;
+          break label107;
+          label450:
+          i = aysl.a(this.jdField_a_of_type_JavaLangString, (String)localObject2, this.jdField_a_of_type_Aysk.jdField_c_of_type_JavaLangString, null, null, this.jdField_a_of_type_Aysk.d, null, null);
+          localObject1 = aysl.a((String)localObject2, this.jdField_a_of_type_Aysk.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Aysk.d, i);
+          break label216;
+          label503:
+          localObject1 = this.jdField_a_of_type_Aysk.jdField_c_of_type_JavaLangString;
+          break label246;
+          label515:
+          if ((i == 1) || (i == 4) || (i == 7))
+          {
+            localObject3 = this.jdField_a_of_type_JavaLangString;
+            localObject2 = localObject1;
+            localObject1 = localObject3;
+            break label258;
+          }
+          if ((i != 5) && (i != 6) && (i != 2) && (i != 3)) {
+            break label738;
+          }
+          localObject3 = ((aysl)localObject4).a(this.jdField_a_of_type_JavaLangString, (String)localObject3);
+          localObject2 = localObject1;
+          localObject1 = localObject3;
+          break label258;
+          label593:
+          if (i != 0) {}
+          for (;;)
+          {
+            localObject3 = localObject2;
+            localObject1 = localObject4;
+            if (this.jdField_a_of_type_Aysk.jdField_a_of_type_JavaUtilArrayList == null) {
+              break;
+            }
+            localObject3 = localObject2;
+            localObject1 = localObject4;
+            if (this.jdField_a_of_type_Aysk.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
+              break;
+            }
+            localObject5 = (String)this.jdField_a_of_type_Aysk.jdField_a_of_type_JavaUtilArrayList.get(0);
+            localObject3 = localObject2;
+            localObject1 = localObject4;
+            if (TextUtils.isEmpty((CharSequence)localObject2)) {
+              break;
+            }
+            localObject3 = localObject2;
+            localObject1 = localObject4;
+            if (!((String)localObject2).toLowerCase().contains(((String)localObject5).toLowerCase())) {
+              break;
+            }
+            localObject1 = localObject5;
+            localObject3 = localObject2;
+            break;
+            localObject2 = this.jdField_a_of_type_Aysk.jdField_b_of_type_JavaLangString;
+          }
+          ((SpannableStringBuilder)localObject5).append((CharSequence)localObject3).append("  ");
+        }
+        localObject2 = "";
       }
+      label738:
+      localObject2 = localObject1;
+      localObject1 = "";
     }
+  }
+  
+  public int a()
+  {
+    return 0;
+  }
+  
+  public CharSequence a()
+  {
+    return this.jdField_a_of_type_JavaLangCharSequence;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(View paramView)
+  {
+    Object localObject = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aysk.jdField_a_of_type_Long);
+    ayoq localayoq = this.jdField_a_of_type_Aysk.jdField_a_of_type_Ayoq;
+    ayqd localayqd = ((TroopFileTransferManager)localObject).a(localayoq.jdField_b_of_type_JavaLangString);
+    localObject = localayqd;
+    if (localayqd == null)
+    {
+      localObject = azjg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aysk.jdField_a_of_type_Long, localayoq.jdField_a_of_type_JavaUtilUUID.toString(), localayoq.jdField_b_of_type_JavaLangString, localayoq.jdField_c_of_type_JavaLangString, localayoq.jdField_a_of_type_Long, localayoq.jdField_a_of_type_Int);
+      ((ayqd)localObject).jdField_c_of_type_JavaLangString = localayoq.j;
+      ((ayqd)localObject).d = localayoq.k;
+      ((ayqd)localObject).jdField_b_of_type_JavaLangString = localayoq.i;
+    }
+    if ((localObject != null) && (((ayqd)localObject).jdField_c_of_type_Long == 0L)) {
+      ((ayqd)localObject).jdField_c_of_type_Long = localayoq.jdField_a_of_type_Long;
+    }
+    paramView = apdq.a(paramView.findViewById(2131300609), localayoq.jdField_c_of_type_JavaLangString);
+    apdq.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, null, null, this.jdField_a_of_type_Aysk.jdField_a_of_type_Long, (ayqd)localObject, localayoq.e, localayoq.jdField_c_of_type_Int, 2, 4, paramView, false, false);
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public CharSequence b()
+  {
+    return null;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public int c()
+  {
+    return 0;
+  }
+  
+  public CharSequence c()
+  {
+    return this.b;
+  }
+  
+  public String c()
+  {
+    String str = "";
+    Object localObject = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aysk.jdField_a_of_type_Long);
+    ayoq localayoq = this.jdField_a_of_type_Aysk.jdField_a_of_type_Ayoq;
+    ayqd localayqd = ((TroopFileTransferManager)localObject).a(localayoq.jdField_b_of_type_JavaLangString);
+    if (localayqd != null) {
+      str = localayqd.jdField_b_of_type_JavaLangString;
+    }
+    for (;;)
+    {
+      localObject = str;
+      if (!bace.b(str)) {
+        localObject = this.jdField_a_of_type_Aysk.jdField_a_of_type_Ayoq.i;
+      }
+      return localObject;
+      ((TroopFileTransferManager)localObject).a(localayoq.jdField_a_of_type_JavaUtilUUID, 128);
+    }
+  }
+  
+  public CharSequence d()
+  {
+    return null;
+  }
+  
+  public String d()
+  {
+    if (this.jdField_a_of_type_Aysk.jdField_a_of_type_Ayoq != null) {
+      return this.jdField_a_of_type_Aysk.jdField_a_of_type_Ayoq.jdField_c_of_type_JavaLangString;
+    }
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aooz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,59 +1,45 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.C2CCallToGroupCall;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.app.DiscussionObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
+import UserGrowth.stSimpleGetFeedListRsp;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
 import java.util.ArrayList;
+import mqq.util.WeakReference;
 
-public class rzf
-  extends DiscussionObserver
+class rzf
+  implements rwy
 {
-  public rzf(C2CCallToGroupCall paramC2CCallToGroupCall) {}
+  rzf(rzd paramrzd, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString)
+  public void a(stSimpleGetFeedListRsp paramstSimpleGetFeedListRsp)
   {
-    if (paramBoolean)
+    sai.d("WSRecommendFragmentPresenter", "onReadCacheCompleted");
+    if ((paramstSimpleGetFeedListRsp != null) && (paramstSimpleGetFeedListRsp.feeds != null) && (paramstSimpleGetFeedListRsp.feeds.size() > 0))
     {
-      localArrayList = new ArrayList();
-      localResultRecord = new ResultRecord();
-      localResultRecord.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_JavaLangString;
-      localResultRecord.jdField_b_of_type_JavaLangString = this.a.jdField_b_of_type_JavaLangString;
-      localResultRecord.jdField_a_of_type_Int = this.a.jdField_a_of_type_Int;
-      localResultRecord.c = this.a.c;
-      localResultRecord.d = this.a.d;
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("roomId", String.valueOf(paramLong));
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("discussName", paramString);
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("qqPhoneUserList", localArrayList);
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("audioType", 2);
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("callType", 2);
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("reportType", C2CCallToGroupCall.a(this.a));
-      this.a.jdField_a_of_type_AndroidContentIntent.putExtra("from", this.a.jdField_b_of_type_Int);
-      this.a.a(String.valueOf(paramLong), paramString);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(C2CCallToGroupCall.a(this.a));
+      rzd.a(this.jdField_a_of_type_Rzd, true);
+      if (!rzd.a(this.jdField_a_of_type_Rzd)) {
+        break label48;
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
+    }
+    label48:
+    WSRecommendFragment localWSRecommendFragment;
+    do
+    {
+      do
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
-      }
-      this.a.jdField_a_of_type_AndroidAppActivity.finish();
-    }
-    while (!QLog.isColorLevel())
-    {
-      ArrayList localArrayList;
-      ResultRecord localResultRecord;
-      return;
-    }
-    QLog.d("C2CCallToGroupCall", 2, "create discussion fail");
+        do
+        {
+          return;
+          paramstSimpleGetFeedListRsp = paramstSimpleGetFeedListRsp.feeds;
+        } while (rzd.a(this.jdField_a_of_type_Rzd) == null);
+        localWSRecommendFragment = (WSRecommendFragment)rzd.a(this.jdField_a_of_type_Rzd).get();
+      } while (localWSRecommendFragment == null);
+      localWSRecommendFragment.a(paramstSimpleGetFeedListRsp, this.jdField_a_of_type_Boolean, this.b);
+    } while ((this.jdField_a_of_type_Boolean) || (rzd.a(this.jdField_a_of_type_Rzd)));
+    sai.d("WSRecommendFragmentPresenter", "showTopLoading");
+    localWSRecommendFragment.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rzf
  * JD-Core Version:    0.7.0.1
  */

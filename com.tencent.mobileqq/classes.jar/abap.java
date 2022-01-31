@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
+import android.view.View;
+import com.tencent.mobileqq.activity.Leba.17.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.widget.AdapterView;
 
-class abap
-  implements Runnable
+public class abap
+  implements behi
 {
-  abap(aban paramaban, abax paramabax) {}
+  abap(abai paramabai) {}
   
-  public void run()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_Aban.jdField_a_of_type_ComTencentMobileqqArkArkAppCenter$OnGetAppIcon.a(this.jdField_a_of_type_Aban.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Abax.a);
+    if (this.a.c()) {
+      ThreadManager.post(new Leba.17.1(this, paramView, paramInt), 8, null, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abap
  * JD-Core Version:    0.7.0.1
  */

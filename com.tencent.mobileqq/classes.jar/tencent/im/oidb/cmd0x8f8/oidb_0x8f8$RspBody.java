@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class oidb_0x8f8$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 66, 74, 82, 90, 98, 106, 114 }, new String[] { "msg_source_id", "msg_result", "msg_add_feeds_rsp", "msg_add_cmmnt_rsp", "msg_add_face_rsp", "msg_del_feeds_rsp", "msg_del_cmmnt_rsp", "msg_set_feeds_flag_rsp", "msg_add_visit_rsp", "msg_attend_vote_rsp", "msg_del_apic_rsp", "msg_set_theme_rsp", "msg_set_asyncmsg_state_rsp", "msg_del_litemail_index_rsp" }, new Object[] { null, null, null, null, null, null, null, null, null, null, null, null, null, null }, RspBody.class);
   public oidb_0x8f8.SubCmd02AddCmmntRsp msg_add_cmmnt_rsp = new oidb_0x8f8.SubCmd02AddCmmntRsp();
@@ -24,7 +24,7 @@ public final class oidb_0x8f8$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8f8.oidb_0x8f8.RspBody
  * JD-Core Version:    0.7.0.1
  */

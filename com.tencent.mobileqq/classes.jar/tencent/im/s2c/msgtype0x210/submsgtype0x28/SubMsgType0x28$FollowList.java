@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0x28$FollowList
-  extends MessageMicro
+  extends MessageMicro<FollowList>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32 }, new String[] { "uint64_puin", "uint64_uin", "uint32_type", "uint32_seqno" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0) }, FollowList.class);
   public final PBUInt32Field uint32_seqno = PBField.initUInt32(0);

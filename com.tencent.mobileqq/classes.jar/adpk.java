@@ -1,17 +1,23 @@
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import java.util.Comparator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-public final class adpk
-  implements Comparator
+public class adpk
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public int a(FileInfo paramFileInfo1, FileInfo paramFileInfo2)
+  public adpk(SixCombolEffectView paramSixCombolEffectView, adpz paramadpz) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return -Long.valueOf(paramFileInfo1.b()).compareTo(Long.valueOf(paramFileInfo2.b()));
+    this.jdField_a_of_type_Adpz.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if ((!this.jdField_a_of_type_Adpz.b) && (this.jdField_a_of_type_Adpz.a < 0.52F)) {
+      this.jdField_a_of_type_Adpz.b = true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adpk
  * JD-Core Version:    0.7.0.1
  */

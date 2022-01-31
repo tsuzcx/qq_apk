@@ -1,24 +1,75 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.hotpic.HotPicData;
-import com.tencent.mobileqq.hotpic.PublicAccountGifListener;
-import mqq.os.MqqHandler;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.AVRedPacketConfig;
 
-public class llt
-  implements PublicAccountGifListener
+public abstract class llt
+  extends Binder
+  implements lls
 {
-  public llt(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
-  
-  public void a(HotPicData paramHotPicData)
+  public llt()
   {
-    this.a.a = paramHotPicData;
-    ReadInJoyCommentComponentFragment.a(this.a, null);
-    ThreadManager.getUIHandler().post(new llu(this));
+    attachInterface(this, "com.tencent.av.service.IAVRedPacketCallback");
+  }
+  
+  public static lls a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
+    }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.av.service.IAVRedPacketCallback");
+    if ((localIInterface != null) && ((localIInterface instanceof lls))) {
+      return (lls)localIInterface;
+    }
+    return new llu(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    boolean bool = false;
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.av.service.IAVRedPacketCallback");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.av.service.IAVRedPacketCallback");
+      if (paramParcel1.readInt() != 0)
+      {
+        bool = true;
+        if (paramParcel1.readInt() == 0) {
+          break label109;
+        }
+      }
+      label109:
+      for (paramParcel1 = (AVRedPacketConfig)AVRedPacketConfig.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
+      {
+        a(bool, paramParcel1);
+        return true;
+        bool = false;
+        break;
+      }
+    }
+    paramParcel1.enforceInterface("com.tencent.av.service.IAVRedPacketCallback");
+    if (paramParcel1.readInt() != 0) {
+      bool = true;
+    }
+    a(bool, paramParcel1.readString(), paramParcel1.readString());
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     llt
  * JD-Core Version:    0.7.0.1
  */

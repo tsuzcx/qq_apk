@@ -1,21 +1,12 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.qqstory.playvideo.player.ExploreAnimalView;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
-public class ntn
-  implements Animation.AnimationListener
+class ntn
 {
-  public ntn(ExploreAnimalView paramExploreAnimalView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a.startAnimation(this.a.b);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  BubbleImageView jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  BubbleImageView jdField_b_of_type_ComTencentMobileqqWidgetBubbleImageView;
 }
 
 

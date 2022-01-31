@@ -17,7 +17,7 @@ public final class ReqGetEncounterV2
   static UserData cache_stUserData;
   static ReqUserInfo cache_stUserInfo = new ReqUserInfo();
   static byte[] cache_strA2;
-  static ArrayList cache_vTagsID;
+  static ArrayList<Long> cache_vTagsID;
   public long ad_ctrl;
   public String ad_extra = "";
   public byte age_lower;
@@ -52,7 +52,7 @@ public final class ReqGetEncounterV2
   public int time_interval = 480;
   public byte use_tinyid;
   public byte use_watch;
-  public ArrayList vTagsID;
+  public ArrayList<Long> vTagsID;
   public byte watch_color;
   
   static
@@ -74,7 +74,7 @@ public final class ReqGetEncounterV2
   
   public ReqGetEncounterV2() {}
   
-  public ReqGetEncounterV2(ReqUserInfo paramReqUserInfo1, UserData paramUserData, int paramInt1, int paramInt2, ArrayList paramArrayList, byte[] paramArrayOfByte1, byte paramByte1, int paramInt3, int paramInt4, int paramInt5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt6, byte paramByte2, byte paramByte3, byte paramByte4, byte paramByte5, int paramInt7, int paramInt8, int paramInt9, int paramInt10, byte paramByte6, int paramInt11, ReqUserInfo paramReqUserInfo2, int paramInt12, byte[] paramArrayOfByte4, byte paramByte7, byte paramByte8, byte paramByte9, String paramString, long paramLong1, long paramLong2, byte paramByte10, int paramInt13, int paramInt14, long paramLong3)
+  public ReqGetEncounterV2(ReqUserInfo paramReqUserInfo1, UserData paramUserData, int paramInt1, int paramInt2, ArrayList<Long> paramArrayList, byte[] paramArrayOfByte1, byte paramByte1, int paramInt3, int paramInt4, int paramInt5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt6, byte paramByte2, byte paramByte3, byte paramByte4, byte paramByte5, int paramInt7, int paramInt8, int paramInt9, int paramInt10, byte paramByte6, int paramInt11, ReqUserInfo paramReqUserInfo2, int paramInt12, byte[] paramArrayOfByte4, byte paramByte7, byte paramByte8, byte paramByte9, String paramString, long paramLong1, long paramLong2, byte paramByte10, int paramInt13, int paramInt14, long paramLong3)
   {
     this.stUserInfo = paramReqUserInfo1;
     this.stUserData = paramUserData;

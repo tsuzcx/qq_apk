@@ -1,28 +1,24 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.soload.SoLoadUtilNew;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter.1.1;
 
-public final class aoyc
-  implements Runnable
+public class aoyc
+  implements aoji
 {
-  public void run()
+  aoyc(aoyb paramaoyb) {}
+  
+  public void a()
   {
-    try
-    {
-      SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "GIFEngine");
-      ShortVideoUtils.a(true);
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      localUnsatisfiedLinkError.printStackTrace();
-      ShortVideoUtils.a(false);
-    }
+    this.a.n();
+  }
+  
+  public void b()
+  {
+    this.a.a.runOnUiThread(new VideoFilePresenter.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoyc
  * JD-Core Version:    0.7.0.1
  */

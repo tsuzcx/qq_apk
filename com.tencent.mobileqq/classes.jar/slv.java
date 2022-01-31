@@ -1,23 +1,41 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.TroopQZoneUploadAlbumObserver;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
 
 public class slv
-  extends TroopQZoneUploadAlbumObserver
 {
-  public slv(Conversation paramConversation) {}
+  public static volatile slv a;
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public static slv a()
   {
-    if (!(paramObject instanceof String)) {
-      return;
+    Object localObject = a;
+    if (localObject == null) {
+      try
+      {
+        slv localslv2 = a;
+        localObject = localslv2;
+        if (localslv2 == null)
+        {
+          localObject = new slv();
+          a = (slv)localObject;
+        }
+        return localObject;
+      }
+      finally {}
     }
-    paramObject = (String)paramObject;
-    this.a.a(8, paramObject, -2147483648);
+    return localslv1;
+  }
+  
+  public <Request extends slz, Respond extends slu> void a(Request paramRequest, slx<Request, Respond> paramslx)
+  {
+    paramRequest = new slw(paramRequest);
+    paramRequest.jdField_a_of_type_Slx = paramslx;
+    paramRequest.jdField_a_of_type_Slz.a(paramRequest);
+    QQStoryContext.a().a().a(paramRequest.jdField_a_of_type_Slz);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     slv
  * JD-Core Version:    0.7.0.1
  */

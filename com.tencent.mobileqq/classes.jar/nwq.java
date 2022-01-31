@@ -1,26 +1,22 @@
-import com.tencent.biz.qqstory.network.handler.VidToSimpleInfoHandler.GetSimpleInfoListEvent;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupManager.GetFeedVidListObserver;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class nwq
-  extends ShareGroupManager.GetFeedVidListObserver
+class nwq
+  implements DialogInterface.OnClickListener
 {
-  public nwq(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity) {}
+  nwq(nwp paramnwp, String paramString, int paramInt) {}
   
-  public void a(VideoCollectionItem paramVideoCollectionItem, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    VidToSimpleInfoHandler.GetSimpleInfoListEvent localGetSimpleInfoListEvent = new VidToSimpleInfoHandler.GetSimpleInfoListEvent();
-    localGetSimpleInfoListEvent.jdField_a_of_type_JavaLangString = paramVideoCollectionItem.collectionId;
-    localGetSimpleInfoListEvent.jdField_a_of_type_JavaUtilList = paramVideoCollectionItem.collectionVideoUIItemList;
-    Dispatchers.get().dispatch(localGetSimpleInfoListEvent);
+    bbmy.a(this.jdField_a_of_type_Nwp.jdField_a_of_type_Nwk.a, 2, ajjy.a(2131647251), 0).a();
+    if (this.jdField_a_of_type_Nwp.jdField_a_of_type_Nwd != null) {
+      this.jdField_a_of_type_Nwp.jdField_a_of_type_Nwd.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nwq
  * JD-Core Version:    0.7.0.1
  */

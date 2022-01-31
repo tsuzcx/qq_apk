@@ -1,22 +1,18 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public class sja
-  implements Runnable
+public final class sja
 {
-  public sja(ChatSettingForTroop paramChatSettingForTroop) {}
+  public StoryVideoItem a;
+  public StoryVideoItem b;
   
-  public void run()
+  public String toString()
   {
-    if (this.a.app != null) {
-      ((TroopManager)this.a.app.getManager(51)).b(this.a.a);
-    }
+    return "{mFakeStoryVideoItem=" + this.a + ", mSucStoryVideoItem=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sja
  * JD-Core Version:    0.7.0.1
  */

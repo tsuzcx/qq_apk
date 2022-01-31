@@ -1,29 +1,21 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.hiboom.HiBoomFont.HiBoomFontDownloader;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 
-public final class adxn
-  implements HiBoomFont.HiBoomFontDownloader
+class adxn
+  implements View.OnClickListener
 {
-  public String a()
-  {
-    return AppConstants.aK + ".hiboom_font/";
-  }
+  adxn(adxg paramadxg) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      ((VasQuickUpdateManager)localAppRuntime.getManager(183)).a(5L, "font.hifontQQ.android." + paramInt, "HiBoomDownloader");
-    }
+    this.a.a(((TextView)paramView).getText().toString());
+    this.a.w();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adxn
  * JD-Core Version:    0.7.0.1
  */

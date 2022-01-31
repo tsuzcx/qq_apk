@@ -8,11 +8,11 @@ import java.util.ArrayList;
 public final class mobile_search_word_rsp
   extends JceStruct
 {
-  static ArrayList cache_vec_hotword;
-  static ArrayList cache_vec_tab = new ArrayList();
+  static ArrayList<s_search_word> cache_vec_hotword;
+  static ArrayList<s_search_word> cache_vec_tab = new ArrayList();
   public int iRetCode;
-  public ArrayList vec_hotword;
-  public ArrayList vec_tab;
+  public ArrayList<s_search_word> vec_hotword;
+  public ArrayList<s_search_word> vec_tab;
   
   static
   {
@@ -25,7 +25,7 @@ public final class mobile_search_word_rsp
   
   public mobile_search_word_rsp() {}
   
-  public mobile_search_word_rsp(int paramInt, ArrayList paramArrayList1, ArrayList paramArrayList2)
+  public mobile_search_word_rsp(int paramInt, ArrayList<s_search_word> paramArrayList1, ArrayList<s_search_word> paramArrayList2)
   {
     this.iRetCode = paramInt;
     this.vec_tab = paramArrayList1;
@@ -52,7 +52,7 @@ public final class mobile_search_word_rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_search_word_rsp
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.qphone.base.util.QLog;
 public class MainBridgeProxyActivity
   extends PluginProxyActivity
 {
-  protected Class getProxyActivity(String paramString)
+  public Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
   {
     if (QLog.isColorLevel()) {
       QLog.w("MainBridgeProxyActivity", 2, "getProxyActivity:" + paramString);

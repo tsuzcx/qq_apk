@@ -1,31 +1,74 @@
-import com.tencent.ark.ark;
-import com.tencent.mobileqq.statistics.QQCatchedExceptionReporter;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.widget.EditText;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
-public final class zuu
-  implements Runnable
+public class zuu
+  implements zrt
 {
-  public zuu(JSONObject paramJSONObject) {}
+  EditText a;
   
-  public void run()
+  public zuu() {}
+  
+  public zuu(EditText paramEditText)
   {
-    try
+    this.a = paramEditText;
+  }
+  
+  private void a(String paramString)
+  {
+    if (this.a == null) {}
+    for (boolean bool = true;; bool = false)
     {
-      ark.arkNotify("com.tencent.test.groupDragon", "UpdateDragonTitle", this.a.toString(), "json");
-      ark.arkNotify("com.tencent.groupDragon", "UpdateDragonTitle", this.a.toString(), "json");
+      a(paramString, bool);
       return;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      QLog.e(".troop.survey", 2, "Error: arkNotify com.tencent.groupDragon error, .so notloaded", localUnsatisfiedLinkError);
-      QQCatchedExceptionReporter.reportQQCatchedException(localUnsatisfiedLinkError, "TroopHandlerCatchedException", "Error: arkNotify com.tencent.groupDragon error, .so notloaded");
+  }
+  
+  private void a(String paramString, boolean paramBoolean)
+  {
+    QLog.d("DoraemonOpenAPI.test", 2, paramString);
+    if (this.a != null) {
+      this.a.append(paramString);
     }
+    if (paramBoolean) {
+      bbmy.a(BaseApplicationImpl.getApplication(), paramString, 0).a();
+    }
+  }
+  
+  public void onComplete()
+  {
+    a("onComplete\n");
+  }
+  
+  public void onFailure(int paramInt, String paramString)
+  {
+    a("onFailure code=" + paramInt + " msg=" + paramString + "\n");
+  }
+  
+  public void onPermission(int paramInt)
+  {
+    a("onPermission " + paramInt + "\n", true);
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    a("onSuccess " + paramJSONObject + "\n", true);
+    if (this.a != null) {
+      new AlertDialog.Builder(this.a.getContext()).setTitle("onSuccess").setMessage(paramJSONObject.toString()).setNegativeButton(ajjy.a(2131649057), null).create().show();
+    }
+  }
+  
+  public void onTrigger(JSONObject paramJSONObject)
+  {
+    a("onTrigger\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zuu
  * JD-Core Version:    0.7.0.1
  */

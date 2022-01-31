@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.SlideDownFrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/enp" android:background="#33000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="vertical" android:id="@id/b9w" android:background="@color/al3" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip">
+            <TextView android:textSize="18.0dip" android:textColor="@color/bp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gr_" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+            <com.tencent.mobileqq.widget.presseffect.PressEffectImageView android:id="@id/az_" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/do6" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <com.tencent.mobileqq.widget.presseffect.PressEffectTextView android:textSize="17.0dip" android:textColor="@color/bp" android:id="@id/f4c" android:background="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/grz" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <View android:background="@color/aai" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+        <com.tencent.biz.pubaccount.readinjoy.view.NestedScrollView android:id="@id/atq" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:id="@id/atr" android:paddingTop="18.0dip" android:paddingBottom="18.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:id="@id/f4d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="11.5dip" android:layout_alignParentTop="true">
+                    <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/bp" android:id="@id/f4g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gv8" />
+                    <TextView android:textSize="12.0dip" android:textColor="#8c000000" android:id="@id/f4e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="@string/guc" android:layout_weight="1.0" />
+                </LinearLayout>
+                <LinearLayout android:orientation="vertical" android:id="@id/i2o" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/f4f" />
+                <com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView android:id="@id/f4f" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="7.5dip" android:layout_marginTop="10.0dip" android:layout_marginRight="7.5dip" android:stretchMode="columnWidth" android:layout_below="@id/f4d" />
+                <TextView android:textSize="16.0dip" android:textColor="#ff4d7caf" android:gravity="center" android:id="@id/f00" android:background="#fff1f3f6" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="18.0dip" android:layout_marginRight="12.0dip" android:text="@string/pz4" android:layout_below="@id/i2o" />
+            </RelativeLayout>
+        </com.tencent.biz.pubaccount.readinjoy.view.NestedScrollView>
+    </LinearLayout>
+    <ViewStub android:id="@id/hzq" android:layout="@layout/a9t" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</com.tencent.mobileqq.widget.SlideDownFrameLayout>

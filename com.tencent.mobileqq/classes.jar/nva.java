@@ -1,372 +1,144 @@
-import android.annotation.TargetApi;
-import android.media.MediaCodec;
-import android.media.MediaCodec.BufferInfo;
-import android.media.MediaFormat;
-import android.os.SystemClock;
-import android.util.Log;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaExtractor;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer.SeekMode;
-import java.nio.ByteBuffer;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.AnchorData;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.CommonCommentData;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.Serializable;
+import java.math.BigInteger;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-@TargetApi(16)
-public abstract class nva
+public class nva
 {
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private MediaCodec.BufferInfo jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo;
-  private MediaCodec jdField_a_of_type_AndroidMediaMediaCodec;
-  private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
-  private MediaExtractor jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor;
-  protected String a;
-  private List jdField_a_of_type_JavaUtilList;
-  private nvb jdField_a_of_type_Nvb;
-  private nvc jdField_a_of_type_Nvc;
-  private boolean jdField_a_of_type_Boolean;
-  private ByteBuffer[] jdField_a_of_type_ArrayOfJavaNioByteBuffer;
-  private boolean jdField_b_of_type_Boolean;
-  private ByteBuffer[] jdField_b_of_type_ArrayOfJavaNioByteBuffer;
-  private boolean c;
-  private boolean d;
-  private boolean e;
-  
-  public nva(MediaExtractor paramMediaExtractor, boolean paramBoolean, int paramInt, nvc paramnvc)
+  public static String a()
   {
-    this.jdField_a_of_type_JavaLangString = nva.class.getSimpleName();
-    this.jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-    if ((paramMediaExtractor == null) || (paramInt == -1)) {
-      throw new IllegalArgumentException("no track specified");
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor = paramMediaExtractor;
-    this.e = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaExtractor.a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Nvc = paramnvc;
-    this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createDecoderByType(this.jdField_a_of_type_AndroidMediaMediaFormat.getString("mime"));
-    this.jdField_a_of_type_Long = -9223372036854775808L;
-  }
-  
-  public long a()
-  {
-    return this.jdField_a_of_type_Long;
-  }
-  
-  protected final MediaCodec a()
-  {
-    return this.jdField_a_of_type_AndroidMediaMediaCodec;
-  }
-  
-  protected final MediaFormat a()
-  {
-    return this.jdField_a_of_type_AndroidMediaMediaFormat;
-  }
-  
-  public final nvb a()
-  {
-    if (this.jdField_b_of_type_Boolean) {
-      return null;
-    }
-    int i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, 0L);
-    boolean bool;
-    if ((i >= 0) && ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x4) != 0))
+    AladdinConfig localAladdinConfig = Aladdin.getConfig(243);
+    double d = 3.0D;
+    if (localAladdinConfig != null)
     {
-      bool = true;
-      this.jdField_b_of_type_Boolean = bool;
-      if ((!this.jdField_b_of_type_Boolean) || (!this.c)) {
-        break label85;
-      }
-      a();
-      this.jdField_b_of_type_Boolean = false;
-      this.c = false;
-      this.d = true;
+      d = localAladdinConfig.getIntegerFromString("family_comment_card_hide_interval", 3);
+      QLog.d("ReadInJoyCommentHelper", 1, "shoudHideCommentView | comment hide interval  " + d + " 天");
     }
-    for (;;)
-    {
-      return null;
-      bool = false;
-      break;
-      label85:
-      Object localObject;
-      if (i >= 0)
-      {
-        localObject = this.jdField_b_of_type_ArrayOfJavaNioByteBuffer[i];
-        if ((localObject != null) && (this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size != 0))
-        {
-          ((ByteBuffer)localObject).position(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset);
-          ((ByteBuffer)localObject).limit(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset + this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size);
-        }
-        nvb localnvb = (nvb)this.jdField_a_of_type_JavaUtilList.get(0);
-        localnvb.jdField_a_of_type_Int = i;
-        localnvb.jdField_a_of_type_JavaNioByteBuffer = ((ByteBuffer)localObject);
-        localnvb.jdField_a_of_type_Long = this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs;
-        localnvb.jdField_a_of_type_Boolean = this.jdField_b_of_type_Boolean;
-        if (this.d)
-        {
-          this.d = false;
-          localnvb.jdField_b_of_type_Boolean = true;
-        }
-        if (localnvb.jdField_a_of_type_Boolean)
-        {
-          Log.d(this.jdField_a_of_type_JavaLangString, "EOS output");
-          return localnvb;
-        }
-        this.jdField_a_of_type_Long = localnvb.jdField_a_of_type_Long;
-        return localnvb;
-      }
-      if (i == -3)
-      {
-        this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
-        Log.d(this.jdField_a_of_type_JavaLangString, "output buffers have changed.");
-      }
-      else if (i == -2)
-      {
-        localObject = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat();
-        Log.d(this.jdField_a_of_type_JavaLangString, "output format has changed to " + localObject);
-        a((MediaFormat)localObject);
-      }
-      else if (i != -1) {}
-    }
+    return "确定" + (int)d + "天内不再展示家族占领入口？";
   }
   
-  protected nvb a(MediaPlayer.SeekMode paramSeekMode, long paramLong, MediaExtractor paramMediaExtractor, MediaCodec paramMediaCodec)
+  public static boolean a()
   {
-    if (this.e)
+    long l = ((Long)bgmq.a("family_comment_card_hide_timestamp", Long.valueOf(-1L))).longValue();
+    if (l == -1L)
     {
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_b_of_type_Boolean = false;
-      paramMediaCodec.flush();
-      return null;
+      QLog.d("ReadInJoyCommentHelper", 1, "shoudHideCommentView | false cuz never click hide btn ");
+      return false;
     }
-    Log.d(this.jdField_a_of_type_JavaLangString, "seeking to:                 " + paramLong);
-    Log.d(this.jdField_a_of_type_JavaLangString, "extractor current position: " + paramMediaExtractor.a());
-    paramMediaExtractor.a(paramLong, paramSeekMode.a());
-    Log.d(this.jdField_a_of_type_JavaLangString, "extractor new position:     " + paramMediaExtractor.a());
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    paramMediaCodec.flush();
-    if (paramMediaExtractor.c())
+    AladdinConfig localAladdinConfig = Aladdin.getConfig(243);
+    double d = 3.0D;
+    if (localAladdinConfig != null)
     {
-      a();
-      this.d = true;
+      d = localAladdinConfig.getIntegerFromString("family_comment_card_hide_interval", 3);
+      QLog.d("ReadInJoyCommentHelper", 1, "shoudHideCommentView | comment hide interval  " + d + " 天");
     }
-    return a(true, true);
+    if (System.currentTimeMillis() - l <= d * 24.0D * 60.0D * 60.0D * 1000.0D)
+    {
+      QLog.d("ReadInJoyCommentHelper", 1, "shoudHideCommentView | true ");
+      return true;
+    }
+    QLog.d("ReadInJoyCommentHelper", 1, "shoudHideCommentView | false ");
+    return false;
   }
   
-  public final nvb a(boolean paramBoolean1, boolean paramBoolean2)
+  public Bundle a(JSONObject paramJSONObject)
   {
-    while (!this.jdField_b_of_type_Boolean)
-    {
-      nvb localnvb = a();
-      while (a(paramBoolean1)) {}
-      if (localnvb != null) {
-        return localnvb;
-      }
-      if (!paramBoolean2) {
-        return null;
-      }
-    }
-    Log.d(this.jdField_a_of_type_JavaLangString, "EOS NULL");
-    return null;
-  }
-  
-  protected final void a()
-  {
-    int i = 0;
     try
     {
-      long l = SystemClock.elapsedRealtime();
-      this.jdField_a_of_type_AndroidMediaMediaFormat = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.a(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
-      a(this.jdField_a_of_type_AndroidMediaMediaCodec, this.jdField_a_of_type_AndroidMediaMediaFormat);
-      this.jdField_a_of_type_AndroidMediaMediaCodec.start();
-      this.jdField_a_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffers();
-      this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
-      this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_b_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      while (i < this.jdField_b_of_type_ArrayOfJavaNioByteBuffer.length)
-      {
-        this.jdField_a_of_type_JavaUtilList.add(new nvb());
-        i += 1;
+      Object localObject1 = paramJSONObject.optString("uniqueKey");
+      int i = paramJSONObject.optInt("source", 3);
+      Object localObject2 = paramJSONObject.optString("feedsID", "");
+      int j = paramJSONObject.optInt("feedsType", -1);
+      int k = paramJSONObject.optInt("adTag", -1);
+      String str3 = paramJSONObject.optString("title", "");
+      Object localObject3 = paramJSONObject.optString("sourceName", "");
+      String str4 = paramJSONObject.optString("picUrl", "");
+      long l = paramJSONObject.optLong("duration", -1L);
+      String str5 = paramJSONObject.optString("articleID", "");
+      String str1 = paramJSONObject.optString("commentID");
+      String str2 = paramJSONObject.optString("subCommentID");
+      boolean bool = paramJSONObject.optBoolean("isAwesome");
+      int m = paramJSONObject.optInt("jumpType");
+      int n = paramJSONObject.optInt("serviceType", 5);
+      QLog.d("ReadInJoyCommentHelper", 1, "constructCommentConfigData |   uniqueKey = " + (String)localObject1 + "source = " + i + "feedsId = " + (String)localObject2 + " feedsType=" + j + "adTag = " + k + "title = " + str3 + "sourceName = " + (String)localObject3 + "picUrl =" + str4 + "duration = " + l + "articleId =" + str5 + " feedsServiceType = " + n);
+      paramJSONObject = new AnchorData();
+      paramJSONObject.jdField_a_of_type_JavaLangString = str1;
+      paramJSONObject.b = str2;
+      paramJSONObject.jdField_a_of_type_Boolean = bool;
+      localObject2 = new CommonCommentData(str5, j, (String)localObject2, k, str3, (String)localObject3, str4, l);
+      QLog.d("ReadInJoyCommentHelper", 1, "constructCommentConfigData | commonCommentData " + localObject2 + "\n anchorData " + paramJSONObject);
+      localObject3 = new ArticleInfo();
+      ((ArticleInfo)localObject3).innerUniqueID = ((String)localObject1);
+      ((ArticleInfo)localObject3).mTitle = str3;
+      ((ArticleInfo)localObject3).mSummary = "";
+      ((ArticleInfo)localObject3).mFirstPagePicUrl = str4;
+      if ((localObject2 != null) && (!TextUtils.isEmpty(((CommonCommentData)localObject2).getArticleId()))) {
+        ((ArticleInfo)localObject3).mArticleID = Long.parseLong(((CommonCommentData)localObject2).getArticleId());
       }
-      Log.d(this.jdField_a_of_type_JavaLangString, "reinitCodec " + (SystemClock.elapsedRealtime() - l) + "ms");
-      return;
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      this.jdField_a_of_type_AndroidMediaMediaCodec.release();
-      Log.e(this.jdField_a_of_type_JavaLangString, "reinitCodec: invalid surface or format");
-      throw localIllegalArgumentException;
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      this.jdField_a_of_type_AndroidMediaMediaCodec.release();
-      Log.e(this.jdField_a_of_type_JavaLangString, "reinitCodec: illegal state");
-      throw localIllegalStateException;
-    }
-  }
-  
-  protected void a(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
-  {
-    paramMediaCodec.configure(paramMediaFormat, null, null, 0);
-  }
-  
-  protected void a(MediaFormat paramMediaFormat) {}
-  
-  public final void a(MediaPlayer.SeekMode paramSeekMode, long paramLong)
-  {
-    this.jdField_a_of_type_Long = -9223372036854775808L;
-    this.jdField_a_of_type_Nvb = a(paramSeekMode, paramLong, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor, this.jdField_a_of_type_AndroidMediaMediaCodec);
-  }
-  
-  public void a(nvb paramnvb)
-  {
-    b(paramnvb);
-  }
-  
-  public void a(nvb paramnvb, long paramLong)
-  {
-    b(paramnvb);
-  }
-  
-  protected boolean a()
-  {
-    return true;
-  }
-  
-  public final boolean a(boolean paramBoolean)
-  {
-    int j = 4;
-    long l = 0L;
-    if ((this.jdField_a_of_type_Boolean) || (!a())) {}
-    int k;
-    Object localObject;
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-          if ((this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.b() == -1) || (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.b() == this.jdField_a_of_type_Int)) {
-            break;
-          }
-        } while (!paramBoolean);
-        return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.a();
-        k = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueInputBuffer(0L);
-      } while (k < 0);
-      localObject = this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[k];
-      if (!this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.c()) {
-        break;
+      if ((localObject2 != null) && (!TextUtils.isEmpty(((CommonCommentData)localObject2).getFeedsId()))) {
+        ((ArticleInfo)localObject3).mFeedId = new BigInteger(((CommonCommentData)localObject2).getFeedsId()).longValue();
       }
-      this.c = true;
-      this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(k, 0, 0, 0L, 4);
-    } while ((this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.b() <= -1L) || (this.jdField_a_of_type_Nvc == null));
-    this.jdField_a_of_type_Nvc.a(this);
-    return false;
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.b() > -1L) && (this.jdField_a_of_type_Nvc != null)) {
-      this.jdField_a_of_type_Nvc.a(this);
+      if ((localObject2 != null) && (((CommonCommentData)localObject2).getFeedsType() != -1)) {
+        ((ArticleInfo)localObject3).mFeedType = ((CommonCommentData)localObject2).getFeedsType();
+      }
+      QLog.d("ReadInJoyCommentHelper", 1, "constructCommentConfigData | articleInfo " + localObject3);
+      localObject1 = new Bundle();
+      ((Bundle)localObject1).putSerializable("commonCommentData", (Serializable)localObject2);
+      ((Bundle)localObject1).putParcelable("anchorData", paramJSONObject);
+      ((Bundle)localObject1).putParcelable("articleInfo", (Parcelable)localObject3);
+      ((Bundle)localObject1).putInt("source", i);
+      ((Bundle)localObject1).putString("commentId", str1);
+      ((Bundle)localObject1).putString("subCommentId", str2);
+      ((Bundle)localObject1).putBoolean("isAwesome", bool);
+      ((Bundle)localObject1).putInt("jumpType", m);
+      ((Bundle)localObject1).putBoolean("fromViola", true);
+      ((Bundle)localObject1).putInt("serviceType", n);
+      QLog.d("ReadInJoyCommentHelper", 1, "constructCommentConfigData | bundle " + localObject1);
+      return localObject1;
     }
-    int i = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.a((ByteBuffer)localObject, 0);
-    if (i < 0)
+    catch (Exception paramJSONObject)
     {
-      Log.d(this.jdField_a_of_type_JavaLangString, "EOS input");
-      this.jdField_a_of_type_Boolean = true;
-      i = 0;
-      paramBoolean = false;
-      localObject = this.jdField_a_of_type_AndroidMediaMediaCodec;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label265;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyCommentHelper", 2, QLog.getStackTraceString(paramJSONObject));
       }
     }
-    for (;;)
+    return new Bundle();
+  }
+  
+  public ReadInJoyCommentListFragment a(String paramString, nvn paramnvn, nve paramnve)
+  {
+    QLog.d("ReadInJoyCommentHelper", 1, "buildCommentFragment | configJsonStr : " + paramString);
+    try
     {
-      ((MediaCodec)localObject).queueInputBuffer(k, 0, i, l, j);
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.a();
-      }
-      return paramBoolean;
-      l = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.a();
-      paramBoolean = true;
-      break;
-      label265:
-      j = 0;
+      paramString = new JSONObject(paramString);
+      QLog.d("ReadInJoyCommentHelper", 2, "buildCommentFragment | paramJsonStr " + paramString.toString());
+      paramString = a(paramString);
+      ReadInJoyCommentListFragment localReadInJoyCommentListFragment = new ReadInJoyCommentListFragment();
+      localReadInJoyCommentListFragment.setArguments(paramString);
+      localReadInJoyCommentListFragment.a(paramnvn);
+      localReadInJoyCommentListFragment.a(paramnve);
+      return localReadInJoyCommentListFragment;
     }
-  }
-  
-  public long b()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.b();
-  }
-  
-  public final void b()
-  {
-    if (this.e) {
-      return;
-    }
-    for (;;)
+    catch (JSONException paramString)
     {
-      int i = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.b();
-      if ((i == -1) || (i == this.jdField_a_of_type_Int) || (this.jdField_a_of_type_Boolean)) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.a();
+      paramString.printStackTrace();
     }
-  }
-  
-  public void b(nvb paramnvb)
-  {
-    this.jdField_a_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(paramnvb.jdField_a_of_type_Int, false);
-    c(paramnvb);
-  }
-  
-  protected final boolean b()
-  {
-    return this.jdField_b_of_type_Boolean;
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Nvb != null) {
-      a(this.jdField_a_of_type_Nvb, 0L);
-    }
-  }
-  
-  protected final void c(nvb paramnvb)
-  {
-    paramnvb.a();
-    this.jdField_a_of_type_JavaUtilList.add(paramnvb);
-  }
-  
-  protected final boolean c()
-  {
-    return this.e;
-  }
-  
-  public void d()
-  {
-    if (this.jdField_a_of_type_Nvb != null) {
-      a(this.jdField_a_of_type_Nvb);
-    }
-  }
-  
-  public boolean d()
-  {
-    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.b();
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
-    this.jdField_a_of_type_AndroidMediaMediaCodec.release();
-    Log.d(this.jdField_a_of_type_JavaLangString, "decoder released");
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nva
  * JD-Core Version:    0.7.0.1
  */

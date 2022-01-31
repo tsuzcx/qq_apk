@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class im_msg$Msg
-  extends MessageMicro
+  extends MessageMicro<Msg>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "head", "body" }, new Object[] { null, null }, Msg.class);
   public im_msg_body.MsgBody body = new im_msg_body.MsgBody();

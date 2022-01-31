@@ -1,25 +1,24 @@
-import android.graphics.PointF;
-import com.tencent.av.opengl.gesturedetectors.MoveGestureDetector;
-import com.tencent.av.opengl.gesturedetectors.MoveGestureDetector.SimpleOnMoveGestureListener;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
-import dov.com.qq.im.cropvideo.RenderFilter;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
 public class anyz
-  extends MoveGestureDetector.SimpleOnMoveGestureListener
+  implements apca
 {
-  public anyz(CropVideoActivity paramCropVideoActivity) {}
+  public anyz(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public boolean b(MoveGestureDetector paramMoveGestureDetector)
+  public void a()
   {
-    float f1 = paramMoveGestureDetector.a().x;
-    float f2 = paramMoveGestureDetector.a().y;
-    CropVideoActivity.a(this.a).a(f1, f2, 0.0F);
-    return true;
+    UniformDownloadActivity.a(this.a);
+  }
+  
+  public void b()
+  {
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anyz
  * JD-Core Version:    0.7.0.1
  */

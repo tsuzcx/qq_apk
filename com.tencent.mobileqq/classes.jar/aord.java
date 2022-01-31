@@ -1,37 +1,34 @@
-import android.os.Handler;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import dov.com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 
-public class aord
-  implements INetInfoHandler
+class aord
+  implements apca
 {
-  public aord(LbsFilterStatusManager paramLbsFilterStatusManager) {}
+  aord(aorc paramaorc) {}
   
-  public void onNetMobile2None() {}
-  
-  public void onNetMobile2Wifi(String paramString)
+  public void a()
   {
-    long l = Thread.currentThread().getId();
-    if (LbsFilterStatusManager.a(this.a) == l) {
-      LbsFilterStatusManager.a(this.a);
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    localQQAppInterface.a().a(this.a.jdField_a_of_type_JavaLangString, null, localQQAppInterface.getAccount(), 0, false);
+    apck.a(this.a.jdField_a_of_type_JavaLangString);
+    apcb.d(BaseActivity.sTopActivity.getString(2131627191));
+    if (this.a.jdField_a_of_type_Aotc != null) {
+      this.a.jdField_a_of_type_Aotc.a(1);
     }
-    while (LbsFilterStatusManager.a(this.a) == null) {
-      return;
+    if (this.a.jdField_a_of_type_Aotc.b())
+    {
+      long l = this.a.jdField_a_of_type_Aotc.a().b();
+      apck.a(this.a.jdField_a_of_type_Aotc.a(), l);
     }
-    LbsFilterStatusManager.a(this.a).post(new aore(this));
   }
   
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None() {}
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aord
  * JD-Core Version:    0.7.0.1
  */

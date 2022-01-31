@@ -1,23 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.WeishiFeedInfo;
+import java.util.List;
 
-public final class ancn
-  implements Parcelable.Creator
+public abstract interface ancn
 {
-  public WeishiFeedInfo a(Parcel paramParcel)
-  {
-    return new WeishiFeedInfo(paramParcel);
-  }
+  public abstract void a(float paramFloat, List<Integer> paramList);
   
-  public WeishiFeedInfo[] a(int paramInt)
-  {
-    return new WeishiFeedInfo[paramInt];
-  }
+  public abstract void a(List<Integer> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ancn
  * JD-Core Version:    0.7.0.1
  */

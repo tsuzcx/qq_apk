@@ -12,7 +12,7 @@ import com.trunk.feeds_inner_define.feeds_inner_define.FaceRecordSet;
 import com.trunk.group_feeds.group_feeds.GroupFeedsMessage;
 
 public final class oidb_0x8f9$GroupFeedsRecord
-  extends MessageMicro
+  extends MessageMicro<GroupFeedsRecord>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_feeds_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -21,8 +21,8 @@ public final class oidb_0x8f9$GroupFeedsRecord
   public group_feeds.GroupFeedsMessage msg_feeds_content = new group_feeds.GroupFeedsMessage();
   public oidb_0x8f9.FeedsState msg_feeds_state = new oidb_0x8f9.FeedsState();
   public oidb_0x8f9.SourceID msg_source_id = new oidb_0x8f9.SourceID();
-  public final PBRepeatMessageField rpt_concern_uin_info = PBField.initRepeatMessage(oidb_0x8f9.ConcernUinInfo.class);
-  public final PBRepeatMessageField rpt_msg_comments = PBField.initRepeatMessage(oidb_0x8f9.GroupFeedsCommentRecord.class);
+  public final PBRepeatMessageField<oidb_0x8f9.ConcernUinInfo> rpt_concern_uin_info = PBField.initRepeatMessage(oidb_0x8f9.ConcernUinInfo.class);
+  public final PBRepeatMessageField<oidb_0x8f9.GroupFeedsCommentRecord> rpt_msg_comments = PBField.initRepeatMessage(oidb_0x8f9.GroupFeedsCommentRecord.class);
   public final PBUInt32Field uint32_comment_num = PBField.initUInt32(0);
   public final PBUInt32Field uint32_create_time = PBField.initUInt32(0);
   public final PBUInt32Field uint32_feeds_flag = PBField.initUInt32(0);
@@ -40,7 +40,7 @@ public final class oidb_0x8f9$GroupFeedsRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8f9.oidb_0x8f9.GroupFeedsRecord
  * JD-Core Version:    0.7.0.1
  */

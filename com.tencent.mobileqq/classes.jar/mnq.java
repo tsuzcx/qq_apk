@@ -1,19 +1,8 @@
-import android.view.animation.Animation;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.os.Bundle;
 
-class mnq
-  extends AnimateUtils.AnimationAdapter
+public abstract interface mnq
 {
-  mnq(mnp parammnp) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    ReadinjoyTabFrame.a(this.a.a, true);
-    if (ReadinjoyTabFrame.a(this.a.a) != null) {
-      ReadinjoyTabFrame.a(this.a.a, ReadinjoyTabFrame.a(this.a.a), ReadinjoyTabFrame.a(this.a.a));
-    }
-  }
+  public abstract void a(Bundle paramBundle);
 }
 
 

@@ -1,13 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRLoginActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class oyz
-  implements DialogInterface.OnClickListener
+  implements ViewBase.IBuilder
 {
-  public oyz(QRLoginActivity paramQRLoginActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public ViewBase build(VafContext paramVafContext)
+  {
+    return new oyy(paramVafContext);
+  }
 }
 
 

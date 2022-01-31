@@ -1,62 +1,59 @@
 import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.item.LocationItemBuilder;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForText;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.lang.ref.WeakReference;
 
 public class vfm
-  implements View.OnClickListener
+  extends vfu<vfh, vfh>
 {
-  public vfm(LocationItemBuilder paramLocationItemBuilder) {}
+  private int a;
+  public WeakReference<Activity> a;
   
-  public void onClick(View paramView)
+  public vfm(@NonNull Activity paramActivity, int paramInt)
   {
-    AIOUtils.m = true;
-    if (LocationItemBuilder.a(this.a)) {}
-    do
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  protected void a(JobContext paramJobContext, vfh paramvfh)
+  {
+    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localActivity == null)
     {
+      urk.e("Q.qqstory.publish.edit.GeneratePicThumbSegment", "ChangePicArgToVideoArgSegment, activity is null");
+      super.notifyError(new ErrorMessage(-1, "ChangePicArgToVideoArgSegment error"));
       return;
-      MessageForText localMessageForText = (MessageForText)AIOUtils.a(paramView);
-      try
-      {
-        ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a().az();
-        paramView = new Intent(paramView.getContext(), PoiMapActivity.class).putExtra("lat", localMessageForText.latitude).putExtra("lon", localMessageForText.longitude).putExtra("url", localMessageForText.url).putExtra("loc", localMessageForText.location).putExtra("uin", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
-        ((BaseActivity)this.a.jdField_a_of_type_AndroidContentContext).startActivityForResult(paramView, 18);
-        i = 1;
+    }
+    Object localObject = paramvfh.jdField_a_of_type_Vfl.jdField_a_of_type_JavaLangString;
+    paramJobContext = (JobContext)localObject;
+    if (!paramvfh.jdField_a_of_type_Vfl.jdField_b_of_type_Boolean)
+    {
+      paramJobContext = (JobContext)localObject;
+      if (paramvfh.jdField_a_of_type_Vfl.jdField_a_of_type_Boolean) {
+        paramJobContext = paramvfh.jdField_a_of_type_Vfl.jdField_b_of_type_JavaLangString;
       }
-      catch (Exception paramView)
-      {
-        for (;;)
-        {
-          try
-          {
-            ((Activity)this.a.jdField_a_of_type_AndroidContentContext).startActivityForResult(new Intent("android.intent.action.VIEW", Uri.parse(localMessageForText.url)), 0);
-            i = 1;
-          }
-          catch (Exception paramView)
-          {
-            int i = 0;
-          }
-        }
-      }
-    } while ((i == 0) || ((!(this.a.jdField_a_of_type_AndroidContentContext instanceof SplashActivity)) && (!(this.a.jdField_a_of_type_AndroidContentContext instanceof ChatActivity))));
-    ((BaseActivity)this.a.jdField_a_of_type_AndroidContentContext).setCanLock(false);
+    }
+    localObject = new BitmapFactory.Options();
+    ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
+    BitmapFactory.decodeFile(paramJobContext, (BitmapFactory.Options)localObject);
+    int i = ((BitmapFactory.Options)localObject).outWidth;
+    int j = ((BitmapFactory.Options)localObject).outHeight;
+    if (this.jdField_a_of_type_Int == 5) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramvfh.jdField_a_of_type_Vfn = new vfn(localActivity, i, j, paramJobContext, 0.0F, bool, 0, 0.0D, 0.0D, null, false);
+      paramvfh.jdField_a_of_type_JavaLangString = paramJobContext;
+      super.notifyResult(paramvfh);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vfm
  * JD-Core Version:    0.7.0.1
  */

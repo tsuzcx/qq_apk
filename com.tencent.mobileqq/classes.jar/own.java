@@ -1,16 +1,26 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import cooperation.liveroom.LiveRoomProxyActivity;
 
-public class own
-  implements ValueAnimator.AnimatorUpdateListener
+class own
+  implements View.OnClickListener
 {
-  public own(RotateCircleImageView paramRotateCircleImageView) {}
+  own(owl paramowl, int paramInt, qoe paramqoe, opw paramopw) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    RotateCircleImageView.c(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidate();
+    if (this.jdField_a_of_type_Int == 120) {
+      LiveRoomProxyActivity.open(this.jdField_a_of_type_Qoe.a(), this.jdField_a_of_type_Opw.a().mSocialFeedInfo.a.c, "kandian feed click");
+    }
+    qpj localqpj;
+    do
+    {
+      return;
+      localqpj = this.jdField_a_of_type_Qoe.a();
+    } while (localqpj == null);
+    localqpj.a(paramView, this.jdField_a_of_type_Opw.a(), 2);
   }
 }
 

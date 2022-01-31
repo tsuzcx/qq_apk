@@ -1,21 +1,12 @@
-import com.tencent.mobileqq.troop.utils.TroopFileError.SimpleErrorInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.mobileqq.app.automator.AsyncStep;
 
-class ajwr
-  implements Runnable
+public abstract interface ajwr
 {
-  ajwr(ajwq paramajwq, TroopFileTransferManager.Item paramItem) {}
-  
-  public void run()
-  {
-    TroopFileError.SimpleErrorInfo localSimpleErrorInfo = new TroopFileError.SimpleErrorInfo(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FileName, this.jdField_a_of_type_Ajwq.a.e, 3, 210);
-    this.jdField_a_of_type_Ajwq.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 3, localSimpleErrorInfo);
-  }
+  public abstract void a(AsyncStep paramAsyncStep, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajwr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,85 +1,29 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUOESMovieFilter;
-import com.tencent.mobileqq.richmedia.mediacodec.videodecoder.DecodePlayer;
-import com.tencent.mobileqq.richmedia.mediacodec.videodecoder.HWDecodeListener;
-import com.tencent.mobileqq.shortvideo.filter.QQMovieFilter;
-import com.tencent.mobileqq.shortvideo.util.FileUtil;
-import com.tencent.mobileqq.shortvideo.util.VideoUtil;
-import com.tencent.sveffects.SLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.ApolloActionPush;
+import com.tencent.qphone.base.util.QLog;
 
-public class aigb
-  extends Handler
+class aigb
+  implements aigc
 {
-  public aigb(QQMovieFilter paramQQMovieFilter, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  aigb(aiga paramaiga) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt, ApolloActionPush paramApolloActionPush)
   {
-    SLog.c("QQMovieFilter", "handle movie filter msg, what = " + paramMessage.what);
-    switch (paramMessage.what)
+    if ((aiga.a(this.a) != null) && (paramApolloActionPush != null))
     {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloPushManager", 2, "[onActionPush], aioType:" + paramInt + ";pushData:" + paramApolloActionPush.toString());
+      }
+      if ((aiga.a(this.a).jdField_a_of_type_Int == paramInt) && (paramInt == aiga.a(this.a).jdField_a_of_type_Int) && (!TextUtils.isEmpty(aiga.a(this.a).jdField_a_of_type_JavaLangString)) && (aiga.a(this.a).jdField_a_of_type_JavaLangString.equals(String.valueOf(paramApolloActionPush.mSessionId)))) {
+        this.a.a(paramApolloActionPush);
+      }
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if ((QQMovieFilter.a(this.a) != null) && (QQMovieFilter.a(this.a).a() == 1))
-            {
-              SLog.c("QQMovieFilter", "DecodePlayer is preparing");
-              return;
-            }
-            Object localObject = (Object[])paramMessage.obj;
-            QQMovieFilter.a(this.a, (String)localObject[0]);
-            paramMessage = (String)localObject[1];
-            boolean bool = ((Boolean)localObject[2]).booleanValue();
-            QQMovieFilter.a(this.a, ((Float)localObject[3]).floatValue());
-            QQMovieFilter.b(this.a, ((Float)localObject[4]).floatValue());
-            localObject = (HWDecodeListener)localObject[5];
-            if (QQMovieFilter.a(this.a) == null) {
-              QQMovieFilter.a(this.a, new DecodePlayer());
-            }
-            if (QQMovieFilter.a(this.a) != null) {
-              QQMovieFilter.a(this.a).a();
-            }
-            if (!FileUtil.b(QQMovieFilter.a(this.a))) {
-              break;
-            }
-            QQMovieFilter.a(this.a).a(QQMovieFilter.a(this.a), paramMessage);
-            QQMovieFilter.a(this.a).a(bool);
-            QQMovieFilter.a(this.a).a((HWDecodeListener)localObject);
-            QQMovieFilter.a(this.a, new aigc(this.a));
-            QQMovieFilter.a(this.a).a(QQMovieFilter.a(this.a), QQMovieFilter.a(this.a));
-            QQMovieFilter.a(this.a, null);
-            QQMovieFilter.a(this.a).a(0);
-          } while (QQMovieFilter.a(this.a) == null);
-          QQMovieFilter.a(this.a).a(VideoUtil.a(QQMovieFilter.a(this.a)), QQMovieFilter.a(this.a), QQMovieFilter.b(this.a));
-          return;
-          QQMovieFilter.a(this.a);
-          QQMovieFilter.a(this.a).a("", "");
-          return;
-        } while (QQMovieFilter.a(this.a) == null);
-        QQMovieFilter.a(this.a).c();
-        return;
-        QQMovieFilter.a(this.a);
-      } while (QQMovieFilter.a(this.a) == null);
-      QQMovieFilter.a(this.a).a("", "");
-      return;
-    } while (QQMovieFilter.a(this.a) == null);
-    QQMovieFilter.a(this.a).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aigb
  * JD-Core Version:    0.7.0.1
  */

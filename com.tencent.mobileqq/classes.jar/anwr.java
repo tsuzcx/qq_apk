@@ -1,24 +1,24 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.troop.utils.TroopFileUtils;
-import dov.com.qq.im.capture.text.LangTextItem;
-
 public class anwr
-  implements anwk
+  extends anwq
 {
-  public anwr(LangTextItem paramLangTextItem) {}
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
   
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  public anwr(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3)
   {
-    if (paramInt == 0) {
-      return TroopFileUtils.b(paramString);
-    }
-    return "";
+    super(2, paramString1);
+    this.a = paramString2;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.c = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anwr
  * JD-Core Version:    0.7.0.1
  */

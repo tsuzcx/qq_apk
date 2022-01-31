@@ -1,26 +1,19 @@
-import android.util.SparseArray;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class nug
-  implements TVK_IMediaPlayer.OnInfoListener
+class nug
+  implements ViewBase.OnClickListener
 {
-  public nug(VideoViewTVKImpl paramVideoViewTVKImpl) {}
+  nug(ntu paramntu, ViewBase paramViewBase) {}
   
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
+  public void onClick(ViewBase paramViewBase)
   {
-    SLog.d("VideoViewTVKImpl", "mMediaPlayer onInfo, what:%d, meaning:%s, extra:%s", new Object[] { Integer.valueOf(paramInt), (String)VideoViewTVKImpl.a.get(paramInt, "UNKNOWN"), paramObject });
-    ThreadManager.getUIHandler().post(new nuh(this, paramInt, paramObject));
-    return false;
+    ntt.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getNativeView(), this.jdField_a_of_type_Ntu.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nug
  * JD-Core Version:    0.7.0.1
  */

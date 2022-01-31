@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class StructMsg$ButtonInfo
-  extends MessageMicro
+  extends MessageMicro<ButtonInfo>
 {
   public static final int AUTH_NONE = 0;
   public static final int AUTH_SID = 1;
@@ -21,13 +21,13 @@ public final class StructMsg$ButtonInfo
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48, 58, 64, 74, 80, 88 }, new String[] { "id", "name", "key", "url", "auth_type", "type", "sub_button", "event_id", "event_param", "is_need_lbs", "item_id" }, new Object[] { Integer.valueOf(0), "", "", "", Integer.valueOf(0), Integer.valueOf(1), null, Integer.valueOf(1), null, Boolean.valueOf(false), Integer.valueOf(0) }, ButtonInfo.class);
   public final PBEnumField auth_type = PBField.initEnum(0);
   public final PBEnumField event_id = PBField.initEnum(1);
-  public final PBRepeatMessageField event_param = PBField.initRepeatMessage(StructMsg.ButtonInfo_EventInfoParam.class);
+  public final PBRepeatMessageField<StructMsg.ButtonInfo_EventInfoParam> event_param = PBField.initRepeatMessage(StructMsg.ButtonInfo_EventInfoParam.class);
   public final PBUInt32Field id = PBField.initUInt32(0);
   public final PBBoolField is_need_lbs = PBField.initBool(false);
   public final PBUInt32Field item_id = PBField.initUInt32(0);
   public final PBStringField key = PBField.initString("");
   public final PBStringField name = PBField.initString("");
-  public final PBRepeatMessageField sub_button = PBField.initRepeatMessage(ButtonInfo.class);
+  public final PBRepeatMessageField<ButtonInfo> sub_button = PBField.initRepeatMessage(ButtonInfo.class);
   public final PBEnumField type = PBField.initEnum(1);
   public final PBStringField url = PBField.initString("");
 }

@@ -1,85 +1,49 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.script.SpriteScriptManager;
-import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.qphone.base.util.QLog;
+import NS_KING_INTERFACE.stPostFeedDingRsp;
+import android.os.Handler;
+import android.util.Log;
 
 public class rza
-  extends GestureDetector.SimpleOnGestureListener
+  extends rzc
+  implements ryo
 {
-  public rza(BaseChatPie paramBaseChatPie) {}
+  public static String a = "weishi";
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public static void a(String paramString, boolean paramBoolean, int paramInt, Handler paramHandler)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    int i = 1;
+    if (!paramBoolean)
     {
-      SpriteUIHandler localSpriteUIHandler = ((SpriteScriptManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(248)).a();
-      if (localSpriteUIHandler != null) {
-        localSpriteUIHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      }
+      i = 2;
+      Log.e(a, "此次是取消点赞：---------------");
     }
-    return super.onDoubleTap(paramMotionEvent);
+    paramString = new ryz(new sab(paramString, i), paramHandler, new rzb(paramHandler, paramInt), 4300);
+    rys.a().a(paramString);
   }
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void a(ryz paramryz)
   {
-    return super.onDown(paramMotionEvent);
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if ((BaseChatPie.h() == 1) && (!BaseChatPie.a(this.a).booleanValue())) {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getCount() != 0) {}
-    }
-    do
+    if ((paramryz.a instanceof stPostFeedDingRsp))
     {
-      return false;
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null) && (this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getLastVisiblePosition() >= this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getCount() - 1))
+      paramryz = (stPostFeedDingRsp)paramryz.a;
+      if (paramryz == null)
       {
-        paramMotionEvent1 = new int[2];
-        this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildAt(this.a.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildCount() - 1).getLocationOnScreen(paramMotionEvent1);
-        int i = paramMotionEvent1[1];
-        if (BaseChatPie.i(this.a) == i)
-        {
-          this.a.q(1);
-          BaseChatPie.a(this.a, Boolean.valueOf(true));
-          BaseChatPie.g(this.a, -1);
-        }
-        BaseChatPie.g(this.a, i);
+        Log.e(a, "服务器失败！！！");
+        return;
       }
-      if (BaseChatPie.c(this.a)) {
-        this.a.ay();
+      if (paramryz.is_ding == 0)
+      {
+        Log.e(a, "没有点赞~~~~~~~~~~~~~~~~");
+        return;
       }
-    } while (paramFloat2 >= 0.0F);
-    this.a.D = false;
-    return false;
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, "onShowPress");
+      Log.e(a, "已经点赞~~~~~~~~~~~~~~~~");
+      return;
     }
-    this.a.g(false);
-    this.a.ay();
-    super.onShowPress(paramMotionEvent);
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    this.a.g(false);
-    this.a.ay();
-    return false;
+    Log.e(a, "真无语！！！");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rza
  * JD-Core Version:    0.7.0.1
  */

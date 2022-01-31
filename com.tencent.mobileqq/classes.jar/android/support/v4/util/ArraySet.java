@@ -4,7 +4,6 @@ import android.support.annotation.RestrictTo;
 import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Set;
 
 public final class ArraySet<E>
@@ -170,61 +169,16 @@ public final class ArraySet<E>
   private MapCollections<E, E> getCollection()
   {
     if (this.mCollections == null) {
-      this.mCollections = new MapCollections()
-      {
-        protected void colClear()
-        {
-          ArraySet.this.clear();
-        }
-        
-        protected Object colGetEntry(int paramAnonymousInt1, int paramAnonymousInt2)
-        {
-          return ArraySet.this.mArray[paramAnonymousInt1];
-        }
-        
-        protected Map<E, E> colGetMap()
-        {
-          throw new UnsupportedOperationException("not a map");
-        }
-        
-        protected int colGetSize()
-        {
-          return ArraySet.this.mSize;
-        }
-        
-        protected int colIndexOfKey(Object paramAnonymousObject)
-        {
-          return ArraySet.this.indexOf(paramAnonymousObject);
-        }
-        
-        protected int colIndexOfValue(Object paramAnonymousObject)
-        {
-          return ArraySet.this.indexOf(paramAnonymousObject);
-        }
-        
-        protected void colPut(E paramAnonymousE1, E paramAnonymousE2)
-        {
-          ArraySet.this.add(paramAnonymousE1);
-        }
-        
-        protected void colRemoveAt(int paramAnonymousInt)
-        {
-          ArraySet.this.removeAt(paramAnonymousInt);
-        }
-        
-        protected E colSetValue(int paramAnonymousInt, E paramAnonymousE)
-        {
-          throw new UnsupportedOperationException("not a map");
-        }
-      };
+      this.mCollections = new ArraySet.1(this);
     }
     return this.mCollections;
   }
   
   private int indexOf(Object paramObject, int paramInt)
   {
-    int k = this.mSize;
-    if (k == 0) {
+    int m = this.mSize;
+    int i;
+    if (m == 0) {
       i = -1;
     }
     int j;
@@ -233,34 +187,40 @@ public final class ArraySet<E>
       do
       {
         return i;
-        j = ContainerHelpers.binarySearch(this.mHashes, k, paramInt);
+        j = ContainerHelpers.binarySearch(this.mHashes, m, paramInt);
         i = j;
       } while (j < 0);
       i = j;
     } while (paramObject.equals(this.mArray[j]));
-    int i = j + 1;
-    while ((i < k) && (this.mHashes[i] == paramInt))
+    int k = j + 1;
+    while ((k < m) && (this.mHashes[k] == paramInt))
     {
-      if (paramObject.equals(this.mArray[i])) {
-        return i;
+      if (paramObject.equals(this.mArray[k])) {
+        return k;
       }
-      i += 1;
+      k += 1;
     }
     j -= 1;
-    while ((j >= 0) && (this.mHashes[j] == paramInt))
+    for (;;)
     {
+      if ((j < 0) || (this.mHashes[j] != paramInt)) {
+        break label150;
+      }
+      i = j;
       if (paramObject.equals(this.mArray[j])) {
-        return j;
+        break;
       }
       j -= 1;
     }
-    return i ^ 0xFFFFFFFF;
+    label150:
+    return k ^ 0xFFFFFFFF;
   }
   
   private int indexOfNull()
   {
-    int k = this.mSize;
-    if (k == 0) {
+    int m = this.mSize;
+    int i;
+    if (m == 0) {
       i = -1;
     }
     int j;
@@ -269,40 +229,45 @@ public final class ArraySet<E>
       do
       {
         return i;
-        j = ContainerHelpers.binarySearch(this.mHashes, k, 0);
+        j = ContainerHelpers.binarySearch(this.mHashes, m, 0);
         i = j;
       } while (j < 0);
       i = j;
     } while (this.mArray[j] == null);
-    int i = j + 1;
-    while ((i < k) && (this.mHashes[i] == 0))
+    int k = j + 1;
+    while ((k < m) && (this.mHashes[k] == 0))
     {
-      if (this.mArray[i] == null) {
-        return i;
+      if (this.mArray[k] == null) {
+        return k;
       }
-      i += 1;
+      k += 1;
     }
     j -= 1;
-    while ((j >= 0) && (this.mHashes[j] == 0))
+    for (;;)
     {
+      if ((j < 0) || (this.mHashes[j] != 0)) {
+        break label115;
+      }
+      i = j;
       if (this.mArray[j] == null) {
-        return j;
+        break;
       }
       j -= 1;
     }
-    return i ^ 0xFFFFFFFF;
+    label115:
+    return k ^ 0xFFFFFFFF;
   }
   
   public boolean add(E paramE)
   {
-    int k = 8;
+    int k;
     int j;
     int i;
     if (paramE == null)
     {
+      k = indexOfNull();
       j = 0;
-      i = indexOfNull();
-      if (i >= 0) {
+      if (k >= 0) {
         return false;
       }
     }
@@ -311,17 +276,16 @@ public final class ArraySet<E>
       if (this.mIdentityHashCode) {}
       for (i = System.identityHashCode(paramE);; i = paramE.hashCode())
       {
-        m = indexOf(paramE, i);
+        k = indexOf(paramE, i);
         j = i;
-        i = m;
         break;
       }
     }
-    int m = i ^ 0xFFFFFFFF;
+    k ^= 0xFFFFFFFF;
     if (this.mSize >= this.mHashes.length)
     {
       if (this.mSize < 8) {
-        break label244;
+        break label240;
       }
       i = this.mSize + (this.mSize >> 1);
     }
@@ -336,18 +300,19 @@ public final class ArraySet<E>
         System.arraycopy(arrayOfObject, 0, this.mArray, 0, arrayOfObject.length);
       }
       freeArrays(arrayOfInt, arrayOfObject, this.mSize);
-      if (m < this.mSize)
+      if (k < this.mSize)
       {
-        System.arraycopy(this.mHashes, m, this.mHashes, m + 1, this.mSize - m);
-        System.arraycopy(this.mArray, m, this.mArray, m + 1, this.mSize - m);
+        System.arraycopy(this.mHashes, k, this.mHashes, k + 1, this.mSize - k);
+        System.arraycopy(this.mArray, k, this.mArray, k + 1, this.mSize - k);
       }
-      this.mHashes[m] = j;
-      this.mArray[m] = paramE;
+      this.mHashes[k] = j;
+      this.mArray[k] = paramE;
       this.mSize += 1;
       return true;
-      label244:
-      i = k;
-      if (this.mSize < 4) {
+      label240:
+      if (this.mSize >= 4) {
+        i = 8;
+      } else {
         i = 4;
       }
     }
@@ -355,6 +320,7 @@ public final class ArraySet<E>
   
   public void addAll(ArraySet<? extends E> paramArraySet)
   {
+    int i = 0;
     int j = paramArraySet.mSize;
     ensureCapacity(this.mSize + j);
     if (this.mSize == 0) {
@@ -368,7 +334,6 @@ public final class ArraySet<E>
     for (;;)
     {
       return;
-      int i = 0;
       while (i < j)
       {
         add(paramArraySet.valueAt(i));
@@ -497,10 +462,10 @@ public final class ArraySet<E>
   
   public int hashCode()
   {
-    int[] arrayOfInt = this.mHashes;
-    int j = 0;
     int i = 0;
+    int[] arrayOfInt = this.mHashes;
     int k = this.mSize;
+    int j = 0;
     while (i < k)
     {
       j += arrayOfInt[i];
@@ -543,6 +508,7 @@ public final class ArraySet<E>
   
   public boolean removeAll(ArraySet<? extends E> paramArraySet)
   {
+    boolean bool = false;
     int j = paramArraySet.mSize;
     int k = this.mSize;
     int i = 0;
@@ -551,7 +517,10 @@ public final class ArraySet<E>
       remove(paramArraySet.valueAt(i));
       i += 1;
     }
-    return k != this.mSize;
+    if (k != this.mSize) {
+      bool = true;
+    }
+    return bool;
   }
   
   public boolean removeAll(Collection<?> paramCollection)
@@ -611,8 +580,9 @@ public final class ArraySet<E>
   
   public boolean retainAll(Collection<?> paramCollection)
   {
+    int i = this.mSize;
     boolean bool = false;
-    int i = this.mSize - 1;
+    i -= 1;
     while (i >= 0)
     {
       if (!paramCollection.contains(this.mArray[i]))
@@ -639,15 +609,17 @@ public final class ArraySet<E>
   
   public <T> T[] toArray(T[] paramArrayOfT)
   {
-    Object localObject = paramArrayOfT;
     if (paramArrayOfT.length < this.mSize) {
-      localObject = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), this.mSize);
+      paramArrayOfT = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), this.mSize);
     }
-    System.arraycopy(this.mArray, 0, localObject, 0, this.mSize);
-    if (localObject.length > this.mSize) {
-      localObject[this.mSize] = null;
+    for (;;)
+    {
+      System.arraycopy(this.mArray, 0, paramArrayOfT, 0, this.mSize);
+      if (paramArrayOfT.length > this.mSize) {
+        paramArrayOfT[this.mSize] = null;
+      }
+      return paramArrayOfT;
     }
-    return localObject;
   }
   
   public String toString()

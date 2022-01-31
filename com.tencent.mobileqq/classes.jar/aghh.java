@@ -1,20 +1,23 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.ocr.question.SearchQuestionFragment;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import mqq.util.WeakReference;
 
 class aghh
-  implements Runnable
+  implements View.OnClickListener
 {
-  aghh(aghg paramaghg, URLDrawable paramURLDrawable) {}
+  aghh(aggx paramaggx) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Aghg.a.a.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    ((NewPhotoPreviewActivity)this.a.a.get()).finish();
+    baaf.a((Activity)this.a.a.get(), true, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aghh
  * JD-Core Version:    0.7.0.1
  */

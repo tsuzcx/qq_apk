@@ -6,10 +6,10 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class SafeReport$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "LogItem_reportdata" }, new Object[] { null }, ReqBody.class);
-  public final PBRepeatMessageField LogItem_reportdata = PBField.initRepeatMessage(SafeReport.LogItem.class);
+  public final PBRepeatMessageField<SafeReport.LogItem> LogItem_reportdata = PBField.initRepeatMessage(SafeReport.LogItem.class);
 }
 
 

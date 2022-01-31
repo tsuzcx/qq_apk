@@ -1,59 +1,68 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
-import com.tencent.mobileqq.app.LebaHelper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.struct.LebaViewItem;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.QQUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import com.tencent.biz.qqstory.newshare.job.ShareGroupAvatarSaveFileJob.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import java.io.File;
+import java.io.IOException;
+import java.util.Map;
 
 public class tda
-  implements Runnable
+  extends tcy
 {
-  public tda(Leba paramLeba) {}
+  private final String c;
   
-  public void run()
+  private boolean a(txr paramtxr)
   {
-    Object localObject = LebaShowListManager.a().a(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.a.jdField_a_of_type_MqqOsMqqHandler.post(new tdb(this, (List)localObject));
-    if (Leba.a(this.a))
+    boolean bool = false;
+    try
     {
-      Leba.a(this.a, false);
-      long l1 = SystemClock.uptimeMillis();
-      long l2 = Leba.a(this.a);
-      StatisticCollector.a(BaseApplication.getContext()).a(QQUtils.a(), "actLebaShowTime", true, l1 - l2, 0L, null, null);
-      localObject = LebaShowListManager.a().b();
-      if (localObject != null)
-      {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          LebaViewItem localLebaViewItem = (LebaViewItem)((Iterator)localObject).next();
-          if (localLebaViewItem != null) {
-            ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005416", "0X8005416", 0, 0, localLebaViewItem.a.uiResId + "", "", "", "");
-          }
-        }
-      }
+      Bitmap localBitmap = Bitmap.createBitmap(paramtxr.a(), paramtxr.b(), Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas(localBitmap);
+      localCanvas.drawColor(-1);
+      localCanvas.drawBitmap(paramtxr.a(), 0.0F, 0.0F, null);
+      bacm.a(bacm.a(localBitmap, 100), new File(this.c));
+      bool = true;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a.d();
+    catch (IOException paramtxr)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramtxr, new Object[0]);
+      return false;
     }
-    while (!QLog.isColorLevel()) {
-      return;
+    catch (OutOfMemoryError paramtxr)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramtxr, new Object[0]);
     }
-    QLog.e("Q.lebatab.leba", 2, "refreshLebaConfig. mLebaHelper is null(when checkCampusEntry)");
+    return bool;
+    return false;
+  }
+  
+  protected void a(Error paramError)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ShareGroupAvatarSaveFileJob", 2, paramError, new Object[0]);
+    }
+    b(false);
+  }
+  
+  protected void a(Map<String, Object> paramMap)
+  {
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramMap.containsKey("ShareGroupAvatarSaveFileJob_sgi"))) {
+      this.a = ((String)a("ShareGroupAvatarSaveFileJob_sgi"));
+    }
+  }
+  
+  protected void a(txr paramtxr)
+  {
+    ThreadManager.post(new ShareGroupAvatarSaveFileJob.1(this, paramtxr), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tda
  * JD-Core Version:    0.7.0.1
  */

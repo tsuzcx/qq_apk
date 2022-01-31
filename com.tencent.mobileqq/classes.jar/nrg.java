@@ -1,19 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView.WeakReferenceRunnable;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-public final class nrg
-  implements DialogInterface.OnClickListener
+public class nrg
+  implements TVK_SDKMgr.InstallListener
 {
-  public nrg(StoryVideoItem paramStoryVideoItem, String paramString) {}
+  public nrg(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onInstallProgress(float paramFloat)
   {
-    SLog.d("Q.qqstory.player.PlayModeUtils", "onClick delete =%s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem });
-    StoryVideoUploadManager.a(this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface.dismiss();
+    yny.a("ReadInJoyArticleBottomVideoView", "installSDK onInstallProgress arg0=");
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    yny.a("ReadInJoyArticleBottomVideoView", "installSDK onInstalledFailed arg0=");
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    yny.a("ReadInJoyArticleBottomVideoView", "installSDK onInstalledSuccessed");
+    if ((ReadInJoyArticleBottomVideoView.b()) && (ReadInJoyArticleBottomVideoView.a(this.a) != null)) {
+      ReadInJoyArticleBottomVideoView.a(this.a).post(new ReadInJoyArticleBottomVideoView.WeakReferenceRunnable(this.a, 4));
+    }
   }
 }
 

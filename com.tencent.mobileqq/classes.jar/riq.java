@@ -1,138 +1,235 @@
-import android.content.SharedPreferences.Editor;
-import android.util.SparseArray;
-import com.tencent.mfsdk.Config;
-import com.tencent.mfsdk.MagnifierSDK;
-import com.tencent.mfsdk.ReportedStatus;
-import com.tencent.mfsdk.ReportedStatus.CurrentRecord;
-import com.tencent.mfsdk.collector.ResultObject;
-import com.tencent.mfsdk.persist.DBHandler;
-import com.tencent.mfsdk.reporter.ReporterMachine;
-import com.tencent.mobileqq.transfile.NetworkCenter;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Queue;
-import mqq.os.MqqHandler;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.text.TextUtils;
 
-public class riq
-  implements Runnable
+class riq
 {
+  private char jdField_a_of_type_Char = '\000';
+  private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  private List jdField_a_of_type_JavaUtilList;
+  private final ris jdField_a_of_type_Ris;
+  private char[] jdField_a_of_type_ArrayOfChar;
+  private final rio[] jdField_a_of_type_ArrayOfRio;
+  private char jdField_b_of_type_Char = '\000';
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int;
+  private float jdField_c_of_type_Float;
+  private int jdField_c_of_type_Int;
+  private float jdField_d_of_type_Float;
+  private int jdField_d_of_type_Int;
+  private float e;
+  private float f;
+  private float g;
+  private float h;
   
-  private riq(ReporterMachine paramReporterMachine) {}
-  
-  public void run()
+  riq(rio[] paramArrayOfrio, ris paramris)
   {
+    this.jdField_a_of_type_ArrayOfRio = paramArrayOfrio;
+    this.jdField_a_of_type_Ris = paramris;
+  }
+  
+  private void a(int paramInt, boolean paramBoolean)
+  {
+    String str2 = null;
+    this.jdField_a_of_type_ArrayOfChar = null;
+    char c2 = this.jdField_b_of_type_Char;
+    char c1 = c2;
+    if (paramBoolean)
+    {
+      c1 = c2;
+      if (c2 == 0) {
+        c1 = '0';
+      }
+    }
     int i = 0;
-    if (ReportedStatus.jdField_a_of_type_Int > Config.jdField_a_of_type_Int)
+    Object localObject;
+    while (i < this.jdField_a_of_type_ArrayOfRio.length)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Magnifier_ReporterMachine", 2, "[YunYingReport]:End, reported " + ReportedStatus.jdField_a_of_type_Int + " max_report_num " + Config.jdField_a_of_type_Int);
+      localObject = this.jdField_a_of_type_ArrayOfRio[i].a(this.jdField_a_of_type_Char, c1, this.jdField_a_of_type_Ris.a());
+      if (localObject != null)
+      {
+        this.jdField_a_of_type_ArrayOfChar = this.jdField_a_of_type_ArrayOfRio[i].a();
+        this.jdField_a_of_type_Int = ((rip)localObject).jdField_a_of_type_Int;
+        this.jdField_b_of_type_Int = ((rip)localObject).jdField_b_of_type_Int;
+        str2 = this.jdField_a_of_type_ArrayOfRio[i].a();
       }
-      if (MagnifierSDK.jdField_a_of_type_ComTencentMfsdkPersistDBHandler != null) {
-        MagnifierSDK.jdField_a_of_type_ComTencentMfsdkPersistDBHandler.a();
-      }
-      if (MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor != null) {
-        MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("count_today_reported", ReportedStatus.jdField_a_of_type_Int).apply();
-      }
+      i += 1;
     }
-    for (;;)
+    if ((this.jdField_a_of_type_ArrayOfChar != null) && (paramInt > 1) && (!TextUtils.isEmpty(str2)))
     {
-      return;
-      if ((MagnifierSDK.jdField_a_of_type_ComTencentMfsdkPersistDBHandler == null) || (1 != NetworkCenter.a().a()))
+      i = Math.min(paramInt - 1, 5);
+      String str1 = new String(this.jdField_a_of_type_ArrayOfChar);
+      if (this.jdField_a_of_type_Ris.a() == 1)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("Magnifier_ReporterMachine", 2, "[YunYingReport]:Next try, because MagnifierSDK.dbHandler == null || NetType.WIFI != NetworkCenter.getInstance().getNetType()");
-        }
-        ReporterMachine.a().postDelayed(this, 1800000L);
-        return;
-      }
-      if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty())) {}
-      try
-      {
-        ReporterMachine.b((ResultObject)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_Int));
-        label173:
-        this.jdField_a_of_type_Int += 1;
-        if (this.jdField_a_of_type_Int < this.jdField_a_of_type_JavaUtilList.size())
+        paramInt = 0;
+        for (;;)
         {
-          ReporterMachine.a().postDelayed(this, 500L);
-          return;
-        }
-        MagnifierSDK.jdField_a_of_type_ComTencentMfsdkPersistDBHandler.a("result_objects", true);
-        if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
-          this.jdField_a_of_type_JavaUtilList.clear();
-        }
-        this.jdField_a_of_type_Int = 0;
-        ReporterMachine.a().postDelayed(this, 1800000L);
-        int j = ReportedStatus.jdField_a_of_type_AndroidUtilSparseArray.size();
-        if (MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor == null) {
-          continue;
-        }
-        Object localObject1;
-        if (i < j)
-        {
-          int k = ReportedStatus.jdField_a_of_type_AndroidUtilSparseArray.keyAt(i);
-          if (k > 100)
-          {
-            localObject1 = (ReportedStatus.CurrentRecord)ReportedStatus.jdField_a_of_type_AndroidUtilSparseArray.get(k);
-            if (localObject1 != null) {
-              break label321;
-            }
-          }
-          for (;;)
-          {
-            i += 1;
+          localObject = str1;
+          if (paramInt >= i) {
             break;
-            label321:
-            MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("count_plugin_" + String.valueOf(k), ((ReportedStatus.CurrentRecord)localObject1).jdField_a_of_type_Int);
           }
+          str1 = str1 + str2;
+          this.jdField_a_of_type_Int += str2.length();
+          paramInt += 1;
         }
-        MagnifierSDK.jdField_a_of_type_AndroidContentSharedPreferences$Editor.apply();
-        return;
-        this.jdField_a_of_type_JavaUtilList = MagnifierSDK.jdField_a_of_type_ComTencentMfsdkPersistDBHandler.a(true);
-        if ((ReporterMachine.a() != null) && (!ReporterMachine.a().isEmpty())) {}
-        try
-        {
-          this.jdField_a_of_type_JavaUtilList.addAll(ReporterMachine.a());
-          ReporterMachine.a().clear();
-          this.jdField_a_of_type_Int = 0;
-          if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty())) {
-            break label546;
-          }
-          localObject1 = ReporterMachine.a().iterator();
-          while (((Iterator)localObject1).hasNext())
-          {
-            Object localObject3 = (String)((Iterator)localObject1).next();
-            try
-            {
-              localObject3 = new File((String)localObject3);
-              if ((localObject3 != null) && (((File)localObject3).isFile())) {
-                ((File)localObject3).delete();
-              }
-            }
-            catch (Exception localException2) {}
-          }
-          ReporterMachine.a().clear();
-        }
-        finally {}
-        ReporterMachine.a().postDelayed(this, 1800000L);
-        return;
-        label546:
-        ReporterMachine.a().postDelayed(this, 500L);
-        return;
       }
-      catch (Exception localException1)
+      localObject = str1;
+      if (this.jdField_a_of_type_Ris.a() == 2)
       {
-        break label173;
+        paramInt = 0;
+        for (;;)
+        {
+          localObject = str1;
+          if (paramInt >= i) {
+            break;
+          }
+          str1 = str1 + str2;
+          this.jdField_b_of_type_Int += str2.length();
+          paramInt += 1;
+        }
+      }
+      this.jdField_a_of_type_ArrayOfChar = ((String)localObject).toCharArray();
+    }
+    if (this.jdField_a_of_type_ArrayOfChar == null)
+    {
+      if (this.jdField_a_of_type_Char == this.jdField_b_of_type_Char)
+      {
+        this.jdField_a_of_type_ArrayOfChar = new char[] { this.jdField_a_of_type_Char };
+        this.jdField_b_of_type_Int = 0;
+        this.jdField_a_of_type_Int = 0;
       }
     }
+    else {
+      return;
+    }
+    this.jdField_a_of_type_ArrayOfChar = new char[] { this.jdField_a_of_type_Char, this.jdField_b_of_type_Char };
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 1;
+  }
+  
+  private boolean a(Canvas paramCanvas, Paint paramPaint, char[] paramArrayOfChar, int paramInt, float paramFloat)
+  {
+    if ((paramInt >= 0) && (paramInt < paramArrayOfChar.length))
+    {
+      paramCanvas.drawText(paramArrayOfChar, paramInt, 1, 0.0F, paramFloat, paramPaint);
+      return true;
+    }
+    return false;
+  }
+  
+  private void b()
+  {
+    float f1 = this.jdField_a_of_type_Ris.a(this.jdField_b_of_type_Char);
+    if ((this.jdField_d_of_type_Float == this.e) && (this.e != f1))
+    {
+      this.e = f1;
+      this.jdField_d_of_type_Float = f1;
+      this.f = f1;
+    }
+  }
+  
+  char a()
+  {
+    return this.jdField_a_of_type_Char;
+  }
+  
+  float a()
+  {
+    b();
+    return this.jdField_d_of_type_Float;
+  }
+  
+  void a()
+  {
+    b();
+    this.f = this.jdField_d_of_type_Float;
+  }
+  
+  void a(float paramFloat, boolean paramBoolean)
+  {
+    if (paramFloat == 1.0F)
+    {
+      this.jdField_a_of_type_Char = this.jdField_b_of_type_Char;
+      this.g = 0.0F;
+      this.h = 0.0F;
+    }
+    float f1 = this.jdField_a_of_type_Ris.a();
+    float f2 = Math.abs(this.jdField_b_of_type_Int - this.jdField_a_of_type_Int) * f1 * paramFloat / f1;
+    float f3 = (int)f2;
+    float f4 = this.h;
+    this.jdField_a_of_type_Float = ((f2 - f3) * f1 * this.jdField_d_of_type_Int + f4 * (1.0F - paramFloat));
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_c_of_type_Int = ((int)f2 * this.jdField_d_of_type_Int + i);
+    this.jdField_b_of_type_Float = f1;
+    if (paramBoolean)
+    {
+      this.jdField_d_of_type_Float = Math.max(this.e, this.jdField_c_of_type_Float);
+      if (paramFloat > 0.999F)
+      {
+        this.jdField_d_of_type_Float = this.e;
+        if (this.jdField_b_of_type_Char == 0) {
+          this.jdField_c_of_type_Int = 0;
+        }
+      }
+      return;
+    }
+    this.jdField_d_of_type_Float = (this.jdField_c_of_type_Float + (this.e - this.jdField_c_of_type_Float) * paramFloat);
+  }
+  
+  void a(int paramInt, char paramChar, boolean paramBoolean)
+  {
+    int i = 1;
+    this.jdField_b_of_type_Char = paramChar;
+    this.jdField_c_of_type_Float = this.jdField_d_of_type_Float;
+    this.e = this.jdField_a_of_type_Ris.a(paramChar);
+    this.f = Math.max(this.jdField_c_of_type_Float, this.e);
+    a(paramInt, paramBoolean);
+    if (this.jdField_b_of_type_Int >= this.jdField_a_of_type_Int)
+    {
+      paramInt = 1;
+      if (paramInt == 0) {
+        break label93;
+      }
+    }
+    label93:
+    for (paramInt = i;; paramInt = -1)
+    {
+      this.jdField_d_of_type_Int = paramInt;
+      this.h = this.g;
+      this.g = 0.0F;
+      return;
+      paramInt = 0;
+      break;
+    }
+  }
+  
+  void a(Canvas paramCanvas, Paint paramPaint)
+  {
+    if (a(paramCanvas, paramPaint, this.jdField_a_of_type_ArrayOfChar, this.jdField_c_of_type_Int, this.jdField_a_of_type_Float))
+    {
+      if (this.jdField_c_of_type_Int >= 0) {
+        this.jdField_a_of_type_Char = this.jdField_a_of_type_ArrayOfChar[this.jdField_c_of_type_Int];
+      }
+      this.g = this.jdField_a_of_type_Float;
+    }
+    a(paramCanvas, paramPaint, this.jdField_a_of_type_ArrayOfChar, this.jdField_c_of_type_Int + 1, this.jdField_a_of_type_Float - this.jdField_b_of_type_Float);
+    a(paramCanvas, paramPaint, this.jdField_a_of_type_ArrayOfChar, this.jdField_c_of_type_Int - 1, this.jdField_a_of_type_Float + this.jdField_b_of_type_Float);
+  }
+  
+  char b()
+  {
+    return this.jdField_b_of_type_Char;
+  }
+  
+  float b()
+  {
+    b();
+    return this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     riq
  * JD-Core Version:    0.7.0.1
  */

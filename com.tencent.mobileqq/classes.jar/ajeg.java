@@ -1,46 +1,47 @@
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.mobileqq.troop.utils.TroopBarUtils;
-import com.tencent.mobileqq.troop.widget.PublishItemContainer;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajeg
+class ajeg
   extends BroadcastReceiver
 {
-  public ajeg(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  ajeg(ajef paramajef) {}
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramContext = paramIntent.getAction();
-    if ("key_photo_delete_action".equals(paramContext))
+    if (!TextUtils.isEmpty(ajef.a(this.a)))
     {
-      int i = paramIntent.getIntExtra("key_photo_delete_position", -1);
-      if ((i >= 0) && (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())) {
-        this.a.jdField_a_of_type_JavaUtilArrayList.remove(i);
+      int i = paramIntent.getIntExtra("result", -1);
+      paramContext = "{ \"ret\": " + i + " }";
+      if (QLog.isColorLevel()) {
+        QLog.d("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb js req method = setFriendStatus, return = " + paramContext);
+      }
+      if (i != 0) {
+        break label176;
+      }
+      if (ajef.a(this.a) != null)
+      {
+        paramContext = new Intent(ajef.a(this.a), ChatActivity.class);
+        paramContext.putExtra("uin", ajed.aB);
+        paramContext.putExtra("uintype", 0);
+        paramContext.putExtra("uinname", "babyQ");
+        paramContext.putExtra("selfSet_leftViewText", ajef.a(this.a).getString(2131625011));
+        ajef.a(this.a).startActivity(paramContext);
+        ajef.a(this.a).finish();
       }
     }
-    do
-    {
-      do
-      {
-        return;
-        if (!"key_audio_delete_action".equals(paramContext)) {
-          break;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
-      } while (!this.a.k);
-      TroopBarUtils.a(this.a.m, this.a.n, "del_record", this.a.o, "", "", "");
-      return;
-    } while (!"key_photo_add_action".equals(paramContext));
-    this.a.g();
+    return;
+    label176:
+    this.a.callJs(ajef.a(this.a) + "(" + paramContext + ");");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajeg
  * JD-Core Version:    0.7.0.1
  */

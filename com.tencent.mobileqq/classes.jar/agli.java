@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 
-class agli
-  implements Runnable
+public class agli
+  implements DialogInterface.OnClickListener
 {
-  agli(aglh paramaglh, String paramString) {}
+  public agli(SendHbActivity paramSendHbActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQToast.a(this.jdField_a_of_type_Aglh.a.getApplicationContext(), this.jdField_a_of_type_JavaLangString, 1).b(this.jdField_a_of_type_Aglh.a.getTitleBarHeight());
+    paramDialogInterface.dismiss();
+    SendHbActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agli
  * JD-Core Version:    0.7.0.1
  */

@@ -54,15 +54,15 @@ public class b
     }
     synchronized (c)
     {
-      if (e.length() > 20480)
+      if (e.length() > 40960)
       {
         e.delete(0, e.length() / 2);
-        e.append("log has been cut len ").append(e.length() / 2).append("\n");
+        e.append("log has been cut len ").append(e.length()).append("\n");
       }
     }
     try
     {
-      e.append(util.getDate()).append(util.getCurrentPid()).append(util.getThreadId()).append(util.getLineInfo(3)).append(util.getSvnVersion()).append(util.getUser(paramString1)).append(paramString2).append("\n");
+      e.append(util.getDate()).append(util.getCurrentPid()).append(util.getThreadId()).append(util.getLineInfo(3)).append(util.getUser(paramString1)).append(paramString2).append("\n");
       return;
       paramString1 = finally;
       throw paramString1;

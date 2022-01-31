@@ -1,19 +1,62 @@
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.Doraemon.monitor.DoraemonAPIReporterProxy.1.1;
+import com.tencent.mobileqq.Doraemon.monitor.DoraemonAPIReporterProxy.1.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
 
 public class zum
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public zum(TroopHandler paramTroopHandler, String paramString, long paramLong, TroopInfo paramTroopInfo) {}
+  zum(zul paramzul) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    TroopHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo);
+    paramContext = this.a.a;
+    if (paramContext == null) {}
+    do
+    {
+      return;
+      str1 = paramIntent.getAction();
+      if ("com.tencent.mobileqq.Doraemon.monitor.update".equals(str1))
+      {
+        str1 = paramIntent.getStringExtra("key");
+        int i = paramIntent.getIntExtra("type", 0);
+        String str2 = paramIntent.getStringExtra("appid");
+        String str3 = paramIntent.getStringExtra("api");
+        long l1 = paramIntent.getLongExtra("remain", 0L);
+        long l2 = paramIntent.getLongExtra("time", 0L);
+        if (QLog.isColorLevel()) {
+          QLog.d("DoraemonOpenAPI.report", 2, "receive update key=" + str1 + ", api=" + str3 + ", remain=" + l1 + ", exp=" + l2);
+        }
+        ThreadManager.getUIHandler().post(new DoraemonAPIReporterProxy.1.1(this, paramContext, str1, i, str2, str3, l1, l2));
+        return;
+      }
+    } while (!"com.tencent.mobileqq.Doraemon.monitor.update_batch".equals(str1));
+    String str1 = paramIntent.getStringExtra("key");
+    paramIntent.getIntExtra("type", 0);
+    paramIntent.getStringExtra("appid");
+    try
+    {
+      paramIntent = (HashMap)paramIntent.getSerializableExtra("map");
+      if (QLog.isColorLevel()) {
+        QLog.d("DoraemonOpenAPI.report", 2, "receive update all key=" + str1);
+      }
+      ThreadManager.getUIHandler().post(new DoraemonAPIReporterProxy.1.2(this, paramContext, str1, paramIntent));
+      return;
+    }
+    catch (ClassCastException paramContext)
+    {
+      QLog.e("DoraemonOpenAPI.report", 1, "illegal data");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zum
  * JD-Core Version:    0.7.0.1
  */

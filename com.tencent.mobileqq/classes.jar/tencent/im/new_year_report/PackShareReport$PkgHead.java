@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class PackShareReport$PkgHead
-  extends MessageMicro
+  extends MessageMicro<PkgHead>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field cmdtype = PBField.initUInt32(0);
@@ -28,7 +28,7 @@ public final class PackShareReport$PkgHead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.new_year_report.PackShareReport.PkgHead
  * JD-Core Version:    0.7.0.1
  */

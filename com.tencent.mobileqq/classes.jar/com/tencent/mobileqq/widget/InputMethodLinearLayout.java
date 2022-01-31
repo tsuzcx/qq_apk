@@ -6,12 +6,13 @@ import android.util.AttributeSet;
 import android.view.Display;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
+import bbju;
 
 public class InputMethodLinearLayout
   extends LinearLayout
 {
   private int jdField_a_of_type_Int;
-  protected InputMethodLinearLayout.onSizeChangeListenner a;
+  protected bbju a;
   private boolean jdField_a_of_type_Boolean;
   private int b;
   private int c;
@@ -42,14 +43,14 @@ public class InputMethodLinearLayout
   
   public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodLinearLayout$onSizeChangeListenner != null) && (paramInt1 == paramInt3) && (paramInt3 != 0) && (paramInt4 != 0)) {
+    if ((this.jdField_a_of_type_Bbju != null) && (paramInt1 == paramInt3) && (paramInt3 != 0) && (paramInt4 != 0)) {
       if ((paramInt2 >= paramInt4) || (Math.abs(paramInt2 - paramInt4) <= this.d * 1 / 4)) {
         break label90;
       }
     }
     for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodLinearLayout$onSizeChangeListenner.a(this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_Bbju.a(this.jdField_a_of_type_Boolean);
       measure(this.jdField_a_of_type_Int - paramInt1 + getWidth(), this.b - paramInt2 + getHeight());
       label90:
       do
@@ -59,14 +60,14 @@ public class InputMethodLinearLayout
     }
   }
   
-  public void setOnSizeChangedListenner(InputMethodLinearLayout.onSizeChangeListenner paramonSizeChangeListenner)
+  public void setOnSizeChangedListenner(bbju parambbju)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodLinearLayout$onSizeChangeListenner = paramonSizeChangeListenner;
+    this.jdField_a_of_type_Bbju = parambbju;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.InputMethodLinearLayout
  * JD-Core Version:    0.7.0.1
  */

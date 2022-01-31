@@ -1,69 +1,112 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.SubscribeResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.statistics.ReportController;
-import mqq.observer.BusinessObserver;
+import android.os.SystemClock;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.DownloadListener;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import java.net.URL;
 
 class vmu
-  implements BusinessObserver
+  implements URLDrawable.DownloadListener, URLDrawable.URLDrawableListener
 {
-  vmu(vmt paramvmt, String paramString) {}
+  public static String c;
+  public static int f = 1;
+  public static int g = 2;
+  public static int h = 4;
+  public static int i = 8;
+  public static int j = 16;
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = 0L;
+  URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
+  String jdField_a_of_type_JavaLangString;
+  vmw jdField_a_of_type_Vmw;
+  int jdField_b_of_type_Int = 0;
+  long jdField_b_of_type_Long = 0L;
+  String jdField_b_of_type_JavaLangString = "";
+  int c;
+  int d = 0;
+  int e = 0;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  static
   {
-    if (paramBoolean) {}
-    for (;;)
-    {
-      int i;
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          mobileqq_mp.SubscribeResponse localSubscribeResponse = new mobileqq_mp.SubscribeResponse();
-          localSubscribeResponse.mergeFrom(paramBundle);
-          paramInt = ((mobileqq_mp.RetInfo)localSubscribeResponse.ret_info.get()).ret_code.get();
-          if (paramInt == 0)
-          {
-            i = 1;
-            paramInt = 1;
-          }
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        paramInt = 0;
-      }
-      try
-      {
-        StructingMsgItemBuilder.a(this.jdField_a_of_type_Vmt.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Vmt.jdField_a_of_type_AndroidAppActivity);
-        ReportController.b(this.jdField_a_of_type_Vmt.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a, "dc00899", "Pb_account_lifeservice", "", "0X8006513", "0X8006513", 0, 0, "" + paramInt, "" + this.jdField_a_of_type_JavaLangString, "", "");
-        return;
-      }
-      catch (Exception paramBundle)
-      {
-        for (;;)
-        {
-          paramInt = i;
-        }
-      }
-      StructingMsgItemBuilder.b(this.jdField_a_of_type_Vmt.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Vmt.jdField_a_of_type_AndroidAppActivity);
-      break label236;
-      StructingMsgItemBuilder.b(this.jdField_a_of_type_Vmt.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Vmt.jdField_a_of_type_AndroidAppActivity);
-      break label236;
-      StructingMsgItemBuilder.b(this.jdField_a_of_type_Vmt.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Vmt.jdField_a_of_type_AndroidAppActivity);
-      continue;
-      StructingMsgItemBuilder.b(this.jdField_a_of_type_Vmt.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, this.jdField_a_of_type_Vmt.jdField_a_of_type_AndroidAppActivity);
-      label236:
-      paramInt = 0;
-    }
+    jdField_c_of_type_JavaLangString = "story_url_drawable";
+  }
+  
+  public vmu(vmw paramvmw, URLDrawable paramURLDrawable, String paramString)
+  {
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
+    this.jdField_a_of_type_Vmw = paramvmw;
+    this.jdField_a_of_type_JavaLangString = paramURLDrawable.getURL().toString();
+    this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  void a()
+  {
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = this.jdField_b_of_type_Long;
+    urp.b(jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, 0, this.jdField_b_of_type_Int, new String[] { String.valueOf(this.jdField_a_of_type_Long), String.valueOf(l1 - l2), String.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString });
+  }
+  
+  public void onFileDownloadFailed(int paramInt)
+  {
+    this.jdField_b_of_type_Int |= g;
+    this.jdField_a_of_type_Int = paramInt;
+    urk.a("Q.qqstory.UIUtils", "onFileDownloadFailed() %s, error(%d), %s, %d", this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt), this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
+  }
+  
+  public void onFileDownloadStarted()
+  {
+    this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+    urk.a("Q.qqstory.UIUtils", "onFileDownloadStarted() %s, %s, %d", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
+  }
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    this.jdField_b_of_type_Int |= f;
+    this.jdField_a_of_type_Long = paramLong;
+    urk.a("Q.qqstory.UIUtils", "onFileDownloadSucceed() %s, %d, %s, %d", this.jdField_a_of_type_JavaLangString, Long.valueOf(paramLong), this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
+  }
+  
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  {
+    this.jdField_b_of_type_Int |= j;
+    urk.a("Q.qqstory.UIUtils", "onLoadCanceled() %s, %s, %d", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
+    a();
+    this.e += 1;
+    this.jdField_a_of_type_Vmw.a(this);
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    this.jdField_b_of_type_Int |= i;
+    urk.a("Q.qqstory.UIUtils", "onLoadFialed() %s, %s, %d", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
+    a();
+    this.jdField_c_of_type_Int += 1;
+    this.jdField_a_of_type_Vmw.a(this);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    urk.a("Q.qqstory.UIUtils", "onLoadProgressed(%d/10000%%) %s, %s, %d", Integer.valueOf(paramInt), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    this.jdField_b_of_type_Int |= h;
+    urk.a("Q.qqstory.UIUtils", "onLoadSuccessed() %s, %s, %d", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
+    a();
+    this.d += 1;
+    this.jdField_a_of_type_Vmw.a(this);
+  }
+  
+  public String toString()
+  {
+    return "DrawableListenerHolder{url='" + this.jdField_a_of_type_JavaLangString + '\'' + ", fileSize=" + this.jdField_a_of_type_Long + ", startTime=" + this.jdField_b_of_type_Long + ", errorCode=" + this.jdField_a_of_type_Int + ", result=" + this.jdField_b_of_type_Int + ", loadFailTime=" + this.jdField_c_of_type_Int + ", loadSuccessTime=" + this.d + ", loadCancelTime=" + this.e + ", op_name='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vmu
  * JD-Core Version:    0.7.0.1
  */

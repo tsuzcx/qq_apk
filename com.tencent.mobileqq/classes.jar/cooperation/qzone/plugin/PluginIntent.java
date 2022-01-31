@@ -1,29 +1,32 @@
 package cooperation.qzone.plugin;
 
+import NS_MOBILE_CLIENT_UPDATE.UPDATE_INFO;
 import android.content.Context;
+import bfzt;
 import java.util.ArrayList;
 import mqq.app.NewIntent;
+import mqq.app.Servlet;
 
 public class PluginIntent
   extends NewIntent
 {
-  PluginIntent.OnResultListner a;
-  public ArrayList a;
-  public ArrayList b;
+  bfzt a;
+  public ArrayList<UPDATE_INFO> a;
+  public ArrayList<UPDATE_INFO> b;
   
-  public PluginIntent(Context paramContext, Class paramClass)
+  public PluginIntent(Context paramContext, Class<? extends Servlet> paramClass)
   {
     super(paramContext, paramClass);
   }
   
-  public PluginIntent.OnResultListner a()
+  public bfzt a()
   {
     return this.a;
   }
   
-  public void a(PluginIntent.OnResultListner paramOnResultListner)
+  public void a(bfzt parambfzt)
   {
-    this.a = paramOnResultListner;
+    this.a = parambfzt;
   }
 }
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="download_progress_bar" />
+    <item type="id" name="error_icon" />
+    <item type="id" name="load_progress_bar" />
+    <item type="id" name="loading_tips" />
+    <item type="id" name="progress_container" />
+    <item type="id" name="progress_text" />
+    <item type="id" name="room_bkg" />
+    <item type="id" name="try_again" />
+</resources>

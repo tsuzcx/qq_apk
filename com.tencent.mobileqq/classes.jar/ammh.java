@@ -1,36 +1,61 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ChildDrawingOrderCallback;
-import com.tencent.widget.itemtouchhelper.ItemTouchHelper;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class ammh
-  implements RecyclerView.ChildDrawingOrderCallback
+  extends alzl<ammg>
 {
-  public ammh(ItemTouchHelper paramItemTouchHelper) {}
-  
-  public int onGetChildDrawingOrder(int paramInt1, int paramInt2)
+  public static ammg a()
   {
-    if (this.a.jdField_a_of_type_AndroidViewView == null) {}
-    int i;
-    do
-    {
-      return paramInt2;
-      int j = this.a.d;
-      i = j;
-      if (j == -1)
-      {
-        i = this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.indexOfChild(this.a.jdField_a_of_type_AndroidViewView);
-        this.a.d = i;
-      }
-      if (paramInt2 == paramInt1 - 1) {
-        return i;
-      }
-    } while (paramInt2 < i);
-    return paramInt2 + 1;
+    return (ammg)alzw.a().a(451);
+  }
+  
+  public int a()
+  {
+    return 451;
+  }
+  
+  @NonNull
+  public ammg a(int paramInt)
+  {
+    return new ammg();
+  }
+  
+  @Nullable
+  public ammg a(alzs[] paramArrayOfalzs)
+  {
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
+      return ammg.a(paramArrayOfalzs);
+    }
+    return null;
+  }
+  
+  public Class<ammg> a()
+  {
+    return ammg.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(ammg paramammg) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ammh
  * JD-Core Version:    0.7.0.1
  */

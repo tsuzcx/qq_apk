@@ -1,92 +1,25 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import android.content.SharedPreferences;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.common.app.AppInterface;
+import mqq.app.MobileQQ;
 
 public class slr
-  extends BizTroopObserver
 {
-  public slr(Conversation paramConversation) {}
-  
-  public void a(int paramInt1, int paramInt2, Map paramMap, String paramString)
+  public static String a(QQUserUIItem paramQQUserUIItem)
   {
-    paramString = this.a.a();
-    String str1 = this.a.a.getCurrentAccountUin();
-    if ((paramMap != null) && (paramMap.size() > 0))
-    {
-      Iterator localIterator = paramMap.keySet().iterator();
-      paramInt1 = 0;
-      if (localIterator.hasNext())
-      {
-        String str2 = (String)localIterator.next();
-        paramInt2 = ((Integer)paramMap.get(str2)).intValue();
-        if (paramInt2 == 4000) {
-          SharedPreUtils.k(paramString, str1, str2);
-        }
-      }
-    }
-    for (;;)
-    {
-      break;
-      if (paramInt2 != 0)
-      {
-        paramInt1 = 1;
-        continue;
-        if (paramInt1 == 0) {
-          SharedPreUtils.l(this.a.a(), this.a.a.getCurrentAccountUin());
-        }
-        return;
-      }
-    }
+    paramQQUserUIItem = tfy.a();
+    return paramQQUserUIItem.getApplication().getSharedPreferences("public_account_qq_mail_" + paramQQUserUIItem.getCurrentAccountUin(), 0).getString("key_story_qim_online_icon_url", null);
   }
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public static String b(QQUserUIItem paramQQUserUIItem)
   {
-    if (paramInt2 != 0)
-    {
-      paramString1 = paramString2;
-      if (!this.a.a().isFinishing())
-      {
-        paramString1 = paramString2;
-        if (Conversation.a(this.a))
-        {
-          paramString1 = paramString2;
-          if (TextUtils.isEmpty(paramString2)) {
-            paramString1 = this.a.a().getString(2131435596);
-          }
-          QQToast.a(this.a.a(), 1, paramString1, 0).a();
-        }
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent", 2, "onSetCommonUsedTroop, retCode = " + paramInt2 + " , wording = " + paramString1);
-      }
-      return;
-      this.a.a(9, paramString1, 1);
-      paramString1 = paramString2;
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if ((paramString1 != null) && (paramString2 != null)) {
-      this.a.a(8, paramString1, 1);
-    }
+    paramQQUserUIItem = tfy.a();
+    return paramQQUserUIItem.getApplication().getSharedPreferences("public_account_qq_mail_" + paramQQUserUIItem.getCurrentAccountUin(), 0).getString("profile_card_qim_online_url", null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     slr
  * JD-Core Version:    0.7.0.1
  */

@@ -6,11 +6,11 @@ import android.graphics.Bitmap.Config;
 public class IBitmapFactory$DefaultBitmapFactory
   extends IBitmapFactory
 {
-  IDecoder a;
+  IDecoder mDecoder;
   
   public IBitmapFactory$DefaultBitmapFactory(IDecoder paramIDecoder)
   {
-    this.a = paramIDecoder;
+    this.mDecoder = paramIDecoder;
   }
   
   public BitmapReference createBitmap(int paramInt1, int paramInt2, Bitmap.Config paramConfig)

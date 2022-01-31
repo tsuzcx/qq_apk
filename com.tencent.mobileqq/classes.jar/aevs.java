@@ -1,28 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransferRequest;
+import android.os.MessageQueue.IdleHandler;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
 
 public final class aevs
-  implements Runnable
+  implements MessageQueue.IdleHandler
 {
-  public aevs(String paramString, QQAppInterface paramQQAppInterface) {}
+  final SearchContactsActivity a;
   
-  public void run()
+  public aevs(SearchContactsActivity paramSearchContactsActivity)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      TransferRequest localTransferRequest = new TransferRequest();
-      localTransferRequest.a = true;
-      localTransferRequest.i = this.jdField_a_of_type_JavaLangString;
-      localTransferRequest.b = 64;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localTransferRequest);
-    }
+    this.a = paramSearchContactsActivity;
+  }
+  
+  public boolean queueIdle()
+  {
+    this.a.a.requestFocus();
+    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aevs
  * JD-Core Version:    0.7.0.1
  */

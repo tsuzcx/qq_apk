@@ -1,38 +1,54 @@
-import android.view.View;
-import com.dataline.activities.PrinterActivity;
-import com.dataline.util.PrinterSessionAdapter;
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.PrinterHandler;
-import com.tencent.widget.ListView;
-import com.tencent.widget.OverScrollViewListener;
-import com.tencent.widget.XListView;
+import com.dataline.activities.LiteMutiPicViewerActivity;
+import com.dataline.activities.LiteMutiPicViewerActivity.2.1;
+import com.dataline.activities.LiteMutiPicViewerActivity.2.2;
+import com.dataline.activities.LiteMutiPicViewerActivity.2.3;
+import com.dataline.activities.LiteMutiPicViewerActivity.2.4;
+import com.dataline.activities.LiteMutiPicViewerActivity.2.5;
+import com.dataline.activities.LiteMutiPicViewerActivity.2.6;
 
 public class cj
-  implements OverScrollViewListener
+  extends ajgs
 {
-  public cj(PrinterActivity paramPrinterActivity) {}
+  public cj(LiteMutiPicViewerActivity paramLiteMutiPicViewerActivity) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView) {}
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
+  protected void a(long paramLong)
   {
-    paramInt = PrinterActivity.a(this.a).a.a();
-    if (paramInt > 0)
-    {
-      PrinterActivity.a(this.a).a.a.b();
-      this.a.a.setSelectionFromBottom(paramInt, 0);
-      PrinterActivity.a(this.a).a.a.notifyDataSetChanged();
-    }
-    return false;
+    this.a.runOnUiThread(new LiteMutiPicViewerActivity.2.6(this));
   }
   
-  public void b(int paramInt, View paramView, ListView paramListView) {}
+  protected void a(long paramLong, float paramFloat)
+  {
+    super.a(paramLong, paramFloat);
+    this.a.runOnUiThread(new LiteMutiPicViewerActivity.2.5(this));
+  }
   
-  public void c(int paramInt, View paramView, ListView paramListView) {}
+  protected void a(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
+  {
+    super.a(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
+    this.a.runOnUiThread(new LiteMutiPicViewerActivity.2.1(this));
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  {
+    super.a(paramBoolean, paramLong, paramString);
+    this.a.runOnUiThread(new LiteMutiPicViewerActivity.2.4(this));
+  }
+  
+  protected void b(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
+  {
+    super.b(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
+    this.a.runOnUiThread(new LiteMutiPicViewerActivity.2.2(this));
+  }
+  
+  protected void b(boolean paramBoolean, long paramLong, String paramString)
+  {
+    super.b(paramBoolean, paramLong, paramString);
+    this.a.runOnUiThread(new LiteMutiPicViewerActivity.2.3(this));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     cj
  * JD-Core Version:    0.7.0.1
  */

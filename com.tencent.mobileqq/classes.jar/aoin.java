@@ -1,32 +1,31 @@
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
 
-public class aoin
-  implements Runnable
+class aoin
+  implements aoji
 {
-  public aoin(DoodleTextureView paramDoodleTextureView) {}
+  aoin(aoik paramaoik, FileManagerEntity paramFileManagerEntity) {}
   
-  public void run()
+  public void a()
   {
-    if (this.a.a != null)
+    QLog.e("FileManagerRSCenter<FileAssistant>", 1, "=_= v! entity[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] init cancel!");
+  }
+  
+  public void b()
+  {
+    QLog.e("FileManagerRSCenter<FileAssistant>", 1, "=_= v> entity[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] init success, start video download");
+    new aotz(this.jdField_a_of_type_Aoik.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType == 3000) {}
+    for (Object localObject = new aouc(this.jdField_a_of_type_Aoik.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);; localObject = new aotz(this.jdField_a_of_type_Aoik.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity))
     {
-      this.a.a.g();
-      PersonalityOperator localPersonalityOperator = (PersonalityOperator)this.a.a.a(102);
-      if (localPersonalityOperator != null) {
-        localPersonalityOperator.b();
-      }
-      this.a.a = null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("DoodleTextureView", 2, "onDestroy end");
+      aojd.a((aotv)localObject);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoin
  * JD-Core Version:    0.7.0.1
  */

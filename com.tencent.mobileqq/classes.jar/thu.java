@@ -1,20 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
+import com.tribe.async.dispatch.Dispatcher.Event;
 
-class thu
-  implements DialogInterface.OnDismissListener
+public class thu
+  implements Dispatcher.Event
 {
-  thu(tht paramtht) {}
+  public final AnimationParam a;
+  public final String a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public thu(AnimationParam paramAnimationParam, String paramString)
   {
-    this.a.a.a();
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetAnimationParam = paramAnimationParam;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     thu
  * JD-Core Version:    0.7.0.1
  */

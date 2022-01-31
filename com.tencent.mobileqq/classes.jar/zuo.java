@@ -1,23 +1,37 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordHelper;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
-import com.tencent.mobileqq.troop.org.pb.oidb_0x496.AioKeyword;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
+import java.io.File;
+import java.io.IOException;
 
 public class zuo
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public zuo(TroopHandler paramTroopHandler, oidb_0x496.AioKeyword paramAioKeyword) {}
+  public zuo(TestAppFragment paramTestAppFragment) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    ((TroopAioKeywordTipManager)this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.b.getManager(224)).a(TroopAioKeywordHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$AioKeyword), TroopAioKeywordHelper.b(this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$AioKeyword));
-    TroopAioKeywordHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.b, this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$AioKeyword);
+    if (paramBoolean)
+    {
+      new File(this.a.a).mkdirs();
+      paramCompoundButton = new File(this.a.a, this.a.b);
+      try
+      {
+        paramCompoundButton.createNewFile();
+        return;
+      }
+      catch (IOException paramCompoundButton)
+      {
+        paramCompoundButton.printStackTrace();
+        return;
+      }
+    }
+    new File(this.a.a, this.a.b).delete();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zuo
  * JD-Core Version:    0.7.0.1
  */

@@ -6,15 +6,16 @@ import android.graphics.RectF;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anvl;
+import bhkh;
+import biiz;
+import bijc;
 import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceAndTextItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
+import org.json.JSONObject;
 
 public class PasterParcelData
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new anvl();
+  public static final Parcelable.Creator<PasterParcelData> CREATOR = new bhkh();
   public static int a;
   public static int b;
   public float a;
@@ -70,39 +71,77 @@ public class PasterParcelData
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = ((SegmentKeeper)paramParcel.readParcelable(SegmentKeeper.class.getClassLoader()));
   }
   
-  public PasterParcelData(FaceLayer.FaceItem paramFaceItem)
+  public PasterParcelData(bijc parambijc)
   {
     this.jdField_a_of_type_Float = 1.0F;
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = new SegmentKeeper();
-    this.jdField_a_of_type_AndroidGraphicsPointF = paramFaceItem.jdField_a_of_type_AndroidGraphicsPointF;
-    this.jdField_a_of_type_Float = paramFaceItem.q;
-    this.jdField_b_of_type_Float = paramFaceItem.r;
-    this.jdField_c_of_type_Float = paramFaceItem.s;
-    this.jdField_d_of_type_Float = paramFaceItem.t;
-    this.jdField_e_of_type_Float = paramFaceItem.u;
-    this.jdField_f_of_type_Float = paramFaceItem.v;
-    this.jdField_a_of_type_AndroidGraphicsRectF = paramFaceItem.jdField_a_of_type_AndroidGraphicsRectF;
-    this.jdField_a_of_type_JavaLangString = paramFaceItem.jdField_d_of_type_JavaLangString;
-    this.jdField_b_of_type_JavaLangString = paramFaceItem.jdField_e_of_type_JavaLangString;
-    this.jdField_c_of_type_JavaLangString = paramFaceItem.jdField_f_of_type_JavaLangString;
-    this.jdField_d_of_type_Int = paramFaceItem.h;
-    this.jdField_e_of_type_JavaLangString = paramFaceItem.jdField_g_of_type_JavaLangString;
-    this.jdField_e_of_type_Int = paramFaceItem.jdField_g_of_type_Int;
-    if ((paramFaceItem instanceof FaceLayer.FaceAndTextItem))
+    this.jdField_a_of_type_AndroidGraphicsPointF = parambijc.b;
+    this.jdField_a_of_type_Float = parambijc.q;
+    this.jdField_b_of_type_Float = parambijc.r;
+    this.jdField_c_of_type_Float = parambijc.s;
+    this.jdField_d_of_type_Float = parambijc.t;
+    this.jdField_e_of_type_Float = parambijc.u;
+    this.jdField_f_of_type_Float = parambijc.v;
+    this.jdField_a_of_type_AndroidGraphicsRectF = parambijc.jdField_a_of_type_AndroidGraphicsRectF;
+    this.jdField_a_of_type_JavaLangString = parambijc.jdField_d_of_type_JavaLangString;
+    this.jdField_b_of_type_JavaLangString = parambijc.jdField_e_of_type_JavaLangString;
+    this.jdField_c_of_type_JavaLangString = parambijc.jdField_f_of_type_JavaLangString;
+    this.jdField_d_of_type_Int = parambijc.h;
+    this.jdField_e_of_type_JavaLangString = parambijc.jdField_g_of_type_JavaLangString;
+    this.jdField_e_of_type_Int = parambijc.jdField_g_of_type_Int;
+    if ((parambijc instanceof biiz))
     {
       this.jdField_c_of_type_Int = jdField_b_of_type_Int;
-      FaceLayer.FaceAndTextItem localFaceAndTextItem = (FaceLayer.FaceAndTextItem)paramFaceItem;
-      this.jdField_f_of_type_Int = localFaceAndTextItem.jdField_a_of_type_Int;
-      this.jdField_g_of_type_Int = localFaceAndTextItem.jdField_b_of_type_Int;
-      this.jdField_f_of_type_JavaLangString = localFaceAndTextItem.jdField_b_of_type_JavaLangString;
+      biiz localbiiz = (biiz)parambijc;
+      this.jdField_f_of_type_Int = localbiiz.jdField_a_of_type_Int;
+      this.jdField_g_of_type_Int = localbiiz.jdField_b_of_type_Int;
+      this.jdField_f_of_type_JavaLangString = localbiiz.jdField_b_of_type_JavaLangString;
     }
     for (;;)
     {
-      this.jdField_d_of_type_JavaLangString = paramFaceItem.a();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = new SegmentKeeper(paramFaceItem.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper);
+      this.jdField_d_of_type_JavaLangString = parambijc.a();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = new SegmentKeeper(parambijc.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper);
       return;
       this.jdField_c_of_type_Int = jdField_a_of_type_Int;
     }
+  }
+  
+  public JSONObject a()
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("centerPx", this.jdField_a_of_type_AndroidGraphicsPointF.x);
+      localJSONObject.put("centerPy", this.jdField_a_of_type_AndroidGraphicsPointF.y);
+      localJSONObject.put("scale", this.jdField_a_of_type_Float);
+      localJSONObject.put("rotate", this.jdField_b_of_type_Float);
+      localJSONObject.put("translateX", this.jdField_c_of_type_Float);
+      localJSONObject.put("translateY", this.jdField_d_of_type_Float);
+      localJSONObject.put("width", this.jdField_e_of_type_Float);
+      localJSONObject.put("height", this.jdField_f_of_type_Float);
+      localJSONObject.put("imageRbottom", this.jdField_a_of_type_AndroidGraphicsRectF.bottom);
+      localJSONObject.put("imageRleft", this.jdField_a_of_type_AndroidGraphicsRectF.left);
+      localJSONObject.put("imageRtop", this.jdField_a_of_type_AndroidGraphicsRectF.top);
+      localJSONObject.put("imageRright", this.jdField_a_of_type_AndroidGraphicsRectF.right);
+      localJSONObject.put("category", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("name", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("path", this.jdField_c_of_type_JavaLangString);
+      localJSONObject.put("dynamicType", this.jdField_d_of_type_Int);
+      if (this.jdField_e_of_type_JavaLangString != null) {
+        localJSONObject.put("data", this.jdField_e_of_type_JavaLangString);
+      }
+      localJSONObject.put("autoAdded", this.jdField_e_of_type_Int);
+      if (this.jdField_f_of_type_JavaLangString != null)
+      {
+        localJSONObject.put("textSize", this.jdField_f_of_type_Int);
+        localJSONObject.put("textColor", this.jdField_g_of_type_Int);
+        localJSONObject.put("text", this.jdField_f_of_type_JavaLangString);
+      }
+      localJSONObject.put("location", this.jdField_d_of_type_JavaLangString);
+      return localJSONObject;
+    }
+    catch (Exception localException) {}
+    return null;
   }
   
   public int describeContents()

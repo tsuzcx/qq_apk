@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03d7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="帐号密码信息来自 sd卡的 /tencent/com/tencent/mobileqq/quicklogin.txt 格式 [qq]+空格+[密码]" />
-    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03d8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="选择帐号登录" />
-    <ListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03d9" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</LinearLayout>

@@ -1,23 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.VideoDeliverController;
-
 public class mci
-  implements View.OnClickListener
 {
-  public mci(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  public long a;
+  public byte[] a;
+  public long b;
   
-  public void onClick(View paramView)
+  public mci(byte[] paramArrayOfByte, long paramLong)
   {
-    ReadInJoyDeliverVideoActivity.d(this.a, true);
-    ReadInJoyDeliverVideoActivity.e(this.a);
-    ReadInJoyDeliverVideoActivity.a(this.a).a(ReadInJoyDeliverVideoActivity.c(this.a));
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("PCMFrame:");
+    if (this.jdField_a_of_type_ArrayOfByte == null) {}
+    for (int i = -1;; i = this.jdField_a_of_type_ArrayOfByte.length) {
+      return i + ", idx=" + this.jdField_a_of_type_Long + ", pts=" + this.b;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mci
  * JD-Core Version:    0.7.0.1
  */

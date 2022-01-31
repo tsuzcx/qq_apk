@@ -1,34 +1,35 @@
-import com.tencent.mobileqq.confess.ConfessConfig;
-import com.tencent.mobileqq.confess.ConfessMsgListFragment;
-import com.tencent.mobileqq.confess.ConfessObserver;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import java.util.ArrayList;
+import java.util.List;
 
 public class abzc
-  extends ConfessObserver
+  implements View.OnClickListener
 {
-  public abzc(ConfessMsgListFragment paramConfessMsgListFragment) {}
+  public abzc(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void a(ConfessConfig paramConfessConfig)
+  public void onClick(View paramView)
   {
-    ConfessMsgListFragment.a(this.a);
-  }
-  
-  public void a(boolean paramBoolean, Object paramObject)
-  {
-    if (this.a.isResumed()) {
-      this.a.b();
+    vkw.a(this.a.jdField_a_of_type_Acao);
+    vkw.a(this.a.jdField_a_of_type_JavaUtilList);
+    paramView = new ArrayList();
+    int i = 0;
+    while (i < this.a.jdField_a_of_type_JavaUtilList.size())
+    {
+      paramView.add(((acam)this.a.jdField_a_of_type_JavaUtilList.get(i)).a);
+      i += 1;
     }
-  }
-  
-  public void b(boolean paramBoolean, Object paramObject)
-  {
-    if (this.a.isResumed()) {
-      this.a.b();
-    }
+    Intent localIntent = new Intent();
+    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
+    this.a.setResult(-1, localIntent);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abzc
  * JD-Core Version:    0.7.0.1
  */

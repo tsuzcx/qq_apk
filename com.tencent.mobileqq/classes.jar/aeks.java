@@ -1,44 +1,29 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
-import com.tencent.mobileqq.nearby.business.NearbyCardObserver;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 import com.tencent.qphone.base.util.QLog;
 
-public class aeks
-  extends NearbyCardObserver
+final class aeks
+  implements Animation.AnimationListener
 {
-  public aeks(LoginWelcomeManager paramLoginWelcomeManager) {}
-  
-  protected void a(boolean paramBoolean1, NearbyPeopleCard paramNearbyPeopleCard, boolean paramBoolean2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramBoolean1) && (paramNearbyPeopleCard != null))
-    {
-      byte[] arrayOfByte = paramNearbyPeopleCard.vTempChatSig;
-      String str = paramNearbyPeopleCard.nickname;
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginWelcomeManager", 2, "onNearbyCardDownload " + paramNearbyPeopleCard.uin + " " + str);
-      }
-      Bundle localBundle = LoginWelcomeManager.a(this.a).getBundle("request");
-      localBundle.putString("uin", paramNearbyPeopleCard.uin);
-      localBundle.putByteArray("sig", arrayOfByte);
-      localBundle.putString("nick", str);
-      localBundle.putString("tinyId", String.valueOf(paramNearbyPeopleCard.tinyId));
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerBubbleHelper", 2, "onAllAnimationEnd " + paramAnimation);
     }
-    for (;;)
-    {
-      this.a.b();
-      LoginWelcomeManager.a(this.a).removeObserver(this);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginWelcomeManager", 2, "onNearbyCardDownload err" + paramBoolean1 + " " + paramNearbyPeopleCard);
-      }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerBubbleHelper", 2, "onAnimationStart " + paramAnimation);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeks
  * JD-Core Version:    0.7.0.1
  */

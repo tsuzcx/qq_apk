@@ -2,8 +2,8 @@ package cooperation.troop;
 
 import android.os.Handler;
 import android.os.Looper;
-import annh;
-import anni;
+import bgnq;
+import bgnt;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pluginsdk.ipc.PluginCommunicationHandler;
@@ -15,9 +15,9 @@ public class TroopPluginManager
   implements Manager
 {
   public static final String a;
-  public Handler a;
-  public WeakReference a;
-  public ConcurrentLinkedQueue a;
+  Handler a;
+  protected WeakReference<QQAppInterface> a;
+  public ConcurrentLinkedQueue<String> a;
   
   static
   {
@@ -27,13 +27,13 @@ public class TroopPluginManager
   public TroopPluginManager(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
-    this.jdField_a_of_type_AndroidOsHandler = new anni(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new bgnq(this, Looper.getMainLooper());
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
   }
   
-  public boolean a(String paramString, TroopPluginManager.TroopPluginCallback paramTroopPluginCallback)
+  public boolean a(String paramString, bgnt parambgnt)
   {
-    ThreadManager.post(new annh(this, paramString, paramTroopPluginCallback), 8, null, true);
+    ThreadManager.post(new TroopPluginManager.1(this, paramString, parambgnt), 8, null, true);
     return false;
   }
   

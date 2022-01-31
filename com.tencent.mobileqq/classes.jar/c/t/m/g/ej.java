@@ -1,75 +1,60 @@
 package c.t.m.g;
 
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import org.json.JSONObject;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-final class ej
-  implements ep
+public final class ej
+  extends BroadcastReceiver
 {
-  public String a;
-  public String b;
-  public String c;
-  public double d;
-  public double e;
-  public double f;
-  public String g;
-  public String h;
+  final dx a;
+  boolean b;
   
-  static
+  public ej(dx paramdx)
   {
-    new Parcelable.Creator() {};
+    this.a = paramdx;
   }
   
-  public ej() {}
-  
-  public ej(JSONObject paramJSONObject)
+  public final void a()
   {
-    this.a = paramJSONObject.optString("name");
-    this.b = paramJSONObject.optString("dtype");
-    this.c = paramJSONObject.optString("addr");
-    this.d = paramJSONObject.optDouble("pointx");
-    this.e = paramJSONObject.optDouble("pointy");
-    this.f = paramJSONObject.optDouble("dist");
-    this.g = paramJSONObject.optString("direction");
-    this.h = paramJSONObject.optString("tag");
+    if (!this.b) {
+      return;
+    }
+    this.b = false;
+    try
+    {
+      this.a.a.unregisterReceiver(this);
+      return;
+    }
+    catch (Exception localException) {}
   }
   
-  public final int describeContents()
+  public final void onReceive(Context paramContext, Intent paramIntent)
   {
-    return 0;
-  }
-  
-  public final String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("AddressData{");
-    localStringBuilder.append("name=").append(this.a).append(",");
-    localStringBuilder.append("dtype=").append(this.b).append(",");
-    localStringBuilder.append("pointx=").append(this.d).append(",");
-    localStringBuilder.append("pointy=").append(this.e).append(",");
-    localStringBuilder.append("dist=").append(this.f).append(",");
-    localStringBuilder.append("direction=").append(this.g).append(",");
-    localStringBuilder.append("tag=").append(this.h).append(",");
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
-  }
-  
-  public final void writeToParcel(Parcel paramParcel, int paramInt)
-  {
-    paramParcel.writeString(this.a);
-    paramParcel.writeString(this.b);
-    paramParcel.writeString(this.c);
-    paramParcel.writeDouble(this.d);
-    paramParcel.writeDouble(this.e);
-    paramParcel.writeDouble(this.f);
-    paramParcel.writeString(this.g);
-    paramParcel.writeString(this.h);
+    if (paramIntent == null) {
+      return;
+    }
+    try
+    {
+      if (paramIntent.getBooleanExtra("noConnectivity", false))
+      {
+        this.a.b(Integer.valueOf(-1));
+        return;
+      }
+      if (fk.b(paramContext))
+      {
+        this.a.b(Integer.valueOf(1));
+        return;
+      }
+      this.a.b(Integer.valueOf(0));
+      return;
+    }
+    catch (Exception paramContext) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     c.t.m.g.ej
  * JD-Core Version:    0.7.0.1
  */

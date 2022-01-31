@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0x6f$VipInfoNotify
-  extends MessageMicro
+  extends MessageMicro<VipInfoNotify>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48, 56, 64, 74 }, new String[] { "uint64_uin", "uint32_vip_level", "uint32_vip_identify", "uint32_ext", "str_ext", "uint32_red_flag", "uint32_disable_red_envelope", "uint32_redpack_id", "str_redpack_name" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "" }, VipInfoNotify.class);
   public final PBStringField str_ext = PBField.initString("");

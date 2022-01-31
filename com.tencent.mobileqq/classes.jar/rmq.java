@@ -1,76 +1,48 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.AddFriendActivity;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.search.util.SearchUtils;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.ViolaVideoView;
 
 public class rmq
-  extends TroopObserver
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public rmq(AddFriendActivity paramAddFriendActivity) {}
+  public rmq(ViolaVideoView paramViolaVideoView) {}
   
-  protected void a(boolean paramBoolean1, byte paramByte, TroopInfo paramTroopInfo, boolean paramBoolean2)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    this.a.removeObserver(this.a.a);
-    if ((paramBoolean1) && (paramByte == 0) && (paramTroopInfo != null) && (Utils.a(paramTroopInfo.troopuin, this.a.b)))
-    {
-      if (SearchUtils.a(paramTroopInfo.troopowneruin))
-      {
-        Message localMessage = Message.obtain();
-        localMessage.what = 3;
-        if (paramBoolean2) {}
-        for (paramByte = 1;; paramByte = 0)
-        {
-          localMessage.arg1 = paramByte;
-          localMessage.obj = paramTroopInfo;
-          AddFriendActivity.a(this.a).sendMessageDelayed(localMessage, 300L);
-          return;
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AddFriendActivity", 2, "TroopObserver.onTroopSearch: troopUin=" + this.a.b + " 是异常号，群主uin = " + paramTroopInfo.troopowneruin);
-      }
-      AddFriendActivity.a(this.a);
-      this.a.a(2131434970);
+    if (!ViolaVideoView.a(this.a).a()) {
       return;
     }
-    AddFriendActivity.a(this.a);
-    if (!paramBoolean1)
+    long l = ViolaVideoView.a(this.a).a();
+    double d = paramInt / 100.0D;
+    paramInt = (int)(l * d);
+    qcn.a(ViolaVideoView.a(this.a), paramInt);
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    ViolaVideoView.a(this.a, true);
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    if (!ViolaVideoView.a(this.a).a()) {}
+    int i;
+    do
     {
-      if (!NetworkUtil.d(BaseApplication.getContext()))
-      {
-        this.a.a(2131434461);
-        return;
-      }
-      this.a.a(2131434465);
       return;
-    }
-    if (paramByte == 2)
-    {
-      this.a.a(2131434970);
-      return;
-    }
-    if (paramByte == 3)
-    {
-      this.a.a(2131434971);
-      return;
-    }
-    if (paramByte == 4)
-    {
-      this.a.a(2131434972);
-      return;
-    }
-    this.a.a(2131434970);
+      ViolaVideoView.a(this.a, false);
+      i = paramSeekBar.getProgress();
+      long l = ViolaVideoView.a(this.a).a();
+      i = (int)(i / 100.0D * l);
+      ViolaVideoView.a(this.a).d(i);
+    } while (ViolaVideoView.a(this.a) == null);
+    ViolaVideoView.a(this.a).b(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rmq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,10 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.common.app.AppInterface;
+import java.lang.ref.WeakReference;
 
-public class mmk
-  implements Runnable
+public abstract class mmk
+  extends mmn
 {
-  public mmk(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
-  
-  public void run()
-  {
-    if (ReadInJoyListViewGroup.a(this.a) != null) {
-      ReadInJoyListViewGroup.a(this.a).setVisibility(8);
-    }
-  }
+  public WeakReference<AppInterface> a = new WeakReference(null);
 }
 
 

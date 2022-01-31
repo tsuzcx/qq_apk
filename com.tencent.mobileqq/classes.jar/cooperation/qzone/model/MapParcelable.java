@@ -1,23 +1,23 @@
 package cooperation.qzone.model;
 
-import ancc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bfwg;
 import java.util.Map;
 
 public class MapParcelable
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ancc();
-  private Map a;
+  public static final Parcelable.Creator<MapParcelable> CREATOR = new bfwg();
+  private Map<Integer, String> a;
   
-  public MapParcelable(Map paramMap)
+  public MapParcelable(Map<Integer, String> paramMap)
   {
     this.a = paramMap;
   }
   
-  public Map a()
+  public Map<Integer, String> a()
   {
     return this.a;
   }

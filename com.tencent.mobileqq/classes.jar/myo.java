@@ -1,35 +1,25 @@
-import com.tencent.biz.pubaccount.util.PreloadManager;
-import java.util.Iterator;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
+import com.tencent.qphone.base.util.QLog;
 
 public class myo
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public myo(PreloadManager paramPreloadManager) {}
+  public myo(AdControlView paramAdControlView) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    ??? = PreloadManager.a(this.a).iterator();
-    while (((Iterator)???).hasNext())
-    {
-      String str = (String)((Iterator)???).next();
-      PreloadManager.a(this.a, str);
-    }
-    synchronized (this.a.b)
-    {
-      PreloadManager.a(this.a).clear();
-      if (PreloadManager.b(this.a).size() > 0)
-      {
-        this.a.a();
-        return;
-      }
-      this.a.a = false;
-    }
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    QLog.d("Ron", 2, "alpha:" + f);
+    AdControlView.a(this.a).setAlpha(f);
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     myo
  * JD-Core Version:    0.7.0.1
  */

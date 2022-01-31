@@ -1,38 +1,35 @@
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
-import com.tencent.mobileqq.emosm.favroaming.SyncListener;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class achu
-  implements Runnable
+  extends RecyclerView.ItemDecoration
 {
-  public achu(FavroamingManager paramFavroamingManager) {}
+  private achu(ReminderListFragment paramReminderListFragment) {}
   
-  public void run()
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    int i = 0;
-    while (i < this.a.a.size())
-    {
-      if (this.a.a.get(i) != null)
-      {
-        SyncListener localSyncListener = (SyncListener)((WeakReference)this.a.a.get(i)).get();
-        if (localSyncListener != null)
-        {
-          localSyncListener.a(null, FavroamingManager.a(), FavroamingManager.a().get());
-          if (QLog.isColorLevel()) {
-            QLog.i("FavroamingManager", 2, "now notify listener on file done!");
-          }
-        }
-      }
-      i += 1;
+    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
+    paramRect.left = aciy.a(16.0F, this.a.getResources());
+    paramRect.right = aciy.a(16.0F, this.a.getResources());
+    int i = paramRecyclerView.getChildAdapterPosition(paramView);
+    int j = ReminderListFragment.a(this.a).getItemCount();
+    if (QLog.isColorLevel()) {
+      QLog.i(ReminderListFragment.a(), 2, "position: " + i + ", totalCnt: " + j);
+    }
+    paramRect.top = aciy.a(12.0F, this.a.getResources());
+    if (i == j - 1) {
+      paramRect.bottom = aciy.a(12.0F, this.a.getResources());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     achu
  * JD-Core Version:    0.7.0.1
  */

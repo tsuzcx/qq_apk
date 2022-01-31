@@ -1,20 +1,36 @@
-import com.tencent.biz.qrcode.CodeMaskManager;
-import com.tencent.biz.qrcode.CodeMaskManager.Callback;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.app.Activity;
+import android.content.Context;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 public class owx
-  implements Runnable
+  implements ViewBase.OnClickListener
 {
-  public owx(CodeMaskManager paramCodeMaskManager, owy paramowy, CodeMaskManager.Callback paramCallback) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  private opw jdField_a_of_type_Opw;
+  private qoe jdField_a_of_type_Qoe;
   
-  public void run()
+  public owx(ArticleInfo paramArticleInfo, Context paramContext, qoe paramqoe, opw paramopw, View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.a) {}
-    while (!this.jdField_a_of_type_Owy.a.compareAndSet(false, true)) {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Qoe = paramqoe;
+    this.jdField_a_of_type_Opw = paramopw;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (this.jdField_a_of_type_Qoe == null) || (this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_a_of_type_Opw == null)) {}
+    while (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$Callback.a(CodeMaskManager.a(this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager));
-    CodeMaskManager.a(this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager);
+    this.jdField_a_of_type_Qoe.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Opw.g());
+    nzv.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8009A79", null);
   }
 }
 

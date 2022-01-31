@@ -1,9 +1,9 @@
 package cooperation.qzone.report.lp;
 
+import bfpj;
+import bfpk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.PlatformInfor;
-import cooperation.qzone.QUA;
 import cooperation.qzone.util.NetworkState;
 import java.util.HashMap;
 import java.util.Map;
@@ -53,7 +53,7 @@ public class LpReportInfo_pf00034
     return "pf00034:login from = " + this.loginFrom;
   }
   
-  public Map toMap()
+  public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
     try
@@ -62,10 +62,10 @@ public class LpReportInfo_pf00034
       LpReportUtils.safePut(localHashMap, "uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
       LpReportUtils.safePut(localHashMap, "touin", this.toUin);
       LpReportUtils.safePut(localHashMap, "network_type", NetworkState.getNetworkType());
-      LpReportUtils.safePut(localHashMap, "app_version", "7.6.8");
-      LpReportUtils.safePut(localHashMap, "qua", QUA.a());
+      LpReportUtils.safePut(localHashMap, "app_version", "8.2.6");
+      LpReportUtils.safePut(localHashMap, "qua", bfpk.a());
       LpReportUtils.safePut(localHashMap, "platform", "android");
-      LpReportUtils.safePut(localHashMap, "device_info", PlatformInfor.a().b());
+      LpReportUtils.safePut(localHashMap, "device_info", bfpj.a().c());
       LpReportUtils.safePut(localHashMap, "login_from", this.loginFrom);
       LpReportUtils.safePut(localHashMap, "is_activity", this.isActivity);
       LpReportUtils.safePut(localHashMap, "test_id", this.testId);

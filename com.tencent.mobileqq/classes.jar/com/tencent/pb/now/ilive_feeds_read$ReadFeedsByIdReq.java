@@ -8,10 +8,10 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 
 public final class ilive_feeds_read$ReadFeedsByIdReq
-  extends MessageMicro
+  extends MessageMicro<ReadFeedsByIdReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatField feeds_ids = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> feeds_ids = PBField.initRepeat(PBBytesField.__repeatHelper__);
   
   static
   {
@@ -21,7 +21,7 @@ public final class ilive_feeds_read$ReadFeedsByIdReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_read.ReadFeedsByIdReq
  * JD-Core Version:    0.7.0.1
  */

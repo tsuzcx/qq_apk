@@ -1,27 +1,12 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
-import com.tencent.mobileqq.transfile.ShortVideoForwardProcessor;
+import java.io.ByteArrayOutputStream;
 
-public class aiwh
-  extends MessageObserver
+public abstract interface aiwh
 {
-  public aiwh(ShortVideoForwardProcessor paramShortVideoForwardProcessor) {}
-  
-  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
-  {
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramStatictisInfo);
-    if (paramBoolean)
-    {
-      this.a.e();
-      return;
-    }
-    this.a.d();
-  }
+  public abstract void a(boolean paramBoolean, ByteArrayOutputStream paramByteArrayOutputStream);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiwh
  * JD-Core Version:    0.7.0.1
  */

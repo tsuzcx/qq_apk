@@ -1,37 +1,13 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public final class aacn
-  implements Handler.Callback
+public class aacn
+  implements beoy
 {
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.i("SOSO.LBS", 2, "msg_stop_location.");
-      }
-      SosoInterface.c();
-      SosoInterface.d();
-      continue;
-      if (SosoInterface.a().hasMessages(1001))
-      {
-        SosoInterface.a().removeMessages(1001);
-        SosoInterface.a().sendEmptyMessageDelayed(1001, 3000L);
-      }
-    }
-  }
+  public aacn(BaseChatPie paramBaseChatPie) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aacn
  * JD-Core Version:    0.7.0.1
  */

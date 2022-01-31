@@ -1,0 +1,553 @@
+{
+    "ReadInjoy_daily_hot_news_cell": {
+        "view_type": "UIView",
+        "view_id": "id_hot_news_cell",
+        "layout_type": "layout_relative",
+        "default_visible": "YES",
+        "event_type": "cmd_url_click_card_report",
+        "padding_bottom": "8",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "attributes": {
+            "setAttatchInfo:": "$article_jump_url",
+            "setBackgroundColorString:": "#ffffff"
+        },
+        "data_attributes": {
+            "setLocalInfo:": {
+                "feeds_type": "1027",
+                "kuaibaohot_click_area":"1"
+            }
+        },
+        "subviews": [
+            {
+                "view_type": "UIView",
+                "view_id": "id_top_container",
+                "visible_depend_on_children": "YES",
+                "layout_type": "layout_relative",
+                "height": {
+                    "type": "relative",
+                    "value": "44"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "375"
+                },
+                "subviews": [
+                    {
+                        "view_type": "ReadInjoyAsynImageView",
+                        "view_id": "id_hot_news_title_icon",
+                        "layout_type": "layout_relative",
+                        "default_visible": "YES",
+                        "align_parent_left": "YES",
+                        "margin_left": "16",
+                        "align_parent_center_vertical": "YES",
+                        "height": {
+                            "type": "relative",
+                            "value": "21"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "230"
+                        },
+                        "attributes": {
+                            "setImageWithURLString:lineup:": ["http://pub.idqqimg.com/pc/misc/files/20190807/f7a2f1e1e80a4fd7917439886606adfa.png", "1"],
+                            "setScaleType:": "1"
+                        }
+                    },
+                    {
+                        "view_type": "UIView",
+                        "view_id": "id_hot_news_go_all",
+                        "layout_type": "layout_linear",
+                        "direction": "horizontal",
+                        "align_parent_center_vertical": "YES",
+                        "visible_depend_on_children": "YES",
+                        "align_parent_right": "YES",
+                        "margin_right": "20",
+                        "height": {
+                            "type": "relative",
+                            "value": "16"
+                        },
+                        "width": {
+                            "type": "wrap_content"
+                        },
+                        "subviews": [
+                            {
+                                "view_type": "UILabel",
+                                "view_id": "id_hot_news_go_all_txt",
+                                "default_visible":"YES",
+                                "margin_right": "4",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "16"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "attributes": {
+                                    "setText:": "查看全部",
+                                    "setTextColorString:": "#B0B3BF",
+                                    "setFontSizeString:": "12",
+                                    "setNumberOfLinesString:": "1"
+                                }
+                            },
+                            {
+                                "view_type": "ReadInjoyAsynImageView",
+                                "view_id": "id_hot_news_go_all_icon",
+                                "default_visible":"YES",
+                                "align_parent_right": "YES",
+                                "align_parent_center_vertical": "YES",
+                                "height": {
+                                    "type": "relative",
+                                    "value": "9.5"
+                                },
+                                "width": {
+                                    "type": "relative",
+                                    "value": "5.5"
+                                },
+                                "attributes": {
+                                    "setImageWithURLString:lineup:": ["http://qqpublic.qpic.cn/qq_public/0/0-2156135816-4F3A1FA7C2C48FF7318A75F4973D9CAB/0", "1"]
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+        {
+            "view_type": "UIView",
+            "view_id": "id_hot_news_first_container",
+            "layout_type": "layout_relative",
+            "event_type": "cmd_url_click_card_report",
+            "below_of_view": "id_top_container",
+            "visible_depend_on_children": "YES",
+            "align_parent_left": "YES",
+            "margin_left": "16",
+            "height": {
+                "type": "relative",
+                "value": "97"
+            },
+            "width": {
+                "type": "relative",
+                "value": "166"
+            },
+            "data_attributes": {
+                "setLocalInfo:": {
+                    "kuaibaohot_click_area": "2",
+                    "kuaibaohot_number": "1"
+                }
+            },
+            "attributes": {
+                "setAttatchInfo:": "$news_jump_url_1"
+            },
+            "subviews": [
+                {
+                    "view_type": "ReadInjoyAsynImageView",
+                    "view_id": "id_hot_news_first_bg",
+                    "default_visible":"YES",
+                    "align_parent_left": "YES",
+                    "layout_type": "layout_relative",
+                    "height": {
+                        "type": "match_parent"
+                    },
+                    "width": {
+                        "type": "match_parent"
+                    },
+                    "attributes": {
+                        "setImageWithURLString:lineup:": ["$hot_news_first_bg_url", "1"]
+                    }
+                },
+                {
+                    "view_type": "UIView",
+                    "view_id": "id_first_cover",
+                    "layout_type": "layout_linear",
+                    "default_visible":"YES",
+                    "align_parent_bottom":"YES",
+                    "height": {
+                        "type": "relative",
+                        "value": "47"
+                    },
+                    "width": {
+                        "type": "match_parent"
+                    },
+                    "attributes": {
+                        "setGradientWithStartColor:endColor:direction:": ["#00000000", "#ff000000", "1"]
+                    }
+                },
+                {
+                    "view_type": "ReadInjoyAsynImageView",
+                    "view_id": "id_top_left_mask",
+                    "default_visible": "YES",
+                    "height": {
+                        "type": "absolutely",
+                        "value": "8"
+                    },
+                    "width": {
+                        "type": "absolutely",
+                        "value": "8"
+                    },
+                    "attributes": {
+                        "setImageWithURLString:lineup:": [
+                            "http://pub.idqqimg.com/pc/misc/files/20190731/a028a8dc813242798fea97e6d5e97bd7.png",
+                            "0"
+                        ]
+                    }
+                },
+                {
+                    "view_type": "ReadInjoyAsynImageView",
+                    "view_id": "id_bottom_left_mask",
+                    "default_visible": "YES",
+                    "align_parent_bottom": "YES",
+                    "height": {
+                        "type": "absolutely",
+                        "value": "8"
+                    },
+                    "width": {
+                        "type": "absolutely",
+                        "value": "8"
+                    },
+                    "attributes": {
+                        "setImageWithURLString:lineup:": [
+                            "http://pub.idqqimg.com/pc/misc/files/20190731/900ec8daa82e480382ccc52bd3f0ee0e.png",
+                            "0"
+                        ]
+                    }
+                },
+                {
+                    "view_type": "ReadInjoyAsynImageView",
+                    "view_id": "id_top_right_mask",
+                    "default_visible": "YES",
+                    "align_parent_right": "YES",
+                    "height": {
+                        "type": "absolutely",
+                        "value": "8"
+                    },
+                    "width": {
+                        "type": "absolutely",
+                        "value": "8"
+                    },
+                    "attributes": {
+                        "setImageWithURLString:lineup:": [
+                            "http://pub.idqqimg.com/pc/misc/files/20190731/2d50072506b64296a134f2e67e7b3908.png",
+                            "0"
+                        ]
+                    }
+                },
+                {
+                    "view_type": "ReadInjoyAsynImageView",
+                    "view_id": "id_bottom_right_mask",
+                    "default_visible": "YES",
+                    "align_parent_right": "YES",
+                    "align_parent_bottom": "YES",
+                    "height": {
+                        "type": "absolutely",
+                        "value": "8"
+                    },
+                    "width": {
+                        "type": "absolutely",
+                        "value": "8"
+                    },
+                    "attributes": {
+                        "setImageWithURLString:lineup:": [
+                            "http://pub.idqqimg.com/pc/misc/files/20190731/8faadc88c8bd42d19777de82572656df.png",
+                            "0"
+                        ]
+                    }
+                },
+            {
+                "view_type": "ReadInjoyAsynImageView",
+                "view_id": "id_hot_news_first_index",
+                "default_visible": "YES",
+                "align_parent_bottom": "YES",
+                "margin_bottom": "6",
+                "margin_left": "6",
+                "height": {
+                    "type": "relative",
+                    "value": "16"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "16"
+                },
+                "attributes": {
+                    "setImageWithURLString:lineup:": ["http://qqpublic.qpic.cn/qq_public/0/0-2934819601-F4ECCB2A3CB486BA50513D5A6D10EF7C/0", "1"]
+                }
+            }, {
+                "view_type": "UILabel",
+                "view_id": "id_hot_news_first_title",
+                "margin_bottom": "6",
+                "margin_left": "5",
+                "align_parent_bottom": "YES",
+                "right_of_view": "id_hot_news_first_index",
+                "height": {
+                    "type": "wrap_content"
+                },
+                "width": {
+                    "type": "match_parent"
+                },
+                "attributes": {
+                    "setText:": "$hot_news_title_1",
+                    "setTextColorString:": "#FFFFFF",
+                    "setFontSizeString:": "13",
+                    "setNumberOfLinesString:": "1"
+                }
+            }
+            ]
+        }, {
+            "view_type": "container",
+            "direction": "vertical",
+            "margin_left": "8",
+            "below_of_view": "id_top_container",
+            "right_of_view": "id_hot_news_first_container",
+            "height": {
+                "type": "wrap_content"
+            },
+            "width": {
+                "type": "relative",
+                "value": "170"
+            },
+            "subviews": [{
+                "view_type": "UIView",
+                "direction": "horizontal",
+                "view_id": "id_hot_news_second_container",
+                "event_type": "cmd_url_click_card_report",
+                "visible_depend_on_children": "YES",
+                "height": {
+                    "type": "relative",
+                    "value": "20"
+                },
+                "width": {
+                    "type": "match_parent"
+                },
+                "data_attributes": {
+                    "setLocalInfo:": {
+                        "kuaibaohot_click_area": "2",
+                        "kuaibaohot_number": "2"
+                    }
+                },
+                "attributes": {
+                    "setAttatchInfo:": "$news_jump_url_2"
+                },
+                "subviews": [{
+                    "view_type": "ReadInjoyAsynImageView",
+                    "view_id": "id_hot_news_second_index",
+                    "default_visible": "YES",
+                    "align_parent_center_vertical": "YES",
+                    "height": {
+                        "type": "relative",
+                        "value": "16"
+                    },
+                    "width": {
+                        "type": "relative",
+                        "value": "16"
+                    },
+                    "attributes": {
+                        "setImageWithURLString:lineup:": ["http://qqpublic.qpic.cn/qq_public/0/0-2831402324-4A90FF4AD4FBAA010A68211A2E263FC9/0", "1"]
+                    }
+                }, {
+                    "view_type": "UILabel",
+                    "view_id": "id_hot_news_second_title",
+                    "align_parent_center_vertical": "YES",
+                    "margin_left": "2",
+                    "height": {
+                        "type": "wrap_content"
+                    },
+                    "width": {
+                        "type": "wrap_content"
+                    },
+                    "attributes": {
+                        "setText:": "$hot_news_title_2",
+                        "setTextColorString:": "#000000",
+                        "setFontSizeString:": "14",
+                        "setNumberOfLinesString:": "1"
+                    }
+                }]
+            },
+            {
+                "view_type": "UIView",
+                "direction": "horizontal",
+                "view_id": "id_hot_news_third_container",
+                "margin_top": "7",
+                "visible_depend_on_children": "YES",
+                "event_type": "cmd_url_click_card_report",
+                "height": {
+                    "type": "relative",
+                    "value": "20"
+                },
+                "width": {
+                    "type": "match_parent"
+                },
+                "data_attributes": {
+                    "setLocalInfo:": {
+                        "kuaibaohot_click_area": "2",
+                        "kuaibaohot_number": "3"
+                    }
+                },
+                "attributes": {
+                    "setAttatchInfo:": "$news_jump_url_3"
+                },
+                "subviews": [{
+                    "view_type": "ReadInjoyAsynImageView",
+                    "view_id": "id_hot_news_third_index",
+                    "default_visible":"YES",
+                    "align_parent_center_vertical": "YES",
+                    "height": {
+                        "type": "relative",
+                        "value": "16"
+                    },
+                    "width": {
+                        "type": "relative",
+                        "value": "16"
+                    },
+                    "attributes": {
+                        "setImageWithURLString:lineup:": ["http://qqpublic.qpic.cn/qq_public/0/0-2631744126-C7E006FF9B83EF64A924E4909F852EA0/0", "1"]
+                    }
+                }, {
+                    "view_type": "UILabel",
+                    "view_id": "id_hot_news_third_title",
+                    "align_parent_center_vertical": "YES",
+                    "margin_left": "2",
+                    "height": {
+                        "type": "wrap_content"
+                    },
+                    "width": {
+                        "type": "wrap_content"
+                    },
+                    "attributes": {
+                        "setFrameString:": "-1",
+                        "setText:": "$hot_news_title_3",
+                        "setTextColorString:": "#000000",
+                        "setFontSizeString:": "14",
+                        "setNumberOfLinesString:": "1"
+                    }
+                }]
+            },
+            {
+                "view_type": "UIView",
+                "direction": "horizontal",
+                "view_id": "id_hot_news_four_container",
+                "visible_depend_on_children": "YES",
+                "event_type": "cmd_url_click_card_report",
+                "margin_top": "7",
+                "height": {
+                    "type": "relative",
+                    "value": "20"
+                },
+                "width": {
+                    "type": "match_parent"
+                },
+                "data_attributes": {
+                    "setLocalInfo:": {
+                        "kuaibaohot_click_area": "2",
+                        "kuaibaohot_number": "4"
+                    }
+                },
+                "attributes": {
+                    "setAttatchInfo:": "$news_jump_url_4"
+                },
+                "subviews": [{
+                    "view_type": "ReadInjoyAsynImageView",
+                    "view_id": "id_hot_news_four_index",
+                    "default_visible": "YES",
+                    "align_parent_center_vertical": "YES",
+                    "height": {
+                        "type": "relative",
+                        "value": "16"
+                    },
+                    "width": {
+                        "type": "relative",
+                        "value": "16"
+                    },
+                    "attributes": {
+                        "setImageWithURLString:lineup:": ["http://qqpublic.qpic.cn/qq_public/0/0-2912772689-03B82E04AC2085E2E70A8C49B7BC5C0F/0", "1"]
+                    }
+                }, {
+                    "view_type": "UILabel",
+                    "view_id": "id_hot_news_four_title",
+                    "align_parent_center_vertical": "YES",
+                    "margin_left": "2",
+                    "height": {
+                        "type": "wrap_content"
+                    },
+                    "width": {
+                        "type": "wrap_content"
+                    },
+                    "attributes": {
+                        "setFrameString:": "-1",
+                        "setText:": "$hot_news_title_4",
+                        "setTextColorString:": "#000000",
+                        "setFontSizeString:": "14",
+                        "setNumberOfLinesString:": "1"
+                    }
+                }]
+            },
+            {
+                "view_type": "UIView",
+                "direction": "horizontal",
+                "view_id": "id_hot_news_five_container",
+                "visible_depend_on_children": "YES",
+                "event_type": "cmd_url_click_card_report",
+                "margin_top": "7",
+                "height": {
+                    "type": "relative",
+                    "value": "20"
+                },
+                "width": {
+                    "type": "match_parent"
+                },
+                "data_attributes": {
+                    "setLocalInfo:": {
+                        "kuaibaohot_click_area": "2",
+                        "kuaibaohot_number": "5"
+                    }
+                },
+                "attributes": {
+                    "setAttatchInfo:": "$news_jump_url_5"
+                },
+                "subviews": [
+                    {
+                        "view_type": "ReadInjoyAsynImageView",
+                        "view_id": "id_hot_news_five__index",
+                        "default_visible": "YES",
+                        "align_parent_center_vertical": "YES",
+                        "height": {
+                            "type": "relative",
+                            "value": "16"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "16"
+                        },
+                        "attributes": {
+                            "setImageWithURLString:lineup:": ["http://qqpublic.qpic.cn/qq_public/0/0-2197609612-02789B4B568C2588E67A55F436315D39/0", "1"]
+                        }
+                    },
+                    {
+                        "view_type": "UILabel",
+                        "view_id": "id_hot_news_five_title",
+                        "align_parent_center_vertical": "YES",
+                        "margin_left": "2",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "wrap_content"
+                        },
+                        "attributes": {
+                            "setFrameString:": "-1",
+                            "setText:": "$hot_news_title_5",
+                            "setTextColorString:": "#000000",
+                            "setFontSizeString:": "14",
+                            "setNumberOfLinesString:": "1"
+                        }
+                    }
+                ]
+            }
+            ]
+        }
+        ]
+    }
+}

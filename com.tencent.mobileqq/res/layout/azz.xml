@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/fzw" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/ag" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ai" android:background="@drawable/k2" android:paddingLeft="@dimen/a07" android:paddingRight="@dimen/a07" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/uj" android:textColor="@color/skin_gray2_theme_version2" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/aj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip" android:text="@string/d4n" android:singleLine="true" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/yw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:src="@drawable/qq_profilecard_signature_more" />
+    </LinearLayout>
+</LinearLayout>

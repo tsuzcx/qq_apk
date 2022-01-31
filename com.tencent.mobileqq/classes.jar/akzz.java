@@ -1,23 +1,66 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginInterface;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
+import android.content.Context;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class akzz
-  extends TroopObserver
+class akzz
+  implements INetInfoHandler
 {
-  public akzz(WerewolvesHostInterface paramWerewolvesHostInterface, QQAppInterface paramQQAppInterface) {}
+  akzz(akzp paramakzp) {}
   
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  public void onNetMobile2None()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHostInterface.manager.a().a(6, new Object[] { Boolean.valueOf(paramBoolean1), paramString, Boolean.valueOf(paramBoolean2) });
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+    if (QLog.isColorLevel()) {
+      QLog.e("ark.download.module", 2, "onNetMobile2None");
+    }
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ark.download.module", 2, new Object[] { "onNetMobile2Wifi", paramString });
+    }
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ark.download.module", 2, new Object[] { "onNetNone2Mobile", paramString });
+    }
+    paramString = BaseActivity.sTopActivity;
+    if ((akzp.a(this.a)) && (!akzp.b(this.a)) && (paramString != null))
+    {
+      paramString = paramString.getString(2131624678);
+      if (akzp.a(this.a, paramString)) {
+        akzp.b(this.a, true);
+      }
+    }
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ark.download.module", 2, new Object[] { "onNetNone2Wifi", paramString });
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ark.download.module", 2, new Object[] { "onNetWifi2Mobile", paramString });
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ark.download.module", 2, "onNetWifi2None");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akzz
  * JD-Core Version:    0.7.0.1
  */

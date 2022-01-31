@@ -1,33 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class rrr
-  implements View.OnClickListener
 {
-  public rrr(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  private static boolean a = true;
   
-  public void onClick(View paramView)
-  {
-    if (paramView.getParent() == null) {}
-    do
-    {
-      do
-      {
-        return;
-        paramView = (View)paramView.getParent().getParent();
-      } while ((paramView == null) || (paramView.getTag() == null));
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8007147", "0X8007147", 0, 0, "", "", "", "");
-    } while (!(paramView.getTag() instanceof SimpleAccount));
-    this.a.a((SimpleAccount)paramView.getTag());
-  }
+  public static void a(FromServiceMsg paramFromServiceMsg) {}
+  
+  public static void a(ToServiceMsg paramToServiceMsg) {}
+  
+  public static void a(byte[] paramArrayOfByte, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rrr
  * JD-Core Version:    0.7.0.1
  */

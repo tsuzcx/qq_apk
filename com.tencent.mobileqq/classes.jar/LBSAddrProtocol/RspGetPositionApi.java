@@ -9,8 +9,8 @@ public final class RspGetPositionApi
   extends JceStruct
 {
   static GPS cache_stUsrLoc;
-  static ArrayList cache_vCells;
-  static ArrayList cache_vMacs;
+  static ArrayList<Cell> cache_vCells;
+  static ArrayList<Long> cache_vMacs;
   public int iDistrictCode;
   public int iRange = -1;
   public GPS stUsrLoc;
@@ -20,12 +20,12 @@ public final class RspGetPositionApi
   public String strProvince = "";
   public String strRoad = "";
   public String strTown = "";
-  public ArrayList vCells;
-  public ArrayList vMacs;
+  public ArrayList<Cell> vCells;
+  public ArrayList<Long> vMacs;
   
   public RspGetPositionApi() {}
   
-  public RspGetPositionApi(GPS paramGPS, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt2, ArrayList paramArrayList1, ArrayList paramArrayList2)
+  public RspGetPositionApi(GPS paramGPS, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt2, ArrayList<Long> paramArrayList, ArrayList<Cell> paramArrayList1)
   {
     this.stUsrLoc = paramGPS;
     this.iRange = paramInt1;
@@ -36,8 +36,8 @@ public final class RspGetPositionApi
     this.strRoad = paramString5;
     this.strPremises = paramString6;
     this.iDistrictCode = paramInt2;
-    this.vMacs = paramArrayList1;
-    this.vCells = paramArrayList2;
+    this.vMacs = paramArrayList;
+    this.vCells = paramArrayList1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)

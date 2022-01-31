@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.theme.diy;
 
+import aciy;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -9,7 +10,6 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class PageView
@@ -46,14 +46,14 @@ public class PageView
   {
     this.pageIndex = paramInt1;
     this.mData = paramThemeDIYData;
-    this.mRLayout = ((RelativeLayout)super.findViewById(2131375310));
+    this.mRLayout = ((RelativeLayout)super.findViewById(2131303364));
     paramThemeDIYData = (RelativeLayout.LayoutParams)this.mRLayout.getLayoutParams();
     paramThemeDIYData.width = paramInt2;
     paramThemeDIYData.height = paramInt3;
     this.pich = paramInt3;
     this.picw = paramInt2;
-    this.mUserBgView = super.findViewById(2131375311);
-    this.mMaskColor = super.findViewById(2131375312);
+    this.mUserBgView = super.findViewById(2131312916);
+    this.mMaskColor = super.findViewById(2131304132);
     if (this.mData.orgMarkColor == 0) {
       if (this.mMaskColor.getParent() != null)
       {
@@ -63,7 +63,7 @@ public class PageView
     }
     for (;;)
     {
-      this.mShotView = super.findViewById(2131375313);
+      this.mShotView = super.findViewById(2131310296);
       return;
       this.mMaskColor.setBackgroundColor(super.getResources().getColor(this.mData.orgMarkColor));
     }
@@ -71,7 +71,7 @@ public class PageView
   
   void setProgressBar(boolean paramBoolean)
   {
-    Object localObject = this.mRLayout.findViewById(2131365698);
+    Object localObject = this.mRLayout.findViewById(2131296607);
     if (localObject != null)
     {
       localObject = (ProgressBar)localObject;
@@ -92,9 +92,9 @@ public class PageView
         break;
       } while (localObject != null);
       localObject = new ProgressBar(super.getContext());
-      ((ProgressBar)localObject).setId(2131365698);
-      ((ProgressBar)localObject).setIndeterminateDrawable(super.getResources().getDrawable(2130838602));
-      int i = AIOUtils.a(16.0F, super.getResources());
+      ((ProgressBar)localObject).setId(2131296607);
+      ((ProgressBar)localObject).setIndeterminateDrawable(super.getResources().getDrawable(2130839113));
+      int i = aciy.a(16.0F, super.getResources());
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(i, i);
       localLayoutParams.bottomMargin = i;
       localLayoutParams.leftMargin = i;
@@ -149,23 +149,22 @@ public class PageView
           localObject2 = localObject1;
           paramDrawable = paramResData;
         }
-        label202:
-        if (!QLog.isColorLevel()) {
-          break label521;
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder().append("showPic type:");
+          if (!(paramResSuitData instanceof ResSuitData.BgSuit)) {
+            break label551;
+          }
+          paramResData = "bg";
+          label232:
+          paramResData = ((StringBuilder)localObject1).append(paramResData).append(", id:").append(paramResSuitData.id).append(", isTryOn:").append(paramBoolean).append(", drawable:").append(localObject2);
+          if (paramDrawable == null) {
+            break label558;
+          }
+          paramResSuitData = ", path:" + paramDrawable.path + ", url:" + paramDrawable.url;
+          label312:
+          QLog.d("ThemeDiyPageView", 2, paramResSuitData);
         }
-        localObject1 = new StringBuilder().append("showPic type:");
-        if (!(paramResSuitData instanceof ResSuitData.BgSuit)) {
-          break label551;
-        }
-        paramResData = "bg";
-        label232:
-        paramResData = ((StringBuilder)localObject1).append(paramResData).append(", id:").append(paramResSuitData.id).append(", isTryOn:").append(paramBoolean).append(", drawable:").append(localObject2);
-        if (paramDrawable == null) {
-          break label558;
-        }
-        paramResSuitData = ", path:" + paramDrawable.path + ", url:" + paramDrawable.url;
-        label312:
-        QLog.d("ThemeDiyPageView", 2, paramResSuitData);
         return true;
         ((ResData)localObject1).resID = ((ResSuitData.BgSuit)localObject2).resID;
         QLog.e("ThemeDiyPageView", 1, "showPic type: bg , DIY_UPLOAD_BG_ID Error;");
@@ -210,16 +209,14 @@ public class PageView
       }
       paramResData = DIYThemeUtils.getResData(null, (ResSuitData)localObject1, 201, paramDrawable);
     }
-    label521:
     label551:
     label558:
     label565:
     for (;;)
     {
-      localObject2 = DIYThemeUtils.getDIYDrawable(super.getContext(), paramResData, this.picw, this.pich, this.pageIndex, true);
+      localObject2 = DIYThemeUtils.getDIYDrawable(super.getContext(), paramResData, this.picw, this.pich, this.pageIndex, false);
       this.mShotView.setBackgroundDrawable((Drawable)localObject2);
       paramDrawable = paramResData;
-      break label202;
       break;
       if (1 == this.pageIndex)
       {
@@ -237,7 +234,7 @@ public class PageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.PageView
  * JD-Core Version:    0.7.0.1
  */

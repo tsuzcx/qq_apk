@@ -28,14 +28,12 @@ public final class Ping
   }
   
   public long roundTripTime()
-    throws InterruptedException
   {
     this.latch.await();
     return this.received - this.sent;
   }
   
   public long roundTripTime(long paramLong, TimeUnit paramTimeUnit)
-    throws InterruptedException
   {
     if (this.latch.await(paramLong, paramTimeUnit)) {
       return this.received - this.sent;

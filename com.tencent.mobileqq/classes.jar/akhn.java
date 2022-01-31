@@ -1,39 +1,23 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.util.FaceManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.utils.FriendsStatusUtil.UpdateFriendStatusItem;
 
-public class akhn
-  extends FriendListObserver
+public final class akhn
+  implements Parcelable.Creator<FriendsStatusUtil.UpdateFriendStatusItem>
 {
-  private akhn(FaceManager paramFaceManager) {}
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public FriendsStatusUtil.UpdateFriendStatusItem a(Parcel paramParcel)
   {
-    this.a.a(4, paramBoolean, new Object[] { paramString });
+    return new FriendsStatusUtil.UpdateFriendStatusItem(paramParcel);
   }
   
-  public void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
+  public FriendsStatusUtil.UpdateFriendStatusItem[] a(int paramInt)
   {
-    this.a.a(39, paramBoolean, new Object[] { paramString });
-  }
-  
-  protected void onUpdateQCallHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(6, paramBoolean1, new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2) });
-  }
-  
-  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(5, paramBoolean1, new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean2) });
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(30, paramBoolean, new Object[] { paramString });
+    return new FriendsStatusUtil.UpdateFriendStatusItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akhn
  * JD-Core Version:    0.7.0.1
  */

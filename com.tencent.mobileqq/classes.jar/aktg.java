@@ -1,38 +1,39 @@
-import com.tencent.biz.common.util.Util;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebAccelerator;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
 
 public class aktg
-  implements Runnable
+  extends akti
 {
-  public aktg(WebAccelerateHelper paramWebAccelerateHelper, boolean paramBoolean1, String paramString, boolean paramBoolean2) {}
+  public float a;
+  public int a;
+  public long a;
+  public ArCloudConfigInfo a;
+  public String a;
+  public float[] a;
+  public float b;
+  public int b;
+  public float c = 0.0F;
   
-  public void run()
+  public aktg()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      localHashMap = new HashMap();
-      localHashMap.put("User-Agent", SwiftWebViewUtils.a(SwiftWebViewUtils.b("x5prefetch_1.0"), "", false));
-      WebAccelerator.prefetchResource(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, localHashMap, true);
-      QLog.i("WebAccelerateHelper", 1, "now prefetchResource " + Util.c(this.jdField_a_of_type_JavaLangString, new String[0]));
-    }
-    while (!this.b)
-    {
-      HashMap localHashMap;
-      return;
-    }
-    WebAccelerator.preConnect(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, 1, true);
-    QLog.i("WebAccelerateHelper", 1, "now preconnect " + Util.c(this.jdField_a_of_type_JavaLangString, new String[0]));
+    this.jdField_b_of_type_Long = 1L;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
+    this.jdField_a_of_type_ArrayOfFloat = null;
+    this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = null;
+  }
+  
+  public String toString()
+  {
+    return "ARLocalMarkerRecogResult{recogType = " + this.jdField_b_of_type_Long + ", frameIdx = " + this.jdField_a_of_type_Long + ", state = " + this.jdField_a_of_type_Int + ", markerName = " + this.jdField_a_of_type_JavaLangString + ", markerType = " + this.jdField_b_of_type_Int + ", markerWidth = " + this.jdField_a_of_type_Float + ", markerHeight = " + this.jdField_b_of_type_Float + ", markerDiameter = " + this.c + ", pose = " + this.jdField_a_of_type_ArrayOfFloat + ", arResourceInfo = " + this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aktg
  * JD-Core Version:    0.7.0.1
  */

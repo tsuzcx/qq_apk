@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity.aio.zhitu;
 
+import aeoo;
 import android.graphics.Bitmap;
 
 public class GifDecoder
@@ -9,7 +10,7 @@ public class GifDecoder
   
   private native boolean nativeBitmapIteratorHasNext(long paramLong);
   
-  private native GifImage nativeBitmapIteratornext(long paramLong1, long paramLong2);
+  private native aeoo nativeBitmapIteratornext(long paramLong1, long paramLong2);
   
   private native void nativeClose(long paramLong);
   
@@ -31,7 +32,7 @@ public class GifDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.GifDecoder
  * JD-Core Version:    0.7.0.1
  */

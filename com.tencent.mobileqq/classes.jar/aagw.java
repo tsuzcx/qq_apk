@@ -1,50 +1,20 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupResourceInfo;
-import com.tencent.mobileqq.armap.sensor.ARSensorManager;
-import com.tencent.mobileqq.worldcup.ARWorldCupMediaPlayerWrapper;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class aagw
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aagw(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
+  public aagw(ChatHistory paramChatHistory) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (ARWorldCupGlobalSceneRenderable.a(this.a) == 6)
-    {
-      if ((ARWorldCupGlobalSceneRenderable.a(this.a) != null) && (ARWorldCupGlobalSceneRenderable.a(this.a)))
-      {
-        ARWorldCupGlobalSceneRenderable.a(this.a).a(1, 0);
-        ARWorldCupGlobalSceneRenderable.a(this.a, false);
-      }
-      if (ARWorldCupGlobalSceneRenderable.a(this.a) != null) {
-        ARWorldCupGlobalSceneRenderable.a(this.a).a();
-      }
-      if (ARWorldCupGlobalSceneRenderable.a(this.a) != null) {
-        ARWorldCupGlobalSceneRenderable.a(this.a).a(ARWorldCupGlobalSceneRenderable.a(this.a).a);
-      }
-      if (ARWorldCupGlobalSceneRenderable.a(this.a) == 6) {
-        ARWorldCupGlobalSceneRenderable.a(this.a, 7);
-      }
-    }
-    synchronized (ARWorldCupGlobalSceneRenderable.a(this.a))
-    {
-      ARWorldCupGlobalSceneRenderable.a(this.a).clear();
-      if (ARWorldCupGlobalSceneRenderable.a(this.a) != null) {
-        ARWorldCupGlobalSceneRenderable.a(this.a, null);
-      }
-      ARWorldCupGlobalSceneRenderable.a(this.a).d();
-      ARWorldCupGlobalSceneRenderable.a(this.a);
-      ARWorldCupGlobalSceneRenderable.a(this.a, null);
-      return;
-    }
+    this.a.a(12, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aagw
  * JD-Core Version:    0.7.0.1
  */

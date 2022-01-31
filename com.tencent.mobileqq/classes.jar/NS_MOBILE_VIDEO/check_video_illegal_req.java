@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class check_video_illegal_req
   extends JceStruct
 {
-  static ArrayList cache_video_urls = new ArrayList();
-  public ArrayList video_urls;
+  static ArrayList<UrlInput> cache_video_urls = new ArrayList();
+  public ArrayList<UrlInput> video_urls;
   
   static
   {
@@ -19,7 +19,7 @@ public final class check_video_illegal_req
   
   public check_video_illegal_req() {}
   
-  public check_video_illegal_req(ArrayList paramArrayList)
+  public check_video_illegal_req(ArrayList<UrlInput> paramArrayList)
   {
     this.video_urls = paramArrayList;
   }

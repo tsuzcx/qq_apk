@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class intchk$FetchCheckConfigReq
-  extends MessageMicro
+  extends MessageMicro<FetchCheckConfigReq>
 {
   public static final int UINT32_RESERVED_FIELD_NUMBER = 1;
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8 }, new String[] { "uint32_reserved" }, new Object[] { Integer.valueOf(0) }, FetchCheckConfigReq.class);

@@ -1,18 +1,33 @@
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
 
 class ahjn
-  implements Runnable
+  implements bekd
 {
-  ahjn(ahjm paramahjm, ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  ahjn(ahjj paramahjj) {}
   
-  public void run()
+  public void onScrollStateChanged(int paramInt)
   {
-    ReceiptMessageReadMemberListContainerFragment.e(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageReadMemberListContainerFragment);
+    if (QLog.isColorLevel()) {
+      QLog.i("PtvTemplateManager", 2, "ptv template listview onScrollStateChanged state: " + paramInt);
+    }
+    if (paramInt == 4097)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("PtvTemplateManager", 2, "ptv template listview onScrollStateChanged state is idle.");
+      }
+      this.a.b = this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.getFirstVisiblePosition();
+      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1001);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 400L);
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahjn
  * JD-Core Version:    0.7.0.1
  */

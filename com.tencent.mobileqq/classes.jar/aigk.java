@@ -1,18 +1,6 @@
-import com.tencent.av.avgesture.AVGestureWrapper.AVUploadReport;
-import com.tencent.sveffects.Reporter;
-import com.tencent.sveffects.SdkContext;
-
-public final class aigk
-  implements AVGestureWrapper.AVUploadReport
-{
-  public void avGestureUploadReport(String paramString1, String paramString2)
-  {
-    SdkContext.a().a().a("dc00898", "", paramString1, paramString1, 0, 0, "", "", paramString2, "");
-  }
-}
-
+// INTERNAL ERROR //
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aigk
  * JD-Core Version:    0.7.0.1
  */

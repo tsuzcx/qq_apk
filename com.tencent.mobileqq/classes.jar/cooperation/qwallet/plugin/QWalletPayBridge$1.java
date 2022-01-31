@@ -1,8 +1,8 @@
 package cooperation.qwallet.plugin;
 
 import android.app.Activity;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
 import com.tencent.common.app.AppInterface;
+import rtr;
 
 final class QWalletPayBridge$1
   implements Runnable
@@ -13,8 +13,8 @@ final class QWalletPayBridge$1
   {
     try
     {
-      if ((this.val$appInterface.isLogin()) && (!PublicAccountUtil.a(this.val$appInterface, "2711679534"))) {
-        PublicAccountUtil.a(this.val$appInterface, this.val$baseActivity, "2711679534", null, false);
+      if ((this.val$appInterface.isLogin()) && (!rtr.a(this.val$appInterface, "2711679534"))) {
+        rtr.a(this.val$appInterface, this.val$activity, "2711679534", null, false, 6);
       }
       return;
     }
@@ -26,7 +26,7 @@ final class QWalletPayBridge$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletPayBridge.1
  * JD-Core Version:    0.7.0.1
  */

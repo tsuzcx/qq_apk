@@ -7,7 +7,6 @@ import android.os.Message;
 import android.os.MessageQueue;
 import android.os.MessageQueue.IdleHandler;
 import android.os.SystemClock;
-import android.util.Log;
 import android.util.Printer;
 import com.tencent.qphone.base.util.QLog;
 
@@ -21,13 +20,7 @@ public class MqqMessageQueue
   private static MqqMessageQueue sSubMainQueue;
   private volatile boolean hookReqeusted;
   private volatile boolean idleHandlerAttached;
-  Handler mHandler = new Handler(paramLooper, this)
-  {
-    public String toString()
-    {
-      return "MessageQueueHandler";
-    }
-  };
+  Handler mHandler = new MqqMessageQueue.1(this, paramLooper, this);
   Printer mLogging;
   MqqMessage mMessages;
   long msgCount = 0L;
@@ -65,9 +58,10 @@ public class MqqMessageQueue
           localStringBuilder.append(localMqqMessage.wrappedMsg.what);
           this.mLogging.println(localStringBuilder.toString());
         }
-        long l = SystemClock.uptimeMillis();
+        long l1 = SystemClock.uptimeMillis();
         localMqqMessage.target.dispatchMessage(localMqqMessage.wrappedMsg);
-        this.totalCost += SystemClock.uptimeMillis() - l;
+        long l2 = this.totalCost;
+        this.totalCost = (SystemClock.uptimeMillis() - l1 + l2);
         this.msgCount += 1L;
         if (this.mLogging != null)
         {
@@ -87,7 +81,7 @@ public class MqqMessageQueue
           throwException(localThrowable);
         }
         if ((!DEBUG_QUEUE) || (!QLog.isColorLevel())) {
-          break label420;
+          break label424;
         }
         QLog.d("MqqMessage.Queue", 2, "dequeue, msg = null");
       }
@@ -102,7 +96,7 @@ public class MqqMessageQueue
       }
       return true;
     }
-    label420:
+    label424:
     return false;
   }
   
@@ -147,15 +141,9 @@ public class MqqMessageQueue
     this.mHandler.sendEmptyMessageDelayed(1001, 1000L);
   }
   
-  private void throwException(final Throwable paramThrowable)
+  private void throwException(Throwable paramThrowable)
   {
-    new Thread()
-    {
-      public void run()
-      {
-        throw new RuntimeException("queueIdle encounter business crash. " + Log.getStackTraceString(paramThrowable));
-      }
-    }.start();
+    new MqqMessageQueue.2(this, paramThrowable).start();
   }
   
   boolean enqueueMessage(MqqMessage paramMqqMessage, long paramLong)
@@ -165,33 +153,34 @@ public class MqqMessageQueue
     }
     for (;;)
     {
-      MqqMessage localMqqMessage1;
-      MqqMessage localMqqMessage2;
+      Object localObject1;
+      Object localObject2;
       try
       {
         paramMqqMessage.when = paramLong;
-        localMqqMessage1 = this.mMessages;
-        if ((localMqqMessage1 != null) && (paramLong != 0L) && (paramLong >= localMqqMessage1.when)) {
-          break label145;
+        localObject1 = this.mMessages;
+        if ((localObject1 != null) && (paramLong != 0L) && (paramLong >= ((MqqMessage)localObject1).when)) {
+          break label149;
         }
-        paramMqqMessage.next = localMqqMessage1;
+        paramMqqMessage.next = ((MqqMessage)localObject1);
         this.mMessages = paramMqqMessage;
         reqHookIdleHandler();
         return true;
       }
       finally {}
-      if ((localMqqMessage1 != null) && (localMqqMessage1.when <= paramLong))
+      if ((localObject1 != null) && (((MqqMessage)localObject1).when <= paramLong))
       {
-        localMqqMessage2 = localMqqMessage1;
-        localMqqMessage1 = localMqqMessage1.next;
+        MqqMessage localMqqMessage = ((MqqMessage)localObject1).next;
+        localObject2 = localObject1;
+        localObject1 = localMqqMessage;
       }
       else
       {
-        paramMqqMessage.next = localMqqMessage2.next;
-        localMqqMessage2.next = paramMqqMessage;
+        paramMqqMessage.next = localObject2.next;
+        localObject2.next = paramMqqMessage;
         continue;
-        label145:
-        localMqqMessage2 = null;
+        label149:
+        localObject2 = null;
       }
     }
   }
@@ -220,29 +209,26 @@ public class MqqMessageQueue
   
   final MqqMessage next()
   {
-    for (;;)
+    try
     {
-      try
+      long l1 = SystemClock.uptimeMillis();
+      MqqMessage localMqqMessage = this.mMessages;
+      if (localMqqMessage != null)
       {
-        long l1 = SystemClock.uptimeMillis();
-        MqqMessage localMqqMessage = this.mMessages;
-        if (localMqqMessage != null)
+        long l2 = localMqqMessage.when;
+        if (l1 >= l2)
         {
-          long l2 = localMqqMessage.when;
-          if (l1 >= l2)
-          {
-            this.mMessages = localMqqMessage.next;
-            localMqqMessage.next = null;
-            return localMqqMessage;
-          }
-          int i = (int)Math.min(l2 - l1, 2147483647L);
-          this.mHandler.removeMessages(1000);
-          this.mHandler.sendEmptyMessageDelayed(1000, i);
-          return null;
+          this.mMessages = localMqqMessage.next;
+          localMqqMessage.next = null;
+          return localMqqMessage;
         }
+        int i = (int)Math.min(l2 - l1, 2147483647L);
+        this.mHandler.removeMessages(1000);
+        this.mHandler.sendEmptyMessageDelayed(1000, i);
       }
-      finally {}
+      return null;
     }
+    finally {}
   }
   
   public boolean queueIdle()
@@ -393,18 +379,18 @@ public class MqqMessageQueue
                 if (!paramBoolean) {
                   return true;
                 }
-                bool1 = true;
                 localObject2 = ((MqqMessage)localObject1).next;
                 this.mMessages = ((MqqMessage)localObject2);
                 printDeletionLog((MqqMessage)localObject1);
                 ((MqqMessage)localObject1).recycle();
                 localObject1 = localObject2;
+                bool1 = true;
                 continue;
-                bool2 = true;
                 MqqMessage localMqqMessage = ((MqqMessage)localObject1).next;
                 printDeletionLog((MqqMessage)localObject1);
                 ((MqqMessage)localObject1).recycle();
                 ((MqqMessage)localObject2).next = localMqqMessage;
+                bool2 = true;
               }
             }
           }

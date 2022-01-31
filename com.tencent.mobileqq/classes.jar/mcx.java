@@ -1,60 +1,90 @@
+import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.FileUploadController.FileUploadListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.ImageUploadController;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
 import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.lang.ref.WeakReference;
 
-public class mcx
-  extends TransProcessorHandler
+class mcx
+  extends Handler
 {
-  public mcx(ImageUploadController paramImageUploadController) {}
+  private WeakReference<mcw> jdField_a_of_type_JavaLangRefWeakReference;
+  
+  public mcx(mcw parammcw1, Looper paramLooper, mcw parammcw2)
+  {
+    super(paramLooper);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parammcw2);
+  }
   
   public void handleMessage(Message paramMessage)
   {
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if ((localFileMsg == null) || (localFileMsg.b != 24) || (localFileMsg.c != 10)) {}
-    while (localFileMsg.f.equals(ImageUploadController.a(this.a))) {
-      return;
+    int i = paramMessage.what;
+    mcw localmcw = (mcw)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localmcw == null) {
+      if (QLog.isColorLevel()) {
+        QLog.w("QavVideoAudioRecorder", 2, "RecodeHandler.handleMessage: encoder is null");
+      }
     }
-    switch (paramMessage.what)
+    do
     {
-    case 1002: 
-    case 1004: 
-    default: 
-      return;
-    case 1001: 
-      if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcVideoTransferFileUploadController$FileUploadListener != null) {
-        this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcVideoTransferFileUploadController$FileUploadListener.a();
+      for (;;)
+      {
+        return;
+        switch (i)
+        {
+        default: 
+          throw new RuntimeException("Unhandled msg what=" + i);
+        case 0: 
+          if (mcw.a(this.jdField_a_of_type_Mcw) == null) {
+            mcw.a(this.jdField_a_of_type_Mcw, new ByteArrayOutputStream(32768));
+          }
+          if (paramMessage.obj != null)
+          {
+            mcw.a(localmcw, (auzf)paramMessage.obj);
+            return;
+          }
+          throw new RuntimeException("MSG_START_RECORDING bundle == null");
+        case 1: 
+          mcw.a(localmcw);
+          try
+          {
+            if (mcw.a(this.jdField_a_of_type_Mcw) != null)
+            {
+              mcw.a(this.jdField_a_of_type_Mcw).flush();
+              mcw.a(this.jdField_a_of_type_Mcw).close();
+              mcw.a(this.jdField_a_of_type_Mcw, null);
+              return;
+            }
+          }
+          catch (IOException paramMessage) {}
+        }
       }
-      ImageUploadController.a(this.a, System.currentTimeMillis());
-      return;
-    case 1003: 
-      ImageUploadController.b(this.a, System.currentTimeMillis());
-      PublicAccountReportUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8008180", "0X8008180", 0, 0, String.valueOf(ImageUploadController.a(this.a)), String.valueOf(ImageUploadController.b(this.a)), String.valueOf(ImageUploadController.a(this.a) - ImageUploadController.b(this.a)), String.valueOf(ImageUploadController.c(this.a) - ImageUploadController.d(this.a)));
-      if (QLog.isColorLevel()) {
-        QLog.d("ImageUploadController", 2, "mPicTransProcessorHandler send finished!");
+    } while (!QLog.isColorLevel());
+    QLog.e("QavVideoAudioRecorder", 2, "AudioBuf.close() ", paramMessage);
+    return;
+    if (paramMessage.obj != null)
+    {
+      paramMessage = (Object[])paramMessage.obj;
+      if ((paramMessage == null) || (paramMessage.length != 5)) {
+        throw new IllegalArgumentException("args == null || args.length != 5");
       }
-      ImageUploadController.a(this.a, localFileMsg.f);
-      ImageUploadController.b(this.a, localFileMsg.i);
-      if (QLog.isColorLevel()) {
-        QLog.d("ImageUploadController", 2, "mPicTransProcessorHandler mImageMd5=" + ImageUploadController.a(this.a) + ", mImageUrl=" + ImageUploadController.b(this.a));
-      }
-      ImageUploadController.a(this.a, 0, ImageUploadController.b(this.a), ImageUploadController.a(this.a), null);
+      mcw.a(localmcw, ((Integer)paramMessage[0]).intValue(), ((Integer)paramMessage[1]).intValue(), (float[])paramMessage[2], (float[])paramMessage[3], ((Long)paramMessage[4]).longValue());
       return;
     }
-    ImageUploadController.b(this.a, System.currentTimeMillis());
-    PublicAccountReportUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8008180", "0X8008180", 0, 1, String.valueOf(ImageUploadController.a(this.a)), String.valueOf(ImageUploadController.b(this.a)), String.valueOf(ImageUploadController.a(this.a) - ImageUploadController.b(this.a)), String.valueOf(ImageUploadController.c(this.a) - ImageUploadController.d(this.a)));
-    if (QLog.isColorLevel()) {
-      QLog.d("ImageUploadController", 2, "mPicTransProcessorHandler send error:" + localFileMsg.g);
+    throw new RuntimeException("MSG_VIDEO_FRAME_AVAILABLE bundle == null");
+    if (paramMessage.obj != null)
+    {
+      paramMessage = (Object[])paramMessage.obj;
+      localmcw.b((byte[])paramMessage[0], ((Long)paramMessage[1]).longValue());
+      return;
     }
-    ImageUploadController.a(this.a, 1004, null, null, null);
+    throw new RuntimeException("MSG_AUDIO_FRAME_AVAILABLE bundle == null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mcx
  * JD-Core Version:    0.7.0.1
  */

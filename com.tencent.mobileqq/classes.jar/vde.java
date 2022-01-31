@@ -1,41 +1,87 @@
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable.AnimationEndListener;
-import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder.Holder;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
-import com.tencent.mobileqq.data.MessageForPoke;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import android.widget.RelativeLayout.LayoutParams;
+import java.io.File;
+import java.net.URI;
 
 public class vde
-  implements CustomFrameAnimationDrawable.AnimationEndListener
+  extends vcz<vdc>
 {
-  public vde(GivingHeartItemBuilder paramGivingHeartItemBuilder, GivingHeartItemBuilder.Holder paramHolder, MessageForPoke paramMessageForPoke) {}
+  ImageView a;
   
-  public void a()
+  private vde(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.b == GivingHeartItemBuilder.a()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder.a instanceof ChatHistoryForC2C))) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.c.setVisibility(0);
-    }
-    for (;;)
+    super(paramContext, paramViewGroup);
+  }
+  
+  protected View a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = new RelativeLayout(paramContext);
+    paramViewGroup.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
+    this.a = new ImageView(paramContext);
+    this.a.setScaleType(ImageView.ScaleType.FIT_XY);
+    paramViewGroup.addView(this.a);
+    return paramViewGroup;
+  }
+  
+  public void a(vdc paramvdc, int paramInt)
+  {
+    super.a(paramvdc, paramInt);
+    Object localObject = paramvdc.a.a;
+    if ((localObject != null) && (localObject.length > 0))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
-      AIOUtils.a -= 1;
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder$Holder.c.setVisibility(8);
+      localObject = localObject[0];
+      if ((localObject != null) && (((srd)localObject).jdField_a_of_type_Int == 1))
+      {
+        localObject = ((srd)localObject).jdField_a_of_type_Src;
+        if (localObject != null)
+        {
+          float f = uwv.a(this.a.getResources()) / ((src)localObject).d;
+          paramvdc = new File(paramvdc.c, ((src)localObject).jdField_a_of_type_JavaLangString);
+          uyx.a().a(this.a.getContext(), this.a, paramvdc.toURI().toString(), (int)(((src)localObject).b * f), (int)(((src)localObject).c * f), null);
+          paramvdc = new RelativeLayout.LayoutParams((int)(((src)localObject).b * f), (int)(((src)localObject).c * f));
+          if ((((src)localObject).jdField_a_of_type_Int & 0x1) != 0) {
+            paramvdc.addRule(9);
+          }
+          if ((((src)localObject).jdField_a_of_type_Int & 0x2) != 0) {
+            paramvdc.addRule(10);
+          }
+          if ((((src)localObject).jdField_a_of_type_Int & 0x4) != 0) {
+            paramvdc.addRule(11);
+          }
+          if ((((src)localObject).jdField_a_of_type_Int & 0x8) != 0) {
+            paramvdc.addRule(12);
+          }
+          if ((((src)localObject).jdField_a_of_type_Int & 0x10) != 0) {
+            paramvdc.addRule(14);
+          }
+          if ((((src)localObject).jdField_a_of_type_Int & 0x20) != 0) {
+            paramvdc.addRule(15);
+          }
+          if ((((src)localObject).jdField_a_of_type_Int & 0x40) != 0) {
+            paramvdc.addRule(13);
+          }
+          if ((((src)localObject).jdField_a_of_type_ArrayOfInt != null) && (((src)localObject).jdField_a_of_type_ArrayOfInt.length >= 4))
+          {
+            paramvdc.leftMargin = ((int)(localObject.jdField_a_of_type_ArrayOfInt[0] * f));
+            paramvdc.topMargin = ((int)(localObject.jdField_a_of_type_ArrayOfInt[1] * f));
+            paramvdc.rightMargin = ((int)(localObject.jdField_a_of_type_ArrayOfInt[2] * f));
+            paramvdc.bottomMargin = ((int)(localObject.jdField_a_of_type_ArrayOfInt[3] * f));
+          }
+          this.a.setLayoutParams(paramvdc);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vde
  * JD-Core Version:    0.7.0.1
  */

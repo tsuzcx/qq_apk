@@ -66,7 +66,7 @@ public class MessageForFunnyFace
     return this.mFunnyFaceMessage.msgEquals(paramMessageForFunnyFace.mFunnyFaceMessage);
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     if (this.mFunnyFaceMessage != null) {}
     try

@@ -1,87 +1,55 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
 
 public class lth
-  implements Runnable
+  implements View.OnClickListener
 {
-  public lth(ArticleInfoModule paramArticleInfoModule, long paramLong1, int paramInt, byte[] paramArrayOfByte, boolean paramBoolean1, List paramList1, boolean paramBoolean2, long paramLong2, List paramList2, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg) {}
+  public lth(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity, begr parambegr) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    boolean bool3 = false;
-    boolean bool1;
-    StringBuilder localStringBuilder;
-    int i;
-    if (this.jdField_a_of_type_Long == -1L)
-    {
-      bool1 = true;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_ArrayOfByte);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label479;
+    boolean bool = false;
+    if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().U) {
+      if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 1) {
+        awqx.b(null, "CliOper", "", "", "0X8005C28", "0X8005C28", 0, 0, "", "", "", "");
       }
-      localStringBuilder = new StringBuilder("\n");
-      if (this.jdField_a_of_type_JavaUtilList == null) {
-        break label337;
-      }
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-      i = 0;
-      label72:
-      if (!((Iterator)localObject).hasNext()) {
-        break label337;
-      }
-      ArticleInfo localArticleInfo = (ArticleInfo)((Iterator)localObject).next();
-      localStringBuilder.append("article【" + i + "】 id : " + localArticleInfo.mArticleID + " seq : " + localArticleInfo.mRecommendSeq + " title : " + ReadInJoyUtils.d(localArticleInfo.mTitle) + " , groupID : " + localArticleInfo.mGroupId + " feeedCookie : " + localArticleInfo.mFeedCookie + ", mFeedID : " + localArticleInfo.mFeedId + " algorithmID : " + localArticleInfo.mAlgorithmID + " strategyId : " + localArticleInfo.mStrategyId + " businessID : " + localArticleInfo.businessId + " businessName :" + localArticleInfo.businessName);
-      if (!QLog.isColorLevel()) {
-        break label326;
-      }
-      if (localArticleInfo.mSocialFeedInfo == null) {
-        break label315;
-      }
-      localStringBuilder.append(" " + localArticleInfo.mSocialFeedInfo);
-      localStringBuilder.append("\n");
     }
     for (;;)
     {
-      i += 1;
-      break label72;
-      bool1 = false;
-      break;
-      label315:
-      localStringBuilder.append("\n");
-      continue;
-      label326:
-      localStringBuilder.append("\n");
-    }
-    label337:
-    Object localObject = new StringBuilder().append("handleRefreshChannel success=").append(this.jdField_a_of_type_Boolean).append(" channelId=").append(this.jdField_a_of_type_Int).append(" noMoreData=").append(this.jdField_b_of_type_Boolean).append(" beginRecommendSeq=").append(this.jdField_a_of_type_Long).append(" endRecommendSeq=").append(this.jdField_b_of_type_Long).append(" isInMsgTab : ");
-    boolean bool2 = bool3;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a != null)
-    {
-      bool2 = bool3;
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a instanceof QQAppInterface)) {
-        bool2 = true;
+      if (!this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().U) {
+        bool = true;
+      }
+      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.b(bool);
+      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().b("OnClick", bool);
+      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a();
+      this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.b();
+      try
+      {
+        this.jdField_a_of_type_Begr.dismiss();
+        return;
+      }
+      catch (Throwable paramView)
+      {
+        paramView.printStackTrace();
+      }
+      if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 3000)
+      {
+        awqx.b(null, "CliOper", "", "", "0X8005C23", "0X8005C23", 0, 0, "", "", "", "");
+        continue;
+        if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 1) {
+          awqx.b(null, "CliOper", "", "", "0X8005C27", "0X8005C27", 0, 0, "", "", "", "");
+        } else if (this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a.a().i == 3000) {
+          awqx.b(null, "CliOper", "", "", "0X8005C22", "0X8005C22", 0, 0, "", "", "", "");
+        }
       }
     }
-    QLog.i("ArticleInfoModule", 1, bool2 + " isRefresh : " + bool1 + ", " + localStringBuilder.toString());
-    label479:
-    if (bool1)
-    {
-      ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg);
-      return;
-    }
-    ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lth
  * JD-Core Version:    0.7.0.1
  */

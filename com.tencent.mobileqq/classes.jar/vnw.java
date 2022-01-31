@@ -1,40 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder.ArkHighLightClickCallback;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.mobileqq.statistics.ArkAppReportController;
-import com.tencent.mobileqq.text.QQText.ArkHighlightSpan;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.qphone.base.util.QLog;
 
-public class vnw
-  implements DialogInterface.OnClickListener
+final class vnw
+  extends vnh
 {
-  public vnw(TextItemBuilder paramTextItemBuilder, QQCustomDialog paramQQCustomDialog, View paramView, TextItemBuilder.ArkHighLightClickCallback paramArkHighLightClickCallback, QQAppInterface paramQQAppInterface) {}
+  vnw(vnh paramvnh, PublishVideoEntry paramPublishVideoEntry) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onFailure(String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
-    try
-    {
-      QQText.ArkHighlightSpan.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTextItemBuilder$ArkHighLightClickCallback);
-      ArkAppReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "__global__", "ArkAlertDialogConfirm", 0L, 0L, 0L, 0L, 0L, "", "");
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      ArkRecommendController.a(this.jdField_a_of_type_AndroidViewView.getContext(), "open", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
     }
-    catch (Exception paramDialogInterface)
-    {
-      ArkAppCenter.b("ArkDialog", String.format("PositiveButton click failed, err=%s", new Object[] { paramDialogInterface.getMessage() }));
+    this.jdField_a_of_type_Vnh.onFailure(paramString);
+    if ((this.jdField_a_of_type_Vnh instanceof sjo)) {
+      ((sjo)this.jdField_a_of_type_Vnh).a(941005);
     }
+    QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " transcodeAudio failed message：" + paramString);
+  }
+  
+  public void onStart()
+  {
+    super.onStart();
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " transcodeAudio start");
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    long l1 = System.currentTimeMillis();
+    long l2 = this.b;
+    QLog.i("Q.qqstory.ffmpeg.FFmpegCmd", 1, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " transcodeAudio success cost：" + String.valueOf(l1 - l2) + "ms\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vnw
  * JD-Core Version:    0.7.0.1
  */

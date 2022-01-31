@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqq">
-    <com.tencent.widget.SegmentedControlView android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1323" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="110.0dip" android:layout_marginRight="97.0dip" android:divider="@null" android:checkedButton="@id/APKTOOL_DUPLICATE_id_0x7f0a0898" android:dividerPadding="0.0dip" tencent:firstButtonBackground="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f90" tencent:lastButtonBackground="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f91" tencent:middleButtonBackground="@null" tencent:uniqueButtonBackground="@null">
-        <com.tencent.mobileqq.troop.widget.RedDotRadioButton android:textSize="14.0dip" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1324" android:background="@null" android:layout_width="60.0dip" android:layout_height="30.0dip" android:button="@null" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2736" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01c9" />
-        <com.tencent.mobileqq.troop.widget.RedDotRadioButton android:textSize="14.0dip" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1325" android:background="@null" android:layout_width="60.0dip" android:layout_height="30.0dip" android:button="@null" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2737" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01c9" />
-    </com.tencent.widget.SegmentedControlView>
-</LinearLayout>

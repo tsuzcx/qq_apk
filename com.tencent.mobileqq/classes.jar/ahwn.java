@@ -1,30 +1,38 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.search.activity.MixSearchWebFragment;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.XListView;
 
 public class ahwn
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends Handler
 {
-  public ahwn(MixSearchWebFragment paramMixSearchWebFragment) {}
+  public ahwn(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public void onGlobalLayout()
+  public void handleMessage(Message paramMessage)
   {
-    InputMethodManager localInputMethodManager = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
-    if (localInputMethodManager != null)
+    switch (paramMessage.what)
     {
-      this.a.a.requestFocus();
-      localInputMethodManager.showSoftInput(this.a.a, 0);
     }
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    do
+    {
+      return;
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
+      return;
+      this.a.jdField_a_of_type_ComTencentWidgetXListView.springBackOverScrollHeaderView();
+      bbmy.a(BaseApplication.getContext(), 1, 2131628948, 0).b(this.a.getTitleBarHeight());
+      return;
+      if (this.a.jdField_a_of_type_Bbms == null) {
+        this.a.jdField_a_of_type_Bbms = new bbms(this.a, this.a.getTitleBarHeight());
+      }
+      this.a.jdField_a_of_type_Bbms.c(2131633714);
+    } while ((this.a.isFinishing()) || (this.a.jdField_a_of_type_Bbms.isShowing()));
+    this.a.jdField_a_of_type_Bbms.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahwn
  * JD-Core Version:    0.7.0.1
  */

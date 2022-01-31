@@ -1,45 +1,28 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.leba.LebaTopBarAdapter;
-import com.tencent.mobileqq.leba.header.LebaGridUtils;
-import com.tencent.mobileqq.leba.model.LebaGridItemInfo;
-import com.tencent.mobileqq.leba.model.PluginInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.34.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 public class aehv
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aehv(LebaTopBarAdapter paramLebaTopBarAdapter, LebaGridItemInfo paramLebaGridItemInfo, String paramString, ImageView paramImageView) {}
+  aehv(aegy paramaegy, PublicAccountInfo paramPublicAccountInfo, ajoy paramajoy) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = LebaGridUtils.a(LebaTopBarAdapter.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaTopBarAdapter), this.jdField_a_of_type_ComTencentMobileqqLebaModelLebaGridItemInfo.a.pkgName, this.jdField_a_of_type_ComTencentMobileqqLebaModelLebaGridItemInfo.a.resBigUrl);
-    if (((File)localObject).exists())
-    {
-      localObject = LebaGridUtils.a((File)localObject);
-      if (localObject == null) {
-        break label123;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(LebaTopBarAdapter.a(), 2, "found bitmap from sdcard, info=" + this.jdField_a_of_type_ComTencentMobileqqLebaModelLebaGridItemInfo.a.resName);
-      }
-      BaseApplicationImpl.sImageHashMap.put(this.jdField_a_of_type_JavaLangString, localObject);
-      ((BaseActivity)LebaTopBarAdapter.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaTopBarAdapter)).runOnUiThread(new aehw(this, (Bitmap)localObject));
-    }
-    label123:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d(LebaTopBarAdapter.a(), 2, "can't find bitmap form cache & sdcard" + this.jdField_a_of_type_ComTencentMobileqqLebaModelLebaGridItemInfo.a.resName);
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsAgreeSyncLbs = true;
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsSyncLbsSelected = true;
+    this.jdField_a_of_type_Ajoy.a(this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
+    this.jdField_a_of_type_Aegy.a(1, null);
+    paramDialogInterface = new PublicAccountChatPie.34.1(this);
+    this.jdField_a_of_type_Aegy.a.a(paramDialogInterface);
+    aegy.c(this.jdField_a_of_type_Aegy);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aehv
  * JD-Core Version:    0.7.0.1
  */

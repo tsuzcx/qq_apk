@@ -1,17 +1,11 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import java.util.List;
 
-public class oqo
-  implements AdapterView.OnItemClickListener
+public abstract interface oqo
 {
-  public oqo(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  public abstract void a(SelectPositionModule.PositionData paramPositionData);
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    HorizontalSelectColorLayout.a(this.a, paramInt);
-  }
+  public abstract void a(List<orn> paramList);
 }
 
 

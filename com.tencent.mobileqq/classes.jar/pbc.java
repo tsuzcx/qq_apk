@@ -1,13 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
 
 class pbc
-  implements Runnable
+  implements View.OnClickListener
 {
-  pbc(paz parampaz, long paramLong, int paramInt) {}
+  pbc(pbb parampbb) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ReadInJoyLogicEngine.a().b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    qpt.a((Activity)pbb.a(this.a).getContext());
+    qpt.a(2);
   }
 }
 

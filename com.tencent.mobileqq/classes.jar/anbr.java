@@ -1,20 +1,23 @@
-import cooperation.qzone.font.FontManager;
-import java.io.File;
-import java.io.FileFilter;
+import android.app.Activity;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class anbr
-  implements FileFilter
+class anbr
+  implements View.OnClickListener
 {
-  public anbr(FontManager paramFontManager) {}
+  anbr(anbp paramanbp, Dialog paramDialog) {}
   
-  public boolean accept(File paramFile)
+  public void onClick(View paramView)
   {
-    return paramFile.getName().endsWith(".ftf");
+    if ((!((Activity)this.jdField_a_of_type_Anbp.a).isFinishing()) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anbr
  * JD-Core Version:    0.7.0.1
  */

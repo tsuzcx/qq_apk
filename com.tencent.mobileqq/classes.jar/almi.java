@@ -1,27 +1,64 @@
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.open.appcommon.now.download.DownloadCenterImpl;
-import com.tencent.open.appcommon.now.download.IDownloadCallback;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class almi
-  implements INetEventHandler
+  extends alzl<almj>
 {
-  public almi(DownloadCenterImpl paramDownloadCenterImpl) {}
-  
-  public void onNetChangeEvent(boolean paramBoolean)
+  public int a()
   {
-    int i = HttpUtil.a();
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).a(i);
+    return 416;
+  }
+  
+  @NonNull
+  public almj a(int paramInt)
+  {
+    return new almj();
+  }
+  
+  @Nullable
+  public almj a(alzs[] paramArrayOfalzs)
+  {
+    almj localalmj = new almj();
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0) && (paramArrayOfalzs[0] != null)) {
+      almj.a(localalmj, paramArrayOfalzs[0].a);
     }
+    return localalmj;
+  }
+  
+  public Class<almj> a()
+  {
+    return almj.class;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(almj paramalmj) {}
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     almi
  * JD-Core Version:    0.7.0.1
  */

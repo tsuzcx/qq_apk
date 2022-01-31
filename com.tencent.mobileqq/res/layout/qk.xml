@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/dq8" android:background="#fff4545f" android:layout_width="fill_parent" android:layout_height="63.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/icon" android:focusable="false" android:clickable="false" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginLeft="15.0dip" android:src="@drawable/logininfo_phone" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <RelativeLayout android:orientation="vertical" android:id="@id/e11" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+        <ImageView android:id="@id/dce" android:visibility="gone" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/common_arrow_right_selector" android:layout_centerVertical="true" android:contentDescription="@null" />
+        <TextView android:gravity="center" android:id="@id/e10" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cf0" android:singleLine="true" android:layout_centerVertical="true" style="@style/ci" />
+        <Button android:gravity="center" android:id="@id/e12" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cey" android:singleLine="true" android:layout_centerVertical="true" style="@style/i9" />
+    </RelativeLayout>
+    <RelativeLayout android:orientation="vertical" android:id="@id/f5h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="20.0dip" android:layout_toLeftOf="@id/e11" android:layout_toRightOf="@id/icon" android:layout_centerVertical="true">
+        <TextView android:ellipsize="end" android:id="@id/f5e" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:text="  " android:singleLine="true" android:includeFontPadding="false" style="@style/aq" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/skin_gray2_item" android:ellipsize="end" android:id="@id/info" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="  " android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/f5e" />
+    </RelativeLayout>
+</RelativeLayout>

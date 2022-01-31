@@ -1,76 +1,54 @@
-import java.lang.ref.WeakReference;
-import mqq.manager.VerifyDevLockManager.NotifyType;
-import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.os.Bundle;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class rtd
-  extends VerifyDevLockManager.VerifyDevLockObserver
+class rtd
+  implements wiu
 {
-  private WeakReference a;
+  rtd(rsv paramrsv, String paramString, boolean paramBoolean) {}
   
-  public rtd(VerifyDevLockManager.VerifyDevLockObserver paramVerifyDevLockObserver)
+  public void a(Bundle paramBundle)
   {
-    this.a = new WeakReference(paramVerifyDevLockObserver);
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-    this.a = null;
-  }
-  
-  public int getSeq()
-  {
-    if (this.a != null)
+    if (paramBundle != null)
     {
-      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
-      if (localVerifyDevLockObserver != null) {
-        return localVerifyDevLockObserver.getSeq();
+      if (this.jdField_a_of_type_Rsv.a != null) {
+        this.jdField_a_of_type_Rsv.l();
+      }
+      String str = paramBundle.getString("pic_server_id");
+      this.jdField_a_of_type_Rsv.a(paramBundle);
+      if ("-1".equals(str)) {
+        paramBundle = new JSONObject();
       }
     }
-    return super.getSeq();
-  }
-  
-  public void onRecvNotice(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
-  {
-    if (this.a != null)
+    else
     {
-      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
-      if (localVerifyDevLockObserver != null) {
-        localVerifyDevLockObserver.onRecvNotice(paramNotifyType, paramInt1, paramString, paramInt2, paramErrMsg, paramDevlockInfo);
-      }
-    }
-  }
-  
-  public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg)
-  {
-    if (this.a != null)
-    {
-      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
-      if (localVerifyDevLockObserver != null) {
-        localVerifyDevLockObserver.onVerifyClose(paramInt1, paramString, paramInt2, paramErrMsg);
-      }
-    }
-  }
-  
-  public void setSeq(int paramInt)
-  {
-    if (this.a != null)
-    {
-      VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = (VerifyDevLockManager.VerifyDevLockObserver)this.a.get();
-      if (localVerifyDevLockObserver != null)
+      try
       {
-        localVerifyDevLockObserver.setSeq(paramInt);
+        paramBundle.put("retCode", -1);
+        paramBundle.put("msg", "fail");
+        this.jdField_a_of_type_Rsv.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+        if (this.jdField_a_of_type_Boolean)
+        {
+          ndn.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D27", "0X8005D27", 0, -1, "1", "", "", "", false);
+          return;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+        awqx.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D30", "0X8005D30", 0, -1, "1", "", "", "");
         return;
       }
     }
-    super.setSeq(paramInt);
+    this.jdField_a_of_type_Rsv.a(localJSONException, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rtd
  * JD-Core Version:    0.7.0.1
  */

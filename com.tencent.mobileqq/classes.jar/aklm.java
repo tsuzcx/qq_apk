@@ -1,35 +1,16 @@
-import android.content.DialogInterface.OnClickListener;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-
-public class aklm
-  implements CompoundButton.OnCheckedChangeListener
+public abstract interface aklm
 {
-  public aklm(QQCustomDialog paramQQCustomDialog, DialogInterface.OnClickListener paramOnClickListener) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    QQCustomDialog localQQCustomDialog;
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
-    {
-      paramCompoundButton = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
-      localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-      if (!paramBoolean) {
-        break label34;
-      }
-    }
-    label34:
-    for (int i = 1;; i = 0)
-    {
-      paramCompoundButton.onClick(localQQCustomDialog, i);
-      return;
-    }
-  }
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void h();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aklm
  * JD-Core Version:    0.7.0.1
  */

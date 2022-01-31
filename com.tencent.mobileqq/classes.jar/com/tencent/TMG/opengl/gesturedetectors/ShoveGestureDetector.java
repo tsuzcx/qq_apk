@@ -7,11 +7,11 @@ public class ShoveGestureDetector
   extends TwoFingerGestureDetector
 {
   private float mCurrAverageY;
-  private final OnShoveGestureListener mListener;
+  private final ShoveGestureDetector.OnShoveGestureListener mListener;
   private float mPrevAverageY;
   private boolean mSloppyGesture;
   
-  public ShoveGestureDetector(Context paramContext, OnShoveGestureListener paramOnShoveGestureListener)
+  public ShoveGestureDetector(Context paramContext, ShoveGestureDetector.OnShoveGestureListener paramOnShoveGestureListener)
   {
     super(paramContext);
     this.mListener = paramOnShoveGestureListener;
@@ -105,35 +105,10 @@ public class ShoveGestureDetector
     this.mPrevAverageY = ((localMotionEvent.getY(1) + f) / 2.0F);
     this.mCurrAverageY = ((paramMotionEvent.getY(0) + paramMotionEvent.getY(1)) / 2.0F);
   }
-  
-  public static abstract interface OnShoveGestureListener
-  {
-    public abstract boolean onShove(ShoveGestureDetector paramShoveGestureDetector);
-    
-    public abstract boolean onShoveBegin(ShoveGestureDetector paramShoveGestureDetector);
-    
-    public abstract void onShoveEnd(ShoveGestureDetector paramShoveGestureDetector);
-  }
-  
-  public static class SimpleOnShoveGestureListener
-    implements ShoveGestureDetector.OnShoveGestureListener
-  {
-    public boolean onShove(ShoveGestureDetector paramShoveGestureDetector)
-    {
-      return false;
-    }
-    
-    public boolean onShoveBegin(ShoveGestureDetector paramShoveGestureDetector)
-    {
-      return true;
-    }
-    
-    public void onShoveEnd(ShoveGestureDetector paramShoveGestureDetector) {}
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.TMG.opengl.gesturedetectors.ShoveGestureDetector
  * JD-Core Version:    0.7.0.1
  */

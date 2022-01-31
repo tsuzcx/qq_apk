@@ -1,22 +1,33 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.redtouch.RedTouch;
+import com.tencent.widget.Switch;
 
-public class aiav
-  extends SosoInterface.OnLocationListener
+class aiav
+  implements View.OnClickListener
 {
-  public aiav(NetSearchEngine paramNetSearchEngine, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  aiav(aiat paramaiat, RedTouch paramRedTouch, amnq paramamnq) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0)
+    Switch localSwitch;
+    if (AppSetting.c)
     {
-      NetSearchEngine.a = paramSosoLbsInfo.a.a;
-      NetSearchEngine.b = paramSosoLbsInfo.a.b;
+      localSwitch = (Switch)paramView.findViewById(2131298121);
+      if (localSwitch != null) {
+        if (localSwitch.isChecked()) {
+          break label59;
+        }
+      }
+    }
+    label59:
+    for (boolean bool = true;; bool = false)
+    {
+      localSwitch.setChecked(bool);
+      aiat.a(this.jdField_a_of_type_Aiat, this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, this.jdField_a_of_type_Amnq, localSwitch.isChecked());
+      paramView.sendAccessibilityEvent(1);
+      return;
     }
   }
 }

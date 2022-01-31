@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.activity.richmedia.p2veffect.utils.P2VEffectLoader;
-import cooperation.qzone.QZoneVideoDownloadActivity;
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public class amzv
-  implements Runnable
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target({java.lang.annotation.ElementType.FIELD})
+public @interface amzv
 {
-  public amzv(QZoneVideoDownloadActivity paramQZoneVideoDownloadActivity) {}
+  boolean a() default false;
   
-  public void run()
-  {
-    P2VEffectLoader.a().a(new amzw(this));
-  }
+  boolean b() default false;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amzv
  * JD-Core Version:    0.7.0.1
  */

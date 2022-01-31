@@ -1,29 +1,12 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
-import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.gdtad.ipc.AppInstallerReceiver;
 
-public class yms
-  implements IIconListener
+public final class yms
 {
-  private yms(SpecailCareListActivity paramSpecailCareListActivity) {}
-  
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
-  {
-    if ((paramBitmap != null) && (paramInt2 == 200))
-    {
-      if (this.b.d != 0) {
-        this.b.b = true;
-      }
-    }
-    else {
-      return;
-    }
-    this.b.a.notifyDataSetChanged();
-  }
+  public static AppInstallerReceiver a = new AppInstallerReceiver(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yms
  * JD-Core Version:    0.7.0.1
  */

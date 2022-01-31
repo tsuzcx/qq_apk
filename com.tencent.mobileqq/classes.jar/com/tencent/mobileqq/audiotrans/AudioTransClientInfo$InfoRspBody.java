@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class AudioTransClientInfo$InfoRspBody
-  extends MessageMicro
+  extends MessageMicro<InfoRspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "msg_failed_rsp", "msg_create_session_rsp" }, new Object[] { null, null }, InfoRspBody.class);
   public AudioTransClientInfo.InfoC2SCreateSessionRsp msg_create_session_rsp = new AudioTransClientInfo.InfoC2SCreateSessionRsp();

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class cmd0x406$GroupFeeMemberListQuery
-  extends MessageMicro
+  extends MessageMicro<GroupFeeMemberListQuery>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "string_project_id", "uint32_member_type", "uint32_page_index", "uint32_page_size" }, new Object[] { "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, GroupFeeMemberListQuery.class);
   public final PBStringField string_project_id = PBField.initString("");
@@ -17,7 +17,7 @@ public final class cmd0x406$GroupFeeMemberListQuery
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x406.cmd0x406.GroupFeeMemberListQuery
  * JD-Core Version:    0.7.0.1
  */

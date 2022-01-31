@@ -1,26 +1,16 @@
-import android.view.animation.AlphaAnimation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipViewManager;
-
-public class utj
-  implements Runnable
+class utj
+  implements val
 {
-  public utj(FriendShipViewManager paramFriendShipViewManager) {}
+  utj(uth paramuth) {}
   
-  public void run()
+  public void a(vcw paramvcw)
   {
-    if (this.a.a != null)
-    {
-      this.a.a.setBackgroundColor(-1442840576);
-      AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-      localAlphaAnimation.setDuration(300L);
-      this.a.a.startAnimation(localAlphaAnimation);
-    }
+    this.a.a.a(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     utj
  * JD-Core Version:    0.7.0.1
  */

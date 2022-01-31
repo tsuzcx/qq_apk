@@ -1,31 +1,26 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.armap.ShopScanDragView;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class ablm
-  implements Animator.AnimatorListener
+  implements View.OnClickListener
 {
-  public ablm(ShopScanDragView paramShopScanDragView) {}
+  public ablm(QQMapActivity paramQQMapActivity, Dialog paramDialog) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    ShopScanDragView.a(this.a, false);
-    ShopScanDragView.b(this.a, true);
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    if (!this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.k) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.finish();
+    }
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    ShopScanDragView.a(this.a, false);
-    ShopScanDragView.b(this.a, true);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ablm
  * JD-Core Version:    0.7.0.1
  */

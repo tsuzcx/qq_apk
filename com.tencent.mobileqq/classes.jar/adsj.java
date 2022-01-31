@@ -1,11 +1,16 @@
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.UUID;
 
-public class adsj
+class adsj
   implements DialogInterface.OnClickListener
 {
-  public adsj(ForwardBaseOption paramForwardBaseOption) {}
+  adsj(adsh paramadsh, long paramLong, UUID paramUUID, ChatMessage paramChatMessage, Activity paramActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
@@ -13,16 +18,19 @@ public class adsj
     {
     default: 
       return;
-    case -2: 
-      this.a.k();
+    case 0: 
+      paramDialogInterface = azih.a(this.jdField_a_of_type_Adsh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long);
+      paramDialogInterface.b(paramDialogInterface.a(this.jdField_a_of_type_JavaUtilUUID));
+      this.jdField_a_of_type_Adsh.h(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      this.jdField_a_of_type_Adsh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(this.jdField_a_of_type_Adsh.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Adsh.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
       return;
     }
-    this.a.l();
+    new aypd(this.jdField_a_of_type_Long, this.jdField_a_of_type_Adsh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity).a(this.jdField_a_of_type_JavaUtilUUID);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adsj
  * JD-Core Version:    0.7.0.1
  */

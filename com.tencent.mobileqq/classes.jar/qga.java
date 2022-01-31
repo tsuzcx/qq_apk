@@ -1,23 +1,31 @@
-import com.tencent.device.msg.data.DeviceMsgHandle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.service.message.MessageCache;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class qga
-  implements Runnable
+class qga
+  implements qpx
 {
-  public qga(DeviceMsgHandle paramDeviceMsgHandle, MessageRecord paramMessageRecord) {}
+  qga(qfy paramqfy, VideoInfo paramVideoInfo) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentDeviceMsgDataDeviceMsgHandle.b.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
-    this.jdField_a_of_type_ComTencentDeviceMsgDataDeviceMsgHandle.b.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFeedsShareController", 2, "onDislikeDialogViewForAdComplain");
+    }
+    Intent localIntent = new Intent();
+    localIntent.putExtra("key_from_type", 2);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null) {
+      localIntent.putExtra("key_ad_info", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.a);
+    }
+    PublicFragmentActivity.a(qfy.a(this.jdField_a_of_type_Qfy), localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
+    qfy.a(this.jdField_a_of_type_Qfy).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qga
  * JD-Core Version:    0.7.0.1
  */

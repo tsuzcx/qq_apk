@@ -1,35 +1,27 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class sji
-  implements View.OnTouchListener
 {
-  public sji(ChatSettingForTroop paramChatSettingForTroop) {}
+  public int a;
+  public ErrorMessage a;
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public sji()
   {
-    if (paramMotionEvent != null)
-    {
-      paramView = this.a.a[15];
-      if (paramView != null) {
-        if (paramMotionEvent.getAction() != 0) {
-          break label36;
-        }
-      }
-    }
-    label36:
-    for (float f = 0.5F;; f = 1.0F)
-    {
-      paramView.setAlpha(f);
-      return false;
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage();
+  }
+  
+  public String toString()
+  {
+    return "UploadResult{errorMessage=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", fileKey='" + this.jdField_a_of_type_JavaLangString + '\'' + ", fileId='" + this.b + '\'' + ", uploadServerIp='" + this.d + '\'' + ", mLastUploadOffset='" + this.jdField_a_of_type_Int + '\'' + ", cdnUrl='" + this.c + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sji
  * JD-Core Version:    0.7.0.1
  */

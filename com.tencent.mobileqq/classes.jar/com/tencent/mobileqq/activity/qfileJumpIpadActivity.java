@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
+import ajed;
 import android.os.Bundle;
-import com.tencent.mobileqq.app.AppConstants;
 
 public class qfileJumpIpadActivity
   extends qfileJumpActivity
 {
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.a = AppConstants.z;
+    this.a = ajed.A;
     return true;
   }
 }

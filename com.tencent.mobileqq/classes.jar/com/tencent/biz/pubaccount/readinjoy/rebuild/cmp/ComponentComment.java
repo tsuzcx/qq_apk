@@ -8,29 +8,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.ComponentView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
+import babh;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 import java.util.List;
-import lyo;
-import lyp;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.CommentInfo;
+import obz;
+import opw;
+import pey;
+import pfh;
+import pjg;
+import pjm;
+import pjn;
+import qoe;
+import tencent.im.oidb.articlesummary.articlesummary.CommentInfo;
 
 public class ComponentComment
   extends FrameLayout
-  implements ComponentView
+  implements pey
 {
   View jdField_a_of_type_AndroidViewView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  CmpCtxt jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt;
+  pjg jdField_a_of_type_Pjg;
   TextView b;
   
   public ComponentComment(Context paramContext)
@@ -53,7 +54,7 @@ public class ComponentComment
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt = new CmpCtxt();
+    this.jdField_a_of_type_Pjg = new pjg();
     a(paramContext);
     a();
   }
@@ -62,15 +63,10 @@ public class ComponentComment
   
   public void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2130969526, this, true);
-    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131366847);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131366849));
-    this.b = ((TextView)paramContext.findViewById(2131366848));
-  }
-  
-  public void a(FeedItemCell.CellListener paramCellListener)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a(paramCellListener);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131494230, this, true);
+    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131298918);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131298957));
+    this.b = ((TextView)paramContext.findViewById(2131298955));
   }
   
   public void a(Object paramObject)
@@ -80,33 +76,33 @@ public class ComponentComment
     long l;
     String str2;
     String str1;
-    if ((paramObject instanceof IReadInJoyModel))
+    if ((paramObject instanceof opw))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a((IReadInJoyModel)paramObject);
+      this.jdField_a_of_type_Pjg.a((opw)paramObject);
       b();
-      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.d()) {
+      if (!this.jdField_a_of_type_Pjg.a.d()) {
         break label313;
       }
       i = 0;
       setVisibility(i);
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.d())
+      if (this.jdField_a_of_type_Pjg.a.d())
       {
-        localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a();
-        paramObject = (oidb_cmd0x68b.CommentInfo)localArticleInfo.mCommentsObj.get(0);
+        localArticleInfo = this.jdField_a_of_type_Pjg.a.a();
+        paramObject = (articlesummary.CommentInfo)localArticleInfo.mCommentsObj.get(0);
         l = paramObject.uint64_uin.get();
         str2 = paramObject.str_content.get();
         str1 = paramObject.str_jump_url.get();
-        if (!ReadInJoyUtils.a()) {
+        if (!obz.a()) {
           break label319;
         }
-        paramObject = ContactUtils.l((QQAppInterface)ReadInJoyUtils.a(), String.valueOf(l));
+        paramObject = babh.j((QQAppInterface)obz.a(), String.valueOf(l));
         label134:
-        String str3 = ReadInJoyUtils.e(paramObject);
+        String str3 = obz.d(paramObject);
         if (str3 == null) {
           break label339;
         }
         paramObject = new SpannableString(str3 + ":  " + str2);
-        paramObject.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(getContext().getResources().getColor(2131492924)), 0, str3.length(), 33);
+        paramObject.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(getContext().getResources().getColor(2131101491)), 0, str3.length(), 33);
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_a_of_type_AndroidWidgetTextView.setText(str3 + ":  ");
       }
@@ -114,9 +110,9 @@ public class ComponentComment
     for (;;)
     {
       this.b.setText(paramObject);
-      this.b.setOnClickListener(new lyo(this, str1, localArticleInfo));
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new lyp(this, l, localArticleInfo));
-      if (!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.f()) {
+      this.b.setOnClickListener(new pjm(this, str1, localArticleInfo));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new pjn(this, l, localArticleInfo));
+      if (!this.jdField_a_of_type_Pjg.a.f()) {
         break label361;
       }
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
@@ -125,7 +121,7 @@ public class ComponentComment
       i = 8;
       break;
       label319:
-      paramObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a().b(l);
+      paramObject = this.jdField_a_of_type_Pjg.a.a().b(l);
       break label134;
       label339:
       paramObject = new SpannableString(str2);
@@ -133,6 +129,11 @@ public class ComponentComment
     }
     label361:
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+  }
+  
+  public void a(pfh parampfh)
+  {
+    this.jdField_a_of_type_Pjg.a(parampfh);
   }
   
   public void b() {}

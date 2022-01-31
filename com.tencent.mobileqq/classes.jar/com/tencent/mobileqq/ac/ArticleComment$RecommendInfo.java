@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class ArticleComment$RecommendInfo
-  extends MessageMicro
+  extends MessageMicro<RecommendInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField echo_info = PBField.initBytes(ByteStringMicro.EMPTY);

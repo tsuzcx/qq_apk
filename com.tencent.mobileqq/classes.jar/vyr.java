@@ -1,25 +1,30 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class vyr
-  implements Runnable
+class vyr
+  implements View.OnClickListener
 {
-  public vyr(FriendChatPie paramFriendChatPie) {}
+  vyr(vyo paramvyo) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Message localMessage = FriendChatPie.c(this.a).obtainMessage(42);
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("showRedDot", false);
-    localMessage.setData(localBundle);
-    FriendChatPie.d(this.a).sendMessage(localMessage);
+    if (this.a.a() != null)
+    {
+      paramView = this.a.a().a();
+      if (paramView != null) {
+        this.a.c(paramView);
+      }
+    }
+    else
+    {
+      return;
+    }
+    bbmy.a(vyo.a(this.a), 1, ajjy.a(2131648859), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vyr
  * JD-Core Version:    0.7.0.1
  */

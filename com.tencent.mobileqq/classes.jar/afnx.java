@@ -1,36 +1,112 @@
 import android.content.Intent;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
-import com.tencent.mobileqq.statistics.ReportTask;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.29.1;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.29.2;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class afnx
-  implements View.OnClickListener
+  implements begw
 {
-  public afnx(NearbyProfileFragment paramNearbyProfileFragment, String paramString, int paramInt) {}
+  public afnx(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.startActivity(paramView);
-    ReportTask localReportTask = new ReportTask(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.app).a("dc00899").b("grp_lbs").c("face_score_vip").d("expert_click");
-    String str1 = "" + (NearbyProfileFragment.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment).gender + 1);
-    String str2 = "" + this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileFragment.a.e == 3) {}
-    for (paramView = "2";; paramView = "1")
+    if ((!ChatHistoryTroopMemberFragment.c(this.a)) && (paramInt >= 5)) {}
+    for (int i = paramInt + 1;; i = paramInt)
     {
-      localReportTask.a(new String[] { "", str1, str2, paramView }).a();
-      return;
+      if (this.a.h) {
+        if (paramInt == 0) {
+          this.a.jdField_b_of_type_AndroidOsHandler.postDelayed(new ChatHistoryTroopMemberFragment.29.1(this), 320L);
+        }
+      }
+      for (;;)
+      {
+        if ((this.a.jdField_a_of_type_Begr != null) && (this.a.jdField_a_of_type_Begr.isShowing())) {
+          this.a.jdField_a_of_type_Begr.dismiss();
+        }
+        return;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("Q.history.BaseFragment", 2, "mOnActionSheetClickListener.OnClick, error : which = " + paramInt + ", troopUin = " + this.a.c);
+          continue;
+          if (this.a.jdField_d_of_type_Int == 9) {
+            switch (i)
+            {
+            default: 
+              break;
+            case 0: 
+              this.a.f = true;
+              this.a.u = "";
+              this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+              this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+              this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+              if (this.a.jdField_a_of_type_Afow != null) {
+                this.a.jdField_a_of_type_Afow.a();
+              }
+              awqx.b(this.a.getActivity().app, "P_CliOper", "Grp_pay", "", "un_pay_list", "Clk_del", 0, 0, this.a.c, this.a.o, "", "");
+              break;
+            }
+          } else {
+            switch (i)
+            {
+            default: 
+              break;
+            case 0: 
+              this.a.z();
+              break;
+            case 1: 
+              if (!TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString))
+              {
+                paramView = new Intent(this.a.getActivity(), SelectMemberActivity.class);
+                paramView.putExtra("param_from", 30);
+                paramView.putExtra("group_uin", this.a.c);
+                paramView.putExtra("param_groupcode", this.a.jdField_b_of_type_JavaLangString);
+                paramView.putExtra("param_from", 30);
+                paramView.putExtra("param_subtype", 4);
+                paramView.putExtra("param_entrance", 30);
+                paramView.putExtra("param_max", 30);
+                paramView.putExtra("param_exit_animation", 3);
+                this.a.startActivity(paramView);
+                this.a.getActivity().overridePendingTransition(2130771997, 0);
+                awqx.b(this.a.getActivity().app, "dc00899", "Grp_mber", "", "mber_list", "clk_Add", 0, 0, this.a.c, "", "", "");
+              }
+              break;
+            case 2: 
+              this.a.jdField_b_of_type_AndroidOsHandler.postDelayed(new ChatHistoryTroopMemberFragment.29.2(this), 320L);
+              break;
+            case 3: 
+              this.a.g = true;
+              this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+              ChatHistoryTroopMemberFragment.a(this.a);
+              this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+              this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+              this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+              this.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)ChatHistoryTroopMemberFragment.a(this.a, 2131302806));
+              this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
+              this.a.jdField_d_of_type_AndroidWidgetTextView.setText(ajjy.a(2131635819));
+              this.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new afny(this));
+              if (this.a.jdField_a_of_type_Afow != null) {
+                this.a.jdField_a_of_type_Afow.a();
+              }
+              paramView = this.a.o;
+              this.a.a("Clk_del", paramView, "");
+            }
+          }
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afnx
  * JD-Core Version:    0.7.0.1
  */

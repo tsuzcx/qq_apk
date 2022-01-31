@@ -1,21 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.capture.view.QIMCircleProgress;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
 
 public class anya
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnCancelListener
 {
-  public anya(QIMCircleProgress paramQIMCircleProgress) {}
+  public anya(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.c = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.b();
+    this.a.a.a(null);
+    LocalFileBrowserActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anya
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,34 @@
-import android.bluetooth.BluetoothAdapter;
-import com.tencent.device.qfind.QFindBLEScanMgr;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
 
-public class qhg
-  implements Runnable
+class qhg
+  extends Handler
 {
-  public qhg(QFindBLEScanMgr paramQFindBLEScanMgr) {}
-  
-  public void run()
+  qhg(qhf paramqhf, Looper paramLooper)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      this.a.jdField_a_of_type_Boolean = false;
-    }
-    try
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      if (this.a.jdField_a_of_type_AndroidBluetoothBluetoothAdapter != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("QFindBLE", 2, "call native mBluetoothAdapter.stopLeScan with cb=" + this.a.jdField_a_of_type_AndroidBluetoothBluetoothAdapter$LeScanCallback + ", mScanning=" + this.a.jdField_a_of_type_Boolean);
-        }
-        this.a.jdField_a_of_type_AndroidBluetoothBluetoothAdapter.stopLeScan(this.a.jdField_a_of_type_AndroidBluetoothBluetoothAdapter$LeScanCallback);
-      }
+    }
+    do
+    {
       return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFeedsVideoUIDelegate", 2, "mUiHandler.postDelayed() innerChangePlayButton(SHOW_LOADING_BTN) mIsNeedShowLoading = " + qhf.a(this.a));
+      }
+    } while (!qhf.a(this.a));
+    this.a.a(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qhg
  * JD-Core Version:    0.7.0.1
  */

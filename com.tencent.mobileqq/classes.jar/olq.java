@@ -1,42 +1,26 @@
-import com.tencent.biz.qqstory.takevideo.EditWebVideoPartManager;
-import com.tencent.maxvideo.mediadevice.AVCodec;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.shortvideo.mediadevice.RecordManager;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class olq
-  implements Runnable
+  implements omb
 {
-  public olq(EditWebVideoPartManager paramEditWebVideoPartManager, RMVideoStateMgr paramRMVideoStateMgr) {}
+  public olq(VideoView paramVideoView) {}
   
-  public void run()
+  public void a(String[] paramArrayOfString1, String[] paramArrayOfString2)
   {
-    try
+    if ((paramArrayOfString2 != null) && (paramArrayOfString2.length > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("EditWebVideoActivity", 2, "stopRecord(): Async, mVideoFileDir:" + this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaLangString + ",is to call AVideoCodec.recordSubmit()");
+      paramArrayOfString2 = paramArrayOfString2[0];
+      if ((!TextUtils.isEmpty(VideoView.d(this.a))) && (VideoView.d(this.a).equals(paramArrayOfString1[0])))
+      {
+        this.a.b(paramArrayOfString2);
+        return;
       }
-      RecordManager.a().a().recordSubmit();
+      QLog.d("gifvideo.VideoView", 2, "not current video");
       return;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
-      {
-        localUnsatisfiedLinkError.printStackTrace();
-        synchronized (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-          this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.notifyAll();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("EditWebVideoActivity", 2, "stopRecord(): Async, mVideoFileDir:" + this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaLangString + ", call AVideoCodec.recordSubmit() fail, error = " + localUnsatisfiedLinkError.getMessage());
-          return;
-        }
-      }
-    }
+    QLog.d("gifvideo.VideoView", 2, "urls null");
   }
 }
 

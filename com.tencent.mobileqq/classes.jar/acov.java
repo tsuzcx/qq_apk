@@ -1,21 +1,12 @@
-import android.view.View;
-import com.tencent.mobileqq.emoticonview.RecommendEmotionAdapter;
-import com.tencent.mobileqq.vas.ClubContentJsonTask.PromotionEmoticonPkg;
-import java.io.File;
+import android.widget.RelativeLayout;
 
 public class acov
 {
-  public int a;
-  public View a;
-  public ClubContentJsonTask.PromotionEmoticonPkg a;
-  public File a;
-  public boolean a;
-  
-  public acov(RecommendEmotionAdapter paramRecommendEmotionAdapter) {}
+  public RelativeLayout a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acov
  * JD-Core Version:    0.7.0.1
  */

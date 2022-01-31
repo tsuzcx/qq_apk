@@ -1,39 +1,53 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.View;
-import android.view.Window;
-import android.view.animation.TranslateAnimation;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Vector;
 
-public class ujr
-  implements DialogInterface.OnDismissListener
+class ujr
+  implements slx<sza, szb>
 {
-  public ujr(TroopTransferActivity paramTroopTransferActivity, int paramInt, TranslateAnimation paramTranslateAnimation) {}
+  ujr(ujo paramujo, JobContext paramJobContext, ujb paramujb) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(@NonNull sza paramsza, @Nullable szb arg2, @NonNull ErrorMessage paramErrorMessage)
   {
-    try
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_AndroidWidgetLinearLayout.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_AndroidWidgetLinearLayout.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-      paramDialogInterface = (InputMethodManager)this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.getSystemService("input_method");
-      if (paramDialogInterface != null) {
-        paramDialogInterface.hideSoftInputFromWindow(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.getWindow().peekDecorView().getWindowToken(), 0);
-      }
+      urk.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed like info pull segment cancel on net respond");
       return;
     }
-    catch (Exception paramDialogInterface)
+    if (??? == null)
     {
-      paramDialogInterface.printStackTrace();
+      paramErrorMessage = new szb(paramErrorMessage);
+      synchronized (this.jdField_a_of_type_Ujo)
+      {
+        ujo.a(this.jdField_a_of_type_Ujo, paramErrorMessage);
+        ujo.a(this.jdField_a_of_type_Ujo).remove(paramsza);
+        ujo.a(this.jdField_a_of_type_Ujo, this.jdField_a_of_type_Ujb);
+        return;
+      }
+    }
+    if (paramErrorMessage.isFail()) {
+      urk.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for like request");
+    }
+    sps localsps = (sps)sqg.a(15);
+    Iterator localIterator = ???.jdField_a_of_type_JavaUtilList.iterator();
+    for (;;)
+    {
+      paramErrorMessage = ???;
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      paramErrorMessage = (szc)localIterator.next();
+      localsps.a(paramErrorMessage.jdField_a_of_type_JavaUtilList, paramErrorMessage.jdField_a_of_type_JavaLangString, false, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ujr
  * JD-Core Version:    0.7.0.1
  */

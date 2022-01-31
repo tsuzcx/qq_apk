@@ -1,27 +1,24 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
 
-class aatl
-  implements View.OnTouchListener
+public class aatl
+  implements View.OnClickListener
 {
-  private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(new aatm(this));
+  public aatl(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  aatl(aatk paramaatk) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    if (ARGreetingCardListManager.a(this.jdField_a_of_type_Aatk.a)) {
-      this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    if (!this.a.getActivity().isFinishing()) {
+      ForwardTroopListFragment.a(this.a).dismiss();
     }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aatl
  * JD-Core Version:    0.7.0.1
  */

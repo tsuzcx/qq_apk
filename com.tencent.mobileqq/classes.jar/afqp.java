@@ -1,25 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.widget.ButtonInfo;
-import com.tencent.mobileqq.nearby.widget.NearbyCustomDialog;
-import com.tencent.mobileqq.nearby.widget.NearbyCustomDialog.OnClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class afqp
-  implements View.OnClickListener
+class afqp
+  implements DialogInterface.OnCancelListener
 {
-  public afqp(NearbyCustomDialog paramNearbyCustomDialog, ButtonInfo paramButtonInfo) {}
+  afqp(afqn paramafqn) {}
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetNearbyCustomDialog.dismiss();
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetButtonInfo.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetButtonInfo.a.a(paramView);
-    }
-  }
+  public void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afqp
  * JD-Core Version:    0.7.0.1
  */

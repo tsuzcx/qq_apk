@@ -1,23 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.SubscriptionViewController;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySubscriptionListViewGroup;
-import java.util.List;
+import com.tencent.av.gaudio.GaInviteLockActivity;
+import com.tencent.av.gaudio.GaInviteLockActivity.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class ldm
-  extends ReadInJoyObserver
+  extends kvg
 {
-  public ldm(SubscriptionViewController paramSubscriptionViewController) {}
+  public ldm(GaInviteLockActivity paramGaInviteLockActivity) {}
   
-  public void a(List paramList)
+  protected void a(long paramLong1, long paramLong2, ArrayList<ldv> paramArrayList)
   {
-    if ((SubscriptionViewController.a(this.a) != null) && ((SubscriptionViewController.a(this.a) instanceof ReadInJoySubscriptionListViewGroup))) {
-      ((ReadInJoySubscriptionListViewGroup)SubscriptionViewController.a(this.a)).a(paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.b, 2, "onReceiveMemberList mMemberChangeEventReceiver size:" + paramArrayList.size());
     }
+    ThreadManager.getUIHandler().post(new GaInviteLockActivity.1.1(this, paramArrayList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ldm
  * JD-Core Version:    0.7.0.1
  */

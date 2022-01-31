@@ -1,28 +1,29 @@
-import android.content.Context;
-import android.media.AudioManager;
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.qphone.base.util.QLog;
 
-public class pfm
-  extends AudioManager
+class pfm
+  implements View.OnClickListener
 {
-  public pfm(Context paramContext)
-  {
-    super(paramContext);
-  }
+  pfm(pfl parampfl, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2, LinearLayout paramLinearLayout3) {}
   
-  public int requestAudioFocus(AudioManager.OnAudioFocusChangeListener paramOnAudioFocusChangeListener, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    try
-    {
-      paramInt1 = super.requestAudioFocus(paramOnAudioFocusChangeListener, paramInt1, paramInt2);
-      return paramInt1;
+    bgmq.f(obz.a(), this.jdField_a_of_type_AndroidWidgetLinearLayout.getTop() + this.b.getTop() + this.c.getTop());
+    paramView = this.jdField_a_of_type_Pfl.jdField_a_of_type_Qoe.a();
+    if (paramView != null) {
+      paramView.a(null, ((opw)this.jdField_a_of_type_Pfl.jdField_a_of_type_JavaLangObject).a(), 2);
     }
-    catch (NullPointerException paramOnAudioFocusChangeListener)
+    if (QLog.isColorLevel())
     {
-      ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", "audio_manager_npe", 0, 1, 0, "", "", "", "");
+      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "firstlayout top" + this.jdField_a_of_type_AndroidWidgetLinearLayout.getTop() });
+      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "firstlayout width" + this.jdField_a_of_type_AndroidWidgetLinearLayout.getWidth() });
+      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "thirdlayout top" + this.b.getTop() });
+      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "thirdlayout width" + this.b.getWidth() });
+      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "secondlayout top" + this.c.getTop() });
+      QLog.d("Q.readinjoy.videoanimation", 2, new Object[] { "position show", "secondlayout width" + this.c.getWidth() });
     }
-    return 0;
   }
 }
 

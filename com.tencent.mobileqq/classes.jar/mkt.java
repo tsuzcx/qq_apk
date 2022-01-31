@@ -1,18 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import android.graphics.drawable.Drawable;
 
-class mkt
-  implements Runnable
+public class mkt
 {
-  mkt(mks parammks) {}
+  public Drawable a;
+  public final String a;
+  public mkk a;
+  public String b;
   
-  public void run()
+  public boolean equals(Object paramObject)
   {
-    this.a.a.notifyDataSetChanged();
+    return ((paramObject instanceof mkt)) && (((mkt)paramObject).a.equals(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mkt
  * JD-Core Version:    0.7.0.1
  */

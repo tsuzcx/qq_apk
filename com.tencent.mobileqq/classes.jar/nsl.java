@@ -1,30 +1,14 @@
-import com.tencent.biz.qqstory.model.QQStoryActivityManager;
-import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
 
 public class nsl
-  implements Runnable
+  implements bbmu
 {
-  public nsl(StoryPlayVideoActivity paramStoryPlayVideoActivity, QQStoryActivityManager paramQQStoryActivityManager) {}
+  public nsl(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  public void run()
+  public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqstory.player.StoryPlayVideoActivity", 2, "player activity stack full, size=10, start clear!");
-    }
-    Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryModelQQStoryActivityManager.a.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (String)localIterator.next();
-      localObject = (QQStoryBaseActivity)((WeakReference)this.jdField_a_of_type_ComTencentBizQqstoryModelQQStoryActivityManager.a.get(localObject)).get();
-      if ((localObject != null) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayVideoActivity != localObject) && (!((QQStoryBaseActivity)localObject).isFinishing())) {
-        ((QQStoryBaseActivity)localObject).finish();
-      }
+    if (ReadInJoyDeliverBiuActivity.b(this.a)) {
+      this.a.finish();
     }
   }
 }

@@ -45,7 +45,7 @@ final class Segment
       int j = this.limit - this.pos;
       int k = this.prev.limit;
       if (this.prev.shared) {}
-      for (int i = 0; j <= 8192 - k + i; i = this.prev.pos)
+      for (int i = 0; j <= i + (8192 - k); i = this.prev.pos)
       {
         writeTo(this.prev, j);
         pop();

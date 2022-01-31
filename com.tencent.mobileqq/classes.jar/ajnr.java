@@ -1,36 +1,61 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.DotStyleNavBar;
+import java.nio.ByteBuffer;
+import oicq.wlogin_sdk.tools.MD5;
 
 public class ajnr
-  implements ViewPager.OnPageChangeListener
 {
-  public ajnr(DotStyleNavBar paramDotStyleNavBar) {}
-  
-  public void onPageScrollStateChanged(int paramInt)
+  public static String a(String paramString)
   {
-    if (DotStyleNavBar.a(this.a) != null) {
-      DotStyleNavBar.a(this.a).onPageScrollStateChanged(paramInt);
+    if ((paramString == null) || (paramString.length() == 0)) {
+      return paramString;
+    }
+    StringBuffer localStringBuffer = new StringBuffer(paramString.length());
+    int i = 0;
+    if (i < paramString.length())
+    {
+      char c = paramString.charAt(i);
+      if ((c == ' ') || (c == '-') || (c == ')') || (c == '(') || (c == '_')) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        localStringBuffer.append(c);
+      }
+    }
+    return localStringBuffer.toString();
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    paramString1 = paramString1.getBytes();
+    byte[] arrayOfByte = paramString2.getBytes();
+    if (paramString1.length > 10)
+    {
+      paramString2 = new byte[10];
+      System.arraycopy(paramString1, 0, paramString2, 0, 10);
+      paramString1 = paramString2;
+    }
+    for (;;)
+    {
+      return MD5.toMD5(ByteBuffer.allocate(paramString1.length + arrayOfByte.length).put(paramString1).put(arrayOfByte).array());
     }
   }
   
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public static String b(String paramString)
   {
-    if (DotStyleNavBar.a(this.a) != null) {
-      DotStyleNavBar.a(this.a).onPageScrolled(paramInt1, paramFloat, paramInt2);
-    }
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    this.a.setCurrent(paramInt);
-    if (DotStyleNavBar.a(this.a) != null) {
-      DotStyleNavBar.a(this.a).onPageSelected(paramInt);
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    for (paramString = "#";; paramString = String.valueOf(paramString.charAt(0)).toUpperCase())
+    {
+      String str = paramString;
+      if (!baip.b(paramString.charAt(0))) {
+        str = "#";
+      }
+      return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajnr
  * JD-Core Version:    0.7.0.1
  */

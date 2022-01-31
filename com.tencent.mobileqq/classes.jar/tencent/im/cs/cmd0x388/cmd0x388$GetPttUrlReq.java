@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class cmd0x388$GetPttUrlReq
-  extends MessageMicro
+  extends MessageMicro<GetPttUrlReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_build_ver = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -38,7 +38,7 @@ public final class cmd0x388$GetPttUrlReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.cmd0x388.cmd0x388.GetPttUrlReq
  * JD-Core Version:    0.7.0.1
  */

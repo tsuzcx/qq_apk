@@ -1,15 +1,37 @@
-import com.tencent.biz.qqstory.newshare.callback.OnPrepareShareListener;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareData;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.Switch;
 
 public class nli
-  implements Runnable
+  implements bbmu
 {
-  public nli(ShareModeBase paramShareModeBase, ShareData paramShareData) {}
+  public nli(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModeBaseShareModeBase.a.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareData);
+    boolean bool2 = true;
+    Object localObject;
+    if (this.a.a)
+    {
+      localObject = this.a;
+      if (ReadInJoySettingActivity.a(this.a)) {
+        break label61;
+      }
+      bool1 = true;
+      ReadInJoySettingActivity.a((ReadInJoySettingActivity)localObject, bool1);
+      localObject = ReadInJoySettingActivity.a(this.a);
+      if (ReadInJoySettingActivity.a(this.a)) {
+        break label66;
+      }
+    }
+    label61:
+    label66:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      ((Switch)localObject).setChecked(bool1);
+      return;
+      bool1 = false;
+      break;
+    }
   }
 }
 

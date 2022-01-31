@@ -1,54 +1,46 @@
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraTemplateAdapter;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraTemplateItemView;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.HorizontalListView;
-import java.util.ArrayList;
+import com.tencent.av.redpacket.AVRedPacketManager;
 
-class lkk
-  implements Runnable
+public class lkk
+  extends lko
 {
-  lkk(lki paramlki, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt) {}
+  public int b;
   
-  public void run()
+  public lkk()
   {
-    int j = ReadInJoyCameraTemplateAdapter.a(this.jdField_a_of_type_Lki.a).getFirstVisiblePosition();
-    int k = ReadInJoyCameraTemplateAdapter.a(this.jdField_a_of_type_Lki.a).getLastVisiblePosition();
-    int i = j;
-    Object localObject;
-    if (i <= k)
-    {
-      if (i < 0) {}
-      do
-      {
-        i += 1;
-        break;
-        localObject = (PtvTemplateManager.PtvTemplateInfo)ReadInJoyCameraTemplateAdapter.a(this.jdField_a_of_type_Lki.a).get(i);
-      } while ((localObject == null) || (!((PtvTemplateManager.PtvTemplateInfo)localObject).id.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)));
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraTemplateAdapter", 2, "onProgressUpdate index: " + i + " progress: " + this.jdField_a_of_type_Int);
-      }
-      ((PtvTemplateManager.PtvTemplateInfo)localObject).downloading = true;
-      localObject = ReadInJoyCameraTemplateAdapter.a(this.jdField_a_of_type_Lki.a).getChildAt(i - j);
-      if ((localObject instanceof ReadInJoyCameraTemplateItemView))
-      {
-        localObject = (ReadInJoyCameraTemplateItemView)localObject;
-        if (this.jdField_a_of_type_Int != 100) {
-          break label189;
-        }
-      }
+    this.jdField_b_of_type_Int = 667;
+    this.c = new lla[8];
+    this.jdField_b_of_type_Long = 1250L;
+  }
+  
+  public void a(long paramLong)
+  {
+    super.a(paramLong);
+    long l = this.a;
+    int i = 0;
+    if (paramLong - l <= this.jdField_b_of_type_Long) {
+      i = 255;
     }
-    label189:
-    for (i = 99;; i = this.jdField_a_of_type_Int)
+    a(i);
+  }
+  
+  public void a(AVRedPacketManager paramAVRedPacketManager)
+  {
+    int i = 0;
+    while (i < this.c.length)
     {
-      ((ReadInJoyCameraTemplateItemView)localObject).b(i);
-      return;
+      this.c[i] = new lla(paramAVRedPacketManager.a("qav_redpacket_excellent_" + i * 2 + ".png"));
+      i += 1;
     }
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    a(0, 0, paramInt1, this.jdField_b_of_type_Int * paramInt1 / 750);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lkk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,54 @@
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.widget.TextView;
+import java.util.List;
 
-class ncc
-  implements Runnable
+public class ncc
+  extends ArrayAdapter<ncb>
 {
-  ncc(nby paramnby) {}
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private List<ncb> jdField_a_of_type_JavaUtilList;
   
-  public void run()
+  public ncc(Context paramContext, int paramInt, List<ncb> paramList)
   {
-    if (PublicAccountImageCollectionMainActivity.b(this.a.a))
+    super(paramContext, paramInt, paramList);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+  }
+  
+  public ncb a(int paramInt)
+  {
+    return (ncb)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      this.a.a.e.setImageResource(2130839694);
-      return;
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131493479, null);
+      paramViewGroup = new ncd();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131306383));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131306384));
+      paramView.setTag(paramViewGroup);
     }
-    this.a.a.e.setImageResource(2130839693);
+    for (;;)
+    {
+      ncb localncb = a(paramInt);
+      paramViewGroup.jdField_a_of_type_Ncb = localncb;
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localncb.jdField_a_of_type_JavaLangString);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(localncb.jdField_a_of_type_Int);
+      return paramView;
+      paramViewGroup = (ncd)paramView.getTag();
+    }
   }
 }
 

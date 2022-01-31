@@ -1,70 +1,143 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.channelCover.ChannelCoverView;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.NetworkState;
-import org.json.JSONObject;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import com.tencent.av.redpacket.AVRedPacketManager;
 
-public final class llb
-  implements Runnable
+public class llb
 {
-  public llb(ChannelCoverInfo paramChannelCoverInfo, int paramInt, String paramString) {}
+  public lka[] a = new lka[8];
   
-  public void run()
+  public llb(Context paramContext)
   {
-    int i = 1;
-    str = "";
-    for (;;)
+    this.a[0] = new lkt();
+    this.a[1] = new lkr(paramContext);
+    this.a[2] = new lkf();
+    this.a[3] = new lkw();
+    this.a[4] = new lkd();
+    this.a[5] = new lkc();
+    this.a[6] = new lkb();
+    this.a[7] = new lkp();
+  }
+  
+  public long a(long paramLong)
+  {
+    long l2;
+    if (paramLong < this.a[0].jdField_a_of_type_Long)
     {
-      try
+      l2 = this.a[0].jdField_a_of_type_Long;
+      l1 = this.a[0].jdField_a_of_type_Long;
+      l2 -= paramLong;
+      paramLong = l1;
+    }
+    for (long l1 = l2;; l1 = 0L)
+    {
+      lka[] arrayOflka = this.a;
+      int j = arrayOflka.length;
+      int i = 0;
+      while (i < j)
       {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("folder_status", ReadInJoyUtils.d);
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo != null) {
-          ((JSONObject)localObject).put("channel_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId);
-        }
-        ((JSONObject)localObject).put("current_channel_id", 0);
-        if (NetworkState.isWifiConn()) {
-          i = 2;
-        }
-        ((JSONObject)localObject).put("network_type", i);
-        if (this.jdField_a_of_type_Int != ChannelCoverView.jdField_a_of_type_Int) {
-          continue;
-        }
-        ((JSONObject)localObject).put("channel_type", "2");
-        if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mColumnType != 0)) {
-          continue;
-        }
-        ((JSONObject)localObject).put("content_type", 1);
+        arrayOflka[i].jdField_a_of_type_Long = paramLong;
+        i += 1;
       }
-      catch (Exception localException)
-      {
-        Object localObject = str;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ChannelCoverView", 2, "ERROR Exception=" + localException.getMessage());
-        localObject = str;
-        continue;
-        ((JSONObject)localObject).put("content_type", 2);
-        continue;
-      }
-      localObject = ((JSONObject)localObject).toString();
-      if (QLog.isColorLevel()) {
-        QLog.d("ChannelCoverView", 2, "reportRecommendEvent T =" + this.jdField_a_of_type_JavaLangString + "; reportString = " + (String)localObject);
-      }
-      PublicAccountReportUtils.a(null, "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", (String)localObject, false);
+      ((lkt)this.a[0]).a = true;
+      ((lkr)this.a[1]).a = true;
+      ((lkf)this.a[2]).a = true;
+      return l1;
+    }
+  }
+  
+  public void a()
+  {
+    lka[] arrayOflka = this.a;
+    int j = arrayOflka.length;
+    int i = 0;
+    while (i < j)
+    {
+      arrayOflka[i].b();
+      i += 1;
+    }
+    this.a = null;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    lka[] arrayOflka = this.a;
+    int j = arrayOflka.length;
+    int i = 0;
+    while (i < j)
+    {
+      arrayOflka[i].b(paramInt1, paramInt2, paramInt3, paramInt4);
+      i += 1;
+    }
+  }
+  
+  public void a(long paramLong)
+  {
+    this.a[0].jdField_a_of_type_Long = paramLong;
+    this.a[1].jdField_a_of_type_Long = paramLong;
+    this.a[2].jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(Canvas paramCanvas, Paint paramPaint)
+  {
+    lka[] arrayOflka = this.a;
+    int j = arrayOflka.length;
+    int i = 0;
+    while (i < j)
+    {
+      arrayOflka[i].a(paramCanvas, paramPaint);
+      i += 1;
+    }
+  }
+  
+  public void a(AVRedPacketManager paramAVRedPacketManager)
+  {
+    this.a[0].jdField_a_of_type_Lla = new lla(paramAVRedPacketManager.a("qav_redpacket_light_bg.png"));
+    this.a[2].jdField_a_of_type_Lla = new lla(paramAVRedPacketManager.a("qav_redpacket_cd.png"));
+    this.a[4].jdField_a_of_type_Lla = new lla(paramAVRedPacketManager.a("qav_redpacket_3.png"));
+    this.a[5].jdField_a_of_type_Lla = new lla(paramAVRedPacketManager.a("qav_redpacket_2.png"));
+    this.a[6].jdField_a_of_type_Lla = new lla(paramAVRedPacketManager.a("qav_redpacket_1.png"));
+    this.a[7].jdField_a_of_type_Lla = new lla(paramAVRedPacketManager.a("qav_redpacket_go.png"));
+  }
+  
+  public void a(boolean paramBoolean, AVRedPacketManager paramAVRedPacketManager)
+  {
+    if (paramBoolean) {}
+    for (this.a[3].jdField_a_of_type_Lla = null;; this.a[3].jdField_a_of_type_Lla = null)
+    {
+      ((lkr)this.a[1]).a(paramBoolean, paramAVRedPacketManager);
       return;
-      if (this.jdField_a_of_type_Int == ChannelCoverView.b) {
-        ((JSONObject)localObject).put("channel_type", "1");
+    }
+  }
+  
+  public boolean a(long paramLong)
+  {
+    boolean bool2 = false;
+    lka[] arrayOflka = this.a;
+    int j = arrayOflka.length;
+    int i = 0;
+    while (i < j)
+    {
+      arrayOflka[i].a(paramLong);
+      i += 1;
+    }
+    boolean bool1 = bool2;
+    if (this.a[7].jdField_a_of_type_Long != 0L)
+    {
+      bool1 = bool2;
+      if (paramLong - this.a[7].jdField_a_of_type_Long > 5564L) {
+        bool1 = true;
       }
     }
+    if (bool1) {
+      this.a[7].jdField_a_of_type_Long = 0L;
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     llb
  * JD-Core Version:    0.7.0.1
  */

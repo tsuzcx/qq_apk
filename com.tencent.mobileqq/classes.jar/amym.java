@@ -1,20 +1,38 @@
-import com.tencent.biz.common.offline.HtmlOffline;
-import cooperation.qqreader.VipProxyRreLoadReaderProcess;
-import mqq.app.AppRuntime;
+import android.graphics.drawable.ColorDrawable;
 
 public class amym
-  implements Runnable
+  extends ColorDrawable
 {
-  public amym(VipProxyRreLoadReaderProcess paramVipProxyRreLoadReaderProcess, AppRuntime paramAppRuntime) {}
+  private int a;
+  private int b;
   
-  public void run()
+  public amym(int paramInt1, int paramInt2)
   {
-    HtmlOffline.b("354", this.jdField_a_of_type_MqqAppAppRuntime, true, new amyn(this));
+    super(0);
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public amym(int paramInt1, int paramInt2, int paramInt3)
+  {
+    super(paramInt1);
+    this.a = paramInt2;
+    this.b = paramInt3;
+  }
+  
+  public int getIntrinsicHeight()
+  {
+    return this.b;
+  }
+  
+  public int getIntrinsicWidth()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amym
  * JD-Core Version:    0.7.0.1
  */

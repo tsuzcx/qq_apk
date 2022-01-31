@@ -9,10 +9,10 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class UniteSearch$TabItemGroup
-  extends MessageMicro
+  extends MessageMicro<TabItemGroup>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatField rpt_group_mask = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> rpt_group_mask = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBBytesField tab_name = PBField.initBytes(ByteStringMicro.EMPTY);
   
   static

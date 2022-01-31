@@ -1,29 +1,32 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.qphone.base.util.QLog;
 
 public class acqu
-  implements View.OnTouchListener
+  extends VasQuickUpdateManager.CallBacker
 {
-  public acqu(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
+  public acqu(ListenChangeVoicePanel paramListenChangeVoicePanel) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    int i = paramMotionEvent.getAction();
-    if (i == 0) {
-      ExtendFriendProfileEditFragment.a(this.a).setVisibility(0);
-    }
-    while ((i != 1) && (i != 3)) {
-      return false;
-    }
-    ExtendFriendProfileEditFragment.a(this.a).setVisibility(8);
-    return false;
+    if ((1000L != paramLong) || (!"changeVoice_json".equals(paramString1))) {}
+    do
+    {
+      return;
+      if ((QLog.isColorLevel()) || (paramInt1 != 0)) {
+        QLog.d("ListenChangeVoicePanel", 2, "changeVoice jsonLoaded callBacker, errorCode=" + paramInt1);
+      }
+      if (paramInt1 == 0) {
+        this.a.a(true);
+      }
+    } while (paramVasQuickUpdateManager == null);
+    paramVasQuickUpdateManager.removeCallBacker(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acqu
  * JD-Core Version:    0.7.0.1
  */

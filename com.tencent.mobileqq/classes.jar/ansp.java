@@ -1,24 +1,30 @@
-import android.os.Handler;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
 
 public class ansp
-  implements Runnable
+  implements View.OnTouchListener
 {
-  private ansp(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public ansp(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QIMEffectCameraCaptureUnit.b(this.a);
-    if (QIMEffectCameraCaptureUnit.a(this.a) >= 3) {
-      QIMEffectCameraCaptureUnit.a(this.a, 0);
+    switch (paramMotionEvent.getAction())
+    {
     }
-    QIMEffectCameraCaptureUnit.a(this.a, QIMEffectCameraCaptureUnit.a(this.a));
-    this.a.a.postDelayed(QIMEffectCameraCaptureUnit.a(this.a), 500L);
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ansp
  * JD-Core Version:    0.7.0.1
  */

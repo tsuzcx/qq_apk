@@ -1,29 +1,26 @@
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.util.ArrayList;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.KPLProfileCardActivity;
 
 public class abad
+  implements View.OnTouchListener
 {
-  public long a;
-  public abac a;
-  public ByteArrayOutputStream a;
-  public File a;
-  public String a;
-  public final ArrayList a;
-  public byte[] a;
-  public String b;
-  public final ArrayList b = new ArrayList();
-  public String c;
+  public abad(KPLProfileCardActivity paramKPLProfileCardActivity) {}
   
-  private abad()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_Long = -1L;
+    if (!this.a.a)
+    {
+      awqx.b(this.a.app, "dc00898", "", "", "0X8008438", "0X8008438", 0, 0, "", "", "", "");
+      this.a.a = true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abad
  * JD-Core Version:    0.7.0.1
  */

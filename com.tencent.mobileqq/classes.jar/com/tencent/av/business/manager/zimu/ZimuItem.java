@@ -1,9 +1,9 @@
 package com.tencent.av.business.manager.zimu;
 
-import com.tencent.av.business.manager.EffectConfigBase.ItemBase;
+import kxb;
 
 public class ZimuItem
-  extends EffectConfigBase.ItemBase
+  extends kxb
 {
   private String desc;
   private String iconurl;
@@ -55,12 +55,12 @@ public class ZimuItem
   
   public String toString()
   {
-    return "ZimuItemView{id='" + this.id + '\'' + ", iconurl='" + this.iconurl + '\'' + ", usable='" + this.usable + '\'' + ", resurl='" + this.resurl + '\'' + ", md5='" + this.md5 + '\'' + ", platform='" + this.platform + '\'' + ", desc='" + this.desc + '\'' + 125;
+    return "id[" + this.id + "], iconurl[" + this.iconurl + "], usable[" + this.usable + "], resurl[" + this.resurl + "], md5[" + this.md5 + "], platform[" + this.platform + "], desc[" + this.desc + "], isDownloading[" + this.isDownloading + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.business.manager.zimu.ZimuItem
  * JD-Core Version:    0.7.0.1
  */

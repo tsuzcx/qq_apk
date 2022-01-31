@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class cmd0x3bb$AnonyStatus
-  extends MessageMicro
+  extends MessageMicro<AnonyStatus>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField str_err_msg = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -22,7 +22,7 @@ public final class cmd0x3bb$AnonyStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.cmd0x3bb.cmd0x3bb.AnonyStatus
  * JD-Core Version:    0.7.0.1
  */

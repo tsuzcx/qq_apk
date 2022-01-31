@@ -1,18 +1,10 @@
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-
-class wea
-  implements Runnable
+public abstract interface wea
 {
-  wea(wdz paramwdz) {}
-  
-  public void run()
-  {
-    this.a.a.z(0);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wea
  * JD-Core Version:    0.7.0.1
  */

@@ -24,7 +24,7 @@ public class RedTouchItem
   public String configVersion;
   public int count;
   public long curSeq;
-  public List extMsgs = new ArrayList();
+  public List<RedTouchItemExtMsg> extMsgs = new ArrayList();
   public long fromId;
   public String icon;
   public boolean isClosed;

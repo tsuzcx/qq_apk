@@ -1,50 +1,31 @@
 import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqdataline.ipc.DatalineRemoteManager;
-import cooperation.qqdataline.ipc.IDatalineService;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.recent.data.RecentItemNearbyLiveTipData;
+import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import java.util.Iterator;
+import java.util.List;
+import tencent.nearby.now.nearby_now_anchor.AnchorStatus;
 
 public class amwf
-  implements Runnable
+  extends amwn
 {
-  public amwf(DatalineRemoteManager paramDatalineRemoteManager) {}
+  public amwf(MsgBoxListActivity paramMsgBoxListActivity, List paramList) {}
   
-  public void run()
+  public void a(boolean paramBoolean, List<nearby_now_anchor.AnchorStatus> paramList, Bundle paramBundle)
   {
-    for (;;)
+    if (paramBoolean)
     {
-      Bundle localBundle;
-      if (!this.a.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+      paramBundle = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramBundle.hasNext())
       {
-        localBundle = (Bundle)this.a.jdField_a_of_type_JavaUtilArrayList.remove(0);
-        if (localBundle != null) {}
-      }
-      else
-      {
-        return;
-      }
-      String str = localBundle.getString("notify_cmd");
-      try
-      {
-        localBundle.setClassLoader(getClass().getClassLoader());
-        if (QLog.isColorLevel()) {
-          QLog.d("DatalineRemoteManager", 2, "doPostCachedMsg send success strNotifyCmd:" + str);
-        }
-        this.a.jdField_a_of_type_CooperationQqdatalineIpcIDatalineService.a("com.qqdataline.action.notify", localBundle);
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("DatalineRemoteManager", 2, "doPostCachedMsg send failed strNotifyCmd:" + str);
+        RecentItemNearbyLiveTipData localRecentItemNearbyLiveTipData = (RecentItemNearbyLiveTipData)paramBundle.next();
+        this.jdField_a_of_type_ComTencentMobileqqDatingMsgBoxListActivity.a(localRecentItemNearbyLiveTipData, paramList);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amwf
  * JD-Core Version:    0.7.0.1
  */

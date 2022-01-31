@@ -1,23 +1,24 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.widget.XEditTextEx;
+import android.support.annotation.Nullable;
+import java.io.File;
 
 public class tnx
-  implements View.OnTouchListener
+  extends sfo
 {
-  public tnx(QQLSActivity paramQQLSActivity) {}
+  @Nullable
+  public final File a;
+  public final String a;
+  public final boolean a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public tnx(String paramString, boolean paramBoolean, File paramFile)
   {
-    QQLSActivity.a(this.a).setCursorVisible(true);
-    return false;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaIoFile = paramFile;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tnx
  * JD-Core Version:    0.7.0.1
  */

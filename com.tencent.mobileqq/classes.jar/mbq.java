@@ -1,40 +1,26 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.av.ui.chatroom.VideoChatRoomContainer;
 
-public class mbq
-  implements ActionSheet.OnButtonClickListener
+class mbq
+  implements Animator.AnimatorListener
 {
-  public mbq(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  mbq(mbo parammbo) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (ReadInJoyDeliverUGCActivity.a(this.a)) {
-      return;
-    }
-    ReadInJoyDeliverUGCActivity.a(this.a, true);
-    ReadInJoyDeliverUGCActivity.b(this.a, ReadInJoyDeliverUGCActivity.b(this.a));
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      ReadInJoyDeliverUGCActivity.a(this.a).dismiss();
-      return;
-      ReadInJoyDeliverUGCActivity.a(this.a);
-      PublicAccountReportUtils.a(null, "", "0X8008239", "0X8008239", 0, 0, "", "", "", ReadInJoyUtils.e(), false);
-      continue;
-      ReadInJoyDeliverUGCActivity.b(this.a);
-      PublicAccountReportUtils.a(null, "", "0X800823A", "0X800823A", 0, 0, "", "", "", ReadInJoyUtils.e(), false);
-    }
+    mbo.a(this.a).setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mbq
  * JD-Core Version:    0.7.0.1
  */

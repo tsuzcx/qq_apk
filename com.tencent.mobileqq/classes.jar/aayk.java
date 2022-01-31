@@ -1,26 +1,20 @@
-import com.tencent.mobileqq.activity.aio.item.ArkAioContainerWrapper;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView.Callback;
-import com.tencent.mobileqq.ark.ArkAiAppPanel;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 public class aayk
-  implements ArkAppView.Callback
+  implements View.OnClickListener
 {
-  public aayk(ArkAiAppPanel paramArkAiAppPanel) {}
+  public aayk(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    boolean bool = ((ArkAioContainerWrapper)ArkAiAppPanel.a(this.a).get(ArkAiAppPanel.a(this.a))).checkShare();
-    if (bool != ArkAiAppPanel.a(this.a))
-    {
-      ArkAiAppPanel.a(this.a, bool);
-      ArkAiAppPanel.a(this.a, ArkAiAppPanel.a(this.a));
-    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aayk
  * JD-Core Version:    0.7.0.1
  */

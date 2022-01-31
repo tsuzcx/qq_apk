@@ -32,9 +32,6 @@ public class ARMapThreadStubReceiver
         QLog.d("ARMapThreadStubReceiver", 2, String.format("onReceive action=%s preStart=%s", new Object[] { str, Boolean.valueOf(bool) }));
       }
       paramIntent = paramIntent.getStringExtra("from");
-      if (!"qr".equals(paramIntent)) {
-        SplashBitmapUtils.a();
-      }
       if ("com.tencent.mobileqq.armap.ACTION_START_THREAD".equals(str)) {
         a(paramContext, bool, paramIntent);
       }

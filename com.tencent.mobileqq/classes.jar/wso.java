@@ -1,24 +1,26 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsDeviceAdapter;
-import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
-import com.tencent.mobileqq.app.DataLineObserver;
+import android.support.v7.widget.RecyclerView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class wso
-  extends DataLineObserver
+class wso
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public wso(DeviceFragment paramDeviceFragment) {}
+  wso(wsj paramwsj) {}
   
-  protected void b()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.a.a == null) {
+    paramCompoundButton = wsj.d(this.a);
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
+    {
+      paramCompoundButton.setVisibility(i);
       return;
     }
-    this.a.a.c();
-    this.a.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wso
  * JD-Core Version:    0.7.0.1
  */

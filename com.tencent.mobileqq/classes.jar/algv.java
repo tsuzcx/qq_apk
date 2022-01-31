@@ -1,19 +1,30 @@
-import com.tencent.mqp.app.sec.IConfigParser;
+import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
+import mqq.util.WeakReference;
 
 public class algv
+  extends agfo
 {
-  public IConfigParser a;
-  public String a;
-  
-  public algv(String paramString, IConfigParser paramIConfigParser)
+  private algv(AlbumListFragment paramAlbumListFragment)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMqpAppSecIConfigParser = paramIConfigParser;
+    super(paramAlbumListFragment);
+  }
+  
+  public static agfk b(AlbumListFragment paramAlbumListFragment)
+  {
+    if ((a == null) || (a.a.get() != null)) {}
+    try
+    {
+      if ((a == null) || (a.a.get() != null)) {
+        a = new algv(paramAlbumListFragment);
+      }
+      return a;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     algv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,21 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qlink.IQlinkService.Stub;
-import cooperation.qlink.QlinkServiceProxy;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
 public class amvd
-  implements ServiceConnection
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public amvd(QlinkServiceProxy paramQlinkServiceProxy) {}
+  public amvd(DataReportViewer paramDataReportViewer) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    QLog.d("QlinkServiceProxy", 1, "onServiceConnected service:" + paramComponentName);
-    QlinkServiceProxy.a(this.a, IQlinkService.Stub.a(paramIBinder));
-    QlinkServiceProxy.a(this.a, false);
-    QlinkServiceProxy.a(this.a);
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    QLog.d("QlinkServiceProxy", 1, "onServiceDisconnected " + paramComponentName);
-    try
-    {
-      QlinkServiceProxy.a(this.a).getApplication().unbindService(QlinkServiceProxy.a(this.a));
-      QlinkServiceProxy.a(this.a, null);
-      QlinkServiceProxy.a(this.a, false);
-      return;
-    }
-    catch (Exception paramComponentName)
-    {
-      for (;;)
-      {
-        paramComponentName.printStackTrace();
-      }
-    }
+    this.a.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amvd
  * JD-Core Version:    0.7.0.1
  */

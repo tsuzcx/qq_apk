@@ -1,23 +1,32 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class tmw
-  implements View.OnLongClickListener
+public class tmw
+  extends QQUIEventReceiver<tmv, tna>
 {
-  tmw(tmv paramtmv, long paramLong) {}
-  
-  public boolean onLongClick(View paramView)
+  public tmw(@NonNull tmv paramtmv)
   {
-    DialogUtil.a(this.jdField_a_of_type_Tmv.a, 230).setTitle(this.jdField_a_of_type_Tmv.a.getString(2131434957)).setItems(2131296268, new tmx(this)).show();
-    return true;
+    super(paramtmv);
+  }
+  
+  public void a(@NonNull tmv paramtmv, @NonNull tna paramtna)
+  {
+    if (paramtna.a.isSuccess())
+    {
+      urk.a("Q.qqstory.playernew.LoadingMoreWidget", "PlayVideoChangeReceiver. %s.", paramtna.toString());
+      paramtmv.e();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tna.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tmw
  * JD-Core Version:    0.7.0.1
  */

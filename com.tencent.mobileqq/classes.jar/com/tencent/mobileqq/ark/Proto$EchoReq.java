@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class Proto$EchoReq
-  extends MessageMicro
+  extends MessageMicro<EchoReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "msg" }, new Object[] { "" }, EchoReq.class);
   public final PBStringField msg = PBField.initString("");

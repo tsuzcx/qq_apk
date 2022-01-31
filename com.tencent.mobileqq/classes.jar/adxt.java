@@ -1,23 +1,31 @@
-import android.support.v4.util.LruCache;
-import com.tencent.mobileqq.hotchat.PttShowRoomMng;
-import com.tencent.mobileqq.hotchat.PttShowRoomMng.Guest;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
 
 public class adxt
-  extends LruCache
+  implements aojh
 {
-  public adxt(PttShowRoomMng paramPttShowRoomMng, int paramInt)
+  public adxt(AIOImageProviderService paramAIOImageProviderService, long paramLong, int paramInt1, int paramInt2, aotv paramaotv) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    super(paramInt);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, "I:E", new String[] { String.valueOf(paramInt), paramString }, null, null, -1);
+    }
   }
   
-  protected int a(String paramString, PttShowRoomMng.Guest paramGuest)
+  public void a(String paramString1, String paramString2)
   {
-    return 1;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Aotv.b(), new String[] { paramString1 }, paramString2, null, -1);
+    }
   }
+  
+  public void aF_() {}
+  
+  public void aG_() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adxt
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SubMsgType0x65$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "uint32_cmd", "msg_expired_pkg" }, new Object[] { Integer.valueOf(0), null }, MsgBody.class);
   public SubMsgType0x65.MsgExpiredPkg msg_expired_pkg = new SubMsgType0x65.MsgExpiredPkg();

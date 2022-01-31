@@ -1,20 +1,34 @@
-import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.widget.VideoFilterPlayView.TrackerCallback;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class aoet
-  implements VideoFilterPlayView.TrackerCallback
+class aoet
+  implements aofo
 {
-  public aoet(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
+  aoet(aoes paramaoes, String paramString) {}
   
-  public void a(Map paramMap)
+  public void a(boolean paramBoolean)
   {
-    this.a.a(new aoeu(this, paramMap), 0L);
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aoes.jdField_a_of_type_Aoer.jdField_a_of_type_JavaLangString + " start upload Discfile success");
+      }
+      aoer.a(this.jdField_a_of_type_Aoes.jdField_a_of_type_Aoer).putString("_m_ForwardUuid", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Aoes.jdField_a_of_type_Aoex.a(this.jdField_a_of_type_JavaLangString, aoer.a(this.jdField_a_of_type_Aoes.jdField_a_of_type_Aoer));
+    }
+    for (;;)
+    {
+      aoea.a(this.jdField_a_of_type_Aoes.jdField_a_of_type_Aoer.jdField_a_of_type_Aoea).a().a(aoer.a(this.jdField_a_of_type_Aoes.jdField_a_of_type_Aoer));
+      return;
+      QLog.e("FileMultiMsg", 1, this.jdField_a_of_type_Aoes.jdField_a_of_type_Aoer.jdField_a_of_type_JavaLangString + " sendDiscFile faild");
+      this.jdField_a_of_type_Aoes.jdField_a_of_type_Aoex.a(aoea.a(this.jdField_a_of_type_Aoes.jdField_a_of_type_Aoer.jdField_a_of_type_Long, false), true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoet
  * JD-Core Version:    0.7.0.1
  */

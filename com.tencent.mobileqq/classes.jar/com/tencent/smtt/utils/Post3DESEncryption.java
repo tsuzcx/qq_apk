@@ -24,7 +24,6 @@ public class Post3DESEncryption
   private Cipher mRSAEncryptCipher = null;
   
   private Post3DESEncryption()
-    throws Exception
   {
     deskeys = String.valueOf(new Random().nextInt(89999999) + 10000000) + String.valueOf(new Random().nextInt(89999999) + 10000000) + String.valueOf(new Random().nextInt(89999999) + 10000000);
     Object localObject = "00000000";
@@ -46,8 +45,24 @@ public class Post3DESEncryption
     this.mDESEncryptCipher.init(1, (Key)localObject);
   }
   
+  public static byte[] DESDecrypt(byte[] paramArrayOfByte, String paramString)
+  {
+    try
+    {
+      paramString = SecretKeyFactory.getInstance("DESede").generateSecret(new DESedeKeySpec(paramString.getBytes()));
+      Cipher localCipher = Cipher.getInstance("DESede/ECB/PKCS5Padding");
+      localCipher.init(2, paramString);
+      paramArrayOfByte = localCipher.doFinal(paramArrayOfByte);
+      return paramArrayOfByte;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
   public static byte[] DESEncrypt(byte[] paramArrayOfByte, String paramString)
-    throws Exception
   {
     paramString = new DESedeKeySpec(paramString.getBytes());
     paramString = SecretKeyFactory.getInstance("DESede").generateSecret(paramString);
@@ -113,7 +128,6 @@ public class Post3DESEncryption
   }
   
   public byte[] DESEncrypt(byte[] paramArrayOfByte)
-    throws Exception
   {
     return this.mDESEncryptCipher.doFinal(paramArrayOfByte);
   }
@@ -137,7 +151,6 @@ public class Post3DESEncryption
   }
   
   public String RSAEncrypt(byte[] paramArrayOfByte)
-    throws Exception
   {
     return bytesToHex(this.mRSAEncryptCipher.doFinal(paramArrayOfByte));
   }
@@ -154,7 +167,7 @@ public class Post3DESEncryption
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.smtt.utils.Post3DESEncryption
  * JD-Core Version:    0.7.0.1
  */

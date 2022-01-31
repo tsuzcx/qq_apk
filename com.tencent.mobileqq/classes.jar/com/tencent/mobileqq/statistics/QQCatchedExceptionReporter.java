@@ -4,6 +4,7 @@ import com.tencent.feedback.eup.CrashReport;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 
+@Deprecated
 public class QQCatchedExceptionReporter
 {
   private static final String TAG = "QQCatchedExceptionReport";

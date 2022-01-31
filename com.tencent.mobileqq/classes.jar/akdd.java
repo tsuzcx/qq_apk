@@ -1,24 +1,13 @@
-import com.tencent.mobileqq.surfaceviewaction.action.Action;
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.surfaceviewaction.action.OpacityAction;
-import com.tencent.mobileqq.surfaceviewaction.action.ScaleAction;
-import com.tencent.mobileqq.surfaceviewaction.action.SequenceAction;
-import com.tencent.mobileqq.surfaceviewaction.gl.Label;
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
-
-class akdd
-  implements Action.OnActionEndListener
+public class akdd
 {
-  akdd(akdc paramakdc) {}
-  
-  public void a()
-  {
-    TroopGiftToAllSurfaceView.a(this.a.a).a(new Action[] { new OpacityAction(600, 0, 255), new SequenceAction(new Action[] { new ScaleAction(300, 0.0F, 1.2F), new ScaleAction(300, 1.2F, 1.0F) }) });
-  }
+  public int a;
+  public long a;
+  public String a;
+  public int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akdd
  * JD-Core Version:    0.7.0.1
  */

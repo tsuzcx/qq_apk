@@ -1,49 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.StoryManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.TroopVidToVideoInfoPuller;
-import com.tencent.biz.qqstory.model.TroopVidToVideoInfoPuller.StoryVidListReceiver;
-import com.tencent.biz.qqstory.network.handler.TroopUidToVidListHandler;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.DailyDynamicHeaderViewController.5.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class nhc
-  extends SimpleJob
+  extends akfx
 {
-  public nhc(TroopVidToVideoInfoPuller paramTroopVidToVideoInfoPuller) {}
-  
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  nhc(ngv paramngv, String paramString)
   {
-    paramJobContext = (StoryManager)SuperManager.a(5);
-    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Int == 3)) {}
-    for (paramJobContext = paramJobContext.f(this.a.jdField_a_of_type_JavaLangString);; paramJobContext = null)
-    {
-      paramVarArgs = paramJobContext;
-      if (paramJobContext == null) {
-        paramVarArgs = new ArrayList();
-      }
-      if (paramVarArgs.size() > 0)
-      {
-        this.a.a(paramVarArgs);
-        SLog.d("Q.qqstory.net:TroopVidToVideoInfoPuller", String.format("Found %s vid list from local , pullType is %d , %s", new Object[] { this.a.jdField_a_of_type_JavaLangString, Integer.valueOf(this.a.jdField_a_of_type_Int), paramVarArgs }));
-        return null;
-      }
-      SLog.d("Q.qqstory.net:TroopVidToVideoInfoPuller", String.format("Cannot found %s vid list from local , pullType is %d , request from net", new Object[] { this.a.jdField_a_of_type_JavaLangString, Integer.valueOf(this.a.jdField_a_of_type_Int) }));
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryModelTroopVidToVideoInfoPuller$StoryVidListReceiver == null)
-      {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryModelTroopVidToVideoInfoPuller$StoryVidListReceiver = new TroopVidToVideoInfoPuller.StoryVidListReceiver(this.a);
-        Dispatchers.get().registerSubscriber(this.a.jdField_a_of_type_ComTencentBizQqstoryModelTroopVidToVideoInfoPuller$StoryVidListReceiver);
-      }
-      this.a.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerTroopUidToVidListHandler = new TroopUidToVidListHandler(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerTroopUidToVidListHandler.a();
-      return null;
-    }
+    super(paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    QLog.i("DailyHeaderViewController", 1, "[onLocationFinish] errCode=" + paramInt + "");
+    ThreadManagerV2.getUIHandlerV2().post(new DailyDynamicHeaderViewController.5.1(this, paramInt, paramSosoLbsInfo));
   }
 }
 

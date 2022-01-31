@@ -1,62 +1,60 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyVideoChannelFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
+import tencent.im.sso.offlinpkg.OfflinePkg.RspBody;
 
-public class moh
-  extends Handler
+final class moh
+  implements BusinessObserver
 {
-  public moh(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  moh(NewIntent paramNewIntent, moc parammoc, boolean paramBoolean1, boolean paramBoolean2, AppRuntime paramAppRuntime, boolean paramBoolean3) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      i = paramMessage.arg1;
-      if (i > 0)
+    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+    if (QLog.isColorLevel()) {
+      QLog.d("HtmlCheckUpdate", 2, "-->offline:checkUpdate,onReceive:isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean) {
+      try
       {
-        paramMessage = new BusinessInfoCheckUpdate.RedTypeInfo();
-        paramMessage.red_content.set(String.valueOf(i));
-        paramMessage.red_desc.set("{'cn':'#FF0000'}");
-        paramMessage.red_type.set(5);
-        ReadinjoyTabFrame.a(this.a).a(paramMessage);
-        ReadinjoyTabFrame.a(this.a).invalidate();
-      }
-      for (;;)
-      {
-        QLog.d("Q.readinjoy.4tab", 2, "update self icon red point, value : " + i);
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null) {
+          return;
+        }
+        OfflinePkg.RspBody localRspBody = new OfflinePkg.RspBody();
+        localRspBody.mergeFrom(paramBundle);
+        paramBundle = new String(localRspBody.str_offline_pkg.get().toByteArray(), "UTF-8");
+        if (this.jdField_a_of_type_Moc != null) {
+          this.jdField_a_of_type_Moc.loaded(paramBundle, 0);
+        }
+        if (!this.jdField_a_of_type_Boolean) {
+          return;
+        }
+        if (this.b)
+        {
+          mof.c(paramBundle, this.jdField_a_of_type_MqqAppAppRuntime, this.c, this.jdField_a_of_type_Moc);
+          return;
+        }
+        mof.c(paramBundle, this.jdField_a_of_type_MqqAppAppRuntime, this.c, null);
         return;
-        ReadinjoyTabFrame.a(this.a).b();
-        ReadinjoyTabFrame.a(this.a).invalidate();
       }
+      catch (Exception paramBundle)
+      {
+        this.jdField_a_of_type_Moc.loaded("{\"r\":-1}", 2);
+        return;
+      }
+    } else if (this.jdField_a_of_type_Moc != null) {
+      this.jdField_a_of_type_Moc.loaded("{\"r\":-1}", 2);
     }
-    int i = paramMessage.arg1;
-    int j = paramMessage.arg2;
-    if ((i <= 0) || ((j == 2131362412) && ((this.a.a() instanceof ReadInJoyVideoChannelFragment))))
-    {
-      ReadinjoyTabFrame.a(this.a).a(j);
-      return;
-    }
-    BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = new BusinessInfoCheckUpdate.RedTypeInfo();
-    localRedTypeInfo.red_type.set(0);
-    localRedTypeInfo.red_content.set(String.valueOf(i));
-    localRedTypeInfo.red_desc.set("{'cn':'#FF0000'}");
-    QLog.d("Q.readinjoy.4tab", 2, "update indicator red point , index : " + paramMessage.obj + ", value : " + i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     moh
  * JD-Core Version:    0.7.0.1
  */

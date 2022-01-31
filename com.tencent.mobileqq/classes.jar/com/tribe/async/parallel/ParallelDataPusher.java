@@ -1,7 +1,6 @@
 package com.tribe.async.parallel;
 
 import com.tribe.async.reactive.StreamFunction;
-import com.tribe.async.reactive.StreamFunction.StreamFunctionListener;
 import com.tribe.async.utils.AssertUtils;
 
 class ParallelDataPusher<IN, OUT>
@@ -27,30 +26,14 @@ class ParallelDataPusher<IN, OUT>
     AssertUtils.checkNotNull(paramStreamFunction);
   }
   
-  public void apply(final Observer paramObserver)
+  public void apply(Observer paramObserver)
   {
     AssertUtils.checkNotNull(paramObserver);
     paramObserver.addObserverFunction(Integer.valueOf(this.mFunction.hashCode()));
     if (this.mUpDataPusher != null) {
       this.mUpDataPusher.apply(paramObserver);
     }
-    this.mFunction.observe(new StreamFunction.StreamFunctionListener()
-    {
-      public void onCancel()
-      {
-        paramObserver.onStreamCancel();
-      }
-      
-      public void onError(Error paramAnonymousError)
-      {
-        paramObserver.onOneFunctionErr(Integer.valueOf(ParallelDataPusher.this.mFunction.hashCode()), paramAnonymousError);
-      }
-      
-      public void onResult(OUT paramAnonymousOUT)
-      {
-        paramObserver.onOneFunctionSuc(Integer.valueOf(ParallelDataPusher.this.mFunction.hashCode()), paramAnonymousOUT);
-      }
-    });
+    this.mFunction.observe(new ParallelDataPusher.1(this, paramObserver));
     this.mFunction.apply(this.in);
   }
   
@@ -61,7 +44,7 @@ class ParallelDataPusher<IN, OUT>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tribe.async.parallel.ParallelDataPusher
  * JD-Core Version:    0.7.0.1
  */

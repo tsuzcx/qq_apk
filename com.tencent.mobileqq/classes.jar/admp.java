@@ -1,20 +1,31 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter;
-import java.util.TimerTask;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
 
 public class admp
-  extends TimerTask
+  implements View.OnClickListener
 {
-  public admp(MusicFilePresenter paramMusicFilePresenter) {}
+  public admp(QQStoryItemBuilder paramQQStoryItemBuilder) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.runOnUiThread(new admq(this));
+    admv localadmv = (admv)aciy.a(paramView);
+    if (paramView == localadmv.jdField_a_of_type_AndroidWidgetFrameLayout) {
+      this.a.b(localadmv);
+    }
+    for (;;)
+    {
+      awqx.b(this.a.a, "dc00898", "", "", "0x8009434", "0x8009434", 0, 0, "", "5", "", "");
+      return;
+      if (paramView == localadmv.jdField_a_of_type_AndroidWidgetRelativeLayout) {
+        this.a.a(localadmv);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     admp
  * JD-Core Version:    0.7.0.1
  */

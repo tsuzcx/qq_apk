@@ -1,15 +1,17 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
-import java.util.TimerTask;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyProteusFamilyFragment;
 
 public class ojy
-  extends TimerTask
+  implements View.OnClickListener
 {
-  private ojy(EditVideoMusic paramEditVideoMusic) {}
+  public ojy(ReadInJoyProteusFamilyFragment paramReadInJoyProteusFamilyFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.sendEmptyMessage(1001);
+    if (ReadInJoyProteusFamilyFragment.a(this.a) != null) {
+      ReadInJoyProteusFamilyFragment.a(this.a).a(true);
+    }
   }
 }
 

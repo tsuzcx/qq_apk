@@ -12,7 +12,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x791$SetRedDotOpt
-  extends MessageMicro
+  extends MessageMicro<SetRedDotOpt>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField bool_clear = PBField.initBool(false);
@@ -20,7 +20,7 @@ public final class oidb_0x791$SetRedDotOpt
   public final PBBoolField bool_keep_unchanged = PBField.initBool(false);
   public final PBBoolField bool_push_to_client = PBField.initBool(false);
   public final PBInt32Field int32_number = PBField.initInt32(0);
-  public final PBRepeatField rpt_uint64_uin = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> rpt_uint64_uin = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBBytesField str_custom_buffer = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField str_face_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field uint32_cmd_uin_type = PBField.initUInt32(0);
@@ -40,7 +40,7 @@ public final class oidb_0x791$SetRedDotOpt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x791.oidb_0x791.SetRedDotOpt
  * JD-Core Version:    0.7.0.1
  */

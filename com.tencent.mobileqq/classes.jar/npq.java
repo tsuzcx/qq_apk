@@ -1,27 +1,23 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.biz.qqstory.playmode.child.ShareGroupHotSortPlayMode;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyCutImageView;
 
-public class npq
-  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
+class npq
+  extends AnimatorListenerAdapter
 {
-  public npq(ShareGroupHotSortPlayMode paramShareGroupHotSortPlayMode, BatchGetVideoInfo paramBatchGetVideoInfo, Bundle paramBundle) {}
+  npq(npo paramnpo, ReadInjoyCutImageView paramReadInjoyCutImageView) {}
   
-  public void a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    ThreadManager.getUIHandler().post(new npt(this));
+    super.onAnimationEnd(paramAnimator);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyCutImageView.setVisibility(4);
+    npo.a(this.jdField_a_of_type_Npo).a();
   }
   
-  public void a(ArrayList paramArrayList)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildShareGroupHotSortPlayMode.a.post(new npr(this, paramArrayList));
+    super.onAnimationStart(paramAnimator);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyCutImageView.setVisibility(0);
   }
 }
 

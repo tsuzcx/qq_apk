@@ -1,32 +1,47 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.TicketUtils;
-import com.tencent.open.base.TicketUtils.TicketCallback;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct;
-import mqq.os.MqqHandler;
+import android.annotation.TargetApi;
+import android.view.View;
 
-public class alqf
-  implements TicketUtils.TicketCallback
+@TargetApi(11)
+final class alqf
 {
-  public alqf(MyAppApi paramMyAppApi, TicketUtils paramTicketUtils, TMAssistantCallYYBParamStruct paramTMAssistantCallYYBParamStruct, Bundle paramBundle, long paramLong, Context paramContext, boolean paramBoolean1, boolean paramBoolean2) {}
-  
-  public void a()
+  static void a(View paramView, float paramFloat)
   {
-    ThreadManager.getSubThreadHandler().post(new alqi(this));
+    paramView.setPivotX(paramFloat);
   }
   
-  public void a(String paramString, byte[] paramArrayOfByte)
+  static void b(View paramView, float paramFloat)
   {
-    LogUtility.c("TIME-STATISTIC", "onGetA1");
-    ThreadManager.getSubThreadHandler().post(new alqg(this, paramArrayOfByte, paramString));
+    paramView.setPivotY(paramFloat);
+  }
+  
+  static void c(View paramView, float paramFloat)
+  {
+    paramView.setAlpha(paramFloat);
+  }
+  
+  static void d(View paramView, float paramFloat)
+  {
+    paramView.setScaleX(paramFloat);
+  }
+  
+  static void e(View paramView, float paramFloat)
+  {
+    paramView.setScaleY(paramFloat);
+  }
+  
+  static void f(View paramView, float paramFloat)
+  {
+    paramView.setTranslationY(paramFloat);
+  }
+  
+  static void g(View paramView, float paramFloat)
+  {
+    paramView.setX(paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     alqf
  * JD-Core Version:    0.7.0.1
  */

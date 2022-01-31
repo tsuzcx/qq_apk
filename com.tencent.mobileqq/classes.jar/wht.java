@@ -1,19 +1,31 @@
-import android.graphics.drawable.StateListDrawable;
-import android.widget.TextView;
+import android.view.View;
+import com.tencent.biz.subscribe.widget.textview.FollowTextView;
 
-class wht
-  implements Runnable
+public class wht
+  implements begw
 {
-  wht(whs paramwhs, StateListDrawable paramStateListDrawable) {}
+  public wht(FollowTextView paramFollowTextView, begr parambegr) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Whs.a.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable);
+    if (!FollowTextView.b(this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView)) {
+      return;
+    }
+    FollowTextView.a(this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView, false);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Begr.dismiss();
+      return;
+      this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.a(false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wht
  * JD-Core Version:    0.7.0.1
  */

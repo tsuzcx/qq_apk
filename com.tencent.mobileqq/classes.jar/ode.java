@@ -1,60 +1,33 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.CommentManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.network.request.BatchGetFeedCommentRequest;
-import com.tencent.biz.qqstory.network.request.BatchGetFeedCommentRequest.BatchGetFeedCommentResp;
-import com.tencent.biz.qqstory.network.request.BatchGetFeedCommentRequest.FeedCommentInfo;
-import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.GetFeedIdListResult;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedAllInfoPullSegment;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Vector;
+import java.util.Map;
+import java.util.Set;
 
 public class ode
-  implements CmdTaskManger.CommandCallback
+  implements AladdinConfigHandler
 {
-  public ode(HomeFeedAllInfoPullSegment paramHomeFeedAllInfoPullSegment, JobContext paramJobContext, FeedListPageLoaderBase.GetFeedIdListResult paramGetFeedIdListResult) {}
-  
-  public void a(@NonNull BatchGetFeedCommentRequest paramBatchGetFeedCommentRequest, @Nullable BatchGetFeedCommentRequest.BatchGetFeedCommentResp arg2, @NonNull ErrorMessage paramErrorMessage)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    QLog.d("AdFeedsProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = ocx.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      SLog.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed comment info pull segment cancel on net respond");
-      return;
-    }
-    if (??? == null)
-    {
-      paramErrorMessage = new BatchGetFeedCommentRequest.BatchGetFeedCommentResp(paramErrorMessage);
-      synchronized (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment)
-      {
-        HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment, paramErrorMessage);
-        HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment).remove(paramBatchGetFeedCommentRequest);
-        HomeFeedAllInfoPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedAllInfoPullSegment, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$GetFeedIdListResult);
-        return;
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("AdFeedsProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "commercialAd_feeds")) {
+        bgmq.a("ad_feeds_proteus_offline_bid", str2);
       }
     }
-    if (paramErrorMessage.isFail()) {
-      SLog.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for comment request");
-    }
-    CommentManager localCommentManager = (CommentManager)SuperManager.a(17);
-    Iterator localIterator = ???.jdField_a_of_type_JavaUtilList.iterator();
-    for (;;)
-    {
-      paramErrorMessage = ???;
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      paramErrorMessage = (BatchGetFeedCommentRequest.FeedCommentInfo)localIterator.next();
-      localCommentManager.a(paramErrorMessage.jdField_a_of_type_JavaUtilList, paramErrorMessage.jdField_a_of_type_JavaLangString, false, true);
-      if (paramErrorMessage.b == 1) {
-        paramErrorMessage.jdField_a_of_type_JavaUtilList.addAll(localCommentManager.b(paramErrorMessage.jdField_a_of_type_JavaLangString, false));
-      }
-    }
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    bgmq.a("ad_feeds_proteus_offline_bid", "0");
   }
 }
 

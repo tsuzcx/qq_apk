@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x6d6$DeleteFileReqBody
-  extends MessageMicro
+  extends MessageMicro<DeleteFileReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 56 }, new String[] { "uint64_group_code", "uint32_app_id", "uint32_bus_id", "str_parent_folder_id", "str_file_id", "uint32_msgdb_seq", "uint32_msg_rand" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0) }, DeleteFileReqBody.class);
   public final PBStringField str_file_id = PBField.initString("");
@@ -21,7 +21,7 @@ public final class oidb_0x6d6$DeleteFileReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DeleteFileReqBody
  * JD-Core Version:    0.7.0.1
  */

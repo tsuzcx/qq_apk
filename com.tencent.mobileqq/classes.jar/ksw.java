@@ -1,32 +1,36 @@
+import android.media.MediaPlayer;
+import com.tencent.av.VideoController;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
-class ksw
-  implements TVK_SDKMgr.InstallListener
+public class ksw
+  extends kti
 {
-  ksw(ksv paramksv) {}
-  
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public ksw(VideoController paramVideoController)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailVideoManager", 2, "installSDK onInstalledFailed arg0=" + paramInt);
-    }
-    com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.a = false;
+    super(paramVideoController);
   }
   
-  public void onInstalledSuccessed()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailVideoManager", 2, "installSDK onInstalledSuccessed");
+    QLog.w(VideoController.a, 1, "onCompletion, onClose, mainSession[" + this.jdField_a_of_type_ComTencentAvVideoController.a() + "], seq[" + this.jdField_a_of_type_Long + "]");
+    if (paramMediaPlayer != null) {
+      paramMediaPlayer.release();
     }
-    com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.a = true;
+    if (!this.jdField_a_of_type_ComTencentAvVideoController.a().n())
+    {
+      krx.d(VideoController.a, "onCompletion onClose is not Closing2");
+      this.jdField_a_of_type_Long = 0L;
+      return;
+    }
+    this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_ComTencentAvVideoController.a().d, 217);
+    this.jdField_a_of_type_ComTencentAvVideoController.b(217);
+    this.jdField_a_of_type_ComTencentAvVideoController.b(this.jdField_a_of_type_ComTencentAvVideoController.a().d, this.jdField_a_of_type_ComTencentAvVideoController.a().w);
+    this.jdField_a_of_type_Long = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ksw
  * JD-Core Version:    0.7.0.1
  */

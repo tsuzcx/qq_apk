@@ -1,17 +1,24 @@
 package cooperation.qzone.model;
 
-import ancn;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bfwr;
 
 public class WeishiFeedInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ancn();
+  public static final Parcelable.Creator<WeishiFeedInfo> CREATOR = new bfwr();
+  public static final int FROM_TYPE_ALBUM_VIDEO = 1;
+  public static final int FROM_TYPE_DEFAULT = 0;
+  public static final int FROM_TYPE_WEISHI_VIDEO = 2;
   public WeishiBasicInfo basicInfo;
   public WeishiBottomButton bottomButton;
   public WeishiFeedCommInfo feedCommInfo;
+  public WeishiInterestInfo interestInfo;
+  public KingCardInfo kingCardInfo;
+  public boolean mIsFrdLikeMiniAppVideo;
+  public int mIsFrom = 0;
   public WeishiOperationInfo operationInfo;
   public WeishiShareDataInfo shareDataInfo;
   public WeishiUserInfo userInfo;
@@ -28,6 +35,15 @@ public class WeishiFeedInfo
     this.operationInfo = ((WeishiOperationInfo)paramParcel.readParcelable(WeishiOperationInfo.class.getClassLoader()));
     this.bottomButton = ((WeishiBottomButton)paramParcel.readParcelable(WeishiBottomButton.class.getClassLoader()));
     this.shareDataInfo = ((WeishiShareDataInfo)paramParcel.readParcelable(WeishiShareDataInfo.class.getClassLoader()));
+    this.kingCardInfo = ((KingCardInfo)paramParcel.readParcelable(KingCardInfo.class.getClassLoader()));
+    this.interestInfo = ((WeishiInterestInfo)paramParcel.readParcelable(WeishiInterestInfo.class.getClassLoader()));
+    this.mIsFrom = paramParcel.readInt();
+    if (paramParcel.readInt() != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.mIsFrdLikeMiniAppVideo = bool;
+      return;
+    }
   }
   
   public int describeContents()
@@ -44,6 +60,15 @@ public class WeishiFeedInfo
     paramParcel.writeParcelable(this.operationInfo, paramInt);
     paramParcel.writeParcelable(this.bottomButton, paramInt);
     paramParcel.writeParcelable(this.shareDataInfo, paramInt);
+    paramParcel.writeParcelable(this.kingCardInfo, paramInt);
+    paramParcel.writeParcelable(this.interestInfo, paramInt);
+    paramParcel.writeInt(this.mIsFrom);
+    if (this.mIsFrdLikeMiniAppVideo) {}
+    for (paramInt = 1;; paramInt = 0)
+    {
+      paramParcel.writeInt(paramInt);
+      return;
+    }
   }
 }
 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:gravity="center" android:layout_gravity="center" android:id="@id/dpc" android:background="@android:color/transparent" android:layout_width="wrap_content" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/dpd" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <RelativeLayout android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.qzone.widget.AsyncImageView android:id="@id/dpe" android:visibility="visible" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="6.0dip" android:layout_marginRight="6.0dip" android:layout_marginBottom="1.0dip" android:scaleType="fitCenter" android:layout_centerHorizontal="true" />
+            <com.qzone.widget.AsyncImageView android:id="@id/dpf" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="6.0dip" android:layout_marginRight="6.0dip" android:layout_marginBottom="1.0dip" android:scaleType="fitCenter" android:layout_centerHorizontal="true" />
+            <RelativeLayout android:id="@id/lw3" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="6.0dip" android:layout_marginRight="6.0dip" android:layout_marginBottom="1.0dip" android:layout_centerHorizontal="true">
+                <ImageView android:id="@id/lmq" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/qzone_skin_navigator_shuoshuo_icon2" android:scaleType="fitCenter" />
+                <ImageView android:id="@id/lmr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qzone_skin_navigator_shuoshuo_icon_inside" android:layout_centerInParent="true" />
+                <cooperation.qzone.widget.DinTypeFaceTextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="@color/qzone_skin_navigator_days_color" android:id="@id/m4j" android:paddingTop="1.5dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="20" android:lines="1" android:layout_centerInParent="true" />
+                <cooperation.qzone.widget.DinTypeFaceTextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="@color/qzone_skin_navigator_days_color" android:id="@id/m4k" android:paddingTop="1.5dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="20" android:lines="1" android:layout_centerInParent="true" />
+            </RelativeLayout>
+            <ImageView android:gravity="center" android:id="@id/dpg" android:background="@android:color/transparent" android:paddingLeft="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/g0f" android:scaleType="fitCenter" android:layout_toRightOf="@id/dpe" android:layout_alignTop="@id/dpe" />
+        </RelativeLayout>
+        <TextView android:textSize="12.0sp" android:textColor="@color/qzone_skin_navigator_black_color" android:id="@id/dq7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+    </LinearLayout>
+</FrameLayout>

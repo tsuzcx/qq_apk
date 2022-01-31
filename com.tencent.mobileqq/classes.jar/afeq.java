@@ -1,73 +1,124 @@
-import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager.Callback;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.pb.now.ilive_new_anchor_follow_interface.FollowActionRsp;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.contacts.utils.ContactReportUtils;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import org.json.JSONObject;
 
 public class afeq
-  implements NowShortVideoProtoManager.Callback
+  extends alzl<afgx>
 {
-  public afeq(PlayOperationViewModel paramPlayOperationViewModel) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public int a()
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    return 438;
+  }
+  
+  @NonNull
+  public afgx a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportExposeConfigProcessor", 2, "migrateOldOrDefaultContent");
+    }
+    return new afgx();
+  }
+  
+  @Nullable
+  public afgx a(alzs[] paramArrayOfalzs)
+  {
+    int j;
+    int i;
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      paramBundle = new oidb_0xada.RspBody();
-      try
+      QLog.d("ReportExposeConfigProcessor", 2, "onParsed :" + paramArrayOfalzs);
+      if (paramArrayOfalzs != null)
       {
-        paramBundle.mergeFrom(paramArrayOfByte);
-        if (QLog.isColorLevel()) {
-          QLog.i("PlayOperationViewModel", 2, "err_msg:   " + paramBundle.err_msg.get() + "  isFollow:" + PlayOperationViewModel.c(this.a));
-        }
-        if (paramBundle.busi_buf.has())
+        j = paramArrayOfalzs.length;
+        i = 0;
+        while (i < j)
         {
-          paramArrayOfByte = new ilive_new_anchor_follow_interface.FollowActionRsp();
-          paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-          if (QLog.isColorLevel()) {
-            QLog.i("PlayOperationViewModel", 2, "ret:   " + paramArrayOfByte.ret.get() + ",msg:     " + paramArrayOfByte.msg.get() + "  isFollow:" + PlayOperationViewModel.c(this.a));
+          localObject1 = paramArrayOfalzs[i];
+          if (localObject1 != null) {
+            QLog.d("ReportExposeConfigProcessor", 2, "onParsed item: " + ((alzs)localObject1).a);
           }
-          if (paramArrayOfByte.ret.get() == 0)
-          {
-            PlayOperationViewModel.c(this.a, true);
-            if (PlayOperationViewModel.d(this.a))
-            {
-              ThreadManager.getUIHandler().post(new afer(this));
-              PlayOperationViewModel.d(this.a, false);
-            }
-            this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a = true;
-            new NowVideoReporter().h("video").i("playpage_focus").b().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-            return;
-          }
-          if (!TextUtils.isEmpty(paramArrayOfByte.msg.get()))
-          {
-            QQToast.a(BaseApplication.getContext(), 1, paramArrayOfByte.msg.get(), 0).a();
-            return;
-          }
+          i += 1;
         }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
       }
     }
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
+    {
+      j = paramArrayOfalzs.length;
+      i = 0;
+      while (i < j)
+      {
+        Object localObject2 = paramArrayOfalzs[i];
+        if ((localObject2 != null) && (!TextUtils.isEmpty(((alzs)localObject2).a))) {
+          try
+          {
+            localObject1 = new afgx();
+            localObject2 = new JSONObject(((alzs)localObject2).a);
+            if (((JSONObject)localObject2).has("enable")) {
+              ((afgx)localObject1).jdField_a_of_type_Boolean = ((JSONObject)localObject2).getBoolean("enable");
+            }
+            if (((JSONObject)localObject2).has("interval")) {
+              ((afgx)localObject1).jdField_a_of_type_Long = ((JSONObject)localObject2).getLong("interval");
+            }
+            return localObject1;
+          }
+          catch (Throwable localThrowable)
+          {
+            QLog.e("ReportExposeConfigProcessor", 1, localThrowable, new Object[0]);
+          }
+        }
+        i += 1;
+      }
+    }
+    return null;
+  }
+  
+  public Class<afgx> a()
+  {
+    return afgx.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportExposeConfigProcessor", 2, "onReqFailed, code = " + paramInt);
+    }
+  }
+  
+  public void a(afgx paramafgx)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportExposeConfigProcessor", 2, "onUpdate");
+    }
+    if (paramafgx != null) {
+      ContactReportUtils.a(paramafgx);
+    }
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReportExposeConfigProcessor", 2, "migrateOldVersion");
+    }
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afeq
  * JD-Core Version:    0.7.0.1
  */

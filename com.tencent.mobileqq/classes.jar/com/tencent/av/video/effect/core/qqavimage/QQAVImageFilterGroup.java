@@ -15,7 +15,7 @@ import java.util.List;
 public class QQAVImageFilterGroup
   extends QQAVImageFilter
 {
-  protected List<QQAVImageFilter> mFilters;
+  public List<QQAVImageFilter> mFilters;
   private int[] mFrameBufferTextures;
   private int[] mFrameBuffers;
   private final FloatBuffer mGLCubeBuffer;
@@ -100,54 +100,56 @@ public class QQAVImageFilterGroup
       return;
     }
     int k = this.mMergedFilters.size();
-    int j = 0;
-    int i = paramInt;
-    paramInt = j;
-    label53:
+    int i = 0;
+    label47:
     QQAVImageFilter localQQAVImageFilter;
-    if (paramInt < k)
+    int j;
+    if (i < k)
     {
-      localQQAVImageFilter = (QQAVImageFilter)this.mMergedFilters.get(paramInt);
-      if (paramInt >= k - 1) {
+      localQQAVImageFilter = (QQAVImageFilter)this.mMergedFilters.get(i);
+      if (i >= k - 1) {
         break label147;
       }
       j = 1;
-      label85:
+      label82:
       if (j != 0)
       {
-        GLES20.glBindFramebuffer(36160, this.mFrameBuffers[paramInt]);
+        GLES20.glBindFramebuffer(36160, this.mFrameBuffers[i]);
         GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
       }
-      if (paramInt != 0) {
+      if (i != 0) {
         break label153;
       }
-      localQQAVImageFilter.onDraw(i, paramFloatBuffer1, paramFloatBuffer2);
+      localQQAVImageFilter.onDraw(paramInt, paramFloatBuffer1, paramFloatBuffer2);
+      label119:
+      if (j == 0) {
+        break label220;
+      }
+      GLES20.glBindFramebuffer(36160, 0);
+      paramInt = this.mFrameBufferTextures[i];
     }
+    label147:
+    label153:
+    label220:
     for (;;)
     {
-      if (j != 0)
-      {
-        GLES20.glBindFramebuffer(36160, 0);
-        i = this.mFrameBufferTextures[paramInt];
-      }
-      paramInt += 1;
-      break label53;
+      i += 1;
+      break label47;
       break;
-      label147:
       j = 0;
-      break label85;
-      label153:
-      if (paramInt == k - 1)
+      break label82;
+      if (i == k - 1)
       {
         FloatBuffer localFloatBuffer2 = this.mGLCubeBuffer;
         if (k % 2 == 0) {}
         for (FloatBuffer localFloatBuffer1 = this.mGLTextureFlipBuffer;; localFloatBuffer1 = this.mGLTextureBuffer)
         {
-          localQQAVImageFilter.onDraw(i, localFloatBuffer2, localFloatBuffer1);
+          localQQAVImageFilter.onDraw(paramInt, localFloatBuffer2, localFloatBuffer1);
           break;
         }
       }
-      localQQAVImageFilter.onDraw(i, this.mGLCubeBuffer, this.mGLTextureBuffer);
+      localQQAVImageFilter.onDraw(paramInt, this.mGLCubeBuffer, this.mGLTextureBuffer);
+      break label119;
     }
   }
   
@@ -169,57 +171,57 @@ public class QQAVImageFilterGroup
       return;
     }
     int k = this.mMergedFilters.size();
-    int j = 0;
-    int i = paramInt1;
-    paramInt1 = j;
-    label141:
-    if (paramInt1 < k)
+    int i = 0;
+    label135:
+    int j;
+    if (i < k)
     {
-      localQQAVImageFilter = (QQAVImageFilter)this.mMergedFilters.get(paramInt1);
-      if (paramInt1 >= k - 1) {
-        break label260;
+      localQQAVImageFilter = (QQAVImageFilter)this.mMergedFilters.get(i);
+      if (i >= k - 1) {
+        break label254;
       }
       j = 1;
-      label173:
+      label167:
       if (j != 0)
       {
-        GLES20.glBindFramebuffer(36160, this.mFrameBuffers[paramInt1]);
+        GLES20.glBindFramebuffer(36160, this.mFrameBuffers[i]);
         GLES20.glViewport(0, 0, localQQAVImageFilter.getOutputWidth(), localQQAVImageFilter.getOutputHeight());
         GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
         GLES20.glClear(16640);
       }
-      if (paramInt1 != 0) {
-        break label266;
+      if (i != 0) {
+        break label260;
       }
-      localQQAVImageFilter.onDraw(i, this.cubeBuffer, this.textureBuffer);
+      localQQAVImageFilter.onDraw(paramInt1, this.cubeBuffer, this.textureBuffer);
+      label229:
+      if (j == 0) {
+        break label342;
+      }
+      GLES20.glBindFramebuffer(36160, 0);
+      paramInt1 = this.mFrameBufferTextures[i];
     }
+    label260:
+    label342:
     for (;;)
     {
-      if (j != 0)
-      {
-        GLES20.glBindFramebuffer(36160, 0);
-        i = this.mFrameBufferTextures[paramInt1];
-      }
-      paramInt1 += 1;
-      break label141;
+      i += 1;
+      break label135;
       break;
-      label260:
+      label254:
       j = 0;
-      break label173;
-      label266:
-      if (paramInt1 == k - 1)
+      break label167;
+      if (i == k - 1)
       {
         GLES20.glBindFramebuffer(36160, paramInt2);
         GLES20.glViewport(0, 0, localQQAVImageFilter.getOutputWidth(), localQQAVImageFilter.getOutputHeight());
         GLES20.glClearColor(0.0F, 0.0F, 0.0F, 1.0F);
         GLES20.glClear(16640);
-        localQQAVImageFilter.onDraw(i, this.cubeBuffer, this.textureBuffer);
+        localQQAVImageFilter.onDraw(paramInt1, this.cubeBuffer, this.textureBuffer);
         GLES20.glBindFramebuffer(36160, 0);
+        break label229;
       }
-      else
-      {
-        localQQAVImageFilter.onDraw(i, this.cubeBuffer, this.textureBuffer);
-      }
+      localQQAVImageFilter.onDraw(paramInt1, this.cubeBuffer, this.textureBuffer);
+      break label229;
     }
   }
   
@@ -308,7 +310,7 @@ public class QQAVImageFilterGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.video.effect.core.qqavimage.QQAVImageFilterGroup
  * JD-Core Version:    0.7.0.1
  */

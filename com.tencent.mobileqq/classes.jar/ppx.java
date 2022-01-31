@@ -1,28 +1,31 @@
-import com.tencent.component.network.utils.http.base.SniSSLSocketFactory;
-import java.security.cert.X509Certificate;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.SSLSocket;
-import org.apache.http.conn.ssl.X509HostnameVerifier;
+import com.tencent.qphone.base.util.QLog;
 
 public class ppx
-  implements X509HostnameVerifier
+  implements Cloneable
 {
-  public ppx(SniSSLSocketFactory paramSniSSLSocketFactory) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
   
-  public void verify(String paramString, X509Certificate paramX509Certificate) {}
-  
-  public void verify(String paramString, SSLSocket paramSSLSocket) {}
-  
-  public void verify(String paramString, String[] paramArrayOfString1, String[] paramArrayOfString2) {}
-  
-  public boolean verify(String paramString, SSLSession paramSSLSession)
+  protected Object clone()
   {
-    return false;
+    try
+    {
+      ppx localppx = (ppx)super.clone();
+      return localppx;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      QLog.e("NewPolymericInfo", 2, "PackTopicExtraInfo item clone failed. exception = " + localCloneNotSupportedException);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ppx
  * JD-Core Version:    0.7.0.1
  */

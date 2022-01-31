@@ -1,44 +1,21 @@
-import android.app.Activity;
-import com.tencent.common.galleryactivity.AbstractAnimationManager;
-import com.tencent.common.galleryactivity.AbstractGalleryScene;
-import com.tencent.common.galleryactivity.AbstractImageListModel;
-import com.tencent.common.galleryactivity.AbstractImageListScene;
-import com.tencent.common.galleryactivity.GalleryManager;
-import com.tencent.mobileqq.campuscircle.CampusCirclePicBrowserActivity;
-import com.tencent.mobileqq.campuscircle.CampusCirclePicBrowserGalleryScene;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserModel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
 
-public class abwl
-  extends GalleryManager
+class abwl
+  implements DialogInterface.OnClickListener
 {
-  public abwl(CampusCirclePicBrowserActivity paramCampusCirclePicBrowserActivity) {}
+  abwl(abwj paramabwj, bafb parambafb) {}
   
-  public AbstractAnimationManager a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return super.a(paramActivity, paramAbstractImageListModel);
-  }
-  
-  public AbstractGalleryScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
-  {
-    this.a.a = new CampusCirclePicBrowserGalleryScene((CampusCirclePicBrowserActivity)paramActivity, paramAbstractImageListModel);
-    return this.a.a;
-  }
-  
-  public AbstractImageListModel a(Activity paramActivity)
-  {
-    paramActivity = new PicBrowserModel(this.a, CampusCirclePicBrowserActivity.a(this.a));
-    paramActivity.a(CampusCirclePicBrowserActivity.a(this.a));
-    return paramActivity;
-  }
-  
-  public AbstractImageListScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
-  {
-    return null;
+    awqx.b(this.jdField_a_of_type_Abwj.a.app, "P_CliOper", "Grp_manage", "", "del_grp", "Clk_know", 0, 0, this.jdField_a_of_type_Abwj.a.a, "", "", "");
+    this.jdField_a_of_type_Bafb.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abwl
  * JD-Core Version:    0.7.0.1
  */

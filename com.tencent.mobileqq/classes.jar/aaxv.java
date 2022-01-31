@@ -1,18 +1,28 @@
-import com.tencent.mobileqq.ark.ArkActionAppMgr;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class aaxv
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aaxv(ArkActionAppMgr paramArkActionAppMgr, aaya paramaaya) {}
+  public aaxv(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    ArkActionAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkArkActionAppMgr, this.jdField_a_of_type_Aaya);
+    paramCompoundButton = this.a.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      awqx.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "System_icon", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131653552), "qqsetting_notify_icon_key", paramBoolean);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaxv
  * JD-Core Version:    0.7.0.1
  */

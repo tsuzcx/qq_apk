@@ -1,21 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.util.Pair;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
 class snh
-  implements DialogInterface.OnClickListener
+  extends tco
 {
-  snh(sng paramsng, SubAccountControll paramSubAccountControll, Pair paramPair) {}
+  snh(sng paramsng) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqSubaccountSubAccountControll.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
+    super.a();
+    snf.a(this.a.a, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    urp.a("home_page", "suc_share", 1, paramInt, new String[] { urp.b(this.a.a.a) + "", urp.a(this.a.a.a) + "", this.a.a.a.feedId });
+  }
+  
+  public void b(int paramInt)
+  {
+    super.b(paramInt);
+    urp.a("home_page", "share_chanel", 1, paramInt, new String[] { urp.b(this.a.a.a) + "", urp.a(this.a.a.a) + "", this.a.a.a.feedId });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     snh
  * JD-Core Version:    0.7.0.1
  */

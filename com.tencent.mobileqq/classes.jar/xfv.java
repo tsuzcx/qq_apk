@@ -1,38 +1,58 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.qwallet.PayCodeEntryActivity;
+import android.util.SparseArray;
 
 public class xfv
-  implements View.OnClickListener
 {
-  public xfv(PayCodeEntryActivity paramPayCodeEntryActivity, xfw paramxfw) {}
+  public int a;
+  public SparseArray<xfw> a;
+  public String a;
+  public boolean a;
+  public int b = 4;
   
-  public void onClick(View paramView)
+  public xfv(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity.a("payCodeEntry.cheCode2", "actQQWlxclick", "0003");
-    paramView = new Intent("com.tencent.mobileqq.action.jtcode");
-    paramView.setClass(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity, JumpActivity.class);
-    if (!TextUtils.isEmpty(PayCodeEntryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity))) {
-      paramView.putExtra("city_name", PayCodeEntryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity));
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(3);
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public xfw a(int paramInt)
+  {
+    xfw localxfw2 = (xfw)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    xfw localxfw1 = localxfw2;
+    if (localxfw2 == null)
+    {
+      if (paramInt != 1) {
+        break label40;
+      }
+      localxfw1 = new xfw(85, 5, 0.7F, 0.2F);
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Xfw.b)) {
-      paramView.putExtra("city_code", this.jdField_a_of_type_Xfw.b);
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Xfw.a)) {
-      paramView.putExtra("ykt_id", this.jdField_a_of_type_Xfw.a);
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Xfw.c)) {
-      paramView.putExtra("show_name", this.jdField_a_of_type_Xfw.c);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity.startActivityForResult(paramView, 102);
+    label40:
+    do
+    {
+      return localxfw1;
+      if (paramInt == 2) {
+        return new xfw(80, 15, 0.9F, 0.4F);
+      }
+      localxfw1 = localxfw2;
+    } while (paramInt != 3);
+    return new xfw(75, 30, 1.0F, 0.7F);
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("ClearMemoryConfig{");
+    localStringBuilder.append("DpcConfigId='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuilder.append(", isClearEnable=").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", delay=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", clearStep=").append(this.b);
+    localStringBuilder.append(", clearLevels=").append(this.jdField_a_of_type_AndroidUtilSparseArray);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     xfv
  * JD-Core Version:    0.7.0.1
  */

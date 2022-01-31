@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class GrpAlterInfo
   extends JceStruct
 {
-  static ArrayList cache_AlterInfo;
-  public ArrayList AlterInfo;
+  static ArrayList<GrpInfoItem> cache_AlterInfo;
+  public ArrayList<GrpInfoItem> AlterInfo;
   public long GrpId;
   
   public GrpAlterInfo() {}
   
-  public GrpAlterInfo(long paramLong, ArrayList paramArrayList)
+  public GrpAlterInfo(long paramLong, ArrayList<GrpInfoItem> paramArrayList)
   {
     this.GrpId = paramLong;
     this.AlterInfo = paramArrayList;

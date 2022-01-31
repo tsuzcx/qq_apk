@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
 
-public final class aocw
-  implements Parcelable.Creator
+public class aocw
+  extends aodp
 {
-  public EditVideoParams a(Parcel paramParcel)
-  {
-    return new EditVideoParams(paramParcel);
-  }
+  public aocw(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
   
-  public EditVideoParams[] a(int paramInt)
+  protected void a(aooa paramaooa)
   {
-    return new EditVideoParams[paramInt];
+    super.a(paramaooa);
+    if ((paramaooa.b != null) && (paramaooa.b.length() > 0)) {
+      this.a.i();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aocw
  * JD-Core Version:    0.7.0.1
  */

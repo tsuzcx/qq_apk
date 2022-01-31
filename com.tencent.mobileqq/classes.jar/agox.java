@@ -1,58 +1,50 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import java.net.URLEncoder;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
+import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.Map;
 
 public class agox
-  implements DialogInterface.OnClickListener
+  extends batl
 {
-  public agox(PhoneNumLoginImpl paramPhoneNumLoginImpl, String paramString, Activity paramActivity, QQAppInterface paramQQAppInterface) {}
+  public agox(PreloadManager paramPreloadManager, agpa paramagpa) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDoneFile(batm parambatm)
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      paramDialogInterface = new StringBuilder("http://aq.qq.com/cn2/change_psw/mobile/mobile_change_psw_reg_input_psw");
-      paramDialogInterface.append("?");
-      paramDialogInterface.append("uin=");
-      paramDialogInterface.append(this.jdField_a_of_type_JavaLangString);
-      paramDialogInterface.append("&plat=1");
-      paramDialogInterface.append("&app=1");
-      paramDialogInterface.append("&version=7.6.8.3615");
-      paramDialogInterface.append("&device=" + URLEncoder.encode(Build.DEVICE));
-      paramDialogInterface.append("&system=" + Build.VERSION.RELEASE);
-      paramDialogInterface.append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));
-      paramDialogInterface = paramDialogInterface.toString();
-      Intent localIntent = new Intent();
-      localIntent.putExtra("portraitOnly", true);
-      localIntent.putExtra("url", paramDialogInterface);
-      localIntent.putExtra("uin", this.jdField_a_of_type_JavaLangString);
-      localIntent.putExtra("hide_operation_bar", true);
-      localIntent.putExtra("hide_more_button", true);
-      VasWebviewUtil.openQQBrowserActivity(this.jdField_a_of_type_AndroidAppActivity, paramDialogInterface, 32768L, localIntent, false, -1);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Mobile_signup", "Setiing_pw_tips", 0, 0, "", "", "", "");
-      return;
+    int i = -5;
+    super.onDoneFile(parambatm);
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadManager", 2, "downloadRes|done" + parambatm.jdField_a_of_type_JavaLangString + "|" + parambatm.jdField_a_of_type_Int);
     }
-    catch (Exception paramDialogInterface)
+    Object localObject = parambatm.a();
+    PreloadModule localPreloadModule = (PreloadModule)((Bundle)localObject).getSerializable("module");
+    localObject = (PreloadResource)((Bundle)localObject).getSerializable("resource");
+    if (parambatm.jdField_a_of_type_Int == 0)
     {
-      for (;;)
-      {
-        paramDialogInterface.printStackTrace();
+      i = 0;
+      if (localObject != null) {
+        break label146;
       }
+    }
+    label146:
+    for (localObject = null;; localObject = ((PreloadResource)localObject).getResInfo(localPreloadModule))
+    {
+      this.jdField_a_of_type_Agpa.onDownloadResFinished(localPreloadModule.mid, i, ((File)parambatm.jdField_a_of_type_JavaUtilMap.get(parambatm.jdField_a_of_type_JavaLangString)).getAbsolutePath(), (ResourceInfo)localObject);
+      return;
+      if (parambatm.jdField_a_of_type_Int == -5) {
+        break;
+      }
+      i = -6;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agox
  * JD-Core Version:    0.7.0.1
  */

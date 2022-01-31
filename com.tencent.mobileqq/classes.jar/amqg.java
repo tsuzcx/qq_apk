@@ -1,21 +1,10 @@
-import common.qzone.component.cache.common.SoftHashMap;
-
-public class amqg
-  extends amqc
+public abstract interface amqg
 {
-  amqg(SoftHashMap paramSoftHashMap)
-  {
-    super(paramSoftHashMap);
-  }
-  
-  public Object next()
-  {
-    return ampz.a(a());
-  }
+  public abstract int a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amqg
  * JD-Core Version:    0.7.0.1
  */

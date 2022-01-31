@@ -1,24 +1,17 @@
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.QfavHelper;
 
-public final class amwk
-  implements Runnable
+final class amwk
+  extends mmm
 {
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    synchronized ()
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("qqfav", 2, "notify(sPluginInstalled) qqfav.apk");
-      }
-      QfavHelper.a().notifyAll();
-      return;
-    }
+    QLog.i("reportMsgBoxMomentRead", 1, " reportMsgBoxMomentRead code:" + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amwk
  * JD-Core Version:    0.7.0.1
  */

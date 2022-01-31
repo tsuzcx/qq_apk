@@ -1,20 +1,43 @@
-import android.os.Message;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class aodi
-  implements Runnable
+class aodi
+  implements View.OnClickListener
 {
-  public aodi(EditVideoPlayer paramEditVideoPlayer) {}
+  aodi(aodh paramaodh) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.a(Message.obtain(null, 8));
+    acju localacju = (acju)aciy.a(paramView);
+    int i;
+    ChatMessage localChatMessage;
+    if (localacju != null)
+    {
+      i = -1;
+      localChatMessage = apck.a(localacju.a);
+      if (!this.a.b(localChatMessage)) {
+        break label76;
+      }
+      i = 0;
+    }
+    for (;;)
+    {
+      this.a.a(paramView, localacju, localChatMessage, i);
+      if (this.a.a != null) {
+        this.a.a.g(localacju.a);
+      }
+      return;
+      label76:
+      if (this.a.a(localChatMessage)) {
+        i = 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aodi
  * JD-Core Version:    0.7.0.1
  */

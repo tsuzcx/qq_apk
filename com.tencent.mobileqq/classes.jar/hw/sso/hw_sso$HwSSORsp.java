@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class hw_sso$HwSSORsp
-  extends MessageMicro
+  extends MessageMicro<HwSSORsp>
 {
   public static final int BODY_FIELD_NUMBER = 3;
   public static final int ERR_CODE_FIELD_NUMBER = 1;

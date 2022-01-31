@@ -1,24 +1,21 @@
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
 
-public class rmv
-  implements Runnable
+class rmv
+  extends AnimatorListenerAdapter
 {
-  public rmv(AddFriendLogicActivity paramAddFriendLogicActivity) {}
+  rmv(rmt paramrmt, VVideoView paramVVideoView, View paramView) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.a = true;
-    AddFriendLogicActivity.a(this.a).hide();
-    AddFriendLogicActivity.a(this.a);
+    rmt.a(this.jdField_a_of_type_Rmt, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideoView, this.jdField_a_of_type_AndroidViewView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rmv
  * JD-Core Version:    0.7.0.1
  */

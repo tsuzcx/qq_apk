@@ -1,28 +1,23 @@
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.MedalNewsItemBuilder;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
 
-public class vgz
-  extends AbstractChatItemBuilder.ViewHolder
+class vgz
+  implements View.OnClickListener
 {
-  public long a;
-  public ImageView a;
-  public URLImageView a;
-  public CornerImageView a;
-  public String a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
+  vgz(vgy paramvgy, vhb paramvhb) {}
   
-  public vgz(MedalNewsItemBuilder paramMedalNewsItemBuilder) {}
+  public void onClick(View paramView)
+  {
+    if (vgy.a(this.jdField_a_of_type_Vgy) != null) {
+      vgy.a(this.jdField_a_of_type_Vgy).a((SlideItemInfo)this.jdField_a_of_type_Vhb.a.getTag());
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vgz
  * JD-Core Version:    0.7.0.1
  */

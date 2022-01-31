@@ -2,11 +2,9 @@ package com.tencent.bugly.proguard;
 
 public abstract interface ab
 {
-  public abstract byte[] a(byte[] paramArrayOfByte)
-    throws Exception;
+  public abstract byte[] a(byte[] paramArrayOfByte);
   
-  public abstract byte[] b(byte[] paramArrayOfByte)
-    throws Exception;
+  public abstract byte[] b(byte[] paramArrayOfByte);
 }
 
 

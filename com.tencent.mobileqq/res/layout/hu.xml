@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/group_item_layout" android:background="@drawable/jm" android:layout_width="fill_parent" android:layout_height="44.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBox android:id="@id/dv_" android:background="@drawable/kh" android:visibility="invisible" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="17.0dip" android:button="@null" android:scaleType="center" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <ProgressBar android:id="@id/dx0" android:visibility="gone" android:layout_width="17.0dip" android:layout_height="17.0dip" android:layout_marginLeft="17.0dip" android:indeterminateDrawable="@drawable/jt" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/skin_black_theme_version2" android:ellipsize="end" android:gravity="center|left" android:id="@id/group_name" android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_marginLeft="44.0dip" android:layout_marginRight="17.0dip" android:maxLines="1" android:maxEms="11" android:singleLine="true" android:includeFontPadding="false" android:layout_toLeftOf="@id/contact_count" android:layout_alignParentLeft="true" />
+    <TextView android:textSize="10.0dip" android:textColor="@color/skin_gray2_theme_version2" android:gravity="center|right" android:id="@id/contact_count" android:layout_width="100.0dip" android:layout_height="50.0dip" android:layout_marginRight="12.0dip" android:maxLines="1" android:layout_alignParentRight="true" />
+</RelativeLayout>

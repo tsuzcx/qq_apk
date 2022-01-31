@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class submsgtype0xee$ControlInfo
-  extends MessageMicro
+  extends MessageMicro<ControlInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "uint32_comment_length", "uint32_show_line", "uint32_font_size" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, ControlInfo.class);
   public final PBUInt32Field uint32_comment_length = PBField.initUInt32(0);

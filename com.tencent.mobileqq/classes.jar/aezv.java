@@ -1,40 +1,91 @@
-import android.os.Message;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcess;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface.Stub;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.util.SparseArray;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.SwipListView;
 
 public class aezv
-  extends NearbyProcessInterface.Stub
+  implements begh
 {
-  public aezv(NearbyProcess paramNearbyProcess) {}
+  public aezv(SystemMsgListView paramSystemMsgListView) {}
   
-  public Message a(Message paramMessage)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramMessage == null) {
-      return null;
+    SystemMsgListView.a(this.a, paramInt1);
+    SystemMsgListView.a(this.a, paramInt1 + paramInt2 - 1);
+    if (SystemMsgListView.a(this.a).b() == 23)
+    {
+      if (paramInt1 >= 1)
+      {
+        paramAbsListView = (aeyf)SystemMsgListView.a(this.a).getItem(paramInt1 - 1);
+        if ((paramAbsListView instanceof aeyb)) {
+          ((aeyb)paramAbsListView).c();
+        }
+      }
+      if (paramInt1 + paramInt2 < paramInt3)
+      {
+        paramAbsListView = (aeyf)SystemMsgListView.a(this.a).getItem(paramInt1 + paramInt2);
+        if ((paramAbsListView instanceof aeyb)) {
+          ((aeyb)paramAbsListView).c();
+        }
+      }
     }
-    return this.a.b(paramMessage);
   }
   
-  public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (paramBasicTypeDataParcel == null) {}
-    Object[] arrayOfObject;
-    do
+    int i = 0;
+    int j;
+    int k;
+    if (SystemMsgListView.a(this.a) != null)
     {
-      return null;
-      if (QLog.isColorLevel()) {
-        QLog.i("nearby_ipc_log_tag", 2, paramBasicTypeDataParcel.toString());
+      if ((paramInt == 0) || (paramInt == 1)) {
+        break label240;
       }
-      arrayOfObject = this.a.b(paramBasicTypeDataParcel.jdField_a_of_type_Int, paramBasicTypeDataParcel.jdField_a_of_type_ArrayOfJavaLangObject);
-    } while (arrayOfObject == null);
-    return new BasicTypeDataParcel(paramBasicTypeDataParcel.jdField_a_of_type_Int, arrayOfObject);
+      SystemMsgListView.a(this.a).f();
+      if (paramInt == 0)
+      {
+        SystemMsgListView.a(this.a).k();
+        j = SystemMsgListView.a(this.a).b();
+        if (SystemMsgListView.a(this.a) >= SystemMsgListView.a(this.a).getCount() - 2)
+        {
+          paramAbsListView = SystemMsgListView.a(this.a).a();
+          if ((paramAbsListView != null) && (paramAbsListView.a()) && (paramAbsListView.a >= 0) && (SystemMsgListView.a(this.a).a(j)))
+          {
+            Bundle localBundle = new Bundle();
+            localBundle.putString("from", "4");
+            SystemMsgListView.a(this.a).b(4, paramAbsListView.a, localBundle);
+          }
+        }
+        k = SystemMsgListView.a(this.a).getFirstVisiblePosition();
+        paramAbsListView = SystemMsgListView.a(this.a).getChildAt(0);
+        if (paramAbsListView != null) {
+          break label263;
+        }
+      }
+    }
+    label263:
+    for (paramInt = i;; paramInt = paramAbsListView.getTop())
+    {
+      SystemMsgListView.a(this.a).remove(j);
+      if (SystemMsgListView.a(this.a).isShown())
+      {
+        paramAbsListView = new afat(j, k, paramInt);
+        SystemMsgListView.a(this.a).put(j, paramAbsListView);
+      }
+      return;
+      label240:
+      SystemMsgListView.a(this.a).g();
+      SystemMsgListView.a(this.a).d();
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aezv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,38 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.ocr.OCRRecognitionResultActivity;
-import com.tencent.mobileqq.ocr.OcrImageUtil;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
+import mqq.app.AppRuntime;
+import mqq.util.WeakReference;
 
-public class agfn
-  implements Runnable
+class agfn
+  extends atdk
 {
-  public agfn(OCRRecognitionResultActivity paramOCRRecognitionResultActivity, String paramString) {}
+  agfn(agfk paramagfk) {}
   
-  public void run()
+  protected void c(boolean paramBoolean, Bundle paramBundle)
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (new File(this.jdField_a_of_type_JavaLangString).exists()))
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && ((paramBundle instanceof get_albumlist_num_rsp)))
     {
-      String str = new File(this.jdField_a_of_type_JavaLangString).getParent();
-      if (OcrImageUtil.b.equals(str))
+      long l = ((get_albumlist_num_rsp)paramBundle).album_num;
+      this.a.jdField_a_of_type_Aggf.a = l;
+      paramBundle = ((AlbumListFragment)this.a.jdField_a_of_type_MqqUtilWeakReference.get()).a;
+      if (paramBundle != null)
       {
-        FileUtils.d(this.jdField_a_of_type_JavaLangString);
-        if (QLog.isColorLevel()) {
-          QLog.d("OCRRecognitionResultActivity", 2, "delete pic path:" + this.jdField_a_of_type_JavaLangString);
-        }
+        paramBundle.a(this.a.jdField_a_of_type_Aggf.a);
+        paramBundle.a();
+      }
+      if (this.a.jdField_a_of_type_Agfl != null) {
+        this.a.jdField_a_of_type_Agfl.a(l);
       }
     }
+    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(this.a.jdField_a_of_type_Agff.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agfn
  * JD-Core Version:    0.7.0.1
  */

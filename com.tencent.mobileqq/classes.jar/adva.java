@@ -1,24 +1,24 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.fragment.HotChatFragment;
-import com.tencent.mobileqq.fragment.HotChatFragment.HotChatWebView;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import dov.com.qq.im.ptv.AIOLongCaptureCtrl;
 
 public class adva
-  extends BroadcastReceiver
+  implements View.OnLongClickListener
 {
-  public adva(HotChatFragment paramHotChatFragment) {}
+  public adva(PanelIconLinearLayout paramPanelIconLinearLayout) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean onLongClick(View paramView)
   {
-    if ((paramIntent != null) && ("com.tencent.mobileqq.refresh_hot_chat_list".equals(paramIntent.getAction())) && (this.a.a != null) && (this.a.a.a != null)) {
-      this.a.a.x();
+    if (PanelIconLinearLayout.a(this.a) != null) {
+      PanelIconLinearLayout.a(this.a).a(1);
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adva
  * JD-Core Version:    0.7.0.1
  */

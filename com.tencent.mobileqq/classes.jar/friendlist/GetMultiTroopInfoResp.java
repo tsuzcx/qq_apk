@@ -9,16 +9,16 @@ public final class GetMultiTroopInfoResp
   extends JceStruct
 {
   static int cache_result;
-  static ArrayList cache_vecTroopInfo;
+  static ArrayList<stTroopInfoV2> cache_vecTroopInfo;
   public short errorCode;
   public int result;
   public String sGroupClassXMLPath = "";
   public long uin;
-  public ArrayList vecTroopInfo;
+  public ArrayList<stTroopInfoV2> vecTroopInfo;
   
   public GetMultiTroopInfoResp() {}
   
-  public GetMultiTroopInfoResp(long paramLong, int paramInt, short paramShort, ArrayList paramArrayList, String paramString)
+  public GetMultiTroopInfoResp(long paramLong, int paramInt, short paramShort, ArrayList<stTroopInfoV2> paramArrayList, String paramString)
   {
     this.uin = paramLong;
     this.result = paramInt;

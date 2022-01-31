@@ -1,9 +1,10 @@
 package com.tencent.device.msg.data;
 
+import ajjy;
+import akhp;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.utils.MessagePkgUtils;
 import com.tencent.mobileqq.data.MessageForPtt;
 import com.tencent.qphone.base.util.BaseApplication;
 
@@ -23,7 +24,7 @@ public class MessageForDevPtt
       return;
       try
       {
-        MessageForDevPtt.MessageForDevPttSerial localMessageForDevPttSerial = (MessageForDevPtt.MessageForDevPttSerial)MessagePkgUtils.a(this.msgData);
+        MessageForDevPtt.MessageForDevPttSerial localMessageForDevPttSerial = (MessageForDevPtt.MessageForDevPttSerial)akhp.a(this.msgData);
         if (localMessageForDevPttSerial == null) {
           continue;
         }
@@ -75,18 +76,18 @@ public class MessageForDevPtt
       if (this.fileSize > 0L)
       {
         if (isSendFromLocal()) {
-          return ((QQAppInterface)localObject).getApp().getString(2131435586);
+          return ((QQAppInterface)localObject).getApp().getString(2131625722);
         }
-        return "一条语音消息";
+        return ajjy.a(2131640819);
       }
       if (this.fileSize == -1L)
       {
         if (isSendFromLocal()) {
-          return ((QQAppInterface)localObject).getApp().getString(2131435586);
+          return ((QQAppInterface)localObject).getApp().getString(2131625722);
         }
-        return "一条语音消息";
+        return ajjy.a(2131640790);
       }
-      return "一条语音消息";
+      return ajjy.a(2131640791);
     }
     return null;
   }
@@ -122,7 +123,7 @@ public class MessageForDevPtt
     localMessageForDevPttSerial.strFileKey2 = this.strFileKey2;
     try
     {
-      this.msgData = MessagePkgUtils.a(localMessageForDevPttSerial);
+      this.msgData = akhp.a(localMessageForDevPttSerial);
       return;
     }
     catch (Exception localException)

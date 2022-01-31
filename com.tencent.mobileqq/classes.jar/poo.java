@@ -1,23 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.component.network.downloader.impl.ipc.Const.SimpleRequest;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class poo
-  implements Parcelable.Creator
+class poo
 {
-  public Const.SimpleRequest a(Parcel paramParcel)
-  {
-    return new Const.SimpleRequest(paramParcel);
-  }
+  int jdField_a_of_type_Int = 0;
+  List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public Const.SimpleRequest[] a(int paramInt)
-  {
-    return new Const.SimpleRequest[paramInt];
-  }
+  poo(pol parampol) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     poo
  * JD-Core Version:    0.7.0.1
  */

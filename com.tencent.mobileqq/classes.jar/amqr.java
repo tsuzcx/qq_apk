@@ -1,45 +1,43 @@
-import android.os.IBinder;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.PluginPreloadReportUtils;
-import cooperation.comic.PluginPreloadStrategy;
-import cooperation.comic.PluginPreloader.ExtraResult;
-import mqq.app.AppRuntime;
+import android.graphics.Canvas;
+import android.text.TextPaint;
 
-public final class amqr
-  implements OnPluginInstallListener
+public class amqr
+  extends amqo
 {
-  public amqr(AppRuntime paramAppRuntime, PluginPreloadStrategy paramPluginPreloadStrategy, PluginPreloader.ExtraResult paramExtraResult, int paramInt) {}
+  private TextPaint a = new TextPaint();
   
-  public IBinder asBinder()
+  private String a(ampo paramampo)
   {
-    return null;
+    return String.valueOf(paramampo.a());
   }
   
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
+  public amrm a(ampo paramampo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PluginPreloader", 2, "pluginType:" + this.jdField_a_of_type_CooperationComicPluginPreloadStrategy.b + " preload:fail:installerror");
-    }
-    PluginPreloadReportUtils.a(this.jdField_a_of_type_MqqAppAppRuntime, 1, this.jdField_a_of_type_CooperationComicPluginPreloadStrategy.b, this.jdField_a_of_type_CooperationComicPluginPreloadStrategy.c, 3, "preload:fail:installerror", this.jdField_a_of_type_Int, new String[] { String.valueOf(this.jdField_a_of_type_CooperationComicPluginPreloadStrategy.d) });
+    amqn localamqn = ampx.a();
+    float f1 = amrp.a(localamqn.c(), a(paramampo)) + localamqn.f() + localamqn.f();
+    float f2 = amrp.a(localamqn.c());
+    f2 = localamqn.e() * 2.0F + f2;
+    paramampo.a(f2);
+    paramampo.b(f1);
+    return new amrm(f1, f2);
   }
   
-  public void onInstallFinish(String paramString)
+  public boolean a(ampo paramampo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PluginPreloader", 2, "plugin install success, do preload.");
-    }
-    PluginPreloadReportUtils.a(this.jdField_a_of_type_MqqAppAppRuntime, 0, this.jdField_a_of_type_CooperationComicPluginPreloadStrategy.b, this.jdField_a_of_type_CooperationComicPluginPreloadStrategy.c, this.jdField_a_of_type_CooperationComicPluginPreloader$ExtraResult.jdField_a_of_type_Int, this.jdField_a_of_type_CooperationComicPluginPreloader$ExtraResult.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, new String[] { String.valueOf(this.jdField_a_of_type_CooperationComicPluginPreloadStrategy.d) });
-    this.jdField_a_of_type_CooperationComicPluginPreloadStrategy.a();
+    return true;
+  }
+  
+  public void b(Canvas paramCanvas, ampo paramampo, ampx paramampx, float paramFloat1, float paramFloat2)
+  {
+    paramampx = ampx.a();
+    this.a.setTextSize(paramampx.c());
+    this.a.setColor(-1);
+    paramCanvas.drawText(a(paramampo), paramampx.f() + paramFloat1, paramampx.e() + paramFloat2 - this.a.ascent(), this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amqr
  * JD-Core Version:    0.7.0.1
  */

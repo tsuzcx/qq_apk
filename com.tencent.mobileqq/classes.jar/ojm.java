@@ -1,18 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
 
 public class ojm
-  implements DialogInterface.OnDismissListener
+  implements qnh
 {
-  public ojm(EditVideoGuide paramEditVideoGuide) {}
+  public ChannelCoverInfo a;
+  public String a;
+  private boolean a;
+  public String b;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public ojm(ChannelCoverInfo paramChannelCoverInfo, String paramString1, String paramString2)
   {
-    this.a.jdField_a_of_type_Int = 2;
-    this.a.b = 2;
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(5);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo = paramChannelCoverInfo;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 

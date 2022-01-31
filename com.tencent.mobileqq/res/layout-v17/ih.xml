@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/ij" />
+    <TextView android:id="@id/b9u" android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/aj7" />
+    <LinearLayout android:orientation="vertical" android:id="@id/b9s" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.troop.widget.EllipsizingTextView android:textSize="16.0dip" android:textColor="@color/skin_black" android:id="@id/dlq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/aj7" android:layout_marginTop="@dimen/aj7" android:layout_marginRight="@dimen/aj7" android:maxLines="1" android:singleLine="true" />
+        <RelativeLayout android:id="@id/iwm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="106.0dip">
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/aj7" android:layout_toLeftOf="@id/det" android:layout_alignParentTop="true">
+                <TextView android:textSize="16.0dip" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/dlr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/aj7" android:maxLines="2" android:singleLine="false" />
+                <TextView android:textSize="14.0dip" android:textColor="#ffbbbbbb" android:id="@id/hw_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/aj7" android:layout_alignParentBottom="true" />
+            </RelativeLayout>
+            <FrameLayout android:id="@id/det" android:layout_width="116.0dip" android:layout_height="82.0dip" android:layout_margin="@dimen/aj7" android:layout_alignParentRight="true" android:layout_alignParentEnd="true">
+                <ImageView android:id="@id/dce" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+                <ImageView android:layout_gravity="center" android:id="@id/kro" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/dey" />
+            </FrameLayout>
+        </RelativeLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/f2v" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/aj7" android:layout_marginTop="10.0dip" android:layout_marginRight="@dimen/aj7" android:layout_marginBottom="2.0dip">
+            <com.tencent.image.URLImageView android:id="@id/dcf" android:layout_width="116.0dip" android:layout_height="82.0dip" android:scaleType="centerCrop" android:layout_weight="1.0" />
+            <com.tencent.image.URLImageView android:id="@id/dcg" android:layout_width="116.0dip" android:layout_height="82.0dip" android:layout_marginLeft="2.0dip" android:scaleType="centerCrop" android:layout_weight="1.0" />
+            <com.tencent.image.URLImageView android:id="@id/dch" android:layout_width="116.0dip" android:layout_height="82.0dip" android:layout_marginLeft="2.0dip" android:scaleType="centerCrop" android:layout_weight="1.0" />
+        </LinearLayout>
+        <com.tencent.mobileqq.troop.widget.EllipsizingTextView android:textSize="14.0dip" android:textColor="@color/skin_gray_group_item" android:id="@id/dlf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/aj7" android:layout_marginTop="3.0dip" android:layout_marginRight="@dimen/aj7" android:maxLines="1" android:singleLine="true" />
+        <TextView android:textSize="14.0dip" android:textColor="#ffbbbbbb" android:id="@id/hw9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/aj7" android:layout_marginTop="3.0dip" android:layout_marginBottom="@dimen/aj7" />
+    </LinearLayout>
+</LinearLayout>

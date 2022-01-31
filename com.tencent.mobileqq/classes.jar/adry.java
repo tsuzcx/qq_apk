@@ -1,64 +1,42 @@
-import android.os.AsyncTask;
-import com.tencent.device.msg.data.DeviceComnFileMsgProcessor;
-import com.tencent.device.msg.data.DeviceMsgHandle;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.RouterHandler;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import cooperation.troop.TroopFileProxyActivity;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder;
+import com.tencent.qphone.base.util.QLog;
 
-class adry
-  extends AsyncTask
+public class adry
+  extends adrz
 {
-  adry(adrx paramadrx) {}
-  
-  protected Void a(Void... paramVarArgs)
+  public adry(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder)
   {
-    paramVarArgs = SendBottomBar.a(this.a.a).a();
-    int i = SendBottomBar.a(this.a.a).a();
-    if (i == 5)
-    {
-      TroopFileProxyActivity.a.addAll(FMDataCache.b());
-      return null;
-    }
-    if (paramVarArgs.equals(AppConstants.y))
-    {
-      paramVarArgs = FMDataCache.b();
-      ((DataLineHandler)SendBottomBar.a(this.a.a).a(8)).a(paramVarArgs);
-      return null;
-    }
-    if (i == 6002)
-    {
-      localObject = FMDataCache.b();
-      ((RouterHandler)SendBottomBar.a(this.a.a).a(48)).a((ArrayList)localObject, null, null, Long.parseLong(paramVarArgs));
-      return null;
-    }
-    if (i == 9501)
-    {
-      ((DeviceMsgHandle)SendBottomBar.a(this.a.a).a(49)).a().a(paramVarArgs, FMDataCache.b());
-      return null;
-    }
-    Object localObject = SendBottomBar.a(this.a.a).b();
-    SendBottomBar.a(this.a.a).a().a((String)localObject, paramVarArgs, i);
-    return null;
+    super(paramTribeShortVideoItemBuilder);
   }
   
-  protected void a(Void paramVoid)
+  public void a(String paramString1, String paramString2, int paramInt)
   {
-    super.onPostExecute(paramVoid);
-    this.a.a.d();
-    FMDataCache.b();
-    SendBottomBar.d(this.a.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("TribeShortVideoItemBuilder", 2, "get video download finish,vid=" + paramString1);
+    }
+    if (!paramString1.equals(this.jdField_a_of_type_JavaLangString)) {}
+  }
+  
+  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("TribeShortVideoItemBuilder", 2, "Download video failed,vid=" + paramString1);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder.a(this.jdField_a_of_type_Adsa, this.jdField_a_of_type_Long);
+  }
+  
+  public void b(String paramString1, String paramString2, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("TribeShortVideoItemBuilder", 2, "Download video onPause,vid=" + paramString1);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTribeShortVideoItemBuilder.a(this.jdField_a_of_type_Adsa, this.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adry
  * JD-Core Version:    0.7.0.1
  */

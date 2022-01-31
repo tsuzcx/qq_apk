@@ -12,6 +12,7 @@ public final class stTroopRemarkInfo
   public long TorchbearerFlag;
   public String bytes_job = "";
   public byte cGender;
+  public byte cRichCardNameVer;
   public String sEmail = "";
   public String sMemo = "";
   public String sName = "";
@@ -23,13 +24,13 @@ public final class stTroopRemarkInfo
   
   public stTroopRemarkInfo() {}
   
-  public stTroopRemarkInfo(long paramLong1, String paramString1, String paramString2, String paramString3, byte paramByte, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, long paramLong2, long paramLong3)
+  public stTroopRemarkInfo(long paramLong1, String paramString1, String paramString2, String paramString3, byte paramByte1, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, long paramLong2, long paramLong3, byte paramByte2)
   {
     this.MemberUin = paramLong1;
     this.strNick = paramString1;
     this.strRemark = paramString2;
     this.sName = paramString3;
-    this.cGender = paramByte;
+    this.cGender = paramByte1;
     this.sPhone = paramString4;
     this.sEmail = paramString5;
     this.sMemo = paramString6;
@@ -38,6 +39,7 @@ public final class stTroopRemarkInfo
     this.bytes_job = paramString9;
     this.GlamourLevel = paramLong2;
     this.TorchbearerFlag = paramLong3;
+    this.cRichCardNameVer = paramByte2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -55,6 +57,7 @@ public final class stTroopRemarkInfo
     this.bytes_job = paramJceInputStream.readString(10, false);
     this.GlamourLevel = paramJceInputStream.read(this.GlamourLevel, 11, false);
     this.TorchbearerFlag = paramJceInputStream.read(this.TorchbearerFlag, 12, false);
+    this.cRichCardNameVer = paramJceInputStream.read(this.cRichCardNameVer, 13, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -86,6 +89,7 @@ public final class stTroopRemarkInfo
     }
     paramJceOutputStream.write(this.GlamourLevel, 11);
     paramJceOutputStream.write(this.TorchbearerFlag, 12);
+    paramJceOutputStream.write(this.cRichCardNameVer, 13);
   }
 }
 

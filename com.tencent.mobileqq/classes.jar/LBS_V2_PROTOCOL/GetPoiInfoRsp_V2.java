@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class GetPoiInfoRsp_V2
   extends JceStruct
 {
-  static ArrayList cache_vPoiList = new ArrayList();
+  static ArrayList<PoiInfo_V2> cache_vPoiList = new ArrayList();
   public int iHasMore = 1;
   public int iTotalNum;
   public String request_id = "";
   public String strAttachInfo = "";
-  public ArrayList vPoiList;
+  public ArrayList<PoiInfo_V2> vPoiList;
   
   static
   {
@@ -23,7 +23,7 @@ public final class GetPoiInfoRsp_V2
   
   public GetPoiInfoRsp_V2() {}
   
-  public GetPoiInfoRsp_V2(ArrayList paramArrayList, int paramInt1, String paramString1, int paramInt2, String paramString2)
+  public GetPoiInfoRsp_V2(ArrayList<PoiInfo_V2> paramArrayList, int paramInt1, String paramString1, int paramInt2, String paramString2)
   {
     this.vPoiList = paramArrayList;
     this.iTotalNum = paramInt1;

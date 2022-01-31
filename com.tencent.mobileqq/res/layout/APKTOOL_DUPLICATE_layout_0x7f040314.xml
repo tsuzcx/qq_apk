@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1197" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1198" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0689" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d068a" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0685" />
-</LinearLayout>

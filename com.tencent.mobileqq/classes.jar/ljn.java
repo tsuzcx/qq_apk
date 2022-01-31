@@ -1,19 +1,38 @@
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
+import com.tencent.av.redpacket.AVRedPacketManager.LocalEmojiInfo;
+import com.tencent.av.redpacket.AVRedPacketManager.LocalFrameSyncInfo;
+import java.util.List;
 
-public class ljn
-  implements Runnable
+public abstract interface ljn
 {
-  public ljn(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
+  public abstract void a();
   
-  public void run()
-  {
-    ReadInJoyCameraCaptureActivity.b(this.a, ReadInJoyCameraCaptureActivity.c(this.a));
-    ReadInJoyCameraCaptureActivity.a(this.a);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, List<AVRedPacketManager.LocalEmojiInfo> paramList);
+  
+  public abstract void a(int paramInt, ljo paramljo);
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public abstract void a(AVRedPacketManager.LocalFrameSyncInfo paramLocalFrameSyncInfo);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void b(AVRedPacketManager.LocalFrameSyncInfo paramLocalFrameSyncInfo);
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ljn
  * JD-Core Version:    0.7.0.1
  */

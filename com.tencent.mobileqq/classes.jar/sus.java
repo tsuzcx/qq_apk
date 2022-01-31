@@ -1,19 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public final class sus
-  implements DialogInterface.OnClickListener
+public class sus
+  extends QQUIEventReceiver<suo, spl>
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public sus(@NonNull suo paramsuo)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
+    super(paramsuo);
+  }
+  
+  public void a(@NonNull suo paramsuo, @NonNull spl paramspl)
+  {
+    paramsuo.a.b(paramspl);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return spl.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sus
  * JD-Core Version:    0.7.0.1
  */

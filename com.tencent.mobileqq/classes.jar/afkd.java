@@ -1,106 +1,168 @@
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
-class afkd
-  implements ActionSheet.OnButtonClickListener
+public class afkd
+  extends BaseAdapter
 {
-  afkd(afkc paramafkc, ActionSheet paramActionSheet) {}
+  private afkf jdField_a_of_type_Afkf;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private List<Object> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
   
-  public void OnClick(View paramView, int paramInt)
+  public afkd(Context paramContext)
   {
-    switch (paramInt)
-    {
-    default: 
-      if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+  }
+  
+  public void a(afkf paramafkf)
+  {
+    this.jdField_a_of_type_Afkf = paramafkf;
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+  }
+  
+  public void a(List<Object> paramList)
+  {
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilList = paramList;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    boolean bool2 = false;
+    Object localObject = getItem(paramInt);
+    if ((localObject instanceof String)) {
+      if ((paramView != null) && ((paramView.getTag() instanceof TextView)))
+      {
+        paramViewGroup = (TextView)paramView.getTag();
+        paramViewGroup.setText((String)localObject);
+        localView = paramView;
       }
-      return;
     }
-    this.jdField_a_of_type_Afkc.a.f = true;
-    Object localObject1 = this.jdField_a_of_type_Afkc.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a;
-    paramView = (View)localObject1;
-    if (StringUtil.a((String)localObject1))
+    do
     {
-      paramView = (View)localObject1;
-      if (NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_Afkc.a) != null) {
-        paramView = NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_Afkc.a).uin;
-      }
-    }
-    if (StringUtil.a(paramView)) {
-      paramView = "0";
-    }
+      return localView;
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131494902, paramViewGroup, false);
+      paramViewGroup = (TextView)paramView.findViewById(2131311233);
+      paramView.setTag(paramViewGroup);
+      break;
+      localView = paramView;
+    } while (!(localObject instanceof TencentDocItem));
+    localView = paramView;
     for (;;)
     {
-      long l;
-      if (this.jdField_a_of_type_Afkc.a.a.jdField_a_of_type_Long == 0L) {
-        if (NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_Afkc.a) != null)
-        {
-          l = NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_Afkc.a).tinyId;
-          label160:
-          if ((!"0".equals(paramView)) || (l != 0L))
-          {
-            Object localObject2 = null;
-            paramInt = 10028;
-            localObject1 = null;
-            if (this.jdField_a_of_type_Afkc.a.a.app != null) {
-              localObject1 = this.jdField_a_of_type_Afkc.a.a.app.a(false);
-            }
-            if (((localObject1 == null) || (!((HotChatManager)localObject1).b(this.jdField_a_of_type_Afkc.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.d))) && (this.jdField_a_of_type_Afkc.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h != 33) && (this.jdField_a_of_type_Afkc.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h != 4))
-            {
-              localObject1 = localObject2;
-              if (this.jdField_a_of_type_Afkc.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h != 31) {}
-            }
-            else
-            {
-              paramInt = 10000;
-              localObject1 = this.jdField_a_of_type_Afkc.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.d;
-            }
-            ProfileCardUtil.a(this.jdField_a_of_type_Afkc.a.a, this.jdField_a_of_type_Afkc.a.a.jdField_a_of_type_Long, paramView, (String)localObject1, paramInt);
-          }
-          ReportController.b(this.jdField_a_of_type_Afkc.a.a.app, "CliOper", "", "", "0X8004828", "0X8004828", 0, 0, "", "", "", "");
-          if ((NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_Afkc.a) != null) && (NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_Afkc.a).iIsGodFlag == 1))
-          {
-            if (NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_Afkc.a).gender != 0) {
-              break label604;
-            }
-            ReportController.b(this.jdField_a_of_type_Afkc.a.a.app, "CliOper", "", "", "0X800528E", "0X800528E", 0, 0, "", "", "", "");
-          }
-        }
-      }
-      for (;;)
+      try
       {
-        ReportController.b(this.jdField_a_of_type_Afkc.a.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_report", 0, 0, "", "", "", "");
-        if (!ProfileActivity.c(this.jdField_a_of_type_Afkc.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h)) {
-          break;
+        TencentDocItem localTencentDocItem = (TencentDocItem)localObject;
+        if (paramView != null)
+        {
+          localView = paramView;
+          if ((paramView.getTag() instanceof afke))
+          {
+            localView = paramView;
+            paramViewGroup = (afke)paramView.getTag();
+          }
         }
-        ReportController.b(this.jdField_a_of_type_Afkc.a.a.app, "CliOper", "", "", "0X800523E", "0X800523E", 0, 0, "", "", "", "");
-        break;
-        l = 0L;
-        break label160;
-        l = this.jdField_a_of_type_Afkc.a.a.jdField_a_of_type_Long;
-        break label160;
-        label604:
-        if (NearbyProfileDisplayTribePanel.a(this.jdField_a_of_type_Afkc.a).gender == 1) {
-          ReportController.b(this.jdField_a_of_type_Afkc.a.a.app, "CliOper", "", "", "0X800528F", "0X800528F", 0, 0, "", "", "", "");
+        try
+        {
+          paramView.setVisibility(0);
+          paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityHistoryTendocTencentDocItem = localTencentDocItem;
+          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localTencentDocItem.mTitle);
+          afpl.a(paramViewGroup.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, localTencentDocItem.mIcon);
+          if (this.jdField_a_of_type_Boolean)
+          {
+            paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
+            boolean bool1 = bool2;
+            if (this.jdField_a_of_type_Afkf != null)
+            {
+              bool1 = bool2;
+              if (this.jdField_a_of_type_Afkf.a(localTencentDocItem)) {
+                bool1 = true;
+              }
+            }
+            paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool1);
+            paramViewGroup.b.setText(localTencentDocItem.mDescription);
+            return paramView;
+            localView = paramView;
+            localObject = new afke();
+            localView = paramView;
+            paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131494879, paramViewGroup, false);
+            localView = paramView;
+            ((afke)localObject).jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131300623));
+            localView = paramView;
+            ((afke)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView = ((AsyncImageView)paramView.findViewById(2131300609));
+            localView = paramView;
+            ((afke)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131300621));
+            localView = paramView;
+            ((afke)localObject).b = ((TextView)paramView.findViewById(2131300607));
+            localView = paramView;
+            ((afke)localObject).jdField_a_of_type_AndroidWidgetTextView.setMaxLines(2);
+            localView = paramView;
+            ((afke)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView.setAsyncClipSize(aciy.a(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aciy.a(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+            localView = paramView;
+            paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+            localView = paramView;
+            paramView.setTag(localObject);
+            paramViewGroup = (ViewGroup)localObject;
+          }
+          else
+          {
+            paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(8);
+            continue;
+            QLog.e("ChatHistoryBaseTenDocAdapter", 4, "getView failed", paramViewGroup);
+          }
         }
+        catch (Exception paramViewGroup) {}
+      }
+      catch (Exception paramViewGroup)
+      {
+        paramView = localView;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afkd
  * JD-Core Version:    0.7.0.1
  */

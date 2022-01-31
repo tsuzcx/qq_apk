@@ -1,36 +1,18 @@
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.jumplightalk.AIOJumpLightalkConfig;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import mqq.os.MqqHandler;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 
-public class vys
-  implements Runnable
+class vys
+  implements vye
 {
-  public vys(FriendChatPie paramFriendChatPie) {}
+  vys(vyo paramvyo) {}
   
-  public void run()
+  public void a(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    FriendChatPie.a(this.a, AIOJumpLightalkConfig.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
-    if ((FriendChatPie.a(this.a) != null) && (!Utils.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)))
-    {
-      FriendChatPie.a(this.a, SharedPreUtils.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).getBoolean("aio_jump_lightalk_red_dot", false));
-      Message localMessage = FriendChatPie.e(this.a).obtainMessage(42);
-      Bundle localBundle = new Bundle();
-      localBundle.putBoolean("showRedDot", FriendChatPie.a(this.a));
-      localMessage.setData(localBundle);
-      FriendChatPie.f(this.a).sendMessage(localMessage);
-    }
+    this.a.c(paramStFeed);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vys
  * JD-Core Version:    0.7.0.1
  */

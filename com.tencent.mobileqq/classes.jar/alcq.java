@@ -1,95 +1,39 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.musicpendant.MusicPendantManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.ArcImageView;
-import com.tencent.mobileqq.widget.MusicPendantView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.widget.HorizontalListView;
+import java.util.List;
 
 class alcq
-  implements Runnable
+  implements AdapterView.OnItemClickListener
 {
-  alcq(alcp paramalcp) {}
+  alcq(alcm paramalcm) {}
   
-  public void run()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    Object localObject;
-    try
-    {
-      QQAppInterface localQQAppInterface = MusicPendantManager.a().a();
-      if (MusicPendantView.a(this.a.a) != null) {
-        MusicPendantView.a(this.a.a).removeMessages(1001);
-      }
-      localObject = MusicPendantManager.a();
-      if ((localObject != null) && (((MusicPendantManager)localObject).a())) {
-        ReportController.b(localQQAppInterface, "CliOper", "", "", "0X8006A78", "0X8006A78", 0, 0, "", "", "", "");
-      }
-      while ((localObject != null) && (((MusicPendantManager)localObject).a()) && ((((MusicPendantManager)localObject).a() == null) || (1 > ((MusicPendantManager)localObject).a().length)))
-      {
-        this.a.a.b();
-        return;
-        ReportController.b(localQQAppInterface, "CliOper", "", "", "0X8006A8C", "0X8006A8C", 0, 0, "", "", "", "");
-      }
-      if (localObject == null) {
-        break label159;
-      }
+    paramAdapterView = alcm.a(this.a).getSelectedView();
+    if (paramAdapterView != null) {
+      paramAdapterView.setSelected(false);
     }
-    catch (Exception localException)
-    {
-      QLog.e("MusicPendantView", 1, "mPlayClickListener.onClick() exception", localException);
-      return;
+    alcm.a(this.a).setSelection(paramInt);
+    paramAdapterView = alcm.a(this.a).getSelectedView();
+    if (paramAdapterView != null) {
+      paramAdapterView.setSelected(true);
     }
-    ((MusicPendantManager)localObject).c();
-    label159:
-    if (MusicPendantView.a(this.a.a) != null) {
-      MusicPendantView.a(this.a.a).sendEmptyMessage(1005);
-    }
-    if ((MusicPendantView.a(this.a.a) != null) && (MusicPendantView.a(this.a.a).a()))
+    alcm.a(this.a, paramInt);
+    alcm.a(this.a, true);
+    if ((alcm.a(this.a) != null) && (alcm.a(this.a).size() > 0) && (alcm.a(this.a).size() > alcm.a(this.a)))
     {
-      MusicPendantView.a(this.a.a).a(false);
-      MusicPendantView.a(true);
-      FriendsManager localFriendsManager;
-      label264:
-      MusicPendantManager localMusicPendantManager;
-      if (localException != null)
-      {
-        localFriendsManager = (FriendsManager)localException.getManager(50);
-        if (localFriendsManager == null) {
-          break label325;
-        }
-        localObject = localFriendsManager.a(((MusicPendantManager)localObject).b());
-        if ((localObject == null) || (!((Card)localObject).showRedPointMusicPendant)) {
-          return;
-        }
-        localMusicPendantManager = MusicPendantManager.a();
-        if (!((Card)localObject).showRedPointMusicPendant) {
-          break label330;
-        }
-      }
-      label325:
-      label330:
-      for (int i = 0;; i = 1)
-      {
-        localMusicPendantManager.a(4059, i);
-        ((Card)localObject).showRedPointMusicPendant = false;
-        if (localFriendsManager.a((Card)localObject)) {
-          return;
-        }
-        QLog.e("MusicPendantView", 1, "onClick(): save card in db failed ");
-        return;
-        localFriendsManager = null;
-        break;
-        localObject = null;
-        break label264;
+      paramAdapterView = (aldn)alcm.a(this.a).get(alcm.a(this.a));
+      if (paramAdapterView != null) {
+        alep.a(null, paramAdapterView.a, "AIOInputPannelTabClick", 0, 0, 0L, 0L, 0L, "", "");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alcq
  * JD-Core Version:    0.7.0.1
  */

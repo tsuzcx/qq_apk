@@ -1,22 +1,77 @@
-import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule.Ox978RespCallBack;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnTopicRecommendHeaderFollowClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class lwc
-  implements UserOperationModule.Ox978RespCallBack
+  extends kur
 {
-  public lwc(OnTopicRecommendHeaderFollowClickListener paramOnTopicRecommendHeaderFollowClickListener) {}
+  public lwc(MultiVideoMembersListviewAvtivity paramMultiVideoMembersListviewAvtivity) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  protected void a(long paramLong1, long paramLong2, long paramLong3, int paramInt)
   {
-    if ((paramBoolean) && (paramInt == 1)) {
-      ThreadManager.post(new lwd(this), 5, null, true);
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Lwd != null)) {
+      this.a.jdField_a_of_type_Lwd.notifyDataSetChanged();
     }
+  }
+  
+  protected void a(long paramLong1, long paramLong2, long paramLong3, int paramInt, boolean paramBoolean)
+  {
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Lwd != null)) {
+      this.a.jdField_a_of_type_Lwd.notifyDataSetChanged();
+    }
+  }
+  
+  protected void a(long paramLong1, long paramLong2, boolean paramBoolean)
+  {
+    super.a(paramLong1, paramLong2, paramBoolean);
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      if (this.a.jdField_a_of_type_Lwd != null) {
+        this.a.jdField_a_of_type_Lwd.notifyDataSetChanged();
+      }
+      this.a.c();
+    }
+  }
+  
+  protected void a(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    super.a(paramLong1, paramLong2, paramBoolean1, paramBoolean2);
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      if (this.a.jdField_a_of_type_Lwd != null) {
+        this.a.jdField_a_of_type_Lwd.notifyDataSetChanged();
+      }
+      this.a.c();
+    }
+  }
+  
+  protected void a(long paramLong, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Lwd != null)) {
+      this.a.jdField_a_of_type_Lwd.notifyDataSetChanged();
+    }
+  }
+  
+  protected void c(long paramLong1, long paramLong2)
+  {
+    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.jdField_a_of_type_Lwd != null)) {
+      this.a.jdField_a_of_type_Lwd.notifyDataSetChanged();
+    }
+  }
+  
+  protected void d(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiVideoMembersListviewAvtivity", 2, "onCloseMemberListActivity --> RelationId = " + paramLong + "mRelationUin = " + this.a.jdField_a_of_type_Long);
+    }
+    if (paramLong == this.a.jdField_a_of_type_Long) {
+      MultiVideoMembersListviewAvtivity.a(this.a);
+    }
+    super.d(paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lwc
  * JD-Core Version:    0.7.0.1
  */

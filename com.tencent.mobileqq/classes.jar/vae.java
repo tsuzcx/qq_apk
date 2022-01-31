@@ -1,26 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.ArkFlashChatItemBubbleBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.flashchat.FlashChatManager;
+import android.animation.ValueAnimator;
+import android.annotation.TargetApi;
+import android.view.animation.AccelerateDecelerateInterpolator;
 
+@TargetApi(11)
 public class vae
-  implements View.OnClickListener
 {
-  public vae(ArkFlashChatItemBubbleBuilder paramArkFlashChatItemBubbleBuilder) {}
-  
-  public void onClick(View paramView)
+  public static ValueAnimator a(long paramLong, float paramFloat1, float paramFloat2, vah paramvah)
   {
-    MessageRecord localMessageRecord = (MessageRecord)paramView.getTag();
-    if (localMessageRecord != null) {
-      ((FlashChatManager)this.a.a.getManager(216)).a(paramView.getContext(), localMessageRecord);
-    }
+    float f = (paramFloat2 - paramFloat1) / 5.0F;
+    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { paramFloat1, paramFloat2, paramFloat2 - 3.0F * f, paramFloat2, paramFloat2 - f, paramFloat2 });
+    localValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+    localValueAnimator.addUpdateListener(new vaf(paramvah));
+    localValueAnimator.addListener(new vag(paramvah, localValueAnimator));
+    localValueAnimator.setDuration(paramLong);
+    return localValueAnimator;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vae
  * JD-Core Version:    0.7.0.1
  */

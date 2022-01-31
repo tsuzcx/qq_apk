@@ -1,21 +1,25 @@
-import com.tencent.mobileqq.lyric.widget.LyricViewController;
-import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aelj
-  implements Runnable
+public abstract class aelj
+  implements aeln
 {
-  public aelj(LyricViewController paramLyricViewController) {}
+  protected QQAppInterface a;
   
-  public void run()
+  public aelj(QQAppInterface paramQQAppInterface)
   {
-    if (this.a.a != null) {
-      this.a.a.b();
-    }
+    this.a = paramQQAppInterface;
+  }
+  
+  public void a() {}
+  
+  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    return aemi.a(paramQQAppInterface).a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aelj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,24 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.automator.step.GetGeneralSettings;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class zxg
-  extends FriendListObserver
+  implements View.OnTouchListener
 {
-  private zxg(GetGeneralSettings paramGetGeneralSettings) {}
+  public zxg(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramBoolean1) && (paramBoolean2))
-    {
-      GetGeneralSettings.a(this.a).a = 3;
-      this.a.a(7);
-      return;
-    }
-    this.a.a(6);
+    ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(this.a.leftView.getWindowToken(), 2);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zxg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,30 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.EditVideoPoiSearch;
+import android.os.Handler;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.WeakReferenceRunnable;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class ola
-  implements TextWatcher
+  implements TVK_SDKMgr.InstallListener
 {
-  public ola(EditVideoPoiSearch paramEditVideoPoiSearch) {}
+  public ola(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onInstallProgress(float paramFloat)
   {
-    EditVideoPartManager localEditVideoPartManager = this.a.a;
-    if (this.a.a.a()) {}
-    for (paramEditable = "2";; paramEditable = "1")
-    {
-      localEditVideoPartManager.a("search_poi", 0, 0, new String[] { paramEditable });
-      VideoEditReport.a("0X80076D1");
-      VideoEditReport.b("0X80075E6");
-      EditVideoPoiSearch.a(this.a);
-      return;
-    }
+    yny.a("ReadInjoyIMAXAdFragment", "installSDK onInstallProgress arg0=");
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void onInstalledFailed(int paramInt)
+  {
+    yny.a("ReadInjoyIMAXAdFragment", "installSDK onInstalledFailed arg0=");
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void onInstalledSuccessed()
+  {
+    yny.a("ReadInjoyIMAXAdFragment", "installSDK onInstalledSuccessed");
+    if ((ReadInjoyIMAXAdFragment.a()) && (ReadInjoyIMAXAdFragment.b(this.a) != null)) {
+      ReadInjoyIMAXAdFragment.b(this.a).post(new ReadInjoyIMAXAdFragment.WeakReferenceRunnable(this.a, 4));
+    }
+  }
 }
 
 

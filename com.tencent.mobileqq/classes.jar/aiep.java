@@ -1,21 +1,47 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.INet_ShortVideoResource;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aiep
-  implements Runnable
+class aiep
+  extends Handler
 {
-  public aiep(QQAppInterface paramQQAppInterface, List paramList, ShortVideoResourceManager.INet_ShortVideoResource paramINet_ShortVideoResource) {}
-  
-  public void run()
+  aiep(aieo paramaieo, Looper paramLooper)
   {
-    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager$INet_ShortVideoResource, "new_qq_android_native_object_tracking_");
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == aieo.a(this.a))
+    {
+      QLog.d(aieo.a(this.a), 4, "Receive Message!");
+      this.a.a();
+    }
+    for (;;)
+    {
+      try
+      {
+        awqx.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 1, "", "", "", "");
+        return;
+      }
+      catch (Exception paramMessage) {}
+      if (paramMessage.what == aieo.b(this.a))
+      {
+        QLog.d(aieo.a(this.a), 4, "Receive Message!");
+        try
+        {
+          awqx.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 0, "", "", "", "");
+          return;
+        }
+        catch (Exception paramMessage) {}
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiep
  * JD-Core Version:    0.7.0.1
  */

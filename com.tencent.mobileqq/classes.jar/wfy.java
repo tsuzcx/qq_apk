@@ -1,35 +1,29 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.widget.navbar.NavBarAIO;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
-public class wfy
-  implements Animation.AnimationListener
+class wfy
+  implements bbsh
 {
-  public wfy(TroopChatPie paramTroopChatPie) {}
+  wfy(wfw paramwfw) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(BaseResp paramBaseResp)
   {
-    this.a.d.setBackgroundResource(2130841265);
-    this.a.a.setBackgroundResource(2130841271);
-    this.a.q.setVisibility(8);
-    this.a.r.setVisibility(8);
-    this.a.o.setVisibility(0);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.q.setVisibility(0);
-    this.a.r.setVisibility(0);
+    if ((wfw.c(this.a) == null) || (!wfw.c(this.a).equals(paramBaseResp.transaction))) {
+      return;
+    }
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      bbmy.a(wfw.a(this.a), 1, "分享失败", 0).a();
+      return;
+    }
+    bbmy.a(wfw.a(this.a), 2, "分享成功", 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wfy
  * JD-Core Version:    0.7.0.1
  */

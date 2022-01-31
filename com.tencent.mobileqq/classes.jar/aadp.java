@@ -1,31 +1,19 @@
-import com.tencent.mobileqq.app.utils.QQConfMeetingLogReportHelper;
-import com.tencent.mobileqq.testassister.ShareAppLogHelper;
-import com.tencent.mobileqq.testassister.ShareAppLogHelper.OnGetLocalLogListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aadp
-  implements ShareAppLogHelper.OnGetLocalLogListener
+class aadp
+  implements DialogInterface.OnClickListener
 {
-  public aadp(QQConfMeetingLogReportHelper paramQQConfMeetingLogReportHelper) {}
+  aadp(aadn paramaadn) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.e("QQConfMeetingLogReportHelper", 1, "doReportLocalLog OnGetLocalLogListener onError, code=" + paramInt);
-  }
-  
-  public void a(String paramString)
-  {
-    QQConfMeetingLogReportHelper.a(this.a, paramString);
-  }
-  
-  public void b(int paramInt)
-  {
-    this.a.a.a(false);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aadp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,56 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoCommentRsp;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class vzh
-  implements ActionSheet.OnButtonClickListener
+class vzh
+  implements wxx<CertifiedAccountWrite.StDoCommentRsp>
 {
-  public vzh(GameRoomChatPie paramGameRoomChatPie, boolean paramBoolean, ActionSheet paramActionSheet) {}
+  vzh(vzf paramvzf, CertifiedAccountMeta.StComment paramStComment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoCommentRsp paramStDoCommentRsp)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-        return;
-      }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.bj();
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.bh();
-        continue;
-        if (this.jdField_a_of_type_Boolean)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.bh();
-        }
-        else
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.bg();
-          continue;
-          if (this.jdField_a_of_type_Boolean) {
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.bg();
-          }
-        }
-      }
-    }
+    sgi.a().dispatch(this.jdField_a_of_type_Vzf.a(new Object[] { Integer.valueOf(3), Long.valueOf(paramLong), paramString, paramStDoCommentRsp, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment.id.get(), Integer.valueOf(this.jdField_a_of_type_Vzf.hashCode()) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vzh
  * JD-Core Version:    0.7.0.1
  */

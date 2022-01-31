@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a224b" android:visibility="gone" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04075b" />
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a224c" android:visibility="gone" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040212" />
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a224d" android:visibility="gone" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040759" />
-</LinearLayout>

@@ -1,22 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.observer.VipGifObserver;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class wve
-  extends VipGifObserver
+class wve
+  implements View.OnTouchListener
 {
-  public wve(MainAssistObserver paramMainAssistObserver) {}
+  wve(wvc paramwvc) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramInt == 0) && (paramBoolean == true)) {
-      MainAssistObserver.a(this.a);
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wve
  * JD-Core Version:    0.7.0.1
  */

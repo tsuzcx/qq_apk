@@ -2,14 +2,14 @@ package com.tencent.mfsdk.reporter;
 
 import android.os.HandlerThread;
 import com.tencent.mfsdk.MagnifierSDK;
-import com.tencent.mfsdk.collector.DropResultObject;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
 import mqq.os.MqqHandler;
-import rim;
+import zqo;
+import zqt;
 
 public class DFObserver
   implements Observer
@@ -18,7 +18,7 @@ public class DFObserver
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    paramObservable = ((DFObservable)paramObservable).a;
+    paramObservable = ((zqt)paramObservable).a;
     try
     {
       paramObject = new long[6];
@@ -46,9 +46,9 @@ public class DFObserver
         j += 1;
         i += 1;
       }
-      paramObject = new DropResultObject(Long.parseLong((String)paramObservable.get("dropCount")), Long.parseLong((String)paramObservable.get("totalMs")), paramObject);
+      paramObject = new zqo(Long.parseLong((String)paramObservable.get("dropCount")), Long.parseLong((String)paramObservable.get("totalMs")), paramObject);
       paramObject.a = Integer.parseInt(MagnifierSDK.a());
-      paramObservable = new rim(MagnifierSDK.a, (String)paramObservable.get("scene"), paramObject);
+      paramObservable = new DFObserver.InsertRunnable(MagnifierSDK.a, (String)paramObservable.get("scene"), paramObject);
       a.post(paramObservable);
       return;
     }

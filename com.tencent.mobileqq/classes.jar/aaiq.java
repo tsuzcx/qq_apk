@@ -1,56 +1,20 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.mobileqq.earlydownload.EarlyDownloadManager.EarlyDownLoadListener;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 
 public class aaiq
-  implements EarlyDownloadManager.EarlyDownLoadListener
+  implements DialogInterface.OnClickListener
 {
-  public aaiq(ArConfigService paramArConfigService) {}
+  public aaiq(ChatHistoryFileActivity paramChatHistoryFileActivity, aais paramaais) {}
   
-  public void a(XmlData paramXmlData) {}
-  
-  public void a(XmlData paramXmlData, long paramLong1, long paramLong2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onDownloadProgress data=%s curOffset=%s totalLen=%s", new Object[] { paramXmlData, Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
-    }
-    if ("qq.android.ar.native.so_v7.6.5.2".equals(paramXmlData.strResName)) {
-      ArConfigService.a(this.a, (int)(100L * paramLong1 / paramLong2));
-    }
-    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a)) / 3;
-    if (!ArConfigService.d(this.a)) {
-      ArConfigService.a(this.a).post(new aair(this, i));
-    }
+    this.jdField_a_of_type_Aais.a(true);
   }
-  
-  public void a(XmlData paramXmlData, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onDownloadFinish data=%s result=%s", new Object[] { paramXmlData, Boolean.valueOf(paramBoolean1) }));
-    }
-    if (paramBoolean1)
-    {
-      if ("qq.android.ar.native.so_v7.6.5.2".equals(paramXmlData.strResName)) {
-        ArConfigService.b(this.a, true);
-      }
-      if ((ArConfigService.e(this.a)) && (ArConfigService.f(this.a)) && (ArConfigService.g(this.a))) {
-        ArConfigService.a(this.a).post(new aais(this));
-      }
-    }
-    while (ArConfigService.d(this.a)) {
-      return;
-    }
-    ArConfigService.a(this.a).post(new aait(this));
-    ArConfigService.a(this.a, true);
-  }
-  
-  public void b(XmlData paramXmlData) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaiq
  * JD-Core Version:    0.7.0.1
  */

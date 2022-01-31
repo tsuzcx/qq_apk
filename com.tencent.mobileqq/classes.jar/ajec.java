@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
-public class ajec
-  implements Runnable
+class ajec
+  implements Comparator<Map.Entry<String, Long>>
 {
-  public ajec(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  ajec(ajeb paramajeb) {}
   
-  public void run()
+  public int a(Map.Entry<String, Long> paramEntry1, Map.Entry<String, Long> paramEntry2)
   {
-    TroopBarReplyActivity.a(this.a, 5);
+    return ((Long)paramEntry2.getValue()).compareTo((Long)paramEntry1.getValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajec
  * JD-Core Version:    0.7.0.1
  */

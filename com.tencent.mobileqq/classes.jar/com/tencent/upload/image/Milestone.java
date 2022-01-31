@@ -2,11 +2,11 @@ package com.tencent.upload.image;
 
 public class Milestone
 {
-  private int a = 0;
+  private int mMilestone = 0;
   
   public void disable(int paramInt)
   {
-    this.a &= (paramInt ^ 0xFFFFFFFF);
+    this.mMilestone &= (paramInt ^ 0xFFFFFFFF);
   }
   
   public void disableAll(int... paramVarArgs)
@@ -22,7 +22,7 @@ public class Milestone
   
   public void enable(int paramInt)
   {
-    this.a |= paramInt;
+    this.mMilestone |= paramInt;
   }
   
   public void enableAll(int... paramVarArgs)
@@ -55,22 +55,22 @@ public class Milestone
   
   public int getMilestoneValue()
   {
-    return this.a;
+    return this.mMilestone;
   }
   
   public boolean isEnabled(int paramInt)
   {
-    return (this.a & paramInt) == paramInt;
+    return (this.mMilestone & paramInt) == paramInt;
   }
   
   public void reset()
   {
-    this.a = 0;
+    this.mMilestone = 0;
   }
   
   public void toggle(int paramInt)
   {
-    this.a ^= paramInt;
+    this.mMilestone ^= paramInt;
   }
 }
 

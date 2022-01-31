@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.armap.ShopScanActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class abli
-  implements Runnable
 {
-  public abli(ShopScanActivity paramShopScanActivity, String paramString) {}
-  
-  public void run()
-  {
-    ShopScanActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity, this.jdField_a_of_type_JavaLangString);
-  }
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abli
  * JD-Core Version:    0.7.0.1
  */

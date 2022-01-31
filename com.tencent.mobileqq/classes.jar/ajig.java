@@ -1,34 +1,37 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.troop.data.TroopAioTips;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ajig
-  extends GestureDetector.SimpleOnGestureListener
+  extends ajjx
 {
-  public ajig(TroopAioTips paramTroopAioTips) {}
+  private String a;
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  protected void a(String paramString)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ScrollTest", 4, "velocityY = " + paramFloat2);
-    }
-    if (paramFloat2 < -10.0F) {}
-    for (;;)
-    {
-      return false;
-      if (paramFloat2 <= 10.0F) {}
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  protected void b(String paramString)
   {
-    return false;
+    super.b(paramString);
+    QQAppInterface.a().d();
+    ajib.a().a(paramString);
+    aluq.a(true);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    CoreService.startCoreService(ajjv.a().a);
+    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.c();
+  }
+  
+  protected void d(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(4, this.jdField_a_of_type_JavaLangString);
+    aluq.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajig
  * JD-Core Version:    0.7.0.1
  */

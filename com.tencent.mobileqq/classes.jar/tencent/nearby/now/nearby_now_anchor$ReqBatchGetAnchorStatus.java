@@ -7,10 +7,10 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class nearby_now_anchor$ReqBatchGetAnchorStatus
-  extends MessageMicro
+  extends MessageMicro<ReqBatchGetAnchorStatus>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8 }, new String[] { "uint64_uin" }, new Object[] { Long.valueOf(0L) }, ReqBatchGetAnchorStatus.class);
-  public final PBRepeatField uint64_uin = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> uint64_uin = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
 }
 
 

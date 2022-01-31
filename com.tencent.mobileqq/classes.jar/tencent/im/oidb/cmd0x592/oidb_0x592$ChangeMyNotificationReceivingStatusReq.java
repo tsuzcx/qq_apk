@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class oidb_0x592$ChangeMyNotificationReceivingStatusReq
-  extends MessageMicro
+  extends MessageMicro<ChangeMyNotificationReceivingStatusReq>
 {
   public static final int ADD_ME = 1;
   public static final int DELETE_ME = 2;
@@ -24,7 +24,7 @@ public final class oidb_0x592$ChangeMyNotificationReceivingStatusReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x592.oidb_0x592.ChangeMyNotificationReceivingStatusReq
  * JD-Core Version:    0.7.0.1
  */

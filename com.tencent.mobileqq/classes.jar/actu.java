@@ -1,57 +1,107 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
-
 public class actu
-  implements Animation.AnimationListener
+  implements actq
 {
-  public actu(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView) {}
+  public static final actr<actu> a;
+  private float jdField_a_of_type_Float;
+  private long jdField_a_of_type_Long;
+  private float b;
+  private float c;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  static
   {
-    Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+    jdField_a_of_type_Actr = new actv();
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public actu() {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public actu(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
   {
-    if (Face2FaceFriendBubbleView.a(this.a) == 1)
-    {
-      Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
-      Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+    a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+  }
+  
+  public actu(acto paramacto)
+  {
+    paramacto.a();
+    this.jdField_a_of_type_Float = paramacto.a();
+    this.b = paramacto.a();
+    this.c = paramacto.a();
+    this.jdField_a_of_type_Long = paramacto.a();
+  }
+  
+  public actu(actu paramactu)
+  {
+    if (paramactu != null) {
+      a(paramactu.a(), paramactu.b(), paramactu.c(), 0L);
     }
-    for (;;)
-    {
-      Face2FaceFriendBubbleView.a(this.a).setVisibility(4);
-      return;
-      if (Face2FaceFriendBubbleView.a(this.a) == 2)
-      {
-        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130839074);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
-      }
-      else if (Face2FaceFriendBubbleView.a(this.a) == 3)
-      {
-        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130839075);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
-      }
-      else if (Face2FaceFriendBubbleView.a(this.a) == 4)
-      {
-        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130839076);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
-      }
-    }
+  }
+  
+  public float a()
+  {
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  {
+    this.c = paramFloat3;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(acto paramacto, int paramInt)
+  {
+    paramacto.a(1);
+    paramacto.a(this.jdField_a_of_type_Float);
+    paramacto.a(this.b);
+    paramacto.a(this.c);
+    paramacto.a(this.jdField_a_of_type_Long);
+  }
+  
+  public float b()
+  {
+    return this.b;
+  }
+  
+  public void b(float paramFloat)
+  {
+    this.b = paramFloat;
+  }
+  
+  public float c()
+  {
+    return this.c;
+  }
+  
+  public void c(float paramFloat)
+  {
+    this.c = paramFloat;
+  }
+  
+  public void d(float paramFloat)
+  {
+    this.jdField_a_of_type_Float *= paramFloat;
+    this.b *= paramFloat;
+    this.c *= paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     actu
  * JD-Core Version:    0.7.0.1
  */

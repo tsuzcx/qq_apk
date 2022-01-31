@@ -1,35 +1,21 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder.IOnOfflineResCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.view.widget.AbsEmptyView;
 
-public final class vpw
-  implements AsyncBack
+public class vpw
+  implements View.OnClickListener
 {
-  public void loaded(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopSignItemBuilder", 2, "checkUpByBusinessId:2833|param:" + paramString + "|code:" + paramInt);
-    }
-    if ((paramInt == 0) && (paramString == null))
-    {
-      paramString = TroopSignItemBuilder.TroopSignVideoItemBuilder.a.entrySet().iterator();
-      while (paramString.hasNext()) {
-        ((TroopSignItemBuilder.TroopSignVideoItemBuilder.IOnOfflineResCallback)((Map.Entry)paramString.next()).getValue()).a(paramInt);
-      }
-      TroopSignItemBuilder.TroopSignVideoItemBuilder.a.clear();
-    }
-  }
+  public vpw(AbsEmptyView paramAbsEmptyView, View.OnClickListener paramOnClickListener) {}
   
-  public void progress(int paramInt) {}
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAbsEmptyView.a(3);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vpw
  * JD-Core Version:    0.7.0.1
  */

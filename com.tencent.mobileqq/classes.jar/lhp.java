@@ -1,27 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoShareListener;
+import android.os.SystemClock;
 
 public class lhp
-  extends VideoShareListener
 {
-  public lhp(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
+  private static volatile long a;
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public static long a()
   {
-    if (!paramBoolean1) {
-      ReadInJoyVideoSubChannelActivity.a(this.a, false);
-    }
-    while (!ReadInJoyVideoSubChannelActivity.a(this.a)) {
-      return;
-    }
-    ReadInJoyVideoSubChannelActivity.a(this.a).b();
-    ReadInJoyVideoSubChannelActivity.a(this.a, false);
+    return a;
+  }
+  
+  public static void a()
+  {
+    a = SystemClock.uptimeMillis();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lhp
  * JD-Core Version:    0.7.0.1
  */

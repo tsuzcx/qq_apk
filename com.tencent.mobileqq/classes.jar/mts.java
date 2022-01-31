@@ -1,18 +1,6 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController;
-import java.util.List;
-
-public class mts
-  extends ReadInJoyObserver
+public abstract interface mts
 {
-  public mts(ReadInJoyFeedsHeaderViewController paramReadInJoyFeedsHeaderViewController) {}
-  
-  public void a(boolean paramBoolean, List paramList)
-  {
-    if (paramBoolean) {
-      ReadInJoyFeedsHeaderViewController.a(this.a, ReadInJoyFeedsHeaderViewController.a(this.a, paramList));
-    }
-  }
+  public abstract void a();
 }
 
 

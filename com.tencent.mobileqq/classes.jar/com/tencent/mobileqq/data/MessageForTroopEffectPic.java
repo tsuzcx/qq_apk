@@ -1,17 +1,18 @@
 package com.tencent.mobileqq.data;
 
+import ajjy;
+import azgc;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.IAnimationMessage;
 import localpb.richMsg.RichMsg.PicRec;
 import tencent.im.msg.hummer.resv3.CustomFaceExtPb.AnimationImageShow;
 import tencent.im.msg.hummer.resv3.CustomFaceExtPb.ResvAttr;
 
 public class MessageForTroopEffectPic
   extends MessageForPic
-  implements AIOAnimationControlManager.IAnimationMessage
+  implements azgc
 {
   public int effectId;
   
@@ -55,6 +56,11 @@ public class MessageForTroopEffectPic
     return this.frienduin;
   }
   
+  public int getLimitType()
+  {
+    return 0;
+  }
+  
   public long getSenderUin()
   {
     return Long.parseLong(this.senderuin);
@@ -67,7 +73,7 @@ public class MessageForTroopEffectPic
   
   public String getSummaryMsg()
   {
-    return "[秀图]";
+    return ajjy.a(2131640787);
   }
   
   public boolean isReaded()

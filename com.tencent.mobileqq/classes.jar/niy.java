@@ -1,20 +1,27 @@
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class niy
-  implements Runnable
+class niy
+  implements qrv
 {
-  public niy(MsgTabStoryNodeDelegate paramMsgTabStoryNodeDelegate, boolean paramBoolean, int paramInt) {}
+  private WeakReference<nit> a;
   
-  public void run()
+  niy(nit paramnit)
   {
-    if ((this.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2)) && (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a.a()))
+    this.a = new WeakReference(paramnit);
+  }
+  
+  public void a(ChannelCoverInfo paramChannelCoverInfo)
+  {
+    nit localnit = (nit)this.a.get();
+    if (((localnit == null) || (nit.a(localnit).a())) && (QLog.isColorLevel()))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a("exp_story", true, true);
+      QLog.d("ReadInJoyNaviController", 2, "ChannelButtonListenerImpl. ReadInJoyNavigationGridview has destoryed");
       return;
     }
-    SLog.a("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", "exp_story not report because changeType = %b, visible = %b", Integer.valueOf(this.jdField_a_of_type_Int), Boolean.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a.a()));
+    localnit.a(paramChannelCoverInfo);
   }
 }
 

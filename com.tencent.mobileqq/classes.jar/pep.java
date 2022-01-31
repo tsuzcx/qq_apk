@@ -1,19 +1,75 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.CustomMenuBar.OnMenuItemClickListener;
-import com.tencent.biz.ui.PopupMenu;
+import android.os.HandlerThread;
+import com.tencent.biz.pubaccount.readinjoy.pts.util.PTSSwitchManager.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.pts.core.PTSThreadUtil;
+import com.tencent.pts.nativemodule.PTSNativeModuleRegistry;
+import com.tencent.pts.ui.PTSNodeFactory;
+import com.tencent.pts.utils.PTSLog;
+import mqq.os.MqqHandler;
 
 public class pep
-  implements View.OnClickListener
 {
-  public pep(PopupMenu paramPopupMenu, String paramString, int paramInt) {}
+  public static pep a;
+  private boolean a;
+  private boolean b;
   
-  public void onClick(View paramView)
+  static
   {
-    if (this.jdField_a_of_type_ComTencentBizUiPopupMenu.a != null) {
-      this.jdField_a_of_type_ComTencentBizUiPopupMenu.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 2);
-    }
-    paramView.post(new peq(this));
+    jdField_a_of_type_Pep = new pep();
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
+    d();
+  }
+  
+  private void c()
+  {
+    d();
+    PTSLog.registerLogger(new pem());
+    PTSNodeFactory.registerNodeBuilder("img", new pek());
+    PTSNativeModuleRegistry.registerNativeModule("DailyRequestModule", new pdz());
+    PTSNativeModuleRegistry.registerNativeModule("NavigateToModule", new peg());
+    PTSNativeModuleRegistry.registerNativeModule("AllInOneJumpModule", new pdy());
+    PTSNativeModuleRegistry.registerNativeModule("LoadDailyDBArticlesModule", new ped());
+    PTSNativeModuleRegistry.registerNativeModule("HandleJSException", new pec());
+    PTSNativeModuleRegistry.registerNativeModule("ReportTo1160", new peh());
+    PTSNativeModuleRegistry.registerNativeModule("MarkArticleRead", new pef());
+    HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("readinjoy-common-pts-sub", 0);
+    localHandlerThread.start();
+    PTSThreadUtil.registerSubHandlerThread(localHandlerThread);
+    pdu.a().a();
+    pds.a().a();
+  }
+  
+  private void d()
+  {
+    PTSNativeModuleRegistry.clearNativeModule();
+    pdl.a().a();
+  }
+  
+  void a()
+  {
+    b();
+    PTSSwitchManager.1 local1 = new PTSSwitchManager.1(this);
+    ThreadManager.getSubThreadHandler().post(local1);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean b()
+  {
+    return this.b;
+  }
+  
+  public boolean c()
+  {
+    return (this.jdField_a_of_type_Boolean) || (this.b);
   }
 }
 

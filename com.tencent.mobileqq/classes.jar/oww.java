@@ -1,16 +1,29 @@
-import com.tencent.biz.qrcode.CodeMaskManager;
-import org.json.JSONArray;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-class oww
-  implements Runnable
+public class oww
+  implements ViewBase.OnClickListener
 {
-  oww(owv paramowv, JSONArray paramJSONArray) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   
-  public void run()
+  public oww(ArticleInfo paramArticleInfo, Context paramContext)
   {
-    if (!this.jdField_a_of_type_Owv.a.a) {
-      CodeMaskManager.a(this.jdField_a_of_type_Owv.a, this.jdField_a_of_type_OrgJsonJSONArray);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {
+      return;
     }
+    if (obz.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) {
+      obz.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    }
+    nzv.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X8009A73", null);
   }
 }
 

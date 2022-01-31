@@ -1,32 +1,20 @@
-import com.tencent.mobileqq.binhai.BinHaiMsgDialog;
-import com.tencent.mobileqq.binhai.BinHaiMsgDialog.Listener;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-public class agmi
-  implements BinHaiMsgDialog.Listener
+class agmi
+  extends RecyclerView.ViewHolder
 {
-  public agmi(ScanTorchActivity paramScanTorchActivity) {}
+  agmj jdField_a_of_type_Agmj;
   
-  public void a(BinHaiMsgDialog paramBinHaiMsgDialog)
+  agmi(agmh paramagmh, View paramView)
   {
-    paramBinHaiMsgDialog.dismiss();
-    ScanTorchActivity.n(this.a);
-  }
-  
-  public void b(BinHaiMsgDialog paramBinHaiMsgDialog)
-  {
-    paramBinHaiMsgDialog.dismiss();
-    ScanTorchActivity.n(this.a);
-  }
-  
-  public void c(BinHaiMsgDialog paramBinHaiMsgDialog)
-  {
-    this.a.finish();
+    super(paramView);
+    this.jdField_a_of_type_Agmj = ((agmj)paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agmi
  * JD-Core Version:    0.7.0.1
  */

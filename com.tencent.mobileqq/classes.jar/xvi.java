@@ -1,45 +1,66 @@
+import android.annotation.TargetApi;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.view.CameraCover;
-import com.tencent.mobileqq.app.BaseActivity2;
-import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.device.JNICallCenter.DataPoint;
+import com.tencent.device.msg.activities.DeviceTipActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class xvi
   extends BroadcastReceiver
 {
-  public xvi(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public xvi(DeviceTipActivity paramDeviceTipActivity) {}
   
+  @TargetApi(12)
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction()))
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("FlowCameraActivity", 2, "receive ACTION_START_VIDEO_CHAT.");
+      paramContext = paramIntent.getStringExtra("reason");
+      if ((paramContext != null) && (paramContext.equals("homekey"))) {
+        this.a.finish();
       }
-      paramContext = BaseActivity2.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover, 2131362087);
-      if (paramContext != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover.removeView(paramContext);
-      }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.e();
-      }
-      if (this.a.f) {
-        this.a.l();
-      }
-      if ((this.a.g) && (this.a.d)) {
-        this.a.c(false);
-      }
-      this.a.d();
     }
+    long l;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (paramContext.equals("android.intent.action.SCREEN_OFF"))
+          {
+            baan.a();
+            return;
+          }
+          if (paramContext.equals("android.intent.action.SCREEN_ON"))
+          {
+            baan.a(2131230742, -1, null);
+            return;
+          }
+          if (!paramContext.equals("SmartDevice_receiveDPMsg")) {
+            break;
+          }
+        } while ((DataPoint)paramIntent.getExtras().getParcelable("dataPoint") != null);
+        return;
+      } while (!paramContext.equals("On_OccupyMicrophoneNotify_Push"));
+      if (QLog.isColorLevel()) {
+        QLog.d(DeviceTipActivity.a, 2, "DeviceTipActivity intent.getExtras() : " + paramIntent.getExtras());
+      }
+      paramContext = paramIntent.getExtras();
+      l = paramContext.getLong("din", 0L);
+      paramContext = paramContext.getString("uin", "");
+    } while ((!this.a.b.equals(String.valueOf(Long.valueOf(l)))) || (TextUtils.isEmpty(paramContext)));
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     xvi
  * JD-Core Version:    0.7.0.1
  */

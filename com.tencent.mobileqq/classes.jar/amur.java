@@ -1,21 +1,16 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QQProxyForQlink;
 
-public class amur
+class amur
   implements DialogInterface.OnClickListener
 {
-  public amur(QQProxyForQlink paramQQProxyForQlink) {}
+  amur(amup paramamup) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a("0X8004857", 1);
-    paramDialogInterface.dismiss();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amur
  * JD-Core Version:    0.7.0.1
  */

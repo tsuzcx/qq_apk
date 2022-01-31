@@ -1,27 +1,73 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.Doraemon.APICallback;
-import com.tencent.mobileqq.Doraemon.APIConfig;
-import com.tencent.mobileqq.Doraemon.APIParam;
-import com.tencent.mobileqq.Doraemon.UserPermission;
-import com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAPIManager;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class riy
-  implements DialogInterface.OnClickListener
+public class riy<T>
 {
-  public riy(DefaultDoraemonAPIManager paramDefaultDoraemonAPIManager, UserPermission paramUserPermission, APIConfig paramAPIConfig, APIParam paramAPIParam, APICallback paramAPICallback) {}
+  private T jdField_a_of_type_JavaLangObject;
+  private List<riz<T>> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public riy(T paramT)
   {
-    QLog.i("DoraemonOpenAPI.apiMgr", 1, "reject " + this.jdField_a_of_type_ComTencentMobileqqDoraemonUserPermission.a);
-    DefaultDoraemonAPIManager.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplDefaultDoraemonAPIManager, this.jdField_a_of_type_ComTencentMobileqqDoraemonUserPermission, 1);
-    DefaultDoraemonAPIManager.b(this.jdField_a_of_type_ComTencentMobileqqDoraemonImplDefaultDoraemonAPIManager, 4, this.jdField_a_of_type_ComTencentMobileqqDoraemonAPIConfig, this.jdField_a_of_type_ComTencentMobileqqDoraemonAPIParam, this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback);
+    this.jdField_a_of_type_JavaLangObject = paramT;
+  }
+  
+  public T a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public void a()
+  {
+    try
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        ((riz)localIterator.next()).a(this);
+      }
+    }
+    finally {}
+  }
+  
+  public void a(T paramT)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramT;
+    a();
+  }
+  
+  public void a(riz<T> paramriz)
+  {
+    try
+    {
+      if (!this.jdField_a_of_type_JavaUtilList.contains(paramriz)) {
+        this.jdField_a_of_type_JavaUtilList.add(paramriz);
+      }
+      return;
+    }
+    finally
+    {
+      paramriz = finally;
+      throw paramriz;
+    }
+  }
+  
+  public void b(riz<T> paramriz)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilList.remove(paramriz);
+      return;
+    }
+    finally
+    {
+      paramriz = finally;
+      throw paramriz;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     riy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.open.downloadnew.MyAppApi;
+import android.view.View;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.widget.AdapterView;
 
 public class alpo
-  implements DialogInterface.OnDismissListener
+  implements behk
 {
-  public alpo(MyAppApi paramMyAppApi) {}
+  public alpo(CardPicGalleryActivity paramCardPicGalleryActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(AdapterView<?> paramAdapterView) {}
+  
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.a = null;
-    this.a.c = false;
-    this.a.c = false;
+    this.a.b = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     alpo
  * JD-Core Version:    0.7.0.1
  */

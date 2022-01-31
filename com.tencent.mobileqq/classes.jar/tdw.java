@@ -1,21 +1,20 @@
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.mobileqq.activity.LikeRankingListActivity;
-
-public class tdw
-  implements Runnable
+class tdw
+  extends tcw
 {
-  public tdw(LikeRankingListActivity paramLikeRankingListActivity) {}
-  
-  public void run()
+  tdw(tdo paramtdo, String paramString1, String paramString2, boolean paramBoolean, tew paramtew)
   {
-    this.a.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.a.b.setImageResource(2130843050);
+    super(paramString1, paramString2, paramBoolean);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Tew.c = ((String)a("EncryptUrlJob_encryptedUrl"));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tdw
  * JD-Core Version:    0.7.0.1
  */

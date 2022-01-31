@@ -1,17 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter;
+import android.view.View;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
 
-public class antp
-  implements DialogInterface.OnClickListener
+public abstract interface antp<V extends View>
 {
-  public antp(QIMPtvTemplateAdapter paramQIMPtvTemplateAdapter) {}
+  public abstract void a(PullToRefreshBase<V> paramPullToRefreshBase);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void b(PullToRefreshBase<V> paramPullToRefreshBase);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     antp
  * JD-Core Version:    0.7.0.1
  */

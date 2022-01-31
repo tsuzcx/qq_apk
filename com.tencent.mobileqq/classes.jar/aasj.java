@@ -1,26 +1,34 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.arcard.ARCardCameraRecordFragment;
-import com.tencent.mobileqq.arcard.ARCardUtils;
-import java.io.File;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aasj
-  implements Runnable
+  extends ajee
 {
-  public aasj(ARCardCameraRecordFragment paramARCardCameraRecordFragment, int paramInt, Object paramObject) {}
+  public aasj(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void run()
+  protected void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Int == 1001)
+    switch (paramInt)
     {
-      Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaLangObject;
-      ARCardUtils.a(localBitmap, new File("/sdcard/test/123.jpg"), true);
-      localBitmap.recycle();
+    }
+    for (;;)
+    {
+      try
+      {
+        ForwardRecentActivity.f(this.a);
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("ForwardOption.ForwardEntranceActivity", 1, "mInitObserver", localException);
+      }
+      this.a.a.h();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aasj
  * JD-Core Version:    0.7.0.1
  */

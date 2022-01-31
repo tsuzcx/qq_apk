@@ -1,26 +1,47 @@
-import com.tencent.biz.qqstory.base.QQStoryObserver;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.activity.Conversation;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDelFeedComment;
 
 public class smq
-  extends QQStoryObserver
+  extends soi
 {
-  public smq(Conversation paramConversation) {}
+  qqstory_service.RspDelFeedComment jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment;
+  soj jdField_a_of_type_Soj;
   
-  public void d(boolean paramBoolean)
+  public smq(qqstory_service.RspDelFeedComment paramRspDelFeedComment, soj paramsoj)
   {
-    if (paramBoolean)
-    {
-      SLog.b("Q.recent", "onMsgTabStoryShowChange() sendEmptyMessageDelayedToHandler MSG_INIT_MSGTAG_STORY process, send");
-      this.a.a(1055, 0L, false);
-      return;
-    }
-    Conversation.a(this.a, false);
+    super(paramRspDelFeedComment.result);
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment = paramRspDelFeedComment;
+    this.jdField_a_of_type_Soj = paramsoj;
+  }
+  
+  public smq(soj paramsoj)
+  {
+    this.jdField_a_of_type_Soj = paramsoj;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Soj.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspDelFeedComment);
+  }
+  
+  public void a(int paramInt, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Soj.a(paramInt, paramBundle);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Soj.a(paramInt, paramString);
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    this.jdField_a_of_type_Soj.a(paramBoolean, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     smq
  * JD-Core Version:    0.7.0.1
  */

@@ -2,10 +2,10 @@ package com.tencent.mobileqq.qmcf;
 
 public class QmcfModelItem
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
+  public String modelDeployString;
+  public String modelDlcPath;
+  public int modelEncrypt;
+  public String modelParamPath;
 }
 
 

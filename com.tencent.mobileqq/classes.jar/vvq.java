@@ -1,25 +1,45 @@
-import com.tencent.ark.ArkDebugger;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
+import org.json.JSONObject;
 
-public class vvq
-  implements Runnable
+final class vvq
+  implements BusinessObserver
 {
-  public vvq(ArkDebugChatPie paramArkDebugChatPie) {}
+  vvq(vsp paramvsp) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    ArkDebugger.Create();
-    ArkDebugger.SetCallback(new vvr(this));
-    ArkDebugChatPie.a(this.a, ArkAppCenter.f());
-    ArkDebugger.Listen("127.0.0.1", 23333L, 600000L, ArkAppCenter.f());
-    ArkDispatchTask.getInstance().postToMainThread(new vvx(this));
+    if ((paramBoolean) && (paramBundle != null)) {}
+    for (paramBundle = paramBundle.getString("result");; paramBundle = null)
+    {
+      try
+      {
+        paramBundle = new JSONObject(paramBundle);
+        if (paramBundle.getInt("r") != 0) {
+          continue;
+        }
+        paramBundle = paramBundle.getString("url");
+        if (paramBundle != null)
+        {
+          this.a.a(true, paramBundle);
+          return;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        for (;;)
+        {
+          paramBundle = null;
+        }
+      }
+      this.a.a(false, null);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     vvq
  * JD-Core Version:    0.7.0.1
  */

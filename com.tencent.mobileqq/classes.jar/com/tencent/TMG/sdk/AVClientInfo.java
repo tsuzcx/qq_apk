@@ -12,11 +12,9 @@ import com.tencent.TMG.config.Common;
 import com.tencent.TMG.utils.AVDeviceHelper;
 import com.tencent.TMG.utils.QLog;
 import java.io.File;
-import java.io.FileFilter;
 import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.List;
-import java.util.regex.Pattern;
 
 public class AVClientInfo
 {
@@ -90,7 +88,7 @@ public class AVClientInfo
   public static void getCpuInfo()
   {
     // Byte code:
-    //   0: getstatic 67	com/tencent/TMG/sdk/AVClientInfo:mfReadCpuInfo	Z
+    //   0: getstatic 64	com/tencent/TMG/sdk/AVClientInfo:mfReadCpuInfo	Z
     //   3: iconst_1
     //   4: if_icmpne +4 -> 8
     //   7: return
@@ -98,31 +96,31 @@ public class AVClientInfo
     //   9: astore 11
     //   11: aconst_null
     //   12: astore 10
-    //   14: ldc2_w 112
+    //   14: ldc2_w 109
     //   17: lstore 4
-    //   19: ldc 114
+    //   19: ldc 111
     //   21: fstore_0
-    //   22: new 116	java/io/FileReader
+    //   22: new 113	java/io/FileReader
     //   25: dup
-    //   26: ldc 118
-    //   28: invokespecial 121	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   26: ldc 115
+    //   28: invokespecial 118	java/io/FileReader:<init>	(Ljava/lang/String;)V
     //   31: astore 8
-    //   33: new 123	java/io/BufferedReader
+    //   33: new 120	java/io/BufferedReader
     //   36: dup
     //   37: aload 8
-    //   39: invokespecial 126	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   39: invokespecial 123	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   42: astore 9
     //   44: aload 9
-    //   46: invokevirtual 129	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   46: invokevirtual 126	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   49: astore 10
     //   51: aload 10
     //   53: ifnonnull +93 -> 146
     //   56: iconst_1
-    //   57: putstatic 67	com/tencent/TMG/sdk/AVClientInfo:mfReadCpuInfo	Z
+    //   57: putstatic 64	com/tencent/TMG/sdk/AVClientInfo:mfReadCpuInfo	Z
     //   60: aload 9
     //   62: ifnull +8 -> 70
     //   65: aload 9
-    //   67: invokevirtual 132	java/io/BufferedReader:close	()V
+    //   67: invokevirtual 129	java/io/BufferedReader:close	()V
     //   70: lload 4
     //   72: lstore 6
     //   74: fload_0
@@ -130,43 +128,43 @@ public class AVClientInfo
     //   76: aload 8
     //   78: ifnull +14 -> 92
     //   81: aload 8
-    //   83: invokevirtual 133	java/io/FileReader:close	()V
+    //   83: invokevirtual 130	java/io/FileReader:close	()V
     //   86: fload_0
     //   87: fstore_1
     //   88: lload 4
     //   90: lstore 6
-    //   92: invokestatic 136	com/tencent/TMG/sdk/AVClientInfo:readNumCores	()I
+    //   92: invokestatic 133	com/tencent/TMG/sdk/AVClientInfo:readNumCores	()I
     //   95: istore_2
     //   96: iload_2
     //   97: ifle +720 -> 817
     //   100: iload_2
-    //   101: putstatic 65	com/tencent/TMG/sdk/AVClientInfo:mCoreNumber	I
-    //   104: invokestatic 140	com/tencent/TMG/sdk/AVClientInfo:readMaxCpuFreq	()J
+    //   101: putstatic 62	com/tencent/TMG/sdk/AVClientInfo:mCoreNumber	I
+    //   104: invokestatic 137	com/tencent/TMG/sdk/AVClientInfo:readMaxCpuFreq	()J
     //   107: lstore 4
     //   109: lload 4
     //   111: lconst_0
     //   112: lcmp
     //   113: ifle +720 -> 833
     //   116: lload 4
-    //   118: putstatic 63	com/tencent/TMG/sdk/AVClientInfo:mMaxCpuFreq	J
-    //   121: getstatic 65	com/tencent/TMG/sdk/AVClientInfo:mCoreNumber	I
+    //   118: putstatic 60	com/tencent/TMG/sdk/AVClientInfo:mMaxCpuFreq	J
+    //   121: getstatic 62	com/tencent/TMG/sdk/AVClientInfo:mCoreNumber	I
     //   124: ifle +11 -> 135
-    //   127: getstatic 63	com/tencent/TMG/sdk/AVClientInfo:mMaxCpuFreq	J
+    //   127: getstatic 60	com/tencent/TMG/sdk/AVClientInfo:mMaxCpuFreq	J
     //   130: lconst_0
     //   131: lcmp
     //   132: ifgt +766 -> 898
     //   135: iconst_0
-    //   136: putstatic 67	com/tencent/TMG/sdk/AVClientInfo:mfReadCpuInfo	Z
-    //   139: invokestatic 143	com/tencent/TMG/sdk/AVClientInfo:readCpuArchitecture	()I
-    //   142: putstatic 71	com/tencent/TMG/sdk/AVClientInfo:mChip	I
+    //   136: putstatic 64	com/tencent/TMG/sdk/AVClientInfo:mfReadCpuInfo	Z
+    //   139: invokestatic 140	com/tencent/TMG/sdk/AVClientInfo:readCpuArchitecture	()I
+    //   142: putstatic 68	com/tencent/TMG/sdk/AVClientInfo:mChip	I
     //   145: return
     //   146: aload 10
-    //   148: ldc 145
-    //   150: invokevirtual 151	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   148: ldc 142
+    //   150: invokevirtual 148	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   153: ifeq +97 -> 250
     //   156: aload 10
     //   158: bipush 58
-    //   160: invokevirtual 155	java/lang/String:indexOf	(I)I
+    //   160: invokevirtual 152	java/lang/String:indexOf	(I)I
     //   163: istore_2
     //   164: iload_2
     //   165: iconst_1
@@ -176,18 +174,18 @@ public class AVClientInfo
     //   172: iconst_1
     //   173: iadd
     //   174: aload 10
-    //   176: invokevirtual 158	java/lang/String:length	()I
-    //   179: invokevirtual 162	java/lang/String:substring	(II)Ljava/lang/String;
-    //   182: putstatic 53	com/tencent/TMG/sdk/AVClientInfo:mProcessorName	Ljava/lang/String;
-    //   185: getstatic 53	com/tencent/TMG/sdk/AVClientInfo:mProcessorName	Ljava/lang/String;
-    //   188: invokevirtual 165	java/lang/String:trim	()Ljava/lang/String;
-    //   191: putstatic 53	com/tencent/TMG/sdk/AVClientInfo:mProcessorName	Ljava/lang/String;
+    //   176: invokevirtual 155	java/lang/String:length	()I
+    //   179: invokevirtual 159	java/lang/String:substring	(II)Ljava/lang/String;
+    //   182: putstatic 50	com/tencent/TMG/sdk/AVClientInfo:mProcessorName	Ljava/lang/String;
+    //   185: getstatic 50	com/tencent/TMG/sdk/AVClientInfo:mProcessorName	Ljava/lang/String;
+    //   188: invokevirtual 162	java/lang/String:trim	()Ljava/lang/String;
+    //   191: putstatic 50	com/tencent/TMG/sdk/AVClientInfo:mProcessorName	Ljava/lang/String;
     //   194: goto -150 -> 44
     //   197: astore 10
     //   199: aload 9
     //   201: ifnull +8 -> 209
     //   204: aload 9
-    //   206: invokevirtual 132	java/io/BufferedReader:close	()V
+    //   206: invokevirtual 129	java/io/BufferedReader:close	()V
     //   209: lload 4
     //   211: lstore 6
     //   213: fload_0
@@ -195,7 +193,7 @@ public class AVClientInfo
     //   215: aload 8
     //   217: ifnull -125 -> 92
     //   220: aload 8
-    //   222: invokevirtual 133	java/io/FileReader:close	()V
+    //   222: invokevirtual 130	java/io/FileReader:close	()V
     //   225: lload 4
     //   227: lstore 6
     //   229: fload_0
@@ -203,19 +201,19 @@ public class AVClientInfo
     //   231: goto -139 -> 92
     //   234: astore 8
     //   236: aload 8
-    //   238: invokevirtual 168	java/lang/Exception:printStackTrace	()V
+    //   238: invokevirtual 165	java/lang/Exception:printStackTrace	()V
     //   241: lload 4
     //   243: lstore 6
     //   245: fload_0
     //   246: fstore_1
     //   247: goto -155 -> 92
     //   250: aload 10
-    //   252: ldc 170
-    //   254: invokevirtual 151	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   252: ldc 167
+    //   254: invokevirtual 148	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   257: ifeq +191 -> 448
     //   260: aload 10
     //   262: bipush 58
-    //   264: invokevirtual 155	java/lang/String:indexOf	(I)I
+    //   264: invokevirtual 152	java/lang/String:indexOf	(I)I
     //   267: istore_2
     //   268: iload_2
     //   269: iconst_1
@@ -225,33 +223,33 @@ public class AVClientInfo
     //   276: iconst_1
     //   277: iadd
     //   278: aload 10
-    //   280: invokevirtual 158	java/lang/String:length	()I
-    //   283: invokevirtual 162	java/lang/String:substring	(II)Ljava/lang/String;
-    //   286: invokevirtual 165	java/lang/String:trim	()Ljava/lang/String;
+    //   280: invokevirtual 155	java/lang/String:length	()I
+    //   283: invokevirtual 159	java/lang/String:substring	(II)Ljava/lang/String;
+    //   286: invokevirtual 162	java/lang/String:trim	()Ljava/lang/String;
     //   289: astore 11
     //   291: aload 11
     //   293: ifnull +26 -> 319
     //   296: aload 11
-    //   298: invokevirtual 158	java/lang/String:length	()I
+    //   298: invokevirtual 155	java/lang/String:length	()I
     //   301: ifle +18 -> 319
     //   304: aload 11
-    //   306: ldc 172
-    //   308: invokevirtual 175	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   306: ldc 169
+    //   308: invokevirtual 172	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   311: ifeq +78 -> 389
     //   314: bipush 8
-    //   316: putstatic 61	com/tencent/TMG/sdk/AVClientInfo:mCpuArchitecture	I
+    //   316: putstatic 58	com/tencent/TMG/sdk/AVClientInfo:mCpuArchitecture	I
     //   319: aload 10
-    //   321: ldc 177
-    //   323: invokevirtual 181	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   321: ldc 174
+    //   323: invokevirtual 178	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   326: ifeq -282 -> 44
     //   329: iconst_5
-    //   330: putstatic 61	com/tencent/TMG/sdk/AVClientInfo:mCpuArchitecture	I
+    //   330: putstatic 58	com/tencent/TMG/sdk/AVClientInfo:mCpuArchitecture	I
     //   333: goto -289 -> 44
     //   336: astore 10
     //   338: aload 9
     //   340: ifnull +8 -> 348
     //   343: aload 9
-    //   345: invokevirtual 132	java/io/BufferedReader:close	()V
+    //   345: invokevirtual 129	java/io/BufferedReader:close	()V
     //   348: lload 4
     //   350: lstore 6
     //   352: fload_0
@@ -259,7 +257,7 @@ public class AVClientInfo
     //   354: aload 8
     //   356: ifnull -264 -> 92
     //   359: aload 8
-    //   361: invokevirtual 133	java/io/FileReader:close	()V
+    //   361: invokevirtual 130	java/io/FileReader:close	()V
     //   364: lload 4
     //   366: lstore 6
     //   368: fload_0
@@ -267,22 +265,22 @@ public class AVClientInfo
     //   370: goto -278 -> 92
     //   373: astore 8
     //   375: aload 8
-    //   377: invokevirtual 168	java/lang/Exception:printStackTrace	()V
+    //   377: invokevirtual 165	java/lang/Exception:printStackTrace	()V
     //   380: lload 4
     //   382: lstore 6
     //   384: fload_0
     //   385: fstore_1
     //   386: goto -294 -> 92
     //   389: aload 11
-    //   391: invokestatic 187	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   391: invokestatic 184	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   394: l2i
-    //   395: putstatic 61	com/tencent/TMG/sdk/AVClientInfo:mCpuArchitecture	I
+    //   395: putstatic 58	com/tencent/TMG/sdk/AVClientInfo:mCpuArchitecture	I
     //   398: goto -79 -> 319
     //   401: astore 12
     //   403: iconst_1
     //   404: istore_2
     //   405: aload 11
-    //   407: invokevirtual 158	java/lang/String:length	()I
+    //   407: invokevirtual 155	java/lang/String:length	()I
     //   410: istore_3
     //   411: iload_2
     //   412: iload_3
@@ -290,13 +288,13 @@ public class AVClientInfo
     //   416: aload 11
     //   418: iconst_0
     //   419: aload 11
-    //   421: invokevirtual 158	java/lang/String:length	()I
+    //   421: invokevirtual 155	java/lang/String:length	()I
     //   424: iload_2
     //   425: isub
-    //   426: invokevirtual 162	java/lang/String:substring	(II)Ljava/lang/String;
-    //   429: invokestatic 187	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   426: invokevirtual 159	java/lang/String:substring	(II)Ljava/lang/String;
+    //   429: invokestatic 184	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   432: l2i
-    //   433: putstatic 61	com/tencent/TMG/sdk/AVClientInfo:mCpuArchitecture	I
+    //   433: putstatic 58	com/tencent/TMG/sdk/AVClientInfo:mCpuArchitecture	I
     //   436: goto -117 -> 319
     //   439: astore 12
     //   441: iload_2
@@ -305,12 +303,12 @@ public class AVClientInfo
     //   444: istore_2
     //   445: goto -40 -> 405
     //   448: aload 10
-    //   450: ldc 189
-    //   452: invokevirtual 151	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   450: ldc 186
+    //   452: invokevirtual 148	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   455: ifeq +91 -> 546
     //   458: aload 10
     //   460: bipush 58
-    //   462: invokevirtual 155	java/lang/String:indexOf	(I)I
+    //   462: invokevirtual 152	java/lang/String:indexOf	(I)I
     //   465: istore_2
     //   466: iload_2
     //   467: iconst_1
@@ -320,16 +318,16 @@ public class AVClientInfo
     //   474: iconst_1
     //   475: iadd
     //   476: aload 10
-    //   478: invokevirtual 158	java/lang/String:length	()I
-    //   481: invokevirtual 162	java/lang/String:substring	(II)Ljava/lang/String;
-    //   484: invokevirtual 165	java/lang/String:trim	()Ljava/lang/String;
-    //   487: putstatic 55	com/tencent/TMG/sdk/AVClientInfo:mFeature	Ljava/lang/String;
+    //   478: invokevirtual 155	java/lang/String:length	()I
+    //   481: invokevirtual 159	java/lang/String:substring	(II)Ljava/lang/String;
+    //   484: invokevirtual 162	java/lang/String:trim	()Ljava/lang/String;
+    //   487: putstatic 52	com/tencent/TMG/sdk/AVClientInfo:mFeature	Ljava/lang/String;
     //   490: goto -446 -> 44
     //   493: astore 10
     //   495: aload 9
     //   497: ifnull +8 -> 505
     //   500: aload 9
-    //   502: invokevirtual 132	java/io/BufferedReader:close	()V
+    //   502: invokevirtual 129	java/io/BufferedReader:close	()V
     //   505: lload 4
     //   507: lstore 6
     //   509: fload_0
@@ -337,7 +335,7 @@ public class AVClientInfo
     //   511: aload 8
     //   513: ifnull -421 -> 92
     //   516: aload 8
-    //   518: invokevirtual 133	java/io/FileReader:close	()V
+    //   518: invokevirtual 130	java/io/FileReader:close	()V
     //   521: lload 4
     //   523: lstore 6
     //   525: fload_0
@@ -345,19 +343,19 @@ public class AVClientInfo
     //   527: goto -435 -> 92
     //   530: astore 8
     //   532: aload 8
-    //   534: invokevirtual 168	java/lang/Exception:printStackTrace	()V
+    //   534: invokevirtual 165	java/lang/Exception:printStackTrace	()V
     //   537: lload 4
     //   539: lstore 6
     //   541: fload_0
     //   542: fstore_1
     //   543: goto -451 -> 92
     //   546: aload 10
-    //   548: ldc 191
-    //   550: invokevirtual 151	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   548: ldc 188
+    //   550: invokevirtual 148	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   553: ifeq +71 -> 624
     //   556: aload 10
     //   558: bipush 58
-    //   560: invokevirtual 155	java/lang/String:indexOf	(I)I
+    //   560: invokevirtual 152	java/lang/String:indexOf	(I)I
     //   563: istore_2
     //   564: iload_2
     //   565: iconst_1
@@ -367,10 +365,10 @@ public class AVClientInfo
     //   572: iconst_1
     //   573: iadd
     //   574: aload 10
-    //   576: invokevirtual 158	java/lang/String:length	()I
-    //   579: invokevirtual 162	java/lang/String:substring	(II)Ljava/lang/String;
-    //   582: invokevirtual 165	java/lang/String:trim	()Ljava/lang/String;
-    //   585: putstatic 57	com/tencent/TMG/sdk/AVClientInfo:mVendorId	Ljava/lang/String;
+    //   576: invokevirtual 155	java/lang/String:length	()I
+    //   579: invokevirtual 159	java/lang/String:substring	(II)Ljava/lang/String;
+    //   582: invokevirtual 162	java/lang/String:trim	()Ljava/lang/String;
+    //   585: putstatic 54	com/tencent/TMG/sdk/AVClientInfo:mVendorId	Ljava/lang/String;
     //   588: goto -544 -> 44
     //   591: astore 11
     //   593: aload 9
@@ -380,34 +378,34 @@ public class AVClientInfo
     //   601: aload 10
     //   603: ifnull +8 -> 611
     //   606: aload 10
-    //   608: invokevirtual 132	java/io/BufferedReader:close	()V
+    //   608: invokevirtual 129	java/io/BufferedReader:close	()V
     //   611: aload 8
     //   613: ifnull +8 -> 621
     //   616: aload 8
-    //   618: invokevirtual 133	java/io/FileReader:close	()V
+    //   618: invokevirtual 130	java/io/FileReader:close	()V
     //   621: aload 9
     //   623: athrow
     //   624: aload 10
-    //   626: ldc 193
-    //   628: invokevirtual 151	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   626: ldc 190
+    //   628: invokevirtual 148	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   631: ifeq +28 -> 659
     //   634: aload 10
-    //   636: invokevirtual 165	java/lang/String:trim	()Ljava/lang/String;
-    //   639: putstatic 59	com/tencent/TMG/sdk/AVClientInfo:mHardware	Ljava/lang/String;
+    //   636: invokevirtual 162	java/lang/String:trim	()Ljava/lang/String;
+    //   639: putstatic 56	com/tencent/TMG/sdk/AVClientInfo:mHardware	Ljava/lang/String;
     //   642: aload 10
-    //   644: ldc 195
-    //   646: invokevirtual 181	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   644: ldc 192
+    //   646: invokevirtual 178	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   649: ifeq -605 -> 44
     //   652: iconst_1
-    //   653: putstatic 77	com/tencent/TMG/sdk/AVClientInfo:mIsMarvell	Z
+    //   653: putstatic 74	com/tencent/TMG/sdk/AVClientInfo:mIsMarvell	Z
     //   656: goto -612 -> 44
     //   659: aload 10
-    //   661: ldc 197
-    //   663: invokevirtual 151	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   661: ldc 194
+    //   663: invokevirtual 148	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   666: ifeq +67 -> 733
     //   669: aload 10
     //   671: bipush 58
-    //   673: invokevirtual 155	java/lang/String:indexOf	(I)I
+    //   673: invokevirtual 152	java/lang/String:indexOf	(I)I
     //   676: istore_2
     //   677: iload_2
     //   678: iconst_1
@@ -417,12 +415,12 @@ public class AVClientInfo
     //   685: iconst_1
     //   686: iadd
     //   687: aload 10
-    //   689: invokevirtual 158	java/lang/String:length	()I
-    //   692: invokevirtual 162	java/lang/String:substring	(II)Ljava/lang/String;
-    //   695: invokevirtual 165	java/lang/String:trim	()Ljava/lang/String;
+    //   689: invokevirtual 155	java/lang/String:length	()I
+    //   692: invokevirtual 159	java/lang/String:substring	(II)Ljava/lang/String;
+    //   695: invokevirtual 162	java/lang/String:trim	()Ljava/lang/String;
     //   698: astore 10
     //   700: aload 10
-    //   702: invokestatic 187	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   702: invokestatic 184	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   705: lstore 6
     //   707: lload 6
     //   709: lconst_0
@@ -440,12 +438,12 @@ public class AVClientInfo
     //   728: lstore 4
     //   730: goto -686 -> 44
     //   733: aload 10
-    //   735: ldc 199
-    //   737: invokevirtual 151	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   735: ldc 196
+    //   737: invokevirtual 148	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   740: ifeq -696 -> 44
     //   743: aload 10
     //   745: bipush 58
-    //   747: invokevirtual 155	java/lang/String:indexOf	(I)I
+    //   747: invokevirtual 152	java/lang/String:indexOf	(I)I
     //   750: istore_2
     //   751: iload_2
     //   752: iconst_1
@@ -455,12 +453,12 @@ public class AVClientInfo
     //   759: iconst_1
     //   760: iadd
     //   761: aload 10
-    //   763: invokevirtual 158	java/lang/String:length	()I
-    //   766: invokevirtual 162	java/lang/String:substring	(II)Ljava/lang/String;
-    //   769: invokevirtual 165	java/lang/String:trim	()Ljava/lang/String;
+    //   763: invokevirtual 155	java/lang/String:length	()I
+    //   766: invokevirtual 159	java/lang/String:substring	(II)Ljava/lang/String;
+    //   769: invokevirtual 162	java/lang/String:trim	()Ljava/lang/String;
     //   772: astore 10
     //   774: aload 10
-    //   776: invokestatic 205	java/lang/Float:parseFloat	(Ljava/lang/String;)F
+    //   776: invokestatic 202	java/lang/Float:parseFloat	(Ljava/lang/String;)F
     //   779: fstore_1
     //   780: fload_1
     //   781: fload_0
@@ -471,7 +469,7 @@ public class AVClientInfo
     //   788: goto -744 -> 44
     //   791: astore 8
     //   793: aload 8
-    //   795: invokevirtual 168	java/lang/Exception:printStackTrace	()V
+    //   795: invokevirtual 165	java/lang/Exception:printStackTrace	()V
     //   798: lload 4
     //   800: lstore 6
     //   802: fload_0
@@ -479,7 +477,7 @@ public class AVClientInfo
     //   804: goto -712 -> 92
     //   807: astore 8
     //   809: aload 8
-    //   811: invokevirtual 168	java/lang/Exception:printStackTrace	()V
+    //   811: invokevirtual 165	java/lang/Exception:printStackTrace	()V
     //   814: goto -193 -> 621
     //   817: lload 6
     //   819: lconst_0
@@ -487,46 +485,46 @@ public class AVClientInfo
     //   821: ifle -717 -> 104
     //   824: lload 6
     //   826: l2i
-    //   827: putstatic 65	com/tencent/TMG/sdk/AVClientInfo:mCoreNumber	I
+    //   827: putstatic 62	com/tencent/TMG/sdk/AVClientInfo:mCoreNumber	I
     //   830: goto -726 -> 104
     //   833: fload_1
     //   834: fconst_0
     //   835: fcmpl
     //   836: ifle -715 -> 121
     //   839: fload_1
-    //   840: ldc 206
+    //   840: ldc 203
     //   842: fcmpg
     //   843: ifge +20 -> 863
     //   846: fload_1
     //   847: f2d
-    //   848: ldc2_w 207
+    //   848: ldc2_w 204
     //   851: dmul
-    //   852: ldc2_w 209
+    //   852: ldc2_w 206
     //   855: dmul
     //   856: d2l
-    //   857: putstatic 63	com/tencent/TMG/sdk/AVClientInfo:mMaxCpuFreq	J
+    //   857: putstatic 60	com/tencent/TMG/sdk/AVClientInfo:mMaxCpuFreq	J
     //   860: goto -739 -> 121
     //   863: fload_1
-    //   864: ldc 211
+    //   864: ldc 208
     //   866: fcmpl
     //   867: ifle +20 -> 887
     //   870: fload_1
     //   871: f2d
-    //   872: ldc2_w 212
+    //   872: ldc2_w 209
     //   875: ddiv
-    //   876: ldc2_w 209
+    //   876: ldc2_w 206
     //   879: dmul
     //   880: d2l
-    //   881: putstatic 63	com/tencent/TMG/sdk/AVClientInfo:mMaxCpuFreq	J
+    //   881: putstatic 60	com/tencent/TMG/sdk/AVClientInfo:mMaxCpuFreq	J
     //   884: goto -763 -> 121
-    //   887: ldc 214
+    //   887: ldc 211
     //   889: fload_1
     //   890: fmul
     //   891: f2l
-    //   892: putstatic 63	com/tencent/TMG/sdk/AVClientInfo:mMaxCpuFreq	J
+    //   892: putstatic 60	com/tencent/TMG/sdk/AVClientInfo:mMaxCpuFreq	J
     //   895: goto -774 -> 121
     //   898: iconst_1
-    //   899: putstatic 67	com/tencent/TMG/sdk/AVClientInfo:mfReadCpuInfo	Z
+    //   899: putstatic 64	com/tencent/TMG/sdk/AVClientInfo:mfReadCpuInfo	Z
     //   902: goto -763 -> 139
     //   905: astore 10
     //   907: goto -863 -> 44
@@ -729,7 +727,7 @@ public class AVClientInfo
   public static String getCpuReport()
   {
     getCpuInfo();
-    return "prcs(" + mProcessorName + ") " + "arch(" + mCpuArchitecture + ") " + "hard(" + mHardware + ") " + "chip(" + mChip + ") " + "freq(" + mMaxCpuFreq + ") " + "num(" + mCoreNumber + ")";
+    return "prcs(" + mProcessorName + ") arch(" + mCpuArchitecture + ") hard(" + mHardware + ") chip(" + mChip + ") freq(" + mMaxCpuFreq + ") num(" + mCoreNumber + ")";
   }
   
   /* Error */
@@ -746,28 +744,28 @@ public class AVClientInfo
     //   10: astore 5
     //   12: lconst_0
     //   13: lstore_2
-    //   14: new 116	java/io/FileReader
+    //   14: new 113	java/io/FileReader
     //   17: dup
-    //   18: ldc 250
-    //   20: invokespecial 121	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   18: ldc 245
+    //   20: invokespecial 118	java/io/FileReader:<init>	(Ljava/lang/String;)V
     //   23: astore 4
-    //   25: new 123	java/io/BufferedReader
+    //   25: new 120	java/io/BufferedReader
     //   28: dup
     //   29: aload 4
-    //   31: invokespecial 126	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   31: invokespecial 123	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   34: astore 5
     //   36: lload_2
     //   37: lstore_0
     //   38: aload 5
     //   40: ifnull +48 -> 88
     //   43: aload 5
-    //   45: invokevirtual 129	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   45: invokevirtual 126	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   48: astore 6
     //   50: aload 6
-    //   52: invokestatic 255	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   52: invokestatic 250	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   55: ifne +289 -> 344
     //   58: aload 6
-    //   60: invokevirtual 165	java/lang/String:trim	()Ljava/lang/String;
+    //   60: invokevirtual 162	java/lang/String:trim	()Ljava/lang/String;
     //   63: astore 6
     //   65: lload_2
     //   66: lstore_0
@@ -776,28 +774,28 @@ public class AVClientInfo
     //   72: lload_2
     //   73: lstore_0
     //   74: aload 6
-    //   76: invokevirtual 158	java/lang/String:length	()I
+    //   76: invokevirtual 155	java/lang/String:length	()I
     //   79: ifle +9 -> 88
     //   82: aload 6
-    //   84: invokestatic 187	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   84: invokestatic 184	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   87: lstore_0
     //   88: aload 5
     //   90: ifnull +8 -> 98
     //   93: aload 5
-    //   95: invokevirtual 132	java/io/BufferedReader:close	()V
+    //   95: invokevirtual 129	java/io/BufferedReader:close	()V
     //   98: lload_0
     //   99: lstore_2
     //   100: aload 4
     //   102: ifnull +10 -> 112
     //   105: aload 4
-    //   107: invokevirtual 133	java/io/FileReader:close	()V
+    //   107: invokevirtual 130	java/io/FileReader:close	()V
     //   110: lload_0
     //   111: lstore_2
     //   112: lload_2
     //   113: lreturn
     //   114: astore 4
     //   116: aload 4
-    //   118: invokevirtual 168	java/lang/Exception:printStackTrace	()V
+    //   118: invokevirtual 165	java/lang/Exception:printStackTrace	()V
     //   121: lload_0
     //   122: lreturn
     //   123: astore 4
@@ -810,16 +808,16 @@ public class AVClientInfo
     //   136: aload 5
     //   138: ifnull +8 -> 146
     //   141: aload 5
-    //   143: invokevirtual 132	java/io/BufferedReader:close	()V
+    //   143: invokevirtual 129	java/io/BufferedReader:close	()V
     //   146: aload 4
     //   148: ifnull -36 -> 112
     //   151: aload 4
-    //   153: invokevirtual 133	java/io/FileReader:close	()V
+    //   153: invokevirtual 130	java/io/FileReader:close	()V
     //   156: lconst_0
     //   157: lreturn
     //   158: astore 4
     //   160: aload 4
-    //   162: invokevirtual 168	java/lang/Exception:printStackTrace	()V
+    //   162: invokevirtual 165	java/lang/Exception:printStackTrace	()V
     //   165: lconst_0
     //   166: lreturn
     //   167: astore 4
@@ -830,16 +828,16 @@ public class AVClientInfo
     //   176: aload 5
     //   178: ifnull +8 -> 186
     //   181: aload 5
-    //   183: invokevirtual 132	java/io/BufferedReader:close	()V
+    //   183: invokevirtual 129	java/io/BufferedReader:close	()V
     //   186: aload 4
     //   188: ifnull -76 -> 112
     //   191: aload 4
-    //   193: invokevirtual 133	java/io/FileReader:close	()V
+    //   193: invokevirtual 130	java/io/FileReader:close	()V
     //   196: lconst_0
     //   197: lreturn
     //   198: astore 4
     //   200: aload 4
-    //   202: invokevirtual 168	java/lang/Exception:printStackTrace	()V
+    //   202: invokevirtual 165	java/lang/Exception:printStackTrace	()V
     //   205: lconst_0
     //   206: lreturn
     //   207: astore 4
@@ -850,16 +848,16 @@ public class AVClientInfo
     //   216: aload 5
     //   218: ifnull +8 -> 226
     //   221: aload 5
-    //   223: invokevirtual 132	java/io/BufferedReader:close	()V
+    //   223: invokevirtual 129	java/io/BufferedReader:close	()V
     //   226: aload 4
     //   228: ifnull -116 -> 112
     //   231: aload 4
-    //   233: invokevirtual 133	java/io/FileReader:close	()V
+    //   233: invokevirtual 130	java/io/FileReader:close	()V
     //   236: lconst_0
     //   237: lreturn
     //   238: astore 4
     //   240: aload 4
-    //   242: invokevirtual 168	java/lang/Exception:printStackTrace	()V
+    //   242: invokevirtual 165	java/lang/Exception:printStackTrace	()V
     //   245: lconst_0
     //   246: lreturn
     //   247: astore 5
@@ -868,16 +866,16 @@ public class AVClientInfo
     //   252: aload 6
     //   254: ifnull +8 -> 262
     //   257: aload 6
-    //   259: invokevirtual 132	java/io/BufferedReader:close	()V
+    //   259: invokevirtual 129	java/io/BufferedReader:close	()V
     //   262: aload 4
     //   264: ifnull +8 -> 272
     //   267: aload 4
-    //   269: invokevirtual 133	java/io/FileReader:close	()V
+    //   269: invokevirtual 130	java/io/FileReader:close	()V
     //   272: aload 5
     //   274: athrow
     //   275: astore 4
     //   277: aload 4
-    //   279: invokevirtual 168	java/lang/Exception:printStackTrace	()V
+    //   279: invokevirtual 165	java/lang/Exception:printStackTrace	()V
     //   282: goto -10 -> 272
     //   285: astore 5
     //   287: goto -35 -> 252
@@ -905,7 +903,7 @@ public class AVClientInfo
     //   336: goto -200 -> 136
     //   339: astore 6
     //   341: goto -205 -> 136
-    //   344: ldc 51
+    //   344: ldc 48
     //   346: astore 6
     //   348: goto -283 -> 65
     // Local variable table:
@@ -1035,7 +1033,7 @@ public class AVClientInfo
   public static String getModelReport()
   {
     getCpuInfo();
-    return "model(" + Build.MODEL + ") " + "Mnfc(" + Build.MANUFACTURER + ") " + "dev(" + Build.VERSION.INCREMENTAL + ") " + "sdk(" + Build.VERSION.SDK_INT + ") " + "gl(" + mOpenGLVersion + ")";
+    return "model(" + Build.MODEL + ") Mnfc(" + Build.MANUFACTURER + ") dev(" + Build.VERSION.INCREMENTAL + ") sdk(" + Build.VERSION.SDK_INT + ") gl(" + mOpenGLVersion + ")";
   }
   
   public static int getNumCores()
@@ -1172,11 +1170,11 @@ public class AVClientInfo
     {
       ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)localIterator.next();
       if (localRunningAppProcessInfo.pid != i) {
-        break label135;
+        break label134;
       }
       str = localRunningAppProcessInfo.processName;
     }
-    label135:
+    label134:
     for (;;)
     {
       break;
@@ -1246,11 +1244,11 @@ public class AVClientInfo
     // Byte code:
     //   0: aconst_null
     //   1: astore 6
-    //   3: getstatic 65	com/tencent/TMG/sdk/AVClientInfo:mCoreNumber	I
+    //   3: getstatic 62	com/tencent/TMG/sdk/AVClientInfo:mCoreNumber	I
     //   6: iconst_1
     //   7: if_icmpge +8 -> 15
     //   10: bipush 8
-    //   12: putstatic 65	com/tencent/TMG/sdk/AVClientInfo:mCoreNumber	I
+    //   12: putstatic 62	com/tencent/TMG/sdk/AVClientInfo:mCoreNumber	I
     //   15: iconst_0
     //   16: istore_0
     //   17: aconst_null
@@ -1260,39 +1258,39 @@ public class AVClientInfo
     //   22: lload_1
     //   23: lstore_3
     //   24: iload_0
-    //   25: getstatic 65	com/tencent/TMG/sdk/AVClientInfo:mCoreNumber	I
+    //   25: getstatic 62	com/tencent/TMG/sdk/AVClientInfo:mCoreNumber	I
     //   28: if_icmpge +139 -> 167
-    //   31: new 116	java/io/FileReader
+    //   31: new 113	java/io/FileReader
     //   34: dup
-    //   35: new 217	java/lang/StringBuilder
+    //   35: new 214	java/lang/StringBuilder
     //   38: dup
-    //   39: invokespecial 218	java/lang/StringBuilder:<init>	()V
-    //   42: ldc_w 428
-    //   45: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: invokespecial 215	java/lang/StringBuilder:<init>	()V
+    //   42: ldc_w 423
+    //   45: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   48: iload_0
-    //   49: invokevirtual 231	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   52: ldc_w 430
-    //   55: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   58: invokevirtual 247	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   61: invokespecial 121	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   49: invokevirtual 226	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   52: ldc_w 425
+    //   55: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: invokevirtual 242	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   61: invokespecial 118	java/io/FileReader:<init>	(Ljava/lang/String;)V
     //   64: astore 5
-    //   66: new 123	java/io/BufferedReader
+    //   66: new 120	java/io/BufferedReader
     //   69: dup
     //   70: aload 5
-    //   72: invokespecial 126	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   72: invokespecial 123	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   75: astore 7
     //   77: lload_1
     //   78: lstore_3
     //   79: aload 7
     //   81: ifnull +48 -> 129
     //   84: aload 7
-    //   86: invokevirtual 129	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   86: invokevirtual 126	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   89: astore 6
     //   91: aload 6
-    //   93: invokestatic 255	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   93: invokestatic 250	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   96: ifne +226 -> 322
     //   99: aload 6
-    //   101: invokevirtual 165	java/lang/String:trim	()Ljava/lang/String;
+    //   101: invokevirtual 162	java/lang/String:trim	()Ljava/lang/String;
     //   104: astore 6
     //   106: lload_1
     //   107: lstore_3
@@ -1301,19 +1299,19 @@ public class AVClientInfo
     //   113: lload_1
     //   114: lstore_3
     //   115: aload 6
-    //   117: invokevirtual 158	java/lang/String:length	()I
+    //   117: invokevirtual 155	java/lang/String:length	()I
     //   120: ifle +9 -> 129
     //   123: aload 6
-    //   125: invokestatic 187	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   125: invokestatic 184	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   128: lstore_3
     //   129: aload 7
     //   131: ifnull +8 -> 139
     //   134: aload 7
-    //   136: invokevirtual 132	java/io/BufferedReader:close	()V
+    //   136: invokevirtual 129	java/io/BufferedReader:close	()V
     //   139: aload 5
     //   141: ifnull +8 -> 149
     //   144: aload 5
-    //   146: invokevirtual 133	java/io/FileReader:close	()V
+    //   146: invokevirtual 130	java/io/FileReader:close	()V
     //   149: aload 7
     //   151: astore 6
     //   153: lload_3
@@ -1330,7 +1328,7 @@ public class AVClientInfo
     //   168: lreturn
     //   169: astore 6
     //   171: aload 6
-    //   173: invokevirtual 168	java/lang/Exception:printStackTrace	()V
+    //   173: invokevirtual 165	java/lang/Exception:printStackTrace	()V
     //   176: aload 7
     //   178: astore 6
     //   180: aload 5
@@ -1346,17 +1344,17 @@ public class AVClientInfo
     //   199: aload 6
     //   201: ifnull +8 -> 209
     //   204: aload 6
-    //   206: invokevirtual 132	java/io/BufferedReader:close	()V
+    //   206: invokevirtual 129	java/io/BufferedReader:close	()V
     //   209: aload 7
     //   211: ifnull +8 -> 219
     //   214: aload 7
-    //   216: invokevirtual 133	java/io/FileReader:close	()V
+    //   216: invokevirtual 130	java/io/FileReader:close	()V
     //   219: lconst_0
     //   220: lstore_1
     //   221: goto -62 -> 159
     //   224: astore 5
     //   226: aload 5
-    //   228: invokevirtual 168	java/lang/Exception:printStackTrace	()V
+    //   228: invokevirtual 165	java/lang/Exception:printStackTrace	()V
     //   231: lconst_0
     //   232: lstore_1
     //   233: goto -74 -> 159
@@ -1370,16 +1368,16 @@ public class AVClientInfo
     //   250: aload 6
     //   252: ifnull +8 -> 260
     //   255: aload 6
-    //   257: invokevirtual 132	java/io/BufferedReader:close	()V
+    //   257: invokevirtual 129	java/io/BufferedReader:close	()V
     //   260: aload 7
     //   262: ifnull +8 -> 270
     //   265: aload 7
-    //   267: invokevirtual 133	java/io/FileReader:close	()V
+    //   267: invokevirtual 130	java/io/FileReader:close	()V
     //   270: aload 5
     //   272: athrow
     //   273: astore 6
     //   275: aload 6
-    //   277: invokevirtual 168	java/lang/Exception:printStackTrace	()V
+    //   277: invokevirtual 165	java/lang/Exception:printStackTrace	()V
     //   280: goto -10 -> 270
     //   283: iload_0
     //   284: iconst_1
@@ -1400,7 +1398,7 @@ public class AVClientInfo
     //   315: aload 5
     //   317: astore 7
     //   319: goto -120 -> 199
-    //   322: ldc 51
+    //   322: ldc 48
     //   324: astore 6
     //   326: goto -220 -> 106
     // Local variable table:
@@ -1448,13 +1446,7 @@ public class AVClientInfo
   {
     try
     {
-      int i = new File("/sys/devices/system/cpu/").listFiles(new FileFilter()
-      {
-        public boolean accept(File paramAnonymousFile)
-        {
-          return Pattern.matches("cpu[0-9]", paramAnonymousFile.getName());
-        }
-      }).length;
+      int i = new File("/sys/devices/system/cpu/").listFiles(new AVClientInfo.1CpuFilter()).length;
       return i;
     }
     catch (Exception localException) {}
@@ -1483,7 +1475,7 @@ public class AVClientInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.TMG.sdk.AVClientInfo
  * JD-Core Version:    0.7.0.1
  */

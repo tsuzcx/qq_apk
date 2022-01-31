@@ -9,8 +9,8 @@ import java.util.Map;
 public final class Media_Data
   extends JceStruct
 {
-  static Map cache_extendInfo = new HashMap();
-  public Map extendInfo;
+  static Map<String, String> cache_extendInfo = new HashMap();
+  public Map<String, String> extendInfo;
   public String strImgUrl = "";
   public int uType;
   
@@ -21,7 +21,7 @@ public final class Media_Data
   
   public Media_Data() {}
   
-  public Media_Data(String paramString, int paramInt, Map paramMap)
+  public Media_Data(String paramString, int paramInt, Map<String, String> paramMap)
   {
     this.strImgUrl = paramString;
     this.uType = paramInt;
@@ -48,7 +48,7 @@ public final class Media_Data
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_AIONewestFeed.Media_Data
  * JD-Core Version:    0.7.0.1
  */

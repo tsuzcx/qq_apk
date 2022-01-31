@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DialogActivity;
+import android.view.View;
+import android.view.View.OnLongClickListener;
 
-public class soq
-  implements DialogInterface.OnClickListener
+class soq
+  implements View.OnLongClickListener
 {
-  public soq(DialogActivity paramDialogActivity) {}
+  soq(soo paramsoo, son paramson) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onLongClick(View paramView)
   {
-    this.a.finish();
+    int i = this.jdField_a_of_type_Son.getPosition();
+    if (i >= 0) {
+      this.jdField_a_of_type_Soo.a.b(this.jdField_a_of_type_Son.itemView, i);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     soq
  * JD-Core Version:    0.7.0.1
  */

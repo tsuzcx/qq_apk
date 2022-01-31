@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.nearby.ipc.NearbyProcManager;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcObserver;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class aezt
-  implements Runnable
+  extends aeyh
 {
-  public aezt(NearbyProcManager paramNearbyProcManager, NearbyProcObserver paramNearbyProcObserver, int paramInt, Object[] paramArrayOfObject) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcObserver.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject);
-  }
+  public long a;
+  public structmsg.StructMsg a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aezt
  * JD-Core Version:    0.7.0.1
  */

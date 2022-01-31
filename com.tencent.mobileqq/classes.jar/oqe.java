@@ -1,18 +1,18 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
-import dov.com.qq.im.setting.CaptureEntranceParams;
-import dov.com.tencent.mobileqq.richmedia.capture.util.JumpUtil;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem.ReadInJoyDraftboxContent;
 
-class oqe
-  implements Runnable
+public final class oqe
+  implements Parcelable.Creator<ReadInJoyDraftboxItem.ReadInJoyDraftboxContent>
 {
-  oqe(oqc paramoqc, CameraCaptureView.VideoCaptureResult paramVideoCaptureResult, LocalMediaInfo paramLocalMediaInfo, CaptureEntranceParams paramCaptureEntranceParams, Bundle paramBundle) {}
-  
-  public void run()
+  public ReadInJoyDraftboxItem.ReadInJoyDraftboxContent a(Parcel paramParcel)
   {
-    JumpUtil.a(SlideShowPhotoListManager.a(this.jdField_a_of_type_Oqc.a), this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, this.jdField_a_of_type_DovComQqImSettingCaptureEntranceParams, null, 7, this.jdField_a_of_type_AndroidOsBundle);
+    return new ReadInJoyDraftboxItem.ReadInJoyDraftboxContent(paramParcel);
+  }
+  
+  public ReadInJoyDraftboxItem.ReadInJoyDraftboxContent[] a(int paramInt)
+  {
+    return new ReadInJoyDraftboxItem.ReadInJoyDraftboxContent[paramInt];
   }
 }
 

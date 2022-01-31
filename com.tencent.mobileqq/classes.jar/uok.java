@@ -1,34 +1,97 @@
-import android.graphics.Rect;
-import android.view.TouchDelegate;
 import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tencent.biz.qqstory.storyHome.model.TagUserItem;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.VideoListLayout;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
+import java.util.List;
 
-public final class uok
-  implements Runnable
+class uok
+  implements begw
 {
-  public uok(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  uok(uoh paramuoh, begr parambegr, int paramInt, ukt paramukt) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    Object localObject = new Rect();
-    this.jdField_a_of_type_AndroidViewView.setEnabled(true);
-    this.jdField_a_of_type_AndroidViewView.getHitRect((Rect)localObject);
-    ((Rect)localObject).top -= this.jdField_a_of_type_Int;
-    ((Rect)localObject).bottom += this.b;
-    ((Rect)localObject).left -= this.c;
-    ((Rect)localObject).right += this.d;
-    if (QLog.isColorLevel()) {
-      QLog.d("TouchDelegate", 2, " bounds.top=" + ((Rect)localObject).top + "bounds.bottom=" + ((Rect)localObject).bottom);
+    this.jdField_a_of_type_Begr.e();
+    switch (paramInt)
+    {
     }
-    localObject = new TouchDelegate((Rect)localObject, this.jdField_a_of_type_AndroidViewView);
-    if (View.class.isInstance(this.jdField_a_of_type_AndroidViewView.getParent())) {
-      ((View)this.jdField_a_of_type_AndroidViewView.getParent()).setTouchDelegate((TouchDelegate)localObject);
+    Object localObject2;
+    do
+    {
+      do
+      {
+        return;
+        uoh.b(this.jdField_a_of_type_Uoh, this.jdField_a_of_type_Int);
+        if (this.jdField_a_of_type_Ukt.a().type != 3) {
+          break;
+        }
+      } while (!(this.jdField_a_of_type_Ukt.a().getOwner() instanceof QQUserUIItem));
+      paramView = ((QQUserUIItem)this.jdField_a_of_type_Ukt.a().getOwner()).qq;
+      localObject1 = new StringBuilder();
+      localObject2 = this.jdField_a_of_type_Uoh.a(this.jdField_a_of_type_Int);
+      if (localObject2 != null)
+      {
+        localObject2 = (VideoListLayout)((unw)localObject2).a(2131307559);
+        if (localObject2 != null)
+        {
+          localObject2 = ((VideoListLayout)localObject2).a();
+          if (localObject2 != null)
+          {
+            paramInt = ((StoryHomeHorizontalListView)localObject2).getFirstVisiblePosition();
+            while (paramInt <= ((StoryHomeHorizontalListView)localObject2).getLastVisiblePosition())
+            {
+              List localList = this.jdField_a_of_type_Ukt.d();
+              if ((paramInt >= 0) && (paramInt < localList.size()))
+              {
+                ((StringBuilder)localObject1).append(((StoryVideoItem)localList.get(paramInt)).mVid);
+                if (paramInt < ((StoryHomeHorizontalListView)localObject2).getLastVisiblePosition()) {
+                  ((StringBuilder)localObject1).append(",");
+                }
+              }
+              paramInt += 1;
+            }
+          }
+        }
+      }
+      urp.c("video_nenegative", "close_IDrecommend", 0, 0, new String[] { "", paramView, "", ((StringBuilder)localObject1).toString() });
+      return;
+    } while ((this.jdField_a_of_type_Ukt.a().type != 6) || (!(this.jdField_a_of_type_Ukt.a().getOwner() instanceof TagUserItem)));
+    long l = ((TagUserItem)this.jdField_a_of_type_Ukt.a().getOwner()).tagId;
+    paramView = new StringBuilder();
+    Object localObject1 = this.jdField_a_of_type_Uoh.a(this.jdField_a_of_type_Int);
+    if (localObject1 != null)
+    {
+      localObject1 = (VideoListLayout)((unw)localObject1).a(2131307559);
+      if (localObject1 != null)
+      {
+        localObject1 = ((VideoListLayout)localObject1).a();
+        if (localObject1 != null)
+        {
+          paramInt = ((StoryHomeHorizontalListView)localObject1).getFirstVisiblePosition();
+          while (paramInt <= ((StoryHomeHorizontalListView)localObject1).getLastVisiblePosition())
+          {
+            localObject2 = this.jdField_a_of_type_Ukt.d();
+            if ((paramInt >= 0) && (paramInt < ((List)localObject2).size()))
+            {
+              paramView.append(((StoryVideoItem)((List)localObject2).get(paramInt)).mVid);
+              if (paramInt < ((StoryHomeHorizontalListView)localObject1).getLastVisiblePosition()) {
+                paramView.append(",");
+              }
+            }
+            paramInt += 1;
+          }
+        }
+      }
     }
+    urp.c("video_nenegative", "close_newsrecommend", 0, 0, new String[] { "", String.valueOf(l), "", paramView.toString() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uok
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,55 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.IPlayVideoStatusChangeListener;
-import com.tencent.biz.qqstory.playmode.child.TroopStoryForAIOPlayMode;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.ArrayList;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
+import java.util.List;
 
-public class nqe
-  extends IPlayVideoStatusChangeListener
+class nqe
+  extends BaseAdapter
 {
-  public nqe(TroopStoryForAIOPlayMode paramTroopStoryForAIOPlayMode) {}
+  nqe(nqb paramnqb) {}
   
-  public void a(int paramInt)
+  public int getCount()
   {
-    if (paramInt == this.a.j) {
-      return;
-    }
-    StoryVideoItem localStoryVideoItem = (StoryVideoItem)this.a.a.a.get(paramInt);
-    if (this.a.a(localStoryVideoItem)) {
-      ReportController.b(null, "dc00898", "", "", "0X8007424", "0X8007424", 0, 0, "", "", "", "");
+    return nqb.a(this.a).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return nqb.a(this.a).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131494375, null);
+      paramViewGroup = new nqf(this.a);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131312545));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131302905));
+      paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      ReportController.b(null, "dc00898", "", "", "0X8007427", "0X8007427", 0, 0, "", "", "", "");
-      this.a.j = paramInt;
-      return;
-      ReportController.b(null, "dc00898", "", "", "0X8007FC9", "0X8007FC9", 0, 0, "", "", "", "");
+      GiftServiceBean localGiftServiceBean = (GiftServiceBean)getItem(paramInt);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localGiftServiceBean.t);
+      if (nqb.a(this.a) != paramInt) {
+        break;
+      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842251);
+      return paramView;
+      paramViewGroup = (nqf)paramView.getTag();
     }
+    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130842252);
+    return paramView;
   }
 }
 

@@ -1,19 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelTopCookie;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
 
-public class lsn
-  implements Runnable
+class lsn
+  implements View.OnClickListener
 {
-  public lsn(ArticleInfoModule paramArticleInfoModule, ChannelTopCookie paramChannelTopCookie) {}
+  lsn(lsl paramlsl) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelTopCookie);
+    this.a.a.a().a().at = true;
+    mjg.a(this.a.a);
+    lsl.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lsn
  * JD-Core Version:    0.7.0.1
  */

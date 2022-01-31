@@ -1,38 +1,21 @@
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class rta
-  implements Runnable
+class rta
+  implements View.OnClickListener
 {
-  public rta(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
+  rta(rsv paramrsv, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      if ((AuthDevVerifyCodeActivity.a(this.a) == null) && (!this.a.isFinishing()))
-      {
-        AuthDevVerifyCodeActivity.a(this.a, new QQProgressDialog(this.a.getActivity(), this.a.getTitleBarHeight()));
-        AuthDevVerifyCodeActivity.a(this.a).c(2131435086);
-        AuthDevVerifyCodeActivity.a(this.a).c(true);
-      }
-      if ((AuthDevVerifyCodeActivity.a(this.a) != null) && (!AuthDevVerifyCodeActivity.a(this.a).isShowing())) {
-        AuthDevVerifyCodeActivity.a(this.a).show();
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_Rsv.j();
+    this.jdField_a_of_type_Rsv.o = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Rsv.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rta
  * JD-Core Version:    0.7.0.1
  */

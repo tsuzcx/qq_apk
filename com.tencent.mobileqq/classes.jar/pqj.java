@@ -1,47 +1,23 @@
-import com.tencent.component.network.utils.thread.AsyncTask;
-import com.tencent.component.network.utils.thread.internel.ArrayDeque;
-import java.util.concurrent.Executor;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.SimpleChannelInfo;
 
-public class pqj
-  implements Executor
+public final class pqj
+  implements Parcelable.Creator<SimpleChannelInfo>
 {
-  final ArrayDeque jdField_a_of_type_ComTencentComponentNetworkUtilsThreadInternelArrayDeque = new ArrayDeque();
-  Runnable jdField_a_of_type_JavaLangRunnable;
-  
-  protected void a()
+  public SimpleChannelInfo a(Parcel paramParcel)
   {
-    try
-    {
-      Runnable localRunnable = (Runnable)this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadInternelArrayDeque.poll();
-      this.jdField_a_of_type_JavaLangRunnable = localRunnable;
-      if (localRunnable != null) {
-        AsyncTask.a.execute(this.jdField_a_of_type_JavaLangRunnable);
-      }
-      return;
-    }
-    finally {}
+    return new SimpleChannelInfo(paramParcel);
   }
   
-  public void execute(Runnable paramRunnable)
+  public SimpleChannelInfo[] a(int paramInt)
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadInternelArrayDeque.offer(new pqk(this, paramRunnable));
-      if (this.jdField_a_of_type_JavaLangRunnable == null) {
-        a();
-      }
-      return;
-    }
-    finally
-    {
-      paramRunnable = finally;
-      throw paramRunnable;
-    }
+    return new SimpleChannelInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pqj
  * JD-Core Version:    0.7.0.1
  */

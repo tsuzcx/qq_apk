@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:id="@id/haa" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qzone="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/klg" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.qzone.widget.AsyncImageView android:id="@id/him" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="0.0dip">
+            <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <com.qzone.widget.QZoneHomePageListView android:scrollbarThumbVertical="@drawable/axv" android:scrollbarStyle="insideOverlay" android:id="@id/j" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="0.0dip" android:listSelector="@color/ajr" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" android:layout_weight="1.0" qzone:ptrCoverMode="true" qzone:ptrPaddingTop="@dimen/kd" />
+                <include android:id="@id/klt" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bgl" />
+            </FrameLayout>
+        </LinearLayout>
+        <View android:id="@id/hgv" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:alpha="0.0" />
+        <com.qzone.homepage.ui.component.CustomMenuBarForQzoneHomePage android:id="@id/hgw" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_alignParentBottom="true" />
+        <include android:id="@id/h_x" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_marginTop="75.0dip" android:layout_alignParentTop="true" layout="@layout/buw" />
+        <ViewStub android:id="@id/hh4" android:layout="@layout/bky" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
+        <include android:id="@id/h_u" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ap9" android:layout_marginTop="75.0dip" android:layout_marginRight="@dimen/ap9" android:layout_alignParentTop="true" layout="@layout/bsd" />
+        <ViewStub android:id="@id/hig" android:layout="@layout/bl5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+        <View android:id="@id/d6s" android:background="@color/ajr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <include layout="@layout/bm3" />
+        <FrameLayout android:id="@id/hb" android:background="@color/a6s" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+            <TextView android:textSize="18.0sp" android:gravity="center" android:id="@id/hk" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="6.0dip" android:text="@string/eh" style="@style/uj" />
+        </FrameLayout>
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/j36" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/j39" android:background="#ff000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/j32" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
+        </RelativeLayout>
+        <ImageView android:id="@id/j2w" android:visibility="gone" android:layout_width="385.0dip" android:layout_height="302.0dip" android:layout_marginLeft="-130.0dip" android:layout_marginRight="-80.0dip" android:layout_marginBottom="95.0dip" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:transformPivotX="216.0dip" android:transformPivotY="285.0dip" />
+        <com.qzone.widget.FrameAnimView android:id="@id/j2q" android:visibility="gone" android:layout_width="310.0dip" android:layout_height="310.0dip" android:layout_centerInParent="true" />
+        <com.qzone.widget.FrameAnimView android:id="@id/j2r" android:visibility="gone" android:layout_width="310.0dip" android:layout_height="310.0dip" android:layout_centerInParent="true" />
+        <com.qzone.widget.FrameAnimView android:id="@id/j2o" android:visibility="gone" android:layout_width="375.0dip" android:layout_height="310.0dip" android:layout_centerInParent="true" />
+        <com.qzone.widget.FrameAnimView android:id="@id/j2p" android:visibility="gone" android:layout_width="310.0dip" android:layout_height="310.0dip" android:layout_centerInParent="true" />
+        <com.qzone.widget.FrameAnimView android:id="@id/j2k" android:visibility="gone" android:layout_width="310.0dip" android:layout_height="310.0dip" android:layout_centerInParent="true" />
+        <com.qzone.widget.FrameAnimView android:id="@id/j2l" android:visibility="gone" android:layout_width="310.0dip" android:layout_height="310.0dip" android:layout_centerInParent="true" />
+        <com.qzone.widget.FrameAnimView android:id="@id/j2m" android:visibility="gone" android:layout_width="310.0dip" android:layout_height="310.0dip" android:layout_centerInParent="true" />
+        <com.qzone.widget.FrameAnimView android:id="@id/j2n" android:visibility="gone" android:layout_width="310.0dip" android:layout_height="310.0dip" android:layout_centerInParent="true" />
+        <RelativeLayout android:id="@id/j38" android:background="@drawable/gfn" android:paddingLeft="6.0dip" android:paddingTop="3.0dip" android:paddingRight="6.0dip" android:paddingBottom="10.0dip" android:visibility="gone" android:layout_width="195.0dip" android:layout_height="55.0dip" android:layout_marginBottom="11.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+            <com.qzone.widget.AvatarImageView android:id="@id/j33" android:layout_width="38.0dip" android:layout_height="38.0dip" android:layout_marginLeft="2.0dip" android:layout_marginTop="2.0dip" />
+            <TextView android:textSize="15.0dip" android:textColor="#ff000000" android:id="@id/j35" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="15.0dip" android:singleLine="true" android:layout_toRightOf="@id/j33" />
+            <RelativeLayout android:id="@id/j34" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="0.0dip" android:layout_marginRight="15.0dip" android:layout_toRightOf="@id/j33" android:layout_below="@id/j35">
+                <HorizontalScrollView android:id="@id/ena" android:scrollbars="none" android:layout_width="200.0dip" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                        <TextView android:textSize="10.0dip" android:textColor="#ff000000" android:id="@id/en9" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                        <Space android:id="@id/enb" android:layout_width="@dimen/wh" android:layout_height="fill_parent" />
+                        <TextView android:textSize="10.0dip" android:textColor="#ff000000" android:id="@id/en_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+            </RelativeLayout>
+        </RelativeLayout>
+        <include android:id="@id/j2v" android:layout_width="@dimen/ax8" android:layout_height="@dimen/ax8" android:layout_marginRight="6.0dip" android:layout_marginBottom="6.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" layout="@layout/bri" />
+        <RelativeLayout android:id="@id/j37" android:visibility="gone" android:layout_width="71.19998dip" android:layout_height="71.19998dip" android:layout_marginRight="10.399994dip" android:layout_marginBottom="10.399994dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true">
+            <ImageView android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="3.5999756dip" android:layout_marginTop="7.1999817dip" android:layout_marginRight="3.5999756dip" android:src="@drawable/gfm" android:scaleType="fitXY" />
+            <ImageView android:id="@id/j31" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="13.599976dip" android:scaleType="fitXY" />
+        </RelativeLayout>
+        <include android:id="@id/j2u" android:visibility="gone" android:layout_width="@dimen/ax2" android:layout_height="@dimen/ax2" android:layout_marginRight="1.0dip" android:layout_marginBottom="76.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" layout="@layout/brh" />
+        <include android:id="@id/j2s" android:visibility="gone" android:layout_width="@dimen/ax2" android:layout_height="@dimen/ax2" android:layout_marginRight="59.0dip" android:layout_marginBottom="59.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" layout="@layout/brh" />
+        <include android:id="@id/j2t" android:visibility="gone" android:layout_width="@dimen/ax2" android:layout_height="@dimen/ax2" android:layout_marginRight="75.0dip" android:layout_marginBottom="1.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" layout="@layout/brh" />
+        <RelativeLayout android:id="@id/m9q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+            <com.qzone.component.StrokeTextView android:gravity="center" android:id="@id/m9p" android:layout_width="fill_parent" android:layout_height="70.0dip" android:layout_marginTop="130.0dip" android:layout_marginBottom="130.0dip" />
+        </RelativeLayout>
+    </RelativeLayout>
+</FrameLayout>

@@ -33,15 +33,15 @@ public final class AndroidTrustRootIndex
   
   public X509Certificate findByIssuerAndSignature(X509Certificate paramX509Certificate)
   {
-    Object localObject = null;
     try
     {
-      TrustAnchor localTrustAnchor = (TrustAnchor)this.findByIssuerAndSignatureMethod.invoke(this.trustManager, new Object[] { paramX509Certificate });
-      paramX509Certificate = localObject;
-      if (localTrustAnchor != null) {
-        paramX509Certificate = localTrustAnchor.getTrustedCert();
+      paramX509Certificate = (TrustAnchor)this.findByIssuerAndSignatureMethod.invoke(this.trustManager, new Object[] { paramX509Certificate });
+      if (paramX509Certificate != null)
+      {
+        paramX509Certificate = paramX509Certificate.getTrustedCert();
+        return paramX509Certificate;
       }
-      return paramX509Certificate;
+      return null;
     }
     catch (IllegalAccessException paramX509Certificate)
     {

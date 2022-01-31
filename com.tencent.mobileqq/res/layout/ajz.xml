@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.activity.fling.TopGestureLayout android:id="@id/k1c" android:layout_width="375.0dip" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView android:id="@id/k1d" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+</com.tencent.mobileqq.activity.fling.TopGestureLayout>

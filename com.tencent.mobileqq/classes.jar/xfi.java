@@ -1,19 +1,82 @@
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagDBManager;
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.widgets.TabLayout;
+import com.tencent.biz.widgets.TabLayout.TabAdapter.1;
+import java.util.List;
 
-public class xfi
-  implements Runnable
+public abstract class xfi<T>
+  extends BaseAdapter
 {
-  public xfi(PasswdRedBagManager paramPasswdRedBagManager, String paramString) {}
+  protected Context a;
+  public TabLayout a;
+  protected List<T> a;
   
-  public void run()
+  public xfi(Context paramContext, List<T> paramList)
   {
-    PasswdRedBagManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPasswdRedBagManager).a(this.jdField_a_of_type_JavaLangString, true);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  protected abstract int a();
+  
+  public void a(TabLayout paramTabLayout)
+  {
+    this.jdField_a_of_type_ComTencentBizWidgetsTabLayout = paramTabLayout;
+  }
+  
+  protected abstract void a(xfj paramxfj, T paramT, int paramInt);
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size() + 1;
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject1 = null;
+    if (paramInt < getCount() - 1)
+    {
+      Object localObject2 = this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.a(paramInt);
+      paramView = (View)localObject2;
+      if (localObject2 == null)
+      {
+        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(a(), paramViewGroup, false);
+        paramView.post(new TabLayout.TabAdapter.1(this, paramInt, paramView));
+      }
+      localObject2 = new xfj(paramView, null);
+      paramView.setTranslationX(0.0F);
+      paramViewGroup = localObject1;
+      if (this.jdField_a_of_type_JavaUtilList != null) {
+        paramViewGroup = this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      }
+      a((xfj)localObject2, paramViewGroup, paramInt);
+      return paramView;
+    }
+    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131494397, paramViewGroup, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     xfi
  * JD-Core Version:    0.7.0.1
  */

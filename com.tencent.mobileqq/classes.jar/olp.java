@@ -1,53 +1,22 @@
-import android.app.Activity;
-import com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
-import com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
-import com.tencent.biz.qqstory.takevideo.EditWebVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.qphone.base.util.QLog;
 
 public class olp
-  implements Runnable
+  implements oll
 {
-  public olp(EditWebVideoPartManager paramEditWebVideoPartManager, EditVideoParams.EditSource paramEditSource, PublishParam paramPublishParam, Activity paramActivity) {}
+  public olp(VideoView paramVideoView) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager, null);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_Int = 0;
-    EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a("extra_bless_latitude", 0.0D));
-    EditWebVideoPartManager.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a("extra_bless_longitude", 0.0D));
-    boolean bool1;
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditRecordVideoSource))
+    if (paramBoolean)
     {
-      EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager);
-      bool1 = false;
-    }
-    for (;;)
-    {
-      EncodeVideoTask localEncodeVideoTask = new EncodeVideoTask(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam.b, bool1, EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager));
-      localEncodeVideoTask.a(EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager));
-      localEncodeVideoTask.execute(new Void[0]);
+      QLog.d("gifvideo.VideoView", 1, "install success");
+      VideoView.a(this.a, 2);
+      VideoView.a(this.a);
       return;
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource))
-      {
-        boolean bool2 = true;
-        int i = EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam);
-        bool1 = bool2;
-        if (i != 0)
-        {
-          EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager).a(i);
-          bool1 = bool2;
-        }
-      }
-      else
-      {
-        EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager).a(-13);
-        bool1 = false;
-      }
     }
+    QLog.d("gifvideo.VideoView", 1, "install fail");
+    VideoView.a(this.a, -1);
   }
 }
 

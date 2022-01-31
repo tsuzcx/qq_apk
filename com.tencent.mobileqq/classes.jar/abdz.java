@@ -1,64 +1,95 @@
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.Animation;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.activity.NearbyActivity.TabInfo;
+import com.tencent.mobileqq.fragment.CommonTabFragment;
+import com.tencent.mobileqq.fragment.HotChatFragment;
+import com.tencent.mobileqq.fragment.NearbyBaseFragment;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.mobileqq.fragment.NearbyMsgFragment;
+import com.tencent.mobileqq.fragment.NowLiveFragment;
+import java.util.ArrayList;
 
 public class abdz
-  implements ArkViewImplement.LoadCallback
+  extends FragmentPagerAdapter
 {
-  boolean jdField_a_of_type_Boolean = true;
+  public HotChatFragment a;
+  public NearbyHybridFragment a;
+  NearbyMsgFragment jdField_a_of_type_ComTencentMobileqqFragmentNearbyMsgFragment;
+  public NowLiveFragment a;
   
-  public abdz(ArkRecommendController paramArkRecommendController, boolean paramBoolean, View paramView1, BaseChatItemLayout paramBaseChatItemLayout, View paramView2) {}
-  
-  @TargetApi(11)
-  public void onLoadFinish(int paramInt)
+  public abdz(NearbyActivity paramNearbyActivity, FragmentManager paramFragmentManager)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController.a();
-    if ((paramInt != 1) || (localObject == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArkRecommendController", 2, "getAttachArkView.loadFinish.chatPie == null!");
-      }
-    }
-    do
+    super(paramFragmentManager);
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.a.size();
+  }
+  
+  public Fragment getItem(int paramInt)
+  {
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.a(paramInt);
+    Object localObject2 = localObject1;
+    NearbyActivity.TabInfo localTabInfo;
+    if (localObject1 == null)
     {
-      return;
-      if ((!this.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_Boolean)) {
-        break;
+      localTabInfo = (NearbyActivity.TabInfo)this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.a.get(paramInt);
+      if (localTabInfo.tabType != 2) {
+        break label82;
       }
-      paramInt = this.jdField_a_of_type_AndroidViewView.getMeasuredHeight();
-      if ((((BaseChatPie)localObject).f() != 0) && (((BaseChatPie)localObject).a.getHeight() < this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.getMeasuredHeight() + paramInt))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArkRecommendController", 2, "listView.getHeight() < height, hide panel!");
-        }
-        ((BaseChatPie)localObject).ai();
+      if (this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment == null) {
+        this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment = new NowLiveFragment();
       }
-      localObject = new ValueAnimation(Integer.valueOf(0), Integer.valueOf(paramInt), new abea(this, paramInt));
-      ((ValueAnimation)localObject).setInterpolator(new AccelerateInterpolator());
-      ((ValueAnimation)localObject).setDuration(200L);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.startAnimation((Animation)localObject);
-      this.jdField_a_of_type_Boolean = false;
-    } while (!QLog.isColorLevel());
-    QLog.d("ArkRecommendController", 2, "getAttachArkView.do animation..");
-    return;
-    if (Build.VERSION.SDK_INT >= 11) {
-      this.jdField_b_of_type_AndroidViewView.setAlpha(1.0F);
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment;
     }
-    this.jdField_b_of_type_AndroidViewView.requestLayout();
-    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    for (;;)
+    {
+      localObject2 = localObject1;
+      if (localObject1 != null)
+      {
+        ((NearbyBaseFragment)localObject1).a(localTabInfo);
+        localObject2 = localObject1;
+      }
+      return localObject2;
+      label82:
+      if (localTabInfo.tabType == 3)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment == null) {
+          this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment = new HotChatFragment();
+        }
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment;
+      }
+      else if (localTabInfo.tabType == 4)
+      {
+        localObject1 = new CommonTabFragment();
+      }
+      else if (localTabInfo.tabType == 5)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment == null) {
+          this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment = new NearbyHybridFragment();
+        }
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment;
+      }
+      else if (localTabInfo.tabType == 6)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyMsgFragment == null) {
+          this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyMsgFragment = new NearbyMsgFragment();
+        }
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyMsgFragment;
+      }
+      else if (localTabInfo.tabType == 7)
+      {
+        localObject1 = new CommonTabFragment();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abdz
  * JD-Core Version:    0.7.0.1
  */

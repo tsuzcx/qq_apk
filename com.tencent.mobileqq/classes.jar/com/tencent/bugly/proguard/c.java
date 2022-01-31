@@ -65,7 +65,6 @@ public class c
   }
   
   public final <T> T b(String paramString, T paramT)
-    throws b
   {
     Object localObject = null;
     if (this.d != null) {

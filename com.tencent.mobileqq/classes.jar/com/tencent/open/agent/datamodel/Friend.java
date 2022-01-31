@@ -1,14 +1,14 @@
 package com.tencent.open.agent.datamodel;
 
-import alkm;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bbzu;
 
 public class Friend
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new alkm();
+  public static final Parcelable.Creator<Friend> CREATOR = new bbzu();
   public int a;
   public String a;
   public int b;
@@ -89,7 +89,7 @@ public class Friend
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.datamodel.Friend
  * JD-Core Version:    0.7.0.1
  */

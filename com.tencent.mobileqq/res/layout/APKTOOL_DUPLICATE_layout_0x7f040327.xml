@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a11bd" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a11d0" android:background="#fff1f1f1" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02f1" android:paddingTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d040c" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02f1" android:paddingBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d040c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02f1" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02f1" android:layout_marginBottom="10.0dip">
-        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0400" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c05af" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a11d1" android:layout_width="0.0dip" android:layout_height="wrap_content" android:lines="1" android:singleLine="true" android:layout_weight="1.0" />
-        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0400" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0273" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a11d2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:lines="1" android:singleLine="true" />
-    </LinearLayout>
-</LinearLayout>

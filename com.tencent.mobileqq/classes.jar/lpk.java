@@ -1,34 +1,48 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
+import android.util.SparseArray;
 
 public class lpk
-  implements Runnable
 {
-  public lpk(ReadinjoySPEventReport paramReadinjoySPEventReport, int paramInt, long paramLong) {}
+  public short a;
+  public byte[] a;
+  public short b = 240;
+  public short c;
+  public short d;
   
-  public void run()
+  public lpk(byte[] paramArrayOfByte)
   {
-    ArrayList localArrayList = new ArrayList();
-    oidb_cmd0x80a.AttributeList localAttributeList1 = new oidb_cmd0x80a.AttributeList();
-    localAttributeList1.att_id.set(1);
-    localAttributeList1.att_name.set("action");
-    localAttributeList1.att_value.set("" + this.jdField_a_of_type_Int);
-    oidb_cmd0x80a.AttributeList localAttributeList2 = new oidb_cmd0x80a.AttributeList();
-    localAttributeList2.att_id.set(2);
-    localAttributeList2.att_name.set("leavetime");
-    localAttributeList2.att_value.set(String.valueOf(this.jdField_a_of_type_Long / 1000L));
-    localArrayList.add(localAttributeList1);
-    localArrayList.add(localAttributeList2);
-    PublicAccountUtil.a(20, "AppinpushDisappear", localArrayList);
+    this.jdField_a_of_type_Short = 320;
+    paramArrayOfByte = leq.a(paramArrayOfByte);
+    lep locallep = (lep)paramArrayOfByte.get(4);
+    if (locallep != null) {
+      this.jdField_a_of_type_ArrayOfByte = locallep.a();
+    }
+    if (this.jdField_a_of_type_ArrayOfByte != null)
+    {
+      paramArrayOfByte = (lep)paramArrayOfByte.get(3);
+      if (paramArrayOfByte != null)
+      {
+        paramArrayOfByte = paramArrayOfByte.a();
+        this.b = ((short)(paramArrayOfByte[0] << 8 | paramArrayOfByte[1] & 0xFF));
+        this.jdField_a_of_type_Short = ((short)(paramArrayOfByte[2] << 8 | paramArrayOfByte[3] & 0xFF));
+        this.c = ((short)(paramArrayOfByte[4] << 8 | paramArrayOfByte[5] & 0xFF));
+        int i = paramArrayOfByte[6];
+        this.d = ((short)(paramArrayOfByte[7] & 0xFF | i << 8));
+      }
+    }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("SwitchFaceItem face.length = ");
+    if (this.jdField_a_of_type_ArrayOfByte != null) {}
+    for (int i = this.jdField_a_of_type_ArrayOfByte.length;; i = 0) {
+      return i + ", width = " + this.jdField_a_of_type_Short + ", height = " + this.b + ", fameWidth = " + this.c + ", frameHeight = " + this.d;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lpk
  * JD-Core Version:    0.7.0.1
  */

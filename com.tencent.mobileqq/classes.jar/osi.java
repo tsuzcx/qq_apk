@@ -1,36 +1,19 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.channel.CmdTaskManger;
-import com.tencent.biz.qqstory.channel.NetworkRequest;
-import com.tencent.biz.qqstory.network.request.GetTroopAssistantFeedIdListRequest;
-import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.FeedIdListCache;
-import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.GetFeedIdListResult;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-public class osi
-  extends JobSegment
+class osi
+  implements View.OnClickListener
 {
-  private FeedListPageLoaderBase.FeedIdListCache a;
+  osi(osh paramosh, opw paramopw, qtb paramqtb) {}
   
-  public osi(@NonNull FeedListPageLoaderBase.FeedIdListCache paramFeedIdListCache)
+  public void onClick(View paramView)
   {
-    this.a = paramFeedIdListCache;
-  }
-  
-  protected void a(JobContext paramJobContext, Integer paramInteger)
-  {
-    Object localObject = this.a.a(paramInteger.intValue(), 5);
-    if ((((FeedListPageLoaderBase.GetFeedIdListResult)localObject).a.size() > 0) || (((FeedListPageLoaderBase.GetFeedIdListResult)localObject).b))
-    {
-      SLog.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
-      notifyResult(localObject);
-      return;
+    if (osh.a(this.jdField_a_of_type_Osh) == null) {
+      osh.a(this.jdField_a_of_type_Osh, new beki(osh.a(this.jdField_a_of_type_Osh)));
     }
-    localObject = new GetTroopAssistantFeedIdListRequest();
-    ((GetTroopAssistantFeedIdListRequest)localObject).a = this.a.a();
-    CmdTaskManger.a().a((NetworkRequest)localObject, new osj(this, paramJobContext, paramInteger));
+    osh.a(this.jdField_a_of_type_Osh).a((oqh)this.jdField_a_of_type_Opw, this.jdField_a_of_type_Opw.a().mDislikeInfos);
+    osh.a(this.jdField_a_of_type_Osh).a(paramView, new osj(this));
   }
 }
 

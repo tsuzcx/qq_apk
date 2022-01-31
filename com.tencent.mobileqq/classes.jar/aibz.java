@@ -1,45 +1,44 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Handler;
-import com.tencent.mobileqq.service.gamecenter.AppLaucherHelper;
-import com.tencent.qphone.base.util.QLog;
-import oicq.wlogin_sdk.request.WFastLoginInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.request.WtloginHelper;
-import oicq.wlogin_sdk.request.WtloginListener;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.widget.SimpleTextView;
 
-public class aibz
-  extends WtloginListener
+class aibz
+  extends benv
 {
-  public aibz(AppLaucherHelper paramAppLaucherHelper, String paramString, WtloginHelper paramWtloginHelper, int paramInt, Context paramContext) {}
-  
-  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
+  aibz(aibw paramaibw, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    super.OnException(paramErrMsg, paramInt, paramWUserSigInfo);
-    if (QLog.isColorLevel()) {
-      QLog.d(getClass().getSimpleName(), 2, "geta1 OnException " + paramErrMsg);
-    }
-    AppLaucherHelper.a = false;
-    this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.b.removeMessages(0);
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
   }
   
-  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
+  public View a(int paramInt, Object paramObject, benu parambenu, View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_ComTencentMobileqqServiceGamecenterAppLaucherHelper.b.removeMessages(0);
-    AppLaucherHelper.a = false;
-    if (paramInt2 != 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(getClass().getSimpleName(), 2, "geta1 failed " + paramInt2);
-      }
-      return;
+    parambenu = super.a(paramInt, paramObject, parambenu, paramOnClickListener);
+    if ((parambenu instanceof SimpleTextView)) {
+      parambenu.setTag(paramObject);
     }
-    paramArrayOfByte1 = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
-    paramArrayOfByte1.putExtras(this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo));
-    paramArrayOfByte1.setFlags(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramArrayOfByte1);
+    return parambenu;
+  }
+  
+  public void a(int paramInt, Object paramObject, benu[] paramArrayOfbenu)
+  {
+    paramInt = 0;
+    if ((paramArrayOfbenu == null) || (paramArrayOfbenu.length <= 0)) {}
+    for (;;)
+    {
+      return;
+      if (paramArrayOfbenu.length < 0)
+      {
+        paramArrayOfbenu[0].b = 0;
+        paramArrayOfbenu[0].a = 0;
+        paramInt = 1;
+      }
+      while (paramInt < paramArrayOfbenu.length)
+      {
+        paramArrayOfbenu[paramInt].b = -1;
+        paramArrayOfbenu[paramInt].a = -1;
+        paramInt += 1;
+      }
+    }
   }
 }
 

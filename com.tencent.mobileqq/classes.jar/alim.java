@@ -1,35 +1,21 @@
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.AuthorityLoginView;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.widget.ImageView;
 
 class alim
-  implements Runnable
+  extends beem
 {
-  alim(alil paramalil, String paramString) {}
+  alim(alij paramalij) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((AuthorityLoginView.a(this.jdField_a_of_type_Alil.a.a) instanceof AuthorityActivity)) {
-      ((AuthorityActivity)AuthorityLoginView.a(this.jdField_a_of_type_Alil.a.a)).a(this.jdField_a_of_type_JavaLangString, false);
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Alil.a.a.a != null)
-      {
-        this.jdField_a_of_type_Alil.a.a.a.dismiss();
-        this.jdField_a_of_type_Alil.a.a.a = null;
-      }
-      return;
-      if ((AuthorityLoginView.a(this.jdField_a_of_type_Alil.a.a) instanceof QuickLoginAuthorityActivity)) {
-        ((QuickLoginAuthorityActivity)AuthorityLoginView.a(this.jdField_a_of_type_Alil.a.a)).a(this.jdField_a_of_type_JavaLangString, false);
-      }
-    }
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 200L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alim
  * JD-Core Version:    0.7.0.1
  */

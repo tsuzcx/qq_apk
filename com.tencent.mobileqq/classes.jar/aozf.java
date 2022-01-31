@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.mobileqq.shortvideo.util.videoconverter.ShortVideoTravellerManager.TravellerVideoItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class aozf
-  implements Parcelable.Creator
+class aozf
+  implements View.OnClickListener
 {
-  public ShortVideoTravellerManager.TravellerVideoItem a(Parcel paramParcel)
-  {
-    return new ShortVideoTravellerManager.TravellerVideoItem(paramParcel);
-  }
+  aozf(aozd paramaozd, String paramString) {}
   
-  public ShortVideoTravellerManager.TravellerVideoItem[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new ShortVideoTravellerManager.TravellerVideoItem[paramInt];
+    apck.b(this.jdField_a_of_type_Aozd.a, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aozf
  * JD-Core Version:    0.7.0.1
  */

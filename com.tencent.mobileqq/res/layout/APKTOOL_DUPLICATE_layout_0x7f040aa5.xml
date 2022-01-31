@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.widget.FeedImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2fcb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" />
-    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2fcc" android:background="@android:color/transparent" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
-        <CheckBox android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2fcd" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d65" android:layout_width="wrap_content" android:layout_height="wrap_content" android:button="@null" />
-    </FrameLayout>
-</RelativeLayout>

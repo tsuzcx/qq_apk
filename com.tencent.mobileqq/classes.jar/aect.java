@@ -1,36 +1,33 @@
-import android.os.Handler;
-import com.tencent.mobileqq.intervideo.huayang.HuayangCrashReport;
-import com.tencent.mobileqq.intervideo.huayang.HuayangPluginNewDownloader;
-import com.tencent.mobileqq.intervideo.huayang.Monitor;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3;
 
-public class aect
-  implements Runnable
+class aect
+  implements Animator.AnimatorListener
 {
-  public aect(HuayangPluginNewDownloader paramHuayangPluginNewDownloader) {}
+  aect(aecs paramaecs) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    try
-    {
-      HuayangPluginNewDownloader.a(this.a);
-      return;
+    if (aecp.a(this.a.a.this$0) != null) {
+      aecp.a(this.a.a.this$0).setVisibility(0);
     }
-    catch (Throwable localThrowable)
-    {
-      Monitor.a("3228166");
-      HuayangCrashReport.a(new RuntimeException("huayangPluginManager downloadException", localThrowable));
-      return;
-    }
-    finally
-    {
-      HuayangPluginNewDownloader.a(this.a).removeCallbacks(HuayangPluginNewDownloader.a(this.a));
-      HuayangPluginNewDownloader.a(this.a, false);
+    if (aecp.a(this.a.a.this$0) != null) {
+      aecp.a(this.a.a.this$0).setVisibility(4);
     }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aect
  * JD-Core Version:    0.7.0.1
  */

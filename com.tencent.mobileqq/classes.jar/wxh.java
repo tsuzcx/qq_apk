@@ -1,19 +1,30 @@
 import android.view.View;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.FrameLayout;
 
 class wxh
-  implements BubblePopupWindow.OnDismissListener
+  implements Animation.AnimationListener
 {
-  wxh(wxg paramwxg, View paramView) {}
+  wxh(wxe paramwxe) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    if (wxe.a(this.a) != null) {
+      wxe.a(this.a).setVisibility(4);
+    }
+    if (wxe.a(this.a) != null) {
+      wxe.a(this.a).setAlpha(1.0F);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wxh
  * JD-Core Version:    0.7.0.1
  */

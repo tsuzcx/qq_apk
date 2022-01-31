@@ -1,59 +1,82 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardWebviewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebUiMethodInterface;
-import com.tencent.util.URLUtil;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class agty
-  extends BroadcastReceiver
 {
-  public agty(ProfileCardWebviewPlugin paramProfileCardWebviewPlugin) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private final Conversation jdField_a_of_type_ComTencentMobileqqActivityConversation;
+  private DragFrameLayout jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout;
+  private View b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public agty(Conversation paramConversation)
   {
-    if (paramIntent == null) {}
-    do
-    {
-      return;
-      paramContext = this.a.mRuntime.a();
-    } while ((paramContext == null) || (paramContext.isFinishing()));
-    paramIntent = this.a.mRuntime.a(this.a.mRuntime.a());
-    if ((paramIntent != null) && ((paramIntent instanceof WebUiUtils.WebUiMethodInterface)))
-    {
-      paramIntent = ((WebUiUtils.WebUiMethodInterface)paramIntent).b();
-      if ((TextUtils.isEmpty(paramIntent)) || (!paramIntent.contains("entryId"))) {
-        break label232;
-      }
+    this.jdField_a_of_type_ComTencentMobileqqActivityConversation = paramConversation;
+    b();
+  }
+  
+  private void a(String paramString)
+  {
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), QQBrowserDelegationActivity.class);
+    localIntent.putExtra("big_brother_source_key", "biz_src_jc_aio");
+    localIntent.putExtra("key_isReadModeEnabled", true);
+    localIntent.putExtra("url", paramString);
+    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a().startActivity(localIntent);
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = ((DragFrameLayout)this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a().findViewById(2131299135));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a().getLayoutInflater().inflate(2131493566, this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout, false);
+    this.b = this.jdField_a_of_type_AndroidViewView.findViewById(2131297557);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131297556).setBackgroundColor(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a().getColor(2131099863));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131301962));
+    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new agtz(this));
+    ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131301964)).setOnClickListener(new agua(this));
+  }
+  
+  private static void b(View paramView)
+  {
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(2, 0.0F, 2, 0.0F, 2, -1.0F, 2, 0.0F);
+    localTranslateAnimation.setInterpolator(new DecelerateInterpolator());
+    localTranslateAnimation.setDuration(300L);
+    paramView.startAnimation(localTranslateAnimation);
+  }
+  
+  public void a()
+  {
+    bfod.a(this.jdField_a_of_type_AndroidViewView);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SpringBigInsertPage", 2, "showHongbaoLayer | imgUrl is: " + paramString1 + " actionUrl: " + paramString2);
     }
-    label232:
-    for (this.a.a = URLUtil.a(URLUtil.a(paramIntent), "entryId", 2);; this.a.a = 2)
+    if (!mpl.a(paramString1))
     {
-      paramContext.finish();
-      paramContext = new Intent(this.a.mRuntime.a(), FriendProfileCardActivity.class);
-      paramIntent = new ProfileActivity.AllInOne(this.a.mRuntime.a().getCurrentAccountUin(), 0);
-      if (this.a.a == 0) {
-        paramContext.setFlags(67108864);
-      }
-      paramContext.putExtra("AllInOne", paramIntent);
-      this.a.mRuntime.a().startActivity(paramContext);
-      paramContext = new Intent();
-      paramContext.putExtra("closeSpecialLogic", true);
-      this.a.mRuntime.a().setResult(-1, paramContext);
-      this.a.mRuntime.a().finish();
+      QLog.d("SpringBigInsertPage", 2, "error, invalide url...");
       return;
     }
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new agub(this, paramString2));
+    PreloadManager.a().c(paramString1, new aguc(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agty
  * JD-Core Version:    0.7.0.1
  */

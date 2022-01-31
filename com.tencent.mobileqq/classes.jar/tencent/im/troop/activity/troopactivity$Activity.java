@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class troopactivity$Activity
-  extends MessageMicro
+  extends MessageMicro<Activity>
 {
   public static final int STR_ACTIVITY_ID_FIELD_NUMBER = 1;
   public static final int STR_COVER_URL_FIELD_NUMBER = 5;
@@ -29,7 +29,7 @@ public final class troopactivity$Activity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.troop.activity.troopactivity.Activity
  * JD-Core Version:    0.7.0.1
  */

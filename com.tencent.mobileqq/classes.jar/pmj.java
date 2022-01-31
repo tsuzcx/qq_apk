@@ -1,21 +1,38 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.component.media.image.ImageKey;
-import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
-import com.tencent.component.media.image.UICallbackTask;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.wrappers.media.MediaVideoView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentPGCShortContentBig;
+import com.tencent.qphone.base.util.QLog;
 
 public class pmj
-  implements Runnable
+  implements omb
 {
-  public pmj(UICallbackTask paramUICallbackTask, ImageKey paramImageKey, Drawable paramDrawable) {}
+  public pmj(ComponentPGCShortContentBig paramComponentPGCShortContentBig, prb paramprb) {}
   
-  public void run()
+  public void a(String[] paramArrayOfString1, String[] paramArrayOfString2)
   {
-    this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.listener.onImageLoaded(UICallbackTask.a(this.jdField_a_of_type_ComTencentComponentMediaImageUICallbackTask, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey), this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options);
+    if ((ComponentPGCShortContentBig.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPGCShortContentBig) != null) && ((ComponentPGCShortContentBig.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPGCShortContentBig) instanceof VideoView)))
+    {
+      if ((paramArrayOfString2 != null) && (paramArrayOfString2.length > 0))
+      {
+        paramArrayOfString2 = paramArrayOfString2[0];
+        if ((!TextUtils.isEmpty(this.jdField_a_of_type_Prb.e)) && (this.jdField_a_of_type_Prb.e.equals(paramArrayOfString1[0])) && (this.jdField_a_of_type_Prb.e.equals(((MediaVideoView)ComponentPGCShortContentBig.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPGCShortContentBig)).a())))
+        {
+          ComponentPGCShortContentBig.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentPGCShortContentBig, paramArrayOfString2);
+          return;
+        }
+        QLog.d("gifvideo.ComponentPGCShortContentBig", 2, "not current video");
+        return;
+      }
+      QLog.d("gifvideo.ComponentPGCShortContentBig", 2, "urls null");
+      return;
+    }
+    QLog.d("gifvideo.ComponentPGCShortContentBig", 2, "not vieoview");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pmj
  * JD-Core Version:    0.7.0.1
  */

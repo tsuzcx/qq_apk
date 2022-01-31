@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.troop.data;
 
-import ajii;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import ayna;
 
 public class TroopBarMyBar
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ajii();
+  public static final Parcelable.Creator<TroopBarMyBar> CREATOR = new ayna();
   public int a;
   public String a;
   public int b;
@@ -125,7 +125,7 @@ public class TroopBarMyBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopBarMyBar
  * JD-Core Version:    0.7.0.1
  */

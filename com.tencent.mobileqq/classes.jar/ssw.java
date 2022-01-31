@@ -1,32 +1,23 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tribe.async.reactive.StreamFunction;
 
-public class ssw
-  implements View.OnClickListener
+class ssw
+  extends StreamFunction<ssm, ssm>
 {
-  public ssw(ForwardRecentActivity paramForwardRecentActivity) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void onClick(View paramView)
+  ssw(ssr paramssr) {}
+  
+  protected void a(ssm paramssm)
   {
-    paramView = this.a.getIntent().getExtras();
-    paramView.putString("uin", AppConstants.aA);
-    paramView.putInt("uintype", -1);
-    paramView.putString("uinname", "小视频");
-    this.a.a.a(ForwardAbility.ForwardAbilityType.m.intValue(), paramView);
-    StoryReportor.a("plus_shoot", "clk_option", 0, 0, new String[] { "", "", "", "" });
-    StoryReportor.a("plus_shoot", "exp_tip", 0, 0, new String[] { "", "", "", "" });
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = (i + 1);
+    urk.a("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary() [%d] will fetch vidlist of uinion_id: %s", Integer.valueOf(i), paramssm.a);
+    notifyResult(paramssm);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ssw
  * JD-Core Version:    0.7.0.1
  */

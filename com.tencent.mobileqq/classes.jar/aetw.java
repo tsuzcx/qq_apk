@@ -1,35 +1,23 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.nearby.NearbyEntityManagerFactory;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.Constants.LogoutReason;
+import android.os.MessageQueue.IdleHandler;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 
 public class aetw
-  implements Runnable
+  implements MessageQueue.IdleHandler
 {
-  public aetw(NearbyAppInterface paramNearbyAppInterface) {}
+  public aetw(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void run()
+  public boolean queueIdle()
   {
-    if (!this.a.a.verifyAuthentication())
-    {
-      QLog.e("NearbyAppInterface", 1, "verify fail!");
-      if (this.a.isLogin()) {
-        this.a.logout(true);
-      }
-      Intent localIntent = new Intent("mqq.intent.action.ACCOUNT_KICKED");
-      localIntent.putExtra("title", "登录失败");
-      localIntent.putExtra("msg", "登录失败");
-      localIntent.putExtra("reason", Constants.LogoutReason.kicked);
-      localIntent.addFlags(268435456);
-      BaseApplicationImpl.sApplication.startActivity(localIntent);
-    }
+    this.a.a.requestFocus();
+    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aetw
  * JD-Core Version:    0.7.0.1
  */

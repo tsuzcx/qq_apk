@@ -1,20 +1,16 @@
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager;
-
-public class aebi
-  implements Runnable
+class aebi
+  extends aket
 {
-  public aebi(ImaxAdVideoPreloadManager paramImaxAdVideoPreloadManager, QQAppInterface paramQQAppInterface) {}
+  aebi(aebg paramaebg) {}
   
-  public void run()
+  public void b()
   {
-    PublicAccountManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.a.b(false, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aebi
  * JD-Core Version:    0.7.0.1
  */

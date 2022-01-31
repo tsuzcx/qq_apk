@@ -1,7 +1,5 @@
 package com.tencent.widget;
 
-import amkp;
-import amkq;
 import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -13,6 +11,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
 import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
+import bemr;
 import com.tencent.qphone.base.util.QLog;
 
 public class PullToZoomListView
@@ -21,20 +20,20 @@ public class PullToZoomListView
   private static final Interpolator a;
   protected float a;
   protected int a;
-  protected amkq a;
-  public View a;
-  public FrameLayout a;
-  public boolean a;
+  protected View a;
+  protected FrameLayout a;
+  protected PullToZoomListView.ScalingRunnalable a;
+  protected boolean a;
   protected float b;
-  public int b;
+  protected int b;
   protected boolean b;
   protected float c;
-  public int c;
+  protected int c;
   protected int d;
   
   static
   {
-    jdField_a_of_type_AndroidViewAnimationInterpolator = new amkp();
+    jdField_a_of_type_AndroidViewAnimationInterpolator = new bemr();
   }
   
   public PullToZoomListView(Context paramContext)
@@ -78,7 +77,7 @@ public class PullToZoomListView
     if ((this.jdField_a_of_type_AndroidWidgetFrameLayout.getBottom() >= this.jdField_b_of_type_Int) && (QLog.isColorLevel())) {
       QLog.d("PullToZoomListView", 2, "endScraling");
     }
-    this.jdField_a_of_type_Amkq.a(200L);
+    this.jdField_a_of_type_ComTencentWidgetPullToZoomListView$ScalingRunnalable.a(200L);
   }
   
   private void a(Context paramContext)
@@ -86,7 +85,7 @@ public class PullToZoomListView
     DisplayMetrics localDisplayMetrics = new DisplayMetrics();
     ((Activity)paramContext).getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
     this.d = localDisplayMetrics.heightPixels;
-    this.jdField_a_of_type_Amkq = new amkq(this);
+    this.jdField_a_of_type_ComTencentWidgetPullToZoomListView$ScalingRunnalable = new PullToZoomListView.ScalingRunnalable(this);
   }
   
   private void a(View paramView)
@@ -134,8 +133,8 @@ public class PullToZoomListView
     for (;;)
     {
       return super.dispatchTouchEvent(paramMotionEvent);
-      if (!this.jdField_a_of_type_Amkq.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Amkq.a();
+      if (!this.jdField_a_of_type_ComTencentWidgetPullToZoomListView$ScalingRunnalable.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_ComTencentWidgetPullToZoomListView$ScalingRunnalable.a();
       }
       this.jdField_a_of_type_Float = paramMotionEvent.getY();
       this.jdField_a_of_type_Int = paramMotionEvent.getPointerId(0);
@@ -231,7 +230,7 @@ public class PullToZoomListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.widget.PullToZoomListView
  * JD-Core Version:    0.7.0.1
  */

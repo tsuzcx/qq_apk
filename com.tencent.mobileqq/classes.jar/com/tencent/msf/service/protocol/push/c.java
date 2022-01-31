@@ -8,19 +8,19 @@ public final class c
   extends JceStruct
 {
   static byte[] q;
-  public long a;
-  public long b;
+  public long a = 0L;
+  public long b = 0L;
   public String c = "";
   public int d = 11;
-  public byte e;
-  public byte f;
-  public byte g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
-  public int l;
-  public byte[] m;
+  public byte e = 0;
+  public byte f = 0;
+  public byte g = 0;
+  public int h = 0;
+  public int i = 0;
+  public int j = 0;
+  public int k = 0;
+  public int l = 0;
+  public byte[] m = null;
   public String n = "";
   public String o = "";
   public String p = "";

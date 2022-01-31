@@ -1,16 +1,17 @@
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.2;
 
 public class njo
-  implements ActionSheet.OnDismissListener
+  extends AnimatorListenerAdapter
 {
-  public njo(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager, MsgTabNodeInfo paramMsgTabNodeInfo) {}
+  public njo(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.2 param2) {}
   
-  public void onDismiss()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    StoryReportor.a("msg_tab", "clk_press", 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_Int + "", "8", "", this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_JavaLangString });
+    this.a.this$0.a.setVisibility(8);
   }
 }
 

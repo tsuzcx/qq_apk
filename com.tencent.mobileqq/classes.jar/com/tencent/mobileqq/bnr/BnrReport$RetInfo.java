@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class BnrReport$RetInfo
-  extends MessageMicro
+  extends MessageMicro<RetInfo>
 {
   public static final int ERR_INFO_FIELD_NUMBER = 2;
   public static final int RET_CODE_FIELD_NUMBER = 1;

@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class group_effect_commu$TEffectDetail
-  extends MessageMicro
+  extends MessageMicro<TEffectDetail>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "st_userconfig", "st_effectinfo" }, new Object[] { null, null }, TEffectDetail.class);
   public group_effect.EffectInfo st_effectinfo = new group_effect.EffectInfo();

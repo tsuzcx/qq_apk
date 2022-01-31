@@ -1,18 +1,20 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import cooperation.qzone.LocalMultiProcConfig;
+import android.os.Bundle;
 
 public final class anah
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public static Bundle a(String paramString1, String paramString2, int paramInt, Bundle paramBundle)
   {
-    LocalMultiProcConfig.putBool("qz_safe_mode_no_tip", paramBoolean);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("cmd", paramString1);
+    localBundle.putString("callbackid", paramString2);
+    localBundle.putInt("respkey", paramInt);
+    localBundle.putBundle("request", paramBundle);
+    return localBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anah
  * JD-Core Version:    0.7.0.1
  */

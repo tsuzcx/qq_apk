@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import com.tencent.mobileqq.persistence.Entity;
+import atmo;
 
 public class ChannelInfo
-  extends Entity
+  extends atmo
   implements Cloneable
 {
   public static final int GIF_CHANNEL_TYPE = 4;

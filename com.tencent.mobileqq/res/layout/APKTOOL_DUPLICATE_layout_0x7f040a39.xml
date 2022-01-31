@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0406d9" />
-    <Button android:textSize="18.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a208d" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021ed0" android:visibility="invisible" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0311" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0311" android:layout_marginLeft="12.0dip" android:layout_marginBottom="30.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" android:contentDescription="本地视频" />
-</RelativeLayout>

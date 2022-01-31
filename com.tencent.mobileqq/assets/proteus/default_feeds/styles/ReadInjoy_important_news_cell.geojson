@@ -1,0 +1,334 @@
+{
+    "ReadInjoy_important_news_cell": {
+        "view_type": "cell",
+        "direction": "vertical",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "subviews": [
+            {
+                "view_type": "UIView",
+                "view_id": "id_news_top",
+                "layout_type": "layout_relative",
+                "event_type": "cmd_do_nothing",
+                "height": {
+                    "type": "absolutely",
+                    "value": "45"
+                },
+                "width": {
+                    "type": "match_parent"
+                },
+                "attributes": {
+                    "setBackgroundColorString:":"#ffffff"
+                },
+                "subviews": [
+                    {
+                        "view_type": "ReadInjoyAsynImageView",
+                        "view_id": "id_news_icon",
+                        "margin_left": "12",
+                        "align_parent_center_vertical": "YES",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "20"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "100"
+                        },
+                        "attributes": {
+                            "setImageWithURLString:lineup:": [
+                                "-1",
+                                "-1"
+                            ],
+                            "setScaleType:":"1"
+                        }
+                    },
+                    {
+                        "view_type": "UIButton",
+                        "view_id": "id_dislike_button",
+                        "align_parent_right": "YES",
+                        "align_parent_center_vertical": "YES",
+                        "margin_top": "-3.5",
+                        "event_type": "cmd_dislike_click",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "30"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "41"
+                        },
+                        "attributes": {
+                            "setImage:": "feeds_dislike"
+                        }
+                    },
+                    {
+                        "view_type": "UILabel",
+                        "view_id": "id_news_refresh_time",
+                        "margin_right": "2",
+                        "align_parent_center_vertical": "YES",
+                        "left_of_view": "id_dislike_button",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "wrap_content"
+                        },
+                        "attributes": {
+                            "setTextAlignmentString:": "2",
+                            "setFrameString:": "-1",
+                            "setTextColorString:": "#A6A6A6",
+                            "setText:": "-1",
+                            "setFontSizeString:": "13"
+                        }
+                    }
+                ]
+            },
+            {
+                "view_type": "UIView",
+                "view_id": "id_news_item_1",
+                "layout_type": "layout_relative",
+                "event_type": "cmd_url_click_card_report",
+                "height": {
+                    "type": "wrap_content"
+                },
+                "width": {
+                    "type": "match_parent"
+                },
+                "attributes": {
+                    "setAttatchInfo:": "-1",
+                    "setProteusReportInfo:": "-1",
+                    "setBackgroundColorString:":"#ffffff"
+                },
+                "subviews": [
+                    {
+                        "view_type": "ReadInjoyAsynImageView",
+                        "view_id": "id_news_dot_1",
+                        "align_parent_center_vertical": "YES",
+                        "margin_left": "18",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "attributes": {
+                            "setImageWithURLString:lineup:": [
+                                "-1",
+                                "-1"
+                            ]
+                        }
+                    },
+                    {
+                        "view_type": "UILabel",
+                        "view_id": "id_news_content_1",
+                        "margin_left": "12",
+                        "margin_right": "2",
+                        "margin_top": "9",
+                        "margin_bottom": "9",
+                        "right_of_view": "id_news_dot_1",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "327"
+                        },
+                        "attributes": {
+                            "setNumberOfLinesString:": "2",
+                            "setFrameString:": "-1",
+                            "setTextColorString:": "-1",
+                            "setText:": "-1",
+                            "setFontSizeString:": "-1"
+                        }
+                    }
+                ]
+            },
+            {
+                "view_type": "UIView",
+                "view_id": "id_news_separator_1",
+                "align_parent_bottom":"YES",
+                "margin_left": "34",
+                "height": {
+                    "type": "absolutely",
+                    "value": "0.5"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "341"
+                },
+                "attributes": {
+                    "setFrameString:": "-1",
+                    "setBackgroundColorString:":"#E5E5E5"
+                }
+            },
+            {
+                "view_type": "UIView",
+                "view_id": "id_news_item_2",
+                "layout_type": "layout_relative",
+                "event_type": "cmd_url_click_card_report",
+                "height": {
+                    "type": "wrap_content"
+                },
+                "width": {
+                    "type": "match_parent"
+                },
+                "attributes": {
+                    "setAttatchInfo:": "-1",
+                    "setProteusReportInfo:": "-1",
+                    "setBackgroundColorString:":"#ffffff"
+                },
+                "subviews": [
+                    {
+                        "view_type": "ReadInjoyAsynImageView",
+                        "view_id": "id_news_dot_2",
+                        "align_parent_center_vertical": "YES",
+                        "margin_left": "18",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "attributes": {
+                            "setImageWithURLString:lineup:": [
+                                "-1",
+                                "-1"
+                            ]
+                        }
+                    },
+                    {
+                        "view_type": "UILabel",
+                        "view_id": "id_news_content_2",
+                        "margin_left": "12",
+                        "margin_right": "2",
+                        "margin_top": "9",
+                        "margin_bottom": "9",
+                        "right_of_view": "id_news_dot_2",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "327"
+                        },
+                        "attributes": {
+                            "setNumberOfLinesString:": "2",
+                            "setFrameString:": "-1",
+                            "setTextColorString:": "-1",
+                            "setText:": "-1",
+                            "setFontSizeString:": "-1"
+                        }
+                    }
+                ]
+            },
+            {
+                "view_type": "UIView",
+                "view_id": "id_news_separator_2",
+                "align_parent_bottom":"YES",
+                "margin_left": "34",
+                "height": {
+                    "type": "absolutely",
+                    "value": "0.5"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "341"
+                },
+                "attributes": {
+                    "setFrameString:": "-1",
+                    "setBackgroundColorString:":"#E5E5E5"
+                }
+            },
+            {
+                "view_type": "UIView",
+                "view_id": "id_news_item_3",
+                "layout_type": "layout_relative",
+                "event_type": "cmd_url_click_card_report",
+                "height": {
+                    "type": "wrap_content"
+                },
+                "width": {
+                    "type": "match_parent"
+                },
+                "attributes": {
+                    "setAttatchInfo:": "-1",
+                    "setProteusReportInfo:": "-1",
+                    "setBackgroundColorString:":"#ffffff"
+                },
+                "subviews": [
+                    {
+                        "view_type": "ReadInjoyAsynImageView",
+                        "view_id": "id_news_dot_3",
+                        "align_parent_center_vertical": "YES",
+                        "margin_left": "18",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "6"
+                        },
+                        "attributes": {
+                            "setImageWithURLString:lineup:": [
+                                "-1",
+                                "-1"
+                            ]
+                        }
+                    },
+                    {
+                        "view_type": "UILabel",
+                        "view_id": "id_news_content_3",
+                        "margin_left": "12",
+                        "margin_right": "2",
+                        "margin_top": "9",
+                        "margin_bottom": "9",
+                        "right_of_view": "id_news_dot_3",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "327"
+                        },
+                        "attributes": {
+                            "setNumberOfLinesString:": "2",
+                            "setFrameString:": "-1",
+                            "setTextColorString:": "-1",
+                            "setText:": "-1",
+                            "setFontSizeString:": "-1"
+                        }
+                    }
+                ]
+            },
+            {
+                "view_type": "UIView",
+                "view_id": "id_news_white_bottom",
+                "layout_type": "layout_relative",
+                "event_type": "cmd_do_nothing",
+                "height": {
+                    "type": "absolutely",
+                    "value": "0"
+                },
+                "width": {
+                    "type": "match_parent"
+                },
+                "attributes": {
+                    "setBackgroundColorString:":"#ffffff"
+                }
+            },
+            {
+                "$includeComponet": "componet/separator.geojson"
+            }
+        ]
+    }
+}

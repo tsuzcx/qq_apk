@@ -1,25 +1,40 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.troop.utils.TroopFileUtils;
-import dov.com.qq.im.capture.text.JourneyTextItem;
-
-public class anwq
-  implements anwk
+public abstract class anwq
 {
-  public anwq(JourneyTextItem paramJourneyTextItem) {}
+  public int a = 1;
+  public String e;
   
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  public anwq(int paramInt, String paramString)
   {
-    String str = paramString;
-    if (paramInt == 0) {
-      str = TroopFileUtils.b(paramString);
+    this.a = paramInt;
+    this.e = paramString;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject instanceof anwq))
+    {
+      paramObject = (anwq)paramObject;
+      if (this.e == null) {
+        if ((this.a != paramObject.a) || (paramObject.e != null)) {}
+      }
+      while ((this.a == paramObject.a) && (this.e.equals(paramObject.e)))
+      {
+        return true;
+        return false;
+      }
+      return false;
     }
-    return str;
+    return false;
+  }
+  
+  public String toString()
+  {
+    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anwq
  * JD-Core Version:    0.7.0.1
  */

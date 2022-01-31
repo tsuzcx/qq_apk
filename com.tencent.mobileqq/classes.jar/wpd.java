@@ -1,22 +1,23 @@
-import com.tencent.mobileqq.activity.contact.newfriend.QIMFollowerAddBuilder;
-import com.tencent.mobileqq.app.NewFriendManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.newfriend.QIMFollowMessage;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.PopupMenu.1.1;
 
 public class wpd
-  implements Runnable
+  implements View.OnClickListener
 {
-  public wpd(QIMFollowerAddBuilder paramQIMFollowerAddBuilder) {}
+  wpd(wpc paramwpc, String paramString, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ((NewFriendManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(33)).a(((QIMFollowMessage)this.a.jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendMessage).a);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new wpe(this));
+    if (this.jdField_a_of_type_Wpc.a != null) {
+      this.jdField_a_of_type_Wpc.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 2);
+    }
+    paramView.post(new PopupMenu.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wpd
  * JD-Core Version:    0.7.0.1
  */

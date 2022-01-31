@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingLeft="8.0dip" android:paddingTop="12.0dip" android:paddingRight="8.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qzone="http://schemas.android.com/apk/res-auto">
+    <com.qzone.widget.RoundRectRelativeLayout android:layout_width="fill_parent" android:layout_height="200.0dip" qzone:allRadius="6.0dip">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.qzone.widget.AsyncImageView android:id="@id/m47" android:layout_width="0.0dip" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_weight="42.0" />
+            <Space android:id="@id/m4a" android:layout_width="2.0dip" android:layout_height="fill_parent" />
+            <LinearLayout android:orientation="vertical" android:id="@id/m4_" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="23.0">
+                <com.qzone.widget.AsyncImageView android:id="@id/m48" android:layout_width="fill_parent" android:layout_height="99.0dip" android:scaleType="centerCrop" />
+                <Space android:layout_width="fill_parent" android:layout_height="2.0dip" />
+                <com.qzone.widget.AsyncImageView android:id="@id/m49" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+            </LinearLayout>
+        </LinearLayout>
+        <TextView android:textSize="16.0dip" android:textColor="#ffffffff" android:id="@id/m4d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" android:layout_marginTop="151.0dip" android:layout_marginRight="11.0dip" android:singleLine="true" />
+        <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:id="@id/m4c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:singleLine="true" android:layout_below="@id/m4d" android:layout_alignLeft="@id/m4d" android:layout_alignRight="@id/m4d" />
+    </com.qzone.widget.RoundRectRelativeLayout>
+    <TextView android:textSize="17.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/m4b" android:background="@drawable/hie" android:layout_width="fill_parent" android:layout_height="41.0dip" android:layout_marginTop="16.0dip" android:singleLine="true" />
+</LinearLayout>

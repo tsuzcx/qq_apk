@@ -1,30 +1,39 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoTipOffRsp;
+import com.tencent.qphone.base.util.QLog;
 
-public class wdx
-  implements Runnable
+class wdx
+  implements wxx<CertifiedAccountWrite.StDoTipOffRsp>
 {
-  public wdx(PublicAccountChatPie paramPublicAccountChatPie) {}
+  wdx(wdw paramwdw) {}
   
-  public void run()
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoTipOffRsp paramStDoTipOffRsp)
   {
-    Object localObject = (PublicAccountDataManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(55);
-    if (localObject != null) {}
-    for (localObject = ((PublicAccountDataManager)localObject).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);; localObject = null)
+    paramBoolean = true;
+    if (paramLong == 0L)
     {
-      if (localObject != null) {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      QLog.w("FeedbackSheetHelper", 1, "DoTipOffRequest success");
+      if (this.a.a != null)
+      {
+        paramString = this.a.a;
+        if (paramLong != 0L) {
+          break label78;
+        }
       }
+    }
+    for (;;)
+    {
+      paramString.a(paramBoolean);
       return;
+      QLog.w("FeedbackSheetHelper", 1, "DoTipOffRequest failed retCode:" + paramLong);
+      break;
+      label78:
+      paramBoolean = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wdx
  * JD-Core Version:    0.7.0.1
  */

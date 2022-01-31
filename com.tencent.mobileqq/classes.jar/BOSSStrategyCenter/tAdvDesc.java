@@ -9,10 +9,10 @@ import java.util.Map;
 public final class tAdvDesc
   extends JceStruct
 {
-  static Map cache_adv_config_info;
-  static Map cache_adv_user_feed;
-  public Map adv_config_info;
-  public Map adv_user_feed;
+  static Map<String, String> cache_adv_config_info;
+  static Map<String, String> cache_adv_user_feed;
+  public Map<String, String> adv_config_info;
+  public Map<String, String> adv_user_feed;
   public long expose_time;
   public String name = "";
   public int parent_id;
@@ -31,7 +31,7 @@ public final class tAdvDesc
   
   public tAdvDesc() {}
   
-  public tAdvDesc(int paramInt1, int paramInt2, String paramString1, int paramInt3, String paramString2, String paramString3, int paramInt4, String paramString4, String paramString5, int paramInt5, String paramString6, int paramInt6, String paramString7, String paramString8, long paramLong, Map paramMap1, Map paramMap2)
+  public tAdvDesc(int paramInt1, int paramInt2, String paramString1, int paramInt3, String paramString2, String paramString3, int paramInt4, String paramString4, String paramString5, int paramInt5, String paramString6, int paramInt6, String paramString7, String paramString8, long paramLong, Map<String, String> paramMap1, Map<String, String> paramMap2)
   {
     this.task_id = paramInt1;
     this.type = paramInt2;

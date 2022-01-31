@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.leba.LebaWithFeeds;
-import com.tencent.mobileqq.leba.header.LebaGridMenuAdapter;
-import com.tencent.mobileqq.observer.GetRedPointExObserver;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.7;
 
 public class aeip
-  extends GetRedPointExObserver
+  implements ndl
 {
-  public aeip(LebaWithFeeds paramLebaWithFeeds) {}
+  public aeip(PublicAccountChatPie.7 param7) {}
   
-  protected void a(Object paramObject)
+  public void a()
   {
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
+    this.a.this$0.a.sendEmptyMessage(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeip
  * JD-Core Version:    0.7.0.1
  */

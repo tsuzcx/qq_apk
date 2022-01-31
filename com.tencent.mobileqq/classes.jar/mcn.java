@@ -1,39 +1,78 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Array;
 
 public class mcn
-  implements AdapterView.OnItemClickListener
 {
-  public mcn(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment, boolean paramBoolean) {}
-  
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static boolean a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment.getActivity(), 2131438938, 0).a();
-    }
-    for (;;)
+    int n = 0;
+    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null) || (paramArrayOfByte3 == null) || (paramInt == 0))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment.getActivity().finish();
-      return;
-      paramView = new Intent();
-      paramAdapterView = paramAdapterView.getItemAtPosition(paramInt);
-      if ((paramAdapterView != null) && ((paramAdapterView instanceof TagInfo)))
+      QLog.e("PCMMixer", 1, "mix, dst == null || inputA == null || inputB == null || size == 0");
+      return false;
+    }
+    if ((paramArrayOfByte2.length < paramInt) || (paramArrayOfByte3.length < paramInt))
+    {
+      QLog.e("PCMMixer", 1, "mix, inputA.length < size || inputB.length < size");
+      return false;
+    }
+    System.currentTimeMillis();
+    int i = paramInt / 2;
+    short[][] arrayOfShort = (short[][])Array.newInstance(Short.TYPE, new int[] { 2, i });
+    i = 0;
+    while (i < paramInt / 2)
+    {
+      arrayOfShort[0][i] = ((short)(paramArrayOfByte2[(i * 2)] & 0xFF | (paramArrayOfByte2[(i * 2 + 1)] & 0xFF) << 8));
+      i += 1;
+    }
+    i = 0;
+    while (i < paramInt / 2)
+    {
+      arrayOfShort[1][i] = ((short)(paramArrayOfByte3[(i * 2)] & 0xFF | (paramArrayOfByte3[(i * 2 + 1)] & 0xFF) << 8));
+      i += 1;
+    }
+    paramArrayOfByte2 = new short[paramInt / 2];
+    int k = 0;
+    i = n;
+    if (k < paramInt / 2)
+    {
+      int j = 0;
+      int m;
+      for (i = 0; j < 2; i = m)
       {
-        paramView.putExtra("SEARCH_TAG_RESULT", (TagInfo)paramAdapterView);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyVideoSearchTagFragment.getActivity().setResult(-1, paramView);
+        m = i;
+        if (arrayOfShort[j].length > k) {
+          m = i + arrayOfShort[j][k];
+        }
+        j += 1;
+      }
+      if (i > 32767) {
+        j = 32767;
+      }
+      for (;;)
+      {
+        paramArrayOfByte2[k] = ((short)j);
+        k += 1;
+        break;
+        j = i;
+        if (i < -32767) {
+          j = -32767;
+        }
       }
     }
+    while (i < paramInt / 2)
+    {
+      paramArrayOfByte1[(i * 2)] = ((byte)(paramArrayOfByte2[i] & 0xFF));
+      paramArrayOfByte1[(i * 2 + 1)] = ((byte)((paramArrayOfByte2[i] & 0xFF00) >> 8));
+      i += 1;
+    }
+    System.currentTimeMillis();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mcn
  * JD-Core Version:    0.7.0.1
  */

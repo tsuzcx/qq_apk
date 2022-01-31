@@ -1,23 +1,27 @@
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewPresenter;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aaey
-  implements Runnable
+public final class aaey
+  implements DialogInterface.OnClickListener
 {
-  public aaey(ARVideoRecordUIControllerImpl paramARVideoRecordUIControllerImpl, int paramInt1, int paramInt2) {}
+  public aaey(aagn paramaagn, long paramLong, QQAppInterface paramQQAppInterface, Context paramContext, aagm paramaagm) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d("ARVideoRecordUIControllerImpl", 2, String.format("onRecordUpdate progress=%s", new Object[] { Integer.valueOf(1) }));
-    if (ARVideoRecordUIControllerImpl.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordUIControllerImpl)) {
-      ARVideoRecordUIControllerImpl.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordUIControllerImpl).a(this.jdField_a_of_type_Int, this.b);
+    this.jdField_a_of_type_Aagn.d = false;
+    this.jdField_a_of_type_Aagn.e = false;
+    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aagm, this.jdField_a_of_type_Aagn);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaey
  * JD-Core Version:    0.7.0.1
  */

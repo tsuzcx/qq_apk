@@ -1,19 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkViewController;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-
-public class lio
-  implements Runnable
+public abstract interface lio
 {
-  public lio(ReadInJoyArkViewController paramReadInJoyArkViewController) {}
-  
-  public void run()
-  {
-    ArkAppCenter.a(true);
-  }
+  public abstract void a(int paramInt, liu paramliu);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lio
  * JD-Core Version:    0.7.0.1
  */

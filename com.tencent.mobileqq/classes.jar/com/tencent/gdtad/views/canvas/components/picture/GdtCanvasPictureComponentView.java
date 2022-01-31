@@ -1,32 +1,42 @@
 package com.tencent.gdtad.views.canvas.components.picture;
 
 import android.content.Context;
+import android.view.View.OnTouchListener;
+import android.widget.Button;
 import android.widget.LinearLayout;
-import com.tencent.gdtad.views.GdtViewStatus;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.gdtad.views.canvas.components.GdtCanvasComponentView;
-import com.tencent.gdtad.views.image.GdtDrawableLoader;
-import com.tencent.gdtad.views.image.GdtDrawableLoader.Listener;
-import com.tencent.image.URLImageView;
+import com.tencent.gdtad.views.canvas.components.pictures.HotArea;
+import com.tencent.gdtad.views.image.GdtGifImageView;
 import java.lang.ref.WeakReference;
-import qqr;
-import qqs;
-import qqt;
+import java.util.ArrayList;
+import rrl;
+import ypm;
+import yqe;
+import yqf;
+import yqg;
+import yqo;
 
 public class GdtCanvasPictureComponentView
   extends GdtCanvasComponentView
 {
   private GdtCanvasPictureComponentData jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsPictureGdtCanvasPictureComponentData;
-  private GdtDrawableLoader.Listener jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader$Listener = new qqs(this);
-  private GdtDrawableLoader jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader;
-  private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  private GdtGifImageView jdField_a_of_type_ComTencentGdtadViewsImageGdtGifImageView;
   
-  public GdtCanvasPictureComponentView(Context paramContext, WeakReference paramWeakReference, GdtCanvasPictureComponentData paramGdtCanvasPictureComponentData)
+  public GdtCanvasPictureComponentView(Context paramContext, WeakReference<yqo> paramWeakReference, GdtCanvasPictureComponentData paramGdtCanvasPictureComponentData)
   {
     super(paramContext, paramWeakReference);
-    a(paramContext, paramGdtCanvasPictureComponentData);
+    a(paramContext, paramGdtCanvasPictureComponentData, null);
   }
   
-  private void a(Context paramContext, GdtCanvasPictureComponentData paramGdtCanvasPictureComponentData)
+  public GdtCanvasPictureComponentView(Context paramContext, WeakReference<yqo> paramWeakReference, GdtCanvasPictureComponentData paramGdtCanvasPictureComponentData, View.OnTouchListener paramOnTouchListener)
+  {
+    super(paramContext, paramWeakReference);
+    a(paramContext, paramGdtCanvasPictureComponentData, paramOnTouchListener);
+  }
+  
+  private void a(Context paramContext, GdtCanvasPictureComponentData paramGdtCanvasPictureComponentData, View.OnTouchListener paramOnTouchListener)
   {
     g();
     if ((paramGdtCanvasPictureComponentData == null) || (!paramGdtCanvasPictureComponentData.isValid()))
@@ -37,33 +47,63 @@ public class GdtCanvasPictureComponentView
     this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsPictureGdtCanvasPictureComponentData = paramGdtCanvasPictureComponentData;
     LinearLayout localLinearLayout = new LinearLayout(paramContext);
     addView(localLinearLayout);
-    localLinearLayout.setPadding(0, a().paddingTop, 0, a().paddingBottom);
-    this.jdField_a_of_type_ComTencentImageURLImageView = new URLImageView(paramContext);
-    localLinearLayout.addView(this.jdField_a_of_type_ComTencentImageURLImageView);
-    paramContext = this.jdField_a_of_type_ComTencentImageURLImageView.getLayoutParams();
+    RelativeLayout localRelativeLayout = new RelativeLayout(paramContext);
+    if (paramGdtCanvasPictureComponentData.isHotAreaValild())
+    {
+      ArrayList localArrayList = paramGdtCanvasPictureComponentData.hotAreaList;
+      int i = 0;
+      while (i < localArrayList.size())
+      {
+        Button localButton = new Button(getContext());
+        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(((HotArea)localArrayList.get(i)).width, ((HotArea)localArrayList.get(i)).height);
+        localLayoutParams.topMargin = ((HotArea)localArrayList.get(i)).y;
+        localLayoutParams.leftMargin = ((HotArea)localArrayList.get(i)).x;
+        localButton.setLayoutParams(localLayoutParams);
+        localButton.setBackgroundColor(0);
+        localRelativeLayout.addView(localButton);
+        localButton.setOnClickListener(new yqf(this, ((HotArea)localArrayList.get(i)).linkType, ((HotArea)localArrayList.get(i)).formModId, ((HotArea)localArrayList.get(i)).url));
+        i += 1;
+      }
+    }
+    addView(localRelativeLayout);
+    localLinearLayout.setPadding(a().paddingLeft, a().paddingTop, a().paddingRight, a().paddingBottom);
+    this.jdField_a_of_type_ComTencentGdtadViewsImageGdtGifImageView = new GdtGifImageView(paramContext, paramGdtCanvasPictureComponentData.url, paramGdtCanvasPictureComponentData.guassianUrl, new WeakReference(new yqe(this)));
+    localLinearLayout.addView(this.jdField_a_of_type_ComTencentGdtadViewsImageGdtGifImageView);
+    paramContext = this.jdField_a_of_type_ComTencentGdtadViewsImageGdtGifImageView.getLayoutParams();
     paramContext.width = a().width;
     paramContext.height = a().height;
-    this.jdField_a_of_type_ComTencentImageURLImageView.setLayoutParams(paramContext);
-    this.jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader = new GdtDrawableLoader(paramGdtCanvasPictureComponentData.url, new WeakReference(this.jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader$Listener));
-    this.jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader.a();
-    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader.a());
-    this.jdField_a_of_type_ComTencentImageURLImageView.setOnTouchListener(new qqt(new qqr(this, paramGdtCanvasPictureComponentData)));
-    this.jdField_a_of_type_ComTencentGdtadViewsGdtViewStatus = new GdtViewStatus(new WeakReference(this.jdField_a_of_type_ComTencentImageURLImageView), new WeakReference(this));
-  }
-  
-  public GdtViewStatus a()
-  {
-    return this.jdField_a_of_type_ComTencentGdtadViewsGdtViewStatus;
+    this.jdField_a_of_type_ComTencentGdtadViewsImageGdtGifImageView.setLayoutParams(paramContext);
+    if (paramOnTouchListener != null) {
+      this.jdField_a_of_type_ComTencentGdtadViewsImageGdtGifImageView.setOnTouchListener(paramOnTouchListener);
+    }
+    for (;;)
+    {
+      rrl.a();
+      this.jdField_a_of_type_Ypm = new ypm(new WeakReference(this.jdField_a_of_type_ComTencentGdtadViewsImageGdtGifImageView), new WeakReference(this));
+      return;
+      this.jdField_a_of_type_ComTencentGdtadViewsImageGdtGifImageView.setOnTouchListener(new yqg(new GdtCanvasPictureComponentView.2(this, paramGdtCanvasPictureComponentData)));
+    }
   }
   
   public GdtCanvasPictureComponentData a()
   {
     return this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsPictureGdtCanvasPictureComponentData;
   }
+  
+  public ypm a()
+  {
+    return this.jdField_a_of_type_Ypm;
+  }
+  
+  public void d()
+  {
+    super.d();
+    rrl.b();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.components.picture.GdtCanvasPictureComponentView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,35 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.XListView;
 
 public class aesn
-  extends BroadcastReceiver
+  extends aesj
 {
-  public aesn(QQPlayerService paramQQPlayerService) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public aesn(QQAppInterface paramQQAppInterface, Context paramContext, XListView paramXListView, aesm paramaesm)
   {
-    if (QQPlayerService.c(this.a)) {
-      if (QLog.isColorLevel()) {
-        QLog.i("QQPlayerService", 2, "received broadcast after service destroy");
-      }
-    }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQPlayerService", 2, "QQPlayerBroadcastReceiverReceiver onReceive,action:" + paramIntent.getAction());
-      }
-    } while ((!"com.tencent.mobileqq.intent.logout".equals(paramIntent.getAction())) && (!"qqplayer_exit_action".equals(paramIntent.getAction())));
-    if ((paramIntent.getBooleanExtra("musicplayer.isDelFileOnDonwloadThreadOver", false)) && (this.a.a != null)) {
-      this.a.a.b = true;
-    }
-    QQPlayerService.c(this.a.getApplicationContext());
+    super(paramQQAppInterface, paramContext, paramXListView, paramaesm);
+  }
+  
+  protected aese a()
+  {
+    return new aesi(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+  }
+  
+  protected void a()
+  {
+    super.a();
+    awqx.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp", 0, 0, "", "", "", "");
+  }
+  
+  public void b()
+  {
+    super.b();
+    awqx.b(null, "dc00899", "Grp_recom", "", "no_search_result", "exp", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aesn
  * JD-Core Version:    0.7.0.1
  */

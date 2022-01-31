@@ -5,8 +5,8 @@ import java.io.Serializable;
 public final class enum_album_error_code_define
   implements Serializable
 {
+  private static enum_album_error_code_define[] __values;
   public static final int _enum_album_not_exist = -11529;
-  private static enum_album_error_code_define[] a;
   public static final enum_album_error_code_define enum_album_not_exist;
   private String __T = new String();
   private int __value;
@@ -17,7 +17,7 @@ public final class enum_album_error_code_define
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      a = new enum_album_error_code_define[1];
+      __values = new enum_album_error_code_define[1];
       enum_album_not_exist = new enum_album_error_code_define(0, -11529, "enum_album_not_exist");
       return;
     }
@@ -27,16 +27,16 @@ public final class enum_album_error_code_define
   {
     this.__T = paramString;
     this.__value = paramInt2;
-    a[paramInt1] = this;
+    __values[paramInt1] = this;
   }
   
   public static enum_album_error_code_define convert(int paramInt)
   {
     int i = 0;
-    while (i < a.length)
+    while (i < __values.length)
     {
-      if (a[i].value() == paramInt) {
-        return a[i];
+      if (__values[i].value() == paramInt) {
+        return __values[i];
       }
       i += 1;
     }
@@ -49,10 +49,10 @@ public final class enum_album_error_code_define
   public static enum_album_error_code_define convert(String paramString)
   {
     int i = 0;
-    while (i < a.length)
+    while (i < __values.length)
     {
-      if (a[i].toString().equals(paramString)) {
-        return a[i];
+      if (__values[i].toString().equals(paramString)) {
+        return __values[i];
       }
       i += 1;
     }

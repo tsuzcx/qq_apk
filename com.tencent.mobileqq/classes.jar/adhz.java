@@ -1,49 +1,28 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class adhz
-  implements Runnable
+class adhz
+  implements aqdv
 {
-  public adhz(UniformDownloadMgr paramUniformDownloadMgr, String paramString, Bundle paramBundle) {}
+  adhz(adhy paramadhy) {}
   
-  public void run()
+  public void a(View paramView)
   {
-    long l = 0L;
-    for (;;)
-    {
-      try
-      {
-        localURL = new URL(this.jdField_a_of_type_JavaLangString);
-      }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        URL localURL;
-        int i;
-        localMalformedURLException.printStackTrace();
-        continue;
-      }
-      try
-      {
-        i = localURL.openConnection().getContentLength();
-        l = i;
-      }
-      catch (IOException localIOException)
-      {
-        localIOException.printStackTrace();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("HiBoomFont.ItemBuilder", 2, "onDoubleClick");
     }
-    this.jdField_a_of_type_AndroidOsBundle.putLong("_filesize_from_dlg", l);
-    UniformDownloadMgr.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
-    UniformDownloadMgr.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr);
+    aciy.n = true;
+    if (this.a.a()) {
+      return;
+    }
+    ChatActivityUtils.a(this.a.a, paramView, (FragmentActivity)this.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adhz
  * JD-Core Version:    0.7.0.1
  */

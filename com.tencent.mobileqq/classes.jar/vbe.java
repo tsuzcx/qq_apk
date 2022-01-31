@@ -1,33 +1,13 @@
-import android.content.Context;
-import android.content.Intent;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.item.DeviceTextItemBuilder;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-
 public class vbe
-  extends ClickableSpan
 {
-  public vbe(DeviceTextItemBuilder paramDeviceTextItemBuilder) {}
-  
-  public void onClick(View paramView)
+  public static boolean a(int paramInt)
   {
-    if (!NetworkUtil.d(this.a.a))
-    {
-      QQToast.a(this.a.a, "当前网络连接不可用，请确认后再使用", 2000).a();
-      return;
-    }
-    paramView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140617UV3MZn.html?ADTAG=veda.mobileqq.en");
-    paramView.putExtra("hide_more_button", true);
-    this.a.a.startActivity(paramView);
+    return (paramInt == 0) || (paramInt == 1) || (paramInt == 2) || (paramInt == 3) || (paramInt == 4) || (paramInt == 5) || (paramInt == 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vbe
  * JD-Core Version:    0.7.0.1
  */

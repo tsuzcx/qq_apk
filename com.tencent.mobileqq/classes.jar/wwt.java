@@ -1,73 +1,229 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.ClipboardManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.activity.messagesearch.C2CMessageResultAdapter;
-import com.tencent.mobileqq.activity.messagesearch.C2CMessageSearchDialog;
-import com.tencent.mobileqq.activity.messagesearch.MessageItem;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.annotation.NonNull;
+import com.tencent.biz.videostory.config.VSConfigManager.1;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.LocalMultiProcConfig;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AppRuntime;
+import mqq.manager.Manager;
 
 public class wwt
-  implements View.OnClickListener
+  implements Manager
 {
-  public wwt(C2CMessageSearchDialog paramC2CMessageSearchDialog) {}
+  public static String a;
+  private static wwt jdField_a_of_type_Wwt;
+  public static String b = "1";
+  public static final String c = ajjy.a(2131651075);
+  protected SharedPreferences a;
+  private ConcurrentHashMap<String, Object> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public void onClick(View paramView)
+  static
   {
-    int i = paramView.getId();
-    if (QLog.isColorLevel()) {
-      QLog.i("C2CMessageSearchDialog", 2, "onClick, id = " + i);
-    }
-    switch (i)
+    jdField_a_of_type_JavaLangString = "0";
+  }
+  
+  private wwt()
+  {
+    b();
+  }
+  
+  private String a()
+  {
+    return BaseApplicationImpl.getApplication().getRuntime().getAccount();
+  }
+  
+  public static wwt a()
+  {
+    if (jdField_a_of_type_Wwt == null) {}
+    try
     {
-    default: 
-    case 2131375639: 
-    case 2131363536: 
-      do
+      if (jdField_a_of_type_Wwt == null) {
+        jdField_a_of_type_Wwt = new wwt();
+      }
+      return jdField_a_of_type_Wwt;
+    }
+    finally {}
+  }
+  
+  private <V> V b(@NonNull String paramString, @NonNull V paramV)
+  {
+    Object localObject;
+    if (paramV.getClass() == Integer.class) {
+      localObject = Integer.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getInt(paramString, ((Integer)paramV).intValue()));
+    }
+    for (;;)
+    {
+      QLog.i("Q.videostory.config.VSConfigManager", 2, "get value from sp success : K:" + paramString + ", V : " + localObject);
+      if ((localObject == null) || (localObject.getClass() != paramV.getClass())) {
+        return paramV;
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject);
+      return localObject;
+      if (paramV.getClass() == Long.class)
       {
-        do
-        {
-          return;
-        } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem == null);
-        ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem.a.msg);
-        return;
-      } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem == null);
-      paramView = new Bundle();
-      paramView.putInt("forward_type", -1);
-      paramView.putString("forward_text", this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem.a.msg);
-      Intent localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, ForwardRecentActivity.class);
-      localIntent.putExtras(paramView);
-      ((Activity)this.a.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 21);
-      return;
-    case 2131365008: 
-      ((InputMethodManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("input_method")).hideSoftInputFromWindow(this.a.jdField_a_of_type_AndroidWidgetEditText.getWindowToken(), 0);
-      this.a.a();
-      return;
+        localObject = Long.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getLong(paramString, ((Long)paramV).longValue()));
+      }
+      else if (paramV.getClass() == String.class)
+      {
+        localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.getString(paramString, (String)paramV);
+      }
+      else
+      {
+        if (paramV.getClass() != Boolean.class) {
+          break;
+        }
+        localObject = Boolean.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(paramString, ((Boolean)paramV).booleanValue()));
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("C2CMessageSearchDialog", 2, "OnClickListener, setMessageItems");
+    throw new IllegalArgumentException("defValue class is not support : " + paramV.getClass());
+    return paramV;
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("videostory_config", 4);
+    ThreadManager.executeOnSubThread(new VSConfigManager.1(this));
+  }
+  
+  private <V> void b(String paramString, V paramV)
+  {
+    boolean bool;
+    if (paramV.getClass() == Integer.class) {
+      bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt(paramString, ((Integer)paramV).intValue()).commit();
     }
-    this.a.c = false;
-    C2CMessageSearchDialog.a(this.a).setVisibility(8);
-    C2CMessageSearchDialog.a(this.a, 0, null);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.a(C2CMessageSearchDialog.a(this.a), this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.notifyDataSetChanged();
-    this.a.b = 1;
-    VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "chat_history", "ChatSearch", "Clk_cloudtips", 0, 0, new String[0]);
+    while (!bool)
+    {
+      QLog.e("Q.videostory.config.VSConfigManager", 2, "set value into sp error : K:" + paramString + ", V : " + paramV);
+      return;
+      if (paramV.getClass() == Long.class) {
+        bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong(paramString, ((Long)paramV).longValue()).commit();
+      } else if (paramV.getClass() == String.class) {
+        bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(paramString, (String)paramV).commit();
+      } else if (paramV.getClass() == Boolean.class) {
+        bool = this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(paramString, ((Boolean)paramV).booleanValue()).commit();
+      } else {
+        throw new IllegalArgumentException("value class is not support : " + paramV.getClass());
+      }
+    }
+    QLog.i("Q.videostory.config.VSConfigManager", 2, "set value into sp success : K:" + paramString + ", V : " + paramV);
+  }
+  
+  public <V> V a(@NonNull String paramString, @NonNull V paramV)
+  {
+    Object localObject = paramString + "_" + a();
+    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) || (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(localObject)))
+    {
+      localObject = b((String)localObject, paramV);
+      return localObject;
+    }
+    if (paramV.getClass() == Integer.class) {
+      paramString = (Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+    }
+    for (;;)
+    {
+      QLog.i("Q.videostory.config.VSConfigManager", 2, "get value : K : " + (String)localObject + ", V : " + paramString);
+      if (paramString != null)
+      {
+        localObject = paramString;
+        if (paramString.getClass() == paramV.getClass()) {
+          break;
+        }
+      }
+      return paramV;
+      if (paramV.getClass() == Long.class)
+      {
+        paramString = (Long)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+      }
+      else if (paramV.getClass() == String.class)
+      {
+        paramString = (String)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+      }
+      else
+      {
+        if (paramV.getClass() != Boolean.class) {
+          break label212;
+        }
+        paramString = (Boolean)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+      }
+    }
+    label212:
+    throw new IllegalArgumentException("defValue class is not support : " + paramV.getClass());
+  }
+  
+  public void a()
+  {
+    QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, "resetApplyWidgetConfig");
+    a().a("KEY_BOOLEAN_APPLY_WIDGET_CONFIG", Boolean.valueOf(false));
+  }
+  
+  public <V> void a(String paramString, V paramV)
+  {
+    paramString = paramString + "_" + a();
+    if (paramV.getClass() == Integer.class) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, (Integer)paramV);
+    }
+    for (;;)
+    {
+      QLog.i("Q.videostory.config.VSConfigManager", 2, "set value into map success :  K:" + paramString + ", V : " + paramV);
+      b(paramString, paramV);
+      return;
+      if (paramV.getClass() == Long.class)
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, (Long)paramV);
+      }
+      else if (paramV.getClass() == String.class)
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, (String)paramV);
+      }
+      else
+      {
+        if (paramV.getClass() != Boolean.class) {
+          break;
+        }
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, (Boolean)paramV);
+      }
+    }
+    QLog.e("Q.videostory.config.VSConfigManager", 2, "set value into map error : K:" + paramString + ", V : " + paramV);
+    throw new IllegalArgumentException("value class is not support : " + paramV.getClass());
+  }
+  
+  public boolean a()
+  {
+    boolean bool = ((Boolean)a().a("KEY_BOOLEAN_APPLY_STYLE_CONFIG", Boolean.valueOf(false))).booleanValue();
+    QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, "isApplyStyleConfig:" + bool);
+    return bool;
+  }
+  
+  public boolean a(String paramString)
+  {
+    boolean bool2 = ((Boolean)a().a(paramString, Boolean.valueOf(true))).booleanValue();
+    if (LocalMultiProcConfig.getLong4Uin("need_show_story_tips", 0L, BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin()) == 1L) {}
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      bool2 = bool1 & bool2;
+      QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, "needShowGuideTips:" + bool2);
+      return bool2;
+    }
+  }
+  
+  public boolean b()
+  {
+    boolean bool = ((Boolean)a().a("KEY_BOOLEAN_APPLY_WIDGET_CONFIG", Boolean.valueOf(false))).booleanValue();
+    QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, "isApplyWidgetConfig:" + bool);
+    return bool;
+  }
+  
+  public void onDestroy()
+  {
+    QLog.i("Q.videostory.config.VSConfigManager", 2, "onDestory");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wwt
  * JD-Core Version:    0.7.0.1
  */

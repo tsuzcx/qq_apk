@@ -1,22 +1,21 @@
 import android.view.View;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.utils.ApolloHttpCallBack;
+import com.tencent.gdtad.views.video.GdtVideoCommonView;
 
-public final class yru
-  extends ApolloHttpCallBack
+public abstract interface yru
 {
-  public yru(View paramView, long paramLong) {}
+  public abstract void a(View paramView);
   
-  public void a(int paramInt, byte[] paramArrayOfByte)
-  {
-    if ((this.jdField_a_of_type_AndroidViewView instanceof ApolloSurfaceView)) {
-      ((ApolloSurfaceView)this.jdField_a_of_type_AndroidViewView).queueEvent(new yrv(this, paramArrayOfByte, paramInt));
-    }
-  }
+  public abstract void a(GdtVideoCommonView paramGdtVideoCommonView);
+  
+  public abstract void b(GdtVideoCommonView paramGdtVideoCommonView);
+  
+  public abstract void c(GdtVideoCommonView paramGdtVideoCommonView);
+  
+  public abstract void d(GdtVideoCommonView paramGdtVideoCommonView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yru
  * JD-Core Version:    0.7.0.1
  */

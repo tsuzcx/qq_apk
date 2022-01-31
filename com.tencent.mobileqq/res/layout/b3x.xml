@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/icon" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="-3.0dip" android:layout_marginBottom="6.0dip" android:src="@drawable/e5c" />
+    <TextView android:id="@id/title" style="@style/k6" />
+    <ImageView android:id="@id/yw" style="@style/jp" />
+    <LinearLayout android:id="@id/b03" style="@style/jv" />
+    <LinearLayout android:id="@id/jfi" android:visibility="gone" style="@style/js">
+        <View style="@style/k4" />
+        <TextView android:id="@id/info" style="@style/jx" />
+    </LinearLayout>
+    <ImageView android:id="@id/i4q" android:background="@drawable/skin_tips_dot" android:visibility="gone" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_marginRight="5.0dip" android:layout_toLeftOf="@id/yw" android:layout_centerVertical="true" />
+</RelativeLayout>

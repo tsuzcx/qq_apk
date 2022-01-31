@@ -1,21 +1,21 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.playmode.child.TagStoryVidListPlayMode;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
 
 class npy
-  implements Runnable
+  implements nqd
 {
-  npy(npx paramnpx, ArrayList paramArrayList) {}
+  npy(npv paramnpv) {}
   
-  public void run()
+  public void a(GiftServiceBean paramGiftServiceBean)
   {
-    this.jdField_a_of_type_Npx.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.setVisibility(8);
-    this.jdField_a_of_type_Npx.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Npx.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.notifyDataSetChanged();
-    this.jdField_a_of_type_Npx.a.jdField_a_of_type_AndroidOsHandler.post(new npz(this));
+    String str = npv.c(this.a).getText().toString();
+    if ((!TextUtils.isEmpty(paramGiftServiceBean.t)) && (!str.equals(paramGiftServiceBean.t)))
+    {
+      npv.c(this.a, paramGiftServiceBean);
+      npv.c(this.a).setText(paramGiftServiceBean.t);
+    }
+    npv.a(this.a);
   }
 }
 

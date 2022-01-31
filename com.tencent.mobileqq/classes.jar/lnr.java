@@ -1,115 +1,31 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ThirdVideoManager;
-import com.tencent.biz.pubaccount.readinjoy.common.ThirdVideoManager.UrlToUUIDCallback;
-import com.tencent.mobileqq.ac.ArticleCenter.GetVidByUrlResponse;
-import com.tencent.mobileqq.ac.ArticleCenter.RetInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.av.ReqGroupVideo.ReqShareBackflowVerify;
+import com.tencent.av.ReqGroupVideo.RspShareBackflowVerify;
+import com.tencent.av.share.AVSchema;
+import com.tencent.av.share.AVSchema.MyMsgListener.1;
 
 public class lnr
-  implements BusinessObserver
+  extends kwr<ReqGroupVideo.ReqShareBackflowVerify, ReqGroupVideo.RspShareBackflowVerify>
 {
-  public lnr(ThirdVideoManager paramThirdVideoManager, long paramLong, NewIntent paramNewIntent, ThirdVideoManager.UrlToUUIDCallback paramUrlToUUIDCallback, String paramString) {}
+  public lnq a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public lnr(AVSchema paramAVSchema, lnq paramlnq)
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.TAG", 2, "CMD_VIDEO_URLFORUUID time : " + (l1 - l2));
-    }
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-    if (!paramBoolean)
-    {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonThirdVideoManager$UrlToUUIDCallback != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonThirdVideoManager$UrlToUUIDCallback.a(this.jdField_a_of_type_JavaLangString, "error");
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.readinjoy.video.TAG", 2, "CMD_VIDEO_URLFORUUID notSuccess!");
-      }
-    }
-    label299:
-    do
-    {
-      do
-      {
-        do
-        {
-          for (;;)
-          {
-            return;
-            paramBundle = paramBundle.getByteArray("data");
-            if ((paramBundle == null) || (paramBundle.length <= 0))
-            {
-              if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonThirdVideoManager$UrlToUUIDCallback != null) {
-                this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonThirdVideoManager$UrlToUUIDCallback.a(this.jdField_a_of_type_JavaLangString, "error");
-              }
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.readinjoy.video.TAG", 2, "CMD_VIDEO_URLFORUUID empty data!");
-              }
-            }
-            else
-            {
-              try
-              {
-                localObject = new ArticleCenter.GetVidByUrlResponse();
-                ((ArticleCenter.GetVidByUrlResponse)localObject).mergeFrom(paramBundle);
-                if (((ArticleCenter.GetVidByUrlResponse)localObject).ret_info.ret_code.get() == 0) {
-                  break label299;
-                }
-                if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonThirdVideoManager$UrlToUUIDCallback != null) {
-                  this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonThirdVideoManager$UrlToUUIDCallback.a(this.jdField_a_of_type_JavaLangString, "error");
-                }
-                if (QLog.isColorLevel())
-                {
-                  QLog.d("Q.readinjoy.video.TAG", 2, "CMD_VIDEO_URLFORUUID error:" + ((ArticleCenter.GetVidByUrlResponse)localObject).ret_info.ret_code.get() + ", " + ((ArticleCenter.GetVidByUrlResponse)localObject).ret_info.err_info.get());
-                  return;
-                }
-              }
-              catch (Exception paramBundle)
-              {
-                if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonThirdVideoManager$UrlToUUIDCallback != null) {
-                  this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonThirdVideoManager$UrlToUUIDCallback.a(this.jdField_a_of_type_JavaLangString, "error");
-                }
-              }
-            }
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("Q.readinjoy.video.TAG", 2, "CMD_VIDEO_URLFORUUID exception!");
-        return;
-        paramBundle = ((ArticleCenter.GetVidByUrlResponse)localObject).vid.get();
-        if (paramBundle == null) {
-          break;
-        }
-        Object localObject = paramBundle.toStringUtf8();
-        paramBundle = (Bundle)localObject;
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonThirdVideoManager$UrlToUUIDCallback != null)
-        {
-          paramBundle = (Bundle)localObject;
-          if (TextUtils.isEmpty((CharSequence)localObject)) {
-            paramBundle = "error";
-          }
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonThirdVideoManager$UrlToUUIDCallback.a(this.jdField_a_of_type_JavaLangString, paramBundle);
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("Q.readinjoy.video.TAG", 2, "CMD_VIDEO_URLFORUUID vid:" + paramBundle);
+    this.jdField_a_of_type_Lnq = paramlnq;
+  }
+  
+  public void a(long paramLong, boolean paramBoolean, ReqGroupVideo.ReqShareBackflowVerify paramReqShareBackflowVerify, ReqGroupVideo.RspShareBackflowVerify paramRspShareBackflowVerify, Object paramObject)
+  {
+    if (this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached()) {
       return;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonThirdVideoManager$UrlToUUIDCallback != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonThirdVideoManager$UrlToUUIDCallback.a(this.jdField_a_of_type_JavaLangString, "error");
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.readinjoy.video.TAG", 2, "CMD_VIDEO_URLFORUUID null vid!");
+    }
+    new Handler(Looper.getMainLooper()).post(new AVSchema.MyMsgListener.1(this, paramRspShareBackflowVerify, paramLong));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lnr
  * JD-Core Version:    0.7.0.1
  */

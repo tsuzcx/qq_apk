@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class DynamicSearch$Meaning
-  extends MessageMicro
+  extends MessageMicro<Meaning>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field eflag = PBField.initUInt32(0);

@@ -1,20 +1,27 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
 
 public class rhq
-  implements Runnable
+  implements rhj
 {
-  public rhq(LiteTransferWrapper paramLiteTransferWrapper, String paramString) {}
+  private final ViewPagerCompat a;
   
-  public void run()
+  public rhq(ViewPagerCompat paramViewPagerCompat)
   {
-    if (LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper) != 0L) {
-      this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SetTempPathToJNI(LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_JavaLangString);
-    }
+    this.a = paramViewPagerCompat;
   }
+  
+  public void a(rho paramrho)
+  {
+    this.a.setCurrentItem(paramrho.a());
+  }
+  
+  public void b(rho paramrho) {}
+  
+  public void c(rho paramrho) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rhq
  * JD-Core Version:    0.7.0.1
  */

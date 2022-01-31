@@ -1,40 +1,35 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.QIMCircleProgress;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
 public class anyb
-  extends AnimatorListenerAdapter
+  implements View.OnLongClickListener
 {
-  public anyb(QIMCircleProgress paramQIMCircleProgress) {}
+  public anyb(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public boolean onLongClick(View paramView)
   {
-    this.a.b = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator cancel");
+    if (paramView == null) {
+      return false;
     }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.b = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator end");
+    if (!this.a.b())
+    {
+      this.a.jdField_a_of_type_Aonw.a(null);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
+      return false;
     }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.b = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMCircleProgress", 2, "[segmentCapture] nextSegmentBlinkAnimator start");
-    }
+    paramView.setSelected(true);
+    bakh localbakh = new bakh();
+    localbakh.a(2131299411, paramView.getContext().getString(2131625931));
+    this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = baay.a(paramView, localbakh, new anyc(this, paramView), new anyd(this, paramView));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anyb
  * JD-Core Version:    0.7.0.1
  */

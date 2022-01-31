@@ -1,104 +1,45 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Handler;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.profilecard.ProfileQiqiLiveController;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.service.gamecenter.AppLaucherHelper;
-import com.tencent.open.business.base.AppUtil;
-import com.tencent.qconn.protofile.fastauthorize.FastAuthorize.AuthorizeResponse;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
 public class afom
-  implements BusinessObserver
+  implements View.OnClickListener
 {
-  public afom(ProfileQiqiLiveController paramProfileQiqiLiveController, String paramString, Context paramContext, int paramInt) {}
+  public afom(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, String paramString) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    new Bundle();
-    String str = this.jdField_a_of_type_JavaLangString;
-    Object localObject = str;
-    if (paramBoolean) {
-      localObject = paramBundle.getByteArray("data");
-    }
-    try
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.i) && (!ChatHistoryTroopMemberFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment)))
     {
-      paramBundle = new FastAuthorize.AuthorizeResponse();
-      paramBundle.mergeFrom((byte[])localObject);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_AndroidOsHandler.removeMessages(6);
-      if ((paramBundle.ret.get().equals("0")) && (paramBundle.apk_name.has()))
+      if (((this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.d == 11) && (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.a > 0)) || (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.d == 3))
       {
-        if (paramBundle.access_token.has())
-        {
-          localObject = paramBundle.access_token.get();
-          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString.replace("$AT$", (CharSequence)localObject);
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().getIntent();
+        paramView.putExtra("member_uin", "0");
+        paramView.putExtra("member_display_name", this.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().setResult(-1, paramView);
+        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().finish();
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.d == 11) {
+          awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800621D", "0X800621D", 0, 0, "", "", "", "");
         }
-        if (paramBundle.pay_token.has())
-        {
-          localObject = paramBundle.pay_token.get();
-          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString.replace("$PT$", (CharSequence)localObject);
-        }
-        if (paramBundle.openid.has())
-        {
-          localObject = paramBundle.openid.get();
-          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString.replace("$OPID$", (CharSequence)localObject);
-        }
-        if (paramBundle.pfkey.has())
-        {
-          localObject = paramBundle.pfkey.get();
-          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString.replace("$PF$", (CharSequence)localObject);
-        }
-        if (paramBundle.encrykey.has())
-        {
-          localObject = paramBundle.encrykey.get();
-          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString.replace("$ESK$", (CharSequence)localObject);
-        }
-        localObject = paramBundle.apk_name.get();
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          return;
-        }
-        paramBundle = (Bundle)localObject;
-        if (((String)localObject).contains(this.jdField_a_of_type_JavaLangString)) {}
+        return;
       }
-      else
-      {
-        QLog.d(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.getClass().getSimpleName(), 4, "start without login state");
-        paramBundle = str;
-      }
-      localObject = paramBundle;
-    }
-    catch (InvalidProtocolBufferMicroException paramBundle)
-    {
-      for (;;)
-      {
-        localObject = str;
-        if (QLog.isColorLevel())
-        {
-          QLog.d(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.getClass().getSimpleName(), 2, paramBundle.getMessage());
-          localObject = str;
-        }
-      }
-    }
-    paramBundle = AppLaucherHelper.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d(getClass().getSimpleName(), 2, "lauchApp now");
-    }
-    AppUtil.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject, paramBundle, this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_MqqAppNewIntent != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_MqqAppNewIntent = null;
+      bbmy.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), ajjy.a(2131635870), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidViewView.getHeight());
       return;
     }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.h))
+    {
+      bbmy.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.h, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidViewView.getHeight());
+      return;
+    }
+    bbmy.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), ajjy.a(2131635808), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidViewView.getHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afom
  * JD-Core Version:    0.7.0.1
  */

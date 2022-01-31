@@ -1,26 +1,21 @@
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout13;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout13.ViewHolder;
-import com.tencent.mobileqq.utils.ContactUtils;
+import android.media.AudioManager.OnAudioFocusChangeListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class aino
-  implements Runnable
+class aino
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public aino(StructMsgItemLayout13 paramStructMsgItemLayout13, StructMsgForGeneralShare paramStructMsgForGeneralShare, Resources paramResources, StructMsgItemLayout13.ViewHolder paramViewHolder) {}
+  aino(ainm paramainm) {}
   
-  public void run()
+  public void onAudioFocusChange(int paramInt)
   {
-    String str = ContactUtils.g(StructMsgItemLayout13.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout13), this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message.frienduin, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.author);
-    new Handler(Looper.getMainLooper()).post(new ainp(this, str));
+    if (QLog.isColorLevel()) {
+      QLog.d(ainm.a, 2, new Object[] { "[onAudioFocusChange],focusChange:", Integer.valueOf(paramInt) });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aino
  * JD-Core Version:    0.7.0.1
  */

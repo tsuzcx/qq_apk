@@ -1,18 +1,16 @@
-import dov.com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager;
-
 class aore
-  implements Runnable
+  implements bbrx
 {
-  aore(aord paramaord) {}
+  aore(aorc paramaorc, apca paramapca) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    LbsFilterStatusManager.a(this.a.a);
+    this.jdField_a_of_type_Apca.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aore
  * JD-Core Version:    0.7.0.1
  */

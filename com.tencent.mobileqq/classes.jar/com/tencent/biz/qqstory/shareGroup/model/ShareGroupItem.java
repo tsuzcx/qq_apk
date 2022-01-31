@@ -1,25 +1,26 @@
 package com.tencent.biz.qqstory.shareGroup.model;
 
+import ajjy;
 import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.Copyable;
 import com.tencent.biz.qqstory.database.ShareGroupEntry;
 import com.tencent.biz.qqstory.model.BaseUIItem;
-import com.tencent.biz.qqstory.model.item.IFeedOwner;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupBasicInfo;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupExtInfo;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupInfo;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.AssertUtils;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.util.ArrayList;
 import java.util.List;
+import sfp;
+import srk;
+import urk;
+import vkw;
 
 public class ShareGroupItem
   extends BaseUIItem
-  implements Copyable, IFeedOwner
+  implements sfp, srk
 {
   public static final int OWNER_TYPE_CREATOR = 1;
   public static final int OWNER_TYPE_PARTICIPATOR = 2;
@@ -30,11 +31,11 @@ public class ShareGroupItem
   public String backgroundUrl;
   public int followCount = -1;
   public long groupUin = -1L;
-  public List headerUnionIdList = new ArrayList(0);
+  public List<String> headerUnionIdList = new ArrayList(0);
   public int isDisband = -1;
   public int isSubscribed = -1;
   public int memberCount = -1;
-  public String name = "圈子";
+  public String name = ajjy.a(2131648128);
   public int ownerType = 1;
   public String ownerUnionId;
   public String shareGroupId;
@@ -65,9 +66,9 @@ public class ShareGroupItem
   
   public void assertItem()
   {
-    AssertUtils.a(this.shareGroupId);
+    vkw.a(this.shareGroupId);
     if (this.type == 2) {
-      SLog.d("Q.qqstory.shareGroup", "share group Item owner union id is null %s", new Object[] { this });
+      urk.d("Q.qqstory.shareGroup", "share group Item owner union id is null %s", new Object[] { this });
     }
   }
   
@@ -294,7 +295,7 @@ public class ShareGroupItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem
  * JD-Core Version:    0.7.0.1
  */

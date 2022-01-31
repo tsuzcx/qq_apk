@@ -22,7 +22,7 @@ public class TorchInfo
 {
   public int business_entry_new;
   public int business_entry_seq;
-  public ArrayList city_list = new ArrayList();
+  public ArrayList<TorchInfo.CityInfo> city_list = new ArrayList();
   public long cur_city_id;
   public int delay_time = -1;
   public long id;
@@ -190,7 +190,7 @@ public class TorchInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.TorchInfo
  * JD-Core Version:    0.7.0.1
  */

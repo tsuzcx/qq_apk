@@ -1,15 +1,7 @@
 package com.tencent.mobileqq.medalwall;
 
-import aenv;
-import aenw;
-import aenx;
-import aeny;
-import aenz;
-import aeoa;
-import aeob;
-import aeoc;
-import aeod;
-import aeoe;
+import aciy;
+import ajia;
 import android.animation.ArgbEvaluator;
 import android.animation.Keyframe;
 import android.animation.PropertyValuesHolder;
@@ -39,21 +31,31 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import arjm;
+import arjn;
+import arjo;
+import arjp;
+import arjq;
+import arjr;
+import arjs;
+import arjt;
+import arjv;
+import arjw;
+import arjy;
+import arjz;
+import asfj;
+import bace;
+import befq;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.FontSettingManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MedalInfo;
-import com.tencent.mobileqq.nearby.NearbyURLSafeUtil;
-import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
 import java.io.File;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -65,14 +67,14 @@ public class MedalGuideView
   extends FrameLayout
   implements Handler.Callback, View.OnClickListener, Animation.AnimationListener
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130842776, 2130842778, 2130842777 };
-  private static final int[] jdField_b_of_type_ArrayOfInt = { 2130842767, 2130842768, 2130842769 };
-  private static java.lang.ref.WeakReference jdField_c_of_type_JavaLangRefWeakReference;
-  private static final int[] jdField_c_of_type_ArrayOfInt = { 2131493412, 2131493411, 2131493410 };
-  private static final int[] jdField_d_of_type_ArrayOfInt = { 2131494147, 2131494149, 2131494148 };
-  private static final int[] jdField_e_of_type_ArrayOfInt = { 2130842758, 2130842760, 2130842759 };
-  private static final int[] f = { 2130842762, 2130842766, 2130842764 };
-  private static final int[] g = { 2130842773, 2130842774, 2130842775 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130844495, 2130844497, 2130844496 };
+  private static final int[] jdField_b_of_type_ArrayOfInt = { 2130844486, 2130844487, 2130844488 };
+  private static java.lang.ref.WeakReference<MedalGuideView> jdField_c_of_type_JavaLangRefWeakReference;
+  private static final int[] jdField_c_of_type_ArrayOfInt = { 2131100679, 2131100683, 2131100681 };
+  private static final int[] jdField_d_of_type_ArrayOfInt = { 2131100685, 2131100687, 2131100686 };
+  private static final int[] jdField_e_of_type_ArrayOfInt = { 2130844477, 2130844479, 2130844478 };
+  private static final int[] f = { 2130844481, 2130844485, 2130844483 };
+  private static final int[] g = { 2130844492, 2130844493, 2130844494 };
   public int a;
   public ArgbEvaluator a;
   ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
@@ -81,31 +83,31 @@ public class MedalGuideView
   Button jdField_a_of_type_AndroidWidgetButton;
   public ImageButton a;
   TextView jdField_a_of_type_AndroidWidgetTextView;
+  arjt jdField_a_of_type_Arjt = null;
+  arjv jdField_a_of_type_Arjv = null;
+  public arjw a;
+  arjy jdField_a_of_type_Arjy;
+  arjz jdField_a_of_type_Arjz;
+  public befq a;
   public URLImageView a;
-  MedalGuideView.MedalPopupWindow jdField_a_of_type_ComTencentMobileqqMedalwallMedalGuideView$MedalPopupWindow = null;
-  MedalWallMng.NeedGuideMedal jdField_a_of_type_ComTencentMobileqqMedalwallMedalWallMng$NeedGuideMedal = null;
-  public ParticleSystem a;
-  Rotate3dAnimation jdField_a_of_type_ComTencentMobileqqMedalwallRotate3dAnimation;
-  ShareHelper jdField_a_of_type_ComTencentMobileqqMedalwallShareHelper;
-  public WeakReferenceHandler a;
   String jdField_a_of_type_JavaLangString;
-  java.lang.ref.WeakReference jdField_a_of_type_JavaLangRefWeakReference = null;
-  List jdField_a_of_type_JavaUtilList;
+  java.lang.ref.WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference = null;
+  List<mqq.util.WeakReference<ValueAnimator>> jdField_a_of_type_JavaUtilList;
   public boolean a;
   int jdField_b_of_type_Int;
   Button jdField_b_of_type_AndroidWidgetButton;
   TextView jdField_b_of_type_AndroidWidgetTextView;
-  Rotate3dAnimation jdField_b_of_type_ComTencentMobileqqMedalwallRotate3dAnimation;
+  arjy jdField_b_of_type_Arjy;
   String jdField_b_of_type_JavaLangString;
-  java.lang.ref.WeakReference jdField_b_of_type_JavaLangRefWeakReference = null;
+  java.lang.ref.WeakReference<BaseActivity> jdField_b_of_type_JavaLangRefWeakReference = null;
   boolean jdField_b_of_type_Boolean = true;
   int jdField_c_of_type_Int;
-  Rotate3dAnimation jdField_c_of_type_ComTencentMobileqqMedalwallRotate3dAnimation;
+  arjy jdField_c_of_type_Arjy;
   String jdField_c_of_type_JavaLangString;
   public boolean c;
   int jdField_d_of_type_Int;
   public boolean d;
-  public int e;
+  int jdField_e_of_type_Int;
   boolean jdField_e_of_type_Boolean;
   
   public MedalGuideView(Context paramContext)
@@ -125,7 +127,7 @@ public class MedalGuideView
     this.jdField_a_of_type_AndroidAnimationArgbEvaluator = null;
     this.jdField_c_of_type_Boolean = false;
     this.jdField_d_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqMedalwallParticleSystem = null;
+    this.jdField_a_of_type_Arjw = null;
     b();
   }
   
@@ -158,6 +160,7 @@ public class MedalGuideView
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     Object localObject;
+    String str6;
     int k;
     String str3;
     long l2;
@@ -167,28 +170,29 @@ public class MedalGuideView
     int j;
     int i;
     String str2;
-    if (this.jdField_a_of_type_ComTencentMobileqqMedalwallShareHelper == null)
+    if (this.jdField_a_of_type_Arjz == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqMedalwallShareHelper = new ShareHelper(paramView.getContext(), localQQAppInterface);
-      localObject = ((MedalWallMng)localQQAppInterface.getManager(249)).a();
-      k = AIOUtils.a(48.0F, getResources());
+      this.jdField_a_of_type_Arjz = new arjz(paramView.getContext(), localQQAppInterface);
+      localObject = ((MedalWallMng)localQQAppInterface.getManager(250)).a();
+      str6 = arjz.g;
+      k = aciy.a(48.0F, getResources());
       str3 = "";
       paramView = "";
-      if ((this.jdField_a_of_type_ComTencentMobileqqMedalwallMedalWallMng$NeedGuideMedal == null) || (this.jdField_a_of_type_ComTencentMobileqqMedalwallMedalWallMng$NeedGuideMedal.jdField_a_of_type_ComTencentMobileqqDataMedalInfo == null)) {
-        break label704;
+      if ((this.jdField_a_of_type_Arjv == null) || (this.jdField_a_of_type_Arjv.jdField_a_of_type_ComTencentMobileqqDataMedalInfo == null)) {
+        break label707;
       }
-      switch (this.jdField_a_of_type_ComTencentMobileqqMedalwallMedalWallMng$NeedGuideMedal.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel)
+      switch (this.jdField_a_of_type_Arjv.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel)
       {
       default: 
-        l2 = this.jdField_a_of_type_ComTencentMobileqqMedalwallMedalWallMng$NeedGuideMedal.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.lObtainTimeLevel1;
-        l1 = this.jdField_a_of_type_ComTencentMobileqqMedalwallMedalWallMng$NeedGuideMedal.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.lSeqLevel1;
+        l2 = this.jdField_a_of_type_Arjv.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.lObtainTimeLevel1;
+        l1 = this.jdField_a_of_type_Arjv.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.lSeqLevel1;
         paramView = String.format("%s %s", new Object[] { this.jdField_c_of_type_JavaLangString, paramView });
-        str1 = this.jdField_a_of_type_ComTencentMobileqqMedalwallMedalWallMng$NeedGuideMedal.jdField_c_of_type_JavaLangString;
-        str4 = NearbyURLSafeUtil.a(localQQAppInterface.getCurrentAccountUin());
-        j = this.jdField_a_of_type_ComTencentMobileqqMedalwallMedalWallMng$NeedGuideMedal.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iId;
-        i = this.jdField_a_of_type_ComTencentMobileqqMedalwallMedalWallMng$NeedGuideMedal.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel;
+        str1 = this.jdField_a_of_type_Arjv.jdField_c_of_type_JavaLangString;
+        str4 = asfj.a(localQQAppInterface.getCurrentAccountUin());
+        j = this.jdField_a_of_type_Arjv.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iId;
+        i = this.jdField_a_of_type_Arjv.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel;
         str3 = localQQAppInterface.getCurrentNickname();
-        str2 = ShareHelper.a(new String[] { j + "", i + "", str4, str3 });
+        str2 = arjz.a(new String[] { j + "", i + "", str4, str3 });
       }
     }
     for (;;)
@@ -200,33 +204,33 @@ public class MedalGuideView
       ((StringBuilder)localObject).append("&nick=").append(URLEncoder.encode(str3));
       ((StringBuilder)localObject).append("&en=").append(str2);
       ((StringBuilder)localObject).append("&fromId=").append(1);
-      if ((this.jdField_a_of_type_ComTencentMobileqqMedalwallMedalWallMng$NeedGuideMedal != null) && (this.jdField_a_of_type_ComTencentMobileqqMedalwallMedalWallMng$NeedGuideMedal.jdField_a_of_type_ComTencentMobileqqDataMedalInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqMedalwallMedalWallMng$NeedGuideMedal.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iId == 0)) {
+      if ((this.jdField_a_of_type_Arjv != null) && (this.jdField_a_of_type_Arjv.jdField_a_of_type_ComTencentMobileqqDataMedalInfo != null) && (this.jdField_a_of_type_Arjv.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iId == 0)) {
         str3 = "0";
       }
       for (;;)
       {
         try
         {
-          str2 = ShareHelper.a(Long.valueOf(l2 * 1000L)).substring(0, 4);
+          str2 = arjz.a(Long.valueOf(l2 * 1000L)).substring(0, 4);
           ((StringBuilder)localObject).append("&year=").append(str2);
           ((StringBuilder)localObject).append("&seq=").append(l1);
           if (QLog.isColorLevel()) {
             QLog.i("ShareHelper", 4, "shareUrl:" + ((StringBuilder)localObject).toString());
           }
-          this.jdField_a_of_type_ComTencentMobileqqMedalwallShareHelper.a(paramView, "我获得了QQ勋章，你也快来试试吧。", ((StringBuilder)localObject).toString(), str1, "QQ勋章墙", ShareHelper.a(this.jdField_a_of_type_ComTencentImageURLImageView.getDrawable(), k, k));
-          this.jdField_a_of_type_ComTencentMobileqqMedalwallShareHelper.a(new aenx(this));
-          ThreadManager.post(new aeny(this, localQQAppInterface), 5, null, false);
+          this.jdField_a_of_type_Arjz.a(paramView, str6, ((StringBuilder)localObject).toString(), str1, "QQ勋章墙", arjz.a(this.jdField_a_of_type_ComTencentImageURLImageView.getDrawable(), k, k));
+          this.jdField_a_of_type_Arjz.a(new arjm(this));
+          ThreadManager.post(new MedalGuideView.3(this, localQQAppInterface), 5, null, false);
           return;
-          l2 = this.jdField_a_of_type_ComTencentMobileqqMedalwallMedalWallMng$NeedGuideMedal.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.lObtainTimeLevel1;
-          l1 = this.jdField_a_of_type_ComTencentMobileqqMedalwallMedalWallMng$NeedGuideMedal.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.lSeqLevel1;
+          l2 = this.jdField_a_of_type_Arjv.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.lObtainTimeLevel1;
+          l1 = this.jdField_a_of_type_Arjv.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.lSeqLevel1;
           paramView = "I";
           break;
-          l2 = this.jdField_a_of_type_ComTencentMobileqqMedalwallMedalWallMng$NeedGuideMedal.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.lObtainTimeLevel2;
-          l1 = this.jdField_a_of_type_ComTencentMobileqqMedalwallMedalWallMng$NeedGuideMedal.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.lSeqLevel2;
+          l2 = this.jdField_a_of_type_Arjv.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.lObtainTimeLevel2;
+          l1 = this.jdField_a_of_type_Arjv.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.lSeqLevel2;
           paramView = "II";
           break;
-          l2 = this.jdField_a_of_type_ComTencentMobileqqMedalwallMedalWallMng$NeedGuideMedal.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.lObtainTimeLevel3;
-          l1 = this.jdField_a_of_type_ComTencentMobileqqMedalwallMedalWallMng$NeedGuideMedal.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.lSeqLevel3;
+          l2 = this.jdField_a_of_type_Arjv.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.lObtainTimeLevel3;
+          l1 = this.jdField_a_of_type_Arjv.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.lSeqLevel3;
           paramView = "III";
         }
         catch (Exception localException)
@@ -241,7 +245,7 @@ public class MedalGuideView
         }
         ((StringBuilder)localObject).append("&time=").append(l2);
       }
-      label704:
+      label707:
       str2 = "";
       paramView = "";
       i = 0;
@@ -253,46 +257,46 @@ public class MedalGuideView
     }
   }
   
-  public static void a(MedalWallMng.NeedGuideMedal paramNeedGuideMedal, BaseActivity paramBaseActivity, View paramView, int paramInt)
+  public static void a(arjv paramarjv, BaseActivity paramBaseActivity, View paramView, int paramInt)
   {
     if (paramView == null) {
       return;
     }
     if (QLog.isDevelopLevel()) {
-      QLog.i("MedalWallMng", 4, String.format(Locale.getDefault(), "showMedalGuide from: %d, view: %s, activity: %s, medal: %s", new Object[] { Integer.valueOf(paramInt), paramView, paramBaseActivity, paramNeedGuideMedal }));
+      QLog.i("MedalWallMng", 4, String.format(Locale.getDefault(), "showMedalGuide from: %d, view: %s, activity: %s, medal: %s", new Object[] { Integer.valueOf(paramInt), paramView, paramBaseActivity, paramarjv }));
     }
     a();
     MedalGuideView localMedalGuideView = new MedalGuideView(paramBaseActivity);
-    MedalGuideView.MedalPopupWindow localMedalPopupWindow = new MedalGuideView.MedalPopupWindow(localMedalGuideView, -1, -1, true);
-    localMedalGuideView.a(paramNeedGuideMedal, paramBaseActivity, paramView, paramInt, localMedalPopupWindow);
-    localMedalPopupWindow.setClippingEnabled(false);
-    localMedalPopupWindow.setOutsideTouchable(true);
-    localMedalPopupWindow.setBackgroundDrawable(new ColorDrawable(0));
-    localMedalPopupWindow.showAtLocation(paramView, 0, 0, 0);
-    ThreadManager.post(new aenw(paramInt), 5, null, false);
+    arjt localarjt = new arjt(localMedalGuideView, -1, -1, true);
+    localMedalGuideView.a(paramarjv, paramBaseActivity, paramView, paramInt, localarjt);
+    localarjt.setClippingEnabled(false);
+    localarjt.setOutsideTouchable(true);
+    localarjt.setBackgroundDrawable(new ColorDrawable(0));
+    localarjt.showAtLocation(paramView, 0, 0, 0);
+    ThreadManager.post(new MedalGuideView.10(paramInt), 5, null, false);
     jdField_c_of_type_JavaLangRefWeakReference = new java.lang.ref.WeakReference(localMedalGuideView);
   }
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_Befq = new befq(Looper.getMainLooper(), this);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    inflate(getContext(), 2130970429, this);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131363062));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363397));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131370453));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370454));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131366780));
+    inflate(getContext(), 2131495259, this);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131299132));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131311534));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131304170));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131304171));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131310236));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131370456));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131300101));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131362873));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131298701));
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(0);
     try
     {
       DisplayMetrics localDisplayMetrics1 = getResources().getDisplayMetrics();
-      DisplayMetrics localDisplayMetrics2 = FontSettingManager.a;
+      DisplayMetrics localDisplayMetrics2 = ajia.a;
       if (localDisplayMetrics1.density != localDisplayMetrics2.density)
       {
         float f2 = localDisplayMetrics2.density / localDisplayMetrics1.density;
@@ -309,7 +313,7 @@ public class MedalGuideView
         localObject = (LinearLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
         ((LinearLayout.LayoutParams)localObject).topMargin = ((int)(20.0F * f1));
         this.jdField_b_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        localObject = (LinearLayout)findViewById(2131370455);
+        localObject = (LinearLayout)findViewById(2131296366);
         LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)((LinearLayout)localObject).getLayoutParams();
         localLayoutParams.topMargin = ((int)(32.0F * f1));
         ((LinearLayout)localObject).setLayoutParams(localLayoutParams);
@@ -329,7 +333,7 @@ public class MedalGuideView
       }
     }
     this.jdField_a_of_type_AndroidAnimationArgbEvaluator = new ArgbEvaluator();
-    this.jdField_a_of_type_Int = getResources().getColor(2131493409);
+    this.jdField_a_of_type_Int = getResources().getColor(2131100678);
     this.jdField_a_of_type_ComTencentImageURLImageView.setAlpha(0.0F);
     this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(0);
     a(0.0F);
@@ -338,16 +342,16 @@ public class MedalGuideView
   private void c()
   {
     Resources localResources = getResources();
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131439144);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131633367);
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(jdField_a_of_type_ArrayOfInt[this.jdField_d_of_type_Int], 0, jdField_a_of_type_ArrayOfInt[this.jdField_d_of_type_Int], 0);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(localResources.getColor(jdField_c_of_type_ArrayOfInt[this.jdField_d_of_type_Int]));
     Object localObject = URLDrawable.URLDrawableOptions.obtain();
-    int i = localResources.getDimensionPixelSize(2131559461);
+    int i = localResources.getDimensionPixelSize(2131166998);
     ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = i;
     ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = i;
     ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
     ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    if (FileUtils.a(this.jdField_b_of_type_JavaLangString)) {
+    if (bace.a(this.jdField_b_of_type_JavaLangString)) {
       localObject = URLDrawable.getDrawable(new File(this.jdField_b_of_type_JavaLangString), (URLDrawable.URLDrawableOptions)localObject);
     }
     for (;;)
@@ -387,11 +391,11 @@ public class MedalGuideView
       QLog.i("MedalWallMng", 2, "close");
     }
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(3);
-    if (this.jdField_a_of_type_ComTencentMobileqqMedalwallParticleSystem != null)
+    this.jdField_a_of_type_Befq.removeMessages(3);
+    if (this.jdField_a_of_type_Arjw != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqMedalwallParticleSystem.c();
-      this.jdField_a_of_type_ComTencentMobileqqMedalwallParticleSystem = null;
+      this.jdField_a_of_type_Arjw.c();
+      this.jdField_a_of_type_Arjw = null;
     }
     if (this.jdField_b_of_type_JavaLangRefWeakReference != null)
     {
@@ -403,11 +407,11 @@ public class MedalGuideView
       this.jdField_a_of_type_JavaLangRefWeakReference.clear();
       this.jdField_a_of_type_JavaLangRefWeakReference = null;
     }
-    this.jdField_a_of_type_ComTencentMobileqqMedalwallMedalWallMng$NeedGuideMedal = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqMedalwallMedalGuideView$MedalPopupWindow != null)
+    this.jdField_a_of_type_Arjv = null;
+    if (this.jdField_a_of_type_Arjt != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqMedalwallMedalGuideView$MedalPopupWindow.a();
-      this.jdField_a_of_type_ComTencentMobileqqMedalwallMedalGuideView$MedalPopupWindow = null;
+      this.jdField_a_of_type_Arjt.a();
+      this.jdField_a_of_type_Arjt = null;
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
@@ -423,28 +427,28 @@ public class MedalGuideView
     }
   }
   
-  public void a(MedalWallMng.NeedGuideMedal paramNeedGuideMedal, BaseActivity paramBaseActivity, View paramView, int paramInt, MedalGuideView.MedalPopupWindow paramMedalPopupWindow)
+  public void a(arjv paramarjv, BaseActivity paramBaseActivity, View paramView, int paramInt, arjt paramarjt)
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = new java.lang.ref.WeakReference(paramView);
     this.jdField_b_of_type_JavaLangRefWeakReference = new java.lang.ref.WeakReference(paramBaseActivity);
     this.jdField_e_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqMedalwallMedalWallMng$NeedGuideMedal = paramNeedGuideMedal;
-    this.jdField_a_of_type_ComTencentMobileqqMedalwallMedalGuideView$MedalPopupWindow = paramMedalPopupWindow;
-    this.jdField_a_of_type_ComTencentMobileqqMedalwallShareHelper = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqMedalwallMedalGuideView$MedalPopupWindow != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMedalwallMedalGuideView$MedalPopupWindow.a(new aeoe(this));
+    this.jdField_a_of_type_Arjv = paramarjv;
+    this.jdField_a_of_type_Arjt = paramarjt;
+    this.jdField_a_of_type_Arjz = null;
+    if (this.jdField_a_of_type_Arjt != null) {
+      this.jdField_a_of_type_Arjt.a(new arjs(this));
     }
-    if ((paramNeedGuideMedal != null) && (paramNeedGuideMedal.jdField_a_of_type_ComTencentMobileqqDataMedalInfo != null))
+    if ((paramarjv != null) && (paramarjv.jdField_a_of_type_ComTencentMobileqqDataMedalInfo != null))
     {
-      this.jdField_b_of_type_Int = paramNeedGuideMedal.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iId;
-      if ((paramNeedGuideMedal.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel >= 1) && (paramNeedGuideMedal.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel <= 3))
+      this.jdField_b_of_type_Int = paramarjv.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iId;
+      if ((paramarjv.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel >= 1) && (paramarjv.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel <= 3))
       {
-        this.jdField_d_of_type_Int = (paramNeedGuideMedal.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel - 1);
+        this.jdField_d_of_type_Int = (paramarjv.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel - 1);
         this.jdField_e_of_type_Boolean = false;
-        this.jdField_c_of_type_Int = paramNeedGuideMedal.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel;
-        this.jdField_c_of_type_JavaLangString = paramNeedGuideMedal.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.strName;
-        this.jdField_b_of_type_JavaLangString = paramNeedGuideMedal.jdField_b_of_type_JavaLangString;
-        this.jdField_a_of_type_JavaLangString = paramNeedGuideMedal.jdField_a_of_type_JavaLangString;
+        this.jdField_c_of_type_Int = paramarjv.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel;
+        this.jdField_c_of_type_JavaLangString = paramarjv.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.strName;
+        this.jdField_b_of_type_JavaLangString = paramarjv.jdField_b_of_type_JavaLangString;
+        this.jdField_a_of_type_JavaLangString = paramarjv.jdField_a_of_type_JavaLangString;
       }
     }
     for (;;)
@@ -471,15 +475,15 @@ public class MedalGuideView
     {
       this.jdField_b_of_type_Boolean = false;
       this.jdField_d_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(1);
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(5, 1600L);
+      this.jdField_a_of_type_Befq.sendEmptyMessage(1);
+      this.jdField_a_of_type_Befq.sendEmptyMessageDelayed(5, 1600L);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqMedalwallParticleSystem != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMedalwallParticleSystem.a(paramCanvas, 1);
+    if (this.jdField_a_of_type_Arjw != null) {
+      this.jdField_a_of_type_Arjw.a(paramCanvas, 1);
     }
     super.dispatchDraw(paramCanvas);
-    if (this.jdField_a_of_type_ComTencentMobileqqMedalwallParticleSystem != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMedalwallParticleSystem.a(paramCanvas, 2);
+    if (this.jdField_a_of_type_Arjw != null) {
+      this.jdField_a_of_type_Arjw.a(paramCanvas, 2);
     }
   }
   
@@ -508,24 +512,24 @@ public class MedalGuideView
       }
       paramMessage = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { paramMessage, PropertyValuesHolder.ofKeyframe("translate", new Keyframe[] { Keyframe.ofFloat(0.0F, f3), Keyframe.ofFloat(0.7714286F, f1), Keyframe.ofFloat(1.0F, 0.0F) }) });
       this.jdField_a_of_type_JavaUtilList.add(new mqq.util.WeakReference(paramMessage));
-      paramMessage.addUpdateListener(new aenz(this));
+      paramMessage.addUpdateListener(new arjn(this));
       paramMessage.setDuration(700L);
       paramMessage.start();
       paramMessage = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofKeyframe("alpha", new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(0.08571429F, 0.0F), Keyframe.ofFloat(1.0F, 1.0F) }) });
       this.jdField_a_of_type_JavaUtilList.add(new mqq.util.WeakReference(paramMessage));
-      paramMessage.addUpdateListener(new aeoa(this));
+      paramMessage.addUpdateListener(new arjo(this));
       paramMessage.setDuration(700L);
       paramMessage.start();
       continue;
       f5 = 2540.0F - 1940.0F;
       paramMessage = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofKeyframe("alpha", new Keyframe[] { Keyframe.ofFloat(0.0F, 1.0F), Keyframe.ofFloat((2100.0F - 1940.0F) / f5, 0.0F), Keyframe.ofFloat(1.0F, 0.0F) }) });
       this.jdField_a_of_type_JavaUtilList.add(new mqq.util.WeakReference(paramMessage));
-      paramMessage.addUpdateListener(new aeob(this));
+      paramMessage.addUpdateListener(new arjp(this));
       paramMessage.setDuration((f5 * 1.0F));
       paramMessage.start();
       paramMessage = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofKeyframe("bgColor", new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat((2100.0F - 1940.0F) / f5, 0.0F), Keyframe.ofFloat((2340.0F - 1940.0F) / f5, 1.0F), Keyframe.ofFloat(1.0F, 1.0F) }) });
       this.jdField_a_of_type_JavaUtilList.add(new mqq.util.WeakReference(paramMessage));
-      paramMessage.addUpdateListener(new aeoc(this));
+      paramMessage.addUpdateListener(new arjq(this));
       paramMessage.setDuration((f5 * 1.0F));
       paramMessage.start();
       label603:
@@ -583,10 +587,10 @@ public class MedalGuideView
         localKeyframe2.setInterpolator(new AccelerateDecelerateInterpolator());
         paramMessage = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { paramMessage, localObject1, localObject2, PropertyValuesHolder.ofKeyframe("translationY", new Keyframe[] { localKeyframe1, localKeyframe2, Keyframe.ofFloat((2480.0F - 1940.0F) / f5, f1), Keyframe.ofFloat(1.0F, f1) }) });
         this.jdField_a_of_type_JavaUtilList.add(new mqq.util.WeakReference(paramMessage));
-        paramMessage.addUpdateListener(new aeod(this));
+        paramMessage.addUpdateListener(new arjr(this));
         paramMessage.setDuration((f5 * 1.0F));
         paramMessage.start();
-        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(3, (f5 * 1.0F) + 200L);
+        this.jdField_a_of_type_Befq.sendEmptyMessageDelayed(3, (f5 * 1.0F) + 200L);
         break;
         paramMessage = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
         break label603;
@@ -603,21 +607,21 @@ public class MedalGuideView
       }
       f1 = this.jdField_a_of_type_ComTencentImageURLImageView.getWidth() / 2;
       f2 = this.jdField_a_of_type_ComTencentImageURLImageView.getHeight() / 2;
-      this.jdField_a_of_type_ComTencentMobileqqMedalwallRotate3dAnimation = new Rotate3dAnimation(0.0F, -24.0F * 0.65F, f1, f2, 0.0F, true);
-      this.jdField_a_of_type_ComTencentMobileqqMedalwallRotate3dAnimation.setDuration(260L);
-      this.jdField_a_of_type_ComTencentMobileqqMedalwallRotate3dAnimation.setFillAfter(true);
-      this.jdField_a_of_type_ComTencentMobileqqMedalwallRotate3dAnimation.setAnimationListener(this);
-      this.jdField_b_of_type_ComTencentMobileqqMedalwallRotate3dAnimation = new Rotate3dAnimation(-24.0F * 0.65F, 15.0F * 0.65F, f1, f2, 0.0F, false);
-      this.jdField_b_of_type_ComTencentMobileqqMedalwallRotate3dAnimation.setDuration(260L);
-      this.jdField_b_of_type_ComTencentMobileqqMedalwallRotate3dAnimation.setFillAfter(true);
-      this.jdField_b_of_type_ComTencentMobileqqMedalwallRotate3dAnimation.setAnimationListener(this);
-      this.jdField_c_of_type_ComTencentMobileqqMedalwallRotate3dAnimation = new Rotate3dAnimation(15.0F * 0.65F, 0.0F, f1, f2, 0.0F, true);
-      this.jdField_c_of_type_ComTencentMobileqqMedalwallRotate3dAnimation.setDuration(300L);
-      this.jdField_c_of_type_ComTencentMobileqqMedalwallRotate3dAnimation.setFillAfter(true);
-      this.jdField_c_of_type_ComTencentMobileqqMedalwallRotate3dAnimation.setAnimationListener(this);
-      this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_ComTencentMobileqqMedalwallRotate3dAnimation);
-      this.jdField_a_of_type_ComTencentMobileqqMedalwallParticleSystem = new ParticleSystem(this, 2, 100, g);
-      this.jdField_a_of_type_ComTencentMobileqqMedalwallParticleSystem.a(getWidth(), getHeight());
+      this.jdField_a_of_type_Arjy = new arjy(0.0F, -24.0F * 0.65F, f1, f2, 0.0F, true);
+      this.jdField_a_of_type_Arjy.setDuration(260L);
+      this.jdField_a_of_type_Arjy.setFillAfter(true);
+      this.jdField_a_of_type_Arjy.setAnimationListener(this);
+      this.jdField_b_of_type_Arjy = new arjy(-24.0F * 0.65F, 15.0F * 0.65F, f1, f2, 0.0F, false);
+      this.jdField_b_of_type_Arjy.setDuration(260L);
+      this.jdField_b_of_type_Arjy.setFillAfter(true);
+      this.jdField_b_of_type_Arjy.setAnimationListener(this);
+      this.jdField_c_of_type_Arjy = new arjy(15.0F * 0.65F, 0.0F, f1, f2, 0.0F, true);
+      this.jdField_c_of_type_Arjy.setDuration(300L);
+      this.jdField_c_of_type_Arjy.setFillAfter(true);
+      this.jdField_c_of_type_Arjy.setAnimationListener(this);
+      this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_Arjy);
+      this.jdField_a_of_type_Arjw = new arjw(this, 2, 100, g);
+      this.jdField_a_of_type_Arjw.a(getWidth(), getHeight());
       continue;
       d();
       continue;
@@ -627,20 +631,20 @@ public class MedalGuideView
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramAnimation == this.jdField_a_of_type_ComTencentMobileqqMedalwallRotate3dAnimation) {
-      this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_b_of_type_ComTencentMobileqqMedalwallRotate3dAnimation);
+    if (paramAnimation == this.jdField_a_of_type_Arjy) {
+      this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_b_of_type_Arjy);
     }
     do
     {
       return;
-      if (paramAnimation == this.jdField_b_of_type_ComTencentMobileqqMedalwallRotate3dAnimation)
+      if (paramAnimation == this.jdField_b_of_type_Arjy)
       {
-        this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_c_of_type_ComTencentMobileqqMedalwallRotate3dAnimation);
+        this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_c_of_type_Arjy);
         return;
       }
-    } while (paramAnimation != this.jdField_c_of_type_ComTencentMobileqqMedalwallRotate3dAnimation);
+    } while (paramAnimation != this.jdField_c_of_type_Arjy);
     this.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(5);
+    this.jdField_a_of_type_Befq.removeMessages(5);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
@@ -664,7 +668,7 @@ public class MedalGuideView
         {
           if (paramView != null)
           {
-            String str = ((MedalWallMng)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(249)).a(true, paramView.getCurrentAccountUin(), MedalWallMng.jdField_d_of_type_Int);
+            String str = ((MedalWallMng)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(250)).a(true, paramView.getCurrentAccountUin(), MedalWallMng.jdField_d_of_type_Int);
             str = String.format(Locale.getDefault(), "%s&openMedalId=%s&openMedalLevel=%s", new Object[] { str, Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.jdField_c_of_type_Int) });
             Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
             localIntent.putExtra("url", str);
@@ -672,7 +676,7 @@ public class MedalGuideView
             if (QLog.isColorLevel()) {
               QLog.i("MedalWallMng", 2, String.format(Locale.getDefault(), "enter medal url: %s", new Object[] { str }));
             }
-            ThreadManager.post(new aenv(this), 5, null, false);
+            ThreadManager.post(new MedalGuideView.1(this), 5, null, false);
           }
           d();
           return;
@@ -683,8 +687,8 @@ public class MedalGuideView
       } while (!QLog.isColorLevel());
       QLog.i("MedalWallMng", 2, "close when enter animation is not finished yet!");
       return;
-    } while (this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.hasMessages(2));
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(2);
+    } while (this.jdField_a_of_type_Befq.hasMessages(2));
+    this.jdField_a_of_type_Befq.sendEmptyMessage(2);
   }
 }
 

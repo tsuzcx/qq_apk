@@ -1,48 +1,25 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.biz.tribe.TribeVideoPlugin;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.TimerTask;
 
-public class pab
-  extends TimerTask
+class pab
+  implements oqy
 {
-  private String jdField_a_of_type_JavaLangString;
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  pab(ozx paramozx, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  public pab(TribeVideoPlugin paramTribeVideoPlugin, String paramString)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramTribeVideoPlugin);
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void run()
-  {
-    TribeVideoPlugin localTribeVideoPlugin = (TribeVideoPlugin)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localTribeVideoPlugin == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder().append("plugin == null ");
-        if (localTribeVideoPlugin != null) {
-          break label77;
-        }
-        bool = true;
-        QLog.d("TribeVideoPlugin", 2, bool + " playerID = " + this.jdField_a_of_type_JavaLangString);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
     }
-    label77:
-    while (TribeVideoPlugin.a(localTribeVideoPlugin) == null) {
-      for (;;)
-      {
-        return;
-        boolean bool = false;
-      }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = true;
+      ozx.a(this.jdField_a_of_type_Ozx, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+      ozx.a(this.jdField_a_of_type_Ozx).notifyDataSetChanged();
+      return;
     }
-    Object localObject = TribeVideoPlugin.a(localTribeVideoPlugin).obtainMessage();
-    ((Message)localObject).obj = this.jdField_a_of_type_JavaLangString;
-    ((Message)localObject).what = 8;
-    TribeVideoPlugin.a(localTribeVideoPlugin).sendMessage((Message)localObject);
+    bbmy.a(ozx.b(this.jdField_a_of_type_Ozx).getContext(), 1, 2131652679, 0).a();
   }
 }
 

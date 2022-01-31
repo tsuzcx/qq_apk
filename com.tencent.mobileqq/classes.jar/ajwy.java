@@ -1,41 +1,31 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Task;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.TaskPool;
-import java.util.LinkedList;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.app.automator.step.CheckFriendsLastLoginInfo;
 
 public class ajwy
-  implements Runnable
+  extends ajjh
 {
-  public ajwy(TroopFileTransferManager.TaskPool paramTaskPool) {}
+  private ajwy(CheckFriendsLastLoginInfo paramCheckFriendsLastLoginInfo) {}
   
-  public void run()
+  protected void onUpdateLastLoginInfo(boolean paramBoolean1, boolean paramBoolean2)
   {
-    synchronized (this.a)
+    int i = 0;
+    if (!paramBoolean1) {
+      this.a.a(6);
+    }
+    for (;;)
     {
-      for (;;)
-      {
-        if (this.a.jdField_a_of_type_JavaUtilLinkedList.isEmpty())
-        {
-          this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.decrementAndGet();
-          return;
-        }
-        TroopFileTransferManager.Task localTask = (TroopFileTransferManager.Task)this.a.jdField_a_of_type_JavaUtilLinkedList.remove(0);
-        localTask.run();
-        if (localTask.a != 0) {
-          continue;
-        }
-        try
-        {
-          Thread.sleep(200L);
-        }
-        catch (InterruptedException localInterruptedException) {}
+      if (i != 0) {
+        this.a.a(7);
+      }
+      return;
+      if (paramBoolean2) {
+        i = 1;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajwy
  * JD-Core Version:    0.7.0.1
  */

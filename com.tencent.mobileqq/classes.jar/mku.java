@@ -1,22 +1,40 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import android.graphics.Matrix;
 
-class mku
-  implements Runnable
+public class mku
 {
-  mku(mks parammks) {}
+  public float a;
+  public int a;
+  public final Matrix a;
+  public mkr a;
+  public mkt a;
+  public mku a;
+  public float b;
+  public float c;
+  public float d;
+  public float e;
+  public float f;
   
-  public void run()
+  private mku()
   {
-    this.a.a.notifyDataSetChanged();
-    if ((!this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.a()) && (!this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.c())) {
-      ReadInJoyBaseAdapter.a(this.a.a, this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView, 0);
-    }
+    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+  }
+  
+  public void a(mku parammku)
+  {
+    this.jdField_a_of_type_Int = parammku.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Float = parammku.jdField_a_of_type_Float;
+    this.b = parammku.b;
+    this.c = parammku.c;
+    this.d = parammku.d;
+    this.e = parammku.e;
+    this.f = parammku.d;
+    this.jdField_a_of_type_AndroidGraphicsMatrix.set(parammku.jdField_a_of_type_AndroidGraphicsMatrix);
+    this.jdField_a_of_type_Mkr = parammku.jdField_a_of_type_Mkr;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mku
  * JD-Core Version:    0.7.0.1
  */

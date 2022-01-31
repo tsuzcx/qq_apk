@@ -1,14 +1,14 @@
 package cooperation.qzone;
 
-import amyv;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bfpb;
 
 public class LbsDataV2$PoiInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amyv();
+  public static final Parcelable.Creator<PoiInfo> CREATOR = new bfpb();
   public String address;
   public String city = "";
   public String country = "";
@@ -54,6 +54,10 @@ public class LbsDataV2$PoiInfo
     localPoiInfo.poiType = paramPoiInfo.poiType;
     localPoiInfo.poiTypeName = paramPoiInfo.poiTypeName;
     localPoiInfo.show_poi = paramPoiInfo.show_poi;
+    localPoiInfo.city = paramPoiInfo.city;
+    localPoiInfo.province = paramPoiInfo.province;
+    localPoiInfo.country = paramPoiInfo.country;
+    localPoiInfo.district = paramPoiInfo.district;
     return localPoiInfo;
   }
   
@@ -98,6 +102,10 @@ public class LbsDataV2$PoiInfo
     paramParcel.writeString(this.dianPingId);
     paramParcel.writeParcelable(this.gpsInfo, paramInt);
     paramParcel.writeInt(this.show_poi);
+    paramParcel.writeString(this.country);
+    paramParcel.writeString(this.province);
+    paramParcel.writeString(this.city);
+    paramParcel.writeString(this.district);
   }
 }
 

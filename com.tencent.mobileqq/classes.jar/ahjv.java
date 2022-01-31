@@ -1,23 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberInfo;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
 
-public final class ahjv
-  implements Parcelable.Creator
+public class ahjv
+  extends Handler
 {
-  public ReceiptMessageReadMemberListFragment.MemberInfo a(Parcel paramParcel)
+  public ahjv(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment, Looper paramLooper)
   {
-    return new ReceiptMessageReadMemberListFragment.MemberInfo(paramParcel);
+    super(paramLooper);
   }
   
-  public ReceiptMessageReadMemberListFragment.MemberInfo[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new ReceiptMessageReadMemberListFragment.MemberInfo[paramInt];
+    super.handleMessage(paramMessage);
+    if (paramMessage.what == 10) {
+      postDelayed(QzoneSlideShowPreparingFragment.a(this.a), 200L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahjv
  * JD-Core Version:    0.7.0.1
  */

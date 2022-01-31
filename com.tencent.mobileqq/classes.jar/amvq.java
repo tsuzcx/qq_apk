@@ -1,28 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class amvq
-  implements DialogInterface.OnClickListener
+  implements bbom
 {
-  public amvq(QlinkStandardDialogActivity paramQlinkStandardDialogActivity, String paramString1, String paramString2) {}
+  public amvq(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    Intent localIntent = AddFriendLogicActivity.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.app.getApp().getApplicationContext(), 1, this.jdField_a_of_type_JavaLangString, null, 3020, 0, this.b, null, null, "返回", null);
-    localIntent.putExtra("_FROM_QLINK_", true);
-    this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.startActivity(localIntent);
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.finish();
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.msgbox.tab", 2, "BaseMsgBoxActivity, onTabSelected: old=" + paramInt1 + ", cur=" + paramInt2 + ", msgTabIdx=" + this.a.b + ", unReadMsgNum=" + this.a.c);
+    }
+    Intent localIntent;
+    if ((paramInt1 == this.a.b) && (paramInt2 != this.a.b))
+    {
+      localIntent = new Intent();
+      localIntent.putExtra("curIndex", paramInt2);
+      if (!this.a.e) {
+        break label176;
+      }
+    }
+    label176:
+    for (paramInt1 = this.a.c;; paramInt1 = 0)
+    {
+      localIntent.putExtra("unReadMsgNum", paramInt1);
+      this.a.setResult(-1, localIntent);
+      this.a.finish();
+      this.a.overridePendingTransition(2130772211, 2130772211);
+      if (QLog.isColorLevel()) {
+        QLog.d("nearby.msgbox.tab", 2, "finish");
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amvq
  * JD-Core Version:    0.7.0.1
  */

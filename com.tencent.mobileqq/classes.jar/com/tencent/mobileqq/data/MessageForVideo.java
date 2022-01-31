@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.util.Utils;
+import ajjy;
+import azzz;
 import com.tencent.qphone.base.util.QLog;
 
 public class MessageForVideo
@@ -31,7 +32,7 @@ public class MessageForVideo
       {
         this.type = Integer.parseInt(arrayOfString[1]);
         if ((arrayOfString == null) || (arrayOfString.length <= 3)) {
-          break label248;
+          break label251;
         }
         if (arrayOfString.length != 4) {
           break label235;
@@ -52,16 +53,16 @@ public class MessageForVideo
         if (!QLog.isColorLevel()) {
           continue;
         }
-        QLog.d("MessageForVideo", 2, "java.lang.NumberFormatException: Invalid int: " + arrayOfString[1] + " msg byte " + Utils.a(this.msg));
+        QLog.d("MessageForVideo", 2, "java.lang.NumberFormatException: Invalid int: " + arrayOfString[1] + " msg byte " + azzz.a(this.msg));
         continue;
       }
       label227:
       this.type = 5;
     }
     label235:
-    this.isVideo = arrayOfString[0].contains("视频");
+    this.isVideo = arrayOfString[0].contains(ajjy.a(2131640815));
     return;
-    label248:
+    label251:
     this.isVideo = true;
   }
 }

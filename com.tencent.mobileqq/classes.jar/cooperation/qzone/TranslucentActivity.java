@@ -1,52 +1,53 @@
 package cooperation.qzone;
 
-import anaz;
+import ajjy;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
+import bbms;
+import bfcz;
+import bfdi;
+import bfsn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
-import cooperation.plugin.IPluginManager;
-import cooperation.plugin.IPluginManager.PluginParams;
 
 public class TranslucentActivity
   extends Activity
 {
   private void a(Intent paramIntent)
   {
-    QQProgressDialog localQQProgressDialog;
-    if (!((IPluginManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(26)).isPlugininstalled("qzone_plugin.apk"))
+    bbms localbbms;
+    if (!((bfcz)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(27)).isPlugininstalled("qzone_plugin.apk"))
     {
-      localQQProgressDialog = new QQProgressDialog(this, getResources().getDimensionPixelSize(2131558448));
-      localQQProgressDialog.a("正在加载...");
-      localQQProgressDialog.setOnDismissListener(new anaz(this));
+      localbbms = new bbms(this, getResources().getDimensionPixelSize(2131167766));
+      localbbms.a(ajjy.a(2131649280));
+      localbbms.setOnDismissListener(new bfsn(this));
     }
     for (;;)
     {
       String str = QzonePluginProxyActivity.a(paramIntent);
       paramIntent.putExtra("userQqResources", 2);
-      IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-      localPluginParams.jdField_b_of_type_JavaLangString = "qzone_plugin.apk";
-      localPluginParams.d = "QZone";
-      localPluginParams.jdField_a_of_type_JavaLangString = "";
-      localPluginParams.e = str;
-      localPluginParams.jdField_a_of_type_JavaLangClass = QzonePluginProxyActivity.class;
-      localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
-      localPluginParams.jdField_b_of_type_Int = -1;
-      localPluginParams.jdField_a_of_type_AndroidAppDialog = localQQProgressDialog;
-      localPluginParams.c = 10000;
-      localPluginParams.f = null;
-      IPluginManager.a(this, localPluginParams);
-      if (localQQProgressDialog == null) {
+      bfdi localbfdi = new bfdi(0);
+      localbfdi.jdField_b_of_type_JavaLangString = "qzone_plugin.apk";
+      localbfdi.d = "QZone";
+      localbfdi.jdField_a_of_type_JavaLangString = "";
+      localbfdi.e = str;
+      localbfdi.jdField_a_of_type_JavaLangClass = QzonePluginProxyActivity.class;
+      localbfdi.jdField_a_of_type_AndroidContentIntent = paramIntent;
+      localbfdi.jdField_b_of_type_Int = -1;
+      localbfdi.jdField_a_of_type_AndroidAppDialog = localbbms;
+      localbfdi.c = 10000;
+      localbfdi.f = null;
+      bfcz.a(this, localbfdi);
+      if (localbbms == null) {
         finish();
       }
       return;
-      localQQProgressDialog = null;
+      localbbms = null;
     }
   }
   

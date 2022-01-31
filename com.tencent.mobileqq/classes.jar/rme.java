@@ -1,18 +1,40 @@
-import com.tencent.mobileqq.activity.AddAccountActivity;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideo;
+import com.tencent.viola.adapter.VComponentAdapter.OnVideoViewMethodListener;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class rme
-  implements Runnable
+  implements VComponentAdapter.OnVideoViewMethodListener
 {
-  public rme(AddAccountActivity paramAddAccountActivity) {}
+  public rme(VVideo paramVVideo) {}
   
-  public void run()
+  public void OnMethodError(String paramString, JSONObject paramJSONObject)
   {
-    AddAccountActivity.a(this.a, true);
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("code", paramString);
+      localJSONObject.put("extra", paramJSONObject);
+      this.a.videoFireEvent("error", localJSONObject);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public void OnMethodSuccess(String paramString, Object paramObject)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      VVideo.access$000(this.a, paramString, paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rme
  * JD-Core Version:    0.7.0.1
  */

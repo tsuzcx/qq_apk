@@ -9,11 +9,11 @@ public final class a
 {
   static byte[] f;
   static byte[] g;
-  public byte[] a;
-  public int b;
-  public int c;
-  public byte[] d;
-  public byte e;
+  public byte[] a = null;
+  public int b = 0;
+  public int c = 0;
+  public byte[] d = null;
+  public byte e = 0;
   
   public a() {}
   

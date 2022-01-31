@@ -1,31 +1,45 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoPoiSearch;
-import com.tencent.biz.qqstory.takevideo.EditVideoUi;
-import com.tencent.util.InputMethodUtil;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import java.util.ArrayList;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
 
 public class oky
-  implements AbsListView.OnScrollListener
+  implements Animator.AnimatorListener
 {
-  int jdField_a_of_type_Int = 0;
+  public oky(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment) {}
   
-  public oky(EditVideoPoiSearch paramEditVideoPoiSearch) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (paramInt == 1) {
-      InputMethodUtil.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.a().a());
-    }
-    while ((paramInt != 0) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.a == null) || (this.jdField_a_of_type_Int < this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.a.size())) {
-      return;
-    }
-    EditVideoPoiSearch.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch);
+    ohb.a().a(null, 110, true, null);
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
+    ohb.a().a(null, 110, true, null);
+    if (ReadInjoyIMAXAdFragment.a(this.a) != null)
+    {
+      ReadInjoyIMAXAdFragment.a(this.a).setVisibility(0);
+      ReadInjoyIMAXAdFragment.b(this.a).setVisibility(0);
+      ReadInjoyIMAXAdFragment.c(this.a).setVisibility(0);
+      ReadInjoyIMAXAdFragment.b(this.a).setVisibility(0);
+      if (ReadInjoyIMAXAdFragment.e(this.a) != 1001) {
+        break label90;
+      }
+      ReadInjoyIMAXAdFragment.c(this.a).setVisibility(0);
+    }
+    label90:
+    while (ReadInjoyIMAXAdFragment.e(this.a) != 1002) {
+      return;
+    }
+    ReadInjoyIMAXAdFragment.c(this.a).setVisibility(8);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    ohb.a().a(null, 110, false, null);
   }
 }
 

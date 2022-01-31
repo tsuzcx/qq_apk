@@ -1,41 +1,20 @@
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
-import com.tencent.biz.troop.VideoCombineHelper;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.qphone.base.util.QLog;
 
-public class pcg
-  implements FFmpegExecuteResponseCallback
+class pcg
+  implements pby
 {
-  pcg(VideoCombineHelper paramVideoCombineHelper) {}
+  pcg(pbz parampbz) {}
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onStart");
+    if (pbz.a(this.a) != null)
+    {
+      pbz.a(this.a).a();
+      return;
     }
-  }
-  
-  public void a(String paramString)
-  {
-    b(true);
-  }
-  
-  public void a(boolean paramBoolean) {}
-  
-  public void b(String paramString)
-  {
-    b(false);
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onFailure" + paramString);
-    }
-  }
-  
-  public void b(boolean paramBoolean) {}
-  
-  public void c(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onProgress" + paramString);
-    }
+    obz.a(pbz.c(this.a).getContext(), pbz.b(this.a));
+    QLog.d("RvPolymericContainer", 1, "mScrollJumpUrl : " + pbz.b(this.a));
   }
 }
 

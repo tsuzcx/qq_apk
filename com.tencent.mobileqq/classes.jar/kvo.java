@@ -1,22 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.IBinder.DeathRecipient;
 
 class kvo
-  implements DialogInterface.OnDismissListener
+  implements IBinder.DeathRecipient
 {
   kvo(kvn paramkvn) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void binderDied()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PublicAccountAdvertisementActivity", 2, "action dismiss");
-    }
+    krx.d("QQServiceProxy", "QQServiceForAV mobileQQ process exited!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     kvo
  * JD-Core Version:    0.7.0.1
  */

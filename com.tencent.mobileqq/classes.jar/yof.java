@@ -1,23 +1,37 @@
-import com.tencent.mobileqq.adapter.NewFriendMoreSysMsgAdapter;
-import com.tencent.mobileqq.app.QIMNewFriendManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.newfriend.NewFriendMessage;
-import com.tencent.mobileqq.newfriend.QIMNotifyAddFriendMsg;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.aditem.GdtAd;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
-public class yof
-  implements Runnable
+public final class yof
 {
-  public yof(NewFriendMoreSysMsgAdapter paramNewFriendMoreSysMsgAdapter, NewFriendMessage paramNewFriendMessage) {}
-  
-  public void run()
+  private static yog a(int paramInt)
   {
-    ((QIMNewFriendManager)this.jdField_a_of_type_ComTencentMobileqqAdapterNewFriendMoreSysMsgAdapter.a.getManager(256)).b(((QIMNotifyAddFriendMsg)this.jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendMessage).a);
-    this.jdField_a_of_type_ComTencentMobileqqAdapterNewFriendMoreSysMsgAdapter.a.runOnUiThread(new yog(this));
+    yop localyop = null;
+    if ((paramInt == 0) || (1 == paramInt) || (2 == paramInt) || (3 == paramInt)) {
+      localyop = new yop();
+    }
+    return localyop;
+  }
+  
+  public static void a(int paramInt1, int paramInt2, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo)
+  {
+    if ((paramInt1 < 0) || (paramInt1 >= 3)) {}
+    yog localyog;
+    do
+    {
+      do
+      {
+        yom.a(BaseApplicationImpl.getApplication(), new GdtAd(paramAdInfo), paramInt1, paramInt2, false);
+        return;
+      } while ((paramInt2 < 0) || (paramInt2 >= 4));
+      localyog = a(paramInt2);
+    } while (localyog == null);
+    localyog.a(paramInt1, paramInt2, paramAdInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yof
  * JD-Core Version:    0.7.0.1
  */

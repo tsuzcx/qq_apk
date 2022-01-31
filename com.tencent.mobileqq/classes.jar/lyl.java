@@ -1,26 +1,180 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeUgcVideo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnSubRegionClickListener;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Rect;
+import android.view.Display;
+import android.view.WindowManager;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class lyl
-  implements View.OnClickListener
+  extends lyf
 {
-  public lyl(FeedItemCellTypeUgcVideo paramFeedItemCellTypeUgcVideo) {}
+  protected Display a;
   
-  public void onClick(View paramView)
+  protected lyl(Context paramContext, VideoAppInterface paramVideoAppInterface)
   {
-    ReadInJoyBaseAdapter.OnSubRegionClickListener localOnSubRegionClickListener = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
-    if (localOnSubRegionClickListener != null) {
-      localOnSubRegionClickListener.a(paramView, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    super(paramContext, paramVideoAppInterface);
+    this.jdField_a_of_type_AndroidViewDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public void a(kvq paramkvq, ltl[] paramArrayOfltl, int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4)
+  {
+    if (this.jdField_a_of_type_AndroidContentContext == null) {
+      return;
     }
+    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131167851);
+    if (paramInt4 != 0) {}
+    for (paramInt3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131167852);; paramInt3 = i)
+    {
+      int k = (paramInt1 - i * 2) / 4;
+      int j = paramInt2 - k - paramInt3 - paramInt4;
+      paramInt3 = paramInt2 - paramInt3 - paramInt4;
+      if (paramBoolean)
+      {
+        paramInt1 = paramArrayOfltl[1].b().left;
+        paramInt2 = paramArrayOfltl[1].b().right;
+        paramArrayOfltl[1].b(paramInt1, j, paramInt2, paramInt3);
+        if (!paramBoolean) {
+          break label320;
+        }
+        paramInt2 = paramArrayOfltl[2].b().left;
+        paramInt1 = paramArrayOfltl[2].b().right;
+        label139:
+        paramArrayOfltl[2].b(paramInt2, j, paramInt1, paramInt3);
+        if (!paramBoolean) {
+          break label329;
+        }
+        paramInt1 = paramArrayOfltl[3].b().left;
+        paramInt2 = paramArrayOfltl[3].b().right;
+        label178:
+        paramArrayOfltl[3].b(paramInt1, j, paramInt2, paramInt3);
+        if (!paramBoolean) {
+          break label338;
+        }
+        paramInt2 = paramArrayOfltl[4].b().left;
+        paramInt1 = paramArrayOfltl[4].b().right;
+      }
+      for (;;)
+      {
+        paramArrayOfltl[4].b(paramInt2, j, paramInt1, paramInt3);
+        paramArrayOfltl[1].d(-15197410);
+        paramArrayOfltl[2].d(-15197410);
+        paramArrayOfltl[3].d(-15197410);
+        paramArrayOfltl[4].d(-15197410);
+        paramArrayOfltl[1].a(2, 3, 3, 3);
+        paramArrayOfltl[2].a(2, 3, 2, 3);
+        paramArrayOfltl[3].a(2, 3, 2, 3);
+        paramArrayOfltl[4].a(3, 3, 2, 3);
+        return;
+        paramInt2 = paramInt1 - i;
+        paramInt1 = paramInt1 - k - i;
+        break;
+        label320:
+        paramInt2 = paramInt1 - k;
+        break label139;
+        label329:
+        paramInt1 = paramInt2 - k;
+        break label178;
+        label338:
+        paramInt2 = paramInt1 - k;
+      }
+    }
+  }
+  
+  public void a(ltl[] paramArrayOfltl, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    int n = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("ScreenLayoutSmallUIOrigin", 2, "setSmallVideoViewLayout position: " + paramInt1);
+    }
+    if (this.jdField_a_of_type_AndroidContentContext == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ScreenLayoutSmallUIOrigin", 2, "setSmallVideoViewLayout mContext == null");
+      }
+      return;
+    }
+    this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131167853);
+    this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131167850);
+    this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131167851);
+    this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131167852);
+    int m;
+    int k;
+    int i;
+    int j;
+    if (this.jdField_a_of_type_AndroidViewDisplay.getRotation() % 2 == 0)
+    {
+      m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131166652);
+      k = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131166649);
+      i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131166650);
+      j = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131166651);
+      if (paramInt5 != 0) {
+        break label450;
+      }
+      j = i;
+    }
+    label450:
+    for (;;)
+    {
+      switch (paramInt1)
+      {
+      default: 
+        paramInt2 = 0;
+        paramInt3 = 0;
+        i = 0;
+        paramInt1 = n;
+      }
+      for (;;)
+      {
+        paramArrayOfltl[1].b(i, paramInt3, paramInt2, paramInt1);
+        kyy.a("setSmallVideoViewLayout " + m + "|" + k);
+        return;
+        m = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131166649);
+        k = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131166652);
+        i = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131166651);
+        j = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131166650);
+        break;
+        paramInt2 = i + m;
+        paramInt3 = j + paramInt4;
+        paramInt1 = paramInt3 + k;
+        continue;
+        i = paramInt2 - m - i;
+        paramInt2 = i + m;
+        paramInt3 = j + paramInt4;
+        paramInt1 = paramInt3 + k;
+        continue;
+        paramInt2 = i + m;
+        paramInt3 = paramInt3 - k - j - paramInt5;
+        paramInt1 = paramInt3 + k;
+        continue;
+        i = paramInt2 - m - i;
+        paramInt3 = paramInt3 - k - j - paramInt5;
+        paramInt2 = i + m;
+        paramInt1 = paramInt3 + k;
+      }
+    }
+  }
+  
+  public void a(ltl[] paramArrayOfltl, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean)
+  {
+    paramArrayOfltl[1].a(3, 3, 3, 3);
+    paramArrayOfltl[1].d(-15197410);
+    a(paramArrayOfltl, paramInt3, paramInt1, paramInt2, paramInt4, paramInt5);
+  }
+  
+  public boolean a()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lyl
  * JD-Core Version:    0.7.0.1
  */

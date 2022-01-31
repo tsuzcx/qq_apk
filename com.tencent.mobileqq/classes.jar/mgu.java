@@ -1,54 +1,87 @@
-import android.content.Context;
-import android.view.View;
-import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import java.util.ArrayList;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpVersion;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.ClientConnectionManager;
+import org.apache.http.conn.scheme.PlainSocketFactory;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.DefaultHttpRoutePlanner;
+import org.apache.http.impl.conn.SingleClientConnManager;
+import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
+import org.apache.http.params.HttpProtocolParams;
+import org.apache.http.util.EntityUtils;
 
 public class mgu
-  implements Runnable
 {
-  public mgu(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
-  
-  public void run()
+  public static String a(String paramString1, String paramString2, String paramString3)
   {
-    TranslateAnimation localTranslateAnimation = this.a.a;
-    RelativeLayout.LayoutParams localLayoutParams;
-    int i;
-    if (localTranslateAnimation != null)
+    Object localObject = null;
+    try
     {
-      VideoFeedsPlayActivity.c(this.a).setVisibility(0);
-      VideoFeedsPlayActivity.c(this.a).findViewById(2131365659).setVisibility(0);
-      VideoFeedsPlayActivity.c(this.a).findViewById(2131365593).setVisibility(0);
-      VideoFeedsPlayActivity.c(this.a).findViewById(2131365594).setVisibility(0);
-      VideoFeedsPlayActivity.c(this.a).bringToFront();
-      localLayoutParams = (RelativeLayout.LayoutParams)VideoFeedsPlayActivity.c(this.a).getLayoutParams();
-      if (!VideoFeedsPlayActivity.k(this.a)) {
-        break label152;
+      HttpClient localHttpClient = a(false);
+      localObject = localHttpClient;
+      paramString1 = new HttpPost(paramString1);
+      localObject = localHttpClient;
+      paramString1.setEntity(new StringEntity(paramString2, "utf8"));
+      localObject = localHttpClient;
+      paramString1.setHeader("Content-Type", "application/text");
+      if (paramString3 != null)
+      {
+        localObject = localHttpClient;
+        paramString1.setHeader("Cookie", paramString3);
       }
-      i = AIOUtils.a(130.0F, this.a.getApplicationContext().getResources());
+      localObject = localHttpClient;
+      paramString1 = EntityUtils.toString(localHttpClient.execute(paramString1).getEntity());
+      return paramString1;
     }
-    for (;;)
+    finally
     {
-      localLayoutParams.setMargins(0, 0, 0, i);
-      VideoFeedsPlayActivity.c(this.a).setLayoutParams(localLayoutParams);
-      VideoFeedsPlayActivity.c(this.a).startAnimation(localTranslateAnimation);
-      return;
-      label152:
-      if (((VideoInfo)VideoFeedsPlayActivity.a(this.a).get(0)).a(this.a)) {
-        i = AIOUtils.a(65.0F, this.a.getApplicationContext().getResources());
-      } else {
-        i = AIOUtils.a(25.0F, this.a.getApplicationContext().getResources());
+      if (localObject != null) {
+        localObject.getConnectionManager().shutdown();
       }
+    }
+  }
+  
+  public static HttpClient a(boolean paramBoolean)
+  {
+    Object localObject2 = new BasicHttpParams();
+    HttpConnectionParams.setStaleCheckingEnabled((HttpParams)localObject2, false);
+    HttpConnectionParams.setConnectionTimeout((HttpParams)localObject2, 5000);
+    HttpConnectionParams.setTcpNoDelay((HttpParams)localObject2, true);
+    HttpConnectionParams.setSoTimeout((HttpParams)localObject2, 10000);
+    HttpConnectionParams.setSocketBufferSize((HttpParams)localObject2, 8192);
+    HttpProtocolParams.setVersion((HttpParams)localObject2, HttpVersion.HTTP_1_1);
+    HttpProtocolParams.setUserAgent((HttpParams)localObject2, "randchat");
+    Object localObject1 = new SchemeRegistry();
+    ((SchemeRegistry)localObject1).register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
+    try
+    {
+      ((SchemeRegistry)localObject1).register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
+      label99:
+      if (paramBoolean) {}
+      for (localObject1 = new ThreadSafeClientConnManager((HttpParams)localObject2, (SchemeRegistry)localObject1);; localObject1 = new SingleClientConnManager((HttpParams)localObject2, (SchemeRegistry)localObject1))
+      {
+        localObject2 = new DefaultHttpClient((ClientConnectionManager)localObject1, (HttpParams)localObject2);
+        ((DefaultHttpClient)localObject2).setRoutePlanner(new DefaultHttpRoutePlanner(((ClientConnectionManager)localObject1).getSchemeRegistry()));
+        return localObject2;
+      }
+    }
+    catch (Exception localException)
+    {
+      break label99;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mgu
  * JD-Core Version:    0.7.0.1
  */

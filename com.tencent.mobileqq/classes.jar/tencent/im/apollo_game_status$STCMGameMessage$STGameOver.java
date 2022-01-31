@@ -9,10 +9,10 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class apollo_game_status$STCMGameMessage$STGameOver
-  extends MessageMicro
+  extends MessageMicro<STGameOver>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatMessageField rpt_msg_winner_info = PBField.initRepeatMessage(apollo_game_status.STCMGameMessage.STScoreInfo.class);
+  public final PBRepeatMessageField<apollo_game_status.STCMGameMessage.STScoreInfo> rpt_msg_winner_info = PBField.initRepeatMessage(apollo_game_status.STCMGameMessage.STScoreInfo.class);
   public final PBBytesField str_game_over_info = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field uint32_over_type = PBField.initUInt32(0);
   
@@ -24,7 +24,7 @@ public final class apollo_game_status$STCMGameMessage$STGameOver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.apollo_game_status.STCMGameMessage.STGameOver
  * JD-Core Version:    0.7.0.1
  */

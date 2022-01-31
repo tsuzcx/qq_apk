@@ -1,31 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ListAdapter;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class ugx
-  implements View.OnClickListener
+  extends QQUIEventReceiver<ugr, spl>
 {
-  public ugx(TroopMemberListActivity paramTroopMemberListActivity) {}
-  
-  public void onClick(View paramView)
+  public ugx(ugr paramugr)
   {
-    this.a.jdField_d_of_type_Boolean = true;
-    this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.a.findViewById(2131363492));
-    this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.jdField_d_of_type_AndroidWidgetTextView.setText("取消");
-    this.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new ugy(this));
-    TroopMemberListActivity.a(this.a);
-    if (this.a.a != null) {
-      this.a.a.a();
+    super(paramugr);
+  }
+  
+  public void a(@NonNull ugr paramugr, @NonNull spl paramspl)
+  {
+    if (paramspl.a.isSuccess())
+    {
+      urk.a("Q.qqstory.memories.ProfileFeedPresenter", "receive video delete event. %s. start to refresh year node list", paramspl.toString());
+      ugr.a(paramugr, true);
     }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return spl.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ugx
  * JD-Core Version:    0.7.0.1
  */

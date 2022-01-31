@@ -1,49 +1,73 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.VideoPlayCountObserver;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.io.File;
 
 public class mgw
-  extends VideoPlayCountObserver
 {
-  public mgw(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  public static String a()
+  {
+    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localFile == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("ImageUtil", 2, "[image download] getFilesDir is null");
+      }
+      return "";
+    }
+    return localFile.getParent() + "/qav/image_download/";
+  }
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayActivity", 2, "onGetVideoPlayCount isSuccess: " + paramBoolean);
+      QLog.i("ImageUtil", 2, "[image early] trigger early download");
     }
-    if (!paramBoolean) {}
-    label35:
-    String str;
-    VideoInfo localVideoInfo;
-    do
+    paramQQAppInterface = (amyp)paramQQAppInterface.getManager(77);
+    if (paramQQAppInterface != null)
     {
-      Iterator localIterator;
-      do
-      {
-        do
-        {
-          return;
-          break label35;
-          while (paramBundle == null) {}
-          str = paramBundle.getString("VALUE_VIDEO_VID");
-        } while (str == null);
-        localIterator = VideoFeedsPlayActivity.a(this.a).iterator();
-      } while (!localIterator.hasNext());
-      localVideoInfo = (VideoInfo)localIterator.next();
-    } while ((localVideoInfo.a == null) || (!localVideoInfo.a.equals(str)));
-    localVideoInfo.l = paramBundle.getInt("VALUE_VIDEO_PLAY_COUNT");
-    VideoFeedsPlayActivity.a(this.a).b(localVideoInfo.a, localVideoInfo.l);
+      paramQQAppInterface = (amzn)paramQQAppInterface.a("qq.android.qav.image2");
+      if (paramQQAppInterface != null) {
+        paramQQAppInterface.a(false);
+      }
+    }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return new File(b(), paramString).exists();
+  }
+  
+  public static String b()
+  {
+    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localFile == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("ImageUtil", 2, "[image early] getFilesDir is null");
+      }
+      return "";
+    }
+    return localFile.getParent() + "/qav/image_early/";
+  }
+  
+  public static String c()
+  {
+    File localFile = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localFile == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("ImageUtil", 2, "[video early] getFilesDir is null");
+      }
+      return "";
+    }
+    return localFile.getParent() + "/qav/video_early/";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mgw
  * JD-Core Version:    0.7.0.1
  */

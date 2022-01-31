@@ -8,7 +8,7 @@ import org.json.JSONObject;
 
 public class MessageForQzoneFeed$MediaData
 {
-  public Map extendInfo;
+  public Map<String, String> extendInfo;
   public String strImgUrl;
   public int uType;
   

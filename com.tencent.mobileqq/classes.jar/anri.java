@@ -1,28 +1,27 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMCameraCaptureUnit;
+import android.support.v4.app.FragmentActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
 
 public class anri
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public anri(QIMCameraCaptureUnit paramQIMCameraCaptureUnit, CameraCaptureView.VideoCaptureResult paramVideoCaptureResult) {}
+  public anri(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    QLog.d("VERSION_CODES", 2, "onVideoCaptured. videoFrameCount = " + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult.videoFrameCount + " ; minFrameCount = " + QIMCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit));
-    QQToast.a(BaseApplicationImpl.getContext(), "拍摄时间过短，请重新拍摄。", 0).a();
-    if (this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.b) {
-      this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.x();
+    ExtendFriendProfileEditFragment.a(this.a.getActivity().app, paramBoolean, new anrj(this, paramBoolean));
+    if (paramBoolean) {}
+    for (paramCompoundButton = "0X8009F0F";; paramCompoundButton = "0X8009F10")
+    {
+      awqx.b(this.a.getActivity().app, "dc00898", "", "", paramCompoundButton, paramCompoundButton, 0, 0, "", "", "", "");
+      return;
     }
-    this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.e();
-    this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.z();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anri
  * JD-Core Version:    0.7.0.1
  */

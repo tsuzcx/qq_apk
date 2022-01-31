@@ -1,9 +1,7 @@
 package com.tencent.mobileqq.highway.openup;
 
-import android.content.Context;
 import com.tencent.mobileqq.highway.protocol.subcmd0x501.SubCmd0x501Rspbody.OpenUpConf;
 import com.tencent.mobileqq.highway.utils.BdhLogUtil;
-import com.tencent.mobileqq.highway.utils.HwNetworkUtil;
 import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
@@ -15,27 +13,58 @@ public class OpenUpConfig
   public static int preSendDots_4g = 2;
   public static int preSendDots_wifi = 2;
   
-  public static int getPreSendDots(Context paramContext)
+  /* Error */
+  public static int getPreSendDots(android.content.Context paramContext)
   {
-    for (;;)
-    {
-      try
-      {
-        int i = preSendDots_2g;
-        if (paramContext == null) {
-          return i;
-        }
-        int j = HwNetworkUtil.getSystemNetwork(paramContext);
-        if (3 == j) {
-          i = preSendDots_3g;
-        } else if (4 == j) {
-          i = preSendDots_4g;
-        } else if (1 == j) {
-          i = preSendDots_wifi;
-        }
-      }
-      finally {}
-    }
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 15	com/tencent/mobileqq/highway/openup/OpenUpConfig:preSendDots_2g	I
+    //   6: istore_1
+    //   7: aload_0
+    //   8: ifnonnull +8 -> 16
+    //   11: ldc 2
+    //   13: monitorexit
+    //   14: iload_1
+    //   15: ireturn
+    //   16: aload_0
+    //   17: invokestatic 32	com/tencent/mobileqq/highway/utils/HwNetworkUtil:getSystemNetwork	(Landroid/content/Context;)I
+    //   20: istore_2
+    //   21: iconst_3
+    //   22: iload_2
+    //   23: if_icmpne +10 -> 33
+    //   26: getstatic 17	com/tencent/mobileqq/highway/openup/OpenUpConfig:preSendDots_3g	I
+    //   29: istore_1
+    //   30: goto -19 -> 11
+    //   33: iconst_4
+    //   34: iload_2
+    //   35: if_icmpne +10 -> 45
+    //   38: getstatic 19	com/tencent/mobileqq/highway/openup/OpenUpConfig:preSendDots_4g	I
+    //   41: istore_1
+    //   42: goto -31 -> 11
+    //   45: iconst_1
+    //   46: iload_2
+    //   47: if_icmpne -36 -> 11
+    //   50: getstatic 21	com/tencent/mobileqq/highway/openup/OpenUpConfig:preSendDots_wifi	I
+    //   53: istore_1
+    //   54: goto -43 -> 11
+    //   57: astore_0
+    //   58: ldc 2
+    //   60: monitorexit
+    //   61: aload_0
+    //   62: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	63	0	paramContext	android.content.Context
+    //   6	48	1	i	int
+    //   20	28	2	j	int
+    // Exception table:
+    //   from	to	target	type
+    //   3	7	57	finally
+    //   16	21	57	finally
+    //   26	30	57	finally
+    //   38	42	57	finally
+    //   50	54	57	finally
   }
   
   public static void updateFromSrv(subcmd0x501.SubCmd0x501Rspbody.OpenUpConf paramOpenUpConf)
@@ -78,7 +107,7 @@ public class OpenUpConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.highway.openup.OpenUpConfig
  * JD-Core Version:    0.7.0.1
  */

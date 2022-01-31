@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
 
-class akxd
-  implements Runnable
+public class akxd
+  extends akxc
 {
-  akxd(akxc paramakxc) {}
-  
-  public void run()
-  {
-    this.a.a.a.dismiss();
-  }
+  public void a(AppInterface paramAppInterface, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akxd
  * JD-Core Version:    0.7.0.1
  */

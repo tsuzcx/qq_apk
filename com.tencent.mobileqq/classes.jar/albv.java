@@ -1,22 +1,33 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.DropdownView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.net.Uri;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler.1;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-class albv
-  implements Runnable
+public class albv
+  implements DialogInterface.OnClickListener
 {
-  albv(albu paramalbu, View paramView) {}
+  public albv(ArkAppSchemeCenter.TelSchemeHandler.1 param1, bafb parambafb) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Albu.a.jdField_a_of_type_Albx.showDropDown();
-    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(this.jdField_a_of_type_Albu.a.b);
-    this.jdField_a_of_type_Albu.a.jdField_a_of_type_Boolean = true;
+    paramDialogInterface = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppSchemeCenter$TelSchemeHandler$1.a));
+    ArkAppCenter.a(paramDialogInterface);
+    BaseActivity.sTopActivity.startActivity(paramDialogInterface);
+    if ((this.jdField_a_of_type_Bafb != null) && (this.jdField_a_of_type_Bafb.isShowing())) {}
+    try
+    {
+      this.jdField_a_of_type_Bafb.dismiss();
+      return;
+    }
+    catch (Exception paramDialogInterface) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     albv
  * JD-Core Version:    0.7.0.1
  */

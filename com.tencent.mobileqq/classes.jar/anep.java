@@ -1,23 +1,29 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.plugin.PluginRecord;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.emosm.web.MessengerService.IncomingHandler.33;
 
-public final class anep
-  implements Parcelable.Creator
+public class anep
+  implements aiwp
 {
-  public PluginRecord a(Parcel paramParcel)
-  {
-    return new PluginRecord(paramParcel);
-  }
+  public anep(MessengerService.IncomingHandler.33 param33) {}
   
-  public PluginRecord[] a(int paramInt)
+  public void a(long paramLong, String paramString)
   {
-    return new PluginRecord[paramInt];
+    Bundle localBundle = new Bundle();
+    if (paramLong == 0L) {}
+    for (int i = 0;; i = 1)
+    {
+      localBundle.putInt("result", i);
+      localBundle.putString("message", paramString);
+      this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anep
  * JD-Core Version:    0.7.0.1
  */

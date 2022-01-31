@@ -9,18 +9,18 @@ import java.util.Map;
 public final class get_photo_list_bytimeline_req
   extends JceStruct
 {
-  static Map cache_busi_param;
-  static Map cache_time_range = new HashMap();
+  static Map<Integer, String> cache_busi_param;
+  static Map<Long, Long> cache_time_range = new HashMap();
   public String albumid = "";
   public int albumtype;
   public String attach_info = "";
-  public Map busi_param;
+  public Map<Integer, String> busi_param;
   public int gettimeline;
   public int num;
   public String password = "";
   public int sort;
   public int start;
-  public Map time_range;
+  public Map<Long, Long> time_range;
   public long uin;
   
   static
@@ -32,11 +32,11 @@ public final class get_photo_list_bytimeline_req
   
   public get_photo_list_bytimeline_req() {}
   
-  public get_photo_list_bytimeline_req(long paramLong, String paramString1, Map paramMap1, int paramInt1, String paramString2, String paramString3, int paramInt2, int paramInt3, int paramInt4, int paramInt5, Map paramMap2)
+  public get_photo_list_bytimeline_req(long paramLong, String paramString1, Map<Long, Long> paramMap, int paramInt1, String paramString2, String paramString3, int paramInt2, int paramInt3, int paramInt4, int paramInt5, Map<Integer, String> paramMap1)
   {
     this.uin = paramLong;
     this.albumid = paramString1;
-    this.time_range = paramMap1;
+    this.time_range = paramMap;
     this.sort = paramInt1;
     this.attach_info = paramString2;
     this.password = paramString3;
@@ -44,7 +44,7 @@ public final class get_photo_list_bytimeline_req
     this.num = paramInt3;
     this.albumtype = paramInt4;
     this.gettimeline = paramInt5;
-    this.busi_param = paramMap2;
+    this.busi_param = paramMap1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)

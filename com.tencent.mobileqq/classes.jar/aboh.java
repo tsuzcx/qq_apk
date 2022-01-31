@@ -1,38 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.armap.POIInfo;
-import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RegisterBaseActivity;
 
 public class aboh
-  implements View.OnClickListener
+  extends Handler
 {
-  public aboh(ARMapPOIStarDialog paramARMapPOIStarDialog, POIInfo paramPOIInfo, int paramInt) {}
+  public aboh(RegisterBaseActivity paramRegisterBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    paramView = "" + this.jdField_a_of_type_ComTencentMobileqqArmapMapARMapPOIStarDialog.jdField_a_of_type_Long;
-    String str1 = "" + this.jdField_a_of_type_ComTencentMobileqqArmapPOIInfo.jdField_a_of_type_Long;
-    String str2 = "" + this.jdField_a_of_type_ComTencentMobileqqArmapPOIInfo.b;
-    StringBuilder localStringBuilder = new StringBuilder().append("");
-    if (this.jdField_a_of_type_Int == 0) {}
-    for (int i = 1;; i = 0)
+    switch (paramMessage.what)
     {
-      ReportController.b(null, "dc01440", "", "", "0X8007AB2", "0X8007AB2", 0, 0, paramView, str1, str2, i);
-      ThreadManager.postImmediately(new aboi(this), null, false);
-      this.jdField_a_of_type_ComTencentMobileqqArmapMapARMapPOIStarDialog.jdField_a_of_type_AndroidWidgetButton.setClickable(false);
-      this.jdField_a_of_type_ComTencentMobileqqArmapMapARMapPOIStarDialog.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130842300);
-      this.jdField_a_of_type_ComTencentMobileqqArmapMapARMapPOIStarDialog.b.postDelayed(new aboj(this), 500L);
+    default: 
       return;
     }
+    this.a.c();
+    String str = paramMessage.obj.toString();
+    paramMessage = str;
+    if (str == null) {
+      paramMessage = this.a.getString(2131654750);
+    }
+    this.a.a(paramMessage, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aboh
  * JD-Core Version:    0.7.0.1
  */

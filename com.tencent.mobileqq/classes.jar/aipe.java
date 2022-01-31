@@ -1,56 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SubAccountBindObserver;
-import com.tencent.mobileqq.subaccount.AssociatedAccountOptPopBar;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
-import com.tencent.mobileqq.widget.LeftPopupMenuDialog;
+import com.tencent.mobileqq.apollo.process.data.CmGameAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class aipe
-  extends SubAccountBindObserver
+  implements TVK_SDKMgr.InstallListener
 {
-  public aipe(AssociatedAccountOptPopBar paramAssociatedAccountOptPopBar) {}
+  public aipe(CmGameAppInterface paramCmGameAppInterface) {}
   
-  protected void a(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  public void onInstallProgress(float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountOptPopBar", 2, "onGetBindSubAccount() isSuccess=" + paramBoolean);
-    }
-    if ((!paramBoolean) || (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) || (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing()) || (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app == null) || (this.a.jdField_a_of_type_JavaUtilList == null) || (!this.a.a()) || (paramSubAccountBackProtocData == null) || (!TextUtils.equals(paramSubAccountBackProtocData.b, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.c()))) {
-      return;
-    }
-    AssociatedAccountOptPopBar.a(this.a);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetLeftPopupMenuDialog.a(this.a.jdField_a_of_type_JavaUtilList);
+    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstallProgress] v:" + paramFloat);
   }
   
-  protected void b(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  public void onInstalledFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountOptPopBar", 2, "onBindSubAccount() isSuccess=" + paramBoolean);
-    }
-    if ((!paramBoolean) || (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) || (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isFinishing()) || (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app == null) || (this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_ComTencentMobileqqWidgetLeftPopupMenuDialog == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetLeftPopupMenuDialog.isShowing()) || (paramSubAccountBackProtocData == null) || (!TextUtils.equals(paramSubAccountBackProtocData.b, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.c()))) {
-      return;
-    }
-    AssociatedAccountOptPopBar.a(this.a);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetLeftPopupMenuDialog.a(this.a.jdField_a_of_type_JavaUtilList);
+    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstalledFailed], i:" + paramInt);
   }
   
-  protected void c(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  public void onInstalledSuccessed()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountOptPopBar", 2, "onUnBindSubAccount() isSuccess=" + paramBoolean);
-    }
-    if ((!paramBoolean) || (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) || (this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app == null) || (this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_ComTencentMobileqqWidgetLeftPopupMenuDialog == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetLeftPopupMenuDialog.isShowing()) || (paramSubAccountBackProtocData == null) || (!TextUtils.equals(paramSubAccountBackProtocData.b, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.c()))) {
-      return;
-    }
-    AssociatedAccountOptPopBar.a(this.a);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetLeftPopupMenuDialog.a(this.a.jdField_a_of_type_JavaUtilList);
+    QLog.i("cmgame_process.CmGameAppInterface", 1, "[onInstalledSuccessed]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aipe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,27 @@
-import android.os.Handler;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
 
-public class abif
-  extends AnimatorListenerAdapter
+public final class abif
+  implements Parcelable.Creator<ProfileActivity.CardContactInfo>
 {
-  public abif(ARMapActivity paramARMapActivity) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public ProfileActivity.CardContactInfo a(Parcel paramParcel)
   {
-    if (ARMapActivity.a(this.a) != null) {
-      ARMapActivity.a(this.a).setLoadStatus(2);
-    }
-    this.a.a.postDelayed(new abig(this), 200L);
+    ProfileActivity.CardContactInfo localCardContactInfo = new ProfileActivity.CardContactInfo(null);
+    localCardContactInfo.a = paramParcel.readString();
+    localCardContactInfo.c = paramParcel.readString();
+    localCardContactInfo.b = paramParcel.readString();
+    return localCardContactInfo;
+  }
+  
+  public ProfileActivity.CardContactInfo[] a(int paramInt)
+  {
+    return new ProfileActivity.CardContactInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abif
  * JD-Core Version:    0.7.0.1
  */

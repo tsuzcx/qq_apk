@@ -1,47 +1,15 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoErrorReport;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceStatus.ISVConfig;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import java.util.ArrayList;
-import mqq.app.AppRuntime;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
+import com.tencent.widget.AdapterView;
 
-class pbk
-  implements ShortVideoResourceStatus.ISVConfig
+public class pbk
+  implements behi
 {
-  pbk(paz parampaz, AppRuntime paramAppRuntime, Bundle paramBundle) {}
+  public pbk(NativeGridImageView paramNativeGridImageView) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    VideoEnvironment.a("TroopMemberApiService", "result=" + paramInt1 + ",serverError=" + paramInt2, null);
-    if ((paramInt1 == 1) || (paramInt1 == 0))
-    {
-      if (paramInt2 != 0)
-      {
-        VideoEnvironment.a("TroopMemberApiService", "短视频配置解压失败[" + paramInt2 + "]", null);
-        ShortVideoResourceManager.a("资源下载失败，请稍后重试。");
-        ShortVideoErrorReport.a(1, paramInt2);
-        this.jdField_a_of_type_Paz.a.b = false;
-        return;
-      }
-      ArrayList localArrayList = new ArrayList(1);
-      paramInt1 = ShortVideoResourceManager.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, localArrayList);
-      if (paramInt1 == 0)
-      {
-        VideoEnvironment.a("TroopMemberApiService", "配置下载成功,插件资源下载中...", null);
-        ShortVideoResourceManager.a((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime, localArrayList, new pbl(this));
-        return;
-      }
-      VideoEnvironment.a("TroopMemberApiService", "短视频配置校验失败[" + paramInt1 + "]", null);
-      ShortVideoResourceManager.a("资源下载失败，请稍后重试。");
-      ShortVideoErrorReport.a(1, paramInt1);
-      return;
-    }
-    VideoEnvironment.a("TroopMemberApiService", "短视频配置下载失败[" + paramInt2 + "]", null);
-    ShortVideoResourceManager.a("资源下载失败，请稍后重试。");
-    ShortVideoErrorReport.a(1, paramInt2);
-    this.jdField_a_of_type_Paz.a.b = false;
+    NativeGridImageView.a(this.a, paramInt, NativeGridImageView.a(this.a).a());
   }
 }
 

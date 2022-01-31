@@ -1,43 +1,22 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.util.Base64;
-import com.tencent.biz.pubaccount.readinjoy.model.FollowCoverInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo;
-import cooperation.readinjoy.ReadInJoyHelper;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.TopicRecommendFeedsInfo;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class luj
-  implements Runnable
+class luj
+  implements View.OnLayoutChangeListener
 {
-  public luj(FollowCoverInfoModule paramFollowCoverInfoModule, TopicRecommendFeedsInfo paramTopicRecommendFeedsInfo) {}
+  luj(luh paramluh) {}
   
-  public void run()
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    Object localObject = ReadInJoyHelper.a(FollowCoverInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelFollowCoverInfoModule), true, false);
-    if (localObject != null)
-    {
-      localObject = ((SharedPreferences)localObject).edit();
-      if (localObject != null)
-      {
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo != null) {
-          break label66;
-        }
-        ((SharedPreferences.Editor)localObject).remove("follow_tab_topic_update_info");
-      }
-    }
-    for (;;)
-    {
-      ((SharedPreferences.Editor)localObject).putInt("follow_tab_topic_update_info_exists", FollowCoverInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelFollowCoverInfoModule));
-      ReadInJoyHelper.a((SharedPreferences.Editor)localObject, true);
-      return;
-      label66:
-      ((SharedPreferences.Editor)localObject).putString("follow_tab_topic_update_info", Base64.encodeToString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo.a().toByteArray(), 0));
+    if (QLog.isColorLevel()) {
+      QLog.e("MemberPagerAdapter", 2, String.format("container : left[%s], top[%s], right[%s], bottom[%s], oldLeft[%s], oldTop[%s], oldRight[%s], oldBottom[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Integer.valueOf(paramInt6), Integer.valueOf(paramInt7), Integer.valueOf(paramInt8) }));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     luj
  * JD-Core Version:    0.7.0.1
  */

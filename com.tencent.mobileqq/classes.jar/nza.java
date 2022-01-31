@@ -1,58 +1,84 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.CommentManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.network.request.GetFeedCommentRequest;
-import com.tencent.biz.qqstory.network.request.GetFeedCommentRequest.GetFeedCommentResponse;
-import com.tencent.biz.qqstory.storyHome.model.FeedCommentSync;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
-import java.util.List;
+import android.graphics.Color;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ui.NativeCommentTextView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.TextBase;
 
-class nza
-  implements CmdTaskManger.CommandCallback
+public class nza
+  extends TextBase
 {
-  nza(nyz paramnyz, JobContext paramJobContext, FeedCommentSync paramFeedCommentSync) {}
+  private static final int jdField_a_of_type_Int = Color.parseColor("#262626");
+  private NativeCommentTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView;
+  private final int b = 5;
+  private final int c = Utils.dp2px(16.0D);
   
-  public void a(@NonNull GetFeedCommentRequest paramGetFeedCommentRequest, @Nullable GetFeedCommentRequest.GetFeedCommentResponse paramGetFeedCommentResponse, @NonNull ErrorMessage paramErrorMessage)
+  public nza(VafContext paramVafContext)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    super(paramVafContext);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView = new NativeCommentTextView(paramVafContext.getContext());
+  }
+  
+  public void a(nwk paramnwk, View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setModel(paramnwk, paramView);
+  }
+  
+  public void a(nwk paramnwk, View paramView, int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setModel(paramnwk, paramView, paramInt);
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setTextSize(0, this.c);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setLineSpacing(Utils.rp2px(5.0D), 1.0F);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setIncludeFontPadding(false);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setTextColor(jdField_a_of_type_Int);
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    switch (paramInt)
     {
-      SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed comment info pull segment cancel on net respond");
-      return;
     }
-    if ((paramGetFeedCommentResponse == null) || (paramErrorMessage.isFail()))
+    do
     {
-      SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for comment request");
-      nyz.a(this.jdField_a_of_type_Nyz, paramErrorMessage);
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync.b == 0) {}
-    for (boolean bool1 = false;; bool1 = true)
-    {
-      ((CommentManager)SuperManager.a(17)).a(paramGetFeedCommentResponse.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync.jdField_a_of_type_JavaLangString, bool1, true);
-      boolean bool3 = paramGetFeedCommentResponse.jdField_a_of_type_Boolean;
-      boolean bool2 = bool3;
-      if (!paramGetFeedCommentResponse.jdField_a_of_type_Boolean)
-      {
-        bool2 = bool3;
-        if (paramGetFeedCommentResponse.jdField_a_of_type_JavaUtilList.size() == 0)
-        {
-          SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "comment pull should be end!!!!!!!!!!!!");
-          bool2 = true;
-        }
-      }
-      paramGetFeedCommentRequest = new nyv(bool1, paramGetFeedCommentResponse.jdField_a_of_type_JavaUtilList, paramGetFeedCommentResponse.b, bool2, paramGetFeedCommentResponse.jdField_a_of_type_JavaLangString);
-      nyz.a(this.jdField_a_of_type_Nyz, paramGetFeedCommentRequest);
-      return;
-    }
+      return super.setAttribute(paramInt, paramObject);
+    } while (!(paramObject instanceof nwx));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentUiNativeCommentTextView.setCommentModel((nwx)paramObject);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nza
  * JD-Core Version:    0.7.0.1
  */

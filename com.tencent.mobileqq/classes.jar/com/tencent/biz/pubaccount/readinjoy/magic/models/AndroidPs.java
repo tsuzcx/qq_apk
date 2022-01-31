@@ -5,12 +5,12 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.io.IOException;
 import java.util.Locale;
-import lrp;
+import ooc;
 
 public class AndroidPs
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new lrp();
+  public static final Parcelable.Creator<AndroidPs> CREATOR = new ooc();
   public final String a;
   public final int b;
   
@@ -49,6 +49,31 @@ public class AndroidPs
   
   public int describeContents()
   {
+    return 0;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (AndroidPs)paramObject;
+      if (this.a != null) {
+        return this.a.equals(paramObject.a);
+      }
+    } while (paramObject.a == null);
+    return false;
+  }
+  
+  public int hashCode()
+  {
+    if (this.a != null) {
+      return this.a.hashCode();
+    }
     return 0;
   }
   

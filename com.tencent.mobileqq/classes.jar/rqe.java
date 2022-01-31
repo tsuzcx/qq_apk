@@ -1,23 +1,27 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
-public class rqe
-  implements Runnable
+class rqe
+  extends ajpe
 {
-  public rqe(AssistantSettingActivity paramAssistantSettingActivity) {}
+  rqe(rqc paramrqc) {}
   
-  public void run()
+  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
   {
-    Card localCard = ((FriendsManager)this.a.app.getManager(50)).b(this.a.app.getCurrentAccountUin());
-    this.a.a.sendMessage(this.a.a.obtainMessage(2, Boolean.valueOf(localCard.medalSwitchDisable)));
+    if (paramInt == 0) {
+      this.a.h();
+    }
+  }
+  
+  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  {
+    if (paramInt == 0) {
+      this.a.h();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rqe
  * JD-Core Version:    0.7.0.1
  */

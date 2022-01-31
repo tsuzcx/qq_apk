@@ -1,66 +1,103 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.ecshopassit.EcshopCacheTool;
-import com.tencent.biz.pubaccount.ecshopassit.EcshopWebActivity;
-import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
-import com.tencent.biz.pubaccount.ecshopassit.ShopFolderAdapter;
-import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 
 public class lcs
-  extends BroadcastReceiver
 {
-  public lcs(ShopWebViewFragment paramShopWebViewFragment) {}
+  private static int d = 48;
+  public int a;
+  public long a;
+  public lea a;
+  public int b;
+  public int c;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public lcs()
   {
-    if (paramIntent == null) {}
+    this.jdField_a_of_type_Lea = new lea();
+  }
+  
+  private static int a(byte[] paramArrayOfByte, int paramInt)
+  {
+    int i = 0;
+    int j = 0;
+    while (i < 4)
+    {
+      j |= (paramArrayOfByte[(3 - i + paramInt)] & 0xFF) << (3 - i) * 4;
+      i += 1;
+    }
+    return j;
+  }
+  
+  private static long a(byte[] paramArrayOfByte, int paramInt)
+  {
+    long l = 0L;
+    int i = 0;
+    while (i < 8)
+    {
+      l |= (paramArrayOfByte[(7 - i + paramInt)] & 0xFF) << (7 - i) * 8;
+      i += 1;
+    }
+    return l;
+  }
+  
+  public static ArrayList<lcs> a(byte[] paramArrayOfByte, int paramInt)
+  {
+    ArrayList localArrayList = null;
+    Object localObject;
+    if (paramArrayOfByte == null)
+    {
+      localObject = localArrayList;
+      if (QLog.isColorLevel())
+      {
+        QLog.e("AVInviteAccount", 2, "getListFromBuffer detail is null");
+        localObject = localArrayList;
+      }
+    }
     do
     {
-      Object localObject;
-      do
-      {
-        do
-        {
-          return;
-          paramContext = paramIntent.getAction();
-          localObject = paramIntent.getStringExtra("uin");
-          Bitmap localBitmap = (Bitmap)paramIntent.getParcelableExtra("bitmap");
-          if (!"action_decode_finish".equals(paramContext)) {
-            break;
-          }
-          if ((this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool != null) && (!TextUtils.isEmpty((CharSequence)localObject)) && (localBitmap != null)) {
-            this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcshopCacheTool.a((String)localObject, localBitmap);
-          }
-        } while (this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter == null);
-        this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter.a((String)localObject);
-        return;
-      } while (!"action_on_shop_msg_receive".equals(paramContext));
-      this.a.jdField_a_of_type_JavaUtilList = paramIntent.getParcelableArrayListExtra("datas");
-      paramContext = this.a.getActivity();
-      if ((paramContext instanceof EcshopWebActivity)) {
-        ((EcshopWebActivity)paramContext).jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_JavaUtilList;
+      return localObject;
+      if (paramInt != 0) {
+        break;
       }
-      paramContext = paramIntent.getStringExtra("uin");
-      paramIntent = this.a.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramIntent.hasNext())
+      localObject = localArrayList;
+    } while (!QLog.isColorLevel());
+    QLog.e("AVInviteAccount", 2, "getListFromBuffer buflen == 0");
+    return null;
+    int i = paramInt / d;
+    localArrayList = new ArrayList();
+    paramInt = 0;
+    for (;;)
+    {
+      localObject = localArrayList;
+      if (paramInt >= i) {
+        break;
+      }
+      localObject = new lcs();
+      ((lcs)localObject).jdField_a_of_type_Int = a(paramArrayOfByte, d * paramInt);
+      ((lcs)localObject).jdField_a_of_type_Long = a(paramArrayOfByte, d * paramInt + 8);
+      try
       {
-        localObject = (RecentShopParcel)paramIntent.next();
-        if ((!TextUtils.isEmpty(((RecentShopParcel)localObject).a)) && (((RecentShopParcel)localObject).a.equals(paramContext))) {
-          ((RecentShopParcel)localObject).b += 1;
+        ((lcs)localObject).jdField_a_of_type_Lea.a = new String(paramArrayOfByte, d * paramInt + 16, 5, "UTF-8");
+        ((lcs)localObject).jdField_a_of_type_Lea.b = new String(paramArrayOfByte, d * paramInt + 21, 5, "UTF-8");
+        ((lcs)localObject).jdField_a_of_type_Lea.c = new String(paramArrayOfByte, d * paramInt + 26, 12, "UTF-8");
+        ((lcs)localObject).b = a(paramArrayOfByte, d * paramInt + 40);
+        ((lcs)localObject).c = a(paramArrayOfByte, d * paramInt + 44);
+        localArrayList.add(localObject);
+        paramInt += 1;
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        for (;;)
+        {
+          localUnsupportedEncodingException.printStackTrace();
         }
       }
-    } while ((this.a.b != 1) || (this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter == null));
-    this.a.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopFolderAdapter.a(this.a.jdField_a_of_type_JavaUtilList);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lcs
  * JD-Core Version:    0.7.0.1
  */

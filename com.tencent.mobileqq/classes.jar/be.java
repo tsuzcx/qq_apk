@@ -1,34 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.dataline.activities.LiteActivity;
-import java.io.IOException;
-import java.io.InputStream;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
 
 public class be
-  implements DialogInterface.OnClickListener
+  extends aodp
 {
-  public be(LiteActivity paramLiteActivity, InputStream paramInputStream) {}
+  public be(LiteActivity paramLiteActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    try
-    {
-      this.jdField_a_of_type_JavaIoInputStream.close();
-      this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.finish();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(LiteActivity.a, 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
     }
-    catch (IOException paramDialogInterface)
-    {
-      for (;;)
-      {
-        paramDialogInterface.printStackTrace();
+    paramString1 = this.a.app.a().a(paramLong2);
+    if (paramString1 == null) {
+      if (QLog.isColorLevel()) {
+        QLog.e(LiteActivity.a, 2, "OnFileTransferEnd faild, get entity is faild, sessionId[" + String.valueOf(paramLong2) + "]");
       }
     }
+    do
+    {
+      return;
+      if (paramBoolean)
+      {
+        apck.a(paramLong2);
+        return;
+      }
+    } while ((paramString1.nOpType != 4) && (paramString1.nOpType != 6));
+    apck.a(paramLong2, paramInt2, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     be
  * JD-Core Version:    0.7.0.1
  */

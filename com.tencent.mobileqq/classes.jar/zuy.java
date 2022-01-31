@@ -1,18 +1,26 @@
-import com.tencent.mobileqq.app.TroopManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.TMG.utils.QLog;
 
-public class zuy
-  implements Runnable
+class zuy
+  implements DialogInterface.OnCancelListener
 {
-  public zuy(TroopManager paramTroopManager, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5) {}
+  zuy(zuv paramzuv, DialogInterface.OnCancelListener paramOnCancelListener) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_Int, this.d, this.e);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener == null)
+    {
+      QLog.e("SdkAuthDialog", 1, "cancelListener is null");
+      return;
+    }
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener.onCancel(paramDialogInterface);
+    awqx.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "1", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zuy
  * JD-Core Version:    0.7.0.1
  */

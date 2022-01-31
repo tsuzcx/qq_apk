@@ -1,39 +1,32 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.ScoreQAVFragment.OnItemClickListener;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class tvu
-  extends RecyclerView.ViewHolder
-  implements View.OnClickListener
+public class tvu
+  extends QQUIEventReceiver<tvd, sxr>
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ScoreQAVFragment.OnItemClickListener jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener;
-  
-  public tvu(tvt paramtvt, View paramView, ScoreQAVFragment.OnItemClickListener paramOnItemClickListener)
+  public tvu(@NonNull tvd paramtvd)
   {
-    super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener = paramOnItemClickListener;
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131366256));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    super(paramtvd);
   }
   
-  public void onClick(View paramView)
+  public void a(@NonNull tvd paramtvd, @NonNull sxr paramsxr)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener.a(paramView, getPosition());
+    if (paramsxr.a.isSuccess())
+    {
+      urk.a(paramtvd.b, "receive user info event. %s.", paramsxr.toString());
+      paramtvd.i();
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("ScoreActivity", 2, "mOnItemClickListener is null!");
+  }
+  
+  public Class acceptEventClass()
+  {
+    return sxr.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tvu
  * JD-Core Version:    0.7.0.1
  */

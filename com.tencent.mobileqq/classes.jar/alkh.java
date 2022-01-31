@@ -1,46 +1,72 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.agent.OpenSdkFriendService;
-import com.tencent.open.agent.SocialFriendChooser;
-import com.tencent.open.base.http.HttpCgiAsyncTask;
-import com.tencent.open.settings.ServerSetting;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0x74b.oidb_0x74b.HeadInfo;
 
 public class alkh
-  extends Handler
 {
-  public alkh(SocialFriendChooser paramSocialFriendChooser) {}
+  public int a;
+  public String a;
+  public ArrayList<alki> a;
+  public int b;
+  public int c;
+  public int d;
   
-  public void handleMessage(Message paramMessage)
+  public static alkh a(oidb_0x74b.HeadInfo paramHeadInfo)
   {
-    switch (paramMessage.what)
+    Object localObject;
+    if (paramHeadInfo == null) {
+      localObject = null;
+    }
+    alkh localalkh;
+    do
     {
-    default: 
-      return;
-    case 10001: 
-      paramMessage = new Bundle(this.a.jdField_a_of_type_AndroidOsBundle);
-      paramMessage.putString("agentversion", CommonDataAdapter.a().e());
-      paramMessage.putString("facetype", "mqqface");
-      String str = ServerSetting.a().a("http://fusion.qq.com/cgi-bin/appstage/get_image_update");
-      OpenSdkFriendService.a().a(str, paramMessage, new alki(this));
-      return;
+      return localObject;
+      localalkh = new alkh();
+      if (paramHeadInfo.uint32_id.has()) {
+        localalkh.jdField_a_of_type_Int = paramHeadInfo.uint32_id.get();
+      }
+      if (paramHeadInfo.str_photohead.has()) {
+        localalkh.jdField_a_of_type_JavaLangString = paramHeadInfo.str_photohead.get();
+      }
+      if (paramHeadInfo.uint32_invalid.has()) {
+        localalkh.b = paramHeadInfo.uint32_invalid.get();
+      }
+      if (paramHeadInfo.uint32_timestamp.has()) {
+        localalkh.c = paramHeadInfo.uint32_timestamp.get();
+      }
+      if (paramHeadInfo.uint32_type.has()) {
+        localalkh.d = paramHeadInfo.uint32_type.get();
+      }
+      localObject = localalkh;
+    } while (!paramHeadInfo.rpt_videoheadlist.has());
+    localalkh.jdField_a_of_type_JavaUtilArrayList = alki.a(paramHeadInfo.rpt_videoheadlist.get());
+    return localalkh;
+  }
+  
+  public static ArrayList<alkh> a(List<oidb_0x74b.HeadInfo> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      return null;
     }
-    if ((this.a.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask != null) && (!this.a.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.isCancelled())) {
-      this.a.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.cancel(true);
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      alkh localalkh = a((oidb_0x74b.HeadInfo)paramList.next());
+      if (localalkh != null) {
+        localArrayList.add(localalkh);
+      }
     }
-    this.a.l();
-    paramMessage = new Intent();
-    paramMessage.putExtra("key_error_code", -7);
-    paramMessage.putExtra("key_error_msg", "网络连接超时!");
-    this.a.setResult(-1, paramMessage);
-    this.a.finish();
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alkh
  * JD-Core Version:    0.7.0.1
  */

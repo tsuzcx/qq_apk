@@ -8,7 +8,7 @@ public final class i
   extends JceStruct
 {
   static byte[] d;
-  public byte[] a;
+  public byte[] a = null;
   public String b = "";
   public String c = "";
   

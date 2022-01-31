@@ -1,75 +1,347 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.View;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.ark.ArkEnvironmentManager;
+import com.tencent.ark.ArkViewImplement;
+import com.tencent.ark.ArkViewModel;
+import com.tencent.ark.ArkViewModelBase.AppInfo;
+import com.tencent.ark.ArkViewModelBase.ErrorInfo;
+import com.tencent.ark.ArkViewModelBase.Size;
+import com.tencent.ark.ark;
+import com.tencent.ark.ark.Application;
+import com.tencent.ark.ark.ApplicationCallback;
+import com.tencent.ark.ark.Container;
+import com.tencent.ark.open.ArkAppInfo.AppTemplateView;
+import com.tencent.ark.open.ArkAppInfo.TimeRecord;
+import com.tencent.ark.open.ArkAppMgr;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.ArkAppContainer.2;
+import com.tencent.mobileqq.activity.aio.item.ArkAppContainer.3;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.data.ArkAppMessage.Config;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Set;
+import java.util.Locale;
+import org.json.JSONObject;
 
 public class adaj
-  implements Runnable
+  extends ArkViewModel
 {
-  public adaj(QfileLocalFilePicTabView paramQfileLocalFilePicTabView) {}
+  public static int a;
+  protected static final ark.ApplicationCallback a;
+  public static String a;
+  protected static ArrayList<WeakReference<adaj>> a;
+  public static String c;
+  protected ArkViewModelBase.Size a;
+  public ArkAppInfo.TimeRecord a;
+  public ArkAppMessage.Config a;
+  int b;
+  public String b;
+  protected boolean b;
+  protected WeakReference<adaj> c;
+  boolean c;
+  protected WeakReference<adam> d;
+  protected boolean d;
   
-  public void run()
+  static
   {
-    LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    localLinkedHashMap.put("手机相册", new ArrayList());
-    localLinkedHashMap.put("已下载图片", new ArrayList());
-    for (;;)
+    jdField_a_of_type_Int = 1000;
+    jdField_c_of_type_JavaLangString = "";
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_a_of_type_ComTencentArkArk$ApplicationCallback = new adak();
+  }
+  
+  public adaj() {}
+  
+  public adaj(boolean paramBoolean) {}
+  
+  public static QQAppInterface a()
+  {
+    return (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+  }
+  
+  public static WeakReference<adaj> a(ark.Container paramContainer)
+  {
+    int i = 0;
+    while (i < jdField_a_of_type_JavaUtilArrayList.size())
     {
-      try
+      WeakReference localWeakReference = (WeakReference)jdField_a_of_type_JavaUtilArrayList.get(i);
+      adaj localadaj = (adaj)localWeakReference.get();
+      if ((localadaj != null) && (localadaj.getContainer() == paramContainer)) {
+        return localWeakReference;
+      }
+      i += 1;
+    }
+    return new WeakReference(null);
+  }
+  
+  private static void b(String paramString)
+  {
+    paramString = new File(paramString);
+    if (!paramString.exists()) {
+      paramString.mkdirs();
+    }
+  }
+  
+  public ArkViewModelBase.Size a()
+  {
+    return this.jdField_a_of_type_ComTencentArkArkViewModelBase$Size;
+  }
+  
+  public String a()
+  {
+    return "";
+  }
+  
+  public String a(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    return str;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_ComTencentArkArkViewModelBase$Size = new ArkViewModelBase.Size(paramInt1, paramInt2);
+  }
+  
+  public void a(adam paramadam)
+  {
+    this.d = new WeakReference(paramadam);
+  }
+  
+  public void a(SessionInfo paramSessionInfo, String paramString)
+  {
+    jdField_c_of_type_JavaLangString = "";
+    if ((paramSessionInfo.jdField_a_of_type_Int == 0) || (paramSessionInfo.jdField_a_of_type_Int == 1008)) {
+      jdField_c_of_type_JavaLangString = paramString;
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    try
+    {
+      new JSONObject(paramString);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      ArkAppCenter.c("ArkApp.ArkAppContainer", String.format("CheckMetaLegality,appMeta is parse error and msg=%s", new Object[] { paramString.getMessage() }));
+    }
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    boolean bool1;
+    if (paramInt != 0)
+    {
+      bool1 = true;
+      if (paramInt != -2) {
+        break label139;
+      }
+    }
+    label139:
+    for (boolean bool2 = true;; bool2 = false)
+    {
+      String str1 = ArkEnvironmentManager.getInstance().getCacheDirectory();
+      String str2 = ArkEnvironmentManager.getInstance().getStorageDirectory();
+      String str3 = ArkEnvironmentManager.getInstance().getAppResPath(this.mAppInfo.name);
+      b(str1);
+      b(str2);
+      b(str3);
+      if (TextUtils.isEmpty(paramString1)) {
+        QLog.d("ArkApp.ArkAppContainer", 1, String.format("ArkTemp.loadArkApp app=null mAppInfo.appName=%s, mAppInfo.appView=%s, appPath=%s", new Object[] { this.mAppInfo.name, this.mAppInfo.view, paramString1 }), new RuntimeException());
+      }
+      doLoadArkApp(paramString1, str1, str2, str3, bool1, bool2, paramInt, paramString2);
+      return;
+      bool1 = false;
+      break;
+    }
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    adam localadam = (adam)this.d.get();
+    if (localadam != null) {
+      localadam.a(this, paramString1, paramString2);
+    }
+  }
+  
+  public boolean a(String paramString1, String paramString2, String paramString3, String paramString4, float paramFloat, SessionInfo paramSessionInfo)
+  {
+    jdField_a_of_type_JavaLangString = null;
+    if (paramSessionInfo.jdField_a_of_type_Int == 1) {
+      jdField_a_of_type_JavaLangString = paramSessionInfo.jdField_a_of_type_JavaLangString;
+    }
+    this.jdField_b_of_type_Int = paramSessionInfo.jdField_a_of_type_Int;
+    this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage$Config = new ArkAppMessage.Config();
+    paramSessionInfo = a();
+    this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage$Config.fromString(paramSessionInfo);
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage$Config.round == null) || (this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage$Config.round.intValue() != 0)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.mRoundCorner = bool;
+      if (!TextUtils.isEmpty(paramString4)) {
+        a(paramString4);
+      }
+      String str = alem.a();
+      DisplayMetrics localDisplayMetrics = BaseApplicationImpl.getContext().getResources().getDisplayMetrics();
+      ArkAppCenter.c("ArkApp.ArkAppContainer", String.format(Locale.CHINA, "ArkSafe.init appName=%s, appView=%s, appMinVersion=%s, senderuin=%s, scale=%f, res-scale=%f-%f, system-scale=%f-%f, config=%s, metaData=%s, appconfig=%s", new Object[] { paramString1, paramString2, paramString3, jdField_c_of_type_JavaLangString, Float.valueOf(paramFloat), Float.valueOf(localDisplayMetrics.density), Float.valueOf(localDisplayMetrics.scaledDensity), Float.valueOf(ajia.a.density), Float.valueOf(ajia.a.scaledDensity), paramSessionInfo, paramString4, str }));
+      return super.init(paramString1, paramString2, paramString3, paramString4, str, paramFloat);
+    }
+  }
+  
+  public void c()
+  {
+    adam localadam = (adam)this.d.get();
+    if (localadam != null) {
+      localadam.a(this);
+    }
+  }
+  
+  public void d()
+  {
+    if (this.mViewImpl != null)
+    {
+      this.mViewImpl.resetInputState();
+      if (QLog.isColorLevel()) {
+        QLog.d("ArkApp.ArkAppContainer", 2, String.format("resetInputState done.in.wrapper: %h", new Object[] { this }));
+      }
+    }
+  }
+  
+  public void destroy()
+  {
+    jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_c_of_type_JavaLangRefWeakReference);
+    super.destroy();
+  }
+  
+  public ark.Container getContainer()
+  {
+    return this.mContainer;
+  }
+  
+  public void initLibrary()
+  {
+    ark.MediaSetStub(alfg.a);
+  }
+  
+  public void onFirstDrawEnd()
+  {
+    super.onFirstDrawEnd();
+    ThreadManager.executeOnSubThread(new ArkAppContainer.3(this));
+  }
+  
+  public boolean onLoadApp(ArkViewModelBase.AppInfo paramAppInfo)
+  {
+    QQAppInterface localQQAppInterface = a();
+    if (localQQAppInterface == null)
+    {
+      this.mInit = false;
+      this.mLoadFailed = true;
+      paramAppInfo = this.mViewImpl;
+      if (paramAppInfo != null) {
+        paramAppInfo.onLoadFailed(null, this.mErrorInfo.retCode, true);
+      }
+      return true;
+    }
+    this.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord.beginOfGetApp = System.currentTimeMillis();
+    ArkAppMgr.AppPathInfo localAppPathInfo = ArkAppMgr.getInstance().getAppPathInfoByNameFromLocal(this.mAppInfo.name, this.mAppInfo.view, this.mAppInfo.appMinVersion, true);
+    Object localObject1 = "";
+    String str1 = "";
+    String str2 = "";
+    boolean bool;
+    if (localAppPathInfo != null)
+    {
+      localObject2 = localAppPathInfo.path;
+      localObject1 = localObject2;
+      if (localAppPathInfo.appTempInfo != null)
       {
-        Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-        if (localIterator.hasNext())
+        str1 = localAppPathInfo.appTempInfo.template;
+        str2 = localAppPathInfo.appTempInfo.templateView;
+        this.mAppInfo.view = str2;
+        localObject1 = localObject2;
+        bool = true;
+      }
+    }
+    for (Object localObject2 = str2;; localObject2 = str2)
+    {
+      QLog.d("ArkApp.ArkAppContainer", 1, new Object[] { "ArkTemp.onLoadApp,mAppInfo.name=", this.mAppInfo.name, ",view=", this.mAppInfo.view, ",isTempApp=", Boolean.valueOf(bool), ",template=", str1, ",templateView=", localObject2, ",appPath=", localObject1 });
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
+      for (bool = true;; bool = false)
+      {
+        if ((localQQAppInterface instanceof QQAppInterface))
         {
-          FileInfo localFileInfo = (FileInfo)localIterator.next();
-          Object localObject3 = localFileInfo.a();
-          if ((localObject3 == null) || (((String)localObject3).length() == 0)) {
-            break label281;
+          localObject2 = (ArkAppCenter)localQQAppInterface.getManager(121);
+          if (localObject2 != null)
+          {
+            localObject2 = ((ArkAppCenter)localObject2).a();
+            if (localObject2 != null) {
+              ((aleu)localObject2).a(this.mAppInfo.name, bool);
+            }
           }
-          Object localObject1 = localObject3;
-          if (((String)localObject3).equalsIgnoreCase("QQfile_recv")) {
-            break label281;
-          }
-          localObject3 = localObject1;
-          if (localObject1.equalsIgnoreCase("camera") == true) {
-            localObject3 = "手机相册";
-          }
-          if (!localLinkedHashMap.containsKey(localObject3)) {
-            localLinkedHashMap.put(localObject3, new ArrayList());
-          }
-          ((List)localLinkedHashMap.get(localObject3)).add(localFileInfo);
-          continue;
         }
-        int i;
-        int j;
-        localObject2 = localLinkedHashMap.keySet().iterator();
-      }
-      catch (Exception localException)
-      {
-        localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.getSharedPreferences("LAST_CHOOSE_", 0);
-        i = ((SharedPreferences)localObject2).getInt("GROUP", -1);
-        j = ((SharedPreferences)localObject2).getInt("CHILD", -1);
-        QfileLocalFilePicTabView.a(this.a, new adak(this, localLinkedHashMap, i, j));
-        return;
-      }
-      while (((Iterator)localObject2).hasNext()) {
-        if (((List)localLinkedHashMap.get((String)((Iterator)localObject2).next())).size() == 0) {
-          ((Iterator)localObject2).remove();
+        if (!bool) {
+          break;
         }
+        ArkDispatchTask.getInstance().post(this.mAppInfo.name, new ArkAppContainer.2(this, (String)localObject1));
+        return true;
       }
-      continue;
-      label281:
-      Object localObject2 = "已下载图片";
+      localObject2 = this.mViewImpl;
+      if (localObject2 != null) {
+        ((ArkViewImplement)localObject2).onLoading();
+      }
+      QLog.i("ArkApp.ArkAppContainer", 1, String.format("onLoadApp,mAppInfo.name=%s,appPath=%s,viewImplement=%h", new Object[] { this.mAppInfo.name, localObject1, localObject2 }));
+      ArkAppMgr.getInstance().getAppPathByName(paramAppInfo.name, paramAppInfo.view, paramAppInfo.appMinVersion, null, new adal(this.jdField_c_of_type_JavaLangRefWeakReference));
+      return false;
+      bool = false;
+    }
+  }
+  
+  public void onLoadReport(int paramInt)
+  {
+    if (this.mAppInfo != null) {
+      alep.a(a(), this.mAppInfo.name, "ArkAppLoadState", paramInt, 0, 0L, 0L, 0L, this.mAppInfo.view, "");
+    }
+  }
+  
+  public void onRunAppFailed()
+  {
+    Object localObject = this.mViewImpl;
+    if (localObject != null)
+    {
+      if ((this.mApplication == null) || (this.mApplication.GetScriptType() != 2) || (ark.Application.JSCLoaded())) {
+        break label72;
+      }
+      localObject = ((ArkViewImplement)localObject).getView().getContext().getString(2131628156);
+      this.mErrorInfo.msg = a((String)localObject);
+    }
+    for (this.mErrorInfo.canRetry = true;; this.mErrorInfo.canRetry = false)
+    {
+      super.onRunAppFailed();
+      return;
+      label72:
+      localObject = ((ArkViewImplement)localObject).getView().getContext().getString(2131628161);
+      this.mErrorInfo.msg = a((String)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adaj
  * JD-Core Version:    0.7.0.1
  */

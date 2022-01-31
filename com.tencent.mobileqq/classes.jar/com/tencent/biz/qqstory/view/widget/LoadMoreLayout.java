@@ -1,5 +1,6 @@
 package com.tencent.biz.qqstory.view.widget;
 
+import ajjy;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -8,16 +9,18 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.tencent.biz.qqstory.boundaries.StoryApi;
+import beqz;
+import skt;
 
 public class LoadMoreLayout
   extends FrameLayout
+  implements beqz
 {
-  public int a;
+  protected int a;
   protected Context a;
   protected LinearLayout a;
   protected ProgressBar a;
-  public TextView a;
+  protected TextView a;
   protected String a;
   protected String b;
   protected String c;
@@ -53,11 +56,11 @@ public class LoadMoreLayout
   
   private void a()
   {
-    this.jdField_a_of_type_JavaLangString = "加载更多";
-    this.c = "正在加载...";
-    this.d = "已加载全部";
-    this.b = StoryApi.a(2131432131);
-    this.e = "加载失败，点击重试";
+    this.jdField_a_of_type_JavaLangString = ajjy.a(2131640461);
+    this.c = ajjy.a(2131640463);
+    this.d = ajjy.a(2131640460);
+    this.b = skt.a(2131633897);
+    this.e = ajjy.a(2131640462);
   }
   
   private boolean a(int paramInt1, int paramInt2)
@@ -108,9 +111,9 @@ public class LoadMoreLayout
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970925, null));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363581));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363651));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495857, null));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131306307));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131311220));
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -2);
     super.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, localLayoutParams);
     c(0);
@@ -150,6 +153,11 @@ public class LoadMoreLayout
     }
   }
   
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
   public boolean a(int paramInt)
   {
     return c(paramInt);
@@ -162,7 +170,7 @@ public class LoadMoreLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.LoadMoreLayout
  * JD-Core Version:    0.7.0.1
  */

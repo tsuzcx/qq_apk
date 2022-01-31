@@ -1,28 +1,80 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditVideoSave;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.SurfaceHolder;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.WeakReferenceRunnable;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
+import java.lang.ref.WeakReference;
 
 public class olf
-  implements Runnable
+  implements TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnVideoPreparedListener, IVideoViewBase.IVideoViewCallBack
 {
-  public olf(EditVideoSave paramEditVideoSave) {}
+  private WeakReference<ReadInjoyIMAXAdFragment> a;
   
-  public void run()
+  public olf(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment)
   {
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      SLog.b("EditVideoSave", "[updateProgress]stopUpdateProgress = " + this.a.jdField_a_of_type_Boolean);
+    this.a = new WeakReference(paramReadInjoyIMAXAdFragment);
+  }
+  
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    paramTVK_IMediaPlayer = (ReadInjoyIMAXAdFragment)this.a.get();
+    if (paramTVK_IMediaPlayer == null) {
       return;
     }
-    EditVideoSave localEditVideoSave = this.a;
-    localEditVideoSave.jdField_a_of_type_Int += this.a.b;
-    if (this.a.jdField_a_of_type_Int > 99)
+    ReadInjoyIMAXAdFragment.e(paramTVK_IMediaPlayer, 9);
+    ReadInjoyIMAXAdFragment.d = true;
+    paramTVK_IMediaPlayer.i();
+    ReadInjoyIMAXAdFragment.c(paramTVK_IMediaPlayer);
+  }
+  
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  {
+    paramTVK_IMediaPlayer = (ReadInjoyIMAXAdFragment)this.a.get();
+    if (paramTVK_IMediaPlayer == null) {}
+    do
     {
-      this.a.jdField_a_of_type_Int = 99;
-      this.a.a(this.a.jdField_a_of_type_Int);
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInjoyIMAXAdFragment", 2, "error msg = " + paramString);
+      }
+      ReadInjoyIMAXAdFragment.e(paramTVK_IMediaPlayer, 8);
+      paramTVK_IMediaPlayer.i();
+    } while (!QLog.isColorLevel());
+    QLog.i("ReadInjoyIMAXAdFragment", 2, "ReadInjoyIMAXAdFragment start video error");
+    return false;
+  }
+  
+  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
+  {
+    paramSurfaceHolder = (ReadInjoyIMAXAdFragment)this.a.get();
+    if (paramSurfaceHolder == null) {
       return;
     }
-    this.a.a(this.a.jdField_a_of_type_Int);
-    this.a.e();
+    paramSurfaceHolder.c();
+  }
+  
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    paramTVK_IMediaPlayer = (ReadInjoyIMAXAdFragment)this.a.get();
+    if (paramTVK_IMediaPlayer == null) {
+      return;
+    }
+    if ((Looper.myLooper() != Looper.getMainLooper()) && (ReadInjoyIMAXAdFragment.b(paramTVK_IMediaPlayer) != null))
+    {
+      ReadInjoyIMAXAdFragment.b(paramTVK_IMediaPlayer).post(new ReadInjoyIMAXAdFragment.WeakReferenceRunnable(paramTVK_IMediaPlayer, 2));
+      return;
+    }
+    ReadInjoyIMAXAdFragment.b(paramTVK_IMediaPlayer);
   }
 }
 

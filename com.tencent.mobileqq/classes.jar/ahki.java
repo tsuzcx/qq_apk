@@ -1,30 +1,44 @@
-import android.content.Intent;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.RedpointHandler;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.io.IOException;
 
-public class ahki
-  extends MessageObserver
+class ahki
+  implements axrt
 {
-  public ahki(RedTouchManager paramRedTouchManager) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onResp(axsq paramaxsq)
   {
-    if ((paramInt == 113) && (paramBoolean) && ((this.a.a instanceof QQAppInterface)))
+    Object localObject = (ahkl)paramaxsq.jdField_a_of_type_Axsp.a();
+    krx.c("VideoFilterTools", "download file call back. file = " + ((ahkl)localObject).a);
+    if (paramaxsq.jdField_a_of_type_Int != 0)
     {
-      RedpointHandler.a((QQAppInterface)this.a.a);
-      paramObject = new Intent();
-      paramObject.setAction("com.tencent.redpoint.broadcast.push");
-      this.a.a.getApplication().sendBroadcast(paramObject);
+      krx.c("VideoFilterTools", "download file faild. errcode = " + paramaxsq.b);
+      return;
+    }
+    if (!((ahkl)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(paramaxsq.jdField_a_of_type_Axsp.c)))
+    {
+      krx.c("VideoFilterTools", "download file faild : md5 is not match.");
+      bace.d(paramaxsq.jdField_a_of_type_Axsp.c);
+      return;
+    }
+    krx.c("VideoFilterTools", "download file successed.");
+    try
+    {
+      localObject = ahkg.a();
+      bace.a(paramaxsq.jdField_a_of_type_Axsp.c, (String)localObject, false);
+      bace.d(paramaxsq.jdField_a_of_type_Axsp.c);
+      return;
+    }
+    catch (IOException paramaxsq)
+    {
+      paramaxsq.printStackTrace();
+      krx.c("VideoFilterTools", "BEAUTY_ZIP unzip file faild.");
     }
   }
+  
+  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahki
  * JD-Core Version:    0.7.0.1
  */

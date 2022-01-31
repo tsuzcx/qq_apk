@@ -1,24 +1,16 @@
-import com.tencent.mobileqq.emoticonview.EmotionPanelDataBuilder.EmotionPanelDataCallback;
-import com.tencent.mobileqq.emoticonview.FavoriteEmotionAdapter;
-import java.util.List;
-
-public class acoe
-  implements EmotionPanelDataBuilder.EmotionPanelDataCallback
+public abstract interface acoe
 {
-  public acoe(FavoriteEmotionAdapter paramFavoriteEmotionAdapter) {}
+  public static final acof a = new acof();
   
-  public void a(List paramList)
-  {
-    if (paramList != null)
-    {
-      this.a.a(paramList);
-      this.a.notifyDataSetChanged();
-    }
-  }
+  public abstract int a(long paramLong, acof paramacof);
+  
+  public abstract int a(acof paramacof, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract acoe a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acoe
  * JD-Core Version:    0.7.0.1
  */

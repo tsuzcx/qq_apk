@@ -1,29 +1,110 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tribe.async.dispatch.Dispatcher;
 
-class svq
-  implements OnCompositionLoadedListener
+public class svq
+  extends svu
 {
-  svq(svp paramsvp) {}
+  public static final String a;
+  public QQUserUIItem a;
+  private boolean a;
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  static
   {
-    if (paramLottieComposition == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MedalWallMng", 2, "onCompositionLoaded failed!");
-      }
-      return;
+    jdField_a_of_type_JavaLangString = skt.a(2131633887);
+  }
+  
+  public svq(ViewGroup paramViewGroup)
+  {
+    super(paramViewGroup, 2131495711);
+  }
+  
+  protected String a(QQUserUIItem paramQQUserUIItem)
+  {
+    if ((paramQQUserUIItem == null) || (!paramQQUserUIItem.isAvailable())) {
+      return null;
     }
-    this.a.a.post(new svr(this, paramLottieComposition));
+    if ((paramQQUserUIItem.isVip) && (!paramQQUserUIItem.isFriend())) {
+      return paramQQUserUIItem.nickName;
+    }
+    return paramQQUserUIItem.getDisplayName();
+  }
+  
+  protected void a(String paramString)
+  {
+    b(vmp.b(paramString));
+  }
+  
+  protected void a(String paramString, boolean paramBoolean, ssm paramssm)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.setNodeName(paramString, paramBoolean);
+  }
+  
+  public void a(ssm paramssm)
+  {
+    super.a(paramssm);
+    urk.a("FollowNodeViewHolder", "bindData %s", paramssm);
+    this.itemView.setTag(paramssm.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((sqs)sqg.a(2)).a(paramssm.jdField_a_of_type_JavaLangString, false);
+    this.jdField_a_of_type_Boolean = true;
+    boolean bool;
+    Object localObject2;
+    Object localObject1;
+    if (svc.h)
+    {
+      if ((this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isVipButNoFriend()))
+      {
+        bool = true;
+        this.jdField_a_of_type_Boolean = bool;
+      }
+    }
+    else
+    {
+      localObject2 = a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem);
+      if (!this.jdField_a_of_type_Boolean) {
+        break label194;
+      }
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = ajjy.a(2131638884);
+      }
+    }
+    for (;;)
+    {
+      localObject2 = localObject1;
+      if (localObject1 == null)
+      {
+        localObject1 = jdField_a_of_type_JavaLangString;
+        if (!TextUtils.isEmpty(paramssm.c)) {
+          localObject1 = paramssm.c;
+        }
+        urk.a("FollowNodeViewHolder", "bindData() with fallback nickname %s, unionId = %s", localObject1, paramssm.jdField_a_of_type_JavaLangString);
+        sgi.a().dispatch(new ssl(paramssm.jdField_a_of_type_JavaLangString));
+        localObject2 = localObject1;
+      }
+      a((String)localObject2, this.jdField_a_of_type_Boolean, paramssm);
+      a(paramssm.g);
+      return;
+      bool = false;
+      break;
+      label194:
+      localObject1 = localObject2;
+      if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null)
+      {
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq;
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     svq
  * JD-Core Version:    0.7.0.1
  */

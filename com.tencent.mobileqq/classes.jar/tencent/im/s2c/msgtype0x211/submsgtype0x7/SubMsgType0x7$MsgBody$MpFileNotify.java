@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0x7$MsgBody$MpFileNotify
-  extends MessageMicro
+  extends MessageMicro<MpFileNotify>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_json = PBField.initBytes(ByteStringMicro.EMPTY);

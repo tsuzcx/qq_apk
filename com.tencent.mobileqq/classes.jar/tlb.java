@@ -1,35 +1,54 @@
-import android.view.ScaleGestureDetector;
-import com.tencent.mobileqq.activity.PortraitImageview;
-import com.tencent.mobileqq.activity.PortraitImageview.SimpleOnScaleGestureListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class tlb
-  extends PortraitImageview.SimpleOnScaleGestureListener
+class tlb
+  implements View.OnClickListener
 {
-  public tlb(PortraitImageview paramPortraitImageview) {}
+  tlb(tla paramtla) {}
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public void onClick(View paramView)
   {
-    if ((paramScaleGestureDetector != null) && (paramScaleGestureDetector.isInProgress())) {
-      try
+    if ((tla.a(this.a) != null) && (tla.a(this.a).a()))
+    {
+      tla.a(this.a).c();
+      int i;
+      if (tla.a(this.a) != null)
       {
-        float f1 = this.a.a();
-        float f2 = paramScaleGestureDetector.getScaleFactor();
-        f1 = Math.min(this.a.b(), Math.max(f1 * f2, 0.1F));
-        this.a.a(f1, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
-        this.a.invalidate();
-        return true;
+        i = urp.a(tla.a(this.a).a);
+        if (!this.a.a()) {
+          break label121;
+        }
       }
-      catch (IllegalArgumentException paramScaleGestureDetector)
+      label121:
+      for (paramView = "1";; paramView = "2")
       {
-        paramScaleGestureDetector.printStackTrace();
+        urp.a("home_page", "cancel_reply", i, 0, new String[] { paramView, urp.a(tla.a(this.a)), "5", tla.a(this.a) });
+        return;
+        i = 0;
+        break;
       }
     }
-    return false;
+    this.a.a();
+    if (this.a.a())
+    {
+      paramView = "2";
+      if (!this.a.b()) {
+        break label188;
+      }
+    }
+    label188:
+    for (String str = "2";; str = "1")
+    {
+      urp.a("play_video", "close_reply", 0, 3, new String[] { paramView, str });
+      return;
+      paramView = "1";
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tlb
  * JD-Core Version:    0.7.0.1
  */

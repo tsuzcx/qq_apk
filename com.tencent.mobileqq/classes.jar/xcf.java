@@ -1,24 +1,56 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.photo.MediaScanner;
-import com.tencent.mobileqq.activity.photo.PeakService;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class xcf
-  implements Runnable
+class xcf
+  implements moc
 {
-  public xcf(PeakService paramPeakService) {}
+  xcf(xce paramxce) {}
   
-  public void run()
+  public void loaded(String paramString, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PeakService", 2, "peak service start MediaScanner.doScan()");
+      QLog.i("OfflinePluginQQ", 2, "-->offline:checkOfflineUp. result: " + paramString + ", code: " + paramInt);
     }
-    MediaScanner.a(BaseApplicationImpl.getContext()).a();
+    if (paramInt == 9)
+    {
+      try
+      {
+        localObject = new JSONObject(paramString);
+        paramString = (String)localObject;
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          Object localObject;
+          localJSONException.printStackTrace();
+          if (QLog.isColorLevel()) {
+            QLog.i("OfflinePluginQQ", 2, "-->offline:checkUp loaded err:" + paramString);
+          }
+          paramString = null;
+        }
+      }
+      localObject = this.a.a.obtainMessage();
+      ((Message)localObject).arg1 = 3;
+      ((Message)localObject).obj = paramString;
+      this.a.a.sendMessage((Message)localObject);
+    }
+    while (paramInt != -1) {
+      return;
+    }
+    paramString = this.a.a.obtainMessage();
+    paramString.arg1 = 2;
+    this.a.a.sendMessage(paramString);
   }
+  
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xcf
  * JD-Core Version:    0.7.0.1
  */

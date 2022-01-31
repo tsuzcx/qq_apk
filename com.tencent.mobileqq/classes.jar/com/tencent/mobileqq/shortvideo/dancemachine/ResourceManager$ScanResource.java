@@ -2,24 +2,21 @@ package com.tencent.mobileqq.shortvideo.dancemachine;
 
 public class ResourceManager$ScanResource
 {
-  public String a;
-  public String b = this.l + "scan.png";
-  public String c = this.l + "mask.png";
-  public String d = this.m + "facerecognize.png";
-  public String e = this.m + "facemask.png";
-  public String f = this.l + "scan_bg.png";
-  public String g = this.l + "scan_content.png";
-  public String h = this.l + "bottom_text.png";
-  public String i = this.l + "top_text.png";
-  public String j = this.m + "face_bottom_text.png";
-  public String k = this.m + "face_top_text.png";
-  private String l = ResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager) + "bodyScan/";
-  private String m = ResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager) + "faceScan/";
+  public String bottomText = this.prefix_scan + "bottom_text.png";
+  public String facebottomText = this.faceprefix_scan + "face_bottom_text.png";
+  public String facemaskPic = this.faceprefix_scan + "facemask.png";
+  private String faceprefix_scan = ResourceManager.access$000(this.this$0) + "faceScan/";
+  public String facerecognizePic = this.faceprefix_scan + "facerecognize.png";
+  public String facetopText = this.faceprefix_scan + "face_top_text.png";
+  public String maskPic = this.prefix_scan + "mask.png";
+  private String prefix_scan = ResourceManager.access$000(this.this$0) + "bodyScan/";
+  public String recognizePic = this.prefix_scan + "recognize.png";
+  public String scanBg = this.prefix_scan + "scan_bg.png";
+  public String scanContent = this.prefix_scan + "scan_content.png";
+  public String scanPic = this.prefix_scan + "scan.png";
+  public String topText = this.prefix_scan + "top_text.png";
   
-  public ResourceManager$ScanResource(ResourceManager paramResourceManager)
-  {
-    this.jdField_a_of_type_JavaLangString = (this.l + "recognize.png");
-  }
+  public ResourceManager$ScanResource(ResourceManager paramResourceManager) {}
 }
 
 

@@ -1,20 +1,54 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.ScaleAnimation;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.content.SharedPreferences;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class mns
-  extends AnimateUtils.AnimationAdapter
+public abstract class mns
 {
-  mns(mnr parammnr) {}
+  public SharedPreferences a;
+  public mns a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public mns(SharedPreferences paramSharedPreferences, mns parammns)
   {
-    paramAnimation = new ScaleAnimation(0.72F, 1.05F, 0.72F, 1.05F, 1, 0.5F, 1, 0.5F);
-    paramAnimation.setDuration(120L);
-    paramAnimation.setAnimationListener(new mnt(this));
-    this.a.a.startAnimation(paramAnimation);
+    this.jdField_a_of_type_AndroidContentSharedPreferences = paramSharedPreferences;
+    this.jdField_a_of_type_Mns = parammns;
   }
+  
+  public static boolean a(int paramInt)
+  {
+    return (paramInt & 0x1) != 0;
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    return (paramInt & 0x2) != 0;
+  }
+  
+  public abstract int a(String paramString1, String paramString2);
+  
+  public int a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    int j = 0;
+    if (paramBoolean1) {}
+    for (int i = 1;; i = 0)
+    {
+      if (paramBoolean2) {
+        j = 2;
+      }
+      return j | i;
+    }
+  }
+  
+  public abstract String a();
+  
+  public abstract JSONArray a(String paramString);
+  
+  public abstract JSONObject a();
+  
+  public abstract boolean a();
+  
+  public abstract String b();
+  
+  public abstract String c();
 }
 
 

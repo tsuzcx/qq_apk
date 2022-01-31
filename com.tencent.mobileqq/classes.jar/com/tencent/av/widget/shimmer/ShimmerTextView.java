@@ -7,46 +7,43 @@ import android.graphics.Canvas;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import kkh;
-import kki;
+import mkf;
+import mkg;
+import mkh;
 
 public class ShimmerTextView
   extends TextView
-  implements IShimmer
 {
-  public int a;
-  private ShimmerViewHelper a;
+  int jdField_a_of_type_Int = 0;
+  private mkg jdField_a_of_type_Mkg;
   
   public ShimmerTextView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper = new ShimmerViewHelper(this, getPaint(), null);
-    this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper.a(getCurrentTextColor());
-    ViewCompat.setAccessibilityDelegate(this, new kkh(this));
+    this.jdField_a_of_type_Mkg = new mkg(this, getPaint(), null);
+    this.jdField_a_of_type_Mkg.a(getCurrentTextColor());
+    ViewCompat.setAccessibilityDelegate(this, new mkf(this));
   }
   
   public ShimmerTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper = new ShimmerViewHelper(this, getPaint(), paramAttributeSet);
-    this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper.a(getCurrentTextColor());
-    ViewCompat.setAccessibilityDelegate(this, new kkh(this));
+    this.jdField_a_of_type_Mkg = new mkg(this, getPaint(), paramAttributeSet);
+    this.jdField_a_of_type_Mkg.a(getCurrentTextColor());
+    ViewCompat.setAccessibilityDelegate(this, new mkf(this));
   }
   
   public ShimmerTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper = new ShimmerViewHelper(this, getPaint(), paramAttributeSet);
-    this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper.a(getCurrentTextColor());
-    ViewCompat.setAccessibilityDelegate(this, new kkh(this));
+    this.jdField_a_of_type_Mkg = new mkg(this, getPaint(), paramAttributeSet);
+    this.jdField_a_of_type_Mkg.a(getCurrentTextColor());
+    ViewCompat.setAccessibilityDelegate(this, new mkf(this));
   }
   
   public boolean a()
   {
-    return this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper.a();
+    return this.jdField_a_of_type_Mkg.a();
   }
   
   public void onAttachedToWindow()
@@ -64,68 +61,68 @@ public class ShimmerTextView
   @SuppressLint({"WrongCall", "DrawAllocation"})
   public void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper != null) {
-      this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper.b();
+    if (this.jdField_a_of_type_Mkg != null) {
+      this.jdField_a_of_type_Mkg.b();
     }
     super.onDraw(paramCanvas);
     if (a()) {
-      postDelayed(new kki(this), 40L);
+      postDelayed(new ShimmerTextView.onDrawRunnable(this), 40L);
     }
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper != null) {
-      this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper.a();
+    if (this.jdField_a_of_type_Mkg != null) {
+      this.jdField_a_of_type_Mkg.a();
     }
   }
   
-  public void setAnimationSetupCallback(ShimmerViewHelper.AnimationSetupCallback paramAnimationSetupCallback)
+  public void setAnimationSetupCallback(mkh parammkh)
   {
-    this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper.a(paramAnimationSetupCallback);
+    this.jdField_a_of_type_Mkg.a(parammkh);
   }
   
   public void setGradientX(float paramFloat)
   {
-    this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper.a(paramFloat);
+    this.jdField_a_of_type_Mkg.a(paramFloat);
   }
   
   public void setPrimaryColor(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper.a(paramInt);
+    this.jdField_a_of_type_Mkg.a(paramInt);
   }
   
   public void setReflectionColor(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper.b(paramInt);
+    this.jdField_a_of_type_Mkg.b(paramInt);
   }
   
   public void setShimmering(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper.a(paramBoolean);
+    this.jdField_a_of_type_Mkg.a(paramBoolean);
     super.postInvalidate();
   }
   
   public void setTextColor(int paramInt)
   {
     super.setTextColor(paramInt);
-    if (this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper != null) {
-      this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper.a(getCurrentTextColor());
+    if (this.jdField_a_of_type_Mkg != null) {
+      this.jdField_a_of_type_Mkg.a(getCurrentTextColor());
     }
   }
   
   public void setTextColor(ColorStateList paramColorStateList)
   {
     super.setTextColor(paramColorStateList);
-    if (this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper != null) {
-      this.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerViewHelper.a(getCurrentTextColor());
+    if (this.jdField_a_of_type_Mkg != null) {
+      this.jdField_a_of_type_Mkg.a(getCurrentTextColor());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.widget.shimmer.ShimmerTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -9,8 +9,8 @@ import java.util.Map;
 public final class qzmall_data_rsp
   extends JceStruct
 {
-  static Map cache_rspMap = new HashMap();
-  public Map rspMap;
+  static Map<String, byte[]> cache_rspMap = new HashMap();
+  public Map<String, byte[]> rspMap;
   public long uUin;
   
   static
@@ -22,7 +22,7 @@ public final class qzmall_data_rsp
   
   public qzmall_data_rsp() {}
   
-  public qzmall_data_rsp(long paramLong, Map paramMap)
+  public qzmall_data_rsp(long paramLong, Map<String, byte[]> paramMap)
   {
     this.uUin = paramLong;
     this.rspMap = paramMap;

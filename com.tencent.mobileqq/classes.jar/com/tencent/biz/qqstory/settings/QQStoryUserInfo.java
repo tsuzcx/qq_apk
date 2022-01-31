@@ -1,18 +1,18 @@
 package com.tencent.biz.qqstory.settings;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 import com.tencent.mobileqq.utils.ChnToSpell;
 
 public class QQStoryUserInfo
-  extends Entity
-  implements Comparable
+  extends atmo
+  implements Comparable<QQStoryUserInfo>
 {
   public int isAllowed;
   public int isInterested;
   public String mPinying;
   public String nick;
-  @unique
+  @atoc
   public String uin;
   
   public int compareTo(QQStoryUserInfo paramQQStoryUserInfo)
@@ -52,7 +52,7 @@ public class QQStoryUserInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.settings.QQStoryUserInfo
  * JD-Core Version:    0.7.0.1
  */

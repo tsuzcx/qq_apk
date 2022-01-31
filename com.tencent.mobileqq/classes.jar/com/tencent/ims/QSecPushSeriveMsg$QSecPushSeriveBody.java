@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class QSecPushSeriveMsg$QSecPushSeriveBody
-  extends MessageMicro
+  extends MessageMicro<QSecPushSeriveBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field canCache = PBField.initUInt32(0);

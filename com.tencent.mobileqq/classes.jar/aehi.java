@@ -1,61 +1,19 @@
-import com.tencent.mobileqq.hotpic.VideoItemEventManager.onVideoItemEventListener;
-import com.tencent.mobileqq.leba.LebaFeedsVideoPlayController;
-import com.tencent.mobileqq.leba.LebaFeedsVideoPlayer;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
 
-public class aehi
-  implements VideoItemEventManager.onVideoItemEventListener
+class aehi
+  implements ndl
 {
-  public aehi(LebaFeedsVideoPlayController paramLebaFeedsVideoPlayController) {}
+  aehi(aehh paramaehh) {}
   
-  public void a() {}
-  
-  public void a(int paramInt)
+  public void a()
   {
-    LebaFeedsVideoPlayController.a(this.a, 1000L);
+    aegy.b(this.a.a, false);
+    this.a.a.a.sendEmptyMessage(1);
   }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("LebaFeedsVideoPlayController", 2, "onVolumChange");
-    }
-    boolean bool;
-    int i;
-    if ((LebaFeedsVideoPlayController.a(this.a) != null) && (LebaFeedsVideoPlayController.a(this.a)) && (LebaFeedsVideoPlayController.a(this.a) != null))
-    {
-      bool = LebaFeedsVideoPlayController.a(this.a).c();
-      if ((LebaFeedsVideoPlayController.a(this.a) == null) || (!LebaFeedsVideoPlayController.a(this.a).b())) {
-        break label115;
-      }
-      i = 1;
-      if (i == 0) {
-        break label120;
-      }
-      LebaFeedsVideoPlayController.a(this.a).a(true);
-      LebaFeedsVideoPlayController.a(this.a, true);
-      LebaFeedsVideoPlayController.a(this.a, true);
-    }
-    label115:
-    label120:
-    while (!bool)
-    {
-      return;
-      i = 0;
-      break;
-    }
-    LebaFeedsVideoPlayController.a(this.a).a(false);
-    LebaFeedsVideoPlayController.a(this.a, false);
-    LebaFeedsVideoPlayController.a(this.a, false);
-  }
-  
-  public void b(boolean paramBoolean) {}
-  
-  public void c(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aehi
  * JD-Core Version:    0.7.0.1
  */

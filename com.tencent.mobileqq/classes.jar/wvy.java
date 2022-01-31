@@ -1,50 +1,71 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.biz.common.util.OpenIdObserver;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewStub;
+import java.util.LinkedList;
+import java.util.Queue;
 
-public class wvy
-  extends OpenIdObserver
+public abstract class wvy
 {
-  public wvy(MainAssistObserver paramMainAssistObserver) {}
+  private final ViewStub jdField_a_of_type_AndroidViewViewStub;
+  private Queue<Runnable> jdField_a_of_type_JavaUtilQueue;
+  private boolean jdField_a_of_type_Boolean;
   
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public wvy(ViewStub paramViewStub)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MainAssistObserver", 2, "-->onGetOpenId, isSuccess: " + paramBoolean + " data: " + paramOpenID.toString() + " mOpenId = " + this.a.jdField_b_of_type_JavaLangString);
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.isFinishing()) || (this.a.c)) {}
-    do
+    this.jdField_a_of_type_AndroidViewViewStub = paramViewStub;
+    this.jdField_a_of_type_JavaUtilQueue = new LinkedList();
+  }
+  
+  private void b()
+  {
+    for (;;)
     {
-      do
-      {
-        return;
-        if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.hide();
+      Runnable localRunnable = (Runnable)this.jdField_a_of_type_JavaUtilQueue.poll();
+      if (localRunnable != null) {
+        try
+        {
+          localRunnable.run();
         }
-        if (this.a.jdField_b_of_type_AndroidOsHandler != null) {
-          this.a.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+          throw new RuntimeException("doPendingActions encounter an error", localException);
         }
-        if ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null)) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("MainAssistObserver", 2, "openIdObserver success");
-        }
-      } while ((TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) || (paramOpenID.openID.equals(this.a.jdField_b_of_type_JavaLangString)));
-      this.a.j();
+      }
+    }
+  }
+  
+  protected final void a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
       return;
-    } while (!QLog.isColorLevel());
-    QLog.d("MainAssistObserver", 2, "openIdObserver fail");
+    }
+    View localView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
+    this.jdField_a_of_type_Boolean = true;
+    a(localView);
+    b();
+  }
+  
+  protected abstract void a(View paramView);
+  
+  protected void a(Runnable paramRunnable)
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      paramRunnable.run();
+    }
+    while (paramRunnable == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilQueue.add(paramRunnable);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wvy
  * JD-Core Version:    0.7.0.1
  */

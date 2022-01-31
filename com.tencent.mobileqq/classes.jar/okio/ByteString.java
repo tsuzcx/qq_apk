@@ -1,7 +1,6 @@
 package okio;
 
 import java.io.EOFException;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -116,7 +115,6 @@ public class ByteString
   }
   
   public static ByteString read(InputStream paramInputStream, int paramInt)
-    throws IOException
   {
     if (paramInputStream == null) {
       throw new IllegalArgumentException("in == null");
@@ -140,7 +138,6 @@ public class ByteString
   }
   
   private void readObject(ObjectInputStream paramObjectInputStream)
-    throws IOException
   {
     paramObjectInputStream = read(paramObjectInputStream, paramObjectInputStream.readInt());
     try
@@ -161,7 +158,6 @@ public class ByteString
   }
   
   private void writeObject(ObjectOutputStream paramObjectOutputStream)
-    throws IOException
   {
     paramObjectOutputStream.writeInt(this.data.length);
     paramObjectOutputStream.write(this.data);
@@ -182,8 +178,8 @@ public class ByteString
     int j = -1;
     int k = size();
     int m = paramByteString.size();
-    int i = 0;
     int n = Math.min(k, m);
+    int i = 0;
     if (i >= n)
     {
       if (k != m) {
@@ -240,10 +236,10 @@ public class ByteString
   
   public String hex()
   {
+    int i = 0;
     char[] arrayOfChar = new char[this.data.length * 2];
     byte[] arrayOfByte = this.data;
     int k = arrayOfByte.length;
-    int i = 0;
     int j = 0;
     for (;;)
     {
@@ -397,7 +393,6 @@ public class ByteString
   }
   
   public void write(OutputStream paramOutputStream)
-    throws IOException
   {
     if (paramOutputStream == null) {
       throw new IllegalArgumentException("out == null");

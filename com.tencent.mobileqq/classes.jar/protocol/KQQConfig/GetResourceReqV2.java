@@ -8,34 +8,37 @@ import java.util.ArrayList;
 public final class GetResourceReqV2
   extends JceStruct
 {
-  static ArrayList cache_vecResReqInfo;
+  static ArrayList<GetResourceReqInfoV2> cache_vecResReqInfo = new ArrayList();
+  public byte cReqVer;
   public int iAppid;
   public int iPluginType = 64;
   public String strModel = "";
-  public ArrayList vecResReqInfo;
+  public ArrayList<GetResourceReqInfoV2> vecResReqInfo;
+  
+  static
+  {
+    GetResourceReqInfoV2 localGetResourceReqInfoV2 = new GetResourceReqInfoV2();
+    cache_vecResReqInfo.add(localGetResourceReqInfoV2);
+  }
   
   public GetResourceReqV2() {}
   
-  public GetResourceReqV2(ArrayList paramArrayList, int paramInt1, String paramString, int paramInt2)
+  public GetResourceReqV2(ArrayList<GetResourceReqInfoV2> paramArrayList, int paramInt1, String paramString, int paramInt2, byte paramByte)
   {
     this.vecResReqInfo = paramArrayList;
     this.iPluginType = paramInt1;
     this.strModel = paramString;
     this.iAppid = paramInt2;
+    this.cReqVer = paramByte;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
-    if (cache_vecResReqInfo == null)
-    {
-      cache_vecResReqInfo = new ArrayList();
-      GetResourceReqInfoV2 localGetResourceReqInfoV2 = new GetResourceReqInfoV2();
-      cache_vecResReqInfo.add(localGetResourceReqInfoV2);
-    }
     this.vecResReqInfo = ((ArrayList)paramJceInputStream.read(cache_vecResReqInfo, 1, true));
     this.iPluginType = paramJceInputStream.read(this.iPluginType, 2, false);
     this.strModel = paramJceInputStream.readString(3, false);
     this.iAppid = paramJceInputStream.read(this.iAppid, 4, false);
+    this.cReqVer = paramJceInputStream.read(this.cReqVer, 5, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -46,6 +49,7 @@ public final class GetResourceReqV2
       paramJceOutputStream.write(this.strModel, 3);
     }
     paramJceOutputStream.write(this.iAppid, 4);
+    paramJceOutputStream.write(this.cReqVer, 5);
   }
 }
 

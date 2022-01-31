@@ -1,14 +1,23 @@
-import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
-import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase.GetFeedFeatureReceiver;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.text.style.ReplacementSpan;
 
-public class nob
-  implements Runnable
+class nob
+  extends ReplacementSpan
 {
-  public nob(FeedsPlayModeBase.GetFeedFeatureReceiver paramGetFeedFeatureReceiver, FeedsPlayModeBase paramFeedsPlayModeBase) {}
+  private int a;
   
-  public void run()
+  public nob(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.v();
+    this.a = paramInt;
+  }
+  
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint) {}
+  
+  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  {
+    return this.a;
   }
 }
 

@@ -12,8 +12,8 @@ public final class RequestPushGroupMsg
   static GroupMsgHead cache_stGroupMsgHead;
   static shareData cache_stShareData;
   static byte[] cache_vAppShareCookie;
-  static ArrayList cache_vGPicInfo;
-  static ArrayList cache_vMarketFace;
+  static ArrayList<GPicInfo> cache_vGPicInfo;
+  static ArrayList<MarketFaceInfo> cache_vMarketFace;
   static byte[] cache_vMsg;
   public byte cGroupType;
   public byte cType;
@@ -33,14 +33,14 @@ public final class RequestPushGroupMsg
   public int uMsgTime;
   public long uSuperQQBubbleId;
   public byte[] vAppShareCookie;
-  public ArrayList vGPicInfo;
-  public ArrayList vMarketFace;
+  public ArrayList<GPicInfo> vGPicInfo;
+  public ArrayList<MarketFaceInfo> vMarketFace;
   public byte[] vMsg;
   public int wUserActive;
   
   public RequestPushGroupMsg() {}
   
-  public RequestPushGroupMsg(long paramLong1, byte paramByte1, String paramString1, String paramString2, long paramLong2, byte paramByte2, long paramLong3, long paramLong4, int paramInt1, long paramLong5, short paramShort, byte[] paramArrayOfByte1, String paramString3, long paramLong6, ArrayList paramArrayList1, byte[] paramArrayOfByte2, shareData paramshareData, long paramLong7, GroupMsgHead paramGroupMsgHead, int paramInt2, ArrayList paramArrayList2, long paramLong8)
+  public RequestPushGroupMsg(long paramLong1, byte paramByte1, String paramString1, String paramString2, long paramLong2, byte paramByte2, long paramLong3, long paramLong4, int paramInt1, long paramLong5, short paramShort, byte[] paramArrayOfByte1, String paramString3, long paramLong6, ArrayList<GPicInfo> paramArrayList, byte[] paramArrayOfByte2, shareData paramshareData, long paramLong7, GroupMsgHead paramGroupMsgHead, int paramInt2, ArrayList<MarketFaceInfo> paramArrayList1, long paramLong8)
   {
     this.lUin = paramLong1;
     this.cType = paramByte1;
@@ -56,13 +56,13 @@ public final class RequestPushGroupMsg
     this.vMsg = paramArrayOfByte1;
     this.strGroupCard = paramString3;
     this.uAppShareID = paramLong6;
-    this.vGPicInfo = paramArrayList1;
+    this.vGPicInfo = paramArrayList;
     this.vAppShareCookie = paramArrayOfByte2;
     this.stShareData = paramshareData;
     this.lFromInstId = paramLong7;
     this.stGroupMsgHead = paramGroupMsgHead;
     this.wUserActive = paramInt2;
-    this.vMarketFace = paramArrayList2;
+    this.vMarketFace = paramArrayList1;
     this.uSuperQQBubbleId = paramLong8;
   }
   

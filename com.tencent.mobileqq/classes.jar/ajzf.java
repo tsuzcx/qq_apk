@@ -1,39 +1,36 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
-import com.tencent.mobileqq.troop.widget.BorderURLImageView;
-import mqq.util.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.icebreaking.AIOIceBreakView;
+import com.tencent.mobileqq.app.icebreaking.AIOIceBreakView.1.1;
 
 public class ajzf
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ajzf(AvatarWallAdapter paramAvatarWallAdapter, BorderURLImageView paramBorderURLImageView, String paramString) {}
+  public ajzf(AIOIceBreakView paramAIOIceBreakView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    Object localObject;
-    Setting localSetting;
-    do
+    AIOIceBreakView.a(this.a).u(24);
+    paramView.postDelayed(new AIOIceBreakView.1.1(this), 500L);
+    if (AIOIceBreakView.a(this.a).a.a != 1044) {
+      if (AIOIceBreakView.a(this.a).a.a != 0) {
+        break label126;
+      }
+    }
+    label126:
+    for (int i = 1;; i = 2)
     {
-      do
-      {
-        return;
-        localObject = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-        localSetting = (Setting)((EntityManager)localObject).a(Setting.class, "troop_" + this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.b);
-        ((EntityManager)localObject).a();
-      } while (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_MqqUtilWeakReference == null);
-      localObject = (Activity)this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_MqqUtilWeakReference.get();
-    } while ((localObject == null) || (((Activity)localObject).isFinishing()));
-    ((Activity)localObject).runOnUiThread(new ajzg(this, localSetting));
+      awqx.b(AIOIceBreakView.a(this.a), "CliOper", "", "", "0X800A4CC", "0X800A4CC", i, 0, "", "", "", "");
+      awqx.b(AIOIceBreakView.a(this.a), "CliOper", "", "", "0X800A4CD", "0X800A4CD", i, 0, "", "", "", "");
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajzf
  * JD-Core Version:    0.7.0.1
  */

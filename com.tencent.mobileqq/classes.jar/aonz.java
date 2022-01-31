@@ -1,21 +1,33 @@
-import dov.com.tencent.mfsdk.collector.DropFrameMonitor;
-import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
-
 public class aonz
-  implements AbstractUnifiedMonitor.ThreadMonitorCallback
+  implements Cloneable
 {
-  public aonz(DropFrameMonitor paramDropFrameMonitor) {}
+  public long a;
+  public String a;
+  public short a;
+  public boolean a;
+  public byte[] a = new byte[16];
+  public long b;
+  public short b;
+  public boolean b;
+  public long c = -1L;
   
-  public void onThreadMonitorEnd(int paramInt)
+  public aonz a()
   {
-    if (paramInt == 10) {
-      this.a.a();
+    try
+    {
+      aonz localaonz = (aonz)super.clone();
+      return localaonz;
     }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      localCloneNotSupportedException.printStackTrace();
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aonz
  * JD-Core Version:    0.7.0.1
  */

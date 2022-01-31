@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.OnOnPlayedListener;
-import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class akbx
-  implements VideoSprite.OnOnPlayedListener
+class akbx
 {
-  public akbx(TroopSignVideoView paramTroopSignVideoView) {}
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  boolean jdField_a_of_type_Boolean;
   
-  public void a()
+  public akbx(MessageRecord paramMessageRecord, boolean paramBoolean)
   {
-    if (TroopSignVideoView.a(this.a) != null) {
-      TroopSignVideoView.a(this.a).a();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akbx
  * JD-Core Version:    0.7.0.1
  */

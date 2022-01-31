@@ -1,38 +1,32 @@
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.ArrayMap;
-import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
-import com.tencent.mobileqq.hotpic.HotVideoBlurTaskManager;
-import com.tencent.mobileqq.hotpic.HotVideoData;
-import com.tencent.mobileqq.hotpic.HotVideoPreviewDownloader;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
+import com.tencent.widget.RoundRectImageView;
 
-public class adzo
-  implements Runnable
+class adzo
+  implements Animation.AnimationListener
 {
-  public adzo(HotVideoBlurTaskManager paramHotVideoBlurTaskManager) {}
+  adzo(adzn paramadzn) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    HotVideoData localHotVideoData = (HotVideoData)this.a.jdField_a_of_type_AndroidSupportV4UtilArrayMap.keyAt(0);
-    HotPicPageView.MyVideoViewHolder localMyVideoViewHolder = (HotPicPageView.MyVideoViewHolder)this.a.jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(localHotVideoData);
-    if (localMyVideoViewHolder.a(localHotVideoData))
-    {
-      Drawable localDrawable = HotVideoPreviewDownloader.a(this.a.jdField_a_of_type_AndroidContentContext, localHotVideoData);
-      if ((localDrawable != null) && (localMyVideoViewHolder.a(localHotVideoData))) {
-        localMyVideoViewHolder.b(localDrawable);
-      }
-      this.a.a(localHotVideoData);
-    }
-    for (;;)
-    {
-      this.a.a();
-      return;
-      this.a.a(localHotVideoData);
-    }
+    paramAnimation = new AnimationSet(false);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.7F, 1.0F, 0.7F, 1.0F, this.a.jdField_b_of_type_ComTencentWidgetRoundRectImageView.getWidth() / 2, this.a.jdField_b_of_type_ComTencentWidgetRoundRectImageView.getHeight() / 2);
+    paramAnimation.addAnimation(this.a.jdField_b_of_type_AndroidViewAnimationAlphaAnimation);
+    paramAnimation.addAnimation(localScaleAnimation);
+    paramAnimation.setDuration(200L);
+    this.a.jdField_b_of_type_ComTencentWidgetRoundRectImageView.startAnimation(paramAnimation);
+    paramAnimation.setAnimationListener(this.a.a);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adzo
  * JD-Core Version:    0.7.0.1
  */

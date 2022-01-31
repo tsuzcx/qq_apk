@@ -1,19 +1,25 @@
-import com.tencent.gdtad.views.canvas.components.video.GdtCanvasVideoComponentView;
-import com.tencent.gdtad.views.canvas.framework.GdtCanvasPageView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class qqu
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public qqu(GdtCanvasVideoComponentView paramGdtCanvasVideoComponentView) {}
+  public qqu(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    GdtCanvasVideoComponentView.a(this.a).setScrollY(GdtCanvasVideoComponentView.a(this.a));
+    ReadInJoyListViewGroup.a(this.a).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qqu
  * JD-Core Version:    0.7.0.1
  */

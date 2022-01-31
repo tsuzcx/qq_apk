@@ -1,31 +1,54 @@
-import android.content.SharedPreferences;
-import cooperation.readinjoy.ReadInJoyHelper;
-import mqq.app.AppRuntime;
+import android.content.Context;
 
-public final class anmj
-  implements Runnable
+public class anmj
+  extends anmk
 {
-  public anmj(AppRuntime paramAppRuntime) {}
+  private int c = 4;
+  private int d = 27;
   
-  public void run()
+  public anmj(Context paramContext, anhs paramanhs, int paramInt, boolean paramBoolean)
   {
-    int i = 1;
-    SharedPreferences localSharedPreferences = ReadInJoyHelper.a(this.a, true, true);
-    if (localSharedPreferences == null) {
+    super(paramContext, paramanhs, paramInt);
+    a(paramBoolean);
+  }
+  
+  private int a(int[] paramArrayOfInt)
+  {
+    return (paramArrayOfInt.length + this.d - 1) / this.d;
+  }
+  
+  private void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.c = 5;
+      this.d = 34;
       return;
     }
-    if (localSharedPreferences.getBoolean("free_time_refresh_push", true)) {}
-    for (;;)
-    {
-      ReadInJoyHelper.a(i);
-      return;
-      i = 0;
+    this.c = 4;
+    this.d = 27;
+  }
+  
+  public void a()
+  {
+    super.a();
+  }
+  
+  public int b()
+  {
+    return a(this.jdField_a_of_type_ArrayOfInt);
+  }
+  
+  protected void c()
+  {
+    if (this.jdField_a_of_type_Anhw != null) {
+      this.jdField_a_of_type_Anhw.a(this.c, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anmj
  * JD-Core Version:    0.7.0.1
  */

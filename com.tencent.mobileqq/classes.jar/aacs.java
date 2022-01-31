@@ -1,18 +1,36 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aacs
-  implements Runnable
+public class aacs
+  implements bhxa
 {
-  aacs(aacr paramaacr, SosoInterface.OnLocationListener paramOnLocationListener, String paramString1, int paramInt, String paramString2) {}
+  public aacs(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public Activity a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
+    return this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+  }
+  
+  public SessionInfo a()
+  {
+    return this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  }
+  
+  public QQAppInterface a()
+  {
+    return this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  }
+  
+  public boolean a()
+  {
+    return this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aacs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,64 +1,49 @@
 package com.tencent.open.wadl;
 
-import alrm;
 import android.content.Intent;
 import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import cooperation.wadl.ipc.WadlProxyServiceManager;
-import cooperation.wadl.ipc.WadlProxyServiceUtil;
-import cooperation.wadl.ipc.WadlProxyServiceWrap;
-import mqq.app.AppRuntime;
+import bckd;
+import bckn;
+import bgsw;
+import bgsx;
 import mqq.app.AppService;
 
 public class WadlJsBridgeService
   extends AppService
 {
   private static String jdField_a_of_type_JavaLangString = "WadlJsBridgeService";
-  private alrm jdField_a_of_type_Alrm;
   private Looper jdField_a_of_type_AndroidOsLooper;
-  private WadlProxyServiceWrap jdField_a_of_type_CooperationWadlIpcWadlProxyServiceWrap;
+  private bckn jdField_a_of_type_Bckn;
+  private bgsx jdField_a_of_type_Bgsx;
   
   public WadlJsBridgeService()
   {
-    WLog.b(jdField_a_of_type_JavaLangString, "##@WadlJsBridgeService()");
+    bckd.b(jdField_a_of_type_JavaLangString, "##@WadlJsBridgeService()");
   }
   
   private int a(String paramString)
   {
-    WadlProxyServiceUtil.a(BaseApplicationImpl.getApplication().getRuntime());
-    WLog.b(jdField_a_of_type_JavaLangString, "##@doWadlJob = " + paramString);
-    if (paramString.equals("start")) {
+    bgsw.a();
+    bckd.b(jdField_a_of_type_JavaLangString, "##@doWadlJob = " + paramString);
+    if ("start".equals(paramString)) {
       return 0;
     }
-    if (paramString.equals("complete")) {
+    if ("complete".equals(paramString)) {
       return 1;
     }
-    if (paramString.equals("open")) {
+    if ("open".equals(paramString)) {
       return 2;
     }
-    if (paramString.equals("restart")) {
+    if ("restart".equals(paramString)) {
       return 4;
     }
-    if (paramString.equals("yyb")) {
-      return 3;
-    }
-    if (paramString.equals("pause")) {
+    if ("pause".equals(paramString)) {
       return 5;
     }
     return -1;
-  }
-  
-  public void onAccountChanged()
-  {
-    super.onAccountChanged();
-    WLog.b(jdField_a_of_type_JavaLangString, "onAccountChanged start");
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceWrap != null) && (this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceWrap.a != null)) {
-      this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceWrap.a.a(localAppRuntime);
-    }
   }
   
   public IBinder onBind(Intent paramIntent)
@@ -69,53 +54,46 @@ public class WadlJsBridgeService
   public void onCreate()
   {
     super.onCreate();
-    WLog.b(jdField_a_of_type_JavaLangString, "wadlJsBridgeService onCreate()");
-    Object localObject = new HandlerThread("WadlJsBridgeService.Thread", 10);
-    ((HandlerThread)localObject).start();
-    this.jdField_a_of_type_AndroidOsLooper = ((HandlerThread)localObject).getLooper();
-    this.jdField_a_of_type_Alrm = new alrm(this, this.jdField_a_of_type_AndroidOsLooper);
-    if (this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceWrap == null)
+    bckd.b(jdField_a_of_type_JavaLangString, "wadlJsBridgeService onCreate()");
+    HandlerThread localHandlerThread = new HandlerThread("WadlJsBridgeService.Thread", 10);
+    localHandlerThread.start();
+    this.jdField_a_of_type_AndroidOsLooper = localHandlerThread.getLooper();
+    this.jdField_a_of_type_Bckn = new bckn(this, this.jdField_a_of_type_AndroidOsLooper);
+    if (this.jdField_a_of_type_Bgsx == null)
     {
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceWrap = new WadlProxyServiceWrap((AppRuntime)localObject);
-      WLog.b(jdField_a_of_type_JavaLangString, "##@MessageService-->onCreate():" + this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceWrap + "," + localObject);
+      this.jdField_a_of_type_Bgsx = new bgsx();
+      bckd.b(jdField_a_of_type_JavaLangString, "##@MessageService-->onCreate():" + this.jdField_a_of_type_Bgsx + "," + this.app);
     }
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    WLog.b(jdField_a_of_type_JavaLangString, "Service is Destroyed");
+    if (this.jdField_a_of_type_Bgsx != null) {
+      this.jdField_a_of_type_Bgsx.d();
+    }
+    bckd.b(jdField_a_of_type_JavaLangString, "Service is Destroyed");
   }
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    WLog.b(jdField_a_of_type_JavaLangString, "##@Service is Started():onStartCommand: ," + paramInt1 + "," + paramInt2 + ":" + paramIntent);
+    bckd.b(jdField_a_of_type_JavaLangString, "##@Service is Started():onStartCommand: ," + paramInt1 + "," + paramInt2 + ":" + paramIntent);
     if (paramIntent != null)
     {
       String str = paramIntent.getStringExtra("ACTIONNAME");
       paramIntent = paramIntent.getStringExtra("appid");
-      WLog.b(jdField_a_of_type_JavaLangString, "##@ACTIONNAME = " + str + "," + paramIntent);
-      Message localMessage = this.jdField_a_of_type_Alrm.obtainMessage();
+      bckd.b(jdField_a_of_type_JavaLangString, "##@ACTIONNAME = " + str + "," + paramIntent);
+      Message localMessage = this.jdField_a_of_type_Bckn.obtainMessage();
       localMessage.what = a(str);
       localMessage.obj = paramIntent;
-      this.jdField_a_of_type_Alrm.sendMessage(localMessage);
+      this.jdField_a_of_type_Bckn.sendMessage(localMessage);
     }
     return 2;
-  }
-  
-  public void setAppRuntime(AppRuntime paramAppRuntime)
-  {
-    super.setAppRuntime(paramAppRuntime);
-    WLog.b(jdField_a_of_type_JavaLangString, "setAppRuntime appRuntime");
-    if ((this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceWrap != null) && (this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceWrap.a != null)) {
-      this.jdField_a_of_type_CooperationWadlIpcWadlProxyServiceWrap.a.a(paramAppRuntime);
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.wadl.WadlJsBridgeService
  * JD-Core Version:    0.7.0.1
  */

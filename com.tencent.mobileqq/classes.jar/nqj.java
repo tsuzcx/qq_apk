@@ -1,15 +1,22 @@
-import com.tencent.biz.qqstory.playmode.child.VidListPlayMode;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
 
-public class nqj
-  implements Runnable
+class nqj
+  extends qhx
 {
-  public nqj(VidListPlayMode paramVidListPlayMode) {}
+  nqj(nqi paramnqi) {}
   
-  public void run()
+  public void a(qhw paramqhw)
   {
-    this.a.e = false;
-    this.a.a.setCurrentItem(this.a.b, false);
+    super.a(paramqhw);
+    QLog.d("KandianAdPandent", 2, "onCompletion");
+    nqi.a(this.a).sendEmptyMessage(2);
+  }
+  
+  public void a(qhw paramqhw, Object paramObject)
+  {
+    QLog.d("KandianAdPandent", 2, "onVideoPrepared");
+    nqi.a(this.a).f();
   }
 }
 

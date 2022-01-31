@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.vashealth;
 
-import android.app.Application;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -12,8 +11,8 @@ import android.os.Build.VERSION;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat.Builder;
 import android.widget.RemoteViews;
+import com.tencent.commonsdk.util.notification.QQNotificationManager;
 import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.msf.sdk.QNotificationManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class PathTraceService
@@ -27,7 +26,7 @@ public class PathTraceService
   private Notification jdField_a_of_type_AndroidAppNotification;
   private NotificationCompat.Builder jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder;
   private RemoteViews jdField_a_of_type_AndroidWidgetRemoteViews;
-  private QNotificationManager jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager;
+  private QQNotificationManager jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager;
   private PathTraceService.UpdateRunDataBroadCastReceiver jdField_a_of_type_ComTencentMobileqqVashealthPathTraceService$UpdateRunDataBroadCastReceiver;
   
   static
@@ -138,13 +137,13 @@ public class PathTraceService
   public Notification a(Context paramContext, PendingIntent paramPendingIntent)
   {
     this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder = new NotificationCompat.Builder(paramContext);
-    this.jdField_a_of_type_AndroidWidgetRemoteViews = new RemoteViews(paramContext.getPackageName(), 2130969138);
+    this.jdField_a_of_type_AndroidWidgetRemoteViews = new RemoteViews(paramContext.getPackageName(), 2131493777);
     this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder.setContentIntent(paramPendingIntent);
     this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder.setContentTitle("QQ运动");
-    this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder.setSmallIcon(2130837948);
+    this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder.setSmallIcon(2130838173);
     try
     {
-      paramContext = BitmapFactory.decodeResource(getResources(), 2130837948);
+      paramContext = BitmapFactory.decodeResource(getResources(), 2130838173);
       if (paramContext != null) {
         this.jdField_a_of_type_AndroidSupportV4AppNotificationCompat$Builder.setLargeIcon(paramContext);
       }
@@ -189,7 +188,7 @@ public class PathTraceService
     QLog.d("PathTraceManager.Service", 1, "onCreate");
     a();
     if (Build.VERSION.SDK_INT < 18) {
-      super.startForeground(3216, new Notification());
+      super.startForeground(237, new Notification());
     }
     while (Build.VERSION.SDK_INT >= 25) {
       return;
@@ -230,15 +229,17 @@ public class PathTraceService
         paramIntent = new IntentFilter(jdField_a_of_type_JavaLangString);
         registerReceiver(this.jdField_a_of_type_ComTencentMobileqqVashealthPathTraceService$UpdateRunDataBroadCastReceiver, paramIntent);
       }
-      this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager = new QNotificationManager(getApplication().getApplicationContext());
-      super.startForeground(3216, a(this, PendingIntent.getActivity(this, 1, new Intent(this, SplashActivity.class), 268435456)));
+      this.jdField_a_of_type_ComTencentCommonsdkUtilNotificationQQNotificationManager = QQNotificationManager.getInstance();
+      paramIntent = new Intent(this, SplashActivity.class);
+      paramIntent.putExtra("param_notifyid", 237);
+      super.startForeground(237, a(this, PendingIntent.getActivity(this, 1, paramIntent, 268435456)));
     }
     return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.PathTraceService
  * JD-Core Version:    0.7.0.1
  */

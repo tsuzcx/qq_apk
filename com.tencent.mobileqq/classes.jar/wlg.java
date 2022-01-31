@@ -1,32 +1,83 @@
-import com.tencent.mobileqq.activity.bless.CountDownView;
-import com.tencent.mobileqq.activity.bless.CountDownView.CountDownFinishedListener;
+import android.os.Bundle;
+import android.widget.Button;
+import com.tencent.biz.troop.file.MoveFileActivity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 public class wlg
-  implements Runnable
+  extends wlt
 {
-  public wlg(CountDownView paramCountDownView) {}
+  public wlg(MoveFileActivity paramMoveFileActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, int paramInt3, ByteStringMicro paramByteStringMicro, List<ayoq> paramList, Bundle paramBundle)
   {
-    if ((CountDownView.a(this.a)) && (CountDownView.a(this.a) >= CountDownView.a().length))
-    {
-      this.a.a();
-      if (CountDownView.a(this.a) != null) {
-        CountDownView.a(this.a).a();
-      }
-    }
-    while (CountDownView.a(this.a) >= CountDownView.a().length) {
+    this.a.a(true);
+    if ((!paramBoolean1) || (paramList == null)) {
       return;
     }
-    CountDownView.a(this.a);
-    this.a.setImageResource(CountDownView.a()[CountDownView.a(this.a)]);
-    this.a.postDelayed(CountDownView.a(this.a), 1000L);
-    CountDownView.b(this.a);
+    MoveFileActivity.a(this.a, paramInt3);
+    MoveFileActivity.a(this.a, paramBoolean2);
+    paramBoolean1 = paramBundle.getBoolean("isFirstPage");
+    paramByteStringMicro = paramList.iterator();
+    while (paramByteStringMicro.hasNext())
+    {
+      paramBundle = (ayoq)paramByteStringMicro.next();
+      if (MoveFileActivity.a(this.a).c.get(paramBundle.b) == null)
+      {
+        paramBundle.a = UUID.randomUUID();
+        MoveFileActivity.a(this.a).c.put(paramBundle.b, paramBundle);
+      }
+    }
+    if (paramBoolean1)
+    {
+      MoveFileActivity.a(this.a).clear();
+      if (!MoveFileActivity.c(this.a).equals("/"))
+      {
+        paramByteStringMicro = new ayoq();
+        paramByteStringMicro.c = ajjy.a(2131641113);
+        paramByteStringMicro.b = "/";
+        paramByteStringMicro.d = true;
+        paramByteStringMicro.f = -1;
+        MoveFileActivity.a(this.a).add(paramByteStringMicro);
+      }
+    }
+    MoveFileActivity.b(this.a, paramInt1);
+    if (!MoveFileActivity.c(this.a).equals("/"))
+    {
+      paramInt1 = paramList.size() - 1;
+      if (paramInt1 >= 0)
+      {
+        if (!((ayoq)paramList.get(paramInt1)).b.equals(MoveFileActivity.c(this.a))) {
+          break label389;
+        }
+        if (MoveFileActivity.a(this.a) == -1)
+        {
+          MoveFileActivity.c(this.a, paramInt1 + MoveFileActivity.a(this.a).size() - 1);
+          MoveFileActivity.a(this.a).setEnabled(true);
+          MoveFileActivity.a(this.a).setBackgroundResource(2130839019);
+          MoveFileActivity.a(this.a).setTextAppearance(this.a.getActivity(), 2131689792);
+        }
+      }
+      MoveFileActivity.a(this.a).addAll(MoveFileActivity.a(this.a).size() - 1, paramList);
+    }
+    for (;;)
+    {
+      MoveFileActivity.a(this.a).notifyDataSetChanged();
+      return;
+      label389:
+      paramInt1 -= 1;
+      break;
+      MoveFileActivity.a(this.a).addAll(paramList);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wlg
  * JD-Core Version:    0.7.0.1
  */

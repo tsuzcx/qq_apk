@@ -8,24 +8,27 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.QZLog;
+import xgd;
+import xge;
 
 public class QZoneConfigProvider
   extends ContentProvider
-  implements QZoneConfigConst
+  implements xge
 {
   private static final UriMatcher jdField_a_of_type_AndroidContentUriMatcher = ;
-  private QZConfigSqliteManager jdField_a_of_type_ComTencentCommonConfigProviderQZConfigSqliteManager;
+  private xgd jdField_a_of_type_Xgd;
   
   private int a(Uri paramUri, String paramString, String[] paramArrayOfString)
   {
-    int i = this.jdField_a_of_type_ComTencentCommonConfigProviderQZConfigSqliteManager.d(paramString, paramArrayOfString);
+    int i = this.jdField_a_of_type_Xgd.d(paramString, paramArrayOfString);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return i;
   }
   
   private int a(Uri paramUri, ContentValues[] paramArrayOfContentValues)
   {
-    int i = this.jdField_a_of_type_ComTencentCommonConfigProviderQZConfigSqliteManager.b(paramUri, paramArrayOfContentValues);
+    int i = this.jdField_a_of_type_Xgd.a(paramUri, "table_qz_unread", paramArrayOfContentValues);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return i;
   }
@@ -46,87 +49,94 @@ public class QZoneConfigProvider
   
   private Cursor a(String[] paramArrayOfString)
   {
-    return this.jdField_a_of_type_ComTencentCommonConfigProviderQZConfigSqliteManager.c(paramArrayOfString);
+    return this.jdField_a_of_type_Xgd.c(paramArrayOfString);
   }
   
   private Cursor a(String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    return this.jdField_a_of_type_ComTencentCommonConfigProviderQZConfigSqliteManager.b(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+    return this.jdField_a_of_type_Xgd.b(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
   }
   
   private Uri a(Uri paramUri, ContentValues paramContentValues)
   {
     paramContentValues.put("name", "cookie");
-    paramUri = this.jdField_a_of_type_ComTencentCommonConfigProviderQZConfigSqliteManager.d(paramUri, paramContentValues);
+    paramUri = this.jdField_a_of_type_Xgd.d(paramUri, paramContentValues);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return paramUri;
   }
   
+  private int b(Uri paramUri, ContentValues[] paramArrayOfContentValues)
+  {
+    int i = this.jdField_a_of_type_Xgd.a(paramUri, "qz_navigator_bar", paramArrayOfContentValues);
+    getContext().getContentResolver().notifyChange(paramUri, null);
+    return i;
+  }
+  
   private Cursor b(String[] paramArrayOfString)
   {
-    return this.jdField_a_of_type_ComTencentCommonConfigProviderQZConfigSqliteManager.a(paramArrayOfString);
+    return this.jdField_a_of_type_Xgd.a(paramArrayOfString);
   }
   
   private Cursor b(String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    return this.jdField_a_of_type_ComTencentCommonConfigProviderQZConfigSqliteManager.c(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+    return this.jdField_a_of_type_Xgd.c(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
   }
   
   private Uri b(Uri paramUri, ContentValues paramContentValues)
   {
     paramContentValues.put("name", "check_time");
-    paramUri = this.jdField_a_of_type_ComTencentCommonConfigProviderQZConfigSqliteManager.e(paramUri, paramContentValues);
+    paramUri = this.jdField_a_of_type_Xgd.e(paramUri, paramContentValues);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return paramUri;
   }
   
   private Cursor c(String[] paramArrayOfString)
   {
-    return this.jdField_a_of_type_ComTencentCommonConfigProviderQZConfigSqliteManager.b(paramArrayOfString);
+    return this.jdField_a_of_type_Xgd.b(paramArrayOfString);
   }
   
   private Cursor c(String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    return this.jdField_a_of_type_ComTencentCommonConfigProviderQZConfigSqliteManager.a(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+    return this.jdField_a_of_type_Xgd.a(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
   }
   
   private Uri c(Uri paramUri, ContentValues paramContentValues)
   {
     paramContentValues.put("name", "updatelog");
-    paramUri = this.jdField_a_of_type_ComTencentCommonConfigProviderQZConfigSqliteManager.f(paramUri, paramContentValues);
+    paramUri = this.jdField_a_of_type_Xgd.f(paramUri, paramContentValues);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return paramUri;
   }
   
   private Cursor d(String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
-    return this.jdField_a_of_type_ComTencentCommonConfigProviderQZConfigSqliteManager.d(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+    return this.jdField_a_of_type_Xgd.d(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
   }
   
   private Uri d(Uri paramUri, ContentValues paramContentValues)
   {
-    paramUri = this.jdField_a_of_type_ComTencentCommonConfigProviderQZConfigSqliteManager.a(paramUri, paramContentValues);
+    paramUri = this.jdField_a_of_type_Xgd.a(paramUri, paramContentValues);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return paramUri;
   }
   
   private Uri e(Uri paramUri, ContentValues paramContentValues)
   {
-    paramUri = this.jdField_a_of_type_ComTencentCommonConfigProviderQZConfigSqliteManager.c(paramUri, paramContentValues);
+    paramUri = this.jdField_a_of_type_Xgd.c(paramUri, paramContentValues);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return paramUri;
   }
   
   private Uri f(Uri paramUri, ContentValues paramContentValues)
   {
-    paramUri = this.jdField_a_of_type_ComTencentCommonConfigProviderQZConfigSqliteManager.b(paramUri, paramContentValues);
+    paramUri = this.jdField_a_of_type_Xgd.b(paramUri, paramContentValues);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return paramUri;
   }
   
   private Uri g(Uri paramUri, ContentValues paramContentValues)
   {
-    paramUri = this.jdField_a_of_type_ComTencentCommonConfigProviderQZConfigSqliteManager.g(paramUri, paramContentValues);
+    paramUri = this.jdField_a_of_type_Xgd.g(paramUri, paramContentValues);
     getContext().getContentResolver().notifyChange(paramUri, null);
     return paramUri;
   }
@@ -136,9 +146,14 @@ public class QZoneConfigProvider
     switch (jdField_a_of_type_AndroidContentUriMatcher.match(paramUri))
     {
     default: 
-      return this.jdField_a_of_type_ComTencentCommonConfigProviderQZConfigSqliteManager.a(paramUri, paramArrayOfContentValues);
+      QZLog.e("QZoneConfigProvider", 1, new Object[] { "uri:", paramUri, "not used right" });
+      return 0;
+    case 9: 
+      return a(paramUri, paramArrayOfContentValues);
+    case 8: 
+      return b(paramUri, paramArrayOfContentValues);
     }
-    return a(paramUri, paramArrayOfContentValues);
+    return this.jdField_a_of_type_Xgd.a(paramUri, "qz_configs", paramArrayOfContentValues);
   }
   
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
@@ -149,19 +164,19 @@ public class QZoneConfigProvider
     default: 
       return 0;
     case 1: 
-      return this.jdField_a_of_type_ComTencentCommonConfigProviderQZConfigSqliteManager.a(paramString, paramArrayOfString);
+      return this.jdField_a_of_type_Xgd.a(paramString, paramArrayOfString);
     case 2: 
-      return this.jdField_a_of_type_ComTencentCommonConfigProviderQZConfigSqliteManager.a();
+      return this.jdField_a_of_type_Xgd.a();
     case 3: 
-      return this.jdField_a_of_type_ComTencentCommonConfigProviderQZConfigSqliteManager.c();
+      return this.jdField_a_of_type_Xgd.c();
     case 4: 
-      return this.jdField_a_of_type_ComTencentCommonConfigProviderQZConfigSqliteManager.b(paramString, paramArrayOfString);
+      return this.jdField_a_of_type_Xgd.b(paramString, paramArrayOfString);
     case 6: 
-      return this.jdField_a_of_type_ComTencentCommonConfigProviderQZConfigSqliteManager.d();
+      return this.jdField_a_of_type_Xgd.d();
     case 5: 
-      return this.jdField_a_of_type_ComTencentCommonConfigProviderQZConfigSqliteManager.b();
+      return this.jdField_a_of_type_Xgd.b();
     case 8: 
-      return this.jdField_a_of_type_ComTencentCommonConfigProviderQZConfigSqliteManager.c(paramString, paramArrayOfString);
+      return this.jdField_a_of_type_Xgd.c(paramString, paramArrayOfString);
     }
     return a(paramUri, paramString, paramArrayOfString);
   }
@@ -197,7 +212,7 @@ public class QZoneConfigProvider
   
   public boolean onCreate()
   {
-    this.jdField_a_of_type_ComTencentCommonConfigProviderQZConfigSqliteManager = new QZConfigSqliteManager(getContext());
+    this.jdField_a_of_type_Xgd = new xgd(getContext());
     return true;
   }
   

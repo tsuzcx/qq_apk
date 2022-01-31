@@ -1,81 +1,69 @@
 package com.tencent.qqprotect.common;
 
-import amdw;
-import amdx;
 import android.os.Handler.Callback;
 import android.os.Message;
-import com.tencent.biz.ProtoUtils;
+import badq;
+import bdzm;
+import bdzo;
+import bdzq;
+import beez;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.ims.SafeReport.ReqBody;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MqqWeakReferenceHandler;
 import java.util.Vector;
+import mmj;
 import mqq.app.MobileQQ;
 
 public class QSecRptControllerImpl
-  extends QSecRptController
+  extends bdzm
   implements Handler.Callback
 {
-  private static volatile QSecRptController jdField_a_of_type_ComTencentQqprotectCommonQSecRptController;
-  private final long jdField_a_of_type_Long;
-  private MqqWeakReferenceHandler jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler;
-  private Integer jdField_a_of_type_JavaLangInteger = Integer.valueOf(0);
-  private final Vector jdField_a_of_type_JavaUtilVector = new Vector(2);
-  private boolean jdField_a_of_type_Boolean;
-  private Integer b = Integer.valueOf(1);
+  private static volatile bdzm jdField_a_of_type_Bdzm;
+  private final long jdField_a_of_type_Long = 300000L;
+  private beez jdField_a_of_type_Beez = new beez(ThreadManager.getSubThreadLooper(), this);
+  private QSecRptControllerImpl.ReportRunnable jdField_a_of_type_ComTencentQqprotectCommonQSecRptControllerImpl$ReportRunnable;
+  private final Vector<bdzq> jdField_a_of_type_JavaUtilVector = new Vector();
   
   private QSecRptControllerImpl()
   {
-    this.jdField_a_of_type_JavaUtilVector.add(new Vector(40));
-    this.jdField_a_of_type_JavaUtilVector.add(new Vector(40));
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler = new MqqWeakReferenceHandler(ThreadManager.getSubThreadLooper(), this);
-    this.jdField_a_of_type_Long = 300000L;
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(12315, 300000L);
+    this.jdField_a_of_type_Beez.sendEmptyMessageDelayed(12315, 300000L);
   }
   
-  public static QSecRptController a()
+  public static bdzm a()
   {
-    if (jdField_a_of_type_ComTencentQqprotectCommonQSecRptController == null) {}
+    if (jdField_a_of_type_Bdzm == null) {}
     try
     {
-      if (jdField_a_of_type_ComTencentQqprotectCommonQSecRptController == null) {
-        jdField_a_of_type_ComTencentQqprotectCommonQSecRptController = new QSecRptControllerImpl();
+      if (jdField_a_of_type_Bdzm == null) {
+        jdField_a_of_type_Bdzm = new QSecRptControllerImpl();
       }
-      return jdField_a_of_type_ComTencentQqprotectCommonQSecRptController;
+      return jdField_a_of_type_Bdzm;
     }
     finally {}
   }
   
   private void a()
   {
-    int j = 1;
-    for (;;)
+    this.jdField_a_of_type_Beez.removeMessages(12315);
+    b();
+    this.jdField_a_of_type_Beez.sendEmptyMessageDelayed(12315, this.jdField_a_of_type_Long);
+  }
+  
+  private void a(bdzq parambdzq)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilVector)
     {
-      synchronized (this.jdField_a_of_type_JavaLangInteger)
-      {
-        if (this.jdField_a_of_type_JavaLangInteger.intValue() == 0)
-        {
-          i = 1;
-          this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(i);
-          if (this.jdField_a_of_type_JavaLangInteger.intValue() != 0) {
-            break label99;
-          }
-          i = j;
-          this.b = Integer.valueOf(i);
-          if (QLog.isColorLevel()) {
-            QLog.d("QSRPT", 2, String.format("switch reporting and caching vector: using %d, reporting %d", new Object[] { this.jdField_a_of_type_JavaLangInteger, this.b }));
-          }
-          return;
-        }
+      this.jdField_a_of_type_JavaUtilVector.add(parambdzq);
+      if (QLog.isColorLevel()) {
+        QLog.d("QSRPT", 2, String.format("add report: totally %d items in cache", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilVector.size()) }));
       }
-      int i = 0;
-      continue;
-      label99:
-      i = 0;
+      if ((parambdzq.c == 2) || (this.jdField_a_of_type_JavaUtilVector.size() >= 40)) {
+        b();
+      }
+      return;
     }
   }
   
@@ -85,68 +73,55 @@ public class QSecRptControllerImpl
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("QSRPT", 2, String.format("report status: cached(%d): %d items, reporting(%d): %d items, sending: %d items", new Object[] { this.jdField_a_of_type_JavaLangInteger, Integer.valueOf(((Vector)this.jdField_a_of_type_JavaUtilVector.get(this.jdField_a_of_type_JavaLangInteger.intValue())).size()), this.b, Integer.valueOf(((Vector)this.jdField_a_of_type_JavaUtilVector.get(this.b.intValue())).size()), Integer.valueOf(paramReqBody.LogItem_reportdata.size()) }));
+      QLog.d("QSRPT", 2, String.format("totally sending report: %d items", new Object[] { Integer.valueOf(paramReqBody.LogItem_reportdata.size()) }));
     }
-    ProtoUtils.a((QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null), new amdx(this), paramReqBody.toByteArray(), "MqqSafeDataRpt.MQDun");
-  }
-  
-  private void a(QSecRptItem paramQSecRptItem)
-  {
-    ((Vector)this.jdField_a_of_type_JavaUtilVector.get(this.jdField_a_of_type_JavaLangInteger.intValue())).add(paramQSecRptItem);
-    if (QLog.isColorLevel()) {
-      QLog.d("QSRPT", 2, String.format("add report: cached(%d): %d items, reporting(%d): %d items", new Object[] { this.jdField_a_of_type_JavaLangInteger, Integer.valueOf(((Vector)this.jdField_a_of_type_JavaUtilVector.get(this.jdField_a_of_type_JavaLangInteger.intValue())).size()), this.b, Integer.valueOf(((Vector)this.jdField_a_of_type_JavaUtilVector.get(this.b.intValue())).size()) }));
-    }
-    if ((!this.jdField_a_of_type_Boolean) && ((paramQSecRptItem.c == 2) || (((Vector)this.jdField_a_of_type_JavaUtilVector.get(this.jdField_a_of_type_JavaLangInteger.intValue())).size() >= 40)))
-    {
-      a();
-      c();
-    }
+    mmj.a((QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null), new bdzo(this), paramReqBody.toByteArray(), "MqqSafeDataRpt.MQDun");
   }
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(12315);
-    a();
-    c();
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(12315, this.jdField_a_of_type_Long);
-  }
-  
-  private void c()
-  {
-    if (!NetworkUtil.d(BaseApplicationImpl.sApplication)) {
+    if (!badq.d(BaseApplicationImpl.sApplication)) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_ComTencentQqprotectCommonQSecRptControllerImpl$ReportRunnable = new QSecRptControllerImpl.ReportRunnable(this, null);
+    } while (this.jdField_a_of_type_ComTencentQqprotectCommonQSecRptControllerImpl$ReportRunnable == null);
+    synchronized (this.jdField_a_of_type_JavaUtilVector)
+    {
+      QSecRptControllerImpl.ReportRunnable.a(this.jdField_a_of_type_ComTencentQqprotectCommonQSecRptControllerImpl$ReportRunnable).addAll(this.jdField_a_of_type_JavaUtilVector);
+      this.jdField_a_of_type_JavaUtilVector.removeAllElements();
+      ThreadManager.post(this.jdField_a_of_type_ComTencentQqprotectCommonQSecRptControllerImpl$ReportRunnable, 5, null, true);
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    ThreadManager.post(new amdw(this), 5, null, true);
   }
   
-  protected void b(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  public void b(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    QSecRptItem localQSecRptItem = new QSecRptItem();
-    localQSecRptItem.jdField_a_of_type_Int = paramInt1;
-    localQSecRptItem.b = paramInt2;
-    localQSecRptItem.jdField_a_of_type_JavaLangString = paramString;
-    localQSecRptItem.c = paramInt3;
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(12316, localQSecRptItem).sendToTarget();
+    bdzq localbdzq = new bdzq();
+    localbdzq.jdField_a_of_type_Int = paramInt1;
+    localbdzq.b = paramInt2;
+    localbdzq.jdField_a_of_type_JavaLangString = paramString;
+    localbdzq.c = paramInt3;
+    this.jdField_a_of_type_Beez.obtainMessage(12316, localbdzq).sendToTarget();
   }
   
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage.what == 12316) {
-      a((QSecRptItem)paramMessage.obj);
+      a((bdzq)paramMessage.obj);
     }
     for (;;)
     {
       return true;
       if (paramMessage.what == 12315) {
-        b();
+        a();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqprotect.common.QSecRptControllerImpl
  * JD-Core Version:    0.7.0.1
  */

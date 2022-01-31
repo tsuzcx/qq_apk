@@ -1,24 +1,36 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.util.AccessibilityUtil;
-import com.tencent.widget.CustomWidgetUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 
-class tco
-  implements Runnable
+public class tco
+  implements tcn
 {
-  tco(tck paramtck, int paramInt1, int paramInt2) {}
+  public void a() {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    CustomWidgetUtil.a(Leba.b(this.jdField_a_of_type_Tck.a), this.jdField_a_of_type_Int, this.b, 0);
-    CustomWidgetUtil.a(this.jdField_a_of_type_Tck.a.a(), Leba.b(this.jdField_a_of_type_Tck.a), this.jdField_a_of_type_Int);
-    if ((this.jdField_a_of_type_Int == 3) && (this.b > 0)) {
-      AccessibilityUtil.a(Leba.a(this.jdField_a_of_type_Tck.a), "好友动态 " + this.b + "条更新");
+    if (paramInt == 6) {
+      bbmy.a(BaseApplicationImpl.getContext(), 2131624488, 0).a();
     }
   }
+  
+  public void b() {}
+  
+  public void b(int paramInt) {}
+  
+  public void c() {}
+  
+  public void c(int paramInt)
+  {
+    bbmy.a(BaseApplication.getContext(), ajjy.a(2131642056), 0).a();
+  }
+  
+  public void d() {}
+  
+  public void d(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tco
  * JD-Core Version:    0.7.0.1
  */

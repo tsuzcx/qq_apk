@@ -1,25 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.util.Utils;
-import friendlist.GetOnlineInfoResp;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 
-public class ovz
-  extends FriendListObserver
+class ovz
+  implements View.OnClickListener
 {
-  public ovz(StoryQIMBadgeView paramStoryQIMBadgeView) {}
+  ovz(ovx paramovx, opw paramopw, Container paramContainer, qoe paramqoe) {}
   
-  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
+  public void onClick(View paramView)
   {
-    super.onGetOnlineInfoByUinOrMobile(paramBoolean, paramLong, paramString, paramGetOnlineInfoResp);
-    if ((StoryQIMBadgeView.a(this.a) == null) || (paramGetOnlineInfoResp == null) || (TextUtils.isEmpty(StoryQIMBadgeView.a(this.a).qq))) {}
-    while ((!paramBoolean) || (!Utils.a(StoryQIMBadgeView.a(this.a).qq, paramString))) {
-      return;
+    Object localObject = this.jdField_a_of_type_Opw.a();
+    ((ArticleInfo)localObject).click_area = 8;
+    obz.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), (ArticleInfo)localObject, (int)((ArticleInfo)localObject).mChannelID);
+    localObject = this.jdField_a_of_type_Qoe.a();
+    if (localObject != null) {
+      ((qpj)localObject).a(paramView, this.jdField_a_of_type_Opw.a(), 2);
     }
-    ThreadManager.getUIHandler().post(new owa(this, paramGetOnlineInfoResp, paramString));
   }
 }
 

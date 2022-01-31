@@ -1,32 +1,50 @@
+import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
+
 public class abon
+  extends AccountObserver
 {
-  public static final float[] a;
+  public abon(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
   
-  static
+  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt, byte[] paramArrayOfByte)
   {
-    int k = 0;
-    a = new float[8192];
-    int i = 0;
-    int j;
-    for (;;)
-    {
-      j = k;
-      if (i >= 8192) {
-        break;
-      }
-      a[i] = ((float)Math.cos((i + 0.5F) / 8192.0F * 6.283186F));
-      i += 1;
+    super.onLoginFailed(paramString1, paramString2, paramString3, paramInt, paramArrayOfByte);
+    if (QLog.isColorLevel()) {
+      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onLoginFailed ");
     }
-    while (j < 360)
-    {
-      a[((int)(j * 22.755556F) & 0x1FFF)] = ((float)Math.cos(j * 0.01745329F));
-      j += 90;
+    RegisterChooseLoginActivity.a(this.a);
+  }
+  
+  public void onLoginSuccess(String paramString1, String paramString2)
+  {
+    super.onLoginSuccess(paramString1, paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onLoginSuccess ");
     }
+  }
+  
+  public void onLoginTimeout(String paramString)
+  {
+    super.onLoginTimeout(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onLoginTimeout ");
+    }
+    RegisterChooseLoginActivity.a(this.a);
+  }
+  
+  public void onUserCancel(String paramString)
+  {
+    super.onUserCancel(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onUserCancel ");
+    }
+    RegisterChooseLoginActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abon
  * JD-Core Version:    0.7.0.1
  */

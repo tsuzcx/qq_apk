@@ -1,21 +1,21 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnSeekCompleteListener;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnSeekCompleteListener;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.MediaPlayerWrapper;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
 
 public class nvm
-  implements MediaPlayer.OnSeekCompleteListener
+  implements nyx
 {
-  public nvm(MediaPlayerWrapper paramMediaPlayerWrapper, IMediaPlayer.OnSeekCompleteListener paramOnSeekCompleteListener) {}
+  public nvm(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment, nyx paramnyx) {}
   
-  public void onSeekComplete(MediaPlayer paramMediaPlayer)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnSeekCompleteListener.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperMediaPlayerWrapper);
+    ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment).c();
+    if (this.jdField_a_of_type_Nyx != null) {
+      this.jdField_a_of_type_Nyx.a(paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nvm
  * JD-Core Version:    0.7.0.1
  */

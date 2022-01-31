@@ -1,28 +1,28 @@
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.biz.troopplugin.PluginJumpManager;
 
 public class wok
-  extends SosoInterface.OnLocationListener
+  implements moc
 {
-  public wok(SearchContactsFragment paramSearchContactsFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  public wok(PluginJumpManager paramPluginJumpManager) {}
+  
+  public void loaded(String paramString, int paramInt)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    if (paramInt == 0) {
+      mof.a("urlplugin.cfg", this.a.mContext, "1007", new wol(this));
+    }
+    while (!TextUtils.isEmpty(this.a.mPref.getString("config_file_version", ""))) {
+      return;
+    }
+    this.a.loadConfigFromFile();
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if (paramInt == 0)
-    {
-      SearchContactsFragment.a(this.a, paramSosoLbsInfo.a.a);
-      SearchContactsFragment.b(this.a, paramSosoLbsInfo.a.b);
-    }
-  }
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wok
  * JD-Core Version:    0.7.0.1
  */

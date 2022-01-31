@@ -1,22 +1,10 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.FoldMsgGrayTipsItemBuilder;
-
-public class vcs
-  extends AbstractChatItemBuilder.ViewHolder
+public abstract interface vcs
 {
-  public ImageView a;
-  public LinearLayout a;
-  public ImageView b;
-  public TextView b;
-  
-  public vcs(FoldMsgGrayTipsItemBuilder paramFoldMsgGrayTipsItemBuilder) {}
+  public abstract void b(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vcs
  * JD-Core Version:    0.7.0.1
  */

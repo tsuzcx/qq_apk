@@ -1,20 +1,24 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
-import com.tencent.util.InputMethodUtil;
-
 public class ssk
-  implements Runnable
 {
-  public ssk(ForwardFriendListActivity paramForwardFriendListActivity, View paramView) {}
+  public final long a;
+  public final ssi a;
+  public final long b;
   
-  public void run()
+  public ssk(ssi paramssi, long paramLong1, long paramLong2)
   {
-    InputMethodUtil.b(this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_Ssi = paramssi;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+  }
+  
+  public String toString()
+  {
+    return "Progress{intput=" + this.jdField_a_of_type_Ssi + ", downloadBytes=" + this.jdField_a_of_type_Long + ", totalBytes=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ssk
  * JD-Core Version:    0.7.0.1
  */

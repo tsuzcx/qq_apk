@@ -21,24 +21,24 @@ import com.tencent.component.media.image.drawable.SpecifiedBitmapDrawable;
 public class ScaleProcessor
   extends ImageProcessor
 {
-  private static volatile Matrix jdField_a_of_type_AndroidGraphicsMatrix = null;
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  private static volatile Matrix sScaleMatrix = null;
+  private int mHeight;
+  private boolean mIsScaleInProportion;
+  private int mWidth;
   
   @Public
   public ScaleProcessor(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.mWidth = paramInt1;
+    this.mHeight = paramInt2;
   }
   
   @Public
   public ScaleProcessor(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.mWidth = paramInt1;
+    this.mHeight = paramInt2;
+    this.mIsScaleInProportion = paramBoolean;
   }
   
   public static BitmapReference createBitmap(BitmapReference paramBitmapReference, int paramInt1, int paramInt2, int paramInt3, int paramInt4, Matrix paramMatrix, boolean paramBoolean)
@@ -58,7 +58,7 @@ public class ScaleProcessor
     Object localObject1 = Bitmap.Config.ARGB_8888;
     Object localObject2 = paramBitmapReference.getConfig();
     if (localObject2 != null) {
-      switch (pna.a[localObject2.ordinal()])
+      switch (ScaleProcessor.1.$SwitchMap$android$graphics$Bitmap$Config[localObject2.ordinal()])
       {
       default: 
         localObject1 = Bitmap.Config.ARGB_8888;
@@ -69,8 +69,8 @@ public class ScaleProcessor
       if ((paramMatrix == null) || (paramMatrix.isIdentity()))
       {
         paramMatrix = ImageManager.getInstance().getBitmap(paramInt3, paramInt4, (Bitmap.Config)localObject1);
-        localObject1 = null;
         localCanvas.setBitmap(paramMatrix.getBitmap());
+        localObject1 = null;
         localCanvas.drawBitmap(paramBitmapReference.getBitmap(), localRect, localRectF1, (Paint)localObject1);
       }
       try
@@ -93,6 +93,7 @@ public class ScaleProcessor
             localObject1 = Bitmap.Config.ARGB_8888;
           }
           localObject2 = ((ImageManager)localObject2).getBitmap(paramInt2, paramInt3, (Bitmap.Config)localObject1);
+          localCanvas.setBitmap(((BitmapReference)localObject2).getBitmap());
           localCanvas.translate(-localRectF2.left, -localRectF2.top);
           localCanvas.concat(paramMatrix);
           localObject1 = new Paint();
@@ -119,27 +120,27 @@ public class ScaleProcessor
   public static BitmapReference createScaledBitmap(BitmapReference paramBitmapReference, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     // Byte code:
-    //   0: ldc 201
+    //   0: ldc 204
     //   2: monitorenter
-    //   3: getstatic 14	com/tencent/component/media/image/processor/ScaleProcessor:jdField_a_of_type_AndroidGraphicsMatrix	Landroid/graphics/Matrix;
+    //   3: getstatic 16	com/tencent/component/media/image/processor/ScaleProcessor:sScaleMatrix	Landroid/graphics/Matrix;
     //   6: astore 7
     //   8: aconst_null
-    //   9: putstatic 14	com/tencent/component/media/image/processor/ScaleProcessor:jdField_a_of_type_AndroidGraphicsMatrix	Landroid/graphics/Matrix;
-    //   12: ldc 201
+    //   9: putstatic 16	com/tencent/component/media/image/processor/ScaleProcessor:sScaleMatrix	Landroid/graphics/Matrix;
+    //   12: ldc 204
     //   14: monitorexit
     //   15: aload 7
     //   17: astore 6
     //   19: aload 7
     //   21: ifnonnull +12 -> 33
-    //   24: new 55	android/graphics/Matrix
+    //   24: new 57	android/graphics/Matrix
     //   27: dup
-    //   28: invokespecial 202	android/graphics/Matrix:<init>	()V
+    //   28: invokespecial 205	android/graphics/Matrix:<init>	()V
     //   31: astore 6
     //   33: aload_0
-    //   34: invokevirtual 37	com/tencent/component/media/image/BitmapReference:getWidth	()I
+    //   34: invokevirtual 39	com/tencent/component/media/image/BitmapReference:getWidth	()I
     //   37: istore 4
     //   39: aload_0
-    //   40: invokevirtual 47	com/tencent/component/media/image/BitmapReference:getHeight	()I
+    //   40: invokevirtual 49	com/tencent/component/media/image/BitmapReference:getHeight	()I
     //   43: istore 5
     //   45: aload 6
     //   47: iload_1
@@ -152,7 +153,7 @@ public class ScaleProcessor
     //   55: iload 5
     //   57: i2f
     //   58: fdiv
-    //   59: invokevirtual 205	android/graphics/Matrix:setScale	(FF)V
+    //   59: invokevirtual 208	android/graphics/Matrix:setScale	(FF)V
     //   62: aload_0
     //   63: iconst_0
     //   64: iconst_0
@@ -160,25 +161,25 @@ public class ScaleProcessor
     //   67: iload 5
     //   69: aload 6
     //   71: iload_3
-    //   72: invokestatic 207	com/tencent/component/media/image/processor/ScaleProcessor:createBitmap	(Lcom/tencent/component/media/image/BitmapReference;IIIILandroid/graphics/Matrix;Z)Lcom/tencent/component/media/image/BitmapReference;
+    //   72: invokestatic 210	com/tencent/component/media/image/processor/ScaleProcessor:createBitmap	(Lcom/tencent/component/media/image/BitmapReference;IIIILandroid/graphics/Matrix;Z)Lcom/tencent/component/media/image/BitmapReference;
     //   75: astore_0
-    //   76: ldc 201
+    //   76: ldc 204
     //   78: monitorenter
-    //   79: getstatic 14	com/tencent/component/media/image/processor/ScaleProcessor:jdField_a_of_type_AndroidGraphicsMatrix	Landroid/graphics/Matrix;
+    //   79: getstatic 16	com/tencent/component/media/image/processor/ScaleProcessor:sScaleMatrix	Landroid/graphics/Matrix;
     //   82: ifnonnull +8 -> 90
     //   85: aload 6
-    //   87: putstatic 14	com/tencent/component/media/image/processor/ScaleProcessor:jdField_a_of_type_AndroidGraphicsMatrix	Landroid/graphics/Matrix;
-    //   90: ldc 201
+    //   87: putstatic 16	com/tencent/component/media/image/processor/ScaleProcessor:sScaleMatrix	Landroid/graphics/Matrix;
+    //   90: ldc 204
     //   92: monitorexit
     //   93: aload_0
     //   94: areturn
     //   95: astore_0
-    //   96: ldc 201
+    //   96: ldc 204
     //   98: monitorexit
     //   99: aload_0
     //   100: athrow
     //   101: astore_0
-    //   102: ldc 201
+    //   102: ldc 204
     //   104: monitorexit
     //   105: aload_0
     //   106: athrow
@@ -260,8 +261,8 @@ public class ScaleProcessor
   @Public
   public int getHeight()
   {
-    if (this.b > 0) {
-      return this.b;
+    if (this.mHeight > 0) {
+      return this.mHeight;
     }
     return 0;
   }
@@ -269,7 +270,7 @@ public class ScaleProcessor
   @Public
   public boolean getIsScaleInProportion()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.mIsScaleInProportion;
   }
   
   public int getType()
@@ -280,15 +281,15 @@ public class ScaleProcessor
   @Public
   public int getWidth()
   {
-    if (this.jdField_a_of_type_Int > 0) {
-      return this.jdField_a_of_type_Int;
+    if (this.mWidth > 0) {
+      return this.mWidth;
     }
     return 0;
   }
   
   public Drawable process(Drawable paramDrawable)
   {
-    if ((this.jdField_a_of_type_Int <= 0) && (this.b <= 0)) {}
+    if ((this.mWidth <= 0) && (this.mHeight <= 0)) {}
     for (;;)
     {
       return paramDrawable;
@@ -298,7 +299,7 @@ public class ScaleProcessor
       }
       while (localBitmapReference != null)
       {
-        return new SpecifiedBitmapDrawable(getScaledBitmap(localBitmapReference, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Boolean));
+        return new SpecifiedBitmapDrawable(getScaledBitmap(localBitmapReference, this.mWidth, this.mHeight, this.mIsScaleInProportion));
         if ((paramDrawable instanceof SpecifiedBitmapDrawable)) {
           localBitmapReference = ((SpecifiedBitmapDrawable)paramDrawable).getBitmapRef();
         } else if ((paramDrawable instanceof BitmapDrawable)) {

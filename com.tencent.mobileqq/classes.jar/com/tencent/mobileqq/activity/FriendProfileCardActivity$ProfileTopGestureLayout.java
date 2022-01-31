@@ -27,7 +27,7 @@ public class FriendProfileCardActivity$ProfileTopGestureLayout
         return false;
       }
     }
-    else if (((this.a.a instanceof ProfileTagView)) && (((ProfileTagView)this.a.a).h))
+    else if (((this.a.a instanceof ProfileTagView)) && (((ProfileTagView)this.a.a).f))
     {
       return false;
     }

@@ -1,26 +1,43 @@
-import android.telephony.PhoneStateListener;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoVolumeControl;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView;
 import com.tencent.qphone.base.util.QLog;
 
-public class mtm
-  extends PhoneStateListener
+class mtm
+  implements mwd
 {
-  public mtm(FastWebVideoVolumeControl paramFastWebVideoVolumeControl) {}
+  mtm(mtc parammtc) {}
   
-  public void onCallStateChanged(int paramInt, String paramString)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.FastWebVideoVolumeControl", 2, "onCallStateChanged:" + paramInt);
-    }
-    switch (paramInt)
+    float f;
+    if ((this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView.getFirstVisiblePosition() == 0) && (this.a.b))
     {
-    default: 
-      return;
-    case 1: 
-      this.a.b(true);
+      paramInt = -this.a.b();
+      if (QLog.isColorLevel()) {
+        QLog.d("AccountDetailBaseAdapter", 2, "onEndScroll scrollY = " + paramInt + " ,isScrollUp = " + this.a.e);
+      }
+      f = 150.0F * this.a.jdField_a_of_type_Float;
+      if (paramInt != 0)
+      {
+        if (!this.a.e) {
+          break label127;
+        }
+        if (paramInt <= f) {
+          break label119;
+        }
+        this.a.d(paramInt);
+      }
+    }
+    return;
+    label119:
+    this.a.e();
+    return;
+    label127:
+    if (paramInt > this.a.o - f)
+    {
+      this.a.d(paramInt);
       return;
     }
-    this.a.b(true);
+    this.a.e();
   }
 }
 

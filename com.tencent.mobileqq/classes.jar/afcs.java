@@ -1,59 +1,50 @@
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.res.Resources;
-import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import com.tencent.mobileqq.nearby.now.view.presenter.CommentsPresenter;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
 
 public class afcs
-  implements View.OnClickListener
+  extends aexh<MessageRecord>
 {
-  public afcs(ShortVideoCommentsView paramShortVideoCommentsView) {}
-  
-  public void onClick(View paramView)
+  public afcs(TroopSuspiciousFragment paramTroopSuspiciousFragment, Context paramContext, int paramInt)
   {
-    String str2 = ShortVideoCommentsView.a(this.a).getText().toString();
-    if (str2.equals(""))
-    {
-      this.a.a(this.a.getContext().getResources().getString(2131430843));
-      return;
-    }
-    if (str2.length() > 140)
-    {
-      this.a.a(this.a.getContext().getResources().getString(2131430844));
-      return;
-    }
-    Comments.Comment localComment = new Comments.Comment();
-    localComment.jdField_c_of_type_Long = Long.parseLong(this.a.a.getCurrentAccountUin());
-    localComment.jdField_c_of_type_JavaLangString = "";
-    String str1 = BaseApplicationImpl.getApplication().getSharedPreferences("self_info" + this.a.a.getCurrentAccountUin(), 4).getString("nick", "");
-    paramView = str1;
-    if (TextUtils.isEmpty(str1)) {
-      paramView = this.a.a.getCurrentNickname();
-    }
-    localComment.jdField_b_of_type_JavaLangString = paramView;
-    localComment.jdField_a_of_type_JavaLangString = str2;
-    localComment.jdField_b_of_type_Long = (System.currentTimeMillis() / 1000L);
-    localComment.jdField_a_of_type_ComTencentMobileqqNearbyNowModelMedalInfo = ShortVideoCommentsView.a(this.a);
-    if ((ShortVideoCommentsView.a(this.a) != null) && (ShortVideoCommentsView.a(this.a).jdField_c_of_type_Long > 0L))
-    {
-      localComment.e = ShortVideoCommentsView.a(this.a).jdField_c_of_type_JavaLangString;
-      localComment.jdField_d_of_type_JavaLangString = ShortVideoCommentsView.a(this.a).jdField_b_of_type_JavaLangString;
-      localComment.jdField_d_of_type_Long = ShortVideoCommentsView.a(this.a).jdField_c_of_type_Long;
-    }
-    ShortVideoCommentsView.a(this.a).a(localComment);
-    ShortVideoCommentsView.a(this.a, localComment);
+    super(paramContext, paramInt);
+  }
+  
+  protected void a(aexr paramaexr, MessageRecord paramMessageRecord, int paramInt)
+  {
+    TroopSuspiciousFragment.a(this.a, paramaexr, paramMessageRecord, paramInt);
+  }
+  
+  protected aexr b(Context paramContext, ViewGroup paramViewGroup, int paramInt)
+  {
+    paramViewGroup = LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false);
+    paramContext = new afbv(paramContext, paramViewGroup);
+    paramContext.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131306841));
+    paramContext.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131306831));
+    paramContext.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131306838));
+    paramContext.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131306845));
+    paramContext.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131306836));
+    paramContext.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131306842));
+    paramContext.c = ((TextView)paramViewGroup.findViewById(2131306844));
+    paramContext.d = ((TextView)paramViewGroup.findViewById(2131306837));
+    paramContext.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131306840));
+    paramContext.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout = ((ShaderAnimLayout)paramViewGroup.findViewById(2131312047));
+    paramViewGroup = (Button)paramViewGroup.findViewById(2131312046);
+    afcz.a(paramContext.a(), false);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afcs
  * JD-Core Version:    0.7.0.1
  */

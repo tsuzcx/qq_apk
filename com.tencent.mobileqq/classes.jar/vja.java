@@ -1,25 +1,29 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.QQWalletMsgItemBuilder;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletRedPkgUtils;
+import android.graphics.drawable.Drawable;
 
 public class vja
-  implements View.OnClickListener
 {
-  public vja(QQWalletMsgItemBuilder paramQQWalletMsgItemBuilder) {}
+  public static final int[] a;
+  public static final int[] b;
+  public int a;
+  public Drawable a;
+  public int b;
   
-  public void onClick(View paramView)
+  static
   {
-    paramView = (String)paramView.getTag();
-    if (!TextUtils.isEmpty(paramView)) {
-      QWalletRedPkgUtils.b(this.a.a, paramView);
-    }
+    jdField_a_of_type_ArrayOfInt = new int[] { -16777216, -1, -2148308, -1009097, -8136876, -13338378, -8464904, -531608, -1551972 };
+    jdField_b_of_type_ArrayOfInt = new int[] { 2130845689, 2130845687, 2130845690, 2130845688, 2130845693, 2130845692, 2130845696, 2130845691, 2130845694 };
+  }
+  
+  public vja(Drawable paramDrawable, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vja
  * JD-Core Version:    0.7.0.1
  */

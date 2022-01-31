@@ -1,14 +1,16 @@
 package com.tencent.mobileqq.confess;
 
+import atmo;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
-@uniqueConstraints(clause=ConflictClause.FAIL, columnNames="uin,type,topicId")
+@uniqueConstraints(clause=ConflictClause.FAIL, columnNames="uin,type,topicId,holmesCurCount,holmesTolCount")
 public class ConfessConvInfo
-  extends Entity
+  extends atmo
 {
   private static final String tableName = "confess_conv_info";
+  public int holmesCurCount;
+  public int holmesTolCount;
   public long lastread;
   public int topicId;
   public int type;

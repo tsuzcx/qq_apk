@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class Qworkflow$Text
-  extends MessageMicro
+  extends MessageMicro<Text>
 {
   public static final int CONTENT_SUMMARY = 3;
   public static final int CONTENT_TYPE_LINK = 1;

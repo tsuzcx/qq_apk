@@ -5,26 +5,34 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
+import com.tencent.mobileqq.pb.PBInt64Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_cmd0x97b$SimpleInfo
-  extends MessageMicro
+  extends MessageMicro<SimpleInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
+  public final PBBytesField bytes_desc = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_header_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_nick = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBInt64Field int64_like_total = PBField.initInt64(0L);
+  public final PBInt64Field int64_publish_feeds_total = PBField.initInt64(0L);
+  public oidb_cmd0x97b.SignIn msg_sign_in = new oidb_cmd0x97b.SignIn();
+  public final PBRepeatMessageField<oidb_cmd0x97b.MedalInfo> rpt_msg_medal_info = PBField.initRepeatMessage(oidb_cmd0x97b.MedalInfo.class);
   public final PBUInt32Field uint32_is_vip = PBField.initUInt32(0);
   
   static
   {
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24 }, new String[] { "bytes_nick", "bytes_header_url", "uint32_is_vip" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0) }, SimpleInfo.class);
+    ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 48, 56, 66, 90 }, new String[] { "bytes_nick", "bytes_header_url", "uint32_is_vip", "bytes_desc", "int64_like_total", "int64_publish_feeds_total", "rpt_msg_medal_info", "msg_sign_in" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), localByteStringMicro3, Long.valueOf(0L), Long.valueOf(0L), null, null }, SimpleInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x97b.oidb_cmd0x97b.SimpleInfo
  * JD-Core Version:    0.7.0.1
  */

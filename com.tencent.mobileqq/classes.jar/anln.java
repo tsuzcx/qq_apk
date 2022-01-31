@@ -1,34 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.webviewplugin.QzoneWanbaJsPlugin;
+import java.util.List;
 
-public class anln
-  extends BroadcastReceiver
+class anln
+  implements arok<List<anjy>>
 {
-  public anln(QzoneWanbaJsPlugin paramQzoneWanbaJsPlugin) {}
+  anln(anlk paramanlk) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(List<anjy> paramList)
   {
-    try
-    {
-      paramContext = paramIntent.getStringExtra("callback");
-      int i = paramIntent.getIntExtra("ret", 1);
-      QZLog.i("QzoneWanbaJsPlugin", "收到广播消息 callback=" + paramContext + ",ret=" + i);
-      this.a.a.callJs(paramContext, new String[] { "{'ret':" + i + "}" });
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      QZLog.e("QzoneWanbaJsPlugin", "callback error", paramContext);
-    }
+    this.a.a(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anln
  * JD-Core Version:    0.7.0.1
  */

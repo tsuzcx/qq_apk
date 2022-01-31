@@ -8,15 +8,22 @@ import com.tencent.smtt.utils.ReflectionUtils;
 import com.tencent.smtt.utils.TbsLog;
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 
 public class TbsExtensionFunctionManager
 {
   public static final String BUGLY_SWITCH_FILE_NAME = "bugly_switch.txt";
   public static final String COOKIE_SWITCH_FILE_NAME = "cookie_switch.txt";
+  public static final String DISABLE_GET_APK_VERSION_SWITCH_FILE_NAME = "disable_get_apk_version_switch.txt";
+  public static final String DISABLE_UNPREINIT = "disable_unpreinit.txt";
+  public static final String DISABLE_USE_HOST_BACKUP_CORE = "disable_use_host_backup_core.txt";
   private static final String LOGTAG = "TbsExtensionFunMana";
   public static final String SP_KEY_COOKIE_DB_VERSION = "cookie_db_version";
   public static final String SP_NAME_FOR_COOKIE = "cookie_compatiable";
   public static final int SWITCH_BYTE_COOKIE = 1;
+  public static final int SWITCH_BYTE_DISABLE_GET_APK_VERSION = 2;
+  public static final int SWITCH_BYTE_DISABLE_UNPREINIT = 4;
+  public static final int SWITCH_BYTE_DISABLE_USE_HOST_BACKUPCORE = 8;
   private static final String TBS_BUGLY_CLASS_NAME = "com.tencent.smtt.tbs.bugly.TBSBuglyManager";
   private static final String TBS_BUGLY_DEX_NAME = "tbs_bugly_dex.jar";
   private static final String TBS_BUGLY_INIT_METHOD_NAME = "initBugly";
@@ -45,27 +52,27 @@ public class TbsExtensionFunctionManager
     //   1: istore 4
     //   3: aload_0
     //   4: monitorenter
-    //   5: new 53	java/io/File
+    //   5: new 68	java/io/File
     //   8: dup
     //   9: aload_1
-    //   10: invokevirtual 59	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   10: invokevirtual 74	android/content/Context:getFilesDir	()Ljava/io/File;
     //   13: aload_2
-    //   14: invokespecial 62	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   14: invokespecial 77	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   17: astore_1
     //   18: aload_1
     //   19: ifnonnull +39 -> 58
-    //   22: ldc 14
-    //   24: new 64	java/lang/StringBuilder
+    //   22: ldc 23
+    //   24: new 79	java/lang/StringBuilder
     //   27: dup
-    //   28: invokespecial 65	java/lang/StringBuilder:<init>	()V
-    //   31: ldc 67
-    //   33: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   28: invokespecial 80	java/lang/StringBuilder:<init>	()V
+    //   31: ldc 82
+    //   33: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   36: aload_2
-    //   37: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   40: ldc 73
-    //   42: invokevirtual 71	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   45: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   48: invokestatic 83	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   37: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   40: ldc 88
+    //   42: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   45: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   48: invokestatic 98	com/tencent/smtt/utils/TbsLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   51: iload 4
     //   53: istore_3
     //   54: aload_0
@@ -75,10 +82,10 @@ public class TbsExtensionFunctionManager
     //   58: iload 4
     //   60: istore_3
     //   61: aload_1
-    //   62: invokevirtual 87	java/io/File:exists	()Z
+    //   62: invokevirtual 102	java/io/File:exists	()Z
     //   65: ifeq -11 -> 54
     //   68: aload_1
-    //   69: invokevirtual 90	java/io/File:isFile	()Z
+    //   69: invokevirtual 105	java/io/File:isFile	()Z
     //   72: istore 5
     //   74: iload 4
     //   76: istore_3
@@ -115,13 +122,13 @@ public class TbsExtensionFunctionManager
     //   1: istore_2
     //   2: aload_0
     //   3: monitorenter
-    //   4: getstatic 97	android/os/Build$VERSION:SDK_INT	I
+    //   4: getstatic 112	android/os/Build$VERSION:SDK_INT	I
     //   7: bipush 11
     //   9: if_icmplt +19 -> 28
     //   12: aload_1
-    //   13: ldc 20
+    //   13: ldc 29
     //   15: iconst_4
-    //   16: invokevirtual 101	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   16: invokevirtual 116	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
     //   19: astore_1
     //   20: aload_1
     //   21: ifnonnull +18 -> 39
@@ -130,15 +137,15 @@ public class TbsExtensionFunctionManager
     //   26: iload_2
     //   27: ireturn
     //   28: aload_1
-    //   29: ldc 20
+    //   29: ldc 29
     //   31: iconst_0
-    //   32: invokevirtual 101	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   32: invokevirtual 116	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
     //   35: astore_1
     //   36: goto -16 -> 20
     //   39: aload_1
-    //   40: ldc 17
+    //   40: ldc 26
     //   42: iconst_m1
-    //   43: invokeinterface 107 3 0
+    //   43: invokeinterface 122 3 0
     //   48: istore_2
     //   49: goto -25 -> 24
     //   52: astore_1
@@ -194,20 +201,21 @@ public class TbsExtensionFunctionManager
         }
       }
       label130:
-      Object localObject3 = TbsInstaller.getInstance().getTbsCoreShareDir(paramContext);
-      if (localObject3 == null)
+      Object localObject4 = TbsInstaller.getInstance().getTbsCoreShareDir(paramContext);
+      if (localObject4 == null)
       {
         TbsLog.i("TbsExtensionFunMana", "bugly init ,optDir is null");
       }
       else
       {
-        Object localObject4 = new File((String)localObject1, "tbs_bugly_dex.jar");
+        Object localObject3 = new File((String)localObject1, "tbs_bugly_dex.jar");
         try
         {
-          Object localObject2 = ((File)localObject4).getParent();
-          localObject4 = ((File)localObject4).getAbsolutePath();
+          Object localObject2 = ((File)localObject3).getParent();
           localObject3 = ((File)localObject3).getAbsolutePath();
-          localObject2 = new DexLoader((String)localObject2, paramContext, new String[] { localObject4 }, (String)localObject3, null).loadClass("com.tencent.smtt.tbs.bugly.TBSBuglyManager");
+          localObject4 = ((File)localObject4).getAbsolutePath();
+          Map localMap = QbSdk.getSettings();
+          localObject2 = new DexLoader((String)localObject2, paramContext, new String[] { localObject3 }, (String)localObject4, localMap).loadClass("com.tencent.smtt.tbs.bugly.TBSBuglyManager");
           int i = WebView.getTbsSDKVersion(paramContext);
           int j = WebView.getTbsCoreVersion(paramContext);
           ReflectionUtils.invokeStatic((Class)localObject2, "initBugly", new Class[] { Context.class, String.class, String.class, String.class }, new Object[] { paramContext, localObject1, String.valueOf(i), String.valueOf(j) });
@@ -280,7 +288,7 @@ public class TbsExtensionFunctionManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsExtensionFunctionManager
  * JD-Core Version:    0.7.0.1
  */

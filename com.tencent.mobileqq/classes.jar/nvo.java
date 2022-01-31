@@ -1,21 +1,23 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnErrorListener;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.MediaPlayerWrapper;
-
 public class nvo
-  implements MediaPlayer.OnErrorListener
 {
-  public nvo(MediaPlayerWrapper paramMediaPlayerWrapper, IMediaPlayer.OnErrorListener paramOnErrorListener) {}
+  public int a;
+  public boolean a = true;
+  public int b;
+  public boolean b = true;
+  public int c;
+  public boolean c = true;
+  public int d;
+  public boolean d;
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public nvo()
   {
-    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnErrorListener.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperMediaPlayerWrapper, paramInt1, paramInt2);
+    this.jdField_d_of_type_Boolean = true;
+    this.jdField_d_of_type_Int = 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nvo
  * JD-Core Version:    0.7.0.1
  */

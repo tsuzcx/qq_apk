@@ -1,142 +1,150 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.app.AppRuntime;
-import mqq.manager.VerifyDevLockManager.NotifyType;
-import mqq.manager.VerifyDevLockManager.VerifyDevLockObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.mp.mobileqq_mp.JSApiWebServerResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import mqq.observer.BusinessObserver;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class rsz
-  extends VerifyDevLockManager.VerifyDevLockObserver
+class rsz
+  implements BusinessObserver
 {
-  public rsz(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
+  rsz(rsv paramrsv, String paramString) {}
   
-  private void a(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.c();
-    if (paramInt2 == 0)
+    Object localObject1;
+    if (paramBoolean)
     {
-      if (QLog.isColorLevel())
+      localObject1 = paramBundle.getByteArray("data");
+      if (localObject1 != null) {
+        paramBundle = new mobileqq_mp.JSApiWebServerResponse();
+      }
+    }
+    for (;;)
+    {
+      try
       {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvVerifyCode uin:" + paramString + " seq=" + paramInt1);
-        if (paramDevlockInfo != null) {
-          QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvVerifyCode info.TimeLimit:" + paramDevlockInfo.TimeLimit);
+        paramBundle.mergeFrom((byte[])localObject1);
+        localObject1 = (mobileqq_mp.RetInfo)paramBundle.ret_info.get();
+        Object localObject2 = paramBundle.body.get();
+        int i = ((mobileqq_mp.RetInfo)localObject1).ret_code.get();
+        paramBundle = ((mobileqq_mp.RetInfo)localObject1).err_info.get();
+        localObject1 = new JSONObject();
+        paramInt = i;
+        if (i == 0)
+        {
+          localObject2 = new JSONObject((String)localObject2);
+          i = ((JSONObject)localObject2).optInt("ret");
+          paramBundle = ((JSONObject)localObject2).optString("msg");
+          this.jdField_a_of_type_Rsv.k = ((JSONObject)localObject2).optString("puin");
+          if (i == -1)
+          {
+            paramInt = ((JSONObject)localObject2).optInt("refuseSec");
+            if (paramInt > 0)
+            {
+              this.jdField_a_of_type_Rsv.jdField_a_of_type_Boolean = true;
+              this.jdField_a_of_type_Rsv.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1000, paramInt * 1000);
+            }
+          }
+          localObject2 = ((JSONObject)localObject2).optJSONArray("bitmap");
+          Object localObject3 = new ArrayList();
+          if (localObject2 != null)
+          {
+            paramInt = 0;
+            if (paramInt < ((JSONArray)localObject2).length())
+            {
+              ((ArrayList)localObject3).add(Integer.valueOf(((JSONArray)localObject2).getInt(paramInt)));
+              paramInt += 1;
+              continue;
+            }
+          }
+          localObject2 = new ArrayList();
+          localObject3 = ((ArrayList)localObject3).iterator();
+          if (((Iterator)localObject3).hasNext())
+          {
+            localObject4 = rsv.a(((Integer)((Iterator)localObject3).next()).intValue());
+            int j = localObject4.length;
+            paramInt = 0;
+            if (paramInt < j)
+            {
+              ((ArrayList)localObject2).add(Integer.valueOf(localObject4[paramInt]));
+              paramInt += 1;
+              continue;
+            }
+            continue;
+          }
+          localObject3 = new ArrayList();
+          Object localObject4 = (ArrayList)rsv.b.get(this.jdField_a_of_type_JavaLangString);
+          paramInt = 0;
+          if (paramInt < ((ArrayList)localObject2).size())
+          {
+            String str = (String)rsv.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+            if ((str != null) && (((Integer)((ArrayList)localObject2).get(paramInt)).intValue() == 1) && (rsv.a((ArrayList)localObject4, str))) {
+              ((ArrayList)localObject3).add(str);
+            }
+          }
+          else
+          {
+            rsv.jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_JavaLangString, localObject3);
+            rsv.b.remove(this.jdField_a_of_type_JavaLangString);
+            localObject2 = new ArrayList();
+            if (localObject4 != null)
+            {
+              paramInt = 0;
+              if (paramInt < ((ArrayList)localObject4).size())
+              {
+                if (rsv.a((ArrayList)localObject3, (String)((ArrayList)localObject4).get(paramInt))) {
+                  break label583;
+                }
+                ((ArrayList)localObject2).add(Integer.valueOf(paramInt));
+                break label583;
+              }
+            }
+            ((JSONObject)localObject1).put("forbidden", new JSONArray((Collection)localObject2));
+            paramInt = i;
+          }
+        }
+        else
+        {
+          ((JSONObject)localObject1).put("msg", paramBundle);
+          ((JSONObject)localObject1).put("retCode", paramInt);
+          paramBundle = ((JSONObject)localObject1).toString();
+          if (this.jdField_a_of_type_Rsv.m != null) {
+            this.jdField_a_of_type_Rsv.callJs(this.jdField_a_of_type_Rsv.m, new String[] { paramBundle });
+          }
+          return;
         }
       }
-      setSeq(paramInt1);
-      paramInt2 = 60;
-      paramInt1 = paramInt2;
-      if (paramDevlockInfo != null)
+      catch (InvalidProtocolBufferMicroException paramBundle)
       {
-        paramInt1 = paramInt2;
-        if (paramDevlockInfo.TimeLimit > 0) {
-          paramInt1 = paramDevlockInfo.TimeLimit;
-        }
+        paramBundle.printStackTrace();
+        return;
       }
-      AuthDevVerifyCodeActivity.a(this.a, paramInt1);
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvVerifyCode ret = " + paramInt2 + " seq=" + paramInt1);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvVerifyCode  errMsg:" + paramErrMsg.getMessage() + " seq=" + paramInt1);
+      catch (JSONException paramBundle)
+      {
+        paramBundle.printStackTrace();
+        return;
       }
+      paramInt += 1;
+      continue;
+      label583:
+      paramInt += 1;
     }
-    if ((paramInt2 == 9) || (paramInt2 == 155))
-    {
-      this.a.setResult(-1);
-      this.a.finish();
-    }
-    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
-    {
-      this.a.a(paramErrMsg.getMessage(), 1);
-      return;
-    }
-    paramString = this.a.getString(2131434231);
-    this.a.a(paramString, 1);
-  }
-  
-  private void b(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
-  {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    AuthDevVerifyCodeActivity.a(this.a);
-    if (paramInt2 == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvCheckSMSResult uin:" + paramString + " seq=" + paramInt1);
-      }
-      setSeq(paramInt1);
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvCheckSMSResult ret = " + paramInt2 + " seq=" + paramInt1);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvCheckSMSResult  errMsg:" + paramErrMsg.getMessage() + " seq=" + paramInt1);
-      }
-    }
-    if ((paramInt2 == 9) || (paramInt2 == 155))
-    {
-      this.a.setResult(-1);
-      this.a.finish();
-    }
-    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
-    {
-      this.a.a(paramErrMsg.getMessage(), 1);
-      return;
-    }
-    paramString = this.a.getString(2131434231);
-    this.a.a(paramString, 1);
-  }
-  
-  public void onRecvNotice(VerifyDevLockManager.NotifyType paramNotifyType, int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg, DevlockInfo paramDevlockInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onRecvNotice uin:" + paramString + " seq=" + paramInt1);
-    }
-    if (paramNotifyType == VerifyDevLockManager.NotifyType.NOTIFY_REFRESH_SMS_RESULT)
-    {
-      a(paramInt1, paramString, paramInt2, paramErrMsg, paramDevlockInfo);
-      return;
-    }
-    b(paramInt1, paramString, paramInt2, paramErrMsg, paramDevlockInfo);
-  }
-  
-  public void onVerifyClose(int paramInt1, String paramString, int paramInt2, ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onVerifyClose ret = " + paramInt2);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onVerifyClose  errMsg:" + paramErrMsg.getMessage());
-      }
-    }
-    if (this.a.isFinishing())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "onVerifyClose activity is finishing.");
-      }
-      return;
-    }
-    this.a.c();
-    AuthDevVerifyCodeActivity.a(this.a);
-    this.a.setResult(-1);
-    this.a.finish();
-    EquipmentLockImpl.a().a((AppRuntime)AuthDevVerifyCodeActivity.a(this.a).get(), this.a, paramString, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rsz
  * JD-Core Version:    0.7.0.1
  */

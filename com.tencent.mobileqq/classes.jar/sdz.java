@@ -1,28 +1,24 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
+import java.util.Comparator;
 
-public class sdz
-  implements Animation.AnimationListener
+class sdz
+  implements Comparator<sdg>
 {
-  public sdz(ChatHistory paramChatHistory, View paramView1, View paramView2) {}
+  sdz(sdy paramsdy) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(sdg paramsdg1, sdg paramsdg2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a.show();
-    this.jdField_a_of_type_AndroidViewView.setAnimation(null);
-    this.b.setVisibility(8);
+    if (paramsdg1.b == paramsdg2.b) {
+      return 0;
+    }
+    if (paramsdg1.b > paramsdg2.b) {
+      return 1;
+    }
+    return -1;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sdz
  * JD-Core Version:    0.7.0.1
  */

@@ -9,8 +9,8 @@ public final class ReportRsp
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList cache_headers;
-  public ArrayList headers;
+  static ArrayList<ReportHeader> cache_headers;
+  public ArrayList<ReportHeader> headers;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {

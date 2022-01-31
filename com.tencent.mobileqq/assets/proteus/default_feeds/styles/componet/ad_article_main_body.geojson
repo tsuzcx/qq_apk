@@ -1,0 +1,20 @@
+{
+    "view_type":"UILabel",
+    "view_id":"id_article_main_body",
+    "margin_left":"8",
+    "margin_top":"6.5",
+    "margin_bottom":"2",
+    "height":{
+        "type":"wrap_content"
+    },
+    "width":{
+        "type":"relative",
+        "value":"359"
+    },
+    "attributes":{
+        "setText:lineSpace:":["$article_main_body_text","3"],
+        "setTextColorString:":"$article_main_body_text_color",
+        "setFontSizeString:":"14",
+        "setNumberOfLinesString:":"3"
+    }
+}

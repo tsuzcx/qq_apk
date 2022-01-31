@@ -1,58 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.common.WeishiReportUtil;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.share.AVSchema;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
-public final class lnt
-  implements Runnable
+class lnt
+  implements DialogInterface.OnClickListener
 {
-  public lnt(int paramInt, String paramString1, long paramLong, String paramString2, String paramString3, String paramString4) {}
+  lnt(lns paramlns, long paramLong) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
-    localAttributeList.att_id.set(1);
-    localAttributeList.att_name.set("ExitType");
-    localAttributeList.att_value.set(WeishiReportUtil.a(this.jdField_a_of_type_Int));
-    localArrayList.add(localAttributeList);
-    localAttributeList = new oidb_cmd0x80a.AttributeList();
-    localAttributeList.att_id.set(2);
-    localAttributeList.att_name.set("FolderStatus");
-    localAttributeList.att_value.set(String.valueOf(this.jdField_a_of_type_JavaLangString));
-    localArrayList.add(localAttributeList);
-    localAttributeList = new oidb_cmd0x80a.AttributeList();
-    localAttributeList.att_id.set(3);
-    localAttributeList.att_name.set("Time");
-    localAttributeList.att_value.set(String.valueOf(ReadinjoySPEventReport.a(this.jdField_a_of_type_Long) / 1000L));
-    localArrayList.add(localAttributeList);
-    if (!"1".equals(this.jdField_a_of_type_JavaLangString))
-    {
-      localAttributeList = new oidb_cmd0x80a.AttributeList();
-      localAttributeList.att_id.set(5);
-      localAttributeList.att_name.set("StrategyID");
-      localAttributeList.att_value.set(this.b);
-      localArrayList.add(localAttributeList);
-      localAttributeList = new oidb_cmd0x80a.AttributeList();
-      localAttributeList.att_id.set(6);
-      localAttributeList.att_name.set("AlgorithmID");
-      localAttributeList.att_value.set(this.c);
-      localArrayList.add(localAttributeList);
-      localAttributeList = new oidb_cmd0x80a.AttributeList();
-      localAttributeList.att_id.set(7);
-      localAttributeList.att_name.set("costtime");
-      localAttributeList.att_value.set("" + this.d);
-      localArrayList.add(localAttributeList);
+    if (this.jdField_a_of_type_Lns.jdField_a_of_type_ComTencentAvShareAVSchema.a("checkQAVPermission.callback", this.jdField_a_of_type_Long)) {
+      return;
     }
-    PublicAccountUtil.a(26, "ExitWS", localArrayList);
+    if (paramInt == 1)
+    {
+      this.jdField_a_of_type_Lns.jdField_a_of_type_ComTencentAvShareAVSchema.b(this.jdField_a_of_type_Long, this.jdField_a_of_type_Lns.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    ChatActivityUtils.a(this.jdField_a_of_type_Lns.jdField_a_of_type_ComTencentAvShareAVSchema.getActivity(), true, new lnu(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lnt
  * JD-Core Version:    0.7.0.1
  */

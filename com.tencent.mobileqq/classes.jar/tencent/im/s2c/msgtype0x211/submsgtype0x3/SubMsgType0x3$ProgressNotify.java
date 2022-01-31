@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SubMsgType0x3$ProgressNotify
-  extends MessageMicro
+  extends MessageMicro<ProgressNotify>
 {
   public static final int BYTES_UUID_FIELD_NUMBER = 2;
   public static final int UINT32_AVERAGE_SPEED_FIELD_NUMBER = 4;

@@ -1,26 +1,29 @@
-import android.os.Handler;
-import android.widget.ImageView;
-import android.widget.TextView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
 
 public class anrx
-  implements Runnable
+  implements Animator.AnimatorListener
 {
-  public anrx(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public anrx(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    QIMEffectCameraCaptureUnit.b(this.a).setVisibility(8);
-    QIMEffectCameraCaptureUnit.b(this.a).setEnabled(false);
-    QIMEffectCameraCaptureUnit.a(this.a, 0);
-    QIMEffectCameraCaptureUnit.a(this.a, QIMEffectCameraCaptureUnit.a(this.a));
-    QIMEffectCameraCaptureUnit.f(this.a).setVisibility(0);
-    this.a.a.postDelayed(QIMEffectCameraCaptureUnit.a(this.a), 500L);
+    this.a.n();
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.n();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anrx
  * JD-Core Version:    0.7.0.1
  */

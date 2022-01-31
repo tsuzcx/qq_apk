@@ -1,46 +1,12 @@
-import android.app.Activity;
-import android.content.Context;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-
-public class vew
-  extends ClickableSpan
+class vew
 {
-  private WeakReference a;
-  private WeakReference b;
-  
-  public vew(QQAppInterface paramQQAppInterface, Context paramContext)
-  {
-    this.a = new WeakReference(paramQQAppInterface);
-    this.b = new WeakReference(paramContext);
-  }
-  
-  public void onClick(View paramView)
-  {
-    paramView = (QQAppInterface)this.a.get();
-    if (((this.b.get() instanceof Activity)) && (paramView != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("GrayTipsItemBuilder", 2, "handleHotChatToSeeTip span click ");
-      }
-      HotChatManager.a(null, false);
-    }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(Color.rgb(26, 144, 240));
-  }
+  int jdField_a_of_type_Int;
+  veu jdField_a_of_type_Veu;
+  vev jdField_a_of_type_Vev;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vew
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,29 @@
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView.16.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.viola.core.ViolaEnvironment;
 
-class rnc
-  implements Runnable
+public class rnc
+  implements rnl
 {
-  rnc(rnb paramrnb, String paramString) {}
+  public rnc(ViolaBaseView paramViolaBaseView, boolean paramBoolean, long paramLong) {}
   
-  public void run()
+  public void a() {}
+  
+  public void a(String paramString)
   {
-    ((FriendListHandler)this.jdField_a_of_type_Rnb.a.app.a(1)).a(this.jdField_a_of_type_JavaLangString, 0, 3999, "", true, false, -1L);
+    if (this.jdField_a_of_type_Boolean) {
+      ViolaBaseView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaViewViolaBaseView).addReportData(ViolaEnvironment.TIME_BIZ_JS_OFFLINE, Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    }
+    if (QLog.isColorLevel()) {
+      ThreadManager.post(new ViolaBaseView.16.1(this, paramString), 8, null, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rnc
  * JD-Core Version:    0.7.0.1
  */

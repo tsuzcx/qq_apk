@@ -1,25 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
 
-public class rmw
-  implements DialogInterface.OnClickListener
+class rmw
+  implements nwb
 {
-  public rmw(AddFriendLogicActivity paramAddFriendLogicActivity) {}
+  rmw(rmt paramrmt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (AddFriendLogicActivity.d(this.a) == 1)
-    {
-      this.a.finish();
+    if (rmt.a(this.a) != null) {
+      rmt.a(this.a).a();
+    }
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {
       return;
     }
-    AddFriendLogicActivity.a(this.a);
+    this.a.a(true);
+    rmt.a(this.a).c();
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    rmt.a(this.a).e();
+    this.a.a(false);
+    rmt.a(this.a).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rmw
  * JD-Core Version:    0.7.0.1
  */

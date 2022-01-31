@@ -1,22 +1,31 @@
-import android.view.ViewStub;
-import com.tencent.mobileqq.activity.main.CommonLoadingView;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class aeit
-  implements Runnable
+class aeit
+  implements azna
 {
-  public aeit(LebaWithFeeds paramLebaWithFeeds) {}
+  aeit(aeis paramaeis) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString)
   {
-    ViewStub localViewStub = (ViewStub)this.a.a(2131364899);
-    ((CommonLoadingView)this.a.a(2131363833)).setVisibility(8);
-    localViewStub.setVisibility(0);
+    if ((paramBoolean) && (!TextUtils.isEmpty(this.a.a.a)) && (this.a.a.a.equals(paramString)))
+    {
+      paramString = (acyp)this.a.a(23);
+      if (paramString != null) {
+        paramString.a(true);
+      }
+    }
+    do
+    {
+      return;
+      paramString = (acyp)this.a.a(23);
+    } while (paramString == null);
+    paramString.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeit
  * JD-Core Version:    0.7.0.1
  */

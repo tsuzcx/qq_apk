@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.statistics;
 
+import atmo;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="mTag, mDetail")
 public class Reporting
-  extends Entity
+  extends atmo
   implements Cloneable
 {
   public int mCount;

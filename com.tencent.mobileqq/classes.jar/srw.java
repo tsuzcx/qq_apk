@@ -1,24 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import com.tencent.mobileqq.app.FontSettingManager;
-
 public class srw
-  implements View.OnClickListener
 {
-  public srw(FontSettingActivity paramFontSettingActivity) {}
+  @vlq(a="unionID")
+  public String a;
+  @vlq(a="feedID")
+  public String b;
+  @vlq(a="vid")
+  public String c;
+  @vlq(a="fwReason")
+  public String d;
+  @vlq(a="isNewFw")
+  public String e;
+  public String f;
+  public String g;
   
-  public void onClick(View paramView)
+  public boolean a()
   {
-    if (FontSettingManager.a(this.a, FontSettingActivity.a(this.a), true)) {
-      FontSettingManager.a();
-    }
-    this.a.finish();
+    return "1".equals(this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     srw
  * JD-Core Version:    0.7.0.1
  */

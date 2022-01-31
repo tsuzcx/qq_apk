@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Handler;
-import android.os.IBinder;
 import android.os.Looper;
 import com.tencent.mobileqq.pluginsdk.ipc.PluginRemoteService.Sub1;
 import com.tencent.mobileqq.pluginsdk.ipc.PluginRemoteService.Sub2;
@@ -15,10 +14,10 @@ import java.util.LinkedList;
 
 public class PluginRemoteProcessor
 {
-  private static PluginRemoteProcessor d;
-  private volatile boolean a;
-  private LinkedList b = new LinkedList();
-  private Handler c;
+  private static PluginRemoteProcessor sInstance;
+  private Handler mHandler;
+  private volatile boolean mProcessing;
+  private LinkedList<PluginRemoteProcessor.WrappedServiceConnection> mQueue = new LinkedList();
   
   private PluginRemoteProcessor()
   {
@@ -31,19 +30,32 @@ public class PluginRemoteProcessor
     if (localLooper == null) {
       localObject = Looper.getMainLooper();
     }
-    this.c = new Handler((Looper)localObject);
+    this.mHandler = new Handler((Looper)localObject);
   }
   
-  private void a(a parama)
+  public static PluginRemoteProcessor get()
+  {
+    if (sInstance == null) {}
+    try
+    {
+      if (sInstance == null) {
+        sInstance = new PluginRemoteProcessor();
+      }
+      return sInstance;
+    }
+    finally {}
+  }
+  
+  private void processInner(PluginRemoteProcessor.WrappedServiceConnection paramWrappedServiceConnection)
   {
     Object localObject = null;
-    switch (a.c(parama))
+    switch (PluginRemoteProcessor.WrappedServiceConnection.access$200(paramWrappedServiceConnection))
     {
     }
     for (;;)
     {
       if (QLog.isColorLevel()) {
-        QLog.i("plugin_tag", 2, "processInner, " + parama + ", " + localObject);
+        QLog.i("plugin_tag", 2, "processInner, " + paramWrappedServiceConnection + ", " + localObject);
       }
       if (localObject != null) {
         break;
@@ -53,59 +65,46 @@ public class PluginRemoteProcessor
       continue;
       localObject = PluginRemoteService.Sub2.class;
     }
-    Context localContext = a.b(parama).getApplicationContext();
+    Context localContext = PluginRemoteProcessor.WrappedServiceConnection.access$100(paramWrappedServiceConnection).getApplicationContext();
     Intent localIntent = new Intent(localContext, (Class)localObject);
-    localIntent.putExtra("key_binder_type", a.c(parama));
+    localIntent.putExtra("key_binder_type", PluginRemoteProcessor.WrappedServiceConnection.access$200(paramWrappedServiceConnection));
     try
     {
-      localContext.bindService(localIntent, parama, 1);
+      localContext.bindService(localIntent, paramWrappedServiceConnection, 1);
       return;
     }
     catch (SecurityException localSecurityException)
     {
       QLog.i("plugin_tag", 1, "processInner", localSecurityException);
-      parama.onServiceDisconnected(new ComponentName(a.b(parama), ((Class)localObject).getCanonicalName()));
+      paramWrappedServiceConnection.onServiceDisconnected(new ComponentName(PluginRemoteProcessor.WrappedServiceConnection.access$100(paramWrappedServiceConnection), ((Class)localObject).getCanonicalName()));
     }
   }
   
-  private void a(a parama, int paramInt)
+  private void processInnerDelay(PluginRemoteProcessor.WrappedServiceConnection paramWrappedServiceConnection, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("plugin_tag", 2, "processInnerDelay. " + paramInt + ", " + parama);
+      QLog.i("plugin_tag", 2, "processInnerDelay. " + paramInt + ", " + paramWrappedServiceConnection);
     }
-    this.c.postDelayed(new m(this, parama), paramInt);
-  }
-  
-  public static PluginRemoteProcessor get()
-  {
-    if (d == null) {}
-    try
-    {
-      if (d == null) {
-        d = new PluginRemoteProcessor();
-      }
-      return d;
-    }
-    finally {}
+    this.mHandler.postDelayed(new PluginRemoteProcessor.1(this, paramWrappedServiceConnection), paramInt);
   }
   
   public void cancel(ServiceConnection paramServiceConnection)
   {
-    synchronized (this.b)
+    synchronized (this.mQueue)
     {
-      Iterator localIterator = this.b.iterator();
+      Iterator localIterator = this.mQueue.iterator();
       for (;;)
       {
-        a locala;
+        PluginRemoteProcessor.WrappedServiceConnection localWrappedServiceConnection;
         if (localIterator.hasNext()) {
-          locala = (a)localIterator.next();
+          localWrappedServiceConnection = (PluginRemoteProcessor.WrappedServiceConnection)localIterator.next();
         }
         try
         {
-          if (a.a(locala) != paramServiceConnection) {
+          if (PluginRemoteProcessor.WrappedServiceConnection.access$000(localWrappedServiceConnection) != paramServiceConnection) {
             continue;
           }
-          a.b(locala).unbindService(locala);
+          PluginRemoteProcessor.WrappedServiceConnection.access$100(localWrappedServiceConnection).unbindService(localWrappedServiceConnection);
           return;
         }
         catch (Throwable localThrowable)
@@ -121,80 +120,20 @@ public class PluginRemoteProcessor
     if (QLog.isColorLevel()) {
       QLog.i("plugin_tag", 2, "PluginRemoteProcessor.process, " + paramInt);
     }
-    paramServiceConnection = new a(paramServiceConnection, ???, paramInt);
-    if (this.a)
+    paramServiceConnection = new PluginRemoteProcessor.WrappedServiceConnection(this, paramServiceConnection, ???, paramInt);
+    if (this.mProcessing)
     {
       if (QLog.isColorLevel()) {
         QLog.i("plugin_tag", 2, "queue");
       }
-      synchronized (this.b)
+      synchronized (this.mQueue)
       {
-        this.b.offer(paramServiceConnection);
+        this.mQueue.offer(paramServiceConnection);
         return;
       }
     }
-    this.a = true;
-    a(paramServiceConnection, 0);
-  }
-  
-  private class a
-    implements ServiceConnection
-  {
-    private ServiceConnection b;
-    private Context c;
-    private int d;
-    
-    public a(ServiceConnection paramServiceConnection, Context paramContext, int paramInt)
-    {
-      this.b = paramServiceConnection;
-      this.c = paramContext;
-      this.d = paramInt;
-    }
-    
-    public void onServiceConnected(ComponentName arg1, IBinder paramIBinder)
-    {
-      do
-      {
-        try
-        {
-          this.c.getApplicationContext().unbindService(this);
-          if (QLog.isColorLevel()) {
-            QLog.i("plugin_tag", 2, "onServiceConnected, " + this);
-          }
-          this.b.onServiceConnected(???, paramIBinder);
-        }
-        catch (Exception localException)
-        {
-          synchronized (PluginRemoteProcessor.a(PluginRemoteProcessor.this))
-          {
-            do
-            {
-              paramIBinder = (a)PluginRemoteProcessor.a(PluginRemoteProcessor.this).poll();
-              if (paramIBinder == null) {
-                break;
-              }
-              if (QLog.isColorLevel()) {
-                QLog.i("plugin_tag", 2, "continue process");
-              }
-              PluginRemoteProcessor.a(PluginRemoteProcessor.this, paramIBinder, 300);
-              return;
-              localException = localException;
-            } while (!QLog.isColorLevel());
-            QLog.i("plugin_tag", 2, "unbindService, " + this);
-          }
-        }
-        PluginRemoteProcessor.a(PluginRemoteProcessor.this, false);
-      } while (!QLog.isColorLevel());
-      QLog.i("plugin_tag", 2, "queue empty");
-    }
-    
-    public void onServiceDisconnected(ComponentName paramComponentName)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("plugin_tag", 2, "onServiceDisconnected, " + this);
-      }
-      this.b.onServiceDisconnected(paramComponentName);
-    }
+    this.mProcessing = true;
+    processInnerDelay(paramServiceConnection, 0);
   }
 }
 

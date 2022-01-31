@@ -1,17 +1,56 @@
-import com.tencent.biz.webviewplugin.QzoneWebViewOfflinePlugin;
-import cooperation.qzone.webviewplugin.QzoneZipCacheHelperCallBack;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBig;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class phj
-  implements QzoneZipCacheHelperCallBack
+  extends pez
 {
-  public phj(QzoneWebViewOfflinePlugin paramQzoneWebViewOfflinePlugin, String paramString1, String paramString2, String paramString3) {}
-  
-  public void onResult(boolean paramBoolean)
+  public phj(Context paramContext, azwg paramazwg, qoe paramqoe)
   {
-    QzoneWebViewOfflinePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginQzoneWebViewOfflinePlugin, paramBoolean, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    super(paramContext, paramazwg, paramqoe);
   }
   
-  public void onResultOfNativeRequest(boolean paramBoolean, String paramString1, String paramString2) {}
+  public pez a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return g().h();
+  }
+  
+  public pez d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
+    }
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(aciy.a(220.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
+    if ((this.jdField_a_of_type_Pey != null) && ((this.jdField_a_of_type_Pey instanceof ComponentContentBig))) {
+      localLinearLayout.addView((ComponentContentBig)this.jdField_a_of_type_Pey);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
+    }
+    a(localLinearLayout);
+    return this;
+  }
+  
+  public pez e()
+  {
+    return null;
+  }
+  
+  public pez g()
+  {
+    this.jdField_a_of_type_Pey = new ComponentContentBig(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
+  
+  public pez o()
+  {
+    super.o();
+    return this;
+  }
 }
 
 

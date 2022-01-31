@@ -1,23 +1,21 @@
-import android.content.Context;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.video.decode.ShortVideoSoLoad;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class otv
+class otv
+  implements ViewBase.OnClickListener
 {
-  public static String a(Context paramContext)
-  {
-    if (Build.VERSION.SDK_INT >= 16) {}
-    for (String str = "trim_process_pie";; str = "trim_process_pic") {
-      return ShortVideoSoLoad.getShortVideoSoPath(paramContext) + str;
-    }
-  }
+  otv(otu paramotu, opw paramopw, Container paramContainer) {}
   
-  public static String b(Context paramContext)
+  public void onClick(ViewBase paramViewBase)
   {
-    paramContext = ShortVideoSoLoad.getShortVideoSoPath(paramContext);
-    String str = VideoEnvironment.a();
-    return paramContext + str;
+    paramViewBase = this.jdField_a_of_type_Opw.a();
+    String str = paramViewBase.mSocialFeedInfo.a.f;
+    obz.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str, null);
+    qoe.a(paramViewBase, (int)paramViewBase.mChannelID);
+    rvf.a(paramViewBase);
   }
 }
 

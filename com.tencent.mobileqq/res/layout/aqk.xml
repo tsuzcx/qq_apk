@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="#ffececec" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/is" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.extendfriend.pulltorefresh.extras.PullToRefreshRecyclerView android:id="@id/g5m" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" ptf:ptfHeaderBackground="@color/ajr" ptf:ptfHeaderSubTextColor="#ffa9a9a9" ptf:ptfHeaderTextColor="#ffa9a9a9" ptf:ptfMode="abm" xmlns:ptf="http://schemas.android.com/apk/res-auto" />
+        <RelativeLayout android:layout_gravity="center" android:id="@id/aqh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:id="@id/bwx" android:layout_width="136.0dip" android:layout_height="145.0dip" android:layout_centerInParent="true" />
+            <TextView android:textSize="14.0dip" android:textColor="#80000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="17.0dip" android:text="@string/ql2" android:layout_below="@id/bwx" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </FrameLayout>
+</LinearLayout>

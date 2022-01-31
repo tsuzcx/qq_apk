@@ -1,24 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.ui.CustomMenuBar;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
+import java.util.List;
 
 public class vwg
-  implements View.OnClickListener
+  implements vwl
 {
-  public vwg(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
+  public vwg(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
-    this.a.a.setVisibility(8);
-    this.a.b.setVisibility(0);
+    if ((paramBoolean) && ((FollowedRecommendBannerView.a(this.a) == null) || (FollowedRecommendBannerView.a(this.a).a() == null) || (paramInt >= FollowedRecommendBannerView.a(this.a).a().size()))) {
+      return;
+    }
+    wye.a(FollowedRecommendBannerView.a(this.a), "auth_person", "reco_follow", 0, 0, new String[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vwg
  * JD-Core Version:    0.7.0.1
  */

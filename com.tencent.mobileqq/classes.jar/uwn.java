@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
+import com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView;
+import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
 
 public class uwn
+  implements tsr
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public boolean b = false;
-  public boolean c;
+  public uwn(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
   
-  public uwn(DoodleMsgLayout paramDoodleMsgLayout)
+  public boolean a(tso paramtso, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Boolean = false;
+    LocalVideoSelectActivity.a(this.a).a();
+    LocalVideoSelectActivity.a(this.a).a(true);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uwn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity.main;
 
+import afqf;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
@@ -8,7 +9,7 @@ import android.widget.FrameLayout;
 public class CommonLoadingView
   extends FrameLayout
 {
-  private CommonLoadingView.OnFirstDrawListener jdField_a_of_type_ComTencentMobileqqActivityMainCommonLoadingView$OnFirstDrawListener;
+  private afqf jdField_a_of_type_Afqf;
   private boolean jdField_a_of_type_Boolean = true;
   
   public CommonLoadingView(Context paramContext)
@@ -32,15 +33,15 @@ public class CommonLoadingView
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityMainCommonLoadingView$OnFirstDrawListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityMainCommonLoadingView$OnFirstDrawListener.d();
+      if (this.jdField_a_of_type_Afqf != null) {
+        this.jdField_a_of_type_Afqf.c();
       }
     }
   }
   
-  public void setOnFirstDrawListener(CommonLoadingView.OnFirstDrawListener paramOnFirstDrawListener)
+  public void setOnFirstDrawListener(afqf paramafqf)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityMainCommonLoadingView$OnFirstDrawListener = paramOnFirstDrawListener;
+    this.jdField_a_of_type_Afqf = paramafqf;
   }
 }
 

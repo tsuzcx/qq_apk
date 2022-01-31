@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import com.tencent.mobileqq.widget.MessageProgressView;
 
-class suj
-  implements Runnable
+public class suj
+  implements bbjy
 {
-  suj(sui paramsui) {}
+  public suj(StoryMsgNodeFrameLayout paramStoryMsgNodeFrameLayout) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    ReportController.b(this.a.a.a.app, "CliOper", "", "", "P_prof", "Prof_copy", ProfileActivity.a(this.a.a.a.a.a.h), 0, Integer.toString(ProfileActivity.a(this.a.a.a.a.a)), "", "", "");
+    this.a.a.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     suj
  * JD-Core Version:    0.7.0.1
  */

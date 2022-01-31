@@ -1,21 +1,22 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.database.corrupt.DBFixDialogUI;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class acdy
-  implements DialogInterface.OnKeyListener
+  implements DialogInterface.OnClickListener
 {
-  public acdy(DBFixDialogUI paramDBFixDialogUI) {}
+  public acdy(UpgradeActivity paramUpgradeActivity) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return (paramInt == 84) || (paramInt == 4);
+    bcds.b("qqBaseActivity", bcat.a(10010, 1, 2, 200));
+    bcar.a().a(17, bcat.a(10010, 1, 2, 200));
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acdy
  * JD-Core Version:    0.7.0.1
  */

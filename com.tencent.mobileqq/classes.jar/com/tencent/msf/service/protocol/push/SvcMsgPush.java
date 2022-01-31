@@ -9,9 +9,9 @@ public final class SvcMsgPush
   extends JceStruct
 {
   static ArrayList cache_vecMsgInfos;
-  public byte cMore;
-  public int iUnread;
-  public ArrayList vecMsgInfos;
+  public byte cMore = 0;
+  public int iUnread = 0;
+  public ArrayList vecMsgInfos = null;
   
   public SvcMsgPush() {}
   

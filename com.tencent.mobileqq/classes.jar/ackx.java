@@ -1,63 +1,43 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmojiListenerManager;
-import com.tencent.mobileqq.emoticon.EmojiManager;
-import com.tencent.mobileqq.emoticon.EmotionJsonUtils;
-import com.tencent.mobileqq.vas.VasReportUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.ThemeAnimStrategy.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class ackx
-  extends DownloadListener
+  implements ackp
 {
-  public ackx(EmojiManager paramEmojiManager, String paramString1, String paramString2)
+  private PreloadManager jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  
+  public ackx(QQAppInterface paramQQAppInterface)
   {
-    super(paramString1, paramString2);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(151));
+    }
   }
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void a() {}
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    Bundle localBundle;
-    EmoticonPackage localEmoticonPackage;
-    try
-    {
-      localBundle = paramDownloadTask.a();
-      localEmoticonPackage = (EmoticonPackage)localBundle.getSerializable("emoticonPackage");
-      if (localEmoticonPackage == null) {
-        return;
-      }
-      if ((QLog.isColorLevel()) && (localEmoticonPackage != null)) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "jsonDownloadListener : onDone epid = " + localEmoticonPackage.epId + ";task status = " + paramDownloadTask.a());
-      }
-      if (paramDownloadTask.a() != 3) {
-        break label189;
-      }
-      boolean bool = localBundle.getBoolean("isSmallEmotion");
-      String str = EmotionJsonUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDownloadTask, bool);
-      if (str != null)
-      {
-        QLog.e(this.a.jdField_a_of_type_JavaLangString, 1, "jsonDownloadListener : parse json error : = " + str);
-        this.a.a(localEmoticonPackage, 11008, 0L, paramDownloadTask.d);
-        return;
-      }
-    }
-    catch (Exception paramDownloadTask)
-    {
-      QLog.e(this.a.jdField_a_of_type_JavaLangString, 1, "json download fail", paramDownloadTask);
+    if (paramRedPacketInfo == null) {
       return;
     }
-    EmojiManager.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a(localEmoticonPackage, 0, localBundle);
-    return;
-    label189:
-    QLog.e(this.a.jdField_a_of_type_JavaLangString, 1, "jsonDownloadListener : ondone error , reportCode = " + paramDownloadTask.a);
-    EmojiManager.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a(localEmoticonPackage, -1, localBundle);
-    VasReportUtils.a("emotionType", "emotionActionDownload", "3", localEmoticonPackage.epId, "", "", paramDownloadTask.a + "", "", "", "");
+    ThreadManager.post(new CustomizeStrategyFactory.ThemeAnimStrategy.1(this, paramRedPacketInfo), 5, null, true);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, aeav paramaeav)
+  {
+    if ((paramRedPacketInfo != null) && ((paramaeav instanceof aeba))) {
+      paramRedPacketInfo.animInfo = ((aeba)paramaeav).a;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ackx
  * JD-Core Version:    0.7.0.1
  */

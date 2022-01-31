@@ -1,30 +1,37 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.os.Looper;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoySocializeRecommendFollowView.10.1;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.ReadInJoySocializeRecommendFollowView.10.2;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class ozz
-  implements TVK_SDKMgr.InstallListener
+public class ozz
+  extends ohe
 {
-  ozz(ozy paramozy) {}
+  ozz(ozx paramozx) {}
   
-  public void onInstallProgress(float paramFloat)
+  public void a(ArticleInfo paramArticleInfo, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 1, String.format("plugin install %f", new Object[] { Float.valueOf(paramFloat) }));
+    paramArticleInfo = new ReadInJoySocializeRecommendFollowView.10.2(this, paramArticleInfo, paramBoolean);
+    if (Looper.getMainLooper() == Looper.myLooper()) {}
+    for (int i = 1; i == 0; i = 0)
+    {
+      ThreadManager.getUIHandler().post(paramArticleInfo);
+      return;
     }
+    paramArticleInfo.run();
   }
   
-  public void onInstalledFailed(int paramInt)
+  public void b(long paramLong, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 1, "plugin fail errorCode = " + paramInt);
+    ReadInJoySocializeRecommendFollowView.10.1 local1 = new ReadInJoySocializeRecommendFollowView.10.1(this, paramLong, paramBoolean);
+    if (Looper.getMainLooper() == Looper.myLooper()) {}
+    for (int i = 1; i == 0; i = 0)
+    {
+      ThreadManager.getUIHandler().post(local1);
+      return;
     }
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 1, "plugin success");
-    }
+    local1.run();
   }
 }
 

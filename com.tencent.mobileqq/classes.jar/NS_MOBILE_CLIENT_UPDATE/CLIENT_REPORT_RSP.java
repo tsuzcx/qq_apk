@@ -9,9 +9,9 @@ import java.util.Map;
 public final class CLIENT_REPORT_RSP
   extends JceStruct
 {
-  static Map cache_msg = new HashMap();
+  static Map<String, String> cache_msg = new HashMap();
   public int code;
-  public Map msg;
+  public Map<String, String> msg;
   
   static
   {
@@ -20,7 +20,7 @@ public final class CLIENT_REPORT_RSP
   
   public CLIENT_REPORT_RSP() {}
   
-  public CLIENT_REPORT_RSP(int paramInt, Map paramMap)
+  public CLIENT_REPORT_RSP(int paramInt, Map<String, String> paramMap)
   {
     this.code = paramInt;
     this.msg = paramMap;
@@ -42,7 +42,7 @@ public final class CLIENT_REPORT_RSP
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_CLIENT_UPDATE.CLIENT_REPORT_RSP
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.leba.LebaTitleBar;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class aehx
-  implements Runnable
+class aehx
+  implements DialogInterface.OnDismissListener
 {
-  public aehx(LebaWithFeeds paramLebaWithFeeds) {}
+  aehx(aegy paramaegy) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    LebaWithFeeds.a(this.a).a();
+    this.a.g = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aehx
  * JD-Core Version:    0.7.0.1
  */

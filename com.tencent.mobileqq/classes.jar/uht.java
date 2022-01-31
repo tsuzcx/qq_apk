@@ -1,43 +1,71 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.troop.utils.TroopBindPubAccountProtocol.FollowPublicAccountObserver;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
 public class uht
-  extends TroopBindPubAccountProtocol.FollowPublicAccountObserver
+  extends vpv
 {
-  public uht(TroopRequestActivity paramTroopRequestActivity) {}
+  public static final String KEY = "MemoriesVideoListEmptySegment";
   
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public uht(Context paramContext, int paramInt, String paramString)
   {
-    if ((paramBoolean) && (paramBundle != null)) {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("structMsg");
-        new structmsg.StructMsg().mergeFrom(paramBundle);
-        TroopRequestActivity.a(this.a, 1);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.systemmsg.TroopRequestActivity", 2, "structMsg merge error");
-        }
-        this.a.i();
-        QQToast.a(this.a, this.a.getString(2131430306), 0).b(this.a.getTitleBarHeight());
-        return;
-      }
+    super(paramContext);
+  }
+  
+  private void f()
+  {
+    vpv localvpv = a().a("MemoriesVideoListSegment");
+    if ((localvpv != null) && (localvpv.a() == 0))
+    {
+      this.jdField_a_of_type_Boolean = true;
+      return;
     }
-    this.a.i();
-    QQToast.a(this.a, this.a.getString(2131430306), 0).b(this.a.getTitleBarHeight());
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void T_()
+  {
+    f();
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public View a(int paramInt, unw paramunw, ViewGroup paramViewGroup)
+  {
+    paramInt = vms.d(this.jdField_a_of_type_AndroidContentContext);
+    int i = vms.e(this.jdField_a_of_type_AndroidContentContext);
+    int j = vms.a(this.jdField_a_of_type_AndroidContentContext, 225.0F);
+    int k = vms.a(this.jdField_a_of_type_AndroidContentContext, 50.0F);
+    paramunw.a().getLayoutParams().height = (paramInt - i - j - k);
+    return paramunw.a();
+  }
+  
+  public String a()
+  {
+    return "MemoriesVideoListEmptySegment";
+  }
+  
+  public unw a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new unw(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495704, paramViewGroup, false));
+  }
+  
+  protected void c()
+  {
+    f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uht
  * JD-Core Version:    0.7.0.1
  */

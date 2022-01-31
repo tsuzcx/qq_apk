@@ -1,76 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import com.tencent.mobileqq.search.model.ContactSearchModelPhoneContact;
-import com.tencent.mobileqq.search.model.IContactSearchModel;
-import java.util.Comparator;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.widget.ThemeImageView;
 
-public final class aibb
-  implements Comparator
+public class aibb
 {
-  private final FriendsManager jdField_a_of_type_ComTencentMobileqqAppFriendsManager;
-  private final PhoneContactManager jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager;
+  public amnq a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public ThemeImageView a;
   
-  public aibb(QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager = ((PhoneContactManager)paramQQAppInterface.getManager(10));
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager = ((FriendsManager)paramQQAppInterface.getManager(50));
-  }
-  
-  public int a(IContactSearchModel paramIContactSearchModel1, IContactSearchModel paramIContactSearchModel2)
-  {
-    int i = -1;
-    paramIContactSearchModel1 = this.jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager.c(((ContactSearchModelPhoneContact)paramIContactSearchModel1).e());
-    paramIContactSearchModel2 = this.jdField_a_of_type_ComTencentMobileqqModelPhoneContactManager.c(((ContactSearchModelPhoneContact)paramIContactSearchModel2).e());
-    if ((paramIContactSearchModel1 == null) || (paramIContactSearchModel2 == null)) {
-      if ((paramIContactSearchModel1 == null) && (paramIContactSearchModel2 == null)) {
-        i = 0;
-      }
-    }
-    boolean bool2;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return i;
-          } while (paramIContactSearchModel2 == null);
-          return 1;
-          if ((paramIContactSearchModel1.uin.equals("0")) && (paramIContactSearchModel2.uin.equals("0"))) {
-            break;
-          }
-          if ((!paramIContactSearchModel1.uin.equals("0")) && (!paramIContactSearchModel2.uin.equals("0"))) {
-            return 0;
-          }
-        } while (!paramIContactSearchModel2.uin.equals("0"));
-        return 1;
-        bool1 = this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(paramIContactSearchModel1.unifiedCode, true);
-        bool2 = this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(paramIContactSearchModel2.unifiedCode, true);
-        if ((!bool1) && (!bool2)) {
-          break;
-        }
-        if ((bool1) && (bool2)) {
-          return 0;
-        }
-      } while (bool2);
-      return 1;
-      boolean bool1 = TextUtils.isEmpty(paramIContactSearchModel1.pinyinFirst);
-      bool2 = TextUtils.isEmpty(paramIContactSearchModel2.pinyinFirst);
-      if ((!bool1) && (!bool2)) {
-        break;
-      }
-      if ((bool1) && (bool2)) {
-        return 0;
-      }
-    } while (bool2);
-    return 1;
-    return paramIContactSearchModel1.pinyinFirst.toLowerCase().charAt(0) - paramIContactSearchModel2.pinyinFirst.toLowerCase().charAt(0);
-  }
+  public aibb(aiba paramaiba) {}
 }
 
 

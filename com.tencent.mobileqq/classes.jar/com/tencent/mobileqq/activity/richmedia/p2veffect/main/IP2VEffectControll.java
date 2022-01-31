@@ -5,6 +5,7 @@ import com.tencent.mobileqq.activity.richmedia.p2veffect.listener.IControllerFil
 import com.tencent.mobileqq.activity.richmedia.p2veffect.listener.IFastRenderCallback;
 import com.tencent.mobileqq.activity.richmedia.p2veffect.listener.IOnStopCompleteListener;
 import com.tencent.mobileqq.activity.richmedia.p2veffect.listener.IP2VEnginePlayerCallback;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.model.MediaItem;
 import java.util.ArrayList;
 
 public abstract interface IP2VEffectControll
@@ -31,7 +32,7 @@ public abstract interface IP2VEffectControll
   
   public abstract void setFilterProvider(IControllerFilterProvider paramIControllerFilterProvider);
   
-  public abstract void setMediaItems(ArrayList paramArrayList);
+  public abstract void setMediaItems(ArrayList<MediaItem> paramArrayList);
   
   public abstract void setSquareTypeAndColor(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
@@ -45,7 +46,7 @@ public abstract interface IP2VEffectControll
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.p2veffect.main.IP2VEffectControll
  * JD-Core Version:    0.7.0.1
  */

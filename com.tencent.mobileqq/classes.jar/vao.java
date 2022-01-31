@@ -1,19 +1,23 @@
-import com.immersion.stickersampleapp.HapticManager;
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
 public class vao
-  implements Runnable
+  implements viu
 {
-  public vao(CustomFrameAnimationDrawable paramCustomFrameAnimationDrawable) {}
+  public vao(DoodleLayout paramDoodleLayout) {}
   
-  public void run()
+  public void a()
   {
-    HapticManager.a().a();
+    this.a.c();
+    if ((this.a.a != null) && (this.a.a.a == 3)) {
+      LpReportInfo_pf00064.allReport(615, 1, 3);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vao
  * JD-Core Version:    0.7.0.1
  */

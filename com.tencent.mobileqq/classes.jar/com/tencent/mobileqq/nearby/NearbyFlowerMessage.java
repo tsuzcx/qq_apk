@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.nearby;
 
+import ajjy;
 import android.os.Bundle;
 import android.text.TextUtils;
+import awwx;
 import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout12;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 
@@ -66,9 +67,9 @@ public class NearbyFlowerMessage
       if ((paramMessageForStructing.mMsgServiceID == 52) && (paramMessageForStructing.getItemCount() > 0))
       {
         paramMessageForStructing = paramMessageForStructing.getItemByIndex(0);
-        if ((paramMessageForStructing instanceof StructMsgItemLayout12))
+        if ((paramMessageForStructing instanceof awwx))
         {
-          paramMessageForStructing = (StructMsgItemLayout12)paramMessageForStructing;
+          paramMessageForStructing = (awwx)paramMessageForStructing;
           if (!paramMessageForStructing.jdField_a_of_type_Boolean) {
             paramMessageForStructing.a();
           }
@@ -106,10 +107,10 @@ public class NearbyFlowerMessage
         continue;
       }
       paramMessageForStructing = paramMessageForStructing.getItemByIndex(0);
-      if (!(paramMessageForStructing instanceof StructMsgItemLayout12)) {
+      if (!(paramMessageForStructing instanceof awwx)) {
         continue;
       }
-      paramMessageForStructing = (StructMsgItemLayout12)paramMessageForStructing;
+      paramMessageForStructing = (awwx)paramMessageForStructing;
       if (!paramMessageForStructing.jdField_a_of_type_Boolean)
       {
         if (QLog.isColorLevel()) {
@@ -133,7 +134,6 @@ public class NearbyFlowerMessage
       this.groupCode = paramMessageForStructing.jdField_a_of_type_AndroidOsBundle.getString("groupCode");
       Object localObject = paramMessageForStructing.jdField_a_of_type_AndroidOsBundle.getString("score");
       if (!TextUtils.isEmpty((CharSequence)localObject)) {}
-      label944:
       try
       {
         this.score = Integer.parseInt((String)localObject);
@@ -164,7 +164,7 @@ public class NearbyFlowerMessage
             {
               str = paramQQAppInterface.a().b(this.rUin);
               if (TextUtils.isEmpty(str)) {
-                break label839;
+                break label845;
               }
               i = str.lastIndexOf("voice_hall_avatar_");
               this.toUrl = (str.substring(0, i) + "voice_hall_avatar_" + localObject[2]);
@@ -181,15 +181,15 @@ public class NearbyFlowerMessage
         else
         {
           if (!this.isAnonymous) {
-            break label987;
+            break label1011;
           }
           if (!this.is1v1) {
-            break label944;
+            break label962;
           }
           if (!this.isSend) {
-            break label869;
+            break label875;
           }
-          this.brief = ("你送给" + this.toName + "鲜花");
+          this.brief = (ajjy.a(2131641359) + this.toName + ajjy.a(2131641364));
           if (QLog.isColorLevel()) {
             QLog.i("NearbyFlowerMessage", 2, paramMessageForStructing.jdField_a_of_type_AndroidOsBundle.toString());
           }
@@ -202,27 +202,28 @@ public class NearbyFlowerMessage
       }
       catch (Throwable localThrowable)
       {
-        label839:
-        label987:
+        label962:
         for (;;)
         {
           this.score = 0;
           continue;
           this.fromUrl = ("voice_hall_avatar_" + localThrowable[0]);
           continue;
+          label845:
           this.toUrl = ("voice_hall_avatar_" + localThrowable[2]);
           continue;
-          label869:
+          label875:
           if (this.isReceive)
           {
             if ((TextUtils.isEmpty(this.fromName)) || (TextUtils.equals(this.fromName, "null"))) {
               this.fromName = paramQQAppInterface.a().a(this.sUin);
             }
-            this.brief = (this.fromName + "送给你鲜花");
+            this.brief = (this.fromName + ajjy.a(2131641363) + ajjy.a(2131641356));
             continue;
-            this.brief = (this.fromName + "送给" + this.toName + "鲜花");
+            this.brief = (this.fromName + ajjy.a(2131641355) + this.toName + ajjy.a(2131641360));
             continue;
-            this.brief = (this.sNick + "送给" + this.rNick + "鲜花");
+            label1011:
+            this.brief = (this.sNick + ajjy.a(2131641362) + this.rNick + ajjy.a(2131641365));
           }
         }
       }

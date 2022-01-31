@@ -1,21 +1,23 @@
-import android.view.View;
-import com.tencent.mobileqq.arcard.ARCardPageProcess;
-import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.11.2;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 
 public class aatt
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aatt(ARGreetingCardListManager paramARGreetingCardListManager) {}
+  public aatt(FriendProfileCardActivity.11.2 param2) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ARGreetingCardListManager.a(this.a).setVisibility(4);
-    ARGreetingCardListManager.a(this.a).a();
+    this.a.jdField_a_of_type_Ajfi.h();
+    this.a.jdField_a_of_type_Ajfi.a(this.a.jdField_a_of_type_Aatr.a.a.a.a, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aatt
  * JD-Core Version:    0.7.0.1
  */

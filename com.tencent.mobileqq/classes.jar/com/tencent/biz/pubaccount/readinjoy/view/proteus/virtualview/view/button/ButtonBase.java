@@ -5,314 +5,377 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.util.SparseArray;
+import android.view.View;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtil.QLog;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.TextBase;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import org.json.JSONArray;
 
 public abstract class ButtonBase
   extends TextBase
 {
-  public int A;
-  public final Drawable a;
-  private SparseArray a;
-  public final Drawable b = new ColorDrawable(0);
-  public boolean b;
-  private String g;
-  private String h;
-  private String i;
-  private String j;
-  private String k;
-  protected int z;
+  protected static final int DRAWABLE_BOTTOM = 3;
+  protected static final int DRAWABLE_LEFT = 0;
+  protected static final int DRAWABLE_RIGHT = 2;
+  protected static final int DRAWABLE_TOP = 1;
+  protected static final int NORMAL = 0;
+  protected static final int PRESS = 1;
+  protected static final int SELECTED = 4;
+  private static final String TAG = "ButtonBase";
+  protected final Drawable GRAY_PLACEHOLDER = new ColorDrawable(Color.parseColor("#E9E9E9"));
+  protected final Drawable TRANSPARENT_PLACE_HOLDER = new ColorDrawable(0);
+  protected float mAlpha = (0.0F / 0.0F);
+  private SparseArray<ButtonBase.ClickStatus> mClickStatusArr = new SparseArray(4);
+  protected int mCompoundDrawablePadding;
+  protected boolean mEnable = true;
+  private List<Runnable> mRunnableList;
+  protected int mState;
+  protected boolean mSupportHtmlStyle = false;
   
   public ButtonBase(VafContext paramVafContext)
   {
     super(paramVafContext);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#E9E9E9"));
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(4);
   }
   
-  private void d(String paramString)
+  private void doOnFinish(Runnable paramRunnable)
   {
-    int m = 0;
-    if (paramString == null) {}
-    while (paramString.equals(this.g)) {
+    if (this.mRunnableList == null) {
+      this.mRunnableList = new ArrayList();
+    }
+    this.mRunnableList.add(paramRunnable);
+  }
+  
+  private void setClickStatus(JSONArray paramJSONArray)
+  {
+    int i = 0;
+    if (paramJSONArray == null) {
       return;
     }
-    this.g = paramString;
     try
     {
-      JSONArray localJSONArray2 = new JSONArray(paramString);
-      if (localJSONArray2.length() >= 2)
+      if (paramJSONArray.length() >= 4)
       {
-        JSONArray localJSONArray1 = localJSONArray2.getJSONArray(0);
-        localJSONArray2 = localJSONArray2.getJSONArray(1);
-        while (m < localJSONArray2.length())
+        JSONArray localJSONArray1 = paramJSONArray.getJSONArray(0);
+        JSONArray localJSONArray2 = paramJSONArray.getJSONArray(1);
+        JSONArray localJSONArray3 = paramJSONArray.getJSONArray(2);
+        paramJSONArray = paramJSONArray.getJSONArray(3);
+        while (i < paramJSONArray.length())
         {
-          int n = Integer.valueOf(localJSONArray2.getString(m)).intValue();
-          if (m < localJSONArray1.length())
-          {
-            String str = localJSONArray1.getString(m);
-            a(n).b = str;
+          ButtonBase.ClickStatus localClickStatus = getStatus(Integer.valueOf(paramJSONArray.getString(i)).intValue());
+          if (i < localJSONArray1.length()) {
+            localClickStatus.img = localJSONArray1.getString(i);
           }
-          m += 1;
+          if (i < localJSONArray2.length()) {
+            localClickStatus.textColor = localJSONArray2.getString(i);
+          }
+          if (i < localJSONArray3.length()) {
+            localClickStatus.direction = Integer.valueOf(localJSONArray3.getString(i)).intValue();
+          }
+          i += 1;
+        }
+      }
+      return;
+    }
+    catch (Exception paramJSONArray)
+    {
+      Log.e("ButtonBase", "setClickStatus :", paramJSONArray);
+      doOnFinish(new ButtonBase.4(this));
+      setTextColorForStates();
+    }
+  }
+  
+  private void setStatusBackGroundColor(JSONArray paramJSONArray)
+  {
+    int i = 0;
+    if (paramJSONArray == null) {
+      return;
+    }
+    try
+    {
+      if (paramJSONArray.length() >= 2)
+      {
+        JSONArray localJSONArray1 = paramJSONArray.getJSONArray(0);
+        JSONArray localJSONArray2 = paramJSONArray.getJSONArray(1);
+        while (i < localJSONArray2.length())
+        {
+          int j = Integer.valueOf(localJSONArray2.getString(i)).intValue();
+          if (i < localJSONArray1.length())
+          {
+            String str = localJSONArray1.getString(i);
+            getStatus(j).backgroundColor = str;
+          }
+          i += 1;
         }
       }
       return;
     }
     catch (Exception localException)
     {
-      Log.e("ButtonBase", "setStatusBackground: setStatusBackground :" + paramString);
-      b();
+      Log.e("ButtonBase", "setStatusBackgroud: setStatusBackgroud :" + paramJSONArray);
+      doOnFinish(new ButtonBase.2(this));
     }
   }
   
-  private void e(String paramString)
+  private void setStatusBackground(JSONArray paramJSONArray)
   {
-    int m = 0;
-    if (paramString == null) {}
-    while (paramString.equals(this.h)) {
+    int i = 0;
+    if (paramJSONArray == null) {
       return;
     }
-    this.h = paramString;
     try
     {
-      JSONArray localJSONArray2 = new JSONArray(paramString);
-      if (localJSONArray2.length() >= 2)
+      if (paramJSONArray.length() >= 2)
       {
-        JSONArray localJSONArray1 = localJSONArray2.getJSONArray(0);
-        localJSONArray2 = localJSONArray2.getJSONArray(1);
-        while (m < localJSONArray2.length())
+        JSONArray localJSONArray1 = paramJSONArray.getJSONArray(0);
+        JSONArray localJSONArray2 = paramJSONArray.getJSONArray(1);
+        while (i < localJSONArray2.length())
         {
-          int n = Integer.valueOf(localJSONArray2.getString(m)).intValue();
-          if (m < localJSONArray1.length())
+          int j = Integer.valueOf(localJSONArray2.getString(i)).intValue();
+          if (i < localJSONArray1.length())
           {
-            String str = localJSONArray1.getString(m);
-            a(n).c = str;
+            String str = localJSONArray1.getString(i);
+            getStatus(j).background = str;
           }
-          m += 1;
+          i += 1;
         }
       }
       return;
     }
     catch (Exception localException)
     {
-      Log.e("ButtonBase", "setStatusBackgroud: setStatusBackgroud :" + paramString);
-      c();
+      Log.e("ButtonBase", "setStatusBackground: setStatusBackground :" + paramJSONArray);
+      doOnFinish(new ButtonBase.1(this));
     }
   }
   
-  private void f(String paramString)
+  private void setStatusImage(JSONArray paramJSONArray)
   {
-    int m = 0;
-    if (paramString == null) {}
-    while (paramString.equals(this.j)) {
+    int i = 0;
+    if (paramJSONArray == null) {
       return;
     }
-    this.j = paramString;
     try
     {
-      JSONArray localJSONArray2 = new JSONArray(paramString);
-      if (localJSONArray2.length() >= 2)
+      if (paramJSONArray.length() >= 2)
       {
-        JSONArray localJSONArray1 = localJSONArray2.getJSONArray(0);
-        localJSONArray2 = localJSONArray2.getJSONArray(1);
-        while (m < localJSONArray2.length())
+        JSONArray localJSONArray1 = paramJSONArray.getJSONArray(0);
+        JSONArray localJSONArray2 = paramJSONArray.getJSONArray(1);
+        while (i < localJSONArray2.length())
         {
-          int n = Integer.valueOf(localJSONArray2.getString(m)).intValue();
-          if (m < localJSONArray1.length())
+          int j = Integer.valueOf(localJSONArray2.getString(i)).intValue();
+          if (i < localJSONArray1.length())
           {
-            String str = localJSONArray1.getString(m);
-            a(n).d = str;
+            String str = localJSONArray1.getString(i);
+            getStatus(j).img = str;
           }
-          m += 1;
+          i += 1;
         }
       }
       return;
     }
     catch (Exception localException)
     {
-      Log.e("ButtonBase", "setStatusBackgroud: setStatusBackgroud :" + paramString);
-      e();
+      Log.e("ButtonBase", "setStatusBackgroud: setStatusBackgroud :" + paramJSONArray);
+      doOnFinish(new ButtonBase.3(this));
     }
   }
   
-  private void g(String paramString)
+  private void setStatusTextColor(JSONArray paramJSONArray)
   {
-    int m = 0;
-    if (paramString == null) {}
-    while (paramString.equals(this.i)) {
+    int i = 0;
+    if (paramJSONArray == null) {
       return;
     }
-    this.i = paramString;
     try
     {
-      JSONArray localJSONArray2 = new JSONArray(paramString);
-      if (localJSONArray2.length() >= 2)
+      if (paramJSONArray.length() >= 2)
       {
-        JSONArray localJSONArray1 = localJSONArray2.getJSONArray(0);
-        localJSONArray2 = localJSONArray2.getJSONArray(1);
-        while (m < localJSONArray2.length())
+        JSONArray localJSONArray1 = paramJSONArray.getJSONArray(0);
+        JSONArray localJSONArray2 = paramJSONArray.getJSONArray(1);
+        while (i < localJSONArray2.length())
         {
-          int n = Integer.valueOf(localJSONArray2.getString(m)).intValue();
-          if (m < localJSONArray1.length())
+          int j = Integer.valueOf(localJSONArray2.getString(i)).intValue();
+          if (i < localJSONArray1.length())
           {
-            String str = localJSONArray1.getString(m);
-            a(n).jdField_a_of_type_JavaLangString = str;
+            String str = localJSONArray1.getString(i);
+            getStatus(j).textColor = str;
           }
-          m += 1;
+          i += 1;
         }
       }
       return;
     }
     catch (Exception localException)
     {
-      Log.e("ButtonBase", "setStatusBackgroud: setStatusBackgroud :" + paramString);
-      d();
+      Log.e("ButtonBase", "setStatusBackgroud: setStatusBackgroud :" + paramJSONArray);
+      setTextColorForStates();
     }
   }
   
-  private void h(String paramString)
+  protected ButtonBase.ClickStatus getStatus(int paramInt)
   {
-    int m = 0;
-    if (paramString == null) {}
-    while (paramString.equals(this.k)) {
-      return;
-    }
-    this.k = paramString;
-    try
-    {
-      JSONArray localJSONArray3 = new JSONArray(paramString);
-      if (localJSONArray3.length() >= 4)
-      {
-        paramString = localJSONArray3.getJSONArray(0);
-        JSONArray localJSONArray1 = localJSONArray3.getJSONArray(1);
-        JSONArray localJSONArray2 = localJSONArray3.getJSONArray(2);
-        localJSONArray3 = localJSONArray3.getJSONArray(3);
-        while (m < localJSONArray3.length())
-        {
-          ButtonBase.ClickStatus localClickStatus = a(Integer.valueOf(localJSONArray3.getString(m)).intValue());
-          if (m < paramString.length()) {
-            localClickStatus.jdField_a_of_type_JavaLangString = paramString.getString(m);
-          }
-          if (m < localJSONArray1.length()) {
-            localClickStatus.d = localJSONArray1.getString(m);
-          }
-          if (m < localJSONArray2.length()) {
-            localClickStatus.jdField_a_of_type_Int = Integer.valueOf(localJSONArray2.getString(m)).intValue();
-          }
-          m += 1;
-        }
-      }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      Log.e("ButtonBase", "setClickStatus :", paramString);
-      d();
-      e();
-    }
-  }
-  
-  public ButtonBase.ClickStatus a(int paramInt)
-  {
-    ButtonBase.ClickStatus localClickStatus2 = (ButtonBase.ClickStatus)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    ButtonBase.ClickStatus localClickStatus2 = (ButtonBase.ClickStatus)this.mClickStatusArr.get(paramInt);
     ButtonBase.ClickStatus localClickStatus1 = localClickStatus2;
     if (localClickStatus2 == null)
     {
       localClickStatus1 = new ButtonBase.ClickStatus();
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localClickStatus1);
+      this.mClickStatusArr.put(paramInt, localClickStatus1);
     }
     return localClickStatus1;
   }
   
-  public void a()
+  public boolean isSelected()
   {
-    super.a();
-    if (this.z == 4) {}
+    return this.mState == 4;
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    if (this.mState == 4) {}
     for (boolean bool = true;; bool = false)
     {
-      a(bool);
-      return;
+      setSelected(bool);
+      if ((this.mAlpha >= 0.0D) && (this.mAlpha <= 1.001D)) {
+        getNativeView().setAlpha(this.mAlpha);
+      }
+      getNativeView().setEnabled(this.mEnable);
+      if (this.mRunnableList == null) {
+        break;
+      }
+      Iterator localIterator = this.mRunnableList.iterator();
+      while (localIterator.hasNext()) {
+        ((Runnable)localIterator.next()).run();
+      }
     }
   }
   
-  public void a(boolean paramBoolean)
+  public boolean setAttribute(int paramInt, Object paramObject)
   {
-    if (paramBoolean)
+    boolean bool2 = super.setAttribute(paramInt, paramObject);
+    boolean bool1 = bool2;
+    if (!bool2)
     {
-      this.z = 4;
-      return;
+      bool1 = true;
+      switch (paramInt)
+      {
+      case 40: 
+      case 41: 
+      case 45: 
+      case 46: 
+      default: 
+        bool1 = false;
+      }
     }
-    this.z = 0;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              return bool1;
+            } while (!(paramObject instanceof JSONArray));
+            setStatusBackground((JSONArray)paramObject);
+            return true;
+          } while (!(paramObject instanceof JSONArray));
+          setClickStatus((JSONArray)paramObject);
+          return true;
+        } while (!(paramObject instanceof JSONArray));
+        setStatusImage((JSONArray)paramObject);
+        return true;
+      } while (!(paramObject instanceof JSONArray));
+      setStatusBackGroundColor((JSONArray)paramObject);
+      return true;
+    } while (!(paramObject instanceof JSONArray));
+    setStatusTextColor((JSONArray)paramObject);
+    return true;
   }
   
-  protected boolean a(int paramInt, String paramString)
+  public boolean setAttribute(int paramInt, String paramString)
   {
-    int m = 0;
-    boolean bool = super.a(paramInt, paramString);
-    if (!bool)
+    boolean bool1 = false;
+    int i = 0;
+    boolean bool2 = super.setAttribute(paramInt, paramString);
+    if (!bool2)
     {
       switch (paramInt)
       {
       default: 
         return false;
-      case 37: 
-        d(paramString);
-        return true;
-      case 40: 
-        h(paramString);
-        return true;
-      case 41: 
-        g(paramString);
-        return true;
-      case 11: 
-        Double localDouble = Utils.a(paramString);
-        if (localDouble != null)
+      case 13: 
+        localObject = Utils.toDouble(paramString);
+        if (localObject != null)
         {
-          this.A = Utils.a(localDouble.doubleValue());
+          this.mCompoundDrawablePadding = Utils.rp2px(((Double)localObject).doubleValue());
           return true;
         }
-        QLog.d("ButtonBase", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
+        LogUtil.QLog.d("ButtonBase", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
         return true;
-      case 42: 
-        f(paramString);
-        return true;
-      case 43: 
-        paramString = Utils.a(paramString);
+      case 45: 
+        paramString = Utils.toInteger(paramString);
         if (paramString != null) {}
         for (paramInt = paramString.intValue();; paramInt = 0)
         {
           if (paramInt == 1) {
-            m = 4;
+            i = 4;
           }
-          this.z = m;
+          this.mState = i;
           return true;
         }
+      case 48: 
+        localObject = Utils.toFloat(paramString);
+        if (localObject != null)
+        {
+          this.mAlpha = ((Float)localObject).floatValue();
+          return true;
+        }
+        LogUtil.QLog.d("ButtonBase", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
+        return true;
       }
-      e(paramString);
+      Object localObject = Utils.toInteger(paramString);
+      if (localObject != null)
+      {
+        if (((Integer)localObject).intValue() == 1) {
+          bool1 = true;
+        }
+        this.mEnable = bool1;
+        return true;
+      }
+      LogUtil.QLog.d("ButtonBase", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
       return true;
     }
-    return bool;
+    return bool2;
   }
   
-  public abstract void b();
+  protected abstract void setBackgroundColorForStates();
   
-  public abstract void c();
+  protected abstract void setBackgroundForStates();
   
-  public abstract void d();
+  protected abstract void setCompoundDrawableForStates();
   
-  public abstract void e();
-  
-  public boolean g()
+  public void setSelected(boolean paramBoolean)
   {
-    return this.z == 4;
+    if (paramBoolean)
+    {
+      this.mState = 4;
+      return;
+    }
+    this.mState = 0;
   }
+  
+  protected abstract void setTextColorForStates();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.ButtonBase
  * JD-Core Version:    0.7.0.1
  */

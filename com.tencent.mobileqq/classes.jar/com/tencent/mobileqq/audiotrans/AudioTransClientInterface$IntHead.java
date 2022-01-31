@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class AudioTransClientInterface$IntHead
-  extends MessageMicro
+  extends MessageMicro<IntHead>
 {
   public static final int INT_C2S_CHANGE_SESSION_REQ = 5;
   public static final int INT_C2S_CHANGE_SESSION_RSP = 6;

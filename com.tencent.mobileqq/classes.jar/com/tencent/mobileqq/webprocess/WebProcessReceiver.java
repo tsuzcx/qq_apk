@@ -1,30 +1,38 @@
 package com.tencent.mobileqq.webprocess;
 
-import aktp;
+import agtw;
+import aihi;
+import aing;
+import aiwc;
+import ajam;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoAutoPlayController;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPluginInstall;
+import android.os.SystemClock;
+import anfc;
+import awrn;
+import baxk;
+import bbcs;
+import bbcw;
+import bbcz;
+import bbee;
+import bbmy;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbVideoView;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
-import com.tencent.mobileqq.apollo.store.webview.ApolloWebDataHandler;
-import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.emosm.Client;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
 import com.tencent.mobileqq.webview.sonic.SonicPreloader;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.webview.webso.WebSoService;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.CookieManager;
 import com.tencent.smtt.sdk.CookieSyncManager;
 import com.tencent.smtt.sdk.QbSdk;
-import com.tencent.smtt.sdk.TbsDownloader;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.sonic.sdk.SonicEngine;
@@ -33,9 +41,12 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.app.QQBroadcastReceiver;
+import pyu;
+import qhy;
 
 public class WebProcessReceiver
   extends QQBroadcastReceiver
@@ -60,12 +71,32 @@ public class WebProcessReceiver
   {
     try
     {
-      PreloadService.a(paramInt);
+      baxk.a(paramInt);
       return;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
+    }
+  }
+  
+  private void b(Context paramContext)
+  {
+    try
+    {
+      long l1 = System.currentTimeMillis();
+      if (!agtw.jdField_a_of_type_Boolean)
+      {
+        agtw.jdField_a_of_type_Boolean = true;
+        agtw.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalEntryUiSpringHbVideoView = new SpringHbVideoView(paramContext);
+      }
+      long l2 = System.currentTimeMillis();
+      QLog.i("springHb_WebProcessReceiver", 1, "tool进程 fromOfPreload=" + jdField_a_of_type_Int + ",time cost=" + (l2 - l1));
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      QLog.e("springHb_WebProcessReceiver", 1, "preloadSpringHbVideoSDK fail", paramContext);
     }
   }
   
@@ -88,7 +119,7 @@ public class WebProcessReceiver
         if (localWebSettings != null)
         {
           String str2 = "";
-          String str3 = MobileQQ.getMobileQQ().getProcessName();
+          String str3 = MobileQQ.getMobileQQ().getQQProcessName();
           String str1 = str2;
           if (str3 != null)
           {
@@ -132,183 +163,274 @@ public class WebProcessReceiver
   
   public void onReceive(AppRuntime paramAppRuntime, Context paramContext, Intent paramIntent)
   {
-    int i = 1;
-    int j = 0;
-    String str;
+    Object localObject;
     if (paramIntent != null)
     {
-      str = paramIntent.getAction();
-      if (str != null) {
-        break label22;
+      localObject = paramIntent.getAction();
+      if (localObject != null) {
+        break label16;
       }
     }
-    for (;;)
+    label16:
+    label761:
+    do
     {
-      return;
-      label22:
-      if (QLog.isColorLevel()) {
-        QLog.d("WebProcessReceiver", 2, "action=" + str);
-      }
-      if ("com.tencent.mobileqq.webprocess.preload_web_process".equals(str))
+      boolean bool1;
+      do
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("WebProcessReceiver", 2, "Receive preloadSonicSession broadcast, start web process!");
-        }
-        jdField_a_of_type_Long = paramIntent.getLongExtra("com.tencent.mobileqq.webprocess.start_time", System.currentTimeMillis());
-        b = System.currentTimeMillis();
-        if (!WebIPCOperator.a().a()) {
-          WebIPCOperator.a().a().doBindService(paramContext.getApplicationContext());
-        }
-        try
+        do
         {
-          jdField_a_of_type_Int = paramIntent.getIntExtra("from", -1);
-          if (QLog.isColorLevel()) {
-            QLog.d("WebProcessReceiver", 2, "fromOfPreload is " + jdField_a_of_type_Int);
-          }
-          if (201 != jdField_a_of_type_Int)
+          do
           {
-            if (QLog.isColorLevel()) {
-              QLog.d("WebProcessReceiver", 2, "onReceive preloadData standard, fromType=" + jdField_a_of_type_Int);
-            }
-            a(jdField_a_of_type_Int);
-            if (100 == jdField_a_of_type_Int)
+            boolean bool2;
+            do
             {
-              if (QLog.isColorLevel()) {
-                QLog.d("WebProcessReceiver", 2, "apollo_client onReceive AIOOpenWebMonitor.PRELOAD_FROM_APOLLO == fromOfPreload");
+              for (;;)
+              {
+                return;
+                if (QLog.isColorLevel()) {
+                  QLog.d("WebProcessReceiver", 2, "action=" + (String)localObject);
+                }
+                if ("com.tencent.mobileqq.webprocess.preload_web_process".equals(localObject))
+                {
+                  if (QLog.isColorLevel()) {
+                    QLog.d("WebProcessReceiver", 2, "Receive preloadSonicSession broadcast, start web process!");
+                  }
+                  jdField_a_of_type_Long = paramIntent.getLongExtra("com.tencent.mobileqq.webprocess.start_time", System.currentTimeMillis());
+                  b = System.currentTimeMillis();
+                  if (!anfc.a().a()) {
+                    anfc.a().a().doBindService(paramContext.getApplicationContext());
+                  }
+                  try
+                  {
+                    jdField_a_of_type_Int = paramIntent.getIntExtra("from", -1);
+                    if (QLog.isColorLevel()) {
+                      QLog.d("WebProcessReceiver", 2, "fromOfPreload is " + jdField_a_of_type_Int);
+                    }
+                    if (201 != jdField_a_of_type_Int)
+                    {
+                      if (QLog.isColorLevel()) {
+                        QLog.d("WebProcessReceiver", 2, "onReceive preloadData standard, fromType=" + jdField_a_of_type_Int);
+                      }
+                      a(jdField_a_of_type_Int);
+                      if (100 == jdField_a_of_type_Int)
+                      {
+                        if (QLog.isColorLevel()) {
+                          QLog.d("WebProcessReceiver", 2, "apollo_client onReceive AIOOpenWebMonitor.PRELOAD_FROM_APOLLO == fromOfPreload");
+                        }
+                        aiwc.a();
+                        if (!ajam.a()) {
+                          ajam.a("WebProcessReceiver");
+                        }
+                        aihi.a().a();
+                      }
+                      aing.a();
+                      if (200 == jdField_a_of_type_Int)
+                      {
+                        if (QLog.isColorLevel()) {
+                          QLog.d("WebProcessReceiver", 2, "apollo_client onReceive AIOOpenWebMonitor.PRELOAD_FROM_READINJOY == fromOfPreload");
+                        }
+                        new qhy(paramContext);
+                        pyu.a();
+                        new ListView(paramContext);
+                      }
+                      if (301 == jdField_a_of_type_Int) {
+                        b(paramContext);
+                      }
+                      if (204 != jdField_a_of_type_Int) {
+                        continue;
+                      }
+                      bbcs.a().a(new bbcw(1));
+                    }
+                  }
+                  catch (Exception paramAppRuntime)
+                  {
+                    for (;;)
+                    {
+                      paramAppRuntime.printStackTrace();
+                      continue;
+                      if (QLog.isColorLevel()) {
+                        QLog.d("WebProcessReceiver", 2, "onReceive AIOOpenWebMonitor.PRELOAD_FROM_READINJOY_HALF!");
+                      }
+                      WebCoreService.a();
+                      bbca.r = true;
+                    }
+                  }
+                }
               }
-              ApolloWebDataHandler.a();
-            }
-            if (200 != jdField_a_of_type_Int) {
-              continue;
+              if ("action_clear_cache".equals(localObject))
+              {
+                paramAppRuntime = WebAccelerateHelper.getSonicEngine();
+                if (paramAppRuntime != null) {
+                  paramAppRuntime.cleanCache();
+                }
+                a(paramContext);
+                SwiftBrowserCookieMonster.d();
+                paramAppRuntime = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+                a("sp_sonic_white_list_config_" + paramAppRuntime, 4);
+                a("local_html", 4);
+                WebSoService.a().a();
+                bbee.a();
+                return;
+              }
+              if ("action_reset_tbs".equals(localObject))
+              {
+                QbSdk.reset(paramContext.getApplicationContext());
+                return;
+              }
+              if (!"action_download_tbs".equals(localObject)) {
+                break;
+              }
+              paramContext = WebAccelerateHelper.getInstance().getTBSDpcParam();
+              int j = 0;
+              i = j;
+              if (paramContext != null)
+              {
+                i = j;
+                if (paramContext.charAt(0) == '1') {
+                  i = 1;
+                }
+              }
+              bool1 = paramIntent.getBooleanExtra("isDownloadForeground", false);
+              bool2 = paramIntent.getBooleanExtra("fromMiniApp", false);
+            } while (i == 0);
+            ThreadManagerV2.executeOnSubThread(new WebProcessReceiver.1(this, bool1, paramAppRuntime, bool2));
+            return;
+            if (!"action_preload_sonic_session".equals(localObject)) {
+              break;
             }
             if (QLog.isColorLevel()) {
-              QLog.d("WebProcessReceiver", 2, "apollo_client onReceive AIOOpenWebMonitor.PRELOAD_FROM_READINJOY == fromOfPreload");
+              QLog.d("WebProcessReceiver", 2, "Receive preloadSonicSession sonic session");
             }
-            new VideoPluginInstall(paramContext);
-            VideoAutoPlayController.a(paramContext);
-            new ListView(paramContext);
+            paramAppRuntime = paramIntent.getParcelableArrayListExtra("com.tencent.mobileqq.webprocess.sonic_preload_data");
+          } while ((paramAppRuntime == null) || (paramAppRuntime.size() <= 0));
+          SonicPreloader.preload(paramAppRuntime);
+          return;
+          if (!"action_delete_sonic_templateinfo".equals(localObject)) {
+            break label761;
           }
-        }
-        catch (Exception paramAppRuntime)
-        {
-          for (;;)
-          {
-            paramAppRuntime.printStackTrace();
-            continue;
-            if (QLog.isColorLevel()) {
-              QLog.d("WebProcessReceiver", 2, "onReceive AIOOpenWebMonitor.PRELOAD_FROM_READINJOY_HALF!");
-            }
-            WebCoreService.a();
-            com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics.n = true;
+          if (QLog.isColorLevel()) {
+            QLog.d("WebProcessReceiver", 2, "Receive action delete sonic template");
           }
-        }
-      }
-    }
-    if ("action_clear_cache".equals(str))
-    {
-      WebAccelerateHelper.getSonicEngine().cleanCache();
-      a(paramContext);
-      SwiftBrowserCookieMonster.d();
-      paramAppRuntime = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-      a("sp_sonic_white_list_config_" + paramAppRuntime, 4);
-      a("local_html", 4);
-      return;
-    }
-    if ("action_reset_tbs".equals(str))
-    {
-      QbSdk.reset(paramContext.getApplicationContext());
-      return;
-    }
-    if ("action_download_tbs".equals(str))
-    {
-      paramIntent = WebAccelerateHelper.getInstance().getTBSDpcParam();
-      if ((paramIntent == null) || (paramIntent.charAt(0) != '1')) {
-        break label830;
-      }
-    }
-    for (;;)
-    {
-      boolean bool = TbsDownloader.needDownload(paramContext, false);
-      if ((i == 0) || (!bool) || (!(paramAppRuntime instanceof BrowserAppInterface))) {
-        break;
-      }
-      ((BrowserAppInterface)paramAppRuntime).a(false);
-      return;
-      if ("action_preload_sonic_session".equals(str))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("WebProcessReceiver", 2, "Receive preloadSonicSession sonic session");
-        }
-        paramAppRuntime = paramIntent.getParcelableArrayListExtra("com.tencent.mobileqq.webprocess.sonic_preload_data");
-        if ((paramAppRuntime == null) || (paramAppRuntime.size() <= 0)) {
-          break;
-        }
-        SonicPreloader.a(paramAppRuntime);
-        return;
-      }
-      if ("action_delete_sonic_templateinfo".equals(str))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("WebProcessReceiver", 2, "Receive action delete sonic template");
-        }
-        paramAppRuntime = paramIntent.getStringArrayExtra("com.tencent.mobileqq.webprocess.sonic_template_delete_sessionId");
-        paramContext = paramIntent.getLongArrayExtra("com.tencent.mobileqq.webprocess.sonic_template_delete_updateTime");
-        if ((paramAppRuntime != null) && (paramAppRuntime.length > 0) && (paramContext != null) && (paramContext.length > 0) && (paramAppRuntime.length == paramContext.length))
-        {
+          paramAppRuntime = paramIntent.getStringArrayExtra("com.tencent.mobileqq.webprocess.sonic_template_delete_sessionId");
+          paramContext = paramIntent.getLongArrayExtra("com.tencent.mobileqq.webprocess.sonic_template_delete_updateTime");
+          if ((paramAppRuntime == null) || (paramAppRuntime.length <= 0) || (paramContext == null) || (paramContext.length <= 0) || (paramAppRuntime.length != paramContext.length)) {
+            break;
+          }
           paramIntent = new HashMap();
-          i = j;
+          int i = 0;
           while (i < paramAppRuntime.length)
           {
             paramIntent.put(paramAppRuntime[i], Long.valueOf(paramContext[i]));
             i += 1;
           }
-          if (paramIntent.size() <= 0) {
-            break;
-          }
-          ThreadManager.post(new aktp(this, paramIntent), 5, null, true);
-          return;
-        }
+        } while (paramIntent.size() <= 0);
+        ThreadManager.post(new WebProcessReceiver.2(this, paramIntent), 5, null, true);
+        return;
         QLog.e("WebProcessReceiver", 1, "Receive action delete sonic template data error");
         return;
-      }
-      if ("com.tencent.mobileqq.webprocess.stop_web_core_service".equals(str))
-      {
-        QLog.i("WebProcessReceiver", 1, "Receive action stop web core service");
-        WebCoreService.b();
-        return;
-      }
-      if ("com.tencent.mobileqq.webprocess.release_tool_process".equals(str))
-      {
-        if (WebCoreService.a) {
+        if ("com.tencent.mobileqq.webprocess.stop_web_core_service".equals(localObject))
+        {
+          QLog.i("WebProcessReceiver", 1, "Receive action stop web core service");
           WebCoreService.b();
+          return;
         }
-        bool = SwiftWebAccelerator.a().a;
-        QLog.i("WebProcessReceiver", 1, "Receive action release tool process, isInRealWorld:" + bool);
-        if (bool) {
+        if (!"com.tencent.mobileqq.webprocess.release_tool_process".equals(localObject)) {
           break;
         }
-        System.exit(0);
-        return;
+        if (WebCoreService.jdField_a_of_type_Boolean) {
+          WebCoreService.b();
+        }
+        bool1 = bbcz.a().jdField_a_of_type_Boolean;
+        QLog.i("WebProcessReceiver", 1, "Receive action release tool process, isInRealWorld:" + bool1);
+      } while (bool1);
+      System.exit(0);
+      return;
+      if (!"com.tencent.mobileqq.webprocess.launch_cmgame".equals(localObject)) {
+        break label1392;
       }
-      if ("com.tencent.mobileqq.webprocess.launch_cmgame".equals(str))
-      {
-        QLog.i("WebProcessReceiver", 1, "Receive action launch_cmgame.");
-        CmGameUtil.a((CmGameStartChecker.StartCheckParam)paramIntent.getSerializableExtra("extra_startcheckparam"));
-        return;
-      }
-      if ((!"com.tencent.mobileqq.webprocess.cmgame_shortcut".equals(str)) || (paramContext == null)) {
+      QLog.i("WebProcessReceiver", 1, "Receive action launch_cmgame.");
+      if (!paramIntent.getBooleanExtra("action_apollo_cmshow_content_update", false)) {
         break;
       }
-      QQToast.a(paramContext, paramContext.getResources().getString(2131438226), 0).a();
+      paramAppRuntime = paramIntent.getStringExtra("key_content_update_zip_name");
+      QLog.i("WebProcessReceiver", 1, "rscContent_CmShowRscCacheManager onReceive zipName:" + paramAppRuntime);
+    } while (!"all_room3D".equals(paramAppRuntime));
+    aihi.a().a();
+    return;
+    paramIntent = (CmGameStartChecker.StartCheckParam)paramIntent.getSerializableExtra("extra_startcheckparam");
+    long l2;
+    long l3;
+    if ((paramIntent != null) && (paramIntent.statMap != null) && (paramIntent.statMap.containsKey("click_time")))
+    {
+      l2 = ((Long)paramIntent.statMap.get("click_time")).longValue();
+      if (l2 > 0L)
+      {
+        l3 = SystemClock.uptimeMillis();
+        if (!paramIntent.statMap.containsKey("game_process_on")) {
+          break label1439;
+        }
+      }
+    }
+    label1439:
+    for (long l1 = ((Long)paramIntent.statMap.get("game_process_on")).longValue();; l1 = 0L)
+    {
+      long l4 = l3 - l2;
+      if (l4 > 0L)
+      {
+        paramContext = "cmgame_click_to_receive";
+        paramIntent.statMap.put("game_process_receive_time", Long.valueOf(l3));
+        if (l4 >= 20000L)
+        {
+          paramContext = "cmgame_click_to_receive_exception";
+          paramIntent.statMap.clear();
+        }
+        localObject = new HashMap();
+        ((HashMap)localObject).put("param_gameId", String.valueOf(paramIntent.gameId));
+        ((HashMap)localObject).put("param_processOn", String.valueOf(l1));
+        ((HashMap)localObject).put("param_src", String.valueOf(paramIntent.src));
+        awrn.a(paramAppRuntime.getApplication()).a(paramAppRuntime.getAccount(), paramContext, true, l4, 0L, (HashMap)localObject, "", false);
+        QLog.d("CmGameStat", 1, new Object[] { paramContext, ", duration=", Long.valueOf(l4), ", receiveTime=", Long.valueOf(l3), ", clickTime=", Long.valueOf(l2), " [processOn=", Long.valueOf(l1), ", gameId=", Integer.valueOf(paramIntent.gameId), ", src=", Integer.valueOf(paramIntent.src), "]" });
+      }
+      while (paramIntent != null)
+      {
+        if (!paramIntent.mLoadingOnMainProcess) {
+          break label1387;
+        }
+        if (ApolloGameUtil.a(paramIntent)) {
+          break label1366;
+        }
+        aing.a(paramIntent);
+        return;
+        paramIntent.statMap.clear();
+        QLog.d("CmGameStat", 1, new Object[] { "receive, duration invalid, duration=", Long.valueOf(l4), ", receiveTime=", Long.valueOf(l3), ", clickTime=", Long.valueOf(l2) });
+      }
+      break;
+      label1366:
+      QLog.e("WebProcessReceiver", 1, new Object[] { "launch game but cancel params", paramIntent });
       return;
-      label830:
-      i = 0;
+      label1387:
+      aing.a(paramIntent);
+      return;
+      label1392:
+      if ("com.tencent.mobileqq.webprocess.cmgame_shortcut".equals(localObject))
+      {
+        if (paramContext == null) {
+          break;
+        }
+        bbmy.a(paramContext, paramContext.getResources().getString(2131624550), 0).a();
+        return;
+      }
+      if (!"action_pre_download_plato".equals(localObject)) {
+        break;
+      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.WebProcessReceiver
  * JD-Core Version:    0.7.0.1
  */

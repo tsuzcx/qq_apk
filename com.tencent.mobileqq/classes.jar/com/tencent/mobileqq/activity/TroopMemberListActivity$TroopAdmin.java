@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity;
 
+import acau;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import uhb;
 
 public class TroopMemberListActivity$TroopAdmin
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new uhb();
+  public static final Parcelable.Creator<TroopAdmin> CREATOR = new acau();
   public String a;
   public short a;
   public String b;

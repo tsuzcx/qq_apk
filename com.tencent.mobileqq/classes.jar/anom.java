@@ -1,25 +1,31 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.wadl.ipc.WadlParams;
+import java.util.HashMap;
 
-public final class anom
-  implements Parcelable.Creator
+class anom
+  implements axrs
 {
-  public WadlParams a(Parcel paramParcel)
-  {
-    WadlParams localWadlParams = new WadlParams("");
-    localWadlParams.a(paramParcel);
-    return localWadlParams;
-  }
+  anom(anok paramanok) {}
   
-  public WadlParams[] a(int paramInt)
+  public void a(axsp paramaxsp, axsq paramaxsq)
   {
-    return new WadlParams[paramInt];
+    if ((paramaxsp != null) && (paramaxsq != null) && ((paramaxsp instanceof axro)))
+    {
+      paramaxsp = (axro)paramaxsp;
+      paramaxsp.jdField_a_of_type_Long += paramaxsq.c;
+      paramaxsq.c = 0L;
+      paramaxsq = "bytes=" + paramaxsp.jdField_a_of_type_Long + "-";
+      paramaxsp.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaxsq);
+      paramaxsq = paramaxsp.jdField_a_of_type_JavaLangString;
+      if (paramaxsq.contains("range="))
+      {
+        paramaxsq = paramaxsq.substring(0, paramaxsq.lastIndexOf("range="));
+        paramaxsp.jdField_a_of_type_JavaLangString = (paramaxsq + "range=" + paramaxsp.jdField_a_of_type_Long);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anom
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,13 @@ import java.util.Map;
 public final class cell_recomm_action
   extends JceStruct
 {
-  static Map cache_extend_info;
+  static Map<Integer, String> cache_extend_info;
   static s_button cache_left_bottom_button = new s_button();
-  static ArrayList cache_relation_chain;
+  static ArrayList<s_user> cache_relation_chain;
   static s_rank cache_s_app_rank = new s_rank();
-  static ArrayList cache_userlist = new ArrayList();
+  static ArrayList<s_user> cache_userlist = new ArrayList();
   public int actiontype;
+  public String add_group_url = "";
   public int adv_pos;
   public int allcount;
   public String alternate_ad_identification = "";
@@ -24,24 +25,34 @@ public final class cell_recomm_action
   public int button_style;
   public String button_text = "";
   public String button_url = "";
+  public String channel = "";
   public int count_down_timer;
+  public String currency_pass_field = "";
+  public int dest_type;
+  public String dest_url = "";
   public int detail_actiontype;
   public String detail_text = "";
   public String detail_url = "";
-  public Map extend_info;
+  public Map<Integer, String> extend_info;
   public String installed_buttontxt = "";
   public String interact_left_text = "";
   public int is_hide_action_area;
   public int is_report;
   public s_button left_bottom_button;
   public int multi_adv_offset;
-  public ArrayList relation_chain;
+  public int product_type;
+  public long productid;
+  public ArrayList<s_user> relation_chain;
   public int relation_total_number;
   public String remark = "";
   public String report_url = "";
+  public String rl = "";
   public s_rank s_app_rank;
+  public int style;
+  public int templ_layout;
   public String tips_icon = "";
-  public ArrayList userlist;
+  public ArrayList<s_user> userlist;
+  public String via = "";
   
   static
   {
@@ -56,7 +67,7 @@ public final class cell_recomm_action
   
   public cell_recomm_action() {}
   
-  public cell_recomm_action(s_rank params_rank, String paramString1, ArrayList paramArrayList1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2, int paramInt5, String paramString3, int paramInt6, String paramString4, int paramInt7, String paramString5, int paramInt8, String paramString6, String paramString7, int paramInt9, int paramInt10, String paramString8, String paramString9, String paramString10, ArrayList paramArrayList2, int paramInt11, int paramInt12, Map paramMap, s_button params_button)
+  public cell_recomm_action(s_rank params_rank, String paramString1, ArrayList<s_user> paramArrayList1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2, int paramInt5, String paramString3, int paramInt6, String paramString4, int paramInt7, String paramString5, int paramInt8, String paramString6, String paramString7, int paramInt9, int paramInt10, String paramString8, String paramString9, String paramString10, ArrayList<s_user> paramArrayList2, int paramInt11, int paramInt12, Map<Integer, String> paramMap, s_button params_button, String paramString11, String paramString12, String paramString13, long paramLong, int paramInt13, int paramInt14, int paramInt15, String paramString14, String paramString15, int paramInt16, String paramString16)
   {
     this.s_app_rank = params_rank;
     this.remark = paramString1;
@@ -85,6 +96,17 @@ public final class cell_recomm_action
     this.count_down_timer = paramInt12;
     this.extend_info = paramMap;
     this.left_bottom_button = params_button;
+    this.currency_pass_field = paramString11;
+    this.via = paramString12;
+    this.channel = paramString13;
+    this.productid = paramLong;
+    this.templ_layout = paramInt13;
+    this.dest_type = paramInt14;
+    this.product_type = paramInt15;
+    this.dest_url = paramString14;
+    this.rl = paramString15;
+    this.style = paramInt16;
+    this.add_group_url = paramString16;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -116,6 +138,17 @@ public final class cell_recomm_action
     this.count_down_timer = paramJceInputStream.read(this.count_down_timer, 25, false);
     this.extend_info = ((Map)paramJceInputStream.read(cache_extend_info, 26, false));
     this.left_bottom_button = ((s_button)paramJceInputStream.read(cache_left_bottom_button, 28, false));
+    this.currency_pass_field = paramJceInputStream.readString(29, false);
+    this.via = paramJceInputStream.readString(30, false);
+    this.channel = paramJceInputStream.readString(31, false);
+    this.productid = paramJceInputStream.read(this.productid, 32, false);
+    this.templ_layout = paramJceInputStream.read(this.templ_layout, 33, false);
+    this.dest_type = paramJceInputStream.read(this.dest_type, 34, false);
+    this.product_type = paramJceInputStream.read(this.product_type, 35, false);
+    this.dest_url = paramJceInputStream.read(this.dest_url, 36, false);
+    this.rl = paramJceInputStream.read(this.rl, 37, false);
+    this.style = paramJceInputStream.read(this.style, 38, false);
+    this.add_group_url = paramJceInputStream.read(this.add_group_url, 39, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -177,11 +210,34 @@ public final class cell_recomm_action
     if (this.left_bottom_button != null) {
       paramJceOutputStream.write(this.left_bottom_button, 28);
     }
+    if (this.currency_pass_field != null) {
+      paramJceOutputStream.write(this.currency_pass_field, 29);
+    }
+    if (this.via != null) {
+      paramJceOutputStream.write(this.via, 30);
+    }
+    if (this.channel != null) {
+      paramJceOutputStream.write(this.channel, 31);
+    }
+    paramJceOutputStream.write(this.productid, 32);
+    paramJceOutputStream.write(this.templ_layout, 33);
+    paramJceOutputStream.write(this.dest_type, 34);
+    paramJceOutputStream.write(this.product_type, 35);
+    if (this.dest_url != null) {
+      paramJceOutputStream.write(this.dest_url, 36);
+    }
+    if (this.rl != null) {
+      paramJceOutputStream.write(this.rl, 37);
+    }
+    paramJceOutputStream.write(this.style, 38);
+    if (this.add_group_url != null) {
+      paramJceOutputStream.write(this.add_group_url, 39);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_recomm_action
  * JD-Core Version:    0.7.0.1
  */

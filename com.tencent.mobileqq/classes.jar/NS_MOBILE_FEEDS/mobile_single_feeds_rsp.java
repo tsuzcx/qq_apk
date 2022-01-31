@@ -10,11 +10,11 @@ import java.util.Map;
 public final class mobile_single_feeds_rsp
   extends JceStruct
 {
-  static ArrayList cache_all_feeds_data = new ArrayList();
-  static Map cache_stMapExtendinfo;
-  public ArrayList all_feeds_data;
+  static ArrayList<single_feed> cache_all_feeds_data = new ArrayList();
+  static Map<String, String> cache_stMapExtendinfo;
+  public ArrayList<single_feed> all_feeds_data;
   public long next_keep_alive_time;
-  public Map stMapExtendinfo;
+  public Map<String, String> stMapExtendinfo;
   
   static
   {
@@ -26,7 +26,7 @@ public final class mobile_single_feeds_rsp
   
   public mobile_single_feeds_rsp() {}
   
-  public mobile_single_feeds_rsp(ArrayList paramArrayList, long paramLong, Map paramMap)
+  public mobile_single_feeds_rsp(ArrayList<single_feed> paramArrayList, long paramLong, Map<String, String> paramMap)
   {
     this.all_feeds_data = paramArrayList;
     this.next_keep_alive_time = paramLong;
@@ -53,7 +53,7 @@ public final class mobile_single_feeds_rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_single_feeds_rsp
  * JD-Core Version:    0.7.0.1
  */

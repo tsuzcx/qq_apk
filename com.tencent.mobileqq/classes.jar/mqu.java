@@ -1,51 +1,26 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.CommentHeaderData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.RecommendTitleData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.BaseItemViewHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.SimpleViewCreator;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.game.SensorAPIJavaScript;
 
 public class mqu
-  extends BaseItemViewHolder
+  extends Handler
 {
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private View b;
-  private View c;
+  public mqu(SensorAPIJavaScript paramSensorAPIJavaScript) {}
   
-  public mqu(SimpleViewCreator paramSimpleViewCreator, View paramView, BaseData paramBaseData)
+  public void handleMessage(Message paramMessage)
   {
-    super(paramView, paramBaseData);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131361926));
-    this.b = paramView.findViewById(2131363985);
-    this.c = paramView.findViewById(2131367128);
-  }
-  
-  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
-  {
-    paramBaseData1 = "";
-    if (paramBaseData2.d == 7)
-    {
-      paramBaseData1 = ((RecommendTitleData)paramBaseData2).a;
-      this.b.setVisibility(0);
+    if (paramMessage.what == 5) {
+      this.a.a((String)paramMessage.obj);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseData1);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.c.setVisibility(0);
+    while (paramMessage.what != 291) {
       return;
-      if (paramBaseData2.d == 13)
-      {
-        paramBaseData1 = ((CommentHeaderData)paramBaseData2).a;
-        this.b.setVisibility(8);
-      }
     }
+    this.a.updateMicStatus((String)paramMessage.obj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     mqu
  * JD-Core Version:    0.7.0.1
  */

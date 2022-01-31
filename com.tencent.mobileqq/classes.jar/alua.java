@@ -1,33 +1,14 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.qidian.QidianProfileCardActivity;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.QZoneHelper.UserInfo;
-
-public class alua
-  implements Runnable
+public abstract interface alua
 {
-  public alua(QidianProfileCardActivity paramQidianProfileCardActivity, byte[] paramArrayOfByte) {}
+  public abstract void b();
   
-  public void run()
-  {
-    Object localObject2 = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app.getCurrentNickname();
-    Object localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app.getCurrentNickname();
-    }
-    localObject2 = QZoneHelper.UserInfo.a();
-    ((QZoneHelper.UserInfo)localObject2).a = this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.app.getCurrentAccountUin();
-    ((QZoneHelper.UserInfo)localObject2).b = ((String)localObject1);
-    QZoneHelper.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, (QZoneHelper.UserInfo)localObject2, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.g, -1, 5, this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession, this.jdField_a_of_type_ArrayOfByte);
-    QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, false);
-  }
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alua
  * JD-Core Version:    0.7.0.1
  */

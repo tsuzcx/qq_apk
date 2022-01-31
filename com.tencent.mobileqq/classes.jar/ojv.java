@@ -1,40 +1,16 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.EditVideoTagExport;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
-import com.tencent.biz.qqstory.takevideo.tag.TagItem;
-import com.tencent.biz.qqstory.takevideo.tag.TagItem.TagInfoBase;
+import java.net.URL;
 
 public class ojv
-  implements Runnable
 {
-  public ojv(EditVideoMusic paramEditVideoMusic) {}
+  int jdField_a_of_type_Int;
+  URL jdField_a_of_type_JavaNetURL;
+  int b;
+  int c;
+  int d;
   
-  public void run()
+  public String toString()
   {
-    if ((!this.a.d) && (this.a.e))
-    {
-      this.a.d = true;
-      localObject = this.a.a(EditVideoTagExport.class);
-      if (localObject == null) {
-        break label145;
-      }
-    }
-    label145:
-    for (Object localObject = ((EditVideoTagExport)localObject).a(this.a.a.a());; localObject = null)
-    {
-      boolean bool2 = false;
-      boolean bool1 = bool2;
-      if (localObject != null)
-      {
-        bool1 = bool2;
-        if (((TagItem)localObject).a.a == 1) {
-          bool1 = true;
-        }
-      }
-      new EditVideoMusicDialog(this.a.a(), this.a, this.a.c, (int)this.a.a.a(this.a.a.a()), this.a.a.a, true, bool1);
-      return;
-    }
+    return "[WaterFallPic]--> url=" + this.jdField_a_of_type_JavaNetURL.toString() + ",originWidth =" + this.jdField_a_of_type_Int + ",originHeight =" + this.b + ",calcHeight =" + this.c + ",scaleHeight =" + this.d;
   }
 }
 

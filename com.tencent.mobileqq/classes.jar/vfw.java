@@ -1,116 +1,160 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.utils.VasUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity;
+import com.tribe.async.async.JobContext;
+import java.io.File;
+import java.io.IOException;
 
 public class vfw
-  extends EmoticonPackageDownloadListener
+  extends vfu<vfh, vfh>
 {
-  public vfw(MarketFaceItemBuilder paramMarketFaceItemBuilder) {}
+  private final String a;
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
+  public vfw()
   {
-    Object localObject2;
-    if (paramInt != 0)
+    this(null);
+  }
+  
+  public vfw(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  protected void a(JobContext paramJobContext, vfh paramvfh)
+  {
+    paramJobContext = null;
+    int i = 0;
+    Object localObject3 = paramvfh.jdField_a_of_type_JavaLangString;
+    if (TextUtils.isEmpty((CharSequence)localObject3))
     {
-      localObject1 = this.a.jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (MarketFaceItemBuilder.Holder)((Iterator)localObject1).next();
-        if ((((MarketFaceItemBuilder.Holder)localObject2).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo != null) && (paramEmoticonPackage.epId.equals(((MarketFaceItemBuilder.Holder)localObject2).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId)))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("MarketFaceItemBuilder", 2, "Download magic Emoji fail!");
-          }
-          ((BaseActivity)this.a.b).runOnUiThread(new vfx(this, (MarketFaceItemBuilder.Holder)localObject2));
-        }
-      }
-    }
-    do
-    {
-      this.a.jdField_a_of_type_JavaUtilList.remove(localObject2);
+      super.notifyError(new ErrorMessage(-1, "should generate video thumb first !"));
       return;
-      while ((!this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a()) || (paramEmoticonPackage == null)) {}
-      localObject1 = ((EmoticonManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13)).a(paramEmoticonPackage.epId);
-    } while (localObject1 == null);
-    Object localObject1 = ((List)localObject1).iterator();
-    Emoticon localEmoticon;
-    boolean bool;
-    label295:
-    Boolean localBoolean;
-    if (((Iterator)localObject1).hasNext())
+    }
+    Object localObject2 = this.jdField_a_of_type_JavaLangString;
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = vfx.a(paramvfh.jdField_a_of_type_Int, paramvfh.b, ".jpg");
+    }
+    String str2 = paramvfh.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodleRawPath;
+    String str1 = paramvfh.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.doodlePath;
+    if ((str2 != null) || (str1 != null))
     {
-      localEmoticon = (Emoticon)((Iterator)localObject1).next();
-      localObject2 = this.a.jdField_a_of_type_JavaUtilList.iterator();
-      for (;;)
+      try
       {
-        if (((Iterator)localObject2).hasNext())
+        localObject3 = BitmapFactory.decodeFile((String)localObject3);
+        if (localObject3 != null) {
+          break label184;
+        }
+        super.notifyError(new ErrorMessage(-1, ajjy.a(2131640770)));
+        return;
+      }
+      catch (OutOfMemoryError paramJobContext)
+      {
+        urk.e("Q.qqstory.publish.edit.MergeThumbSegment", "merge doodle and thumb image failed : " + paramJobContext);
+      }
+      if (i == 0) {
+        break label466;
+      }
+      vlm.a(new File(paramvfh.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath), new File(QQStoryTakeVideoCloseAnimationActivity.jdField_a_of_type_JavaLangString));
+      super.notifyResult(paramvfh);
+      return;
+      label184:
+      if (str2 == null) {
+        break label484;
+      }
+      try
+      {
+        localObject2 = vlc.a(str2, null);
+        paramJobContext = (JobContext)localObject2;
+        urk.d("Q.qqstory.publish.edit.MergeThumbSegment", "unSerializeBitmapFromFile success %s", new Object[] { str2 });
+        paramJobContext = (JobContext)localObject2;
+      }
+      catch (IOException localIOException)
+      {
+        for (;;)
         {
-          localObject1 = (MarketFaceItemBuilder.Holder)((Iterator)localObject2).next();
-          if ((((MarketFaceItemBuilder.Holder)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo != null) && (paramEmoticonPackage.epId.equals(((MarketFaceItemBuilder.Holder)localObject1).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId)))
+          try
           {
-            localObject2 = ((MarketFaceItemBuilder.Holder)localObject1).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-            if ((((MarketFaceItemBuilder.Holder)localObject1).jdField_a_of_type_Boolean) && (((MarketFaceItemBuilder.Holder)localObject1).e.hasWindowFocus()))
-            {
-              bool = true;
-              ((MarketFaceItemBuilder.Holder)localObject1).jdField_a_of_type_Boolean = false;
-              localBoolean = Boolean.valueOf(bool);
+            label219:
+            localObject2 = BitmapFactory.decodeFile(str1);
+            paramJobContext = (JobContext)localObject2;
+            if (paramJobContext == null) {
+              break label501;
             }
+            localObject2 = vlc.b((Bitmap)localObject3, paramJobContext);
+            paramJobContext.recycle();
+            ((Bitmap)localObject3).recycle();
+            paramJobContext = (JobContext)localObject2;
           }
+          catch (OutOfMemoryError localOutOfMemoryError)
+          {
+            urk.c("Q.qqstory.publish.edit.MergeThumbSegment", "decode " + str1 + " failed", localOutOfMemoryError);
+            break label498;
+          }
+          localIOException = localIOException;
+          urk.c("Q.qqstory.publish.edit.MergeThumbSegment", "unSerializeBitmapFromFile failed", localIOException);
         }
       }
+      if ((paramJobContext != null) || (str1 == null)) {
+        break label498;
+      }
     }
+    label238:
+    label495:
+    label498:
+    label501:
+    label505:
     for (;;)
     {
-      if (localBoolean.booleanValue()) {
-        if (localObject2 != null)
+      vlm.a(sfm.e);
+      boolean bool = vlc.a(paramJobContext, (String)localObject1);
+      if (paramJobContext != null) {
+        paramJobContext.recycle();
+      }
+      if (bool)
+      {
+        paramvfh.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = ((String)localObject1);
+        urk.b("Q.qqstory.publish.edit.MergeThumbSegment", "merge doodle and thumb image success : " + (String)localObject1);
+        i = 1;
+      }
+      else
+      {
+        urk.d("Q.qqstory.publish.edit.MergeThumbSegment", "merge doodle and thumb image failed");
+        i = 0;
+        break label495;
+        urk.a("Q.qqstory.publish.edit.MergeThumbSegment", "use thumb image as merged image, copy to target destination = %s", localObject1);
+        if (vlm.a(new File((String)localObject3), new File((String)localObject1)))
         {
-          localObject2 = ((ChatMessage)localObject2).senderuin;
-          ((BaseActivity)this.a.b).runOnUiThread(new vfy(this, localEmoticon, (String)localObject2, (MarketFaceItemBuilder.Holder)localObject1));
+          paramvfh.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.thumbPath = ((String)localObject1);
+          i = 1;
+          break;
         }
+        urk.d("Q.qqstory.publish.edit.MergeThumbSegment", "copy failed, original = %s, target = %s", new Object[] { localObject3, localObject1 });
+        break;
+        super.notifyError(new ErrorMessage(-1, ajjy.a(2131640769)));
+        return;
+        paramJobContext = null;
+        break label219;
       }
       for (;;)
       {
-        localObject1 = this.a.jdField_a_of_type_JavaUtilList.iterator();
-        if (!((Iterator)localObject1).hasNext()) {
-          break;
+        if (paramJobContext != null) {
+          break label505;
         }
-        localObject2 = (MarketFaceItemBuilder.Holder)((Iterator)localObject1).next();
-        if ((((MarketFaceItemBuilder.Holder)localObject2).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo == null) || (!paramEmoticonPackage.epId.equals(((MarketFaceItemBuilder.Holder)localObject2).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId))) {
-          break;
-        }
-        if (((MarketFaceItemBuilder.Holder)localObject2).jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.jobType == 2) {
-          VasUtils.a(this.a.b, null);
-        }
-        this.a.jdField_a_of_type_JavaUtilList.remove(localObject2);
-        return;
-        bool = false;
-        break label295;
-        if ((localEmoticon != null) && (localEmoticon.jobType == 4)) {
-          ((BaseActivity)this.a.b).runOnUiThread(new vfz(this, (MarketFaceItemBuilder.Holder)localObject1, localEmoticon));
-        }
+        i = 0;
+        break;
+        break label238;
+        paramJobContext = (JobContext)localObject3;
       }
-      localObject2 = null;
-      localBoolean = Boolean.valueOf(false);
-      localObject1 = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vfw
  * JD-Core Version:    0.7.0.1
  */

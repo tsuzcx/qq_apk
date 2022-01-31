@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class get_config$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   public static final int STR_CONFIG_NAME_FIELD_NUMBER = 5;
   public static final int U32_APPID_FIELD_NUMBER = 3;

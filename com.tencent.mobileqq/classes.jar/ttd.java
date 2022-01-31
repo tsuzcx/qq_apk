@@ -1,22 +1,19 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnVideoSizeChangedListener;
 
-public class ttd
-  implements Runnable
+class ttd
+  implements MediaPlayer.OnVideoSizeChangedListener
 {
-  public ttd(RegisterActivity paramRegisterActivity) {}
+  ttd(tsy paramtsy, tsw paramtsw) {}
   
-  public void run()
+  public void onVideoSizeChanged(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
-      this.a.a.dismiss();
-    }
-    this.a.a = null;
+    this.jdField_a_of_type_Tsw.a(this.jdField_a_of_type_Tsy, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ttd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,22 @@
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadinjoyAdVideoReportData;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoPlayParam;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.data.AccountDetail;
 
-public class mtd
-  implements Runnable
+class mtd
+  implements View.OnClickListener
 {
-  public mtd(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager) {}
+  mtd(mtc parammtc) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((FastWebVideoFeedsPlayManager.a(this.a) != null) && (FastWebVideoFeedsPlayManager.a(this.a).c() == 5))
+    ((AccountDetailActivity)this.a.jdField_a_of_type_AndroidAppActivity).D();
+    String str = this.a.jdField_a_of_type_JavaLangString;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.followType == 1) {}
+    for (paramView = "02";; paramView = "01")
     {
-      FastWebVideoFeedsPlayManager.a(this.a).e();
-      FastWebVideoFeedsPlayManager.a(this.a, 8);
-      if ((FastWebVideoFeedsPlayManager.a(this.a) == null) || (FastWebVideoFeedsPlayManager.a(this.a).c.getVisibility() != 0)) {
-        break label104;
-      }
-      this.a.a(3);
-    }
-    for (;;)
-    {
-      if (FastWebVideoFeedsPlayManager.c(this.a)) {
-        FastWebVideoFeedsPlayManager.a(this.a).a.f = ReadinjoyAdVideoReportData.b;
-      }
+      ndn.a(null, str, "0X8007CA4", "0X8007CA4", 0, 0, paramView, String.valueOf(mtc.a(this.a)), "", "", false);
       return;
-      label104:
-      this.a.a(4);
     }
   }
 }

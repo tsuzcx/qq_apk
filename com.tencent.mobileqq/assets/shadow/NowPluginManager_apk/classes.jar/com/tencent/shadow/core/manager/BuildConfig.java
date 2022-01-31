@@ -1,0 +1,17 @@
+package com.tencent.shadow.core.manager;
+
+public final class BuildConfig
+{
+  public static final String APPLICATION_ID = "com.tencent.shadow.core.manager";
+  public static final String BUILD_TYPE = "release";
+  public static final boolean DEBUG = false;
+  public static final String FLAVOR = "";
+  public static final int VERSION_CODE = 1;
+  public static final String VERSION_NAME = "local";
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\assets\shadow\NowPluginManager_apk\classes.jar
+ * Qualified Name:     com.tencent.shadow.core.manager.BuildConfig
+ * JD-Core Version:    0.7.0.1
+ */

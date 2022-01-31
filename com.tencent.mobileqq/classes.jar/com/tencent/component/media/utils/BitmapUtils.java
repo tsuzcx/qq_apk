@@ -20,16 +20,30 @@ import com.tencent.component.media.image.ImageManager;
 import com.tencent.sharpP.SharpPUtils;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Field;
 
 @Public
 public final class BitmapUtils
 {
+  private static final int DEFAULT_QUALITY = 90;
+  private static final String[] EXIF_TAGS = { "FNumber", "DateTime", "ExposureTime", "Flash", "FocalLength", "GPSAltitude", "GPSAltitudeRef", "GPSDateStamp", "GPSLatitude", "GPSLatitudeRef", "GPSLongitude", "GPSLongitudeRef", "GPSProcessingMethod", "GPSTimeStamp", "ISOSpeedRatings", "Make", "Model", "Orientation", "WhiteBalance" };
   public static final String TAG = "BitmapUtils";
-  private static BitmapFactory.Options jdField_a_of_type_AndroidGraphicsBitmapFactory$Options = null;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "FNumber", "DateTime", "ExposureTime", "Flash", "FocalLength", "GPSAltitude", "GPSAltitudeRef", "GPSDateStamp", "GPSLatitude", "GPSLatitudeRef", "GPSLongitude", "GPSLongitudeRef", "GPSProcessingMethod", "GPSTimeStamp", "ISOSpeedRatings", "Make", "Model", "Orientation", "WhiteBalance" };
+  private static BitmapFactory.Options options = null;
   
-  private static boolean a(Bitmap paramBitmap, BitmapFactory.Options paramOptions)
+  @TargetApi(11)
+  public static void addInBitmapOptions(BitmapFactory.Options paramOptions, Bitmap paramBitmap)
+  {
+    if (paramOptions == null) {}
+    do
+    {
+      return;
+      paramOptions.inMutable = true;
+    } while ((paramBitmap == null) || (!canUseForInBitmap(paramBitmap, paramOptions)));
+    paramOptions.inBitmap = paramBitmap;
+  }
+  
+  private static boolean canUseForInBitmap(Bitmap paramBitmap, BitmapFactory.Options paramOptions)
   {
     boolean bool2 = true;
     boolean bool1 = true;
@@ -50,18 +64,6 @@ public final class BitmapUtils
     for (bool1 = bool2;; bool1 = false) {
       return bool1;
     }
-  }
-  
-  @TargetApi(11)
-  public static void addInBitmapOptions(BitmapFactory.Options paramOptions, Bitmap paramBitmap)
-  {
-    if (paramOptions == null) {}
-    do
-    {
-      return;
-      paramOptions.inMutable = true;
-    } while ((paramBitmap == null) || (!a(paramBitmap, paramOptions)));
-    paramOptions.inBitmap = paramBitmap;
   }
   
   public static byte[] compressToBytes(Bitmap paramBitmap)
@@ -98,7 +100,7 @@ public final class BitmapUtils
       ImageManagerEnv.getLogger().e("BitmapUtils", new Object[] { "copyExif: file not exits!" });
       return;
     }
-    if (SharpPUtils.a(paramString1))
+    if (SharpPUtils.isSharpP(paramString1))
     {
       ImageManagerEnv.getLogger().w("BitmapUtils", new Object[] { "sharpP image do not support copy exif" });
       return;
@@ -110,7 +112,7 @@ public final class BitmapUtils
       {
         paramString1 = new ExifInterface(paramString1.getAbsolutePath());
         paramString2 = new ExifInterface(paramString2.getAbsolutePath());
-        String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+        String[] arrayOfString = EXIF_TAGS;
         int j = arrayOfString.length;
         i = 0;
         if (i < j)
@@ -141,38 +143,38 @@ public final class BitmapUtils
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokevirtual 232	android/graphics/drawable/Drawable:getIntrinsicWidth	()I
+    //   1: invokevirtual 237	android/graphics/drawable/Drawable:getIntrinsicWidth	()I
     //   4: iconst_2
-    //   5: invokestatic 238	java/lang/Math:max	(II)I
+    //   5: invokestatic 243	java/lang/Math:max	(II)I
     //   8: istore_1
     //   9: aload_0
-    //   10: invokevirtual 241	android/graphics/drawable/Drawable:getIntrinsicHeight	()I
+    //   10: invokevirtual 246	android/graphics/drawable/Drawable:getIntrinsicHeight	()I
     //   13: iconst_2
-    //   14: invokestatic 238	java/lang/Math:max	(II)I
+    //   14: invokestatic 243	java/lang/Math:max	(II)I
     //   17: istore_2
-    //   18: invokestatic 247	com/tencent/component/media/image/ImageManager:getInstance	()Lcom/tencent/component/media/image/ImageManager;
+    //   18: invokestatic 252	com/tencent/component/media/image/ImageManager:getInstance	()Lcom/tencent/component/media/image/ImageManager;
     //   21: iload_1
     //   22: iload_2
-    //   23: getstatic 253	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
-    //   26: invokevirtual 257	com/tencent/component/media/image/ImageManager:getBitmap	(IILandroid/graphics/Bitmap$Config;)Lcom/tencent/component/media/image/BitmapReference;
+    //   23: getstatic 258	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
+    //   26: invokevirtual 262	com/tencent/component/media/image/ImageManager:getBitmap	(IILandroid/graphics/Bitmap$Config;)Lcom/tencent/component/media/image/BitmapReference;
     //   29: astore_3
-    //   30: new 259	android/graphics/Canvas
+    //   30: new 264	android/graphics/Canvas
     //   33: dup
     //   34: aload_3
-    //   35: invokevirtual 264	com/tencent/component/media/image/BitmapReference:getBitmap	()Landroid/graphics/Bitmap;
-    //   38: invokespecial 267	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
+    //   35: invokevirtual 269	com/tencent/component/media/image/BitmapReference:getBitmap	()Landroid/graphics/Bitmap;
+    //   38: invokespecial 272	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
     //   41: astore 4
     //   43: aload_0
     //   44: iconst_0
     //   45: iconst_0
     //   46: aload 4
-    //   48: invokevirtual 268	android/graphics/Canvas:getWidth	()I
+    //   48: invokevirtual 273	android/graphics/Canvas:getWidth	()I
     //   51: aload 4
-    //   53: invokevirtual 269	android/graphics/Canvas:getHeight	()I
-    //   56: invokevirtual 273	android/graphics/drawable/Drawable:setBounds	(IIII)V
+    //   53: invokevirtual 274	android/graphics/Canvas:getHeight	()I
+    //   56: invokevirtual 278	android/graphics/drawable/Drawable:setBounds	(IIII)V
     //   59: aload_0
     //   60: aload 4
-    //   62: invokevirtual 277	android/graphics/drawable/Drawable:draw	(Landroid/graphics/Canvas;)V
+    //   62: invokevirtual 282	android/graphics/drawable/Drawable:draw	(Landroid/graphics/Canvas;)V
     //   65: aload_3
     //   66: areturn
     //   67: astore_0
@@ -181,10 +183,10 @@ public final class BitmapUtils
     //   70: aload_3
     //   71: ifnull +14 -> 85
     //   74: aload_3
-    //   75: invokevirtual 280	com/tencent/component/media/image/BitmapReference:isRecycled	()Z
+    //   75: invokevirtual 285	com/tencent/component/media/image/BitmapReference:isRecycled	()Z
     //   78: ifne +7 -> 85
     //   81: aload_3
-    //   82: invokevirtual 283	com/tencent/component/media/image/BitmapReference:release	()V
+    //   82: invokevirtual 288	com/tencent/component/media/image/BitmapReference:release	()V
     //   85: aconst_null
     //   86: areturn
     //   87: astore_0
@@ -270,20 +272,26 @@ public final class BitmapUtils
   
   public static BitmapReference processExif(BitmapReference paramBitmapReference, String paramString)
   {
-    if ((paramBitmapReference == null) || (TextUtils.isEmpty(paramString))) {}
+    return processExif(paramBitmapReference, paramString, "");
+  }
+  
+  public static BitmapReference processExif(BitmapReference paramBitmapReference, String paramString1, String paramString2)
+  {
+    if ((paramBitmapReference == null) || (TextUtils.isEmpty(paramString1))) {}
+    int i;
     for (;;)
     {
       return paramBitmapReference;
       if (Build.VERSION.SDK_INT >= 5)
       {
-        Integer localInteger = DecodeImageTask.getImagePath2Rotation(paramString);
+        Integer localInteger = DecodeImageTask.getImagePath2Rotation(paramString1);
         if (localInteger != null) {}
       }
       else
       {
         try
         {
-          boolean bool = new File(paramString).exists();
+          boolean bool = new File(paramString1).exists();
           if (!bool) {}
         }
         catch (Throwable localThrowable)
@@ -291,17 +299,83 @@ public final class BitmapUtils
           for (;;)
           {
             ImageManagerEnv.getLogger().e("BitmapUtils", new Object[] { Log.getStackTraceString(localThrowable) });
+            continue;
+            i = ImageManagerEnv.g().getRotationDegree(paramString1);
           }
         }
       }
     }
-    int i = ImageManagerEnv.g().getRotationDegree(paramString);
-    DecodeImageTask.putImagePath2Rotation(paramString, i);
+    if ((!TextUtils.isEmpty(paramString2)) && ("image/heif".equals(paramString2)))
+    {
+      i = readOrientation(paramString1);
+      DecodeImageTask.putImagePath2Rotation(paramString1, i);
+    }
     for (;;)
     {
       return rotateBitmap(paramBitmapReference, i);
       i = localThrowable.intValue();
     }
+  }
+  
+  public static int readOrientation(String paramString)
+  {
+    try
+    {
+      paramString = new ExifInterface(paramString);
+      if ((paramString != null) && (paramString != null)) {}
+      switch (paramString.getAttributeInt("Orientation", 0))
+      {
+      case 4: 
+      case 5: 
+      case 7: 
+      default: 
+        return 0;
+      }
+    }
+    catch (IOException paramString)
+    {
+      for (;;)
+      {
+        ImageManagerLog.e("BitmapUtils", "readOrientation, IOException");
+        paramString.printStackTrace();
+        paramString = null;
+      }
+      return 90;
+    }
+    return 180;
+    return 270;
+  }
+  
+  public static void resize(LruCache paramLruCache, float paramFloat)
+  {
+    if (paramLruCache == null) {}
+    while ((paramFloat > 1.0F) || (paramFloat < 0.0F)) {
+      return;
+    }
+    int k = paramLruCache.maxSize();
+    int j = (int)(k * paramFloat);
+    int i = j;
+    if (j <= 0) {
+      i = 1;
+    }
+    ImageManagerLog.i("BitmapUtils", "resize  oldMaxSize=" + k + ",newMaxSize=" + i + ",ration=" + paramFloat);
+    paramLruCache.resize(i);
+  }
+  
+  public static void resize(LruCache paramLruCache, float paramFloat, int paramInt)
+  {
+    if (paramLruCache == null) {}
+    while ((paramFloat > 1.0F) || (paramFloat < 0.0F)) {
+      return;
+    }
+    int k = paramLruCache.maxSize();
+    int j = (int)(k * paramFloat);
+    int i = j;
+    if (j < paramInt) {
+      i = paramInt;
+    }
+    ImageManagerLog.i("BitmapUtils", "resize  oldMaxSize=" + k + ",newMaxSize=" + i + ",ration=" + paramFloat + ", minCacheSize = " + paramInt);
+    paramLruCache.resize(i);
   }
   
   public static Bitmap rotateBitmap(Bitmap paramBitmap, int paramInt)
@@ -426,100 +500,100 @@ public final class BitmapUtils
   public static void saveBitmapToFile(Bitmap paramBitmap, String paramString)
   {
     // Byte code:
-    //   0: new 175	java/io/File
+    //   0: new 179	java/io/File
     //   3: dup
     //   4: aload_1
-    //   5: invokespecial 178	java/io/File:<init>	(Ljava/lang/String;)V
+    //   5: invokespecial 182	java/io/File:<init>	(Ljava/lang/String;)V
     //   8: astore_1
-    //   9: new 384	java/io/BufferedOutputStream
+    //   9: new 443	java/io/BufferedOutputStream
     //   12: dup
-    //   13: new 386	java/io/FileOutputStream
+    //   13: new 445	java/io/FileOutputStream
     //   16: dup
     //   17: aload_1
-    //   18: invokespecial 389	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   21: invokespecial 392	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   18: invokespecial 448	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   21: invokespecial 451	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   24: astore_2
     //   25: aload_2
     //   26: astore_1
     //   27: aload_0
-    //   28: getstatic 134	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   28: getstatic 138	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   31: bipush 100
     //   33: aload_2
-    //   34: invokevirtual 144	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   34: invokevirtual 148	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   37: pop
     //   38: aload_2
     //   39: astore_1
     //   40: aload_2
-    //   41: invokevirtual 395	java/io/BufferedOutputStream:flush	()V
+    //   41: invokevirtual 454	java/io/BufferedOutputStream:flush	()V
     //   44: aload_2
     //   45: ifnull +7 -> 52
     //   48: aload_2
-    //   49: invokevirtual 398	java/io/BufferedOutputStream:close	()V
+    //   49: invokevirtual 457	java/io/BufferedOutputStream:close	()V
     //   52: return
     //   53: astore_0
-    //   54: invokestatic 165	com/tencent/component/media/ImageManagerEnv:getLogger	()Lcom/tencent/component/media/ILog;
-    //   57: ldc 9
+    //   54: invokestatic 169	com/tencent/component/media/ImageManagerEnv:getLogger	()Lcom/tencent/component/media/ILog;
+    //   57: ldc 14
     //   59: iconst_1
     //   60: anewarray 4	java/lang/Object
     //   63: dup
     //   64: iconst_0
-    //   65: new 212	java/lang/StringBuilder
+    //   65: new 217	java/lang/StringBuilder
     //   68: dup
-    //   69: invokespecial 213	java/lang/StringBuilder:<init>	()V
-    //   72: ldc_w 400
-    //   75: invokevirtual 219	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   69: invokespecial 218	java/lang/StringBuilder:<init>	()V
+    //   72: ldc_w 459
+    //   75: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   78: aload_0
-    //   79: invokevirtual 401	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   82: invokevirtual 219	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   85: invokevirtual 225	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   79: invokevirtual 460	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   82: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   85: invokevirtual 230	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   88: aastore
-    //   89: invokeinterface 173 3 0
+    //   89: invokeinterface 177 3 0
     //   94: return
     //   95: astore_3
     //   96: aconst_null
     //   97: astore_0
     //   98: aload_0
     //   99: astore_1
-    //   100: invokestatic 165	com/tencent/component/media/ImageManagerEnv:getLogger	()Lcom/tencent/component/media/ILog;
-    //   103: ldc 9
+    //   100: invokestatic 169	com/tencent/component/media/ImageManagerEnv:getLogger	()Lcom/tencent/component/media/ILog;
+    //   103: ldc 14
     //   105: iconst_1
     //   106: anewarray 4	java/lang/Object
     //   109: dup
     //   110: iconst_0
-    //   111: new 212	java/lang/StringBuilder
+    //   111: new 217	java/lang/StringBuilder
     //   114: dup
-    //   115: invokespecial 213	java/lang/StringBuilder:<init>	()V
-    //   118: ldc_w 400
-    //   121: invokevirtual 219	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   115: invokespecial 218	java/lang/StringBuilder:<init>	()V
+    //   118: ldc_w 459
+    //   121: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   124: aload_3
-    //   125: invokevirtual 402	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   128: invokevirtual 219	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   131: invokevirtual 225	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   125: invokevirtual 461	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   128: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   131: invokevirtual 230	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   134: aastore
-    //   135: invokeinterface 173 3 0
+    //   135: invokeinterface 177 3 0
     //   140: aload_0
     //   141: ifnull -89 -> 52
     //   144: aload_0
-    //   145: invokevirtual 398	java/io/BufferedOutputStream:close	()V
+    //   145: invokevirtual 457	java/io/BufferedOutputStream:close	()V
     //   148: return
     //   149: astore_0
-    //   150: invokestatic 165	com/tencent/component/media/ImageManagerEnv:getLogger	()Lcom/tencent/component/media/ILog;
-    //   153: ldc 9
+    //   150: invokestatic 169	com/tencent/component/media/ImageManagerEnv:getLogger	()Lcom/tencent/component/media/ILog;
+    //   153: ldc 14
     //   155: iconst_1
     //   156: anewarray 4	java/lang/Object
     //   159: dup
     //   160: iconst_0
-    //   161: new 212	java/lang/StringBuilder
+    //   161: new 217	java/lang/StringBuilder
     //   164: dup
-    //   165: invokespecial 213	java/lang/StringBuilder:<init>	()V
-    //   168: ldc_w 400
-    //   171: invokevirtual 219	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   165: invokespecial 218	java/lang/StringBuilder:<init>	()V
+    //   168: ldc_w 459
+    //   171: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   174: aload_0
-    //   175: invokevirtual 401	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   178: invokevirtual 219	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   181: invokevirtual 225	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   175: invokevirtual 460	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   178: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   181: invokevirtual 230	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   184: aastore
-    //   185: invokeinterface 173 3 0
+    //   185: invokeinterface 177 3 0
     //   190: return
     //   191: astore_0
     //   192: aconst_null
@@ -527,27 +601,27 @@ public final class BitmapUtils
     //   194: aload_1
     //   195: ifnull +7 -> 202
     //   198: aload_1
-    //   199: invokevirtual 398	java/io/BufferedOutputStream:close	()V
+    //   199: invokevirtual 457	java/io/BufferedOutputStream:close	()V
     //   202: aload_0
     //   203: athrow
     //   204: astore_1
-    //   205: invokestatic 165	com/tencent/component/media/ImageManagerEnv:getLogger	()Lcom/tencent/component/media/ILog;
-    //   208: ldc 9
+    //   205: invokestatic 169	com/tencent/component/media/ImageManagerEnv:getLogger	()Lcom/tencent/component/media/ILog;
+    //   208: ldc 14
     //   210: iconst_1
     //   211: anewarray 4	java/lang/Object
     //   214: dup
     //   215: iconst_0
-    //   216: new 212	java/lang/StringBuilder
+    //   216: new 217	java/lang/StringBuilder
     //   219: dup
-    //   220: invokespecial 213	java/lang/StringBuilder:<init>	()V
-    //   223: ldc_w 400
-    //   226: invokevirtual 219	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   220: invokespecial 218	java/lang/StringBuilder:<init>	()V
+    //   223: ldc_w 459
+    //   226: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   229: aload_1
-    //   230: invokevirtual 401	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   233: invokevirtual 219	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   236: invokevirtual 225	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   230: invokevirtual 460	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   233: invokevirtual 224	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   236: invokevirtual 230	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   239: aastore
-    //   240: invokeinterface 173 3 0
+    //   240: invokeinterface 177 3 0
     //   245: goto -43 -> 202
     //   248: astore_0
     //   249: goto -55 -> 194
@@ -586,6 +660,36 @@ public final class BitmapUtils
       return;
     }
     catch (Throwable paramObject) {}
+  }
+  
+  public static void trimToSize(LruCache paramLruCache, float paramFloat)
+  {
+    if (paramLruCache == null) {}
+    while ((paramFloat > 1.0F) || (paramFloat < 0.0F)) {
+      return;
+    }
+    int i = paramLruCache.size();
+    int j = (int)(i * paramFloat);
+    ImageManagerLog.i("BitmapUtils", "trimToSize  oldSize=" + i + ",newSize=" + j + ",ration=" + paramFloat);
+    paramLruCache.trimToSize(j);
+  }
+  
+  public static void trimToSize(LruCache paramLruCache, float paramFloat, int paramInt)
+  {
+    if (paramLruCache == null) {}
+    while ((paramFloat > 1.0F) || (paramFloat < 0.0F)) {
+      return;
+    }
+    int j = paramLruCache.size();
+    int i = (int)(j * paramFloat);
+    if (i < paramInt) {}
+    for (;;)
+    {
+      ImageManagerLog.i("BitmapUtils", "trimToSize  oldSize=" + j + ",newSize=" + paramInt + ",ration=" + paramFloat);
+      paramLruCache.trimToSize(paramInt);
+      return;
+      paramInt = i;
+    }
   }
 }
 

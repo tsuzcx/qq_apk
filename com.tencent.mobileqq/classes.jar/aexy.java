@@ -1,39 +1,36 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.gameroom.RecentInviteUser;
-import com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class aexy
-  implements Runnable
+  extends aeyh
 {
-  public aexy(WerewolvesDataManager paramWerewolvesDataManager, QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(RecentInviteUser.class);
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.jdField_a_of_type_JavaLangObject;
-    if (localObject2 != null) {
-      try
-      {
-        localObject2 = ((List)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          RecentInviteUser localRecentInviteUser = (RecentInviteUser)((Iterator)localObject2).next();
-          this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.jdField_a_of_type_JavaUtilMap.put(localRecentInviteUser.uniKey, localRecentInviteUser);
-        }
-      }
-      finally {}
-    }
-  }
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public String a;
+  public View b;
+  public ImageView b;
+  public TextView b;
+  public String b;
+  public View c;
+  public ImageView c;
+  public TextView c;
+  public String c;
+  public View d;
+  public ImageView d;
+  public TextView d;
+  public String d;
+  public View e;
+  public ImageView e;
+  public TextView e;
+  public String e;
+  public TextView f;
+  public TextView g;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aexy
  * JD-Core Version:    0.7.0.1
  */

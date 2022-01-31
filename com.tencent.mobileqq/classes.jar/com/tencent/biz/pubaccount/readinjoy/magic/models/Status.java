@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.magic.models;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import java.util.Locale;
-import lrt;
+import oog;
 
 public final class Status
   extends PFile
 {
-  public static final Parcelable.Creator CREATOR = new lrt();
+  public static final Parcelable.Creator<Status> CREATOR = new oog();
   
   private Status(Parcel paramParcel)
   {

@@ -1,47 +1,52 @@
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.observer.GameCenterObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewStub;
+import android.widget.TextView;
 
 public class wwh
-  extends GameCenterObserver
+  extends wvy
 {
-  public wwh(MainAssistObserver paramMainAssistObserver) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public wwh(ViewStub paramViewStub)
   {
-    if ((paramBoolean1) && (paramBoolean2) && (paramInt != 2)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("MainActivity", 2, "inform onGameCenterMsgReceive.type=" + paramInt);
-      }
-    }
-    switch (paramInt)
+    super(paramViewStub);
+  }
+  
+  protected void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131300241);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131300243));
+  }
+  
+  public void b()
+  {
+    a();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131626993);
+  }
+  
+  public void c()
+  {
+    if (a())
     {
-    case 2: 
-    case 3: 
-    default: 
-      return;
-    case 0: 
-      this.a.g();
-      this.a.i();
-      return;
-    case 1: 
-      this.a.g();
-      this.a.i();
-      return;
-    case 4: 
-      this.a.g();
-      this.a.i();
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+  }
+  
+  public void d()
+  {
+    if (!a()) {
       return;
     }
-    this.a.g();
-    this.a.e();
-    this.a.f();
-    this.a.i();
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wwh
  * JD-Core Version:    0.7.0.1
  */

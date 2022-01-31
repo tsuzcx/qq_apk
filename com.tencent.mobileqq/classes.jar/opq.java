@@ -1,24 +1,18 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
-import com.tencent.biz.qqstory.model.DataProvider.DataUpdateListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.cmd0x977.oidb_cmd0x977.FollowStatusInfo;
+import tencent.im.oidb.cmd0x977.oidb_cmd0x977.KdUserInfo;
 
-public class opq
-  implements DataProvider.DataUpdateListener
+class opq
+  implements psh<oidb_cmd0x977.FollowStatusInfo, ppf>
 {
-  public opq(EditVideoMusicDialog paramEditVideoMusicDialog) {}
+  opq(opp paramopp) {}
   
-  public void a(boolean paramBoolean, AddressDataProvider.AddressInfo paramAddressInfo)
+  public ppf a(oidb_cmd0x977.FollowStatusInfo paramFollowStatusInfo)
   {
-    SLog.b("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate.");
-    if ((paramBoolean) && (paramAddressInfo != null))
-    {
-      SLog.a("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate success, address=%s", paramAddressInfo);
-      this.a.a.post(new opr(this, paramAddressInfo));
-      return;
-    }
-    SLog.e("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate failed.");
+    return new ppf(Long.valueOf(paramFollowStatusInfo.uint64_uin.get()), Integer.valueOf(paramFollowStatusInfo.enum_account_type.get()), paramFollowStatusInfo.user_info.bytes_nick.get().toStringUtf8(), paramFollowStatusInfo.user_info.bytes_qq_head_url.get().toStringUtf8());
   }
 }
 

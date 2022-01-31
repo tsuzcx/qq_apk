@@ -1,21 +1,22 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import android.opengl.GLES20;
 
 public class lhe
-  implements CompoundButton.OnCheckedChangeListener
+  extends lhd
 {
-  public lhe(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public lhe(String paramString)
   {
-    ReadInJoySettingActivity.b(this.a, paramBoolean);
-    ReadInJoySettingActivity.a(this.a, ReadInJoySettingActivity.b(this.a));
+    super(paramString);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = GLES20.glGetUniformLocation(paramInt, this.jdField_a_of_type_JavaLangString);
+    lie.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lhe
  * JD-Core Version:    0.7.0.1
  */

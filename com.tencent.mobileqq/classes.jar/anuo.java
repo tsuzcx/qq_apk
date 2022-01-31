@@ -1,110 +1,200 @@
-import com.tencent.common.app.AppInterface;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapFactory.Options;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.extendfriend.wiget.FrameAnimationDrawable.1;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.securitysdk.utils.MD5;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import mqq.os.MqqHandler;
 
-public abstract class anuo
-  implements INetEngine.INetEngineListener, Runnable
+@Deprecated
+public class anuo
+  extends Drawable
+  implements Handler.Callback
 {
-  public final AppInterface a;
-  public final INetEngine a;
-  final QIMMusicConfigManager a;
-  public final String b;
-  final String c;
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long = 1000L;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(1);
+  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private boolean jdField_a_of_type_Boolean;
+  private String[] jdField_a_of_type_ArrayOfJavaLangString;
+  private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long;
+  private volatile boolean jdField_b_of_type_Boolean;
   
-  public anuo(QIMMusicConfigManager paramQIMMusicConfigManager)
+  public anuo()
   {
-    this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager = paramQIMMusicConfigManager;
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramQIMMusicConfigManager.a();
-    this.b = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-    this.c = paramQIMMusicConfigManager.a;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine = QIMMusicConfigManager.a(paramQIMMusicConfigManager);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
   }
   
-  public String a(long paramLong)
+  private void c()
   {
-    Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("OpitrtqeGzopIlwxs").append("_").append("2000000025").append("_").append("SApgehUTVGxZKBQZTt").append("_").append("QmnkKmaTHNDozKdIUA").append("_").append(paramLong);
-    localObject = ((StringBuilder)localObject).toString();
-    String str = MD5.a((String)localObject).toLowerCase();
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMMusicConfigManager", 2, "generate the sign string, pre=" + (String)localObject + ", md5=" + str);
-    }
-    return str;
-  }
-  
-  public String a(String paramString, Map paramMap)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString);
-    if (!paramMap.isEmpty())
+    Object localObject;
+    if ((this.jdField_a_of_type_Int >= 0) && (this.jdField_a_of_type_Int < this.jdField_b_of_type_Int))
     {
-      paramString = paramMap.entrySet().iterator();
-      int i = 1;
-      if (paramString.hasNext())
+      localObject = this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int];
+      if (TextUtils.isEmpty((CharSequence)localObject)) {}
+    }
+    try
+    {
+      BitmapFactory.Options localOptions = new BitmapFactory.Options();
+      localOptions.inPreferredConfig = Bitmap.Config.RGB_565;
+      localObject = antz.a((String)localObject, localOptions);
+      if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
       {
-        paramMap = (Map.Entry)paramString.next();
-        if (i != 0)
-        {
-          localStringBuilder.append("?");
-          i = 0;
-        }
-        for (;;)
-        {
-          localStringBuilder.append((String)paramMap.getKey()).append("=").append((String)paramMap.getValue());
-          break;
-          localStringBuilder.append("&");
-        }
+        this.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject);
+        ThreadManager.getUIHandler().post(new FrameAnimationDrawable.1(this));
       }
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMMusicConfigManager", 2, "genQQMusicReqUrl url" + localStringBuilder.toString());
+    catch (Exception localException)
+    {
+      QLog.e("FrameAnimationDrawable", 2, "updateCurBitmap fail.", localException);
     }
-    return localStringBuilder.toString();
-  }
-  
-  public Map a(String paramString1, String paramString2)
-  {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("login_type", String.valueOf(1));
-    localHashMap.put("uin", paramString1);
-    localHashMap.put("ticket_type", "skey");
-    localHashMap.put("auth", paramString2);
-    return localHashMap;
   }
   
   public void a()
   {
-    ThreadManager.executeOnSubThread(this);
+    if (!this.jdField_b_of_type_Boolean)
+    {
+      this.jdField_b_of_type_Boolean = true;
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(10);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(10);
+    }
   }
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
-  
-  public void a(NetResp paramNetResp) {}
-  
-  void a(boolean paramBoolean)
+  public void a(long paramLong)
   {
-    if (paramBoolean) {
-      QIMMusicConfigManager.b(this.b);
+    this.jdField_a_of_type_Long = paramLong;
+    int i;
+    if (this.jdField_a_of_type_ArrayOfJavaLangString == null)
+    {
+      i = 0;
+      this.jdField_b_of_type_Int = i;
+      if (this.jdField_b_of_type_Int != 0) {
+        break label43;
+      }
     }
-    anun localanun = new anun(this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager);
-    localanun.a = true;
-    localanun.a();
+    label43:
+    for (paramLong = 0L;; paramLong = this.jdField_a_of_type_Long / this.jdField_b_of_type_Int)
+    {
+      this.jdField_b_of_type_Long = paramLong;
+      return;
+      i = this.jdField_a_of_type_ArrayOfJavaLangString.length;
+      break;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(String[] paramArrayOfString)
+  {
+    int i = 0;
+    b();
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
+    this.jdField_a_of_type_Int = 0;
+    if (this.jdField_a_of_type_ArrayOfJavaLangString == null)
+    {
+      this.jdField_b_of_type_Int = i;
+      if (this.jdField_b_of_type_Int != 0) {
+        break label56;
+      }
+    }
+    label56:
+    for (long l = 0L;; l = this.jdField_a_of_type_Long / this.jdField_b_of_type_Int)
+    {
+      this.jdField_b_of_type_Long = l;
+      c();
+      return;
+      i = this.jdField_a_of_type_ArrayOfJavaLangString.length;
+      break;
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_b_of_type_Boolean)
+    {
+      this.jdField_b_of_type_Boolean = false;
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(10);
+      this.jdField_a_of_type_Int = 0;
+    }
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    if ((paramCanvas != null) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
+    {
+      if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
+        this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+      }
+      this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+  }
+  
+  public int getOpacity()
+  {
+    return -3;
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.jdField_a_of_type_Int += 1;
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_Int %= this.jdField_b_of_type_Int;
+      }
+      if ((this.jdField_a_of_type_Int >= 0) && (this.jdField_a_of_type_Int < this.jdField_b_of_type_Int))
+      {
+        long l1 = System.currentTimeMillis();
+        c();
+        if (this.jdField_b_of_type_Boolean)
+        {
+          long l2 = System.currentTimeMillis();
+          l1 = Math.max(this.jdField_b_of_type_Long - (l2 - l1), 0L);
+          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(10, l1);
+        }
+      }
+      else
+      {
+        this.jdField_b_of_type_Boolean = false;
+      }
+    }
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+  }
+  
+  public void setColorFilter(ColorFilter paramColorFilter)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anuo
  * JD-Core Version:    0.7.0.1
  */

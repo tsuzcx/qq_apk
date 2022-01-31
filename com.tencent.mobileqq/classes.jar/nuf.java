@@ -1,21 +1,27 @@
-import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnErrorListener;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class nuf
-  implements Runnable
+  implements ViewBase.OnClickListener
 {
-  nuf(nue paramnue, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject) {}
+  nuf(ntu paramntu) {}
   
-  public void run()
+  public void onClick(ViewBase paramViewBase)
   {
-    if (this.jdField_a_of_type_Nue.a.a != null) {
-      this.jdField_a_of_type_Nue.a.a.a(this.jdField_a_of_type_Nue.a, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangObject);
+    if (this.a.jdField_a_of_type_Nwx.a != null)
+    {
+      obz.a(this.a.jdField_a_of_type_Nwk.a().getContext(), this.a.jdField_a_of_type_Nwx.a.activityJumpUrl);
+      if (this.a.jdField_a_of_type_Nwk.a() != null) {
+        this.a.jdField_a_of_type_Nwk.a().e(this.a.jdField_a_of_type_Nwx);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nuf
  * JD-Core Version:    0.7.0.1
  */

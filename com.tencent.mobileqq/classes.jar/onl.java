@@ -1,38 +1,29 @@
-import android.graphics.Color;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.EditTextDialogEventListener;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.oidb_0xc90.RspBody;
 
-public class onl
-  implements TextWatcher
+class onl
+  extends mmk
 {
-  public onl(EditTextDialog paramEditTextDialog) {}
+  onl(onj paramonj, rbo paramrbo) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiEditTextDialog$EditTextDialogEventListener == null) {}
-    do
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
     {
-      return;
-      paramInt2 = this.a.a(paramCharSequence.toString());
-      if (paramInt2 > 420)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence.subSequence(0, paramInt1));
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramInt1);
-        if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiEditTextDialog$EditTextDialogEventListener != null) {
-          this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiEditTextDialog$EditTextDialogEventListener.b(420);
-        }
+      paramBundle = new oidb_0xc90.RspBody();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if (this.jdField_a_of_type_Rbo != null) {
+        this.jdField_a_of_type_Rbo.a(true, paramInt, paramBundle);
       }
-    } while (paramInt2 <= 0);
-    this.a.b.setTextColor(Color.parseColor("#12b7f5"));
-    this.a.b.setEnabled(true);
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(onj.a, 2, "requestNewCommunityMsg onResult(), exception = " + QLog.getStackTraceString(paramArrayOfByte));
+    }
   }
 }
 

@@ -1,35 +1,30 @@
+import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.NearbyVideoUtils;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
 
 public class afkw
   implements View.OnClickListener
 {
-  public afkw(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  public afkw(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment) {}
   
   public void onClick(View paramView)
   {
-    int i = 1;
-    if (((this.a.a.e == 2) || (this.a.a.e == 4)) && (!NearbyVideoUtils.a(this.a.a, this.a.a.app))) {
-      NearbyVideoUtils.a(this.a.a, this.a.a.app, 1);
-    }
-    paramView = NearbyProfileDisplayTribePanel.a(this.a).uin;
-    StringBuilder localStringBuilder = new StringBuilder().append("");
-    if (this.a.a.e == 2) {}
-    for (;;)
+    if (!this.a.d)
     {
-      NearbyVideoUtils.a("clk_video_entry", new String[] { "2", paramView, i });
-      return;
-      i = 2;
+      if (befo.e()) {
+        this.a.startActivity(new Intent("android.settings.SETTINGS"));
+      }
     }
+    else {
+      return;
+    }
+    this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afkw
  * JD-Core Version:    0.7.0.1
  */

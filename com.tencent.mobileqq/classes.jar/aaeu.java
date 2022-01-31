@@ -1,23 +1,27 @@
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewPresenter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class aaeu
-  implements Runnable
+public final class aaeu
+  implements DialogInterface.OnCancelListener
 {
-  public aaeu(ARVideoRecordUIControllerImpl paramARVideoRecordUIControllerImpl) {}
+  public aaeu(aagn paramaagn, aagm paramaagm) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (ARVideoRecordUIControllerImpl.a(this.a) != null)
-    {
-      ARVideoRecordUIControllerImpl.a(this.a).a(0);
-      ARVideoRecordUIControllerImpl.a(this.a).b();
+    if (this.jdField_a_of_type_Aagn.a) {
+      awqx.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
+    }
+    if (this.jdField_a_of_type_Aagm != null) {
+      this.jdField_a_of_type_Aagm.a();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaeu
  * JD-Core Version:    0.7.0.1
  */

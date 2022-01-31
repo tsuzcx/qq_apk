@@ -29,18 +29,12 @@ public class QQAVImageGaussianBlurFilter
   public void setBlurSize(float paramFloat)
   {
     this.mBlurSize = paramFloat;
-    runOnDraw(new Runnable()
-    {
-      public void run()
-      {
-        QQAVImageGaussianBlurFilter.this.initTexelOffsets();
-      }
-    });
+    runOnDraw(new QQAVImageGaussianBlurFilter.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.video.effect.core.qqavimage.QQAVImageGaussianBlurFilter
  * JD-Core Version:    0.7.0.1
  */

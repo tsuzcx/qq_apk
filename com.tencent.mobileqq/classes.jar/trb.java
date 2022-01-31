@@ -1,23 +1,26 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.ApolloManager.IDrawerGameBoxStatus;
-import com.tencent.mobileqq.apollo.script.SpriteActionScript;
-import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoManager;
+import android.widget.MediaController;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
 public class trb
-  implements ApolloManager.IDrawerGameBoxStatus
+  implements tsq
 {
-  public trb(QQSettingMe paramQQSettingMe) {}
+  public trb(TextureVideoView paramTextureVideoView) {}
   
-  public void a(boolean paramBoolean)
+  public void a(tso paramtso)
   {
-    if ((QQSettingMe.a(this.a) != null) && (QQSettingMe.a(this.a).a() != null)) {
-      QQSettingMe.a(this.a).a().a(paramBoolean);
+    this.a.jdField_a_of_type_Int = 5;
+    this.a.b = 5;
+    if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
+      this.a.jdField_a_of_type_AndroidWidgetMediaController.hide();
+    }
+    if (this.a.jdField_a_of_type_Tsq != null) {
+      this.a.jdField_a_of_type_Tsq.a(this.a.jdField_a_of_type_Tso);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     trb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,172 +1,49 @@
-import android.os.AsyncTask;
-import android.text.TextUtils;
-import com.dataline.activities.LiteActivity;
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.data.DataLineMsgSet;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import java.util.ArrayList;
-import java.util.List;
+import android.text.Spanned;
+import android.text.style.CharacterStyle;
+import java.util.Comparator;
 
-public class n
-  extends AsyncTask
+class n
+  implements Comparator<CharacterStyle>
 {
-  public n(LiteActivity paramLiteActivity, ArrayList paramArrayList) {}
+  Spanned a;
   
-  DataLineMsgRecord a(DataLineHandler paramDataLineHandler, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public int a(CharacterStyle paramCharacterStyle1, CharacterStyle paramCharacterStyle2)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return null;
+    int i = 1;
+    if (this.a == null) {
+      i = 0;
     }
-    int i = paramInt1;
-    if (paramInt1 == 0) {
-      switch (FileManagerUtil.a(paramString))
-      {
-      default: 
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      DataLineMsgRecord localDataLineMsgRecord = new DataLineMsgRecord();
-      localDataLineMsgRecord.msgtype = DataLineHandler.c(i);
-      localDataLineMsgRecord.sessionid = paramDataLineHandler.a(0, this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a).longValue();
-      localDataLineMsgRecord.path = paramString;
-      localDataLineMsgRecord.thumbPath = null;
-      localDataLineMsgRecord.groupId = paramInt2;
-      localDataLineMsgRecord.groupSize = paramInt3;
-      localDataLineMsgRecord.groupIndex = paramInt4;
-      return localDataLineMsgRecord;
-      i = 1;
-      continue;
-      i = 3;
-      continue;
-      i = 2;
-    }
-  }
-  
-  protected String a(Integer... paramVarArgs)
-  {
-    int i = paramVarArgs[0].intValue();
-    a(this.jdField_a_of_type_JavaUtilArrayList, i);
-    return null;
-  }
-  
-  protected void a(String paramString)
-  {
-    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(false);
-  }
-  
-  void a(List paramList, int paramInt)
-  {
-    if (paramList == null) {}
-    DataLineHandler localDataLineHandler;
     int j;
-    int i;
-    Object localObject;
-    for (;;)
+    int k;
+    do
     {
-      return;
-      localDataLineHandler = (DataLineHandler)this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.app.a(8);
-      j = paramList.size();
-      if (j > 3) {
-        break;
-      }
-      i = 0;
-      while (i < j)
+      do
       {
-        localObject = a(localDataLineHandler, (String)paramList.get(i), paramInt, 0, 0, 0);
-        if (localObject != null) {
-          localDataLineHandler.a((DataLineMsgRecord)localObject, false);
+        return i;
+        j = this.a.getSpanStart(paramCharacterStyle1);
+        k = this.a.getSpanStart(paramCharacterStyle2);
+        if (j != k) {
+          break;
         }
-        i += 1;
-      }
-    }
-    label117:
-    DataLineMsgRecord localDataLineMsgRecord;
-    if ((j > 3) && (j < 50))
-    {
-      localObject = new ArrayList();
-      int k = localDataLineHandler.a();
-      i = 0;
-      if (i < j)
-      {
-        localDataLineMsgRecord = a(localDataLineHandler, (String)paramList.get(i), paramInt, k, j, i);
-        if (localDataLineMsgRecord != null) {
-          ((ArrayList)localObject).add(localDataLineMsgRecord);
+        j = this.a.getSpanEnd(paramCharacterStyle1);
+        k = this.a.getSpanEnd(paramCharacterStyle2);
+        if (j == k) {
+          return 0;
         }
-        if (!DataLineMsgSet.isSingle(paramInt, k)) {
-          break label408;
-        }
-        if (localDataLineMsgRecord != null)
-        {
-          localDataLineMsgRecord.groupId = 0;
-          localDataLineMsgRecord.groupIndex = 0;
-          localDataLineMsgRecord.groupSize = 0;
-        }
-        if (((ArrayList)localObject).size() > 0) {
-          localDataLineHandler.a((ArrayList)localObject, false);
-        }
-        localObject = new ArrayList();
-      }
-    }
-    label259:
-    label405:
-    label408:
-    for (;;)
-    {
-      i += 1;
-      break label117;
-      if (((ArrayList)localObject).size() <= 0) {
-        break;
-      }
-      localDataLineHandler.a((ArrayList)localObject, false);
-      return;
-      localObject = new ArrayList();
-      j = localDataLineHandler.a();
-      i = 0;
-      if (i < 50)
-      {
-        localDataLineMsgRecord = a(localDataLineHandler, (String)paramList.get(i), paramInt, j, 50, i);
-        if (localDataLineMsgRecord != null) {
-          ((ArrayList)localObject).add(localDataLineMsgRecord);
-        }
-        if (!DataLineMsgSet.isSingle(paramInt, j)) {
-          break label405;
-        }
-        if (localDataLineMsgRecord != null)
-        {
-          localDataLineMsgRecord.groupId = 0;
-          localDataLineMsgRecord.groupIndex = 0;
-          localDataLineMsgRecord.groupSize = 0;
-        }
-        if (((ArrayList)localObject).size() > 0) {
-          localDataLineHandler.a((ArrayList)localObject, false);
-        }
-        localObject = new ArrayList();
-      }
-      for (;;)
-      {
-        i += 1;
-        break label259;
-        if (((ArrayList)localObject).size() > 0) {
-          localDataLineHandler.a((ArrayList)localObject, false);
-        }
-        i = 0;
-        while (i < 50)
-        {
-          paramList.remove(0);
-          i += 1;
-        }
-        break;
-      }
-    }
+      } while (j > k);
+      return -1;
+    } while (j > k);
+    return -1;
+  }
+  
+  public void a(Spanned paramSpanned)
+  {
+    this.a = paramSpanned;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     n
  * JD-Core Version:    0.7.0.1
  */

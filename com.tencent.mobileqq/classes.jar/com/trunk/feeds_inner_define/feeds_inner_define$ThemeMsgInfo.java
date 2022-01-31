@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class feeds_inner_define$ThemeMsgInfo
-  extends MessageMicro
+  extends MessageMicro<ThemeMsgInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField opt_bytes_feedsid = PBField.initBytes(ByteStringMicro.EMPTY);

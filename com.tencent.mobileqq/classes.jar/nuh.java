@@ -1,36 +1,23 @@
-import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnInfoListener;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
 class nuh
-  implements Runnable
+  implements ViewBase.OnClickListener
 {
-  nuh(nug paramnug, int paramInt, Object paramObject) {}
+  nuh(ntu paramntu, ViewBase paramViewBase) {}
   
-  public void run()
+  public void onClick(ViewBase paramViewBase)
   {
-    int i;
-    if (this.jdField_a_of_type_Nug.a.a != null)
-    {
-      i = this.jdField_a_of_type_Int;
-      if (this.jdField_a_of_type_Int != 21) {
-        break label58;
-      }
-      i = 2;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Nug.a.a.a(this.jdField_a_of_type_Nug.a, i, this.jdField_a_of_type_JavaLangObject);
-      return;
-      label58:
-      if (this.jdField_a_of_type_Int == 22) {
-        i = 3;
-      }
+    obz.a(this.jdField_a_of_type_Ntu.jdField_a_of_type_Nwk.a().getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getEventAttachedData());
+    if (this.jdField_a_of_type_Ntu.jdField_a_of_type_Nwk.a() != null) {
+      this.jdField_a_of_type_Ntu.jdField_a_of_type_Nwk.a().g(this.jdField_a_of_type_Ntu.jdField_a_of_type_Nwx);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nuh
  * JD-Core Version:    0.7.0.1
  */

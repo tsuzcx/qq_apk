@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public class tgh
-  implements DialogInterface.OnDismissListener
+public final class tgh
+  extends sfo
 {
-  public tgh(MainFragment paramMainFragment) {}
+  public int a;
+  public StoryVideoItem a;
+  public String a;
+  public String b;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public tgh(String paramString, int paramInt, StoryVideoItem paramStoryVideoItem)
   {
-    this.a.e();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tgh
  * JD-Core Version:    0.7.0.1
  */

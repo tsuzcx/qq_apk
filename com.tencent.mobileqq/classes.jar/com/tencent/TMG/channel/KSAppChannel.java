@@ -1,6 +1,5 @@
 package com.tencent.TMG.channel;
 
-import android.util.Log;
 import com.tencent.TMG.sdk.AVContext.StartParam;
 import com.tencent.TMG.utils.QLog;
 import java.util.ArrayList;
@@ -34,11 +33,11 @@ public class KSAppChannel
       paramString1.add(paramArrayOfString[i]);
       i += 1;
     }
-    identifierToTinyIdIntern(paramArrayOfString, new IdToIdCallbackImpl(paramIdToIdCallback));
+    identifierToTinyIdIntern(paramArrayOfString, new KSAppChannel.IdToIdCallbackImpl(this, paramIdToIdCallback));
     return true;
   }
   
-  public void identifierToTinyIdIntern(String[] paramArrayOfString, IdToIdCallbackImpl paramIdToIdCallbackImpl)
+  public void identifierToTinyIdIntern(String[] paramArrayOfString, KSAppChannel.IdToIdCallbackImpl paramIdToIdCallbackImpl)
   {
     long[] arrayOfLong = new long[paramArrayOfString.length];
     int i = 0;
@@ -78,7 +77,7 @@ public class KSAppChannel
     }
     try
     {
-      nativeRequestVideoAppCmd(paramArrayOfByte, Integer.parseInt(str), this.startParam_, new CsCmdCallbackImpl(paramCsCmdCallback));
+      nativeRequestVideoAppCmd(paramArrayOfByte, Integer.parseInt(str), this.startParam_, new KSAppChannel.CsCmdCallbackImpl(this, paramCsCmdCallback));
       return true;
     }
     catch (NumberFormatException paramString)
@@ -111,11 +110,11 @@ public class KSAppChannel
       localArrayList.add(Long.valueOf(paramArrayOfLong[i]));
       i += 1;
     }
-    tinyIdToIdentifierIntern(paramArrayOfLong, new IdToIdCallbackImpl(paramIdToIdCallback));
+    tinyIdToIdentifierIntern(paramArrayOfLong, new KSAppChannel.IdToIdCallbackImpl(this, paramIdToIdCallback));
     return true;
   }
   
-  public void tinyIdToIdentifierIntern(long[] paramArrayOfLong, IdToIdCallbackImpl paramIdToIdCallbackImpl)
+  public void tinyIdToIdentifierIntern(long[] paramArrayOfLong, KSAppChannel.IdToIdCallbackImpl paramIdToIdCallbackImpl)
   {
     String[] arrayOfString = new String[paramArrayOfLong.length];
     int i = 0;
@@ -126,99 +125,10 @@ public class KSAppChannel
     }
     paramIdToIdCallbackImpl.onSuccess(arrayOfString, paramArrayOfLong);
   }
-  
-  public class CsCmdCallbackImpl
-    implements AVAppChannel.CsCmdCallback
-  {
-    private AVAppChannel.CsCmdCallback mCallback;
-    
-    public CsCmdCallbackImpl(AVAppChannel.CsCmdCallback paramCsCmdCallback)
-    {
-      this.mCallback = paramCsCmdCallback;
-    }
-    
-    public void onError(int paramInt, String paramString)
-    {
-      Log.e("shixu", "code :" + paramInt + " info: " + paramString);
-      if (this.mCallback != null)
-      {
-        this.mCallback.onError(paramInt, paramString);
-        this.mCallback = null;
-      }
-    }
-    
-    public void onSuccess(byte[] paramArrayOfByte)
-    {
-      Log.e("shixu", "success");
-      if (this.mCallback != null)
-      {
-        this.mCallback.onSuccess(paramArrayOfByte);
-        this.mCallback = null;
-      }
-    }
-  }
-  
-  public class IdToIdCallbackImpl
-    implements AVAppChannel.IdToIdCallback
-  {
-    private AVAppChannel.IdToIdCallback mCallback;
-    
-    public IdToIdCallbackImpl(AVAppChannel.IdToIdCallback paramIdToIdCallback)
-    {
-      this.mCallback = paramIdToIdCallback;
-    }
-    
-    public void onError(int paramInt, String paramString)
-    {
-      if (this.mCallback != null)
-      {
-        this.mCallback.onError(paramInt, paramString);
-        this.mCallback = null;
-      }
-    }
-    
-    public void onSuccess(String[] paramArrayOfString, long[] paramArrayOfLong)
-    {
-      if (this.mCallback != null)
-      {
-        this.mCallback.onSuccess(paramArrayOfString, paramArrayOfLong);
-        this.mCallback = null;
-      }
-    }
-  }
-  
-  public class ReportCallbackImpl
-    implements AVAppChannel.CsCmdCallback
-  {
-    private AVAppChannel.CsCmdCallback mCallback;
-    
-    public ReportCallbackImpl(AVAppChannel.CsCmdCallback paramCsCmdCallback)
-    {
-      this.mCallback = paramCsCmdCallback;
-    }
-    
-    public void onError(int paramInt, String paramString)
-    {
-      if (this.mCallback != null)
-      {
-        this.mCallback.onError(paramInt, paramString);
-        this.mCallback = null;
-      }
-    }
-    
-    public void onSuccess(byte[] paramArrayOfByte)
-    {
-      if (this.mCallback != null)
-      {
-        this.mCallback.onSuccess(paramArrayOfByte);
-        this.mCallback = null;
-      }
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.TMG.channel.KSAppChannel
  * JD-Core Version:    0.7.0.1
  */

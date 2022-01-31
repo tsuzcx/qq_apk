@@ -1,40 +1,22 @@
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
-import com.tencent.mobileqq.troop.utils.TroopAppMgr;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import mqq.observer.BusinessObserver;
 
-public class ajvo
-  implements Runnable
+class ajvo
+  implements BusinessObserver
 {
-  public ajvo(TroopAppMgr paramTroopAppMgr, EntityManager paramEntityManager, int paramInt, ArrayList paramArrayList) {}
+  ajvo(ajvn paramajvn) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel())
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(TroopAIOAppInfo.class);
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr.a(".troop.troop_appVASH", "before updateEntity(" + this.jdField_a_of_type_Int + ")", (List)localObject);
+    if ((paramInt == 2004) && (paramBoolean) && (QLog.isColorLevel())) {
+      QLog.d("ActivateFriends.Manager", 2, "acs msg succ");
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      TroopAIOAppInfo localTroopAIOAppInfo = (TroopAIOAppInfo)((Iterator)localObject).next();
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, localTroopAIOAppInfo);
-    }
-    if (QLog.isColorLevel())
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(TroopAIOAppInfo.class);
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr.a(".troop.troop_appVASH", "after updateEntity(" + this.jdField_a_of_type_Int + ")", (List)localObject);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajvo
  * JD-Core Version:    0.7.0.1
  */

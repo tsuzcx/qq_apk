@@ -3,12 +3,12 @@ package com.tencent.device.datadef;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import qbh;
+import xqz;
 
 public class DeviceInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new qbh();
+  public static final Parcelable.Creator<DeviceInfo> CREATOR = new xqz();
   public static final double MULTIVIDEOVER = 1.4D;
   public int SSOBid_Platform;
   public String SSOBid_Version = "";

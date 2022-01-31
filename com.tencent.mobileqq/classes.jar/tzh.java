@@ -1,24 +1,29 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class tzh
-  implements View.OnFocusChangeListener
+class tzh
+  extends SimpleJob<Object>
 {
-  public tzh(SubLoginActivity paramSubLoginActivity) {}
-  
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  tzh(tzf paramtzf, String paramString)
   {
-    if (true == paramBoolean) {
-      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
+    super(paramString);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    if (this.a.a == null) {
+      this.a.a = new tzi(this.a, this.a.c);
     }
+    this.a.d = this.a.a.a;
+    tzf.a(this.a);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tzh
  * JD-Core Version:    0.7.0.1
  */

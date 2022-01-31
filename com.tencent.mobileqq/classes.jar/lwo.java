@@ -1,34 +1,20 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.QavBeautyMenuPanel;
 
 public class lwo
-  implements Animation.AnimationListener
+  implements DialogInterface.OnClickListener
 {
-  public lwo(FeedItemCell paramFeedItemCell, ArrayList paramArrayList1, ArrayList paramArrayList2, int paramInt, Object paramObject) {}
+  public lwo(QavBeautyMenuPanel paramQavBeautyMenuPanel) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildFeedItemCell.a().post(new lwp(this));
-      return;
-    }
-    catch (Exception paramAnimation)
-    {
-      paramAnimation.printStackTrace();
-    }
+    paramDialogInterface.dismiss();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lwo
  * JD-Core Version:    0.7.0.1
  */

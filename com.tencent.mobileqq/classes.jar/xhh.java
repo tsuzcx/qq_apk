@@ -1,27 +1,35 @@
-import Wallet.PfaFriendRsp;
-import com.tencent.mobileqq.activity.qwallet.TopayManager;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
 
 class xhh
-  implements Runnable
+  extends URLDrawableDownListener.Adapter
 {
-  xhh(xhg paramxhg, PfaFriendRsp paramPfaFriendRsp) {}
+  xhh(xhg paramxhg, int paramInt, ViewGroup paramViewGroup) {}
   
-  public void run()
+  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (this.jdField_a_of_type_WalletPfaFriendRsp != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      TopayManager.a(bool, this.jdField_a_of_type_WalletPfaFriendRsp, true);
-      if (this.jdField_a_of_type_Xhg.jdField_a_of_type_Boolean) {
-        TopayManager.a(this.jdField_a_of_type_Xhg.jdField_a_of_type_Int, this.jdField_a_of_type_Xhg.b);
-      }
-      return;
+    this.jdField_a_of_type_Xhg.a(this.jdField_a_of_type_Int, false);
+  }
+  
+  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  {
+    this.jdField_a_of_type_Xhg.b(this.jdField_a_of_type_Int, paramInt / 100);
+  }
+  
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  {
+    this.jdField_a_of_type_Xhg.a(this.jdField_a_of_type_Int, true);
+    paramView = this.jdField_a_of_type_Xhg.a(paramURLDrawable.getURL(), this.jdField_a_of_type_AndroidViewViewGroup);
+    if (paramView != null) {
+      this.jdField_a_of_type_Xhg.a(paramView, paramURLDrawable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     xhh
  * JD-Core Version:    0.7.0.1
  */

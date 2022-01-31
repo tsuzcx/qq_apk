@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.pb;
 
-import java.io.IOException;
-
 public final class PBInt64Field
   extends PBPrimitiveField<Long>
 {
@@ -48,14 +46,12 @@ public final class PBInt64Field
   }
   
   public void readFrom(CodedInputStreamMicro paramCodedInputStreamMicro)
-    throws IOException
   {
     this.value = paramCodedInputStreamMicro.readInt64();
     setHasFlag(true);
   }
   
   protected Long readFromDirectly(CodedInputStreamMicro paramCodedInputStreamMicro)
-    throws IOException
   {
     return Long.valueOf(paramCodedInputStreamMicro.readInt64());
   }
@@ -72,7 +68,6 @@ public final class PBInt64Field
   }
   
   public void writeTo(CodedOutputStreamMicro paramCodedOutputStreamMicro, int paramInt)
-    throws IOException
   {
     if (has()) {
       paramCodedOutputStreamMicro.writeInt64(paramInt, this.value);
@@ -80,7 +75,6 @@ public final class PBInt64Field
   }
   
   protected void writeToDirectly(CodedOutputStreamMicro paramCodedOutputStreamMicro, int paramInt, Long paramLong)
-    throws IOException
   {
     paramCodedOutputStreamMicro.writeInt64(paramInt, paramLong.longValue());
   }

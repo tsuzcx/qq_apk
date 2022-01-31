@@ -1,31 +1,34 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.multimsg.MultiMsgManager;
-import com.tencent.mobileqq.utils.ShareMsgHelper;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class sfa
-  implements Runnable
+class sfa
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public sfa(ChatHistoryFileActivity paramChatHistoryFileActivity, String paramString1, String paramString2, int paramInt) {}
+  sfa(sez paramsez) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    Iterator localIterator = MultiMsgManager.a().a.iterator();
-    while (localIterator.hasNext())
+    if (paramBoolean)
     {
-      ChatMessage localChatMessage = (ChatMessage)localIterator.next();
-      if ((localChatMessage instanceof MessageForStructing)) {
-        ShareMsgHelper.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, ((MessageForStructing)localChatMessage).structingMsg, null);
+      sez.a(this.a);
+      if (sez.a(this.a)) {
+        urp.a("video_shoot_slides", "clk_setting_on", 0, 0, new String[0]);
+      }
+    }
+    for (;;)
+    {
+      sez.a(this.a, paramBoolean);
+      return;
+      sez.b(this.a);
+      if (sez.a(this.a)) {
+        urp.a("video_shoot_slides", "clk_setting_close", 0, 0, new String[0]);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sfa
  * JD-Core Version:    0.7.0.1
  */

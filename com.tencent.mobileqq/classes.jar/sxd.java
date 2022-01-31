@@ -1,47 +1,63 @@
-import com.tencent.mobileqq.activity.FriendProfileImageAvatar;
-import com.tencent.mobileqq.activity.FriendProfileImageModel.ProfileImageInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class sxd
-  implements Runnable
 {
-  public sxd(FriendProfileImageAvatar paramFriendProfileImageAvatar, FriendProfileImageModel.ProfileImageInfo paramProfileImageInfo) {}
+  private static ConcurrentHashMap<String, Long> a = new ConcurrentHashMap();
   
-  public void run()
+  @Nullable
+  public static taj a(String paramString, List<taj> paramList)
   {
-    localEntityManager = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.a.getEntityManagerFactory().createEntityManager();
-    if (localEntityManager != null) {}
-    try
+    if ((TextUtils.isEmpty(paramString)) || (paramList == null) || (paramList.isEmpty())) {
+      return null;
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      Setting localSetting = (Setting)localEntityManager.a(Setting.class, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.d);
-      if ((localSetting != null) && ((localSetting.headImgTimestamp != 0L) || (localSetting.updateTimestamp != 0L)))
-      {
-        localSetting.headImgTimestamp = 0L;
-        localSetting.updateTimestamp = 0L;
-        localEntityManager.a(localSetting);
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.a.a(localSetting);
+      taj localtaj = (taj)paramList.next();
+      if (paramString.equals(localtaj.a)) {
+        return localtaj;
       }
     }
-    catch (Exception localException)
+    return null;
+  }
+  
+  public static void a(@NonNull List<String> paramList, boolean paramBoolean)
+  {
+    urk.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "send request : %s", paramList.toString());
+    if (paramBoolean)
     {
-      for (;;)
+      localObject = paramList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        localEntityManager.a();
+        String str = (String)((Iterator)localObject).next();
+        Long localLong = (Long)a.get(str);
+        if ((localLong != null) && (System.currentTimeMillis() - localLong.longValue() < 60000L))
+        {
+          ((Iterator)localObject).remove();
+          urk.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "remove same request for feed info:%s", str);
+        }
+        else
+        {
+          a.put(str, Long.valueOf(System.currentTimeMillis()));
+        }
       }
     }
-    finally
-    {
-      localEntityManager.a();
+    if (paramList.size() == 0) {
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.a.e(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageAvatar.b);
+    urk.a("Q.qqstory.net:GetStoryPlayerTagInfoHandler", "request for feed info:%s", paramList);
+    Object localObject = new tai(paramList);
+    slv.a().a((slz)localObject, new sxe(paramList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sxd
  * JD-Core Version:    0.7.0.1
  */

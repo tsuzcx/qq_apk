@@ -1,33 +1,33 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.troop.utils.TroopBindPubAccountProtocol.RequestPublicAccountObserver;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class sil
-  extends TroopBindPubAccountProtocol.RequestPublicAccountObserver
+class sil
+  extends SimpleJob<Void>
 {
-  public sil(ChatSettingForTroop paramChatSettingForTroop) {}
-  
-  protected void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail)
+  sil(sik paramsik, String paramString)
   {
-    if (paramBoolean)
-    {
-      Message localMessage = Message.obtain();
-      localMessage.what = 17;
-      Bundle localBundle = new Bundle();
-      localBundle.putString("uinname", paramAccountDetail.name);
-      localBundle.putString("extra_type", paramAccountDetail.summary);
-      localBundle.putLong("uin", paramLong);
-      localMessage.setData(localBundle);
-      this.a.a.sendMessage(localMessage);
+    super(paramString);
+  }
+  
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    boolean bool = vlm.a(500L);
+    if (this.a.a(bool)) {
+      sik.a(this.a, bool);
     }
+    return null;
+  }
+  
+  public int getJobType()
+  {
+    return 4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sil
  * JD-Core Version:    0.7.0.1
  */

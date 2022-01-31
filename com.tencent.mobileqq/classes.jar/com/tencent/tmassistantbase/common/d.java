@@ -1,17 +1,18 @@
 package com.tencent.tmassistantbase.common;
 
-public class d
+import com.tencent.tmdownloader.internal.a.a;
+
+final class d
+  implements Runnable
 {
-  public a a = a.a;
-  public String b = "";
-  public int c = -1;
-  public boolean d = false;
-  public String e = "";
-  public String f = "";
+  public void run()
+  {
+    a.a().d();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmassistantbase.common.d
  * JD-Core Version:    0.7.0.1
  */

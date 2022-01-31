@@ -1,90 +1,35 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.arcard.ARCardShareHelper;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItemViewHolder;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
+import android.content.Intent;
+import android.net.Uri;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aasz
-  implements AdapterView.OnItemClickListener
 {
-  public aasz(ARCardShareHelper paramARCardShareHelper) {}
-  
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static void a()
   {
-    paramAdapterView = paramView.getTag();
-    if (QLog.isColorLevel())
-    {
-      paramView = new StringBuilder().append("onItemClick, tag = ");
-      if (paramAdapterView == null) {
-        break label80;
-      }
-    }
-    label80:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("ARCardShareHelper", 2, bool);
-      if (this.a.a.a().isShowing()) {
-        this.a.a.a().dismiss();
-      }
-      if (paramAdapterView != null) {
-        break;
-      }
+    Intent localIntent = new Intent(BaseApplicationImpl.getContext(), JumpActivity.class);
+    localIntent.addFlags(268435456);
+    localIntent.addFlags(536870912);
+    localIntent.addFlags(67108864);
+    localIntent.addFlags(131072);
+    localIntent.setData(Uri.parse("mqqapi://qzone/to_friend_feeds"));
+    BaseApplicationImpl.getContext().startActivity(localIntent);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Intent paramIntent, String paramString, boolean paramBoolean)
+  {
+    if ((!"msg_tab_camera".equals(paramString)) || (paramIntent == null)) {
       return;
     }
-    int i = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)paramAdapterView).a.c;
-    if (!this.a.a())
-    {
-      QRUtils.a(1, 2131433149);
-      return;
-    }
-    switch (i)
-    {
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    case 8: 
-    default: 
-      return;
-    case 2: 
-      ThreadManager.postImmediately(new aata(this, i), null, true);
-      return;
-    case 3: 
-      ThreadManager.postImmediately(new aatc(this), null, true);
-      return;
-    }
-    if (!WXShareHelper.a().a()) {
-      paramInt = 2131435335;
-    }
-    for (;;)
-    {
-      if (paramInt != -1)
-      {
-        QRUtils.a(1, paramInt);
-        return;
-        if (!WXShareHelper.a().b()) {
-          paramInt = 2131435336;
-        }
-      }
-      else
-      {
-        ThreadManager.postImmediately(new aate(this, i), null, true);
-        return;
-      }
-      paramInt = -1;
-    }
+    bfpr.a(paramFragmentActivity, paramQQAppInterface, paramIntent, 20005, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aasz
  * JD-Core Version:    0.7.0.1
  */

@@ -21,10 +21,12 @@ public class AIOShortVideoData
   public String d;
   public int e;
   public String e;
-  public int g;
+  public String f;
+  private String g;
   public int h;
   public int i;
   public int j;
+  public int k;
   
   public AIOShortVideoData()
   {
@@ -55,6 +57,11 @@ public class AIOShortVideoData
       localObject = this.jdField_b_of_type_JavaLangString;
     }
     return null;
+  }
+  
+  public String a()
+  {
+    return this.g;
   }
   
   public String a(int paramInt)
@@ -104,11 +111,17 @@ public class AIOShortVideoData
     this.jdField_e_of_type_Int = paramParcel.readInt();
     this.jdField_c_of_type_JavaLangString = paramParcel.readString();
     this.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    this.g = paramParcel.readInt();
-    this.jdField_e_of_type_JavaLangString = paramParcel.readString();
     this.h = paramParcel.readInt();
+    this.jdField_e_of_type_JavaLangString = paramParcel.readString();
     this.i = paramParcel.readInt();
+    this.k = paramParcel.readInt();
     this.j = paramParcel.readInt();
+    this.f = paramParcel.readString();
+  }
+  
+  public void a(String paramString)
+  {
+    this.g = paramString;
   }
   
   public boolean a(int paramInt)
@@ -148,16 +161,17 @@ public class AIOShortVideoData
     paramParcel.writeInt(this.jdField_e_of_type_Int);
     paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
     paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-    paramParcel.writeInt(this.g);
-    paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
     paramParcel.writeInt(this.h);
+    paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
     paramParcel.writeInt(this.i);
+    paramParcel.writeInt(this.k);
     paramParcel.writeInt(this.j);
+    paramParcel.writeString(this.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData
  * JD-Core Version:    0.7.0.1
  */

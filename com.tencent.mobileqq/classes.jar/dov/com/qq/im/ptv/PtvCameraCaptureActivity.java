@@ -1,0 +1,248 @@
+package dov.com.qq.im.ptv;
+
+import ajjy;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import awek;
+import bbmy;
+import bhfc;
+import bhxd;
+import bhyt;
+import bhzb;
+import bhzc;
+import bhzd;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.activity.richmedia.FlowActivity;
+
+@TargetApi(14)
+public class PtvCameraCaptureActivity
+  extends FlowActivity
+  implements bhzb, bhzc
+{
+  bhzd a;
+  private boolean b;
+  
+  public static Intent a(Context paramContext, String paramString, Bundle paramBundle)
+  {
+    paramContext = new Intent(paramContext, PtvCameraCaptureActivity.class);
+    paramContext.putExtras(paramBundle);
+    paramContext.putExtra("LIGHT_ARG_FRAGMENT_CLASS", paramString);
+    paramContext.putExtra("need_show_banner", false);
+    return paramContext;
+  }
+  
+  public static void a(Activity paramActivity, String paramString, Bundle paramBundle)
+  {
+    paramBundle.putLong("ACTIVITY_START_TIME", System.currentTimeMillis());
+    paramActivity.startActivity(a(paramActivity, paramString, paramBundle));
+    paramActivity.overridePendingTransition(2130771987, 0);
+  }
+  
+  public static void a(Activity paramActivity, String paramString, Bundle paramBundle, int paramInt)
+  {
+    paramBundle.putLong("ACTIVITY_START_TIME", System.currentTimeMillis());
+    paramActivity.startActivityForResult(a(paramActivity, paramString, paramBundle), paramInt);
+    paramActivity.overridePendingTransition(2130771987, 0);
+  }
+  
+  public static void a(LWMotionEvent paramLWMotionEvent)
+  {
+    bhxd.a(paramLWMotionEvent);
+  }
+  
+  public static void b() {}
+  
+  private boolean b(MotionEvent paramMotionEvent)
+  {
+    if (paramMotionEvent.getAction() != 0) {
+      return a(paramMotionEvent);
+    }
+    View localView = a();
+    if (localView == null) {
+      return a(paramMotionEvent);
+    }
+    int i = localView.getTop();
+    if (paramMotionEvent.getY() > i) {}
+    return a(paramMotionEvent);
+  }
+  
+  public Activity a()
+  {
+    return this;
+  }
+  
+  public AppInterface a()
+  {
+    return bhfc.a();
+  }
+  
+  public void a()
+  {
+    super.onBackPressed();
+  }
+  
+  public void a(int paramInt)
+  {
+    finish();
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    super.a(paramBundle);
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    if (this.b) {}
+    for (int i = this.jdField_a_of_type_Int;; i = 0)
+    {
+      Object localObject1 = paramViewGroup.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject1).height = i;
+      paramViewGroup.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      Object localObject2 = new RelativeLayout.LayoutParams(-1, -1);
+      ((RelativeLayout.LayoutParams)localObject2).addRule(2, paramViewGroup.getId());
+      localObject1 = new RelativeLayout(this);
+      ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      ((RelativeLayout)localObject1).addView(this.jdField_a_of_type_Bhzd.a());
+      localObject2 = (ViewGroup)a(2131300863);
+      if (this.b)
+      {
+        ImageView localImageView = new ImageView(this);
+        localImageView.setImageResource(2130843689);
+        RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+        localLayoutParams.addRule(2, paramViewGroup.getId());
+        localImageView.setLayoutParams(localLayoutParams);
+        ((ViewGroup)localObject2).addView(localImageView, 0);
+      }
+      ((ViewGroup)localObject2).addView((View)localObject1);
+      return;
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public void finish()
+  {
+    super.finish();
+    this.jdField_a_of_type_Bhzd.p();
+  }
+  
+  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    super.onActivityResult(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Bhzd.a(paramInt1, paramInt2, paramIntent);
+  }
+  
+  public void onBackPressed()
+  {
+    this.jdField_a_of_type_Bhzd.a();
+  }
+  
+  public void onCreate(Bundle paramBundle)
+  {
+    super.getWindow().addFlags(128);
+    this.ac = true;
+    this.ad = false;
+    this.b = getIntent().getBooleanExtra("flow_camera_show_panel", false);
+    String str = getIntent().getStringExtra("LIGHT_ARG_FRAGMENT_CLASS");
+    bhxd.a(this, str, getIntent().getBooleanExtra("flow_camera_download_light", false));
+    this.jdField_a_of_type_Bhzd = bhxd.a(str, this, this);
+    super.onCreate(paramBundle);
+    this.jdField_a_of_type_Bhzd.a(paramBundle);
+    if (g())
+    {
+      bbmy.a(this, ajjy.a(2131642941), 0).a();
+      finish();
+    }
+    do
+    {
+      return;
+      long l1 = System.currentTimeMillis();
+      long l2 = getIntent().getLongExtra("ACTIVITY_START_TIME", l1);
+      QLog.i("PtvCameraCaptureActivity", 2, "start cost:" + (l1 - l2) + " ms");
+      awek.a("sv_light_cost_time_ui", l1 - l2);
+    } while (!(this.jdField_a_of_type_Bhzd instanceof bhyt));
+    bhxd.b((bhyt)this.jdField_a_of_type_Bhzd);
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    this.jdField_a_of_type_Bhzd.e();
+    if ((this.jdField_a_of_type_Bhzd instanceof bhyt)) {
+      bhxd.a((bhyt)this.jdField_a_of_type_Bhzd);
+    }
+  }
+  
+  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
+  {
+    return this.jdField_a_of_type_Bhzd.a(paramInt, paramKeyEvent, super.onKeyDown(paramInt, paramKeyEvent));
+  }
+  
+  protected void onNewIntent(Intent paramIntent)
+  {
+    super.onNewIntent(paramIntent);
+    getIntent().putExtras(paramIntent);
+    this.jdField_a_of_type_Bhzd.a(paramIntent);
+  }
+  
+  public void onPause()
+  {
+    super.onPause();
+    this.jdField_a_of_type_Bhzd.d();
+  }
+  
+  public void onResume()
+  {
+    super.onResume();
+    this.jdField_a_of_type_Bhzd.f();
+    if (QLog.isColorLevel()) {
+      QLog.i("PtvCameraCaptureActivity", 2, "onResume");
+    }
+  }
+  
+  protected void onSaveInstanceState(Bundle paramBundle)
+  {
+    super.onSaveInstanceState(paramBundle);
+    this.jdField_a_of_type_Bhzd.b(paramBundle);
+  }
+  
+  public void onStart()
+  {
+    super.onStart();
+    this.jdField_a_of_type_Bhzd.q();
+  }
+  
+  public void onStop()
+  {
+    super.onStop();
+    this.jdField_a_of_type_Bhzd.r();
+  }
+  
+  public boolean onTouchEvent(MotionEvent paramMotionEvent)
+  {
+    return this.jdField_a_of_type_Bhzd.a(paramMotionEvent, b(paramMotionEvent));
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+ * Qualified Name:     dov.com.qq.im.ptv.PtvCameraCaptureActivity
+ * JD-Core Version:    0.7.0.1
+ */

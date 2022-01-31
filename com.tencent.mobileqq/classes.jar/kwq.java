@@ -1,27 +1,21 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.util.Log;
 
 class kwq
-  implements TVK_SDKMgr.InstallListener
 {
-  kwq(kwp paramkwp) {}
+  Class<?> jdField_a_of_type_JavaLangClass;
+  String jdField_a_of_type_JavaLangString;
+  Class<?> b;
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  void a(String paramString, long paramLong)
   {
-    AdvertisementVideoPreloadManager.c("installSDK onInstalledFailed arg0=" + paramInt);
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    AdvertisementVideoPreloadManager.c("installSDK onInstalledSuccessed");
-    AdvertisementVideoPreloadManager.a(this.a.a);
+    if ((this.b == null) || (this.jdField_a_of_type_JavaLangClass == null)) {
+      Log.d(paramString, "check ClassInfo, seq[" + paramLong + "], " + this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     kwq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,35 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditScrollerView;
 
 public class acrp
-  extends RecyclerView.ItemDecoration
+  implements Animator.AnimatorListener
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  private int c;
-  private int d;
+  public acrp(VoiceTextEditScrollerView paramVoiceTextEditScrollerView, int paramInt) {}
   
-  public acrp(ExtendFriendSquareFragment paramExtendFriendSquareFragment)
-  {
-    this.jdField_a_of_type_Int = AIOUtils.a(11.0F, paramExtendFriendSquareFragment.getResources());
-    this.b = AIOUtils.a(11.0F, paramExtendFriendSquareFragment.getResources());
-    this.c = AIOUtils.a(8.0F, paramExtendFriendSquareFragment.getResources());
-    this.d = AIOUtils.a(8.0F, paramExtendFriendSquareFragment.getResources());
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public void getItemOffsets(Rect paramRect, int paramInt, RecyclerView paramRecyclerView)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramInt == paramRecyclerView.getAdapter().getItemCount() - 1)
+    if (VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditScrollerView) != null)
     {
-      paramRect.set(this.c, this.jdField_a_of_type_Int, this.d, this.b);
+      if (this.jdField_a_of_type_Int == 0) {
+        VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditScrollerView).j();
+      }
+    }
+    else {
       return;
     }
-    paramRect.set(this.c, this.jdField_a_of_type_Int, this.d, 0);
+    VoiceTextEditScrollerView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelVoiceTextEditScrollerView).k();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acrp
  * JD-Core Version:    0.7.0.1
  */

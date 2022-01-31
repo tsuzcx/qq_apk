@@ -1,25 +1,35 @@
-import com.tencent.mapsdk.raster.model.CameraPosition;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.tencentmap.mapsdk.map.TencentMap.OnMapCameraChangeListener;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import com.tencent.mobileqq.activity.qwallet.fragment.SendHbMainFragment;
+import java.util.List;
 
 public class agnq
-  implements TencentMap.OnMapCameraChangeListener
+  extends FragmentPagerAdapter
 {
-  public agnq(ScanTorchActivity paramScanTorchActivity) {}
-  
-  public void onCameraChange(CameraPosition paramCameraPosition) {}
-  
-  public void onCameraChangeFinish(CameraPosition paramCameraPosition)
+  public agnq(SendHbMainFragment paramSendHbMainFragment, FragmentManager paramFragmentManager)
   {
-    if ((ScanTorchActivity.a(this.a) != null) && (QLog.isColorLevel())) {
-      QLog.d("ScanTorchActivity", 2, "ARLBSPOIDialog onCameraChangeFinish");
-    }
+    super(paramFragmentManager);
+  }
+  
+  public int getCount()
+  {
+    return SendHbMainFragment.a(this.a).size();
+  }
+  
+  public Fragment getItem(int paramInt)
+  {
+    return ((agnr)SendHbMainFragment.a(this.a).get(paramInt)).jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentBaseHbFragment;
+  }
+  
+  public CharSequence getPageTitle(int paramInt)
+  {
+    return ((agnr)SendHbMainFragment.a(this.a).get(paramInt)).jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agnq
  * JD-Core Version:    0.7.0.1
  */

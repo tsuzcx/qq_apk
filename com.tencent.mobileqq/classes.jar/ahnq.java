@@ -1,29 +1,29 @@
-import android.os.Handler;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.shortvideo.dancemachine.utils.DanceLog;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesFetcher;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ahnq
-  implements Runnable
+  implements Comparable<ahnq>
 {
-  public ahnq(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public int a;
+  public long a;
+  public int b;
   
-  public void run()
+  public ahnq(VideoFramesFetcher paramVideoFramesFetcher, long paramLong, int paramInt1, int paramInt2)
   {
-    DanceLog.a("EffectsFragment", "playSceneEndEvent  begin exe...");
-    EffectsCameraCaptureFragment.a(this.a).setVisibility(8);
-    EffectsCameraCaptureFragment.a(this.a).setEnabled(false);
-    EffectsCameraCaptureFragment.a(this.a, 0);
-    EffectsCameraCaptureFragment.a(this.a, EffectsCameraCaptureFragment.a(this.a));
-    EffectsCameraCaptureFragment.e(this.a).setVisibility(0);
-    this.a.a.postDelayed(EffectsCameraCaptureFragment.a(this.a), 500L);
-    DanceLog.a("EffectsFragment", "playSceneEndEvent  end exe...");
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = Math.min(paramInt2, VideoFramesFetcher.a(paramVideoFramesFetcher));
+    VideoFramesFetcher.a(paramVideoFramesFetcher).put(Integer.valueOf(paramInt1), this);
+  }
+  
+  public int a(ahnq paramahnq)
+  {
+    return -(int)(this.jdField_a_of_type_Long - paramahnq.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahnq
  * JD-Core Version:    0.7.0.1
  */

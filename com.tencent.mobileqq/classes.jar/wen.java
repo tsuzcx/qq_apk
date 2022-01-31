@@ -1,28 +1,67 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class wen
-  extends BroadcastReceiver
 {
-  private wen(PublicAccountChatPie paramPublicAccountChatPie) {}
+  private static boolean a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public static void a(Context paramContext, String paramString1, String paramString2, wes paramwes)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")) {
-      PublicAccountChatPie.a(this.a, 1);
-    }
-    while (!paramContext.equals("android.intent.action.SCREEN_OFF")) {
+    a(paramContext, paramString1, true, paramString2, 2131631029, paramwes);
+  }
+  
+  public static void a(Context paramContext, String paramString, wes paramwes)
+  {
+    a(paramContext, paramString, false, "", 2131629935, paramwes);
+  }
+  
+  public static void a(Context paramContext, String paramString1, boolean paramBoolean, String paramString2, int paramInt, wes paramwes)
+  {
+    if (paramContext == null) {}
+    begr localbegr;
+    do
+    {
       return;
+      localbegr = begr.a(paramContext);
+      if (paramBoolean) {
+        localbegr.a(String.format(paramContext.getResources().getString(2131629937), new Object[] { paramString2 }));
+      }
+      localbegr.a(paramInt, 3);
+      localbegr.c(2131625035);
+      localbegr.setOnDismissListener(new weo());
+      localbegr.a(new wep(paramwes, paramString1, localbegr));
+      localbegr.a(new weq(paramContext, paramString1, paramwes, localbegr));
+    } while (localbegr.isShowing());
+    a = false;
+    localbegr.show();
+  }
+  
+  public static void b(Context paramContext, String paramString, wes paramwes)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("SubscribeFollowUserUtil", 2, "unfollow user failed! user is null");
     }
-    PublicAccountChatPie.a(this.a, 1);
+    do
+    {
+      return;
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime instanceof QQAppInterface))
+      {
+        rtr.a((QQAppInterface)localAppRuntime, paramContext, paramString, false, new wer(paramwes), true);
+        return;
+      }
+    } while (paramwes == null);
+    paramwes.a(false, paramString, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wen
  * JD-Core Version:    0.7.0.1
  */

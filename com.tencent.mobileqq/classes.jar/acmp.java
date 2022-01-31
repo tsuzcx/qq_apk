@@ -1,41 +1,32 @@
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmotionPanelInfo;
-import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
-import java.util.List;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.data.MessageForPtt;
 
 public class acmp
-  implements Runnable
+  implements MediaPlayer.OnCompletionListener
 {
-  public acmp(EmoticonMainPanel paramEmoticonMainPanel) {}
+  public acmp(MediaPlayerManager paramMediaPlayerManager) {}
   
-  public void run()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    int i;
-    EmotionPanelInfo localEmotionPanelInfo;
-    if (this.a.jdField_a_of_type_JavaUtilList != null)
-    {
-      i = 0;
-      if (i < this.a.jdField_a_of_type_JavaUtilList.size())
-      {
-        localEmotionPanelInfo = (EmotionPanelInfo)this.a.jdField_a_of_type_JavaUtilList.get(i);
-        if ((localEmotionPanelInfo == null) || (localEmotionPanelInfo.a != 4)) {}
-      }
+    if (paramMediaPlayer != null) {
+      paramMediaPlayer.release();
     }
-    for (;;)
-    {
-      if ((localEmotionPanelInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.a(localEmotionPanelInfo);
-      }
+    baan.a = null;
+    if ((MediaPlayerManager.a(this.a) != null) && ((MediaPlayerManager.a(this.a) instanceof MessageForPtt))) {
+      ((MessageForPtt)MediaPlayerManager.a(this.a)).playProgress = 0.0F;
+    }
+    if ((MediaPlayerManager.a(this.a) != null) && (MediaPlayerManager.a(this.a))) {
       return;
-      i += 1;
-      break;
-      localEmotionPanelInfo = null;
     }
+    MediaPlayerManager.a(this.a, null);
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acmp
  * JD-Core Version:    0.7.0.1
  */

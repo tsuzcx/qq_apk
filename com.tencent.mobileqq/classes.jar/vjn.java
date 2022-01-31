@@ -1,55 +1,64 @@
-import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.LayoutInflater.Factory;
+import android.view.LayoutInflater.Factory2;
+import android.view.View;
 
-class vjn
-  implements Runnable
+public class vjn
+  implements LayoutInflater.Factory2
 {
-  vjn(vjm paramvjm, MessageRecord paramMessageRecord) {}
+  private final LayoutInflater.Factory2 jdField_a_of_type_AndroidViewLayoutInflater$Factory2;
+  private final LayoutInflater.Factory jdField_a_of_type_AndroidViewLayoutInflater$Factory;
+  private final LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
   
-  public void run()
+  public vjn(@NonNull LayoutInflater paramLayoutInflater)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null)
+    this.jdField_a_of_type_AndroidViewLayoutInflater = paramLayoutInflater;
+    this.jdField_a_of_type_AndroidViewLayoutInflater$Factory = paramLayoutInflater.getFactory();
+    this.jdField_a_of_type_AndroidViewLayoutInflater$Factory2 = paramLayoutInflater.getFactory2();
+  }
+  
+  protected View a(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  {
+    vjo.a("LayoutModifier", "onCreateViewPrivate " + paramString);
+    return null;
+  }
+  
+  public View onCreateView(View paramView, String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  {
+    View localView2 = a(paramView, paramString, paramContext, paramAttributeSet);
+    View localView1 = localView2;
+    if (localView2 == null)
     {
-      Object localObject;
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForPic)) {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_Vjm.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.a(this.jdField_a_of_type_Vjm.jdField_a_of_type_Vjt, this.jdField_a_of_type_Vjm.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText, (MessageRecord)localObject);
-        return;
-        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForMixedMsg))
-        {
-          localMessageRecord = (MessageRecord)((MessageForMixedMsg)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).msgElemList.get(this.jdField_a_of_type_Vjm.jdField_a_of_type_Int);
-          localObject = localMessageRecord;
-          if ((localMessageRecord instanceof MessageForPic)) {}
-        }
-        else
-        {
-          while (!(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForTroopFile))
-          {
-            MessageRecord localMessageRecord;
-            localObject = null;
-            break;
-          }
-          localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-        }
+      localView1 = localView2;
+      if (this.jdField_a_of_type_AndroidViewLayoutInflater$Factory2 != null) {
+        localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater$Factory2.onCreateView(paramView, paramString, paramContext, paramAttributeSet);
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.w("ChatItemBuilder", 2, "renderingPicCommentUI:source msg has been deleted.");
+    vjo.a("LayoutModifier", "onCreateView " + localView1);
+    return localView1;
+  }
+  
+  public View onCreateView(String paramString, Context paramContext, AttributeSet paramAttributeSet)
+  {
+    View localView2 = a(null, paramString, paramContext, paramAttributeSet);
+    View localView1 = localView2;
+    if (localView2 == null)
+    {
+      localView1 = localView2;
+      if (this.jdField_a_of_type_AndroidViewLayoutInflater$Factory != null) {
+        localView1 = this.jdField_a_of_type_AndroidViewLayoutInflater$Factory.onCreateView(paramString, paramContext, paramAttributeSet);
+      }
     }
-    this.jdField_a_of_type_Vjm.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.a(this.jdField_a_of_type_Vjm.jdField_a_of_type_Vjt, this.jdField_a_of_type_Vjm.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText, null);
+    vjo.a("LayoutModifier", "onCreateView " + localView1);
+    return localView1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vjn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,33 @@
-import android.graphics.Matrix;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.capture.view.CountDownView;
+import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
 
-public class wuy
+class wuy
+  implements bhwg<Boolean>
 {
-  public float a;
-  private final Matrix a;
-  public boolean a;
-  public float b = 0.0F;
+  wuy(wut paramwut) {}
   
-  public wuy()
+  public void a(@Nullable Boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Float = 0.0F;
+    if (paramBoolean == null) {
+      return;
+    }
+    if (paramBoolean.booleanValue()) {
+      wut.a(this.a);
+    }
+    for (;;)
+    {
+      wut.a(this.a).a(paramBoolean.booleanValue(), new wuz(this));
+      return;
+      if (wut.a(this.a) != null) {
+        wut.a(this.a).a();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wuy
  * JD-Core Version:    0.7.0.1
  */

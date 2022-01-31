@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d075d" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26e6" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d075d" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d075e" />
-    <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c054c" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26e7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="10:45" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a26e6" android:layout_alignLeft="@id/APKTOOL_DUPLICATE_id_0x7f0a26e6" />
-    <TextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c058b" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26e8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.5dip" android:layout_marginTop="5.0dip" android:text="" android:maxLines="1" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a26e7" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a26e6" />
-</RelativeLayout>

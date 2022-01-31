@@ -1,26 +1,20 @@
-import com.tencent.component.media.ImageManagerEnv;
-import com.tencent.component.media.image.ImageManager;
-import com.tencent.component.media.image.PoolParams;
-import com.tencent.component.media.image.PoolParams.BucketParams;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderSubscribe;
 
 public class plr
-  implements PoolParams
+  implements View.OnClickListener
 {
-  public plr(ImageManager paramImageManager) {}
+  public plr(ComponentHeaderSubscribe paramComponentHeaderSubscribe) {}
   
-  public PoolParams.BucketParams getBucketParams(int paramInt)
+  public void onClick(View paramView)
   {
-    return new PoolParams.BucketParams(16384, ImageManagerEnv.g().getDecodeThreadNum(ImageManager.a()) + 2);
-  }
-  
-  public int getBucketPoolSize()
-  {
-    return 1;
+    ComponentHeaderSubscribe.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     plr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.msf.core.net.a;
 
-import android.os.SystemClock;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.af;
-import com.tencent.mobileqq.msf.core.net.l;
-import com.tencent.mobileqq.msf.core.net.m;
-import com.tencent.mobileqq.msf.core.push.f;
+import com.tencent.mobileqq.msf.core.ag;
+import com.tencent.mobileqq.msf.core.net.n;
+import com.tencent.mobileqq.msf.core.push.g;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.PushRegisterInfo;
 import com.tencent.mobileqq.msf.service.MsfService;
@@ -20,12 +18,12 @@ import java.util.concurrent.ConcurrentHashMap;
 public class b
 {
   public static final String a = "HeratbeatProxy";
-  public static byte[] b;
-  public static byte[] c;
+  public static byte[] b = null;
+  public static byte[] c = null;
   public static final String d = "OS.Hello";
-  public static boolean e;
+  public static boolean e = false;
   private static int f = -1;
-  private static boolean g;
+  private static boolean g = false;
   
   public static void a(byte[] paramArrayOfByte)
   {
@@ -97,13 +95,8 @@ public class b
     try
     {
       QLog.d("HeratbeatProxy", 1, "send heartbeat os.hello");
-      if (!MsfService.core.sender.a.o().b())
-      {
-        m.t = SystemClock.elapsedRealtime();
-        MsfService.core.sender.a.g();
-      }
-      int i = MsfService.core.sender.a.o().a(MsfService.core.getMsfAppid(), 0, paramToServiceMsg.getRequestSsoSeq(), paramToServiceMsg.getUin(), paramToServiceMsg.getServiceCmd(), "", paramToServiceMsg.getMsfCommand(), b, null);
-      if (i <= 0) {
+      boolean bool = MsfService.core.sender.b.a(MsfService.core.getMsfAppid(), 0, paramToServiceMsg.getServiceCmd(), "", paramToServiceMsg.getMsfCommand(), paramToServiceMsg.getUin(), paramToServiceMsg.getRequestSsoSeq(), b, paramToServiceMsg);
+      if (!bool) {
         return false;
       }
     }
@@ -159,11 +152,11 @@ public class b
   
   private static com.tencent.mobileqq.msf.core.push.a d()
   {
-    Iterator localIterator = MsfService.core.pushManager.h.keySet().iterator();
+    Iterator localIterator = MsfService.core.pushManager.i.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (com.tencent.mobileqq.msf.core.push.a)MsfService.core.pushManager.h.get(localObject);
+      localObject = (com.tencent.mobileqq.msf.core.push.a)MsfService.core.pushManager.i.get(localObject);
       if ((localObject != null) && (((com.tencent.mobileqq.msf.core.push.a)localObject).k != null) && (((com.tencent.mobileqq.msf.core.push.a)localObject).c != 0L)) {
         try
         {

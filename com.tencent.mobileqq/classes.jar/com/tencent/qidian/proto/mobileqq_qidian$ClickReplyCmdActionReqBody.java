@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class mobileqq_qidian$ClickReplyCmdActionReqBody
-  extends MessageMicro
+  extends MessageMicro<ClickReplyCmdActionReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 33, 41, 48, 58, 64, 72 }, new String[] { "str_key", "uint32_type", "bool_is_need_lbs", "double_latitude", "double_longitude", "uint32_src_type", "str_menu_title", "uint32_terminal_type", "uint32_pubno" }, new Object[] { "", Integer.valueOf(0), Boolean.valueOf(false), Double.valueOf(0.0D), Double.valueOf(0.0D), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0) }, ClickReplyCmdActionReqBody.class);
   public final PBBoolField bool_is_need_lbs = PBField.initBool(false);
@@ -24,7 +24,7 @@ public final class mobileqq_qidian$ClickReplyCmdActionReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.qidian.proto.mobileqq_qidian.ClickReplyCmdActionReqBody
  * JD-Core Version:    0.7.0.1
  */

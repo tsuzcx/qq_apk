@@ -1,34 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aegc
-  extends BroadcastReceiver
+class aegc
+  implements View.OnClickListener
 {
-  public aegc(UiApiPlugin paramUiApiPlugin) {}
+  aegc(aefv paramaefv) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ((UiApiPlugin.a != null) && (UiApiPlugin.a.size() > 0))
-    {
-      Iterator localIterator = UiApiPlugin.a.iterator();
-      while (localIterator.hasNext())
-      {
-        UiApiPlugin localUiApiPlugin = (UiApiPlugin)((WeakReference)localIterator.next()).get();
-        if (localUiApiPlugin != null) {
-          localUiApiPlugin.b(paramContext, paramIntent);
-        }
-      }
-    }
+    aefv.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aegc
  * JD-Core Version:    0.7.0.1
  */

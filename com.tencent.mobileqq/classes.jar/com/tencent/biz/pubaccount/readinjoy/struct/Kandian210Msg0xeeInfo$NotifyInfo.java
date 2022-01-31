@@ -23,7 +23,7 @@ public class Kandian210Msg0xeeInfo$NotifyInfo
   public String orangeWord;
   public Kandian210Msg0xeeInfo.OrdinaryPushInfo ordinaryPushInfo;
   public String pictureJumpURL;
-  public ArrayList picturesURLList;
+  public ArrayList<String> picturesURLList;
   public long sceneType;
   public int showLine;
   public Kandian210Msg0xeeInfo.SocialPushInfo socialPushInfo;

@@ -1,88 +1,81 @@
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity;
+import com.tencent.mobileqq.activity.RewardNoticeActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 
 public class abpl
-  extends Handler
+  extends baox
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  public abpl(RewardNoticeActivity paramRewardNoticeActivity) {}
   
-  public abpl(ARMapLoadingActivity paramARMapLoadingActivity1, Looper paramLooper, ARMapLoadingActivity paramARMapLoadingActivity2)
+  protected void handlePendantAuth(boolean paramBoolean, Object paramObject)
   {
-    super(paramLooper);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramARMapLoadingActivity2);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    ARMapLoadingActivity localARMapLoadingActivity = (ARMapLoadingActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localARMapLoadingActivity == null) {
-      return;
-    }
+    paramObject = (Bundle)paramObject;
+    long l = paramObject.getLong("pendantId");
+    String str = paramObject.getString("uin");
     if (QLog.isColorLevel()) {
-      QLog.d("ARMapLoadingActivity", 2, String.format("handleMessage msg=%s", new Object[] { Integer.valueOf(paramMessage.what) }));
+      QLog.d("Q.BabyQ", 2, "handlePendantAuth isSuccess:" + paramBoolean + " pendantId:" + l + " uin:" + str);
     }
-    switch (paramMessage.what)
+    if ((l == -1L) || (str == null)) {
+      return;
+    }
+    if (paramBoolean)
     {
-    default: 
-      return;
-    case 100: 
-      ARMapLoadingActivity.e(localARMapLoadingActivity);
-      return;
-    case 101: 
-      ARMapLoadingActivity.f(localARMapLoadingActivity);
-      return;
-    case 102: 
-      ARMapLoadingActivity.g(localARMapLoadingActivity);
-      return;
-    case 110: 
-      ARMapLoadingActivity.h(localARMapLoadingActivity);
-      return;
-    case 103: 
-      ARMapLoadingActivity.i(localARMapLoadingActivity);
-      return;
-    case 104: 
-      String str = null;
-      Object localObject = paramMessage.getData();
-      if (localObject != null) {
-        str = (String)((Bundle)localObject).get("failInfo");
+      ajjj localajjj = (ajjj)this.a.app.getManager(51);
+      ExtensionInfo localExtensionInfo = localajjj.a(str);
+      paramObject = localExtensionInfo;
+      if (localExtensionInfo == null)
+      {
+        paramObject = new ExtensionInfo();
+        paramObject.uin = str;
       }
-      localObject = str;
-      if (TextUtils.isEmpty(str)) {
-        localObject = "";
+      paramObject.pendantId = l;
+      paramObject.timestamp = System.currentTimeMillis();
+      localajjj.a(paramObject);
+      if (!TextUtils.isEmpty(this.a.f)) {
+        bbmy.a(this.a.app.getApp(), 2, this.a.f, 0).a();
       }
-      ARMapLoadingActivity.a(localARMapLoadingActivity, paramMessage.arg1, paramMessage.arg2, (String)localObject);
-      return;
-    case 106: 
-      ARMapLoadingActivity.j(localARMapLoadingActivity);
-      return;
-    case 107: 
-      ARMapLoadingActivity.k(localARMapLoadingActivity);
-      return;
-    case 105: 
-      ARMapLoadingActivity.l(localARMapLoadingActivity);
-      return;
-    case 108: 
-      ARMapLoadingActivity.m(localARMapLoadingActivity);
-      return;
-    case 109: 
-      ARMapLoadingActivity.n(localARMapLoadingActivity);
-      return;
-    case 111: 
-      ARMapLoadingActivity.o(localARMapLoadingActivity);
+      this.a.finish();
       return;
     }
-    ARMapLoadingActivity.p(localARMapLoadingActivity);
+    int i = paramObject.getInt("result");
+    if (badq.d(this.a))
+    {
+      paramObject = "4";
+      switch (i)
+      {
+      default: 
+        label225:
+        i = -1;
+      }
+    }
+    for (;;)
+    {
+      if ((i != -1) && (QLog.isColorLevel())) {
+        QLog.e("Q.BabyQ", 2, "handlePendantAuth error:" + i + paramObject);
+      }
+      bbmy.a(this.a.app.getApp(), 1, ajjy.a(2131647655), 0).a();
+      break;
+      paramObject = "3";
+      break label225;
+      i = 2131651615;
+      continue;
+      paramObject = "0";
+      i = 2131651616;
+      continue;
+      paramObject = "1";
+      i = 2131651617;
+      continue;
+      paramObject = "2";
+      i = -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abpl
  * JD-Core Version:    0.7.0.1
  */

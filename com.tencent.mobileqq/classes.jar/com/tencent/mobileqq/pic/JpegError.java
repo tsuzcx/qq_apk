@@ -33,7 +33,7 @@ final class JpegError
   
   public static void throwException(int paramInt)
   {
-    int i = paramInt & 0xFFFF;
+    int i = 0xFFFF & paramInt;
     throw new RuntimeException("JpegError: errcode=" + i + " Subcode=" + (paramInt >>> 16) + " Msg=" + (String)map.get(i));
   }
 }

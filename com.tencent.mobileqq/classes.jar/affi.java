@@ -1,53 +1,47 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
-import com.tencent.mobileqq.nearby.now.view.widget.LikeAniView;
+import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class affi
-  implements GestureDetector.OnDoubleTapListener
+  extends atog
 {
-  public affi(PlayOperationViewModel paramPlayOperationViewModel) {}
+  private affi(PhoneContactFragment paramPhoneContactFragment) {}
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  private void g(boolean paramBoolean)
   {
-    if (System.currentTimeMillis() - PlayOperationViewModel.a(this.a) >= 500L)
-    {
-      int i = (int)paramMotionEvent.getRawX();
-      int j = (int)paramMotionEvent.getRawY();
-      ((LikeAniView)this.a.jdField_a_of_type_AndroidViewView.findViewById(2131370588)).a(i, j);
-      if (!PlayOperationViewModel.a(this.a)) {
-        break label73;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContactFragment", 2, String.format("refreshResult [%s]", new Object[] { Boolean.valueOf(paramBoolean) }));
     }
-    for (;;)
+    if (this.a.c)
     {
-      PlayOperationViewModel.a(this.a, System.currentTimeMillis());
-      return true;
-      label73:
-      if ((!PlayOperationViewModel.b(this.a)) && (this.a.jdField_a_of_type_AndroidViewView.findViewById(2131370588).getVisibility() == 0))
-      {
-        PlayOperationViewModel.a(this.a, false);
-        this.a.c(null);
-        new NowVideoReporter().h("video").i("playpage_double_click").b().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if (this.a.a != null) {
+        this.a.a.a(this.a.b(), paramBoolean, null);
       }
+      if (paramBoolean) {
+        this.a.c();
+      }
+      this.a.c = false;
     }
   }
   
-  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  protected void a(boolean paramBoolean)
   {
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContactFragment", 2, String.format("onHideContact [%s]", new Object[] { Boolean.valueOf(paramBoolean) }));
+    }
+    this.a.c();
   }
   
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneContactFragment", 2, String.format("onQueryBindState [%s, %s]", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) }));
+    }
+    g(paramBoolean1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     affi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,27 @@
-import com.tencent.mobileqq.richmedia.capture.view.FilterProviderView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.os.Message;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
+import mqq.os.MqqHandler;
 
 public class ahra
-  implements Runnable
+  extends MqqHandler
 {
-  public ahra(FilterProviderView paramFilterProviderView) {}
+  public ahra(PhoneContactTabView paramPhoneContactTabView) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    FilterProviderView.a(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("FilterProviderView", 2, "FilterProviderView onCaptureVideoFilterRefresh size=" + this.a.a.size());
+    switch (paramMessage.what)
+    {
+    case 1: 
+    case 2: 
+    default: 
+      return;
     }
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahra
  * JD-Core Version:    0.7.0.1
  */

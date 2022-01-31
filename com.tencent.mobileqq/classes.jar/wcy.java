@@ -1,61 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.PublicAccountHandler.IWeatherInfoListener;
-import org.json.JSONException;
-import org.json.JSONObject;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
+import com.tencent.mobileqq.pb.PBStringField;
 
 public class wcy
-  implements PublicAccountHandler.IWeatherInfoListener
+  implements vye
 {
-  public wcy(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public wcy(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment) {}
   
-  public void a(String paramString)
+  public void a(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    int j = 0;
-    String str = "";
-    Object localObject = str;
-    label106:
-    for (;;)
+    if ((paramStFeed != null) && (paramStFeed.id.get().startsWith("fakeid_")))
     {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        localObject = str;
-        paramString = localJSONObject.getString("area");
-        localObject = paramString;
-        int i = localJSONObject.getInt("area_id");
-        int k;
-        localJSONException1.printStackTrace();
-      }
-      catch (JSONException localJSONException1)
-      {
-        try
-        {
-          k = localJSONObject.getInt("switch");
-          j = k;
-          localObject = Message.obtain();
-          ((Message)localObject).what = 6;
-          ((Message)localObject).arg1 = i;
-          ((Message)localObject).arg2 = j;
-          ((Message)localObject).obj = paramString;
-          this.a.a.sendMessage((Message)localObject);
-          return;
-        }
-        catch (JSONException localJSONException2)
-        {
-          break label106;
-        }
-        localJSONException1 = localJSONException1;
-        i = 0;
-        paramString = (String)localObject;
-      }
+      bbmy.a(this.a.getActivity(), ajjy.a(2131648853), 0).a();
+      return;
     }
+    vvy.a(this.a.getActivity(), paramStFeed);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wcy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,27 @@
-import com.tencent.mobileqq.app.FaceObserver;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.util.FaceInfo;
-import com.tencent.mobileqq.util.NearByFaceDrawable;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.TargetApi;
+import android.content.Context;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
 
 public class akhu
-  extends FaceObserver
 {
-  public akhu(NearByFaceDrawable paramNearByFaceDrawable) {}
-  
-  public void a(boolean paramBoolean, FaceInfo paramFaceInfo)
+  @TargetApi(23)
+  public static void a(AppActivity paramAppActivity, int paramInt, QQPermissionCallback paramQQPermissionCallback)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqhead.NearByFaceDrawable", 2, "onUpdateStrangerHead.faceInfo=" + paramFaceInfo + ", isSuccess=" + paramBoolean);
+    if (paramAppActivity != null) {
+      paramAppActivity.requestPermissions(paramQQPermissionCallback, paramInt, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
     }
-    if ((this.a.b) || (this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) || (paramFaceInfo == null)) {}
-    while ((paramFaceInfo.b != this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b) || (!this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.a.equals(paramFaceInfo.a))) {
-      return;
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqAppFaceObserver != null) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppFaceObserver);
-    }
-    if (paramBoolean)
-    {
-      paramFaceInfo = this.a.b();
-      if (paramFaceInfo != null)
-      {
-        this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, paramFaceInfo);
-        return;
-      }
-      this.a.a();
-      return;
-    }
-    this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, null);
+  }
+  
+  @TargetApi(23)
+  public static boolean a(Context paramContext)
+  {
+    return (paramContext != null) && (paramContext.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") == 0) && (paramContext.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akhu
  * JD-Core Version:    0.7.0.1
  */

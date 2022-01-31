@@ -5,8 +5,8 @@ import java.util.concurrent.TimeUnit;
 
 public final class CacheControl
 {
-  public static final CacheControl FORCE_CACHE = new Builder().onlyIfCached().maxStale(2147483647, TimeUnit.SECONDS).build();
-  public static final CacheControl FORCE_NETWORK = new Builder().noCache().build();
+  public static final CacheControl FORCE_CACHE = new CacheControl.Builder().onlyIfCached().maxStale(2147483647, TimeUnit.SECONDS).build();
+  public static final CacheControl FORCE_NETWORK = new CacheControl.Builder().noCache().build();
   String headerValue;
   private final boolean isPrivate;
   private final boolean isPublic;
@@ -20,7 +20,7 @@ public final class CacheControl
   private final boolean onlyIfCached;
   private final int sMaxAgeSeconds;
   
-  private CacheControl(Builder paramBuilder)
+  private CacheControl(CacheControl.Builder paramBuilder)
   {
     this.noCache = paramBuilder.noCache;
     this.noStore = paramBuilder.noStore;
@@ -96,67 +96,54 @@ public final class CacheControl
   
   public static CacheControl parse(Headers paramHeaders)
   {
-    boolean bool7 = false;
-    boolean bool6 = false;
+    boolean bool5 = false;
     int i1 = -1;
     int n = -1;
-    boolean bool5 = false;
+    boolean bool7 = false;
+    boolean bool6 = false;
     boolean bool4 = false;
-    boolean bool3 = false;
     int m = -1;
     int k = -1;
+    boolean bool3 = false;
     boolean bool2 = false;
-    boolean bool1 = false;
     int i = 1;
-    Object localObject1 = null;
-    int i2 = 0;
     int i8 = paramHeaders.size();
+    int i2 = 0;
+    Object localObject1 = null;
+    boolean bool1 = false;
     while (i2 < i8)
     {
-      String str2 = paramHeaders.name(i2);
+      Object localObject2 = paramHeaders.name(i2);
       String str1 = paramHeaders.value(i2);
       int i3;
-      if (str2.equalsIgnoreCase("Cache-Control")) {
+      if (((String)localObject2).equalsIgnoreCase("Cache-Control")) {
         if (localObject1 != null)
         {
           i = 0;
           i3 = 0;
         }
       }
-      label89:
-      boolean bool8;
-      boolean bool9;
-      int j;
-      int i4;
-      boolean bool10;
-      boolean bool11;
-      boolean bool12;
-      int i5;
-      int i6;
-      boolean bool13;
-      boolean bool14;
-      Object localObject2;
-      int i7;
       for (;;)
       {
-        bool8 = bool7;
-        bool9 = bool6;
-        j = i1;
-        i4 = n;
-        bool10 = bool5;
-        bool11 = bool4;
-        bool12 = bool3;
-        i5 = m;
-        i6 = k;
-        bool13 = bool2;
-        bool14 = bool1;
+        label89:
         localObject2 = localObject1;
-        i7 = i;
+        bool14 = bool5;
+        i7 = i1;
+        i6 = n;
+        bool13 = bool7;
+        bool12 = bool6;
+        bool11 = bool4;
+        i5 = m;
+        i4 = k;
+        bool10 = bool3;
+        bool9 = bool2;
+        j = i;
+        bool8 = bool1;
         if (i3 >= str1.length()) {
           break label603;
         }
         j = HeaderParser.skipUntil(str1, i3, "=,;");
-        str2 = str1.substring(i3, j).trim();
+        String str2 = str1.substring(i3, j).trim();
         if ((j == str1.length()) || (str1.charAt(j) == ',') || (str1.charAt(j) == ';'))
         {
           j += 1;
@@ -165,28 +152,15 @@ public final class CacheControl
         for (;;)
         {
           if (!"no-cache".equalsIgnoreCase(str2)) {
-            break label390;
+            break label341;
           }
-          bool7 = true;
+          bool1 = true;
           i3 = j;
           break label89;
           localObject1 = str1;
           break;
-          bool8 = bool7;
-          bool9 = bool6;
-          j = i1;
-          i4 = n;
-          bool10 = bool5;
-          bool11 = bool4;
-          bool12 = bool3;
-          i5 = m;
-          i6 = k;
-          bool13 = bool2;
-          bool14 = bool1;
-          localObject2 = localObject1;
-          i7 = i;
-          if (!str2.equalsIgnoreCase("Pragma")) {
-            break label603;
+          if (!((String)localObject2).equalsIgnoreCase("Pragma")) {
+            break label554;
           }
           i = 0;
           break;
@@ -204,10 +178,10 @@ public final class CacheControl
             localObject2 = str1.substring(i3, j).trim();
           }
         }
-        label390:
+        label341:
         if ("no-store".equalsIgnoreCase(str2))
         {
-          bool6 = true;
+          bool5 = true;
           i3 = j;
         }
         else if ("max-age".equalsIgnoreCase(str2))
@@ -222,17 +196,17 @@ public final class CacheControl
         }
         else if ("private".equalsIgnoreCase(str2))
         {
-          bool5 = true;
+          bool7 = true;
           i3 = j;
         }
         else if ("public".equalsIgnoreCase(str2))
         {
-          bool4 = true;
+          bool6 = true;
           i3 = j;
         }
         else if ("must-revalidate".equalsIgnoreCase(str2))
         {
-          bool3 = true;
+          bool4 = true;
           i3 = j;
         }
         else if ("max-stale".equalsIgnoreCase(str2))
@@ -247,7 +221,7 @@ public final class CacheControl
         }
         else if ("only-if-cached".equalsIgnoreCase(str2))
         {
-          bool2 = true;
+          bool3 = true;
           i3 = j;
         }
         else
@@ -255,31 +229,45 @@ public final class CacheControl
           i3 = j;
           if ("no-transform".equalsIgnoreCase(str2))
           {
-            bool1 = true;
+            bool2 = true;
             i3 = j;
           }
         }
       }
+      label554:
+      boolean bool8 = bool1;
+      int j = i;
+      boolean bool9 = bool2;
+      boolean bool10 = bool3;
+      int i4 = k;
+      int i5 = m;
+      boolean bool11 = bool4;
+      boolean bool12 = bool6;
+      boolean bool13 = bool7;
+      int i6 = n;
+      int i7 = i1;
+      boolean bool14 = bool5;
+      localObject2 = localObject1;
       label603:
       i2 += 1;
-      bool7 = bool8;
-      bool6 = bool9;
-      i1 = j;
-      n = i4;
-      bool5 = bool10;
-      bool4 = bool11;
-      bool3 = bool12;
-      m = i5;
-      k = i6;
-      bool2 = bool13;
-      bool1 = bool14;
+      bool1 = bool8;
       localObject1 = localObject2;
-      i = i7;
+      bool5 = bool14;
+      i1 = i7;
+      n = i6;
+      bool7 = bool13;
+      bool6 = bool12;
+      bool4 = bool11;
+      m = i5;
+      k = i4;
+      bool3 = bool10;
+      bool2 = bool9;
+      i = j;
     }
-    if (i == 0) {
-      localObject1 = null;
+    if (i == 0) {}
+    for (paramHeaders = null;; paramHeaders = localObject1) {
+      return new CacheControl(bool1, bool5, i1, n, bool7, bool6, bool4, m, k, bool3, bool2, paramHeaders);
     }
-    return new CacheControl(bool7, bool6, i1, n, bool5, bool4, bool3, m, k, bool2, bool1, localObject1);
   }
   
   public boolean isPrivate()
@@ -346,88 +334,6 @@ public final class CacheControl
     str = headerValue();
     this.headerValue = str;
     return str;
-  }
-  
-  public static final class Builder
-  {
-    int maxAgeSeconds = -1;
-    int maxStaleSeconds = -1;
-    int minFreshSeconds = -1;
-    boolean noCache;
-    boolean noStore;
-    boolean noTransform;
-    boolean onlyIfCached;
-    
-    public CacheControl build()
-    {
-      return new CacheControl(this, null);
-    }
-    
-    public Builder maxAge(int paramInt, TimeUnit paramTimeUnit)
-    {
-      if (paramInt < 0) {
-        throw new IllegalArgumentException("maxAge < 0: " + paramInt);
-      }
-      long l = paramTimeUnit.toSeconds(paramInt);
-      if (l > 2147483647L) {}
-      for (paramInt = 2147483647;; paramInt = (int)l)
-      {
-        this.maxAgeSeconds = paramInt;
-        return this;
-      }
-    }
-    
-    public Builder maxStale(int paramInt, TimeUnit paramTimeUnit)
-    {
-      if (paramInt < 0) {
-        throw new IllegalArgumentException("maxStale < 0: " + paramInt);
-      }
-      long l = paramTimeUnit.toSeconds(paramInt);
-      if (l > 2147483647L) {}
-      for (paramInt = 2147483647;; paramInt = (int)l)
-      {
-        this.maxStaleSeconds = paramInt;
-        return this;
-      }
-    }
-    
-    public Builder minFresh(int paramInt, TimeUnit paramTimeUnit)
-    {
-      if (paramInt < 0) {
-        throw new IllegalArgumentException("minFresh < 0: " + paramInt);
-      }
-      long l = paramTimeUnit.toSeconds(paramInt);
-      if (l > 2147483647L) {}
-      for (paramInt = 2147483647;; paramInt = (int)l)
-      {
-        this.minFreshSeconds = paramInt;
-        return this;
-      }
-    }
-    
-    public Builder noCache()
-    {
-      this.noCache = true;
-      return this;
-    }
-    
-    public Builder noStore()
-    {
-      this.noStore = true;
-      return this;
-    }
-    
-    public Builder noTransform()
-    {
-      this.noTransform = true;
-      return this;
-    }
-    
-    public Builder onlyIfCached()
-    {
-      this.onlyIfCached = true;
-      return this;
-    }
   }
 }
 

@@ -1,19 +1,18 @@
-import com.tencent.qqprotect.qsec.FilterManager;
-import com.tencent.qqprotect.qsec.IScanner;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager;
 
-public class amen
-  implements Runnable
+class amen
+  implements bhnx
 {
-  public amen(FilterManager paramFilterManager, IScanner paramIScanner) {}
+  amen(amem paramamem) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentQqprotectQsecIScanner.a();
+    ((DynamicTextConfigManager)bhfm.a(7)).a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amen
  * JD-Core Version:    0.7.0.1
  */

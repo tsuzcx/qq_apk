@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.troop.utils.HWTroopUtils.OnHomeworkTroopIdentityCheckListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.VideoBroadcastReceiver;
 
-public final class ajvb
-  implements Runnable
+public class ajvb
+  implements DialogInterface.OnClickListener
 {
-  public ajvb(HWTroopUtils.OnHomeworkTroopIdentityCheckListener paramOnHomeworkTroopIdentityCheckListener, int paramInt) {}
+  public ajvb(VideoBroadcastReceiver paramVideoBroadcastReceiver) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHWTroopUtils$OnHomeworkTroopIdentityCheckListener.a(this.jdField_a_of_type_Int);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajvb
  * JD-Core Version:    0.7.0.1
  */

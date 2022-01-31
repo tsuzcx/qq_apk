@@ -1,41 +1,44 @@
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SettingUncommUsedContactsActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.avatar.dynamicavatar.VasFaceManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class abrm
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abrm(VasFaceManager paramVasFaceManager, String paramString1, String paramString2) {}
+  public abrm(SettingUncommUsedContactsActivity paramSettingUncommUsedContactsActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    try
+    boolean bool = true;
+    if (((paramCompoundButton == this.a.a.a()) || (paramCompoundButton == this.a.b.a())) && (!badq.d(this.a.getActivity())))
     {
-      if (new File(this.jdField_a_of_type_JavaLangString).exists())
+      this.a.a(2131629009, 0);
+      SettingUncommUsedContactsActivity localSettingUncommUsedContactsActivity = this.a;
+      if (!paramBoolean)
       {
-        QLog.d("Q.qqhead.VasFaceManager", 1, "getFace from sd card: " + this.b);
-        this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVasFaceManager.a(this.b, this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      QLog.d("Q.qqhead.VasFaceManager", 1, "getFace need download: " + this.b);
-      VasQuickUpdateManager localVasQuickUpdateManager = (VasQuickUpdateManager)this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVasFaceManager.a.getManager(183);
-      if (localVasQuickUpdateManager != null)
-      {
-        localVasQuickUpdateManager.a(23L, this.b, "Q.qqhead.VasFaceManager");
-        return;
+        paramBoolean = bool;
+        SettingUncommUsedContactsActivity.a(localSettingUncommUsedContactsActivity, paramCompoundButton, paramBoolean);
       }
     }
-    catch (Exception localException)
+    do
     {
-      QLog.e("Q.qqhead.VasFaceManager", 1, "getFace failed", localException);
-    }
+      return;
+      paramBoolean = false;
+      break;
+      if (paramCompoundButton == this.a.a.a())
+      {
+        this.a.app.f(paramBoolean, true);
+        return;
+      }
+    } while (paramCompoundButton != this.a.b.a());
+    this.a.app.g(paramBoolean, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abrm
  * JD-Core Version:    0.7.0.1
  */

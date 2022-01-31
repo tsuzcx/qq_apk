@@ -1,87 +1,127 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoTaskInfo;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.network.handler.DeleteStoryVideoHandler;
-import com.tencent.biz.qqstory.network.request.PublishStoryVideoRequest;
-import com.tencent.biz.qqstory.network.response.AddGroupVideoResponse.AddGroupFeed;
-import com.tencent.biz.qqstory.network.response.PublishStoryVideoRespond;
-import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayInputStream;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class nfd
-  implements CmdTaskManger.CommandCallback
+  implements alzn<String>
 {
-  public nfd(StoryVideoUploadTask paramStoryVideoUploadTask) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString = "";
+  private int b;
   
-  public void a(@NonNull PublishStoryVideoRequest paramPublishStoryVideoRequest, @Nullable PublishStoryVideoRespond paramPublishStoryVideoRespond, @NonNull ErrorMessage paramErrorMessage)
+  public static nfd a(int paramInt, String paramString, boolean paramBoolean)
   {
-    if ((paramErrorMessage.isFail()) || (paramPublishStoryVideoRespond == null))
+    nfd localnfd = new nfd();
+    localnfd.jdField_a_of_type_Int = paramInt;
+    if (paramBoolean) {}
+    for (paramInt = 1;; paramInt = 0)
     {
-      this.a.a(6, paramErrorMessage);
-      SLog.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "publish post fail:%s task:%s", new Object[] { paramErrorMessage, this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo });
+      localnfd.b = paramInt;
+      localnfd.jdField_a_of_type_JavaLangString = paramString;
+      return localnfd;
+    }
+  }
+  
+  public static nfd a(String paramString)
+  {
+    try
+    {
+      nfd localnfd = (nfd)amaf.a(paramString, nfd.class);
+      return localnfd;
+    }
+    catch (QStorageInstantiateException localQStorageInstantiateException)
+    {
+      QLog.i("PublicAccountCenterUrlConfProcessor", 1, "loadConfig l :" + paramString, localQStorageInstantiateException);
+    }
+    return null;
+  }
+  
+  public static nfd a(alzs[] paramArrayOfalzs)
+  {
+    nfd localnfd = null;
+    int i = 0;
+    while (i < paramArrayOfalzs.length)
+    {
+      localnfd = a(paramArrayOfalzs[i].jdField_a_of_type_JavaLangString);
+      i += 1;
+    }
+    return localnfd;
+  }
+  
+  public void a()
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = (QQAppInterface)localObject;
+      int i = rqc.a((QQAppInterface)localObject);
+      if (this.jdField_a_of_type_Int != i) {
+        break label47;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PaSubscribeRedDotProcessor", 2, "IGNORE THIS ACTION because of SAME VERSION");
+      }
+    }
+    label47:
+    do
+    {
       return;
+      rqc.a((QQAppInterface)localObject, this.jdField_a_of_type_Int);
+      rqc.a((QQAppInterface)localObject, this.b, this.jdField_a_of_type_JavaLangString);
+      localObject = (WebProcessManager)((QQAppInterface)localObject).getManager(13);
+    } while (localObject == null);
+    ((WebProcessManager)localObject).e();
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PaSubscribeRedDotProcessor", 2, "updateSubscribeConfig xml: " + paramString);
     }
-    ((StoryVideoTaskInfo)this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).d = (paramPublishStoryVideoRespond.jdField_a_of_type_Long * 1000L);
-    paramPublishStoryVideoRequest = ((StoryVideoTaskInfo)this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a();
-    SLog.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "local feedId %s, remote id: %s", new Object[] { paramPublishStoryVideoRequest.feedId, paramPublishStoryVideoRespond.jdField_a_of_type_JavaLangString });
-    SLog.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "local date %s, date id: %s", new Object[] { paramPublishStoryVideoRequest.date, paramPublishStoryVideoRespond.c });
-    if (paramPublishStoryVideoRequest.isFakeFeedItem())
+    try
     {
-      ((StoryVideoTaskInfo)this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).a(paramPublishStoryVideoRespond.jdField_a_of_type_JavaLangString);
-      paramPublishStoryVideoRequest.setDate(paramPublishStoryVideoRespond.c);
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(paramPublishStoryVideoRespond.d))
+      if (!TextUtils.isEmpty(paramString))
       {
-        ((StoryVideoTaskInfo)this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).g = paramPublishStoryVideoRespond.d;
-        SLog.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "publish success and storyId:%s", new Object[] { paramPublishStoryVideoRespond.d });
-      }
-      if (!TextUtils.isEmpty(paramPublishStoryVideoRespond.e))
-      {
-        ((StoryVideoTaskInfo)this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).g = paramPublishStoryVideoRespond.e;
-        SLog.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "publish success and vid:%s", new Object[] { paramPublishStoryVideoRespond.e });
-      }
-      ((StoryVideoTaskInfo)this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).b = paramPublishStoryVideoRespond.jdField_a_of_type_JavaUtilList;
-      SLog.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "add to shareGroup rsp:" + ((StoryVideoTaskInfo)this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).b);
-      ((StoryVideoTaskInfo)this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).e = paramPublishStoryVideoRespond.b;
-      if (!this.a.a()) {
-        break label535;
-      }
-      this.a.a(this.a.jdField_a_of_type_Int, new ErrorMessage());
-      SLog.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "publish post success after stop:%s", new Object[] { this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo });
-      if (this.a.jdField_a_of_type_Int != 7) {
-        break;
-      }
-      new DeleteStoryVideoHandler().a(((StoryVideoTaskInfo)this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo).g);
-      if (paramPublishStoryVideoRespond.jdField_a_of_type_JavaUtilList == null) {
-        break;
-      }
-      paramPublishStoryVideoRequest = paramPublishStoryVideoRespond.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramPublishStoryVideoRequest.hasNext())
-      {
-        paramPublishStoryVideoRespond = ((AddGroupVideoResponse.AddGroupFeed)paramPublishStoryVideoRequest.next()).a.values().iterator();
-        while (paramPublishStoryVideoRespond.hasNext())
+        paramString = paramString.trim();
+        paramString = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes("utf-8")));
+        NodeList localNodeList = paramString.getElementsByTagName("version");
+        Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+        if ((localObject instanceof QQAppInterface))
         {
-          paramErrorMessage = (String)paramPublishStoryVideoRespond.next();
-          new DeleteStoryVideoHandler().a(paramErrorMessage);
+          localObject = (QQAppInterface)localObject;
+          this.jdField_a_of_type_Int = Integer.parseInt(localNodeList.item(0).getFirstChild().getNodeValue());
+          paramString = paramString.getElementsByTagName("public-account-folder");
+          if (paramString.getLength() > 0)
+          {
+            paramString = (Element)paramString.item(0);
+            this.b = Integer.parseInt(paramString.getElementsByTagName("show").item(0).getFirstChild().getNodeValue());
+            this.jdField_a_of_type_JavaLangString = paramString.getElementsByTagName("msg").item(0).getFirstChild().getNodeValue();
+          }
         }
       }
-      if (!paramPublishStoryVideoRequest.feedId.equals(paramPublishStoryVideoRespond.jdField_a_of_type_JavaLangString)) {
-        SLog.e("Q.qqstory.publish.upload:StoryVideoUploadTask", "local feedId %s, remote id: %s", new Object[] { paramPublishStoryVideoRequest.feedId, paramPublishStoryVideoRespond.jdField_a_of_type_JavaLangString });
+      else if (QLog.isColorLevel())
+      {
+        QLog.d("PaSubscribeRedDotProcessor", 2, "updateSubscribeConfig xml is empty");
+        return;
       }
     }
-    label535:
-    this.a.a(5, new ErrorMessage());
-    SLog.d("Q.qqstory.publish.upload:StoryVideoUploadTask", "publish post success:%s", new Object[] { this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBaseTaskInfo });
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("PaSubscribeRedDotProcessor", 2, "updateSubscribeConfig error", paramString);
+      }
+      paramString.printStackTrace();
+    }
   }
 }
 

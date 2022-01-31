@@ -1,18 +1,27 @@
-import com.tencent.mobileqq.forward.ForwardShareCardOption;
+import android.graphics.Bitmap;
 
-class adun
-  implements Runnable
+public class adun
 {
-  adun(adum paramadum) {}
+  public float a;
+  public int a;
+  public Bitmap a;
+  public float b;
+  public int b;
+  public float c = 0.0F;
+  public float d = 0.0F;
+  public float e;
   
-  public void run()
+  private adun()
   {
-    this.a.a.j();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adun
  * JD-Core Version:    0.7.0.1
  */

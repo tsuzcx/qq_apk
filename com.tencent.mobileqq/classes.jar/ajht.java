@@ -1,40 +1,18 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopHandler.KeywordTipInfoObserver;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.Callback;
-import java.util.List;
+import com.tencent.mobileqq.app.FaceDownloader;
 
 public class ajht
-  extends TroopHandler.KeywordTipInfoObserver
 {
-  public ajht(TroopAioKeywordTipManager paramTroopAioKeywordTipManager, MessageRecord paramMessageRecord, TroopAioKeywordTipManager.Callback paramCallback) {}
+  public int a;
+  public int b = -2147483648;
   
-  protected void a(boolean paramBoolean, List paramList)
+  public ajht(FaceDownloader paramFaceDownloader)
   {
-    if (paramBoolean)
-    {
-      if ((paramList != null) && (paramList.size() > 0))
-      {
-        TroopAioKeywordTipManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (TroopAioKeywordTipInfo)paramList.get(0), this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager$Callback);
-        synchronized (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager.b)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager.b.put(((TroopAioKeywordTipInfo)paramList.get(0)).ruleId, paramList.get(0));
-          ThreadManager.post(new ajhu(this, paramList), 2, null, true);
-          return;
-        }
-      }
-      TroopAioKeywordTipManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager$Callback);
-      return;
-    }
-    TroopAioKeywordTipManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager$Callback);
+    this.jdField_a_of_type_Int = -2147483648;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajht
  * JD-Core Version:    0.7.0.1
  */

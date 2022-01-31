@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
 import org.apache.http.Header;
-import org.apache.http.HttpException;
 import org.apache.http.HttpVersion;
 import org.apache.http.NoHttpResponseException;
 import org.apache.http.ParseException;
@@ -25,13 +24,11 @@ public class MsfHttpRespParse
   private MsfHttpResp msfHttpResp;
   
   public MsfHttpRespParse(MsfSocketInputBuffer paramMsfSocketInputBuffer)
-    throws IOException
   {
     this(paramMsfSocketInputBuffer, new BasicLineParser(HttpVersion.HTTP_1_1), -1, -1);
   }
   
   public MsfHttpRespParse(MsfSocketInputBuffer paramMsfSocketInputBuffer, LineParser paramLineParser, int paramInt1, int paramInt2)
-    throws IOException
   {
     this.msfHttpResp = new MsfHttpResp(paramMsfSocketInputBuffer);
     this.maxHeaderCount = paramInt1;
@@ -47,13 +44,11 @@ public class MsfHttpRespParse
   }
   
   public static MsfSocketInputBuffer createSesssionBuffer(Socket paramSocket, int paramInt)
-    throws IOException
   {
     return new MsfSocketInputBuffer(paramSocket, paramInt, "US-ASCII", -1);
   }
   
   private void parseHead()
-    throws IOException, HttpException, ParseException
   {
     this.lineBuf.clear();
     if (this.msfHttpResp.getSessionBuffer().readLine(this.lineBuf) == -1) {
@@ -70,7 +65,6 @@ public class MsfHttpRespParse
   }
   
   public MsfHttpResp parse()
-    throws IOException, HttpException
   {
     try
     {
@@ -86,7 +80,6 @@ public class MsfHttpRespParse
   }
   
   protected Header[] parseHeaders(int paramInt1, int paramInt2, LineParser paramLineParser)
-    throws HttpException, IOException
   {
     int j = 0;
     Object localObject2 = paramLineParser;

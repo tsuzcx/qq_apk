@@ -1,42 +1,25 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.utils.MessageRoamHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
-class aadm
-  implements Runnable
+public class aadm
+  implements bbmn
 {
-  aadm(aadl paramaadl, long paramLong, int paramInt, String paramString, boolean paramBoolean) {}
+  public aadm(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public void a(Bundle paramBundle)
   {
-    int i = 0;
-    Object localObject = Calendar.getInstance();
-    ((Calendar)localObject).setTimeInMillis(this.jdField_a_of_type_Long * 1000L);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.roammsg", 2, "fetchMoreRoamMessage begin fetchNum: " + this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_Aadl.a.a(this.jdField_a_of_type_JavaLangString, (Calendar)localObject, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int)) {}
-    do
-    {
-      return;
-      localObject = this.jdField_a_of_type_Aadl.a.b.getHandler(ChatHistoryForC2C.class);
-    } while (localObject == null);
-    Message localMessage = ((MqqHandler)localObject).obtainMessage(0);
-    localMessage.obj = Long.valueOf(this.jdField_a_of_type_Long);
-    if (this.jdField_a_of_type_Boolean) {
-      i = 1;
-    }
-    localMessage.arg1 = i;
-    ((MqqHandler)localObject).sendMessageDelayed(localMessage, 0L);
+    this.a.a.b(false);
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    this.a.a.b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aadm
  * JD-Core Version:    0.7.0.1
  */

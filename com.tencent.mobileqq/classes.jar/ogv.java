@@ -1,19 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.tag.TagAdapter.OnItemClickListener;
-import com.tencent.biz.qqstory.takevideo.tag.TagItem.TagInfoBase;
-
-class ogv
-  implements View.OnClickListener
+public abstract interface ogv
 {
-  ogv(ogu paramogu, TagAdapter.OnItemClickListener paramOnItemClickListener, TagItem.TagInfoBase paramTagInfoBase) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter$OnItemClickListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter$OnItemClickListener.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase);
-    }
-  }
+  public abstract void C_();
 }
 
 

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
+import abaf;
+import abag;
+import abah;
 import android.app.Dialog;
 import android.os.Bundle;
+import asfc;
+import azvu;
+import bbmy;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
-import com.tencent.mobileqq.util.CustomDialogFactory;
-import com.tencent.mobileqq.widget.QQToast;
-import tbg;
-import tbh;
-import tbi;
 
 public class LbsBaseActivity
   extends IphoneTitleBarActivity
@@ -20,7 +20,7 @@ public class LbsBaseActivity
   
   private boolean a()
   {
-    return NearbySPUtil.a(getAppInterface().getAccount());
+    return asfc.a(getAppInterface().getAccount());
   }
   
   private void c(Runnable paramRunnable)
@@ -30,15 +30,15 @@ public class LbsBaseActivity
   
   private void d(Runnable paramRunnable)
   {
-    paramRunnable = new tbg(this, paramRunnable);
-    this.b = CustomDialogFactory.a(this, 2131433963, a(), 2131433970, 2131433969, new tbh(this), new tbi(this));
+    paramRunnable = new abaf(this, paramRunnable);
+    this.b = azvu.a(this, 2131626504, a(), 2131626319, 2131626316, new abag(this), new abah(this));
     this.b.setOnDismissListener(paramRunnable);
     this.b.show();
   }
   
-  public int a()
+  protected int a()
   {
-    return 2131433964;
+    return 2131626499;
   }
   
   public void a()
@@ -49,7 +49,7 @@ public class LbsBaseActivity
   public void a(int paramInt, String paramString)
   {
     if (isResume()) {
-      QQToast.a(this, paramInt, paramString, 0).b(getTitleBarHeight());
+      bbmy.a(this, paramInt, paramString, 0).b(getTitleBarHeight());
     }
   }
   
@@ -60,15 +60,15 @@ public class LbsBaseActivity
     //   0: aload_1
     //   1: invokevirtual 102	android/app/Dialog:dismiss	()V
     //   4: aload_1
-    //   5: invokestatic 106	com/tencent/mfsdk/LeakInspector/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
+    //   5: invokestatic 106	zqa:a	(Landroid/app/Dialog;)V
     //   8: return
     //   9: astore_2
     //   10: aload_1
-    //   11: invokestatic 106	com/tencent/mfsdk/LeakInspector/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
+    //   11: invokestatic 106	zqa:a	(Landroid/app/Dialog;)V
     //   14: return
     //   15: astore_2
     //   16: aload_1
-    //   17: invokestatic 106	com/tencent/mfsdk/LeakInspector/ActivityLeakSolution:a	(Landroid/app/Dialog;)V
+    //   17: invokestatic 106	zqa:a	(Landroid/app/Dialog;)V
     //   20: aload_2
     //   21: athrow
     // Local variable table:
@@ -83,12 +83,12 @@ public class LbsBaseActivity
     //   0	4	15	finally
   }
   
-  public void a(Runnable paramRunnable)
+  protected void a(Runnable paramRunnable)
   {
     c(paramRunnable);
   }
   
-  public void b(Runnable paramRunnable)
+  protected void b(Runnable paramRunnable)
   {
     if (a())
     {

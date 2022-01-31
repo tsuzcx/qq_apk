@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.ArkAppBabyQItemBubbleBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
+import java.io.File;
+import java.io.FileFilter;
 
-public class uza
-  implements Runnable
+class uza
+  implements FileFilter
 {
-  public uza(ArkAppBabyQItemBubbleBuilder paramArkAppBabyQItemBubbleBuilder, BaseBubbleBuilder.ViewHolder paramViewHolder, ChatMessage paramChatMessage) {}
+  uza(uyz paramuyz) {}
   
-  public void run()
+  public boolean accept(File paramFile)
   {
-    ArkAppBabyQItemBubbleBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQItemBubbleBuilder, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder$ViewHolder.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder$ViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo);
+    return (paramFile.isDirectory()) && (paramFile.getName().startsWith("emoji_folder_"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uza
  * JD-Core Version:    0.7.0.1
  */

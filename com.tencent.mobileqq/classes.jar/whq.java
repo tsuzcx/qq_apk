@@ -1,36 +1,39 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.theme.SkinEngine;
-import com.tencent.widget.PatchedButton;
-import com.tencent.widget.XEditTextEx;
-import mqq.os.MqqHandler;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.event.FollowUpdateEvent;
+import com.tencent.biz.subscribe.widget.textview.FollowTextView;
+import com.tencent.mobileqq.pb.PBStringField;
 
-public final class whq
-  implements Runnable
+public class whq
+  extends ajpe
 {
-  public whq(LinearLayout paramLinearLayout, XEditTextEx paramXEditTextEx, PanelIconLinearLayout paramPanelIconLinearLayout, PatchedButton paramPatchedButton) {}
+  public whq(FollowTextView paramFollowTextView) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString)
   {
-    Drawable localDrawable1 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845716);
-    Drawable localDrawable2 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845717);
-    Drawable localDrawable3 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845758);
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    Drawable localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845859);
-    localStateListDrawable.addState(new int[] { -16842910 }, localDrawable4);
-    localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845862);
-    localStateListDrawable.addState(new int[] { 16842910 }, localDrawable4);
-    localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845863);
-    localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable4);
-    ThreadManager.getUIHandler().post(new whr(this, localDrawable1, localDrawable2, localDrawable3, localStateListDrawable));
+    super.a(paramBoolean, paramString);
+    FollowTextView.a(this.a, true);
+    if (paramBoolean)
+    {
+      if (!FollowTextView.a(this.a)) {
+        FollowTextView.a(this.a, true, FollowTextView.a(this.a));
+      }
+      this.a.a(1);
+      if (FollowTextView.a(this.a) != null)
+      {
+        if (FollowTextView.a(this.a) != null) {
+          FollowTextView.a(this.a).a(true, FollowTextView.a(this.a));
+        }
+        wcj.a().a(new FollowUpdateEvent(1, FollowTextView.a(this.a).poster.id.get()));
+      }
+      return;
+    }
+    bbmy.a(this.a.getContext(), 2131625092, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     whq
  * JD-Core Version:    0.7.0.1
  */

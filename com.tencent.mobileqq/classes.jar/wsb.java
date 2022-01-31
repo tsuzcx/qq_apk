@@ -1,18 +1,29 @@
-import com.tencent.mobileqq.activity.contacts.base.CardViewController;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class wsb
-  implements wse
+class wsb
+  implements ViewPager.OnPageChangeListener
 {
-  public wsb(CardViewController paramCardViewController) {}
+  wsb(wsa paramwsa) {}
   
-  public void a()
+  public void onPageScrollStateChanged(int paramInt)
   {
-    CardViewController.e(this.a);
+    QLog.d("AEVideoStoryCaptureModePart", 1, "onPageScrollStateChanged");
+  }
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    QLog.d("AEVideoStoryCaptureModePart", 1, "onPageScrolled");
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    QLog.d("AEVideoStoryCaptureModePart", 1, "onPageSelected");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wsb
  * JD-Core Version:    0.7.0.1
  */

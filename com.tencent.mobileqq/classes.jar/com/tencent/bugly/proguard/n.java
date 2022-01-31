@@ -2,7 +2,6 @@ package com.tencent.bugly.proguard;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import com.tencent.bugly.crashreport.common.info.a;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -54,42 +53,42 @@ public final class n
     //   6: aload_0
     //   7: monitorexit
     //   8: return
-    //   9: new 64	java/io/File
+    //   9: new 62	java/io/File
     //   12: dup
     //   13: aload_0
-    //   14: getfield 31	com/tencent/bugly/proguard/n:b	Landroid/content/Context;
-    //   17: ldc 45
+    //   14: getfield 29	com/tencent/bugly/proguard/n:b	Landroid/content/Context;
+    //   17: ldc 43
     //   19: iconst_0
-    //   20: invokevirtual 68	android/content/Context:getDir	(Ljava/lang/String;I)Ljava/io/File;
-    //   23: new 70	java/lang/StringBuilder
+    //   20: invokevirtual 66	android/content/Context:getDir	(Ljava/lang/String;I)Ljava/io/File;
+    //   23: new 68	java/lang/StringBuilder
     //   26: dup
-    //   27: invokespecial 71	java/lang/StringBuilder:<init>	()V
+    //   27: invokespecial 69	java/lang/StringBuilder:<init>	()V
     //   30: iload_1
-    //   31: invokevirtual 75	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   34: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   37: invokespecial 82	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   31: invokevirtual 73	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   34: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   37: invokespecial 80	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   40: astore_3
-    //   41: new 84	java/io/ObjectOutputStream
+    //   41: new 82	java/io/ObjectOutputStream
     //   44: dup
-    //   45: new 86	java/io/FileOutputStream
+    //   45: new 84	java/io/FileOutputStream
     //   48: dup
     //   49: aload_3
-    //   50: invokespecial 89	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   53: invokespecial 92	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   50: invokespecial 87	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   53: invokespecial 90	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   56: astore 4
     //   58: aload 4
     //   60: astore_3
     //   61: aload 4
     //   63: aload_2
-    //   64: invokevirtual 96	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   64: invokevirtual 94	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
     //   67: aload 4
-    //   69: invokevirtual 99	java/io/ObjectOutputStream:close	()V
+    //   69: invokevirtual 97	java/io/ObjectOutputStream:close	()V
     //   72: goto -66 -> 6
     //   75: astore_2
-    //   76: ldc 101
+    //   76: ldc 99
     //   78: iconst_0
     //   79: anewarray 4	java/lang/Object
-    //   82: invokestatic 107	com/tencent/bugly/proguard/x:e	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   82: invokestatic 105	com/tencent/bugly/proguard/x:e	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   85: pop
     //   86: goto -80 -> 6
     //   89: astore_2
@@ -103,23 +102,23 @@ public final class n
     //   98: aload_2
     //   99: astore_3
     //   100: aload 5
-    //   102: invokevirtual 110	java/io/IOException:printStackTrace	()V
+    //   102: invokevirtual 108	java/io/IOException:printStackTrace	()V
     //   105: aload_2
     //   106: astore_3
-    //   107: ldc 112
+    //   107: ldc 110
     //   109: iconst_0
     //   110: anewarray 4	java/lang/Object
-    //   113: invokestatic 114	com/tencent/bugly/proguard/x:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   113: invokestatic 112	com/tencent/bugly/proguard/x:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   116: pop
     //   117: aload_2
     //   118: ifnull -112 -> 6
     //   121: aload_2
-    //   122: invokevirtual 99	java/io/ObjectOutputStream:close	()V
+    //   122: invokevirtual 97	java/io/ObjectOutputStream:close	()V
     //   125: goto -119 -> 6
     //   128: aload_3
     //   129: ifnull +7 -> 136
     //   132: aload_3
-    //   133: invokevirtual 99	java/io/ObjectOutputStream:close	()V
+    //   133: invokevirtual 97	java/io/ObjectOutputStream:close	()V
     //   136: aload_2
     //   137: athrow
     //   138: astore_2
@@ -233,23 +232,23 @@ public final class n
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: new 64	java/io/File
+    //   2: new 62	java/io/File
     //   5: dup
     //   6: aload_0
-    //   7: getfield 31	com/tencent/bugly/proguard/n:b	Landroid/content/Context;
-    //   10: ldc 45
+    //   7: getfield 29	com/tencent/bugly/proguard/n:b	Landroid/content/Context;
+    //   10: ldc 43
     //   12: iconst_0
-    //   13: invokevirtual 68	android/content/Context:getDir	(Ljava/lang/String;I)Ljava/io/File;
-    //   16: new 70	java/lang/StringBuilder
+    //   13: invokevirtual 66	android/content/Context:getDir	(Ljava/lang/String;I)Ljava/io/File;
+    //   16: new 68	java/lang/StringBuilder
     //   19: dup
-    //   20: invokespecial 71	java/lang/StringBuilder:<init>	()V
+    //   20: invokespecial 69	java/lang/StringBuilder:<init>	()V
     //   23: iload_1
-    //   24: invokevirtual 75	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   27: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   30: invokespecial 82	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   24: invokevirtual 73	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   27: invokevirtual 77	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   30: invokespecial 80	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   33: astore_3
     //   34: aload_3
-    //   35: invokevirtual 181	java/io/File:exists	()Z
+    //   35: invokevirtual 179	java/io/File:exists	()Z
     //   38: istore_2
     //   39: iload_2
     //   40: ifne +9 -> 49
@@ -259,30 +258,30 @@ public final class n
     //   46: monitorexit
     //   47: aload_3
     //   48: areturn
-    //   49: new 183	java/io/ObjectInputStream
+    //   49: new 181	java/io/ObjectInputStream
     //   52: dup
-    //   53: new 185	java/io/FileInputStream
+    //   53: new 183	java/io/FileInputStream
     //   56: dup
     //   57: aload_3
-    //   58: invokespecial 186	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   61: invokespecial 189	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   58: invokespecial 184	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   61: invokespecial 187	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   64: astore 4
     //   66: aload 4
     //   68: astore_3
     //   69: aload 4
-    //   71: invokevirtual 192	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   74: checkcast 129	java/util/List
+    //   71: invokevirtual 190	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   74: checkcast 127	java/util/List
     //   77: astore 5
     //   79: aload 4
-    //   81: invokevirtual 193	java/io/ObjectInputStream:close	()V
+    //   81: invokevirtual 191	java/io/ObjectInputStream:close	()V
     //   84: aload 5
     //   86: astore_3
     //   87: goto -42 -> 45
     //   90: astore_3
-    //   91: ldc 195
+    //   91: ldc 193
     //   93: iconst_0
     //   94: anewarray 4	java/lang/Object
-    //   97: invokestatic 107	com/tencent/bugly/proguard/x:e	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   97: invokestatic 105	com/tencent/bugly/proguard/x:e	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   100: pop
     //   101: aconst_null
     //   102: astore_3
@@ -290,15 +289,15 @@ public final class n
     //   106: astore_3
     //   107: aconst_null
     //   108: astore_3
-    //   109: ldc 112
+    //   109: ldc 110
     //   111: iconst_0
     //   112: anewarray 4	java/lang/Object
-    //   115: invokestatic 114	com/tencent/bugly/proguard/x:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   115: invokestatic 112	com/tencent/bugly/proguard/x:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   118: pop
     //   119: aload_3
     //   120: ifnull -19 -> 101
     //   123: aload_3
-    //   124: invokevirtual 193	java/io/ObjectInputStream:close	()V
+    //   124: invokevirtual 191	java/io/ObjectInputStream:close	()V
     //   127: goto -26 -> 101
     //   130: astore_3
     //   131: aload_0
@@ -310,20 +309,20 @@ public final class n
     //   137: astore 4
     //   139: aload 4
     //   141: astore_3
-    //   142: ldc 197
+    //   142: ldc 195
     //   144: iconst_0
     //   145: anewarray 4	java/lang/Object
-    //   148: invokestatic 114	com/tencent/bugly/proguard/x:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   148: invokestatic 112	com/tencent/bugly/proguard/x:a	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   151: pop
     //   152: aload 4
     //   154: ifnull -53 -> 101
     //   157: aload 4
-    //   159: invokevirtual 193	java/io/ObjectInputStream:close	()V
+    //   159: invokevirtual 191	java/io/ObjectInputStream:close	()V
     //   162: goto -61 -> 101
     //   165: aload_3
     //   166: ifnull +7 -> 173
     //   169: aload_3
-    //   170: invokevirtual 193	java/io/ObjectInputStream:close	()V
+    //   170: invokevirtual 191	java/io/ObjectInputStream:close	()V
     //   173: aload 4
     //   175: athrow
     //   176: astore 4
@@ -386,28 +385,14 @@ public final class n
     //   49	66	197	finally
   }
   
-  public final boolean a(final int paramInt)
+  public final boolean a(int paramInt)
   {
     boolean bool1 = true;
     try
     {
       boolean bool2 = this.d.getBoolean(paramInt + "_" + this.c, true);
       bool1 = bool2;
-      w.a().a(new Runnable()
-      {
-        public final void run()
-        {
-          boolean bool = n.a(n.this, paramInt);
-          SharedPreferences.Editor localEditor = n.b(n.this).edit();
-          String str = paramInt + "_" + n.a(n.this);
-          if (!bool) {}
-          for (bool = true;; bool = false)
-          {
-            localEditor.putBoolean(str, bool).commit();
-            return;
-          }
-        }
-      });
+      w.a().a(new n.1(this, paramInt));
       bool1 = bool2;
     }
     catch (Exception localException)

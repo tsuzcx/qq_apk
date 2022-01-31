@@ -1,32 +1,62 @@
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import com.tencent.biz.pubaccount.readinjoy.struct.LebaKDCellInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class pdh
-  implements WXShareHelper.WXShareListener
+public class pdh
 {
-  public pdh(String paramString) {}
+  public int a;
+  public long a;
+  public Bundle a;
+  public SelectPositionModule.PositionData a;
+  public LebaKDCellInfo a;
+  public String a;
+  public List<Long> a;
+  public pev a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public String b;
+  public List<Long> b;
+  public boolean b;
+  public byte[] b;
+  public int c;
+  public long c;
+  public String c;
+  public List<ogo> c;
+  public boolean c;
+  public int d;
+  public long d;
+  public List<pdg> d;
+  public boolean d;
+  public int e = 1;
+  public long e;
+  public boolean e;
+  public int f;
+  public boolean f;
+  public int g;
+  public boolean g;
+  public int h;
+  public boolean h;
+  public int i = 1;
+  public boolean i;
+  public int j;
   
-  public void a(BaseResp paramBaseResp)
+  public pdh()
   {
-    if ((this.a == null) || (!this.a.equals(paramBaseResp.transaction))) {
-      return;
+    this.jdField_c_of_type_Int = 1;
+    this.jdField_c_of_type_Long = -1L;
+    this.jdField_c_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public static int a(ogo paramogo)
+  {
+    if (paramogo.a == 13) {
+      return 11;
     }
-    BaseApplicationImpl.getContext();
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      QRUtils.a(1, 2131435319);
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      return;
-      QRUtils.a(2, 2131435318);
-    }
+    return 1;
   }
 }
 

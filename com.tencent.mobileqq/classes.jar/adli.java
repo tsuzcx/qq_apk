@@ -1,26 +1,13 @@
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.fileviewer.controller.IDownloadController;
-import com.tencent.mobileqq.filemanager.fileviewer.model.DeviceFileModel;
-import com.tencent.mobileqq.filemanager.recreate.FileModel;
-
-public class adli
-  implements IDownloadController
+class adli
 {
-  public adli(DeviceFileModel paramDeviceFileModel) {}
+  int jdField_a_of_type_Int = -1;
+  adlk[] jdField_a_of_type_ArrayOfAdlk;
   
-  public void a()
-  {
-    this.a.a(false, FileModel.a(this.a.a.a()), this.a.b(), new adlj(this));
-  }
-  
-  public void b()
-  {
-    DeviceFileModel.b(this.a);
-  }
+  adli(adlh paramadlh) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adli
  * JD-Core Version:    0.7.0.1
  */

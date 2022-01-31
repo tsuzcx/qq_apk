@@ -1,23 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class aogs
-  implements View.OnClickListener
+class aogs
+  implements aofo
 {
-  public aogs(EditTextDialog paramEditTextDialog) {}
+  aogs(aogr paramaogr, String paramString) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean)
   {
-    this.a.a.setSelectAllOnFocus(false);
-    this.a.a.setSelection(this.a.a.length());
-    this.a.a.setOnClickListener(null);
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aogr.jdField_a_of_type_Aogq.jdField_a_of_type_JavaLangString + " start upload Discfile success");
+      }
+      aogq.a(this.jdField_a_of_type_Aogr.jdField_a_of_type_Aogq).putString("_m_ForwardUuid", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Aogr.jdField_a_of_type_Aogv.a(this.jdField_a_of_type_JavaLangString, aogq.a(this.jdField_a_of_type_Aogr.jdField_a_of_type_Aogq));
+    }
+    for (;;)
+    {
+      aofz.a(this.jdField_a_of_type_Aogr.jdField_a_of_type_Aogq.jdField_a_of_type_Aofz).a().a(aogq.a(this.jdField_a_of_type_Aogr.jdField_a_of_type_Aogq));
+      return;
+      QLog.e("FileMultiMsg", 1, this.jdField_a_of_type_Aogr.jdField_a_of_type_Aogq.jdField_a_of_type_JavaLangString + " sendDiscFile faild");
+      this.jdField_a_of_type_Aogr.jdField_a_of_type_Aogv.a(aofz.a(this.jdField_a_of_type_Aogr.jdField_a_of_type_Aogq.jdField_a_of_type_Long, false), true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aogs
  * JD-Core Version:    0.7.0.1
  */

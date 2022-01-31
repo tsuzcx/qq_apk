@@ -1,23 +1,22 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
-import com.tencent.mobileqq.ark.ArkTipsManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity.7.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class abfb
-  implements ArkAppCenter.OnGetAppIcon
+  implements DialogInterface.OnClickListener
 {
-  public abfb(ArkTipsManager paramArkTipsManager, Context paramContext) {}
+  abfb(abfa paramabfa) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBitmap != null) {
-      ArkTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqArkArkTipsManager, paramBitmap, this.jdField_a_of_type_AndroidContentContext);
-    }
+    ThreadManager.getSubThreadHandler().post(new NotificationActivity.7.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abfb
  * JD-Core Version:    0.7.0.1
  */

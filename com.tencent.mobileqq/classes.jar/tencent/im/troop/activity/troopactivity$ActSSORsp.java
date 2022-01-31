@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class troopactivity$ActSSORsp
-  extends MessageMicro
+  extends MessageMicro<ActSSORsp>
 {
   public static final int BODY_FIELD_NUMBER = 4;
   public static final int CMD_FIELD_NUMBER = 3;
@@ -29,7 +29,7 @@ public final class troopactivity$ActSSORsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.troop.activity.troopactivity.ActSSORsp
  * JD-Core Version:    0.7.0.1
  */

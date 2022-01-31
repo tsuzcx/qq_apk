@@ -1,22 +1,31 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.app.utils.DingdongPluginBizObserver.ScheduleMoreSummaryData;
-import cooperation.dingdong.DingdongCalendarSyncUtil;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.GameRich;
 
 public final class amsc
-  extends AsyncTask
+  implements Parcelable.Creator
 {
-  public amsc(int paramInt) {}
-  
-  protected Void a(DingdongPluginBizObserver.ScheduleMoreSummaryData... paramVarArgs)
+  public IPSiteModel.GameRich a(Parcel paramParcel)
   {
-    paramVarArgs = paramVarArgs[0];
-    DingdongCalendarSyncUtil.b(this.a, paramVarArgs);
-    return null;
+    IPSiteModel.GameRich localGameRich = new IPSiteModel.GameRich();
+    localGameRich.anchorFaceUrl = paramParcel.readString();
+    localGameRich.anchorId = paramParcel.readString();
+    localGameRich.anchorName = paramParcel.readString();
+    localGameRich.coverUrl = paramParcel.readString();
+    localGameRich.online = paramParcel.readString();
+    localGameRich.title = paramParcel.readString();
+    localGameRich.richJumpUrl = paramParcel.readString();
+    return localGameRich;
+  }
+  
+  public IPSiteModel.GameRich[] a(int paramInt)
+  {
+    return new IPSiteModel.GameRich[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amsc
  * JD-Core Version:    0.7.0.1
  */

@@ -5,17 +5,19 @@ import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.os.Message;
+import atmp;
+import atmq;
+import atmr;
+import awdl;
+import awqx;
+import awra;
+import badq;
+import beez;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityTransaction;
-import com.tencent.mobileqq.servlet.ReportServlet;
-import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MqqWeakReferenceHandler;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -29,16 +31,16 @@ import mqq.manager.ServerConfigManager.ConfigType;
 import mqq.observer.BusinessObserver;
 
 public class ReportControllerImpl
-  extends ReportController
+  extends awqx
   implements Handler.Callback, BusinessObserver
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
+  private beez jdField_a_of_type_Beez;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private ProxyManager jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager;
-  private MqqWeakReferenceHandler jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler;
-  private Boolean jdField_a_of_type_JavaLangBoolean;
-  private final HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private volatile Boolean jdField_a_of_type_JavaLangBoolean;
+  private final HashMap<String, Reporting> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
   private ReportControllerImpl(QQAppInterface paramQQAppInterface)
   {
@@ -46,7 +48,7 @@ public class ReportControllerImpl
     if (QLog.isColorLevel()) {
       QLog.d("ReportController", 2, "Create:" + paramQQAppInterface);
     }
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler = new MqqWeakReferenceHandler(ThreadManager.getSubThreadLooper(), this);
+    this.jdField_a_of_type_Beez = new beez(ThreadManager.getSubThreadLooper(), this);
     try
     {
       paramQQAppInterface = paramQQAppInterface.a(ServerConfigManager.ConfigType.common, "ActionReportInterval");
@@ -86,14 +88,14 @@ public class ReportControllerImpl
     }
   }
   
-  public static ReportController a(QQAppInterface paramQQAppInterface)
+  public static awqx a(QQAppInterface paramQQAppInterface)
   {
     return new ReportControllerImpl(paramQQAppInterface);
   }
   
   private boolean a()
   {
-    if (!NetworkUtil.d(BaseApplicationImpl.sApplication)) {
+    if (!badq.d(BaseApplicationImpl.sApplication)) {
       return false;
     }
     if (QLog.isColorLevel()) {
@@ -119,7 +121,7 @@ public class ReportControllerImpl
         if ((k % 20 != 0) && (k < j)) {
           break label480;
         }
-        localObject3 = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), ReportServlet.class);
+        localObject3 = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), awdl.class);
         ((NewIntent)localObject3).putExtra("sendType", 10);
         ((NewIntent)localObject3).putExtra("seqKey", i);
         ((NewIntent)localObject3).putExtra("tags", (Serializable)localObject1);
@@ -204,8 +206,8 @@ public class ReportControllerImpl
     try
     {
       paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-      EntityTransaction localEntityTransaction = paramQQAppInterface.a();
-      localEntityTransaction.a();
+      atmr localatmr = paramQQAppInterface.a();
+      localatmr.a();
       for (;;)
       {
         Reporting localReporting;
@@ -226,8 +228,8 @@ public class ReportControllerImpl
         }
         catch (Throwable localThrowable)
         {
-          localEntityTransaction.c();
-          localEntityTransaction.b();
+          localatmr.c();
+          localatmr.b();
           paramQQAppInterface.a();
         }
         paramQQAppInterface.a(localReporting);
@@ -290,15 +292,15 @@ public class ReportControllerImpl
         }
         paramString1 = localReporting;
         break;
-      } while (this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.hasMessages(9528));
-      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(9528);
+      } while (this.jdField_a_of_type_Beez.hasMessages(9528));
+      this.jdField_a_of_type_Beez.sendEmptyMessage(9528);
     } while (!QLog.isColorLevel());
     QLog.d("ReportController", 2, "handleAddReporting: savedata r.mTag=" + paramString1.mTag + ", r.mDetail=" + paramString1.mDetail + ", r.mDetailHashCode=" + paramString1.mDetailHashCode);
   }
   
   private void c()
   {
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(9527);
+    this.jdField_a_of_type_Beez.removeMessages(9527);
     try
     {
       a();
@@ -307,7 +309,7 @@ public class ReportControllerImpl
       localObject = ((SharedPreferences)localObject).edit();
       ((SharedPreferences.Editor)localObject).putLong("pre_report_time", l);
       ((SharedPreferences.Editor)localObject).commit();
-      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(9527, this.jdField_a_of_type_Long);
+      this.jdField_a_of_type_Beez.sendEmptyMessageDelayed(9527, this.jdField_a_of_type_Long);
       return;
     }
     catch (Exception localException)
@@ -321,12 +323,12 @@ public class ReportControllerImpl
     }
   }
   
-  protected void a()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(9527);
+    this.jdField_a_of_type_Beez.removeMessages(9527);
   }
   
-  protected void a(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
+  public void a(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager = paramProxyManager;
@@ -334,19 +336,19 @@ public class ReportControllerImpl
     if (QLog.isColorLevel()) {
       QLog.d("ReportController", 2, "Init:" + paramQQAppInterface);
     }
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(9530);
+    this.jdField_a_of_type_Beez.sendEmptyMessage(9530);
   }
   
-  protected void a(String paramString1, String paramString2, int paramInt)
+  public void a(String paramString1, String paramString2, int paramInt)
   {
-    ReportControllerImpl.ReportingBridge localReportingBridge = new ReportControllerImpl.ReportingBridge();
-    localReportingBridge.jdField_a_of_type_JavaLangString = paramString1;
-    localReportingBridge.b = paramString2;
-    localReportingBridge.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(9529, localReportingBridge).sendToTarget();
+    awra localawra = new awra();
+    localawra.jdField_a_of_type_JavaLangString = paramString1;
+    localawra.b = paramString2;
+    localawra.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Beez.obtainMessage(9529, localawra).sendToTarget();
   }
   
-  protected void a(boolean paramBoolean)
+  public void a(boolean paramBoolean)
   {
     Object localObject;
     if (paramBoolean)
@@ -363,29 +365,29 @@ public class ReportControllerImpl
       }
     }
     label75:
-    while (this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.hasMessages(9527))
+    while (this.jdField_a_of_type_Beez.hasMessages(9527))
     {
       return;
       localObject = "10000";
       break;
     }
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(9527);
+    this.jdField_a_of_type_Beez.sendEmptyMessage(9527);
   }
   
-  protected void b(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
+  public void b(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
   {
     this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
     if (QLog.isColorLevel()) {
       QLog.d("ReportController", 2, "Destory:" + paramQQAppInterface);
     }
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(9528);
+    this.jdField_a_of_type_Beez.sendEmptyMessage(9528);
   }
   
   public boolean handleMessage(Message paramMessage)
   {
     if (paramMessage.what == 9529)
     {
-      paramMessage = (ReportControllerImpl.ReportingBridge)paramMessage.obj;
+      paramMessage = (awra)paramMessage.obj;
       b(paramMessage.jdField_a_of_type_JavaLangString, paramMessage.b, paramMessage.jdField_a_of_type_Int);
     }
     for (;;)
@@ -416,7 +418,7 @@ public class ReportControllerImpl
       QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
       if ((!paramBoolean) && (paramInt < 2) && (localQQAppInterface != null))
       {
-        NewIntent localNewIntent = new NewIntent(localQQAppInterface.getApp(), ReportServlet.class);
+        NewIntent localNewIntent = new NewIntent(localQQAppInterface.getApp(), awdl.class);
         localNewIntent.putExtra("sendType", 10);
         localNewIntent.putExtra("seqKey", i);
         localNewIntent.putExtra("tags", paramBundle.getStringArrayList("tags"));

@@ -1,47 +1,63 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.mobileqq.pic.compress.CompressOperator;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedList;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
+import java.util.List;
 
 public class aflw
-  implements Runnable
+  implements aryo
 {
-  public aflw(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
+  public aflw(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment, aryh paramaryh, aryq paramaryq, List paramList) {}
   
-  public void run()
+  public void a()
   {
-    NearbyProfileEditPanel.a(this.a, (PicInfo)this.a.jdField_a_of_type_JavaUtilLinkedList.poll());
-    if (NearbyProfileEditPanel.a(this.a) == null) {
-      return;
+    this.jdField_a_of_type_Aryh.a(new aflx(this));
+    this.jdField_a_of_type_Aryh.show();
+  }
+  
+  public void a(arym paramarym)
+  {
+    if ((paramarym != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity().isFinishing())) {
+      switch (paramarym.a)
+      {
+      }
     }
-    CompressInfo localCompressInfo = new CompressInfo(NearbyProfileEditPanel.a(this.a).c, 0);
-    localCompressInfo.f = 0;
-    CompressOperator.a(localCompressInfo);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..uploadPhoto(), img_path = " + localCompressInfo.e);
-    }
-    if (!StringUtil.a(localCompressInfo.e))
+    for (;;)
     {
-      TransferRequest localTransferRequest = new TransferRequest();
-      localTransferRequest.a = true;
-      localTransferRequest.i = localCompressInfo.e;
-      localTransferRequest.b = 8;
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app.a().a(localTransferRequest);
+      if (this.jdField_a_of_type_Aryh.isShowing()) {
+        this.jdField_a_of_type_Aryh.dismiss();
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.u();
+      this.jdField_a_of_type_Aryq.b();
       return;
+      aryn.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity());
+      continue;
+      aryn.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity());
+      continue;
+      aryn.c(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity());
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.runOnUiThread(new aflx(this));
+  }
+  
+  public void a(arym paramarym, int paramInt)
+  {
+    this.jdField_a_of_type_Aryh.a(paramInt);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Aryh.isShowing()) {
+      this.jdField_a_of_type_Aryh.dismiss();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.u();
+    this.jdField_a_of_type_Aryq.b();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Aryq.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryEmotionBaseFragment.getActivity(), this.jdField_a_of_type_JavaUtilList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aflw
  * JD-Core Version:    0.7.0.1
  */

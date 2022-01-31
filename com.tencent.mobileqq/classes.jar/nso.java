@@ -1,18 +1,23 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
-import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
 
 public class nso
-  implements ViewTreeObserver.OnPreDrawListener
+  implements View.OnClickListener
 {
-  public nso(StoryPlayVideoActivity paramStoryPlayVideoActivity) {}
+  public nso(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  public boolean onPreDraw()
+  public void onClick(View paramView)
   {
-    this.a.a(this.a.a, this.a.g, this.a.h);
-    this.a.a.getViewTreeObserver().removeOnPreDrawListener(this);
-    return false;
+    if ((ReadInJoyDeliverBiuActivity.e(this.a)) && ((!ReadInJoyDeliverBiuActivity.f(this.a)) || (ReadInJoyDeliverBiuActivity.m(this.a) != -1)))
+    {
+      this.a.d(ReadInJoyDeliverBiuActivity.n(this.a));
+      return;
+    }
+    this.a.finish();
+    ndn.a(null, "", "0X8008661", "0X8008661", 0, 0, ReadInJoyDeliverBiuActivity.n(this.a) + "", "", "", ReadInJoyBaseDeliverActivity.a(), false);
+    ReadInJoyDeliverBiuActivity.a(this.a, false);
   }
 }
 

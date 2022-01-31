@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseActivity;
+import com.tencent.av.gaudio.QQGAudioCtrl;
 
 public class ldy
-  implements View.OnClickListener
 {
-  public ldy(ReadInJoyBaseActivity paramReadInJoyBaseActivity) {}
+  public int a;
+  public long a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public int c;
+  public int d;
   
-  public void onClick(View paramView)
-  {
-    this.a.onBackEvent();
-  }
+  public ldy(QQGAudioCtrl paramQQGAudioCtrl) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ldy
  * JD-Core Version:    0.7.0.1
  */

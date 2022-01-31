@@ -1,24 +1,34 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout28;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import com.tencent.common.app.AppInterface;
 
-public class aioa
+public abstract interface aioa
 {
-  public ImageView a;
-  public TextView a;
-  public BubbleImageView a;
-  public String a;
-  public ImageView b;
-  public TextView b;
-  public String b;
-  public String c;
+  public abstract int a(int paramInt);
   
-  public aioa(StructMsgItemLayout28 paramStructMsgItemLayout28) {}
+  public abstract int a(aijf paramaijf, int paramInt1, int paramInt2, String paramString, long paramLong, int paramInt3, float paramFloat);
+  
+  public abstract int a(AppInterface paramAppInterface);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(int paramInt, AppInterface paramAppInterface);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract int b(int paramInt);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt, String paramString);
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aioa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.biz.subscribe.videoplayer.CleanVideoPlayerView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 class wew
-  implements Runnable
+  implements tql
 {
-  wew(wev paramwev) {}
+  wew(wet paramwet, adcg paramadcg, CleanVideoPlayerView paramCleanVideoPlayerView) {}
   
-  public void run()
+  public void a_(tqg paramtqg)
   {
-    this.a.a.a.setStackFromBottomWithoutRequestLayoutIfNecessary(true);
+    Long localLong = (Long)wet.b(this.jdField_a_of_type_Wet).get(Integer.valueOf(this.jdField_a_of_type_Adcg.b));
+    if ((localLong != null) && (localLong.longValue() > 0L))
+    {
+      paramtqg.a(localLong.longValue());
+      QLog.d("SubscribePlayerManager", 4, "playInner seekTo: " + localLong);
+    }
+    this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerCleanVideoPlayerView.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wew
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ public class MessageForBlessPTV
 {
   public static String BLESS_REQ_UIN = "0";
   public static final int PTV_SUB_BUSITYPE = 1;
-  public ArrayList uinList;
+  public ArrayList<String> uinList;
 }
 
 

@@ -1,32 +1,12 @@
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
+import java.util.List;
 
-public class anka
-  implements Runnable
+public abstract interface anka
 {
-  public anka(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, int paramInt, String paramString) {}
-  
-  public void run()
-  {
-    try
-    {
-      if ((this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin.a != null) && (this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin.a.mRuntime != null)) {
-        QQToast.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin.a.mRuntime.a(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 0).a();
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QZLog.w("QZoneSharePictureJsPlugin", 1, localException, new Object[0]);
-    }
-  }
+  public abstract void a(List<anjy> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anka
  * JD-Core Version:    0.7.0.1
  */

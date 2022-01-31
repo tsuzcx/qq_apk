@@ -1,46 +1,53 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SecSvcHandler;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.annotation.NonNull;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.manager.TicketManager;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class zts
-  implements Runnable
+  extends zrx
 {
-  public zts(SecSvcHandler paramSecSvcHandler, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void run()
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull zrt paramzrt)
   {
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    }
+    paramString = BaseApplicationImpl.getApplication().getRuntime();
+    paramJSONObject = (TicketManager)paramString.getManager(2);
+    paramString = paramString.getAccount();
+    paramJSONObject = paramJSONObject.getSkey(paramString);
+    JSONObject localJSONObject = new JSONObject();
     try
     {
-      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppSecSvcHandler.b.getApp(), NotificationActivity.class);
-      localIntent.putExtra("type", 11);
-      Bundle localBundle = new Bundle();
-      localBundle.putString("dlg_title", this.jdField_a_of_type_JavaLangString);
-      localBundle.putString("dlg_content", this.jdField_b_of_type_JavaLangString);
-      localBundle.putString("dlg_lbutton", this.jdField_c_of_type_JavaLangString);
-      localBundle.putString("dlg_rbutton", this.d);
-      localBundle.putString("dlg_url", this.e);
-      localBundle.putInt("dlg_lbtnid", this.jdField_a_of_type_Int);
-      localBundle.putInt("dlg_rbtnid", this.jdField_b_of_type_Int);
-      localBundle.putInt("dlg_seccmd", this.jdField_c_of_type_Int);
-      localIntent.putExtras(localBundle);
-      localIntent.setFlags(872415232);
-      if (!this.jdField_a_of_type_ComTencentMobileqqAppSecSvcHandler.b.isBackground_Stop) {
-        this.jdField_a_of_type_ComTencentMobileqqAppSecSvcHandler.b.getApp().startActivity(localIntent);
-      }
-      return;
+      localJSONObject.put("uin", paramString);
+      localJSONObject.put("skey", paramJSONObject);
+      zva.a(paramzrt, localJSONObject);
+      return true;
     }
-    catch (Exception localException)
+    catch (JSONException paramString)
     {
-      localException.printStackTrace();
+      for (;;)
+      {
+        paramJSONObject = paramString.getMessage();
+        if (QLog.isColorLevel()) {
+          QLog.w("DoraemonOpenAPI.innerApi", 2, paramJSONObject, paramString);
+        }
+        paramString = paramJSONObject;
+        if (paramJSONObject == null) {
+          paramString = "";
+        }
+        zva.a(paramzrt, -1, paramString);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zts
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,13 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.troop.utils.TroopFileUtils;
-import dov.com.qq.im.capture.text.JourneyTextItem;
+import android.widget.TextView;
 
-public class anwp
-  implements anwk
+class anwp
+  extends aiac
 {
-  public anwp(JourneyTextItem paramJourneyTextItem) {}
-  
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
-  {
-    String str = paramString;
-    if (paramInt == 0) {
-      str = TroopFileUtils.b(paramString);
-    }
-    return str;
-  }
+  TextView a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anwp
  * JD-Core Version:    0.7.0.1
  */

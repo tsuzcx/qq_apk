@@ -1,0 +1,143 @@
+{
+    "Readinjoy_article_interaction_fusion_biu_cell": {
+        "view_type": "cell",
+        "direction": "vertical",
+        "height": {
+            "type": "relative",
+            "value": "47"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "subviews": [
+            {
+                "view_type":"container",
+                "layout_type":"layout_relative",
+                "height":{
+                    "type":"match_parent"
+                },
+                "width":{
+                    "type":"match_parent"
+                },
+                "subviews":[
+                    {
+                        "view_type": "UIView",
+                        "view_id": "id_interaction_ui_view",
+                        "layout_type":"layout_relative",
+                        "default_visible": "YES",
+                        "event_type":"cmd_biu_click",
+                        "align_parent_left": "YES",
+                        "align_parent_top": "YES",
+                        "margin_left": "38",
+                        "margin_top": "11",
+                        "height": {
+                            "type": "relative",
+                            "value": "36"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "64"
+                        },
+                        "attributes": {
+
+                        },
+                        "subviews": [
+                            {
+                                "view_type":"FusionBiuButton",
+                                "view_id":"id_interaction_biu",
+                                "default_visible":"YES",
+                                "margin_left":"0",
+                                "margin_top": "-2.5",
+                                "height":{
+                                    "type":"relative",
+                                    "value":"24"
+                                },
+                                "width":{
+                                    "type":"relative",
+                                    "value":"24"
+                                }
+                            },
+                            {
+                                "view_id":"id_interaction_text_biu",
+                                "view_type": "UILabel",
+                                "default_visible":"YES",
+                                "height": {
+                                    "type": "wrap_content"
+                                },
+                                "width": {
+                                    "type": "wrap_content"
+                                },
+                                "align_parent_right": "YES",
+                                "margin_right": "19",
+                                "align_parent_center_vertical": "YES",
+                                "attributes": {
+                                    "setText:": "Biu",
+                                    "setTextColorString:": "#262626",
+                                    "setFontSizeString:": "13"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "view_type": "UIButton",
+                        "view_id": "id_interaction_dislike",
+                        "default_visible": "YES",
+                        "event_type":"cmd_dislike_click",
+                        "align_parent_center_horizontal": "YES",
+                        "align_parent_top": "YES",
+                        "margin_top": "11",
+                        "height": {
+                            "type": "relative",
+                            "value": "36"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "110"
+                        },
+                        "attributes": {
+                            "setFrameString:": "-1",
+                            "setTitle:":"不喜欢",
+                            "setInnerMargin:": "4",
+                            "setImages:colors:direction:forStates:":[["NativeArticleDislike_gray"],["#262626"],["0"],["0"]],
+                            "setBackgroundColor:forStates:":[["#ffffff", "#e5e5e5"],["0","1"]],
+                            "setTitleEdgeInsets:imageEdgeInsets:":["{0,0,0,-6}","{0,0,0,0}"],
+                            "setClipsToBoundsString:":"1",
+
+                            "setFontSizeString:":"13"
+                        }
+                    },
+                    {
+                        "view_type": "UIButton",
+                        "view_id": "id_interaction_share",
+                        "default_visible": "YES",
+                        "event_type":"cmd_share_click",
+                        "align_parent_right": "YES",
+                        "align_parent_top": "YES",
+                        "margin_right": "12",
+                        "margin_top": "11",
+                        "height": {
+                            "type": "relative",
+                            "value": "36"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "110"
+                        },
+                        "attributes": {
+                            "setFrameString:": "-1",
+                            "setTitle:":"分享",
+                            "setInnerMargin:": "4",
+                            "setImages:colors:direction:forStates:":[["NativeArticleShare_gray"],["#262626"],["0"],["0"]],
+                            "setBackgroundColor:forStates:":[["#ffffff", "#e5e5e5"],["0","1"]],
+                            "setTitleEdgeInsets:imageEdgeInsets:":["{0,0,0,-6}","{0,0,0,0}"],
+                            "setClipsToBoundsString:":"1",
+
+                            "setFontSizeString:":"13"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

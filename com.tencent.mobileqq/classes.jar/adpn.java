@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FilePicURLDrawlableHelper;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-public final class adpn
-  implements Runnable
+public class adpn
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public adpn(FileManagerEntity paramFileManagerEntity) {}
+  public adpn(SixCombolEffectView paramSixCombolEffectView, adpz paramadpz) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    FilePicURLDrawlableHelper.a(this.a);
+    this.jdField_a_of_type_Adpz.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adpn
  * JD-Core Version:    0.7.0.1
  */

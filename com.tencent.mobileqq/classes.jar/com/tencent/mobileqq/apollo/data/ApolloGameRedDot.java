@@ -2,12 +2,12 @@ package com.tencent.mobileqq.apollo.data;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.mobileqq.persistence.Entity;
+import atmo;
 import com.tencent.qphone.base.util.QLog;
 
 public class ApolloGameRedDot
-  extends Entity
-  implements Comparable
+  extends atmo
+  implements Comparable<ApolloGameRedDot>
 {
   public static final int REDDOT_ID_GAME_ACTIVITY = 1001;
   public static final int REDDOT_ID_GAME_CENTER = 1000;
@@ -106,7 +106,7 @@ public class ApolloGameRedDot
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.data.ApolloGameRedDot
  * JD-Core Version:    0.7.0.1
  */

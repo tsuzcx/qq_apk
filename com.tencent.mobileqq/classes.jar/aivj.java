@@ -1,70 +1,48 @@
-import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.transfile.HttpDownloader;
-import com.tencent.mobileqq.transfile.HttpDownloaderParams;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import java.util.List;
+import org.json.JSONArray;
 
-public final class aivj
-  implements INetEngine.INetEngineListener
+class aivj
+  implements aihm
 {
-  long jdField_a_of_type_Long = 0L;
+  aivj(aivi paramaivi) {}
   
-  public aivj(URLDrawableHandler paramURLDrawableHandler, String paramString, HttpDownloaderParams paramHttpDownloaderParams) {}
-  
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2)
+  public void a(boolean paramBoolean, String paramString1, List<aihj> paramList, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HttpDownloader", 2, " structMsgCover onUpdateProgeress totalLen = " + paramLong2 + " curOffset = " + paramLong1);
-    }
-    this.jdField_a_of_type_Long = paramLong2;
-  }
-  
-  public void a(NetResp paramNetResp)
-  {
-    boolean bool2 = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("HttpDownloader", 2, " structMsgCover download onResp result fileSize = " + this.jdField_a_of_type_Long + " file.path = " + paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c + " resp.result = " + paramNetResp.jdField_a_of_type_Int);
-    }
-    if (paramNetResp.jdField_a_of_type_Int == 3) {
-      return;
-    }
-    boolean bool1;
-    if (paramNetResp.jdField_a_of_type_Int == 0)
+    QLog.i("ApolloPluginRscLoader", 1, "checkRoomRsc downloadApolloRes onDownLoadFinish success:" + paramBoolean);
+    int i = 0;
+    if (i < this.a.jdField_a_of_type_ArrayOfInt.length)
     {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentImageURLDrawableHandler != null)
+      paramString1 = aihi.a().a(8, this.a.jdField_a_of_type_ArrayOfInt[i]);
+      int j;
+      if (paramString1 != null)
       {
-        this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadSucceed(this.jdField_a_of_type_Long);
-        bool1 = bool2;
+        paramList = this.a.jdField_a_of_type_Aivd;
+        int k = paramString1.b;
+        if (paramString1.a())
+        {
+          j = 0;
+          label88:
+          paramString1 = aivd.a(paramList, 8, String.valueOf(k), j);
+          this.a.jdField_a_of_type_OrgJsonJSONArray.put(paramString1);
+        }
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        j = 2;
+        break label88;
+        paramString1 = aivd.a(this.a.jdField_a_of_type_Aivd, 8, String.valueOf(this.a.jdField_a_of_type_ArrayOfInt[i]), 2);
+        this.a.jdField_a_of_type_OrgJsonJSONArray.put(paramString1);
       }
     }
-    for (;;)
-    {
-      try
-      {
-        HttpDownloader.a(bool1, new URL(this.jdField_a_of_type_JavaLangString), null, true, paramNetResp.c, paramNetResp.e, null, this.jdField_a_of_type_ComTencentMobileqqTransfileHttpDownloaderParams);
-        return;
-      }
-      catch (Exception paramNetResp)
-      {
-        return;
-      }
-      bool2 = false;
-      bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentImageURLDrawableHandler != null)
-      {
-        this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadFailed(paramNetResp.jdField_a_of_type_Int);
-        bool1 = bool2;
-      }
-    }
+    this.a.jdField_a_of_type_Aivd.a(this.a.jdField_a_of_type_JavaLangString, ajjy.a(2131634706), this.a.jdField_a_of_type_OrgJsonJSONArray);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aivj
  * JD-Core Version:    0.7.0.1
  */

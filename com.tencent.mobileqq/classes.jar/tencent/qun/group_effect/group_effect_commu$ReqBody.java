@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class group_effect_commu$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 58, 66, 74, 82, 90, 2402 }, new String[] { "u64_cmd", "u64_uin", "i32_implat", "str_version", "st_get_detail", "st_get_effect", "st_set_effect", "st_get_switch_others", "st_set_switch", "st_set_global_effect", "st_set_switch_others", "st_entry_notify" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), "", null, null, null, null, null, null, null, null }, ReqBody.class);
   public final PBInt32Field i32_implat = PBField.initInt32(0);

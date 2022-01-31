@@ -1,65 +1,47 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.ar.RemoteArConfigManager;
-import com.tencent.mobileqq.ar.aidl.IArFaceCallback.Stub;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class aake
-  extends IArFaceCallback.Stub
+  implements View.OnClickListener
 {
-  public aake(RemoteArConfigManager paramRemoteArConfigManager) {}
+  public aake(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "download success " + paramInt);
-    }
-    if (RemoteArConfigManager.a(this.a) == null)
+    switch (paramView.getId())
     {
-      QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadSuccess error mHandler is null ");
+    default: 
+      return;
+    case 2131302804: 
+      ChatSettingForTroop.f(this.a);
+      this.a.finish();
       return;
     }
-    Message localMessage = Message.obtain();
-    localMessage.what = 6;
-    localMessage.arg1 = paramInt;
-    RemoteArConfigManager.a(this.a).sendMessage(localMessage);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "download process " + paramInt1 + " : " + paramInt2);
-    }
-    if (RemoteArConfigManager.a(this.a) == null) {
-      return;
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 7;
-    localMessage.arg1 = paramInt1;
-    localMessage.arg2 = paramInt2;
-    RemoteArConfigManager.a(this.a).sendMessage(localMessage);
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "download error " + paramInt1 + " : " + paramInt2);
-    }
-    if (RemoteArConfigManager.a(this.a) == null)
+    ChatSettingForTroop.g(this.a);
+    String str2;
+    if (this.a.a.isMember)
     {
-      QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadError error mHandler is null ");
-      return;
+      paramView = "grpData_admin";
+      str2 = this.a.a.troopUin;
+      if (!this.a.a.isMember) {
+        break label135;
+      }
     }
-    Message localMessage = Message.obtain();
-    localMessage.what = 8;
-    localMessage.arg1 = paramInt1;
-    localMessage.arg2 = paramInt2;
-    RemoteArConfigManager.a(this.a).sendMessage(localMessage);
+    label135:
+    for (String str1 = azzx.a(this.a.a);; str1 = "0")
+    {
+      azzx.a("Grp_set_new", paramView, "clk_upright", 0, 0, new String[] { str2, str1 });
+      return;
+      paramView = "grpData_visitor";
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aake
  * JD-Core Version:    0.7.0.1
  */

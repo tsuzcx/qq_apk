@@ -1,40 +1,30 @@
-import com.tencent.component.media.gif.NewGifDrawable;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class pkv
-  implements Runnable
+public class pkv
+  implements oqy
 {
-  public final NewGifDrawable b;
+  public pkv(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  pkv(NewGifDrawable paramNewGifDrawable)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    this.b = paramNewGifDrawable;
-  }
-  
-  public abstract void doWork();
-  
-  public final void run()
-  {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("ComponentContentRecommendFollowList", 2, "followPubAccount() unfollowUin uin=" + paramString + ", isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean)
     {
-      if (!this.b.isRecycled()) {
-        doWork();
-      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo.isFollowed = false;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+      ComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList).notifyDataSetChanged();
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      Thread.UncaughtExceptionHandler localUncaughtExceptionHandler;
-      do
-      {
-        localUncaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
-      } while (localUncaughtExceptionHandler == null);
-      localUncaughtExceptionHandler.uncaughtException(Thread.currentThread(), localThrowable);
-    }
+    bbmy.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList.getContext(), 1, 2131652679, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pkv
  * JD-Core Version:    0.7.0.1
  */

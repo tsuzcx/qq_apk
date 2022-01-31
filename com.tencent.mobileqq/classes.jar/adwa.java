@@ -1,20 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import java.io.File;
 
 class adwa
-  implements DialogInterface.OnClickListener
+  implements begw
 {
-  adwa(advy paramadvy, QQCustomDialog paramQQCustomDialog) {}
+  adwa(advv paramadvv, begr parambegr, AIOImageData paramAIOImageData, File paramFile) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    if (paramView == null)
+    {
+      this.jdField_a_of_type_Begr.dismiss();
+      return;
+    }
+    paramView = this.jdField_a_of_type_Begr.a(paramInt);
+    if (paramView == null)
+    {
+      this.jdField_a_of_type_Begr.dismiss();
+      return;
+    }
+    if (TextUtils.isEmpty(paramView))
+    {
+      this.jdField_a_of_type_Begr.dismiss();
+      return;
+    }
+    if (this.jdField_a_of_type_Advv.a(paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_JavaIoFile)) {}
+    this.jdField_a_of_type_Begr.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adwa
  * JD-Core Version:    0.7.0.1
  */

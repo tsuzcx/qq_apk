@@ -1,20 +1,25 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.database.corrupt.DBFixDialogUI;
+import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
 
 public class aceb
   implements DialogInterface.OnClickListener
 {
-  public aceb(DBFixDialogUI paramDBFixDialogUI) {}
+  public aceb(UpgradeActivity paramUpgradeActivity, badr parambadr, int paramInt) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.cancel();
+    this.jdField_a_of_type_Badr.d();
+    bahs.c(true);
+    bahs.c(this.jdField_a_of_type_Int);
+    UpgradeDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeActivity, akgo.a().a(), false, true, true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityUpgradeActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aceb
  * JD-Core Version:    0.7.0.1
  */

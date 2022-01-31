@@ -1,13 +1,33 @@
-import android.widget.TextView;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionRecommendViewWrapper.PhotoAdapter;
-import com.tencent.image.URLImageView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class nda
+class nda
+  extends BroadcastReceiver
 {
-  public TextView a;
-  public URLImageView a;
+  nda(ncw paramncw) {}
   
-  public nda(PublicAccountImageCollectionRecommendViewWrapper.PhotoAdapter paramPhotoAdapter) {}
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (this.a.a == 2)
+    {
+      int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.picResultData", -1);
+      paramIntent = paramIntent.getStringArrayListExtra("com.tencent.biz.pubaccount.picResult_md5s");
+      this.a.a(null, 0, 14, i, paramIntent);
+    }
+    try
+    {
+      paramContext.unregisterReceiver(this.a.b);
+      label50:
+      this.a.b = null;
+      this.a.a = 0;
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      break label50;
+    }
+  }
 }
 
 

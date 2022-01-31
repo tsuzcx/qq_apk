@@ -6,10 +6,10 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class NowPushMsgList$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "rpt_now_push_msg" }, new Object[] { null }, MsgBody.class);
-  public final PBRepeatMessageField rpt_now_push_msg = PBField.initRepeatMessage(NowPushMsgList.NowPushMsg.class);
+  public final PBRepeatMessageField<NowPushMsgList.NowPushMsg> rpt_now_push_msg = PBField.initRepeatMessage(NowPushMsgList.NowPushMsg.class);
 }
 
 

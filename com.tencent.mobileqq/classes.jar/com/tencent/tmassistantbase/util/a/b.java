@@ -1,7 +1,7 @@
 package com.tencent.tmassistantbase.util.a;
 
 import android.util.Log;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ac;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
@@ -12,48 +12,70 @@ public class b
   
   public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
   {
+    j = 1;
     long l = System.currentTimeMillis();
     paramObject = new StringBuilder().append(this.a.a()).append(" >> method:").append(paramMethod.getName()).append(". args.size=");
-    if (paramArrayOfObject != null) {}
-    for (int i = paramArrayOfObject.length;; i = 0)
+    c localc;
+    Object localObject;
+    if (paramArrayOfObject != null)
     {
+      i = paramArrayOfObject.length;
       Log.i("HookManager_AbstractHook", i);
       if (paramMethod.getName().equals("getRecordForAppLocked")) {
         Log.i("HookManager_AbstractHook", "getRecordForAppLocked()..");
       }
-      paramObject = this.a.a(paramMethod.getName());
+      localc = this.a.a(paramMethod.getName());
+      localObject = null;
+    }
+    label243:
+    do
+    {
       try
       {
         paramMethod.setAccessible(true);
-        if ((paramObject != null) && (paramObject.b()))
+        if ((localc != null) && (localc.b()))
         {
-          if (!paramObject.a(this.a.a, paramMethod, paramArrayOfObject))
-          {
-            Object localObject = paramObject.b(this.a.a, paramMethod, paramArrayOfObject);
-            paramObject.a(this.a.a, paramMethod, paramArrayOfObject, localObject);
-            r.c("miles", "hook end, invoke time cost:" + (System.currentTimeMillis() - l));
-            return localObject;
+          boolean bool = localc.a(this.a.a, paramMethod, paramArrayOfObject);
+          if (bool) {
+            break label243;
           }
         }
-        else if (paramObject != null) {
-          r.c("miles", "hook method disabled, invoke time cost:" + (System.currentTimeMillis() - l));
-        }
-        paramObject = paramMethod.invoke(this.a.a, paramArrayOfObject);
+      }
+      catch (Throwable paramObject)
+      {
+        i = 0;
+      }
+      try
+      {
+        paramObject = localc.b(this.a.a, paramMethod, paramArrayOfObject);
+        localc.a(this.a.a, paramMethod, paramArrayOfObject, paramObject);
+        ac.c("miles", "hook end, invoke time cost:" + (System.currentTimeMillis() - l));
         return paramObject;
       }
       catch (Throwable paramObject)
       {
-        Log.e("HookManager_AbstractHook", this.a.a() + " invoke exception!");
-        paramObject.printStackTrace();
-        r.c("miles", "hook exception, invoke time cost:" + (System.currentTimeMillis() - l));
-        return paramMethod.invoke(this.a.a, paramArrayOfObject);
+        for (;;)
+        {
+          i = j;
+        }
       }
-    }
+      i = 0;
+      break;
+      if (localc != null) {
+        ac.c("miles", "hook method disabled, invoke time cost:" + (System.currentTimeMillis() - l));
+      }
+      paramObject = paramMethod.invoke(this.a.a, paramArrayOfObject);
+      return paramObject;
+      Log.e("HookManager_AbstractHook", this.a.a() + " invoke exception!" + paramObject.getMessage());
+      ac.c("miles", "hook exception, invoke time cost:" + (System.currentTimeMillis() - l));
+      paramObject = localObject;
+    } while (i == 0);
+    return paramMethod.invoke(this.a.a, paramArrayOfObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.a.b
  * JD-Core Version:    0.7.0.1
  */

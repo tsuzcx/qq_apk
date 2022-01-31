@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02043f" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c057e" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a087a" android:background="@drawable/skin_group_list_sub_entry" android:paddingLeft="10.0dip" android:paddingTop="3.0dip" android:paddingBottom="5.0dip" android:focusable="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="30.0dip" />
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ffd" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040819" />
-</LinearLayout>

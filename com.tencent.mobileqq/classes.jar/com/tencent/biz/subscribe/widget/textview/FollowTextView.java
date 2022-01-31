@@ -1,0 +1,327 @@
+package com.tencent.biz.subscribe.widget.textview;
+
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.support.annotation.Nullable;
+import android.util.AttributeSet;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import baip;
+import bbmy;
+import begr;
+import bggd;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.subscribe.event.FollowUpdateEvent;
+import com.tencent.biz.subscribe.event.SimpleBaseEvent;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import rtr;
+import vxl;
+import wcj;
+import wcl;
+import wfz;
+import whq;
+import whr;
+import whs;
+import wht;
+import whu;
+import wye;
+
+public class FollowTextView
+  extends TextView
+  implements View.OnClickListener, wcl
+{
+  private CertifiedAccountMeta.StFeed jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed;
+  private ExtraTypeInfo jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
+  private vxl jdField_a_of_type_Vxl;
+  private whu jdField_a_of_type_Whu;
+  private boolean jdField_a_of_type_Boolean;
+  private volatile boolean b = true;
+  private boolean c;
+  private boolean d;
+  
+  public FollowTextView(Context paramContext)
+  {
+    this(paramContext, null);
+  }
+  
+  public FollowTextView(Context paramContext, @Nullable AttributeSet paramAttributeSet)
+  {
+    this(paramContext, paramAttributeSet, 0);
+  }
+  
+  public FollowTextView(Context paramContext, @Nullable AttributeSet paramAttributeSet, int paramInt)
+  {
+    super(paramContext, paramAttributeSet, paramInt);
+    a();
+  }
+  
+  private void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed)
+  {
+    String str1;
+    String str2;
+    String str3;
+    if (paramStFeed != null)
+    {
+      if (baip.a(paramStFeed.id.get())) {
+        break label100;
+      }
+      str1 = paramStFeed.id.get();
+      str2 = paramStFeed.poster.id.get();
+      str3 = "auth_" + wfz.a(a());
+      if (!paramBoolean) {
+        break label114;
+      }
+    }
+    label100:
+    label114:
+    for (paramStFeed = "follow";; paramStFeed = "un_follow")
+    {
+      wye.a(str2, str3, paramStFeed, 0, 0, new String[] { "", "", str1 });
+      return;
+      str1 = paramStFeed.poster.nick.get();
+      break;
+    }
+  }
+  
+  private void d()
+  {
+    begr localbegr = begr.a(getContext());
+    localbegr.a(String.format(getContext().getResources().getString(2131629937), new Object[] { this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get() }));
+    localbegr.a(2131631029, 3);
+    localbegr.c(2131625035);
+    localbegr.setOnDismissListener(new whs(this));
+    localbegr.a(new wht(this, localbegr));
+    if (!localbegr.isShowing())
+    {
+      this.b = true;
+      localbegr.show();
+    }
+  }
+  
+  public ExtraTypeInfo a()
+  {
+    return this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo;
+  }
+  
+  public ArrayList<Class> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(FollowUpdateEvent.class);
+    return localArrayList;
+  }
+  
+  protected void a()
+  {
+    setGravity(17);
+    setTextColor(-1);
+    setOnClickListener(this);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null) {
+      this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.followState.set(paramInt);
+    }
+    if (paramInt == 1)
+    {
+      b();
+      return;
+    }
+    c();
+  }
+  
+  public void a(SimpleBaseEvent paramSimpleBaseEvent)
+  {
+    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed != null) && ((paramSimpleBaseEvent instanceof FollowUpdateEvent)))
+    {
+      FollowUpdateEvent localFollowUpdateEvent = (FollowUpdateEvent)paramSimpleBaseEvent;
+      if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get().equals(localFollowUpdateEvent.useId))
+      {
+        a(localFollowUpdateEvent.followStatus);
+        bggd.a(getContext(), (FollowUpdateEvent)paramSimpleBaseEvent);
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FollowTextView", 2, "follow");
+    }
+    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) {
+      QLog.e("FollowTextView", 2, "follow user failed! user is null");
+    }
+    do
+    {
+      return;
+      this.b = false;
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+    } while (!(localObject instanceof QQAppInterface));
+    Object localObject = (QQAppInterface)localObject;
+    if (paramBoolean)
+    {
+      rtr.a((AppInterface)localObject, getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), new whq(this), false, 0, true);
+      return;
+    }
+    rtr.a((QQAppInterface)localObject, getContext(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), false, new whr(this), true);
+  }
+  
+  protected boolean a()
+  {
+    return (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed == null) || (baip.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.nick.get()));
+  }
+  
+  protected void b()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      i = 2130838642;
+      setBackgroundResource(i);
+      if (!this.jdField_a_of_type_Boolean) {
+        break label47;
+      }
+    }
+    label47:
+    for (int i = -9211021;; i = Color.parseColor("#222222"))
+    {
+      setTextColor(i);
+      setText(2131625094);
+      return;
+      i = 2130838641;
+      break;
+    }
+  }
+  
+  protected void c()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      i = 2130838715;
+      setBackgroundResource(i);
+      if (!this.jdField_a_of_type_Boolean) {
+        break label47;
+      }
+    }
+    label47:
+    for (int i = -1493172225;; i = -1)
+    {
+      setTextColor(i);
+      setText(2131625100);
+      return;
+      i = 2130838714;
+      break;
+    }
+  }
+  
+  protected void onAttachedToWindow()
+  {
+    super.onAttachedToWindow();
+    if (!isInEditMode()) {
+      wcj.a().a(this);
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (a()) {}
+    do
+    {
+      return;
+      if (!this.b)
+      {
+        bbmy.a(getContext(), "请勿重复操作", 0).a();
+        return;
+      }
+      if (this.jdField_a_of_type_Vxl != null) {
+        this.jdField_a_of_type_Vxl.a();
+      }
+      if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.followState.get() == 0)
+      {
+        a(true);
+        return;
+      }
+    } while (this.d);
+    d();
+  }
+  
+  protected void onDetachedFromWindow()
+  {
+    super.onDetachedFromWindow();
+    wcj.a().b(this);
+  }
+  
+  public void setExtraTypeInfo(ExtraTypeInfo paramExtraTypeInfo)
+  {
+    this.jdField_a_of_type_ComTencentBizSubscribeBaseUIExtraTypeInfo = paramExtraTypeInfo;
+  }
+  
+  public void setFeedData(CertifiedAccountMeta.StFeed paramStFeed)
+  {
+    if (paramStFeed != null)
+    {
+      this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = paramStFeed;
+      a(paramStFeed.poster.followState.get());
+    }
+  }
+  
+  public void setFollowStateChangeListener(whu paramwhu)
+  {
+    this.jdField_a_of_type_Whu = paramwhu;
+  }
+  
+  public void setIsInNightMode(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void setItemPreClickListener(vxl paramvxl)
+  {
+    this.jdField_a_of_type_Vxl = paramvxl;
+  }
+  
+  public void setNoneReportType(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
+  }
+  
+  public void setOnlyFollowMode(boolean paramBoolean)
+  {
+    this.d = paramBoolean;
+  }
+  
+  public void setUserData(CertifiedAccountMeta.StUser paramStUser)
+  {
+    setUserData(paramStUser, -1);
+  }
+  
+  public void setUserData(CertifiedAccountMeta.StUser paramStUser, int paramInt)
+  {
+    CertifiedAccountMeta.StFeed localStFeed = new CertifiedAccountMeta.StFeed();
+    localStFeed.poster.set(paramStUser);
+    localStFeed.type.set(paramInt);
+    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = localStFeed;
+    if (paramInt == -1) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.c = bool;
+      a(localStFeed.poster.followState.get());
+      return;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     com.tencent.biz.subscribe.widget.textview.FollowTextView
+ * JD-Core Version:    0.7.0.1
+ */

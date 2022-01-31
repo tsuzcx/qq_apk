@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class SigActPb$Platform
-  extends MessageMicro
+  extends MessageMicro<Platform>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26 }, new String[] { "platform", "osver", "mqqver" }, new Object[] { Long.valueOf(0L), "", "" }, Platform.class);
   public final PBStringField mqqver = PBField.initString("");
@@ -16,7 +16,7 @@ public final class SigActPb$Platform
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.signature.SigActPb.Platform
  * JD-Core Version:    0.7.0.1
  */

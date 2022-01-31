@@ -1,100 +1,146 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.MultiMsgProxy;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.mixedmsg.MixedMsgManager;
-import com.tencent.mobileqq.multimsg.LongTextMsgManager;
-import com.tencent.mobileqq.multimsg.MultiMsgManager;
-import com.tencent.mobileqq.pic.DownCallBack;
-import com.tencent.mobileqq.pic.DownCallBack.DownResult;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.AbsListView.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class way
-  implements DownCallBack
+  extends BaseAdapter
 {
-  WeakReference a;
+  public static final int[] a;
+  public static final int[] b;
+  public static final int[] c = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+  private final int jdField_a_of_type_Int = 2130838694;
+  private Context jdField_a_of_type_AndroidContentContext;
+  wbc jdField_a_of_type_Wbc;
+  private Integer[] jdField_a_of_type_ArrayOfJavaLangInteger;
+  private int b;
   
-  public way(MultiForwardChatPie paramMultiForwardChatPie)
+  static
   {
-    this.a = new WeakReference(paramMultiForwardChatPie);
+    jdField_a_of_type_ArrayOfInt = new int[] { 23, 40, 19, 43, 21, 9, 20, 106, 35, 10, 25, 24, 1, 0, 33, 32, 12, 27, 13, 22, 3, 18, 30, 31, 81, 82, 26, 2, 37, 50, 42, 83, 34, 11, 49, 84, 39, 78, 5, 4, 6, 85, 86, 87, 46, 88, 44, 89, 48, 14, 90, 41, 36, 43, 51, 17, 60, 61, 92, 93, 66, 58, 7, 8, 57, 29, 28, 74, 59, 80, 16, 70, 77, 62, 15, 68, 75, 76, 45, 52, 53, 54, 55, 56, 63, 73, 72, 65, 94, 64, 38, 47, 95, 71, 96, 97, 98, 99, 100, 79, 101, 102, 103, 104, 105 };
+    jdField_b_of_type_ArrayOfInt = new int[] { 23, 40, 19, 43, 21, 9, 20, 106, 35, 10, 25, 24, 1, 0, 33, 32, 12, 27, 13, 22, 3, 18, 30, 31, 81, 82, 26, 2, 37, 50, 42, 83, 34, 11, 49, 84, 39, 78, 5, 4, 6, 85, 86, 87, 46, 88, 44, 89, 48, 14, 90, 41, 36, 43, 51, 17, 60, 61, 92, 93, 66, 58, 7, 8, 57, 29, 28, 74, 59, 80, 16, 70, 77, 62, 15, 68, 75, 76, 45, 52, 53, 54, 55, 56, 63, 73, 72, 65, 94, 64, 38, 47, 95, 71, 96, 97, 98, 99, 100, 79, 101, 102, 103, 104, 105, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141 };
   }
   
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(DownCallBack.DownResult paramDownResult)
+  public way(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, wbc paramwbc)
   {
-    if (this.a == null) {}
-    label406:
-    for (;;)
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ArrayOfJavaLangInteger = new Integer[paramInt3];
+    this.jdField_a_of_type_Wbc = paramwbc;
+    this.jdField_b_of_type_Int = paramInt4;
+    paramInt4 = 0;
+    if (paramInt4 < paramInt3)
     {
-      return;
-      MultiForwardChatPie localMultiForwardChatPie = (MultiForwardChatPie)this.a.get();
-      if ((localMultiForwardChatPie != null) && (localMultiForwardChatPie.c != null))
+      int i;
+      if (paramInt4 < paramInt2)
       {
-        MultiForwardChatPie.a(localMultiForwardChatPie).removeCallbacks(localMultiForwardChatPie.c);
-        localMultiForwardChatPie.c = null;
-      }
-      if ((paramDownResult.jdField_a_of_type_Int == 0) && (paramDownResult.jdField_a_of_type_ArrayOfByte != null))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("StructLongTextMsg", 2, "MultiForwardActivity.onDownload success");
+        i = jdField_b_of_type_ArrayOfInt[((paramInt1 - 1) * (paramInt3 - 1) + paramInt4)];
+        int j = c[((paramInt1 - 1) * (paramInt3 - 1) + paramInt4)];
+        paramContext = "f_static_";
+        if (j == 1) {
+          paramContext = "f";
         }
-        if (localMultiForwardChatPie == null) {
-          continue;
-        }
-        Object localObject1 = new HashMap();
-        Object localObject2 = localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localMultiForwardChatPie.h);
-        localObject2 = localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(paramDownResult.jdField_a_of_type_ArrayOfByte, (HashMap)localObject1, (MessageRecord)localObject2, null);
-        if ((localObject2 != null) && (((ArrayList)localObject2).size() == 1))
+        if (i < 10)
         {
-          if (((MessageRecord)((ArrayList)localObject2).get(0)).msgtype == -1035) {
-            ((MixedMsgManager)localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(173)).a(false, localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+          paramContext = paramContext + "00" + i;
+          label130:
+          if ((i < 0) || (i >= 107)) {
+            break label278;
           }
-          MultiMsgManager.a().a((HashMap)localObject1, localMultiForwardChatPie.h, localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          localObject1 = new ArrayList();
-          ((List)localObject1).add((ChatMessage)((ArrayList)localObject2).get(0));
-          localMultiForwardChatPie.b = ((List)localObject1);
-          localObject1 = ChatActivityUtils.a(localMultiForwardChatPie.b, localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-          localObject1 = ChatActivityUtils.a(localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext(), localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageRecord)localObject1);
-          if (QLog.isColorLevel()) {
-            QLog.d("StructLongTextMsg", 2, "MultiForwardActivity.onDownload, requestReceiveMultiMsg uses " + (System.currentTimeMillis() - MultiForwardChatPie.a(localMultiForwardChatPie)));
-          }
-          localMultiForwardChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new waz(this, localMultiForwardChatPie, (CharSequence)localObject1));
+          this.jdField_a_of_type_ArrayOfJavaLangInteger[paramInt4] = Integer.valueOf(wbh.jdField_a_of_type_ArrayOfInt[i]);
+          QLog.d("CommentInputPopupWindow", 2, "step1 has current id :" + this.jdField_a_of_type_ArrayOfJavaLangInteger[paramInt4] + " " + paramContext + "  ");
         }
       }
       for (;;)
       {
-        if ((localMultiForwardChatPie == null) || (localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
-          break label406;
+        paramInt4 += 1;
+        break;
+        if (i < 100)
+        {
+          paramContext = paramContext + "0" + i;
+          break label130;
         }
-        ((LongTextMsgManager)localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(165)).a(localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMultiForwardChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramDownResult.jdField_a_of_type_Int, 2);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("StructLongTextMsg", 2, "MultiForwardActivity.onDownload failed");
+        paramContext = paramContext + "10" + (i - 100);
+        break label130;
+        label278:
+        this.jdField_a_of_type_ArrayOfJavaLangInteger[paramInt4] = Integer.valueOf(0);
+        continue;
+        this.jdField_a_of_type_ArrayOfJavaLangInteger[paramInt4] = Integer.valueOf(0);
+      }
+    }
+    this.jdField_a_of_type_ArrayOfJavaLangInteger[(paramInt3 - 1)] = Integer.valueOf(2130838694);
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_ArrayOfJavaLangInteger.length;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return Integer.valueOf(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramViewGroup = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      int i = aciy.a(35.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      Object localObject = new LinearLayout.LayoutParams(i, i);
+      ((LinearLayout.LayoutParams)localObject).setMargins(i / 5, i / 5, i / 5, i / 5);
+      paramViewGroup.setAdjustViewBounds(false);
+      paramViewGroup.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      paramView = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
+      paramView.setGravity(17);
+      paramView.addView(paramViewGroup, (ViewGroup.LayoutParams)localObject);
+      localObject = new wba(this, null);
+      ((wba)localObject).a = paramViewGroup;
+      paramView.setTag(localObject);
+    }
+    for (;;)
+    {
+      paramViewGroup = ((wba)paramView.getTag()).a;
+      try
+      {
+        if (this.jdField_a_of_type_ArrayOfJavaLangInteger[paramInt].intValue() != 0)
+        {
+          paramViewGroup.setImageResource(this.jdField_a_of_type_ArrayOfJavaLangInteger[paramInt].intValue());
+          paramViewGroup.setVisibility(0);
         }
-        if (localMultiForwardChatPie == null) {
+        for (;;)
+        {
+          label178:
+          paramViewGroup.setOnClickListener(new waz(this, paramInt));
+          return paramView;
+          paramView = (LinearLayout)paramView;
           break;
+          paramViewGroup.setVisibility(8);
+          QLog.d("CommentInputPopupWindow", 2, "set gone because of 000:");
         }
-        localMultiForwardChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new wba(this, localMultiForwardChatPie));
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        break label178;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     way
  * JD-Core Version:    0.7.0.1
  */

@@ -4,24 +4,23 @@ import org.json.JSONObject;
 
 public class TrackerStickerParam$MotionInfo
 {
-  public float a;
-  public long a;
-  public boolean a;
-  public float b;
-  public float c = 1.0F;
-  public float d = 0.0F;
+  public long frameTime;
+  public boolean isLost = false;
+  public float rotate = 0.0F;
+  public float scale = 1.0F;
+  public float x;
+  public float y;
   
   public TrackerStickerParam$MotionInfo(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Boolean = false;
     try
     {
-      this.jdField_a_of_type_Boolean = paramJSONObject.getBoolean("isLost");
-      this.jdField_a_of_type_Long = paramJSONObject.getLong("frameTime");
-      this.jdField_a_of_type_Float = ((float)paramJSONObject.getDouble("x"));
-      this.b = ((float)paramJSONObject.getDouble("y"));
-      this.c = ((float)paramJSONObject.getDouble("scale"));
-      this.d = ((float)paramJSONObject.getDouble("rotate"));
+      this.isLost = paramJSONObject.getBoolean("isLost");
+      this.frameTime = paramJSONObject.getLong("frameTime");
+      this.x = ((float)paramJSONObject.getDouble("x"));
+      this.y = ((float)paramJSONObject.getDouble("y"));
+      this.scale = ((float)paramJSONObject.getDouble("scale"));
+      this.rotate = ((float)paramJSONObject.getDouble("rotate"));
       return;
     }
     catch (Exception paramJSONObject) {}
@@ -29,13 +28,29 @@ public class TrackerStickerParam$MotionInfo
   
   public TrackerStickerParam$MotionInfo(boolean paramBoolean, long paramLong, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
-    this.d = paramFloat4;
+    this.isLost = paramBoolean;
+    this.frameTime = paramLong;
+    this.x = paramFloat1;
+    this.y = paramFloat2;
+    this.scale = paramFloat3;
+    this.rotate = paramFloat4;
+  }
+  
+  public JSONObject convertToJSON()
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("isLost", this.isLost);
+      localJSONObject.put("frameTime", this.frameTime);
+      localJSONObject.put("x", this.x);
+      localJSONObject.put("y", this.y);
+      localJSONObject.put("scale", this.scale);
+      localJSONObject.put("rotate", this.rotate);
+      return localJSONObject;
+    }
+    catch (Exception localException) {}
+    return null;
   }
 }
 

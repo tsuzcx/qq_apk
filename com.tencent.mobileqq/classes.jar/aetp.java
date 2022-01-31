@@ -1,19 +1,37 @@
-import MyCarrier.Carrier;
-import com.tencent.mobileqq.mybusiness.MyBusinessManager;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
+import com.tencent.widget.SwipListView;
 
-class aetp
-  implements Runnable
+public class aetp
+  implements aibk
 {
-  aetp(aeto paramaeto, Carrier paramCarrier) {}
+  public aetp(AddContactsView paramAddContactsView) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_Aeto.a.a(this.jdField_a_of_type_MyCarrierCarrier);
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onAllRecommendsCaneled");
+    }
+    this.a.b.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentWidgetSwipListView.setVisibility(8);
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onRecommendsAvailable");
+    }
+    this.a.b.setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aetp
  * JD-Core Version:    0.7.0.1
  */

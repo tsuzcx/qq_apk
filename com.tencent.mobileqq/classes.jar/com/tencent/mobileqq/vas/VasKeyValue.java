@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vas;
 
-import com.tencent.mobileqq.persistence.Entity;
+import atmo;
 
 public class VasKeyValue
-  extends Entity
+  extends atmo
 {
   public static final String COLUMN_KEY = "key";
   public static final String COLUMN_VALUE = "value";

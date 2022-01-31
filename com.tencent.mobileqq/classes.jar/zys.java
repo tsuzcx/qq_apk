@@ -1,32 +1,54 @@
-import com.tencent.mobileqq.data.MessageForFoldMsg;
-import java.util.LinkedHashSet;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.AddRequestActivity.8.1;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class zys
+  extends ajjh
 {
-  public int a;
-  public long a;
-  public MessageForFoldMsg a;
-  public LinkedHashSet a;
-  public boolean a;
-  public long b;
-  public MessageForFoldMsg b;
-  public boolean b;
+  public zys(AddRequestActivity paramAddRequestActivity) {}
   
-  public zys()
+  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_JavaUtilLinkedHashSet = new LinkedHashSet();
-    this.jdField_a_of_type_Long = 9223372036854775807L;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForFoldMsg = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_ComTencentMobileqqDataMessageForFoldMsg = null;
-    this.jdField_b_of_type_Boolean = true;
+    if (AddRequestActivity.a(this.a))
+    {
+      if (!paramBoolean) {
+        this.a.a(2130839278, this.a.getString(2131653422));
+      }
+    }
+    else {
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("base_uin", paramString);
+    String str = this.a.b;
+    if (TextUtils.isEmpty(this.a.b)) {
+      str = this.a.a;
+    }
+    localBundle.putString("base_nick", str);
+    localBundle.putInt("verfy_type", AddRequestActivity.b(this.a));
+    localBundle.putString("verfy_msg", AddRequestActivity.a(this.a));
+    if (AddRequestActivity.a(this.a) != null) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      localBundle.putBoolean("isFromWzry", paramBoolean);
+      AutoRemarkActivity.a(this.a, 0, paramString, 0L, localBundle);
+      return;
+    }
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if ((paramBoolean) && (this.a.a != null) && (this.a.a.equals(paramString))) {
+      ThreadManager.post(new AddRequestActivity.8.1(this), 5, null, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zys
  * JD-Core Version:    0.7.0.1
  */

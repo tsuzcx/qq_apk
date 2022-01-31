@@ -1,58 +1,164 @@
+import android.annotation.SuppressLint;
+import android.net.Uri;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.phone.BaseActivityView.IPhoneContext;
-import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
+import android.widget.FrameLayout;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
+import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
+import com.tencent.smtt.export.external.interfaces.JsResult;
+import com.tencent.smtt.sdk.ValueCallback;
+import com.tencent.smtt.sdk.WebView;
 
 public class xao
-  implements BaseActivityView.IPhoneContext
+  extends mzd
 {
-  public xao(PhoneFrameActivity paramPhoneFrameActivity) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private IX5WebChromeClient.CustomViewCallback jdField_a_of_type_ComTencentSmttExportExternalInterfacesIX5WebChromeClient$CustomViewCallback;
+  private int jdField_b_of_type_Int;
+  private View jdField_b_of_type_AndroidViewView;
+  private int c;
   
-  public View a()
+  public xao(AbsBaseWebViewActivity paramAbsBaseWebViewActivity) {}
+  
+  private void a(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
-    return this.a.jdField_a_of_type_AndroidViewView;
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewBase", 2, "show custom view called");
+    }
+    if (this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesIX5WebChromeClient$CustomViewCallback != null)
+    {
+      paramCustomViewCallback.onCustomViewHidden();
+      return;
+    }
+    this.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.getRequestedOrientation();
+    this.c = (this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.getWindow().getAttributes().flags & 0x400);
+    if (this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.b == null)
+    {
+      this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.b = new FrameLayout(this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity);
+      this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.b.setBackgroundColor(-16777216);
+      ((ViewGroup)this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.getWindow().getDecorView()).addView(this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.b, new ViewGroup.LayoutParams(-1, -1));
+    }
+    if (!this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.jdField_a_of_type_Bbcm.y) {
+      this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.getWindow().setFlags(1024, 1024);
+    }
+    this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.setRequestedOrientation(paramInt);
+    this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.e = true;
+    this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.b.addView(paramView);
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesIX5WebChromeClient$CustomViewCallback = paramCustomViewCallback;
+    this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.b.setVisibility(0);
   }
   
-  public ImageView a()
+  @SuppressLint({"InflateParams"})
+  public View getVideoLoadingProgressView()
   {
-    return this.a.jdField_a_of_type_AndroidWidgetImageView;
+    if (this.jdField_b_of_type_AndroidViewView == null) {
+      this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity).inflate(2131496995, null);
+    }
+    return this.jdField_b_of_type_AndroidViewView;
   }
   
-  public TextView a()
+  public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
   {
-    return this.a.leftView;
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewBase", 2, "onGeolocationPermissionsShowPrompt:" + paramString);
+    }
+    String str = paramString;
+    if (paramString != null)
+    {
+      str = paramString;
+      if (paramString.indexOf(':') == -1)
+      {
+        str = paramString;
+        if (this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.jdField_a_of_type_ComTencentBizUiTouchWebView != null)
+        {
+          str = paramString;
+          if (this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.jdField_a_of_type_ComTencentBizUiTouchWebView.getX5WebViewExtension() != null) {
+            str = "http://" + paramString + "/";
+          }
+        }
+      }
+    }
+    paramGeolocationPermissionsCallback.invoke(str, this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.jdField_a_of_type_Mkw.a(str, "publicAccount.getLocation"), false);
   }
   
-  public QQAppInterface a()
+  public void onHideCustomView()
   {
-    return this.a.app;
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewBase", 2, "hide custom view called");
+    }
+    if (this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesIX5WebChromeClient$CustomViewCallback == null) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView.setKeepScreenOn(false);
+    this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.b.setVisibility(8);
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesIX5WebChromeClient$CustomViewCallback.onCustomViewHidden();
+    try
+    {
+      this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.b.removeAllViews();
+      label61:
+      if (!this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.jdField_a_of_type_Bbcm.y) {
+        this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.getWindow().setFlags(this.c, 1024);
+      }
+      this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.setRequestedOrientation(this.jdField_b_of_type_Int);
+      this.jdField_a_of_type_AndroidViewView = null;
+      this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesIX5WebChromeClient$CustomViewCallback = null;
+      this.jdField_b_of_type_AndroidViewView = null;
+      this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.e = false;
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label61;
+    }
   }
   
-  public View b()
+  public boolean onJsAlert(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
-    return this.a.b;
+    return super.onJsAlert(paramWebView, paramString1, paramString2, paramJsResult);
   }
   
-  public TextView b()
+  public void onProgressChanged(WebView paramWebView, int paramInt)
   {
-    return this.a.rightViewText;
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewBase", 2, "onProgressChanged:" + paramInt);
+    }
+    this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.a(paramWebView, paramInt);
   }
   
-  public TextView c()
+  public void onReceivedTitle(WebView paramWebView, String paramString)
   {
-    return this.a.centerView;
+    this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.a(paramWebView, paramString);
   }
   
-  public TextView d()
+  public void onShowCustomView(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
-    return this.a.jdField_a_of_type_AndroidWidgetTextView;
+    a(paramView, paramInt, paramCustomViewCallback);
+  }
+  
+  public void onShowCustomView(View paramView, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
+  {
+    a(paramView, 10, paramCustomViewCallback);
+  }
+  
+  public void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.jdField_a_of_type_Mpf == null) {
+      this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.jdField_a_of_type_Mpf = new mpf();
+    }
+    this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity.jdField_a_of_type_Mpf.a(this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity, 0, paramValueCallback, paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xao
  * JD-Core Version:    0.7.0.1
  */

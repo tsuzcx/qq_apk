@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0095"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d037a" android:id="@id/txt" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0382" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01df" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a252c" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0221b5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignTop="@id/txt" android:layout_alignRight="@id/txt" android:contentDescription="@null" />
-</RelativeLayout>

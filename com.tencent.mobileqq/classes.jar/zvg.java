@@ -1,36 +1,26 @@
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.TroopManager.ITroopMemberInfoCallBack;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
-class zvg
-  implements Runnable
+public class zvg
+  implements View.OnClickListener
 {
-  zvg(zvf paramzvf, TroopMemberInfo paramTroopMemberInfo) {}
+  public zvg(AboutActivity paramAboutActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject = (List)this.jdField_a_of_type_Zvf.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b.remove(this.jdField_a_of_type_Zvf.jdField_a_of_type_JavaLangString + "_" + this.jdField_a_of_type_Zvf.b);
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopManager", 2, "getTroopMemberInfo, size=" + ((List)localObject).size());
-    }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
+    if ((AboutActivity.a(this.a) != null) && (AboutActivity.a(this.a).a != null))
     {
-      TroopManager.ITroopMemberInfoCallBack localITroopMemberInfoCallBack = (TroopManager.ITroopMemberInfoCallBack)((WeakReference)((Iterator)localObject).next()).get();
-      if (localITroopMemberInfoCallBack != null) {
-        localITroopMemberInfoCallBack.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
-      }
+      awqx.b(this.a.app, "CliOper", "", "", "0X8004DB2", "0X8004DB2", 0, 0, "", "", akgo.a(), "");
+      UpgradeDetailActivity.a(this.a, akgo.a().a(), false, false, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zvg
  * JD-Core Version:    0.7.0.1
  */

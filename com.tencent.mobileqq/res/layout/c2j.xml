@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="41.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/jt6" android:background="#fff7f7f9" android:layout_width="fill_parent" android:layout_height="10.0dip" />
+    <com.tencent.widget.SingleLineTextView android:id="@id/text1" android:layout_width="fill_parent" android:layout_height="41.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="12.0dip" />
+    <View android:id="@id/e_1" android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="15.0dip" />
+</LinearLayout>

@@ -11,10 +11,10 @@ import java.util.Map;
 public final class m_rapid_tab_info
   extends JceStruct
 {
-  static Map cache_extend_info;
-  static ArrayList cache_rapid_emotions = new ArrayList();
-  public Map extend_info;
-  public ArrayList rapid_emotions;
+  static Map<String, String> cache_extend_info;
+  static ArrayList<msgb_rapidemotion> cache_rapid_emotions = new ArrayList();
+  public Map<String, String> extend_info;
+  public ArrayList<msgb_rapidemotion> rapid_emotions;
   public long tab_id;
   public String zip_md5_value = "";
   public String zip_url = "";
@@ -29,7 +29,7 @@ public final class m_rapid_tab_info
   
   public m_rapid_tab_info() {}
   
-  public m_rapid_tab_info(long paramLong, ArrayList paramArrayList, String paramString1, String paramString2, Map paramMap)
+  public m_rapid_tab_info(long paramLong, ArrayList<msgb_rapidemotion> paramArrayList, String paramString1, String paramString2, Map<String, String> paramMap)
   {
     this.tab_id = paramLong;
     this.rapid_emotions = paramArrayList;
@@ -66,7 +66,7 @@ public final class m_rapid_tab_info
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.m_rapid_tab_info
  * JD-Core Version:    0.7.0.1
  */

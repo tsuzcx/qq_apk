@@ -1,76 +1,25 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadQueryListener;
-import com.tencent.open.export.js.VipDownloadInterface;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.annotation.TargetApi;
+import android.hardware.Camera;
+import android.hardware.Camera.PreviewCallback;
+import android.os.Handler;
+import com.tencent.mobileqq.camera.CameraManagerImpl.PreviewCallbackForward.1;
 
 public class alrb
-  implements DownloadQueryListener
+  implements Camera.PreviewCallback
 {
-  public alrb(VipDownloadInterface paramVipDownloadInterface) {}
+  private final alqr jdField_a_of_type_Alqr;
+  private final alqs jdField_a_of_type_Alqs;
+  private final Handler jdField_a_of_type_AndroidOsHandler;
   
-  public void a(int paramInt, String paramString)
+  @TargetApi(8)
+  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
   {
-    LogUtility.e(this.a.a, "getQueryDownloadAction onException code = " + paramInt + " msg= ");
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("errCode", paramInt);
-      localJSONObject.put("errMsg", paramString);
-      paramString = "javascript:publicAccountDownload.queryProcess(" + localJSONObject.toString() + ")";
-      this.a.a(paramString);
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
-    }
-  }
-  
-  public void a(List paramList)
-  {
-    LogUtility.a(this.a.a, "getQueryDownloadAction onResult = " + paramList.size());
-    JSONArray localJSONArray = new JSONArray();
-    int j = paramList.size();
-    int i = 0;
-    for (;;)
-    {
-      if (i < j)
-      {
-        JSONObject localJSONObject = new JSONObject();
-        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.get(i);
-        try
-        {
-          localJSONObject.put("appid", localDownloadInfo.b);
-          localJSONObject.put("pro", localDownloadInfo.g);
-          localJSONObject.put("state", localDownloadInfo.a());
-          localJSONObject.put("ismyapp", localDownloadInfo.c);
-          localJSONArray.put(localJSONObject);
-          i += 1;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
-      }
-    }
-    paramList = "javascript:publicAccountDownload.queryProcess(" + localJSONArray.toString() + ")";
-    LogUtility.a(this.a.a, "getQueryDownloadAction callback url = " + paramList);
-    this.a.a(paramList);
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.PreviewCallbackForward.1(this, paramArrayOfByte));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alrb
  * JD-Core Version:    0.7.0.1
  */

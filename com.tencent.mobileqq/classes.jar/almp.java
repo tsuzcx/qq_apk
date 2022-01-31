@@ -1,40 +1,81 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.downloadnew.DownloadConstants;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 
 class almp
-  implements DialogInterface.OnClickListener
+  extends Drawable
 {
-  almp(almn paramalmn) {}
+  public int a;
+  public Bitmap a;
+  private Paint a;
+  public boolean a;
+  public int b = -1;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public almp(Bitmap paramBitmap)
   {
-    try
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_Int = paramBitmap.getWidth();
+    this.b = paramBitmap.getHeight();
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    Rect localRect = super.getBounds();
+    if (this.jdField_a_of_type_Boolean)
     {
-      paramDialogInterface.dismiss();
-      label6:
-      paramDialogInterface = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.a);
-      String str1 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.i);
-      String str2 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.e);
-      String str3 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.h);
-      String str4 = this.a.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.k);
-      boolean bool = this.a.jdField_a_of_type_AndroidOsBundle.getBoolean(DownloadConstants.x, true);
-      paramDialogInterface = new DownloadInfo(paramDialogInterface, str1.trim(), str2, str4, str3, null, this.a.jdField_a_of_type_Int, bool);
-      DownloadManager.a().a(10, paramDialogInterface);
-      return;
+      paramCanvas.save();
+      paramCanvas.scale(-1.0F, 1.0F, localRect.centerX(), localRect.centerY());
     }
-    catch (Exception paramDialogInterface)
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, super.getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
+    if (this.jdField_a_of_type_Boolean) {
+      paramCanvas.restore();
+    }
+  }
+  
+  public int getIntrinsicHeight()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int getIntrinsicWidth()
+  {
+    return this.b;
+  }
+  
+  public int getOpacity()
+  {
+    return -3;
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
     {
-      break label6;
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+      super.invalidateSelf();
     }
+  }
+  
+  public void setColorFilter(ColorFilter paramColorFilter)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    super.invalidateSelf();
+  }
+  
+  public void setDither(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(paramBoolean);
+    super.invalidateSelf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     almp
  * JD-Core Version:    0.7.0.1
  */

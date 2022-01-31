@@ -1,22 +1,19 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import com.tencent.mobileqq.ocr.view.ScanOcrView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aggo
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  aggo(aggn paramaggn) {}
+  aggo(aggm paramaggm, Runnable paramRunnable) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ScanOcrActivity.a(this.a.a).setVisibility(4);
-    ScanOcrActivity.b(this.a.a).setVisibility(4);
-    ScanOcrActivity.b(this.a.a).setAlpha(255);
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aggo
  * JD-Core Version:    0.7.0.1
  */

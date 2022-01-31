@@ -1,23 +1,15 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Environment;
+import java.io.File;
 
-public class rvp
-  implements Runnable
+public final class rvp
 {
-  public rvp(BaseChatPie paramBaseChatPie, ChatMessage paramChatMessage, SessionInfo paramSessionInfo) {}
-  
-  public void run()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a != null) && (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    }
-  }
+  public static final String a = Environment.getExternalStorageDirectory() + File.separator + Environment.DIRECTORY_PICTURES + File.separator + "Screenshots" + File.separator;
+  public static final String b = Environment.getExternalStorageDirectory() + File.separator + Environment.DIRECTORY_DCIM + File.separator + "Screenshots" + File.separator;
+  public static final String c = Environment.getExternalStorageDirectory() + File.separator + ajjy.a(2131647795) + File.separator;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rvp
  * JD-Core Version:    0.7.0.1
  */

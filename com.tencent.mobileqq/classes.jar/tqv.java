@@ -1,27 +1,23 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VipGrayConfigHelper.VipGrayConfigListener;
-import com.tencent.qphone.base.util.QLog;
+import android.util.SparseArray;
 
-public class tqv
-  implements VipGrayConfigHelper.VipGrayConfigListener
+final class tqv
+  extends SparseArray<String>
 {
-  public tqv(QQSettingMe paramQQSettingMe) {}
-  
-  public void a()
+  tqv()
   {
-    if (this.a.a != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "enterWordListener");
-      }
-      this.a.b(this.a.a.getAccount());
-    }
+    put(31, "PLAYER_INFO_PLAYER_TYPE");
+    put(24, "PLAYER_INFO_SUCC_SET_DECODER_MODE");
+    put(33, "PLAYER_INFO_START_GET_VINFO");
+    put(21, ajjy.a(2131648758));
+    put(34, "PLAYER_INFO_END_GET_VINFO");
+    put(22, ajjy.a(2131648762));
+    put(23, "PLAYER_INFO_START_RENDERING");
+    put(39, "PLAYER_INFO_HW_DECODE_FAILED");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tqv
  * JD-Core Version:    0.7.0.1
  */

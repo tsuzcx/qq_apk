@@ -1,77 +1,63 @@
-import android.app.Activity;
-import com.tencent.mobileqq.jsp.MediaApiPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import java.io.IOException;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class aeet
-  extends Thread
+class aeet
+  implements begw
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  int c;
-  int d;
+  aeet(aeeh paramaeeh, begr parambegr) {}
   
-  public aeet(MediaApiPlugin paramMediaApiPlugin, String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.c = paramInt3;
-    this.d = paramInt4;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-  }
-  
-  public void run()
-  {
-    try
+    switch (paramInt)
     {
-      JSONObject localJSONObject = MediaApiPlugin.a(this.jdField_b_of_type_JavaLangString, this.c, this.d, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      if (isInterrupted()) {
-        throw new InterruptedException();
+    }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_Begr.dismiss();
+        return;
       }
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      System.gc();
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "3", "{}" });
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "0", localOutOfMemoryError.toString() });
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "2", "{}" });
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "2", "{}" });
-      return;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.mRuntime.a();
-      if ((localActivity != null) && (!localActivity.isFinishing())) {
-        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "1", "{}" });
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
       }
-      return;
-    }
-    finally
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a != null) && (this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a.isShowing())) {
-        this.jdField_a_of_type_ComTencentMobileqqJspMediaApiPlugin.a.dismiss();
+      if (badq.d(this.jdField_a_of_type_Aeeh.a())) {
+        try
+        {
+          ((bbfc)this.jdField_a_of_type_Aeeh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(107)).a(this.jdField_a_of_type_Aeeh.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo, new aeeu(this));
+          this.jdField_a_of_type_Aeeh.d = new bbms(this.jdField_a_of_type_Aeeh.a(), this.jdField_a_of_type_Aeeh.a());
+          this.jdField_a_of_type_Aeeh.d.setContentView(2131496755);
+          this.jdField_a_of_type_Aeeh.d.a(this.jdField_a_of_type_Aeeh.a().getString(2131626627));
+          this.jdField_a_of_type_Aeeh.d.setCancelable(false);
+          this.jdField_a_of_type_Aeeh.d.show();
+          paramView = this.jdField_a_of_type_Aeeh.jdField_a_of_type_Bbfs.a();
+          if ((paramView == null) || (!paramView.b())) {
+            continue;
+          }
+          awqx.b(this.jdField_a_of_type_Aeeh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_wolf", "", "in_game", "run_away", 0, 0, "", "", "", "");
+        }
+        catch (Exception paramView)
+        {
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.e(this.jdField_a_of_type_Aeeh.jdField_a_of_type_JavaLangString, 2, "the sessionInfo.curFriendUin is wrong: " + this.jdField_a_of_type_Aeeh.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+          continue;
+        }
+      } else {
+        bbmy.a(this.jdField_a_of_type_Aeeh.a(), 2130839278, this.jdField_a_of_type_Aeeh.a().getResources().getString(2131629008), 0).b(this.jdField_a_of_type_Aeeh.a());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeet
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,28 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import com.tencent.widget.ActionSheet;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahix
-  implements View.OnLongClickListener
+  implements awiq
 {
-  private WeakReference a;
+  public ahix(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  private ahix(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
+  public void a(Exception paramException)
   {
-    this.a = new WeakReference(paramReceiptMessageDetailFragment);
+    if (QLog.isColorLevel()) {
+      QLog.i("PTV.NewFlowCameraActivity", 2, "[onCameraException]", paramException);
+    }
   }
   
-  public boolean onLongClick(View paramView)
+  public void a(RuntimeException paramRuntimeException)
   {
-    paramView = (ReceiptMessageDetailFragment)this.a.get();
-    if ((paramView == null) || (!paramView.isAdded())) {
-      return false;
+    if (QLog.isColorLevel()) {
+      QLog.i("PTV.NewFlowCameraActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
     }
-    ActionSheet localActionSheet = ActionSheet.a(paramView.getActivity());
-    localActionSheet.b(2131435098);
-    localActionSheet.c(2131433029);
-    localActionSheet.a(new ahiy(this, paramView, localActionSheet));
-    localActionSheet.show();
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahix
  * JD-Core Version:    0.7.0.1
  */

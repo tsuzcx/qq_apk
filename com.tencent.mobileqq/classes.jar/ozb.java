@@ -1,16 +1,8 @@
-import com.tencent.biz.qrcode.activity.QRLoginActivity;
-import com.tencent.mobileqq.util.FaceDrawable;
-
-class ozb
-  extends Thread
+public abstract interface ozb
 {
-  ozb(oza paramoza, String paramString) {}
+  public abstract void a();
   
-  public void run()
-  {
-    FaceDrawable localFaceDrawable = FaceDrawable.a(this.jdField_a_of_type_Oza.a.app, 1, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Oza.a.runOnUiThread(new ozc(this, localFaceDrawable));
-  }
+  public abstract void b();
 }
 
 

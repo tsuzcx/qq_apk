@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ar.aidl;
 
-import aalf;
+import aknk;
+import akpo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import android.util.Xml;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ar.ArConfigUtils;
 import com.tencent.mobileqq.ar.model.ArAwardInfo;
 import com.tencent.mobileqq.ar.model.ArFeatureInfo;
 import com.tencent.mobileqq.ar.model.ArModelResource;
@@ -24,7 +24,7 @@ import org.xmlpull.v1.XmlPullParser;
 public class ArConfigInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new aalf();
+  public static final Parcelable.Creator<ArConfigInfo> CREATOR = new akpo();
   public static final String TAG = "ArConfigInfo";
   public static final int VERSION_700 = 10;
   public static final int VERSION_710 = 11;
@@ -38,7 +38,7 @@ public class ArConfigInfo
   public long aRCloudCacheExpireTime;
   public long aRCloudEnd;
   public long aREnd;
-  public ArrayList mArCloudConfigInfos = new ArrayList();
+  public ArrayList<ArCloudConfigInfo> mArCloudConfigInfos = new ArrayList();
   public boolean saveConfig = true;
   public String scanLine1;
   public String scanLine2;
@@ -124,312 +124,312 @@ public class ArConfigInfo
   public static ArConfigInfo loadConfigFromFile(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   0: invokestatic 142	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   3: ifeq +37 -> 40
-    //   6: ldc 14
+    //   6: ldc 15
     //   8: iconst_2
-    //   9: new 115	java/lang/StringBuilder
+    //   9: new 117	java/lang/StringBuilder
     //   12: dup
-    //   13: invokespecial 116	java/lang/StringBuilder:<init>	()V
-    //   16: ldc 198
-    //   18: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   13: invokespecial 118	java/lang/StringBuilder:<init>	()V
+    //   16: ldc 200
+    //   18: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   21: aload_0
-    //   22: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: ldc 169
-    //   27: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   22: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   25: ldc 171
+    //   27: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   30: aload_1
-    //   31: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   34: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   37: invokestatic 145	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   31: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   34: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   37: invokestatic 147	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   40: aload_0
     //   41: ifnull +25 -> 66
     //   44: aload_0
-    //   45: ldc 171
-    //   47: invokevirtual 177	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   45: ldc 173
+    //   47: invokevirtual 179	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   50: ifne +16 -> 66
     //   53: aload_1
     //   54: ifnull +12 -> 66
     //   57: aload_1
-    //   58: ldc 171
-    //   60: invokevirtual 177	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   58: ldc 173
+    //   60: invokevirtual 179	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   63: ifeq +7 -> 70
     //   66: aconst_null
     //   67: astore_1
     //   68: aload_1
     //   69: areturn
-    //   70: new 157	java/io/File
+    //   70: new 159	java/io/File
     //   73: dup
     //   74: aload_0
     //   75: aload_1
-    //   76: invokespecial 179	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   76: invokespecial 181	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   79: astore 4
     //   81: aload 4
-    //   83: invokevirtual 182	java/io/File:exists	()Z
-    //   86: ifeq +415 -> 501
-    //   89: new 200	java/io/FileInputStream
+    //   83: invokevirtual 184	java/io/File:exists	()Z
+    //   86: ifeq +416 -> 502
+    //   89: new 202	java/io/FileInputStream
     //   92: dup
     //   93: aload 4
-    //   95: invokespecial 203	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   95: invokespecial 205	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   98: astore_1
-    //   99: new 205	java/io/BufferedInputStream
+    //   99: new 207	java/io/BufferedInputStream
     //   102: dup
     //   103: aload_1
-    //   104: invokespecial 208	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   104: invokespecial 210	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   107: astore_3
     //   108: aload_1
-    //   109: invokevirtual 211	java/io/FileInputStream:available	()I
+    //   109: invokevirtual 213	java/io/FileInputStream:available	()I
     //   112: newarray byte
     //   114: astore_2
     //   115: aload_3
     //   116: aload_2
-    //   117: invokevirtual 215	java/io/BufferedInputStream:read	([B)I
+    //   117: invokevirtual 217	java/io/BufferedInputStream:read	([B)I
     //   120: pop
-    //   121: invokestatic 219	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   121: invokestatic 221	android/os/Parcel:obtain	()Landroid/os/Parcel;
     //   124: astore_0
     //   125: aload_0
     //   126: aload_2
     //   127: iconst_0
     //   128: aload_2
     //   129: arraylength
-    //   130: invokevirtual 223	android/os/Parcel:unmarshall	([BII)V
+    //   130: invokevirtual 225	android/os/Parcel:unmarshall	([BII)V
     //   133: aload_0
     //   134: iconst_0
-    //   135: invokevirtual 227	android/os/Parcel:setDataPosition	(I)V
-    //   138: getstatic 53	com/tencent/mobileqq/ar/aidl/ArConfigInfo:CREATOR	Landroid/os/Parcelable$Creator;
+    //   135: invokevirtual 229	android/os/Parcel:setDataPosition	(I)V
+    //   138: getstatic 55	com/tencent/mobileqq/ar/aidl/ArConfigInfo:CREATOR	Landroid/os/Parcelable$Creator;
     //   141: aload_0
-    //   142: invokeinterface 233 2 0
+    //   142: invokeinterface 235 2 0
     //   147: checkcast 2	com/tencent/mobileqq/ar/aidl/ArConfigInfo
     //   150: astore_2
-    //   151: new 57	java/util/ArrayList
+    //   151: new 59	java/util/ArrayList
     //   154: dup
-    //   155: invokespecial 58	java/util/ArrayList:<init>	()V
+    //   155: invokespecial 60	java/util/ArrayList:<init>	()V
     //   158: pop
     //   159: aload_2
-    //   160: getfield 60	com/tencent/mobileqq/ar/aidl/ArConfigInfo:mArCloudConfigInfos	Ljava/util/ArrayList;
+    //   160: getfield 62	com/tencent/mobileqq/ar/aidl/ArConfigInfo:mArCloudConfigInfos	Ljava/util/ArrayList;
     //   163: astore 5
     //   165: aload_2
-    //   166: getfield 60	com/tencent/mobileqq/ar/aidl/ArConfigInfo:mArCloudConfigInfos	Ljava/util/ArrayList;
-    //   169: invokevirtual 237	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   166: getfield 62	com/tencent/mobileqq/ar/aidl/ArConfigInfo:mArCloudConfigInfos	Ljava/util/ArrayList;
+    //   169: invokevirtual 239	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   172: astore 6
     //   174: aload 6
-    //   176: invokeinterface 242 1 0
-    //   181: ifeq +125 -> 306
+    //   176: invokeinterface 244 1 0
+    //   181: ifeq +126 -> 307
     //   184: aload 6
-    //   186: invokeinterface 246 1 0
-    //   191: checkcast 73	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo
+    //   186: invokeinterface 248 1 0
+    //   191: checkcast 75	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo
     //   194: astore 7
     //   196: aload 7
-    //   198: getfield 249	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo:jdField_a_of_type_Boolean	Z
+    //   198: getfield 251	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo:jdField_a_of_type_Boolean	Z
     //   201: ifne -27 -> 174
     //   204: aload 5
     //   206: aload 7
-    //   208: invokevirtual 252	java/util/ArrayList:remove	(Ljava/lang/Object;)Z
+    //   208: invokevirtual 254	java/util/ArrayList:remove	(Ljava/lang/Object;)Z
     //   211: pop
     //   212: goto -38 -> 174
     //   215: astore 5
-    //   217: ldc 14
+    //   217: ldc 15
     //   219: iconst_1
-    //   220: new 115	java/lang/StringBuilder
+    //   220: new 117	java/lang/StringBuilder
     //   223: dup
-    //   224: invokespecial 116	java/lang/StringBuilder:<init>	()V
-    //   227: ldc 254
-    //   229: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   232: aload 5
-    //   234: invokevirtual 125	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   237: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   240: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   243: invokestatic 134	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   246: aload_0
-    //   247: invokevirtual 257	android/os/Parcel:recycle	()V
-    //   250: aload_3
-    //   251: ifnull +7 -> 258
-    //   254: aload_3
-    //   255: invokevirtual 260	java/io/BufferedInputStream:close	()V
-    //   258: aload_2
-    //   259: astore_0
-    //   260: aload_1
-    //   261: ifnull +9 -> 270
-    //   264: aload_1
-    //   265: invokevirtual 261	java/io/FileInputStream:close	()V
-    //   268: aload_2
-    //   269: astore_0
-    //   270: aload_0
-    //   271: astore_1
-    //   272: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   275: ifeq -207 -> 68
-    //   278: ldc 14
-    //   280: iconst_2
-    //   281: new 115	java/lang/StringBuilder
-    //   284: dup
-    //   285: invokespecial 116	java/lang/StringBuilder:<init>	()V
-    //   288: ldc_w 263
-    //   291: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   294: aload_0
-    //   295: invokevirtual 266	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   298: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   301: invokestatic 145	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   304: aload_0
-    //   305: areturn
-    //   306: aload_2
-    //   307: aload 5
-    //   309: putfield 60	com/tencent/mobileqq/ar/aidl/ArConfigInfo:mArCloudConfigInfos	Ljava/util/ArrayList;
-    //   312: goto -66 -> 246
-    //   315: astore_2
-    //   316: aload_1
-    //   317: astore_0
-    //   318: aload_3
-    //   319: astore_1
-    //   320: aload 4
-    //   322: invokevirtual 185	java/io/File:delete	()Z
-    //   325: pop
-    //   326: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   329: ifeq +29 -> 358
-    //   332: ldc 14
-    //   334: iconst_2
-    //   335: new 115	java/lang/StringBuilder
-    //   338: dup
-    //   339: invokespecial 116	java/lang/StringBuilder:<init>	()V
-    //   342: ldc_w 268
-    //   345: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   348: aload_2
-    //   349: invokevirtual 266	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   352: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   355: invokestatic 271	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   358: aload_1
-    //   359: ifnull +7 -> 366
-    //   362: aload_1
-    //   363: invokevirtual 260	java/io/BufferedInputStream:close	()V
-    //   366: aload_0
-    //   367: ifnull +129 -> 496
-    //   370: aload_0
-    //   371: invokevirtual 261	java/io/FileInputStream:close	()V
-    //   374: aconst_null
-    //   375: astore_0
-    //   376: goto -106 -> 270
-    //   379: astore_0
-    //   380: aload_0
-    //   381: invokevirtual 274	java/io/IOException:printStackTrace	()V
-    //   384: goto -126 -> 258
-    //   387: astore_0
-    //   388: aload_0
-    //   389: invokevirtual 274	java/io/IOException:printStackTrace	()V
-    //   392: aload_2
-    //   393: astore_0
-    //   394: goto -124 -> 270
-    //   397: astore_1
-    //   398: aload_1
-    //   399: invokevirtual 274	java/io/IOException:printStackTrace	()V
-    //   402: goto -36 -> 366
-    //   405: astore_0
-    //   406: aload_0
-    //   407: invokevirtual 274	java/io/IOException:printStackTrace	()V
-    //   410: aconst_null
-    //   411: astore_0
-    //   412: goto -142 -> 270
-    //   415: astore_0
-    //   416: aconst_null
-    //   417: astore_2
-    //   418: aconst_null
-    //   419: astore_1
-    //   420: aload_1
-    //   421: ifnull +7 -> 428
-    //   424: aload_1
-    //   425: invokevirtual 260	java/io/BufferedInputStream:close	()V
-    //   428: aload_2
-    //   429: ifnull +7 -> 436
-    //   432: aload_2
-    //   433: invokevirtual 261	java/io/FileInputStream:close	()V
-    //   436: aload_0
-    //   437: athrow
-    //   438: astore_1
-    //   439: aload_1
-    //   440: invokevirtual 274	java/io/IOException:printStackTrace	()V
-    //   443: goto -15 -> 428
-    //   446: astore_1
-    //   447: aload_1
-    //   448: invokevirtual 274	java/io/IOException:printStackTrace	()V
-    //   451: goto -15 -> 436
-    //   454: astore_0
-    //   455: aconst_null
-    //   456: astore_3
-    //   457: aload_1
-    //   458: astore_2
-    //   459: aload_3
-    //   460: astore_1
-    //   461: goto -41 -> 420
-    //   464: astore_0
-    //   465: aload_1
-    //   466: astore_2
-    //   467: aload_3
-    //   468: astore_1
-    //   469: goto -49 -> 420
-    //   472: astore_3
-    //   473: aload_0
-    //   474: astore_2
-    //   475: aload_3
-    //   476: astore_0
-    //   477: goto -57 -> 420
-    //   480: astore_2
-    //   481: aconst_null
-    //   482: astore_0
-    //   483: aconst_null
-    //   484: astore_1
-    //   485: goto -165 -> 320
-    //   488: astore_2
-    //   489: aload_1
-    //   490: astore_0
-    //   491: aconst_null
-    //   492: astore_1
-    //   493: goto -173 -> 320
-    //   496: aconst_null
-    //   497: astore_0
-    //   498: goto -228 -> 270
-    //   501: aconst_null
-    //   502: areturn
+    //   224: invokespecial 118	java/lang/StringBuilder:<init>	()V
+    //   227: ldc_w 256
+    //   230: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   233: aload 5
+    //   235: invokevirtual 127	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   238: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   241: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   244: invokestatic 136	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   247: aload_0
+    //   248: invokevirtual 259	android/os/Parcel:recycle	()V
+    //   251: aload_3
+    //   252: ifnull +7 -> 259
+    //   255: aload_3
+    //   256: invokevirtual 262	java/io/BufferedInputStream:close	()V
+    //   259: aload_2
+    //   260: astore_0
+    //   261: aload_1
+    //   262: ifnull +9 -> 271
+    //   265: aload_1
+    //   266: invokevirtual 263	java/io/FileInputStream:close	()V
+    //   269: aload_2
+    //   270: astore_0
+    //   271: aload_0
+    //   272: astore_1
+    //   273: invokestatic 142	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   276: ifeq -208 -> 68
+    //   279: ldc 15
+    //   281: iconst_2
+    //   282: new 117	java/lang/StringBuilder
+    //   285: dup
+    //   286: invokespecial 118	java/lang/StringBuilder:<init>	()V
+    //   289: ldc_w 265
+    //   292: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   295: aload_0
+    //   296: invokevirtual 268	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   299: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   302: invokestatic 147	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   305: aload_0
+    //   306: areturn
+    //   307: aload_2
+    //   308: aload 5
+    //   310: putfield 62	com/tencent/mobileqq/ar/aidl/ArConfigInfo:mArCloudConfigInfos	Ljava/util/ArrayList;
+    //   313: goto -66 -> 247
+    //   316: astore_2
+    //   317: aload_1
+    //   318: astore_0
+    //   319: aload_3
+    //   320: astore_1
+    //   321: aload 4
+    //   323: invokevirtual 187	java/io/File:delete	()Z
+    //   326: pop
+    //   327: invokestatic 142	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   330: ifeq +29 -> 359
+    //   333: ldc 15
+    //   335: iconst_2
+    //   336: new 117	java/lang/StringBuilder
+    //   339: dup
+    //   340: invokespecial 118	java/lang/StringBuilder:<init>	()V
+    //   343: ldc_w 270
+    //   346: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   349: aload_2
+    //   350: invokevirtual 268	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   353: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   356: invokestatic 273	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   359: aload_1
+    //   360: ifnull +7 -> 367
+    //   363: aload_1
+    //   364: invokevirtual 262	java/io/BufferedInputStream:close	()V
+    //   367: aload_0
+    //   368: ifnull +129 -> 497
+    //   371: aload_0
+    //   372: invokevirtual 263	java/io/FileInputStream:close	()V
+    //   375: aconst_null
+    //   376: astore_0
+    //   377: goto -106 -> 271
+    //   380: astore_0
+    //   381: aload_0
+    //   382: invokevirtual 276	java/io/IOException:printStackTrace	()V
+    //   385: goto -126 -> 259
+    //   388: astore_0
+    //   389: aload_0
+    //   390: invokevirtual 276	java/io/IOException:printStackTrace	()V
+    //   393: aload_2
+    //   394: astore_0
+    //   395: goto -124 -> 271
+    //   398: astore_1
+    //   399: aload_1
+    //   400: invokevirtual 276	java/io/IOException:printStackTrace	()V
+    //   403: goto -36 -> 367
+    //   406: astore_0
+    //   407: aload_0
+    //   408: invokevirtual 276	java/io/IOException:printStackTrace	()V
+    //   411: aconst_null
+    //   412: astore_0
+    //   413: goto -142 -> 271
+    //   416: astore_0
+    //   417: aconst_null
+    //   418: astore_2
+    //   419: aconst_null
+    //   420: astore_1
+    //   421: aload_1
+    //   422: ifnull +7 -> 429
+    //   425: aload_1
+    //   426: invokevirtual 262	java/io/BufferedInputStream:close	()V
+    //   429: aload_2
+    //   430: ifnull +7 -> 437
+    //   433: aload_2
+    //   434: invokevirtual 263	java/io/FileInputStream:close	()V
+    //   437: aload_0
+    //   438: athrow
+    //   439: astore_1
+    //   440: aload_1
+    //   441: invokevirtual 276	java/io/IOException:printStackTrace	()V
+    //   444: goto -15 -> 429
+    //   447: astore_1
+    //   448: aload_1
+    //   449: invokevirtual 276	java/io/IOException:printStackTrace	()V
+    //   452: goto -15 -> 437
+    //   455: astore_0
+    //   456: aconst_null
+    //   457: astore_3
+    //   458: aload_1
+    //   459: astore_2
+    //   460: aload_3
+    //   461: astore_1
+    //   462: goto -41 -> 421
+    //   465: astore_0
+    //   466: aload_1
+    //   467: astore_2
+    //   468: aload_3
+    //   469: astore_1
+    //   470: goto -49 -> 421
+    //   473: astore_3
+    //   474: aload_0
+    //   475: astore_2
+    //   476: aload_3
+    //   477: astore_0
+    //   478: goto -57 -> 421
+    //   481: astore_2
+    //   482: aconst_null
+    //   483: astore_0
+    //   484: aconst_null
+    //   485: astore_1
+    //   486: goto -165 -> 321
+    //   489: astore_2
+    //   490: aload_1
+    //   491: astore_0
+    //   492: aconst_null
+    //   493: astore_1
+    //   494: goto -173 -> 321
+    //   497: aconst_null
+    //   498: astore_0
+    //   499: goto -228 -> 271
+    //   502: aconst_null
+    //   503: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	503	0	paramString1	String
-    //   0	503	1	paramString2	String
-    //   114	193	2	localObject1	Object
-    //   315	78	2	localThrowable1	java.lang.Throwable
-    //   417	58	2	str	String
-    //   480	1	2	localThrowable2	java.lang.Throwable
-    //   488	1	2	localThrowable3	java.lang.Throwable
-    //   107	361	3	localBufferedInputStream	java.io.BufferedInputStream
-    //   472	4	3	localObject2	Object
-    //   79	242	4	localFile	File
+    //   0	504	0	paramString1	String
+    //   0	504	1	paramString2	String
+    //   114	194	2	localObject1	Object
+    //   316	78	2	localThrowable1	java.lang.Throwable
+    //   418	58	2	str	String
+    //   481	1	2	localThrowable2	java.lang.Throwable
+    //   489	1	2	localThrowable3	java.lang.Throwable
+    //   107	362	3	localBufferedInputStream	java.io.BufferedInputStream
+    //   473	4	3	localObject2	Object
+    //   79	243	4	localFile	File
     //   163	42	5	localArrayList	ArrayList
-    //   215	93	5	localException	Exception
+    //   215	94	5	localException	Exception
     //   172	13	6	localIterator	Iterator
     //   194	13	7	localArCloudConfigInfo	ArCloudConfigInfo
     // Exception table:
     //   from	to	target	type
     //   151	174	215	java/lang/Exception
     //   174	212	215	java/lang/Exception
-    //   306	312	215	java/lang/Exception
-    //   108	151	315	java/lang/Throwable
-    //   151	174	315	java/lang/Throwable
-    //   174	212	315	java/lang/Throwable
-    //   217	246	315	java/lang/Throwable
-    //   246	250	315	java/lang/Throwable
-    //   306	312	315	java/lang/Throwable
-    //   254	258	379	java/io/IOException
-    //   264	268	387	java/io/IOException
-    //   362	366	397	java/io/IOException
-    //   370	374	405	java/io/IOException
-    //   89	99	415	finally
-    //   424	428	438	java/io/IOException
-    //   432	436	446	java/io/IOException
-    //   99	108	454	finally
-    //   108	151	464	finally
-    //   151	174	464	finally
-    //   174	212	464	finally
-    //   217	246	464	finally
-    //   246	250	464	finally
-    //   306	312	464	finally
-    //   320	358	472	finally
-    //   89	99	480	java/lang/Throwable
-    //   99	108	488	java/lang/Throwable
+    //   307	313	215	java/lang/Exception
+    //   108	151	316	java/lang/Throwable
+    //   151	174	316	java/lang/Throwable
+    //   174	212	316	java/lang/Throwable
+    //   217	247	316	java/lang/Throwable
+    //   247	251	316	java/lang/Throwable
+    //   307	313	316	java/lang/Throwable
+    //   255	259	380	java/io/IOException
+    //   265	269	388	java/io/IOException
+    //   363	367	398	java/io/IOException
+    //   371	375	406	java/io/IOException
+    //   89	99	416	finally
+    //   425	429	439	java/io/IOException
+    //   433	437	447	java/io/IOException
+    //   99	108	455	finally
+    //   108	151	465	finally
+    //   151	174	465	finally
+    //   174	212	465	finally
+    //   217	247	465	finally
+    //   247	251	465	finally
+    //   307	313	465	finally
+    //   321	359	473	finally
+    //   89	99	481	java/lang/Throwable
+    //   99	108	489	java/lang/Throwable
   }
   
   public static ArConfigInfo parseArConfig(String paramString)
@@ -480,7 +480,7 @@ public class ArConfigInfo
           str1 = ((XmlPullParser)localObject1).getName();
           if (str1.equalsIgnoreCase("Begin"))
           {
-            localArConfigInfo.aRBegin = ArConfigUtils.a(((XmlPullParser)localObject1).nextText());
+            localArConfigInfo.aRBegin = aknk.a(((XmlPullParser)localObject1).nextText());
             i = ((XmlPullParser)localObject1).next();
           }
         }
@@ -490,7 +490,7 @@ public class ArConfigInfo
         }
         if (str1.equalsIgnoreCase("End"))
         {
-          localArConfigInfo.aREnd = ArConfigUtils.a(((XmlPullParser)localObject1).nextText());
+          localArConfigInfo.aREnd = aknk.a(((XmlPullParser)localObject1).nextText());
           continue;
           return localObject1;
         }
@@ -995,7 +995,7 @@ public class ArConfigInfo
         if (!((String)localObject2).equalsIgnoreCase("Begin")) {
           break label2237;
         }
-        localArConfigInfo.aRCloudBegin = ArConfigUtils.a(((XmlPullParser)localObject1).nextText());
+        localArConfigInfo.aRCloudBegin = aknk.a(((XmlPullParser)localObject1).nextText());
       }
       label2237:
       while ((i != 3) || (!((XmlPullParser)localObject1).getName().equalsIgnoreCase("Cloud"))) {
@@ -1006,7 +1006,7 @@ public class ArConfigInfo
           break;
           if (((String)localObject2).equalsIgnoreCase("End"))
           {
-            localArConfigInfo.aRCloudEnd = ArConfigUtils.a(((XmlPullParser)localObject1).nextText());
+            localArConfigInfo.aRCloudEnd = aknk.a(((XmlPullParser)localObject1).nextText());
           }
           else
           {
@@ -1070,23 +1070,23 @@ public class ArConfigInfo
     //   1: astore 5
     //   3: iconst_0
     //   4: istore 4
-    //   6: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   6: invokestatic 142	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   9: ifeq +38 -> 47
-    //   12: ldc 14
+    //   12: ldc 15
     //   14: iconst_2
-    //   15: new 115	java/lang/StringBuilder
+    //   15: new 117	java/lang/StringBuilder
     //   18: dup
-    //   19: invokespecial 116	java/lang/StringBuilder:<init>	()V
-    //   22: ldc_w 532
-    //   25: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   19: invokespecial 118	java/lang/StringBuilder:<init>	()V
+    //   22: ldc_w 534
+    //   25: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   28: aload_1
-    //   29: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   32: ldc 169
-    //   34: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   32: ldc 171
+    //   34: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   37: aload_2
-    //   38: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   41: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   44: invokestatic 145	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   38: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   41: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   44: invokestatic 147	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   47: iload 4
     //   49: istore_3
     //   50: aload_0
@@ -1098,110 +1098,110 @@ public class ArConfigInfo
     //   61: iload 4
     //   63: istore_3
     //   64: aload_1
-    //   65: ldc 171
-    //   67: invokevirtual 177	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   65: ldc 173
+    //   67: invokevirtual 179	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   70: ifne +22 -> 92
     //   73: iload 4
     //   75: istore_3
     //   76: aload_2
     //   77: ifnull +15 -> 92
     //   80: aload_2
-    //   81: ldc 171
-    //   83: invokevirtual 177	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   81: ldc 173
+    //   83: invokevirtual 179	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   86: ifeq +8 -> 94
     //   89: iload 4
     //   91: istore_3
     //   92: iload_3
     //   93: ireturn
-    //   94: new 157	java/io/File
+    //   94: new 159	java/io/File
     //   97: dup
     //   98: aload_1
     //   99: aload_2
-    //   100: invokespecial 179	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   100: invokespecial 181	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   103: astore 7
-    //   105: new 157	java/io/File
+    //   105: new 159	java/io/File
     //   108: dup
     //   109: aload_1
-    //   110: new 115	java/lang/StringBuilder
+    //   110: new 117	java/lang/StringBuilder
     //   113: dup
-    //   114: invokespecial 116	java/lang/StringBuilder:<init>	()V
+    //   114: invokespecial 118	java/lang/StringBuilder:<init>	()V
     //   117: aload_2
-    //   118: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   121: ldc_w 534
-    //   124: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   127: invokevirtual 128	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   130: invokespecial 179	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   118: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   121: ldc_w 536
+    //   124: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   127: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   130: invokespecial 181	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   133: astore 8
-    //   135: invokestatic 219	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   135: invokestatic 221	android/os/Parcel:obtain	()Landroid/os/Parcel;
     //   138: astore 6
     //   140: aload 6
     //   142: iconst_0
-    //   143: invokevirtual 227	android/os/Parcel:setDataPosition	(I)V
+    //   143: invokevirtual 229	android/os/Parcel:setDataPosition	(I)V
     //   146: aload_0
     //   147: aload 6
     //   149: iconst_0
-    //   150: invokevirtual 538	com/tencent/mobileqq/ar/aidl/ArConfigInfo:writeToParcel	(Landroid/os/Parcel;I)V
+    //   150: invokevirtual 540	com/tencent/mobileqq/ar/aidl/ArConfigInfo:writeToParcel	(Landroid/os/Parcel;I)V
     //   153: aload 6
-    //   155: invokevirtual 541	android/os/Parcel:marshall	()[B
+    //   155: invokevirtual 543	android/os/Parcel:marshall	()[B
     //   158: astore_0
     //   159: aload 7
-    //   161: invokevirtual 544	java/io/File:getParentFile	()Ljava/io/File;
+    //   161: invokevirtual 546	java/io/File:getParentFile	()Ljava/io/File;
     //   164: astore_1
     //   165: aload_1
-    //   166: invokevirtual 182	java/io/File:exists	()Z
+    //   166: invokevirtual 184	java/io/File:exists	()Z
     //   169: ifne +8 -> 177
     //   172: aload_1
-    //   173: invokevirtual 547	java/io/File:mkdir	()Z
+    //   173: invokevirtual 549	java/io/File:mkdir	()Z
     //   176: pop
     //   177: aload 8
-    //   179: invokevirtual 182	java/io/File:exists	()Z
+    //   179: invokevirtual 184	java/io/File:exists	()Z
     //   182: ifeq +9 -> 191
     //   185: aload 8
-    //   187: invokevirtual 185	java/io/File:delete	()Z
+    //   187: invokevirtual 187	java/io/File:delete	()Z
     //   190: pop
-    //   191: new 549	java/io/FileOutputStream
+    //   191: new 551	java/io/FileOutputStream
     //   194: dup
     //   195: aload 8
-    //   197: invokespecial 550	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   197: invokespecial 552	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   200: astore_2
-    //   201: new 552	java/io/BufferedOutputStream
+    //   201: new 554	java/io/BufferedOutputStream
     //   204: dup
     //   205: aload_2
-    //   206: invokespecial 555	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   206: invokespecial 557	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   209: astore_1
     //   210: aload_1
     //   211: aload_0
-    //   212: invokevirtual 558	java/io/BufferedOutputStream:write	([B)V
+    //   212: invokevirtual 560	java/io/BufferedOutputStream:write	([B)V
     //   215: aload_1
-    //   216: invokevirtual 561	java/io/BufferedOutputStream:flush	()V
+    //   216: invokevirtual 563	java/io/BufferedOutputStream:flush	()V
     //   219: aload 8
     //   221: aload 7
-    //   223: invokestatic 566	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/io/File;Ljava/io/File;)Z
+    //   223: invokestatic 568	bace:b	(Ljava/io/File;Ljava/io/File;)Z
     //   226: istore_3
     //   227: iload_3
     //   228: istore 4
     //   230: aload 6
-    //   232: invokevirtual 257	android/os/Parcel:recycle	()V
+    //   232: invokevirtual 259	android/os/Parcel:recycle	()V
     //   235: aload_1
     //   236: ifnull +7 -> 243
     //   239: aload_1
-    //   240: invokevirtual 567	java/io/BufferedOutputStream:close	()V
+    //   240: invokevirtual 569	java/io/BufferedOutputStream:close	()V
     //   243: iload 4
     //   245: istore_3
     //   246: aload_2
     //   247: ifnull -155 -> 92
     //   250: aload_2
-    //   251: invokevirtual 568	java/io/FileOutputStream:close	()V
+    //   251: invokevirtual 570	java/io/FileOutputStream:close	()V
     //   254: iload 4
     //   256: ireturn
     //   257: astore_0
     //   258: aload_0
-    //   259: invokevirtual 274	java/io/IOException:printStackTrace	()V
+    //   259: invokevirtual 276	java/io/IOException:printStackTrace	()V
     //   262: iload 4
     //   264: ireturn
     //   265: astore_0
     //   266: aload_0
-    //   267: invokevirtual 274	java/io/IOException:printStackTrace	()V
+    //   267: invokevirtual 276	java/io/IOException:printStackTrace	()V
     //   270: goto -27 -> 243
     //   273: astore_2
     //   274: aconst_null
@@ -1209,29 +1209,29 @@ public class ArConfigInfo
     //   276: aload 5
     //   278: astore_0
     //   279: aload_2
-    //   280: invokevirtual 274	java/io/IOException:printStackTrace	()V
+    //   280: invokevirtual 276	java/io/IOException:printStackTrace	()V
     //   283: aload 6
-    //   285: invokevirtual 257	android/os/Parcel:recycle	()V
+    //   285: invokevirtual 259	android/os/Parcel:recycle	()V
     //   288: aload_1
     //   289: ifnull +7 -> 296
     //   292: aload_1
-    //   293: invokevirtual 567	java/io/BufferedOutputStream:close	()V
+    //   293: invokevirtual 569	java/io/BufferedOutputStream:close	()V
     //   296: iload 4
     //   298: istore_3
     //   299: aload_0
     //   300: ifnull -208 -> 92
     //   303: aload_0
-    //   304: invokevirtual 568	java/io/FileOutputStream:close	()V
+    //   304: invokevirtual 570	java/io/FileOutputStream:close	()V
     //   307: iconst_0
     //   308: ireturn
     //   309: astore_0
     //   310: aload_0
-    //   311: invokevirtual 274	java/io/IOException:printStackTrace	()V
+    //   311: invokevirtual 276	java/io/IOException:printStackTrace	()V
     //   314: iconst_0
     //   315: ireturn
     //   316: astore_1
     //   317: aload_1
-    //   318: invokevirtual 274	java/io/IOException:printStackTrace	()V
+    //   318: invokevirtual 276	java/io/IOException:printStackTrace	()V
     //   321: goto -25 -> 296
     //   324: astore_0
     //   325: aconst_null
@@ -1239,24 +1239,24 @@ public class ArConfigInfo
     //   327: aconst_null
     //   328: astore_2
     //   329: aload 6
-    //   331: invokevirtual 257	android/os/Parcel:recycle	()V
+    //   331: invokevirtual 259	android/os/Parcel:recycle	()V
     //   334: aload_1
     //   335: ifnull +7 -> 342
     //   338: aload_1
-    //   339: invokevirtual 567	java/io/BufferedOutputStream:close	()V
+    //   339: invokevirtual 569	java/io/BufferedOutputStream:close	()V
     //   342: aload_2
     //   343: ifnull +7 -> 350
     //   346: aload_2
-    //   347: invokevirtual 568	java/io/FileOutputStream:close	()V
+    //   347: invokevirtual 570	java/io/FileOutputStream:close	()V
     //   350: aload_0
     //   351: athrow
     //   352: astore_1
     //   353: aload_1
-    //   354: invokevirtual 274	java/io/IOException:printStackTrace	()V
+    //   354: invokevirtual 276	java/io/IOException:printStackTrace	()V
     //   357: goto -15 -> 342
     //   360: astore_1
     //   361: aload_1
-    //   362: invokevirtual 274	java/io/IOException:printStackTrace	()V
+    //   362: invokevirtual 276	java/io/IOException:printStackTrace	()V
     //   365: goto -15 -> 350
     //   368: astore_0
     //   369: aconst_null
@@ -1390,7 +1390,7 @@ public class ArConfigInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.aidl.ArConfigInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,49 +1,61 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.widget.WaveView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class amlo
-  implements Handler.Callback
+  extends alzl<amlm>
 {
-  public amlo(WaveView paramWaveView) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public static amlm a()
   {
-    if (paramMessage == null) {
-      return false;
+    return (amlm)alzw.a().a(429);
+  }
+  
+  public int a()
+  {
+    return 429;
+  }
+  
+  @NonNull
+  public amlm a(int paramInt)
+  {
+    return new amlm();
+  }
+  
+  @Nullable
+  public amlm a(alzs[] paramArrayOfalzs)
+  {
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
+      return amlm.a(paramArrayOfalzs);
     }
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.invalidate();
-      WaveView.a(this.a, (WaveView.a(this.a) - WaveView.b(this.a)) % WaveView.c(this.a));
-      WaveView.b(this.a, WaveView.d(this.a) + WaveView.b(this.a));
-      if (WaveView.d(this.a) > 0) {
-        WaveView.b(this.a, WaveView.d(this.a) - WaveView.c(this.a));
-      }
-      WaveView.a(this.a).sendEmptyMessageDelayed(1002, 40L);
-      continue;
-      this.a.invalidate();
-      WaveView.a(this.a, (WaveView.a(this.a) - WaveView.b(this.a)) % WaveView.c(this.a));
-      WaveView.b(this.a, WaveView.d(this.a) + WaveView.b(this.a));
-      if (WaveView.d(this.a) > 0) {
-        WaveView.b(this.a, WaveView.d(this.a) - WaveView.c(this.a));
-      }
-      WaveView.a(this.a).removeMessages(1002);
-      WaveView.a(this.a).sendEmptyMessageDelayed(1002, 40L);
-      continue;
-      WaveView.a(this.a).removeMessages(1001);
-      WaveView.a(this.a).removeMessages(1002);
-    }
+    return null;
+  }
+  
+  public Class<amlm> a()
+  {
+    return amlm.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amlm paramamlm) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amlo
  * JD-Core Version:    0.7.0.1
  */

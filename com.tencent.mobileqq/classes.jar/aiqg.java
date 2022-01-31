@@ -1,27 +1,41 @@
-import android.content.Context;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
 
-public class aiqg
-  extends VideoSprite
+class aiqg
+  implements aijr
 {
-  public aiqg(SpriteVideoView paramSpriteVideoView, SpriteGLView paramSpriteGLView, Context paramContext, boolean paramBoolean)
+  aiqg(aiqf paramaiqf) {}
+  
+  public void a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
   {
-    super(paramSpriteGLView, paramContext, paramBoolean);
+    aiqf localaiqf = this.a;
+    if (aiqf.a(this.a).jdField_b_of_type_Boolean)
+    {
+      paramStartCheckParam = aiqf.a(this.a).e;
+      aiqf.a(localaiqf, paramStartCheckParam);
+      if (!"message".equals(aiqf.a(this.a).f)) {
+        break label101;
+      }
+    }
+    label101:
+    for (int i = 1;; i = 0)
+    {
+      bajr.a(null, "cmshow", "Apollo", "download_confirm", i, 3, new String[] { String.valueOf(aiqf.a(this.a).jdField_b_of_type_Int) });
+      return;
+      paramStartCheckParam = aiqf.a(this.a).d;
+      break;
+    }
   }
   
-  protected void a(int paramInt1, int paramInt2)
+  public void b(CmGameStartChecker.StartCheckParam paramStartCheckParam)
   {
-    if (this.a.a == 0) {
-      this.a.a = paramInt2;
+    if (aiqf.a(this.a) != null) {
+      aiqf.a(this.a).c(-10001, aiqf.a(this.a).jdField_b_of_type_JavaLangString);
     }
-    super.a(paramInt1, this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiqg
  * JD-Core Version:    0.7.0.1
  */

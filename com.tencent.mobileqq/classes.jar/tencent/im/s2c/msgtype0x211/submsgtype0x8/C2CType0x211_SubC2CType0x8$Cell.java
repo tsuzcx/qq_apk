@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class C2CType0x211_SubC2CType0x8$Cell
-  extends MessageMicro
+  extends MessageMicro<Cell>
 {
   public static final int INT32_CELLID_FIELD_NUMBER = 4;
   public static final int INT32_LAC_FIELD_NUMBER = 3;

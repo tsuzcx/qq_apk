@@ -1,23 +1,21 @@
-import android.support.annotation.NonNull;
-import dov.com.qq.im.capture.text.MidNightTextItem;
-import dov.com.qq.im.capture.text.PinYinSpan.OnHanZiToPinYinListener;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class anws
-  implements PinYinSpan.OnHanZiToPinYinListener
+  extends anwq
 {
-  public anws(MidNightTextItem paramMidNightTextItem) {}
+  public String a;
+  public boolean a;
+  public String b;
   
-  @NonNull
-  public String a(@NonNull String paramString)
+  public anws(String paramString1, boolean paramBoolean, String paramString2, String paramString3)
   {
-    return MidNightTextItem.a().matcher(paramString).replaceAll(" ");
+    super(1, paramString1);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString2;
+    this.b = paramString3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anws
  * JD-Core Version:    0.7.0.1
  */

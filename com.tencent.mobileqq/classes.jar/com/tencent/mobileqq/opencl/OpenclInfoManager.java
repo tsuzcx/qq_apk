@@ -1,16 +1,22 @@
 package com.tencent.mobileqq.opencl;
 
-import android.os.Build.VERSION;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import java.io.PrintStream;
 
 public class OpenclInfoManager
 {
+  private static Object jdField_a_of_type_JavaLangObject;
   private static String jdField_a_of_type_JavaLangString = "OpenclInfoManager";
   private static boolean jdField_a_of_type_Boolean;
+  private static String b;
   
   static
   {
+    jdField_a_of_type_JavaLangObject = new Object();
     a();
   }
   
@@ -18,84 +24,32 @@ public class OpenclInfoManager
   {
     try
     {
-      i = Build.VERSION.SDK_INT;
-      if (i < 24) {}
+      System.loadLibrary("oclInfo");
+      jdField_a_of_type_Boolean = true;
+      return;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      for (;;)
-      {
-        try
-        {
-          label15:
-          System.load("/system/lib/egl/libGLES_mali.so");
-          i = 2;
-          bool1 = true;
-          bool2 = false;
-        }
-        catch (UnsatisfiedLinkError localUnsatisfiedLinkError3)
-        {
-          try
-          {
-            System.loadLibrary("OpenCL");
-            i = 0;
-            bool1 = false;
-            bool2 = true;
-          }
-          catch (UnsatisfiedLinkError localUnsatisfiedLinkError4)
-          {
-            try
-            {
-              System.load("/system/vendor/lib/egl/libGLES_mali.so");
-              i = 3;
-              bool1 = true;
-              bool2 = false;
-            }
-            catch (UnsatisfiedLinkError localUnsatisfiedLinkError5)
-            {
-              try
-              {
-                System.loadLibrary("GLES_mali");
-                i = 0;
-                bool1 = true;
-                bool2 = false;
-              }
-              catch (UnsatisfiedLinkError localUnsatisfiedLinkError6)
-              {
-                int i = 0;
-                boolean bool1 = false;
-                boolean bool2 = false;
-              }
-            }
-          }
-        }
-      }
+      System.out.println(localUnsatisfiedLinkError);
     }
-    try
+  }
+  
+  private void a(String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramString.startsWith("err"))) {}
+    do
     {
-      System.loadLibrary("hardware");
-      System.load("/system/vendor/lib/egl/libGLES_mali_v2.so");
-      i = 1;
-      bool1 = true;
-      bool2 = false;
-      QLog.d(jdField_a_of_type_JavaLangString, 1, String.format("loadOclSo[%s], loadMaliSo[%s], maliType[%s]", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), Integer.valueOf(i) }));
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
-    {
-      try
-      {
-        System.loadLibrary("oclInfo");
-        jdField_a_of_type_Boolean = true;
-        return;
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError7)
-      {
-        System.out.println(localUnsatisfiedLinkError7);
-      }
-      localUnsatisfiedLinkError1 = localUnsatisfiedLinkError1;
-      localUnsatisfiedLinkError1.printStackTrace();
-      break label15;
-    }
+      return;
+      SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("qmcf_gpu_config", 4).edit();
+      localEditor.putString("param_ocl_gpuinfo", paramString);
+      localEditor.commit();
+    } while (!QLog.isColorLevel());
+    QLog.i(jdField_a_of_type_JavaLangString, 2, "saveOclGpuInfo:" + paramString);
+  }
+  
+  private String b()
+  {
+    return BaseApplicationImpl.getApplication().getSharedPreferences("qmcf_gpu_config", 4).getString("param_ocl_gpuinfo", "");
   }
   
   private native String nativeGetOclVersion();
@@ -106,25 +60,43 @@ public class OpenclInfoManager
   
   public String a()
   {
-    Object localObject = "";
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (!TextUtils.isEmpty(b))
+      {
+        String str = b;
+        return str;
+      }
+      b = b();
+      boolean bool = TextUtils.isEmpty(b);
+      if (!bool) {}
+    }
     try
     {
-      String str = nativeGetGPUInfo();
-      localObject = str;
+      b = nativeGetGPUInfo();
+      a(b);
+      return b;
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "getGPUInfo exception!", localException);
-      return "";
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "getGPUInfo exception!", localException);
+        }
+      }
+      localObject2 = finally;
+      throw localObject2;
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "getGPUInfo UnsatisfiedLinkError!");
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "getGPUInfo UnsatisfiedLinkError!");
+        }
+      }
     }
-    return localObject;
-    return "";
   }
   
   public native String nativeGetGPUInfo();

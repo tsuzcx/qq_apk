@@ -1,15 +1,30 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class tmt
-  extends FacePreloadBaseAdapter.ViewHolder
+  extends QQUIEventReceiver<tmq, syl>
 {
-  public TextView a;
-  public tmr a;
+  public tmt(@NonNull tmq paramtmq)
+  {
+    super(paramtmq);
+  }
+  
+  public void a(@NonNull tmq paramtmq, @NonNull syl paramsyl)
+  {
+    urk.b("InteractWidgetPageHolder", "receive send vid rate data result event.");
+    if (paramtmq.d()) {
+      paramtmq.a(paramtmq.jdField_a_of_type_Int, paramtmq.b, paramtmq.jdField_a_of_type_Tnz, paramtmq.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return syl.class;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tmt
  * JD-Core Version:    0.7.0.1
  */

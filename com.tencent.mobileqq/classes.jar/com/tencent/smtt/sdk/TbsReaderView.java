@@ -44,14 +44,13 @@ public class TbsReaderView
   static boolean gInitSdk = false;
   public static String gReaderPackName = "";
   public static String gReaderPackVersion = "";
-  ReaderCallback mCallBack = null;
+  TbsReaderView.ReaderCallback mCallBack = null;
   Context mContext = null;
-  ReaderCallback mReaderCallback = null;
+  TbsReaderView.ReaderCallback mReaderCallback = null;
   Object mTbsReader = null;
   ReaderWizard mWizard = null;
   
-  public TbsReaderView(Context paramContext, ReaderCallback paramReaderCallback)
-    throws RuntimeException
+  public TbsReaderView(Context paramContext, TbsReaderView.ReaderCallback paramReaderCallback)
   {
     super(paramContext.getApplicationContext());
     if (!(paramContext instanceof Activity)) {
@@ -59,129 +58,7 @@ public class TbsReaderView
     }
     this.mCallBack = paramReaderCallback;
     this.mContext = paramContext;
-    this.mReaderCallback = new ReaderCallback()
-    {
-      public void onCallBackAction(Integer paramAnonymousInteger, Object paramAnonymousObject1, Object paramAnonymousObject2)
-      {
-        Object localObject3 = null;
-        Object localObject4 = null;
-        Object localObject5 = null;
-        Object localObject2 = null;
-        int i = 0;
-        switch (paramAnonymousInteger.intValue())
-        {
-        }
-        for (;;)
-        {
-          if ((TbsReaderView.this.mCallBack != null) && (i == 0)) {
-            TbsReaderView.this.mCallBack.onCallBackAction(paramAnonymousInteger, paramAnonymousObject1, paramAnonymousObject2);
-          }
-          return;
-          Object localObject1;
-          if (!MttLoader.isBrowserInstalledEx(TbsReaderView.this.mContext))
-          {
-            paramAnonymousInteger = Integer.valueOf(5011);
-            localObject1 = TbsReaderView.getResString(TbsReaderView.this.mContext, 5023);
-            paramAnonymousObject1 = new Bundle();
-            paramAnonymousObject1.putString("tip", (String)localObject1);
-            paramAnonymousObject1.putString("statistics", "AHNG812");
-            paramAnonymousObject1.putInt("channel_id", 10834);
-            TbsReaderView.this.userStatistics("AHNG811");
-          }
-          else
-          {
-            localObject1 = "";
-            if (paramAnonymousObject1 != null)
-            {
-              localObject2 = (Bundle)paramAnonymousObject1;
-              localObject1 = ((Bundle)localObject2).getString("docpath");
-            }
-            QbSdk.startQBForDoc(TbsReaderView.this.mContext, (String)localObject1, 4, 0, "pdf", (Bundle)localObject2);
-            TbsReaderView.this.userStatistics("AHNG813");
-            i = 1;
-            continue;
-            if (!MttLoader.isBrowserInstalledEx(TbsReaderView.this.mContext))
-            {
-              paramAnonymousInteger = Integer.valueOf(5011);
-              localObject1 = TbsReaderView.getResString(TbsReaderView.this.mContext, 5021);
-              paramAnonymousObject1 = new Bundle();
-              paramAnonymousObject1.putString("tip", (String)localObject1);
-              paramAnonymousObject1.putString("statistics", "AHNG808");
-              paramAnonymousObject1.putInt("channel_id", 10833);
-              TbsReaderView.this.userStatistics("AHNG807");
-            }
-            else
-            {
-              localObject1 = "";
-              localObject2 = localObject3;
-              if (paramAnonymousObject1 != null)
-              {
-                localObject2 = (Bundle)paramAnonymousObject1;
-                localObject1 = ((Bundle)localObject2).getString("docpath");
-              }
-              QbSdk.startQBForDoc(TbsReaderView.this.mContext, (String)localObject1, 4, 0, "", (Bundle)localObject2);
-              TbsReaderView.this.userStatistics("AHNG809");
-              i = 1;
-              continue;
-              if (!MttLoader.isBrowserInstalledEx(TbsReaderView.this.mContext))
-              {
-                paramAnonymousInteger = Integer.valueOf(5011);
-                localObject1 = TbsReaderView.getResString(TbsReaderView.this.mContext, 5022);
-                paramAnonymousObject1 = new Bundle();
-                paramAnonymousObject1.putString("tip", (String)localObject1);
-                paramAnonymousObject1.putString("statistics", "AHNG816");
-                paramAnonymousObject1.putInt("channel_id", 10835);
-                TbsReaderView.this.userStatistics("AHNG815");
-              }
-              else
-              {
-                localObject1 = "";
-                localObject2 = localObject4;
-                if (paramAnonymousObject1 != null)
-                {
-                  localObject2 = (Bundle)paramAnonymousObject1;
-                  localObject1 = ((Bundle)localObject2).getString("docpath");
-                }
-                QbSdk.startQBForDoc(TbsReaderView.this.mContext, (String)localObject1, 4, 0, "txt", (Bundle)localObject2);
-                i = 1;
-                continue;
-                if (!MttLoader.isBrowserInstalledEx(TbsReaderView.this.mContext))
-                {
-                  paramAnonymousInteger = Integer.valueOf(5011);
-                  localObject1 = TbsReaderView.getResString(TbsReaderView.this.mContext, 5029);
-                  paramAnonymousObject1 = new Bundle();
-                  paramAnonymousObject1.putString("tip", (String)localObject1);
-                  paramAnonymousObject1.putString("statistics", "AHNG828");
-                  paramAnonymousObject1.putInt("channel_id", 10965);
-                  TbsReaderView.this.userStatistics("AHNG827");
-                }
-                else
-                {
-                  localObject1 = "";
-                  localObject2 = localObject5;
-                  if (paramAnonymousObject1 != null)
-                  {
-                    localObject2 = (Bundle)paramAnonymousObject1;
-                    localObject1 = ((Bundle)localObject2).getString("docpath");
-                  }
-                  QbSdk.startQBForDoc(TbsReaderView.this.mContext, (String)localObject1, 4, 0, "doc", (Bundle)localObject2);
-                  TbsReaderView.this.userStatistics("AHNG829");
-                  i = 1;
-                  continue;
-                  if (paramAnonymousObject1 != null)
-                  {
-                    localObject1 = (Bundle)paramAnonymousObject1;
-                    TbsReaderView.gReaderPackName = ((Bundle)localObject1).getString("name");
-                    TbsReaderView.gReaderPackVersion = ((Bundle)localObject1).getString("version");
-                  }
-                  i = 1;
-                }
-              }
-            }
-          }
-        }
-      }
-    };
+    this.mReaderCallback = new TbsReaderView.1(this);
   }
   
   public static Drawable getResDrawable(Context paramContext, int paramInt)
@@ -357,57 +234,10 @@ public class TbsReaderView
       this.mWizard.userStatistics(this.mTbsReader, paramString);
     }
   }
-  
-  public static abstract interface ReaderCallback
-  {
-    public static final int COPY_SELECT_TEXT = 5003;
-    public static final int GET_BAR_ANIMATING = 5000;
-    public static final int GET_BAR_ISSHOWING = 5024;
-    public static final int HIDDEN_BAR = 5001;
-    public static final int INSTALL_QB = 5011;
-    public static final int NOTIFY_CANDISPLAY = 12;
-    public static final int NOTIFY_ERRORCODE = 19;
-    public static final int READER_OPEN_QQ_FILE_LIST = 5031;
-    public static final int READER_PDF_LIST = 5008;
-    public static final int READER_PLUGIN_ACTIVITY_PAUSE = 5032;
-    public static final int READER_PLUGIN_CANLOAD = 5013;
-    public static final int READER_PLUGIN_COMMAND_FIXSCREEN = 5015;
-    public static final int READER_PLUGIN_COMMAND_PDF_LIST = 5036;
-    public static final int READER_PLUGIN_COMMAND_PPT_PLAYER = 5035;
-    public static final int READER_PLUGIN_COMMAND_ROTATESCREEN = 5018;
-    public static final int READER_PLUGIN_COMMAND_TEXT_FIND = 5038;
-    public static final int READER_PLUGIN_COMMAND_TEXT_FIND_CLEAR = 5041;
-    public static final int READER_PLUGIN_COMMAND_TEXT_FIND_NEXT = 5039;
-    public static final int READER_PLUGIN_COMMAND_TEXT_FIND_PREV = 5040;
-    public static final int READER_PLUGIN_DOWNLOADING = 5014;
-    public static final int READER_PLUGIN_RES_DOC_GUIDE = 5029;
-    public static final int READER_PLUGIN_RES_FIXSCREEN_NORMAL = 5016;
-    public static final int READER_PLUGIN_RES_FIXSCREEN_PRESS = 5017;
-    public static final int READER_PLUGIN_RES_PDF_GUIDE = 5023;
-    public static final int READER_PLUGIN_RES_PPT_GUIDE = 5021;
-    public static final int READER_PLUGIN_RES_ROTATESCREEN_NORMAL = 5019;
-    public static final int READER_PLUGIN_RES_ROTATESCREEN_PRESS = 5020;
-    public static final int READER_PLUGIN_RES_TXT_GUIDE = 5022;
-    public static final int READER_PLUGIN_SO_ERR = 5025;
-    public static final int READER_PLUGIN_SO_INTO_START = 5027;
-    public static final int READER_PLUGIN_SO_PROGRESS = 5028;
-    public static final int READER_PLUGIN_SO_VERSION = 5030;
-    public static final int READER_PLUGIN_STATUS = 5012;
-    public static final int READER_PLUGIN_TEXT_FIND_RESULT = 5042;
-    public static final int READER_PPT_PLAY_MODEL = 5009;
-    public static final int READER_SEARCH_IN_DOCUMENT = 5026;
-    public static final int READER_TOAST = 5005;
-    public static final int READER_TXT_READING_MODEL = 5010;
-    public static final int SEARCH_SELECT_TEXT = 5004;
-    public static final int SHOW_BAR = 5002;
-    public static final int SHOW_DIALOG = 5006;
-    
-    public abstract void onCallBackAction(Integer paramInteger, Object paramObject1, Object paramObject2);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsReaderView
  * JD-Core Version:    0.7.0.1
  */

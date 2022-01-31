@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
+import atmo;
 
 public class BubbleEntity
-  extends Entity
+  extends atmo
 {
   public int bubble_id;
   public long expire;

@@ -1,21 +1,24 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.troop.utils.TroopTopicMgr.DoLikeCallback;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.text.SpannableString;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
+import com.tencent.image.URLDrawable.DownloadListener;
 
-class pbf
-  implements TroopTopicMgr.DoLikeCallback
+public class pbf
+  implements URLDrawable.DownloadListener
 {
-  pbf(paz parampaz, int paramInt1, int paramInt2) {}
+  public pbf(NativeAwesomeCommentView paramNativeAwesomeCommentView, SpannableString paramSpannableString) {}
   
-  public void a(int paramInt, JSONObject paramJSONObject)
+  public void onFileDownloadFailed(int paramInt)
   {
-    paramJSONObject = new Bundle();
-    paramJSONObject.putInt("reqType", this.jdField_a_of_type_Int);
-    paramJSONObject.putInt("seq", this.b);
-    paramJSONObject.putInt("errorCode", paramInt);
-    this.jdField_a_of_type_Paz.a.a(60, paramJSONObject);
+    wop localwop = new wop(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView.getResources().getDrawable(2130842104));
+    this.jdField_a_of_type_AndroidTextSpannableString.setSpan(localwop, 0, 1, 17);
+    NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView).setText(this.jdField_a_of_type_AndroidTextSpannableString);
   }
+  
+  public void onFileDownloadStarted() {}
+  
+  public void onFileDownloadSucceed(long paramLong) {}
 }
 
 

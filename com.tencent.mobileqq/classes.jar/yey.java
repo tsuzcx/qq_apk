@@ -1,19 +1,16 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import cooperation.wadl.ipc.WadlResult;
 
-public class yey
+public abstract interface yey
 {
-  public ImageView a;
-  public TextView a;
-  public String a;
-  boolean jdField_a_of_type_Boolean;
+  public abstract void a(WadlResult paramWadlResult);
   
-  yey(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  public abstract void b(WadlResult paramWadlResult);
+  
+  public abstract void c(WadlResult paramWadlResult);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yey
  * JD-Core Version:    0.7.0.1
  */

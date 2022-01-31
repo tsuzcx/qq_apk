@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class GetMusicListRsp
   extends JceStruct
 {
-  static ArrayList cache_music_list;
-  public ArrayList music_list;
+  static ArrayList<MusicInfo> cache_music_list;
+  public ArrayList<MusicInfo> music_list;
   
   public GetMusicListRsp() {}
   
-  public GetMusicListRsp(ArrayList paramArrayList)
+  public GetMusicListRsp(ArrayList<MusicInfo> paramArrayList)
   {
     this.music_list = paramArrayList;
   }

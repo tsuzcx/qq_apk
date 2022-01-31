@@ -39,9 +39,9 @@ public class QzoneFeedItemTimeLocationView
   
   private void a()
   {
-    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968770, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363699));
-    this.b = ((TextView)findViewById(2131363700));
+    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131493200, this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131300491));
+    this.b = ((TextView)findViewById(2131300561));
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -54,7 +54,7 @@ public class QzoneFeedItemTimeLocationView
         paramInt1 = this.b.getWidth();
       }
       paramInt2 = getWidth();
-      paramInt3 = paramInt2 - (int)(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131560657) + 0.5D) - (int)(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131560658) + 0.5D) - (int)(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131560656) + 0.5D) - paramInt1 - 1;
+      paramInt3 = paramInt2 - (int)(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131165234) + 0.5D) - (int)(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131165235) + 0.5D) - (int)(this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131165233) + 0.5D) - paramInt1 - 1;
       this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(paramInt3);
       if (QLog.isColorLevel()) {
         QLog.d("QzoneFeedItemTimeLocationView", 2, "onLayout change:timeWidth:" + paramInt1 + ",feedLocationTvWidth(max):" + paramInt3 + ",feedLocationLayoutWidth:" + paramInt2);

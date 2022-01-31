@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/b_d" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip">
+            <EditText android:textSize="18.0sp" android:textColor="@color/k" android:id="@id/bpd" android:background="#fff6f7f8" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:hint="@string/rys" android:singleLine="true" android:layout_weight="1.0" android:inputType="number" />
+            <EditText android:textSize="18.0sp" android:textColor="@color/k" android:id="@id/beo" android:background="#fff6f7f8" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/ryp" android:singleLine="true" android:layout_weight="1.0" android:inputType="number" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="10.0dip">
+            <Button android:textColor="@color/al3" android:id="@id/b76" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:text="@string/ryj" android:layout_weight="1.0" style="@style/hs" />
+            <Button android:textColor="@color/al3" android:id="@id/h27" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/rz3" android:layout_weight="1.0" style="@style/hs" />
+        </LinearLayout>
+        <TextView android:textColor="@color/mc" android:id="@id/j8b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="5.0dip" android:text="summary" />
+    </LinearLayout>
+    <ListView android:id="@id/dqb" android:background="@color/al3" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="5.0dip" android:divider="@color/a" android:dividerHeight="5.0dip" />
+</LinearLayout>

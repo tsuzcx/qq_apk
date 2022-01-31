@@ -8,9 +8,9 @@ import java.util.ArrayList;
 public final class CouponMobileFolder
   extends JceStruct
 {
-  static ArrayList cache_coupon_list = new ArrayList();
+  static ArrayList<CouponMobileItem> cache_coupon_list = new ArrayList();
   public int aboutexpire_num;
-  public ArrayList coupon_list;
+  public ArrayList<CouponMobileItem> coupon_list;
   public int coupons_num;
   public int folder_id;
   public String icon_url = "";

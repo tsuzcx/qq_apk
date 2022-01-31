@@ -1,26 +1,26 @@
-import com.tencent.mobileqq.config.struct.NearbyBannerManager;
-import java.io.File;
-import java.util.Comparator;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class acas
-  implements Comparator
+  implements TextWatcher
 {
-  public acas(NearbyBannerManager paramNearbyBannerManager) {}
+  public acas(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (paramFile2.lastModified() > paramFile1.lastModified()) {
-      return 1;
-    }
-    if (paramFile2.lastModified() < paramFile1.lastModified()) {
-      return -1;
-    }
-    return 0;
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.c(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acas
  * JD-Core Version:    0.7.0.1
  */

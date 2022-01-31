@@ -1,31 +1,56 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.qipc.QIPCServerHelper;
-import cooperation.qqpim.QQPimDefineList;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class amyb
-  implements Runnable
 {
-  private amyb(QQPimGetTipsInfoIPC paramQQPimGetTipsInfoIPC) {}
+  public amyc a;
+  public String a;
   
-  public void run()
+  public JSONObject a()
   {
+    JSONObject localJSONObject1 = new JSONObject();
     try
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt(QQPimDefineList.r, 3);
-      QIPCServerHelper.getInstance().callClient(QQPimDefineList.b, QQPimDefineList.c, QQPimDefineList.e, localBundle, new amyc(this));
-      return;
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("user_id", this.jdField_a_of_type_Amyc.jdField_a_of_type_JavaLangString);
+      localJSONObject2.put("source_md5", this.jdField_a_of_type_Amyc.jdField_b_of_type_JavaLangString);
+      localJSONObject2.put("source_url", this.jdField_a_of_type_Amyc.c);
+      localJSONArray = new JSONArray();
+      localIterator = this.jdField_a_of_type_Amyc.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext()) {
+        localJSONArray.put((String)localIterator.next());
+      }
+      localException.put("expose_md5s", localJSONArray);
     }
-    catch (Throwable localThrowable)
+    catch (Exception localException)
     {
-      localThrowable.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.e("DoutuReportData", 2, "convert error:" + localException);
+      }
+      return localJSONObject1;
     }
+    JSONArray localJSONArray = new JSONArray();
+    Iterator localIterator = this.jdField_a_of_type_Amyc.jdField_b_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      localJSONArray.put((String)localIterator.next());
+    }
+    localException.put("expose_urls", localJSONArray);
+    localException.put("click_md5", this.jdField_a_of_type_Amyc.d);
+    localException.put("click_url", this.jdField_a_of_type_Amyc.e);
+    localException.put("aio_type", this.jdField_a_of_type_Amyc.f);
+    localException.put("mobile_type", this.jdField_a_of_type_Amyc.g);
+    localException.put("to_user_id", this.jdField_a_of_type_Amyc.h);
+    localJSONObject1.put("dcId", this.jdField_a_of_type_JavaLangString);
+    localJSONObject1.put("data", localException);
+    return localJSONObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amyb
  * JD-Core Version:    0.7.0.1
  */

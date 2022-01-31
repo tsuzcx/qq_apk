@@ -1,45 +1,64 @@
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.content.Context;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewplugin.QzoneAudioRecordPlugin;
-import cooperation.qzone.webviewplugin.QzoneAudioRecordPlugin.SimpleAACRecorder.RecorderListener;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class ankd
-  implements QzoneAudioRecordPlugin.SimpleAACRecorder.RecorderListener
 {
-  public ankd(QzoneAudioRecordPlugin paramQzoneAudioRecordPlugin) {}
+  private static ankd a;
   
-  public void a() {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, double paramDouble)
+  public static ankd a()
   {
-    paramString = new JSONObject();
-    JSONObject localJSONObject = new JSONObject();
+    if (a == null) {}
     try
     {
-      localJSONObject.put("stopped", 1);
-      localJSONObject.put("errorcode", 0);
-      localJSONObject.put("audioClientKey", QzoneAudioRecordPlugin.a(this.a));
-      this.a.a.dispatchJsEvent("QzoneJSBridgeQzoneAudioPlugin_RecordState", localJSONObject, paramString);
-      return;
+      if (a == null) {
+        a = new ankd();
+      }
+      return a;
     }
-    catch (JSONException paramString)
-    {
-      QLog.w("QzoneVoiceRecordPlugin", 1, "args is null or empty");
-    }
+    finally {}
   }
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public angu a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonPackage paramEmoticonPackage, anhs paramanhs, BaseChatPie paramBaseChatPie, int paramInt4, boolean paramBoolean)
   {
-    QzoneAudioRecordPlugin.a(this.a, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("EmotionPanelListViewAdapterBuilder", 2, "getAdapter panelType = " + paramInt2);
+    }
+    switch (paramInt2)
+    {
+    case 10: 
+    case 11: 
+    default: 
+      return null;
+    case 1: 
+      return new anmd(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramanhs, paramBaseChatPie, paramInt4);
+    case 6: 
+      return new angw(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramanhs, paramBaseChatPie, paramInt4);
+    case 8: 
+      return new anhf(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramanhs, paramInt4);
+    case 7: 
+      return new anji(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramanhs, paramInt4);
+    case 4: 
+      return new ankm(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramanhs, paramBaseChatPie);
+    case 5: 
+      return new ankw(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramanhs);
+    case 3: 
+      return new anlk(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramanhs, paramInt4, paramBoolean);
+    case 2: 
+      return new anlt(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramanhs, paramBaseChatPie, paramInt4);
+    case 9: 
+      return new anlw(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramanhs, paramInt4);
+    case 12: 
+      return new anjg(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonPackage, paramanhs);
+    }
+    return new anhi(paramQQAppInterface, paramContext, paramInt1, paramInt2, paramInt3, paramanhs, paramBaseChatPie);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ankd
  * JD-Core Version:    0.7.0.1
  */

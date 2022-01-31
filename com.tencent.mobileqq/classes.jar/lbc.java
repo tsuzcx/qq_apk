@@ -1,47 +1,52 @@
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Bundle;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-class lbc
-  extends SosoInterface.OnLocationListener
+public class lbc
 {
-  lbc(lbb paramlbb, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString1, String paramString2, boolean paramBoolean5)
+  static String jdField_a_of_type_JavaLangString = "smartdevice::sharp";
+  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
+  lbb jdField_a_of_type_Lbb = null;
+  lbd jdField_a_of_type_Lbd = null;
+  
+  public lbc(lbb paramlbb, VideoAppInterface paramVideoAppInterface)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString1);
+    this.jdField_a_of_type_Lbb = paramlbb;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_Lbd = new lbd(this);
+    paramlbb = new IntentFilter();
+    paramlbb.addAction("SmartDevice_ReceiveSharpMsg");
+    paramlbb.addAction("SmartDevice_ReceiveSharpAckMsg");
+    paramlbb.addAction("SmartDevice_DeviceUnBindRst");
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().registerReceiver(this.jdField_a_of_type_Lbd, paramlbb, "com.tencent.smartdevice.permission.broadcast", null);
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  void a(byte[] paramArrayOfByte, long paramLong)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null)) {}
-    try
-    {
-      if (paramSosoLbsInfo.a != null)
-      {
-        double d1 = paramSosoLbsInfo.a.jdField_a_of_type_Double;
-        double d2 = paramSosoLbsInfo.a.jdField_b_of_type_Double;
-        String str1 = "";
-        if (paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString != null) {
-          str1 = "" + paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString;
-        }
-        String str2 = str1;
-        if (paramSosoLbsInfo.a.jdField_a_of_type_JavaLangString != null) {
-          str2 = str1 + paramSosoLbsInfo.a.jdField_a_of_type_JavaLangString;
-        }
-        this.jdField_a_of_type_Lbb.a.a(true, d1, d2, str2, null, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "send broadcast : smartdevice send sharp msg");
     }
-    catch (Exception paramSosoLbsInfo)
-    {
-      paramSosoLbsInfo.printStackTrace();
-      this.jdField_a_of_type_Lbb.a.a(false, 0.0D, 0.0D, null, null, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("size", paramArrayOfByte.length);
+    localBundle.putLong("uin", paramLong);
+    localBundle.putByteArray("value", paramArrayOfByte);
+    paramArrayOfByte = new Intent();
+    paramArrayOfByte.putExtra("msgData", localBundle);
+    paramArrayOfByte.setAction("SmartDevice_SendSharpMsg");
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().sendBroadcast(paramArrayOfByte, "com.tencent.smartdevice.permission.broadcast");
+  }
+  
+  public void b(byte[] paramArrayOfByte, long paramLong)
+  {
+    a(paramArrayOfByte, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lbc
  * JD-Core Version:    0.7.0.1
  */

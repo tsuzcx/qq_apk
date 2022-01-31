@@ -1,54 +1,19 @@
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.richmedia.conn.LiteTcpConnection;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ahrx
-  extends Handler
+class ahrx
+  implements DialogInterface.OnClickListener
 {
-  public ahrx(LiteTcpConnection paramLiteTcpConnection, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  ahrx(ahrv paramahrv) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (LiteTcpConnection.a(this.a) != null) {
-      LiteTcpConnection.a(this.a).sendEmptyMessage(3);
-    }
-  }
-  
-  public void b()
-  {
-    ahrx localahrx = LiteTcpConnection.a(this.a);
-    if (localahrx != null) {
-      localahrx.sendEmptyMessage(2);
-    }
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 1) {
-      LiteTcpConnection.a(this.a, LiteTcpConnection.a(this.a));
-    }
-    do
-    {
-      return;
-      if (paramMessage.what == 2)
-      {
-        LiteTcpConnection.a(this.a);
-        return;
-      }
-    } while (paramMessage.what != 3);
-    LiteTcpConnection.a(this.a).quit();
-    LiteTcpConnection.a(this.a, null);
-    LiteTcpConnection.a(this.a, null);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahrx
  * JD-Core Version:    0.7.0.1
  */

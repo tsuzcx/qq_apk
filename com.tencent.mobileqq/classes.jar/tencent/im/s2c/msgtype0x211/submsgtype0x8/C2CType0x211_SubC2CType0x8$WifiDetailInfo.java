@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class C2CType0x211_SubC2CType0x8$WifiDetailInfo
-  extends MessageMicro
+  extends MessageMicro<WifiDetailInfo>
 {
   public static final int BOOL_SELF_ESTABLISH_FIELD_NUMBER = 1;
   public static final int STR_MAC_FIELD_NUMBER = 3;

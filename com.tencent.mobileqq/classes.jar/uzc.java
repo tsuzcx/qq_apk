@@ -1,17 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.ArkAppBabyQItemBubbleBuilder;
+import android.support.annotation.Nullable;
 
-public class uzc
-  implements DialogInterface.OnClickListener
+class uzc
+  extends uzl
 {
-  public uzc(ArkAppBabyQItemBubbleBuilder paramArkAppBabyQItemBubbleBuilder) {}
+  uzc(uyz paramuyz, uyy paramuyy)
+  {
+    super(paramuyy);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  protected void a(@Nullable uyy arg1)
+  {
+    super.onResult(???);
+    urk.b("DoodleEmojiManager", "startDownload again");
+    synchronized (this.a.jdField_a_of_type_JavaLangObject)
+    {
+      this.a.jdField_a_of_type_Uyy = null;
+      this.a.c();
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uzc
  * JD-Core Version:    0.7.0.1
  */

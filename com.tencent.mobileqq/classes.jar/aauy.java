@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aauy
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   aauy(aaux paramaaux) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    aauz localaauz = new aauz(this);
-    this.a.a.jdField_a_of_type_Aauq.a.a.a(localaauz, this.a.a.jdField_a_of_type_Long);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aauy
  * JD-Core Version:    0.7.0.1
  */

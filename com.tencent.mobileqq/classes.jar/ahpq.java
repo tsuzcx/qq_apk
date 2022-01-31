@@ -1,21 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
+import android.support.annotation.Nullable;
+import android.view.View;
 
-public class ahpq
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface ahpq
 {
-  public ahpq(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
+  public abstract int a();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    CameraCaptureButtonLayout.a(this.a, f);
-  }
+  public abstract void a();
+  
+  public abstract void a(@Nullable ahpo paramahpo);
+  
+  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract boolean a();
+  
+  public abstract int b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahpq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,23 @@
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.utils.QQUtils;
-import java.util.HashMap;
-import java.util.Map;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class ackk
-  implements Runnable
+public abstract class ackk
+  implements ackm
 {
-  ackk(acjg paramacjg, String paramString1, String paramString2, QQAppInterface paramQQAppInterface, String paramString3, String paramString4, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public static final boolean e = AppSetting.c;
+  public int b;
   
-  public void run()
-  {
-    Bitmap localBitmap = QQUtils.a(this.jdField_a_of_type_JavaLangString, this.b, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
-    Bundle localBundle = new Bundle();
-    if (localBitmap != null)
-    {
-      Object localObject = new HashMap();
-      ((Map)localObject).put("starHomeUrl", this.c);
-      ((Map)localObject).put("nickname", this.d);
-      ((Map)localObject).put("starId", this.b);
-      localObject = QQUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sid", (Map)localObject);
-      QQUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Intent)localObject, this.d, localBitmap);
-      localBundle.putInt("ret", 0);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      localBundle.putInt("ret", -4);
-    }
-  }
+  public abstract View a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, View paramView, ViewGroup paramViewGroup, acmv paramacmv);
+  
+  public abstract void a();
+  
+  public abstract void a(View paramView, ChatMessage paramChatMessage, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ackk
  * JD-Core Version:    0.7.0.1
  */

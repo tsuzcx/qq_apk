@@ -1,22 +1,27 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class stj
-  implements Runnable
+  implements ajgy
 {
-  stj(sti paramsti) {}
+  stj(stg paramstg) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    if (this.a.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView != null) {
-      this.a.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.g(this.a.a.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface)) {}
+    for (localObject = (QQAppInterface)localObject;; localObject = null)
+    {
+      if (localObject != null) {
+        ((sfz)((QQAppInterface)localObject).a(98)).notifyUI(1023, true, Boolean.valueOf(paramBoolean));
+      }
+      return;
     }
-    this.a.a.a.a(2131435803, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     stj
  * JD-Core Version:    0.7.0.1
  */

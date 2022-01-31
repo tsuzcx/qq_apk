@@ -1,88 +1,91 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.QQOperateTips;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.ConversationFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.config.operation.QQOperateManager;
-import com.tencent.mobileqq.config.operation.QQOperationRequestInfo;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.os.Message;
+import android.text.TextUtils;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.FrameLayout;
+import android.widget.SeekBar;
+import com.tencent.biz.tribe.TribeVideoPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
 
 public class wil
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public wil(QQOperateTips paramQQOperateTips) {}
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<TribeVideoPlugin> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void run()
+  public wil(TribeVideoPlugin paramTribeVideoPlugin, String paramString)
   {
-    Object localObject1 = QQOperateTips.a(this.a).a().a(QQOperateTips.a(this.a).jdField_a_of_type_JavaLangString, QQOperateTips.a(this.a).jdField_a_of_type_Int);
-    int j = ((List)localObject1).size();
-    Object localObject2;
-    int i;
-    if ((localObject1 != null) && (j > 0))
-    {
-      localObject2 = (ChatMessage)((List)localObject1).get(j - 1);
-      if (localObject2 != null)
-      {
-        if (QQOperateTips.a(this.a).jdField_a_of_type_Int != 0) {
-          break label333;
-        }
-        QQOperateTips.a(this.a, ((ChatMessage)localObject2).time);
-        QQOperateTips.b(this.a, ((ChatMessage)localObject2).uniseq);
-      }
-      if (QQOperateTips.a(this.a).a().a(QQOperateTips.a(this.a).jdField_a_of_type_JavaLangString, QQOperateTips.a(this.a).jdField_a_of_type_Int) <= 0) {
-        break label365;
-      }
-      i = 1;
-      label145:
-      if (i != 0) {
-        i = j;
-      }
-    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramTribeVideoPlugin);
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    paramView = (TribeVideoPlugin)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((paramView == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!TribeVideoPlugin.a(paramView).containsKey(this.jdField_a_of_type_JavaLangString))) {}
     for (;;)
     {
-      if (i > 0)
+      return false;
+      Object localObject1 = wim.a((wim)TribeVideoPlugin.a(paramView).get(this.jdField_a_of_type_JavaLangString));
+      if ((localObject1 != null) && (wik.a((wik)localObject1) == 2))
       {
-        localObject2 = (ChatMessage)((List)localObject1).get(i - 1);
-        if ((localObject2 == null) || (!((ChatMessage)localObject2).isread)) {}
-      }
-      else
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("QQOperateVoIP", 4, " from aio open .. unreadMsg index = " + QQOperateTips.a(this.a));
-        }
-        localObject2 = QQOperateManager.a(QQOperateTips.a(this.a));
-        if (localObject2 != null)
+        switch (paramMotionEvent.getAction())
         {
-          localObject1 = ((QQOperateManager)localObject2).a(QQOperateTips.a(this.a).jdField_a_of_type_JavaLangString, QQOperateTips.a(this.a).jdField_a_of_type_Int, QQOperateTips.a(this.a), (List)localObject1, true, QQOperateTips.a(this.a));
-          if (((QQOperationRequestInfo)localObject1).jdField_a_of_type_Boolean)
+        case 2: 
+        default: 
+          return false;
+        case 0: 
+          TribeVideoPlugin.a(paramView).x = ((int)paramMotionEvent.getRawX());
+          TribeVideoPlugin.a(paramView).y = ((int)paramMotionEvent.getRawY());
+          return false;
+        }
+        TribeVideoPlugin.b(paramView).x = ((int)paramMotionEvent.getRawX());
+        TribeVideoPlugin.b(paramView).y = ((int)paramMotionEvent.getRawY());
+        if ((Math.abs(TribeVideoPlugin.a(paramView).y - TribeVideoPlugin.b(paramView).y) < 8) && (Math.abs(TribeVideoPlugin.a(paramView).x - TribeVideoPlugin.b(paramView).x) < 8))
+        {
+          paramMotionEvent = new Rect();
+          localObject1 = TribeVideoPlugin.a(paramView).keySet().iterator();
+          while (((Iterator)localObject1).hasNext())
           {
-            localObject1 = ((QQOperationRequestInfo)localObject1).jdField_a_of_type_JavaUtilArrayList;
-            ((QQOperateManager)localObject2).a(QQOperateTips.a(this.a).jdField_a_of_type_JavaLangString, QQOperateTips.a(this.a).jdField_a_of_type_Int, (ArrayList)localObject1, QQOperateTips.a(this.a));
+            String str = (String)((Iterator)localObject1).next();
+            Object localObject2 = wim.a((wim)TribeVideoPlugin.a(paramView).get(str));
+            SeekBar localSeekBar = wik.a(wim.a((wim)TribeVideoPlugin.a(paramView).get(str)));
+            ((FrameLayout)localObject2).getGlobalVisibleRect(paramMotionEvent);
+            if ((paramMotionEvent.contains(TribeVideoPlugin.a(paramView).x, TribeVideoPlugin.a(paramView).y)) && (paramMotionEvent.contains(TribeVideoPlugin.b(paramView).x, TribeVideoPlugin.b(paramView).y)))
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("TribeVideoPlugin", 2, "videoplayer section clicked");
+              }
+              if (localSeekBar.getVisibility() == 4)
+              {
+                TribeVideoPlugin.a(paramView).removeMessages(2, str);
+                TribeVideoPlugin.a(paramView, str, true);
+                localObject2 = TribeVideoPlugin.a(paramView).obtainMessage();
+                ((Message)localObject2).obj = str;
+                ((Message)localObject2).what = 2;
+                TribeVideoPlugin.a(paramView).sendMessageDelayed((Message)localObject2, 3000L);
+              }
+              else
+              {
+                TribeVideoPlugin.a(paramView, str, false);
+              }
+            }
           }
         }
-        QQOperateTips.a(this.a, -1);
-        return;
-        label333:
-        if (QQOperateTips.a(this.a).jdField_a_of_type_Int != 3000) {
-          break;
-        }
-        QQOperateTips.a(this.a, ((ChatMessage)localObject2).shmsgseq);
-        break;
-        label365:
-        i = 0;
-        break label145;
       }
-      QQOperateTips.a(this.a, i - 1);
-      i -= 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wil
  * JD-Core Version:    0.7.0.1
  */

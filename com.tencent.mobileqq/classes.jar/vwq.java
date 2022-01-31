@@ -1,49 +1,24 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.EqqDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
+import com.tencent.biz.subscribe.event.RecommendFeedbackEvent;
 
 public class vwq
-  implements BusinessObserver
+  implements web
 {
-  public vwq(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
+  public vwq(RecommendBannerFeedItemView paramRecommendBannerFeedItemView) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessChatPie", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse;
     if (paramBoolean)
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null) {
-        localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
-      }
-    }
-    try
-    {
-      localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
-      if (((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0)
-      {
-        paramBundle = new EqqDetail(localGetEqqAccountDetailInfoResponse);
-        ThreadManager.getFileThreadHandler().post(new vwr(this, paramBundle));
-      }
+      wcj.a().a(new RecommendFeedbackEvent(RecommendBannerFeedItemView.a(this.a)));
       return;
     }
-    catch (InvalidProtocolBufferMicroException paramBundle) {}
+    bbmy.a(this.a.getContext(), 2131654056, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vwq
  * JD-Core Version:    0.7.0.1
  */

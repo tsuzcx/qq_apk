@@ -1,23 +1,35 @@
-import com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnErrorListener;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
-
 public class aofh
-  implements IMediaPlayer.OnErrorListener
 {
-  public aofh(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
+  public int a;
+  public long a;
+  public String a;
+  public short a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public String b = "";
+  public short b;
+  public byte[] b;
+  public int c;
+  public long c;
+  public String c;
+  public byte[] c;
+  public int d;
+  public String d = "";
+  public byte[] d;
+  public String e = "";
   
-  public boolean a(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public aofh(aofe paramaofe)
   {
-    LocalVideoSelectActivity.a(this.a).a();
-    LocalVideoSelectActivity.a(this.a).a(true);
-    return true;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_c_of_type_JavaLangString = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aofh
  * JD-Core Version:    0.7.0.1
  */

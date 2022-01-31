@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.freshnews.feed;
 
+import aciy;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -8,10 +9,12 @@ import android.util.DisplayMetrics;
 import android.util.Pair;
 import android.view.Display;
 import android.view.WindowManager;
+import apqm;
+import axsk;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.transfile.NearbyImgDownloader;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -22,16 +25,16 @@ public class NearbyImgLoader
   private static NearbyImgLoader jdField_a_of_type_ComTencentMobileqqFreshnewsFeedNearbyImgLoader = new NearbyImgLoader();
   public static int b;
   public static int c;
-  NearbyImgDownloader jdField_a_of_type_ComTencentMobileqqTransfileNearbyImgDownloader = new NearbyImgDownloader();
-  ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  public List a;
+  axsk jdField_a_of_type_Axsk = new axsk();
+  ArrayList<apqm> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public List<URL> a;
   AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger();
   
   static
   {
     BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
     int i = ((WindowManager)localBaseApplication.getSystemService("window")).getDefaultDisplay().getWidth();
-    b = (i - AIOUtils.a(2.0F, localBaseApplication.getResources())) / 2;
+    b = (i - aciy.a(2.0F, localBaseApplication.getResources())) / 2;
     jdField_a_of_type_Int = i;
     c = localBaseApplication.getResources().getDisplayMetrics().densityDpi;
   }
@@ -46,7 +49,7 @@ public class NearbyImgLoader
     return jdField_a_of_type_ComTencentMobileqqFreshnewsFeedNearbyImgLoader;
   }
   
-  public Pair a(String paramString, Bitmap paramBitmap, int paramInt)
+  public Pair<Bitmap, Boolean> a(String paramString, Bitmap paramBitmap, int paramInt)
   {
     if (paramBitmap == null) {
       return null;
@@ -262,7 +265,48 @@ public class NearbyImgLoader
     }
   }
   
-  public void a()
+  void a()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() < 4) {}
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilList)
+      {
+        if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {
+          break label113;
+        }
+        URL localURL = (URL)this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
+        if (localURL != null)
+        {
+          ThreadManager.post(new NearbyImgLoader.RequestLoadedImgTask(this, localURL), 8, null, true);
+          return;
+        }
+      }
+      synchronized (this.jdField_a_of_type_JavaUtilList)
+      {
+        if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
+          a();
+        }
+        return;
+      }
+      label113:
+      ??? = null;
+    }
+  }
+  
+  public void a(URL paramURL)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      if (!this.jdField_a_of_type_JavaUtilList.contains(paramURL)) {
+        this.jdField_a_of_type_JavaUtilList.add(paramURL);
+      }
+      a();
+      return;
+    }
+  }
+  
+  public void b()
   {
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {

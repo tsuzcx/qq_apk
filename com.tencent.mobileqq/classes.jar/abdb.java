@@ -1,36 +1,20 @@
-import com.tencent.mobileqq.ark.ArkMediaPlayer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.MainFragment;
 
 public class abdb
-  implements Runnable
+  implements View.OnClickListener
 {
-  public abdb(ArkMediaPlayer paramArkMediaPlayer) {}
+  public abdb(MainFragment paramMainFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (ArkMediaPlayer.a(this.a)) {
-      return;
-    }
-    ArkMediaPlayer.a(this.a, true);
-    if (ArkMediaPlayer.a(this.a) == ArkMediaPlayer.b(this.a)) {
-      this.a.Play();
-    }
-    for (;;)
-    {
-      ArkMediaPlayer.a(this.a, ArkMediaPlayer.f(this.a));
-      return;
-      if (ArkMediaPlayer.a(this.a) == ArkMediaPlayer.c(this.a)) {
-        this.a.Stop();
-      } else if (ArkMediaPlayer.a(this.a) == ArkMediaPlayer.d(this.a)) {
-        this.a.Resume();
-      } else if (ArkMediaPlayer.a(this.a) == ArkMediaPlayer.e(this.a)) {
-        this.a.Pause();
-      }
-    }
+    this.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abdb
  * JD-Core Version:    0.7.0.1
  */

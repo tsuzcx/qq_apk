@@ -1,24 +1,29 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
 
-class pbd
-  implements Runnable
+public class pbd
+  extends ClickableSpan
 {
-  pbd(paz parampaz, int paramInt) {}
+  public pbd(NativeAwesomeCommentView paramNativeAwesomeCommentView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject = this.jdField_a_of_type_Paz.a.getBaseContext().getSharedPreferences("sp_public_account_with_cuin_" + BaseApplicationImpl.getApplication().getRuntime().getAccount(), 0);
-    if (localObject != null)
+    if (NativeAwesomeCommentView.a(this.a) != null)
     {
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putInt("browser_font_size_index", this.jdField_a_of_type_Int);
-      ((SharedPreferences.Editor)localObject).commit();
+      long l = NativeAwesomeCommentView.a(this.a).a;
+      NativeAwesomeCommentView.a(this.a, true);
+      nvx.a(l + "", this.a.getContext());
     }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#4D7CAF"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 

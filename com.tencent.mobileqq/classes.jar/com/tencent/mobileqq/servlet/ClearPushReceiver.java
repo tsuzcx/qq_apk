@@ -3,9 +3,10 @@ package com.tencent.mobileqq.servlet;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import awcz;
+import awrn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.report.lp.LpReportInfo_dc00420;
 import java.util.HashMap;
@@ -26,7 +27,7 @@ public class ClearPushReceiver
     localHashMap.put("actiontype", "4");
     localHashMap.put("pushstatkey", paramString);
     localHashMap.put("mergenum", paramInt + "");
-    StatisticCollector.a(BaseApplicationImpl.getContext()).a(paramQQAppInterface.getAccount(), "actQZPushDataReport", true, 0L, 0L, localHashMap, null);
+    awrn.a(BaseApplicationImpl.getContext()).a(paramQQAppInterface.getAccount(), "actQZPushDataReport", true, 0L, 0L, localHashMap, null);
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -44,7 +45,7 @@ public class ClearPushReceiver
     int j = paramIntent.getIntExtra("pushtype", 0);
     if ((j == 1) || (j == 300))
     {
-      paramIntent = (QZoneManagerImp)((QQAppInterface)localObject).getManager(9);
+      paramIntent = (awcz)((QQAppInterface)localObject).getManager(10);
       if (paramIntent != null) {
         paramIntent.a(1, 0);
       }

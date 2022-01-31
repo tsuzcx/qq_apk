@@ -3,11 +3,11 @@ package dov.com.qq.im.capture.data;
 public class TransitionCategoryItem
   extends QIMFilterCategoryItem
 {
-  public String h;
-  public String i;
   public String j;
   public String k;
   public String l;
+  public String m;
+  public String n;
 }
 
 

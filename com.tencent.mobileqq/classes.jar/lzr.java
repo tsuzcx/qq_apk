@@ -1,47 +1,55 @@
-import android.text.TextPaint;
-import android.widget.Button;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule.Ox978RespCallBack;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.FeedsInfoUser;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
-import mqq.app.AppRuntime;
 
 public class lzr
-  implements UserOperationModule.Ox978RespCallBack
+  implements DialogInterface.OnClickListener
 {
-  public lzr(ComponentHeaderUgc paramComponentHeaderUgc, AppRuntime paramAppRuntime, ArticleInfo paramArticleInfo) {}
+  int jdField_a_of_type_Int;
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public lzr(VideoInviteActivity paramVideoInviteActivity, int paramInt)
   {
-    QLog.d("ComponentHeaderUgc", 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
-    if ((paramBoolean) && (paramInt == 2))
-    {
-      ReadInJoyHelper.d(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.h = paramInt;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.setEnabled(false);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.setText("已关注");
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.getPaint().setFakeBoldText(false);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.h = 2;
-      ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
-      ReadInJoyLogicEngine.a().b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.a, paramInt);
-      ReadInJoyLogicEngineEventDispatcher.a().b();
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.setEnabled(true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.setText("关注");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.a.getPaint().setFakeBoldText(true);
-    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderUgc.getContext(), "关注失败", 0).a();
+    long l = AudioHelper.b();
+    QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_a_of_type_JavaLangString, 1, "onClick, seq[" + l + "]");
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      return;
+    case 0: 
+      paramDialogInterface.dismiss();
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().m();
+      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().l()) {
+        this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().h(false);
+      }
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.d = true;
+      paramDialogInterface = this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a();
+      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.b) {}
+      for (paramInt = 1;; paramInt = 2)
+      {
+        paramDialogInterface.a(l, paramInt, false, true);
+        this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.e();
+        return;
+      }
+    }
+    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a(l, true);
+    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lzr
  * JD-Core Version:    0.7.0.1
  */

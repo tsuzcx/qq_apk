@@ -1,19 +1,14 @@
-import cooperation.comic.ui.QQComicTabBarView;
-import cooperation.comic.utils.QQComicRedTouchManager.PluginRedTouchObserver;
-
 public class amrn
-  extends QQComicRedTouchManager.PluginRedTouchObserver
+  implements Thread.UncaughtExceptionHandler
 {
-  public amrn(QQComicTabBarView paramQQComicTabBarView) {}
-  
-  public void a()
+  public void uncaughtException(Thread paramThread, Throwable paramThrowable)
   {
-    this.a.a();
+    amrq.a("DanmakuManager", "danmaku crash thread:" + paramThread.getName(), paramThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amrn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.biz.qqstory.shareGroup.infocard.view;
 
+import aciy;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -18,7 +19,6 @@ import android.util.AttributeSet;
 import android.widget.ImageView.ScaleType;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class CircleImageView
@@ -138,7 +138,7 @@ public class CircleImageView
       return;
     }
     if (this.jdField_b_of_type_Int == -1) {
-      this.jdField_b_of_type_Int = AIOUtils.a(1.0F, getContext().getResources());
+      this.jdField_b_of_type_Int = aciy.a(1.0F, getContext().getResources());
     }
     this.jdField_a_of_type_AndroidGraphicsBitmapShader = new BitmapShader(this.jdField_a_of_type_AndroidGraphicsBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
@@ -235,7 +235,7 @@ public class CircleImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.infocard.view.CircleImageView
  * JD-Core Version:    0.7.0.1
  */

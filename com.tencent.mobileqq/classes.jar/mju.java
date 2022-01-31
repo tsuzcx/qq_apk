@@ -1,104 +1,116 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.media.AudioManager;
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.text.TextUtils;
+import com.tencent.mobileqq.highway.api.ITransactionCallback;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.CommFileExtRsp;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import java.util.HashMap;
 
-public class mju
-  extends BroadcastReceiver
+class mju
+  implements ITransactionCallback
 {
-  private mju(VideoVolumeControl paramVideoVolumeControl) {}
+  long jdField_a_of_type_Long = 0L;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  mju(mjt parammjt, String paramString, long paramLong, byte[] paramArrayOfByte, mjv parammjv) {}
+  
+  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
   {
-    if ((BaseApplicationImpl.getApplication().getRuntime().isBackground_Stop) || (BaseApplicationImpl.getApplication().getRuntime().isBackground_Pause)) {}
-    label24:
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            break label24;
-            break label24;
-            do
-            {
-              return;
-            } while (VideoVolumeControl.b(this.a));
-            if (VideoVolumeControl.c(this.a))
-            {
-              VideoVolumeControl.b(this.a, false);
-              return;
-            }
-            if (VideoVolumeControl.a(this.a) != null) {
-              break;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "VolumeReceiver onReceive null");
-          return;
-        } while (!VideoVolumeControl.d(this.a));
-        if (!VideoVolumeControl.e(this.a)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "dynamicPauseReceive true");
-      return;
-      int i;
-      try
-      {
-        if (!paramIntent.getAction().equals("android.media.VOLUME_CHANGED_ACTION")) {
-          continue;
-        }
-        i = VideoVolumeControl.a(this.a).getStreamVolume(3);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "volume change:" + i);
-        }
-        if (VideoVolumeControl.f(this.a))
-        {
-          QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "volume change shield ");
-          return;
-        }
-      }
-      catch (Exception paramContext)
-      {
-        QLog.d("Q.readinjoy.video.VideoVolumeControl", 1, "VolumeReceiver", paramContext);
-        return;
-      }
-      if (i == 0)
-      {
-        this.a.a(true, "system volume 0", VideoVolumeControl.a(this.a));
-        return;
-      }
-      this.a.a(false, "system volume change", VideoVolumeControl.a(this.a));
-      return;
-    } while (!paramIntent.getAction().equals("android.intent.action.HEADSET_PLUG"));
-    boolean bool = VideoVolumeControl.a(this.a).isWiredHeadsetOn();
-    if (VideoVolumeControl.g(this.a))
-    {
-      VideoVolumeControl.c(this.a, false);
-      return;
-    }
-    VideoVolumeControl.d(this.a, true);
-    if (bool) {
-      this.a.a(false, "headset on", VideoVolumeControl.a(this.a));
+    QLog.w(this.jdField_a_of_type_Mjt.jdField_a_of_type_JavaLangString, 1, "onFailed, sessionId[" + this.jdField_a_of_type_JavaLangString + "], retCode[" + paramInt + "]");
+    paramArrayOfByte = bach.a(this.jdField_a_of_type_ArrayOfByte);
+    this.jdField_a_of_type_Mjv.a(paramInt, this.jdField_a_of_type_JavaLangString, "", paramArrayOfByte);
+  }
+  
+  public void onSuccess(byte[] paramArrayOfByte, HashMap<String, String> paramHashMap)
+  {
+    String str2 = "";
+    String str1;
+    if (paramArrayOfByte != null) {
+      str1 = str2;
     }
     for (;;)
     {
-      VideoVolumeControl.a(this.a).postDelayed(new mjv(this), 200L);
-      return;
-      this.a.a(true, "headset off", VideoVolumeControl.a(this.a));
+      int i;
+      try
+      {
+        localObject2 = new Bdh_extinfo.CommFileExtRsp();
+        str1 = str2;
+        ((Bdh_extinfo.CommFileExtRsp)localObject2).mergeFrom(paramArrayOfByte);
+        str1 = str2;
+        str2 = ((Bdh_extinfo.CommFileExtRsp)localObject2).bytes_download_url.get().toStringUtf8();
+        str1 = str2;
+        boolean bool = TextUtils.isEmpty(str2);
+        if (!bool) {
+          continue;
+        }
+        i = -10010;
+        str1 = str2;
+      }
+      catch (Exception localException2)
+      {
+        Object localObject2;
+        StringBuilder localStringBuilder;
+        i = -10012;
+        continue;
+        paramArrayOfByte = null;
+        continue;
+      }
+      str2 = bach.a(this.jdField_a_of_type_ArrayOfByte);
+      localObject2 = this.jdField_a_of_type_Mjt.jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder().append("onSuccess, sessionId[").append(this.jdField_a_of_type_JavaLangString).append("], respData[");
+      Object localObject1;
+      if (paramArrayOfByte != null)
+      {
+        paramArrayOfByte = Integer.valueOf(paramArrayOfByte.length);
+        QLog.w((String)localObject2, 1, paramArrayOfByte + "], retCode[" + i + "], md5[" + str2 + "], url[" + str1 + "]");
+        AudioHelper.a(this.jdField_a_of_type_Mjt.jdField_a_of_type_JavaLangString, paramHashMap, false);
+        this.jdField_a_of_type_Mjv.a(i, this.jdField_a_of_type_JavaLangString, str1, str2);
+        return;
+        try
+        {
+          if (QLog.isDevelopLevel()) {
+            QLog.w(this.jdField_a_of_type_Mjt.jdField_a_of_type_JavaLangString, 1, "onSuccess, sessionId[" + this.jdField_a_of_type_JavaLangString + "], 原始url[" + str2 + "]");
+          }
+          str1 = befm.a(str2);
+          i = 0;
+        }
+        catch (Exception localException1)
+        {
+          i = -10011;
+          localObject1 = str2;
+        }
+      }
+      else
+      {
+        i = 0;
+        localObject1 = localException2;
+      }
+    }
+  }
+  
+  public void onSwitch2BackupChannel() {}
+  
+  public void onTransStart()
+  {
+    QLog.w(this.jdField_a_of_type_Mjt.jdField_a_of_type_JavaLangString, 1, "onTransStart, sessionId[" + this.jdField_a_of_type_JavaLangString + "]");
+  }
+  
+  public void onUpdateProgress(int paramInt)
+  {
+    if (QLog.isColorLevel())
+    {
+      long l = System.currentTimeMillis();
+      if (this.jdField_a_of_type_Long < l)
+      {
+        QLog.w(this.jdField_a_of_type_Mjt.jdField_a_of_type_JavaLangString, 1, "onUpdateProgress, sessionId[" + this.jdField_a_of_type_JavaLangString + "], transferedSize[" + paramInt + "], totalSize[" + this.b + "]");
+        this.jdField_a_of_type_Long = (l + 2000L);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mju
  * JD-Core Version:    0.7.0.1
  */

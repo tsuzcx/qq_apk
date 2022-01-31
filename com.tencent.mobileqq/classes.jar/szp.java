@@ -1,51 +1,62 @@
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.emosm.view.DragSortListView.RemoveListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetBatchFeedFeature;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBatchFeedFeature;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.Iterator;
 import java.util.List;
 
 public class szp
-  implements DragSortListView.RemoveListener
+  extends slz<tbm>
 {
-  public szp(GroupManagerActivity paramGroupManagerActivity) {}
+  public static final String a;
+  public List<String> a;
   
-  public void a(int paramInt)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "RemoveListener which = " + paramInt);
-    }
-    paramInt -= 1;
-    byte b;
-    if ((paramInt >= 0) && (paramInt < this.a.a.size()))
+    jdField_a_of_type_JavaLangString = skt.a("StorySvc.feed_feature_775");
+  }
+  
+  public String a()
+  {
+    return jdField_a_of_type_JavaLangString;
+  }
+  
+  public slu a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetBatchFeedFeature localRspGetBatchFeedFeature = new qqstory_service.RspGetBatchFeedFeature();
+    try
     {
-      Object localObject = (Groups)this.a.a.get(paramInt);
-      b = (byte)((Groups)localObject).group_id;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("GroupManagerActivity", 2, "RemoveListener remove groupId :" + b);
-        QLog.d("GroupManagerActivity", 2, "RemoveListener remove friend_count :" + ((Groups)localObject).group_friend_count);
-      }
-      if (b == 0)
-      {
-        localObject = new QQToast(this.a);
-        ((QQToast)localObject).d(2000);
-        ((QQToast)localObject).c(2131436536);
-        ((QQToast)localObject).a();
-      }
+      localRspGetBatchFeedFeature.mergeFrom(paramArrayOfByte);
+      return new tbm(localRspGetBatchFeedFeature);
     }
-    else
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      return;
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+      }
     }
-    GroupManagerActivity.a(this.a, b);
-    ReportController.b(this.a.app, "CliOper", "", "", "category", "Delete_category", 0, 0, "", "", "", "");
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetBatchFeedFeature localReqGetBatchFeedFeature = new qqstory_service.ReqGetBatchFeedFeature();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      if (!TextUtils.isEmpty(str)) {
+        localReqGetBatchFeedFeature.feed_id_list.add(ByteStringMicro.copyFromUtf8(str));
+      }
+    }
+    return localReqGetBatchFeedFeature.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     szp
  * JD-Core Version:    0.7.0.1
  */

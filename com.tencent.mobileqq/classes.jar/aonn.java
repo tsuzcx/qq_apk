@@ -1,18 +1,11 @@
-import dov.com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
-
-class aonn
-  implements Runnable
+public class aonn
 {
-  aonn(aonm paramaonm) {}
-  
-  public void run()
-  {
-    EditVideoTagPresenter.a(EditVideoTagPresenter.a(this.a.a), EditVideoTagPresenter.a(this.a.a));
-  }
+  public String a;
+  public byte[] a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aonn
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class im_msg$C2C
-  extends MessageMicro
+  extends MessageMicro<C2C>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26 }, new String[] { "sender", "receiver", "c2c_relation" }, new Object[] { null, null, null }, C2C.class);
   public im_msg.C2CRelation c2c_relation = new im_msg.C2CRelation();

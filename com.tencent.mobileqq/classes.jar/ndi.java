@@ -1,18 +1,39 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.QQStoryManager;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import mqq.os.MqqHandler;
 
-public class ndi
-  extends SimpleJob
+class ndi
+  extends BroadcastReceiver
 {
-  public ndi(QQStoryManager paramQQStoryManager, boolean paramBoolean) {}
+  ndi(ncw paramncw, boolean paramBoolean, MqqHandler paramMqqHandler) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.b(this.jdField_a_of_type_Boolean);
-    return null;
+    String str = paramIntent.getStringExtra("com.tencent.biz.pubaccount.scanResultData");
+    int i = paramIntent.getIntExtra("com.tencent.biz.pubaccount.scanResultType", 0);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Ncw.a(str, i, 12, -1, null);
+      if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
+        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(19);
+      }
+    }
+    try
+    {
+      for (;;)
+      {
+        paramContext.unregisterReceiver(this.jdField_a_of_type_Ncw.a);
+        label65:
+        this.jdField_a_of_type_Ncw.a = null;
+        return;
+        this.jdField_a_of_type_Ncw.a(str, i, 11, -1, null);
+      }
+    }
+    catch (Exception paramContext)
+    {
+      break label65;
+    }
   }
 }
 

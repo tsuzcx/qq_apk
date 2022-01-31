@@ -1,39 +1,28 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.CallTabUnreadListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qcall.QCallFacade;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class wwl
-  implements CallTabUnreadListener
+class wwl
+  implements Animation.AnimationListener
 {
-  public wwl(MainAssistObserver paramMainAssistObserver) {}
+  wwl(wwk paramwwk) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SplashActivity", 4, "msg fresh callback...");
+    if (wwk.a(this.a) != null)
+    {
+      wwk.a(this.a).clearAnimation();
+      wwk.a(this.a).setVisibility(8);
     }
-    if ((this.a.a == null) || (this.a.a.app == null)) {
-      return;
-    }
-    QQAppInterface localQQAppInterface = this.a.a.app;
-    int i = QCallFacade.a(localQQAppInterface);
-    this.a.a(36, 16, Integer.valueOf(i));
-    Intent localIntent = new Intent("com.tencent.qq.syncQQMessage");
-    localQQAppInterface.getApp().sendBroadcast(localIntent);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("fetchUnReadCount", 4, String.format("MainAssistObserver通话tab, callUnReadCount[%s]", new Object[] { Integer.valueOf(i) }));
-    }
-    localQQAppInterface.C();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wwl
  * JD-Core Version:    0.7.0.1
  */

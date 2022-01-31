@@ -16,53 +16,49 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
-import com.tencent.av.AVLog;
 import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.filter.EffectFilterTools;
 import com.tencent.av.business.manager.filter.FilterItem;
+import com.tencent.av.ui.AVActivity.AnimationTrigger;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import kfd;
-import kfe;
-import kff;
-import kfg;
+import krx;
+import kvq;
+import kxf;
+import mbz;
+import mca;
+import mcb;
+import mcc;
 
 public class EffectFilterTextPager
   extends EffectCycleViewPager
   implements View.OnTouchListener
 {
-  public float a;
-  final int jdField_a_of_type_Int = 1000;
+  float jdField_a_of_type_Float = 0.0F;
+  private int jdField_a_of_type_Int;
   long jdField_a_of_type_Long = 0L;
   Handler jdField_a_of_type_AndroidOsHandler;
   public VideoAppInterface a;
-  private EffectFilterTools jdField_a_of_type_ComTencentAvBusinessManagerFilterEffectFilterTools;
+  AVActivity.AnimationTrigger jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger = null;
   public EffectFilterTextPager.FilterTextAdapter a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new kfd(this);
-  public boolean a;
-  public float b;
-  private int b;
+  private kxf jdField_a_of_type_Kxf;
+  float b = 0.0F;
   
   public EffectFilterTextPager(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_b_of_type_Float = 0.0F;
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
-    this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$FilterTextAdapter = new EffectFilterTextPager.FilterTextAdapter(paramContext);
     setAdapter(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$FilterTextAdapter);
-    this.jdField_a_of_type_AndroidOsHandler = new kfe(this);
+    this.jdField_a_of_type_AndroidOsHandler = new mbz(this);
     setOnTouchListener(this);
-    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_Int = -1;
   }
   
   void a()
   {
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    AVLog.c("EffectFilterTextPager", "showPromotionText ");
+    krx.c("EffectFilterTextPager", "showPromotionText ");
     int j = getChildCount();
     int i = 0;
     while (i < j)
@@ -74,13 +70,13 @@ public class EffectFilterTextPager
   
   public void a(int paramInt)
   {
-    AVLog.c("EffectFilterTextPager", "dispearPromotionText view:");
+    krx.c("EffectFilterTextPager", "dispearPromotionText view:");
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
     Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
     this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, paramInt);
   }
   
-  public void a(List paramList)
+  public void a(List<FilterItem> paramList)
   {
     this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$FilterTextAdapter.a(paramList);
   }
@@ -99,14 +95,14 @@ public class EffectFilterTextPager
       }
     }
     label172:
-    for (int i = 2131560070;; i = 2131560069)
+    for (int i = 2131166449;; i = 2131166448)
     {
       float f2 = getContext().getResources().getDimension(i);
-      AVLog.c("EffectFilterTextPager", "changeLayout: " + paramBoolean + "|" + j + "|" + f1);
+      krx.c("EffectFilterTextPager", "changeLayout: " + paramBoolean + "|" + j + "|" + f1);
       i = 0;
       while (i < j)
       {
-        ImageView localImageView = (ImageView)((ViewGroup)getChildAt(i)).findViewById(2131366296);
+        ImageView localImageView = (ImageView)((ViewGroup)getChildAt(i)).findViewById(2131306550);
         LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localImageView.getLayoutParams();
         localLayoutParams.setMargins(localLayoutParams.leftMargin, (int)f2, localLayoutParams.rightMargin, localLayoutParams.bottomMargin);
         localImageView.setScaleX(f1);
@@ -121,32 +117,39 @@ public class EffectFilterTextPager
   public void b()
   {
     View localView = a();
-    AVLog.c("EffectFilterTextPager", "dispearPromotionText_internal view:" + getCurrentItem() + "|" + localView);
+    krx.c("EffectFilterTextPager", "dispearPromotionText_internal view:" + getCurrentItem() + "|" + localView);
     if ((localView != null) && (localView.getVisibility() == 0))
     {
       AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
       localAlphaAnimation.setDuration(450L);
-      localAlphaAnimation.setAnimationListener(new kfg(this, localView));
+      localAlphaAnimation.setAnimationListener(new mcb(this, localView));
       localView.startAnimation(localAlphaAnimation);
     }
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = Boolean.valueOf(VideoController.a().a().u);
+    paramView = Boolean.valueOf(VideoController.a().a().w);
     if (paramMotionEvent.getAction() == 0)
     {
       this.jdField_a_of_type_Float = 0.0F;
-      this.jdField_b_of_type_Float = 0.0F;
+      this.b = 0.0F;
       this.jdField_a_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_Boolean = false;
       this.jdField_a_of_type_Float = paramMotionEvent.getX();
-      this.jdField_b_of_type_Float = paramMotionEvent.getY();
+      this.b = paramMotionEvent.getY();
       if (QLog.isColorLevel()) {
-        QLog.e("EffectFilterTextPager", 2, "[childLock] touch onDown: " + this.jdField_a_of_type_Float + " x " + this.jdField_b_of_type_Float + " ==========");
+        QLog.e("EffectFilterTextPager", 2, "[childLock] touch onDown: " + this.jdField_a_of_type_Float + " x " + this.b + " ==========");
       }
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 1000L);
+      if (this.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger != null)
+      {
+        if (!VideoController.a().a().w) {
+          break label380;
+        }
+        this.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger.a();
+      }
+    }
+    for (;;)
+    {
       if (!paramView.booleanValue()) {
         a();
       }
@@ -154,56 +157,59 @@ public class EffectFilterTextPager
       if ((localObject instanceof Activity))
       {
         localObject = (Activity)localObject;
-        EditText localEditText = (EditText)((Activity)localObject).findViewById(2131365952);
+        EditText localEditText = (EditText)((Activity)localObject).findViewById(2131302569);
         if (localEditText != null)
         {
           localEditText.clearFocus();
           ((InputMethodManager)((Activity)localObject).getSystemService("input_method")).hideSoftInputFromWindow(localEditText.getWindowToken(), 0);
         }
       }
-    }
-    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getPointerCount() > 1) || ((paramMotionEvent.getAction() == 2) && ((Math.abs(paramMotionEvent.getX() - this.jdField_a_of_type_Float) > 70.0F) || (Math.abs(paramMotionEvent.getY() - this.jdField_b_of_type_Float) > 70.0F))))
-    {
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      if (this.jdField_a_of_type_Boolean)
+      if ((!VideoController.a().a().w) && ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getPointerCount() > 1) || ((paramMotionEvent.getAction() == 2) && ((Math.abs(paramMotionEvent.getX() - this.jdField_a_of_type_Float) > 70.0F) || (Math.abs(paramMotionEvent.getY() - this.b) > 70.0F)))))
       {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(119), Integer.valueOf(0) });
+        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger);
+        if ((this.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger != null) && (this.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger.a())) {
+          this.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger.c();
+        }
         if (QLog.isColorLevel()) {
-          QLog.e("EffectFilterTextPager", 2, "[childLock] cancel animation");
+          QLog.e("EffectFilterTextPager", 2, "[childLock] touch end ==========");
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.e("EffectFilterTextPager", 2, "[childLock] touch end ==========");
+      if (!paramView.booleanValue()) {
+        break;
       }
-    }
-    if (paramView.booleanValue())
-    {
-      if ((paramMotionEvent.getAction() == 1) && (System.currentTimeMillis() - this.jdField_a_of_type_Long < 200L)) {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(119), Integer.valueOf(2) });
+      if ((paramMotionEvent.getAction() == 1) && (System.currentTimeMillis() - this.jdField_a_of_type_Long < 200L) && (this.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger != null)) {
+        this.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger.b();
       }
       b();
       return true;
+      label380:
+      this.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger.a(this.jdField_a_of_type_Float, this.b);
     }
     return false;
+  }
+  
+  public void setAnimationTrigger(AVActivity.AnimationTrigger paramAnimationTrigger)
+  {
+    this.jdField_a_of_type_ComTencentAvUiAVActivity$AnimationTrigger = paramAnimationTrigger;
   }
   
   public void setApp(VideoAppInterface paramVideoAppInterface)
   {
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    this.jdField_a_of_type_ComTencentAvBusinessManagerFilterEffectFilterTools = ((EffectFilterTools)paramVideoAppInterface.a(1));
-    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$FilterTextAdapter.a(this.jdField_a_of_type_ComTencentAvBusinessManagerFilterEffectFilterTools);
+    this.jdField_a_of_type_Kxf = ((kxf)paramVideoAppInterface.a(1));
+    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$FilterTextAdapter.a(this.jdField_a_of_type_Kxf);
   }
   
   public void setCurrentFilter(FilterItem paramFilterItem)
   {
     int i = this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$FilterTextAdapter.a(paramFilterItem);
-    this.jdField_b_of_type_Int = i;
+    this.jdField_a_of_type_Int = i;
     setCurrentItem(i + 1, false);
   }
   
-  public void setOnFilterListenner(EffectFilterTextPager.OnEffectFilterChangeListener paramOnEffectFilterChangeListener)
+  public void setOnFilterListenner(mcc parammcc)
   {
-    setOnPageChangeListener(new kff(this, paramOnEffectFilterChangeListener));
+    setOnPageChangeListener(new mca(this, parammcc));
   }
   
   public void setVisibility(int paramInt)
@@ -212,7 +218,7 @@ public class EffectFilterTextPager
     if (paramInt == 0)
     {
       a();
-      if (VideoController.a().a().ay)
+      if (VideoController.a().a().au)
       {
         i = 4000;
         a(i);
@@ -234,7 +240,7 @@ public class EffectFilterTextPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.ui.funchat.filter.EffectFilterTextPager
  * JD-Core Version:    0.7.0.1
  */

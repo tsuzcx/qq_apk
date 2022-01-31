@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqavopensdkSsoTunnel$CmdErrorCode
-  extends MessageMicro
+  extends MessageMicro<CmdErrorCode>
 {
   public static final int BYTES_ERR_MSG_FIELD_NUMBER = 2;
   public static final int UINT32_CODE_FIELD_NUMBER = 1;

@@ -1,17 +1,19 @@
-import com.tencent.biz.qqstory.newshare.job.UploadImageJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareSinaData;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
+import com.tencent.qphone.base.util.QLog;
 
 public class nla
-  extends UploadImageJob
+  implements moc
 {
-  public nla(ShareModeBase paramShareModeBase, ShareSinaData paramShareSinaData) {}
+  public nla(ReadInJoyNewFeedsActivity.2 param2) {}
   
-  public boolean b()
+  public void loaded(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.e = ((String)a("UploadImageJob_out_image_url"));
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2464 html web resource finish");
+    }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

@@ -1,15 +1,21 @@
 package com.tencent.mobileqq.msf.core.push;
 
-public enum m
+import android.os.Handler;
+import android.os.Message;
+
+class m
+  extends Handler
 {
-  public static m a(String paramString)
-  {
-    return (m)Enum.valueOf(m.class, paramString);
-  }
+  m(g paramg) {}
   
-  public static m[] a()
+  public void handleMessage(Message paramMessage)
   {
-    return (m[])i.clone();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.r();
   }
 }
 

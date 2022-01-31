@@ -1,36 +1,847 @@
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build.VERSION;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.text.QQText;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.widget.MultiImageTextView;
+import android.view.Window;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.4;
+import com.tencent.biz.qqstory.base.videoupload.task.BasePublishTask;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
+import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.ShareGroupFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
+import com.tribe.async.dispatch.IEventReceiver;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AppRuntime;
 
-class sis
-  implements Runnable
+@TargetApi(14)
+public class sis
+  extends ski<skl>
+  implements IEventReceiver
 {
-  sis(sir paramsir, String paramString) {}
+  private sjd jdField_a_of_type_Sjd;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void run()
+  public static int a()
   {
-    FormSimpleItem localFormSimpleItem;
-    if (this.jdField_a_of_type_Sir.a.a != null)
+    for (;;)
     {
-      localFormSimpleItem = (FormSimpleItem)this.jdField_a_of_type_Sir.a.a[6];
-      if ((localFormSimpleItem != null) && (!TextUtils.equals(localFormSimpleItem.a().getText(), this.jdField_a_of_type_JavaLangString)))
+      List localList;
+      try
       {
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          break label78;
+        atmp localatmp = QQStoryContext.a().a().createEntityManager();
+        sis localsis = (sis)sqg.a(3);
+        localList = localatmp.a(PublishVideoEntry.class, PublishVideoEntry.class.getSimpleName(), false, "publishState=1 and businessId=?", new String[] { "1" }, null, null, "createTime ASC", null, null);
+        if ((localList == null) || (localList.size() <= 0))
+        {
+          urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "createStoryVideo: 0");
+          i = 0;
+          return i;
         }
-        localFormSimpleItem.setRightText(this.jdField_a_of_type_Sir.a.getString(2131430600));
+        Iterator localIterator = localList.iterator();
+        if (!localIterator.hasNext()) {
+          break label288;
+        }
+        PublishVideoEntry localPublishVideoEntry = (PublishVideoEntry)localIterator.next();
+        long l1 = localPublishVideoEntry.getId();
+        String str1 = localPublishVideoEntry.fakeVid;
+        int j = localPublishVideoEntry.publishState;
+        String str2 = localPublishVideoEntry.videoLabel;
+        String str3 = localPublishVideoEntry.videoDoodleDescription;
+        long l2 = localPublishVideoEntry.videoDuration;
+        String str4 = localPublishVideoEntry.videoLocationDescription;
+        if (localPublishVideoEntry.isPicture)
+        {
+          i = 1;
+          urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "createStoryVideo: id=%d, fakeVid=%s, state=%s, label=%s, description=%s, duration=%d, locationDesc=%s, isPhoto = %d", new Object[] { Long.valueOf(l1), str1, Integer.valueOf(j), str2, str3, Long.valueOf(l2), str4, Integer.valueOf(i) });
+          urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "createStoryVideo detail info:%s", new Object[] { localPublishVideoEntry });
+          localPublishVideoEntry.publishState = 0;
+          localatmp.a(localPublishVideoEntry);
+          localsis.a(localPublishVideoEntry);
+          continue;
+        }
+        i = 0;
+      }
+      finally {}
+      continue;
+      label288:
+      int i = localList.size();
+    }
+  }
+  
+  private void a(PublishVideoEntry paramPublishVideoEntry)
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask == null) {
+      sje.a().a();
+    }
+    skl localskl = new skl(paramPublishVideoEntry);
+    super.b(localskl);
+    sjc localsjc;
+    if (!localskl.a().getBooleanExtra("ignorePersonalPublish", false))
+    {
+      bool1 = true;
+      sje.a().a(paramPublishVideoEntry.fakeVid, bool1);
+      localsjc = new sjc(true);
+      if (localskl.a().getBooleanExtra("ignorePersonalPublish", false)) {
+        break label291;
       }
     }
+    Object localObject1;
+    label291:
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      localsjc.jdField_b_of_type_Boolean = bool1;
+      localObject1 = (sqd)sqg.a(5);
+      Object localObject2 = localskl.a();
+      localsjc.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((sqd)localObject1).a(localskl.a(), (StoryVideoItem)localObject2);
+      localsjc.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem = localskl.a();
+      localObject1 = localskl.a();
+      if ((localObject1 == null) || (((srx)localObject1).jdField_b_of_type_JavaUtilList == null)) {
+        break label297;
+      }
+      localsjc.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      localObject1 = ((srx)localObject1).jdField_b_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        Object localObject3 = (String)((Iterator)localObject1).next();
+        localObject2 = new sjb();
+        ((sjb)localObject2).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem = uje.a((String)localObject3, localskl.a().mLocalDate);
+        ((sjb)localObject2).jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+        localObject3 = new sja();
+        ((sja)localObject3).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = localsjc.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
+        ((sjb)localObject2).jdField_a_of_type_JavaUtilArrayList.add(localObject3);
+        localsjc.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+      }
+      bool1 = false;
+      break;
+    }
+    label297:
+    bool1 = paramPublishVideoEntry.getBooleanExtra("is_hw_encode", false);
+    boolean bool2 = paramPublishVideoEntry.isLocalPublish;
+    if ((bool1) || (bool2))
+    {
+      int i = Math.min(paramPublishVideoEntry.videoHeight, paramPublishVideoEntry.videoWidth);
+      int j = Math.max(paramPublishVideoEntry.videoHeight, paramPublishVideoEntry.videoWidth);
+      paramPublishVideoEntry.videoWidth = i;
+      paramPublishVideoEntry.videoHeight = j;
+      if ((spz.c()) && (Build.VERSION.SDK_INT < 27)) {
+        paramPublishVideoEntry.hwBitrateMode = 0;
+      }
+      if (spz.d()) {
+        paramPublishVideoEntry.isNeedHighProfile = true;
+      }
+      localObject1 = QQStoryContext.a().a().createEntityManager();
+      paramPublishVideoEntry.setStatus(1000);
+      ((atmp)localObject1).b(paramPublishVideoEntry);
+    }
+    ThreadManager.post(new StoryVideoUploadManager.4(this, localskl, localsjc), 8, new siw(this, localskl), false);
+  }
+  
+  public static void a(String paramString)
+  {
+    ((sis)sqg.a().b(3)).c(paramString);
+  }
+  
+  public static void a(String paramString, PublishVideoEntry paramPublishVideoEntry)
+  {
+    if ((paramString != null) && (paramPublishVideoEntry != null) && (!paramPublishVideoEntry.hwEncodeRecordVideo) && (paramPublishVideoEntry.readerConfBytes != null) && (paramPublishVideoEntry.readerConfBytes.length > 0)) {}
+    try
+    {
+      Object localObject = (spz)sqg.a(10);
+      boolean bool1 = ((Boolean)((spz)localObject).b("story_publish_flag_compress_configurable", Boolean.valueOf(false))).booleanValue();
+      boolean bool2 = ((Boolean)((spz)localObject).b("story_publish_flag_compress", Boolean.valueOf(false))).booleanValue();
+      urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "skipEncodeVisible=%s, skipEncodeEnable=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+      if ((bool1) && (bool2) && ((paramPublishVideoEntry.readerConfBytes[0] == 1) || (paramPublishVideoEntry.readerConfBytes[0] == 4)))
+      {
+        localObject = paramPublishVideoEntry.fakeVid;
+        String str = vfx.a(1, paramPublishVideoEntry.videoUploadTempDir, ".mp4");
+        vlm.c(paramString, str);
+        paramString = (PublishVideoEntry)paramPublishVideoEntry.deepCopyByReflect();
+        paramString.fakeVid = ("fake_vid_" + System.currentTimeMillis() + "-" + new Random(System.currentTimeMillis() + Thread.currentThread().getId()).nextInt());
+        paramString.businessId = 1;
+        paramString.publishState = 1;
+        paramString.mIFrameVideoPath = str;
+        paramString.publishFrom = 101;
+        paramPublishVideoEntry = new sow(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+        paramPublishVideoEntry.verifyAuthentication();
+        paramPublishVideoEntry.createEntityManager().b(paramString);
+        urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "skip encode video : old=%s, new=%s, conf=%d", new Object[] { paramString.fakeVid, localObject, Byte.valueOf(paramString.readerConfBytes[0]) });
+        StoryTransitionActivity.a(BaseApplicationImpl.getApplication());
+      }
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      urk.b("Q.qqstory.publish.upload:StoryVideoUploadManager", "handleVideoEvent", paramString);
+    }
+  }
+  
+  public static void a(@NonNull String paramString, @NonNull ArrayList<String> paramArrayList, int paramInt)
+  {
+    try
+    {
+      vkw.a(paramString);
+      urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "add shareGroup video %s: %s", new Object[] { paramString, paramArrayList });
+      sqd localsqd = (sqd)sqg.a(5);
+      ArrayList localArrayList = new ArrayList(paramArrayList.size());
+      Iterator localIterator = paramArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        StoryVideoItem localStoryVideoItem = localsqd.a(str);
+        paramArrayList = localStoryVideoItem;
+        if (localStoryVideoItem == null)
+        {
+          paramArrayList = new StoryVideoItem();
+          paramArrayList.mVid = str;
+          paramArrayList.mOwnerUid = QQStoryContext.a().b();
+          urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "vid:%s for storyVideoItem is null", new Object[] { str });
+        }
+        localStoryVideoItem = new StoryVideoItem();
+        localStoryVideoItem.copy(paramArrayList);
+        localStoryVideoItem.mVideoSource = 1;
+        localStoryVideoItem.mVid = StoryVideoItem.makeFakeVid();
+        localStoryVideoItem.shareGroupId = paramString;
+        localStoryVideoItem.sourceVid = str;
+        localStoryVideoItem.mPublishDate = uje.a();
+        localStoryVideoItem.mUploadStatus = 0;
+        localStoryVideoItem.mCreateTime = NetConnInfoCenter.getServerTimeMillis();
+        localStoryVideoItem.mTimeZoneOffsetMillis = (vms.a() * 1000);
+        if (TextUtils.isEmpty(localStoryVideoItem.mOwnerName))
+        {
+          paramArrayList = ((sqs)sqg.a(2)).a();
+          if (paramArrayList != null) {
+            localStoryVideoItem.mOwnerName = paramArrayList.getDisplayName();
+          }
+        }
+        localsqd.a(localStoryVideoItem.mVid, localStoryVideoItem);
+        localArrayList.add(localStoryVideoItem);
+      }
+      a(paramString, localArrayList, paramInt);
+    }
+    finally {}
+    sgi.a().dispatch(new siz());
+  }
+  
+  public static void a(String paramString, List<StoryVideoItem> paramList)
+  {
+    try
+    {
+      urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "retry add shareGroup video %s: %s", new Object[] { paramString, Integer.valueOf(paramList.size()) });
+      a(paramString, paramList, 1);
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  private static void a(String paramString, List<StoryVideoItem> paramList, int paramInt)
+  {
+    for (;;)
+    {
+      VideoListFeedItem localVideoListFeedItem;
+      sqd localsqd;
+      Object localObject5;
+      try
+      {
+        localVideoListFeedItem = uje.a(paramString, uje.a());
+        if ((localVideoListFeedItem != null) && (paramList != null))
+        {
+          int i = paramList.size();
+          if (i != 0) {}
+        }
+        else
+        {
+          return;
+        }
+        localsqd = (sqd)sqg.a(5);
+        localObject1 = new sjc(true);
+        ((sjc)localObject1).jdField_b_of_type_Boolean = false;
+        ((sjc)localObject1).jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+        localObject2 = new sjb();
+        ((sjc)localObject1).jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+        ((sjb)localObject2).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem = localVideoListFeedItem;
+        localObject3 = paramList.iterator();
+        if (((Iterator)localObject3).hasNext())
+        {
+          localObject4 = (StoryVideoItem)((Iterator)localObject3).next();
+          ((StoryVideoItem)localObject4).mUploadStatus = 4;
+          localObject5 = new sja();
+          ((sja)localObject5).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = localsqd.a((StoryVideoItem)localObject4);
+          ((sjb)localObject2).jdField_a_of_type_JavaUtilArrayList.add(localObject5);
+          continue;
+        }
+        sgi.a().dispatch((Dispatcher.Dispatchable)localObject1);
+      }
+      finally {}
+      Object localObject1 = new ArrayList(paramList.size());
+      Object localObject2 = new ArrayList(paramList.size());
+      Object localObject3 = new ArrayList(paramList.size());
+      Object localObject4 = paramList.iterator();
+      while (((Iterator)localObject4).hasNext())
+      {
+        localObject5 = (StoryVideoItem)((Iterator)localObject4).next();
+        ((ArrayList)localObject1).add(((StoryVideoItem)localObject5).sourceVid);
+        ((ArrayList)localObject2).add(Long.valueOf(((StoryVideoItem)localObject5).mCreateTime));
+        ((ArrayList)localObject3).add(Integer.valueOf((int)((StoryVideoItem)localObject5).mTimeZoneOffsetMillis / 1000));
+      }
+      paramString = new syw(paramString, (List)localObject1, (List)localObject2, (List)localObject3, paramInt);
+      slv.a().a(paramString, new siu(localVideoListFeedItem, paramList, localsqd));
+    }
+  }
+  
+  public static void a(List<StoryVideoItem> paramList, Activity paramActivity)
+  {
+    if (!badq.g(paramActivity)) {
+      bbmy.a(paramActivity, 1, ajjy.a(2131648771), 0).a();
+    }
+    ArrayList localArrayList1;
+    do
+    {
+      return;
+      localArrayList1 = new ArrayList();
+      ArrayList localArrayList2 = new ArrayList(paramList.size());
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        StoryVideoItem localStoryVideoItem = (StoryVideoItem)paramList.next();
+        if (!TextUtils.isEmpty(localStoryVideoItem.sourceVid))
+        {
+          localArrayList2.add(localStoryVideoItem);
+        }
+        else if (sjc.a(localStoryVideoItem.mUpLoadFailedError))
+        {
+          localArrayList1.add(localStoryVideoItem.mVid);
+          urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "video file not exist, vid:%s", new Object[] { localStoryVideoItem.mVid });
+        }
+        else
+        {
+          a(localStoryVideoItem, paramActivity);
+        }
+      }
+      if (localArrayList2.size() > 0) {
+        a(((StoryVideoItem)localArrayList2.get(0)).shareGroupId, localArrayList2);
+      }
+    } while ((localArrayList1.size() <= 0) || (paramActivity.isFinishing()));
+    paramList = babr.a(paramActivity, 230);
+    paramList.setTitle(ajjy.a(2131648772));
+    paramList.setMessage(ajjy.a(2131648774));
+    paramList.setPositiveButton(ajjy.a(2131648773), new sit(localArrayList1));
+    paramList.setCancelable(false);
+    paramList.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+    paramList.show();
+  }
+  
+  public static boolean a(StoryVideoItem paramStoryVideoItem, Context paramContext)
+  {
+    if (!badq.g(paramContext))
+    {
+      bbmy.a(paramContext, 1, ajjy.a(2131648770), 0).a();
+      return false;
+    }
+    ((sis)sqg.a().b(3)).a(paramStoryVideoItem);
+    return true;
+  }
+  
+  public static void b(String paramString)
+  {
+    urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", paramString + " post createStoryVideo ... ");
+    Bosses.get().postJob(new siv("Q.qqstory.publish.upload:StoryVideoUploadManager", paramString));
+  }
+  
+  private void f()
+  {
+    urk.c("Q.qqstory.publish.upload:StoryVideoUploadManager", "start load all fail task");
+    Bosses.get().postJob(new siy(this, "Q.qqstory.publish.upload:StoryVideoUploadManager"));
+  }
+  
+  protected BasePublishTask a(skl paramskl)
+  {
+    return new StoryVideoUploadTask(paramskl);
+  }
+  
+  public void a()
+  {
+    super.a();
+    f();
+    this.jdField_a_of_type_Sjd = new sjd(this);
+    sgi.a().registerSubscriber(this.jdField_a_of_type_Sjd);
+  }
+  
+  public void a(StoryVideoItem paramStoryVideoItem)
+  {
+    if (skz.a(paramStoryVideoItem))
+    {
+      urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "retry story by multi sender , vid %s", new Object[] { paramStoryVideoItem.mVid });
+      return;
+    }
+    urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "can not retry story by multi sender , vid %s", new Object[] { paramStoryVideoItem.mVid });
+    if (this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask == null) {
+      sje.a().a();
+    }
+    skl localskl = new skl(paramStoryVideoItem);
+    localskl.jdField_b_of_type_Int += 1;
+    super.b(localskl);
+    Object localObject1;
+    if (!localskl.a().getBooleanExtra("ignorePersonalPublish", false))
+    {
+      bool = true;
+      sje.a().a(paramStoryVideoItem.mVid, bool);
+      localObject1 = (sqd)sqg.a(5);
+      paramStoryVideoItem = new sjc(false);
+      if (localskl.a().getBooleanExtra("ignorePersonalPublish", false)) {
+        break label322;
+      }
+    }
+    label322:
+    for (boolean bool = true;; bool = false)
+    {
+      paramStoryVideoItem.jdField_b_of_type_Boolean = bool;
+      paramStoryVideoItem.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((sqd)localObject1).a(localskl.a(), localskl.a());
+      paramStoryVideoItem.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem = localskl.a();
+      localObject1 = localskl.a();
+      if ((localObject1 == null) || (((srx)localObject1).jdField_b_of_type_JavaUtilList == null)) {
+        break label327;
+      }
+      paramStoryVideoItem.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      localObject1 = ((srx)localObject1).jdField_b_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        Object localObject2 = (String)((Iterator)localObject1).next();
+        sjb localsjb = new sjb();
+        localsjb.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem = uje.a((String)localObject2, localskl.a().mLocalDate);
+        localsjb.jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+        localObject2 = new sja();
+        ((sja)localObject2).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
+        localsjb.jdField_a_of_type_JavaUtilArrayList.add(localObject2);
+        paramStoryVideoItem.jdField_a_of_type_JavaUtilArrayList.add(localsjb);
+      }
+      bool = false;
+      break;
+    }
+    label327:
+    sgi.a().dispatch(paramStoryVideoItem);
+    super.d();
+    urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "retry upload video %s", new Object[] { localskl });
+  }
+  
+  public void a(@NonNull String paramString1, @NonNull String paramString2)
+  {
+    Object localObject2 = null;
+    try
+    {
+      Object localObject3 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      Object localObject1;
+      do
+      {
+        localObject1 = localObject2;
+        if (!((Iterator)localObject3).hasNext()) {
+          break;
+        }
+        localObject1 = (skl)((Iterator)localObject3).next();
+      } while (!paramString1.equals(((skl)localObject1).a()));
+      localObject3 = this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask;
+      localObject2 = localObject1;
+      if (localObject1 == null)
+      {
+        localObject2 = localObject1;
+        if (localObject3 != null)
+        {
+          localObject2 = localObject1;
+          if (paramString1.equals(((skl)((BasePublishTask)localObject3).a()).a())) {
+            localObject2 = (skl)((BasePublishTask)localObject3).a();
+          }
+        }
+      }
+      if (localObject2 != null)
+      {
+        ((skl)localObject2).jdField_a_of_type_JavaLangString = paramString2;
+        localObject1 = (sqd)sqg.a(5);
+        localObject3 = ((skl)localObject2).a();
+        ((sqd)localObject1).a(((skl)localObject2).a(), (StoryVideoItem)localObject3);
+        urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "true update video path:%s %s", new Object[] { paramString1, paramString2 });
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  protected void a(skl paramskl)
+  {
+    if (b()) {
+      urk.c("Q.qqstory.publish.upload:StoryVideoUploadManager", "manager had stopped");
+    }
+    Object localObject1;
+    label133:
+    label195:
+    label603:
+    label1002:
+    do
+    {
+      return;
+      if (paramskl.b())
+      {
+        localObject1 = shq.a(paramskl.jdField_g_of_type_JavaLangString, paramskl.d, 0, false, false);
+        if (!vlm.b(paramskl.jdField_a_of_type_JavaLangString, (String)localObject1)) {
+          break label942;
+        }
+        paramskl.jdField_a_of_type_JavaLangString = ((String)localObject1);
+        urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "move video to preload dir %s", new Object[] { localObject1 });
+        localObject1 = shq.a(paramskl.jdField_g_of_type_JavaLangString, paramskl.d, 2, false, false);
+        if (!vlm.b(paramskl.jdField_b_of_type_JavaLangString, (String)localObject1)) {
+          break label953;
+        }
+        paramskl.jdField_c_of_type_JavaLangString = paramskl.jdField_b_of_type_JavaLangString;
+        paramskl.jdField_b_of_type_JavaLangString = ((String)localObject1);
+        urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "move thumbnail to preload dir %s", new Object[] { localObject1 });
+        if (!TextUtils.isEmpty(paramskl.e))
+        {
+          localObject1 = shq.a(paramskl.jdField_g_of_type_JavaLangString, paramskl.d, 6, false, false);
+          if (!vlm.b(paramskl.e, (String)localObject1)) {
+            break label964;
+          }
+          paramskl.e = ((String)localObject1);
+          urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "move poll picture to mine dir %s", new Object[] { localObject1 });
+        }
+        if (!TextUtils.isEmpty(paramskl.jdField_f_of_type_JavaLangString))
+        {
+          localObject1 = shq.a(paramskl.jdField_g_of_type_JavaLangString, paramskl.d, 6, false, false);
+          if (!vlm.b(paramskl.jdField_f_of_type_JavaLangString, (String)localObject1)) {
+            break label975;
+          }
+          paramskl.jdField_f_of_type_JavaLangString = ((String)localObject1);
+          urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "move interact picture to mine dir %s", new Object[] { localObject1 });
+        }
+        if (!TextUtils.isEmpty(paramskl.m))
+        {
+          localObject1 = shq.a(paramskl.jdField_g_of_type_JavaLangString, paramskl.d, 5, false, false);
+          if (!vlm.b(paramskl.m, (String)localObject1)) {
+            break label986;
+          }
+          paramskl.m = ((String)localObject1);
+          urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "move at picture to mine dir %s", new Object[] { localObject1 });
+        }
+        if (paramskl.a().getBooleanExtra("post_pk_comment", false))
+        {
+          localObject1 = paramskl.a().getStringExtra("pk_feedid", null);
+          if (!TextUtils.isEmpty((CharSequence)localObject1))
+          {
+            urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "game pk post comment. feedId=%s", new Object[] { localObject1 });
+            localObject2 = paramskl.a().getStringExtra("pk_comment_content", null);
+            int i = paramskl.a().getIntExtra("pk_comment_type", 0);
+            localObject3 = paramskl.a().getStringExtra("pk_vid", null);
+            localObject4 = paramskl.a().getStringExtra("post_pk_comment_style", null);
+            sml.a((String)localObject1, (String)localObject2, i, paramskl.jdField_g_of_type_JavaLangString, paramskl.a().feedId, (String)localObject3, (String)localObject4);
+          }
+        }
+      }
+      Object localObject3 = (sqd)sqg.a(5);
+      Object localObject2 = (uje)sqg.a(11);
+      Object localObject4 = ((sqd)localObject3).a(paramskl.a(), paramskl.a());
+      urk.b("Q.qqstory.publish.upload:StoryVideoUploadManager", "task state write:" + localObject4);
+      localObject1 = new sjc(false);
+      boolean bool;
+      Object localObject5;
+      sjb localsjb;
+      sja localsja;
+      Object localObject6;
+      tbc localtbc;
+      if (!paramskl.a().getBooleanExtra("ignorePersonalPublish", false))
+      {
+        bool = true;
+        ((sjc)localObject1).jdField_b_of_type_Boolean = bool;
+        ((sjc)localObject1).jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramskl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage;
+        ((sjc)localObject1).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((StoryVideoItem)localObject4);
+        ((sjc)localObject1).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem = paramskl.a();
+        localObject4 = paramskl.a();
+        if ((localObject4 == null) || (((srx)localObject4).jdField_b_of_type_JavaUtilList == null)) {
+          break label1069;
+        }
+        ((sjc)localObject1).jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+        localObject4 = ((srx)localObject4).jdField_b_of_type_JavaUtilList.iterator();
+        if (!((Iterator)localObject4).hasNext()) {
+          break label1069;
+        }
+        localObject5 = (String)((Iterator)localObject4).next();
+        localsjb = new sjb();
+        localsjb.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem = uje.a((String)localObject5, paramskl.a().mLocalDate);
+        localsjb.jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+        localsja = new sja();
+        localsja.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((sjc)localObject1).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
+        if ((((sjc)localObject1).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isUploadSuc()) && (paramskl.jdField_b_of_type_JavaUtilList != null))
+        {
+          localObject6 = paramskl.jdField_b_of_type_JavaUtilList.iterator();
+          while (((Iterator)localObject6).hasNext())
+          {
+            localtbc = (tbc)((Iterator)localObject6).next();
+            if (((String)localObject5).equals(localtbc.jdField_a_of_type_JavaLangString)) {
+              if ((!(localsjb.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem instanceof ShareGroupFeedItem)) || (!localsjb.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem.feedId.equals(localtbc.jdField_b_of_type_JavaLangString))) {
+                break label1002;
+              }
+            }
+          }
+        }
+      }
+      for (localsjb.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem = ((ShareGroupFeedItem)localsjb.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);; localsjb.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem = ((ShareGroupFeedItem)((uje)localObject2).a(localsjb.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem)))
+      {
+        localObject5 = new StoryVideoItem();
+        ((StoryVideoItem)localObject5).copy(((sjc)localObject1).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+        ((StoryVideoItem)localObject5).mVid = ((String)localtbc.jdField_a_of_type_JavaUtilMap.get(paramskl.jdField_g_of_type_JavaLangString));
+        ((StoryVideoItem)localObject5).mVideoIndex = 0L;
+        vkw.a(((StoryVideoItem)localObject5).mVid);
+        localsja.jdField_b_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((sqd)localObject3).a((StoryVideoItem)localObject5);
+        ((uje)localObject2).a(localsjb.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.ownerId, localsjb.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.date, localsjb.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.feedId);
+        localObject6 = new ArrayList();
+        ((ArrayList)localObject6).add(localObject5);
+        ((uje)localObject2).a(localtbc.jdField_b_of_type_JavaLangString, (List)localObject6, false);
+        localsjb.jdField_a_of_type_JavaUtilArrayList.add(localsja);
+        ((sjc)localObject1).jdField_a_of_type_JavaUtilArrayList.add(localsjb);
+        break label603;
+        urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "move video to preload dir fail");
+        break;
+        urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "move thumbnail to preload dir fail");
+        break label133;
+        urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "move poll picture to mine dir fail");
+        break label195;
+        urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "move interact picture to mine dir fail");
+        break label257;
+        urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "move at picture to mine dir fail");
+        break label318;
+        bool = false;
+        break label529;
+        localsjb.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem = new ShareGroupFeedItem();
+        localsjb.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.copy(localsjb.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem);
+        localsjb.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelShareGroupFeedItem.feedId = localtbc.jdField_b_of_type_JavaLangString;
+        vkw.a(localtbc.jdField_b_of_type_JavaLangString);
+      }
+      long l1;
+      if ((paramskl.jdField_a_of_type_Int == 2) && (!this.jdField_a_of_type_Boolean))
+      {
+        this.jdField_a_of_type_Boolean = true;
+        long l2 = SystemClock.elapsedRealtime() - paramskl.jdField_a_of_type_Long;
+        urp.a("video_shoot_new", "time_upload", 0, (int)l2, new String[] { urp.b(paramskl.jdField_f_of_type_Int) + "", paramskl.jdField_b_of_type_Long + "", "", paramskl.jdField_g_of_type_Int + "" });
+        if (bhnt.c)
+        {
+          l1 = bhnt.h.a[0] + l2;
+          long l3 = bhnt.h.a[1];
+          bhnt.h.a(2, l2 - l3);
+          if (bhnt.h.a())
+          {
+            l2 = bhnt.h.a[0];
+            l3 = bhnt.h.a[1];
+            long l4 = bhnt.h.a[2];
+            if ((urp.a(l1, 0L, 120000L)) && (urp.a(l2, 0L, 120000L)) && (urp.a(l3, 0L, 120000L)) && (urp.a(l4, 0L, 120000L))) {
+              urp.a("PublishVideoCost", true, l1, new String[] { String.valueOf(l2), String.valueOf(l3), String.valueOf(l4) });
+            }
+            bhnt.h.c();
+          }
+        }
+      }
+      if ((paramskl.jdField_a_of_type_Int == 5) || (paramskl.jdField_a_of_type_Int == 3) || (paramskl.jdField_a_of_type_Int == 6))
+      {
+        this.jdField_a_of_type_Boolean = false;
+        urp.a("video_shoot_new", "time_publish", 0, (int)(SystemClock.elapsedRealtime() - paramskl.jdField_a_of_type_Long), new String[] { urp.b(paramskl.jdField_f_of_type_Int) + "", paramskl.jdField_b_of_type_Long + "", "", paramskl.jdField_g_of_type_Int + "" });
+      }
+      if (((sjc)localObject1).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isUploadSuc())
+      {
+        ((sjc)localObject1).jdField_b_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramskl.a();
+        ((sjc)localObject1).jdField_b_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid = paramskl.jdField_g_of_type_JavaLangString;
+        ((sjc)localObject1).jdField_b_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((sqd)localObject3).a(paramskl.jdField_g_of_type_JavaLangString, ((sjc)localObject1).jdField_b_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+        if (((sjc)localObject1).jdField_b_of_type_Boolean)
+        {
+          localObject3 = new ArrayList(1);
+          ((ArrayList)localObject3).add(((sjc)localObject1).jdField_b_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+          ((uje)localObject2).a(((sjc)localObject1).jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelGeneralFeedItem.feedId, (List)localObject3, false);
+        }
+        if (paramskl.jdField_b_of_type_Int > 0) {
+          urp.a("mystory", "retrypub_suc", 0, 0, new String[] { "", "", "", paramskl.jdField_g_of_type_JavaLangString });
+        }
+        localObject2 = paramskl.a() + "##:";
+        l1 = SystemClock.elapsedRealtime() - paramskl.jdField_a_of_type_Long;
+        urp.b("publish_story", "publish_all", 0, 0, new String[] { localObject2, String.valueOf(l1), urp.a(BaseApplication.getContext()), String.valueOf(paramskl.jdField_b_of_type_Int) });
+        urp.b("publish_story", "publish_all_old", 0, 0, new String[] { localObject2, String.valueOf(l1), urp.a(BaseApplication.getContext()), String.valueOf(paramskl.jdField_b_of_type_Int) });
+        localObject2 = paramskl.a();
+        bool = ((PublishVideoEntry)localObject2).getBooleanExtra("useFlowDecode", false);
+        urp.b("video_edit", "publish_save_mode", ((PublishVideoEntry)localObject2).saveMode, 0, new String[] { String.valueOf(bool), "", paramskl.h });
+        url.a(2444494, null);
+        urk.a("Q.qqstory.publish.upload:StoryVideoUploadManager", "publish vid:%s success take time:%d", paramskl.a(), Long.valueOf(l1));
+        sjj.a(paramskl.a());
+      }
+      if (((sjc)localObject1).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isUploadFail())
+      {
+        sgi.a().dispatchDelayed((Dispatcher.Dispatchable)localObject1, 500);
+        urp.a("mystory", "publish_fail", 0, 0, new String[] { urp.b(paramskl.jdField_f_of_type_Int) + "", paramskl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode + "", "", ((sjc)localObject1).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+        if (paramskl.jdField_b_of_type_Int > 0) {
+          urp.a("mystory", "retrypub_fail", 0, 0, new String[0]);
+        }
+        l1 = SystemClock.elapsedRealtime() - paramskl.jdField_a_of_type_Long;
+        localObject1 = String.format(paramskl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.extraMsg + "##times:%d##lastError:%d##fakeVid:%s##%s", new Object[] { Integer.valueOf(paramskl.jdField_b_of_type_Int), Integer.valueOf(paramskl.jdField_c_of_type_Int), paramskl.a(), paramskl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorMsg });
+        urp.b("publish_story", "publish_all_old", 0, paramskl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode, new String[] { localObject1, String.valueOf(l1), urp.a(BaseApplication.getContext()), String.valueOf(paramskl.jdField_b_of_type_Int) });
+        if (!"composite".equals(paramskl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.extraMsg)) {
+          urp.b("publish_story", "publish_all", 0, paramskl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode, new String[] { localObject1, String.valueOf(l1), urp.a(BaseApplication.getContext()), String.valueOf(paramskl.jdField_b_of_type_Int) });
+        }
+        localObject2 = paramskl.a();
+        bool = ((PublishVideoEntry)localObject2).getBooleanExtra("useFlowDecode", false);
+        urp.b("video_edit", "publish_save_mode", ((PublishVideoEntry)localObject2).saveMode, paramskl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode, new String[] { String.valueOf(bool), localObject1, paramskl.h });
+        url.a(2444493, paramskl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.getErrorMessageForReport());
+        urk.a("Q.qqstory.publish.upload:StoryVideoUploadManager", "publish vid:%s fail take time:%d", paramskl.a(), Long.valueOf(l1));
+        return;
+      }
+    } while (((sjc)localObject1).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.isCancel());
+    label257:
+    label318:
+    label964:
+    label975:
+    label986:
+    sgi.a().dispatch((Dispatcher.Dispatchable)localObject1);
+    label529:
+    label942:
+    label953:
     return;
-    label78:
-    localFormSimpleItem.setRightText(new QQText(this.jdField_a_of_type_JavaLangString, 3));
+  }
+  
+  protected void a(skl paramskl, ErrorMessage paramErrorMessage)
+  {
+    if (paramskl.jdField_a_of_type_Int == 5) {
+      sje.a().a(paramskl.a(), paramskl.jdField_g_of_type_JavaLangString);
+    }
+    while ((paramskl.jdField_a_of_type_Int != 6) && (paramskl.jdField_a_of_type_Int != 3) && (paramskl.jdField_a_of_type_Int != 7)) {
+      return;
+    }
+    sje.a().d(paramskl.a());
+  }
+  
+  /* Error */
+  public boolean a(String paramString)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 145	sis:jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskBasePublishTask	Lcom/tencent/biz/qqstory/base/videoupload/task/BasePublishTask;
+    //   6: astore_3
+    //   7: aload_3
+    //   8: ifnull +28 -> 36
+    //   11: aload_1
+    //   12: aload_3
+    //   13: invokevirtual 742	com/tencent/biz/qqstory/base/videoupload/task/BasePublishTask:a	()Lskj;
+    //   16: checkcast 154	skl
+    //   19: invokevirtual 186	skl:a	()Ljava/lang/String;
+    //   22: invokevirtual 737	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   25: istore_2
+    //   26: iload_2
+    //   27: ifeq +9 -> 36
+    //   30: iconst_1
+    //   31: istore_2
+    //   32: aload_0
+    //   33: monitorexit
+    //   34: iload_2
+    //   35: ireturn
+    //   36: aload_0
+    //   37: getfield 734	sis:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   40: invokevirtual 451	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   43: astore_3
+    //   44: aload_3
+    //   45: invokeinterface 84 1 0
+    //   50: ifeq +29 -> 79
+    //   53: aload_1
+    //   54: aload_3
+    //   55: invokeinterface 88 1 0
+    //   60: checkcast 154	skl
+    //   63: invokevirtual 186	skl:a	()Ljava/lang/String;
+    //   66: invokevirtual 737	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   69: istore_2
+    //   70: iload_2
+    //   71: ifeq -27 -> 44
+    //   74: iconst_1
+    //   75: istore_2
+    //   76: goto -44 -> 32
+    //   79: iconst_0
+    //   80: istore_2
+    //   81: goto -49 -> 32
+    //   84: astore_1
+    //   85: aload_0
+    //   86: monitorexit
+    //   87: aload_1
+    //   88: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	89	0	this	sis
+    //   0	89	1	paramString	String
+    //   25	56	2	bool	boolean
+    //   6	49	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	7	84	finally
+    //   11	26	84	finally
+    //   36	44	84	finally
+    //   44	70	84	finally
+  }
+  
+  public void b()
+  {
+    urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "onDestroy");
+    super.b();
+    sgi.a().unRegisterSubscriber(this.jdField_a_of_type_Sjd);
+  }
+  
+  public void c(String paramString)
+  {
+    Object localObject = (sqd)sqg.a(5);
+    StoryVideoItem localStoryVideoItem = ((sqd)localObject).a(paramString);
+    if (localStoryVideoItem != null)
+    {
+      if (!TextUtils.isEmpty(localStoryVideoItem.mLocalVideoPath)) {
+        vlm.g(localStoryVideoItem.mLocalVideoPath);
+      }
+      if (!TextUtils.isEmpty(localStoryVideoItem.mLocalMaskPath)) {
+        vlm.g(localStoryVideoItem.mLocalMaskPath);
+      }
+      if (!TextUtils.isEmpty(localStoryVideoItem.mVideoLocalThumbnailPath)) {
+        vlm.g(localStoryVideoItem.mVideoLocalThumbnailPath);
+      }
+    }
+    ((sqd)localObject).a(paramString);
+    localObject = new skl(paramString);
+    super.c((skj)localObject);
+    urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "delete video %s", new Object[] { paramString });
+    sjj.a(((skl)localObject).a());
+    Bosses.get().scheduleJobDelayed(new six(this, "Q.qqstory.publish.upload:StoryVideoUploadManager", paramString, localStoryVideoItem), 300);
+  }
+  
+  public boolean isValidate()
+  {
+    return !this.c.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sis
  * JD-Core Version:    0.7.0.1
  */

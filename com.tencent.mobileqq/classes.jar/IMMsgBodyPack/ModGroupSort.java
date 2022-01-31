@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class ModGroupSort
   extends JceStruct
 {
-  static ArrayList cache_vMsgGroupSort;
-  public ArrayList vMsgGroupSort;
+  static ArrayList<GroupSort> cache_vMsgGroupSort;
+  public ArrayList<GroupSort> vMsgGroupSort;
   
   public ModGroupSort() {}
   
-  public ModGroupSort(ArrayList paramArrayList)
+  public ModGroupSort(ArrayList<GroupSort> paramArrayList)
   {
     this.vMsgGroupSort = paramArrayList;
   }

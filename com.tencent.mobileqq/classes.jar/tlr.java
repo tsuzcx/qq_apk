@@ -1,30 +1,35 @@
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import com.tencent.mobileqq.app.CardObserver;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class tlr
-  extends CardObserver
+  extends QQUIEventReceiver<tlj, sxr>
 {
-  public tlr(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
-  
-  protected void g(boolean paramBoolean, Object paramObject)
+  public tlr(@NonNull tlj paramtlj)
   {
-    if (paramBoolean)
+    super(paramtlj);
+  }
+  
+  public void a(@NonNull tlj paramtlj, @NonNull sxr paramsxr)
+  {
+    if (paramsxr.a.isSuccess())
     {
-      this.a.setResult(-1);
-      this.a.b(2131434995);
+      urk.a(this.TAG, "receive user info event. %s.", paramsxr.toString());
+      paramtlj = paramtlj.a();
+      if (paramtlj != null) {
+        paramtlj.a();
+      }
     }
-    for (;;)
-    {
-      this.a.a = false;
-      this.a.finish();
-      return;
-      this.a.b(2131434996);
-    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return sxr.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tlr
  * JD-Core Version:    0.7.0.1
  */

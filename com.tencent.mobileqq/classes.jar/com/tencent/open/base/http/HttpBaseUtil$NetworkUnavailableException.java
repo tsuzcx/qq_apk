@@ -12,7 +12,7 @@ public class HttpBaseUtil$NetworkUnavailableException
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.base.http.HttpBaseUtil.NetworkUnavailableException
  * JD-Core Version:    0.7.0.1
  */

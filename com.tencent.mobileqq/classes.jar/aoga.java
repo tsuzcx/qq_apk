@@ -1,22 +1,34 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class aoga
-  implements ValueAnimator.AnimatorUpdateListener
+final class aoga
+  extends wmb
 {
-  public aoga(TextLayer.TextItem paramTextItem) {}
+  aoga(String paramString, aogv paramaogv, long paramLong) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2, int paramInt3, Bundle paramBundle)
   {
-    this.a.w = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a.k();
+    if (!paramBoolean)
+    {
+      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult return failed fileid " + this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Aogv.a(aofz.a(this.jdField_a_of_type_Long, false), true);
+      return;
+    }
+    paramBundle.putString("_m_ForwardBusType", String.valueOf(paramInt2));
+    paramBundle.putString("_m_ForwardDeadTime", String.valueOf(paramInt3));
+    if (paramInt1 == 0)
+    {
+      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult success fileid " + this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Aogv.a(this.jdField_a_of_type_JavaLangString, paramBundle);
+      return;
+    }
+    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult return[" + paramInt1 + "] fileid " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Aogv.a(aofz.a(this.jdField_a_of_type_Long, false), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoga
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,16 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
-import mqq.os.MqqHandler;
-
-public class tfc
-  extends MqqHandler
+public abstract interface tfc
 {
-  public tfc(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
+  public abstract void a();
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 2014: 
-      this.a.finish();
-      return;
-    }
-    this.a.finish();
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tfc
  * JD-Core Version:    0.7.0.1
  */

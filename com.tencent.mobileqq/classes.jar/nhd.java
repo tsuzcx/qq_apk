@@ -1,24 +1,24 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.TroopVidToVideoInfoPuller;
-import com.tencent.biz.qqstory.network.BatchHandlerListPuller.IPullResultCallback;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
-public class nhd
-  implements BatchHandlerListPuller.IPullResultCallback
+class nhd
+  extends ohe
 {
-  public nhd(TroopVidToVideoInfoPuller paramTroopVidToVideoInfoPuller, List paramList) {}
+  nhd(ngv paramngv) {}
   
   public void a(boolean paramBoolean)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("Vid list to video info list finish !");
-    if (paramBoolean) {}
-    for (String str = "Every task success";; str = "Some task error")
+    QLog.i("DailyHeaderViewController", 1, "[onDailyDynamicHeaderDataUpdated] " + paramBoolean);
+    if (!paramBoolean)
     {
-      SLog.d("Q.qqstory.net:TroopVidToVideoInfoPuller", str);
-      this.jdField_a_of_type_ComTencentBizQqstoryModelTroopVidToVideoInfoPuller.a(this.jdField_a_of_type_JavaUtilList, new ErrorMessage(), true, paramBoolean);
+      if ((ngv.a(this.a) == -1) || (ngv.a(this.a) == 0))
+      {
+        ngv.a(this.a, 0);
+        return;
+      }
+      ngv.a(this.a, 4);
       return;
     }
+    ngv.a(this.a, 1);
   }
 }
 

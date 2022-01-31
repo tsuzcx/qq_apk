@@ -1,23 +1,14 @@
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
-import com.tencent.biz.qqstory.playmode.util.NewDiscoverBannerDataProvider;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class nrb
-  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
+class nrb
+  implements View.OnClickListener
 {
-  public nrb(NewDiscoverBannerDataProvider paramNewDiscoverBannerDataProvider, BatchGetVideoInfo paramBatchGetVideoInfo) {}
+  nrb(nqz paramnqz) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilNewDiscoverBannerDataProvider.a(false, null);
-  }
-  
-  public void a(ArrayList paramArrayList)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilNewDiscoverBannerDataProvider.a(true, paramArrayList);
+    this.a.dismiss();
   }
 }
 

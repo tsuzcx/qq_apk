@@ -135,36 +135,37 @@ public class YuvAVDecode
   private int getNextFrameDrop(Bitmap paramBitmap)
   {
     int j = this.mSourceHelper.getNextVideoFrameBitmap(paramBitmap);
+    int i;
     if (j == -1) {
-      return j;
-    }
-    AVVideoParam localAVVideoParam = this.videoParam;
-    localAVVideoParam.frame_index += 1;
-    int i = j;
-    if (this.mNeedDropFrame)
-    {
       i = j;
-      if (this.videoParam.frame_index % this.mDropSectionSize == 0)
-      {
-        i = j;
-        if (this.mCurrentDropped < this.mTotalNeedDrop)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("YuvAVDecode", 2, "getNextFrameDrop,drop a frame,videoParam.frame_index  = " + this.videoParam.frame_index);
-          }
-          this.mCurrentDropped += 1;
-          j = this.mSourceHelper.getNextVideoFrameBitmap(paramBitmap);
-          i = j;
-          if (j == 0)
-          {
-            paramBitmap = this.videoParam;
-            paramBitmap.frame_index += 1;
-            i = j;
-          }
-        }
-      }
     }
-    return i;
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return i;
+            AVVideoParam localAVVideoParam = this.videoParam;
+            localAVVideoParam.frame_index += 1;
+            i = j;
+          } while (!this.mNeedDropFrame);
+          i = j;
+        } while (this.videoParam.frame_index % this.mDropSectionSize != 0);
+        i = j;
+      } while (this.mCurrentDropped >= this.mTotalNeedDrop);
+      if (QLog.isColorLevel()) {
+        QLog.d("YuvAVDecode", 2, "getNextFrameDrop,drop a frame,videoParam.frame_index  = " + this.videoParam.frame_index);
+      }
+      this.mCurrentDropped += 1;
+      j = this.mSourceHelper.getNextVideoFrameBitmap(paramBitmap);
+      i = j;
+    } while (j != 0);
+    paramBitmap = this.videoParam;
+    paramBitmap.frame_index += 1;
+    return j;
   }
   
   private int getVideoDuration(float paramFloat)
@@ -211,23 +212,20 @@ public class YuvAVDecode
       paramAVDecodeOption = new YuvAVDecode(paramAVDecodeOption);
       return paramAVDecodeOption;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    catch (UnsatisfiedLinkError paramAVDecodeOption)
     {
-      do
+      if (QLog.isColorLevel())
       {
-        paramAVDecodeOption = null;
-      } while (!QLog.isColorLevel());
-      QLog.d("YuvAVDecode", 2, "YuvAVDecode,newInstance err = " + localUnsatisfiedLinkError);
-      return null;
+        QLog.d("YuvAVDecode", 2, "YuvAVDecode,newInstance err = " + paramAVDecodeOption);
+        return null;
+      }
     }
-    catch (AVideoException localAVideoException)
+    catch (AVideoException paramAVDecodeOption)
     {
-      do
-      {
-        localAVideoException.printStackTrace();
-        paramAVDecodeOption = null;
-      } while (!QLog.isColorLevel());
-      QLog.d("YuvAVDecode", 2, "YuvAVDecode,newInstance ep = " + localAVideoException);
+      paramAVDecodeOption.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.d("YuvAVDecode", 2, "YuvAVDecode,newInstance ep = " + paramAVDecodeOption);
+      }
     }
     return null;
   }
@@ -257,12 +255,12 @@ public class YuvAVDecode
       if (QLog.isColorLevel()) {
         QLog.e("YuvAVDecode", 2, "calcuAudioBufferSize(), sampleRateInHz=" + j + ", <= 0, return...");
       }
-      i = 2000;
+      j = 2000;
     }
     label71:
     do
     {
-      return i;
+      return j;
       i = 3;
       break;
       j = AudioTrack.getMinBufferSize(j, i, 2);
@@ -279,10 +277,9 @@ public class YuvAVDecode
         }
       }
       j = i;
-      i = j;
     } while (!QLog.isColorLevel());
-    QLog.d("YuvAVDecode", 2, "calcuAudioBufferSize() primePlaySize: " + j);
-    return j;
+    QLog.d("YuvAVDecode", 2, "calcuAudioBufferSize() primePlaySize: " + i);
+    return i;
   }
   
   public void close()
@@ -296,7 +293,6 @@ public class YuvAVDecode
   }
   
   public byte[] seekToNextAudioByteFrame()
-    throws AVideoException
   {
     if (QLog.isColorLevel()) {
       QLog.d("YuvAVDecode", 2, "seekToNextAudioByteFrame ");
@@ -312,13 +308,11 @@ public class YuvAVDecode
   }
   
   public float[] seekToNextAudioFloatFrame()
-    throws AVideoException
   {
     return null;
   }
   
   public short[] seekToNextAudioShortFrame()
-    throws AVideoException
   {
     long l1 = SystemClock.elapsedRealtime();
     int i = this.mSourceHelper.getNextAudioFrame(this.audioBuffer);
@@ -350,7 +344,6 @@ public class YuvAVDecode
   }
   
   public void seekToNextFrame(Bitmap paramBitmap)
-    throws AVideoException
   {
     long l = SystemClock.elapsedRealtime();
     int i = getNextFrameDrop(paramBitmap);

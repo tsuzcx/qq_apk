@@ -1,21 +1,23 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
 
 public class uag
-  implements Runnable
+  implements vqk
 {
-  public uag(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  public uag(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public void run()
+  public void a() {}
+  
+  public boolean a(boolean paramBoolean)
   {
-    this.a.jdField_a_of_type_JavaUtilMap = TroopAssistantManager.a().a(this.a.app, this.a.jdField_a_of_type_JavaUtilList);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    if (this.a.jdField_a_of_type_Ugl != null) {
+      this.a.jdField_a_of_type_Ugl.a(this.a.jdField_a_of_type_Uau.a());
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uag
  * JD-Core Version:    0.7.0.1
  */

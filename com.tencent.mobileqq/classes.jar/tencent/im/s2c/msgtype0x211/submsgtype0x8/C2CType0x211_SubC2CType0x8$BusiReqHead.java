@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class C2CType0x211_SubC2CType0x8$BusiReqHead
-  extends MessageMicro
+  extends MessageMicro<BusiReqHead>
 {
   public static final int INT32_SEQ_FIELD_NUMBER = 2;
   public static final int INT32_VERSION_FIELD_NUMBER = 1;

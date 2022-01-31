@@ -12,7 +12,7 @@ final class BackStackRecord$Op
   int popEnterAnim;
   int popExitAnim;
   Op prev;
-  ArrayList removed;
+  ArrayList<Fragment> removed;
 }
 
 

@@ -1,18 +1,22 @@
-import com.tencent.biz.qqstory.model.events.ReadStoryVideoEvent;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate.ReadStoryVideoEventReceiver;
+import java.lang.ref.WeakReference;
 
-public class nja
-  implements Runnable
+class nja
+  implements qoc
 {
-  public nja(MsgTabStoryNodeDelegate.ReadStoryVideoEventReceiver paramReadStoryVideoEventReceiver, MsgTabStoryNodeDelegate paramMsgTabStoryNodeDelegate, ReadStoryVideoEvent paramReadStoryVideoEvent) {}
+  private WeakReference<niz> a;
   
-  public void run()
+  public nja(niz paramniz)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryModelEventsReadStoryVideoEvent.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelEventsReadStoryVideoEvent.jdField_a_of_type_Long)) {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.jdField_a_of_type_Boolean = true;
+    this.a = new WeakReference(paramniz);
+  }
+  
+  public void a()
+  {
+    niz localniz = (niz)this.a.get();
+    if ((localniz == null) || (!localniz.b())) {
+      return;
     }
+    niz.a(localniz).sendEmptyMessage(1);
   }
 }
 

@@ -1,22 +1,13 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class ozh
-  implements Handler.Callback
+  implements ViewBase.IBuilder
 {
-  public ozh(ScannerActivity paramScannerActivity) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public ViewBase build(VafContext paramVafContext)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.c();
-    }
+    return new ozg(paramVafContext);
   }
 }
 

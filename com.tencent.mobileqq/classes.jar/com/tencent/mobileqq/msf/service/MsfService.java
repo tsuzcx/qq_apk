@@ -7,13 +7,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build.VERSION;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
 import android.os.SystemClock;
 import com.tencent.mobileqq.msf.core.MsfCore;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.core.a.a;
 import com.tencent.mobileqq.msf.core.auth.b;
-import com.tencent.mobileqq.msf.core.c.j;
-import com.tencent.mobileqq.msf.core.x;
+import com.tencent.mobileqq.msf.core.y;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.remote.IBaseService.Stub;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -26,21 +28,26 @@ import java.util.Map;
 public class MsfService
   extends Service
 {
+  public static final int MSF_ALIVE_UPLOAD_MESSAGE = 10500;
   public static MsfCore core = new MsfCore();
   private static String fromProcessName = "null";
   public static volatile boolean inited = false;
   static HashSet invalidUids;
-  static i msfServiceReqHandler = new i();
-  static k msfServiceRespHandler;
+  static n msfServiceReqHandler = new n();
+  static p msfServiceRespHandler;
   static HashSet passedUids = new HashSet();
   public static volatile boolean sIsCreatedByAutoBoot = false;
   public static long serviceInitStart = 0L;
   public static final String tag = "MSF.S.MsfService";
-  private IBaseService.Stub binder = new f(this);
+  private IBaseService.Stub binder = new j(this);
+  private NetConnInfoCenter mReceiver;
+  public Handler mUIHandler = new i(this, Looper.getMainLooper());
   
   static
   {
     invalidUids = new HashSet();
+    sIsCreatedByAutoBoot = false;
+    serviceInitStart = 0L;
   }
   
   public static MsfCore getCore()
@@ -55,7 +62,7 @@ public class MsfService
     if (invalidUids.contains(Integer.valueOf(paramInt)))
     {
       if (QLog.isColorLevel()) {
-        QLog.d("MSF.S.MsfService", 2, "found invalid uid call " + paramInt);
+        QLog.d("MSF.S.MsfService", 2, "MSF_Alive_Log found invalid uid call " + paramInt);
       }
       bool1 = false;
     }
@@ -73,7 +80,7 @@ public class MsfService
       if (arrayOfString[i].equals(paramContext))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("MSF.S.MsfService", 2, "found accountSyncRequest from the same packeName application,");
+          QLog.d("MSF.S.MsfService", 2, "MSF_Alive_Log found accountSyncRequest from the same packeName application,");
         }
         passedUids.add(Integer.valueOf(paramInt));
       }
@@ -105,7 +112,7 @@ public class MsfService
         break label92;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("MSF.S.MsfService", 2, "found invalid uid call " + (String)localObject);
+        QLog.d("MSF.S.MsfService", 2, "MSF_Alive_Log found invalid uid call " + (String)localObject);
       }
       try
       {
@@ -136,22 +143,22 @@ public class MsfService
     boolean bool1;
     try
     {
-      QLog.d("MSF.S.MsfService", 1, "serviceInit inited=" + inited + " boot=" + paramBoolean + " gray=" + false + " public=" + true);
+      QLog.d("MSF.S.MsfService", 1, "MSF_Alive_Log serviceInit inited=" + inited + " boot=" + paramBoolean + " gray=" + false + " public=" + true);
       long l1;
       if (!inited)
       {
         serviceInitStart = SystemClock.elapsedRealtime();
         core.init(paramContext, paramBoolean);
         l1 = SystemClock.elapsedRealtime();
-        QLog.d("MsfInitCost", 1, "MsfCoreInitCost: " + (l1 - serviceInitStart));
-        d.a(paramContext, core);
-        msfServiceRespHandler = new k(core);
+        QLog.d("MsfInitCost", 1, "MSF_Alive_Log MsfCoreInitCost: " + (l1 - serviceInitStart));
+        e.a(paramContext, core);
+        msfServiceRespHandler = new p(core);
         msfServiceRespHandler.setName("MsfServiceRespHandler");
         msfServiceRespHandler.start();
         inited = true;
         long l2 = SystemClock.elapsedRealtime() - serviceInitStart;
-        QLog.d("MsfInitCost", 1, "ServiceInitCost: " + l2);
-        new g(l1, l2).start();
+        QLog.d("MsfInitCost", 1, "MSF_Alive_Log ServiceInitCost: " + l2);
+        new l(l1, l2).start();
         bool1 = bool3;
       }
       try
@@ -184,7 +191,7 @@ public class MsfService
         }
       }
       if (bool2) {
-        new h().start();
+        new m().start();
       }
       return;
     }
@@ -245,31 +252,33 @@ public class MsfService
   
   public IBinder onBind(Intent paramIntent)
   {
-    label56:
+    label68:
     for (;;)
     {
       try
       {
-        paramIntent = paramIntent.getStringExtra("to_SenderProcessName");
+        String str = paramIntent.getStringExtra("to_SenderProcessName");
         localException1.printStackTrace();
       }
       catch (Exception localException1)
       {
         try
         {
-          fromProcessName = paramIntent;
-          QLog.d("MSF.S.MsfService", 1, "serivce onBind by :" + paramIntent);
-          if (a.al()) {
+          fromProcessName = str;
+          QLog.d("MSF.S.MsfService", 1, "MSF_Alive_Log serivce onBind by :" + str);
+          if (a.am()) {
             a.a(false);
           }
+          g.a(paramIntent, 1);
+          h.a(this.mUIHandler);
           return this.binder;
         }
         catch (Exception localException2)
         {
-          break label56;
+          break label68;
         }
         localException1 = localException1;
-        paramIntent = null;
+        str = null;
       }
     }
   }
@@ -277,18 +286,19 @@ public class MsfService
   public void onCreate()
   {
     super.onCreate();
-    QLog.d("MSF.S.MsfService", 1, "serivce onCreate");
+    QLog.d("MSF.S.MsfService", 1, "MSF_Alive_Log serivce onCreate");
     serviceInit(this, sIsCreatedByAutoBoot);
     if (QLog.isColorLevel()) {
-      QLog.d("MSF.S.MsfService", 2, "serivce onCreate... autoBoot[" + sIsCreatedByAutoBoot + "]");
+      QLog.d("MSF.S.MsfService", 2, "MSF_Alive_Log serivce onCreate... autoBoot[" + sIsCreatedByAutoBoot + "]");
     }
     sIsCreatedByAutoBoot = false;
     startForegroundCompat();
+    this.mUIHandler.postDelayed(new k(this), 10000L);
   }
   
   public void onDestroy()
   {
-    QLog.d("MSF.S.MsfService", 1, "serivce onDestroy");
+    QLog.d("MSF.S.MsfService", 1, "MSF_Alive_Log serivce onDestroy");
     try
     {
       BaseApplication.getContext().unregisterReceiver(core.getNetFlowStore());
@@ -305,7 +315,7 @@ public class MsfService
         {
           for (;;)
           {
-            x.a(x.P);
+            y.a(y.P);
             stopForegroundCompat();
             super.onDestroy();
             return;
@@ -329,14 +339,17 @@ public class MsfService
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    QLog.d("MSF.S.MsfService", 1, "serivce onStart");
-    return super.onStartCommand(paramIntent, paramInt1, paramInt2);
+    QLog.d("MSF.S.MsfService", 1, "MSF_Alive_Log serivce onStart");
+    g.a(paramIntent, 2);
+    h.a(this.mUIHandler);
+    super.onStartCommand(paramIntent, paramInt1, paramInt2);
+    return 1;
   }
   
   public boolean onUnbind(Intent paramIntent)
   {
     String str = paramIntent.getStringExtra("to_SenderProcessName");
-    QLog.d("MSF.S.MsfService", 1, "serivce onUnbind by :" + str);
+    QLog.d("MSF.S.MsfService", 1, "MSF_Alive_Log serivce onUnbind by :" + str);
     return super.onUnbind(paramIntent);
   }
 }

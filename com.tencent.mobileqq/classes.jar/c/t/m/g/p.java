@@ -11,7 +11,7 @@ public final class p
 {
   public static String a;
   private static String b = "AccessIpMgr";
-  private static Map<String, a> c = new ConcurrentHashMap();
+  private static Map<String, p.a> c = new ConcurrentHashMap();
   private static x.a d = new x.a();
   
   static
@@ -21,11 +21,11 @@ public final class p
   
   public static v a(String paramString)
   {
-    Object localObject = (a)c.get(paramString);
+    Object localObject = (p.a)c.get(paramString);
     if (localObject != null)
     {
-      paramString = new v(((a)localObject).a, ((a)localObject).b);
-      paramString.c = ((a)localObject).a();
+      paramString = new v(((p.a)localObject).a, ((p.a)localObject).b);
+      paramString.c = ((p.a)localObject).a();
       return paramString;
     }
     localObject = new n(paramString);
@@ -44,7 +44,7 @@ public final class p
   
   public static void a(String paramString, n paramn, int paramInt)
   {
-    paramString = (a)c.get(paramString);
+    paramString = (p.a)c.get(paramString);
     if ((paramString != null) && (paramInt != 0)) {
       paramString.b(paramn);
     }
@@ -65,7 +65,7 @@ public final class p
       while (((Iterator)localObject1).hasNext())
       {
         v localv = (v)((Iterator)localObject1).next();
-        a locala = new a(a);
+        p.a locala = new p.a(a);
         locala.a = localv.a;
         locala.b = localv.b;
         Object localObject2 = localv.c.iterator();
@@ -79,129 +79,10 @@ public final class p
       }
     }
   }
-  
-  static final class a
-  {
-    String a;
-    String b;
-    private String c;
-    private List<n> d;
-    private List<n> e;
-    private List<n> f;
-    private List<n> g;
-    
-    public a(String paramString)
-    {
-      this.c = paramString;
-    }
-    
-    public final List<n> a()
-    {
-      ArrayList localArrayList = new ArrayList();
-      List localList = this.d;
-      if ((localList != null) && (localList.size() > 0)) {
-        localArrayList.addAll(localList);
-      }
-      localList = this.e;
-      if ((localList != null) && (localList.size() > 0)) {
-        localArrayList.addAll(localList);
-      }
-      localList = this.f;
-      if ((localList != null) && (localList.size() > 0)) {
-        localArrayList.addAll(localList);
-      }
-      localList = this.g;
-      if ((localList != null) && (localList.size() > 0)) {
-        localArrayList.addAll(localList);
-      }
-      return localArrayList;
-    }
-    
-    public final void a(n paramn)
-    {
-      if (paramn == null) {
-        return;
-      }
-      if (paramn.e == 1)
-      {
-        if (this.d == null) {
-          this.d = new ArrayList();
-        }
-        this.d.add(paramn);
-        return;
-      }
-      if (paramn.e == 2)
-      {
-        if (this.e == null) {
-          this.e = new ArrayList();
-        }
-        this.e.add(paramn);
-        return;
-      }
-      if (paramn.e == 3)
-      {
-        if (this.f == null) {
-          this.f = new ArrayList();
-        }
-        this.f.add(paramn);
-        return;
-      }
-      if (paramn.e == 4)
-      {
-        if (this.g == null) {
-          this.g = new ArrayList();
-        }
-        this.g.add(paramn);
-        return;
-      }
-      if (this.d == null) {
-        this.d = new ArrayList();
-      }
-      this.d.add(paramn);
-    }
-    
-    public final void b(n paramn)
-    {
-      if (paramn == null) {}
-      for (;;)
-      {
-        return;
-        try
-        {
-          if (paramn.e == 1)
-          {
-            if ((this.d == null) || (this.d.isEmpty()) || (!paramn.a((n)this.d.get(0)))) {
-              continue;
-            }
-            this.d.remove(0);
-            continue;
-          }
-        }
-        finally {}
-        if ((paramn.e == 2) && (this.e != null) && (!this.e.isEmpty()) && (paramn.a((n)this.e.get(0)))) {
-          this.e.remove(0);
-        }
-      }
-    }
-    
-    public final String toString()
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("Appid：" + null + " domain：" + this.a + "\r\n");
-      localStringBuilder.append("apn：" + this.c + " ckIP：" + null + "\r\n");
-      Iterator localIterator = a().iterator();
-      while (localIterator.hasNext())
-      {
-        n localn = (n)localIterator.next();
-        localStringBuilder.append("accessIP：" + localn.toString() + "\r\n");
-      }
-      return localStringBuilder.toString();
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     c.t.m.g.p
  * JD-Core Version:    0.7.0.1
  */

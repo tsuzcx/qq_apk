@@ -1,23 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahwc
-  implements View.OnClickListener
+  extends ajqr
 {
-  public ahwc(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
+  public ahwc(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
   
-  public void onClick(View paramView)
+  public void a(Object paramObject)
   {
-    this.a.a.setText("");
-    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialCareSettingActivity", 2, "onSpecialSoundEvent data: " + paramObject);
+    }
+    if (paramObject != null) {
+      this.a.stopTitleProgress();
+    }
+    switch (((Integer)paramObject).intValue())
+    {
+    default: 
+      return;
+    }
+    QQSpecialCareSettingActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahwc
  * JD-Core Version:    0.7.0.1
  */

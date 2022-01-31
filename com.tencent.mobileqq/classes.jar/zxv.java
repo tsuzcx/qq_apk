@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.app.AutomatorObserver;
-import com.tencent.mobileqq.app.automator.step.RegisterProxy;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class zxv
-  extends AutomatorObserver
+  implements DialogInterface.OnClickListener
 {
-  private zxv(RegisterProxy paramRegisterProxy) {}
+  public zxv(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  protected void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(10000L);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zxv
  * JD-Core Version:    0.7.0.1
  */

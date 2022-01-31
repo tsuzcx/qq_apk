@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class MqqLbs$GPS
-  extends MessageMicro
+  extends MessageMicro<GPS>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50 }, new String[] { "int32_lat", "int32_lon", "int32_alt", "int32_type", "uint32_precision", "str_addr" }, new Object[] { Integer.valueOf(900000000), Integer.valueOf(900000000), Integer.valueOf(-10000000), Integer.valueOf(0), Integer.valueOf(0), "" }, GPS.class);
   public final PBInt32Field int32_alt = PBField.initInt32(-10000000);
@@ -20,7 +20,7 @@ public final class MqqLbs$GPS
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.olympic.MqqLbs.GPS
  * JD-Core Version:    0.7.0.1
  */

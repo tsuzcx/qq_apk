@@ -3,16 +3,15 @@ package com.tencent.biz.qqstory.view.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.mobileqq.widget.MessageProgressView;
-import ovj;
 
 public class AutoStartProgressBar
   extends MessageProgressView
 {
-  public static int a;
-  public static int b = -1;
-  public String a;
-  public boolean a;
-  public int c = 100;
+  protected static int a;
+  protected static int b = -1;
+  protected String a;
+  protected boolean a;
+  protected int c = 100;
   
   static
   {
@@ -48,7 +47,7 @@ public class AutoStartProgressBar
     {
       this.e = 0;
       this.jdField_a_of_type_Boolean = false;
-      new ovj(this, null).start();
+      new AutoStartProgressBar.ProgressThread(this, null).start();
     }
   }
   
@@ -65,7 +64,7 @@ public class AutoStartProgressBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.AutoStartProgressBar
  * JD-Core Version:    0.7.0.1
  */

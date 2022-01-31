@@ -1,28 +1,26 @@
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalTbsViewManager.LocalTbsViewManagerCallback;
+import android.widget.TextView;
+import com.etrump.mixlayout.ETTextView;
+import com.tencent.mobileqq.widget.MixedMsgLinearLayout;
 
-class adkd
-  implements Runnable
+public class adkd
+  extends acju
 {
-  adkd(adjz paramadjz, Integer paramInteger) {}
+  private long jdField_a_of_type_Long;
+  public ahpa a;
+  public TextView a;
+  public ETTextView a;
+  private MixedMsgLinearLayout jdField_a_of_type_ComTencentMobileqqWidgetMixedMsgLinearLayout;
+  public boolean a;
+  public TextView b;
+  public ETTextView b;
+  private String b = "0";
+  public int e = -1;
   
-  public void run()
-  {
-    switch (this.jdField_a_of_type_JavaLangInteger.intValue())
-    {
-    case 12: 
-    case 19: 
-    default: 
-      return;
-    case 5001: 
-      this.jdField_a_of_type_Adjz.a.a(true);
-      return;
-    }
-    this.jdField_a_of_type_Adjz.a.a(false);
-  }
+  public adkd(adjz paramadjz) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adkd
  * JD-Core Version:    0.7.0.1
  */

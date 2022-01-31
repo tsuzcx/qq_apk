@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.activity.aio.photo.PhotoListPanel android:orientation="vertical" android:id="@id/cdf" android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/jst" android:background="@drawable/skin_aio_input_bar_bg_local_albums" android:paddingLeft="@dimen/yy" android:paddingRight="@dimen/yz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="50.0dip" android:layout_alignParentBottom="true">
+        <Button android:gravity="center" android:layout_gravity="center" android:id="@id/p2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qlv" android:drawablePadding="1.0dip" style="@style/i6" />
+        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/yx" android:layout_toRightOf="@id/p2">
+            <View android:layout_gravity="center" android:id="@id/fhy" android:background="@drawable/eo1" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="25.0dip" />
+            <Button android:gravity="center" android:layout_gravity="center" android:id="@id/ekt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cue" android:drawablePadding="1.0dip" style="@style/i6" />
+        </FrameLayout>
+        <CheckBox android:gravity="center" android:layout_gravity="center" android:id="@id/h1y" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/yx" android:button="@drawable/b4r" android:minWidth="18.0dip" android:minHeight="30.0dip" />
+        <TextView android:id="@id/h24" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:text="@string/qlu" style="@style/i6" />
+        <TextView android:textSize="15.0dip" android:id="@id/h1z" android:visibility="invisible" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="(999K)" style="@style/i6" />
+        <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <Button android:textColor="@color/skin_aio_send_button" android:gravity="center" android:layout_gravity="center|right" android:id="@id/send_btn" android:layout_width="wrap_content" android:layout_height="@dimen/acx" android:text="@string/cvd" style="@style/hz" />
+    </LinearLayout>
+    <com.tencent.widget.ReboundLayout android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/jst">
+        <android.support.v7.widget.RecyclerView android:id="@id/cg6" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true" />
+    </com.tencent.widget.ReboundLayout>
+    <include android:id="@id/kk5" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_above="@id/jst" layout="@layout/av4" />
+    <FrameLayout android:id="@id/f_y" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/jst">
+        <TextView android:textSize="15.0sp" android:textColor="#ffafafaf" android:gravity="center" android:layout_gravity="center" android:id="@id/fbx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/cuq" android:drawableTop="@drawable/hap" android:drawablePadding="10.0dip" />
+    </FrameLayout>
+</com.tencent.mobileqq.activity.aio.photo.PhotoListPanel>

@@ -1,15 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.troop.EditUniqueTitleActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class pag
-  implements View.OnClickListener
+  implements ViewBase.IBuilder
 {
-  public pag(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
-  
-  public void onClick(View paramView)
+  public ViewBase build(VafContext paramVafContext)
   {
-    EditUniqueTitleActivity.a(this.a);
+    return new ozx(paramVafContext, null);
   }
 }
 

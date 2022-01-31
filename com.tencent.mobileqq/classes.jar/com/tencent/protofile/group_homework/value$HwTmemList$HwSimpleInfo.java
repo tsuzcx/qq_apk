@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class value$HwTmemList$HwSimpleInfo
-  extends MessageMicro
+  extends MessageMicro<HwSimpleInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32 }, new String[] { "hw_id", "uin", "team_id", "hw_type" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0) }, HwSimpleInfo.class);
   public final PBUInt64Field hw_id = PBField.initUInt64(0L);

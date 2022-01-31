@@ -1,31 +1,31 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.takevideo2.StoryMultiFragmentPart;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class ork
-  implements Animator.AnimatorListener
+  implements wiu
 {
-  ork(ori paramori) {}
+  ork(org paramorg, String paramString) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(Bundle paramBundle)
   {
-    if ((StoryMultiFragmentPart.a(this.a.a) != null) && (StoryMultiFragmentPart.b(this.a.a) != null) && (StoryMultiFragmentPart.a(this.a.a) != null))
+    if (QLog.isDebugVersion()) {
+      QLog.d("ReadInJoyWebviewPlugin", 4, "receive setSkinAndSound callback resp:" + paramBundle.toString());
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      StoryMultiFragmentPart.a(this.a.a).setVisibility(8);
-      StoryMultiFragmentPart.b(this.a.a).setImageBitmap(this.a.b);
-      StoryMultiFragmentPart.b(this.a.a).setVisibility(0);
-      StoryMultiFragmentPart.a(this.a.a).setText(StoryMultiFragmentPart.a(this.a.a) + "");
-      StoryMultiFragmentPart.a(this.a.a).setVisibility(0);
+      paramBundle = localJSONObject.put("retCode", paramBundle.getInt("retCode")).put("skinId", "" + paramBundle.getString("skinId"));
+      this.jdField_a_of_type_Org.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+      return;
+    }
+    catch (JSONException paramBundle)
+    {
+      QLog.w("ReadInJoyWebviewPlugin", 1, "readSkinAndSound error " + paramBundle.toString());
+      this.jdField_a_of_type_Org.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"retCode\":-1}" });
     }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

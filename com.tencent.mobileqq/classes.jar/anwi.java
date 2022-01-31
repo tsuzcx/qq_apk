@@ -1,27 +1,26 @@
-import android.view.View;
-import dov.com.qq.im.capture.text.DynamicTextItem;
-import dov.com.qq.im.capture.text.DynamicTextItem.Pair;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class anwi
-  implements Runnable
+public abstract interface anwi
 {
-  public anwi(DynamicTextItem paramDynamicTextItem, View paramView) {}
+  public abstract QQAppInterface a();
   
-  public void run()
-  {
-    DynamicTextItem.Pair localPair = DynamicTextItem.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem);
-    if (!((Boolean)DynamicTextItem.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem).b).booleanValue()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localPair.b = Boolean.valueOf(bool);
-      this.jdField_a_of_type_AndroidViewView.invalidate();
-      return;
-    }
-  }
+  public abstract void a();
+  
+  public abstract void a(anwn paramanwn);
+  
+  public abstract boolean a(anwn paramanwn, int paramInt);
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anwi
  * JD-Core Version:    0.7.0.1
  */

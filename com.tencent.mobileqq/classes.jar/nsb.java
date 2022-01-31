@@ -1,13 +1,35 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView.TroopListAdapter;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import mqq.app.AppRuntime;
 
 public class nsb
 {
-  public ImageView a;
-  public TextView a;
+  private View a;
   
-  public nsb(MyVideoVisibleTroopPageView.TroopListAdapter paramTroopListAdapter) {}
+  public nsb(ArkAppMessage paramArkAppMessage, BaseArticleInfo paramBaseArticleInfo)
+  {
+    if (obz.a() != null)
+    {
+      paramArkAppMessage = obz.a().getApplication();
+      if (paramArkAppMessage != null) {}
+    }
+    else
+    {
+      return;
+    }
+    this.a = new View(paramArkAppMessage);
+    this.a.setVisibility(8);
+  }
+  
+  public View a()
+  {
+    return this.a;
+  }
+  
+  public void a() {}
+  
+  public void a(ArkAppMessage paramArkAppMessage, BaseArticleInfo paramBaseArticleInfo) {}
 }
 
 

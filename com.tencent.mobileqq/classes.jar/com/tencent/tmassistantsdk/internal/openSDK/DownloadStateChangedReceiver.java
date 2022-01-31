@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.HandlerThread;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ac;
 import java.util.ArrayList;
 
 public class DownloadStateChangedReceiver
@@ -40,23 +40,23 @@ public class DownloadStateChangedReceiver
   
   public void a(Context paramContext)
   {
-    r.c(a, "context = " + paramContext);
+    ac.c(a, "context = " + paramContext);
     IntentFilter localIntentFilter;
     if (!this.e)
     {
-      r.c("DownloadStateChangedReceiver", "registeReceiver   context" + paramContext + "  receiver:" + this);
+      ac.c("DownloadStateChangedReceiver", "registeReceiver   context" + paramContext + "  receiver:" + this);
       localIntentFilter = new IntentFilter("com.tencent.assistantOpenSDK.downloadStateChange.action");
     }
     try
     {
       paramContext = paramContext.registerReceiver(this, localIntentFilter);
-      r.c("DownloadStateChangedReceiver", "" + paramContext);
+      ac.c("DownloadStateChangedReceiver", "" + paramContext);
       this.e = true;
       return;
     }
     catch (Throwable paramContext)
     {
-      r.c("DownloadStateChangedReceiver", "registeReceiver exception!!!");
+      ac.c("DownloadStateChangedReceiver", "registeReceiver exception!!!");
       this.e = false;
       paramContext.printStackTrace();
     }
@@ -64,7 +64,7 @@ public class DownloadStateChangedReceiver
   
   public void a(b paramb)
   {
-    r.c(a, "listener = " + paramb);
+    ac.c(a, "listener = " + paramb);
     if ((paramb != null) && (!this.f.contains(paramb))) {
       this.f.add(paramb);
     }
@@ -73,12 +73,12 @@ public class DownloadStateChangedReceiver
   public void b(Context paramContext)
   {
     if ((paramContext == null) || (b == null)) {
-      r.c(a, "unRegisteReceiver fail! context = " + paramContext + ",mInstance = " + b);
+      ac.c(a, "unRegisteReceiver fail! context = " + paramContext + ",mInstance = " + b);
     }
     while (!this.e) {
       return;
     }
-    r.c("DownloadStateChangedReceiver", "realy unRegisteReceiver  context:" + paramContext + "  receiver:" + this);
+    ac.c("DownloadStateChangedReceiver", "realy unRegisteReceiver  context:" + paramContext + "  receiver:" + this);
     try
     {
       paramContext.unregisterReceiver(this);
@@ -87,7 +87,7 @@ public class DownloadStateChangedReceiver
     }
     catch (Throwable paramContext)
     {
-      r.a("DownloadStateChangedReceiver", "unRegisteReceiver exception!!!", paramContext);
+      ac.a("DownloadStateChangedReceiver", "unRegisteReceiver exception!!!", paramContext);
       this.e = false;
       paramContext.printStackTrace();
     }
@@ -95,7 +95,7 @@ public class DownloadStateChangedReceiver
   
   public void b(b paramb)
   {
-    r.c(a, "listener = " + paramb);
+    ac.c(a, "listener = " + paramb);
     if (paramb != null) {
       this.f.remove(paramb);
     }
@@ -103,7 +103,7 @@ public class DownloadStateChangedReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    r.c(a, "context = " + paramContext + ",intent = " + paramIntent);
+    ac.c(a, "context = " + paramContext + ",intent = " + paramIntent);
     if (this.d != null) {
       this.d.post(new a(this, paramIntent));
     }
@@ -111,7 +111,7 @@ public class DownloadStateChangedReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.DownloadStateChangedReceiver
  * JD-Core Version:    0.7.0.1
  */

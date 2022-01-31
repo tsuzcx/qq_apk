@@ -1,49 +1,57 @@
 package com.tencent.mobileqq.msf.core.c;
 
-import com.qq.taf.jce.JceInputStream;
-import com.qq.taf.jce.JceOutputStream;
-import com.qq.taf.jce.JceStruct;
+import android.os.Process;
+import android.text.TextUtils;
+import com.tencent.feedback.eup.CrashHandleListener;
+import com.tencent.mobileqq.msf.core.MsfCore;
+import com.tencent.mobileqq.msf.core.ag;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.LinkedBlockingDeque;
 
-public final class m
-  extends JceStruct
+class m
+  implements CrashHandleListener
 {
-  public long a;
-  public long b;
-  public long c;
-  public long d;
-  public long e;
-  public long f;
+  m(k paramk) {}
   
-  public m() {}
-  
-  public m(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6)
+  public byte[] getCrashExtraData(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong)
   {
-    this.a = paramLong1;
-    this.b = paramLong2;
-    this.c = paramLong3;
-    this.d = paramLong4;
-    this.e = paramLong5;
-    this.f = paramLong6;
+    return null;
   }
   
-  public void readFrom(JceInputStream paramJceInputStream)
+  public String getCrashExtraMessage(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong)
   {
-    this.a = paramJceInputStream.read(this.a, 1, true);
-    this.b = paramJceInputStream.read(this.b, 2, true);
-    this.c = paramJceInputStream.read(this.c, 3, true);
-    this.d = paramJceInputStream.read(this.d, 4, true);
-    this.e = paramJceInputStream.read(this.e, 5, true);
-    this.f = paramJceInputStream.read(this.f, 6, true);
+    QLog.d("MSF.C.StatReport", 1, "getCrashExtraMessage...isNativeCrashed: " + paramBoolean + " crashType=" + paramString1 + " crashAddress=" + paramString2 + " crashStack=" + paramString3 + " native_SICODE=" + paramInt + " crashTime=" + paramLong);
+    QLog.flushLog(true);
+    if (paramString1.contains("OutOfMemory"))
+    {
+      com.tencent.qphone.base.util.k.a(k.a(this.a));
+      k.a(this.a).append("\n:SendQueueSize:").append(MsfCore.sCore.sender.g.size());
+      k.a(this.a).append("\n:heapMax=").append(Runtime.getRuntime().maxMemory());
+      k.a(this.a).append(",heapTotal=").append(Runtime.getRuntime().totalMemory());
+      k.a(this.a).append(",heapFree=").append(Runtime.getRuntime().freeMemory());
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MSF.C.StatReport", 2, "getCrashExtraMessage." + k.a(this.a).toString());
+    }
+    return k.a(this.a).toString();
   }
   
-  public void writeTo(JceOutputStream paramJceOutputStream)
+  public boolean onCrashHandleEnd(boolean paramBoolean)
   {
-    paramJceOutputStream.write(this.a, 1);
-    paramJceOutputStream.write(this.b, 2);
-    paramJceOutputStream.write(this.c, 3);
-    paramJceOutputStream.write(this.d, 4);
-    paramJceOutputStream.write(this.e, 5);
-    paramJceOutputStream.write(this.f, 6);
+    return true;
+  }
+  
+  public void onCrashHandleStart(boolean paramBoolean)
+  {
+    QLog.d("MSF.C.StatReport", 1, "onCrashHandleStart...isNativeCrashed: " + paramBoolean);
+    k.a(this.a).append("\nCurrent thread Id=").append(Process.myTid()).append(", Name=").append(Thread.currentThread().getName());
+    this.a.a();
+    this.a.b();
+  }
+  
+  public boolean onCrashSaving(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong, String paramString4, String paramString5, String paramString6, String paramString7)
+  {
+    return (paramBoolean) || (!"java.util.concurrent.TimeoutException".equals(paramString1)) || (TextUtils.isEmpty(paramString3)) || (!paramString3.contains("java.lang.Daemons$FinalizerDaemon"));
   }
 }
 

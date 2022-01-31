@@ -1,87 +1,37 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pic.Logger;
-import com.tencent.mobileqq.pic.PicReq;
-import com.tencent.mobileqq.pic.PicResult;
-import com.tencent.mobileqq.pic.PicUploadInfo;
-import com.tencent.mobileqq.pic.PresendPicMgrService;
-import com.tencent.mobileqq.pic.UiCallBack;
-import com.tencent.mobileqq.pic.UpCallBack.SendResult;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.AccountNotMatchException;
+import android.os.Bundle;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.microapp.sdk.OnUpdateListener;
 
-public class agqb
-  implements UiCallBack
+class agqb
+  implements OnUpdateListener
 {
-  public agqb(PresendPicMgrService paramPresendPicMgrService, PicReq paramPicReq) {}
+  agqb(agpt paramagpt, ResultReceiver paramResultReceiver) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt, PicResult paramPicResult) {}
-  
-  public void a(int paramInt, ArrayList paramArrayList) {}
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void b(int paramInt, PicResult arg2)
+  public void onCheckForUpdate(boolean paramBoolean)
   {
-    UpCallBack.SendResult localSendResult = (UpCallBack.SendResult)???.a;
-    Object localObject2 = new StringBuilder().append("PresendStatus: destPath:").append(this.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.g).append(",uuid:").append(this.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_JavaLangString).append(",canceled:false, peakCompress:true, peakUpload:true, saveMR:true, transferAsync:true, mainUploadFinish:true, uploadResult:");
-    if (paramInt == 0)
+    if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
     {
-      ??? = "ResultOk";
-      Logger.a("PresendPicMgrService", "onSend ", ???);
-      Logger.a("PresendPicMgrService", "onSend", " SendResult = " + localSendResult);
-    }
-    for (;;)
-    {
-      synchronized (PresendPicMgrService.a(this.jdField_a_of_type_ComTencentMobileqqPicPresendPicMgrService))
-      {
-        if (!PresendPicMgrService.a(this.jdField_a_of_type_ComTencentMobileqqPicPresendPicMgrService))
-        {
-          if (paramInt == 0)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.c = 1;
-            Logger.a("PresendPicMgrService", "onSend", " SendButton not clicked, add senReq to mUploadFinishList,senReq = " + this.jdField_a_of_type_ComTencentMobileqqPicPicReq);
-            PresendPicMgrService.a(this.jdField_a_of_type_ComTencentMobileqqPicPresendPicMgrService).add(this.jdField_a_of_type_ComTencentMobileqqPicPicReq);
-            return;
-            ??? = "ResultFail";
-            break;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.c = 2;
-        }
-      }
-      if (paramInt == 0)
-      {
-        try
-        {
-          QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(PresendPicMgrService.a(this.jdField_a_of_type_ComTencentMobileqqPicPresendPicMgrService));
-          localObject2 = (MessageRecord)this.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.a;
-          localQQAppInterface.a().b((MessageRecord)localObject2, null);
-          Logger.a("PresendPicMgrService", "onSend", " SendButton has been clicked, sendMessage directly! ,senReq = " + this.jdField_a_of_type_ComTencentMobileqqPicPicReq);
-        }
-        catch (AccountNotMatchException localAccountNotMatchException) {}
-        if (QLog.isColorLevel()) {
-          QLog.d("PresendPicMgrService", 2, "no appRuntime");
-        }
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d("PresendPicMgrService", 2, "onSend SendResult = " + localAccountNotMatchException + ", upload failed");
-      }
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("action", 0);
+      localBundle.putBoolean("res", paramBoolean);
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
     }
   }
   
-  public void c(int paramInt, PicResult paramPicResult) {}
-  
-  public void d(int paramInt, PicResult paramPicResult) {}
+  public void onUpdateSucc(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("action", 1);
+      localBundle.putBoolean("res", paramBoolean);
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agqb
  * JD-Core Version:    0.7.0.1
  */

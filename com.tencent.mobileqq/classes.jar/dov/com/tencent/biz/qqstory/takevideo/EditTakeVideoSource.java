@@ -4,27 +4,29 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import aoax;
+import ayls;
+import bidc;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.troop.data.MediaInfo;
 import java.io.File;
 
 public class EditTakeVideoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator CREATOR = new aoax();
+  public static final Parcelable.Creator<EditTakeVideoSource> CREATOR = new bidc();
   @NonNull
   public final LocalMediaInfo a;
   @NonNull
   public final String a;
   @NonNull
   public final String b;
+  public final String c;
   
   public EditTakeVideoSource(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.b = paramParcel.readString();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)paramParcel.readParcelable(MediaInfo.class.getClassLoader()));
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)paramParcel.readParcelable(ayls.class.getClassLoader()));
+    this.c = paramParcel.readString();
   }
   
   public EditTakeVideoSource(String paramString1, String paramString2, LocalMediaInfo paramLocalMediaInfo)
@@ -32,6 +34,7 @@ public class EditTakeVideoSource
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.b = paramString2;
     this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
+    this.c = "";
     paramString1 = b();
     if (paramString1 != null) {
       throw new IllegalArgumentException(paramString1);
@@ -78,7 +81,7 @@ public class EditTakeVideoSource
   
   public String toString()
   {
-    return "EditTakeVideoSource: sourcePath=" + this.jdField_a_of_type_JavaLangString + " audioSourcePath=" + this.b + " mediaInfo=" + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
+    return "EditTakeVideoSource: sourcePath=" + this.jdField_a_of_type_JavaLangString + " audioSourcePath=" + this.b + " mediaInfo=" + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo + " audioBgmSourcePath=" + this.c;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -86,6 +89,7 @@ public class EditTakeVideoSource
     paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
     paramParcel.writeString(this.b);
     paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, 0);
+    paramParcel.writeString(this.c);
   }
 }
 

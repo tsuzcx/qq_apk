@@ -1,20 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.device.datadef.ProductNetLinkInfo;
 
-public class xrb
-  implements View.OnClickListener
+public final class xrb
+  implements Parcelable.Creator<ProductNetLinkInfo>
 {
-  public xrb(RecentOptPopBar paramRecentOptPopBar) {}
-  
-  public void onClick(View paramView)
+  public ProductNetLinkInfo a(Parcel paramParcel)
   {
-    this.a.c();
+    ProductNetLinkInfo localProductNetLinkInfo = new ProductNetLinkInfo();
+    localProductNetLinkInfo.productId = paramParcel.readInt();
+    localProductNetLinkInfo.linkResetVoiceDesc = paramParcel.readString();
+    localProductNetLinkInfo.volumeUpTitleDesc = paramParcel.readString();
+    localProductNetLinkInfo.volumeUpContentDesc = paramParcel.readString();
+    localProductNetLinkInfo.volumeUpDescImg = paramParcel.readString();
+    localProductNetLinkInfo.volumeUpVoiceDesc = paramParcel.readString();
+    localProductNetLinkInfo.stopSoundWaveDesc1 = paramParcel.readString();
+    localProductNetLinkInfo.stopSoundWaveDesc2 = paramParcel.readString();
+    return localProductNetLinkInfo;
+  }
+  
+  public ProductNetLinkInfo[] a(int paramInt)
+  {
+    return new ProductNetLinkInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     xrb
  * JD-Core Version:    0.7.0.1
  */

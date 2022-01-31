@@ -1,75 +1,92 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable.IWorldCupGameEndCallBack;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.worldcup.ARWorldCupBackConfirmDialog;
-import com.tencent.mobileqq.worldcup.ARWorldCupBackConfirmDialog.IBackConfirmDialogCallBack;
-import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
-import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager.RenderProxy;
+import android.content.Context;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.ark.ArkPanelPagerAdapter;
+import com.tencent.widget.XPanelContainer;
 
 public class alfl
-  implements ARWorldCupBackConfirmDialog.IBackConfirmDialogCallBack
+  extends RelativeLayout
 {
-  public alfl(ARWorldCupGameLogicManager paramARWorldCupGameLogicManager) {}
+  public int a;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  
+  public alfl(ArkPanelPagerAdapter paramArkPanelPagerAdapter, Context paramContext, AttributeSet paramAttributeSet)
+  {
+    super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    int k = paramArkPanelPagerAdapter.a();
+    int m = paramArkPanelPagerAdapter.b();
+    int n = aciy.a(15.0F, getContext().getResources());
+    int i = 0;
+    while (i < m)
+    {
+      paramArkPanelPagerAdapter = new LinearLayout(paramContext);
+      int j = (XPanelContainer.jdField_a_of_type_Int - XPanelContainer.d - n) / m;
+      paramAttributeSet = new RelativeLayout.LayoutParams(-1, j);
+      paramAttributeSet.leftMargin = aciy.a(20.0F, getContext().getResources());
+      paramAttributeSet.rightMargin = aciy.a(20.0F, getContext().getResources());
+      paramArkPanelPagerAdapter.setOrientation(0);
+      if (i == 0) {}
+      for (paramAttributeSet.topMargin = (XPanelContainer.d / (m + 1));; paramAttributeSet.topMargin = (j * i + XPanelContainer.d * (i + 2) / (m + 1) / 2))
+      {
+        j = 0;
+        while (j < k)
+        {
+          Object localObject = new LinearLayout.LayoutParams(-1, -1);
+          ((LinearLayout.LayoutParams)localObject).weight = 1.0F;
+          if (this.jdField_a_of_type_AndroidViewLayoutInflater == null) {
+            this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+          }
+          View localView = LayoutInflater.from(paramContext).inflate(2131493206, null);
+          paramArkPanelPagerAdapter.addView(localView, (ViewGroup.LayoutParams)localObject);
+          localObject = new alfm();
+          ((alfm)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131302182));
+          ((alfm)localObject).b = ((ImageView)localView.findViewById(2131300748));
+          ((alfm)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131311234));
+          localView.setTag(localObject);
+          j += 1;
+        }
+      }
+      addView(paramArkPanelPagerAdapter, paramAttributeSet);
+      i += 1;
+    }
+    setTag(Integer.valueOf(XPanelContainer.d));
+  }
   
   public void a()
   {
-    int i = 2;
-    String str;
-    if (this.a.a() <= 9) {
-      str = "2";
-    }
-    for (;;)
+    int i = 0;
+    while (i < getChildCount())
     {
-      ReportController.b(null, "dc00898", "", "", "0X8009321", "0X8009321", i, 0, str, "", "", "");
-      ARWorldCupGameLogicManager.a(this.a);
-      return;
-      str = "3";
-      i = 3;
+      Object localObject = getChildAt(i);
+      if (localObject != null)
+      {
+        localObject = (alfm)((View)localObject).getTag();
+        if ((localObject != null) && (((alfm)localObject).jdField_a_of_type_AndroidWidgetImageView != null)) {
+          ((alfm)localObject).jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
+        }
+      }
+      i += 1;
     }
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public void b()
+  public void a(int paramInt)
   {
-    int i = 2;
-    String str;
-    if (this.a.a() <= 9) {
-      str = "2";
-    }
-    for (;;)
-    {
-      ReportController.b(null, "dc00898", "", "", "0X8009322", "0X8009322", i, 0, str, "", "", "");
-      if (ARWorldCupGameLogicManager.a(this.a) != null) {
-        ARWorldCupGameLogicManager.a(this.a).h();
-      }
-      ARWorldCupGameLogicManager.a(this.a).dismiss();
-      return;
-      str = "3";
-      i = 3;
-    }
-  }
-  
-  public void c()
-  {
-    int i = 2;
-    String str;
-    if (this.a.a() <= 9) {
-      str = "2";
-    }
-    for (;;)
-    {
-      ReportController.b(null, "dc00898", "", "", "0X8009323", "0X8009323", i, 0, str, "", "", "");
-      ARWorldCupGameLogicManager.a(this.a).dismiss();
-      if ((this.a.a() == 13) && (this.a.a != null)) {
-        this.a.a.a(13);
-      }
-      return;
-      str = "3";
-      i = 3;
-    }
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alfl
  * JD-Core Version:    0.7.0.1
  */

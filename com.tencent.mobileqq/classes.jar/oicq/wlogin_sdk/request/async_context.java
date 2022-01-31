@@ -27,9 +27,11 @@ public class async_context
   long _msalt = 0L;
   public long _sappid = 0L;
   public boolean _sec_guid_flag = false;
+  String _smslogin_hint_mobile = "";
   String _smslogin_msg = "";
   int _smslogin_msgcnt = 0;
   int _smslogin_timelimit = 0;
+  int _smslogin_zone = 0;
   public long _sub_appid = 0L;
   public long[] _sub_appid_list = new long[0];
   public tlv_t104 _t104 = new tlv_t104();
@@ -45,10 +47,12 @@ public class async_context
   public byte[] _tmp_pwd = new byte[16];
   public int _tmp_pwd_type = 0;
   long _uin = 0L;
+  int _weixinUserFlags = 0;
   public byte[] tgtQR = new byte[0];
   public tlv_t tlv113;
   public tlv_t tlv528;
   public tlv_t tlv530;
+  public tlv_t tlv540;
   
   public boolean ifQQLoginInQim(long paramLong)
   {

@@ -1,15 +1,17 @@
-import android.app.Activity;
-import com.tencent.biz.webviewplugin.Share;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class phz
-  implements Runnable
+  implements View.OnClickListener
 {
-  phz(phy paramphy, GetAppInfoProto.GetAppinfoResponse paramGetAppinfoResponse) {}
+  phz(pht parampht) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Phy.a.a(this.jdField_a_of_type_Phy.a.a.getApplicationContext(), this.jdField_a_of_type_ComTencentProtofileGetappinfoGetAppInfoProto$GetAppinfoResponse);
+    paramView = this.a.jdField_a_of_type_Qoe.a();
+    if (paramView != null) {
+      paramView.a(null, ((opw)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    }
   }
 }
 

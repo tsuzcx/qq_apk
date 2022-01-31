@@ -1,26 +1,29 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
+import com.tencent.av.gaudio.GaInviteLockActivity;
+import com.tencent.av.ui.QavPanel;
 
-class lds
-  extends Client.onRemoteRespObserver
+public class lds
+  implements lxc
 {
-  lds(ldr paramldr) {}
+  public lds(GaInviteLockActivity paramGaInviteLockActivity, long paramLong) {}
   
-  public void onBindedToClient()
+  public void a()
   {
-    ReadInJoyArticleDetailActivity.a(this.a.a);
+    if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a != null)
+    {
+      this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a.setViewEnable(2131306670, false);
+      this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity.a.setViewEnable(2131306671, false);
+    }
   }
   
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle) {}
+  public void b()
+  {
+    GaInviteLockActivity.a(this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity, this.jdField_a_of_type_Long);
+    GaInviteLockActivity.a(this.jdField_a_of_type_ComTencentAvGaudioGaInviteLockActivity, 0, 2130772163);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lds
  * JD-Core Version:    0.7.0.1
  */

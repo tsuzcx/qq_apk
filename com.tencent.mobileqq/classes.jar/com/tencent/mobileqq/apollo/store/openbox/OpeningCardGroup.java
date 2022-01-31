@@ -1,5 +1,8 @@
 package com.tencent.mobileqq.apollo.store.openbox;
 
+import aiuq;
+import aiur;
+import aiuy;
 import android.content.Context;
 import android.os.Handler.Callback;
 import android.os.Looper;
@@ -10,8 +13,8 @@ import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout.LayoutParams;
+import befq;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
 import java.util.List;
 
 public class OpeningCardGroup
@@ -20,16 +23,16 @@ public class OpeningCardGroup
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
+  private aiuy jdField_a_of_type_Aiuy;
   private AnimationSet jdField_a_of_type_AndroidViewAnimationAnimationSet;
-  private IApolloOpenBoxListener jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxIApolloOpenBoxListener;
-  private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
+  private befq jdField_a_of_type_Befq;
   private int b;
   
-  public OpeningCardGroup(Context paramContext, IApolloOpenBoxListener paramIApolloOpenBoxListener)
+  public OpeningCardGroup(Context paramContext, aiuy paramaiuy)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxIApolloOpenBoxListener = paramIApolloOpenBoxListener;
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_Aiuy = paramaiuy;
+    this.jdField_a_of_type_Befq = new befq(Looper.getMainLooper(), this);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
@@ -54,16 +57,16 @@ public class OpeningCardGroup
       localView.startAnimation(localAnimationSet);
       i += 1;
     }
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(15);
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(15, 400L);
+    this.jdField_a_of_type_Befq.removeMessages(15);
+    this.jdField_a_of_type_Befq.sendEmptyMessageDelayed(15, 400L);
   }
   
-  public void a(int paramInt1, int paramInt2, ApolloBoxData paramApolloBoxData)
+  public void a(int paramInt1, int paramInt2, aiuq paramaiuq)
   {
-    if ((paramApolloBoxData == null) || (paramApolloBoxData.b == null)) {
+    if ((paramaiuq == null) || (paramaiuq.b == null)) {
       return;
     }
-    int j = Math.min(super.getChildCount(), paramApolloBoxData.b.size());
+    int j = Math.min(super.getChildCount(), paramaiuq.b.size());
     int i = 0;
     while (i < j)
     {
@@ -73,7 +76,7 @@ public class OpeningCardGroup
       localLayoutParams.width = paramInt1;
       localLayoutParams.height = paramInt2;
       if ((localView instanceof ApolloCardLayout)) {
-        ((ApolloCardLayout)localView).a(1, (ApolloBoxData.ApolloBoxDataItem)paramApolloBoxData.b.get(i), paramInt1, paramInt2);
+        ((ApolloCardLayout)localView).a(1, (aiur)paramaiuq.b.get(i), paramInt1, paramInt2);
       }
       i += 1;
     }
@@ -81,7 +84,7 @@ public class OpeningCardGroup
     super.setLayoutStyle(1);
   }
   
-  public void a(List paramList1, List paramList2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a(List<aiur> paramList, List<ApolloCardLayout> paramList1, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.removeAllViews();
     super.clearAnimation();
@@ -89,7 +92,7 @@ public class OpeningCardGroup
     super.setCurrentFrame(0);
     paramInt4 = (int)(paramInt3 * 0.706F);
     int i = paramInt4 * 760 / 530;
-    int j = Math.min(paramList2.size(), paramList1.size());
+    int j = Math.min(paramList1.size(), paramList.size());
     this.jdField_a_of_type_Float = 1.0F;
     this.b = paramInt1;
     this.jdField_a_of_type_Int = paramInt2;
@@ -98,13 +101,13 @@ public class OpeningCardGroup
       this.jdField_a_of_type_Float = 1.818182F;
       paramInt4 = (int)(paramInt4 * 0.55F);
       i = (int)(i * 0.55F);
-      paramList2 = (ApolloCardLayout)paramList2.get(0);
-      paramList2.a(2, (ApolloBoxData.ApolloBoxDataItem)paramList1.get(0), paramInt4, i);
-      paramList1 = new FrameLayout.LayoutParams(paramInt4, i);
-      paramList1.leftMargin = (paramInt3 - paramInt1 - paramInt4 / 2);
-      paramList1.topMargin = (paramInt2 - i / 2);
-      paramList2.clearAnimation();
-      super.addView(paramList2, paramList1);
+      paramList1 = (ApolloCardLayout)paramList1.get(0);
+      paramList1.a(2, (aiur)paramList.get(0), paramInt4, i);
+      paramList = new FrameLayout.LayoutParams(paramInt4, i);
+      paramList.leftMargin = (paramInt3 - paramInt1 - paramInt4 / 2);
+      paramList.topMargin = (paramInt2 - i / 2);
+      paramList1.clearAnimation();
+      super.addView(paramList1, paramList);
       return;
     }
     if (j == 2)
@@ -113,8 +116,8 @@ public class OpeningCardGroup
       paramInt4 = (int)(paramInt4 * 0.55F);
       i = (int)(i * 0.55F);
       j = (int)(paramInt3 * 0.016F);
-      localApolloCardLayout = (ApolloCardLayout)paramList2.get(0);
-      localApolloCardLayout.a(2, (ApolloBoxData.ApolloBoxDataItem)paramList1.get(0), paramInt4, i);
+      localApolloCardLayout = (ApolloCardLayout)paramList1.get(0);
+      localApolloCardLayout.a(2, (aiur)paramList.get(0), paramInt4, i);
       localLayoutParams = new FrameLayout.LayoutParams(paramInt4, i);
       paramInt1 = paramInt3 - paramInt1 - j / 2 - paramInt4;
       paramInt2 -= i / 2;
@@ -122,13 +125,13 @@ public class OpeningCardGroup
       localLayoutParams.topMargin = paramInt2;
       localApolloCardLayout.clearAnimation();
       super.addView(localApolloCardLayout, localLayoutParams);
-      paramList2 = (ApolloCardLayout)paramList2.get(1);
-      paramList2.a(2, (ApolloBoxData.ApolloBoxDataItem)paramList1.get(1), paramInt4, i);
-      paramList1 = new FrameLayout.LayoutParams(paramInt4, i);
-      paramList1.leftMargin = (paramInt4 + (paramInt1 + j));
-      paramList1.topMargin = paramInt2;
-      paramList2.clearAnimation();
-      super.addView(paramList2, paramList1);
+      paramList1 = (ApolloCardLayout)paramList1.get(1);
+      paramList1.a(2, (aiur)paramList.get(1), paramInt4, i);
+      paramList = new FrameLayout.LayoutParams(paramInt4, i);
+      paramList.leftMargin = (paramInt4 + (paramInt1 + j));
+      paramList.topMargin = paramInt2;
+      paramList1.clearAnimation();
+      super.addView(paramList1, paramList);
       return;
     }
     if (j == 3)
@@ -136,8 +139,8 @@ public class OpeningCardGroup
       this.jdField_a_of_type_Float = 2.631579F;
       paramInt4 = (int)(paramInt4 * 0.38F);
       i = (int)(i * 0.38F);
-      localApolloCardLayout = (ApolloCardLayout)paramList2.get(0);
-      localApolloCardLayout.a(3, (ApolloBoxData.ApolloBoxDataItem)paramList1.get(0), paramInt4, i);
+      localApolloCardLayout = (ApolloCardLayout)paramList1.get(0);
+      localApolloCardLayout.a(3, (aiur)paramList.get(0), paramInt4, i);
       localLayoutParams = new FrameLayout.LayoutParams(paramInt4, i);
       paramInt1 = paramInt3 - paramInt1 - 0 - paramInt4 * 3 / 2;
       paramInt2 -= i / 2;
@@ -145,29 +148,29 @@ public class OpeningCardGroup
       localLayoutParams.topMargin = paramInt2;
       localApolloCardLayout.clearAnimation();
       super.addView(localApolloCardLayout, localLayoutParams);
-      localApolloCardLayout = (ApolloCardLayout)paramList2.get(1);
-      localApolloCardLayout.a(3, (ApolloBoxData.ApolloBoxDataItem)paramList1.get(1), paramInt4, i);
+      localApolloCardLayout = (ApolloCardLayout)paramList1.get(1);
+      localApolloCardLayout.a(3, (aiur)paramList.get(1), paramInt4, i);
       localLayoutParams = new FrameLayout.LayoutParams(paramInt4, i);
       paramInt1 = paramInt1 + 0 + paramInt4;
       localLayoutParams.leftMargin = paramInt1;
       localLayoutParams.topMargin = paramInt2;
       localApolloCardLayout.clearAnimation();
       super.addView(localApolloCardLayout, localLayoutParams);
-      paramList2 = (ApolloCardLayout)paramList2.get(2);
-      paramList2.a(3, (ApolloBoxData.ApolloBoxDataItem)paramList1.get(2), paramInt4, i);
-      paramList1 = new FrameLayout.LayoutParams(paramInt4, i);
-      paramList1.leftMargin = (paramInt4 + (paramInt1 + 0));
-      paramList1.topMargin = paramInt2;
-      paramList2.clearAnimation();
-      super.addView(paramList2, paramList1);
+      paramList1 = (ApolloCardLayout)paramList1.get(2);
+      paramList1.a(3, (aiur)paramList.get(2), paramInt4, i);
+      paramList = new FrameLayout.LayoutParams(paramInt4, i);
+      paramList.leftMargin = (paramInt4 + (paramInt1 + 0));
+      paramList.topMargin = paramInt2;
+      paramList1.clearAnimation();
+      super.addView(paramList1, paramList);
       return;
     }
     this.jdField_a_of_type_Float = 3.571429F;
     paramInt4 = (int)(paramInt4 * 0.28F);
     i = (int)(i * 0.28F);
     j = (int)(paramInt3 * 0.008F);
-    ApolloCardLayout localApolloCardLayout = (ApolloCardLayout)paramList2.get(0);
-    localApolloCardLayout.a(4, (ApolloBoxData.ApolloBoxDataItem)paramList1.get(0), paramInt4, i);
+    ApolloCardLayout localApolloCardLayout = (ApolloCardLayout)paramList1.get(0);
+    localApolloCardLayout.a(4, (aiur)paramList.get(0), paramInt4, i);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(paramInt4, i);
     paramInt3 = paramInt3 - paramInt1 - j * 3 / 2 - paramInt4 * 2;
     paramInt1 = paramInt2 - i / 2;
@@ -175,38 +178,38 @@ public class OpeningCardGroup
     localLayoutParams.topMargin = paramInt1;
     localApolloCardLayout.clearAnimation();
     super.addView(localApolloCardLayout, localLayoutParams);
-    localApolloCardLayout = (ApolloCardLayout)paramList2.get(1);
-    localApolloCardLayout.a(4, (ApolloBoxData.ApolloBoxDataItem)paramList1.get(1), paramInt4, i);
+    localApolloCardLayout = (ApolloCardLayout)paramList1.get(1);
+    localApolloCardLayout.a(4, (aiur)paramList.get(1), paramInt4, i);
     localLayoutParams = new FrameLayout.LayoutParams(paramInt4, i);
     paramInt2 = paramInt3 + j + paramInt4;
     localLayoutParams.leftMargin = paramInt2;
     localLayoutParams.topMargin = paramInt1;
     localApolloCardLayout.clearAnimation();
     super.addView(localApolloCardLayout, localLayoutParams);
-    localApolloCardLayout = (ApolloCardLayout)paramList2.get(2);
-    localApolloCardLayout.a(4, (ApolloBoxData.ApolloBoxDataItem)paramList1.get(2), paramInt4, i);
+    localApolloCardLayout = (ApolloCardLayout)paramList1.get(2);
+    localApolloCardLayout.a(4, (aiur)paramList.get(2), paramInt4, i);
     localLayoutParams = new FrameLayout.LayoutParams(paramInt4, i);
     paramInt2 = paramInt2 + j + paramInt4;
     localLayoutParams.leftMargin = paramInt2;
     localLayoutParams.topMargin = paramInt1;
     localApolloCardLayout.clearAnimation();
     super.addView(localApolloCardLayout, localLayoutParams);
-    paramList2 = (ApolloCardLayout)paramList2.get(3);
-    paramList2.a(4, (ApolloBoxData.ApolloBoxDataItem)paramList1.get(3), paramInt4, i);
-    paramList1 = new FrameLayout.LayoutParams(paramInt4, i);
-    paramList1.leftMargin = (paramInt4 + (paramInt2 + j));
-    paramList1.topMargin = paramInt1;
-    paramList2.clearAnimation();
-    super.addView(paramList2, paramList1);
+    paramList1 = (ApolloCardLayout)paramList1.get(3);
+    paramList1.a(4, (aiur)paramList.get(3), paramInt4, i);
+    paramList = new FrameLayout.LayoutParams(paramInt4, i);
+    paramList.leftMargin = (paramInt4 + (paramInt2 + j));
+    paramList.topMargin = paramInt1;
+    paramList1.clearAnimation();
+    super.addView(paramList1, paramList);
   }
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_Befq.removeCallbacksAndMessages(null);
     if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxIApolloOpenBoxListener = null;
-      this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxMultilScreenlLayout$OnClickScrollLayoutListener = null;
+      this.jdField_a_of_type_Aiuy = null;
+      this.jdField_a_of_type_Aiva = null;
     }
   }
   
@@ -243,8 +246,8 @@ public class OpeningCardGroup
         }
         break;
       }
-    } while (this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxIApolloOpenBoxListener == null);
-    this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxIApolloOpenBoxListener.a(10, 0, 0);
+    } while (this.jdField_a_of_type_Aiuy == null);
+    this.jdField_a_of_type_Aiuy.a(10, 0, 0);
     return false;
     super.setVisibility(8);
     return false;
@@ -252,7 +255,7 @@ public class OpeningCardGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.openbox.OpeningCardGroup
  * JD-Core Version:    0.7.0.1
  */

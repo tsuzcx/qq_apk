@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.ar.arengine.AREngineCallback;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class aamw
-  implements Runnable
+  extends ajuk
 {
-  public aamw(AREngine paramAREngine) {}
+  public aamw(Conversation paramConversation) {}
   
-  public void run()
+  public void a(boolean paramBoolean, Object paramObject)
   {
-    if ((AREngine.e(this.a)) && (AREngine.e(this.a) == 2) && (AREngine.a(this.a) != null)) {
-      AREngine.a(this.a).a(0, 4);
+    if (!(paramObject instanceof String)) {
+      return;
     }
+    paramObject = (String)paramObject;
+    this.a.a(8, paramObject, -2147483648);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aamw
  * JD-Core Version:    0.7.0.1
  */

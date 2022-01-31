@@ -1,25 +1,15 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
-
-public class akur
-  implements Runnable
+public abstract interface akur
+  extends akuw
 {
-  public akur(SwiftIphoneTitleBarUI paramSwiftIphoneTitleBarUI, TextView paramTextView1, TextView paramTextView2, String paramString) {}
+  public abstract void a(int paramInt);
   
-  public void run()
-  {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_AndroidWidgetTextView.getText().toString()))
-    {
-      this.b.setText(this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c(this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a(String paramString1, String paramString2, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean, float paramFloat);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akur
  * JD-Core Version:    0.7.0.1
  */

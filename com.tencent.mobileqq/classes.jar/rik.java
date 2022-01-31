@@ -1,21 +1,22 @@
-import com.tencent.mfsdk.collector.DropFrameMonitor;
-import mqq.util.AbstractUnifiedMonitor.ThreadMonitorCallback;
-
-public class rik
-  implements AbstractUnifiedMonitor.ThreadMonitorCallback
+public abstract interface rik
 {
-  public rik(DropFrameMonitor paramDropFrameMonitor) {}
+  public abstract void a(String paramString);
   
-  public void onThreadMonitorEnd(int paramInt)
-  {
-    if (paramInt == 10) {
-      DropFrameMonitor.a(this.a);
-    }
-  }
+  public abstract boolean b();
+  
+  public abstract String c();
+  
+  public abstract boolean c();
+  
+  public abstract String d();
+  
+  public abstract boolean d();
+  
+  public abstract String e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rik
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,20 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnCompletionListener;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.MediaPlayerWrapper;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
 
 public class nvk
-  implements MediaPlayer.OnCompletionListener
+  implements nyx
 {
-  public nvk(MediaPlayerWrapper paramMediaPlayerWrapper, IMediaPlayer.OnCompletionListener paramOnCompletionListener) {}
+  public nvk(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperMediaPlayerWrapper);
+    if (paramInt != 2) {
+      this.a.d();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nvk
  * JD-Core Version:    0.7.0.1
  */

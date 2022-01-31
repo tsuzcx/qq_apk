@@ -1,21 +1,23 @@
-import com.dataline.core.DirectForwarder;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.app.automator.step.CleanCache.1;
+import java.io.File;
+import java.util.Comparator;
 
-class ajxc
-  implements FMDialogUtil.FMDialogInterface
+public class ajxc
+  implements Comparator<File>
 {
-  ajxc(ajxb paramajxb) {}
+  public ajxc(CleanCache.1 param1) {}
   
-  public void a()
+  public int a(File paramFile1, File paramFile2)
   {
-    DirectForwarder.b(this.a.a, 0);
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
+    }
+    return 0;
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajxc
  * JD-Core Version:    0.7.0.1
  */

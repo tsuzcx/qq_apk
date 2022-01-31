@@ -1,104 +1,49 @@
-import android.content.Intent;
-import android.os.AsyncTask;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.data.LocalFileAdapter;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.filemanager.widget.NoFileRelativeLayout;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.open.pcpush.OpenFileUtil;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 import java.util.List;
-import java.util.Map;
 
-public class acvm
-  extends AsyncTask
+class acvm
+  extends ajmm
 {
-  public acvm(LocalFileBrowserActivity paramLocalFileBrowserActivity, boolean paramBoolean) {}
+  private WeakReference<BaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
   
-  protected List a(String... paramVarArgs)
+  private acvm(acvj paramacvj, BaseActivity paramBaseActivity)
   {
-    int i = 0;
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.e == 6) {
-      if (FileManagerUtil.b().equalsIgnoreCase(paramVarArgs[0])) {
-        paramVarArgs = FileManagerUtil.a(false, 0);
-      }
-    }
-    for (;;)
-    {
-      String[] arrayOfString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.getIntent().getStringArrayExtra("STRING_Show_Within_Suffixs");
-      if ((arrayOfString == null) || (paramVarArgs == null)) {
-        break;
-      }
-      while (i < paramVarArgs.size())
-      {
-        FileInfo localFileInfo = (FileInfo)paramVarArgs.get(i);
-        int j = i;
-        if (!localFileInfo.a()) {
-          if (localFileInfo.a() != 0L)
-          {
-            j = i;
-            if (OpenFileUtil.a(localFileInfo.d().toLowerCase(), arrayOfString)) {}
-          }
-          else
-          {
-            paramVarArgs.remove(i);
-            j = i - 1;
-          }
-        }
-        i = j + 1;
-      }
-      paramVarArgs = FileUtil.a(paramVarArgs[0], false, 0);
-      continue;
-      paramVarArgs = FileUtil.a(paramVarArgs[0], false, 1);
-    }
-    return paramVarArgs;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
   }
   
-  protected void a(List paramList)
+  public void a(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b.clear();
-    if (paramList != null)
+    super.a(paramBoolean1, paramList, paramBoolean2);
+    if ((acvj.a(this.jdField_a_of_type_Acvj, paramList)) && (paramBoolean1)) {}
+    for (paramBoolean2 = true;; paramBoolean2 = false)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.b.addAll(paramList);
-      paramList.clear();
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.getCount() != 0)
-      {
-        if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.isStackFromBottom()) {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setStackFromBottom(true);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setStackFromBottom(false);
+      paramList = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (QLog.isColorLevel()) {
+        QLog.d("MergeForwardRevokeHelper", 2, "onMsgRevokeNotice  hasMsgRevoked:" + paramBoolean2 + "; isSuccess:" + paramBoolean1);
       }
-      LocalFileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity);
-    }
-    for (;;)
-    {
-      FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.centerView);
+      if ((paramBoolean2) && (paramList != null))
+      {
+        if (!this.jdField_a_of_type_Acvj.a) {
+          break;
+        }
+        paramList.finish();
+      }
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_JavaUtilMap.containsKey(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.f))
-      {
-        int i = ((Integer)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.f)).intValue();
-        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerDataLocalFileAdapter.getCount() > i) {
-          LocalFileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity, i);
-        }
-      }
     }
-  }
-  
-  protected void onPreExecute()
-  {
-    super.onPreExecute();
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetNoFileRelativeLayout.setVisible();
-    FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.centerView);
+    if (acvj.a() == paramList)
+    {
+      acvj.a(this.jdField_a_of_type_Acvj, paramList);
+      return;
+    }
+    paramList.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acvm
  * JD-Core Version:    0.7.0.1
  */

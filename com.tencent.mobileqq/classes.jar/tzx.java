@@ -1,31 +1,103 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
-import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class tzx
-  implements View.OnClickListener
+  extends tzk
 {
-  public tzx(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
+  public Context a;
+  public View a;
+  public TextView a;
+  protected final tzq a;
+  public TextView b;
+  public TextView c;
   
-  public void onClick(View paramView)
+  public tzx(View paramView, tzq paramtzq)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI != null)
+    this.jdField_a_of_type_Tzq = paramtzq;
+    this.jdField_a_of_type_AndroidContentContext = paramView.getContext();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131313724));
+    this.b = ((TextView)paramView.findViewById(2131313118));
+    this.c = ((TextView)paramView.findViewById(2131313243));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131303538);
+    QQStoryContext.a();
+    if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.c = false;
-      this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.a = Boolean.valueOf(true);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.g();
+      if (this.b != null) {
+        this.b.setTextColor(Color.parseColor("#44608a"));
+      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#6991b8"));
+      this.c.setTextColor(Color.parseColor("#6991b8"));
+      if (this.jdField_a_of_type_AndroidViewView != null) {
+        this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#0c284e"));
       }
     }
-    this.a.onClick(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView);
-    this.a.a(0);
+    this.c.setOnClickListener(new tzy(this));
+  }
+  
+  public void a(VideoCollectionItem paramVideoCollectionItem, View paramView, int paramInt)
+  {
+    int i = 0;
+    if (this.jdField_a_of_type_Tzq.a)
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(ajjy.a(2131648150));
+      this.jdField_a_of_type_AndroidWidgetTextView.setPadding(vms.a(this.jdField_a_of_type_AndroidContentContext, 3.0F), 0, 0, 0);
+      this.b.setText("");
+      if (paramInt != 1) {
+        break label174;
+      }
+      this.c.setVisibility(0);
+      a(this.jdField_a_of_type_Tzq.a);
+    }
+    for (;;)
+    {
+      paramVideoCollectionItem = this.jdField_a_of_type_AndroidViewView;
+      if (paramInt == 1) {
+        i = 4;
+      }
+      paramVideoCollectionItem.setVisibility(i);
+      return;
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(vlf.c(paramVideoCollectionItem.collectionTime));
+      this.jdField_a_of_type_AndroidWidgetTextView.setPadding(0, 0, 0, 0);
+      if (paramVideoCollectionItem.collectionCount <= 0)
+      {
+        this.b.setText("");
+        break;
+      }
+      this.b.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131633757, new Object[] { Integer.valueOf(paramVideoCollectionItem.collectionCount) }));
+      break;
+      label174:
+      this.c.setVisibility(8);
+    }
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    int i = vms.a(this.jdField_a_of_type_AndroidContentContext, 17.0F);
+    if (paramBoolean)
+    {
+      this.c.setText(ajjy.a(2131648129));
+      localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845807);
+      localDrawable.setBounds(0, 0, i, i);
+      this.c.setCompoundDrawables(localDrawable, null, null, null);
+      return;
+    }
+    this.c.setText(ajjy.a(2131648140));
+    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845806);
+    localDrawable.setBounds(0, 0, i, i);
+    this.c.setCompoundDrawables(localDrawable, null, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tzx
  * JD-Core Version:    0.7.0.1
  */

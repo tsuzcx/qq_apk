@@ -1,34 +1,71 @@
-import com.tencent.mobileqq.troop.filemanager.TroopFileTransferMgr;
-import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil.Log;
-import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr.FileDownloadMgrObserver;
-import com.tencent.mobileqq.troop.utils.TroopFileError;
-import java.util.Set;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.app.IndividualRedPacketManager.VIPHBStrategy.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ajld
-  extends TroopFileDownloadMgr.FileDownloadMgrObserver
+  implements ackp
 {
-  public ajld(TroopFileTransferMgr paramTroopFileTransferMgr) {}
+  private QQAppInterface a;
   
-  protected void a(Set paramSet)
+  public ajld(QQAppInterface paramQQAppInterface)
   {
-    this.a.b = 1;
-    if ((paramSet != null) && (paramSet.contains(Long.valueOf(TroopFileTransferMgr.c(this.a))))) {
-      this.a.b = 2;
+    this.a = paramQQAppInterface;
+  }
+  
+  public void a() {}
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if ((paramRedPacketInfo == null) || (TextUtils.isEmpty(paramRedPacketInfo.templateId))) {
+      return;
     }
-    TroopFileTransferUtil.Log.c("TroopFileTransferMgr", TroopFileTransferUtil.Log.a, "onW2MPausedDownload mW2MPausedUploadState:" + this.a.a + " mW2MPausedDownloadState:" + this.a.b);
-    if (this.a.a > 0)
+    if (QLog.isColorLevel()) {
+      QLog.d(ajkz.b(), 2, "VIPHBStrategy.get Id = " + paramRedPacketInfo.templateId + "content = " + paramRedPacketInfo.jdField_a_of_type_JavaLangString);
+    }
+    Object localObject = (ajkz)this.a.getManager(131);
+    if ((localObject == null) || (!((ajkz)localObject).c()) || (((ajkz)localObject).c.get()))
     {
-      if ((this.a.b == 2) || (this.a.a == 2)) {
-        TroopFileError.a(TroopFileTransferMgr.b(this.a), TroopFileTransferMgr.d(this.a), 107);
+      String str;
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        str = ajkz.b();
+        localStringBuilder = new StringBuilder().append("VIPHBStrategy get fail! Redpacket Disable or no TemplateInfo! ");
+        if (localObject != null) {
+          break label150;
+        }
       }
-      this.a.a = 0;
-      this.a.b = 0;
+      label150:
+      for (localObject = "redPacketManager == null";; localObject = "isShowRedpacket:" + ((ajkz)localObject).a().jdField_a_of_type_Boolean + ", PacketEnable:" + ((ajkz)localObject).b() + ", mIsSDCardError:" + ((ajkz)localObject).c.get())
+      {
+        QLog.d(str, 2, (String)localObject);
+        CustomizeStrategyFactory.a().a(paramRedPacketInfo);
+        return;
+      }
+    }
+    ThreadManager.post(new IndividualRedPacketManager.VIPHBStrategy.1(this, (ajkz)localObject, paramRedPacketInfo), 8, null, true);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, aeav paramaeav)
+  {
+    if ((paramRedPacketInfo != null) && ((paramaeav instanceof aebb)))
+    {
+      paramaeav = (aebb)paramaeav;
+      paramRedPacketInfo.jdField_a_of_type_AndroidGraphicsBitmap = paramaeav.jdField_a_of_type_AndroidGraphicsBitmap;
+      paramRedPacketInfo.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable = paramaeav.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
+      paramRedPacketInfo.jdField_a_of_type_Acko = paramaeav.jdField_a_of_type_Acko;
+      paramRedPacketInfo.b = paramaeav.jdField_a_of_type_Boolean;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajld
  * JD-Core Version:    0.7.0.1
  */

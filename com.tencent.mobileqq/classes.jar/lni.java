@@ -1,19 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.RecvMsg;
 
 public final class lni
-  implements Runnable
+  implements Parcelable.Creator<RecvMsg>
 {
-  public lni(QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
+  public RecvMsg a(Parcel paramParcel)
   {
-    ((KandianMergeManager)this.a.getManager(161)).i();
+    return new RecvMsg(paramParcel);
+  }
+  
+  public RecvMsg[] a(int paramInt)
+  {
+    return new RecvMsg[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lni
  * JD-Core Version:    0.7.0.1
  */

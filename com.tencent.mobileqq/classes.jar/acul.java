@@ -1,32 +1,10 @@
-import android.view.animation.AlphaAnimation;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.FilePreviewAnim;
-
-public class acul
-  implements Runnable
+public abstract interface acul
 {
-  public acul(FilePreviewActivity paramFilePreviewActivity) {}
-  
-  public void run()
-  {
-    if (this.a.b == null) {
-      this.a.b = new FilePreviewAnimQueue(this.a.a);
-    }
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setFillAfter(true);
-    FilePreviewAnimQueue.FilePreviewAnim localFilePreviewAnim = new FilePreviewAnimQueue.FilePreviewAnim();
-    localFilePreviewAnim.jdField_a_of_type_JavaLangObject = localAlphaAnimation;
-    localFilePreviewAnim.jdField_a_of_type_Boolean = false;
-    localFilePreviewAnim.jdField_a_of_type_Int = FilePreviewAnimQueue.jdField_a_of_type_Int;
-    localFilePreviewAnim.b = 1500;
-    this.a.b.a(localFilePreviewAnim);
-    this.a.b.a();
-  }
+  public abstract void a(acuk paramacuk);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acul
  * JD-Core Version:    0.7.0.1
  */

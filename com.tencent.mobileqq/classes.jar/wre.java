@@ -1,19 +1,34 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
-import com.tencent.mobileqq.activity.contact.troop.TroopView.MyTroopObserver;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
 
-public class wre
-  implements Runnable
+class wre
+  implements bhwg<wsh>
 {
-  public wre(TroopView.MyTroopObserver paramMyTroopObserver) {}
+  wre(wrc paramwrc) {}
   
-  public void run()
+  public void a(@Nullable wsh paramwsh)
   {
-    this.a.a.j();
+    if (paramwsh == null) {}
+    do
+    {
+      return;
+      if (paramwsh == wsh.a)
+      {
+        wrc.a(this.a).setVisibility(8);
+        return;
+      }
+      if (paramwsh == wsh.c)
+      {
+        wrc.a(this.a);
+        return;
+      }
+    } while (paramwsh != wsh.b);
+    wrc.a(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wre
  * JD-Core Version:    0.7.0.1
  */

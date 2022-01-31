@@ -7,10 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import com.tencent.biz.qqstory.utils.UIUtils;
+import auwc;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
+import vms;
 
 public abstract class ProviderView
   extends FrameLayout
@@ -19,9 +19,9 @@ public abstract class ProviderView
   protected Handler a;
   protected View a;
   protected ViewGroup a;
+  protected auwc a;
   protected AppInterface a;
-  protected ProviderView.ProviderViewListener a;
-  public QQSlidingTabView a;
+  protected QQSlidingTabView a;
   protected View b;
   private QQSlidingTabView b;
   protected boolean b;
@@ -38,20 +38,18 @@ public abstract class ProviderView
     this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
   }
   
-  protected abstract int a();
-  
   public void a(Bundle paramBundle)
   {
     if (this.jdField_b_of_type_AndroidViewView == null)
     {
-      paramBundle = LayoutInflater.from(getContext()).inflate(2130970259, this, false);
+      paramBundle = LayoutInflater.from(getContext()).inflate(2131495090, this, false);
       addView(paramBundle);
-      this.jdField_b_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView = ((QQSlidingTabView)paramBundle.findViewById(2131368946));
-      this.jdField_c_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView = ((QQSlidingTabView)paramBundle.findViewById(2131368949));
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramBundle.findViewById(2131368948));
+      this.jdField_b_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView = ((QQSlidingTabView)paramBundle.findViewById(2131306355));
+      this.jdField_c_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView = ((QQSlidingTabView)paramBundle.findViewById(2131306350));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramBundle.findViewById(2131306352));
     }
     paramBundle = this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    paramBundle.height = UIUtils.a(getContext(), this.d);
+    paramBundle.height = vms.a(getContext(), this.d);
     this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramBundle);
     if (this.jdField_b_of_type_Boolean)
     {
@@ -64,7 +62,7 @@ public abstract class ProviderView
       if (this.jdField_c_of_type_Int != 1) {
         break label163;
       }
-      findViewById(2131368947).setVisibility(0);
+      findViewById(2131306356).setVisibility(0);
     }
     for (;;)
     {
@@ -91,50 +89,14 @@ public abstract class ProviderView
     return this.jdField_b_of_type_Boolean;
   }
   
-  public void ak_() {}
-  
-  public void b()
-  {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
-  }
+  public void aO_() {}
   
   public void b(int paramInt)
   {
     this.d = paramInt;
   }
   
-  public void b(Bundle paramBundle)
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null) {}
-    try
-    {
-      paramBundle = LayoutInflater.from(getContext()).inflate(2130970259, this, false);
-      addView(paramBundle);
-      if (this.jdField_b_of_type_AndroidViewView == null)
-      {
-        this.jdField_b_of_type_AndroidViewView = paramBundle;
-        this.jdField_b_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView = ((QQSlidingTabView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368946));
-        this.jdField_c_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView = ((QQSlidingTabView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368949));
-        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_b_of_type_AndroidViewView.findViewById(2131368948));
-      }
-      paramBundle = LayoutInflater.from(getContext()).inflate(a(), this, false);
-      if (this.jdField_a_of_type_AndroidViewView == null) {
-        this.jdField_a_of_type_AndroidViewView = paramBundle;
-      }
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ProviderView", 2, "preInflate failed " + paramBundle.toString());
-    }
-  }
-  
-  public void d() {}
-  
-  public void e() {}
-  
-  public void f() {}
+  public void c() {}
   
   public void setAppInterface(AppInterface paramAppInterface)
   {
@@ -146,9 +108,9 @@ public abstract class ProviderView
     this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
-  public void setProviderViewListener(ProviderView.ProviderViewListener paramProviderViewListener)
+  public void setProviderViewListener(auwc paramauwc)
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView$ProviderViewListener = paramProviderViewListener;
+    this.jdField_a_of_type_Auwc = paramauwc;
   }
   
   public void setTabBarPosition(int paramInt)
@@ -158,7 +120,7 @@ public abstract class ProviderView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.ProviderView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,15 @@
-import com.tencent.biz.troop.VideoCombineHelper;
-import com.tencent.biz.troop.VideoCombineHelper.Task;
-import com.tencent.biz.troop.VideoCombineHelper.TaskListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeUsersCommentsView;
 
 public class pbv
-  extends VideoCombineHelper.Task
+  implements View.OnClickListener
 {
-  public pbv(VideoCombineHelper paramVideoCombineHelper, VideoCombineHelper.TaskListener paramTaskListener, String paramString)
-  {
-    super(paramVideoCombineHelper, paramTaskListener, paramString);
-  }
+  public pbv(NativeUsersCommentsView paramNativeUsersCommentsView) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.b(this);
+    this.a.callOnClick();
   }
 }
 

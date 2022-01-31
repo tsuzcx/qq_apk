@@ -1,30 +1,47 @@
-import com.tencent.mobileqq.remind.widget.WheelView;
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout;
-import com.tencent.mobileqq.troop.widget.WheelPickerLayout.WheelPickListener;
-import com.tencent.widget.VerticalGallery;
-import com.tencent.widget.VerticalGallery.OnEndMovementListener;
+import android.support.annotation.NonNull;
+import java.util.HashSet;
 
 public class akcb
-  implements VerticalGallery.OnEndMovementListener
 {
-  private int jdField_a_of_type_Int;
+  public static final HashSet<akcb> a;
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public long b;
+  public long c;
   
-  public akcb(WheelPickerLayout paramWheelPickerLayout, int paramInt)
+  static
   {
-    this.jdField_a_of_type_Int = paramInt;
+    jdField_a_of_type_JavaUtilHashSet = new HashSet();
   }
   
-  public void a(VerticalGallery paramVerticalGallery)
+  public akcb(long paramLong1, long paramLong2, long paramLong3, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    int i = WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout)[this.jdField_a_of_type_Int].getSelectedItemPosition();
-    if (WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout) != null) {
-      WheelPickerLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetWheelPickerLayout).a(this.jdField_a_of_type_Int, i);
-    }
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.c = paramLong3;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PushMsg0x210_c7Info{");
+    localStringBuilder.append("fromUin:").append(this.jdField_a_of_type_Long).append(", ");
+    localStringBuilder.append("msgSeq:").append(this.jdField_b_of_type_Long).append(", ");
+    localStringBuilder.append("msgTime:").append(this.jdField_b_of_type_Int).append(", ");
+    localStringBuilder.append("onlinePush:").append(this.jdField_a_of_type_Boolean).append(", ");
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akcb
  * JD-Core Version:    0.7.0.1
  */

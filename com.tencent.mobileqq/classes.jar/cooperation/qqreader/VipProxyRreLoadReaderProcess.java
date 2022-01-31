@@ -1,15 +1,14 @@
 package cooperation.qqreader;
 
-import amym;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.biz.common.offline.HtmlOffline;
+import badq;
+import bfmm;
+import bfne;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pluginsdk.PluginProxyBroadcastReceiver;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import mof;
 import mqq.app.MobileQQ;
 
 public class VipProxyRreLoadReaderProcess
@@ -17,25 +16,24 @@ public class VipProxyRreLoadReaderProcess
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
+    bfne.d("VipProxyRreLoadReaderProcess", "onReceive start");
     super.onReceive(paramContext, paramIntent);
+    bfmm.a(BaseApplicationImpl.getApplication(), false);
     if (paramIntent.getBooleanExtra("isPreloadProcess", false))
     {
-      QReaderHelper.a = 2;
-      paramContext = BaseApplicationImpl.getApplication().waitAppRuntime(null).getAppRuntime("qqreaderplugin.apk");
-      if (QLog.isColorLevel()) {
-        QLog.i("VipProxyRreLoadReaderProcess", 2, "VipProxyRreLoadReaderProcess isPreloadProcess=true");
-      }
-      if (NetworkUtil.h(MobileQQ.sMobileQQ))
+      bflp.a = 2;
+      bfne.c("VipProxyRreLoadReaderProcess", "VipProxyRreLoadReaderProcess isPreloadProcess=true");
+      if (badq.h(MobileQQ.sMobileQQ))
       {
-        HtmlOffline.a();
-        ThreadManager.post(new amym(this, paramContext), 5, null, true);
+        mof.a();
+        ThreadManager.post(new VipProxyRreLoadReaderProcess.1(this), 5, null, true);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cooperation.qqreader.VipProxyRreLoadReaderProcess
  * JD-Core Version:    0.7.0.1
  */

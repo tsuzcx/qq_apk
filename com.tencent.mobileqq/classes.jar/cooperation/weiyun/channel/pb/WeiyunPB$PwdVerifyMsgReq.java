@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class WeiyunPB$PwdVerifyMsgReq
-  extends MessageMicro
+  extends MessageMicro<PwdVerifyMsgReq>
 {
   public static final int CS_SIG_FIELD_NUMBER = 2;
   public static final int PWD_MD5_FIELD_NUMBER = 1;
@@ -24,7 +24,7 @@ public final class WeiyunPB$PwdVerifyMsgReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cooperation.weiyun.channel.pb.WeiyunPB.PwdVerifyMsgReq
  * JD-Core Version:    0.7.0.1
  */

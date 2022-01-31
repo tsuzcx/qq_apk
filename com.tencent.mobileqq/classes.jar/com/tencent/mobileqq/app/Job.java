@@ -7,7 +7,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Job
   extends WeakReference<Object>
-  implements Runnable, Comparable<Job>
+  implements Comparable<Job>, Runnable
 {
   private static int RUNNING_TIME_OUT = 9990000;
   private static final String TAG = "Job";
@@ -61,7 +61,7 @@ public class Job
     if (paramObject != null) {
       this.hasKey = true;
     }
-    this.mName = paramString;
+    this.mName = paramRunnable.toString();
     this.mType = paramInt;
     this.mJob = paramRunnable;
     this.mListener = paramIThreadListener;
@@ -183,41 +183,39 @@ public class Job
   
   public boolean checkShouldRun()
   {
-    if (this.canAutoRetrieve)
+    Object localObject;
+    if ((this.canAutoRetrieve) && (this.hasKey))
     {
-      if (this.hasKey)
+      localObject = get();
+      if (localObject == null) {}
+    }
+    else
+    {
+      try
       {
-        Object localObject = get();
-        if (localObject != null) {
-          try
-          {
-            Field localField = this.mJob.getClass().getDeclaredField("this$0");
-            localField.setAccessible(true);
-            localField.set(this.mJob, localObject);
-            return true;
-          }
-          catch (NoSuchFieldException localNoSuchFieldException)
-          {
-            ThreadLog.printQLog("Job", this.mName, localNoSuchFieldException);
-            return false;
-          }
-          catch (IllegalArgumentException localIllegalArgumentException)
-          {
-            ThreadLog.printQLog("Job", this.mName, localIllegalArgumentException);
-            return false;
-          }
-          catch (IllegalAccessException localIllegalAccessException)
-          {
-            ThreadLog.printQLog("Job", this.mName, localIllegalAccessException);
-            return false;
-          }
-        }
-        ThreadLog.printQLog("Job", this.mName + " never run, becuse outer object is retrieve already");
+        Field localField = this.mJob.getClass().getDeclaredField("this$0");
+        localField.setAccessible(true);
+        localField.set(this.mJob, localObject);
+        return true;
+      }
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
+        ThreadLog.printQLog("Job", this.mName, localNoSuchFieldException);
         return false;
       }
-      return true;
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        ThreadLog.printQLog("Job", this.mName, localIllegalArgumentException);
+        return false;
+      }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        ThreadLog.printQLog("Job", this.mName, localIllegalAccessException);
+        return false;
+      }
     }
-    return true;
+    ThreadLog.printQLog("Job", this.mName + " never run, becuse outer object is retrieve already");
+    return false;
   }
   
   public int compareTo(Job paramJob)

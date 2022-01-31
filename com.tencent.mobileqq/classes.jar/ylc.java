@@ -1,49 +1,95 @@
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.video.IMediaPlayer;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.graphics.Color;
+import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
 
-public class ylc
-  implements SurfaceHolder.Callback
+final class ylc
+  extends LinearLayout
+  implements yku
 {
-  public ylc(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  private int jdField_a_of_type_Int = -2147483648;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ykr jdField_a_of_type_Ykr;
+  private int jdField_b_of_type_Int = -2147483648;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  public ylc(Context paramContext, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "surfaceCreated: mSavedCurPosition:" + this.a.g + ",mSavedPlayState : " + this.a.a(this.a.h));
-    }
-    if ((this.a.h == 1) && (this.a.g > 0))
+    super(paramContext);
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString1)) || (paramInt1 < 0) || (paramInt2 < 0))
     {
-      this.a.a(this.a.g);
-      this.a.g = 0;
-      this.a.h = 0;
+      yny.d("GdtBannerViewForCreativeSize194", "constructor");
       return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    setOrientation(0);
+    setGravity(16);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Ykr = new ykr(paramContext, paramString1);
+    this.jdField_a_of_type_Ykr.setId(2131301342);
+    addView(this.jdField_a_of_type_Ykr);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
+    addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131301345);
+    this.jdField_a_of_type_AndroidWidgetTextView.setLines(1);
+    this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#333333"));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString2);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView);
+    this.jdField_b_of_type_AndroidWidgetTextView = new TextView(paramContext);
+    this.jdField_b_of_type_AndroidWidgetTextView.setId(2131301341);
+    this.jdField_b_of_type_AndroidWidgetTextView.setMaxLines(2);
+    this.jdField_b_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#666666"));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString3);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_b_of_type_AndroidWidgetTextView);
   }
   
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+  public View a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "surfaceDestroyed ");
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.c();
-    }
-    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    }
+    return this;
   }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_Int <= 0) || (this.jdField_b_of_type_Int <= 0) || (this.jdField_a_of_type_Ykr == null) || (this.jdField_a_of_type_AndroidWidgetLinearLayout == null) || (this.jdField_a_of_type_AndroidWidgetTextView == null) || (this.jdField_b_of_type_AndroidWidgetTextView == null) || (paramInt1 <= 0) || (paramInt2 <= 0))
+    {
+      yny.d("GdtBannerViewForCreativeSize194", "setSize error");
+      return;
+    }
+    ykz localykz = new ykz(getContext(), paramInt1, paramInt2);
+    paramInt1 = Double.valueOf(1.0D * (paramInt2 - localykz.jdField_b_of_type_Int * 2) / this.jdField_b_of_type_Int * this.jdField_a_of_type_Int + localykz.jdField_b_of_type_Int * 2).intValue();
+    this.jdField_a_of_type_Ykr.setPadding(localykz.jdField_b_of_type_Int, localykz.jdField_b_of_type_Int, localykz.jdField_b_of_type_Int, localykz.jdField_b_of_type_Int);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(paramInt1, paramInt2);
+    this.jdField_a_of_type_Ykr.setLayoutParams(localLayoutParams);
+    localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    localLayoutParams.leftMargin = localykz.jdField_a_of_type_Int;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
+    localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, localykz.d);
+    localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+    localLayoutParams.topMargin = localykz.c;
+    this.jdField_b_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
+    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, localykz.d);
+  }
+  
+  public void a(Context paramContext) {}
+  
+  public void b(Context paramContext) {}
+  
+  public void c(Context paramContext) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ylc
  * JD-Core Version:    0.7.0.1
  */

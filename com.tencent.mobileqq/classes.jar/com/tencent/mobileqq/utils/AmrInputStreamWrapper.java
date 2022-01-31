@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.utils;
 
 import android.content.Context;
+import audm;
+import audo;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
-import com.tencent.mobileqq.ptt.processor.IPttProcessor.ProcessData;
-import com.tencent.mobileqq.ptt.processor.PttComponentProcessor;
 import java.io.PipedInputStream;
 
 public final class AmrInputStreamWrapper
-  extends PttComponentProcessor
+  extends audo
 {
   private static boolean a;
   private int b;
@@ -60,7 +60,7 @@ public final class AmrInputStreamWrapper
     this.jdField_a_of_type_Int = 320;
     this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
     this.jdField_c_of_type_ArrayOfByte = new byte[960];
-    this.jdField_a_of_type_ComTencentMobileqqPttProcessorIPttProcessor$ProcessData = new IPttProcessor.ProcessData(this.jdField_c_of_type_ArrayOfByte, 0);
+    this.jdField_a_of_type_Audm = new audm(this.jdField_c_of_type_ArrayOfByte, 0);
   }
   
   /* Error */

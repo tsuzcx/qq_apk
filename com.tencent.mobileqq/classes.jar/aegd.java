@@ -1,54 +1,34 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
-import com.tencent.smtt.sdk.WebView;
-import java.util.concurrent.atomic.AtomicLong;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
 
-public class aegd
-  extends BroadcastReceiver
+class aegd
+  extends anoj
 {
-  public aegd(UiApiPlugin paramUiApiPlugin) {}
+  aegd(aefv paramaefv) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void a(boolean paramBoolean, anor paramanor)
   {
-    paramContext = (ResultReceiver)paramIntent.getParcelableExtra("receiver");
-    long l = paramIntent.getLongExtra("seq", 0L);
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("seq", l);
-    if (UiApiPlugin.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get() != -1L) {
-      paramContext.send(-1, localBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onGetUnLimitFriendInfo " + paramBoolean);
     }
-    String str = paramIntent.getStringExtra("date");
-    paramIntent = paramIntent.getStringExtra("id");
-    Object localObject = this.a.mRuntime.a();
-    if ((localObject != null) && (!((Activity)localObject).isFinishing()))
+    if ((paramBoolean) && (paramanor != null)) {
+      aefv.a(this.a, paramanor);
+    }
+  }
+  
+  protected void a(boolean paramBoolean, anpv paramanpv, int paramInt)
+  {
+    if ((paramBoolean) && (paramanpv != null))
     {
-      localObject = this.a.mRuntime.a();
-      if ((localObject == null) || (((WebView)localObject).getX5WebViewExtension() == null))
-      {
-        paramContext.send(-2, localBundle);
-        return;
-      }
-      localBundle = new Bundle();
-      localBundle.putString("date", str);
-      localBundle.putString("id", paramIntent);
-      UiApiPlugin.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(l);
-      UiApiPlugin.jdField_a_of_type_AndroidOsResultReceiver = paramContext;
-      ((WebView)localObject).getX5WebViewExtension().invokeMiscMethod("uploadX5CoreLiveLog", localBundle);
-      return;
+      bajr.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramanpv, this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO, this.a.g, this.a.L);
+      aefv.a(this.a, paramanpv.mNickName);
+      this.a.e.setText(paramanpv.mNickName);
     }
-    paramContext.send(-2, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aegd
  * JD-Core Version:    0.7.0.1
  */

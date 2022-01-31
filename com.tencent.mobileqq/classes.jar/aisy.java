@@ -1,25 +1,67 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.text.TextUtils;
-import com.tencent.mobileqq.text.TextUtils.LoadSysEmojiCallback;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.EditText;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aisy
-  implements Runnable
+@TargetApi(11)
+public class aisy
+  extends EditText
+  implements ActionMode.Callback
 {
-  public aisy(int paramInt, TextUtils.LoadSysEmojiCallback paramLoadSysEmojiCallback) {}
-  
-  public void run()
+  public aisy(Context paramContext)
   {
-    Drawable localDrawable = TextUtils.b(BaseApplicationImpl.getContext().getResources(), this.jdField_a_of_type_Int);
-    if ((localDrawable != null) && (this.jdField_a_of_type_ComTencentMobileqqTextTextUtils$LoadSysEmojiCallback != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqTextTextUtils$LoadSysEmojiCallback.a(localDrawable);
+    super(paramContext);
+    super.setLongClickable(false);
+    super.setTextIsSelectable(false);
+    super.setImeOptions(268435456);
+    if (Build.VERSION.SDK_INT >= 11) {
+      super.setCustomSelectionActionModeCallback(this);
     }
+  }
+  
+  public void a(int paramInt)
+  {
+    try
+    {
+      super.setSelection(paramInt);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ApolloDiyTextActivity", 1, localException.getMessage());
+    }
+  }
+  
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  {
+    return false;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
+  }
+  
+  public boolean onTextContextMenuItem(int paramInt)
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aisy
  * JD-Core Version:    0.7.0.1
  */

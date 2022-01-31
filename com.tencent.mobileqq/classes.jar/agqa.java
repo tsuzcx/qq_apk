@@ -1,25 +1,21 @@
-import com.tencent.mobileqq.pic.Logger;
-import com.tencent.mobileqq.pic.PresendPicMgr;
+import android.os.Bundle;
+import android.os.ResultReceiver;
 
-public class agqa
-  implements Runnable
+class agqa
+  implements agmu
 {
-  private agpz jdField_a_of_type_Agpz;
+  agqa(agpt paramagpt, ResultReceiver paramResultReceiver) {}
   
-  public agqa(PresendPicMgr paramPresendPicMgr, agpz paramagpz)
+  public void a(String paramString1, String paramString2, agmo paramagmo)
   {
-    this.jdField_a_of_type_Agpz = paramagpz;
-  }
-  
-  public void run()
-  {
-    Logger.a("PresendPicMgr", "PresendRunnable.run", "PresendReq is " + this.jdField_a_of_type_Agpz);
-    this.jdField_a_of_type_Agpz.a();
+    paramString1 = new Bundle();
+    paramString1.putString("res", paramString2);
+    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agqa
  * JD-Core Version:    0.7.0.1
  */

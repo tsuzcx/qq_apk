@@ -1,47 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.widget.XEditTextEx;
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
 
-class rty
-  implements DialogInterface.OnClickListener
+final class rty
+  extends akih
 {
-  rty(rtx paramrtx) {}
+  rty(ajpe paramajpe, String paramString, AppInterface paramAppInterface, Context paramContext, int paramInt, boolean paramBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a()
   {
-    try
-    {
-      if (BaseChatPie.j(this.a.a.a) > 0)
-      {
-        if (this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1) {
-          break label133;
-        }
-        this.a.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a("/data/data/com.tencent.mobileqq/files/crashinfo/CrashInfoSummary.txt", this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      }
-      for (;;)
-      {
-        this.a.a.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
-        BaseChatPie.a(this.a.a.a).delete(0, BaseChatPie.a(this.a.a.a).length());
-        paramDialogInterface.dismiss();
-        return;
-        label133:
-        this.a.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a("/data/data/com.tencent.mobileqq/files/crashinfo/CrashInfoSummary.txt", this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, true);
-      }
-      return;
+    return 4;
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (this.jdField_a_of_type_Ajpe != null) {
+      this.jdField_a_of_type_Ajpe.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
     }
-    catch (Exception paramDialogInterface)
-    {
-      paramDialogInterface.printStackTrace();
+    rtr.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(Object paramObject)
+  {
+    if (this.jdField_a_of_type_Ajpe != null) {
+      this.jdField_a_of_type_Ajpe.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      rtr.a(this.jdField_a_of_type_AndroidContentContext, 2131629887);
     }
   }
+  
+  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rty
  * JD-Core Version:    0.7.0.1
  */

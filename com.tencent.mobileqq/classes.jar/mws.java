@@ -1,24 +1,72 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.widget.Button;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import java.io.UnsupportedEncodingException;
+import org.json.JSONObject;
 
-class mws
-  implements Runnable
+public class mws
+  extends Handler
 {
-  mws(mwr parammwr, int paramInt) {}
+  public mws(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_Int <= 0)
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_Mwr.a.leftView.setText(2131433311);
+    default: 
       return;
-    }
-    if (this.jdField_a_of_type_Int > 99)
-    {
-      this.jdField_a_of_type_Mwr.a.leftView.setText(String.format("%s(%d+)", new Object[] { this.jdField_a_of_type_Mwr.a.getString(2131433311), Integer.valueOf(99) }));
+    case 3: 
+      this.a.P();
       return;
+    case 1: 
+      if (this.a.c)
+      {
+        this.a.j();
+        this.a.L();
+      }
+      for (;;)
+      {
+        this.a.c(this.a.getIntent());
+        return;
+        this.a.j();
+      }
+    case 2: 
+      paramMessage = new Intent();
+      paramMessage.putExtra("isNeedFinish", true);
+      this.a.setResult(-1, paramMessage);
+      this.a.finish();
+      return;
+    case 4: 
+      paramMessage = new Intent(this.a.getActivity(), QQBrowserActivity.class);
+      paramMessage.putExtra("BSafeReportPost", true);
+      try
+      {
+        if (this.a.a != null) {
+          paramMessage.putExtra("SafeReportData", this.a.a.toString().getBytes("utf-8"));
+        }
+        paramMessage.putExtra("hide_more_buttonbutton", true);
+        paramMessage.putExtra("ishiderefresh", true);
+        paramMessage.putExtra("ishidebackforward", true);
+        this.a.startActivity(paramMessage.putExtra("url", "http://jubao.mp.qq.com/mobile/reportAccount"));
+        return;
+      }
+      catch (UnsupportedEncodingException localUnsupportedEncodingException)
+      {
+        for (;;)
+        {
+          localUnsupportedEncodingException.printStackTrace();
+        }
+      }
     }
-    this.jdField_a_of_type_Mwr.a.leftView.setText(String.format("%s(%d)", new Object[] { this.jdField_a_of_type_Mwr.a.getString(2131433311), Integer.valueOf(this.jdField_a_of_type_Int) }));
+    paramMessage = new AlphaAnimation(1.0F, 0.0F);
+    paramMessage.setDuration(500L);
+    this.a.d.startAnimation(paramMessage);
+    this.a.d.setVisibility(8);
   }
 }
 

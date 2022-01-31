@@ -1,17 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoShareGroup;
-
-public class aodt
-  implements View.OnClickListener
+class aodt
+  extends aoft
 {
-  public aodt(EditVideoShareGroup paramEditVideoShareGroup) {}
+  aodt(aodq paramaodq, aodv paramaodv) {}
   
-  public void onClick(View paramView) {}
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Aodv.a(paramString2);
+      return;
+    }
+    this.jdField_a_of_type_Aodv.a(paramInt, paramString1);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aodt
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class ImageRetrievalLogic$IRLogicReq
-  extends MessageMicro
+  extends MessageMicro<IRLogicReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field iBusiness = PBField.initInt32(0);
@@ -25,7 +25,7 @@ public final class ImageRetrievalLogic$IRLogicReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.ImageRetrievalLogic.IRLogicReq
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x875$UserFollowState
-  extends MessageMicro
+  extends MessageMicro<UserFollowState>
 {
   public static final int STATE_TYPE_CREATE_HOTCHAT = 13;
   public static final int STATE_TYPE_NEARBY_POST = 12;
@@ -34,7 +34,7 @@ public final class oidb_0x875$UserFollowState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x875.oidb_0x875.UserFollowState
  * JD-Core Version:    0.7.0.1
  */

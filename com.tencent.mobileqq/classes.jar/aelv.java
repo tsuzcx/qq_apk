@@ -1,44 +1,38 @@
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager;
-import com.tencent.mobileqq.magicface.drawable.PngGifEngine;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecBarAdapter.ImgUpdateListener.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-class aelv
-  extends DownloadListener
+public class aelv
+  implements aeml
 {
-  aelv(aelu paramaelu) {}
+  public aels a;
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public aelv(aels paramaels)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PngFrameManager", 2, "func onDone.【aio preview】");
-    }
-    synchronized (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager)
+    this.a = paramaels;
+  }
+  
+  public void a(List<aelm> paramList, String paramString1, String paramString2)
+  {
+    if (this.a != null)
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.a != null)
-      {
-        if (paramDownloadTask.a() != 3) {
-          this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.a.obtainMessage(226, this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam).sendToTarget();
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerRecBarAdapter", 2, "data=" + paramList.size());
       }
-      else {
-        return;
-      }
-      paramDownloadTask = PngGifEngine.a(this.a.jdField_a_of_type_JavaLangString);
-      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.a = paramDownloadTask;
-      this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.a.obtainMessage(227, this.a.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam).sendToTarget();
-      BaseApplicationImpl.sImageCache.put(this.a.jdField_a_of_type_JavaLangString, paramDownloadTask);
+      aels.a(this.a);
+      ThreadManager.getUIHandler().post(new StickerRecBarAdapter.ImgUpdateListener.1(this, paramString1, paramList, paramString2));
     }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("StickerRecBarAdapter", 2, "mAdapter is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aelv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,21 @@
-import com.tencent.gdtad.views.video.GdtVideoCommonView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class qrp
-  implements Runnable
+  implements View.OnClickListener
 {
-  public qrp(GdtVideoCommonView paramGdtVideoCommonView) {}
+  public qrp(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    GdtVideoCommonView.a(this.a);
+    ReadInJoyListViewGroup.b(this.a);
+    obz.a(this.a.getContext(), 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qrp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,31 @@
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.qphone.base.util.QLog;
 
-public class paa
-  implements Runnable
+class paa
+  implements oqy
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private boolean jdField_a_of_type_Boolean;
+  paa(ozx paramozx, RecommendFollowInfo paramRecommendFollowInfo) {}
   
-  public paa(TribeVideoPlugin paramTribeVideoPlugin, boolean paramBoolean)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramTribeVideoPlugin);
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void run()
-  {
-    TribeVideoPlugin localTribeVideoPlugin = (TribeVideoPlugin)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localTribeVideoPlugin == null) || (TribeVideoPlugin.a(localTribeVideoPlugin) == null)) {
-      return;
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoySocializeRecommendFollowView", 2, "978 resp, result : " + paramBoolean + ", data : " + paramInt + ", distUin : " + paramString);
     }
-    String str = ((BaseActivity)TribeVideoPlugin.a(localTribeVideoPlugin)).getCurrentAccountUin();
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 0)
+    if (paramBoolean)
     {
-      ReportController.b(null, "dc00899", "BizTechReport", str, "tribe_video", "play", 0, 0, Integer.toString(i), Integer.toString(NetworkUtil.b(TribeVideoPlugin.a(localTribeVideoPlugin))), "", "");
-      return;
+      paramString = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo;
+      if (paramInt == 2) {}
+      for (paramBoolean = bool;; paramBoolean = false)
+      {
+        paramString.isFollowed = paramBoolean;
+        ozx.a(this.jdField_a_of_type_Ozx, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo);
+        ozx.a(this.jdField_a_of_type_Ozx).notifyDataSetChanged();
+        return;
+      }
     }
+    bbmy.a(ozx.a(this.jdField_a_of_type_Ozx).getContext(), 1, 2131652679, 0).a();
   }
 }
 

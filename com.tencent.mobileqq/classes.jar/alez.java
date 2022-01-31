@@ -1,37 +1,40 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.widget.WebViewProgressBarController;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
 public class alez
-  extends Handler
 {
-  final WeakReference a;
+  java.lang.ref.WeakReference<QQAppInterface> a;
   
-  public alez(WebViewProgressBarController paramWebViewProgressBarController)
+  public alez(QQAppInterface paramQQAppInterface)
   {
-    super(Looper.getMainLooper());
-    this.a = new WeakReference(paramWebViewProgressBarController);
+    this.a = new mqq.util.WeakReference(paramQQAppInterface);
   }
   
-  public void handleMessage(Message paramMessage)
+  public boolean a(String paramString, int paramInt1, int paramInt2, ajfe paramajfe)
   {
-    WebViewProgressBarController localWebViewProgressBarController = (WebViewProgressBarController)this.a.get();
-    if (localWebViewProgressBarController == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    if (localQQAppInterface == null)
     {
-    default: 
-      return;
+      ArkAppCenter.c("ArkApp.SSO", "requestArkAppList, app is null, return false");
+      return false;
     }
-    localWebViewProgressBarController.e();
+    return ((ales)localQQAppInterface.a(95)).a(paramString, paramInt1, paramInt2, paramajfe);
+  }
+  
+  public boolean a(String paramString1, String paramString2, int paramInt1, int paramInt2, ajfe paramajfe)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    if (localQQAppInterface == null)
+    {
+      ArkAppCenter.c("ArkApp.SSO", "sendAppMsg, app is null, return false");
+      return false;
+    }
+    return ((ales)localQQAppInterface.a(95)).a(paramString1, paramString2, paramInt1, paramInt2, paramajfe);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alez
  * JD-Core Version:    0.7.0.1
  */

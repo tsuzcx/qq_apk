@@ -1,30 +1,24 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.util.Log;
 
-public class lgx
-  implements ActionSheet.OnButtonClickListener
+public abstract class lgx
 {
-  public lgx(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  private String a;
+  protected lgw a;
   
-  public void OnClick(View paramView, int paramInt)
+  public lgx()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      ReadInJoySettingActivity.a(this.a).cancel();
-      return;
-      ReadInJoySettingActivity.a(this.a, false);
-      ReadInJoySettingActivity.b(this.a, ReadInJoySettingActivity.a(this.a));
-    }
+    this.jdField_a_of_type_JavaLangString = (getClass().getSimpleName() + "-" + Integer.toHexString(hashCode()));
+  }
+  
+  public void a(lgw paramlgw)
+  {
+    Log.d(this.jdField_a_of_type_JavaLangString, "init");
+    this.jdField_a_of_type_Lgw = paramlgw;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lgx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.app.activateFriends.ActivateFriendsObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class unr
-  extends ActivateFriendsObserver
+class unr
+  implements View.OnClickListener
 {
-  public unr(ActivateFriendActivity paramActivateFriendActivity) {}
+  unr(unj paramunj, uqq paramuqq) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ActivateFriends.MainActivity", 2, "onReceiveBirthDayPushUpdate");
-    }
-    ActivateFriendActivity.b(this.a);
+    urp.a("home_page", "guide_shoot", 0, 0, new String[0]);
+    this.jdField_a_of_type_Unj.a.a(false, true, 13, null);
+    this.jdField_a_of_type_Uqq.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     unr
  * JD-Core Version:    0.7.0.1
  */

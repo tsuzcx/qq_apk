@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class safecheckPB$ReqMQScanRequest
-  extends MessageMicro
+  extends MessageMicro<ReqMQScanRequest>
 {
   public static final int STRING_CHECK_PARAMETERS_FIELD_NUMBER = 4;
   public static final int STRING_CHECK_TARGET_FIELD_NUMBER = 3;

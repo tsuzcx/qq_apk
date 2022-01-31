@@ -10,6 +10,7 @@ public final class enum_main_page_relation
   public static final int _enum_relation_friend_noregist = 7;
   public static final int _enum_relation_friend_notpass = 3;
   public static final int _enum_relation_friend_pass = 1;
+  public static final int _enum_relation_logoff = 10;
   public static final int _enum_relation_notfriend_needanswer = 6;
   public static final int _enum_relation_notfriend_noregist = 8;
   public static final int _enum_relation_notfriend_notpass = 5;

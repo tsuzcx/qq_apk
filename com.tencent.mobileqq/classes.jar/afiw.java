@@ -1,20 +1,25 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
+import android.content.DialogInterface.OnClickListener;
 
-public class afiw
-  implements DialogInterface.OnDismissListener
+class afiw
+  implements DialogInterface.OnClickListener
 {
-  public afiw(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  afiw(afiu paramafiu) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.r = false;
+    if (paramInt == 1) {
+      afiu.a(this.a, afiu.b(this.a));
+    }
+    while (paramInt != 0) {
+      return;
+    }
+    afiu.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afiw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,73 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.logic.HomeworkTroopController;
-import com.tencent.mobileqq.troop.utils.HWTroopUtils;
-import com.tencent.mobileqq.troop.utils.TroopLinkManager;
-import com.tencent.mobileqq.troop.utils.TroopLinkManager.LinkParams;
-import com.tencent.mobileqq.util.TroopReportor;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0x971.oidb_0x971.NoticeInfo;
+import tencent.im.oidb.cmd0x971.oidb_0x971.RspBody;
 
-public class ajtk
-  implements View.OnClickListener
+public abstract class ajtk
+  extends mmn
 {
-  public ajtk(HomeworkTroopController paramHomeworkTroopController) {}
-  
-  public void onClick(View paramView)
+  public ajtk()
   {
-    paramView = (BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (paramView != null)
+    super(false);
+  }
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    if (paramInt == 0)
     {
-      HWTroopUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      Object localObject1 = TroopLinkManager.a();
-      Object localObject2 = ((TroopLinkManager)localObject1).a("troop_list_homework");
-      TroopLinkManager.LinkParams localLinkParams = new TroopLinkManager.LinkParams();
-      localLinkParams.a = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-      localLinkParams.c = "aio";
-      localObject1 = ((TroopLinkManager)localObject1).a((String)localObject2, localLinkParams);
-      localObject2 = new Intent(paramView, QQBrowserActivity.class);
-      ((Intent)localObject2).putExtra("url", (String)localObject1);
-      paramView.startActivity((Intent)localObject2);
-      TroopReportor.a("Grp_edu", "homework", "AioSee_Clk", 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, TroopReportor.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()), "", TroopReportor.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a) });
+      paramBundle = new oidb_0x971.RspBody();
+      try
+      {
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (paramBundle.notices.has())
+        {
+          paramArrayOfByte = new ArrayList();
+          paramBundle = paramBundle.notices.get().iterator();
+          while (paramBundle.hasNext())
+          {
+            oidb_0x971.NoticeInfo localNoticeInfo = (oidb_0x971.NoticeInfo)paramBundle.next();
+            TroopAioKeywordTipInfo localTroopAioKeywordTipInfo = new TroopAioKeywordTipInfo();
+            localTroopAioKeywordTipInfo.ruleId = localNoticeInfo.rule_id.get();
+            localTroopAioKeywordTipInfo.title = localNoticeInfo.title.get();
+            localTroopAioKeywordTipInfo.summary = localNoticeInfo.summary.get();
+            localTroopAioKeywordTipInfo.url = localNoticeInfo.url.get();
+            localTroopAioKeywordTipInfo.icon = localNoticeInfo.icon.get();
+            localTroopAioKeywordTipInfo.version = localNoticeInfo.version.get();
+            paramArrayOfByte.add(localTroopAioKeywordTipInfo);
+          }
+          a(true, paramArrayOfByte);
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        QLog.i("TroopHandler", 1, "KeywordTipInfoObserver, e=" + paramArrayOfByte.toString());
+        a(false, null);
+        return;
+      }
+    }
+    for (;;)
+    {
+      return;
+      QLog.i("TroopHandler", 1, "KeywordTipInfoObserver, errorCode=" + paramInt);
+      a(false, null);
+      return;
+      paramArrayOfByte = null;
     }
   }
+  
+  protected abstract void a(boolean paramBoolean, List<TroopAioKeywordTipInfo> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajtk
  * JD-Core Version:    0.7.0.1
  */

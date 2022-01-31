@@ -1,29 +1,21 @@
-import android.content.Intent;
-import com.dataline.activities.LiteActivity;
-import com.dataline.util.DataLineReportUtil;
-import com.tencent.mobileqq.activity.qfileJumpActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.biz.widgets.QQMapRoutingHelper.1.1;
+import org.json.JSONObject;
 
 public class xer
-  implements Runnable
+  implements azgl
 {
-  public xer(qfileJumpActivity paramqfileJumpActivity) {}
+  xer(xeq paramxeq) {}
   
-  public void run()
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    DataLineReportUtil.r(this.a.app);
-    Intent localIntent = new Intent(this.a, LiteActivity.class);
-    localIntent.addFlags(67108864);
-    localIntent.putExtra("targetUin", this.a.a);
-    localIntent.putExtra("leftViewText", this.a.app.getApp().getString(2131433712));
-    this.a.startActivity(localIntent);
-    this.a.finish();
+    this.a.a.post(new QQMapRoutingHelper.1.1(this, paramJSONObject, paramBundle));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     xer
  * JD-Core Version:    0.7.0.1
  */

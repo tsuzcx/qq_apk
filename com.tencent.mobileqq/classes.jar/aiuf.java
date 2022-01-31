@@ -1,16 +1,10 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.transfile.DataLineDownloader;
-
-public class aiuf
+public abstract interface aiuf
 {
-  public LocalMediaInfo a;
-  public boolean a;
-  
-  public aiuf(DataLineDownloader paramDataLineDownloader) {}
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiuf
  * JD-Core Version:    0.7.0.1
  */

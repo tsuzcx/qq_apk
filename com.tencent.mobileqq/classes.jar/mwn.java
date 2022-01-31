@@ -1,17 +1,27 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class mwn
-  implements Runnable
+  implements begw
 {
-  public mwn(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  public mwn(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    SubscriptFeedsActivity.a(this.a, SubscriptRecommendController.b(this.a.app));
-    if (PublicAccountUtil.a(this.a.app)) {
-      SubscriptFeedsActivity.a(this.a, true);
+    if (this.a.o) {
+      return;
+    }
+    this.a.o = true;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.a.a.dismiss();
+      return;
+      this.a.q();
+      continue;
+      this.a.E();
     }
   }
 }

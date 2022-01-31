@@ -1,7 +1,7 @@
 package com.tencent.ttpic.filter;
 
-import com.tencent.filter.Param.Float3fParam;
-import com.tencent.ttpic.model.WMElement;
+import com.tencent.aekit.openrender.UniformParam.Float3fParam;
+import com.tencent.ttpic.openapi.model.WMElement;
 import java.util.List;
 
 public class WMDitheringAnimationFilter
@@ -28,14 +28,14 @@ public class WMDitheringAnimationFilter
     this.mAnimationTimePoints.add(new WMAnimationFilterBase.AnimationTimePoint(this, 992L, (float)Math.toRadians(0.0D)));
   }
   
-  protected void setAnimationParams()
+  protected void setAnimationParams(long paramLong)
   {
-    addParam(new Param.Float3fParam("texRotate", 0.0F, 0.0F, getAnimationValue()));
+    addParam(new UniformParam.Float3fParam("texRotate", 0.0F, 0.0F, getAnimationValue(paramLong)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.filter.WMDitheringAnimationFilter
  * JD-Core Version:    0.7.0.1
  */

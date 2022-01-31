@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.widget.ActionSheet.OnDismissListener;
-
-public class tkp
-  implements ActionSheet.OnDismissListener
+class tkp
+  extends sft<tjz>
 {
-  public tkp(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  tkp(tko paramtko) {}
   
-  public void onDismiss()
+  public void a(tjz paramtjz)
   {
-    if (this.a.b) {
-      this.a.finish();
-    }
+    paramtjz.a(new tkq(this));
   }
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tkp
  * JD-Core Version:    0.7.0.1
  */

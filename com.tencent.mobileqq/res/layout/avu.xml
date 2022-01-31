@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/cx0" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/jtk" android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+    <android.support.v4.view.ViewPager android:id="@id/ky2" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <RelativeLayout android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="18.0dip" android:layout_marginTop="6.0dip">
+        <com.tencent.mobileqq.leba.view.LebaGridIndicator android:orientation="horizontal" android:id="@id/fhp" android:paddingLeft="5.0dip" android:paddingBottom="3.0dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</LinearLayout>

@@ -1,44 +1,346 @@
-import android.app.Activity;
-import android.graphics.Color;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
-import com.tencent.widget.ActionSheet;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class ves
-  extends ClickableSpan
+  extends vfa
 {
-  public ves(GrayTipsItemBuilder paramGrayTipsItemBuilder, int paramInt) {}
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private List<vev> jdField_a_of_type_JavaUtilList;
   
-  public void onClick(View paramView)
+  public ves(Context paramContext, String paramString, int paramInt, @NonNull List<vev> paramList, QQAppInterface paramQQAppInterface)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.a instanceof Activity))
+    super(paramContext, paramString, paramInt);
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private vew a(int paramInt)
+  {
+    int i = c();
+    if ((paramInt < 0) || (paramInt >= i)) {
+      throw new IllegalStateException("getViewType Exception, innerPos:" + paramInt + ",LineCount:" + i);
+    }
+    Object localObject1;
+    if (paramInt == 0)
     {
-      paramView = ActionSheet.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.a);
-      paramView.b(2131436708);
-      paramView.c(2131433029);
-      paramView.a(new vet(this, paramView));
-      paramView.show();
-      BaseChatPie localBaseChatPie = ((FragmentActivity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.a).getChatFragment().a();
-      if ((localBaseChatPie instanceof DiscussChatPie)) {
-        ((DiscussChatPie)localBaseChatPie).a = paramView;
+      localObject1 = new vew(null);
+      ((vew)localObject1).jdField_a_of_type_Int = 1;
+      return localObject1;
+    }
+    Object localObject2 = this.jdField_a_of_type_JavaUtilList.iterator();
+    i = 0;
+    if (((Iterator)localObject2).hasNext())
+    {
+      localObject1 = (vev)((Iterator)localObject2).next();
+      i += 1;
+      if (i == paramInt)
+      {
+        localObject2 = new vew(null);
+        ((vew)localObject2).jdField_a_of_type_Int = 2;
+        ((vew)localObject2).jdField_a_of_type_Vev = ((vev)localObject1);
+        return localObject2;
       }
+      if (!vev.a((vev)localObject1)) {
+        break label253;
+      }
+      if (paramInt <= ((vev)localObject1).a().size() + i)
+      {
+        localObject2 = (veu)((vev)localObject1).a().get(paramInt - i - 1);
+        vew localvew = new vew(null);
+        localvew.jdField_a_of_type_Int = 3;
+        localvew.jdField_a_of_type_Vev = ((vev)localObject1);
+        localvew.jdField_a_of_type_Veu = ((veu)localObject2);
+        return localvew;
+      }
+      i = ((vev)localObject1).a().size() + i;
+    }
+    label253:
+    for (;;)
+    {
+      break;
+      throw new IllegalStateException("can not find item with innerPos:" + paramInt);
     }
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  private void a(View paramView)
   {
-    paramTextPaint.setColor(Color.rgb(26, 144, 240));
+    CheckBox localCheckBox = (CheckBox)paramView.findViewById(2131298409);
+    Object localObject = (ImageView)paramView.findViewById(2131298419);
+    TextView localTextView = (TextView)paramView.findViewById(2131298416);
+    paramView = paramView.findViewById(2131298410);
+    localTextView.setText(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      ((ImageView)localObject).setVisibility(0);
+      localObject = (RelativeLayout.LayoutParams)paramView.getLayoutParams();
+      if (!this.b) {
+        break label138;
+      }
+      localCheckBox.setChecked(true);
+    }
+    for (((RelativeLayout.LayoutParams)localObject).leftMargin = vms.a(this.jdField_a_of_type_AndroidContentContext, 32.0F);; ((RelativeLayout.LayoutParams)localObject).leftMargin = 0)
+    {
+      paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      int i = -2170912;
+      QQStoryContext.a();
+      if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
+        i = -16444373;
+      }
+      paramView.setBackgroundColor(i);
+      return;
+      ((ImageView)localObject).setVisibility(4);
+      break;
+      label138:
+      localCheckBox.setChecked(false);
+    }
+  }
+  
+  private void a(View paramView, vev paramvev)
+  {
+    TextView localTextView1 = (TextView)paramView.findViewById(2131301599);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131301601);
+    CheckBox localCheckBox = (CheckBox)paramView.findViewById(2131301572);
+    paramView = (CheckBox)paramView.findViewById(2131301574);
+    localTextView1.setText(paramvev.a.group_name);
+    localTextView2.setText(String.format("(%s/%s)", new Object[] { Integer.valueOf(paramvev.a()), Integer.valueOf(paramvev.b()) }));
+    if (paramvev.b() == 0)
+    {
+      paramView.setVisibility(4);
+      if (!paramvev.a()) {
+        break label146;
+      }
+      paramView.setChecked(true);
+      label111:
+      if (!vev.a(paramvev)) {
+        break label154;
+      }
+      localCheckBox.setChecked(true);
+    }
+    for (;;)
+    {
+      paramView.setOnClickListener(new vet(this, paramvev));
+      return;
+      paramView.setVisibility(0);
+      break;
+      label146:
+      paramView.setChecked(false);
+      break label111;
+      label154:
+      localCheckBox.setChecked(false);
+    }
+  }
+  
+  private void a(View paramView, vev paramvev, veu paramveu)
+  {
+    ImageView localImageView = (ImageView)paramView.findViewById(2131301175);
+    Object localObject1 = (TextView)paramView.findViewById(2131301195);
+    Object localObject2 = (CheckBox)paramView.findViewById(2131301158);
+    paramView = paramView.findViewById(2131301157);
+    ((TextView)localObject1).setText(paramveu.jdField_a_of_type_ComTencentMobileqqDataFriends.remark);
+    if (paramveu.jdField_a_of_type_Boolean)
+    {
+      ((CheckBox)localObject2).setChecked(true);
+      localObject1 = bacm.b();
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+        break label226;
+      }
+      localObject2 = azwp.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, paramveu.jdField_a_of_type_ComTencentMobileqqDataFriends.uin, 3, (Drawable)localObject1, (Drawable)localObject1);
+      if (localObject2 == null) {
+        break label207;
+      }
+      localImageView.setImageDrawable((Drawable)localObject2);
+    }
+    for (;;)
+    {
+      paramView.setVisibility(4);
+      if (this.jdField_a_of_type_JavaUtilList.indexOf(paramvev) == this.jdField_a_of_type_JavaUtilList.size() - 1)
+      {
+        paramvev = paramvev.a();
+        if (paramvev.indexOf(paramveu) == paramvev.size() - 1)
+        {
+          int i = -2170912;
+          QQStoryContext.a();
+          if (ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null)) {
+            i = -16444373;
+          }
+          paramView.setBackgroundColor(i);
+          paramView.setVisibility(0);
+        }
+      }
+      return;
+      ((CheckBox)localObject2).setChecked(false);
+      break;
+      label207:
+      urk.e("Q.qqstory.publish.edit.ComplexPart", "FaceDrawable is null.");
+      localImageView.setImageDrawable((Drawable)localObject1);
+      continue;
+      label226:
+      urk.e("Q.qqstory.publish.edit.ComplexPart", "QQAppInterface is null.");
+      localImageView.setImageDrawable((Drawable)localObject1);
+    }
+  }
+  
+  private void a(vew paramvew)
+  {
+    boolean bool;
+    if (this.jdField_a_of_type_Boolean) {
+      if (!this.b) {
+        bool = true;
+      }
+    }
+    for (this.b = bool;; this.b = true)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      return;
+      bool = false;
+      break;
+    }
+  }
+  
+  private void b(vew paramvew)
+  {
+    paramvew.jdField_a_of_type_Vev.a();
+  }
+  
+  private int c()
+  {
+    if (!this.b) {
+      return 1;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    int i = 1;
+    if (localIterator.hasNext())
+    {
+      vev localvev = (vev)localIterator.next();
+      List localList = localvev.a();
+      i += 1;
+      if (!vev.a(localvev)) {
+        break label72;
+      }
+      i = localList.size() + i;
+    }
+    label72:
+    for (;;)
+    {
+      break;
+      return i;
+    }
+  }
+  
+  private void c(vew paramvew)
+  {
+    paramvew.jdField_a_of_type_Vev.a(paramvew.jdField_a_of_type_Veu);
+  }
+  
+  public int a()
+  {
+    return c();
+  }
+  
+  public int a(int paramInt)
+  {
+    return a(paramInt).jdField_a_of_type_Int;
+  }
+  
+  public View a(int paramInt, ViewGroup paramViewGroup)
+  {
+    switch (a(paramInt).jdField_a_of_type_Int)
+    {
+    default: 
+      return null;
+    case 1: 
+      return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495723, null);
+    case 2: 
+      return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495725, null);
+    }
+    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495724, null);
+  }
+  
+  @NonNull
+  public List<veu> a()
+  {
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      localArrayList.addAll(((vev)localIterator.next()).b());
+    }
+    return localArrayList;
+  }
+  
+  public void a(int paramInt)
+  {
+    vew localvew = a(paramInt);
+    switch (localvew.jdField_a_of_type_Int)
+    {
+    default: 
+      return;
+    case 1: 
+      a(localvew);
+      return;
+    case 2: 
+      b(localvew);
+      return;
+    }
+    c(localvew);
+  }
+  
+  public void a(int paramInt, View paramView)
+  {
+    vew localvew = a(paramInt);
+    switch (localvew.jdField_a_of_type_Int)
+    {
+    default: 
+      return;
+    case 1: 
+      a(paramView);
+      return;
+    case 2: 
+      a(paramView, localvew.jdField_a_of_type_Vev);
+      return;
+    }
+    a(paramView, localvew.jdField_a_of_type_Vev, localvew.jdField_a_of_type_Veu);
+  }
+  
+  public void a(List<String> paramList)
+  {
+    if (paramList == null) {
+      return;
+    }
+    Iterator localIterator1 = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator1.hasNext())
+    {
+      vev localvev = (vev)localIterator1.next();
+      Iterator localIterator2 = localvev.a().iterator();
+      while (localIterator2.hasNext())
+      {
+        veu localveu = (veu)localIterator2.next();
+        if (paramList.contains(localveu.a())) {
+          localvev.b(localveu);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ves
  * JD-Core Version:    0.7.0.1
  */

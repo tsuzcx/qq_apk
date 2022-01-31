@@ -1,33 +1,75 @@
-import com.tencent.mobileqq.ar.ARScanFragment;
-import com.tencent.mobileqq.ar.ARTarget;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.model.ArWebInfo;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class agjv
-  implements Runnable
 {
-  public agjv(ScanTorchActivity paramScanTorchActivity, ARTarget paramARTarget) {}
+  public String a;
+  public Pattern a;
+  public boolean a;
+  public String b;
+  public Pattern b;
+  public boolean b;
+  public String c;
+  public String d;
   
-  public void run()
+  public static List<agjv> a(String paramString)
   {
-    ScanTorchActivity.l(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, true);
-    this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.a.e(true);
-    ScanTorchActivity.i(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
-    ScanTorchActivity.j(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
-    ScanTorchActivity.c(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, false);
-    if ((this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.l) && (this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.s))
+    localArrayList = new ArrayList();
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.k();
-      return;
+      paramString = new JSONArray(paramString);
+      int i = 0;
+      if (i < paramString.length())
+      {
+        JSONObject localJSONObject = paramString.getJSONObject(i);
+        agjv localagjv;
+        if (localJSONObject != null)
+        {
+          localagjv = new agjv();
+          localagjv.jdField_a_of_type_JavaLangString = localJSONObject.optString("sourceURLRegular");
+          localagjv.jdField_b_of_type_JavaLangString = localJSONObject.optString("interceptURLRegular");
+          if (localJSONObject.optInt("shouldReport") != 1) {
+            break label138;
+          }
+          bool = true;
+          label85:
+          localagjv.jdField_a_of_type_Boolean = bool;
+          if (localJSONObject.optInt("shouldIntercept") != 1) {
+            break label143;
+          }
+        }
+        label138:
+        label143:
+        for (boolean bool = true;; bool = false)
+        {
+          localagjv.jdField_b_of_type_Boolean = bool;
+          localagjv.c = localJSONObject.optString("jumpURL");
+          localArrayList.add(localagjv);
+          i += 1;
+          break;
+          bool = false;
+          break label85;
+        }
+      }
+      return localArrayList;
     }
-    ScanTorchActivity.b(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.a.a);
-    this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.m = true;
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public String toString()
+  {
+    return "InterceptConfig [mSrcUrlRegular=" + this.jdField_a_of_type_JavaLangString + ", mInterceptUrlRegular=" + this.jdField_b_of_type_JavaLangString + ", mIsReport=" + this.jdField_a_of_type_Boolean + ", mIsIntercept=" + this.jdField_b_of_type_Boolean + ", mJumpUrl=" + this.c + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agjv
  * JD-Core Version:    0.7.0.1
  */

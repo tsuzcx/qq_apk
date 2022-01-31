@@ -1,40 +1,17 @@
-import android.app.Activity;
-import com.tencent.biz.troopplugin.PluginJumpManager;
-import com.tencent.biz.troopplugin.PluginJumpManager.BidInfo;
-import com.tencent.biz.troopplugin.PluginJumpManager.UrlMappingInfo;
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import android.text.TextUtils;
+import com.tencent.pts.nativemodule.PTSNativeModuleRegistry.IPTSReportTo1160;
+import com.tencent.qphone.base.util.QLog;
 
 public class peh
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+  implements PTSNativeModuleRegistry.IPTSReportTo1160
 {
-  public peh(PluginJumpManager paramPluginJumpManager, PluginJumpManager.BidInfo paramBidInfo, Activity paramActivity, String paramString1, String paramString2, String paramString3, long paramLong, PluginJumpManager.UrlMappingInfo paramUrlMappingInfo, String paramString4) {}
+  public final String a = "PTSReportTo1160Module";
   
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  public void reportTo1160(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager = paramPluginManagerClient;
-    paramPluginManagerClient = this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager.queryPlugin(this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$BidInfo.b);
-    int i;
-    if (paramPluginManagerClient != null) {
-      if (paramPluginManagerClient.mState == 4)
-      {
-        i = 1;
-        this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.launchPlugin(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$BidInfo.b, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$BidInfo.c, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$UrlMappingInfo.b, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$UrlMappingInfo.a);
-      }
-    }
-    for (;;)
-    {
-      if (i == 0) {
-        this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.openLinkInNewWebView(this.jdField_a_of_type_AndroidAppActivity, this.b, this.d);
-      }
-      return;
-      PluginJumpManager.report("BizTechReport", "native_plugin", "open_with_noapk", 0, this.b, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$UrlMappingInfo.b, null, null);
-      this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager.mPluginManager.installPlugin(this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$BidInfo.b);
-      i = 0;
-      continue;
-      PluginJumpManager.report("BizTechReport", "native_plugin", "open_with_noapk", 1, this.b, this.jdField_a_of_type_ComTencentBizTrooppluginPluginJumpManager$UrlMappingInfo.b, null, null);
-      i = 0;
+    QLog.i("PTSReportTo1160Module", 1, "[reportTo1160], event = " + paramString1 + ", r5 = " + paramString2);
+    if (!TextUtils.isEmpty(paramString1)) {
+      pen.a(paramString1, "", "", "", new peo(paramString2).a());
     }
   }
 }

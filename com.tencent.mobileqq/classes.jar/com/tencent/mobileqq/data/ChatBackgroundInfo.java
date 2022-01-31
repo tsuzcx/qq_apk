@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 import java.io.Serializable;
 
 public class ChatBackgroundInfo
-  extends Entity
+  extends atmo
   implements Serializable
 {
   public static final int COMPLETED = 0;
@@ -15,7 +15,7 @@ public class ChatBackgroundInfo
   public static final String THUMBURL = "thumbUrl";
   public static final String URL = "url";
   private static final long serialVersionUID = 1L;
-  @unique
+  @atoc
   public String id;
   public String name;
   public String thumbUrl;

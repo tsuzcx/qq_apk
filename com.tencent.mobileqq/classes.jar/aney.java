@@ -1,91 +1,35 @@
-import android.text.TextUtils;
-import com.tencent.component.network.downloader.strategy.IPConfigStrategy;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import common.config.service.QzoneConfig.QzoneConfigChangeListener;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
-public class aney
-  extends IPConfigStrategy
-  implements QzoneConfig.QzoneConfigChangeListener
+class aney
+  implements bapb<aphb>
 {
-  private Map jdField_a_of_type_JavaUtilMap = new HashMap();
-  private ReadWriteLock jdField_a_of_type_JavaUtilConcurrentLocksReadWriteLock = new ReentrantReadWriteLock();
+  aney(aned paramaned, int paramInt, ajrm paramajrm, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public aney()
+  public void a(aphb paramaphb, Object paramObject)
   {
-    b();
-    QzoneConfig.getInstance().addListener(this);
-  }
-  
-  private void a(Map paramMap, String paramString1, String paramString2)
-  {
-    if ((paramMap == null) || (paramString1 == null) || (paramString2 == null)) {
-      return;
-    }
-    String str = paramString1 + "||" + paramString2;
-    paramString1 = QzoneConfig.getInstance().getConfig(paramString1, paramString2);
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginDownloadIPStracyConfig", 2, "addConfigItem, key=" + str + ", content=" + paramString1);
-    }
-    paramMap.put(str, paramString1);
-  }
-  
-  private void a(Map paramMap, String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    if ((paramMap == null) || (paramString1 == null) || (paramString2 == null)) {
-      return;
-    }
-    Object localObject = null;
-    paramString4 = QzoneConfig.getInstance().getConfig(paramString1, paramString3, paramString4);
-    paramString3 = paramString1 + "||" + paramString2;
-    paramString2 = QzoneConfig.getInstance().getConfig(paramString1, paramString2);
-    paramString1 = localObject;
-    if (!TextUtils.isEmpty(paramString2))
+    paramObject = new Bundle();
+    paramObject.putInt("id", this.jdField_a_of_type_Int);
+    if ((paramaphb != null) || (this.jdField_a_of_type_Int == 0))
     {
-      paramString1 = localObject;
-      if (!TextUtils.isEmpty(paramString4)) {
-        paramString1 = paramString2.replace("ips", paramString4);
-      }
+      paramObject.putInt("result", 0);
+      this.jdField_a_of_type_Ajrm.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_Int);
     }
-    if (TextUtils.isEmpty(paramString1))
+    for (;;)
     {
-      paramMap.put(paramString3, paramString2);
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramObject);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
       return;
+      bapf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "individual_v2_colorscreen_set_fail", "0", "", Integer.toString(this.jdField_a_of_type_Int), null, null, 0.0F, 0.0F);
+      bape.a("individual_v2_colorscreen_set_fail", "id:" + this.jdField_a_of_type_Int);
+      paramObject.putInt("result", 1);
     }
-    paramMap.put(paramString3, paramString1);
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    a(this.jdField_a_of_type_JavaUtilMap, "PhotoSvrList", "DownloadDirectIP");
-    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "photo_masterIplist");
-    a(this.jdField_a_of_type_JavaUtilMap, "PhotoABSvrList", "DownloadDirectIP_a");
-    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "photo_masterIplist_a");
-    a(this.jdField_a_of_type_JavaUtilMap, "PhotoABSvrList", "DownloadDirectIP_b");
-    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "photo_masterIplist_b");
-    a(this.jdField_a_of_type_JavaUtilMap, "VideoSvrList", "DownloadDirectIPVideo");
-    a(this.jdField_a_of_type_JavaUtilMap, "ExtraConfig", "video_masterIplist");
-    a(this.jdField_a_of_type_JavaUtilMap, "PhotoSvrList", "optimumip_qzvv", "video_host_qzvv", "qzvv.video.qq.com");
-    a(this.jdField_a_of_type_JavaUtilMap, "PhotoSvrList", "qzpb.qq.com", "video_host_qzpb", "qzpb.qq.com");
-    super.a(this.jdField_a_of_type_JavaUtilMap);
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneIPStracyConfig", 2, "QzoneIPStracyConfig receive change");
-    }
-    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aney
  * JD-Core Version:    0.7.0.1
  */

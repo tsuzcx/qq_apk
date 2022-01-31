@@ -1,101 +1,34 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.troop.file.TroopFileProtocol.ReqDownloadFileObserver;
-import com.tencent.mobileqq.app.BizTroopHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil;
-import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil.Log;
-import com.tencent.mobileqq.troop.filemanager.download.TroopFilePreviewWorker;
-import com.tencent.mobileqq.troop.utils.TroopFileError;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.PreviewInfo;
-import com.tencent.mobileqq.utils.HexUtil;
-import java.util.UUID;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.contacts.utils.ContactReportUtils;
+import com.tencent.mobileqq.app.MayknowRecommendManager.7.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class ajlw
-  extends TroopFileProtocol.ReqDownloadFileObserver
+  extends BroadcastReceiver
 {
-  public ajlw(TroopFilePreviewWorker paramTroopFilePreviewWorker) {}
+  ajlw(ajls paramajls) {}
   
-  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (!paramBundle.getBoolean("isPreview", false)) {}
+    if (paramIntent == null) {}
     do
     {
-      do
-      {
-        return;
-      } while (paramBundle.getLong("troopUin") != this.a.jdField_a_of_type_Long);
-      paramBundle = paramBundle.getString("itemKey");
-    } while ((paramBundle == null) || (!UUID.fromString(paramBundle).equals(this.a.a())));
-    TroopFileTransferManager.PreviewInfo localPreviewInfo = new TroopFileTransferManager.PreviewInfo();
-    localPreviewInfo.jdField_a_of_type_Int = -1;
-    try
-    {
-      localPreviewInfo.e = this.a.a().toString();
-      localQQAppInterface = TroopFileTransferUtil.a();
-      if (localQQAppInterface == null)
-      {
-        TroopFileTransferUtil.Log.a("TroopFilePreviewWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] getPreviewInfoResult app=null");
-        return;
+      return;
+      paramContext = paramIntent.getAction();
+      if (QLog.isColorLevel()) {
+        QLog.i("MayknowRecommendManager", 2, "Broadcast onReceive " + paramContext);
       }
-    }
-    catch (NullPointerException paramBundle)
-    {
-      QQAppInterface localQQAppInterface;
-      for (;;)
-      {
-        localPreviewInfo.e = null;
-      }
-      BizTroopHandler localBizTroopHandler = (BizTroopHandler)localQQAppInterface.a(22);
-      if ((paramDownloadFileRspBody == null) || (!paramBoolean))
-      {
-        TroopFileTransferUtil.Log.a("TroopFilePreviewWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] getPreviewInfoResult isSuccess:false  errCode:" + paramInt);
-        TroopFileError.a(localQQAppInterface, this.a.jdField_a_of_type_Long, 700);
-        localPreviewInfo.jdField_a_of_type_Boolean = false;
-        localBizTroopHandler.c(localPreviewInfo);
-        return;
-      }
-      paramInt = paramDownloadFileRspBody.int32_ret_code.get();
-      localPreviewInfo.jdField_a_of_type_Int = paramInt;
-      localPreviewInfo.jdField_a_of_type_Boolean = false;
-      String str = paramDownloadFileRspBody.str_download_ip.get();
-      paramBundle = "";
-      if (paramDownloadFileRspBody.str_download_dns.get() != null) {
-        paramBundle = paramDownloadFileRspBody.str_download_dns.get().toString();
-      }
-      localPreviewInfo.jdField_a_of_type_JavaLangString = str;
-      if ((TextUtils.isEmpty(localPreviewInfo.jdField_a_of_type_JavaLangString)) || (localPreviewInfo.jdField_a_of_type_JavaLangString.equals("0.0.0.0"))) {
-        localPreviewInfo.jdField_a_of_type_JavaLangString = paramBundle;
-      }
-      localPreviewInfo.b = String.valueOf(paramDownloadFileRspBody.uint32_preview_port.get());
-      localPreviewInfo.c = paramDownloadFileRspBody.str_ret_msg.get();
-      localPreviewInfo.d = HexUtil.a(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
-      if (paramInt < 0)
-      {
-        TroopFileTransferUtil.Log.a("TroopFilePreviewWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] getPreviewInfoResult fail. retCode:" + paramInt + " retMsg:" + localPreviewInfo.c);
-        TroopFileError.a(localQQAppInterface, this.a.jdField_a_of_type_Long, 700);
-        if (TextUtils.isEmpty(localPreviewInfo.c)) {
-          localPreviewInfo.c = "生成预览文件失败";
-        }
-        localPreviewInfo.jdField_a_of_type_Boolean = false;
-        localBizTroopHandler.c(localPreviewInfo);
-        return;
-      }
-      TroopFileTransferUtil.Log.c("TroopFilePreviewWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] getPreviewInfoResult isSuccess:true  downloadip:" + str + " downloadDns:" + paramBundle + " port:" + localPreviewInfo.b + " downloadKey:" + localPreviewInfo.d + " retMsg:" + localPreviewInfo.c);
-      localPreviewInfo.jdField_a_of_type_Boolean = true;
-      localBizTroopHandler.c(localPreviewInfo);
-    }
+    } while ((!"mqq.intent.action.QQ_BACKGROUND".equals(paramContext)) || (ajls.a(this.a) == null));
+    ajls.a(this.a).post(new MayknowRecommendManager.7.1(this));
+    ContactReportUtils.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajlw
  * JD-Core Version:    0.7.0.1
  */

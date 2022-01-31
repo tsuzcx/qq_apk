@@ -1,56 +1,61 @@
-import android.text.TextUtils;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.TroopReportor;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeCommentView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.TextBase;
 
-class oyd
-  implements Runnable
+public class oyd
+  extends TextBase
 {
-  oyd(oyc paramoyc, String paramString) {}
+  private final int jdField_a_of_type_Int = -654311424;
+  private NativeCommentView jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView;
+  private final int b = 5;
   
-  public void run()
+  public oyd(VafContext paramVafContext)
   {
-    if (this.jdField_a_of_type_Oyc.a.isFinishing()) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-          QRUtils.a(1, 2131430006);
-        } while (this.jdField_a_of_type_Oyc.a.jdField_c_of_type_Int != 2);
-        if (this.jdField_a_of_type_Oyc.a.h == 2) {}
-        for (String str = "qr_wechat";; str = "qr_circle")
-        {
-          TroopReportor.a("Grp_share", "grpData_admin", str, 0, 0, new String[] { this.jdField_a_of_type_Oyc.a.jdField_c_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Oyc.a.a), "1" });
-          return;
-        }
-        if (this.jdField_a_of_type_Oyc.a.h != 2) {
-          break;
-        }
-        WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Oyc.a.b, 0);
-        if (this.jdField_a_of_type_Oyc.a.jdField_c_of_type_Int == 2)
-        {
-          ReportController.b(this.jdField_a_of_type_Oyc.a.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_wechat", 0, 0, this.jdField_a_of_type_Oyc.a.jdField_c_of_type_JavaLangString, "", String.valueOf(this.jdField_a_of_type_Oyc.a.a), "");
-          return;
-        }
-      } while (this.jdField_a_of_type_Oyc.a.jdField_c_of_type_Int != 5);
-      ReportController.b(this.jdField_a_of_type_Oyc.a.app, "CliOper", "", "", "0X8006676", "0X8006676", 0, 0, "", "", "", "");
-      return;
-      WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Oyc.a.b, 1);
-      if (this.jdField_a_of_type_Oyc.a.jdField_c_of_type_Int == 2)
-      {
-        ReportController.b(this.jdField_a_of_type_Oyc.a.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_circle", 0, 0, this.jdField_a_of_type_Oyc.a.jdField_c_of_type_JavaLangString, "", String.valueOf(this.jdField_a_of_type_Oyc.a.a), "");
-        return;
-      }
-    } while (this.jdField_a_of_type_Oyc.a.jdField_c_of_type_Int != 5);
-    ReportController.b(this.jdField_a_of_type_Oyc.a.app, "CliOper", "", "", "0X8006677", "0X8006677", 0, 0, "", "", "", "");
+    super(paramVafContext);
+    this.mTextSize = Utils.dp2px(16.0D);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView = new NativeCommentView(paramVafContext.getContext());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.setTextColor(-654311424);
+  }
+  
+  public void a(opw paramopw)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.setModel(paramopw);
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    super.onParseValueFinished();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.setBackgroundColor(this.mBackground);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.setTextSize(0, this.mTextSize);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.setLineSpacing(Utils.rp2px(5.0D), 1.0F);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.setIncludeFontPadding(false);
   }
 }
 

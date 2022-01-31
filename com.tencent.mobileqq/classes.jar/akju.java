@@ -1,19 +1,34 @@
-import android.content.Context;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
 
-public final class akju
-  implements Runnable
+public abstract interface akju
 {
-  public akju(Context paramContext) {}
+  public abstract int a();
   
-  public void run()
-  {
-    QQToast.a(this.a, 2131437192, 1).a();
-  }
+  public abstract int a(int paramInt);
+  
+  public abstract String a();
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract void a(View paramView);
+  
+  public abstract void a(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3, boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract String b();
+  
+  public abstract void b();
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akju
  * JD-Core Version:    0.7.0.1
  */

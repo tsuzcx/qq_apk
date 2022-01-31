@@ -21,7 +21,7 @@ public class QQAVImageTwoPassTextureSamplingFilter
     return 1.0F;
   }
   
-  protected void initTexelOffsets()
+  public void initTexelOffsets()
   {
     float f = getHorizontalTexelOffsetRatio();
     QQAVImageFilter localQQAVImageFilter = (QQAVImageFilter)this.mFilters.get(0);
@@ -51,7 +51,7 @@ public class QQAVImageTwoPassTextureSamplingFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.video.effect.core.qqavimage.QQAVImageTwoPassTextureSamplingFilter
  * JD-Core Version:    0.7.0.1
  */

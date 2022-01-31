@@ -1,23 +1,51 @@
-import com.tencent.biz.qqstory.base.QQStoryFeedManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.SendPublicAccountMessageReceiptResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
 
-public class ndh
-  implements Runnable
+class ndh
+  implements BusinessObserver
 {
-  public ndh(QQStoryFeedManager paramQQStoryFeedManager, String paramString) {}
+  ndh(ncw paramncw, NewIntent paramNewIntent) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    Iterator localIterator = QQStoryFeedManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryFeedManager).a().a(this.jdField_a_of_type_JavaLangString, 0, new int[] { -2061 }).iterator();
-    while (localIterator.hasNext())
+    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+    if (paramBoolean) {}
+    try
     {
-      MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-      QQStoryFeedManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryFeedManager).a().a(localMessageRecord.frienduin, 0, localMessageRecord.msgtype, localMessageRecord.uniseq);
-      QQStoryFeedManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryFeedManager).a().b(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq);
+      paramBundle = paramBundle.getByteArray("data");
+      mobileqq_mp.SendPublicAccountMessageReceiptResponse localSendPublicAccountMessageReceiptResponse = new mobileqq_mp.SendPublicAccountMessageReceiptResponse();
+      localSendPublicAccountMessageReceiptResponse.mergeFrom(paramBundle);
+      boolean bool = paramBoolean;
+      if (localSendPublicAccountMessageReceiptResponse.ret_info.has())
+      {
+        bool = paramBoolean;
+        if (localSendPublicAccountMessageReceiptResponse.ret_info.ret_code.has())
+        {
+          paramInt = localSendPublicAccountMessageReceiptResponse.ret_info.ret_code.get();
+          bool = paramBoolean;
+          if (paramInt != 0L) {
+            bool = false;
+          }
+        }
+      }
+      return;
+    }
+    catch (Exception paramBundle)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("PublicAccountManager", 2, "sendMsgArriveReceipt response :" + String.valueOf(false));
+      return;
+    }
+    finally
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("PublicAccountManager", 2, "sendMsgArriveReceipt response :" + String.valueOf(paramBoolean));
+      }
     }
   }
 }

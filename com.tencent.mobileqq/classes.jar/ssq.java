@@ -1,30 +1,19 @@
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Comparator;
 
-public class ssq
-  extends TroopObserver
+class ssq
+  implements Comparator<tfv>
 {
-  public ssq(ForwardRecentActivity paramForwardRecentActivity) {}
+  ssq(ssp paramssp) {}
   
-  protected void a(boolean paramBoolean1, byte paramByte, TroopInfo paramTroopInfo, boolean paramBoolean2)
+  public int a(tfv paramtfv1, tfv paramtfv2)
   {
-    if (paramBoolean1) {
-      ForwardRecentActivity.b(this.a);
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, ArrayList paramArrayList, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (paramArrayList != null) && (paramArrayList.size() > 0) && (paramBoolean2)) {
-      ForwardRecentActivity.b(this.a);
-    }
+    return suk.a(paramtfv1.a.mCreateTime, paramtfv2.a.mCreateTime);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ssq
  * JD-Core Version:    0.7.0.1
  */

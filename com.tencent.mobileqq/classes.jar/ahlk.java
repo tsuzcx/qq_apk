@@ -1,50 +1,81 @@
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.richmedia.RichmediaService;
-import com.tencent.mobileqq.richmedia.VideoSendTaskManager;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.mobileqq.utils.LogTag;
-import java.util.HashMap;
+import android.util.Base64;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahlk
-  implements Runnable
 {
-  String jdField_a_of_type_JavaLangString;
-  
-  public ahlk(VideoSendTaskManager paramVideoSendTaskManager, String paramString)
+  public static int a(int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (paramInt == 1) {
+      return 1;
+    }
+    if (paramInt == 2) {
+      return 2;
+    }
+    if (paramInt == 3) {
+      return 3;
+    }
+    return 0;
   }
   
-  public void run()
+  public static ahls a(int paramInt)
   {
-    Object localObject = (TransferRequest)VideoSendTaskManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaVideoSendTaskManager).get(this.jdField_a_of_type_JavaLangString);
-    if (localObject == null)
+    QLog.d("AnimDrawerFactory", 2, "create drawer by type: " + paramInt);
+    switch (paramInt)
     {
-      LogTag.a(this.jdField_a_of_type_JavaLangString, "RemoveRequest", "[RemoveRequest]TransferRequest is removed");
-      return;
+    default: 
+      return null;
+    case 1: 
+      return new ahlp();
+    case 2: 
+      return new ahmf();
     }
-    localObject = (MessageForShortVideo)((TransferRequest)localObject).a;
-    if ((TextUtils.isEmpty(((MessageForShortVideo)localObject).md5)) || (TextUtils.isEmpty(((MessageForShortVideo)localObject).mLocalMd5)))
+    return new ahmc();
+  }
+  
+  public static ahls a(String paramString, float paramFloat1, float paramFloat2, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    try
     {
-      LogTag.a(this.jdField_a_of_type_JavaLangString, "RemoveRequest", "[RemoveRequest]Remove failed:md5=" + ((MessageForShortVideo)localObject).md5 + ",localMd5=" + ((MessageForShortVideo)localObject).mLocalMd5);
-      return;
+      paramString = a(Base64.decode(paramString.getBytes(), 0), paramFloat1, paramFloat2, paramInt);
+      return paramString;
     }
-    VideoSendTaskManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaVideoSendTaskManager).remove(this.jdField_a_of_type_JavaLangString);
-    localObject = RichmediaService.a();
-    if (localObject != null)
+    catch (Exception paramString)
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("vidoe_record_uniseq", this.jdField_a_of_type_JavaLangString);
-      ((RichmediaService)localObject).a(1002, -1, localBundle);
+      QLog.e("AnimDrawerFactory", 2, "subtitle base64decode exception:" + paramString.toString());
     }
-    LogTag.a(this.jdField_a_of_type_JavaLangString, "RemoveRequest", "[RemoveRequest]Remove success");
+    return null;
+  }
+  
+  public static ahls a(byte[] paramArrayOfByte, float paramFloat1, float paramFloat2, int paramInt)
+  {
+    Object localObject;
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 4)) {
+      localObject = null;
+    }
+    ahls localahls;
+    do
+    {
+      return localObject;
+      localahls = a(acsp.a(paramArrayOfByte, 0));
+      localObject = localahls;
+    } while (localahls == null);
+    localahls.a(BaseApplicationImpl.getApplication(), paramFloat1, paramFloat2, paramInt, paramArrayOfByte, 4, paramArrayOfByte.length - 4, true);
+    return localahls;
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    return (paramInt > 0) && (paramInt < 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahlk
  * JD-Core Version:    0.7.0.1
  */

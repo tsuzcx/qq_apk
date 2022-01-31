@@ -1,19 +1,14 @@
-import com.tencent.open.downloadnew.DownloadListener;
-import com.tencent.open.downloadnew.DownloadManager;
-
-public final class alnu
-  implements Runnable
+public abstract interface alnu
 {
-  public alnu(DownloadListener paramDownloadListener) {}
+  public abstract void aF();
   
-  public void run()
-  {
-    DownloadManager.a().a(this.a);
-  }
+  public abstract void aG();
+  
+  public abstract boolean s();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alnu
  * JD-Core Version:    0.7.0.1
  */

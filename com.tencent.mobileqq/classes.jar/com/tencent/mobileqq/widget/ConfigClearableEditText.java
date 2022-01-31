@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.widget;
 
-import alas;
-import alat;
-import alau;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -14,9 +11,14 @@ import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.widget.EditText;
 import android.widget.TextView;
+import azve;
+import bbhd;
+import bbhe;
+import bbhf;
+import bbhg;
+import bbhh;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
-import com.tencent.mobileqq.util.AccessibilityUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 
@@ -25,9 +27,10 @@ public class ConfigClearableEditText
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  alau jdField_a_of_type_Alau;
   public Drawable a;
-  public ConfigClearableEditText.OnTextClearedListener a;
+  bbhf jdField_a_of_type_Bbhf;
+  private bbhg jdField_a_of_type_Bbhg;
+  public bbhh a;
   public boolean a;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -57,8 +60,8 @@ public class ConfigClearableEditText
     try
     {
       a(paramContext, paramAttributeSet);
-      this.jdField_a_of_type_Alau = new alau(this, this);
-      ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_Alau);
+      this.jdField_a_of_type_Bbhf = new bbhf(this, this);
+      ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_Bbhf);
       ViewCompat.setImportantForAccessibility(this, 1);
       return;
     }
@@ -71,6 +74,14 @@ public class ConfigClearableEditText
     }
   }
   
+  private int a()
+  {
+    if (this.jdField_a_of_type_Bbhg != null) {
+      return getWidth() - this.jdField_a_of_type_Bbhg.a();
+    }
+    return getWidth() - getPaddingRight() - this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
+  }
+  
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
     this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
@@ -78,18 +89,18 @@ public class ConfigClearableEditText
     try
     {
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(0);
-      this.jdField_a_of_type_Int = paramContext.getDimensionPixelSize(1, -1);
-      this.jdField_b_of_type_Int = paramContext.getDimensionPixelSize(2, -1);
-      this.d = paramContext.getBoolean(3, false);
-      this.e = paramContext.getBoolean(4, false);
-      this.f = paramContext.getBoolean(5, false);
-      this.g = paramContext.getBoolean(6, false);
-      this.h = paramContext.getBoolean(7, false);
-      this.i = paramContext.getBoolean(8, false);
-      this.j = paramContext.getBoolean(9, false);
+      this.jdField_a_of_type_Int = paramContext.getDimensionPixelSize(2, -1);
+      this.jdField_b_of_type_Int = paramContext.getDimensionPixelSize(1, -1);
+      this.d = paramContext.getBoolean(5, false);
+      this.e = paramContext.getBoolean(6, false);
+      this.f = paramContext.getBoolean(7, false);
+      this.g = paramContext.getBoolean(3, false);
+      this.h = paramContext.getBoolean(8, false);
+      this.i = paramContext.getBoolean(9, false);
+      this.j = paramContext.getBoolean(4, false);
       paramContext.recycle();
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838712);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839242);
       }
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
       {
@@ -101,8 +112,8 @@ public class ConfigClearableEditText
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
         setClearButtonVisible(false);
       }
-      setOnTouchListener(new alas(this));
-      addTextChangedListener(new alat(this));
+      setOnTouchListener(new bbhd(this));
+      addTextChangedListener(new bbhe(this));
       return;
     }
     finally
@@ -145,26 +156,22 @@ public class ConfigClearableEditText
     }
   }
   
-  public void a(Drawable paramDrawable)
+  protected String a()
   {
-    if ((paramDrawable != null) && (paramDrawable != this.jdField_a_of_type_AndroidGraphicsDrawableDrawable) && (this.jdField_a_of_type_Int > 0) && (this.jdField_b_of_type_Int > 0))
-    {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-    }
+    return "";
   }
   
   protected boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_b_of_type_Boolean) && (paramMotionEvent.getX() > getWidth() - getPaddingRight() - this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth())) {
-      return this.jdField_a_of_type_Alau.dispatchHoverEvent(paramMotionEvent);
+    if ((this.jdField_b_of_type_Boolean) && (paramMotionEvent.getX() > a())) {
+      return this.jdField_a_of_type_Bbhf.dispatchHoverEvent(paramMotionEvent);
     }
     return super.dispatchHoverEvent(paramMotionEvent);
   }
   
   public void onDetachedFromWindow()
   {
-    if ((QLog.isColorLevel()) && (AppSetting.jdField_c_of_type_Boolean))
+    if ((QLog.isColorLevel()) && (AppSetting.d))
     {
       StringBuilder localStringBuilder = new StringBuilder(100);
       localStringBuilder.append("onDetachedFromWindow ");
@@ -197,6 +204,9 @@ public class ConfigClearableEditText
   
   public boolean onTextContextMenuItem(int paramInt)
   {
+    if (a().compareTo("com.tencent.mobileqq.widget.OptionAbleEditText") == 0) {
+      return super.onTextContextMenuItem(paramInt);
+    }
     return !this.j;
   }
   
@@ -222,21 +232,33 @@ public class ConfigClearableEditText
     if (((paramBoolean) && (this.jdField_c_of_type_Int == 1)) || ((!paramBoolean) && (this.jdField_c_of_type_Int == 2))) {
       return;
     }
-    if (paramBoolean) {}
-    for (Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;; localDrawable = null)
+    Drawable localDrawable;
+    if (paramBoolean)
     {
-      setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], localDrawable, getCompoundDrawables()[3]);
+      localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      if (this.jdField_a_of_type_Bbhg == null) {
+        break label97;
+      }
+      this.jdField_a_of_type_Bbhg.a(paramBoolean);
+      setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], null, getCompoundDrawables()[3]);
+    }
+    for (;;)
+    {
       if (this.jdField_b_of_type_Boolean != paramBoolean) {
-        AccessibilityUtil.a(this);
+        azve.a(this);
       }
       this.jdField_b_of_type_Boolean = paramBoolean;
       return;
+      localDrawable = null;
+      break;
+      label97:
+      setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], localDrawable, getCompoundDrawables()[3]);
     }
   }
   
   public void setCursorVisible(boolean paramBoolean)
   {
-    if ((QLog.isColorLevel()) && (AppSetting.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Boolean))
+    if ((QLog.isColorLevel()) && (AppSetting.d) && (this.jdField_a_of_type_Boolean))
     {
       StringBuilder localStringBuilder = new StringBuilder(100);
       localStringBuilder.append("setCursorVisible=");
@@ -252,14 +274,19 @@ public class ConfigClearableEditText
     super.setCursorVisible(paramBoolean);
   }
   
-  public void setTextClearedListener(ConfigClearableEditText.OnTextClearedListener paramOnTextClearedListener)
+  public void setCustomClearButtonCallback(bbhg parambbhg)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetConfigClearableEditText$OnTextClearedListener = paramOnTextClearedListener;
+    this.jdField_a_of_type_Bbhg = parambbhg;
+  }
+  
+  public void setTextClearedListener(bbhh parambbhh)
+  {
+    this.jdField_a_of_type_Bbhh = parambbhh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ConfigClearableEditText
  * JD-Core Version:    0.7.0.1
  */

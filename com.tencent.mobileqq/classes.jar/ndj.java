@@ -1,36 +1,12 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.QQStoryObserver;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ndj
-  extends SimpleJob
+class ndj
+  implements DialogInterface.OnClickListener
 {
-  public ndj(QQStoryObserver paramQQStoryObserver, String paramString, Boolean paramBoolean, boolean paramBoolean1, int paramInt) {}
+  ndj(ncw paramncw) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
-  {
-    paramJobContext = (UserManager)SuperManager.a(2);
-    paramVarArgs = paramJobContext.b(this.jdField_a_of_type_JavaLangString);
-    if (paramVarArgs != null) {
-      if (!this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {
-        break label61;
-      }
-    }
-    label61:
-    for (int i = 1;; i = 0)
-    {
-      paramVarArgs.isSubscribe = i;
-      paramJobContext.a(paramVarArgs);
-      ThreadManager.getUIHandler().post(new ndk(this));
-      return null;
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

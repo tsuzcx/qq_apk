@@ -1,38 +1,65 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileCardTemplate;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
-public class stb
-  extends VasQuickUpdateManager.CallBacker
+class stb
+  implements tft
 {
-  public stb(FriendProfileCardActivity paramFriendProfileCardActivity, ProfileCardTemplate paramProfileCardTemplate, Card paramCard) {}
+  stb(ssz paramssz, List paramList) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void a()
   {
-    if ((paramLong == 15L) && ("cardWZ.zip".equals(paramString1)))
+    QLog.e("Q.qqstory.msgTab.jobPullBasicInfo", 1, "pull video info failed");
+    ssz.b(this.jdField_a_of_type_Ssz, new ErrorMessage(102, "pull video info failed"));
+  }
+  
+  public void a(ArrayList<StoryVideoItem> paramArrayList)
+  {
+    if (paramArrayList == null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b != null)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId)) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate = this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardTemplate;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b.obtainMessage(5, 0, 18, this.jdField_a_of_type_ComTencentMobileqqDataCard).sendToTarget();
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.profilecard.FrdProfileCard", 2, "send msg of UI_MSG_UPDATE_CARD");
-        }
-      }
-      paramVasQuickUpdateManager.b(this);
+      urk.e("Q.qqstory.msgTab.jobPullBasicInfo", "video list empty !");
+      ssz.a(this.jdField_a_of_type_Ssz, new ErrorMessage(102, "video list empty !"));
+      return;
     }
+    HashMap localHashMap = new HashMap();
+    paramArrayList = paramArrayList.iterator();
+    Object localObject;
+    while (paramArrayList.hasNext())
+    {
+      localObject = (StoryVideoItem)paramArrayList.next();
+      localHashMap.put(((StoryVideoItem)localObject).mVid, localObject);
+    }
+    paramArrayList = new ArrayList();
+    int j = this.jdField_a_of_type_JavaUtilList.size();
+    int i = 0;
+    if (i < j)
+    {
+      localObject = (tfv)this.jdField_a_of_type_JavaUtilList.get(i);
+      StoryVideoItem localStoryVideoItem = (StoryVideoItem)localHashMap.get(((tfv)localObject).b);
+      if (localStoryVideoItem == null) {
+        urk.e("Q.qqstory.msgTab.jobPullBasicInfo", "not found video!");
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        ((tfv)localObject).a = localStoryVideoItem;
+        paramArrayList.add(localObject);
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.jobPullBasicInfo", 2, "pull video info succeed, info");
+    }
+    ssz.a(this.jdField_a_of_type_Ssz, paramArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     stb
  * JD-Core Version:    0.7.0.1
  */

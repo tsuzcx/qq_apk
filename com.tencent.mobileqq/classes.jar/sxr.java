@@ -1,37 +1,25 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.campuscircle.CampusCircleHelper;
-import com.tencent.mobileqq.data.Card;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import java.util.List;
 
 public class sxr
-  implements syj
+  extends sfo
 {
-  public sxr(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public QQUserUIItem a;
+  public String a;
+  public List<QQUserUIItem> a;
+  public String b;
   
-  public void a(int paramInt, String paramString)
+  public String toString()
   {
-    switch (paramInt)
-    {
+    if (this.a == null) {
+      return "UpdateUserInfoEvent " + super.toString();
     }
-    String str;
-    do
-    {
-      return;
-      str = FriendProfileMoreInfoActivity.a(this.a).getText().toString();
-    } while ((paramString == null) || (paramString.equals(str)));
-    this.a.j = true;
-    this.a.d(paramString);
-    if (CampusCircleHelper.b(this.a.a.lCampusSchoolID) == 4)
-    {
-      this.a.a("0X80081E9", 0);
-      return;
-    }
-    this.a.a("0X80081EB", 1);
+    return "UpdateUserInfoEvent " + this.a.toString() + super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sxr
  * JD-Core Version:    0.7.0.1
  */

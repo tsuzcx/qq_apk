@@ -1,23 +1,65 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ListView;
-import com.tencent.mobileqq.tribe.TribePostTitlePrefixPanelController;
-import com.tencent.mobileqq.util.DisplayUtil;
-
 public class aixp
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aixp(TribePostTitlePrefixPanelController paramTribePostTitlePrefixPanelController) {}
+  private int jdField_a_of_type_Int;
+  private aiya jdField_a_of_type_Aiya;
+  private aiyb jdField_a_of_type_Aiyb;
+  private aiyd jdField_a_of_type_Aiyd;
+  private String jdField_a_of_type_JavaLangString;
+  private int b;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  private aixp(int paramInt1, String paramString, int paramInt2, aiyd paramaiyd, aiyb paramaiyb, aiya paramaiya)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    TribePostTitlePrefixPanelController.a(this.a).setPadding(DisplayUtil.a(TribePostTitlePrefixPanelController.a(this.a).getContext(), 8.0F), i, 0, 0);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Aiyd = paramaiyd;
+    this.jdField_a_of_type_Aiyb = paramaiyb;
+    this.jdField_a_of_type_Aiya = paramaiya;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public aiya a()
+  {
+    return this.jdField_a_of_type_Aiya;
+  }
+  
+  public aiyb a()
+  {
+    return this.jdField_a_of_type_Aiyb;
+  }
+  
+  public aiyd a()
+  {
+    return this.jdField_a_of_type_Aiyd;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String a(int paramInt)
+  {
+    return this.jdField_a_of_type_Aiya.a(paramInt);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return this.jdField_a_of_type_Aiya.a(paramInt);
+  }
+  
+  public int b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aixp
  * JD-Core Version:    0.7.0.1
  */

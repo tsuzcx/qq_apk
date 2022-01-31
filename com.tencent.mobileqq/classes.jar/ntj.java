@@ -1,74 +1,153 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.download.DownloadUrlManager;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent;
-import com.tencent.biz.qqstory.model.StoryManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.BatchHandlerListPuller;
-import com.tencent.biz.qqstory.network.handler.GetVidPollInfoHandler;
-import com.tencent.biz.qqstory.network.request.GetCollectionVideoListRequest;
-import com.tencent.biz.qqstory.network.response.GetCollectionVideoListResponse;
-import com.tencent.biz.qqstory.playvideo.model.MemorySharePlayingListSync;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class ntj
-  implements CmdTaskManger.CommandCallback
+class ntj
+  extends ohe
 {
-  public ntj(MemorySharePlayingListSync paramMemorySharePlayingListSync) {}
+  ntj(nti paramnti) {}
   
-  public void a(@NonNull GetCollectionVideoListRequest paramGetCollectionVideoListRequest, @Nullable GetCollectionVideoListResponse paramGetCollectionVideoListResponse, @NonNull ErrorMessage paramErrorMessage)
+  public void a(int paramInt, boolean paramBoolean, List<ChannelCoverInfo> paramList)
   {
-    int i = 0;
-    this.a.c = false;
-    if ((paramGetCollectionVideoListResponse == null) || (paramErrorMessage.isFail()))
+    if ((paramBoolean) && (paramList != null) && (nti.a(this.a) == paramInt))
     {
-      paramGetCollectionVideoListRequest = new DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent();
-      paramGetCollectionVideoListRequest.jdField_a_of_type_JavaLangString = this.a.jdField_b_of_type_JavaLangString;
-      paramGetCollectionVideoListRequest.jdField_b_of_type_JavaLangString = this.a.jdField_d_of_type_JavaLangString;
-      paramGetCollectionVideoListRequest.errorInfo = paramErrorMessage;
-      Dispatchers.get().dispatch(paramGetCollectionVideoListRequest);
-      return;
-    }
-    paramGetCollectionVideoListResponse.jdField_a_of_type_JavaUtilList = ((StoryManager)SuperManager.a(5)).a(paramGetCollectionVideoListResponse.jdField_a_of_type_JavaUtilList);
-    paramErrorMessage = paramGetCollectionVideoListResponse.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramErrorMessage.hasNext()) {
-      ((StoryVideoItem)paramErrorMessage.next()).mOwnerUid = this.a.jdField_d_of_type_JavaLangString;
-    }
-    if (TextUtils.isEmpty(paramGetCollectionVideoListRequest.jdField_d_of_type_JavaLangString)) {
-      this.a.jdField_a_of_type_JavaUtilList.clear();
-    }
-    this.a.jdField_a_of_type_JavaLangString = paramGetCollectionVideoListResponse.c;
-    this.a.jdField_a_of_type_JavaUtilList.addAll(paramGetCollectionVideoListResponse.jdField_a_of_type_JavaUtilList);
-    this.a.jdField_a_of_type_Int = this.a.jdField_a_of_type_JavaUtilList.size();
-    this.a.jdField_b_of_type_Boolean = paramGetCollectionVideoListResponse.jdField_a_of_type_Boolean;
-    paramGetCollectionVideoListRequest = this.a;
-    if (paramGetCollectionVideoListResponse.jdField_b_of_type_Int == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramGetCollectionVideoListRequest.jdField_d_of_type_Boolean = bool;
-      SLog.a("Q.qqstory.player.MemorySharePlayingListSync", "last load position:%d cookie:%s", Integer.valueOf(this.a.jdField_a_of_type_Int), this.a.jdField_a_of_type_JavaLangString);
-      ((DownloadUrlManager)SuperManager.a(28)).a(paramGetCollectionVideoListResponse.jdField_b_of_type_JavaUtilList);
-      paramGetCollectionVideoListRequest = new ArrayList();
-      while (i < this.a.jdField_a_of_type_JavaUtilList.size())
-      {
-        paramGetCollectionVideoListRequest.add(((StoryVideoItem)this.a.jdField_a_of_type_JavaUtilList.get(i)).mVid);
-        i += 1;
+      nti.a(this.a, (ArrayList)paramList);
+      if ((nti.a(this.a) == null) || (nti.a(this.a) == null) || (nti.a(this.a).size() <= 0)) {
+        break label200;
+      }
+      nti.a(this.a).a(nti.a(this.a));
+      nti.a(this.a).notifyDataSetChanged();
+      if (nti.a(this.a).findHeaderViewPosition(nti.a(this.a)) < 0) {
+        nti.a(this.a).addHeaderView(nti.a(this.a));
       }
     }
-    paramErrorMessage = BatchHandlerListPuller.a(paramGetCollectionVideoListRequest);
-    paramErrorMessage.a("Q.qqstory.player.MemorySharePlayingListSync");
-    paramErrorMessage.a(new ntk(this, paramErrorMessage, paramGetCollectionVideoListResponse));
-    paramErrorMessage.b();
-    GetVidPollInfoHandler.a(paramGetCollectionVideoListRequest);
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ChannelCoverView", 2, "onSubChannelListUpdate infos size" + nti.a(this.a).size());
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ChannelCoverView", 2, "onSubChannelListUpdate" + paramBoolean);
+      }
+      return;
+      label200:
+      nti.a(this.a).removeHeaderView(nti.a(this.a));
+    }
+  }
+  
+  public void b(boolean paramBoolean, List<ChannelCoverInfo> paramList)
+  {
+    if ((paramBoolean) && (paramList != null) && (nti.a(this.a) == 0))
+    {
+      nti.a(this.a, (ArrayList)paramList);
+      if ((nti.a(this.a) != null) && (nti.a(this.a) != null) && (nti.a(this.a).size() > 0))
+      {
+        nti.a(this.a).a(nti.a(this.a));
+        nti.a(this.a).notifyDataSetChanged();
+        if (nti.a(this.a).findHeaderViewPosition(nti.a(this.a)) < 0) {
+          nti.a(this.a).addHeaderView(nti.a(this.a));
+        }
+        paramList = paramList.iterator();
+      }
+      label134:
+      while (paramList.hasNext())
+      {
+        Object localObject = (ChannelCoverInfo)paramList.next();
+        if ((!TextUtils.isEmpty(((ChannelCoverInfo)localObject).mChannelJumpUrl)) && (((ChannelCoverInfo)localObject).mChannelJumpUrl.indexOf("html/topic.html") != -1)) {
+          for (;;)
+          {
+            int i;
+            try
+            {
+              for (;;)
+              {
+                localObject = new URL(((ChannelCoverInfo)localObject).mChannelJumpUrl);
+                if (TextUtils.isEmpty(((URL)localObject).getQuery())) {
+                  break;
+                }
+                localObject = ((URL)localObject).getQuery().split("[&]");
+                int j = localObject.length;
+                i = 0;
+                if (i >= j) {
+                  break;
+                }
+                String[] arrayOfString = localObject[i].split("[=]");
+                if (arrayOfString.length <= 1) {
+                  break label388;
+                }
+                boolean bool = "topicid".equals(arrayOfString[0]);
+                if (!bool) {
+                  break label388;
+                }
+                try
+                {
+                  Integer.valueOf(arrayOfString[1]).intValue();
+                  if (!QLog.isColorLevel()) {
+                    break;
+                  }
+                  QLog.d("ChannelCoverView", 2, "onMainChannelListUpdate preload topic and topicId = " + arrayOfString[1]);
+                }
+                catch (Exception localException) {}
+              }
+              if (!QLog.isColorLevel()) {
+                break label134;
+              }
+              QLog.d("ChannelCoverView", 2, "onMainChannelListUpdate preload topic and topic is illegal");
+            }
+            catch (MalformedURLException localMalformedURLException) {}
+            if (!QLog.isColorLevel()) {
+              break label134;
+            }
+            QLog.d("ChannelCoverView", 2, "onMainChannelListUpdate preload topic MalformedURLException " + localMalformedURLException);
+            break label134;
+            nti.a(this.a).removeHeaderView(nti.a(this.a));
+            break;
+            i += 1;
+          }
+        }
+      }
+      label388:
+      if (QLog.isColorLevel()) {
+        QLog.d("ChannelCoverView", 2, "onMainChannelListUpdate infos size" + nti.a(this.a).size());
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ChannelCoverView", 2, "onMainChannelListUpdate" + paramBoolean);
+    }
+  }
+  
+  public void c(boolean paramBoolean, List<ChannelCoverInfo> paramList)
+  {
+    if ((paramBoolean) && (paramList != null) && (nti.a(this.a) == 56))
+    {
+      nti.a(this.a, (ArrayList)paramList);
+      if ((nti.a(this.a) == null) || (nti.a(this.a) == null) || (nti.a(this.a).size() <= 0)) {
+        break label201;
+      }
+      nti.a(this.a).a(nti.a(this.a));
+      nti.a(this.a).notifyDataSetChanged();
+      if (nti.a(this.a).findHeaderViewPosition(nti.a(this.a)) < 0) {
+        nti.a(this.a).addHeaderView(nti.a(this.a));
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ChannelCoverView", 2, "onVideoChannelListUpdate infos size" + nti.a(this.a).size());
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ChannelCoverView", 2, "onVideoChannelListUpdate" + paramBoolean);
+      }
+      return;
+      label201:
+      nti.a(this.a).removeHeaderView(nti.a(this.a));
+    }
   }
 }
 

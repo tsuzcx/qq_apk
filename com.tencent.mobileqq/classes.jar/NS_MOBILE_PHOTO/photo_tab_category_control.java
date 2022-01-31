@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class photo_tab_category_control
   extends JceStruct
 {
-  static ArrayList cache_category_infos = new ArrayList();
-  public ArrayList category_infos;
+  static ArrayList<photo_tab_categroy_info> cache_category_infos = new ArrayList();
+  public ArrayList<photo_tab_categroy_info> category_infos;
   public boolean is_visible;
   
   static
@@ -20,7 +20,7 @@ public final class photo_tab_category_control
   
   public photo_tab_category_control() {}
   
-  public photo_tab_category_control(boolean paramBoolean, ArrayList paramArrayList)
+  public photo_tab_category_control(boolean paramBoolean, ArrayList<photo_tab_categroy_info> paramArrayList)
   {
     this.is_visible = paramBoolean;
     this.category_infos = paramArrayList;

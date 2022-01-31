@@ -14,7 +14,7 @@ public abstract class OneViewPagerAdapter
 {
   private int jdField_a_of_type_Int = 0;
   ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
-  SparseArray b = new SparseArray();
+  SparseArray<View> b = new SparseArray();
   
   public OneViewPagerAdapter(ViewPager paramViewPager)
   {
@@ -125,7 +125,7 @@ public abstract class OneViewPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.widget.OneViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.shortvideo.dancemachine;
 
 public abstract interface GLProgressBar$ProgressBarListener
 {
-  public abstract void a();
+  public abstract void progressMax();
 }
 
 

@@ -1,25 +1,25 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import java.util.Iterator;
+import java.util.List;
 
-public class sit
-  implements Runnable
+final class sit
+  implements DialogInterface.OnClickListener
 {
-  public sit(ChatSettingForTroop paramChatSettingForTroop) {}
+  sit(List paramList) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {
-      return;
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext()) {
+      sis.a((String)localIterator.next());
     }
-    ArrayList localArrayList = TroopInfoActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData);
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new siu(this, localArrayList));
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sit
  * JD-Core Version:    0.7.0.1
  */

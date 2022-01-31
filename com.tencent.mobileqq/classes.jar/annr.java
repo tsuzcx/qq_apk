@@ -1,19 +1,23 @@
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import cooperation.troop_homework.jsp.TroopHWFileDownloadManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.emotionintegrate.SearchEmoticonWebBean;
 
-public class annr
-  implements Runnable
+public final class annr
+  implements Parcelable.Creator<SearchEmoticonWebBean>
 {
-  public annr(TroopHWFileDownloadManager paramTroopHWFileDownloadManager, String paramString) {}
-  
-  public void run()
+  public SearchEmoticonWebBean a(Parcel paramParcel)
   {
-    TroopHWFileDownloadManager.a(this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWFileDownloadManager).pauseDownloadTask(this.jdField_a_of_type_JavaLangString);
+    return new SearchEmoticonWebBean(paramParcel);
+  }
+  
+  public SearchEmoticonWebBean[] a(int paramInt)
+  {
+    return new SearchEmoticonWebBean[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     annr
  * JD-Core Version:    0.7.0.1
  */

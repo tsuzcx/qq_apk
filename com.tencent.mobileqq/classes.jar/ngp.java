@@ -1,32 +1,59 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import com.tencent.biz.qqstory.model.StoryConfigManager.StoryConfigEvent;
-import com.tencent.biz.qqstory.network.request.PublishConfigRequest;
-import com.tencent.biz.qqstory.network.response.PublishConfigResponse;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.ecshopassit.EcshopWebActivity;
+import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
+import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
+import java.util.Iterator;
+import java.util.List;
 
 public class ngp
-  implements CmdTaskManger.CommandCallback
+  extends BroadcastReceiver
 {
-  public ngp(StoryConfigManager paramStoryConfigManager) {}
+  public ngp(ShopWebViewFragment paramShopWebViewFragment) {}
   
-  public void a(@NonNull PublishConfigRequest paramPublishConfigRequest, @Nullable PublishConfigResponse paramPublishConfigResponse, @NonNull ErrorMessage paramErrorMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramPublishConfigResponse != null) && (paramErrorMessage.isSuccess()))
+    if (paramIntent == null) {}
+    do
     {
-      StoryConfigManager.a(this.a, System.currentTimeMillis());
-      this.a.b("show_now_entry", Boolean.valueOf(paramPublishConfigResponse.a));
-      this.a.b("publish_picture", Boolean.valueOf(paramPublishConfigResponse.b));
-      if (paramPublishConfigResponse.c) {
-        this.a.b("first_time_pic", Boolean.valueOf(paramPublishConfigResponse.c));
+      Object localObject;
+      do
+      {
+        do
+        {
+          return;
+          paramContext = paramIntent.getAction();
+          localObject = paramIntent.getStringExtra("uin");
+          Bitmap localBitmap = (Bitmap)paramIntent.getParcelableExtra("bitmap");
+          if (!"action_decode_finish".equals(paramContext)) {
+            break;
+          }
+          if ((this.a.jdField_a_of_type_Ngf != null) && (!TextUtils.isEmpty((CharSequence)localObject)) && (localBitmap != null)) {
+            this.a.jdField_a_of_type_Ngf.a((String)localObject, localBitmap);
+          }
+        } while (this.a.jdField_a_of_type_Ngk == null);
+        this.a.jdField_a_of_type_Ngk.a((String)localObject);
+        return;
+      } while (!"action_on_shop_msg_receive".equals(paramContext));
+      this.a.jdField_a_of_type_JavaUtilList = paramIntent.getParcelableArrayListExtra("datas");
+      paramContext = this.a.getActivity();
+      if ((paramContext instanceof EcshopWebActivity)) {
+        ((EcshopWebActivity)paramContext).jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_JavaUtilList;
       }
-      this.a.b("upload_video_use_bdh", Boolean.valueOf(paramPublishConfigResponse.d));
-    }
-    Dispatchers.get().dispatch(new StoryConfigManager.StoryConfigEvent());
+      paramContext = paramIntent.getStringExtra("uin");
+      paramIntent = this.a.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramIntent.hasNext())
+      {
+        localObject = (RecentShopParcel)paramIntent.next();
+        if ((!TextUtils.isEmpty(((RecentShopParcel)localObject).a)) && (((RecentShopParcel)localObject).a.equals(paramContext))) {
+          ((RecentShopParcel)localObject).b += 1;
+        }
+      }
+    } while ((this.a.b != 1) || (this.a.jdField_a_of_type_Ngk == null));
+    this.a.jdField_a_of_type_Ngk.a(this.a.jdField_a_of_type_JavaUtilList);
   }
 }
 

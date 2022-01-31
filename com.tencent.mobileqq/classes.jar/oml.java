@@ -1,27 +1,166 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.AnimationSet;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.ListView;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public class oml
-  implements Animation.AnimationListener
+public abstract class oml
 {
-  public oml(ArtFilterItemView paramArtFilterItemView, EditVideoArtFilter paramEditVideoArtFilter) {}
+  private ReadInJoyBaseListViewGroup jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup;
+  private qoe jdField_a_of_type_Qoe;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public abstract int a();
+  
+  public final Activity a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a = false;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.setVisibility(8);
+    return this.jdField_a_of_type_Qoe.a();
+  }
+  
+  public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    return null;
+  }
+  
+  public AnimationSet a()
+  {
+    return this.jdField_a_of_type_Qoe.a();
+  }
+  
+  public final azwg a()
+  {
+    return this.jdField_a_of_type_Qoe.a();
+  }
+  
+  public ReadInJoyBaseListViewGroup a()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup;
+  }
+  
+  public AbsListView a()
+  {
+    if (this.jdField_a_of_type_Qoe != null) {
+      return this.jdField_a_of_type_Qoe.a();
     }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.a(true);
+    return null;
+  }
+  
+  public Boolean a()
+  {
+    return null;
+  }
+  
+  public Integer a(int paramInt)
+  {
+    return Integer.valueOf(this.jdField_a_of_type_Qoe.getItemViewType(paramInt));
+  }
+  
+  public final Object a(int paramInt)
+  {
+    return this.jdField_a_of_type_Qoe.getItem(paramInt);
+  }
+  
+  public final qoe a()
+  {
+    return this.jdField_a_of_type_Qoe;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void a(View paramView, ArticleInfo paramArticleInfo, int paramInt) {}
+  
+  public void a(View paramView, ListView paramListView) {}
+  
+  public void a(ReadInJoyBaseListView paramReadInJoyBaseListView, int paramInt) {}
+  
+  public final void a(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup = paramReadInJoyBaseListViewGroup;
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong) {}
+  
+  public void a(List<BaseArticleInfo> paramList) {}
+  
+  public void a(Map<Integer, pov> paramMap) {}
+  
+  public void a(Map<Long, pov> paramMap, boolean paramBoolean) {}
+  
+  public void a(Set<Long> paramSet, Map<Long, pov> paramMap) {}
+  
+  public final void a(qoe paramqoe)
+  {
+    this.jdField_a_of_type_Qoe = paramqoe;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup.a(paramBoolean);
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a(boolean paramBoolean, int paramInt) {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2) {}
+  
+  public final boolean a()
+  {
+    return this.jdField_a_of_type_Qoe.c;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Qoe.a();
+  }
+  
+  public void b() {}
+  
+  public void b(View paramView, ListView paramListView) {}
+  
+  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2) {}
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Qoe.b();
+  }
+  
+  public void c() {}
+  
+  public final int d()
+  {
+    return this.jdField_a_of_type_Qoe.getCount();
+  }
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
+  
+  public void h() {}
 }
 
 

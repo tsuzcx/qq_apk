@@ -1,39 +1,43 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.ResendRspBody;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
 
-public class wmc
-  implements AdapterView.OnItemClickListener
+public abstract class wmc
+  extends mmn
 {
-  public wmc(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
-  
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (this.a.jdField_a_of_type_Wmi != null)
+    if (paramInt != 0)
     {
-      paramAdapterView = this.a.getActivity();
-      if (paramAdapterView != null) {
-        break label23;
+      a(false, paramInt, null, paramBundle);
+      return;
+    }
+    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
+    try
+    {
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d6.ResendRspBody)localRspBody.resend_file_rsp.get();
+      if (paramArrayOfByte.int32_ret_code.has())
+      {
+        a(true, 0, paramArrayOfByte, paramBundle);
+        return;
       }
     }
-    label23:
-    do
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
+      a(false, -1, null, paramBundle);
       return;
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "res_clk", 0, 0, this.a.b, "", "", "");
-      paramView = ((wmh)this.a.jdField_a_of_type_Wmi.getItem(paramInt)).a;
-      ChatHistoryBubbleListForTroopFragment.a(paramAdapterView, this.a.b, paramView, 100, 1);
-    } while (!QLog.isColorLevel());
-    QLog.i(TroopMemberHistoryFragment.jdField_a_of_type_JavaLangString, 2, "onItemClick, message = " + paramView);
+    }
+    a(false, -1, null, paramBundle);
   }
+  
+  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d6.ResendRspBody paramResendRspBody, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wmc
  * JD-Core Version:    0.7.0.1
  */

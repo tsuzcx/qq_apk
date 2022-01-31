@@ -1,54 +1,30 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.worldcup.WorldCupShareFragment;
-import java.io.File;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
 
 public class algj
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public algj(WorldCupShareFragment paramWorldCupShareFragment) {}
+  public algj(ArkIDESettingFragment paramArkIDESettingFragment) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    boolean bool1 = false;
-    Object localObject2 = null;
-    Object localObject1 = new File(AppConstants.aQ);
-    ((File)localObject1).mkdirs();
-    if (((File)localObject1).canWrite())
+    if (paramBoolean)
     {
-      localObject2 = Long.toString(System.currentTimeMillis());
-      localObject1 = AppConstants.aQ + "world_cup_share_" + (String)localObject2 + ".mp4";
-      File localFile = new File((String)localObject1);
-      int i = 2;
-      while ((localFile.exists()) && (i < 2147483647))
-      {
-        localObject1 = AppConstants.aQ + "world_cup_share_" + (String)localObject2 + "(" + i + ").mp4";
-        localFile = new File((String)localObject1);
-        i += 1;
-      }
-      boolean bool2 = WorldCupShareFragment.a(this.a, WorldCupShareFragment.a(this.a), (String)localObject1);
-      bool1 = bool2;
-      localObject2 = localObject1;
-      if (!bool2)
-      {
-        bool1 = bool2;
-        localObject2 = localObject1;
-        if (localFile.exists())
-        {
-          localFile.delete();
-          localObject2 = localObject1;
-          bool1 = bool2;
-        }
-      }
+      this.a.b();
+      this.a.a("");
+      ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("IDEDebug is open", new Object[0]));
+      return;
     }
-    if (this.a.getActivity() != null) {
-      this.a.getActivity().runOnUiThread(new algk(this, bool1, (String)localObject2));
-    }
+    this.a.c();
+    this.a.a("close");
+    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("IDEDebug is close", new Object[0]));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     algj
  * JD-Core Version:    0.7.0.1
  */

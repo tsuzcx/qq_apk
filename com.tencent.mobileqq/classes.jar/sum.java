@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import com.tencent.biz.qqstory.msgTabNode.view.DotAnimationView;
 
-class sum
-  implements ActionSheet.OnDismissListener
+public class sum
 {
-  sum(suk paramsuk) {}
+  public float a;
+  public float b;
+  public float c;
   
-  public void onDismiss()
-  {
-    ReportController.b(this.a.a.app, "CliOper", "", "", "0X8008406", "0X8008406", 0, 0, "", "", "", "");
-  }
+  private sum(DotAnimationView paramDotAnimationView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sum
  * JD-Core Version:    0.7.0.1
  */

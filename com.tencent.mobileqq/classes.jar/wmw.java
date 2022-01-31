@@ -1,23 +1,23 @@
-import android.os.MessageQueue.IdleHandler;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import android.content.Context;
+import android.widget.RadioButton;
+import com.tencent.biz.troopgift.RadioButtonIndicator;
 
 public class wmw
-  implements MessageQueue.IdleHandler
+  extends RadioButton
 {
-  public wmw(ClassificationSearchActivity paramClassificationSearchActivity) {}
-  
-  public boolean queueIdle()
+  public wmw(RadioButtonIndicator paramRadioButtonIndicator, Context paramContext)
   {
-    this.a.a.requestFocus();
-    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
-    return false;
+    super(paramContext);
+  }
+  
+  public boolean performClick()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wmw
  * JD-Core Version:    0.7.0.1
  */

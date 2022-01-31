@@ -1,46 +1,46 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.ConfigHandler;
+import ajfi;
+import ajgd;
+import axat;
+import azwp;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
-import com.tencent.mobileqq.util.FaceDrawable;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class GetSelfInfo
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
-    FriendListHandler localFriendListHandler = (FriendListHandler)this.a.b.a(1);
-    if (this.a.b.c)
+    FriendListHandler localFriendListHandler = (FriendListHandler)this.a.app.a(1);
+    if (this.a.app.c)
     {
-      localObject = (SubAccountManager)this.a.b.getManager(60);
+      localObject = (axat)this.a.app.getManager(61);
       if (localObject == null) {
         break label170;
       }
     }
     label170:
-    for (Object localObject = ((SubAccountManager)localObject).a();; localObject = null)
+    for (Object localObject = ((axat)localObject).a();; localObject = null)
     {
       if ((localObject != null) && (((ArrayList)localObject).size() > 0))
       {
-        this.a.b.c = false;
+        this.a.app.c = false;
         localObject = ((ArrayList)localObject).iterator();
         while (((Iterator)localObject).hasNext()) {
           localFriendListHandler.b((String)((Iterator)localObject).next());
         }
       }
-      localObject = (CardHandler)this.a.b.a(2);
+      localObject = (ajfi)this.a.app.a(2);
       if (localObject != null) {
-        ((CardHandler)localObject).e();
+        ((ajfi)localObject).d();
       }
-      ((ConfigHandler)this.a.b.a(4)).e();
-      FaceDrawable.a(this.a.b, this.a.b.getAccount(), (byte)3);
+      ((ajgd)this.a.app.a(4)).d();
+      azwp.a(this.a.app, this.a.app.getAccount(), (byte)3);
       return 7;
     }
   }

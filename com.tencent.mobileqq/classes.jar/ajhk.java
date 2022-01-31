@@ -1,33 +1,35 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.Callback;
-import java.util.List;
+import android.text.TextUtils;
 
-class ajhk
-  extends TroopAioKeywordTipManager.Callback
+public class ajhk
 {
-  ajhk(ajhj paramajhj, List paramList, TroopAioKeywordTipManager paramTroopAioKeywordTipManager) {}
-  
-  public void a(MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo)
+  public static String a(String paramString)
   {
-    if (!this.jdField_a_of_type_Ajhj.a.a) {}
-    do
+    String str2 = "";
+    String str1 = str2;
+    int i;
+    if (!TextUtils.isEmpty(paramString))
     {
-      return;
-      if ((paramMessageRecord != null) && (paramTroopAioKeywordTipInfo != null)) {
-        break;
+      i = paramString.lastIndexOf("diydoutu@");
+      str1 = str2;
+      if (i >= 0) {
+        str1 = paramString.substring(i, paramString.length());
       }
-    } while ((this.jdField_a_of_type_JavaUtilList.size() <= 0) || (TroopAioKeywordTipBar.a(this.jdField_a_of_type_Ajhj.a)));
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager.a(this.jdField_a_of_type_JavaUtilList, null, 2, new ajhl(this));
-    return;
-    TroopAioKeywordTipBar.a(this.jdField_a_of_type_Ajhj.a, paramMessageRecord, paramTroopAioKeywordTipInfo);
+    }
+    paramString = str1;
+    if (!TextUtils.isEmpty(str1))
+    {
+      i = str1.lastIndexOf(".");
+      paramString = str1;
+      if (i >= 0) {
+        paramString = str1.substring(0, i);
+      }
+    }
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajhk
  * JD-Core Version:    0.7.0.1
  */

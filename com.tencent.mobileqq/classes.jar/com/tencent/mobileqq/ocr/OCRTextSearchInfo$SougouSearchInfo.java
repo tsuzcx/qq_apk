@@ -7,14 +7,14 @@ public class OCRTextSearchInfo$SougouSearchInfo
   implements Serializable
 {
   public String abstractStr = "";
-  public List abstractStrKeyWords;
+  public List<String> abstractStrKeyWords;
   public String jumpURL = "";
   public String keyWord = "";
   public String sourceFrom = "";
   public String stype = "";
   public String summaryPic = "";
   public String title = "";
-  public List titleKeyWords;
+  public List<String> titleKeyWords;
   
   public String toString()
   {

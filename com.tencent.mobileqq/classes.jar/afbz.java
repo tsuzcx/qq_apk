@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
 
 public class afbz
-  implements Runnable
+  implements View.OnClickListener
 {
-  public afbz(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public afbz(TroopActivity paramTroopActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ShortVideoCommentsView.a(this.a, ShortVideoCommentsView.a(this.a));
+    TroopActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afbz
  * JD-Core Version:    0.7.0.1
  */

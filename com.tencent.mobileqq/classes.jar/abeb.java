@@ -1,39 +1,20 @@
-import com.tencent.mobileqq.ark.ArkAiScrollBar;
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class abeb
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public abeb(ArkRecommendController paramArkRecommendController) {}
+  public abeb(NotificationActivity paramNotificationActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j = 1;
-    int i = j;
-    if (ArkRecommendController.a(this.a) == null)
-    {
-      ArkRecommendController.a(this.a, new ArkAiScrollBar(this.a));
-      i = j;
-      if (!ArkRecommendController.a(this.a).a())
-      {
-        ArkRecommendController.a(this.a, null);
-        if (QLog.isColorLevel()) {
-          QLog.d("ArkRecommendController", 2, "showBabyQBubbleView.mScrollBar.init.false");
-        }
-        i = 0;
-      }
-    }
-    if (i != 0)
-    {
-      ArkRecommendController.a(this.a).a(ArkRecommendController.a(this.a));
-      ArkRecommendController.a(this.a).b();
-    }
+    NotificationActivity.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abeb
  * JD-Core Version:    0.7.0.1
  */

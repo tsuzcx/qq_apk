@@ -1,28 +1,108 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewStub;
+import com.tencent.biz.videostory.capture.widgets.BeautyAndFilterPanelViewStubHolder.1;
+import com.tencent.biz.videostory.capture.widgets.BeautyAndFilterPanelViewStubHolder.2;
+import dov.com.qq.im.AECamera.View.AEProviderContainerView;
 
 public class wvz
-  implements Runnable
+  extends wvy
 {
-  public wvz(MainAssistObserver paramMainAssistObserver) {}
+  private AEProviderContainerView a;
   
-  public void run()
+  public wvz(ViewStub paramViewStub)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MainAssistObserver", 2, "-->onGetOpenId timeout.");
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.isFinishing()) {
+    super(paramViewStub);
+  }
+  
+  protected void a(View paramView)
+  {
+    this.a = ((AEProviderContainerView)paramView.findViewById(2131297572));
+  }
+  
+  public void a(auti paramauti)
+  {
+    a(new BeautyAndFilterPanelViewStubHolder.1(this, paramauti));
+  }
+  
+  public void a(bgxh parambgxh, wus paramwus)
+  {
+    a(new BeautyAndFilterPanelViewStubHolder.2(this, parambgxh, paramwus));
+  }
+  
+  public void a(wsh paramwsh)
+  {
+    if (!a()) {
       return;
     }
-    this.a.c = true;
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.hide();
+    this.a.setCaptureMode(paramwsh);
+  }
+  
+  public void b()
+  {
+    a();
+    this.a.setVisibility(0);
+    this.a.b();
+  }
+  
+  public boolean b()
+  {
+    if (!a()) {
+      return false;
+    }
+    return this.a.b();
+  }
+  
+  public void c()
+  {
+    if (!a()) {
+      return;
+    }
+    this.a.a();
+  }
+  
+  public void d()
+  {
+    if (!a()) {
+      return;
+    }
+    this.a.d();
+  }
+  
+  public void e()
+  {
+    if (!a()) {
+      return;
+    }
+    this.a.f();
+  }
+  
+  public void f()
+  {
+    if (!a()) {
+      return;
+    }
+    this.a.c();
+  }
+  
+  public void g()
+  {
+    if (!a()) {
+      return;
+    }
+    this.a.g();
+  }
+  
+  public void h()
+  {
+    if (!a()) {
+      return;
+    }
+    this.a.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wvz
  * JD-Core Version:    0.7.0.1
  */

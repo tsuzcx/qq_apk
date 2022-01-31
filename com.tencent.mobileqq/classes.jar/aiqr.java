@@ -1,20 +1,32 @@
-import android.opengl.GLES20;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-
 public class aiqr
-  implements Runnable
+  implements ajfe
 {
-  public aiqr(VideoSprite paramVideoSprite) {}
+  protected void a(boolean paramBoolean, Object paramObject) {}
   
-  public void run()
+  protected void b(boolean paramBoolean, Object paramObject) {}
+  
+  protected void c(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    GLES20.glDeleteTextures(this.a.a.length, this.a.a, 0);
-    GLES20.glFlush();
+    switch (paramInt)
+    {
+    case 3: 
+    default: 
+      return;
+    case 2: 
+      a(paramBoolean, paramObject);
+      return;
+    case 1: 
+      b(paramBoolean, paramObject);
+      return;
+    }
+    c(paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiqr
  * JD-Core Version:    0.7.0.1
  */

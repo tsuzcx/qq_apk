@@ -9,9 +9,10 @@ import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.os.Environment;
 import android.text.TextUtils;
+import bfpz;
+import bgfb;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.DataUtils;
-import cooperation.qzone.util.FileUtils;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -27,7 +28,7 @@ import java.util.Set;
 public class Native
 {
   private static Context jdField_a_of_type_AndroidContentContext;
-  private static final HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static final HashMap<String, String> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private static final char[] jdField_a_of_type_ArrayOfChar = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
   
   public static File a()
@@ -76,28 +77,28 @@ public class Native
     //   28: goto -17 -> 11
     //   31: astore_1
     //   32: aload_0
-    //   33: invokestatic 130	cooperation/qzone/util/DataUtils:a	(Ljava/lang/Object;)Z
+    //   33: invokestatic 131	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
     //   36: pop
     //   37: aconst_null
     //   38: areturn
     //   39: aload_1
-    //   40: invokevirtual 134	java/security/MessageDigest:digest	()[B
-    //   43: invokestatic 137	cooperation/qzone/Native:a	([B)Ljava/lang/String;
+    //   40: invokevirtual 135	java/security/MessageDigest:digest	()[B
+    //   43: invokestatic 138	cooperation/qzone/Native:a	([B)Ljava/lang/String;
     //   46: astore_1
     //   47: aload_0
-    //   48: invokestatic 130	cooperation/qzone/util/DataUtils:a	(Ljava/lang/Object;)Z
+    //   48: invokestatic 131	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
     //   51: pop
     //   52: aload_1
     //   53: areturn
     //   54: astore_1
     //   55: aload_0
-    //   56: invokestatic 130	cooperation/qzone/util/DataUtils:a	(Ljava/lang/Object;)Z
+    //   56: invokestatic 131	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
     //   59: pop
     //   60: aconst_null
     //   61: areturn
     //   62: astore_1
     //   63: aload_0
-    //   64: invokestatic 130	cooperation/qzone/util/DataUtils:a	(Ljava/lang/Object;)Z
+    //   64: invokestatic 131	cooperation/qzone/util/DataUtils:closeDataObject	(Ljava/lang/Object;)Z
     //   67: pop
     //   68: aload_1
     //   69: athrow
@@ -151,7 +152,7 @@ public class Native
     return new String(arrayOfChar);
   }
   
-  private static List a(String paramString)
+  private static List<File> a(String paramString)
   {
     Object localObject;
     File localFile;
@@ -167,7 +168,7 @@ public class Native
         ((File)localObject).mkdirs();
       }
       QLog.w("LibraryLoader", 1, "Prepare to Download Native Libs From Network ... Url = http://14.17.34.200/sngapp/qzone/client/20140812163037_9933/qzone_so_for_5_0.zip");
-      bool = QZoneHttpUtil.a(QZoneHttpUtil.a("http://14.17.34.200/sngapp/qzone/client/20140812163037_9933/qzone_so_for_5_0.zip", localFile));
+      bool = bfpz.a(bfpz.a("http://14.17.34.200/sngapp/qzone/client/20140812163037_9933/qzone_so_for_5_0.zip", localFile));
       QLog.w("LibraryLoader", 1, "Download Native Libs => " + bool);
       if (bool) {
         break label139;
@@ -185,7 +186,7 @@ public class Native
       if (!TextUtils.isEmpty(paramString)) {
         ((Set)localObject).add(paramString);
       }
-      localObject = FileUtils.a(localFile, a(), (Set)localObject);
+      localObject = bgfb.a(localFile, a(), (Set)localObject);
       QLog.w("LibraryLoader", 1, "Install Native Libs => " + bool);
       paramString = (String)localObject;
     } while (!localFile.exists());
@@ -501,7 +502,7 @@ public class Native
     //   0: iconst_1
     //   1: istore_2
     //   2: getstatic 67	cooperation/qzone/Native:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   5: invokevirtual 401	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   5: invokevirtual 404	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   8: astore_3
     //   9: new 46	java/lang/StringBuilder
     //   12: dup
@@ -516,46 +517,46 @@ public class Native
     //   33: astore_1
     //   34: aload_3
     //   35: aload_1
-    //   36: invokevirtual 407	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   36: invokevirtual 410	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   39: astore_1
     //   40: aload_1
     //   41: ifnull +13 -> 54
     //   44: aload_1
     //   45: ifnull +7 -> 52
     //   48: aload_1
-    //   49: invokevirtual 410	java/io/InputStream:close	()V
+    //   49: invokevirtual 413	java/io/InputStream:close	()V
     //   52: iload_2
     //   53: ireturn
     //   54: iconst_0
     //   55: istore_2
     //   56: goto -12 -> 44
     //   59: astore_1
-    //   60: ldc 177
+    //   60: ldc 178
     //   62: iconst_1
     //   63: new 46	java/lang/StringBuilder
     //   66: dup
     //   67: invokespecial 47	java/lang/StringBuilder:<init>	()V
-    //   70: ldc_w 412
+    //   70: ldc_w 415
     //   73: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   76: aload_0
     //   77: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   80: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   83: aconst_null
-    //   84: invokestatic 335	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   84: invokestatic 338	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   87: iconst_0
     //   88: ifeq +11 -> 99
-    //   91: new 414	java/lang/NullPointerException
+    //   91: new 417	java/lang/NullPointerException
     //   94: dup
-    //   95: invokespecial 415	java/lang/NullPointerException:<init>	()V
+    //   95: invokespecial 418	java/lang/NullPointerException:<init>	()V
     //   98: athrow
     //   99: iconst_0
     //   100: ireturn
     //   101: astore_0
     //   102: iconst_0
     //   103: ifeq +11 -> 114
-    //   106: new 414	java/lang/NullPointerException
+    //   106: new 417	java/lang/NullPointerException
     //   109: dup
-    //   110: invokespecial 415	java/lang/NullPointerException:<init>	()V
+    //   110: invokespecial 418	java/lang/NullPointerException:<init>	()V
     //   113: athrow
     //   114: aload_0
     //   115: athrow
@@ -653,7 +654,7 @@ public class Native
           }
           localFileOutputStream.write(paramString3, 0, i);
           continue;
-          DataUtils.a(paramString2);
+          DataUtils.closeDataObject(paramString2);
         }
         catch (Throwable localThrowable1)
         {
@@ -672,7 +673,7 @@ public class Native
         paramString2 = localFileOutputStream;
         continue;
       }
-      DataUtils.a(paramString3);
+      DataUtils.closeDataObject(paramString3);
       a(str);
       throw paramString1;
       localFileOutputStream.close();
@@ -749,54 +750,54 @@ public class Native
     //   5: dup
     //   6: new 44	java/io/File
     //   9: dup
-    //   10: invokestatic 221	cooperation/qzone/Native:a	()Ljava/io/File;
+    //   10: invokestatic 222	cooperation/qzone/Native:a	()Ljava/io/File;
     //   13: aload_0
-    //   14: invokespecial 164	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   17: invokevirtual 254	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   14: invokespecial 165	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   17: invokevirtual 257	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   20: invokespecial 63	java/io/File:<init>	(Ljava/lang/String;)V
     //   23: astore 8
     //   25: getstatic 67	cooperation/qzone/Native:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   28: invokevirtual 401	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   28: invokevirtual 404	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   31: astore 9
     //   33: aload_0
-    //   34: invokestatic 251	cooperation/qzone/Native:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   34: invokestatic 254	cooperation/qzone/Native:a	(Ljava/lang/String;)Ljava/lang/String;
     //   37: astore_0
     //   38: aload 9
     //   40: aload_0
-    //   41: invokevirtual 482	android/content/res/AssetManager:openFd	(Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
+    //   41: invokevirtual 485	android/content/res/AssetManager:openFd	(Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
     //   44: astore 10
     //   46: aload 10
     //   48: ifnonnull +5 -> 53
     //   51: iconst_1
     //   52: ireturn
-    //   53: ldc 177
+    //   53: ldc 178
     //   55: iconst_1
     //   56: new 46	java/lang/StringBuilder
     //   59: dup
     //   60: invokespecial 47	java/lang/StringBuilder:<init>	()V
     //   63: aload_0
     //   64: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: ldc_w 484
+    //   67: ldc_w 487
     //   70: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   73: aload 10
-    //   75: invokevirtual 489	android/content/res/AssetFileDescriptor:getLength	()J
-    //   78: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   81: ldc_w 470
+    //   75: invokevirtual 492	android/content/res/AssetFileDescriptor:getLength	()J
+    //   78: invokevirtual 495	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   81: ldc_w 473
     //   84: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   87: aload 8
-    //   89: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   92: ldc_w 484
+    //   89: invokevirtual 469	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   92: ldc_w 487
     //   95: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   98: aload 8
-    //   100: invokevirtual 494	java/io/File:length	()J
-    //   103: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   100: invokevirtual 497	java/io/File:length	()J
+    //   103: invokevirtual 495	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   106: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   109: invokestatic 234	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   109: invokestatic 237	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   112: aload 8
-    //   114: invokevirtual 494	java/io/File:length	()J
+    //   114: invokevirtual 497	java/io/File:length	()J
     //   117: lstore_2
     //   118: aload 10
-    //   120: invokevirtual 489	android/content/res/AssetFileDescriptor:getLength	()J
+    //   120: invokevirtual 492	android/content/res/AssetFileDescriptor:getLength	()J
     //   123: lstore 4
     //   125: lload_2
     //   126: lload 4
@@ -812,36 +813,36 @@ public class Native
     //   145: istore 7
     //   147: aload 9
     //   149: aload_0
-    //   150: invokevirtual 407	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   150: invokevirtual 410	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   153: astore 9
-    //   155: ldc 177
+    //   155: ldc 178
     //   157: iconst_1
     //   158: new 46	java/lang/StringBuilder
     //   161: dup
     //   162: invokespecial 47	java/lang/StringBuilder:<init>	()V
     //   165: aload_0
     //   166: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   169: ldc_w 496
+    //   169: ldc_w 499
     //   172: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   175: aload 9
-    //   177: invokevirtual 443	java/io/InputStream:available	()I
-    //   180: invokevirtual 499	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   183: ldc_w 470
+    //   177: invokevirtual 446	java/io/InputStream:available	()I
+    //   180: invokevirtual 502	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   183: ldc_w 473
     //   186: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   189: aload 8
-    //   191: invokevirtual 466	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   194: ldc_w 484
+    //   191: invokevirtual 469	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   194: ldc_w 487
     //   197: invokevirtual 51	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   200: aload 8
-    //   202: invokevirtual 494	java/io/File:length	()J
-    //   205: invokevirtual 492	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   202: invokevirtual 497	java/io/File:length	()J
+    //   205: invokevirtual 495	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   208: invokevirtual 60	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   211: invokestatic 234	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   211: invokestatic 237	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   214: aload 8
-    //   216: invokevirtual 494	java/io/File:length	()J
+    //   216: invokevirtual 497	java/io/File:length	()J
     //   219: lstore_2
     //   220: aload 9
-    //   222: invokevirtual 443	java/io/InputStream:available	()I
+    //   222: invokevirtual 446	java/io/InputStream:available	()I
     //   225: istore_1
     //   226: lload_2
     //   227: iload_1
@@ -853,7 +854,7 @@ public class Native
     //   236: iload 6
     //   238: istore 7
     //   240: aload 9
-    //   242: invokevirtual 410	java/io/InputStream:close	()V
+    //   242: invokevirtual 413	java/io/InputStream:close	()V
     //   245: iload 6
     //   247: istore 7
     //   249: goto +52 -> 301
@@ -861,7 +862,7 @@ public class Native
     //   253: iload 6
     //   255: istore 7
     //   257: aload 9
-    //   259: invokevirtual 410	java/io/InputStream:close	()V
+    //   259: invokevirtual 413	java/io/InputStream:close	()V
     //   262: iload 6
     //   264: istore 7
     //   266: goto +35 -> 301
@@ -869,7 +870,7 @@ public class Native
     //   270: iload 6
     //   272: istore 7
     //   274: aload 9
-    //   276: invokevirtual 410	java/io/InputStream:close	()V
+    //   276: invokevirtual 413	java/io/InputStream:close	()V
     //   279: iload 6
     //   281: istore 7
     //   283: aload_0

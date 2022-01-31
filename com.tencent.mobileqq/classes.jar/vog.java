@@ -1,29 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder.TribeShortVideoMsgHolder;
+import java.io.IOException;
 
-public class vog
-  implements View.OnClickListener
+class vog
 {
-  public vog(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder) {}
-  
-  public void onClick(View paramView)
+  Process a(String[] paramArrayOfString)
   {
-    TribeShortVideoItemBuilder.TribeShortVideoMsgHolder localTribeShortVideoMsgHolder = (TribeShortVideoItemBuilder.TribeShortVideoMsgHolder)AIOUtils.a(paramView);
-    if (paramView == localTribeShortVideoMsgHolder.jdField_a_of_type_AndroidWidgetFrameLayout) {
-      this.a.b(localTribeShortVideoMsgHolder);
+    try
+    {
+      Process localProcess = Runtime.getRuntime().exec(paramArrayOfString);
+      return localProcess;
     }
-    while (paramView != localTribeShortVideoMsgHolder.jdField_a_of_type_AndroidWidgetRelativeLayout) {
-      return;
+    catch (IOException localIOException)
+    {
+      urk.c("Q.qqstory.ffmpeg.FFmpeg", "Exception while trying to run: " + paramArrayOfString, localIOException);
     }
-    this.a.a(localTribeShortVideoMsgHolder);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vog
  * JD-Core Version:    0.7.0.1
  */

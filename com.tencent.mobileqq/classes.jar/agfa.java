@@ -1,18 +1,12 @@
-import com.tencent.mobileqq.ocr.OCRManager;
-
-public class agfa
-  implements Runnable
+public abstract interface agfa
 {
-  public agfa(OCRManager paramOCRManager) {}
+  public abstract void a(long paramLong, float paramFloat, String paramString);
   
-  public void run()
-  {
-    this.a.a();
-  }
+  public abstract void b(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agfa
  * JD-Core Version:    0.7.0.1
  */

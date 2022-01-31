@@ -1,18 +1,31 @@
-import cooperation.qzone.report.lp.MachinelearningReport;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.qphone.base.util.QLog;
 
-public class angl
-  implements Runnable
+class angl
+  implements arok<Emoticon>
 {
-  public angl(MachinelearningReport paramMachinelearningReport) {}
+  angl(angj paramangj, int paramInt, String paramString) {}
   
-  public void run()
+  public void a(Emoticon paramEmoticon)
   {
-    MachinelearningReport.access$200(this.a);
+    if ((paramEmoticon == null) || (!paramEmoticon.hasEncryptKey()))
+    {
+      this.jdField_a_of_type_Angj.a(Integer.toString(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, true);
+      if (QLog.isColorLevel()) {
+        QLog.d("SogouEmoji", 2, "func trySend ends, emotion has invalid key. Call func pullSingleEmojiKey");
+      }
+    }
+    do
+    {
+      return;
+      this.jdField_a_of_type_Angj.a(paramEmoticon);
+    } while (!QLog.isColorLevel());
+    QLog.d("SogouEmoji", 2, "func trySend ends, everything is ok.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     angl
  * JD-Core Version:    0.7.0.1
  */

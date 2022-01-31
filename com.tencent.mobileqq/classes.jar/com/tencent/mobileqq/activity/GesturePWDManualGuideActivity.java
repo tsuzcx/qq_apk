@@ -6,11 +6,11 @@ import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 public class GesturePWDManualGuideActivity
   extends IphoneTitleBarActivity
 {
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2130969013);
-    setTitle(2131436064);
+    super.setContentView(2131493549);
+    setTitle(2131627356);
   }
 }
 

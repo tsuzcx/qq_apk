@@ -1,62 +1,101 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.forward.ForwardShareCardOption;
-import com.tencent.mobileqq.troopshare.TroopShareResp;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.navigate.IntimateInfoNavBar.1;
+import com.tencent.mobileqq.activity.aio.navigate.IntimateInfoNavBar.2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class aduo
-  extends TroopObserver
+  extends adup
+  implements Animation.AnimationListener
 {
-  public aduo(ForwardShareCardOption paramForwardShareCardOption) {}
+  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
   
-  public void a(boolean paramBoolean, TroopShareResp paramTroopShareResp)
+  public aduo(BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt1, int paramInt2)
   {
+    super(paramBaseChatPie, paramQQAppInterface, paramContext, paramSessionInfo, paramInt1, paramInt2);
+  }
+  
+  public long a()
+  {
+    return 15000L;
+  }
+  
+  public View a()
+  {
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495047, null);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131297259));
+    TextView localTextView = (TextView)localView.findViewById(2131311500);
+    return localView;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Acuz != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Acuz.b(true);
+    }
+    awqx.b(null, "dc00898", "", "", "0X800A11D", "0X800A11D", 0, 0, "", "", "", "");
+  }
+  
+  public boolean a()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_Acuz == null)) {
+      QLog.d("NavigateBarManager.IntimateInfoNavBar", 1, "mChatPie == null || mChatPie.mChatDrawer == null");
+    }
+    ExtensionInfo localExtensionInfo;
+    do
+    {
+      return false;
+      localExtensionInfo = ((ajjj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, false);
+    } while ((localExtensionInfo == null) || (localExtensionInfo.intimate_type == 0));
+    int i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("IntimateInfo" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).getInt("key_aio_score_guide_count", 0);
     if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardShareCardOption", 2, "onTroopShareLink start");
+      QLog.d("NavigateBarManager.IntimateInfoNavBar", 2, String.format("needShow score guide count: %s", new Object[] { Integer.valueOf(i) }));
     }
-    this.a.t();
-    if (ForwardShareCardOption.a(this.a) != -1)
-    {
-      if ((!paramBoolean) || (paramTroopShareResp.jdField_a_of_type_Int != 0)) {
-        break label189;
-      }
-      if (paramTroopShareResp.jdField_a_of_type_Boolean)
-      {
-        ForwardShareCardOption.a(this.a, paramTroopShareResp.b);
-        if (ForwardShareCardOption.a(this.a) == 0) {}
-      }
-      else
-      {
-        do
-        {
-          return;
-          ForwardShareCardOption.b(this.a, paramTroopShareResp.b);
-        } while (ForwardShareCardOption.a(this.a) != 1);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardOption.ForwardShareCardOption", 2, "mTroopVerifyLink=" + ForwardShareCardOption.a(this.a) + " mTroopNotNeedVefifyLink=" + ForwardShareCardOption.b(this.a));
-      }
-      if ((paramTroopShareResp.jdField_a_of_type_JavaLangString != null) && (paramTroopShareResp.jdField_a_of_type_JavaLangString.equals(ForwardShareCardOption.c(this.a)))) {
-        ForwardShareCardOption.a(this.a);
-      }
-    }
-    for (;;)
-    {
-      ForwardShareCardOption.a(this.a, -1);
-      return;
-      label189:
-      if (((paramTroopShareResp.jdField_a_of_type_Boolean) && (ForwardShareCardOption.a(this.a) != 0)) || ((!paramTroopShareResp.jdField_a_of_type_Boolean) && (ForwardShareCardOption.a(this.a) != 1))) {
-        break;
-      }
-      QQToast.a(this.a.a, 1, this.a.a.getString(2131435343), 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
+    if (i < 3) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
     }
   }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.postDelayed(new IntimateInfoNavBar.1(this), 500L);
+    ThreadManager.postImmediately(new IntimateInfoNavBar.2(this), null, false);
+  }
+  
+  public void c() {}
+  
+  public void d()
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+  }
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
+    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aduo
  * JD-Core Version:    0.7.0.1
  */

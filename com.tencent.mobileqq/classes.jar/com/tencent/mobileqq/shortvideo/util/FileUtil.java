@@ -4,12 +4,12 @@ import java.io.File;
 
 public class FileUtil
 {
-  public static boolean a(String paramString)
+  public static boolean checkFileExist(String paramString)
   {
     return new File(paramString).exists();
   }
   
-  public static boolean b(String paramString)
+  public static boolean fileExistsAndNotEmpty(String paramString)
   {
     if (paramString == null) {}
     do

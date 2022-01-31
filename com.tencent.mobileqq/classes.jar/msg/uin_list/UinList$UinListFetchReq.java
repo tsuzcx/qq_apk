@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class UinList$UinListFetchReq
-  extends MessageMicro
+  extends MessageMicro<UinListFetchReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_store_key = PBField.initBytes(ByteStringMicro.EMPTY);

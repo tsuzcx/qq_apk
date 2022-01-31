@@ -1,78 +1,76 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
-
 public class aciq
-  implements Runnable
 {
-  private float jdField_a_of_type_Float;
-  protected long a;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private float c;
-  private float d;
-  private float e;
-  private float f;
+  private static aciq a;
+  public int a;
+  private int b = -1;
   
-  public aciq(DragSortListView paramDragSortListView, float paramFloat, int paramInt)
+  private aciq()
   {
-    this.jdField_b_of_type_Float = paramFloat;
-    this.jdField_a_of_type_Float = paramInt;
-    paramFloat = 1.0F / (this.jdField_b_of_type_Float * 2.0F * (1.0F - this.jdField_b_of_type_Float));
-    this.f = paramFloat;
-    this.c = paramFloat;
-    this.d = (this.jdField_b_of_type_Float / ((this.jdField_b_of_type_Float - 1.0F) * 2.0F));
-    this.e = (1.0F / (1.0F - this.jdField_b_of_type_Float));
+    this.jdField_a_of_type_Int = 0;
   }
   
-  public float a(float paramFloat)
+  /* Error */
+  public static aciq a()
   {
-    if (paramFloat < this.jdField_b_of_type_Float) {
-      return this.c * paramFloat * paramFloat;
-    }
-    if (paramFloat < 1.0F - this.jdField_b_of_type_Float) {
-      return this.d + this.e * paramFloat;
-    }
-    return 1.0F - this.f * (paramFloat - 1.0F) * (paramFloat - 1.0F);
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 20	aciq:jdField_a_of_type_Aciq	Laciq;
+    //   6: ifnonnull +22 -> 28
+    //   9: new 2	aciq
+    //   12: dup
+    //   13: invokespecial 21	aciq:<init>	()V
+    //   16: putstatic 20	aciq:jdField_a_of_type_Aciq	Laciq;
+    //   19: getstatic 20	aciq:jdField_a_of_type_Aciq	Laciq;
+    //   22: astore_0
+    //   23: ldc 2
+    //   25: monitorexit
+    //   26: aload_0
+    //   27: areturn
+    //   28: getstatic 20	aciq:jdField_a_of_type_Aciq	Laciq;
+    //   31: iconst_1
+    //   32: putfield 14	aciq:jdField_a_of_type_Int	I
+    //   35: goto -16 -> 19
+    //   38: astore_0
+    //   39: ldc 2
+    //   41: monitorexit
+    //   42: aload_0
+    //   43: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   22	5	0	localaciq	aciq
+    //   38	5	0	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   3	19	38	finally
+    //   19	23	38	finally
+    //   28	35	38	finally
   }
   
-  public void a() {}
-  
-  public void a(float paramFloat1, float paramFloat2) {}
-  
-  public void b() {}
-  
-  public void c()
+  public int a()
   {
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    this.jdField_a_of_type_Boolean = false;
-    a();
-    this.jdField_b_of_type_ComTencentMobileqqEmosmViewDragSortListView.post(this);
-  }
-  
-  public void d()
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    float f1 = (float)(SystemClock.uptimeMillis() - this.jdField_a_of_type_Long) / this.jdField_a_of_type_Float;
-    if (f1 >= 1.0F)
+    if (-1 == this.b)
     {
-      a(1.0F, 1.0F);
-      b();
-      return;
+      if ((babp.d() >>> 20 <= 1390L) || (babp.b() <= 3) || (babp.a() <= 1433L)) {
+        break label48;
+      }
+      this.b = 1;
     }
-    a(f1, a(f1));
-    this.jdField_b_of_type_ComTencentMobileqqEmosmViewDragSortListView.post(this);
+    for (;;)
+    {
+      return this.b;
+      label48:
+      if ((babp.d() >>> 20 > 926L) && (babp.b() > 1) && (babp.a() > 961L)) {
+        this.b = 2;
+      } else {
+        this.b = 3;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aciq
  * JD-Core Version:    0.7.0.1
  */

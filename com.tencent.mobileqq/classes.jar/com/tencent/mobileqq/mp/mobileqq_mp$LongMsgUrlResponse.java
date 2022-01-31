@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class mobileqq_mp$LongMsgUrlResponse
-  extends MessageMicro
+  extends MessageMicro<LongMsgUrlResponse>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26 }, new String[] { "ret_info", "str_url", "str_file_md5" }, new Object[] { null, "", "" }, LongMsgUrlResponse.class);
   public mobileqq_mp.RetInfo ret_info = new mobileqq_mp.RetInfo();

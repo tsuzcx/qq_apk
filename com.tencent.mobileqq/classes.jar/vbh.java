@@ -1,21 +1,18 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.EnterTroopChatItemBuilder;
-import java.util.List;
+import android.graphics.Bitmap;
 
-public class vbh
-  extends AbstractChatItemBuilder.ViewHolder
+public abstract interface vbh
 {
-  public LinearLayout a;
-  public List a;
-  public TextView b;
+  public abstract void a();
   
-  public vbh(EnterTroopChatItemBuilder paramEnterTroopChatItemBuilder) {}
+  public abstract void a(Bitmap paramBitmap);
+  
+  public abstract void a(Runnable paramRunnable);
+  
+  public abstract void a(vbi paramvbi);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vbh
  * JD-Core Version:    0.7.0.1
  */

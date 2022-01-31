@@ -9,32 +9,37 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import com.tencent.biz.qqstory.utils.UIUtils;
+import android.widget.RelativeLayout;
+import bhfc;
+import bhpp;
+import bimt;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.CaptureContext;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
+import vms;
 
 public abstract class ProviderView
   extends FrameLayout
 {
-  Context a;
-  public View a;
+  public Context a;
+  protected View a;
   protected ViewGroup a;
+  protected RelativeLayout a;
+  public bhpp a;
+  protected bimt a;
   protected AppInterface a;
-  public ProviderView.ProviderViewListener a;
   protected QIMSlidingTabView a;
-  protected DoodleLayout.DoodleEventListener a;
   protected Handler b;
   protected View b;
-  private QIMSlidingTabView b;
+  private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
+  private QIMSlidingTabView jdField_b_of_type_DovComQqImCaptureViewQIMSlidingTabView;
   private QIMSlidingTabView c;
   protected boolean c;
-  protected int d;
-  protected boolean d;
-  protected int e = 206;
-  public int f = 0;
+  public boolean d;
+  protected int e;
+  protected int f = 206;
+  public int g = 0;
+  public int h = 2;
   
   public ProviderView(Context paramContext)
   {
@@ -44,7 +49,7 @@ public abstract class ProviderView
     this.jdField_b_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
   }
   
-  public abstract int a();
+  protected abstract int a();
   
   protected Bundle a()
   {
@@ -58,50 +63,62 @@ public abstract class ProviderView
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProviderView", 2, "onProviderShow " + getClass().getSimpleName());
-    }
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public void a(int paramInt, String paramString) {}
+  public void a(int paramInt, String paramString1, String paramString2) {}
   
   public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = CaptureContext.a();
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = bhfc.a();
     if (this.jdField_b_of_type_AndroidViewView == null)
     {
-      paramBundle = LayoutInflater.from(getContext()).inflate(2130970088, this, false);
+      paramBundle = LayoutInflater.from(getContext()).inflate(2131494959, this, false);
       addView(paramBundle);
-      this.jdField_b_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)paramBundle.findViewById(2131368946));
-      this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)paramBundle.findViewById(2131368949));
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramBundle.findViewById(2131368948));
+      this.jdField_b_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)paramBundle.findViewById(2131306355));
+      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+      {
+        this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)LayoutInflater.from(getContext()).inflate(2131494960, this.jdField_a_of_type_AndroidWidgetRelativeLayout, false));
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView);
+        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramBundle.findViewById(2131306352));
+      }
     }
-    paramBundle = this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
-    paramBundle.height = UIUtils.a(getContext(), this.e);
-    this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramBundle);
-    if (this.jdField_d_of_type_Int == 1)
+    else
     {
+      paramBundle = this.jdField_a_of_type_AndroidViewViewGroup.getLayoutParams();
+      paramBundle.height = vms.a(getContext(), this.f);
+      this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(paramBundle);
+      if (this.e != 1) {
+        break label221;
+      }
       paramBundle = this.jdField_b_of_type_DovComQqImCaptureViewQIMSlidingTabView;
+      label147:
       this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView = paramBundle;
       if (this.jdField_c_of_type_Boolean)
       {
         this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView.setVisibility(0);
-        if (this.jdField_d_of_type_Int != 1) {
-          break label170;
+        if (this.e != 1) {
+          break label229;
         }
-        findViewById(2131368947).setVisibility(0);
+        findViewById(2131306356).setVisibility(0);
       }
     }
     for (;;)
     {
-      this.jdField_d_of_type_Boolean = true;
+      this.d = true;
+      if (QLog.isColorLevel()) {
+        QLog.i("ProviderView", 2, "oncreate");
+      }
       return;
-      paramBundle = this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView;
+      this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)paramBundle.findViewById(2131306350));
       break;
-      label170:
-      if (this.jdField_d_of_type_Int != 2) {}
+      label221:
+      paramBundle = this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView;
+      break label147;
+      label229:
+      if (this.e != 2) {}
     }
   }
   
@@ -123,53 +140,81 @@ public abstract class ProviderView
     return false;
   }
   
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProviderView", 2, "onProviderDismiss " + getClass().getSimpleName());
-    }
-  }
+  public void b() {}
   
   public void b(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_AndroidViewView == null) {}
-    try
-    {
-      paramBundle = LayoutInflater.from(getContext()).inflate(2130970088, this, false);
-      addView(paramBundle);
-      if (this.jdField_b_of_type_AndroidViewView == null)
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      try
       {
-        this.jdField_b_of_type_AndroidViewView = paramBundle;
-        this.jdField_b_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368946));
-        this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368949));
-        this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_b_of_type_AndroidViewView.findViewById(2131368948));
+        paramBundle = LayoutInflater.from(getContext()).inflate(2131494959, this, false);
+        addView(paramBundle);
+        if (this.jdField_b_of_type_AndroidViewView == null)
+        {
+          this.jdField_b_of_type_AndroidViewView = paramBundle;
+          this.jdField_b_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)this.jdField_b_of_type_AndroidViewView.findViewById(2131306355));
+          if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
+            break label143;
+          }
+          this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)LayoutInflater.from(getContext()).inflate(2131494960, this.jdField_a_of_type_AndroidWidgetRelativeLayout, false));
+          this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView);
+        }
+        for (;;)
+        {
+          this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_b_of_type_AndroidViewView.findViewById(2131306352));
+          paramBundle = LayoutInflater.from(getContext()).inflate(a(), this, false);
+          if (this.jdField_a_of_type_AndroidViewView != null) {
+            break;
+          }
+          this.jdField_a_of_type_AndroidViewView = paramBundle;
+          return;
+          label143:
+          this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView = ((QIMSlidingTabView)this.jdField_b_of_type_AndroidViewView.findViewById(2131306350));
+        }
+        return;
       }
-      paramBundle = LayoutInflater.from(getContext()).inflate(a(), this, false);
-      if (this.jdField_a_of_type_AndroidViewView == null) {
-        this.jdField_a_of_type_AndroidViewView = paramBundle;
+      catch (Exception paramBundle)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("ProviderView", 2, "preInflate failed " + paramBundle.toString());
+        }
       }
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ProviderView", 2, "preInflate failed " + paramBundle.toString());
     }
   }
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("ProviderView", 2, "[cc]onProviderShow " + getClass().getSimpleName());
+    }
+    if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView == this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView) && (this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView.getVisibility() != 0)) {
+      this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView.setVisibility(0);
+    }
+  }
+  
+  public int d()
+  {
+    return this.f;
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ProviderView", 2, "[cc]onProviderDismiss " + getClass().getSimpleName());
+    }
+    if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView == this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView) && (this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView.getVisibility() == 0)) {
+      this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView.setVisibility(8);
+    }
   }
   
   public void d(int paramInt)
   {
-    this.e = paramInt;
+    this.f = paramInt;
   }
   
   public boolean d()
   {
-    return this.jdField_d_of_type_Boolean;
+    return this.d;
   }
   
   public void e() {}
@@ -181,23 +226,50 @@ public abstract class ProviderView
   
   public void f() {}
   
-  public void g() {}
-  
   protected void k()
   {
-    if (this.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener != null) {
-      this.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener.f();
+    if (this.jdField_a_of_type_Bhpp != null) {
+      this.jdField_a_of_type_Bhpp.h();
+    }
+  }
+  
+  public void l()
+  {
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
+    if ((this.jdField_b_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView == this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView) && (this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView.getVisibility() == 0)) {
+      this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView.setVisibility(8);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ProviderView", 2, "[cc]dismissBottomTab " + getClass().getSimpleName());
+    }
+  }
+  
+  public void m()
+  {
+    if ((this.jdField_b_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_a_of_type_DovComQqImCaptureViewQIMSlidingTabView == this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView) && (this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView.getVisibility() != 0)) {
+      this.jdField_c_of_type_DovComQqImCaptureViewQIMSlidingTabView.setVisibility(0);
+    }
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = this.jdField_b_of_type_AndroidWidgetRelativeLayout;
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("ProviderView", 2, "[cc]showBottomTab " + getClass().getSimpleName());
     }
   }
   
   public void setCaptureScene(int paramInt)
   {
-    this.f = paramInt;
+    this.g = paramInt;
   }
   
-  public void setDoodleEventListener(DoodleLayout.DoodleEventListener paramDoodleEventListener)
+  public void setDoodleEventListener(bimt parambimt)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleEventListener = paramDoodleEventListener;
+    this.jdField_a_of_type_Bimt = parambimt;
+  }
+  
+  public void setLiuHaiParentView(RelativeLayout paramRelativeLayout)
+  {
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
   }
   
   public void setNeedTabBar(boolean paramBoolean)
@@ -205,14 +277,14 @@ public abstract class ProviderView
     this.jdField_c_of_type_Boolean = paramBoolean;
   }
   
-  public void setProviderViewListener(ProviderView.ProviderViewListener paramProviderViewListener)
+  public void setProviderViewListener(bhpp parambhpp)
   {
-    this.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener = paramProviderViewListener;
+    this.jdField_a_of_type_Bhpp = parambhpp;
   }
   
   public void setTabBarPosition(int paramInt)
   {
-    this.jdField_d_of_type_Int = paramInt;
+    this.e = paramInt;
   }
 }
 

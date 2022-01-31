@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.app.message.C2CMessageProcessor;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
 public class zzi
-  implements Comparator
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public zzi(C2CMessageProcessor paramC2CMessageProcessor) {}
+  public zzi(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return (int)(paramMessageRecord2.time - paramMessageRecord1.time);
+    acyo.a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zzi
  * JD-Core Version:    0.7.0.1
  */

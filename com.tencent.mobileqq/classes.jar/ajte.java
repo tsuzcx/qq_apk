@@ -1,81 +1,32 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.EditorViewHolderManager.EditViewHolderBase;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.GotoReciteSubViewHolder;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.ReciteResultSubViewHolder;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.ReciteTextSubViewHolder;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.ThreadRegulator;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class ajte
-  extends EditorViewHolderManager.EditViewHolderBase
+  extends MqqHandler
 {
-  int jdField_a_of_type_Int;
-  GotoReciteSubViewHolder jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteGotoReciteSubViewHolder;
-  ReciteResultSubViewHolder jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteResultSubViewHolder;
-  ReciteTextSubViewHolder jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteTextSubViewHolder;
-  
-  public ajte(View paramView)
+  public ajte(ThreadRegulator paramThreadRegulator, Looper paramLooper)
   {
-    super(paramView);
-    View localView1 = paramView.findViewById(2131368493);
-    View localView2 = paramView.findViewById(2131368467);
-    paramView = paramView.findViewById(2131368488);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteTextSubViewHolder = new ReciteTextSubViewHolder(localView1);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteGotoReciteSubViewHolder = new GotoReciteSubViewHolder(localView2);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteResultSubViewHolder = new ReciteResultSubViewHolder(paramView);
+    super(paramLooper);
   }
   
-  public void a(View paramView, HWReciteItem paramHWReciteItem)
+  public void handleMessage(Message paramMessage)
   {
-    switch (((HWReciteInfo)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelEditItemInfoBase).jdField_a_of_type_Int)
+    paramMessage = (ajtf)paramMessage.obj;
+    if (paramMessage != null)
     {
-    default: 
-      return;
-    case 2: 
-      if (this.jdField_a_of_type_Int == 2)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteGotoReciteSubViewHolder.a(paramView, paramHWReciteItem, this);
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ThreadManager.Regulaotr", 2, paramMessage.jdField_a_of_type_Int + " cost " + (paramMessage.b - paramMessage.jdField_a_of_type_Long) + ", paused " + paramMessage.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
       }
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteTextSubViewHolder.a(paramView, paramHWReciteItem, this);
-      return;
+      paramMessage.recycle();
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteResultSubViewHolder.a(paramView, paramHWReciteItem, this);
-  }
-  
-  public void a(HWReciteItem paramHWReciteItem, HWReciteInfo paramHWReciteInfo, int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    switch (paramHWReciteInfo.jdField_a_of_type_Int)
-    {
-    default: 
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteTextSubViewHolder.a.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteGotoReciteSubViewHolder.a.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteResultSubViewHolder.a.setVisibility(8);
-      return;
-    case 2: 
-      if (paramInt == 2)
-      {
-        paramHWReciteInfo.g = 0;
-        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteTextSubViewHolder.a.setVisibility(8);
-        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteGotoReciteSubViewHolder.a(paramHWReciteItem, this, paramHWReciteInfo, paramInt);
-        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteResultSubViewHolder.a.setVisibility(8);
-        return;
-      }
-      paramHWReciteInfo.g = 3;
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteTextSubViewHolder.a(paramHWReciteItem, this, paramHWReciteInfo, paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteGotoReciteSubViewHolder.a.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteResultSubViewHolder.a.setVisibility(8);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteTextSubViewHolder.a.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteGotoReciteSubViewHolder.a.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteReciteResultSubViewHolder.a(paramHWReciteItem, this, paramHWReciteInfo, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajte
  * JD-Core Version:    0.7.0.1
  */

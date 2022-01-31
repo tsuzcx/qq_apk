@@ -1,21 +1,20 @@
-import android.view.View;
-import com.tencent.biz.qqstory.view.segment.SegmentList;
-import com.tencent.biz.qqstory.view.segment.SegmentManager;
-import com.tencent.widget.SwipListView.RightIconMenuListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 
-public class ova
-  implements SwipListView.RightIconMenuListener
+class ova
+  implements pby
 {
-  public ova(SegmentList paramSegmentList) {}
+  ova(ouz paramouz, ArticleInfo paramArticleInfo, Container paramContainer) {}
   
-  public void a(View paramView)
+  public void a()
   {
-    this.a.a.b(paramView);
-  }
-  
-  public void b(View paramView)
-  {
-    this.a.a.c(paramView);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.a != null)
+    {
+      UrlJumpInfo localUrlJumpInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.multiVideoColumnInfo.a;
+      qcn.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), localUrlJumpInfo);
+      ouz.a(this.jdField_a_of_type_Ouz, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 1, localUrlJumpInfo.e, "");
+    }
   }
 }
 

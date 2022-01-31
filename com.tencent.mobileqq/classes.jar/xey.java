@@ -1,18 +1,37 @@
-import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.biz.widgets.ScannerView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class xey
-  implements Runnable
+  implements SensorEventListener
 {
-  public xey(GoldMsgSettingActivity paramGoldMsgSettingActivity, boolean paramBoolean1, boolean paramBoolean2) {}
+  private WeakReference<ScannerView> a;
   
-  public void run()
+  public xey(ScannerView paramScannerView)
   {
-    GoldMsgSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldMsgSettingActivity, this.jdField_a_of_type_Boolean, this.b);
+    this.a = new WeakReference(paramScannerView);
+  }
+  
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    ScannerView localScannerView = (ScannerView)this.a.get();
+    if (localScannerView != null) {
+      localScannerView.a(paramSensorEvent);
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("ScannerView", 2, "onSensorChanged but mRef got null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     xey
  * JD-Core Version:    0.7.0.1
  */

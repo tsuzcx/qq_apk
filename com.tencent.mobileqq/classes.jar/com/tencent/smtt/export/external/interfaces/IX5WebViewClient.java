@@ -34,6 +34,8 @@ public abstract interface IX5WebViewClient
   
   public abstract void onLoadResource(IX5WebViewBase paramIX5WebViewBase, String paramString);
   
+  public abstract void onPageCommitVisible(IX5WebViewBase paramIX5WebViewBase, String paramString);
+  
   public abstract void onPageFinished(IX5WebViewBase paramIX5WebViewBase, int paramInt1, int paramInt2, String paramString);
   
   public abstract void onPageFinished(IX5WebViewBase paramIX5WebViewBase, String paramString);
@@ -77,7 +79,7 @@ public abstract interface IX5WebViewClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.smtt.export.external.interfaces.IX5WebViewClient
  * JD-Core Version:    0.7.0.1
  */

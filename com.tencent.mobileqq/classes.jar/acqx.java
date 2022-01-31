@@ -1,29 +1,26 @@
-import com.tencent.mobileqq.extendfriend.ExtendFriendObserver;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
-import com.tencent.pb.extendfriend.ExtendFriendSquareInfo.RspBody;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.ViewGroup;
 
-public class acqx
-  extends ExtendFriendObserver
+class acqx
+  implements Animator.AnimatorListener
 {
-  public acqx(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
+  acqx(acqw paramacqw, ViewGroup paramViewGroup) {}
   
-  protected void a(boolean paramBoolean, ExtendFriendSquareInfo.RspBody paramRspBody)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    try
-    {
-      ExtendFriendSquareFragment.a(this.a, paramBoolean, paramRspBody);
-      return;
-    }
-    catch (Exception paramRspBody)
-    {
-      QLog.e("ExtendFriendSquareFragment", 1, "onGetSquareStrangerList exception", paramRspBody);
-    }
+    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acqx
  * JD-Core Version:    0.7.0.1
  */

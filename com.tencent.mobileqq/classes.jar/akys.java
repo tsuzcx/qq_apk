@@ -1,128 +1,120 @@
 import android.content.Context;
-import android.net.Uri;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.webview.utils.WebStateReporter;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.mobileqq.ar.view.OCRScanEntryView;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import com.tencent.mobileqq.ar.view.ScanEntryProviderView;
+import java.util.ArrayList;
 
 public class akys
-  implements Runnable
 {
-  public akys(WebStateReporter paramWebStateReporter, boolean paramBoolean, String paramString1, Context paramContext, long paramLong, String paramString2) {}
+  private int jdField_a_of_type_Int;
+  private ArrayList<akyt> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public boolean a;
+  private final int[] jdField_a_of_type_ArrayOfInt = { 2131307690, 2131297170, 2131305325 };
+  private final String[] jdField_a_of_type_ArrayOfJavaLangString = { ajjy.a(2131647718), "AR", ajjy.a(2131647721) };
+  public boolean b;
+  private final int[] b;
+  public boolean c;
+  private final int[] c;
+  private final int[] d = { 2130843973, 2130843974, 2130843975, 2130843976, 2130843977, 2130843978, 2130843979, 2130843980 };
   
-  public void run()
+  public akys(int paramInt)
   {
-    boolean bool3 = this.jdField_a_of_type_Boolean;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      bool2 = bool3;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_b_of_type_ArrayOfInt = new int[] { 2130843981, 2130843982, 2130843983, 2130843984, 2130843985, 2130843986, 2130843987, 2130843988 };
+    this.jdField_c_of_type_ArrayOfInt = new int[] { 2130843955, 2130843956, 2130843957, 2130843958, 2130843959, 2130843960, 2130843961, 2130843962 };
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return this.jdField_b_of_type_ArrayOfInt.length;
+  }
+  
+  public int a(int paramInt)
+  {
+    int i = 1;
+    if (paramInt == 1) {
+      i = 0;
     }
-    for (;;)
+    while (paramInt == 2) {
+      return i;
+    }
+    return 2;
+  }
+  
+  public akyt a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < b())) {
+      return (akyt)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public ScanEntryProviderView a(int paramInt, Context paramContext, akyn paramakyn)
+  {
+    switch (paramInt)
     {
-      try
-      {
-        localObject = Uri.parse(this.jdField_a_of_type_JavaLangString);
-        bool2 = bool3;
-        str1 = ((Uri)localObject).getQueryParameter("hasRedDot");
-        bool1 = bool3;
-        bool2 = bool3;
-        if (!TextUtils.isEmpty(str1))
-        {
-          bool2 = bool3;
-          bool1 = str1.equalsIgnoreCase("1");
-        }
-        bool2 = bool1;
-        localObject = ((Uri)localObject).getQueryParameter("crashFrom");
-        bool2 = bool1;
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          continue;
-        }
-        bool2 = bool1;
-        i = Integer.parseInt((String)localObject);
-      }
-      catch (Exception localException1)
-      {
-        String str1;
-        int i = -1;
-        boolean bool1 = bool2;
-        if (QLog.isColorLevel()) {
-          QLog.e("WebStateReporter_report", 2, "parse url got some problem!", localException1);
-        }
-        continue;
-        Object localObject = (Integer)WebStateReporter.jdField_a_of_type_JavaUtilHashMap.get("sample_rate");
-        continue;
-        int j = 0;
-        continue;
-        if (i != -1)
-        {
-          String str2 = localException1 + "?type=" + i;
-          if (QLog.isColorLevel()) {
-            QLog.d("WebStateReporter_report", 2, "try report web status,  step: " + this.jdField_a_of_type_ComTencentMobileqqWebviewUtilsWebStateReporter.jdField_b_of_type_Int + ", hasRedDot : " + bool1 + ", crashFrom : " + i + ", stepTime: " + (this.jdField_a_of_type_ComTencentMobileqqWebviewUtilsWebStateReporter.jdField_c_of_type_Long - this.jdField_a_of_type_ComTencentMobileqqWebviewUtilsWebStateReporter.jdField_b_of_type_Long) + ", totalTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqWebviewUtilsWebStateReporter.jdField_b_of_type_Long) + "\n" + str2);
-          }
-          if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqWebviewUtilsWebStateReporter.jdField_a_of_type_JavaLangString))
-          {
-            localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewUtilsWebStateReporter.jdField_a_of_type_JavaLangString;
-            String str3 = this.b;
-            if (bool1)
-            {
-              i = 1;
-              ReportController.b(null, "P_CliOper", "WebStatusReport", "", (String)localObject, str3, i, 1, this.jdField_a_of_type_ComTencentMobileqqWebviewUtilsWebStateReporter.jdField_b_of_type_Int, str2, Build.VERSION.RELEASE, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqWebviewUtilsWebStateReporter.jdField_c_of_type_Long - this.jdField_a_of_type_ComTencentMobileqqWebviewUtilsWebStateReporter.jdField_b_of_type_Long), String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqWebviewUtilsWebStateReporter.jdField_b_of_type_Long));
-            }
-          }
-          else
-          {
-            localObject = "unknown";
-            continue;
-          }
-          i = 0;
-          continue;
-        }
-        i = -1;
-        continue;
-      }
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("WebStateReporter_report", 2, "parse url, redDot : " + str1 + ", urlFromType : " + (String)localObject);
-        }
-        j = this.jdField_a_of_type_JavaLangString.indexOf("?");
-        str1 = this.jdField_a_of_type_JavaLangString;
-        if (j == -1) {
-          continue;
-        }
-        str1 = str1.substring(0, j);
-      }
-      catch (Exception localException2)
-      {
-        continue;
-        continue;
-      }
+    default: 
+      return null;
+    case 1: 
+      return new QRScanEntryView(paramContext, paramakyn);
+    case 2: 
+      return new ARScanEntryView(paramContext, paramakyn);
     }
-    if (WebStateReporter.jdField_a_of_type_JavaUtilHashMap.isEmpty())
+    return new OCRScanEntryView(paramContext, paramakyn);
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Int == 1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewUtilsWebStateReporter.a(this.jdField_a_of_type_AndroidContentContext);
-      if (WebStateReporter.jdField_a_of_type_JavaUtilHashMap.isEmpty()) {
-        WebStateReporter.jdField_a_of_type_JavaUtilHashMap.put("sample_rate", Integer.valueOf(10));
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(new akyt(1, ajjy.a(2131647719)));
+      }
+      if (this.jdField_b_of_type_Boolean) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(new akyt(2, "AR"));
+      }
+      if (this.jdField_c_of_type_Boolean) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(new akyt(3, "OCR"));
       }
     }
-    if (WebStateReporter.jdField_a_of_type_JavaUtilHashMap.containsKey(str1))
-    {
-      localObject = (Integer)WebStateReporter.jdField_a_of_type_JavaUtilHashMap.get(str1);
-      j = ((Integer)localObject).intValue();
-      if ((1 != j) && (this.jdField_a_of_type_Long % j != WebStateReporter.jdField_c_of_type_Int)) {
-        break label315;
-      }
-      j = 1;
-      if (j != 0) {
-        break label320;
-      }
+  }
+  
+  public int[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfInt;
+  }
+  
+  public int[] a(int paramInt)
+  {
+    if (paramInt == 0) {
+      return this.jdField_b_of_type_ArrayOfInt;
     }
+    if (paramInt == 1) {
+      return this.jdField_c_of_type_ArrayOfInt;
+    }
+    if (paramInt == 2) {
+      return this.d;
+    }
+    return null;
+  }
+  
+  public String[] a()
+  {
+    return this.jdField_a_of_type_ArrayOfJavaLangString;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akys
  * JD-Core Version:    0.7.0.1
  */

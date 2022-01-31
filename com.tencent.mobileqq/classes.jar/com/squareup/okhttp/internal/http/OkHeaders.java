@@ -9,7 +9,6 @@ import com.squareup.okhttp.Request.Builder;
 import com.squareup.okhttp.Response;
 import com.squareup.okhttp.internal.Platform;
 import com.squareup.okhttp.internal.Util;
-import java.io.IOException;
 import java.net.Proxy;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,22 +23,7 @@ import java.util.TreeSet;
 
 public final class OkHeaders
 {
-  private static final Comparator<String> FIELD_NAME_COMPARATOR = new Comparator()
-  {
-    public int compare(String paramAnonymousString1, String paramAnonymousString2)
-    {
-      if (paramAnonymousString1 == paramAnonymousString2) {
-        return 0;
-      }
-      if (paramAnonymousString1 == null) {
-        return -1;
-      }
-      if (paramAnonymousString2 == null) {
-        return 1;
-      }
-      return String.CASE_INSENSITIVE_ORDER.compare(paramAnonymousString1, paramAnonymousString2);
-    }
-  };
+  private static final Comparator<String> FIELD_NAME_COMPARATOR = new OkHeaders.1();
   static final String PREFIX = Platform.get().getPrefix();
   public static final String RECEIVED_MILLIS;
   public static final String RESPONSE_SOURCE = PREFIX + "-Response-Source";
@@ -71,8 +55,8 @@ public final class OkHeaders
       return (String)paramList.get(0);
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
     int j = paramList.size();
+    int i = 0;
     while (i < j)
     {
       if (i > 0) {
@@ -117,8 +101,8 @@ public final class OkHeaders
   public static List<Challenge> parseChallenges(Headers paramHeaders, String paramString)
   {
     ArrayList localArrayList = new ArrayList();
-    int i = 0;
     int k = paramHeaders.size();
+    int i = 0;
     if (i < k)
     {
       if (!paramString.equalsIgnoreCase(paramHeaders.name(i))) {}
@@ -140,7 +124,7 @@ public final class OkHeaders
           if (!str1.regionMatches(true, j, "realm=\"", 0, "realm=\"".length())) {
             break;
           }
-          j += "realm=\"".length();
+          j = "realm=\"".length() + j;
           m = HeaderParser.skipUntil(str1, j, "\"");
           String str3 = str1.substring(j, m);
           j = HeaderParser.skipWhitespace(str1, HeaderParser.skipUntil(str1, m + 1, ",") + 1);
@@ -152,7 +136,6 @@ public final class OkHeaders
   }
   
   public static Request processAuthHeader(Authenticator paramAuthenticator, Response paramResponse, Proxy paramProxy)
-    throws IOException
   {
     if (paramResponse.code() == 407) {
       return paramAuthenticator.authenticateProxy(paramProxy, paramResponse);
@@ -177,8 +160,8 @@ public final class OkHeaders
   public static Map<String, List<String>> toMultimap(Headers paramHeaders, String paramString)
   {
     TreeMap localTreeMap = new TreeMap(FIELD_NAME_COMPARATOR);
-    int i = 0;
     int j = paramHeaders.size();
+    int i = 0;
     while (i < j)
     {
       String str1 = paramHeaders.name(i);
@@ -201,8 +184,8 @@ public final class OkHeaders
   public static Set<String> varyFields(Headers paramHeaders)
   {
     Object localObject2 = Collections.emptySet();
-    int i = 0;
     int k = paramHeaders.size();
+    int i = 0;
     while (i < k) {
       if (!"Vary".equalsIgnoreCase(paramHeaders.name(i)))
       {

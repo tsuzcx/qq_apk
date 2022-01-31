@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class mobileqq_dynamic_search$ResultItem
-  extends MessageMicro
+  extends MessageMicro<ResultItem>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField extension = PBField.initBytes(ByteStringMicro.EMPTY);

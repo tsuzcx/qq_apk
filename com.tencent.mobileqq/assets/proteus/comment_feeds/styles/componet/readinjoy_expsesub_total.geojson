@@ -1,0 +1,63 @@
+{
+    "view_type": "UIButton",
+    "view_id": "id_comment_expose_total",
+    "event_type": "cmd_expose_subcommment_total",
+    "visible_depend_on_children":"YES",
+    "layout_type":"layout_linear",
+    "direction":"horizontal",
+    "height": {
+        "type": "wrap_content"
+    },
+    "width": {
+        "type": "relative",
+        "value": "307"
+    },
+    "attributes": {
+        "setBackgroundColor:forStates:":[["#00000000", "#e5e5e5"],["0","1"]]
+    },
+    "subviews":
+    [
+        {
+            "view_type": "UILabel",
+            "view_id": "id_comment_expose_total_lab",
+            "margin_left":"12",
+            "height": {
+                "type": "relative",
+                "value": "36"
+            },
+            "width": {
+                "type": "wrap_content"
+            },
+            "attributes": {
+                "setText:": "$id_comment_expose_total_str",
+                "setTextColorString:": "#4799DF",
+                "setFontSizeString:": "14",
+                "setNumberOfLinesString:": "1"
+            }
+        },
+        {
+            "view_type": "UIButton",
+            "view_id": "id_comment_expose_total_arrow",
+            "align_parent_center_vertical": "YES",
+            "margin_left":"0",
+            "height": {
+                "type": "relative",
+                "value": "15"
+            },
+            "width": {
+                "type": "relative",
+                "value": "15"
+            },
+            "attributes": {
+                "setImages:forStates:": [
+                    [
+                        "rij_comment_more"
+                    ],
+                    [
+                        "0"
+                    ]
+                ]
+            }
+        }
+    ]
+}

@@ -1,31 +1,26 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.CaptureConfigUpdateObserver;
-import dov.com.qq.im.capture.view.QIMPtvTemplateProviderView;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 public class anyl
-  extends CaptureConfigUpdateObserver
+  implements View.OnClickListener
 {
-  public anyl(QIMPtvTemplateProviderView paramQIMPtvTemplateProviderView) {}
+  public anyl(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity, FileManagerEntity paramFileManagerEntity) {}
   
-  public void d()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PtvTemplateProviderView", 2, "onFaceUUpdate!");
-    }
-    this.a.d();
-  }
-  
-  public void g()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PtvTemplateProviderView", 2, "onSegmentModeUpdate!");
-    }
-    this.a.a(false);
+    paramView = new Intent();
+    paramView.putExtra("isNeedFinish", true);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.setResult(-1, paramView);
+    TroopFileZipPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity);
+    awqx.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.app, "dc00899", "Grp_files", null, "oper", "pre_arc_close", 0, 0, "" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin, "", "", "1");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anyl
  * JD-Core Version:    0.7.0.1
  */

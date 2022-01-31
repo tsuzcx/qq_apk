@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:background="#fff4f4f4" android:layout_width="fill_parent" android:layout_height="70.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/ifp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="13.0dip" android:layout_marginRight="12.0dip" android:layout_marginBottom="13.0dip">
+        <ImageView android:id="@id/du2" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@drawable/h3h" android:layout_alignTop="@id/k5i" android:layout_alignBottom="@id/k5i" android:layout_alignParentLeft="true" />
+        <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:id="@id/k5i" android:paddingTop="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="@string/hx7" android:layout_toRightOf="@id/du2" />
+        <TextView android:textSize="14.0sp" android:textColor="#80000000" android:id="@id/k5j" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/hx6" android:layout_below="@id/k5i" android:layout_alignLeft="@id/k5i" />
+        <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/k5k" android:background="@drawable/b5y" android:paddingLeft="6.0dip" android:paddingTop="3.0dip" android:paddingRight="6.0dip" android:paddingBottom="3.0dip" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="27.0dip" android:maxWidth="184.0dip" android:text="@string/sz" android:singleLine="true" android:includeFontPadding="false" android:layout_alignTop="@id/k5i" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <View android:background="#19000000" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/ifp" />
+</RelativeLayout>

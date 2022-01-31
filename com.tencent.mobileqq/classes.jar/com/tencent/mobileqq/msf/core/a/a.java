@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.msf.core.a;
 
+import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.qq.jce.wup.UniPacket;
 import com.qq.taf.jce.HexUtil;
@@ -7,12 +8,13 @@ import com.qq.taf.jce.JceInputStream;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.MsfStore;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.msf.core.af;
+import com.tencent.mobileqq.msf.core.ag;
 import com.tencent.mobileqq.msf.core.auth.l;
 import com.tencent.mobileqq.msf.core.quic.QuicWrapper;
 import com.tencent.mobileqq.msf.core.t;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.msf.service.g;
 import com.tencent.msf.boot.config.NativeConfigStore;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.SimpleAccount;
@@ -35,58 +37,79 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class a
 {
-  static AtomicBoolean A = new AtomicBoolean();
-  public static final String B = "__loginSdk_iconf_Msf";
-  static long C = 0L;
+  static AtomicBoolean B = new AtomicBoolean();
+  public static final String C = "__loginSdk_iconf_Msf";
   static long D = 0L;
   static long E = 0L;
   static long F = 0L;
-  public static final int G = 100;
-  public static long H = 0L;
-  public static long I = 0L;
-  public static final int J = 1;
-  public static final int K = 16;
-  private static final byte[] M = { -16, 68, 31, 95, -12, 45, -91, -113, -36, -9, -108, -102, -70, 98, -44, 17 };
+  static long G = 0L;
+  public static final int H = 100;
+  public static final int I = 1;
+  public static final int J = 16;
   public static final String a = "ConfigService.ClientReq";
-  static final String b = "MSF.C.ConfigManager";
-  public static final String c = "__loginSdk_iconf_UserConf";
-  public static final String d = "__loginSdk_iconf_AppConf";
-  public static final String e = "__loginSdk_iconf_UserCommCon";
-  public static final String f = "__loginSdk_mobilessotime";
-  public static final String g = "__loginSdk_wifissotime";
-  public static final String h = "__loginSdk_checkmobilessotime";
-  public static final String i = "__loginSdk_checkwifissotime";
-  public static final String j = "_msf_isBootingKey";
-  public static final int k = 32;
-  public static final String l = "__loginSdk_iConfAppidTimeKey";
-  public static final String m = "__loginSdk_iConfSdkLastTimeKey";
-  public static final String n = "__loginSdk_iConfGetEspLastTimeKe";
-  public static final String o = "__msf_isAutoBootKey";
-  public static final boolean p = true;
-  static ConcurrentHashMap q = new ConcurrentHashMap();
-  public static HashSet r = new HashSet();
+  public static final String b = "ResourceConfig.ClientReq";
+  static final String c = "MSF.C.ConfigManager";
+  public static final String d = "__loginSdk_iconf_UserConf";
+  public static final String e = "__loginSdk_iconf_AppConf";
+  public static final String f = "__loginSdk_iconf_UserCommCon";
+  public static final String g = "__loginSdk_mobilessotime";
+  public static final String h = "__loginSdk_wifissotime";
+  public static final String i = "__loginSdk_checkmobilessotime";
+  public static final String j = "__loginSdk_checkwifissotime";
+  public static final String k = "_msf_isBootingKey";
+  public static final int l = 32;
+  public static final String m = "__loginSdk_iConfAppidTimeKey";
+  public static final String n = "__loginSdk_iConfSdkLastTimeKey";
+  public static final String o = "__loginSdk_iConfGetEspLastTimeKe";
+  public static final String p = "__msf_isAutoBootKey";
+  public static final boolean q = true;
+  static ConcurrentHashMap r = new ConcurrentHashMap();
   public static HashSet s = new HashSet();
-  public static boolean t = true;
+  public static HashSet t = new HashSet();
   public static boolean u = true;
   public static boolean v = true;
-  public static int w;
+  public static boolean w = true;
   public static int x;
-  public static boolean y = true;
-  public CopyOnWriteArrayList L = new CopyOnWriteArrayList();
-  MsfCore z;
+  public static int y;
+  public static boolean z = true;
+  MsfCore A;
+  public CopyOnWriteArrayList K = new CopyOnWriteArrayList();
   
   public a(MsfCore paramMsfCore)
   {
-    this.z = paramMsfCore;
+    this.A = paramMsfCore;
   }
   
   public static long A()
   {
+    if (!x())
+    {
+      try
+      {
+        if (r.containsKey("msf_heartBeatTimeout"))
+        {
+          int i1 = Integer.parseInt((String)r.get("msf_heartBeatTimeout"));
+          return i1;
+        }
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MSF.C.ConfigManager", 2, "getHeartBeatTimeout error" + localException);
+        }
+      }
+      return 30000L;
+    }
+    return z();
+  }
+  
+  public static long B()
+  {
     try
     {
-      if (q.containsKey("msf_connFastDetectDelay"))
+      if (r.containsKey("msf_connFastDetectDelay"))
       {
-        long l1 = Long.parseLong((String)q.get("msf_connFastDetectDelay"));
+        long l1 = Long.parseLong((String)r.get("msf_connFastDetectDelay"));
         return l1;
       }
     }
@@ -99,13 +122,13 @@ public class a
     return 2000L;
   }
   
-  public static long B()
+  public static long C()
   {
     try
     {
-      if (q.containsKey("msf_connFastDetectTimeout"))
+      if (r.containsKey("msf_connFastDetectTimeout"))
       {
-        long l1 = Long.parseLong((String)q.get("msf_connFastDetectTimeout"));
+        long l1 = Long.parseLong((String)r.get("msf_connFastDetectTimeout"));
         return l1;
       }
     }
@@ -118,13 +141,13 @@ public class a
     return 10000L;
   }
   
-  public static long C()
+  public static long D()
   {
     try
     {
-      if (q.containsKey("msf_autoReconnInterval"))
+      if (r.containsKey("msf_autoReconnInterval"))
       {
-        long l1 = Long.parseLong((String)q.get("msf_autoReconnInterval"));
+        long l1 = Long.parseLong((String)r.get("msf_autoReconnInterval"));
         return l1;
       }
     }
@@ -137,13 +160,13 @@ public class a
     return 0L;
   }
   
-  public static long D()
+  public static long E()
   {
     try
     {
-      if (q.containsKey("msf_checkChangeTokenInterval"))
+      if (r.containsKey("msf_checkChangeTokenInterval"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_checkChangeTokenInterval"));
+        int i1 = Integer.parseInt((String)r.get("msf_checkChangeTokenInterval"));
         return i1;
       }
     }
@@ -156,13 +179,13 @@ public class a
     return 1800000L;
   }
   
-  public static long E()
+  public static long F()
   {
     try
     {
-      if (q.containsKey("msf_ChangeTokenRequestInterval"))
+      if (r.containsKey("msf_ChangeTokenRequestInterval"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_ChangeTokenRequestInterval"));
+        int i1 = Integer.parseInt((String)r.get("msf_ChangeTokenRequestInterval"));
         return i1;
       }
     }
@@ -175,13 +198,13 @@ public class a
     return 1000L;
   }
   
-  public static long F()
+  public static long G()
   {
     try
     {
-      if (q.containsKey("msf_quickHeartBeatTimeout"))
+      if (r.containsKey("msf_quickHeartBeatTimeout"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_quickHeartBeatTimeout"));
+        int i1 = Integer.parseInt((String)r.get("msf_quickHeartBeatTimeout"));
         return i1;
       }
     }
@@ -194,13 +217,13 @@ public class a
     return 10000L;
   }
   
-  public static long G()
+  public static long H()
   {
     try
     {
-      if (q.containsKey("msf_getQuickHeartBeatReConnInterval"))
+      if (r.containsKey("msf_getQuickHeartBeatReConnInterval"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_getQuickHeartBeatReConnInterval"));
+        int i1 = Integer.parseInt((String)r.get("msf_getQuickHeartBeatReConnInterval"));
         return i1;
       }
     }
@@ -213,13 +236,13 @@ public class a
     return 120000L;
   }
   
-  public static int H()
+  public static int I()
   {
     try
     {
-      if (q.containsKey("msf_heartBeatRetrycount"))
+      if (r.containsKey("msf_heartBeatRetrycount"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_heartBeatRetrycount"));
+        int i1 = Integer.parseInt((String)r.get("msf_heartBeatRetrycount"));
         return i1;
       }
     }
@@ -232,13 +255,13 @@ public class a
     return 1;
   }
   
-  public static int I()
+  public static int J()
   {
     try
     {
-      if (q.containsKey("msf_busPacketTimeoutMaxNum"))
+      if (r.containsKey("msf_busPacketTimeoutMaxNum"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_busPacketTimeoutMaxNum"));
+        int i1 = Integer.parseInt((String)r.get("msf_busPacketTimeoutMaxNum"));
         return i1;
       }
     }
@@ -251,13 +274,13 @@ public class a
     return 10;
   }
   
-  public static long J()
+  public static long K()
   {
     try
     {
-      if (q.containsKey("msf_busCheckServerTimeInterval"))
+      if (r.containsKey("msf_busCheckServerTimeInterval"))
       {
-        long l1 = Long.parseLong((String)q.get("msf_busCheckServerTimeInterval"));
+        long l1 = Long.parseLong((String)r.get("msf_busCheckServerTimeInterval"));
         return l1;
       }
     }
@@ -270,13 +293,13 @@ public class a
     return 5000L;
   }
   
-  public static long K()
+  public static long L()
   {
     try
     {
-      if (q.containsKey("msf_checkUpdateServerTimeInterval"))
+      if (r.containsKey("msf_checkUpdateServerTimeInterval"))
       {
-        long l1 = Long.parseLong((String)q.get("msf_checkUpdateServerTimeInterval"));
+        long l1 = Long.parseLong((String)r.get("msf_checkUpdateServerTimeInterval"));
         return l1;
       }
     }
@@ -289,13 +312,13 @@ public class a
     return 72000000L;
   }
   
-  public static long L()
+  public static long M()
   {
     try
     {
-      if (q.containsKey("msf_checkUpdateServerTimeExtraInterval"))
+      if (r.containsKey("msf_checkUpdateServerTimeExtraInterval"))
       {
-        long l1 = Long.parseLong((String)q.get("msf_checkUpdateServerTimeExtraInterval"));
+        long l1 = Long.parseLong((String)r.get("msf_checkUpdateServerTimeExtraInterval"));
         return l1;
       }
     }
@@ -308,13 +331,13 @@ public class a
     return 7200000L;
   }
   
-  public static long M()
+  public static long N()
   {
     try
     {
-      if (q.containsKey("msf_checkServerTimeCompareInterval"))
+      if (r.containsKey("msf_checkServerTimeCompareInterval"))
       {
-        long l1 = Long.parseLong((String)q.get("msf_checkServerTimeCompareInterval"));
+        long l1 = Long.parseLong((String)r.get("msf_checkServerTimeCompareInterval"));
         return l1;
       }
     }
@@ -327,16 +350,16 @@ public class a
     return 7200000L;
   }
   
-  public static int N()
+  public static int O()
   {
     try
     {
-      if (q.containsKey("msf_heartBeatTimeInterval"))
+      if (r.containsKey("msf_heartBeatTimeInterval"))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "msf_heartBeatTimeInterval = " + (String)q.get("msf_heartBeatTimeInterval"));
+          QLog.d("MSF.C.ConfigManager", 2, "msf_heartBeatTimeInterval = " + (String)r.get("msf_heartBeatTimeInterval"));
         }
-        int i1 = Integer.parseInt((String)q.get("msf_heartBeatTimeInterval"));
+        int i1 = Integer.parseInt((String)r.get("msf_heartBeatTimeInterval"));
         return i1 * 60 * 1000;
       }
     }
@@ -349,16 +372,16 @@ public class a
     return 60000;
   }
   
-  public static int O()
+  public static int P()
   {
     try
     {
-      if (q.containsKey("msf_preHeartBeatTimeInterval"))
+      if (r.containsKey("msf_preHeartBeatTimeInterval"))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "msf_preHeartBeatTimeInterval = " + (String)q.get("msf_preHeartBeatTimeInterval"));
+          QLog.d("MSF.C.ConfigManager", 2, "msf_preHeartBeatTimeInterval = " + (String)r.get("msf_preHeartBeatTimeInterval"));
         }
-        int i1 = Integer.parseInt((String)q.get("msf_preHeartBeatTimeInterval"));
+        int i1 = Integer.parseInt((String)r.get("msf_preHeartBeatTimeInterval"));
         return i1 * 1000;
       }
     }
@@ -371,13 +394,13 @@ public class a
     return 10000;
   }
   
-  public static boolean P()
+  public static boolean Q()
   {
     try
     {
-      if (q.containsKey("msf_updatehbtimeSwtich"))
+      if (r.containsKey("msf_updatehbtimeSwtich"))
       {
-        boolean bool = Boolean.parseBoolean((String)q.get("msf_updateHBTimeSwtich"));
+        boolean bool = Boolean.parseBoolean((String)r.get("msf_updateHBTimeSwtich"));
         return bool;
       }
     }
@@ -390,16 +413,16 @@ public class a
     return false;
   }
   
-  public static int Q()
+  public static int R()
   {
     try
     {
-      if (q.containsKey("msf_netIdleTimeInterval"))
+      if (r.containsKey("msf_netIdleTimeInterval"))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "msf_netIdleTimeInterval = " + (String)q.get("msf_netIdleTimeInterval"));
+          QLog.d("MSF.C.ConfigManager", 2, "msf_netIdleTimeInterval = " + (String)r.get("msf_netIdleTimeInterval"));
         }
-        int i1 = Integer.parseInt((String)q.get("msf_netIdleTimeInterval"));
+        int i1 = Integer.parseInt((String)r.get("msf_netIdleTimeInterval"));
         return i1 * 60 * 1000;
       }
     }
@@ -412,13 +435,13 @@ public class a
     return 1680000;
   }
   
-  public static String R()
+  public static String S()
   {
     try
     {
-      if (q.containsKey("TcpdumpSSOVip_new"))
+      if (r.containsKey("TcpdumpSSOVip_new"))
       {
-        String str = (String)q.get("TcpdumpSSOVip_new");
+        String str = (String)r.get("TcpdumpSSOVip_new");
         return str;
       }
     }
@@ -431,16 +454,16 @@ public class a
     return null;
   }
   
-  public static int S()
+  public static int T()
   {
     try
     {
-      if (q.containsKey("TcpdumpSSOTime"))
+      if (r.containsKey("TcpdumpSSOTime"))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "TcpdumpSSOTime = " + (String)q.get("TcpdumpSSOTime"));
+          QLog.d("MSF.C.ConfigManager", 2, "TcpdumpSSOTime = " + (String)r.get("TcpdumpSSOTime"));
         }
-        int i1 = Integer.parseInt((String)q.get("TcpdumpSSOTime"));
+        int i1 = Integer.parseInt((String)r.get("TcpdumpSSOTime"));
         return i1;
       }
     }
@@ -453,16 +476,16 @@ public class a
     return 0;
   }
   
-  public static int T()
+  public static int U()
   {
     try
     {
-      if (q.containsKey("msf_netWeakTimeInterval"))
+      if (r.containsKey("msf_netWeakTimeInterval"))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "msf_netWeakTimeInterval = " + (String)q.get("msf_netWeakTimeInterval"));
+          QLog.d("MSF.C.ConfigManager", 2, "msf_netWeakTimeInterval = " + (String)r.get("msf_netWeakTimeInterval"));
         }
-        int i1 = Integer.parseInt((String)q.get("msf_netWeakTimeInterval"));
+        int i1 = Integer.parseInt((String)r.get("msf_netWeakTimeInterval"));
         return i1 * 60 * 1000;
       }
     }
@@ -475,16 +498,16 @@ public class a
     return 180000;
   }
   
-  public static int U()
+  public static int V()
   {
     try
     {
-      if (q.containsKey("msf_pcactiveretrytimes"))
+      if (r.containsKey("msf_pcactiveretrytimes"))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "msf_pcactiveretrytimes = " + (String)q.get("msf_pcactiveretrytimes"));
+          QLog.d("MSF.C.ConfigManager", 2, "msf_pcactiveretrytimes = " + (String)r.get("msf_pcactiveretrytimes"));
         }
-        int i1 = Integer.parseInt((String)q.get("msf_pcactiveretrytimes"));
+        int i1 = Integer.parseInt((String)r.get("msf_pcactiveretrytimes"));
         return i1;
       }
     }
@@ -497,16 +520,16 @@ public class a
     return 10;
   }
   
-  public static int V()
+  public static int W()
   {
     try
     {
-      if (q.containsKey("msf_netWeakExceptionCount"))
+      if (r.containsKey("msf_netWeakExceptionCount"))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "msf_netWeakExceptionCount = " + (String)q.get("msf_netWeakExceptionCount"));
+          QLog.d("MSF.C.ConfigManager", 2, "msf_netWeakExceptionCount = " + (String)r.get("msf_netWeakExceptionCount"));
         }
-        int i1 = Integer.parseInt((String)q.get("msf_netWeakExceptionCount"));
+        int i1 = Integer.parseInt((String)r.get("msf_netWeakExceptionCount"));
         return i1;
       }
     }
@@ -519,12 +542,12 @@ public class a
     return 3;
   }
   
-  public static long W()
+  public static long X()
   {
-    if (q.containsKey("msf_CallQQIntervTimeOnBoot")) {
+    if (r.containsKey("msf_CallQQIntervTimeOnBoot")) {
       try
       {
-        long l1 = Long.parseLong(((String)q.get("msf_CallQQIntervTimeOnBoot")).trim());
+        long l1 = Long.parseLong(((String)r.get("msf_CallQQIntervTimeOnBoot")).trim());
         return l1;
       }
       catch (NumberFormatException localNumberFormatException)
@@ -537,20 +560,20 @@ public class a
     return 0L;
   }
   
-  public static String X()
+  public static String Y()
   {
-    if (q.containsKey("bigflow2g3g_ver2")) {
-      return (String)q.get("bigflow2g3g_ver2");
+    if (r.containsKey("bigflow2g3g_ver2")) {
+      return (String)r.get("bigflow2g3g_ver2");
     }
     return "40";
   }
   
-  public static boolean Y()
+  public static boolean Z()
   {
-    if (q.containsKey("msf_StartNoStickyForMSFService")) {
+    if (r.containsKey("msf_StartNoStickyForMSFService")) {
       try
       {
-        boolean bool = Boolean.parseBoolean(((String)q.get("msf_StartNoStickyForMSFService")).trim());
+        boolean bool = Boolean.parseBoolean(((String)r.get("msf_StartNoStickyForMSFService")).trim());
         return bool;
       }
       catch (Exception localException)
@@ -564,108 +587,31 @@ public class a
     return false;
   }
   
-  public static boolean Z()
-  {
-    if (q.containsKey("msf_quickSendAvailable")) {
-      try
-      {
-        boolean bool = Boolean.parseBoolean(((String)q.get("msf_quickSendAvailable")).trim());
-        return bool;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, " set isPermitQuickTimeoutCheck error " + localException);
-        }
-        return false;
-      }
-    }
-    return true;
-  }
-  
-  /* Error */
   public static void a(boolean paramBoolean)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: invokestatic 173	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   6: ifeq +29 -> 35
-    //   9: ldc 34
-    //   11: iconst_2
-    //   12: new 175	java/lang/StringBuilder
-    //   15: dup
-    //   16: invokespecial 176	java/lang/StringBuilder:<init>	()V
-    //   19: ldc_w 363
-    //   22: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: iload_0
-    //   26: invokevirtual 366	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   29: invokevirtual 189	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   32: invokestatic 192	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   35: getstatic 118	com/tencent/mobileqq/msf/core/a/a:A	Ljava/util/concurrent/atomic/AtomicBoolean;
-    //   38: iload_0
-    //   39: invokevirtual 369	java/util/concurrent/atomic/AtomicBoolean:set	(Z)V
-    //   42: invokestatic 375	com/tencent/mobileqq/msf/core/MsfStore:getNativeConfigStore	()Lcom/tencent/msf/boot/config/NativeConfigStore;
-    //   45: astore_1
-    //   46: aload_1
-    //   47: ifnull +15 -> 62
-    //   50: invokestatic 375	com/tencent/mobileqq/msf/core/MsfStore:getNativeConfigStore	()Lcom/tencent/msf/boot/config/NativeConfigStore;
-    //   53: ldc 58
-    //   55: iload_0
-    //   56: invokestatic 379	java/lang/String:valueOf	(Z)Ljava/lang/String;
-    //   59: invokevirtual 385	com/tencent/msf/boot/config/NativeConfigStore:setConfig	(Ljava/lang/String;Ljava/lang/String;)V
-    //   62: invokestatic 173	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   65: ifeq +29 -> 94
-    //   68: ldc 34
-    //   70: iconst_2
-    //   71: new 175	java/lang/StringBuilder
-    //   74: dup
-    //   75: invokespecial 176	java/lang/StringBuilder:<init>	()V
-    //   78: ldc_w 387
-    //   81: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   84: iload_0
-    //   85: invokevirtual 366	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   88: invokevirtual 189	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   91: invokestatic 192	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   94: ldc 2
-    //   96: monitorexit
-    //   97: return
-    //   98: astore_1
-    //   99: invokestatic 173	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   102: ifeq -40 -> 62
-    //   105: ldc 34
-    //   107: iconst_2
-    //   108: ldc_w 389
-    //   111: aload_1
-    //   112: invokestatic 392	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   115: goto -53 -> 62
-    //   118: astore_1
-    //   119: ldc 2
-    //   121: monitorexit
-    //   122: aload_1
-    //   123: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	124	0	paramBoolean	boolean
-    //   45	2	1	localNativeConfigStore	NativeConfigStore
-    //   98	14	1	localUnsatisfiedLinkError	java.lang.UnsatisfiedLinkError
-    //   118	5	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   50	62	98	java/lang/UnsatisfiedLinkError
-    //   3	35	118	finally
-    //   35	46	118	finally
-    //   50	62	118	finally
-    //   62	94	118	finally
-    //   99	115	118	finally
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MSF.C.ConfigManager", 2, "msfCore setAutoStaring " + paramBoolean);
+      }
+      B.set(paramBoolean);
+      if (MsfStore.getNativeConfigStore() != null) {
+        MsfStore.getNativeConfigStore().setConfig("_msf_isBootingKey", String.valueOf(paramBoolean));
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("MSF.C.ConfigManager", 2, "storeAutoStaring " + paramBoolean);
+      }
+      return;
+    }
+    finally {}
   }
   
   public static boolean a(String paramString)
   {
-    if (q.containsKey(paramString + "_isAutoBoot")) {
+    if (r.containsKey(paramString + "_isAutoBoot")) {
       try
       {
-        boolean bool = Boolean.parseBoolean(((String)q.get(paramString + "_isAutoBoot")).trim());
+        boolean bool = Boolean.parseBoolean(((String)r.get(paramString + "_isAutoBoot")).trim());
         return bool;
       }
       catch (Exception localException)
@@ -683,7 +629,7 @@ public class a
   {
     try
     {
-      c.a(new ByteArrayInputStream(("<" + paramString1 + ">" + paramString2 + "</" + paramString1 + ">").getBytes("UTF-8")), q, paramString3);
+      b.a(new ByteArrayInputStream(("<" + paramString1 + ">" + paramString2 + "</" + paramString1 + ">").getBytes("UTF-8")), r, paramString3);
       return true;
     }
     catch (Exception paramString2)
@@ -695,12 +641,30 @@ public class a
     return false;
   }
   
-  public static int aA()
+  public static boolean aA()
   {
-    if (q.containsKey("msf_StandbyTestSeq")) {
+    if (r.containsKey("msf_StandbyTestAvailable")) {
       try
       {
-        int i1 = Integer.parseInt(((String)q.get("msf_StandbyTestSeq")).trim());
+        boolean bool = Boolean.parseBoolean(((String)r.get("msf_StandbyTestAvailable")).trim());
+        return bool;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MSF.C.ConfigManager", 2, " set isStandbyTestAvailable error " + localException);
+        }
+      }
+    }
+    return true;
+  }
+  
+  public static int aB()
+  {
+    if (r.containsKey("msf_StandbyTestSeq")) {
+      try
+      {
+        int i1 = Integer.parseInt(((String)r.get("msf_StandbyTestSeq")).trim());
         return i1;
       }
       catch (Exception localException)
@@ -713,13 +677,13 @@ public class a
     return 0;
   }
   
-  public static long aB()
+  public static long aC()
   {
     try
     {
-      if (q.containsKey("msf_tcpDumpTime"))
+      if (r.containsKey("msf_tcpDumpTime"))
       {
-        long l1 = Long.parseLong((String)q.get("msf_tcpDumpTime"));
+        long l1 = Long.parseLong((String)r.get("msf_tcpDumpTime"));
         return l1;
       }
     }
@@ -732,12 +696,12 @@ public class a
     return 600000L;
   }
   
-  public static int aC()
+  public static int aD()
   {
-    if (q.containsKey("msf_RetryStartProcTimes")) {
+    if (r.containsKey("msf_RetryStartProcTimes")) {
       try
       {
-        int i1 = Integer.parseInt(((String)q.get("msf_RetryStartProcTimes")).trim());
+        int i1 = Integer.parseInt(((String)r.get("msf_RetryStartProcTimes")).trim());
         return i1;
       }
       catch (Exception localException)
@@ -750,13 +714,13 @@ public class a
     return 100;
   }
   
-  public static int aD()
+  public static int aE()
   {
     try
     {
-      if (q.containsKey("msf_continueConnInterval"))
+      if (r.containsKey("msf_continueConnInterval"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_continueConnInterval"));
+        int i1 = Integer.parseInt((String)r.get("msf_continueConnInterval"));
         return i1;
       }
     }
@@ -769,13 +733,13 @@ public class a
     return 1000;
   }
   
-  public static int aE()
+  public static int aF()
   {
     try
     {
-      if (q.containsKey("msf_quickSendFastInterval"))
+      if (r.containsKey("msf_quickSendFastInterval"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_quickSendFastInterval"));
+        int i1 = Integer.parseInt((String)r.get("msf_quickSendFastInterval"));
         return i1;
       }
     }
@@ -788,13 +752,13 @@ public class a
     return 15000;
   }
   
-  public static int aF()
+  public static int aG()
   {
     try
     {
-      if (q.containsKey("msf_quickSendFastTimes"))
+      if (r.containsKey("msf_quickSendFastTimes"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_quickSendFastTimes"));
+        int i1 = Integer.parseInt((String)r.get("msf_quickSendFastTimes"));
         return i1;
       }
     }
@@ -807,13 +771,13 @@ public class a
     return 4;
   }
   
-  public static boolean aG()
+  public static boolean aH()
   {
     try
     {
-      if (q.containsKey("msf_forceQuickSend1S"))
+      if (r.containsKey("msf_forceQuickSend1S"))
       {
-        boolean bool = Boolean.parseBoolean((String)q.get("msf_forceQuickSend1S"));
+        boolean bool = Boolean.parseBoolean((String)r.get("msf_forceQuickSend1S"));
         return bool;
       }
     }
@@ -826,13 +790,13 @@ public class a
     return true;
   }
   
-  public static boolean aH()
+  public static boolean aI()
   {
     try
     {
-      if (q.containsKey("msf_applySocketAdaptorFeature"))
+      if (r.containsKey("msf_applySocketAdaptorFeature"))
       {
-        boolean bool = Boolean.parseBoolean((String)q.get("msf_applySocketAdaptorFeature"));
+        boolean bool = Boolean.parseBoolean((String)r.get("msf_applySocketAdaptorFeature"));
         return bool;
       }
     }
@@ -845,13 +809,13 @@ public class a
     return false;
   }
   
-  public static boolean aI()
+  public static boolean aJ()
   {
     try
     {
-      if (q.containsKey("msf_innerSwitchForAdaptor"))
+      if (r.containsKey("msf_innerSwitchForAdaptor"))
       {
-        boolean bool = Boolean.parseBoolean((String)q.get("msf_innerSwitchForAdaptor"));
+        boolean bool = Boolean.parseBoolean((String)r.get("msf_innerSwitchForAdaptor"));
         return bool;
       }
     }
@@ -864,13 +828,13 @@ public class a
     return false;
   }
   
-  public static int aJ()
+  public static int aK()
   {
     try
     {
-      if (q.containsKey("msf_timeoutPkgToResetMode"))
+      if (r.containsKey("msf_timeoutPkgToResetMode"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_timeoutPkgToResetMode"));
+        int i1 = Integer.parseInt((String)r.get("msf_timeoutPkgToResetMode"));
         return i1;
       }
     }
@@ -883,13 +847,13 @@ public class a
     return 100;
   }
   
-  public static int aK()
+  public static int aL()
   {
     try
     {
-      if (q.containsKey("msf_ExptionCountToResetMode"))
+      if (r.containsKey("msf_ExptionCountToResetMode"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_ExptionCountToResetMode"));
+        int i1 = Integer.parseInt((String)r.get("msf_ExptionCountToResetMode"));
         return i1;
       }
     }
@@ -902,13 +866,13 @@ public class a
     return 15;
   }
   
-  public static long aL()
+  public static long aM()
   {
     try
     {
-      if (q.containsKey("msf_startHeartBeatProxyInterval"))
+      if (r.containsKey("msf_startHeartBeatProxyInterval"))
       {
-        long l1 = Long.parseLong((String)q.get("msf_startHeartBeatProxyInterval"));
+        long l1 = Long.parseLong((String)r.get("msf_startHeartBeatProxyInterval"));
         return l1;
       }
     }
@@ -921,13 +885,13 @@ public class a
     return 60000L;
   }
   
-  public static int aM()
+  public static int aN()
   {
     try
     {
-      if (q.containsKey("msf_ExptionCountToCloseHeartbeat"))
+      if (r.containsKey("msf_ExptionCountToCloseHeartbeat"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_ExptionCountToCloseHeartbeat"));
+        int i1 = Integer.parseInt((String)r.get("msf_ExptionCountToCloseHeartbeat"));
         return i1;
       }
     }
@@ -940,13 +904,13 @@ public class a
     return 50;
   }
   
-  public static int aN()
+  public static int aO()
   {
     try
     {
-      if (q.containsKey("msf_ResumeCountLimit"))
+      if (r.containsKey("msf_ResumeCountLimit"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_ResumeCountLimit"));
+        int i1 = Integer.parseInt((String)r.get("msf_ResumeCountLimit"));
         return i1;
       }
     }
@@ -959,13 +923,13 @@ public class a
     return 3;
   }
   
-  public static long aO()
+  public static long aP()
   {
     try
     {
-      if (q.containsKey("msf_hwExceptionCheckInterval"))
+      if (r.containsKey("msf_hwExceptionCheckInterval"))
       {
-        long l1 = Long.parseLong((String)q.get("msf_hwExceptionCheckInterval"));
+        long l1 = Long.parseLong((String)r.get("msf_hwExceptionCheckInterval"));
         return l1;
       }
     }
@@ -978,13 +942,13 @@ public class a
     return 7200000L;
   }
   
-  public static boolean aP()
+  public static boolean aQ()
   {
     try
     {
-      if (q.containsKey("msf_applyHeartbeatProxyFeature"))
+      if (r.containsKey("msf_applyHeartbeatProxyFeature"))
       {
-        boolean bool = Boolean.parseBoolean((String)q.get("msf_applyHeartbeatProxyFeature"));
+        boolean bool = Boolean.parseBoolean((String)r.get("msf_applyHeartbeatProxyFeature"));
         return bool;
       }
     }
@@ -997,13 +961,13 @@ public class a
     return false;
   }
   
-  public static int aQ()
+  public static int aR()
   {
     try
     {
-      if (q.containsKey("msf_retryHeartbeatTestCount"))
+      if (r.containsKey("msf_retryHeartbeatTestCount"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_retryHeartbeatTestCount"));
+        int i1 = Integer.parseInt((String)r.get("msf_retryHeartbeatTestCount"));
         return i1;
       }
     }
@@ -1016,13 +980,13 @@ public class a
     return 5;
   }
   
-  public static int aR()
+  public static int aS()
   {
     try
     {
-      if (q.containsKey("msf_SortIpSocketErrorWeight"))
+      if (r.containsKey("msf_SortIpSocketErrorWeight"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_SortIpSocketErrorWeight"));
+        int i1 = Integer.parseInt((String)r.get("msf_SortIpSocketErrorWeight"));
         return i1;
       }
     }
@@ -1035,13 +999,13 @@ public class a
     return 10;
   }
   
-  public static int aS()
+  public static int aT()
   {
     try
     {
-      if (q.containsKey("msf_SortIpContinueRspTimeoutWeight"))
+      if (r.containsKey("msf_SortIpContinueRspTimeoutWeight"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_SortIpContinueRspTimeoutWeight"));
+        int i1 = Integer.parseInt((String)r.get("msf_SortIpContinueRspTimeoutWeight"));
         return i1;
       }
     }
@@ -1054,13 +1018,13 @@ public class a
     return 10;
   }
   
-  public static int aT()
+  public static int aU()
   {
     try
     {
-      if (q.containsKey("msf_SortIpPingTimeoutWeight"))
+      if (r.containsKey("msf_SortIpPingTimeoutWeight"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_SortIpPingTimeoutWeight"));
+        int i1 = Integer.parseInt((String)r.get("msf_SortIpPingTimeoutWeight"));
         return i1;
       }
     }
@@ -1073,13 +1037,13 @@ public class a
     return 10;
   }
   
-  public static int aU()
+  public static int aV()
   {
     try
     {
-      if (q.containsKey("msf_SortIpNetDetectFailedWeight"))
+      if (r.containsKey("msf_SortIpNetDetectFailedWeight"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_SortIpNetDetectFailedWeight"));
+        int i1 = Integer.parseInt((String)r.get("msf_SortIpNetDetectFailedWeight"));
         return i1;
       }
     }
@@ -1092,13 +1056,13 @@ public class a
     return 20;
   }
   
-  public static int aV()
+  public static int aW()
   {
     try
     {
-      if (q.containsKey("msf_SortIpInvalidDataWeight"))
+      if (r.containsKey("msf_SortIpInvalidDataWeight"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_SortIpInvalidDataWeight"));
+        int i1 = Integer.parseInt((String)r.get("msf_SortIpInvalidDataWeight"));
         return i1;
       }
     }
@@ -1111,13 +1075,13 @@ public class a
     return 20;
   }
   
-  public static int aW()
+  public static int aX()
   {
     try
     {
-      if (q.containsKey("msf_SortIpConnFullWeight"))
+      if (r.containsKey("msf_SortIpConnFullWeight"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_SortIpConnFullWeight"));
+        int i1 = Integer.parseInt((String)r.get("msf_SortIpConnFullWeight"));
         return i1;
       }
     }
@@ -1130,13 +1094,13 @@ public class a
     return 20;
   }
   
-  public static boolean aX()
+  public static boolean aY()
   {
     try
     {
-      if (q.containsKey("msf_loginWithPicSt"))
+      if (r.containsKey("msf_loginWithPicSt"))
       {
-        boolean bool = Boolean.parseBoolean((String)q.get("msf_loginWithPicSt"));
+        boolean bool = Boolean.parseBoolean((String)r.get("msf_loginWithPicSt"));
         return bool;
       }
     }
@@ -1149,13 +1113,13 @@ public class a
     return true;
   }
   
-  public static int aY()
+  public static int aZ()
   {
     try
     {
-      if (q.containsKey("msf_SingleWiFiSSIDStoreTimes"))
+      if (r.containsKey("msf_SingleWiFiSSIDStoreTimes"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_SingleWiFiSSIDStoreTimes"));
+        int i1 = Integer.parseInt((String)r.get("msf_SingleWiFiSSIDStoreTimes"));
         return i1;
       }
     }
@@ -1168,35 +1132,35 @@ public class a
     return 3;
   }
   
-  public static long aZ()
+  public static boolean aa()
   {
-    try
-    {
-      if (q.containsKey("msf_ReportWiFiSSIDInterval"))
+    if (r.containsKey("msf_quickSendAvailable")) {
+      try
       {
-        long l1 = Long.parseLong((String)q.get("msf_ReportWiFiSSIDInterval"));
-        return l1;
+        boolean bool = Boolean.parseBoolean(((String)r.get("msf_quickSendAvailable")).trim());
+        return bool;
       }
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getReportWiFiSSIDInterval error" + localException);
-      }
-    }
-    return 72000000L;
-  }
-  
-  public static int aa()
-  {
-    try
-    {
-      if (q.containsKey("msf_getHttpRecvTimeout"))
+      catch (Exception localException)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "msf_getHttpRecvTimeout = " + (String)q.get("msf_getHttpRecvTimeout"));
+          QLog.d("MSF.C.ConfigManager", 2, " set isPermitQuickTimeoutCheck error " + localException);
         }
-        int i1 = Integer.parseInt((String)q.get("msf_getHttpRecvTimeout"));
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  public static int ab()
+  {
+    try
+    {
+      if (r.containsKey("msf_getHttpRecvTimeout"))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MSF.C.ConfigManager", 2, "msf_getHttpRecvTimeout = " + (String)r.get("msf_getHttpRecvTimeout"));
+        }
+        int i1 = Integer.parseInt((String)r.get("msf_getHttpRecvTimeout"));
         return i1;
       }
     }
@@ -1209,16 +1173,16 @@ public class a
     return 30000;
   }
   
-  public static int ab()
+  public static int ac()
   {
     try
     {
-      if (q.containsKey("msf_getHttpReSendMessageConcurrentLimit"))
+      if (r.containsKey("msf_getHttpReSendMessageConcurrentLimit"))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "msf_getHttpReSendMessageConcurrentLimit = " + (String)q.get("msf_getHttpReSendMessageConcurrentLimit"));
+          QLog.d("MSF.C.ConfigManager", 2, "msf_getHttpReSendMessageConcurrentLimit = " + (String)r.get("msf_getHttpReSendMessageConcurrentLimit"));
         }
-        int i1 = Integer.parseInt((String)q.get("msf_getHttpReSendMessageConcurrentLimit"));
+        int i1 = Integer.parseInt((String)r.get("msf_getHttpReSendMessageConcurrentLimit"));
         return i1;
       }
     }
@@ -1231,16 +1195,16 @@ public class a
     return 5;
   }
   
-  public static int ac()
+  public static int ad()
   {
     try
     {
-      if (q.containsKey("msf_getHttpReSendMessageTimeout"))
+      if (r.containsKey("msf_getHttpReSendMessageTimeout"))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "msf_getHttpReSendMessageTimeout = " + (String)q.get("msf_getHttpReSendMessageTimeout"));
+          QLog.d("MSF.C.ConfigManager", 2, "msf_getHttpReSendMessageTimeout = " + (String)r.get("msf_getHttpReSendMessageTimeout"));
         }
-        int i1 = Integer.parseInt((String)q.get("msf_getHttpReSendMessageTimeout"));
+        int i1 = Integer.parseInt((String)r.get("msf_getHttpReSendMessageTimeout"));
         return i1;
       }
     }
@@ -1253,10 +1217,10 @@ public class a
     return 30000;
   }
   
-  public static String[] ad()
+  public static String[] ae()
   {
-    if (q.containsKey("getQuickSendBlackList")) {
-      return ((String)q.get("getQuickSendBlackList")).replaceAll("\\|", "#").split("#");
+    if (r.containsKey("getQuickSendBlackList")) {
+      return ((String)r.get("getQuickSendBlackList")).replaceAll("\\|", "#").split("#");
     }
     if (QLog.isColorLevel()) {
       QLog.d("MSF.C.ConfigManager", 2, "getQuickSendBlackList not be found.");
@@ -1264,10 +1228,10 @@ public class a
     return null;
   }
   
-  public static String ae()
+  public static String af()
   {
-    if (q.containsKey("MsfCrashControlInfo")) {
-      return (String)q.get("MsfCrashControlInfo");
+    if (r.containsKey("MsfCrashControlInfo")) {
+      return (String)r.get("MsfCrashControlInfo");
     }
     if (QLog.isColorLevel()) {
       QLog.d("MSF.C.ConfigManager", 2, "getMsfCrashControlInfo not found");
@@ -1275,21 +1239,21 @@ public class a
     return null;
   }
   
-  public static String af()
+  public static String ag()
   {
-    if (q.containsKey("bigflowwifi_ver2")) {
-      return (String)q.get("bigflowwifi_ver2");
+    if (r.containsKey("bigflowwifi_ver2")) {
+      return (String)r.get("bigflowwifi_ver2");
     }
     return "20";
   }
   
-  public static long ag()
+  public static long ah()
   {
     try
     {
-      if (q.containsKey("msf_basicTicketChangeInterval"))
+      if (r.containsKey("msf_basicTicketChangeInterval"))
       {
-        long l1 = Long.parseLong((String)q.get("msf_basicTicketChangeInterval"));
+        long l1 = Long.parseLong((String)r.get("msf_basicTicketChangeInterval"));
         return l1;
       }
     }
@@ -1302,13 +1266,13 @@ public class a
     return 0L;
   }
   
-  public static long ah()
+  public static long ai()
   {
     try
     {
-      if (q.containsKey("msf_webTicketChangeInterval"))
+      if (r.containsKey("msf_webTicketChangeInterval"))
       {
-        long l1 = Long.parseLong((String)q.get("msf_webTicketChangeInterval"));
+        long l1 = Long.parseLong((String)r.get("msf_webTicketChangeInterval"));
         return l1;
       }
     }
@@ -1321,12 +1285,12 @@ public class a
     return 0L;
   }
   
-  public static boolean ai()
+  public static boolean aj()
   {
-    if (q.containsKey("msf_basicTicketChangeLimit")) {
+    if (r.containsKey("msf_basicTicketChangeLimit")) {
       try
       {
-        boolean bool = Boolean.parseBoolean(((String)q.get("msf_basicTicketChangeLimit")).trim());
+        boolean bool = Boolean.parseBoolean(((String)r.get("msf_basicTicketChangeLimit")).trim());
         return bool;
       }
       catch (Exception localException)
@@ -1340,12 +1304,12 @@ public class a
     return true;
   }
   
-  public static boolean aj()
+  public static boolean ak()
   {
-    if (q.containsKey("msf_isReportDataCorrupt")) {
+    if (r.containsKey("msf_isReportDataCorrupt")) {
       try
       {
-        boolean bool = Boolean.parseBoolean(((String)q.get("msf_isReportDataCorrupt")).trim());
+        boolean bool = Boolean.parseBoolean(((String)r.get("msf_isReportDataCorrupt")).trim());
         return bool;
       }
       catch (Exception localException)
@@ -1359,12 +1323,12 @@ public class a
     return true;
   }
   
-  public static boolean ak()
+  public static boolean al()
   {
-    if (q.containsKey("msf_isDelayChangeWebKey")) {
+    if (r.containsKey("msf_isDelayChangeWebKey")) {
       try
       {
-        boolean bool = Boolean.parseBoolean(((String)q.get("msf_isDelayChangeWebKey")).trim());
+        boolean bool = Boolean.parseBoolean(((String)r.get("msf_isDelayChangeWebKey")).trim());
         return bool;
       }
       catch (Exception localException)
@@ -1378,26 +1342,26 @@ public class a
     return true;
   }
   
-  public static boolean al()
+  public static boolean am()
   {
-    return A.get();
+    return B.get();
   }
   
-  public static String[] au()
+  public static String[] av()
   {
-    if (q.containsKey("StandbyMode")) {
-      return ((String)q.get("StandbyMode")).replaceAll("\\|", ",").split(",");
+    if (r.containsKey("StandbyMode")) {
+      return ((String)r.get("StandbyMode")).replaceAll("\\|", ",").split(",");
     }
     QLog.d("MSF.C.ConfigManager", 1, "StandbyMode whitelist not be found.");
     return null;
   }
   
-  public static boolean av()
+  public static boolean aw()
   {
-    if (q.containsKey("msf_StandbyModeAvailable")) {
+    if (r.containsKey("msf_StandbyModeAvailable")) {
       try
       {
-        boolean bool = Boolean.parseBoolean(((String)q.get("msf_StandbyModeAvailable")).trim());
+        boolean bool = Boolean.parseBoolean(((String)r.get("msf_StandbyModeAvailable")).trim());
         return bool;
       }
       catch (Exception localException)
@@ -1410,12 +1374,12 @@ public class a
     return false;
   }
   
-  public static boolean aw()
+  public static boolean ax()
   {
-    if (q.containsKey("msf_isReqAllFailTest")) {
+    if (r.containsKey("msf_isReqAllFailTest")) {
       try
       {
-        boolean bool = Boolean.parseBoolean(((String)q.get("msf_isReqAllFailTest")).trim());
+        boolean bool = Boolean.parseBoolean(((String)r.get("msf_isReqAllFailTest")).trim());
         return bool;
       }
       catch (Exception localException)
@@ -1428,16 +1392,16 @@ public class a
     return false;
   }
   
-  public static CopyOnWriteArrayList ax()
+  public static CopyOnWriteArrayList ay()
   {
     localCopyOnWriteArrayList = new CopyOnWriteArrayList();
     int i1;
     String[] arrayOfString4;
     com.tencent.mobileqq.msf.core.d locald;
-    if (q.containsKey("ydconn")) {
+    if (r.containsKey("ydconn")) {
       try
       {
-        String[] arrayOfString1 = ((String)q.get("ydconn")).replaceAll("\\|", ",").split(",");
+        String[] arrayOfString1 = ((String)r.get("ydconn")).replaceAll("\\|", ",").split(",");
         i1 = 0;
         while (i1 < arrayOfString1.length)
         {
@@ -1448,7 +1412,7 @@ public class a
           localCopyOnWriteArrayList.add(locald);
           i1 += 1;
         }
-        if (!q.containsKey("ltconn")) {
+        if (!r.containsKey("ltconn")) {
           break label218;
         }
       }
@@ -1459,7 +1423,7 @@ public class a
     } else {
       try
       {
-        String[] arrayOfString2 = ((String)q.get("ltconn")).replaceAll("\\|", ",").split(",");
+        String[] arrayOfString2 = ((String)r.get("ltconn")).replaceAll("\\|", ",").split(",");
         i1 = 0;
         while (i1 < arrayOfString2.length)
         {
@@ -1470,7 +1434,7 @@ public class a
           localCopyOnWriteArrayList.add(locald);
           i1 += 1;
         }
-        if (!q.containsKey("dxconn")) {
+        if (!r.containsKey("dxconn")) {
           return localCopyOnWriteArrayList;
         }
       }
@@ -1482,7 +1446,7 @@ public class a
     try
     {
       label218:
-      String[] arrayOfString3 = ((String)q.get("dxconn")).replaceAll("\\|", ",").split(",");
+      String[] arrayOfString3 = ((String)r.get("dxconn")).replaceAll("\\|", ",").split(",");
       i1 = 0;
       while (i1 < arrayOfString3.length)
       {
@@ -1501,7 +1465,7 @@ public class a
     }
   }
   
-  public static CopyOnWriteArrayList ay()
+  public static CopyOnWriteArrayList az()
   {
     Object localObject = t.e();
     CopyOnWriteArrayList localCopyOnWriteArrayList = new CopyOnWriteArrayList();
@@ -1515,10 +1479,10 @@ public class a
     }
     for (;;)
     {
-      if (q.containsKey(localObject)) {
+      if (r.containsKey(localObject)) {
         try
         {
-          localObject = ((String)q.get(localObject)).replaceAll("\\|", ",").split(",");
+          localObject = ((String)r.get(localObject)).replaceAll("\\|", ",").split(",");
           int i1 = 0;
           for (;;)
           {
@@ -1560,31 +1524,32 @@ public class a
     }
   }
   
-  public static boolean az()
-  {
-    if (q.containsKey("msf_StandbyTestAvailable")) {
-      try
-      {
-        boolean bool = Boolean.parseBoolean(((String)q.get("msf_StandbyTestAvailable")).trim());
-        return bool;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, " set isStandbyTestAvailable error " + localException);
-        }
-      }
-    }
-    return true;
-  }
-  
-  public static int ba()
+  public static long ba()
   {
     try
     {
-      if (q.containsKey("msf_aliveSplitLen"))
+      if (r.containsKey("msf_ReportWiFiSSIDInterval"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_aliveSplitLen"));
+        long l1 = Long.parseLong((String)r.get("msf_ReportWiFiSSIDInterval"));
+        return l1;
+      }
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MSF.C.ConfigManager", 2, "getReportWiFiSSIDInterval error" + localException);
+      }
+    }
+    return 72000000L;
+  }
+  
+  public static int bb()
+  {
+    try
+    {
+      if (r.containsKey("msf_aliveSplitLen"))
+      {
+        int i1 = Integer.parseInt((String)r.get("msf_aliveSplitLen"));
         return i1;
       }
     }
@@ -1597,13 +1562,13 @@ public class a
     return 1024;
   }
   
-  public static int bb()
+  public static int bc()
   {
     try
     {
-      if (q.containsKey("msf_aliveReportMax"))
+      if (r.containsKey("msf_aliveReportMax"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_aliveReportMax"));
+        int i1 = Integer.parseInt((String)r.get("msf_aliveReportMax"));
         return i1;
       }
     }
@@ -1616,13 +1581,13 @@ public class a
     return 15360;
   }
   
-  public static int bc()
+  public static int bd()
   {
     try
     {
-      if (q.containsKey("msf_aliveAutoInterval"))
+      if (r.containsKey("msf_aliveAutoInterval"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_aliveAutoInterval"));
+        int i1 = Integer.parseInt((String)r.get("msf_aliveAutoInterval"));
         return i1;
       }
     }
@@ -1635,13 +1600,13 @@ public class a
     return 7200;
   }
   
-  public static boolean bd()
+  public static boolean be()
   {
     try
     {
-      if (q.containsKey("msf_reportMsfAliveFull"))
+      if (r.containsKey("msf_reportMsfAliveFull"))
       {
-        boolean bool = Boolean.parseBoolean((String)q.get("msf_reportMsfAliveFull"));
+        boolean bool = Boolean.parseBoolean((String)r.get("msf_reportMsfAliveFull"));
         return bool;
       }
     }
@@ -1654,13 +1619,13 @@ public class a
     return true;
   }
   
-  public static int be()
+  public static int bf()
   {
     try
     {
-      if (q.containsKey("msf_RandomPushReportBase"))
+      if (r.containsKey("msf_RandomPushReportBase"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_RandomPushReportBase"));
+        int i1 = Integer.parseInt((String)r.get("msf_RandomPushReportBase"));
         return i1;
       }
     }
@@ -1673,13 +1638,13 @@ public class a
     return 1;
   }
   
-  public static HashSet bf()
+  public static HashSet bg()
   {
     try
     {
-      if (q.containsKey("msf_getPskeyDomains"))
+      if (r.containsKey("msf_getPskeyDomains"))
       {
-        Object localObject = (String)q.get("msf_getPskeyDomains");
+        Object localObject = (String)r.get("msf_getPskeyDomains");
         if (!TextUtils.isEmpty((CharSequence)localObject))
         {
           localObject = ((String)localObject).split("#");
@@ -1706,13 +1671,13 @@ public class a
     }
   }
   
-  public static long bg()
+  public static long bh()
   {
     try
     {
-      if (q.containsKey("msf_StoreLogcatTriggerInterval"))
+      if (r.containsKey("msf_StoreLogcatTriggerInterval"))
       {
-        long l1 = Long.parseLong((String)q.get("msf_StoreLogcatTriggerInterval"));
+        long l1 = Long.parseLong((String)r.get("msf_StoreLogcatTriggerInterval"));
         return l1;
       }
     }
@@ -1725,13 +1690,13 @@ public class a
     return 10000L;
   }
   
-  public static long bh()
+  public static long bi()
   {
     try
     {
-      if (q.containsKey("msf_LogcatStoreInterval"))
+      if (r.containsKey("msf_LogcatStoreInterval"))
       {
-        long l1 = Long.parseLong((String)q.get("msf_LogcatStoreInterval"));
+        long l1 = Long.parseLong((String)r.get("msf_LogcatStoreInterval"));
         return l1;
       }
     }
@@ -1744,13 +1709,13 @@ public class a
     return 1800000L;
   }
   
-  public static int bi()
+  public static int bj()
   {
     try
     {
-      if (q.containsKey("msf_logCompressLevel"))
+      if (r.containsKey("msf_logCompressLevel"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_logCompressLevel"));
+        int i1 = Integer.parseInt((String)r.get("msf_logCompressLevel"));
         return i1;
       }
     }
@@ -1763,13 +1728,13 @@ public class a
     return 9;
   }
   
-  public static int bj()
+  public static int bk()
   {
     try
     {
-      if (q.containsKey("msf_MSFPullReportBase"))
+      if (r.containsKey("msf_MSFPullReportBase"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_MSFPullReportBase"));
+        int i1 = Integer.parseInt((String)r.get("msf_MSFPullReportBase"));
         return i1;
       }
     }
@@ -1782,13 +1747,13 @@ public class a
     return 1;
   }
   
-  public static boolean bk()
+  public static boolean bl()
   {
     try
     {
-      if (q.containsKey("msf_reportPushDetail"))
+      if (r.containsKey("msf_reportPushDetail"))
       {
-        boolean bool = Boolean.parseBoolean((String)q.get("msf_reportPushDetail"));
+        boolean bool = Boolean.parseBoolean((String)r.get("msf_reportPushDetail"));
         return bool;
       }
     }
@@ -1801,13 +1766,13 @@ public class a
     return true;
   }
   
-  public static long bl()
+  public static long bm()
   {
     try
     {
-      if (q.containsKey("msf_preDetectionAlarmTimeAlpha"))
+      if (r.containsKey("msf_preDetectionAlarmTimeAlpha"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_preDetectionAlarmTimeAlpha"));
+        int i1 = Integer.parseInt((String)r.get("msf_preDetectionAlarmTimeAlpha"));
         return i1;
       }
     }
@@ -1820,13 +1785,13 @@ public class a
     return 900000L;
   }
   
-  public static long bm()
+  public static long bn()
   {
     try
     {
-      if (q.containsKey("msf_preDetectionAlarmTimeBeta"))
+      if (r.containsKey("msf_preDetectionAlarmTimeBeta"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_preDetectionAlarmTimeBeta"));
+        int i1 = Integer.parseInt((String)r.get("msf_preDetectionAlarmTimeBeta"));
         return i1;
       }
     }
@@ -1839,13 +1804,13 @@ public class a
     return 480000L;
   }
   
-  public static boolean bn()
+  public static boolean bo()
   {
     try
     {
-      if (q.containsKey("msf_heartBeatSwtich"))
+      if (r.containsKey("msf_heartBeatSwtich"))
       {
-        boolean bool = Boolean.parseBoolean((String)q.get("msf_heartBeatSwtich"));
+        boolean bool = Boolean.parseBoolean((String)r.get("msf_heartBeatSwtich"));
         return bool;
       }
     }
@@ -1858,13 +1823,13 @@ public class a
     return true;
   }
   
-  public static boolean bo()
+  public static boolean bp()
   {
     try
     {
-      if (q.containsKey("msf_quickHeartBeatSwitch"))
+      if (r.containsKey("msf_quickHeartBeatSwitch"))
       {
-        boolean bool = Boolean.parseBoolean((String)q.get("msf_quickHeartBeatSwitch"));
+        boolean bool = Boolean.parseBoolean((String)r.get("msf_quickHeartBeatSwitch"));
         return bool;
       }
     }
@@ -1877,13 +1842,13 @@ public class a
     return true;
   }
   
-  public static int bp()
+  public static int bq()
   {
     try
     {
-      if (q.containsKey("msf_simpleGetTimeoutNumber"))
+      if (r.containsKey("msf_simpleGetTimeoutNumber"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_simpleGetTimeoutNumber"));
+        int i1 = Integer.parseInt((String)r.get("msf_simpleGetTimeoutNumber"));
         return i1;
       }
     }
@@ -1896,13 +1861,13 @@ public class a
     return 5;
   }
   
-  public static int bq()
+  public static int br()
   {
     try
     {
-      if (q.containsKey("msf_apptimeout"))
+      if (r.containsKey("msf_apptimeout"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_apptimeout"));
+        int i1 = Integer.parseInt((String)r.get("msf_apptimeout"));
         return i1;
       }
     }
@@ -1915,13 +1880,13 @@ public class a
     return 2000;
   }
   
-  public static boolean br()
+  public static boolean bs()
   {
     try
     {
-      if (q.containsKey("msf_getAllowWhileIdleSwtich"))
+      if (r.containsKey("msf_getAllowWhileIdleSwtich"))
       {
-        boolean bool = Boolean.parseBoolean((String)q.get("msf_getAllowWhileIdleSwtich"));
+        boolean bool = Boolean.parseBoolean((String)r.get("msf_getAllowWhileIdleSwtich"));
         return bool;
       }
     }
@@ -1934,13 +1899,13 @@ public class a
     return true;
   }
   
-  public static int bs()
+  public static int bt()
   {
     try
     {
-      if (q.containsKey("msf_weaknet_config"))
+      if (r.containsKey("msf_weaknet_config"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_weaknet_config"));
+        int i1 = Integer.parseInt((String)r.get("msf_weaknet_config"));
         return i1;
       }
     }
@@ -1953,13 +1918,13 @@ public class a
     return 0;
   }
   
-  public static boolean bt()
+  public static boolean bu()
   {
     try
     {
-      if (q.containsKey("msf_weaknetXGSendMsg"))
+      if (r.containsKey("msf_weaknetXGSendMsg"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_weaknetXGSendMsg"));
+        int i1 = Integer.parseInt((String)r.get("msf_weaknetXGSendMsg"));
         return i1 != 0;
       }
     }
@@ -1972,24 +1937,47 @@ public class a
     return false;
   }
   
-  public static boolean bu()
+  public static boolean bv()
   {
     if ((!"x86".equals(com.tencent.mobileqq.msf.core.c.c(BaseApplication.getContext()))) || (QLog.isColorLevel())) {
-      QLog.i("MSF.C.ConfigManager", 2, "isQuicEnabled enabled=" + false + " " + (String)q.get("quic_enable") + " reload=" + QuicWrapper.reload() + " isLoad=" + QuicWrapper.isLoaded);
+      QLog.i("MSF.C.ConfigManager", 2, "isQuicEnabled enabled=" + false + " " + (String)r.get("quic_enable") + " reload=" + QuicWrapper.reload() + " isLoad=" + QuicWrapper.isLoaded);
     }
     return (0 != 0) && (QuicWrapper.reload());
   }
   
-  private void bw()
+  public static int bw()
+  {
+    int i1 = g.j;
+    try
+    {
+      if (r.containsKey("jobscheduler_enable")) {
+        i1 = Integer.parseInt((String)r.get("jobscheduler_enable"));
+      }
+      QLog.d("MSF.C.ConfigManager", 1, new Object[] { "MSF_Alive_Log get config jobscheduler_enable=", Integer.valueOf(i1) });
+      return i1;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MSF.C.ConfigManager", 2, "MSF_Alive_Log get jobscheduler_enable error" + localException);
+        }
+        i1 = 0;
+      }
+    }
+  }
+  
+  private void bx()
   {
     boolean bool2 = false;
     int i2;
     int i1;
     String str2;
-    if (q.containsKey("msf_noReportRdmEvent")) {
+    if (r.containsKey("msf_noReportRdmEvent")) {
       try
       {
-        String[] arrayOfString1 = ((String)q.get("msf_noReportRdmEvent")).split(";");
+        String[] arrayOfString1 = ((String)r.get("msf_noReportRdmEvent")).split(";");
         i2 = arrayOfString1.length;
         i1 = 0;
         while (i1 < i2)
@@ -1997,14 +1985,14 @@ public class a
           str2 = arrayOfString1[i1];
           if (!str2.trim().equals(""))
           {
-            r.add(str2);
+            s.add(str2);
             if (QLog.isColorLevel()) {
               QLog.d("MSF.C.ConfigManager", 2, "rdm event " + str2 + " set no report.");
             }
           }
           i1 += 1;
         }
-        if (!q.containsKey("msf_needPrintLogCmd")) {
+        if (!r.containsKey("msf_needPrintLogCmd")) {
           break label309;
         }
       }
@@ -2017,7 +2005,7 @@ public class a
     } else {
       try
       {
-        String[] arrayOfString2 = ((String)q.get("msf_needPrintLogCmd")).split(";");
+        String[] arrayOfString2 = ((String)r.get("msf_needPrintLogCmd")).split(";");
         i2 = arrayOfString2.length;
         i1 = 0;
         while (i1 < i2)
@@ -2025,14 +2013,14 @@ public class a
           str2 = arrayOfString2[i1];
           if (!str2.trim().equals(""))
           {
-            s.add(str2);
+            t.add(str2);
             if (QLog.isColorLevel()) {
               QLog.d("MSF.C.ConfigManager", 2, "msg " + str2 + " need print log.");
             }
           }
           i1 += 1;
         }
-        if (!q.containsKey("msf_AnyPacketAsPushHB")) {}
+        if (!r.containsKey("msf_AnyPacketAsPushHB")) {}
       }
       catch (Exception localException2)
       {
@@ -2047,12 +2035,12 @@ public class a
     {
       try
       {
-        str1 = (String)q.get("msf_AnyPacketAsPushHB");
+        str1 = (String)r.get("msf_AnyPacketAsPushHB");
         if (!str1.equals("0")) {
           continue;
         }
         bool1 = false;
-        t = bool1;
+        u = bool1;
         if (QLog.isColorLevel()) {
           QLog.d("MSF.C.ConfigManager", 2, "config useAnyPacketAsPushHB " + str1);
         }
@@ -2068,15 +2056,15 @@ public class a
         bool1 = true;
         continue;
       }
-      if (q.containsKey("msf_preDetectionSupport")) {}
+      if (r.containsKey("msf_preDetectionSupport")) {}
       try
       {
-        str1 = (String)q.get("msf_preDetectionSupport");
+        str1 = (String)r.get("msf_preDetectionSupport");
         if (!str1.equals("0")) {
           continue;
         }
         bool1 = false;
-        u = bool1;
+        v = bool1;
         if (QLog.isColorLevel()) {
           QLog.d("MSF.C.ConfigManager", 2, "config msf_preDetectionSupport " + str1);
         }
@@ -2091,15 +2079,15 @@ public class a
         bool1 = true;
         continue;
       }
-      if (q.containsKey("msf_simpleGetReportSwitch")) {}
+      if (r.containsKey("msf_simpleGetReportSwitch")) {}
       try
       {
-        str1 = (String)q.get("msf_simpleGetReportSwitch");
+        str1 = (String)r.get("msf_simpleGetReportSwitch");
         if (!str1.equals("0")) {
           break label625;
         }
         bool1 = bool2;
-        v = bool1;
+        w = bool1;
         if (QLog.isColorLevel()) {
           QLog.d("MSF.C.ConfigManager", 2, "config msf_simpleGetReportSwitch " + str1);
         }
@@ -2117,13 +2105,13 @@ public class a
     label625:
   }
   
-  private void bx()
+  private void by()
   {
     try
     {
-      String[] arrayOfString = au();
-      if ((arrayOfString != null) && (this.z.getStandyModeManager() != null)) {
-        this.z.getStandyModeManager().a(arrayOfString);
+      String[] arrayOfString = av();
+      if ((arrayOfString != null) && (this.A.getStandyModeManager() != null)) {
+        this.A.getStandyModeManager().a(arrayOfString);
       }
       return;
     }
@@ -2133,17 +2121,17 @@ public class a
     }
   }
   
-  private void by()
+  private void bz()
   {
     try
     {
       String[] arrayOfString = c();
       if (arrayOfString != null)
       {
-        this.z.sender.i = Integer.parseInt(arrayOfString[0]);
-        this.z.sender.j = Integer.parseInt(arrayOfString[1]);
-        this.z.sender.n = Integer.parseInt(arrayOfString[2]);
-        this.z.sender.l = Integer.parseInt(arrayOfString[3]);
+        this.A.sender.j = Integer.parseInt(arrayOfString[0]);
+        this.A.sender.k = Integer.parseInt(arrayOfString[1]);
+        this.A.sender.o = Integer.parseInt(arrayOfString[2]);
+        this.A.sender.m = Integer.parseInt(arrayOfString[3]);
       }
       return;
     }
@@ -2154,10 +2142,10 @@ public class a
         for (;;)
         {
           arrayOfString = d();
-          this.z.sender.a(arrayOfString);
+          this.A.sender.a(arrayOfString);
           try
           {
-            this.z.sender.m = Integer.parseInt(e());
+            this.A.sender.n = Integer.parseInt(e());
             return;
           }
           catch (Exception localException3)
@@ -2196,9 +2184,9 @@ public class a
   
   public static String[] c()
   {
-    if (q.containsKey("MultiPkgPara"))
+    if (r.containsKey("MultiPkgPara"))
     {
-      String[] arrayOfString = ((String)q.get("MultiPkgPara")).replaceAll("\\|", ",").split(",");
+      String[] arrayOfString = ((String)r.get("MultiPkgPara")).replaceAll("\\|", ",").split(",");
       if (arrayOfString.length == 4) {
         return arrayOfString;
       }
@@ -2228,8 +2216,8 @@ public class a
   
   public static String[] d()
   {
-    if (q.containsKey("MultiPkgWL")) {
-      return ((String)q.get("MultiPkgWL")).replaceAll("\\|", ",").split(",");
+    if (r.containsKey("MultiPkgWL")) {
+      return ((String)r.get("MultiPkgWL")).replaceAll("\\|", ",").split(",");
     }
     QLog.d("MSF.C.ConfigManager", 1, "login merge whitelist not be found.");
     return null;
@@ -2237,13 +2225,13 @@ public class a
   
   public static Object e(String paramString)
   {
-    return q.get(paramString);
+    return r.get(paramString);
   }
   
   public static String e()
   {
-    if (q.containsKey("AndroidMergeDuration")) {
-      return (String)q.get("AndroidMergeDuration");
+    if (r.containsKey("AndroidMergeDuration")) {
+      return (String)r.get("AndroidMergeDuration");
     }
     QLog.d("MSF.C.ConfigManager", 1, "login merge duration not be found.");
     return "0";
@@ -2251,18 +2239,18 @@ public class a
   
   public static String f()
   {
-    if (q.contains("NetFlowMax")) {
-      return (String)q.get("NetFlowMax");
+    if (r.contains("NetFlowMax")) {
+      return (String)r.get("NetFlowMax");
     }
     return "10485760";
   }
   
   public static boolean g()
   {
-    if (q.containsKey("monitor_ipHostReportSwitch")) {
+    if (r.containsKey("monitor_ipHostReportSwitch")) {
       try
       {
-        boolean bool = Boolean.parseBoolean((String)q.get("monitor_ipHostReportSwitch"));
+        boolean bool = Boolean.parseBoolean((String)r.get("monitor_ipHostReportSwitch"));
         return bool;
       }
       catch (Exception localException)
@@ -2277,26 +2265,26 @@ public class a
   
   public static String h()
   {
-    if (q.containsKey("msf_locallogtime")) {
-      return (String)q.get("msf_locallogtime");
+    if (r.containsKey("msf_locallogtime")) {
+      return (String)r.get("msf_locallogtime");
     }
     return "3";
   }
   
   public static String i()
   {
-    if (q.containsKey("msf_checkSsoIntervtime")) {
-      return (String)q.get("msf_checkSsoIntervtime");
+    if (r.containsKey("msf_checkSsoIntervtime")) {
+      return (String)r.get("msf_checkSsoIntervtime");
     }
     return "300000";
   }
   
   public static boolean j()
   {
-    if (q.containsKey("msf_useLastOpenAddress")) {
+    if (r.containsKey("msf_useLastOpenAddress")) {
       try
       {
-        boolean bool = Boolean.parseBoolean((String)q.get("msf_useLastOpenAddress"));
+        boolean bool = Boolean.parseBoolean((String)r.get("msf_useLastOpenAddress"));
         return bool;
       }
       catch (Exception localException)
@@ -2311,10 +2299,10 @@ public class a
   
   public static boolean k()
   {
-    if (q.containsKey("msf_limitWtChangetoken")) {
+    if (r.containsKey("msf_limitWtChangetoken")) {
       try
       {
-        boolean bool = Boolean.parseBoolean((String)q.get("msf_limitWtChangetoken"));
+        boolean bool = Boolean.parseBoolean((String)r.get("msf_limitWtChangetoken"));
         return bool;
       }
       catch (Exception localException)
@@ -2329,10 +2317,10 @@ public class a
   
   public static boolean l()
   {
-    if (q.containsKey("msf_isSetReloadKeyUin")) {
+    if (r.containsKey("msf_isSetReloadKeyUin")) {
       try
       {
-        boolean bool = Boolean.parseBoolean((String)q.get("msf_isSetReloadKeyUin"));
+        boolean bool = Boolean.parseBoolean((String)r.get("msf_isSetReloadKeyUin"));
         return bool;
       }
       catch (Exception localException)
@@ -2349,9 +2337,9 @@ public class a
   {
     try
     {
-      if (q.contains("DeepSleepMaxInterval"))
+      if (r.contains("DeepSleepMaxInterval"))
       {
-        long l1 = Long.parseLong((String)q.get("DeepSleepMaxInterval"));
+        long l1 = Long.parseLong((String)r.get("DeepSleepMaxInterval"));
         return l1;
       }
     }
@@ -2368,9 +2356,9 @@ public class a
   {
     try
     {
-      if (q.containsKey("msf_isUseWtlogin"))
+      if (r.containsKey("msf_isUseWtlogin"))
       {
-        boolean bool = Boolean.parseBoolean((String)q.get("msf_isUseWtlogin"));
+        boolean bool = Boolean.parseBoolean((String)r.get("msf_isUseWtlogin"));
         return bool;
       }
     }
@@ -2380,16 +2368,16 @@ public class a
         QLog.d("MSF.C.ConfigManager", 2, "msf_isUseWtlogin error" + localException);
       }
     }
-    return y;
+    return z;
   }
   
   public static long o()
   {
     try
     {
-      if (q.containsKey("msf_standbyWaitInterval"))
+      if (r.containsKey("msf_standbyWaitInterval"))
       {
-        long l1 = Long.parseLong((String)q.get("msf_standbyWaitInterval"));
+        long l1 = Long.parseLong((String)r.get("msf_standbyWaitInterval"));
         return l1;
       }
     }
@@ -2406,9 +2394,9 @@ public class a
   {
     try
     {
-      if (q.containsKey("msf_compressLogDelay"))
+      if (r.containsKey("msf_compressLogDelay"))
       {
-        long l1 = Long.parseLong((String)q.get("msf_compressLogDelay"));
+        long l1 = Long.parseLong((String)r.get("msf_compressLogDelay"));
         return l1;
       }
     }
@@ -2425,9 +2413,9 @@ public class a
   {
     try
     {
-      if (q.containsKey("msf_LogClearInterval"))
+      if (r.containsKey("msf_LogClearInterval"))
       {
-        long l1 = Long.parseLong((String)q.get("msf_LogClearInterval"));
+        long l1 = Long.parseLong((String)r.get("msf_LogClearInterval"));
         return l1;
       }
     }
@@ -2444,9 +2432,9 @@ public class a
   {
     try
     {
-      if (q.containsKey("msf_newLogClearStrategy"))
+      if (r.containsKey("msf_newLogClearStrategy"))
       {
-        boolean bool = Boolean.parseBoolean((String)q.get("msf_newLogClearStrategy"));
+        boolean bool = Boolean.parseBoolean((String)r.get("msf_newLogClearStrategy"));
         return bool;
       }
     }
@@ -2463,9 +2451,9 @@ public class a
   {
     try
     {
-      if (q.containsKey("msf_newLogClearStrategyTest"))
+      if (r.containsKey("msf_newLogClearStrategyTest"))
       {
-        boolean bool = Boolean.parseBoolean((String)q.get("msf_newLogClearStrategyTest"));
+        boolean bool = Boolean.parseBoolean((String)r.get("msf_newLogClearStrategyTest"));
         return bool;
       }
     }
@@ -2482,9 +2470,9 @@ public class a
   {
     try
     {
-      if (q.containsKey("msf_newLogClearStrategyTestShutdown"))
+      if (r.containsKey("msf_newLogClearStrategyTestShutdown"))
       {
-        boolean bool = Boolean.parseBoolean((String)q.get("msf_newLogClearStrategyTestShutdown"));
+        boolean bool = Boolean.parseBoolean((String)r.get("msf_newLogClearStrategyTestShutdown"));
         return bool;
       }
     }
@@ -2501,9 +2489,9 @@ public class a
   {
     try
     {
-      if (q.containsKey("msf_pingTimeout"))
+      if (r.containsKey("msf_pingTimeout"))
       {
-        long l1 = Long.parseLong((String)q.get("msf_pingTimeout"));
+        long l1 = Long.parseLong((String)r.get("msf_pingTimeout"));
         return l1 * 1000L;
       }
     }
@@ -2520,9 +2508,9 @@ public class a
   {
     try
     {
-      if (q.containsKey("msf_ssopingavailable"))
+      if (r.containsKey("msf_ssopingavailable"))
       {
-        boolean bool = Boolean.parseBoolean((String)q.get("msf_ssopingavailable"));
+        boolean bool = Boolean.parseBoolean((String)r.get("msf_ssopingavailable"));
         return bool;
       }
     }
@@ -2539,9 +2527,9 @@ public class a
   {
     try
     {
-      if (q.containsKey("msf_connFastDetect"))
+      if (r.containsKey("msf_connFastDetect"))
       {
-        boolean bool = Boolean.parseBoolean((String)q.get("msf_connFastDetect"));
+        boolean bool = Boolean.parseBoolean((String)r.get("msf_connFastDetect"));
         return bool;
       }
     }
@@ -2558,9 +2546,9 @@ public class a
   {
     try
     {
-      if (q.containsKey("msf_activePreDetect"))
+      if (r.containsKey("msf_activePreDetect"))
       {
-        boolean bool = Boolean.parseBoolean((String)q.get("msf_activePreDetect"));
+        boolean bool = Boolean.parseBoolean((String)r.get("msf_activePreDetect"));
         return bool;
       }
     }
@@ -2573,13 +2561,47 @@ public class a
     return true;
   }
   
-  public static long y()
+  public static boolean y()
+  {
+    boolean bool1 = false;
+    try
+    {
+      if (Build.VERSION.SDK_INT < 28)
+      {
+        bool1 = false;
+      }
+      else if (!r.containsKey("msf_reconnWhenMobileToWifi"))
+      {
+        bool1 = false;
+      }
+      else
+      {
+        boolean bool2 = Boolean.parseBoolean((String)r.get("msf_reconnWhenMobileToWifi"));
+        if (!bool2) {
+          bool1 = false;
+        } else {
+          bool1 = true;
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("MSF.C.ConfigManager", 2, "getReconnWhenMobileToWiFi error" + localException);
+        return false;
+      }
+    }
+    return bool1;
+  }
+  
+  public static long z()
   {
     try
     {
-      if (q.containsKey("msf_preDetectTimeout"))
+      if (r.containsKey("msf_preDetectTimeout"))
       {
-        int i1 = Integer.parseInt((String)q.get("msf_preDetectTimeout"));
+        int i1 = Integer.parseInt((String)r.get("msf_preDetectTimeout"));
         return i1;
       }
     }
@@ -2592,35 +2614,12 @@ public class a
     return 10000L;
   }
   
-  public static long z()
-  {
-    if (!x())
-    {
-      try
-      {
-        if (q.containsKey("msf_heartBeatTimeout"))
-        {
-          int i1 = Integer.parseInt((String)q.get("msf_heartBeatTimeout"));
-          return i1;
-        }
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "getHeartBeatTimeout error" + localException);
-        }
-      }
-      return 30000L;
-    }
-    return y();
-  }
-  
   public int a(ToServiceMsg paramToServiceMsg)
   {
     if ((paramToServiceMsg.getWupBuffer() != null) && (paramToServiceMsg.getWupBuffer().length > 0)) {}
     for (;;)
     {
-      this.z.sendSsoMsg(paramToServiceMsg);
+      this.A.sendSsoMsg(paramToServiceMsg);
       return paramToServiceMsg.getRequestSsoSeq();
       Object localObject1 = new com.tencent.msf.service.protocol.f.f();
       ((com.tencent.msf.service.protocol.f.f)localObject1).f = 0;
@@ -2653,28 +2652,20 @@ public class a
   }
   
   public int a(HashMap paramHashMap, String paramString)
-    throws Exception
   {
     paramHashMap = a(paramString, paramHashMap);
     paramString = new ToServiceMsg("", "0", "CliLogSvc.UploadReq");
-    paramString.setAppId(this.z.sender.j());
+    paramString.setAppId(this.A.sender.k());
     paramString.setRequestSsoSeq(MsfCore.getNextSeq());
     paramString.setTimeout(30000L);
     paramString.setNeedCallback(false);
     paramString.putWupBuffer(paramHashMap);
-    return this.z.sendSsoMsg(paramString);
+    return this.A.sendSsoMsg(paramString);
   }
   
   public void a()
   {
     b();
-  }
-  
-  public void a(int paramInt, String paramString1, long paramLong, boolean paramBoolean1, String paramString2, boolean paramBoolean2)
-  {
-    paramString1 = new b(this, paramBoolean2, paramString1, paramInt, paramLong, paramBoolean1, paramString2);
-    paramString1.setName("checkSsoByHttpThread");
-    paramString1.start();
   }
   
   public void a(com.tencent.msf.service.protocol.e.f paramf, FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
@@ -2746,13 +2737,13 @@ public class a
         }
         for (;;)
         {
-          if ((paramf.b != 0) && (x != paramf.b)) {
+          if ((paramf.b != 0) && (y != paramf.b)) {
             break label631;
           }
           if (QLog.isColorLevel()) {
             QLog.d("MSF.C.ConfigManager", 2, "handle config,  iGetSdkLastTime is obsolete, skip...");
           }
-          if ((paramf.g != 0) && (w != paramf.g)) {
+          if ((paramf.g != 0) && (x != paramf.g)) {
             break label889;
           }
           if (QLog.isColorLevel()) {
@@ -2785,7 +2776,7 @@ public class a
             QLog.d("MSF.C.ConfigManager", 2, "parse msfConf error , skip store.");
           }
         }
-        x = paramf.b;
+        y = paramf.b;
         if (QLog.isDevelopLevel()) {
           QLog.d("MSF.C.ConfigManager", 4, "save confReq iGetSdkNewTime" + paramf.b);
         }
@@ -2806,7 +2797,7 @@ public class a
       {
         try
         {
-          MsfSdkUtils.writeServerConfig("com.tencent.mobileqq", 0, str1, this.z.sender.i());
+          MsfSdkUtils.writeServerConfig("com.tencent.mobileqq", 0, str1, this.A.sender.j());
         }
         catch (IOException localIOException)
         {
@@ -2823,7 +2814,7 @@ public class a
           QLog.d("MSF.C.ConfigManager", 2, "parse commonConf error , skip store.");
         }
       }
-      w = paramf.g;
+      x = paramf.g;
       if (QLog.isDevelopLevel()) {
         QLog.d("MSF.C.ConfigManager", 4, "save confReq getiConfAppidTimeKey" + paramf.g);
       }
@@ -2846,7 +2837,7 @@ public class a
     {
       try
       {
-        MsfSdkUtils.writeServerConfig("com.tencent.mobileqq", 2, paramToServiceMsg, this.z.sender.i());
+        MsfSdkUtils.writeServerConfig("com.tencent.mobileqq", 2, paramToServiceMsg, this.A.sender.j());
       }
       catch (IOException paramToServiceMsg)
       {
@@ -2883,15 +2874,15 @@ public class a
       {
         for (;;)
         {
-          MsfSdkUtils.writeServerConfig("com.tencent.mobileqq", 1, paramToServiceMsg, this.z.sender.i());
+          MsfSdkUtils.writeServerConfig("com.tencent.mobileqq", 1, paramToServiceMsg, this.A.sender.j());
           MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_iConfGetEspLastTimeKe", String.valueOf(paramf.e));
           if (QLog.isDevelopLevel()) {
             QLog.d("MSF.C.ConfigManager", 4, "save confReq getiConfGetEspLastTimeKey" + paramf.e);
           }
-          bw();
-          by();
           bx();
-          this.z.quicksender.b();
+          bz();
+          by();
+          this.A.quicksender.b();
           if (QLog.isColorLevel()) {
             QLog.d("MSF.C.ConfigManager", 2, "handle server config ok");
           }
@@ -2936,21 +2927,21 @@ public class a
       {
         localObject2 = new String(((com.tencent.msf.service.protocol.d.a)localObject1).a);
         Object localObject3 = ((String)localObject2).substring(0, ((String)localObject2).indexOf(".") + 1);
-        Iterator localIterator = this.L.iterator();
+        Iterator localIterator = this.K.iterator();
         while (localIterator.hasNext())
         {
-          a locala = (a)localIterator.next();
+          a.a locala = (a.a)localIterator.next();
           if (((String)localObject2).equals(locala.c)) {
-            this.L.remove(locala);
+            this.K.remove(locala);
           } else if (((((String)localObject2).endsWith(".*")) || (locala.c.endsWith(".*"))) && (locala.c.startsWith((String)localObject3))) {
-            this.L.remove(locala);
+            this.K.remove(locala);
           }
         }
-        localObject3 = new a();
-        ((a)localObject3).c = ((String)localObject2);
-        ((a)localObject3).a = l1;
-        ((a)localObject3).b = ((com.tencent.msf.service.protocol.d.a)localObject1);
-        this.L.add(localObject3);
+        localObject3 = new a.a(this);
+        ((a.a)localObject3).c = ((String)localObject2);
+        ((a.a)localObject3).a = l1;
+        ((a.a)localObject3).b = ((com.tencent.msf.service.protocol.d.a)localObject1);
+        this.K.add(localObject3);
         QLog.d("MSF.C.ConfigManager", 1, "recved OverloadPushNotify cmd: " + (String)localObject2 + " delaySecs = " + ((com.tencent.msf.service.protocol.d.a)localObject1).b + " timeReced: " + l1 + " tips: " + ((com.tencent.msf.service.protocol.d.a)localObject1).e);
       }
     }
@@ -2986,19 +2977,19 @@ public class a
   
   public void a(ToServiceMsg paramToServiceMsg, long paramLong)
   {
-    if (ap())
+    if (aq())
     {
       if (!NetConnInfoCenter.isMobileConn()) {
-        break label79;
+        break label85;
       }
-      C = paramLong;
-      MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_checkmobilessotime", String.valueOf(C));
-      E = C + 3600000L;
-      aq();
+      D = paramLong;
+      MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_checkmobilessotime", String.valueOf(D));
+      F = D + 3600000L;
+      ar();
     }
     try
     {
-      a(paramToServiceMsg.getAppId(), paramToServiceMsg.getUin(), 60000L, NetConnInfoCenter.isWifiConn(), "", false);
+      this.A.getSsoListManager().a(paramToServiceMsg.getAppId(), paramToServiceMsg.getUin(), 60000L, NetConnInfoCenter.isWifiConn(), "", false);
     }
     catch (Exception localException)
     {
@@ -3008,13 +2999,13 @@ public class a
         {
           a(paramToServiceMsg.getUin(), 60000);
           return;
-          label79:
+          label85:
           if (NetConnInfoCenter.isWifiConn())
           {
-            D = paramLong;
-            MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_checkwifissotime", String.valueOf(D));
-            F = D + 3600000L;
-            ar();
+            E = paramLong;
+            MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_checkwifissotime", String.valueOf(E));
+            G = E + 3600000L;
+            as();
             continue;
             localException = localException;
             if (QLog.isColorLevel()) {
@@ -3033,17 +3024,17 @@ public class a
   
   public void a(String paramString, int paramInt)
   {
-    byte[] arrayOfByte = as();
+    byte[] arrayOfByte = at();
     ToServiceMsg localToServiceMsg = new ToServiceMsg("", paramString, "ConfigService.ClientReq");
     localToServiceMsg.setMsfCommand(MsfCommand._msf_getConfig);
     localToServiceMsg.setRequestSsoSeq(MsfCore.getNextSeq());
-    if (this.z.getMsfAppid() == -1) {}
-    for (int i1 = 100;; i1 = this.z.getMsfAppid())
+    if (this.A.getMsfAppid() == -1) {}
+    for (int i1 = 100;; i1 = this.A.getMsfAppid())
     {
       localToServiceMsg.setAppId(i1);
       localToServiceMsg.putWupBuffer(arrayOfByte);
       localToServiceMsg.setTimeout(paramInt);
-      this.z.sender.b(localToServiceMsg);
+      this.A.sender.b(localToServiceMsg);
       QLog.d("MSF.C.ConfigManager", 1, "send checkConfig uin=" + MsfSdkUtils.getShortUin(paramString) + " appid=" + i1);
       return;
     }
@@ -3064,26 +3055,26 @@ public class a
     return paramString.encode();
   }
   
-  public String am()
+  public String an()
   {
     return d(MsfStore.getNativeConfigStore().getConfig("__loginSdk_iconf_UserCommCon"));
   }
   
-  public String an()
+  public String ao()
   {
     return d(MsfStore.getNativeConfigStore().getConfig("__loginSdk_iconf_AppConf"));
   }
   
-  public String ao()
+  public String ap()
   {
     return d(MsfStore.getNativeConfigStore().getConfig("__loginSdk_iconf_Msf"));
   }
   
-  public boolean ap()
+  public boolean aq()
   {
     long l1 = System.currentTimeMillis();
     if (NetConnInfoCenter.isMobileConn()) {
-      if (C != 0L) {}
+      if (D != 0L) {}
     }
     do
     {
@@ -3096,44 +3087,44 @@ public class a
             do
             {
               return true;
-              if (E != 0L) {
+              if (F != 0L) {
                 break;
               }
-            } while (l1 - C >= 43200000L);
+            } while (l1 - D >= 43200000L);
             return false;
-          } while (l1 >= E);
+          } while (l1 >= F);
           return false;
           if (!NetConnInfoCenter.isWifiConn()) {
             break;
           }
-        } while (D == 0L);
-        if (F != 0L) {
+        } while (E == 0L);
+        if (G != 0L) {
           break;
         }
-      } while (l1 - D >= 43200000L);
+      } while (l1 - E >= 43200000L);
       return false;
-    } while (l1 >= F);
+    } while (l1 >= G);
     return false;
     return false;
-  }
-  
-  public void aq()
-  {
-    MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_mobilessotime", String.valueOf(E));
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.C.ConfigManager", 2, "save next get mobile sso time is " + this.z.timeFormatter.format(Long.valueOf(E)));
-    }
   }
   
   public void ar()
   {
-    MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_wifissotime", String.valueOf(F));
+    MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_mobilessotime", String.valueOf(F));
     if (QLog.isColorLevel()) {
-      QLog.d("MSF.C.ConfigManager", 2, "save next get Wifi sso time is " + this.z.timeFormatter.format(Long.valueOf(F)));
+      QLog.d("MSF.C.ConfigManager", 2, "save next get mobile sso time is " + this.A.timeFormatter.format(Long.valueOf(F)));
     }
   }
   
-  public byte[] as()
+  public void as()
+  {
+    MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_wifissotime", String.valueOf(G));
+    if (QLog.isColorLevel()) {
+      QLog.d("MSF.C.ConfigManager", 2, "save next get Wifi sso time is " + this.A.timeFormatter.format(Long.valueOf(G)));
+    }
+  }
+  
+  public byte[] at()
   {
     UniPacket localUniPacket = new UniPacket(true);
     localUniPacket.setServantName("KQQ.ConfigService.ConfigServantObj");
@@ -3150,9 +3141,9 @@ public class a
     {
       localObject1 = "1";
     }
-    w = Integer.parseInt((String)localObject1);
-    if (w == 0) {
-      w = 1;
+    x = Integer.parseInt((String)localObject1);
+    if (x == 0) {
+      x = 1;
     }
     localObject2 = MsfStore.getNativeConfigStore().getConfig("__loginSdk_iConfSdkLastTimeKey");
     if (localObject2 != null)
@@ -3164,7 +3155,7 @@ public class a
     {
       localObject1 = "0";
     }
-    x = Integer.parseInt((String)localObject1);
+    y = Integer.parseInt((String)localObject1);
     localObject2 = MsfStore.getNativeConfigStore().getConfig("__loginSdk_iConfGetEspLastTimeKe");
     if (localObject2 != null)
     {
@@ -3176,13 +3167,13 @@ public class a
       localObject1 = "0";
     }
     int i1 = Integer.parseInt((String)localObject1);
-    locale.e = w;
-    locale.b = x;
+    locale.e = x;
+    locale.b = y;
     locale.d = i1;
     if (QLog.isColorLevel()) {
       QLog.d("MSF.C.ConfigManager", 2, "load confReq iGetAppidTime" + locale.e + " iGetSdkLastTime:" + locale.b + " iGetEspLastTime:" + locale.d);
     }
-    localObject2 = this.z.getAccountCenter().d();
+    localObject2 = this.A.getAccountCenter().d();
     Object localObject1 = new ArrayList();
     localObject2 = ((ArrayList)localObject2).iterator();
     while (((Iterator)localObject2).hasNext())
@@ -3198,9 +3189,9 @@ public class a
     return localUniPacket.encode();
   }
   
-  public ConcurrentHashMap at()
+  public ConcurrentHashMap au()
   {
-    return q;
+    return r;
   }
   
   public int b(ToServiceMsg paramToServiceMsg)
@@ -3218,7 +3209,7 @@ public class a
       locala.c = str.getBytes("utf-8");
       localUniPacket.put("ClientReportReq", locala);
       paramToServiceMsg.putWupBuffer(localUniPacket.encode());
-      return this.z.sendSsoMsg(paramToServiceMsg);
+      return this.A.sendSsoMsg(paramToServiceMsg);
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
@@ -3246,7 +3237,7 @@ public class a
     {
       localObject = "0";
     }
-    C = Long.parseLong((String)localObject);
+    D = Long.parseLong((String)localObject);
     str1 = MsfStore.getNativeConfigStore().getConfig("__loginSdk_checkwifissotime");
     if (str1 != null)
     {
@@ -3257,7 +3248,7 @@ public class a
     {
       localObject = "0";
     }
-    D = Long.parseLong((String)localObject);
+    E = Long.parseLong((String)localObject);
     str1 = MsfStore.getNativeConfigStore().getConfig("__loginSdk_mobilessotime");
     if (str1 != null)
     {
@@ -3268,7 +3259,7 @@ public class a
     {
       localObject = "0";
     }
-    E = Long.parseLong((String)localObject);
+    F = Long.parseLong((String)localObject);
     str1 = MsfStore.getNativeConfigStore().getConfig("__loginSdk_wifissotime");
     if (str1 != null)
     {
@@ -3279,7 +3270,7 @@ public class a
     {
       localObject = "0";
     }
-    F = Long.parseLong((String)localObject);
+    G = Long.parseLong((String)localObject);
     str1 = MsfStore.getNativeConfigStore().getConfig("_msf_isBootingKey");
     if (str1 != null)
     {
@@ -3291,22 +3282,22 @@ public class a
       localObject = "false";
     }
     a(Boolean.parseBoolean((String)localObject));
-    Object localObject = ao();
+    Object localObject = ap();
     if ((localObject != null) && (((String)localObject).length() > 0)) {
       a("msfConfig", (String)localObject, "");
     }
-    localObject = am();
+    localObject = an();
     if ((localObject != null) && (((String)localObject).length() > 0)) {
       a("commonConfig", (String)localObject, "");
     }
-    localObject = an();
+    localObject = ao();
     if ((localObject != null) && (((String)localObject).length() > 0)) {
       a("appidConfig", (String)localObject, "");
     }
     if (QLog.isDevelopLevel()) {
       QLog.d("MSF.C.ConfigManager", 4, (String)localObject);
     }
-    localObject = this.z.getAccountCenter().c().iterator();
+    localObject = this.A.getAccountCenter().c().iterator();
     while (((Iterator)localObject).hasNext())
     {
       str1 = (String)((Iterator)localObject).next();
@@ -3315,7 +3306,7 @@ public class a
         a("userConfig", str2, str1 + "_");
       }
     }
-    bw();
+    bx();
   }
   
   public String c(ToServiceMsg paramToServiceMsg)
@@ -3325,21 +3316,11 @@ public class a
     default: 
       return null;
     case 0: 
-      return am();
+      return an();
     case 1: 
       return b(paramToServiceMsg.getUin());
     }
-    return an();
-  }
-  
-  public class a
-  {
-    public long a;
-    public com.tencent.msf.service.protocol.d.a b;
-    public String c;
-    private boolean e;
-    
-    public a() {}
+    return ao();
   }
 }
 

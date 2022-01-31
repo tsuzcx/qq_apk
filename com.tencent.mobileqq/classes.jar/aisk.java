@@ -1,22 +1,33 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamwork.spread.ConfigSetting;
-import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
 
 public class aisk
-  implements Runnable
 {
-  public aisk(ConfigSetting paramConfigSetting) {}
-  
-  public void run()
-  {
-    this.a.a.getApp().getSharedPreferences(this.a.a.getCurrentAccountUin() + "_m_str_teamwork_tips_sp", 0).edit().putInt("file_str_key_max_count_local", ConfigSetting.f(this.a)).commit();
-  }
+  public float a = 0.0F;
+  public int a;
+  public long a;
+  public aisn a;
+  public String a;
+  public ArrayList<Integer> a;
+  public boolean a;
+  public int b;
+  public String b;
+  public ArrayList<Integer> b;
+  public boolean b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
+  public int k = 1;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aisk
  * JD-Core Version:    0.7.0.1
  */

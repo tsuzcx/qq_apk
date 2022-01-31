@@ -1,31 +1,59 @@
-import android.graphics.Rect;
-import android.hardware.Camera;
-import android.hardware.Camera.PictureCallback;
-import com.tencent.mobileqq.businessCard.helpers.CameraHelper;
-import com.tencent.mobileqq.businessCard.helpers.CameraHelper.CameraHelperCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class abvl
-  implements Camera.PictureCallback
+  extends ajjh
 {
-  public abvl(CameraHelper paramCameraHelper, File paramFile, Rect paramRect1, Rect paramRect2, CameraHelper.CameraHelperCallback paramCameraHelperCallback) {}
+  public abvl(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  public void onPictureTaken(byte[] paramArrayOfByte, Camera paramCamera)
+  protected void onGetGenralSettings(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramArrayOfByte == null)
+    if (this.a.jdField_a_of_type_Aidk == null) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.w(CameraHelper.a, 2, "onPictureTaken data is null");
-      }
+      do
+      {
+        return;
+      } while (!paramBoolean1);
+      this.a.jdField_a_of_type_JavaUtilMap = ariz.a().a(this.a.app, this.a.jdField_a_of_type_JavaUtilList);
+    } while (this.a.jdField_a_of_type_JavaUtilMap == null);
+    this.a.jdField_a_of_type_Aidk.a(this.a.jdField_a_of_type_JavaUtilMap);
+    this.a.jdField_a_of_type_Aidk.notifyDataSetChanged();
+    this.a.b();
+  }
+  
+  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map<String, Integer> paramMap)
+  {
+    if (this.a.jdField_a_of_type_Aidk == null) {
       return;
     }
-    new abvo(this.jdField_a_of_type_ComTencentMobileqqBusinessCardHelpersCameraHelper, paramArrayOfByte, this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_AndroidGraphicsRect, this.b, this.jdField_a_of_type_ComTencentMobileqqBusinessCardHelpersCameraHelper$CameraHelperCallback).execute(new Void[0]);
+    if ((paramBoolean) && (paramMap != null))
+    {
+      Iterator localIterator = paramMap.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        Integer localInteger = (Integer)paramMap.get(str);
+        if (localInteger != null) {
+          this.a.jdField_a_of_type_JavaUtilMap.put(str, localInteger);
+        }
+      }
+      this.a.jdField_a_of_type_Aidk.a(this.a.jdField_a_of_type_JavaUtilMap);
+      this.a.jdField_a_of_type_Aidk.notifyDataSetChanged();
+      this.a.b();
+      return;
+    }
+    this.a.jdField_a_of_type_Aidk.notifyDataSetChanged();
+    this.a.b();
+    bbmy.a(this.a.app.getApp(), 1, this.a.getString(2131654642), 0).b(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abvl
  * JD-Core Version:    0.7.0.1
  */

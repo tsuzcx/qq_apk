@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.search.fragment;
 
-import ahxr;
-import ahxs;
 import android.os.Bundle;
 import android.view.View;
-import com.tencent.mobileqq.search.SearchEntryConfigManager;
-import com.tencent.mobileqq.search.adapter.BaseMvpAdapter;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
+import avis;
+import avkj;
+import avll;
+import avlm;
+import avuz;
 import com.tencent.widget.ListView;
 import cooperation.qqfav.globalsearch.FunctionSearchEngine;
 
@@ -23,19 +23,19 @@ public class FunctionSearchFragment
     return 120;
   }
   
-  protected BaseMvpAdapter a()
+  protected avkj a()
   {
-    return new ahxs(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
+    return new avlm(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Azwg);
   }
   
-  protected ISearchEngine a()
+  protected avuz a()
   {
     return new FunctionSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, -1);
   }
   
   protected String a()
   {
-    return SearchEntryConfigManager.a();
+    return avis.a();
   }
   
   protected void a(String paramString, int paramInt)
@@ -46,7 +46,7 @@ public class FunctionSearchFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new ahxr(this));
+    this.jdField_a_of_type_ComTencentWidgetListView.setOnTouchListener(new avll(this));
   }
 }
 

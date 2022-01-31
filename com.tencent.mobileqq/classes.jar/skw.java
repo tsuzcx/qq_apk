@@ -1,24 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.now.enter.widget.HongBao2018ListView.NowFloatViewCallBack;
+import android.content.Intent;
+import android.util.SparseIntArray;
+import mqq.app.MSFServlet;
 
 public class skw
-  implements HongBao2018ListView.NowFloatViewCallBack
 {
-  public skw(Conversation paramConversation) {}
-  
-  public void a()
+  public static void a(SparseIntArray paramSparseIntArray)
   {
-    if (this.a.b != null)
-    {
-      this.a.h = true;
-      this.a.b.setVisibility(8);
-    }
+    slp.a(paramSparseIntArray);
+  }
+  
+  public static void a(MSFServlet paramMSFServlet, Intent paramIntent, boolean paramBoolean)
+  {
+    slp.a(paramMSFServlet, paramIntent, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     skw
  * JD-Core Version:    0.7.0.1
  */

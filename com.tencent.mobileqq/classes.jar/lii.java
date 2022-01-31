@@ -1,24 +1,31 @@
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.random.RandomController;
 
 public class lii
+  implements DialogInterface.OnClickListener
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
-  private View b;
-  private View c;
+  public lii(RandomController paramRandomController) {}
   
-  private lii(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    if (RandomController.a(this.a) == 1) {
+      awqx.b(null, "CliOper", "", "", "0X80053B4", "0X80053B4", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      this.a.c();
+      RandomController.d(this.a, false);
+      return;
+      if (RandomController.a(this.a) == 2) {
+        awqx.b(null, "CliOper", "", "", "0X80053C0", "0X80053C0", 0, 0, "", "", "", "");
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lii
  * JD-Core Version:    0.7.0.1
  */

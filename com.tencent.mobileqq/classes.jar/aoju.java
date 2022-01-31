@@ -1,19 +1,20 @@
-import android.view.View;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.NormalFaceAdapter;
-
-public class aoju
-  implements Runnable
+public abstract interface aoju
 {
-  public aoju(NormalFaceAdapter paramNormalFaceAdapter, View paramView) {}
+  public abstract void a(int paramInt, String paramString);
   
-  public void run()
-  {
-    NormalFaceAdapter.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceAdapterNormalFaceAdapter, this.jdField_a_of_type_AndroidViewView);
-  }
+  public abstract void a(int paramInt, String paramString1, String paramString2);
+  
+  public abstract void a(long paramLong, String paramString);
+  
+  public abstract void a(bakw parambakw);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoju
  * JD-Core Version:    0.7.0.1
  */

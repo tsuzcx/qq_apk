@@ -7,7 +7,15 @@ import org.apache.http.conn.ssl.SSLSocketFactory;
 
 public final class SchemeRegistryFactory
 {
-  public static SchemeRegistry a()
+  public static SchemeRegistry createDefault()
+  {
+    SchemeRegistry localSchemeRegistry = new SchemeRegistry();
+    localSchemeRegistry.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
+    localSchemeRegistry.register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
+    return localSchemeRegistry;
+  }
+  
+  public static SchemeRegistry createSystemDefault()
   {
     SchemeRegistry localSchemeRegistry = new SchemeRegistry();
     localSchemeRegistry.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));

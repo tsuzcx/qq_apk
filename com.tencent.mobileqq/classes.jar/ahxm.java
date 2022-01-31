@@ -1,25 +1,43 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
+import java.util.HashMap;
+import java.util.List;
 
-public class ahxm
-  implements View.OnTouchListener
+class ahxm
+  implements ahwm
 {
-  public ahxm(BaseSearchFragment paramBaseSearchFragment) {}
+  ahxm(ahxk paramahxk, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean)
   {
-    ((InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-    return false;
+    if (paramBoolean) {}
+    try
+    {
+      Object localObject = "key_special_sound_list" + this.jdField_a_of_type_Ahxk.mRuntime.a().getCurrentAccountUin();
+      localObject = (List)QvipSpecialSoundManager.a.get(localObject);
+      ahxk.a(this.jdField_a_of_type_Ahxk, this.jdField_a_of_type_JavaLangString, (List)localObject);
+      return;
+    }
+    catch (Exception localException1)
+    {
+      localException1.printStackTrace();
+      try
+      {
+        ahxk.a(this.jdField_a_of_type_Ahxk, this.jdField_a_of_type_JavaLangString, null);
+        return;
+      }
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
+      }
+    }
+    ahxk.a(this.jdField_a_of_type_Ahxk, this.jdField_a_of_type_JavaLangString, null);
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahxm
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,7 @@ public class PAMessage$Item
   public long appId;
   public String cover;
   public String desc;
-  public List digestList;
+  public List<String> digestList;
   public long flag;
   public String i_actionData;
   public String i_rankListUrl;

@@ -1,12 +1,14 @@
 package com.tencent.mobileqq.data;
 
+import ajjy;
+import akhp;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.utils.MessagePkgUtils;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 import tencent.im.msg.im_msg_body.MarketFace;
 
 public class MessageForMarketFace
@@ -16,7 +18,9 @@ public class MessageForMarketFace
   public MarkFaceMessage mMarkFaceMessage;
   public int msgVia;
   public boolean needToPlay;
+  public float playProgress;
   public String sendFaceName;
+  public String timeStr;
   
   public static MessageForMarketFace parsePb(im_msg_body.MarketFace paramMarketFace)
   {
@@ -39,7 +43,7 @@ public class MessageForMarketFace
   {
     try
     {
-      this.mMarkFaceMessage = ((MarkFaceMessage)MessagePkgUtils.a(this.msgData));
+      this.mMarkFaceMessage = ((MarkFaceMessage)akhp.a(this.msgData));
       if ((EmojiStickerManager.e) && (this.mMarkFaceMessage != null) && (this.mMarkFaceMessage.stickerInfo != null))
       {
         if (this.msgtype == -2007) {
@@ -82,7 +86,12 @@ public class MessageForMarketFace
       localStringBuilder.append("[").append(this.mMarkFaceMessage.faceName).append("]");
       return localStringBuilder.toString();
     }
-    return "原创表情";
+    return ajjy.a(2131640804);
+  }
+  
+  public boolean isNewSoundType()
+  {
+    return (this.mMarkFaceMessage != null) && (this.mMarkFaceMessage.voicePrintItems != null) && (!this.mMarkFaceMessage.voicePrintItems.isEmpty());
   }
   
   public boolean isSupportReply()
@@ -95,17 +104,17 @@ public class MessageForMarketFace
     return false;
   }
   
-  protected void postRead()
+  public void postRead()
   {
     parse();
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     if (this.mMarkFaceMessage != null) {}
     try
     {
-      this.msgData = MessagePkgUtils.a(this.mMarkFaceMessage);
+      this.msgData = akhp.a(this.mMarkFaceMessage);
       return;
     }
     catch (Exception localException)

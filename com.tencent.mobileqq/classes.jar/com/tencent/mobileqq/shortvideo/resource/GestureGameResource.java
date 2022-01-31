@@ -2,7 +2,9 @@ package com.tencent.mobileqq.shortvideo.resource;
 
 public abstract interface GestureGameResource
 {
-  public abstract String a();
+  public abstract String getGameModelPath();
+  
+  public abstract boolean isGestureGameEnable();
 }
 
 

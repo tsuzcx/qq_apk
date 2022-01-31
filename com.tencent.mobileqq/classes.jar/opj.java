@@ -1,40 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.base.download.Downloader;
-import com.tencent.biz.qqstory.model.pendant.FileDownloadTask;
-import com.tencent.biz.qqstory.model.pendant.FileDownloadTask.Output;
-import com.tencent.biz.qqstory.takevideo.music.BlessVoiceChangeManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.FusionBiuInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
 public class opj
-  extends FileDownloadTask
 {
-  public opj(BlessVoiceChangeManager paramBlessVoiceChangeManager, Downloader paramDownloader, long paramLong)
-  {
-    super(paramDownloader);
-  }
+  public void a(int paramInt, String paramString) {}
   
-  protected void a(FileDownloadTask.Output paramOutput)
-  {
-    if (paramOutput.jdField_a_of_type_Int == 0)
-    {
-      long l1 = SystemClock.uptimeMillis();
-      long l2 = this.jdField_a_of_type_Long;
-      if (QLog.isColorLevel()) {
-        QLog.d("FileDownloadTask", 2, "startDownloadVCImage success, cost:" + (l1 - l2));
-      }
-      BlessVoiceChangeManager.a().sendMessage(Message.obtain(BlessVoiceChangeManager.a(), 1, null));
-    }
-    for (;;)
-    {
-      BlessVoiceChangeManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicBlessVoiceChangeManager);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("FileDownloadTask", 2, "startDownloadVCImage error:" + paramOutput.jdField_a_of_type_Int + ", errMsg:" + paramOutput.jdField_a_of_type_JavaLangString);
-      }
-    }
-  }
+  public void a(long paramLong, String paramString) {}
+  
+  public void a(FusionBiuInfo paramFusionBiuInfo) {}
+  
+  public void a(FastWebArticleInfo paramFastWebArticleInfo, int paramInt, String paramString) {}
+  
+  public void a(FastWebArticleInfo paramFastWebArticleInfo, String paramString) {}
+  
+  public void a(String paramString) {}
+  
+  public void a(boolean paramBoolean, int paramInt, rai paramrai) {}
+  
+  public void a(boolean paramBoolean, String paramString) {}
 }
 
 

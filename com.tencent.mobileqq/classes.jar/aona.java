@@ -1,32 +1,32 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.MarkDrawable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.channel.pb.WeiyunPB.DiskDirFileBatchDeleteExMsgRsp;
 
-public class aona
-  extends Property
+class aona
+  implements bgun<WeiyunPB.DiskDirFileBatchDeleteExMsgRsp>
 {
-  public aona(MarkDrawable paramMarkDrawable, Class paramClass, String paramString)
+  aona(aomp paramaomp, WeiYunFileInfo paramWeiYunFileInfo) {}
+  
+  public void a(int paramInt, String paramString, WeiyunPB.DiskDirFileBatchDeleteExMsgRsp paramDiskDirFileBatchDeleteExMsgRsp)
   {
-    super(paramClass, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "deleteWeiYunFile, onFailed  strFileId[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.a + "]strFileName[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.c + "]errorCode[" + paramInt + "],errorMsg[" + paramString + "]");
+    }
+    aomp.a(this.jdField_a_of_type_Aomp).a().a(false, 20, new Object[] { Integer.valueOf(paramInt), paramString, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.c, Boolean.valueOf(false) });
   }
   
-  public Integer a(MarkDrawable paramMarkDrawable)
+  public void a(WeiyunPB.DiskDirFileBatchDeleteExMsgRsp paramDiskDirFileBatchDeleteExMsgRsp)
   {
-    if (paramMarkDrawable != null) {
-      return Integer.valueOf(MarkDrawable.a(paramMarkDrawable));
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "deleteWeiYunFile, onSucceed  strFileId[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.a + "]strFileName[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.c + "]");
     }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(MarkDrawable paramMarkDrawable, Integer paramInteger)
-  {
-    if (paramMarkDrawable != null) {
-      MarkDrawable.a(paramMarkDrawable, paramInteger.intValue());
-    }
+    aomp.a(this.jdField_a_of_type_Aomp).a().a(true, 20, new Object[] { Integer.valueOf(0), null, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo.c, Boolean.valueOf(false) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aona
  * JD-Core Version:    0.7.0.1
  */

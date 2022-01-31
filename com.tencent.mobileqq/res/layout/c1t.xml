@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/common_strip_setting_middle" android:layout_width="fill_parent" android:layout_height="@dimen/b1b"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="top" android:id="@id/dq9" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/b1i" android:layout_marginTop="14.0dip" android:layout_marginRight="9.0dip" android:src="@drawable/h6y" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/jxh" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <TextView android:textSize="@dimen/b1_" android:textColor="@color/skin_gray2" android:id="@id/dr7" android:duplicateParentState="true" android:layout_width="67.0dip" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:singleLine="true" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/dqu" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/b1j" android:src="@drawable/common_arrow_right_selector" android:contentDescription="@null" />
+</LinearLayout>

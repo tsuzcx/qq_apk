@@ -1,27 +1,25 @@
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.mobileqq.activity.FriendProfileImageModel;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import mqq.os.MqqHandler;
+import java.util.ArrayList;
 
 public class swt
-  implements Runnable
+  extends sfo
 {
-  public swt(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public final int a;
+  public ArrayList<sws> a;
   
-  public void run()
+  public swt(int paramInt)
   {
-    ExtensionInfo localExtensionInfo = ((FriendsManager)this.a.app.getManager(50)).a(this.a.a.b);
-    if (localExtensionInfo != null) {
-      ThreadManager.getUIHandler().post(new swu(this, localExtensionInfo));
-    }
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public String toString()
+  {
+    return "UpdateMemoriesEvent{dateList=" + this.jdField_a_of_type_JavaUtilArrayList + ", source=" + this.jdField_a_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     swt
  * JD-Core Version:    0.7.0.1
  */

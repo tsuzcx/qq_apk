@@ -1,49 +1,17 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
 
-public final class naf
-  implements BusinessObserver
+public class naf
+  implements View.OnClickListener
 {
-  public naf(Context paramContext, AppInterface paramAppInterface, int paramInt, String paramString) {}
+  public naf(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean)
-    {
-      PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430035);
-      return;
-    }
-    try
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
-      {
-        mobileqq_mp.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
-        localGetPublicAccountDetailInfoResponse.mergeFrom(paramBundle);
-        if ((localGetPublicAccountDetailInfoResponse.ret_info.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0))
-        {
-          ThreadManager.getSubThreadHandler().postDelayed(new nag(this, localGetPublicAccountDetailInfoResponse), 10L);
-          return;
-        }
-        PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430035);
-        return;
-      }
-      PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430035);
-      return;
-    }
-    catch (Exception paramBundle) {}
+    ReadInJoyNativeAdFragment.a(this.a).dismiss();
+    ReadInJoyNativeAdFragment.b(this.a);
   }
 }
 

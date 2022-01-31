@@ -1,28 +1,22 @@
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
-import cooperation.weiyun.sdk.download.WyDownloader;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
 
 public class anqe
-  implements ThreadPool.Job
+  implements DialogInterface.OnClickListener
 {
-  public anqe(WyDownloader paramWyDownloader, List paramList) {}
+  public anqe(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  public Void a(ThreadPool.JobContext paramJobContext)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramJobContext.hasNext())
-    {
-      long l = ((Long)paramJobContext.next()).longValue();
-      this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader.b(l);
-    }
-    return null;
+    paramDialogInterface.dismiss();
+    ExtendFriendEditFragment.a(this.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anqe
  * JD-Core Version:    0.7.0.1
  */

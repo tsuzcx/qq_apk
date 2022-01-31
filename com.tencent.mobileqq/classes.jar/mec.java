@@ -1,30 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.service.AVRedPacketConfig;
 
 public class mec
-  implements DialogInterface.OnDismissListener
 {
-  public mec(VideoFeedsAdapter paramVideoFeedsAdapter) {}
+  public AVRedPacketConfig a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b = true;
+  public boolean c;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "DialogInterface.OnDismissListener onDismiss() mIsActivityDoOnPaused=");
-    }
-    if ((VideoFeedsAdapter.a(this.a) != null) && (VideoFeedsAdapter.a(this.a).b()) && (VideoFeedsAdapter.g(this.a)) && (VideoFeedsAdapter.h(this.a))) {
-      VideoFeedsAdapter.a(this.a).d();
-    }
-    VideoFeedsAdapter.a(this.a).setNeedDetectScreenOrientation(true);
-    VideoFeedsAdapter.e(this.a, false);
+    return "AVRedBagConfig, mMainSwitch[" + this.a + "], mResReady[" + this.c + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mec
  * JD-Core Version:    0.7.0.1
  */

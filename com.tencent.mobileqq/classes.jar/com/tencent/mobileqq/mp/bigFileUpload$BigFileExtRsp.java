@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class bigFileUpload$BigFileExtRsp
-  extends MessageMicro
+  extends MessageMicro<BigFileExtRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_download_url = PBField.initBytes(ByteStringMicro.EMPTY);

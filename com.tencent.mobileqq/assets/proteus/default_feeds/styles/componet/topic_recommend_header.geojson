@@ -1,0 +1,174 @@
+{
+    "view_type": "UIView",
+    "view_id":"id_topic_recommend_header",
+    "layout_type":"layout_relative",
+    "event_type":"cmd_topic_recommend_header_click",
+    "align_parent_left":"YES",
+    "align_parent_top":"YES",
+    "margin_left":"0",
+    "margin_top":"0",
+    "height":{
+        "type":"relative",
+        "value":"65"
+    },
+    "width":{
+        "type":"relative",
+        "value":"375"
+    },
+    "attributes":{
+        "setAttatchInfo:":"-1"
+    },
+    
+    "subviews":[
+                {
+                "view_type":"UIButton",
+                "view_id":"id_dislike_button",
+                "align_parent_center_vertical":"YES",
+                "align_parent_right":"YES",
+                "event_type":"cmd_dislike_click",
+                "margin_right":"-2",
+                "height":{
+                "type":"relative",
+                "value":"30"
+                },
+                "width":{
+                "type":"relative",
+                "value":"41"
+                },
+                "attributes":{
+                "setImage:":"feeds_dislike"
+                }
+                },
+                
+                {
+                "view_type":"ReadInjoyAsynImageView",
+                "view_id":"id_topic_avator",
+                "align_parent_left":"YES",
+                "align_parent_top":"YES",
+                "margin_left":"12",
+                "margin_top":"12",
+                "height":{
+                "type":"relative",
+                "value":"37"
+                },
+                "width":{
+                "type":"relative",
+                "value":"37"
+                },
+                "attributes":{
+                "setFrameString:":"-1",
+                "setImageWithURLString:lineup:":["-1","-1"],
+                "setBackgroundColorString:":"#000000"
+                }
+                },
+                
+                {
+                "view_type":"UILabel",
+                "view_id":"id_topic_name",
+                "align_parent_top":"YES",
+                "right_of_view":"id_topic_avator",
+                "margin_left":"8",
+                "margin_top":"12",
+                "height":{
+                "type":"wrap_content"
+                },
+                "width":{
+                "type":"relative",
+                "value":"229"
+                },
+                "attributes":{
+                "setFrameString":"-1",
+                "setText:":"-1",
+                "setTextColorString:":"-1",
+                "setBoldFontSizeString:":"16",
+                "setNumberOfLinesString:":"1"
+                }
+                },
+                {
+                "view_type":"UILabel",
+                "view_id":"id_topic_recommend_biu_time",
+                "below_of_view":"id_topic_name",
+                "right_of_view":"id_topic_avator",
+                "margin_left":"8",
+                "margin_top":"5",
+                "height":{
+                "type":"wrap_content"
+                },
+                "width":{
+                "type":"relative",
+                "value":"229"
+                },
+                "attributes":{
+                "setFrameString:":"-1",
+                "setText:":"-1",
+                "setTextColorString:":"#9d9d9d",
+                "setFontSizeString:":"12",
+                "setNumberOfLinesString:":"1"
+                }
+                },
+                {
+                "view_type":"UIButton",
+                "view_id":"id_follow_button",
+                "left_of_view":"id_dislike_button",
+                "align_parent_center_vertical":"YES",
+                "margin_right":"0",
+                "height":{
+                "type": "absolutely",
+                "value": "23"
+                },
+                "width":{
+                "type": "absolutely",
+                "value": "50"
+                },
+                "event_type":"cmd_follow_click",
+                "attributes":{
+                "setSelectedString:":"-1",
+                "setTitle:":"-1",
+                "setImages:colors:direction:forStates:": [
+                                                          [
+                                                           "plus",
+                                                           "plus",
+                                                           "1pixel"
+                                                           ],
+                                                          [
+                                                           "#FFFFFF",
+                                                           "#FFFFFF",
+                                                           "#bbbbbb"
+                                                           ],
+                                                          [
+                                                           "0",
+                                                           "0",
+                                                           "0"
+                                                           ],
+                                                          [
+                                                           "0",
+                                                           "1",
+                                                           "4"
+                                                           ]
+                                                          ],
+                "setFontSizeString:": "11",
+                "setBackgroundImages:forStates:":[["Base_Blue", "Base_Grey"],["0","4"]]
+                }
+                },
+                {
+                "view_type":"UIView",
+                "view_id":"id_header_line",
+                "align_parent_bottom":"YES",
+                "margin_bottom":"0",
+                "height":{
+                "type":"absolutely","value":"0.5"
+                },
+                "width":{
+                "type":"relative",
+                "value":"375"
+                },
+                "attributes":{
+                "setFrameString:":"-1",
+                "setBackgroundColorString:":"#eaeaea"
+                }
+                }
+                
+                
+                ]
+    
+}

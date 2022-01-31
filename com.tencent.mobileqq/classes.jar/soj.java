@@ -1,25 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DialogActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.TransFileController;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.MessageMicro;
 
-public class soj
-  implements DialogInterface.OnClickListener
+public abstract interface soj
 {
-  public soj(DialogActivity paramDialogActivity) {}
+  public abstract void a(int paramInt, Bundle paramBundle);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface = this.a.app.a();
-    paramDialogInterface.e();
-    paramDialogInterface.d();
-    this.a.finish();
-  }
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(MessageMicro paramMessageMicro);
+  
+  public abstract void a(boolean paramBoolean, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     soj
  * JD-Core Version:    0.7.0.1
  */

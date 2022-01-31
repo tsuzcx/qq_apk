@@ -10,53 +10,54 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.View;
+import com.tencent.mobileqq.utils.AudioHelper;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import kbs;
+import lxw;
 
 public class QavPanelSoundWaveView
   extends View
 {
-  public float a;
-  public Handler a;
-  public Runnable a;
-  public List a;
-  public boolean a;
+  float jdField_a_of_type_Float;
+  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  Runnable jdField_a_of_type_JavaLangRunnable = new QavPanelSoundWaveView.1(this);
+  List<lxw> jdField_a_of_type_JavaUtilList;
+  boolean jdField_a_of_type_Boolean = false;
   float jdField_b_of_type_Float;
   boolean jdField_b_of_type_Boolean = false;
-  public float c = 0.0F;
+  float jdField_c_of_type_Float = 0.0F;
+  boolean jdField_c_of_type_Boolean = false;
   
   public QavPanelSoundWaveView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_JavaLangRunnable = new kbs(this);
     a();
   }
   
   public QavPanelSoundWaveView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_JavaLangRunnable = new kbs(this);
     a();
   }
   
   public QavPanelSoundWaveView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_JavaLangRunnable = new kbs(this);
     a();
   }
   
   void a()
   {
+    boolean bool = true;
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (AudioHelper.a(0) == 1) {}
+    for (;;)
+    {
+      this.jdField_c_of_type_Boolean = bool;
+      return;
+      bool = false;
+    }
   }
   
   public void a(boolean paramBoolean)
@@ -71,23 +72,23 @@ public class QavPanelSoundWaveView
         if (!this.jdField_b_of_type_Boolean) {
           break;
         }
-        if ((this.jdField_a_of_type_JavaUtilList.get(0) != null) && (((QavPanelWave)this.jdField_a_of_type_JavaUtilList.get(0)).a() != null)) {
-          ((QavPanelWave)this.jdField_a_of_type_JavaUtilList.get(0)).a().setColor(Color.parseColor("#b3ffffff"));
+        if ((this.jdField_a_of_type_JavaUtilList.get(0) != null) && (((lxw)this.jdField_a_of_type_JavaUtilList.get(0)).a() != null)) {
+          ((lxw)this.jdField_a_of_type_JavaUtilList.get(0)).a().setColor(Color.parseColor("#b3ffffff"));
         }
-        if ((this.jdField_a_of_type_JavaUtilList.get(1) != null) && (((QavPanelWave)this.jdField_a_of_type_JavaUtilList.get(1)).a() != null)) {
-          ((QavPanelWave)this.jdField_a_of_type_JavaUtilList.get(1)).a().setColor(Color.parseColor("#66ffffff"));
+        if ((this.jdField_a_of_type_JavaUtilList.get(1) != null) && (((lxw)this.jdField_a_of_type_JavaUtilList.get(1)).a() != null)) {
+          ((lxw)this.jdField_a_of_type_JavaUtilList.get(1)).a().setColor(Color.parseColor("#66ffffff"));
         }
-      } while ((this.jdField_a_of_type_JavaUtilList.get(2) == null) || (((QavPanelWave)this.jdField_a_of_type_JavaUtilList.get(2)).a() == null));
-      ((QavPanelWave)this.jdField_a_of_type_JavaUtilList.get(2)).a().setColor(Color.parseColor("#26ffffff"));
+      } while ((this.jdField_a_of_type_JavaUtilList.get(2) == null) || (((lxw)this.jdField_a_of_type_JavaUtilList.get(2)).a() == null));
+      ((lxw)this.jdField_a_of_type_JavaUtilList.get(2)).a().setColor(Color.parseColor("#26ffffff"));
       return;
-      if ((this.jdField_a_of_type_JavaUtilList.get(0) != null) && (((QavPanelWave)this.jdField_a_of_type_JavaUtilList.get(0)).a() != null)) {
-        ((QavPanelWave)this.jdField_a_of_type_JavaUtilList.get(0)).a().setColor(Color.parseColor("#b312b7f5"));
+      if ((this.jdField_a_of_type_JavaUtilList.get(0) != null) && (((lxw)this.jdField_a_of_type_JavaUtilList.get(0)).a() != null)) {
+        ((lxw)this.jdField_a_of_type_JavaUtilList.get(0)).a().setColor(Color.parseColor("#b312b7f5"));
       }
-      if ((this.jdField_a_of_type_JavaUtilList.get(1) != null) && (((QavPanelWave)this.jdField_a_of_type_JavaUtilList.get(1)).a() != null)) {
-        ((QavPanelWave)this.jdField_a_of_type_JavaUtilList.get(1)).a().setColor(Color.parseColor("#6612b7f5"));
+      if ((this.jdField_a_of_type_JavaUtilList.get(1) != null) && (((lxw)this.jdField_a_of_type_JavaUtilList.get(1)).a() != null)) {
+        ((lxw)this.jdField_a_of_type_JavaUtilList.get(1)).a().setColor(Color.parseColor("#6612b7f5"));
       }
-    } while ((this.jdField_a_of_type_JavaUtilList.get(2) == null) || (((QavPanelWave)this.jdField_a_of_type_JavaUtilList.get(2)).a() == null));
-    ((QavPanelWave)this.jdField_a_of_type_JavaUtilList.get(2)).a().setColor(Color.parseColor("#2612b7f5"));
+    } while ((this.jdField_a_of_type_JavaUtilList.get(2) == null) || (((lxw)this.jdField_a_of_type_JavaUtilList.get(2)).a() == null));
+    ((lxw)this.jdField_a_of_type_JavaUtilList.get(2)).a().setColor(Color.parseColor("#2612b7f5"));
   }
   
   void b()
@@ -111,7 +112,7 @@ public class QavPanelSoundWaveView
       localPaint.setStrokeWidth(2.0F);
       localPaint.setAntiAlias(true);
       localPaint.setStyle(Paint.Style.STROKE);
-      this.jdField_a_of_type_JavaUtilList.add(new QavPanelWave(0, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, f, localPaint, localPointF, this.jdField_a_of_type_Boolean));
+      this.jdField_a_of_type_JavaUtilList.add(new lxw(0, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, f, localPaint, localPointF, this.jdField_a_of_type_Boolean));
       localPaint = new Paint();
       if (!this.jdField_b_of_type_Boolean) {
         break label293;
@@ -121,7 +122,7 @@ public class QavPanelSoundWaveView
       localPaint.setStrokeWidth(2.0F);
       localPaint.setAntiAlias(true);
       localPaint.setStyle(Paint.Style.STROKE);
-      this.jdField_a_of_type_JavaUtilList.add(new QavPanelWave(1, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, f, localPaint, localPointF, this.jdField_a_of_type_Boolean));
+      this.jdField_a_of_type_JavaUtilList.add(new lxw(1, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, f, localPaint, localPointF, this.jdField_a_of_type_Boolean));
       localPaint = new Paint();
       if (!this.jdField_b_of_type_Boolean) {
         break label305;
@@ -133,7 +134,7 @@ public class QavPanelSoundWaveView
       localPaint.setStrokeWidth(2.0F);
       localPaint.setAntiAlias(true);
       localPaint.setStyle(Paint.Style.STROKE);
-      this.jdField_a_of_type_JavaUtilList.add(new QavPanelWave(2, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, f, localPaint, localPointF, this.jdField_a_of_type_Boolean));
+      this.jdField_a_of_type_JavaUtilList.add(new lxw(2, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, f, localPaint, localPointF, this.jdField_a_of_type_Boolean));
       return;
       f = 8.0F;
       break;
@@ -169,10 +170,10 @@ public class QavPanelSoundWaveView
   void e()
   {
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.c = 0.0F;
+    this.jdField_c_of_type_Float = 0.0F;
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((QavPanelWave)localIterator.next()).a();
+      ((lxw)localIterator.next()).a();
     }
     invalidate();
   }
@@ -193,9 +194,15 @@ public class QavPanelSoundWaveView
     if ((this.jdField_a_of_type_Float != getWidth()) || (this.jdField_b_of_type_Float != getHeight())) {
       b();
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((QavPanelWave)localIterator.next()).a(paramCanvas);
+    if (this.jdField_c_of_type_Boolean)
+    {
+      localObject = new Paint();
+      ((Paint)localObject).setColor(-268780356);
+      paramCanvas.drawRect(0.0F, 0.0F, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, (Paint)localObject);
+    }
+    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((lxw)((Iterator)localObject).next()).a(paramCanvas);
     }
   }
   
@@ -206,7 +213,7 @@ public class QavPanelSoundWaveView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.ui.QavPanelSoundWaveView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,235 +1,98 @@
-import com.dataline.core.MoloHandler;
-import com.dataline.util.DataLineReportUtil;
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.DatalineMessageManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.data.DataLineMsgSet;
-import com.tencent.mobileqq.data.DataLineMsgSetList;
-import com.tencent.open.pcpush.PCPushProxy;
-import com.tencent.open.pcpush.PCPushProxy.OnDownloadListener;
-import com.tencent.open.pcpush.PCPushProxy.PkgEntry;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.dataline.activities.PrinterSubOptionActivity;
 import java.util.List;
 
 public class ct
-  implements PCPushProxy.OnDownloadListener
+  extends BaseAdapter
 {
-  public ct(MoloHandler paramMoloHandler) {}
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new cu(this);
   
-  public void a(int paramInt, String paramString)
+  public ct(PrinterSubOptionActivity paramPrinterSubOptionActivity) {}
+  
+  public int getCount()
   {
-    Object localObject = this.a.a.b.a(0).a(paramString);
-    switch (paramInt)
-    {
+    if ((this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b != null) && (this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b.size() > 0)) {
+      return this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b.size();
     }
-    label435:
-    do
-    {
-      for (;;)
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("dataline.MoloHandler", 2, "OnDownloadListener.START(" + paramString + ")");
-        }
-        if (localObject != null)
-        {
-          paramString = ((List)localObject).iterator();
-          while (paramString.hasNext())
-          {
-            localObject = (DataLineMsgRecord)paramString.next();
-            ((DataLineMsgRecord)localObject).issuc = true;
-            ((DataLineMsgRecord)localObject).fileMsgStatus = 0L;
-            this.a.a.b.a().a(0).c(((DataLineMsgRecord)localObject).msgId);
-            this.a.a.b(6, true, new Object[] { Long.valueOf(0L), Long.valueOf(((DataLineMsgRecord)localObject).sessionid), ((DataLineMsgRecord)localObject).path, Byte.valueOf(0), Boolean.valueOf(false), Boolean.valueOf(true), Long.valueOf(((DataLineMsgRecord)localObject).filesize) });
-          }
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.d("dataline.MoloHandler", 2, "OnDownloadListener.CANCEL(" + paramString + ")");
-          }
-          if (localObject != null)
-          {
-            paramString = ((List)localObject).iterator();
-            while (paramString.hasNext())
-            {
-              localObject = (DataLineMsgRecord)paramString.next();
-              if ((!((DataLineMsgRecord)localObject).issuc) || (((DataLineMsgRecord)localObject).progress != 1.0F))
-              {
-                ((DataLineMsgRecord)localObject).issuc = false;
-                this.a.a.b.a().a(0).c();
-                this.a.a.b(3, false, new Object[] { Long.valueOf(0L), Long.valueOf(((DataLineMsgRecord)localObject).sessionid), ((DataLineMsgRecord)localObject).path });
-              }
-            }
-            continue;
-            if (QLog.isColorLevel()) {
-              QLog.d("dataline.MoloHandler", 2, "OnDownloadListener.FINISH(" + paramString + ")");
-            }
-            if (localObject != null)
-            {
-              paramString = ((List)localObject).iterator();
-              if (paramString.hasNext())
-              {
-                localObject = (DataLineMsgRecord)paramString.next();
-                DataLineReportUtil.g(this.a.a.b);
-                ((DataLineMsgRecord)localObject).issuc = true;
-                ((DataLineMsgRecord)localObject).progress = 1.0F;
-                ((DataLineMsgRecord)localObject).path = PCPushProxy.a().a(((DataLineMsgRecord)localObject).strMoloKey);
-                if (QLog.isColorLevel())
-                {
-                  if (((DataLineMsgRecord)localObject).path == null) {
-                    break label661;
-                  }
-                  QLog.d("dataline.MoloHandler", 2, "PCPushProxy.getDownloadPath(" + ((DataLineMsgRecord)localObject).strMoloKey + ") \"" + ((DataLineMsgRecord)localObject).path + "'");
-                }
-              }
-              for (;;)
-              {
-                this.a.a.b.a(0).a(((DataLineMsgRecord)localObject).msgId, ((DataLineMsgRecord)localObject).path);
-                this.a.a.b.a().a(0).c();
-                this.a.a.b(3, true, new Object[] { Long.valueOf(0L), Long.valueOf(((DataLineMsgRecord)localObject).sessionid), ((DataLineMsgRecord)localObject).path });
-                this.a.a.a().a().a(0).a(((DataLineMsgRecord)localObject).msgId);
-                break label435;
-                break;
-                QLog.d("dataline.MoloHandler", 2, "PCPushProxy.getDownloadPath(" + ((DataLineMsgRecord)localObject).strMoloKey + ") NULL");
-              }
-              if (QLog.isColorLevel()) {
-                QLog.d("dataline.MoloHandler", 2, "OnDownloadListener.PAUSE(" + paramString + ")");
-              }
-              if (localObject != null)
-              {
-                paramString = ((List)localObject).iterator();
-                while (paramString.hasNext())
-                {
-                  localObject = (DataLineMsgRecord)paramString.next();
-                  if ((!((DataLineMsgRecord)localObject).issuc) || (((DataLineMsgRecord)localObject).progress != 1.0F))
-                  {
-                    ((DataLineMsgRecord)localObject).issuc = false;
-                    ((DataLineMsgRecord)localObject).fileMsgStatus = 2L;
-                    this.a.a.b.a().a(0).c(((DataLineMsgRecord)localObject).msgId);
-                    this.a.a.b.a().a(0).c();
-                    this.a.a.b(3, false, new Object[] { Long.valueOf(0L), Long.valueOf(((DataLineMsgRecord)localObject).sessionid), ((DataLineMsgRecord)localObject).path });
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("dataline.MoloHandler", 2, "OnDownloadListener.INSTALLED(" + paramString + ")");
-      }
-      DataLineReportUtil.i(this.a.a.b);
-      this.a.a.b(9, true, new Object[] { paramString });
-      return;
-    } while (!QLog.isColorLevel());
-    label661:
-    QLog.d("dataline.MoloHandler", 2, "OnDownloadListener.WAIT(" + paramString + ")");
+    return 1;
   }
   
-  public void a(PCPushProxy.PkgEntry paramPkgEntry, int paramInt1, String paramString, int paramInt2)
+  public Object getItem(int paramInt)
   {
-    Object localObject;
-    if ((paramPkgEntry == null) || (paramInt1 == -25))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("dataline.MoloHandler", 2, "onDownloadError( tm exit)");
-      }
-      paramString = this.a.a.a().a().a(0).a();
-      paramPkgEntry = this.a.a.a().a().a(0).a(true);
-      paramString = paramString.iterator();
-      while (paramString.hasNext())
-      {
-        localObject = ((DataLineMsgSet)paramString.next()).values().iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)((Iterator)localObject).next();
-          if ((localDataLineMsgRecord.strMoloKey != null) && ((!localDataLineMsgRecord.issuc) || (localDataLineMsgRecord.progress != 1.0F)))
-          {
-            localDataLineMsgRecord.issuc = false;
-            this.a.a.b.a().a(0).c();
-            this.a.a.b(3, false, new Object[] { Long.valueOf(0L), Long.valueOf(localDataLineMsgRecord.sessionid), localDataLineMsgRecord.path });
-          }
-        }
-      }
-      if (paramPkgEntry != null) {
-        paramPkgEntry = paramPkgEntry.iterator();
-      }
+    if ((this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b != null) && (paramInt < this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b.size())) {
+      return this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b.get(paramInt);
     }
-    else
+    return new cs(this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity, 1, 0L, this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_JavaLangString);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if ((this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b != null) && (this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.b.size() > 0)) {
+      return 0;
+    }
+    return 1;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    String str = ((cs)getItem(paramInt)).jdField_a_of_type_JavaLangString;
+    if (getItemViewType(paramInt) == 0)
     {
-      while (paramPkgEntry.hasNext())
+      paramViewGroup = (cs)getItem(paramInt);
+      if (paramViewGroup.jdField_a_of_type_Int == 1)
       {
-        paramString = ((DataLineMsgSet)paramPkgEntry.next()).values().iterator();
-        while (paramString.hasNext())
-        {
-          localObject = (DataLineMsgRecord)paramString.next();
-          if ((((DataLineMsgRecord)localObject).strMoloKey != null) && ((!((DataLineMsgRecord)localObject).issuc) || (((DataLineMsgRecord)localObject).progress != 1.0F)))
-          {
-            ((DataLineMsgRecord)localObject).issuc = false;
-            this.a.a.b.a().a(0).c();
-            this.a.a.b(3, false, new Object[] { Long.valueOf(0L), Long.valueOf(((DataLineMsgRecord)localObject).sessionid), ((DataLineMsgRecord)localObject).path });
-          }
-        }
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("dataline.MoloHandler", 2, "onDownloadError(" + paramPkgEntry.toString() + "), key[" + paramPkgEntry.a + "], errorCode" + paramInt1 + "], state[" + paramInt2);
-        }
-        paramPkgEntry = this.a.a.b.a(0).a(paramPkgEntry.a);
-        if (paramPkgEntry != null) {
-          break label460;
-        }
+        paramView = this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131493832, null);
+        paramViewGroup = (TextView)paramView.findViewById(2131311233);
       }
     }
     for (;;)
     {
-      return;
-      label460:
-      paramPkgEntry = paramPkgEntry.iterator();
-      while (paramPkgEntry.hasNext())
+      if (paramViewGroup != null)
       {
-        paramString = (DataLineMsgRecord)paramPkgEntry.next();
-        DataLineReportUtil.l(this.a.a.b);
-        paramString.issuc = false;
-        this.a.a.b.a().a(0).c();
-        this.a.a.b(3, false, new Object[] { Long.valueOf(0L), Long.valueOf(paramString.sessionid), paramString.path });
+        paramViewGroup.setText(str);
+        paramViewGroup.setTag(Integer.valueOf(paramInt));
+      }
+      return paramView;
+      if (paramViewGroup.jdField_a_of_type_Int == 2)
+      {
+        paramView = this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131493833, null);
+        View localView = paramView.findViewById(2131298407);
+        paramViewGroup = (TextView)paramView.findViewById(2131298408);
+        localView.setClickable(true);
+        localView.setEnabled(true);
+        localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+        continue;
+        paramView = this.jdField_a_of_type_ComDatalineActivitiesPrinterSubOptionActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131493401, null);
+        paramView.findViewById(2131303659).setVisibility(8);
+        paramViewGroup = (TextView)paramView.findViewById(2131303660);
+        paramViewGroup.setTextSize(19.0F);
+        paramViewGroup.setTextColor(-16777216);
+      }
+      else
+      {
+        paramViewGroup = null;
       }
     }
   }
   
-  public void a(List paramList)
+  public int getViewTypeCount()
   {
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      PCPushProxy.PkgEntry localPkgEntry = (PCPushProxy.PkgEntry)paramList.next();
-      if (QLog.isColorLevel()) {
-        QLog.d("dataline.MoloHandler", 2, "onDownloadUpdatem key[" + localPkgEntry.a + "], appName[" + localPkgEntry.e + "], progress[" + localPkgEntry.f);
-      }
-      Object localObject = this.a.a.b.a(0).a(localPkgEntry.a);
-      if (localObject != null)
-      {
-        localObject = ((List)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)((Iterator)localObject).next();
-          float f = localPkgEntry.f / 100.0F;
-          if (localDataLineMsgRecord.progress < f) {
-            localDataLineMsgRecord.progress = f;
-          }
-          this.a.a.b(4, true, new Object[] { Long.valueOf(0L), Long.valueOf(localDataLineMsgRecord.sessionid), Float.valueOf(f) });
-        }
-      }
-    }
+    return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ct
  * JD-Core Version:    0.7.0.1
  */

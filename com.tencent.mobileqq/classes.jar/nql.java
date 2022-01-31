@@ -1,14 +1,16 @@
-import com.tencent.biz.qqstory.playmode.child.VidListPlayMode;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler.VideoInfoListEvent;
+import android.os.Handler;
+import com.tencent.image.ApngDrawable.OnPlayRepeatListener;
 
 class nql
-  implements Runnable
+  implements ApngDrawable.OnPlayRepeatListener
 {
-  nql(nqk paramnqk, BatchGetVideoInfoHandler.VideoInfoListEvent paramVideoInfoListEvent) {}
+  nql(nqi paramnqi) {}
   
-  public void run()
+  public void onPlayRepeat(int paramInt)
   {
-    this.jdField_a_of_type_Nqk.a.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler$VideoInfoListEvent);
+    if (paramInt == 1) {
+      nqi.a(this.a).sendEmptyMessage(2);
+    }
   }
 }
 

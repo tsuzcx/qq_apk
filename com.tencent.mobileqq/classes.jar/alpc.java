@@ -1,30 +1,31 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
+import android.database.ContentObserver;
+import android.os.Handler;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class alpc
-  implements Runnable
+public class alpc
+  extends ContentObserver
 {
-  alpc(alpa paramalpa, long paramLong1, long paramLong2, String paramString) {}
-  
-  public void run()
+  public alpc(BusinessCardEditActivity paramBusinessCardEditActivity, Handler paramHandler)
   {
-    int i = (int)((float)this.jdField_a_of_type_Long * 100.0F / (float)this.b);
-    DownloadInfo localDownloadInfo = this.jdField_a_of_type_Alpa.a.c(this.jdField_a_of_type_JavaLangString, i);
-    if (localDownloadInfo == null) {
-      LogUtility.d(DownloadManager.jdField_a_of_type_JavaLangString, "OnDownloadSDKTaskProgressChanged info == null");
+    super(paramHandler);
+  }
+  
+  public void onChange(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessCard_EditActivity", 2, "Contact changed selfChange=" + paramBoolean);
     }
-    for (;;)
+    if (BusinessCardEditActivity.a(this.a))
     {
-      this.jdField_a_of_type_Alpa.a.a(2, localDownloadInfo);
-      return;
-      LogUtility.a(DownloadManager.jdField_a_of_type_JavaLangString, "OnDownloadSDKTaskProgressChanged info state=" + localDownloadInfo.a() + " progress=" + localDownloadInfo.g);
+      this.a.a(2131632898, 2);
+      BusinessCardEditActivity.a(this.a, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     alpc
  * JD-Core Version:    0.7.0.1
  */

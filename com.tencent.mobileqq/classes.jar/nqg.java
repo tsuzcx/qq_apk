@@ -1,16 +1,6 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playmode.child.TroopStoryPlayModeBase;
-
-public class nqg
-  implements DialogInterface.OnDismissListener
+public abstract interface nqg
 {
-  public nqg(TroopStoryPlayModeBase paramTroopStoryPlayModeBase) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.s();
-  }
+  public abstract nax a();
 }
 
 

@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import java.util.List;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class aidl
-  implements Runnable
 {
-  public aidl(PtvTemplateManager paramPtvTemplateManager, List paramList) {}
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.a(this.jdField_a_of_type_JavaUtilList);
-  }
+  protected aidl(aidk paramaidk) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aidl
  * JD-Core Version:    0.7.0.1
  */

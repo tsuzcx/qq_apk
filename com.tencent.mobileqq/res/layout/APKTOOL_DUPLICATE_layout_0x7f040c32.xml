@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3505" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02043f" android:layout_width="fill_parent" android:layout_height="46.0dip" android:minHeight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0394"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="#ff12b7f5" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3506" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="展示最近不活跃的群" android:layout_centerInParent="true" />
-</RelativeLayout>

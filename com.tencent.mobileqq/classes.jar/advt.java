@@ -1,42 +1,20 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.photo.PeakService;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class advt
-  implements Runnable
+final class advt
+  implements DialogInterface.OnClickListener
 {
-  public advt(NearbyHybridFragment paramNearbyHybridFragment) {}
+  advt(Activity paramActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyHybridFragment", 2, "start preload peak process");
-    }
-    Intent localIntent;
-    if (this.a.getActivity() != null)
-    {
-      localIntent = new Intent(this.a.getActivity(), PeakService.class);
-      if (VideoEnvironment.d(this.a.a)) {
-        localIntent.putExtra("ServiceAction", 2);
-      }
-    }
-    try
-    {
-      this.a.getActivity().startService(localIntent);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("NearbyHybridFragment", 1, "preLoadPeak startService ", localException);
-    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     advt
  * JD-Core Version:    0.7.0.1
  */

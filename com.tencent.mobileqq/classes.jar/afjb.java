@@ -1,21 +1,17 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.image.AbstractGifImage;
 
-public class afjb
-  implements Runnable
+class afjb
+  implements DialogInterface.OnDismissListener
 {
-  public afjb(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel, int paramInt) {}
+  afjb(afiu paramafiu) {}
   
-  public void run()
-  {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "CliOper", "", "", NearbyProfileDisplayPanel.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_a_of_type_Int - 1)], NearbyProfileDisplayPanel.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_a_of_type_Int - 1)], 0, 0, "", "", "", "");
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app, "dc00898", "", "", "0X800698A", "0X800698A", 0, 0, "", "", "", "");
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afjb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,68 +1,101 @@
-import QQService.EVIPSPEC;
-import com.tencent.mobileqq.adapter.contacts.BuddyListItem;
-import com.tencent.mobileqq.app.ContactSorter;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.utils.ContactUtils;
-import java.util.Comparator;
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Rect;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.jsbridge.GdtCanvasFragmentForJS;
+import com.tencent.gdtad.jsbridge.GdtVideoCeilingFragmentForJS;
+import com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick;
+import java.lang.ref.WeakReference;
+import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
-public class ynk
-  implements Comparator
+class ynk
+  implements ynl
 {
-  public int a(BuddyListItem paramBuddyListItem1, BuddyListItem paramBuddyListItem2)
-  {
-    paramBuddyListItem1 = (Friends)paramBuddyListItem1.a;
-    paramBuddyListItem2 = (Friends)paramBuddyListItem2.a;
-    int i = a(paramBuddyListItem1);
-    int j = a(paramBuddyListItem2);
-    if (i == j) {
-      return ContactSorter.a(paramBuddyListItem1.mComparePartInt, paramBuddyListItem1.mCompareSpell, paramBuddyListItem2.mComparePartInt, paramBuddyListItem2.mCompareSpell);
-    }
-    return i - j;
-  }
+  private GdtDwellTimeStatisticsAfterClick a;
   
-  public int a(Friends paramFriends)
+  public boolean a(ymw paramymw, String paramString, String... paramVarArgs)
   {
-    int k = ContactUtils.a(paramFriends.detalStatusFlag, paramFriends.iTermType);
-    int j;
-    label28:
-    int i;
-    if ((k != 6) && (k != 0))
+    if (paramymw != null) {}
+    for (Activity localActivity = paramymw.a(); (paramymw == null) || (localActivity == null); localActivity = null)
     {
-      j = 65536;
-      if (!paramFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
-        break label104;
-      }
-      i = 4096;
+      yny.d("GdtHandleAdJsCallHandler", "handleJsCallRequest error");
+      return true;
     }
-    for (;;)
+    try
     {
-      switch (k)
+      Object localObject1 = new JSONObject(paramVarArgs[0]);
+      yny.b("GdtHandleAdJsCallHandler", ((JSONObject)localObject1).toString());
+      JSONObject localJSONObject = ((JSONObject)localObject1).getJSONObject("options");
+      boolean bool1 = localJSONObject.getBoolean("reportForClick");
+      boolean bool2 = localJSONObject.getBoolean("appAutoDownload");
+      boolean bool3 = localJSONObject.optBoolean("videoCeilingSupported", false);
+      boolean bool4 = localJSONObject.optBoolean("videoCeilingSupportedIfInstalled", false);
+      boolean bool5 = localJSONObject.optBoolean("videoSpliceSupported", false);
+      Object localObject2 = localJSONObject.optJSONObject("mediaViewLocationRect");
+      paramVarArgs = new Rect();
+      if (localObject2 != null)
       {
-      case 5: 
-      case 6: 
-      default: 
-        return j | i | (int)paramFriends.getLastLoginType();
-        j = 131072;
-        break label28;
-        label104:
-        if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP)) {
-          i = 8192;
-        } else if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ)) {
-          i = 12288;
-        } else {
-          i = 16384;
+        int i = ((JSONObject)localObject2).optInt("left", 0);
+        int j = ((JSONObject)localObject2).optInt("top", 0);
+        int k = ((JSONObject)localObject2).optInt("right", 0);
+        int m = ((JSONObject)localObject2).optInt("bottom", 0);
+        paramVarArgs.left = i;
+        paramVarArgs.top = j;
+        paramVarArgs.right = k;
+        paramVarArgs.bottom = m;
+      }
+      localObject2 = (qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(ynv.a(new qq_ad_get.QQAdGetRsp.AdInfo(), ((JSONObject)localObject1).getJSONObject("adInfo")));
+      localObject1 = new yjs();
+      ((yjs)localObject1).jdField_a_of_type_Int = 7;
+      ((yjs)localObject1).jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localActivity);
+      ((yjs)localObject1).jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)localObject2);
+      ((yjs)localObject1).jdField_a_of_type_Boolean = bool1;
+      ((yjs)localObject1).jdField_b_of_type_Boolean = bool2;
+      ((yjs)localObject1).jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramymw.a());
+      ((yjs)localObject1).jdField_a_of_type_JavaLangClass = GdtVideoCeilingFragmentForJS.class;
+      ((yjs)localObject1).c = bool3;
+      ((yjs)localObject1).d = bool4;
+      ((yjs)localObject1).e = bool5;
+      ((yjs)localObject1).jdField_a_of_type_AndroidGraphicsRect = paramVarArgs;
+      ((yjs)localObject1).jdField_b_of_type_JavaLangClass = GdtCanvasFragmentForJS.class;
+      paramVarArgs = paramymw.a().getIntent();
+      if (TextUtils.isEmpty(paramVarArgs.getStringExtra("big_brother_ref_source_key")))
+      {
+        paramVarArgs = paramVarArgs.getStringExtra("big_brother_source_key");
+        ((yjs)localObject1).jdField_a_of_type_AndroidOsBundle = new Bundle();
+        ((yjs)localObject1).jdField_a_of_type_AndroidOsBundle.putString("big_brother_ref_source_key", paramVarArgs);
+        ((yjs)localObject1).f = localJSONObject.optBoolean("videoPlayForced");
+        this.a = new GdtDwellTimeStatisticsAfterClick(((yjs)localObject1).jdField_a_of_type_ComTencentGdtadAditemGdtAd, new WeakReference(paramymw.mRuntime.a()));
+        this.a.a();
+        yjr.a((yjs)localObject1);
+        paramymw.callJs(paramString, null);
+        if (paramymw == null) {
+          break label486;
         }
+      }
+      label486:
+      for (paramymw = paramymw.a();; paramymw = null)
+      {
+        AdReporterForAnalysis.reportForJSBridgeInvoked(localActivity, false, "handleClick", paramymw, ((yjs)localObject1).jdField_a_of_type_ComTencentGdtadAditemGdtAd);
+        return true;
+        paramVarArgs = paramVarArgs.getStringExtra("big_brother_ref_source_key");
         break;
       }
+      return true;
     }
-    return j | i | 0x1;
-    return j | i | 0x2;
-    return j | i | 0x3;
+    catch (Throwable paramymw)
+    {
+      yny.d("GdtHandleAdJsCallHandler", "handleJsCallRequest error", paramymw);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ynk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,10 @@
-import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnCompletionListener;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTextureImpl;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnCompletionListener;
-
-public class nuq
-  implements IMediaPlayer.OnCompletionListener
+class nuq
 {
-  public nuq(VideoViewTextureImpl paramVideoViewTextureImpl, IVideoView.OnCompletionListener paramOnCompletionListener) {}
-  
-  public void a(IMediaPlayer paramIMediaPlayer)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView$OnCompletionListener.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTextureImpl);
-  }
+  private static final nuo a = new nuo(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nuq
  * JD-Core Version:    0.7.0.1
  */

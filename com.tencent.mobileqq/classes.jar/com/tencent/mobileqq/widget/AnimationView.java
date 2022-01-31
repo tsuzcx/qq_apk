@@ -63,7 +63,7 @@ public class AnimationView
     this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$Player.resume();
   }
   
-  public void setAnimationFromBitmaps(ArrayList paramArrayList, int paramInt1, int paramInt2)
+  public void setAnimationFromBitmaps(ArrayList<Bitmap> paramArrayList, int paramInt1, int paramInt2)
   {
     if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
       return;
@@ -78,7 +78,7 @@ public class AnimationView
     setAnimationFromDrawabs(localArrayList, paramInt1, paramInt2);
   }
   
-  public void setAnimationFromDrawabs(ArrayList paramArrayList, int paramInt1, int paramInt2)
+  public void setAnimationFromDrawabs(ArrayList<Drawable> paramArrayList, int paramInt1, int paramInt2)
   {
     if ((paramArrayList == null) || (paramArrayList.size() <= 0) || (paramInt1 <= 0)) {}
     do
@@ -132,7 +132,7 @@ public class AnimationView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AnimationView
  * JD-Core Version:    0.7.0.1
  */

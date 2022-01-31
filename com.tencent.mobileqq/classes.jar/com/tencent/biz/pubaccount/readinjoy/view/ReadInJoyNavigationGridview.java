@@ -6,9 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.List;
-import mmq;
-import mmr;
+import qrt;
+import qrv;
+import qrx;
+import qry;
+import qrz;
 
 public class ReadInJoyNavigationGridview
   extends LinearLayout
@@ -16,41 +21,42 @@ public class ReadInJoyNavigationGridview
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private GridView jdField_a_of_type_AndroidWidgetGridView;
-  private ReadInJoyNavigationAdapter jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationAdapter;
-  private ReadInJoyNavigationGridview.NaviMaskTouchListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationGridview$NaviMaskTouchListener;
-  private List jdField_a_of_type_JavaUtilList;
-  private mmr jdField_a_of_type_Mmr;
+  private List<ChannelCoverInfo> jdField_a_of_type_JavaUtilList;
+  private qrt jdField_a_of_type_Qrt;
+  private qry jdField_a_of_type_Qry;
+  private qrz jdField_a_of_type_Qrz;
   private boolean jdField_a_of_type_Boolean;
   
-  public ReadInJoyNavigationGridview(Context paramContext, ReadInJoyNavigationGridview.NaviMaskTouchListener paramNaviMaskTouchListener)
+  public ReadInJoyNavigationGridview(Context paramContext, qrz paramqrz)
   {
     super(paramContext);
     a(paramContext);
-    this.jdField_a_of_type_Mmr = new mmr(this);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationGridview$NaviMaskTouchListener = paramNaviMaskTouchListener;
+    this.jdField_a_of_type_Qry = new qry(this);
+    this.jdField_a_of_type_Qrz = paramqrz;
     this.jdField_a_of_type_Boolean = false;
   }
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(paramContext).inflate(2130969635, this));
-    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131367253));
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131367252);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationAdapter = new ReadInJoyNavigationAdapter(paramContext);
-    this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationAdapter);
-    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new mmq(this));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(paramContext).inflate(2131494408, this));
+    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131305003));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131305004);
+    this.jdField_a_of_type_Qrt = new qrt(paramContext);
+    this.jdField_a_of_type_AndroidWidgetGridView.setPadding(this.jdField_a_of_type_AndroidWidgetGridView.getPaddingLeft(), ImmersiveUtils.getStatusBarHeight(paramContext), this.jdField_a_of_type_AndroidWidgetGridView.getPaddingRight(), this.jdField_a_of_type_AndroidWidgetGridView.getPaddingBottom());
+    this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_Qrt);
+    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new qrx(this));
   }
   
   private void b()
   {
     if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationAdapter.a(this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_Qrt.a(this.jdField_a_of_type_JavaUtilList);
     }
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationAdapter.getCount();
+    return this.jdField_a_of_type_Qrt.getCount();
   }
   
   public View a()
@@ -58,7 +64,7 @@ public class ReadInJoyNavigationGridview
     return this.jdField_a_of_type_AndroidWidgetGridView;
   }
   
-  public List a()
+  public List<ChannelCoverInfo> a()
   {
     return this.jdField_a_of_type_JavaUtilList;
   }
@@ -67,7 +73,7 @@ public class ReadInJoyNavigationGridview
   {
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_JavaUtilList = null;
-    this.jdField_a_of_type_Mmr.removeMessages(1);
+    this.jdField_a_of_type_Qry.removeMessages(1);
   }
   
   public boolean a()
@@ -75,15 +81,15 @@ public class ReadInJoyNavigationGridview
     return this.jdField_a_of_type_Boolean;
   }
   
-  public void setChannelButtonListener(ReadInJoyNavigationAdapter.ChannelButtonListener paramChannelButtonListener)
+  public void setChannelButtonListener(qrv paramqrv)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationAdapter.a(paramChannelButtonListener);
+    this.jdField_a_of_type_Qrt.a(paramqrv);
   }
   
-  public void setNaviBarAdapterDataSet(List paramList)
+  public void setNaviBarAdapterDataSet(List<ChannelCoverInfo> paramList)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Mmr.sendEmptyMessage(1);
+    this.jdField_a_of_type_Qry.sendEmptyMessage(1);
   }
 }
 

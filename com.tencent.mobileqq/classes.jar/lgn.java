@@ -1,37 +1,71 @@
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewBaseActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview.NaviMaskTouchListener;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.aekit.openrender.internal.FrameBufferCache;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class lgn
-  implements ReadInJoyNavigationGridview.NaviMaskTouchListener
+  extends lgr
 {
-  private WeakReference a;
+  private final String jdField_a_of_type_JavaLangString = "MultipleTextureSource-" + Integer.toHexString(hashCode());
+  private List<Frame> jdField_a_of_type_JavaUtilList = new LinkedList();
   
-  public lgn(ReadInJoyNewBaseActivity paramReadInJoyNewBaseActivity)
-  {
-    this.a = new WeakReference(paramReadInJoyNewBaseActivity);
-  }
+  protected void a() {}
   
-  public void a()
+  public void a(List<lgo> paramList, long paramLong)
   {
-    ReadInJoyNewFeedsActivity localReadInJoyNewFeedsActivity = (ReadInJoyNewFeedsActivity)this.a.get();
-    if (localReadInJoyNewFeedsActivity == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyNewFeedsActivity", 2, "NaviMaskTouchListenerImpl. activity has destoryed");
+    ArrayList localArrayList1 = new ArrayList(paramList.size());
+    int i = 0;
+    if (i < paramList.size())
+    {
+      lgo locallgo = (lgo)paramList.get(i);
+      label131:
+      ArrayList localArrayList2;
+      if (i >= this.jdField_a_of_type_JavaUtilList.size())
+      {
+        localObject = new Frame();
+        QLog.d(this.jdField_a_of_type_JavaLangString, 1, "render: create cached frame#" + Integer.toHexString(localObject.hashCode()));
+        ((Frame)localObject).setSizedTexture(locallgo.jdField_a_of_type_Int, locallgo.b, locallgo.c);
+        this.jdField_a_of_type_JavaUtilList.add(localObject);
+        if (!locallgo.a()) {
+          break label257;
+        }
+        localArrayList2 = new ArrayList(1);
+        lgv locallgv = new lgv();
+        locallgv.jdField_a_of_type_JavaUtilList = locallgo.jdField_a_of_type_JavaUtilList;
+        localArrayList2.add(locallgv);
+      }
+      label257:
+      for (Object localObject = lgu.a((Frame)localObject, localArrayList2);; localObject = lgu.a((Frame)localObject))
+      {
+        localArrayList1.add(localObject);
+        i += 1;
+        break;
+        localObject = (Frame)this.jdField_a_of_type_JavaUtilList.get(i);
+        ((Frame)this.jdField_a_of_type_JavaUtilList.get(i)).setSizedTexture(locallgo.jdField_a_of_type_Int, locallgo.b, locallgo.c);
+        break label131;
       }
     }
-    while ((ReadInJoyNewFeedsActivity.a(localReadInJoyNewFeedsActivity) != 0) || (localReadInJoyNewFeedsActivity.a == null)) {
-      return;
+    b(localArrayList1, paramLong);
+  }
+  
+  protected void b()
+  {
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      ((Frame)this.jdField_a_of_type_JavaUtilList.get(i)).clear();
+      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onDestroy: cached frame#" + Integer.toHexString(((Frame)this.jdField_a_of_type_JavaUtilList.get(i)).hashCode()));
+      i += 1;
     }
-    localReadInJoyNewFeedsActivity.a.a(null);
+    this.jdField_a_of_type_JavaUtilList.clear();
+    FrameBufferCache.getInstance().destroy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lgn
  * JD-Core Version:    0.7.0.1
  */

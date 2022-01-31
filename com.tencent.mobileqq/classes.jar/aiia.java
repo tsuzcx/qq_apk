@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-public class aiia
-  implements Runnable
+public abstract interface aiia
 {
-  public aiia(RedBagVideoManager paramRedBagVideoManager, AIORichMediaData paramAIORichMediaData) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoRedbagRedBagVideoManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIORichMediaData);
-  }
+  public abstract EGLConfig a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiia
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,24 @@
-import android.content.Context;
-import android.os.AsyncTask;
-import com.dataline.core.DirectForwarder;
-import com.dataline.core.DirectForwarder.CallBack;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-public final class adpv
-  extends DirectForwarder.CallBack
+public class adpv
+  extends AnimatorListenerAdapter
 {
-  public adpv(Context paramContext) {}
+  public adpv(SixCombolEffectView paramSixCombolEffectView) {}
   
-  protected void a(AsyncTask paramAsyncTask, int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    try
-    {
-      DirectForwarder.a(this.a, paramAsyncTask, paramInt, new adpw(this));
-      super.a(paramAsyncTask, paramInt);
+    super.onAnimationEnd(paramAnimator);
+    if (!SixCombolEffectView.a) {
       return;
     }
-    catch (Exception paramAsyncTask)
-    {
-      paramAsyncTask.printStackTrace();
-    }
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adpv
  * JD-Core Version:    0.7.0.1
  */

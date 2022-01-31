@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class submsgtype0xc5$StyleSheet
-  extends MessageMicro
+  extends MessageMicro<StyleSheet>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_orange_word = PBField.initBytes(ByteStringMicro.EMPTY);

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.confess.data;
 
+import ajjj;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -29,7 +29,7 @@ public class TroopConfessMsg
   public long confessTime;
   public byte confessorSex;
   public long confessorUin;
-  public List items = new ArrayList();
+  public List<TroopConfessMsgItem> items = new ArrayList();
   public byte sysMsgFlag;
   public int totalCount;
   
@@ -133,7 +133,7 @@ public class TroopConfessMsg
         Object localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
         if (!Long.toString(localTroopConfessMsgItem.confessToUin).equals(((QQAppInterface)localObject).getCurrentAccountUin()))
         {
-          localObject = ((FriendsManager)((QQAppInterface)localObject).getManager(50)).a(Long.toString(localTroopConfessMsgItem.confessToUin));
+          localObject = ((ajjj)((QQAppInterface)localObject).getManager(51)).b(Long.toString(localTroopConfessMsgItem.confessToUin));
           if ((localObject != null) && (((Friends)localObject).isFriend()) && (!TextUtils.isEmpty(((Friends)localObject).remark))) {
             localStringBuilder.append(((Friends)localObject).remark);
           } else {
@@ -186,6 +186,18 @@ public class TroopConfessMsg
       localStringBuilder.append("，").append(localTroopConfessMsgItem.topic);
     }
     return localStringBuilder.toString();
+  }
+  
+  public boolean isToSelf()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+    Iterator localIterator = this.items.iterator();
+    while (localIterator.hasNext()) {
+      if (Long.toString(((TroopConfessMsgItem)localIterator.next()).confessToUin).equals(localQQAppInterface.getCurrentAccountUin())) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public void readExternal(ObjectInput paramObjectInput)

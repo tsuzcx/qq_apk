@@ -1,62 +1,73 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.data.Groups;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihInput;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetEmoticonPackList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetEmoticonPackList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class szm
-  implements DialogInterface.OnClickListener
+  extends slz<tbk>
 {
-  public szm(GroupManagerActivity paramGroupManagerActivity) {}
+  public final String a;
+  public final int c;
+  public final int d;
+  public final int e;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public szm(String paramString, int paramInt)
   {
-    paramDialogInterface = GroupManagerActivity.a(this.a).getInputValue();
-    if (paramDialogInterface.equals("")) {
-      paramDialogInterface = this.a.getResources().getString(2131436531);
+    this(paramString, paramInt, 0, 0);
+  }
+  
+  public szm(String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramString == null) {
+      throw new IllegalArgumentException("mCookie should not be null");
     }
-    for (;;)
+    if (paramInt1 <= 0) {
+      throw new IllegalArgumentException("mCount should not be less than 0 : " + paramInt1);
+    }
+    this.a = paramString;
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
+  }
+  
+  public String a()
+  {
+    return skt.a("StorySvc.video_emoticon_get");
+  }
+  
+  public slu a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetEmoticonPackList localRspGetEmoticonPackList = new qqstory_service.RspGetEmoticonPackList();
+    try
     {
-      if (GroupManagerActivity.a(this.a) == 0) {
-        if (this.a.a.size() > 0)
-        {
-          b = (byte)(((Groups)this.a.a.get(this.a.a.size() - 1)).seqid + 1);
-          GroupManagerActivity.a(this.a, this.a.a(b, paramDialogInterface));
-          if (QLog.isColorLevel()) {
-            QLog.d("GroupManagerActivity", 2, "AddFriendGroup needShowDialog = " + GroupManagerActivity.a(this.a));
-          }
-          if (GroupManagerActivity.a(this.a)) {
-            this.a.a(2131435559);
-          }
-          ReportController.b(this.a.app, "CliOper", "", "", "category", "Add_category", 0, 0, "", "", "", "");
-        }
-      }
-      while (1 != GroupManagerActivity.a(this.a)) {
-        for (;;)
-        {
-          return;
-          byte b = 1;
-        }
-      }
-      GroupManagerActivity.a(this.a, this.a.b((byte)GroupManagerActivity.a(this.a).group_id, paramDialogInterface));
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupManagerActivity", 2, "EditeFriendGroup needShowDialog = " + GroupManagerActivity.a(this.a));
-      }
-      if (GroupManagerActivity.a(this.a)) {
-        this.a.a(2131435561);
-      }
-      ReportController.b(this.a.app, "CliOper", "", "", "category", "Name_category", 0, 0, "", "", "", "");
-      return;
+      localRspGetEmoticonPackList.mergeFrom(paramArrayOfByte);
+      return new tbk(localRspGetEmoticonPackList, paramArrayOfByte, System.currentTimeMillis());
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      urk.e("GetEmojiPackInfoListRequest", "GetEmojiPackInfoListRequest error : " + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetEmoticonPackList localReqGetEmoticonPackList = new qqstory_service.ReqGetEmoticonPackList();
+    localReqGetEmoticonPackList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
+    localReqGetEmoticonPackList.count.set(this.c);
+    return localReqGetEmoticonPackList.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetEmojiPackInfoListRequest{mCookie='" + this.a + '\'' + ", mCount=" + this.c + ", latitude=" + this.d + ", longitude=" + this.e + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     szm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,24 @@
-import java.nio.ByteBuffer;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment.8.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.hotpic.HotPicData;
+import mqq.os.MqqHandler;
 
-class nux
+public class nux
+  implements aqhg
 {
-  protected long a;
-  protected ByteBuffer a;
+  public nux(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
   
-  nux(int paramInt)
+  public void a(HotPicData paramHotPicData)
   {
-    this.a = ByteBuffer.allocate(paramInt);
+    this.a.a = paramHotPicData;
+    ReadInJoyCommentComponentFragment.a(this.a, null);
+    ThreadManager.getUIHandler().post(new ReadInJoyCommentComponentFragment.8.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nux
  * JD-Core Version:    0.7.0.1
  */

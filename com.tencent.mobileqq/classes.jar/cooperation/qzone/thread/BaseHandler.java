@@ -6,11 +6,9 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
 import android.os.SystemClock;
-import anic;
-import anid;
-import anie;
-import anif;
-import anig;
+import bgen;
+import bgeo;
+import bgep;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -18,16 +16,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class BaseHandler
   extends Handler
 {
-  public static ThreadLocal InitalPriority = new anid();
+  static ThreadLocal<Integer> InitalPriority = new bgeo();
   private static final String TAG = "BaseHandler";
   private static final long Time_Lv1 = 20L;
   private static final long Time_Lv2 = 100L;
   private static final long Time_Lv3 = 500L;
   public static volatile boolean isBusy;
-  public static ThreadLocal isRegulated = new anie();
-  public static AtomicInteger regulalteCount = new AtomicInteger(0);
-  static Runnable regultorPriority = new anif();
-  static Runnable resetPriority = new anig();
+  public static ThreadLocal<Boolean> isRegulated = new bgep();
+  static AtomicInteger regulalteCount = new AtomicInteger(0);
+  static Runnable regultorPriority = new BaseHandler.4();
+  static Runnable resetPriority = new BaseHandler.5();
   private Handler.Callback mCallbackEx;
   
   public BaseHandler() {}
@@ -36,7 +34,7 @@ public class BaseHandler
   {
     super(paramLooper);
     if (Looper.getMainLooper() != paramLooper) {
-      paramLooper.setMessageLogging(new anic(this));
+      paramLooper.setMessageLogging(new bgen(this));
     }
   }
   

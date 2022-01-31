@@ -1,32 +1,10 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.qphone.base.util.QLog;
-
-public class akqm
-  extends Handler
+public abstract interface akqm
 {
-  public akqm(HealthBusinessPlugin paramHealthBusinessPlugin) {}
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      QLog.d("HealthBusinessPlugin", 1, "plugin success");
-      return;
-    case 1: 
-      QLog.d("HealthBusinessPlugin", 1, "plugin fail");
-      return;
-    }
-    QLog.d("HealthBusinessPlugin", 1, String.format("plugin install %d", new Object[] { Integer.valueOf(this.a.c) }));
-  }
+  public abstract void a(akrk paramakrk);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akqm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoSyncStoryGuide;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-
-public class oli
-  implements DialogInterface.OnClickListener
+public abstract interface oli
 {
-  public oli(EditVideoSyncStoryGuide paramEditVideoSyncStoryGuide, QQCustomDialog paramQQCustomDialog) {}
+  public abstract void a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-  }
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

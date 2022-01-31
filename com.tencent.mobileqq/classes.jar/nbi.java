@@ -1,27 +1,19 @@
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 import com.tencent.qphone.base.util.QLog;
 
-public class nbi
-  implements ViewTreeObserver.OnGlobalLayoutListener
+final class nbi
+  extends akfx
 {
-  public nbi(PublicAccountImageCollectionCommentActivity paramPublicAccountImageCollectionCommentActivity) {}
-  
-  public void onGlobalLayout()
+  nbi(String paramString)
   {
-    int i = PublicAccountImageCollectionCommentActivity.a(this.a).getRootView().getHeight() - PublicAccountImageCollectionCommentActivity.a(this.a).getHeight();
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ImageCollectionCommentActivity", 2, "heightDiff:" + i);
+    super(paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NativeAdUtils", 2, "getADPosition doStartADLocation onLocationFinish errCode " + paramInt + " info = " + paramSosoLbsInfo);
     }
-    if (i > 150) {
-      PublicAccountImageCollectionCommentActivity.a(this.a, true);
-    }
-    while (!PublicAccountImageCollectionCommentActivity.a(this.a)) {
-      return;
-    }
-    PublicAccountImageCollectionCommentActivity.a(this.a, false);
-    PublicAccountImageCollectionCommentActivity.a(this.a, 0);
   }
 }
 

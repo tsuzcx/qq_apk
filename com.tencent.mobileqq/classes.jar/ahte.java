@@ -1,20 +1,22 @@
-import android.os.Handler;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.VideoFlowDecodeWrapper.FlowListener;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class ahte
-  implements VideoFlowDecodeWrapper.FlowListener
+class ahte
+  extends ajuc
 {
-  public ahte(NeoVideoFilterPlayView paramNeoVideoFilterPlayView) {}
+  ahte(ahtc paramahtc) {}
   
-  public void a()
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    NeoVideoFilterPlayView.a(this.a).sendEmptyMessage(1);
+    Bitmap localBitmap = this.a.a.a(113, paramString, false, 0);
+    if (localBitmap != null) {
+      ahtc.a(this.a, paramString, localBitmap);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahte
  * JD-Core Version:    0.7.0.1
  */

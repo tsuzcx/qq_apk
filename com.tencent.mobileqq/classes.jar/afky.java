@@ -1,48 +1,53 @@
-import android.content.res.Resources;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.widget.immersive.ImmersiveTitleBar2;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import mqq.os.MqqHandler;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class afky
-  implements Animation.AnimationListener
+  extends WtloginObserver
 {
-  public afky(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  public afky(ChatHistoryC2CAllFragment paramChatHistoryC2CAllFragment, long paramLong, boolean paramBoolean) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    if (paramAnimation == NearbyProfileDisplayTribePanel.b(this.a))
+    int i = 1;
+    boolean bool;
+    if (QLog.isColorLevel())
     {
-      NearbyProfileDisplayTribePanel.a(this.a).setVisibility(8);
-      NearbyProfileDisplayTribePanel.a(this.a).setVisibility(4);
-      NearbyProfileDisplayTribePanel.a(this.a).clearAnimation();
-      NearbyProfileDisplayTribePanel.a(this.a).clearAnimation();
-      NearbyProfileDisplayTribePanel.a(this.a).setBackgroundResource(2130845349);
-      NearbyProfileDisplayTribePanel.a(this.a).setTextColor(this.a.a.getResources().getColor(2131494194));
-      NearbyProfileDisplayTribePanel.b(this.a).setTextColor(this.a.a.getResources().getColor(2131494194));
+      long l = System.currentTimeMillis();
+      paramWUserSigInfo = new StringBuilder().append("CheckDevLockStatus ret: ").append(paramInt).append(", has devinfo: ");
+      if (paramDevlockInfo == null)
+      {
+        bool = true;
+        QLog.d("Q.history.C2CAllFragment", 2, bool + ", cost: " + (l - this.jdField_a_of_type_Long) + "ms");
+      }
     }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (paramAnimation == NearbyProfileDisplayTribePanel.a(this.a))
+    else
     {
-      NearbyProfileDisplayTribePanel.a(this.a).setVisibility(0);
-      NearbyProfileDisplayTribePanel.a(this.a).setVisibility(0);
-      NearbyProfileDisplayTribePanel.a(this.a).setBackgroundResource(2130846346);
-      NearbyProfileDisplayTribePanel.a(this.a).setTextColor(this.a.a.getResources().getColor(2131494216));
-      NearbyProfileDisplayTribePanel.b(this.a).setTextColor(this.a.a.getResources().getColor(2131494216));
+      paramWUserSigInfo = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.a.obtainMessage(40);
+      paramWUserSigInfo.arg1 = paramInt;
+      if (!this.jdField_a_of_type_Boolean) {
+        break label135;
+      }
+    }
+    label135:
+    for (paramInt = i;; paramInt = 0)
+    {
+      paramWUserSigInfo.arg2 = paramInt;
+      paramWUserSigInfo.obj = paramDevlockInfo;
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.a.sendMessage(paramWUserSigInfo);
+      return;
+      bool = false;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afky
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,10 @@
 package com.dataline.activities;
 
+import ajjy;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.TextView;
-import cl;
+import co;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 
 public class PrinterDefaultActivity
@@ -11,19 +12,19 @@ public class PrinterDefaultActivity
 {
   private void a()
   {
-    ((TextView)findViewById(2131363262)).setVisibility(8);
-    TextView localTextView = (TextView)findViewById(2131363447);
+    ((TextView)findViewById(2131302804)).setVisibility(8);
+    TextView localTextView = (TextView)findViewById(2131302832);
     localTextView.setVisibility(0);
-    localTextView.setText("关闭");
-    localTextView.setOnClickListener(new cl(this));
+    localTextView.setText(ajjy.a(2131642637));
+    localTextView.setOnClickListener(new co(this));
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.getWindow().setBackgroundDrawableResource(2131492895);
-    setContentView(2130968888);
-    setTitle(2131427673);
+    super.getWindow().setBackgroundDrawableResource(2131099823);
+    setContentView(2131493384);
+    setTitle(2131625782);
     super.getWindow().setBackgroundDrawable(null);
     a();
     return true;
@@ -31,7 +32,7 @@ public class PrinterDefaultActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.dataline.activities.PrinterDefaultActivity
  * JD-Core Version:    0.7.0.1
  */

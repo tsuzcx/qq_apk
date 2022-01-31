@@ -1,5 +1,7 @@
 package dov.com.tencent.mobileqq.richmedia.capture.activity;
 
+import ahhj;
+import ajjy;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -20,44 +22,41 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import aotv;
-import aotw;
-import aoua;
-import aoub;
+import awqt;
+import awtv;
+import axtk;
+import axtm;
+import axtn;
+import axtp;
+import bace;
+import bahx;
+import bbmy;
+import bbsh;
+import beez;
+import begr;
+import bigb;
+import bihj;
+import bjdp;
+import bjdq;
+import bjgh;
+import bjgl;
+import bjlo;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraConstant;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.QIMReportController;
-import com.tencent.mobileqq.statistics.reportitem.QIMReadWriteReportItem;
-import com.tencent.mobileqq.transfile.QIMWebVideoUploader;
-import com.tencent.mobileqq.transfile.QIMWebVideoUploader.IQIMWebVideoUpCallback;
-import com.tencent.mobileqq.transfile.QIMWebVideoUploaderFirstFrame;
-import com.tencent.mobileqq.transfile.QIMWebVideoUploaderFirstFrame.IQIMWebVideoUpCallback;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MqqWeakReferenceHandler;
-import com.tencent.widget.ActionSheet;
 import dov.com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
 import dov.com.tencent.biz.qqstory.takevideo.EditVideoActivity;
 import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
 import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
 import dov.com.tencent.mobileqq.richmedia.capture.view.FadedButton;
-import dov.com.tencent.mobileqq.richmedia.capture.view.ShareActionSheet;
-import dov.com.tencent.mobileqq.richmedia.capture.view.ShareActionSheet.ActionSheetItemViewHolder;
-import dov.com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 import java.io.File;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -65,19 +64,19 @@ import java.util.List;
 
 public class EditWebDanceMachineVideoActivity
   extends EditVideoActivity
-  implements Handler.Callback, View.OnClickListener, AdapterView.OnItemClickListener, QIMWebVideoUploader.IQIMWebVideoUpCallback, QIMWebVideoUploaderFirstFrame.IQIMWebVideoUpCallback
+  implements Handler.Callback, View.OnClickListener, AdapterView.OnItemClickListener, axtm, axtp
 {
   public static int a;
-  private long jdField_a_of_type_Long = -1L;
   private ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private QIMWebVideoUploader jdField_a_of_type_ComTencentMobileqqTransfileQIMWebVideoUploader;
-  private WXShareHelper.WXShareListener jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener;
-  private MqqWeakReferenceHandler jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler;
-  public ShareActionSheet a;
+  private axtk jdField_a_of_type_Axtk;
+  private bbsh jdField_a_of_type_Bbsh;
+  private beez jdField_a_of_type_Beez;
+  public bjgh a;
   private String jdField_a_of_type_JavaLangString = "http://qvq.qq.com/dancing/share.html";
   private byte[] jdField_a_of_type_ArrayOfByte;
   private int jdField_b_of_type_Int;
+  private long jdField_b_of_type_Long = -1L;
   private String jdField_b_of_type_JavaLangString = "?_wv=16777217&_wwv=12&firsttab=102&secondtab=%s&itemid=%s&uuid=%s&md5=%s&uin=%s&nick=%s&score=%s&percent=%s&_wv=16778243&_bid=2932";
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int;
@@ -133,7 +132,9 @@ public class EditWebDanceMachineVideoActivity
         localIntent.setType("image/*");
         localIntent.putExtra("android.intent.extra.TEXT", paramString1 + paramString2);
         localIntent.putExtra("android.intent.extra.STREAM", Uri.fromFile(new File(paramString3)));
+        localIntent.putExtra("big_brother_source_key", "biz_src_jc_camera");
         localIntent.setPackage(((ApplicationInfo)localObject).packageName);
+        FileProvider7Helper.intentCompatForN(BaseApplicationImpl.getApplication(), localIntent);
         BaseApplicationImpl.getApplication().startActivity(localIntent);
         if (QLog.isColorLevel()) {
           QLog.d("DANCE_MACHINE_SHARE_TAG", 2, "shareMsgToSina start weibo!");
@@ -154,9 +155,9 @@ public class EditWebDanceMachineVideoActivity
   private String a()
   {
     if ((this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean)) {
-      return "无乐不作，尽在DOV";
+      return ajjy.a(2131638164);
     }
-    return "今天，我们都是灵魂舞者！";
+    return ajjy.a(2131638153);
   }
   
   private String a(int paramInt1, String paramString1, String paramString2, int paramInt2)
@@ -171,28 +172,28 @@ public class EditWebDanceMachineVideoActivity
       return d();
     }
     if (paramInt2 == 0) {}
-    for (String str = "#DOV高能舞蹈教室#【" + paramString1 + "级】"; "S".equals(paramString1); str = "[DOV高能舞室]") {
-      return str + paramString2 + " " + paramInt1 + "分! 炸翻全场，你们能看清我的舞步吗？";
+    for (String str = "#DOV高能舞蹈教室#【" + paramString1 + ajjy.a(2131638163); "S".equals(paramString1); str = "[DOV高能舞室]") {
+      return str + paramString2 + " " + paramInt1 + ajjy.a(2131638169) + ajjy.a(2131638162);
     }
     if ("A".equals(paramString1)) {
-      return str + paramString2 + " " + paramInt1 + "分! 可以说是世间尬舞奇才了。";
+      return str + paramString2 + " " + paramInt1 + ajjy.a(2131638160) + ajjy.a(2131638173);
     }
     if ("B".equals(paramString1)) {
-      return str + paramString2 + " " + paramInt1 + "分! 用这段视频证明我是真正的灵魂舞者。";
+      return str + paramString2 + " " + paramInt1 + ajjy.a(2131638151) + ajjy.a(2131638155);
     }
     if ("C".equals(paramString1)) {
-      return str + paramString2 + " " + paramInt1 + "分! 老师慢点，这舞我快跟不上了。";
+      return str + paramString2 + " " + paramInt1 + ajjy.a(2131638170) + ajjy.a(2131638156);
     }
-    return str + "老师慢点，这舞我快跟不上了。";
+    return str + ajjy.a(2131638165);
   }
   
   private void a(int paramInt)
   {
     String str = "";
-    if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource)) {
-      str = ((EditTakeVideoSource)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_b_of_type_JavaLangString;
+    if ((this.jdField_a_of_type_Bigb.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource)) {
+      str = ((EditTakeVideoSource)this.jdField_a_of_type_Bigb.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_b_of_type_JavaLangString;
     }
-    new aoub(this, this, str, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a(), paramInt, getAppInterface(), this).execute(new Void[0]);
+    new bjdq(this, this, str, this.jdField_a_of_type_Bigb.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a(), paramInt, getAppInterface(), this).execute(new Void[0]);
   }
   
   private void a(Context paramContext, int paramInt)
@@ -200,7 +201,7 @@ public class EditWebDanceMachineVideoActivity
     try
     {
       if (this.jdField_a_of_type_AndroidAppProgressDialog != null) {
-        d();
+        g();
       }
       for (;;)
       {
@@ -210,11 +211,11 @@ public class EditWebDanceMachineVideoActivity
         }
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
         return;
-        this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(paramContext, 2131624516);
+        this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(paramContext, 2131690181);
         this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(false);
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
-        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969178);
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363418));
+        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131493818);
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131305861));
       }
       return;
     }
@@ -283,32 +284,32 @@ public class EditWebDanceMachineVideoActivity
     }
   }
   
-  private List[] a(Context paramContext)
+  private List<bahx>[] a(Context paramContext)
   {
     ArrayList localArrayList = new ArrayList();
-    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131433018);
-    localActionSheetItem.jdField_b_of_type_Int = 2130845624;
-    localActionSheetItem.jdField_a_of_type_Boolean = true;
-    localActionSheetItem.jdField_c_of_type_Int = 2;
-    localActionSheetItem.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localActionSheetItem);
-    localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430128);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838345;
-    localActionSheetItem.jdField_c_of_type_Int = 9;
-    localActionSheetItem.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localActionSheetItem);
-    localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430129);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838339;
-    localActionSheetItem.jdField_c_of_type_Int = 10;
-    localActionSheetItem.jdField_b_of_type_JavaLangString = "";
-    localArrayList.add(localActionSheetItem);
-    paramContext = new ShareActionSheetBuilder.ActionSheetItem();
-    paramContext.jdField_a_of_type_JavaLangString = "新浪微博";
-    paramContext.jdField_a_of_type_Boolean = true;
-    paramContext.jdField_b_of_type_Int = 2130838344;
+    bahx localbahx = new bahx();
+    localbahx.jdField_a_of_type_JavaLangString = paramContext.getString(2131624591);
+    localbahx.jdField_b_of_type_Int = 2130848410;
+    localbahx.jdField_b_of_type_Boolean = true;
+    localbahx.jdField_c_of_type_Int = 2;
+    localbahx.jdField_b_of_type_JavaLangString = "";
+    localArrayList.add(localbahx);
+    localbahx = new bahx();
+    localbahx.jdField_a_of_type_JavaLangString = paramContext.getString(2131631003);
+    localbahx.jdField_b_of_type_Int = 2130838736;
+    localbahx.jdField_c_of_type_Int = 9;
+    localbahx.jdField_b_of_type_JavaLangString = "";
+    localArrayList.add(localbahx);
+    localbahx = new bahx();
+    localbahx.jdField_a_of_type_JavaLangString = paramContext.getString(2131630986);
+    localbahx.jdField_b_of_type_Int = 2130838730;
+    localbahx.jdField_c_of_type_Int = 10;
+    localbahx.jdField_b_of_type_JavaLangString = "";
+    localArrayList.add(localbahx);
+    paramContext = new bahx();
+    paramContext.jdField_a_of_type_JavaLangString = ajjy.a(2131638174);
+    paramContext.jdField_b_of_type_Boolean = true;
+    paramContext.jdField_b_of_type_Int = 2130838735;
     paramContext.jdField_c_of_type_Int = 12;
     paramContext.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(paramContext);
@@ -317,45 +318,60 @@ public class EditWebDanceMachineVideoActivity
   
   private String b()
   {
-    return "我在DOV集到了" + this.jdField_c_of_type_Int + "个福气。新春新玩法，快来挑战我吧!";
-  }
-  
-  private void b(int paramInt)
-  {
-    if ((TextUtils.isEmpty(this.q)) || (TextUtils.isEmpty(this.p))) {
-      return;
-    }
-    QIMReadWriteReportItem localQIMReadWriteReportItem = new QIMReadWriteReportItem();
-    if ((this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean))
-    {
-      localQIMReadWriteReportItem.jdField_d_of_type_JavaLangString = "0X800903E";
-      if (paramInt != 0) {
-        break label90;
-      }
-      localQIMReadWriteReportItem.h = String.valueOf(4);
-    }
-    for (;;)
-    {
-      QIMReportController.b(null, localQIMReadWriteReportItem);
-      ThreadManager.executeOnSubThread(new aotw(this, paramInt));
-      return;
-      localQIMReadWriteReportItem.jdField_d_of_type_JavaLangString = "0X8008FB3";
-      break;
-      label90:
-      if (paramInt == 1) {
-        localQIMReadWriteReportItem.h = String.valueOf(2);
-      } else if (paramInt == 2) {
-        localQIMReadWriteReportItem.h = String.valueOf(3);
-      }
-    }
+    return "我在DOV集到了" + this.jdField_c_of_type_Int + ajjy.a(2131638167);
   }
   
   private String c()
   {
-    return "【DOV神预测】快来看看" + getAppInterface().getCurrentNickname() + "的今日运势！";
+    return ajjy.a(2131638171) + getAppInterface().getCurrentNickname() + ajjy.a(2131638166);
   }
   
-  private void c()
+  private void c(int paramInt)
+  {
+    if ((TextUtils.isEmpty(this.q)) || (TextUtils.isEmpty(this.p))) {
+      return;
+    }
+    awtv localawtv = new awtv();
+    if ((this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean))
+    {
+      localawtv.jdField_d_of_type_JavaLangString = "0X800903E";
+      if (paramInt != 0) {
+        break label90;
+      }
+      localawtv.h = String.valueOf(4);
+    }
+    for (;;)
+    {
+      awqt.a(null, localawtv);
+      ThreadManager.executeOnSubThread(new EditWebDanceMachineVideoActivity.2(this, paramInt));
+      return;
+      localawtv.jdField_d_of_type_JavaLangString = "0X8008FB3";
+      break;
+      label90:
+      if (paramInt == 1) {
+        localawtv.h = String.valueOf(2);
+      } else if (paramInt == 2) {
+        localawtv.h = String.valueOf(3);
+      }
+    }
+  }
+  
+  private void c(int paramInt, String paramString)
+  {
+    g();
+    this.jdField_a_of_type_Beez.removeMessages(-1);
+    runOnUiThread(new EditWebDanceMachineVideoActivity.1(this));
+    if (QLog.isColorLevel()) {
+      QLog.e("DANCE_MACHINE_SHARE_TAG", 2, "upload failed, error code is " + paramInt + " error description : " + paramString);
+    }
+  }
+  
+  private String d()
+  {
+    return ajjy.a(2131638172);
+  }
+  
+  private void f()
   {
     Object localObject = getIntent().getParcelableExtra(EditVideoParams.class.getName());
     if (localObject != null)
@@ -383,22 +399,7 @@ public class EditWebDanceMachineVideoActivity
     }
   }
   
-  private void c(int paramInt, String paramString)
-  {
-    d();
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(-1);
-    runOnUiThread(new aotv(this));
-    if (QLog.isColorLevel()) {
-      QLog.e("DANCE_MACHINE_SHARE_TAG", 2, "upload failed, error code is " + paramInt + " error description : " + paramString);
-    }
-  }
-  
-  private String d()
-  {
-    return "2018年最囧新闻新鲜出炉，笑点低的请尽快撤离……";
-  }
-  
-  private void d()
+  private void g()
   {
     try
     {
@@ -414,10 +415,10 @@ public class EditWebDanceMachineVideoActivity
   
   public void a()
   {
-    d();
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(-1);
-    if (this.jdField_a_of_type_Long != -1L) {
-      this.jdField_a_of_type_Long = (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long);
+    g();
+    this.jdField_a_of_type_Beez.removeMessages(-1);
+    if (this.jdField_b_of_type_Long != -1L) {
+      this.jdField_b_of_type_Long = (SystemClock.elapsedRealtime() - this.jdField_b_of_type_Long);
     }
     if (QLog.isColorLevel()) {
       QLog.d("DANCE_MACHINE_SHARE_TAG", 2, "[DanceMachine Share] new  uuid : " + this.n + "  md5 : " + this.o + "  thumbPath : " + this.p);
@@ -447,7 +448,7 @@ public class EditWebDanceMachineVideoActivity
           if (QLog.isColorLevel()) {
             QLog.d("DANCE_MACHINE_SHARE_TAG", 2, "[DanceMachine Share] share  uuid : " + this.n + "  md5 : " + this.o + "  thumbPath : " + this.p + "  shareUrl : " + str3 + "  shareStr : " + str1);
           }
-          b(this.jdField_d_of_type_Int);
+          c(this.jdField_d_of_type_Int);
           return;
         }
       }
@@ -483,11 +484,13 @@ public class EditWebDanceMachineVideoActivity
     c(paramInt, paramString);
   }
   
-  protected void b()
+  public void a(String paramString)
   {
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager == null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager = new aoua(this);
+    if (QLog.isColorLevel()) {
+      QLog.d("DANCE_MACHINE_SHARE_TAG", 2, "video upload success, uuid : " + paramString);
     }
+    this.n = paramString;
+    new axtn(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this, this.p, this.jdField_a_of_type_ArrayOfByte, ahhj.jdField_b_of_type_Int, paramString).a();
   }
   
   public void b(int paramInt, String paramString)
@@ -498,33 +501,31 @@ public class EditWebDanceMachineVideoActivity
     c(paramInt, paramString);
   }
   
-  public void d_(String paramString)
+  public void d()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DANCE_MACHINE_SHARE_TAG", 2, "video upload success, uuid : " + paramString);
+    if (this.jdField_a_of_type_Bigb == null) {
+      this.jdField_a_of_type_Bigb = new bjdp(this);
     }
-    this.n = paramString;
-    new QIMWebVideoUploaderFirstFrame(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this, this.p, this.jdField_a_of_type_ArrayOfByte, FlowCameraConstant.jdField_b_of_type_Int, paramString).a();
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     this.jdField_a_of_type_Boolean = false;
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler = new MqqWeakReferenceHandler(this);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.c(0);
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi == null)
+    this.jdField_a_of_type_Beez = new beez(this);
+    this.jdField_a_of_type_Bigb.c(0);
+    if (this.jdField_a_of_type_Bigb.jdField_a_of_type_Bihj == null)
     {
       finish();
       return true;
     }
-    c();
-    paramBundle = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a().findViewById(2131364375);
+    f();
+    paramBundle = this.jdField_a_of_type_Bigb.jdField_a_of_type_Bihj.a().findViewById(2131307110);
     ((ViewGroup)paramBundle.getParent()).removeView(paramBundle);
-    paramBundle = (RelativeLayout)findViewById(2131364484);
+    paramBundle = (RelativeLayout)findViewById(2131298212);
     Object localObject = paramBundle.getLayoutParams();
     RelativeLayout localRelativeLayout = new RelativeLayout(this);
-    ((ViewGroup.LayoutParams)localObject).height = ScreenUtil.a(73.0F);
+    ((ViewGroup.LayoutParams)localObject).height = bjlo.a(73.0F);
     localRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
     ((ViewGroup)paramBundle.getParent()).addView(localRelativeLayout);
     paramBundle = new GradientDrawable();
@@ -535,7 +536,7 @@ public class EditWebDanceMachineVideoActivity
       paramBundle.setStroke(0, Color.parseColor("#12B7F5"));
       localObject = new FadedButton(this);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-      int i1 = ScreenUtil.a(15.0F);
+      int i1 = bjlo.a(15.0F);
       localLayoutParams.topMargin = i1;
       localLayoutParams.bottomMargin = i1;
       localLayoutParams.leftMargin = i1;
@@ -545,52 +546,51 @@ public class EditWebDanceMachineVideoActivity
       ((FadedButton)localObject).setTextSize(1, 18.0F);
       ((FadedButton)localObject).setTextColor(-1);
       if (!this.jdField_b_of_type_Boolean) {
-        break label370;
+        break label373;
       }
     }
-    label370:
-    for (paramBundle = "立即分享";; paramBundle = "分享给好友")
+    label373:
+    for (paramBundle = ajjy.a(2131638175);; paramBundle = ajjy.a(2131638157))
     {
       ((FadedButton)localObject).setText(paramBundle);
       ((FadedButton)localObject).setGravity(17);
       ((FadedButton)localObject).setOnClickListener(this);
       localRelativeLayout.addView((View)localObject);
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewShareActionSheet = new ShareActionSheet(this);
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewShareActionSheet.a(a(this));
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewShareActionSheet.a(this);
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewShareActionSheet.a(getString(2131433114));
+      this.jdField_a_of_type_Bjgh = new bjgh(this);
+      this.jdField_a_of_type_Bjgh.a(a(this));
+      this.jdField_a_of_type_Bjgh.a(this);
+      this.jdField_a_of_type_Bjgh.a(getString(2131653614));
       return true;
       paramBundle.setColor(Color.parseColor("#12B7F5"));
       break;
     }
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
     if (!TextUtils.isEmpty(this.p)) {
-      FileUtils.a(new File(this.p).getParent());
+      bace.a(new File(this.p).getParent());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener != null) {
-      WXShareHelper.a().b(this.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
+    if (this.jdField_a_of_type_Bbsh != null) {
+      WXShareHelper.a().b(this.jdField_a_of_type_Bbsh);
     }
-    if ((jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null))
+    if ((jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Bigb.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null))
     {
-      String str = new File(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a()).getParent();
+      String str = new File(this.jdField_a_of_type_Bigb.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a()).getParent();
       if (str != null) {
-        FileUtils.a(str);
+        bace.a(str);
       }
     }
   }
   
-  protected void doOnResume()
+  public void doOnResume()
   {
     super.doOnResume();
-    ((RelativeLayout)findViewById(2131364484)).setVisibility(8);
-    ((Button)findViewById(2131364485)).setVisibility(8);
+    ((RelativeLayout)findViewById(2131298212)).setVisibility(8);
     if ((this.jdField_b_of_type_Boolean) || (this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean))
     {
-      DoodleLayout localDoodleLayout = (DoodleLayout)findViewById(2131362976);
+      DoodleLayout localDoodleLayout = (DoodleLayout)findViewById(2131299744);
       if ((localDoodleLayout != null) && (localDoodleLayout.a != null)) {
         localDoodleLayout.a.setPreventTouch(true);
       }
@@ -604,32 +604,32 @@ public class EditWebDanceMachineVideoActivity
     default: 
       return false;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTransfileQIMWebVideoUploader.a();
-    d();
-    QQToast.a(this, 1, "上传失败", 0).a();
+    this.jdField_a_of_type_Axtk.a();
+    g();
+    bbmy.a(this, 1, ajjy.a(2131638158), 0).a();
     return false;
   }
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewShareActionSheet.a();
+    this.jdField_a_of_type_Bjgh.a();
     if ((this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean))
     {
-      paramView = new QIMReadWriteReportItem();
+      paramView = new awtv();
       paramView.jdField_d_of_type_JavaLangString = "0X800903C";
-      QIMReportController.b(null, paramView);
+      awqt.a(null, paramView);
     }
   }
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewShareActionSheet.a().isShowing()) {
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewShareActionSheet.a().dismiss();
+    if (this.jdField_a_of_type_Bjgh.a().isShowing()) {
+      this.jdField_a_of_type_Bjgh.a().dismiss();
     }
-    paramInt = ((ShareActionSheet.ActionSheetItemViewHolder)paramView.getTag()).a.jdField_c_of_type_Int;
+    paramInt = ((bjgl)paramView.getTag()).a.jdField_c_of_type_Int;
     if ((paramInt == 9) || (paramInt == 10)) {
       if (!WXShareHelper.a().a()) {
-        paramAdapterView = "你未安装微信客户端，无法分享。";
+        paramAdapterView = ajjy.a(2131638149);
       }
     }
     for (;;)
@@ -637,10 +637,10 @@ public class EditWebDanceMachineVideoActivity
       if (!TextUtils.isEmpty(paramAdapterView))
       {
         jdField_a_of_type_Int = -1;
-        QQToast.a(this, 1, paramAdapterView, 0).a();
+        bbmy.a(this, 1, paramAdapterView, 0).a();
         return;
         if (!WXShareHelper.a().b()) {
-          paramAdapterView = "微信版本过低,无法分享";
+          paramAdapterView = ajjy.a(2131638161);
         }
       }
       else
@@ -653,25 +653,25 @@ public class EditWebDanceMachineVideoActivity
         case 2: 
           if ((this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean))
           {
-            paramAdapterView = new QIMReadWriteReportItem();
+            paramAdapterView = new awtv();
             paramAdapterView.jdField_d_of_type_JavaLangString = "0X800903E";
             paramAdapterView.h = String.valueOf(1);
-            QIMReportController.b(null, paramAdapterView);
+            awqt.a(null, paramAdapterView);
           }
           for (;;)
           {
-            this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.d();
+            this.jdField_a_of_type_Bigb.d();
             return;
-            paramAdapterView = new QIMReadWriteReportItem();
+            paramAdapterView = new awtv();
             paramAdapterView.jdField_d_of_type_JavaLangString = "0X8008FB3";
             paramAdapterView.h = String.valueOf(1);
-            QIMReportController.b(null, paramAdapterView);
+            awqt.a(null, paramAdapterView);
           }
         case 9: 
           this.e = 1;
           if (a())
           {
-            b(1);
+            c(1);
             return;
           }
           a(1);
@@ -680,7 +680,7 @@ public class EditWebDanceMachineVideoActivity
           this.e = 2;
           if (a())
           {
-            b(2);
+            c(2);
             return;
           }
           a(2);
@@ -689,7 +689,7 @@ public class EditWebDanceMachineVideoActivity
         this.e = 0;
         if (a())
         {
-          b(0);
+          c(0);
           return;
         }
         a(0);

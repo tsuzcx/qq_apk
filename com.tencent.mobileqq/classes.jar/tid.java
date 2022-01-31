@@ -1,30 +1,20 @@
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.media.AudioManager.OnAudioFocusChangeListener;
 
 class tid
-  implements Runnable
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  tid(tic paramtic) {}
+  tid(tia paramtia) {}
   
-  public void run()
+  public void onAudioFocusChange(int paramInt)
   {
-    try
-    {
-      Thread.sleep(1500L);
-      this.a.a.a.a();
-      return;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
-      }
+    if (((paramInt == -1) || (paramInt == -2) || (paramInt == -3)) && (tia.a(this.a))) {
+      this.a.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tid
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,20 @@
-import com.tencent.ark.ark.Application;
-import com.tencent.mobileqq.ark.ArkAiAppCenter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
 
 public class aayg
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aayg(ArkAiAppCenter paramArkAiAppCenter, String[] paramArrayOfString) {}
+  public aayg(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ark.Application.SetUrlCheckingList(this.jdField_a_of_type_ArrayOfJavaLangString, 0);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aayg
  * JD-Core Version:    0.7.0.1
  */

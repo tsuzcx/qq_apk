@@ -1,21 +1,13 @@
-import com.tencent.mobileqq.filemanager.fileviewer.model.C2CFileModel;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnTransEventListener;
-
-class adkp
-  implements Runnable
+public class adkp
 {
-  adkp(adko paramadko) {}
-  
-  public void run()
+  public static boolean a(String paramString)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.f();
-    }
+    return ("2658655094".equals(paramString)) || ("3142131160".equals(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adkp
  * JD-Core Version:    0.7.0.1
  */

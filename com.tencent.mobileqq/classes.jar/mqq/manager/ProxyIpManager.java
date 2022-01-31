@@ -12,21 +12,9 @@ public abstract interface ProxyIpManager
   public static final int PROXY_SSO = 0;
   public static final int PROXY_TCP_COMMON = 1;
   
-  public abstract List<ProxyIp> getProxyIp(int paramInt);
+  public abstract List<ProxyIpManager.ProxyIp> getProxyIp(int paramInt);
   
   public abstract void reloadCache(String paramString, boolean paramBoolean);
-  
-  public static class ProxyIp
-  {
-    public String ip;
-    public int port;
-    public int type;
-    
-    public String toString()
-    {
-      return this.ip + ":" + this.port + ":" + this.type;
-    }
-  }
 }
 
 

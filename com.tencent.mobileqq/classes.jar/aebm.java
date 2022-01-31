@@ -1,73 +1,25 @@
-import com.tencent.mobileqq.imaxad.ImaxAdUtil;
-import com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.crmqq.structmsg.StructMsg.ButtonInfo;
 
-public class aebm
-  implements INetInfoHandler
+class aebm
+  implements woy
 {
-  ImaxAdVideoPreloadManager a;
+  aebm(aebk paramaebk) {}
   
-  public aebm(ImaxAdVideoPreloadManager paramImaxAdVideoPreloadManager1, ImaxAdVideoPreloadManager paramImaxAdVideoPreloadManager2)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    this.a = paramImaxAdVideoPreloadManager2;
-  }
-  
-  public void a()
-  {
-    this.a = null;
-  }
-  
-  public void onNetMobile2None()
-  {
-    ImaxAdUtil.b("onNetMobile2None");
-    if (this.a != null) {
-      ImaxAdVideoPreloadManager.c(this.a);
-    }
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    ImaxAdUtil.b("onNetMobile2Wifi");
-    if (this.a != null) {
-      ImaxAdVideoPreloadManager.c(this.a);
-    }
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    ImaxAdUtil.b("onNetNone2Mobile");
-    if (this.a != null) {
-      ImaxAdVideoPreloadManager.c(this.a);
-    }
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    ImaxAdUtil.b("onNetNone2Wifi");
-    if (this.a != null) {
-      ImaxAdVideoPreloadManager.c(this.a);
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    ImaxAdUtil.b("onNetWifi2Mobile");
-    if (this.a != null) {
-      ImaxAdVideoPreloadManager.c(this.a);
-    }
-  }
-  
-  public void onNetWifi2None()
-  {
-    ImaxAdUtil.b("onNetWifi2None");
-    if (this.a != null) {
-      ImaxAdVideoPreloadManager.c(this.a);
-    }
+    aciy.n = true;
+    this.a.p.setVisibility(0);
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 10000L);
+    StructMsg.ButtonInfo localButtonInfo = this.a.a(paramInt1);
+    annt.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(paramString, this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), localButtonInfo);
+    awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Bqq_Crm", "", "Aio_menu", "Clk_menu", 0, 0, this.a.a(), paramInt1 + "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aebm
  * JD-Core Version:    0.7.0.1
  */

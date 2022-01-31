@@ -1,47 +1,40 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.emoticonview.StickerGestureDetector;
-import com.tencent.mobileqq.vas.VasH5PayUtil;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.anim.VoicePrintUtils.VoicePrintView;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class acpc
-  implements DialogInterface.OnClickListener
+  extends AsyncTask<String, Void, Bitmap>
 {
-  public acpc(StickerGestureDetector paramStickerGestureDetector) {}
+  public acpc(VoicePrintUtils.VoicePrintView paramVoicePrintView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected Bitmap a(String... paramVarArgs)
   {
-    paramDialogInterface = this.a.jdField_a_of_type_AndroidContentContext.getString(2131436963);
-    VasH5PayUtil.a(null, this.a.jdField_a_of_type_AndroidContentContext, "mvip.g.a.bq_tz", 3, "1450000515", "CJCLUBT", paramDialogInterface, "", false, true);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
+    paramVarArgs = paramVarArgs[0];
+    if (BaseApplicationImpl.sImageCache.get(paramVarArgs) == null)
     {
-      if (EmojiStickerManager.a().a != 0) {
-        break label103;
+      Bitmap localBitmap = BubbleManager.a(paramVarArgs, this.a.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("VoicePrintUtils.DecodePngTask", 2, "decode " + paramVarArgs + "in background.");
       }
-      paramInt = 1;
+      BaseApplicationImpl.sImageCache.put(paramVarArgs, localBitmap);
     }
-    for (;;)
-    {
-      VasWebviewUtil.reportCommercialDrainage(this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.c(), "Stick", "ClickSVIPTip", String.valueOf(paramInt), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
-      return;
-      label103:
-      if (EmojiStickerManager.a().a == 1) {
-        paramInt = 2;
-      } else if (EmojiStickerManager.a().a == 3000) {
-        paramInt = 3;
-      } else {
-        paramInt = -1;
-      }
-    }
+    return null;
+  }
+  
+  protected void a(Bitmap paramBitmap)
+  {
+    VoicePrintUtils.VoicePrintView.a(this.a);
+    this.a.setImageDrawable(VoicePrintUtils.VoicePrintView.a(this.a));
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acpc
  * JD-Core Version:    0.7.0.1
  */

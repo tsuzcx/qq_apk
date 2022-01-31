@@ -1,19 +1,20 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
-import com.tencent.mobileqq.shortvideo.ptvfilter.material.QQVideoMaterial;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.Comparator;
 
-public class oor
-  implements Runnable
+class oor
+  implements Comparator<ArticleInfo>
 {
-  public oor(PersonalityOperator paramPersonalityOperator, QQVideoMaterial paramQQVideoMaterial) {}
+  oor(ooq paramooq) {}
   
-  public void run()
+  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
   {
-    long l1 = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodlePersonalityOperator.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial.getId());
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodlePersonalityOperator.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodlePersonalityOperator.a, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodlePersonalityOperator.b, 1.0D);
-    long l2 = System.currentTimeMillis();
-    SLog.b("PersonalityOperator", "setVideoFilter " + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial.getId() + " t:" + (l2 - l1));
+    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
+      return 0;
+    }
+    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
+      return -1;
+    }
+    return 1;
   }
 }
 

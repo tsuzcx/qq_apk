@@ -1,26 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
 class aaxn
-  implements DialogInterface.OnClickListener
+  implements axle
 {
-  aaxn(aaxl paramaaxl, QQCustomDialog paramQQCustomDialog) {}
+  aaxn(aaxm paramaaxm, CompoundButton paramCompoundButton, boolean paramBoolean, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      return;
-    }
-    catch (Exception paramDialogInterface) {}
+    this.jdField_a_of_type_Aaxm.a.a(this.jdField_a_of_type_AndroidWidgetCompoundButton, false);
+  }
+  
+  public void onConfirm()
+  {
+    this.jdField_a_of_type_Aaxm.a.b();
+    GeneralSettingActivity.a(this.jdField_a_of_type_Aaxm.a, this.jdField_a_of_type_AndroidWidgetCompoundButton, true, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaxn
  * JD-Core Version:    0.7.0.1
  */

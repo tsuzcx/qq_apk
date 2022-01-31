@@ -1,8 +1,8 @@
 package com.tencent.component.media.image;
 
-public abstract interface Releaser
+public abstract interface Releaser<T>
 {
-  public abstract void release(Object paramObject);
+  public abstract void release(T paramT);
 }
 
 

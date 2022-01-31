@@ -1,14 +1,14 @@
 package cooperation.qzone.model;
 
-import ancp;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bfwu;
 
 public class WeishiPictureUrl
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ancp();
+  public static final Parcelable.Creator<WeishiPictureUrl> CREATOR = new bfwu();
   public int a;
   public PictureUrl a;
   

@@ -1,20 +1,35 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.portal.ConversationHongBao;
+import org.json.JSONObject;
 
 public class agqm
-  implements View.OnClickListener
 {
-  public agqm(ConversationHongBao paramConversationHongBao) {}
+  public int a;
+  public String a;
+  public JSONObject a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onClick(View paramView)
+  public agqm() {}
+  
+  public agqm(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    this.a.b();
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.e = paramString5;
+  }
+  
+  public String toString()
+  {
+    return "id: " + this.jdField_a_of_type_JavaLangString + " type: " + this.jdField_a_of_type_Int + " name: " + this.b + " params: " + this.jdField_a_of_type_OrgJsonJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agqm
  * JD-Core Version:    0.7.0.1
  */

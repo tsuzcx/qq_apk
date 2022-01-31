@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
 import com.tencent.tmassistant.common.a.c;
 import com.tencent.tmassistant.common.a.d;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ac;
 
 public class b
   implements c
@@ -31,7 +31,7 @@ public class b
       }
       catch (Exception parama)
       {
-        r.c("ClientInfoTable", "exception: ", parama);
+        ac.c("ClientInfoTable", "exception: ", parama);
         parama.printStackTrace();
       }
     }
@@ -64,7 +64,7 @@ public class b
     }
     catch (Exception parama)
     {
-      r.c("ClientInfoTable", "exception: ", parama);
+      ac.c("ClientInfoTable", "exception: ", parama);
       parama.printStackTrace();
     }
   }
@@ -82,7 +82,7 @@ public class b
     }
     catch (Exception paramString)
     {
-      r.c("ClientInfoTable", "exception: ", paramString);
+      ac.c("ClientInfoTable", "exception: ", paramString);
       paramString.printStackTrace();
     }
   }
@@ -112,7 +112,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.storage.table.b
  * JD-Core Version:    0.7.0.1
  */

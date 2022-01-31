@@ -1,20 +1,49 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class ugw
-  implements View.OnClickListener
+  extends QQUIEventReceiver<ugr, sjc>
 {
-  public ugw(TroopMemberListActivity paramTroopMemberListActivity) {}
-  
-  public void onClick(View paramView)
+  public ugw(ugr paramugr)
   {
-    this.a.finish();
+    super(paramugr);
+  }
+  
+  public void a(@NonNull ugr paramugr, @NonNull sjc paramsjc)
+  {
+    if (paramsjc.a.isSuccess())
+    {
+      if (!paramsjc.a()) {
+        break label25;
+      }
+      urk.c("Q.qqstory.memories.ProfileFeedPresenter", "ignore this upload status event, because it's a troop video.");
+    }
+    label25:
+    do
+    {
+      do
+      {
+        return;
+        if (paramsjc.c())
+        {
+          urk.b("Q.qqstory.memories.ProfileFeedPresenter", "receive share group video upload status change event. %s.", paramsjc.toString());
+          return;
+        }
+      } while (!paramsjc.b());
+      urk.a("Q.qqstory.memories.ProfileFeedPresenter", "receive personal video upload status change event. %s. start to refresh year node list", paramsjc.toString());
+    } while (paramsjc.b == null);
+    ugr.a(paramugr, true);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return sjc.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ugw
  * JD-Core Version:    0.7.0.1
  */

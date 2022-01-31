@@ -1,23 +1,37 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.aio.ForwardUtils.Section_Pic;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public final class uqm
-  implements Parcelable.Creator
+public class uqm
+  extends QQUIEventReceiver<upw, sjc>
 {
-  public ForwardUtils.Section_Pic a(Parcel paramParcel)
+  public uqm(@NonNull upw paramupw)
   {
-    return new ForwardUtils.Section_Pic(paramParcel);
+    super(paramupw);
   }
   
-  public ForwardUtils.Section_Pic[] a(int paramInt)
+  public void a(@NonNull upw paramupw, @NonNull sjc paramsjc)
   {
-    return new ForwardUtils.Section_Pic[paramInt];
+    if (paramsjc.a())
+    {
+      urk.b(this.TAG, "group video upload");
+      return;
+    }
+    if (!paramsjc.b())
+    {
+      urk.b(this.TAG, "ignore personal video");
+      return;
+    }
+    paramupw.a(paramsjc);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return sjc.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uqm
  * JD-Core Version:    0.7.0.1
  */

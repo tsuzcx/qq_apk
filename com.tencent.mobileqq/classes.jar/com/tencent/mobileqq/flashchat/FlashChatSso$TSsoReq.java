@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class FlashChatSso$TSsoReq
-  extends MessageMicro
+  extends MessageMicro<TSsoReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "i32_cmd", "i32_implat", "str_qq_ver" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), "" }, TSsoReq.class);
   public final PBInt32Field i32_cmd = PBField.initInt32(0);

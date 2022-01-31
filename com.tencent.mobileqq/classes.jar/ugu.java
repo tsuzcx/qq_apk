@@ -1,21 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode;
+import java.util.List;
 
 public class ugu
-  implements View.OnClickListener
+  extends sfo
 {
-  public ugu(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public List<MomeriesYearNode> a;
+  public boolean a;
   
-  public void onClick(View paramView)
+  public ugu(ugr paramugr, ErrorMessage paramErrorMessage)
   {
-    this.a.setResult(0, this.a.getIntent());
-    this.a.finish();
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ugu
  * JD-Core Version:    0.7.0.1
  */

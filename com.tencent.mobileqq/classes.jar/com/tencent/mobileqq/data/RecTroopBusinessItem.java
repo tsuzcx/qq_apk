@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class RecTroopBusinessItem
-  extends Entity
+  extends atmo
 {
   public String btnText;
   public String des;
   public long endTime;
   public String iconUrl;
-  @unique
+  @atoc
   public String id;
   public String jumpParam;
   public int jumpType;

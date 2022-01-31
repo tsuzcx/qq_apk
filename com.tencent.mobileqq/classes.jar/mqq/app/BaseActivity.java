@@ -1,20 +1,81 @@
 package mqq.app;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.util.DisplayMetrics;
+import android.util.SparseArray;
+import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
 
 public class BaseActivity
   extends Activity
 {
+  public static Locale locale;
+  public static int localeId;
   private AppRuntime app;
   private boolean isResume;
   protected boolean mIsShadow;
+  private SparseArray<List> mPermissionCallerMap = new SparseArray();
   private AppRuntime mProcRuntime;
   private MobileQQ mqq;
+  
+  private boolean isActivityLocaleUpdated(Locale paramLocale)
+  {
+    if ((locale == null) || (paramLocale == null)) {}
+    boolean bool1;
+    boolean bool2;
+    do
+    {
+      return false;
+      bool1 = locale.getLanguage().equals(paramLocale.getLanguage());
+      bool2 = locale.getCountry().equals(paramLocale.getCountry());
+    } while ((bool1) && (bool2));
+    return true;
+  }
+  
+  private boolean isLocaleCN()
+  {
+    return localeId == 2052;
+  }
+  
+  @TargetApi(11)
+  private void recreateOnLocaleUpdate()
+  {
+    if (isActivityLocaleUpdated(getResources().getConfiguration().locale)) {
+      recreate();
+    }
+  }
+  
+  public boolean bindService(Intent paramIntent, ServiceConnection paramServiceConnection, int paramInt)
+  {
+    ThirdAppReportHelper.reportThirdAppOpen(this, paramIntent, 2);
+    return super.bindService(paramIntent, paramServiceConnection, paramInt);
+  }
+  
+  public int checkSelfPermission(String paramString)
+  {
+    if (Build.VERSION.SDK_INT >= 23) {
+      return super.checkSelfPermission(paramString);
+    }
+    return 0;
+  }
   
   public final AppRuntime getAppRuntime()
   {
@@ -24,6 +85,14 @@ public class BaseActivity
   protected String getModuleId()
   {
     return null;
+  }
+  
+  public Resources getResources()
+  {
+    if ((this.mIsShadow) || (isLocaleCN())) {
+      return super.getResources();
+    }
+    return getApplicationContext().getResources();
   }
   
   public SharedPreferences getSharedPreferences(String paramString, int paramInt)
@@ -59,6 +128,17 @@ public class BaseActivity
     if (!isLatecyWaitRuntime()) {
       waitAppRuntime();
     }
+    Foreground.onCreate(this);
+    if (isActivityLocaleUpdated(getResources().getConfiguration().locale))
+    {
+      paramBundle = getResources();
+      Configuration localConfiguration = paramBundle.getConfiguration();
+      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+      localDisplayMetrics.setTo(paramBundle.getDisplayMetrics());
+      localConfiguration.locale = locale;
+      paramBundle.updateConfiguration(localConfiguration, paramBundle.getDisplayMetrics());
+      paramBundle.getDisplayMetrics().setTo(localDisplayMetrics);
+    }
   }
   
   protected void onCreateNoRuntime(Bundle paramBundle)
@@ -82,6 +162,7 @@ public class BaseActivity
     if (QLog.isColorLevel()) {
       QLog.i("mqq", 2, "[Activity]" + getClass().getSimpleName() + " onDestroy");
     }
+    Foreground.onDestroy(this);
     this.mqq.removeActivity(this);
     this.mqq = null;
   }
@@ -100,6 +181,51 @@ public class BaseActivity
     this.isResume = false;
   }
   
+  public void onRequestPermissionsResult(int paramInt, @NonNull String[] paramArrayOfString, @NonNull int[] paramArrayOfInt)
+  {
+    super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+    if (paramArrayOfInt.length == 0) {}
+    List localList;
+    do
+    {
+      return;
+      localList = (List)this.mPermissionCallerMap.get(paramInt);
+      if ((localList != null) && (localList.size() > 0))
+      {
+        Iterator localIterator = localList.iterator();
+        while (localIterator.hasNext())
+        {
+          Object localObject = localIterator.next();
+          if (localObject != null) {
+            if ((localObject instanceof QQPermissionCallback))
+            {
+              localObject = (QQPermissionCallback)localObject;
+              ArrayList localArrayList = new ArrayList();
+              int i = 0;
+              while (i < paramArrayOfInt.length)
+              {
+                if (paramArrayOfInt[i] != 0) {
+                  localArrayList.add(paramArrayOfString[i]);
+                }
+                i += 1;
+              }
+              if (localArrayList.size() > 0) {
+                ((QQPermissionCallback)localObject).deny(paramInt, paramArrayOfString, paramArrayOfInt);
+              } else {
+                ((QQPermissionCallback)localObject).grant(paramInt, paramArrayOfString, paramArrayOfInt);
+              }
+            }
+            else
+            {
+              QQPermissionHelper.requestResult(localObject, paramInt, paramArrayOfString, paramArrayOfInt);
+            }
+          }
+        }
+      }
+    } while (localList == null);
+    this.mPermissionCallerMap.remove(paramInt);
+  }
+  
   protected void onResume()
   {
     if (!this.mIsShadow) {
@@ -111,8 +237,10 @@ public class BaseActivity
   
   protected void onStart()
   {
-    if (!this.mIsShadow) {
+    if (!this.mIsShadow)
+    {
       super.onStart();
+      recreateOnLocaleUpdate();
     }
     Foreground.onStart(this.mProcRuntime, this);
   }
@@ -123,6 +251,86 @@ public class BaseActivity
       super.onStop();
     }
     Foreground.onStop(this.mProcRuntime);
+  }
+  
+  @TargetApi(24)
+  public void requestPermissions(Object paramObject, int paramInt, String... paramVarArgs)
+  {
+    int k = 0;
+    ArrayList localArrayList = new ArrayList();
+    int j = paramVarArgs.length;
+    int i = 0;
+    Object localObject;
+    while (i < j)
+    {
+      localObject = paramVarArgs[i];
+      if ((Build.VERSION.SDK_INT >= 23) && (checkSelfPermission((String)localObject) != 0)) {
+        localArrayList.add(localObject);
+      }
+      i += 1;
+    }
+    if ((localArrayList != null) && (localArrayList.size() > 0))
+    {
+      localObject = (List)this.mPermissionCallerMap.get(paramInt);
+      paramVarArgs = (String[])localObject;
+      if (localObject == null) {
+        paramVarArgs = new ArrayList();
+      }
+      int m = paramVarArgs.size();
+      i = 0;
+      for (;;)
+      {
+        j = k;
+        if (i < m)
+        {
+          localObject = paramVarArgs.get(i);
+          if ((localObject != null) && (localObject == paramObject)) {
+            j = 1;
+          }
+        }
+        else
+        {
+          if (j == 0)
+          {
+            paramVarArgs.add(paramObject);
+            this.mPermissionCallerMap.put(paramInt, paramVarArgs);
+          }
+          requestPermissions((String[])localArrayList.toArray(new String[localArrayList.size()]), paramInt);
+          return;
+        }
+        i += 1;
+      }
+    }
+    if ((paramObject instanceof QQPermissionCallback))
+    {
+      ((QQPermissionCallback)paramObject).grant(paramInt, paramVarArgs, null);
+      return;
+    }
+    QQPermissionHelper.doExecuteSuccess(paramObject, paramInt);
+  }
+  
+  public void sendBroadcast(Intent paramIntent)
+  {
+    MobileQQ.restrictBroadcast(paramIntent);
+    super.sendBroadcast(paramIntent);
+  }
+  
+  public void sendBroadcast(Intent paramIntent, String paramString)
+  {
+    MobileQQ.restrictBroadcast(paramIntent);
+    super.sendBroadcast(paramIntent, paramString);
+  }
+  
+  public void sendOrderedBroadcast(Intent paramIntent, String paramString)
+  {
+    MobileQQ.restrictBroadcast(paramIntent);
+    super.sendOrderedBroadcast(paramIntent, paramString);
+  }
+  
+  public void sendOrderedBroadcast(Intent paramIntent, String paramString1, BroadcastReceiver paramBroadcastReceiver, Handler paramHandler, int paramInt, String paramString2, Bundle paramBundle)
+  {
+    MobileQQ.restrictBroadcast(paramIntent);
+    super.sendOrderedBroadcast(paramIntent, paramString1, paramBroadcastReceiver, paramHandler, paramInt, paramString2, paramBundle);
   }
   
   void setAppRuntime(AppRuntime paramAppRuntime)
@@ -142,7 +350,15 @@ public class BaseActivity
       paramIntent.putExtra("preAct", getClass().getSimpleName());
       paramIntent.putExtra("preAct_time", System.currentTimeMillis());
     }
+    FileProvider7Helper.intentCompatForN(getApplicationContext(), paramIntent);
+    ThirdAppReportHelper.reportThirdAppOpen(this, paramIntent, 0);
     super.startActivityForResult(paramIntent, paramInt, paramBundle);
+  }
+  
+  public ComponentName startService(Intent paramIntent)
+  {
+    ThirdAppReportHelper.reportThirdAppOpen(this, paramIntent, 1);
+    return super.startService(paramIntent);
   }
   
   public final void superFinish()

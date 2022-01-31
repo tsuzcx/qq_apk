@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ClipboardEditText;
 
 class vad
-  implements Runnable
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  vad(vac paramvac) {}
+  private vad(uzx paramuzx) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    this.a.a.playAnim();
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetClipboardEditText.getBottom() - this.a.c > this.a.b)
+    {
+      this.a.dismiss();
+      return;
+    }
+    this.a.jdField_a_of_type_Vab.a(this.a.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vad
  * JD-Core Version:    0.7.0.1
  */

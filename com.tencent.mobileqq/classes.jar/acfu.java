@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.dating.SayHelloMsgListActivity;
-import com.tencent.mobileqq.nearby.NearbyRelevantHandler;
-import java.util.List;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class acfu
-  implements Runnable
+  implements bbom
 {
-  public acfu(SayHelloMsgListActivity paramSayHelloMsgListActivity, List paramList) {}
+  public acfu(VisitorsActivity paramVisitorsActivity) {}
   
-  public void run()
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
-    ((NearbyRelevantHandler)this.jdField_a_of_type_ComTencentMobileqqDatingSayHelloMsgListActivity.app.a(66)).a(this.jdField_a_of_type_JavaUtilList);
+    this.a.a(paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acfu
  * JD-Core Version:    0.7.0.1
  */

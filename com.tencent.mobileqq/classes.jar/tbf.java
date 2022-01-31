@@ -1,28 +1,16 @@
-import com.tencent.mobileqq.activity.KPLProfileCardActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.data.KplCard;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspDeleteVideo;
 
 public class tbf
-  extends CardObserver
+  extends slu
 {
-  public tbf(KPLProfileCardActivity paramKPLProfileCardActivity) {}
-  
-  protected void f(boolean paramBoolean, Object paramObject)
+  public tbf(qqstory_service.RspDeleteVideo paramRspDeleteVideo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("KPLProfileCardActivity", 2, "onGetKplCard, isSuccess=" + paramBoolean);
-    }
-    if ((paramBoolean) && (paramObject != null) && ((paramObject instanceof KplCard)))
-    {
-      KPLProfileCardActivity.a(this.a, (KplCard)paramObject);
-      this.a.a = ((KplCard)paramObject);
-    }
+    super(paramRspDeleteVideo.result);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tbf
  * JD-Core Version:    0.7.0.1
  */

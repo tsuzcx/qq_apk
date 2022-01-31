@@ -1,22 +1,18 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.ScaleAnimation;
-import com.tencent.biz.webviewplugin.PubAccountUIPlugin;
-import com.tencent.image.URLImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class phc
-  implements Animation.AnimationListener
+class phc
+  implements View.OnClickListener
 {
-  public phc(PubAccountUIPlugin paramPubAccountUIPlugin, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
+  phc(pha parampha) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
+    paramView = this.a.jdField_a_of_type_Qoe.a();
+    if (paramView != null) {
+      paramView.a(null, ((opw)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,37 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ThirdDataSourceAdapter;
-import com.tencent.biz.pubaccount.readinjoy.common.ThirdVideoManager.UUIDToUrlCallback;
-import com.tencent.image.AbsThirdDataSourceAdapter.OnPreparedCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.share.AVSchema;
 
 public class lno
-  implements ThirdVideoManager.UUIDToUrlCallback
+  implements DialogInterface.OnClickListener
 {
-  public lno(ThirdDataSourceAdapter paramThirdDataSourceAdapter) {}
+  public lno(AVSchema paramAVSchema) {}
   
-  public void a(String paramString1, String paramString2, int paramInt, boolean paramBoolean, String paramString3)
-  {
-    ThirdDataSourceAdapter.a(this.a, 2);
-    paramString3 = this.a;
-    paramString2 = paramString1;
-    if (paramString1 == null) {
-      paramString2 = "";
-    }
-    ThirdDataSourceAdapter.a(paramString3, paramString2);
-    if (paramInt == 1) {
-      ThirdDataSourceAdapter.b(this.a, 1);
-    }
-    for (;;)
-    {
-      if (ThirdDataSourceAdapter.a(this.a) != null) {
-        ThirdDataSourceAdapter.a(this.a).onPrepared();
-      }
-      return;
-      ThirdDataSourceAdapter.b(this.a, 0);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lno
  * JD-Core Version:    0.7.0.1
  */

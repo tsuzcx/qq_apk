@@ -1,25 +1,23 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.storage.StorageReport;
-import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.3.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import mqq.os.MqqHandler;
 
-class trn
-  implements Runnable
+public class trn
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  trn(trm paramtrm) {}
+  trn(trk paramtrk) {}
   
-  public void run()
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    QQSettingMsgHistoryActivity.a(this.a.a, this.a.a.app);
-    StorageReport.a().a(true);
-    this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
-    SharedPreUtils.a(this.a.a.app.c());
+    ThreadManager.getUIHandler().post(new VideoViewTVKImpl.3.1(this, paramInt1, paramInt2, paramInt3, paramString, paramObject));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     trn
  * JD-Core Version:    0.7.0.1
  */

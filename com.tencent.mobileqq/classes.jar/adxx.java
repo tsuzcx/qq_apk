@@ -1,33 +1,33 @@
-import com.tencent.mobileqq.hotchat.ui.PayLikeFloatViewBuilder;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Context;
+import android.view.View.MeasureSpec;
+import android.widget.FrameLayout;
+import com.tencent.widget.GridView;
 
-public final class adxx
-  extends DownloadListener
+class adxx
+  extends FrameLayout
 {
-  public adxx(String paramString) {}
-  
-  public void onDone(DownloadTask paramDownloadTask)
+  public adxx(adxv paramadxv, Context paramContext)
   {
-    PayLikeFloatViewBuilder.a(false);
-    if (paramDownloadTask.a == 0)
-    {
-      paramDownloadTask = new File(this.a + ".tmp");
-      if (paramDownloadTask.exists()) {
-        paramDownloadTask.renameTo(new File(this.a));
-      }
+    super(paramContext);
+  }
+  
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    int i = adxv.a(this.a).getPaddingLeft() + getPaddingLeft();
+    if (i != paramInt1) {
+      offsetLeftAndRight(i - paramInt1);
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("PayLikeFloatViewBuilder", 2, "getPayZanAnimBitmap download failed");
+    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  protected void onMeasure(int paramInt1, int paramInt2)
+  {
+    super.onMeasure(View.MeasureSpec.makeMeasureSpec(adxv.a(this.a).getMeasuredWidth() - adxv.a(this.a).getPaddingLeft() - adxv.a(this.a).getPaddingRight(), View.MeasureSpec.getMode(paramInt1)), paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adxx
  * JD-Core Version:    0.7.0.1
  */

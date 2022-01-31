@@ -1,24 +1,39 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout;
-import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout.ArkSearchReportCallback;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.EditText;
 
-public class uzv
-  extends GestureDetector.SimpleOnGestureListener
+class uzv
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public uzv(ArkAppRootLayout paramArkAppRootLayout) {}
+  private uzv(uzn paramuzn) {}
   
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  public void onGlobalLayout()
   {
-    if (ArkAppRootLayout.a(this.a) != null) {
-      ArkAppRootLayout.a(this.a).a();
+    int i = this.a.jdField_a_of_type_AndroidWidgetEditText.getBottom();
+    if (this.a.c < 0)
+    {
+      this.a.c = i;
+      this.a.jdField_a_of_type_Uzu.a();
     }
-    return super.onSingleTapUp(paramMotionEvent);
+    do
+    {
+      do
+      {
+        return;
+      } while (this.a.c - i <= this.a.b);
+      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(this.a.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
+      this.a.c = i;
+      this.a.jdField_a_of_type_AndroidViewViewGroup.requestLayout();
+    } while (this.a.jdField_a_of_type_Uzu == null);
+    this.a.jdField_a_of_type_Uzu.a(true, null);
+    this.a.jdField_a_of_type_Uzu.a(this.a.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uzv
  * JD-Core Version:    0.7.0.1
  */

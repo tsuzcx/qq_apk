@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021b07" android:layout_width="113.0dip" android:layout_height="157.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.component.media.image.view.ExtendImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2d63" android:layout_width="89.0dip" android:layout_height="88.0dip" android:layout_marginTop="7.0dip" android:scaleType="centerCrop" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-    <com.tencent.component.media.image.view.ExtendImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2d64" android:layout_width="43.0dip" android:layout_height="43.0dip" android:layout_marginTop="3.0dip" android:scaleType="centerCrop" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a2d63" android:layout_alignLeft="@id/APKTOOL_DUPLICATE_id_0x7f0a2d63" />
-    <com.tencent.component.media.image.view.ExtendImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2d65" android:layout_width="43.0dip" android:layout_height="43.0dip" android:layout_marginTop="3.0dip" android:scaleType="centerCrop" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a2d63" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0a2d63" />
-</RelativeLayout>

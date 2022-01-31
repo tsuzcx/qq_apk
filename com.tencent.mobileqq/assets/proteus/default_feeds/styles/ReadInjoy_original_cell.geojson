@@ -1,0 +1,128 @@
+{
+  "ReadInjoy_original_cell": {
+    "view_type": "cell",
+    "direction": "vertical",
+    "height": {
+      "type": "wrap_content"
+    },
+    "width": {
+      "type": "relative",
+      "value": "375"
+    },
+    "data_attributes": {
+      "setRemoteInfo:": {
+        "jump_channelid":"$jump_channelid",
+        "jump_src": "$jump_src_fg_button",
+        "jump_page": "$jump_page_fg_button",
+        "guide_card_type":"$guide_card_type",
+        "account_expose_card": "$account_expose_card"
+      }
+    },
+    "subviews": [
+      {
+        "$includeComponet": "componet/label.geojson"
+      },
+      {
+        "$includeComponet": "componet/social_header.geojson"
+      },
+      {
+        "$includeComponet": "componet/socialize_recommend_follow.geojson"
+      },
+      {
+        "view_type": "ReadInJoyCommentView",
+        "view_id": "id_article_comment",
+        "margin_left": "12",
+        "margin_bottom": "10",
+        "attributes": {
+          "setArticleModel:": "-1"
+        },
+        "height": {
+          "type": "wrap_content"
+        },
+        "width": {
+          "type": "relative",
+          "value": "351"
+        }
+      },
+      {
+        "$includeComponet": "componet/read_article.geojson"
+      },
+      {
+        "view_type": "ReadInJoyMiddleBodyView",
+        "view_id": "id_middle_body_content",
+        "margin_bottom": "10",
+        "height": {
+          "type": "wrap_content"
+        },
+        "width": {
+          "type": "relative",
+          "value": "375"
+        },
+        "attributes": {
+          "setArticleModel:": "-1"
+        }
+      },
+      {
+        "$includeComponet": "componet/capsule.geojson"
+      },
+      {
+        "$includeComponet": "componet/answer_capsule.geojson"
+      },
+      {
+        "$includeComponet": "componet/super_topic_gray.geojson"
+      },
+      {
+        "view_type" : "UIView",
+        "view_id" : "id_account_card_container",
+        "margin_bottom": "10",
+        "margin_left":"12",
+        "height":{
+          "type": "relative",
+          "value" : "65"
+        },
+        "width":{
+          "type":"relative",
+          "value":"351"
+        },
+        "attributes": {
+          "setAttatchInfo:":"-1",
+          "setBackgroundColorString:": "#08000000"
+        },
+        "subviews" : [
+          {
+            "$includeComponet": "componet/cmp_account_card.geojson"
+          }
+        ]
+      },
+      {
+        "$includeComponet": "componet/social_bottom.geojson"
+      },
+      {
+        "view_type":"UIView",
+        "view_id":"id_flow_guide_separator",
+        "default_visible":"NO",
+        "margin_left":"6",
+        "margin_right":"6",
+        "margin_top":"0",
+        "height":{
+            "type":"absolutely","value":"0.5"
+        },
+        "width":{
+            "type":"relative",
+            "type": "match_parent"
+        },
+        "attributes":{
+            "setFrameString:":"-1",
+            "setBackgroundColorString:":"#E5E5E5",
+            "setAttatchInfo:":"$separatorShouldShould"
+        }
+      },
+      {
+        "$includeComponet": "componet/flow_guide_bottom_1_2_3.geojson"
+      },
+      {
+        "$includeComponet": "componet/separator.geojson"
+      }
+    ]
+  }
+}

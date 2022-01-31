@@ -100,7 +100,7 @@ public final class d
   public static int b(String paramString1, String paramString2, String paramString3)
   {
     int i = -1;
-    PackageManager localPackageManager = com.tencent.apkupdate.logic.protocol.b.a().b().getPackageManager();
+    PackageManager localPackageManager = com.tencent.apkupdate.logic.protocol.a.a().b().getPackageManager();
     do
     {
       int j;

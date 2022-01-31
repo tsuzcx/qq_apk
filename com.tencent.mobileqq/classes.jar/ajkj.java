@@ -1,27 +1,17 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.TroopEnterEffectData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ajkj
-  implements Runnable
+final class ajkj
+  implements DialogInterface.OnClickListener
 {
-  public ajkj(TroopEnterEffectController paramTroopEnterEffectController, TroopEnterEffectController.TroopEnterEffectData paramTroopEnterEffectData) {}
-  
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView == null) {
-      return;
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    new SceneBuilder().a(this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getWidth()).a(TroopEnterEffectController.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController$TroopEnterEffectData.a).a(new ajkr(this)).a(new ajkq(this, localQQAppInterface)).a(new ajkn(this, localQQAppInterface)).a(new ajkm(this)).a(this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView, new ajkk(this));
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajkj
  * JD-Core Version:    0.7.0.1
  */

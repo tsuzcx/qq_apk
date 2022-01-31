@@ -1,29 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.SharedPreUtils;
+import java.io.InputStream;
 
-class moj
-  implements View.OnClickListener
+public class moj
 {
-  moj(moi parammoi, FrameLayout paramFrameLayout) {}
+  public InputStream a;
+  public String a;
   
-  public void onClick(View paramView)
+  public moj(String paramString, InputStream paramInputStream)
   {
-    ReadinjoyTabFrame.a(this.jdField_a_of_type_Moi.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame).a();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(ReadinjoyTabFrame.a(this.jdField_a_of_type_Moi.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame));
-    ReadinjoyTabFrame.a(this.jdField_a_of_type_Moi.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame, null);
-    if (260 == this.jdField_a_of_type_Moi.jdField_a_of_type_Int) {
-      SharedPreUtils.u(this.jdField_a_of_type_Moi.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a(), this.jdField_a_of_type_Moi.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a.getCurrentAccountUin(), null);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaIoInputStream = paramInputStream;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     moj
  * JD-Core Version:    0.7.0.1
  */

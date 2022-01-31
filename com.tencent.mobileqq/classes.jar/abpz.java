@@ -1,42 +1,21 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.armap.wealthgod.SplashBitmapUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Map;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SearchMightKnowFragment;
+import com.tencent.mobileqq.search.view.QuickPinyinEditText;
 
-public final class abpz
-  implements Runnable
+public class abpz
+  implements View.OnClickListener
 {
-  public abpz(String paramString, Context paramContext, ImageView paramImageView) {}
+  public abpz(SearchMightKnowFragment paramSearchMightKnowFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ??? = (String)SplashBitmapUtils.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_JavaLangString);
-    ??? = String.format("%s/%s%s", new Object[] { SplashBitmapUtils.a(), ???, ".png" });
-    Object localObject2 = SplashBitmapUtils.a(this.jdField_a_of_type_AndroidContentContext, (String)???, 0);
-    if (localObject2 != null)
-    {
-      ThreadManager.getUIHandler().post(new abqa(this, (Drawable)localObject2));
-      synchronized (SplashBitmapUtils.jdField_a_of_type_JavaLangObject)
-      {
-        localObject2 = new WeakReference(localObject2);
-        SplashBitmapUtils.c.remove(this.jdField_a_of_type_JavaLangString);
-        SplashBitmapUtils.c.put(this.jdField_a_of_type_JavaLangString, localObject2);
-        if (QLog.isColorLevel()) {
-          QLog.d("SplashBitmapUtils", 2, String.format("loadDrawableByKeyAsync add to cache. key=%s", new Object[] { this.jdField_a_of_type_JavaLangString }));
-        }
-        return;
-      }
-    }
+    this.a.a.setText("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abpz
  * JD-Core Version:    0.7.0.1
  */

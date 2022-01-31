@@ -1,31 +1,24 @@
-import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
+import com.tencent.av.opengl.GraphicRenderMgr;
 import com.tencent.qphone.base.util.QLog;
 
 class laa
-  implements Runnable
+  implements Camera.AutoFocusCallback
 {
   laa(kzz paramkzz) {}
   
-  public void run()
+  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
   {
-    try
-    {
-      boolean bool = SubscriptRecommendController.a(this.a.a.a, false, this.a.a.g);
-      if (QLog.isColorLevel()) {
-        QLog.d("WebLog_WebViewFragment", 2, "set subscribe full recommend switch = false , result : " + bool);
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AndroidCamera", 2, "camera focus success ? " + paramBoolean);
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    GraphicRenderMgr.getInstance().setIsFocusing(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     laa
  * JD-Core Version:    0.7.0.1
  */

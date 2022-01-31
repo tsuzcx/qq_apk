@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qzone.module.feedcomponent.ui.FeedSearchSeparator android:textSize="16.0sp" android:id="@id/c9x" android:background="@null" android:paddingTop="@dimen/px" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/sf0"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

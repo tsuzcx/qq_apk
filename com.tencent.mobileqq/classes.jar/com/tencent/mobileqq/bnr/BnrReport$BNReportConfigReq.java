@@ -6,11 +6,11 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class BnrReport$BNReportConfigReq
-  extends MessageMicro
+  extends MessageMicro<BNReportConfigReq>
 {
   public static final int GROUP_INFO_FIELD_NUMBER = 1;
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "group_info" }, new Object[] { null }, BNReportConfigReq.class);
-  public final PBRepeatMessageField group_info = PBField.initRepeatMessage(BnrReport.BNReportGroupInfo.class);
+  public final PBRepeatMessageField<BnrReport.BNReportGroupInfo> group_info = PBField.initRepeatMessage(BnrReport.BNReportGroupInfo.class);
 }
 
 

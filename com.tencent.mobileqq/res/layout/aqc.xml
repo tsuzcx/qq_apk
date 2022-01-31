@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/z5" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/a7y" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="12.0dip" android:textColor="@color/z7" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/dg" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="abcd" />
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:orientation="vertical" android:id="@id/bx3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <ImageView android:id="@id/du" android:background="@drawable/a_z" android:layout_width="fill_parent" android:layout_height="110.0dip" android:layout_marginTop="10.0dip" android:scaleType="centerCrop" />
+                <TextView android:textSize="16.0sp" android:textColor="#ffa6a6a6" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/bwp" android:background="@drawable/ekq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/qkt" />
+            </LinearLayout>
+            <com.tencent.mobileqq.activity.aio.item.ArkAppView android:id="@id/gpj" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" />
+        </FrameLayout>
+    </LinearLayout>
+    <RelativeLayout android:id="@id/de" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <ProgressBar android:layout_gravity="center" android:id="@id/i5n" android:visibility="visible" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="10.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" />
+            <TextView android:textSize="16.0sp" android:textColor="#ffababab" android:layout_gravity="center" android:id="@id/i5l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/refresh_arrow" android:scaleType="fitCenter" android:text="@string/qks" android:contentDescription="@string/image" />
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>

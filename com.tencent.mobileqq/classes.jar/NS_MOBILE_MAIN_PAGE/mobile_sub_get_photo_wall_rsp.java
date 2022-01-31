@@ -8,16 +8,16 @@ import java.util.ArrayList;
 public final class mobile_sub_get_photo_wall_rsp
   extends JceStruct
 {
-  static ArrayList cache_vecUrls;
+  static ArrayList<PhotoWall> cache_vecUrls;
   public String attachInfo = "";
   public int iHasMore;
   public int photoWallCombinePic;
   public int total_pic;
-  public ArrayList vecUrls;
+  public ArrayList<PhotoWall> vecUrls;
   
   public mobile_sub_get_photo_wall_rsp() {}
   
-  public mobile_sub_get_photo_wall_rsp(ArrayList paramArrayList, int paramInt1, String paramString, int paramInt2, int paramInt3)
+  public mobile_sub_get_photo_wall_rsp(ArrayList<PhotoWall> paramArrayList, int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
     this.vecUrls = paramArrayList;
     this.total_pic = paramInt1;

@@ -1,16 +1,23 @@
 package com.tencent.mobileqq.richmedia.mediacodec.videodecoder;
 
+import android.text.TextUtils;
+
 public class DecodeConfig
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public boolean b;
-  public int c;
-  public boolean c;
+  public int adjustRotation = 0;
+  public long endTimeMillSecond = 0L;
+  public int height;
+  public String inputFilePath;
+  public boolean isLandscape;
+  public boolean isLocal;
+  public boolean noSleep = false;
+  public long prolongToTime = -1L;
+  public boolean repeat;
+  public int rotation = 0;
+  public int speedType = 0;
+  public long startTimeMillSecond = 0L;
+  public boolean syncDecode = false;
+  public int width;
   
   public DecodeConfig()
   {
@@ -24,36 +31,46 @@ public class DecodeConfig
   
   public DecodeConfig(String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean2;
-    this.jdField_b_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
+    this.inputFilePath = paramString;
+    this.speedType = paramInt;
+    this.noSleep = paramBoolean2;
+    this.repeat = paramBoolean1;
+    this.startTimeMillSecond = paramLong1;
+    this.endTimeMillSecond = paramLong2;
   }
   
-  public void a(DecodeConfig paramDecodeConfig)
+  public void copyFrom(DecodeConfig paramDecodeConfig)
   {
     if (paramDecodeConfig == null) {
       throw new NullPointerException();
     }
-    this.jdField_a_of_type_JavaLangString = paramDecodeConfig.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Int = paramDecodeConfig.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Boolean = paramDecodeConfig.jdField_a_of_type_Boolean;
-    this.jdField_b_of_type_Boolean = paramDecodeConfig.jdField_b_of_type_Boolean;
-    this.jdField_a_of_type_Long = paramDecodeConfig.jdField_a_of_type_Long;
-    this.jdField_b_of_type_Long = paramDecodeConfig.jdField_b_of_type_Long;
+    this.inputFilePath = paramDecodeConfig.inputFilePath;
+    this.speedType = paramDecodeConfig.speedType;
+    this.noSleep = paramDecodeConfig.noSleep;
+    this.repeat = paramDecodeConfig.repeat;
+    this.startTimeMillSecond = paramDecodeConfig.startTimeMillSecond;
+    this.endTimeMillSecond = paramDecodeConfig.endTimeMillSecond;
+    this.prolongToTime = paramDecodeConfig.prolongToTime;
+    this.syncDecode = paramDecodeConfig.syncDecode;
   }
   
   public String toString()
   {
-    return "DecodeConfig{inputFilePath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", speedType=" + this.jdField_a_of_type_Int + ", noSleep=" + this.jdField_a_of_type_Boolean + ", repeat=" + this.jdField_b_of_type_Boolean + ", startTimeMillSecond=" + this.jdField_a_of_type_Long + ", endTimeMillSecond=" + this.jdField_b_of_type_Long + ", rotation=" + this.jdField_b_of_type_Int + ", adjustRotation=" + this.jdField_c_of_type_Int + ", isLocal=" + this.jdField_c_of_type_Boolean + '}';
+    return "DecodeConfig{inputFilePath='" + this.inputFilePath + '\'' + ", speedType=" + this.speedType + ", noSleep=" + this.noSleep + ", repeat=" + this.repeat + ", startTimeMillSecond=" + this.startTimeMillSecond + ", endTimeMillSecond=" + this.endTimeMillSecond + ", rotation=" + this.rotation + ", adjustRotation=" + this.adjustRotation + ", isLocal=" + this.isLocal + ",prolongToTime=" + this.prolongToTime + ",syncDecode=" + this.syncDecode + '}';
+  }
+  
+  public String verify()
+  {
+    if (TextUtils.isEmpty(this.inputFilePath)) {
+      return "inputFilePath is empty";
+    }
+    if ((this.startTimeMillSecond < 0L) || (this.endTimeMillSecond < 0L)) {
+      return "time less than 0, start=" + this.startTimeMillSecond + ", end=" + this.endTimeMillSecond;
+    }
+    if (this.endTimeMillSecond < this.startTimeMillSecond) {
+      return "end time less than start time, end=" + this.endTimeMillSecond + ", start=" + this.startTimeMillSecond;
+    }
+    return null;
   }
 }
 

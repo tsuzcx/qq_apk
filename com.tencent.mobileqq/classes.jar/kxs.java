@@ -1,21 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebChromeClient;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
 
-public class kxs
-  implements DialogInterface.OnClickListener
+public abstract interface kxs
 {
-  public kxs(CustomWebChromeClient paramCustomWebChromeClient, JsResult paramJsResult) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.confirm();
-  }
+  public abstract void a(Bitmap paramBitmap1, Bitmap paramBitmap2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, Rect paramRect);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     kxs
  * JD-Core Version:    0.7.0.1
  */

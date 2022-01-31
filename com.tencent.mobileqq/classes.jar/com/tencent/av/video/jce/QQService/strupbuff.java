@@ -12,8 +12,8 @@ import java.util.Map;
 public final class strupbuff
   extends JceStruct
 {
-  static Map cache_logstring;
-  public Map logstring;
+  static Map<String, ArrayList<byte[]>> cache_logstring;
+  public Map<String, ArrayList<byte[]>> logstring;
   
   static
   {
@@ -30,7 +30,7 @@ public final class strupbuff
     setLogstring(this.logstring);
   }
   
-  public strupbuff(Map paramMap)
+  public strupbuff(Map<String, ArrayList<byte[]>> paramMap)
   {
     setLogstring(paramMap);
   }
@@ -67,7 +67,7 @@ public final class strupbuff
     return JceUtil.equals(this.logstring, paramObject.logstring);
   }
   
-  public Map getLogstring()
+  public Map<String, ArrayList<byte[]>> getLogstring()
   {
     return this.logstring;
   }
@@ -86,7 +86,7 @@ public final class strupbuff
     setLogstring((Map)paramJceInputStream.read(cache_logstring, 0, true));
   }
   
-  public void setLogstring(Map paramMap)
+  public void setLogstring(Map<String, ArrayList<byte[]>> paramMap)
   {
     this.logstring = paramMap;
   }
@@ -98,7 +98,7 @@ public final class strupbuff
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.video.jce.QQService.strupbuff
  * JD-Core Version:    0.7.0.1
  */

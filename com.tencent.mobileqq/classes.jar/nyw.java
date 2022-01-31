@@ -1,23 +1,35 @@
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class nyw
+class nyw
+  implements ViewBase.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  List jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean;
-  int b;
+  nyw(nyv paramnyv) {}
   
-  public nyw(boolean paramBoolean, List paramList, int paramInt1, int paramInt2)
+  public void onClick(ViewBase paramViewBase)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+    {
+    default: 
+      return;
+    case 1093: 
+      obz.a(nyt.a(this.a.a), nyt.a(this.a.a), odk.a(nyt.a(this.a.a).innerUniqueID));
+      this.a.a.a(2);
+      this.a.a.dismiss();
+      paramViewBase = new ocg();
+      paramViewBase.i().b("wording", "" + odk.a());
+      nvx.a("0X8009FE8", nyt.a(this.a.a), paramViewBase);
+      return;
+    }
+    this.a.a.a(1);
+    this.a.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nyw
  * JD-Core Version:    0.7.0.1
  */

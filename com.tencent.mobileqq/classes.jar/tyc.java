@@ -1,25 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.Stream;
+import java.util.List;
 
 class tyc
-  extends BroadcastReceiver
+  implements txw<Bitmap>
 {
-  tyc(tyb paramtyb) {}
+  tyc(txz paramtxz, List paramList, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  @NonNull
+  public Stream<Bitmap> a(txs paramtxs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SplashActivity", 2, "onReceive:before_account_change");
-    }
-    this.a.a.b();
+    return txz.a(this.jdField_a_of_type_Txz, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tyc
  * JD-Core Version:    0.7.0.1
  */

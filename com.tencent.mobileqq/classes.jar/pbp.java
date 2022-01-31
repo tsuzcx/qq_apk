@@ -1,14 +1,17 @@
-import com.tencent.biz.troop.VideoCombineHelper;
-import com.tencent.biz.troop.VideoCombineHelper.Callback;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
 public class pbp
-  implements Runnable
+  implements sch
 {
-  public pbp(VideoCombineHelper paramVideoCombineHelper, VideoCombineHelper.Callback paramCallback, long paramLong, String paramString) {}
+  public void a(URL paramURL, int paramInt) {}
   
-  public void run()
+  public void a(URL paramURL, Throwable paramThrowable) {}
+  
+  public void a(URL paramURL, rcs paramrcs)
   {
-    new pce(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper, new pbq(this), this.jdField_a_of_type_JavaLangString).a();
+    QLog.d("NativeReadInjoyImageView", 2, "setImageDrawable: url is " + paramURL);
+    paramrcs.a();
   }
 }
 

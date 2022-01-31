@@ -1,27 +1,23 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.portal.ConversationHongBao;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
 
-public class agqp
-  extends AnimateUtils.AnimationAdapter
+public final class agqp
+  implements Parcelable.Creator<RedPacketInfoBase>
 {
-  public agqp(ConversationHongBao paramConversationHongBao) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public RedPacketInfoBase a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PortalManager", 2, "RESUME_GESTURE_ANI, " + this.a.d);
-    }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1001, 200L);
+    return new RedPacketInfoBase(paramParcel);
+  }
+  
+  public RedPacketInfoBase[] a(int paramInt)
+  {
+    return new RedPacketInfoBase[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agqp
  * JD-Core Version:    0.7.0.1
  */

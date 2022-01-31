@@ -1,14 +1,18 @@
-import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
-import java.util.List;
-
 public class nsh
-  implements Runnable
 {
-  public nsh(QQStoryWatcherListActivity paramQQStoryWatcherListActivity, boolean paramBoolean1, boolean paramBoolean2, List paramList) {}
-  
-  public void run()
+  public static int a()
   {
-    QQStoryWatcherListActivity.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_JavaUtilList);
+    return ((Integer)bgmq.a("sp_key_biu_button_click_behaviour", Integer.valueOf(0))).intValue();
+  }
+  
+  public static void a()
+  {
+    bgmq.a("sp_key_biu_long_click_tips_count", Integer.valueOf(((Integer)bgmq.a("sp_key_biu_long_click_tips_count", Integer.valueOf(0))).intValue() + 1));
+  }
+  
+  public static int b()
+  {
+    return ((Integer)bgmq.a("sp_key_biu_button_long_click_behaviour", Integer.valueOf(1))).intValue();
   }
 }
 

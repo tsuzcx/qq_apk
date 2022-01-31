@@ -1,56 +1,26 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.reactive.SimpleObserver;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicSave;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
-import dov.com.tencent.biz.qqstory.takevideo.publish.GenerateContext;
-import dov.com.tencent.biz.qqstory.takevideo.publish.GeneratePicArgs;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
 
-public class aoaa
-  extends SimpleObserver
+class aoaa
+  implements apca
 {
-  public aoaa(EditPicSave paramEditPicSave) {}
+  aoaa(anzx paramanzx, WeiYunFileInfo paramWeiYunFileInfo) {}
   
-  public void a(GenerateContext paramGenerateContext)
+  public void a()
   {
-    super.onNext(paramGenerateContext);
-    this.a.a(40);
-    paramGenerateContext = paramGenerateContext.a.b;
-    SLog.b("EditPicSave", "picPath = " + paramGenerateContext);
-    if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity() != null)
-    {
-      ThreadManager.post(new aoab(this, paramGenerateContext), 5, this.a.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener, true);
-      this.a.jdField_a_of_type_Int = 40;
-      this.a.jdField_a_of_type_Boolean = false;
-      this.a.b = 10;
-      this.a.c();
-    }
+    FileManagerEntity localFileManagerEntity = apck.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo);
+    QfileBaseCloudFileTabView.i(this.jdField_a_of_type_Anzx.a).a().b(localFileManagerEntity);
+    QfileBaseCloudFileTabView.j(this.jdField_a_of_type_Anzx.a).a().a(localFileManagerEntity);
+    this.jdField_a_of_type_Anzx.a.a(localFileManagerEntity);
   }
   
-  public void onCancel()
-  {
-    super.onCancel();
-    SLog.d("EditPicSave", "saveVideo cancel !");
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
-    this.a.d();
-    QQToast.a(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(), "取消保存", 0).a();
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    SLog.e("EditPicSave", "saveVideo error ：" + paramError);
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
-    QQToast.a(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(), 1, "保存失败，请重试 : " + paramError, 0).a();
-    this.a.d();
-  }
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoaa
  * JD-Core Version:    0.7.0.1
  */

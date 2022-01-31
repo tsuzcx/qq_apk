@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class ilive_feeds_write$GetChangVideoAndResetReq
-  extends MessageMicro
+  extends MessageMicro<GetChangVideoAndResetReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField chang_feedsid = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -20,7 +20,7 @@ public final class ilive_feeds_write$GetChangVideoAndResetReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_write.GetChangVideoAndResetReq
  * JD-Core Version:    0.7.0.1
  */

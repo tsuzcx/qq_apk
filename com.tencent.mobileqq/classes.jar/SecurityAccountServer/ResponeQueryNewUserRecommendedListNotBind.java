@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class ResponeQueryNewUserRecommendedListNotBind
   extends JceStruct
 {
-  static ArrayList cache_RecommendedContacts = new ArrayList();
-  public ArrayList RecommendedContacts;
+  static ArrayList<RecommendedContactInfo> cache_RecommendedContacts = new ArrayList();
+  public ArrayList<RecommendedContactInfo> RecommendedContacts;
   public long lastUsedFlag = 1L;
   
   static
@@ -20,7 +20,7 @@ public final class ResponeQueryNewUserRecommendedListNotBind
   
   public ResponeQueryNewUserRecommendedListNotBind() {}
   
-  public ResponeQueryNewUserRecommendedListNotBind(ArrayList paramArrayList, long paramLong)
+  public ResponeQueryNewUserRecommendedListNotBind(ArrayList<RecommendedContactInfo> paramArrayList, long paramLong)
   {
     this.RecommendedContacts = paramArrayList;
     this.lastUsedFlag = paramLong;

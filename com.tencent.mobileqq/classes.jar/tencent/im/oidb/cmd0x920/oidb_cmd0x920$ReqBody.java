@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_cmd0x920$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   public static final int MSG_CANCLE_MEETING_FIELD_NUMBER = 3;
   public static final int MSG_CREATE_MEETING_FIELD_NUMBER = 2;
@@ -24,7 +24,7 @@ public final class oidb_cmd0x920$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x920.oidb_cmd0x920.ReqBody
  * JD-Core Version:    0.7.0.1
  */

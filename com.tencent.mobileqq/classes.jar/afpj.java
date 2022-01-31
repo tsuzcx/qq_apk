@@ -1,21 +1,12 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.UnLikeCallback;
-
-public class afpj
-  implements NearbyMomentProtocol.UnLikeCallback
+public abstract interface afpj
 {
-  public afpj(NearbyMomentManager paramNearbyMomentManager, String paramString) {}
+  public abstract void a();
   
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager.b(this.jdField_a_of_type_JavaLangString, paramInt);
-    }
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afpj
  * JD-Core Version:    0.7.0.1
  */

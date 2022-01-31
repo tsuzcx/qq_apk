@@ -1,57 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
-import com.tencent.mobileqq.filemanager.util.UniformDownloader.IUniformDownloaderListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
 
 public class adhw
-  implements UniformDownloader.IUniformDownloaderListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public adhw(UniformDownloadMgr paramUniformDownloadMgr) {}
+  public adhw(HeartCombolEffectView paramHeartCombolEffectView, adhx paramadhx) {}
   
-  public void a(int paramInt, Bundle paramBundle) {}
-  
-  public void a(int paramInt, String paramString, Bundle paramBundle)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    UniformDownloadMgr.a(this.a);
-  }
-  
-  public void a(String paramString, long paramLong, Bundle paramBundle)
-  {
-    ReportController.b(null, "P_CliOper", "webview", "", "webview_apk_download", "download_success", 0, 1, 0, "", "", "", "");
-    paramBundle.getInt("_CB_SID");
-    String str = paramBundle.getString("_CB_URL");
-    paramBundle = paramBundle.getBundle("_CB_USERDATA");
-    UniformDownloadMgr.a(this.a, str);
-    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>insertFM and install. PH:" + paramString + " SZ:" + paramLong);
-    if (this.a.a != null) {
-      this.a.a.a().a(null, -1, paramString, paramLong, 16, null, paramBundle);
-    }
-    for (;;)
-    {
-      UniformDownloadUtil.a(paramString);
-      UniformDownloadMgr.a(this.a);
-      if ("http://qqwx.qq.com/s?aid=index&g_f=429&mType=QQSpaceClean".equals(str)) {
-        ReportController.b(null, "P_CliOper", "Safe_SpaceClean", "", "SpaceClean_", "download secure apk sucess", 0, 0, "", "", "", "");
-      }
-      return;
-      FileManagerUtil.c(paramString);
+    this.jdField_a_of_type_Adhx.jdField_b_of_type_Float = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if ((!this.jdField_a_of_type_Adhx.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Adhx.jdField_b_of_type_Float > 0.0F)) {
+      this.jdField_a_of_type_Adhx.jdField_b_of_type_Boolean = true;
     }
   }
-  
-  public void b(int paramInt, Bundle paramBundle) {}
-  
-  public void c(int paramInt, Bundle paramBundle) {}
-  
-  public void d(int paramInt, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adhw
  * JD-Core Version:    0.7.0.1
  */

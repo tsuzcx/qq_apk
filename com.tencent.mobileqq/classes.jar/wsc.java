@@ -1,60 +1,42 @@
-import android.os.AsyncTask;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.contacts.base.CardViewController;
-import com.tencent.mobileqq.app.MayknowRecommendManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MayKnowRecommend;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.support.annotation.Nullable;
+import android.support.v4.view.PagerAdapter;
+import android.widget.ImageView;
 
-public class wsc
-  extends AsyncTask
+class wsc
+  implements bhwg<wsh>
 {
-  public wsc(CardViewController paramCardViewController) {}
+  wsc(wsa paramwsa) {}
   
-  protected List a(Void... paramVarArgs)
+  public void a(@Nullable wsh paramwsh)
   {
-    paramVarArgs = ((MayknowRecommendManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(158)).a();
-    return CardViewController.a(this.a, paramVarArgs);
-  }
-  
-  protected void a(List paramList)
-  {
-    if ((paramList == null) || (paramList.size() == 0))
-    {
-      CardViewController.c(this.a, false);
-      CardViewController.d(this.a);
+    if (paramwsh == null) {
       return;
     }
-    Object localObject = new StringBuilder();
-    int i = 0;
-    while (i < paramList.size())
+    wsa localwsa = this.a;
+    boolean bool;
+    if (paramwsh == wsh.c)
     {
-      ((StringBuilder)localObject).append(((MayKnowRecommend)paramList.get(i)).uin);
-      ((StringBuilder)localObject).append(";");
-      i += 1;
-    }
-    localObject = ((StringBuilder)localObject).toString();
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      CardViewController.b(this.a, (String)localObject);
-    }
-    for (;;)
-    {
-      CardViewController.a(this.a, paramList);
-      if (QLog.isColorLevel()) {
-        QLog.d("CardViewController", 2, "dealSourceList set isRefreshingRemote = false");
+      bool = true;
+      wsa.a(localwsa, bool);
+      wsa.a(this.a).notifyDataSetChanged();
+      paramwsh = wsa.a(this.a);
+      if (!wsa.a(this.a)) {
+        break label69;
       }
-      CardViewController.c(this.a, false);
-      CardViewController.d(this.a);
+    }
+    label69:
+    for (int i = 2130837586;; i = 2130837587)
+    {
+      paramwsh.setImageResource(i);
       return;
-      CardViewController.b(this.a, null);
+      bool = false;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wsc
  * JD-Core Version:    0.7.0.1
  */

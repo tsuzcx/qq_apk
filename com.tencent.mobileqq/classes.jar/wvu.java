@@ -1,56 +1,18 @@
-import android.content.res.Resources;
-import android.support.v4.util.MQLruCache;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.panel.AIOPanelUtiles;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.MemoryConfigs;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.multimsg.MultiMsgManager;
-import com.tencent.mobileqq.statistics.battery.BatteryStats;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
-public class wvu
-  implements Runnable
+public abstract interface wvu<T extends RecyclerView.ViewHolder>
 {
-  public wvu(MainAssistObserver paramMainAssistObserver) {}
+  public abstract void a(float paramFloat, int paramInt1, int paramInt2, @Nullable T paramT1, @Nullable T paramT2);
   
-  public void run()
-  {
-    Object localObject = this.a.a;
-    if (localObject != null) {}
-    for (QQAppInterface localQQAppInterface = ((SplashActivity)localObject).app; (localObject == null) || (localQQAppInterface == null); localQQAppInterface = null) {
-      return;
-    }
-    try
-    {
-      AIOPanelUtiles.a(localQQAppInterface);
-      MultiMsgManager.a().a(localQQAppInterface);
-      localObject = BaseApplicationImpl.sApplication.getResources().getDisplayMetrics();
-      int i = ((DisplayMetrics)localObject).widthPixels;
-      int j = ((DisplayMetrics)localObject).heightPixels;
-      localObject = BaseApplicationImpl.sImageCache;
-      float f = MemoryConfigs.a().a;
-      ((MQLruCache)localObject).setLargeSize((int)(j * i * 4 * f));
-      localQQAppInterface.D();
-      QQToast.a(true);
-      QQAppInterface.a().a();
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.d("MainAssistObserver", 4, "notifyWindowShowed e=" + localException);
-      }
-    }
-  }
+  public abstract void b(@NonNull T paramT, int paramInt);
+  
+  public abstract void c(@NonNull T paramT, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wvu
  * JD-Core Version:    0.7.0.1
  */

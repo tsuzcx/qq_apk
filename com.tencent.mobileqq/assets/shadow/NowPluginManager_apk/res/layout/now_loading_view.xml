@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/room_bkg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <FrameLayout android:layout_gravity="center" android:id="@id/progress_container" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip">
+            <ImageView android:id="@id/error_icon" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_nearby_now_loading_error" android:scaleType="centerCrop" />
+            <com.tencent.manager.ui.RoundProgressBar android:layout_gravity="center" android:id="@id/download_progress_bar" android:layout_width="80.0dip" android:layout_height="80.0dip" />
+            <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/load_progress_bar" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="6.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/qq_nearby_nowlive_loading" android:indeterminateBehavior="repeat" />
+            <TextView android:textSize="20.0dip" android:textColor="@color/white" android:layout_gravity="center" android:id="@id/progress_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:shadowColor="#34000000" android:shadowDx="2.0" android:shadowDy="2.0" android:shadowRadius="9.0" />
+        </FrameLayout>
+        <TextView android:textSize="18.0sp" android:textColor="@color/white" android:layout_gravity="center_horizontal" android:id="@id/loading_tips" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:shadowColor="#34000000" android:shadowDx="2.0" android:shadowDy="2.0" android:shadowRadius="9.0" />
+        <TextView android:textSize="16.0dip" android:textColor="#ff50ffcd" android:layout_gravity="center_horizontal" android:id="@id/try_again" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.0dip" android:text="请点击屏幕重试" android:shadowColor="#34000000" android:shadowDx="2.0" android:shadowDy="2.0" android:shadowRadius="9.0" />
+    </LinearLayout>
+</FrameLayout>

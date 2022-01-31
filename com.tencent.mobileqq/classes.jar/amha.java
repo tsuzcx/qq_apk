@@ -1,29 +1,56 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AdapterView.AdapterDataSetObserver;
-import com.tencent.widget.FastScroller;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class amha
-  extends AdapterView.AdapterDataSetObserver
+  extends alzl<amgz>
 {
-  public amha(AbsListView paramAbsListView)
+  public static amgz a()
   {
-    super(paramAbsListView);
+    return (amgz)alzw.a().a(484);
   }
   
-  public void onChanged()
+  public int a()
   {
-    super.onChanged();
-    if (this.a.mFastScroller != null) {
-      this.a.mFastScroller.c();
-    }
+    return 484;
   }
   
-  public void onInvalidated()
+  @NonNull
+  public amgz a(int paramInt)
   {
-    super.onInvalidated();
-    if (this.a.mFastScroller != null) {
-      this.a.mFastScroller.c();
+    return new amgz();
+  }
+  
+  @Nullable
+  public amgz a(alzs[] paramArrayOfalzs)
+  {
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
+      return amgz.a(paramArrayOfalzs);
     }
+    return null;
+  }
+  
+  public Class<amgz> a()
+  {
+    return amgz.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amgz paramamgz) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

@@ -1,20 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
 
 public class ltg
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ltg(ArticleInfoModule paramArticleInfoModule, List paramList) {}
+  public ltg(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ReadInJoyLogicEngineEventDispatcher.a().c(this.jdField_a_of_type_JavaUtilList);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ltg
  * JD-Core Version:    0.7.0.1
  */

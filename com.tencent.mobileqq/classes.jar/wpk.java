@@ -1,41 +1,40 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
-import com.tencent.mobileqq.app.FriendListObserver;
-import friendlist.EAddFriendSourceID;
-import java.util.ArrayList;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.widget.ScrollView;
 
 public class wpk
-  extends FriendListObserver
 {
-  public wpk(SystemMsgListView paramSystemMsgListView) {}
+  private static final String jdField_a_of_type_JavaLangString = wpk.class.getSimpleName();
+  private float jdField_a_of_type_Float;
+  public int a;
+  public belr a;
+  private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
+  private ScrollView jdField_a_of_type_ComTencentWidgetScrollView;
+  public boolean a;
   
-  public void onAddBatchPhoneFriend(boolean paramBoolean, ArrayList paramArrayList)
+  public wpk(ScrollView paramScrollView, TouchWebView paramTouchWebView)
   {
-    if (paramBoolean) {
-      SystemMsgListView.a(this.a).c();
-    }
+    this.jdField_a_of_type_ComTencentBizUiTouchWebView = paramTouchWebView;
+    this.jdField_a_of_type_ComTencentWidgetScrollView = paramScrollView;
   }
   
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  public void a(float paramFloat)
   {
-    if (paramBoolean1)
-    {
-      paramString = paramBundle.getString("uin");
-      int i = paramBundle.getInt("source_id");
-      paramBundle = paramBundle.getString("extra");
-      if (((i == 3006) || (i == 3075)) && ("ContactMatchBuilder".equals(paramBundle))) {
-        this.a.a(paramString);
-      }
-      if (EAddFriendSourceID.a(i)) {
-        SystemMsgListView.a(this.a).c();
-      }
+    this.jdField_a_of_type_Float = paramFloat;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    if ((this.jdField_a_of_type_ComTencentWidgetScrollView == null) || (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null)) {}
+    while ((this.jdField_a_of_type_Float <= 0.0F) || (this.jdField_a_of_type_ComTencentBizUiTouchWebView.canScrollVertically(-1)) || (paramInt != 0) || (!this.jdField_a_of_type_ComTencentWidgetScrollView.canScrollVertically(-1))) {
+      return;
     }
+    this.jdField_a_of_type_ComTencentWidgetScrollView.fling((int)-this.jdField_a_of_type_Float);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wpk
  * JD-Core Version:    0.7.0.1
  */

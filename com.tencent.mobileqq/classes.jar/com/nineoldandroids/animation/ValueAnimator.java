@@ -1,8 +1,6 @@
 package com.nineoldandroids.animation;
 
-import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
 import android.util.AndroidRuntimeException;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AnimationUtils;
@@ -24,27 +22,15 @@ public class ValueAnimator
   static final int RUNNING = 1;
   static final int SEEKED = 2;
   static final int STOPPED = 0;
-  private static ThreadLocal<AnimationHandler> sAnimationHandler = new ThreadLocal();
-  private static final ThreadLocal<ArrayList<ValueAnimator>> sAnimations = new ThreadLocal()
-  {
-    protected ArrayList<ValueAnimator> initialValue()
-    {
-      return new ArrayList();
-    }
-  };
+  private static ThreadLocal<ValueAnimator.AnimationHandler> sAnimationHandler = new ThreadLocal();
+  private static final ThreadLocal<ArrayList<ValueAnimator>> sAnimations = new ValueAnimator.1();
   private static final Interpolator sDefaultInterpolator;
   private static final ThreadLocal<ArrayList<ValueAnimator>> sDelayedAnims;
   private static final ThreadLocal<ArrayList<ValueAnimator>> sEndingAnims;
   private static final TypeEvaluator sFloatEvaluator = new FloatEvaluator();
   private static long sFrameDelay = 10L;
   private static final TypeEvaluator sIntEvaluator;
-  private static final ThreadLocal<ArrayList<ValueAnimator>> sPendingAnimations = new ThreadLocal()
-  {
-    protected ArrayList<ValueAnimator> initialValue()
-    {
-      return new ArrayList();
-    }
-  };
+  private static final ThreadLocal<ArrayList<ValueAnimator>> sPendingAnimations = new ValueAnimator.2();
   private static final ThreadLocal<ArrayList<ValueAnimator>> sReadyAnims;
   private float mCurrentFraction = 0.0F;
   private int mCurrentIteration = 0;
@@ -62,33 +48,15 @@ public class ValueAnimator
   long mStartTime;
   private boolean mStarted = false;
   private boolean mStartedDelay = false;
-  private ArrayList<AnimatorUpdateListener> mUpdateListeners = null;
+  private ArrayList<ValueAnimator.AnimatorUpdateListener> mUpdateListeners = null;
   PropertyValuesHolder[] mValues;
   HashMap<String, PropertyValuesHolder> mValuesMap;
   
   static
   {
-    sDelayedAnims = new ThreadLocal()
-    {
-      protected ArrayList<ValueAnimator> initialValue()
-      {
-        return new ArrayList();
-      }
-    };
-    sEndingAnims = new ThreadLocal()
-    {
-      protected ArrayList<ValueAnimator> initialValue()
-      {
-        return new ArrayList();
-      }
-    };
-    sReadyAnims = new ThreadLocal()
-    {
-      protected ArrayList<ValueAnimator> initialValue()
-      {
-        return new ArrayList();
-      }
-    };
+    sDelayedAnims = new ValueAnimator.3();
+    sEndingAnims = new ValueAnimator.4();
+    sReadyAnims = new ValueAnimator.5();
     sDefaultInterpolator = new AccelerateDecelerateInterpolator();
     sIntEvaluator = new IntEvaluator();
   }
@@ -220,14 +188,14 @@ public class ValueAnimator
     {
       if (i >= j)
       {
-        AnimationHandler localAnimationHandler = (AnimationHandler)sAnimationHandler.get();
+        ValueAnimator.AnimationHandler localAnimationHandler = (ValueAnimator.AnimationHandler)sAnimationHandler.get();
         localObject = localAnimationHandler;
         if (localAnimationHandler == null)
         {
-          localObject = new AnimationHandler(null);
+          localObject = new ValueAnimator.AnimationHandler(null);
           sAnimationHandler.set(localObject);
         }
-        ((AnimationHandler)localObject).sendEmptyMessage(0);
+        ((ValueAnimator.AnimationHandler)localObject).sendEmptyMessage(0);
         return;
       }
       ((Animator.AnimatorListener)((ArrayList)localObject).get(i)).onAnimationStart(this);
@@ -258,7 +226,7 @@ public class ValueAnimator
     }
   }
   
-  public void addUpdateListener(AnimatorUpdateListener paramAnimatorUpdateListener)
+  public void addUpdateListener(ValueAnimator.AnimatorUpdateListener paramAnimatorUpdateListener)
   {
     if (this.mUpdateListeners == null) {
       this.mUpdateListeners = new ArrayList();
@@ -288,7 +256,7 @@ public class ValueAnimator
         i += 1;
         break;
       }
-      ((AnimatorUpdateListener)this.mUpdateListeners.get(i)).onAnimationUpdate(this);
+      ((ValueAnimator.AnimatorUpdateListener)this.mUpdateListeners.get(i)).onAnimationUpdate(this);
       i += 1;
     }
   }
@@ -315,64 +283,64 @@ public class ValueAnimator
         this.mSeekTime = -1L;
       }
     }
-    float f2;
-    boolean bool1;
     float f1;
     int i;
+    label145:
+    boolean bool1;
     if (this.mDuration > 0L)
     {
-      f2 = (float)(paramLong - this.mStartTime) / (float)this.mDuration;
-      bool1 = bool2;
-      f1 = f2;
-      if (f2 >= 1.0F)
-      {
-        if ((this.mCurrentIteration >= this.mRepeatCount) && (this.mRepeatCount != -1)) {
-          break label282;
-        }
-        if (this.mListeners != null)
-        {
-          int j = this.mListeners.size();
-          i = 0;
-          label154:
-          if (i < j) {
-            break label249;
-          }
-        }
-        if (this.mRepeatMode == 2)
-        {
-          if (!this.mPlayingBackwards) {
-            break label276;
-          }
-          bool1 = false;
-          label179:
-          this.mPlayingBackwards = bool1;
-        }
-        this.mCurrentIteration += (int)f2;
-        f1 = f2 % 1.0F;
-        this.mStartTime += this.mDuration;
-        bool1 = bool2;
+      f1 = (float)(paramLong - this.mStartTime) / (float)this.mDuration;
+      if (f1 < 1.0F) {
+        break label282;
       }
+      if ((this.mCurrentIteration >= this.mRepeatCount) && (this.mRepeatCount != -1)) {
+        break label270;
+      }
+      if (this.mListeners != null)
+      {
+        int j = this.mListeners.size();
+        i = 0;
+        if (i < j) {
+          break label237;
+        }
+      }
+      if (this.mRepeatMode == 2)
+      {
+        if (!this.mPlayingBackwards) {
+          break label264;
+        }
+        bool1 = false;
+        label170:
+        this.mPlayingBackwards = bool1;
+      }
+      this.mCurrentIteration += (int)f1;
+      f1 %= 1.0F;
+      this.mStartTime += this.mDuration;
+      bool1 = bool2;
     }
     for (;;)
     {
-      f2 = f1;
+      float f2 = f1;
       if (this.mPlayingBackwards) {
         f2 = 1.0F - f1;
       }
       animateValue(f2);
       return bool1;
-      f2 = 1.0F;
+      f1 = 1.0F;
       break;
-      label249:
+      label237:
       ((Animator.AnimatorListener)this.mListeners.get(i)).onAnimationRepeat(this);
       i += 1;
-      break label154;
-      label276:
+      break label145;
+      label264:
       bool1 = true;
-      break label179;
+      break label170;
+      label270:
+      f1 = Math.min(f1, 1.0F);
+      bool1 = true;
+      continue;
       label282:
-      bool1 = true;
-      f1 = Math.min(f2, 1.0F);
+      bool1 = bool2;
     }
   }
   
@@ -431,7 +399,7 @@ public class ValueAnimator
       if (i >= j)
       {
         return localValueAnimator;
-        localValueAnimator.mUpdateListeners.add((AnimatorUpdateListener)((ArrayList)localObject).get(i));
+        localValueAnimator.mUpdateListeners.add((ValueAnimator.AnimatorUpdateListener)((ArrayList)localObject).get(i));
         i += 1;
         break;
       }
@@ -576,7 +544,7 @@ public class ValueAnimator
     this.mUpdateListeners = null;
   }
   
-  public void removeUpdateListener(AnimatorUpdateListener paramAnimatorUpdateListener)
+  public void removeUpdateListener(ValueAnimator.AnimatorUpdateListener paramAnimatorUpdateListener)
   {
     if (this.mUpdateListeners == null) {}
     do
@@ -748,136 +716,6 @@ public class ValueAnimator
       str1 = str1 + "\n    " + this.mValues[i].toString();
       i += 1;
     }
-  }
-  
-  private static class AnimationHandler
-    extends Handler
-  {
-    public void handleMessage(Message paramMessage)
-    {
-      int i = 1;
-      int j = 1;
-      ArrayList localArrayList1 = (ArrayList)ValueAnimator.sAnimations.get();
-      ArrayList localArrayList2 = (ArrayList)ValueAnimator.sDelayedAnims.get();
-      long l;
-      Object localObject;
-      int k;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 0: 
-        paramMessage = (ArrayList)ValueAnimator.sPendingAnimations.get();
-        if (localArrayList1.size() <= 0)
-        {
-          i = j;
-          if (localArrayList2.size() <= 0) {}
-        }
-        else
-        {
-          i = 0;
-        }
-        if (paramMessage.size() > 0) {
-          break;
-        }
-      case 1: 
-        l = AnimationUtils.currentAnimationTimeMillis();
-        localObject = (ArrayList)ValueAnimator.sReadyAnims.get();
-        paramMessage = (ArrayList)ValueAnimator.sEndingAnims.get();
-        k = localArrayList2.size();
-        j = 0;
-        label125:
-        if (j >= k)
-        {
-          k = ((ArrayList)localObject).size();
-          if (k > 0)
-          {
-            j = 0;
-            if (j < k) {
-              break label341;
-            }
-            ((ArrayList)localObject).clear();
-          }
-          j = localArrayList1.size();
-          k = 0;
-          if (k < j) {
-            break label378;
-          }
-          if (paramMessage.size() > 0) {
-            j = 0;
-          }
-        }
-        label145:
-        label165:
-        break;
-      }
-      for (;;)
-      {
-        if (j >= paramMessage.size())
-        {
-          paramMessage.clear();
-          if ((i == 0) || ((localArrayList1.isEmpty()) && (localArrayList2.isEmpty()))) {
-            break;
-          }
-          sendEmptyMessageDelayed(1, Math.max(0L, ValueAnimator.sFrameDelay - (AnimationUtils.currentAnimationTimeMillis() - l)));
-          return;
-          localObject = (ArrayList)paramMessage.clone();
-          paramMessage.clear();
-          k = ((ArrayList)localObject).size();
-          j = 0;
-          label255:
-          if (j < k)
-          {
-            localValueAnimator = (ValueAnimator)((ArrayList)localObject).get(j);
-            if (localValueAnimator.mStartDelay != 0L) {
-              break label294;
-            }
-            localValueAnimator.startAnimation();
-          }
-          for (;;)
-          {
-            j += 1;
-            break label255;
-            break;
-            label294:
-            localArrayList2.add(localValueAnimator);
-          }
-          ValueAnimator localValueAnimator = (ValueAnimator)localArrayList2.get(j);
-          if (localValueAnimator.delayedAnimationFrame(l)) {
-            ((ArrayList)localObject).add(localValueAnimator);
-          }
-          j += 1;
-          break label125;
-          label341:
-          localValueAnimator = (ValueAnimator)((ArrayList)localObject).get(j);
-          localValueAnimator.startAnimation();
-          localValueAnimator.mRunning = true;
-          localArrayList2.remove(localValueAnimator);
-          j += 1;
-          break label145;
-          label378:
-          localObject = (ValueAnimator)localArrayList1.get(k);
-          if (((ValueAnimator)localObject).animationFrame(l)) {
-            paramMessage.add(localObject);
-          }
-          if (localArrayList1.size() == j)
-          {
-            k += 1;
-            break label165;
-          }
-          j -= 1;
-          paramMessage.remove(localObject);
-          break label165;
-        }
-        ((ValueAnimator)paramMessage.get(j)).endAnimation();
-        j += 1;
-      }
-    }
-  }
-  
-  public static abstract interface AnimatorUpdateListener
-  {
-    public abstract void onAnimationUpdate(ValueAnimator paramValueAnimator);
   }
 }
 

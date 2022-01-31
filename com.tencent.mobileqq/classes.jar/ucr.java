@@ -1,45 +1,63 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPuller.1;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPuller.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
+import com.tribe.async.async.ThreadOffFunction;
+import com.tribe.async.reactive.Stream;
+import mqq.os.MqqHandler;
 
 public class ucr
-  extends FriendListObserver
 {
-  public ucr(TroopInfoActivity paramTroopInfoActivity) {}
+  private Stream<ucw> jdField_a_of_type_ComTribeAsyncReactiveStream;
+  private String jdField_a_of_type_JavaLangString;
+  private ucu jdField_a_of_type_Ucu;
+  private ucw jdField_a_of_type_Ucw = new ucw();
+  public boolean a;
+  private boolean b = true;
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public ucr(@NonNull String paramString, @NonNull ucu paramucu, boolean paramBoolean)
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!Utils.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin))) {}
-    String str;
-    do
-    {
-      return;
-      this.a.b = false;
-      str = ContactUtils.l(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
-      if (!TextUtils.isEmpty(str))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopOwnerNick = str;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.troopinfo", 2, "onUpdateFriendInfo|uin = " + paramString + ", tmpNickName = " + str);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Ucu = paramucu;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  private void a(ucw paramucw, boolean paramBoolean, ErrorMessage paramErrorMessage)
   {
-    if ((paramBoolean) && (Utils.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin))) {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+    ThreadManager.getUIHandler().post(new DetailFeedAllInfoPuller.2(this, paramucw, paramBoolean, paramErrorMessage));
+  }
+  
+  public void a()
+  {
+    Bosses.get().postLightWeightJob(new DetailFeedAllInfoPuller.1(this), 0);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTribeAsyncReactiveStream != null) {
+      this.jdField_a_of_type_ComTribeAsyncReactiveStream.cancel();
+    }
+    this.jdField_a_of_type_ComTribeAsyncReactiveStream = Stream.of(this.jdField_a_of_type_JavaLangString).map(new ThreadOffFunction("Q.qqstory.detail.DetailFeedAllInfoPuller", 2)).map(new ucs(this, this.jdField_a_of_type_JavaLangString));
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTribeAsyncReactiveStream = this.jdField_a_of_type_ComTribeAsyncReactiveStream.map(new uch());
+    }
+    this.jdField_a_of_type_ComTribeAsyncReactiveStream.subscribe(new ucv(this));
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_ComTribeAsyncReactiveStream != null) {
+      this.jdField_a_of_type_ComTribeAsyncReactiveStream.cancel();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ucr
  * JD-Core Version:    0.7.0.1
  */

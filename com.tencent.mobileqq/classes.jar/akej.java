@@ -1,22 +1,24 @@
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsController;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsController.OnAnimationEndListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
 
-public class akej
-  implements Runnable
+public abstract class akej
 {
-  public akej(TroopPicEffectsController paramTroopPicEffectsController, TroopPicEffectsController.OnAnimationEndListener paramOnAnimationEndListener) {}
+  public QQAppInterface a;
+  public ProxyManager a;
   
-  public void run()
+  public akej(QQAppInterface paramQQAppInterface, ProxyManager paramProxyManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsController.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsController$OnAnimationEndListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTrooppiceffectsTroopPicEffectsController$OnAnimationEndListener.a();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyProxyManager = paramProxyManager;
   }
+  
+  public abstract void a();
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akej
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,21 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.ClickHelper;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
 
-public class mun
-  implements Runnable
+class mun
+  extends BroadcastReceiver
 {
-  protected View a;
-  protected ViewBase a;
+  mun(mui parammui) {}
   
-  public mun(ClickHelper paramClickHelper) {}
-  
-  public void a(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void a(ViewBase paramViewBase)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase = paramViewBase;
-  }
-  
-  public void run()
-  {
-    if ((!this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerClickHelper.a) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerClickHelper.c, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerClickHelper.d, true)) && (this.jdField_a_of_type_AndroidViewView != null))
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerClickHelper.b = true;
-      this.jdField_a_of_type_AndroidViewView.performHapticFeedback(0);
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailVideoManager", 2, "onReceive ===>" + paramContext);
+    }
+    if (("android.intent.action.SCREEN_OFF".equals(paramContext)) || ("tencent.av.v2q.StartVideoChat".equals(paramContext))) {
+      this.a.a();
     }
   }
 }

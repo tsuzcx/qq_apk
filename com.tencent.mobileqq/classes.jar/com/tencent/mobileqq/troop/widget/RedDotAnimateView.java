@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.troop.widget;
 
-import akaj;
-import akak;
-import akal;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.Keyframe;
@@ -17,6 +14,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
+import azmu;
+import azmv;
+import azmw;
 
 public class RedDotAnimateView
   extends View
@@ -61,15 +61,15 @@ public class RedDotAnimateView
     this.jdField_c_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofKeyframe("", new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(0.3333333F, 1.9F), Keyframe.ofFloat(0.5F, 0.58F), Keyframe.ofFloat(0.6666667F, 1.25F), Keyframe.ofFloat(1.0F, 1.0F) }) });
     this.jdField_c_of_type_AndroidAnimationValueAnimator.setDuration(1600L);
     this.jdField_c_of_type_AndroidAnimationValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new akaj(this));
+    this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new azmu(this));
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofKeyframe("", new Keyframe[] { Keyframe.ofFloat(0.0F, 0.0F), Keyframe.ofFloat(0.1333333F, 0.0F), Keyframe.ofFloat(0.3333333F, 3.0F), Keyframe.ofFloat(0.5F, 1.4F), Keyframe.ofFloat(0.6666667F, 2.08F), Keyframe.ofFloat(1.0F, 2.08F) }) });
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(1600L);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new akak(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new azmv(this));
     this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofKeyframe("", new Keyframe[] { Keyframe.ofFloat(0.0F, 0.3F), Keyframe.ofFloat(0.1333333F, 0.3F), Keyframe.ofFloat(0.3333333F, 0.3F), Keyframe.ofFloat(0.5F, 0.3F), Keyframe.ofFloat(0.6666667F, 0.3F), Keyframe.ofFloat(1.0F, 0.0F) }) });
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(1600L);
     this.jdField_b_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
-    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new akal(this));
+    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new azmw(this));
     this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.setDuration(1600L);
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.playTogether(new Animator[] { this.jdField_c_of_type_AndroidAnimationValueAnimator, this.jdField_a_of_type_AndroidAnimationValueAnimator, this.jdField_b_of_type_AndroidAnimationValueAnimator });
@@ -78,18 +78,6 @@ public class RedDotAnimateView
   public void b()
   {
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
-    if (this.jdField_a_of_type_Int > 0)
-    {
-      this.jdField_a_of_type_Float = (this.jdField_a_of_type_Int / 2);
-      this.jdField_b_of_type_Float = (this.jdField_a_of_type_Int / 2);
-    }
-    this.jdField_c_of_type_Int = 0;
-    postInvalidate();
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -125,7 +113,7 @@ public class RedDotAnimateView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.RedDotAnimateView
  * JD-Core Version:    0.7.0.1
  */

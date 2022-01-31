@@ -1,39 +1,96 @@
-import android.content.Context;
-import android.view.KeyEvent;
-import android.view.inputmethod.InputConnection;
-import android.view.inputmethod.InputConnectionWrapper;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.widget.AbsListView;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amgz
-  extends InputConnectionWrapper
 {
-  public amgz(AbsListView paramAbsListView, InputConnection paramInputConnection, boolean paramBoolean)
-  {
-    super(paramInputConnection, paramBoolean);
-  }
+  private int jdField_a_of_type_Int = -1;
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int = -1;
+  private String jdField_b_of_type_JavaLangString = "";
+  private int jdField_c_of_type_Int = -1;
+  private String jdField_c_of_type_JavaLangString = "";
+  private int jdField_d_of_type_Int = -1;
+  private String jdField_d_of_type_JavaLangString = "";
+  private String e = "";
   
-  public boolean performEditorAction(int paramInt)
+  public static amgz a(alzs[] paramArrayOfalzs)
   {
-    if (paramInt == 6)
-    {
-      InputMethodManager localInputMethodManager = (InputMethodManager)this.a.getContext().getSystemService("input_method");
-      if (localInputMethodManager != null) {
-        localInputMethodManager.hideSoftInputFromWindow(this.a.getWindowToken(), 0);
-      }
-      return true;
+    if ((paramArrayOfalzs == null) || (paramArrayOfalzs.length <= 0)) {
+      return null;
     }
-    return false;
+    amgz localamgz = new amgz();
+    try
+    {
+      paramArrayOfalzs = new JSONObject(paramArrayOfalzs[0].jdField_a_of_type_JavaLangString);
+      localamgz.jdField_a_of_type_Int = paramArrayOfalzs.getInt("check_day");
+      localamgz.jdField_b_of_type_Int = paramArrayOfalzs.getInt("check_time");
+      localamgz.jdField_c_of_type_Int = paramArrayOfalzs.getInt("album_days");
+      localamgz.jdField_d_of_type_Int = paramArrayOfalzs.getInt("photos_limit");
+      localamgz.jdField_a_of_type_JavaLangString = paramArrayOfalzs.getString("tips");
+      localamgz.jdField_b_of_type_JavaLangString = paramArrayOfalzs.getString("jump_text");
+      localamgz.jdField_c_of_type_JavaLangString = paramArrayOfalzs.getString("t_show");
+      localamgz.jdField_d_of_type_JavaLangString = paramArrayOfalzs.getString("t_click");
+      localamgz.e = paramArrayOfalzs.getString("t_close");
+      localamgz.jdField_a_of_type_Boolean = true;
+      return localamgz;
+    }
+    catch (JSONException paramArrayOfalzs)
+    {
+      QLog.e("WeiyunCheckAlbumConfigBean", 1, "wy check album config parse failed", paramArrayOfalzs);
+    }
+    return localamgz;
   }
   
-  public boolean reportFullscreenMode(boolean paramBoolean)
+  public int a()
   {
-    return AbsListView.access$3300(this.a).reportFullscreenMode(paramBoolean);
+    return this.jdField_a_of_type_Int;
   }
   
-  public boolean sendKeyEvent(KeyEvent paramKeyEvent)
+  public String a()
   {
-    return AbsListView.access$3300(this.a).sendKeyEvent(paramKeyEvent);
+    return this.jdField_c_of_type_JavaLangString;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_d_of_type_JavaLangString;
+  }
+  
+  public int c()
+  {
+    return this.jdField_c_of_type_Int;
+  }
+  
+  public String c()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public int d()
+  {
+    return this.jdField_d_of_type_Int;
+  }
+  
+  public String d()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public String e()
+  {
+    return this.e;
   }
 }
 

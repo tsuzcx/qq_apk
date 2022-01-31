@@ -16,44 +16,41 @@ import java.util.concurrent.Future;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-import plz;
-import pmf;
-import pmg;
 
 public class StreamDecodeGifTask
   extends DecodeImageTask
 {
-  private static StreamDecodeGifTask jdField_a_of_type_ComTencentComponentMediaImageStreamDecodeGifTask = null;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private static int d = 0;
-  protected static ConcurrentHashMap mGifDrawableRecord = new ConcurrentHashMap();
-  private volatile int jdField_a_of_type_Int = 2;
-  private long jdField_a_of_type_Long = 0L;
-  Future jdField_a_of_type_JavaUtilConcurrentFuture;
-  ThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor;
-  pmf jdField_a_of_type_Pmf;
-  pmg jdField_a_of_type_Pmg;
-  boolean jdField_a_of_type_Boolean = true;
-  private volatile int jdField_b_of_type_Int = 3;
-  private StreamDecodeGifTask jdField_b_of_type_ComTencentComponentMediaImageStreamDecodeGifTask = null;
-  Future jdField_b_of_type_JavaUtilConcurrentFuture;
-  private volatile boolean jdField_b_of_type_Boolean = false;
-  private volatile int c = 1;
-  protected List mResult = new ArrayList();
+  protected static ConcurrentHashMap<String, NewGifDrawable> mGifDrawableRecord = new ConcurrentHashMap();
+  private static int mObjectPoolSize = 0;
+  private static StreamDecodeGifTask sPool = null;
+  private static final Object sPoolSync = new Object();
+  private long beginTime = 0L;
+  ThreadPoolExecutor executorService;
+  boolean isFirstCallback = true;
+  private volatile int mBaseImageCount = 1;
+  private volatile int mControlLimitTimes = 3;
+  private volatile int mControlTimes = 2;
+  StreamDecodeGifTask.DecodeStreamTask mDecodetask;
+  Future<?> mEndRes;
+  StreamDecodeGifTask.EndCloseStreamTask mEndTask;
+  private volatile boolean mNeedControl = false;
+  Future<?> mProgressRes;
+  protected List<Runnable> mResult = new ArrayList();
+  private StreamDecodeGifTask next = null;
   
   protected StreamDecodeGifTask(ImageKey paramImageKey)
   {
     super(paramImageKey);
   }
   
-  protected StreamDecodeGifTask(plz paramplz)
+  protected StreamDecodeGifTask(ImageTask paramImageTask)
   {
-    super(paramplz);
+    super(paramImageTask);
   }
   
-  private void a(ImageKey paramImageKey, String paramString1, String paramString2)
+  private void decoding(ImageKey paramImageKey, String paramString1, String paramString2)
   {
-    localObject = (NewGifDrawable)ImageManager.getInstance().a(paramImageKey);
+    localObject = (NewGifDrawable)ImageManager.getInstance().getDrawbleFromCache(paramImageKey);
     if (localObject == null) {}
     for (;;)
     {
@@ -74,10 +71,10 @@ public class StreamDecodeGifTask
         {
           paramString2.setUrl(paramImageKey.url);
           localObject = paramString2;
-          this.c = ((NewGifDrawable)localObject).getImageCount();
-          ImageManagerEnv.getLogger().d("StreamDecodeGifTask-decoding-thread", new Object[] { "RESULT_ON_STREAM_APPLY_IMAGE newFile count:" + this.c + " hashcode:" + paramImageKey.hashCodeEx() + " url:" + paramString1 });
+          this.mBaseImageCount = ((NewGifDrawable)localObject).getImageCount();
+          ImageManagerEnv.getLogger().d("StreamDecodeGifTask-decoding-thread", new Object[] { "RESULT_ON_STREAM_APPLY_IMAGE newFile count:" + this.mBaseImageCount + " hashcode:" + paramImageKey.hashCodeEx() + " url:" + paramString1 });
           setResult(15, new Object[] { localObject });
-          this.jdField_a_of_type_Long = System.currentTimeMillis();
+          this.beginTime = System.currentTimeMillis();
           ImageManagerEnv.getLogger().d("StreamDecodeGifTask-performance", new Object[] { "First time:" + System.currentTimeMillis() + " hashcode:" + paramImageKey.hashCodeEx() + " url:" + paramString1 });
           paramString1 = (String)localObject;
           paramString2 = paramString1;
@@ -92,7 +89,7 @@ public class StreamDecodeGifTask
               }
             }
           }
-          ImageManager.getInstance().a(paramImageKey.urlKey, paramImageKey.hashCodeEx(), null, paramString2, paramImageKey.options);
+          ImageManager.getInstance().putDrawableInMemoryCache(paramImageKey, paramImageKey.hashCodeEx(), null, paramString2, paramImageKey.options);
           return;
         }
         catch (IOException localIOException)
@@ -106,52 +103,52 @@ public class StreamDecodeGifTask
         paramString2 = paramString2;
       }
       continue;
-      if (this.jdField_a_of_type_Int != 0)
+      if (this.mControlTimes != 0)
       {
-        this.jdField_a_of_type_Int -= 1;
+        this.mControlTimes -= 1;
         paramString1 = (String)localObject;
       }
       else
       {
         ((NewGifDrawable)localObject).updateFile(paramString2);
-        if (((NewGifDrawable)localObject).getImageCount() > this.c)
+        if (((NewGifDrawable)localObject).getImageCount() > this.mBaseImageCount)
         {
-          this.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-          ImageManagerEnv.getLogger().d("StreamDecodeGifTask-decoding-thread", new Object[] { "updateFile mControlLimitTimes:" + this.jdField_b_of_type_Int + " hashcode:" + paramImageKey.hashCodeEx() + " url:" + paramString1 });
+          this.mControlTimes = this.mControlLimitTimes;
+          ImageManagerEnv.getLogger().d("StreamDecodeGifTask-decoding-thread", new Object[] { "updateFile mControlLimitTimes:" + this.mControlLimitTimes + " hashcode:" + paramImageKey.hashCodeEx() + " url:" + paramString1 });
           paramString1 = (String)localObject;
         }
         else
         {
-          this.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
-          this.jdField_b_of_type_Int *= 2;
-          this.jdField_a_of_type_Int = (this.jdField_b_of_type_Int - this.jdField_a_of_type_Int);
+          this.mControlTimes = this.mControlLimitTimes;
+          this.mControlLimitTimes *= 2;
+          this.mControlTimes = (this.mControlLimitTimes - this.mControlTimes);
           paramString1 = (String)localObject;
         }
       }
     }
   }
   
-  public static StreamDecodeGifTask obtain(plz paramplz)
+  public static StreamDecodeGifTask obtain(ImageTask paramImageTask)
   {
     if (needRecycle) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (sPoolSync)
     {
-      if (jdField_a_of_type_ComTencentComponentMediaImageStreamDecodeGifTask != null)
+      if (sPool != null)
       {
-        StreamDecodeGifTask localStreamDecodeGifTask = jdField_a_of_type_ComTencentComponentMediaImageStreamDecodeGifTask;
-        jdField_a_of_type_ComTencentComponentMediaImageStreamDecodeGifTask = jdField_a_of_type_ComTencentComponentMediaImageStreamDecodeGifTask.jdField_b_of_type_ComTencentComponentMediaImageStreamDecodeGifTask;
-        localStreamDecodeGifTask.jdField_b_of_type_ComTencentComponentMediaImageStreamDecodeGifTask = null;
-        d -= 1;
-        localStreamDecodeGifTask.setImageTask(paramplz);
+        StreamDecodeGifTask localStreamDecodeGifTask = sPool;
+        sPool = sPool.next;
+        localStreamDecodeGifTask.next = null;
+        mObjectPoolSize -= 1;
+        localStreamDecodeGifTask.setImageTask(paramImageTask);
         return localStreamDecodeGifTask;
       }
-      return new StreamDecodeGifTask(paramplz);
+      return new StreamDecodeGifTask(paramImageTask);
     }
   }
   
   public void excuteTask()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor = new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue());
+    this.executorService = new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue());
     super.excuteTask();
   }
   
@@ -168,35 +165,35 @@ public class StreamDecodeGifTask
         return;
         str = (String)paramVarArgs[0];
         paramVarArgs = (String)paramVarArgs[1];
-      } while (this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.isShutdown());
-      if (this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.getQueue().contains(this.jdField_a_of_type_Pmf))
+      } while (this.executorService.isShutdown());
+      if (this.executorService.getQueue().contains(this.mDecodetask))
       {
         ImageManagerEnv.getLogger().d("StreamDecodeGifTask", new Object[] { "onResult RESULT_ON_STREAM_PROGRESS | contains | hashcode:" + this.mImageKey.hashCodeEx() });
         return;
       }
-      this.jdField_a_of_type_Pmf = new pmf(this, this.mImageKey, str, paramVarArgs);
-      this.jdField_a_of_type_JavaUtilConcurrentFuture = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.submit(this.jdField_a_of_type_Pmf);
+      this.mDecodetask = new StreamDecodeGifTask.DecodeStreamTask(this, this.mImageKey, str, paramVarArgs);
+      this.mProgressRes = this.executorService.submit(this.mDecodetask);
       return;
     case 2: 
       paramVarArgs = (String)paramVarArgs[0];
       str = this.mImageKey.filePath;
-      if (!this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.isShutdown())
+      if (!this.executorService.isShutdown())
       {
-        if (this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.getQueue().contains(this.jdField_a_of_type_Pmg))
+        if (this.executorService.getQueue().contains(this.mEndTask))
         {
           ImageManagerEnv.getLogger().d("StreamDecodeGifTask", new Object[] { "onResult RESULT_ON_DONWNLOAD_SUCCEED contains | hashcode:" + this.mImageKey.hashCodeEx() });
           return;
         }
-        this.jdField_a_of_type_Pmg = new pmg(this, this.mImageKey, paramVarArgs, str);
-        this.jdField_b_of_type_JavaUtilConcurrentFuture = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.submit(this.jdField_a_of_type_Pmg);
+        this.mEndTask = new StreamDecodeGifTask.EndCloseStreamTask(this, this.mImageKey, paramVarArgs, str);
+        this.mEndRes = this.executorService.submit(this.mEndTask);
       }
-      this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.shutdown();
+      this.executorService.shutdown();
       return;
     }
-    if (this.jdField_a_of_type_Boolean)
+    if (this.isFirstCallback)
     {
       ImageTaskBuilder.stampMap2.put(this.mImageKey.url, Long.valueOf(System.currentTimeMillis()));
-      this.jdField_a_of_type_Boolean = false;
+      this.isFirstCallback = false;
     }
     super.setResult(paramInt, paramVarArgs);
   }
@@ -207,43 +204,43 @@ public class StreamDecodeGifTask
       return;
     }
     reset();
-    if ((this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor != null) && (!this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.isShutdown()))
+    if ((this.executorService != null) && (!this.executorService.isShutdown()))
     {
       ImageManagerEnv.getLogger().d("StreamDecodeGifTask", new Object[] { "executorService shutdown" });
-      this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.shutdown();
+      this.executorService.shutdown();
     }
-    this.jdField_a_of_type_Pmf = null;
-    this.jdField_a_of_type_Pmg = null;
-    synchronized (jdField_a_of_type_JavaLangObject)
+    this.mDecodetask = null;
+    this.mEndTask = null;
+    synchronized (sPoolSync)
     {
-      if (d < 50)
+      if (mObjectPoolSize < 50)
       {
-        this.jdField_b_of_type_ComTencentComponentMediaImageStreamDecodeGifTask = jdField_a_of_type_ComTencentComponentMediaImageStreamDecodeGifTask;
-        jdField_a_of_type_ComTencentComponentMediaImageStreamDecodeGifTask = this;
-        d += 1;
+        this.next = sPool;
+        sPool = this;
+        mObjectPoolSize += 1;
       }
       return;
     }
   }
   
-  public void removeRecord(String paramString)
+  protected void removeRecord(String paramString)
   {
     boolean bool;
-    if (this.jdField_a_of_type_Pmf != null)
+    if (this.mDecodetask != null)
     {
-      bool = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.remove(this.jdField_a_of_type_Pmf);
+      bool = this.executorService.remove(this.mDecodetask);
       ImageManagerEnv.getLogger().d("StreamDecodeGifTask", new Object[] { "mDecodetask remove:" + bool });
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentFuture != null) {}
+    if (this.mProgressRes != null) {}
     try
     {
-      this.jdField_a_of_type_JavaUtilConcurrentFuture.get();
-      if (this.jdField_a_of_type_Pmg != null)
+      this.mProgressRes.get();
+      if (this.mEndTask != null)
       {
-        bool = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.remove(this.jdField_a_of_type_Pmg);
+        bool = this.executorService.remove(this.mEndTask);
         ImageManagerEnv.getLogger().d("kaedelin", new Object[] { "mEndTask remove:" + bool });
       }
-      if (this.jdField_b_of_type_JavaUtilConcurrentFuture == null) {}
+      if (this.mEndRes == null) {}
     }
     catch (InterruptedException paramString)
     {
@@ -251,7 +248,7 @@ public class StreamDecodeGifTask
       {
         try
         {
-          this.jdField_b_of_type_JavaUtilConcurrentFuture.get();
+          this.mEndRes.get();
           return;
         }
         catch (InterruptedException paramString)

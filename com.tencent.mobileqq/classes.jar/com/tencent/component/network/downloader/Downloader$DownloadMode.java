@@ -3,6 +3,8 @@ package com.tencent.component.network.downloader;
 public enum Downloader$DownloadMode
 {
   FastMode,  StrictMode;
+  
+  private Downloader$DownloadMode() {}
 }
 
 

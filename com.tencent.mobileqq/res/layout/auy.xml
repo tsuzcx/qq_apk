@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/cez" android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:background="@color/j5" android:layout_width="fill_parent" android:layout_height="@dimen/r1" android:layout_alignParentBottom="true">
+        <Button android:id="@id/cf2" android:background="@drawable/ahp" android:layout_width="@dimen/qw" android:layout_height="@dimen/qw" android:layout_marginLeft="@dimen/r3" android:layout_marginBottom="@dimen/r2" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" android:contentDescription="@string/qq7" />
+        <Button android:id="@id/cf1" android:background="@drawable/ai7" android:layout_width="@dimen/qw" android:layout_height="@dimen/qw" android:layout_marginRight="@dimen/r3" android:layout_marginBottom="@dimen/r2" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:contentDescription="@string/qpv" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,32 +1,21 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.richmedia.capture.fragment.CameraCaptureFragment;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
 
-public class ahmq
-  extends BroadcastReceiver
+class ahmq
+  implements Comparator<aute>
 {
-  public ahmq(CameraCaptureFragment paramCameraCaptureFragment) {}
+  ahmq(ahmp paramahmp) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public int a(aute paramaute1, aute paramaute2)
   {
-    paramContext = this.a.getActivity();
-    if ((paramContext == null) || (paramContext.isFinishing()) || (CameraCaptureFragment.a(this.a))) {}
-    while (!"tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) {
-      return;
+    if ((paramaute1 != null) && (paramaute2 != null)) {
+      return paramaute1.b - paramaute2.b;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("CameraCaptureFragment", 2, "receive ACTION_START_VIDEO_CHAT.");
-    }
-    CameraCaptureFragment.a(this.a, true);
-    paramContext.finish();
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahmq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,29 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
 
-public class xhb
-  extends BroadcastReceiver
+class xhb
+  implements Animation.AnimationListener
 {
-  public xhb(SendHbActivity paramSendHbActivity) {}
+  xhb(xha paramxha) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramIntent.getAction().equals("com.qwallet.report"))
-    {
-      int i = paramIntent.getIntExtra("type", 0);
-      QLog.i("SendHbActivity", 2, "onReceive type = " + i);
-      if (999 == i) {
-        break label53;
-      }
+    this.a.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (!this.a.jdField_a_of_type_Xgi.d()) {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     }
-    label53:
-    do
-    {
-      do
-      {
-        return;
-        paramContext = paramIntent.getBundleExtra("params");
-      } while (paramContext == null);
-      QLog.i("SendHbActivity", 2, "onReceive bundle = " + paramContext.toString());
-      paramContext = paramContext.getString("from");
-    } while ((this.a.isFinishing()) || (!"video".equals(paramContext)));
-    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     xhb
  * JD-Core Version:    0.7.0.1
  */

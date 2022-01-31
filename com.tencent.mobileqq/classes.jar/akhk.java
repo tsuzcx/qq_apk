@@ -1,25 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.util.FaceInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public final class akhk
-  implements Parcelable.Creator
+abstract class akhk
 {
-  public FaceInfo a(Parcel paramParcel)
+  protected final SharedPreferences a = BaseApplicationImpl.sApplication.getSharedPreferences("StepUpdate", 0);
+  
+  protected abstract String a();
+  
+  protected void a()
   {
-    FaceInfo localFaceInfo = new FaceInfo();
-    localFaceInfo.a(paramParcel);
-    return localFaceInfo;
+    this.a.edit().putBoolean(a(), true).commit();
   }
   
-  public FaceInfo[] a(int paramInt)
+  protected boolean a()
   {
-    return new FaceInfo[paramInt];
+    return !this.a.contains(a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akhk
  * JD-Core Version:    0.7.0.1
  */

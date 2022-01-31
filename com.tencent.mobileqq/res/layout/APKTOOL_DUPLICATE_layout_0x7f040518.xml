@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/root" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0221c3" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.XListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1981" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" />
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1982" android:visibility="gone" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040519" />
-</FrameLayout>

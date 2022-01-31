@@ -7,21 +7,21 @@ import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
 public class PluginBaseActivity
   extends BasePluginActivity
 {
-  public boolean u = true;
+  public boolean t = true;
   
-  public boolean a()
+  protected String a()
+  {
+    return getString(2131625011);
+  }
+  
+  protected boolean a()
   {
     return false;
   }
   
-  public String a_()
-  {
-    return getString(2131433712);
-  }
-  
   public int g()
   {
-    return getResources().getDimensionPixelSize(2131558448);
+    return getResources().getDimensionPixelSize(2131167766);
   }
   
   public final Activity getActivity()

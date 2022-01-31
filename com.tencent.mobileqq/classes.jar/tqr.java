@@ -1,26 +1,14 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-
-public class tqr
-  implements BusinessObserver
+public abstract interface tqr
 {
-  public tqr(QQSettingMe paramQQSettingMe) {}
+  public abstract void a(long paramLong1, long paramLong2, tqg paramtqg);
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
-  {
-    if (paramBoolean)
-    {
-      QLog.i("SSOHttpUtils", 2, "PublicAccount RefreshStepsObserver onReceive");
-      ThreadManager.post(new tqs(this), 5, null, true);
-    }
-  }
+  public abstract void b(tqg paramtqg);
+  
+  public abstract void c(tqg paramtqg);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tqr
  * JD-Core Version:    0.7.0.1
  */

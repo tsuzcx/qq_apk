@@ -1,55 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gamecenter.appointment.GameCenterUtils;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.open.wadl.WLog;
+import android.view.ViewGroup;
+import java.util.concurrent.ArrayBlockingQueue;
 
-public final class qny
-  implements Runnable
+public class qny
 {
-  public qny(String paramString1, String paramString2) {}
+  private int jdField_a_of_type_Int;
+  private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  public ArrayBlockingQueue a;
+  private qnz jdField_a_of_type_Qnz;
+  private int b;
   
-  public void run()
+  public qny(int paramInt1, int paramInt2, ViewGroup paramViewGroup, qnz paramqnz)
   {
-    int j = 0;
-    WLog.b("QQInitHandler", "start checkGameCenter isWiFi=" + AppNetConnInfo.isWifiConn());
-    GameCenterUtils.a();
-    String[] arrayOfString;
-    int k;
-    int i;
-    if (!TextUtils.isEmpty(this.a))
-    {
-      if ((GameCenterUtils.a) && (AppNetConnInfo.isWifiConn())) {
-        GameCenterUtils.a(this.a);
-      }
-      arrayOfString = this.a.split("\\|");
-      k = arrayOfString.length;
-      i = 0;
-      while (i < k)
-      {
-        GameCenterUtils.a(null, "558", "203713", arrayOfString[i], "55801", "4", "430");
-        i += 1;
-      }
-    }
-    if (!TextUtils.isEmpty(this.b))
-    {
-      if ((GameCenterUtils.b) && (GameCenterUtils.a(BaseApplicationImpl.getContext()))) {
-        GameCenterUtils.b(this.b);
-      }
-      arrayOfString = this.b.split("\\|");
-      k = arrayOfString.length;
-      i = j;
-      while (i < k)
-      {
-        GameCenterUtils.a(null, "558", "203701", arrayOfString[i], "55801", "4", "430");
-        i += 1;
-      }
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+    this.jdField_a_of_type_Qnz = paramqnz;
+  }
+  
+  public qny(int paramInt, ViewGroup paramViewGroup, qnz paramqnz)
+  {
+    this(paramInt, 1, paramViewGroup, paramqnz);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qny
  * JD-Core Version:    0.7.0.1
  */

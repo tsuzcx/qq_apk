@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x8d3$AppInfo
-  extends MessageMicro
+  extends MessageMicro<AppInfo>
 {
   public static final int OPT_BYTES_ANDROID_DOWNLOAD_URL_FIELD_NUMBER = 21;
   public static final int OPT_BYTES_ANDROID_OPEN_FIELD_NUMBER = 24;
@@ -86,7 +86,7 @@ public final class oidb_0x8d3$AppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8d3.oidb_0x8d3.AppInfo
  * JD-Core Version:    0.7.0.1
  */

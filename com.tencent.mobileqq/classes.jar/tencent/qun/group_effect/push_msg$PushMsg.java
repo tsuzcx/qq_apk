@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class push_msg$PushMsg
-  extends MessageMicro
+  extends MessageMicro<PushMsg>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 48, 56, 162, 168 }, new String[] { "rc", "msg", "uin", "group_code", "svip_level", "svip_type", "group_level", "effect_info", "set_mode" }, new Object[] { Integer.valueOf(0), "", Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Long.valueOf(0L) }, PushMsg.class);
   public group_effect.EffectInfo effect_info = new group_effect.EffectInfo();

@@ -1,57 +1,38 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.Switch;
+import android.support.annotation.Nullable;
 
 public class tjv
-  extends TroopObserver
 {
-  public tjv(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  @Nullable
+  public String a;
+  public tjs a;
+  @Nullable
+  public tjt a;
+  @Nullable
+  public String b;
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public tjv(@Nullable tjs paramtjs, @Nullable String paramString1, @Nullable String paramString2)
   {
-    TextView localTextView;
-    if (paramBoolean1)
-    {
-      this.a.e.a().setChecked(paramBoolean2);
-      localTextView = this.a.a;
-      if (!paramBoolean2) {
-        break label59;
-      }
-    }
-    label59:
-    for (int i = 2131435408;; i = 2131435409)
-    {
-      localTextView.setText(i);
-      SharedPreUtils.j(this.a, this.a.app.getCurrentAccountUin(), paramBoolean2);
-      return;
-    }
+    this.jdField_a_of_type_Tjs = paramtjs;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  public tjv(tjv paramtjv)
   {
-    boolean bool = true;
-    if (!paramBoolean1)
-    {
-      QQToast.a(this.a, 1, "设置失败", 0).a();
-      Switch localSwitch = this.a.e.a();
-      if (!paramBoolean2) {}
-      for (paramBoolean1 = bool;; paramBoolean1 = false)
-      {
-        localSwitch.setChecked(paramBoolean1);
-        return;
-      }
-    }
-    SharedPreUtils.j(this.a, this.a.app.getCurrentAccountUin(), paramBoolean2);
+    this.jdField_a_of_type_Tjs = paramtjv.jdField_a_of_type_Tjs;
+    this.jdField_a_of_type_JavaLangString = paramtjv.jdField_a_of_type_JavaLangString;
+    this.b = paramtjv.b;
+    this.jdField_a_of_type_Tjt = paramtjv.jdField_a_of_type_Tjt;
+  }
+  
+  public String toString()
+  {
+    return "StartInfo{mGroupId=" + this.jdField_a_of_type_Tjs + ", vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", feedId='" + this.b + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tjv
  * JD-Core Version:    0.7.0.1
  */

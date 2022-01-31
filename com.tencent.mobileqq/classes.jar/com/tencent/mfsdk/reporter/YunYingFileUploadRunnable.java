@@ -1,6 +1,6 @@
 package com.tencent.mfsdk.reporter;
 
-import com.tencent.mobileqq.utils.FileUtils;
+import bace;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -10,12 +10,12 @@ import java.net.URL;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import mqq.os.MqqHandler;
+import zqv;
 
 public class YunYingFileUploadRunnable
   extends BaseUploadRunnable
 {
   private int jdField_a_of_type_Int;
-  private IReporter.ReportResultCallback jdField_a_of_type_ComTencentMfsdkReporterIReporter$ReportResultCallback;
   private File jdField_a_of_type_JavaIoFile;
   private FileInputStream jdField_a_of_type_JavaIoFileInputStream;
   private String jdField_a_of_type_JavaLangString;
@@ -24,6 +24,7 @@ public class YunYingFileUploadRunnable
   private ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
   private FileChannel jdField_a_of_type_JavaNioChannelsFileChannel;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  private zqv jdField_a_of_type_Zqv;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private String jdField_b_of_type_JavaLangString;
@@ -31,11 +32,11 @@ public class YunYingFileUploadRunnable
   private String jdField_c_of_type_JavaLangString;
   private int d = -1;
   
-  public YunYingFileUploadRunnable(URL paramURL, String paramString, IReporter.ReportResultCallback paramReportResultCallback, int paramInt, MqqHandler paramMqqHandler)
+  public YunYingFileUploadRunnable(URL paramURL, String paramString, zqv paramzqv, int paramInt, MqqHandler paramMqqHandler)
   {
     this.jdField_a_of_type_JavaNetURL = paramURL;
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMfsdkReporterIReporter$ReportResultCallback = paramReportResultCallback;
+    this.jdField_a_of_type_Zqv = paramzqv;
     this.d = paramInt;
     this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
     if (QLog.isColorLevel()) {
@@ -110,7 +111,7 @@ public class YunYingFileUploadRunnable
         l = System.currentTimeMillis();
         localObject2 = "out_" + String.valueOf(l) + ".zip";
         localObject1 = (String)localObject1 + "/" + (String)localObject2;
-        FileUtils.e(this.jdField_a_of_type_JavaLangString, (String)localObject1);
+        bace.e(this.jdField_a_of_type_JavaLangString, (String)localObject1);
         break;
       }
       return false;
@@ -384,7 +385,7 @@ public class YunYingFileUploadRunnable
     //   519: aload 7
     //   521: invokevirtual 299	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
     //   524: invokespecial 302	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   527: invokestatic 307	com/tencent/mfsdk/tools/NetworkWatcher:a	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   527: invokestatic 307	zrl:a	(Ljava/io/InputStream;)Ljava/lang/String;
     //   530: invokevirtual 309	com/tencent/mfsdk/reporter/YunYingFileUploadRunnable:a	(Ljava/lang/String;)Z
     //   533: istore_3
     //   534: iload_3
@@ -570,10 +571,10 @@ public class YunYingFileUploadRunnable
     //   878: iload 4
     //   880: istore_3
     //   881: aload_0
-    //   882: getfield 41	com/tencent/mfsdk/reporter/YunYingFileUploadRunnable:jdField_a_of_type_ComTencentMfsdkReporterIReporter$ReportResultCallback	Lcom/tencent/mfsdk/reporter/IReporter$ReportResultCallback;
+    //   882: getfield 41	com/tencent/mfsdk/reporter/YunYingFileUploadRunnable:jdField_a_of_type_Zqv	Lzqv;
     //   885: ifnull -249 -> 636
     //   888: aload_0
-    //   889: getfield 41	com/tencent/mfsdk/reporter/YunYingFileUploadRunnable:jdField_a_of_type_ComTencentMfsdkReporterIReporter$ReportResultCallback	Lcom/tencent/mfsdk/reporter/IReporter$ReportResultCallback;
+    //   889: getfield 41	com/tencent/mfsdk/reporter/YunYingFileUploadRunnable:jdField_a_of_type_Zqv	Lzqv;
     //   892: aload_0
     //   893: getfield 35	com/tencent/mfsdk/reporter/YunYingFileUploadRunnable:d	I
     //   896: invokeinterface 338 2 0

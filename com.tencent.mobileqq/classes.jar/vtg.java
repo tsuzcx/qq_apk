@@ -1,22 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
 public class vtg
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public vtg(AIOImageListScene paramAIOImageListScene) {}
+  public vtg(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a(((TextView)paramView).getText().toString());
-    this.a.t();
+    this.a.f = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     vtg
  * JD-Core Version:    0.7.0.1
  */

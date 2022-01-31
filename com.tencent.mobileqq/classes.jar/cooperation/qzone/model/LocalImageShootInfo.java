@@ -1,6 +1,5 @@
 package cooperation.qzone.model;
 
-import ancb;
 import android.media.ExifInterface;
 import android.media.MediaMetadataRetriever;
 import android.os.Build.VERSION;
@@ -8,6 +7,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import bfwf;
 import com.tencent.image.JpegExifReader;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -18,7 +18,7 @@ import java.util.Date;
 public class LocalImageShootInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ancb();
+  public static final Parcelable.Creator<LocalImageShootInfo> CREATOR = new bfwf();
   public long a;
   public GpsInfo4LocalImage a;
   public String a;

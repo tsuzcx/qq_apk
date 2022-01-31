@@ -1,6 +1,5 @@
 package com.tencent.image;
 
-import android.graphics.Bitmap;
 import java.net.URL;
 import org.apache.http.Header;
 import org.apache.http.client.CookieStore;
@@ -11,7 +10,7 @@ public class DownloadParams
   public long downloaded;
   public Header[] headers;
   public boolean mAutoScaleByDensity;
-  public DecodeHandler mDecodeHandler;
+  public DownloadParams.DecodeHandler mDecodeHandler;
   public Object mExtraInfo;
   public float mGifRoundCorner;
   public Object mHttpDownloaderParams;
@@ -48,11 +47,6 @@ public class DownloadParams
       }
     }
     return null;
-  }
-  
-  public static abstract interface DecodeHandler
-  {
-    public abstract Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap);
   }
 }
 

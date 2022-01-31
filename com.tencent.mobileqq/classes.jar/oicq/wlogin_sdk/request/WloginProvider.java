@@ -9,15 +9,13 @@ import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 import oicq.wlogin_sdk.tools.util;
 
 public class WloginProvider
   extends ContentProvider
 {
-  private a a;
+  private WloginProvider.a a;
   private SQLiteDatabase b = null;
   private final String c = "wlogin_provider.db";
   private final int d = 4;
@@ -67,7 +65,7 @@ public class WloginProvider
     this.j = Uri.parse("content://" + this.f + "/" + "rsa_pubkey");
     this.i.addURI(this.f, "rsa_pubkey", 1);
     util.LOGI("oncreated!");
-    this.a = new a(this.h, "wlogin_provider.db", null, 4);
+    this.a = new WloginProvider.a(this, this.h, "wlogin_provider.db", null, 4);
     this.b = this.a.getWritableDatabase();
     return this.b != null;
   }
@@ -92,34 +90,6 @@ public class WloginProvider
       throw new IllegalArgumentException("Unnown URI" + paramUri);
     }
     return this.b.update("rsa_pubkey", paramContentValues, paramString, paramArrayOfString);
-  }
-  
-  private class a
-    extends SQLiteOpenHelper
-  {
-    public a(Context paramContext, String paramString, SQLiteDatabase.CursorFactory paramCursorFactory, int paramInt)
-    {
-      super(paramString, paramCursorFactory, paramInt);
-    }
-    
-    public void onCreate(SQLiteDatabase paramSQLiteDatabase)
-    {
-      try
-      {
-        paramSQLiteDatabase.execSQL(String.format("CREATE TABLE %s (id INTEGER PRIMARY KEY AUTOINCREMENT, appid INTEGER, subappid INTEGER, pubkey TEXT, pubkey_md5 TEXT)", new Object[] { "rsa_pubkey" }));
-        return;
-      }
-      catch (Exception paramSQLiteDatabase)
-      {
-        util.printException(paramSQLiteDatabase, "");
-      }
-    }
-    
-    public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
-    {
-      paramSQLiteDatabase.execSQL("DROP TABLE IF EXISTS rsa_pubkey");
-      onCreate(paramSQLiteDatabase);
-    }
   }
 }
 

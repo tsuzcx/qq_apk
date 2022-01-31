@@ -1,33 +1,59 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeTextIntentByServerHandler;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
-class abdi
-  implements BusinessObserver
+public class abdi
+  extends abdk
 {
-  abdi(abdh paramabdh) {}
+  protected View a;
+  protected String a;
+  protected boolean a;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public abdi(View paramView, String paramString)
   {
-    Object localObject = null;
-    String str = (String)paramObject;
-    paramObject = localObject;
-    if (paramBoolean)
+    super(null);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void onClick(View paramView)
+  {
+    super.onClick(paramView);
+    try
     {
-      paramObject = localObject;
-      if (!TextUtils.isEmpty(str)) {
-        paramObject = ArkMessageServerLogic.a(this.a.a.jdField_a_of_type_JavaLangString, str);
+      if (QSecFramework.a().a(1001).booleanValue()) {
+        if (this.jdField_a_of_type_Boolean)
+        {
+          paramView = this.jdField_a_of_type_AndroidViewView;
+          QSecFramework.a().a(5, 0, 1, new Object[] { Integer.valueOf(80), paramView }, null);
+          this.jdField_a_of_type_Boolean = false;
+          if (QLog.isColorLevel()) {
+            QLog.i("MainFragment", 2, "附近人机上报: lebaView onCreate, from=" + this.jdField_a_of_type_JavaLangString);
+          }
+        }
+        else
+        {
+          QSecFramework.a().a(5, 0, 2, new Object[] { Integer.valueOf(80), Integer.valueOf(1), Integer.valueOf(6), "lebaClick", null }, null);
+          if (QLog.isColorLevel())
+          {
+            QLog.i("MainFragment", 2, "附近人机上报: lebaView onClick, from=" + this.jdField_a_of_type_JavaLangString);
+            return;
+          }
+        }
       }
     }
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeTextIntentByServerHandler != null) {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeTextIntentByServerHandler.a(this.a.a.jdField_a_of_type_JavaLangString, this.a.a.jdField_a_of_type_JavaLangObject, paramObject);
+    catch (Exception paramView)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("MainFragment", 2, "ABotDragClickListener onClick exp=", paramView);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abdi
  * JD-Core Version:    0.7.0.1
  */

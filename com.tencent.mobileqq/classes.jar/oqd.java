@@ -1,16 +1,18 @@
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyDraftboxItem.PicData;
 
-class oqd
-  implements Runnable
+public final class oqd
+  implements Parcelable.Creator<ReadInJoyDraftboxItem.PicData>
 {
-  oqd(oqc paramoqc) {}
-  
-  public void run()
+  public ReadInJoyDraftboxItem.PicData a(Parcel paramParcel)
   {
-    if (SlideShowPhotoListManager.a(this.a.a) != null) {
-      SlideShowPhotoListManager.a(this.a.a).a();
-    }
+    return new ReadInJoyDraftboxItem.PicData(paramParcel);
+  }
+  
+  public ReadInJoyDraftboxItem.PicData[] a(int paramInt)
+  {
+    return new ReadInJoyDraftboxItem.PicData[paramInt];
   }
 }
 

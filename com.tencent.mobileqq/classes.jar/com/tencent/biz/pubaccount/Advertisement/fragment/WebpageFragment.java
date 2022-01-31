@@ -7,20 +7,20 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.FrameLayout;
-import com.tencent.biz.common.util.Util;
-import com.tencent.biz.pubaccount.Advertisement.data.AdvertisementItem;
-import com.tencent.biz.pubaccount.Advertisement.data.VideoDownloadItem;
-import com.tencent.mobileqq.statistics.ReportController;
+import awqx;
+import bbcj;
+import bbcm;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
 import com.tencent.qphone.base.util.QLog;
+import mpw;
+import mxu;
+import mxw;
 
 public class WebpageFragment
   extends WebViewFragment
 {
-  private AdvertisementItem a;
+  private mxu a;
   
   public static WebpageFragment a(Intent paramIntent)
   {
@@ -31,37 +31,37 @@ public class WebpageFragment
     return localWebpageFragment;
   }
   
-  public void a(AdvertisementItem paramAdvertisementItem)
+  public void a(mxu parammxu)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem = paramAdvertisementItem;
+    this.jdField_a_of_type_Mxu = parammxu;
   }
   
   public boolean a()
   {
-    Util.a("Web_qqbrowser_ShowPreview");
+    mpw.a("Web_qqbrowser_ShowPreview");
     long l = System.nanoTime();
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a(this.jdField_a_of_type_AndroidContentIntent);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.c = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.y);
-    this.n = true;
-    this.o = false;
-    y();
+    this.jdField_a_of_type_Bbcj.a(this.jdField_a_of_type_AndroidContentIntent);
+    this.jdField_a_of_type_Bbcm.c = 0L;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.a(this.jdField_a_of_type_Bbcj.jdField_a_of_type_Bbcm.B);
+    this.p = true;
+    this.q = false;
+    F();
     if (QLog.isColorLevel()) {
       QLog.d("WebpageFragment", 2, "init view 1, cost = " + (System.nanoTime() - l) / 1000000L);
     }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.c = true;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_AndroidWidgetProgressBar = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.jdField_a_of_type_AndroidWidgetProgressBar;
+    this.jdField_a_of_type_Bbcj.c = true;
+    this.jdField_a_of_type_Bbcj.jdField_a_of_type_AndroidWidgetProgressBar = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.jdField_a_of_type_AndroidWidgetProgressBar;
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a(this.g);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b = false;
-    Util.b("Web_qqbrowser_ShowPreview");
+    this.jdField_a_of_type_Bbcj.a(this.h);
+    this.jdField_a_of_type_Bbcj.b = false;
+    mpw.b("Web_qqbrowser_ShowPreview");
     return true;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    ReportController.b(null, "dc00898", "", this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a.a, "0X8008F6B", "0X8008F6B", 0, 0, this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a.c, "", "", this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a.b);
+    awqx.a(null, "dc00898", "", this.jdField_a_of_type_Mxu.a.a, "0X8008F6B", "0X8008F6B", 0, 0, this.jdField_a_of_type_Mxu.a.c, "", "", this.jdField_a_of_type_Mxu.a.b);
   }
   
   public void onResume()
@@ -77,7 +77,7 @@ public class WebpageFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.fragment.WebpageFragment
  * JD-Core Version:    0.7.0.1
  */

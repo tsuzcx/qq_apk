@@ -1,110 +1,103 @@
 package com.tencent.mobileqq.shortvideo.filter;
 
-import android.annotation.SuppressLint;
 import android.os.SystemClock;
 import com.tencent.mobileqq.qmcf.QmcfManager;
 import com.tencent.sveffects.SLog;
 
-@SuppressLint({"NewApi"})
 public class QQFilterLogManager
 {
-  public static long a;
-  public static String a;
-  public static boolean a;
-  public static long b;
-  public static long c;
-  public static long d;
-  public static long e = 80000000L;
-  public static long f = 2000000000L;
-  public static long g;
+  public static String TAG = "QQFilterLog";
+  public static boolean isEnable = false;
+  public static long mFilterStartTime;
+  public static long mOnDrawFrameStartTime;
+  public static long mOnOldDrawFrameStartTime;
+  public static long mPTVStartTime;
+  public static long mPrintLogOverTime = 80L;
+  public static long mPrintLogSpcingTime = 2000L;
+  public static long mSpcingTime;
+  public static long mStartTime;
   
-  static
+  public static boolean isRenderOverTime(long paramLong)
   {
-    jdField_a_of_type_JavaLangString = "QQFilterLog";
-    jdField_a_of_type_Boolean = false;
+    return paramLong > mPrintLogOverTime;
   }
   
-  public static void a()
+  public static boolean isSpacingOverTime(long paramLong)
   {
-    b = SystemClock.elapsedRealtimeNanos();
+    return paramLong > mPrintLogSpcingTime;
   }
   
-  public static void a(String paramString)
+  public static void setFilterStatus(String paramString, boolean paramBoolean) {}
+  
+  public static void setLogEnd(String paramString)
   {
-    long l = SystemClock.elapsedRealtimeNanos() - b;
-    if (((SLog.a()) && (jdField_a_of_type_Boolean)) || ((SLog.a()) && (a(l)))) {
-      SLog.d(jdField_a_of_type_JavaLangString, "QQFilterRenderManager_渲染item耗时:[" + paramString + " 毫秒=" + l / 1000000L + "ms" + " 微秒=" + l / 1000L + "us]");
+    long l = SystemClock.currentThreadTimeMillis() - mStartTime;
+    if ((SLog.isEnable()) && (isEnable)) {
+      SLog.d(TAG, "QQFilterRenderManager 生命周期结束耗时 [" + paramString + " 毫秒=" + l + "ms 微秒=" + l * 1000L + "us]");
     }
   }
   
-  public static void a(String paramString, boolean paramBoolean) {}
-  
-  public static boolean a(long paramLong)
+  public static void setLogStart(String paramString)
   {
-    return paramLong > e;
+    mStartTime = SystemClock.currentThreadTimeMillis();
+    if ((SLog.isEnable()) && (isEnable)) {
+      SLog.d(TAG, "QQFilterRenderManager 生命周期开始 [" + paramString + "]");
+    }
   }
   
-  public static void b()
+  public static void setOnDrawFilterEnd(String paramString)
   {
-    c = SystemClock.elapsedRealtimeNanos();
-    if (b(c - g))
+    long l = SystemClock.currentThreadTimeMillis() - mFilterStartTime;
+    if (((SLog.isEnable()) && (isEnable)) || ((SLog.isEnable()) && (isRenderOverTime(l)))) {
+      SLog.d(TAG, "QQFilterRenderManager_渲染item耗时:[" + paramString + " 毫秒=" + l + "ms 微秒=" + l * 1000L + "us]");
+    }
+  }
+  
+  public static void setOnDrawFilterStart()
+  {
+    mFilterStartTime = SystemClock.currentThreadTimeMillis();
+  }
+  
+  public static void setOnDrawFrameEnd()
+  {
+    long l = SystemClock.currentThreadTimeMillis() - mOnDrawFrameStartTime;
+    if ((SLog.isEnable()) && (isEnable)) {
+      SLog.w(TAG, "QQFilterRenderManager_一帧结束 总耗时[ 毫秒=" + l + "ms 微秒=" + 1000L * l + "us]");
+    }
+    if (QmcfManager.getInstance().isQmcfWork()) {
+      QmcfManager.getInstance().updateQmcfFrameConsume(l);
+    }
+  }
+  
+  public static void setOnDrawFrameStart()
+  {
+    mOnDrawFrameStartTime = SystemClock.currentThreadTimeMillis();
+    if (isSpacingOverTime(mOnDrawFrameStartTime - mSpcingTime))
     {
-      jdField_a_of_type_Boolean = true;
-      g = c;
+      isEnable = true;
+      mSpcingTime = mOnDrawFrameStartTime;
     }
     for (;;)
     {
-      if ((SLog.a()) && (jdField_a_of_type_Boolean)) {
-        SLog.b(jdField_a_of_type_JavaLangString, "QQFilterRenderManager 一帧开始");
+      if ((SLog.isEnable()) && (isEnable)) {
+        SLog.w(TAG, "QQFilterRenderManager 一帧开始");
       }
       return;
-      jdField_a_of_type_Boolean = false;
+      isEnable = false;
     }
   }
   
-  public static void b(String paramString)
+  public static void setPTVEnd(String paramString)
   {
-    jdField_a_of_type_Long = SystemClock.elapsedRealtimeNanos();
-    if ((SLog.a()) && (jdField_a_of_type_Boolean)) {
-      SLog.d(jdField_a_of_type_JavaLangString, "QQFilterRenderManager 生命周期开始 [" + paramString + "]");
+    long l = SystemClock.currentThreadTimeMillis() - mPTVStartTime;
+    if ((SLog.isEnable()) && (isEnable)) {
+      SLog.d(TAG, "QQFilterRenderManager 挂件：  [" + paramString + " 毫秒=" + l + "ms 微秒=" + l * 1000L + "us]");
     }
   }
   
-  public static boolean b(long paramLong)
+  public static void setPTVStart()
   {
-    return paramLong > f;
-  }
-  
-  public static void c()
-  {
-    long l = SystemClock.elapsedRealtimeNanos() - c;
-    if ((SLog.a()) && (jdField_a_of_type_Boolean)) {
-      SLog.b(jdField_a_of_type_JavaLangString, "QQFilterRenderManager_一帧结束 总耗时[ 毫秒=" + l / 1000000L + "ms" + " 微秒=" + l / 1000L + "us]");
-    }
-    if (QmcfManager.a().a()) {
-      QmcfManager.a().a(l / 1000000L);
-    }
-  }
-  
-  public static void c(String paramString)
-  {
-    long l = SystemClock.elapsedRealtimeNanos() - jdField_a_of_type_Long;
-    if ((SLog.a()) && (jdField_a_of_type_Boolean)) {
-      SLog.d(jdField_a_of_type_JavaLangString, "QQFilterRenderManager 生命周期结束耗时 [" + paramString + " 毫秒=" + l / 1000000L + "ms" + " 微秒=" + l / 1000L + "us]");
-    }
-  }
-  
-  public static void d()
-  {
-    d = SystemClock.elapsedRealtimeNanos();
-  }
-  
-  public static void d(String paramString)
-  {
-    long l = SystemClock.elapsedRealtimeNanos() - d;
-    if ((SLog.a()) && (jdField_a_of_type_Boolean)) {
-      SLog.d(jdField_a_of_type_JavaLangString, "QQFilterRenderManager 挂件：  [" + paramString + " 毫秒=" + l / 1000000L + "ms" + " 微秒=" + l / 1000L + "us]");
-    }
+    mPTVStartTime = SystemClock.currentThreadTimeMillis();
   }
 }
 

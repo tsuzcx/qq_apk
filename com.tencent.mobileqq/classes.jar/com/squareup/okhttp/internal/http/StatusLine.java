@@ -2,7 +2,6 @@ package com.squareup.okhttp.internal.http;
 
 import com.squareup.okhttp.Protocol;
 import com.squareup.okhttp.Response;
-import java.io.IOException;
 import java.net.ProtocolException;
 
 public final class StatusLine
@@ -27,10 +26,9 @@ public final class StatusLine
   }
   
   public static StatusLine parse(String paramString)
-    throws IOException
   {
+    int i = 9;
     int j;
-    int i;
     Protocol localProtocol;
     if (paramString.startsWith("HTTP/1."))
     {
@@ -38,7 +36,6 @@ public final class StatusLine
         throw new ProtocolException("Unexpected status line: " + paramString);
       }
       j = paramString.charAt(7) - '0';
-      i = 9;
       if (j == 0) {
         localProtocol = Protocol.HTTP_1_0;
       }
@@ -67,21 +64,19 @@ public final class StatusLine
     try
     {
       j = Integer.parseInt(paramString.substring(i, i + 3));
-      str = "";
-      if (paramString.length() <= i + 3) {
-        break label300;
-      }
-      if (paramString.charAt(i + 3) != ' ') {
-        throw new ProtocolException("Unexpected status line: " + paramString);
+      if (paramString.length() > i + 3) {
+        if (paramString.charAt(i + 3) != ' ') {
+          throw new ProtocolException("Unexpected status line: " + paramString);
+        }
       }
     }
     catch (NumberFormatException localNumberFormatException)
     {
       throw new ProtocolException("Unexpected status line: " + paramString);
     }
-    String str = paramString.substring(i + 4);
-    label300:
-    return new StatusLine(localNumberFormatException, j, str);
+    for (paramString = paramString.substring(i + 4);; paramString = "") {
+      return new StatusLine(localNumberFormatException, j, paramString);
+    }
   }
   
   public String toString()

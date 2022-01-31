@@ -1,63 +1,38 @@
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.medalwall.ShareHelper;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.widget.ActionSheet;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aeoh
-  implements AdapterView.OnItemClickListener
+class aeoh
+  implements View.OnClickListener
 {
-  public aeoh(ShareHelper paramShareHelper) {}
+  aeoh(aeog paramaeog) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    if (this.a.a.a().isShowing()) {
-      this.a.a.a().dismiss();
-    }
-    if ((paramLong == 2L) || (paramLong == 3L)) {
-      if (!WXShareHelper.a().a()) {
-        paramInt = 2131435335;
-      }
-    }
-    for (;;)
+    QQAppInterface localQQAppInterface;
+    String str;
+    if (this.a.a())
     {
-      if (paramInt != -1)
-      {
-        QRUtils.a(1, paramInt);
-        return;
-        if (!WXShareHelper.a().b()) {
-          paramInt = 2131435336;
-        }
+      ariz.a().a(aeog.a(this.a), aeog.a(this.a).a);
+      aeog.a(this.a).a();
+      localQQAppInterface = aeog.a(this.a);
+      str = aeog.a(this.a).a;
+      if (aeog.a(this.a).b(aeog.a(this.a).a) != 3) {
+        break label112;
       }
-      else
-      {
-        switch ((int)paramLong)
-        {
-        default: 
-          return;
-        case 0: 
-          ShareHelper.a(this.a);
-          return;
-        case 1: 
-          ShareHelper.b(this.a);
-          return;
-        case 2: 
-          ShareHelper.c(this.a);
-          return;
-        }
-        ShareHelper.d(this.a);
-        return;
-      }
-      paramInt = -1;
+    }
+    label112:
+    for (paramView = "1";; paramView = "0")
+    {
+      awqx.b(localQQAppInterface, "dc00899", "Grp_msg", "", "aio-topbar", "Clk_close", 0, 0, str, paramView, "", "");
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeoh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.open.downloadnew.MyAppApi;
-import org.json.JSONObject;
-
-public class tib
-  implements DialogInterface.OnClickListener
+class tib
+  implements tju
 {
-  public tib(NotificationActivity paramNotificationActivity, String paramString) {}
+  tib(tia paramtia) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    try
-    {
-      paramDialogInterface = new JSONObject();
-      paramDialogInterface.put("appid", "100686848");
-      paramDialogInterface.put("apkId", "6633");
-      paramDialogInterface.put("versionCode", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.getPackageManager().getPackageInfo(this.jdField_a_of_type_JavaLangString, 16384).versionCode));
-      paramDialogInterface.put("via", "ANDROIDQQ.NEICE.OTHER");
-      paramDialogInterface.put("appPackageName", this.jdField_a_of_type_JavaLangString);
-      paramDialogInterface.put("channel", "000316053134377c30");
-      paramDialogInterface.put("appAuthorizedStr", NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity));
-      paramDialogInterface = paramDialogInterface.toString();
-      MyAppApi.a().a(paramDialogInterface, new tic(this), this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity);
-      NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, true);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      paramDialogInterface.printStackTrace();
-    }
+    tia.a(this.a);
+  }
+  
+  public void a(tjs paramtjs, String paramString, boolean paramBoolean)
+  {
+    urk.d("Q.qqstory.playernew.StoryPlayerImpl", "onGroupDataDelete, groupId=%s, vid=%s", new Object[] { paramtjs.a, paramString });
+    tia.a(this.a).a(paramtjs, paramString, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tib
  * JD-Core Version:    0.7.0.1
  */

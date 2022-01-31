@@ -7,18 +7,7 @@ import android.os.Parcelable.Creator;
 public class ImageProcessData
   implements Parcelable
 {
-  public static final Parcelable.Creator<ImageProcessData> CREATOR = new Parcelable.Creator()
-  {
-    public ImageProcessData a(Parcel paramAnonymousParcel)
-    {
-      return new ImageProcessData(paramAnonymousParcel, null);
-    }
-    
-    public ImageProcessData[] a(int paramAnonymousInt)
-    {
-      return new ImageProcessData[paramAnonymousInt];
-    }
-  };
+  public static final Parcelable.Creator<ImageProcessData> CREATOR = new ImageProcessData.1();
   public boolean autoRotate;
   public boolean compressToWebp;
   public int id;

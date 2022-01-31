@@ -1,29 +1,20 @@
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.qphone.base.util.QLog;
-
-class acus
-  implements Runnable
+public abstract class acus
 {
-  acus(acuq paramacuq, int paramInt1, boolean paramBoolean, int paramInt2, String paramString) {}
+  private boolean a;
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_Acuq.a.a(this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
-    {
-      QLog.i("<FileAssistant>FilePreviewActivity", 1, "js call loadFinish  process Over");
-      return;
-      if (this.jdField_a_of_type_Int == 1) {
-        this.jdField_a_of_type_Acuq.a.b(this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_JavaLangString);
-      }
-    }
+    this.a = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acus
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,21 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.AddressDataProvider;
-import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
-import com.tencent.biz.qqstory.network.request.GetLocationRequest;
-import com.tencent.biz.qqstory.network.response.GetLocationResponse;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.SingleLineTextView;
 
-public class ngm
-  implements CmdTaskManger.CommandCallback
+class ngm
 {
-  public ngm(AddressDataProvider paramAddressDataProvider) {}
+  View jdField_a_of_type_AndroidViewView;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
+  String jdField_a_of_type_JavaLangString;
+  ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView;
+  SingleLineTextView b;
   
-  public void a(@NonNull GetLocationRequest paramGetLocationRequest, @Nullable GetLocationResponse paramGetLocationResponse, @NonNull ErrorMessage paramErrorMessage)
-  {
-    SLog.b("AddressDataProvider", "requestAddress Cmd Respond.");
-    if ((paramErrorMessage.isSuccess()) && (paramGetLocationResponse != null))
-    {
-      SLog.a("AddressDataProvider", "requestAddress onCmdRespond success : %s .", paramGetLocationResponse.toString());
-      this.a.jdField_a_of_type_JavaLangObject = new AddressDataProvider.AddressInfo(paramGetLocationResponse.a, paramGetLocationResponse.c, paramGetLocationResponse.d, paramGetLocationResponse.e, paramGetLocationResponse.f, paramGetLocationRequest.d, paramGetLocationRequest.e);
-      this.a.a("country", paramGetLocationResponse.a);
-      this.a.a("province", paramGetLocationResponse.c);
-      this.a.a("city", paramGetLocationResponse.d);
-      this.a.a("district", paramGetLocationResponse.e);
-      this.a.a("street", paramGetLocationResponse.f);
-      this.a.a("longitude", paramGetLocationRequest.d);
-      this.a.a("latitude", paramGetLocationRequest.e);
-      this.a.a("time", System.currentTimeMillis());
-      this.a.a(true, this.a.jdField_a_of_type_JavaLangObject);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Boolean = false;
-      return;
-      SLog.d("AddressDataProvider", "requestAddress onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramGetLocationRequest });
-      this.a.a(false, null);
-    }
-  }
+  ngm(ngk paramngk) {}
 }
 
 

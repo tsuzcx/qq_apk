@@ -8,7 +8,7 @@ import tencent.im.cs.cmd0x6ff.subcmd0x533.HttpMapItem;
 
 public class OCRTextSearchInfo
 {
-  public static OCRTextSearchInfo.SougouSearchInfo a(List paramList)
+  public static OCRTextSearchInfo.SougouSearchInfo a(List<subcmd0x533.HttpMapItem> paramList)
   {
     OCRTextSearchInfo.SougouSearchInfo localSougouSearchInfo = new OCRTextSearchInfo.SougouSearchInfo();
     paramList = paramList.iterator();

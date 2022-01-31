@@ -1,193 +1,156 @@
-import android.view.View;
-import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.pic.PresendPicMgr;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.GestureSelectGridView;
-import com.tencent.widget.GestureSelectGridView.OnSelectListener;
-import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Set;
+import mqq.manager.TicketManager;
 
 public class xcn
-  implements GestureSelectGridView.OnSelectListener
+  extends WebViewPlugin
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
-  int b;
+  private mkw a;
   
-  public xcn(PhotoListActivity paramPhotoListActivity) {}
-  
-  public void a(int paramInt1, int paramInt2)
+  public xcn()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.i) {}
-    int j;
-    int k;
+    this.mPluginNameSpace = getClass().getSimpleName();
+  }
+  
+  public boolean handleSchemaRequest(String paramString1, String paramString2)
+  {
+    Object localObject2 = null;
+    if (((!"http".equals(paramString2)) && (!"https".equals(paramString2))) || (TextUtils.isEmpty(paramString1))) {}
+    long l;
     do
     {
       do
       {
-        return;
+        return false;
+        l = System.currentTimeMillis();
         if (QLog.isColorLevel()) {
-          QLog.d("OnSelectListener", 2, "onSelectChanged beginIndex:" + paramInt1 + " selectIndex:" + paramInt2);
+          QLog.d("PtloginPlugin", 2, "handleSchemaRequest, originUrl=" + paramString1);
         }
-        j = Math.min(paramInt1, paramInt2);
-        k = Math.max(paramInt1, paramInt2);
-        if (paramInt2 >= paramInt1) {
-          break;
+      } while (this.a == null);
+      paramString2 = this.a.a("ptlogin2");
+    } while ((paramString2 == null) || (paramString2.isEmpty()));
+    Object localObject3 = this.mRuntime.a();
+    paramString2 = paramString2.iterator();
+    Object localObject1;
+    int i;
+    for (;;)
+    {
+      if (paramString2.hasNext())
+      {
+        localObject1 = (String)paramString2.next();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject1).append("/jump?");
+        if (paramString1.startsWith(localStringBuilder.toString())) {
+          if (paramString1.contains("clientuin=$UIN$"))
+          {
+            paramString2 = paramString1.replace("clientuin=$UIN$", "clientuin=" + ((AppInterface)localObject3).getAccount());
+            i = 1;
+            label207:
+            if (!paramString1.contains("clientkey=$KEY$")) {
+              break label440;
+            }
+            localObject1 = (TicketManager)((AppInterface)localObject3).getManager(2);
+            if (localObject1 != null) {
+              break label423;
+            }
+            localObject1 = null;
+            label235:
+            localObject3 = new StringBuilder().append("clientkey=");
+            localObject2 = localObject1;
+            if (TextUtils.isEmpty((CharSequence)localObject1)) {
+              localObject2 = "";
+            }
+            localObject1 = paramString2.replace("clientkey=$KEY$", (String)localObject2);
+            i = 1;
+            label285:
+            if (!paramString1.contains("keyindex=$KEYINDEX$")) {
+              break label542;
+            }
+            paramString2 = ((String)localObject1).replace("keyindex=$KEYINDEX$", "keyindex=19");
+            i = 1;
+          }
         }
-        i = this.b;
-        this.b = Math.min(paramInt2, this.b);
-        if (paramInt2 >= i) {
-          break label296;
-        }
-      } while ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.S));
-      i -= 1;
-      while (i >= paramInt2)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Xdm.a(i), this.jdField_a_of_type_Boolean);
-        if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.S))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.e();
-          this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.invalidateViews();
-          return;
-        }
-        i -= 1;
-      }
-      i = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = Math.max(paramInt2, this.jdField_a_of_type_Int);
-      if (paramInt2 <= i) {
-        break;
-      }
-    } while ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.S));
-    i += 1;
-    while (i <= paramInt2)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Xdm.a(i), this.jdField_a_of_type_Boolean);
-      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.S))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.e();
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.invalidateViews();
-        return;
-      }
-      i += 1;
-    }
-    label296:
-    int i = this.b;
-    PhotoListActivity localPhotoListActivity;
-    LocalMediaInfo localLocalMediaInfo;
-    boolean bool;
-    if (i < j)
-    {
-      localPhotoListActivity = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity;
-      localLocalMediaInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Xdm.a(i);
-      if (!this.jdField_a_of_type_Boolean) {}
-      for (bool = true;; bool = false)
-      {
-        localPhotoListActivity.a(localLocalMediaInfo, bool);
-        i += 1;
-        break;
-      }
-    }
-    i = k + 1;
-    if (i <= this.jdField_a_of_type_Int)
-    {
-      localPhotoListActivity = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity;
-      localLocalMediaInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Xdm.a(i);
-      if (!this.jdField_a_of_type_Boolean) {}
-      for (bool = true;; bool = false)
-      {
-        localPhotoListActivity.a(localLocalMediaInfo, bool);
-        i += 1;
-        break;
-      }
-    }
-    if (paramInt2 < paramInt1)
-    {
-      this.b = paramInt2;
-      if (this.jdField_a_of_type_Int > paramInt1) {
-        this.jdField_a_of_type_Int = paramInt1;
       }
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.e();
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.invalidateViews();
-      return;
-      this.jdField_a_of_type_Int = paramInt2;
-      if (this.b < paramInt1) {
-        this.b = paramInt1;
+      if (i != 0)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PtloginPlugin", 2, "handleSchemaRequest, replacePtloginUrl, duration=" + (System.currentTimeMillis() - l));
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("PtloginPlugin", 2, "handleSchemaRequest, load replaced url");
+        }
+        paramString1 = this.mRuntime.a();
+        if (paramString1 != null) {
+          paramString1.loadUrlOriginal(paramString2);
+        }
+        return true;
+        if (!paramString1.contains("clientuin=$UIN")) {
+          break label607;
+        }
+        paramString2 = paramString1.replace("clientuin=$UIN", "clientuin=" + ((AppInterface)localObject3).getAccount());
+        i = 1;
+        break label207;
+        label423:
+        localObject1 = ((TicketManager)localObject1).getStweb(((AppInterface)localObject3).getAccount());
+        break label235;
+        label440:
+        localObject1 = paramString2;
+        if (!paramString1.contains("clientkey=$KEY")) {
+          break label285;
+        }
+        localObject1 = (TicketManager)((AppInterface)localObject3).getManager(2);
+        if (localObject1 == null) {}
+        for (localObject1 = localObject2;; localObject1 = ((TicketManager)localObject1).getStweb(((AppInterface)localObject3).getAccount()))
+        {
+          localObject3 = new StringBuilder().append("clientkey=");
+          localObject2 = localObject1;
+          if (TextUtils.isEmpty((CharSequence)localObject1)) {
+            localObject2 = "";
+          }
+          localObject1 = paramString2.replace("clientkey=$KEY", (String)localObject2);
+          i = 1;
+          break;
+        }
+        label542:
+        paramString2 = (String)localObject1;
+        if (!paramString1.contains("keyindex=$KEYINDEX")) {
+          continue;
+        }
+        paramString2 = ((String)localObject1).replace("keyindex=$KEYINDEX", "keyindex=19");
+        i = 1;
+        continue;
       }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("PtloginPlugin", 2, "handleSchemaRequest, not replaced, duration=" + (System.currentTimeMillis() - l));
+      return false;
+      label607:
+      i = 0;
+      paramString2 = paramString1;
+      break label207;
+      i = 0;
+      paramString2 = paramString1;
     }
   }
   
-  public void b(int paramInt)
+  public void onCreate()
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.i) {}
-    LocalMediaInfo localLocalMediaInfo;
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("OnSelectListener", 2, "onSelectBegin beginIndex:" + paramInt);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.b.clear();
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_c_of_type_JavaUtilHashSet.clear();
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.S = false;
-      this.jdField_a_of_type_Boolean = false;
-      this.b = paramInt;
-      this.jdField_a_of_type_Int = paramInt;
-      localLocalMediaInfo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_Xdm.a(paramInt);
-      if (localLocalMediaInfo.selectStatus == 2) {
-        bool = true;
-      }
-      this.jdField_a_of_type_Boolean = bool;
-    } while (!this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.a(localLocalMediaInfo, this.jdField_a_of_type_Boolean));
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.e();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.invalidateViews();
-  }
-  
-  public void g()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.i) {}
-    do
-    {
-      return;
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.P) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager != null))
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager.a().isEmpty())
-        {
-          int i = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.getFirstVisiblePosition();
-          localObject = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.getChildAt(this.jdField_a_of_type_Int - i);
-          if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.getHeight() - ((View)localObject).getY() < this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_c_of_type_Int)) {
-            this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.smoothScrollBy(SlideShowPhotoListManager.jdField_a_of_type_Int, 500);
-          }
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_c_of_type_JavaUtilArrayList);
-      }
-      Object localObject = PresendPicMgr.a();
-      if (localObject != null)
-      {
-        Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.b.iterator();
-        while (localIterator.hasNext()) {
-          ((PresendPicMgr)localObject).a((String)localIterator.next(), 1007);
-        }
-        localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_c_of_type_JavaUtilHashSet.iterator();
-        while (localIterator.hasNext()) {
-          ((PresendPicMgr)localObject).b((String)localIterator.next(), 1013);
-        }
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.b.clear();
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_c_of_type_JavaUtilHashSet.clear();
-    } while (!QLog.isColorLevel());
-    QLog.d("OnSelectListener", 2, "onSelectEnd");
+    super.onCreate();
+    this.a = mkw.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xcn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.appcommon.now.download.local.DownloadCallbackNativeImpl;
-import com.tencent.open.appcommon.now.download.local.DownloadNativeApi;
+import android.graphics.Rect;
+import java.util.Arrays;
 
-class almu
-  implements DialogInterface.OnClickListener
+public class almu
 {
-  almu(alms paramalms) {}
+  public int a;
+  public almn a;
+  public Rect a;
+  public String a;
+  public boolean a;
+  public String[] a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c = 50;
+  public int d = -1;
+  public int e = 1;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public almu()
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      label6:
-      DownloadNativeApi.a(this.a.jdField_a_of_type_ComTencentOpenAppcommonNowDownloadLocalDownloadNativeApi).onDownloadCancel(this.a.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      break label6;
-    }
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_a_of_type_ArrayOfJavaLangString = new String[0];
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public String toString()
+  {
+    return "CommonAttrs [key=" + this.jdField_b_of_type_JavaLangString + ", mRect=" + this.jdField_a_of_type_AndroidGraphicsRect + ", count=" + this.jdField_a_of_type_Int + ", duration=" + this.c + ", align=" + this.d + ", mBigImgPath=" + this.jdField_a_of_type_JavaLangString + ", repeatCount=" + this.jdField_b_of_type_Int + ", mAnimationPath=" + Arrays.toString(this.jdField_a_of_type_ArrayOfJavaLangString) + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     almu
  * JD-Core Version:    0.7.0.1
  */

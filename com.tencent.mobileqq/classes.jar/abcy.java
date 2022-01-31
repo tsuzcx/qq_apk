@@ -1,12 +1,20 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.UpdateAppByNameTask;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.MainFragment;
 
-public abstract interface abcy
+public class abcy
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(ArkLocalAppMgr.UpdateAppByNameTask paramUpdateAppByNameTask, Object paramObject);
+  public abcy(MainFragment paramMainFragment) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.e();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abcy
  * JD-Core Version:    0.7.0.1
  */

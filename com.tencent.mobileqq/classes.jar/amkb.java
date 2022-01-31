@@ -1,35 +1,91 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.text.style.ImageSpan;
-import com.tencent.widget.MultiImageTextView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class amkb
-  extends ImageSpan
+  extends alzl<amka>
 {
-  public amkb(MultiImageTextView paramMultiImageTextView, Drawable paramDrawable, int paramInt)
+  public int a()
   {
-    super(paramDrawable, paramInt);
+    return 460;
   }
   
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  @NonNull
+  public amka a(int paramInt)
   {
-    paramCharSequence = getDrawable();
-    paramPaint = paramPaint.getFontMetricsInt();
-    paramInt1 = paramPaint.descent;
-    paramInt1 = (paramPaint.ascent + (paramInt1 + paramInt4 + paramInt4)) / 2;
-    paramInt2 = paramCharSequence.getBounds().bottom / 2;
-    paramCanvas.save();
-    paramCanvas.translate(paramFloat, paramInt1 - paramInt2);
-    paramCharSequence.draw(paramCanvas);
-    paramCanvas.restore();
+    if (QLog.isColorLevel()) {
+      QLog.e("TroopRobotConfProcessor", 2, "migrateOldOrDefaultContent ");
+    }
+    return new amka();
+  }
+  
+  @Nullable
+  public amka a(alzs[] paramArrayOfalzs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopRobotConfProcessor", 2, "onParsed start");
+    }
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopRobotConfProcessor", 2, "onParsed " + paramArrayOfalzs.length);
+      }
+      return amka.a(paramArrayOfalzs[0]);
+    }
+    return null;
+  }
+  
+  public Class<amka> a()
+  {
+    return amka.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("TroopRobotConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void a(amka paramamka)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramamka == null) {
+        break label58;
+      }
+    }
+    label58:
+    for (String str = paramamka.toString();; str = " empty")
+    {
+      QLog.d("TroopRobotConfProcessor", 2, str);
+      if (paramamka != null) {
+        azgu.a(paramamka.a(), paramamka.a());
+      }
+      return;
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amkb
  * JD-Core Version:    0.7.0.1
  */

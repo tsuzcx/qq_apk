@@ -1,6 +1,6 @@
 package com.tencent.view;
 
-import com.tencent.util.LogUtil;
+import com.tencent.ttpic.baseutils.log.LogUtils;
 import javax.microedition.khronos.egl.EGL10;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.egl.EGLContext;
@@ -9,14 +9,14 @@ import javax.microedition.khronos.egl.EGLSurface;
 
 public class FilterContext
 {
-  static final boolean LIST_CONFIGS = false;
-  static final String TAG = "PixelBuffer";
-  EGL10 mEGL;
-  EGLConfig mEGLConfig;
-  EGLConfig[] mEGLConfigs;
-  EGLContext mEGLContext;
-  EGLDisplay mEGLDisplay;
-  EGLSurface mEGLSurface;
+  private static final boolean LIST_CONFIGS = false;
+  private static final String TAG = "PixelBuffer";
+  private EGL10 mEGL;
+  private EGLConfig mEGLConfig;
+  private EGLConfig[] mEGLConfigs;
+  private EGLContext mEGLContext;
+  private EGLDisplay mEGLDisplay;
+  private EGLSurface mEGLSurface;
   
   public FilterContext()
   {
@@ -91,7 +91,7 @@ public class FilterContext
   
   private void listConfig()
   {
-    LogUtil.i("PixelBuffer", "Config List {");
+    LogUtils.i("PixelBuffer", "Config List {");
     EGLConfig[] arrayOfEGLConfig = this.mEGLConfigs;
     int j = arrayOfEGLConfig.length;
     int i = 0;
@@ -104,10 +104,10 @@ public class FilterContext
       int i1 = getConfigAttrib(localEGLConfig, 12323);
       int i2 = getConfigAttrib(localEGLConfig, 12322);
       int i3 = getConfigAttrib(localEGLConfig, 12321);
-      LogUtil.i("PixelBuffer", "    <d,s,r,g,b,a> = <" + k + "," + m + "," + n + "," + i1 + "," + i2 + "," + i3 + ">");
+      LogUtils.i("PixelBuffer", "    <d,s,r,g,b,a> = <" + k + "," + m + "," + n + "," + i1 + "," + i2 + "," + i3 + ">");
       i += 1;
     }
-    LogUtil.i("PixelBuffer", "}");
+    LogUtils.i("PixelBuffer", "}");
   }
   
   public void destroyEgl()
@@ -131,7 +131,7 @@ public class FilterContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.view.FilterContext
  * JD-Core Version:    0.7.0.1
  */

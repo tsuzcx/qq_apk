@@ -8,10 +8,10 @@ import java.util.ArrayList;
 public final class QStarInfoRsp
   extends JceStruct
 {
-  static ArrayList cache_followlist;
+  static ArrayList<QStarInfoItem> cache_followlist;
   public int cmd;
   public int follow_xylm;
-  public ArrayList followlist;
+  public ArrayList<QStarInfoItem> followlist;
   public String jumpurl = "";
   public String logourl = "";
   public int ret;
@@ -20,7 +20,7 @@ public final class QStarInfoRsp
   
   public QStarInfoRsp() {}
   
-  public QStarInfoRsp(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString1, String paramString2, ArrayList paramArrayList)
+  public QStarInfoRsp(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, String paramString1, String paramString2, ArrayList<QStarInfoItem> paramArrayList)
   {
     this.ver = paramInt1;
     this.seq = paramInt2;

@@ -1,41 +1,103 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playmode.IPlayVideoStatusChangeListener;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
-import com.tencent.biz.qqstory.playvideo.ProgressControler;
-import com.tencent.biz.qqstory.playvideo.player.IVideoView;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHolder;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerBigPicItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import org.json.JSONObject;
 
 public class nnl
-  implements DialogInterface.OnDismissListener
+  implements qxs, qxu
 {
-  private final WeakReference a;
-  private final WeakReference b;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private VafContext jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext;
+  private rab jdField_a_of_type_Rab = new rab();
   
-  public nnl(VideoPlayModeBase paramVideoPlayModeBase, VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder)
+  public int a(BaseData paramBaseData)
   {
-    this.a = new WeakReference(paramVideoPlayModeBase);
-    this.b = new WeakReference(paramVideoViewHolder);
-  }
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    paramDialogInterface = (VideoPlayModeBase)this.a.get();
-    VideoPlayerPagerAdapter.VideoViewHolder localVideoViewHolder = (VideoPlayerPagerAdapter.VideoViewHolder)this.b.get();
-    if ((paramDialogInterface != null) && (localVideoViewHolder != null))
-    {
-      paramDialogInterface.s();
-      if (localVideoViewHolder.a != null)
-      {
-        localVideoViewHolder.a.b();
-        paramDialogInterface.jdField_a_of_type_ComTencentBizQqstoryPlaymodeIPlayVideoStatusChangeListener.l(paramDialogInterface.b);
-        paramDialogInterface.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.c();
-      }
-      paramDialogInterface.jdField_a_of_type_ComTencentBizQqstoryViewStoryNewGuideDialog = null;
+    int i = -1;
+    if ((paramBaseData instanceof ProteusBannerBigPicItemData)) {
+      i = npa.a((ProteusBannerBigPicItemData)paramBaseData);
     }
+    return i;
   }
+  
+  public qxr a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext == null)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = new pcw();
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.setContext(paramContext);
+      oag.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, "native_article");
+    }
+    if (this.jdField_a_of_type_AndroidContentContext == null) {
+      this.jdField_a_of_type_AndroidContentContext = paramContext;
+    }
+    ProteusItemData localProteusItemData = (ProteusItemData)paramBaseData;
+    paramBaseData = null;
+    try
+    {
+      paramViewGroup = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getViewFactory().inflate(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, localProteusItemData.a);
+      paramBaseData = paramViewGroup;
+      oag.a(((Container)paramViewGroup).getVirtualView(), localProteusItemData.a.getViewBean());
+      paramBaseData = paramViewGroup;
+      str = localProteusItemData.b.toString();
+      paramBaseData = paramViewGroup;
+    }
+    catch (Exception paramViewGroup)
+    {
+      for (;;)
+      {
+        boolean bool;
+        String str = "error!! msg=" + paramViewGroup.toString();
+      }
+    }
+    bool = false;
+    paramViewGroup = paramBaseData;
+    if (paramBaseData == null)
+    {
+      paramViewGroup = new View(paramContext);
+      bool = true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("WebFastProteusViewAdBannerBigPicCreator", 1, "createViewHolder viewIsNull=" + bool + "  proteusData=" + str);
+    }
+    return new nnm(this, paramViewGroup, localProteusItemData);
+  }
+  
+  public void a() {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt) {}
+  
+  public boolean a(BaseData paramBaseData)
+  {
+    switch (paramBaseData.p)
+    {
+    default: 
+      return false;
+    }
+    return true;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Rab.a();
+  }
+  
+  public void c() {}
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Rab.b();
+  }
+  
+  public void e() {}
 }
 
 

@@ -1,26 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
 
-class svs
-  implements ValueAnimator.AnimatorUpdateListener
+@Deprecated
+public class svs
+  extends svu
 {
-  svs(svr paramsvr, View paramView1, View paramView2, View paramView3, View paramView4, View paramView5) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public svs(ViewGroup paramViewGroup)
   {
-    float f1 = ((Float)paramValueAnimator.getAnimatedValue("txtAlpha")).floatValue();
-    float f2 = ((Float)paramValueAnimator.getAnimatedValue("redAlpha")).floatValue();
-    this.jdField_a_of_type_AndroidViewView.setAlpha(f1);
-    this.b.setAlpha(f2);
-    this.c.setAlpha(f2);
-    this.d.setAlpha(1.0F);
-    this.e.setAlpha(1.0F);
+    super(paramViewGroup, 2131495711);
+  }
+  
+  public void a(ssm paramssm)
+  {
+    super.a(paramssm);
+    this.a.setDisplayState(5);
+    this.a.setNodeName(ajjy.a(2131641156), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     svs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,83 +1,43 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.ARScanFragment;
-import com.tencent.mobileqq.armap.ArMapObserver;
-import com.tencent.mobileqq.armap.ItemInfo;
-import com.tencent.mobileqq.armap.ShopScanActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class abky
-  extends ArMapObserver
+  implements begw
 {
-  public abky(ShopScanActivity paramShopScanActivity) {}
+  public abky(QQLSActivity paramQQLSActivity, MessageForPtt paramMessageForPtt, begr parambegr) {}
   
-  public void onOpenPOI(boolean paramBoolean1, int paramInt1, ItemInfo paramItemInfo, boolean paramBoolean2, int paramInt2, int paramInt3, boolean paramBoolean3)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(299)) {
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(299);
-    }
-    if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(297))
+    aael.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
+    paramView = aael.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), new SessionInfo(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
+    if (paramView != null) {}
+    try
     {
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(297);
-      if (QLog.isColorLevel()) {
-        QLog.i("ShopScanActivity", 2, "onOpenPoi isSuccess: " + paramBoolean1 + ", resultCode: " + paramInt1 + ", mode: " + paramInt3 + ", holder: " + paramBoolean2 + ", bussiType: " + paramInt2 + ", isServerSuccess: " + paramBoolean3 + ", itemInfo: " + paramItemInfo);
-      }
-      if (paramItemInfo != null) {
-        QLog.i("ShopScanActivity", 1, "itemInfo is " + paramItemInfo.toString());
-      }
-      if (!paramBoolean1) {
-        break label321;
-      }
-      ShopScanActivity.b(this.a, true);
-      label192:
-      ShopScanActivity.d(this.a, paramBoolean3);
-      if ((paramBoolean1) && (paramInt1 == 0)) {
-        break label409;
-      }
-      switch (paramInt1)
-      {
-      default: 
-        paramItemInfo = "领奖失败，请稍候再试。";
-        this.a.runOnUiThread(new abkz(this, paramItemInfo));
-        ShopScanActivity.a(this.a, ShopScanActivity.a(this.a), false);
-      }
+      ((MessageForPtt)paramView).c2cViaOffline = true;
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("DiyTextId", paramView.vipBubbleDiyTextId);
+      aael.a(QQLSActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity), this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getLocalFilePath(), paramView.uniseq, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceLength * 1000, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceType, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceChangeFlag, 0, true, paramView.vipSubBubbleId, localBundle);
+      this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.d();
+      this.jdField_a_of_type_Begr.dismiss();
+      return;
     }
-    label321:
-    while ((paramItemInfo == null) || (paramItemInfo.e <= 0)) {
+    catch (RuntimeException paramView)
+    {
       for (;;)
       {
-        return;
-        ShopScanActivity.f(this.a);
-        break;
-        if (paramInt1 == 19) {
-          break label192;
-        }
-        ShopScanActivity.c(this.a, true);
-        break label192;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(298, 30000L);
-        paramItemInfo = "领奖失败，请稍候再试。";
-        continue;
-        paramItemInfo = "你已经领过这里的奖品了。";
-        continue;
-        paramItemInfo = "请到达指定地点后再扫描领奖。";
-        continue;
-        paramItemInfo = "今天领奖次数已达到上限。";
-        continue;
-        paramItemInfo = "来晚了一步，奖品已经发完了。";
-        continue;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(298, 30000L);
-        paramItemInfo = "领奖失败，请稍候再试。";
+        paramView.printStackTrace();
+        bbmy.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity, paramView.getMessage(), 0).a();
       }
     }
-    label409:
-    paramItemInfo.h = ShopScanActivity.b(this.a);
-    this.a.runOnUiThread(new abla(this, paramItemInfo));
-    this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment.b(true);
-    ShopScanActivity.a(this.a, ShopScanActivity.a(this.a), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abky
  * JD-Core Version:    0.7.0.1
  */

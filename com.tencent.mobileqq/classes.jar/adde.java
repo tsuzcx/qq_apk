@@ -1,34 +1,27 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
 
-public class adde
-  implements Runnable
+class adde
+  implements begw
 {
-  public adde(FileManagerDataCenter paramFileManagerDataCenter, Bundle paramBundle) {}
+  adde(addd paramaddd, MessageForDeviceFile paramMessageForDeviceFile, begr parambegr) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidOsBundle == null)
+    switch (paramInt)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("FileManagerDataCenter<FileAssistant>", 2, "INTENT_ACTION_RENAME_FILENAME extra is null!!!");
-      }
-      return;
     }
-    String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("peerUin");
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("peerType");
-    String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("sourceStr");
-    String str3 = this.jdField_a_of_type_AndroidOsBundle.getString("filePath");
-    long l = this.jdField_a_of_type_AndroidOsBundle.getLong("dataLength");
-    int j = this.jdField_a_of_type_AndroidOsBundle.getInt("fileSourceId");
-    Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle.getBundle("otherData");
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileManagerDataCenter.a(str1, i, str3, l, j, str2, localBundle);
+    for (;;)
+    {
+      this.jdField_a_of_type_Begr.dismiss();
+      return;
+      this.jdField_a_of_type_Addd.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adde
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import java.util.List;
 public class ProfileLabelTypeInfo
   implements Serializable, Cloneable
 {
-  public List labels = new ArrayList();
+  public List<ProfileLabelInfo> labels = new ArrayList();
   public String typeId;
   public String typeInfo;
   public String typeName;

@@ -1,20 +1,22 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.PCActiveNoticeActiviy;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class abgn
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public abgn(ARMapActivity paramARMapActivity) {}
+  public abgn(PCActiveNoticeActiviy paramPCActiveNoticeActiviy) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ARMapActivity.f(this.a, false);
+    SettingCloneUtil.writeValue(this.a, PCActiveNoticeActiviy.a(this.a), null, "pcactive_notice_key", false);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abgn
  * JD-Core Version:    0.7.0.1
  */

@@ -28,7 +28,7 @@ public final class ap
   private int A;
   private long B = 0L;
   private String C;
-  private a D = new a((byte)0);
+  private ap.a D = new ap.a((byte)0);
   private boolean E = false;
   private an F;
   long o;
@@ -72,7 +72,6 @@ public final class ap
   }
   
   private void a(int paramInt)
-    throws IOException
   {
     int m = 0;
     for (;;)
@@ -218,10 +217,10 @@ public final class ap
     this.o = SystemClock.elapsedRealtime();
     this.D.a = this.o;
     this.v = new ao(0, "");
-    label1322:
-    label1604:
-    label1609:
-    label1614:
+    label1324:
+    label1606:
+    label1611:
+    label1616:
     for (;;)
     {
       try
@@ -244,7 +243,7 @@ public final class ap
             this.s = ((HttpURLConnection)localObject3);
             localObject3 = this.s;
             if (!this.c) {
-              break label1614;
+              break label1616;
             }
             localObject1 = "GET";
             ((HttpURLConnection)localObject3).setRequestMethod((String)localObject1);
@@ -296,7 +295,7 @@ public final class ap
         if ((this.v.a != 0) && (x.h()) && (this.v.a != -20))
         {
           if (x.a.a("direct_fail_to_report_dns_ip", 0, 1, 0) != 1) {
-            break label1370;
+            break label1372;
           }
           if (i != 0) {
             this.C = cn.c(this.w);
@@ -314,7 +313,7 @@ public final class ap
         continue;
         this.v.a(localHttpsURLConnection);
         if ((this.v.c < 200) || (this.v.c >= 300)) {
-          break label1322;
+          break label1324;
         }
         this.A = this.s.getContentLength();
         n = x.a.a("app_receive_pack_size", 524288, 10485760, 2097152);
@@ -328,7 +327,7 @@ public final class ap
             continue;
           }
           if (x.a.a("direct_fail_to_report_dns_ip", 0, 1, 0) != 1) {
-            break label1365;
+            break label1367;
           }
           i = m;
           if (i == 0) {
@@ -339,7 +338,7 @@ public final class ap
         }
         if (this.A == 0)
         {
-          this.v.d = null;
+          this.v.d = new byte[0];
           this.D.f = SystemClock.elapsedRealtime();
           continue;
         }
@@ -351,14 +350,14 @@ public final class ap
         this.v.a = -287;
         this.v.b = (localThrowable.getClass().getSimpleName() + "(" + localThrowable.getLocalizedMessage() + ")");
         if (((this.F != null) && (this.F.a)) || ((this.x) && (this.v.b.toLowerCase().contains("cannot verify hostname")))) {
-          break label1622;
+          break label1624;
         }
         if ((!this.x) || (!this.v.b.toLowerCase().contains("not verified"))) {
-          break label1375;
+          break label1377;
         }
-        break label1622;
+        break label1624;
         if (x.h()) {
-          break label1380;
+          break label1382;
         }
         this.v.a = -4;
         c();
@@ -368,7 +367,7 @@ public final class ap
           continue;
         }
         if (x.a.a("direct_fail_to_report_dns_ip", 0, 1, 0) != 1) {
-          break label1604;
+          break label1606;
         }
         i = j;
         if (i == 0) {
@@ -391,7 +390,7 @@ public final class ap
         if ((this.v.a != 0) && (x.h()) && (this.v.a != -20))
         {
           if (x.a.a("direct_fail_to_report_dns_ip", 0, 1, 0) != 1) {
-            break label1609;
+            break label1611;
           }
           i = k;
           if (i != 0) {
@@ -413,21 +412,21 @@ public final class ap
         this.v.b = this.A;
       }
       continue;
-      label1365:
-      label1622:
+      label1367:
+      label1624:
       if ((this.v.c >= 300) && (this.v.c < 400))
       {
         this.h = this.v.a("location");
         continue;
         i = 0;
         continue;
-        label1370:
+        label1372:
         i = 0;
         continue;
-        label1375:
+        label1377:
         i = 0;
         continue;
-        label1380:
+        label1382:
         if (i != 0)
         {
           this.v.a = -289;
@@ -541,82 +540,10 @@ public final class ap
   }
   
   public final void a(boolean paramBoolean) {}
-  
-  static final class a
-  {
-    long a;
-    long b;
-    long c;
-    long d;
-    long e;
-    long f;
-    long g = -1L;
-    long h = -1L;
-    long i = -1L;
-    long j = -1L;
-    long k = -1L;
-    
-    public final void a()
-    {
-      long l2 = -1L;
-      this.g = (this.b - this.a);
-      this.h = (this.c - this.b);
-      this.i = (this.d - this.c);
-      this.j = (this.e - this.d);
-      this.k = (this.f - this.e);
-      long l1 = this.g;
-      if (l1 >= 0L)
-      {
-        this.g = l1;
-        l1 = this.h;
-        if (l1 < 0L) {
-          break label164;
-        }
-        label96:
-        this.h = l1;
-        l1 = this.i;
-        if (l1 < 0L) {
-          break label171;
-        }
-        label112:
-        this.i = l1;
-        l1 = this.j;
-        if (l1 < 0L) {
-          break label178;
-        }
-      }
-      for (;;)
-      {
-        this.j = l1;
-        long l3 = this.k;
-        l1 = l2;
-        if (l3 >= 0L) {
-          l1 = l3;
-        }
-        this.k = l1;
-        return;
-        l1 = -1L;
-        break;
-        label164:
-        l1 = -1L;
-        break label96;
-        label171:
-        l1 = -1L;
-        break label112;
-        label178:
-        l1 = -1L;
-      }
-    }
-    
-    public final String toString()
-    {
-      return "Stat{startToTryConnect=" + this.g + ", connectCost=" + this.h + ", connectToPost=" + this.i + ", postToRsp=" + this.j + ", rspToRead=" + this.k + '}';
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     c.t.m.g.ap
  * JD-Core Version:    0.7.0.1
  */

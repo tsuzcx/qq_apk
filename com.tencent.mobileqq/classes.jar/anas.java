@@ -1,22 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
+import android.os.Handler;
+import android.os.Message;
+import java.util.ArrayList;
+import java.util.List;
 
-public class anas
-  implements View.OnClickListener
+class anas
+  implements anaf
 {
-  public anas(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
+  anas(anao paramanao) {}
   
-  public void onClick(View paramView)
+  public void a(List<anht> paramList)
   {
-    QzoneVerticalVideoDownloadActivity.a(this.a, true);
-    QzoneVerticalVideoDownloadActivity.b(this.a);
-    this.a.finish();
+    Object localObject = paramList;
+    if (paramList == null) {
+      localObject = new ArrayList();
+    }
+    if (anao.a(this.a) != null) {
+      anao.a(this.a).obtainMessage(206, localObject).sendToTarget();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anas
  * JD-Core Version:    0.7.0.1
  */

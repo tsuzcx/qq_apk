@@ -1,20 +1,30 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-class mrg
-  implements Runnable
+final class mrg
+  implements BusinessObserver
 {
-  mrg(mrf parammrf) {}
+  mrg(QQAppInterface paramQQAppInterface, mri parammri) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (!mre.a(this.a.a))
+    if ((paramBoolean) && (paramBundle != null))
     {
-      mre.a(this.a.a, mre.b(this.a.a));
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null) {
+        mrf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, this.jdField_a_of_type_Mri);
+      }
+    }
+    else
+    {
       return;
     }
-    mre.a(this.a.a).setVisibility(8);
-    mre.a(this.a.a).setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.e("SplashActivity", 2, "getSameCityCheckTypeInfo success but data is null");
+    }
+    this.jdField_a_of_type_Mri.a();
   }
 }
 

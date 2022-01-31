@@ -1,42 +1,27 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.ar.config.WorldCupMgr;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class aara
-  extends BroadcastReceiver
+  implements InputFilter
 {
-  public aara(WorldCupMgr paramWorldCupMgr) {}
+  Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("[🀀-🏿]|[🐀-🟿]|[☀-⟿]", 66);
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public aara(EditInfoActivity paramEditInfoActivity) {}
+  
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    while ((!"tencent.businessnotify.qq.to.subprocess".equals(paramIntent.getAction())) || (paramIntent.getIntExtra("bussinessType", 0) != 2)) {
-      return;
+    if (this.jdField_a_of_type_JavaUtilRegexPattern.matcher(paramCharSequence).find()) {
+      return "";
     }
-    switch (paramIntent.getIntExtra("event", 0))
-    {
-    default: 
-      return;
-    case 1: 
-      int i = paramIntent.getIntExtra("download_Index", 0);
-      int j = paramIntent.getIntExtra("download_Progress", 0);
-      if (AudioHelper.e()) {
-        QLog.w(this.a.a, 1, "receive notify, index[" + i + "], progress[" + j + "]");
-      }
-      this.a.a(i, j);
-      return;
-    }
-    paramContext = paramIntent.getStringExtra("config_Content");
-    this.a.b(paramContext);
-    this.a.a();
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aara
  * JD-Core Version:    0.7.0.1
  */

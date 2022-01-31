@@ -1,20 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin;
+import android.widget.RelativeLayout;
 
 public class anky
-  implements DialogInterface.OnClickListener
+  extends angv
 {
-  public anky(QzoneQunFeedJsPlugin paramQzoneQunFeedJsPlugin) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  RelativeLayout[] a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anky
  * JD-Core Version:    0.7.0.1
  */

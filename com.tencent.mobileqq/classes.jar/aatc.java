@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.arcard.ARCardShareHelper;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class aatc
-  implements Runnable
+  implements View.OnClickListener
 {
-  aatc(aasz paramaasz) {}
+  aatc(aata paramaata) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    boolean bool = ARCardShareHelper.a(this.a.a);
-    String str = ARCardShareHelper.b(this.a.a);
-    ThreadManager.getUIHandler().post(new aatd(this, bool, str));
+    aata.a(this.a).a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aatc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,20 @@
-import com.tencent.component.media.image.view.AsyncImageable.AsyncImageableImpl;
-import com.tencent.component.media.image.view.AsyncImageable.AsyncOptions;
+import android.graphics.drawable.Drawable;
 
 public class pnb
-  extends AsyncImageable.AsyncOptions
 {
-  public pnb(AsyncImageable.AsyncImageableImpl paramAsyncImageableImpl) {}
-  
-  protected void onClipSizeChanged(int paramInt1, int paramInt2)
+  public int a()
   {
-    AsyncImageable.AsyncImageableImpl.a(this.a);
+    return 0;
+  }
+  
+  public Drawable a()
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     pnb
  * JD-Core Version:    0.7.0.1
  */

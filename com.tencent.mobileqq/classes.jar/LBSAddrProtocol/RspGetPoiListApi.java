@@ -9,14 +9,14 @@ public final class RspGetPoiListApi
   extends JceStruct
 {
   static GPS cache_stUsrLoc;
-  static ArrayList cache_vPoiList;
+  static ArrayList<PoiInfo> cache_vPoiList;
   public int iTotalNum;
   public GPS stUsrLoc;
-  public ArrayList vPoiList;
+  public ArrayList<PoiInfo> vPoiList;
   
   public RspGetPoiListApi() {}
   
-  public RspGetPoiListApi(GPS paramGPS, int paramInt, ArrayList paramArrayList)
+  public RspGetPoiListApi(GPS paramGPS, int paramInt, ArrayList<PoiInfo> paramArrayList)
   {
     this.stUsrLoc = paramGPS;
     this.iTotalNum = paramInt;

@@ -1,28 +1,23 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class xfb
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  xfb(xfa paramxfa) {}
+  xfb(xez paramxez, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("GoldMsgSettingActivity", 2, "mGoldOnlyChanged. isChecked:" + paramBoolean);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Xez, 1);
     }
-    xfa.a(this.a, paramBoolean);
-    this.a.c = true;
-    if (this.a.a.getVisibility() == 0) {
-      this.a.a.setVisibility(8);
-    }
+    this.jdField_a_of_type_Xez.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     xfb
  * JD-Core Version:    0.7.0.1
  */

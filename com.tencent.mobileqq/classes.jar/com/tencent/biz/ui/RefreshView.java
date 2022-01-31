@@ -9,19 +9,22 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
+import belq;
 import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.OverScrollViewListener;
-import pes;
-import pet;
+import wpa;
+import wpg;
+import wph;
+import wpi;
+import wpj;
 
 public class RefreshView
   extends CustomScrollView
 {
   public int a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new pes(this);
-  public IPullRefreshHeader a;
-  private RefreshView.OnRefreshListener jdField_a_of_type_ComTencentBizUiRefreshView$OnRefreshListener;
-  private OverScrollViewListener jdField_a_of_type_ComTencentWidgetOverScrollViewListener = new pet(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new wpg(this);
+  private belq jdField_a_of_type_Belq = new wph(this);
+  public wpa a;
+  private wpj jdField_a_of_type_Wpj;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = 0;
   private volatile boolean jdField_b_of_type_Boolean = true;
@@ -35,15 +38,22 @@ public class RefreshView
   
   private int a()
   {
-    return this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.a().getMeasuredHeight();
+    return this.jdField_a_of_type_Wpa.a().getMeasuredHeight();
   }
   
   @SuppressLint({"InflateParams"})
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(paramContext).inflate(2130969237, null));
-    addView(this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.a(), 0);
-    d();
+    this.jdField_a_of_type_Wpa = ((PullRefreshHeader)LayoutInflater.from(paramContext).inflate(2131493891, null));
+    addView(this.jdField_a_of_type_Wpa.a(), 0);
+    c();
+  }
+  
+  private void c()
+  {
+    float f = getResources().getDisplayMetrics().density;
+    this.jdField_a_of_type_Wpa.a().setMinimumHeight((int)(f * 60.0F));
+    this.jdField_a_of_type_Wpa.a().setVisibility(8);
   }
   
   private boolean c()
@@ -59,7 +69,7 @@ public class RefreshView
         break label61;
       }
       if ((this.jdField_b_of_type_Int == 0) || (this.jdField_b_of_type_Int == 2)) {
-        this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener.a(0, null, null);
+        this.jdField_a_of_type_Belq.a(0, null, null);
       }
     }
     for (;;)
@@ -68,7 +78,7 @@ public class RefreshView
       return false;
       label61:
       if ((this.jdField_b_of_type_Int == 1) || (this.jdField_b_of_type_Int == 2)) {
-        this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener.c(0, null, null);
+        this.jdField_a_of_type_Belq.c(0, null, null);
       }
     }
     label92:
@@ -81,7 +91,7 @@ public class RefreshView
       }
       else
       {
-        this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener.b(0, null, null);
+        this.jdField_a_of_type_Belq.b(0, null, null);
         bool1 = bool2;
       }
     }
@@ -91,46 +101,25 @@ public class RefreshView
       return bool1;
       bool1 = bool2;
       if (this.jdField_b_of_type_Int == 2) {
-        bool1 = this.jdField_a_of_type_ComTencentWidgetOverScrollViewListener.a(0, null, null);
+        bool1 = this.jdField_a_of_type_Belq.a(0, null, null);
       }
     }
   }
   
   private void d()
   {
-    float f = getResources().getDisplayMetrics().density;
-    this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.a().setMinimumHeight((int)(f * 60.0F));
-    this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.a().setVisibility(8);
-  }
-  
-  private void e()
-  {
-    if (this.jdField_a_of_type_ComTencentBizUiRefreshView$OnRefreshListener != null)
+    if (this.jdField_a_of_type_Wpj != null)
     {
-      this.jdField_a_of_type_ComTencentBizUiRefreshView$OnRefreshListener.a();
+      this.jdField_a_of_type_Wpj.a();
       return;
     }
-    b();
+    a();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentBizUiRefreshView$OnRefreshListener == null)
-    {
-      super.a();
-      return;
-    }
-    c();
-  }
-  
-  public void a(int paramInt)
-  {
-    super.a(paramInt);
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_Int != 2) {
-      c();
-    }
+    this.jdField_b_of_type_Boolean = true;
+    super.onBack();
   }
   
   protected boolean a()
@@ -141,7 +130,13 @@ public class RefreshView
   public void b()
   {
     this.jdField_b_of_type_Boolean = true;
-    super.a();
+    this.jdField_a_of_type_Int = 3;
+    if (this.jdField_a_of_type_Wpa.a() == 0L)
+    {
+      a();
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, this.jdField_a_of_type_Wpa.a());
   }
   
   public boolean b()
@@ -149,81 +144,89 @@ public class RefreshView
     return this.jdField_a_of_type_Boolean;
   }
   
-  public void c()
+  public void onBack()
   {
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_Int = 3;
-    if (this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.a() == 0L)
+    this.jdField_a_of_type_Boolean = false;
+    if (this.jdField_a_of_type_Wpj == null)
     {
-      b();
+      super.onBack();
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.a());
+    c();
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.a().layout(0, -this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.a().getMeasuredHeight(), this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.a().getMeasuredWidth(), 0);
+    this.jdField_a_of_type_Wpa.a().layout(0, -this.jdField_a_of_type_Wpa.a().getMeasuredHeight(), this.jdField_a_of_type_Wpa.a().getMeasuredWidth(), 0);
+  }
+  
+  public void onOverScroll(int paramInt)
+  {
+    super.onOverScroll(paramInt);
+    this.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Int != 2) {
+      c();
+    }
   }
   
   public void setDelayBeforeScrollBack(long paramLong)
   {
-    if ((this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader instanceof PullRefreshHeader)) {
-      ((PullRefreshHeader)this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader).a = paramLong;
+    if ((this.jdField_a_of_type_Wpa instanceof PullRefreshHeader)) {
+      ((PullRefreshHeader)this.jdField_a_of_type_Wpa).a = paramLong;
     }
   }
   
-  public void setHeader(IPullRefreshHeader paramIPullRefreshHeader)
+  public void setHeader(wpa paramwpa)
   {
-    if (paramIPullRefreshHeader == null) {
+    if (paramwpa == null) {
       return;
     }
     removeViewAt(0);
-    this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader = paramIPullRefreshHeader;
-    addView(this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.a(), 0);
-    d();
+    this.jdField_a_of_type_Wpa = paramwpa;
+    addView(this.jdField_a_of_type_Wpa.a(), 0);
+    c();
   }
   
   public final void setHeaderBgColor(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader != null) {
-      this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.setHeaderBgColor(paramInt);
+    if (this.jdField_a_of_type_Wpa != null) {
+      this.jdField_a_of_type_Wpa.setHeaderBgColor(paramInt);
     }
   }
   
   public final void setHeaderBgDrawable(Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader != null) {
-      this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.setHeaderBgDrawable(paramDrawable);
+    if (this.jdField_a_of_type_Wpa != null) {
+      this.jdField_a_of_type_Wpa.setHeaderBgDrawable(paramDrawable);
     }
   }
   
   public final void setHeaderBgRes(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader != null) {
-      this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.setHeaderBgRes(paramInt);
+    if (this.jdField_a_of_type_Wpa != null) {
+      this.jdField_a_of_type_Wpa.setHeaderBgRes(paramInt);
     }
   }
   
   public final void setHeaderTextColor(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    if (this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader != null) {
-      this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.setTextColor(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
+    if (this.jdField_a_of_type_Wpa != null) {
+      this.jdField_a_of_type_Wpa.setTextColor(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
     }
   }
   
-  public void setOnCancelListener(RefreshView.OnCancelListener paramOnCancelListener) {}
+  public void setOnCancelListener(wpi paramwpi) {}
   
-  public void setOnRefreshListener(RefreshView.OnRefreshListener paramOnRefreshListener)
+  public void setOnRefreshListener(wpj paramwpj)
   {
-    this.jdField_a_of_type_ComTencentBizUiRefreshView$OnRefreshListener = paramOnRefreshListener;
-    if (paramOnRefreshListener == null)
+    this.jdField_a_of_type_Wpj = paramwpj;
+    if (paramwpj == null)
     {
-      this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.a().setVisibility(8);
+      this.jdField_a_of_type_Wpa.a().setVisibility(8);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizUiIPullRefreshHeader.a().setVisibility(0);
+    this.jdField_a_of_type_Wpa.a().setVisibility(0);
   }
 }
 

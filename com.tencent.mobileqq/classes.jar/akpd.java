@@ -1,79 +1,48 @@
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.vas.FlashCarGameManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
-import org.json.JSONObject;
-
-public class akpd
-  extends SosoInterface.OnLocationListener
+public final class akpd
 {
-  public akpd(FlashCarGameManager paramFlashCarGameManager, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
-  
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if (FlashCarGameManager.d) {
-      return;
-    }
-    String str = "{\"isFromSplash\":1}";
-    Object localObject = str;
-    if (paramInt == 0)
-    {
-      localObject = str;
-      if (paramSosoLbsInfo != null)
-      {
-        localObject = str;
-        if (paramSosoLbsInfo.a != null) {
-          if (QLog.isColorLevel()) {
-            QLog.d("FlashCarGame", 2, "onLocationFinish errCode = " + paramInt + " location = " + paramSosoLbsInfo.a.e + paramSosoLbsInfo.a.d + paramSosoLbsInfo.a.g + paramSosoLbsInfo.a.j);
-          }
-        }
-      }
-    }
-    try
-    {
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("isFromSplash", 1);
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("nation", paramSosoLbsInfo.a.c);
-      localJSONObject.put("province", paramSosoLbsInfo.a.d);
-      localJSONObject.put("city", paramSosoLbsInfo.a.e);
-      localJSONObject.put("district", paramSosoLbsInfo.a.g);
-      localJSONObject.put("street", paramSosoLbsInfo.a.j);
-      localJSONObject.put("streetNo", paramSosoLbsInfo.a.k);
-      localJSONObject.put("town", paramSosoLbsInfo.a.h);
-      localJSONObject.put("village", paramSosoLbsInfo.a.i);
-      ((JSONObject)localObject).put("Location", localJSONObject);
-      localObject = ((JSONObject)localObject).toString();
-      if (QLog.isColorLevel()) {
-        QLog.d("FlashCarGame", 2, "gameParam = " + (String)localObject);
-      }
-      if (FlashCarGameManager.a(this.a) != null)
-      {
-        FlashCarGameManager.a(this.a).removeMessages(261);
-        FlashCarGameManager.a(this.a).sendEmptyMessageDelayed(259, 2000L);
-      }
-      ApolloGameActivity.a(FlashCarGameManager.a(this.a), 3003, 1, (String)localObject, null);
-      return;
-    }
-    catch (Exception paramSosoLbsInfo)
-    {
-      for (;;)
-      {
-        QLog.e("FlashCarGame", 2, "onLocationFinish error: " + paramSosoLbsInfo.getMessage());
-        localObject = str;
-      }
-    }
-  }
+  public static final int A = bajq.a(45.0F);
+  public static final int B = bajq.a(48.0F);
+  public static final int C = bajq.a(60.0F);
+  public static final int D = bajq.a(64.0F);
+  public static final int E = bajq.a(74.0F);
+  public static final int F = bajq.a(76.0F);
+  public static final int G = bajq.a(77.5F);
+  public static final int H = bajq.a(87.5F);
+  public static final int I = bajq.a(92.5F);
+  public static final int J = bajq.a(93.0F);
+  public static final int K = bajq.a(100.0F);
+  public static final int L = bajq.a(105.5F);
+  public static final int M = bajq.a(120.0F);
+  public static final int a = bajq.a(0.5F);
+  public static final int b = bajq.a(1.0F);
+  public static final int c = bajq.a(1.5F);
+  public static final int d = bajq.a(1.75F);
+  public static final int e = bajq.a(2.0F);
+  public static final int f = bajq.a(3.0F);
+  public static final int g = bajq.a(4.0F);
+  public static final int h = bajq.a(5.0F);
+  public static final int i = bajq.a(6.0F);
+  public static final int j = bajq.a(8.0F);
+  public static final int k = bajq.a(10.0F);
+  public static final int l = bajq.a(11.0F);
+  public static final int m = bajq.a(12.0F);
+  public static final int n = bajq.a(14.0F);
+  public static final int o = bajq.a(15.0F);
+  public static final int p = bajq.a(16.0F);
+  public static final int q = bajq.a(16.5F);
+  public static final int r = bajq.a(18.0F);
+  public static final int s = bajq.a(20.0F);
+  public static final int t = bajq.a(25.0F);
+  public static final int u = bajq.a(30.0F);
+  public static final int v = bajq.a(34.0F);
+  public static final int w = bajq.a(35.0F);
+  public static final int x = bajq.a(36.0F);
+  public static final int y = bajq.a(38.0F);
+  public static final int z = bajq.a(40.0F);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akpd
  * JD-Core Version:    0.7.0.1
  */

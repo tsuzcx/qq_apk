@@ -1,42 +1,16 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.remote.IServiceHandler.Stub;
-import cooperation.qzone.remote.RemoteServiceProxy;
-import cooperation.qzone.remote.SendMsg;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public class anfv
-  implements ServiceConnection
+public abstract interface anfv
 {
-  public anfv(RemoteServiceProxy paramRemoteServiceProxy) {}
+  public abstract void a(EmoticonPackage paramEmoticonPackage);
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RemoteServiceProxy", 2, " onServiceConnected service:" + paramComponentName + ",mActionListener:" + RemoteServiceProxy.access$000(this.a));
-    }
-    this.a.serviceHandler = IServiceHandler.Stub.asInterface(paramIBinder);
-    if (RemoteServiceProxy.access$000(this.a) != null)
-    {
-      paramComponentName = new SendMsg("cmd.registerListener");
-      paramComponentName.actionListener = RemoteServiceProxy.access$000(this.a);
-      this.a.sendMsg(paramComponentName);
-    }
-    this.a.onBaseServiceConnected();
-  }
+  public abstract void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2);
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RemoteServiceProxy", 2, " onServiceDisconnected " + paramComponentName + ",mActionListener:" + RemoteServiceProxy.access$000(this.a));
-    }
-    this.a.serviceHandler = null;
-  }
+  public abstract void b(EmoticonPackage paramEmoticonPackage);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anfv
  * JD-Core Version:    0.7.0.1
  */

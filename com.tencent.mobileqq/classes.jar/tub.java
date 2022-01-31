@@ -1,26 +1,53 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
-import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class tub
-  implements DialogInterface.OnClickListener
+  extends QQUIEventReceiver<ttr, tgo>
 {
-  public tub(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public tub(@NonNull ttr paramttr)
   {
-    paramDialogInterface.dismiss();
-    RegisterChooseLoginActivity.a(this.a, false);
-    RegisterByNicknameAndPwdActivity.a(this.a.app, this.a, this.a.a, this.a.b, RegisterChooseLoginActivity.a(this.a), true, this.a.c, false);
-    ReportController.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 0, 0, "", "", "", "");
-    ReportController.a(this.a.app, "dc00898", "", "", "0X8007CC9", "0X8007CC9", 2, 0, "", "", "", "");
+    super(paramttr);
+  }
+  
+  public void a(@NonNull ttr paramttr, @NonNull tgo paramtgo)
+  {
+    if (!TextUtils.equals(paramtgo.b, String.valueOf(paramttr.hashCode()))) {
+      return;
+    }
+    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)paramttr.a()).a();
+    if (localVideoViewVideoHolder != null) {
+      localVideoViewVideoHolder.c(false);
+    }
+    paramttr.l();
+    if (paramtgo.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      urk.a(this.TAG, "generate thumbnail success. shareThumbPath = %s.", paramtgo.jdField_a_of_type_JavaLangString);
+      if (paramtgo.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mIsPicture == 1)
+      {
+        tgm.a().a(paramttr.b(), paramtgo.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      tgm.a().a(paramttr.b(), paramtgo.jdField_a_of_type_JavaLangString, paramtgo.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramttr.hashCode());
+      return;
+    }
+    urk.e(this.TAG, "send video to friend failed because generate thumbnail failed.");
+    bbmy.a(BaseApplicationImpl.getContext(), 1, ajjy.a(2131635379), 0).a();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tgo.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tub
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,48 @@
-import com.tencent.biz.qqstory.newshare.job.UrlDrawableDownloadJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class nlq
-  extends UrlDrawableDownloadJob
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public nlq(ShareModeBase paramShareModeBase, String paramString)
-  {
-    super(paramString);
-  }
+  public nlq(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public boolean b()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    a("WeChatImageJob_in_drawable", a("UrlDrawableDownloadJob_dra"));
-    return true;
+    int j = 1;
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    }
+    for (;;)
+    {
+      rup.a(i);
+      paramCompoundButton = new JSONObject();
+      if (paramBoolean) {
+        i = j;
+      }
+      try
+      {
+        for (;;)
+        {
+          paramCompoundButton.put("click_opt", i);
+          ndn.a(null, "", "0X800A80B", "0X800A80B", 0, 0, "", "", "", paramCompoundButton.toString(), false);
+          return;
+          i = 1;
+          break;
+          i = 2;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+      }
+    }
   }
 }
 

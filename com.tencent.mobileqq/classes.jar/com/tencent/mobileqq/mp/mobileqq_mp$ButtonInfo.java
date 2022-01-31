@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class mobileqq_mp$ButtonInfo
-  extends MessageMicro
+  extends MessageMicro<ButtonInfo>
 {
   public static final int AUTH_NONE = 0;
   public static final int AUTH_SID = 1;
@@ -23,7 +23,7 @@ public final class mobileqq_mp$ButtonInfo
   public final PBEnumField auth_type = PBField.initEnum(0);
   public final PBStringField bg_colors = PBField.initString("");
   public final PBEnumField event_id = PBField.initEnum(1);
-  public final PBRepeatMessageField event_param = PBField.initRepeatMessage(mobileqq_mp.ButtonInfo_EventInfoParam.class);
+  public final PBRepeatMessageField<mobileqq_mp.ButtonInfo_EventInfoParam> event_param = PBField.initRepeatMessage(mobileqq_mp.ButtonInfo_EventInfoParam.class);
   public final PBUInt32Field id = PBField.initUInt32(0);
   public final PBBoolField is_need_lbs = PBField.initBool(false);
   public final PBBoolField is_new_menu = PBField.initBool(false);
@@ -32,7 +32,7 @@ public final class mobileqq_mp$ButtonInfo
   public final PBStringField logo_url = PBField.initString("");
   public final PBStringField media_id = PBField.initString("");
   public final PBStringField name = PBField.initString("");
-  public final PBRepeatMessageField sub_button = PBField.initRepeatMessage(ButtonInfo.class);
+  public final PBRepeatMessageField<ButtonInfo> sub_button = PBField.initRepeatMessage(ButtonInfo.class);
   public final PBStringField texture_url = PBField.initString("");
   public final PBEnumField type = PBField.initEnum(1);
   public final PBStringField url = PBField.initString("");

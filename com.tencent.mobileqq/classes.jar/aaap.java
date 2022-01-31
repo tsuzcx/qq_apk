@@ -1,28 +1,55 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.message.BaseMessageProcessor.RequestBuilder;
-import com.tencent.mobileqq.app.message.SystemMessageProcessor;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import tencent.mobileim.structmsg.structmsg.ReqSystemMsgRead;
+import android.os.Message;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class aaap
-  implements BaseMessageProcessor.RequestBuilder
+  extends MqqHandler
 {
-  public aaap(SystemMessageProcessor paramSystemMessageProcessor, long paramLong1, long paramLong2, structmsg.ReqSystemMsgRead paramReqSystemMsgRead) {}
+  public aaap(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public ToServiceMsg a()
+  public void handleMessage(Message paramMessage)
   {
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageSystemMessageProcessor.a.a("ProfileService.Pb.ReqSystemMsgRead");
-    localToServiceMsg.extraData.putLong("latestFriendSeq", this.jdField_a_of_type_Long);
-    localToServiceMsg.extraData.putLong("latestGroupSeq", this.b);
-    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$ReqSystemMsgRead.toByteArray());
-    localToServiceMsg.setEnableFastResend(true);
-    return localToServiceMsg;
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      if (AssociatedAccountManageActivity.a(this.a) == null) {
+        AssociatedAccountManageActivity.a(this.a, new bbms(this.a, this.a.getTitleBarHeight()));
+      }
+      if ((!this.a.isFinishing()) && (!AssociatedAccountManageActivity.a(this.a).isShowing()))
+      {
+        try
+        {
+          AssociatedAccountManageActivity.a(this.a).show();
+        }
+        catch (Exception localException) {}
+        if (QLog.isColorLevel())
+        {
+          QLog.e("AssociatedAccountManage", 2, "QQProgressDialog show exception.", localException);
+          continue;
+          if ((AssociatedAccountManageActivity.a(this.a) != null) && (AssociatedAccountManageActivity.a(this.a).isShowing()))
+          {
+            AssociatedAccountManageActivity.a(this.a).dismiss();
+            AssociatedAccountManageActivity.a(this.a, null);
+            continue;
+            if (AssociatedAccountManageActivity.a(this.a) != null) {
+              AssociatedAccountManageActivity.a(this.a).cancel();
+            }
+            AssociatedAccountManageActivity.a(this.a, bbmy.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight()));
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaap
  * JD-Core Version:    0.7.0.1
  */

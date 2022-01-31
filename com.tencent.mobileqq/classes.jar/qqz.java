@@ -1,18 +1,22 @@
-import com.tencent.gdtad.views.canvas.framework.GdtCanvasScrollView;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class qqz
-  implements Runnable
+  extends omr
 {
-  public qqz(GdtCanvasScrollView paramGdtCanvasScrollView) {}
-  
-  public void run()
+  public qqz(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.a.fullScroll(33);
+    super(paramString);
+  }
+  
+  public void a(oml paramoml)
+  {
+    paramoml.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidContentIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qqz
  * JD-Core Version:    0.7.0.1
  */

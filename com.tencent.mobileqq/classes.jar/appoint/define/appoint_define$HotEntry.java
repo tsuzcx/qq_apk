@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class appoint_define$HotEntry
-  extends MessageMicro
+  extends MessageMicro<HotEntry>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34 }, new String[] { "uint32_open_flag", "uint32_rest_time", "str_foreword", "str_background_src" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), "", "" }, HotEntry.class);
   public final PBStringField str_background_src = PBField.initString("");

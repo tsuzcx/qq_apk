@@ -1,38 +1,27 @@
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
 
 public class aewm
-  implements WerewolvesHandler.Callback
+  extends ViewPager.SimpleOnPageChangeListener
 {
-  public aewm(GameRoomInviteActivity paramGameRoomInviteActivity, aexc paramaexc) {}
+  public aewm(TroopView paramTroopView) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    if ((paramInt == 0) && (paramRspBody != null))
-    {
-      paramRspBody = this.jdField_a_of_type_Aexc;
-      if (!this.jdField_a_of_type_Aexc.a)
-      {
-        bool = true;
-        paramRspBody.a = bool;
-        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a();
-        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a.notifyDataSetChanged();
-      }
+    if (paramInt == 1) {
+      TroopView.a(this.a, TroopView.a(this.a).getCurrentItem());
     }
-    while (paramRspBody == null) {
-      for (;;)
-      {
-        return;
-        boolean bool = false;
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.a(paramInt, paramRspBody, "设置失败");
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    TroopView.a(this.a, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aewm
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class DynamicBusinessHotWord$ClueWordItem
-  extends MessageMicro
+  extends MessageMicro<ClueWordItem>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField word = PBField.initBytes(ByteStringMicro.EMPTY);

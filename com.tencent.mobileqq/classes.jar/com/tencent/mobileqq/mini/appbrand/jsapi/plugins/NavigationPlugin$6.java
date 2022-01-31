@@ -1,0 +1,24 @@
+package com.tencent.mobileqq.mini.appbrand.jsapi.plugins;
+
+import android.os.Bundle;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import com.tencent.mobileqq.mini.webview.JsRuntime;
+
+class NavigationPlugin$6
+  implements MiniAppLauncher.MiniAppLaunchListener
+{
+  NavigationPlugin$6(NavigationPlugin paramNavigationPlugin, JsRuntime paramJsRuntime, String paramString, int paramInt) {}
+  
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (!paramBoolean) {
+      this.this$0.jsPluginEngine.callbackJsEventFail(this.val$webview, this.val$event, null, this.val$callbackId);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     com.tencent.mobileqq.mini.appbrand.jsapi.plugins.NavigationPlugin.6
+ * JD-Core Version:    0.7.0.1
+ */

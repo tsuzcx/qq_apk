@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.recent.data;
 
 import android.content.Context;
+import babh;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.utils.ContactUtils;
 
 public class RecentItemQCallData
   extends RecentUserBaseData
@@ -16,33 +16,33 @@ public class RecentItemQCallData
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.b = ContactUtils.b(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, true);
-    this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.lastmsgtime;
-    a(paramQQAppInterface, paramContext, this.jdField_a_of_type_ComTencentMobileqqActivityRecentMsgSummary);
+    this.mTitleName = babh.b(paramQQAppInterface, this.mUser.uin, true);
+    this.mDisplayTime = this.mUser.lastmsgtime;
+    a(paramQQAppInterface, paramContext, this.msgSummary);
     super.a(paramQQAppInterface, paramContext);
-    if (AppSetting.b)
+    if (AppSetting.c)
     {
       paramQQAppInterface = new StringBuilder();
-      paramQQAppInterface.append(this.b).append(",");
-      if (this.jdField_c_of_type_Int != 0) {
+      paramQQAppInterface.append(this.mTitleName).append(",");
+      if (this.mUnreadNum != 0) {
         break label142;
       }
     }
     for (;;)
     {
-      if (this.jdField_d_of_type_JavaLangCharSequence != null) {
-        paramQQAppInterface.append(this.jdField_d_of_type_JavaLangCharSequence + ",");
+      if (this.mMsgExtroInfo != null) {
+        paramQQAppInterface.append(this.mMsgExtroInfo + ",");
       }
-      paramQQAppInterface.append(this.jdField_c_of_type_JavaLangCharSequence).append(",").append(this.jdField_c_of_type_JavaLangString);
-      this.jdField_d_of_type_JavaLangString = paramQQAppInterface.toString();
+      paramQQAppInterface.append(this.mLastMsg).append(",").append(this.mShowTime);
+      this.mContentDesc = paramQQAppInterface.toString();
       return;
       label142:
-      if (this.jdField_c_of_type_Int == 1) {
+      if (this.mUnreadNum == 1) {
         paramQQAppInterface.append("有一条未读");
-      } else if (this.jdField_c_of_type_Int == 2) {
+      } else if (this.mUnreadNum == 2) {
         paramQQAppInterface.append("有两条未读");
-      } else if (this.jdField_c_of_type_Int > 0) {
-        paramQQAppInterface.append("有").append(this.jdField_c_of_type_Int).append("条未读,");
+      } else if (this.mUnreadNum > 0) {
+        paramQQAppInterface.append("有").append(this.mUnreadNum).append("条未读,");
       }
     }
   }

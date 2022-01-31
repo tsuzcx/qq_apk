@@ -1,16 +1,9 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.msgTabNode.util.MsgTabStoryUtil;
-import com.tencent.biz.qqstory.playmode.util.MsgTabVideoData;
-import java.util.Comparator;
-
-class nir
-  implements Comparator
+public class nir
+  extends bgmz
 {
-  nir(niq paramniq) {}
-  
-  public int a(MsgTabVideoData paramMsgTabVideoData1, MsgTabVideoData paramMsgTabVideoData2)
+  protected void a(String paramString, long paramLong1, long[] paramArrayOfLong, long paramLong2)
   {
-    return MsgTabStoryUtil.a(paramMsgTabVideoData1.a.mCreateTime, paramMsgTabVideoData2.a.mCreateTime);
+    nio.a().a(paramString, paramLong1, paramArrayOfLong, paramLong2);
   }
 }
 

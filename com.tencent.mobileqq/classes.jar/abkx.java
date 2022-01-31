@@ -1,32 +1,26 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.armap.ShopScanActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.QQBroadcastReceiver;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.Comparator;
 
 public class abkx
-  extends QQBroadcastReceiver
+  implements Comparator<ChatMessage>
 {
-  public abkx(ShopScanActivity paramShopScanActivity) {}
+  public abkx(QQLSActivity paramQQLSActivity) {}
   
-  public void onReceive(AppRuntime paramAppRuntime, Context paramContext, Intent paramIntent)
+  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
   {
-    if (paramIntent == null) {}
-    do
-    {
-      return;
-      paramAppRuntime = paramIntent.getAction();
-      if (QLog.isColorLevel()) {
-        QLog.d("ShopScanActivity", 2, new Object[] { "onReceive, action=", paramAppRuntime });
-      }
-    } while (!"com.tencent.mobileqq__alive".equals(paramAppRuntime));
-    ShopScanActivity.a(this.a);
+    if (paramChatMessage1.time == paramChatMessage2.time) {
+      return 0;
+    }
+    if (paramChatMessage1.time > paramChatMessage2.time) {
+      return 1;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abkx
  * JD-Core Version:    0.7.0.1
  */

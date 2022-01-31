@@ -1,24 +1,10 @@
-import android.os.Handler;
-import com.tencent.mobileqq.widget.AudioAnimationView;
-
-public class alak
-  implements Runnable
+public abstract interface alak
 {
-  private alak(AudioAnimationView paramAudioAnimationView) {}
-  
-  public void run()
-  {
-    this.a.b();
-    if (this.a.a) {
-      AudioAnimationView.a(this.a).postDelayed(this, 100L);
-    }
-    this.a.requestLayout();
-    this.a.invalidate();
-  }
+  public abstract void a(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alak
  * JD-Core Version:    0.7.0.1
  */

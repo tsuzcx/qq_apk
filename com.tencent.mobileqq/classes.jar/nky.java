@@ -1,24 +1,19 @@
-import com.tencent.biz.qqstory.newshare.job.EncryptUrlJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareCopyLinkData;
-import java.util.HashMap;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
+import com.tencent.qphone.base.util.QLog;
 
 public class nky
-  extends EncryptUrlJob
+  implements moc
 {
-  public nky(ShareModeBase paramShareModeBase, String paramString1, String paramString2, boolean paramBoolean, ShareCopyLinkData paramShareCopyLinkData)
+  public nky(ReadInJoyNewFeedsActivity.2 param2) {}
+  
+  public void loaded(String paramString, int paramInt)
   {
-    super(paramString1, paramString2, paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2378 html web resource finish");
+    }
   }
   
-  public boolean b()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a = ((String)a("EncryptUrlJob_encryptedUrl"));
-    HashMap localHashMap = new HashMap();
-    localHashMap.put(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a, this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a);
-    a("ShortenUrlJob_shortenedUrls", localHashMap);
-    return true;
-  }
+  public void progress(int paramInt) {}
 }
 
 

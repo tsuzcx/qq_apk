@@ -1,23 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.ProfileCardMessageProcessor;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 
 public class aaae
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aaae(ProfileCardMessageProcessor paramProfileCardMessageProcessor) {}
+  public aaae(AssistantSettingActivity paramAssistantSettingActivity, ajjj paramajjj) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (!TextUtils.isEmpty(this.a.a.getAccount())) {
-      ((FriendListHandler)this.a.a.a(1)).b(this.a.a.getAccount());
-    }
+    this.jdField_a_of_type_Ajjj.a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaae
  * JD-Core Version:    0.7.0.1
  */

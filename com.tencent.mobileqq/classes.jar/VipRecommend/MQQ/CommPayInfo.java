@@ -8,14 +8,14 @@ import java.util.ArrayList;
 public final class CommPayInfo
   extends JceStruct
 {
-  static ArrayList cache_payParams;
+  static ArrayList<PayParam> cache_payParams;
   static RecParam cache_recParam;
-  public ArrayList payParams;
+  public ArrayList<PayParam> payParams;
   public RecParam recParam;
   
   public CommPayInfo() {}
   
-  public CommPayInfo(ArrayList paramArrayList, RecParam paramRecParam)
+  public CommPayInfo(ArrayList<PayParam> paramArrayList, RecParam paramRecParam)
   {
     this.payParams = paramArrayList;
     this.recParam = paramRecParam;

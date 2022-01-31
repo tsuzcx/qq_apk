@@ -1,41 +1,31 @@
-import com.tencent.biz.webviewplugin.OfflinePlugin;
-import com.tencent.biz.webviewplugin.OpenCenterPlugin;
-import com.tencent.biz.webviewplugin.PtloginPlugin;
-import com.tencent.biz.webviewplugin.QzoneWebViewOfflinePlugin;
-import com.tencent.biz.webviewplugin.ReportPlugin;
-import com.tencent.mobileqq.antiphing.AntiphingHandler;
-import com.tencent.mobileqq.jsp.EventApiPlugin;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebReport;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper.CommonJsPluginFactory;
-import com.tencent.mobileqq.webview.WebSecurityPlugin;
-import com.tencent.mobileqq.webviewplugin.WebViewJumpPlugin;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-import java.util.ArrayList;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerFrameLayout;
 
-public final class anlz
-  extends WebAccelerateHelper.CommonJsPluginFactory
+class anlz
+  implements Animator.AnimatorListener
 {
-  public List a()
+  anlz(anly paramanly) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new AntiphingHandler());
-    localArrayList.add(new OfflinePlugin());
-    localArrayList.add(new WebSecurityPlugin());
-    localArrayList.add(new ReportPlugin());
-    localArrayList.add(new PtloginPlugin());
-    localArrayList.add(new WebViewJumpPlugin());
-    localArrayList.add(new VasWebReport());
-    localArrayList.add(new EventApiPlugin());
-    localArrayList.add(new OpenCenterPlugin());
-    localArrayList.add(new QzoneWebViewOfflinePlugin());
-    localArrayList.add(new QzoneWebMusicJsPlugin());
-    return localArrayList;
+    if (this.a.a != null)
+    {
+      float f = this.a.a.getTranslationX();
+      this.a.a.setTranslationX(0.0F);
+      this.a.a((int)(this.a.a.getLeft() + f), this.a.a.getTop(), (int)(f + this.a.a.getLeft() + this.a.a.getWidth()), this.a.a.getBottom());
+    }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anlz
  * JD-Core Version:    0.7.0.1
  */

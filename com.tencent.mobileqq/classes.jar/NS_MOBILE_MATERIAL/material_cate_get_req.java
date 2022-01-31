@@ -9,10 +9,10 @@ import java.util.Map;
 public final class material_cate_get_req
   extends JceStruct
 {
-  static Map cache_mapExtInfo = new HashMap();
+  static Map<String, String> cache_mapExtInfo = new HashMap();
   public int iAppid;
   public long lUin;
-  public Map mapExtInfo;
+  public Map<String, String> mapExtInfo;
   public String strAttachInfo = "";
   public String strCateId = "";
   public String strQua = "";
@@ -26,7 +26,7 @@ public final class material_cate_get_req
   
   public material_cate_get_req() {}
   
-  public material_cate_get_req(long paramLong1, int paramInt, String paramString1, String paramString2, long paramLong2, String paramString3, Map paramMap, String paramString4)
+  public material_cate_get_req(long paramLong1, int paramInt, String paramString1, String paramString2, long paramLong2, String paramString3, Map<String, String> paramMap, String paramString4)
   {
     this.lUin = paramLong1;
     this.iAppid = paramInt;

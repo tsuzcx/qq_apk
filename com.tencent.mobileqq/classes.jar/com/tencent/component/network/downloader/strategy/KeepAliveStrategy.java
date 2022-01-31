@@ -5,9 +5,9 @@ import org.apache.http.HttpRequest;
 
 public abstract interface KeepAliveStrategy
 {
-  public abstract KeepAliveStrategy.KeepAlive a(String paramString, HttpRequest paramHttpRequest, HttpUtil.RequestOptions paramRequestOptions);
+  public abstract KeepAliveStrategy.KeepAlive keepAlive(String paramString, HttpRequest paramHttpRequest, HttpUtil.RequestOptions paramRequestOptions);
   
-  public abstract boolean a(String paramString);
+  public abstract boolean supportKeepAlive(String paramString);
 }
 
 

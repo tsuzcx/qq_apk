@@ -1,49 +1,45 @@
-import android.content.Context;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.IPluginManager;
-import cooperation.plugin.IPluginManager.OnPluginReadyListener;
-import cooperation.plugin.IPluginManager.PluginParams;
+import android.database.sqlite.SQLiteCursor;
+import android.database.sqlite.SQLiteCursorDriver;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteQuery;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import com.tencent.mobileqq.utils.SecurityUtile;
 
-public final class amtj
-  extends OnPluginInstallListener.Stub
+class amtj
+  extends SQLiteCursor
 {
-  public amtj(IPluginManager.OnPluginReadyListener paramOnPluginReadyListener, IPluginManager.PluginParams paramPluginParams, Context paramContext) {}
-  
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
+  amtj(amti paramamti, SQLiteDatabase paramSQLiteDatabase, SQLiteCursorDriver paramSQLiteCursorDriver, String paramString, SQLiteQuery paramSQLiteQuery)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("plugin_tag", 4, "doHandleOtherProcess onInstallError");
-    }
-    if (this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener != null) {
-      this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener.a(false, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
-    }
+    super(paramSQLiteDatabase, paramSQLiteCursorDriver, paramString, paramSQLiteQuery);
   }
   
-  public void onInstallFinish(String paramString)
+  public byte[] getBlob(int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("plugin_tag", 4, "doHandleOtherProcess onInstallFinish");
+    byte[] arrayOfByte2 = super.getBlob(paramInt);
+    byte[] arrayOfByte1 = arrayOfByte2;
+    if (this.a.a.isNeedEncry()) {
+      arrayOfByte1 = SecurityUtile.a(arrayOfByte2);
     }
-    if (this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener != null)
+    return arrayOfByte1;
+  }
+  
+  public String getString(int paramInt)
+  {
+    String str2 = super.getString(paramInt);
+    String str1 = str2;
+    if (this.a.a.isNeedEncry()) {}
+    try
     {
-      paramString = IPluginManager.a().queryPlugin(this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.b);
-      if (paramString != null) {
-        this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams.c = paramString.mInstalledPath;
-      }
-      this.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener.a(true, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams);
+      str1 = SecurityUtile.b(str2);
+      return str1;
     }
+    catch (Exception localException) {}
+    return str2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amtj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,29 @@
-import android.os.Looper;
-
-public final class pqh
+public class pqh
+  implements Cloneable
 {
-  public static final pqi a;
+  public int a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c = -1;
+  public int d = -1;
+  public int e = -1;
+  public int f = -1;
   
-  static
+  public pqh()
   {
-    if (Looper.getMainLooper() != null) {}
-    for (Looper localLooper = Looper.getMainLooper();; localLooper = Looper.myLooper())
-    {
-      a = new pqi(localLooper);
-      return;
-    }
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
+  }
+  
+  public String toString()
+  {
+    return "VideoExtraRepoerData{JumpWayWhich=" + this.jdField_a_of_type_Int + ", InOneThreeSource=" + this.jdField_b_of_type_Int + ", videoTimePosition=" + this.d + ", videoDuration=" + this.e + ", needWhetherClickIn=" + this.jdField_b_of_type_Boolean + ", whetherClickIn=" + this.jdField_a_of_type_Boolean + ", InVideoChannelSource=" + this.c + ", videoFromType=" + this.f + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pqh
  * JD-Core Version:    0.7.0.1
  */

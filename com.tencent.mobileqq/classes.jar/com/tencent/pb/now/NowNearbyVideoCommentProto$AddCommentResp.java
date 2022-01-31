@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class NowNearbyVideoCommentProto$AddCommentResp
-  extends MessageMicro
+  extends MessageMicro<AddCommentResp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field comment_id = PBField.initUInt64(0L);
@@ -23,7 +23,7 @@ public final class NowNearbyVideoCommentProto$AddCommentResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.NowNearbyVideoCommentProto.AddCommentResp
  * JD-Core Version:    0.7.0.1
  */

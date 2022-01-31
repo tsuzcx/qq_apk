@@ -1,22 +1,70 @@
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-
-class stk
-  implements Runnable
+public class stk
 {
-  stk(stg paramstg, CardHandler paramCardHandler, String paramString) {}
+  public long a;
+  public String a;
+  public boolean a;
+  public long b;
+  public String b;
+  public boolean b;
+  public String c;
+  public String d;
   
-  public void run()
+  public void a(stk paramstk)
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_Stg.a, 230, "上传失败", "部分照片上传失败，是否重试上传？", new stl(this), new stm(this));
-    localQQCustomDialog.setCancelable(false);
-    localQQCustomDialog.show();
+    if (paramstk == null) {
+      return;
+    }
+    this.jdField_a_of_type_Long = paramstk.jdField_a_of_type_Long;
+    this.jdField_b_of_type_Long = paramstk.jdField_b_of_type_Long;
+    this.jdField_a_of_type_JavaLangString = paramstk.jdField_a_of_type_JavaLangString;
+    this.jdField_b_of_type_JavaLangString = paramstk.jdField_b_of_type_JavaLangString;
+    this.c = paramstk.c;
+    this.d = paramstk.d;
+    this.jdField_a_of_type_Boolean = paramstk.jdField_a_of_type_Boolean;
+    this.jdField_b_of_type_Boolean = paramstk.jdField_b_of_type_Boolean;
+  }
+  
+  public boolean a()
+  {
+    boolean bool2 = false;
+    long l = System.currentTimeMillis();
+    boolean bool1;
+    if ((l >= this.jdField_a_of_type_Long) && (l < this.jdField_b_of_type_Long))
+    {
+      bool1 = true;
+      if ((!bool1) || (!this.jdField_a_of_type_Boolean) || (!this.jdField_b_of_type_Boolean)) {
+        break label68;
+      }
+      bool1 = bool2;
+    }
+    label68:
+    for (;;)
+    {
+      urk.a("Q.qqstory.config.takevideo", "isVariable=%b content=%s", Boolean.valueOf(bool1), toString());
+      return bool1;
+      bool1 = false;
+      break;
+    }
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("MsgTabTakeVideoNodeConfig=[");
+    localStringBuilder.append(" startTime:").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" endTime:").append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(" imageUrl:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" desc:").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" jumpUrl:").append(this.c);
+    localStringBuilder.append(" contentId:").append(this.d);
+    localStringBuilder.append(" isOneTimeUse:").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" hasClicked:").append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     stk
  * JD-Core Version:    0.7.0.1
  */

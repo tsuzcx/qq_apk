@@ -1,50 +1,42 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.LikeManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailLikeListLoader;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailLikeListLoader.GetLikeListEvent;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailLikeListLoader.GetLikeListRequest;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailLikeListLoader.GetLikeListResponse;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 public class nzi
-  implements CmdTaskManger.CommandCallback
+  implements View.OnTouchListener
 {
-  public nzi(DetailLikeListLoader paramDetailLikeListLoader, boolean paramBoolean) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public void a(@NonNull DetailLikeListLoader.GetLikeListRequest paramGetLikeListRequest, @Nullable DetailLikeListLoader.GetLikeListResponse arg2, @NonNull ErrorMessage paramErrorMessage)
+  public nzi(Context paramContext, View paramView)
   {
-    paramGetLikeListRequest = new DetailLikeListLoader.GetLikeListEvent(paramErrorMessage, DetailLikeListLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailLikeListLoader));
-    paramGetLikeListRequest.jdField_b_of_type_Boolean = false;
-    paramGetLikeListRequest.jdField_a_of_type_Boolean = DetailLikeListLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailLikeListLoader);
-    paramGetLikeListRequest.jdField_a_of_type_Int = DetailLikeListLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailLikeListLoader);
-    if ((??? == null) || (paramErrorMessage.isFail()))
-    {
-      Dispatchers.get().dispatch(paramGetLikeListRequest);
-      return;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+  }
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_AndroidViewView == null)) {
+      return false;
     }
-    paramGetLikeListRequest.jdField_c_of_type_Int = ???.jdField_c_of_type_Int;
-    paramGetLikeListRequest.jdField_b_of_type_Int = ???.jdField_b_of_type_Int;
-    paramGetLikeListRequest.jdField_a_of_type_JavaUtilList = ???.jdField_a_of_type_JavaUtilList;
-    paramGetLikeListRequest.jdField_c_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    ((LikeManager)SuperManager.a(15)).a(paramGetLikeListRequest.jdField_a_of_type_JavaUtilList, DetailLikeListLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailLikeListLoader), DetailLikeListLoader.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailLikeListLoader), true);
-    synchronized (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailLikeListLoader)
+    switch (paramMotionEvent.getAction())
     {
-      DetailLikeListLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailLikeListLoader, true);
-      Dispatchers.get().dispatch(paramGetLikeListRequest);
-      SLog.a("Q.qqstory.detail:DetailLikeListLoader", "dispatch like list return from network: %s", paramGetLikeListRequest);
-      return;
+    case 2: 
+    default: 
+      return false;
+    case 0: 
+      this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130848146));
+      return false;
     }
+    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130848166));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nzi
  * JD-Core Version:    0.7.0.1
  */

@@ -11,6 +11,7 @@ public class WXMiniProgramObject
   public static final int MINIPROGRAM_TYPE_TEST = 1;
   public static final int MINIPTOGRAM_TYPE_RELEASE = 0;
   private static final String TAG = "MicroMsg.SDK.WXMiniProgramObject";
+  public int disableforward = 0;
   public int miniprogramType = 0;
   public String path;
   public String userName;
@@ -19,12 +20,12 @@ public class WXMiniProgramObject
   
   public boolean checkArgs()
   {
-    if (d.h(this.webpageUrl))
+    if (d.b(this.webpageUrl))
     {
       Log.e("MicroMsg.SDK.WXMiniProgramObject", "webPageUrl is null");
       return false;
     }
-    if (d.h(this.userName))
+    if (d.b(this.userName))
     {
       Log.e("MicroMsg.SDK.WXMiniProgramObject", "userName is null");
       return false;
@@ -44,6 +45,7 @@ public class WXMiniProgramObject
     paramBundle.putString("_wxminiprogram_path", this.path);
     paramBundle.putBoolean("_wxminiprogram_withsharetiket", this.withShareTicket);
     paramBundle.putInt("_wxminiprogram_type", this.miniprogramType);
+    paramBundle.putInt("_wxminiprogram_disableforward", this.disableforward);
   }
   
   public int type()
@@ -58,11 +60,12 @@ public class WXMiniProgramObject
     this.path = paramBundle.getString("_wxminiprogram_path");
     this.withShareTicket = paramBundle.getBoolean("_wxminiprogram_withsharetiket");
     this.miniprogramType = paramBundle.getInt("_wxminiprogram_type");
+    this.disableforward = paramBundle.getInt("_wxminiprogram_disableforward");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXMiniProgramObject
  * JD-Core Version:    0.7.0.1
  */

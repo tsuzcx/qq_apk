@@ -1,23 +1,26 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.SpannableString;
-import com.tencent.biz.qrcode.ipc.VoiceScan;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
 
-public class ozo
-  implements Runnable
+class ozo
+  implements Animator.AnimatorListener
 {
-  public ozo(VoiceScan paramVoiceScan) {}
+  ozo(ozm paramozm) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    SpannableString localSpannableString = new SpannableString(VoiceScan.a(this.a).getString(2131433424));
-    localSpannableString.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(VoiceScan.a(this.a).getResources().getColor(2131493062), VoiceScan.a(this.a).getResources().getColor(2131493063)), localSpannableString.length() - 7, localSpannableString.length() - 1, 33);
-    VoiceScan.a(this.a, DialogUtil.a(VoiceScan.a(this.a), VoiceScan.a(this.a).getString(2131433423), localSpannableString, 0, 2131433711, null, null, new ozp(this)));
-    VoiceScan.a(this.a).show();
+    ozm.a(this.a).setSelected(this.a.isSelected());
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    ozm.a(this.a, false);
+    ozm.a(this.a).setSelected(this.a.isSelected());
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

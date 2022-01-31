@@ -1,59 +1,60 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import java.util.List;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserGuide;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class umq
-  extends AnimatorListenerAdapter
+  extends slu
 {
-  int jdField_a_of_type_Int = 0;
-  boolean jdField_a_of_type_Boolean = true;
+  public String a;
+  public int b;
+  public String c;
+  public String d;
+  public String e;
   
-  public umq(VisitorsActivity paramVisitorsActivity) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator)
+  public umq(qqstory_service.RspGetUserGuide paramRspGetUserGuide)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (paramRspGetUserGuide.pic_url.has())
     {
-      int j = this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.a.size();
-      int i = 0;
-      for (;;)
-      {
-        if (i < j)
-        {
-          this.jdField_a_of_type_Int = ((this.jdField_a_of_type_Int + 1) % j);
-          paramAnimator = (Drawable)this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.a.get(this.jdField_a_of_type_Int);
-          if (paramAnimator == null) {
-            break label112;
-          }
-          if (!(paramAnimator instanceof URLDrawable)) {
-            break label98;
-          }
-          if (((URLDrawable)paramAnimator).getStatus() != 1) {
-            break label112;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.c.setImageDrawable(paramAnimator);
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_Boolean = false;
-          return;
-          label98:
-          this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.c.setImageDrawable(paramAnimator);
-        }
-        label112:
-        i += 1;
+      localObject1 = paramRspGetUserGuide.pic_url.get().toStringUtf8();
+      this.a = ((String)localObject1);
+      if (!paramRspGetUserGuide.word.has()) {
+        break label129;
+      }
+      localObject1 = paramRspGetUserGuide.word.get().toStringUtf8();
+      label53:
+      this.c = ((String)localObject1);
+      this.b = paramRspGetUserGuide.seqno.get();
+      if (!paramRspGetUserGuide.confirm_word.has()) {
+        break label134;
       }
     }
-    this.jdField_a_of_type_Boolean = true;
+    label129:
+    label134:
+    for (Object localObject1 = paramRspGetUserGuide.confirm_word.get().toStringUtf8();; localObject1 = null)
+    {
+      this.d = ((String)localObject1);
+      localObject1 = localObject2;
+      if (paramRspGetUserGuide.cancel_word.has()) {
+        localObject1 = paramRspGetUserGuide.cancel_word.get().toStringUtf8();
+      }
+      this.e = ((String)localObject1);
+      return;
+      localObject1 = null;
+      break;
+      localObject1 = null;
+      break label53;
+    }
+  }
+  
+  public String toString()
+  {
+    return "Response{imageUrl='" + this.a + '\'' + ", word='" + this.c + '\'' + ", seqno=" + this.b + ", confirmBtnTxt='" + this.d + '\'' + ", cancelBtnTxt='" + this.e + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     umq
  * JD-Core Version:    0.7.0.1
  */

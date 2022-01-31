@@ -1,19 +1,21 @@
 import android.view.View;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 
-class acvv
-  implements BubblePopupWindow.OnDismissListener
+public class acvv
+  implements View.OnClickListener
 {
-  acvv(acvt paramacvt, View paramView) {}
+  public acvv(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    this.a.b(paramView);
+    AIOLongShotHelper.a("0X8009DE9");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acvv
  * JD-Core Version:    0.7.0.1
  */

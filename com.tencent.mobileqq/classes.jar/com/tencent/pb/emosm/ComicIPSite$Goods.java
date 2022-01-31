@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class ComicIPSite$Goods
-  extends MessageMicro
+  extends MessageMicro<Goods>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 66, 74, 82 }, new String[] { "cover", "goodsTags", "id", "name", "price", "saleTags", "svipPrice", "url", "moreUrl", "saleNum" }, new Object[] { "", "", "", "", "", "", "", "", "", "" }, Goods.class);
   public final PBStringField cover = PBField.initString("");
@@ -22,7 +22,7 @@ public final class ComicIPSite$Goods
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.emosm.ComicIPSite.Goods
  * JD-Core Version:    0.7.0.1
  */

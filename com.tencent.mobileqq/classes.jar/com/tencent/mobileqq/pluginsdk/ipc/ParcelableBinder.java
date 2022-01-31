@@ -8,17 +8,17 @@ import android.os.Parcelable.Creator;
 public class ParcelableBinder
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new a();
-  private IBinder a;
+  public static final Parcelable.Creator<ParcelableBinder> CREATOR = new ParcelableBinder.1();
+  private IBinder mBinder;
   
   public ParcelableBinder(IBinder paramIBinder)
   {
-    this.a = paramIBinder;
+    this.mBinder = paramIBinder;
   }
   
   private ParcelableBinder(Parcel paramParcel)
   {
-    this.a = paramParcel.readStrongBinder();
+    this.mBinder = paramParcel.readStrongBinder();
   }
   
   public int describeContents()
@@ -28,12 +28,12 @@ public class ParcelableBinder
   
   public IBinder getBinder()
   {
-    return this.a;
+    return this.mBinder;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeStrongBinder(this.a);
+    paramParcel.writeStrongBinder(this.mBinder);
   }
 }
 

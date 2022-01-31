@@ -8,14 +8,14 @@ import java.util.ArrayList;
 public final class RespGetSettings
   extends JceStruct
 {
-  static ArrayList cache_Settings;
+  static ArrayList<Setting> cache_Settings;
   public int Revision;
-  public ArrayList Settings;
+  public ArrayList<Setting> Settings;
   public long Total;
   
   public RespGetSettings() {}
   
-  public RespGetSettings(int paramInt, ArrayList paramArrayList, long paramLong)
+  public RespGetSettings(int paramInt, ArrayList<Setting> paramArrayList, long paramLong)
   {
     this.Revision = paramInt;
     this.Settings = paramArrayList;

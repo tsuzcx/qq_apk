@@ -9,12 +9,12 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_service$ReqRemoveMemberListFromShareGroup
-  extends MessageMicro
+  extends MessageMicro<ReqRemoveMemberListFromShareGroup>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField group_id = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field remove_story = PBField.initUInt32(0);
-  public final PBRepeatField unionid_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> unionid_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
   
   static
   {
@@ -25,7 +25,7 @@ public final class qqstory_service$ReqRemoveMemberListFromShareGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqRemoveMemberListFromShareGroup
  * JD-Core Version:    0.7.0.1
  */

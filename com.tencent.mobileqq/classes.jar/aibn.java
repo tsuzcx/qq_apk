@@ -1,16 +1,13 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.search.view.SearchResultGroupTitleView;
+import java.util.Comparator;
 
-public class aibn
-  implements View.OnTouchListener
+class aibn
+  implements Comparator<atcu>
 {
-  public aibn(SearchResultGroupTitleView paramSearchResultGroupTitleView) {}
+  aibn(aibm paramaibm) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public int a(atcu paramatcu1, atcu paramatcu2)
   {
-    return true;
+    return (int)(paramatcu2.a - paramatcu1.a);
   }
 }
 

@@ -1,33 +1,37 @@
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 
 public class aevl
-  implements Runnable
+  extends Handler
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
-  public long c;
-  public long d;
+  public aevl(SearchBaseFragment paramSearchBaseFragment) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    try
+    if (SearchBaseFragment.a(this.a) != null) {
+      SearchBaseFragment.a(this.a).sendMessage(Message.obtain(paramMessage));
+    }
+    switch (paramMessage.what)
     {
-      this.d = System.currentTimeMillis();
-      ThreadManager.post(new aevm(this), 5, null, false);
+    default: 
+      return;
+    case 0: 
+      this.a.a();
+      return;
+    case 1: 
+      this.a.a((String)paramMessage.obj);
+      return;
+    case 2: 
+      this.a.g();
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aevl
  * JD-Core Version:    0.7.0.1
  */

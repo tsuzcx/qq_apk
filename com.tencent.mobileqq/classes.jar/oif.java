@@ -1,21 +1,25 @@
-import com.tencent.biz.qqstory.takevideo.EditPicSave;
-import com.tencent.mobileqq.widget.ProgressPieDrawable;
-import com.tencent.mobileqq.widget.ProgressPieDrawable.OnProgressListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdIMAXBrowserFragment;
+import com.tencent.common.app.AppInterface;
+import java.util.HashMap;
 
 public class oif
-  implements ProgressPieDrawable.OnProgressListener
+  implements View.OnClickListener
 {
-  public oif(EditPicSave paramEditPicSave) {}
+  public oif(ReadInJoyAdIMAXBrowserFragment paramReadInJoyAdIMAXBrowserFragment) {}
   
-  public void a(ProgressPieDrawable paramProgressPieDrawable)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditPicSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + paramProgressPieDrawable);
+    this.a.f();
+    if (ReadInJoyAdIMAXBrowserFragment.a(this.a)) {
+      return;
     }
+    ReadInJoyAdIMAXBrowserFragment.a(this.a, true);
+    paramView = new HashMap();
+    paramView.put("stat_src", "5");
+    nbe.a(new nmv().a((AppInterface)ReadInJoyAdIMAXBrowserFragment.a(this.a)).a(this.a.getActivity()).a(nbe.t).b(nbe.ae).a(ReadInJoyAdIMAXBrowserFragment.a(this.a)).d(nbe.a(paramView)).a());
   }
-  
-  public void a(ProgressPieDrawable paramProgressPieDrawable, int paramInt1, int paramInt2) {}
 }
 
 

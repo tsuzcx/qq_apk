@@ -1,29 +1,28 @@
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.ControlerCallback;
-import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class adhe
-  implements Runnable
+class adhe
+  implements apcz
 {
-  public adhe(QfavFilePreviewController paramQfavFilePreviewController) {}
+  adhe(adfw paramadfw, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    FilePreviewActivity.ControlerCallback localControlerCallback = this.a.a;
-    if (0L == QfavFilePreviewController.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localControlerCallback.a(bool, QfavFilePreviewController.a(this.a), String.valueOf(QfavFilePreviewController.a(this.a)), QfavFilePreviewController.a(this.a), null, QfavFilePreviewController.b(this.a), null, QfavFilePreviewController.c(this.a));
-      if (QLog.isColorLevel()) {
-        QLog.i("QfavFilePreviewController", 2, "sendCS: mHost=" + QfavFilePreviewController.a(this.a) + ", port=" + QfavFilePreviewController.a(this.a) + ", key=" + QfavFilePreviewController.b(this.a) + ", retCode =" + QfavFilePreviewController.a(this.a));
-      }
-      return;
-    }
+    paramView = new Intent(this.jdField_a_of_type_Adfw.jdField_a_of_type_AndroidContentContext, ChatHistoryFileActivity.class);
+    paramView.putExtra("uin", this.jdField_a_of_type_Adfw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+    paramView.putExtra("uintype", this.jdField_a_of_type_Adfw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    paramView.putExtra("uinname", this.jdField_a_of_type_Adfw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+    paramView.putExtra("com.tencent.mobileqq.ChatHistoryFileActivity.initial_tab", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Adfw.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    apci.a("0X800506C");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adhe
  * JD-Core Version:    0.7.0.1
  */

@@ -10,9 +10,9 @@ public final class edit_album_req
   extends JceStruct
 {
   static Album cache_album = new Album();
-  static Map cache_busi_param = new HashMap();
+  static Map<Integer, String> cache_busi_param = new HashMap();
   public Album album;
-  public Map busi_param;
+  public Map<Integer, String> busi_param;
   public long cancelIndividual;
   public boolean isModifyBitmap;
   public String itemid = "";
@@ -25,7 +25,7 @@ public final class edit_album_req
   
   public edit_album_req() {}
   
-  public edit_album_req(Album paramAlbum, Map paramMap, String paramString1, String paramString2, long paramLong, boolean paramBoolean)
+  public edit_album_req(Album paramAlbum, Map<Integer, String> paramMap, String paramString1, String paramString2, long paramLong, boolean paramBoolean)
   {
     this.album = paramAlbum;
     this.busi_param = paramMap;

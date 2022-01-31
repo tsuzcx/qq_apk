@@ -1,21 +1,26 @@
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadMgr;
-import java.util.HashSet;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-public class ajna
-  implements Runnable
+final class ajna
+  extends akfx
 {
-  public ajna(TroopFileUploadMgr paramTroopFileUploadMgr) {}
-  
-  public void run()
+  ajna(String paramString, ToServiceMsg paramToServiceMsg)
   {
-    HashSet localHashSet = new HashSet();
-    this.a.a(1, localHashSet);
-    TroopFileUploadMgr.a(this.a, 1, new Object[] { localHashSet });
+    super(paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo arg2)
+  {
+    synchronized (this.a)
+    {
+      this.a.notify();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajna
  * JD-Core Version:    0.7.0.1
  */

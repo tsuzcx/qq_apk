@@ -1,6 +1,5 @@
 package com.tencent.widget;
 
-import amhz;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.util.SparseArray;
@@ -9,21 +8,25 @@ import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import behl;
+import behm;
+import behn;
+import belt;
 
 public class AdapterViewPagerAdapter
   extends PagerAdapter
 {
   private Context jdField_a_of_type_AndroidContentContext;
-  private SparseArray jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  private AdapterViewPagerAdapter.AdapterViewFactory jdField_a_of_type_ComTencentWidgetAdapterViewPagerAdapter$AdapterViewFactory;
-  private AdapterViewPagerAdapter.PageInflateDelegate jdField_a_of_type_ComTencentWidgetAdapterViewPagerAdapter$PageInflateDelegate;
-  private PagerBaseAdapterWrapper jdField_a_of_type_ComTencentWidgetPagerBaseAdapterWrapper;
+  private SparseArray<AdapterView> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+  private behm jdField_a_of_type_Behm;
+  private behn jdField_a_of_type_Behn;
+  private belt jdField_a_of_type_Belt;
   
   public AdapterViewPagerAdapter(Context paramContext, BaseAdapter paramBaseAdapter, int paramInt)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentWidgetPagerBaseAdapterWrapper = new PagerBaseAdapterWrapper(paramBaseAdapter, paramInt);
-    this.jdField_a_of_type_ComTencentWidgetPagerBaseAdapterWrapper.registerDataSetObserver(new amhz(this));
+    this.jdField_a_of_type_Belt = new belt(paramBaseAdapter, paramInt);
+    this.jdField_a_of_type_Belt.registerDataSetObserver(new behl(this));
   }
   
   public AdapterView a(int paramInt)
@@ -32,16 +35,16 @@ public class AdapterViewPagerAdapter
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      if (this.jdField_a_of_type_ComTencentWidgetAdapterViewPagerAdapter$AdapterViewFactory != null) {
-        localObject1 = this.jdField_a_of_type_ComTencentWidgetAdapterViewPagerAdapter$AdapterViewFactory.a(this.jdField_a_of_type_AndroidContentContext, paramInt);
+      if (this.jdField_a_of_type_Behm != null) {
+        localObject1 = this.jdField_a_of_type_Behm.a(this.jdField_a_of_type_AndroidContentContext, paramInt);
       }
     }
     else
     {
       if (localObject1 != null)
       {
-        localObject2 = new PagerBaseAdapterWrapper(this.jdField_a_of_type_ComTencentWidgetPagerBaseAdapterWrapper.a(), this.jdField_a_of_type_ComTencentWidgetPagerBaseAdapterWrapper.a());
-        ((PagerBaseAdapterWrapper)localObject2).a(paramInt);
+        localObject2 = new belt(this.jdField_a_of_type_Belt.a(), this.jdField_a_of_type_Belt.a());
+        ((belt)localObject2).a(paramInt);
         ((AdapterView)localObject1).setAdapter((Adapter)localObject2);
         this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject1);
       }
@@ -50,16 +53,16 @@ public class AdapterViewPagerAdapter
     throw new IllegalArgumentException("setAdapterViewFactory should be invoked first!");
   }
   
-  public void a(AdapterViewPagerAdapter.AdapterViewFactory paramAdapterViewFactory)
+  public void a(behm parambehm)
   {
-    this.jdField_a_of_type_ComTencentWidgetAdapterViewPagerAdapter$AdapterViewFactory = paramAdapterViewFactory;
+    this.jdField_a_of_type_Behm = parambehm;
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetAdapterViewPagerAdapter$PageInflateDelegate != null)
+    if (this.jdField_a_of_type_Behn != null)
     {
-      this.jdField_a_of_type_ComTencentWidgetAdapterViewPagerAdapter$PageInflateDelegate.a(paramViewGroup, (View)paramObject, paramInt);
+      this.jdField_a_of_type_Behn.a(paramViewGroup, (View)paramObject, paramInt);
       return;
     }
     paramViewGroup.removeView((View)paramObject);
@@ -67,7 +70,7 @@ public class AdapterViewPagerAdapter
   
   public int getCount()
   {
-    return this.jdField_a_of_type_ComTencentWidgetPagerBaseAdapterWrapper.b();
+    return this.jdField_a_of_type_Belt.b();
   }
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
@@ -76,8 +79,8 @@ public class AdapterViewPagerAdapter
     if (localAdapterView == null) {
       return null;
     }
-    if (this.jdField_a_of_type_ComTencentWidgetAdapterViewPagerAdapter$PageInflateDelegate != null) {
-      return this.jdField_a_of_type_ComTencentWidgetAdapterViewPagerAdapter$PageInflateDelegate.a(paramViewGroup, localAdapterView, paramInt);
+    if (this.jdField_a_of_type_Behn != null) {
+      return this.jdField_a_of_type_Behn.a(paramViewGroup, localAdapterView, paramInt);
     }
     paramViewGroup.addView(localAdapterView);
     return localAdapterView;

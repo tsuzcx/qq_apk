@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.os.Environment;
 import android.os.StatFs;
+import com.tencent.smtt.sdk.QbSdk;
 import java.io.File;
 
 public class TbsUtils
@@ -24,7 +25,7 @@ public class TbsUtils
         {
           if (paramContext.getApplicationInfo().processName.contains("com.tencent.mm"))
           {
-            paramContext = paramContext.getDir("tbs", 0);
+            paramContext = QbSdk.getTbsFolderDir(paramContext);
             if ((paramContext != null) && (paramContext.isDirectory()))
             {
               paramContext = new File(paramContext, "share");
@@ -93,7 +94,7 @@ public class TbsUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.smtt.utils.TbsUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,28 @@
-import com.tencent.mobileqq.dating.CarrierHelper;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class acfg
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public acfg(MsgBoxListActivity paramMsgBoxListActivity) {}
+  public acfg(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (MsgBoxListActivity.a(this.a) != null) {
-      MsgBoxListActivity.a(this.a).b("msglist_carrier_5.8");
+    this.a.l();
+    this.a.b(this.a.n);
+    if (bajr.b(this.a.app)) {}
+    for (paramDialogInterface = "4";; paramDialogInterface = "3")
+    {
+      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, mpl.a(), paramDialogInterface, "1");
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acfg
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class qqavopensdkSsoTunnel$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   public static final int BYTES_REQBODY_FIELD_NUMBER = 2;
   public static final int MSG_SDK_DATA_FIELD_NUMBER = 1;

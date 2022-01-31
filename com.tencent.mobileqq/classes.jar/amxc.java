@@ -1,33 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.widget.QfavJumpActivity;
-import java.io.InputStream;
+import android.content.Context;
 
 public class amxc
-  implements DialogInterface.OnClickListener
+  extends loi
 {
-  public amxc(QfavJumpActivity paramQfavJumpActivity, String paramString, InputStream paramInputStream, long paramLong) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static int a(Context paramContext, String paramString)
   {
-    try
-    {
-      QfavJumpActivity.a(this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoInputStream, this.jdField_a_of_type_Long);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("qqfav|QfavJumpActivity", 2, "copy file error", paramDialogInterface);
-      }
-      QfavJumpActivity.a(this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity, this.jdField_a_of_type_CooperationQqfavWidgetQfavJumpActivity.a());
-    }
+    return a(paramContext, "TencentDocGrayTips_ShowTimes_" + paramString, 0);
+  }
+  
+  public static long a(Context paramContext, String paramString)
+  {
+    return a(paramContext, "TencentDocGrayTips_LastShowTime_" + paramString, 0L);
+  }
+  
+  public static void b(Context paramContext, String paramString, int paramInt)
+  {
+    a(paramContext, "TencentDocGrayTips_ShowTimes_" + paramString, paramInt);
+  }
+  
+  public static void b(Context paramContext, String paramString, long paramLong)
+  {
+    a(paramContext, "TencentDocGrayTips_LastShowTime_" + paramString, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amxc
  * JD-Core Version:    0.7.0.1
  */

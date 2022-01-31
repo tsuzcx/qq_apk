@@ -1,33 +1,37 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
 public class snl
-  implements Runnable
+  extends sfo
 {
-  public snl(Conversation paramConversation, Object paramObject) {}
+  public final int a;
+  public CommentLikeFeedItem a;
+  public final String a;
+  public int b = 0;
+  public int c;
   
-  public void run()
+  public snl(int paramInt1, String paramString, int paramInt2)
   {
-    if ((this.jdField_a_of_type_JavaLangObject instanceof String)) {}
-    for (;;)
-    {
-      try
-      {
-        i = Integer.parseInt((String)this.jdField_a_of_type_JavaLangObject);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a, "dc00898", "", "", "0X80087C2", "0X80087C2", i, 0, "", "", "", "");
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        localThrowable.printStackTrace();
-      }
-      int i = 0;
-    }
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+  }
+  
+  public snl(int paramInt1, String paramString, int paramInt2, CommentLikeFeedItem paramCommentLikeFeedItem)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+  }
+  
+  public String toString()
+  {
+    return "InteractionInfoChangeEvent{, feedId=" + this.jdField_a_of_type_JavaLangString + ", what=" + this.b + ", commentLikeFeedItem=" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem + ", commentId=" + this.c + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     snl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,53 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
+import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment.1.1;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class nce
-  implements Runnable
+public class nce
+  implements View.OnClickListener
 {
-  nce(nby paramnby) {}
+  public nce(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((PublicAccountImageCollectionMainActivity.a(this.a.a) != null) && (PublicAccountImageCollectionMainActivity.a(this.a.a) != null))
+    switch (paramView.getId())
     {
-      PublicAccountImageCollectionMainActivity.a(this.a.a).a(true);
-      PublicAccountImageCollectionMainActivity.a(this.a.a).notifyDataSetChanged();
+    default: 
+      onClick(paramView);
+      return;
+    case 2131302832: 
+      if (!this.a.jdField_a_of_type_Bbcj.a.a)
+      {
+        paramView = this.a.jdField_a_of_type_Bazb.c.getText().toString();
+        this.a.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl("javascript:onRightBtn(\"" + paramView + "\")");
+        return;
+      }
+      if (PublicAccountBrowser.PublicAccountBrowserFragment.a(this.a) == 1001)
+      {
+        ThreadManager.executeOnSubThread(new PublicAccountBrowser.PublicAccountBrowserFragment.1.1(this));
+        this.a.getActivity().finish();
+        return;
+      }
+      onClick(paramView);
+      return;
     }
+    if (!this.a.jdField_a_of_type_Bbcj.a.a)
+    {
+      paramView = this.a.jdField_a_of_type_Bazb.a.getText().toString();
+      if (paramView.equals(PublicAccountBrowser.PublicAccountBrowserFragment.a(this.a).getStringExtra("leftViewText")))
+      {
+        this.a.f();
+        return;
+      }
+      this.a.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl("javascript:onLeftBtn(\"" + paramView + "\")");
+      return;
+    }
+    onClick(paramView);
   }
 }
 

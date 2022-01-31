@@ -1,51 +1,67 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.widget.CountDownProgressBar;
-import com.tencent.widget.CountDownProgressBar.OnCountDownLinstener;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class amig
-  extends Handler
+  extends amie<amif>
 {
-  public amig(CountDownProgressBar paramCountDownProgressBar) {}
-  
-  public void handleMessage(Message paramMessage)
+  public int a()
   {
-    switch (paramMessage.what)
-    {
+    return 479;
+  }
+  
+  @NonNull
+  public amif a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CustomOnlineStatusManager", 2, "migrateDefaultContent");
     }
-    do
+    return new amif();
+  }
+  
+  @NonNull
+  public amif a(@NonNull alzs[] paramArrayOfalzs)
+  {
+    boolean bool = false;
+    amif localamif = new amif();
+    try
     {
-      return;
-      CountDownProgressBar.a(this.a, CountDownProgressBar.a(this.a) + CountDownProgressBar.a(this.a));
-      CountDownProgressBar.a(this.a).sendEmptyMessageDelayed(1, CountDownProgressBar.a(this.a));
-      return;
-      CountDownProgressBar.a(this.a, CountDownProgressBar.a(this.a) + CountDownProgressBar.a(this.a));
-      if (CountDownProgressBar.a(this.a) <= (float)CountDownProgressBar.a(this.a)) {
-        break;
+      if (paramArrayOfalzs[0].a != null)
+      {
+        if (new JSONObject(paramArrayOfalzs[0].a).optInt("show_custom_online_state", 1) == 1) {
+          bool = true;
+        }
+        localamif.a = bool;
+        if (QLog.isColorLevel()) {
+          QLog.d("CustomOnlineStatusManager", 2, "parsed showVipIcon: " + localamif.a);
+        }
       }
-      CountDownProgressBar.a(this.a, (int)(CountDownProgressBar.a(this.a) / (float)CountDownProgressBar.a(this.a) * 360.0F));
-      this.a.invalidate();
-    } while (CountDownProgressBar.a(this.a) == null);
-    CountDownProgressBar.a(this.a).a();
-    return;
-    CountDownProgressBar.a(this.a, (int)(CountDownProgressBar.a(this.a) / (float)CountDownProgressBar.a(this.a) * 360.0F));
-    if (CountDownProgressBar.b(this.a) >= (float)CountDownProgressBar.b(this.a))
-    {
-      CountDownProgressBar.b(this.a, 0.0F);
-      CountDownProgressBar.b(this.a, CountDownProgressBar.b(this.a) - 1);
+      return localamif;
     }
-    for (;;)
+    catch (Exception paramArrayOfalzs)
     {
-      this.a.invalidate();
-      CountDownProgressBar.a(this.a).sendEmptyMessageDelayed(1, CountDownProgressBar.a(this.a));
-      return;
-      CountDownProgressBar.b(this.a, CountDownProgressBar.b(this.a) + CountDownProgressBar.a(this.a));
+      QLog.e("CustomOnlineStatusManager", 1, "parsed failed: ", paramArrayOfalzs);
     }
+    return localamif;
+  }
+  
+  public Class<amif> a()
+  {
+    return amif.class;
+  }
+  
+  @NonNull
+  public amif b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CustomOnlineStatusManager", 2, "migrateOldContent");
+    }
+    return new amif();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amig
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,19 @@
-import android.app.Dialog;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
-
-public class nxx
-  implements Runnable
+class nxx
+  extends nyf
 {
-  public nxx(QQStoryBaseActivity paramQQStoryBaseActivity) {}
-  
-  public void run()
+  nxx(nxd paramnxd, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.dismiss();
-    }
+    super(paramnxd, null);
+  }
+  
+  void a(nyi paramnyi)
+  {
+    paramnyi.onCommentStateError(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nxx
  * JD-Core Version:    0.7.0.1
  */

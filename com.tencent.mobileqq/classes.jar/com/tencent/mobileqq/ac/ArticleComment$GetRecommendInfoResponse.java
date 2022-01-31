@@ -6,10 +6,10 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class ArticleComment$GetRecommendInfoResponse
-  extends MessageMicro
+  extends MessageMicro<GetRecommendInfoResponse>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "ret", "item" }, new Object[] { null, null }, GetRecommendInfoResponse.class);
-  public final PBRepeatMessageField item = PBField.initRepeatMessage(ArticleComment.RecommendItemInfo.class);
+  public final PBRepeatMessageField<ArticleComment.RecommendItemInfo> item = PBField.initRepeatMessage(ArticleComment.RecommendItemInfo.class);
   public ArticleComment.RetInfo ret = new ArticleComment.RetInfo();
 }
 

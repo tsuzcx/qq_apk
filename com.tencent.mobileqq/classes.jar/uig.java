@@ -1,37 +1,47 @@
-import android.graphics.Color;
-import android.text.Editable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopRequestRefuseActivity;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
 
 public class uig
-  implements Runnable
+  implements View.OnClickListener, View.OnLongClickListener
 {
-  public uig(TroopRequestRefuseActivity paramTroopRequestRefuseActivity, Editable paramEditable) {}
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  View b;
   
-  public void run()
+  public uig(StoryMessageListActivity paramStoryMessageListActivity, View paramView)
   {
-    if (this.jdField_a_of_type_AndroidTextEditable.length() > 25)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity.a.setTextColor(-65536);
-      TroopRequestRefuseActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity, false);
-    }
-    for (;;)
-    {
-      String str2 = "" + (25 - this.jdField_a_of_type_AndroidTextEditable.length());
-      String str1 = str2;
-      if (str2.length() > 4) {
-        str1 = str2.substring(0, 2) + "…";
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity.a.setText(str1);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity.a.setTextColor(Color.rgb(119, 119, 119));
-      TroopRequestRefuseActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopRequestRefuseActivity, true);
-    }
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131303812);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131303834));
+    this.b = paramView.findViewById(2131304764);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131304756));
+    paramView.setOnClickListener(this);
+    paramView.setOnLongClickListener(this);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.onItemClick(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uig
  * JD-Core Version:    0.7.0.1
  */

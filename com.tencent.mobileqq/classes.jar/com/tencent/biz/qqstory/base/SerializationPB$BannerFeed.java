@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SerializationPB$BannerFeed
-  extends MessageMicro
+  extends MessageMicro<BannerFeed>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField blurb = PBField.initString("");
@@ -35,7 +35,7 @@ public final class SerializationPB$BannerFeed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.SerializationPB.BannerFeed
  * JD-Core Version:    0.7.0.1
  */

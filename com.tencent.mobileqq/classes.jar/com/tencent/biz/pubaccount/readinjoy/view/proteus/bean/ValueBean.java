@@ -1,181 +1,171 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.bean;
 
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.support.v4.util.ArrayMap;
+import java.util.Iterator;
 import java.util.Map;
-import mum;
-import org.json.JSONArray;
-import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ValueBean
 {
-  public Map a = new HashMap();
-  public Map b = new HashMap();
-  private Map c = new HashMap();
+  private static final String TAG = "ValueBean";
+  private Map<String, ValueBean.ValueNode> attributeDynamicValue = new ArrayMap();
+  private Map<String, ValueBean.ValueNode> dataAttributeDynamicValue = new ArrayMap();
+  private Map<String, Object> dataAttributeLocalInfo = new ArrayMap();
+  private Map<String, Object> dataAttributeRemoteInfo = new ArrayMap();
+  public Map<String, Object> dynamicValue = new ArrayMap();
+  private Map<String, ValueBean.Node> dynamicValueBinder = new ArrayMap();
+  public Map<String, Object> normalValue = new ArrayMap();
   
-  private void a(mum parammum, String paramString1, String paramString2)
+  private void putTrueDynamicValueAttrbute(String paramString1, Object paramObject, String paramString2)
   {
-    String str1 = parammum.b;
-    String str2 = (String)this.b.get(parammum.jdField_a_of_type_JavaLangString);
-    JSONArray localJSONArray = new JSONArray();
-    parammum.b = str1.replace("\"" + paramString1 + "\"", "\"" + paramString2 + "\"");
-    if (str2 == null)
-    {
-      paramString1 = parammum.b;
-      QLog.d("ValueBean", 2, "putJsonArray: 样式定义有问题: 样式里没定义 " + parammum.jdField_a_of_type_JavaLangString + "  ");
-    }
-    for (;;)
-    {
-      this.b.put(parammum.jdField_a_of_type_JavaLangString, paramString1);
-      return;
-      try
-      {
-        a(new JSONArray(parammum.b), new JSONArray(str2), localJSONArray);
-        paramString1 = localJSONArray.toString();
-      }
-      catch (JSONException paramString1)
-      {
-        QLog.e("ValueBean", 2, "putJsonArray: ", paramString1);
-        paramString1 = null;
-      }
+    ValueBean.ValueNode localValueNode = (ValueBean.ValueNode)this.attributeDynamicValue.get(paramString2);
+    if (localValueNode != null) {
+      localValueNode.setTrueValue(this.dynamicValue, paramString2, paramString1, paramObject);
     }
   }
   
-  private void a(JSONArray paramJSONArray, mum parammum)
+  private void putTrueDynamicValueDataAttr(String paramString1, Object paramObject, String paramString2)
   {
-    int i = 0;
-    if (i < paramJSONArray.length())
+    Object localObject = (ValueBean.ValueNode)this.dataAttributeDynamicValue.get(paramString2);
+    if (localObject != null)
     {
-      Object localObject = paramJSONArray.get(i);
-      if ((localObject instanceof JSONArray)) {
-        a((JSONArray)localObject, parammum);
-      }
-      for (;;)
+      ((ValueBean.ValueNode)localObject).setTrueValue(this.dataAttributeRemoteInfo, paramString2, paramString1, paramObject);
+      if ("$setRemoteInfo:".equals(paramString2))
       {
-        i += 1;
-        break;
-        if (!(localObject instanceof String)) {
-          break label69;
-        }
-        this.c.put((String)localObject, parammum);
-      }
-      label69:
-      throw new IllegalArgumentException("error format");
-    }
-  }
-  
-  private void a(JSONArray paramJSONArray1, JSONArray paramJSONArray2, JSONArray paramJSONArray3)
-  {
-    int i = 0;
-    for (;;)
-    {
-      Object localObject2;
-      try
-      {
-        if (i < paramJSONArray1.length())
+        paramString1 = this.dataAttributeRemoteInfo.remove("$setRemoteInfo:");
+        if ((paramString1 instanceof JSONObject))
         {
-          Object localObject1 = paramJSONArray1.get(i);
-          localObject2 = paramJSONArray2.get(i);
-          if ((localObject2 instanceof JSONArray))
+          paramString1 = (JSONObject)paramString1;
+          paramObject = paramString1.keys();
+          while ((paramObject != null) && (paramObject.hasNext()))
           {
-            JSONArray localJSONArray = new JSONArray();
-            a((JSONArray)localObject1, (JSONArray)localObject2, localJSONArray);
-            paramJSONArray3.put(localJSONArray);
-          }
-          else if ((localObject2 instanceof String))
-          {
-            if ("-1".equals(localObject2)) {
-              paramJSONArray3.put(localObject1);
+            paramString2 = (String)paramObject.next();
+            localObject = paramString1.opt(paramString2);
+            if (localObject != null) {
+              this.dataAttributeRemoteInfo.put(paramString2, localObject);
             }
           }
         }
       }
-      catch (Exception paramJSONArray1)
-      {
-        QLog.e("ValueBean", 2, "mergeJsonArray: ", paramJSONArray1);
-      }
-      return;
-      paramJSONArray3.put(localObject2);
-      break label130;
-      throw new IllegalArgumentException("error format");
-      label130:
-      i += 1;
     }
   }
   
-  private boolean a(String paramString)
-  {
-    return paramString.contains("[");
-  }
-  
-  private void b(String paramString1, String paramString2)
-  {
-    try
-    {
-      paramString2 = new mum(paramString2, null);
-      paramString2.jdField_a_of_type_Boolean = true;
-      paramString2.b = paramString1;
-      a(new JSONArray(paramString1), paramString2);
-      return;
-    }
-    catch (JSONException paramString1)
-    {
-      paramString1.printStackTrace();
-    }
-  }
-  
-  public ValueBean a()
+  public ValueBean clone()
   {
     ValueBean localValueBean = new ValueBean();
-    HashMap localHashMap = new HashMap();
-    localHashMap.putAll(this.b);
-    localValueBean.b = localHashMap;
-    localHashMap = new HashMap();
-    localHashMap.putAll(this.c);
-    localValueBean.c = localHashMap;
+    localValueBean.normalValue = this.normalValue;
+    localValueBean.dynamicValueBinder = this.dynamicValueBinder;
+    localValueBean.attributeDynamicValue = this.attributeDynamicValue;
+    localValueBean.dataAttributeDynamicValue = this.dataAttributeDynamicValue;
+    localValueBean.dataAttributeLocalInfo = this.dataAttributeLocalInfo;
     return localValueBean;
   }
   
-  public void a(String paramString, Object paramObject)
+  public Object getDataAttribute(String paramString)
   {
-    this.b.put(paramString, paramObject);
+    Object localObject = this.dataAttributeRemoteInfo.get(paramString);
+    if (localObject != null) {
+      return localObject;
+    }
+    return this.dataAttributeLocalInfo.get(paramString);
   }
   
-  public void a(String paramString1, String paramString2)
+  public Map<String, Object> getDataAttribute()
   {
-    if (a(paramString1))
-    {
-      b(paramString1, paramString2);
-      return;
-    }
-    paramString2 = new mum(paramString2, (mum)this.c.get(paramString1));
-    this.c.put(paramString1, paramString2);
+    ArrayMap localArrayMap = new ArrayMap();
+    localArrayMap.putAll(this.dataAttributeLocalInfo);
+    localArrayMap.putAll(this.dataAttributeRemoteInfo);
+    return localArrayMap;
   }
   
-  public void b(String paramString, Object paramObject)
+  public String getVisibleDependeOnBrotherViewId()
   {
-    mum localmum = (mum)this.c.get(paramString);
-    if (localmum == null) {
-      this.a.put(paramString, paramObject);
-    }
-    if (localmum != null)
+    if (this.normalValue.containsKey("visible_depend_on_brother"))
     {
-      if (localmum.jdField_a_of_type_Boolean) {
-        a(localmum, paramString, (String)paramObject);
-      }
-      for (;;)
-      {
-        localmum = localmum.jdField_a_of_type_Mum;
-        break;
-        String str = localmum.jdField_a_of_type_JavaLangString;
-        this.a.put(str, paramObject);
+      Object localObject = this.normalValue.get("visible_depend_on_brother");
+      if ((localObject instanceof String)) {
+        return (String)localObject;
       }
     }
+    return null;
+  }
+  
+  public boolean isDefalutVisible()
+  {
+    return (this.normalValue.containsKey("default_visible")) && ("YES".equals((String)this.normalValue.get("default_visible")));
+  }
+  
+  public boolean isVisible()
+  {
+    return "VISIBLE".equals(this.dynamicValue.get("visibility"));
+  }
+  
+  public boolean isVisibleDependeOnChilds()
+  {
+    return (this.normalValue.containsKey("visible_depend_on_children")) && ("YES".equals(this.normalValue.get("visible_depend_on_children")));
+  }
+  
+  public void putAttributeDynamicValue(String paramString, Object paramObject)
+  {
+    paramObject = new ValueBean.ValueNode(paramObject);
+    this.attributeDynamicValue.put(paramString, paramObject);
+  }
+  
+  public void putDataAttributeDynamicValue(String paramString, Object paramObject)
+  {
+    paramObject = new ValueBean.ValueNode(paramObject);
+    this.dataAttributeDynamicValue.put(paramString, paramObject);
+  }
+  
+  public void putDataAttributeLocalData(String paramString, Object paramObject)
+  {
+    this.dataAttributeLocalInfo.put(paramString, paramObject);
+  }
+  
+  public void putDynamicValue(String paramString1, String paramString2)
+  {
+    paramString2 = new ValueBean.Node(paramString2, (ValueBean.Node)this.dynamicValueBinder.get(paramString1));
+    this.dynamicValueBinder.put(paramString1, paramString2);
+  }
+  
+  public void putNomalValue(String paramString, Object paramObject)
+  {
+    this.normalValue.put(paramString, paramObject);
+  }
+  
+  public void putTrueDynamicValue(String paramString, Object paramObject)
+  {
+    putTrueDynamicValue(paramString, paramObject, true);
+  }
+  
+  public boolean putTrueDynamicValue(String paramString, Object paramObject, boolean paramBoolean)
+  {
+    ValueBean.Node localNode2 = (ValueBean.Node)this.dynamicValueBinder.get(paramString);
+    ValueBean.Node localNode1 = localNode2;
+    if (localNode2 == null)
+    {
+      if (paramBoolean) {
+        this.dynamicValue.put(paramString, paramObject);
+      }
+      return false;
+    }
+    while (localNode1 != null)
+    {
+      putTrueDynamicValueAttrbute(paramString, paramObject, localNode1.methodName);
+      putTrueDynamicValueDataAttr(paramString, paramObject, localNode1.methodName);
+      localNode1 = localNode1.next;
+    }
+    return true;
+  }
+  
+  public String toString()
+  {
+    return "normalValueMap : " + this.normalValue.toString() + "\ndynamicValueMap : " + this.dynamicValue.toString() + "\ndynamicValueBinder : " + this.dynamicValueBinder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ValueBean
  * JD-Core Version:    0.7.0.1
  */

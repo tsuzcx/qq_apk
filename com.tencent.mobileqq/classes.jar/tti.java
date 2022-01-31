@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.activity.RegisterActivity;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
 
-class tti
-  implements Runnable
+public class tti
+  extends tnm
 {
-  tti(ttg paramttg) {}
+  public tti(AbsVideoInfoWidget paramAbsVideoInfoWidget) {}
   
-  public void run()
+  public void g()
   {
-    RegisterActivity.d(this.a.a);
-    RegisterActivity.a(this.a.a, "请重新发送短信");
+    super.g();
+    if (this.a.jdField_b_of_type_Boolean)
+    {
+      AbsVideoInfoWidget.a(this.a);
+      urk.b(this.a.jdField_b_of_type_JavaLangString, "destroy by activity");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tti
  * JD-Core Version:    0.7.0.1
  */

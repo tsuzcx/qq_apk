@@ -1,18 +1,17 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
-
 public class ksd
 {
-  public ImageView a;
-  public TextView a;
-  public TextView b;
-  
-  public ksd(AccountDetailBaseAdapter paramAccountDetailBaseAdapter) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ksd
  * JD-Core Version:    0.7.0.1
  */

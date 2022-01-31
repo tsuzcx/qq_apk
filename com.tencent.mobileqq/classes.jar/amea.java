@@ -1,29 +1,72 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.qqprotect.qsec.ICSProcessor.ICSProcessorListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class amea
-  extends ProtoUtils.TroopProtocolObserver
+  extends alzl<amdz>
 {
-  protected ICSProcessor.ICSProcessorListener a;
-  protected byte[] a;
-  
-  public amea(byte[] paramArrayOfByte, ICSProcessor.ICSProcessorListener paramICSProcessorListener)
+  public int a()
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_ComTencentQqprotectQsecICSProcessor$ICSProcessorListener = paramICSProcessorListener;
+    return 442;
   }
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  @NonNull
+  public amdz a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentQqprotectQsecICSProcessor$ICSProcessorListener != null) {
-      this.jdField_a_of_type_ComTencentQqprotectQsecICSProcessor$ICSProcessorListener.a(paramInt, this.jdField_a_of_type_ArrayOfByte, paramArrayOfByte);
+    return new amdz();
+  }
+  
+  @Nullable
+  public amdz a(alzs[] paramArrayOfalzs)
+  {
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0) && (paramArrayOfalzs[0] != null))
+    {
+      amdz localamdz = amdz.a(paramArrayOfalzs[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("PttAutoChangeProcessor", 2, "onParsed " + paramArrayOfalzs[0].a);
+      }
+      return localamdz;
     }
+    return null;
+  }
+  
+  public Class<amdz> a()
+  {
+    return amdz.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amdz paramamdz)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PttAutoChangeProcessor", 2, "onUpdate " + paramamdz.toString());
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amea
  * JD-Core Version:    0.7.0.1
  */

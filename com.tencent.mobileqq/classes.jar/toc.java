@@ -1,44 +1,28 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemNewFriendMsgData;
-import com.tencent.mobileqq.app.NewFriendManager.INewFriendListener;
-import com.tencent.mobileqq.managers.QQLSRecentManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
+import java.util.List;
 
-public class toc
-  implements NewFriendManager.INewFriendListener
+class toc
+  implements tix
 {
-  public toc(QQLSActivity paramQQLSActivity) {}
+  toc(tob paramtob) {}
   
-  public void R_() {}
-  
-  public void a(int paramInt)
+  public void a(String paramString)
   {
-    if ((paramInt == 0) && (this.a.a.a().size() > 0))
+    int i = 0;
+    while (i < this.a.a.size())
     {
-      Iterator localIterator = this.a.a.a().iterator();
-      while (localIterator.hasNext())
-      {
-        RecentBaseData localRecentBaseData = (RecentBaseData)localIterator.next();
-        if ((localRecentBaseData instanceof RecentItemNewFriendMsgData))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QQLSActivity", 2, "Need to delete RecentItemNewFriendMsgData");
-          }
-          this.a.a.a().remove(localRecentBaseData);
-          this.a.b();
-        }
+      if (TextUtils.equals(paramString, ((tnz)this.a.a.get(i)).a)) {
+        ((StoryPlayerGroupHolder)this.a.a()).a.setCurrentItem(i);
       }
+      i += 1;
     }
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     toc
  * JD-Core Version:    0.7.0.1
  */

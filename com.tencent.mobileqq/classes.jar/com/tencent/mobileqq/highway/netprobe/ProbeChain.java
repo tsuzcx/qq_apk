@@ -78,14 +78,14 @@ public class ProbeChain
   
   public ProbeItem.ProbeResult getProbeResult(ProbeRequest paramProbeRequest, ProbeCallback paramProbeCallback)
   {
-    return new ProbeChainResult(getProbeName(), paramProbeCallback);
+    return new ProbeChain.ProbeChainResult(getProbeName(), paramProbeCallback);
   }
   
   public void initProbeSequence()
   {
     Collections.sort(this.chain);
-    int i = 1;
     int j = this.chain.size();
+    int i = 1;
     while (i < j)
     {
       ((ProbeItem)this.chain.get(i - 1)).setSuccessor((ProbeItem)this.chain.get(i));
@@ -95,10 +95,10 @@ public class ProbeChain
   
   public void onSubItemsFinish()
   {
-    ProbeChainResult localProbeChainResult = (ProbeChainResult)this.mResult;
+    ProbeChain.ProbeChainResult localProbeChainResult = (ProbeChain.ProbeChainResult)this.mResult;
     this.mResult.success = true;
-    int i = 0;
     int j = this.chain.size();
+    int i = 0;
     for (;;)
     {
       if (i < j)
@@ -118,36 +118,10 @@ public class ProbeChain
       i += 1;
     }
   }
-  
-  public static class ProbeChainResult
-    extends ProbeItem.ProbeResult
-  {
-    public ArrayList<ProbeItem.ProbeResult> subResults = new ArrayList();
-    
-    public ProbeChainResult(String paramString, ProbeCallback paramProbeCallback)
-    {
-      super(paramProbeCallback);
-    }
-    
-    public String getRdmReportMsg()
-    {
-      String str1 = "<" + this.probeName + " start >";
-      String str2 = "<" + this.probeName + " end >";
-      int i = 0;
-      int j = this.subResults.size();
-      while (i < j)
-      {
-        ProbeItem.ProbeResult localProbeResult = (ProbeItem.ProbeResult)this.subResults.get(i);
-        str1 = str1 + localProbeResult.getRdmReportMsg();
-        i += 1;
-      }
-      return str1 + str2;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.highway.netprobe.ProbeChain
  * JD-Core Version:    0.7.0.1
  */

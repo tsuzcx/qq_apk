@@ -1,21 +1,17 @@
-import com.tencent.mobileqq.nearby.FaceScoreConfig;
-import com.tencent.mobileqq.nearby.FaceScoreUtils;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment;
 
-class afka
-  implements Runnable
+public class afka
+  implements DialogInterface.OnClickListener
 {
-  afka(afjz paramafjz, FaceScoreConfig paramFaceScoreConfig) {}
+  public afka(ChatHistoryBaseFragment paramChatHistoryBaseFragment) {}
   
-  public void run()
-  {
-    FaceScoreUtils.a(this.jdField_a_of_type_Afjz.a.a.getAppInterface(), this.jdField_a_of_type_ComTencentMobileqqNearbyFaceScoreConfig);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afka
  * JD-Core Version:    0.7.0.1
  */

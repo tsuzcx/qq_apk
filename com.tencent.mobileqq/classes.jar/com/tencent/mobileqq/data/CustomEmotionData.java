@@ -1,24 +1,17 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
 import com.tencent.qphone.base.util.QLog;
 
 public class CustomEmotionData
-  extends Entity
+  extends CustomEmotionBase
 {
-  public String RomaingType = "init";
+  public int clickNum;
   public String eId;
-  @unique
-  public int emoId;
-  public String emoPath;
-  public boolean isAPNG;
+  public int exposeNum;
   public boolean isMarkFace;
-  public String md5;
-  public String resid;
-  public String uin;
-  public String url;
+  public String modifyWord;
+  public String ocrWord;
   
   public boolean checkMarketFace(String paramString)
   {
@@ -39,20 +32,55 @@ public class CustomEmotionData
     return bool1;
   }
   
+  public CustomEmotionData cloneEmotionData(CustomEmotionData paramCustomEmotionData)
+  {
+    CustomEmotionData localCustomEmotionData = new CustomEmotionData();
+    localCustomEmotionData.uin = paramCustomEmotionData.uin;
+    localCustomEmotionData.emoId = paramCustomEmotionData.emoId;
+    localCustomEmotionData.emoPath = paramCustomEmotionData.emoPath;
+    localCustomEmotionData.resid = paramCustomEmotionData.resid;
+    localCustomEmotionData.url = paramCustomEmotionData.url;
+    localCustomEmotionData.md5 = paramCustomEmotionData.md5;
+    localCustomEmotionData.emoOriginalPath = paramCustomEmotionData.emoOriginalPath;
+    localCustomEmotionData.thumbPath = paramCustomEmotionData.thumbPath;
+    localCustomEmotionData.RomaingType = paramCustomEmotionData.RomaingType;
+    localCustomEmotionData.isAPNG = paramCustomEmotionData.isAPNG;
+    localCustomEmotionData.isMarkFace = paramCustomEmotionData.isMarkFace;
+    localCustomEmotionData.eId = paramCustomEmotionData.eId;
+    localCustomEmotionData.ocrWord = paramCustomEmotionData.ocrWord;
+    localCustomEmotionData.modifyWord = paramCustomEmotionData.modifyWord;
+    localCustomEmotionData.exposeNum = paramCustomEmotionData.exposeNum;
+    localCustomEmotionData.clickNum = paramCustomEmotionData.clickNum;
+    return localCustomEmotionData;
+  }
+  
+  public void increaseClickNum()
+  {
+    if (this.clickNum == 2147483647) {
+      return;
+    }
+    this.clickNum += 1;
+  }
+  
+  public void increaseExposeNum()
+  {
+    if (this.exposeNum == 2147483647) {
+      return;
+    }
+    this.exposeNum += 1;
+  }
+  
   public void replace(CustomEmotionData paramCustomEmotionData)
   {
     if (paramCustomEmotionData != null)
     {
-      this.uin = paramCustomEmotionData.uin;
-      this.emoId = paramCustomEmotionData.emoId;
-      this.emoPath = paramCustomEmotionData.emoPath;
+      super.replace(paramCustomEmotionData);
       this.isMarkFace = paramCustomEmotionData.isMarkFace;
-      this.RomaingType = paramCustomEmotionData.RomaingType;
       this.eId = paramCustomEmotionData.eId;
-      this.resid = paramCustomEmotionData.resid;
-      this.url = paramCustomEmotionData.url;
-      this.md5 = paramCustomEmotionData.md5;
-      this.isAPNG = paramCustomEmotionData.isAPNG;
+      this.ocrWord = paramCustomEmotionData.ocrWord;
+      this.modifyWord = paramCustomEmotionData.modifyWord;
+      this.exposeNum = paramCustomEmotionData.exposeNum;
+      this.clickNum = paramCustomEmotionData.clickNum;
       checkMarketFace("replace");
     }
   }

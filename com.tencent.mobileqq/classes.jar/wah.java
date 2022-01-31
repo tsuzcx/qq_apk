@@ -1,27 +1,14 @@
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.troop.widget.TroopAIORobotPanel.GetListDataCallback;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFeedDetailRsp;
 
-public class wah
-  implements TroopAIORobotPanel.GetListDataCallback
+public abstract interface wah
 {
-  public wah(HotChatPie paramHotChatPie) {}
+  public abstract void a(int paramInt);
   
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (this.a.f.equals(paramString)))
-    {
-      this.a.a.setChildVisible(27, 0);
-      this.a.S = true;
-      return;
-    }
-    this.a.a.setChildVisible(27, 8);
-    this.a.S = false;
-  }
+  public abstract void a(CertifiedAccountRead.StGetFeedDetailRsp paramStGetFeedDetailRsp, boolean paramBoolean, long paramLong, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wah
  * JD-Core Version:    0.7.0.1
  */

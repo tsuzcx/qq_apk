@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class TroopAppFlagInfo$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   public static final int STR_VERSION_FIELD_NUMBER = 1;
   public static final int UINT32_MOBILE_OSTYPE_FIELD_NUMBER = 3;
@@ -29,7 +29,7 @@ public final class TroopAppFlagInfo$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.pb.TroopAppFlagInfo.ReqBody
  * JD-Core Version:    0.7.0.1
  */

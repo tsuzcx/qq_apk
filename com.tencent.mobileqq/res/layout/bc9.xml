@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:background="#fff8f8f8" android:layout_width="fill_parent" android:layout_height="56.0dip">
+        <com.tencent.mobileqq.vip.lianghao.view.LiangHaoView android:layout_gravity="center" android:id="@id/e8n" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </FrameLayout>
+    <TextView android:textSize="14.0dip" android:textColor="#ff777777" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.0dip" android:text="@string/c1l" />
+</merge>

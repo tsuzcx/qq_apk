@@ -1,22 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
 
-class afnd
-  implements DialogInterface.OnClickListener
+public class afnd
+  implements azif
 {
-  afnd(afna paramafna, QQCustomDialog paramQQCustomDialog) {}
+  private long jdField_a_of_type_Long;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public afnd(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    this.jdField_a_of_type_Afna.a.f();
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_Long;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afnd
  * JD-Core Version:    0.7.0.1
  */

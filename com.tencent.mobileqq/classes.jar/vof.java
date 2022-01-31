@@ -1,28 +1,19 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.item.TimDouFuGuideItemBuilder;
-import com.tencent.mobileqq.data.AppGuideTipsConfig;
-import com.tencent.mobileqq.statistics.ReportController;
-
-public class vof
-  implements View.OnClickListener
+class vof
 {
-  public vof(TimDouFuGuideItemBuilder paramTimDouFuGuideItemBuilder, AppGuideTipsConfig paramAppGuideTipsConfig) {}
+  public int a;
+  public byte[] a;
+  public int b;
   
-  public void onClick(View paramView)
+  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTimDouFuGuideItemBuilder.a, QQBrowserActivity.class);
-    paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig.tipsUrl);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTimDouFuGuideItemBuilder.a.startActivity(paramView);
-    ReportController.b(null, "dc00898", "", "", this.jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig.opkey, this.jdField_a_of_type_ComTencentMobileqqDataAppGuideTipsConfig.opkey, 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vof
  * JD-Core Version:    0.7.0.1
  */

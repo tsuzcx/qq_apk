@@ -1,34 +1,54 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkCache;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.random.RandomController;
+import com.tencent.av.random.RandomController.2.1;
+import com.tencent.av.random.RandomWebProtocol;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class lij
-  implements View.OnTouchListener
+  implements mhb
 {
-  public lij(ReadInJoyArkCache paramReadInJoyArkCache, BaseArticleInfo paramBaseArticleInfo, ArkAppContainer paramArkAppContainer) {}
+  public lij(RandomController paramRandomController) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(String paramString, mhc parammhc)
   {
-    if (paramMotionEvent.getAction() == 1)
+    if (QLog.isColorLevel()) {
+      QLog.d("RandomController", 2, "onGetNearbyPeopleProfile uin :" + paramString + ", nickname:" + parammhc.b + ", gender:" + parammhc.a);
+    }
+    if (paramString.equals(RandomController.a(this.a).getAccount()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyArkCache", 2, "click ArkAppView.");
+      if (parammhc.a != -1) {
+        RandomController.a(this.a).a(parammhc.a);
       }
-      ReadInJoyArkCache.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyArkReadInJoyArkCache, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+      if (RandomController.a(this.a).a())
+      {
+        if (!RandomController.a(this.a)) {
+          break label209;
+        }
+        RandomController.b(this.a, false);
+        RandomController.a(this.a).set(0);
+        RandomController.a(this.a).a(RandomController.b(this.a), RandomController.c(this.a), 1, new String[0]);
+        RandomController.a(this.a).a().removeCallbacks(RandomController.b(this.a));
+      }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer.onTouch(paramView, paramMotionEvent);
+    for (;;)
+    {
+      RandomController.a(this.a).a().post(new RandomController.2.1(this));
+      return;
+      label209:
+      if (RandomController.b(this.a))
+      {
+        RandomController.c(this.a, false);
+        RandomController.a(this.a).a(this.a.b, RandomController.b(this.a));
+        RandomController.a(this.a).a().removeCallbacks(RandomController.b(this.a));
+      }
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lij
  * JD-Core Version:    0.7.0.1
  */

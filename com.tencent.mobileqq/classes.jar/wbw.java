@@ -1,21 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-
-class wbw
-  implements DialogInterface.OnClickListener
+public abstract interface wbw
 {
-  wbw(wbv paramwbv, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_Wbv.a.a.a(4, 0, 0, this.jdField_a_of_type_Int);
-  }
+  public abstract void a(String paramString, wbv paramwbv);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wbw
  * JD-Core Version:    0.7.0.1
  */

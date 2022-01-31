@@ -8,15 +8,15 @@ import java.util.ArrayList;
 public final class SDKConfReq
   extends JceStruct
 {
-  static ArrayList cache_sUin;
+  static ArrayList<String> cache_sUin;
   public int iConfVersion;
   public int iGetEspLastTime;
   public int iGetSdkLastTime;
-  public ArrayList sUin;
+  public ArrayList<String> sUin;
   
   public SDKConfReq() {}
   
-  public SDKConfReq(int paramInt1, int paramInt2, ArrayList paramArrayList, int paramInt3)
+  public SDKConfReq(int paramInt1, int paramInt2, ArrayList<String> paramArrayList, int paramInt3)
   {
     this.iConfVersion = paramInt1;
     this.iGetSdkLastTime = paramInt2;

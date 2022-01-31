@@ -1,19 +1,22 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.widget.HorizontalListView.OnItemScrollEventListener;
+import android.net.Uri;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class ogl
-  implements HorizontalListView.OnItemScrollEventListener
+  implements rvo
 {
-  public ogl(StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
+  public ogl(KandianMergeManager paramKandianMergeManager) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void a(Uri paramUri, String paramString, int paramInt)
   {
-    if (StoryHomeHorizontalListView.a(this.a) != null) {
-      StoryHomeHorizontalListView.a(this.a).a(paramInt, paramBoolean);
+    paramUri = BaseActivity.sTopActivity;
+    if (paramUri != null) {}
+    for (paramUri = paramUri.getClass().getSimpleName();; paramUri = "unkonw")
+    {
+      awqx.b(null, "dc01160", "Pb_account_lifeservice", "", "0X8009815", "0X8009815", 0, 0, "", "", paramUri, vlt.c(BaseApplicationImpl.getContext()));
+      return;
     }
-    SLog.a("HorizontalListView", "on item scroll mHasMore=%b, mIsLoadingMore:%b", Boolean.valueOf(StoryHomeHorizontalListView.a(this.a)), Boolean.valueOf(StoryHomeHorizontalListView.b(this.a)));
-    this.a.a();
   }
 }
 

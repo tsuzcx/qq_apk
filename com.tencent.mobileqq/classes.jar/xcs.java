@@ -1,25 +1,26 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public class xcs
-  implements FMDialogUtil.FMDialogInterface
+class xcs
+  implements QQPermissionCallback
 {
-  public xcs(PhotoListActivity paramPhotoListActivity) {}
+  xcs(xco paramxco) {}
   
-  public void a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.i();
+    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user denied = ");
+    babr.a(this.a.mRuntime.a(), paramArrayOfString, paramArrayOfInt);
   }
   
-  public void b()
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.c.setClickable(true);
+    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user grant = ");
+    xco.g(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xcs
  * JD-Core Version:    0.7.0.1
  */

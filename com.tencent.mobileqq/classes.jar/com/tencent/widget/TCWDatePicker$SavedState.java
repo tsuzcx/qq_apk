@@ -1,15 +1,15 @@
 package com.tencent.widget;
 
-import amld;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.view.View.BaseSavedState;
+import beoa;
 
 public class TCWDatePicker$SavedState
   extends View.BaseSavedState
 {
-  public static final Parcelable.Creator CREATOR = new amld();
+  public static final Parcelable.Creator<SavedState> CREATOR = new beoa();
   private final int a;
   private final int b;
   private final int c;
@@ -40,7 +40,7 @@ public class TCWDatePicker$SavedState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.widget.TCWDatePicker.SavedState
  * JD-Core Version:    0.7.0.1
  */

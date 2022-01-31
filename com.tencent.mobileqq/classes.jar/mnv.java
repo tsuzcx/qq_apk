@@ -1,18 +1,34 @@
-import android.view.animation.Animation;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
 class mnv
-  extends AnimateUtils.AnimationAdapter
+  extends Handler
 {
-  mnv(mnu parammnu) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  mnv(mnu parammnu, Looper paramLooper)
   {
-    ReadinjoyTabFrame.a(this.a.a.a.a.a, true);
-    if (ReadinjoyTabFrame.a(this.a.a.a.a.a) != null) {
-      ReadinjoyTabFrame.a(this.a.a.a.a.a, ReadinjoyTabFrame.a(this.a.a.a.a.a), ReadinjoyTabFrame.a(this.a.a.a.a.a));
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("AuthorizeConfig", 2, "clear mJsApiWhiteList");
+      }
+      this.a.a.clear();
+    } while (!(paramMessage.obj instanceof ConcurrentHashMap));
+    if (QLog.isColorLevel()) {
+      QLog.i("AuthorizeConfig", 2, "update new mJsApiWhiteList!");
+    }
+    this.a.a.putAll((ConcurrentHashMap)paramMessage.obj);
   }
 }
 

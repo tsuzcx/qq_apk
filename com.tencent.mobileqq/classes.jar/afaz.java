@@ -1,217 +1,192 @@
-import com.tencent.mobileqq.nearby.now.model.InfinitePlayListDataModel;
-import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager.Callback;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsgActionInfo;
 
 public class afaz
-  implements NowShortVideoProtoManager.Callback
+  extends beot
 {
-  public afaz(InfinitePlayListDataModel paramInfinitePlayListDataModel) {}
+  public int a;
+  private aexv jdField_a_of_type_Aexv;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new afba(this);
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  protected SlideDetectListView a;
+  public List<MessageRecord> a;
+  private List<MessageRecord> b = new ArrayList();
   
-  /* Error */
-  public void a(int paramInt, byte[] paramArrayOfByte, android.os.Bundle paramBundle)
+  public afaz(Context paramContext, QQAppInterface paramQQAppInterface, aexv paramaexv, int paramInt, SlideDetectListView paramSlideDetectListView)
   {
-    // Byte code:
-    //   0: invokestatic 25	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3: ifeq +28 -> 31
-    //   6: ldc 27
-    //   8: iconst_2
-    //   9: new 29	java/lang/StringBuilder
-    //   12: dup
-    //   13: invokespecial 30	java/lang/StringBuilder:<init>	()V
-    //   16: ldc 32
-    //   18: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   21: iload_1
-    //   22: invokevirtual 39	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   25: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   28: invokestatic 47	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   31: iload_1
-    //   32: ifne +302 -> 334
-    //   35: aload_2
-    //   36: ifnull +298 -> 334
-    //   39: new 49	tencent/im/oidb/cmd0xada/oidb_0xada$RspBody
-    //   42: dup
-    //   43: invokespecial 50	tencent/im/oidb/cmd0xada/oidb_0xada$RspBody:<init>	()V
-    //   46: astore_3
-    //   47: aload_3
-    //   48: aload_2
-    //   49: invokevirtual 54	tencent/im/oidb/cmd0xada/oidb_0xada$RspBody:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   52: pop
-    //   53: invokestatic 25	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   56: ifeq +34 -> 90
-    //   59: ldc 27
-    //   61: iconst_2
-    //   62: new 29	java/lang/StringBuilder
-    //   65: dup
-    //   66: invokespecial 30	java/lang/StringBuilder:<init>	()V
-    //   69: ldc 56
-    //   71: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   74: aload_3
-    //   75: getfield 60	tencent/im/oidb/cmd0xada/oidb_0xada$RspBody:err_msg	Lcom/tencent/mobileqq/pb/PBStringField;
-    //   78: invokevirtual 65	com/tencent/mobileqq/pb/PBStringField:get	()Ljava/lang/String;
-    //   81: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   84: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   87: invokestatic 47	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   90: aload_3
-    //   91: getfield 69	tencent/im/oidb/cmd0xada/oidb_0xada$RspBody:busi_buf	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   94: invokevirtual 74	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   97: ifeq +237 -> 334
-    //   100: new 76	com/tencent/pb/now/FeedsProtocol$GetMediaDetailRsp
-    //   103: dup
-    //   104: invokespecial 77	com/tencent/pb/now/FeedsProtocol$GetMediaDetailRsp:<init>	()V
-    //   107: astore_2
-    //   108: aload_2
-    //   109: aload_3
-    //   110: getfield 69	tencent/im/oidb/cmd0xada/oidb_0xada$RspBody:busi_buf	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   113: invokevirtual 80	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   116: invokevirtual 86	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   119: invokevirtual 87	com/tencent/pb/now/FeedsProtocol$GetMediaDetailRsp:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   122: pop
-    //   123: aload_0
-    //   124: getfield 12	afaz:a	Lcom/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel;
-    //   127: astore_3
-    //   128: aload_2
-    //   129: getfield 91	com/tencent/pb/now/FeedsProtocol$GetMediaDetailRsp:is_end	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   132: invokevirtual 96	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   135: ifeq +235 -> 370
-    //   138: iconst_1
-    //   139: istore 5
-    //   141: aload_3
-    //   142: iload 5
-    //   144: invokestatic 101	com/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel:a	(Lcom/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel;Z)Z
-    //   147: pop
-    //   148: aload_0
-    //   149: getfield 12	afaz:a	Lcom/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel;
-    //   152: aload_2
-    //   153: getfield 104	com/tencent/pb/now/FeedsProtocol$GetMediaDetailRsp:total	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   156: invokevirtual 96	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   159: putfield 107	com/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel:jdField_a_of_type_Int	I
-    //   162: aload_0
-    //   163: getfield 12	afaz:a	Lcom/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel;
-    //   166: aload_2
-    //   167: invokestatic 110	com/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel:a	(Lcom/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel;Lcom/tencent/pb/now/FeedsProtocol$GetMediaDetailRsp;)V
-    //   170: aload_0
-    //   171: getfield 12	afaz:a	Lcom/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel;
-    //   174: invokestatic 113	com/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel:a	(Lcom/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel;)Ljava/lang/String;
-    //   177: invokestatic 119	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   180: ifne +120 -> 300
-    //   183: aload_0
-    //   184: getfield 12	afaz:a	Lcom/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel;
-    //   187: getfield 122	com/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   190: invokevirtual 127	java/util/ArrayList:size	()I
-    //   193: istore 4
-    //   195: iconst_0
-    //   196: istore_1
-    //   197: iload_1
-    //   198: aload_0
-    //   199: getfield 12	afaz:a	Lcom/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel;
-    //   202: getfield 122	com/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   205: invokevirtual 127	java/util/ArrayList:size	()I
-    //   208: if_icmpge +156 -> 364
-    //   211: aload_0
-    //   212: getfield 12	afaz:a	Lcom/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel;
-    //   215: invokestatic 113	com/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel:a	(Lcom/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel;)Ljava/lang/String;
-    //   218: aload_0
-    //   219: getfield 12	afaz:a	Lcom/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel;
-    //   222: getfield 122	com/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   225: iload_1
-    //   226: invokevirtual 130	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   229: checkcast 132	com/tencent/mobileqq/nearby/now/model/VideoData
-    //   232: getfield 135	com/tencent/mobileqq/nearby/now/model/VideoData:a	Ljava/lang/String;
-    //   235: invokevirtual 141	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   238: ifeq +138 -> 376
-    //   241: aload_0
-    //   242: getfield 12	afaz:a	Lcom/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel;
-    //   245: getfield 144	com/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel:jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel$OnDataComeListener	Lcom/tencent/mobileqq/nearby/now/model/BasePlayListDataModel$OnDataComeListener;
-    //   248: aload_0
-    //   249: getfield 12	afaz:a	Lcom/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel;
-    //   252: getfield 122	com/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   255: iload_1
-    //   256: invokevirtual 130	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   259: checkcast 132	com/tencent/mobileqq/nearby/now/model/VideoData
-    //   262: invokeinterface 149 2 0
-    //   267: iload_1
-    //   268: aload_0
-    //   269: getfield 12	afaz:a	Lcom/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel;
-    //   272: getfield 122	com/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   275: invokevirtual 127	java/util/ArrayList:size	()I
-    //   278: if_icmpge +22 -> 300
-    //   281: aload_0
-    //   282: getfield 12	afaz:a	Lcom/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel;
-    //   285: getfield 122	com/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   288: iload_1
-    //   289: invokevirtual 152	java/util/ArrayList:remove	(I)Ljava/lang/Object;
-    //   292: pop
-    //   293: iload_1
-    //   294: iconst_1
-    //   295: iadd
-    //   296: istore_1
-    //   297: goto -30 -> 267
-    //   300: aload_0
-    //   301: getfield 12	afaz:a	Lcom/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel;
-    //   304: getfield 144	com/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel:jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel$OnDataComeListener	Lcom/tencent/mobileqq/nearby/now/model/BasePlayListDataModel$OnDataComeListener;
-    //   307: astore_3
-    //   308: aload_2
-    //   309: getfield 155	com/tencent/pb/now/FeedsProtocol$GetMediaDetailRsp:err_code	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   312: invokevirtual 156	com/tencent/mobileqq/pb/PBUInt32Field:has	()Z
-    //   315: ifeq +20 -> 335
-    //   318: aload_2
-    //   319: getfield 155	com/tencent/pb/now/FeedsProtocol$GetMediaDetailRsp:err_code	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   322: invokevirtual 96	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   325: istore_1
-    //   326: aload_3
-    //   327: iconst_0
-    //   328: iload_1
-    //   329: invokeinterface 159 3 0
-    //   334: return
-    //   335: iconst_0
-    //   336: istore_1
-    //   337: goto -11 -> 326
-    //   340: astore_2
-    //   341: aload_2
-    //   342: invokevirtual 162	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:printStackTrace	()V
-    //   345: aload_0
-    //   346: getfield 12	afaz:a	Lcom/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel;
-    //   349: getfield 144	com/tencent/mobileqq/nearby/now/model/InfinitePlayListDataModel:jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel$OnDataComeListener	Lcom/tencent/mobileqq/nearby/now/model/BasePlayListDataModel$OnDataComeListener;
-    //   352: invokeinterface 164 1 0
-    //   357: return
-    //   358: astore_2
-    //   359: aload_2
-    //   360: invokevirtual 162	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException:printStackTrace	()V
-    //   363: return
-    //   364: iload 4
-    //   366: istore_1
-    //   367: goto -100 -> 267
-    //   370: iconst_0
-    //   371: istore 5
-    //   373: goto -232 -> 141
-    //   376: iload_1
-    //   377: iconst_1
-    //   378: iadd
-    //   379: istore_1
-    //   380: goto -183 -> 197
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	383	0	this	afaz
-    //   0	383	1	paramInt	int
-    //   0	383	2	paramArrayOfByte	byte[]
-    //   0	383	3	paramBundle	android.os.Bundle
-    //   193	172	4	i	int
-    //   139	233	5	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   108	138	340	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   141	195	340	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   197	267	340	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   267	293	340	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   300	326	340	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   326	334	340	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   47	90	358	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   90	108	358	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   341	357	358	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Aexv = paramaexv;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView = paramSlideDetectListView;
+  }
+  
+  private boolean a(structmsg.StructMsg paramStructMsg)
+  {
+    boolean bool = false;
+    if (paramStructMsg != null)
+    {
+      int i = paramStructMsg.msg_type.get();
+      long l1 = paramStructMsg.msg_seq.get();
+      long l2 = paramStructMsg.req_uin.get();
+      int j = paramStructMsg.msg.sub_type.get();
+      int k = paramStructMsg.msg.src_id.get();
+      int m = paramStructMsg.msg.sub_src_id.get();
+      int n = paramStructMsg.msg.group_msg_type.get();
+      structmsg.SystemMsgActionInfo localSystemMsgActionInfo = new structmsg.SystemMsgActionInfo();
+      localSystemMsgActionInfo.group_code.set(paramStructMsg.msg.group_code.get());
+      localSystemMsgActionInfo.sig.set(ByteStringMicro.EMPTY);
+      localSystemMsgActionInfo.type.set(15);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(i, l1, l2, j, k, m, n, (structmsg.SystemMsgActionInfo)localSystemMsgActionInfo.get(), 3);
+      bool = true;
+    }
+    return bool;
+  }
+  
+  public void a()
+  {
+    if (this.b != null) {
+      this.b.clear();
+    }
+  }
+  
+  public void a(List<MessageRecord> paramList)
+  {
+    HashSet localHashSet = new HashSet();
+    if ((paramList == null) || (this.b == null)) {}
+    for (;;)
+    {
+      return;
+      this.b.clear();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        MessageRecord localMessageRecord = (MessageRecord)paramList.next();
+        if ((localMessageRecord instanceof MessageForSystemMsg))
+        {
+          structmsg.StructMsg localStructMsg = ((MessageForSystemMsg)localMessageRecord).getSystemMsg();
+          if ((localStructMsg != null) && (localStructMsg.msg_seq.has()) && (!localHashSet.contains(Long.valueOf(localStructMsg.msg_seq.get()))))
+          {
+            localHashSet.add(Long.valueOf(localStructMsg.msg_seq.get()));
+            this.b.add(localMessageRecord);
+          }
+        }
+      }
+    }
+  }
+  
+  public int getCount()
+  {
+    int i = 0;
+    if (this.b != null) {
+      i = this.b.size();
+    }
+    return i;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((this.b == null) || (paramInt > this.b.size()) || (paramInt < 0)) {
+      return null;
+    }
+    return this.b.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    label207:
+    MessageRecord localMessageRecord;
+    if (paramView == null)
+    {
+      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131494132, paramViewGroup, false);
+      paramViewGroup = new afbb();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131306841));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131306831));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131306838));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131306845));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131306836));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131306842));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131306844));
+      paramViewGroup.d = ((TextView)paramView.findViewById(2131306837));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131306840));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqWidgetShaderAnimLayout = ((ShaderAnimLayout)paramView.findViewById(2131312047));
+      ((Button)paramView.findViewById(2131312046)).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      paramView.setTag(paramViewGroup);
+      paramViewGroup.jdField_b_of_type_Int = paramInt;
+      if (paramInt >= this.jdField_a_of_type_Int) {
+        break label243;
+      }
+      aeyf.a(paramView, true);
+      aeyf.a(paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout, true);
+      localMessageRecord = (MessageRecord)getItem(paramInt);
+      if ((localMessageRecord != null) && ((localMessageRecord instanceof MessageForSystemMsg))) {
+        break label259;
+      }
+    }
+    for (;;)
+    {
+      return paramView;
+      paramViewGroup = (afbb)paramView.getTag();
+      break;
+      label243:
+      aeyf.a(paramView, false);
+      aeyf.a(paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+      break label207;
+      label259:
+      paramViewGroup.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg = ((MessageForSystemMsg)localMessageRecord).getSystemMsg();
+      paramViewGroup.jdField_c_of_type_Long = localMessageRecord.uniseq;
+      if (localMessageRecord != null) {}
+      for (int i = ((MessageForSystemMsg)localMessageRecord).getSystemMsg().msg_type.get(); i == 2; i = 2)
+      {
+        this.jdField_a_of_type_Aexv.a(paramViewGroup, paramInt);
+        return paramView;
+      }
+    }
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    super.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afaz
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_struct$TagItem
-  extends MessageMicro
+  extends MessageMicro<TagItem>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26 }, new String[] { "base_info", "join_count", "wording" }, new Object[] { null, Integer.valueOf(0), "" }, TagItem.class);
   public qqstory_struct.TagInfoBase base_info = new qqstory_struct.TagInfoBase();
@@ -16,7 +16,7 @@ public final class qqstory_struct$TagItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.TagItem
  * JD-Core Version:    0.7.0.1
  */

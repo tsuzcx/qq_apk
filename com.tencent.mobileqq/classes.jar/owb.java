@@ -1,25 +1,15 @@
-import android.widget.PopupWindow;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
+import java.util.Map;
 
-public final class owb
-  implements Runnable
+public class owb
+  implements pfh
 {
-  public owb(PopupWindow paramPopupWindow) {}
+  public owb(ProteusItemView paramProteusItemView, qpi paramqpi) {}
   
-  public void run()
+  public void a(View paramView, Map<String, Object> paramMap)
   {
-    try
-    {
-      if (this.a.isShowing()) {
-        this.a.dismiss();
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("View", 2, QLog.getStackTraceString(localException));
-    }
+    this.jdField_a_of_type_Qpi.c();
   }
 }
 

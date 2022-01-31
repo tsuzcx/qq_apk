@@ -1,17 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeTopicMulti;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
 public class lyc
-  implements View.OnClickListener
+  extends Animation
 {
-  public lyc(FeedItemCellTypeTopicMulti paramFeedItemCellTypeTopicMulti) {}
-  
-  public void onClick(View paramView) {}
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  {
+    if (paramFloat < 0.5F) {}
+    for (float f = (0.5F - paramFloat) / 0.5F;; f = (paramFloat - 0.5F) / 0.5F)
+    {
+      paramTransformation.setAlpha(f);
+      super.applyTransformation(paramFloat, paramTransformation);
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lyc
  * JD-Core Version:    0.7.0.1
  */

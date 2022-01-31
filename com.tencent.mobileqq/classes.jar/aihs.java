@@ -1,23 +1,21 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable.AnimationEndListener;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloTicker;
+import com.tencent.mobileqq.apollo.EnginePreLoader.2;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 
 public class aihs
-  implements CustomFrameAnimationDrawable.AnimationEndListener
 {
-  public aihs(RedBagVideoManager paramRedBagVideoManager) {}
+  private ApolloEngine jdField_a_of_type_ComTencentMobileqqApolloApolloEngine;
+  private ApolloTicker jdField_a_of_type_ComTencentMobileqqApolloApolloTicker;
   
-  public void a()
+  private void a()
   {
-    if (RedBagVideoManager.a(this.a) == null) {
-      RedBagVideoManager.a(this.a, new Handler());
-    }
-    RedBagVideoManager.a(this.a).postDelayed(new aiht(this), 1000L);
+    ThreadManagerV2.executeOnSubThread(new EnginePreLoader.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aihs
  * JD-Core Version:    0.7.0.1
  */

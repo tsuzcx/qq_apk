@@ -1,29 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.data.TroopFileInfo;
-import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.qphone.base.util.QLog;
 
-class ajjw
-  implements DialogInterface.OnClickListener
+public class ajjw
+  extends BroadcastReceiver
 {
-  ajjw(ajjv paramajjv) {}
+  public ajjw(GuardManager paramGuardManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    switch (paramInt)
-    {
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("GuardManager", 2, paramContext);
     }
-    do
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
     {
+      if (this.a.jdField_a_of_type_Long > 0L) {
+        this.a.a(false);
+      }
+      alfg.b();
+    }
+    while (!"android.intent.action.SCREEN_ON".equals(paramContext)) {
       return;
-    } while (TroopFileItemOperation.a(this.a.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation) == 0);
-    TroopFileTransferManager.a(this.a.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.a, this.a.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.b).b(this.a.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.a);
+    }
+    if ((this.a.jdField_a_of_type_Long == 0L) && (this.a.jdField_a_of_type_JavaLangString != null)) {
+      this.a.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    }
+    alfg.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajjw
  * JD-Core Version:    0.7.0.1
  */

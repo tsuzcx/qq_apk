@@ -1,20 +1,30 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.pubaccount.readinjoy.skin.CommonSkinRes;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
+import com.tencent.av.ui.VideoLayerUIBase;
+import java.lang.ref.WeakReference;
+import java.util.Observable;
+import java.util.Observer;
 
 public class mar
-  extends CommonSkinRes
+  implements Observer
 {
-  public mar(ReadInJoySkinManager paramReadInJoySkinManager) {}
+  private WeakReference<VideoLayerUIBase> a;
   
-  public Drawable a()
+  public mar(VideoLayerUIBase paramVideoLayerUIBase)
   {
-    return a("readinjoy_diandian_icon_background");
+    this.a = new WeakReference(paramVideoLayerUIBase);
+  }
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    VideoLayerUIBase localVideoLayerUIBase = (VideoLayerUIBase)this.a.get();
+    if (localVideoLayerUIBase == null) {
+      return;
+    }
+    VideoLayerUIBase.a(localVideoLayerUIBase, paramObservable, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mar
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.capture.view.QIMSlidingTabView;
+import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
 
 public class anyo
-  implements ValueAnimator.AnimatorUpdateListener
+  extends aodp
 {
-  public anyo(QIMSlidingTabView paramQIMSlidingTabView) {}
+  public anyo(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2)
   {
-    QIMSlidingTabView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    this.a.invalidate();
+    if ((paramBoolean) && (this.a.a != null)) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anyo
  * JD-Core Version:    0.7.0.1
  */

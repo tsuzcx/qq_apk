@@ -4,7 +4,7 @@ import java.util.Collection;
 
 public abstract interface FileStorageHandler$Collector
 {
-  public abstract Collection a();
+  public abstract Collection<FileCacheService> collect();
 }
 
 

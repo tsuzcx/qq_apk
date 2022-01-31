@@ -1,16 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.AbsEmptyView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.qphone.base.util.QLog;
 
-public class ovg
-  implements View.OnClickListener
+class ovg
+  implements pct
 {
-  public ovg(AbsEmptyView paramAbsEmptyView, View.OnClickListener paramOnClickListener) {}
+  ovg(ove paramove, ArticleInfo paramArticleInfo, opw paramopw) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, ViewBase paramViewBase, TemplateBean paramTemplateBean)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetAbsEmptyView.a(3);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    QLog.d("NewPolymericMultiVideoProteusItem", 1, "position : " + paramInt);
+    ove.a(this.jdField_a_of_type_Ove, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramInt);
+    this.jdField_a_of_type_Opw.a().a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramViewBase.getNativeView(), paramInt, 0L);
   }
 }
 

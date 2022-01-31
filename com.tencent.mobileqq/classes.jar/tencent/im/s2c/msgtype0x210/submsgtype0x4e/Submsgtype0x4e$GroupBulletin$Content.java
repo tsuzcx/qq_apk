@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBFixed32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Submsgtype0x4e$GroupBulletin$Content
-  extends MessageMicro
+  extends MessageMicro<Content>
 {
   public static final int BYTES_FEEDID_FIELD_NUMBER = 1;
   public static final int UINT32_TIME_FIELD_NUMBER = 3;

@@ -8,18 +8,18 @@ import java.util.ArrayList;
 public final class get_video_list_rsp
   extends JceStruct
 {
-  static ArrayList cache_video_list;
+  static ArrayList<Video> cache_video_list;
   public String attach_info_new = "";
   public String attach_info_old = "";
   public boolean has_more = true;
   public String msg = "";
   public boolean old_video_hint_flag = true;
   public int ret;
-  public ArrayList video_list;
+  public ArrayList<Video> video_list;
   
   public get_video_list_rsp() {}
   
-  public get_video_list_rsp(int paramInt, String paramString1, ArrayList paramArrayList, boolean paramBoolean1, String paramString2, String paramString3, boolean paramBoolean2)
+  public get_video_list_rsp(int paramInt, String paramString1, ArrayList<Video> paramArrayList, boolean paramBoolean1, String paramString2, String paramString3, boolean paramBoolean2)
   {
     this.ret = paramInt;
     this.msg = paramString1;

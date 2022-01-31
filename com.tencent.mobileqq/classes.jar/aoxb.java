@@ -1,24 +1,18 @@
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import java.io.File;
+import android.view.View;
 
-public class aoxb
-  implements Runnable
+class aoxb
+  implements apcz
 {
-  public aoxb(PtvTemplateManager paramPtvTemplateManager, String paramString) {}
+  aoxb(aoxa paramaoxa) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    FileUtils.a(PtvTemplateManager.b.getPath() + File.separator, "dov_doodle_template_new.cfg", this.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.i("DOV_Doodle_Strokes_PtvTemplateManager", 2, "save Config to file finish.");
-    }
+    apck.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Aovk.c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoxb
  * JD-Core Version:    0.7.0.1
  */

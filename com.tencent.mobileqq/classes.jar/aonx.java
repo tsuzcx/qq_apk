@@ -1,27 +1,31 @@
-import android.view.View;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.VoteItem;
-import dov.com.tencent.biz.qqstory.takevideo.vote.VoteDashItem;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import com.tencent.mobileqq.widget.CircleFileStateView;
 
 public class aonx
-  implements Runnable
+  implements Cloneable
 {
-  public aonx(VoteDashItem paramVoteDashItem, VoteLayer.VoteItem paramVoteItem, View paramView) {}
+  public int a;
+  public CheckBox a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public FileInfo a;
+  public AsyncImageView a;
+  public CircleFileStateView a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
   
-  public void run()
-  {
-    VoteLayer.VoteItem localVoteItem = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerVoteLayer$VoteItem;
-    if (!this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerVoteLayer$VoteItem.a) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localVoteItem.a = bool;
-      this.jdField_a_of_type_AndroidViewView.invalidate();
-      return;
-    }
-  }
+  public aonx(aonw paramaonw) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aonx
  * JD-Core Version:    0.7.0.1
  */

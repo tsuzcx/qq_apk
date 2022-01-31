@@ -1,20 +1,24 @@
-import android.hardware.Camera;
-import android.hardware.Camera.PictureCallback;
-import com.tencent.mobileqq.ocr.OcrCamera;
+import NS_MOBILE_PHOTO.get_albumlist_num_rsp;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import mqq.app.AppRuntime;
 
 public class agfx
-  implements Camera.PictureCallback
+  extends atdk
 {
-  public agfx(OcrCamera paramOcrCamera) {}
-  
-  public void onPictureTaken(byte[] paramArrayOfByte, Camera paramCamera)
+  protected void c(boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.a(paramArrayOfByte, true);
+    paramBundle = paramBundle.getSerializable("data");
+    if ((paramBoolean) && ((paramBundle instanceof get_albumlist_num_rsp))) {
+      aggf.a().a = ((get_albumlist_num_rsp)paramBundle).album_num;
+    }
+    BaseApplicationImpl.getApplication().getRuntime().unRegistObserver(NewPhotoListActivity.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agfx
  * JD-Core Version:    0.7.0.1
  */

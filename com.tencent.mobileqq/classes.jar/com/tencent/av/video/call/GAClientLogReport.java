@@ -1,12 +1,36 @@
 package com.tencent.av.video.call;
 
+import bcnt;
+
 public class GAClientLogReport
 {
-  static {}
+  private static final String TAG = "GAClientLogReport";
+  private static GAClientLogReport instance;
   
-  public GAClientLogReport()
+  static
   {
-    init();
+    try
+    {
+      cacheMethodIds();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      bcnt.a("GAClientLogReport", "cacheMethodIds fail.", localThrowable);
+    }
+  }
+  
+  private GAClientLogReport()
+  {
+    try
+    {
+      init();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      bcnt.a("GAClientLogReport", "inti fail.", localThrowable);
+    }
   }
   
   private static native void cacheMethodIds();
@@ -17,10 +41,18 @@ public class GAClientLogReport
   }
   
   private native void init();
+  
+  public static GAClientLogReport instance()
+  {
+    if (instance == null) {
+      instance = new GAClientLogReport();
+    }
+    return instance;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.video.call.GAClientLogReport
  * JD-Core Version:    0.7.0.1
  */

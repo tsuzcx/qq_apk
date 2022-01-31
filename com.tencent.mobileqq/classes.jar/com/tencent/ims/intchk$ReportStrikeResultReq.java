@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class intchk$ReportStrikeResultReq
-  extends MessageMicro
+  extends MessageMicro<ReportStrikeResultReq>
 {
   public static final int UINT32_INTCHK_ID_FIELD_NUMBER = 1;
   public static final int UINT32_STRIKE_RESULT_FIELD_NUMBER = 3;

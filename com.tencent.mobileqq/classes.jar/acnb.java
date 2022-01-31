@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class acnb
-  implements Runnable
 {
-  public acnb(EmoticonMainPanel paramEmoticonMainPanel) {}
-  
-  public void run()
-  {
-    EmoticonMainPanel.b(this.a);
-  }
+  public int a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ImageView b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acnb
  * JD-Core Version:    0.7.0.1
  */

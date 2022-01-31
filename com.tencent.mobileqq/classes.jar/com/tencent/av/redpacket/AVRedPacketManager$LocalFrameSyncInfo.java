@@ -9,8 +9,8 @@ public class AVRedPacketManager$LocalFrameSyncInfo
 {
   public int curScore;
   public int frameSyncGameState;
-  public List hasHitedEmojiIds = new ArrayList();
-  public List localEmojiInfos = new ArrayList();
+  public List<Integer> hasHitedEmojiIds = new ArrayList();
+  public List<AVRedPacketManager.LocalEmojiInfo> localEmojiInfos = new ArrayList();
   public AVRedPacketManager.LocalFocusInfo localFocusInfo = new AVRedPacketManager.LocalFocusInfo();
   public AVRedPacketManager.LocalHitInfo localHitInfo = new AVRedPacketManager.LocalHitInfo();
   public int seq;
@@ -39,7 +39,7 @@ public class AVRedPacketManager$LocalFrameSyncInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.redpacket.AVRedPacketManager.LocalFrameSyncInfo
  * JD-Core Version:    0.7.0.1
  */

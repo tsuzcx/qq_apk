@@ -1,44 +1,32 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class tit
-  implements CompoundButton.OnCheckedChangeListener
+final class tit
+  extends SimpleJob<Object>
 {
-  public tit(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  tit(String paramString, sgm paramsgm, String[] paramArrayOfString, int paramInt, tiu paramtiu, TVK_ICacheMgr paramTVK_ICacheMgr, TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo)
   {
-    if (NotifyPushSettingActivity.a())
-    {
-      NotifyPushSettingActivity.a(this.a).setChecked(false);
-      NotifyPushSettingActivity.a(this.a).setVisibility(8);
-      SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131434218), "qqsetting_notify_showcontent_key", paramBoolean);
-      if (!paramBoolean) {
-        break label127;
-      }
+    super(paramString);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    paramJobContext = this.jdField_a_of_type_Sgm.a();
+    if (!TextUtils.isEmpty(paramJobContext)) {
+      this.jdField_a_of_type_ArrayOfJavaLangString[0] = befm.a(this.jdField_a_of_type_ArrayOfJavaLangString[0], "authkey", paramJobContext);
     }
-    label127:
-    for (int i = 1;; i = 0)
-    {
-      ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_hide_text", 0, i, String.valueOf(i), "", "", "");
-      return;
-      if (paramBoolean)
-      {
-        NotifyPushSettingActivity.a(this.a).setVisibility(0);
-        break;
-      }
-      NotifyPushSettingActivity.a(this.a).setVisibility(8);
-      break;
-    }
+    tio.a(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo, this.jdField_a_of_type_ArrayOfJavaLangString[0], this.jdField_a_of_type_Tiu);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tit
  * JD-Core Version:    0.7.0.1
  */

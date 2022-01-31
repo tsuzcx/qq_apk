@@ -1,65 +1,48 @@
-import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForLongTextMsg;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.multimsg.LongTextMsgManager;
-import com.tencent.mobileqq.pic.UpCallBack;
-import com.tencent.mobileqq.pic.UpCallBack.SendResult;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.msg.im_msg_body.RichText;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.util.WeakReference;
 
-public class aerp
-  implements UpCallBack
+class aerp
+  extends ajjh
 {
-  public aerp(LongTextMsgManager paramLongTextMsgManager, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, boolean paramBoolean) {}
+  aerp(aero paramaero) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
   {
-    return null;
-  }
-  
-  public void a(UpCallBack.SendResult paramSendResult) {}
-  
-  public void b(UpCallBack.SendResult paramSendResult)
-  {
-    try
-    {
-      if (paramSendResult.jdField_a_of_type_Int == 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("StructLongTextMsg", 2, "step3: sendLongTextMsg pack upload cost: " + (System.currentTimeMillis() - LongTextMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgLongTextMsgManager)) + ",mResid:" + paramSendResult.c);
-        }
-        AbsShareMsg localAbsShareMsg = ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname());
-        localAbsShareMsg.mResid = paramSendResult.c;
-        localAbsShareMsg.mFileName = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
-        localAbsShareMsg.multiMsgFlag = 1;
-        MessageForLongTextMsg localMessageForLongTextMsg = (MessageForLongTextMsg)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-        localMessageForLongTextMsg.structingMsg = localAbsShareMsg;
-        localMessageForLongTextMsg.saveExtInfoToExtStr("long_text_msg_resid", paramSendResult.c);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, null, this.jdField_a_of_type_Boolean);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("StructLongTextMsg", 2, "upload multi msg pack failed, result.errStr=" + paramSendResult.b + ",result.errStr=" + paramSendResult.jdField_a_of_type_JavaLangString);
-      }
-      LongTextMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-      return;
+    aero.a(this.a).removeMessages(1);
+    if ((this.a.jdField_a_of_type_Bbms == null) || (!this.a.jdField_a_of_type_Bbms.isShowing())) {
+      QLog.e("SeparateForward", 1, new Object[] { "onGetFriendNickBatch timeout, isSuccess:", Boolean.valueOf(paramBoolean) });
     }
-    catch (Exception paramSendResult)
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("StructLongTextMsg", 2, "upload multi msg pack failed, catch exception", paramSendResult);
+      return;
+      this.a.jdField_a_of_type_Bbms.dismiss();
+      arxu.a().b.clear();
+      if ((paramBoolean) && (paramObject != null)) {
+        arxu.a().b.putAll((Map)paramObject);
       }
-      LongTextMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      if (arxu.a().b.size() == 0)
+      {
+        BaseActivity localBaseActivity = (BaseActivity)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
+        if (localBaseActivity != null) {
+          bbmy.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131632732, 0).b(localBaseActivity.getTitleBarHeight());
+        }
+      }
+      while (QLog.isDevelopLevel())
+      {
+        QLog.d("MultiMsg_TAG", 4, "onGetFriendNickBatch = " + paramObject);
+        return;
+        this.a.a((Map)paramObject, arxu.a().a);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aerp
  * JD-Core Version:    0.7.0.1
  */

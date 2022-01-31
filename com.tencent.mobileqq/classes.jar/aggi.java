@@ -1,20 +1,17 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.ViewGroup;
 
-class aggi
-  implements DialogInterface.OnClickListener
+public abstract interface aggi
 {
-  aggi(aggh paramaggh, Activity paramActivity) {}
+  public abstract View a(int paramInt, View paramView, ViewGroup paramViewGroup);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-  }
+  public abstract View a(int paramInt, View paramView, ViewGroup paramViewGroup, agfw paramagfw, agft paramagft);
+  
+  public abstract View b(int paramInt, View paramView, ViewGroup paramViewGroup, agfw paramagfw, agft paramagft);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aggi
  * JD-Core Version:    0.7.0.1
  */

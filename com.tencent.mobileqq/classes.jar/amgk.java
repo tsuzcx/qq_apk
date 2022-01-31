@@ -1,65 +1,94 @@
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioManager;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amgk
-  extends amgl
 {
-  public amgk(TraeAudioManager paramTraeAudioManager)
+  public String a;
+  public boolean a;
+  public String b = "https://qun.qq.com/qqweb/m/qun/qun_robot/auto-approval.html?_wv=1027&gc=$GCODE$&page=groupSetting";
+  
+  public amgk()
   {
-    super(paramTraeAudioManager);
+    this.jdField_a_of_type_JavaLangString = "https://web.qun.qq.com/mannounce/index.html?_wv=1031&_bid=148#gc=$GCODE$&role=$ROLE$&actionIcon=1&from=troop_profile";
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public String a()
+  public static amgk a(alzs[] paramArrayOfalzs)
   {
-    return "DEVICE_SPEAKERPHONE";
-  }
-  
-  public void a()
-  {
-    int j = 0;
-    this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a, true);
-    e();
-    int i = j;
-    if (QLog.isColorLevel())
+    amgk localamgk = new amgk();
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
     {
-      QLog.w("TRAE", 2, " _run:" + a() + " _running:" + this.jdField_a_of_type_Boolean);
-      i = j;
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Boolean == true)
+      int j = paramArrayOfalzs.length;
+      int i = 0;
+      while (i < j)
       {
-        if (TraeAudioManager.a(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager) != true) {
-          this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a, true);
-        }
-        long l;
-        if (i < 5) {
-          l = 1000L;
-        }
-        try
+        Object localObject = paramArrayOfalzs[i];
+        if (localObject == null)
         {
+          i += 1;
+        }
+        else
+        {
+          localObject = ((alzs)localObject).jdField_a_of_type_JavaLangString;
           for (;;)
           {
-            Thread.sleep(l);
-            label120:
-            i += 1;
+            try
+            {
+              JSONObject localJSONObject = new JSONObject((String)localObject);
+              if (localJSONObject.has("announcementUrl")) {
+                localamgk.jdField_a_of_type_JavaLangString = localJSONObject.optString("announcementUrl");
+              }
+              if (localJSONObject.has("autoApprovalUrl")) {
+                localamgk.b = localJSONObject.optString("autoApprovalUrl");
+              }
+              if (!localJSONObject.has("frequencyLimitVisible")) {
+                continue;
+              }
+              if (localJSONObject.getInt("frequencyLimitVisible") != 1) {
+                continue;
+              }
+              bool = true;
+              localamgk.jdField_a_of_type_Boolean = bool;
+            }
+            catch (JSONException localJSONException)
+            {
+              boolean bool;
+              localJSONException.printStackTrace();
+              continue;
+            }
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.i("TroopUrlConfBean", 2, "parse: " + (String)localObject);
             break;
-            l = 4000L;
+            bool = false;
+            continue;
+            localamgk.jdField_a_of_type_Boolean = false;
           }
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          break label120;
         }
       }
     }
+    if (TextUtils.isEmpty(localamgk.jdField_a_of_type_JavaLangString)) {
+      localamgk.jdField_a_of_type_JavaLangString = "https://web.qun.qq.com/mannounce/index.html?_wv=1031&_bid=148#gc=$GCODE$&role=$ROLE$&actionIcon=1&from=troop_profile";
+    }
+    if (TextUtils.isEmpty(localamgk.b)) {
+      localamgk.b = "https://qun.qq.com/qqweb/m/qun/qun_robot/auto-approval.html?_wv=1027&gc=$GCODE$&page=groupSetting";
+    }
+    return localamgk;
   }
   
-  public void b() {}
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(200);
+    localStringBuilder.append("TroopUrlConfBean [announcement: ").append(this.jdField_a_of_type_JavaLangString).append(", autoApproval: ").append(this.b).append(", freqLimitVisible: ").append(this.jdField_a_of_type_Boolean).append("]");
+    return localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amgk
  * JD-Core Version:    0.7.0.1
  */

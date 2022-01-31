@@ -1,125 +1,88 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.lbs.LbsManager;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.POIListRequestCallback;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.POIListRequestSession;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPOIList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.Address;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
-import com.tencent.biz.qqstory.network.request.CommonRequest;
-import com.tencent.biz.qqstory.network.response.CommonResponse;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import java.util.ArrayList;
-import java.util.HashSet;
+import android.content.res.Configuration;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 import java.util.List;
-import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
 
-public class nht
-  implements CmdTaskManger.CommandCallback
+class nht
+  extends ohe
 {
-  public nht(LbsManager paramLbsManager, WeakReference paramWeakReference, LbsManager.POIListRequestSession paramPOIListRequestSession) {}
+  nht(nhr paramnhr) {}
   
-  public void a(@NonNull CommonRequest paramCommonRequest, @Nullable CommonResponse paramCommonResponse, @NonNull ErrorMessage paramErrorMessage)
+  public void a(int paramInt)
   {
-    if (paramCommonResponse == null)
-    {
-      SLog.d("LbsManager", "response is null");
-      paramCommonRequest = (LbsManager.POIListRequestCallback)this.jdField_a_of_type_MqqUtilWeakReference.get();
-      if (paramCommonRequest != null) {
-        ThreadManager.getUIHandler().post(new nhu(this, paramCommonRequest, paramErrorMessage));
-      }
-      return;
+    if ((nhr.a(this.a) != null) && ((nhr.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nhr.a(this.a)).a(paramInt);
     }
-    paramCommonRequest = new qqstory_service.RspGetPOIList();
-    paramCommonResponse = paramCommonResponse.a;
-    try
-    {
-      paramCommonRequest.mergeFrom(paramCommonResponse);
-      paramCommonResponse = new ArrayList();
-      if (paramCommonRequest.result.error_code.get() == 0)
-      {
-        paramErrorMessage = paramCommonRequest.poi_list.get();
-        SLog.b("LbsManager", "poiListSize = " + paramCommonRequest.poi_list.size());
-        SLog.b("LbsManager", "poiList isend = " + paramCommonRequest.is_end.get());
-        if (paramErrorMessage.size() > 0) {
-          if (paramCommonRequest.is_end.get() > 0)
-          {
-            i = 1;
-            localObject = this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession;
-            if (i != 0) {
-              break label417;
-            }
-            bool = true;
-            ((LbsManager.POIListRequestSession)localObject).jdField_a_of_type_Boolean = bool;
-            localObject = paramCommonRequest.next_cookie.get().toStringUtf8();
-            if (this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession.jdField_a_of_type_JavaUtilHashSet.contains(localObject)) {
-              break label457;
-            }
-            i = 0;
-            for (;;)
-            {
-              if (i >= paramErrorMessage.size()) {
-                break label435;
-              }
-              qqstory_struct.Address localAddress = (qqstory_struct.Address)paramErrorMessage.get(i);
-              String str1 = localAddress.city.get().toStringUtf8();
-              String str2 = localAddress.building.get().toStringUtf8();
-              if (!localAddress.gps.has()) {
-                break;
-              }
-              j = localAddress.gps.lng.get();
-              String str3 = localAddress.street.get().toStringUtf8();
-              if (!localAddress.gps.has()) {
-                break label429;
-              }
-              k = localAddress.gps.lat.get();
-              paramCommonResponse.add(new TroopBarPOI("", str1, str2, j, str3, k, localAddress.province.get().toString()));
-              i += 1;
-            }
-          }
-        }
-      }
+  }
+  
+  public void a(int paramInt, ArticleInfo paramArticleInfo, String paramString1, String paramString2)
+  {
+    if ((nhr.a(this.a) != null) && ((nhr.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nhr.a(this.a)).a(paramInt, paramArticleInfo, paramString1, paramString2);
     }
-    catch (InvalidProtocolBufferMicroException paramCommonResponse)
+  }
+  
+  public void a(int paramInt, List<Long> paramList)
+  {
+    if ((nhr.a(this.a) != null) && ((nhr.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nhr.a(this.a)).a(paramInt, paramList);
+    }
+  }
+  
+  public void a(Configuration paramConfiguration)
+  {
+    if (nhr.a(this.a) != null)
     {
-      Object localObject;
-      for (;;)
-      {
-        SLog.e("LbsManager", "InvalidProtocolBufferMicroException: " + paramCommonResponse.getMessage());
-        continue;
-        int i = 0;
-        continue;
-        label417:
-        boolean bool = false;
-        continue;
-        int j = 0;
-        continue;
-        label429:
-        int k = 0;
-      }
-      label435:
-      this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession.jdField_a_of_type_JavaUtilHashSet.add(localObject);
-      this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession.jdField_a_of_type_JavaLangString = ((String)localObject);
-      label457:
-      paramErrorMessage = (LbsManager.POIListRequestCallback)this.jdField_a_of_type_MqqUtilWeakReference.get();
-      if (paramErrorMessage != null)
-      {
-        ThreadManager.getUIHandler().post(new nhv(this, paramErrorMessage, paramCommonRequest, paramCommonResponse));
-        return;
-      }
-      SLog.d("LbsManager", "POIListRequestCallback has been recycled.");
+      nhr.a(this.a).d();
+      nhr.a(this.a).e();
+    }
+    if ((nhr.a(this.a) != null) && ((nhr.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nhr.a(this.a)).a(paramConfiguration);
+    }
+  }
+  
+  public void a(TopBannerInfo paramTopBannerInfo)
+  {
+    if ((nhr.a(this.a) != null) && ((nhr.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nhr.a(this.a)).a(paramTopBannerInfo);
+    }
+  }
+  
+  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if ((nhr.a(this.a) != null) && ((nhr.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nhr.a(this.a)).a(paramBoolean1, paramInt, paramList, paramBoolean2);
+    }
+  }
+  
+  public void as_()
+  {
+    if ((nhr.a(this.a) != null) && ((nhr.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nhr.a(this.a)).q();
+    }
+  }
+  
+  public void b(int paramInt, List<Long> paramList)
+  {
+    if ((nhr.a(this.a) != null) && ((nhr.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nhr.a(this.a)).c(paramInt, paramList);
+    }
+  }
+  
+  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if ((nhr.a(this.a) != null) && ((nhr.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nhr.a(this.a)).b(paramBoolean1, paramInt, paramList, paramBoolean2);
+    }
+  }
+  
+  public void c(int paramInt, List<Long> paramList)
+  {
+    if ((nhr.a(this.a) != null) && ((nhr.a(this.a) instanceof ReadInJoyListViewGroup)))
+    {
+      ((ReadInJoyListViewGroup)nhr.a(this.a)).b(paramInt, paramList);
+      nhr.a(this.a, true);
     }
   }
 }

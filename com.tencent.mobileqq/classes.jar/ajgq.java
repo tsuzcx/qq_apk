@@ -1,38 +1,35 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 
-public class ajgq
-  implements TextWatcher
+class ajgq
+  extends ajmm
 {
-  public ajgq(NewTroopContactView paramNewTroopContactView) {}
+  ajgq(ajgm paramajgm) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  protected void a(int paramInt1, int paramInt2)
   {
-    paramEditable = paramEditable.toString();
-    if (TextUtils.isEmpty(paramEditable)) {
-      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    }
-    for (;;)
+    if ((paramInt1 == 1) && (this.a.a()))
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment.a(paramEditable);
-      }
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(0);
+      this.a.a(true);
+      ajgm.a(this.a, awao.a());
+      this.a.app.a().a(0).b();
     }
+    this.a.a.a(this.a);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  protected void b(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 == 1) && (this.a.b()))
+    {
+      this.a.b(true);
+      ajgm.b(this.a, awao.a());
+      this.a.app.a().a(1).b();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajgq
  * JD-Core Version:    0.7.0.1
  */

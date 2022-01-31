@@ -1,21 +1,27 @@
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager.IInformationPasterResDownloaderCallback;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager.InformationPasterResDownloader;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage.Item;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 public class anvm
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public anvm(QIMInformationPasterManager paramQIMInformationPasterManager, InfomationFacePackage.Item paramItem, QIMInformationPasterManager.IInformationPasterResDownloaderCallback paramIInformationPasterResDownloaderCallback) {}
+  public anvm(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager.a.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceInfomationFacePackage$Item, this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager$IInformationPasterResDownloaderCallback);
+    this.a.l = false;
+    this.a.a.setVisibility(8);
+    this.a.e();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anvm
  * JD-Core Version:    0.7.0.1
  */

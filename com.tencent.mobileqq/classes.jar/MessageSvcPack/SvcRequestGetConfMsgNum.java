@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class SvcRequestGetConfMsgNum
   extends JceStruct
 {
-  static ArrayList cache_vConfUin;
+  static ArrayList<Long> cache_vConfUin;
   public byte cVerifyType;
-  public ArrayList vConfUin;
+  public ArrayList<Long> vConfUin;
   
   public SvcRequestGetConfMsgNum() {}
   
-  public SvcRequestGetConfMsgNum(ArrayList paramArrayList, byte paramByte)
+  public SvcRequestGetConfMsgNum(ArrayList<Long> paramArrayList, byte paramByte)
   {
     this.vConfUin = paramArrayList;
     this.cVerifyType = paramByte;

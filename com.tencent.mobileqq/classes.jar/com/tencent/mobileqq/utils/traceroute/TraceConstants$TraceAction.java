@@ -3,6 +3,8 @@ package com.tencent.mobileqq.utils.traceroute;
 public enum TraceConstants$TraceAction
 {
   TRACE_COMPLETE,  TRACE_ERROR;
+  
+  private TraceConstants$TraceAction() {}
 }
 
 

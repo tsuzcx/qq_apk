@@ -1,19 +1,29 @@
 import android.view.View;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
+import java.util.List;
 
 class acxq
-  implements BubblePopupWindow.OnDismissListener
+  implements begw
 {
-  acxq(acxo paramacxo, View paramView) {}
+  acxq(acxp paramacxp, List paramList, begr parambegr) {}
   
-  public void a()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Begr.dismiss();
+      return;
+      acxp.a(this.jdField_a_of_type_Acxp, this.jdField_a_of_type_JavaUtilList);
+      continue;
+      this.jdField_a_of_type_Acxp.a(this.jdField_a_of_type_JavaUtilList, 0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acxq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,9 @@
-import android.view.ViewGroup;
-import android.widget.ListView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.BaseFaceListAdapter;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import java.util.List;
 
-public class oot
-  implements Runnable
+public abstract interface oot
 {
-  public oot(FaceListPage paramFaceListPage) {}
-  
-  public void run()
-  {
-    FaceListPage.a(this.a).setVisibility(4);
-    FaceListPage.b(this.a).setVisibility(4);
-    FaceListPage.a(this.a).setVisibility(0);
-    FaceListPage.a(this.a).notifyDataSetChanged();
-  }
+  public abstract List<ArticleInfo> a(int paramInt, List<ArticleInfo> paramList1, List<ArticleInfo> paramList2);
 }
 
 

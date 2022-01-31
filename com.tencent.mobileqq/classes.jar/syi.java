@@ -1,112 +1,109 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStorySubmitPollData;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStorySubmitPollData;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
 
 public class syi
-  implements TextWatcher
+  implements slx<szf<qqstory_service.ReqStorySubmitPollData>, tbd>
 {
-  private int jdField_a_of_type_Int;
-  private EditText jdField_a_of_type_AndroidWidgetEditText;
-  public boolean a;
-  private int b;
-  public boolean b;
-  private int c;
+  public static final String a;
+  public int a;
+  public String b;
+  public String c;
   
-  public syi(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity, int paramInt, EditText paramEditText)
+  static
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
+    jdField_a_of_type_JavaLangString = skt.a("StorySvc.submit_poll_data");
   }
   
-  public void afterTextChanged(Editable paramEditable)
+  syi(String paramString1, String paramString2, int paramInt)
   {
-    paramEditable = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    localObject1 = paramEditable;
-    if (paramEditable.getBytes().length > this.jdField_a_of_type_Int) {
-      localEditable = paramEditable;
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.c = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  private void a()
+  {
+    urk.a("Q.qqstory.pollData.SendVidPollDataHandler", "sendRequest() feed=%s, poll=%s, index=%d", this.jdField_b_of_type_JavaLangString, this.c, Integer.valueOf(this.jdField_a_of_type_Int));
+    Object localObject = new qqstory_service.ReqStorySubmitPollData();
+    ((qqstory_service.ReqStorySubmitPollData)localObject).vid.set(ByteStringMicro.copyFromUtf8(this.c));
+    ((qqstory_service.ReqStorySubmitPollData)localObject).poll_data.set(this.jdField_a_of_type_Int);
+    localObject = new szf(jdField_a_of_type_JavaLangString, (MessageMicro)localObject, null);
+    slv.a().a((slz)localObject, this);
+  }
+  
+  public static void a(@Nullable String paramString1, String paramString2, int paramInt)
+  {
+    new syi(paramString1, paramString2, paramInt).a();
+  }
+  
+  public void a(@NonNull szf<qqstory_service.ReqStorySubmitPollData> paramszf, @Nullable tbd paramtbd, @NonNull ErrorMessage paramErrorMessage)
+  {
+    if ((paramErrorMessage.isFail()) || (paramtbd == null))
+    {
+      urk.c("Q.qqstory.pollData.SendVidPollDataHandler", "onCmdRespond Request Error:%s", paramErrorMessage);
+      return;
     }
+    paramszf = new qqstory_service.RspStorySubmitPollData();
+    StoryVideoItem localStoryVideoItem;
     try
     {
-      String str1 = paramEditable.substring(0, this.jdField_b_of_type_Int);
-      localEditable = paramEditable;
-      String str2 = paramEditable.substring(this.jdField_b_of_type_Int + this.c, paramEditable.length());
-      localEditable = paramEditable;
-      Object localObject2 = paramEditable.substring(this.jdField_b_of_type_Int, this.jdField_b_of_type_Int + this.c);
-      localObject1 = paramEditable;
-      localEditable = paramEditable;
-      if (str1.getBytes().length + str2.getBytes().length <= this.jdField_a_of_type_Int)
+      paramszf.mergeFrom(paramtbd.a);
+      paramtbd = new syj();
+      paramtbd.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(paramszf.result.error_code.get(), paramszf.result.error_desc.get().toStringUtf8());
+      paramtbd.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+      paramtbd.jdField_b_of_type_JavaLangString = this.c;
+      paramtbd.jdField_a_of_type_Int = paramszf.comment_id.get();
+      paramtbd.jdField_a_of_type_Long = paramszf.fake_id.get();
+      paramtbd.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
+      paramtbd.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramszf.video_poll_result.get());
+      int j = paramtbd.jdField_a_of_type_JavaUtilArrayList.size();
+      paramErrorMessage = (sqd)sqg.a(5);
+      localStoryVideoItem = paramErrorMessage.a(this.c);
+      urk.a("Q.qqstory.pollData.SendVidPollDataHandler", "onCmdRespond() feed=%s, vid=%s, index=%d", this.jdField_b_of_type_JavaLangString, this.c, Integer.valueOf(paramtbd.jdField_b_of_type_Int));
+      if ((localStoryVideoItem == null) || (j <= 0)) {
+        break label302;
+      }
+      if ((localStoryVideoItem.mPollNumbers == null) || (localStoryVideoItem.mPollNumbers.length != j)) {
+        localStoryVideoItem.mPollNumbers = new int[j];
+      }
+      int i = 0;
+      while (i < j)
       {
-        localObject1 = localObject2;
-        for (;;)
-        {
-          localEditable = paramEditable;
-          if (paramEditable.getBytes().length <= this.jdField_a_of_type_Int) {
-            break;
-          }
-          localEditable = paramEditable;
-          if (((String)localObject1).length() <= 0) {
-            break;
-          }
-          localEditable = paramEditable;
-          localObject1 = ((String)localObject1).substring(0, ((String)localObject1).length() - 1);
-          localEditable = paramEditable;
-          paramEditable = str1 + (String)localObject1 + str2;
-        }
-        localEditable = paramEditable;
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(paramEditable);
-        localEditable = paramEditable;
-        localObject2 = this.jdField_a_of_type_AndroidWidgetEditText;
-        localEditable = paramEditable;
-        int i = str1.length();
-        localEditable = paramEditable;
-        ((EditText)localObject2).setSelection(((String)localObject1).length() + i);
-        localObject1 = paramEditable;
+        localStoryVideoItem.mPollNumbers[i] = ((Integer)paramszf.video_poll_result.get(i)).intValue();
+        i += 1;
       }
+      localStoryVideoItem.mPollResult = this.jdField_a_of_type_Int;
     }
-    catch (Exception paramEditable)
+    catch (InvalidProtocolBufferMicroException paramszf)
     {
-      for (;;)
-      {
-        label292:
-        localObject1 = localEditable;
-      }
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_AndroidWidgetEditText != this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.jdField_a_of_type_AndroidWidgetEditText) {
-        break label292;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.a(FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity), this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.jdField_a_of_type_AndroidWidgetEditText, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.getString(2131437517), (String)localObject1);
-    }
-    do
-    {
+      paramszf.printStackTrace();
+      urk.c("Q.qqstory.pollData.SendVidPollDataHandler", "onCmdRespond Request parse Error:%s", paramszf);
       return;
-      this.jdField_b_of_type_Boolean = true;
-      break;
-      if (this.jdField_a_of_type_AndroidWidgetEditText == this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.b)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.a(FriendProfileMoreInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity), this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.getString(2131437529), (String)localObject1);
-        return;
-      }
-    } while (this.jdField_a_of_type_AndroidWidgetEditText != this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.c);
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.a(FriendProfileMoreInfoActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity), this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.getString(2131437537), (String)localObject1);
+    }
+    paramErrorMessage.a(localStoryVideoItem);
+    label302:
+    sgi.a().dispatch(paramtbd);
+    vml.a(QQStoryContext.a());
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt3;
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     syi
  * JD-Core Version:    0.7.0.1
  */

@@ -6,10 +6,10 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class appoint_define$RptInterestTag
-  extends MessageMicro
+  extends MessageMicro<RptInterestTag>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "rpt_interest_tags" }, new Object[] { null }, RptInterestTag.class);
-  public final PBRepeatMessageField rpt_interest_tags = PBField.initRepeatMessage(appoint_define.InterestTag.class);
+  public final PBRepeatMessageField<appoint_define.InterestTag> rpt_interest_tags = PBField.initRepeatMessage(appoint_define.InterestTag.class);
 }
 
 

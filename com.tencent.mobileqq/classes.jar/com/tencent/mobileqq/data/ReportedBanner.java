@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class ReportedBanner
-  extends Entity
+  extends atmo
 {
-  @unique
+  @atoc
   public long cid;
   public long endtime;
   public String md5;

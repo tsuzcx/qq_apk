@@ -1,32 +1,59 @@
-import com.tencent.mobileqq.search.ISearchable;
-import java.util.Comparator;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ahvz
-  implements Comparator
+public class ahvz
+  extends Handler
 {
-  public int a(ISearchable paramISearchable1, ISearchable paramISearchable2)
+  public ahvz(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    long l1 = paramISearchable1.c();
-    long l2 = paramISearchable2.c();
-    if (l1 < l2) {}
-    do
+    switch (paramMessage.what)
     {
-      return 1;
-      if (l1 > l2) {
-        return -1;
-      }
-      l1 = paramISearchable1.b();
-      l2 = paramISearchable2.b();
-    } while (l1 < l2);
-    if (l1 > l2) {
-      return -1;
+    default: 
+    case 8193: 
+    case 8194: 
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+            if (QQSpecialCareSettingActivity.a(this.a) == null)
+            {
+              QQSpecialCareSettingActivity.a(this.a, new bbms(this.a, this.a.getTitleBarHeight()));
+              if ((paramMessage.obj != null) && ((paramMessage.obj instanceof String))) {
+                QQSpecialCareSettingActivity.a(this.a).a((String)paramMessage.obj);
+              }
+            }
+          } while ((this.a.isFinishing()) || (QQSpecialCareSettingActivity.a(this.a).isShowing()));
+          try
+          {
+            QQSpecialCareSettingActivity.a(this.a).show();
+            return;
+          }
+          catch (Exception paramMessage) {}
+        } while (!QLog.isColorLevel());
+        QLog.e("QQSpecialCareSettingActivity", 2, "QQProgressDialog show exception.", paramMessage);
+        return;
+      } while ((QQSpecialCareSettingActivity.a(this.a) == null) || (!QQSpecialCareSettingActivity.a(this.a).isShowing()));
+      QQSpecialCareSettingActivity.a(this.a).dismiss();
+      QQSpecialCareSettingActivity.a(this.a, null);
+      return;
     }
-    return 0;
+    if (QQSpecialCareSettingActivity.a(this.a) != null) {
+      QQSpecialCareSettingActivity.a(this.a).cancel();
+    }
+    QQSpecialCareSettingActivity.a(this.a, bbmy.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahvz
  * JD-Core Version:    0.7.0.1
  */

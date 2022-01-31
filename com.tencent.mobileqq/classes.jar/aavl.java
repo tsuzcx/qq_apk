@@ -1,37 +1,30 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
-class aavl
-  extends BroadcastReceiver
+public class aavl
+  implements apnm
 {
-  aavl(aavk paramaavk, long paramLong) {}
+  public aavl(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    paramContext = paramIntent.getStringExtra("com.tencent.ark.scanResultData");
-    paramIntent = paramIntent.getStringExtra("com.tencent.ark.scanResultType");
-    ArkAppCenter.a().post(new aavm(this, paramContext, paramIntent));
-    try
+    befb localbefb = befb.a;
+    if ((localbefb != null) && (localbefb.a()))
     {
-      BaseApplicationImpl.getApplication().unregisterReceiver(ArkAppDeviceModule.a(this.jdField_a_of_type_Aavk.a));
-      label46:
-      ArkAppDeviceModule.a(this.jdField_a_of_type_Aavk.a, null);
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      break label46;
+      if (!localbefb.a(1)) {
+        localbefb.b(1);
+      }
+      if ((!localbefb.a(8)) && (localbefb.a(5)) && (localbefb.a(7))) {
+        localbefb.b(8);
+      }
+      if ((!localbefb.a(9)) && (localbefb.a(6)) && (localbefb.a(7))) {
+        localbefb.b(9);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aavl
  * JD-Core Version:    0.7.0.1
  */

@@ -12,6 +12,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.view.View;
 import com.tencent.mobileqq.activity.PortraitImageview;
+import com.tencent.qphone.base.util.QLog;
 
 public class RegionView
   extends View
@@ -57,6 +58,62 @@ public class RegionView
       }
       return localObject;
     }
+  }
+  
+  public Rect a()
+  {
+    int j = 0;
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a();
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a();
+    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a();
+    Matrix localMatrix = new Matrix();
+    ((Matrix)localObject2).invert(localMatrix);
+    localObject2 = new RectF();
+    localMatrix.mapRect((RectF)localObject2, (RectF)localObject1);
+    if (QLog.isColorLevel()) {
+      QLog.i("RegionView", 2, String.format("getClipInfo src=[%.0f,%.0f,%.0f,%.0f],dst=[%.0f,%.0f,%.0f,%.0f],[tW,tH]=[%d,%d]", new Object[] { Float.valueOf(((RectF)localObject1).left), Float.valueOf(((RectF)localObject1).top), Float.valueOf(((RectF)localObject1).right), Float.valueOf(((RectF)localObject1).bottom), Float.valueOf(((RectF)localObject2).left), Float.valueOf(((RectF)localObject2).top), Float.valueOf(((RectF)localObject2).right), Float.valueOf(((RectF)localObject2).bottom), Integer.valueOf(localBitmap.getWidth()), Integer.valueOf(localBitmap.getHeight()) }));
+    }
+    localObject1 = new Rect();
+    ((RectF)localObject2).round((Rect)localObject1);
+    if (((Rect)localObject1).left < 0)
+    {
+      i = 0;
+      ((Rect)localObject1).left = i;
+      if (((Rect)localObject1).top >= 0) {
+        break label304;
+      }
+      i = j;
+      label240:
+      ((Rect)localObject1).top = i;
+      if (((Rect)localObject1).right <= localBitmap.getWidth()) {
+        break label313;
+      }
+      i = localBitmap.getWidth();
+      label263:
+      ((Rect)localObject1).right = i;
+      if (((Rect)localObject1).bottom <= localBitmap.getHeight()) {
+        break label322;
+      }
+    }
+    label304:
+    label313:
+    label322:
+    for (int i = localBitmap.getHeight();; i = ((Rect)localObject1).bottom)
+    {
+      ((Rect)localObject1).bottom = i;
+      return localObject1;
+      i = ((Rect)localObject1).left;
+      break;
+      i = ((Rect)localObject1).top;
+      break label240;
+      i = ((Rect)localObject1).right;
+      break label263;
+    }
+  }
+  
+  public Bitmap b()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a();
   }
   
   protected void onDraw(Canvas paramCanvas)

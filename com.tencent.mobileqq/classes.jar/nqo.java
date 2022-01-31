@@ -1,18 +1,21 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.VideoLocalCacheFilter;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public class nqo
-  implements BatchGetVideoInfo.VideoLocalCacheFilter
+class nqo
+  implements Animator.AnimatorListener
 {
-  public nqo(BatchGetVideoInfo paramBatchGetVideoInfo) {}
+  nqo(nqi paramnqi) {}
   
-  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return (!StoryVideoItem.isPlayable(paramStoryVideoItem.mVid, true)) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex == 0L);
+    nqi.b(this.a);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

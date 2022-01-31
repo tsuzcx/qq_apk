@@ -1,72 +1,83 @@
-import android.content.Intent;
-import android.net.Uri;
+import android.util.SparseArray;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
-import com.tencent.mobileqq.activity.activateFriend.BirthdayActivatePage;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import mqq.util.WeakReference;
+import android.view.View.OnLongClickListener;
+import java.util.HashMap;
 
 public class unw
-  implements View.OnClickListener
+  implements View.OnClickListener, View.OnLongClickListener
 {
-  public unw(BirthdayActivatePage paramBirthdayActivatePage) {}
+  public int a;
+  public SparseArray<View> a;
+  public View a;
+  public Object a;
+  public String a;
+  public HashMap<String, Object> a;
+  public ulp a;
+  public int b;
+  public SparseArray<String> b;
+  public int c = -1;
+  
+  public unw(View paramView)
+  {
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    this.jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    paramView.setTag(this);
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public <T extends View> T a(int paramInt)
+  {
+    View localView2 = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    View localView1 = localView2;
+    if (localView2 == null)
+    {
+      localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(paramInt);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localView1);
+    }
+    return localView1;
+  }
+  
+  public Object a(String paramString)
+  {
+    return this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+  }
+  
+  public void a(String paramString, Object paramObject)
+  {
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramObject);
+  }
+  
+  public void a(ulp paramulp)
+  {
+    this.jdField_a_of_type_Ulp = paramulp;
+  }
   
   public void onClick(View paramView)
   {
-    Object localObject;
-    long[] arrayOfLong;
-    if ((BirthdayActivatePage.a(this.a) != null) && (BirthdayActivatePage.a(this.a).get() != null))
-    {
-      localObject = QzoneConfig.getInstance().getConfig("H5Url", "SendBirthdayGift", "https://h5.qzone.qq.com/friendtalk/sendgift?_wv=2097155&uin={uin}&clicktime={clicktime}&friends={uin_uin}&_proxy=1");
-      arrayOfLong = this.a.a.a();
-      String[] arrayOfString = this.a.a.a();
-      if (arrayOfLong.length <= 0) {
-        break label358;
-      }
-      paramView = "";
-      int i = 0;
-      while (i < arrayOfLong.length)
-      {
-        paramView = paramView + arrayOfLong[i];
-        paramView = paramView + "_";
-        String str = paramView + arrayOfString[i];
-        int j = i + 1;
-        i = j;
-        paramView = str;
-        if (j < arrayOfLong.length)
-        {
-          paramView = str + "|";
-          i = j;
-        }
-      }
-      paramView = ((String)localObject).replace("{uin_uin}", Uri.encode(paramView)).replace("{clicktime}", String.valueOf(System.currentTimeMillis()));
-      localObject = new Intent(BaseApplication.getContext(), QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", paramView);
-      ((Intent)localObject).putExtra("injectrecommend", true);
-      ((Intent)localObject).setData(Uri.parse(paramView));
-      ((ActivateFriendActivity)BirthdayActivatePage.a(this.a).get()).startActivityForResult((Intent)localObject, 1000);
-      ReportController.b(((ActivateFriendActivity)BirthdayActivatePage.a(this.a).get()).app, "CliOper", "", "", "0X8004E08", "0X8004E08", 0, 0, String.valueOf(arrayOfLong.length), "", "", "");
+    if (this.jdField_a_of_type_Ulp != null) {
+      this.jdField_a_of_type_Ulp.a(this.jdField_b_of_type_Int, paramView, this.jdField_a_of_type_JavaLangObject, this);
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BirthdayActivatePage", 2, "friends length=" + arrayOfLong.length + " url = " + paramView);
-      }
-      return;
-      label358:
-      paramView = (View)localObject;
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Ulp != null) {
+      this.jdField_a_of_type_Ulp.b(this.jdField_b_of_type_Int, paramView, this.jdField_a_of_type_JavaLangObject, this);
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     unw
  * JD-Core Version:    0.7.0.1
  */

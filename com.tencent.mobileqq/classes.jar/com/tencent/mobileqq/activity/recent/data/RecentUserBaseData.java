@@ -1,121 +1,127 @@
 package com.tencent.mobileqq.activity.recent.data;
 
+import ahee;
 import android.content.Context;
+import ascr;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
 import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.nearby.HotChatUtil;
 
 public abstract class RecentUserBaseData
   extends RecentBaseData
 {
-  public RecentUser a;
+  protected static final String DES_DEFAULT_HAVE_MSG = "%s,%s,%d条未读,%s";
+  protected static final String DES_DEFAULT_NO_MSG = "%s,%s,%s";
+  @ahee
+  public RecentUser mUser;
   
   public RecentUserBaseData(RecentUser paramRecentUser)
   {
     if (paramRecentUser == null) {
       throw new NullPointerException("RecentUser is null");
     }
-    this.a = paramRecentUser;
-    switch (this.a.type)
+    this.mUser = paramRecentUser;
+    switch (this.mUser.getType())
     {
     }
     for (;;)
     {
       e();
-      this.f &= 0xFFFFFF0F;
-      if (this.a.showUpTime != 0L) {
+      this.mMenuFlag &= 0xFFFFFF0F;
+      if (this.mUser.showUpTime != 0L) {
         break;
       }
-      this.f |= 0x10;
+      this.mMenuFlag |= 0x10;
       return;
-      this.f |= 0x1000;
+      this.mMenuFlag |= 0x1000;
       continue;
-      this.f |= 0x2000;
+      this.mMenuFlag |= 0x2000;
     }
-    this.f |= 0x20;
+    this.mMenuFlag |= 0x20;
   }
   
   public int a()
   {
-    return this.a.type;
+    return this.mUser.getType();
   }
   
   public long a()
   {
-    return this.a.lastmsgtime;
+    return this.mUser.lastmsgtime;
   }
   
   public RecentUser a()
   {
-    return this.a;
+    return this.mUser;
   }
   
   public String a()
   {
-    return this.a.uin;
+    return this.mUser.uin;
   }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    this.d = "";
-    this.f &= 0xFFFFFF0F;
-    if ((this.a.type == 1) && (!HotChatUtil.a(paramQQAppInterface, this.a)))
+    this.mMsgExtroInfo = "";
+    this.mMenuFlag &= 0xFFFFFF0F;
+    if ((this.mUser.getType() == 1) && (!ascr.a(paramQQAppInterface, this.mUser)))
     {
-      paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(51);
-      int j = this.f;
-      if (paramQQAppInterface.b(this.a.uin)) {}
+      paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(52);
+      int j = this.mMenuFlag;
+      if (paramQQAppInterface.b(this.mUser.uin)) {}
       for (int i = 32;; i = 16)
       {
-        this.f = (i | j);
+        this.mMenuFlag = (i | j);
         return;
       }
     }
-    if ((this.a.showUpTime == 0L) && (9223372036854775807L - this.a.lastmsgtime > 4L))
+    FriendsStatusUtil.a(paramQQAppInterface, this.mUser);
+    if ((this.mUser.showUpTime == 0L) && (9223372036854775807L - this.mUser.lastmsgtime > 4L))
     {
-      this.f |= 0x10;
+      this.mMenuFlag |= 0x10;
       return;
     }
-    this.f |= 0x20;
+    this.mMenuFlag |= 0x20;
   }
   
   public void a(RecentUser paramRecentUser)
   {
-    this.a = paramRecentUser;
+    this.mUser = paramRecentUser;
   }
   
   public final boolean a()
   {
-    return (this.b == 1) || (this.b == 4);
+    return (this.mUnreadFlag == 1) || (this.mUnreadFlag == 4);
   }
   
   public long b()
   {
-    return this.a.lastmsgdrafttime;
+    return this.mUser.lastmsgdrafttime;
   }
   
   public String c()
   {
-    return this.a.troopUin;
+    return this.mUser.troopUin;
   }
   
   public void e()
   {
-    switch (this.a.type)
+    switch (this.mUser.getType())
     {
     }
     do
     {
       return;
     } while (!a());
-    this.f &= 0xFFF0FFFF;
-    if (this.c != 0)
+    this.mMenuFlag &= 0xFFF0FFFF;
+    if (this.mUnreadNum != 0)
     {
-      this.f |= 0x10000;
+      this.mMenuFlag |= 0x10000;
       return;
     }
-    this.f |= 0x20000;
+    this.mMenuFlag |= 0x20000;
   }
 }
 

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class OlympicTorchSvc$ReqDeliverTorch
-  extends MessageMicro
+  extends MessageMicro<ReqDeliverTorch>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_sig = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -25,7 +25,7 @@ public final class OlympicTorchSvc$ReqDeliverTorch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.olympic.OlympicTorchSvc.ReqDeliverTorch
  * JD-Core Version:    0.7.0.1
  */

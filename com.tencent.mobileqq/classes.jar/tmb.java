@@ -1,27 +1,23 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.support.annotation.NonNull;
+import android.view.MotionEvent;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-public class tmb
-  implements Handler.Callback
+public abstract interface tmb
 {
-  public tmb(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public abstract void a();
   
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.c();
-    }
-  }
+  public abstract void a(CommentEntry paramCommentEntry, int paramInt1, int paramInt2);
+  
+  public abstract void a(@NonNull ucw paramucw, ErrorMessage paramErrorMessage);
+  
+  public abstract boolean a(MotionEvent paramMotionEvent);
+  
+  public abstract void b(CommentEntry paramCommentEntry, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tmb
  * JD-Core Version:    0.7.0.1
  */

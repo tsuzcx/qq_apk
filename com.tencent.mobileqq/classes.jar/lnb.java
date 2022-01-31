@@ -1,29 +1,47 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import android.os.RemoteCallbackList;
+import android.os.RemoteException;
+import com.tencent.av.service.QQServiceForAV;
 import com.tencent.qphone.base.util.QLog;
 
-public final class lnb
-  implements Runnable
+class lnb
+  extends mmn
 {
-  public lnb(QQAppInterface paramQQAppInterface) {}
+  lnb(lna paramlna, String paramString, int paramInt) {}
   
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle arg3)
   {
-    if ((this.a == null) || (!this.a.isLogin())) {}
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceForAVQ.nearby.video_chat", 2, "sendNearbyVideoChatPbReq, cmd " + this.jdField_a_of_type_JavaLangString + "==>onResult, errorCode:" + paramInt);
+    }
+    synchronized (this.jdField_a_of_type_Lna.a.a)
     {
-      do
+      int j = this.jdField_a_of_type_Lna.a.a.beginBroadcast();
+      int i = 0;
+      for (;;)
       {
-        return;
-      } while (!ReadInJoyUtils.i());
-      ReadInJoyUtils.e(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.d("ReadInJoyUtils", 2, "handNet2Wifi is show conversation");
+        if (i < j) {
+          try
+          {
+            ((lmb)this.jdField_a_of_type_Lna.a.a.getBroadcastItem(i)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramInt, paramArrayOfByte);
+            i += 1;
+          }
+          catch (RemoteException paramArrayOfByte)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("QQServiceForAVQ.nearby.video_chat", 2, "callBack RemoteException", paramArrayOfByte);
+            }
+          }
+        }
+      }
+      this.jdField_a_of_type_Lna.a.a.finishBroadcast();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lnb
  * JD-Core Version:    0.7.0.1
  */

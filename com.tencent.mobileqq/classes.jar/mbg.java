@@ -1,25 +1,19 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class mbg
-  implements Runnable
+class mbg
+  implements View.OnClickListener
 {
-  public mbg(KandianOx210MsgInfo paramKandianOx210MsgInfo, QQAppInterface paramQQAppInterface) {}
+  mbg(mbf parammbf) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, false).edit();
-    localEditor.remove("kandian_push_0x210_msg_for_follow");
-    localEditor.remove("kandian_push_0x210_c5_msg_time");
-    ReadInJoyHelper.a(localEditor, true);
+    mbf.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mbg
  * JD-Core Version:    0.7.0.1
  */

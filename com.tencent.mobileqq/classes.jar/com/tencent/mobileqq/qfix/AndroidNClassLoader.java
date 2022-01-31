@@ -23,7 +23,6 @@ public class AndroidNClassLoader
   }
   
   private static AndroidNClassLoader createAndroidNClassLoader(PathClassLoader paramPathClassLoader)
-    throws Exception
   {
     AndroidNClassLoader localAndroidNClassLoader = new AndroidNClassLoader("", paramPathClassLoader);
     paramPathClassLoader = ShareReflectUtil.findField(paramPathClassLoader, "pathList").get(paramPathClassLoader);
@@ -47,7 +46,6 @@ public class AndroidNClassLoader
   }
   
   public static AndroidNClassLoader inject(PathClassLoader paramPathClassLoader, Application paramApplication)
-    throws Exception
   {
     paramPathClassLoader = createAndroidNClassLoader(paramPathClassLoader);
     reflectPackageInfoClassloader(paramApplication, paramPathClassLoader);
@@ -55,7 +53,6 @@ public class AndroidNClassLoader
   }
   
   private static void reflectPackageInfoClassloader(Application paramApplication, ClassLoader paramClassLoader)
-    throws Exception
   {
     paramApplication = (Context)ShareReflectUtil.findField(paramApplication, "mBase").get(paramApplication);
     paramApplication = ShareReflectUtil.findField(paramApplication, "mPackageInfo").get(paramApplication);
@@ -65,7 +62,6 @@ public class AndroidNClassLoader
   }
   
   public Class findClass(String paramString)
-    throws ClassNotFoundException
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;

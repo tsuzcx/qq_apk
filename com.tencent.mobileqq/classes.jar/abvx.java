@@ -1,20 +1,51 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.businessCard.views.BusinessCardViewScroller;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import java.util.List;
+import tencent.im.oidb.cmd0x72d.cmd0x72d.RspBody;
 
 public class abvx
-  implements ValueAnimator.AnimatorUpdateListener
+  extends mmn
 {
-  public abvx(BusinessCardViewScroller paramBusinessCardViewScroller) {}
+  public abvx(TroopAssistantActivity paramTroopAssistantActivity, ariz paramariz) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    this.a.a(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
+    try
+    {
+      this.jdField_a_of_type_Ariz.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.app, 0L);
+      return;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+      return;
+    }
+    paramBundle = new cmd0x72d.RspBody();
+    paramBundle.mergeFrom(paramArrayOfByte);
+    paramArrayOfByte = paramBundle.rpt_uint64_groupcode.get();
+    if (paramBundle.opt_uint32_ret_code.get() == 0)
+    {
+      this.jdField_a_of_type_Ariz.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.app, paramBundle.opt_uint64_timestamp.get());
+      if ((paramArrayOfByte.size() > 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.jdField_a_of_type_Aido != null))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.jdField_a_of_type_JavaUtilList = paramArrayOfByte;
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.jdField_a_of_type_Aido.a(paramArrayOfByte);
+        return;
+      }
+      TroopAssistantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity);
+      return;
+    }
+    this.jdField_a_of_type_Ariz.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.app, 0L);
+    TroopAssistantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abvx
  * JD-Core Version:    0.7.0.1
  */

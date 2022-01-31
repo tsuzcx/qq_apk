@@ -1,25 +1,23 @@
-import android.content.Context;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.automator.step.CleanCache.1;
+import java.io.File;
+import java.util.Comparator;
 
 public class ajxd
-  implements Runnable
+  implements Comparator<File>
 {
-  public ajxd(TroopGagMgr paramTroopGagMgr, boolean paramBoolean, Context paramContext, String paramString, int paramInt) {}
+  public ajxd(CleanCache.1 param1) {}
   
-  public void run()
+  public int a(File paramFile1, File paramFile2)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
-      return;
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
     }
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2130838761, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajxd
  * JD-Core Version:    0.7.0.1
  */

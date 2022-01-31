@@ -3,8 +3,8 @@ package com.tencent.util;
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 
-public class LRULinkedHashMap
-  extends LinkedHashMap
+public class LRULinkedHashMap<K, V>
+  extends LinkedHashMap<K, V>
 {
   private static final long serialVersionUID = 1L;
   private final int maxCapacity;
@@ -15,7 +15,7 @@ public class LRULinkedHashMap
     this.maxCapacity = paramInt;
   }
   
-  protected boolean removeEldestEntry(Map.Entry paramEntry)
+  protected boolean removeEldestEntry(Map.Entry<K, V> paramEntry)
   {
     return size() > this.maxCapacity;
   }

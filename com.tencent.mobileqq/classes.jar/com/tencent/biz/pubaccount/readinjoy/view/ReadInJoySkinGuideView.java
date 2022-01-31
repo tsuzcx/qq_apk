@@ -6,30 +6,28 @@ import android.view.LayoutInflater;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.surfaceviewaction.nv.SpriteNativeView;
 import com.tencent.qphone.base.util.QLog;
-import mmx;
 
 public class ReadInJoySkinGuideView
   extends RelativeLayout
 {
   private int a;
   public MediaPlayer a;
-  public SpriteGLView a;
+  public SpriteNativeView a;
   protected boolean a;
   
-  public ReadInJoySkinGuideView(Context paramContext, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2)
+  public ReadInJoySkinGuideView(int paramInt1, Context paramContext, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt2, View.OnClickListener paramOnClickListener1, View.OnClickListener paramOnClickListener2)
   {
     super(paramContext);
     this.jdField_a_of_type_Int = 2;
-    LayoutInflater.from(getContext()).inflate(2130971508, this);
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView = ((SpriteGLView)findViewById(2131374953));
+    LayoutInflater.from(getContext()).inflate(2131496709, this);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView = ((SpriteNativeView)findViewById(2131310459));
     setClickable(true);
-    if (260 == paramInt) {
+    if (261 == paramInt2) {
       this.jdField_a_of_type_Int = 1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.b = true;
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.post(new mmx(this, paramQQAppInterface, paramString2, paramOnClickListener1, paramString1, paramOnClickListener2, paramContext));
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.post(new ReadInJoySkinGuideView.1(this, paramQQAppInterface, paramString2, paramOnClickListener1, paramString1, paramOnClickListener2, paramContext, paramInt1));
   }
   
   public void a()
@@ -37,7 +35,7 @@ public class ReadInJoySkinGuideView
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.n();
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionNvSpriteNativeView.d();
     }
     if (this.jdField_a_of_type_AndroidMediaMediaPlayer != null) {}
     try

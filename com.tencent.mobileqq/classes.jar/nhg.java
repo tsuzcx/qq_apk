@@ -1,21 +1,22 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.MemoryManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.VidToVideoInfoPuller;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class nhg
-  extends SimpleJob
+class nhg
+  implements ViewBase.OnClickListener
 {
-  public nhg(VidToVideoInfoPuller paramVidToVideoInfoPuller) {}
+  nhg(nhf paramnhf) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onClick(ViewBase paramViewBase)
   {
-    paramJobContext = ((MemoryManager)SuperManager.a(19)).a(this.a.a);
-    this.a.a(paramJobContext);
-    return null;
+    if (paramViewBase.getEventAttachedData() == null)
+    {
+      QLog.e("DailyHeaderViewController", 1, "[onClick] attach event data is null");
+      return;
+    }
+    ngv.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_OrgJsonJSONObject);
+    obz.a(paramViewBase.getNativeView().getContext(), paramViewBase.getEventAttachedData());
   }
 }
 

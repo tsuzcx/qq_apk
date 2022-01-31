@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class ArticleCenter$GetVidByUrlRequest
-  extends MessageMicro
+  extends MessageMicro<GetVidByUrlRequest>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField mv = PBField.initBytes(ByteStringMicro.EMPTY);

@@ -1,49 +1,26 @@
-import com.dataline.util.file.FileUtil;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.jsp.QQComicJsPlugin;
-import java.io.File;
-import java.util.concurrent.atomic.AtomicBoolean;
-import org.json.JSONObject;
-
-public class amrj
-  implements Runnable
+final class amrj<T>
 {
-  public amrj(QQComicJsPlugin paramQQComicJsPlugin) {}
+  public amrj<T> a;
+  public final T a;
+  public amrj<T> b;
   
-  public void run()
+  public amrj()
   {
-    Object localObject = QQComicJsPlugin.a();
-    if (localObject != null)
-    {
-      long l1 = System.currentTimeMillis();
-      FileUtil.a(new File((String)localObject));
-      long l2 = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("QQComicJsPlugin", 2, "clean cache cost " + (l2 - l1) + " ms");
-      }
-    }
-    QQComicJsPlugin.a().set(false);
-    localObject = new JSONObject();
-    try
-    {
-      ((JSONObject)localObject).put("result", 0);
-      ((JSONObject)localObject).put("message", "ok");
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("size", this.a.a());
-      ((JSONObject)localObject).put("data", localJSONObject);
-      label137:
-      this.a.callJs(QQComicJsPlugin.b(), new String[] { ((JSONObject)localObject).toString() });
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label137;
-    }
+    this.jdField_a_of_type_JavaLangObject = null;
+    this.jdField_a_of_type_Amrj = this;
+    this.b = this;
+  }
+  
+  public amrj(T paramT, amrj<T> paramamrj1, amrj<T> paramamrj2)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramT;
+    this.jdField_a_of_type_Amrj = paramamrj1;
+    this.b = paramamrj2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amrj
  * JD-Core Version:    0.7.0.1
  */

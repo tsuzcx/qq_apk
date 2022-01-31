@@ -1,16 +1,23 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
 
 public class nsn
-  implements AudioManager.OnAudioFocusChangeListener
+  implements View.OnClickListener
 {
-  public nsn(StoryPlayVideoActivity paramStoryPlayVideoActivity) {}
+  public nsn(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  public void onAudioFocusChange(int paramInt)
+  public void onClick(View paramView)
   {
-    if (((paramInt == -1) || (paramInt == -2) || (paramInt == -3)) && (this.a.isResume())) {
-      this.a.e();
+    if ((ReadInJoyDeliverBiuActivity.c(this.a)) && ((!ReadInJoyDeliverBiuActivity.d(this.a)) || (ReadInJoyDeliverBiuActivity.k(this.a) != -1)))
+    {
+      this.a.d(ReadInJoyDeliverBiuActivity.l(this.a));
+      return;
     }
+    ndn.a(null, "", "0X8008661", "0X8008661", 0, 0, ReadInJoyDeliverBiuActivity.l(this.a) + "", "", "", ReadInJoyBaseDeliverActivity.a(), false);
+    this.a.finish();
+    ReadInJoyDeliverBiuActivity.a(this.a, false);
   }
 }
 

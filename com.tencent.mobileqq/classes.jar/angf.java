@@ -1,18 +1,10 @@
-import cooperation.qzone.report.lp.LpReportManager;
-
-public class angf
-  implements Runnable
+class angf
 {
-  public angf(LpReportManager paramLpReportManager, int paramInt) {}
-  
-  public void run()
-  {
-    LpReportManager.access$200(this.jdField_a_of_type_CooperationQzoneReportLpLpReportManager, this.jdField_a_of_type_Int);
-  }
+  private static final angd a = new angd();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     angf
  * JD-Core Version:    0.7.0.1
  */

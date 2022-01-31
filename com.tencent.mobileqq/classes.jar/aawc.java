@@ -1,31 +1,31 @@
-import android.content.Intent;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
 public class aawc
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aawc(ArkAppModuleReg.ModuleQQ paramModuleQQ, String paramString1, String paramString2) {}
+  public aawc(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if (localBaseActivity != null)
+    if (paramView.getId() == 2131299411)
     {
-      Intent localIntent = ArkFullScreenAppActivity.a(localBaseActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ.jdField_a_of_type_JavaLangString, this.b, localBaseActivity.getResources().getDisplayMetrics().scaledDensity);
-      if (localIntent != null) {
-        ForwardBaseOption.a(localBaseActivity, localIntent);
+      paramView = this.a.jdField_a_of_type_Aawn.a();
+      if ((!this.a.b) && (this.a.jdField_a_of_type_Boolean) && (paramView != null))
+      {
+        begr localbegr = (begr)behe.a(this.a, null);
+        localbegr.a(2131627739, 3);
+        localbegr.c(2131625035);
+        localbegr.a(new aawd(this, paramView, localbegr));
+        localbegr.show();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aawc
  * JD-Core Version:    0.7.0.1
  */

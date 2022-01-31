@@ -1,21 +1,27 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class mwk
-  implements Runnable
+  implements begw
 {
-  public mwk(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  public mwk(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    WebProcessManager localWebProcessManager = (WebProcessManager)this.a.app.getManager(12);
-    if (localWebProcessManager != null) {
-      localWebProcessManager.a(1);
+    if (this.a.o) {
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("SubscriptFeedsActivity", 2, "enter folder preload web process");
+    this.a.o = true;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.a.a.dismiss();
+      return;
+      this.a.q();
+      continue;
+      this.a.E();
     }
   }
 }

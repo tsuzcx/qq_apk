@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import android.support.annotation.UiThread;
 
-class tju
-  implements Runnable
+public abstract interface tju
 {
-  tju(tjt paramtjt, String paramString) {}
+  @UiThread
+  public abstract void a();
   
-  public void run()
-  {
-    PermisionPrivacyActivity.a(this.jdField_a_of_type_Tjt.a).setRightText(this.jdField_a_of_type_JavaLangString);
-    PermisionPrivacyActivity.a(this.jdField_a_of_type_Tjt.a).setContentDescription("不常联系好友 " + this.jdField_a_of_type_JavaLangString);
-  }
+  @UiThread
+  public abstract void a(tjs paramtjs, String paramString, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tju
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment.5.1;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class affl
-  implements View.OnClickListener
+  implements ThreadExcutor.IThreadListener
 {
-  public affl(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public affl(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void onClick(View paramView)
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    this.a.g(paramView);
+    ThreadManager.getUIHandler().post(new PublicAccountFragment.5.1(this));
   }
+  
+  public void onPreRun() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     affl
  * JD-Core Version:    0.7.0.1
  */

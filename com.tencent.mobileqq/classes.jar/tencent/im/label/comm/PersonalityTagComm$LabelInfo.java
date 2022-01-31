@@ -11,12 +11,12 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class PersonalityTagComm$LabelInfo
-  extends MessageMicro
+  extends MessageMicro<LabelInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_photo_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_last_praise_uins_info = PBField.initRepeatMessage(PersonalityTagComm.PraiseUserInfo.class);
-  public final PBRepeatMessageField rpt_msg_photo = PBField.initRepeatMessage(PersonalityTagComm.LabelPhoto.class);
+  public final PBRepeatMessageField<PersonalityTagComm.PraiseUserInfo> rpt_last_praise_uins_info = PBField.initRepeatMessage(PersonalityTagComm.PraiseUserInfo.class);
+  public final PBRepeatMessageField<PersonalityTagComm.LabelPhoto> rpt_msg_photo = PBField.initRepeatMessage(PersonalityTagComm.LabelPhoto.class);
   public final PBStringField str_bg_color = PBField.initString("");
   public final PBStringField str_cover_photo_url = PBField.initString("");
   public final PBStringField str_fg_color = PBField.initString("");
@@ -38,7 +38,7 @@ public final class PersonalityTagComm$LabelInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.label.comm.PersonalityTagComm.LabelInfo
  * JD-Core Version:    0.7.0.1
  */

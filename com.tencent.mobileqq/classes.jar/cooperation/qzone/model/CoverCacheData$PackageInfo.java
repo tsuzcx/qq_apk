@@ -1,14 +1,14 @@
 package cooperation.qzone.model;
 
-import anbw;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bfvz;
 
 public class CoverCacheData$PackageInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new anbw();
+  public static final Parcelable.Creator<PackageInfo> CREATOR = new bfvz();
   public int a;
   public String a;
   public int b;

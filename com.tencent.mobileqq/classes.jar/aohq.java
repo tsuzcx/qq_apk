@@ -1,19 +1,13 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class aohq
-  implements Runnable
+class aohq
+  implements ajaq
 {
-  public aohq(DoodleLayout paramDoodleLayout, FaceLayer.FaceItem paramFaceItem) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.b(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerFaceLayer$FaceItem);
-  }
+  aohq(aohk paramaohk, FileManagerEntity paramFileManagerEntity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aohq
  * JD-Core Version:    0.7.0.1
  */

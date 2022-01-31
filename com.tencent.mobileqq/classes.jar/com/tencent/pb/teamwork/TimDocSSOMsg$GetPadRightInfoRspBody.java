@@ -9,12 +9,12 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class TimDocSSOMsg$GetPadRightInfoRspBody
-  extends MessageMicro
+  extends MessageMicro<GetPadRightInfoRspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_localpadid = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_pad_url = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_msg_uin_right_info = PBField.initRepeatMessage(TimDocSSOMsg.UinRightInfo.class);
+  public final PBRepeatMessageField<TimDocSSOMsg.UinRightInfo> rpt_msg_uin_right_info = PBField.initRepeatMessage(TimDocSSOMsg.UinRightInfo.class);
   public final PBUInt32Field uint32_domainid = PBField.initUInt32(0);
   public final PBUInt32Field uint32_pad_right = PBField.initUInt32(0);
   public final PBUInt32Field uint32_retcode = PBField.initUInt32(0);
@@ -28,7 +28,7 @@ public final class TimDocSSOMsg$GetPadRightInfoRspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.teamwork.TimDocSSOMsg.GetPadRightInfoRspBody
  * JD-Core Version:    0.7.0.1
  */

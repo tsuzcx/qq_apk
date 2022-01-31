@@ -1,34 +1,74 @@
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationAdapter.ChannelButtonListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.gaudio.GaInviteActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ldj
-  implements ReadInJoyNavigationAdapter.ChannelButtonListener
+  extends kur
 {
-  private WeakReference a;
+  public ldj(GaInviteActivity paramGaInviteActivity) {}
   
-  public ldj(ReadInJoyNaviController paramReadInJoyNaviController)
+  protected void a()
   {
-    this.a = new WeakReference(paramReadInJoyNaviController);
+    super.a();
+    if (this.a.jdField_a_of_type_Boolean) {
+      this.a.a("onServiceConnected");
+    }
   }
   
-  public void a(ChannelCoverInfo paramChannelCoverInfo)
+  protected void a(long paramLong, int paramInt)
   {
-    ReadInJoyNaviController localReadInJoyNaviController = (ReadInJoyNaviController)this.a.get();
-    if (((localReadInJoyNaviController == null) || (ReadInJoyNaviController.a(localReadInJoyNaviController).a())) && (QLog.isColorLevel()))
-    {
-      QLog.d("ReadInJoyNaviController", 2, "ChannelButtonListenerImpl. ReadInJoyNavigationGridview has destoryed");
-      return;
+    if ((this.a.jdField_a_of_type_Long == paramLong) || (0L == paramLong)) {
+      this.a.f();
     }
-    localReadInJoyNaviController.a(paramChannelCoverInfo);
+  }
+  
+  protected void a(long paramLong, String paramString)
+  {
+    if ((this.a.jdField_a_of_type_Long == paramLong) && (this.a.c.equals(paramString))) {
+      this.a.finish();
+    }
+  }
+  
+  protected void a(long paramLong, ArrayList<kth> paramArrayList, int paramInt1, int paramInt2)
+  {
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext()) {
+      if (String.valueOf(((kth)paramArrayList.next()).jdField_a_of_type_Long).equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAccount())) {
+        this.a.finish();
+      }
+    }
+  }
+  
+  protected void b(long paramLong1, long paramLong2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_b_of_type_JavaLangString + ".troopgroup_vedio.invite", 2, "groupId:" + paramLong1 + ", memUin:" + paramLong2 + ",invitedId:" + paramString + ", mInviterUin:" + this.a.jdField_b_of_type_Long + ", mGroupId:" + this.a.jdField_a_of_type_Long);
+    }
+    if ((paramLong2 == this.a.jdField_b_of_type_Long) && (paramLong1 == this.a.jdField_a_of_type_Long)) {
+      this.a.finish();
+    }
+  }
+  
+  protected void e(long paramLong)
+  {
+    if (this.a.jdField_a_of_type_Long != paramLong) {
+      this.a.a(-1035L);
+    }
+    this.a.finish();
+  }
+  
+  protected void f(long paramLong)
+  {
+    if (this.a.jdField_a_of_type_Long == paramLong) {
+      this.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ldj
  * JD-Core Version:    0.7.0.1
  */

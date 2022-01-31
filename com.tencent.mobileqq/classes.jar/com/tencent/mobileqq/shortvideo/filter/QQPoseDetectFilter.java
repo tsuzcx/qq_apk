@@ -4,166 +4,167 @@ import android.opengl.Matrix;
 import android.os.Build.VERSION;
 import com.tencent.mobileqq.qmcf.QmcfManager;
 import com.tencent.mobileqq.qmcf.processor.PoseDetectProcessor;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.TextureRender;
 import com.tencent.mobileqq.shortvideo.dancemachine.tempDir.HumanPoseFilter;
 import com.tencent.sveffects.SLog;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import com.tencent.ttpic.openapi.filter.TextureRender;
 
 public class QQPoseDetectFilter
   extends QQBaseFilter
 {
-  private PoseDetectProcessor jdField_a_of_type_ComTencentMobileqqQmcfProcessorPoseDetectProcessor = null;
-  private RenderBuffer jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer;
-  private TextureRender jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender;
-  private HumanPoseFilter jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineTempDirHumanPoseFilter = new HumanPoseFilter(this.h, this.i);
-  private boolean jdField_a_of_type_Boolean = false;
-  float[] jdField_a_of_type_ArrayOfFloat = new float[16];
-  private RenderBuffer b;
-  private RenderBuffer c;
-  private int e;
-  private int f;
-  private int g;
-  private int h = 144;
-  private int i = 256;
+  public static final String TAG = "QQPoseDetectFilter";
+  float[] inMvpMatrix = new float[16];
+  private int initHeight = 256;
+  private int initWidth = 144;
+  private HumanPoseFilter mHumanFilter = new HumanPoseFilter(this.initWidth, this.initHeight);
+  private PoseDetectProcessor mProcessor = null;
+  private RenderBuffer mRenderInFBO;
+  private RenderBuffer mRenderOutFBO;
+  private RenderBuffer mRenderTmp;
+  private int scaleTexture;
+  private boolean shouldInitTexture = false;
+  private int surfaceHeight;
+  private int surfaceWidth;
+  private TextureRender textureRender;
   
   public QQPoseDetectFilter(int paramInt, QQFilterRenderManager paramQQFilterRenderManager)
   {
     super(paramInt, paramQQFilterRenderManager);
-    QmcfManager.a().b(0);
-    this.jdField_a_of_type_ComTencentMobileqqQmcfProcessorPoseDetectProcessor = new PoseDetectProcessor(this.h, this.i);
+    QmcfManager.getInstance().setCurrQmcfMode(0);
+    this.mProcessor = new PoseDetectProcessor(this.initWidth, this.initHeight);
   }
   
-  private void a()
+  private void initTexture()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.d();
+    if (this.mRenderInFBO != null) {
+      this.mRenderInFBO.destroy();
     }
-    if (this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer != null) {
-      this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.d();
+    if (this.mRenderOutFBO != null) {
+      this.mRenderOutFBO.destroy();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender.a();
+    if (this.textureRender != null) {
+      this.textureRender.release();
     }
-    if (this.c != null) {
-      this.c.d();
+    if (this.mRenderTmp != null) {
+      this.mRenderTmp.destroy();
     }
-    int j = this.jdField_a_of_type_ComTencentMobileqqQmcfProcessorPoseDetectProcessor.b();
-    int k = this.jdField_a_of_type_ComTencentMobileqqQmcfProcessorPoseDetectProcessor.a();
+    int i = this.mProcessor.getInputHeight();
+    int j = this.mProcessor.getInputWidth();
     if (Build.VERSION.SDK_INT >= 21) {}
     for (boolean bool = true;; bool = false)
     {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer = new RenderBuffer(j, k, 33984, bool);
-      this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer = new RenderBuffer(this.e, this.f, 33984);
-      this.c = new RenderBuffer(this.e, this.f);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineTempDirHumanPoseFilter.a(this.c);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender = new TextureRender();
+      this.mRenderInFBO = new RenderBuffer(i, j, 33984, bool);
+      this.mRenderOutFBO = new RenderBuffer(this.surfaceWidth, this.surfaceHeight, 33984);
+      this.mRenderTmp = new RenderBuffer(this.surfaceWidth, this.surfaceHeight);
+      this.mHumanFilter.updateFboSize(this.mRenderTmp);
+      this.textureRender = new TextureRender();
       return;
     }
   }
   
-  public int a()
+  public float[] getKeyPoints()
   {
-    return this.h;
+    return this.mProcessor.getKeyPoints();
   }
   
-  public float[] a()
+  public int getPoseInitHeight()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqQmcfProcessorPoseDetectProcessor.a();
+    return this.initHeight;
   }
   
-  public void b(int paramInt1, int paramInt2)
+  public int getPoseInitWidth()
   {
-    if (SLog.a()) {
-      SLog.d("QQPoseDetectFilter", "onSurfaceChange");
-    }
-    this.e = paramInt1;
-    this.f = paramInt2;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqQmcfProcessorPoseDetectProcessor.a();
-    if ((this.e > 0) && (this.f > 0) && (QmcfManager.a().b() != 1))
-    {
-      this.h = (this.i * this.e / this.f);
-      if (this.h < 144) {
-        this.h = 144;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqQmcfProcessorPoseDetectProcessor.a(this.h, this.i);
-      if (QmcfManager.d) {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineTempDirHumanPoseFilter.a(this.h, this.i);
-      }
-    }
+    return this.initWidth;
   }
   
-  public void d()
+  public boolean isFilterWork()
   {
-    if (SLog.a()) {
-      SLog.d("QQPoseDetectFilter", "onSurfaceCreate");
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineTempDirHumanPoseFilter.a();
+    return QmcfManager.getInstance().getCurrQmcfMode() == 2;
   }
   
-  public int e()
-  {
-    return this.i;
-  }
-  
-  public void e()
-  {
-    super.e();
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqQmcfProcessorPoseDetectProcessor.a();
-    QmcfManager.a().a();
-    if (SLog.a()) {
-      SLog.d("QQPoseDetectFilter", "onSurfaceDestroy");
-    }
-  }
-  
-  public boolean f_()
-  {
-    return QmcfManager.a().a() == 2;
-  }
-  
-  public void h()
+  public void onDrawFrame()
   {
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqQmcfProcessorPoseDetectProcessor.b();
-      if (this.jdField_a_of_type_Boolean)
+      this.mProcessor.doInit();
+      if (this.shouldInitTexture)
       {
-        a();
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
+        initTexture();
+        this.shouldInitTexture = false;
+        this.mOutputTextureID = this.mInputTextureID;
         return;
       }
-      Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
-      Matrix.setRotateM(this.jdField_a_of_type_ArrayOfFloat, 0, 180.0F, 1.0F, 0.0F, 0.0F);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.b();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender.a(3553, this.jdField_a_of_type_Int, QmcfManager.a().jdField_a_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfFloat);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.c();
-      this.g = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.a();
-      this.jdField_a_of_type_ComTencentMobileqqQmcfProcessorPoseDetectProcessor.b(this.g, this.jdField_b_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.a());
-      if ((QmcfManager.d) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineTempDirHumanPoseFilter != null))
+      Matrix.setIdentityM(this.inMvpMatrix, 0);
+      Matrix.setRotateM(this.inMvpMatrix, 0, 180.0F, 1.0F, 0.0F, 0.0F);
+      this.mRenderInFBO.bind();
+      this.textureRender.drawTexture(3553, this.mInputTextureID, QmcfManager.getInstance().mSTMatrix, this.inMvpMatrix);
+      this.mRenderInFBO.unbind();
+      this.scaleTexture = this.mRenderInFBO.getTexId();
+      this.mProcessor.doProcess(this.scaleTexture, this.mRenderOutFBO.getTexId());
+      if ((QmcfManager.isDebugMode) && (this.mHumanFilter != null))
       {
-        this.c.a(this.jdField_a_of_type_Int);
-        this.c.b();
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineTempDirHumanPoseFilter.a(this.c, this.jdField_a_of_type_ComTencentMobileqqQmcfProcessorPoseDetectProcessor.a());
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineTempDirHumanPoseFilter.b(this.c);
+        this.mRenderTmp.setUserTextureId(this.mInputTextureID);
+        this.mRenderTmp.bind();
+        this.mHumanFilter.updateParams(this.mRenderTmp, this.mProcessor.getKeyPoints());
+        this.mHumanFilter.drawFrame(this.mRenderTmp);
       }
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
+      this.mOutputTextureID = this.mInputTextureID;
       return;
     }
     catch (Exception localException)
     {
-      QmcfManager.a().a(false, false, 2);
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-      SLog.a("QQPoseDetectFilter", "process excep!", localException);
+      QmcfManager.getInstance().setQmcfRunSupported(false, false, 2);
+      this.mOutputTextureID = this.mInputTextureID;
+      SLog.e("QQPoseDetectFilter", "process excep!", localException);
       return;
     }
     catch (Error localError)
     {
-      QmcfManager.a().a(false, false, 2);
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-      SLog.a("QQPoseDetectFilter", "process excep!", localError);
+      QmcfManager.getInstance().setQmcfRunSupported(false, false, 2);
+      this.mOutputTextureID = this.mInputTextureID;
+      SLog.e("QQPoseDetectFilter", "process excep!", localError);
+    }
+  }
+  
+  public void onSurfaceChange(int paramInt1, int paramInt2)
+  {
+    if (SLog.isEnable()) {
+      SLog.d("QQPoseDetectFilter", "onSurfaceChange");
+    }
+    this.surfaceWidth = paramInt1;
+    this.surfaceHeight = paramInt2;
+    this.shouldInitTexture = true;
+    this.mProcessor.doDestroy();
+    if ((this.surfaceWidth > 0) && (this.surfaceHeight > 0) && (QmcfManager.getInstance().getCurrFrameType() != 1))
+    {
+      this.initWidth = (this.initHeight * this.surfaceWidth / this.surfaceHeight);
+      if (this.initWidth < 144) {
+        this.initWidth = 144;
+      }
+      this.mProcessor.setInputSize(this.initWidth, this.initHeight);
+      if (QmcfManager.isDebugMode) {
+        this.mHumanFilter.updatePoseSize(this.initWidth, this.initHeight);
+      }
+    }
+  }
+  
+  public void onSurfaceCreate()
+  {
+    if (SLog.isEnable()) {
+      SLog.d("QQPoseDetectFilter", "onSurfaceCreate");
+    }
+    this.shouldInitTexture = true;
+    this.mHumanFilter.initHumanFilter();
+  }
+  
+  public void onSurfaceDestroy()
+  {
+    super.onSurfaceDestroy();
+    this.shouldInitTexture = true;
+    this.mProcessor.doDestroy();
+    QmcfManager.getInstance().destroy();
+    if (SLog.isEnable()) {
+      SLog.d("QQPoseDetectFilter", "onSurfaceDestroy");
     }
   }
 }

@@ -1,40 +1,21 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.drawer.ApolloDrawerContext;
-import com.tencent.mobileqq.apollo.script.callback.ISpriteDrawerInfoCallback;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
 public class trc
-  implements ISpriteDrawerInfoCallback
+  implements tss
 {
-  public trc(QQSettingMe paramQQSettingMe) {}
+  public trc(TextureVideoView paramTextureVideoView) {}
   
-  public void a()
+  public boolean a_(tso paramtso, int paramInt1, int paramInt2)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext == null) {}
-    while (this.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext.a(QQSettingMe.a(this.a), this.a.c, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity) != 0) {
-      return;
+    if (this.a.a != null) {
+      this.a.a.a_(paramtso, paramInt1, paramInt2);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext.a(QQSettingMe.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.c);
-  }
-  
-  public void a(int paramInt1, int paramInt2, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, new Object[] { "[onApolloClick] ", "apolloStatus:", Integer.valueOf(paramInt1), ",clickPart:", Integer.valueOf(paramInt2), ",apolloId:", paramString });
-    }
-    if (paramInt1 == 0)
-    {
-      this.a.L();
-      return;
-    }
-    ThreadManager.getUIHandler().post(new trd(this, paramInt2, paramString));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     trc
  * JD-Core Version:    0.7.0.1
  */

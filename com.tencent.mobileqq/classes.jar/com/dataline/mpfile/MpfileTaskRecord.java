@@ -1,6 +1,7 @@
 package com.dataline.mpfile;
 
-import com.tencent.mobileqq.app.AppConstants;
+import ajed;
+import atmo;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.persistence.ConflictClause;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
@@ -22,7 +23,7 @@ public class MpfileTaskRecord
   
   public MpfileTaskRecord()
   {
-    this.selfuin = String.valueOf(AppConstants.y);
+    this.selfuin = String.valueOf(ajed.z);
     this.frienduin = this.selfuin;
     this.senderuin = this.selfuin;
     this.istroop = 6000;
@@ -53,7 +54,7 @@ public class MpfileTaskRecord
     prewrite();
   }
   
-  protected Class getClassForTable()
+  public Class<? extends atmo> getClassForTable()
   {
     return MpfileTaskRecord.class;
   }
@@ -63,13 +64,13 @@ public class MpfileTaskRecord
     return "mr_dataline_mpfile";
   }
   
-  protected void postRead() {}
+  public void postRead() {}
   
-  protected void prewrite() {}
+  public void prewrite() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.dataline.mpfile.MpfileTaskRecord
  * JD-Core Version:    0.7.0.1
  */

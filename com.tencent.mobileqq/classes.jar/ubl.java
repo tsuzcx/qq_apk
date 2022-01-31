@@ -1,29 +1,30 @@
-import com.tencent.av.gaudio.AVObserver;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class ubl
-  extends AVObserver
+public abstract interface ubl
 {
-  public ubl(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public abstract View a();
   
-  protected void a(int paramInt, long paramLong)
-  {
-    this.a.c();
-  }
+  public abstract ImageView a();
   
-  protected void a(int paramInt, long paramLong1, long paramLong2)
-  {
-    this.a.c();
-  }
+  public abstract TextView a();
   
-  protected void b(int paramInt, long paramLong)
-  {
-    this.a.c();
-  }
+  public abstract void a();
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void b();
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ubl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,25 @@
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.ConversationFacade;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.ark.setting.ArkAppListActivity;
+import java.util.ArrayList;
 
 public class zzk
-  implements Runnable
+  implements View.OnClickListener
 {
-  public zzk(ConversationFacade paramConversationFacade) {}
+  public zzk(AssistantSettingActivity paramAssistantSettingActivity, ArrayList paramArrayList) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.b(AppConstants.G, 1001);
-    this.a.b(AppConstants.v, 1009);
-    this.a.b(AppConstants.X, 1010);
-    this.a.b(AppConstants.aF, 1032);
-    ConversationFacade.a(this.a).a().a(8023, true, null);
+    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity, ArkAppListActivity.class);
+    paramView.putExtra("intent_extra_authority_app_list", (String[])this.jdField_a_of_type_JavaUtilArrayList.toArray(new String[this.jdField_a_of_type_JavaUtilArrayList.size()]));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zzk
  * JD-Core Version:    0.7.0.1
  */

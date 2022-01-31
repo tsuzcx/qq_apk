@@ -1,29 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qlink.QQProxyForQlink;
-import cooperation.qlink.QlAndQQInterface.WorkState;
-import java.util.TimerTask;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class amuw
-  extends TimerTask
+class amuw
+  implements DialogInterface.OnClickListener
 {
-  public amuw(QQProxyForQlink paramQQProxyForQlink) {}
+  amuw(amuu paramamuu) {}
   
-  public void run()
-  {
-    QQProxyForQlink.a(this.a);
-    if (QQProxyForQlink.b(this.a) > 1)
-    {
-      QLog.e("QQProxyForQlink", 1, "[QLINK]-QQ qlink pulgin is dead:");
-      QQProxyForQlink.a(this.a, new QlAndQQInterface.WorkState(false, 1, null, null, 0, 0, false));
-      QQProxyForQlink.c(this.a);
-      return;
-    }
-    this.a.e();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amuw
  * JD-Core Version:    0.7.0.1
  */

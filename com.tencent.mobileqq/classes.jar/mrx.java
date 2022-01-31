@@ -1,58 +1,41 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebShareUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import java.io.IOException;
-import java.util.Map;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
+import com.tencent.mobileqq.data.LebaPluginInfo;
 
 public class mrx
-  implements Runnable
+  extends Handler
 {
-  public mrx(FastWebShareUtils paramFastWebShareUtils, String paramString, Map paramMap, AppInterface paramAppInterface, Runnable paramRunnable) {}
+  public mrx(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    label142:
-    try
+    StringBuilder localStringBuilder = new StringBuilder();
+    switch (paramMessage.what)
     {
-      localObject = HttpUtil.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
-      if (localObject == null) {
-        break label120;
-      }
-      localObject = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
-      if (localObject == null) {
-        break label120;
-      }
-      int i = ((Bitmap)localObject).getWidth();
-      int j = ((Bitmap)localObject).getHeight();
-      if (i * j <= 8000) {
-        break label142;
-      }
-      double d = Math.sqrt(8000.0D / (i * j));
-      Bitmap localBitmap = Bitmap.createScaledBitmap((Bitmap)localObject, (int)(i * d), (int)(j * d), true);
-      ((Bitmap)localObject).recycle();
-      localObject = localBitmap;
+    case -1: 
+    default: 
+      return;
+    case 0: 
+      this.a.a.jdField_a_of_type_Byte = 0;
+      LebaSearchPluginManagerActivity.a(this.a);
+      localStringBuilder.append(this.a.getString(2131630582));
+      localStringBuilder.append(this.a.getString(2131630580));
+      localStringBuilder.append(this.a.a.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName);
+      bbmy.a(this.a, 2, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
+      return;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      Object localObject;
-      break label120;
-    }
-    catch (IOException localIOException)
-    {
-      label120:
-      for (;;) {}
-    }
-    this.jdField_a_of_type_JavaUtilMap.put("image", localObject);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
+    this.a.a.jdField_a_of_type_Byte = 1;
+    LebaSearchPluginManagerActivity.a(this.a);
+    localStringBuilder.append(this.a.getString(2131630582));
+    localStringBuilder.append(this.a.getString(2131630576));
+    localStringBuilder.append(this.a.a.jdField_a_of_type_ComTencentMobileqqDataLebaPluginInfo.strResName);
+    bbmy.a(this.a, 2, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     mrx
  * JD-Core Version:    0.7.0.1
  */

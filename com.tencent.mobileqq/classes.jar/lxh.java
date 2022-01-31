@@ -1,27 +1,34 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeGalleryBiu;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.QavOperationMenuView;
 
 public class lxh
-  implements View.OnTouchListener
+  implements lrj
 {
-  public lxh(FeedItemCellTypeGalleryBiu paramFeedItemCellTypeGalleryBiu, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2) {}
+  public lxh(QavOperationMenuView paramQavOperationMenuView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    if (paramMotionEvent.getAction() == 0)
+    switch (paramInt1)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
-      this.b.setDuplicateParentStateEnabled(true);
+    case 1: 
+    default: 
+    case 2: 
+      do
+      {
+        return;
+      } while (this.a.a == null);
+      this.a.a.a(paramString, paramInt2, false);
+      return;
     }
-    return false;
+    if (this.a.a != null) {
+      this.a.a.a(paramString, paramInt2, true);
+    }
+    mga.c(2131306686);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lxh
  * JD-Core Version:    0.7.0.1
  */

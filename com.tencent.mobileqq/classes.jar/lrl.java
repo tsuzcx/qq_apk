@@ -1,28 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.magic.ReadInJoyWatcher;
-import com.tencent.biz.pubaccount.readinjoy.magic.models.AndroidAPs;
-import com.tencent.biz.pubaccount.readinjoy.struct.MagicEvent;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.SeekBar;
+import com.tencent.av.ui.BeautyToolbar;
 
 public class lrl
-  implements Runnable
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public lrl(ReadInJoyWatcher paramReadInJoyWatcher) {}
+  public lrl(BeautyToolbar paramBeautyToolbar) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    if (ReadInJoyWatcher.a(this.a) != null)
+    if ((this.a.mIs1stShow) && (this.a.mSeek != null) && (this.a.mSeek.getWidth() > 0))
     {
-      ReadInJoyWatcher.a(this.a, new MagicEvent(false, ReadInJoyWatcher.a(this.a).a(), NetConnInfoCenter.getServerTime()));
-      ReadInJoyWatcher.a(this.a, null);
-      ReadInJoyLogicEngine.a().p();
-      this.a.a();
+      this.a.mIs1stShow = false;
+      this.a.updateTip(this.a.mSeek.getProgress());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lrl
  * JD-Core Version:    0.7.0.1
  */

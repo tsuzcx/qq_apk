@@ -1,48 +1,86 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.highway.config.HwServlet;
-import com.tencent.mobileqq.highway.openup.SessionInfo;
-import com.tencent.mobileqq.transfile.StoryUploadProcessor;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-public final class aiwz
-  implements Runnable
+class aiwz
+  implements aixe
 {
-  public void run()
+  aiwz(aiws paramaiws) {}
+  
+  public void a()
   {
-    byte[] arrayOfByte2 = null;
-    String str = QQStoryContext.a().a();
-    for (;;)
+    QLog.e("AVEngineWalper", 1, "onExitRoomComplete");
+    if (this.a.jdField_a_of_type_Bdby != null) {
+      this.a.jdField_a_of_type_Bdby.a();
+    }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    QLog.e("AVEngineWalper", 1, "onRoomDisconnect   result=" + paramInt + ", errinfo=" + paramString);
+    if (this.a.jdField_a_of_type_Bdby != null) {
+      this.a.jdField_a_of_type_Bdby.c(paramInt, paramString);
+    }
+  }
+  
+  public void a(int paramInt, String[] paramArrayOfString)
+  {
+    int k = paramArrayOfString.length;
+    int j = 0;
+    String str;
+    if (j < k)
     {
-      try
+      str = paramArrayOfString[j];
+      QLog.i("AVEngineWalper", 1, String.format("onEndpointsUpdateInfo|eventid=%d, id=%s", new Object[] { Integer.valueOf(paramInt), str }));
+      if (!this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
+        break label237;
+      }
+    }
+    label237:
+    for (int i = ((Integer)this.a.jdField_a_of_type_JavaUtilMap.get(str)).intValue();; i = 0)
+    {
+      switch (paramInt)
       {
-        if (SessionInfo.getInstance(str).getHttpconn_sig_session() != null)
-        {
-          int i = SessionInfo.getInstance(str).getHttpconn_sig_session().length;
-          byte[] arrayOfByte1 = new byte[i];
-          System.arraycopy(SessionInfo.getInstance(str).getHttpconn_sig_session(), 0, arrayOfByte1, 0, i);
-          if (SessionInfo.getInstance(str).getSessionKey() != null)
-          {
-            i = SessionInfo.getInstance(str).getSessionKey().length;
-            arrayOfByte2 = new byte[i];
-            System.arraycopy(SessionInfo.getInstance(str).getSessionKey(), 0, arrayOfByte2, 0, i);
-          }
-          if ((arrayOfByte1 == null) || (arrayOfByte1.length == 0) || (arrayOfByte2 == null) || (arrayOfByte2.length == 0))
-          {
-            QQStoryContext.a();
-            HwServlet.getConfig(QQStoryContext.a(), str);
-            SLog.d(StoryUploadProcessor.a, "pull session key");
-          }
-          return;
+      default: 
+        label116:
+        if (i != 0) {
+          this.a.jdField_a_of_type_JavaUtilMap.put(str, Integer.valueOf(i));
+        }
+        break;
+      }
+      for (;;)
+      {
+        j += 1;
+        break;
+        i |= 0x20;
+        break label116;
+        i &= 0xFFFFFFDF;
+        break label116;
+        i |= 0x1;
+        break label116;
+        i &= 0xFFFFFFFE;
+        break label116;
+        if (this.a.jdField_a_of_type_JavaUtilMap.containsKey(str)) {
+          this.a.jdField_a_of_type_JavaUtilMap.remove(str);
         }
       }
-      finally {}
-      Object localObject2 = null;
+      if (this.a.jdField_a_of_type_Bdby != null) {
+        this.a.jdField_a_of_type_Bdby.a(paramInt, paramArrayOfString);
+      }
+      return;
+    }
+  }
+  
+  public void a(String[] paramArrayOfString)
+  {
+    QLog.e("AVEngineWalper", 1, "onSemiAutoRecvCameraVideo");
+    if (this.a.jdField_a_of_type_Bdby != null) {
+      this.a.jdField_a_of_type_Bdby.a(paramArrayOfString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiwz
  * JD-Core Version:    0.7.0.1
  */

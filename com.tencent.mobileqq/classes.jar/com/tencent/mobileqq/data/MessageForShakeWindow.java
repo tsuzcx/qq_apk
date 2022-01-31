@@ -40,12 +40,12 @@ public class MessageForShakeWindow
     return false;
   }
   
-  protected void postRead()
+  public void postRead()
   {
     parse();
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     if (this.mShakeWindowMsg != null) {}
     try

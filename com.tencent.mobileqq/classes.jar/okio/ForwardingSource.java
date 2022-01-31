@@ -1,7 +1,5 @@
 package okio;
 
-import java.io.IOException;
-
 public abstract class ForwardingSource
   implements Source
 {
@@ -16,7 +14,6 @@ public abstract class ForwardingSource
   }
   
   public void close()
-    throws IOException
   {
     this.delegate.close();
   }
@@ -27,7 +24,6 @@ public abstract class ForwardingSource
   }
   
   public long read(Buffer paramBuffer, long paramLong)
-    throws IOException
   {
     return this.delegate.read(paramBuffer, paramLong);
   }

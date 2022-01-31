@@ -1,28 +1,48 @@
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
-import cooperation.weiyun.sdk.download.WyDownloader;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Message;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class anqd
-  implements ThreadPool.Job
+  extends axvs
 {
-  public anqd(WyDownloader paramWyDownloader, List paramList) {}
+  public anqd(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  public Void a(ThreadPool.JobContext paramJobContext)
+  public void handleMessage(Message paramMessage)
   {
-    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramJobContext.hasNext())
+    axqf localaxqf = (axqf)paramMessage.obj;
+    switch (paramMessage.what)
     {
-      long l = ((Long)paramJobContext.next()).longValue();
-      this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader.a(l);
+    case 1004: 
+    default: 
+      return;
+    case 1003: 
+      if (localaxqf.b == 23)
+      {
+        ExtendFriendEditFragment.a(this.a, ((axsm)localaxqf.a).n);
+        if (QLog.isColorLevel()) {
+          QLog.i("ExtendFriendProfileEdit", 2, "mFileUploadHandler.handleMessage(), upload success. url = " + ExtendFriendEditFragment.a(this.a));
+        }
+        if (this.a.a != null)
+        {
+          this.a.a.a(ExtendFriendEditFragment.a(this.a));
+          ExtendFriendEditFragment.a(this.a, this.a.a.a());
+        }
+      }
+      anty.a().e(true, 0);
+      return;
     }
-    return null;
+    if ((localaxqf.b == 23) && (QLog.isColorLevel())) {
+      QLog.i("ExtendFriendProfileEdit", 2, "mFileUploadHandler.handleMessage(), upload fail.");
+    }
+    ExtendFriendEditFragment.a(this.a).dismiss();
+    bbmy.a(ExtendFriendEditFragment.a(this.a), ajjy.a(2131638485), 0).a();
+    anty.a().e(false, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anqd
  * JD-Core Version:    0.7.0.1
  */

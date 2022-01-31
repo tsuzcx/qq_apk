@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class interact_value$OneInteract
-  extends MessageMicro
+  extends MessageMicro<OneInteract>
 {
   public static final int STATE_TYPE_AWARD_POST = 3;
   public static final int STATE_TYPE_FOLLOW = 9;

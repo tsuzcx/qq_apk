@@ -1,54 +1,42 @@
+import android.content.Context;
 import android.view.View;
-import android.widget.Adapter;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class afbv
-  implements AdapterView.OnItemClickListener
+  extends aexr
 {
-  public afbv(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public int a;
+  public long a;
+  public Button a;
+  public ImageView a;
+  public LinearLayout a;
+  public TextView a;
+  public ShaderAnimLayout a;
+  public String a;
+  public structmsg.StructMsg a;
+  public int b;
+  public long b;
+  public ImageView b;
+  public LinearLayout b;
+  public TextView b;
+  public String b;
+  public long c;
+  public TextView c;
+  public TextView d;
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public afbv(Context paramContext, View paramView)
   {
-    ShortVideoCommentsView.a(this.a, (Comments.Comment)paramAdapterView.getAdapter().getItem(paramInt));
-    if (ShortVideoCommentsView.a(this.a) == null) {
-      return;
-    }
-    paramLong = this.a.a.getLongAccountUin();
-    if (ShortVideoCommentsView.a(this.a).c == paramLong)
-    {
-      this.a.a("不能回复自己的评论");
-      ShortVideoCommentsView.a(this.a, null);
-      return;
-    }
-    paramAdapterView = new StringBuilder();
-    paramAdapterView.append("回复 ");
-    if (ShortVideoCommentsView.a(this.a).b.length() >= 6)
-    {
-      paramAdapterView.append(ShortVideoCommentsView.a(this.a).b.substring(0, 5));
-      paramAdapterView.append("...");
-    }
-    for (;;)
-    {
-      ShortVideoCommentsView.a(this.a).setText("");
-      ShortVideoCommentsView.a(this.a).setHint(paramAdapterView);
-      if (!ShortVideoCommentsView.f(this.a)) {
-        break;
-      }
-      this.a.l();
-      return;
-      paramAdapterView.append(ShortVideoCommentsView.a(this.a).b);
-    }
-    ShortVideoCommentsView.a(this.a, 1);
+    super(paramContext, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afbv
  * JD-Core Version:    0.7.0.1
  */

@@ -3,10 +3,24 @@ package com.tencent.mobileqq.fragment;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 
 public class PublicBaseFragment
   extends Fragment
 {
+  public void beforeFinish() {}
+  
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
+  {
+    return false;
+  }
+  
   public void initWindowStyleAndAnimation(Activity paramActivity) {}
   
   public boolean isSupportScreenShot()
@@ -17,6 +31,11 @@ public class PublicBaseFragment
   public boolean isWrapContent()
   {
     return true;
+  }
+  
+  public boolean needDispatchTouchEvent()
+  {
+    return false;
   }
   
   public boolean needImmersive()
@@ -38,6 +57,8 @@ public class PublicBaseFragment
   
   public void onFinish() {}
   
+  public void onMultiWindowModeChanged(boolean paramBoolean) {}
+  
   public void onNewIntent(Intent paramIntent) {}
   
   public void onPostThemeChanged() {}
@@ -45,6 +66,11 @@ public class PublicBaseFragment
   public void onPreThemeChanged() {}
   
   public void onWindowFocusChanged(boolean paramBoolean) {}
+  
+  public boolean overrideFinish()
+  {
+    return false;
+  }
 }
 
 

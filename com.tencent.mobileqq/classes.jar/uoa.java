@@ -1,35 +1,32 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.activity.activateFriend.PositionActivatePage;
-import com.tencent.mobileqq.statistics.ReportController;
-import mqq.util.WeakReference;
+import android.app.Activity;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
 public class uoa
-  implements View.OnClickListener
+  implements vpr
 {
-  public uoa(PositionActivatePage paramPositionActivatePage) {}
-  
-  public void onClick(View paramView)
+  public void a(SegmentList paramSegmentList)
   {
-    if ((PositionActivatePage.a(this.a) != null) && (PositionActivatePage.a(this.a).get() != null))
-    {
-      paramView = new Intent((Context)PositionActivatePage.a(this.a).get(), NearbyActivity.class);
-      paramView.putExtra("ENTER_TIME", System.currentTimeMillis());
-      paramView.putExtra("FROM_WHERE", 1002);
-      paramView.putExtra("is_skip_nearby_guide", true);
-      paramView.setFlags(67108864);
-      ((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).startActivity(paramView);
-      ReportController.b(((ActivateFriendActivity)PositionActivatePage.a(this.a).get()).app, "CliOper", "", "", "0X8004E07", "0X8004E07", 0, 0, "", "", "", "");
+    if (!(paramSegmentList instanceof MystoryListView)) {
+      throw new IllegalArgumentException("arg should match type!");
     }
+    paramSegmentList = (MystoryListView)paramSegmentList;
+    Activity localActivity = paramSegmentList.jdField_a_of_type_AndroidAppActivity;
+    Object localObject = paramSegmentList.jdField_a_of_type_Unx;
+    boolean bool = paramSegmentList.a();
+    paramSegmentList.a(skt.a(localActivity, 5));
+    paramSegmentList.a(new upw(localActivity, (unx)localObject));
+    paramSegmentList.a(new upv(localActivity));
+    paramSegmentList.a(new upm(localActivity));
+    localObject = new uoh(localActivity, localActivity, 10, (unx)localObject, bool);
+    paramSegmentList.a((vpv)localObject);
+    paramSegmentList.a(new uqp(localActivity, "FeedSegment", ajjy.a(2131641268) + sfm.a + "\n拍摄一段视频，分享眼前的世界", 2130845515, 2130845516));
+    ((uoh)localObject).f_(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uoa
  * JD-Core Version:    0.7.0.1
  */

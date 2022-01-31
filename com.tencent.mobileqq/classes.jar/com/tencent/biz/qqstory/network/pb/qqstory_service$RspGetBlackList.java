@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_service$RspGetBlackList
-  extends MessageMicro
+  extends MessageMicro<RspGetBlackList>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "result", "black_status", "update_interval" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(0) }, RspGetBlackList.class);
   public final PBUInt32Field black_status = PBField.initUInt32(0);
@@ -15,7 +15,7 @@ public final class qqstory_service$RspGetBlackList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetBlackList
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,32 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.LebaEnabledPluginsActivity;
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public class tdf
-  implements View.OnClickListener
+class tdf
+  implements URLDrawable.URLDrawableListener
 {
-  public tdf(LebaListMgrActivity paramLebaListMgrActivity) {}
+  tdf(tde paramtde) {}
   
-  public void onClick(View paramView)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    paramView = new Intent(this.a, LebaEnabledPluginsActivity.class);
-    this.a.startActivityForResult(paramView, 1);
+    tde.c(this.a, false);
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    tde.b(this.a, false);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    this.a.a("UrlDrawableDownloadJob_dra", paramURLDrawable.getCurrDrawable());
+    tde.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tdf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.highway.segment;
 
 import com.tencent.mobileqq.highway.HwEngine;
+import com.tencent.mobileqq.highway.config.ConfigManager;
 import com.tencent.mobileqq.highway.conn.ConnManager;
 import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.LoginSigHead;
 import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.QueryHoleRsp;
@@ -85,7 +86,7 @@ public class RequestInfoQuery
     this.mTrans.TRACKER.logStep("SND_E", " Query Seq:" + getHwSeq() + " Code:" + paramInt);
   }
   
-  public void onResponse(RequestWorker paramRequestWorker, HwResponse paramHwResponse)
+  public void onResponse(RequestWorker paramRequestWorker, HwResponse paramHwResponse, HwRequest paramHwRequest)
   {
     boolean bool;
     Object localObject;
@@ -105,54 +106,42 @@ public class RequestInfoQuery
       {
         this.mTrans.mTransReport.netType = HwNetworkCenter.getInstance(paramRequestWorker.engine.getAppContext()).getNetType();
         this.mTrans.mTransReport.connNum = paramRequestWorker.engine.mConnManager.getCurrentConnNum();
-        localObject = this.mTrans.mTransReport;
+        TransReport localTransReport = this.mTrans.mTransReport;
         if (this.protoType != 1) {
-          break label463;
+          break label362;
         }
-        paramRequestWorker = "TCP";
-        label252:
-        ((TransReport)localObject).protoType = paramRequestWorker;
+        localObject = "TCP";
+        label253:
+        localTransReport.protoType = ((String)localObject);
         this.mTrans.mTransReport.ipIndex = this.endpoint.ipIndex;
+        this.mTrans.mTransReport.isIpv6 = paramHwResponse.isIpv6;
+        paramRequestWorker = ConfigManager.getInstance(paramRequestWorker.engine.getAppContext(), paramRequestWorker.engine);
+        this.mTrans.mTransReport.netIpType = paramRequestWorker.mCurnetIptype;
       }
       if (paramHwResponse.retCode != 0) {
-        break label558;
+        break label434;
       }
       if (!paramHwResponse.isFinish) {
-        break label470;
+        break label370;
       }
       this.mTrans.onTransSuccess(null, paramHwResponse.mBuExtendinfo);
     }
     for (;;)
     {
-      if (paramHwResponse.segmentResp.uint32_cache_addr.has())
-      {
-        int i = paramHwResponse.segmentResp.uint32_cache_addr.get();
-        if (i == 0) {
-          break label529;
-        }
-        BdhLogUtil.LogEvent("R", "RequestInfoQuery HandleResp : cache_addr res from server is : " + i + " ( " + intToIP(i) + " ) Seq:" + getHwSeq());
-        if (this.mTrans.cacheIp == 0) {
-          this.mTrans.cacheIp = i;
-        }
-        if ((this.mTrans.cacheIp != 0) && (this.mTrans.cacheIp != i))
-        {
-          BdhLogUtil.LogEvent("R", "RequestInfoQuery HandleResp : cache ip Diff ! Seq:" + getHwSeq());
-          this.mTrans.mTransReport.bCacheDiff = true;
-        }
-      }
+      checkCacheIp(paramHwResponse, this.mTrans);
       return;
       bool = false;
       break;
-      label463:
-      paramRequestWorker = "HTTP";
-      break label252;
-      label470:
+      label362:
+      localObject = "HTTP";
+      break label253;
+      label370:
       localObject = paramHwResponse.mRespData;
       paramRequestWorker = new CSDataHighwayHead.RspBody();
       try
       {
         paramRequestWorker.mergeFrom((byte[])localObject);
-        this.mTrans.onQueryHoleResp((CSDataHighwayHead.QueryHoleRsp)paramRequestWorker.msg_query_hole_rsp.get(), this.sentBitmap, false);
+        this.mTrans.onQueryHoleResp((CSDataHighwayHead.QueryHoleRsp)paramRequestWorker.msg_query_hole_rsp.get(), this.sentBitmap, false, paramHwResponse, (RequestInfoQuery)paramHwRequest);
       }
       catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
       {
@@ -162,10 +151,7 @@ public class RequestInfoQuery
         }
       }
     }
-    label529:
-    BdhLogUtil.LogEvent("R", "RequestInfoQuery HandleResp : cache_addr res from server is 0 ! Seq:" + getHwSeq());
-    return;
-    label558:
+    label434:
     this.mTrans.onQuertHoleError(this.sentBitmap);
   }
   
@@ -186,7 +172,7 @@ public class RequestInfoQuery
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.highway.segment.RequestInfoQuery
  * JD-Core Version:    0.7.0.1
  */

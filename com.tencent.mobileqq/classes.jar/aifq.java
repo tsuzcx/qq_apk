@@ -1,48 +1,36 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLMaskImageView;
-import com.tencent.mobileqq.shortvideo.dancemachine.TrAsyncTextureLoad;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceReadyFilter;
-import com.tencent.mobileqq.shortvideo.dancemachine.utils.DanceLog;
-import com.tencent.mobileqq.shortvideo.filter.QQDanceEventHandler;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class aifq
-  implements Animation.AnimationListener
+class aifq
+  extends BroadcastReceiver
 {
-  public aifq(DanceReadyFilter paramDanceReadyFilter) {}
+  aifq(aifg paramaifg) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    DanceReadyFilter.d(this.a).f_(true);
-    DanceReadyFilter.g(this.a).f_(true);
-    DanceReadyFilter.a(this.a).f_(false);
-    DanceReadyFilter.d(this.a).a(DanceReadyFilter.e(this.a));
-    DanceReadyFilter.g(this.a).a(DanceReadyFilter.f(this.a));
-    paramAnimation = this.a.a().a();
-    if (paramAnimation != null)
-    {
-      DanceLog.a("DanceReadyFilter", "readySceneBegin begin...");
-      paramAnimation.c(DanceReadyFilter.a(this.a));
-      DanceLog.a("DanceReadyFilter", "readySceneBegin end...");
-      DanceReadyFilter.a(this.a, true);
+    if (paramIntent == null) {
+      QLog.e("ApolloManager", 1, "[onReceive] intent null");
     }
-    DanceReadyFilter.a(this.a);
-    TrAsyncTextureLoad.a().b();
-    DanceLog.a("DanceReadyFilter", "TrAsyncTextureLoad[enter ready]");
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    DanceReadyFilter.a(this.a).f_(false);
+    do
+    {
+      return;
+      paramContext = paramIntent.getAction();
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloManager", 2, new Object[] { "[onReceive] action=", paramContext });
+      }
+    } while (!"com.tencent.mobileqq.action.ACTION_APOLLO_STORE_CRASH_EVENT".equals(paramContext));
+    paramContext = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_user_config", 0).getString("apollo_store_watch_current_url", "");
+    ((baot)this.a.a.a(71)).a(null, paramContext, -1003, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aifq
  * JD-Core Version:    0.7.0.1
  */

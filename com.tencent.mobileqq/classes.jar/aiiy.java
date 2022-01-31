@@ -1,22 +1,18 @@
-import com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer;
-import com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer.IMPlayerEndListener;
+import android.app.Activity;
 
-public class aiiy
-  implements Runnable
+public abstract interface aiiy
 {
-  public aiiy(ImageViewVideoPlayer paramImageViewVideoPlayer) {}
+  public abstract int a();
   
-  public void run()
-  {
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
-    this.a.setVisibility(8);
-  }
+  public abstract aije a(long paramLong, String paramString1, String paramString2);
+  
+  public abstract void a();
+  
+  public abstract boolean a(Activity paramActivity);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiiy
  * JD-Core Version:    0.7.0.1
  */

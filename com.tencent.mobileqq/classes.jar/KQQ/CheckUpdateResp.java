@@ -8,15 +8,15 @@ import java.util.ArrayList;
 public final class CheckUpdateResp
   extends JceStruct
 {
-  static ArrayList cache_vecResPkg;
+  static ArrayList<RespItem> cache_vecResPkg;
   public long dwSsoSeq;
   public boolean isEnd = true;
   public byte result;
-  public ArrayList vecResPkg;
+  public ArrayList<RespItem> vecResPkg;
   
   public CheckUpdateResp() {}
   
-  public CheckUpdateResp(byte paramByte, ArrayList paramArrayList, boolean paramBoolean, long paramLong)
+  public CheckUpdateResp(byte paramByte, ArrayList<RespItem> paramArrayList, boolean paramBoolean, long paramLong)
   {
     this.result = paramByte;
     this.vecResPkg = paramArrayList;
@@ -48,7 +48,7 @@ public final class CheckUpdateResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     KQQ.CheckUpdateResp
  * JD-Core Version:    0.7.0.1
  */

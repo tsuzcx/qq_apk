@@ -1,28 +1,77 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class wca
-  implements Animator.AnimatorListener
 {
-  public wca(PublicAccountChatPie paramPublicAccountChatPie) {}
+  private volatile int jdField_a_of_type_Int = 4;
+  private COMM.StCommonExt jdField_a_of_type_NS_COMMCOMM$StCommonExt;
+  private String jdField_a_of_type_JavaLangString;
+  private volatile boolean jdField_a_of_type_Boolean = true;
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public COMM.StCommonExt a()
   {
-    this.a.a.removeHeaderView(PublicAccountChatPie.a(this.a));
-    PublicAccountChatPie.a(this.a, true);
+    return this.jdField_a_of_type_NS_COMMCOMM$StCommonExt;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public String a()
+  {
+    if (this.jdField_a_of_type_JavaLangString == null) {
+      this.jdField_a_of_type_JavaLangString = azzf.a(BaseApplicationImpl.getContext(), "subscribe_ad_attachinfo_cache");
+    }
+    return this.jdField_a_of_type_JavaLangString;
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(COMM.StCommonExt paramStCommonExt)
+  {
+    this.jdField_a_of_type_NS_COMMCOMM$StCommonExt = paramStCommonExt;
+  }
+  
+  public void a(String paramString)
+  {
+    if (paramString != null) {
+      azzf.a(BaseApplicationImpl.getContext(), "subscribe_ad_attachinfo_cache", paramString);
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Int != 4;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  public boolean d()
+  {
+    return this.jdField_a_of_type_Int == 2;
+  }
+  
+  public boolean e()
+  {
+    return this.jdField_a_of_type_Int == 3;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wca
  * JD-Core Version:    0.7.0.1
  */

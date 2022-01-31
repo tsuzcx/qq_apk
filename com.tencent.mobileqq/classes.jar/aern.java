@@ -1,22 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import android.widget.TextView;
 
-public class aern
-  implements DialogInterface.OnClickListener
+class aern
 {
-  public aern(AIOShareActionSheet paramAIOShareActionSheet) {}
+  public TextView a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aern(View paramView)
   {
-    paramDialogInterface.dismiss();
-    ReportController.b(this.a.a, "CliOper", "", "", AIOShareActionSheet.b, AIOShareActionSheet.b, 0, 0, "", "", "", "");
+    this.a = ((TextView)paramView.findViewById(2131311220));
+    paramView.setTag(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aern
  * JD-Core Version:    0.7.0.1
  */

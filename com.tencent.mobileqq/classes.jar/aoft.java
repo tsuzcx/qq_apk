@@ -1,35 +1,11 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceAndTextItem;
-
-public class aoft
-  implements Animator.AnimatorListener
+public abstract class aoft
+  extends aofr
 {
-  public aoft(FaceLayer.FaceAndTextItem paramFaceAndTextItem) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.a.a = false;
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.a = false;
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator)
-  {
-    this.a.a = true;
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.a = true;
-  }
+  protected abstract void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoft
  * JD-Core Version:    0.7.0.1
  */

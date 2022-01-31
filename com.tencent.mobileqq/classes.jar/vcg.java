@@ -1,26 +1,58 @@
-import android.graphics.drawable.ColorDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.item.FileVideoItemBuilder;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.io.File;
+import android.content.Context;
+import android.widget.BaseAdapter;
 
-class vcg
-  implements Runnable
+public abstract class vcg<PACKAGE extends vbx>
+  extends BaseAdapter
 {
-  vcg(vcf paramvcf) {}
+  public int a;
+  protected Context a;
+  protected PACKAGE a;
+  protected vbz a;
   
-  public void run()
+  public vcg(Context paramContext)
   {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(-16777216);
-    URLDrawable.getDrawable(new File(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath), localURLDrawableOptions);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.b();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public void a(PACKAGE paramPACKAGE)
+  {
+    this.jdField_a_of_type_Vbx = paramPACKAGE;
+  }
+  
+  public void a(vbz paramvbz)
+  {
+    this.jdField_a_of_type_Vbz = paramvbz;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_Vbx == null) {
+      return 0;
+    }
+    int i = this.jdField_a_of_type_Vbx.b();
+    int j = this.jdField_a_of_type_Vbx.a();
+    if (j < 1) {
+      throw new IllegalArgumentException("per item count < 1 :" + j);
+    }
+    if (i % j == 0) {
+      return i / j;
+    }
+    return i / j + 1;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return Integer.valueOf(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vcg
  * JD-Core Version:    0.7.0.1
  */

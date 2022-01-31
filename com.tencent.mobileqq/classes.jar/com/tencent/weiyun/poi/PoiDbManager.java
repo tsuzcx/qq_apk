@@ -20,13 +20,7 @@ final class PoiDbManager
   public static final String COL_POI_POI_ID = "poi_id";
   public static final String COL_POI_POI_NAME = "poi_name";
   public static final String TBL_POI = "poi";
-  private static Singleton<PoiDbManager, Void> sInstance = new Singleton()
-  {
-    protected PoiDbManager create(Void paramAnonymousVoid)
-    {
-      return new PoiDbManager(null);
-    }
-  };
+  private static Singleton<PoiDbManager, Void> sInstance = new PoiDbManager.1();
   private final PoiDbHelper mPoiDbHelper = new PoiDbHelper(WeiyunLiteGlobal.getInstance().getContext());
   
   public static PoiDbManager getInstance()
@@ -59,7 +53,7 @@ final class PoiDbManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.weiyun.poi.PoiDbManager
  * JD-Core Version:    0.7.0.1
  */

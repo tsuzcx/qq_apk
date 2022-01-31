@@ -1,28 +1,16 @@
 package com.tencent.mobileqq.msf.sdk.utils;
 
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.LinkedBlockingDeque;
+import com.tencent.mobileqq.monitor.NetworkMonitorCallback;
+import com.tencent.qphone.base.util.BaseApplication;
 
 class d
   implements Runnable
 {
-  d(MonitorSocketStat paramMonitorSocketStat, b paramb, int paramInt) {}
+  d(c paramc) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MonitorSocketStat", 1, "sendMsg fail, total=" + MonitorSocketStat.access$100(this.c).size() + " dataFlowItem=" + this.a + " result=" + this.b);
-    }
-    try
-    {
-      MonitorSocketStat.access$100(this.c).put(this.a);
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("MonitorSocketStat", 1, "MonitorSocketStat excep!", localException);
-    }
+    BaseApplication.networkMonitorCallback.addHttpInfo(this.a.g);
   }
 }
 

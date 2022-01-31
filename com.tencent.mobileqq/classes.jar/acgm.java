@@ -1,25 +1,31 @@
-import com.tencent.mobileqq.doutu.DoutuManager;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 public class acgm
+  implements Comparator<MessageRecord>
 {
-  public int a;
-  public long a;
-  String jdField_a_of_type_JavaLangString;
-  int b;
-  public long b;
+  public acgm(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public acgm(DoutuManager paramDoutuManager, long paramLong1, long paramLong2, String paramString, int paramInt1, int paramInt2)
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
+    long l2 = paramMessageRecord1.time - paramMessageRecord2.time;
+    long l1 = l2;
+    if (l2 == 0L) {
+      l1 = paramMessageRecord1.getId() - paramMessageRecord2.getId();
+    }
+    if (l1 > 0L) {
+      return -1;
+    }
+    if (l1 < 0L) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acgm
  * JD-Core Version:    0.7.0.1
  */

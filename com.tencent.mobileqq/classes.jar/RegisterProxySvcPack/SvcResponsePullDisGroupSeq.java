@@ -11,11 +11,11 @@ public final class SvcResponsePullDisGroupSeq
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList cache_vDisInfo;
+  static ArrayList<stDisGroupInfo> cache_vDisInfo;
   public byte cReplyCode;
   public String strResult = "";
   public long uUploadLimit;
-  public ArrayList vDisInfo;
+  public ArrayList<stDisGroupInfo> vDisInfo;
   
   static
   {
@@ -29,7 +29,7 @@ public final class SvcResponsePullDisGroupSeq
   
   public SvcResponsePullDisGroupSeq() {}
   
-  public SvcResponsePullDisGroupSeq(byte paramByte, String paramString, ArrayList paramArrayList, long paramLong)
+  public SvcResponsePullDisGroupSeq(byte paramByte, String paramString, ArrayList<stDisGroupInfo> paramArrayList, long paramLong)
   {
     this.cReplyCode = paramByte;
     this.strResult = paramString;

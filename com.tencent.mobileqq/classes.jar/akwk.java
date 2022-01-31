@@ -1,17 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler;
-
-public class akwk
-  implements DialogInterface.OnDismissListener
+public abstract interface akwk
 {
-  public akwk(SwiftBrowserLongClickHandler paramSwiftBrowserLongClickHandler) {}
+  public abstract void b();
   
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public abstract void b(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akwk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,39 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.TroopAdmin;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public final class uhb
-  implements Parcelable.Creator
+class uhb
+  extends QQUIEventReceiver<ugy, sxr>
 {
-  public TroopMemberListActivity.TroopAdmin a(Parcel paramParcel)
+  public uhb(@NonNull ugy paramugy)
   {
-    return new TroopMemberListActivity.TroopAdmin(paramParcel, null);
+    super(paramugy);
   }
   
-  public TroopMemberListActivity.TroopAdmin[] a(int paramInt)
+  public void a(@NonNull ugy paramugy, @NonNull sxr paramsxr)
   {
-    return new TroopMemberListActivity.TroopAdmin[paramInt];
+    if ((paramsxr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramsxr.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (TextUtils.equals(paramsxr.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.getUnionId(), paramugy.jdField_a_of_type_JavaLangString)))
+    {
+      urk.b("Q.qqstory.memories.QQStoryMemoriesPresenter", "receive user info event. %s. from others.", paramsxr);
+      paramugy.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramsxr.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
+      ugy.a(paramugy).e();
+      ugy.a(paramugy).c();
+      ugy.a(paramugy).d();
+      ugy.a(paramugy).a();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return sxr.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uhb
  * JD-Core Version:    0.7.0.1
  */

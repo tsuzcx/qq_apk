@@ -1,8 +1,6 @@
-public class mzs
+public abstract interface mzs
 {
-  public int a;
-  public String a;
-  public String b;
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
 }
 
 

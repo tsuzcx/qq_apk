@@ -1,24 +1,23 @@
 import android.os.Message;
-import com.tencent.mobileqq.search.HistorySearchEntryModel;
-import com.tencent.util.MqqWeakReferenceHandler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import mqq.os.MqqHandler;
 
 public class ahvn
-  implements Runnable
+  extends MqqHandler
 {
-  public ahvn(HistorySearchEntryModel paramHistorySearchEntryModel) {}
+  public ahvn(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.jdField_a_of_type_JavaUtilList = HistorySearchEntryModel.a(this.a);
-    Message localMessage = this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage();
-    localMessage.what = 1;
-    this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(1);
-    this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendMessage(localMessage);
+    paramMessage = ShortVideoUtils.a(paramMessage.arg1);
+    this.a.c.setText(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahvn
  * JD-Core Version:    0.7.0.1
  */

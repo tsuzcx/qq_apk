@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.portal;
 
-import agrl;
+import aciy;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -19,7 +19,6 @@ import com.nineoldandroids.animation.AnimatorSet;
 import com.nineoldandroids.animation.AnimatorSet.Builder;
 import com.nineoldandroids.animation.ObjectAnimator;
 import com.nineoldandroids.view.ViewHelper;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinnableBitmapDrawable;
 import com.tencent.widget.immersive.ImmersiveUtils;
@@ -40,7 +39,7 @@ public class PrepareView
   private ImageAlphaSwitchView jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView;
   private ImageShakeAnimView jdField_a_of_type_ComTencentMobileqqPortalImageShakeAnimView;
   private ImageSwitchAnimView jdField_a_of_type_ComTencentMobileqqPortalImageSwitchAnimView;
-  public List a;
+  public List<PortalManager.LogoConfig> a;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_b_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_b_of_type_AndroidWidgetTextView;
@@ -75,7 +74,7 @@ public class PrepareView
     int k;
     if (this.jdField_a_of_type_Int == 1) {
       if (paramInt == 0) {
-        k = 2130842672;
+        k = 2130844387;
       }
     }
     while (k != 0)
@@ -87,7 +86,7 @@ public class PrepareView
         k = m;
         if (paramInt == 1)
         {
-          k = 2130842673;
+          k = 2130844388;
           continue;
           if (this.jdField_a_of_type_Int != 2)
           {
@@ -98,13 +97,13 @@ public class PrepareView
           }
           else if (paramInt == 0)
           {
-            k = 2130842620;
+            k = 2130844344;
           }
           else
           {
             k = m;
             if (paramInt == 1) {
-              k = 2130842621;
+              k = 2130844345;
             }
           }
         }
@@ -187,190 +186,30 @@ public class PrepareView
     this.jdField_a_of_type_AndroidOsCountDownTimer = null;
   }
   
-  public void a(long paramLong)
-  {
-    if (this.jdField_a_of_type_Int < 0) {
-      return;
-    }
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    if (this.jdField_a_of_type_AndroidOsCountDownTimer != null) {
-      this.jdField_a_of_type_AndroidOsCountDownTimer.cancel();
-    }
-    this.jdField_a_of_type_AndroidOsCountDownTimer = new agrl(this, paramLong, 1000L);
-    this.jdField_a_of_type_AndroidOsCountDownTimer.start();
-  }
-  
-  /* Error */
-  public void a(java.lang.String paramString)
-  {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 7
-    //   3: aload_0
-    //   4: getfield 33	com/tencent/mobileqq/portal/PrepareView:jdField_a_of_type_Int	I
-    //   7: ifge +4 -> 11
-    //   10: return
-    //   11: aload_0
-    //   12: getfield 164	com/tencent/mobileqq/portal/PrepareView:jdField_a_of_type_AndroidWidgetRelativeLayout	Landroid/widget/RelativeLayout;
-    //   15: bipush 8
-    //   17: invokevirtual 162	android/widget/RelativeLayout:setVisibility	(I)V
-    //   20: aload_1
-    //   21: invokestatic 183	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   24: ifeq +13 -> 37
-    //   27: aload_0
-    //   28: getfield 158	com/tencent/mobileqq/portal/PrepareView:jdField_b_of_type_AndroidWidgetRelativeLayout	Landroid/widget/RelativeLayout;
-    //   31: bipush 8
-    //   33: invokevirtual 162	android/widget/RelativeLayout:setVisibility	(I)V
-    //   36: return
-    //   37: aload_0
-    //   38: getfield 158	com/tencent/mobileqq/portal/PrepareView:jdField_b_of_type_AndroidWidgetRelativeLayout	Landroid/widget/RelativeLayout;
-    //   41: iconst_0
-    //   42: invokevirtual 162	android/widget/RelativeLayout:setVisibility	(I)V
-    //   45: aload_1
-    //   46: invokestatic 183	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   49: ifne -39 -> 10
-    //   52: aload_1
-    //   53: invokevirtual 189	java/lang/String:length	()I
-    //   56: istore_2
-    //   57: aload_1
-    //   58: iconst_0
-    //   59: iconst_2
-    //   60: invokevirtual 193	java/lang/String:substring	(II)Ljava/lang/String;
-    //   63: astore 4
-    //   65: aload_1
-    //   66: iconst_3
-    //   67: iconst_5
-    //   68: invokevirtual 193	java/lang/String:substring	(II)Ljava/lang/String;
-    //   71: astore_3
-    //   72: aload_1
-    //   73: iload_2
-    //   74: iconst_5
-    //   75: isub
-    //   76: iload_2
-    //   77: iconst_3
-    //   78: isub
-    //   79: invokevirtual 193	java/lang/String:substring	(II)Ljava/lang/String;
-    //   82: astore 5
-    //   84: aload_1
-    //   85: iload_2
-    //   86: iconst_2
-    //   87: isub
-    //   88: iload_2
-    //   89: invokevirtual 193	java/lang/String:substring	(II)Ljava/lang/String;
-    //   92: astore_1
-    //   93: aload 4
-    //   95: astore 7
-    //   97: aload 5
-    //   99: astore 6
-    //   101: aload_1
-    //   102: astore 4
-    //   104: aload_0
-    //   105: getfield 195	com/tencent/mobileqq/portal/PrepareView:jdField_d_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   108: aload 7
-    //   110: invokevirtual 201	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   113: aload_0
-    //   114: getfield 203	com/tencent/mobileqq/portal/PrepareView:jdField_e_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   117: aload_3
-    //   118: invokevirtual 201	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   121: aload_0
-    //   122: getfield 205	com/tencent/mobileqq/portal/PrepareView:jdField_f_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   125: aload 6
-    //   127: invokevirtual 201	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   130: aload_0
-    //   131: getfield 207	com/tencent/mobileqq/portal/PrepareView:jdField_g_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   134: aload 4
-    //   136: invokevirtual 201	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   139: return
-    //   140: astore 4
-    //   142: aconst_null
-    //   143: astore_3
-    //   144: aconst_null
-    //   145: astore 5
-    //   147: aconst_null
-    //   148: astore_1
-    //   149: aload 4
-    //   151: invokevirtual 210	java/lang/IndexOutOfBoundsException:printStackTrace	()V
-    //   154: aload 7
-    //   156: astore 4
-    //   158: aload_1
-    //   159: astore 6
-    //   161: aload 5
-    //   163: astore 7
-    //   165: goto -61 -> 104
-    //   168: astore 6
-    //   170: aconst_null
-    //   171: astore_3
-    //   172: aconst_null
-    //   173: astore_1
-    //   174: aload 4
-    //   176: astore 5
-    //   178: aload 6
-    //   180: astore 4
-    //   182: goto -33 -> 149
-    //   185: astore 6
-    //   187: aconst_null
-    //   188: astore_1
-    //   189: aload 4
-    //   191: astore 5
-    //   193: aload 6
-    //   195: astore 4
-    //   197: goto -48 -> 149
-    //   200: astore 6
-    //   202: aload 5
-    //   204: astore_1
-    //   205: aload 4
-    //   207: astore 5
-    //   209: aload 6
-    //   211: astore 4
-    //   213: goto -64 -> 149
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	216	0	this	PrepareView
-    //   0	216	1	paramString	java.lang.String
-    //   56	33	2	k	int
-    //   71	101	3	str1	java.lang.String
-    //   63	72	4	str2	java.lang.String
-    //   140	10	4	localIndexOutOfBoundsException1	java.lang.IndexOutOfBoundsException
-    //   156	56	4	localObject1	Object
-    //   82	126	5	localObject2	Object
-    //   99	61	6	localObject3	Object
-    //   168	11	6	localIndexOutOfBoundsException2	java.lang.IndexOutOfBoundsException
-    //   185	9	6	localIndexOutOfBoundsException3	java.lang.IndexOutOfBoundsException
-    //   200	10	6	localIndexOutOfBoundsException4	java.lang.IndexOutOfBoundsException
-    //   1	163	7	localObject4	Object
-    // Exception table:
-    //   from	to	target	type
-    //   57	65	140	java/lang/IndexOutOfBoundsException
-    //   65	72	168	java/lang/IndexOutOfBoundsException
-    //   72	84	185	java/lang/IndexOutOfBoundsException
-    //   84	93	200	java/lang/IndexOutOfBoundsException
-  }
-  
   public boolean a(int paramInt)
   {
     a();
     removeAllViews();
     if (paramInt == 1)
     {
-      LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970375, this, true);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362828));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370232));
+      LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495212, this, true);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131303898));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131304983));
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131370242));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370244));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370246));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370245));
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131370234));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370235));
-      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370237));
-      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370239));
-      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370241));
-      this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370236));
-      this.jdField_i_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370240));
-      this.j = ((TextView)findViewById(2131370238));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131311465));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131311461));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131311462));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131311464));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131299842));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131311451));
+      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131311452));
+      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131311453));
+      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131311454));
+      this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131302613));
+      this.jdField_i_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131302614));
+      this.j = ((TextView)findViewById(2131303562));
       Object localObject = Typeface.createFromAsset(this.jdField_a_of_type_AndroidContentContext.getAssets(), "fonts/DS-DIGIB.TTF");
       this.jdField_a_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject);
       this.jdField_b_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject);
@@ -382,29 +221,29 @@ public class PrepareView
       this.jdField_h_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject);
       this.jdField_i_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject);
       this.j.setTypeface((Typeface)localObject);
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370224));
-      this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370225));
-      this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370233));
-      this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370230));
-      this.jdField_h_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370229));
-      this.jdField_g_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370228));
-      this.jdField_i_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370226));
+      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131303427));
+      this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131309502));
+      this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131313661));
+      this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131297592));
+      this.jdField_h_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131309758));
+      this.jdField_g_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131309757));
+      this.jdField_i_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131299228));
       localObject = (RelativeLayout.LayoutParams)this.jdField_i_of_type_AndroidWidgetImageView.getLayoutParams();
       if (localObject != null)
       {
-        ((RelativeLayout.LayoutParams)localObject).topMargin = ImmersiveUtils.a(this.jdField_a_of_type_AndroidContentContext);
+        ((RelativeLayout.LayoutParams)localObject).topMargin = ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_AndroidContentContext);
         this.jdField_i_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
-      localObject = new RelativeLayout.LayoutParams(AIOUtils.a(475.0F, getResources()), AIOUtils.a(300.0F, getResources()));
+      localObject = new RelativeLayout.LayoutParams(aciy.a(475.0F, getResources()), aciy.a(300.0F, getResources()));
       ((RelativeLayout.LayoutParams)localObject).addRule(14);
       addView(this.jdField_a_of_type_ComTencentMobileqqPortalImageShakeAnimView, 0, (ViewGroup.LayoutParams)localObject);
       return true;
       if ((paramInt != 2) && (paramInt != 3)) {
         break;
       }
-      LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970374, this, true);
-      this.jdField_a_of_type_ComTencentMobileqqPortalImageSwitchAnimView = ((ImageSwitchAnimView)findViewById(2131362828));
-      this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView = ((ImageAlphaSwitchView)findViewById(2131370232));
+      LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495211, this, true);
+      this.jdField_a_of_type_ComTencentMobileqqPortalImageSwitchAnimView = ((ImageSwitchAnimView)findViewById(2131303898));
+      this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView = ((ImageAlphaSwitchView)findViewById(2131304983));
     }
     return false;
   }
@@ -513,7 +352,7 @@ public class PrepareView
       catch (Throwable paramBitmap1)
       {
         continue;
-        this.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130842647);
+        this.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130844366);
       }
       if (paramBitmap5 == null) {
         break label215;
@@ -601,7 +440,7 @@ public class PrepareView
     }
   }
   
-  public void setLogoConfigList(List paramList)
+  public void setLogoConfigList(List<PortalManager.LogoConfig> paramList)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
     if ((paramList != null) && (QLog.isColorLevel()))

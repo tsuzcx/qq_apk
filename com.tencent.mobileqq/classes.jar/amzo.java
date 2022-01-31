@@ -1,51 +1,36 @@
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.msf.service.protocol.security.CustomSigContent;
-import com.tencent.msf.service.protocol.security.RespondCustomSig;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.observer.AccountObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.QavSoData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 
-public final class amzo
-  extends AccountObserver
+public class amzo
+  extends amzp
 {
-  public amzo(String paramString, BusinessObserver paramBusinessObserver) {}
-  
-  public void onChangeToken(boolean paramBoolean, HashMap paramHashMap)
+  public amzo(QQAppInterface paramQQAppInterface)
   {
-    if ((paramBoolean) && (paramHashMap != null))
-    {
-      paramHashMap = (RespondCustomSig)paramHashMap.get("login.chgTok");
-      if ((paramHashMap != null) && (paramHashMap.SigList != null)) {
-        break label30;
-      }
+    super(e(), paramQQAppInterface);
+  }
+  
+  public static String e()
+  {
+    if (lbk.f() <= 2) {
+      return "qq.android.qav.so_665";
     }
-    for (;;)
-    {
-      return;
-      label30:
-      int i = 0;
-      while (i < paramHashMap.SigList.size())
-      {
-        Object localObject = (CustomSigContent)paramHashMap.SigList.get(i);
-        if ((((CustomSigContent)localObject).sResult == 0) && (((CustomSigContent)localObject).ulSigType == 16L))
-        {
-          localObject = new String(((CustomSigContent)localObject).SigContent);
-          OpenID localOpenID = new OpenID();
-          localOpenID.appID = this.jdField_a_of_type_JavaLangString;
-          localOpenID.openID = ((String)localObject);
-          if (this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver != null) {
-            this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver.onUpdate(1, true, localOpenID);
-          }
-        }
-        i += 1;
-      }
-    }
+    return "qq.android.qav.sov8_826";
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return QavSoData.class;
+  }
+  
+  public String b()
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amzo
  * JD-Core Version:    0.7.0.1
  */

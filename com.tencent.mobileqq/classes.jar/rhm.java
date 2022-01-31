@@ -1,21 +1,25 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
-import com.tencent.litetransfersdk.MsgCSBody;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class rhm
-  implements Runnable
+class rhm
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public rhm(LiteTransferWrapper paramLiteTransferWrapper, MsgCSBody paramMsgCSBody) {}
+  rhm(rhl paramrhl, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
   
-  public void run()
+  int a(int paramInt1, int paramInt2, float paramFloat)
   {
-    if (LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper) != 0L) {
-      this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.PbMsgReciveToJNI(LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_ComTencentLitetransfersdkMsgCSBody);
-    }
+    return Math.round((paramInt2 - paramInt1) * paramFloat) + paramInt1;
+  }
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = paramValueAnimator.getAnimatedFraction();
+    this.jdField_a_of_type_Rhl.a(a(this.jdField_a_of_type_Int, this.b, f), a(this.c, this.d, f));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rhm
  * JD-Core Version:    0.7.0.1
  */

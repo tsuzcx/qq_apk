@@ -1,0 +1,20 @@
+package com.tencent.biz.pubaccount.Advertisement.manager;
+
+import myh;
+
+public class AdvertisementVideoPreloadManager$10
+  implements Runnable
+{
+  public AdvertisementVideoPreloadManager$10(myh parammyh, String paramString) {}
+  
+  public void run()
+  {
+    myh.b(this.a);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager.10
+ * JD-Core Version:    0.7.0.1
+ */

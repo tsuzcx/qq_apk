@@ -1,31 +1,33 @@
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.mobileqq.ar.view.ARScanEntryView.4.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class akxu
-  implements Runnable
+  implements atjd
 {
-  public akxu(SwiftBrowserTBSHandler paramSwiftBrowserTBSHandler, int paramInt) {}
+  public akxu(ARScanEntryView paramARScanEntryView) {}
   
-  public void run()
+  public void a()
   {
-    TextView localTextView = new TextView(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserTBSHandler.a);
-    localTextView.setBackgroundColor(2130706432);
-    localTextView.setTextColor(2147483647);
-    StringBuilder localStringBuilder = new StringBuilder().append("当前内核:");
-    if (this.jdField_a_of_type_Int == 0) {}
-    for (String str = "系统WebView";; str = "x5 " + this.jdField_a_of_type_Int)
-    {
-      localTextView.setText(str);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserTBSHandler.a.addContentView(localTextView, new RelativeLayout.LayoutParams(-2, -2));
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 2, "PopUp onStart ");
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 2, "PopUp onEnd  needReportRedDot = " + ARScanEntryView.a(this.a));
+    }
+    if (ARScanEntryView.a(this.a) != null) {
+      ARScanEntryView.a(this.a).post(new ARScanEntryView.4.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akxu
  * JD-Core Version:    0.7.0.1
  */

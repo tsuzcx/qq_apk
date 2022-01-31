@@ -1,21 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
+import com.tencent.av.redpacket.AVRedPacketManager;
+import com.tencent.av.redpacket.AVRedPacketManager.2;
+import com.tencent.qphone.base.util.QLog;
 
 public class ljm
-  implements DialogInterface.OnClickListener
+  implements ljv
 {
-  public ljm(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
+  public ljm(AVRedPacketManager.2 param2, long paramLong) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.a.setResult(0, this.a.getIntent());
-    this.a.finish();
+    long l1 = System.currentTimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    QLog.d("AVRedPacketManager", 1, "preloadCountDownRes, music load finish,cost =" + (l1 - l2));
+    l1 = System.currentTimeMillis();
+    if (this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$2.this$0.jdField_a_of_type_Ljn != null)
+    {
+      this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$2.this$0.jdField_a_of_type_Ljn.a(1, this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager$2.this$0.jdField_a_of_type_Ljo);
+      l2 = System.currentTimeMillis();
+      QLog.d("AVRedPacketManager", 1, "preloadCountDownRes, preloadRes finish,cost =" + (l2 - l1));
+      return;
+    }
+    QLog.d("AVRedPacketManager", 1, "preloadCountDownRes,  mRedPacketGameShower is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ljm
  * JD-Core Version:    0.7.0.1
  */

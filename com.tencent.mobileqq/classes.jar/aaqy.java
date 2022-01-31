@@ -1,38 +1,49 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.os.MqqHandler;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
-public final class aaqy
-  implements Runnable
+public class aaqy
+  implements View.OnClickListener
 {
-  public aaqy(ArrayList paramArrayList1, Resources paramResources, aarg paramaarg, ArrayList paramArrayList2) {}
+  public aaqy(EditInfoActivity paramEditInfoActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    paramView = this.a;
+    if (!this.a.jdField_a_of_type_Boolean) {}
+    for (boolean bool = true;; bool = false)
     {
-      aark localaark = (aark)localIterator.next();
-      if (localaark.a(this.jdField_a_of_type_AndroidContentResResources))
-      {
-        localArrayList1.add(localaark);
+      paramView.jdField_a_of_type_Boolean = bool;
+      if (!this.a.jdField_a_of_type_Boolean) {
+        break;
       }
-      else
-      {
-        localaark.c();
-        localArrayList2.add(localaark);
+      this.a.e();
+      if (this.a.getIntent().getBooleanExtra("key_need_hide_couser_when_emoj", false)) {
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
       }
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837913);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajjy.a(2131637846));
+      if ((!this.a.b) && (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null)) {
+        this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      }
+      return;
     }
-    ThreadManager.getUIHandler().post(new aaqz(this, localArrayList1, localArrayList2));
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
+    if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
+      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    }
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846792);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajjy.a(2131637836));
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaqy
  * JD-Core Version:    0.7.0.1
  */

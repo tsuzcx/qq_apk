@@ -1,65 +1,33 @@
-import android.annotation.TargetApi;
-import android.graphics.SurfaceTexture;
-import android.os.Build.VERSION;
-import android.widget.MediaController;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnPreparedListener;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class ntq
-  implements IMediaPlayer.OnPreparedListener
+  extends ClickableSpan
 {
-  public ntq(TextureVideoView paramTextureVideoView) {}
+  public ntq(CommentInfo paramCommentInfo1, CommentInfo paramCommentInfo2, BaseActivity paramBaseActivity) {}
   
-  @TargetApi(15)
-  public void a_(IMediaPlayer paramIMediaPlayer)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_Int = 2;
-    TextureVideoView localTextureVideoView1 = this.a;
-    TextureVideoView localTextureVideoView2 = this.a;
-    this.a.jdField_d_of_type_Boolean = true;
-    localTextureVideoView2.c = true;
-    localTextureVideoView1.jdField_b_of_type_Boolean = true;
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnPreparedListener != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnPreparedListener.a_(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer);
-    }
-    if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
-      this.a.jdField_a_of_type_AndroidWidgetMediaController.setEnabled(true);
-    }
-    this.a.jdField_d_of_type_Int = paramIMediaPlayer.c();
-    this.a.e = paramIMediaPlayer.d();
-    int i = this.a.g;
-    if (i != 0) {
-      this.a.seekTo(i);
-    }
-    if ((this.a.jdField_d_of_type_Int != 0) && (this.a.e != 0))
-    {
-      if (Build.VERSION.SDK_INT >= 15) {
-        this.a.getSurfaceTexture().setDefaultBufferSize(this.a.jdField_d_of_type_Int, this.a.e);
-      }
-      if (this.a.jdField_b_of_type_Int == 3)
-      {
-        this.a.start();
-        if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
-          this.a.jdField_a_of_type_AndroidWidgetMediaController.show();
-        }
-      }
-    }
-    while (this.a.jdField_b_of_type_Int != 3)
-    {
-      do
-      {
-        return;
-      } while ((this.a.isPlaying()) || ((i == 0) && (this.a.getCurrentPosition() <= 0)) || (this.a.jdField_a_of_type_AndroidWidgetMediaController == null));
-      this.a.jdField_a_of_type_AndroidWidgetMediaController.show(0);
-      return;
-    }
-    this.a.start();
+    nvx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.authorUin, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+    paramView = new nwa(this.b.articleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo).a(nvf.a).b(this.b.area).c(0).a().a();
+    ndn.a(null, nvx.a(this.b.articleInfo), "0X800900D", "0X800900D", 0, 0, String.valueOf(this.b.articleInfo.mArticleID), String.valueOf(this.b.articleInfo.mAlgorithmID), this.b.articleInfo.innerUniqueID, paramView, false);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#4D7CAF"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ntq
  * JD-Core Version:    0.7.0.1
  */

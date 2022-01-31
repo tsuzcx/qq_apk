@@ -1,20 +1,31 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.jumplightalk.CLJumpLightalkConfig;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class agzh
-  implements Runnable
+class agzh
+  implements View.OnClickListener
 {
-  public agzh(QCallDetailActivity paramQCallDetailActivity) {}
+  agzh(agxq paramagxq, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QCallDetailActivity.a(this.a, CLJumpLightalkConfig.a(this.a.app.getCurrentAccountUin()));
+    if (BaseActivity.sTopActivity != null) {
+      arpa.a().a(BaseActivity.sTopActivity, this.jdField_a_of_type_Int);
+    }
+    for (;;)
+    {
+      arpa.m();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent.banner", 2, "sTopActivity is null");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agzh
  * JD-Core Version:    0.7.0.1
  */

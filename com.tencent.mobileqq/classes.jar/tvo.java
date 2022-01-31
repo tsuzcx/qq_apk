@@ -1,23 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.activity.RiskInfoItem;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.Job;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.dispatch.Dispatcher;
 
-public final class tvo
-  implements Parcelable.Creator
+class tvo
+  extends Job<Object, Object, Object>
 {
-  public RiskInfoItem a(Parcel paramParcel)
+  tvo(tvn paramtvn, String paramString, spl paramspl)
   {
-    return new RiskInfoItem(paramParcel, null);
+    super(paramString);
   }
   
-  public RiskInfoItem[] a(int paramInt)
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
   {
-    return new RiskInfoItem[paramInt];
+    sgi.a().dispatch(this.jdField_a_of_type_Spl);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tvo
  * JD-Core Version:    0.7.0.1
  */

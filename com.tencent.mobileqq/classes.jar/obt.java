@@ -1,85 +1,294 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.database.MemoryInfoEntry;
-import com.tencent.biz.qqstory.model.MemoryManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.network.handler.DateCollectionListPageLoader;
-import com.tencent.biz.qqstory.network.handler.DateCollectionListPageLoader.GetCollectionListEvent;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoryDataPuller;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyEntityManagerFactory;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import mqq.app.AppRuntime;
 
 public class obt
-  extends SimpleJob
 {
-  public obt(MemoryDataPuller paramMemoryDataPuller) {}
-  
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public static int a()
   {
-    long l = System.currentTimeMillis();
-    paramJobContext = (MemoryManager)SuperManager.a(19);
-    paramVarArgs = paramJobContext.a(DateCollectionListPageLoader.a(this.a.jdField_b_of_type_JavaLangString));
-    boolean bool;
-    DateCollectionListPageLoader.GetCollectionListEvent localGetCollectionListEvent;
-    if ((paramVarArgs != null) && (paramVarArgs.isEnd == 1))
+    SharedPreferences localSharedPreferences = a(obz.a());
+    if (localSharedPreferences == null)
     {
-      bool = true;
-      List localList = paramJobContext.a(this.a.jdField_b_of_type_JavaLangString, null, 10L);
-      localGetCollectionListEvent = new DateCollectionListPageLoader.GetCollectionListEvent(this.a.c, new ErrorMessage());
-      localGetCollectionListEvent.jdField_b_of_type_Boolean = true;
-      localGetCollectionListEvent.c = true;
-      localGetCollectionListEvent.e = true;
-      localGetCollectionListEvent.jdField_a_of_type_Boolean = false;
-      localGetCollectionListEvent.jdField_a_of_type_JavaUtilList = localList;
-      if (localList.size() <= 0) {
-        break label234;
+      QLog.d("ReadInJoyResetUtils", 2, "[getLocalResetVersion] return 0 for sp is null");
+      return 0;
+    }
+    return localSharedPreferences.getInt("readinjoy_local_reset_config_version", 0);
+  }
+  
+  private static SharedPreferences a(AppRuntime paramAppRuntime)
+  {
+    if (paramAppRuntime == null)
+    {
+      QLog.e("ReadInJoyResetUtils", 1, "[getSharedPreferences] return null for runtime is null");
+      return null;
+    }
+    paramAppRuntime = "readinjoy_sp_reset_" + paramAppRuntime.getAccount();
+    return BaseApplicationImpl.getApplication().getSharedPreferences(paramAppRuntime, 0);
+  }
+  
+  public static void a()
+  {
+    int i = baig.N(BaseApplicationImpl.getApplication(), obz.a());
+    int j = a();
+    QLog.d("ReadInJoyResetUtils", 2, "[maybeClearAllConfigs] remoteVersion=" + i + ", localVersion=" + j);
+    if (i != j) {
+      try
+      {
+        b();
+        ocz.a();
+        d();
+        e();
+        f();
+        a(i);
+        QLog.i("ReadInJoyResetUtils", 1, "[maybeClearAllConfigs] done resetting, update local version to " + i);
+        return;
       }
-      paramJobContext = (VideoCollectionItem)localList.get(localList.size() - 1);
-      label144:
-      if (paramJobContext != null) {
-        break label239;
-      }
-      localGetCollectionListEvent.jdField_a_of_type_Boolean = true;
-      this.a.jdField_b_of_type_Boolean = true;
-      label162:
-      Dispatchers.get().dispatch(localGetCollectionListEvent);
-      this.a.a(localList, false);
-      if (!localGetCollectionListEvent.jdField_a_of_type_Boolean) {
-        break label282;
+      catch (Exception localException)
+      {
+        QLog.e("ReadInJoyResetUtils", 1, "[maybeClearAllConfigs] ", localException);
+        return;
       }
     }
-    label282:
-    for (paramJobContext = "true";; paramJobContext = "false")
+    QLog.d("ReadInJoyResetUtils", 2, "[maybeClearAllConfigs] won't reset");
+  }
+  
+  private static void a(int paramInt)
+  {
+    SharedPreferences localSharedPreferences = a(obz.a());
+    if (localSharedPreferences == null)
     {
-      SLog.d("Q.qqstory.memories:MemoryDataPuller", "Req first page local data ,isEnd = %s ,spend time = %d", new Object[] { paramJobContext, Long.valueOf(System.currentTimeMillis() - l) });
-      this.a.d();
-      return null;
-      bool = false;
-      break;
-      label234:
-      paramJobContext = null;
-      break label144;
-      label239:
-      if ((paramVarArgs != null) && (paramJobContext.dbIndex >= paramVarArgs.maxCollectionIndex))
-      {
-        localGetCollectionListEvent.jdField_a_of_type_Boolean = bool;
-        this.a.jdField_b_of_type_Boolean = true;
-        break label162;
+      QLog.d("ReadInJoyResetUtils", 2, "[putLocalResetVersion] sp == null");
+      return;
+    }
+    localSharedPreferences.edit().putInt("readinjoy_local_reset_config_version", paramInt).apply();
+  }
+  
+  private static void a(SharedPreferences paramSharedPreferences)
+  {
+    if (paramSharedPreferences != null)
+    {
+      List localList = psg.a(paramSharedPreferences.getAll().keySet(), new obu());
+      paramSharedPreferences = paramSharedPreferences.edit();
+      Iterator localIterator = localList.iterator();
+      while (localIterator.hasNext()) {
+        paramSharedPreferences.remove((String)localIterator.next());
       }
-      localGetCollectionListEvent.jdField_a_of_type_Boolean = false;
-      break label162;
+      paramSharedPreferences.commit();
+      QLog.d("ReadInJoyResetUtils", 2, "[removeReadInJoyKeysInSharedPreferences] removed " + localList);
+    }
+  }
+  
+  public static void b()
+  {
+    QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_COMMON_CONFIG - 92 to 0");
+    baig.p(BaseApplicationImpl.getApplication(), 0, obz.a());
+    QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_MERGE_CONFIG_CMD - 79 to 0");
+    baig.o(BaseApplicationImpl.getApplication(), 0, obz.a());
+    QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_FOLDER_CONFIG_CMD - 72 to 0");
+    baig.s(BaseApplicationImpl.getApplication(), obz.a(), 0);
+    QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_FOLDER_SETTING_CMD - 72 to 0");
+    baig.o(BaseApplicationImpl.getApplication(), 0);
+    QLog.i("ReadInJoyResetUtils", 1, "[resetKandianRelatedManageConfigVersions] set type READINJOY_SEARCH_JUMP_URL_CONFIG - 292 to 0");
+    baig.a(BaseApplicationImpl.getApplication(), "readinjoy_search_jump_url_version", obz.a(), 0);
+  }
+  
+  public static void c()
+  {
+    QLog.d("ReadInJoyResetUtils", 2, "[clearSkinResInDefaultSP] clear stuff in mobileQQ SP");
+    a(BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4));
+    QLog.d("ReadInJoyResetUtils", 2, "[clearSkinResInDefaultSP] clear stuff in mobileQQ SP success");
+    QLog.d("ReadInJoyResetUtils", 2, "[clearSkinResInDefaultSP] clear stuff in default SP");
+    a(PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()));
+    QLog.d("ReadInJoyResetUtils", 2, "[clearSkinResInDefaultSP] clear stuff in default SP success");
+  }
+  
+  public static void d()
+  {
+    QLog.d("ReadInJoyResetUtils", 2, "[clearReadInJoySharedPreferences] ");
+    Object localObject = bgmq.a(obz.a(), true, true);
+    if (localObject != null)
+    {
+      localObject = ((SharedPreferences)localObject).edit();
+      ((SharedPreferences.Editor)localObject).clear();
+      if (((SharedPreferences.Editor)localObject).commit())
+      {
+        QLog.d("ReadInJoyResetUtils", 2, "[clearReadInJoySharedPreferences] clear account related sp success");
+        localObject = bgmq.a(obz.a(), false, true);
+        if (localObject == null) {
+          break label138;
+        }
+        localObject = ((SharedPreferences)localObject).edit();
+        ((SharedPreferences.Editor)localObject).clear();
+        if (!((SharedPreferences.Editor)localObject).commit()) {
+          break label126;
+        }
+        QLog.d("ReadInJoyResetUtils", 2, "[clearReadInJoySharedPreferences] clear account unrelated sp success");
+      }
+    }
+    for (;;)
+    {
+      c();
+      g();
+      return;
+      QLog.e("ReadInJoyResetUtils", 1, "[clearReadInJoySharedPreferences] fail when commit account related sp");
+      break;
+      QLog.e("ReadInJoyResetUtils", 1, "[clearReadInJoySharedPreferences] sp is null");
+      break;
+      label126:
+      QLog.e("ReadInJoyResetUtils", 1, "[clearReadInJoySharedPreferences] fail when commit account unrelated sp");
+      continue;
+      label138:
+      QLog.e("ReadInJoyResetUtils", 1, "[clearReadInJoySharedPreferences] sp is null");
+    }
+  }
+  
+  public static void e()
+  {
+    QLog.d("ReadInJoyResetUtils", 2, "clearReadInJoyDatabase");
+    try
+    {
+      atmq localatmq = ogy.a().a();
+      if ((localatmq instanceof ReadInJoyEntityManagerFactory)) {
+        ((ReadInJoyEntityManagerFactory)localatmq).a();
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ReadInJoyResetUtils", 2, "clearReadInJoyDatabase: ", localException);
+    }
+  }
+  
+  public static void f()
+  {
+    QLog.d("ReadInJoyResetUtils", 2, "clearReadInJoyLocalFiles");
+    h();
+    i();
+    j();
+  }
+  
+  private static void g()
+  {
+    QLog.d("ReadInJoyResetUtils", 2, "[clearSettings] QQSETTING_KANDIAN_DOWNLOAD_PIC_IN_WIFI_ONLY set to false");
+    SettingCloneUtil.writeValue(BaseApplicationImpl.getApplication(), obz.a(), null, "qqsetting_kandian_download_pic_flag", false);
+    QLog.d("ReadInJoyResetUtils", 2, "[clearSettings] done");
+  }
+  
+  private static void h()
+  {
+    QLog.d("ReadInJoyResetUtils", 2, "clearSkinRes");
+    Object localObject = new File(ajed.aU);
+    if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
+    {
+      localObject = ((File)localObject).listFiles();
+      if ((localObject != null) && (localObject.length > 0))
+      {
+        int j = localObject.length;
+        int i = 0;
+        for (;;)
+        {
+          if (i < j)
+          {
+            String str = localObject[i];
+            try
+            {
+              if (str.getName().toLowerCase().contains("readinjoy"))
+              {
+                str = str.getAbsolutePath();
+                bace.a(str, false);
+                QLog.d("ReadInJoyResetUtils", 2, "[clearSkinRes] deleted " + str);
+              }
+              i += 1;
+            }
+            catch (Exception localException2)
+            {
+              for (;;)
+              {
+                QLog.e("ReadInJoyResetUtils", 1, "[clearSkinRes] ", localException2);
+              }
+            }
+          }
+        }
+      }
+    }
+    try
+    {
+      localObject = (png)obz.a().getManager(271);
+      if (localObject != null)
+      {
+        ((png)localObject).a();
+        QLog.d("ReadInJoyResetUtils", 2, "[clearSkinRes] successfully delete guide data in db");
+        return;
+      }
+      QLog.e("ReadInJoyResetUtils", 1, "[clearSkinRes] operation manager is null");
+      return;
+    }
+    catch (Exception localException1)
+    {
+      QLog.e("ReadInJoyResetUtils", 1, "[clearSkinRes] ", localException1);
+    }
+  }
+  
+  private static void i()
+  {
+    QLog.d("ReadInJoyResetUtils", 2, "clearProteusStyles");
+    rdz.b();
+  }
+  
+  private static void j()
+  {
+    QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint");
+    try
+    {
+      Object localObject = ((QQAppInterface)obz.a()).a();
+      ((QQMessageFacade)localObject).a(ajed.az, 7220);
+      QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: KANDIAN_MERGE_UIN cleared");
+      ((QQMessageFacade)localObject).a(ajed.aP, 1008);
+      QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: KANDIAN_SUBSCRIBE_UIN cleared");
+      ((QQMessageFacade)localObject).a(ajed.ay, 1008);
+      QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: NEW_KANDIAN_UIN UIN_TYPE_PUBLIC_ACCOUNT cleared");
+      ((QQMessageFacade)localObject).a(ajed.ay, 0);
+      QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: NEW_KANDIAN_UIN UIN_TYPE_FRIEND cleared");
+      ((QQMessageFacade)localObject).a(ajed.ax, 1008);
+      QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: OLD_KANDIAN_UIN UIN_TYPE_PUBLIC_ACCOUNT cleared");
+      ((QQMessageFacade)localObject).a(ajed.ax, 0);
+      QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: NEW_KANDIAN_UIN UIN_TYPE_FRIEND cleared");
+      ((QQMessageFacade)localObject).a(ajed.aO, 1008);
+      QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: WEISHI_UIN cleared");
+      ((QQMessageFacade)localObject).a(ajed.aQ, 1008);
+      QLog.d("ReadInJoyResetUtils", 2, "clearRedPoint: KANDIAN_DAILY cleared");
+      localObject = bgmq.a((QQAppInterface)obz.a(), 1);
+      if (localObject != null)
+      {
+        if (((SharedPreferences)localObject).edit().clear().commit())
+        {
+          QLog.d("ReadInJoyResetUtils", 2, "[clearRedPoint] clear red point in sp xml success");
+          return;
+        }
+        QLog.d("ReadInJoyResetUtils", 2, "[clearRedPoint] clear red point in sp xml failed");
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ReadInJoyResetUtils", 2, "clearRedPoint: ", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     obt
  * JD-Core Version:    0.7.0.1
  */

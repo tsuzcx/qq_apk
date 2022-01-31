@@ -1,35 +1,84 @@
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.apollo.script.SpriteCommFunc;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForApollo;
-import com.tencent.mobileqq.persistence.qslowtable.QSlowTableManager;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFilePreviewRspBody;
+import tencent.im.oidb.cmd0x6d8.oidb_0x6d8.RspBody;
 
-class wlu
-  implements Runnable
+public abstract class wlu
+  extends mmn
 {
-  wlu(wlt paramwlt) {}
-  
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("chatHistory.troop.msgList", 2, "do delete uniseq=" + this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq + ",id=" + this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getId());
+    if ((paramInt != 0) || (paramArrayOfByte == null))
+    {
+      a(false, paramInt, null, null, 0, 0, null, null, null, null, paramBundle);
+      return;
     }
-    QSlowTableManager localQSlowTableManager = (QSlowTableManager)this.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.a.getManager(200);
-    if (localQSlowTableManager != null) {
-      localQSlowTableManager.a(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
+    Object localObject = new oidb_0x6d8.RspBody();
+    try
+    {
+      ((oidb_0x6d8.RspBody)localObject).mergeFrom(paramArrayOfByte);
+      localObject.toString();
+      if (((oidb_0x6d8.RspBody)localObject).file_preview_rsp.has()) {
+        break label106;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopFileProtocol", 2, "no file_preview rsp.");
+      }
+      a(false, paramInt, null, null, 0, 0, null, null, null, null, paramBundle);
+      return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.a.a().a(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, true);
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForApollo)) {
-      SpriteCommFunc.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.a, "chat_history_start_del_msg");
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte = paramBundle;
+    }
+    a(false, paramInt, null, null, 0, 0, null, null, null, null, paramArrayOfByte);
+    return;
+    label106:
+    paramArrayOfByte = (oidb_0x6d8.GetFilePreviewRspBody)((oidb_0x6d8.RspBody)localObject).file_preview_rsp.get();
+    if (!paramArrayOfByte.bytes_download_url.has())
+    {
+      a(false, paramInt, null, null, 0, 0, null, null, null, null, paramBundle);
+      return;
+    }
+    int i = paramArrayOfByte.int32_ret_code.get();
+    localObject = paramArrayOfByte.str_ret_msg.get();
+    String str1 = paramArrayOfByte.str_client_wording.get();
+    int j = paramArrayOfByte.int32_server_ip.get();
+    int k = paramArrayOfByte.int32_server_port.get();
+    String str2 = paramArrayOfByte.str_download_dns.get();
+    ByteStringMicro localByteStringMicro1 = paramArrayOfByte.bytes_download_url.get();
+    ByteStringMicro localByteStringMicro2 = paramArrayOfByte.bytes_reserved_field.get();
+    String str3 = paramArrayOfByte.str_cookie_val.get();
+    if (paramBundle == null) {}
+    for (paramArrayOfByte = new Bundle();; paramArrayOfByte = paramBundle)
+    {
+      try
+      {
+        if (!TextUtils.isEmpty(str2))
+        {
+          paramArrayOfByte.putString("strHttpsDomain", str2);
+          paramArrayOfByte.putInt("httpsPort", 443);
+        }
+        a(true, i, (String)localObject, str1, j, k, str2, localByteStringMicro1, str3, localByteStringMicro2, paramArrayOfByte);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle) {}
+      break;
     }
   }
+  
+  public abstract void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, ByteStringMicro paramByteStringMicro1, String paramString4, ByteStringMicro paramByteStringMicro2, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wlu
  * JD-Core Version:    0.7.0.1
  */

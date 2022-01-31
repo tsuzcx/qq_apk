@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class Oidb_0xb6e$AppFriendsInfo
-  extends MessageMicro
+  extends MessageMicro<AppFriendsInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField figure_url = PBField.initString("");
@@ -27,7 +27,7 @@ public final class Oidb_0xb6e$AppFriendsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0xb6e.Oidb_0xb6e.AppFriendsInfo
  * JD-Core Version:    0.7.0.1
  */

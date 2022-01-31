@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqavopensdkSsoTunnel$SdkData
-  extends MessageMicro
+  extends MessageMicro<SdkData>
 {
   public static final int BYTES_SDK_APP_TOKEN_FIELD_NUMBER = 2;
   public static final int CMLB_TEST_FIELD_NUMBER = 9;

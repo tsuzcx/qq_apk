@@ -203,12 +203,12 @@ public class YellowTipsLayout
   
   private void init(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2130969858, this, true);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131494707, this, true);
     paramContext.setClickable(true);
     paramContext.setOnClickListener(this);
-    this.mWariningView = ((ImageView)findViewById(2131368276));
-    this.mText = ((TextView)findViewById(2131368277));
-    this.mArrowView = ((ImageView)findViewById(2131368278));
+    this.mWariningView = ((ImageView)findViewById(2131302147));
+    this.mText = ((TextView)findViewById(2131302146));
+    this.mArrowView = ((ImageView)findViewById(2131302144));
   }
   
   public void onClick(View paramView)
@@ -328,7 +328,7 @@ public class YellowTipsLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.YellowTipsLayout
  * JD-Core Version:    0.7.0.1
  */

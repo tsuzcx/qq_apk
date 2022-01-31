@@ -1,49 +1,39 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import com.tencent.mobileqq.mybusiness.MyBusinessManager;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.view.ViewTreeObserver;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.HorizontalListView;
+import com.tencent.widget.SwipListView;
 
 public class aetq
-  extends ContactBindObserver
+  implements aibk
 {
-  boolean jdField_a_of_type_Boolean = false;
+  public aetq(AddContactsView paramAddContactsView) {}
   
-  public aetq(MyBusinessManager paramMyBusinessManager) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void a()
   {
-    if ((this.jdField_a_of_type_Boolean) && (paramBoolean2))
-    {
-      RespondQueryQQBindingStat localRespondQueryQQBindingStat = ((PhoneContactManager)this.jdField_a_of_type_ComTencentMobileqqMybusinessMyBusinessManager.a.getManager(10)).a();
-      if ((localRespondQueryQQBindingStat == null) || (TextUtils.isEmpty(localRespondQueryQQBindingStat.mobileNo))) {
-        break label95;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PhoneContact", 2, "mybusiness ContactBindObserver onQueryBindState");
-      }
-      ((MyBusinessManager)this.jdField_a_of_type_ComTencentMobileqqMybusinessMyBusinessManager.a.getManager(48)).a(localRespondQueryQQBindingStat.mobileNo, localRespondQueryQQBindingStat.type, "", false);
-      this.jdField_a_of_type_Boolean = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onAllRecommendsCaneled _B");
     }
-    label95:
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("PhoneContact", 2, "mybusiness bindInfo null ");
+    this.a.b.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(8);
+    this.a.jdField_a_of_type_ComTencentWidgetSwipListView.setVisibility(8);
   }
   
-  protected void c(boolean paramBoolean, int paramInt)
+  public void b()
   {
-    if ((paramBoolean) && (paramInt == 0)) {
-      this.jdField_a_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onRecommendsAvailable _B");
     }
+    this.a.b.setVisibility(0);
+    this.a.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
+    this.a.e();
+    this.a.jdField_a_of_type_ComTencentWidgetSwipListView.getViewTreeObserver().addOnGlobalLayoutListener(new aetr(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aetq
  * JD-Core Version:    0.7.0.1
  */

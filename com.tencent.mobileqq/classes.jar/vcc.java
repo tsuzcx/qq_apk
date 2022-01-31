@@ -1,31 +1,17 @@
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.FilePicItemBuilder;
-import com.tencent.mobileqq.customviews.PicProgressView;
-import com.tencent.mobileqq.widget.BubbleImageView;
-
 public class vcc
-  extends BaseBubbleBuilder.ViewHolder
 {
-  public FrameLayout a;
-  public RelativeLayout a;
-  public URLDrawable a;
-  public PicProgressView a;
-  public BubbleImageView a;
-  public boolean a;
+  public int a;
+  public String a;
+  public int[] a;
+  public int b;
+  public int c;
+  public int d;
   public int e;
   public int f;
-  
-  public vcc(FilePicItemBuilder paramFilePicItemBuilder)
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vcc
  * JD-Core Version:    0.7.0.1
  */

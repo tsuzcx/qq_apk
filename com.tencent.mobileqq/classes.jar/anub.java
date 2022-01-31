@@ -1,14 +1,20 @@
-import com.tencent.mobileqq.app.CardObserver;
-import dov.com.qq.im.capture.data.ComboLockManager;
+import android.media.AudioManager.OnAudioFocusChangeListener;
 
-public class anub
-  extends CardObserver
+class anub
+  implements AudioManager.OnAudioFocusChangeListener
 {
-  public anub(ComboLockManager paramComboLockManager) {}
+  anub(anua paramanua) {}
+  
+  public void onAudioFocusChange(int paramInt)
+  {
+    if ((anua.a(this.a) != null) && (paramInt == -1) && (anua.a(this.a) != null)) {
+      anua.a(this.a).c(false);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anub
  * JD-Core Version:    0.7.0.1
  */

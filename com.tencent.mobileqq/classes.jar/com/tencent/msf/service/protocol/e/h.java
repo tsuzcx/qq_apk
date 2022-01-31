@@ -12,10 +12,10 @@ public final class h
 {
   static ArrayList e;
   static ArrayList f;
-  public ArrayList a;
-  public int b;
-  public ArrayList c;
-  public byte d;
+  public ArrayList a = null;
+  public int b = 0;
+  public ArrayList c = null;
+  public byte d = 0;
   
   static
   {

@@ -1,33 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 
-public final class aipk
-  implements DialogInterface.OnClickListener
+class aipk
+  extends BroadcastReceiver
 {
-  public aipk(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
+  aipk(aipj paramaipj) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    SubAccountAssistantForward.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    SubAccountAssistantForward.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    SubAccountAssistantForward.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    SubAccountAssistantForward.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    paramDialogInterface = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, SplashActivity.class);
-    paramDialogInterface.putExtra("tab_index", MainFragment.a);
-    paramDialogInterface.setFlags(67108864);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramDialogInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+    if (aipj.a(this.a) == null) {}
+    do
+    {
+      do
+      {
+        return;
+        if ("android.intent.action.SCREEN_ON".equals(paramIntent.getAction()))
+        {
+          if (aipj.a(this.a))
+          {
+            aipj.a(this.a).runRenderTask(aipj.a(this.a));
+            return;
+          }
+          aipj.a(this.a);
+          return;
+        }
+      } while (!"android.intent.action.SCREEN_OFF".equals(paramIntent.getAction()));
+      if (!aipj.a(this.a)) {
+        break;
+      }
+    } while (aipj.a(this.a) == null);
+    aipj.a(this.a).runRenderTask(aipj.b(this.a));
+    return;
+    aipj.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aipk
  * JD-Core Version:    0.7.0.1
  */

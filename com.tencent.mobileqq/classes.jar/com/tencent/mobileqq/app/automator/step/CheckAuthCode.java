@@ -1,36 +1,36 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import com.tencent.mobileqq.app.ConfigHandler;
-import com.tencent.mobileqq.app.ConfigObserver;
+import ajgd;
+import ajgf;
+import ajww;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import zwk;
 
 public class CheckAuthCode
   extends AsyncStep
 {
-  private ConfigObserver a;
+  private ajgf a;
   
-  protected int a()
+  public int a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver == null)
+    if (this.jdField_a_of_type_Ajgf == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver = new zwk(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.a(this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver);
+      this.jdField_a_of_type_Ajgf = new ajww(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(this.jdField_a_of_type_Ajgf);
     }
-    if (((ConfigHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.a(4)).a()) {
+    if (((ajgd)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(4)).a()) {
       return 2;
     }
     return 7;
   }
   
-  public void c()
+  public void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver != null)
+    if (this.jdField_a_of_type_Ajgf != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppConfigObserver = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Ajgf);
+      this.jdField_a_of_type_Ajgf = null;
     }
   }
 }

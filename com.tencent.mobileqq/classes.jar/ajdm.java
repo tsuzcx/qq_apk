@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.image.URLImageView;
 
-class ajdm
-  implements Runnable
+public class ajdm
 {
-  ajdm(ajdk paramajdk) {}
+  View jdField_a_of_type_AndroidViewView;
+  public ImageView a;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public void run()
-  {
-    this.a.a.a(1);
-  }
+  public ajdm(ajdl paramajdl) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajdm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,35 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-
 public class tsj
-  implements Runnable
 {
-  public tsj(QQSettingSettingActivity paramQQSettingSettingActivity) {}
+  private int a = 0;
   
-  public void run()
+  tsj(int paramInt)
   {
-    ReportController.b(this.a.app, "dc00898", "", "", "0X8008122", "0X8008122", 0, 0, "", "", "", "");
+    this.a = paramInt;
+  }
+  
+  public static tsj a(int paramInt)
+  {
+    return new tsj(paramInt);
+  }
+  
+  public int a()
+  {
+    switch (this.a)
+    {
+    default: 
+      return this.a;
+    }
+    return 0;
+  }
+  
+  public int b()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tsj
  * JD-Core Version:    0.7.0.1
  */

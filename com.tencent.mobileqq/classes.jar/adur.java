@@ -1,23 +1,25 @@
-import android.app.Activity;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.forward.ForwardShortVideoOption;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class adur
-  implements Runnable
+class adur
+  implements Animation.AnimationListener
 {
-  public adur(ForwardShortVideoOption paramForwardShortVideoOption, URLDrawable paramURLDrawable, QQCustomDialog paramQQCustomDialog, boolean paramBoolean, int paramInt1, int paramInt2) {}
+  adur(aduq paramaduq) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    URLDrawableHelper.a(this.jdField_a_of_type_ComTencentImageURLDrawable, null, false);
-    this.jdField_a_of_type_ComTencentMobileqqForwardForwardShortVideoOption.a.runOnUiThread(new adus(this));
+    if (aduq.a(this.a) != null) {
+      aduq.a(this.a).b();
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adur
  * JD-Core Version:    0.7.0.1
  */

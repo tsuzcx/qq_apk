@@ -1,20 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import android.graphics.Bitmap;
 
-public class uld
-  implements DialogInterface.OnDismissListener
+public abstract interface uld
 {
-  public uld(UpgradeActivity paramUpgradeActivity) {}
+  public abstract Bitmap a(Bitmap paramBitmap);
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    this.a.finish();
-  }
+  public abstract String a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uld
  * JD-Core Version:    0.7.0.1
  */

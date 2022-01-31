@@ -1,74 +1,77 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.together.TogetherUIData;
+import com.tencent.qphone.base.util.QLog;
 
-public class acyk
-  extends FMObserver
+class acyk
+  extends axnc
 {
-  public acyk(QfileCloudFileTabView paramQfileCloudFileTabView) {}
+  acyk(acyj paramacyj) {}
   
-  protected void a(int paramInt, String paramString1, String paramString2)
+  protected void a(boolean paramBoolean, axnf paramaxnf, int paramInt, String paramString)
   {
-    super.a(paramInt, paramString1, paramString2);
-    this.a.b(false);
-  }
-  
-  protected void a(Integer paramInteger, long paramLong, String paramString)
-  {
-    FileManagerUtil.a(paramLong, paramInteger.intValue(), paramString);
-  }
-  
-  protected void a(String paramString1, boolean paramBoolean, int paramInt1, String paramString2, List paramList, int paramInt2)
-  {
-    QfileCloudFileTabView.b(this.a, true);
-    QfileCloudFileTabView.c(this.a, paramBoolean);
-    this.a.jdField_c_of_type_Int = paramInt2;
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
-    {
-      WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)localIterator.next();
-      paramInt1 = FileManagerUtil.a(localWeiYunFileInfo.jdField_c_of_type_JavaLangString);
-      String str;
-      if (paramInt1 == 0)
-      {
-        str = QfileCloudFileTabView.a(this.a).a().a(localWeiYunFileInfo.a, localWeiYunFileInfo.e, 3, localWeiYunFileInfo);
-        if (str != null) {
-          localWeiYunFileInfo.h = str;
-        }
-      }
-      else if (2 == paramInt1)
-      {
-        str = QfileCloudFileTabView.b(this.a).a().b(localWeiYunFileInfo.a, localWeiYunFileInfo.e, 2, localWeiYunFileInfo);
-        if (str != null) {
-          localWeiYunFileInfo.h = str;
-        }
-      }
+    if (!acyj.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(paramaxnf.e)) {
+      super.a(paramBoolean, paramaxnf, paramInt, paramString);
     }
-    if (!paramString1.equals(this.a.b)) {
+    label202:
+    do
+    {
+      return;
+      if (paramBoolean)
+      {
+        acyj.a(this.a).setTogetherSession(paramaxnf);
+        if (paramaxnf.g == 3)
+        {
+          this.a.b();
+          paramBoolean = false;
+          if (QLog.isColorLevel()) {
+            QLog.d("TogetherControlHelper.helper", 2, new Object[] { "onGetPlayState success, session.serviceType=", Integer.valueOf(paramaxnf.d), " session.userState=", Integer.valueOf(paramaxnf.h), " needPanel=", Boolean.valueOf(paramBoolean) });
+          }
+          if (paramBoolean)
+          {
+            if (axng.a(acyj.a(this.a).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramaxnf)) {
+              break label202;
+            }
+            this.a.b();
+          }
+        }
+        for (;;)
+        {
+          acyj.a(this.a);
+          return;
+          switch (paramaxnf.h)
+          {
+          default: 
+            paramBoolean = false;
+            break;
+          case 1: 
+          case 2: 
+          case 3: 
+            paramBoolean = true;
+            break;
+            acyj.a(this.a);
+          }
+        }
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("TogetherControlHelper.helper", 2, new Object[] { "onGetPlayState false, ", Integer.valueOf(paramInt), " ", paramString });
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt == 2)
+    {
+      if (((paramObject instanceof azrn)) && (acyj.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(((azrn)paramObject).a)) && ((acyj.a(this.a) instanceof aejb))) {
+        ((aejb)acyj.a(this.a)).a().a(1000, new Object[0]);
+      }
       return;
     }
-    if (QfileCloudFileTabView.b(this.a)) {
-      this.a.a.clear();
-    }
-    this.a.a.addAll(paramList);
-    if (!this.a.b.equalsIgnoreCase("picture")) {
-      this.a.setListFooter();
-    }
-    this.a.jdField_c_of_type_JavaLangString = paramString2;
-    this.a.jdField_c_of_type_Boolean = true;
-    this.a.g();
-    this.a.a();
+    super.onUpdate(paramInt, paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acyk
  * JD-Core Version:    0.7.0.1
  */

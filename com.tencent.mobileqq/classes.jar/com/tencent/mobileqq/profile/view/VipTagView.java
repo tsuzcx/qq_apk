@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.profile.view;
 
-import agxd;
-import agxe;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -14,23 +12,25 @@ import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
-import com.tencent.mobileqq.profile.view.helper.ShakeEffectGenerator;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.drag_n_drop.DragAndDropDetector.DragSource;
-import com.tencent.mobileqq.utils.drag_n_drop.DragAndDropDetector.Draggable;
-import com.tencent.mobileqq.utils.drag_n_drop.DragAndDropDetector.DropTarget;
+import aubo;
+import aubp;
+import aubs;
+import bajd;
+import bakn;
+import bako;
+import bakp;
 
 public final class VipTagView
   extends TextView
-  implements DragAndDropDetector.Draggable
+  implements bako
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131558973, 2131558974, 2131558975, 2131558976, 2131558977 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131167271, 2131167272, 2131167273, 2131167274, 2131167275 };
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private ShakeEffectGenerator jdField_a_of_type_ComTencentMobileqqProfileViewHelperShakeEffectGenerator;
-  private ValueAnimation jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation;
+  private aubs jdField_a_of_type_Aubs;
+  private bajd<Float> jdField_a_of_type_Bajd;
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   
@@ -69,7 +69,7 @@ public final class VipTagView
   
   private void a(int paramInt)
   {
-    setBackgroundResource(2130844258);
+    setBackgroundResource(2130846307);
     if ((paramInt > 0) && (paramInt <= 5))
     {
       Object localObject = getBackground();
@@ -107,19 +107,19 @@ public final class VipTagView
   {
     setClickable(true);
     Resources localResources = getResources();
-    setTextSize(0, localResources.getDimensionPixelSize(2131558978));
-    int i = localResources.getDimensionPixelSize(2131558979);
+    setTextSize(0, localResources.getDimensionPixelSize(2131167262));
+    int i = localResources.getDimensionPixelSize(2131167267);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16777216);
     this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(i);
     this.jdField_a_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.LEFT);
     this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap((int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText("+1"), i, Bitmap.Config.ARGB_4444);
     new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap).drawText("+1", 0.0F, i, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewHelperShakeEffectGenerator = new ShakeEffectGenerator(this);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation = new ValueAnimation(Float.valueOf(0.0F), Float.valueOf(1.0F), new agxd(this));
-    this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.setDuration(800L);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.setInterpolator(new DecelerateInterpolator());
-    this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.setAnimationListener(new agxe(this));
+    this.jdField_a_of_type_Aubs = new aubs(this);
+    this.jdField_a_of_type_Bajd = new bajd(Float.valueOf(0.0F), Float.valueOf(1.0F), new aubo(this));
+    this.jdField_a_of_type_Bajd.setDuration(800L);
+    this.jdField_a_of_type_Bajd.setInterpolator(new DecelerateInterpolator());
+    this.jdField_a_of_type_Bajd.setAnimationListener(new aubp(this));
   }
   
   private void c()
@@ -141,23 +141,23 @@ public final class VipTagView
   {
     this.jdField_a_of_type_Int += 1;
     this.b = true;
-    startAnimation(this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation);
+    startAnimation(this.jdField_a_of_type_Bajd);
     c();
   }
   
-  public void a(DragAndDropDetector.DragSource paramDragSource, float paramFloat1, float paramFloat2) {}
+  public void a(bakn parambakn, float paramFloat1, float paramFloat2) {}
   
-  public void a(DragAndDropDetector.DragSource paramDragSource, DragAndDropDetector.DropTarget paramDropTarget, float paramFloat1, float paramFloat2) {}
+  public void a(bakn parambakn, bakp parambakp, float paramFloat1, float paramFloat2) {}
   
   public boolean a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqProfileViewHelperShakeEffectGenerator.a();
+    return this.jdField_a_of_type_Aubs.a();
   }
   
-  public boolean a(DragAndDropDetector.DragSource paramDragSource, float paramFloat1, float paramFloat2)
+  public boolean a(bakn parambakn, float paramFloat1, float paramFloat2)
   {
     bringToFront();
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewHelperShakeEffectGenerator.b();
+    this.jdField_a_of_type_Aubs.b();
     return true;
   }
   
@@ -201,10 +201,10 @@ public final class VipTagView
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewHelperShakeEffectGenerator.a();
+      this.jdField_a_of_type_Aubs.a();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewHelperShakeEffectGenerator.b();
+    this.jdField_a_of_type_Aubs.b();
   }
   
   public void setTagColor(int paramInt1, int paramInt2)

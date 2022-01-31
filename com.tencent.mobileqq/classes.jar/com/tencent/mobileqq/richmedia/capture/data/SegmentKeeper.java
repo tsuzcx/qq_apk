@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.richmedia.capture.data;
 
-import ahmm;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.util.Pair;
 import com.tencent.sveffects.SLog;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,34 +17,43 @@ import org.json.JSONObject;
 public class SegmentKeeper
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ahmm();
-  private static long jdField_b_of_type_Long = 0L;
-  private int jdField_a_of_type_Int = 1;
-  private long jdField_a_of_type_Long = 9223372036854775807L;
-  private List jdField_a_of_type_JavaUtilList = new LinkedList();
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean jdField_b_of_type_Boolean = false;
-  private boolean c = true;
-  private boolean d = false;
-  private boolean e = false;
-  private boolean f = false;
+  public static final Parcelable.Creator<SegmentKeeper> CREATOR = new SegmentKeeper.1();
+  public static final String KEY_ADJUSTTIME_VALID = "adjusttime_valid";
+  public static final String KEY_DURATION = "duration_ms";
+  public static final String KEY_MODE = "mode";
+  public static final String KEY_SEGMENT_END = "end_ms";
+  public static final String KEY_SEGMENT_LIST = "segments";
+  public static final String KEY_SEGMENT_START = "start_ms";
+  public static final int MODE_LOOP = 1;
+  public static final int MODE_NORMAL = 0;
+  public static final String TAG = "SegmentKeeper";
+  private static long mAdjustTime = 0L;
+  private boolean mAdjustTimeValid = true;
+  private boolean mCurIn = false;
+  private boolean mDataLocked = false;
+  private boolean mDisable = false;
+  private long mDuration = 9223372036854775807L;
+  private boolean mLastIn = false;
+  private int mMode = 1;
+  private boolean mReverse = false;
+  private List<Pair<Long, Long>> mSegmentRanges = new LinkedList();
   
   public SegmentKeeper() {}
   
   public SegmentKeeper(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_Long = paramParcel.readLong();
+    this.mMode = paramParcel.readInt();
+    this.mDuration = paramParcel.readLong();
     if (paramParcel.readInt() == 1)
     {
       bool1 = true;
-      this.c = bool1;
+      this.mAdjustTimeValid = bool1;
       if (paramParcel.readInt() != 1) {
         break label205;
       }
       bool1 = true;
       label106:
-      this.jdField_a_of_type_Boolean = bool1;
+      this.mReverse = bool1;
       if (paramParcel.readInt() != 1) {
         break label211;
       }
@@ -52,9 +62,9 @@ public class SegmentKeeper
     label211:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.jdField_b_of_type_Boolean = bool1;
+      this.mDataLocked = bool1;
       int j = paramParcel.readInt();
-      this.jdField_a_of_type_JavaUtilList.clear();
+      this.mSegmentRanges.clear();
       if (j <= 0) {
         return;
       }
@@ -62,7 +72,7 @@ public class SegmentKeeper
       {
         long l1 = paramParcel.readLong();
         long l2 = paramParcel.readLong();
-        this.jdField_a_of_type_JavaUtilList.add(new Pair(Long.valueOf(l1), Long.valueOf(l2)));
+        this.mSegmentRanges.add(new Pair(Long.valueOf(l1), Long.valueOf(l2)));
         i += 1;
       }
       bool1 = false;
@@ -74,122 +84,115 @@ public class SegmentKeeper
   
   public SegmentKeeper(SegmentKeeper paramSegmentKeeper)
   {
-    a(paramSegmentKeeper);
+    set(paramSegmentKeeper);
   }
   
-  public static void b(long paramLong)
+  public static void adjustTime(long paramLong)
   {
-    jdField_b_of_type_Long = paramLong;
+    mAdjustTime = paramLong;
   }
   
-  public List a()
+  private void sortList()
   {
-    LinkedList localLinkedList = new LinkedList();
-    localLinkedList.addAll(this.jdField_a_of_type_JavaUtilList);
-    return localLinkedList;
+    SegmentKeeper.SortComparator localSortComparator = new SegmentKeeper.SortComparator(this, null);
+    Collections.sort(this.mSegmentRanges, localSortComparator);
   }
   
-  public JSONObject a()
+  public void addSegment(long paramLong1, long paramLong2)
   {
-    JSONObject localJSONObject = new JSONObject();
-    try
+    if (this.mDataLocked)
     {
-      localJSONObject.put("duration_ms", this.jdField_a_of_type_Long);
-      localJSONObject.put("adjusttime_valid", this.c);
-      localJSONObject.put("mode", this.jdField_a_of_type_Int);
-      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
-      {
-        JSONArray localJSONArray = new JSONArray();
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator.hasNext())
-        {
-          Object localObject = (Pair)localIterator.next();
-          long l1 = ((Long)((Pair)localObject).first).longValue();
-          long l2 = ((Long)((Pair)localObject).second).longValue();
-          localObject = new JSONObject();
-          ((JSONObject)localObject).put("start_ms", l1);
-          ((JSONObject)localObject).put("end_ms", l2);
-          localJSONArray.put(localObject);
-        }
-      }
-      return localJSONObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      SLog.a("SegmentKeeper", "toJSONObject exception:" + localJSONException.toString());
-    }
-    localJSONObject.put("segments", localJSONException);
-    return localJSONObject;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_b_of_type_Boolean) {
-      SLog.d("SegmentKeeper", "clearSegments, data is locked!!");
-    }
-    while (this.jdField_a_of_type_JavaUtilList.size() == 0) {
+      SLog.d("SegmentKeeper", "addSegment, data is locked!!");
       return;
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
+    Pair localPair = new Pair(Long.valueOf(paramLong1), Long.valueOf(paramLong2));
+    this.mSegmentRanges.add(localPair);
   }
   
-  public void a(int paramInt)
+  public void addSegment(Pair<Long, Long> paramPair)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if (paramPair == null) {
+      return;
+    }
+    if (this.mDataLocked)
+    {
+      SLog.d("SegmentKeeper", "addSegment, data is locked!!");
+      return;
+    }
+    paramPair = new Pair(paramPair.first, paramPair.second);
+    this.mSegmentRanges.add(paramPair);
   }
   
-  public void a(long paramLong)
+  public void addSegment(List<Pair<Long, Long>> paramList)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {}
+    for (;;)
+    {
+      return;
+      if (this.mDataLocked)
+      {
+        SLog.d("SegmentKeeper", "addSegment, data is locked!!");
+        return;
+      }
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        addSegment((Pair)paramList.next());
+      }
+    }
+  }
+  
+  public void changeNormalMode(long paramLong)
   {
     SLog.d("SegmentKeeper", "changeNomalMode begin:" + toString());
-    if (this.jdField_a_of_type_Int == 0) {
+    if (this.mMode == 0) {
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilList.size() == 0)
+    if (this.mSegmentRanges.size() == 0)
     {
-      this.jdField_a_of_type_Long = paramLong;
+      this.mDuration = paramLong;
       return;
     }
     Iterator localIterator;
     Pair localPair;
-    if (paramLong <= this.jdField_a_of_type_Long)
+    if (paramLong <= this.mDuration)
     {
-      this.jdField_a_of_type_Long = paramLong;
+      this.mDuration = paramLong;
       localLinkedList = new LinkedList();
-      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      localIterator = this.mSegmentRanges.iterator();
       while (localIterator.hasNext())
       {
         localPair = (Pair)localIterator.next();
         l2 = ((Long)localPair.first).longValue();
         l1 = ((Long)localPair.second).longValue();
-        if (l2 < this.jdField_a_of_type_Long)
+        if (l2 < this.mDuration)
         {
           paramLong = l1;
-          if (l1 > this.jdField_a_of_type_Long) {
-            paramLong = this.jdField_a_of_type_Long;
+          if (l1 > this.mDuration) {
+            paramLong = this.mDuration;
           }
           localLinkedList.add(new Pair(Long.valueOf(l2), Long.valueOf(paramLong)));
         }
       }
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_a_of_type_JavaUtilList.addAll(localLinkedList);
+      this.mSegmentRanges.clear();
+      this.mSegmentRanges.addAll(localLinkedList);
       SLog.d("SegmentKeeper", "changeNomalMode end:" + toString());
       return;
     }
     LinkedList localLinkedList = new LinkedList();
-    long l2 = paramLong / this.jdField_a_of_type_Long;
+    long l2 = paramLong / this.mDuration;
     for (long l1 = 0L; l1 < l2; l1 = 1L + l1)
     {
-      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      localIterator = this.mSegmentRanges.iterator();
       while (localIterator.hasNext())
       {
         localPair = (Pair)localIterator.next();
-        localLinkedList.add(new Pair(Long.valueOf(((Long)localPair.first).longValue() + this.jdField_a_of_type_Long * l1), Long.valueOf(((Long)localPair.second).longValue() + this.jdField_a_of_type_Long * l1)));
+        localLinkedList.add(new Pair(Long.valueOf(((Long)localPair.first).longValue() + this.mDuration * l1), Long.valueOf(((Long)localPair.second).longValue() + this.mDuration * l1)));
       }
     }
-    l1 = paramLong - this.jdField_a_of_type_Long * l2;
+    l1 = paramLong - this.mDuration * l2;
     if (l1 > 0L)
     {
-      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      localIterator = this.mSegmentRanges.iterator();
       while (localIterator.hasNext())
       {
         localPair = (Pair)localIterator.next();
@@ -208,73 +211,51 @@ public class SegmentKeeper
         }
       }
     }
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(localLinkedList);
+    this.mDuration = paramLong;
+    this.mSegmentRanges.clear();
+    this.mSegmentRanges.addAll(localLinkedList);
     SLog.d("SegmentKeeper", "changeNomalMode end:" + toString());
   }
   
-  public void a(Pair paramPair)
+  public void clearSegments()
   {
-    if (paramPair == null) {
+    if (this.mDataLocked) {
+      SLog.d("SegmentKeeper", "clearSegments, data is locked!!");
+    }
+    while (this.mSegmentRanges.size() == 0) {
       return;
     }
-    if (this.jdField_b_of_type_Boolean)
-    {
-      SLog.d("SegmentKeeper", "addSegment, data is locked!!");
-      return;
-    }
-    paramPair = new Pair(paramPair.first, paramPair.second);
-    this.jdField_a_of_type_JavaUtilList.add(paramPair);
+    this.mSegmentRanges.clear();
   }
   
-  public void a(SegmentKeeper paramSegmentKeeper)
+  public int describeContents()
   {
-    if (paramSegmentKeeper == null) {
-      return;
-    }
-    this.jdField_a_of_type_Long = paramSegmentKeeper.jdField_a_of_type_Long;
-    jdField_b_of_type_Long = jdField_b_of_type_Long;
-    this.jdField_a_of_type_Int = paramSegmentKeeper.jdField_a_of_type_Int;
-    this.f = paramSegmentKeeper.f;
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramSegmentKeeper.a());
-    this.jdField_a_of_type_Boolean = paramSegmentKeeper.jdField_a_of_type_Boolean;
-    this.jdField_b_of_type_Boolean = paramSegmentKeeper.jdField_b_of_type_Boolean;
-    this.c = paramSegmentKeeper.c;
+    return 0;
   }
   
-  public void a(List paramList)
+  public void disable(boolean paramBoolean)
   {
-    if (this.jdField_b_of_type_Boolean) {
-      SLog.a("SegmentKeeper", "setSegmentList, data is locked!!");
-    }
-    do
-    {
-      return;
-      this.jdField_a_of_type_JavaUtilList.clear();
-    } while (paramList == null);
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.mDisable = paramBoolean;
   }
   
-  public void a(JSONObject paramJSONObject)
+  public void fromJSONObject(JSONObject paramJSONObject)
   {
     if (paramJSONObject == null) {}
     for (;;)
     {
       return;
-      if (this.jdField_b_of_type_Boolean)
+      if (this.mDataLocked)
       {
         SLog.d("SegmentKeeper", "fromJSONObject , data is locked:");
         return;
       }
       try
       {
-        this.jdField_a_of_type_Long = paramJSONObject.optLong("duration_ms", 9223372036854775807L);
-        this.c = paramJSONObject.optBoolean("adjusttime_valid", true);
-        this.jdField_a_of_type_Int = paramJSONObject.optInt("mode", 0);
+        this.mDuration = paramJSONObject.optLong("duration_ms", 9223372036854775807L);
+        this.mAdjustTimeValid = paramJSONObject.optBoolean("adjusttime_valid", true);
+        this.mMode = paramJSONObject.optInt("mode", 0);
         paramJSONObject = paramJSONObject.optJSONArray("segments");
-        this.jdField_a_of_type_JavaUtilList.clear();
+        this.mSegmentRanges.clear();
         if (paramJSONObject == null) {
           continue;
         }
@@ -282,59 +263,83 @@ public class SegmentKeeper
         while (i < paramJSONObject.length())
         {
           JSONObject localJSONObject = (JSONObject)paramJSONObject.get(i);
-          this.jdField_a_of_type_JavaUtilList.add(new Pair(Long.valueOf(localJSONObject.getLong("start_ms")), Long.valueOf(localJSONObject.getLong("end_ms"))));
+          this.mSegmentRanges.add(new Pair(Long.valueOf(localJSONObject.getLong("start_ms")), Long.valueOf(localJSONObject.getLong("end_ms"))));
           i += 1;
         }
         return;
       }
       catch (JSONException paramJSONObject)
       {
-        SLog.a("SegmentKeeper", "FromJSONObject exception:" + paramJSONObject.toString());
+        SLog.e("SegmentKeeper", "FromJSONObject exception:" + paramJSONObject.toString());
       }
     }
   }
   
-  public void a(boolean paramBoolean)
+  public List<Pair<Long, Long>> getSegmentList()
   {
-    this.jdField_b_of_type_Boolean = paramBoolean;
+    LinkedList localLinkedList = new LinkedList();
+    localLinkedList.addAll(this.mSegmentRanges);
+    return localLinkedList;
   }
   
-  public boolean a()
+  public void init(int paramInt, long paramLong, List<Pair<Long, Long>> paramList)
   {
-    return this.jdField_b_of_type_Boolean;
+    this.mMode = paramInt;
+    this.mDuration = paramLong;
+    setSegmentList(paramList);
   }
   
-  public boolean a(long paramLong)
+  public boolean isCurrentIn()
   {
-    if (this.f) {
+    return this.mCurIn;
+  }
+  
+  public boolean isDataLocked()
+  {
+    return this.mDataLocked;
+  }
+  
+  public boolean isDisable()
+  {
+    return this.mDisable;
+  }
+  
+  public boolean isEmpty()
+  {
+    return this.mSegmentRanges.size() == 0;
+  }
+  
+  public boolean isInSegment(long paramLong)
+  {
+    if (this.mDisable) {
       return true;
     }
-    if (b()) {
+    if (isEmpty()) {
       return true;
     }
-    if (this.c) {}
-    for (long l = jdField_b_of_type_Long;; l = 0L)
+    if (this.mAdjustTimeValid) {}
+    for (long l = mAdjustTime;; l = 0L)
     {
       l += paramLong;
       paramLong = l;
-      if (this.jdField_a_of_type_Int == 1)
+      if (this.mMode == 1)
       {
         paramLong = l;
-        if (l > this.jdField_a_of_type_Long)
+        if (l > this.mDuration)
         {
           paramLong = l;
-          if (this.jdField_a_of_type_Long > 0L) {
-            paramLong = l % this.jdField_a_of_type_Long;
+          if (this.mDuration > 0L) {
+            paramLong = l % this.mDuration;
           }
         }
         SLog.d("SegmentKeeper", "isInSegment time, loop mode, pos:" + paramLong);
       }
-      if (this.jdField_a_of_type_Long >= paramLong) {
+      if (this.mDuration >= paramLong) {
         break;
       }
       return false;
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    Iterator localIterator = this.mSegmentRanges.iterator();
     while (localIterator.hasNext())
     {
       Pair localPair = (Pair)localIterator.next();
@@ -345,75 +350,173 @@ public class SegmentKeeper
     return false;
   }
   
-  public void b(List paramList)
+  public boolean isSegmentChanged(long paramLong)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    for (;;)
+    this.mLastIn = this.mCurIn;
+    this.mCurIn = isInSegment(paramLong);
+    return this.mCurIn != this.mLastIn;
+  }
+  
+  public void lockData(boolean paramBoolean)
+  {
+    this.mDataLocked = paramBoolean;
+  }
+  
+  public void removeLastSegment()
+  {
+    if (this.mDataLocked) {
+      SLog.d("SegmentKeeper", "removeLastSegment, data is locked!!");
+    }
+    while (this.mSegmentRanges.size() == 0) {
+      return;
+    }
+    if (this.mMode == 1) {
+      SLog.e("SegmentKeeper", "removeLastSegment in loop moad!! segments:" + toString());
+    }
+    this.mSegmentRanges.remove(this.mSegmentRanges.size() - 1);
+  }
+  
+  public void reverseSegments(boolean paramBoolean)
+  {
+    if (this.mReverse == paramBoolean) {}
+    do
     {
       return;
-      if (this.jdField_b_of_type_Boolean)
+      this.mReverse = paramBoolean;
+    } while (this.mSegmentRanges.size() == 0);
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = this.mSegmentRanges.iterator();
+    long l1;
+    long l2;
+    if (localIterator.hasNext())
+    {
+      Pair localPair = (Pair)localIterator.next();
+      l1 = ((Long)localPair.first).longValue();
+      l2 = ((Long)localPair.second).longValue();
+      if (l1 >= 0L) {
+        break label214;
+      }
+      l1 = 0L;
+    }
+    label212:
+    label214:
+    for (;;)
+    {
+      if (l2 > this.mDuration) {
+        l2 = this.mDuration;
+      }
+      for (;;)
       {
-        SLog.d("SegmentKeeper", "addSegment, data is locked!!");
+        if (l1 >= l2) {
+          break label212;
+        }
+        localArrayList.add(new Pair(Long.valueOf(this.mDuration - l2), Long.valueOf(this.mDuration - l1)));
+        break;
+        this.mSegmentRanges.clear();
+        this.mSegmentRanges.addAll(localArrayList);
+        SLog.d("SegmentKeeper", "reverssegment:" + toString());
         return;
       }
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        a((Pair)paramList.next());
-      }
+      break;
     }
   }
   
-  public void b(boolean paramBoolean)
+  public void set(SegmentKeeper paramSegmentKeeper)
   {
-    this.c = paramBoolean;
+    if (paramSegmentKeeper == null) {
+      return;
+    }
+    this.mDuration = paramSegmentKeeper.mDuration;
+    mAdjustTime = mAdjustTime;
+    this.mMode = paramSegmentKeeper.mMode;
+    this.mDisable = paramSegmentKeeper.mDisable;
+    this.mSegmentRanges.clear();
+    this.mSegmentRanges.addAll(paramSegmentKeeper.getSegmentList());
+    this.mReverse = paramSegmentKeeper.mReverse;
+    this.mDataLocked = paramSegmentKeeper.mDataLocked;
+    this.mAdjustTimeValid = paramSegmentKeeper.mAdjustTimeValid;
   }
   
-  public boolean b()
+  public void setAdjustTimeValid(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_JavaUtilList.size() == 0;
+    this.mAdjustTimeValid = paramBoolean;
   }
   
-  public boolean b(long paramLong)
+  public void setMode(int paramInt)
   {
-    this.e = this.d;
-    this.d = a(paramLong);
-    return this.d != this.e;
+    this.mMode = paramInt;
   }
   
-  public boolean c()
+  public void setSegmentList(List<Pair<Long, Long>> paramList)
   {
-    return this.d;
+    if (this.mDataLocked) {
+      SLog.e("SegmentKeeper", "setSegmentList, data is locked!!");
+    }
+    do
+    {
+      return;
+      this.mSegmentRanges.clear();
+    } while (paramList == null);
+    this.mSegmentRanges.addAll(paramList);
   }
   
-  public int describeContents()
+  public JSONObject toJSONObject()
   {
-    return 0;
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("duration_ms", this.mDuration);
+      localJSONObject.put("adjusttime_valid", this.mAdjustTimeValid);
+      localJSONObject.put("mode", this.mMode);
+      if (this.mSegmentRanges.size() > 0)
+      {
+        JSONArray localJSONArray = new JSONArray();
+        Iterator localIterator = this.mSegmentRanges.iterator();
+        while (localIterator.hasNext())
+        {
+          Object localObject = (Pair)localIterator.next();
+          long l1 = ((Long)((Pair)localObject).first).longValue();
+          long l2 = ((Long)((Pair)localObject).second).longValue();
+          localObject = new JSONObject();
+          ((JSONObject)localObject).put("start_ms", l1);
+          ((JSONObject)localObject).put("end_ms", l2);
+          localJSONArray.put(localObject);
+        }
+      }
+      return localJSONObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      SLog.e("SegmentKeeper", "toJSONObject exception:" + localJSONException.toString());
+    }
+    localJSONObject.put("segments", localJSONException);
+    return localJSONObject;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("segmode=[");
-    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(this.mMode);
     localStringBuilder.append("]");
     localStringBuilder.append("adjusttimevalid=[");
-    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.mAdjustTimeValid);
     localStringBuilder.append("]");
     localStringBuilder.append("duration=[");
-    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(this.mDuration);
     localStringBuilder.append("]");
     localStringBuilder.append("disable=[");
-    localStringBuilder.append(this.f);
+    localStringBuilder.append(this.mDisable);
     localStringBuilder.append("]");
     localStringBuilder.append("reverse=[");
-    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(this.mReverse);
     localStringBuilder.append("]");
     localStringBuilder.append("datalocked=[");
-    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(this.mDataLocked);
     localStringBuilder.append("]");
     localStringBuilder.append("segments=");
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0)
+    if (this.mSegmentRanges.size() > 0)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.mSegmentRanges.iterator();
       while (localIterator.hasNext())
       {
         Pair localPair = (Pair)localIterator.next();
@@ -431,19 +534,19 @@ public class SegmentKeeper
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     int i = 1;
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeLong(this.jdField_a_of_type_Long);
-    if (this.c)
+    paramParcel.writeInt(this.mMode);
+    paramParcel.writeLong(this.mDuration);
+    if (this.mAdjustTimeValid)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      if (!this.jdField_a_of_type_Boolean) {
+      if (!this.mReverse) {
         break label156;
       }
       paramInt = 1;
       label41:
       paramParcel.writeInt(paramInt);
-      if (!this.jdField_b_of_type_Boolean) {
+      if (!this.mDataLocked) {
         break label161;
       }
     }
@@ -452,11 +555,11 @@ public class SegmentKeeper
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.jdField_a_of_type_JavaUtilList.size());
-      if (this.jdField_a_of_type_JavaUtilList.size() <= 0) {
+      paramParcel.writeInt(this.mSegmentRanges.size());
+      if (this.mSegmentRanges.size() <= 0) {
         return;
       }
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      Iterator localIterator = this.mSegmentRanges.iterator();
       while (localIterator.hasNext())
       {
         Pair localPair = (Pair)localIterator.next();

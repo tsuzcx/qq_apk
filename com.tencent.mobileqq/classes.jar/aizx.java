@@ -1,21 +1,18 @@
-import NearbyGroup.GroupInfo;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.activity.RecommendTroopAdapter;
+import com.tencent.qphone.base.util.QLog;
 
-public class aizx
-  implements View.OnClickListener
+class aizx
+  extends ajad
 {
-  public aizx(RecommendTroopAdapter paramRecommendTroopAdapter, GroupInfo paramGroupInfo) {}
+  aizx(aizv paramaizv) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityRecommendTroopAdapter.a(this.jdField_a_of_type_NearbyGroupGroupInfo);
+    QLog.d("ApolloGameUtil", 2, " onSuccess  the http retcode = " + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aizx
  * JD-Core Version:    0.7.0.1
  */

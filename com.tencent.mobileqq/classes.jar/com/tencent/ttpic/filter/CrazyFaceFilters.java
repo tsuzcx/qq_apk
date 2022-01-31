@@ -1,19 +1,18 @@
 package com.tencent.ttpic.filter;
 
 import android.graphics.PointF;
+import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.filter.BaseFilter;
-import com.tencent.filter.Frame;
-import com.tencent.filter.GLSLRender;
-import com.tencent.ttpic.model.FaceActionCounter;
-import com.tencent.ttpic.model.VideoMaterial;
+import com.tencent.ttpic.openapi.PTDetectInfo;
+import com.tencent.ttpic.openapi.PTDetectInfo.Builder;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 import java.util.List;
-import java.util.Map;
 
 public class CrazyFaceFilters
 {
   private FaceAverageBackgroundFilter faceAverageBackgroundFilter;
   private FaceAverageFilter faceAverageFilter;
-  private BaseFilter mCopyFilter = new BaseFilter(GLSLRender.FILTER_SHADER_NONE);
+  private BaseFilter mCopyFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
   private Frame mCopyFrame = new Frame();
   private FaceSkinBalanceFilter mFaceSkinBalanceFilter;
   private Frame mSkinBalanceFrame = new Frame();
@@ -33,8 +32,8 @@ public class CrazyFaceFilters
   {
     this.faceAverageBackgroundFilter.ApplyGLSLFilter();
     this.faceAverageFilter.ApplyGLSLFilter();
-    this.mFaceSkinBalanceFilter.ApplyGLSLFilter();
-    this.mCopyFilter.ApplyGLSLFilter();
+    this.mFaceSkinBalanceFilter.apply();
+    this.mCopyFilter.apply();
   }
   
   public void clear()
@@ -60,14 +59,17 @@ public class CrazyFaceFilters
     this.mCopyFilter.setRenderMode(paramInt);
   }
   
-  public Frame updateAndRender(Frame paramFrame, int paramInt1, int paramInt2, List<PointF> paramList, float[] paramArrayOfFloat, Map<Integer, FaceActionCounter> paramMap)
+  public Frame updateAndRender(Frame paramFrame, int paramInt1, int paramInt2, List<PointF> paramList, float[] paramArrayOfFloat)
   {
     this.mCopyFilter.RenderProcess(paramFrame.getTextureId(), paramInt1, paramInt2, -1, 0.0D, this.mCopyFrame);
+    PTDetectInfo localPTDetectInfo = new PTDetectInfo.Builder().build();
+    this.faceAverageBackgroundFilter.updatePreview(localPTDetectInfo);
     this.faceAverageBackgroundFilter.OnDrawFrameGLSL();
     this.faceAverageBackgroundFilter.renderTexture(this.mCopyFrame.getTextureId(), paramInt1, paramInt2);
     this.mFaceSkinBalanceFilter.RenderProcess(paramFrame.getTextureId(), paramInt1, paramInt2, -1, 0.0D, this.mSkinBalanceFrame);
     this.faceAverageFilter.setUserTexture(this.mSkinBalanceFrame.getTextureId());
-    this.faceAverageFilter.updatePreview(paramList, paramArrayOfFloat, paramMap, 0.0F, 0L);
+    paramFrame = new PTDetectInfo.Builder().facePoints(paramList).faceAngles(paramArrayOfFloat).timestamp(0L).build();
+    this.faceAverageFilter.updatePreview(paramFrame);
     this.mCopyFrame.bindFrame(this.mCopyFrame.getTextureId(), paramInt1, paramInt2, 0.0D);
     this.faceAverageFilter.OnDrawFrameGLSL();
     this.faceAverageFilter.renderTexture(this.mCopyFrame.getTextureId(), paramInt1, paramInt2);
@@ -82,7 +84,7 @@ public class CrazyFaceFilters
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.filter.CrazyFaceFilters
  * JD-Core Version:    0.7.0.1
  */

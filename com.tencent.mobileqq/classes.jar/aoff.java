@@ -1,25 +1,24 @@
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnPreparedListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class aoff
-  implements IMediaPlayer.OnPreparedListener
+final class aoff
+  extends Handler
 {
-  public aoff(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
-  
-  public void a_(IMediaPlayer paramIMediaPlayer)
+  aoff(Looper paramLooper)
   {
-    SLog.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "video prrepared completed!");
-    LocalVideoSelectActivity.a(this.a).b();
-    LocalVideoSelectActivity.a(this.a).postDelayed(new aofg(this), 300L);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Object[] arrayOfObject = (Object[])paramMessage.obj;
+    ((aofk)arrayOfObject[0]).a(paramMessage.what, ((Boolean)arrayOfObject[1]).booleanValue(), arrayOfObject[2]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoff
  * JD-Core Version:    0.7.0.1
  */

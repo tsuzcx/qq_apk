@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.Scroller;
 import android.widget.TextView;
+import bbjn;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.widget.AbsSpinner;
 
@@ -24,7 +25,7 @@ public class HorizontalItemIndicator
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private Scroller jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext());
-  private HorizontalItemIndicator.OnItemChanged jdField_a_of_type_ComTencentMobileqqWidgetHorizontalItemIndicator$OnItemChanged;
+  private bbjn jdField_a_of_type_Bbjn;
   private int b;
   private int c;
   private int d;
@@ -48,8 +49,8 @@ public class HorizontalItemIndicator
     try
     {
       this.jdField_a_of_type_Int = paramContext.getColor(1, -1711276033);
-      this.b = paramContext.getDimensionPixelSize(0, 28);
-      this.d = paramContext.getColor(2, -1);
+      this.b = paramContext.getDimensionPixelSize(2, 28);
+      this.d = paramContext.getColor(0, -1);
       paramContext.recycle();
       this.c = this.b;
       this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
@@ -103,8 +104,8 @@ public class HorizontalItemIndicator
     int k = getChildAt(paramInt).getLeft();
     this.f = this.e;
     this.e = paramInt;
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetHorizontalItemIndicator$OnItemChanged != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetHorizontalItemIndicator$OnItemChanged.a(paramInt);
+    if (this.jdField_a_of_type_Bbjn != null) {
+      this.jdField_a_of_type_Bbjn.a(paramInt);
     }
     this.jdField_a_of_type_AndroidWidgetScroller.startScroll(i, 0, j + k - i, 0);
     requestLayout();
@@ -257,8 +258,8 @@ public class HorizontalItemIndicator
     }
     this.f = this.e;
     this.e = paramInt;
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetHorizontalItemIndicator$OnItemChanged != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetHorizontalItemIndicator$OnItemChanged.a(paramInt);
+    if (this.jdField_a_of_type_Bbjn != null) {
+      this.jdField_a_of_type_Bbjn.a(paramInt);
     }
     requestLayout();
   }
@@ -272,9 +273,9 @@ public class HorizontalItemIndicator
     setCurrItem(i);
   }
   
-  public void setOnItemChanged(HorizontalItemIndicator.OnItemChanged paramOnItemChanged)
+  public void setOnItemChanged(bbjn parambbjn)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetHorizontalItemIndicator$OnItemChanged = paramOnItemChanged;
+    this.jdField_a_of_type_Bbjn = parambbjn;
   }
   
   public void setPrevItem()
@@ -288,7 +289,7 @@ public class HorizontalItemIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.HorizontalItemIndicator
  * JD-Core Version:    0.7.0.1
  */

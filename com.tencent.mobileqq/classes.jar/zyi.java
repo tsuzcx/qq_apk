@@ -1,54 +1,29 @@
-import com.tencent.mobileqq.app.fms.FullMessageSearchTask;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.persistence.Entity;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class zyi
-  implements Comparator
+  implements DialogInterface.OnClickListener
 {
-  public zyi(FullMessageSearchTask paramFullMessageSearchTask) {}
+  public zyi(AddRequestActivity paramAddRequestActivity) {}
   
-  public int a(Entity paramEntity1, Entity paramEntity2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j = -1;
-    paramEntity1 = (RecentUser)paramEntity1;
-    paramEntity2 = (RecentUser)paramEntity2;
-    long l1 = Math.max(paramEntity1.lastmsgtime, paramEntity1.lastmsgdrafttime);
-    long l2 = Math.max(paramEntity2.lastmsgtime, paramEntity2.lastmsgdrafttime);
-    int i;
-    if (l1 < l2)
+    if (badq.d(BaseApplication.getContext()))
     {
-      i = 1;
-      if (paramEntity1.type != paramEntity2.type) {
-        break label80;
-      }
+      long l = Long.valueOf(this.a.app.getCurrentAccountUin()).longValue();
+      this.a.showDialog(2);
+      this.a.jdField_a_of_type_Ajfi.a(l, Long.valueOf(this.a.jdField_a_of_type_JavaLangString).longValue(), 1);
+      return;
     }
-    label80:
-    do
-    {
-      do
-      {
-        return i;
-        if (l1 == l2)
-        {
-          i = 0;
-          break;
-        }
-        i = -1;
-        break;
-        i = j;
-      } while (paramEntity1.type == 0);
-      if (paramEntity2.type == 0) {
-        return 1;
-      }
-      i = j;
-    } while (paramEntity1.type - paramEntity2.type > 0);
-    return 1;
+    bbmy.a(this.a, 2131628948, 0).b(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zyi
  * JD-Core Version:    0.7.0.1
  */

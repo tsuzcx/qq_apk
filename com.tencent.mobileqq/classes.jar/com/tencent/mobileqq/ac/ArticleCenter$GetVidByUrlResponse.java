@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class ArticleCenter$GetVidByUrlResponse
-  extends MessageMicro
+  extends MessageMicro<GetVidByUrlResponse>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public ArticleCenter.RetInfo ret_info = new ArticleCenter.RetInfo();

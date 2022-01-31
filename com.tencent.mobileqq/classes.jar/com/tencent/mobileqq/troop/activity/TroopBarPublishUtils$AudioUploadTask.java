@@ -3,12 +3,12 @@ package com.tencent.mobileqq.troop.activity;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.biz.common.util.HttpUtil;
+import apdh;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.Map;
+import mpl;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
 import mqq.util.WeakReference;
@@ -21,7 +21,7 @@ public class TroopBarPublishUtils$AudioUploadTask
   protected int a;
   protected Handler a;
   protected String a;
-  protected WeakReference a;
+  protected WeakReference<BaseActivity> a;
   protected String b;
   
   public TroopBarPublishUtils$AudioUploadTask(BaseActivity paramBaseActivity, Handler paramHandler, String paramString1, String paramString2)
@@ -50,7 +50,7 @@ public class TroopBarPublishUtils$AudioUploadTask
       this.jdField_a_of_type_Int = 0;
       return;
     }
-    if (!FileUtil.a(this.b))
+    if (!apdh.a(this.b))
     {
       if (QLog.isColorLevel()) {
         QLog.d("TroopBarPublishUtils", 2, "Audio is null! mAudioPath=" + this.b);
@@ -75,7 +75,7 @@ public class TroopBarPublishUtils$AudioUploadTask
     HashMap localHashMap3 = new HashMap();
     localHashMap3.put("Connection", "keep-alive");
     localHashMap3.put("Referer", "http://www.qq.com");
-    localObject1 = HttpUtil.a(this.jdField_a_of_type_JavaLangString, (String)localObject1, (String)localObject2, localHashMap1, localHashMap2, localHashMap3);
+    localObject1 = mpl.a(this.jdField_a_of_type_JavaLangString, (String)localObject1, (String)localObject2, localHashMap1, localHashMap2, localHashMap3);
     if (localObject1 != null) {}
     for (;;)
     {
@@ -115,7 +115,7 @@ public class TroopBarPublishUtils$AudioUploadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopBarPublishUtils.AudioUploadTask
  * JD-Core Version:    0.7.0.1
  */

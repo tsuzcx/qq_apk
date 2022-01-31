@@ -1,5 +1,6 @@
 package mqq.manager;
 
+import android.os.Bundle;
 import java.util.HashMap;
 import mqq.observer.AccountObserver;
 
@@ -24,13 +25,15 @@ public abstract interface AccountManager
   
   public abstract void refreshDA2(String paramString, AccountObserver paramAccountObserver);
   
-  public abstract void sendRegistByPhoneNumber(String paramString1, byte paramByte, String paramString2, String paramString3, Long paramLong, AccountObserver paramAccountObserver);
+  public abstract void sendRegistByPhoneNumber(String paramString1, byte paramByte, String paramString2, String paramString3, String paramString4, Long paramLong, String paramString5, Bundle paramBundle, AccountObserver paramAccountObserver);
   
   public abstract void sendRegistByResendSms(AccountObserver paramAccountObserver);
   
   public abstract void sendRegisterByCommitSmsVerifycode(String paramString, AccountObserver paramAccountObserver);
   
-  public abstract void sendRegisterBySetPass(String paramString1, String paramString2, String paramString3, boolean paramBoolean, AccountObserver paramAccountObserver);
+  public abstract void sendRegisterBySetPass(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5, AccountObserver paramAccountObserver);
+  
+  public abstract void sendRegisterBySetPassWithLH(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5, AccountObserver paramAccountObserver);
   
   public abstract void sendRegisterQueryMobile(String paramString1, String paramString2, AccountObserver paramAccountObserver);
   

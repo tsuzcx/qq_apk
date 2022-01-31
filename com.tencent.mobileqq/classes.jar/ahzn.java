@@ -1,17 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.model.ISearchResultModel;
-import com.tencent.mobileqq.search.presenter.TroopAddFrdsSrchResultPresenter;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
 public class ahzn
-  implements View.OnClickListener
 {
-  public ahzn(TroopAddFrdsSrchResultPresenter paramTroopAddFrdsSrchResultPresenter, ISearchResultModel paramISearchResultModel) {}
+  public CheckBox a;
+  public RelativeLayout a;
+  public TextView a;
+  public URLImageView a;
+  public Object a;
+  public String a;
+  public TextView b;
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel.a(paramView);
-  }
+  public ahzn(ahzm paramahzm) {}
 }
 
 

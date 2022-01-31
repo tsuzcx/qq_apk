@@ -1,21 +1,10 @@
-import com.tencent.mobileqq.troop.activity.TroopAdminList;
-import com.tencent.mobileqq.troop.activity.TroopAdminList.AdminListAdapter;
-import com.tencent.widget.XListView;
-
-class ajac
-  implements Runnable
+public abstract interface ajac
 {
-  ajac(ajab paramajab) {}
-  
-  public void run()
-  {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList$AdminListAdapter = new TroopAdminList.AdminListAdapter(this.a.a, this.a.a);
-    this.a.a.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.a.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList$AdminListAdapter);
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajac
  * JD-Core Version:    0.7.0.1
  */

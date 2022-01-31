@@ -1,25 +1,81 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import android.os.Bundle;
+import com.tencent.litetransfersdk.Session;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class xsw
-  implements DialogInterface.OnClickListener
+  implements ajfe
 {
-  public xsw(LoginView paramLoginView) {}
+  public void a(Bundle paramBundle) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(Session paramSession) {}
+  
+  public void a(Session paramSession, float paramFloat) {}
+  
+  public void a(Session paramSession, boolean paramBoolean) {}
+  
+  public void a(MessageRecord paramMessageRecord, float paramFloat) {}
+  
+  public void a(MessageRecord paramMessageRecord, Boolean paramBoolean) {}
+  
+  public void b(Bundle paramBundle) {}
+  
+  public void b(Session paramSession) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramDialogInterface = (UpgradeDetailWrapper)this.a.a.getIntent().getParcelableExtra(UpgradeDetailWrapper.class.getSimpleName());
-    UpgradeDetailActivity.a(this.a.a, paramDialogInterface, true, false, false);
+    if (paramObject == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          Session localSession;
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  return;
+                  switch (paramInt)
+                  {
+                  default: 
+                    return;
+                  case 100: 
+                    paramObject = (Session)paramObject;
+                  }
+                } while (paramObject == null);
+                a(paramObject);
+                return;
+                paramObject = (Session)paramObject;
+              } while (paramObject == null);
+              b(paramObject);
+              return;
+              paramObject = (Object[])paramObject;
+            } while (paramObject.length <= 1);
+            localSession = (Session)paramObject[0];
+          } while (localSession == null);
+          a(localSession, ((Float)paramObject[1]).floatValue());
+          return;
+          paramObject = (Session)paramObject;
+        } while (paramObject == null);
+        a(paramObject, paramBoolean);
+        return;
+        paramObject = (Bundle)paramObject;
+      } while (paramObject == null);
+      a(paramObject);
+      return;
+      paramObject = (Bundle)paramObject;
+    } while (paramObject == null);
+    b(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     xsw
  * JD-Core Version:    0.7.0.1
  */

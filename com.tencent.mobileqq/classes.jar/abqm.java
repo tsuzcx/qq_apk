@@ -1,21 +1,17 @@
-import com.tencent.image.AbstractVideoImage;
-import com.tencent.mobileqq.util.DynamicFaceDrawable;
+import android.text.Editable;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 
-class abqm
-  implements Runnable
+public abstract interface abqm
 {
-  abqm(abql paramabql) {}
+  public abstract void a(Editable paramEditable);
   
-  public void run()
-  {
-    if (!DynamicFaceDrawable.b) {
-      AbstractVideoImage.resumeAll();
-    }
-  }
+  public abstract void a(ResultRecord paramResultRecord);
+  
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abqm
  * JD-Core Version:    0.7.0.1
  */

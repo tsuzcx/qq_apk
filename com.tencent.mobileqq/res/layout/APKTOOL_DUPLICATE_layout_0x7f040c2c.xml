@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="#ffffffff" android:layout_width="101.0dip" android:layout_height="139.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.BubbleImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a34f6" android:layout_width="101.0dip" android:layout_height="139.0dip" android:scaleType="centerCrop" />
-    <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a34f7" android:layout_width="101.0dip" android:layout_height="139.0dip" android:scaleType="centerCrop" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a34f8" android:layout_width="101.0dip" android:layout_height="30.0dip" android:text="无特效" android:singleLine="true" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0a34f6" />
-    <TextView android:textSize="12.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a34f9" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020c54" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="秀图" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a34f6" />
-</RelativeLayout>

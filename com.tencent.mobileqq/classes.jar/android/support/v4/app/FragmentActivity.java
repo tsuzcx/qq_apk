@@ -35,12 +35,12 @@ public class FragmentActivity
   static final int MSG_REALLY_STOPPED = 1;
   static final int MSG_RESUME_PENDING = 2;
   private static final String TAG = "FragmentActivity";
-  SimpleArrayMap mAllLoaderManagers;
+  SimpleArrayMap<String, LoaderManagerImpl> mAllLoaderManagers;
   boolean mCheckedForLoaderManager;
   final FragmentContainer mContainer = new FragmentActivity.2(this);
   boolean mCreated;
   final FragmentManagerImpl mFragments = new FragmentManagerImpl();
-  public final Handler mHandler = new FragmentActivity.1(this);
+  protected final Handler mHandler = new FragmentActivity.1(this);
   Fragment.IFragmentAttachCallback mIFragmentAttachCallback;
   LoaderManagerImpl mLoaderManager;
   boolean mLoadersStarted;

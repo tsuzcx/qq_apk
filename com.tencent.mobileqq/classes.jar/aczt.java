@@ -1,28 +1,27 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import android.view.View;
+import com.tencent.mobileqq.data.ChatMessage;
 
 class aczt
-  implements Runnable
+  implements begw
 {
-  aczt(aczr paramaczr, long paramLong, boolean paramBoolean, int paramInt, String paramString) {}
+  aczt(aczr paramaczr, adaw paramadaw, begr parambegr) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Aczr.a.d();
-    QfileBaseLocalFileTabView.b(this.jdField_a_of_type_Aczr.a).a().a(this.jdField_a_of_type_Long);
-    if (!this.jdField_a_of_type_Boolean)
+    switch (paramInt)
     {
-      FileManagerUtil.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-      return;
     }
-    FileManagerUtil.a(this.jdField_a_of_type_Long);
+    for (;;)
+    {
+      this.jdField_a_of_type_Begr.cancel();
+      return;
+      aael.c(this.jdField_a_of_type_Aczr.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aczr.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aczr.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Adaw.a.uniseq);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aczt
  * JD-Core Version:    0.7.0.1
  */

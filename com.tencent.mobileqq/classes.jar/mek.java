@@ -1,26 +1,87 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
+import org.json.JSONObject;
 
 public class mek
-  implements DialogInterface.OnShowListener
+  extends mfk
 {
-  public mek(VideoFeedsAdapter paramVideoFeedsAdapter) {}
+  public final int a;
+  public final String a;
+  public final String b = "appid#0|bargainor_id#0|channel#bqredpacket2";
+  public final String c = "appid#0|bargainor_id#0|channel#bqredpacket";
+  public final String d = "2";
+  public final String e = "16384";
+  public final String f = "1";
   
-  public void onShow(DialogInterface paramDialogInterface)
+  mek(med parammed)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "mShareActionSheet onShow()");
+    super(parammed);
+    this.jdField_a_of_type_JavaLangString = "appid#0|bargainor_id#0|channel#bqredpacket1";
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  static long a(VideoAppInterface paramVideoAppInterface)
+  {
+    paramVideoAppInterface = paramVideoAppInterface.a().a().d;
+    try
+    {
+      long l = Long.valueOf(paramVideoAppInterface).longValue();
+      return l;
     }
-    VideoFeedsAdapter.a(this.a).getWindow().clearFlags(8);
+    catch (Exception paramVideoAppInterface) {}
+    return 0L;
+  }
+  
+  static String a(VideoAppInterface paramVideoAppInterface)
+  {
+    return paramVideoAppInterface.getDisplayName(0, paramVideoAppInterface.getCurrentAccountUin(), null);
+  }
+  
+  public static void a(VideoAppInterface paramVideoAppInterface, String paramString)
+  {
+    long l = mez.a(paramVideoAppInterface);
+    paramVideoAppInterface = new JSONObject();
+    try
+    {
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("url", paramString);
+      paramVideoAppInterface.put("userId", l);
+      paramVideoAppInterface.put("viewTag", "openEmbelUrl");
+      paramVideoAppInterface.put("come_from", 2);
+      paramVideoAppInterface.put("extra_data", localObject);
+      paramString = BaseApplicationImpl.getApplication();
+      localObject = new Bundle();
+      ((Bundle)localObject).putString("json", paramVideoAppInterface.toString());
+      ((Bundle)localObject).putString("callbackSn", "0");
+      paramVideoAppInterface = new Intent(paramString.getApplicationContext(), PayBridgeActivity.class);
+      paramVideoAppInterface.addFlags(268435456);
+      paramVideoAppInterface.putExtras((Bundle)localObject);
+      paramVideoAppInterface.putExtra("pay_requestcode", 5);
+      paramString.getBaseContext().startActivity(paramVideoAppInterface);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
+  static String b(VideoAppInterface paramVideoAppInterface)
+  {
+    return paramVideoAppInterface.a().a().e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mek
  * JD-Core Version:    0.7.0.1
  */

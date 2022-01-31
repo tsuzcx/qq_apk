@@ -1,21 +1,12 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserMiscHandler;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 
-public class akwt
-  implements View.OnTouchListener
+public abstract interface akwt
 {
-  public akwt(SwiftBrowserMiscHandler paramSwiftBrowserMiscHandler) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  public abstract void a(ARCommonConfigInfo paramARCommonConfigInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akwt
  * JD-Core Version:    0.7.0.1
  */

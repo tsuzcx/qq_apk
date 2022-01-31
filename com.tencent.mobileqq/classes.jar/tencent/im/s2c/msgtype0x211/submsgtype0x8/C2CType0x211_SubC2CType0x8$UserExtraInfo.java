@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class C2CType0x211_SubC2CType0x8$UserExtraInfo
-  extends MessageMicro
+  extends MessageMicro<UserExtraInfo>
 {
   public static final int ABILITY_FIELD_NUMBER = 1;
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "ability" }, new Object[] { null }, UserExtraInfo.class);

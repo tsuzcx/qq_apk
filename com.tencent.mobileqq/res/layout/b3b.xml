@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/f_a" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" android:layout_centerHorizontal="true">
+            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/f9w" />
+            <TextView android:textSize="15.0sp" android:textColor="@color/skin_gray2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/rcf" />
+        </LinearLayout>
+        <RelativeLayout android:id="@id/ebg" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.widget.PinnedDividerSwipListView android:id="@id/j9v" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@null" android:cacheColorHint="@android:color/transparent" android:divider="@null" android:dividerHeight="0.0px" />
+            <include android:id="@id/m84" layout="@layout/aym" />
+            <include android:id="@id/m83" layout="@layout/cb_" />
+        </RelativeLayout>
+    </FrameLayout>
+</LinearLayout>

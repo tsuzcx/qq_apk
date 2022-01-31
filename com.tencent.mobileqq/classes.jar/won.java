@@ -1,22 +1,16 @@
-import com.tencent.pb.addcontacts.AccountSearchPb.ResultItem;
-import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
-import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import com.tencent.biz.troopplugin.PluginJumpManager;
 
 public class won
 {
-  public int a;
-  public AccountSearchPb.ResultItem a;
-  public AccountSearchPb.hotwordrecord a;
-  public AccountSearchPb.record a;
   public String a;
-  public int b;
   public String b;
-  public int c;
   public String c;
+  
+  public won(PluginJumpManager paramPluginJumpManager) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     won
  * JD-Core Version:    0.7.0.1
  */

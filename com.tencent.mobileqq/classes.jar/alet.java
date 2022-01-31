@@ -1,32 +1,23 @@
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import com.tencent.mobileqq.widget.TabBarView;
-
 public class alet
-  extends AccessibilityDelegateCompat
 {
-  public alet(TabBarView paramTabBarView) {}
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
-  {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if (this.a.a(paramView) == this.a.h) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramAccessibilityNodeInfoCompat.setSelected(bool);
-      return;
-    }
-  }
+  public alet() {}
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public alet(String paramString1, String paramString2, String paramString3)
   {
-    super.sendAccessibilityEvent(paramView, paramInt);
+    this.a = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alet
  * JD-Core Version:    0.7.0.1
  */

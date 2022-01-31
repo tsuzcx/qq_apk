@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class appoint_define$ReplyInfo
-  extends MessageMicro
+  extends MessageMicro<ReplyInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "str_comment_id", "msg_stranger_info" }, new Object[] { "", null }, ReplyInfo.class);
   public appoint_define.StrangerInfo msg_stranger_info = new appoint_define.StrangerInfo();

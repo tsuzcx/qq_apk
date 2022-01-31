@@ -1,102 +1,62 @@
-import android.os.Handler;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
+import android.app.Activity;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagAdapter;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.NewFriendSubTitle;
 
 public class aeyz
-  implements TextWatcher
+  extends aeyf
+  implements View.OnClickListener
 {
-  public aeyz(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public aeyz(Context paramContext, QQAppInterface paramQQAppInterface, aicw paramaicw, atcu paramatcu)
   {
-    ChooseInterestTagActivity.a(this.a).removeMessages(4097);
-    ChooseInterestTagActivity.b(this.a, 0);
-    String str;
-    if (ChooseInterestTagActivity.a(this.a).getText() == null)
-    {
-      paramEditable = "";
-      str = NearbyUtils.a(paramEditable);
-      if (ChooseInterestTagActivity.a(this.a).getText() != null) {
-        break label163;
-      }
-      paramEditable = "";
-      label59:
-      if (!TextUtils.isEmpty(paramEditable)) {
-        break label185;
-      }
-      if (ChooseInterestTagActivity.b(this.a).getVisibility() != 8) {
-        ChooseInterestTagActivity.b(this.a).setVisibility(8);
-      }
-      ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), true);
-      paramEditable = this.a;
-      if (ChooseInterestTagActivity.b(this.a) == -1) {
-        break label180;
-      }
-    }
-    label163:
-    label180:
-    for (boolean bool = true;; bool = false)
-    {
-      ChooseInterestTagActivity.a(paramEditable, false, bool);
-      ChooseInterestTagActivity.a(this.a, "");
-      return;
-      paramEditable = ChooseInterestTagActivity.a(this.a).getText().toString();
-      break;
-      paramEditable = ChooseInterestTagActivity.a(this.a).getText().toString();
-      break label59;
-    }
-    label185:
-    if (TextUtils.isEmpty(str))
-    {
-      if (ChooseInterestTagActivity.b(this.a).getVisibility() != 0) {
-        ChooseInterestTagActivity.b(this.a).setVisibility(0);
-      }
-      ChooseInterestTagActivity.b(this.a).setText("无结果");
-      ChooseInterestTagActivity.c(this.a).setVisibility(8);
-      ChooseInterestTagActivity.a(this.a, "");
-      return;
-    }
-    if (ChooseInterestTagActivity.b(this.a).getVisibility() != 0) {
-      ChooseInterestTagActivity.b(this.a).setVisibility(0);
-    }
-    if (NetworkUtil.d(this.a))
-    {
-      ChooseInterestTagActivity.b(this.a).setText("正在加载...");
-      ChooseInterestTagActivity.c(this.a).setVisibility(8);
-      ChooseInterestTagActivity.a(this.a, str);
-      ChooseInterestTagActivity.a(this.a).sendEmptyMessageDelayed(4097, 400L);
-      return;
-    }
-    if (!ChooseInterestTagActivity.c(this.a))
-    {
-      ChooseInterestTagActivity.a(this.a, "当前网络不可用，请检查网络设置。");
-      ChooseInterestTagActivity.a(this.a, true);
-      ChooseInterestTagActivity.a(this.a).sendEmptyMessageDelayed(4100, 3000L);
-    }
-    ChooseInterestTagActivity.b(this.a).setText("");
-    ChooseInterestTagActivity.b(this.a).setOnClickListener(null);
-    ChooseInterestTagActivity.c(this.a).setVisibility(8);
-    ChooseInterestTagActivity.a(this.a, "");
+    super(paramContext, paramQQAppInterface, paramaicw, paramatcu);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public View a(int paramInt, View paramView)
   {
-    ChooseInterestTagActivity.a(this.a, 0);
+    Object localObject;
+    if ((paramView == null) || (!(paramView.getTag() instanceof aeza)))
+    {
+      localObject = new aeza();
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495345, null);
+      ((aeza)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131311534));
+      ((aeza)localObject).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131300119);
+      ((aeza)localObject).jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+      paramView.setTag(localObject);
+      ((aeza)localObject).jdField_a_of_type_AndroidWidgetTextView.setText(((atcx)this.jdField_a_of_type_Atcu).a.title);
+      localObject = ((aeza)localObject).jdField_a_of_type_AndroidViewView;
+      if (!((atcx)this.jdField_a_of_type_Atcu).a.showEntrance) {
+        break label133;
+      }
+    }
+    label133:
+    for (paramInt = 0;; paramInt = 8)
+    {
+      ((View)localObject).setVisibility(paramInt);
+      return paramView;
+      localObject = (aeza)paramView.getTag();
+      break;
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    ajvr.a((Activity)this.jdField_a_of_type_AndroidContentContext);
+    awqx.b(null, "dc00898", "", "", "0X800A3A5", "0X800A3A5", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeyz
  * JD-Core Version:    0.7.0.1
  */

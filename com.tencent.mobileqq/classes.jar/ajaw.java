@@ -1,19 +1,24 @@
-import com.tencent.widget.ActionSheet;
+import android.content.Context;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class ajaw
-  implements Runnable
+public class ajaw
+  extends ajcd
 {
-  ajaw(ajav paramajav) {}
-  
-  public void run()
+  public ajaw(String paramString)
   {
-    this.a.a.b(2131435890);
-    this.a.a.b();
+    super(paramString);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, EditText paramEditText, SessionInfo paramSessionInfo)
+  {
+    super.a(paramQQAppInterface, paramContext, paramEditText, paramSessionInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajaw
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ class NetworkManager$NetworkChangeReceiver$1
   {
     String str1 = this.this$0.getApnValue();
     if ((NetworkManager.isNetworkAvailable()) && (!str1.equals(NetworkManager.NetworkChangeReceiver.access$000(this.this$0)))) {
-      DnsService.a().a();
+      DnsService.getInstance().reset();
     }
     if (!str1.equals(NetworkManager.NetworkChangeReceiver.access$000(this.this$0))) {
       synchronized (NetworkManager.access$100())

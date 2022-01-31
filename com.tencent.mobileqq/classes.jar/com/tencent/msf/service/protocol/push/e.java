@@ -10,12 +10,12 @@ public final class e
   extends JceStruct
 {
   static Map h;
-  public long a;
-  public byte b;
+  public long a = 0L;
+  public byte b = 0;
   public String c = "";
-  public Map d;
+  public Map d = null;
   public int e = 300;
-  public byte f;
+  public byte f = 0;
   public String g = "";
   
   public e() {}

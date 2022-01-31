@@ -1,45 +1,38 @@
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.views.image.GdtDrawableLoader;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup.36.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
+import pb.unite.search.RequestSearchWord.Rcmd;
 
 public class qrj
-  implements URLDrawable.URLDrawableListener
+  implements ajur
 {
-  public qrj(GdtDrawableLoader paramGdtDrawableLoader) {}
+  public qrj(ReadInJoyListViewGroup paramReadInJoyListViewGroup, ArticleInfo paramArticleInfo, int paramInt1, int paramInt2) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void a(PBRepeatMessageField<RequestSearchWord.Rcmd> paramPBRepeatMessageField, PBStringField paramPBStringField)
   {
-    GdtDrawableLoader.a(this.a, paramURLDrawable);
-    GdtLog.b("GdtDrawableLoader", "onLoadCanceled " + GdtDrawableLoader.a(this.a));
-    GdtDrawableLoader.a(this.a, false);
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    GdtDrawableLoader.a(this.a, paramURLDrawable);
-    GdtLog.d("GdtDrawableLoader", "onLoadFialed " + GdtDrawableLoader.a(this.a), paramThrowable);
-    if (!GdtDrawableLoader.a(this.a)) {
-      GdtDrawableLoader.a(this.a, false);
+    if ((paramPBRepeatMessageField == null) || (paramPBRepeatMessageField.size() <= 0)) {
+      return;
     }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    GdtDrawableLoader.a(this.a, paramURLDrawable);
-    GdtLog.b("GdtDrawableLoader", "onLoadProgressed " + paramInt + " " + GdtDrawableLoader.a(this.a));
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    GdtDrawableLoader.a(this.a, paramURLDrawable);
-    GdtLog.b("GdtDrawableLoader", "onLoadSuccessed " + GdtDrawableLoader.a(this.a));
-    GdtDrawableLoader.a(this.a, true);
+    if (ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).containsKey(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mRefreshTime)) {
+      ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).put(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mRefreshTime, Integer.valueOf(this.jdField_a_of_type_Int + 1));
+    }
+    for (;;)
+    {
+      baig.a("search_word_prefix_show_times", baig.b("search_word_prefix_show_times") + 1L);
+      ThreadManager.getUIHandler().post(new ReadInJoyListViewGroup.36.1(this, paramPBRepeatMessageField, paramPBStringField));
+      return;
+      ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).put(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mRefreshTime, Integer.valueOf(1));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qrj
  * JD-Core Version:    0.7.0.1
  */

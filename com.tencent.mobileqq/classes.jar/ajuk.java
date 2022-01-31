@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
-
-class ajuk
-  implements Runnable
+public class ajuk
+  implements ajfe
 {
-  ajuk(ajuj paramajuj) {}
+  private final String a = "TroopQZoneUploadAlbumObserver";
   
-  public void run()
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (this.a.a.a == 3) {
-      this.a.a.a = 1;
+    if (paramInt == 999) {
+      a(paramBoolean, paramObject);
     }
-    this.a.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajuk
  * JD-Core Version:    0.7.0.1
  */

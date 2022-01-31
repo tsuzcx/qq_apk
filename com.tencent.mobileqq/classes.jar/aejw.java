@@ -1,23 +1,22 @@
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.leba.view.LebaGridIndicator;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
 
-public class aejw
-  implements View.OnClickListener
+class aejw
+  implements ViewPager.OnPageChangeListener
 {
-  public aejw(LebaGridIndicator paramLebaGridIndicator, int paramInt) {}
+  aejw(aejb paramaejb) {}
   
-  public void onClick(View paramView)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    if (LebaGridIndicator.a(this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaGridIndicator) != null) {
-      LebaGridIndicator.b(this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaGridIndicator).setCurrentItem(this.jdField_a_of_type_Int);
-    }
+    aejb.a(this.a, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aejw
  * JD-Core Version:    0.7.0.1
  */

@@ -7,6 +7,7 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Process;
+import android.text.TextUtils;
 import java.lang.reflect.Method;
 import java.net.Socket;
 import java.security.SecureRandom;
@@ -24,6 +25,7 @@ import oicq.wlogin_sdk.sharemem.WloginSimpleInfo;
 import oicq.wlogin_sdk.tlv_type.tlv_t150;
 import oicq.wlogin_sdk.tools.MD5;
 import oicq.wlogin_sdk.tools.util;
+import oicq.wlogin_sdk.tools.util.a;
 
 public class t
 {
@@ -39,6 +41,7 @@ public class t
   public static byte[] J;
   public static byte[] K;
   static byte[] L;
+  @Deprecated
   static byte[] M;
   static byte[] N;
   static byte[] O;
@@ -46,44 +49,52 @@ public class t
   static byte[] Q;
   static byte[] R;
   static byte[] S;
-  static int T;
+  static byte[] T;
   static int U;
   static int V;
   static int W;
   static int X;
-  public static int Y;
+  static int Y;
   public static int Z;
   public static SecureRandom a = ;
-  static byte[] aa;
-  static long ab;
-  public static long ac;
-  static byte[] ad;
-  static int ae;
-  static int af;
-  public static boolean ag;
-  public static int ah;
-  public static byte[] ai;
-  public static c al;
-  protected static String am;
-  public static Reporter an;
-  public static long ao;
-  public static TreeMap<Long, async_context> ap;
-  public static boolean ar = false;
-  public static boolean as = true;
-  public static String at;
-  public static int au = 0;
-  private static Object av;
+  public static int aA;
+  public static String aB;
+  private static boolean aC;
+  private static Object aD = new Object();
+  public static int aa;
+  static boolean ab;
+  static byte[] ac;
+  static long ad;
+  public static long ae;
+  static byte[] af;
+  static int ag;
+  static int ah;
+  public static boolean ai;
+  public static int aj;
+  public static byte[] ak;
+  static byte[] al;
+  public static c ao;
+  protected static String ap;
+  public static Reporter aq;
+  public static long ar;
+  public static TreeMap<Long, async_context> as;
+  public static boolean au = false;
+  public static boolean av = true;
+  public static String aw;
+  public static int ax = 0;
+  public static String ay;
+  public static String az;
   static Boolean e = Boolean.valueOf(false);
-  public static Context t = null;
-  public static int u = 2052;
-  public static String v = "";
-  static int w = 0;
-  static int x = 1;
-  static int y = 0;
-  static int z = 0;
-  Socket aj = null;
-  Socket ak = null;
-  public int aq;
+  public static Context t;
+  public static int u;
+  public static String v;
+  static int w;
+  static int x;
+  static int y;
+  static int z;
+  Socket am = null;
+  Socket an = null;
+  public int at;
   public byte[] b = null;
   public byte[] c = new byte[16];
   public tlv_t150 d = null;
@@ -104,6 +115,14 @@ public class t
   
   static
   {
+    aC = true;
+    t = null;
+    u = 2052;
+    v = "";
+    w = 0;
+    x = 1;
+    y = 0;
+    z = 0;
     A = new byte[0];
     B = new byte[0];
     C = new byte[0];
@@ -123,27 +142,29 @@ public class t
     Q = new byte[0];
     R = new byte[0];
     S = new byte[0];
-    T = 0;
+    T = new byte[0];
     U = 0;
     V = 0;
     W = 0;
     X = 0;
     Y = 0;
     Z = 0;
-    aa = new byte[0];
-    ab = 0L;
-    ac = 0L;
-    ad = new byte[4];
-    ae = 0;
-    af = 0;
-    ag = false;
-    ah = 1;
-    al = null;
-    am = "";
-    an = new Reporter();
-    ao = 0L;
-    ap = new TreeMap();
-    av = new Object();
+    aa = 0;
+    ab = false;
+    ac = new byte[0];
+    ad = 0L;
+    ae = 0L;
+    af = new byte[4];
+    ag = 0;
+    ah = 0;
+    ai = false;
+    aj = 1;
+    al = new byte[0];
+    ao = null;
+    ap = "";
+    aq = new Reporter();
+    ar = 0L;
+    as = new TreeMap();
   }
   
   public t(Context paramContext) {}
@@ -152,11 +173,11 @@ public class t
   {
     try
     {
-      if (ao > 200L) {
-        ao = 0L;
+      if (ar > 200L) {
+        ar = 0L;
       }
-      long l1 = ao + 1L;
-      ao = l1;
+      long l1 = ar + 1L;
+      ar = l1;
       return l1;
     }
     finally {}
@@ -173,9 +194,9 @@ public class t
         return null;
       }
       util.saveGuidToFile(paramContext, util.string_to_buf(str));
-      ai = util.string_to_buf(str);
+      ak = util.string_to_buf(str);
       util.LOGI("get watch guid " + str, "");
-      paramContext = ai;
+      paramContext = ak;
       return paramContext;
     }
     catch (Exception paramContext) {}
@@ -186,9 +207,9 @@ public class t
   {
     for (;;)
     {
-      synchronized (av)
+      synchronized (aD)
       {
-        async_context localasync_context2 = (async_context)ap.get(Long.valueOf(paramLong));
+        async_context localasync_context2 = (async_context)as.get(Long.valueOf(paramLong));
         if (localasync_context2 == null)
         {
           for (;;)
@@ -206,7 +227,7 @@ public class t
             }
             try
             {
-              ap.put(Long.valueOf(paramLong), localasync_context1);
+              as.put(Long.valueOf(paramLong), localasync_context1);
               return localasync_context1;
             }
             catch (Exception localException2) {}
@@ -239,7 +260,7 @@ public class t
         localObject1 = MD5.toMD5Byte((byte[])localObject2);
       }
     }
-    Object localObject3 = util.get_imei_id(t);
+    Object localObject3 = util.get_android_id(t);
     localObject2 = localObject3;
     if (localObject3 != null)
     {
@@ -260,31 +281,31 @@ public class t
     if (util.get_last_flag(t) != 0)
     {
       arrayOfByte1 = util.get_last_mac(t);
-      byte[] arrayOfByte2 = util.get_last_imei(t);
+      byte[] arrayOfByte2 = util.get_last_android_id(t);
       byte[] arrayOfByte3 = util.get_last_guid(t);
       if (!Arrays.equals((byte[])localObject1, arrayOfByte1)) {
-        X |= 0x1;
+        Y |= 0x1;
       }
       if (!Arrays.equals((byte[])localObject2, arrayOfByte2)) {
-        X |= 0x2;
+        Y |= 0x2;
       }
       if (!Arrays.equals((byte[])localObject3, arrayOfByte3)) {
-        X |= 0x4;
+        Y |= 0x4;
       }
     }
     util.save_cur_flag(t, 1);
     util.save_cur_mac(t, (byte[])localObject1);
-    util.save_cur_imei(t, (byte[])localObject2);
+    util.save_cur_android_id(t, (byte[])localObject2);
     util.save_cur_guid(t, (byte[])localObject3);
   }
   
   public static void c(long paramLong)
   {
-    synchronized (av)
+    synchronized (aD)
     {
       try
       {
-        ap.remove(Long.valueOf(paramLong));
+        as.remove(Long.valueOf(paramLong));
         return;
       }
       catch (Exception localException)
@@ -300,34 +321,33 @@ public class t
   public static void d()
   {
     util.LOGI("init start", "");
-    Y = 0;
+    Z = 0;
     a(t);
-    byte[] arrayOfByte = util.getGuidFromFile(t);
-    util.LOGI("get saved guid " + util.buf_to_string(arrayOfByte), "");
-    Object localObject1 = util.generateGuid(t);
+    Object localObject2 = util.getGuidFromFile(t);
+    util.LOGI("get saved guid " + util.buf_to_string((byte[])localObject2), "");
+    localObject1 = util.generateGuid(t);
     util.LOGI("get current guid " + util.buf_to_string((byte[])localObject1), "");
-    int i2;
-    Object localObject2;
-    if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
+    localObject3 = new String("%4;7t>;28<fc.5*6").getBytes();
+    if ((localObject2 == null) || (localObject2.length <= 0))
+    {
       if ((localObject1 == null) || (localObject1.length <= 0))
       {
-        localObject1 = new String("%4;7t>;28<fc.5*6").getBytes();
-        U = 0;
-        W = 20;
-        util.saveGuidToFile(t, (byte[])localObject1);
         V = 0;
-        T = 1;
+        X = 20;
+        localObject1 = localObject3;
+      }
+      for (;;)
+      {
+        util.saveGuidToFile(t, (byte[])localObject1);
+        W = 0;
+        U = 1;
         c();
-        Y |= W << 24 & 0xFF000000;
-        Y |= X << 8 & 0xFF00;
+        Z |= X << 24 & 0xFF000000;
+        Z |= Y << 8 & 0xFF00;
         A = (byte[])((byte[])localObject1).clone();
         B = (byte[])((byte[])localObject1).clone();
-        util.LOGI("guid src " + W, "");
-        M = util.get_imei_id(t);
-        if ((M != null) && (M.length > 0)) {
-          M = MD5.toMD5Byte(M);
-        }
-        ae = Build.VERSION.SDK_INT;
+        util.LOGI("guid src " + X, "");
+        ag = Build.VERSION.SDK_INT;
         N = util.get_mac_addr(t);
         if ((N != null) && (N.length > 0)) {
           N = MD5.toMD5Byte(N);
@@ -341,20 +361,20 @@ public class t
         if ((O != null) && (O.length > 0)) {
           O = MD5.toMD5Byte(O);
         }
+        T = util.get_qimei(t);
         L = util.get_IMSI(t);
         if ((L != null) && (L.length > 0)) {
           L = MD5.toMD5Byte(L);
         }
         C = util.get_sim_operator_name(t);
         D = util.get_network_type(t);
-        i2 = util.get_saved_network_type(t);
-        if (i2 != D)
+        if (util.get_saved_network_type(t) != D)
         {
           util.set_net_retry_type(t, 0);
           util.save_network_type(t, D);
         }
         F = util.get_apn_string(t).getBytes();
-        aa = util.get_ksid(t);
+        ac = util.get_ksid(t);
         E = util.get_apk_id(t);
         G = util.get_apk_v(t, new String(E));
         H = util.getPkgSigFromApkName(t, t.getPackageName());
@@ -370,68 +390,92 @@ public class t
         }
         J = ((String)localObject2).getBytes();
         localObject1 = Build.MODEL;
+        try
+        {
+          localObject2 = util.a.a(t, "ro.vivo.market.name");
+          boolean bool = TextUtils.isEmpty((CharSequence)localObject2);
+          if (bool) {
+            break label950;
+          }
+          localObject1 = localObject2;
+        }
+        catch (Throwable localThrowable)
+        {
+          for (;;)
+          {
+            continue;
+            I = ((String)localObject1).getBytes();
+            continue;
+            P = ((String)localObject1).getBytes();
+            continue;
+            int i1 = 0;
+            continue;
+            i1 = 0;
+            continue;
+            continue;
+            localObject3 = localObject1;
+            localObject1 = localThrowable;
+          }
+        }
         if (localObject1 != null) {
-          break label825;
+          break label920;
         }
         I = new byte[0];
-        label577:
         localObject1 = Build.BRAND;
         if (localObject1 != null) {
-          break label835;
+          break label930;
         }
         P = new byte[0];
-        label591:
         if ((!util.isFileExist("/system/bin/su")) && (!util.isFileExist("/system/xbin/su")) && (!util.isFileExist("/sbin/su"))) {
-          break label845;
+          break label940;
         }
         i1 = 1;
-        label620:
         if (i1 != 1) {
-          break label850;
+          break label945;
         }
+        i1 = 1;
+        aa = i1;
+        ao = new c(t);
+        aq = report_t.read_fromfile(t);
+        if (aq == null) {
+          aq = new Reporter();
+        }
+        util.LOGI("init ok os ver:" + new String(J) + " cur_guid:" + util.buf_to_string(A) + " svn " + 2425L + " at " + m(), "");
+        return;
+        V = 1;
+        X = 17;
       }
     }
-    label825:
-    label835:
-    label845:
-    label850:
-    for (int i1 = 1;; i1 = 0)
+    if ((localObject1 == null) || (localObject1.length <= 0))
     {
-      Z = i1;
-      al = new c(t);
-      an = report_t.read_fromfile(t);
-      if (an == null) {
-        an = new Reporter();
+      localObject1 = localObject2;
+      label763:
+      aC = false;
+      if (!Arrays.equals((byte[])localObject3, (byte[])localObject1)) {
+        break label909;
       }
-      util.LOGI("init ok os ver:" + new String(J) + " saved_network_type:" + i2 + " network_type:" + D + " svn " + 2282L + " at " + l(), "");
-      return;
-      U = 1;
-      W = 17;
+    }
+    label909:
+    for (W = 0;; W = 1)
+    {
+      V = 1;
+      U = 0;
+      X = 1;
       break;
-      if (localObject1 != null)
-      {
-        localObject2 = localObject1;
-        if (localObject1.length > 0) {}
+      if ((!Arrays.equals((byte[])localObject3, (byte[])localObject2)) || (!aC)) {
+        break label953;
       }
-      else
-      {
-        localObject2 = new String("%4;7t>;28<fc.5*6").getBytes();
+      localObject3 = m();
+      if ((TextUtils.isEmpty((CharSequence)localObject3)) || (!((String)localObject3).endsWith(":MSF")) || (!util.needChangeGuid(t))) {
+        break label953;
       }
-      if (Arrays.equals((byte[])localObject2, arrayOfByte)) {}
-      for (V = 0;; V = 1)
-      {
-        U = 1;
-        T = 0;
-        W = 1;
-        localObject1 = arrayOfByte;
-        break;
-      }
-      I = ((String)localObject1).getBytes();
-      break label577;
-      P = ((String)localObject1).getBytes();
-      break label591;
-      i1 = 0;
-      break label620;
+      util.LOGI("reset guid :" + util.buf_to_string((byte[])localObject2) + "|" + util.buf_to_string((byte[])localObject1), "");
+      c.a(t, (byte[])localObject2, (byte[])localObject1);
+      util.saveGuidToFile(t, (byte[])localObject1);
+      localObject2 = localObject1;
+      localObject3 = localObject1;
+      localObject1 = localObject2;
+      break label763;
     }
   }
   
@@ -442,14 +486,14 @@ public class t
   
   public static long g()
   {
-    return System.currentTimeMillis() / 1000L + ac;
+    return System.currentTimeMillis() / 1000L + ae;
   }
   
   @SuppressLint({"NewApi"})
-  public static String l()
+  public static String m()
   {
-    if ((am != null) && (am.length() > 0)) {
-      return am;
+    if ((ap != null) && (ap.length() > 0)) {
+      return ap;
     }
     try
     {
@@ -460,8 +504,8 @@ public class t
         ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
         if (localRunningAppProcessInfo.pid == i1)
         {
-          am = localRunningAppProcessInfo.processName;
-          localObject = am;
+          ap = localRunningAppProcessInfo.processName;
+          localObject = ap;
           return localObject;
         }
       }
@@ -473,7 +517,7 @@ public class t
     return "";
   }
   
-  private static SecureRandom m()
+  private static SecureRandom n()
   {
     try
     {
@@ -488,7 +532,7 @@ public class t
   {
     try
     {
-      int i1 = al.a(paramLong1, paramLong2, paramLong3, paramLong4, paramArrayOfByte1, paramArrayOfByte2);
+      int i1 = ao.a(paramLong1, paramLong2, paramLong3, paramLong4, paramArrayOfByte1, paramArrayOfByte2);
       return i1;
     }
     finally
@@ -502,8 +546,8 @@ public class t
   {
     try
     {
-      al.d = this.aq;
-      paramInt = al.a(paramLong1, paramLong2, paramArrayOfByte1, paramLong3, paramLong4, paramLong5, paramLong6, paramLong7, paramWloginSimpleInfo, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4, paramArrayOfByte5, paramArrayOfByte6, paramArrayOfByte7, paramArrayOfByte8, paramArrayOfByte9, paramArrayOfByte10, paramArrayOfByte11, paramArrayOfByte12, paramArrayOfByte13, paramArrayOfByte14, paramArrayOfLong, paramInt);
+      ao.d = this.at;
+      paramInt = ao.a(paramLong1, paramLong2, paramArrayOfByte1, paramLong3, paramLong4, paramLong5, paramLong6, paramLong7, paramWloginSimpleInfo, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4, paramArrayOfByte5, paramArrayOfByte6, paramArrayOfByte7, paramArrayOfByte8, paramArrayOfByte9, paramArrayOfByte10, paramArrayOfByte11, paramArrayOfByte12, paramArrayOfByte13, paramArrayOfByte14, paramArrayOfLong, paramInt);
       return paramInt;
     }
     finally
@@ -526,21 +570,19 @@ public class t
       localt.n = ((byte[])this.n.clone());
       localt.p = ((byte[])this.p.clone());
     }
-    if (paramLong <= 0L)
+    if (paramLong <= 0L) {}
+    for (localt.h = a();; localt.h = paramLong)
     {
-      localt.h = a();
+      localt.c(t);
       return localt;
     }
-    localt.h = paramLong;
-    return localt;
   }
   
   public WloginSigInfo a(long paramLong1, long paramLong2)
   {
     try
     {
-      util.LOGI("get_siginfo appid=" + paramLong2, paramLong1 + "");
-      WloginSigInfo localWloginSigInfo = al.d(paramLong1, paramLong2);
+      WloginSigInfo localWloginSigInfo = ao.d(paramLong1, paramLong2);
       if (localWloginSigInfo != null) {}
       return localWloginSigInfo;
     }
@@ -555,7 +597,7 @@ public class t
   {
     try
     {
-      al.a(paramLong1, paramLong2, paramArrayOfByte);
+      ao.a(paramLong1, paramLong2, paramArrayOfByte);
       return;
     }
     finally
@@ -569,7 +611,7 @@ public class t
   {
     try
     {
-      al.a(paramString);
+      ao.a(paramString);
       return;
     }
     finally
@@ -583,7 +625,7 @@ public class t
   {
     try
     {
-      al.a(paramString, paramLong, true);
+      ao.a(paramString, paramLong, true);
       return;
     }
     finally
@@ -597,7 +639,7 @@ public class t
   {
     try
     {
-      al.a(paramString, paramLong, paramBoolean);
+      ao.a(paramString, paramLong, paramBoolean);
       return;
     }
     finally
@@ -609,16 +651,16 @@ public class t
   
   public void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    ab = (util.buf_to_int32(paramArrayOfByte1, 0) & 0xFFFFFFFF) - System.currentTimeMillis() / 1000L;
-    ac = ab;
-    ad = paramArrayOfByte2;
+    ad = (util.buf_to_int32(paramArrayOfByte1, 0) & 0xFFFFFFFF) - System.currentTimeMillis() / 1000L;
+    ae = ad;
+    af = paramArrayOfByte2;
   }
   
   public int b(long paramLong1, long paramLong2)
   {
     try
     {
-      int i1 = al.a(paramLong1, paramLong2);
+      int i1 = ao.a(paramLong1, paramLong2);
       return i1;
     }
     finally
@@ -633,7 +675,7 @@ public class t
     long l2 = 0L;
     try
     {
-      paramString = al.a(paramString, true);
+      paramString = ao.a(paramString, true);
       long l1 = l2;
       if (paramString != null)
       {
@@ -658,7 +700,7 @@ public class t
   {
     try
     {
-      paramString = al.a(paramString, false);
+      paramString = ao.a(paramString, false);
       return paramString;
     }
     finally
@@ -672,7 +714,7 @@ public class t
   {
     try
     {
-      al.b(paramLong1, paramLong2);
+      ao.b(paramLong1, paramLong2);
       return;
     }
     finally
@@ -682,11 +724,16 @@ public class t
     }
   }
   
+  public void c(Context paramContext)
+  {
+    t = paramContext;
+  }
+  
   public WloginSimpleInfo d(long paramLong)
   {
     try
     {
-      WloginSimpleInfo localWloginSimpleInfo = al.b(paramLong);
+      WloginSimpleInfo localWloginSimpleInfo = ao.b(paramLong);
       if (localWloginSimpleInfo != null) {}
       return localWloginSimpleInfo;
     }
@@ -699,14 +746,14 @@ public class t
   
   public void d(long paramLong1, long paramLong2)
   {
-    al.c(paramLong1, paramLong2);
+    ao.c(paramLong1, paramLong2);
   }
   
   public void d(String paramString)
   {
     try
     {
-      al.b(paramString);
+      ao.b(paramString);
       return;
     }
     finally
@@ -720,7 +767,7 @@ public class t
   {
     try
     {
-      String str = al.b(Long.valueOf(paramLong));
+      String str = ao.b(Long.valueOf(paramLong));
       return str;
     }
     finally
@@ -734,7 +781,7 @@ public class t
   {
     try
     {
-      al.a(Long.valueOf(paramLong1), Long.valueOf(paramLong2));
+      ao.a(Long.valueOf(paramLong1), Long.valueOf(paramLong2));
       return;
     }
     finally
@@ -749,35 +796,20 @@ public class t
     return this.k != 0;
   }
   
-  public void h()
+  public Context h()
   {
-    util.LOGD("close_connect", "close_connect");
-    if (this.aj != null) {}
-    try
-    {
-      util.LOGD("close_connect", this.aj.toString());
-      this.aj.close();
-      this.aj = null;
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        util.printException(localException, "");
-      }
-    }
+    return t;
   }
   
   public void i()
   {
-    util.LOGD("close_transport_connect", "close_transport_connect");
-    if (this.ak != null) {}
+    util.LOGD("close_connect", "close_connect");
+    if (this.am != null) {}
     try
     {
-      util.LOGD("close_transport_connect", this.ak.toString());
-      this.ak.close();
-      this.ak = null;
+      util.LOGD("close_connect", this.am.toString());
+      this.am.close();
+      this.am = null;
       return;
     }
     catch (Exception localException)
@@ -791,9 +823,28 @@ public class t
   
   public void j()
   {
+    if (this.an != null) {}
     try
     {
-      al.a();
+      util.LOGD("close_transport_connect", this.an.toString());
+      this.an.close();
+      this.an = null;
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        util.printException(localException, "");
+      }
+    }
+  }
+  
+  public void k()
+  {
+    try
+    {
+      ao.a();
       return;
     }
     finally
@@ -803,11 +854,11 @@ public class t
     }
   }
   
-  public List<WloginLoginInfo> k()
+  public List<WloginLoginInfo> l()
   {
     try
     {
-      List localList = al.a(true);
+      List localList = ao.a(true);
       return localList;
     }
     finally

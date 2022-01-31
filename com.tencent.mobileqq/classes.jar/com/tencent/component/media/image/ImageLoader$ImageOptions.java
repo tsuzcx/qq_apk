@@ -18,6 +18,7 @@ public class ImageLoader$ImageOptions
   public int clipHeight = -1;
   public int clipWidth = -1;
   public Bitmap.Config imageConfig = DEFAULT_IMAGE_CONFIG;
+  public boolean isNeedPieceLoad = false;
   public boolean justCover = true;
   public boolean needCache = true;
   public boolean needShowGifAnimation = false;

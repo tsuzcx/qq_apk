@@ -1,17 +1,18 @@
-import com.tencent.biz.qqstory.takevideo.doodle.layer.LineLayer;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.magic.models.CgF;
 
-public class ooe
-  implements Runnable
+public final class ooe
+  implements Parcelable.Creator<CgF>
 {
-  public ooe(DoodleLayout paramDoodleLayout, LineLayer paramLineLayer, int paramInt, int[] paramArrayOfInt) {}
-  
-  public void run()
+  public CgF a(Parcel paramParcel)
   {
-    ((PersonalityOperator)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerLineLayer.a.a(102)).b(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ArrayOfInt[0] = 1;
+    return new CgF(paramParcel, null);
+  }
+  
+  public CgF[] a(int paramInt)
+  {
+    return new CgF[paramInt];
   }
 }
 

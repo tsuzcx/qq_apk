@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.FormMutiItem android:id="@id/lwy" android:focusable="true" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="evy" formItem:needFocusBg="false" formItem:needSetHeght="false"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq" />

@@ -1,17 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class vyx
-  implements DialogInterface.OnClickListener
+class vyx
+  implements View.OnClickListener
 {
-  public vyx(GameRoomChatPie paramGameRoomChatPie) {}
+  vyx(vyw paramvyw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    this.a.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vyx
  * JD-Core Version:    0.7.0.1
  */

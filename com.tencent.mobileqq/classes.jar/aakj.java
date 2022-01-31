@@ -1,25 +1,51 @@
-import com.tencent.mobileqq.ar.ScanEntranceReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class aakj
-  implements Runnable
+  implements begw
 {
-  public aakj(ScanEntranceReport paramScanEntranceReport, long paramLong1, int paramInt, String paramString, long paramLong2) {}
+  public aakj(ChatSettingForTroop paramChatSettingForTroop, begr parambegr) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("last_total_time", String.valueOf(this.jdField_a_of_type_Long));
-    localHashMap.put("upload_count", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("session_ids", this.jdField_a_of_type_JavaLangString);
-    StatisticCollector.a(BaseApplication.getContext()).a("", "scanner_first_ar_recog", true, this.b, 0L, localHashMap, "");
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bbmv == null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bbmv = new bbmv(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
+    }
+    if (badq.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop))
+    {
+      paramView = (ajtg)this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.a(20);
+      if (paramView != null)
+      {
+        if ((this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.k & 0x1) == 0)
+        {
+          ChatSettingForTroop localChatSettingForTroop = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop;
+          localChatSettingForTroop.k |= 0x1;
+          paramView.l(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bbmv.b(0, 2131626630, 1000);
+      }
+    }
+    for (;;)
+    {
+      awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app, "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_Begr.cancel();
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bbmv.b(2, 2131626626, 1500);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_Bbmv.b(2, 2131629008, 1500);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aakj
  * JD-Core Version:    0.7.0.1
  */

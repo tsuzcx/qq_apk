@@ -9,11 +9,11 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class value$HwFeedbackList
-  extends MessageMicro
+  extends MessageMicro<HwFeedbackList>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128, 800 }, new String[] { "feedback", "total", "rate_noread", "rate_feedback", "is_hw_exist", "need_feedback", "hw_publisher", "gid", "team_id", "hw_type", "unreview_num", "reviewed_num", "feedback_num", "comment_num", "single_remind_limit", "onekey_remind_limit", "version" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, HwFeedbackList.class);
   public final PBUInt32Field comment_num = PBField.initUInt32(0);
-  public final PBRepeatMessageField feedback = PBField.initRepeatMessage(value.HwFeedback.class);
+  public final PBRepeatMessageField<value.HwFeedback> feedback = PBField.initRepeatMessage(value.HwFeedback.class);
   public final PBUInt32Field feedback_num = PBField.initUInt32(0);
   public final PBUInt64Field gid = PBField.initUInt64(0L);
   public final PBUInt64Field hw_publisher = PBField.initUInt64(0L);

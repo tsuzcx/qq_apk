@@ -8,11 +8,11 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class msg_svc$PbPullGroupMsgSeqResp
-  extends MessageMicro
+  extends MessageMicro<PbPullGroupMsgSeqResp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26 }, new String[] { "result", "errmsg", "group_info_resp" }, new Object[] { Integer.valueOf(0), "", null }, PbPullGroupMsgSeqResp.class);
   public final PBStringField errmsg = PBField.initString("");
-  public final PBRepeatMessageField group_info_resp = PBField.initRepeatMessage(msg_svc.PbPullGroupMsgSeqResp.GroupInfoResp.class);
+  public final PBRepeatMessageField<msg_svc.PbPullGroupMsgSeqResp.GroupInfoResp> group_info_resp = PBField.initRepeatMessage(msg_svc.PbPullGroupMsgSeqResp.GroupInfoResp.class);
   public final PBUInt32Field result = PBField.initUInt32(0);
 }
 

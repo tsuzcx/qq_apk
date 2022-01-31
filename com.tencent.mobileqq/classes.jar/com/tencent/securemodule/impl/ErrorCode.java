@@ -29,23 +29,18 @@ public class ErrorCode
   public static final int ERR_URL_MALFORMED = -53;
   public static final int ERR_WUP = -6000;
   
-  public static a judgeErrorCode(int paramInt)
+  public static ErrorCode.a judgeErrorCode(int paramInt)
   {
-    a locala = a.d;
+    ErrorCode.a locala = ErrorCode.a.d;
     if (-(-paramInt % 100) == -3) {
-      return a.c;
+      return ErrorCode.a.c;
     }
     switch (-(-paramInt / 1000 * 1000))
     {
     default: 
       return locala;
     }
-    return a.a;
-  }
-  
-  public static enum a
-  {
-    private a() {}
+    return ErrorCode.a.a;
   }
 }
 

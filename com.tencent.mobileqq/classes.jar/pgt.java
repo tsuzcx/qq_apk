@@ -1,29 +1,16 @@
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import com.tencent.biz.pubaccount.util.OfflineUpdateStatus;
-import com.tencent.biz.webviewplugin.OfflinePlugin;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class pgt
-  implements Runnable
+class pgt
+  implements View.OnClickListener
 {
-  public pgt(OfflinePlugin paramOfflinePlugin) {}
+  pgt(pgn parampgn) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (OfflinePlugin.jdField_a_of_type_JavaUtilHashMap != null)
-    {
-      OfflineUpdateStatus localOfflineUpdateStatus = (OfflineUpdateStatus)OfflinePlugin.jdField_a_of_type_JavaUtilHashMap.get(OfflinePlugin.a(this.a));
-      if ((localOfflineUpdateStatus != null) && (localOfflineUpdateStatus.b() == 1))
-      {
-        if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-          this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-        }
-        if (this.a.jdField_a_of_type_AndroidWidgetProgressBar != null) {
-          this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-        }
-        localOfflineUpdateStatus.a(2);
-      }
+    paramView = this.a.jdField_a_of_type_Qoe.a();
+    if (paramView != null) {
+      paramView.a(null, ((opw)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
     }
   }
 }

@@ -1,21 +1,24 @@
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploader;
+import java.util.Comparator;
 
-public class ajng
-  implements Runnable
+class ajng
+  implements Comparator<atcu>
 {
-  public ajng(TroopFileUploader paramTroopFileUploader) {}
+  ajng(ajnf paramajnf) {}
   
-  public void run()
+  public int a(atcu paramatcu1, atcu paramatcu2)
   {
-    if (TroopFileUploader.a(this.a)) {
-      return;
+    if ((!paramatcu1.a()) && (paramatcu2.a())) {
+      return -1;
     }
-    TroopFileUploader.a(this.a, TroopFileUploader.a(this.a));
+    if ((paramatcu1.a()) && (!paramatcu2.a())) {
+      return 1;
+    }
+    return (int)(paramatcu2.a - paramatcu1.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajng
  * JD-Core Version:    0.7.0.1
  */

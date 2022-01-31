@@ -1,53 +1,31 @@
-import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsAdapter.FeedItemCellHolder;
-import com.tencent.image.URLDrawable;
-import com.tencent.mfsdk.collector.DropFrameMonitor;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class mwl
-  implements AbsListView.OnScrollListener
+  implements begw
 {
-  public mwl(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  public mwl(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
+    if (this.a.o) {
+      return;
+    }
+    this.a.o = true;
     switch (paramInt)
     {
-    default: 
-      DropFrameMonitor.a().a("list_subscript");
     }
     for (;;)
     {
+      this.a.a.dismiss();
       return;
-      DropFrameMonitor.a().a("list_subscript", false);
-      paramInt = 0;
-      while (paramInt <= paramAbsListView.getChildCount())
-      {
-        Object localObject = paramAbsListView.getChildAt(paramInt);
-        if ((localObject != null) && ((((View)localObject).getTag() instanceof SubscriptFeedsAdapter.FeedItemCellHolder)))
-        {
-          localObject = (SubscriptFeedsAdapter.FeedItemCellHolder)((View)localObject).getTag();
-          Drawable localDrawable = ((SubscriptFeedsAdapter.FeedItemCellHolder)localObject).b.getDrawable();
-          if ((localDrawable != null) && ((localDrawable instanceof URLDrawable)) && (!((URLDrawable)localDrawable).isDownloadStarted()))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("SubscriptFeedsActivity", 2, "list child view start download pic!  uin : " + ((SubscriptFeedsAdapter.FeedItemCellHolder)localObject).a);
-            }
-            ((URLDrawable)localDrawable).startDownload();
-            ((URLDrawable)localDrawable).setAutoDownload(true);
-          }
-        }
-        paramInt += 1;
-      }
+      this.a.q();
+      continue;
+      this.a.E();
+      continue;
+      AccountDetailActivity.a(this.a, this.a.d);
     }
   }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="#fff7f7f7" android:paddingBottom="6.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/dq8" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <FrameLayout android:id="@id/de7" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.image.URLImageView android:id="@id/baf" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <include layout="@layout/a6c" />
+        </FrameLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/jgh" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <View android:layout_width="fill_parent" android:layout_height="5.0dip" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/fau" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip">
+                <ImageView android:id="@id/fat" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+                <TextView android:textSize="10.0dip" android:textColor="#ff737373" android:ellipsize="end" android:id="@id/fav" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:lines="1" />
+            </LinearLayout>
+            <TextView android:textSize="13.0dip" android:textColor="#ff262626" android:ellipsize="end" android:id="@id/title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="8.0dip" android:maxLines="3" />
+            <RelativeLayout android:orientation="horizontal" android:paddingLeft="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <com.tencent.biz.pubaccount.readinjoy.view.HeadImageWithRing android:id="@id/dq0" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginTop="8.0dip" android:layout_marginBottom="12.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+                <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView android:textSize="11.0dip" android:textColor="#ff737373" android:ellipsize="end" android:id="@id/f9d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:layout_marginRight="21.0dip" android:lines="1" android:layout_toLeftOf="@id/e9h" android:layout_toRightOf="@id/dq0" android:layout_centerVertical="true" />
+                <TextView android:textSize="11.0dip" android:textColor="#ff737373" android:id="@id/e9h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/fao" android:layout_centerVertical="true" />
+                <ImageView android:id="@id/fao" android:padding="5.0dip" android:layout_width="30.0dip" android:layout_height="30.0dip" android:src="@drawable/a_e" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+        </LinearLayout>
+        <RelativeLayout android:orientation="horizontal" android:id="@id/ju9" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <View android:id="@id/bqr" android:background="#ffe5e5e5" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_alignParentTop="true" />
+            <ImageView android:id="@id/ju5" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="12.0dip" android:layout_below="@id/bqr" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            <TextView android:textColor="#ff262626" android:ellipsize="end" android:id="@id/jug" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:lines="1" android:layout_toLeftOf="@id/i_m" android:layout_toRightOf="@id/ju5" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/i_m" android:layout_width="12.0dip" android:layout_height="12.0dip" android:src="@drawable/common_arrow_right_selector" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</FrameLayout>

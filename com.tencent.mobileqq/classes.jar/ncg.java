@@ -1,15 +1,18 @@
-import android.widget.TextView;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.net.Uri;
+import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
 
-class ncg
-  implements Runnable
+public class ncg
+  implements DialogInterface.OnClickListener
 {
-  ncg(nby paramnby, boolean paramBoolean, int paramInt) {}
+  public ncg(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment, Context paramContext, Uri paramUri, String paramString1, String paramString2) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Nby.a.a.setText("" + PublicAccountImageCollectionMainActivity.c(this.jdField_a_of_type_Nby.a));
-    PublicAccountImageCollectionMainActivity.a(this.jdField_a_of_type_Nby.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.a(paramDialogInterface, true, this.b);
   }
 }
 

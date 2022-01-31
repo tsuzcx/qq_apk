@@ -1,28 +1,33 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.drawable.BitmapDrawable;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.ChooseItemView;
+import com.tencent.qphone.base.util.QLog;
 
 public class agng
-  extends BitmapDrawable
+  implements View.OnFocusChangeListener
 {
-  public agng(ScanTorchActivity paramScanTorchActivity, Resources paramResources, Bitmap paramBitmap1, float paramFloat, Bitmap paramBitmap2)
-  {
-    super(paramResources, paramBitmap1);
-  }
+  public agng(LingHbFragment paramLingHbFragment) {}
   
-  public void draw(Canvas paramCanvas)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    paramCanvas.save();
-    paramCanvas.rotate(this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2, this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2);
-    super.draw(paramCanvas);
-    paramCanvas.restore();
+    if (paramBoolean) {
+      LingHbFragment.a(this.a).a(this.a.c.getText().toString(), false);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("LingHbFragment", 2, "onFocusChange:" + paramBoolean);
+      }
+      return;
+      LingHbFragment.a(this.a).a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agng
  * JD-Core Version:    0.7.0.1
  */

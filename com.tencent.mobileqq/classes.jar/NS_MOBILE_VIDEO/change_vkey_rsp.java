@@ -9,14 +9,14 @@ import java.util.Map;
 public final class change_vkey_rsp
   extends JceStruct
 {
-  static Map cache_video_urls;
+  static Map<String, UrlRsp> cache_video_urls;
   public String msg = "";
   public int ret;
-  public Map video_urls;
+  public Map<String, UrlRsp> video_urls;
   
   public change_vkey_rsp() {}
   
-  public change_vkey_rsp(int paramInt, String paramString, Map paramMap)
+  public change_vkey_rsp(int paramInt, String paramString, Map<String, UrlRsp> paramMap)
   {
     this.ret = paramInt;
     this.msg = paramString;

@@ -1,30 +1,31 @@
 package com.tencent.mobileqq.jsp;
 
 import android.content.Context;
-import com.tencent.mobileqq.jsbridge.JsBridge.JsBridgeListener;
-import com.tencent.mobileqq.jsbridge.JsBridge.JsHandler;
-import com.tencent.mobileqq.utils.PackageUtil;
+import aqrd;
+import aqre;
+import aqsg;
+import bady;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 import java.util.List;
 
 @Deprecated
 public class AppShareJavaScript
-  extends JsBridge.JsHandler
+  extends aqre
 {
   Context jdField_a_of_type_AndroidContentContext;
-  private QQApiPlugin jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin;
+  private aqsg jdField_a_of_type_Aqsg;
   private boolean jdField_a_of_type_Boolean;
   
   public AppShareJavaScript(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin = new QQApiPlugin();
+    this.jdField_a_of_type_Aqsg = new aqsg();
     try
     {
-      Field localField = QQApiPlugin.class.getDeclaredField("a");
+      Field localField = aqsg.class.getDeclaredField("a");
       localField.setAccessible(true);
-      localField.set(this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin, paramContext);
+      localField.set(this.jdField_a_of_type_Aqsg, paramContext);
       this.jdField_a_of_type_Boolean = true;
       return;
     }
@@ -34,7 +35,7 @@ public class AppShareJavaScript
     }
   }
   
-  public void call(String paramString, List paramList, JsBridge.JsBridgeListener paramJsBridgeListener)
+  public void call(String paramString, List<String> paramList, aqrd paramaqrd)
   {
     if (!this.jdField_a_of_type_Boolean)
     {
@@ -48,8 +49,8 @@ public class AppShareJavaScript
       {
         if (("isAppInstalled".equals(paramString)) && (i == 1))
         {
-          paramList = Boolean.valueOf(PackageUtil.a(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0)));
-          paramJsBridgeListener.a(paramList);
+          paramList = Boolean.valueOf(bady.a(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0)));
+          paramaqrd.a(paramList);
           return;
         }
       }
@@ -60,23 +61,23 @@ public class AppShareJavaScript
       }
       if (("checkAppInstalled".equals(paramString)) && (i == 1))
       {
-        paramList = PackageUtil.a(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0));
+        paramList = bady.a(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0));
       }
       else if (("checkAppInstalledBatch".equals(paramString)) && (i == 1))
       {
-        paramList = PackageUtil.b(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0));
+        paramList = bady.b(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0));
       }
       else if (("isAppInstalledBatch".equals(paramString)) && (i == 1))
       {
-        paramList = PackageUtil.c(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0));
+        paramList = bady.c(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0));
       }
       else if (("startAppWithPkgName".equals(paramString)) && (i == 1))
       {
-        paramList = Boolean.valueOf(PackageUtil.a(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0), null));
+        paramList = Boolean.valueOf(bady.a(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0), null));
       }
       else if (("startAppWithPkgNameAndOpenId".equals(paramString)) && (i == 2))
       {
-        paramList = Boolean.valueOf(PackageUtil.a(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0), (String)paramList.get(1)));
+        paramList = Boolean.valueOf(bady.a(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0), (String)paramList.get(1)));
       }
       else if (("getOpenidBatch".equals(paramString)) && (i == 1))
       {
@@ -84,26 +85,30 @@ public class AppShareJavaScript
       }
       else if (("launchAppWithTokens".equals(paramString)) && (i == 4))
       {
-        this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.a((String)paramList.get(0), (String)paramList.get(1), (String)paramList.get(2), (String)paramList.get(3), null, "");
+        this.jdField_a_of_type_Aqsg.a((String)paramList.get(0), (String)paramList.get(1), (String)paramList.get(2), (String)paramList.get(3), null, "");
         paramList = null;
       }
       else if (("getAppsVerionCodeBatch".equals(paramString)) && (i == 1))
       {
-        paramList = PackageUtil.d(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0));
+        paramList = bady.d(this.jdField_a_of_type_AndroidContentContext, (String)paramList.get(0));
       }
       else if (("setShareURL".equals(paramString)) && (i == 1))
       {
         paramList = Boolean.valueOf(false);
       }
+      else if (("setShareInfo".equals(paramString)) && (i == 1))
+      {
+        paramList = Boolean.valueOf(false);
+      }
       else
       {
-        if ((!"setShareInfo".equals(paramString)) || (i != 1)) {
+        if ((!"sendDocToChat".equals(paramString)) || (i != 1)) {
           break;
         }
         paramList = Boolean.valueOf(false);
       }
     }
-    paramJsBridgeListener.a();
+    paramaqrd.a();
   }
 }
 

@@ -1,39 +1,24 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.Switch;
-
 public class lhh
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public lhh(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  private final int a;
+  private int b;
+  private int c;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public lhh(int paramInt)
   {
-    paramCompoundButton = this.a;
-    if (!paramBoolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ReadInJoySettingActivity.a(paramCompoundButton, bool);
-      if ((!ReadInJoySettingActivity.a(this.a).isPressed()) || (this.a.c)) {
-        break label75;
-      }
-      if (paramBoolean) {
-        break;
-      }
-      ReadInJoySettingActivity.b(this.a, ReadInJoySettingActivity.a(this.a));
-      return;
-    }
-    ReadInJoySettingActivity.a(this.a).show();
-    return;
-    label75:
-    this.a.c = false;
+    this.a = paramInt;
+    this.b = 1;
+    this.c = 1;
+  }
+  
+  public void a(lgc paramlgc, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    paramlgc.a(paramInt1, paramInt2, paramInt3, paramInt4, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lhh
  * JD-Core Version:    0.7.0.1
  */

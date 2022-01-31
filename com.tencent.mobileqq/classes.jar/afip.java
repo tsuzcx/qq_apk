@@ -1,17 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
-
-public class afip
-  implements DialogInterface.OnClickListener
+class afip
+  implements afis
 {
-  public afip(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  afip(afim paramafim) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(int paramInt1, int paramInt2)
+  {
+    afim.a(this.a, paramInt1, paramInt2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afip
  * JD-Core Version:    0.7.0.1
  */

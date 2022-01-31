@@ -1,28 +1,14 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.forward.ForwardMarketFaceOption;
-import com.tencent.mobileqq.utils.ImageUtil;
+import android.view.View;
 
-class adtd
-  implements URLDrawable.URLDrawableListener
+public abstract interface adtd
 {
-  adtd(adtc paramadtc) {}
+  public abstract void a(View paramView);
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable.setBounds(ImageUtil.a(paramURLDrawable, 36, 100, this.a.a.a));
-    this.a.a.a(paramURLDrawable, false, 0);
-  }
+  public abstract void b(View paramView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adtd
  * JD-Core Version:    0.7.0.1
  */

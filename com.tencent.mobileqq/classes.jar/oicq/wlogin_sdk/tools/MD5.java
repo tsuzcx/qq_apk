@@ -50,9 +50,14 @@ public class MD5
   private void Encode(byte[] paramArrayOfByte, long[] paramArrayOfLong, int paramInt)
   {
     int i = 0;
+    int k = paramArrayOfLong.length;
+    util.LOGI("Encode " + k + " len:" + paramInt, "");
     int j = 0;
     while (i < paramInt)
     {
+      if (j >= k) {
+        util.LOGI("Encode index:" + j, "");
+      }
       paramArrayOfByte[i] = ((byte)(int)(paramArrayOfLong[j] & 0xFF));
       paramArrayOfByte[(i + 1)] = ((byte)(int)(paramArrayOfLong[j] >>> 8 & 0xFF));
       paramArrayOfByte[(i + 2)] = ((byte)(int)(paramArrayOfLong[j] >>> 16 & 0xFF));
@@ -169,12 +174,12 @@ public class MD5
     //   1: istore_1
     //   2: aload_0
     //   3: ifnonnull +6 -> 9
-    //   6: ldc 127
+    //   6: ldc 95
     //   8: areturn
-    //   9: new 129	java/io/FileInputStream
+    //   9: new 155	java/io/FileInputStream
     //   12: dup
     //   13: aload_0
-    //   14: invokespecial 132	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   14: invokespecial 158	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   17: astore 5
     //   19: sipush 8192
     //   22: newarray byte
@@ -185,78 +190,78 @@ public class MD5
     //   31: aload_0
     //   32: dup
     //   33: iconst_0
-    //   34: ldc 101
+    //   34: ldc 129
     //   36: castore
     //   37: dup
     //   38: iconst_1
-    //   39: ldc 102
+    //   39: ldc 130
     //   41: castore
     //   42: dup
     //   43: iconst_2
-    //   44: ldc 103
+    //   44: ldc 131
     //   46: castore
     //   47: dup
     //   48: iconst_3
-    //   49: ldc 104
+    //   49: ldc 132
     //   51: castore
     //   52: dup
     //   53: iconst_4
-    //   54: ldc 105
+    //   54: ldc 133
     //   56: castore
     //   57: dup
     //   58: iconst_5
-    //   59: ldc 106
+    //   59: ldc 134
     //   61: castore
     //   62: dup
     //   63: bipush 6
-    //   65: ldc 107
+    //   65: ldc 135
     //   67: castore
     //   68: dup
     //   69: bipush 7
-    //   71: ldc 108
+    //   71: ldc 136
     //   73: castore
     //   74: dup
     //   75: bipush 8
-    //   77: ldc 109
+    //   77: ldc 137
     //   79: castore
     //   80: dup
     //   81: bipush 9
-    //   83: ldc 110
+    //   83: ldc 138
     //   85: castore
     //   86: dup
     //   87: bipush 10
-    //   89: ldc 133
+    //   89: ldc 159
     //   91: castore
     //   92: dup
     //   93: bipush 11
-    //   95: ldc 134
+    //   95: ldc 160
     //   97: castore
     //   98: dup
     //   99: bipush 12
-    //   101: ldc 135
+    //   101: ldc 161
     //   103: castore
     //   104: dup
     //   105: bipush 13
-    //   107: ldc 136
+    //   107: ldc 162
     //   109: castore
     //   110: dup
     //   111: bipush 14
-    //   113: ldc 137
+    //   113: ldc 163
     //   115: castore
     //   116: dup
     //   117: bipush 15
-    //   119: ldc 138
+    //   119: ldc 164
     //   121: castore
     //   122: pop
-    //   123: ldc 140
-    //   125: invokestatic 146	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   123: ldc 166
+    //   125: invokestatic 172	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
     //   128: astore 7
     //   130: aload 5
     //   132: aload 6
     //   134: iconst_0
     //   135: aload 6
     //   137: arraylength
-    //   138: invokevirtual 150	java/io/FileInputStream:read	([BII)I
+    //   138: invokevirtual 176	java/io/FileInputStream:read	([BII)I
     //   141: istore_2
     //   142: iload_2
     //   143: iconst_m1
@@ -265,23 +270,23 @@ public class MD5
     //   149: aload 6
     //   151: iconst_0
     //   152: iload_2
-    //   153: invokevirtual 154	java/security/MessageDigest:update	([BII)V
+    //   153: invokevirtual 180	java/security/MessageDigest:update	([BII)V
     //   156: goto -26 -> 130
     //   159: astore_0
     //   160: aload_0
-    //   161: invokevirtual 157	java/lang/Exception:printStackTrace	()V
+    //   161: invokevirtual 183	java/lang/Exception:printStackTrace	()V
     //   164: aconst_null
     //   165: areturn
     //   166: astore_0
     //   167: aload_0
-    //   168: ldc 127
-    //   170: invokestatic 163	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
-    //   173: ldc 127
+    //   168: ldc 95
+    //   170: invokestatic 187	oicq/wlogin_sdk/tools/util:printException	(Ljava/lang/Exception;Ljava/lang/String;)V
+    //   173: ldc 95
     //   175: areturn
     //   176: aload 5
-    //   178: invokevirtual 166	java/io/FileInputStream:close	()V
+    //   178: invokevirtual 190	java/io/FileInputStream:close	()V
     //   181: aload 7
-    //   183: invokevirtual 169	java/security/MessageDigest:digest	()[B
+    //   183: invokevirtual 193	java/security/MessageDigest:digest	()[B
     //   186: astore 5
     //   188: bipush 32
     //   190: newarray char
@@ -289,10 +294,10 @@ public class MD5
     //   194: iconst_0
     //   195: istore_2
     //   196: goto +15 -> 211
-    //   199: new 118	java/lang/String
+    //   199: new 146	java/lang/String
     //   202: dup
     //   203: aload 6
-    //   205: invokespecial 121	java/lang/String:<init>	([C)V
+    //   205: invokespecial 149	java/lang/String:<init>	([C)V
     //   208: astore_0
     //   209: aload_0
     //   210: areturn

@@ -1,19 +1,35 @@
-import android.os.Looper;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
+import java.util.ArrayList;
 
 public class wja
-  implements Runnable
+  extends ajkn
 {
-  public wja(ZhituManager paramZhituManager) {}
+  public wja(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, ArrayList<String> paramArrayList)
   {
-    ZhituManager.a(this.a, Looper.myQueue());
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 1050);
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putSerializable("data", new Object[] { paramString, paramArrayOfByte, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramArrayList });
+    localBundle.putSerializable("observer_type", Integer.valueOf(5));
+    this.a.a(3, localBundle);
+  }
+  
+  public void a(boolean paramBoolean, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("seq", this.a.f);
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putStringArrayList("uins", paramArrayList1);
+    localBundle.putStringArrayList("tinyIds", paramArrayList2);
+    this.a.a(102, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wja
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,23 @@
 package com.tencent.ark;
 
-import android.annotation.TargetApi;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 public class ThreadMessageHandler
   extends Handler
 {
   private static final int ASYNC_MESSAGE = 1;
-  static final MessageWrapperImpl IMPL = new LegacyMessageWrapperImpl();
+  static final ThreadMessageHandler.MessageWrapperImpl IMPL = new ThreadMessageHandler.LegacyMessageWrapperImpl();
   private static final int SYNC_MESSAGE = 2;
-  private static final String TAG = "ark.ThreadMessageHandler";
+  private static final String TAG = "ArkApp.ThreadMessageHandler";
   private final Object mSignalObject = new Object();
   
   static
   {
     if (Build.VERSION.SDK_INT >= 22)
     {
-      IMPL = new LollipopMr1MessageWrapperImpl();
+      IMPL = new ThreadMessageHandler.LollipopMr1MessageWrapperImpl();
       return;
     }
   }
@@ -75,89 +71,10 @@ public class ThreadMessageHandler
       return;
     }
   }
-  
-  static final class LegacyMessageWrapperImpl
-    implements ThreadMessageHandler.MessageWrapperImpl
-  {
-    private Method mMessageMethodSetAsynchronous;
-    
-    LegacyMessageWrapperImpl()
-    {
-      try
-      {
-        this.mMessageMethodSetAsynchronous = Class.forName("android.os.Message").getMethod("setAsynchronous", new Class[] { Boolean.TYPE });
-        return;
-      }
-      catch (ClassNotFoundException localClassNotFoundException)
-      {
-        Log.e("ark.ThreadMessageHandler", "Failed to find android.os.Message class", localClassNotFoundException);
-        return;
-      }
-      catch (NoSuchMethodException localNoSuchMethodException)
-      {
-        Log.e("ark.ThreadMessageHandler", "Failed to load Message.setAsynchronous method", localNoSuchMethodException);
-        return;
-      }
-      catch (RuntimeException localRuntimeException)
-      {
-        Log.e("ark.ThreadMessageHandler", "Exception while loading Message.setAsynchronous method", localRuntimeException);
-      }
-    }
-    
-    public void setAsynchronous(Message paramMessage, boolean paramBoolean)
-    {
-      if (this.mMessageMethodSetAsynchronous == null) {
-        return;
-      }
-      try
-      {
-        this.mMessageMethodSetAsynchronous.invoke(paramMessage, new Object[] { Boolean.valueOf(paramBoolean) });
-        return;
-      }
-      catch (IllegalAccessException paramMessage)
-      {
-        Log.e("ark.ThreadMessageHandler", "Illegal access to async message creation, disabling.");
-        this.mMessageMethodSetAsynchronous = null;
-        return;
-      }
-      catch (IllegalArgumentException paramMessage)
-      {
-        Log.e("ark.ThreadMessageHandler", "Illegal argument for async message creation, disabling.");
-        this.mMessageMethodSetAsynchronous = null;
-        return;
-      }
-      catch (InvocationTargetException paramMessage)
-      {
-        Log.e("ark.ThreadMessageHandler", "Invocation exception during async message creation, disabling.");
-        this.mMessageMethodSetAsynchronous = null;
-        return;
-      }
-      catch (RuntimeException paramMessage)
-      {
-        Log.e("ark.ThreadMessageHandler", "Runtime exception during async message creation, disabling.");
-        this.mMessageMethodSetAsynchronous = null;
-      }
-    }
-  }
-  
-  static final class LollipopMr1MessageWrapperImpl
-    implements ThreadMessageHandler.MessageWrapperImpl
-  {
-    @TargetApi(22)
-    public void setAsynchronous(Message paramMessage, boolean paramBoolean)
-    {
-      paramMessage.setAsynchronous(paramBoolean);
-    }
-  }
-  
-  static abstract interface MessageWrapperImpl
-  {
-    public abstract void setAsynchronous(Message paramMessage, boolean paramBoolean);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.ark.ThreadMessageHandler
  * JD-Core Version:    0.7.0.1
  */

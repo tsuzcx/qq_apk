@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
 
 class agmk
-  implements Runnable
+  extends agmg
 {
-  agmk(agmj paramagmj, int paramInt, String paramString) {}
+  agmk(agmj paramagmj) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    QQToast.a(this.jdField_a_of_type_Agmj.a, this.jdField_a_of_type_Int + ":" + this.jdField_a_of_type_JavaLangString, 0).a();
+    if (((paramInt == 1) || (paramInt == 10)) && (this.a.a.a != null)) {
+      this.a.a.a.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agmk
  * JD-Core Version:    0.7.0.1
  */

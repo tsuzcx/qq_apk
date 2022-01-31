@@ -1,42 +1,38 @@
-import android.util.Pair;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.freshnews.feed.NearbyImgLoader;
-import com.tencent.mobileqq.troop.widget.HotChatPostItemView;
-import java.util.HashMap;
-import java.util.Queue;
-import mqq.os.MqqHandler;
+import AccostSvc.MsgItem;
+import java.util.ArrayList;
 
 class ajzw
-  implements Runnable
 {
-  ajzw(ajzv paramajzv) {}
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<MsgItem> a;
+  public byte[] a;
+  public long b;
+  public String b;
+  public long c;
+  public long d;
+  public long e;
   
-  public void run()
+  public ajzw(long paramLong1, int paramInt, long paramLong2, long paramLong3, ArrayList<MsgItem> paramArrayList, String paramString)
   {
-    if (((this.a.jdField_a_of_type_AndroidWidgetImageView.getTag() instanceof String)) && (!((String)this.a.jdField_a_of_type_AndroidWidgetImageView.getTag()).endsWith(this.a.jdField_a_of_type_JavaLangString))) {
-      return;
-    }
-    try
-    {
-      Pair localPair1 = NearbyImgLoader.a().a(null, HotChatPostItemView.a(this.a.jdField_a_of_type_ComTencentImageURLDrawable), 1);
-      ThreadManager.getUIHandler().post(new ajzx(this, localPair1));
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
-      {
-        HotChatPostItemView.jdField_a_of_type_JavaUtilQueue.clear();
-        HotChatPostItemView.jdField_a_of_type_JavaUtilHashMap.clear();
-        Pair localPair2 = NearbyImgLoader.a().a(null, HotChatPostItemView.a(this.a.jdField_a_of_type_ComTencentImageURLDrawable), 1);
-      }
-    }
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramLong2;
+    this.c = paramLong3;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public ajzw(long paramLong, ArrayList<MsgItem> paramArrayList)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajzw
  * JD-Core Version:    0.7.0.1
  */

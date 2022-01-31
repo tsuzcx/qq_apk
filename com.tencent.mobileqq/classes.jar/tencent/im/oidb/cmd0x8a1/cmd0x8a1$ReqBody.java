@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class cmd0x8a1$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   public static final int MSG_CREATE_GROUP_INFO_FIELD_NUMBER = 2;
   public static final int MSG_SELECT_GROUP_CODE_INFO_FIELD_NUMBER = 3;
@@ -18,7 +18,7 @@ public final class cmd0x8a1$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8a1.cmd0x8a1.ReqBody
  * JD-Core Version:    0.7.0.1
  */

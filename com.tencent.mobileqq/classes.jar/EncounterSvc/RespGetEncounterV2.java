@@ -12,32 +12,32 @@ public final class RespGetEncounterV2
   static byte[] cache_NearRankingsResp;
   static byte[] cache_NewUserAreaResp;
   static RecommEncounterInfo cache_RecommEncounters = new RecommEncounterInfo();
-  static ArrayList cache_ad_list;
+  static ArrayList<NeighborAd> cache_ad_list;
   static AlumnusConfigInfo cache_alumnus_conf;
-  static ArrayList cache_entrance_list;
+  static ArrayList<EntranceContent> cache_entrance_list;
   static byte[] cache_nearbyGroupResp;
   static byte[] cache_nearbyPublicAcctResp;
-  static ArrayList cache_neighbor_banners;
+  static ArrayList<NeighborBanner> cache_neighbor_banners;
   static SelfInfo cache_self_info;
   static EctFragmentation cache_stEctFmt;
   static PengYouInfo cache_stPYInfo;
   static UserDetailLocalInfo cache_stUDLinfo;
   static UserData cache_stUserData = new UserData();
-  static ArrayList cache_vEncounterInfos = new ArrayList();
+  static ArrayList<RespEncounterInfo> cache_vEncounterInfos = new ArrayList();
   public byte[] NearRankingsResp;
   public byte[] NewUserAreaResp;
   public byte RankingFlag;
   public RecommEncounterInfo RecommEncounters;
   public long RespTime;
-  public ArrayList ad_list;
+  public ArrayList<NeighborAd> ad_list;
   public AlumnusConfigInfo alumnus_conf;
   public byte can_add_sub_interest;
-  public ArrayList entrance_list;
+  public ArrayList<EntranceContent> entrance_list;
   public int iEncounterNumber;
   public int iSessionTotalNumber;
   public byte[] nearbyGroupResp;
   public byte[] nearbyPublicAcctResp;
-  public ArrayList neighbor_banners;
+  public ArrayList<NeighborBanner> neighbor_banners;
   public SelfInfo self_info;
   public EctFragmentation stEctFmt;
   public PengYouInfo stPYInfo;
@@ -47,7 +47,7 @@ public final class RespGetEncounterV2
   public String strSecurityTips = "";
   public byte system_pic;
   public byte useInterestTag;
-  public ArrayList vEncounterInfos;
+  public ArrayList<RespEncounterInfo> vEncounterInfos;
   public byte watch_color;
   
   static
@@ -80,11 +80,11 @@ public final class RespGetEncounterV2
   
   public RespGetEncounterV2() {}
   
-  public RespGetEncounterV2(long paramLong, UserData paramUserData, ArrayList paramArrayList1, UserDetailLocalInfo paramUserDetailLocalInfo, PengYouInfo paramPengYouInfo, EctFragmentation paramEctFragmentation, int paramInt1, int paramInt2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, String paramString1, String paramString2, ArrayList paramArrayList2, ArrayList paramArrayList3, byte paramByte1, byte paramByte2, byte paramByte3, ArrayList paramArrayList4, SelfInfo paramSelfInfo, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, AlumnusConfigInfo paramAlumnusConfigInfo, byte paramByte4, RecommEncounterInfo paramRecommEncounterInfo, byte paramByte5)
+  public RespGetEncounterV2(long paramLong, UserData paramUserData, ArrayList<RespEncounterInfo> paramArrayList, UserDetailLocalInfo paramUserDetailLocalInfo, PengYouInfo paramPengYouInfo, EctFragmentation paramEctFragmentation, int paramInt1, int paramInt2, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, String paramString1, String paramString2, ArrayList<EntranceContent> paramArrayList1, ArrayList<NeighborBanner> paramArrayList2, byte paramByte1, byte paramByte2, byte paramByte3, ArrayList<NeighborAd> paramArrayList3, SelfInfo paramSelfInfo, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, AlumnusConfigInfo paramAlumnusConfigInfo, byte paramByte4, RecommEncounterInfo paramRecommEncounterInfo, byte paramByte5)
   {
     this.RespTime = paramLong;
     this.stUserData = paramUserData;
-    this.vEncounterInfos = paramArrayList1;
+    this.vEncounterInfos = paramArrayList;
     this.stUDLinfo = paramUserDetailLocalInfo;
     this.stPYInfo = paramPengYouInfo;
     this.stEctFmt = paramEctFragmentation;
@@ -94,12 +94,12 @@ public final class RespGetEncounterV2
     this.nearbyPublicAcctResp = paramArrayOfByte2;
     this.strSecurityTips = paramString1;
     this.strSecurityDetailUrl = paramString2;
-    this.entrance_list = paramArrayList2;
-    this.neighbor_banners = paramArrayList3;
+    this.entrance_list = paramArrayList1;
+    this.neighbor_banners = paramArrayList2;
     this.system_pic = paramByte1;
     this.watch_color = paramByte2;
     this.useInterestTag = paramByte3;
-    this.ad_list = paramArrayList4;
+    this.ad_list = paramArrayList3;
     this.self_info = paramSelfInfo;
     this.NearRankingsResp = paramArrayOfByte3;
     this.NewUserAreaResp = paramArrayOfByte4;

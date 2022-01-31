@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class DynamicList$SubCmd_DynamicItem_Resp
-  extends MessageMicro
+  extends MessageMicro<SubCmd_DynamicItem_Resp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48, 58, 66, 74, 82, 90, 98, 104, 112, 122 }, new String[] { "strPkgName", "uiPluginID", "uiNewVer", "uiType", "uiWeight", "uiOpenFlag", "strResName", "strResDesc", "strResURL_big", "strResURL_small", "strResConf", "strJumpInfo", "uiCanChangeStatus", "uiJumpType", "strDescIconUrl" }, new Object[] { "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", "", "", "", "", Integer.valueOf(0), Integer.valueOf(0), "" }, SubCmd_DynamicItem_Resp.class);
   public final PBStringField strDescIconUrl = PBField.initString("");
@@ -28,7 +28,7 @@ public final class DynamicList$SubCmd_DynamicItem_Resp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.DynamicList.DynamicList.SubCmd_DynamicItem_Resp
  * JD-Core Version:    0.7.0.1
  */

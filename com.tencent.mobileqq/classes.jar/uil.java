@@ -1,164 +1,36 @@
-import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
-import com.tencent.mobileqq.activity.TroopRobotPickerActivity.RobotPickerData;
-import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class uil
-  implements IphonePickerView.PickerViewAdapter
+  extends QQUIEventReceiver<StoryMessageListActivity, sxr>
 {
-  public TroopRobotPickerActivity.RobotPickerData a;
-  
-  public uil(TroopRobotPickerActivity paramTroopRobotPickerActivity, TroopRobotPickerActivity.RobotPickerData paramRobotPickerData)
+  public uil(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData = paramRobotPickerData;
+    super(paramStoryMessageListActivity);
   }
   
-  public int getColumnCount()
+  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull sxr paramsxr)
   {
-    int j = 1;
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType;
-    TroopRobotPickerActivity.RobotPickerData localRobotPickerData = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData;
-    if (i == 2) {
-      i = 2;
-    }
-    for (;;)
+    if (paramsxr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(TroopRobotPickerActivity.a, 2, "getColumnCount|pickerType : " + this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType + ", count : " + i);
+      if (QLog.isDevelopLevel()) {
+        QLog.i(this.TAG, 2, "get userinfo come back. >>>>>> " + paramsxr.jdField_a_of_type_JavaUtilList);
       }
-      return i;
-      int k = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType;
-      localRobotPickerData = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData;
-      i = j;
-      if (k != 1)
-      {
-        k = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType;
-        localRobotPickerData = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData;
-        i = j;
-        if (k == 3) {
-          i = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationColumCount;
-        }
-      }
+      paramStoryMessageListActivity.g();
     }
   }
   
-  public int getRowCount(int paramInt)
+  public Class acceptEventClass()
   {
-    int j = 0;
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType;
-    TroopRobotPickerActivity.RobotPickerData localRobotPickerData = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData;
-    if (i == 2) {
-      i = ConditionSearchManager.b.length;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(TroopRobotPickerActivity.a, 2, "getRowCount|pickerType : " + this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType + ", column : " + paramInt + ", count : " + i);
-      }
-      return i;
-      i = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType;
-      localRobotPickerData = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData;
-      if (i == 1)
-      {
-        i = ConditionSearchManager.a.length;
-      }
-      else
-      {
-        int k = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType;
-        localRobotPickerData = this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData;
-        i = j;
-        if (k == 3)
-        {
-          i = j;
-          if (paramInt < this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationColumCount)
-          {
-            i = j;
-            if (paramInt >= 0)
-            {
-              i = j;
-              if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[paramInt] != null) {
-                i = ((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[paramInt]).size();
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  public String getText(int paramInt1, int paramInt2)
-  {
-    String str2 = "";
-    int i;
-    String str1;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType == 2)
-    {
-      if (paramInt2 >= 0)
-      {
-        i = paramInt2;
-        if (paramInt2 < ConditionSearchManager.b.length) {}
-      }
-      else
-      {
-        i = 0;
-      }
-      str1 = ConditionSearchManager.b[i];
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(TroopRobotPickerActivity.a, 2, "getText|pickerType : " + this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType + ", column : " + paramInt1 + ", row : " + i + ", result : " + str1);
-      }
-      return str1;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType == 1)
-      {
-        if (paramInt2 >= 0)
-        {
-          i = paramInt2;
-          if (paramInt2 < ConditionSearchManager.c.length) {}
-        }
-        else
-        {
-          i = 0;
-        }
-        str1 = ConditionSearchManager.a[i];
-      }
-      else
-      {
-        str1 = str2;
-        i = paramInt2;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.pickerType == 3)
-        {
-          str1 = str2;
-          i = paramInt2;
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[paramInt1] != null)
-          {
-            if (paramInt2 >= 0)
-            {
-              i = paramInt2;
-              if (paramInt2 < ((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[paramInt1]).size()) {}
-            }
-            else
-            {
-              i = 0;
-            }
-            if (((BaseAddress)((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[paramInt1]).get(i)).code.equals("0")) {
-              str1 = "不限";
-            } else {
-              str1 = ((BaseAddress)((List)this.jdField_a_of_type_ComTencentMobileqqActivityTroopRobotPickerActivity$RobotPickerData.mLocationListArray[paramInt1]).get(i)).name;
-            }
-          }
-        }
-      }
-    }
+    return sxr.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uil
  * JD-Core Version:    0.7.0.1
  */

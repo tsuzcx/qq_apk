@@ -1,12 +1,14 @@
 package cooperation.qzone.music;
 
+import ajjy;
+import android.text.TextUtils;
 import com.tencent.mobileqq.music.SongInfo;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
 public class QzoneMusicHelper
 {
-  public static final String NO_NETWORK_MSG = "无网络情况下无法修改设置";
+  public static final String NO_NETWORK_MSG = ajjy.a(2131646240);
   
   public static SongInfo convertAudioSongInfo(JSONObject paramJSONObject)
   {
@@ -15,14 +17,14 @@ public class QzoneMusicHelper
     localSongInfo.g = getString(paramJSONObject, "singer");
     localSongInfo.jdField_a_of_type_Long = getLong(paramJSONObject, "songId");
     localSongInfo.jdField_a_of_type_JavaLangString = getString(paramJSONObject, "playUrl");
-    localSongInfo.jdField_a_of_type_Int = getInt(paramJSONObject, "type");
+    localSongInfo.jdField_b_of_type_Int = getInt(paramJSONObject, "type");
     localSongInfo.d = getString(paramJSONObject, "cover");
-    localSongInfo.jdField_b_of_type_Long = getLong(paramJSONObject, "singerId");
+    localSongInfo.jdField_c_of_type_Long = getLong(paramJSONObject, "singerId");
     localSongInfo.f = getString(paramJSONObject, "album");
     localSongInfo.e = getString(paramJSONObject, "detailUrl");
-    localSongInfo.c = getString(paramJSONObject, "showId");
+    localSongInfo.jdField_c_of_type_JavaLangString = getString(paramJSONObject, "showId");
     if (localSongInfo.jdField_a_of_type_Long == 0L) {
-      localSongInfo.jdField_a_of_type_Long = getFMID(localSongInfo.c);
+      localSongInfo.jdField_a_of_type_Long = getFMID(localSongInfo.jdField_c_of_type_JavaLangString);
     }
     return localSongInfo;
   }
@@ -35,12 +37,12 @@ public class QzoneMusicHelper
     localSongInfo.g = "";
     localSongInfo.jdField_a_of_type_Long = getFMID(str);
     localSongInfo.jdField_a_of_type_JavaLangString = getString(paramJSONObject, "showAudioUrl");
-    localSongInfo.jdField_a_of_type_Int = 8;
+    localSongInfo.jdField_b_of_type_Int = 8;
     localSongInfo.d = "";
-    localSongInfo.jdField_b_of_type_Long = 0L;
+    localSongInfo.jdField_c_of_type_Long = 0L;
     localSongInfo.f = "";
     localSongInfo.e = "";
-    localSongInfo.c = str;
+    localSongInfo.jdField_c_of_type_JavaLangString = str;
     return localSongInfo;
   }
   
@@ -51,10 +53,23 @@ public class QzoneMusicHelper
     localSongInfo.g = getString(paramJSONObject, "singer");
     localSongInfo.jdField_a_of_type_Long = getLong(paramJSONObject, "songId");
     localSongInfo.jdField_a_of_type_JavaLangString = getString(paramJSONObject, "playUrl");
-    localSongInfo.jdField_a_of_type_Int = getInt(paramJSONObject, "type");
+    localSongInfo.jdField_b_of_type_Int = getInt(paramJSONObject, "type");
     localSongInfo.d = getString(paramJSONObject, "cover");
-    localSongInfo.jdField_b_of_type_Long = getLong(paramJSONObject, "singerId");
+    localSongInfo.jdField_c_of_type_Long = getLong(paramJSONObject, "singerId");
     localSongInfo.f = getString(paramJSONObject, "album");
+    localSongInfo.jdField_b_of_type_Long = getLong(paramJSONObject, "uin");
+    if (TextUtils.isEmpty(localSongInfo.f)) {
+      localSongInfo.f = getString(paramJSONObject, "songMid");
+    }
+    if (TextUtils.isEmpty(localSongInfo.f)) {
+      localSongInfo.f = getString(paramJSONObject, "musicMId");
+    }
+    if ((!TextUtils.isEmpty(localSongInfo.f)) && (localSongInfo.jdField_a_of_type_Long == 0L)) {
+      localSongInfo.jdField_a_of_type_Long = getSongIDWithMid(localSongInfo.f);
+    }
+    if ((localSongInfo.jdField_b_of_type_Int == 0) && (getInt(paramJSONObject, "voiceType") == 3)) {
+      localSongInfo.jdField_b_of_type_Int = 11;
+    }
     localSongInfo.e = getString(paramJSONObject, "detailUrl");
     return localSongInfo;
   }
@@ -97,6 +112,20 @@ public class QzoneMusicHelper
     catch (Exception paramJSONObject)
     {
       QLog.e("QzoneWebMusicJsPlugin", 2, "getLong " + paramJSONObject.getMessage());
+    }
+    return 0L;
+  }
+  
+  public static long getSongIDWithMid(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      long l2 = paramString.hashCode();
+      long l1 = l2;
+      if (l2 <= 0L) {
+        l1 = l2 * -1L;
+      }
+      return l1;
     }
     return 0L;
   }

@@ -1,78 +1,46 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactSearchFacade.ISearchListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchResult;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.common.app.AppInterface;
+import java.lang.ref.WeakReference;
 
-public class wod
-  implements ContactSearchFacade.ISearchListener
+class wod
+  implements TextView.OnEditorActionListener
 {
-  public wod(SearchBaseFragment paramSearchBaseFragment) {}
+  wod(wob paramwob, TroopGiftPanel paramTroopGiftPanel) {}
   
-  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    int i = 3;
-    this.a.i();
-    if (paramBoolean)
+    if (paramInt == 6)
     {
-      if ((paramObject != null) && ((paramObject instanceof ArrayList)))
+      this.jdField_a_of_type_Wob.c();
+      paramTextView = this.jdField_a_of_type_Wob.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString();
+      if (!TextUtils.isEmpty(paramTextView))
       {
-        paramObject = (ArrayList)paramObject;
-        if (paramObject.size() != 0) {
-          break label94;
-        }
-        if (this.a.a != null)
-        {
-          paramObject = this.a.a;
-          if (!this.a.b) {
-            break label89;
-          }
-          paramInt1 = 3;
-          paramObject.sendEmptyMessage(paramInt1);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(SearchBaseFragment.a(), 2, "error! SearchResult is null!");
+        this.jdField_a_of_type_Wob.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(paramTextView);
+        this.jdField_a_of_type_Wob.b();
+        if (!mnf.a().a(this.jdField_a_of_type_Wob.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a())) {
+          break label194;
         }
       }
-      for (;;)
+      label194:
+      for (paramInt = 2;; paramInt = 1)
       {
-        return;
-        label89:
-        paramInt1 = 2;
+        awqx.b(null, "dc00899", "Grp_flower", "", "aio_mall", "Clk_numok", paramInt, 0, this.jdField_a_of_type_Wob.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", this.jdField_a_of_type_Wob.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c, "" + mje.a((AppInterface)this.jdField_a_of_type_Wob.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get(), ((AppInterface)this.jdField_a_of_type_Wob.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get()).getCurrentAccountUin(), this.jdField_a_of_type_Wob.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
+        return true;
+        this.jdField_a_of_type_Wob.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a("1");
         break;
-        label94:
-        if (paramObject.size() > 0) {}
-        try
-        {
-          paramString = (SearchResult)paramObject.get(0);
-          if ((this.a.a(paramObject)) && (this.a.a != null))
-          {
-            this.a.a.sendEmptyMessage(0);
-            return;
-          }
-        }
-        catch (Exception paramObject)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(SearchBaseFragment.a(), 2, "", paramObject);
-          }
-          paramObject = this.a.a;
-          if (!this.a.b) {}
-        }
-      }
-      for (paramInt1 = i;; paramInt1 = 2)
-      {
-        paramObject.sendEmptyMessage(paramInt1);
-        return;
       }
     }
-    this.a.a(paramInt1, paramObject, paramInt2, paramString);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wod
  * JD-Core Version:    0.7.0.1
  */

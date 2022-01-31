@@ -1,19 +1,25 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
+import com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.2.1;
+import cooperation.qwallet.plugin.FakeUrl.FakeInfo;
+import cooperation.qwallet.plugin.FakeUrl.FakeListener;
 
-class achl
-  implements Runnable
+public class achl
+  implements FakeUrl.FakeListener
 {
-  achl(achk paramachk, URLDrawable paramURLDrawable) {}
+  public achl(QQNotifySettingBaseFragment.2.1 param1) {}
   
-  public void run()
+  public boolean onBlHandleFakeurl(FakeUrl.FakeInfo paramFakeInfo, int paramInt)
   {
-    this.jdField_a_of_type_Achk.a.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    return false;
+  }
+  
+  public boolean onClickUrl(String paramString)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     achl
  * JD-Core Version:    0.7.0.1
  */

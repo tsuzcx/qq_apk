@@ -1,20 +1,6 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.StoryBoss;
-import com.tribe.async.async.FutureListener.SimpleFutureListener;
-import com.tribe.async.async.JobController.DoneEvent;
-import com.tribe.async.async.Worker;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
-
-public class ndl
-  extends FutureListener.SimpleFutureListener
+public abstract interface ndl
 {
-  public ndl(StoryBoss paramStoryBoss, Worker paramWorker) {}
-  
-  public void onFutureDone(@Nullable Object paramObject)
-  {
-    Dispatchers.get().dispatch(new JobController.DoneEvent(this.jdField_a_of_type_ComTribeAsyncAsyncWorker));
-  }
+  public abstract void a();
 }
 
 

@@ -8,14 +8,16 @@ import java.util.ArrayList;
 public final class SSummaryCardRsp
   extends JceStruct
 {
-  static ArrayList cache_bgtype;
+  static ArrayList<Integer> cache_bgtype;
   static SUserLabel cache_label;
   static int cache_res = 0;
-  static cardDiyTextInfo cache_stDiyText = new cardDiyTextInfo();
+  static cardDiyComplicatedInfo cache_stDiyComplicated = new cardDiyComplicatedInfo();
+  static cardDiyTextInfo cache_stDiyText;
   static STRecommendInfo cache_stRecom;
-  static ArrayList cache_wzryInfo;
+  static ArrayList<summaryCardWzryInfo> cache_wzryInfo;
+  public String aid = "";
   public long bgid;
-  public ArrayList bgtype;
+  public ArrayList<Integer> bgtype;
   public String bgurl = "";
   public int cardType;
   public long cardid;
@@ -24,7 +26,10 @@ public final class SSummaryCardRsp
   public String emsg = "";
   public String extInfo = "";
   public SUserLabel label;
+  public int payType;
+  public int profileid;
   public int res;
+  public cardDiyComplicatedInfo stDiyComplicated;
   public cardDiyTextInfo stDiyText;
   public STRecommendInfo stRecom;
   public String strActiveCardUrl = "";
@@ -33,7 +38,8 @@ public final class SSummaryCardRsp
   public String strWzryHeroUrl = "";
   public String strZipUrl = "";
   public long styleid;
-  public ArrayList wzryInfo;
+  public String urlprefix = "";
+  public ArrayList<summaryCardWzryInfo> wzryInfo;
   
   static
   {
@@ -44,11 +50,12 @@ public final class SSummaryCardRsp
     cache_wzryInfo = new ArrayList();
     summaryCardWzryInfo localsummaryCardWzryInfo = new summaryCardWzryInfo();
     cache_wzryInfo.add(localsummaryCardWzryInfo);
+    cache_stDiyText = new cardDiyTextInfo();
   }
   
   public SSummaryCardRsp() {}
   
-  public SSummaryCardRsp(int paramInt1, long paramLong1, long paramLong2, String paramString1, long paramLong3, long paramLong4, SUserLabel paramSUserLabel, String paramString2, ArrayList paramArrayList1, int paramInt2, String paramString3, STRecommendInfo paramSTRecommendInfo, String paramString4, String paramString5, String paramString6, ArrayList paramArrayList2, cardDiyTextInfo paramcardDiyTextInfo, int paramInt3, String paramString7, String paramString8)
+  public SSummaryCardRsp(int paramInt1, long paramLong1, long paramLong2, String paramString1, long paramLong3, long paramLong4, SUserLabel paramSUserLabel, String paramString2, ArrayList<Integer> paramArrayList, int paramInt2, String paramString3, STRecommendInfo paramSTRecommendInfo, String paramString4, String paramString5, String paramString6, ArrayList<summaryCardWzryInfo> paramArrayList1, cardDiyTextInfo paramcardDiyTextInfo, int paramInt3, String paramString7, String paramString8, int paramInt4, String paramString9, cardDiyComplicatedInfo paramcardDiyComplicatedInfo, String paramString10, int paramInt5)
   {
     this.res = paramInt1;
     this.cardid = paramLong1;
@@ -58,18 +65,23 @@ public final class SSummaryCardRsp
     this.color = paramLong4;
     this.label = paramSUserLabel;
     this.emsg = paramString2;
-    this.bgtype = paramArrayList1;
+    this.bgtype = paramArrayList;
     this.dynamicCardFlag = paramInt2;
     this.strZipUrl = paramString3;
     this.stRecom = paramSTRecommendInfo;
     this.strActiveCardUrl = paramString4;
     this.strDrawerCard = paramString5;
     this.strWzryHeroUrl = paramString6;
-    this.wzryInfo = paramArrayList2;
+    this.wzryInfo = paramArrayList1;
     this.stDiyText = paramcardDiyTextInfo;
     this.cardType = paramInt3;
     this.strDiyDefaultText = paramString7;
     this.extInfo = paramString8;
+    this.profileid = paramInt4;
+    this.urlprefix = paramString9;
+    this.stDiyComplicated = paramcardDiyComplicatedInfo;
+    this.aid = paramString10;
+    this.payType = paramInt5;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -94,6 +106,11 @@ public final class SSummaryCardRsp
     this.cardType = paramJceInputStream.read(this.cardType, 17, false);
     this.strDiyDefaultText = paramJceInputStream.readString(18, false);
     this.extInfo = paramJceInputStream.readString(19, false);
+    this.profileid = paramJceInputStream.read(this.profileid, 20, false);
+    this.urlprefix = paramJceInputStream.readString(21, false);
+    this.stDiyComplicated = ((cardDiyComplicatedInfo)paramJceInputStream.read(cache_stDiyComplicated, 22, false));
+    this.aid = paramJceInputStream.readString(23, false);
+    this.payType = paramJceInputStream.read(this.payType, 24, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -144,6 +161,17 @@ public final class SSummaryCardRsp
     if (this.extInfo != null) {
       paramJceOutputStream.write(this.extInfo, 19);
     }
+    paramJceOutputStream.write(this.profileid, 20);
+    if (this.urlprefix != null) {
+      paramJceOutputStream.write(this.urlprefix, 21);
+    }
+    if (this.stDiyComplicated != null) {
+      paramJceOutputStream.write(this.stDiyComplicated, 22);
+    }
+    if (this.aid != null) {
+      paramJceOutputStream.write(this.aid, 23);
+    }
+    paramJceOutputStream.write(this.payType, 24);
   }
 }
 

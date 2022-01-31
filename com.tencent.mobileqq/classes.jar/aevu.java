@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.nearby.OldBigDataChannelManager;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aevu
-  implements Runnable
+public class aevu
+  implements aexb
 {
-  aevu(aevt paramaevt) {}
+  public aevu(SearchContactsFragment paramSearchContactsFragment) {}
   
-  public void run()
+  public Activity a()
   {
-    OldBigDataChannelManager.a(this.a.a);
-    OldBigDataChannelManager.b(this.a.a);
+    return this.a.a();
+  }
+  
+  public QQAppInterface a()
+  {
+    return this.a.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aevu
  * JD-Core Version:    0.7.0.1
  */

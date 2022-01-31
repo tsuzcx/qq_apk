@@ -1,30 +1,42 @@
-import com.tencent.mobileqq.activity.LikeRankingListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager;
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
 
-public class tdt
-  implements Runnable
+class tdt
+  extends tcq
 {
-  public tdt(LikeRankingListActivity paramLikeRankingListActivity) {}
-  
-  public void run()
+  tdt(tdo paramtdo, StoryVideoItem paramStoryVideoItem)
   {
-    LocalRedTouchManager localLocalRedTouchManager = (LocalRedTouchManager)this.a.app.getManager(159);
-    RedTouchItem localRedTouchItem1 = localLocalRedTouchManager.a(100601);
-    if (localLocalRedTouchManager.a(localRedTouchItem1, false))
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    Object localObject = (String)a("result");
+    try
     {
-      RedTouchItem localRedTouchItem2 = localLocalRedTouchManager.a(100500);
-      if ((localLocalRedTouchManager.a(localRedTouchItem2, true)) && (localRedTouchItem2.receiveTime == localRedTouchItem1.receiveTime)) {
-        localRedTouchItem2.unReadFlag = false;
+      localObject = new URI((String)localObject);
+      if ("file".equals(((URI)localObject).getScheme()))
+      {
+        localObject = new File((URI)localObject);
+        if (((File)localObject).exists())
+        {
+          a("UploadImageJob_in_image_file_path", ((File)localObject).getAbsolutePath());
+          return true;
+        }
       }
-      localLocalRedTouchManager.a(100601);
     }
+    catch (URISyntaxException localURISyntaxException)
+    {
+      urk.c(this.b, "Error: 评分投票失败", localURISyntaxException);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tdt
  * JD-Core Version:    0.7.0.1
  */

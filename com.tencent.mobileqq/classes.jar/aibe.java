@@ -1,22 +1,32 @@
-import com.tencent.mobileqq.search.model.PublicAccountSearchResultModel;
-import com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine;
-import java.util.Comparator;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
 
-public final class aibe
-  implements Comparator
+class aibe
+  implements View.OnTouchListener
 {
-  public int a(PublicAccountSearchResultModel paramPublicAccountSearchResultModel1, PublicAccountSearchResultModel paramPublicAccountSearchResultModel2)
+  aibe(aibc paramaibc) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int j = Long.signum(paramPublicAccountSearchResultModel2.b() - paramPublicAccountSearchResultModel1.b());
-    int i = j;
-    if (j == 0) {
-      i = Long.signum(paramPublicAccountSearchResultModel2.a() - paramPublicAccountSearchResultModel1.a());
+    switch (paramMotionEvent.getAction())
+    {
     }
-    j = i;
-    if (i == 0) {
-      j = PublicAccountSearchEngine.a(paramPublicAccountSearchResultModel1, paramPublicAccountSearchResultModel2);
+    for (;;)
+    {
+      return false;
+      if ((paramView instanceof ImageView))
+      {
+        ((ImageView)paramView).getDrawable().setColorFilter(855638016, PorterDuff.Mode.SRC_ATOP);
+        continue;
+        if ((paramView instanceof ImageView)) {
+          ((ImageView)paramView).getDrawable().clearColorFilter();
+        }
+      }
     }
-    return j;
   }
 }
 

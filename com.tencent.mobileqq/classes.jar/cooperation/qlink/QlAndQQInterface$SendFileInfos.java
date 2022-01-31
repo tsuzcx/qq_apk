@@ -7,12 +7,12 @@ public class QlAndQQInterface$SendFileInfos
   implements Serializable
 {
   private static final long serialVersionUID = 1L;
-  public ArrayList infos = new ArrayList();
+  public ArrayList<QlAndQQInterface.SendFileInfo> infos = new ArrayList();
   public String strUin;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cooperation.qlink.QlAndQQInterface.SendFileInfos
  * JD-Core Version:    0.7.0.1
  */

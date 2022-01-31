@@ -1,57 +1,64 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
 public class trj
-  implements Runnable
+  implements TVK_SDKMgr.OnLogListener
 {
-  private WeakReference a;
+  public int a;
   
-  public trj(QQSettingMe paramQQSettingMe)
+  public int d(String paramString1, String paramString2)
   {
-    this.a = new WeakReference(paramQQSettingMe);
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+    return 0;
   }
   
-  public void run()
+  public int e(String paramString1, String paramString2)
   {
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.e(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(paramString1, 2, paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    if ((paramString2 != null) && (paramString2.contains("INFO_TRY_AGAIN_LATER"))) {}
+    try
     {
-      try
-      {
-        if (this.a == null) {
-          return;
-        }
-        QQSettingMe localQQSettingMe = (QQSettingMe)this.a.get();
-        if ((localQQSettingMe == null) || (localQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
-          break;
-        }
-        WebProcessManager localWebProcessManager = (WebProcessManager)localQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(12);
-        if (localWebProcessManager == null) {
-          break;
-        }
-        if (ApolloUtil.a(localQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localQQSettingMe.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView))
-        {
-          i = 100;
-          localWebProcessManager.a(i, new trk(this, localQQSettingMe));
-          return;
-        }
+      this.a = Integer.parseInt(paramString2.substring(paramString2.lastIndexOf("=") + 1));
+      label32:
+      if (QLog.isColorLevel()) {
+        QLog.w(paramString1, 2, paramString2);
       }
-      catch (Exception localException)
-      {
-        QLog.e("QQSettingRedesign", 1, "WebPreloadTask preloadWebProcess, exception=" + MsfSdkUtils.getStackTraceString(localException));
-        return;
-      }
-      int i = -1;
+      return 0;
+    }
+    catch (Exception localException)
+    {
+      break label32;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     trj
  * JD-Core Version:    0.7.0.1
  */

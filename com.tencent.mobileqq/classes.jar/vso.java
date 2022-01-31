@@ -1,23 +1,41 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-
-class vso
-  implements EIPCResultCallback
+public class vso
 {
-  vso(vsm paramvsm) {}
+  int jdField_a_of_type_Int = 0;
+  short jdField_a_of_type_Short = 0;
+  byte[] jdField_a_of_type_ArrayOfByte = null;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public vso() {}
+  
+  public vso(int paramInt, short paramShort, byte[] paramArrayOfByte)
   {
-    if (-102 == paramEIPCResult.code) {
-      AIOGalleryScene.M(this.a.a).finish();
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
+    this.jdField_a_of_type_Short = paramShort;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_ArrayOfByte.length + 4;
+  }
+  
+  public long a()
+  {
+    return vvp.a(this.jdField_a_of_type_ArrayOfByte);
+  }
+  
+  public String a()
+  {
+    return new String(this.jdField_a_of_type_ArrayOfByte);
+  }
+  
+  public String toString()
+  {
+    return String.format("{t: %s, l: %s, v: %s}", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), Short.valueOf(this.jdField_a_of_type_Short), this.jdField_a_of_type_ArrayOfByte });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     vso
  * JD-Core Version:    0.7.0.1
  */

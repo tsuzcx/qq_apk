@@ -1,46 +1,25 @@
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
-import android.os.Environment;
-import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter.fileAssistantReportData;
-import com.tencent.mobileqq.statistics.ReportController;
 
-class vuo
-  implements DialogInterface.OnClickListener
+public abstract class vuo
+  implements DialogInterface.OnCancelListener, DialogInterface.OnClickListener
 {
-  vuo(vun paramvun, BaseActivity paramBaseActivity) {}
+  public abstract void a();
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    a();
+  }
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (Environment.getExternalStorageState().equals("mounted"))
-    {
-      if (this.jdField_a_of_type_Vun.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1) {
-        break label97;
-      }
-      PlusPanelUtils.b(this.jdField_a_of_type_Vun.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Vun.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setCanLock(false);
-      ReportController.b(this.jdField_a_of_type_Vun.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80061FC", "0X80061FC", 0, 0, "1", "", "", "");
-      return;
-      label97:
-      paramDialogInterface = new FileManagerReporter.fileAssistantReportData();
-      paramDialogInterface.b = "send_file";
-      paramDialogInterface.a = 1;
-      FileManagerReporter.a(this.jdField_a_of_type_Vun.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramDialogInterface);
-      PlusPanelUtils.a(this.jdField_a_of_type_Vun.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Vun.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    }
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     vuo
  * JD-Core Version:    0.7.0.1
  */

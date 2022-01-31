@@ -1,76 +1,99 @@
 package com.tencent.gdtad.views.canvas.framework;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.ScrollView;
+import com.tencent.ad.tangram.thread.AdThreadManager;
 import com.tencent.gdtad.views.canvas.components.GdtCanvasComponentData;
 import com.tencent.gdtad.views.canvas.components.GdtCanvasComponentView;
+import com.tencent.gdtad.views.canvas.components.appbutton.GdtCanvasAppBtnComponentData;
+import com.tencent.gdtad.views.canvas.components.appbutton.GdtCanvasAppBtnComponentView;
 import com.tencent.gdtad.views.canvas.components.button.GdtCanvasButtonComponentData;
 import com.tencent.gdtad.views.canvas.components.button.GdtCanvasButtonComponentView;
 import com.tencent.gdtad.views.canvas.components.form.GdtCanvasFormComponentData;
 import com.tencent.gdtad.views.canvas.components.form.GdtCanvasFormComponentView;
 import com.tencent.gdtad.views.canvas.components.picture.GdtCanvasPictureComponentData;
 import com.tencent.gdtad.views.canvas.components.picture.GdtCanvasPictureComponentView;
-import com.tencent.gdtad.views.canvas.components.video.GdtCanvasMutiVideoManager;
+import com.tencent.gdtad.views.canvas.components.pictures.GdtCanvasMultiPictureComponentData;
+import com.tencent.gdtad.views.canvas.components.pictures.GdtCanvasMultiPictureComponentView;
 import com.tencent.gdtad.views.canvas.components.video.GdtCanvasVideoComponentData;
 import com.tencent.gdtad.views.canvas.components.video.GdtCanvasVideoComponentView;
 import java.lang.ref.WeakReference;
+import yny;
+import ypk;
+import yqj;
+import yqo;
 
 public class GdtCanvasPageView
-  extends GdtCanvasScrollView
+  extends ScrollView
 {
-  private GdtCanvasMutiVideoManager jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsVideoGdtCanvasMutiVideoManager = new GdtCanvasMutiVideoManager();
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private GdtCanvasPageData jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasPageData;
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<yqo> jdField_a_of_type_JavaLangRefWeakReference;
+  private yqj jdField_a_of_type_Yqj = new yqj();
   
-  public GdtCanvasPageView(Context paramContext, WeakReference paramWeakReference, GdtCanvasPageData paramGdtCanvasPageData)
+  public GdtCanvasPageView(Context paramContext, WeakReference<yqo> paramWeakReference, GdtCanvasPageData paramGdtCanvasPageData)
   {
     super(paramContext);
     this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
+    setVerticalScrollBarEnabled(false);
+    setVerticalFadingEdgeEnabled(false);
     a(paramGdtCanvasPageData);
   }
   
-  private GdtCanvasComponentView a(GdtCanvasComponentData paramGdtCanvasComponentData)
+  private GdtCanvasComponentView a(GdtCanvasComponentData paramGdtCanvasComponentData, GdtCanvasPageData paramGdtCanvasPageData)
   {
-    Object localObject3 = null;
-    Object localObject1 = null;
-    Object localObject2 = localObject1;
+    Object localObject = null;
+    paramGdtCanvasPageData = null;
+    GdtCanvasPageData localGdtCanvasPageData = paramGdtCanvasPageData;
     if (paramGdtCanvasComponentData != null)
     {
       if (!paramGdtCanvasComponentData.isValid()) {
-        localObject2 = localObject1;
+        localGdtCanvasPageData = paramGdtCanvasPageData;
       }
     }
     else {
-      return localObject2;
+      return localGdtCanvasPageData;
     }
     if ((paramGdtCanvasComponentData instanceof GdtCanvasPictureComponentData)) {
-      localObject1 = new GdtCanvasPictureComponentView(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, (GdtCanvasPictureComponentData)GdtCanvasPictureComponentData.class.cast(paramGdtCanvasComponentData));
+      paramGdtCanvasPageData = new GdtCanvasPictureComponentView(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, (GdtCanvasPictureComponentData)GdtCanvasPictureComponentData.class.cast(paramGdtCanvasComponentData));
     }
     for (;;)
     {
-      localObject2 = localObject1;
-      if (localObject1 == null) {
+      localGdtCanvasPageData = paramGdtCanvasPageData;
+      if (paramGdtCanvasPageData == null) {
         break;
       }
-      ((GdtCanvasComponentView)localObject1).setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-      return localObject1;
+      paramGdtCanvasPageData.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
+      return paramGdtCanvasPageData;
       if ((paramGdtCanvasComponentData instanceof GdtCanvasButtonComponentData))
       {
-        localObject1 = new GdtCanvasButtonComponentView(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, (GdtCanvasButtonComponentData)GdtCanvasButtonComponentData.class.cast(paramGdtCanvasComponentData));
+        paramGdtCanvasPageData = new GdtCanvasButtonComponentView(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, (GdtCanvasButtonComponentData)GdtCanvasButtonComponentData.class.cast(paramGdtCanvasComponentData));
       }
       else if ((paramGdtCanvasComponentData instanceof GdtCanvasVideoComponentData))
       {
-        localObject1 = new GdtCanvasVideoComponentView(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, (GdtCanvasVideoComponentData)GdtCanvasVideoComponentData.class.cast(paramGdtCanvasComponentData), this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsVideoGdtCanvasMutiVideoManager, this);
+        paramGdtCanvasPageData = new GdtCanvasVideoComponentView(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, (GdtCanvasVideoComponentData)GdtCanvasVideoComponentData.class.cast(paramGdtCanvasComponentData), this.jdField_a_of_type_Yqj, this);
+      }
+      else if ((paramGdtCanvasComponentData instanceof GdtCanvasFormComponentData))
+      {
+        paramGdtCanvasPageData = new GdtCanvasFormComponentView(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, (GdtCanvasFormComponentData)GdtCanvasFormComponentData.class.cast(paramGdtCanvasComponentData));
+      }
+      else if ((paramGdtCanvasComponentData instanceof GdtCanvasAppBtnComponentData))
+      {
+        paramGdtCanvasPageData = new GdtCanvasAppBtnComponentView(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, (GdtCanvasAppBtnComponentData)GdtCanvasAppBtnComponentData.class.cast(paramGdtCanvasComponentData), ((GdtCanvasAppBtnComponentData)GdtCanvasAppBtnComponentData.class.cast(paramGdtCanvasComponentData)).canShowProgress);
       }
       else
       {
-        localObject1 = localObject3;
-        if ((paramGdtCanvasComponentData instanceof GdtCanvasFormComponentData)) {
-          localObject1 = new GdtCanvasFormComponentView(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, (GdtCanvasFormComponentData)GdtCanvasFormComponentData.class.cast(paramGdtCanvasComponentData));
+        paramGdtCanvasPageData = localObject;
+        if ((paramGdtCanvasComponentData instanceof GdtCanvasMultiPictureComponentData)) {
+          paramGdtCanvasPageData = new GdtCanvasMultiPictureComponentView(getContext(), this.jdField_a_of_type_JavaLangRefWeakReference, (GdtCanvasMultiPictureComponentData)GdtCanvasMultiPictureComponentData.class.cast(paramGdtCanvasComponentData));
         }
       }
     }
@@ -84,30 +107,30 @@ public class GdtCanvasPageView
     this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasPageData = paramGdtCanvasPageData;
     setFillViewport(true);
     setBackgroundColor(paramGdtCanvasPageData.backgroundColor);
-    LinearLayout localLinearLayout = new LinearLayout(getContext());
-    addView(localLinearLayout);
-    localLinearLayout.setOrientation(1);
-    Object localObject = localLinearLayout.getLayoutParams();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(getContext());
+    addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
+    Object localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
     ((ViewGroup.LayoutParams)localObject).width = -1;
     ((ViewGroup.LayoutParams)localObject).height = -2;
-    localLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
     int i = 0;
     int j = paramGdtCanvasPageData.getSize();
-    label89:
+    label99:
     if (i < j)
     {
-      localObject = a(paramGdtCanvasPageData.getComponent(i));
+      localObject = a(paramGdtCanvasPageData.getComponent(i), paramGdtCanvasPageData);
       if (localObject != null) {
-        break label117;
+        break label128;
       }
     }
     for (;;)
     {
       i += 1;
-      break label89;
+      break label99;
       break;
-      label117:
-      localLinearLayout.addView((View)localObject);
+      label128:
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject);
     }
   }
   
@@ -118,6 +141,67 @@ public class GdtCanvasPageView
       i = ((ViewGroup)getChildAt(0)).getChildCount();
     }
     return i;
+  }
+  
+  public int a(String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_AndroidWidgetLinearLayout == null)) {}
+    for (;;)
+    {
+      return 0;
+      LinearLayout localLinearLayout = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+      int i = 0;
+      while (i < localLinearLayout.getChildCount())
+      {
+        View localView = localLinearLayout.getChildAt(i);
+        if (((localView instanceof GdtCanvasComponentView)) && (paramString.equals(((GdtCanvasComponentView)localView).a().id)))
+        {
+          if (localLinearLayout.getChildAt(i) != null)
+          {
+            int j = localLinearLayout.getChildAt(i).getTop();
+            yny.a("GdtCanvasPageView", "form top :" + j);
+            smoothScrollTo(0, j);
+          }
+          return i;
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public View a(String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_AndroidWidgetLinearLayout == null)) {
+      return null;
+    }
+    LinearLayout localLinearLayout = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    int i = 0;
+    while (i < localLinearLayout.getChildCount())
+    {
+      View localView = localLinearLayout.getChildAt(i);
+      if (((localView instanceof GdtCanvasComponentView)) && (paramString.equals(((GdtCanvasComponentView)localView).a().id))) {
+        return ((GdtCanvasComponentView)localView).getChildAt(0);
+      }
+      i += 1;
+    }
+    return null;
+  }
+  
+  public View a(String paramString, int paramInt1, int paramInt2)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    paramString = a(paramString);
+    int i = ypk.c(getContext());
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(i, i * paramInt2 / paramInt1);
+    AdThreadManager.INSTANCE.post(new GdtCanvasPageView.1(this, paramString, localLayoutParams), 0);
+    return null;
+  }
+  
+  public LinearLayout a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetLinearLayout;
   }
   
   public GdtCanvasComponentView a(int paramInt)
@@ -201,14 +285,43 @@ public class GdtCanvasPageView
     setLayoutParams(localLayoutParams);
   }
   
-  public void setListener(GdtCanvasScrollView.OnScrollEventListener paramOnScrollEventListener)
+  protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasScrollView$OnScrollEventListener = paramOnScrollEventListener;
+    super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
+    d();
+  }
+  
+  public void setFormFocusd(String paramString, boolean paramBoolean)
+  {
+    paramString = a(paramString);
+    if (paramString != null)
+    {
+      paramString = paramString.getParent();
+      if ((paramString != null) && ((paramString instanceof GdtCanvasFormComponentView))) {
+        ((GdtCanvasFormComponentView)paramString).setFocused(paramBoolean);
+      }
+    }
+  }
+  
+  public void setPageViewLayoutParams(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {}
+    try
+    {
+      ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
+      localMarginLayoutParams.topMargin = paramInt;
+      setLayoutParams(localMarginLayoutParams);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      yny.d("GdtCanvasPageView", "setPageViewLayoutParams:" + localThrowable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.framework.GdtCanvasPageView
  * JD-Core Version:    0.7.0.1
  */

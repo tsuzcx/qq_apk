@@ -1,16 +1,7 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-
-class wvr
-  implements DialogInterface.OnDismissListener
-{
-  wvr(wvo paramwvo) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface) {}
-}
+public class wvr {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wvr
  * JD-Core Version:    0.7.0.1
  */

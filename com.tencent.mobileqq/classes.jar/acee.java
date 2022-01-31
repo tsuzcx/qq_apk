@@ -1,42 +1,21 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.database.corrupt.DBFixManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class acee
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public acee(DBFixManager paramDBFixManager) {}
+  public acee(UpgradeActivity paramUpgradeActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0);
-    String str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    if (((SharedPreferences)localObject).getBoolean(str + DBFixManager.d, false))
-    {
-      this.a.a();
-      if ((((SharedPreferences)localObject).getInt(str + DBFixManager.e, 0) < DBFixManager.jdField_a_of_type_Int) && (DBFixManager.jdField_a_of_type_Boolean)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new acef(this));
-      }
-    }
-    else
-    {
-      return;
-    }
-    QLog.d(DBFixManager.a(), 1, "DBFixDialogUI 1, max count, delete db");
-    this.a.b(false);
-    this.a.b();
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).remove(str + DBFixManager.d);
-    ((SharedPreferences.Editor)localObject).remove(str + DBFixManager.e);
-    ((SharedPreferences.Editor)localObject).apply();
+    UpgradeActivity.a(this.a, true);
+    awqx.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, akgn.b(), String.valueOf(0), akgo.a(), "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acee
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ public class NetworkUtils
   public static final int NETWORK_TYPE_UNKNOWN = 0;
   public static final int NETWORK_TYPE_WIFI = 3;
   private static final String TAG = "NetworkUtils";
-  private static INetworkInfoProvider sNetworkInfoProvider;
+  private static NetworkUtils.INetworkInfoProvider sNetworkInfoProvider;
   
   public static String convert2IP(int paramInt)
   {
@@ -81,9 +81,8 @@ public class NetworkUtils
     }
     switch (paramNetworkInfo.getSubtype())
     {
-    default: 
-      return 0;
     case 0: 
+    default: 
       return 0;
     case 1: 
     case 2: 
@@ -127,13 +126,14 @@ public class NetworkUtils
   
   public static WifiInfo getWifiInfo(Context paramContext)
   {
-    if (paramContext == null) {}
-    do
-    {
+    if (paramContext == null) {
       return null;
-      paramContext = (WifiManager)paramContext.getSystemService("wifi");
-    } while (paramContext == null);
-    return paramContext.getConnectionInfo();
+    }
+    paramContext = (WifiManager)paramContext.getSystemService("wifi");
+    if (paramContext == null) {}
+    for (paramContext = null;; paramContext = paramContext.getConnectionInfo()) {
+      return paramContext;
+    }
   }
   
   public static String getWifiMacAddress(Context paramContext)
@@ -167,34 +167,11 @@ public class NetworkUtils
     return (paramContext != null) && (paramContext.isConnected()) && (paramContext.getType() == 1);
   }
   
-  public static void setNetworkInfoProvider(INetworkInfoProvider paramINetworkInfoProvider)
+  public static void setNetworkInfoProvider(NetworkUtils.INetworkInfoProvider paramINetworkInfoProvider)
   {
     if ((sNetworkInfoProvider == null) && (paramINetworkInfoProvider != null)) {
       sNetworkInfoProvider = paramINetworkInfoProvider;
     }
-  }
-  
-  public static abstract interface INetworkInfoProvider
-  {
-    public abstract NetworkInfo getNetworkInfo(Context paramContext);
-  }
-  
-  public static final class IspType
-  {
-    public static final int ISP_TYPE_CMCC = 1;
-    public static final int ISP_TYPE_CMCT = 3;
-    public static final int ISP_TYPE_UNICOM = 2;
-    public static final int ISP_TYPE_UNKNOWN = 0;
-    public static final int ISP_TYPE_WIFI = 4;
-  }
-  
-  public static final class NetworkType
-  {
-    public static final int MOBILE_2G = 2;
-    public static final int MOBILE_3G = 3;
-    public static final int MOBILE_4G = 4;
-    public static final int NONE = 0;
-    public static final int WIFI = 1;
   }
 }
 

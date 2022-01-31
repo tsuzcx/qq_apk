@@ -1,61 +1,93 @@
-import android.annotation.SuppressLint;
-import android.view.ActionMode;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.MultiChoiceModeListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
-@SuppressLint({"NewApi"})
 public class amhh
-  implements AbsListView.MultiChoiceModeListener
+  extends alzl<amhg>
 {
-  private AbsListView.MultiChoiceModeListener jdField_a_of_type_ComTencentWidgetAbsListView$MultiChoiceModeListener;
-  
-  public amhh(AbsListView paramAbsListView) {}
-  
-  public void a(ActionMode paramActionMode, int paramInt, long paramLong, boolean paramBoolean)
+  public static amhg a()
   {
-    this.jdField_a_of_type_ComTencentWidgetAbsListView$MultiChoiceModeListener.a(paramActionMode, paramInt, paramLong, paramBoolean);
-    if (this.jdField_a_of_type_ComTencentWidgetAbsListView.getCheckedItemCount() == 0) {
-      paramActionMode.finish();
+    amhg localamhg2 = (amhg)alzw.a().a(493);
+    amhg localamhg1 = localamhg2;
+    if (localamhg2 == null) {
+      localamhg1 = new amhg();
     }
+    return localamhg1;
   }
   
-  public void a(AbsListView.MultiChoiceModeListener paramMultiChoiceModeListener)
+  public int a()
   {
-    this.jdField_a_of_type_ComTencentWidgetAbsListView$MultiChoiceModeListener = paramMultiChoiceModeListener;
+    return 493;
   }
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  @NonNull
+  public amhg a(int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentWidgetAbsListView$MultiChoiceModeListener.onActionItemClicked(paramActionMode, paramMenuItem);
+    if (QLog.isColorLevel()) {
+      QLog.e("SearchBusinessConfProcessor", 2, "migrateOldOrDefaultContent ");
+    }
+    return new amhg();
   }
   
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  @Nullable
+  public amhg a(alzs[] paramArrayOfalzs)
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_ComTencentWidgetAbsListView$MultiChoiceModeListener.onCreateActionMode(paramActionMode, paramMenu))
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchBusinessConfProcessor", 2, "onParsed start");
+    }
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
     {
-      this.jdField_a_of_type_ComTencentWidgetAbsListView.setLongClickable(false);
-      bool = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("SearchBusinessConfProcessor", 2, "onParsed " + paramArrayOfalzs.length);
+      }
+      return amhg.a(paramArrayOfalzs[0]);
     }
-    return bool;
+    return null;
   }
   
-  public void onDestroyActionMode(ActionMode paramActionMode)
+  public Class<amhg> a()
   {
-    this.jdField_a_of_type_ComTencentWidgetAbsListView$MultiChoiceModeListener.onDestroyActionMode(paramActionMode);
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.mChoiceActionMode = null;
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.clearChoices();
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.mDataChanged = true;
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.rememberSyncState();
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.requestLayout();
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.setLongClickable(true);
+    return amhg.class;
   }
   
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  public void a(int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentWidgetAbsListView$MultiChoiceModeListener.onPrepareActionMode(paramActionMode, paramMenu);
+    if (QLog.isColorLevel()) {
+      QLog.e("SearchBusinessConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void a(amhg paramamhg)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramamhg == null) {
+        break label43;
+      }
+    }
+    label43:
+    for (paramamhg = paramamhg.toString();; paramamhg = " empty")
+    {
+      QLog.d("SearchBusinessConfProcessor", 2, paramamhg);
+      return;
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

@@ -1,25 +1,22 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.annotation.Nullable;
+import android.view.View;
 
-public class wtd
-  implements Runnable
+class wtd
+  implements bhwg<Boolean>
 {
-  public wtd(PhoneContactFragment paramPhoneContactFragment) {}
+  wtd(wta paramwta) {}
   
-  public void run()
+  public void a(@Nullable Boolean paramBoolean)
   {
-    if (PhoneContactFragment.a(this.a) == null) {
-      PhoneContactFragment.a(this.a, (PhoneContactManagerImp)this.a.a.getManager(10));
+    if (paramBoolean == null) {
+      return;
     }
-    boolean bool = PhoneContactFragment.a(this.a).f();
-    PhoneContactFragment.a(this.a).post(new wte(this, bool));
+    wta.d(this.a).setSelected(paramBoolean.booleanValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wtd
  * JD-Core Version:    0.7.0.1
  */

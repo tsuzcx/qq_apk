@@ -1,16 +1,37 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.MyStorys;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetMyStoryDesFromVidListStep.ReceiveDataListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.compat.ReadInJoyDynamicChannelFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.pull2refresh.XRecyclerView;
 
-class ofw
-  implements GetMyStoryDesFromVidListStep.ReceiveDataListener
+public class ofw
+  implements berv
 {
-  ofw(ofv paramofv) {}
+  public ofw(ReadInJoyDynamicChannelFragment paramReadInJoyDynamicChannelFragment) {}
   
-  public void a(MyStorys paramMyStorys)
+  public void a()
   {
-    NewMyStorySegment.a(this.a.a).sendMessage(NewMyStorySegment.a(this.a.a).obtainMessage(0, paramMyStorys));
+    QLog.d("ReadInJoyDynamicChannelFragment", 2, "endRefresh.");
+  }
+  
+  public void a(XRecyclerView paramXRecyclerView, int paramInt)
+  {
+    QLog.d("ReadInJoyDynamicChannelFragment", 2, "startLoadMore.");
+    if (ReadInJoyDynamicChannelFragment.h(this.a) == 40830) {}
+    for (paramInt = ReadInJoyDynamicChannelFragment.i(this.a);; paramInt = 1)
+    {
+      ogy.a().a(ReadInJoyDynamicChannelFragment.j(this.a), ReadInJoyDynamicChannelFragment.k(this.a), 2, 0, paramInt);
+      return;
+    }
+  }
+  
+  public void a(XRecyclerView paramXRecyclerView, boolean paramBoolean)
+  {
+    QLog.d("ReadInJoyDynamicChannelFragment", 2, "startTopRefresh.");
+    if (paramBoolean) {}
+    for (int i = 1;; i = 3)
+    {
+      this.a.b(i);
+      return;
+    }
   }
 }
 

@@ -9,17 +9,17 @@ public final class ReqSearchNearPoiListApi
   extends JceStruct
 {
   static byte[] cache_vLBSKeyData;
-  static ArrayList cache_vTypes;
+  static ArrayList<Integer> cache_vTypes;
   public int iBeginPos;
   public int iRadius = 100;
   public int iReqNum = 10;
   public String strKeyword = "";
   public byte[] vLBSKeyData;
-  public ArrayList vTypes;
+  public ArrayList<Integer> vTypes;
   
   public ReqSearchNearPoiListApi() {}
   
-  public ReqSearchNearPoiListApi(byte[] paramArrayOfByte, String paramString, ArrayList paramArrayList, int paramInt1, int paramInt2, int paramInt3)
+  public ReqSearchNearPoiListApi(byte[] paramArrayOfByte, String paramString, ArrayList<Integer> paramArrayList, int paramInt1, int paramInt2, int paramInt3)
   {
     this.vLBSKeyData = paramArrayOfByte;
     this.strKeyword = paramString;

@@ -1,40 +1,29 @@
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.utils.PokeBigResHandler;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.OldHttpEngine;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aadn
-  implements Runnable
+  extends ajsa
 {
-  public aadn(PokeBigResHandler paramPokeBigResHandler) {}
+  public aadn(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public void a(boolean paramBoolean, int paramInt)
   {
-    PokeBigResHandler.a(true);
-    HttpNetReq localHttpNetReq = new HttpNetReq();
-    SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this.a.b.getApp());
-    String str = this.a.b.getAccount();
-    PokeBigResHandler.a(localSharedPreferences.getString(str + "_" + "aio_poke_res_url", ""));
-    PokeBigResHandler.b(localSharedPreferences.getString(str + "_" + "aio_poke_res_md5", ""));
-    if (TextUtils.isEmpty(PokeBigResHandler.a()))
+    if (((this.a.a() instanceof SplashActivity)) && (SplashActivity.a != 2)) {}
+    do
     {
-      PokeBigResHandler.a(false);
       return;
-    }
-    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = PokeBigResHandler.a(this.a);
-    localHttpNetReq.jdField_a_of_type_JavaLangString = PokeBigResHandler.a();
-    localHttpNetReq.jdField_a_of_type_Int = 0;
-    localHttpNetReq.c = (PokeBigResHandler.b() + "poke.zip");
-    ((OldHttpEngine)this.a.a.getNetEngine(0)).a(localHttpNetReq);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.a, 2, "VideoRedbag, onCheckRealNameRsp in aio");
+      }
+    } while ((!paramBoolean) || (paramInt != awkk.a));
+    babr.a(this.a.a(), 0, null, this.a.a().getString(2131653696), 2131653698, 2131653697, new aado(this), new aadp(this)).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aadn
  * JD-Core Version:    0.7.0.1
  */

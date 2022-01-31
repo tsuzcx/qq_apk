@@ -1,75 +1,84 @@
-import android.os.Handler;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.binhai.BinHaiObserver;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import Wallet.RedPackGrapInfo;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class agmj
-  extends BinHaiObserver
+  extends FrameLayout
 {
-  public agmj(ScanTorchActivity paramScanTorchActivity) {}
+  adnc jdField_a_of_type_Adnc;
+  Context jdField_a_of_type_AndroidContentContext;
+  FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   
-  public void a(int paramInt, String paramString)
+  public agmj(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList, @NonNull Context paramContext, adnc paramadnc)
   {
-    this.a.a.post(new agmk(this, paramInt, paramString));
+    super(paramContext);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Adnc = paramadnc;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOrientation(1);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setClickable(true);
+    addView(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+    paramTroopUnAccalimedRedPacketList = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
+    paramTroopUnAccalimedRedPacketList.width = -2;
+    paramTroopUnAccalimedRedPacketList.height = -2;
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(paramContext);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130846384);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
+    paramTroopUnAccalimedRedPacketList = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
+    paramTroopUnAccalimedRedPacketList.width = vms.a(paramContext, 29.0F);
+    paramTroopUnAccalimedRedPacketList.height = vms.a(paramContext, 29.0F);
+    paramTroopUnAccalimedRedPacketList.gravity = 1;
+    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView);
+    paramTroopUnAccalimedRedPacketList = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    paramTroopUnAccalimedRedPacketList.width = vms.a(paramContext, 28.0F);
+    paramTroopUnAccalimedRedPacketList.height = vms.a(paramContext, 28.0F);
+    paramTroopUnAccalimedRedPacketList.gravity = 17;
   }
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, long paramLong, int paramInt3)
+  public void a(RedPackGrapInfo paramRedPackGrapInfo)
   {
-    if (paramBoolean) {
-      if (paramInt2 == 1)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ScanTorchActivity", 2, "binhai_totalClick=" + ScanTorchActivity.b(this.a));
-        }
-        this.a.b.reportClickEvent("dc00898", "", this.a.b.getCurrentAccountUin(), "0X8008389", "0X8008389", 0, 0, String.valueOf(ScanTorchActivity.b(this.a)), "", ScanTorchActivity.c(this.a), "");
-        ScanTorchActivity.u(this.a);
-        ScanTorchActivity.a(this.a, 3, 1, "");
-      }
-    }
-    while ((!ScanTorchActivity.o(this.a)) || (ScanTorchActivity.a(this.a) == null))
+    Object localObject;
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null)
     {
-      this.a.a.post(new agmq(this));
-      do
-      {
-        return;
-      } while ((!ScanTorchActivity.o(this.a)) || (ScanTorchActivity.a(this.a) == null));
-      ScanTorchActivity.a(this.a, 2, paramInt3, "");
-      ScanTorchActivity.g(this.a, paramLong);
-      if (ScanTorchActivity.b(this.a) < 1000L) {
-        ScanTorchActivity.g(this.a, 1000L);
-      }
-      this.a.a.removeMessages(337);
-      this.a.a.sendEmptyMessageDelayed(337, ScanTorchActivity.b(this.a));
-      return;
+      localObject = azwp.a(TroopUnAccalimedRedPacketList.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList), String.valueOf(paramRedPackGrapInfo.lUin), (byte)3);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
     }
-    this.a.a.removeMessages(337);
-    this.a.a.sendEmptyMessageDelayed(337, ScanTorchActivity.b(this.a));
-  }
-  
-  public void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong1, long paramLong2)
-  {
-    this.a.a.sendEmptyMessage(307);
-    if (!this.a.isResume()) {
-      return;
-    }
-    this.a.a.post(new agml(this, paramBoolean, paramString2, paramInt2, paramInt3, paramInt4, paramInt5, paramLong2, paramLong1, paramString1));
-  }
-  
-  public void a(boolean paramBoolean1, String paramString1, int paramInt1, boolean paramBoolean2, int paramInt2, String paramString2, ArrayList paramArrayList)
-  {
-    if (paramBoolean1)
+    if (this.jdField_a_of_type_Adnc != null)
     {
-      ScanTorchActivity.a(this.a, paramArrayList, ScanTorchActivity.c(this.a), paramString1);
+      this.jdField_a_of_type_Adnc.a(paramRedPackGrapInfo);
+      localObject = this.jdField_a_of_type_Adnc.a(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+      if (localObject == null) {
+        break label120;
+      }
+      localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
+      localLayoutParams.topMargin = vms.a(this.jdField_a_of_type_AndroidContentContext, 11.5F);
+      localLayoutParams.gravity = 16;
+      ((FrameLayout)localObject).setLayoutParams(localLayoutParams);
+      this.jdField_a_of_type_Adnc.a((FrameLayout)localObject, paramRedPackGrapInfo, new agmk(this));
+    }
+    label120:
+    while (!QLog.isColorLevel())
+    {
+      LinearLayout.LayoutParams localLayoutParams;
       return;
     }
-    this.a.a.post(new agmr(this, paramString2, paramBoolean2, paramInt1));
+    QLog.w(TroopUnAccalimedRedPacketList.b(), 2, "red packet item layout is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agmj
  * JD-Core Version:    0.7.0.1
  */

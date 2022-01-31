@@ -1,7 +1,9 @@
 package com.tencent.mobileqq.redtouch;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.ResultReceiver;
+import auqb;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public class RedTouchReciver
@@ -9,18 +11,24 @@ public class RedTouchReciver
 {
   QQAppInterface a;
   
+  public RedTouchReciver(QQAppInterface paramQQAppInterface, Handler paramHandler)
+  {
+    super(paramHandler);
+    this.a = paramQQAppInterface;
+  }
+  
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    BaseReq localBaseReq = BaseReq.a(paramBundle);
-    if (localBaseReq != null) {
-      localBaseReq.a(this.a, paramBundle);
+    auqb localauqb = auqb.a(paramBundle);
+    if (localauqb != null) {
+      localauqb.a(this.a, paramBundle);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchReciver
  * JD-Core Version:    0.7.0.1
  */

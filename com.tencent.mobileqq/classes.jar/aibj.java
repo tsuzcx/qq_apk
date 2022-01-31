@@ -1,76 +1,127 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.search.model.ContactSearchModelGlobalTroop;
-import com.tencent.mobileqq.search.model.ContactSearchModelGlobalTroopMember;
-import com.tencent.mobileqq.search.model.IContactSearchModel;
-import com.tencent.mobileqq.search.util.SearchUtils;
-import com.tencent.mobileqq.statistics.StatisticCollector;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MayKnowRecommend;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import com.tencent.widget.HorizontalListView;
+import java.util.List;
+import mqq.util.WeakReference;
 
-public final class aibj
-  implements Runnable
+final class aibj
+  extends ajjh
 {
-  public aibj(View paramView, IContactSearchModel paramIContactSearchModel) {}
+  WeakReference<aibc> a;
   
-  public void run()
+  aibj(aibc paramaibc)
   {
-    int j = -1;
-    HashMap localHashMap = new HashMap();
-    Object localObject = (Integer)this.jdField_a_of_type_AndroidViewView.getTag(2131362080);
-    int i;
-    if (localObject != null)
+    this.a = new WeakReference(paramaibc);
+  }
+  
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  {
+    aibc localaibc;
+    if (paramBoolean)
     {
-      i = ((Integer)localObject).intValue();
-      localHashMap.put("itemLinePosition", String.valueOf(i + 1));
-      localHashMap.put("matchDegree", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqSearchModelIContactSearchModel.b()));
-      localHashMap.put("className", this.jdField_a_of_type_ComTencentMobileqqSearchModelIContactSearchModel.getClass().getSimpleName());
-      localHashMap.put("keyword", this.jdField_a_of_type_ComTencentMobileqqSearchModelIContactSearchModel.b());
-      if (this.jdField_a_of_type_ComTencentMobileqqSearchModelIContactSearchModel.jdField_a_of_type_JavaUtilHashMap != null) {
-        localHashMap.putAll(this.jdField_a_of_type_ComTencentMobileqqSearchModelIContactSearchModel.jdField_a_of_type_JavaUtilHashMap);
+      localaibc = (aibc)this.a.get();
+      if (localaibc == null) {
+        break label71;
       }
-      if (!(this.jdField_a_of_type_ComTencentMobileqqSearchModelIContactSearchModel instanceof ContactSearchModelGlobalTroopMember)) {
-        break label339;
+      paramString = aibc.a(localaibc, paramString);
+      if (QLog.isColorLevel()) {
+        QLog.d("MayKnowAdapter", 2, "onCancelMayKnowRecommend target：" + paramString);
       }
-      localObject = ((ContactSearchModelGlobalTroopMember)this.jdField_a_of_type_ComTencentMobileqqSearchModelIContactSearchModel).a;
+      if (paramString != null) {
+        aibc.a(localaibc, paramString);
+      }
     }
-    for (;;)
+    else
     {
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (this.jdField_a_of_type_ComTencentMobileqqSearchModelIContactSearchModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
-      {
-        int k = this.jdField_a_of_type_ComTencentMobileqqSearchModelIContactSearchModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b((String)localObject);
-        localHashMap.put("troopMask", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqSearchModelIContactSearchModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b((String)localObject)));
-        TroopManager localTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqSearchModelIContactSearchModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-        i = j;
-        if (localTroopManager != null)
-        {
-          localObject = localTroopManager.b((String)localObject);
-          i = j;
-          if (localObject != null) {
-            i = ((TroopInfo)localObject).wMemberNum;
-          }
-        }
-        localHashMap.put("troopMask", String.valueOf(k));
-        localHashMap.put("troopMemberNum", String.valueOf(i));
-        if (QLog.isColorLevel()) {
-          QLog.d("searchUtils", 2, "Report troop member click, troopMask:" + k + " troopMemberNum:" + i);
-        }
-      }
-      StatisticCollector.a(BaseApplicationImpl.getApplication()).a(null, "ContactSearchMatchDegree", true, 0L, 0L, SearchUtils.a(localHashMap), "", false);
       return;
-      i = -1;
-      break;
-      label339:
-      if ((this.jdField_a_of_type_ComTencentMobileqqSearchModelIContactSearchModel instanceof ContactSearchModelGlobalTroop)) {
-        localObject = ((ContactSearchModelGlobalTroop)this.jdField_a_of_type_ComTencentMobileqqSearchModelIContactSearchModel).a;
-      } else {
-        localObject = "";
+    }
+    aibc.a(localaibc);
+    return;
+    label71:
+    QLog.d("MayKnowAdapter", 1, "onCancelMayKnowRecommend  adapter is null!");
+  }
+  
+  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (paramBoolean)
+    {
+      paramBundle = (aibc)this.a.get();
+      if (paramBundle != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MayKnowAdapter", 2, "onGetMayKnowRecommend ");
+        }
+        aibc.a(paramBundle);
       }
     }
+    else
+    {
+      return;
+    }
+    QLog.d("MayKnowAdapter", 1, "onGetMayKnowRecommend adapter is null!");
+  }
+  
+  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
+  {
+    super.onMayKnowListPushAdd(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("MayKnowAdapter", 2, "onMayKnowListPushAdd");
+    }
+    if (paramBoolean)
+    {
+      paramList = (aibc)this.a.get();
+      if (paramList != null) {
+        aibc.a(paramList);
+      }
+    }
+    else
+    {
+      return;
+    }
+    QLog.d("MayKnowAdapter", 1, "onMayKnowListPushAdd adapter is null!");
+  }
+  
+  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
+  {
+    super.onMayKnowListPushDel(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("MayKnowAdapter", 2, "onMayKnowListPushDel");
+    }
+    if (paramBoolean)
+    {
+      paramList = (aibc)this.a.get();
+      if (paramList != null) {
+        aibc.a(paramList);
+      }
+    }
+    else
+    {
+      return;
+    }
+    QLog.d("MayKnowAdapter", 1, "onMayKnowListPushDel adapter is null!");
+  }
+  
+  protected void onMayknowStateChanged(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      aibc localaibc = (aibc)this.a.get();
+      if (localaibc == null) {
+        break label60;
+      }
+      if (aibc.a(localaibc) != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MayKnowAdapter", 2, "onMayknowStateChanged");
+        }
+        localaibc.notifyDataSetChanged();
+        aibc.a(localaibc).postDelayed(localaibc.a, 1600L);
+      }
+    }
+    return;
+    label60:
+    QLog.d("MayKnowAdapter", 1, "onMayknowStateChanged adapter is null!");
   }
 }
 

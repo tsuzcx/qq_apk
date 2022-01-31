@@ -5,25 +5,36 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.SystemClock;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.style.URLSpan;
 import android.view.View;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import awqx;
+import awus;
+import awvm;
+import bcpn;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
+import rtr;
 
 public class StructMsgForHypertext$HyperSpannable
   extends URLSpan
 {
   long jdField_a_of_type_Long = -1L;
-  private StructMsgForHypertext.Hypertext jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext;
+  private awvm jdField_a_of_type_Awvm;
   
-  public StructMsgForHypertext$HyperSpannable(StructMsgForHypertext paramStructMsgForHypertext, StructMsgForHypertext.Hypertext paramHypertext)
+  public StructMsgForHypertext$HyperSpannable(StructMsgForHypertext paramStructMsgForHypertext, awvm paramawvm)
   {
-    super(paramHypertext.b);
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext = paramHypertext;
+    super(paramawvm.b);
+    this.jdField_a_of_type_Awvm = paramawvm;
   }
   
   public void onClick(View paramView)
@@ -31,107 +42,191 @@ public class StructMsgForHypertext$HyperSpannable
     if (SystemClock.uptimeMillis() - this.jdField_a_of_type_Long < 1000L) {}
     do
     {
-      do
-      {
-        return;
-        this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      } while ((this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext == null) || ((paramView != null) && ((paramView instanceof StructMsgForHypertext.HyperTextView)) && (!((StructMsgForHypertext.HyperTextView)paramView).a())));
-      if (("web".equals(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.b)) || ("auto".equals(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.b)) || ("replyMsg".equals(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.b)) || ("replyCmd".equals(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.b)) || ("plugin".equals(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.b)))
-      {
-        new StructMsgClickHandler(null, paramView, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message).a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.b, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.a, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.c, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.d);
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.mHyperClick = true;
-        return;
+      return;
+      this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    } while ((this.jdField_a_of_type_Awvm == null) || ((paramView != null) && ((paramView instanceof StructMsgForHypertext.HyperTextView)) && (!((StructMsgForHypertext.HyperTextView)paramView).a())));
+    label196:
+    int m;
+    int j;
+    int i;
+    int k;
+    Object localObject1;
+    if (("web".equals(this.jdField_a_of_type_Awvm.b)) || ("auto".equals(this.jdField_a_of_type_Awvm.b)) || ("replyMsg".equals(this.jdField_a_of_type_Awvm.b)) || ("replyCmd".equals(this.jdField_a_of_type_Awvm.b)) || ("plugin".equals(this.jdField_a_of_type_Awvm.b)))
+    {
+      new awus(null, paramView, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message).a(this.jdField_a_of_type_Awvm.b, this.jdField_a_of_type_Awvm.a, this.jdField_a_of_type_Awvm.c, this.jdField_a_of_type_Awvm.d, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message.msgseq, new Object[0]);
+      this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.mHyperClick = true;
+      if ((!(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message instanceof MessageForStructing)) || (((MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message).structingMsg.mMsgServiceID != 120)) {
+        break label766;
       }
-    } while (!"app".equals(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.b));
-    localContext = paramView.getContext();
-    PackageManager localPackageManager = localContext.getPackageManager();
-    paramView = "";
-    localView = paramView;
+      m = 0;
+      j = 0;
+      i = 0;
+      k = 0;
+      if (TextUtils.isEmpty(this.jdField_a_of_type_Awvm.f)) {
+        break label1170;
+      }
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message.getExtInfoFromExtStr(StructMsgForHypertext.access$000(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext) + this.jdField_a_of_type_Awvm.f);
+      j = m;
+    }
     for (;;)
     {
       try
       {
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.d)) {
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        {
+          j = m;
+          i = Integer.valueOf((String)localObject1).intValue();
+        }
+        j = i;
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_Awvm.g))
+        {
+          j = i;
+          k = Integer.valueOf(this.jdField_a_of_type_Awvm.g).intValue();
+        }
+        if (((i != 0) && (i >= k)) || (TextUtils.isEmpty(this.jdField_a_of_type_Awvm.b))) {
+          break;
+        }
+        localObject1 = paramView.getContext();
+        paramView = ((FragmentActivity)localObject1).getChatFragment();
+        if (paramView == null) {
+          break label1178;
+        }
+        paramView = paramView.a();
+        if (paramView == null) {
+          break;
+        }
+        ((bcpn)paramView.getManager(165)).a(this.jdField_a_of_type_Awvm.b, this.jdField_a_of_type_Awvm.d, this.jdField_a_of_type_Awvm.c, this.jdField_a_of_type_Awvm.a, 1, "");
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_Awvm.f))
+        {
+          i += 1;
+          if (i <= k)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message.saveExtInfoToExtStr(StructMsgForHypertext.access$000(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext) + this.jdField_a_of_type_Awvm.f, "" + i);
+            paramView.a().a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message.frienduin, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message.istroop, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message.extStr);
+          }
+        }
+        ((FragmentActivity)localObject1).getChatFragment().a().e(131077);
+        return;
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        Context localContext;
+        PackageManager localPackageManager;
+        Object localObject3;
+        label766:
+        QLog.d("StructMsg", 1, localNumberFormatException.getMessage());
+      }
+      if (!"app".equals(this.jdField_a_of_type_Awvm.b)) {
+        break label196;
+      }
+      localContext = paramView.getContext();
+      localPackageManager = localContext.getPackageManager();
+      localObject1 = "";
+      localObject3 = localObject1;
+      try
+      {
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_Awvm.d)) {
           continue;
         }
-        localView = paramView;
-        localObject = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.c;
-        localView = paramView;
-        i = ((String)localObject).indexOf("://");
+        localObject3 = localObject1;
+        localObject2 = this.jdField_a_of_type_Awvm.c;
+        localObject3 = localObject1;
+        i = ((String)localObject2).indexOf("://");
         if (i != -1) {
           continue;
         }
-        localView = paramView;
-        if (localPackageManager.getPackageInfo((String)localObject, 1) == null) {
+        localObject3 = localObject1;
+        if (localPackageManager.getPackageInfo((String)localObject2, 1) == null) {
           continue;
         }
-        localView = paramView;
-        localObject = localPackageManager.getLaunchIntentForPackage((String)localObject);
-        localView = paramView;
-        if (!TextUtils.isEmpty(paramView))
-        {
-          localView = paramView;
-          ((Intent)localObject).setData(Uri.parse(paramView));
+        localObject3 = localObject1;
+        localObject2 = localPackageManager.getLaunchIntentForPackage((String)localObject2);
+        if (localObject2 == null) {
+          continue;
         }
-        localView = paramView;
-        localContext.startActivity((Intent)localObject);
+        localObject3 = localObject1;
+        ((Intent)localObject2).putExtra("big_brother_source_key", "biz_src_jc_aio");
+        localObject3 = localObject1;
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        {
+          localObject3 = localObject1;
+          ((Intent)localObject2).setData(Uri.parse((String)localObject1));
+        }
+        localObject3 = localObject1;
+        localContext.startActivity((Intent)localObject2);
       }
-      catch (Exception paramView)
+      catch (Exception localException)
       {
-        Object localObject;
-        int i;
         String str;
         if (!QLog.isColorLevel()) {
           continue;
         }
-        QLog.d("HypertextMsg", 2, paramView.getMessage(), paramView);
-        if ((TextUtils.isEmpty(localView)) || ((!localView.startsWith("http://")) && (!localView.startsWith("https://")))) {
+        QLog.d("HypertextMsg", 2, localException.getMessage(), localException);
+        if ((TextUtils.isEmpty((CharSequence)localObject3)) || ((!((String)localObject3).startsWith("http://")) && (!((String)localObject3).startsWith("https://")))) {
           continue;
         }
-        paramView = new Intent(localContext, QQBrowserActivity.class);
-        paramView.putExtra("url", localView);
-        paramView.putExtra("key_isReadModeEnabled", true);
-        PublicAccountUtil.a(paramView, localView);
-        paramView.putExtra("fromAio", true);
-        localContext.startActivity(paramView);
-        ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, localView, "", "", "");
+        Intent localIntent = new Intent(localContext, QQBrowserActivity.class);
+        localIntent.putExtra("url", (String)localObject3);
+        localIntent.putExtra("big_brother_source_key", "biz_src_jc_aio");
+        localIntent.putExtra("key_isReadModeEnabled", true);
+        rtr.a(localIntent, (String)localObject3);
+        localIntent.putExtra("fromAio", true);
+        localContext.startActivity(localIntent);
+        awqx.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, (String)localObject3, "", "", "");
+        continue;
+        localObject3 = localIntent;
+        if (TextUtils.isEmpty(localIntent)) {
+          continue;
+        }
+        localObject3 = localIntent;
+        if (localIntent.startsWith("http://")) {
+          continue;
+        }
+        localObject3 = localIntent;
+        if (!localIntent.startsWith("https://")) {
+          continue;
+        }
+        localObject3 = localIntent;
+        Object localObject2 = new Intent(localContext, QQBrowserActivity.class);
+        localObject3 = localIntent;
+        ((Intent)localObject2).putExtra("big_brother_source_key", "biz_src_jc_aio");
+        localObject3 = localIntent;
+        ((Intent)localObject2).putExtra("url", localIntent);
+        localObject3 = localIntent;
+        ((Intent)localObject2).putExtra("key_isReadModeEnabled", true);
+        localObject3 = localIntent;
+        rtr.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message, (Intent)localObject2, localIntent);
+        localObject3 = localIntent;
+        localContext.startActivity((Intent)localObject2);
+        localObject3 = localIntent;
+        awqx.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, localIntent, "", "", "");
         continue;
       }
       this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.mHyperClick = true;
-      return;
-      localView = paramView;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext$Hypertext.d;
+      break label196;
+      break;
+      localObject3 = localObject1;
+      localObject2 = this.jdField_a_of_type_Awvm.d;
       continue;
-      localView = paramView;
-      str = ((String)localObject).substring(0, i);
-      localView = paramView;
-      paramView = ((String)localObject).substring(i + 3);
-      localObject = str;
+      localObject3 = localObject1;
+      str = ((String)localObject2).substring(0, i);
+      localObject3 = localObject1;
+      localObject1 = ((String)localObject2).substring(i + 3);
+      localObject2 = str;
       continue;
-      localView = paramView;
-      if (!TextUtils.isEmpty(paramView))
-      {
-        localView = paramView;
-        if (!paramView.startsWith("http://"))
-        {
-          localView = paramView;
-          if (!paramView.startsWith("https://")) {}
-        }
-        else
-        {
-          localView = paramView;
-          localObject = new Intent(localContext, QQBrowserActivity.class);
-          localView = paramView;
-          ((Intent)localObject).putExtra("url", paramView);
-          localView = paramView;
-          ((Intent)localObject).putExtra("key_isReadModeEnabled", true);
-          localView = paramView;
-          PublicAccountUtil.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForHypertext.message, (Intent)localObject, paramView);
-          localView = paramView;
-          localContext.startActivity((Intent)localObject);
-          localView = paramView;
-          ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, paramView, "", "", "");
-        }
+      localObject3 = localObject1;
+      QLog.w("StructMsg", 1, "intent is null");
+      continue;
+      label1170:
+      k = 0;
+      i = j;
+      continue;
+      label1178:
+      paramView = BaseApplicationImpl.getApplication().getRuntime();
+      if ((paramView instanceof QQAppInterface)) {
+        paramView = (QQAppInterface)paramView;
+      } else {
+        paramView = null;
       }
     }
   }
@@ -144,7 +239,7 @@ public class StructMsgForHypertext$HyperSpannable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForHypertext.HyperSpannable
  * JD-Core Version:    0.7.0.1
  */

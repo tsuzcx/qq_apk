@@ -2,16 +2,10 @@ package com.tencent.mobileqq.shortvideo.dancemachine;
 
 public class BoyDataReport$BoyItem
 {
-  public int a;
-  public String a;
-  public boolean a;
-  public int b = -1;
-  
-  public BoyDataReport$BoyItem()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-  }
+  public boolean mEnd = false;
+  public String mId;
+  public int mScore = 0;
+  public int status = -1;
 }
 
 

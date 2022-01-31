@@ -1,18 +1,34 @@
-import com.tencent.mobileqq.filemanager.core.FileVideoManager;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public final class adee
-  implements Runnable
+class adee
+  implements begw
 {
-  public adee(int paramInt) {}
+  adee(addx paramaddx, MessageForFile paramMessageForFile, begr parambegr, BaseChatItemLayout paramBaseChatItemLayout, adef paramadef) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    FileVideoManager.b(this.a);
+    paramView = this.jdField_a_of_type_Addx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.istroop);
+    if (paramView != null)
+    {
+      if (paramView.status == 16)
+      {
+        apcb.a(2131627218);
+        this.jdField_a_of_type_Begr.cancel();
+        return;
+      }
+      apck.a(this.jdField_a_of_type_Addx.jdField_a_of_type_AndroidContentContext, paramView, this.jdField_a_of_type_Addx.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
+    }
+    this.jdField_a_of_type_Addx.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_Adef, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile.status);
+    this.jdField_a_of_type_Begr.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adee
  * JD-Core Version:    0.7.0.1
  */

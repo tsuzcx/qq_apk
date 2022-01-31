@@ -6,8 +6,6 @@ import android.content.Context;
 import android.os.Environment;
 import android.os.Process;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.upload.uinterface.Utility.TestServerCategory;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
@@ -452,15 +450,6 @@ public class ServerListProvider
     return LocalMultiProcConfig.getInt("ServerEnvironment", 0);
   }
   
-  public static int getUploadServerType()
-  {
-    
-    if (QLog.isColorLevel()) {
-      QLog.d("upload", 2, "debug Version server:" + 0);
-    }
-    return 0;
-  }
-  
   public static boolean isDebugEnable()
   {
     if (isDebugEnabled == null)
@@ -513,17 +502,6 @@ public class ServerListProvider
     }
     catch (Exception localException) {}
     return false;
-  }
-  
-  private static void readCustomUploadServer()
-  {
-    String str = LocalMultiProcConfig.getString("ServerUploadCustomIp", "113.108.67.16");
-    int i = LocalMultiProcConfig.getInt("ServerUploadCustomPort", 19994);
-    Utility.TestServerCategory.CUSTOM.setServerIp(str);
-    Utility.TestServerCategory.CUSTOM.setServerPort(i);
-    if (QLog.isColorLevel()) {
-      QLog.d("upload", 2, "custom server loaded:" + Utility.TestServerCategory.CUSTOM.getServerIp() + ":" + Utility.TestServerCategory.CUSTOM.getServerPort());
-    }
   }
   
   public static boolean switchToTestServer()

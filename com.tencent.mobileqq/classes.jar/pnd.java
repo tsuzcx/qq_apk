@@ -1,22 +1,15 @@
 import android.graphics.drawable.Drawable;
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.component.media.image.view.AsyncImageable.AsyncImageableImpl;
+import android.graphics.drawable.StateListDrawable;
 
 public class pnd
-  implements Runnable
+  extends StateListDrawable
 {
-  public pnd(AsyncImageable.AsyncImageableImpl paramAsyncImageableImpl, Drawable paramDrawable, Animation paramAnimation) {}
-  
-  public void run()
-  {
-    AsyncImageable.AsyncImageableImpl.a(this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncImageableImpl).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    AsyncImageable.AsyncImageableImpl.a(AsyncImageable.AsyncImageableImpl.a(this.jdField_a_of_type_ComTencentComponentMediaImageViewAsyncImageable$AsyncImageableImpl), this.jdField_a_of_type_AndroidViewAnimationAnimation, null);
-  }
+  public Drawable a;
+  public Drawable b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     pnd
  * JD-Core Version:    0.7.0.1
  */

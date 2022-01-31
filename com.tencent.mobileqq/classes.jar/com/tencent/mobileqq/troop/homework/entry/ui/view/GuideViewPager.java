@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.troop.homework.entry.ui.view;
 
-import ajpm;
-import ajpo;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -10,13 +8,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import ayvw;
+import ayxg;
 import com.tencent.biz.troopgift.absMultiViewPager;
 import com.tencent.image.GifDrawable;
 import com.tencent.image.GifDrawable.OnGIFPlayOnceListener;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.homework.config.HomeworkConfig.HomeWorkGuideInfo.PageInfo;
 import java.io.File;
 import java.util.ArrayList;
 import mqq.os.MqqHandler;
@@ -25,7 +24,7 @@ public class GuideViewPager
   extends absMultiViewPager
   implements View.OnClickListener, GifDrawable.OnGIFPlayOnceListener
 {
-  private ComplexGuidViewPager.OnGuideBtnClickListener a;
+  private ayxg a;
   
   public GuideViewPager(Context paramContext)
   {
@@ -49,7 +48,7 @@ public class GuideViewPager
   
   public static void setBitmapByPath(ImageView paramImageView, String paramString)
   {
-    ThreadManager.post(new ajpm(paramString, paramImageView), 8, null, true);
+    ThreadManager.post(new GuideViewPager.1(paramString, paramImageView), 8, null, true);
   }
   
   public int a()
@@ -59,40 +58,40 @@ public class GuideViewPager
   
   public View a(int paramInt)
   {
-    HomeworkConfig.HomeWorkGuideInfo.PageInfo localPageInfo = (HomeworkConfig.HomeWorkGuideInfo.PageInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2130970663, null);
-    Object localObject = (ImageView)localRelativeLayout.findViewById(2131371557);
-    ImageView localImageView3 = (ImageView)localRelativeLayout.findViewById(2131371558);
-    ImageView localImageView1 = (ImageView)localRelativeLayout.findViewById(2131371559);
-    ImageView localImageView2 = (ImageView)localRelativeLayout.findViewById(2131371560);
-    if (localPageInfo.jdField_a_of_type_Boolean) {
-      if (!TextUtils.isEmpty(localPageInfo.jdField_a_of_type_JavaLangString))
+    ayvw localayvw = (ayvw)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(getContext()).inflate(2131495557, null);
+    Object localObject = (ImageView)localRelativeLayout.findViewById(2131301261);
+    ImageView localImageView3 = (ImageView)localRelativeLayout.findViewById(2131297602);
+    ImageView localImageView1 = (ImageView)localRelativeLayout.findViewById(2131301233);
+    ImageView localImageView2 = (ImageView)localRelativeLayout.findViewById(2131296359);
+    if (localayvw.jdField_a_of_type_Boolean) {
+      if (!TextUtils.isEmpty(localayvw.jdField_a_of_type_JavaLangString))
       {
-        setBitmapByPath((ImageView)localObject, localPageInfo.jdField_a_of_type_JavaLangString);
+        setBitmapByPath((ImageView)localObject, localayvw.jdField_a_of_type_JavaLangString);
         ((ImageView)localObject).setVisibility(0);
       }
     }
     for (;;)
     {
-      if (!TextUtils.isEmpty(localPageInfo.c))
+      if (!TextUtils.isEmpty(localayvw.c))
       {
-        localImageView2.setImageDrawable(a(localPageInfo.c));
+        localImageView2.setImageDrawable(a(localayvw.c));
         localImageView2.setVisibility(0);
         localImageView2.setOnClickListener(this);
       }
       return localRelativeLayout;
-      if (!TextUtils.isEmpty(localPageInfo.jdField_a_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(localayvw.jdField_a_of_type_JavaLangString))
       {
-        setBitmapByPath(localImageView3, localPageInfo.jdField_a_of_type_JavaLangString);
+        setBitmapByPath(localImageView3, localayvw.jdField_a_of_type_JavaLangString);
         localImageView3.setVisibility(0);
       }
-      if (!TextUtils.isEmpty(localPageInfo.b))
+      if (!TextUtils.isEmpty(localayvw.b))
       {
-        localObject = a(localPageInfo.b);
+        localObject = a(localayvw.b);
         if ((((URLDrawable)localObject).getCurrDrawable() instanceof GifDrawable)) {
           ((GifDrawable)((URLDrawable)localObject).getCurrDrawable()).setGIFPlayOnceListener(this);
         }
-        localImageView1.setImageDrawable(a(localPageInfo.b));
+        localImageView1.setImageDrawable(a(localayvw.b));
         localImageView1.setVisibility(0);
       }
     }
@@ -106,23 +105,23 @@ public class GuideViewPager
     do
     {
       return;
-    } while (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager$OnGuideBtnClickListener == null);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager$OnGuideBtnClickListener.a();
+    } while (this.jdField_a_of_type_Ayxg == null);
+    this.jdField_a_of_type_Ayxg.a();
   }
   
   public void onPlayOnce()
   {
-    ThreadManager.getUIHandler().post(new ajpo(this));
+    ThreadManager.getUIHandler().post(new GuideViewPager.2(this));
   }
   
-  public void setOnActionBtnClickListener(ComplexGuidViewPager.OnGuideBtnClickListener paramOnGuideBtnClickListener)
+  public void setOnActionBtnClickListener(ayxg paramayxg)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewComplexGuidViewPager$OnGuideBtnClickListener = paramOnGuideBtnClickListener;
+    this.jdField_a_of_type_Ayxg = paramayxg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.view.GuideViewPager
  * JD-Core Version:    0.7.0.1
  */

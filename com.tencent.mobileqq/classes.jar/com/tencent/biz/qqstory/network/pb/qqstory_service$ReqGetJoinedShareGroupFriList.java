@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class qqstory_service$ReqGetJoinedShareGroupFriList
-  extends MessageMicro
+  extends MessageMicro<ReqGetJoinedShareGroupFriList>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField share_group_unionid = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -20,7 +20,7 @@ public final class qqstory_service$ReqGetJoinedShareGroupFriList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetJoinedShareGroupFriList
  * JD-Core Version:    0.7.0.1
  */

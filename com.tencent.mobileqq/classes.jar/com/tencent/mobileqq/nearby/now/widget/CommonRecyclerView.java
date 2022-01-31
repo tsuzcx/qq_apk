@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.util.AttributeSet;
 import android.view.View;
+import asrj;
+import asrl;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -14,8 +16,8 @@ public class CommonRecyclerView
   extends RecyclerView
 {
   private int jdField_a_of_type_Int = -1;
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
-  private List b = new ArrayList();
+  private List<View> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<View> b = new ArrayList();
   
   public CommonRecyclerView(Context paramContext)
   {
@@ -33,13 +35,13 @@ public class CommonRecyclerView
   }
   
   @Nullable
-  public CommonAdapter a()
+  public asrl a()
   {
     if (getAdapter() == null) {
       return null;
     }
-    if ((((AdapterWrapper)getAdapter()).a() instanceof CommonAdapter)) {
-      return (CommonAdapter)((AdapterWrapper)getAdapter()).a();
+    if ((((asrj)getAdapter()).a() instanceof asrl)) {
+      return (asrl)((asrj)getAdapter()).a();
     }
     return null;
   }
@@ -54,10 +56,10 @@ public class CommonRecyclerView
       return;
       if ((a() == null) || (paramAdapter != a()))
       {
-        if (!(paramAdapter instanceof CommonAdapter)) {
+        if (!(paramAdapter instanceof asrl)) {
           throw new IllegalArgumentException("adapter must extends CommonAdapter");
         }
-        super.setAdapter(new AdapterWrapper(paramAdapter));
+        super.setAdapter(new asrj(paramAdapter));
         View localView;
         if (this.jdField_a_of_type_JavaUtilList.size() > 0)
         {
@@ -65,7 +67,7 @@ public class CommonRecyclerView
           while (paramAdapter.hasNext())
           {
             localView = (View)paramAdapter.next();
-            ((AdapterWrapper)getAdapter()).a(localView);
+            ((asrj)getAdapter()).a(localView);
           }
         }
         if (this.b.size() <= 0) {
@@ -75,7 +77,7 @@ public class CommonRecyclerView
         while (paramAdapter.hasNext())
         {
           localView = (View)paramAdapter.next();
-          ((AdapterWrapper)getAdapter()).b(localView);
+          ((asrj)getAdapter()).b(localView);
         }
       }
     }

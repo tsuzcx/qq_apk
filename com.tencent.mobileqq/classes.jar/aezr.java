@@ -1,157 +1,137 @@
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
-import com.tencent.mobileqq.nearby.ipc.MainProcessInterface;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.KplRoleInfo.WZRYUIinfo;
+import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aezr
-  implements MainProcessInterface
 {
-  private IBinder a;
-  
-  public aezr(IBinder paramIBinder)
+  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, long paramLong, int paramInt1, int paramInt2, Intent paramIntent)
   {
-    this.a = paramIBinder;
-  }
-  
-  public Message a(Message paramMessage)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    for (;;)
+    awqx.b(paramQQAppInterface, "CliOper", "", "", "Verify_msg", "Verify_msg_prof", 0, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("SystemMessageHelper", 2, "openProfileCard | sourceId = " + paramInt2);
+    }
+    paramQQAppInterface = (ajjj)paramQQAppInterface.getManager(51);
+    if (paramQQAppInterface != null) {}
+    for (boolean bool = paramQQAppInterface.b(paramString);; bool = false)
     {
-      try
+      if (bool)
       {
-        localParcel1.writeInterfaceToken("com.tencent.mobileqq.nearby.ipc.MainProcessInterface");
-        if (paramMessage != null)
+        paramQQAppInterface = new ProfileActivity.AllInOne(paramString, 1);
+        paramQQAppInterface.h = 109;
+        ProfileActivity.b(paramContext, paramQQAppInterface);
+      }
+      for (;;)
+      {
+        return true;
+        Bundle localBundle = null;
+        paramQQAppInterface = localBundle;
+        if (paramIntent != null)
         {
-          localParcel1.writeInt(1);
-          paramMessage.writeToParcel(localParcel1, 0);
-          this.a.transact(2, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          if (localParcel2.readInt() != 0)
-          {
-            paramMessage = (Message)Message.CREATOR.createFromParcel(localParcel2);
-            return paramMessage;
+          paramQQAppInterface = localBundle;
+          if (paramIntent.hasExtra("param_wzry_data")) {
+            paramQQAppInterface = (KplRoleInfo.WZRYUIinfo)paramIntent.getSerializableExtra("param_wzry_data");
           }
         }
-        else
+        switch (paramInt1)
         {
-          localParcel1.writeInt(0);
-          continue;
-        }
-        paramMessage = null;
-      }
-      finally
-      {
-        localParcel2.recycle();
-        localParcel1.recycle();
-      }
-    }
-  }
-  
-  public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    for (;;)
-    {
-      try
-      {
-        localParcel1.writeInterfaceToken("com.tencent.mobileqq.nearby.ipc.MainProcessInterface");
-        if (paramBasicTypeDataParcel != null)
-        {
-          localParcel1.writeInt(1);
-          paramBasicTypeDataParcel.writeToParcel(localParcel1, 0);
-          this.a.transact(1, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          if (localParcel2.readInt() != 0)
-          {
-            paramBasicTypeDataParcel = (BasicTypeDataParcel)BasicTypeDataParcel.CREATOR.createFromParcel(localParcel2);
-            return paramBasicTypeDataParcel;
+        default: 
+          if ((paramInt2 != 3007) && (paramInt2 != 3019) && (paramInt2 != 2007) && (paramInt2 != 4007) && (paramInt2 != 2019)) {
+            break label758;
+          }
+          paramQQAppInterface = new ProfileActivity.AllInOne(paramString, 25);
+          paramQQAppInterface.h = 109;
+          if ((paramInt2 != 3007) && (paramInt2 != 2007) && (paramInt2 != 4007)) {
+            break;
           }
         }
-        else
-        {
-          localParcel1.writeInt(0);
-          continue;
+        for (paramQQAppInterface.h = 14;; paramQQAppInterface.h = 15) {
+          do
+          {
+            paramString = new Bundle();
+            paramString.putInt("param_mode", 3);
+            paramString.putParcelable("sysInfoExtres", paramIntent);
+            NearbyPeopleProfileActivity.a(paramContext, paramQQAppInterface, paramString);
+            break;
+            if ((paramInt2 == 3007) || (paramInt2 == 3019) || (paramInt2 == 2007) || (paramInt2 == 2019) || (paramInt2 == 4007))
+            {
+              paramQQAppInterface = new ProfileActivity.AllInOne(paramString, 28);
+              paramQQAppInterface.h = 109;
+              if ((paramInt2 == 3007) || (paramInt2 == 2007) || (paramInt2 == 4007)) {}
+              for (paramQQAppInterface.h = 14;; paramQQAppInterface.h = 15) {
+                do
+                {
+                  paramString = new Bundle();
+                  paramString.putInt("param_mode", 3);
+                  paramString.putParcelable("sysInfoExtres", paramIntent);
+                  NearbyPeopleProfileActivity.a(paramContext, paramQQAppInterface, paramString);
+                  break;
+                } while ((paramInt2 != 3019) && (paramInt2 != 2019));
+              }
+            }
+            paramString = new ProfileActivity.AllInOne(paramString, 28);
+            paramString.h = 109;
+            paramString.i = paramInt2;
+            paramString.jdField_d_of_type_JavaLangString = String.valueOf(paramLong);
+            localBundle = new Bundle();
+            localBundle.putParcelable("sysInfoExtres", paramIntent);
+            if (paramQQAppInterface != null) {
+              paramString.b.putSerializable("param_wzry_data", paramQQAppInterface);
+            }
+            ProfileActivity.a(paramContext, paramString, localBundle);
+            break;
+            if ((paramInt2 == 3007) || (paramInt2 == 3019) || (paramInt2 == 2007) || (paramInt2 == 4007) || (paramInt2 == 2019))
+            {
+              paramQQAppInterface = new ProfileActivity.AllInOne(paramString, 25);
+              paramQQAppInterface.h = 109;
+              if ((paramInt2 == 3007) || (paramInt2 == 2007) || (paramInt2 == 4007)) {}
+              for (paramQQAppInterface.h = 14;; paramQQAppInterface.h = 15) {
+                do
+                {
+                  paramString = new Bundle();
+                  paramString.putInt("param_mode", 3);
+                  paramString.putParcelable("sysInfoExtres", paramIntent);
+                  NearbyPeopleProfileActivity.a(paramContext, paramQQAppInterface, paramString);
+                  break;
+                } while ((paramInt2 != 3019) && (paramInt2 != 2019));
+              }
+            }
+            paramQQAppInterface = new ProfileActivity.AllInOne(paramString, 25);
+            paramQQAppInterface.h = 109;
+            paramQQAppInterface.i = paramInt2;
+            paramQQAppInterface.jdField_d_of_type_JavaLangString = String.valueOf(paramLong);
+            paramQQAppInterface.jdField_d_of_type_Int = 1;
+            paramString = new Bundle();
+            paramString.putParcelable("sysInfoExtres", paramIntent);
+            ProfileActivity.a(paramContext, paramQQAppInterface, paramString);
+            break;
+          } while ((paramInt2 != 3019) && (paramInt2 != 2019));
         }
-        paramBasicTypeDataParcel = null;
-      }
-      finally
-      {
-        localParcel2.recycle();
-        localParcel1.recycle();
+        label758:
+        paramString = new ProfileActivity.AllInOne(paramString, 25);
+        paramString.h = 109;
+        paramString.jdField_d_of_type_Int = 1;
+        if (paramInt1 == 6) {
+          paramString.jdField_d_of_type_Int = 0;
+        }
+        localBundle = new Bundle();
+        localBundle.putParcelable("sysInfoExtres", paramIntent);
+        if (paramQQAppInterface != null) {
+          paramString.b.putSerializable("param_wzry_data", paramQQAppInterface);
+        }
+        ProfileActivity.a(paramContext, paramString, localBundle);
       }
     }
-  }
-  
-  /* Error */
-  public void a(com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface paramNearbyProcessInterface)
-  {
-    // Byte code:
-    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   7: astore_3
-    //   8: aload_2
-    //   9: ldc 25
-    //   11: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   14: aload_1
-    //   15: ifnull +42 -> 57
-    //   18: aload_1
-    //   19: invokeinterface 77 1 0
-    //   24: astore_1
-    //   25: aload_2
-    //   26: aload_1
-    //   27: invokevirtual 80	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
-    //   30: aload_0
-    //   31: getfield 15	aezr:a	Landroid/os/IBinder;
-    //   34: iconst_3
-    //   35: aload_2
-    //   36: aload_3
-    //   37: iconst_0
-    //   38: invokeinterface 45 5 0
-    //   43: pop
-    //   44: aload_3
-    //   45: invokevirtual 48	android/os/Parcel:readException	()V
-    //   48: aload_3
-    //   49: invokevirtual 65	android/os/Parcel:recycle	()V
-    //   52: aload_2
-    //   53: invokevirtual 65	android/os/Parcel:recycle	()V
-    //   56: return
-    //   57: aconst_null
-    //   58: astore_1
-    //   59: goto -34 -> 25
-    //   62: astore_1
-    //   63: aload_3
-    //   64: invokevirtual 65	android/os/Parcel:recycle	()V
-    //   67: aload_2
-    //   68: invokevirtual 65	android/os/Parcel:recycle	()V
-    //   71: aload_1
-    //   72: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	73	0	this	aezr
-    //   0	73	1	paramNearbyProcessInterface	com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface
-    //   3	65	2	localParcel1	Parcel
-    //   7	57	3	localParcel2	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   8	14	62	finally
-    //   18	25	62	finally
-    //   25	48	62	finally
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aezr
  * JD-Core Version:    0.7.0.1
  */

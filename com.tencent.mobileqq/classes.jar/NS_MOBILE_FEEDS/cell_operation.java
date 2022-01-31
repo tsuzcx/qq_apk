@@ -10,29 +10,29 @@ import java.util.Map;
 public final class cell_operation
   extends JceStruct
 {
-  static Map cache_busi_param = new HashMap();
-  static Map cache_bypass_param;
-  static Map cache_click_stream_report;
-  static ArrayList cache_custom_btn;
-  static Map cache_droplist_cookie;
-  static Map cache_feed_report_cookie;
-  static Map cache_rank_param;
-  static Map cache_recomm_cookie;
+  static Map<Integer, String> cache_busi_param = new HashMap();
+  static Map<String, String> cache_bypass_param;
+  static Map<Integer, Map<String, String>> cache_click_stream_report;
+  static ArrayList<s_op_btn> cache_custom_btn;
+  static Map<Integer, String> cache_droplist_cookie;
+  static Map<Integer, String> cache_feed_report_cookie;
+  static Map<Integer, String> cache_rank_param;
+  static Map<Integer, String> cache_recomm_cookie;
   static s_schema cache_schema_info;
   static s_outshare cache_share_info;
-  public Map busi_param;
+  public Map<Integer, String> busi_param;
   public String button_gif_url = "";
-  public Map bypass_param;
-  public Map click_stream_report;
-  public ArrayList custom_btn;
-  public Map droplist_cookie;
-  public Map feed_report_cookie;
+  public Map<String, String> bypass_param;
+  public Map<Integer, Map<String, String>> click_stream_report;
+  public ArrayList<s_op_btn> custom_btn;
+  public Map<Integer, String> droplist_cookie;
+  public Map<Integer, String> feed_report_cookie;
   public String generic_url = "";
   public long offline_resource_bid;
   public String qboss_trace = "";
   public String qq_url = "";
-  public Map rank_param;
-  public Map recomm_cookie;
+  public Map<Integer, String> rank_param;
+  public Map<Integer, String> recomm_cookie;
   public s_schema schema_info;
   public s_outshare share_info;
   public String weixin_url = "";
@@ -63,7 +63,7 @@ public final class cell_operation
   
   public cell_operation() {}
   
-  public cell_operation(Map paramMap1, String paramString1, String paramString2, s_outshare params_outshare, s_schema params_schema, Map paramMap2, Map paramMap3, String paramString3, ArrayList paramArrayList, Map paramMap4, String paramString4, Map paramMap5, Map paramMap6, Map paramMap7, String paramString5, long paramLong)
+  public cell_operation(Map<Integer, String> paramMap1, String paramString1, String paramString2, s_outshare params_outshare, s_schema params_schema, Map<Integer, String> paramMap2, Map<Integer, Map<String, String>> paramMap, String paramString3, ArrayList<s_op_btn> paramArrayList, Map<Integer, String> paramMap3, String paramString4, Map<String, String> paramMap4, Map<Integer, String> paramMap5, Map<Integer, String> paramMap6, String paramString5, long paramLong)
   {
     this.busi_param = paramMap1;
     this.weixin_url = paramString1;
@@ -71,14 +71,14 @@ public final class cell_operation
     this.share_info = params_outshare;
     this.schema_info = params_schema;
     this.recomm_cookie = paramMap2;
-    this.click_stream_report = paramMap3;
+    this.click_stream_report = paramMap;
     this.qboss_trace = paramString3;
     this.custom_btn = paramArrayList;
-    this.feed_report_cookie = paramMap4;
+    this.feed_report_cookie = paramMap3;
     this.generic_url = paramString4;
-    this.bypass_param = paramMap5;
-    this.droplist_cookie = paramMap6;
-    this.rank_param = paramMap7;
+    this.bypass_param = paramMap4;
+    this.droplist_cookie = paramMap5;
+    this.rank_param = paramMap6;
     this.button_gif_url = paramString5;
     this.offline_resource_bid = paramLong;
   }
@@ -155,7 +155,7 @@ public final class cell_operation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_operation
  * JD-Core Version:    0.7.0.1
  */

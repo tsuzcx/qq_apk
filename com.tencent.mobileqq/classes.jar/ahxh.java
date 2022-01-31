@@ -1,21 +1,31 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.mutualmark.view.MutualMarkIconsView;
+import com.tencent.mobileqq.onlinestatus.OnlineStatusView;
 
-class ahxh
-  implements View.OnClickListener
+public class ahxh
 {
-  ahxh(ahxf paramahxf) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.a.b(this.a.a.b);
-    this.a.a.f.setVisibility(8);
-  }
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public Friends a;
+  public MutualMarkIconsView a;
+  public OnlineStatusView a;
+  public String a;
+  public ImageView b;
+  public TextView b;
+  public ImageView c;
+  public TextView c;
+  public ImageView d;
+  public ImageView e;
+  public ImageView f;
+  public ImageView g;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahxh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,42 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class acij
-  extends DataSetObserver
+public class acij
 {
-  acij(acii paramacii, DragSortListView paramDragSortListView) {}
-  
-  public void onChanged()
+  public static BaseChatPie a()
   {
-    this.jdField_a_of_type_Acii.notifyDataSetChanged();
+    Object localObject = BaseActivity.sTopActivity;
+    if ((localObject instanceof FragmentActivity))
+    {
+      localObject = ((FragmentActivity)localObject).getChatFragment();
+      if (localObject != null) {
+        return ((ChatFragment)localObject).a();
+      }
+    }
+    return null;
   }
   
-  public void onInvalidated()
+  public static boolean a()
   {
-    this.jdField_a_of_type_Acii.notifyDataSetInvalidated();
+    boolean bool = false;
+    BaseChatPie localBaseChatPie = a();
+    if (localBaseChatPie != null) {
+      bool = ((AIOLongShotHelper)localBaseChatPie.a(15)).a();
+    }
+    return bool;
+  }
+  
+  public static boolean b()
+  {
+    return a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acij
  * JD-Core Version:    0.7.0.1
  */

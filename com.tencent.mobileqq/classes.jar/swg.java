@@ -1,74 +1,81 @@
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.drawer.FriendProfileBubble;
-import com.tencent.mobileqq.apollo.script.SpriteUtil;
-import com.tencent.mobileqq.apollo.script.callback.ISpriteDrawerInfoCallback;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import mqq.os.MqqHandler;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.qphone.base.util.QLog;
 
 public class swg
-  implements View.OnClickListener, ISpriteDrawerInfoCallback
+  extends swc
 {
-  private swg(FriendProfileCardActivity paramFriendProfileCardActivity) {}
-  
-  public void a()
+  public swg(ViewGroup paramViewGroup, int paramInt)
   {
-    if (this.a.app == null) {
+    super(paramViewGroup, paramInt);
+  }
+  
+  protected void a(ShareGroupItem paramShareGroupItem)
+  {
+    String str;
+    Object localObject;
+    int i;
+    RelativeLayout.LayoutParams localLayoutParams;
+    if ((paramShareGroupItem == null) || (TextUtils.isEmpty(paramShareGroupItem.getName())))
+    {
+      str = ajjy.a(2131648142);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+      localObject = (txz)sqg.a(24);
+      i = this.jdField_a_of_type_AndroidWidgetImageView.getContext().getResources().getDimensionPixelSize(2131167234);
+      localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+      if (localLayoutParams != null) {
+        break label116;
+      }
+      localLayoutParams = new RelativeLayout.LayoutParams(i, i);
+      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+      label91:
+      if (paramShareGroupItem != null) {
+        break label131;
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(((txz)localObject).a());
+    }
+    label116:
+    do
+    {
       return;
-    }
-    ApolloActionData localApolloActionData = null;
-    Object localObject = localApolloActionData;
-    if (this.a.a != null)
-    {
-      localObject = localApolloActionData;
-      if (this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne != null) {
-        localObject = this.a.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a;
-      }
-    }
-    if ((TextUtils.isEmpty((CharSequence)localObject)) && (this.a.a != null) && (this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard != null)) {
-      localObject = this.a.a.jdField_a_of_type_ComTencentMobileqqDataCard.uin;
-    }
-    for (;;)
-    {
-      localApolloActionData = ((ApolloManager)this.a.app.getManager(152)).a(this.a.app, (String)localObject, new int[] { 4 });
-      int i = 5;
-      if (localApolloActionData == null)
-      {
-        localApolloActionData = new ApolloActionData();
-        localApolloActionData.actionId = -1;
-        localApolloActionData.actionType = 0;
-      }
-      for (;;)
-      {
-        SpriteUtil.a(FriendProfileCardActivity.a(this.a), i, localApolloActionData);
-        new FriendProfileBubble((String)localObject).a(FriendProfileCardActivity.a(this.a), this.a, this.a.app, "这是我的厘米秀，你也来领一个吧");
-        return;
-        i = 12;
-      }
-    }
+      str = paramShareGroupItem.getName();
+      break;
+      localLayoutParams.width = i;
+      localLayoutParams.height = i;
+      break label91;
+      localObject = ((txz)localObject).a(paramShareGroupItem.headerUnionIdList, str);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+    } while (!QLog.isColorLevel());
+    label131:
+    paramShareGroupItem = new StringBuilder("nickname = ").append(str).append(", headerUnionIdList = ").append(paramShareGroupItem.headerUnionIdList);
+    QLog.e("zivonxxx", 2, "ShareGroupViewHolder: " + paramShareGroupItem.toString());
   }
   
-  public void a(int paramInt1, int paramInt2, String paramString)
+  public void a(ssm paramssm)
   {
-    ThreadManager.getUIHandler().post(new swh(this, paramInt1, paramInt2, paramString));
-  }
-  
-  public void onClick(View paramView)
-  {
-    this.a.a(1, 0, null);
+    super.a(paramssm);
+    this.itemView.setTag(paramssm.a);
+    ShareGroupItem localShareGroupItem = ((uac)sqg.a(7)).a(paramssm.a);
+    a(localShareGroupItem);
+    if (localShareGroupItem == null) {
+      new sxa(paramssm.a, String.valueOf(System.currentTimeMillis())).a();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("zivonchen", 2, "ShareGroupViewHolder groupItem = " + localShareGroupItem + ", unionId = " + paramssm.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     swg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,29 @@
 package com.tencent.mobileqq.troop.activity;
 
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import android.graphics.BitmapFactory;
+import android.graphics.BitmapFactory.Options;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
 import android.text.TextUtils;
+import atra;
+import azho;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.jsp.MediaApiPlugin;
-import com.tencent.mobileqq.troop.utils.TroopBarUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.Map;
 import mqq.manager.TicketManager;
 import mqq.util.WeakReference;
 import org.json.JSONObject;
+import vlc;
 
 public class TroopBarPublishUtils$PicUploadThread
   implements Runnable
@@ -23,27 +31,18 @@ public class TroopBarPublishUtils$PicUploadThread
   private long a;
   protected Handler a;
   protected String a;
-  protected final ArrayList a;
-  protected WeakReference a;
+  protected final ArrayList<String> a;
+  protected WeakReference<BaseActivity> a;
   protected boolean a;
   protected String b;
   
-  public TroopBarPublishUtils$PicUploadThread(BaseActivity paramBaseActivity, Handler paramHandler, ArrayList paramArrayList, String paramString)
+  public TroopBarPublishUtils$PicUploadThread(BaseActivity paramBaseActivity, Handler paramHandler, ArrayList<String> paramArrayList, String paramString)
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramArrayList);
     this.jdField_a_of_type_AndroidOsHandler = paramHandler;
     this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramBaseActivity);
     this.jdField_a_of_type_JavaLangString = paramString;
     this.b = "2";
-  }
-  
-  public TroopBarPublishUtils$PicUploadThread(BaseActivity paramBaseActivity, Handler paramHandler, ArrayList paramArrayList, String paramString1, String paramString2)
-  {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramArrayList);
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-    this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramBaseActivity);
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
   }
   
   private void a(int paramInt1, Object paramObject, int paramInt2, int paramInt3)
@@ -88,18 +87,35 @@ public class TroopBarPublishUtils$PicUploadThread
       return;
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    String str3;
+    int i;
+    Object localObject1;
+    label291:
+    Object localObject2;
+    for (;;)
     {
-      String str3 = (String)localIterator.next();
-      if ((TroopBarPublishActivity.Pic_list)TroopBarUtils.a.get(str3) == null)
+      if (localIterator.hasNext())
       {
-        if ((localBaseActivity.isFinishing()) || (this.jdField_a_of_type_Boolean))
+        str3 = (String)localIterator.next();
+        if ((!atra.a(str3)) && (TroopBarPublishUtils.a()) && (TroopBarPublishUtils.jdField_a_of_type_Boolean)) {}
+        for (i = 1;; i = 0)
         {
+          localObject1 = (TroopBarPublishActivity.Pic_list)azho.a.get(str3);
+          if (localObject1 != null)
+          {
+            if (((TroopBarPublishActivity.Pic_list)localObject1).canReuse) {
+              break;
+            }
+            azho.a.remove(str3);
+          }
+          if ((!localBaseActivity.isFinishing()) && (!this.jdField_a_of_type_Boolean)) {
+            break label291;
+          }
           a(1001, str3, 1003, 0);
           return;
         }
-        Object localObject = MediaApiPlugin.a(str3, 0);
-        if (TextUtils.isEmpty((CharSequence)localObject))
+        localObject1 = MediaApiPlugin.a(str3, 0);
+        if (TextUtils.isEmpty((CharSequence)localObject1))
         {
           a(1001, str3, 1001, 0);
           if (QLog.isColorLevel()) {
@@ -108,30 +124,60 @@ public class TroopBarPublishUtils$PicUploadThread
         }
         else
         {
-          HashMap localHashMap = new HashMap();
-          localHashMap.put("type", this.b);
-          localObject = TroopBarUtils.a(this.jdField_a_of_type_JavaLangString, localBaseActivity, (String)localObject, str1, str2, localHashMap);
-          if (localObject != null)
-          {
-            localObject = new TroopBarPublishActivity.Pic_list((JSONObject)localObject);
-            TroopBarUtils.a.put(str3, localObject);
+          if (i == 0) {
+            break label670;
           }
-          else
+          localObject2 = new BitmapFactory.Options();
+          ((BitmapFactory.Options)localObject2).inScaled = false;
+          localObject2 = TroopBarPublishUtils.a(localBaseActivity, BitmapFactory.decodeFile((String)localObject1, (BitmapFactory.Options)localObject2));
+          if (localObject2 != null)
           {
-            a(1001, str3, 1002, 0);
-            if (QLog.isColorLevel()) {
-              QLog.d("TroopBarPublishUtils", 2, "singleUploadImage failed: path = " + str3);
-            }
+            localObject1 = ((String)localObject1).substring(0, ((String)localObject1).lastIndexOf(".")) + "_tribe_water_" + ((String)localObject1).substring(((String)localObject1).lastIndexOf("."));
+            vlc.a((Bitmap)localObject2, Bitmap.CompressFormat.PNG, 100, (String)localObject1);
           }
         }
       }
     }
-    a(1003, this.jdField_a_of_type_JavaUtilArrayList.get(0), 0, (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long));
+    label670:
+    for (;;)
+    {
+      label445:
+      localObject2 = new HashMap();
+      ((HashMap)localObject2).put("type", this.b);
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopBarPublishUtils", 2, "PicUploadThread type: " + this.b + " ,mUrl: " + this.jdField_a_of_type_JavaLangString);
+      }
+      localObject2 = azho.a(this.jdField_a_of_type_JavaLangString, localBaseActivity, (String)localObject1, str1, str2, (Map)localObject2);
+      if (i != 0) {
+        new File((String)localObject1).delete();
+      }
+      if (localObject2 != null)
+      {
+        localObject1 = new TroopBarPublishActivity.Pic_list((JSONObject)localObject2);
+        if (i == 0) {}
+        for (boolean bool = true;; bool = false)
+        {
+          ((TroopBarPublishActivity.Pic_list)localObject1).canReuse = bool;
+          azho.a.put(str3, localObject1);
+          break;
+          i = 0;
+          break label445;
+        }
+      }
+      a(1001, str3, 1002, 0);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("TroopBarPublishUtils", 2, "singleUploadImage failed: path = " + str3);
+      break;
+      a(1003, this.jdField_a_of_type_JavaUtilArrayList.get(0), 0, (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long));
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopBarPublishUtils.PicUploadThread
  * JD-Core Version:    0.7.0.1
  */

@@ -32,37 +32,37 @@ public class LowLightTools
   public static Bitmap getLowLightImage(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, boolean paramBoolean)
   {
     int i;
-    int j;
+    int k;
     for (;;)
     {
       try
       {
         localBitmap = Bitmap.createBitmap(256, 256, Bitmap.Config.ARGB_8888);
         arrayOfByte = new byte[262144];
-        k = 0;
+        j = 0;
         i = 0;
       }
       catch (Throwable localThrowable)
       {
         Bitmap localBitmap;
         byte[] arrayOfByte;
-        int k;
+        int j;
         float f;
         int m;
         Log.d("LowLightTools", "getLowLightImage:" + localThrowable);
         return null;
       }
-      if (j >= 256) {
+      if (k >= 256) {
         break label220;
       }
-      f = (float)Math.pow(1.0F - (255.0F - j) * paramFloat2 / (255.0F - paramFloat1), paramFloat3);
+      f = (float)Math.pow(1.0F - (255.0F - k) * paramFloat2 / (255.0F - paramFloat1), paramFloat3);
       m = (byte)(int)clipping(Double.valueOf(Math.pow((int)clipping(Integer.valueOf((int)((i - paramFloat1) / f + paramFloat1))) / 255.0F, paramFloat4) * 255.0D));
-      arrayOfByte[k] = ((byte)m);
-      arrayOfByte[(k + 1)] = ((byte)m);
-      arrayOfByte[(k + 2)] = ((byte)m);
-      arrayOfByte[(k + 3)] = -1;
-      k += 4;
-      j += 1;
+      arrayOfByte[j] = ((byte)m);
+      arrayOfByte[(j + 1)] = ((byte)m);
+      arrayOfByte[(j + 2)] = ((byte)m);
+      arrayOfByte[(j + 3)] = -1;
+      j += 4;
+      k += 1;
     }
     label220:
     label227:
@@ -78,7 +78,7 @@ public class LowLightTools
         if (i >= 256) {
           break label227;
         }
-        j = 0;
+        k = 0;
         break;
         i += 1;
       }
@@ -121,7 +121,7 @@ public class LowLightTools
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.video.effect.lowlight.LowLightTools
  * JD-Core Version:    0.7.0.1
  */

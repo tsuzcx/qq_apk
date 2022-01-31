@@ -22,7 +22,7 @@ public class af
   protected HttpURLConnection a = null;
   protected boolean b = false;
   int c = -1;
-  private a d = a.d;
+  private af.a d = af.a.d;
   
   public af(Context paramContext)
   {
@@ -31,13 +31,13 @@ public class af
   
   private int a(Context paramContext, String paramString)
   {
-    if (this.d == a.d) {
+    if (this.d == af.a.d) {
       return -1052;
     }
     try
     {
       paramString = new URL(paramString);
-      if (this.d == a.b) {}
+      if (this.d == af.a.b) {}
       for (this.a = ((HttpURLConnection)paramString.openConnection(new java.net.Proxy(Proxy.Type.HTTP, InetSocketAddress.createUnresolved(a(paramContext), b(paramContext)))));; this.a = ((HttpURLConnection)paramString.openConnection()))
       {
         this.a.setReadTimeout(15000);
@@ -93,7 +93,6 @@ public class af
   }
   
   private static byte[] a(InputStream paramInputStream)
-    throws IOException
   {
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
     for (;;)
@@ -117,23 +116,23 @@ public class af
     return i;
   }
   
-  public static a c(Context paramContext)
+  public static af.a c(Context paramContext)
   {
     NetworkInfo localNetworkInfo = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
     if ((localNetworkInfo == null) || ((localNetworkInfo.getState() != NetworkInfo.State.CONNECTING) && (localNetworkInfo.getState() != NetworkInfo.State.CONNECTED))) {
-      return a.d;
+      return af.a.d;
     }
     if (localNetworkInfo.getType() == 1) {
-      return a.a;
+      return af.a.a;
     }
     if (localNetworkInfo.getType() == 0)
     {
       if ((android.net.Proxy.getDefaultHost() != null) || (android.net.Proxy.getHost(paramContext) != null)) {
-        return a.b;
+        return af.a.b;
       }
-      return a.c;
+      return af.a.c;
     }
-    return a.d;
+    return af.a.d;
   }
   
   public int a(Context paramContext, String paramString, byte[] paramArrayOfByte)
@@ -238,11 +237,6 @@ public class af
       return i;
       localObject1 = this.a.getInputStream();
     }
-  }
-  
-  public static enum a
-  {
-    private a() {}
   }
 }
 

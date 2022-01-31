@@ -1,82 +1,74 @@
 package com.tencent.component.network.utils;
 
 import java.io.UnsupportedEncodingException;
-import ppn;
-import ppo;
 
 public class Base64
 {
+  public static final int CRLF = 4;
+  public static final int DEFAULT = 0;
+  public static final int NO_CLOSE = 16;
+  public static final int NO_PADDING = 1;
+  public static final int NO_WRAP = 2;
+  public static final int URL_SAFE = 8;
+  
   static
   {
     if (!Base64.class.desiredAssertionStatus()) {}
     for (boolean bool = true;; bool = false)
     {
-      jdField_a_of_type_Boolean = bool;
+      $assertionsDisabled = bool;
       return;
     }
   }
   
-  public static String a(byte[] paramArrayOfByte, int paramInt)
+  public static byte[] decode(String paramString, int paramInt)
   {
-    try
-    {
-      paramArrayOfByte = new String(b(paramArrayOfByte, paramInt), "US-ASCII");
-      return paramArrayOfByte;
-    }
-    catch (UnsupportedEncodingException paramArrayOfByte)
-    {
-      throw new AssertionError(paramArrayOfByte);
-    }
+    return decode(paramString.getBytes(), paramInt);
   }
   
-  public static byte[] a(String paramString, int paramInt)
+  public static byte[] decode(byte[] paramArrayOfByte, int paramInt)
   {
-    return a(paramString.getBytes(), paramInt);
+    return decode(paramArrayOfByte, 0, paramArrayOfByte.length, paramInt);
   }
   
-  public static byte[] a(byte[] paramArrayOfByte, int paramInt)
+  public static byte[] decode(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    return a(paramArrayOfByte, 0, paramArrayOfByte.length, paramInt);
-  }
-  
-  public static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
-  {
-    ppn localppn = new ppn(paramInt3, new byte[paramInt2 * 3 / 4]);
-    if (!localppn.a(paramArrayOfByte, paramInt1, paramInt2, true)) {
+    Base64.Decoder localDecoder = new Base64.Decoder(paramInt3, new byte[paramInt2 * 3 / 4]);
+    if (!localDecoder.process(paramArrayOfByte, paramInt1, paramInt2, true)) {
       throw new IllegalArgumentException("bad base-64");
     }
-    if (localppn.jdField_a_of_type_Int == localppn.jdField_a_of_type_ArrayOfByte.length) {
-      return localppn.jdField_a_of_type_ArrayOfByte;
+    if (localDecoder.op == localDecoder.output.length) {
+      return localDecoder.output;
     }
-    paramArrayOfByte = new byte[localppn.jdField_a_of_type_Int];
-    System.arraycopy(localppn.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte, 0, localppn.jdField_a_of_type_Int);
+    paramArrayOfByte = new byte[localDecoder.op];
+    System.arraycopy(localDecoder.output, 0, paramArrayOfByte, 0, localDecoder.op);
     return paramArrayOfByte;
   }
   
-  public static byte[] b(byte[] paramArrayOfByte, int paramInt)
+  public static byte[] encode(byte[] paramArrayOfByte, int paramInt)
   {
-    return b(paramArrayOfByte, 0, paramArrayOfByte.length, paramInt);
+    return encode(paramArrayOfByte, 0, paramArrayOfByte.length, paramInt);
   }
   
-  public static byte[] b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  public static byte[] encode(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    ppo localppo = new ppo(paramInt3, null);
+    Base64.Encoder localEncoder = new Base64.Encoder(paramInt3, null);
     int i = paramInt2 / 3 * 4;
     int j;
-    if (localppo.jdField_a_of_type_Boolean)
+    if (localEncoder.do_padding)
     {
       paramInt3 = i;
       if (paramInt2 % 3 > 0) {
         paramInt3 = i + 4;
       }
       i = paramInt3;
-      if (localppo.b)
+      if (localEncoder.do_newline)
       {
         i = paramInt3;
         if (paramInt2 > 0)
         {
           j = (paramInt2 - 1) / 57;
-          if (!localppo.c) {
+          if (!localEncoder.do_cr) {
             break label186;
           }
         }
@@ -86,9 +78,9 @@ public class Base64
     for (i = 2;; i = 1)
     {
       i = paramInt3 + i * (j + 1);
-      localppo.jdField_a_of_type_ArrayOfByte = new byte[i];
-      localppo.a(paramArrayOfByte, paramInt1, paramInt2, true);
-      if ((jdField_a_of_type_Boolean) || (localppo.jdField_a_of_type_Int == i)) {
+      localEncoder.output = new byte[i];
+      localEncoder.process(paramArrayOfByte, paramInt1, paramInt2, true);
+      if (($assertionsDisabled) || (localEncoder.op == i)) {
         break label192;
       }
       throw new AssertionError();
@@ -108,7 +100,33 @@ public class Base64
       }
     }
     label192:
-    return localppo.jdField_a_of_type_ArrayOfByte;
+    return localEncoder.output;
+  }
+  
+  public static String encodeToString(byte[] paramArrayOfByte, int paramInt)
+  {
+    try
+    {
+      paramArrayOfByte = new String(encode(paramArrayOfByte, paramInt), "US-ASCII");
+      return paramArrayOfByte;
+    }
+    catch (UnsupportedEncodingException paramArrayOfByte)
+    {
+      throw new AssertionError(paramArrayOfByte);
+    }
+  }
+  
+  public static String encodeToString(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
+  {
+    try
+    {
+      paramArrayOfByte = new String(encode(paramArrayOfByte, paramInt1, paramInt2, paramInt3), "US-ASCII");
+      return paramArrayOfByte;
+    }
+    catch (UnsupportedEncodingException paramArrayOfByte)
+    {
+      throw new AssertionError(paramArrayOfByte);
+    }
   }
 }
 

@@ -10,11 +10,11 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class OfflinePkg$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field int32_network = PBField.initInt32(0);
-  public final PBRepeatMessageField st_bid_pkg = PBField.initRepeatMessage(OfflinePkg.BidPkg.class);
+  public final PBRepeatMessageField<OfflinePkg.BidPkg> st_bid_pkg = PBField.initRepeatMessage(OfflinePkg.BidPkg.class);
   public final PBBytesField str_from = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField str_osbrand = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField str_osmodel = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -37,7 +37,7 @@ public final class OfflinePkg$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.sso.offlinpkg.OfflinePkg.ReqBody
  * JD-Core Version:    0.7.0.1
  */

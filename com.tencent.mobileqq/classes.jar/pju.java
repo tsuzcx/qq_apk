@@ -1,45 +1,57 @@
-import com.tencent.common.galleryactivity.AbstractImageListScene;
-import com.tencent.common.galleryactivity.AnimationLister;
-import com.tencent.common.galleryactivity.GalleryManager;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
-public class pju
-  implements AnimationLister
+public final class pju
 {
-  public pju(AbstractImageListScene paramAbstractImageListScene) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString = "";
+  private List<URL> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private String jdField_b_of_type_JavaLangString = "";
+  private List<qvs> jdField_b_of_type_JavaUtilList = new ArrayList();
   
-  public void b()
+  public pjt a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GalleryComponent", 2, "image list onEnterAnimationEnd");
-    }
-    if (this.a.a.a() != this.a) {
-      this.a.l();
-    }
-    this.a.b();
+    return new pjt(this, null);
   }
   
-  public void c()
+  public pju a(int paramInt)
   {
-    this.a.c();
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
   }
   
-  public void d()
+  public pju a(@NonNull String paramString)
   {
-    this.a.d();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
   }
   
-  public void e()
+  public pju a(@NonNull List<qvs> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GalleryComponent", 2, "image list onExitAnimationEnd");
+    if ((this.jdField_b_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList.size() == 1)) {
+      ((qvs)this.jdField_b_of_type_JavaUtilList.get(0)).a(true);
     }
-    this.a.e();
+    this.jdField_b_of_type_JavaUtilList = paramList;
+    return this;
+  }
+  
+  public pju b(@NonNull String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public pju b(@NonNull List<URL> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pju
  * JD-Core Version:    0.7.0.1
  */

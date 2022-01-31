@@ -1,29 +1,34 @@
-import com.tencent.mobileqq.armap.ARGLSurfaceView;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.ARMapTracer;
-import com.tencent.mobileqq.armap.ArMapInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
 
 public class abii
-  implements Runnable
+  implements atxd
 {
-  public abii(ARMapActivity paramARMapActivity) {}
+  public abii(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void run()
+  public void a(int paramInt, String paramString)
   {
-    if ((this.a.app == null) || (this.a.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView == null)) {
-      return;
+    if (paramInt == 0) {
+      if (ProfileActivity.AllInOne.b(this.a.a))
+      {
+        paramInt = 1;
+        awqx.b(this.a.app, "CliOper", "", "", "0X80050E7", "0X80050E7", paramInt, 0, "", "", "", "");
+        awqx.b(null, "dc00898", "", "", "0X800A4FD", "0X800A4FD", 0, 0, "", "0", "0", "");
+      }
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("ARMapActivity", 4, "init ARMapTracer");
+    while (paramInt != 2) {
+      for (;;)
+      {
+        return;
+        paramInt = 2;
+      }
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqArmapARMapTracer = new ARMapTracer(true, this.a.app.getAccount(), 10, new abij(this));
-    this.a.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.setTraceCallback(this.a.jdField_a_of_type_ComTencentMobileqqArmapARMapTracer);
+    awqx.b(null, "dc00898", "", "", "0X800A4FE", "0X800A4FE", 0, 0, "", "0", "0", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abii
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,11 @@
 package cooperation.qzone.webviewwrapper;
 
 import android.os.Bundle;
+import atmq;
+import bglk;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.BaseApplication;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
@@ -13,7 +14,7 @@ import mqq.manager.Manager;
 public class QzoneWebViewRuntime
   extends AppInterface
 {
-  private EntityManagerFactory a;
+  private atmq a;
   
   public QzoneWebViewRuntime(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
@@ -49,7 +50,7 @@ public class QzoneWebViewRuntime
     return null;
   }
   
-  public EntityManagerFactory getEntityManagerFactory(String paramString)
+  public atmq getEntityManagerFactory(String paramString)
   {
     paramString = getAccount();
     if (paramString == null) {
@@ -89,7 +90,7 @@ public class QzoneWebViewRuntime
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    QzoneWebViewPluginManager.a().a(this);
+    bglk.a().a(this);
   }
 }
 

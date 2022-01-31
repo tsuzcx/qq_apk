@@ -1,29 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.ReportR5Builder;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnLastReadRefreshListener;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
 
 public class lvn
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public lvn(ReadInJoyFooterPresenter paramReadInJoyFooterPresenter) {}
+  public lvn(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramView = new ReadInJoyUtils.ReportR5Builder().g().a().d().a(ReadInJoyFooterPresenter.a(this.a).e()).e().f().c().a();
-    PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80066FD", "0X80066FD", 0, 0, ReadInJoyHelper.a(), "", "", paramView, false);
-    if (ReadInJoyFooterPresenter.a(this.a) != null) {
-      ReadInJoyFooterPresenter.a(this.a).a();
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lvn
  * JD-Core Version:    0.7.0.1
  */

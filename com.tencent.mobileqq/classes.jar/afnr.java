@@ -1,39 +1,47 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.widget.ActionSheet;
-import java.util.ArrayList;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.21;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x74f.oidb_cmd0x74f.RspBody;
 
 public class afnr
-  implements View.OnClickListener
+  extends mmn
 {
-  public afnr(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel, int paramInt) {}
+  public afnr(ChatHistoryTroopMemberFragment.21 param21) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    PicInfo localPicInfo = (PicInfo)paramView.getTag();
-    if (localPicInfo == null) {
-      return;
-    }
-    ActionSheet localActionSheet = ActionSheet.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
-    if (this.jdField_a_of_type_Int != 0) {
-      localActionSheet.c(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources().getString(2131437437));
-    }
-    localActionSheet.c("查看大图");
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.jdField_a_of_type_JavaUtilArrayList.size() > 1) {
-      localActionSheet.a("删除照片", 3);
-    }
-    localActionSheet.c(2131433029);
-    localActionSheet.a(new afns(this, paramView, localPicInfo, localActionSheet));
-    localActionSheet.show();
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
+    do
+    {
+      for (;;)
+      {
+        return;
+        try
+        {
+          paramBundle = new oidb_cmd0x74f.RspBody();
+          paramBundle.mergeFrom(paramArrayOfByte);
+          if ((paramBundle.uint32_ret_code.get() == 0) && (paramBundle.bool_display_entrance.get()))
+          {
+            ChatHistoryTroopMemberFragment.a(this.a.this$0, paramBundle.range.get());
+            ChatHistoryTroopMemberFragment.c(this.a.this$0);
+            ChatHistoryTroopMemberFragment.a(this.a.this$0, paramBundle.uint64_next_pull_time.get());
+            return;
+          }
+        }
+        catch (Exception paramArrayOfByte) {}
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.history.BaseFragment", 2, "initListView, get0x74f：failed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afnr
  * JD-Core Version:    0.7.0.1
  */

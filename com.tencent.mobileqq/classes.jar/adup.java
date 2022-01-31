@@ -1,47 +1,53 @@
-import android.app.Activity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.forward.ForwardShareCardOption;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qidian.controller.QidianBusinessObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class adup
-  extends QidianBusinessObserver
+public abstract class adup
 {
-  public adup(ForwardShareCardOption paramForwardShareCardOption) {}
+  public int a;
+  public Context a;
+  protected BaseChatPie a;
+  protected SessionInfo a;
+  public QQAppInterface a;
+  public int b;
   
-  protected void a(boolean paramBoolean, HashMap paramHashMap)
+  public adup(BaseChatPie paramBaseChatPie, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, int paramInt1, int paramInt2)
   {
-    this.a.t();
-    if (ForwardShareCardOption.a(this.a) != -1)
-    {
-      if ((!paramBoolean) || (paramHashMap == null)) {
-        break label151;
-      }
-      String str = (String)paramHashMap.get("uin");
-      paramHashMap = (String)paramHashMap.get("url");
-      ForwardShareCardOption.a(this.a, paramHashMap);
-      ForwardShareCardOption.b(this.a, paramHashMap);
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardOption.ForwardShareCardOption", 2, "mTroopVerifyLink=" + ForwardShareCardOption.a(this.a) + " mTroopNotNeedVefifyLink=" + ForwardShareCardOption.b(this.a));
-      }
-      if ((str != null) && (str.equals(ForwardShareCardOption.c(this.a)))) {
-        ForwardShareCardOption.a(this.a);
-      }
-    }
-    for (;;)
-    {
-      ForwardShareCardOption.a(this.a, -1);
-      return;
-      label151:
-      QQToast.a(this.a.a, 1, this.a.a.getString(2131435343), 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public long a()
+  {
+    return 0L;
+  }
+  
+  public abstract View a();
+  
+  public abstract void a();
+  
+  public abstract boolean a();
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public String toString()
+  {
+    return "NavigateBar{id=" + this.jdField_a_of_type_Int + ", priority=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adup
  * JD-Core Version:    0.7.0.1
  */

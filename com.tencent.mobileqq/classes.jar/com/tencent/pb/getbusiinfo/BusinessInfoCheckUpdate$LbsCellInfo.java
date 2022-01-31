@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class BusinessInfoCheckUpdate$LbsCellInfo
-  extends MessageMicro
+  extends MessageMicro<LbsCellInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56 }, new String[] { "mcc", "mnc", "lac", "cellid", "rssi", "stationLat", "stationLng" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, LbsCellInfo.class);
   public final PBInt32Field cellid = PBField.initInt32(0);
@@ -19,7 +19,7 @@ public final class BusinessInfoCheckUpdate$LbsCellInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.LbsCellInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,33 @@
-import android.os.Handler;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.mobileqq.hotpic.HotPicMainPanel;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
 
-public class adya
-  implements URLDrawable.DownloadListener
+public final class adya
+  implements Parcelable.Creator<AIORichMediaData>
 {
-  public adya(HotPicMainPanel paramHotPicMainPanel, ImageView paramImageView) {}
-  
-  public void onFileDownloadFailed(int paramInt) {}
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong)
+  public AIORichMediaData a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel.a.post(new adyb(this));
+    Object localObject = paramParcel.readString();
+    try
+    {
+      localObject = AIORichMediaData.a((String)localObject);
+      ((AIORichMediaData)localObject).a(paramParcel);
+      return localObject;
+    }
+    catch (ClassNotFoundException paramParcel)
+    {
+      throw new RuntimeException(paramParcel);
+    }
+  }
+  
+  public AIORichMediaData[] a(int paramInt)
+  {
+    return new AIORichMediaData[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adya
  * JD-Core Version:    0.7.0.1
  */

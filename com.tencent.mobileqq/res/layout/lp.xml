@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="#80000000" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:background="@drawable/b6n" android:paddingTop="26.0dip" android:focusable="true" android:clickable="true" android:layout_width="@dimen/md" android:layout_height="wrap_content">
+        <TextView android:textSize="17.0sp" android:textColor="@color/fl" android:ellipsize="end" android:id="@id/bkg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip" android:layout_marginBottom="24.0dip" android:text="@string/brl" />
+        <View android:id="@id/biw" android:background="@color/i5" android:layout_width="fill_parent" android:layout_height="@dimen/m2" android:layout_below="@id/abb" />
+        <TextView android:textSize="17.0sp" android:textColor="@color/fl" android:gravity="center" android:id="@id/a65" android:background="@drawable/common_dialog_btn_right" android:layout_width="fill_parent" android:layout_height="47.0dip" android:text="@string/brk" android:singleLine="true" />
+    </LinearLayout>
+</FrameLayout>

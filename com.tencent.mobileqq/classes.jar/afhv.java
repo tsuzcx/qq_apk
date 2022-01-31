@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-
-public class afhv
-  implements Runnable
+public abstract interface afhv
 {
-  public afhv(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public abstract void a();
   
-  public void run()
-  {
-    this.a.a.a(1);
-  }
+  public abstract void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void b();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afhv
  * JD-Core Version:    0.7.0.1
  */

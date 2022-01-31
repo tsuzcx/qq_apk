@@ -1,17 +1,23 @@
-import com.tencent.mobileqq.vas.PendantInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 
-public class akpi
+public final class akpi
+  implements Parcelable.Creator<ARCommonConfigInfo>
 {
-  public String a;
-  
-  public akpi(PendantInfo paramPendantInfo, String paramString)
+  public ARCommonConfigInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return new ARCommonConfigInfo(paramParcel);
+  }
+  
+  public ARCommonConfigInfo[] a(int paramInt)
+  {
+    return new ARCommonConfigInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akpi
  * JD-Core Version:    0.7.0.1
  */

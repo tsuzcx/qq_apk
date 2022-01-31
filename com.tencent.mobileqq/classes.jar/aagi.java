@@ -1,24 +1,32 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
-import com.tencent.mobileqq.worldcup.ARWorldCupMediaPlayerWrapper;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class aagi
-  implements Runnable
+public final class aagi
+  implements DialogInterface.OnClickListener
 {
-  aagi(aagh paramaagh) {}
+  public aagi(QQAppInterface paramQQAppInterface, aagn paramaagn, long paramLong, Context paramContext, aagm paramaagm) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((ARWorldCupGlobalSceneRenderable.a(this.a.a) != null) && (ARWorldCupGlobalSceneRenderable.a(this.a.a).a()))
-    {
-      ARWorldCupGlobalSceneRenderable.a(this.a.a).a();
-      QLog.d("ARWorldCupGlobalSceneRenderable", 2, "mRepeatCheckRunnable run ");
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, this.jdField_a_of_type_Aagn.jdField_a_of_type_Int, this.jdField_a_of_type_Aagn.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aagn.jdField_c_of_type_JavaLangString, true);
+    if (this.jdField_a_of_type_Aagn.jdField_a_of_type_Boolean) {
+      awqx.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "1", "", "", "");
+    }
+    this.jdField_a_of_type_Aagn.b = false;
+    this.jdField_a_of_type_Aagn.jdField_c_of_type_Boolean = true;
+    this.jdField_a_of_type_Aagn.e = false;
+    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aagm, this.jdField_a_of_type_Aagn);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aagi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,34 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.scribble.ScribbleResMgr;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.mobileqq.transfile.NetworkCenter;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import java.lang.ref.WeakReference;
 
 public class ahva
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public ahva(ScribbleResMgr paramScribbleResMgr, int paramInt, QQAppInterface paramQQAppInterface) {}
+  public ahva(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ScribbleResMgr.b(this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr, this.jdField_a_of_type_Int, 0, true);
-    HttpNetReq localHttpNetReq = new HttpNetReq();
-    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new ahvb(this);
-    localHttpNetReq.jdField_a_of_type_JavaLangString = "";
-    localHttpNetReq.jdField_a_of_type_Int = 0;
-    if (this.jdField_a_of_type_Int == 3)
-    {
-      localHttpNetReq.jdField_a_of_type_JavaLangString = ScribbleResMgr.e(this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr);
-      localHttpNetReq.jdField_c_of_type_JavaLangString = ScribbleResMgr.a(this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr);
-    }
-    if (this.jdField_a_of_type_Int == 4)
-    {
-      localHttpNetReq.jdField_a_of_type_JavaLangString = ScribbleResMgr.f(this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr);
-      localHttpNetReq.jdField_c_of_type_JavaLangString = ScribbleResMgr.c(this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr);
-    }
-    localHttpNetReq.jdField_c_of_type_Int = NetworkUtil.a(NetworkCenter.a().a());
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0).a(localHttpNetReq);
+    paramContext = paramIntent.getAction();
     if (QLog.isColorLevel()) {
-      QLog.i("ScribbleResMgrdownloading", 2, "startDownloadhttpscribbleRes, url: " + localHttpNetReq.jdField_a_of_type_JavaLangString);
+      QLog.d("ShortVideoPlayActivity", 2, "onReceive ===>" + paramContext);
+    }
+    if (("android.intent.action.SCREEN_OFF".equals(paramContext)) || ("tencent.av.v2q.StartVideoChat".equals(paramContext)))
+    {
+      if ((this.a.a != null) && (this.a.a.get() != null) && (((TVK_IMediaPlayer)this.a.a.get()).isPlaying())) {
+        this.a.k = true;
+      }
+      this.a.j();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahva
  * JD-Core Version:    0.7.0.1
  */

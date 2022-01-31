@@ -13,6 +13,7 @@ public class BaseBusinessAlbumInfo
   public int b;
   public long b;
   public String b;
+  public boolean b;
   public int c;
   public long c;
   public String c;
@@ -22,11 +23,16 @@ public class BaseBusinessAlbumInfo
   public int f;
   public int g;
   public int h;
+  public int i;
   
-  public BaseBusinessAlbumInfo() {}
+  public BaseBusinessAlbumInfo()
+  {
+    this.jdField_b_of_type_Boolean = true;
+  }
   
   public BaseBusinessAlbumInfo(String paramString)
   {
+    this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
@@ -63,6 +69,7 @@ public class BaseBusinessAlbumInfo
     this.jdField_d_of_type_JavaLangString = paramBaseBusinessAlbumInfo.jdField_d_of_type_JavaLangString;
     this.g = paramBaseBusinessAlbumInfo.g;
     this.h = paramBaseBusinessAlbumInfo.h;
+    this.i = paramBaseBusinessAlbumInfo.i;
   }
   
   public String b()
@@ -102,8 +109,8 @@ public class BaseBusinessAlbumInfo
   public int hashCode()
   {
     if (this.jdField_a_of_type_JavaLangString == null) {}
-    for (int i = 0;; i = this.jdField_a_of_type_JavaLangString.hashCode()) {
-      return i + 31;
+    for (int j = 0;; j = this.jdField_a_of_type_JavaLangString.hashCode()) {
+      return j + 31;
     }
   }
   
@@ -128,6 +135,7 @@ public class BaseBusinessAlbumInfo
       paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
       paramParcel.writeInt(this.g);
       paramParcel.writeInt(this.h);
+      paramParcel.writeInt(this.i);
       return;
     }
   }

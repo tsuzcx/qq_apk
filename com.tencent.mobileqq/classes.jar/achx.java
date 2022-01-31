@@ -1,35 +1,32 @@
-import com.tencent.mobileqq.app.FavEmoRoamingObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
-import java.util.List;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import com.tencent.widget.XPanelContainer;
+import mqq.os.MqqHandler;
 
 public class achx
-  extends FavEmoRoamingObserver
+  extends ajvp
 {
-  public achx(FavroamingManager paramFavroamingManager) {}
+  public achx(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
   
-  public void a(List paramList)
+  public void a(int paramInt)
   {
-    if (this.a.a == null) {
-      return;
+    this.a.e();
+    SendBirthdayWishesActivity.a(this.a, paramInt);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.removeTextChangedListener(this.a);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    if (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() != 0) {
+      this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a();
     }
-    this.a.a.removeObserver(FavroamingManager.a(this.a));
-    ThreadManager.post(new achy(this, paramList), 5, null, true);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.a.a == null) {}
-    while (!paramBoolean) {
-      return;
+    if (paramInt != 2)
+    {
+      SendBirthdayWishesActivity.a(this.a).removeCallbacks(SendBirthdayWishesActivity.a(this.a));
+      SendBirthdayWishesActivity.a(this.a).postDelayed(SendBirthdayWishesActivity.a(this.a), 600L);
     }
-    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     achx
  * JD-Core Version:    0.7.0.1
  */

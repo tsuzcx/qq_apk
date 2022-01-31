@@ -1,0 +1,21 @@
+package com.tencent.mobileqq.ar.view;
+
+import akoe;
+import bafb;
+
+class ARScanEntryView$14
+  implements Runnable
+{
+  ARScanEntryView$14(ARScanEntryView paramARScanEntryView) {}
+  
+  public void run()
+  {
+    this.this$0.a.a.dismiss();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     com.tencent.mobileqq.ar.view.ARScanEntryView.14
+ * JD-Core Version:    0.7.0.1
+ */

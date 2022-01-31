@@ -1,51 +1,34 @@
-import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.TroopManager.ITroopMemberInfoCallBack;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.data.TroopMemberInfo;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class upc
-  implements TroopManager.ITroopMemberInfoCallBack
+  extends QQUIEventReceiver<uoh, tna>
 {
-  public BaseChatItemLayout a;
-  
-  private upc(BaseBubbleBuilder paramBaseBubbleBuilder) {}
-  
-  public void a(TroopMemberInfo paramTroopMemberInfo)
+  public upc(@NonNull uoh paramuoh)
   {
-    Object localObject = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51)).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    if ((localObject != null) && (((TroopInfo)localObject).isHomeworkTroop())) {}
-    do
+    super(paramuoh);
+  }
+  
+  public void a(@NonNull uoh paramuoh, @NonNull tna paramtna)
+  {
+    urk.a(this.TAG, "play video groupId=%s, %s", paramtna.jdField_a_of_type_Tjs, paramtna.b);
+    if ((uoh.a(paramuoh).equals(paramtna.jdField_a_of_type_JavaLangString)) && ((paramtna.jdField_a_of_type_Tjs instanceof tjh)))
     {
-      return;
-      localObject = (BaseBubbleBuilder.ViewHolder)this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.getTag();
-    } while ((paramTroopMemberInfo == null) || (!TextUtils.equals(((BaseBubbleBuilder.ViewHolder)localObject).a.senderuin, paramTroopMemberInfo.memberuin)));
-    BaseBubbleBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder, paramTroopMemberInfo.globalTroopLevel);
-    paramTroopMemberInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout;
-    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (BaseBubbleBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder) > 2) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramTroopMemberInfo.a((QQAppInterface)localObject, bool, BaseBubbleBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder), false);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.d == null) {
-        break;
+      uiw localuiw = ((tjh)paramtna.jdField_a_of_type_Tjs).a;
+      if (localuiw != null) {
+        paramuoh.a(localuiw.jdField_a_of_type_JavaLangString, paramtna.b, true);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.d.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.d.setTag(Integer.valueOf(2131361868));
-      return;
     }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tna.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     upc
  * JD-Core Version:    0.7.0.1
  */

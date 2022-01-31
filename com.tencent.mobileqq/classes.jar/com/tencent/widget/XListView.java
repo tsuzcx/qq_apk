@@ -1,24 +1,37 @@
 package com.tencent.widget;
 
+import aciy;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Path;
+import android.graphics.Path.Direction;
+import android.graphics.Path.FillType;
+import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View.MeasureSpec;
+import belo;
+import bepb;
+import bepc;
 import com.tencent.mobileqq.R.styleable;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class XListView
   extends ListView
 {
   private int jdField_a_of_type_Int;
-  private OnSizeChangeListener jdField_a_of_type_ComTencentWidgetOnSizeChangeListener;
-  private XListView.DrawFinishedListener jdField_a_of_type_ComTencentWidgetXListView$DrawFinishedListener;
-  private XListView.MotionEventInterceptor jdField_a_of_type_ComTencentWidgetXListView$MotionEventInterceptor;
+  private Path jdField_a_of_type_AndroidGraphicsPath;
+  private belo jdField_a_of_type_Belo;
+  private bepb jdField_a_of_type_Bepb;
+  private bepc jdField_a_of_type_Bepc;
+  private boolean jdField_a_of_type_Boolean;
   private int b = -1;
+  private int c;
+  private int d = 0;
+  private int e;
+  private int f;
   
   public XListView(Context paramContext)
   {
@@ -33,11 +46,16 @@ public class XListView
   public XListView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setEdgeEffectEnabled(false);
     this.mOverscrollDistance = 2147483647;
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.tencent_widget);
-    setMaxHeight(paramContext.getDimensionPixelSize(0, -1));
+    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.tencent_widget);
+    setMaxHeight(localTypedArray.getDimensionPixelSize(0, -1));
+    localTypedArray.recycle();
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.XListView);
+    boolean bool = paramContext.getBoolean(0, false);
     paramContext.recycle();
+    setEdgeEffectEnabled(bool);
+    this.jdField_a_of_type_AndroidGraphicsPath = new Path();
+    this.jdField_a_of_type_AndroidGraphicsPath.setFillType(Path.FillType.EVEN_ODD);
   }
   
   private int a()
@@ -48,18 +66,75 @@ public class XListView
     return 2;
   }
   
+  private void a()
+  {
+    if ((this.e == this.c) && (this.f == this.d)) {
+      return;
+    }
+    int i = getWidth();
+    int j = getHeight();
+    this.e = this.c;
+    this.jdField_a_of_type_AndroidGraphicsPath.reset();
+    switch (this.d)
+    {
+    default: 
+      return;
+    case 1: 
+      this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(new RectF(0.0F, 0.0F, i, j), this.c, this.c, Path.Direction.CW);
+      return;
+    case 2: 
+      localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+      localRectF = new RectF(0.0F, 0.0F, i, j);
+      f1 = this.c;
+      f2 = this.c;
+      f3 = this.c;
+      f4 = this.c;
+      localDirection = Path.Direction.CW;
+      localPath.addRoundRect(localRectF, new float[] { f1, f2, 0.0F, 0.0F, 0.0F, 0.0F, f3, f4 }, localDirection);
+      return;
+    case 3: 
+      localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+      localRectF = new RectF(0.0F, 0.0F, i, j);
+      f1 = this.c;
+      f2 = this.c;
+      f3 = this.c;
+      f4 = this.c;
+      localDirection = Path.Direction.CW;
+      localPath.addRoundRect(localRectF, new float[] { f1, f2, f3, f4, 0.0F, 0.0F, 0.0F, 0.0F }, localDirection);
+      return;
+    case 4: 
+      localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+      localRectF = new RectF(0.0F, 0.0F, i, j);
+      f1 = this.c;
+      f2 = this.c;
+      f3 = this.c;
+      f4 = this.c;
+      localDirection = Path.Direction.CW;
+      localPath.addRoundRect(localRectF, new float[] { 0.0F, 0.0F, f1, f2, f3, f4, 0.0F, 0.0F }, localDirection);
+      return;
+    }
+    Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+    RectF localRectF = new RectF(0.0F, 0.0F, i, j);
+    float f1 = this.c;
+    float f2 = this.c;
+    float f3 = this.c;
+    float f4 = this.c;
+    Path.Direction localDirection = Path.Direction.CW;
+    localPath.addRoundRect(localRectF, new float[] { 0.0F, 0.0F, 0.0F, 0.0F, f1, f2, f3, f4 }, localDirection);
+  }
+  
   private void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean, int paramInt5)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetOnSizeChangeListener != null) {
-      this.jdField_a_of_type_ComTencentWidgetOnSizeChangeListener.a(paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean, paramInt5);
+    if (this.jdField_a_of_type_Belo != null) {
+      this.jdField_a_of_type_Belo.a(paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean, paramInt5);
     }
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
-    if (this.jdField_a_of_type_ComTencentWidgetXListView$DrawFinishedListener != null) {
-      this.jdField_a_of_type_ComTencentWidgetXListView$DrawFinishedListener.a();
+    if (this.jdField_a_of_type_Bepb != null) {
+      this.jdField_a_of_type_Bepb.a();
     }
   }
   
@@ -67,12 +142,12 @@ public class XListView
   {
     boolean bool3 = false;
     boolean bool1;
-    if (this.jdField_a_of_type_ComTencentWidgetXListView$MotionEventInterceptor != null)
+    if (this.jdField_a_of_type_Bepc != null)
     {
       MotionEvent localMotionEvent = MotionEvent.obtain(paramMotionEvent);
       if (localMotionEvent != null)
       {
-        bool1 = this.jdField_a_of_type_ComTencentWidgetXListView$MotionEventInterceptor.a(this, localMotionEvent);
+        bool1 = this.jdField_a_of_type_Bepc.a(this, localMotionEvent);
         localMotionEvent.recycle();
       }
     }
@@ -97,7 +172,7 @@ public class XListView
         {
           for (;;)
           {
-            AIOUtils.a("XLISTVIEW_dispatchTouchEvent_ERROR", "dispatchTouchEvent_ERROR", paramMotionEvent);
+            aciy.a("XLISTVIEW_dispatchTouchEvent_ERROR", "dispatchTouchEvent_ERROR", paramMotionEvent);
             boolean bool2 = false;
           }
         }
@@ -107,9 +182,23 @@ public class XListView
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  public void draw(Canvas paramCanvas)
   {
-    int i = paramInt2;
+    if (this.d != 0)
+    {
+      int i = paramCanvas.save();
+      a();
+      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+      super.draw(paramCanvas);
+      paramCanvas.restoreToCount(i);
+      return;
+    }
+    super.draw(paramCanvas);
+  }
+  
+  protected void onMeasure(int paramInt1, int paramInt2)
+  {
+    int i;
     if (this.b > 0)
     {
       int j = View.MeasureSpec.getMode(paramInt2);
@@ -122,10 +211,18 @@ public class XListView
         }
       }
     }
-    super.onMeasure(paramInt1, i);
+    for (;;)
+    {
+      super.onMeasure(paramInt1, i);
+      return;
+      i = paramInt2;
+      if (this.jdField_a_of_type_Boolean) {
+        i = View.MeasureSpec.makeMeasureSpec(536870911, -2147483648);
+      }
+    }
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     int i = a();
@@ -138,9 +235,15 @@ public class XListView
     }
   }
   
-  public void setDrawFinishedListener(XListView.DrawFinishedListener paramDrawFinishedListener)
+  public void setCornerRadiusAndMode(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView$DrawFinishedListener = paramDrawFinishedListener;
+    this.c = paramInt1;
+    this.d = paramInt2;
+  }
+  
+  public void setDrawFinishedListener(bepb parambepb)
+  {
+    this.jdField_a_of_type_Bepb = parambepb;
   }
   
   public void setMaxHeight(int paramInt)
@@ -151,19 +254,24 @@ public class XListView
     }
   }
   
-  public void setMotionEventInterceptor(XListView.MotionEventInterceptor paramMotionEventInterceptor)
+  public void setMotionEventInterceptor(bepc parambepc)
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView$MotionEventInterceptor = paramMotionEventInterceptor;
+    this.jdField_a_of_type_Bepc = parambepc;
   }
   
-  public void setOnSizeChangeListener(OnSizeChangeListener paramOnSizeChangeListener)
+  public void setOnSizeChangeListener(belo parambelo)
   {
-    this.jdField_a_of_type_ComTencentWidgetOnSizeChangeListener = paramOnSizeChangeListener;
+    this.jdField_a_of_type_Belo = parambelo;
   }
   
   public void setOverScrollDistance(int paramInt)
   {
     this.mOverscrollDistance = paramInt;
+  }
+  
+  public void setWrapByScroll(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 

@@ -1,21 +1,14 @@
-import com.tencent.mobileqq.search.model.GroupSearchModelPublicAcnt;
-import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aiak
-  extends GroupSearchEngine.SearchEngineEntity
+class aiak
+  implements View.OnClickListener
 {
-  public aiak(GroupSearchEngine paramGroupSearchEngine, ISearchEngine paramISearchEngine, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramISearchEngine, paramString, paramInt);
-  }
+  aiak(aiaj paramaiaj) {}
   
-  public ISearchResultGroupModel a(List paramList, String paramString)
+  public void onClick(View paramView)
   {
-    return new GroupSearchModelPublicAcnt(paramList, paramString, GroupSearchEngine.a(this.a));
+    aiaj.a(this.a).a(paramView);
   }
 }
 

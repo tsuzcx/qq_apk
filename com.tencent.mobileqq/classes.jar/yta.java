@@ -1,47 +1,66 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.OnApolloViewListener;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class yta
-  implements Runnable
+  extends ysw
 {
-  private int jdField_a_of_type_Int;
+  private boolean a;
+  private String c;
+  private String d;
   
-  public yta(ApolloSurfaceView paramApolloSurfaceView) {}
-  
-  public void a()
+  public yta(JSONObject paramJSONObject)
   {
-    this.jdField_a_of_type_Int = ApolloSurfaceView.access$601(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView);
+    a(paramJSONObject);
   }
   
-  public void run()
+  public String a()
   {
-    if (ApolloSurfaceView.access$100(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView) == null) {}
-    OnApolloViewListener localOnApolloViewListener;
-    do
+    String str = super.a();
+    try
     {
-      do
-      {
-        do
-        {
-          return;
-          localOnApolloViewListener = (OnApolloViewListener)ApolloSurfaceView.access$100(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView).get();
-        } while (localOnApolloViewListener == null);
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloSurfaceView", 2, "CheckForLongPress onLongClick");
-        }
-      } while (this.jdField_a_of_type_Int != ApolloSurfaceView.access$201(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView));
-      ApolloSurfaceView.access$302(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView, true);
-      ApolloSurfaceView.access$401(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView, 2);
-    } while ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.mApolloId)) || (ApolloSurfaceView.access$500(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView) < 0) || (localOnApolloViewListener == null));
-    localOnApolloViewListener.onNotifyLongTouch(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.mApolloId);
+      Object localObject = new JSONObject(str);
+      ((JSONObject)localObject).put("patchName", this.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("patchUrl", this.b);
+      ((JSONObject)localObject).put("patchSize", this.jdField_a_of_type_Int);
+      ((JSONObject)localObject).put("driverVersion", this.c);
+      ((JSONObject)localObject).put("previousPatch", this.d);
+      ((JSONObject)localObject).put("isDelayLoad", this.jdField_a_of_type_Boolean);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.d("PatchLogTag", 1, "NativePatchItemConfig writeToJsonString", localJSONException);
+    }
+    return str;
+  }
+  
+  protected void a(JSONObject paramJSONObject)
+  {
+    super.a(paramJSONObject);
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
+    this.b = paramJSONObject.optString("patchUrl", null);
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
+    this.c = paramJSONObject.optString("driverVersion", null);
+    this.d = paramJSONObject.optString("previousPatch", null);
+    this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isDelayLoad", false);
+  }
+  
+  public boolean a(boolean paramBoolean)
+  {
+    if (TextUtils.isEmpty(this.c))
+    {
+      QLog.d("PatchLogTag", 1, "NativePatchItemConfig isValidConfig driverVersion is null");
+      return false;
+    }
+    return super.a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     yta
  * JD-Core Version:    0.7.0.1
  */

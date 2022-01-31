@@ -4,8 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
+import bgbf;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
-import cooperation.qzone.plugin.QZonePluginUtils;
 
 public class QZoneLiveVideoPluginScreenRecordProxyService
   extends PluginProxyService
@@ -15,7 +15,7 @@ public class QZoneLiveVideoPluginScreenRecordProxyService
     Intent localIntent = new Intent(paramContext, QZoneLiveVideoPluginScreenRecordProxyService.class);
     localIntent.setAction("com.qzone.LiveVideoScreenRecordPluginService");
     localIntent.putExtras(paramBundle);
-    QZoneLiveVideoPluginProxyService.a(paramContext, paramString, localIntent, paramServiceConnection, QZonePluginUtils.a());
+    QZoneLiveVideoPluginProxyService.a(paramContext, paramString, localIntent, paramServiceConnection, bgbf.a());
   }
 }
 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.detail.ui.component.DragLayout android:id="@id/h92" android:visibility="gone" android:layout_width="117.0dip" android:layout_height="49.0dip">
+        <RelativeLayout android:id="@id/h95" android:background="@drawable/hht" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="9.0dip" android:layout_marginRight="5.0dip">
+            <ImageView android:id="@id/h8z" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginLeft="9.0dip" android:src="@drawable/hxd" android:layout_centerVertical="true" />
+            <TextView android:textSize="14.0dip" android:textColor="#ff03081a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:text="@string/rn0" android:layout_toRightOf="@id/h8z" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <View android:id="@id/h94" android:background="@drawable/aub" android:visibility="gone" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginTop="6.5dip" android:layout_marginRight="8.0dip" android:layout_alignParentRight="true" />
+        <TextView android:textColor="#ffffffff" android:gravity="center" android:id="@id/h93" android:background="@drawable/auc" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="19.0dip" android:minWidth="19.0dip" android:text="99+" android:layout_alignParentRight="true" />
+    </com.qzone.detail.ui.component.DragLayout>
+</RelativeLayout>

@@ -447,13 +447,22 @@ public final class cn
   
   public static String d()
   {
-    StringBuilder localStringBuilder = new StringBuilder("");
-    localStringBuilder.append(a());
-    localStringBuilder.append(c());
-    localStringBuilder.append(System.currentTimeMillis());
-    localStringBuilder.append(b());
-    localStringBuilder.append((int)(Math.random() * 2147483647.0D));
-    return cm.a(localStringBuilder.toString());
+    try
+    {
+      Object localObject = new StringBuilder("");
+      ((StringBuilder)localObject).append(a());
+      ((StringBuilder)localObject).append(c());
+      ((StringBuilder)localObject).append(System.currentTimeMillis());
+      ((StringBuilder)localObject).append(b());
+      ((StringBuilder)localObject).append((int)(Math.random() * 2147483647.0D));
+      localObject = cm.a(((StringBuilder)localObject).toString());
+      return localObject;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+    return "";
   }
   
   public static boolean d(String paramString)
@@ -522,7 +531,7 @@ public final class cn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     c.t.m.g.cn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ykh
-  implements DialogInterface.OnClickListener
+class ykh
+  implements View.OnClickListener
 {
-  public ykh(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  ykh(ykf paramykf) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
-    {
-      if (this.a.jdField_a_of_type_Int == 2) {
-        this.a.a();
-      }
-      this.a.a(this.a.c);
-    }
-    com.tencent.mobileqq.shortvideo.ShortVideoBusiManager.a = true;
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ykh
  * JD-Core Version:    0.7.0.1
  */

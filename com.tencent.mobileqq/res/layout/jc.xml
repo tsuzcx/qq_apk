@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" app:qqArMapGuideRadius="8"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/l94" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
+    <View android:layout_gravity="bottom" android:id="@id/l96" android:background="@drawable/gwt" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="90.0dip" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/l95" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:layout_marginRight="13.0dip" android:layout_marginBottom="21.0dip">
+        <TextView android:textSize="20.0sp" android:textStyle="bold" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/l98" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:singleLine="true" android:layout_weight="1.0" />
+        <TextView android:textSize="19.0sp" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:id="@id/l93" android:background="@drawable/d6" android:paddingLeft="12.0dip" android:paddingTop="6.0dip" android:paddingRight="12.0dip" android:paddingBottom="6.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="46.0dip" android:layout_marginTop="16.0dip" android:text="@string/ii3" />
+    </LinearLayout>
+    <ProgressBar android:layout_gravity="bottom" android:id="@id/l97" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_marginLeft="14.0dip" android:layout_marginRight="14.0dip" android:layout_marginBottom="8.0dip" android:progressDrawable="@drawable/gwv" style="@style/rx" />
+</com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout>

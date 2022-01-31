@@ -1,0 +1,7 @@
+public abstract class bhnr {}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+ * Qualified Name:     bhnr
+ * JD-Core Version:    0.7.0.1
+ */

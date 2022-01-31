@@ -1,21 +1,34 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.INet_ShortVideoResource;
-import java.util.List;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aiel
-  implements Runnable
+class aiel
+  implements DialogInterface.OnClickListener
 {
-  public aiel(QQAppInterface paramQQAppInterface, List paramList, ShortVideoResourceManager.INet_ShortVideoResource paramINet_ShortVideoResource) {}
+  aiel(aiek paramaiek) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager$INet_ShortVideoResource, "new_qq_android_native_short_video_");
+    if (QLog.isColorLevel()) {
+      QLog.d(aiek.a(this.a), 2, "On Click Left Button! ");
+    }
+    if (this.a.mRuntime.a() != null) {
+      this.a.mRuntime.a().finish();
+    }
+    for (;;)
+    {
+      aiek.a(this.a, 1);
+      return;
+      if (QLog.isDevelopLevel()) {
+        QLog.d(aiek.a(this.a), 4, "Call back object is null!");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiel
  * JD-Core Version:    0.7.0.1
  */

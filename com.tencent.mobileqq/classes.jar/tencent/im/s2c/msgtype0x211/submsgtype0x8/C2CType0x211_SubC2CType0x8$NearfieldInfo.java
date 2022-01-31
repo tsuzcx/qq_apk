@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class C2CType0x211_SubC2CType0x8$NearfieldInfo
-  extends MessageMicro
+  extends MessageMicro<NearfieldInfo>
 {
   public static final int BYTES_EXTRA_FIELD_NUMBER = 6;
   public static final int MSG_CONN_TYPE_FIELD_NUMBER = 2;

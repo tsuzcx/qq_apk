@@ -1,20 +1,21 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
-import java.util.TimerTask;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 
-class acwb
-  extends TimerTask
+public class acwb
+  implements View.OnClickListener
 {
-  acwb(acwa paramacwa) {}
+  public acwb(AIOLongShotHelper paramAIOLongShotHelper) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    MPFileVerifyPwdView.a(this.a.a).runOnUiThread(new acwc(this));
+    AIOLongShotHelper.b(this.a, paramView);
+    AIOLongShotHelper.a("0X8009DE7");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acwb
  * JD-Core Version:    0.7.0.1
  */

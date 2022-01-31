@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class DynamicSearch$SubItemMedia
-  extends MessageMicro
+  extends MessageMicro<SubItemMedia>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField coverUrl = PBField.initBytes(ByteStringMicro.EMPTY);

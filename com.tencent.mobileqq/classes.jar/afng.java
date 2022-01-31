@@ -1,47 +1,32 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.mobileqq.pic.compress.CompressOperator;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
-public class afng
-  implements Runnable
+class afng
+  implements View.OnClickListener
 {
-  public afng(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel) {}
+  afng(afnf paramafnf) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    NearbyProfileEditTribePanel.a(this.a, (PicInfo)this.a.jdField_a_of_type_JavaUtilLinkedList.poll());
-    if (NearbyProfileEditTribePanel.a(this.a) == null) {
-      return;
+    this.a.a.g = false;
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131626377);
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    this.a.a.d.setVisibility(8);
+    this.a.a.d = ((TextView)ChatHistoryTroopMemberFragment.a(this.a.a, 2131302804));
+    this.a.a.d.setVisibility(0);
+    this.a.a.d.setOnClickListener(this.a.a.b);
+    if (this.a.a.jdField_a_of_type_Afow != null) {
+      this.a.a.jdField_a_of_type_Afow.a();
     }
-    CompressInfo localCompressInfo = new CompressInfo(NearbyProfileEditTribePanel.a(this.a).c, 0);
-    localCompressInfo.f = 0;
-    CompressOperator.a(localCompressInfo);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.nearby_people_card.upload_local_photo", 2, "Q.nearby_people_card..uploadPhoto(), img_path = " + localCompressInfo.e);
-    }
-    if (!StringUtil.a(localCompressInfo.e))
-    {
-      TransferRequest localTransferRequest = new TransferRequest();
-      localTransferRequest.a = true;
-      localTransferRequest.i = localCompressInfo.e;
-      localTransferRequest.b = 8;
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app.a().a(localTransferRequest);
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.runOnUiThread(new afnh(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afng
  * JD-Core Version:    0.7.0.1
  */

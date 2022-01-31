@@ -1,39 +1,29 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.UIBaseEventReceiver;
-import com.tencent.biz.qqstory.storyHome.discover.model.DiscoverPagerLoader.GetDiscoverCardsEvent;
-import com.tencent.biz.qqstory.storyHome.discover.view.DiscoverPresenter;
-import com.tencent.biz.qqstory.storyHome.discover.view.IDiscoverView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class oaq
-  extends UIBaseEventReceiver
+class oaq
+  implements ViewBase.OnClickListener
 {
-  public oaq(DiscoverPresenter paramDiscoverPresenter)
-  {
-    super(paramDiscoverPresenter);
-  }
+  oaq(oal paramoal, ViewBase paramViewBase) {}
   
-  public void a(@NonNull DiscoverPresenter paramDiscoverPresenter, @NonNull DiscoverPagerLoader.GetDiscoverCardsEvent paramGetDiscoverCardsEvent)
+  public void onClick(ViewBase paramViewBase)
   {
-    if ((paramGetDiscoverCardsEvent.jdField_a_of_type_Int == DiscoverPresenter.a(paramDiscoverPresenter)) && (paramGetDiscoverCardsEvent.jdField_a_of_type_Long == DiscoverPresenter.a(paramDiscoverPresenter))) {
-      DiscoverPresenter.a(paramDiscoverPresenter).a(DiscoverPresenter.a(paramDiscoverPresenter, paramGetDiscoverCardsEvent.jdField_a_of_type_JavaUtilList, paramGetDiscoverCardsEvent.c), paramGetDiscoverCardsEvent);
+    TemplateBean localTemplateBean = oag.a(null, this.jdField_a_of_type_Oal.jdField_a_of_type_Int, this.jdField_a_of_type_Oal.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+    if (localTemplateBean != null)
+    {
+      ViewBean localViewBean = localTemplateBean.findViewById(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getName());
+      oag.a(localTemplateBean, paramViewBase);
+      oag.a(localViewBean);
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return DiscoverPagerLoader.GetDiscoverCardsEvent.class;
-  }
-  
-  public void b(@NonNull DiscoverPresenter paramDiscoverPresenter, @NonNull DiscoverPagerLoader.GetDiscoverCardsEvent paramGetDiscoverCardsEvent)
-  {
-    if ((paramGetDiscoverCardsEvent.jdField_a_of_type_Int == DiscoverPresenter.a(paramDiscoverPresenter)) && (paramGetDiscoverCardsEvent.jdField_a_of_type_Long == DiscoverPresenter.a(paramDiscoverPresenter))) {
-      DiscoverPresenter.a(paramDiscoverPresenter).a(null, paramGetDiscoverCardsEvent);
-    }
+    obz.a(this.jdField_a_of_type_Oal.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.jdField_a_of_type_Oal.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getEventAttachedData());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oaq
  * JD-Core Version:    0.7.0.1
  */

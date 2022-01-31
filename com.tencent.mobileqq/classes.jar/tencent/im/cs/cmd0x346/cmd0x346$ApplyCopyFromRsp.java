@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class cmd0x346$ApplyCopyFromRsp
-  extends MessageMicro
+  extends MessageMicro<ApplyCopyFromRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_uuid = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -26,7 +26,7 @@ public final class cmd0x346$ApplyCopyFromRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.cmd0x346.cmd0x346.ApplyCopyFromRsp
  * JD-Core Version:    0.7.0.1
  */

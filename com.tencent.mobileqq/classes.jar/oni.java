@@ -1,36 +1,25 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.network.request.GetEmojiPackInfoListRequest;
-import com.tencent.biz.qqstory.network.response.GetEmojiPackInfoListResponse;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class oni
-  implements CmdTaskManger.CommandCallback
 {
-  public oni(DoodleEmojiManager paramDoodleEmojiManager) {}
-  
-  public void a(@NonNull GetEmojiPackInfoListRequest paramGetEmojiPackInfoListRequest, @Nullable GetEmojiPackInfoListResponse paramGetEmojiPackInfoListResponse, @NonNull ErrorMessage paramErrorMessage)
+  public static void a(List<ArticleInfo> paramList)
   {
-    SLog.b("DoodleEmojiManager", "fireRequestEmojiPackList, result : " + paramGetEmojiPackInfoListResponse + ", errorMsg = " + paramErrorMessage);
-    synchronized (this.a.jdField_b_of_type_JavaLangObject)
+    if ((paramList == null) || (paramList.size() <= 0)) {}
+    for (;;)
     {
-      if (!TextUtils.equals(paramGetEmojiPackInfoListRequest.a, this.a.jdField_b_of_type_JavaLangString))
+      return;
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        SLog.d("DoodleEmojiManager", "cookie mismatch ! ignore this response : " + paramGetEmojiPackInfoListResponse);
-        return;
-      }
-      if ((paramGetEmojiPackInfoListResponse == null) || (paramErrorMessage.isFail()))
-      {
-        SLog.d("DoodleEmojiManager", "get emoji error : " + paramGetEmojiPackInfoListResponse + ", " + paramErrorMessage);
-        return;
+        ArticleInfo localArticleInfo = (ArticleInfo)paramList.next();
+        if ((localArticleInfo != null) && (localArticleInfo.mFeedType == 29)) {
+          QLog.d("ReadInJoyLogHelper", 1, new Object[] { "printProteusOnline: \n", localArticleInfo.toProteusOnlineString() });
+        }
       }
     }
-    this.a.jdField_b_of_type_JavaLangString = paramGetEmojiPackInfoListResponse.a;
-    this.a.a(TextUtils.isEmpty(paramGetEmojiPackInfoListRequest.a), paramGetEmojiPackInfoListResponse, false);
   }
 }
 

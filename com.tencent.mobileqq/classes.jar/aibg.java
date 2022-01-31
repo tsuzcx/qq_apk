@@ -1,49 +1,40 @@
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.model.IContactSearchModel;
-import com.tencent.mobileqq.search.model.TroopBatchAddFrdsSearchModelMember;
-import com.tencent.mobileqq.search.searchengine.TroopBatchAddFrdsSearchEngine;
-import java.util.Comparator;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
-public class aibg
-  implements Comparator
+class aibg
+  extends Animation
 {
-  public aibg(TroopBatchAddFrdsSearchEngine paramTroopBatchAddFrdsSearchEngine) {}
+  aibg(aibc paramaibc, View paramView, int paramInt) {}
   
-  public int a(IContactSearchModel paramIContactSearchModel1, IContactSearchModel paramIContactSearchModel2)
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    int i = -1;
-    paramIContactSearchModel1 = (TroopBatchAddFrdsSearchModelMember)paramIContactSearchModel1;
-    paramIContactSearchModel2 = (TroopBatchAddFrdsSearchModelMember)paramIContactSearchModel2;
-    FriendsManager localFriendsManager = (FriendsManager)this.a.a.getManager(50);
-    boolean bool1 = localFriendsManager.b((String)paramIContactSearchModel1.a());
-    boolean bool2 = localFriendsManager.b((String)paramIContactSearchModel2.a());
-    if ((!bool1) && (!bool2))
+    paramFloat = (float)(paramFloat * (0.5D + Math.sqrt(paramFloat) / 2.0D));
+    this.jdField_a_of_type_AndroidViewView.getLayoutParams().width = (this.jdField_a_of_type_Int - (int)(this.jdField_a_of_type_Int * paramFloat));
+    this.jdField_a_of_type_AndroidViewView.requestLayout();
+    if (paramFloat <= 0.4F) {
+      this.jdField_a_of_type_AndroidViewView.setAlpha((0.4F - Math.min(paramFloat, 0.4F)) / 0.4F);
+    }
+    do
     {
-      bool1 = localFriendsManager.c((String)paramIContactSearchModel1.a());
-      bool2 = localFriendsManager.c((String)paramIContactSearchModel2.a());
-      if ((!bool1) && (!bool2)) {
-        return paramIContactSearchModel2.e() - paramIContactSearchModel1.e();
-      }
-      if (bool1 != bool2)
+      do
       {
-        if (bool2) {
-          return -1;
+        return;
+        if (paramFloat > 0.99F) {
+          break;
         }
-        return 1;
-      }
-      return paramIContactSearchModel2.e() - paramIContactSearchModel1.e();
-    }
-    if (bool1 != bool2)
-    {
-      if (bool2) {}
-      for (;;)
-      {
-        return i;
-        i = 1;
-      }
-    }
-    return paramIContactSearchModel2.e() - paramIContactSearchModel1.e();
+      } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 4);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+      return;
+    } while (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.setAlpha(0.0F);
+  }
+  
+  public boolean willChangeBounds()
+  {
+    return true;
   }
 }
 

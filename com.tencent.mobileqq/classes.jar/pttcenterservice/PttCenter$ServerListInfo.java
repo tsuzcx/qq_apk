@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class PttCenter$ServerListInfo
-  extends MessageMicro
+  extends MessageMicro<ServerListInfo>
 {
   public static final int UINT32_UP_IP_FIELD_NUMBER = 1;
   public static final int UINT32_UP_PORT_FIELD_NUMBER = 2;

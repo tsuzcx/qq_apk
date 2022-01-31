@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/chq" android:background="@drawable/azf" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="12.5dip" android:layout_marginTop="3.0dip" android:layout_marginRight="12.5dip" android:layout_marginBottom="3.0dip">
+        <com.qzone.widget.EachRadiusAsyncImageView android:id="@id/chp" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="30.0dip" android:scaleType="fitXY" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/qzone_skin_font_panel_default_item_text_color" android:gravity="center" android:id="@id/chu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="@string/s1r" android:layout_centerInParent="true" />
+        <FrameLayout android:id="@id/chm" android:background="@drawable/aze" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:layout_gravity="center" android:id="@id/chv" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </FrameLayout>
+        <RelativeLayout android:id="@id/cht" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_alignParentBottom="true">
+            <TextView android:textColor="@color/qzone_skin_font_panel_item_name_text_color" android:gravity="center_vertical" android:id="@id/chs" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="3.5dip" android:layout_alignParentRight="true" />
+            <TextView android:textColor="@color/qzone_skin_font_panel_item_name_text_color" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/chr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="6.0dip" android:layout_marginRight="6.0dip" android:maxLines="1" android:maxEms="6" android:singleLine="true" android:layout_toLeftOf="@id/chs" />
+            <ImageView android:id="@id/ci4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="18.0dip" android:layout_marginLeft="4.0dip" android:src="@drawable/fxv" android:layout_toRightOf="@id/chr" android:layout_centerVertical="true" />
+            <TextView android:textSize="@dimen/mp" android:textColor="#ff292422" android:id="@id/ci5" android:background="@drawable/g6z" android:paddingLeft="3.0dip" android:paddingRight="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_toRightOf="@id/chr" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <ImageView android:id="@id/chy" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginRight="7.5dip" android:src="@drawable/qzone_skin_font_sel" android:layout_alignParentRight="true" />
+    <ImageView android:id="@id/lie" android:visibility="visible" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginLeft="12.5dip" android:layout_marginTop="3.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+</RelativeLayout>

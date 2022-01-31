@@ -20,53 +20,53 @@ public class ReadinjoyFormSimpleItem
     super(paramContext, paramAttributeSet);
   }
   
-  protected ColorStateList a(Resources paramResources, int paramInt)
+  public ColorStateList a(Resources paramResources, int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      return paramResources.getColorStateList(2131492971);
+      return paramResources.getColorStateList(2131099738);
     case 0: 
-      return paramResources.getColorStateList(2131492971);
+      return paramResources.getColorStateList(2131099738);
     case 2: 
-      return paramResources.getColorStateList(2131493805);
+      return paramResources.getColorStateList(2131100028);
     case 1: 
-      return paramResources.getColorStateList(2131493491);
+      return paramResources.getColorStateList(2131099773);
     }
-    return paramResources.getColorStateList(2131493805);
+    return paramResources.getColorStateList(2131100028);
   }
   
-  protected Drawable a(Resources paramResources, int paramInt)
+  public Drawable a(Resources paramResources, int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      return paramResources.getDrawable(2130843422);
+      return paramResources.getDrawable(2130845290);
     case 0: 
       if (b) {
-        return paramResources.getDrawable(2130843422);
+        return paramResources.getDrawable(2130845290);
       }
-      return paramResources.getDrawable(2130843415);
+      return paramResources.getDrawable(2130845283);
     case 1: 
       if (b) {
-        return paramResources.getDrawable(2130843425);
+        return paramResources.getDrawable(2130845293);
       }
-      return paramResources.getDrawable(2130843421);
+      return paramResources.getDrawable(2130845289);
     case 2: 
       if (b) {
-        return paramResources.getDrawable(2130843424);
+        return paramResources.getDrawable(2130845292);
       }
-      return paramResources.getDrawable(2130843419);
+      return paramResources.getDrawable(2130845287);
     }
     if (b) {
-      return paramResources.getDrawable(2130843423);
+      return paramResources.getDrawable(2130845291);
     }
-    return paramResources.getDrawable(2130843417);
+    return paramResources.getDrawable(2130845285);
   }
   
-  protected void a()
+  public void a()
   {
-    setArrowIcon(getResources().getDrawable(2130844121));
+    setArrowIcon(getResources().getDrawable(2130846146));
     super.a();
   }
 }

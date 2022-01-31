@@ -1,24 +1,40 @@
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeProteus;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import java.lang.ref.WeakReference;
 
-class lmw
-  implements ViewBase.OnClickListener
+public class lmw
+  implements ajga
 {
-  lmw(lmv paramlmv, ViewBase paramViewBase) {}
+  private WeakReference<lna> a;
+  private WeakReference<ajfw> b;
+  private WeakReference<lmh> c;
   
-  public void a(ViewBase paramViewBase)
+  public lmw(lna paramlna, ajfw paramajfw, lmh paramlmh)
   {
-    paramViewBase = new FeedItemCellTypeProteus(this.jdField_a_of_type_Lmv.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a(), this.jdField_a_of_type_Lmv.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, this.jdField_a_of_type_Lmv.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter);
-    paramViewBase.a(this.jdField_a_of_type_Lmv.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelIReadInJoyModel);
-    paramViewBase.a(this.jdField_a_of_type_Lmv.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
-    paramViewBase.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.a());
+    this.a = new WeakReference(paramlna);
+    this.b = new WeakReference(paramajfw);
+    this.c = new WeakReference(paramlmh);
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    Object localObject = (ajfw)this.b.get();
+    if (localObject != null) {
+      ((ajfw)localObject).d(this);
+    }
+    localObject = (lna)this.a.get();
+    lmh locallmh = (lmh)this.c.get();
+    if ((localObject != null) && (locallmh != null)) {
+      ((lna)localObject).a(paramBoolean, locallmh);
+    }
+  }
+  
+  public void a(lmh paramlmh)
+  {
+    this.c = new WeakReference(paramlmh);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lmw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,22 @@
-import com.tencent.biz.helper.TroopInfoActivityHelper.ISetSameCityCheckTypeInfo;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment.Observer.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.parallel.SimpleParallelObserver;
+import mqq.os.MqqHandler;
 
 public class uck
-  implements TroopInfoActivityHelper.ISetSameCityCheckTypeInfo
+  extends SimpleParallelObserver
 {
-  public uck(TroopInfoActivity paramTroopInfoActivity) {}
+  uck(uch paramuch) {}
   
-  public void a()
+  public void onAllFunctionComplete(boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopTypeExt = 4;
-    }
-    ReportController.b(this.a.app, "P_CliOper", "Grp_create", "", "edit_data", "local_suc", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.b, "", "");
-    TroopInfoActivity.a(this.a, true, 0L, "", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
-  }
-  
-  public void a(String paramString)
-  {
-    this.a.j();
-    TroopInfoActivity.a(this.a, false, 0L, paramString, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
+    super.onAllFunctionComplete(paramBoolean);
+    ThreadManager.getUIHandler().post(new DetailFeedAllInfoPullSegment.Observer.1(this, paramBoolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uck
  * JD-Core Version:    0.7.0.1
  */

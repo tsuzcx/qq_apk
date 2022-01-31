@@ -245,7 +245,7 @@ public final class b
       x.e("no intStateStr", new Object[0]);
       return null;
     }
-    Map localMap = c(paramContext);
+    Map localMap = d(paramContext);
     if (localMap == null)
     {
       x.e("parse intSateMap fail", new Object[] { Integer.valueOf(paramMap.size()) });
@@ -440,22 +440,21 @@ public final class b
   
   /* Error */
   private static String a(java.io.BufferedInputStream paramBufferedInputStream)
-    throws java.io.IOException
   {
     // Byte code:
     //   0: aload_0
     //   1: ifnonnull +5 -> 6
     //   4: aconst_null
     //   5: areturn
-    //   6: new 300	java/io/ByteArrayOutputStream
+    //   6: new 301	java/io/ByteArrayOutputStream
     //   9: dup
     //   10: sipush 1024
-    //   13: invokespecial 303	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   13: invokespecial 304	java/io/ByteArrayOutputStream:<init>	(I)V
     //   16: astore_3
     //   17: aload_3
     //   18: astore_2
     //   19: aload_0
-    //   20: invokevirtual 306	java/io/BufferedInputStream:read	()I
+    //   20: invokevirtual 307	java/io/BufferedInputStream:read	()I
     //   23: istore_1
     //   24: iload_1
     //   25: iconst_m1
@@ -467,19 +466,19 @@ public final class b
     //   35: new 59	java/lang/String
     //   38: dup
     //   39: aload_3
-    //   40: invokevirtual 310	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   43: ldc_w 312
-    //   46: invokespecial 315	java/lang/String:<init>	([BLjava/lang/String;)V
+    //   40: invokevirtual 311	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   43: ldc_w 313
+    //   46: invokespecial 316	java/lang/String:<init>	([BLjava/lang/String;)V
     //   49: astore_0
     //   50: aload_3
-    //   51: invokevirtual 316	java/io/ByteArrayOutputStream:close	()V
+    //   51: invokevirtual 317	java/io/ByteArrayOutputStream:close	()V
     //   54: aload_0
     //   55: areturn
     //   56: aload_3
     //   57: astore_2
     //   58: aload_3
     //   59: iload_1
-    //   60: invokevirtual 319	java/io/ByteArrayOutputStream:write	(I)V
+    //   60: invokevirtual 320	java/io/ByteArrayOutputStream:write	(I)V
     //   63: goto -46 -> 17
     //   66: astore_2
     //   67: aload_3
@@ -489,16 +488,16 @@ public final class b
     //   71: aload_0
     //   72: astore_2
     //   73: aload_3
-    //   74: invokestatic 292	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   74: invokestatic 293	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   77: pop
     //   78: aload_0
     //   79: ifnull -75 -> 4
     //   82: aload_0
-    //   83: invokevirtual 316	java/io/ByteArrayOutputStream:close	()V
+    //   83: invokevirtual 317	java/io/ByteArrayOutputStream:close	()V
     //   86: aconst_null
     //   87: areturn
     //   88: aload_3
-    //   89: invokevirtual 316	java/io/ByteArrayOutputStream:close	()V
+    //   89: invokevirtual 317	java/io/ByteArrayOutputStream:close	()V
     //   92: aconst_null
     //   93: areturn
     //   94: astore_0
@@ -507,7 +506,7 @@ public final class b
     //   97: aload_2
     //   98: ifnull +7 -> 105
     //   101: aload_2
-    //   102: invokevirtual 316	java/io/ByteArrayOutputStream:close	()V
+    //   102: invokevirtual 317	java/io/ByteArrayOutputStream:close	()V
     //   105: aload_0
     //   106: athrow
     //   107: astore_0
@@ -623,7 +622,7 @@ public final class b
     //   97: ldc_w 354
     //   100: iconst_0
     //   101: anewarray 4	java/lang/Object
-    //   104: invokestatic 236	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
+    //   104: invokestatic 237	com/tencent/bugly/proguard/x:c	(Ljava/lang/String;[Ljava/lang/Object;)Z
     //   107: pop
     //   108: aload_2
     //   109: ifnonnull +17 -> 126
@@ -710,7 +709,7 @@ public final class b
     //   281: areturn
     //   282: astore_0
     //   283: aload_0
-    //   284: invokestatic 292	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   284: invokestatic 293	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   287: pop
     //   288: aload_2
     //   289: areturn
@@ -733,7 +732,7 @@ public final class b
     //   317: aload_2
     //   318: astore_0
     //   319: aload 4
-    //   321: invokestatic 292	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   321: invokestatic 293	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   324: pop
     //   325: aload_2
     //   326: astore_0
@@ -763,7 +762,7 @@ public final class b
     //   379: areturn
     //   380: astore_2
     //   381: aload_2
-    //   382: invokestatic 292	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   382: invokestatic 293	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   385: pop
     //   386: aload_0
     //   387: areturn
@@ -778,7 +777,7 @@ public final class b
     //   400: athrow
     //   401: astore_0
     //   402: aload_0
-    //   403: invokestatic 292	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
+    //   403: invokestatic 293	com/tencent/bugly/proguard/x:a	(Ljava/lang/Throwable;)Z
     //   406: pop
     //   407: goto -8 -> 399
     //   410: astore_2
@@ -848,7 +847,6 @@ public final class b
   
   public static void a(boolean paramBoolean, String paramString)
   {
-    Object localObject;
     if (paramString != null)
     {
       a.add(new File(paramString, "rqd_record.eup"));
@@ -856,46 +854,19 @@ public final class b
       a.add(new File(paramString, "map_record.txt"));
       a.add(new File(paramString, "backup_record.txt"));
       if (paramBoolean) {
-        try
-        {
-          paramString = new File(paramString);
-          if ((paramString.canRead()) && (paramString.isDirectory()))
-          {
-            paramString = paramString.listFiles();
-            if (paramString != null)
-            {
-              int j = paramString.length;
-              int i = 0;
-              while (i < j)
-              {
-                localObject = paramString[i];
-                if ((((File)localObject).canRead()) && (((File)localObject).canWrite()) && (((File)localObject).length() == 0L)) {
-                  a.add(localObject);
-                }
-                i += 1;
-              }
-            }
-          }
-          if (a == null) {
-            return;
-          }
-        }
-        catch (Throwable paramString)
-        {
-          x.a(paramString);
-        }
+        c(paramString);
       }
     }
-    if (a.size() > 0)
+    if ((a != null) && (a.size() > 0))
     {
       paramString = a.iterator();
       while (paramString.hasNext())
       {
-        localObject = (File)paramString.next();
-        if ((((File)localObject).exists()) && (((File)localObject).canWrite()))
+        File localFile = (File)paramString.next();
+        if ((localFile.exists()) && (localFile.canWrite()))
         {
-          ((File)localObject).delete();
-          x.c("Delete record file %s", new Object[] { ((File)localObject).getAbsoluteFile() });
+          localFile.delete();
+          x.c("Delete record file %s", new Object[] { localFile.getAbsoluteFile() });
         }
       }
     }
@@ -1124,7 +1095,44 @@ public final class b
     }
   }
   
-  private static Map<String, Integer> c(String paramString)
+  public static void c(String paramString)
+  {
+    int i = 0;
+    if (paramString == null) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        paramString = new File(paramString);
+        if ((!paramString.canRead()) || (!paramString.isDirectory())) {
+          continue;
+        }
+        paramString = paramString.listFiles();
+        if (paramString == null) {
+          continue;
+        }
+        int j = paramString.length;
+        while (i < j)
+        {
+          Object localObject = paramString[i];
+          if ((localObject.canRead()) && (localObject.canWrite()) && (localObject.length() == 0L))
+          {
+            localObject.delete();
+            x.c("Delete empty record file %s", new Object[] { localObject.getAbsoluteFile() });
+          }
+          i += 1;
+        }
+        return;
+      }
+      catch (Throwable paramString)
+      {
+        x.a(paramString);
+      }
+    }
+  }
+  
+  private static Map<String, Integer> d(String paramString)
   {
     if (paramString == null) {
       return null;

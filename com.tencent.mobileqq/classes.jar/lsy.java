@@ -1,112 +1,50 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.persistence.Entity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.FeedsInfo;
-import tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.SocializeFeedsInfo;
+import mqq.app.MobileQQ;
 
-public class lsy
-  implements Runnable
+class lsy
+  implements View.OnClickListener
 {
-  public lsy(ArticleInfoModule paramArticleInfoModule, List paramList, ConcurrentHashMap paramConcurrentHashMap) {}
+  lsy(lsx paramlsx) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ArrayList localArrayList2 = new ArrayList();
-    ArrayList localArrayList1 = new ArrayList();
-    Iterator localIterator1 = this.jdField_a_of_type_JavaUtilList.iterator();
-    Object localObject;
-    long l;
-    int i;
-    label161:
-    ConcurrentHashMap localConcurrentHashMap;
-    Iterator localIterator2;
-    for (;;)
-    {
-      if (localIterator1.hasNext())
-      {
-        localObject = (oidb_cmd0x8c8.FeedsInfo)localIterator1.next();
-        if ((((oidb_cmd0x8c8.FeedsInfo)localObject).feeds_type.has()) && (((oidb_cmd0x8c8.FeedsInfo)localObject).msg_social_fees_info.has()) && (((oidb_cmd0x8c8.FeedsInfo)localObject).msg_social_fees_info.uint64_feeds_id.has()))
-        {
-          l = ((oidb_cmd0x8c8.FeedsInfo)localObject).msg_social_fees_info.uint64_feeds_id.get();
-          i = ((oidb_cmd0x8c8.FeedsInfo)localObject).feeds_type.get();
-          localObject = l + "" + i;
-          localObject = (ArticleInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
-          if (localObject != null)
-          {
-            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a((Entity)localObject);
-            localConcurrentHashMap = (ConcurrentHashMap)ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule).get(Integer.valueOf(0));
-            if (localConcurrentHashMap != null)
-            {
-              localIterator2 = localConcurrentHashMap.values().iterator();
-              do
-              {
-                if (!localIterator2.hasNext()) {
-                  break;
-                }
-                localObject = (ArticleInfo)localIterator2.next();
-              } while ((((ArticleInfo)localObject).mFeedId != l) || (((ArticleInfo)localObject).mFeedType != i));
-            }
-          }
-        }
-      }
+    int i = 0;
+    paramView = (lta)paramView.getTag();
+    if (lsx.a(this.a) == null) {
+      return;
+    }
+    awqx.b(null, "CliOper", "", "", "0X8009E26", "0X8009E26", 0, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("GAudioMemberListCtrl", 2, "onItemClick # mRelationUinStr = " + this.a.jdField_a_of_type_Long + " # memberUin = " + String.valueOf(paramView.jdField_a_of_type_Long));
+    }
+    lsx.a(this.a).getCurrentAccountUin();
+    Intent localIntent = new Intent();
+    localIntent.setAction("tencent.video.v2q.GaudioOpenTroopCard");
+    localIntent.putExtra("troopUin", String.valueOf(this.a.jdField_a_of_type_Long));
+    localIntent.putExtra("memberUin", String.valueOf(paramView.jdField_a_of_type_Long));
+    if (this.a.jdField_a_of_type_Int == 1) {
+      i = 1000;
     }
     for (;;)
     {
-      if (localObject != null)
-      {
-        localConcurrentHashMap.remove(Long.valueOf(((ArticleInfo)localObject).mRecommendSeq));
-        ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule, Integer.valueOf(0), (ArticleInfo)localObject);
-        localArrayList2.add(Long.valueOf(((ArticleInfo)localObject).mRecommendSeq));
+      localIntent.putExtra("uinType", i);
+      localIntent.setPackage(lsx.a(this.a).getApplication().getPackageName());
+      lsx.a(this.a).getApp().sendBroadcast(localIntent);
+      return;
+      if (this.a.jdField_a_of_type_Int == 2) {
+        i = 1004;
       }
-      localConcurrentHashMap = (ConcurrentHashMap)ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule).get(Integer.valueOf(70));
-      if (localConcurrentHashMap == null) {
-        break;
-      }
-      localIterator2 = localConcurrentHashMap.values().iterator();
-      do
-      {
-        if (!localIterator2.hasNext()) {
-          break;
-        }
-        localObject = (ArticleInfo)localIterator2.next();
-      } while ((((ArticleInfo)localObject).mFeedId != l) || (((ArticleInfo)localObject).mFeedType != i));
-      for (;;)
-      {
-        if (localObject == null) {
-          break label499;
-        }
-        localConcurrentHashMap.remove(Long.valueOf(((ArticleInfo)localObject).mRecommendSeq));
-        ArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule, Integer.valueOf(70), (ArticleInfo)localObject);
-        localArrayList1.add(Long.valueOf(((ArticleInfo)localObject).mRecommendSeq));
-        break;
-        QLog.d("ArticleInfoModule", 1, "remove artileinfo cache is null while feedid = " + l + "feedtype" + i);
-        break label161;
-        localObject = new ArrayList(localArrayList2);
-        localArrayList1 = new ArrayList(localArrayList1);
-        ThreadManager.getUIHandler().post(new lsz(this, (List)localObject, localArrayList1));
-        return;
-        localObject = null;
-      }
-      label499:
-      break;
-      localObject = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lsy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoInfo.TopBarInfo;
+import android.os.SystemClock;
 
-public final class lbt
-  implements Parcelable.Creator
+public class lbt
 {
-  public VideoInfo.TopBarInfo a(Parcel paramParcel)
-  {
-    return new VideoInfo.TopBarInfo(paramParcel);
-  }
+  public float a;
+  public long a;
   
-  public VideoInfo.TopBarInfo[] a(int paramInt)
+  public lbt(lbs paramlbs, float paramFloat)
   {
-    return new VideoInfo.TopBarInfo[paramInt];
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lbt
  * JD-Core Version:    0.7.0.1
  */

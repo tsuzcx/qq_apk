@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_service$ReqShareVideoCollectionList
-  extends MessageMicro
+  extends MessageMicro<ReqShareVideoCollectionList>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field collection_count = PBField.initUInt32(0);
@@ -27,7 +27,7 @@ public final class qqstory_service$ReqShareVideoCollectionList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqShareVideoCollectionList
  * JD-Core Version:    0.7.0.1
  */

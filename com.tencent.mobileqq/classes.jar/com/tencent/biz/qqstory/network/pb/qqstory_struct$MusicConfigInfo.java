@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_struct$MusicConfigInfo
-  extends MessageMicro
+  extends MessageMicro<MusicConfigInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField audio_url = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -31,7 +31,7 @@ public final class qqstory_struct$MusicConfigInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.MusicConfigInfo
  * JD-Core Version:    0.7.0.1
  */

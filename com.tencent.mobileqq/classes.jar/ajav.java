@@ -1,86 +1,81 @@
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.common.util.ImageUtil;
-import com.tencent.biz.common.util.Util;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.CookieManager;
-import com.tencent.smtt.sdk.CookieSyncManager;
-import com.tencent.widget.ActionSheet;
-import java.io.File;
-import java.net.URL;
+import java.security.KeyFactory;
+import java.security.Signature;
+import java.security.spec.X509EncodedKeySpec;
 
 public class ajav
-  implements Runnable
 {
-  public ajav(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, URLDrawable paramURLDrawable, ActionSheet paramActionSheet) {}
+  private String a;
+  private String b;
   
-  public void run()
+  public ajav(String paramString1, String paramString2)
   {
+    this.b = paramString1;
+    this.a = paramString2;
+  }
+  
+  public static boolean a(byte[] paramArrayOfByte1, String paramString, byte[] paramArrayOfByte2)
+  {
+    if ((paramArrayOfByte1 == null) || (TextUtils.isEmpty(paramString)) || (paramArrayOfByte2 == null) || (paramArrayOfByte2.length == 0) || (paramArrayOfByte1.length == 0)) {}
+    do
+    {
+      return false;
+      try
+      {
+        paramString = KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(baaw.decode(paramString.getBytes("UTF-8"), 0)));
+        Signature localSignature = Signature.getInstance("SHA1WithRSA");
+        localSignature.initVerify(paramString);
+        localSignature.update(paramArrayOfByte1);
+        boolean bool = localSignature.verify(paramArrayOfByte2);
+        return bool;
+      }
+      catch (Throwable paramArrayOfByte1) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("RSAVerify", 2, "verify failed");
+    return false;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    boolean bool = true;
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "QR Check Start!");
-      }
-      Object localObject = new Bundle();
-      String str1 = this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString();
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.a == null)
+      if ((bace.a(this.a)) && (bace.a(this.b)))
       {
-        CookieSyncManager.createInstance(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.getApplicationContext());
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.a = CookieManager.getInstance();
-      }
-      String str2 = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.a.getCookie(str1);
-      if (str2 != null)
-      {
-        ((Bundle)localObject).putString("Cookie", str2);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "Get cookie: " + Util.c(str2, new String[0]) + " from " + Util.b(str1, new String[0]));
+        byte[] arrayOfByte1 = bace.a(this.a);
+        byte[] arrayOfByte2 = bace.a(this.b);
+        if ((arrayOfByte1 == null) || (arrayOfByte1.length == 0) || (arrayOfByte2 == null) || (arrayOfByte2.length == 0)) {
+          break label104;
         }
-      }
-      localObject = ImageUtil.a(BaseApplication.getContext(), str1, (Bundle)localObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "saveTmpImage path = " + (String)localObject);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.c = ((String)localObject);
-      com.tencent.qbar.QbarCrashCollector.a = Util.b(str1, new String[0]);
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (TroopAvatarWallEditActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, new File((String)localObject))))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "has QRCode ");
+        if (paramInt == 0) {
+          return a(arrayOfByte1, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAq8i/7++SDj/syS1oKlYdNJXuRQo1IxcizuFBwq9Ohi9q9u0GInkVFi/3mRU6opILNqNVUoVncxnvfrBrrzxXgPkOow4TFTfo0f2wQRxsuVud/Fjtiz256JKFvIXHdTJ+ZAFIHLtcJMrDhvTUgIIfv5uDZIXARy2KFSzUhqoEwZt3I3Uv9beVecgYofjQ/N/YtG2uWb5dpHMXfsq6JpEpfKxbbFPYJLnrMol0ngsgDrF1h3C28R6l28jFL1nzkxBNt1dIrmitveA0dXbZhYWpRDjg7Ywwt96c1Qq85rs+TL6pNKAYt7aJy/6+PGfMcbkRrtsL72eokicKHnMKVC84fQIDAQAB", arrayOfByte2);
         }
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.runOnUiThread(new ajaw(this));
-      }
-      for (;;)
-      {
-        com.tencent.qbar.QbarCrashCollector.a = null;
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "no QRCode ");
+        if (1 != paramInt) {
+          break label102;
         }
+        bool = a(arrayOfByte1, "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5ZRiTq5kd+Bsb7Rsvrk/8kF3jRPEAln7kLVAKRi4+jb/gdKEAI9y5jhuyobFq9jLMqKCYKJKb8v/KaGjX0LFZg5+FnC/duF829s7lWPKXNggne+hQOwhWFiamCwf8r8Hzi3YmrKPR4iA/bJUwTbey9T0hKpYbB9QA7IpIQAmGd4cn1ylq/2vblqNwpVV53+SCSg5XRqIXwPYRL9siMZEJAtXbjbpHw8B18zYUGlh2XRJssZyNtgtHOQIvwmdUOGTVRTt7sBZy7adUnq3cpH6/qpdLlAVUAFq/WLwUHNviC+uW47884PSdwqHg8NdeIhitfbcdtOmCNt3OJUvf91L/QIDAQAB", arrayOfByte2);
+        return bool;
       }
-      return;
     }
-    catch (Exception localException)
+    catch (OutOfMemoryError localOutOfMemoryError)
     {
-      if (QLog.isColorLevel())
-      {
-        QLog.e("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "showActionSheet error : " + localException.getMessage());
-        return;
-      }
+      return false;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    catch (Throwable localThrowable)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.troop_avatar_wall.TroopAvatarWallEditActivity", 2, "showActionSheet error : " + localUnsatisfiedLinkError.getMessage());
-      }
+      return false;
     }
+    bool = false;
+    label102:
+    return bool;
+    label104:
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajav
  * JD-Core Version:    0.7.0.1
  */

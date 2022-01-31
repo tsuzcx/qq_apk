@@ -5,43 +5,43 @@ import android.os.SystemClock;
 public class FastScroller$ScrollFade
   implements Runnable
 {
-  long jdField_a_of_type_Long;
+  long a;
   long b;
   
   public FastScroller$ScrollFade(FastScroller paramFastScroller) {}
   
   int a()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetFastScroller.b() != 4) {
+    if (this.this$0.b() != 4) {
       return 208;
     }
     long l = SystemClock.uptimeMillis();
-    if (l > this.jdField_a_of_type_Long + this.b) {
+    if (l > this.a + this.b) {
       return 0;
     }
-    return (int)(208L - (l - this.jdField_a_of_type_Long) * 208L / this.b);
+    return (int)(208L - (l - this.a) * 208L / this.b);
   }
   
   void a()
   {
     this.b = 200L;
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    this.jdField_a_of_type_ComTencentWidgetFastScroller.b(4);
+    this.a = SystemClock.uptimeMillis();
+    this.this$0.b(4);
   }
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetFastScroller.b() != 4)
+    if (this.this$0.b() != 4)
     {
       a();
       return;
     }
     if (a() > 0)
     {
-      this.jdField_a_of_type_ComTencentWidgetFastScroller.a.invalidate();
+      this.this$0.a.invalidate();
       return;
     }
-    this.jdField_a_of_type_ComTencentWidgetFastScroller.b(0);
+    this.this$0.b(0);
   }
 }
 

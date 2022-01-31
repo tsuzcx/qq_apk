@@ -1,21 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qlink.QlinkShareJumpActivity;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.animation.AlphaAnimation;
+import android.widget.TextView;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
 public class amvg
-  implements DialogInterface.OnClickListener
+  implements Animator.AnimatorListener
 {
-  public amvg(QlinkShareJumpActivity paramQlinkShareJumpActivity) {}
+  public amvg(DataReportViewer paramDataReportViewer) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    paramDialogInterface.dismiss();
-    this.a.finish();
+    this.a.a.setVisibility(0);
+    paramAnimator = new AlphaAnimation(0.0F, 1.0F);
+    paramAnimator.setFillAfter(true);
+    paramAnimator.setDuration(200L);
+    this.a.a.startAnimation(paramAnimator);
+    paramAnimator.setAnimationListener(new amvh(this));
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amvg
  * JD-Core Version:    0.7.0.1
  */

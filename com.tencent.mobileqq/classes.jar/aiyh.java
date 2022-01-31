@@ -1,34 +1,36 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.tribe.view.TribeEditVideoButton;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
-
 public class aiyh
-  implements View.OnClickListener
 {
-  public aiyh(TribeEditVideoButton paramTribeEditVideoButton) {}
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    if (TribeEditVideoButton.a(this.a) == -1) {
-      if (!"barindex".equals(TribeEditVideoButton.a(this.a))) {
-        break label76;
-      }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{").append("errCode:").append(this.a).append(",cost:").append(this.b);
+    if (this.c > 0) {
+      localStringBuilder.append(",mem:").append(this.c);
     }
-    label76:
-    for (int i = 1;; i = 2)
-    {
-      ReportController.b(null, "dc00899", "Grp_tribe", "", "video_edit", "Clk_add_topic", i, 0, "", "", "", "");
-      TroopBarPublishUtils.a((Activity)this.a.a(), 1001, TribeEditVideoButton.a(this.a));
-      return;
+    if (this.d > 0) {
+      localStringBuilder.append(",cpu:").append(this.d);
     }
+    if (this.f != 0) {
+      localStringBuilder.append(",javaHeap:").append(this.f);
+    }
+    if (this.g != 0) {
+      localStringBuilder.append(",nativeHeap:").append(this.g);
+    }
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiyh
  * JD-Core Version:    0.7.0.1
  */

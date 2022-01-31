@@ -1,38 +1,79 @@
-import android.widget.Button;
-import com.tencent.mobileqq.richmedia.capture.fragment.CameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.cache.SDCardMountMonitorReceiver;
+import java.io.File;
 
 public class ahmy
-  implements Runnable
+  implements bftq
 {
-  public ahmy(CameraCaptureFragment paramCameraCaptureFragment, boolean paramBoolean) {}
+  private static ahmy jdField_a_of_type_Ahmy;
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private ahmz jdField_a_of_type_Ahmz;
+  private String jdField_a_of_type_JavaLangString = "";
   
-  public void run()
+  private ahmy()
   {
-    if (!CameraCaptureFragment.c(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment))
+    a();
+    SDCardMountMonitorReceiver.a().a(this);
+  }
+  
+  public static ahmy a()
+  {
+    if (jdField_a_of_type_Ahmy == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      if (!this.jdField_a_of_type_Boolean) {
-        break label73;
+      if (jdField_a_of_type_Ahmy == null) {
+        jdField_a_of_type_Ahmy = new ahmy();
       }
-      if (!CameraCaptureFragment.d(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.e.setVisibility(0);
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.e.setSelected(true);
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.a.c(this.jdField_a_of_type_Boolean);
-        CameraCaptureFragment.c(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment, false);
+      return jdField_a_of_type_Ahmy;
+    }
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_JavaLangString = bftg.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("StorageManager", 2, "updateStorePath, storeVideoPath=" + this.jdField_a_of_type_JavaLangString);
+    }
+    try
+    {
+      File localFile = new File(this.jdField_a_of_type_JavaLangString);
+      if (!localFile.exists()) {
+        localFile.mkdirs();
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("StorageManager", 2, "create root path directory error", localException);
+    }
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StorageManager", 2, "sdcard mount receiver, isMount=" + paramBoolean);
+    }
+    String str = bftg.b();
+    if ((this.jdField_a_of_type_Ahmz != null) && (!str.equals(this.jdField_a_of_type_JavaLangString)))
+    {
+      if (paramBoolean) {
+        this.jdField_a_of_type_Ahmz.a(1, this.jdField_a_of_type_JavaLangString);
       }
     }
-    return;
-    label73:
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.e.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.e.setSelected(false);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.a.c(this.jdField_a_of_type_Boolean);
-    CameraCaptureFragment.c(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment, false);
+    else {
+      return;
+    }
+    this.jdField_a_of_type_Ahmz.a(0, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahmy
  * JD-Core Version:    0.7.0.1
  */

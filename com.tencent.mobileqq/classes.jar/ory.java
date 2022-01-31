@@ -1,22 +1,10 @@
-import android.view.View;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
+import android.graphics.Bitmap;
 
-public class ory
+public abstract interface ory
 {
-  public View a;
-  public View b;
+  public abstract void a(qtb paramqtb, opw paramopw, int paramInt);
   
-  public ory(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
-  {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.b = paramView.findViewById(2131362730);
-  }
-  
-  public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
-  {
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new orz(this));
-  }
+  public abstract void a(qtb paramqtb, opw paramopw, long paramLong, Bitmap paramBitmap);
 }
 
 

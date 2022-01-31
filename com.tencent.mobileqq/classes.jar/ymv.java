@@ -1,46 +1,38 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager.CallBack;
-import com.tencent.mobileqq.activity.specialcare.VipSpecialSoundWebViewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import java.util.HashMap;
-import java.util.List;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import org.json.JSONObject;
 
-public class ymv
-  implements QvipSpecialSoundManager.CallBack
+class ymv
+  implements ynl
 {
-  public ymv(VipSpecialSoundWebViewPlugin paramVipSpecialSoundWebViewPlugin, String paramString) {}
-  
-  public void a(boolean paramBoolean)
+  public boolean a(ymw paramymw, String paramString, String... paramVarArgs)
   {
-    if (paramBoolean) {}
-    try
+    String str = null;
+    if (paramymw != null) {}
+    for (paramString = paramymw.a();; paramString = null)
     {
-      Object localObject = "key_special_sound_list" + this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin.mRuntime.a().getCurrentAccountUin();
-      localObject = (List)QvipSpecialSoundManager.a.get(localObject);
-      VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, this.jdField_a_of_type_JavaLangString, (List)localObject);
-      return;
-    }
-    catch (Exception localException1)
-    {
-      localException1.printStackTrace();
+      if (paramymw != null) {
+        str = paramymw.a();
+      }
+      AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, false, "doAdReport", str);
       try
       {
-        VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, this.jdField_a_of_type_JavaLangString, null);
-        return;
+        paramymw = new JSONObject(paramVarArgs[0]);
+        if (paramymw.getInt("reportType") == 1) {
+          yoo.a(paramymw.getInt("convType"), paramymw.getString("traceId"), paramymw.getString("productId"));
+        }
+        return true;
       }
-      catch (Exception localException2)
+      catch (Exception paramymw)
       {
-        localException2.printStackTrace();
+        paramymw.printStackTrace();
       }
     }
-    VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, this.jdField_a_of_type_JavaLangString, null);
-    return;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ymv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,37 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnKeyListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.qphone.base.util.QLog;
 
-public class mvg
-  implements View.OnKeyListener
+class mvg
+  implements View.OnClickListener
 {
-  private mvg(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
+  mvg(mut parammut, int paramInt) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    paramView = ReadInJoyNewSearchActivity.a(this.a).getText().toString().trim();
-    if ((66 == paramInt) && (paramKeyEvent.getAction() == 0) && (!TextUtils.isEmpty(paramView)))
+    if (this.jdField_a_of_type_Mut.d)
     {
-      paramKeyEvent = (InputMethodManager)this.a.getSystemService("input_method");
-      if (paramKeyEvent != null) {
-        paramKeyEvent.hideSoftInputFromWindow(ReadInJoyNewSearchActivity.a(this.a).getWindowToken(), 2);
+      this.jdField_a_of_type_Mut.e = true;
+      if (this.jdField_a_of_type_Int == 0)
+      {
+        awqx.b(this.jdField_a_of_type_Mut.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_public", "", "connect", "Clk_num", 0, 0, "", "", "", this.jdField_a_of_type_Mut.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
+        paramView = "http://qun.qq.com/qqweb/m/qun/qun_pub_bind/qun2pub.html?_wv=1027&scode=" + this.jdField_a_of_type_Mut.jdField_a_of_type_JavaLangString;
       }
-      ReadInJoyNewSearchActivity.a(this.a, paramView);
-      this.a.a(paramView);
     }
-    return false;
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, "jumpTo:" + paramView);
+      }
+      mut.c(this.jdField_a_of_type_Mut, paramView);
+      return;
+      awqx.b(this.jdField_a_of_type_Mut.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_public", "", "connect", "Clk_grp", 0, 0, "", "", "", this.jdField_a_of_type_Mut.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
+      paramView = "http://qun.qq.com/qqweb/m/qun/qun_pub_bind/qunlist.html?_wv=1027&power=1&scode=" + this.jdField_a_of_type_Mut.jdField_a_of_type_JavaLangString;
+      continue;
+      awqx.b(this.jdField_a_of_type_Mut.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_public", "", "connect", "Clk_grp", 0, 0, "", "", "", this.jdField_a_of_type_Mut.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
+      paramView = "http://qun.qq.com/qqweb/m/qun/qun_pub_bind/qunlist.html?_wv=1027&scode=" + this.jdField_a_of_type_Mut.jdField_a_of_type_JavaLangString;
+    }
   }
 }
 

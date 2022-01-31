@@ -1,19 +1,23 @@
-import android.support.annotation.NonNull;
+import android.os.Handler;
 import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.storyHome.model.FeedManager;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.support.v4.util.LruCache;
+import com.tencent.biz.pubaccount.readinjoy.drawable.ReadInJoyLottieDrawable.4;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import java.io.File;
 
 public class oex
-  extends SimpleJob
+  implements OnCompositionLoadedListener
 {
-  public oex(FeedSegment paramFeedSegment, String paramString) {}
+  public oex(ReadInJoyLottieDrawable.4 param4) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
   {
-    FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment).a(this.jdField_a_of_type_JavaLangString);
-    return null;
+    if (paramLottieComposition != null)
+    {
+      oet.a().put(this.a.jdField_a_of_type_JavaIoFile.getAbsolutePath(), paramLottieComposition);
+      oet.a(this.a.this$0).post(this.a.jdField_a_of_type_JavaLangRunnable);
+    }
   }
 }
 

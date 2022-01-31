@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class WeiyunPB$ExtensionReq
-  extends MessageMicro
+  extends MessageMicro<ExtensionReq>
 {
   public static final int BYTES_SIG_FIELD_NUMBER = 20;
   public static final int INT32_PHONE_CONVERT_TYPE_FIELD_NUMBER = 4;
@@ -34,7 +34,7 @@ public final class WeiyunPB$ExtensionReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cooperation.weiyun.channel.pb.WeiyunPB.ExtensionReq
  * JD-Core Version:    0.7.0.1
  */

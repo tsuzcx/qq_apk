@@ -1,24 +1,26 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.RecommendCommonMessage;
-import java.lang.ref.WeakReference;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class acde
-  implements Runnable
+  implements TextWatcher
 {
-  public acde(RecommendCommonMessage paramRecommendCommonMessage, WeakReference paramWeakReference) {}
+  private acde(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQQAppInterface != null) {
-      localQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.extStr);
-    }
+    paramEditable = this.a.a.getText().toString().trim();
+    this.a.a(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acde
  * JD-Core Version:    0.7.0.1
  */

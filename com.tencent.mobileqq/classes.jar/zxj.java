@@ -1,34 +1,20 @@
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.GetNearbyRecommender;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class zxj
-  extends CardObserver
+  implements DialogInterface.OnDismissListener
 {
-  public zxj(GetNearbyRecommender paramGetNearbyRecommender) {}
+  public zxj(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  protected void c(boolean paramBoolean, String paramString, Card paramCard)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "GetNearbyRecommender onGetDetailInfo|uin=" + paramString);
-    }
-    if (!GetNearbyRecommender.a(this.a).b.getCurrentAccountUin().equals(paramString)) {
-      return;
-    }
-    if (!paramBoolean)
-    {
-      this.a.a(7);
-      return;
-    }
-    this.a.a(6);
+    this.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zxj
  * JD-Core Version:    0.7.0.1
  */

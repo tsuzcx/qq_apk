@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class MobileQQDetect$PushDetectSrategyPacket
-  extends MessageMicro
+  extends MessageMicro<PushDetectSrategyPacket>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_buffer = PBField.initBytes(ByteStringMicro.EMPTY);

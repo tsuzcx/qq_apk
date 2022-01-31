@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0x7$MsgBody$RNFCNotify
-  extends MessageMicro
+  extends MessageMicro<RNFCNotify>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_token = PBField.initBytes(ByteStringMicro.EMPTY);

@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.app.ThreadManager;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-class aadd
-  implements Runnable
+public class aadd
+  implements actb
 {
-  aadd(aadc paramaadc) {}
+  public aadd(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public void a(Bitmap paramBitmap, acsj paramacsj, int paramInt)
   {
-    ThreadManager.post(this.a, 5, null, true);
+    this.a.ap();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aadd
  * JD-Core Version:    0.7.0.1
  */

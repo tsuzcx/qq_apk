@@ -1,22 +1,10 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.pubaccount.readinjoy.skin.CommonSkinRes;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
-import com.tencent.common.app.AppInterface;
-import mqq.app.MobileQQ;
-
-public class mat
-  extends CommonSkinRes
+public abstract interface mat
 {
-  public mat(ReadInJoySkinManager paramReadInJoySkinManager, AppInterface paramAppInterface) {}
-  
-  public Drawable a()
-  {
-    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_kandian_selected");
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mat
  * JD-Core Version:    0.7.0.1
  */

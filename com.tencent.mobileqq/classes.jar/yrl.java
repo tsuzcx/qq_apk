@@ -1,61 +1,44 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.gdtad.views.image.GdtGifImageView;
+import com.tencent.image.URLDrawable;
+import java.lang.ref.WeakReference;
+import java.net.URL;
 
-public final class yrl
-  implements Runnable
+public class yrl
+  implements yrk
 {
-  public yrl(long paramLong, int paramInt, View paramView, ApolloRender paramApolloRender) {}
+  public yrl(GdtGifImageView paramGdtGifImageView) {}
   
-  public void run()
+  public void a(URLDrawable paramURLDrawable)
   {
-    try
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
+    for (String str = paramURLDrawable.getURL().toString();; str = null)
     {
-      ApolloRender.access$002(this.jdField_a_of_type_Long);
-      Intent localIntent;
-      if (this.jdField_a_of_type_Int == 0)
-      {
-        localIntent = new Intent("android.intent.action.PICK");
-        localIntent.setType("image/*");
-        ((Activity)this.jdField_a_of_type_AndroidViewView.getContext()).startActivityForResult(localIntent, 14006);
-        return;
+      yny.b("GdtImageView", String.format("onLoadSuccessful %s", new Object[] { str }));
+      GdtGifImageView.a(this.a, paramURLDrawable, str);
+      if ((GdtGifImageView.a(this.a) != null) && (GdtGifImageView.a(this.a).get() != null) && (GdtGifImageView.a(this.a))) {
+        ((yrm)GdtGifImageView.a(this.a).get()).a(true);
       }
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        localIntent = new Intent();
-        localIntent.setAction("android.media.action.IMAGE_CAPTURE");
-        localIntent.addCategory("android.intent.category.DEFAULT");
-        ApolloRender localApolloRender = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender;
-        ApolloRender.access$102(new File(ApolloRender.CMSHOW_FILE_PATH));
-        localApolloRender = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender;
-        ApolloRender.access$100().createNewFile();
-        localApolloRender = this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender;
-        localIntent.putExtra("output", Uri.fromFile(ApolloRender.access$100()));
-        ((Activity)this.jdField_a_of_type_AndroidViewView.getContext()).startActivityForResult(localIntent, 14005);
-        return;
-      }
+      return;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+  }
+  
+  public void b(URLDrawable paramURLDrawable)
+  {
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
+    for (String str = paramURLDrawable.getURL().toString();; str = null)
     {
-      if (QLog.isColorLevel())
-      {
-        QLog.d("ApolloRender", 2, localOutOfMemoryError.getMessage());
-        return;
+      yny.b("GdtImageView", String.format("onLoadFailed %s", new Object[] { str }));
+      GdtGifImageView.a(this.a, paramURLDrawable, str);
+      if ((GdtGifImageView.a(this.a) != null) && (GdtGifImageView.a(this.a).get() != null)) {
+        ((yrm)GdtGifImageView.a(this.a).get()).a(false);
       }
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ApolloRender", 2, "imageselector  fail e=" + localException.toString());
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yrl
  * JD-Core Version:    0.7.0.1
  */

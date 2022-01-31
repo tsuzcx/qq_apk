@@ -1,54 +1,35 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.RemoteException;
-import com.tencent.mobileqq.nearby.ipc.MainProcessInterface;
-import com.tencent.mobileqq.nearby.ipc.MainProcessInterface.Stub;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcess;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
 
 public class aezu
-  implements ServiceConnection
+  extends Handler
 {
-  public aezu(NearbyProcess paramNearbyProcess) {}
+  public aezu(SystemMsgListView paramSystemMsgListView) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyIpcMainProcessInterface = MainProcessInterface.Stub.a(paramIBinder);
-    try
+    switch (paramMessage.what)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyIpcMainProcessInterface.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyIpcNearbyProcessInterface);
-      if (QLog.isColorLevel()) {
-        QLog.i("nearby_ipc_log_tag", 2, "nearbyProcess onServiceConnected.");
-      }
-      return;
-    }
-    catch (RemoteException paramComponentName)
-    {
-      for (;;)
+    default: 
+    case 1012: 
+      do
       {
-        if (QLog.isDevelopLevel()) {
-          paramComponentName.printStackTrace();
-        }
-      }
-    }
-  }
-  
-  public void onServiceDisconnected(ComponentName arg1)
-  {
-    synchronized (NearbyProcess.a(this.a))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyIpcMainProcessInterface = null;
-      if (QLog.isColorLevel()) {
-        QLog.i("nearby_ipc_log_tag", 2, "nearbyProcess onServiceDisConnected.");
-      }
+        return;
+      } while (SystemMsgListView.a(this.a) == null);
+      this.a.i();
+      SystemMsgListView.a(this.a).notifyDataSetChanged();
       return;
     }
+    paramMessage = SystemMsgListView.a(this.a).getResources().getString(2131654092);
+    bbmy.a(SystemMsgListView.a(this.a), 1, paramMessage, 0).b(this.a.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aezu
  * JD-Core Version:    0.7.0.1
  */

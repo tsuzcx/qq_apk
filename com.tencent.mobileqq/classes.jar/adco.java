@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
-import com.tencent.mobileqq.filemanager.data.FMTransC2CMsgInfo;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.widget.GridView;
 
-class adco
-  implements Runnable
+public class adco
+  extends acjc
 {
-  adco(adcm paramadcm, byte[] paramArrayOfByte, FMTransC2CMsgInfo paramFMTransC2CMsgInfo) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_Adcm.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a(this.jdField_a_of_type_Adcm.jdField_a_of_type_JavaLangString, 529, 4, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo);
-  }
+  public RelativeLayout a;
+  public GridView a;
+  public RelativeLayout b;
+  public TextView b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adco
  * JD-Core Version:    0.7.0.1
  */

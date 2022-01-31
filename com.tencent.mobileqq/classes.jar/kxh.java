@@ -1,58 +1,32 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.Advertisement.view.AdvertisementSplitedProgressBar;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.av.business.manager.filter.FilterItem;
+import com.tencent.mobileqq.utils.SecUtil;
 
-public class kxh
-  implements Runnable
+class kxh
+  implements axrt
 {
-  public kxh(VideoCoverView paramVideoCoverView) {}
+  kxh(kxf paramkxf) {}
   
-  public void run()
+  public void onResp(axsq paramaxsq)
   {
-    if ((VideoCoverView.a(this.a) != null) && (VideoCoverView.a(this.a).isPlaying())) {}
-    for (;;)
-    {
-      try
-      {
-        i = (int)((float)VideoCoverView.a(this.a).getCurrentPostion() * 1.0F * 100.0F / (float)this.a.a);
-        if (VideoCoverView.b(this.a) != VideoCoverView.a(this.a).c) {
-          continue;
-        }
-        if ((i > VideoCoverView.a(this.a).d) || ((i == 0) && (VideoCoverView.a(this.a).d > 50)))
-        {
-          localAdvertisementSplitedProgressBar = VideoCoverView.a(this.a);
-          j = VideoCoverView.b(this.a);
-          if (i <= 0) {
-            continue;
-          }
-          localAdvertisementSplitedProgressBar.setProgress(j, i);
-        }
-      }
-      catch (Exception localException)
-      {
-        AdvertisementSplitedProgressBar localAdvertisementSplitedProgressBar;
-        int j;
-        continue;
-        int i = 0;
-        continue;
-      }
-      VideoCoverView.a(this.a).postDelayed(this, 50L);
-      return;
-      i = 0;
-      continue;
-      localAdvertisementSplitedProgressBar = VideoCoverView.a(this.a);
-      j = VideoCoverView.b(this.a);
-      if (i <= 0) {
-        continue;
-      }
-      localAdvertisementSplitedProgressBar.setProgress(j, i);
+    FilterItem localFilterItem = (FilterItem)paramaxsq.jdField_a_of_type_Axsp.a();
+    if (paramaxsq.jdField_a_of_type_Int != 0) {
+      krx.c("EffectFilterTools", "download IconFile. errcode = " + paramaxsq.b + "|" + localFilterItem.getId());
     }
+    String str;
+    do
+    {
+      return;
+      str = SecUtil.getFileMd5(paramaxsq.jdField_a_of_type_Axsp.c);
+    } while (localFilterItem.getIconMd5().equalsIgnoreCase(str));
+    krx.c("EffectFilterTools", "download IconFile faild : md5 is not match: " + localFilterItem.getIconMd5() + "|" + str);
+    bace.d(paramaxsq.jdField_a_of_type_Axsp.c);
   }
+  
+  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     kxh
  * JD-Core Version:    0.7.0.1
  */

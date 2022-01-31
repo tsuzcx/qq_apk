@@ -1,72 +1,26 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
-import com.tencent.mobileqq.nearby.gameroom.GameQuickWordsPanel;
-import com.tencent.widget.AbsListView.LayoutParams;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
 
 public class aevw
-  extends BaseAdapter
+  implements aexf
 {
-  protected int a;
+  public aevw(SearchContactsFragment paramSearchContactsFragment) {}
   
-  public aevw(GameQuickWordsPanel paramGameQuickWordsPanel)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_Int = 80000001;
+    if (!TextUtils.isEmpty(paramString))
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.getContext()).inflate(2130968639, null);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, AIOUtils.a(46.0F, this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.getResources())));
-      paramViewGroup = new aevx(this);
-      paramViewGroup.a = ((TextView)paramView.findViewById(2131362993));
-      paramView.setTag(paramViewGroup);
+      awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "add_page", "", "search_grp", "clk_label", 0, 0, "", "", paramString, "");
+      this.a.d = false;
+      this.a.a(paramString, false);
     }
-    for (;;)
-    {
-      String str = (String)getItem(paramInt);
-      paramViewGroup.a.setText(str);
-      paramViewGroup.a.setTextColor(this.jdField_a_of_type_Int);
-      return paramView;
-      paramViewGroup = (aevx)paramView.getTag();
-    }
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    HashMap localHashMap = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.a();
-    if (localHashMap.containsKey("quickWordColor")) {
-      this.jdField_a_of_type_Int = ((Integer)localHashMap.get("quickWordColor")).intValue();
-    }
-    super.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aevw
  * JD-Core Version:    0.7.0.1
  */

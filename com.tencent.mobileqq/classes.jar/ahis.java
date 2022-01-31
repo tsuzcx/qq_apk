@@ -1,52 +1,28 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class ahis
-  extends MessageObserver
+  implements awiw
 {
-  public ahis(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
+  public ahis(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void a(long paramLong1, int paramInt, long paramLong2)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (ReceiptMessageDetailFragment.c(this.a) == paramLong1)
-    {
-      if (paramInt != 0) {
-        break label109;
-      }
-      QLog.d("ReceiptMessageDetailFragment", 4, "get read status in c2c succs with readtime: " + paramLong2);
-      if (paramLong2 > 0L) {
-        ReceiptMessageDetailFragment.a(this.a, 1, 1, true);
-      }
-      if (this.a.isAdded())
-      {
-        ReceiptMessageDetailFragment localReceiptMessageDetailFragment = this.a;
-        if (paramLong2 <= 0L) {
-          break label104;
-        }
-        paramInt = 1;
-        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, paramInt, true);
-      }
-      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
+    if (QLog.isColorLevel()) {
+      QLog.d(".photo", 2, "single tap focus " + paramBoolean1);
     }
-    label104:
-    label109:
-    do
+    ahji.a(paramBoolean1);
+    if (paramBoolean1)
     {
+      NewFlowCameraActivity.h(this.a, true);
       return;
-      paramInt = 0;
-      break;
-      QLog.d("ReceiptMessageDetailFragment", 4, "get read status in c2c fail with reply code: " + paramInt);
-      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
-    } while (!this.a.isAdded());
-    ReceiptMessageDetailFragment.a(this.a).sendEmptyMessage(20);
+    }
+    this.a.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahis
  * JD-Core Version:    0.7.0.1
  */

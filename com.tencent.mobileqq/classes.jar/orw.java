@@ -1,93 +1,97 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import com.tencent.biz.qqstory.utils.DateUtils;
+import com.tencent.biz.pubaccount.readinjoy.preload.util.FeedsPreloadExposeReport.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
 
 public class orw
 {
-  public View a;
-  public TextView a;
-  public View b;
-  public TextView b;
-  public View c;
-  public TextView c;
-  public View d;
-  public TextView d;
-  
-  public orw(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
+  public static void a(List<ArticleInfo> paramList, String paramString)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372065));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364227));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364226));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372067));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131372063);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131372062);
-    this.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131372060);
-    this.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131372061);
+    QLog.d("FeedsPreloadExposeReport", 1, "reportFeedsExposeRewrite.");
+    Object localObject = (ohd)((QQAppInterface)obz.a()).getManager(163);
+    if (localObject != null)
+    {
+      localObject = ((ohd)localObject).a();
+      ort.a().a(new FeedsPreloadExposeReport.1((ogy)localObject, paramList, paramString));
+      return;
+    }
+    QLog.d("FeedsPreloadExposeReport", 1, "readInJoyLogicManager is null.");
   }
   
-  public void a(TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt)
+  public static void a(boolean paramBoolean, long paramLong, int paramInt)
   {
-    Object localObject = DateUtils.a(paramTroopStoryItemInfo.publishTime);
-    if (TextUtils.isEmpty(localObject[0]))
+    String str = obz.a();
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("retCode", String.valueOf(paramInt));
+    localHashMap.put("uin", str);
+    AppRuntime localAppRuntime = obz.a();
+    if ((localAppRuntime == null) || (paramLong < 0L) || (paramLong > 30000L))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(localObject[1]);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-      if ((paramInt > 0) && (((TroopStoryItemInfo)this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.get(paramInt - 1)).itemType == 0))
+      QLog.d("FeedsPreloadExposeReport", 1, "app is null or cost is not available, reportFeedsPreloadExposeMonitorData");
+      return;
+    }
+    awrn.a(localAppRuntime.getApplication()).a(str, "actFeedsPreloadExposeReport", paramBoolean, paramLong, 0L, localHashMap, null);
+  }
+  
+  private static List<ReportInfo> b(List<ArticleInfo> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      paramList = new ArrayList(paramList).iterator();
+      while (paramList.hasNext())
       {
-        this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        Object localObject1 = (ArticleInfo)paramList.next();
+        Object localObject2;
+        if ((obz.t((BaseArticleInfo)localObject1)) && (((ArticleInfo)localObject1).mNewPolymericInfo != null) && (((ArticleInfo)localObject1).mNewPolymericInfo.a != null))
+        {
+          localObject1 = ((ArticleInfo)localObject1).mNewPolymericInfo.a.iterator();
+          while (((Iterator)localObject1).hasNext())
+          {
+            localObject2 = (ppv)((Iterator)localObject1).next();
+            ReportInfo localReportInfo = new ReportInfo();
+            localReportInfo.mUin = obz.a();
+            localReportInfo.mOperation = 56;
+            localReportInfo.mSourceArticleId = ((ppv)localObject2).a;
+            localReportInfo.mInnerId = ((ppv)localObject2).g;
+            localReportInfo.mAlgorithmId = ((int)((ppv)localObject2).b);
+            localReportInfo.mGWCommonData = "";
+            localArrayList.add(localReportInfo);
+          }
+        }
+        else
+        {
+          localObject2 = new ReportInfo();
+          ((ReportInfo)localObject2).mUin = obz.a();
+          ((ReportInfo)localObject2).mOperation = 56;
+          ((ReportInfo)localObject2).mSourceArticleId = ((ArticleInfo)localObject1).mArticleID;
+          ((ReportInfo)localObject2).mInnerId = ((ArticleInfo)localObject1).innerUniqueID;
+          ((ReportInfo)localObject2).mAlgorithmId = ((int)((ArticleInfo)localObject1).mAlgorithmID);
+          ((ReportInfo)localObject2).mGWCommonData = ((ArticleInfo)localObject1).mGWCommonData;
+          localArrayList.add(localObject2);
+          if (((ArticleInfo)localObject1).hasOnlyTwoVideoFeeds())
+          {
+            localObject1 = (ArticleInfo)((ArticleInfo)localObject1).mSubArtilceList.get(0);
+            localObject2 = new ReportInfo();
+            ((ReportInfo)localObject2).mUin = obz.a();
+            ((ReportInfo)localObject2).mOperation = 56;
+            ((ReportInfo)localObject2).mSourceArticleId = ((ArticleInfo)localObject1).mArticleID;
+            ((ReportInfo)localObject2).mInnerId = ((ArticleInfo)localObject1).innerUniqueID;
+            ((ReportInfo)localObject2).mAlgorithmId = ((int)((ArticleInfo)localObject1).mAlgorithmID);
+            ((ReportInfo)localObject2).mGWCommonData = ((ArticleInfo)localObject1).mGWCommonData;
+            localArrayList.add(localObject2);
+          }
+        }
       }
-      while (paramTroopStoryItemInfo.publishCount == 0)
-      {
-        this.jdField_d_of_type_AndroidWidgetTextView.setText("暂无小视频");
-        return;
-        this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      }
     }
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(localObject[1]);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(localObject[0]);
-    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    if ((paramInt > 0) && (((TroopStoryItemInfo)this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.get(paramInt - 1)).itemType == 0))
-    {
-      this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_c_of_type_AndroidViewView.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      break;
-      this.jdField_d_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_c_of_type_AndroidViewView.setVisibility(8);
-    }
-    localObject = new StringBuilder();
-    ((StringBuilder)localObject).append(paramTroopStoryItemInfo.publishCount).append("个小视频");
-    if (paramTroopStoryItemInfo.dayCommentCount > 0)
-    {
-      ((StringBuilder)localObject).append(" 评论").append(paramTroopStoryItemInfo.dayCommentCount);
-      if (paramTroopStoryItemInfo.dayLikeCount > 0) {
-        ((StringBuilder)localObject).append("·");
-      }
-    }
-    if (paramTroopStoryItemInfo.dayLikeCount > 0)
-    {
-      if (paramTroopStoryItemInfo.dayCommentCount <= 0) {
-        ((StringBuilder)localObject).append(" ");
-      }
-      ((StringBuilder)localObject).append("赞").append(paramTroopStoryItemInfo.dayLikeCount);
-    }
-    this.jdField_d_of_type_AndroidWidgetTextView.setText(((StringBuilder)localObject).toString());
+    return localArrayList;
   }
 }
 

@@ -1,73 +1,86 @@
-import com.tencent.mobileqq.leba.LebaFeedsAdapter;
-import com.tencent.mobileqq.leba.LebaFeedsObserver;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.SendMessageHandler;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Map;
 
-public class aeiq
-  extends LebaFeedsObserver
+class aeiq
+  extends ajmm
 {
-  public aeiq(LebaWithFeeds paramLebaWithFeeds) {}
+  aeiq(aegy paramaegy) {}
   
-  public void a(boolean paramBoolean)
+  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.leba_with_feeds", 2, "onLoadLocalData" + paramBoolean);
-    }
-    if (LebaWithFeeds.a(this.a) == null)
+    if ((paramString1 == null) || (!paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) || (paramInt1 != this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int))
     {
-      QLog.e("Q.lebatab.leba_with_feeds", 1, "onLoadLocalData, mFeedsAdapter is null");
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError exception uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
+      }
       return;
     }
-    LebaWithFeeds.a(this.a).a(false);
-    LebaWithFeeds.a(this.a, true, 1);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onUpdateSendMsgError uin " + paramString1 + " type " + paramInt1 + " uniseq " + paramLong2);
+    }
+    this.a.e(196608);
   }
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.leba_with_feeds", 2, "onGetDynamicFeeds isSuccess=" + paramBoolean + ", eventType=" + paramInt1 + ", dataState=" + paramInt2);
-    }
-    if (LebaWithFeeds.a(this.a) == null)
+    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
     {
-      QLog.e("Q.lebatab.leba_with_feeds", 1, "onGetDynamicFeeds, mFeedsAdapter is null");
-      return;
-    }
-    if (paramInt1 == 1)
-    {
-      LebaWithFeeds.b(this.a, false);
-      if (!paramBoolean) {
-        break label150;
-      }
-      LebaWithFeeds.a(this.a).e();
-      if (paramInt2 != 1) {
-        break label145;
+      ChatActivityUtils.b();
+      if (paramBoolean) {
+        this.a.m();
       }
     }
-    label145:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      LebaWithFeeds.a(this.a).a(paramBoolean);
-      LebaWithFeeds.a(this.a, false, 2);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {}
+    while (!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
       return;
-      if (paramInt1 != 2) {
-        break;
+    }
+    this.a.u = true;
+    this.a.a(262144, null, paramLong);
+  }
+  
+  protected void a(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    if ((paramBoolean) && (paramArrayOfString != null))
+    {
+      paramArrayOfString = paramArrayOfString[0];
+      if (this.a.jdField_a_of_type_Aynx.b.contains(paramArrayOfString))
+      {
+        this.a.jdField_a_of_type_Aynx.a.put(paramArrayOfString, Integer.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramArrayOfString, 1)));
+        this.a.jdField_a_of_type_Aynx.d();
+        this.a.jdField_a_of_type_Aynx.e();
+        this.a.jdField_a_of_type_Aynx.c();
       }
-      LebaWithFeeds.c(this.a, false);
-      break;
     }
-    label150:
-    if (paramInt1 == 2)
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if ((paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)))
     {
-      LebaWithFeeds.a(this.a).d();
-      return;
+      ChatActivityUtils.b();
+      if (paramBoolean) {
+        this.a.m();
+      }
     }
-    LebaWithFeeds.a(this.a).e();
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    this.a.e(65536);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeiq
  * JD-Core Version:    0.7.0.1
  */

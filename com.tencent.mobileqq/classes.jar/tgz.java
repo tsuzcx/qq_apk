@@ -1,22 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import com.tencent.widget.AbsListView;
 
 public class tgz
-  implements DialogInterface.OnClickListener
+  implements begh
 {
-  public tgz(NotificationActivity paramNotificationActivity) {}
+  public tgz(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new tha(this), 1000L);
+    this.a.b = paramInt1;
   }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tgz
  * JD-Core Version:    0.7.0.1
  */

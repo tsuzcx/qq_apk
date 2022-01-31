@@ -1,37 +1,45 @@
-import com.tencent.biz.qrcode.util.QRUtils;
+import android.graphics.Canvas;
+import com.tencent.av.doodle.MySurfaceView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
-public final class lbx
-  implements WXShareHelper.WXShareListener
+public class lbx
+  extends lbw
 {
-  public lbx(String paramString) {}
+  private lby a;
   
-  public void a(BaseResp paramBaseResp)
+  public lbx(int paramInt)
   {
-    if ((this.a == null) || (!this.a.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    BaseApplicationImpl.getContext();
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      QRUtils.a(1, 2131435319);
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      return;
-      QRUtils.a(2, 2131435318);
-    }
+    this.jdField_a_of_type_Lby = new lby();
+    a(paramInt);
+  }
+  
+  private void a(int paramInt)
+  {
+    this.jdField_a_of_type_Lby.a(BaseApplicationImpl.getApplication(), 2131230735, paramInt);
+    this.jdField_a_of_type_Lby.a(this.jdField_a_of_type_AndroidGraphicsPathMeasure);
+  }
+  
+  public void a() {}
+  
+  public void a(long paramLong)
+  {
+    this.jdField_a_of_type_Lby.a((float)paramLong / 1000.0F);
+  }
+  
+  public void b(Canvas paramCanvas, MySurfaceView paramMySurfaceView, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Lby.a(paramCanvas);
+  }
+  
+  public void c(float paramFloat1, float paramFloat2)
+  {
+    super.c(paramFloat1, paramFloat2);
+    this.jdField_a_of_type_Lby.a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lbx
  * JD-Core Version:    0.7.0.1
  */

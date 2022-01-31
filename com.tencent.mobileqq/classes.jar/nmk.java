@@ -1,18 +1,12 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.pgc.QQStoryDiscoverSearchDialog;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
 
 public class nmk
-  implements View.OnTouchListener
 {
-  public nmk(QQStoryDiscoverSearchDialog paramQQStoryDiscoverSearchDialog) {}
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
+  private String c;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    this.a.a();
-    return false;
-  }
+  private nmk(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
 }
 
 

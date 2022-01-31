@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
 
 public class agku
-  implements Runnable
+  implements View.OnClickListener
 {
-  public agku(ScanTorchActivity paramScanTorchActivity) {}
+  public agku(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QQToast.a(this.a.getApplicationContext(), "识别失败，请稍后再试。", 1).b(this.a.getTitleBarHeight());
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agku
  * JD-Core Version:    0.7.0.1
  */

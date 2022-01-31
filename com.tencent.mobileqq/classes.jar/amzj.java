@@ -1,44 +1,65 @@
-import android.os.Handler;
-import android.os.Message;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
-import cooperation.qzone.plugin.OnQZoneLiveSoDownloadListener.Stub;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.PrecoverData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class amzj
-  extends OnQZoneLiveSoDownloadListener.Stub
+  extends amza
 {
-  public amzj(QZoneLiveVideoDownLoadActivtyV2 paramQZoneLiveVideoDownLoadActivtyV2) {}
-  
-  public void a()
+  public amzj(QQAppInterface paramQQAppInterface)
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1000;
-    localMessage.arg1 = 1;
-    this.a.a.sendMessage(localMessage);
-    int i = QzoneConfig.getInstance().getConfig("LiveSetting", "PluginDownloadSoTimeout", 60000);
-    this.a.a.sendEmptyMessageDelayed(1009, i);
+    super("qq.android.early.precover", paramQQAppInterface);
   }
   
-  public void a(float paramFloat)
+  public int a()
   {
-    this.a.runOnUiThread(new amzk(this, paramFloat));
+    return 10045;
   }
   
-  public void a(int paramInt)
+  public Class<? extends XmlData> a()
   {
-    this.a.a.obtainMessage(1008).sendToTarget();
+    return PrecoverData.class;
   }
   
-  public void b()
+  public String a()
   {
-    this.a.runOnUiThread(new amzl(this));
+    return "actEarlyPrecover";
   }
   
-  public void c() {}
+  public void a(XmlData paramXmlData)
+  {
+    super.a(paramXmlData);
+    if ((QLog.isColorLevel()) && (paramXmlData != null) && ((paramXmlData instanceof PrecoverData))) {
+      QLog.d("PrecoverHandler", 2, new Object[] { "doOnServerResp, xmlData=", paramXmlData });
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public String b()
+  {
+    return "prd";
+  }
+  
+  public boolean i()
+  {
+    File localFile = new File(c());
+    return (localFile != null) && (localFile.exists());
+  }
+  
+  public boolean j()
+  {
+    File localFile = new File(d());
+    return (localFile != null) && (localFile.exists());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amzj
  * JD-Core Version:    0.7.0.1
  */

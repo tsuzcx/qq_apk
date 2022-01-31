@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.vas.SonicTemplateUpdateManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
 
-public class akpj
-  implements Runnable
+public final class akpj
+  implements Parcelable.Creator<ARCommonConfigInfo.NativeSoRes>
 {
-  public akpj(SonicTemplateUpdateManager paramSonicTemplateUpdateManager) {}
-  
-  public void run()
+  public ARCommonConfigInfo.NativeSoRes a(Parcel paramParcel)
   {
-    this.a.b();
+    return new ARCommonConfigInfo.NativeSoRes(paramParcel);
+  }
+  
+  public ARCommonConfigInfo.NativeSoRes[] a(int paramInt)
+  {
+    return new ARCommonConfigInfo.NativeSoRes[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akpj
  * JD-Core Version:    0.7.0.1
  */

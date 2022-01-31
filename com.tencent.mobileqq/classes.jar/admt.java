@@ -1,21 +1,39 @@
-import android.view.View;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.PreviewSimpleFilePresenter;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
+import com.tencent.qphone.base.util.QLog;
 
 public class admt
-  implements FileManagerUtil.TipsClickedInterface
+  extends tgl
 {
-  public admt(PreviewSimpleFilePresenter paramPreviewSimpleFilePresenter) {}
+  public admt(QQStoryItemBuilder paramQQStoryItemBuilder, admv paramadmv, long paramLong, boolean paramBoolean) {}
   
-  public void a(View paramView)
+  public void a(int paramInt, String paramString, StoryVideoItem paramStoryVideoItem)
   {
-    this.a.a.g();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.share", 2, "QQStoryItemBuilder requestVideoInfo: errorCode = " + paramInt + ", storyVideoItem = " + paramStoryVideoItem);
+    }
+    if ((paramInt == 0) && (paramStoryVideoItem != null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Admv, this.jdField_b_of_type_Long, paramStoryVideoItem, this.jdField_b_of_type_Boolean);
+      return;
+    }
+    if (paramInt == 10100)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("QQStoryItemBuilder", 2, "onGetVideo video has deleted");
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Admv, this.jdField_b_of_type_Long);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.w("QQStoryItemBuilder", 2, "onGetVideo video error");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_Admv, this.jdField_b_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     admt
  * JD-Core Version:    0.7.0.1
  */

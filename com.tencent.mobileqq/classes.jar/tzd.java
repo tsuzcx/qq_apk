@@ -1,61 +1,53 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.AutoCompleteTextView;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.Locale;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.database.HotSortVideoEntry;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
 public class tzd
-  implements ActionSheet.OnButtonClickListener
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, syv>
 {
-  public tzd(SubLoginActivity paramSubLoginActivity) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public tzd(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    if (this.a.jdField_b_of_type_Boolean) {
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull syv paramsyv)
+  {
+    if (!paramQQStoryShareGroupProfileActivity.g) {}
+    tzq localtzq;
+    Object localObject1;
+    do
+    {
       return;
-    }
-    if (paramInt == 0)
-    {
-      paramView = null;
-      if (SubLoginActivity.a(this.a) != null) {
-        paramView = SubLoginActivity.a(this.a).getText().toString();
-      }
-      if (TextUtils.isEmpty(paramView)) {
-        break label193;
-      }
-    }
-    label193:
-    for (paramView = String.format(Locale.getDefault(), "%s&account=%s", new Object[] { "https://aq.qq.com/cn2/findpsw/mobile_web_find_input_account?source_id=2756", paramView });; paramView = "https://aq.qq.com/cn2/findpsw/mobile_web_find_input_account?source_id=2756")
-    {
-      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
-      localIntent.putExtra("uin", SubLoginActivity.a(this.a));
-      localIntent.putExtra("reqType", 3);
-      localIntent.putExtra("url", paramView);
-      this.a.startActivity(localIntent);
-      for (;;)
+      Object localObject2 = null;
+      localtzq = paramQQStoryShareGroupProfileActivity.a.a;
+      Iterator localIterator = paramQQStoryShareGroupProfileActivity.a.a.a.iterator();
+      do
       {
-        this.a.jdField_b_of_type_Boolean = true;
-        this.a.a.dismiss();
-        return;
-        if (paramInt == 1)
-        {
-          paramView = new Intent(this.a, LoginPhoneNumActivity.class);
-          paramView.putExtra("isSubaccount", true);
-          paramView.putExtra("fromWhere", this.a.jdField_b_of_type_JavaLangString);
-          this.a.startActivity(paramView);
+        localObject1 = localObject2;
+        if (!localIterator.hasNext()) {
+          break;
         }
-      }
-    }
+        localObject1 = (HotSortVideoEntry)localIterator.next();
+      } while (!((HotSortVideoEntry)localObject1).storyId.equals(paramsyv.a));
+    } while (localObject1 == null);
+    ((HotSortVideoEntry)localObject1).viewCount += 1;
+    ((spn)sqg.a(25)).a((HotSortVideoEntry)localObject1);
+    localtzq.a((HotSortVideoEntry)localObject1);
+    paramQQStoryShareGroupProfileActivity.d = true;
+  }
+  
+  public Class acceptEventClass()
+  {
+    return syv.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tzd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,35 @@
 package com.tencent.mobileqq.apollo;
 
+import aiwi;
+import aiys;
+import ajam;
 import android.graphics.RectF;
 import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
-import com.tencent.mobileqq.apollo.utils.ApolloConfigUtils;
-import com.tencent.mobileqq.apollo.utils.ApolloSoLoader;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
+import java.io.BufferedReader;
+import java.io.File;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
-import org.json.JSONObject;
 
 public class ApolloEngine
 {
-  private static CopyOnWriteArrayList jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private static int jdField_a_of_type_Int;
+  private static BufferedReader jdField_a_of_type_JavaIoBufferedReader;
+  private static CopyOnWriteArrayList<Object> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
+  private static boolean jdField_a_of_type_Boolean;
   public long a;
+  private ApolloTicker jdField_a_of_type_ComTencentMobileqqApolloApolloTicker;
+  private ConcurrentHashMap<Integer, Boolean> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private volatile boolean b;
   
   static
   {
-    ApolloSoLoader.a("classLoad");
+    ajam.a("classLoad");
   }
   
   public ApolloEngine()
@@ -26,34 +37,50 @@ public class ApolloEngine
     this.jdField_a_of_type_Long = -1L;
   }
   
-  public static void a(ICmShowLibLoadCallback paramICmShowLibLoadCallback)
+  public static void a(boolean paramBoolean)
   {
-    if ((paramICmShowLibLoadCallback != null) && (!jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramICmShowLibLoadCallback))) {
-      jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(paramICmShowLibLoadCallback);
+    jdField_a_of_type_Boolean = paramBoolean;
+    if (jdField_a_of_type_Boolean)
+    {
+      if (jdField_a_of_type_Int > 0) {
+        nativeSetPipeLog(0);
+      }
+      jdField_a_of_type_Int = 0;
     }
+    QLog.i("ApolloManager.Engine", 1, "setPipeLog pipeLogDisable:" + paramBoolean);
   }
   
   public static boolean a()
   {
-    if (!ApolloSoLoader.a())
+    if (!ajam.a())
     {
-      ApolloSoLoader.a("other");
+      ajam.a("other");
       ApolloGameStateMachine.a().a(5, "not load lib");
       return false;
     }
     return true;
   }
   
-  public static void b(ICmShowLibLoadCallback paramICmShowLibLoadCallback)
+  private void b()
   {
-    if ((paramICmShowLibLoadCallback != null) && (jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(paramICmShowLibLoadCallback))) {
-      jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(paramICmShowLibLoadCallback);
+    new File(aiys.a, "slave");
+    String str1 = aiys.c + "/def/role/0/script/slave/";
+    String str2 = aiys.c + "/";
+    nativeSetFileHomeDir(aiys.av, aiys.g, aiys.a, aiys.a, aiys.a + "/extension/", str1, str2);
+  }
+  
+  private void c()
+  {
+    if ((jdField_a_of_type_Int > 0) && (jdField_a_of_type_JavaIoBufferedReader == null)) {
+      ThreadManagerV2.newFreeThread(new ApolloEngine.1(this), "Apollo_GL_Log", 1).start();
     }
   }
   
   private native void nativeAudioCallBack(long paramLong);
   
-  private native long nativeCreateDirector(long paramLong, int paramInt1, int paramInt2, float paramFloat);
+  private native long nativeCreateDirector(long paramLong, int paramInt1, int paramInt2, float paramFloat, int paramInt3);
+  
+  private native void nativeCreateGLContext(long paramLong1, int paramInt1, int paramInt2, float paramFloat, long paramLong2);
   
   private native void nativeDiposeDirector(long paramLong);
   
@@ -77,6 +104,12 @@ public class ApolloEngine
   
   private native void nativeHttpCallBack(long paramLong, int paramInt, byte[] paramArrayOfByte);
   
+  private native void nativeHttpDownloadProgressChange(long paramLong, int paramInt1, int paramInt2);
+  
+  private native void nativeHttpResponseCallback(long paramLong, int paramInt, String[] paramArrayOfString, byte[] paramArrayOfByte);
+  
+  private native void nativeHttpUploadProgressChange(long paramLong, int paramInt1, int paramInt2);
+  
   private native void nativeLoadScriptFile(long paramLong, String paramString);
   
   private native void nativeLoadScriptString(long paramLong, String paramString, int paramInt);
@@ -84,6 +117,8 @@ public class ApolloEngine
   private native void nativeLocationCallBack(long paramLong, int paramInt, String paramString1, String paramString2, double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, double paramDouble5, double paramDouble6, double paramDouble7);
   
   private native int nativeOrganHittest(long paramLong, float paramFloat1, float paramFloat2, String paramString);
+  
+  private native String nativeRenderNodeGetExtendString(long paramLong);
   
   private native void nativeScriptCreate(long paramLong, String paramString, int paramInt);
   
@@ -95,9 +130,15 @@ public class ApolloEngine
   
   private native void nativeSetDirectorScreenScale(long paramLong, float paramFloat);
   
+  private native void nativeSetFileHomeDir(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7);
+  
   private native void nativeSetNeedRender(long paramLong, int paramInt);
   
   private native void nativeSetNodeHidden(long paramLong, String paramString, int paramInt);
+  
+  private static native int nativeSetPipeLog(int paramInt);
+  
+  private static native void nativeSetQLogLevel(int paramInt);
   
   private native void nativeSetSkey(byte[] paramArrayOfByte);
   
@@ -117,17 +158,45 @@ public class ApolloEngine
     return -1L;
   }
   
-  public long a(long paramLong, int paramInt1, int paramInt2, float paramFloat)
+  public long a(long paramLong, int paramInt1, int paramInt2, float paramFloat, int paramInt3)
   {
+    int i = 1;
     QLog.d("ApolloManager.Engine", 1, "[createDirector],mIsInit:" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() + ", isEngineReady:" + a());
     if (a())
     {
-      this.jdField_a_of_type_Long = nativeCreateDirector(paramLong, paramInt1, paramInt2, paramFloat);
-      if (this.jdField_a_of_type_Long > 0L) {
+      new File(aiys.i).mkdirs();
+      this.jdField_a_of_type_Long = nativeCreateDirector(paramLong, paramInt1, paramInt2, paramFloat, paramInt3);
+      if (this.jdField_a_of_type_Long > 0L)
+      {
         this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+        this.b = true;
+      }
+      if (BaseApplicationImpl.sProcessId == 1)
+      {
+        if (jdField_a_of_type_Boolean) {
+          break label188;
+        }
+        jdField_a_of_type_Int = nativeSetPipeLog(1);
+        c();
+        b();
+        QLog.i("ApolloManager.Engine", 1, "sPipeLogFd:" + jdField_a_of_type_Int + " sPipeLogDisable:" + jdField_a_of_type_Boolean);
+      }
+      if (!QLog.isColorLevel()) {
+        break label206;
       }
     }
-    return this.jdField_a_of_type_Long;
+    label188:
+    label206:
+    for (paramInt1 = i;; paramInt1 = 0)
+    {
+      nativeSetQLogLevel(paramInt1);
+      return this.jdField_a_of_type_Long;
+      if (jdField_a_of_type_Int > 0) {
+        nativeSetPipeLog(0);
+      }
+      jdField_a_of_type_Int = 0;
+      break;
+    }
   }
   
   public RectF a()
@@ -146,12 +215,12 @@ public class ApolloEngine
     return null;
   }
   
-  public String a(float paramFloat1, float paramFloat2)
+  public ApolloTicker a()
   {
-    if (a("[hittestForName]")) {
-      return nativeHitestForName(this.jdField_a_of_type_Long, paramFloat1, paramFloat2);
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker == null) {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker = new ApolloTicker();
     }
-    return null;
+    return this.jdField_a_of_type_ComTencentMobileqqApolloApolloTicker;
   }
   
   public void a()
@@ -166,7 +235,7 @@ public class ApolloEngine
   
   public void a(double paramDouble)
   {
-    a(String.format("BK.Render.clear(0,0,0,0);BK.Render.treeRender( BK.Director.root,%f);BK.Render.commit();", new Object[] { Double.valueOf(paramDouble) }));
+    a(String.format(aiwi.b(), new Object[] { Double.valueOf(paramDouble) }));
   }
   
   public void a(double paramDouble, int paramInt)
@@ -192,7 +261,17 @@ public class ApolloEngine
   
   public void a(int paramInt)
   {
-    nativeSetNeedRender(this.jdField_a_of_type_Long, paramInt);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), Boolean.TRUE);
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloManager.Engine", 2, new Object[] { "setScriptLoaded scriptId:", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
+  {
+    if (a("[updateMouseButton]")) {
+      nativeUpdateMouseButton(this.jdField_a_of_type_Long, paramInt1, paramInt2, paramFloat1, paramFloat2);
+    }
   }
   
   public void a(long paramLong)
@@ -217,6 +296,28 @@ public class ApolloEngine
     nativeWebSocketSetState(paramLong, paramInt);
   }
   
+  public void a(long paramLong, int paramInt1, int paramInt2)
+  {
+    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloManager.Engine", 2, "[nativeUploadProgressChange], errInfo->initErr, mIsLoadSuccess:" + a() + ",mIsInit:" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+      }
+      return;
+    }
+    nativeHttpUploadProgressChange(paramLong, paramInt1, paramInt2);
+  }
+  
+  public void a(long paramLong, int paramInt1, int paramInt2, float paramFloat)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloManager.Engine", 2, "createGLContext");
+    }
+    if (a("createGLContext")) {
+      nativeCreateGLContext(paramLong, paramInt1, paramInt2, paramFloat, this.jdField_a_of_type_Long);
+    }
+  }
+  
   public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte)
   {
     if (QLog.isColorLevel()) {
@@ -225,6 +326,7 @@ public class ApolloEngine
     nativeSelectPhotoCallBack(paramLong, paramInt1, paramInt2, paramInt3, paramArrayOfByte);
   }
   
+  @Deprecated
   public void a(long paramLong, int paramInt, byte[] paramArrayOfByte)
   {
     if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
@@ -235,6 +337,18 @@ public class ApolloEngine
       return;
     }
     nativeHttpCallBack(paramLong, paramInt, paramArrayOfByte);
+  }
+  
+  public void a(long paramLong, int paramInt, String[] paramArrayOfString, byte[] paramArrayOfByte)
+  {
+    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloManager.Engine", 2, "[httpResponseCallback], errInfo->initErr, mIsLoadSuccess:" + a() + ",mIsInit:" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+      }
+      return;
+    }
+    nativeHttpResponseCallback(paramLong, paramInt, paramArrayOfString, paramArrayOfByte);
   }
   
   public void a(long paramLong, String paramString)
@@ -250,10 +364,10 @@ public class ApolloEngine
     }
     try
     {
-      new StringBuilder(paramString.length() + 100).append("try{").append(paramString).append("}catch(err){BK.Script.log(0, 0, err);}");
+      new StringBuilder(paramString.length() + 100).append("try{").append(paramString).append("}catch(err){BK.Script.log(0, 0, err.message);}");
       l = this.jdField_a_of_type_Long;
       if (!QLog.isColorLevel()) {
-        break label80;
+        break label83;
       }
       i = 1;
     }
@@ -269,16 +383,32 @@ public class ApolloEngine
     }
     catch (Throwable paramString)
     {
-      label80:
+      label83:
       QLog.e("ApolloManager.Engine", 1, paramString, new Object[0]);
     }
     nativeLoadScriptString(l, paramString, i);
     return;
   }
   
+  public void a(String paramString, int paramInt)
+  {
+    if (a("[setNodeHidden]")) {
+      nativeSetNodeHidden(this.jdField_a_of_type_Long, paramString, paramInt);
+    }
+  }
+  
   public void a(byte[] paramArrayOfByte)
   {
     nativeSetSkey(paramArrayOfByte);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    Boolean localBoolean = (Boolean)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    if (localBoolean != null) {
+      return localBoolean.booleanValue();
+    }
+    return false;
   }
   
   public boolean a(String paramString)
@@ -308,52 +438,31 @@ public class ApolloEngine
     nativeWebSocketSetSocket(paramLong, paramInt);
   }
   
+  public void b(long paramLong, int paramInt1, int paramInt2)
+  {
+    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloManager.Engine", 2, "[nativeDownloadProgressChange], errInfo->initErr, mIsLoadSuccess:" + a() + ",mIsInit:" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get());
+      }
+      return;
+    }
+    nativeHttpDownloadProgressChange(paramLong, paramInt1, paramInt2);
+  }
+  
   public void b(long paramLong, String paramString)
   {
     nativeEditorOnClickCallBack(paramLong, paramString);
   }
   
-  public void b(String paramString)
-  {
-    int j;
-    int i;
-    if (a("[createScript]"))
-    {
-      j = -1;
-      i = j;
-    }
-    try
-    {
-      if (ApolloConfigUtils.b != null) {
-        i = ApolloConfigUtils.b.optInt("engineSwitch");
-      }
-      nativeScriptCreate(this.jdField_a_of_type_Long, paramString, i);
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
-      {
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ApolloManager.Engine", 2, localOutOfMemoryError.getMessage());
-          i = j;
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        i = j;
-      }
-    }
-  }
-  
   public void b(byte[] paramArrayOfByte)
   {
     nativeSetSt(paramArrayOfByte);
+  }
+  
+  public boolean b()
+  {
+    return this.b;
   }
   
   public native void bkDirectorChangeScreenMode(int paramInt);
@@ -362,7 +471,7 @@ public class ApolloEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.ApolloEngine
  * JD-Core Version:    0.7.0.1
  */

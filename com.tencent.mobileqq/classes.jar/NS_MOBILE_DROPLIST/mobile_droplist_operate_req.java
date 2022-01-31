@@ -9,8 +9,8 @@ import java.util.Map;
 public final class mobile_droplist_operate_req
   extends JceStruct
 {
-  static Map cache_busi_param = new HashMap();
-  public Map busi_param;
+  static Map<Integer, String> cache_busi_param = new HashMap();
+  public Map<Integer, String> busi_param;
   public int feedback_id;
   public long login_uin;
   public long owner_uin;
@@ -22,7 +22,7 @@ public final class mobile_droplist_operate_req
   
   public mobile_droplist_operate_req() {}
   
-  public mobile_droplist_operate_req(Map paramMap, long paramLong1, long paramLong2, int paramInt)
+  public mobile_droplist_operate_req(Map<Integer, String> paramMap, long paramLong1, long paramLong2, int paramInt)
   {
     this.busi_param = paramMap;
     this.login_uin = paramLong1;

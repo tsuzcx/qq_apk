@@ -1,40 +1,33 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class acwi
-  implements View.OnClickListener
+class acwi
+  implements begw
 {
-  public acwi(UniformDownloadActivity paramUniformDownloadActivity) {}
+  acwi(acwe paramacwe, ChatMessage paramChatMessage, begr parambegr) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (NetworkUtil.d(this.a.getActivity()))
+    if (paramInt == 0)
     {
-      UniformDownloadActivity.a(this.a).setVisibility(8);
-      if (FileManagerUtil.a())
-      {
-        FMDialogUtil.a(this.a.getActivity(), 2131428241, 2131428268, new acwj(this));
-        return;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop != 3000) {
+        break label41;
       }
-      UniformDownloadActivity.a(this.a);
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-      return;
+      apci.a("0X8005E4F");
     }
-    FMToastUtil.a(2131428327);
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    for (;;)
+    {
+      this.jdField_a_of_type_Acwe.e(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      this.jdField_a_of_type_Begr.dismiss();
+      return;
+      label41:
+      apci.a("0X8005E4D");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acwi
  * JD-Core Version:    0.7.0.1
  */

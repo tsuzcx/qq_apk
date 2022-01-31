@@ -1,23 +1,20 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppDataReport;
+import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
 
-class aaza
-  implements aazl
+public class aaza
+  extends ajrw
 {
-  aaza(aayw paramaayw, aazj paramaazj, aazl paramaazl) {}
+  public aaza(H5MagicPlayerActivity paramH5MagicPlayerActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void a()
   {
-    ArkAppCenter.b("ArkApp.Dict.Update", String.format("updateDict, local not exists, full update, success=%s, name=%s", new Object[] { Boolean.toString(paramBoolean), this.jdField_a_of_type_Aazj.a }));
-    if (paramBoolean) {
-      ArkAppDataReport.a(this.jdField_a_of_type_Aazj.a, 2);
+    if (this.a.jdField_a_of_type_Boolean) {
+      H5MagicPlayerActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString, "{code:0}");
     }
-    this.jdField_a_of_type_Aazl.a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaza
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,18 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.troop.utils.TroopFileUtils;
-import dov.com.qq.im.capture.text.RandomSizeTextItem;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
 
 public class anwv
-  implements anwk
+  extends aodp
 {
-  public anwv(RandomSizeTextItem paramRandomSizeTextItem) {}
+  public anwv(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
   
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  protected void a(String paramString1, String paramString2, Integer paramInteger, String paramString3, boolean paramBoolean)
   {
-    return TroopFileUtils.b(paramString);
+    super.a(paramString1, paramString2, paramInteger, paramString3, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anwv
  * JD-Core Version:    0.7.0.1
  */

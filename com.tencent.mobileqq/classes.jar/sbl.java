@@ -1,17 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import java.net.URL;
 
-public final class sbl
-  implements DialogInterface.OnClickListener
+public class sbl
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a;
+  public URL a;
+  public int b;
+  
+  public static sbl a(URL paramURL, int paramInt1, int paramInt2)
   {
-    paramDialogInterface.dismiss();
+    sbl localsbl = new sbl();
+    localsbl.jdField_a_of_type_JavaNetURL = paramURL;
+    localsbl.jdField_a_of_type_Int = paramInt1;
+    localsbl.b = paramInt2;
+    return localsbl;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     sbl
  * JD-Core Version:    0.7.0.1
  */

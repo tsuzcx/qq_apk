@@ -2,8 +2,8 @@ package com.tencent.tmassistant;
 
 import android.content.Context;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.m;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.t;
 import com.tencent.tmassistantsdk.internal.b.b;
 import com.tencent.tmdownloader.TMAssistantDownloadClient;
 import com.tencent.tmdownloader.f;
@@ -29,7 +29,7 @@ public class a
       if (a == null)
       {
         a = new a(paramContext);
-        if (!m.a())
+        if (!t.a())
         {
           if (GlobalUtil.getInstance().getContext() == null) {
             GlobalUtil.getInstance().setContext(paramContext);
@@ -49,7 +49,7 @@ public class a
     {
       try
       {
-        r.c("TMAssistantDownloadSDKManager", "<getDownloadOpenSDKClient> clientKey = " + paramString + ",process Name:" + m.e());
+        ac.c("TMAssistantDownloadSDKManager", "<getDownloadOpenSDKClient> clientKey = " + paramString + ",process Name:" + t.e());
         Iterator localIterator = d.iterator();
         if (localIterator.hasNext())
         {
@@ -133,7 +133,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmassistant.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,87 @@
-import com.tencent.mobileqq.addon.DiyPendantEntity;
-import com.tencent.mobileqq.addon.DiyPendantFetcher;
-import com.tencent.mobileqq.addon.DiyPendantSticker;
-import com.tencent.mobileqq.app.BusinessObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArraySet;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class ztp
-  implements BusinessObserver
+  implements DialogInterface.OnCancelListener, DialogInterface.OnClickListener
 {
-  ztp(zto paramzto, DiyPendantFetcher paramDiyPendantFetcher) {}
+  zrt a;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public ztp(zrt paramzrt)
   {
+    this.a = paramzrt;
+  }
+  
+  public void onCancel(DialogInterface paramDialogInterface)
+  {
+    paramDialogInterface = new JSONObject();
     try
     {
-      if ((paramObject instanceof List))
-      {
-        paramObject = (List)paramObject;
-        if (paramObject.size() > 0)
-        {
-          paramObject = paramObject.iterator();
-          while (paramObject.hasNext())
-          {
-            Iterator localIterator = ((DiyPendantEntity)paramObject.next()).getStickerInfoList().iterator();
-            while (localIterator.hasNext())
-            {
-              Object localObject = (DiyPendantSticker)localIterator.next();
-              localObject = this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.a((DiyPendantSticker)localObject);
-              this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.b.add(localObject);
-            }
-          }
-        }
-      }
+      paramDialogInterface.put("confirm", false);
+      paramDialogInterface.put("cancel", true);
+      zva.a(this.a, paramDialogInterface);
       return;
     }
-    catch (Exception paramObject)
+    catch (JSONException paramDialogInterface)
     {
+      String str = paramDialogInterface.getMessage();
       if (QLog.isColorLevel()) {
-        QLog.e("SVIPHandler", 2, paramObject.getMessage());
+        QLog.w("DoraemonOpenAPI.widget", 2, str, paramDialogInterface);
       }
+      zrt localzrt = this.a;
+      paramDialogInterface = str;
+      if (str == null) {
+        paramDialogInterface = "";
+      }
+      zva.a(localzrt, -1, paramDialogInterface);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.b();
+  }
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    boolean bool2 = true;
+    paramDialogInterface = new JSONObject();
+    boolean bool1;
+    if (paramInt == 1) {
+      bool1 = true;
+    }
+    try
+    {
+      paramDialogInterface.put("confirm", bool1);
+      if (paramInt != 1) {}
+      for (bool1 = bool2;; bool1 = false)
+      {
+        paramDialogInterface.put("cancel", bool1);
+        zva.a(this.a, paramDialogInterface);
+        return;
+        bool1 = false;
+        break;
+      }
+      String str;
+      zrt localzrt;
+      return;
+    }
+    catch (JSONException paramDialogInterface)
+    {
+      str = paramDialogInterface.getMessage();
+      if (QLog.isColorLevel()) {
+        QLog.w("DoraemonOpenAPI.widget", 2, str, paramDialogInterface);
+      }
+      localzrt = this.a;
+      paramDialogInterface = str;
+      if (str == null) {
+        paramDialogInterface = "";
+      }
+      zva.a(localzrt, -1, paramDialogInterface);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ztp
  * JD-Core Version:    0.7.0.1
  */

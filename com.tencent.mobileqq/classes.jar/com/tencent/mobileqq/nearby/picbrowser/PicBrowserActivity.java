@@ -1,33 +1,33 @@
 package com.tencent.mobileqq.nearby.picbrowser;
 
-import afgk;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import com.tencent.common.galleryactivity.GalleryManager;
+import asrs;
 import com.tencent.image.AbstractVideoImage;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.widget.immersive.ImmersiveTitleBar2;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
+import xgz;
 
 public class PicBrowserActivity
   extends BaseActivity
 {
-  public GalleryManager a;
   protected ImmersiveTitleBar2 a;
+  public xgz a;
   public int b;
-  public ArrayList b;
-  boolean b;
+  public ArrayList<PicInfo> b;
+  public boolean b;
   
   public PicBrowserActivity()
   {
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager = new afgk(this);
+    this.jdField_a_of_type_Xgz = new asrs(this);
   }
   
-  public void a()
+  protected void a()
   {
     this.jdField_b_of_type_Int = getIntent().getIntExtra("intent_param_index", 0);
     this.jdField_b_of_type_JavaUtilArrayList = getIntent().getParcelableArrayListExtra("intent_param_pic_infos");
@@ -36,15 +36,15 @@ public class PicBrowserActivity
   
   protected void d()
   {
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)findViewById(2131363398));
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)findViewById(2131311626));
     this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setVisibility(0);
     ImmersiveUtils.a(getWindow(), ThemeUtil.isNowThemeIsDefault(this.app, false, null));
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setBackgroundColor(getResources().getColor(2131492971));
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setBackgroundColor(getResources().getColor(2131099738));
   }
   
   public void doOnBackPressed()
   {
-    if (!this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.b()) {
+    if (!this.jdField_a_of_type_Xgz.b()) {
       super.doOnBackPressed();
     }
   }
@@ -54,22 +54,22 @@ public class PicBrowserActivity
     this.mActNeedImmersive = false;
     this.mNeedStatusTrans = true;
     super.doOnCreate(paramBundle);
-    setContentView(2130970484);
+    setContentView(2131495311);
     d();
     a();
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a(this);
+    this.jdField_a_of_type_Xgz.a(this);
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.c(this);
+    this.jdField_a_of_type_Xgz.c(this);
   }
   
   public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if (!this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a(paramInt, paramKeyEvent)) {
+    if (!this.jdField_a_of_type_Xgz.a(paramInt, paramKeyEvent)) {
       return super.doOnKeyDown(paramInt, paramKeyEvent);
     }
     return true;
@@ -78,20 +78,20 @@ public class PicBrowserActivity
   public void doOnPause()
   {
     AbstractVideoImage.pauseAll();
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.b();
+    this.jdField_a_of_type_Xgz.b();
   }
   
   public void doOnResume()
   {
     AbstractVideoImage.resumeAll();
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.c();
+    this.jdField_a_of_type_Xgz.c();
   }
   
   public void doOnWindowFocusChanged(boolean paramBoolean)
   {
     super.doOnWindowFocusChanged(paramBoolean);
     if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.b(this);
+      this.jdField_a_of_type_Xgz.b(this);
     }
   }
   
@@ -100,7 +100,7 @@ public class PicBrowserActivity
     this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setVisibility(8);
   }
   
-  protected boolean isWrapContent()
+  public boolean isWrapContent()
   {
     return false;
   }

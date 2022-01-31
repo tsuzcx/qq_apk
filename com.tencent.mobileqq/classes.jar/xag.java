@@ -1,27 +1,21 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.phone.NewStyleCountryActivity;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.videostory.widget.view.smartmusicview.SmartMusicRecyclerView;
 
 public class xag
-  implements Animation.AnimationListener
+  extends RecyclerView.OnScrollListener
 {
-  public xag(NewStyleCountryActivity paramNewStyleCountryActivity, int paramInt) {}
+  public xag(SmartMusicRecyclerView paramSmartMusicRecyclerView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.setAnimation(null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneNewStyleCountryActivity.b.requestLayout();
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    SmartMusicRecyclerView.a(this.a, paramRecyclerView, paramInt);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xag
  * JD-Core Version:    0.7.0.1
  */

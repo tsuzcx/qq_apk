@@ -13,20 +13,98 @@ import java.util.Set;
 
 public class ImageOptionInBitmap
 {
-  private static Set jdField_a_of_type_JavaUtilSet = new HashSet();
-  private static boolean jdField_a_of_type_Boolean;
+  private static boolean hasHONEYCOMB;
+  private static Set<SoftReference<Bitmap>> mReusableBitmaps = new HashSet();
   
   static
   {
     if (Build.VERSION.SDK_INT >= 11) {}
     for (boolean bool = true;; bool = false)
     {
-      jdField_a_of_type_Boolean = bool;
+      hasHONEYCOMB = bool;
       return;
     }
   }
   
-  private static int a(Bitmap.Config paramConfig)
+  @TargetApi(11)
+  public static void addInBitmapOptions(BitmapFactory.Options paramOptions)
+  {
+    if (!hasHONEYCOMB) {}
+    Bitmap localBitmap;
+    do
+    {
+      return;
+      paramOptions.inMutable = true;
+      localBitmap = getBitmapFromReusableSet(paramOptions);
+    } while (localBitmap == null);
+    paramOptions.inBitmap = localBitmap;
+  }
+  
+  public static void addReusableBitmaps(Bitmap paramBitmap)
+  {
+    if (!hasHONEYCOMB) {
+      return;
+    }
+    synchronized (mReusableBitmaps)
+    {
+      mReusableBitmaps.add(new SoftReference(paramBitmap));
+      return;
+    }
+  }
+  
+  @SuppressLint({"NewApi"})
+  private static boolean canUseForInBitmap(Bitmap paramBitmap, BitmapFactory.Options paramOptions)
+  {
+    if (Build.VERSION.SDK_INT >= 19) {
+      if (paramOptions.outWidth / paramOptions.inSampleSize * (paramOptions.outHeight / paramOptions.inSampleSize) * getBytesPerPixel(paramBitmap.getConfig()) > paramBitmap.getAllocationByteCount()) {}
+    }
+    while ((paramBitmap.getWidth() == paramOptions.outWidth) && (paramBitmap.getHeight() == paramOptions.outHeight) && (paramOptions.inSampleSize == 1))
+    {
+      return true;
+      return false;
+    }
+    return false;
+  }
+  
+  public static void clear()
+  {
+    synchronized (mReusableBitmaps)
+    {
+      mReusableBitmaps.clear();
+      return;
+    }
+  }
+  
+  private static Bitmap getBitmapFromReusableSet(BitmapFactory.Options paramOptions)
+  {
+    if ((mReusableBitmaps != null) && (!mReusableBitmaps.isEmpty())) {
+      for (;;)
+      {
+        synchronized (mReusableBitmaps)
+        {
+          Iterator localIterator = mReusableBitmaps.iterator();
+          if (localIterator.hasNext())
+          {
+            Bitmap localBitmap = (Bitmap)((SoftReference)localIterator.next()).get();
+            if ((localBitmap != null) && (localBitmap.isMutable()))
+            {
+              if (!canUseForInBitmap(localBitmap, paramOptions)) {
+                continue;
+              }
+              localIterator.remove();
+              paramOptions = localBitmap;
+              return paramOptions;
+            }
+            localIterator.remove();
+          }
+        }
+        paramOptions = null;
+      }
+    }
+    return null;
+  }
+  
+  private static int getBytesPerPixel(Bitmap.Config paramConfig)
   {
     int j = 2;
     int i;
@@ -46,84 +124,6 @@ public class ImageOptionInBitmap
       return 1;
     }
     return 1;
-  }
-  
-  private static Bitmap a(BitmapFactory.Options paramOptions)
-  {
-    if ((jdField_a_of_type_JavaUtilSet != null) && (!jdField_a_of_type_JavaUtilSet.isEmpty())) {
-      for (;;)
-      {
-        synchronized (jdField_a_of_type_JavaUtilSet)
-        {
-          Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
-          if (localIterator.hasNext())
-          {
-            Bitmap localBitmap = (Bitmap)((SoftReference)localIterator.next()).get();
-            if ((localBitmap != null) && (localBitmap.isMutable()))
-            {
-              if (!a(localBitmap, paramOptions)) {
-                continue;
-              }
-              localIterator.remove();
-              paramOptions = localBitmap;
-              return paramOptions;
-            }
-            localIterator.remove();
-          }
-        }
-        paramOptions = null;
-      }
-    }
-    return null;
-  }
-  
-  @SuppressLint({"NewApi"})
-  private static boolean a(Bitmap paramBitmap, BitmapFactory.Options paramOptions)
-  {
-    if (Build.VERSION.SDK_INT >= 19) {
-      if (paramOptions.outWidth / paramOptions.inSampleSize * (paramOptions.outHeight / paramOptions.inSampleSize) * a(paramBitmap.getConfig()) > paramBitmap.getAllocationByteCount()) {}
-    }
-    while ((paramBitmap.getWidth() == paramOptions.outWidth) && (paramBitmap.getHeight() == paramOptions.outHeight) && (paramOptions.inSampleSize == 1))
-    {
-      return true;
-      return false;
-    }
-    return false;
-  }
-  
-  @TargetApi(11)
-  public static void addInBitmapOptions(BitmapFactory.Options paramOptions)
-  {
-    if (!jdField_a_of_type_Boolean) {}
-    Bitmap localBitmap;
-    do
-    {
-      return;
-      paramOptions.inMutable = true;
-      localBitmap = a(paramOptions);
-    } while (localBitmap == null);
-    paramOptions.inBitmap = localBitmap;
-  }
-  
-  public static void addReusableBitmaps(Bitmap paramBitmap)
-  {
-    if (!jdField_a_of_type_Boolean) {
-      return;
-    }
-    synchronized (jdField_a_of_type_JavaUtilSet)
-    {
-      jdField_a_of_type_JavaUtilSet.add(new SoftReference(paramBitmap));
-      return;
-    }
-  }
-  
-  public static void clear()
-  {
-    synchronized (jdField_a_of_type_JavaUtilSet)
-    {
-      jdField_a_of_type_JavaUtilSet.clear();
-      return;
-    }
   }
 }
 

@@ -1,18 +1,16 @@
 package com.tencent.component.media.image;
 
-import plz;
-
 public class CancelableDecodeImageTask
   extends DecodeImageTask
 {
-  private static int jdField_a_of_type_Int;
-  private static CancelableDecodeImageTask jdField_a_of_type_ComTencentComponentMediaImageCancelableDecodeImageTask = null;
-  private static final Object jdField_a_of_type_JavaLangObject = new Object();
-  private CancelableDecodeImageTask b = null;
+  private static int mObjectPoolSize;
+  private static CancelableDecodeImageTask sPool = null;
+  private static final Object sPoolSync = new Object();
+  private CancelableDecodeImageTask next = null;
   
   static
   {
-    jdField_a_of_type_Int = 0;
+    mObjectPoolSize = 0;
     clearAndInitSize();
   }
   
@@ -21,23 +19,23 @@ public class CancelableDecodeImageTask
     super(paramImageKey);
   }
   
-  private CancelableDecodeImageTask(plz paramplz)
+  private CancelableDecodeImageTask(ImageTask paramImageTask)
   {
-    super(paramplz);
+    super(paramImageTask);
   }
   
   public static void clearAndInitSize()
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (sPoolSync)
     {
-      jdField_a_of_type_ComTencentComponentMediaImageCancelableDecodeImageTask = null;
+      sPool = null;
       int i = 0;
       while (i < mInitAllocatedSize)
       {
         CancelableDecodeImageTask localCancelableDecodeImageTask = new CancelableDecodeImageTask(null);
-        localCancelableDecodeImageTask.b = jdField_a_of_type_ComTencentComponentMediaImageCancelableDecodeImageTask;
-        jdField_a_of_type_ComTencentComponentMediaImageCancelableDecodeImageTask = localCancelableDecodeImageTask;
-        jdField_a_of_type_Int += 1;
+        localCancelableDecodeImageTask.next = sPool;
+        sPool = localCancelableDecodeImageTask;
+        mObjectPoolSize += 1;
         i += 1;
       }
       return;
@@ -47,14 +45,14 @@ public class CancelableDecodeImageTask
   public static CancelableDecodeImageTask obtain(ImageKey paramImageKey)
   {
     if (needRecycle) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (sPoolSync)
     {
-      if (jdField_a_of_type_ComTencentComponentMediaImageCancelableDecodeImageTask != null)
+      if (sPool != null)
       {
-        CancelableDecodeImageTask localCancelableDecodeImageTask = jdField_a_of_type_ComTencentComponentMediaImageCancelableDecodeImageTask;
-        jdField_a_of_type_ComTencentComponentMediaImageCancelableDecodeImageTask = jdField_a_of_type_ComTencentComponentMediaImageCancelableDecodeImageTask.b;
-        localCancelableDecodeImageTask.b = null;
-        jdField_a_of_type_Int -= 1;
+        CancelableDecodeImageTask localCancelableDecodeImageTask = sPool;
+        sPool = sPool.next;
+        localCancelableDecodeImageTask.next = null;
+        mObjectPoolSize -= 1;
         localCancelableDecodeImageTask.setImageKey(paramImageKey);
         return localCancelableDecodeImageTask;
       }
@@ -62,21 +60,21 @@ public class CancelableDecodeImageTask
     }
   }
   
-  public static CancelableDecodeImageTask obtain(plz paramplz)
+  public static CancelableDecodeImageTask obtain(ImageTask paramImageTask)
   {
     if (needRecycle) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (sPoolSync)
     {
-      if (jdField_a_of_type_ComTencentComponentMediaImageCancelableDecodeImageTask != null)
+      if (sPool != null)
       {
-        CancelableDecodeImageTask localCancelableDecodeImageTask = jdField_a_of_type_ComTencentComponentMediaImageCancelableDecodeImageTask;
-        jdField_a_of_type_ComTencentComponentMediaImageCancelableDecodeImageTask = jdField_a_of_type_ComTencentComponentMediaImageCancelableDecodeImageTask.b;
-        localCancelableDecodeImageTask.b = null;
-        jdField_a_of_type_Int -= 1;
-        localCancelableDecodeImageTask.setImageTask(paramplz);
+        CancelableDecodeImageTask localCancelableDecodeImageTask = sPool;
+        sPool = sPool.next;
+        localCancelableDecodeImageTask.next = null;
+        mObjectPoolSize -= 1;
+        localCancelableDecodeImageTask.setImageTask(paramImageTask);
         return localCancelableDecodeImageTask;
       }
-      return new CancelableDecodeImageTask(paramplz);
+      return new CancelableDecodeImageTask(paramImageTask);
     }
   }
   
@@ -106,13 +104,13 @@ public class CancelableDecodeImageTask
       return;
     }
     reset();
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (sPoolSync)
     {
-      if (jdField_a_of_type_Int < 50)
+      if (mObjectPoolSize < 50)
       {
-        this.b = jdField_a_of_type_ComTencentComponentMediaImageCancelableDecodeImageTask;
-        jdField_a_of_type_ComTencentComponentMediaImageCancelableDecodeImageTask = this;
-        jdField_a_of_type_Int += 1;
+        this.next = sPool;
+        sPool = this;
+        mObjectPoolSize += 1;
       }
       return;
     }

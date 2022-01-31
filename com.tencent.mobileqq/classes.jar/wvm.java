@@ -1,28 +1,25 @@
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qcall.QCallFacade;
+import com.tencent.common.app.AppInterface;
 
-public class wvm
-  implements Runnable
+class wvm
+  extends avzo
 {
-  public wvm(MainAssistObserver paramMainAssistObserver, QQAppInterface paramQQAppInterface) {}
+  wvm(wvk paramwvk, AppInterface paramAppInterface) {}
   
-  public void run()
+  public void a(boolean paramBoolean, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      QCallFacade localQCallFacade = (QCallFacade)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(37);
-      if (localQCallFacade != null)
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.removeObserver(this);
+    if (paramBoolean) {
+      synchronized (wvk.a(this.jdField_a_of_type_Wvk))
       {
-        int i = localQCallFacade.a();
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new wvn(this, i));
+        wvk.a(this.jdField_a_of_type_Wvk, paramInt);
+        return;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wvm
  * JD-Core Version:    0.7.0.1
  */

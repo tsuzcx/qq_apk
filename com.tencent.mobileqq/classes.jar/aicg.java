@@ -1,15 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.service.message.MessageProtoCodec;
-import tencent.im.s2c.msgtype0x210.submsgtype0xb1.submsgtype0xb1.MsgBody;
+import com.tencent.widget.AbsListView;
 
-public final class aicg
-  implements Runnable
+class aicg
+  implements begh
 {
-  public aicg(QQAppInterface paramQQAppInterface, submsgtype0xb1.MsgBody paramMsgBody, boolean paramBoolean) {}
+  aicg(aicc paramaicc) {}
   
-  public void run()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    MessageProtoCodec.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0xb1Submsgtype0xb1$MsgBody.invite_info, this.jdField_a_of_type_Boolean);
+    aicc.a(this.a, paramInt);
+    if (paramInt == 0)
+    {
+      aicc.a(this.a, null, null);
+      aicc.a(this.a).b();
+      return;
+    }
+    aicc.a(this.a).c();
+    aicc.a(this.a).a();
   }
 }
 

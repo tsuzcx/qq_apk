@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_0x592$ModifyUnreadCntReq
-  extends MessageMicro
+  extends MessageMicro<ModifyUnreadCntReq>
 {
   public static final int CLEAR = 3;
   public static final int DECREASE = 2;
@@ -19,7 +19,7 @@ public final class oidb_0x592$ModifyUnreadCntReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x592.oidb_0x592.ModifyUnreadCntReq
  * JD-Core Version:    0.7.0.1
  */

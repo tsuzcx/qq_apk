@@ -1,66 +1,35 @@
 import android.graphics.Bitmap;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.jsbridge.JsBridge;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.LruCache;
 
-public class ulg
-  extends WebViewClient
+class ulg
+  extends LruCache<ulh, Drawable>
 {
-  private ulg(UpgradeDetailActivity paramUpgradeDetailActivity) {}
-  
-  public void onPageFinished(WebView paramWebView, String paramString)
+  ulg(ule paramule, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "onPageFinished: " + paramString);
-    }
-    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-    super.onPageFinished(paramWebView, paramString);
+    super(paramInt);
   }
   
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  protected int a(ulh paramulh, Drawable paramDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "onPageStarted: " + paramString);
-    }
-    if (this.a.a(paramString)) {
-      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-    }
-    try
+    if ((paramDrawable instanceof BitmapDrawable))
     {
-      this.a.jdField_a_of_type_ComTencentSmttSdkWebView.stopLoading();
-      return;
-    }
-    catch (Exception paramWebView) {}
-    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    return;
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    this.a.a(true);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("UpgradeDetailActivity", 2, "shouldOverrideUrlLoading: " + paramString);
-    }
-    if ((paramString == null) || ("".equals(paramString)) || ("about:blank;".equals(paramString)) || ("about:blank".equals(paramString))) {}
-    for (;;)
-    {
-      return true;
-      if ((!UpgradeDetailActivity.a(this.a).a(paramWebView, paramString)) && (!this.a.a(paramString))) {
-        this.a.a(paramString);
+      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
+      if (paramDrawable != null)
+      {
+        int i = paramDrawable.getRowBytes();
+        i = paramDrawable.getHeight() * i;
+        ulq.b("Q.qqstory.newImageLoader", new Object[] { "URLImageLoader cache put:", paramulh, " size=", Integer.valueOf(i) });
+        return i;
       }
     }
+    return 524288;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ulg
  * JD-Core Version:    0.7.0.1
  */

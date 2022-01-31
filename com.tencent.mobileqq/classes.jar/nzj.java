@@ -1,27 +1,38 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.biz.qqstory.storyHome.detail.model.SpannableStringUtils.ClickNickCallback;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.biz.pubaccount.readinjoy.comment.ui.ReadInJoyCommentLikeView;
 
-public final class nzj
-  extends ClickableSpan
+public class nzj
+  implements View.OnClickListener
 {
-  public nzj(SpannableStringUtils.ClickNickCallback paramClickNickCallback, String paramString, int paramInt) {}
+  public nzj(ReadInJoyCommentLikeView paramReadInJoyCommentLikeView) {}
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelSpannableStringUtils$ClickNickCallback.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(paramTextPaint.getColor());
-    paramTextPaint.setUnderlineText(false);
+    if (obz.k()) {}
+    while (ReadInJoyCommentLikeView.a(this.a) == null) {
+      return;
+    }
+    if (ReadInJoyCommentLikeView.a(this.a).isLiked()) {
+      if (ReadInJoyCommentLikeView.a(this.a) != null) {
+        ReadInJoyCommentLikeView.a(this.a).a(ReadInJoyCommentLikeView.a(this.a).commentId, 0, 0);
+      }
+    }
+    for (;;)
+    {
+      ReadInJoyCommentLikeView.a(this.a, ReadInJoyCommentLikeView.a(this.a));
+      ReadInJoyCommentLikeView.a(this.a);
+      return;
+      if (ReadInJoyCommentLikeView.a(this.a) != null) {
+        ReadInJoyCommentLikeView.a(this.a).a(ReadInJoyCommentLikeView.a(this.a).commentId, 1, 0);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nzj
  * JD-Core Version:    0.7.0.1
  */

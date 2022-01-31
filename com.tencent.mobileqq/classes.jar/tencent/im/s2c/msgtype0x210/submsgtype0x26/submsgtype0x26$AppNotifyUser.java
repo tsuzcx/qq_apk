@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class submsgtype0x26$AppNotifyUser
-  extends MessageMicro
+  extends MessageMicro<AppNotifyUser>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "opt_uint64_uin", "opt_uint32_flag" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0) }, AppNotifyUser.class);
   public final PBUInt32Field opt_uint32_flag = PBField.initUInt32(0);

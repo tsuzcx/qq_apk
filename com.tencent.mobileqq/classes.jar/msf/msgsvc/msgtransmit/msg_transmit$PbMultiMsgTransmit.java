@@ -7,11 +7,11 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import msf.msgcomm.msg_comm.Msg;
 
 public final class msg_transmit$PbMultiMsgTransmit
-  extends MessageMicro
+  extends MessageMicro<PbMultiMsgTransmit>
 {
-  public static final int MSG_FIELD_NUMBER = 1;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "msg" }, new Object[] { null }, PbMultiMsgTransmit.class);
-  public final PBRepeatMessageField msg = PBField.initRepeatMessage(msg_comm.Msg.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "msg", "pbItemList" }, new Object[] { null, null }, PbMultiMsgTransmit.class);
+  public final PBRepeatMessageField<msg_comm.Msg> msg = PBField.initRepeatMessage(msg_comm.Msg.class);
+  public final PBRepeatMessageField<msg_transmit.PbMultiMsgItem> pbItemList = PBField.initRepeatMessage(msg_transmit.PbMultiMsgItem.class);
 }
 
 

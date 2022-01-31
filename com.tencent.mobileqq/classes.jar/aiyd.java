@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.apollo.trace.sdk.data.TraceData;
+import java.util.List;
 
-class aiyd
-  implements Runnable
+public abstract interface aiyd
 {
-  aiyd(aiyb paramaiyb) {}
+  public abstract List<TraceData> a();
   
-  public void run()
-  {
-    QQToast.a(this.a.a.getActivity(), 1, "保存至本地相册失败，请重试", 0).a();
-  }
+  public abstract boolean a(List<TraceData> paramList);
+  
+  public abstract boolean b(List<TraceData> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiyd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer;
-import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
 
-public class ktt
-  implements View.OnClickListener
+class ktt
+  implements ServiceConnection
 {
-  public ktt(AccountDetailGroupListContainer paramAccountDetailGroupListContainer, PaConfigAttr.PaConfigInfo paramPaConfigInfo) {}
+  ktt(kts paramkts) {}
   
-  public void onClick(View paramView)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    AccountDetailGroupListContainer.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer);
-    AccountDetailGroupListContainer.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer, this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.a);
+    if (QLog.isColorLevel()) {
+      QLog.d(kts.a(), 2, "AVServiceForQQ onServiceConnected");
+    }
+    this.a.a = llz.a(paramIBinder);
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(kts.a(), 2, "AVServiceForQQ onServiceDisconnected");
+    }
+    this.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ktt
  * JD-Core Version:    0.7.0.1
  */

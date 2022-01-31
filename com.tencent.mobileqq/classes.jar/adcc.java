@@ -1,28 +1,16 @@
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil.GetApkPackageInfoCallback;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.FileExecutor;
-import java.util.concurrent.Executor;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adcc
-  implements FileCategoryUtil.GetApkPackageInfoCallback
+class adcc
+  implements DialogInterface.OnClickListener
 {
-  public adcc(FileManagerEngine paramFileManagerEngine, FileManagerEntity paramFileManagerEntity, Runnable paramRunnable) {}
+  adcc(adbx paramadbx) {}
   
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = paramString;
-    FileManagerUtil.FileExecutor.a().execute(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strApkPackageName = paramString;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adcc
  * JD-Core Version:    0.7.0.1
  */

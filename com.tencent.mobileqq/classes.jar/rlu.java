@@ -1,20 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-
-public class rlu
-  implements View.OnClickListener
+class rlu
 {
-  public rlu(AccountManageActivity paramAccountManageActivity) {}
+  public String a;
+  public String b;
   
-  public void onClick(View paramView)
+  rlu(rls paramrls, String paramString1, String paramString2)
   {
-    this.a.h();
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rlu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/fi1" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/h9j" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/h9f" />
+    <com.qzone.widget.EmoEditPanel android:id="@id/h9f" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <RelativeLayout android:id="@id/hgm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+            <com.qzone.widget.RapidCommentEmoView android:id="@id/hvd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+        <include android:id="@id/h8v" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/hgm" layout="@layout/bm7" />
+        <LinearLayout android:orientation="vertical" android:id="@id/bgj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/h8v">
+            <View android:id="@id/jta" android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+            <android.support.v7.widget.RecyclerView android:orientation="horizontal" android:id="@id/bk3" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="50.0dip" />
+        </LinearLayout>
+        <com.qzone.widget.ExtendGridView android:scrollbarThumbVertical="@drawable/axv" android:scrollbarStyle="insideOverlay" android:gravity="center" android:id="@id/dek" android:background="@drawable/bvh" android:paddingLeft="@dimen/p4" android:paddingTop="2.0dip" android:paddingRight="@dimen/p4" android:paddingBottom="9.0dip" android:visibility="gone" android:fadingEdge="none" android:layout_width="wrap_content" android:layout_height="@dimen/p1" android:listSelector="@color/ajr" android:scrollingCache="false" android:stretchMode="columnWidth" />
+    </com.qzone.widget.EmoEditPanel>
+</RelativeLayout>

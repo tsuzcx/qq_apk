@@ -1,66 +1,56 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.PhoneUnityPhoneLoginActivity;
-import com.tencent.mobileqq.app.SecSvcObserver;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.entrance.TroopAssistantHomeFeedPlayInfo;
+import java.util.Iterator;
+import java.util.List;
 
 public class tkv
-  extends SecSvcObserver
+  extends tjg<TroopAssistantHomeFeedPlayInfo>
 {
-  public tkv(PhoneUnityPhoneLoginActivity paramPhoneUnityPhoneLoginActivity) {}
-  
-  public void a(int paramInt, String paramString)
+  public tkv(TroopAssistantHomeFeedPlayInfo paramTroopAssistantHomeFeedPlayInfo)
   {
-    if ((paramInt == 0) && (PhoneUnityPhoneLoginActivity.a(this.a) != null))
-    {
-      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(null);
-      PhoneUnityPhoneLoginActivity.a(this.a).setChecked(true);
-      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(this.a);
-      return;
+    super(paramTroopAssistantHomeFeedPlayInfo);
+    paramTroopAssistantHomeFeedPlayInfo = (uje)sqg.a(11);
+    if (paramTroopAssistantHomeFeedPlayInfo.b != null) {
+      this.a = paramTroopAssistantHomeFeedPlayInfo.b;
     }
-    if (paramInt == 39)
-    {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8005BFD", "0X8005BFD", 0, 0, "", "", "", "");
-      DialogUtil.a(this.a, 230, this.a.getString(2131436876), this.a.getString(2131436877), null, this.a.getString(2131436648), new tkw(this), null).show();
-      return;
-    }
-    String str = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      str = this.a.getString(2131436871);
-    }
-    QQToast.a(this.a, str, 0).b(this.a.getTitleBarHeight());
   }
   
-  public void b(int paramInt, String paramString)
+  public uiw a(String paramString)
   {
-    if ((paramInt == 0) && (PhoneUnityPhoneLoginActivity.a(this.a) != null))
+    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(null);
-      PhoneUnityPhoneLoginActivity.a(this.a).setChecked(false);
-      PhoneUnityPhoneLoginActivity.a(this.a).setOnCheckedChangeListener(this.a);
-      return;
-    }
-    String str;
-    if (paramInt == 36) {
-      str = this.a.getString(2131436873);
-    }
-    for (;;)
-    {
-      QQToast.a(this.a, str, 0).b(this.a.getTitleBarHeight());
-      return;
-      str = paramString;
-      if (TextUtils.isEmpty(paramString)) {
-        str = this.a.getString(2131436872);
+      uiw localuiw = (uiw)localIterator.next();
+      if (localuiw.a.equals(paramString)) {
+        return localuiw;
       }
     }
+    return null;
   }
+  
+  public void a() {}
+  
+  public void a(boolean paramBoolean, int paramInt, tjy paramtjy)
+  {
+    Object localObject = this.a.jdField_a_of_type_JavaUtilList;
+    if ((paramBoolean) && (((List)localObject).size() > 0))
+    {
+      List localList = b((List)localObject);
+      paramtjy.a(new ErrorMessage(), localList, this.a.jdField_a_of_type_Boolean);
+      urk.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "return cache data size %d", Integer.valueOf(((List)localObject).size()));
+      return;
+    }
+    localObject = new tal();
+    ((tal)localObject).a = this.a.a();
+    urk.a("Q.qqstory.player.data.TroopAssistantHomeFeedPlayPageLoader", "start request next feed id list with cookie %s", ((tal)localObject).a);
+    slv.a().a((slz)localObject, new tkw(this, paramtjy));
+  }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tkv
  * JD-Core Version:    0.7.0.1
  */

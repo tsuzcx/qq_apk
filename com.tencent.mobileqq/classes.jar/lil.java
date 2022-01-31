@@ -1,37 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkUtil;
-import com.tencent.mobileqq.ark.ArkAppInfo.AppDesc;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.random.RandomController;
 
-class lil
-  implements ArkLocalAppMgr.IGetAppPathByNameCallback
+public class lil
+  implements DialogInterface.OnClickListener
 {
-  lil(lik paramlik) {}
+  public lil(RandomController paramRandomController) {}
   
-  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyArkUtil", 2, new Object[] { "retCode: ", Integer.valueOf(paramInt), ", msg: ", paramString });
+    if (RandomController.a(this.a) == 2) {
+      awqx.b(null, "CliOper", "", "", "0X8005729", "0X8005729", 0, 0, "", "", "", "");
     }
-    if ((paramAppPathInfo != null) && (paramInt == 0))
+    for (;;)
     {
-      paramString = paramAppPathInfo.jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$AppDesc;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyArkUtil", 2, new Object[] { "preDownloadArkApp succeed, appPath: ", paramAppPathInfo.jdField_a_of_type_JavaLangString, ", appName: ", paramString.jdField_a_of_type_JavaLangString, ", appVersion: ", paramString.b });
-      }
-      ReadInJoyArkUtil.a(new lim(this, paramString), 5);
+      this.a.c();
       return;
+      if (RandomController.a(this.a) == 1) {
+        awqx.b(null, "CliOper", "", "", "0X8005727", "0X8005727", 0, 0, "", "", "", "");
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyArkUtil", 2, new Object[] { "preDownloadArkApp appPath is null or downloadFailed, retryTimes: ", Integer.valueOf(this.a.jdField_a_of_type_Int) });
-    }
-    ReadInJoyArkUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage, this.a.jdField_a_of_type_Int + 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lil
  * JD-Core Version:    0.7.0.1
  */

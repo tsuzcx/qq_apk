@@ -1,136 +1,193 @@
 package c.t.m.g;
 
-import java.util.ArrayList;
+import android.location.Location;
+import android.net.wifi.ScanResult;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import org.json.JSONObject;
 
 public final class es
 {
-  private static double[][] a;
-  private static double b;
-  private static double c;
-  private static double d;
-  private static double e;
-  private static List<a> f;
+  public static int a = 0;
+  public final eu b;
+  public final eq c;
+  public final er d;
   
-  static
+  public es(eu parameu, eq parameq, er paramer)
   {
-    double[] arrayOfDouble1 = { 47.901614000000002D, 115.43746899999999D };
-    double[] arrayOfDouble2 = { 42.714731999999998D, 107.83493D };
-    double[] arrayOfDouble3 = { 42.779274999999998D, 100.100555D };
-    double[] arrayOfDouble4 = { 42.908160000000002D, 96.497039999999998D };
-    double[] arrayOfDouble5 = { 49.439557000000001D, 87.180633999999998D };
-    double[] arrayOfDouble6 = { 47.398349000000003D, 82.961883999999998D };
-    double[] arrayOfDouble7 = { 36.562600000000003D, 73.758774000000003D };
-    double[] arrayOfDouble8 = { 26.755420999999998D, 92.118645000000001D };
-    double[] arrayOfDouble9 = { 24.166802000000001D, 97.115707D };
-    double[] arrayOfDouble10 = { 21.915019000000001D, 106.64660499999999D };
-    double[] arrayOfDouble11 = { 22.998851999999999D, 117.176743D };
-    double[] arrayOfDouble12 = { 27.761330000000001D, 121.82104099999999D };
-    double[] arrayOfDouble13 = { 36.914763999999998D, 122.91332199999999D };
-    double[] arrayOfDouble14 = { 41.294316999999999D, 128.27293399999999D };
-    double[] arrayOfDouble15 = { 45.026949999999999D, 133.17283599999999D };
-    double[] arrayOfDouble16 = { 48.04871D, 135.04051200000001D };
-    double[] arrayOfDouble17 = { 49.196064D, 130.53611799999999D };
-    double[] arrayOfDouble18 = { 50.708634000000004D, 127.613754D };
-    double[] arrayOfDouble19 = { 53.133589999999998D, 125.833969D };
-    a = new double[][] { { 53.540306999999999D, 122.38082900000001D }, { 53.399706999999999D, 120.821285D }, { 52.749594000000002D, 119.91989100000001D }, { 49.951219999999999D, 116.58004800000001D }, arrayOfDouble1, { 47.070121999999998D, 118.381805D }, { 45.213003999999998D, 112.00973500000001D }, arrayOfDouble2, arrayOfDouble3, arrayOfDouble4, { 44.433779999999999D, 95.442352D }, { 45.614037000000003D, 91.091766000000007D }, { 47.606163000000002D, 91.003876000000005D }, arrayOfDouble5, arrayOfDouble6, { 44.964798000000002D, 79.753876000000005D }, { 42.358544000000002D, 79.885711999999998D }, { 40.513798999999999D, 73.689423000000005D }, arrayOfDouble7, { 33.760882000000002D, 76.457977D }, { 31.989442D, 77.688445999999999D }, { 28.497661000000001D, 84.280242999999999D }, { 27.166695000000001D, 88.394278999999997D }, arrayOfDouble8, { 27.936181000000001D, 97.379379D }, arrayOfDouble9, { 21.350781000000001D, 99.972153000000006D }, { 21.105D, 101.707993D }, { 23.120153999999999D, 105.355453D }, arrayOfDouble10, { 21.350781000000001D, 107.684555D }, { 16.762467999999998D, 109.002914D }, { 18.729502D, 111.174774D }, { 21.268899999999999D, 112.782211D }, arrayOfDouble11, { 25.019304000000002D, 119.97339100000001D }, { 27.117813000000002D, 120.89012099999999D }, arrayOfDouble12, { 30.097612999999999D, 123.45165299999999D }, { 33.155948000000002D, 120.999985D }, { 35.209721999999999D, 120.143051D }, arrayOfDouble13, { 39.842286000000001D, 124.273911D }, arrayOfDouble14, { 42.815550999999999D, 131.19787199999999D }, arrayOfDouble15, arrayOfDouble16, { 48.618385000000004D, 134.33738700000001D }, { 47.886881000000002D, 131.70066800000001D }, arrayOfDouble17, arrayOfDouble18, arrayOfDouble19, { 53.657660999999997D, 123.329086D } };
-    b = 360.0D;
-    c = 360.0D;
-    d = -360.0D;
-    e = -360.0D;
-    f = new ArrayList();
-    a();
+    this.b = parameu;
+    this.c = parameq;
+    this.d = paramer;
   }
   
-  private static void a()
+  private String a(int paramInt1, int paramInt2, String paramString, dx paramdx, boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i = 0;
-    while (i < a.length)
-    {
-      double d1 = a[i][0];
-      double d2 = a[i][1];
-      if (d1 < c) {
-        c = d1;
-      }
-      if (d1 > e) {
-        e = d1;
-      }
-      if (d2 < b) {
-        b = d2;
-      }
-      if (d2 > d) {
-        d = d2;
-      }
-      f.add(new a(d1, d2));
-      i += 1;
+    if (paramdx == null) {
+      return null;
     }
-  }
-  
-  public static boolean a(double paramDouble1, double paramDouble2)
-  {
-    if ((paramDouble1 < c) || (paramDouble2 < b) || (paramDouble1 > e) || (paramDouble2 > d)) {
-      return false;
-    }
-    Object localObject = (a)f.get(0);
-    int m = f.size();
-    int j = 0;
-    int i = 1;
-    while (i <= m)
+    for (;;)
     {
-      a locala = (a)f.get(i % m);
-      int k = j;
-      if (paramDouble1 > Math.min(((a)localObject).a, locala.a))
+      try
       {
-        k = j;
-        if (paramDouble1 <= Math.max(((a)localObject).a, locala.a))
+        Object localObject4;
+        if (this.c == null)
         {
-          k = j;
-          if (paramDouble2 <= Math.max(((a)localObject).b, locala.b))
+          bool = true;
+          localObject1 = this.b;
+          if (localObject1 == null)
           {
-            k = j;
-            if (((a)localObject).a != locala.a)
+            localObject1 = null;
+            break label1050;
+            localObject4 = fm.a(this.c, bool);
+            localObject2 = this.d;
+            if (localObject2 != null) {
+              continue;
+            }
+            localObject2 = "{}";
+            dr localdr = paramdx.b;
+            localObject3 = new HashMap();
+            ((HashMap)localObject3).put("imei", localdr.a());
+            ((HashMap)localObject3).put("imsi", localdr.b());
+            ((HashMap)localObject3).put("phonenum", co.d(localdr.d));
+            ((HashMap)localObject3).put("qq", co.d(localdr.f));
+            ((HashMap)localObject3).put("mac", localdr.c().toLowerCase(Locale.ENGLISH));
+            localObject5 = new JSONObject((Map)localObject3).toString();
+            String str2 = localdr.f();
+            fj.a();
+            int k = fj.a(paramdx.a);
+            String str1 = fn.c(paramdx);
+            localObject3 = localdr.j;
+            paramdx = (dx)localObject3;
+            if (localObject3 != null) {
+              paramdx = ((String)localObject3).replace("\"", "");
+            }
+            localObject3 = paramdx;
+            if (paramdx != null) {
+              localObject3 = paramdx.replace("|", "");
+            }
+            paramdx = (String)localObject3 + "_" + localdr.h;
+            int j = 203;
+            i = j;
+            if (paramBoolean2)
             {
-              double d1 = (paramDouble1 - ((a)localObject).a) * (locala.b - ((a)localObject).b) / (locala.a - ((a)localObject).a);
-              double d2 = ((a)localObject).b;
-              if (((a)localObject).b != locala.b)
-              {
-                k = j;
-                if (paramDouble2 > d1 + d2) {}
-              }
-              else
-              {
-                k = j + 1;
+              localObject3 = localdr.a();
+              i = j;
+              if (localObject3 != null) {
+                i = Math.abs(((String)localObject3).hashCode()) % 1000 + 1001;
               }
             }
+            localObject3 = "{\"version\":\"" + localdr.d() + "\",\"address\":" + paramInt1;
+            paramdx = (String)localObject3 + ",\"source\":" + i + ",\"access_token\":\"" + str2 + "\",\"app_name\":\"" + paramString + "\",\"app_label\":\"" + paramdx + "\",\"bearing\":1";
+            paramString = paramdx;
+            if (paramInt2 >= 0) {
+              paramString = paramdx + ",\"control\":" + paramInt2;
+            }
+            if ((!paramBoolean1) || (paramBoolean2)) {
+              continue;
+            }
+            paramString = paramString + ",\"detectgps\":1";
+            paramString = paramString + ",\"pstat\":" + k;
+            paramString = paramString + ",\"wlan\":" + str1;
+            return paramString + ",\"attribute\":" + (String)localObject5 + ",\"location\":" + (String)localObject2 + ",\"cells\":" + (String)localObject4 + ",\"wifis\":" + (String)localObject1 + "}";
           }
         }
+        else
+        {
+          if (a == this.c.e) {
+            break label1063;
+          }
+          bool = true;
+          a = this.c.e;
+          continue;
+        }
+        localObject1 = Collections.unmodifiableList(((eu)localObject1).b);
+        break label1050;
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("[");
+        if (((List)localObject1).size() <= 0)
+        {
+          ((StringBuilder)localObject2).append("]");
+          localObject1 = ((StringBuilder)localObject2).toString();
+          continue;
+        }
+        Object localObject3 = ((List)localObject1).iterator();
+        int i = 0;
+        if (((Iterator)localObject3).hasNext())
+        {
+          localObject4 = (ScanResult)((Iterator)localObject3).next();
+          ((List)localObject1).size();
+          if (i > 0) {
+            ((StringBuilder)localObject2).append(",");
+          }
+          ((StringBuilder)localObject2).append("{\"mac\":\"").append(((ScanResult)localObject4).BSSID).append("\",");
+          ((StringBuilder)localObject2).append("\"rssi\":").append(((ScanResult)localObject4).level).append("}");
+          i += 1;
+          continue;
+        }
+        ((StringBuilder)localObject2).append("]");
+        localObject1 = ((StringBuilder)localObject2).toString();
+        continue;
+        localObject3 = ((er)localObject2).a;
+        Object localObject5 = new StringBuilder();
+        double d1 = fm.a(((Location)localObject3).getLatitude(), 6);
+        double d2 = fm.a(((Location)localObject3).getLongitude(), 6);
+        double d3 = fm.a(((Location)localObject3).getAltitude(), 1);
+        double d4 = fm.a(((Location)localObject3).getAccuracy(), 1);
+        double d5 = fm.a(((Location)localObject3).getBearing(), 1);
+        double d6 = fm.a(((Location)localObject3).getSpeed(), 1);
+        ((StringBuilder)localObject5).append("{");
+        ((StringBuilder)localObject5).append("\"latitude\":");
+        ((StringBuilder)localObject5).append(d1);
+        ((StringBuilder)localObject5).append(",\"longitude\":");
+        ((StringBuilder)localObject5).append(d2);
+        ((StringBuilder)localObject5).append(",\"additional\":");
+        ((StringBuilder)localObject5).append("\"" + d3 + "," + d4 + "," + d5 + "," + d6 + "," + ((er)localObject2).b + "\"");
+        ((StringBuilder)localObject5).append("}");
+        localObject2 = ((StringBuilder)localObject5).toString();
+        continue;
+        paramString = paramString + ",\"detectgps\":0";
+        continue;
+        if (localObject1 != null) {
+          continue;
+        }
       }
-      i += 1;
-      localObject = locala;
-      j = k;
+      catch (Exception paramString)
+      {
+        return null;
+      }
+      label1050:
+      Object localObject1 = "[]";
+      continue;
+      label1063:
+      boolean bool = false;
     }
-    if (j % 2 == 0) {}
-    for (i = 0; i != 0; i = 1) {
-      return true;
-    }
-    return false;
   }
   
-  static final class a
+  public final String a(int paramInt, String paramString, dx paramdx, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    double a;
-    double b;
-    
-    public a(double paramDouble1, double paramDouble2)
-    {
-      this.a = paramDouble1;
-      this.b = paramDouble2;
+    if (paramBoolean2) {
+      return a(paramInt, 1, paramString, paramdx, paramBoolean1, paramBoolean3);
     }
+    return a(paramInt, 0, paramString, paramdx, paramBoolean1, paramBoolean3);
+  }
+  
+  public final boolean a()
+  {
+    return this.c != null;
+  }
+  
+  public final boolean b()
+  {
+    return this.b != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     c.t.m.g.es
  * JD-Core Version:    0.7.0.1
  */

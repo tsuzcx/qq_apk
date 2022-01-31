@@ -1,29 +1,6 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoTag;
-import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import java.util.List;
-
-public class oll
-  implements AbsListView.OnScrollListener
+public abstract interface oll
 {
-  int jdField_a_of_type_Int = 0;
-  
-  public oll(EditVideoTag paramEditVideoTag) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
-  {
-    if ((paramInt == 0) && (this.jdField_a_of_type_Int == EditVideoTag.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoTag, EditVideoTag.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoTag)).a().size()) && (!EditVideoTag.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoTag, EditVideoTag.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoTag)).a()))
-    {
-      paramAbsListView = EditVideoTag.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoTag);
-      EditVideoTag.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoTag, EditVideoTag.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoTag)).b(paramAbsListView);
-    }
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 

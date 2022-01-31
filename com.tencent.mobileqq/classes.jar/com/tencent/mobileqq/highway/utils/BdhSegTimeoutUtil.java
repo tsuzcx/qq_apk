@@ -2,6 +2,8 @@ package com.tencent.mobileqq.highway.utils;
 
 import android.content.Context;
 import com.tencent.mobileqq.highway.protocol.subcmd0x501.SubCmd0x501Rspbody.DynTimeOutConf;
+import com.tencent.mobileqq.highway.segment.RequestDataTrans;
+import com.tencent.mobileqq.highway.transaction.DataTransInfo;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class BdhSegTimeoutUtil
@@ -54,278 +56,166 @@ public class BdhSegTimeoutUtil
     sEnableDynTimeout = 0;
   }
   
+  public static long calculateTimeout(Context paramContext, RequestDataTrans paramRequestDataTrans, long paramLong1, int paramInt, long paramLong2)
+  {
+    if ((paramContext == null) || (paramRequestDataTrans == null) || (paramLong1 <= 0L) || (paramInt < 0) || (paramLong2 < 0L))
+    {
+      paramLong1 = -1L;
+      return paramLong1;
+    }
+    long l5 = -1L;
+    label447:
+    label450:
+    label461:
+    for (;;)
+    {
+      long l4;
+      try
+      {
+        l1 = sTbase_2G;
+        long l2 = sTorg_2G;
+        l4 = sMaxTimeoutDef;
+        i = HwNetworkUtil.getSystemNetwork(paramContext);
+        int j;
+        if (2 == i)
+        {
+          l4 = sMaxTimeout_2G;
+          l3 = l1;
+          l1 = l4;
+          i = 0;
+          j = paramRequestDataTrans.timeOutCount;
+          if (j < TIME_OUT_DELTA.length) {
+            break label447;
+          }
+          j = TIME_OUT_DELTA.length - 1;
+          if (paramLong2 <= 0L) {
+            continue;
+          }
+          paramContext = paramRequestDataTrans.mInfo;
+          l4 = l5;
+          if (paramContext == null) {
+            break label461;
+          }
+          int k = paramContext.length;
+          i = k;
+          l4 = l5;
+          if (k <= 0) {
+            break label461;
+          }
+          i = k;
+          l4 = l5;
+          if (j < 0) {
+            break label461;
+          }
+          l4 = l3 + paramLong1 + (k / paramInt * paramLong2) + TIME_OUT_DELTA[j];
+          i = k;
+          break label461;
+          BdhLogUtil.LogEvent("R", "BdhSegTimeoutUtil.calculateTimeout:  req.hwSeq = " + paramRequestDataTrans.getHwSeq() + " tBase = " + l3 + " tOrg = " + l2 + " tMaxTimeout = " + l1 + " rtt = " + paramLong1 + " lastSegSize = " + paramInt + " lastTimeCost = " + paramLong2 + " segSize = " + i + " timeoutCount = " + j + " timeout = " + l4);
+          paramLong1 = l4;
+          if (l4 <= l1) {
+            break;
+          }
+          paramLong1 = l1;
+          break;
+        }
+        if (3 == i)
+        {
+          l3 = sTbase_3G;
+          l2 = sTorg_3G;
+          l1 = sMaxTimeout_3G;
+          continue;
+        }
+        if (4 == i)
+        {
+          l3 = sTbase_4G;
+          l2 = sTorg_4G;
+          l1 = sMaxTimeout_4G;
+          continue;
+        }
+        if (1 != i) {
+          break label450;
+        }
+        l3 = sTbase_wifi;
+        l2 = sTorg_wifi;
+        l1 = sMaxTimeout_wifi;
+        continue;
+        if (j >= 0)
+        {
+          l4 = TIME_OUT_DELTA[j];
+          l4 = l3 + paramLong1 + l2 + l4;
+          i = 0;
+          continue;
+        }
+        l4 = -1L;
+      }
+      finally {}
+      int i = 0;
+      continue;
+      continue;
+      long l3 = l1;
+      long l1 = l4;
+    }
+  }
+  
   /* Error */
-  public static long calculateTimeout(Context paramContext, com.tencent.mobileqq.highway.segment.RequestDataTrans paramRequestDataTrans, long paramLong1, int paramInt, long paramLong2)
+  public static long getUrgentHbTimeout(Context paramContext)
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: aload_0
-    //   4: ifnull +25 -> 29
-    //   7: aload_1
-    //   8: ifnull +21 -> 29
-    //   11: lload_2
-    //   12: lconst_0
-    //   13: lcmp
-    //   14: ifle +15 -> 29
-    //   17: iload 4
-    //   19: iflt +10 -> 29
-    //   22: lload 5
-    //   24: lconst_0
-    //   25: lcmp
-    //   26: ifge +12 -> 38
-    //   29: ldc2_w 118
-    //   32: lstore_2
-    //   33: ldc 2
-    //   35: monitorexit
-    //   36: lload_2
-    //   37: lreturn
-    //   38: ldc2_w 118
-    //   41: lstore 18
-    //   43: getstatic 57	com/tencent/mobileqq/highway/utils/BdhSegTimeoutUtil:sTbase_2G	J
-    //   46: lstore 12
-    //   48: getstatic 65	com/tencent/mobileqq/highway/utils/BdhSegTimeoutUtil:sTorg_2G	J
-    //   51: lstore 14
-    //   53: getstatic 73	com/tencent/mobileqq/highway/utils/BdhSegTimeoutUtil:sMaxTimeoutDef	J
-    //   56: lstore 10
-    //   58: aload_0
-    //   59: invokestatic 125	com/tencent/mobileqq/highway/utils/HwNetworkUtil:getSystemNetwork	(Landroid/content/Context;)I
-    //   62: istore 7
-    //   64: iconst_2
-    //   65: iload 7
-    //   67: if_icmpne +257 -> 324
-    //   70: getstatic 75	com/tencent/mobileqq/highway/utils/BdhSegTimeoutUtil:sMaxTimeout_2G	J
-    //   73: lstore 10
-    //   75: iconst_0
-    //   76: istore 9
-    //   78: aload_1
-    //   79: getfield 130	com/tencent/mobileqq/highway/segment/RequestDataTrans:timeOutCount	I
-    //   82: istore 8
-    //   84: iload 8
-    //   86: istore 7
-    //   88: iload 8
-    //   90: getstatic 111	com/tencent/mobileqq/highway/utils/BdhSegTimeoutUtil:TIME_OUT_DELTA	[J
-    //   93: arraylength
-    //   94: if_icmplt +11 -> 105
-    //   97: getstatic 111	com/tencent/mobileqq/highway/utils/BdhSegTimeoutUtil:TIME_OUT_DELTA	[J
-    //   100: arraylength
-    //   101: iconst_1
-    //   102: isub
-    //   103: istore 7
-    //   105: lload 5
-    //   107: lconst_0
-    //   108: lcmp
-    //   109: ifle +287 -> 396
-    //   112: aload_1
-    //   113: getfield 134	com/tencent/mobileqq/highway/segment/RequestDataTrans:mInfo	Lcom/tencent/mobileqq/highway/transaction/DataTransInfo;
-    //   116: astore_0
-    //   117: iload 9
-    //   119: istore 8
-    //   121: lload 18
-    //   123: lstore 16
-    //   125: aload_0
-    //   126: ifnull +65 -> 191
-    //   129: aload_0
-    //   130: getfield 139	com/tencent/mobileqq/highway/transaction/DataTransInfo:length	I
-    //   133: istore 9
-    //   135: iload 9
-    //   137: istore 8
-    //   139: lload 18
-    //   141: lstore 16
-    //   143: iload 9
-    //   145: ifle +46 -> 191
-    //   148: iload 9
-    //   150: istore 8
-    //   152: lload 18
-    //   154: lstore 16
-    //   156: iload 7
-    //   158: iflt +33 -> 191
-    //   161: lload 12
-    //   163: lload_2
-    //   164: ladd
-    //   165: iload 9
-    //   167: i2d
-    //   168: iload 4
-    //   170: i2d
-    //   171: ddiv
-    //   172: lload 5
-    //   174: l2d
-    //   175: dmul
-    //   176: d2l
-    //   177: ladd
-    //   178: getstatic 111	com/tencent/mobileqq/highway/utils/BdhSegTimeoutUtil:TIME_OUT_DELTA	[J
-    //   181: iload 7
-    //   183: laload
-    //   184: ladd
-    //   185: lstore 16
-    //   187: iload 9
-    //   189: istore 8
-    //   191: ldc 141
-    //   193: new 143	java/lang/StringBuilder
-    //   196: dup
-    //   197: invokespecial 144	java/lang/StringBuilder:<init>	()V
-    //   200: ldc 146
-    //   202: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   205: aload_1
-    //   206: invokevirtual 154	com/tencent/mobileqq/highway/segment/RequestDataTrans:getHwSeq	()I
-    //   209: invokevirtual 157	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   212: ldc 159
-    //   214: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   217: lload 12
-    //   219: invokevirtual 162	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   222: ldc 164
-    //   224: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   227: lload 14
-    //   229: invokevirtual 162	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   232: ldc 166
-    //   234: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   237: lload 10
-    //   239: invokevirtual 162	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   242: ldc 168
-    //   244: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   247: lload_2
-    //   248: invokevirtual 162	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   251: ldc 170
-    //   253: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   256: iload 4
-    //   258: invokevirtual 157	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   261: ldc 172
-    //   263: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   266: lload 5
-    //   268: invokevirtual 162	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   271: ldc 174
-    //   273: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   276: iload 8
-    //   278: invokevirtual 157	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   281: ldc 176
-    //   283: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   286: iload 7
-    //   288: invokevirtual 157	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   291: ldc 178
-    //   293: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   296: lload 16
-    //   298: invokevirtual 162	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   301: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   304: invokestatic 188	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogEvent	(Ljava/lang/String;Ljava/lang/String;)V
-    //   307: lload 10
-    //   309: lstore_2
-    //   310: lload 16
-    //   312: lload 10
-    //   314: lcmp
-    //   315: ifgt -282 -> 33
-    //   318: lload 16
-    //   320: lstore_2
-    //   321: goto -288 -> 33
-    //   324: iconst_3
-    //   325: iload 7
-    //   327: if_icmpne +21 -> 348
-    //   330: getstatic 59	com/tencent/mobileqq/highway/utils/BdhSegTimeoutUtil:sTbase_3G	J
-    //   333: lstore 12
-    //   335: getstatic 67	com/tencent/mobileqq/highway/utils/BdhSegTimeoutUtil:sTorg_3G	J
-    //   338: lstore 14
-    //   340: getstatic 77	com/tencent/mobileqq/highway/utils/BdhSegTimeoutUtil:sMaxTimeout_3G	J
-    //   343: lstore 10
-    //   345: goto -270 -> 75
-    //   348: iconst_4
-    //   349: iload 7
-    //   351: if_icmpne +21 -> 372
-    //   354: getstatic 61	com/tencent/mobileqq/highway/utils/BdhSegTimeoutUtil:sTbase_4G	J
-    //   357: lstore 12
-    //   359: getstatic 69	com/tencent/mobileqq/highway/utils/BdhSegTimeoutUtil:sTorg_4G	J
-    //   362: lstore 14
-    //   364: getstatic 79	com/tencent/mobileqq/highway/utils/BdhSegTimeoutUtil:sMaxTimeout_4G	J
-    //   367: lstore 10
-    //   369: goto -294 -> 75
-    //   372: iconst_1
-    //   373: iload 7
-    //   375: if_icmpne -300 -> 75
-    //   378: getstatic 63	com/tencent/mobileqq/highway/utils/BdhSegTimeoutUtil:sTbase_wifi	J
-    //   381: lstore 12
-    //   383: getstatic 71	com/tencent/mobileqq/highway/utils/BdhSegTimeoutUtil:sTorg_wifi	J
-    //   386: lstore 14
-    //   388: getstatic 81	com/tencent/mobileqq/highway/utils/BdhSegTimeoutUtil:sMaxTimeout_wifi	J
-    //   391: lstore 10
-    //   393: goto -318 -> 75
-    //   396: iload 9
-    //   398: istore 8
-    //   400: lload 18
-    //   402: lstore 16
-    //   404: iload 7
-    //   406: iflt -215 -> 191
-    //   409: getstatic 111	com/tencent/mobileqq/highway/utils/BdhSegTimeoutUtil:TIME_OUT_DELTA	[J
-    //   412: iload 7
-    //   414: laload
-    //   415: lstore 16
-    //   417: lload 12
-    //   419: lload_2
-    //   420: ladd
-    //   421: lload 14
-    //   423: ladd
-    //   424: lload 16
-    //   426: ladd
-    //   427: lstore 16
-    //   429: iload 9
-    //   431: istore 8
-    //   433: goto -242 -> 191
-    //   436: astore_0
-    //   437: ldc 2
-    //   439: monitorexit
-    //   440: aload_0
-    //   441: athrow
+    //   3: getstatic 83	com/tencent/mobileqq/highway/utils/BdhSegTimeoutUtil:sHbTimeoutDef	J
+    //   6: lstore_2
+    //   7: aload_0
+    //   8: ifnonnull +8 -> 16
+    //   11: ldc 2
+    //   13: monitorexit
+    //   14: lload_2
+    //   15: lreturn
+    //   16: aload_0
+    //   17: invokestatic 125	com/tencent/mobileqq/highway/utils/HwNetworkUtil:getSystemNetwork	(Landroid/content/Context;)I
+    //   20: istore_1
+    //   21: iconst_2
+    //   22: iload_1
+    //   23: if_icmpne +10 -> 33
+    //   26: getstatic 85	com/tencent/mobileqq/highway/utils/BdhSegTimeoutUtil:sHbTimeout_2G	J
+    //   29: lstore_2
+    //   30: goto -19 -> 11
+    //   33: iconst_3
+    //   34: iload_1
+    //   35: if_icmpne +10 -> 45
+    //   38: getstatic 87	com/tencent/mobileqq/highway/utils/BdhSegTimeoutUtil:sHbTimeout_3G	J
+    //   41: lstore_2
+    //   42: goto -31 -> 11
+    //   45: iconst_4
+    //   46: iload_1
+    //   47: if_icmpne +10 -> 57
+    //   50: getstatic 87	com/tencent/mobileqq/highway/utils/BdhSegTimeoutUtil:sHbTimeout_3G	J
+    //   53: lstore_2
+    //   54: goto -43 -> 11
+    //   57: iconst_1
+    //   58: iload_1
+    //   59: if_icmpne -48 -> 11
+    //   62: getstatic 91	com/tencent/mobileqq/highway/utils/BdhSegTimeoutUtil:sHbTimeout_wifi	J
+    //   65: lstore_2
+    //   66: goto -55 -> 11
+    //   69: astore_0
+    //   70: ldc 2
+    //   72: monitorexit
+    //   73: aload_0
+    //   74: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	442	0	paramContext	Context
-    //   0	442	1	paramRequestDataTrans	com.tencent.mobileqq.highway.segment.RequestDataTrans
-    //   0	442	2	paramLong1	long
-    //   0	442	4	paramInt	int
-    //   0	442	5	paramLong2	long
-    //   62	351	7	i	int
-    //   82	350	8	j	int
-    //   76	354	9	k	int
-    //   56	336	10	l1	long
-    //   46	372	12	l2	long
-    //   51	371	14	l3	long
-    //   123	305	16	l4	long
-    //   41	360	18	l5	long
+    //   0	75	0	paramContext	Context
+    //   20	40	1	i	int
+    //   6	60	2	l	long
     // Exception table:
     //   from	to	target	type
-    //   43	64	436	finally
-    //   70	75	436	finally
-    //   78	84	436	finally
-    //   88	105	436	finally
-    //   112	117	436	finally
-    //   129	135	436	finally
-    //   161	187	436	finally
-    //   191	307	436	finally
-    //   330	345	436	finally
-    //   354	369	436	finally
-    //   378	393	436	finally
-    //   409	417	436	finally
-  }
-  
-  public static long getUrgentHbTimeout(Context paramContext)
-  {
-    for (;;)
-    {
-      try
-      {
-        long l = sHbTimeoutDef;
-        if (paramContext == null) {
-          return l;
-        }
-        int i = HwNetworkUtil.getSystemNetwork(paramContext);
-        if (2 == i) {
-          l = sHbTimeout_2G;
-        } else if (3 == i) {
-          l = sHbTimeout_3G;
-        } else if (4 == i) {
-          l = sHbTimeout_3G;
-        } else if (1 == i) {
-          l = sHbTimeout_wifi;
-        }
-      }
-      finally {}
-    }
+    //   3	7	69	finally
+    //   16	21	69	finally
+    //   26	30	69	finally
+    //   38	42	69	finally
+    //   50	54	69	finally
+    //   62	66	69	finally
   }
   
   public static void updateFromSrv(subcmd0x501.SubCmd0x501Rspbody.DynTimeOutConf paramDynTimeOutConf)
@@ -478,7 +368,7 @@ public class BdhSegTimeoutUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.highway.utils.BdhSegTimeoutUtil
  * JD-Core Version:    0.7.0.1
  */

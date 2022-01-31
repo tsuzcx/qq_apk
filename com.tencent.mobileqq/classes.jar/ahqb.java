@@ -1,35 +1,29 @@
-import android.graphics.SurfaceTexture;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
-import com.tencent.mobileqq.richmedia.mediacodec.utils.ShortVideoExceptionReporter;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
 
 public class ahqb
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ahqb(CameraCaptureView paramCameraCaptureView, SurfaceTexture paramSurfaceTexture) {}
+  public ahqb(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.requestRender();
-      return;
+    if (this.a.c) {
+      awqx.b(this.a.app, "CliOper", "", "", "0X80041AE", "0X80041AE", 0, 0, "", "", "", "");
     }
-    catch (Exception localException)
+    for (;;)
     {
-      do
-      {
-        QLog.e("CameraCaptureView", 2, localException, new Object[0]);
-      } while (CameraCaptureView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView));
-      ShortVideoExceptionReporter.a(localException);
-      CameraCaptureView.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView, true);
+      this.a.finish();
+      this.a.overridePendingTransition(2130771988, 2130771989);
+      return;
+      awqx.b(this.a.app, "CliOper", "", "", "0X80041A9", "0X80041A9", 0, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahqb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,37 @@
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.msgcache.MsgLruCache;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
+import java.util.List;
 
-class akdp
-  implements FrameSprite.OnFrameEndListener
+public class akdp
+  implements Comparator<String>
 {
-  akdp(akdj paramakdj, int paramInt1, String paramString, JSONObject paramJSONObject1, int paramInt2, JSONObject paramJSONObject2) {}
+  private akdp(MsgLruCache paramMsgLruCache) {}
   
-  public void a()
+  public int a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_Akdj.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView == null) {
-      return;
+    paramString1 = this.a.getOriginal(paramString1);
+    paramString2 = this.a.getOriginal(paramString2);
+    if ((paramString1 == null) || (paramString1.isEmpty())) {
+      return 1;
     }
-    if (this.jdField_a_of_type_Akdj.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.playTotalMicroseconds / 1000L > this.jdField_a_of_type_Int)
-    {
-      String str = this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_OrgJsonJSONObject.optString("videoPath", "2.mp4");
-      this.jdField_a_of_type_Akdj.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView.a(str, new akdq(this));
-      this.jdField_a_of_type_Akdj.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a(this.jdField_a_of_type_Akdj.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.jdField_b_of_type_Int - 300);
-      return;
+    if ((paramString2 == null) || (paramString2.isEmpty())) {
+      return -1;
     }
-    this.jdField_a_of_type_Akdj.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a();
-    if (this.jdField_a_of_type_Akdj.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener != null) {
-      this.jdField_a_of_type_Akdj.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener.a();
+    long l1 = ((MessageRecord)paramString1.get(paramString1.size() - 1)).time;
+    long l2 = ((MessageRecord)paramString2.get(paramString2.size() - 1)).time;
+    if (l1 > l2) {
+      return 1;
     }
-    this.jdField_a_of_type_Akdj.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a(this.jdField_a_of_type_Akdj.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.jdField_a_of_type_Akdj.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.frienduin, this.jdField_a_of_type_Akdj.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId, this.jdField_a_of_type_Akdj.a.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.animationPackageId, this.jdField_a_of_type_Akdj.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.jdField_a_of_type_Int, true);
+    if (l1 == l2) {
+      return 0;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akdp
  * JD-Core Version:    0.7.0.1
  */

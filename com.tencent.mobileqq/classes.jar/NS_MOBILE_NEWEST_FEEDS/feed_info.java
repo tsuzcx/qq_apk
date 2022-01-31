@@ -10,6 +10,7 @@ public final class feed_info
   public int appid;
   public long has_pic;
   public long opuin;
+  public String strImgUrl = "";
   public String strcontent = "";
   public String strkey = "";
   public long time;
@@ -17,7 +18,7 @@ public final class feed_info
   
   public feed_info() {}
   
-  public feed_info(int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString1, String paramString2, long paramLong3)
+  public feed_info(int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString1, String paramString2, long paramLong3, String paramString3)
   {
     this.appid = paramInt1;
     this.typeId = paramInt2;
@@ -26,6 +27,7 @@ public final class feed_info
     this.strkey = paramString1;
     this.strcontent = paramString2;
     this.has_pic = paramLong3;
+    this.strImgUrl = paramString3;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -37,6 +39,7 @@ public final class feed_info
     this.strkey = paramJceInputStream.readString(4, false);
     this.strcontent = paramJceInputStream.readString(5, false);
     this.has_pic = paramJceInputStream.read(this.has_pic, 6, false);
+    this.strImgUrl = paramJceInputStream.readString(7, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -52,6 +55,9 @@ public final class feed_info
       paramJceOutputStream.write(this.strcontent, 5);
     }
     paramJceOutputStream.write(this.has_pic, 6);
+    if (this.strImgUrl != null) {
+      paramJceOutputStream.write(this.strImgUrl, 7);
+    }
   }
 }
 

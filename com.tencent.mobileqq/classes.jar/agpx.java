@@ -1,45 +1,29 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pic.PicPreDownloader;
-import com.tencent.mobileqq.shortvideo.ShortVideoPreDownloader;
+import android.os.Bundle;
+import android.os.ResultReceiver;
 
 class agpx
-  implements Runnable
+  implements ajga
 {
-  agpx(agpw paramagpw) {}
+  agpx(agpt paramagpt, Bundle paramBundle, int paramInt, ResultReceiver paramResultReceiver, ajfw paramajfw) {}
   
-  public void run()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    try
-    {
-      Object localObject1 = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.a.a);
-      if (localObject1 != null)
-      {
-        PicPreDownloader localPicPreDownloader = ((QQAppInterface)localObject1).a();
-        localObject1 = (ShortVideoPreDownloader)((QQAppInterface)localObject1).getManager(94);
-        if (localPicPreDownloader != null)
-        {
-          localPicPreDownloader.f();
-          localPicPreDownloader.e();
-        }
-        if (localObject1 != null) {
-          ((ShortVideoPreDownloader)localObject1).d();
-        }
-      }
-      return;
+    this.jdField_a_of_type_AndroidOsBundle.putInt("updateResult", this.jdField_a_of_type_Int);
+    if (paramBoolean) {
+      this.jdField_a_of_type_AndroidOsBundle.putInt("isUpdateSuccess", 1);
     }
-    catch (Exception localException)
+    for (;;)
     {
-      for (;;)
-      {
-        Object localObject2 = null;
-      }
+      this.jdField_a_of_type_AndroidOsResultReceiver.send(1, this.jdField_a_of_type_AndroidOsBundle);
+      this.jdField_a_of_type_Ajfw.d(this);
+      return;
+      this.jdField_a_of_type_AndroidOsBundle.putInt("isUpdateSuccess", -1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agpx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,22 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.lbs.BasicLocation;
-import com.tencent.biz.qqstory.model.lbs.LbsManager;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.LbsUpdateListener;
-import com.tencent.biz.qqstory.storyHome.discover.model.DiscoverPagerLoader;
-import com.tencent.biz.qqstory.storyHome.discover.view.DiscoverPresenter;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class oan
-  implements LbsManager.LbsUpdateListener
+class oan
+  implements ViewBase.OnClickListener
 {
-  public oan(DiscoverPresenter paramDiscoverPresenter, LbsManager paramLbsManager) {}
+  oan(oal paramoal) {}
   
-  public void a(boolean paramBoolean, @Nullable BasicLocation paramBasicLocation)
+  public void onClick(ViewBase paramViewBase)
   {
-    SLog.e("Q.qqstory.discover.DiscoverPresenter", "lbs update %b %s", new Object[] { Boolean.valueOf(paramBoolean), paramBasicLocation });
-    this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager.b(this);
-    if (DiscoverPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewDiscoverPresenter).get())
-    {
-      SLog.d("Q.qqstory.discover.DiscoverPresenter", "is destroy");
-      return;
-    }
-    DiscoverPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewDiscoverPresenter).a = paramBasicLocation;
-    DiscoverPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewDiscoverPresenter).a(null, 0);
+    pot.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, "0X8009B77");
+    obz.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.jump_url);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oan
  * JD-Core Version:    0.7.0.1
  */

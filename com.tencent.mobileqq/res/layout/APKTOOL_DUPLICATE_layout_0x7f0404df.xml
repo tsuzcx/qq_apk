@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18cc" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18cd" android:visibility="visible" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0404e6" />
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18ce" android:visibility="gone" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0404e3" />
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18cf" android:visibility="gone" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0404e7" />
-    <include android:layout_gravity="bottom" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04048e" />
-</FrameLayout>

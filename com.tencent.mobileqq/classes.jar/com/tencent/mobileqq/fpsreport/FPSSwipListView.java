@@ -3,13 +3,14 @@ package com.tencent.mobileqq.fpsreport;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import com.tencent.mfsdk.collector.FPSCalculator;
 import com.tencent.widget.SwipListView;
+import zqp;
 
 public class FPSSwipListView
   extends SwipListView
 {
-  private FPSCalculator a;
+  private zqp jdField_a_of_type_Zqp;
+  private boolean jdField_a_of_type_Boolean = true;
   
   public FPSSwipListView(Context paramContext)
   {
@@ -28,31 +29,36 @@ public class FPSSwipListView
   
   public void a()
   {
-    if (this.a != null) {
-      this.a.a();
+    if (this.jdField_a_of_type_Zqp != null) {
+      this.jdField_a_of_type_Zqp.a();
     }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if (this.a != null) {
-      this.a.b();
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Zqp != null)) {
+      this.jdField_a_of_type_Zqp.b();
     }
   }
   
-  protected void reportScrollStateChange(int paramInt)
+  public void reportScrollStateChange(int paramInt)
   {
     super.reportScrollStateChange(paramInt);
-    if (this.a != null) {
-      this.a.a(paramInt);
+    if (this.jdField_a_of_type_Zqp != null) {
+      this.jdField_a_of_type_Zqp.a(paramInt);
     }
   }
   
   public void setActTAG(String paramString)
   {
-    this.a = new FPSCalculator();
-    this.a.a(paramString);
+    this.jdField_a_of_type_Zqp = new zqp();
+    this.jdField_a_of_type_Zqp.a(paramString);
   }
 }
 

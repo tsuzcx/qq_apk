@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0x27$PushSearchDev
-  extends MessageMicro
+  extends MessageMicro<PushSearchDev>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 50 }, new String[] { "uint32_msg_type", "msg_gps_info", "uint32_dev_time", "uint32_push_time", "uint64_din", "str_data" }, new Object[] { Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), "" }, PushSearchDev.class);
   public SubMsgType0x27.GPS msg_gps_info = new SubMsgType0x27.GPS();

@@ -19,6 +19,7 @@ public final class DownloadReport
   public int id;
   public boolean isFromQzoneAlbum;
   public boolean isHttp2;
+  public boolean isHttps;
   public boolean isSucceed = false;
   public String localAddress;
   public String logInfo;

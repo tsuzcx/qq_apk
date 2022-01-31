@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
+import anad;
+import anah;
 import android.os.Bundle;
 import android.text.TextUtils;
+import bbac;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
-import com.tencent.mobileqq.emosm.DataFactory;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,7 +31,7 @@ public class IndividualRedPacketJsPlugin
     return 2281701376L;
   }
   
-  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if (QLog.isColorLevel()) {
       QLog.d("IndividualRedPacketJsPlugin", 2, "handleJsRequest, url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3);
@@ -78,7 +78,7 @@ public class IndividualRedPacketJsPlugin
           paramJsBridgeListener = paramString1;
           continue;
         }
-        super.sendRemoteReq(DataFactory.a(paramJsBridgeListener, paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+        super.sendRemoteReq(anah.a(paramJsBridgeListener, paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
         return true;
         if ("setFlag".equals(paramString3))
         {
@@ -163,7 +163,7 @@ public class IndividualRedPacketJsPlugin
     }
   }
   
-  protected void onCreate()
+  public void onCreate()
   {
     super.onCreate();
     this.mReqBundle = new Bundle();
@@ -220,7 +220,7 @@ public class IndividualRedPacketJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.IndividualRedPacketJsPlugin
  * JD-Core Version:    0.7.0.1
  */

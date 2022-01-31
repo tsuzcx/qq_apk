@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import com.tencent.mobileqq.activity.aio.PlusPanel;
 
 public class acmy
-  implements Runnable
+  extends baca
 {
-  public acmy(EmoticonMainPanel paramEmoticonMainPanel, boolean paramBoolean, acnf paramacnf) {}
+  public acmy(PlusPanel paramPlusPanel) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel, this.jdField_a_of_type_Boolean);
-    if (this.jdField_a_of_type_Acnf != null) {
-      ThreadManager.getUIHandler().post(new acmz(this));
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acmy
  * JD-Core Version:    0.7.0.1
  */

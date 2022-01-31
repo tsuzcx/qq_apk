@@ -1,36 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.HashMap;
-import java.util.List;
+import android.content.Context;
+import android.widget.RadioButton;
+import com.tencent.av.ui.MultiMembersAudioIndicator;
 
 public class luf
-  implements Runnable
+  extends RadioButton
 {
-  public luf(FastWebModule paramFastWebModule, List paramList) {}
-  
-  public void run()
+  public luf(MultiMembersAudioIndicator paramMultiMembersAudioIndicator, Context paramContext)
   {
-    int i = 0;
-    if (i < this.jdField_a_of_type_JavaUtilList.size())
-    {
-      ArticleInfo localArticleInfo = (ArticleInfo)this.jdField_a_of_type_JavaUtilList.get(i);
-      if (ReadInJoyUtils.a(localArticleInfo)) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        luh localluh = (luh)FastWebModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelFastWebModule).get(localArticleInfo.mChannelID + "_" + localArticleInfo.mArticleID);
-        if ((localluh == null) || (localluh.a())) {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelFastWebModule.a(localArticleInfo.mArticleContentUrl, localArticleInfo.innerUniqueID, localArticleInfo.mSubscribeID, 3, null);
-        }
-      }
-    }
+    super(paramContext);
+  }
+  
+  public boolean performClick()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     luf
  * JD-Core Version:    0.7.0.1
  */

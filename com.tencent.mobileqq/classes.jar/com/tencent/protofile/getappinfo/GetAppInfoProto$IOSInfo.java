@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class GetAppInfoProto$IOSInfo
-  extends MessageMicro
+  extends MessageMicro<IOSInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58 }, new String[] { "urlSchema", "boundleID", "appstoreID", "sourceUrl", "officalwebsite", "messagetail", "a_bundleid" }, new Object[] { "", "", "", "", "", "", "" }, IOSInfo.class);
   public final PBStringField a_bundleid = PBField.initString("");

@@ -1,63 +1,49 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBannerVideoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBannerVideoList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 
 public class szl
-  implements View.OnClickListener
+  extends slz<tbj>
 {
-  public szl(GroupManagerActivity paramGroupManagerActivity) {}
+  public static final String a = skt.a("StorySvc.square_720_banner_vid_list");
+  public String b;
+  public String c;
   
-  public void onClick(View paramView)
+  public String a()
   {
-    int j = 1;
-    int k = VipUtils.a(this.a.app, null);
-    int i;
-    if ((k & 0x2) != 0)
+    return a;
+  }
+  
+  public slu a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspBannerVideoList localRspBannerVideoList = new qqstory_service.RspBannerVideoList();
+    try
     {
-      i = 1;
-      if ((k & 0x4) == 0) {
-        break label92;
+      localRspBannerVideoList.mergeFrom(paramArrayOfByte);
+      return new tbj(localRspBannerVideoList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
       }
     }
-    for (;;)
-    {
-      if ((i == 0) && (j == 0)) {
-        break label97;
-      }
-      if (30 != this.a.a.size()) {
-        break label145;
-      }
-      paramView = new QQToast(this.a);
-      paramView.d(2000);
-      paramView.c(2131436535);
-      paramView.a();
-      return;
-      i = 0;
-      break;
-      label92:
-      j = 0;
-    }
-    label97:
-    if (16 == this.a.a.size())
-    {
-      paramView = new QQToast(this.a);
-      paramView.d(2000);
-      paramView.c(2131436534);
-      paramView.a();
-      return;
-    }
-    label145:
-    GroupManagerActivity.a(this.a, DialogUtil.a(this.a, 2131435553, 2131435555, null, GroupManagerActivity.a(this.a), GroupManagerActivity.b(this.a)));
-    GroupManagerActivity.a(this.a, 0);
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqBannerVideoList localReqBannerVideoList = new qqstory_service.ReqBannerVideoList();
+    localReqBannerVideoList.banner_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    localReqBannerVideoList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.c));
+    return localReqBannerVideoList.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     szl
  * JD-Core Version:    0.7.0.1
  */

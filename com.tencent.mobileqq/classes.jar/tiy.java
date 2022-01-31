@@ -1,47 +1,59 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.contactsync.syncadapter.SyncService;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
+import java.util.List;
 
 public class tiy
-  implements CompoundButton.OnCheckedChangeListener
+  extends BaseAdapter
 {
-  public tiy(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  private tiy(VideoCoverListBar paramVideoCoverListBar) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public String a(int paramInt)
   {
-    if (AppSetting.b) {
-      NotifyPushSettingActivity.f(this.a).setContentDescription("退出后仍接收消息通知");
-    }
-    SettingCloneUtil.writeValue(this.a, this.a.a, this.a.getString(2131435419), "qqsetting_receivemsg_whenexit_key", paramBoolean);
-    SyncService.a(this.a, paramBoolean);
-    QQAppInterface localQQAppInterface = this.a.app;
-    int i;
-    if (paramBoolean)
+    return (String)VideoCoverListBar.a(this.a).get(paramInt);
+  }
+  
+  public int getCount()
+  {
+    return VideoCoverListBar.a(this.a).size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    return 0;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      i = 1;
-      if (!paramBoolean) {
-        break label104;
-      }
+      paramView = LayoutInflater.from(this.a.getContext()).inflate(2131495739, null);
+      paramViewGroup = new tiz(this, paramView);
+      paramView.setTag(paramViewGroup);
     }
-    label104:
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
+    for (;;)
     {
-      ReportController.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Logout_msg", 0, i, paramCompoundButton, "", "", "");
-      return;
-      i = 0;
-      break;
+      paramViewGroup.a(paramInt);
+      return paramView;
+      paramViewGroup = (tiz)paramView.getTag();
     }
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tiy
  * JD-Core Version:    0.7.0.1
  */

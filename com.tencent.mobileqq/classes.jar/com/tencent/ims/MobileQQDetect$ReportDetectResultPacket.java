@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class MobileQQDetect$ReportDetectResultPacket
-  extends MessageMicro
+  extends MessageMicro<ReportDetectResultPacket>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_buffer = PBField.initBytes(ByteStringMicro.EMPTY);

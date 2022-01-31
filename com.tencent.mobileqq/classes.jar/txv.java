@@ -1,39 +1,53 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.support.annotation.NonNull;
+import java.lang.ref.WeakReference;
 
-public class txv
-  implements CompoundButton.OnCheckedChangeListener
+class txv
+  implements txu
 {
-  public txv(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  private final int jdField_a_of_type_Int;
+  @NonNull
+  private final WeakReference<txu> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public txv(@NonNull txu paramtxu)
   {
-    int i = 1;
-    if (paramBoolean)
-    {
-      this.a.app.d(1);
-      paramCompoundButton = this.a.app;
-      if (!paramBoolean) {
-        break label68;
-      }
+    this.jdField_a_of_type_Int = System.identityHashCode(paramtxu);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramtxu);
+  }
+  
+  private boolean a()
+  {
+    return this.jdField_a_of_type_JavaLangRefWeakReference.get() != null;
+  }
+  
+  public void a(@NonNull txs paramtxs)
+  {
+    txu localtxu = (txu)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localtxu != null) {
+      localtxu.a(paramtxs);
     }
-    for (;;)
-    {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_grpshake", 0, i, "", "", "", "");
-      return;
-      this.a.app.d(0);
-      break;
-      label68:
-      i = 0;
+  }
+  
+  public void b(@NonNull txs paramtxs)
+  {
+    txu localtxu = (txu)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localtxu != null) {
+      localtxu.b(paramtxs);
     }
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    return ((paramObject instanceof txv)) && (((txv)paramObject).jdField_a_of_type_Int == this.jdField_a_of_type_Int);
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     txv
  * JD-Core Version:    0.7.0.1
  */

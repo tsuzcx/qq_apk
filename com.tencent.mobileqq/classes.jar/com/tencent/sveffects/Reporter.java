@@ -4,9 +4,9 @@ import java.util.HashMap;
 
 public abstract interface Reporter
 {
-  public abstract void a(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, String paramString5, String paramString6, String paramString7, String paramString8);
+  public abstract void reportToBeacon(String paramString, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap);
   
-  public abstract void a(String paramString, boolean paramBoolean, long paramLong1, long paramLong2, HashMap paramHashMap);
+  public abstract void reportToCompass(String paramString1, String paramString2, String paramString3, String paramString4, int paramInt1, int paramInt2, String paramString5, String paramString6, String paramString7, String paramString8);
 }
 
 

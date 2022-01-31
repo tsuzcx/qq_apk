@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/dqj" android:background="@drawable/k4" android:layout_width="fill_parent" android:layout_height="@dimen/b0l" android:layout_marginTop="@dimen/b0m">
+        <CheckBox android:id="@id/axg" android:background="@drawable/nj" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_marginLeft="12.0dip" android:checked="true" android:button="@null" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="18.0dip" android:textColor="@color/skin_black_theme_version2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/r9b" android:layout_toRightOf="@id/axg" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/gyh" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@drawable/fg_" android:layout_toLeftOf="@id/gyi" android:layout_centerVertical="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2_theme_version2" android:id="@id/gyi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:text="@string/r9_" android:layout_toLeftOf="@id/i_n" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/i_n" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:src="@drawable/hz" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/aiq" android:textColor="@color/skin_gray2_theme_version2" android:gravity="center|left" android:background="@drawable/skin_group_list_sub_entry_theme_version2" android:paddingLeft="12.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/au3" android:text="@string/r8z" />
+</LinearLayout>

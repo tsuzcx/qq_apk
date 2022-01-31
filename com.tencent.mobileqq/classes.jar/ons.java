@@ -1,22 +1,10 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.EditTextDialogEventListener;
+import java.util.ArrayList;
 
-public class ons
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public abstract interface ons
 {
-  private ons(EditTextDialog paramEditTextDialog) {}
+  public abstract void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2);
   
-  public void onGlobalLayout()
-  {
-    if (this.a.jdField_a_of_type_AndroidWidgetEditText.getBottom() - this.a.c > this.a.b)
-    {
-      this.a.dismiss();
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiEditTextDialog$EditTextDialogEventListener.a(this.a.a());
-  }
+  public abstract void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, ArrayList<String> paramArrayList);
 }
 
 

@@ -1,80 +1,96 @@
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.QSecCbMgr;
-import com.tencent.qqprotect.qsec.QSecDatabaseMgr;
-import com.tencent.qqprotect.qsec.QSecDatabaseMgr.LibEntry;
-import com.tencent.qqprotect.qsec.QSecLibMgr;
-import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amfc
-  extends amfh
 {
-  private boolean b;
+  public String a = "";
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
   
-  public amfc(QSecLibMgr paramQSecLibMgr)
+  public static amfc a(alzs[] paramArrayOfalzs)
   {
-    super(paramQSecLibMgr, null);
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      QSecLibMgr.a(this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr).a();
-    }
-    if (this.b) {
-      QSecLibMgr.d(this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if (TextUtils.isEmpty(paramString2)) {}
-    do
+    amfc localamfc = new amfc();
+    int j;
+    int i;
+    try
     {
-      return;
-      if ((paramInt4 == 1) || (paramInt4 == 2)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("QQProtect.QSec", 2, String.format("Invalid mode: %d", new Object[] { Integer.valueOf(paramInt4) }));
-    return;
-    QSecDatabaseMgr.LibEntry localLibEntry = QSecLibMgr.a(this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr).a(paramInt1);
-    if (localLibEntry != null) {
-      QSecLibMgr.a(this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr).a(localLibEntry.jdField_a_of_type_Int, false);
+      j = paramArrayOfalzs.length;
+      i = 0;
     }
+    catch (Throwable paramArrayOfalzs)
+    {
+      boolean bool;
+      QLog.d("QQSysAndEmojiConfProcessor", 2, "parse S$EConfBean failed!", paramArrayOfalzs);
+    }
+    Object localObject = ((alzs)localObject).a;
+    bool = TextUtils.isEmpty((CharSequence)localObject);
+    if (!bool)
+    {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject((String)localObject);
+        if (localJSONObject.has("config_url")) {
+          localamfc.a = localJSONObject.optString("config_url");
+        }
+        if (localJSONObject.has("config_md5")) {
+          localamfc.b = localJSONObject.optString("config_md5");
+        }
+        if (localJSONObject.has("android_sysface_res_url")) {
+          localamfc.c = localJSONObject.optString("android_sysface_res_url");
+        }
+        if (localJSONObject.has("android_sysface_res_md5")) {
+          localamfc.d = localJSONObject.optString("android_sysface_res_md5");
+        }
+        if (localJSONObject.has("emoji_res_url")) {
+          localamfc.e = localJSONObject.optString("emoji_res_url");
+        }
+        if (localJSONObject.has("emoji_res_md5")) {
+          localamfc.f = localJSONObject.optString("emoji_res_md5");
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          localJSONException.printStackTrace();
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("QQSysAndEmojiConfProcessor", 2, "parse S$EConfBean: " + (String)localObject);
+      }
+    }
+    label255:
     for (;;)
     {
-      localLibEntry.jdField_a_of_type_Int = paramInt1;
-      localLibEntry.jdField_b_of_type_Int = paramInt2;
-      localLibEntry.c = paramInt3;
-      localLibEntry.jdField_b_of_type_JavaLangString = paramString1;
-      localLibEntry.jdField_a_of_type_JavaLangString = paramString2;
-      QSecLibMgr.a(this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr).a(localLibEntry, false);
-      this.jdField_a_of_type_Boolean = true;
-      if ((paramInt4 != 1) || (QSecLibMgr.a(this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr).a(paramInt1) != 1)) {
-        break;
+      return localamfc;
+      for (;;)
+      {
+        if (i >= j) {
+          break label255;
+        }
+        localObject = paramArrayOfalzs[i];
+        if (localObject != null) {
+          break;
+        }
+        i += 1;
       }
-      this.b = true;
-      amfe localamfe = (amfe)QSecLibMgr.a(this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr).get(Integer.valueOf(paramInt1));
-      if (localamfe == null) {
-        break label236;
-      }
-      QSecLibMgr.a(this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr, localamfe, paramString2, paramString1);
-      if (localamfe.d == 0) {
-        break;
-      }
-      QSecLibMgr.a(this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr).remove(Integer.valueOf(localamfe.jdField_a_of_type_Int));
-      return;
-      localLibEntry = new QSecDatabaseMgr.LibEntry();
     }
-    label236:
-    paramString1 = QSecLibMgr.a(this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr, localLibEntry);
-    QSecLibMgr.a(this.jdField_a_of_type_ComTencentQqprotectQsecQSecLibMgr, paramString1);
+  }
+  
+  public String toString()
+  {
+    new StringBuilder().append(", mConfigUrl:").append(this.a).append(", mConfigMD5:").append(this.b).append(", mSysFaceUrl").append(this.c).append(", mSysFaceMD5").append(this.d).append(", mEmojiUrl").append(this.e).append(", mEmojiMD5").append(this.f);
+    return super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amfc
  * JD-Core Version:    0.7.0.1
  */

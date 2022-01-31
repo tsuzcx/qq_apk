@@ -1,21 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.image.URLDrawable;
+import java.net.URL;
 
-public class yks
-  implements DialogInterface.OnClickListener
+class yks
+  implements yrk
 {
-  public yks(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  yks(ykr paramykr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(URLDrawable paramURLDrawable)
   {
-    ShortVideoPreviewActivity.b(this.a);
-    this.a.setResult(-1);
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
+    for (paramURLDrawable = paramURLDrawable.getURL().toString();; paramURLDrawable = null)
+    {
+      yny.b("GdtBannerImageView", String.format("onLoadSuccessful %s", new Object[] { paramURLDrawable }));
+      return;
+    }
+  }
+  
+  public void b(URLDrawable paramURLDrawable)
+  {
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {}
+    for (paramURLDrawable = paramURLDrawable.getURL().toString();; paramURLDrawable = null)
+    {
+      yny.b("GdtBannerImageView", String.format("onLoadFailed %s", new Object[] { paramURLDrawable }));
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yks
  * JD-Core Version:    0.7.0.1
  */

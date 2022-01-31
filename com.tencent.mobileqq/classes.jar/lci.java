@@ -1,30 +1,68 @@
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.util.FaceDecoder.DecodeTaskCompletionListener;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.av.gameplay.GPNativeSoLoader.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.os.MqqHandler;
 
 public class lci
-  implements FaceDecoder.DecodeTaskCompletionListener
 {
-  public lci(EcShopAssistantManager paramEcShopAssistantManager) {}
+  public static boolean a;
+  private static boolean b;
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public static byte a(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramBitmap != null))
-    {
-      Intent localIntent = new Intent("action_decode_finish");
-      localIntent.putExtra("bitmap", paramBitmap);
-      localIntent.putExtra("uin", paramString);
-      BaseApplicationImpl.getContext().sendBroadcast(localIntent);
+    byte b1 = 0;
+    if (paramString == null) {
+      return -1;
     }
+    lcj locallcj = lcj.a();
+    String str = lcr.a() + "lib" + paramString + ".so";
+    if (QLog.isColorLevel()) {
+      QLog.i("Qav_GamePlayNativeSoLoader", 2, "start arNativeSo: " + str);
+    }
+    Object localObject = new File(str);
+    if ((!a) && (((File)localObject).exists())) {}
+    for (;;)
+    {
+      try
+      {
+        System.load(str);
+        b = true;
+        localObject = "null";
+        if (locallcj != null) {
+          localObject = locallcj.b;
+        }
+        QLog.w("Qav_GamePlayNativeSoLoader", 1, "loadGamePlayNativeSo, libPath[" + str + "], libName[" + paramString + "], md5[" + (String)localObject + "], isLoadSo[" + b + "], result[" + b1 + "]");
+        return b1;
+      }
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+      {
+        b1 = -3;
+        QLog.i("Qav_GamePlayNativeSoLoader", 1, "loadGamePlayNativeSo load fail", localUnsatisfiedLinkError);
+        continue;
+      }
+      b1 = -2;
+    }
+  }
+  
+  public static boolean a()
+  {
+    if (b) {}
+    do
+    {
+      return true;
+      if (!lck.a().b()) {
+        break;
+      }
+    } while (a("qavgameplayengine") == 0);
+    return false;
+    ThreadManager.getUIHandler().post(new GPNativeSoLoader.1());
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lci
  * JD-Core Version:    0.7.0.1
  */

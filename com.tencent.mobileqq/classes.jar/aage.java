@@ -1,21 +1,28 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
-import com.tencent.mobileqq.worldcup.ARWorldCupGameTouchView;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public class aage
-  implements Runnable
+public final class aage
+  implements QQPermissionCallback
 {
-  public aage(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
+  public aage(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void run()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    ARWorldCupGlobalSceneRenderable.a(this.a).c();
-    ARWorldCupGlobalSceneRenderable.a(this.a).setClickable(false);
-    ARWorldCupGlobalSceneRenderable.a(this.a).setVisibility(8);
+    QLog.w("ChatActivityUtils", 1, "checkQAVPermission, deny, i[" + paramInt + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
+    this.a.onClick(null, 0);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.w("ChatActivityUtils", 1, "checkQAVPermission, grant, i[" + paramInt + "], permissions[" + AudioHelper.a(paramArrayOfString) + "], grantResults[" + AudioHelper.a(paramArrayOfInt) + "]");
+    this.a.onClick(null, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aage
  * JD-Core Version:    0.7.0.1
  */

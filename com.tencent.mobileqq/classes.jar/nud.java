@@ -1,21 +1,20 @@
-import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnCompletionListener;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
+import android.graphics.Color;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
 class nud
-  implements Runnable
+  implements behy
 {
   nud(nuc paramnuc) {}
   
-  public void run()
+  public void a()
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.a(this.a.a);
-    }
+    this.a.a.getNativeView().setBackgroundColor(Color.parseColor("#FFFFFF"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nud
  * JD-Core Version:    0.7.0.1
  */

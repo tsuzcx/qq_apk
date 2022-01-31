@@ -1,36 +1,28 @@
-import android.os.Handler;
-import com.tencent.mobileqq.nearby.NearbyFragmentEnterAdapter;
-import com.tencent.mobileqq.nearby.NearbyFragmentEnterAdapter.ViewHolder;
-import com.tencent.pb.now.ilive_feeds_near_anchor.NearAnchorInfo;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 
 public class aeug
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aeug(NearbyFragmentEnterAdapter paramNearbyFragmentEnterAdapter) {}
+  public aeug(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_JavaUtilList != null)
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
+    if ((this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int) || (this.a.f == ClassificationSearchActivity.d))
     {
-      NearbyFragmentEnterAdapter.ViewHolder localViewHolder = this.a.a();
-      if (localViewHolder != null)
-      {
-        Object localObject = this.a;
-        ((NearbyFragmentEnterAdapter)localObject).b += 1;
-        if (this.a.b >= this.a.jdField_a_of_type_JavaUtilList.size()) {
-          this.a.b = 0;
-        }
-        localObject = (ilive_feeds_near_anchor.NearAnchorInfo)this.a.jdField_a_of_type_JavaUtilList.get(this.a.b);
-        this.a.a(localViewHolder, (ilive_feeds_near_anchor.NearAnchorInfo)localObject);
-      }
+      ClassificationSearchActivity.a(this.a);
+      return;
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 1500L);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeug
  * JD-Core Version:    0.7.0.1
  */

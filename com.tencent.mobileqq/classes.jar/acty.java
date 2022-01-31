@@ -1,14 +1,14 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
-
-public class acty
-  extends FacePreloadBaseAdapter.ViewHolder
+final class acty
+  implements actr<actx>
 {
-  public TextView a;
+  public actx a(acto paramacto)
+  {
+    return new actx(paramacto);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acty
  * JD-Core Version:    0.7.0.1
  */

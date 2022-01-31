@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class msg_comm$AppShareInfo
-  extends MessageMicro
+  extends MessageMicro<AppShareInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField appshare_cookie = PBField.initBytes(ByteStringMicro.EMPTY);

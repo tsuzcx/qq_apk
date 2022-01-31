@@ -1,21 +1,42 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.qidian.QidianManager;
-import com.tencent.qidian.data.BmqqAccountType;
-import com.tencent.qphone.base.util.BaseApplication;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import android.content.Context;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.subscribe.beans.SubscribeColorNoteReserveBean;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.qphone.base.util.QLog;
 
 public class altc
-  implements Runnable
+  implements alsv
 {
-  public altc(QidianManager paramQidianManager, String paramString) {}
+  private String a = "SubscribeColorNoteLauncher";
   
-  public void run()
+  public void a(Context paramContext, ColorNote paramColorNote)
   {
-    this.jdField_a_of_type_ComTencentQidianQidianManager.b(this.jdField_a_of_type_ComTencentQidianQidianManager.a.getApp().getBaseContext(), new BmqqAccountType(this.jdField_a_of_type_JavaLangString, 1));
+    try
+    {
+      paramColorNote = paramColorNote.getReserve();
+      if (paramColorNote == null) {
+        return;
+      }
+      paramColorNote = (SubscribeColorNoteReserveBean)wef.a(paramColorNote);
+      if (paramColorNote != null)
+      {
+        CertifiedAccountMeta.StFeed localStFeed = new CertifiedAccountMeta.StFeed();
+        localStFeed.mergeFrom(paramColorNote.feedData);
+        QLog.d(this.a, 2, "articleInfo From ColorNote :\n" + localStFeed.toString());
+        vvy.a(paramContext, "", localStFeed, new ExtraTypeInfo(paramColorNote.pageType, 9003), null);
+        return;
+      }
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     altc
  * JD-Core Version:    0.7.0.1
  */

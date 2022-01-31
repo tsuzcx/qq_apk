@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class WeiyunPB$DiskSimpleFileItemResult
-  extends MessageMicro
+  extends MessageMicro<DiskSimpleFileItemResult>
 {
   public static final int FILE_ID_FIELD_NUMBER = 1;
   public static final int PDIR_KEY_FIELD_NUMBER = 5;
@@ -32,7 +32,7 @@ public final class WeiyunPB$DiskSimpleFileItemResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cooperation.weiyun.channel.pb.WeiyunPB.DiskSimpleFileItemResult
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,6 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.widget.TextView;
-import java.io.IOException;
 import java.io.InputStream;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -29,7 +28,7 @@ public class SkinnableBitmapDrawable
 {
   private static final int a = 6;
   private static final int[] k = { 16843033, 16843034, 16843035, 16843036, 16842927, 16843265 };
-  private a b;
+  private SkinnableBitmapDrawable.a b;
   private Bitmap c;
   private int d;
   private final Rect e = new Rect();
@@ -41,24 +40,24 @@ public class SkinnableBitmapDrawable
   
   SkinnableBitmapDrawable()
   {
-    this.b = new a((Bitmap)null);
+    this.b = new SkinnableBitmapDrawable.a((Bitmap)null);
   }
   
   public SkinnableBitmapDrawable(Resources paramResources)
   {
-    this.b = new a((Bitmap)null);
+    this.b = new SkinnableBitmapDrawable.a((Bitmap)null);
     this.b.r = this.d;
   }
   
   public SkinnableBitmapDrawable(Resources paramResources, Bitmap paramBitmap)
   {
-    this(new a(paramBitmap), paramResources);
+    this(new SkinnableBitmapDrawable.a(paramBitmap), paramResources);
     this.b.r = this.d;
   }
   
   public SkinnableBitmapDrawable(Resources paramResources, InputStream paramInputStream)
   {
-    this(new a(BitmapFactory.decodeStream(paramInputStream)), null);
+    this(new SkinnableBitmapDrawable.a(BitmapFactory.decodeStream(paramInputStream)), null);
     this.b.r = this.d;
     if (this.c == null) {
       Log.w("BitmapDrawable", "BitmapDrawable cannot decode " + paramInputStream);
@@ -67,7 +66,7 @@ public class SkinnableBitmapDrawable
   
   public SkinnableBitmapDrawable(Resources paramResources, String paramString)
   {
-    this(new a(BitmapFactory.decodeFile(paramString)), null);
+    this(new SkinnableBitmapDrawable.a(BitmapFactory.decodeFile(paramString)), null);
     this.b.r = this.d;
     if (this.c == null) {
       Log.w("BitmapDrawable", "BitmapDrawable cannot decode " + paramString);
@@ -77,10 +76,10 @@ public class SkinnableBitmapDrawable
   @Deprecated
   public SkinnableBitmapDrawable(Bitmap paramBitmap)
   {
-    this(new a(paramBitmap), null);
+    this(new SkinnableBitmapDrawable.a(paramBitmap), null);
   }
   
-  SkinnableBitmapDrawable(a parama, Resources paramResources)
+  SkinnableBitmapDrawable(SkinnableBitmapDrawable.a parama, Resources paramResources)
   {
     this.b = parama;
     if (paramResources != null) {
@@ -106,7 +105,7 @@ public class SkinnableBitmapDrawable
   @Deprecated
   public SkinnableBitmapDrawable(InputStream paramInputStream)
   {
-    this(new a(BitmapFactory.decodeStream(paramInputStream)), null);
+    this(new SkinnableBitmapDrawable.a(BitmapFactory.decodeStream(paramInputStream)), null);
     if (this.c == null) {
       Log.w("BitmapDrawable", "BitmapDrawable cannot decode " + paramInputStream);
     }
@@ -115,17 +114,16 @@ public class SkinnableBitmapDrawable
   @Deprecated
   public SkinnableBitmapDrawable(String paramString)
   {
-    this(new a(BitmapFactory.decodeFile(paramString)), null);
+    this(new SkinnableBitmapDrawable.a(BitmapFactory.decodeFile(paramString)), null);
     if (this.c == null) {
       Log.w("BitmapDrawable", "BitmapDrawable cannot decode " + paramString);
     }
   }
   
-  static a a(Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet1, AttributeSet paramAttributeSet2, boolean paramBoolean)
-    throws XmlPullParserException, IOException
+  static SkinnableBitmapDrawable.a a(Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet1, AttributeSet paramAttributeSet2, boolean paramBoolean)
   {
     int n = paramAttributeSet1.getAttributeCount();
-    paramResources = new a((Bitmap)null);
+    paramResources = new SkinnableBitmapDrawable.a((Bitmap)null);
     paramResources.s = true;
     Paint localPaint = new Paint();
     int m = 0;
@@ -144,9 +142,9 @@ public class SkinnableBitmapDrawable
         if (i1 == 0) {
           throw new XmlPullParserException(paramXmlPullParser.getPositionDescription() + ": <bitmap> requires a valid src attribute");
         }
-        localObject1 = (a)SkinEngine.getInstances().a(i1);
-        paramResources.l = ((a)localObject1).l;
-        paramResources.k = ((a)localObject1).k;
+        localObject1 = (SkinnableBitmapDrawable.a)SkinEngine.getInstances().a(i1);
+        paramResources.l = ((SkinnableBitmapDrawable.a)localObject1).l;
+        paramResources.k = ((SkinnableBitmapDrawable.a)localObject1).k;
         continue;
         localPaint.setAntiAlias(paramAttributeSet1.getAttributeBooleanValue(m, localPaint.isAntiAlias()));
         continue;
@@ -315,12 +313,12 @@ public class SkinnableBitmapDrawable
                   else
                   {
                     if (!"end".equals(localObject2)) {
-                      break label1150;
+                      break label1149;
                     }
                     m |= 0x800005;
                   }
                 }
-                label1150:
+                label1149:
                 throw new XmlPullParserException("error attribute value: " + paramAttributeSet1);
               }
               paramResources.n = m;
@@ -346,14 +344,14 @@ public class SkinnableBitmapDrawable
               else
               {
                 if (!"disabled".equals(paramAttributeSet1)) {
-                  break label1310;
+                  break label1309;
                 }
                 paramResources.p = null;
                 paramResources.q = null;
               }
             }
           }
-          label1310:
+          label1309:
           throw new XmlPullParserException("error attribute value: " + paramAttributeSet1);
         }
       }
@@ -370,8 +368,8 @@ public class SkinnableBitmapDrawable
     if (this.b.k != null)
     {
       int[] arrayOfInt = this.b.k;
-      this.i = b.a(arrayOfInt[0], arrayOfInt[2], this.d);
-      this.i = b.a(arrayOfInt[1], arrayOfInt[2], this.d);
+      this.i = a.a(arrayOfInt[0], arrayOfInt[2], this.d);
+      this.i = a.a(arrayOfInt[1], arrayOfInt[2], this.d);
       return;
     }
     this.i = this.c.getScaledWidth(this.d);
@@ -403,8 +401,8 @@ public class SkinnableBitmapDrawable
       if (this.b.k != null)
       {
         int[] arrayOfInt = this.b.k;
-        this.i = b.a(arrayOfInt[0], arrayOfInt[2], this.d);
-        this.i = b.a(arrayOfInt[1], arrayOfInt[2], this.d);
+        this.i = a.a(arrayOfInt[0], arrayOfInt[2], this.d);
+        this.i = a.a(arrayOfInt[1], arrayOfInt[2], this.d);
       }
     }
     else
@@ -425,19 +423,19 @@ public class SkinnableBitmapDrawable
         if ((paramBitmap != null) && ((paramBitmap instanceof TextView)))
         {
           paramBitmap = (TextView)paramBitmap;
-          k.d("SkinnableBitmapDrawable", 2, "errorTextID:" + paramBitmap.getId() + "errorTextString: " + paramBitmap.getText().toString(), null);
+          i.d("SkinnableBitmapDrawable", 2, "errorTextID:" + paramBitmap.getId() + "errorTextString: " + paramBitmap.getText().toString(), null);
         }
       }
       return;
     }
     catch (NoSuchMethodError paramBitmap)
     {
-      k.d("SkinnableBitmapDrawable", 2, paramBitmap.toString(), null);
+      i.d("SkinnableBitmapDrawable", 2, paramBitmap.toString(), null);
       return;
     }
     catch (Exception paramBitmap)
     {
-      k.d("SkinnableBitmapDrawable", 2, paramBitmap.toString(), null);
+      i.d("SkinnableBitmapDrawable", 2, paramBitmap.toString(), null);
     }
   }
   
@@ -446,21 +444,24 @@ public class SkinnableBitmapDrawable
     b();
     if (this.b.k != null) {}
     Bitmap localBitmap;
+    Object localObject1;
     do
     {
-      return;
-      localBitmap = this.c;
-    } while (localBitmap == null);
-    Object localObject1;
-    if (this.b.e == 1)
-    {
+      do
+      {
+        return;
+        localBitmap = this.c;
+      } while (localBitmap == null);
+      if (this.b.e != 1) {
+        break;
+      }
       setGravity(48);
       localObject1 = getImageDrawnRect(getBounds());
-      b(this.c);
-      paramCanvas.drawBitmap(this.c, (Rect)localObject1, getBounds(), this.b.o);
-      return;
-    }
-    a locala = this.b;
+    } while ((((Rect)localObject1).width() <= 0) || (((Rect)localObject1).height() <= 0));
+    b(this.c);
+    paramCanvas.drawBitmap(this.c, (Rect)localObject1, getBounds(), this.b.o);
+    return;
+    SkinnableBitmapDrawable.a locala = this.b;
     Object localObject2;
     Shader.TileMode localTileMode;
     if (this.g)
@@ -468,7 +469,7 @@ public class SkinnableBitmapDrawable
       localObject2 = locala.p;
       localTileMode = locala.q;
       if ((localObject2 != null) || (localTileMode != null)) {
-        break label209;
+        break label223;
       }
       locala.o.setShader(null);
     }
@@ -487,7 +488,7 @@ public class SkinnableBitmapDrawable
       b(localBitmap);
       paramCanvas.drawBitmap(localBitmap, null, this.e, locala.o);
       return;
-      label209:
+      label223:
       localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = Shader.TileMode.CLAMP;
@@ -532,9 +533,19 @@ public class SkinnableBitmapDrawable
   {
     int m = getBitmap().getHeight();
     int i1 = getBitmap().getWidth();
+    Rect localRect;
     if (paramRect == null) {
-      return new Rect(0, 0, i1, m);
+      localRect = new Rect(0, 0, i1, m);
     }
+    do
+    {
+      do
+      {
+        return localRect;
+        localRect = paramRect;
+      } while (paramRect.width() == 0);
+      localRect = paramRect;
+    } while (paramRect.height() == 0);
     if (paramRect.height() / paramRect.width() >= m / i1)
     {
       int n = paramRect.width() * m / paramRect.height();
@@ -591,7 +602,7 @@ public class SkinnableBitmapDrawable
   
   public Drawable mutate2()
   {
-    return new a(this.b).newDrawable();
+    return new SkinnableBitmapDrawable.a(this.b).newDrawable();
   }
   
   protected void onBoundsChange(Rect paramRect)
@@ -665,7 +676,7 @@ public class SkinnableBitmapDrawable
   
   public void setTileModeXY(Shader.TileMode paramTileMode1, Shader.TileMode paramTileMode2)
   {
-    a locala = this.b;
+    SkinnableBitmapDrawable.a locala = this.b;
     if ((locala.o.getShader() == null) || (locala.p != paramTileMode1) || (locala.q != paramTileMode2))
     {
       locala.p = paramTileMode1;
@@ -677,50 +688,6 @@ public class SkinnableBitmapDrawable
   public final void setTileModeY(Shader.TileMode paramTileMode)
   {
     setTileModeXY(this.b.p, paramTileMode);
-  }
-  
-  static final class a
-    extends b
-  {
-    Bitmap l;
-    int m;
-    int n = 119;
-    Paint o = new Paint(6);
-    Shader.TileMode p;
-    Shader.TileMode q;
-    int r = 160;
-    boolean s = false;
-    
-    a(Bitmap paramBitmap)
-    {
-      this.l = paramBitmap;
-    }
-    
-    a(a parama)
-    {
-      this(parama.l);
-      this.m = parama.m;
-      this.n = parama.n;
-      this.p = parama.p;
-      this.q = parama.q;
-      this.r = parama.r;
-      this.o = new Paint(parama.o);
-    }
-    
-    public int getChangingConfigurations()
-    {
-      return this.m;
-    }
-    
-    public Drawable newDrawable()
-    {
-      return new SkinnableBitmapDrawable(this, null);
-    }
-    
-    public Drawable newDrawable(Resources paramResources)
-    {
-      return new SkinnableBitmapDrawable(this, paramResources);
-    }
   }
 }
 

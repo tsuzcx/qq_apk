@@ -1,5 +1,8 @@
 package com.tencent.biz.qrcode.activity;
 
+import ajjj;
+import ajjy;
+import akyv;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -9,51 +12,56 @@ import android.os.Handler.Callback;
 import android.support.v4.view.ViewCompat;
 import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.biz.qrcode.ipc.PreCallUpToolProc;
-import com.tencent.biz.qrcode.ipc.QrHandleResultCallBack;
-import com.tencent.biz.qrcode.ipc.QrImageScan;
-import com.tencent.biz.qrcode.ipc.QrMainProcManager;
+import apck;
+import arni;
+import awqx;
+import awrn;
+import babh;
+import bach;
+import bbms;
 import com.tencent.biz.qrcode.ipc.ScannerParams;
-import com.tencent.biz.widgets.ScannerView.FileDecodeListener;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.ar.ARScanAR;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
-import com.tencent.mobileqq.binhai.BinHaiHandler;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.nearby.NearbyFakeActivity;
 import com.tencent.mobileqq.ocr.data.OcrConfig;
 import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.mobileqq.webprocess.WebProcessReceiver;
-import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qwallet.plugin.QWalletHelper;
-import ozd;
-import ozf;
-import ozg;
-import ozh;
+import java.io.File;
+import ncw;
+import org.json.JSONObject;
+import vuj;
+import vul;
+import vum;
+import vun;
+import vup;
+import vuu;
+import vux;
+import vuy;
+import vuz;
+import xev;
 
 public class ScannerActivity
   extends BaseActivity
 {
   public static boolean a;
   private long jdField_a_of_type_Long;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new ozh(this);
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new vun(this);
   private Handler jdField_a_of_type_AndroidOsHandler;
   private View jdField_a_of_type_AndroidViewView;
-  private PreCallUpToolProc jdField_a_of_type_ComTencentBizQrcodeIpcPreCallUpToolProc;
-  private QrHandleResultCallBack jdField_a_of_type_ComTencentBizQrcodeIpcQrHandleResultCallBack = new ozf(this);
-  private QrImageScan jdField_a_of_type_ComTencentBizQrcodeIpcQrImageScan;
+  private bbms jdField_a_of_type_Bbms;
   public ScannerParams a;
-  private ScannerView.FileDecodeListener jdField_a_of_type_ComTencentBizWidgetsScannerView$FileDecodeListener = new ozd(this);
   public ARScanAR a;
   public OcrConfig a;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+  private String jdField_a_of_type_JavaLangString;
+  private vuu jdField_a_of_type_Vuu;
+  private vux jdField_a_of_type_Vux = new vul(this);
+  private vuy jdField_a_of_type_Vuy;
+  private xev jdField_a_of_type_Xev = new vuj(this);
   private long b;
   public boolean b;
   private boolean c;
@@ -62,6 +70,7 @@ public class ScannerActivity
   private boolean f;
   private boolean g = true;
   private boolean h;
+  private boolean i;
   
   static
   {
@@ -75,12 +84,12 @@ public class ScannerActivity
   
   private String a(String paramString)
   {
-    FriendsManager localFriendsManager = (FriendsManager)this.app.getManager(50);
-    if (localFriendsManager == null) {}
+    ajjj localajjj = (ajjj)this.app.getManager(51);
+    if (localajjj == null) {}
     do
     {
       return "";
-      paramString = localFriendsManager.a(paramString);
+      paramString = localajjj.b(paramString);
       if (paramString == null) {
         return "";
       }
@@ -88,56 +97,154 @@ public class ScannerActivity
     return "" + paramString.strProvince;
   }
   
-  private void a(String paramString)
+  private JSONObject a()
   {
-    if (this.jdField_a_of_type_ComTencentBizQrcodeIpcQrImageScan == null) {
-      this.jdField_a_of_type_ComTencentBizQrcodeIpcQrImageScan = new QrImageScan(this, this.jdField_a_of_type_ComTencentBizWidgetsScannerView$FileDecodeListener);
+    Object localObject2 = null;
+    Object localObject1 = null;
+    Object localObject3 = getIntent();
+    String str = this.jdField_a_of_type_JavaLangString;
+    if ((localObject3 == null) && (TextUtils.isEmpty(str))) {
+      return localObject1;
     }
-    this.jdField_a_of_type_ComTencentBizQrcodeIpcQrImageScan.a(paramString);
-  }
-  
-  private void a(String paramString1, String paramString2)
-  {
-    this.jdField_c_of_type_Boolean = true;
-    QLog.e("ScannerActivity", 1, "handleScannerResult scannerResult:" + paramString2 + "  scannerType" + paramString1);
-    Intent localIntent;
-    if (PublicAccountManager.class.getName().equals(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString))
+    localObject1 = localObject2;
+    if (localObject3 != null)
     {
-      localIntent = new Intent("com.tencent.biz.pubaccount.scanResultAction");
-      if (paramString1 != null)
+      localObject1 = localObject2;
+      if (((Intent)localObject3).hasExtra("report_params"))
       {
-        if (paramString1.equalsIgnoreCase("QR_CODE")) {
-          localIntent.putExtra("com.tencent.biz.pubaccount.scanResultType", 2);
+        localObject3 = ((Intent)localObject3).getStringExtra("report_params");
+        localObject1 = localObject2;
+        if (!TextUtils.isEmpty((CharSequence)localObject3)) {
+          localObject1 = new JSONObject((String)localObject3);
         }
       }
-      else
-      {
-        localIntent.putExtra("com.tencent.biz.pubaccount.scanResultData", paramString2);
-        sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
+    }
+    localObject2 = localObject1;
+    if (localObject1 == null)
+    {
+      localObject2 = new JSONObject();
+      if (TextUtils.isEmpty(str)) {
+        break label270;
       }
+      ((JSONObject)localObject2).put("type", 9);
     }
     for (;;)
     {
-      if (!this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_Boolean) {
-        break label207;
-      }
-      getIntent().putExtra("scanResult", paramString2);
-      setResult(-1, getIntent());
-      finish();
-      return;
-      localIntent.putExtra("com.tencent.biz.pubaccount.scanResultType", 1);
-      break;
-      if (ArkAppDeviceModule.class.getName().equals(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString))
+      if ((TextUtils.isEmpty(((JSONObject)localObject2).optString("md5"))) && (!TextUtils.isEmpty(str)) && (new File(str).exists()))
       {
-        localIntent = new Intent("com.tencent.mobileqq.ark.API.scanResultAction");
-        localIntent.putExtra("com.tencent.ark.scanResultData", paramString2);
-        localIntent.putExtra("com.tencent.ark.scanResultType", paramString1);
-        sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
-        finish();
+        long l = System.currentTimeMillis();
+        localObject1 = bach.a(apck.d(str));
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          ((JSONObject)localObject2).put("md5", ((String)localObject1).toUpperCase());
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("ScannerActivity", 2, "buildQRReportParams md5:" + (String)localObject1 + " cost:" + (System.currentTimeMillis() - l));
+        }
+      }
+      localObject1 = localObject2;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("ScannerActivity", 2, "buildQRReportParams params:" + ((JSONObject)localObject2).toString());
+      return localObject2;
+      label270:
+      ((JSONObject)localObject2).put("type", 8);
+    }
+  }
+  
+  private void a(int paramInt1, String paramString1, String paramString2, int paramInt2)
+  {
+    this.jdField_c_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.i("ScannerActivity", 1, "handleScannerResult scannerResult:" + paramString2 + "  scannerType:" + paramString1 + " resultType:" + paramInt1 + " reqType:" + paramInt2);
+    }
+    if ((paramInt1 & 0x1) == 1) {
+      if (ncw.class.getName().equals(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString))
+      {
+        localIntent = new Intent("com.tencent.biz.pubaccount.scanResultAction");
+        if (paramString1 != null)
+        {
+          if (paramString1.equalsIgnoreCase("QR_CODE")) {
+            localIntent.putExtra("com.tencent.biz.pubaccount.scanResultType", 2);
+          }
+        }
+        else
+        {
+          localIntent.putExtra("com.tencent.biz.pubaccount.scanResultData", paramString2);
+          sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
+          if (!this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_Boolean) {
+            break label402;
+          }
+          getIntent().putExtra("scanResult", paramString2);
+          setResult(-1, getIntent());
+          finish();
+        }
       }
     }
-    label207:
-    ScannerUtils.a(paramString1, paramString2, this, this.app, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams, this.jdField_a_of_type_ComTencentBizQrcodeIpcQrHandleResultCallBack);
+    label328:
+    while ((paramInt1 & 0x2) != 2)
+    {
+      do
+      {
+        for (;;)
+        {
+          return;
+          localIntent.putExtra("com.tencent.biz.pubaccount.scanResultType", 1);
+          continue;
+          if (!akyv.class.getName().equals(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString)) {
+            break;
+          }
+          localIntent = new Intent("com.tencent.mobileqq.ark.API.scanResultAction");
+          localIntent.putExtra("com.tencent.ark.scanResultData", paramString2);
+          localIntent.putExtra("com.tencent.ark.scanResultType", paramString1);
+          sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
+          finish();
+        }
+        if ("micro_app".equals(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString))
+        {
+          localIntent = new Intent("com.tencent.mobileqq.microapp.out.plugins.scanResultAction");
+          if (paramString1 != null)
+          {
+            if (!paramString1.equalsIgnoreCase("QR_CODE")) {
+              break label328;
+            }
+            localIntent.putExtra("com.tencent.mobileqq.microapp.out.plugins.scanResultType", 2);
+          }
+          for (;;)
+          {
+            localIntent.putExtra("com.tencent.mobileqq.microapp.out.plugins.scanResultData", paramString2);
+            sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
+            finish();
+            break;
+            localIntent.putExtra("com.tencent.mobileqq.microapp.out.plugins.scanResultType", 1);
+          }
+        }
+      } while (!"mini_app".equals(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString));
+      Intent localIntent = new Intent("com.tencent.mobileqq.mini.out.plugins.scanResultAction");
+      localIntent.putExtra("com.tencent.mobileqq.mini.out.plugins.scanResultType", paramString1);
+      localIntent.putExtra("com.tencent.mobileqq.mini.out.plugins.scanResultData", paramString2);
+      sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
+      finish();
+      return;
+      vup.a(paramString1, paramString2, this, this.app, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams, this.jdField_a_of_type_Vux);
+      return;
+    }
+    label402:
+    arni.a(paramString2, this);
+    finish();
+  }
+  
+  private void a(String paramString1, int paramInt, String paramString2)
+  {
+    if (this.jdField_a_of_type_Vuy == null) {
+      this.jdField_a_of_type_Vuy = new vuy(this, this.jdField_a_of_type_Xev);
+    }
+    int j = paramInt;
+    if (paramInt == 0) {
+      j = 3;
+    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Vuy.a(paramString1, j, paramString2);
   }
   
   private void e()
@@ -147,40 +254,43 @@ public class ScannerActivity
     this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString = localIntent.getStringExtra("from");
     this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_b_of_type_JavaLangString = localIntent.getStringExtra("subfrom");
     if ("addcontacts".equals(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString)) {
-      StatisticCollector.a(getApplicationContext()).b(this.app, "", "addfriend_QR", 1);
+      awrn.a(getApplicationContext()).b(this.app, "", "addfriend_QR", 1);
     }
     for (;;)
     {
       this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.e = localIntent.getBooleanExtra("QRDecode", false);
+      this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_Int = localIntent.getIntExtra("detectType", 1);
+      this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_d_of_type_JavaLangString = localIntent.getStringExtra("preResult");
       this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.h = "qlink".equalsIgnoreCase(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString);
       this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.g = super.getPackageManager().hasSystemFeature("android.hardware.camera");
       this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_JavaLangString = localIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
       if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_JavaLangString)) {
-        this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.d = true;
+        this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_d_of_type_Boolean = true;
       }
       this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_Boolean = localIntent.getBooleanExtra("scanForResult", false);
       this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_b_of_type_Boolean = localIntent.getBooleanExtra("finishAfterSucc", false);
       this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.i = false;
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131367584);
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131309849);
       ViewCompat.setImportantForAccessibility(this.jdField_a_of_type_AndroidViewView, 2);
       if (("Conversation".equals(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString)) || ("web-ar".equals(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString))) {
         this.h = true;
       }
+      this.i = localIntent.getBooleanExtra("hide_album", false);
       this.jdField_b_of_type_Long = localIntent.getLongExtra("start_time", -1L);
       QLog.i("ScannerActivity", 1, "mScannerParams: " + this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.toString());
       return;
       if ("ImagePreviewActivity".equals(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString))
       {
-        StatisticCollector.a(getApplicationContext()).b(this.app, "", "bigpicture_QR", 1);
+        awrn.a(getApplicationContext()).b(this.app, "", "bigpicture_QR", 1);
       }
       else if ("Conversation".equals(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString))
       {
         this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.f = true;
-        StatisticCollector.a(getApplicationContext()).b(this.app, "", "bulb_QR", 1);
+        awrn.a(getApplicationContext()).b(this.app, "", "bulb_QR", 1);
       }
       else if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString))
       {
-        StatisticCollector.a(getApplicationContext()).b(this.app, "", "find_QR", 1);
+        awrn.a(getApplicationContext()).b(this.app, "", "find_QR", 1);
       }
       else if ("publicAccountNew".equals(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString))
       {
@@ -203,25 +313,25 @@ public class ScannerActivity
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
     }
-    if (this.jdField_a_of_type_ComTencentBizQrcodeIpcPreCallUpToolProc == null) {
-      this.jdField_a_of_type_ComTencentBizQrcodeIpcPreCallUpToolProc = new PreCallUpToolProc(this);
+    if (this.jdField_a_of_type_Vuu == null) {
+      this.jdField_a_of_type_Vuu = new vuu(this);
     }
     QLog.d("ScannerActivity", 2, "launchAr time pre: " + (System.currentTimeMillis() - l));
-    this.jdField_a_of_type_ComTencentBizQrcodeIpcPreCallUpToolProc.a("qr", 5000L, new ozg(this, l));
+    this.jdField_a_of_type_Vuu.a("qr", 5000L, new vum(this, l));
   }
   
   public void b()
   {
     QLog.d("ScannerActivity", 2, String.format("doLaunchAr", new Object[0]));
-    if (this.jdField_a_of_type_ComTencentBizQrcodeIpcPreCallUpToolProc != null)
+    if (this.jdField_a_of_type_Vuu != null)
     {
-      this.jdField_a_of_type_ComTencentBizQrcodeIpcPreCallUpToolProc.a();
-      this.jdField_a_of_type_ComTencentBizQrcodeIpcPreCallUpToolProc = null;
+      this.jdField_a_of_type_Vuu.a();
+      this.jdField_a_of_type_Vuu = null;
     }
     Object localObject;
     if ((this.app instanceof QQAppInterface))
     {
-      localObject = (WebProcessManager)this.app.getManager(12);
+      localObject = (WebProcessManager)this.app.getManager(13);
       if (localObject != null) {
         ((WebProcessManager)localObject).e();
       }
@@ -242,7 +352,7 @@ public class ScannerActivity
     if (this.jdField_a_of_type_ComTencentMobileqqArARScanAR != null)
     {
       if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqArARScanAR.e)) {
-        break label632;
+        break label626;
       }
       localIntent.putExtra("icon_text", "QQ-AR");
     }
@@ -261,10 +371,11 @@ public class ScannerActivity
         localIntent.putExtra("key_ocr_config", this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrConfig);
       }
       localIntent.putExtra("key_ar_config", this.jdField_a_of_type_ComTencentMobileqqArARScanAR);
-      localIntent.putExtra("CurrentNickname", this.app.getCurrentNickname());
+      localIntent.putExtra("CurrentNickname", babh.k(this.app, this.app.getCurrentAccountUin()));
       localIntent.putExtra("CurrentLocInfo", a(this.app.c()));
       localIntent.putExtra("from_qr", true);
       localIntent.putExtra("ar_enabled", this.h);
+      localIntent.putExtra("hide_album", this.i);
       localIntent.putExtra("from", this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString);
       if ((TextUtils.equals("web-ar", this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString)) && (getIntent() != null))
       {
@@ -275,22 +386,17 @@ public class ScannerActivity
         localIntent.putExtra("icon_url", getIntent().getStringExtra("icon_url"));
       }
       localIntent.putExtra("start_time", this.jdField_b_of_type_Long);
-      if (BinHaiHandler.jdField_a_of_type_Boolean)
-      {
-        localIntent.putExtra("binhai_debug", true);
-        localIntent.putExtra("binhai_debug_dalian", BinHaiHandler.jdField_b_of_type_Boolean);
-      }
-      Bundle localBundle = getIntent().getBundleExtra("ARRelationShipPromotion");
+      Bundle localBundle = getIntent().getBundleExtra("web_invoke_params");
       localObject = localBundle;
       if (localBundle == null) {
         localObject = new Bundle();
       }
-      localIntent.putExtra("ARRelationShipPromotion", (Bundle)localObject);
+      localIntent.putExtra("web_invoke_params", (Bundle)localObject);
       startActivityForResult(localIntent, 10);
       overridePendingTransition(0, 0);
       this.jdField_b_of_type_Boolean = true;
       return;
-      label632:
+      label626:
       localIntent.putExtra("icon_text", this.jdField_a_of_type_ComTencentMobileqqArARScanAR.e);
     }
   }
@@ -298,22 +404,22 @@ public class ScannerActivity
   public void c()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ScannerActivity", 2, "showProgress mProgressShowing:" + this.d);
+      QLog.d("ScannerActivity", 2, "showProgress mProgressShowing:" + this.jdField_d_of_type_Boolean);
     }
-    if (this.d) {}
+    if (this.jdField_d_of_type_Boolean) {}
     do
     {
       return;
       try
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+        if (this.jdField_a_of_type_Bbms == null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a("正在加载...");
-          this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(false);
+          this.jdField_a_of_type_Bbms = new bbms(this, getTitleBarHeight());
+          this.jdField_a_of_type_Bbms.a(ajjy.a(2131647723));
+          this.jdField_a_of_type_Bbms.c(false);
         }
-        this.d = true;
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+        this.jdField_d_of_type_Boolean = true;
+        this.jdField_a_of_type_Bbms.show();
         return;
       }
       catch (Exception localException) {}
@@ -324,17 +430,17 @@ public class ScannerActivity
   public void d()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ScannerActivity", 2, "hideProgress  mProgressShowing:" + this.d);
+      QLog.d("ScannerActivity", 2, "hideProgress  mProgressShowing:" + this.jdField_d_of_type_Boolean);
     }
     try
     {
       if (this.jdField_a_of_type_AndroidOsHandler != null) {
         this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      if ((this.jdField_a_of_type_Bbms != null) && (this.jdField_a_of_type_Bbms.isShowing())) {
+        this.jdField_a_of_type_Bbms.dismiss();
       }
-      this.d = false;
+      this.jdField_d_of_type_Boolean = false;
       return;
     }
     catch (Exception localException)
@@ -346,7 +452,7 @@ public class ScannerActivity
     }
   }
   
-  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if (QLog.isColorLevel()) {
       QLog.d("ScannerActivity", 2, "doOnActivityResult requestCode:" + paramInt1 + ", resultCode:" + paramInt2);
@@ -391,8 +497,19 @@ public class ScannerActivity
         overridePendingTransition(0, 0);
         return;
       case 13: 
-        String str = paramIntent.getStringExtra("scannerResult");
-        a(paramIntent.getStringExtra("scannerType"), str);
+        paramInt1 = paramIntent.getIntExtra("detectType", 1);
+        String str1 = paramIntent.getStringExtra("scannerResult");
+        String str2 = paramIntent.getStringExtra("scannerType");
+        this.jdField_a_of_type_JavaLangString = null;
+        if (paramIntent.hasExtra("filePath")) {
+          this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("filePath");
+        }
+        if (paramInt1 == 2)
+        {
+          finish();
+          return;
+        }
+        a(paramInt1, str2, str1, 3);
         return;
       }
       paramIntent = paramIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
@@ -403,10 +520,10 @@ public class ScannerActivity
         break;
       }
       this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_JavaLangString = paramIntent;
-      this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.d = true;
+      this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_d_of_type_Boolean = true;
     } while (!isResume());
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    a(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_JavaLangString);
+    a(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_JavaLangString, 3, this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_d_of_type_JavaLangString);
     this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_JavaLangString = null;
     return;
     finish();
@@ -417,16 +534,16 @@ public class ScannerActivity
     super.doOnBackPressed();
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
-    int i = 0;
+    int j = 0;
     if (QLog.isColorLevel()) {
       QLog.d("ScannerActivity", 2, "onCreate");
     }
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2130969709);
+    super.setContentView(2131494561);
     e();
     this.f = false;
     this.jdField_c_of_type_Boolean = false;
@@ -434,61 +551,67 @@ public class ScannerActivity
     if (paramBundle != null)
     {
       boolean bool = paramBundle.getBoolean("hansSavedState", false);
-      i = bool;
+      j = bool;
       if (QLog.isColorLevel())
       {
         QLog.d("ScannerActivity", 2, "hansSavedState : " + bool);
-        i = bool;
+        j = bool;
       }
     }
     for (;;)
     {
-      if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_JavaLangString)) && (i == 0)) {
+      if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_JavaLangString)) && (j == 0)) {
         a();
       }
-      ((QrMainProcManager)this.app.getManager(242)).a(getApplicationContext(), this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams);
+      paramBundle = (vuz)this.app.getManager(243);
+      if (paramBundle != null) {
+        paramBundle.a(getApplicationContext(), this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams);
+      }
       return true;
       if (getIntent().getBooleanExtra("from_+", false)) {
-        ReportController.b(null, "dc00898", "", "", "0X80085A9", "0X80085A9", 0, 0, "", "", "", "");
+        awqx.b(null, "dc00898", "", "", "0X80085A9", "0X80085A9", 0, 0, "", "", "", "");
       } else {
-        ReportController.b(null, "dc00898", "", "", "0X80085AA", "0X80085AA", 0, 0, "", "", this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString, "");
+        awqx.b(null, "dc00898", "", "", "0X80085AA", "0X80085AA", 0, 0, "", "", this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString, "");
       }
     }
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ScannerActivity", 2, "onDestroy mHasARBack:" + this.f + "  mHasStartedAR:" + this.jdField_b_of_type_Boolean);
     }
     if ((!this.jdField_b_of_type_Boolean) || (this.f))
     {
-      if (ArkAppDeviceModule.class.getName().equals(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString))
+      if (akyv.class.getName().equals(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString))
       {
-        Intent localIntent = new Intent("com.tencent.mobileqq.ark.API.scanResultAction");
-        localIntent.putExtra("com.tencent.ark.scanResultData", "");
-        localIntent.putExtra("com.tencent.ark.scanResultType", "");
-        sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
+        localObject = new Intent("com.tencent.mobileqq.ark.API.scanResultAction");
+        ((Intent)localObject).putExtra("com.tencent.ark.scanResultData", "");
+        ((Intent)localObject).putExtra("com.tencent.ark.scanResultType", "");
+        sendBroadcast((Intent)localObject, "com.tencent.msg.permission.pushnotify");
       }
-      ((QrMainProcManager)this.app.getManager(242)).a();
+      Object localObject = (vuz)this.app.getManager(243);
+      if (localObject != null) {
+        ((vuz)localObject).a();
+      }
       if (QLog.isColorLevel()) {
         QLog.d("ScannerActivity", 2, "doOnDestroy in onScannerDestroy");
       }
     }
-    if (this.jdField_a_of_type_ComTencentBizQrcodeIpcQrImageScan != null)
+    if (this.jdField_a_of_type_Vuy != null)
     {
-      this.jdField_a_of_type_ComTencentBizQrcodeIpcQrImageScan.a();
-      this.jdField_a_of_type_ComTencentBizQrcodeIpcQrImageScan = null;
+      this.jdField_a_of_type_Vuy.a();
+      this.jdField_a_of_type_Vuy = null;
     }
-    if (this.jdField_a_of_type_ComTencentBizQrcodeIpcPreCallUpToolProc != null)
+    if (this.jdField_a_of_type_Vuu != null)
     {
-      this.jdField_a_of_type_ComTencentBizQrcodeIpcPreCallUpToolProc.a();
-      this.jdField_a_of_type_ComTencentBizQrcodeIpcPreCallUpToolProc = null;
+      this.jdField_a_of_type_Vuu.a();
+      this.jdField_a_of_type_Vuu = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
+    if (this.jdField_a_of_type_Bbms != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+      this.jdField_a_of_type_Bbms.dismiss();
+      this.jdField_a_of_type_Bbms = null;
     }
     if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
@@ -496,11 +619,11 @@ public class ScannerActivity
       this.jdField_a_of_type_AndroidOsHandler = null;
     }
     super.doOnDestroy();
-    ScannerUtils.a(this);
+    vup.a(this);
     this.app = null;
   }
   
-  protected void doOnNewIntent(Intent paramIntent)
+  public void doOnNewIntent(Intent paramIntent)
   {
     if (QLog.isColorLevel()) {
       QLog.d("ScannerActivity", 2, "doOnNewIntent");
@@ -508,11 +631,11 @@ public class ScannerActivity
     super.doOnNewIntent(paramIntent);
     this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_JavaLangString = paramIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
     if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.d = true;
+      this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_d_of_type_Boolean = true;
     }
   }
   
-  protected void doOnPause()
+  public void doOnPause()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ScannerActivity", 2, "onPause");
@@ -520,7 +643,7 @@ public class ScannerActivity
     super.doOnPause();
   }
   
-  protected void doOnResume()
+  public void doOnResume()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ScannerActivity", 2, "onResume");
@@ -529,7 +652,7 @@ public class ScannerActivity
     if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_JavaLangString))
     {
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      a(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_JavaLangString);
+      a(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_d_of_type_JavaLangString);
       this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_c_of_type_JavaLangString = null;
     }
     if ((QLog.isColorLevel()) && (this.g) && (this.jdField_b_of_type_Long > 0L))
@@ -539,7 +662,7 @@ public class ScannerActivity
     }
   }
   
-  protected void doOnSaveInstanceState(Bundle paramBundle)
+  public void doOnSaveInstanceState(Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
       QLog.d("ScannerActivity", 2, "doOnSaveInstanceState");
@@ -548,7 +671,7 @@ public class ScannerActivity
     super.doOnSaveInstanceState(paramBundle);
   }
   
-  protected void doOnStop()
+  public void doOnStop()
   {
     if (QLog.isColorLevel()) {
       QLog.d("ScannerActivity", 2, "doOnStop");
@@ -586,7 +709,7 @@ public class ScannerActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.ScannerActivity
  * JD-Core Version:    0.7.0.1
  */

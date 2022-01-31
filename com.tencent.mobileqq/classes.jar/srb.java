@@ -1,33 +1,24 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
-
 public class srb
-  implements TabBarView.OnTabChangeListener
 {
-  public srb(EmosmActivity paramEmosmActivity) {}
+  @vlq(a="id")
+  public int a;
+  @vlq(a="name")
+  public String a;
+  @vlq(a="items")
+  public srd[] a;
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public String toString()
   {
-    if (paramInt1 == paramInt2) {
-      return;
-    }
-    if (paramInt2 == 0) {
-      this.a.b = 1;
-    }
-    for (;;)
-    {
-      this.a.c = false;
-      this.a.runOnUiThread(this.a.a);
-      return;
-      if (paramInt2 == 1) {
-        this.a.b = 2;
-      }
+    StringBuilder localStringBuilder = new StringBuilder().append("FilterConfig{id=").append(this.jdField_a_of_type_Int).append(", name='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", items-size=");
+    if (this.jdField_a_of_type_ArrayOfSrd != null) {}
+    for (int i = this.jdField_a_of_type_ArrayOfSrd.length;; i = 0) {
+      return i + '}';
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     srb
  * JD-Core Version:    0.7.0.1
  */

@@ -2,28 +2,36 @@ package cooperation.wadl.ipc;
 
 import android.content.Intent;
 import android.content.ServiceConnection;
+import bckd;
+import bfcz;
+import bfdi;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginProxyService;
-import com.tencent.open.wadl.WLog;
-import cooperation.plugin.IPluginManager;
-import cooperation.plugin.IPluginManager.PluginParams;
 import mqq.app.AppRuntime;
 
 public class WadlProxyService
   extends PluginProxyService
 {
-  public static void a(AppRuntime paramAppRuntime, ServiceConnection paramServiceConnection)
+  public static void a(ServiceConnection paramServiceConnection)
   {
-    WLog.b("WadlProxyService", "bindWadlService proxy WadlRemoteService");
-    Intent localIntent = new Intent(paramAppRuntime.getApplication(), WadlProxyService.class);
+    bckd.b("WadlProxyService", "bindWadlService proxy WadlRemoteService");
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    Object localObject = localBaseApplicationImpl.getRuntime();
+    Intent localIntent = new Intent(localBaseApplicationImpl, WadlProxyService.class);
     localIntent.putExtra("useSkinEngine", 1);
-    IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-    localPluginParams.b = "qqwadl.apk";
-    localPluginParams.d = "qqwadl";
-    localPluginParams.jdField_a_of_type_JavaLangString = paramAppRuntime.getAccount();
-    localPluginParams.e = "com.tencent.gamecenter.wadl.ipc.WadlRemoteService";
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = localIntent;
-    localPluginParams.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-    IPluginManager.b(paramAppRuntime.getApplication(), localPluginParams);
+    bfdi localbfdi = new bfdi(0);
+    localbfdi.b = "qqwadl.apk";
+    localbfdi.d = "qqwadl";
+    if (localObject != null) {}
+    for (localObject = ((AppRuntime)localObject).getAccount();; localObject = "")
+    {
+      localbfdi.jdField_a_of_type_JavaLangString = ((String)localObject);
+      localbfdi.e = "com.tencent.gamecenter.wadl.ipc.WadlRemoteService";
+      localbfdi.jdField_a_of_type_AndroidContentIntent = localIntent;
+      localbfdi.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
+      bfcz.c(localBaseApplicationImpl, localbfdi);
+      return;
+    }
   }
 }
 

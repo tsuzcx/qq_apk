@@ -1,23 +1,22 @@
-import android.text.TextUtils;
-import com.tencent.gdtad.qqproxy.GdtBrowserUtil;
-import com.tencent.gdtad.views.canvas.components.picture.GdtCanvasPictureComponentData;
-import com.tencent.gdtad.views.canvas.components.picture.GdtCanvasPictureComponentView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import java.util.Map;
 
 public class qqr
-  implements Runnable
+  extends omr
 {
-  public qqr(GdtCanvasPictureComponentView paramGdtCanvasPictureComponentView, GdtCanvasPictureComponentData paramGdtCanvasPictureComponentData) {}
-  
-  public void run()
+  public qqr(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, Map paramMap)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsPictureGdtCanvasPictureComponentData.actionUrl)) {
-      GdtBrowserUtil.a(this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsPictureGdtCanvasPictureComponentView.getContext(), this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsPictureGdtCanvasPictureComponentData.actionUrl);
-    }
+    super(paramString);
+  }
+  
+  public void a(oml paramoml)
+  {
+    paramoml.a(this.jdField_a_of_type_JavaUtilMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qqr
  * JD-Core Version:    0.7.0.1
  */

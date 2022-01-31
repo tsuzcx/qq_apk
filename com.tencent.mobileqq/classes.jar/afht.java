@@ -1,25 +1,10 @@
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarDownloadManager;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qphone.base.util.QLog;
-
-public class afht
-  implements Runnable
+public abstract interface afht
 {
-  public afht(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, String paramString) {}
-  
-  public void run()
-  {
-    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity) != null)
-    {
-      NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity).a(this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    QLog.i("Q.nearby_people_card.", 1, "mDynamicAvatarDownloadManager is NULL!!!");
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afht
  * JD-Core Version:    0.7.0.1
  */

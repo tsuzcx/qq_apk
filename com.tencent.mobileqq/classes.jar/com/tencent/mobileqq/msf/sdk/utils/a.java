@@ -13,10 +13,20 @@ public class a
     Object localObject = BaseApplication.getContext();
     if (localObject != null)
     {
-      localObject = (ActivityManager)((Context)localObject).getSystemService("activity");
-      ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
-      ((ActivityManager)localObject).getMemoryInfo(localMemoryInfo);
-      return localMemoryInfo.availMem;
+      ActivityManager localActivityManager = (ActivityManager)((Context)localObject).getSystemService("activity");
+      localObject = new ActivityManager.MemoryInfo();
+      try
+      {
+        localActivityManager.getMemoryInfo((ActivityManager.MemoryInfo)localObject);
+        return ((ActivityManager.MemoryInfo)localObject).availMem;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          QLog.w("DeviceInfoUtils", 1, localException.getMessage(), localException.getCause());
+        }
+      }
     }
     return -1L;
   }

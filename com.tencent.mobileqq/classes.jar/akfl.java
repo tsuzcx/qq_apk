@@ -1,31 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.unifiedebug.SnapshotService;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-public class akfl
-  extends BroadcastReceiver
+class akfl
 {
-  public akfl(SnapshotService paramSnapshotService) {}
+  long jdField_a_of_type_Long;
+  CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    long l = paramIntent.getLongExtra("id", -1L);
-    int i = paramIntent.getIntExtra("action", -1);
-    if ((l == 0L) && (i == 1) && (SnapshotService.a(this.a) > 0L))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(SnapshotService.a(), 2, "receive broadcast: destroy snapshot service");
-      }
-      SnapshotService.a(false);
-      this.a.finish();
-    }
-  }
+  akfl(akfg paramakfg) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akfl
  * JD-Core Version:    0.7.0.1
  */

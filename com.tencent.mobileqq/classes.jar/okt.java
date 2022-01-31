@@ -1,14 +1,7 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoPoi;
-
-class okt
-  implements Runnable
+public class okt
 {
-  okt(oks paramoks) {}
-  
-  public void run()
-  {
-    EditVideoPoi.a(this.a.a, 0);
-  }
+  public int a;
+  public String a;
 }
 
 

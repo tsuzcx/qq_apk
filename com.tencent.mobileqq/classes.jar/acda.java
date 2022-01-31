@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.QQPhotoInfo;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
-public final class acda
-  implements Parcelable.Creator
+public class acda
+  implements View.OnClickListener
 {
-  public QQPhotoInfo a(Parcel paramParcel)
-  {
-    return new QQPhotoInfo(paramParcel, null);
-  }
+  public acda(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public QQPhotoInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new QQPhotoInfo[paramInt];
+    this.a.a.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acda
  * JD-Core Version:    0.7.0.1
  */

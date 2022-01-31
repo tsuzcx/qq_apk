@@ -1,27 +1,50 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
-import com.tencent.mobileqq.emosm.DataFactory;
-import com.tencent.mobileqq.vas.ColorRingPlayer;
+import java.util.HashMap;
 
 public class akpa
-  implements Runnable
 {
-  public akpa(ColorRingPlayer paramColorRingPlayer, String paramString1, String paramString2, long paramLong, int paramInt) {}
+  private static int a;
+  public static String a;
+  public static HashMap<String, akoi> a;
+  private static int b;
+  public static String b;
+  public static String c;
+  public static String d;
   
-  public void run()
+  static
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("subAction", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("actionName", this.b);
-    localBundle.putLong("id", this.jdField_a_of_type_Long);
-    localBundle.putInt("result", this.jdField_a_of_type_Int);
-    localBundle = DataFactory.a("reportColorRing", "", this.jdField_a_of_type_ComTencentMobileqqVasColorRingPlayer.a.key, localBundle);
-    this.jdField_a_of_type_ComTencentMobileqqVasColorRingPlayer.a(localBundle);
+    jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_Int = 5;
+    jdField_b_of_type_Int = 1;
+    jdField_a_of_type_JavaLangString = "";
+    jdField_b_of_type_JavaLangString = "";
+    c = "";
+    d = "";
+    jdField_a_of_type_JavaUtilHashMap.put("recogQ3", new akoi(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("recogQ4", new akoi(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("recogQ5", new akoi(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("trackQ3", new akoi(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("trackQ4", new akoi(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("trackQ5", new akoi(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("renderQ1", new akoi(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("renderQ0", new akoi(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("glRenderQ1", new akoi(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("glRenderQ0", new akoi(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("camRenderQ0", new akoi(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("modelRenderQ1", new akoi(2147483647));
+    jdField_a_of_type_JavaUtilHashMap.put("modelRenderQ0", new akoi(2147483647));
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    jdField_a_of_type_JavaLangString = paramString1;
+    jdField_b_of_type_JavaLangString = paramString2;
+    c = paramString3;
+    d = paramString4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akpa
  * JD-Core Version:    0.7.0.1
  */

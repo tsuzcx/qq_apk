@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.contactsync.authenticator;
 
+import amoj;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
@@ -7,7 +8,7 @@ import android.os.IBinder;
 public class AuthenticationService
   extends Service
 {
-  private Authenticator a;
+  private amoj a;
   
   public IBinder onBind(Intent paramIntent)
   {
@@ -17,7 +18,7 @@ public class AuthenticationService
   public void onCreate()
   {
     super.onCreate();
-    this.a = new Authenticator(this);
+    this.a = new amoj(this);
   }
   
   public void onDestroy() {}

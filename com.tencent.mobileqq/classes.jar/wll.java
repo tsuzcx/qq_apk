@@ -1,26 +1,103 @@
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.troop.file.MoveFileActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import java.util.ArrayList;
 
 public class wll
-  implements Runnable
+  extends BaseAdapter
+  implements begh
 {
-  public wll(ChatHistoryBubbleListForTroopFragment paramChatHistoryBubbleListForTroopFragment) {}
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public void run()
+  private wll(MoveFileActivity paramMoveFileActivity) {}
+  
+  public int getCount()
   {
-    List localList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_JavaLangString, 1, 9223372036854775807L, 20);
-    if (localList != null) {
-      ThreadManager.getUIHandler().post(new wlm(this, localList));
+    return MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null)
+    {
+      paramViewGroup = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getLayoutInflater().inflate(2131494763, MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity), false);
+      paramView = new wlm(null);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131300899));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131300898));
+      paramView.b = ((TextView)paramViewGroup.findViewById(2131298625));
+      paramViewGroup.setTag(paramView);
     }
+    paramView = (wlm)paramViewGroup.getTag();
+    ayoq localayoq = (ayoq)MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).get(paramInt);
+    if (localayoq != null)
+    {
+      if (!MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity, paramInt)) {
+        break label162;
+      }
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(localayoq.c);
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843032);
+    }
+    while (paramInt == MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity))
+    {
+      paramView.b.setVisibility(0);
+      return paramViewGroup;
+      label162:
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(ajjy.a(2131641110));
+      paramView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843034);
+    }
+    paramView.b.setVisibility(4);
+    return paramViewGroup;
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.b = paramInt3;
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      QLog.e("IphoneTitleBarActivity", 4, "onScrollStateChanged=SCROLL_STATE_IDLE");
+      if (this.jdField_a_of_type_Int == this.b - 2)
+      {
+        if (!MoveFileActivity.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity)) {
+          break label44;
+        }
+        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a(true);
+      }
+    }
+    label44:
+    do
+    {
+      return;
+      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a(false);
+    } while (azjg.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app, this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity, this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a) == 0);
+    this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wll
  * JD-Core Version:    0.7.0.1
  */

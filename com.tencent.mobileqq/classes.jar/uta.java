@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
 
-public class uta
-  implements Runnable
+public final class uta
+  implements Parcelable.Creator<EditTakeVideoSource>
 {
-  public uta(XBubbleAnimation paramXBubbleAnimation) {}
-  
-  public void run()
+  public EditTakeVideoSource a(Parcel paramParcel)
   {
-    this.a.d();
+    return new EditTakeVideoSource(paramParcel);
+  }
+  
+  public EditTakeVideoSource[] a(int paramInt)
+  {
+    return new EditTakeVideoSource[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uta
  * JD-Core Version:    0.7.0.1
  */

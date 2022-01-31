@@ -2,7 +2,7 @@ package com.tencent.component.network.module.cache.file;
 
 public abstract interface FileCacheService$StorageHandler
 {
-  public abstract void a(FileCacheService paramFileCacheService, long paramLong1, long paramLong2, boolean paramBoolean);
+  public abstract void onLowStorage(FileCacheService paramFileCacheService, long paramLong1, long paramLong2, boolean paramBoolean);
 }
 
 

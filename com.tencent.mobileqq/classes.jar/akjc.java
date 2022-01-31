@@ -1,18 +1,24 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.PoiMapActivity;
 
-public final class akjc
-  implements MediaPlayer.OnCompletionListener
+class akjc
+  implements View.OnClickListener
 {
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  akjc(akja paramakja) {}
+  
+  public void onClick(View paramView)
   {
-    paramMediaPlayer.release();
-    com.tencent.mobileqq.utils.AudioUtil.a = null;
+    this.a.dismiss();
+    paramView = new Intent(paramView.getContext(), PoiMapActivity.class).putExtra("lat", Double.toString(this.a.jdField_a_of_type_Akrl.a * 1.0D / 1000000.0D)).putExtra("lon", Double.toString(this.a.jdField_a_of_type_Akrl.b * 1.0D / 1000000.0D));
+    this.a.jdField_a_of_type_AndroidAppActivity.startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akjc
  * JD-Core Version:    0.7.0.1
  */

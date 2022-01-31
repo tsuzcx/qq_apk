@@ -1,27 +1,28 @@
-import com.tencent.component.network.utils.http.PoolingClientConnectionManager;
-import java.util.concurrent.Future;
-import java.util.concurrent.TimeUnit;
-import org.apache.http.conn.ClientConnectionRequest;
-import org.apache.http.conn.ManagedClientConnection;
+import com.tencent.qphone.base.util.QLog;
 
 public class ppw
-  implements ClientConnectionRequest
+  implements Cloneable
 {
-  public ppw(PoolingClientConnectionManager paramPoolingClientConnectionManager, Future paramFuture) {}
+  public String a;
+  public String b;
   
-  public void abortRequest()
+  protected Object clone()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentFuture.cancel(true);
-  }
-  
-  public ManagedClientConnection getConnection(long paramLong, TimeUnit paramTimeUnit)
-  {
-    return this.jdField_a_of_type_ComTencentComponentNetworkUtilsHttpPoolingClientConnectionManager.a(this.jdField_a_of_type_JavaUtilConcurrentFuture, paramLong, paramTimeUnit);
+    try
+    {
+      ppw localppw = (ppw)super.clone();
+      return localppw;
+    }
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      QLog.e("NewPolymericInfo", 2, "PackTopicExtraInfo item clone failed. exception = " + localCloneNotSupportedException);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ppw
  * JD-Core Version:    0.7.0.1
  */

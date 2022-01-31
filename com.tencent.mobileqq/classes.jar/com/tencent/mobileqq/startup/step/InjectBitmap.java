@@ -6,7 +6,7 @@ import com.tencent.qphone.base.util.QLog;
 public class InjectBitmap
   extends Step
 {
-  protected boolean a()
+  protected boolean doStep()
   {
     try
     {

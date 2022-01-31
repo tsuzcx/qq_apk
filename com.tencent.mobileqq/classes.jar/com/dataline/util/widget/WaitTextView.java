@@ -5,15 +5,15 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.widget.TextView;
-import dp;
+import fb;
 
 public class WaitTextView
   extends TextView
 {
   private int jdField_a_of_type_Int;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private WaitTextView.RefreshListener jdField_a_of_type_ComDatalineUtilWidgetWaitTextView$RefreshListener;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new dp(this);
+  private fb jdField_a_of_type_Fb;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new WaitTextView.1(this);
   private String jdField_a_of_type_JavaLangString;
   
   public WaitTextView(Context paramContext)
@@ -70,9 +70,9 @@ public class WaitTextView
     }
   }
   
-  public void setRefreshListener(WaitTextView.RefreshListener paramRefreshListener)
+  public void setRefreshListener(fb paramfb)
   {
-    this.jdField_a_of_type_ComDatalineUtilWidgetWaitTextView$RefreshListener = paramRefreshListener;
+    this.jdField_a_of_type_Fb = paramfb;
   }
   
   public void setWaitText(String paramString)
@@ -84,7 +84,7 @@ public class WaitTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.dataline.util.widget.WaitTextView
  * JD-Core Version:    0.7.0.1
  */

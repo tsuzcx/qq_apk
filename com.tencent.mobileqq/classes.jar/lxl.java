@@ -1,25 +1,34 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeNoImageSocial;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.QavBeautyMenuPanel;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.mobileqq.utils.AudioHelper;
 
 public class lxl
-  implements View.OnTouchListener
+  implements lxg
 {
-  public lxl(FeedItemCellTypeNoImageSocial paramFeedItemCellTypeNoImageSocial, RelativeLayout paramRelativeLayout) {}
+  public lxl(QavPanel paramQavPanel) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(View paramView, int paramInt)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(true);
+    paramView = this.a.a(paramInt);
+    if ((paramView instanceof QavBeautyMenuPanel)) {
+      ((QavBeautyMenuPanel)paramView).a();
     }
-    return false;
+    long l = AudioHelper.b();
+    this.a.a(l, paramInt, true);
+  }
+  
+  public void a(View paramView1, View paramView2)
+  {
+    if (this.a.a != null) {
+      this.a.a.onClick(paramView2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lxl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,104 +1,121 @@
-import android.content.Intent;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySearchTipsContainer.OnTipClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
-import java.util.Iterator;
+import android.graphics.Color;
+import android.os.Build.VERSION;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+import com.tencent.mobileqq.minigame.utils.DpUtil;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class wmy
-  implements ReadInJoySearchTipsContainer.OnTipClickListener
+  extends BaseAdapter
 {
-  public wmy(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  private List<wmz> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private Map<Integer, wna> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  public void a(String paramString)
+  public void a(int paramInt)
   {
-    SearchProtocol.WordItem localWordItem;
-    if (paramString != null)
+    int i = 0;
+    if (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      Iterator localIterator = this.a.b.iterator();
-      do
+      wmz localwmz = (wmz)this.jdField_a_of_type_JavaUtilList.get(i);
+      if (i == paramInt) {}
+      for (boolean bool = true;; bool = false)
       {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localWordItem = (SearchProtocol.WordItem)localIterator.next();
-      } while (!paramString.equals(localWordItem.word));
+        localwmz.jdField_a_of_type_Boolean = bool;
+        i += 1;
+        break;
+      }
     }
+    notifyDataSetChanged();
+  }
+  
+  public void a(List<wmz> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
+      return 0;
+    }
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    wmz localwmz = (wmz)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt)))
+    {
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131494751, paramViewGroup, false);
+      paramView.setLayoutParams(new ViewGroup.LayoutParams(-2, DpUtil.dip2px(paramViewGroup.getContext(), 50.0F)));
+      paramViewGroup = new wna();
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131312371));
+      paramViewGroup.b = paramView.findViewById(2131313333);
+      if ((localwmz != null) && (Build.VERSION.SDK_INT >= 4)) {
+        paramView.setContentDescription(localwmz.jdField_a_of_type_JavaLangString);
+      }
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView;
+      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramViewGroup);
+    }
+    label260:
+    label266:
     for (;;)
     {
-      if ((localWordItem != null) && (localWordItem.type == 2))
+      if ((localwmz != null) && (paramViewGroup != null) && (paramView != null))
       {
-        paramString = new Intent(this.a, QQBrowserActivity.class);
-        paramString.putExtra("hide_operation_bar", true);
-        paramString.putExtra("url", localWordItem.jumpUrl);
-        paramString.putExtra("articalChannelId", 14);
-        this.a.startActivity(paramString);
-        if (localWordItem != null)
-        {
-          paramString = "";
-          if (this.a.f != ClassificationSearchActivity.jdField_a_of_type_Int) {
-            break label333;
-          }
-          paramString = "kan";
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localwmz.jdField_a_of_type_JavaLangString);
+        TextView localTextView = paramViewGroup.jdField_a_of_type_AndroidWidgetTextView;
+        if (!localwmz.jdField_a_of_type_Boolean) {
+          break label251;
+        }
+        paramInt = Color.parseColor("#ffff5b84");
+        label185:
+        localTextView.setTextColor(paramInt);
+        paramViewGroup = paramViewGroup.b;
+        if (!localwmz.jdField_a_of_type_Boolean) {
+          break label260;
         }
       }
-      for (;;)
+      for (paramInt = 0;; paramInt = 8)
       {
-        if (localWordItem.type != 2) {
-          break label352;
+        paramViewGroup.setVisibility(paramInt);
+        paramView.setSelected(localwmz.jdField_a_of_type_Boolean);
+        return paramView;
+        paramViewGroup = (wna)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+        if (paramViewGroup == null) {
+          break label266;
         }
-        PublicAccountReportUtils.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006818", "0X8006818", 0, 0, localWordItem.word, localWordItem.jumpUrl, paramString, "");
-        return;
-        if (this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int)
-        {
-          this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramString);
-          if (!TextUtils.isEmpty(paramString.trim()))
-          {
-            this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-            ClassificationSearchActivity.a(this.a, paramString);
-          }
-        }
-        for (;;)
-        {
-          if ((this.a.f == ClassificationSearchActivity.d) || (TextUtils.isEmpty(paramString.trim()))) {
-            break label331;
-          }
-          this.a.a(paramString);
-          break;
-          if (this.a.f == ClassificationSearchActivity.d)
-          {
-            this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramString);
-            this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramString.length());
-            ClassificationSearchActivity.a(this.a, paramString);
-          }
-          else
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramString, false);
-          }
-        }
-        label331:
+        paramView = paramViewGroup.jdField_a_of_type_AndroidViewView;
         break;
-        label333:
-        if (this.a.f == ClassificationSearchActivity.d) {
-          paramString = "quan";
-        }
+        label251:
+        paramInt = Color.parseColor("#ff878b99");
+        break label185;
       }
-      label352:
-      PublicAccountReportUtils.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8006818", "0X8006818", 0, 0, localWordItem.word, "0", paramString, "");
-      return;
-      localWordItem = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wmy
  * JD-Core Version:    0.7.0.1
  */

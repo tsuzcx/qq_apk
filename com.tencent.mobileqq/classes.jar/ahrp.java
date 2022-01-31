@@ -1,201 +1,62 @@
-import android.content.Context;
+import android.app.Dialog;
+import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.view.ShareActionSheet;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItemViewHolder;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.16.1;
 
 public class ahrp
-  extends BaseAdapter
+  extends Handler
 {
-  private int jdField_a_of_type_Int;
-  private ahrq jdField_a_of_type_Ahrq;
-  private Resources jdField_a_of_type_AndroidContentResResources;
-  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private List jdField_a_of_type_JavaUtilList;
-  
-  public ahrp(Context paramContext, List paramList)
+  public ahrp(SelectMemberActivity paramSelectMemberActivity, Looper paramLooper)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
+    super(paramLooper);
   }
   
-  public ShareActionSheetBuilder.ActionSheetItem a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem;
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (paramInt < 0))
+    switch (paramMessage.what)
     {
-      localActionSheetItem = null;
-      return localActionSheetItem;
     }
-    int j = -1;
-    int i = 0;
-    for (;;)
+    do
     {
-      if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
-        break label89;
-      }
-      localActionSheetItem = (ShareActionSheetBuilder.ActionSheetItem)this.jdField_a_of_type_JavaUtilList.get(i);
-      int k = j;
-      if (localActionSheetItem != null)
+      do
       {
-        k = j;
-        if (localActionSheetItem.d == 0) {
-          k = j + 1;
-        }
+        return;
+      } while ((this.a.b == null) || (!this.a.b.isShowing()));
+      this.a.b.dismiss();
+      paramMessage = new Intent();
+      paramMessage.putExtra("select_member_add_request_ok", true);
+      this.a.setResult(-1, paramMessage);
+      if (!TextUtils.isEmpty(this.a.g))
+      {
+        paramMessage = this.a.g;
+        bbmy.a(this.a, 2, paramMessage, 1500).b(this.a.getTitleBarHeight());
+        postDelayed(new SelectMemberActivity.16.1(this), 1500L);
+        return;
       }
-      if (k == paramInt) {
+      if (this.a.c) {}
+      for (int i = 2131628037;; i = 2131628036)
+      {
+        paramMessage = this.a.getResources().getString(i);
         break;
       }
-      i += 1;
-      j = k;
+    } while ((this.a.b == null) || (!this.a.b.isShowing()));
+    this.a.b.dismiss();
+    String str = (String)paramMessage.obj;
+    paramMessage = str;
+    if (str == null) {
+      paramMessage = this.a.getString(2131628035);
     }
-    label89:
-    return null;
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
-      return 0;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    int i = 0;
-    if (localIterator.hasNext())
-    {
-      ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = (ShareActionSheetBuilder.ActionSheetItem)localIterator.next();
-      if ((localActionSheetItem == null) || (localActionSheetItem.d != 0)) {
-        break label60;
-      }
-      i += 1;
-    }
-    label60:
-    for (;;)
-    {
-      break;
-      return i;
-    }
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    int i = 0;
-    if (this.jdField_a_of_type_AndroidContentResResources == null) {
-      this.jdField_a_of_type_AndroidContentResResources = paramViewGroup.getContext().getResources();
-    }
-    if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_Int = ((int)this.jdField_a_of_type_AndroidContentResResources.getDimension(2131559386));
-    }
-    if (this.jdField_a_of_type_Ahrq == null) {
-      this.jdField_a_of_type_Ahrq = new ahrq(paramViewGroup.getContext());
-    }
-    if (paramView == null)
-    {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130968801, paramViewGroup, false);
-      paramViewGroup = new ShareActionSheetBuilder.ActionSheetItemViewHolder();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363835));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363836));
-      paramView.setTag(paramViewGroup);
-    }
-    for (;;)
-    {
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem = a(paramInt);
-      if (paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem != null) {
-        break;
-      }
-      QLog.e("ShareActionSheet", 2, "ShareActionSheet.ActionSheetItemAdapter.getView() getItem(" + paramInt + ") == null !!!");
-      return paramView;
-      paramViewGroup = (ShareActionSheetBuilder.ActionSheetItemViewHolder)paramView.getTag();
-    }
-    paramView.setId(paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.jdField_a_of_type_Int);
-    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(ShareActionSheet.a(paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.jdField_a_of_type_JavaLangString, 6));
-    paramInt = -8947849;
-    Object localObject = paramViewGroup.jdField_a_of_type_AndroidWidgetTextView;
-    if (paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.jdField_b_of_type_Boolean)
-    {
-      ((TextView)localObject).setTextColor(paramInt);
-      if (!paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.jdField_a_of_type_Boolean) {
-        break label454;
-      }
-      if (paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        break label397;
-      }
-      localObject = paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-      label262:
-      paramInt = ((Drawable)localObject).getIntrinsicWidth();
-      int j = ((Drawable)localObject).getIntrinsicHeight();
-      if (this.jdField_a_of_type_Int <= paramInt) {
-        break label416;
-      }
-      paramInt = (int)((this.jdField_a_of_type_Int - paramInt) / 2.0F);
-      label294:
-      if (this.jdField_a_of_type_Int > j) {
-        i = (int)((this.jdField_a_of_type_Int - j) / 2.0F);
-      }
-      localObject = this.jdField_a_of_type_Ahrq.a((Drawable)localObject, paramInt, i);
-      if (!paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.jdField_b_of_type_Boolean) {
-        break label421;
-      }
-      Drawable localDrawable = ahrq.a(this.jdField_a_of_type_Ahrq, (Drawable)localObject);
-      localObject = this.jdField_a_of_type_Ahrq.a((Drawable)localObject, localDrawable);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-    }
-    for (;;)
-    {
-      if (Build.VERSION.SDK_INT < 16) {
-        break label444;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackground(null);
-      return paramView;
-      paramInt = 2138535799;
-      break;
-      label397:
-      localObject = this.jdField_a_of_type_AndroidContentResResources.getDrawable(paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.jdField_b_of_type_Int);
-      break label262;
-      label416:
-      paramInt = 0;
-      break label294;
-      label421:
-      localObject = ahrq.b(this.jdField_a_of_type_Ahrq, (Drawable)localObject);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-    }
-    label444:
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
-    return paramView;
-    label454:
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130837526);
-    if (paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-    {
-      if (Build.VERSION.SDK_INT >= 16)
-      {
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackground(paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-        return paramView;
-      }
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      return paramView;
-    }
-    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(paramViewGroup.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder$ActionSheetItem.jdField_b_of_type_Int);
-    return paramView;
+    bbmy.a(this.a, 1, paramMessage, 1500).b(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahrp
  * JD-Core Version:    0.7.0.1
  */

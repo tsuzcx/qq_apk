@@ -1,6 +1,6 @@
 package cooperation.qzone.report.lp;
 
-import cooperation.qzone.QUA;
+import bfpk;
 import cooperation.qzone.util.QZLog;
 import java.util.HashMap;
 import java.util.Map;
@@ -22,11 +22,13 @@ public class LpReportInfo_dc02727
   private String extend;
   private long fileSize;
   private int flow;
+  private int ipType;
   private int networkType;
   private String qua;
   private String refer;
   private int reportType;
   private int retCode;
+  private int retCode2;
   private String serverIp;
   private String terminal;
   private String terminalVersion;
@@ -35,7 +37,7 @@ public class LpReportInfo_dc02727
   public LpReportInfo_dc02727(JSONObject paramJSONObject)
   {
     init(paramJSONObject);
-    this.qua = QUA.a();
+    this.qua = bfpk.a();
   }
   
   private void init(JSONObject paramJSONObject)
@@ -61,6 +63,8 @@ public class LpReportInfo_dc02727
       this.dataElapse = paramJSONObject.optLong("dataDelay");
       this.batchCtrlElapse = paramJSONObject.optLong("batchCtrlDelayPer");
       this.reportType = paramJSONObject.optInt("reportType");
+      this.ipType = paramJSONObject.optInt("ipType");
+      this.retCode2 = paramJSONObject.optInt("errcode");
     }
   }
   
@@ -96,7 +100,7 @@ public class LpReportInfo_dc02727
     return "dc02727: flowId=" + this.flow + ", file size=" + this.fileSize + ", cost time=" + this.elapse;
   }
   
-  public Map toMap()
+  public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("size", String.valueOf(this.fileSize));
@@ -119,6 +123,8 @@ public class LpReportInfo_dc02727
     localHashMap.put("batchCtrlDelayPer", String.valueOf(this.batchCtrlElapse));
     localHashMap.put("reportType", String.valueOf(this.reportType));
     localHashMap.put("qua", this.qua);
+    localHashMap.put("ipType", String.valueOf(this.ipType));
+    localHashMap.put("errcode2", String.valueOf(this.retCode2));
     return localHashMap;
   }
 }

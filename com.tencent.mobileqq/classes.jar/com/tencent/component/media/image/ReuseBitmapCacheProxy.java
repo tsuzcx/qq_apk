@@ -1,17 +1,17 @@
 package com.tencent.component.media.image;
 
 import android.graphics.Bitmap;
-import pmd;
 
 public final class ReuseBitmapCacheProxy
   extends BitmapPool
 {
-  ReuseBitmapCache a;
+  private static final String TAG = "NewBitmapPool";
+  ReuseBitmapCache advanceBitmapPool;
   
   public ReuseBitmapCacheProxy(PoolParams paramPoolParams, int paramInt)
   {
-    super(new pmd());
-    this.a = ReuseBitmapCache.getInstance(paramInt);
+    super(new ReuseBitmapCacheProxy.1());
+    this.advanceBitmapPool = ReuseBitmapCache.getInstance(paramInt);
   }
   
   /* Error */
@@ -21,22 +21,22 @@ public final class ReuseBitmapCacheProxy
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 24	com/tencent/component/media/image/ReuseBitmapCacheProxy:a	Lcom/tencent/component/media/image/ReuseBitmapCache;
+    //   3: getfield 28	com/tencent/component/media/image/ReuseBitmapCacheProxy:advanceBitmapPool	Lcom/tencent/component/media/image/ReuseBitmapCache;
     //   6: iload_1
-    //   7: invokevirtual 30	com/tencent/component/media/image/ReuseBitmapCache:getBitmapFromPool	(I)Landroid/graphics/Bitmap;
+    //   7: invokevirtual 34	com/tencent/component/media/image/ReuseBitmapCache:getBitmapFromPool	(I)Landroid/graphics/Bitmap;
     //   10: astore_3
     //   11: aload_3
     //   12: ifnonnull +24 -> 36
     //   15: aload_0
     //   16: iload_1
-    //   17: invokevirtual 34	com/tencent/component/media/image/ReuseBitmapCacheProxy:miss	(I)V
+    //   17: invokevirtual 38	com/tencent/component/media/image/ReuseBitmapCacheProxy:miss	(I)V
     //   20: aload_3
     //   21: astore_2
     //   22: aload_3
     //   23: ifnonnull +9 -> 32
     //   26: aload_0
     //   27: iload_1
-    //   28: invokevirtual 37	com/tencent/component/media/image/ReuseBitmapCacheProxy:allocData	(I)Landroid/graphics/Bitmap;
+    //   28: invokevirtual 41	com/tencent/component/media/image/ReuseBitmapCacheProxy:allocData	(I)Landroid/graphics/Bitmap;
     //   31: astore_2
     //   32: aload_0
     //   33: monitorexit
@@ -45,7 +45,7 @@ public final class ReuseBitmapCacheProxy
     //   36: aload_0
     //   37: iload_1
     //   38: aload_3
-    //   39: invokevirtual 41	com/tencent/component/media/image/ReuseBitmapCacheProxy:hit	(ILandroid/graphics/Bitmap;)V
+    //   39: invokevirtual 45	com/tencent/component/media/image/ReuseBitmapCacheProxy:hit	(ILandroid/graphics/Bitmap;)V
     //   42: goto -22 -> 20
     //   45: astore_2
     //   46: aload_0
@@ -71,7 +71,7 @@ public final class ReuseBitmapCacheProxy
   {
     try
     {
-      if (!this.a.addBitMapIntoPool(paramBitmap)) {
+      if (!this.advanceBitmapPool.addBitMapIntoPool(paramBitmap)) {
         releaseData(paramBitmap);
       }
       return;
@@ -80,6 +80,20 @@ public final class ReuseBitmapCacheProxy
     {
       paramBitmap = finally;
       throw paramBitmap;
+    }
+  }
+  
+  public void resizeCache(float paramFloat)
+  {
+    if (this.advanceBitmapPool != null) {
+      this.advanceBitmapPool.resiezeCache(paramFloat);
+    }
+  }
+  
+  public void trimToSize(float paramFloat)
+  {
+    if (this.advanceBitmapPool != null) {
+      this.advanceBitmapPool.trimToSize(paramFloat);
     }
   }
 }

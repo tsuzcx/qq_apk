@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class im_msg_body$NotOnlineImage
-  extends MessageMicro
+  extends MessageMicro<NotOnlineImage>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field biz_type = PBField.initUInt32(0);

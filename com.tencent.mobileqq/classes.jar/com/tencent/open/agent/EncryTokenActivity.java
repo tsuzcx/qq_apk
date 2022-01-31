@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import bcjl;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.open.settings.OpensdkPreference;
 import org.json.JSONObject;
 
 public class EncryTokenActivity
@@ -34,7 +34,7 @@ public class EncryTokenActivity
     }
     if ("action_check_token".equals(paramBundle))
     {
-      localObject = OpensdkPreference.a(this, "openid_encrytoken");
+      localObject = bcjl.a(this, "openid_encrytoken");
       try
       {
         paramBundle = super.getIntent().getStringExtra("openid") + "";

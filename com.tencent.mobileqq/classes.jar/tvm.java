@@ -1,85 +1,59 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RewardNoticeActivity;
-import com.tencent.mobileqq.app.FriendsManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.vas.VasExtensionObserver;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class tvm
-  extends VasExtensionObserver
+class tvm
+  implements DialogInterface.OnClickListener
 {
-  public tvm(RewardNoticeActivity paramRewardNoticeActivity) {}
+  tvm(tvd paramtvd, VideoViewVideoHolder paramVideoViewVideoHolder, StoryVideoItem paramStoryVideoItem, ujk paramujk) {}
   
-  protected void d(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramObject = (Bundle)paramObject;
-    long l = paramObject.getLong("pendantId");
-    String str = paramObject.getString("uin");
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.BabyQ", 2, "handlePendantAuth isSuccess:" + paramBoolean + " pendantId:" + l + " uin:" + str);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
     }
-    if ((l == -1L) || (str == null)) {
+    switch (paramInt)
+    {
+    case 0: 
+    default: 
       return;
     }
-    if (paramBoolean)
+    this.jdField_a_of_type_Tvd.a("");
+    if (StoryVideoItem.isFakeVid(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid))
     {
-      FriendsManager localFriendsManager = (FriendsManager)this.a.app.getManager(50);
-      ExtensionInfo localExtensionInfo = localFriendsManager.a(str);
-      paramObject = localExtensionInfo;
-      if (localExtensionInfo == null)
-      {
-        paramObject = new ExtensionInfo();
-        paramObject.uin = str;
+      ((sis)sqg.a(3)).c(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+      paramDialogInterface = new spl(new ErrorMessage(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, false);
+      paramDialogInterface.b = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
+      paramDialogInterface.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoIndex;
+      if (paramDialogInterface.a == 0L) {
+        paramDialogInterface.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime;
       }
-      paramObject.pendantId = l;
-      paramObject.timestamp = System.currentTimeMillis();
-      localFriendsManager.a(paramObject);
-      if (!TextUtils.isEmpty(this.a.f)) {
-        QQToast.a(this.a.app.getApp(), 2, this.a.f, 0).a();
-      }
-      this.a.finish();
-      return;
-    }
-    int i = paramObject.getInt("result");
-    if (NetworkUtil.d(this.a))
-    {
-      paramObject = "4";
-      switch (i)
-      {
-      default: 
-        label225:
-        i = -1;
-      }
+      sgi.a().dispatch(paramDialogInterface);
     }
     for (;;)
     {
-      if ((i != -1) && (QLog.isColorLevel())) {
-        QLog.e("Q.BabyQ", 2, "handlePendantAuth error:" + i + paramObject);
+      urp.a("play_video", "suc_del", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+      return;
+      if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mStoryType == 2)
+      {
+        ((vju)tfy.a().getManager(208)).a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, 0, false, new tvn(this));
       }
-      QQToast.a(this.a.app.getApp(), 1, "头像挂件使用失败", 0).a();
-      break;
-      paramObject = "3";
-      break label225;
-      i = 2131436930;
-      continue;
-      paramObject = "0";
-      i = 2131436931;
-      continue;
-      paramObject = "1";
-      i = 2131436932;
-      continue;
-      paramObject = "2";
-      i = -1;
+      else
+      {
+        this.jdField_a_of_type_Ujk.a(this.jdField_a_of_type_Tvd.a.b, 0, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+        this.jdField_a_of_type_Ujk.a(this.jdField_a_of_type_Tvd.a.b, 1, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+        new swr().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tvm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
-import com.tencent.widget.PopupMenuDialog.OnDismissListener;
+import com.tencent.device.datadef.DeviceInfo;
+import java.util.ArrayList;
 
 public class xrg
-  implements PopupMenuDialog.OnDismissListener
+  implements ajfe
 {
-  public xrg(RecentOptPopBar paramRecentOptPopBar) {}
+  protected void a(ArrayList<DeviceInfo> paramArrayList) {}
   
-  public void a()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a.g();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a((ArrayList)paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     xrg
  * JD-Core Version:    0.7.0.1
  */

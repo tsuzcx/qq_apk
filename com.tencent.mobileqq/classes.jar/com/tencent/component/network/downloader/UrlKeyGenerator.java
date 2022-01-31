@@ -2,15 +2,15 @@ package com.tencent.component.network.downloader;
 
 import android.text.TextUtils;
 import com.tencent.component.network.utils.NetworkUtils;
-import pod;
-import poe;
 
 public abstract class UrlKeyGenerator
 {
-  public static final UrlKeyGenerator a = new pod(null);
-  public static final UrlKeyGenerator b = new poe(null);
+  public static final UrlKeyGenerator GENERATOR_DESPITE_DOMAIN = new UrlKeyGenerator.GeneratorDespiteDomain(null);
+  public static final UrlKeyGenerator GENERATOR_DESPITE_HASH = new UrlKeyGenerator.GeneratorDespiteHash(null);
+  private static final String HTTPS_PREFIX = "https://";
+  private static final String HTTP_PREFIX = "http://";
   
-  private static boolean b(String paramString1, String paramString2)
+  private static boolean startsWithIgnoreCase(String paramString1, String paramString2)
   {
     if (paramString1 == paramString2) {
       return true;
@@ -21,16 +21,16 @@ public abstract class UrlKeyGenerator
     return paramString1.regionMatches(true, 0, paramString2, 0, paramString2.length());
   }
   
-  public final String a(String paramString)
+  public final String doGenerate(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
     while (!NetworkUtils.isNetworkUrl(paramString)) {
       return paramString;
     }
-    return b(paramString);
+    return generate(paramString);
   }
   
-  public abstract String b(String paramString);
+  public abstract String generate(String paramString);
 }
 
 

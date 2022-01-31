@@ -1,31 +1,54 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.recent.data.RecentItemNearbyLiveTipData;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
-import com.tencent.mobileqq.dating.MsgBoxProtocol.ReqNowStateObserver;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import java.util.HashMap;
 
 public class acff
-  extends MsgBoxProtocol.ReqNowStateObserver
+  implements DialogInterface.OnClickListener
 {
-  public acff(MsgBoxListActivity paramMsgBoxListActivity, List paramList) {}
+  public acff(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  public void a(boolean paramBoolean, List paramList, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
+    this.a.l();
+    if (bajr.b(this.a.app))
     {
-      paramBundle = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramBundle.hasNext())
-      {
-        RecentItemNearbyLiveTipData localRecentItemNearbyLiveTipData = (RecentItemNearbyLiveTipData)paramBundle.next();
-        this.jdField_a_of_type_ComTencentMobileqqDatingMsgBoxListActivity.a(localRecentItemNearbyLiveTipData, paramList);
+      if (this.a.jdField_a_of_type_Long != 0L) {
+        break label144;
       }
+      paramDialogInterface = (String)this.a.jdField_a_of_type_JavaUtilHashMap.get(this.a.d);
+      if (!TextUtils.isEmpty(paramDialogInterface)) {
+        this.a.a(this.a.d, paramDialogInterface, false);
+      }
+    }
+    else
+    {
+      if ((this.a.jdField_a_of_type_Long != 0L) && (this.a.jdField_a_of_type_Long != 160L)) {
+        break label222;
+      }
+    }
+    label144:
+    label222:
+    for (paramDialogInterface = "3";; paramDialogInterface = "4")
+    {
+      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, mpl.a(), paramDialogInterface, "0");
+      return;
+      this.a.a(this.a.d, false);
+      break;
+      if (((this.a.jdField_a_of_type_Long != 160L) && (this.a.jdField_a_of_type_Long != 1600L)) || (TextUtils.isEmpty(this.a.b))) {
+        break;
+      }
+      paramDialogInterface = atwy.a(this.a, atxe.n, this.a.jdField_a_of_type_Long);
+      this.a.a(paramDialogInterface, this.a.b, false);
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acff
  * JD-Core Version:    0.7.0.1
  */

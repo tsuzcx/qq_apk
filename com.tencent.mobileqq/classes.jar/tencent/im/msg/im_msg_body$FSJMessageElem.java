@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class im_msg_body$FSJMessageElem
-  extends MessageMicro
+  extends MessageMicro<FSJMessageElem>
 {
   public static final int ETypeHotChatFlashPic = 1;
   public static final int ETypeNormal = 0;

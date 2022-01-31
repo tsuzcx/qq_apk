@@ -1,20 +1,34 @@
-import com.tencent.biz.qqstory.playmode.child.VidListPlayMode;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.image.ApngDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class nqm
-  implements Runnable
+class nqm
+  implements URLDrawable.URLDrawableListener
 {
-  public nqm(VidListPlayMode paramVidListPlayMode, boolean paramBoolean) {}
+  nqm(nqi paramnqi) {}
   
-  public void run()
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildVidListPlayMode.e = false;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildVidListPlayMode.g();
-      return;
+    QLog.e("KandianAdPandent", 2, "urlDrawable is onLoadCanceled ");
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    QLog.e("KandianAdPandent", 2, "urlDrawable is fialed ");
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    QLog.e("KandianAdPandent", 2, "urlDrawable is onLoadProgressed ");
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    paramURLDrawable.setBounds(0, 0, paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight());
+    if ((nqi.a(this.a).getCurrDrawable() instanceof ApngDrawable)) {
+      ((ApngDrawable)nqi.a(this.a).getCurrDrawable()).setOnPlayRepeatListener(nqi.a(this.a));
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildVidListPlayMode.a.setCurrentItem(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildVidListPlayMode.b, false);
   }
 }
 

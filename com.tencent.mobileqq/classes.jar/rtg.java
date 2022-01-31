@@ -1,26 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
 
-public class rtg
-  implements Runnable
+class rtg
+  implements wiu
 {
-  public rtg(AutoRemarkActivity paramAutoRemarkActivity) {}
+  rtg(rsv paramrsv) {}
   
-  public void run()
+  public void a(Bundle paramBundle)
   {
-    if (TextUtils.isEmpty(this.a.a)) {}
-    while (((FriendsManager)this.a.app.getManager(50)).a(this.a.a) != null) {
-      return;
+    if (this.a.a != null) {
+      this.a.k();
     }
-    ((FriendListHandler)this.a.app.a(1)).b(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rtg
  * JD-Core Version:    0.7.0.1
  */

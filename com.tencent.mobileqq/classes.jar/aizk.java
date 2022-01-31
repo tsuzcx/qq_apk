@@ -1,52 +1,48 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.FaceScoreUtils;
-import com.tencent.mobileqq.nearby.NearbyCardManager;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
-import com.tencent.mobileqq.troop.activity.MediaPreviewInfo;
-import java.util.ArrayList;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.apollo.utils.ApolloGameInvitation.1;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class aizk
-  implements Runnable
+  implements bbsh
 {
-  public aizk(MediaPreviewActivity paramMediaPreviewActivity) {}
+  public aizk(ApolloGameInvitation.1 param1) {}
   
-  public void run()
+  public void a(BaseResp paramBaseResp)
   {
-    int i;
-    String str1;
-    if (this.a.app != null)
+    if (paramBaseResp == null) {}
+    do
     {
-      int j = ((NearbyCardManager)this.a.app.getManager(105)).b();
-      if ((this.a.b <= 0) || (((MediaPreviewInfo)this.a.a.get(0)).a != 2)) {
-        break label108;
+      do
+      {
+        return;
+      } while ((aizj.a(this.a.this$0) == null) || (!aizj.a(this.a.this$0).equals(paramBaseResp.transaction)));
+      QLog.i("ApolloGameInvitation", 1, "[onWXShareResp], resp.errCode:" + paramBaseResp.errCode);
+      if (paramBaseResp.errCode != 0) {
+        break;
       }
-      i = 1;
-      if (j != 0) {
-        break label113;
-      }
-      str1 = "1";
-      label69:
-      if (i == 0) {
-        break label119;
-      }
+    } while ((aizj.a(this.a.this$0) == null) || (aizj.a(this.a.this$0) == null) || ((AppInterface)aizj.a(this.a.this$0).get() == null));
+    bajr.a(null, "cmshow", "Apollo", "wechat_invite_sent", 0, 0, new String[] { Integer.toString(aizj.a(this.a.this$0).a) });
+    if (paramBaseResp.errCode == 0) {
+      aizj.a(this.a.this$0, 0, 2);
     }
-    label108:
-    label113:
-    label119:
-    for (String str2 = "2";; str2 = "1")
+    for (;;)
     {
-      FaceScoreUtils.a("clk_detail", "", new String[] { "", str1, "", str2 });
+      WXShareHelper.a().b(this);
       return;
-      i = 0;
-      break;
-      str1 = "2";
-      break label69;
+      if (paramBaseResp.errCode == -2) {
+        aizj.a(this.a.this$0, 2, 2);
+      } else {
+        aizj.a(this.a.this$0, 1, 2);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aizk
  * JD-Core Version:    0.7.0.1
  */

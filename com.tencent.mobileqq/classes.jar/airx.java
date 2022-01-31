@@ -1,17 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class airx
-  implements DialogInterface.OnClickListener
+class airx
+  implements aizh
 {
-  public airx(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment) {}
+  airx(airv paramairv, boolean paramBoolean, int paramInt, int[] paramArrayOfInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  {
+    airv.a(this.jdField_a_of_type_Airv, this.jdField_a_of_type_Boolean, paramQQAppInterface, paramString1, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, paramInt2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     airx
  * JD-Core Version:    0.7.0.1
  */

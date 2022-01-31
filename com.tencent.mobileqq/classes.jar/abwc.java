@@ -1,20 +1,25 @@
-import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 
 public class abwc
-  implements Runnable
+  extends ajmm
 {
-  public abwc(ClearEllipsisEditText paramClearEllipsisEditText, String paramString) {}
+  public abwc(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, Object paramObject) {}
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    ClearEllipsisEditText.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText, true);
-    ClearEllipsisEditText.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText, this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.getMeasuredWidth());
-    this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setText(ClearEllipsisEditText.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText, this.jdField_a_of_type_JavaLangString, ClearEllipsisEditText.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText)));
+    this.a.c();
+  }
+  
+  protected void b()
+  {
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abwc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package okio;
 
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class ForwardingTimeout
@@ -56,7 +55,6 @@ public class ForwardingTimeout
   }
   
   public void throwIfReached()
-    throws IOException
   {
     this.delegate.throwIfReached();
   }

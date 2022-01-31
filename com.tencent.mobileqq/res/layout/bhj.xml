@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qzone="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/ej" android:layout_width="0.0dip" android:layout_height="0.0dip" android:scaleType="centerCrop" android:layout_alignParentBottom="true" />
+    <com.qzone.widget.RoundRectRelativeLayout android:id="@id/el" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_alignParentBottom="true" android:alpha="0.0" qzone:allRadius="@dimen/ao0">
+        <FrameLayout android:id="@id/eg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.qzone.widget.AsyncImageView android:id="@id/ei" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <ProgressBar android:id="@id/ek" android:visibility="gone" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_centerInParent="true" />
+    </com.qzone.widget.RoundRectRelativeLayout>
+    <ImageView android:id="@id/eh" android:layout_width="@dimen/anz" android:layout_height="@dimen/anz" android:src="@drawable/fu2" android:scaleType="fitXY" android:layout_alignParentBottom="true" android:alpha="0.0" />
+</RelativeLayout>

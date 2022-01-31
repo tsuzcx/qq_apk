@@ -1,23 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
-public final class adiy
-  implements Parcelable.Creator
+class adiy
+  implements bbgb
 {
-  public ForwardFileInfo a(Parcel paramParcel)
-  {
-    return new ForwardFileInfo(paramParcel, null);
-  }
+  adiy(adiu paramadiu) {}
   
-  public ForwardFileInfo[] a(int paramInt)
+  public void a(View paramView)
   {
-    return new ForwardFileInfo[paramInt];
+    if (aqux.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) {
+      return;
+    }
+    aciy.n = true;
+    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adiy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
 class pfo
-  implements Runnable
+  implements View.OnTouchListener
 {
-  pfo(pfn parampfn, WebViewPluginEngine paramWebViewPluginEngine, String paramString) {}
+  pfo(pfl parampfl, LinearLayout paramLinearLayout) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(this.jdField_a_of_type_JavaLangString);
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
+    }
+    return false;
   }
 }
 

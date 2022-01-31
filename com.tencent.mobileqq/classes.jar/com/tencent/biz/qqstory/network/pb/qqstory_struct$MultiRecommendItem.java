@@ -9,11 +9,11 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class qqstory_struct$MultiRecommendItem
-  extends MessageMicro
+  extends MessageMicro<MultiRecommendItem>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField feed_id = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField feed_video_info_list = PBField.initRepeatMessage(qqstory_struct.FeedVideoInfo.class);
+  public final PBRepeatMessageField<qqstory_struct.FeedVideoInfo> feed_video_info_list = PBField.initRepeatMessage(qqstory_struct.FeedVideoInfo.class);
   public final PBStringField rcmd_wording = PBField.initString("");
   public qqstory_struct.UserInfo user = new qqstory_struct.UserInfo();
   
@@ -25,7 +25,7 @@ public final class qqstory_struct$MultiRecommendItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.MultiRecommendItem
  * JD-Core Version:    0.7.0.1
  */

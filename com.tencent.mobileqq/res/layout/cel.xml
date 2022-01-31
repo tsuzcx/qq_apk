@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:id="@id/m_e" android:layout_width="105.0dip" android:layout_height="wrap_content" android:text="@string/tza" />
+    <View android:background="#7fcccccc" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:id="@id/m_i" android:layout_width="100.0dip" android:layout_height="wrap_content" android:text="实际大T" />
+    <View android:background="#7fcccccc" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:id="@id/m_g" android:layout_width="100.0dip" android:layout_height="wrap_content" android:text="PV" />
+    <View android:background="#7fcccccc" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+    <TextView android:textColor="@color/nh" android:ellipsize="end" android:gravity="center" android:id="@id/m_j" android:layout_width="100.0dip" android:layout_height="wrap_content" android:text="UV" />
+    <View android:background="#7fcccccc" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+    <View android:background="#7fcccccc" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+</LinearLayout>

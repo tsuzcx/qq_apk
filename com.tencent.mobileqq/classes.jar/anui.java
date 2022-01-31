@@ -1,21 +1,10 @@
-import com.tencent.common.app.AppInterface;
-import dov.com.qq.im.capture.music.CaptureConfigUpdateObserver;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
-
-public class anui
-  implements Runnable
+public abstract interface anui
 {
-  public anui(QIMMusicConfigManager paramQIMMusicConfigManager) {}
-  
-  public void run()
-  {
-    this.a.a();
-    this.a.a().notifyObservers(CaptureConfigUpdateObserver.class, 1, true, null);
-  }
+  public abstract void a(String paramString, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anui
  * JD-Core Version:    0.7.0.1
  */

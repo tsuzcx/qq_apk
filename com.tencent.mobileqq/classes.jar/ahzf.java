@@ -1,16 +1,23 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.model.NetSearchTemplateBaseItem;
-import com.tencent.mobileqq.search.presenter.SearchTemplatePresenter;
+import java.lang.ref.WeakReference;
 
-public class ahzf
+class ahzf
   implements View.OnClickListener
 {
-  public ahzf(SearchTemplatePresenter paramSearchTemplatePresenter, NetSearchTemplateBaseItem paramNetSearchTemplateBaseItem) {}
+  private WeakReference<ahzb> a;
+  
+  public ahzf(ahzb paramahzb)
+  {
+    this.a = new WeakReference(paramahzb);
+  }
   
   public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateBaseItem.a(paramView);
+    ahzb localahzb = (ahzb)this.a.get();
+    if (localahzb != null) {
+      localahzb.onClick(paramView);
+    }
   }
 }
 

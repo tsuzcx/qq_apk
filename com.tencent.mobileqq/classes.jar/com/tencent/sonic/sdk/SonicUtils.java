@@ -136,7 +136,12 @@ public class SonicUtils
     return localStringBuilder.toString();
   }
   
-  static String buildHtml(String paramString1, final JSONObject paramJSONObject, String paramString2, int paramInt)
+  static String buildHtml(String paramString1, JSONObject paramJSONObject, String paramString2, int paramInt)
+  {
+    return buildHtml(paramString1, paramJSONObject, paramString2, paramInt, false);
+  }
+  
+  static String buildHtml(String paramString1, JSONObject paramJSONObject, String paramString2, int paramInt, boolean paramBoolean)
   {
     Object localObject = new File(SonicFileUtils.getSonicTemplatePath(paramString1));
     if (((File)localObject).exists())
@@ -144,18 +149,11 @@ public class SonicUtils
       localObject = SonicFileUtils.readFile((File)localObject);
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        paramJSONObject = buildHtml((String)localObject, paramJSONObject, paramInt);
-        if ((TextUtils.isEmpty(paramString2)) || (paramString2.equalsIgnoreCase(getSHA1(paramJSONObject)))) {
+        if (paramBoolean) {}
+        for (paramJSONObject = mergeLocalAndBuildHtml(paramString1, (String)localObject, paramJSONObject, paramInt); (TextUtils.isEmpty(paramString2)) || (paramString2.equalsIgnoreCase(getSHA1(paramJSONObject))); paramJSONObject = buildHtml((String)localObject, paramJSONObject, paramInt)) {
           return paramJSONObject;
         }
-        SonicEngine.getInstance().getRuntime().postTaskToThread(new Runnable()
-        {
-          public void run()
-          {
-            String str = SonicFileUtils.getSonicHtmlPath(this.val$sessionId) + ".tmp";
-            SonicFileUtils.writeFile(paramJSONObject, str);
-          }
-        }, 0L);
+        SonicEngine.getInstance().getRuntime().postTaskToThread(new SonicUtils.1(paramString1, paramJSONObject), 0L);
         log("SonicSdk_SonicUtils", 6, "buildHtml error: verify sha1 error.");
         return null;
       }
@@ -370,7 +368,7 @@ public class SonicUtils
       {
         l = Long.parseLong(paramMap) * 1000L;
         if (l != 0L) {
-          paramSessionData.expiredTime = (System.currentTimeMillis() + l);
+          paramSessionData.expiredTime = (l + System.currentTimeMillis());
         }
       }
       catch (Exception paramMap)
@@ -425,7 +423,7 @@ public class SonicUtils
         long l = Long.parseLong(str) * 1000L;
         if (l != 0L)
         {
-          paramResourceData.expiredTime = (System.currentTimeMillis() + l);
+          paramResourceData.expiredTime = (l + System.currentTimeMillis());
           return;
         }
       }
@@ -439,6 +437,56 @@ public class SonicUtils
   public static void log(String paramString1, int paramInt, String paramString2)
   {
     SonicEngine.getInstance().getRuntime().log(paramString1, paramInt, paramString2);
+  }
+  
+  static String mergeLocalAndBuildHtml(String paramString1, String paramString2, JSONObject paramJSONObject, int paramInt)
+  {
+    if ((TextUtils.isEmpty(paramString2)) || (paramJSONObject == null)) {
+      return null;
+    }
+    log("SonicSdk_SonicUtils", 6, "sessionId(" + paramString1 + "), mergeLocalAndBuildHtml");
+    localStringBuilder = new StringBuilder(paramString2.length() + paramInt);
+    paramString1 = SonicFileUtils.readFile(new File(SonicFileUtils.getSonicDataPath(paramString1)));
+    try
+    {
+      Object localObject;
+      if (!TextUtils.isEmpty(paramString1))
+      {
+        localObject = new JSONObject(paramString1);
+        paramString1 = (String)localObject;
+        if (((JSONObject)localObject).has("data")) {
+          paramString1 = ((JSONObject)localObject).optJSONObject("data");
+        }
+        if (paramString1 != null)
+        {
+          localObject = paramString1.keys();
+          while (((Iterator)localObject).hasNext())
+          {
+            String str = ((Iterator)localObject).next().toString();
+            if (!paramJSONObject.has(str)) {
+              paramJSONObject.put(str, paramString1.optString(str));
+            }
+          }
+        }
+      }
+      return localStringBuilder.toString();
+    }
+    catch (Throwable paramString1)
+    {
+      log("SonicSdk_SonicUtils", 6, "merge local data encounter error, " + paramString1.getMessage());
+      localStringBuilder.append(paramString2);
+      paramString1 = paramJSONObject.keys();
+      while (paramString1.hasNext())
+      {
+        paramString2 = paramString1.next().toString();
+        paramInt = localStringBuilder.indexOf(paramString2);
+        if (-1 != paramInt)
+        {
+          localObject = paramJSONObject.optString(paramString2);
+          localStringBuilder.replace(paramInt, paramString2.length() + paramInt, (String)localObject);
+        }
+      }
+    }
   }
   
   static boolean needRefreshPage(String paramString)
@@ -461,7 +509,7 @@ public class SonicUtils
         {
           paramString = (List)paramMap.get("Cache-Control".toLowerCase());
           if (!paramMap.containsKey("Cache-Control")) {
-            break label148;
+            break label147;
           }
           bool2 = bool1;
           if (paramString != null)
@@ -470,29 +518,28 @@ public class SonicUtils
             if (paramString.size() > 0)
             {
               paramString = ((String)paramString.get(0)).toLowerCase();
-              if ((!paramString.contains("no-cache")) && (!paramString.contains("no-store")))
-              {
-                bool2 = bool1;
-                if (!paramString.contains("must-revalidate")) {}
-              }
-              else
-              {
-                bool2 = false;
+              if ((!paramString.contains("no-cache")) && (!paramString.contains("no-store")) && (!paramString.contains("must-revalidate"))) {
+                break label164;
               }
             }
           }
         }
       }
     }
-    label148:
-    do
+    label147:
+    label164:
+    for (paramBoolean = false;; paramBoolean = bool1)
     {
-      return bool2;
-      bool1 = false;
-      break;
-      bool2 = bool1;
-    } while (!paramMap.containsKey("Pragma"));
-    return false;
+      bool2 = paramBoolean;
+      do
+      {
+        return bool2;
+        bool1 = false;
+        break;
+        bool2 = bool1;
+      } while (!paramMap.containsKey("Pragma"));
+      return false;
+    }
   }
   
   static boolean removeAllSessionCache()
@@ -501,6 +548,7 @@ public class SonicUtils
     if (localFile.exists())
     {
       SonicDataHelper.clear();
+      SonicChunkDataHelper.clear();
       return SonicFileUtils.deleteAllChildFiles(localFile);
     }
     return false;
@@ -515,6 +563,7 @@ public class SonicUtils
   static void removeSessionCache(String paramString)
   {
     SonicDataHelper.removeSessionData(paramString);
+    SonicChunkDataHelper.removeChunkData(paramString);
     SonicFileUtils.deleteSonicFiles(paramString);
   }
   

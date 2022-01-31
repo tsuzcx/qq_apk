@@ -1,5 +1,6 @@
 package cooperation.qzone.util;
 
+import bgfi;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -7,46 +8,46 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-public class MultiHashMap
-  extends HashMap
+public class MultiHashMap<K, V>
+  extends HashMap<K, HashSet<V>>
 {
-  public boolean add(Object paramObject1, Object paramObject2)
+  public boolean add(K paramK, V paramV)
   {
-    if (paramObject2 == null) {
+    if (paramV == null) {
       return false;
     }
-    HashSet localHashSet2 = (HashSet)get(paramObject1);
+    HashSet localHashSet2 = (HashSet)get(paramK);
     HashSet localHashSet1 = localHashSet2;
     if (localHashSet2 == null)
     {
       localHashSet1 = new HashSet();
-      put(paramObject1, localHashSet1);
+      put(paramK, localHashSet1);
     }
-    return localHashSet1.add(paramObject2);
+    return localHashSet1.add(paramV);
   }
   
-  public boolean contains(Object paramObject1, Object paramObject2)
+  public boolean contains(K paramK, V paramV)
   {
-    if (paramObject2 == null) {
+    if (paramV == null) {
       return false;
     }
-    paramObject1 = (HashSet)get(paramObject1);
-    if ((paramObject1 != null) && (paramObject1.contains(paramObject2))) {}
+    paramK = (HashSet)get(paramK);
+    if ((paramK != null) && (paramK.contains(paramV))) {}
     for (boolean bool = true;; bool = false) {
       return bool;
     }
   }
   
-  public final Collection get(Object paramObject, MultiHashMap.Matcher paramMatcher)
+  public final Collection<K> get(K paramK, bgfi<K> parambgfi)
   {
-    if (paramObject == null) {
+    if (paramK == null) {
       try
       {
         throw new NullPointerException("key == null");
       }
       finally {}
     }
-    if (paramMatcher == null) {
+    if (parambgfi == null) {
       throw new NullPointerException("keyMatcher == null");
     }
     Object localObject = keySet();
@@ -61,7 +62,7 @@ public class MultiHashMap
           break;
         }
         localObject = localIterator.next();
-        if (paramMatcher.a(paramObject, localObject)) {
+        if (parambgfi.a(paramK, localObject)) {
           localArrayList.add(localObject);
         }
       }
@@ -70,13 +71,13 @@ public class MultiHashMap
     return localObject;
   }
   
-  public int sizeOf(Object paramObject)
+  public int sizeOf(K paramK)
   {
-    paramObject = (Collection)get(paramObject);
-    if (paramObject == null) {
+    paramK = (Collection)get(paramK);
+    if (paramK == null) {
       return 0;
     }
-    return paramObject.size();
+    return paramK.size();
   }
 }
 

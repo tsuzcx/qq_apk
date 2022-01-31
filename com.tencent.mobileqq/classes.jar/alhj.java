@@ -1,34 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.open.agent.AgentActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ark.ArkEnvironmentManager.IDataReport;
+import com.tencent.ark.open.ArkAppReport;
 
-public class alhj
-  extends BroadcastReceiver
+final class alhj
+  implements ArkEnvironmentManager.IDataReport
 {
-  public alhj(AgentActivity paramAgentActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void report(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, String paramString3, String paramString4)
   {
-    if ((QLog.isColorLevel()) && (this.a.getAppInterface() != null)) {
-      QLog.d("AgentActivity", 2, "-->onReceive, intent.getAction(): " + paramIntent.getAction());
-    }
-    if (("action_login_sucess".equals(paramIntent.getAction())) && (AgentActivity.a(this.a) != null))
-    {
-      paramContext = paramIntent.getStringExtra("login_success_uin");
-      if (!TextUtils.isEmpty(paramContext)) {
-        AgentActivity.a(this.a).putExtra("login_success_uin", paramContext);
-      }
-      this.a.startActivityForResult(AgentActivity.a(this.a), 0);
-    }
-    this.a.unregisterReceiver(this);
+    ArkAppReport.platformEventReport(paramString1, paramString2, paramInt2, paramInt1, paramInt3, paramLong1, paramLong2, paramString3, paramString4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alhj
  * JD-Core Version:    0.7.0.1
  */

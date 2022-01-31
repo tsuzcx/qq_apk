@@ -1,25 +1,22 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager.MessageObserver;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.PoiMapActivity;
 
 public class mlz
-  implements KandianMergeManager.MessageObserver
 {
-  public mlz(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public View b;
+  public ImageView b;
+  public TextView b;
+  public View c;
+  public ImageView c;
+  public View d;
+  public ImageView d;
   
-  public void a(MessageRecord paramMessageRecord) {}
-  
-  public void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle)
-  {
-    this.a.a().runOnUiThread(new mmb(this));
-  }
-  
-  public void b(MessageRecord paramMessageRecord)
-  {
-    this.a.a().runOnUiThread(new mma(this));
-  }
+  public mlz(PoiMapActivity paramPoiMapActivity) {}
 }
 
 

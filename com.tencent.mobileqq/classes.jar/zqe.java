@@ -1,39 +1,19 @@
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import com.tencent.mfsdk.LeakInspector.LeakInspector.InspectUUID;
+import java.util.List;
 
-class zqe
-  implements Comparator
+public abstract interface zqe
 {
-  zqe(zqc paramzqc) {}
+  public abstract List<String> a(String paramString);
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
-  {
-    int j = paramPhoneContact1.sortWeight - paramPhoneContact2.sortWeight;
-    int i = j;
-    if (j == 0)
-    {
-      Object localObject2 = paramPhoneContact1.pinyinFirst;
-      String str = paramPhoneContact2.pinyinFirst;
-      Object localObject1 = localObject2;
-      if (((String)localObject2).endsWith("#")) {
-        localObject1 = "Za";
-      }
-      localObject2 = str;
-      if (str.endsWith("#")) {
-        localObject2 = "Za";
-      }
-      j = ((String)localObject1).compareTo((String)localObject2);
-      i = j;
-      if (j == 0) {
-        i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
-      }
-    }
-    return i;
-  }
+  public abstract void a(boolean paramBoolean, String paramString1, String paramString2);
+  
+  public abstract boolean a(LeakInspector.InspectUUID paramInspectUUID);
+  
+  public abstract boolean a(Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zqe
  * JD-Core Version:    0.7.0.1
  */

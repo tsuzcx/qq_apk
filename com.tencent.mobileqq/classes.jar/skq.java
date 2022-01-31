@@ -1,38 +1,26 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
-import com.tencent.mobileqq.utils.PackageUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
 
-class skq
-  implements Runnable
+public class skq
+  implements skf
 {
-  skq(skk paramskk) {}
+  public skq(StoryVideoUploadTask paramStoryVideoUploadTask, srv paramsrv, skb paramskb) {}
   
-  public void run()
+  public void a(ske paramske)
   {
-    UpgradeTIMWrapper localUpgradeTIMWrapper = UpgradeTIMWrapper.a(this.a.a.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, new Object[] { "UpgradeTIMWrapper MSG_TIM_UPGRADE_BAR_SHOW, tips on: ", Boolean.valueOf(localUpgradeTIMWrapper.a()) });
-    }
-    if (!localUpgradeTIMWrapper.a()) {
-      this.a.a.a(1134058, 0L, true);
-    }
-    do
+    paramske = this.jdField_a_of_type_Srv;
+    if (this.jdField_a_of_type_Skb.a == 0) {}
+    for (int i = 2;; i = 3)
     {
+      paramske.jdField_b_of_type_Int = i;
+      this.jdField_a_of_type_Srv.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Skb.jdField_b_of_type_JavaLangString;
+      this.jdField_a_of_type_Srv.c = this.jdField_a_of_type_Skb.c;
       return;
-      if (PackageUtil.a(this.a.a.a.getApp(), "com.tencent.tim"))
-      {
-        this.a.a.a(1134058, 0L, true);
-        return;
-      }
-    } while ((UpgradeTIMWrapper.b()) || (Conversation.a(this.a.a) != null));
-    this.a.a.a(new skr(this, localUpgradeTIMWrapper));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     skq
  * JD-Core Version:    0.7.0.1
  */

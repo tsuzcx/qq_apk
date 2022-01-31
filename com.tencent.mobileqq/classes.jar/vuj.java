@@ -1,34 +1,49 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.album.QzoneGetAlbumIntent.OnResultListener;
+import android.view.View;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
 
 public class vuj
-  implements QzoneGetAlbumIntent.OnResultListener
+  implements xev
 {
-  public vuj(PhotoListPanel paramPhotoListPanel, String paramString) {}
+  public vuj(ScannerActivity paramScannerActivity) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  public void a(int paramInt)
   {
-    if (paramInt == 0) {
-      if (((TextUtils.isEmpty(PhotoListPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel))) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) || (paramString1.equals(PhotoListPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel))))
-      {
-        PhotoListPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel, paramString1, paramString2, true);
-        QZoneHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramString1, paramString2);
-      }
-    }
-    while ((paramInt != 1) || (this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(PhotoListPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel)))) {
+    if (this.a.isFinishing()) {
       return;
     }
-    PhotoListPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel, "", "手机相册", true);
-    QZoneHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramString1, paramString2);
-    PhotoListPanel.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel);
+    this.a.a.d = false;
+    ScannerActivity.a(this.a).setVisibility(8);
+    bafb localbafb = babr.a(this.a, 230);
+    if (paramInt == 2) {
+      localbafb.setMessage(2131653069);
+    }
+    for (;;)
+    {
+      vuk localvuk = new vuk(this);
+      localbafb.setPositiveButton(2131629116, localvuk);
+      localbafb.setOnCancelListener(localvuk);
+      localbafb.show();
+      return;
+      localbafb.setMessage(2131653077);
+    }
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2)
+  {
+    if (this.a.isFinishing()) {
+      return;
+    }
+    this.a.a.d = false;
+    String str = "QR_CODE";
+    if (ScannerActivity.a(this.a) != null) {
+      str = ScannerActivity.a(this.a).a();
+    }
+    ScannerActivity.a(this.a, paramInt1, str, paramString, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     vuj
  * JD-Core Version:    0.7.0.1
  */

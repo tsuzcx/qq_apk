@@ -10,12 +10,12 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_struct$VideoReaderConf
-  extends MessageMicro
+  extends MessageMicro<VideoReaderConf>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field ban_type = PBField.initUInt32(0);
-  public final PBRepeatField user_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
-  public final PBRepeatField user_unionid_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<Long> user_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> user_unionid_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
   
   static
   {
@@ -25,7 +25,7 @@ public final class qqstory_struct$VideoReaderConf
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoReaderConf
  * JD-Core Version:    0.7.0.1
  */

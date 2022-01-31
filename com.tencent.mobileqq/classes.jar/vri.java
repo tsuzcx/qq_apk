@@ -1,21 +1,12 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.OnAdapterNotify;
+import android.support.v7.widget.RecyclerView.Adapter;
 
-public class vri
-  implements Runnable
+public abstract interface vri
 {
-  public vri(AIOGalleryAdapter paramAIOGalleryAdapter) {}
-  
-  public void run()
-  {
-    if (this.a.a != null) {
-      this.a.a.a(1);
-    }
-  }
+  public abstract void a(RecyclerView.Adapter paramAdapter);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vri
  * JD-Core Version:    0.7.0.1
  */

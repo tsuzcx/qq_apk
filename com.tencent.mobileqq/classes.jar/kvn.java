@@ -1,90 +1,155 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.Advertisement.data.AdvertisementItem;
-import com.tencent.biz.pubaccount.Advertisement.data.VideoDownloadItem;
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementRecentUserManager;
-import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
-import com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.RemoteException;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
 
-public class kvn
-  implements View.OnClickListener
+class kvn
+  implements ServiceConnection
 {
-  public kvn(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  kvn(kvl paramkvl) {}
   
-  public void onClick(View paramView)
+  /* Error */
+  public void onServiceConnected(ComponentName paramComponentName, android.os.IBinder paramIBinder)
   {
-    switch (paramView.getId())
+    // Byte code:
+    //   0: ldc 24
+    //   2: iconst_1
+    //   3: new 26	java/lang/StringBuilder
+    //   6: dup
+    //   7: invokespecial 27	java/lang/StringBuilder:<init>	()V
+    //   10: ldc 29
+    //   12: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15: aload_1
+    //   16: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   19: ldc 38
+    //   21: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   24: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   27: invokestatic 48	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   30: aload_0
+    //   31: getfield 12	kvn:a	Lkvl;
+    //   34: iconst_0
+    //   35: putfield 53	kvl:jdField_a_of_type_Boolean	Z
+    //   38: aload_0
+    //   39: getfield 12	kvn:a	Lkvl;
+    //   42: aload_2
+    //   43: invokestatic 58	lmf:a	(Landroid/os/IBinder;)Llme;
+    //   46: putfield 61	kvl:jdField_a_of_type_Lme	Llme;
+    //   49: aload_0
+    //   50: getfield 12	kvn:a	Lkvl;
+    //   53: getfield 61	kvl:jdField_a_of_type_Lme	Llme;
+    //   56: aload_0
+    //   57: getfield 12	kvn:a	Lkvl;
+    //   60: getfield 64	kvl:jdField_a_of_type_Lmc	Llmc;
+    //   63: ldc 66
+    //   65: invokeinterface 71 3 0
+    //   70: aload_0
+    //   71: getfield 12	kvn:a	Lkvl;
+    //   74: getfield 74	kvl:b	Z
+    //   77: ifeq +10 -> 87
+    //   80: aload_0
+    //   81: getfield 12	kvn:a	Lkvl;
+    //   84: invokevirtual 77	kvl:e	()V
+    //   87: aload_0
+    //   88: getfield 12	kvn:a	Lkvl;
+    //   91: getfield 80	kvl:jdField_a_of_type_ComTencentAvAppVideoAppInterface	Lcom/tencent/av/app/VideoAppInterface;
+    //   94: iconst_1
+    //   95: anewarray 4	java/lang/Object
+    //   98: dup
+    //   99: iconst_0
+    //   100: bipush 10
+    //   102: invokestatic 86	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   105: aastore
+    //   106: invokevirtual 91	com/tencent/av/app/VideoAppInterface:a	([Ljava/lang/Object;)V
+    //   109: aload_0
+    //   110: getfield 12	kvn:a	Lkvl;
+    //   113: getfield 61	kvl:jdField_a_of_type_Lme	Llme;
+    //   116: invokeinterface 95 1 0
+    //   121: new 97	kvo
+    //   124: dup
+    //   125: aload_0
+    //   126: invokespecial 100	kvo:<init>	(Lkvn;)V
+    //   129: iconst_0
+    //   130: invokeinterface 106 3 0
+    //   135: aload_0
+    //   136: getfield 12	kvn:a	Lkvl;
+    //   139: getfield 80	kvl:jdField_a_of_type_ComTencentAvAppVideoAppInterface	Lcom/tencent/av/app/VideoAppInterface;
+    //   142: ifnull +29 -> 171
+    //   145: aload_0
+    //   146: getfield 12	kvn:a	Lkvl;
+    //   149: getfield 80	kvl:jdField_a_of_type_ComTencentAvAppVideoAppInterface	Lcom/tencent/av/app/VideoAppInterface;
+    //   152: getfield 109	com/tencent/av/app/VideoAppInterface:a	Lcom/tencent/av/VideoController;
+    //   155: ifnull +16 -> 171
+    //   158: aload_0
+    //   159: getfield 12	kvn:a	Lkvl;
+    //   162: getfield 80	kvl:jdField_a_of_type_ComTencentAvAppVideoAppInterface	Lcom/tencent/av/app/VideoAppInterface;
+    //   165: invokevirtual 112	com/tencent/av/app/VideoAppInterface:a	()Lcom/tencent/av/VideoController;
+    //   168: invokevirtual 117	com/tencent/av/VideoController:I	()V
+    //   171: return
+    //   172: astore_1
+    //   173: ldc 24
+    //   175: new 26	java/lang/StringBuilder
+    //   178: dup
+    //   179: invokespecial 27	java/lang/StringBuilder:<init>	()V
+    //   182: ldc 119
+    //   184: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   187: aload_1
+    //   188: invokevirtual 122	android/os/RemoteException:getMessage	()Ljava/lang/String;
+    //   191: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   194: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   197: invokestatic 127	krx:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   200: goto -91 -> 109
+    //   203: astore_1
+    //   204: ldc 24
+    //   206: new 26	java/lang/StringBuilder
+    //   209: dup
+    //   210: invokespecial 27	java/lang/StringBuilder:<init>	()V
+    //   213: ldc 119
+    //   215: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   218: aload_1
+    //   219: invokevirtual 128	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   222: invokevirtual 33	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   225: invokevirtual 42	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   228: invokestatic 127	krx:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   231: goto -96 -> 135
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	234	0	this	kvn
+    //   0	234	1	paramComponentName	ComponentName
+    //   0	234	2	paramIBinder	android.os.IBinder
+    // Exception table:
+    //   from	to	target	type
+    //   49	87	172	android/os/RemoteException
+    //   87	109	172	android/os/RemoteException
+    //   109	135	203	java/lang/Exception
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceProxy", 2, "QQServiceForAV onServiceDisconnected");
+    }
+    try
     {
-    default: 
-    case 2131364833: 
-    case 2131365592: 
-    case 2131365595: 
-      do
+      if (this.a.jdField_a_of_type_Lme != null) {
+        this.a.jdField_a_of_type_Lme.a(this.a.jdField_a_of_type_Lmc);
+      }
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(11) });
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().deleteObservers();
+    }
+    catch (RemoteException paramComponentName)
+    {
+      for (;;)
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              PublicAccountAdvertisementActivity.a(this.a);
-              PublicAccountAdvertisementActivity.c(this.a);
-              PublicAccountAdvertisementActivity.b(this.a);
-              AdvertisementRecentUserManager.a().a(this.a.getAppInterface(), 4, PublicAccountAdvertisementActivity.a(this.a));
-              PublicAccountAdvertisementActivity.a(this.a).setVisibility(8);
-              this.a.finish();
-              return;
-            } while ((!PublicAccountAdvertisementActivity.c(this.a)) || (PublicAccountAdvertisementActivity.a(this.a) == null));
-            PublicAccountAdvertisementActivity.a(this.a).setCurrentPage(1);
-            PublicAccountAdvertisementActivity.b(this.a, 1);
-            return;
-            paramView = PublicAccountAdvertisementActivity.a(this.a).a;
-            if (paramView == null) {
-              break;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("PublicAccountAdvertisementActivity", 2, "videoDownloadItem jumpType = " + paramView.jdField_b_of_type_Int);
-            }
-            if (paramView.jdField_b_of_type_Int == 1)
-            {
-              PublicAccountAdvertisementActivity.d(this.a);
-              return;
-            }
-          } while (paramView.jdField_b_of_type_Int != 2);
-          if (QLog.isColorLevel()) {
-            QLog.d("PublicAccountAdvertisementActivity", 2, "videoDownloadItem jumpUrl = " + paramView.jdField_b_of_type_Int);
-          }
-        } while ((paramView.e == null) || (TextUtils.isEmpty(paramView.e)));
-        this.a.a(paramView.e);
-        ReportController.b(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X8008F74", "0X8008F74", 0, 0, PublicAccountAdvertisementActivity.a(this.a), "", "", PublicAccountAdvertisementActivity.a(this.a).a.jdField_b_of_type_JavaLangString);
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("PublicAccountAdvertisementActivity", 2, "videoDownloadItem is null");
-      return;
+        QLog.e("QQServiceProxy", 2, "QQServiceForAV onServiceDisconnected RemoteException", paramComponentName);
+      }
     }
-    ReportController.b(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X80090FB", "0X80090FB", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.jdField_b_of_type_JavaLangString);
-    paramView = new kvo(this);
-    if ((PublicAccountAdvertisementActivity.a(this.a) != null) && (PublicAccountAdvertisementActivity.a(this.a).isShowing())) {
-      PublicAccountAdvertisementActivity.a(this.a).dismiss();
-    }
-    PublicAccountAdvertisementActivity.a(this.a, ActionSheet.d(this.a));
-    PublicAccountAdvertisementActivity.a(this.a).b(2131439226);
-    PublicAccountAdvertisementActivity.a(this.a).c(2131433029);
-    PublicAccountAdvertisementActivity.a(this.a).setOnDismissListener(paramView);
-    PublicAccountAdvertisementActivity.a(this.a).a(new kvp(this));
-    PublicAccountAdvertisementActivity.a(this.a).a(new kvq(this));
-    PublicAccountAdvertisementActivity.a(this.a).show();
+    this.a.jdField_a_of_type_Lme = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     kvn
  * JD-Core Version:    0.7.0.1
  */

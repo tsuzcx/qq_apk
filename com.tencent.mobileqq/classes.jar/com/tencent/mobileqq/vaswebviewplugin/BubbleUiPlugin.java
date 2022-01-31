@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
+import anad;
 import android.content.Intent;
 import android.os.Handler;
+import anfc;
+import bbac;
 import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -13,19 +13,19 @@ public class BubbleUiPlugin
   extends VasWebviewUiPlugin
 {
   private static final String TAG = "BubbleUiPlugin";
-  Client.onRemoteRespObserver mOnRemoteResp = new BubbleUiPlugin.2(this);
+  anad mOnRemoteResp = new BubbleUiPlugin.2(this);
   
   void OnActivityDestroy()
   {
     super.OnActivityDestroy();
-    WebIPCOperator.a().b(this.mOnRemoteResp);
+    anfc.a().b(this.mOnRemoteResp);
   }
   
   void OnActivityResume()
   {
     super.OnActivityResume();
-    WebIPCOperator.a().a(this.mOnRemoteResp);
-    if (WebIPCOperator.a().a())
+    anfc.a().a(this.mOnRemoteResp);
+    if (anfc.a().a())
     {
       reportBubbleSetting();
       if (QLog.isColorLevel()) {
@@ -85,7 +85,7 @@ public class BubbleUiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.BubbleUiPlugin
  * JD-Core Version:    0.7.0.1
  */

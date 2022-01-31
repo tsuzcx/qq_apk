@@ -38,46 +38,46 @@ public final class Util
   }
   
   public static void closeAll(Closeable paramCloseable1, Closeable paramCloseable2)
-    throws IOException
   {
     Object localObject = null;
-    try
+    for (;;)
     {
-      paramCloseable1.close();
-      paramCloseable1 = localObject;
-    }
-    catch (Throwable paramCloseable1)
-    {
-      label10:
-      label18:
-      break label10;
-    }
-    try
-    {
-      paramCloseable2.close();
-      paramCloseable2 = paramCloseable1;
-    }
-    catch (Throwable localThrowable)
-    {
-      paramCloseable2 = paramCloseable1;
-      if (paramCloseable1 != null) {
-        break label18;
+      try
+      {
+        paramCloseable1.close();
+        paramCloseable1 = localObject;
       }
-      paramCloseable2 = localThrowable;
-      break label18;
-      if (!(paramCloseable2 instanceof IOException)) {
-        break label51;
+      catch (Throwable paramCloseable1)
+      {
+        continue;
       }
-      throw ((IOException)paramCloseable2);
-      if (!(paramCloseable2 instanceof RuntimeException)) {
-        break label63;
+      try
+      {
+        paramCloseable2.close();
+        paramCloseable2 = paramCloseable1;
       }
-      throw ((RuntimeException)paramCloseable2);
-      if (!(paramCloseable2 instanceof Error)) {
-        break label75;
+      catch (Throwable localThrowable)
+      {
+        paramCloseable2 = paramCloseable1;
+        if (paramCloseable1 != null) {
+          continue;
+        }
+        paramCloseable2 = localThrowable;
+        continue;
+        if (!(paramCloseable2 instanceof IOException)) {
+          continue;
+        }
+        throw ((IOException)paramCloseable2);
+        if (!(paramCloseable2 instanceof RuntimeException)) {
+          continue;
+        }
+        throw ((RuntimeException)paramCloseable2);
+        if (!(paramCloseable2 instanceof Error)) {
+          continue;
+        }
+        throw ((Error)paramCloseable2);
+        throw new AssertionError(paramCloseable2);
       }
-      throw ((Error)paramCloseable2);
-      throw new AssertionError(paramCloseable2);
     }
     if (paramCloseable2 == null) {
       return;
@@ -277,7 +277,6 @@ public final class Util
   }
   
   public static boolean skipAll(Source paramSource, int paramInt, TimeUnit paramTimeUnit)
-    throws IOException
   {
     long l2 = System.nanoTime();
     long l1;
@@ -310,9 +309,9 @@ public final class Util
           for (;;)
           {
             return true;
-            paramSource.timeout().deadlineNanoTime(l2 + l1);
+            paramSource.timeout().deadlineNanoTime(l1 + l2);
           }
-          paramSource.timeout().deadlineNanoTime(l2 + l1);
+          paramSource.timeout().deadlineNanoTime(l1 + l2);
         }
       }
       finally
@@ -327,27 +326,19 @@ public final class Util
     {
       throw paramTimeUnit;
       label188:
-      paramSource.timeout().deadlineNanoTime(l2 + l1);
+      paramSource.timeout().deadlineNanoTime(l1 + l2);
     }
   }
   
-  public static ThreadFactory threadFactory(String paramString, final boolean paramBoolean)
+  public static ThreadFactory threadFactory(String paramString, boolean paramBoolean)
   {
-    new ThreadFactory()
-    {
-      public Thread newThread(Runnable paramAnonymousRunnable)
-      {
-        paramAnonymousRunnable = new Thread(paramAnonymousRunnable, this.val$name);
-        paramAnonymousRunnable.setDaemon(paramBoolean);
-        return paramAnonymousRunnable;
-      }
-    };
+    return new Util.1(paramString, paramBoolean);
   }
   
   public static String toHumanReadableAscii(String paramString)
   {
-    int i = 0;
     int m = paramString.length();
+    int i = 0;
     int j;
     for (;;)
     {
@@ -370,7 +361,7 @@ public final class Util
       for (j = k;; j = 63)
       {
         ((Buffer)localObject).writeUtf8CodePoint(j);
-        i += Character.charCount(k);
+        i = Character.charCount(k) + i;
         break;
       }
     }

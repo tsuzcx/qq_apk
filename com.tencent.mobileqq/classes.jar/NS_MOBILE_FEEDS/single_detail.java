@@ -10,13 +10,13 @@ import java.util.Map;
 public final class single_detail
   extends JceStruct
 {
-  static ArrayList cache_recomfeeds;
-  static Map cache_singledetail = new HashMap();
+  static ArrayList<Map<Integer, byte[]>> cache_recomfeeds;
+  static Map<Integer, byte[]> cache_singledetail = new HashMap();
   public String feed_attach_info = "";
   public String feed_info = "";
   public String feedskey = "";
-  public ArrayList recomfeeds;
-  public Map singledetail;
+  public ArrayList<Map<Integer, byte[]>> recomfeeds;
+  public Map<Integer, byte[]> singledetail;
   public long status;
   public int time;
   public long uContainerSubType;
@@ -36,7 +36,7 @@ public final class single_detail
   
   public single_detail() {}
   
-  public single_detail(Map paramMap, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt, ArrayList paramArrayList, long paramLong2)
+  public single_detail(Map<Integer, byte[]> paramMap, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt, ArrayList<Map<Integer, byte[]>> paramArrayList, long paramLong2)
   {
     this.singledetail = paramMap;
     this.status = paramLong1;
@@ -84,7 +84,7 @@ public final class single_detail
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.single_detail
  * JD-Core Version:    0.7.0.1
  */

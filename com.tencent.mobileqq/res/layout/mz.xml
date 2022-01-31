@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:padding="1.0dip" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/fq6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/fq_" android:background="#33000000" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" android:layout_centerInParent="true" />
+    <RelativeLayout android:id="@id/fq8" android:visibility="gone" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
+        <com.tencent.mobileqq.widget.NumberCheckBox android:id="@id/fq9" android:clickable="false" android:layout_margin="4.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_centerInParent="true" style="@style/hy" />
+    </RelativeLayout>
+    <ImageView android:id="@id/fqa" android:padding="4.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qq_pic_img_checkbox_deselect2" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</RelativeLayout>

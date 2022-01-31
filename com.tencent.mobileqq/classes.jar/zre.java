@@ -1,43 +1,15 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.PushBroadcastReceiver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-
-public class zre
-  implements Runnable
+class zre
 {
-  public zre(PushBroadcastReceiver paramPushBroadcastReceiver, Intent paramIntent, QQAppInterface paramQQAppInterface) {}
+  private long jdField_a_of_type_Long = 9223372036854775807L;
+  private long b = 9223372036854775807L;
+  private long c = 9223372036854775807L;
+  private long d = 9223372036854775807L;
   
-  public void run()
-  {
-    String str = this.jdField_a_of_type_AndroidContentIntent.getStringExtra("classname");
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (str != null) {}
-    try
-    {
-      localObject1 = Class.forName(str);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(BaseApplication.getContext(), (Class)localObject1);
-      return;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      for (;;)
-      {
-        localObject1 = localObject2;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("processIntent", 2, localClassNotFoundException.getMessage());
-          localObject1 = localObject2;
-        }
-      }
-    }
-  }
+  private zre(zrc paramzrc) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zre
  * JD-Core Version:    0.7.0.1
  */

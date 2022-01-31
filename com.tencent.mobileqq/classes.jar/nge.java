@@ -1,15 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-
-public final class nge
-  implements View.OnClickListener
+public class nge
+  implements ajfe
 {
-  public nge(EditText paramEditText) {}
+  public void a(Object paramObject) {}
   
-  public void onClick(View paramView)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a.append("@");
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      return;
+    }
+    a(paramObject);
   }
 }
 

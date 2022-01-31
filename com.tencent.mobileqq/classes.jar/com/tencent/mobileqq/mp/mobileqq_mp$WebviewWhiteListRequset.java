@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class mobileqq_mp$WebviewWhiteListRequset
-  extends MessageMicro
+  extends MessageMicro<WebviewWhiteListRequset>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32 }, new String[] { "version", "qqversion", "gziped", "implat" }, new Object[] { "", "", Boolean.valueOf(false), Integer.valueOf(0) }, WebviewWhiteListRequset.class);
   public final PBBoolField gziped = PBField.initBool(false);

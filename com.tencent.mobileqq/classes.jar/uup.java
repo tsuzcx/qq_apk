@@ -1,23 +1,25 @@
-import android.view.Window;
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
 
 public class uup
-  implements Runnable
+  extends Handler
 {
-  public uup(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
+  public uup(EditVideoMusic paramEditVideoMusic) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.setRequestedOrientation4Recording(true);
-    this.a.a.getWindow().clearFlags(128);
-    QQToast.a(this.a.a, 2131433801, 1).b(this.a.a.getTitleBarHeight());
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uup
  * JD-Core Version:    0.7.0.1
  */

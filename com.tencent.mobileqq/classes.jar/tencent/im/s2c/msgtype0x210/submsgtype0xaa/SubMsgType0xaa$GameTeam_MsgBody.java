@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SubMsgType0xaa$GameTeam_MsgBody
-  extends MessageMicro
+  extends MessageMicro<GameTeam_MsgBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34 }, new String[] { "uint32_GameTeamCmd", "msg_turnOverMessage", "msg_startGameMessage", "msg_updateTeamMessage" }, new Object[] { Integer.valueOf(0), null, null, null }, GameTeam_MsgBody.class);
   public SubMsgType0xaa.GameTeam_StartGameMessage msg_startGameMessage = new SubMsgType0xaa.GameTeam_StartGameMessage();

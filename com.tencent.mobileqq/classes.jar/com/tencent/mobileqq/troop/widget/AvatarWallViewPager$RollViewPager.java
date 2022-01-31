@@ -5,7 +5,7 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewParent;
-import com.tencent.mobileqq.troop.utils.TroopTechReportUtils;
+import azld;
 
 public class AvatarWallViewPager$RollViewPager
   extends ViewPager
@@ -44,7 +44,7 @@ public class AvatarWallViewPager$RollViewPager
       localAvatarWallViewPager = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager;
       this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.d = f2;
       localAvatarWallViewPager.b = f2;
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.f();
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.e();
       return super.dispatchTouchEvent(paramMotionEvent);
     case 2: 
       if (this.jdField_a_of_type_Int <= 1)
@@ -83,7 +83,7 @@ public class AvatarWallViewPager$RollViewPager
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.e();
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPager.d();
       return bool1;
       bool1 = bool2;
     }
@@ -98,7 +98,7 @@ public class AvatarWallViewPager$RollViewPager
     }
     catch (IllegalArgumentException paramMotionEvent)
     {
-      TroopTechReportUtils.a("avatarWallViewPager", "ote_pointerindex_out_of_range", paramMotionEvent.toString(), "", "", "");
+      azld.a("avatarWallViewPager", "ote_pointerindex_out_of_range", paramMotionEvent.toString(), "", "", "");
       paramMotionEvent.printStackTrace();
     }
     return false;
@@ -113,7 +113,7 @@ public class AvatarWallViewPager$RollViewPager
     }
     catch (IllegalArgumentException paramMotionEvent)
     {
-      TroopTechReportUtils.a("avatarWallViewPager", "te_pointerindex_out_of_range", paramMotionEvent.toString(), "", "", "");
+      azld.a("avatarWallViewPager", "te_pointerindex_out_of_range", paramMotionEvent.toString(), "", "", "");
       paramMotionEvent.printStackTrace();
     }
     return false;
@@ -121,7 +121,7 @@ public class AvatarWallViewPager$RollViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AvatarWallViewPager.RollViewPager
  * JD-Core Version:    0.7.0.1
  */

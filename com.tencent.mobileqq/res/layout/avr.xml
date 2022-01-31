@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/i8u" android:background="@drawable/skin_list_item_normal" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="15.0sp" android:textColor="@color/skin_gray3" android:ellipsize="end" android:gravity="center" android:id="@id/bgt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" android:text="@string/qtp" android:singleLine="true" android:includeFontPadding="false" android:layout_centerHorizontal="true" />
+</RelativeLayout>

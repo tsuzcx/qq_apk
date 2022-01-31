@@ -3,7 +3,6 @@ package android.support.v4.view.accessibility;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.view.accessibility.AccessibilityNodeInfo.CollectionInfo;
 import android.view.accessibility.AccessibilityNodeInfo.CollectionItemInfo;
-import android.view.accessibility.AccessibilityNodeInfo.RangeInfo;
 
 class AccessibilityNodeInfoCompatKitKat
 {
@@ -50,75 +49,6 @@ class AccessibilityNodeInfoCompatKitKat
   static void setLiveRegion(Object paramObject, int paramInt)
   {
     ((AccessibilityNodeInfo)paramObject).setLiveRegion(paramInt);
-  }
-  
-  static class CollectionInfo
-  {
-    static int getColumnCount(Object paramObject)
-    {
-      return ((AccessibilityNodeInfo.CollectionInfo)paramObject).getColumnCount();
-    }
-    
-    static int getRowCount(Object paramObject)
-    {
-      return ((AccessibilityNodeInfo.CollectionInfo)paramObject).getRowCount();
-    }
-    
-    static boolean isHierarchical(Object paramObject)
-    {
-      return ((AccessibilityNodeInfo.CollectionInfo)paramObject).isHierarchical();
-    }
-  }
-  
-  static class CollectionItemInfo
-  {
-    static int getColumnIndex(Object paramObject)
-    {
-      return ((AccessibilityNodeInfo.CollectionItemInfo)paramObject).getColumnIndex();
-    }
-    
-    static int getColumnSpan(Object paramObject)
-    {
-      return ((AccessibilityNodeInfo.CollectionItemInfo)paramObject).getColumnSpan();
-    }
-    
-    static int getRowIndex(Object paramObject)
-    {
-      return ((AccessibilityNodeInfo.CollectionItemInfo)paramObject).getRowIndex();
-    }
-    
-    static int getRowSpan(Object paramObject)
-    {
-      return ((AccessibilityNodeInfo.CollectionItemInfo)paramObject).getRowSpan();
-    }
-    
-    static boolean isHeading(Object paramObject)
-    {
-      return ((AccessibilityNodeInfo.CollectionItemInfo)paramObject).isHeading();
-    }
-  }
-  
-  static class RangeInfo
-  {
-    static float getCurrent(Object paramObject)
-    {
-      return ((AccessibilityNodeInfo.RangeInfo)paramObject).getCurrent();
-    }
-    
-    static float getMax(Object paramObject)
-    {
-      return ((AccessibilityNodeInfo.RangeInfo)paramObject).getMax();
-    }
-    
-    static float getMin(Object paramObject)
-    {
-      return ((AccessibilityNodeInfo.RangeInfo)paramObject).getMin();
-    }
-    
-    static int getType(Object paramObject)
-    {
-      return ((AccessibilityNodeInfo.RangeInfo)paramObject).getType();
-    }
   }
 }
 

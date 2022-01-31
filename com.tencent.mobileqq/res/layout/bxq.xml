@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/dpr" android:background="@drawable/je" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip">
+            <com.tencent.widget.FixSizeImageView android:id="@id/image" android:focusable="false" android:clickable="false" android:layout_width="60.0dip" android:layout_height="60.0dip" android:scaleType="centerCrop" android:layout_centerVertical="true" />
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_toRightOf="@id/image" android:layout_centerVertical="true">
+                <TextView android:textSize="@dimen/alu" android:textColor="@color/skin_unite_search_text_black_000000_6991b8" android:ellipsize="end" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="3" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/skin_unite_search_text_gray_777777_44608a" android:ellipsize="end" android:id="@id/bgt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:singleLine="true" android:layout_below="@id/title" android:layout_alignLeft="@id/title" />
+                <TextView android:textSize="12.0dip" android:textColor="@color/skin_unite_search_text_gray_bbbbbb_717d86" android:ellipsize="end" android:id="@id/ca2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:singleLine="true" android:layout_below="@id/bgt" android:layout_alignLeft="@id/bgt" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

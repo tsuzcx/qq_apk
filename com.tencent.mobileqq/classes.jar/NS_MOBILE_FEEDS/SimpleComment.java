@@ -8,9 +8,9 @@ import java.util.ArrayList;
 public final class SimpleComment
   extends JceStruct
 {
-  static ArrayList cache_reply_ids = new ArrayList();
+  static ArrayList<Long> cache_reply_ids = new ArrayList();
   public long id;
-  public ArrayList reply_ids;
+  public ArrayList<Long> reply_ids;
   
   static
   {
@@ -19,7 +19,7 @@ public final class SimpleComment
   
   public SimpleComment() {}
   
-  public SimpleComment(long paramLong, ArrayList paramArrayList)
+  public SimpleComment(long paramLong, ArrayList<Long> paramArrayList)
   {
     this.id = paramLong;
     this.reply_ids = paramArrayList;
@@ -41,7 +41,7 @@ public final class SimpleComment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.SimpleComment
  * JD-Core Version:    0.7.0.1
  */

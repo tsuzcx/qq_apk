@@ -1,56 +1,57 @@
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.util.SparseArray;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl.4.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
+import mqq.os.MqqHandler;
 
 public class tro
-  extends FriendListObserver
+  implements TVK_IMediaPlayer.OnInfoListener
 {
-  public tro(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
+  tro(trk paramtrk) {}
   
-  protected void onSetGeneralSettingsC2CRoaming(boolean paramBoolean, Map paramMap)
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("SecuritySettingActivity", 2, "onSetGeneralSettingsC2CRoaming issuc =" + paramBoolean);
-    }
-    this.a.e();
-    if (paramBoolean)
+    switch (paramInt)
     {
-      QQToast.a(this.a.getApplicationContext(), 2, 2131435010, 0).b(this.a.getTitleBarHeight());
-      return;
+    default: 
+      urk.d(this.a.a, "onInfo. what=%d (%s), extra=%s", new Object[] { Integer.valueOf(paramInt), tqu.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt, "UNKNOWN"), paramObject });
     }
-    if (QQSettingMsgHistoryActivity.a(this.a) != null)
+    for (;;)
     {
-      QQSettingMsgHistoryActivity.a(this.a).setOnCheckedChangeListener(null);
-      paramMap = QQSettingMsgHistoryActivity.a(this.a);
-      if (this.a.app.e() != 1) {
-        break label159;
+      ThreadManager.getUIHandler().post(new VideoViewTVKImpl.4.1(this, paramInt, paramObject));
+      return false;
+      int i = ((Integer)paramObject).intValue();
+      if ((i >= 0) && (i <= tqu.b.length))
+      {
+        urk.d(this.a.a, "onInfo. playerType %s", new Object[] { tqu.b[i] });
       }
-    }
-    label159:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      paramMap.setChecked(paramBoolean);
-      QQSettingMsgHistoryActivity.a(this.a).setOnCheckedChangeListener(this.a);
-      QQToast.a(this.a.getApplicationContext(), 2131435011, 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-  }
-  
-  protected void onSetMessageRaoam(boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      QQSettingMsgHistoryActivity.b(this.a);
+      else
+      {
+        urk.d(this.a.a, "onInfo. playerType %d", new Object[] { Integer.valueOf(i) });
+        continue;
+        urk.d(this.a.a, "onInfo. start buffering");
+        continue;
+        urk.d(this.a.a, "onInfo. end buffering");
+        continue;
+        i = ((Integer)paramObject).intValue();
+        if ((i >= 0) && (i < tqu.jdField_a_of_type_ArrayOfJavaLangString.length))
+        {
+          urk.d(this.a.a, "onInfo. set decoder. %s", new Object[] { tqu.jdField_a_of_type_ArrayOfJavaLangString[i] });
+          trk.a(this.a).d = tqu.jdField_a_of_type_ArrayOfJavaLangString[i];
+        }
+        else
+        {
+          urk.d(this.a.a, "onInfo. set decoder. %d", new Object[] { Integer.valueOf(i) });
+          trk.a(this.a).d = ("Unknown " + i);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tro
  * JD-Core Version:    0.7.0.1
  */

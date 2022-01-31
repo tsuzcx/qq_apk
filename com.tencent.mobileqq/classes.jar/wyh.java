@@ -1,18 +1,12 @@
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-
-class wyh
-  implements Runnable
+public abstract interface wyh
 {
-  wyh(wyg paramwyg) {}
+  public abstract void a(wyi paramwyi);
   
-  public void run()
-  {
-    this.a.a.c();
-  }
+  public abstract void b(wyi paramwyi);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wyh
  * JD-Core Version:    0.7.0.1
  */

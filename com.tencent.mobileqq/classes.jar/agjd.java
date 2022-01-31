@@ -1,18 +1,39 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager;
+import android.os.SystemClock;
 
-public class agjd
-  extends AnimatorListenerAdapter
+public abstract class agjd
 {
-  public agjd(ARTipsManager paramARTipsManager, View paramView) {}
+  private long jdField_a_of_type_Long;
+  private agjc jdField_a_of_type_Agjc;
+  private long b;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public agjd(long paramLong)
   {
-    ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).removeView(this.jdField_a_of_type_AndroidViewView);
+    a(paramLong);
   }
+  
+  public final void a()
+  {
+    long l = this.jdField_a_of_type_Long - SystemClock.elapsedRealtime();
+    if (l > 1000L)
+    {
+      b(l);
+      return;
+    }
+    b();
+  }
+  
+  public void a(long paramLong)
+  {
+    if (this.jdField_a_of_type_Agjc != null) {
+      this.jdField_a_of_type_Agjc.a(paramLong);
+    }
+    this.b = paramLong;
+    this.jdField_a_of_type_Long = (SystemClock.elapsedRealtime() + 1000L * paramLong);
+  }
+  
+  public abstract void b();
+  
+  public abstract void b(long paramLong);
 }
 
 

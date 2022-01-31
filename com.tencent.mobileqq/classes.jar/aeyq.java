@@ -1,24 +1,20 @@
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ScrollView;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.newfriend.NewFriendMoreSysMsgActivity;
 
 public class aeyq
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aeyq(NearbyGuideActivity paramNearbyGuideActivity) {}
+  public aeyq(NewFriendMoreSysMsgActivity paramNewFriendMoreSysMsgActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    int i = (int)(this.a.b.getBottom() - this.a.jdField_a_of_type_AndroidWidgetEditText.getBottom() + 30.0F * this.a.getResources().getDisplayMetrics().density);
-    this.a.jdField_a_of_type_AndroidWidgetScrollView.smoothScrollBy(0, i);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeyq
  * JD-Core Version:    0.7.0.1
  */

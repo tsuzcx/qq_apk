@@ -15,7 +15,7 @@ public final class MediaType
   public static final int _ENUM_MEDIA_PIC = 1;
   public static final int _ENUM_MEDIA_TEXT = 0;
   public static final int _ENUM_MEDIA_VEDIO = 3;
-  private static MediaType[] a;
+  private static MediaType[] __values;
   private String __T = new String();
   private int __value;
   
@@ -25,7 +25,7 @@ public final class MediaType
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      a = new MediaType[5];
+      __values = new MediaType[5];
       ENUM_MEDIA_TEXT = new MediaType(0, 0, "ENUM_MEDIA_TEXT");
       ENUM_MEDIA_PIC = new MediaType(1, 1, "ENUM_MEDIA_PIC");
       ENUM_MEDIA_LINK = new MediaType(2, 2, "ENUM_MEDIA_LINK");
@@ -39,16 +39,16 @@ public final class MediaType
   {
     this.__T = paramString;
     this.__value = paramInt2;
-    a[paramInt1] = this;
+    __values[paramInt1] = this;
   }
   
   public static MediaType convert(int paramInt)
   {
     int i = 0;
-    while (i < a.length)
+    while (i < __values.length)
     {
-      if (a[i].value() == paramInt) {
-        return a[i];
+      if (__values[i].value() == paramInt) {
+        return __values[i];
       }
       i += 1;
     }
@@ -61,10 +61,10 @@ public final class MediaType
   public static MediaType convert(String paramString)
   {
     int i = 0;
-    while (i < a.length)
+    while (i < __values.length)
     {
-      if (a[i].toString().equals(paramString)) {
-        return a[i];
+      if (__values[i].toString().equals(paramString)) {
+        return __values[i];
       }
       i += 1;
     }
@@ -86,7 +86,7 @@ public final class MediaType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     NS_MOBILE_OPERATION.MediaType
  * JD-Core Version:    0.7.0.1
  */

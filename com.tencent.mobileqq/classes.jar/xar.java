@@ -1,19 +1,32 @@
-import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.os.Bundle;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.DownloadListener;
 
 public class xar
-  implements Runnable
+  implements DownloadListener
 {
-  public xar(PhoneLaunchActivity paramPhoneLaunchActivity) {}
+  public xar(AbsBaseWebViewActivity paramAbsBaseWebViewActivity, TouchWebView paramTouchWebView) {}
   
-  public void run()
+  public void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
   {
-    this.a.a.g();
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewBase", 2, "start UniformDownloadActivity");
+    }
+    String str = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getUrl();
+    Bundle localBundle = new Bundle();
+    localBundle.putLong("_filesize", paramLong);
+    localBundle.putString("param_user_agent", paramString2);
+    localBundle.putString("param_content_des", paramString3);
+    localBundle.putString("param_mime_type", paramString4);
+    localBundle.putString("param_refer_url", str);
+    aohf.a(this.jdField_a_of_type_ComTencentBizWebviewbaseAbsBaseWebViewActivity, paramString1, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xar
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mm.opensdk.diffdev.a;
 
-import android.os.AsyncTask;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Looper;
@@ -13,15 +12,15 @@ import java.util.List;
 public final class a
   implements IDiffDevOAuth
 {
-  private List<OAuthListener> Y = new ArrayList();
-  private d Z;
-  private OAuthListener aa = new b(this);
+  private List<OAuthListener> c = new ArrayList();
+  private d d;
+  private OAuthListener e = new b(this);
   private Handler handler = null;
   
   public final void addListener(OAuthListener paramOAuthListener)
   {
-    if (!this.Y.contains(paramOAuthListener)) {
-      this.Y.add(paramOAuthListener);
+    if (!this.c.contains(paramOAuthListener)) {
+      this.c.add(paramOAuthListener);
     }
   }
   
@@ -37,15 +36,15 @@ public final class a
       this.handler = new Handler(Looper.getMainLooper());
     }
     addListener(paramOAuthListener);
-    if (this.Z != null)
+    if (this.d != null)
     {
       Log.d("MicroMsg.SDK.DiffDevOAuth", "auth, already running, no need to start auth again");
       return true;
     }
-    this.Z = new d(paramString1, paramString2, paramString3, paramString4, paramString5, this.aa);
-    paramString1 = this.Z;
+    this.d = new d(paramString1, paramString2, paramString3, paramString4, paramString5, this.e);
+    paramString1 = this.d;
     if (Build.VERSION.SDK_INT >= 11) {
-      paramString1.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[0]);
+      paramString1.executeOnExecutor(com.tencent.mm.opensdk.utils.d.E, new Void[0]);
     }
     for (;;)
     {
@@ -57,18 +56,18 @@ public final class a
   public final void detach()
   {
     Log.i("MicroMsg.SDK.DiffDevOAuth", "detach");
-    this.Y.clear();
+    this.c.clear();
     stopAuth();
   }
   
   public final void removeAllListeners()
   {
-    this.Y.clear();
+    this.c.clear();
   }
   
   public final void removeListener(OAuthListener paramOAuthListener)
   {
-    this.Y.remove(paramOAuthListener);
+    this.c.remove(paramOAuthListener);
   }
   
   public final boolean stopAuth()
@@ -78,7 +77,7 @@ public final class a
     {
       try
       {
-        d locald = this.Z;
+        d locald = this.d;
         if (locald != null) {
           continue;
         }
@@ -90,15 +89,15 @@ public final class a
         boolean bool = false;
         continue;
       }
-      this.Z = null;
+      this.d = null;
       return bool;
-      bool = this.Z.q();
+      bool = this.d.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mm.opensdk.diffdev.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,38 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class aiqm
-  implements MediaPlayer.OnErrorListener
+class aiqm
+  implements aizm
 {
-  public aiqm(VideoSprite paramVideoSprite) {}
+  aiqm(aiqj paramaiqj, String paramString) {}
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("VideoSprite", 2, "onError: " + paramInt1);
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameSubRscHandler", 2, new Object[] { "[onVerifyResult], retCode:", Integer.valueOf(paramInt) });
+      }
+      ApolloCmdChannel localApolloCmdChannel = aing.a();
+      if (localApolloCmdChannel != null)
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("packName", this.jdField_a_of_type_JavaLangString);
+        localJSONObject.put("result", paramInt);
+        localApolloCmdChannel.callbackFromRequest(aiqj.a(this.jdField_a_of_type_Aiqj), 0, "cs.file_correctness_check.local", localJSONObject.toString());
+      }
+      return;
     }
-    return true;
+    catch (Throwable localThrowable)
+    {
+      QLog.e("cmgame_process.CmGameSubRscHandler", 1, localThrowable, new Object[0]);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiqm
  * JD-Core Version:    0.7.0.1
  */

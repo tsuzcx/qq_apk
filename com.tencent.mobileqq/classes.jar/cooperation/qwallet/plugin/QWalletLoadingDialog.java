@@ -36,7 +36,7 @@ public class QWalletLoadingDialog
   
   public QWalletLoadingDialog(Context paramContext, boolean paramBoolean)
   {
-    this(paramContext, 2131624512, paramBoolean);
+    this(paramContext, 2131690184, paramBoolean);
   }
   
   public void dismiss()
@@ -63,39 +63,33 @@ public class QWalletLoadingDialog
     super.requestWindowFeature(1);
     this.mContext = paramContext;
     Object localObject = getWindow();
-    paramContext = LayoutInflater.from(paramContext).inflate(2130971057, null);
+    paramContext = LayoutInflater.from(paramContext).inflate(2131496074, null);
     setContentView(paramContext);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       ((Window)localObject).addFlags(67108864);
-      new SystemBarCompact(this, true, this.mContext.getResources().getColor(2131494260)).init();
+      new SystemBarCompact(this, true, this.mContext.getResources().getColor(2131101315)).init();
       paramContext.setFitsSystemWindows(true);
-      paramContext.setPadding(0, ImmersiveUtils.a(this.mContext), 0, 0);
+      paramContext.setPadding(0, ImmersiveUtils.getStatusBarHeight(this.mContext), 0, 0);
     }
     WindowManager.LayoutParams localLayoutParams = ((Window)localObject).getAttributes();
     localLayoutParams.width = -1;
     localLayoutParams.height = -1;
     ((Window)localObject).setAttributes(localLayoutParams);
     setCanceledOnTouchOutside(false);
-    localObject = (TextView)paramContext.findViewById(2131363262);
-    if (localObject != null)
-    {
-      ((TextView)localObject).setVisibility(0);
-      ((TextView)localObject).setText(2131433712);
-    }
-    this.mCenterView = ((TextView)paramContext.findViewById(2131363400));
+    this.mCenterView = ((TextView)paramContext.findViewById(2131302847));
     if (this.mCenterView != null)
     {
       this.mCenterView.setVisibility(0);
-      this.mCenterView.setText(2131432147);
+      this.mCenterView.setText(2131651614);
     }
-    paramContext = (TextView)paramContext.findViewById(2131364662);
+    paramContext = (TextView)paramContext.findViewById(2131302810);
     if (paramContext != null)
     {
       paramContext.setVisibility(0);
-      paramContext.setText(2131432164);
+      paramContext.setText(2131651613);
     }
-    paramContext = (ImageView)super.findViewById(2131368124);
+    paramContext = (ImageView)super.findViewById(2131306876);
     localObject = new TranslateAnimation(1, -1.0F, 2, 1.0F, 1, 0.0F, 1, 0.0F);
     ((TranslateAnimation)localObject).setInterpolator(new AccelerateDecelerateInterpolator());
     ((TranslateAnimation)localObject).setDuration(800L);
@@ -107,7 +101,7 @@ public class QWalletLoadingDialog
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    this.mAnimatedDrawale = ((Animatable)this.mContext.getResources().getDrawable(2130838606));
+    this.mAnimatedDrawale = ((Animatable)this.mContext.getResources().getDrawable(2130839117));
     if ((this.mAnimatedDrawale != null) && (this.mCenterView != null))
     {
       this.mCenterView.setCompoundDrawablePadding(10);
@@ -118,7 +112,7 @@ public class QWalletLoadingDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletLoadingDialog
  * JD-Core Version:    0.7.0.1
  */

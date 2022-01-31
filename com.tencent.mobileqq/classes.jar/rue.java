@@ -1,53 +1,63 @@
-import android.support.v4.app.FragmentActivity;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.StateListDrawable;
+import android.os.Build.VERSION;
+import android.support.annotation.ColorInt;
+import android.support.annotation.NonNull;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.text.ReplyedMessageSpan;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
 
 public class rue
-  implements View.OnClickListener
 {
-  public rue(BaseChatPie paramBaseChatPie) {}
-  
-  public void onClick(View paramView)
+  public static GradientDrawable a(View paramView, float paramFloat, @ColorInt int paramInt)
   {
-    switch (paramView.getId())
-    {
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setShape(0);
+    localGradientDrawable.setCornerRadius(paramFloat);
+    localGradientDrawable.setColor(paramInt);
+    if (paramView != null) {
+      a(paramView, localGradientDrawable);
     }
-    BaseChatPie localBaseChatPie;
-    do
+    return localGradientDrawable;
+  }
+  
+  public static GradientDrawable a(View paramView, float paramFloat, @ColorInt int paramInt1, int paramInt2)
+  {
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setShape(0);
+    if (paramFloat > 0.0F) {
+      localGradientDrawable.setCornerRadius(paramFloat);
+    }
+    localGradientDrawable.setStroke(paramInt2, paramInt1);
+    if (paramView != null) {
+      a(paramView, localGradientDrawable);
+    }
+    return localGradientDrawable;
+  }
+  
+  public static StateListDrawable a(View paramView, @NonNull Drawable paramDrawable1, @NonNull Drawable paramDrawable2)
+  {
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    localStateListDrawable.addState(new int[] { 16842910 }, paramDrawable1);
+    localStateListDrawable.addState(new int[0], paramDrawable2);
+    if (paramView != null) {
+      a(paramView, localStateListDrawable);
+    }
+    return localStateListDrawable;
+  }
+  
+  public static void a(@NonNull View paramView, @NonNull Drawable paramDrawable)
+  {
+    if (Build.VERSION.SDK_INT < 16)
     {
-      do
-      {
-        do
-        {
-          return;
-          paramView = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131362132);
-        } while (!(paramView instanceof ReplyedMessageSpan));
-        paramView = (ReplyedMessageSpan)paramView;
-      } while ((paramView == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null));
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.aio.BaseChatPie", 2, "TextItemBuilder onClickListener: isReplyMsg = true, mSourceMsgSeq = " + paramView.a);
-      }
-      localBaseChatPie = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getChatFragment().a();
-    } while (!localBaseChatPie.f());
-    QQMessageFacade.Message localMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-    localBaseChatPie.a(20, paramView.a, (int)(localMessage.shmsgseq - paramView.a), null);
-    MessageForReplyText.reportReplyMsg(null, "typebox", "clk_original", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, null);
+      paramView.setBackgroundDrawable(paramDrawable);
+      return;
+    }
+    paramView.setBackground(paramDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rue
  * JD-Core Version:    0.7.0.1
  */

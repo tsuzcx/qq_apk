@@ -1,23 +1,29 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.av.camera.CameraUtils;
+import java.util.Observable;
 
 public class kzu
-  implements Runnable
+  extends Observable
 {
-  public kzu(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
+  public kzu(CameraUtils paramCameraUtils) {}
   
-  public void run()
+  public void a(Object[] paramArrayOfObject)
   {
-    ReadInJoyNativeAdAppVideoView.a(this.a).start();
-    ReadInJoyNativeAdAppVideoView.e(this.a, 4);
-    ReadInJoyNativeAdAppVideoView.a(this.a);
-    ReadInJoyNativeAdAppVideoView.a(this.a).post(this.a.a);
+    try
+    {
+      super.setChanged();
+      super.notifyObservers(paramArrayOfObject);
+      return;
+    }
+    finally
+    {
+      paramArrayOfObject = finally;
+      throw paramArrayOfObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     kzu
  * JD-Core Version:    0.7.0.1
  */

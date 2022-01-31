@@ -1,41 +1,92 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.widget.DynamicGridView;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.config.business.qvip.QQLevelIconConfig;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class amio
-  implements ViewTreeObserver.OnPreDrawListener
+public class amio
+  extends amie<QQLevelIconConfig>
 {
-  private final int jdField_a_of_type_Int;
-  private final View jdField_a_of_type_AndroidViewView;
-  private final int b;
-  
-  amio(amin paramamin, View paramView, int paramInt1, int paramInt2)
+  public static QQLevelIconConfig c()
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    QQLevelIconConfig localQQLevelIconConfig2 = (QQLevelIconConfig)alzw.a().a(542);
+    QQLevelIconConfig localQQLevelIconConfig1 = localQQLevelIconConfig2;
+    if (localQQLevelIconConfig2 == null) {
+      localQQLevelIconConfig1 = new QQLevelIconConfig();
+    }
+    return localQQLevelIconConfig1;
   }
   
-  public boolean onPreDraw()
+  public int a()
   {
-    this.jdField_a_of_type_Amin.a.getViewTreeObserver().removeOnPreDrawListener(this);
-    DynamicGridView.a(this.jdField_a_of_type_Amin.a, DynamicGridView.a(this.jdField_a_of_type_Amin.a) + amin.a(this.jdField_a_of_type_Amin));
-    DynamicGridView.b(this.jdField_a_of_type_Amin.a, DynamicGridView.b(this.jdField_a_of_type_Amin.a) + amin.b(this.jdField_a_of_type_Amin));
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    return 542;
+  }
+  
+  @NonNull
+  public QQLevelIconConfig a()
+  {
+    return new QQLevelIconConfig();
+  }
+  
+  @NonNull
+  public QQLevelIconConfig a(alzs[] paramArrayOfalzs)
+  {
+    boolean bool2 = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQLevelIconProcessor", 1, paramArrayOfalzs[0].a);
     }
-    DynamicGridView.a(this.jdField_a_of_type_Amin.a, this.jdField_a_of_type_Amin.a.a(DynamicGridView.a(this.jdField_a_of_type_Amin.a)));
-    if (DynamicGridView.a(this.jdField_a_of_type_Amin.a) != null) {
-      DynamicGridView.a(this.jdField_a_of_type_Amin.a).setVisibility(4);
+    QQLevelIconConfig localQQLevelIconConfig = new QQLevelIconConfig();
+    paramArrayOfalzs = paramArrayOfalzs[0].a;
+    for (;;)
+    {
+      try
+      {
+        if (!TextUtils.isEmpty(paramArrayOfalzs))
+        {
+          paramArrayOfalzs = new JSONObject(paramArrayOfalzs);
+          if (paramArrayOfalzs.optInt("newguideswitch", 1) != 1) {
+            continue;
+          }
+          bool1 = true;
+          localQQLevelIconConfig.mIsEnableGuide = bool1;
+          bool1 = bool2;
+          if (paramArrayOfalzs.optInt("rushfeeswitch", 1) == 1) {
+            bool1 = true;
+          }
+          localQQLevelIconConfig.mIsNotifyPayment = bool1;
+          localQQLevelIconConfig.mNotifyPaymentText = paramArrayOfalzs.optString("rushfeetips", localQQLevelIconConfig.mNotifyPaymentText);
+          localQQLevelIconConfig.mExpiredNotifyPaymentText = paramArrayOfalzs.optString("expiredtips", localQQLevelIconConfig.mExpiredNotifyPaymentText);
+        }
+      }
+      catch (JSONException paramArrayOfalzs)
+      {
+        boolean bool1;
+        urk.e("QQLevelIconProcessor", "QVipBigClubSVIP9Config onParsed exception :" + paramArrayOfalzs.getMessage());
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("QQLevelIconProcessor", 1, " : " + localQQLevelIconConfig.toString());
+      }
+      return localQQLevelIconConfig;
+      bool1 = false;
     }
-    DynamicGridView.a(this.jdField_a_of_type_Amin.a, this.jdField_a_of_type_Int, this.b);
-    return true;
+  }
+  
+  public Class<QQLevelIconConfig> a()
+  {
+    return QQLevelIconConfig.class;
+  }
+  
+  @NonNull
+  public QQLevelIconConfig b()
+  {
+    return new QQLevelIconConfig();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amio
  * JD-Core Version:    0.7.0.1
  */

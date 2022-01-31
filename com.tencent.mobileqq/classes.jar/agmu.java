@@ -1,18 +1,10 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-
-public class agmu
-  implements Runnable
+public abstract interface agmu
 {
-  public agmu(ScanTorchActivity paramScanTorchActivity) {}
-  
-  public void run()
-  {
-    ScanTorchActivity.x(this.a);
-  }
+  public abstract void a(String paramString1, String paramString2, agmo paramagmo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agmu
  * JD-Core Version:    0.7.0.1
  */

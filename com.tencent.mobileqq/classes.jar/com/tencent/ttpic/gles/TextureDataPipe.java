@@ -1,7 +1,7 @@
 package com.tencent.ttpic.gles;
 
 import android.graphics.PointF;
-import com.tencent.filter.Frame;
+import com.tencent.aekit.openrender.internal.Frame;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -60,15 +60,10 @@ public class TextureDataPipe
   {
     this.mTexFrame.clear();
   }
-  
-  public static abstract interface OnFrameAvailableListener
-  {
-    public abstract void onFrameAvailable();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.gles.TextureDataPipe
  * JD-Core Version:    0.7.0.1
  */

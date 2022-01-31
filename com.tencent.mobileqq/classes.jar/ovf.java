@@ -1,14 +1,19 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.qqstory.view.segment.SegmentManager;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 
-public class ovf
-  extends DataSetObserver
+class ovf
+  implements pby
 {
-  public ovf(SegmentManager paramSegmentManager) {}
+  ovf(ove paramove, ArticleInfo paramArticleInfo, Container paramContainer) {}
   
-  public void onChanged()
+  public void a()
   {
-    SegmentManager.a(this.a, true);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mNewPolymericInfo.b != null)
+    {
+      UrlJumpInfo localUrlJumpInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mNewPolymericInfo.b;
+      qcn.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), localUrlJumpInfo);
+    }
   }
 }
 

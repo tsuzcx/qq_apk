@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBInt64Field;
 
 public final class value$HomeworkTmemDetail
-  extends MessageMicro
+  extends MessageMicro<HomeworkTmemDetail>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt64Field created = PBField.initInt64(0L);

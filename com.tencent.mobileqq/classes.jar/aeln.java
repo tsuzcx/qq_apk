@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
-public class aeln
-  implements Runnable
+public abstract interface aeln
 {
-  public aeln(LyricViewInternal paramLyricViewInternal) {}
+  public abstract List<? extends aelm> a(String paramString);
   
-  public void run()
-  {
-    this.a.requestLayout();
-  }
+  public abstract boolean a(QQAppInterface paramQQAppInterface, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeln
  * JD-Core Version:    0.7.0.1
  */

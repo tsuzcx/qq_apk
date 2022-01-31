@@ -1,20 +1,18 @@
-import android.os.Bundle;
-import cooperation.wadl.ipc.WadlProxyServiceManager;
-
 class anou
-  implements Runnable
+  implements bgsc
 {
-  anou(anos paramanos, Bundle paramBundle) {}
+  anou(anot paramanot) {}
   
-  public void run()
+  public void a()
   {
-    Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle;
-    this.jdField_a_of_type_Anos.a.a(localBundle);
+    if (this.a.a != null) {
+      this.a.a.e(this.a.getPosition());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anou
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a11f4" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:layout_width="fill_parent" android:layout_height="26.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c05ae" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0086" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="精彩咨询" android:singleLine="true" android:includeFontPadding="false" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a11f5" android:layout_width="10.0dip" android:layout_height="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0221c2" />
-</LinearLayout>

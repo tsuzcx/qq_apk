@@ -1,24 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.wholepeople.WholePeoplePlugin;
-import com.tencent.qphone.base.util.QLog;
+import cooperation.wadl.ipc.WadlResult;
+import java.util.ArrayList;
 
-public class alab
-  implements View.OnClickListener
+abstract interface alab
 {
-  public alab(WholePeoplePlugin paramWholePeoplePlugin, String paramString) {}
-  
-  public void onClick(View paramView)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("WholePeoplePlugin", 2, "onClick " + this.jdField_a_of_type_JavaLangString);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWholepeopleWholePeoplePlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
-  }
+  public abstract void a(ArrayList<WadlResult> paramArrayList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alab
  * JD-Core Version:    0.7.0.1
  */

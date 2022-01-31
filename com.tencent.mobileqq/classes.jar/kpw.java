@@ -1,30 +1,29 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.lebasearch.SearchProtocol.SearchObserver;
-import java.util.List;
+import java.io.InputStream;
+import java.util.zip.GZIPInputStream;
+import org.apache.http.HttpEntity;
+import org.apache.http.entity.HttpEntityWrapper;
 
-public final class kpw
-  extends Handler
+class kpw
+  extends HttpEntityWrapper
 {
-  public kpw(Looper paramLooper, SearchProtocol.SearchObserver paramSearchObserver)
+  public kpw(HttpEntity paramHttpEntity)
   {
-    super(paramLooper);
+    super(paramHttpEntity);
   }
   
-  public void handleMessage(Message paramMessage)
+  public InputStream getContent()
   {
-    if (paramMessage.arg1 == 0)
-    {
-      this.a.a(paramMessage.arg1, (List)paramMessage.obj);
-      return;
-    }
-    this.a.a(paramMessage.arg1, null);
+    return new GZIPInputStream(this.wrappedEntity.getContent());
+  }
+  
+  public long getContentLength()
+  {
+    return -1L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     kpw
  * JD-Core Version:    0.7.0.1
  */

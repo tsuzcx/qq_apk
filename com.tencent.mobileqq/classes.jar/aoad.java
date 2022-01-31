@@ -1,30 +1,19 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditPicSave;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
 
 public class aoad
-  implements Runnable
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public aoad(EditPicSave paramEditPicSave) {}
+  public aoad(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      return;
-    }
-    EditPicSave localEditPicSave = this.a;
-    localEditPicSave.jdField_a_of_type_Int += this.a.b;
-    if (this.a.jdField_a_of_type_Int > 99)
-    {
-      this.a.jdField_a_of_type_Int = 99;
-      this.a.a(this.a.jdField_a_of_type_Int);
-      return;
-    }
-    this.a.a(this.a.jdField_a_of_type_Int);
-    this.a.c();
+    this.a.ay_();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoad
  * JD-Core Version:    0.7.0.1
  */

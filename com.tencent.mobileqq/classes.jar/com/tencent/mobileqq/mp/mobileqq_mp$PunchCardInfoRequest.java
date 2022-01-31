@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class mobileqq_mp$PunchCardInfoRequest
-  extends MessageMicro
+  extends MessageMicro<PunchCardInfoRequest>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "versionInfo", "cuin", "cmd" }, new Object[] { "", Long.valueOf(0L), Integer.valueOf(0) }, PunchCardInfoRequest.class);
   public final PBUInt32Field cmd = PBField.initUInt32(0);

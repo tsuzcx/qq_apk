@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.text.Editable;
+import com.tencent.mobileqq.activity.qwallet.fragment.ExclusiveHbFragment;
 
 public class agmx
-  implements Runnable
+  extends agnn
 {
-  public agmx(ScanTorchActivity paramScanTorchActivity) {}
+  public agmx(ExclusiveHbFragment paramExclusiveHbFragment) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    ScanTorchActivity.c(this.a, true, ScanTorchActivity.c(this.a));
-    ScanTorchActivity.y(this.a);
+    ExclusiveHbFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agmx
  * JD-Core Version:    0.7.0.1
  */

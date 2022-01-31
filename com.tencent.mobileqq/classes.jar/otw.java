@@ -1,20 +1,14 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.io.IOException;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class otw
+  implements View.OnClickListener
 {
-  Process a(String[] paramArrayOfString)
+  otw(otu paramotu, opw paramopw) {}
+  
+  public void onClick(View paramView)
   {
-    try
-    {
-      Process localProcess = Runtime.getRuntime().exec(paramArrayOfString);
-      return localProcess;
-    }
-    catch (IOException localIOException)
-    {
-      SLog.c("Q.qqstory.ffmpeg.FFmpeg", "Exception while trying to run: " + paramArrayOfString, localIOException);
-    }
-    return null;
+    qoe.a(this.jdField_a_of_type_Opw.a(), 0, 1);
   }
 }
 

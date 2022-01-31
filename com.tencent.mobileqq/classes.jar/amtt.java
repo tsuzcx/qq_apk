@@ -1,20 +1,18 @@
-import cooperation.plugin.PluginInstaller;
-import java.io.File;
-import java.io.FilenameFilter;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.nativemonitor.NativeMonitorConfigHelper.1.1;
+import com.tencent.mobileqq.nativememorymonitor.library.ExternalProvider;
 
-public class amtt
-  implements FilenameFilter
+public final class amtt
+  implements ExternalProvider
 {
-  public amtt(PluginInstaller paramPluginInstaller, String paramString) {}
-  
-  public boolean accept(File paramFile, String paramString)
+  public void onSoLoad(String paramString1, String paramString2)
   {
-    return paramString.endsWith(this.jdField_a_of_type_JavaLangString);
+    ThreadManager.excute(new NativeMonitorConfigHelper.1.1(this, paramString1, paramString2), 64, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amtt
  * JD-Core Version:    0.7.0.1
  */

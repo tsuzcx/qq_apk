@@ -1,32 +1,82 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqConvertUinAndUnionId;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspConvertUinAndUnionId;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class szg
-  extends Handler
+  extends slz<tbe>
 {
-  public szg(GroupManagerActivity paramGroupManagerActivity) {}
+  public String a;
+  public List<srn> a;
+  public boolean a;
+  public boolean b;
+  public int c;
+  public boolean c;
   
-  public void handleMessage(Message paramMessage)
+  public szg()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "mWaitingDialogControlHandler operationFinished = " + GroupManagerActivity.b(this.a));
-    }
-    GroupManagerActivity.b(this.a, true);
-    if (GroupManagerActivity.b(this.a))
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  public String a()
+  {
+    return skt.a("StorySvc.convert_uid_and_union_id");
+  }
+  
+  public tbe a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspConvertUinAndUnionId localRspConvertUinAndUnionId = new qqstory_service.RspConvertUinAndUnionId();
+    try
     {
-      this.a.a(true);
-      return;
+      localRspConvertUinAndUnionId.mergeFrom(paramArrayOfByte);
+      return new tbe(localRspConvertUinAndUnionId);
     }
-    paramMessage = GroupManagerActivity.a(this.a).obtainMessage(0);
-    GroupManagerActivity.a(this.a).sendMessageDelayed(paramMessage, 60000L);
-    GroupManagerActivity.c(this.a, true);
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      urk.d("Q.qqstory.user:ConvertUinAndUnionIdRequest", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    int j = 1;
+    qqstory_service.ReqConvertUinAndUnionId localReqConvertUinAndUnionId = new qqstory_service.ReqConvertUinAndUnionId();
+    localReqConvertUinAndUnionId.convert_from.set(this.c);
+    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      srn localsrn = (srn)((Iterator)localObject).next();
+      localReqConvertUinAndUnionId.user_id_list.add(localsrn.a());
+    }
+    localObject = localReqConvertUinAndUnionId.need_medal;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      i = 1;
+      ((PBUInt32Field)localObject).set(i);
+      localObject = localReqConvertUinAndUnionId.need_grade_speed;
+      if (!this.b) {
+        break label121;
+      }
+    }
+    label121:
+    for (int i = j;; i = 0)
+    {
+      ((PBUInt32Field)localObject).set(i);
+      return localReqConvertUinAndUnionId.toByteArray();
+      i = 0;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     szg
  * JD-Core Version:    0.7.0.1
  */

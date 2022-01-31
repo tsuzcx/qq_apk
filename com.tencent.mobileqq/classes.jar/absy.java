@@ -1,35 +1,24 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.Display;
-import android.view.WindowManager;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingCleanActivity;
+import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class absy
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public absy(ChatXListView paramChatXListView, Context paramContext) {}
+  public absy(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = ((Activity)this.jdField_a_of_type_AndroidContentContext).getWindowManager().getDefaultDisplay().getHeight();
-    if (i <= 0) {
-      i = ChatXListView.a();
-    }
-    for (;;)
-    {
-      ChatXListView.a(i);
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatXListView", 2, "ChatXListView open_panel_threshold_value = " + ChatXListView.b());
-      }
-      return;
-      i >>= 2;
-    }
+    QQSettingCleanActivity.a(this.a);
+    awqx.b(this.a.app, "dc00898", "", "", "0X8007546", "0X8007546", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     absy
  * JD-Core Version:    0.7.0.1
  */

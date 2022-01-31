@@ -1,0 +1,18 @@
+{
+  "RIJ_fg_polymer_cell": {
+    "view_type": "cell",
+    "direction": "vertical",
+    "height": {
+      "type": "wrap_content"
+    },
+    "width": {
+      "type": "relative",
+      "value": "343"
+    },
+    "subviews": [
+      {
+         "$includeComponet": "componet/flow_middle_container_collection.geojson"
+      }
+    ]
+  }
+}

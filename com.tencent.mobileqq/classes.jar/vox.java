@@ -1,42 +1,62 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder;
-import com.tencent.mobileqq.customviews.MessageProgressTextView;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
-import com.tencent.mobileqq.troop.widget.EllipsizingTextView;
-import com.tencent.mobileqq.widget.ProgressCircle;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
 
 public class vox
-  extends BaseBubbleBuilder.ViewHolder
+  extends Drawable
 {
-  public ImageView a;
-  public ProgressBar a;
-  public TextView a;
-  public MessageProgressTextView a;
-  public AsyncImageView a;
-  public EllipsizingTextView a;
-  public ProgressCircle a;
-  public View b;
-  public ImageView b;
-  public ProgressBar b;
-  public TextView b;
-  public AsyncImageView b;
-  public View c;
-  public TextView c;
-  public View d;
-  public TextView d;
-  public View e;
-  public TextView e;
-  public TextView f;
+  private int jdField_a_of_type_Int;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
+  private int b;
   
-  public vox(TroopFileItemBuilder paramTroopFileItemBuilder) {}
+  public vox(int paramInt1, int paramInt2)
+  {
+    this(null, paramInt1, paramInt2);
+  }
+  
+  public vox(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  {
+    urk.c("Q.qqstory.record.StoryFaceDrawable", "StoryFaceDrawable.");
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    setBounds(0, 0, paramInt1, paramInt2);
+    if (paramBitmap == null) {}
+    for (this.jdField_a_of_type_AndroidGraphicsBitmap = bacm.a();; this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap)
+    {
+      this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
+      this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(paramInt1 / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), paramInt2 / this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+      return;
+    }
+  }
+  
+  public void a(Bitmap paramBitmap)
+  {
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(this.jdField_a_of_type_Int / paramBitmap.getWidth(), this.b / paramBitmap.getHeight());
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    urk.c("Q.qqstory.record.StoryFaceDrawable", "StoryFaceDrawable draw start.");
+    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, null);
+    urk.c("Q.qqstory.record.StoryFaceDrawable", "StoryFaceDrawable draw end.");
+  }
+  
+  public int getOpacity()
+  {
+    return 0;
+  }
+  
+  public void setAlpha(int paramInt) {}
+  
+  public void setColorFilter(ColorFilter paramColorFilter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vox
  * JD-Core Version:    0.7.0.1
  */

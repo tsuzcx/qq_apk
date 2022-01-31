@@ -1,18 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.DefaultPlayerVideoListSynchronizer;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
 
 public class ngn
-  extends Job
+  implements View.OnClickListener
 {
-  public ngn(DefaultPlayerVideoListSynchronizer paramDefaultPlayerVideoListSynchronizer, int paramInt) {}
+  public ngn(ShopWebViewFragment paramShopWebViewFragment) {}
   
-  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelDefaultPlayerVideoListSynchronizer.b(this.jdField_a_of_type_Int);
-    return null;
+    if (this.a.jdField_a_of_type_Ngf != null) {
+      this.a.jdField_a_of_type_Ngf.b(this.a.getActivity(), this.a.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    }
+    try
+    {
+      this.a.jdField_a_of_type_Ngf.a.a(134248548, null, null, null, null, 0L, false);
+      return;
+    }
+    catch (Exception paramView) {}
   }
 }
 

@@ -1,25 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.List;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class adoh
-  implements ActionSheet.OnButtonClickListener
+  extends acju
 {
-  public adoh(VideoFileViewer paramVideoFileViewer, List paramList) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    VideoFileViewer.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer, this.jdField_a_of_type_JavaUtilList, paramInt, paramView);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.a.isShowing()) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.a.dismiss();
-    }
-  }
+  public adoh(adod paramadod) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adoh
  * JD-Core Version:    0.7.0.1
  */

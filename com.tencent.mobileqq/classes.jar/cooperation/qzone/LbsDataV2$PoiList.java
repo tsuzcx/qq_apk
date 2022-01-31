@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class LbsDataV2$PoiList
 {
   public GetGeoInfoRsp_V2 geoInfo;
-  public ArrayList poiInfos = new ArrayList();
+  public ArrayList<LbsDataV2.PoiInfo> poiInfos = new ArrayList();
   public LbsDataV2.GpsInfo userGpsInfo;
 }
 

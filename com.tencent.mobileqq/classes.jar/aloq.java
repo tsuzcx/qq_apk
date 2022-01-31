@@ -1,24 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.open.downloadnew.DownloadApi;
-import com.tencent.open.downloadnew.DownloadConstants;
+import java.util.HashSet;
+import java.util.Set;
 
-class aloq
-  implements DialogInterface.OnClickListener
+public class aloq
 {
-  aloq(alop paramalop) {}
+  public Set<Integer> a;
+  public boolean a;
+  public boolean b = false;
+  public boolean c = false;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public aloq()
   {
-    this.a.jdField_a_of_type_AndroidOsBundle.putBoolean(DownloadConstants.q, false);
-    DownloadApi.a(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_AndroidOsBundle, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail, this.a.b);
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aloq
  * JD-Core Version:    0.7.0.1
  */

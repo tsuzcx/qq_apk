@@ -9,9 +9,9 @@ import java.util.Map;
 public final class s_weishi
   extends JceStruct
 {
-  static Map cache_dc_report = new HashMap();
+  static Map<String, String> cache_dc_report = new HashMap();
   public String cover_url = "";
-  public Map dc_report;
+  public Map<String, String> dc_report;
   public String nick_name = "";
   public String weishi_feedId = "";
   public String weishi_fileId = "";
@@ -30,7 +30,7 @@ public final class s_weishi
   
   public s_weishi() {}
   
-  public s_weishi(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, Map paramMap)
+  public s_weishi(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, String paramString10, String paramString11, Map<String, String> paramMap)
   {
     this.weishi_feedId = paramString1;
     this.weishi_fileId = paramString2;
@@ -104,7 +104,7 @@ public final class s_weishi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_weishi
  * JD-Core Version:    0.7.0.1
  */

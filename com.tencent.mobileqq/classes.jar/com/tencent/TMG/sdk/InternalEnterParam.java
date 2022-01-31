@@ -8,7 +8,7 @@ public class InternalEnterParam
   protected byte[] freeFlowSignature;
   protected int relationType;
   
-  public InternalEnterParam(InternalEnterRoomParamBuilder paramInternalEnterRoomParamBuilder)
+  public InternalEnterParam(InternalEnterParam.InternalEnterRoomParamBuilder paramInternalEnterRoomParamBuilder)
   {
     super(paramInternalEnterRoomParamBuilder);
     this.bussType = paramInternalEnterRoomParamBuilder.bussType;
@@ -16,24 +16,10 @@ public class InternalEnterParam
     this.extraData = paramInternalEnterRoomParamBuilder.extraData;
     this.freeFlowSignature = paramInternalEnterRoomParamBuilder.freeFlowSignature;
   }
-  
-  public static class InternalEnterRoomParamBuilder
-    extends AVRoomMulti.EnterParam.Builder
-  {
-    protected int bussType = 7;
-    protected byte[] extraData;
-    protected byte[] freeFlowSignature;
-    protected int relationType = 6;
-    
-    public InternalEnterRoomParamBuilder(int paramInt)
-    {
-      super();
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.TMG.sdk.InternalEnterParam
  * JD-Core Version:    0.7.0.1
  */

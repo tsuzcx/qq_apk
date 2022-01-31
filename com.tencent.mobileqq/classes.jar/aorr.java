@@ -1,37 +1,35 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.view.Display;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import com.tencent.smtt.sdk.TbsReaderView;
 
-public class aorr
-  implements TVK_SDKMgr.InstallListener
+class aorr
+  implements View.OnClickListener
 {
-  public aorr(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  aorr(aorq paramaorq, int paramInt) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public void onClick(View paramView)
   {
-    ShortVideoPlayActivity.a(this.a, false);
-    ShortVideoPlayActivity.b(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.b(this.a));
-    this.a.a("腾讯视频插件加载失败");
-    ShortVideoPlayActivity.c(this.a, 3000);
-    ShortVideoPlayActivity.d(this.a, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onInstalledFailed:" + paramInt);
+    if (this.jdField_a_of_type_Int == 5018)
+    {
+      paramView = this.jdField_a_of_type_Aorq.jdField_a_of_type_AndroidAppActivity.getWindowManager().getDefaultDisplay();
+      if (paramView.getWidth() > paramView.getHeight()) {}
+      for (int i = 0; i != 0; i = 1)
+      {
+        this.jdField_a_of_type_Aorq.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(0);
+        return;
+      }
+      this.jdField_a_of_type_Aorq.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(1);
+      return;
     }
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    ShortVideoPlayActivity.a(this.a, true);
-    ShortVideoPlayActivity.b(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.b(this.a));
-    this.a.a.post(new aors(this));
+    aorp.a(this.jdField_a_of_type_Aorq.jdField_a_of_type_Aorp).doCommand(Integer.valueOf(this.jdField_a_of_type_Int), null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aorr
  * JD-Core Version:    0.7.0.1
  */

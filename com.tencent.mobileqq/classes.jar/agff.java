@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.ocr.OCRRecognitionResultActivity;
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import java.util.ArrayList;
 
-class agff
-  implements Runnable
+public class agff
 {
-  agff(agfe paramagfe, OcrRecogResult paramOcrRecogResult) {}
-  
-  public void run()
-  {
-    OCRRecognitionResultActivity.a(this.jdField_a_of_type_Agfe.a, this.jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult);
-  }
+  public int a;
+  public afzz a;
+  public atdk a;
+  public ArrayList<String> a;
+  public boolean a;
+  public int b = 100;
+  public boolean b;
+  public int c = 210;
+  public boolean c;
+  public int d = -1;
+  public boolean d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agff
  * JD-Core Version:    0.7.0.1
  */

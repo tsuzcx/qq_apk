@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.app.fms;
 
 import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.RecentUser;
 import java.io.Serializable;
 import java.util.List;
@@ -9,8 +10,8 @@ public class FullMessageSearchResult$SearchResultItem
   implements Serializable
 {
   public QQMessageFacade.Message lastMessage;
-  public List secondPageList;
-  public List secondPageMessageUniseq;
+  public List<MessageRecord> secondPageList;
+  public List<Long> secondPageMessageUniseq;
   public RecentUser user;
 }
 

@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.trooppiceffects.view.ShakePicView;
-
-class aket
-  implements Runnable
+public class aket
 {
-  aket(akes paramakes) {}
+  public void a() {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    this.a.a.c();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1000: 
+      a();
+      return;
+    }
+    b();
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aket
  * JD-Core Version:    0.7.0.1
  */

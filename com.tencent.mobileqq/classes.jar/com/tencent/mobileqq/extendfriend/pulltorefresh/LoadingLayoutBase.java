@@ -5,10 +5,11 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
+import antj;
 
 public abstract class LoadingLayoutBase
   extends FrameLayout
-  implements ILoadingLayout
+  implements antj
 {
   public LoadingLayoutBase(Context paramContext)
   {
@@ -27,15 +28,15 @@ public abstract class LoadingLayoutBase
   
   public abstract int a();
   
-  public abstract void a();
-  
   public abstract void a(float paramFloat);
   
-  public abstract void b();
-  
-  public abstract void c();
-  
   public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void h();
   
   public final void setHeight(int paramInt)
   {

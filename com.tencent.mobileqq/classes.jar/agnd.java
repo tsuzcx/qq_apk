@@ -1,70 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.binhai.BinHaiHandler;
-import com.tencent.mobileqq.binhai.BinHaiOpenRedPackDialog;
-import com.tencent.mobileqq.binhai.BinHaiOpenRedPackDialog.Listener;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment.2.1;
 import com.tencent.qphone.base.util.QLog;
 
-class agnd
-  implements BinHaiOpenRedPackDialog.Listener
+public class agnd
+  implements View.OnClickListener
 {
-  agnd(agnc paramagnc) {}
+  public agnd(LingHbFragment paramLingHbFragment) {}
   
-  public void a(BinHaiOpenRedPackDialog paramBinHaiOpenRedPackDialog)
+  public void onClick(View paramView)
   {
-    boolean bool = paramBinHaiOpenRedPackDialog.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanTorchActivity", 2, "onRedPackDialogBackPress isShowingRank=" + bool);
-    }
-    if (bool)
+    if ((paramView instanceof TextView))
     {
-      paramBinHaiOpenRedPackDialog.dismiss();
-      ScanTorchActivity.w(this.a.a, false);
-      this.a.a.finish();
+      paramView = ((TextView)paramView).getText().toString();
+      QLog.i("LingHbFragment", 2, "choice: " + paramView);
+      this.a.c.setText(paramView);
+      this.a.a.post(new LingHbFragment.2.1(this));
     }
-  }
-  
-  public void a(BinHaiOpenRedPackDialog paramBinHaiOpenRedPackDialog, String paramString1, String paramString2)
-  {
-    ScanTorchActivity.t(this.a.a, true);
-  }
-  
-  public void b(BinHaiOpenRedPackDialog paramBinHaiOpenRedPackDialog)
-  {
-    ScanTorchActivity.w(this.a.a, false);
-    this.a.a.b.reportClickEvent("dc00898", "", this.a.a.b.getCurrentAccountUin(), "0X8008390", "0X8008390", 0, 0, "", "", paramBinHaiOpenRedPackDialog.h, "");
-  }
-  
-  public void b(BinHaiOpenRedPackDialog paramBinHaiOpenRedPackDialog, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanTorchActivity", 2, "binhai onOpenRedBag, bill=" + paramString1 + ", actId=" + paramString2);
-    }
-    if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString1))) {
-      ((BinHaiHandler)this.a.a.b.getBusinessHandler(3)).a(paramString2, paramString1);
-    }
-    this.a.a.b.reportClickEvent("dc00898", "", this.a.a.b.getCurrentAccountUin(), "0X800838F", "0X800838F", 0, 0, "", "", ScanTorchActivity.c(this.a.a), "");
-    if (!this.a.a.isFinishing()) {
-      ScanTorchActivity.n(this.a.a);
-    }
-  }
-  
-  public void c(BinHaiOpenRedPackDialog paramBinHaiOpenRedPackDialog)
-  {
-    this.a.a.finish();
-  }
-  
-  public void d(BinHaiOpenRedPackDialog paramBinHaiOpenRedPackDialog)
-  {
-    paramBinHaiOpenRedPackDialog.dismiss();
-    ScanTorchActivity.w(this.a.a, false);
-    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agnd
  * JD-Core Version:    0.7.0.1
  */

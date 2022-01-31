@@ -1,122 +1,86 @@
-import android.text.TextUtils;
-import com.tencent.gdtad.aditem.GdtAd;
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.net.GdtHttp;
-import com.tencent.gdtad.views.canvas.GdtCanvasData;
-import com.tencent.gdtad.views.canvas.components.form.GdtCanvasFormComponentData;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.io.UnsupportedEncodingException;
-import java.lang.ref.WeakReference;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class qqc
+  extends ont
 {
-  private static qqe a(String paramString)
-  {
-    paramString = String.format("https://h5.gdt.qq.com/pageviewer/api/form/getSaveToken?traceId=%s", new Object[] { paramString });
-    qqe localqqe = new qqe(null);
-    localqqe.a(paramString);
-    localqqe.jdField_a_of_type_JavaLangString = "GET";
-    localqqe.jdField_b_of_type_JavaLangString = "application/json";
-    localqqe.jdField_a_of_type_Int = 5000;
-    localqqe.jdField_b_of_type_Int = 5000;
-    return localqqe;
-  }
+  public qqc(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView) {}
   
-  public static void a(WeakReference paramWeakReference1, WeakReference paramWeakReference2)
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    ThreadManager.post(new qqd(paramWeakReference1, paramWeakReference2), 5, null, true);
-  }
-  
-  private static void a(WeakReference paramWeakReference1, WeakReference paramWeakReference2, qqe paramqqe)
-  {
-    if ((paramqqe == null) || (!paramqqe.b()) || (!a(paramWeakReference1, paramWeakReference2)))
+    QLog.d("ReadInJoyFastWebBottomSocialView", 1, new Object[] { "handleDoFavoriteResult, isSuccess = ", Boolean.valueOf(paramBoolean), ", rowKey = ", paramString1, ", operationType = ", Integer.valueOf(paramInt), ", cid = ", paramString2 });
+    if ((ReadInJoyFastWebBottomSocialView.a(this.a) == null) || (ReadInJoyFastWebBottomSocialView.a(this.a) == null))
     {
-      GdtLog.d("GdtCanvasFormPrefetchTokenUtil", "onResponse error");
+      QLog.d("ReadInJoyFastWebBottomSocialView", 1, "handleDoFavoriteResult but articleInfo is null.");
       return;
     }
-    try
+    bbmy localbbmy;
+    if ((paramBoolean) && (ReadInJoyFastWebBottomSocialView.a(this.a).innerUniqueID.equals(paramString1)))
     {
-      paramWeakReference1 = new JSONObject(new String(paramqqe.jdField_b_of_type_ArrayOfByte, "UTF-8"));
-      paramqqe.d = paramWeakReference1.getInt("code");
-      String str = paramWeakReference1.optString("message");
-      GdtLog.b("GdtCanvasFormPrefetchTokenUtil", "onResponse code:" + paramqqe.d + " message:" + str);
-      if (paramqqe.d == 0)
-      {
-        paramWeakReference1 = paramWeakReference1.getJSONObject("data");
-        ((GdtCanvasFormComponentData)paramWeakReference2.get()).tokenForUpload = paramWeakReference1.getString("token");
-        return;
+      localbbmy = new bbmy(ReadInJoyFastWebBottomSocialView.a(this.a));
+      localbbmy.d(2000);
+      localbbmy.b(2);
+      localbbmy.a(bbmy.a(2));
+      QLog.d("ReadInJoyFastWebBottomSocialView", 1, "handleDoFavoriteResult,operationType=" + paramInt + ",button status:" + ReadInJoyFastWebBottomSocialView.d(this.a).isSelected());
+      if (paramInt != 1) {
+        break label319;
       }
+      ArrayList localArrayList = (ArrayList)ReadInJoyFastWebBottomSocialView.a(this.a).get(ReadInJoyFastWebBottomSocialView.a(this.a).innerUniqueID);
+      paramString1 = localArrayList;
+      if (localArrayList == null) {
+        paramString1 = new ArrayList();
+      }
+      paramString1.add(paramString2);
+      ReadInJoyFastWebBottomSocialView.a(this.a).put(ReadInJoyFastWebBottomSocialView.a(this.a).innerUniqueID, paramString1);
+      if (!ReadInJoyFastWebBottomSocialView.d(this.a).isSelected()) {
+        break label308;
+      }
+      localbbmy.a(ReadInJoyFastWebBottomSocialView.a);
+      ReadInJoyFastWebBottomSocialView.b(this.a, true);
+      localbbmy.a();
     }
-    catch (UnsupportedEncodingException paramWeakReference1)
-    {
-      GdtLog.d("GdtCanvasFormPrefetchTokenUtil", "onResponse", paramWeakReference1);
-      return;
-      GdtLog.d("GdtCanvasFormPrefetchTokenUtil", "onResponse error");
-      return;
-    }
-    catch (JSONException paramWeakReference1)
-    {
-      GdtLog.d("GdtCanvasFormPrefetchTokenUtil", "onResponse", paramWeakReference1);
-    }
-  }
-  
-  private static boolean a(WeakReference paramWeakReference1, WeakReference paramWeakReference2)
-  {
-    return (paramWeakReference1 != null) && (paramWeakReference1.get() != null) && (((GdtCanvasData)paramWeakReference1.get()).isValid()) && (paramWeakReference2 != null) && (paramWeakReference2.get() != null) && (((GdtCanvasFormComponentData)paramWeakReference2.get()).isValid()) && (!TextUtils.isEmpty(((GdtCanvasData)paramWeakReference1.get()).ad.getTraceId()));
-  }
-  
-  private static void c(WeakReference paramWeakReference1, WeakReference paramWeakReference2)
-  {
-    if (!a(paramWeakReference1, paramWeakReference2))
-    {
-      GdtLog.d("GdtCanvasFormPrefetchTokenUtil", "prefetch error");
-      return;
-    }
-    String str = ((GdtCanvasData)paramWeakReference1.get()).ad.getTraceId();
-    int i = 0;
     for (;;)
     {
-      qqe localqqe;
-      if (i < 3)
+      ReadInJoyFastWebBottomSocialView.b(this.a, false);
+      return;
+      label308:
+      ReadInJoyFastWebBottomSocialView.c(this.a, false);
+      continue;
+      label319:
+      if (paramInt == 2)
       {
-        if (!a(paramWeakReference1, paramWeakReference2))
+        ReadInJoyFastWebBottomSocialView.a(this.a).remove(ReadInJoyFastWebBottomSocialView.a(this.a).innerUniqueID);
+        if (!ReadInJoyFastWebBottomSocialView.d(this.a).isSelected())
         {
-          GdtLog.d("GdtCanvasFormPrefetchTokenUtil", "prefetch error");
-          return;
+          localbbmy.a(ReadInJoyFastWebBottomSocialView.b);
+          ReadInJoyFastWebBottomSocialView.b(this.a, false);
+          localbbmy.a();
         }
-        localqqe = a(str);
-        if (localqqe != null) {}
-      }
-      else
-      {
-        GdtLog.d("GdtCanvasFormPrefetchTokenUtil", "prefetch error");
-        return;
-      }
-      GdtHttp.a(localqqe);
-      a(paramWeakReference1, paramWeakReference2, localqqe);
-      if ((localqqe.b()) && (localqqe.d == 0)) {
-        break;
-      }
-      try
-      {
-        Thread.sleep(1000L);
-        i += 1;
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        for (;;)
+        else
         {
-          GdtLog.d("GdtCanvasFormPrefetchTokenUtil", "prefetch", localInterruptedException);
+          ReadInJoyFastWebBottomSocialView.c(this.a, true);
         }
       }
+    }
+  }
+  
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, ArrayList<String> paramArrayList)
+  {
+    QLog.d("ReadInJoyFastWebBottomSocialView", 1, "handleFavoriteStatus, isSuccess = " + paramBoolean1 + ", rowKey =  " + paramString + ", isFavorite = " + paramBoolean2 + ", cidList = " + paramArrayList);
+    if ((paramBoolean1) && (ReadInJoyFastWebBottomSocialView.a(this.a).innerUniqueID.equals(paramString)))
+    {
+      ReadInJoyFastWebBottomSocialView.a(this.a).put(paramString, paramArrayList);
+      ReadInJoyFastWebBottomSocialView.b(this.a, paramBoolean2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qqc
  * JD-Core Version:    0.7.0.1
  */

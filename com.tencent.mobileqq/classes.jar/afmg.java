@@ -1,39 +1,20 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.widget.ActionSheet;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
 
-public class afmg
-  implements View.OnClickListener
+class afmg
+  implements aryj
 {
-  public afmg(NearbyProfileEditPanel paramNearbyProfileEditPanel, int paramInt) {}
+  afmg(afmf paramafmf) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    PicInfo localPicInfo = (PicInfo)paramView.getTag();
-    if (localPicInfo == null) {
-      return;
-    }
-    ActionSheet localActionSheet = ActionSheet.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity);
-    if (this.jdField_a_of_type_Int != 0) {
-      localActionSheet.c(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources().getString(2131437437));
-    }
-    localActionSheet.c("查看大图");
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.jdField_a_of_type_JavaUtilArrayList.size() > 1) {
-      localActionSheet.a("删除照片", 3);
-    }
-    localActionSheet.c(2131433029);
-    localActionSheet.a(new afmh(this, paramView, localPicInfo, localActionSheet));
-    localActionSheet.show();
+    this.a.jdField_a_of_type_Aryq.a(this.a.jdField_a_of_type_JavaUtilList, 2, 5);
+    this.a.jdField_a_of_type_Aryq.a();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryMediaBaseFragment.v();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afmg
  * JD-Core Version:    0.7.0.1
  */

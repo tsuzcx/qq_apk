@@ -1,27 +1,26 @@
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.TroopEnterEffectData;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
 
 class ajku
-  implements Runnable
+  implements Comparator<ajkx>
 {
-  ajku(ajkt paramajkt, int paramInt, TroopEnterEffectController.TroopEnterEffectData paramTroopEnterEffectData) {}
+  ajku(ajkt paramajkt) {}
   
-  public void run()
+  public int a(ajkx paramajkx1, ajkx paramajkx2)
   {
-    QLog.d("TroopEnterEffect.Controller", 2, "download Res isAIO = " + this.jdField_a_of_type_Ajkt.a.a);
-    if (this.jdField_a_of_type_Ajkt.a.a)
+    if ((paramajkx1 == null) || (paramajkx2 == null)) {}
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopEnterEffect.Controller", 2, "download Res callback success id = " + this.jdField_a_of_type_Int + " showAnimation");
+      return 0;
+      if (paramajkx1.a > paramajkx2.a) {
+        return 1;
       }
-      this.jdField_a_of_type_Ajkt.a.a(this.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController$TroopEnterEffectData);
-    }
+    } while (paramajkx1.a >= paramajkx2.a);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajku
  * JD-Core Version:    0.7.0.1
  */

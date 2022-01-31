@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class sso2sns_0x3_blocklist$BlockUinInfo
-  extends MessageMicro
+  extends MessageMicro<BlockUinInfo>
 {
   public static final int UINT32_SOURCE_ID_FIELD_NUMBER = 2;
   public static final int UINT32_SOURCE_SUB_ID_FIELD_NUMBER = 3;
@@ -19,7 +19,7 @@ public final class sso2sns_0x3_blocklist$BlockUinInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.sso2sns.cmd0x3.sso2sns_0x3_blocklist.BlockUinInfo
  * JD-Core Version:    0.7.0.1
  */

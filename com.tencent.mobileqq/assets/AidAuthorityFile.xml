@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<list>
+    <!--只有id有用，增加可读性，先加上几个属性，relase版本时，可以去除其他几个属性。-->
+	<business id="ce2d9f" path="com.tencent.biz.pubaccount.readinjoy.model.AdvertisementInfoModule#makeReqAdvertisePara" author="freemanyao" info="kandian"/>
+	<business id="d61533" path="com.tencent.gdtad.aditem.GdtAdLoader#load" author="yutinglin" info="七巧板"/>
+	<business id="23c763" path="cooperation.qzone.PlatformInfor#appendGdtDeviceInfo" author="waydeyu" info="空间广告"/>
+	<business id="1b0ad2" path="com.tencent.biz.subscribe.network.GetSubscribeFeedDetailRequest#GetSubscribeFeedDetailRequest" author="zoeyqi" info="QQ认证号"/>
+	<business id="e8d69a" path="com.tencent.mobileqq.mini.util.AdUtils#getDeviceInfo" author="paytongu" info="手Q小程序/小游戏"/>
+	<business id="f55355" path="buluo.qq.com" author="freemanyao" info="兴趣部落商业化"/>
+	<business id="cd22b9" path="EcshopAdHandler.pullAd" author="parsonswang" info="QQ购物公众号"/>
+	<business id="7cf504" path="VipComicADHelper.getDeviceInfo" author="eddyjyliu" info="波洞星球"/>
+	<business id="1018ec" path="cooperation.vip.manager.GdtGeneralManager" author="jemstyli" info="增值研发中心"/>
+	<business id="a03996" path="com.tencent.weather#get_device_info" author="inkfan,yuqicai" info="社交平台产品部"/>
+	<business id="e1ee76" path="https://bookshelf.html5.qq.com" author="freemanyao" info="增值产品部/商业产品中心"/>
+	<business id="c57534" path="qc.vip.qq.com" author="sluckyliu" info="PCG平台与内容事业群/社交娱乐产品部/波洞星球产品中心"/>
+</list>

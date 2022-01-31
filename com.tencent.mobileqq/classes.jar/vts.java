@@ -1,20 +1,48 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOPhotoListAdapter;
-import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
-import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class vts
-  implements Runnable
+  implements vsp
 {
-  public vts(AIOPhotoListAdapter paramAIOPhotoListAdapter, AIOShortVideoData paramAIOShortVideoData) {}
+  public int a;
+  public String a;
+  public WeakReference<QRDisplayActivity> a;
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOPhotoListAdapter.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.g, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.f, 0);
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    QRDisplayActivity localQRDisplayActivity;
+    do
+    {
+      do
+      {
+        return;
+        localQRDisplayActivity = (QRDisplayActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      } while (localQRDisplayActivity == null);
+      if (QLog.isColorLevel()) {
+        QLog.d("QRDisplayActivity", 2, String.format("onReceive qrcode url:%s suc:%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) }));
+      }
+    } while ((localQRDisplayActivity.b) || (localQRDisplayActivity.isFinishing()));
+    if (!paramBoolean)
+    {
+      localQRDisplayActivity.g();
+      return;
+    }
+    localQRDisplayActivity.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramString);
+    paramString = vvp.a(paramString, -1);
+    if (paramString != null)
+    {
+      localQRDisplayActivity.a = paramString;
+      localQRDisplayActivity.f();
+      return;
+    }
+    localQRDisplayActivity.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     vts
  * JD-Core Version:    0.7.0.1
  */

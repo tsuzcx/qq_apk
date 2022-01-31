@@ -1,32 +1,21 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.device.msg.data.DeviceMsgHandle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SecSvcObserver;
-import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
 
-public class qgb
-  extends SecSvcObserver
+class qgb
+  implements DialogInterface.OnShowListener
 {
-  public qgb(DeviceMsgHandle paramDeviceMsgHandle) {}
+  qgb(qfy paramqfy) {}
   
-  protected void a(boolean paramBoolean, int paramInt, String paramString)
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    if (paramBoolean)
-    {
-      if (paramInt == 1)
-      {
-        EquipmentLockImpl.a().a(this.a.b, BaseApplicationImpl.getApplication(), this.a.b.getCurrentAccountUin(), true);
-        return;
-      }
-      EquipmentLockImpl.a().a(this.a.b, BaseApplicationImpl.getApplication(), this.a.b.getCurrentAccountUin(), false);
-      return;
-    }
-    EquipmentLockImpl.a().a(this.a.b, BaseApplicationImpl.getApplication(), this.a.b.getCurrentAccountUin(), false);
+    qfy.a(this.a, "mDisLikeActionSheet onShow() on VideoFeedsPlayActivity");
+    qfy.a(this.a).getWindow().clearFlags(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qgb
  * JD-Core Version:    0.7.0.1
  */

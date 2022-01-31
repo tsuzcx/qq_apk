@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class uvv
-  implements Runnable
+class uvv
+  implements View.OnClickListener
 {
-  public uvv(RecordSoundPanel paramRecordSoundPanel, String paramString) {}
+  uvv(uvu paramuvu) {}
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel.c();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uvv
  * JD-Core Version:    0.7.0.1
  */

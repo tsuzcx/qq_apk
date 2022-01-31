@@ -1,35 +1,19 @@
-import android.os.Bundle;
-import com.tencent.biz.huanjiplugin.HuanjiPluginStartListener;
-import com.tencent.biz.troop.TroopMemberApiService;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeCommentView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-class pbj
-  implements HuanjiPluginStartListener
+public class pbj
+  extends pba
 {
-  pbj(paz parampaz, Bundle paramBundle, int paramInt) {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public pbj(NativeCommentView paramNativeCommentView, int paramInt1, int paramInt2, int paramInt3, ArticleInfo paramArticleInfo)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putInt("state", paramInt2);
-    this.jdField_a_of_type_AndroidOsBundle.putInt("percentage", paramInt3);
-    this.jdField_a_of_type_AndroidOsBundle.putLong("errCode", 0L);
-    if ((paramInt2 == 6) && (this.jdField_a_of_type_Int == 2)) {
-      this.jdField_a_of_type_AndroidOsBundle.putBoolean("actionFinish", true);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Paz.a.a(80, this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      if ((paramInt2 == 4) && (this.jdField_a_of_type_Int == 1)) {
-        this.jdField_a_of_type_AndroidOsBundle.putBoolean("actionFinish", true);
-      }
-    }
+    super(paramInt1, paramInt2, paramInt3);
   }
   
-  public void a(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putLong("errCode", paramInt);
-    this.jdField_a_of_type_AndroidOsBundle.putBoolean("actionFinish", true);
-    this.jdField_a_of_type_Paz.a.a(80, this.jdField_a_of_type_AndroidOsBundle);
+    obz.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.a.a.a(), 4, false, 7, false);
+    qoe.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeCommentView.a.a.e());
   }
 }
 

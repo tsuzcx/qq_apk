@@ -1,65 +1,59 @@
 import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.biz.pubaccount.readinjoy.video.OrientationDetector;
-import com.tencent.biz.pubaccount.readinjoy.video.OrientationDetector.OnOrientationChangedListener;
+import com.tencent.av.ui.funchat.zimu.ZimuView;
+import java.lang.ref.WeakReference;
 
-public class mde
-  extends OrientationEventListener
+public abstract class mde
+  extends mdb
 {
-  public mde(OrientationDetector paramOrientationDetector, Context paramContext, OrientationDetector.OnOrientationChangedListener paramOnOrientationChangedListener)
+  public mde(Context paramContext, WeakReference<ZimuView> paramWeakReference, int paramInt1, int paramInt2, float paramFloat)
   {
-    super(paramContext);
+    super(paramContext, paramWeakReference, paramInt1, paramInt2, paramFloat);
   }
   
-  public void onOrientationChanged(int paramInt)
+  protected abstract int a(int paramInt);
+  
+  public int a(long paramLong)
   {
-    if (!OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector, paramInt)) {}
-    label136:
-    for (;;)
+    int i = 0;
+    if (a())
     {
-      return;
-      int j = OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector);
-      int i;
-      if (((paramInt >= 0) && (paramInt <= 30)) || (paramInt > 330)) {
-        i = 1;
-      }
-      for (;;)
-      {
-        if (i == OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector)) {
-          break label136;
-        }
-        OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector, i);
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector$OnOrientationChangedListener == null) {
-          break;
-        }
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector$OnOrientationChangedListener.a(i);
-        return;
-        if ((paramInt > 70) && (paramInt <= 110))
-        {
-          i = 8;
-        }
-        else if ((paramInt > 150) && (paramInt <= 210))
-        {
-          i = 9;
-        }
-        else
-        {
-          i = j;
-          if (paramInt > 250)
-          {
-            i = j;
-            if (paramInt <= 290) {
-              i = 0;
-            }
-          }
-        }
-      }
+      i = b(paramLong);
+      this.e -= i;
     }
+    return i;
+  }
+  
+  public void a(long paramLong)
+  {
+    super.a(paramLong);
+    this.e = (b(paramLong) + this.e);
+  }
+  
+  public boolean a()
+  {
+    return this.e + c() > 0;
+  }
+  
+  protected int b(long paramLong)
+  {
+    return (int)(a(this.jdField_a_of_type_Kws.a.length()) * paramLong / 1000L);
+  }
+  
+  public void c()
+  {
+    if ((this.jdField_a_of_type_Boolean) && (this.e + c() < 0)) {
+      this.e = this.g;
+    }
+  }
+  
+  public boolean c()
+  {
+    return (this.e + c() > 0) && (this.e < this.g) && (this.f + d() > 0) && (this.f < this.h);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mde
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,22 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribeBaseFragment;
+
 class vxv
-  implements Runnable
+  implements View.OnClickListener
 {
-  vxv(vxt paramvxt, String paramString) {}
+  vxv(vxu paramvxu) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    vxt.a(this.jdField_a_of_type_Vxt, this.jdField_a_of_type_JavaLangString);
+    if ((this.a.a() instanceof SubscribeBaseFragment)) {
+      ((SubscribeBaseFragment)this.a.a()).a(this.a.a(2));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vxv
  * JD-Core Version:    0.7.0.1
  */

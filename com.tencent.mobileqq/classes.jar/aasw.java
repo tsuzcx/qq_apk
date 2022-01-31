@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARBaseRender;
-import com.tencent.mobileqq.arcard.ARCardRender;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
 public class aasw
-  implements Runnable
+  implements Comparator<RecentUser>
 {
-  public aasw(ARCardRender paramARCardRender, ARBaseRender paramARBaseRender) {}
+  public aasw(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void run()
+  public int a(RecentUser paramRecentUser1, RecentUser paramRecentUser2)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender != null) && (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender != this.jdField_a_of_type_ComTencentMobileqqArcardARCardRender.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender)) {
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.d();
-    }
+    return (int)(paramRecentUser2.showUpTime - paramRecentUser1.showUpTime);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aasw
  * JD-Core Version:    0.7.0.1
  */

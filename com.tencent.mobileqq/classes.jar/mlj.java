@@ -1,18 +1,25 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.widget.ImageView;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.mobileqq.widget.QQMapView;
 
 public class mlj
-  implements Runnable
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public mlj(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, BaseArticleInfo paramBaseArticleInfo) {}
+  public mlj(PoiMapActivity paramPoiMapActivity) {}
   
-  public void run()
+  public boolean onPreDraw()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) {
-      PublicAccountReportUtils.a(null, "", "0X8008E28", "0X8008E28", 0, 0, "", "", "", VideoReporter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoVid, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.innerUniqueID, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mChannelID, null), false);
+    this.a.o = PoiMapActivity.e(this.a).getMeasuredHeight();
+    PoiMapActivity.a(this.a, PoiMapActivity.a(this.a).getMeasuredHeight());
+    if ((this.a.o > 0) && (PoiMapActivity.a(this.a) > 0))
+    {
+      this.a.a((this.a.o - PoiMapActivity.b(this.a)) / 2 + this.a.u, false);
+      PoiMapActivity.f(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
+      PoiMapActivity.b(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
     }
+    return true;
   }
 }
 

@@ -10,13 +10,13 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class oidb_c2c_searcher$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatMessageField friends = PBField.initRepeatMessage(oidb_c2c_searcher.Iterator.class);
-  public final PBRepeatField msgs = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatMessageField<oidb_c2c_searcher.Iterator> friends = PBField.initRepeatMessage(oidb_c2c_searcher.Iterator.class);
+  public final PBRepeatField<ByteStringMicro> msgs = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBEnumField result = PBField.initEnum(0);
-  public final PBRepeatField segs = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> segs = PBField.initRepeat(PBBytesField.__repeatHelper__);
   
   static
   {
@@ -27,7 +27,7 @@ public final class oidb_c2c_searcher$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.searcher.oidb_c2c_searcher.RspBody
  * JD-Core Version:    0.7.0.1
  */

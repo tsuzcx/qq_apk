@@ -1,21 +1,37 @@
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
-import com.tencent.mobileqq.werewolves.WereWolvesLoadingView.LoadingCallback;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import com.tencent.mobileqq.activity.contacts.view.HeaderScrollView;
+import com.tencent.qphone.base.util.QLog;
 
-class aewi
-  implements WereWolvesLoadingView.LoadingCallback
+public class aewi
+  implements afex
 {
-  aewi(aewh paramaewh) {}
+  public aewi(TroopView paramTroopView) {}
   
-  public void a()
+  public void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a.a.a.setVisibility(8);
-    this.a.a.a(true);
+    if (QLog.isColorLevel()) {
+      QLog.i("addContacts.TroopView", 2, "onRefreshResult. position:" + paramInt + " success:" + paramBoolean);
+    }
+    paramObject = TroopView.a(this.a);
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      paramObject = paramObject.obtainMessage(14, paramInt, i);
+      TroopView.a(this.a).sendMessage(paramObject);
+      return;
+    }
+  }
+  
+  public void ap_()
+  {
+    if ((TroopView.a(this.a) != null) && (!TroopView.a(this.a).a())) {
+      TroopView.a(this.a).scrollTo(0, TroopView.a(this.a).a());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aewi
  * JD-Core Version:    0.7.0.1
  */

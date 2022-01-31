@@ -1,24 +1,30 @@
-import com.tencent.mobileqq.transfile.FileAssistantDownloader;
-
 public class aiuk
 {
+  public float a;
   public int a;
-  public long a;
   public String a;
   public boolean a;
+  public float b;
   public int b;
-  public boolean b = false;
-  public boolean c = false;
-  public boolean d = false;
-  
-  public aiuk(FileAssistantDownloader paramFileAssistantDownloader)
-  {
-    this.jdField_a_of_type_Boolean = false;
-  }
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
+  public int j;
+  public int k;
+  public int l;
+  public int m;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiuk
  * JD-Core Version:    0.7.0.1
  */

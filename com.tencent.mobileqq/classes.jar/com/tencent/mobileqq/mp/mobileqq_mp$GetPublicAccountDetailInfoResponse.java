@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class mobileqq_mp$GetPublicAccountDetailInfoResponse
-  extends MessageMicro
+  extends MessageMicro<GetPublicAccountDetailInfoResponse>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 50, 56, 64, 72, 82, 88, 96, 104, 112, 120, 128, 136, 144, 154, 162, 170, 178, 186, 192 }, new String[] { "ret_info", "seqno", "uin", "name", "display_number", "summary", "is_recv_msg", "is_recv_push", "certified_grade", "config_group_info", "is_show_share_button", "is_show_follow_button", "follow_type", "is_sync_lbs", "group_id", "show_flag", "account_flag", "luin", "config_background_color", "config_background_img", "config_group_info_new", "certified_description", "unified_account_descrpition", "account_flag2" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(0), "", "", "", Boolean.valueOf(false), Boolean.valueOf(false), Integer.valueOf(0), null, Boolean.valueOf(false), Boolean.valueOf(false), Integer.valueOf(0), Boolean.valueOf(false), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), "", "", null, "", "", Long.valueOf(0L) }, GetPublicAccountDetailInfoResponse.class);
   public final PBUInt32Field account_flag = PBField.initUInt32(0);
@@ -19,8 +19,8 @@ public final class mobileqq_mp$GetPublicAccountDetailInfoResponse
   public final PBUInt32Field certified_grade = PBField.initUInt32(0);
   public final PBStringField config_background_color = PBField.initString("");
   public final PBStringField config_background_img = PBField.initString("");
-  public final PBRepeatMessageField config_group_info = PBField.initRepeatMessage(mobileqq_mp.ConfigGroupInfo.class);
-  public final PBRepeatMessageField config_group_info_new = PBField.initRepeatMessage(mobileqq_mp.ConfigGroupInfo.class);
+  public final PBRepeatMessageField<mobileqq_mp.ConfigGroupInfo> config_group_info = PBField.initRepeatMessage(mobileqq_mp.ConfigGroupInfo.class);
+  public final PBRepeatMessageField<mobileqq_mp.ConfigGroupInfo> config_group_info_new = PBField.initRepeatMessage(mobileqq_mp.ConfigGroupInfo.class);
   public final PBStringField display_number = PBField.initString("");
   public final PBUInt32Field follow_type = PBField.initUInt32(0);
   public final PBUInt32Field group_id = PBField.initUInt32(0);

@@ -1,22 +1,32 @@
-import com.tencent.mobileqq.webview.swift.SwiftFloatViewUI;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class akuj
-  implements Runnable
+final class akuj
+  implements axrs
 {
-  public akuj(SwiftFloatViewUI paramSwiftFloatViewUI) {}
-  
-  public void run()
+  public void a(axsp paramaxsp, axsq paramaxsq)
   {
-    if ((this.a.a != null) && (this.a.a.a != null)) {
-      this.a.a.a.x();
+    if ((paramaxsp == null) || (paramaxsq == null)) {}
+    while (!(paramaxsp instanceof axro)) {
+      return;
     }
+    axro localaxro = (axro)paramaxsp;
+    localaxro.jdField_a_of_type_Long += paramaxsq.c;
+    paramaxsq.c = 0L;
+    paramaxsq = "bytes=" + localaxro.jdField_a_of_type_Long + "-";
+    localaxro.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaxsq);
+    paramaxsq = localaxro.jdField_a_of_type_JavaLangString;
+    if (paramaxsq.contains("range="))
+    {
+      paramaxsq = paramaxsq.substring(0, paramaxsq.lastIndexOf("range="));
+      localaxro.jdField_a_of_type_JavaLangString = (paramaxsq + "range=" + localaxro.jdField_a_of_type_Long);
+    }
+    QLog.i("AREngine_ARResourceDownload", 1, "IBreakDownFix. url = " + ((axro)paramaxsp).jdField_a_of_type_JavaLangString + ", offset=" + localaxro.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akuj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.profile.diy;
 
+import acfj;
 import android.content.Context;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity.OnMeasuredListener;
 import com.tencent.mobileqq.hiboom.HiBoomTextView;
 
 public class DiyTextView
   extends HiBoomTextView
 {
-  VipProfileCardDiyActivity.OnMeasuredListener a;
+  acfj a;
   
   public DiyTextView(Context paramContext)
   {
     super(paramContext);
   }
   
-  protected void onMeasure(int paramInt1, int paramInt2)
+  public void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     paramInt1 = getMeasuredWidth();
@@ -24,9 +24,9 @@ public class DiyTextView
     }
   }
   
-  public void setOnMeasuredListener(VipProfileCardDiyActivity.OnMeasuredListener paramOnMeasuredListener)
+  public void setOnMeasuredListener(acfj paramacfj)
   {
-    this.a = paramOnMeasuredListener;
+    this.a = paramacfj;
   }
 }
 

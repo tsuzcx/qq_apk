@@ -1,20 +1,23 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.qphone.base.util.QLog;
 
-class adza
-  implements Runnable
+public class adza
+  implements DialogInterface.OnClickListener
 {
-  adza(adyz paramadyz, RecyclerView.ViewHolder paramViewHolder) {}
+  public adza(PhotoListPanel paramPhotoListPanel) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView.findViewById(2131363012).setVisibility(0);
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView.findViewById(2131363011).setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListPanel", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adza
  * JD-Core Version:    0.7.0.1
  */

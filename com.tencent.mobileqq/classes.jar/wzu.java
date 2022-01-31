@@ -1,26 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.view.View;
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
-import com.tencent.mobileqq.widget.IndexView;
+import com.tencent.biz.videostory.widget.view.smartmusicview.EditVideoSmartMusicPart.1;
+import com.tencent.qphone.base.util.QLog;
+import java.io.IOException;
 
 public class wzu
-  implements DialogInterface.OnDismissListener
+  implements axrt
 {
-  public wzu(CountryActivity paramCountryActivity, int paramInt, TranslateAnimation paramTranslateAnimation) {}
+  public wzu(EditVideoSmartMusicPart.1 param1) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onResp(axsq paramaxsq)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.offsetTopAndBottom(-this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity.b.startAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
+    QLog.i("EditVideoSmartMusicPart", 1, "download smart anim onResp url:  resultcode: " + paramaxsq.c);
+    if (wzt.a(this.a.this$0) == null) {
+      return;
+    }
+    try
+    {
+      QLog.i("EditVideoSmartMusicPart", 1, "start unzip smart anim");
+      mpx.a(wzt.a(this.a.this$0), "/storage/emulated/0/Tencent/MobileQQ/video_story/");
+      return;
+    }
+    catch (IOException paramaxsq)
+    {
+      QLog.i("EditVideoSmartMusicPart", 1, "unzip smart anim failed" + paramaxsq);
+    }
   }
+  
+  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wzu
  * JD-Core Version:    0.7.0.1
  */

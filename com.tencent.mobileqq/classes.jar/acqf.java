@@ -1,47 +1,20 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.StaggeredGridLayoutManager;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
-public class acqf
-  extends RecyclerView.OnScrollListener
+class acqf
+  implements axbf
 {
-  public acqf(ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
+  acqf(acqc paramacqc) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void a()
   {
-    if (paramInt == 0)
-    {
-      URLDrawable.resume();
-      return;
-    }
-    URLDrawable.pause();
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
-    if ((!ExtendFriendGroupFragment.a(this.a)) && (!ExtendFriendGroupFragment.b(this.a)) && (this.a.a != null) && (ExtendFriendGroupFragment.a(this.a) != null) && (ExtendFriendGroupFragment.a(this.a).a() > 0) && (this.a.a.findViewByPosition(ExtendFriendGroupFragment.a(this.a).getItemCount() - 1) != null))
-    {
-      if (NetworkUtil.g(ExtendFriendGroupFragment.a(this.a)))
-      {
-        ExtendFriendGroupFragment.a(this.a, true);
-        ExtendFriendGroupFragment.a(this.a).a(0, true);
-        ReportController.b(ExtendFriendGroupFragment.a(this.a), "dc00898", "", "", "0X80092D9", "0X80092D9", 0, 0, "", "", "", "");
-      }
-    }
-    else {
-      return;
-    }
-    ExtendFriendGroupFragment.a(this.a).a(1, true);
+    axbl localaxbl = new axbl(3000, 360, 0);
+    localaxbl.a = true;
+    this.a.a.f.a(new axbe[] { localaxbl });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acqf
  * JD-Core Version:    0.7.0.1
  */

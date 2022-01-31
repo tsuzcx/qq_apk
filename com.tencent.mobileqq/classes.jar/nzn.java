@@ -1,27 +1,21 @@
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
-import com.tencent.biz.qqstory.storyHome.atvideo.model.AtVideoTextWatcher;
-import com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
 
 class nzn
-  implements Runnable
+  implements View.OnKeyListener
 {
-  nzn(nzm paramnzm) {}
+  nzn(nzl paramnzl) {}
   
-  public void run()
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(DetailCommentHelper.a(this.a.a), DetailCommentHelper.a(this.a.a), this.a.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, DetailCommentHelper.a(this.a.a).a);
-    DetailCommentHelper localDetailCommentHelper = this.a.a;
-    if (this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      DetailCommentHelper.a(localDetailCommentHelper, bool);
-      return;
-    }
+    nzl.a(this.a);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nzn
  * JD-Core Version:    0.7.0.1
  */

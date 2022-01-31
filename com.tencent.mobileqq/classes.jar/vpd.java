@@ -1,43 +1,55 @@
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder;
-import com.tencent.mobileqq.widget.BubbleImageView;
-import java.io.File;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import android.app.Dialog;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.view.AnimationPoint;
 
-class vpd
-  implements Runnable
+public class vpd
+  extends Dialog
 {
-  vpd(vpc paramvpc) {}
+  protected TextView a;
+  protected AnimationPoint a;
   
-  public void run()
+  public vpd(Context paramContext)
   {
-    Object localObject = (List)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopGiftMsgItemBuilder.b.get(this.a.b);
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((Runnable)((Iterator)localObject).next()).run();
-      }
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopGiftMsgItemBuilder.b.remove(this.a.b);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.getTag(2131362148).equals(this.a.jdField_a_of_type_JavaLangString))
-    {
-      localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = new ColorDrawable(this.a.jdField_a_of_type_Int);
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = new ColorDrawable(this.a.jdField_a_of_type_Int);
-      localObject = URLDrawable.getDrawable(new File(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopGiftMsgItemBuilder.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int)), (URLDrawable.URLDrawableOptions)localObject);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetBubbleImageView.setImageDrawable((Drawable)localObject);
-    }
+    super(paramContext, 2131689477);
+    View localView = LayoutInflater.from(paramContext).inflate(2131495718, null);
+    localView.setOnTouchListener(new vpe(this));
+    super.setContentView(localView);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint = ((AnimationPoint)super.findViewById(2131297008));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131301669));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setRadius(vms.a(paramContext, 25.0F));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setLoopTime(2000L);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setDuration(4000L);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setOnAnimationListener(new vpf(this, paramContext));
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.setIsVertical(paramBoolean);
+  }
+  
+  public void dismiss()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.b();
+    super.dismiss();
+  }
+  
+  public void show()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryViewAnimationPoint.a();
+    super.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vpd
  * JD-Core Version:    0.7.0.1
  */

@@ -9,11 +9,11 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_cmd0x68b$RefreshHistory
-  extends MessageMicro
+  extends MessageMicro<RefreshHistory>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_session_id = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField rpt_refresh_history = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
+  public final PBRepeatField<Integer> rpt_refresh_history = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
   
   static
   {
@@ -23,7 +23,7 @@ public final class oidb_cmd0x68b$RefreshHistory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.RefreshHistory
  * JD-Core Version:    0.7.0.1
  */

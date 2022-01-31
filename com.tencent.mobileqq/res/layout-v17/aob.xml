@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:gravity="center_horizontal" android:id="@id/bxv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fth" android:shadowColor="#34000000" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="9.0" android:layout_centerHorizontal="true" />
+    <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/apg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true">
+        <View android:gravity="center" android:id="@id/cdl" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_centerInParent="true" android:contentDescription="@string/qdb" android:translationY="17.0dip" />
+        <dov.com.qq.im.story.view.AnimationQIMCircleProgress android:id="@id/bbg" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_centerInParent="true" android:translationY="17.0dip" />
+        <ImageView android:id="@id/cdo" android:visibility="gone" android:clickable="true" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_centerInParent="true" android:contentDescription="@string/qdf" android:translationY="17.0dip" />
+        <View android:id="@id/bbh" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_centerInParent="true" android:translationY="17.0dip" />
+    </RelativeLayout>
+    <dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCountTimeLayout android:id="@id/apv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="148.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <RelativeLayout android:gravity="center" android:id="@id/alx" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:layout_above="@id/apv" android:layout_centerHorizontal="true">
+        <TextView android:gravity="center" android:id="@id/amf" android:background="@drawable/bg0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textAlignment="center" />
+    </RelativeLayout>
+</RelativeLayout>

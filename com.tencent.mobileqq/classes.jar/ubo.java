@@ -1,38 +1,27 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopClassChoiceActivity;
-import com.tencent.mobileqq.activity.TroopClassChoiceActivity.GetClassChoiceCallBack;
-import com.tencent.mobileqq.troopinfo.GroupCatalogBean;
-import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
-import java.util.ArrayList;
+import android.app.Activity;
+import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
 
-public class ubo
-  implements Runnable
+class ubo
+  implements ubr
 {
-  public ubo(TroopClassChoiceActivity.GetClassChoiceCallBack paramGetClassChoiceCallBack) {}
+  ubo(ubn paramubn, PublishParam paramPublishParam, String paramString, int paramInt) {}
   
-  public void run()
+  public void a()
   {
-    if (TextUtils.isEmpty(this.a.a.jdField_a_of_type_JavaLangString)) {
-      this.a.a.jdField_a_of_type_JavaUtilArrayList = GroupCatalogTool.a(this.a.a).a();
-    }
-    for (;;)
-    {
-      TroopClassChoiceActivity.a(this.a.a).notifyDataSetChanged();
-      return;
-      this.a.a.jdField_a_of_type_JavaUtilArrayList = GroupCatalogTool.a(this.a.a).a(this.a.a.jdField_a_of_type_JavaLangString);
-      if ((this.a.a.jdField_a_of_type_JavaUtilArrayList != null) && (this.a.a.jdField_a_of_type_JavaUtilArrayList.size() > 0))
-      {
-        GroupCatalogBean localGroupCatalogBean = (GroupCatalogBean)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(0);
-        if (localGroupCatalogBean.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean != null) {
-          this.a.a.setTitle(localGroupCatalogBean.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean.jdField_a_of_type_JavaLangString);
-        }
-      }
-    }
+    urk.c("QQStoryTakeVideoHelper", "generate manifest file success.start publishing.");
+    ubn.a(this.jdField_a_of_type_Ubn, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishPublishParam, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+  }
+  
+  public void b()
+  {
+    urk.e("QQStoryTakeVideoHelper", "generate manifest file error. let's exit.");
+    ubn.a(this.jdField_a_of_type_Ubn).finish();
+    ubn.a(this.jdField_a_of_type_Ubn).overridePendingTransition(0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ubo
  * JD-Core Version:    0.7.0.1
  */

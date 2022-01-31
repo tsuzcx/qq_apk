@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Stt$CorretTextReq
-  extends MessageMicro
+  extends MessageMicro<CorretTextReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_text = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -35,7 +35,7 @@ public final class Stt$CorretTextReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.cmd0x355.Stt.CorretTextReq
  * JD-Core Version:    0.7.0.1
  */

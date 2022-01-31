@@ -1,25 +1,26 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.AssociatedAccountOptPopBar;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class aipb
-  implements Runnable
+final class aipb
+  implements EIPCResultCallback
 {
-  public aipb(AssociatedAccountOptPopBar paramAssociatedAccountOptPopBar) {}
+  aipb(long paramLong, String paramString) {}
   
-  public void run()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if ((this.a.a != null) && (this.a.a.app != null) && (this.a.a()))
-    {
-      this.a.a.app.f(false);
-      SubAccountControll.a(this.a.a.app, false);
+    paramEIPCResult = paramEIPCResult.data.getString("resData");
+    aing.a().callbackFromRequest(this.jdField_a_of_type_Long, 0, this.jdField_a_of_type_JavaLangString, paramEIPCResult);
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameToolCmdChannel", 2, " GET_DRESS_PATH onCallback resJson:" + paramEIPCResult);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aipb
  * JD-Core Version:    0.7.0.1
  */

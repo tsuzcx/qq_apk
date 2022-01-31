@@ -1,34 +1,45 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
-
-public class umz
-  extends AnimateUtils.AnimationAdapter
+public class umz<T>
+  extends umy
 {
-  public umz(VisitorsActivity paramVisitorsActivity) {}
+  public T a;
+  public String a;
+  public unb<T> a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public umz(unb<T> paramunb)
   {
-    if (this.a.c > 0)
-    {
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 200L);
-      return;
+    this.jdField_a_of_type_JavaLangString = "GetResultSimpleStep";
+    this.jdField_a_of_type_Unb = paramunb;
+  }
+  
+  public Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Unb != null) {
+      this.jdField_a_of_type_Unb.a(this.jdField_a_of_type_JavaLangObject);
     }
-    this.a.f.setVisibility(4);
   }
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void a(Object paramObject)
   {
-    paramAnimation = this.a;
-    paramAnimation.c -= 1;
-    this.a.f.setVisibility(0);
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     umz
  * JD-Core Version:    0.7.0.1
  */

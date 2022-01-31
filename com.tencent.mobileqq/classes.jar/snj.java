@@ -1,44 +1,31 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.fpsreport.FPSSwipListView;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.theme.diy.ThemeBackground;
-import com.tencent.mobileqq.vas.VasApngUtil;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-public class snj
-  implements Runnable
+class snj
+  extends tco
 {
-  public snj(Conversation paramConversation) {}
+  snj(sng paramsng) {}
   
-  public void run()
+  public void a()
   {
-    this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1051);
-    ThemeBackground localThemeBackground = new ThemeBackground();
-    if (ThemeUtil.isNowThemeIsDIY())
-    {
-      localThemeBackground.pageIndex = 100;
-      ThemeBackground.getThemeBackground(this.a.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.getContext(), "theme_bg_message_path_png", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), localThemeBackground);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.a.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(1051, localThemeBackground));
-      return;
-      if (ThemeUtil.isNowThemeIsAnimate())
-      {
-        localThemeBackground.path = ThemeUtil.getAnimatePathByTag(2);
-        Drawable localDrawable = this.a.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.getContext().getResources().getDrawable(2130845888);
-        localThemeBackground.img = VasApngUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localThemeBackground.path, "-conversation-", localDrawable, VasApngUtil.a, "-conversation-", null);
-      }
-    }
+    super.a();
+    snf.a(this.a.a, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    urp.a("home_page", "suc_share", 1, paramInt, new String[] { urp.b(this.a.a.a) + "", urp.a(this.a.a.a) + "", this.a.a.a.feedId });
+  }
+  
+  public void b(int paramInt)
+  {
+    super.b(paramInt);
+    urp.a("home_page", "share_chanel", 1, paramInt, new String[] { urp.b(this.a.a.a) + "", urp.a(this.a.a.a) + "", this.a.a.a.feedId });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     snj
  * JD-Core Version:    0.7.0.1
  */

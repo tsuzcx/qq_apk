@@ -1,66 +1,46 @@
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.views.form.GdtFormData;
+import com.tencent.gdtad.views.form.framework.GdtFormCommitUtil.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.lang.ref.WeakReference;
 
 public class yqu
-  implements Runnable
 {
-  public yqu(ApolloManager paramApolloManager, boolean paramBoolean, int paramInt) {}
-  
-  public void run()
+  public static void a(GdtAd paramGdtAd, GdtFormData paramGdtFormData, WeakReference<yqt> paramWeakReference)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a != null)
-    {
-      localObject2 = (ApolloDaoManager)this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a.getManager(154);
-      localObject1 = new ArrayList();
-      if (localObject2 != null)
-      {
-        if (!this.jdField_a_of_type_Boolean) {
-          break label65;
-        }
-        localObject1 = ((ApolloDaoManager)localObject2).c();
-      }
-      if ((localObject1 != null) && (((List)localObject1).size() != 0)) {
-        break label77;
-      }
+    if ((paramWeakReference != null) && (paramWeakReference.get() != null)) {
+      ((yqt)paramWeakReference.get()).a();
     }
-    label65:
-    label77:
+    ThreadManager.post(new GdtFormCommitUtil.1(paramGdtAd, paramGdtFormData, paramWeakReference), 5, null, true);
+  }
+  
+  private static yqq b(GdtAd paramGdtAd, GdtFormData paramGdtFormData)
+  {
+    Object localObject;
+    if ((paramGdtAd == null) || (!paramGdtAd.isValid()) || (paramGdtAd.actionSetId == -2147483648L) || (paramGdtFormData == null) || (!paramGdtFormData.isValid()))
+    {
+      yny.d("GdtFormCommitUtil", "commit error");
+      localObject = new yqq(4, -1, null);
+    }
+    yqq localyqq;
     do
     {
-      return;
-      localObject1 = ((ApolloDaoManager)localObject2).b(this.jdField_a_of_type_Int);
-      break;
-      localObject2 = new ArrayList();
-      int i = 0;
-      while (i < ((List)localObject1).size())
+      do
       {
-        ((List)localObject2).add(((List)localObject1).get(i));
-        if (((i + 1) % 8 == 0) || (i + 1 == ((List)localObject1).size()))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a((List)localObject2, this.jdField_a_of_type_Int + "apollo_key" + i);
-          ((List)localObject2).clear();
-        }
-        i += 1;
-      }
-    } while (!QLog.isColorLevel());
-    Object localObject2 = new StringBuilder("update action[");
-    Object localObject1 = ((List)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext()) {
-      ((StringBuilder)localObject2).append(((ApolloActionData)((Iterator)localObject1).next()).actionId).append(",");
-    }
-    ((StringBuilder)localObject2).append("]");
-    QLog.d("ApolloManager", 2, "checkPanelActionRes... action: " + ((StringBuilder)localObject2).toString());
+        return localObject;
+        yqw.a(paramGdtAd, paramGdtFormData);
+        localyqq = yrc.a(paramGdtFormData);
+        localObject = localyqq;
+      } while (localyqq == null);
+      localObject = localyqq;
+    } while (localyqq.a != 1);
+    ysn.a(paramGdtAd, paramGdtFormData);
+    return localyqq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yqu
  * JD-Core Version:    0.7.0.1
  */

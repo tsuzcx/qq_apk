@@ -1,75 +1,59 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.nearby.NearbyURLSafeUtil;
-import com.tencent.qphone.base.util.QLog;
+import Wallet.SkinInfo;
+import java.util.Iterator;
+import java.util.List;
 
 public class agoc
-  extends agod
 {
-  private int a;
-  public String a;
-  public String b;
-  private boolean b;
-  public String c;
-  private boolean c;
-  String d = "";
-  String e = "";
-  public String f = "";
-  
-  public agoc()
+  public static agoa a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_c_of_type_Boolean = true;
+    agoa localagoa = new agoa(ajjy.a(2131639642));
+    localagoa.jdField_b_of_type_Int = -2;
+    localagoa.jdField_a_of_type_WalletSkinInfo.skin_id = -2;
+    localagoa.jdField_a_of_type_WalletSkinInfo.skin_permission_state = 1L;
+    localagoa.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title = paramString;
+    localagoa.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.icon = null;
+    localagoa.jdField_a_of_type_Int = 0;
+    return localagoa;
   }
   
-  void a(AppInterface paramAppInterface, Bundle paramBundle)
+  public static agoa a(List<agoa> paramList, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramBundle.getString("PromotionID");
-    this.jdField_b_of_type_JavaLangString = paramBundle.getString("PromotionWords");
-    this.jdField_c_of_type_JavaLangString = paramBundle.getString("PromotionIconUrl");
-    this.d = paramBundle.getString("PromotionUserFrom");
-    this.e = paramBundle.getString("PromotionUserTo");
-    this.f = paramBundle.getString("PromotionUserShareId");
-    if (!TextUtils.isEmpty(this.g))
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      com.tencent.mobileqq.arcard.ARCardUtils.jdField_c_of_type_JavaLangString = this.g;
-      if (TextUtils.equals(this.g, "1")) {
-        this.jdField_b_of_type_Boolean = true;
+      agoa localagoa = (agoa)paramList.next();
+      if (localagoa.jdField_a_of_type_WalletSkinInfo.skin_id == paramInt) {
+        return localagoa;
       }
     }
-    try
-    {
-      this.d = NearbyURLSafeUtil.b(this.d);
-      this.e = NearbyURLSafeUtil.b(this.e);
-      label116:
-      if ((!TextUtils.isEmpty(this.f)) && (!TextUtils.isEmpty(this.e)))
-      {
-        if (this.e.equals(paramAppInterface.getCurrentAccountUin()))
-        {
-          this.jdField_c_of_type_Boolean = false;
-          this.jdField_a_of_type_Int = 1;
-        }
-        if (this.d.equals(paramAppInterface.getCurrentAccountUin()))
-        {
-          this.jdField_c_of_type_Boolean = false;
-          this.jdField_a_of_type_Int = 2;
-        }
-      }
-      QLog.w("ScanTorchActivity", 1, "ARRelationShipPromotion, mPromotionId[" + this.jdField_a_of_type_JavaLangString + "], mPromotionWords[" + this.jdField_b_of_type_JavaLangString + "], mPromotionIconUrl[" + this.jdField_c_of_type_JavaLangString + "], mRecoglizeMask[" + this.jdField_a_of_type_Long + "], isMasterState[" + this.jdField_c_of_type_Boolean + "]");
-      return;
-    }
-    catch (Exception paramBundle)
-    {
-      break label116;
-    }
+    return null;
+  }
+  
+  public static agoa b(String paramString)
+  {
+    agoa localagoa = new agoa(ajjy.a(2131639644));
+    localagoa.jdField_b_of_type_Int = -1;
+    localagoa.jdField_a_of_type_WalletSkinInfo.skin_id = 0;
+    localagoa.jdField_a_of_type_WalletSkinInfo.skin_permission_state = 1L;
+    localagoa.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title = paramString;
+    localagoa.jdField_a_of_type_Int = -1;
+    return localagoa;
+  }
+  
+  public static agoa c(String paramString)
+  {
+    agoa localagoa = new agoa(ajjy.a(2131639643));
+    localagoa.jdField_b_of_type_JavaLangString = paramString;
+    localagoa.jdField_b_of_type_Int = 1;
+    localagoa.jdField_a_of_type_Int = 1000;
+    localagoa.jdField_a_of_type_WalletSkinInfo.skin_id = -1;
+    localagoa.jdField_a_of_type_WalletSkinInfo.skin_permission_state = 1L;
+    return localagoa;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agoc
  * JD-Core Version:    0.7.0.1
  */

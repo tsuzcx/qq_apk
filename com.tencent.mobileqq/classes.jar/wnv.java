@@ -1,46 +1,28 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.PublicView;
-import com.tencent.widget.XListView;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.troopgift.TroopGiftPanel;
 
 public class wnv
-  extends Handler
+  implements View.OnClickListener
 {
-  private WeakReference a;
+  public wnv(TroopGiftPanel paramTroopGiftPanel, wnh paramwnh) {}
   
-  public wnv(PublicView paramPublicView)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramPublicView);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    PublicView localPublicView = (PublicView)this.a.get();
-    if (localPublicView == null) {
-      return;
+    if (this.jdField_a_of_type_Wnh.jdField_a_of_type_Int == 1) {
+      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b(this.jdField_a_of_type_Wnh.c);
     }
-    switch (paramMessage.what)
+    for (;;)
     {
-    default: 
+      awqx.b(null, "dc00899", "grp_lbs", "", "qq_gift", "aio_top_click", 0, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", "", this.jdField_a_of_type_Wnh.jdField_a_of_type_JavaLangString);
       return;
-    case 1: 
-      PublicView.a(localPublicView).springBackOverScrollHeaderView();
-      return;
-    case 2: 
-      PublicView.a(localPublicView).springBackOverScrollHeaderView();
-      PublicView.a(localPublicView, 1, 2131434365);
-      return;
-    case 3: 
-      PublicView.a(localPublicView, true);
-      return;
+      TroopGiftPanel.a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel, this.jdField_a_of_type_Wnh.c);
     }
-    PublicView.b(localPublicView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wnv
  * JD-Core Version:    0.7.0.1
  */

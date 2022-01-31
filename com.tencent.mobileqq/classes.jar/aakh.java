@@ -1,24 +1,24 @@
-import com.tencent.mobileqq.ar.ScanEntranceReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
 public class aakh
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aakh(ScanEntranceReport paramScanEntranceReport, String paramString, int paramInt1, int paramInt2) {}
+  public aakh(ChatSettingForTroop paramChatSettingForTroop, Dialog paramDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("device_name", this.jdField_a_of_type_JavaLangString);
-    localHashMap.put("memory_size", String.valueOf(this.jdField_a_of_type_Int));
-    StatisticCollector.a(BaseApplication.getContext()).a("", "scanner_average_fps", true, this.b, 0L, localHashMap, "");
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
+    ChatSettingForTroop.h(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aakh
  * JD-Core Version:    0.7.0.1
  */

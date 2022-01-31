@@ -1,14 +1,19 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.qphone.base.util.QLog;
 
-public class oue
-  implements Runnable
+class oue
+  implements View.OnClickListener
 {
-  public oue(StoryVideoPlayer paramStoryVideoPlayer, Bundle paramBundle) {}
+  oue(ouc paramouc, Container paramContainer, opw paramopw, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    StoryVideoPlayer.a(this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer, this.jdField_a_of_type_AndroidOsBundle);
+    ouc.a(this.jdField_a_of_type_Ouc, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), this.jdField_a_of_type_Opw, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("BiuPgcProteusItem", 2, "click bottom bar for jumping to gallery articleinfo = " + this.jdField_a_of_type_Opw.a() + " position = " + this.jdField_a_of_type_Int);
+    }
   }
 }
 

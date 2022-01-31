@@ -1,82 +1,33 @@
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import android.widget.ListView;
-import com.tencent.av.utils.UITools;
-import com.tencent.mobileqq.nearby.now.model.Comments;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import java.util.List;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
+import com.tencent.mobileqq.pb.PBEnumField;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class afct
-  implements AbsListView.OnScrollListener
+  implements aexp
 {
-  public afct(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public afct(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
-  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if (paramInt1 == 0)
+    if (!(paramViewHolder instanceof afbv)) {}
+    do
     {
-      paramAbsListView = ShortVideoCommentsView.a(this.a).getChildAt(0);
-      if ((paramAbsListView != null) && (paramAbsListView.getTop() == 0))
-      {
-        ShortVideoCommentsView.a(this.a, true);
-        return;
-      }
-      ShortVideoCommentsView.a(this.a, false);
       return;
-    }
-    ShortVideoCommentsView.a(this.a, false);
+      paramView = (afbv)paramViewHolder;
+    } while (paramView.a.msg_type.get() != 2);
+    TroopSuspiciousFragment.a(this.a, paramView);
   }
   
-  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  public boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if (paramInt == 0)
-    {
-      if ((paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (this.a.a.a.size() > 0) && (!ShortVideoCommentsView.b(this.a)) && (!ShortVideoCommentsView.c(this.a))) {
-        ShortVideoCommentsView.c(this.a);
-      }
-      if (ShortVideoCommentsView.a(this.a) == null) {
-        break label269;
-      }
-      paramAbsListView = ShortVideoCommentsView.a(this.a).jdField_a_of_type_JavaLangString;
-      if (ShortVideoCommentsView.a(this.a) != null) {
-        long l = ShortVideoCommentsView.a(this.a).jdField_a_of_type_Long;
-      }
-      paramInt = ShortVideoCommentsView.a(this.a);
-      if ((paramInt < ShortVideoCommentsView.b(this.a)) || (paramInt < UITools.a(this.a.getContext(), 40.0F))) {
-        break label272;
-      }
-      if (!ShortVideoCommentsView.d(this.a))
-      {
-        ShortVideoCommentsView.a(this.a, true);
-        if (ShortVideoCommentsView.a(this.a).g != 4) {}
-      }
-      this.a.f();
-    }
-    for (;;)
-    {
-      ShortVideoCommentsView.a(this.a, paramInt);
-      if ((ShortVideoCommentsView.a(this.a) != null) && (ShortVideoCommentsView.a(this.a).getChildCount() > 0) && (ShortVideoCommentsView.a(this.a).getChildAt(0).getTop() == 0) && (!ShortVideoCommentsView.e(this.a)))
-      {
-        ShortVideoCommentsView.b(this.a, true);
-        this.a.postDelayed(new afcu(this), 100L);
-      }
-      return;
-      label269:
-      break;
-      label272:
-      if (!ShortVideoCommentsView.e(this.a))
-      {
-        this.a.j();
-        ShortVideoCommentsView.a(this.a, 2);
-      }
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afct
  * JD-Core Version:    0.7.0.1
  */

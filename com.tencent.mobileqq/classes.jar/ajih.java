@@ -1,29 +1,51 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.troop.data.TroopAndDiscMsgProxy;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.content.Context;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.oidb_0xd55.RspBody;
 
 public class ajih
-  implements Runnable
 {
-  public ajih(TroopAndDiscMsgProxy paramTroopAndDiscMsgProxy, boolean paramBoolean) {}
-  
-  public void run()
+  public static String a(byte[] paramArrayOfByte)
   {
-    StatisticCollector localStatisticCollector = StatisticCollector.a(BaseApplication.getContext());
-    String str = TroopAndDiscMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAndDiscMsgProxy).getCurrentAccountUin();
-    if (!this.jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
+    if (paramArrayOfByte == null)
     {
-      localStatisticCollector.a(str, "aio_break_point", bool, 0L, 0L, new HashMap(), "");
+      QLog.e("ForwardMiniAppThirdPartyHelper", 1, "Data is null");
+      return "";
+    }
+    oidb_0xd55.RspBody localRspBody = new oidb_0xd55.RspBody();
+    try
+    {
+      localRspBody.mergeFrom(paramArrayOfByte);
+      if (localRspBody.wording.has()) {
+        return localRspBody.wording.get();
+      }
+      return "";
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      QLog.e("ForwardMiniAppThirdPartyHelper", 1, "oidb_0xd55_RspBody merge fail:" + paramArrayOfByte.getMessage());
+    }
+    return "";
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3)
+  {
+    try
+    {
+      MiniAppLauncher.launchMiniAppById(paramContext, paramString1, paramString2, null, paramString3, null, 1069);
       return;
+    }
+    catch (Exception paramContext)
+    {
+      QLog.e("ForwardMiniAppThirdPartyHelper", 1, paramContext.getMessage());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajih
  * JD-Core Version:    0.7.0.1
  */

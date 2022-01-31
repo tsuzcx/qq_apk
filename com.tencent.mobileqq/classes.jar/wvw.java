@@ -1,21 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.videostory.capture.widgets.AEPlayShowPageView;
+import com.tencent.image.ApngImage;
 
 public class wvw
-  implements DialogInterface.OnClickListener
+  extends RecyclerView.OnScrollListener
 {
-  public wvw(MainAssistObserver paramMainAssistObserver) {}
+  public wvw(AEPlayShowPageView paramAEPlayShowPageView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.a.b.dismiss();
+    if (paramInt == 0) {
+      ApngImage.resumeAll();
+    }
+    for (;;)
+    {
+      super.onScrollStateChanged(paramRecyclerView, paramInt);
+      return;
+      ApngImage.pauseAll();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wvw
  * JD-Core Version:    0.7.0.1
  */

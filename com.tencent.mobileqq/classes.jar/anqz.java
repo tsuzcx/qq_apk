@@ -1,21 +1,22 @@
-import android.app.Activity;
-import dov.com.qq.im.QIMCameraCaptureUnit;
-import dov.com.qq.im.setting.IQIMCameraContainer;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
 
-public class anqz
-  implements Runnable
+class anqz
+  implements View.OnTouchListener
 {
-  public anqz(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
+  anqz(anqy paramanqy, ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QIMCameraCaptureUnit.a(this.a, false);
-    this.a.a.a().runOnUiThread(new anra(this));
+    this.jdField_a_of_type_Anqy.a.onTouchEvent(paramMotionEvent);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anqz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,57 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
-
 public class lhz
-  implements Runnable
 {
-  public lhz(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
+  private static float jdField_a_of_type_Float = (float)(Math.log(0.75D) / Math.log(0.9D));
+  private static final float[] jdField_a_of_type_ArrayOfFloat;
+  private static float b = 800.0F;
+  private static float c = 0.4F;
+  private static float d = 1.0F - c;
+  private static float e;
+  private static float f = 1.0F / a(1.0F);
   
-  public void run()
+  static
   {
-    Object localObject = TroopBarAssistantManager.a().c(this.a.app);
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    if (localObject != null)
+    jdField_a_of_type_ArrayOfFloat = new float[101];
+    float f1 = 0.0F;
+    int i = 0;
+    if (i <= 100)
     {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      float f4 = i / 100.0F;
+      float f2 = 1.0F;
+      for (;;)
       {
-        PublicAccountInfo localPublicAccountInfo = (PublicAccountInfo)((Iterator)localObject).next();
-        lih locallih = new lih(this.a, null);
-        lih.a(locallih, localPublicAccountInfo.getUin());
-        lih.b(locallih, localPublicAccountInfo.name);
-        lih.c(locallih, ChnToSpell.a(lih.b(locallih), 2));
-        if (PublicAccountUtil.b(this.a.app, localPublicAccountInfo.getUin())) {
-          localArrayList2.add(locallih);
+        float f3 = (f2 - f1) / 2.0F + f1;
+        float f5 = 3.0F * f3 * (1.0F - f3);
+        float f6 = ((1.0F - f3) * c + d * f3) * f5 + f3 * f3 * f3;
+        if (Math.abs(f6 - f4) < 1.E-005D)
+        {
+          jdField_a_of_type_ArrayOfFloat[i] = (f3 * f3 * f3 + f5);
+          i += 1;
+          break;
+        }
+        if (f6 > f4) {
+          f2 = f3;
         } else {
-          localArrayList1.add(locallih);
+          f1 = f3;
         }
       }
     }
-    Collections.sort(localArrayList1, ReadinjoySubscriptManagerActivity.a(this.a));
-    Collections.sort(localArrayList2, ReadinjoySubscriptManagerActivity.a(this.a));
-    localArrayList2.addAll(localArrayList1);
-    ThreadManager.getUIHandler().post(new lia(this, localArrayList2));
+    jdField_a_of_type_ArrayOfFloat[100] = 1.0F;
+    e = 8.0F;
+    f = 1.0F;
+  }
+  
+  static float a(float paramFloat)
+  {
+    paramFloat = e * paramFloat;
+    if (paramFloat < 1.0F) {}
+    for (paramFloat -= 1.0F - (float)Math.exp(-paramFloat);; paramFloat = (1.0F - (float)Math.exp(1.0F - paramFloat)) * (1.0F - 0.3678795F) + 0.3678795F) {
+      return paramFloat * f;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lhz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,45 @@
-import android.provider.Settings.System;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-
 public class txq
-  implements View.OnClickListener
 {
-  public txq(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
-  
-  public void onClick(View paramView)
+  public static void a(String paramString1, String paramString2)
   {
-    this.a.a(2);
-    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.a);
-    if (this.a.a().booleanValue())
-    {
-      paramView = Settings.System.DEFAULT_NOTIFICATION_URI;
-      this.a.b();
-      this.a.a(paramView);
-    }
+    urk.b(paramString1, paramString2);
+  }
+  
+  public static void a(String paramString1, String paramString2, Object paramObject)
+  {
+    urk.a(paramString1, paramString2, paramObject);
+  }
+  
+  public static void a(String paramString1, String paramString2, Object paramObject1, Object paramObject2) {}
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    urk.d(paramString1, paramString2);
+  }
+  
+  public static void b(String paramString1, String paramString2, Object paramObject)
+  {
+    urk.a(paramString1, paramString2, paramObject);
+  }
+  
+  public static void b(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
+  {
+    urk.a(paramString1, paramString2, paramObject1, paramObject2);
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    urk.e(paramString1, paramString2);
+  }
+  
+  public static void c(String paramString1, String paramString2, Object paramObject1, Object paramObject2)
+  {
+    urk.a(paramString1, paramString2, paramObject1, paramObject2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     txq
  * JD-Core Version:    0.7.0.1
  */

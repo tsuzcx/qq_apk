@@ -1,25 +1,37 @@
-import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView.DisplayRuleDef;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.API.ArkAppMusicModule.GlobalMusicCallback.1;
+import com.tencent.mobileqq.ark.API.ArkAppMusicModule.GlobalMusicCallback.2;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.music.SongInfo;
 
 public final class albh
-  implements AnyScaleTypeImageView.DisplayRuleDef
+  implements arzq
 {
-  public Matrix a(Drawable paramDrawable, int paramInt1, int paramInt2)
+  private String a;
+  
+  public albh(String paramString)
   {
-    Matrix localMatrix = new Matrix();
-    if (paramDrawable == null) {
-      return localMatrix;
-    }
-    paramInt2 = paramDrawable.getIntrinsicWidth();
-    float f = paramInt1 / paramInt2;
-    localMatrix.setScale(f, f);
-    return localMatrix;
+    this.a = paramString;
+  }
+  
+  public String getToken()
+  {
+    return albg.a();
+  }
+  
+  public void onPlaySongChanged(SongInfo paramSongInfo)
+  {
+    ArkAppCenter.a().post(this.a, new ArkAppMusicModule.GlobalMusicCallback.2(this, paramSongInfo));
+  }
+  
+  public void onPlayStateChanged(int paramInt)
+  {
+    ArkAppCenter.a().post(this.a, new ArkAppMusicModule.GlobalMusicCallback.1(this, paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     albh
  * JD-Core Version:    0.7.0.1
  */

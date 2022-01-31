@@ -1,23 +1,23 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.net.Uri;
-import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.chatroom.ChatRoomInfo;
 
-public class lac
-  implements DialogInterface.OnClickListener
+public final class lac
+  implements Parcelable.Creator<ChatRoomInfo>
 {
-  public lac(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment, Context paramContext, Uri paramUri, String paramString1, String paramString2) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ChatRoomInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.a(paramDialogInterface, true, this.b);
+    return new ChatRoomInfo(paramParcel);
+  }
+  
+  public ChatRoomInfo[] a(int paramInt)
+  {
+    return new ChatRoomInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lac
  * JD-Core Version:    0.7.0.1
  */

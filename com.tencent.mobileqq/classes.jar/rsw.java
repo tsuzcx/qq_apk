@@ -1,52 +1,24 @@
 import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import java.lang.ref.WeakReference;
+import android.os.Message;
 
-public class rsw
-  implements Runnable
+class rsw
+  extends Handler
 {
-  public rsw(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
+  rsw(rsv paramrsv) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    TextView localTextView;
-    if (AuthDevVerifyCodeActivity.b <= 1)
+    switch (paramMessage.what)
     {
-      if (AuthDevVerifyCodeActivity.jdField_a_of_type_JavaLangRefWeakReference != null)
-      {
-        localTextView = (TextView)AuthDevVerifyCodeActivity.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localTextView != null)
-        {
-          localTextView.setText(2131434293);
-          localTextView.setEnabled(true);
-          localTextView.setClickable(true);
-          return;
-        }
-      }
-      AuthDevVerifyCodeActivity.a(this.a).setText(2131434293);
-      AuthDevVerifyCodeActivity.a(this.a).setEnabled(true);
-      AuthDevVerifyCodeActivity.a(this.a).setClickable(true);
+    default: 
       return;
     }
-    AuthDevVerifyCodeActivity.b -= 1;
-    if (AuthDevVerifyCodeActivity.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      localTextView = (TextView)AuthDevVerifyCodeActivity.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localTextView != null)
-      {
-        localTextView.setText(this.a.getString(2131434293) + "(" + AuthDevVerifyCodeActivity.b + ")");
-        this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 1000L);
-        return;
-      }
-    }
-    AuthDevVerifyCodeActivity.a(this.a).setText(this.a.getString(2131434293) + "(" + AuthDevVerifyCodeActivity.b + ")");
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 1000L);
+    this.a.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rsw
  * JD-Core Version:    0.7.0.1
  */

@@ -26,24 +26,8 @@ public class VerifyDevLockManagerImpl
   public static final int MSG_NOTIFY_UI_RECVED = 0;
   private static final String TAG = VerifyDevLockManagerImpl.class.getSimpleName();
   private final AppRuntime mApp;
-  private final Handler mHandler = new Handler(Looper.getMainLooper())
-  {
-    public void handleMessage(Message paramAnonymousMessage)
-    {
-      switch (paramAnonymousMessage.what)
-      {
-      default: 
-        return;
-      case 0: 
-        paramAnonymousMessage = (Object[])paramAnonymousMessage.obj;
-        ((VerifyDevLockManager.VerifyDevLockObserver)paramAnonymousMessage[0]).onRecvNotice((VerifyDevLockManager.NotifyType)paramAnonymousMessage[1], ((Integer)paramAnonymousMessage[2]).intValue(), (String)paramAnonymousMessage[3], ((Integer)paramAnonymousMessage[4]).intValue(), (ErrMsg)paramAnonymousMessage[5], (DevlockInfo)paramAnonymousMessage[6]);
-        return;
-      }
-      paramAnonymousMessage = (Object[])paramAnonymousMessage.obj;
-      ((VerifyDevLockManager.VerifyDevLockObserver)paramAnonymousMessage[0]).onVerifyClose(((Integer)paramAnonymousMessage[1]).intValue(), (String)paramAnonymousMessage[2], ((Integer)paramAnonymousMessage[3]).intValue(), (ErrMsg)paramAnonymousMessage[4]);
-    }
-  };
-  ConcurrentHashMap<Integer, VerifyDevLockWrapper> mVerifyDevLockWrapperMap = new ConcurrentHashMap();
+  private final Handler mHandler = new VerifyDevLockManagerImpl.1(this, Looper.getMainLooper());
+  ConcurrentHashMap<Integer, VerifyDevLockManagerImpl.VerifyDevLockWrapper> mVerifyDevLockWrapperMap = new ConcurrentHashMap();
   
   public VerifyDevLockManagerImpl(AppRuntime paramAppRuntime)
   {
@@ -79,7 +63,7 @@ public class VerifyDevLockManagerImpl
     int i = paramToServiceMsg.getRequestSsoSeq();
     String str2 = paramFromServiceMsg.getUin();
     String str3 = String.valueOf(paramToServiceMsg.getAttribute("process"));
-    VerifyDevLockWrapper localVerifyDevLockWrapper = (VerifyDevLockWrapper)this.mVerifyDevLockWrapperMap.get(Integer.valueOf(i));
+    VerifyDevLockManagerImpl.VerifyDevLockWrapper localVerifyDevLockWrapper = (VerifyDevLockManagerImpl.VerifyDevLockWrapper)this.mVerifyDevLockWrapperMap.get(Integer.valueOf(i));
     paramFromServiceMsg = null;
     String str1 = null;
     if (paramToServiceMsg.getAttribute("from_where") != null)
@@ -143,7 +127,7 @@ public class VerifyDevLockManagerImpl
     do
     {
       return;
-      paramVerifyDevLockObserver = (VerifyDevLockWrapper)this.mVerifyDevLockWrapperMap.remove(Integer.valueOf(paramVerifyDevLockObserver.getSeq()));
+      paramVerifyDevLockObserver = (VerifyDevLockManagerImpl.VerifyDevLockWrapper)this.mVerifyDevLockWrapperMap.remove(Integer.valueOf(paramVerifyDevLockObserver.getSeq()));
     } while ((paramVerifyDevLockObserver == null) || (paramVerifyDevLockObserver.mToServiceMsg == null));
     QLog.d(TAG, 2, "cancelVerify");
     ToServiceMsg localToServiceMsg = paramVerifyDevLockObserver.mToServiceMsg;
@@ -156,50 +140,70 @@ public class VerifyDevLockManagerImpl
   public boolean checkVerifyDevLockSmsResp(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
     int i = 1001;
-    ErrMsg localErrMsg = null;
-    DevlockInfo localDevlockInfo = null;
     if (paramFromServiceMsg.attributes.get("ret") != null) {
       i = ((Integer)paramFromServiceMsg.attributes.get("ret")).intValue();
     }
-    if (paramFromServiceMsg.attributes.get("lastError") != null) {
-      localErrMsg = (ErrMsg)paramFromServiceMsg.attributes.get("lastError");
-    }
-    if (paramFromServiceMsg.getAttribute("resp_devlockinfo") != null) {
-      localDevlockInfo = (DevlockInfo)paramFromServiceMsg.getAttribute("resp_devlockinfo");
-    }
-    QLog.d(TAG, 2, "checkVerifyDevLockSmsResp ssoSeq:" + paramFromServiceMsg.getRequestSsoSeq() + " msfCmd:" + paramFromServiceMsg.getMsfCommand() + " ret:" + i + " busCode:" + paramFromServiceMsg.getBusinessFailCode());
-    if (paramFromServiceMsg.getBusinessFailCode() == 2016)
+    if (paramFromServiceMsg.attributes.get("lastError") != null) {}
+    for (ErrMsg localErrMsg = (ErrMsg)paramFromServiceMsg.attributes.get("lastError");; localErrMsg = null)
     {
-      if (!this.mVerifyDevLockWrapperMap.containsKey(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq())))
-      {
-        this.mVerifyDevLockWrapperMap.putIfAbsent(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()), new VerifyDevLockWrapper(paramToServiceMsg.getRequestSsoSeq()));
-        ((VerifyDevLockWrapper)this.mVerifyDevLockWrapperMap.get(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()))).mToServiceMsg = paramToServiceMsg;
+      if (paramFromServiceMsg.getAttribute("resp_devlockinfo") != null) {}
+      for (DevlockInfo localDevlockInfo = (DevlockInfo)paramFromServiceMsg.getAttribute("resp_devlockinfo");; localDevlockInfo = null) {
+        try
+        {
+          if ((!TextUtils.isEmpty(paramFromServiceMsg.getUin())) && (paramFromServiceMsg.getUin().equals("0")))
+          {
+            if ((TextUtils.isEmpty(paramToServiceMsg.getUin())) || (paramToServiceMsg.getUin().equals("0"))) {
+              break label324;
+            }
+            QLog.d(TAG, 2, "copy uin from toServiceMsg");
+            paramFromServiceMsg.setUin(paramToServiceMsg.getUin());
+          }
+          for (;;)
+          {
+            label148:
+            QLog.d(TAG, 2, "checkVerifyDevLockSmsResp ssoSeq:" + paramFromServiceMsg.getRequestSsoSeq() + " msfCmd:" + paramFromServiceMsg.getMsfCommand() + " ret:" + i + " busCode:" + paramFromServiceMsg.getBusinessFailCode());
+            if (paramFromServiceMsg.getBusinessFailCode() != 2016) {
+              break;
+            }
+            if (!this.mVerifyDevLockWrapperMap.containsKey(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq())))
+            {
+              this.mVerifyDevLockWrapperMap.putIfAbsent(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()), new VerifyDevLockManagerImpl.VerifyDevLockWrapper(this, paramToServiceMsg.getRequestSsoSeq()));
+              ((VerifyDevLockManagerImpl.VerifyDevLockWrapper)this.mVerifyDevLockWrapperMap.get(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()))).mToServiceMsg = paramToServiceMsg;
+            }
+            ((VerifyDevLockManagerImpl.VerifyDevLockWrapper)this.mVerifyDevLockWrapperMap.get(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()))).mUin = paramFromServiceMsg.getUin();
+            notifyUI(paramToServiceMsg, paramFromServiceMsg, i, localErrMsg, localDevlockInfo);
+            return false;
+            label324:
+            QLog.d(TAG, 2, "all uin is 0");
+          }
+        }
+        catch (Throwable localThrowable)
+        {
+          break label148;
+          if ((paramFromServiceMsg.getBusinessFailCode() == 2017) || (this.mVerifyDevLockWrapperMap.containsKey(Integer.valueOf(paramFromServiceMsg.getRequestSsoSeq()))))
+          {
+            VerifyDevLockManagerImpl.VerifyDevLockWrapper localVerifyDevLockWrapper = (VerifyDevLockManagerImpl.VerifyDevLockWrapper)this.mVerifyDevLockWrapperMap.get(Integer.valueOf(paramFromServiceMsg.getRequestSsoSeq()));
+            if (i == 0)
+            {
+              this.mVerifyDevLockWrapperMap.remove(Integer.valueOf(paramFromServiceMsg.getRequestSsoSeq()));
+              notifyClose(localVerifyDevLockWrapper.mVerifyDevLockObserver, paramFromServiceMsg.getRequestSsoSeq(), paramFromServiceMsg.getUin(), i, localErrMsg);
+              paramFromServiceMsg.setMsfCommand(localVerifyDevLockWrapper.mToServiceMsg.getMsfCommand());
+              notifyApp(localVerifyDevLockWrapper.mToServiceMsg, paramFromServiceMsg);
+              return false;
+            }
+            if (i == 2)
+            {
+              this.mVerifyDevLockWrapperMap.remove(Integer.valueOf(paramFromServiceMsg.getRequestSsoSeq()));
+              notifyClose(localVerifyDevLockWrapper.mVerifyDevLockObserver, paramFromServiceMsg.getRequestSsoSeq(), paramFromServiceMsg.getUin(), i, localErrMsg);
+              return true;
+            }
+            notifyUI(paramToServiceMsg, paramFromServiceMsg, i, localErrMsg, localDevlockInfo);
+            return false;
+          }
+          return true;
+        }
       }
-      ((VerifyDevLockWrapper)this.mVerifyDevLockWrapperMap.get(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()))).mUin = paramFromServiceMsg.getUin();
-      notifyUI(paramToServiceMsg, paramFromServiceMsg, i, localErrMsg, localDevlockInfo);
-      return false;
     }
-    if ((paramFromServiceMsg.getBusinessFailCode() == 2017) || (this.mVerifyDevLockWrapperMap.containsKey(Integer.valueOf(paramFromServiceMsg.getRequestSsoSeq()))))
-    {
-      VerifyDevLockWrapper localVerifyDevLockWrapper = (VerifyDevLockWrapper)this.mVerifyDevLockWrapperMap.get(Integer.valueOf(paramFromServiceMsg.getRequestSsoSeq()));
-      if (i == 0)
-      {
-        this.mVerifyDevLockWrapperMap.remove(Integer.valueOf(paramFromServiceMsg.getRequestSsoSeq()));
-        notifyClose(localVerifyDevLockWrapper.mVerifyDevLockObserver, paramFromServiceMsg.getRequestSsoSeq(), paramFromServiceMsg.getUin(), i, localErrMsg);
-        paramFromServiceMsg.setMsfCommand(localVerifyDevLockWrapper.mToServiceMsg.getMsfCommand());
-        notifyApp(localVerifyDevLockWrapper.mToServiceMsg, paramFromServiceMsg);
-        return false;
-      }
-      if (i == 2)
-      {
-        this.mVerifyDevLockWrapperMap.remove(Integer.valueOf(paramFromServiceMsg.getRequestSsoSeq()));
-        notifyClose(localVerifyDevLockWrapper.mVerifyDevLockObserver, paramFromServiceMsg.getRequestSsoSeq(), paramFromServiceMsg.getUin(), i, localErrMsg);
-        return true;
-      }
-      notifyUI(paramToServiceMsg, paramFromServiceMsg, i, localErrMsg, localDevlockInfo);
-      return false;
-    }
-    return true;
   }
   
   public void onDestroy() {}
@@ -209,11 +213,11 @@ public class VerifyDevLockManagerImpl
     if (paramVerifyDevLockObserver == null) {
       QLog.d(TAG, 2, "refreshDevLockSms observer == null!");
     }
-    VerifyDevLockWrapper localVerifyDevLockWrapper;
+    VerifyDevLockManagerImpl.VerifyDevLockWrapper localVerifyDevLockWrapper;
     do
     {
       return;
-      localVerifyDevLockWrapper = (VerifyDevLockWrapper)this.mVerifyDevLockWrapperMap.get(Integer.valueOf(paramVerifyDevLockObserver.getSeq()));
+      localVerifyDevLockWrapper = (VerifyDevLockManagerImpl.VerifyDevLockWrapper)this.mVerifyDevLockWrapperMap.get(Integer.valueOf(paramVerifyDevLockObserver.getSeq()));
     } while (localVerifyDevLockWrapper == null);
     QLog.d(TAG, 2, "refreshDevLockSms");
     localVerifyDevLockWrapper.mVerifyDevLockObserver = paramVerifyDevLockObserver;
@@ -235,7 +239,7 @@ public class VerifyDevLockManagerImpl
     if (paramVerifyDevLockObserver == null) {
       QLog.d(TAG, 2, "submitSms observer == null!");
     }
-    VerifyDevLockWrapper localVerifyDevLockWrapper;
+    VerifyDevLockManagerImpl.VerifyDevLockWrapper localVerifyDevLockWrapper;
     do
     {
       return;
@@ -244,7 +248,7 @@ public class VerifyDevLockManagerImpl
         QLog.d(TAG, 2, "submitSms smscode is empty!");
         return;
       }
-      localVerifyDevLockWrapper = (VerifyDevLockWrapper)this.mVerifyDevLockWrapperMap.get(Integer.valueOf(paramVerifyDevLockObserver.getSeq()));
+      localVerifyDevLockWrapper = (VerifyDevLockManagerImpl.VerifyDevLockWrapper)this.mVerifyDevLockWrapperMap.get(Integer.valueOf(paramVerifyDevLockObserver.getSeq()));
     } while (localVerifyDevLockWrapper == null);
     QLog.d(TAG, 2, "submitSms smscode:" + paramString);
     Object localObject = localVerifyDevLockWrapper.mToServiceMsg;
@@ -260,19 +264,6 @@ public class VerifyDevLockManagerImpl
       paramVerifyDevLockObserver.addAttribute("mainaccount", localObject);
     }
     this.mApp.getService().msfSub.sendMsg(paramVerifyDevLockObserver);
-  }
-  
-  class VerifyDevLockWrapper
-  {
-    int mSeq;
-    ToServiceMsg mToServiceMsg;
-    String mUin;
-    VerifyDevLockManager.VerifyDevLockObserver mVerifyDevLockObserver;
-    
-    public VerifyDevLockWrapper(int paramInt)
-    {
-      this.mSeq = paramInt;
-    }
   }
 }
 

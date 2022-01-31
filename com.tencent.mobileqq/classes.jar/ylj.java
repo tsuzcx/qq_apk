@@ -1,43 +1,31 @@
-import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager.CallBack;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.ResultReceiver;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
 
-public class ylj
-  implements QvipSpecialSoundManager.CallBack
+class ylj
+  implements ymm
 {
-  public ylj(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
+  ylj(yli paramyli) {}
   
-  public void a(boolean paramBoolean)
+  public Activity a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialCareSettingActivity", 2, "loadSpecialSoundConfig onResult: " + paramBoolean);
-    }
-    if (paramBoolean) {}
-    for (;;)
-    {
-      try
-      {
-        QQSpecialCareSettingActivity.a(this.a);
-        return;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      finally
-      {
-        this.a.stopTitleProgress();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSpecialCareSettingActivity", 2, "loadSpecialSoundConfig fail.");
-      }
-    }
+    return yli.a(this.a);
+  }
+  
+  public void a()
+  {
+    this.a.dismiss();
+  }
+  
+  public void a(int paramInt, Intent paramIntent)
+  {
+    yli.a(this.a).a().resultReceiver.send(paramInt, paramIntent.getExtras());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ylj
  * JD-Core Version:    0.7.0.1
  */

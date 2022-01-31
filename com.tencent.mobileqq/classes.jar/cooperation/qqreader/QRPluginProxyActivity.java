@@ -1,35 +1,42 @@
 package cooperation.qqreader;
 
+import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 
 public class QRPluginProxyActivity
   extends PluginProxyActivity
 {
+  public static Class<? extends PluginProxyActivity> a(String paramString)
+  {
+    if ("com.qqreader.pureader.SSReaderActivity".equals(paramString)) {
+      return QRReaderPageProxyActivity.class;
+    }
+    return QRPluginProxyActivity.class;
+  }
+  
   public String getPluginID()
   {
     return "qqreaderplugin.apk";
   }
   
-  protected Class getProxyActivity(String paramString)
+  public final Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
   {
-    if ("com.qqreader.ReaderPage".equals(paramString)) {
-      return QRReaderPageProxyActivity.class;
-    }
-    if ("com.qqreader.webview.activity.ReaderBrowserActivity".equals(paramString)) {
-      return QRHardWareActivity.class;
-    }
-    return super.getProxyActivity(paramString);
+    return a(paramString);
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
+    paramBundle = getIntent();
+    if (paramBundle != null) {
+      paramBundle.putExtra("big_brother_source_key", "biz_src_jc_neirong");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cooperation.qqreader.QRPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

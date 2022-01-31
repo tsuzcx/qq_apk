@@ -1,35 +1,64 @@
-import com.tencent.widget.HorizontalListView;
-import com.tencent.widget.OverScroller;
+import android.support.annotation.NonNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amjk
-  implements Runnable
+  extends amie<amjj>
 {
-  public amjk(HorizontalListView paramHorizontalListView) {}
-  
-  public void run()
+  public static amjj a()
   {
-    if ((this.a.p != -1) || (HorizontalListView.a(this.a) != -1)) {}
-    do
+    return (amjj)alzw.a().a(413);
+  }
+  
+  public int a()
+  {
+    return 413;
+  }
+  
+  @NonNull
+  public amjj a(@NonNull alzs[] paramArrayOfalzs)
+  {
+    amjj localamjj = new amjj();
+    paramArrayOfalzs = paramArrayOfalzs[0].a;
+    if (paramArrayOfalzs != null) {}
+    try
     {
-      do
+      if (!"".equals(paramArrayOfalzs))
       {
-        return;
-      } while (!this.a.jdField_a_of_type_ComTencentWidgetOverScroller.a());
-      if (HorizontalListView.jdField_a_of_type_Boolean) {
-        this.a.a("mFlingRunnable", new Object[] { Integer.valueOf(this.a.p) });
+        paramArrayOfalzs = new JSONObject(paramArrayOfalzs);
+        localamjj.a(paramArrayOfalzs.getString("url"));
+        localamjj.a(paramArrayOfalzs.getBoolean("isEnable"));
+        localamjj.b(paramArrayOfalzs.getBoolean("hideHotValue"));
       }
-    } while (!this.a.jdField_a_of_type_ComTencentWidgetOverScroller.a(this.a.getScrollX() + this.a.h, this.a.getScrollY(), this.a.h, this.a.h, 0, 0));
-    this.a.p = 6;
-    if (HorizontalListView.jdField_a_of_type_Boolean) {
-      this.a.a("mFlingRunnable", new Object[] { "TOUCH_MODE_OVERFLING" });
+      return localamjj;
     }
-    this.a.g(4099);
-    this.a.invalidate();
+    catch (JSONException paramArrayOfalzs)
+    {
+      paramArrayOfalzs.printStackTrace();
+    }
+    return localamjj;
+  }
+  
+  public Class<amjj> a()
+  {
+    return amjj.class;
+  }
+  
+  @NonNull
+  public amjj b()
+  {
+    return new amjj();
+  }
+  
+  @NonNull
+  public amjj c()
+  {
+    return new amjj();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amjk
  * JD-Core Version:    0.7.0.1
  */

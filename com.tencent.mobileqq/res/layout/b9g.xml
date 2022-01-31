@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/gzi" android:descendantFocusability="beforeDescendants" android:layout_width="fill_parent" android:layout_height="94.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/gzc" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignRight="@id/gzf" android:layout_alignParentTop="true" />
+    <ImageView android:id="@id/gye" android:background="#ffcccccc" android:layout_width="1.5dip" android:layout_height="fill_parent" android:layout_marginRight="37.0dip" android:layout_below="@id/gzf" android:layout_alignParentRight="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/gyd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:layout_below="@id/gzj" android:layout_alignLeft="@id/gzj">
+        <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray_group_item" android:ellipsize="end" android:id="@id/gy9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/r_4" android:maxLines="1" />
+        <ImageView android:layout_gravity="center" android:id="@id/gyc" android:layout_width="13.0dip" android:layout_height="13.0dip" android:layout_marginLeft="5.0dip" android:src="@drawable/ffb" />
+    </LinearLayout>
+    <ImageView android:id="@id/gzf" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginRight="13.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="30.0dip" android:textColor="@color/skin_black" android:id="@id/gzj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/r_j" android:maxLines="1" android:singleLine="true" android:layout_alignTop="@id/gzf" android:layout_alignParentLeft="true" />
+</RelativeLayout>

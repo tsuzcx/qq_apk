@@ -1,19 +1,42 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.EditTextDialogEventListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
-public class aogu
-  implements Runnable
+class aogu
+  implements aogv
 {
-  public aogu(EditTextDialog paramEditTextDialog) {}
+  aogu(aogt paramaogt, aofz paramaofz, MessageRecord paramMessageRecord) {}
   
-  public void run()
+  public void a(String paramString, Bundle paramBundle)
   {
-    this.a.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "FileUploadTask success, multiUniseq[ " + this.jdField_a_of_type_Aogt.jdField_a_of_type_JavaLangString + "] uuid[" + paramString + "] fileMrUniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq + "]");
+    }
+    this.jdField_a_of_type_Aogt.b = 2;
+    aofz.a(this.jdField_a_of_type_Aogt.jdField_a_of_type_Aofz, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, paramBundle);
+    aofz.b(this.jdField_a_of_type_Aogt.jdField_a_of_type_Aofz, this.jdField_a_of_type_Aogt.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "FileUploadTask fail, multiUniseq[ " + this.jdField_a_of_type_Aogt.jdField_a_of_type_JavaLangString + "] fileMrUniseq[" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq + "] canResume[" + paramBoolean + "] retMsg[" + paramString + "]");
+    }
+    if (paramBoolean) {}
+    for (this.jdField_a_of_type_Aogt.b = 4;; this.jdField_a_of_type_Aogt.b = 3)
+    {
+      aofz.b(this.jdField_a_of_type_Aogt.jdField_a_of_type_Aofz, this.jdField_a_of_type_Aogt.jdField_a_of_type_JavaLangString);
+      return;
+      String str = ajjy.a(2131643907) + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+      paramString = str + "\n" + paramString;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.saveExtInfoToExtStr("_m_ForwardFaildReason", paramString);
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.saveExtInfoToExtStr("_m_ForwardFileStatus", "2");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aogu
  * JD-Core Version:    0.7.0.1
  */

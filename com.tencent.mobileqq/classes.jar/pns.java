@@ -1,20 +1,18 @@
-import com.tencent.component.media.photogif.QzoneAnimationDrawable;
+import android.graphics.drawable.Drawable;
 
-public class pns
-  implements Runnable
+class pns
+  extends pnc
 {
-  private pns(QzoneAnimationDrawable paramQzoneAnimationDrawable) {}
+  pns(pnn parampnn) {}
   
-  public void run()
+  public Drawable a()
   {
-    if (!QzoneAnimationDrawable.b(this.a)) {
-      QzoneAnimationDrawable.a(this.a, true);
-    }
+    return a("readinjoy_diandian_icon_background");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     pns
  * JD-Core Version:    0.7.0.1
  */

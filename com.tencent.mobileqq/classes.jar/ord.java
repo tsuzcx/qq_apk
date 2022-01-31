@@ -1,15 +1,6 @@
-import android.widget.ImageButton;
-import com.tencent.biz.qqstory.takevideo2.StoryLocalPublishPart;
-
-public class ord
-  implements Runnable
+public abstract interface ord
 {
-  public ord(StoryLocalPublishPart paramStoryLocalPublishPart) {}
-  
-  public void run()
-  {
-    StoryLocalPublishPart.a(this.a).setVisibility(0);
-  }
+  public abstract void H_();
 }
 
 

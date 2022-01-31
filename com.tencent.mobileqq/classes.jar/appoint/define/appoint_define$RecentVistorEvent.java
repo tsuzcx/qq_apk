@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class appoint_define$RecentVistorEvent
-  extends MessageMicro
+  extends MessageMicro<RecentVistorEvent>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "uint32_eventtype", "uint64_event_tinyid", "uint64_unread_count" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0) }, RecentVistorEvent.class);
   public final PBUInt32Field uint32_eventtype = PBField.initUInt32(0);

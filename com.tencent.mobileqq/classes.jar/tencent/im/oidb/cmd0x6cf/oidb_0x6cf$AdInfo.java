@@ -7,15 +7,18 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x6cf$AdInfo
-  extends MessageMicro
+  extends MessageMicro<AdInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
+  public final PBBytesField bytes_app_download_schema = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_apurl = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_button_txt = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_button_url = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -25,18 +28,22 @@ public final class oidb_0x6cf$AdInfo
   public final PBBytesField bytes_corporation_name = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_customized_invoke_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_desc = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBBytesField bytes_download_api_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_ext = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField bytes_image_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBBytesField bytes_extra_data = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBRepeatField<ByteStringMicro> bytes_image_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBBytesField bytes_img = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_img_s = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_landing_page = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBBytesField bytes_landing_page_report_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_price = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_product_id = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_rl = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField bytes_title_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBBytesField bytes_rowkey = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBRepeatField<ByteStringMicro> bytes_title_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBBytesField bytes_trace_id = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_txt = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField bytes_url_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> bytes_url_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBBytesField bytes_via = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_video_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_view_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -44,17 +51,27 @@ public final class oidb_0x6cf$AdInfo
   public final PBEnumField enum_ad_layout = PBField.initEnum(0);
   public final PBInt32Field int32_kd_pos = PBField.initInt32(0);
   public final PBInt32Field int32_product_type = PBField.initInt32(0);
-  public final PBRepeatMessageField rpt_msg_inner_ad_info = PBField.initRepeatMessage(AdInfo.class);
+  public final PBInt64Field int64_noco_id = PBField.initInt64(0L);
+  public final PBRepeatMessageField<AdInfo> rpt_msg_inner_ad_info = PBField.initRepeatMessage(AdInfo.class);
+  public final PBRepeatMessageField<oidb_0x6cf.NegFeedback> rpt_msg_neg_feedback = PBField.initRepeatMessage(oidb_0x6cf.NegFeedback.class);
+  public final PBStringField string_canvas_json = PBField.initString("");
+  public final PBStringField string_effect_url = PBField.initString("");
   public final PBUInt32Field uint32_ad_material_height = PBField.initUInt32(0);
   public final PBUInt32Field uint32_ad_material_id = PBField.initUInt32(0);
   public final PBUInt32Field uint32_ad_material_width = PBField.initUInt32(0);
   public final PBUInt32Field uint32_ad_type = PBField.initUInt32(0);
+  public final PBUInt32Field uint32_algo_id = PBField.initUInt32(0);
   public final PBUInt32Field uint32_cost_type = PBField.initUInt32(0);
+  public final PBUInt32Field uint32_dest_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_dis_channel = PBField.initUInt32(0);
   public final PBUInt32Field uint32_duration = PBField.initUInt32(0);
+  public final PBUInt32Field uint32_stra_id = PBField.initUInt32(0);
   public final PBUInt64Field uint64_ad_uin = PBField.initUInt64(0L);
+  public final PBUInt64Field uint64_advertiser_id = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_aid = PBField.initUInt64(0L);
+  public final PBUInt64Field uint64_article_id = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_channel_id = PBField.initUInt64(0L);
+  public final PBUInt64Field uint64_feeds_id = PBField.initUInt64(0L);
   
   static
   {
@@ -82,12 +99,17 @@ public final class oidb_0x6cf$AdInfo
     ByteStringMicro localByteStringMicro22 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro23 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro24 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 50, 58, 66, 74, 82, 90, 96, 104, 114, 122, 130, 138, 146, 154, 162, 170, 178, 184, 194, 202, 208, 218, 226, 234, 240, 248, 256, 264, 272, 282, 288, 298, 304, 312 }, new String[] { "uint64_channel_id", "int32_kd_pos", "bytes_cl", "bytes_img", "bytes_img_s", "bytes_txt", "bytes_desc", "bytes_rl", "bytes_apurl", "bytes_trace_id", "bytes_product_id", "int32_product_type", "uint32_ad_type", "rpt_msg_inner_ad_info", "bytes_landing_page", "bytes_price", "bytes_button_txt", "bytes_view_id", "bytes_customized_invoke_url", "bytes_corporation_name", "bytes_corporate_image_name", "bytes_corporate_logo", "uint64_ad_uin", "bytes_ext", "bytes_video_url", "uint32_cost_type", "bytes_title_list", "bytes_image_list", "bytes_url_list", "uint64_aid", "enum_ad_layout", "uint32_ad_material_id", "uint32_ad_material_width", "uint32_ad_material_height", "bytes_via", "uint32_dis_channel", "bytes_button_url", "uint32_duration", "enum_ad_jump_mode" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, localByteStringMicro7, localByteStringMicro8, localByteStringMicro9, Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro10, localByteStringMicro11, localByteStringMicro12, localByteStringMicro13, localByteStringMicro14, localByteStringMicro15, localByteStringMicro16, localByteStringMicro17, Long.valueOf(0L), localByteStringMicro18, localByteStringMicro19, Integer.valueOf(0), localByteStringMicro20, localByteStringMicro21, localByteStringMicro22, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro23, Integer.valueOf(0), localByteStringMicro24, Integer.valueOf(0), Integer.valueOf(1) }, AdInfo.class);
+    ByteStringMicro localByteStringMicro25 = ByteStringMicro.EMPTY;
+    ByteStringMicro localByteStringMicro26 = ByteStringMicro.EMPTY;
+    ByteStringMicro localByteStringMicro27 = ByteStringMicro.EMPTY;
+    ByteStringMicro localByteStringMicro28 = ByteStringMicro.EMPTY;
+    ByteStringMicro localByteStringMicro29 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 50, 58, 66, 74, 82, 90, 96, 104, 114, 122, 130, 138, 146, 154, 162, 170, 178, 184, 194, 202, 208, 218, 226, 234, 240, 248, 256, 264, 272, 282, 288, 298, 304, 312, 320, 328, 338, 346, 354, 362, 370, 376, 384, 394, 400, 432, 466, 472, 490 }, new String[] { "uint64_channel_id", "int32_kd_pos", "bytes_cl", "bytes_img", "bytes_img_s", "bytes_txt", "bytes_desc", "bytes_rl", "bytes_apurl", "bytes_trace_id", "bytes_product_id", "int32_product_type", "uint32_ad_type", "rpt_msg_inner_ad_info", "bytes_landing_page", "bytes_price", "bytes_button_txt", "bytes_view_id", "bytes_customized_invoke_url", "bytes_corporation_name", "bytes_corporate_image_name", "bytes_corporate_logo", "uint64_ad_uin", "bytes_ext", "bytes_video_url", "uint32_cost_type", "bytes_title_list", "bytes_image_list", "bytes_url_list", "uint64_aid", "enum_ad_layout", "uint32_ad_material_id", "uint32_ad_material_width", "uint32_ad_material_height", "bytes_via", "uint32_dis_channel", "bytes_button_url", "uint32_duration", "enum_ad_jump_mode", "uint32_algo_id", "uint32_stra_id", "rpt_msg_neg_feedback", "bytes_extra_data", "bytes_app_download_schema", "string_canvas_json", "bytes_landing_page_report_url", "uint64_advertiser_id", "uint32_dest_type", "string_effect_url", "int64_noco_id", "uint64_feeds_id", "bytes_rowkey", "uint64_article_id", "bytes_download_api_url" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, localByteStringMicro7, localByteStringMicro8, localByteStringMicro9, Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro10, localByteStringMicro11, localByteStringMicro12, localByteStringMicro13, localByteStringMicro14, localByteStringMicro15, localByteStringMicro16, localByteStringMicro17, Long.valueOf(0L), localByteStringMicro18, localByteStringMicro19, Integer.valueOf(0), localByteStringMicro20, localByteStringMicro21, localByteStringMicro22, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro23, Integer.valueOf(0), localByteStringMicro24, Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro25, localByteStringMicro26, "", localByteStringMicro27, Long.valueOf(0L), Integer.valueOf(0), "", Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro28, Long.valueOf(0L), localByteStringMicro29 }, AdInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x6cf.oidb_0x6cf.AdInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,16 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.widget.HorizontalListView;
 
 public class okf
-  extends SimpleJob
+  extends AnimatorListenerAdapter
 {
-  public okf(EditVideoPartManager paramEditVideoPartManager) {}
+  public okf(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    VideoEditReport.a("0X80076BC");
-    return null;
+    ReadInJoySelfFragment.a(this.a).setVisibility(8);
   }
 }
 

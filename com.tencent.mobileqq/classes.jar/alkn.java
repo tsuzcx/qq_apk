@@ -1,45 +1,126 @@
-import android.database.Cursor;
-import android.os.Parcel;
-import com.tencent.open.agent.datamodel.FriendGroup;
-import com.tencent.open.component.cache.database.DbCacheData.DbCreator;
-import com.tencent.open.component.cache.database.DbCacheData.Structure;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.util.WeakReference;
 
-public final class alkn
-  implements DbCacheData.DbCreator
+class alkn
+  implements alke
 {
-  public int a()
-  {
-    return 0;
-  }
+  alkn(alkl paramalkl) {}
   
-  public FriendGroup a(Cursor paramCursor)
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String arg1, boolean paramBoolean1, boolean paramBoolean2)
   {
-    Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("data"));
-    if (localObject == null) {
-      return null;
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.dynamicAvatar", 2, "onDownloadFinish url: " + ??? + " isSuccess: " + paramBoolean1 + " isFileExist: " + paramBoolean2);
     }
-    paramCursor = Parcel.obtain();
-    paramCursor.unmarshall((byte[])localObject, 0, localObject.length);
-    paramCursor.setDataPosition(0);
-    localObject = new FriendGroup();
-    ((FriendGroup)localObject).a(paramCursor);
-    paramCursor.recycle();
-    return localObject;
-  }
-  
-  public String a()
-  {
-    return null;
-  }
-  
-  public DbCacheData.Structure[] a()
-  {
-    return new DbCacheData.Structure[] { new DbCacheData.Structure("groupId", "INTEGER UNIQUE"), new DbCacheData.Structure("data", "BLOB") };
+    if (TextUtils.isEmpty(???)) {
+      return;
+    }
+    int i;
+    synchronized (this.a.c)
+    {
+      i = this.a.c.size() - 1;
+      if (i >= 0)
+      {
+        WeakReference localWeakReference = (WeakReference)this.a.c.get(i);
+        if ((localWeakReference == null) || (localWeakReference.get() == null))
+        {
+          this.a.c.remove(i);
+        }
+        else if (???.equals(((azvw)((WeakReference)this.a.c.get(i)).get()).jdField_b_of_type_JavaLangString))
+        {
+          localWeakReference = (WeakReference)this.a.c.remove(i);
+          if (paramBoolean1)
+          {
+            this.a.b.add(localWeakReference);
+            if (QLog.isColorLevel()) {
+              QLog.i("Q.dynamicAvatar", 2, "onFileDownloadFinish add to wait play list.");
+            }
+          }
+        }
+      }
+    }
+    if (!azvw.jdField_b_of_type_Boolean) {
+      synchronized (this.a.d)
+      {
+        i = this.a.d.size() - 1;
+        label257:
+        if (i >= 0) {
+          if ((this.a.d.get(i) != null) && (((WeakReference)this.a.d.get(i)).get() != null))
+          {
+            ??? = (WeakReference)this.a.d.get(i);
+            label314:
+            if ((??? != null) && (???.get() != null)) {
+              this.a.a((azvw)???.get(), false, false);
+            }
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      synchronized (this.a.a)
+      {
+        i = this.a.a.size() - 1;
+        if (i >= 0)
+        {
+          if (((WeakReference)this.a.a.get(i)).get() == null) {
+            this.a.a.remove(i);
+          }
+          i -= 1;
+          continue;
+          this.a.d.remove(i);
+          i -= 1;
+          break label257;
+          ??? = finally;
+          throw ???;
+        }
+        i = this.a.b.size() - 1;
+        if (i < 0) {
+          break label695;
+        }
+        ??? = (WeakReference)this.a.b.get(i);
+        if ((??? == null) || (((WeakReference)???).get() == null))
+        {
+          this.a.b.remove(i);
+        }
+        else if (this.a.a.size() < alkl.a(this.a).a)
+        {
+          this.a.b.remove(i);
+          if (this.a.a.contains(???)) {
+            break label712;
+          }
+          paramBoolean1 = this.a.a((azvw)((WeakReference)???).get());
+          if (paramBoolean1) {
+            this.a.a.add(???);
+          }
+          if (!QLog.isColorLevel()) {
+            break label712;
+          }
+          QLog.i("Q.dynamicAvatar", 2, "onFileDownloadFinish to play.02 result : " + paramBoolean1 + " playing size: " + this.a.a.size());
+        }
+      }
+      if (QLog.isColorLevel())
+      {
+        QLog.i("Q.dynamicAvatar", 2, "onFileDownloadFinish to play.02 beyond maxPlayingCount : " + alkl.a(this.a).a);
+        break label712;
+        label695:
+        return;
+        ??? = null;
+        break label314;
+        i -= 1;
+        break;
+      }
+      label712:
+      i -= 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alkn
  * JD-Core Version:    0.7.0.1
  */

@@ -39,7 +39,7 @@ public final class ck
     return j;
   }
   
-  public static a a(int paramInt, Context paramContext, String paramString1, String paramString2)
+  public static ck.a a(int paramInt, Context paramContext, String paramString1, String paramString2)
   {
     if (TextUtils.isEmpty(paramString1)) {
       return null;
@@ -49,7 +49,7 @@ public final class ck
       paramContext = paramContext.getPackageManager().getServiceInfo(new ComponentName(paramString1, paramString2), 128);
       if (paramContext != null)
       {
-        paramContext = new a(paramInt, paramString1, paramContext.enabled, paramContext.exported, paramContext.processName, paramContext.metaData);
+        paramContext = new ck.a(paramInt, paramString1, paramContext.enabled, paramContext.exported, paramContext.processName, paramContext.metaData);
         return paramContext;
       }
     }
@@ -154,35 +154,10 @@ public final class ck
   {
     return m.a().getSharedPreferences(a(false), 0).getInt(paramString, 0);
   }
-  
-  public static final class a
-  {
-    public String a;
-    public boolean b = false;
-    public boolean c = false;
-    public String d = "";
-    public Bundle e;
-    private int f;
-    
-    public a(int paramInt, String paramString1, boolean paramBoolean1, boolean paramBoolean2, String paramString2, Bundle paramBundle)
-    {
-      this.f = paramInt;
-      this.a = paramString1;
-      this.b = paramBoolean1;
-      this.c = paramBoolean2;
-      this.d = paramString2;
-      this.e = paramBundle;
-    }
-    
-    public final String toString()
-    {
-      return "appid:" + this.f + "," + this.a + "," + this.b + "," + this.c + "," + this.d;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     c.t.m.g.ck
  * JD-Core Version:    0.7.0.1
  */

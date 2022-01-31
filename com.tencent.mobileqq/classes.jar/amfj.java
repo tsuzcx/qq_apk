@@ -1,42 +1,80 @@
-import com.tencent.qqprotect.qsec.QSecLibMgr;
-import com.tencent.qqprotect.qsec.QSecLibMgr.LibEventListener;
-import com.tencent.qqprotect.qsec.QSecPushServiceMgr;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class amfj
-  implements QSecLibMgr.LibEventListener
+  extends alzl<amfk>
 {
-  public amfj(QSecPushServiceMgr paramQSecPushServiceMgr) {}
-  
-  public void a(int paramInt1, int paramInt2)
+  public int a()
   {
-    if (paramInt1 == 1) {
-      synchronized (QSecPushServiceMgr.a(this.a))
-      {
-        Object localObject2 = (List)QSecPushServiceMgr.a(this.a).get(Integer.valueOf(paramInt2));
-        if (localObject2 != null)
-        {
-          QSecPushServiceMgr.a(this.a).remove(Integer.valueOf(paramInt2));
-          QSecPushServiceMgr.a(this.a);
-        }
-        if (localObject2 != null)
-        {
-          ??? = ((List)localObject2).iterator();
-          if (((Iterator)???).hasNext())
-          {
-            localObject2 = (amfk)((Iterator)???).next();
-            QSecPushServiceMgr.a(this.a).a(((amfk)localObject2).jdField_a_of_type_Int, ((amfk)localObject2).b, ((amfk)localObject2).c, new Object[] { ((amfk)localObject2).jdField_a_of_type_ArrayOfByte }, null);
-          }
-        }
-      }
+    return 368;
+  }
+  
+  @NonNull
+  public amfk a(int paramInt)
+  {
+    return new amfk();
+  }
+  
+  @Nullable
+  public amfk a(alzs[] paramArrayOfalzs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyResetFunctionConfProcessor", 2, "[onParsed]");
     }
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
+    {
+      amfk localamfk = new amfk();
+      localamfk.a(paramArrayOfalzs);
+      return localamfk;
+    }
+    return new amfk();
+  }
+  
+  public Class<amfk> a()
+  {
+    return amfk.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyResetFunctionConfProcessor", 2, new Object[] { "[onReqFailed] failCode=", Integer.valueOf(paramInt) });
+    }
+  }
+  
+  public void a(amfk paramamfk)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyResetFunctionConfProcessor", 2, "[onUpdate]");
+    }
+  }
+  
+  public int b()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)obz.a();
+    if (localQQAppInterface != null)
+    {
+      String str = localQQAppInterface.c();
+      return baig.N(localQQAppInterface.getApp(), str);
+    }
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amfj
  * JD-Core Version:    0.7.0.1
  */

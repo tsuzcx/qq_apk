@@ -1,39 +1,61 @@
-import android.accounts.Account;
-import android.accounts.AccountManager;
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.locks.Lock;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
 
 public class acay
-  implements Runnable
+  extends ajmm
 {
-  public acay(ContactSyncManager paramContactSyncManager, Account[] paramArrayOfAccount) {}
+  public acay(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void run()
+  protected void a(String paramString)
   {
-    ContactSyncManager.a(this.jdField_a_of_type_ComTencentMobileqqContactsyncContactSyncManager).lock();
-    int i = 1;
+    this.a.i();
+    paramString = this.a.getString(2131654104);
+    bbmy.a(this.a, 1, paramString, 0).b(this.a.getTitleBarHeight());
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    this.a.a(2130839291, this.a.getString(2131653648));
+  }
+  
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
+  {
+    long l2 = axcz.a().b();
+    long l1 = l2;
+    if (!TextUtils.isEmpty(paramString1)) {}
     try
     {
-      while (i < this.jdField_a_of_type_ArrayOfAndroidAccountsAccount.length)
+      l1 = Long.parseLong(paramString1);
+      if (!paramBoolean)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ContactSync.Manager", 2, "initSyncAccount | delAccount = " + this.jdField_a_of_type_ArrayOfAndroidAccountsAccount[i]);
+        this.a.i();
+        if (axda.a(axcz.a().a(Long.valueOf(l1)), paramInt3, paramString2, paramString4)) {
+          this.a.finish();
         }
-        ContactSyncManager.a(this.jdField_a_of_type_ComTencentMobileqqContactsyncContactSyncManager).removeAccount(this.jdField_a_of_type_ArrayOfAndroidAccountsAccount[i], null, null);
-        i += 1;
+        return;
       }
+      this.a.i();
+      this.a.finish();
+      axda.a(axcz.a().a(Long.valueOf(l1)), paramInt1, paramString2, paramInt2);
       return;
     }
-    catch (Throwable localThrowable) {}finally
+    catch (Exception paramString1)
     {
-      ContactSyncManager.a(this.jdField_a_of_type_ComTencentMobileqqContactsyncContactSyncManager).unlock();
+      for (;;)
+      {
+        l1 = l2;
+      }
     }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    this.a.a(2130839291, this.a.getString(2131653633));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acay
  * JD-Core Version:    0.7.0.1
  */

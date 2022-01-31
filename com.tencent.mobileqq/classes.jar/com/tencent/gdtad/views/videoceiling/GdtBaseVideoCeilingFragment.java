@@ -1,40 +1,61 @@
 package com.tencent.gdtad.views.videoceiling;
 
+import abju;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForTool;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import yny;
+import ypk;
 
 public abstract class GdtBaseVideoCeilingFragment
   extends PublicBaseFragment
 {
   private GdtVideoCeilingView a;
   
-  public static void a(Activity paramActivity, Class paramClass, GdtVideoCeilingData paramGdtVideoCeilingData)
+  public static void a(Activity paramActivity, Class<? extends GdtBaseVideoCeilingFragment> paramClass, GdtVideoCeilingData paramGdtVideoCeilingData)
   {
-    a(paramActivity, paramClass, paramGdtVideoCeilingData, new Bundle());
+    a(paramActivity, paramClass, paramGdtVideoCeilingData, null);
   }
   
-  public static void a(Activity paramActivity, Class paramClass, GdtVideoCeilingData paramGdtVideoCeilingData, Bundle paramBundle)
+  public static void a(Activity paramActivity, Class<? extends GdtBaseVideoCeilingFragment> paramClass, GdtVideoCeilingData paramGdtVideoCeilingData, Bundle paramBundle)
   {
-    if ((paramActivity == null) || (paramGdtVideoCeilingData == null) || (!paramGdtVideoCeilingData.isValid()) || (paramBundle == null))
+    if ((paramActivity == null) || (paramGdtVideoCeilingData == null) || (!paramGdtVideoCeilingData.isValid()))
     {
-      GdtLog.d("GdtBaseVideoCeilingFragment", "start error");
+      yny.d("GdtBaseVideoCeilingFragment", "start error");
       return;
     }
-    GdtLog.b("GdtBaseVideoCeilingFragment", "start");
-    paramBundle.putSerializable("data", paramGdtVideoCeilingData);
-    paramGdtVideoCeilingData = new Intent();
-    paramGdtVideoCeilingData.putExtra("public_fragment_window_feature", 1);
-    paramGdtVideoCeilingData.putExtras(paramBundle);
-    PublicFragmentActivity.Launcher.a(paramActivity, paramGdtVideoCeilingData, PublicFragmentActivityForTool.class, paramClass);
+    yny.b("GdtBaseVideoCeilingFragment", "start");
+    Bundle localBundle = new Bundle();
+    if ((paramBundle != null) && (!paramBundle.isEmpty())) {
+      localBundle.putAll(paramBundle);
+    }
+    localBundle.putSerializable("data", paramGdtVideoCeilingData);
+    paramBundle = new Intent();
+    if ((paramGdtVideoCeilingData.getAd() != null) && (paramGdtVideoCeilingData.getAd().getNocoId() != 0L)) {
+      paramBundle.putExtra("GdtNocoId", paramGdtVideoCeilingData.getAd().getNocoId());
+    }
+    paramBundle.putExtra("public_fragment_window_feature", 1);
+    paramBundle.putExtra("big_brother_source_key", "biz_src_ads");
+    paramBundle.putExtras(localBundle);
+    if (TextUtils.isEmpty(paramBundle.getStringExtra("big_brother_ref_source_key"))) {
+      yny.d("GdtBaseVideoCeilingFragment", "start gdt empty refId");
+    }
+    if (paramGdtVideoCeilingData.getStyle() == 4)
+    {
+      abju.a(paramActivity, paramBundle, PublicFragmentActivity.class, paramClass);
+      return;
+    }
+    abju.a(paramActivity, paramBundle, PublicFragmentActivityForTool.class, paramClass);
   }
   
   public void initWindowStyleAndAnimation(Activity paramActivity)
@@ -74,11 +95,15 @@ public abstract class GdtBaseVideoCeilingFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2130969008, paramViewGroup, false);
-    this.a = ((GdtVideoCeilingView)paramLayoutInflater.findViewById(2131364707));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131493542, paramViewGroup, false);
+    this.a = ((GdtVideoCeilingView)paramLayoutInflater.findViewById(2131313277));
+    ypk.a(this.a);
     this.a.a(paramBundle);
     if ((getArguments() != null) && ((getArguments().getSerializable("data") instanceof GdtVideoCeilingData))) {
       this.a.setData((GdtVideoCeilingData)getArguments().getSerializable("data"));
+    }
+    if ((getActivity() != null) && (getActivity().getWindow() != null)) {
+      getActivity().getWindow().setSoftInputMode(16);
     }
     return paramLayoutInflater;
   }
@@ -109,7 +134,7 @@ public abstract class GdtBaseVideoCeilingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.gdtad.views.videoceiling.GdtBaseVideoCeilingFragment
  * JD-Core Version:    0.7.0.1
  */

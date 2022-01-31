@@ -1,17 +1,29 @@
-import com.tencent.biz.webviewplugin.NearbyTroopsPlugin;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.OnAnimationPlayEndListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentGalleryBiu;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-public class pgc
-  implements AIOAnimationControlManager.OnAnimationPlayEndListener
+class pgc
+  implements View.OnClickListener
 {
-  public pgc(NearbyTroopsPlugin paramNearbyTroopsPlugin, String paramString) {}
+  pgc(pgb parampgb) {}
   
-  public void a(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    if (AIOAnimationControlManager.jdField_a_of_type_JavaLangString.equals(paramString2)) {
-      this.jdField_a_of_type_ComTencentBizWebviewpluginNearbyTroopsPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":1,\"id\":" + paramString2 + "}" });
-    }
+    if (this.a.jdField_a_of_type_Qoe == null) {}
+    int i;
+    qpg localqpg;
+    do
+    {
+      do
+      {
+        return;
+        paramView = ((opw)this.a.jdField_a_of_type_JavaLangObject).a();
+      } while (paramView == null);
+      i = ComponentContentGalleryBiu.a(paramView, this.a.jdField_a_of_type_Qoe);
+      localqpg = this.a.jdField_a_of_type_Qoe.a();
+    } while (localqpg == null);
+    localqpg.a(this.a.jdField_a_of_type_AndroidContentContext, paramView, 0, paramView.innerUniqueID, i, this.a.jdField_a_of_type_Int, 0);
   }
 }
 

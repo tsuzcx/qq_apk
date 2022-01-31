@@ -1,66 +1,76 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.SigCommentListActivity;
-import com.tencent.mobileqq.adapter.SigCommentSessionListAdapter;
-import com.tencent.mobileqq.app.SignatureManager.SigComments;
-import com.tencent.mobileqq.app.SignatureObserver;
-import java.util.List;
+import com.tencent.biz.qqstory.settings.QQStoryShieldActivity;
+import com.tencent.biz.qqstory.settings.QQStoryUserInfo;
+import com.tencent.widget.Switch;
 
 public class txh
-  extends SignatureObserver
+  extends sgc
 {
-  public txh(SigCommentListActivity paramSigCommentListActivity) {}
+  public txh(QQStoryShieldActivity paramQQStoryShieldActivity) {}
   
-  protected void d(boolean paramBoolean, Object paramObject)
+  public void a(boolean paramBoolean, QQStoryUserInfo paramQQStoryUserInfo)
   {
-    List localList;
-    if (this.a.isResume())
+    boolean bool = true;
+    QQStoryShieldActivity.a(this.a);
+    Switch localSwitch;
+    if ((paramBoolean) && (paramQQStoryUserInfo != null))
     {
-      this.a.stopTitleProgress();
-      if (!paramBoolean) {
-        break label175;
+      this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
+      this.a.b.setOnCheckedChangeListener(null);
+      localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
+      if (paramQQStoryUserInfo.isAllowed != 1) {
+        break label119;
       }
-      if ((paramObject instanceof Bundle))
-      {
-        paramObject = (SignatureManager.SigComments)((Bundle)paramObject).getSerializable("data");
-        paramBoolean = paramObject.isOver;
-        paramObject = paramObject.mlist;
-        localList = this.a.a.a();
-        if (paramObject.size() <= 0) {
-          break label128;
-        }
-        if (localList == null) {
-          break label113;
-        }
-        localList.addAll(localList.size(), paramObject);
-        this.a.a.a(localList, paramBoolean);
-        this.a.a.notifyDataSetChanged();
+      paramBoolean = true;
+      localSwitch.setChecked(paramBoolean);
+      localSwitch = this.a.b;
+      if (paramQQStoryUserInfo.isInterested != 1) {
+        break label124;
       }
     }
-    label113:
-    do
+    label119:
+    label124:
+    for (paramBoolean = bool;; paramBoolean = false)
     {
+      localSwitch.setChecked(paramBoolean);
+      this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.a);
+      this.a.b.setOnCheckedChangeListener(this.a);
       return;
-      this.a.a.a(paramObject, paramBoolean);
+      paramBoolean = false;
       break;
-      if ((localList != null) && (localList.size() > 0)) {
-        this.a.a.a(localList, paramBoolean);
-      }
-      for (;;)
+    }
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    boolean bool = true;
+    paramBoolean2 = true;
+    this.a.jdField_a_of_type_Bbmv.b();
+    if (paramBoolean1) {
+      return;
+    }
+    bbmy.a(this.a, 2131629297, 0).b(this.a.getTitleBarHeight());
+    if (paramBoolean3)
+    {
+      localSwitch = this.a.jdField_a_of_type_ComTencentWidgetSwitch;
+      if (!this.a.jdField_a_of_type_ComTencentWidgetSwitch.isChecked()) {}
+      for (paramBoolean1 = paramBoolean2;; paramBoolean1 = false)
       {
-        this.a.a.notifyDataSetChanged();
+        localSwitch.setChecked(paramBoolean1);
         return;
-        SigCommentListActivity.a(this.a, 3);
       }
-      paramObject = this.a.a.a();
-    } while ((paramObject != null) && (paramObject.size() > 0));
-    label128:
-    label175:
-    SigCommentListActivity.a(this.a, 2);
+    }
+    Switch localSwitch = this.a.b;
+    if (!this.a.b.isChecked()) {}
+    for (paramBoolean1 = bool;; paramBoolean1 = false)
+    {
+      localSwitch.setChecked(paramBoolean1);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     txh
  * JD-Core Version:    0.7.0.1
  */

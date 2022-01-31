@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajzv;
+import ajjy;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -22,6 +22,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import azmo;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.qphone.base.util.QLog;
@@ -37,8 +38,8 @@ import java.util.Queue;
 public class HotChatPostItemView
   extends LinearLayout
 {
-  public static HashMap a;
-  public static Queue a;
+  public static HashMap<String, Bitmap> a;
+  public static Queue<String> a;
   private static int jdField_b_of_type_Int = 10;
   int jdField_a_of_type_Int = 0;
   long jdField_a_of_type_Long;
@@ -163,18 +164,18 @@ public class HotChatPostItemView
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 35	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_JavaUtilQueue	Ljava/util/Queue;
+    //   3: getstatic 37	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_JavaUtilQueue	Ljava/util/Queue;
     //   6: aload_0
-    //   7: invokeinterface 178 2 0
+    //   7: invokeinterface 180 2 0
     //   12: ifeq +29 -> 41
-    //   15: getstatic 30	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   15: getstatic 32	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   18: aload_0
-    //   19: invokevirtual 181	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   19: invokevirtual 183	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   22: ifeq +19 -> 41
-    //   25: getstatic 30	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   25: getstatic 32	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   28: aload_0
-    //   29: invokevirtual 185	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   32: checkcast 57	android/graphics/Bitmap
+    //   29: invokevirtual 187	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   32: checkcast 59	android/graphics/Bitmap
     //   35: astore_0
     //   36: ldc 2
     //   38: monitorexit
@@ -243,22 +244,22 @@ public class HotChatPostItemView
     Calendar.getInstance().setTimeInMillis(this.jdField_a_of_type_Long);
     paramLong = this.jdField_a_of_type_Long - paramLong;
     if (paramLong <= 59L) {
-      return "刚刚";
+      return ajjy.a(2131639791);
     }
     if (paramLong <= 60L) {
       return "1分钟前";
     }
     if (paramLong < 3600L) {
-      return (int)Math.floor(paramLong / 60L) + "分钟前";
+      return (int)Math.floor(paramLong / 60L) + ajjy.a(2131639783);
     }
     if (paramLong < 86400L) {
-      return (int)Math.floor(paramLong / 3600L) + "小时前";
+      return (int)Math.floor(paramLong / 3600L) + ajjy.a(2131639779);
     }
     if ((paramLong >= 86400L) && (paramLong < 172800L)) {
-      return "昨天";
+      return ajjy.a(2131639800);
     }
     if (paramLong < 2592000L) {
-      return (int)Math.ceil(paramLong / 86400L) + "天前";
+      return (int)Math.ceil(paramLong / 86400L) + ajjy.a(2131639790);
     }
     if ((paramLong >= 2592000L) && (paramLong < 31104000L)) {
       return new SimpleDateFormat("MM-dd").format(localDate);
@@ -306,7 +307,7 @@ public class HotChatPostItemView
         localURLDrawable = URLDrawable.getDrawable(paramString);
       }
       paramImageView.setImageDrawable(a(localURLDrawable, paramFloat));
-      localURLDrawable.setURLDrawableListener(new ajzv(paramImageView, paramInt6, paramInt4, paramInt5, paramString, localURLDrawable, paramFloat, paramInt3));
+      localURLDrawable.setURLDrawableListener(new azmo(paramImageView, paramInt6, paramInt4, paramInt5, paramString, localURLDrawable, paramFloat, paramInt3));
       return;
     }
     catch (OutOfMemoryError paramImageView)
@@ -345,19 +346,19 @@ public class HotChatPostItemView
   
   public View a()
   {
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969486, null);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131494160, null);
     addView(localView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362875));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363397));
-    this.d = ((TextView)localView.findViewById(2131363062));
-    this.e = ((TextView)localView.findViewById(2131366689));
-    this.f = ((TextView)localView.findViewById(2131366686));
-    this.c = ((TextView)localView.findViewById(2131366685));
-    this.g = ((TextView)localView.findViewById(2131366690));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131366117));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131366378));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131305157));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131311534));
+    this.d = ((TextView)localView.findViewById(2131299132));
+    this.e = ((TextView)localView.findViewById(2131298948));
+    this.f = ((TextView)localView.findViewById(2131308982));
+    this.c = ((TextView)localView.findViewById(2131311478));
+    this.g = ((TextView)localView.findViewById(2131313744));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131301795));
+    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131299248));
     this.jdField_a_of_type_AndroidViewView = localView;
-    setBackgroundResource(2130840385);
+    setBackgroundResource(2130841725);
     return this;
   }
   
@@ -369,191 +370,191 @@ public class HotChatPostItemView
     //   1: istore_2
     //   2: sipush 360
     //   5: istore_3
-    //   6: new 440	org/json/JSONObject
+    //   6: new 442	org/json/JSONObject
     //   9: dup
     //   10: aload_1
-    //   11: invokespecial 441	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   11: invokespecial 443	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   14: astore 5
     //   16: aload 5
-    //   18: ldc_w 443
-    //   21: invokevirtual 447	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   18: ldc_w 445
+    //   21: invokevirtual 449	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   24: ifeq +51 -> 75
     //   27: aload 5
-    //   29: ldc_w 443
-    //   32: invokevirtual 451	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   29: ldc_w 445
+    //   32: invokevirtual 453	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   35: astore_1
     //   36: aload_0
     //   37: aload_1
-    //   38: ldc_w 453
-    //   41: invokestatic 459	java/lang/System:currentTimeMillis	()J
-    //   44: ldc2_w 460
+    //   38: ldc_w 455
+    //   41: invokestatic 461	java/lang/System:currentTimeMillis	()J
+    //   44: ldc2_w 462
     //   47: ldiv
-    //   48: invokevirtual 465	org/json/JSONObject:optLong	(Ljava/lang/String;J)J
-    //   51: putfield 211	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_Long	J
+    //   48: invokevirtual 467	org/json/JSONObject:optLong	(Ljava/lang/String;J)J
+    //   51: putfield 213	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_Long	J
     //   54: aload_1
-    //   55: ldc_w 467
-    //   58: invokevirtual 470	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   55: ldc_w 469
+    //   58: invokevirtual 472	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   61: istore_2
     //   62: aload_1
-    //   63: ldc_w 472
-    //   66: invokevirtual 470	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   63: ldc_w 474
+    //   66: invokevirtual 472	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   69: istore_3
     //   70: aload_0
     //   71: iload_3
-    //   72: putfield 41	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_Int	I
+    //   72: putfield 43	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_Int	I
     //   75: aload 5
-    //   77: ldc_w 474
-    //   80: invokevirtual 451	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   77: ldc_w 476
+    //   80: invokevirtual 453	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   83: astore 6
     //   85: aload 5
-    //   87: ldc_w 476
-    //   90: invokevirtual 451	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   87: ldc_w 478
+    //   90: invokevirtual 453	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   93: astore 9
     //   95: aload 6
-    //   97: ldc_w 478
-    //   100: invokevirtual 482	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   97: ldc_w 480
+    //   100: invokevirtual 484	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   103: astore 7
     //   105: aload 6
-    //   107: ldc_w 484
-    //   110: invokevirtual 482	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   107: ldc_w 486
+    //   110: invokevirtual 484	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   113: astore_1
     //   114: aload 9
-    //   116: ldc_w 486
-    //   119: invokevirtual 490	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   116: ldc_w 488
+    //   119: invokevirtual 492	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
     //   122: astore 4
     //   124: aload 5
-    //   126: ldc_w 492
-    //   129: invokevirtual 482	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   126: ldc_w 494
+    //   129: invokevirtual 484	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   132: astore 8
     //   134: aload 9
-    //   136: ldc_w 494
-    //   139: invokevirtual 482	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   136: ldc_w 496
+    //   139: invokevirtual 484	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   142: astore 9
     //   144: aload 5
-    //   146: ldc_w 496
-    //   149: invokevirtual 499	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   146: ldc_w 498
+    //   149: invokevirtual 501	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   152: astore 10
     //   154: aload 5
-    //   156: ldc_w 501
-    //   159: invokevirtual 482	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   156: ldc_w 503
+    //   159: invokevirtual 484	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   162: astore 11
     //   164: aload 5
-    //   166: ldc_w 503
-    //   169: invokevirtual 499	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   166: ldc_w 505
+    //   169: invokevirtual 501	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
     //   172: astore 12
     //   174: aload 5
-    //   176: ldc_w 505
-    //   179: invokevirtual 482	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   176: ldc_w 507
+    //   179: invokevirtual 484	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   182: astore 5
     //   184: aload_0
-    //   185: getfield 401	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   185: getfield 403	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
     //   188: aload 7
-    //   190: invokevirtual 509	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   190: invokevirtual 511	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
     //   193: aload_0
-    //   194: getfield 401	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   194: getfield 403	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
     //   197: aload 6
-    //   199: ldc_w 511
-    //   202: invokevirtual 515	org/json/JSONObject:opt	(Ljava/lang/String;)Ljava/lang/Object;
-    //   205: invokevirtual 519	android/widget/TextView:setTag	(Ljava/lang/Object;)V
+    //   199: ldc_w 513
+    //   202: invokevirtual 517	org/json/JSONObject:opt	(Ljava/lang/String;)Ljava/lang/Object;
+    //   205: invokevirtual 521	android/widget/TextView:setTag	(Ljava/lang/Object;)V
     //   208: aload_0
-    //   209: getfield 404	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   209: getfield 406	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
     //   212: aload 8
-    //   214: invokevirtual 509	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   214: invokevirtual 511	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
     //   217: aload_0
-    //   218: getfield 407	com/tencent/mobileqq/troop/widget/HotChatPostItemView:d	Landroid/widget/TextView;
+    //   218: getfield 409	com/tencent/mobileqq/troop/widget/HotChatPostItemView:d	Landroid/widget/TextView;
     //   221: aload 9
-    //   223: invokevirtual 509	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   226: ldc_w 521
+    //   223: invokevirtual 511	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   226: ldc_w 523
     //   229: aload 11
-    //   231: invokevirtual 526	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   231: invokevirtual 528	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   234: ifne +12 -> 246
     //   237: aload_0
-    //   238: getfield 410	com/tencent/mobileqq/troop/widget/HotChatPostItemView:e	Landroid/widget/TextView;
+    //   238: getfield 412	com/tencent/mobileqq/troop/widget/HotChatPostItemView:e	Landroid/widget/TextView;
     //   241: aload 11
-    //   243: invokevirtual 509	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   246: ldc_w 521
+    //   243: invokevirtual 511	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   246: ldc_w 523
     //   249: aload 12
-    //   251: invokevirtual 526	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   251: invokevirtual 528	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   254: ifne +12 -> 266
     //   257: aload_0
-    //   258: getfield 413	com/tencent/mobileqq/troop/widget/HotChatPostItemView:f	Landroid/widget/TextView;
+    //   258: getfield 415	com/tencent/mobileqq/troop/widget/HotChatPostItemView:f	Landroid/widget/TextView;
     //   261: aload 12
-    //   263: invokevirtual 509	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   266: ldc_w 521
+    //   263: invokevirtual 511	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   266: ldc_w 523
     //   269: aload 5
-    //   271: invokevirtual 526	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   271: invokevirtual 528	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   274: ifne +12 -> 286
     //   277: aload_0
-    //   278: getfield 419	com/tencent/mobileqq/troop/widget/HotChatPostItemView:g	Landroid/widget/TextView;
+    //   278: getfield 421	com/tencent/mobileqq/troop/widget/HotChatPostItemView:g	Landroid/widget/TextView;
     //   281: aload 5
-    //   283: invokevirtual 509	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   283: invokevirtual 511	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
     //   286: aload_0
-    //   287: getfield 416	com/tencent/mobileqq/troop/widget/HotChatPostItemView:c	Landroid/widget/TextView;
+    //   287: getfield 418	com/tencent/mobileqq/troop/widget/HotChatPostItemView:c	Landroid/widget/TextView;
     //   290: aload_0
     //   291: aload 10
-    //   293: invokestatic 532	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   296: invokespecial 534	com/tencent/mobileqq/troop/widget/HotChatPostItemView:a	(J)Ljava/lang/String;
-    //   299: invokevirtual 509	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   293: invokestatic 534	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   296: invokespecial 536	com/tencent/mobileqq/troop/widget/HotChatPostItemView:a	(J)Ljava/lang/String;
+    //   299: invokevirtual 511	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
     //   302: aload_0
-    //   303: getfield 41	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_Int	I
+    //   303: getfield 43	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_Int	I
     //   306: ifne +28 -> 334
     //   309: aload_0
     //   310: aload_0
-    //   311: getfield 43	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   314: ldc_w 536
-    //   317: invokevirtual 541	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   320: checkcast 543	android/view/WindowManager
-    //   323: invokeinterface 547 1 0
-    //   328: invokevirtual 550	android/view/Display:getWidth	()I
-    //   331: putfield 41	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_Int	I
+    //   311: getfield 45	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   314: ldc_w 538
+    //   317: invokevirtual 543	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   320: checkcast 545	android/view/WindowManager
+    //   323: invokeinterface 549 1 0
+    //   328: invokevirtual 552	android/view/Display:getWidth	()I
+    //   331: putfield 43	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_Int	I
     //   334: aload_0
-    //   335: getfield 41	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_Int	I
+    //   335: getfield 43	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_Int	I
     //   338: ifle +46 -> 384
     //   341: aload_0
-    //   342: getfield 427	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
-    //   345: invokevirtual 554	com/tencent/image/URLImageView:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
-    //   348: checkcast 556	android/widget/LinearLayout$LayoutParams
+    //   342: getfield 429	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
+    //   345: invokevirtual 556	com/tencent/image/URLImageView:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
+    //   348: checkcast 558	android/widget/LinearLayout$LayoutParams
     //   351: astore 5
     //   353: aload 5
     //   355: aload_0
-    //   356: getfield 41	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_Int	I
-    //   359: putfield 559	android/widget/LinearLayout$LayoutParams:width	I
+    //   356: getfield 43	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_Int	I
+    //   359: putfield 561	android/widget/LinearLayout$LayoutParams:width	I
     //   362: aload 5
     //   364: aload_0
-    //   365: getfield 41	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_Int	I
+    //   365: getfield 43	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_Int	I
     //   368: iconst_2
     //   369: imul
     //   370: iconst_3
     //   371: idiv
-    //   372: putfield 562	android/widget/LinearLayout$LayoutParams:height	I
+    //   372: putfield 564	android/widget/LinearLayout$LayoutParams:height	I
     //   375: aload_0
-    //   376: getfield 427	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
+    //   376: getfield 429	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
     //   379: aload 5
-    //   381: invokevirtual 566	com/tencent/image/URLImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   381: invokevirtual 568	com/tencent/image/URLImageView:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
     //   384: aload 4
     //   386: ifnull +131 -> 517
     //   389: aload 4
-    //   391: invokevirtual 571	org/json/JSONArray:length	()I
+    //   391: invokevirtual 573	org/json/JSONArray:length	()I
     //   394: ifle +123 -> 517
     //   397: aload 4
     //   399: iconst_0
-    //   400: invokevirtual 575	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   400: invokevirtual 577	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
     //   403: astore 4
     //   405: aload 4
-    //   407: ldc_w 577
-    //   410: invokevirtual 482	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   407: ldc_w 579
+    //   410: invokevirtual 484	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   413: astore 5
     //   415: aload 4
-    //   417: ldc_w 579
-    //   420: invokevirtual 470	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   417: ldc_w 581
+    //   420: invokevirtual 472	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   423: sipush 200
     //   426: if_icmple +73 -> 499
     //   429: aload_0
-    //   430: getfield 427	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
+    //   430: getfield 429	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
     //   433: aload 5
-    //   435: invokevirtual 580	com/tencent/image/URLImageView:setTag	(Ljava/lang/Object;)V
+    //   435: invokevirtual 582	com/tencent/image/URLImageView:setTag	(Ljava/lang/Object;)V
     //   438: aload_0
-    //   439: getfield 427	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
+    //   439: getfield 429	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
     //   442: aload 5
     //   444: iconst_0
     //   445: iconst_0
@@ -562,23 +563,23 @@ public class HotChatPostItemView
     //   448: iload_2
     //   449: iload_3
     //   450: iconst_1
-    //   451: invokestatic 375	com/tencent/mobileqq/troop/widget/HotChatPostItemView:setImage	(Landroid/widget/ImageView;Ljava/lang/String;IIFIIII)V
+    //   451: invokestatic 377	com/tencent/mobileqq/troop/widget/HotChatPostItemView:setImage	(Landroid/widget/ImageView;Ljava/lang/String;IIFIIII)V
     //   454: aload_0
-    //   455: getfield 427	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
+    //   455: getfield 429	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
     //   458: iconst_0
-    //   459: invokevirtual 583	com/tencent/image/URLImageView:setVisibility	(I)V
+    //   459: invokevirtual 585	com/tencent/image/URLImageView:setVisibility	(I)V
     //   462: aload_0
-    //   463: getfield 424	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
+    //   463: getfield 426	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
     //   466: aload_1
     //   467: aload_0
-    //   468: getfield 424	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
-    //   471: invokevirtual 584	com/tencent/image/URLImageView:getWidth	()I
+    //   468: getfield 426	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
+    //   471: invokevirtual 586	com/tencent/image/URLImageView:getWidth	()I
     //   474: aload_0
-    //   475: getfield 424	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
-    //   478: invokevirtual 584	com/tencent/image/URLImageView:getWidth	()I
+    //   475: getfield 426	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
+    //   478: invokevirtual 586	com/tencent/image/URLImageView:getWidth	()I
     //   481: aload_0
-    //   482: getfield 424	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
-    //   485: invokevirtual 584	com/tencent/image/URLImageView:getWidth	()I
+    //   482: getfield 426	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_a_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
+    //   485: invokevirtual 586	com/tencent/image/URLImageView:getWidth	()I
     //   488: iconst_2
     //   489: idiv
     //   490: i2f
@@ -586,21 +587,21 @@ public class HotChatPostItemView
     //   492: iconst_0
     //   493: iconst_0
     //   494: iconst_0
-    //   495: invokestatic 375	com/tencent/mobileqq/troop/widget/HotChatPostItemView:setImage	(Landroid/widget/ImageView;Ljava/lang/String;IIFIIII)V
+    //   495: invokestatic 377	com/tencent/mobileqq/troop/widget/HotChatPostItemView:setImage	(Landroid/widget/ImageView;Ljava/lang/String;IIFIIII)V
     //   498: return
     //   499: aload_0
-    //   500: getfield 427	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
+    //   500: getfield 429	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
     //   503: bipush 8
-    //   505: invokevirtual 583	com/tencent/image/URLImageView:setVisibility	(I)V
+    //   505: invokevirtual 585	com/tencent/image/URLImageView:setVisibility	(I)V
     //   508: goto -46 -> 462
     //   511: astore_1
     //   512: aload_1
-    //   513: invokevirtual 585	org/json/JSONException:printStackTrace	()V
+    //   513: invokevirtual 587	org/json/JSONException:printStackTrace	()V
     //   516: return
     //   517: aload_0
-    //   518: getfield 427	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
+    //   518: getfield 429	com/tencent/mobileqq/troop/widget/HotChatPostItemView:jdField_b_of_type_ComTencentImageURLImageView	Lcom/tencent/image/URLImageView;
     //   521: bipush 8
-    //   523: invokevirtual 583	com/tencent/image/URLImageView:setVisibility	(I)V
+    //   523: invokevirtual 585	com/tencent/image/URLImageView:setVisibility	(I)V
     //   526: goto -64 -> 462
     //   529: astore 5
     //   531: goto -229 -> 302
@@ -639,7 +640,7 @@ public class HotChatPostItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.HotChatPostItemView
  * JD-Core Version:    0.7.0.1
  */

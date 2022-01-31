@@ -2,8 +2,8 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.app.Activity;
 import android.content.Intent;
+import bbac;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 
 public abstract class VasBasePlugin
   extends WebViewPlugin
@@ -13,15 +13,15 @@ public abstract class VasBasePlugin
   public long onPageStartedTime = -1L;
   public long startOpenPageTime;
   
-  public Intent getInfoIntent()
+  protected Intent getInfoIntent()
   {
-    if (this.mRuntime.a() != null) {
+    if ((this.mRuntime != null) && (this.mRuntime.a() != null)) {
       return this.mRuntime.a().getIntent();
     }
     return new Intent();
   }
   
-  public long getPluginBusiness()
+  protected long getPluginBusiness()
   {
     return 0L;
   }
@@ -34,7 +34,7 @@ public abstract class VasBasePlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VasBasePlugin
  * JD-Core Version:    0.7.0.1
  */

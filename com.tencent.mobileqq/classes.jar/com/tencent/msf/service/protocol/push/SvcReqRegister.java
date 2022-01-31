@@ -8,37 +8,50 @@ import java.util.ArrayList;
 public final class SvcReqRegister
   extends JceStruct
 {
+  static byte[] cache_bytes_0x769_reqbody;
   static ArrayList cache_vecBindUin;
   static byte[] cache_vecDevParam = (byte[])new byte[1];
   static byte[] cache_vecGuid;
-  public byte bIsOnline;
-  public byte bIsShowOnline;
-  public byte bKikPC;
-  public byte bKikWeak;
-  public byte bOnlinePush;
+  static byte[] cache_vecServerBuf;
+  public byte bIsOnline = 0;
+  public byte bIsSetStatus = 0;
+  public byte bIsShowOnline = 0;
+  public byte bKikPC = 0;
+  public byte bKikWeak = 0;
+  public byte bOnlinePush = 0;
   public byte bOpenPush = 1;
-  public byte bRegType;
-  public byte bSlientPush;
-  public byte cConnType;
-  public byte cNetType;
-  public long iLargeSeq;
-  public long iLastWatchStartTime;
+  public byte bRegType = 0;
+  public byte bSetMute = 0;
+  public byte bSlientPush = 0;
+  public byte[] bytes_0x769_reqbody = null;
+  public byte cConnType = 0;
+  public byte cNetType = 0;
+  public int iBatteryStatus = 0;
+  public long iLargeSeq = 0L;
+  public long iLastWatchStartTime = 0L;
   public int iLocaleID = 2052;
-  public long iOSVersion;
+  public long iOSVersion = 0L;
   public int iStatus = 11;
-  public long lBid;
-  public long lUin;
+  public long lBid = 0L;
+  public long lCpId = 0L;
+  public long lUin = 0L;
   public String sBuildVer = "";
+  public String sChannelNo = "";
   public String sOther = "";
   public String strDevName = "";
   public String strDevType = "";
+  public String strIOSIdfa = "";
   public String strOSVer = "";
-  public long timeStamp;
-  public long uNewSSOIp;
-  public long uOldSSOIp;
-  public ArrayList vecBindUin;
-  public byte[] vecDevParam;
-  public byte[] vecGuid;
+  public String strVendorName = "";
+  public String strVendorOSName = "";
+  public long timeStamp = 0L;
+  public long uExtOnlineStatus = 0L;
+  public long uNewSSOIp = 0L;
+  public long uOldSSOIp = 0L;
+  public ArrayList vecBindUin = null;
+  public byte[] vecDevParam = null;
+  public byte[] vecGuid = null;
+  public byte[] vecServerBuf = null;
   
   static
   {
@@ -48,11 +61,15 @@ public final class SvcReqRegister
     cache_vecBindUin = new ArrayList();
     a locala = new a();
     cache_vecBindUin.add(locala);
+    cache_bytes_0x769_reqbody = (byte[])new byte[1];
+    ((byte[])cache_bytes_0x769_reqbody)[0] = 0;
+    cache_vecServerBuf = (byte[])new byte[1];
+    ((byte[])cache_vecServerBuf)[0] = 0;
   }
   
   public SvcReqRegister() {}
   
-  public SvcReqRegister(long paramLong1, long paramLong2, byte paramByte1, String paramString1, int paramInt1, byte paramByte2, byte paramByte3, byte paramByte4, byte paramByte5, byte paramByte6, long paramLong3, long paramLong4, byte paramByte7, String paramString2, byte paramByte8, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2, byte paramByte9, String paramString3, String paramString4, String paramString5, byte paramByte10, long paramLong5, long paramLong6, ArrayList paramArrayList, long paramLong7, long paramLong8)
+  public SvcReqRegister(long paramLong1, long paramLong2, byte paramByte1, String paramString1, int paramInt1, byte paramByte2, byte paramByte3, byte paramByte4, byte paramByte5, byte paramByte6, long paramLong3, long paramLong4, byte paramByte7, String paramString2, byte paramByte8, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt2, byte paramByte9, String paramString3, String paramString4, String paramString5, byte paramByte10, long paramLong5, long paramLong6, ArrayList paramArrayList, long paramLong7, long paramLong8, String paramString6, long paramLong9, String paramString7, String paramString8, String paramString9, byte[] paramArrayOfByte3, byte paramByte11, byte[] paramArrayOfByte4, byte paramByte12, long paramLong10, int paramInt3)
   {
     this.lUin = paramLong1;
     this.lBid = paramLong2;
@@ -82,6 +99,17 @@ public final class SvcReqRegister
     this.vecBindUin = paramArrayList;
     this.uOldSSOIp = paramLong7;
     this.uNewSSOIp = paramLong8;
+    this.sChannelNo = paramString6;
+    this.lCpId = paramLong9;
+    this.strVendorName = paramString7;
+    this.strVendorOSName = paramString8;
+    this.strIOSIdfa = paramString9;
+    this.bytes_0x769_reqbody = paramArrayOfByte3;
+    this.bIsSetStatus = paramByte11;
+    this.vecServerBuf = paramArrayOfByte4;
+    this.bSetMute = paramByte12;
+    this.uExtOnlineStatus = paramLong10;
+    this.iBatteryStatus = paramInt3;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -114,6 +142,17 @@ public final class SvcReqRegister
     this.vecBindUin = ((ArrayList)paramJceInputStream.read(cache_vecBindUin, 25, false));
     this.uOldSSOIp = paramJceInputStream.read(this.uOldSSOIp, 26, false);
     this.uNewSSOIp = paramJceInputStream.read(this.uNewSSOIp, 27, false);
+    this.sChannelNo = paramJceInputStream.readString(28, false);
+    this.lCpId = paramJceInputStream.read(this.lCpId, 29, false);
+    this.strVendorName = paramJceInputStream.readString(30, false);
+    this.strVendorOSName = paramJceInputStream.readString(31, false);
+    this.strIOSIdfa = paramJceInputStream.readString(32, false);
+    this.bytes_0x769_reqbody = ((byte[])paramJceInputStream.read(cache_bytes_0x769_reqbody, 33, false));
+    this.bIsSetStatus = paramJceInputStream.read(this.bIsSetStatus, 34, false);
+    this.vecServerBuf = ((byte[])paramJceInputStream.read(cache_vecServerBuf, 35, false));
+    this.bSetMute = paramJceInputStream.read(this.bSetMute, 36, false);
+    this.uExtOnlineStatus = paramJceInputStream.read(this.uExtOnlineStatus, 38, false);
+    this.iBatteryStatus = paramJceInputStream.read(this.iBatteryStatus, 39, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -160,6 +199,29 @@ public final class SvcReqRegister
     }
     paramJceOutputStream.write(this.uOldSSOIp, 26);
     paramJceOutputStream.write(this.uNewSSOIp, 27);
+    if (this.sChannelNo != null) {
+      paramJceOutputStream.write(this.sChannelNo, 28);
+    }
+    paramJceOutputStream.write(this.lCpId, 29);
+    if (this.strVendorName != null) {
+      paramJceOutputStream.write(this.strVendorName, 30);
+    }
+    if (this.strVendorOSName != null) {
+      paramJceOutputStream.write(this.strVendorOSName, 31);
+    }
+    if (this.strIOSIdfa != null) {
+      paramJceOutputStream.write(this.strIOSIdfa, 32);
+    }
+    if (this.bytes_0x769_reqbody != null) {
+      paramJceOutputStream.write(this.bytes_0x769_reqbody, 33);
+    }
+    paramJceOutputStream.write(this.bIsSetStatus, 34);
+    if (this.vecServerBuf != null) {
+      paramJceOutputStream.write(this.vecServerBuf, 35);
+    }
+    paramJceOutputStream.write(this.bSetMute, 36);
+    paramJceOutputStream.write(this.uExtOnlineStatus, 38);
+    paramJceOutputStream.write(this.iBatteryStatus, 39);
   }
 }
 

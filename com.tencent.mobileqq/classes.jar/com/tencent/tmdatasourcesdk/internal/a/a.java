@@ -4,7 +4,7 @@ import com.tencent.tmassistant.common.ProtocolPackage;
 import com.tencent.tmassistant.common.jce.Request;
 import com.tencent.tmassistant.common.jce.Response;
 import com.tencent.tmassistantbase.network.PostHttpRequest;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ac;
 import com.tencent.tmdatasourcesdk.ITMAssistantExchangeURLListenner;
 import com.tencent.tmdatasourcesdk.internal.protocol.jce.AppDetailParam;
 import com.tencent.tmdatasourcesdk.internal.protocol.jce.GetAppSimpleDetailRequest;
@@ -26,19 +26,19 @@ public class a
     GetAppSimpleDetailRequest localGetAppSimpleDetailRequest = new GetAppSimpleDetailRequest();
     if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
-      r.c("GetAppSimpleDetailHttpRequest", "appDetailParams size = " + paramArrayList.size());
+      ac.c("GetAppSimpleDetailHttpRequest", "appDetailParams size = " + paramArrayList.size());
       localGetAppSimpleDetailRequest.appReqList = paramArrayList;
       super.sendRequest(ProtocolPackage.buildPostData(ProtocolPackage.buildRequest(localGetAppSimpleDetailRequest)));
       return true;
     }
-    r.e("GetAppSimpleDetailHttpRequest", "appDetailParams is null");
+    ac.e("GetAppSimpleDetailHttpRequest", "appDetailParams is null");
     return false;
   }
   
-  protected void onFinished(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt)
+  public void onFinished(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt)
   {
     if (paramArrayOfByte2 == null) {
-      r.e("GetAppSimpleDetailHttpRequest", "response is null");
+      ac.e("GetAppSimpleDetailHttpRequest", "response is null");
     }
     label189:
     label208:
@@ -50,7 +50,7 @@ public class a
       if (paramArrayOfByte1 == null) {}
       for (Object localObject = "null";; localObject = Integer.valueOf(paramArrayOfByte1.length))
       {
-        r.c("GetAppSimpleDetailHttpRequest", localObject + ",response length = " + paramArrayOfByte2.length + ",errorCode = " + paramInt);
+        ac.c("GetAppSimpleDetailHttpRequest", localObject + ",response length = " + paramArrayOfByte2.length + ",errorCode = " + paramInt);
         if ((this.a == null) || (paramInt != 0)) {
           break label247;
         }
@@ -77,21 +77,21 @@ public class a
         this.a.onExchangedURLSucceed(paramArrayOfByte1, true);
         return;
       }
-      r.d("GetAppSimpleDetailHttpRequest", " appDetails 为空!!");
+      ac.d("GetAppSimpleDetailHttpRequest", " appDetails 为空!!");
       this.a.onExchangedURLSucceed(null, false);
       return;
-      r.d("GetAppSimpleDetailHttpRequest", " 后台返回的ret错误，错误值为：" + paramArrayOfByte1.ret);
+      ac.d("GetAppSimpleDetailHttpRequest", " 后台返回的ret错误，错误值为：" + paramArrayOfByte1.ret);
       this.a.onExchangedURLSucceed(null, false);
       return;
-      r.d("GetAppSimpleDetailHttpRequest", " error happened!!");
+      ac.d("GetAppSimpleDetailHttpRequest", " error happened!!");
     } while (this.a == null);
-    r.d("GetAppSimpleDetailHttpRequest", "mListener.onExchangedURLSucceed");
+    ac.d("GetAppSimpleDetailHttpRequest", "mListener.onExchangedURLSucceed");
     this.a.onExchangedURLSucceed(null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmdatasourcesdk.internal.a.a
  * JD-Core Version:    0.7.0.1
  */

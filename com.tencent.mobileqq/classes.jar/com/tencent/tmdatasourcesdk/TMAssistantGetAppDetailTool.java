@@ -2,7 +2,7 @@ package com.tencent.tmdatasourcesdk;
 
 import android.content.Context;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ac;
 import com.tencent.tmdatasourcesdk.internal.a.a;
 import com.tencent.tmdatasourcesdk.internal.protocol.jce.AppDetailParam;
 import com.tencent.tmdatasourcesdk.internal.protocol.jce.AppSimpleDetail;
@@ -19,7 +19,7 @@ public class TMAssistantGetAppDetailTool
   
   private TMAssistantGetAppDetailTool(ITMAssistantExchangeURLListenner paramITMAssistantExchangeURLListenner, Context paramContext)
   {
-    r.c("TMAssistantDownloadSDKExchangeURL", "listener = " + paramITMAssistantExchangeURLListenner + ",context = " + paramContext);
+    ac.c("TMAssistantDownloadSDKExchangeURL", "listener = " + paramITMAssistantExchangeURLListenner + ",context = " + paramContext);
     if ((paramITMAssistantExchangeURLListenner != null) && (paramContext != null))
     {
       this.mListener = paramITMAssistantExchangeURLListenner;
@@ -27,7 +27,7 @@ public class TMAssistantGetAppDetailTool
       GlobalUtil.getInstance().setContext(paramContext);
       return;
     }
-    r.e("TMAssistantDownloadSDKExchangeURL", "ITMAssistantExchangeURLListenner listener shouldn't be null!");
+    ac.e("TMAssistantDownloadSDKExchangeURL", "ITMAssistantExchangeURLListenner listener shouldn't be null!");
   }
   
   public static TMAssistantGetAppDetailTool getInstance(ITMAssistantExchangeURLListenner paramITMAssistantExchangeURLListenner, Context paramContext)
@@ -49,7 +49,7 @@ public class TMAssistantGetAppDetailTool
     if (paramArrayList == null) {}
     for (Object localObject1 = "null";; localObject1 = Integer.valueOf(paramArrayList.size()))
     {
-      r.c("TMAssistantDownloadSDKExchangeURL", localObject1);
+      ac.c("TMAssistantDownloadSDKExchangeURL", localObject1);
       if (paramArrayList == null) {
         break label159;
       }
@@ -74,7 +74,7 @@ public class TMAssistantGetAppDetailTool
     }
     return;
     label159:
-    r.e("TMAssistantDownloadSDKExchangeURL", "packageNames is null!");
+    ac.e("TMAssistantDownloadSDKExchangeURL", "packageNames is null!");
   }
   
   public void onExchangedURLSucceed(ArrayList<AppSimpleDetail> paramArrayList, boolean paramBoolean)
@@ -83,19 +83,19 @@ public class TMAssistantGetAppDetailTool
     if (paramArrayList == null) {}
     for (Object localObject = "null";; localObject = Integer.valueOf(paramArrayList.size()))
     {
-      r.c("TMAssistantDownloadSDKExchangeURL", localObject + ",isSuccess = " + paramBoolean);
+      ac.c("TMAssistantDownloadSDKExchangeURL", localObject + ",isSuccess = " + paramBoolean);
       if (this.mListener == null) {
         break;
       }
       this.mListener.onExchangedURLSucceed(paramArrayList, paramBoolean);
       return;
     }
-    r.e("TMAssistantDownloadSDKExchangeURL", "mListener is null!");
+    ac.e("TMAssistantDownloadSDKExchangeURL", "mListener is null!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmdatasourcesdk.TMAssistantGetAppDetailTool
  * JD-Core Version:    0.7.0.1
  */

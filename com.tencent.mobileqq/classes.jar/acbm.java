@@ -1,27 +1,26 @@
-import com.tencent.mobileqq.data.FeedsManager;
-import com.tencent.mobileqq.data.qzone.FeedInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.data.AccountDetail;
 
 public class acbm
-  implements Runnable
+  extends azhw
 {
-  public acbm(FeedsManager paramFeedsManager, FeedInfo paramFeedInfo, String paramString) {}
+  public acbm(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail)
   {
-    if (FeedsManager.access$000(this.jdField_a_of_type_ComTencentMobileqqDataFeedsManager) != null)
+    if ((paramBoolean) && (paramAccountDetail != null))
     {
-      boolean bool = FeedsManager.access$000(this.jdField_a_of_type_ComTencentMobileqqDataFeedsManager).a(this.jdField_a_of_type_ComTencentMobileqqDataQzoneFeedInfo);
-      if (QLog.isColorLevel()) {
-        QLog.e("FeedsManager", 2, "setFeedInfoRead  :" + this.jdField_a_of_type_JavaLangString + " ,success:" + bool);
-      }
+      this.a.j.setText(paramAccountDetail.name);
+      this.a.b.setVisibility(0);
+      this.a.e();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acbm
  * JD-Core Version:    0.7.0.1
  */

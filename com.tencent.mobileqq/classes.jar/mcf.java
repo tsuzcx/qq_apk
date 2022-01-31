@@ -1,32 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.CloseableBitmap;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageDownListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-
-public class mcf
-  implements PublicAccountImageDownListener
+public abstract interface mcf
 {
-  public mcf(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  public abstract void a(int paramInt);
   
-  public void a(URL paramURL, CloseableBitmap paramCloseableBitmap)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverVideoActivity", 2, "king moment cover download success");
-    }
-    ReadInJoyDeliverVideoActivity.c(this.a, ShortVideoPreviewActivity.a(paramCloseableBitmap.a()));
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyDeliverVideoActivity", 2, "king moment local cover is " + ReadInJoyDeliverVideoActivity.c(this.a));
-    }
-    this.a.setRightViewTextDisable(1);
-  }
+  public abstract void a(String paramString);
   
-  public void a(URL paramURL, Throwable paramThrowable) {}
+  public abstract void b(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mcf
  * JD-Core Version:    0.7.0.1
  */

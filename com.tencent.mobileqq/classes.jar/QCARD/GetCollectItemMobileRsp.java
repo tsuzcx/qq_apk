@@ -8,9 +8,9 @@ import java.util.ArrayList;
 public final class GetCollectItemMobileRsp
   extends JceStruct
 {
-  static ArrayList cache_folder_list;
+  static ArrayList<CouponMobileFolder> cache_folder_list;
   static CouponMobileItem cache_item = new CouponMobileItem();
-  public ArrayList folder_list;
+  public ArrayList<CouponMobileFolder> folder_list;
   public CouponMobileItem item;
   public String next_card_uid = "";
   public int ret_code = -1;

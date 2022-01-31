@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.receipt;
 
-import ahjv;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import aupu;
 
 public class ReceiptMessageReadMemberListFragment$MemberInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ahjv();
+  public static final Parcelable.Creator<MemberInfo> CREATOR = new aupu();
   public long a;
   public String a;
   public String b;

@@ -1,22 +1,20 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.widget.FormEditItem;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.API.ArkAppYYBDownloadModule.1.1;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
 public class alby
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements alcc
 {
-  public alby(FormEditItem paramFormEditItem) {}
+  alby(albx paramalbx) {}
   
-  public void onGlobalLayout()
+  public void a(String paramString)
   {
-    this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    FormEditItem.a(this.a, this.a.getMeasuredWidth());
-    FormEditItem.a(this.a);
+    ArkAppCenter.a().post(this.a.a, new ArkAppYYBDownloadModule.1.1(this, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alby
  * JD-Core Version:    0.7.0.1
  */

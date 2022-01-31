@@ -1,11 +1,12 @@
 package cooperation.qzone.music;
 
 import NS_NEXTRADIO_QZONEBGMUSIC.BroadcastForQzone;
-import anct;
+import ajjy;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import bfwy;
 import com.tencent.mobileqq.music.SongInfo;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,12 +18,12 @@ import org.json.JSONObject;
 public class BroadcastMusicInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new anct();
+  public static final Parcelable.Creator<BroadcastMusicInfo> CREATOR = new bfwy();
   public BroadcastAudio broadcastAudioUrl;
   public String broadcastID = "";
   public String broadcastName = "";
   public String detailUrl = "";
-  public ArrayList showList;
+  public ArrayList<BroadcastOneShow> showList;
   
   public BroadcastMusicInfo() {}
   
@@ -78,7 +79,7 @@ public class BroadcastMusicInfo
     catch (Exception paramString) {}
   }
   
-  public static List toQusicInfoList(List paramList, boolean paramBoolean)
+  public static List<SongInfo> toQusicInfoList(List<BroadcastMusicInfo> paramList, boolean paramBoolean)
   {
     if ((paramList == null) || (paramList.size() == 0)) {
       return null;
@@ -147,7 +148,7 @@ public class BroadcastMusicInfo
     {
       localObject2 = localObject1;
       if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject2 = "订阅暂未放送，请查看其他电台";
+        localObject2 = ajjy.a(2131635414);
       }
       return localObject2;
     }
@@ -159,8 +160,8 @@ public class BroadcastMusicInfo
     try
     {
       localSongInfo.jdField_a_of_type_Long = Long.parseLong(this.broadcastID);
-      localSongInfo.b = getTitle();
-      localSongInfo.jdField_a_of_type_Int = 9;
+      localSongInfo.jdField_b_of_type_JavaLangString = getTitle();
+      localSongInfo.jdField_b_of_type_Int = 9;
       localSongInfo.e = this.detailUrl;
       localSongInfo.jdField_a_of_type_JavaLangString = getSongUrl(paramBoolean);
       localSongInfo.jdField_a_of_type_CooperationQzoneMusicBroadcastMusicInfo = this;

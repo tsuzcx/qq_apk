@@ -1,21 +1,11 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.troop.forward.TroopStoryForwardTask;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForTroopStory;
+import com.tencent.biz.pubaccount.readinjoy.model.SelectPositionModule.PositionData;
+import java.util.List;
 
-class orq
-  implements Runnable
+public abstract interface orq
 {
-  orq(orp paramorp, String paramString) {}
+  public abstract void a(List<orn> paramList);
   
-  public void run()
-  {
-    this.jdField_a_of_type_Orp.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.storyId = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Orp.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.serial();
-    this.jdField_a_of_type_Orp.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Orp.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.frienduin, this.jdField_a_of_type_Orp.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.istroop, this.jdField_a_of_type_Orp.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.uniseq, this.jdField_a_of_type_Orp.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.msgData);
-    this.jdField_a_of_type_Orp.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-  }
+  public abstract void b(SelectPositionModule.PositionData paramPositionData);
 }
 
 

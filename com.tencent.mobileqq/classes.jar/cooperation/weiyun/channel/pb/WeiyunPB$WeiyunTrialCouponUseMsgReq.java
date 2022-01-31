@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class WeiyunPB$WeiyunTrialCouponUseMsgReq
-  extends MessageMicro
+  extends MessageMicro<WeiyunTrialCouponUseMsgReq>
 {
   public static final int BUSINESS_ID_FIELD_NUMBER = 10;
   public static final int FILE_ITEM_FIELD_NUMBER = 50;
@@ -19,7 +19,7 @@ public final class WeiyunPB$WeiyunTrialCouponUseMsgReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cooperation.weiyun.channel.pb.WeiyunPB.WeiyunTrialCouponUseMsgReq
  * JD-Core Version:    0.7.0.1
  */

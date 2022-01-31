@@ -1,28 +1,32 @@
-import android.widget.Toast;
-import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.base.ToastUtil;
+import android.animation.AnimatorSet;
+import android.graphics.Rect;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.HashMap;
 
 public class alnc
-  implements Runnable
 {
-  public alnc(ToastUtil paramToastUtil, int paramInt1, int paramInt2) {}
+  public long a;
+  public AnimatorSet a;
+  public Rect a;
+  public View a;
+  public ImageView a;
+  public MessageRecord a;
+  public HashMap<String, alnp> a;
+  public long b;
+  public Rect b;
+  public MessageRecord b;
   
-  public void run()
+  public alnc()
   {
-    if (this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a == null)
-    {
-      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a = Toast.makeText(CommonDataAdapter.a().a(), this.jdField_a_of_type_Int, this.b);
-      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.show();
-      return;
-    }
-    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.setText(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.setDuration(this.b);
-    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.a.show();
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alnc
  * JD-Core Version:    0.7.0.1
  */

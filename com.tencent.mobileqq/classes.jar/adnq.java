@@ -1,28 +1,23 @@
-import android.os.PowerManager.WakeLock;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.MessageForPic;
 
 class adnq
-  implements Runnable
 {
-  adnq(adnp paramadnp) {}
+  int jdField_a_of_type_Int;
+  MessageForPic jdField_a_of_type_ComTencentMobileqqDataMessageForPic;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
   
-  public void run()
+  public adnq(MessageForPic paramMessageForPic, String paramString, int paramInt, boolean paramBoolean)
   {
-    VideoFilePresenter.a(this.a.a, true);
-    VideoFilePresenter.a(this.a.a, 0);
-    VideoFilePresenter.a(this.a.a).release();
-    this.a.a.a.b(0);
-    this.a.a.a.b(0L);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("#@#@", 1, "setProgress 187 [0]");
-    }
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic = paramMessageForPic;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adnq
  * JD-Core Version:    0.7.0.1
  */

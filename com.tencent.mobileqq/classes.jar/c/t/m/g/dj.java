@@ -1,31 +1,33 @@
 package c.t.m.g;
 
-public class dj
+import android.os.Looper;
+
+public abstract class dj
+  extends dk
 {
-  private static dj g = null;
-  float a = 0.0F;
-  float b = 0.0F;
-  float c = 100.0F;
-  boolean d = false;
-  boolean e = false;
-  String f = "null";
+  public abstract int a(Looper paramLooper);
   
-  public static dj a()
+  public final int b(Looper paramLooper)
   {
-    if (g == null) {}
-    try
+    synchronized (this.p)
     {
-      if (g == null) {
-        g = new dj();
+      if (this.o) {
+        return -1;
       }
-      return g;
+      this.o = true;
+      if (co.e())
+      {
+        b();
+        co.a("startup()");
+      }
+      int i = a(paramLooper);
+      return i;
     }
-    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     c.t.m.g.dj
  * JD-Core Version:    0.7.0.1
  */

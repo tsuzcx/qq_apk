@@ -19,7 +19,7 @@ public class NougatPolicy
     }
     catch (Throwable paramContext)
     {
-      TraceLogger.e("NougatPolicy", "clear compile data failed", paramContext);
+      NougatPolicy.TraceLogger.e("NougatPolicy", "clear compile data failed", paramContext);
     }
     return false;
   }
@@ -32,7 +32,7 @@ public class NougatPolicy
       Object localObject = getPackageManagerBinderProxy();
       if (localObject == null)
       {
-        TraceLogger.e("NougatPolicy", "can not found package service");
+        NougatPolicy.TraceLogger.e("NougatPolicy", "can not found package service");
         return false;
       }
       boolean bool = ((Boolean)localObject.getClass().getDeclaredMethod("performDexOptMode", new Class[] { String.class, Boolean.TYPE, String.class, Boolean.TYPE }).invoke(localObject, new Object[] { paramContext.getPackageName(), Boolean.valueOf(false), "speed", Boolean.valueOf(true) })).booleanValue();
@@ -42,33 +42,14 @@ public class NougatPolicy
     }
     catch (Throwable paramContext)
     {
-      TraceLogger.e("NougatPolicy", "fullCompile failed:", paramContext);
+      NougatPolicy.TraceLogger.e("NougatPolicy", "fullCompile failed:", paramContext);
     }
     return false;
   }
   
   private static Object getPackageManagerBinderProxy()
-    throws Exception
   {
     return Class.forName("android.app.ActivityThread").getDeclaredMethod("getPackageManager", new Class[0]).invoke(null, new Object[0]);
-  }
-  
-  private static class TraceLogger
-  {
-    static void e(String paramString1, String paramString2)
-    {
-      Log.i(paramString1, paramString2);
-    }
-    
-    static void e(String paramString1, String paramString2, Throwable paramThrowable)
-    {
-      Log.i(paramString1, paramString2, paramThrowable);
-    }
-    
-    static void i(String paramString1, String paramString2)
-    {
-      Log.i(paramString1, paramString2);
-    }
   }
 }
 

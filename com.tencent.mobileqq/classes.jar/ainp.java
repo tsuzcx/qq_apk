@@ -1,22 +1,114 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout13;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout13.ViewHolder;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONObject;
 
-class ainp
-  implements Runnable
+public class ainp
+  implements aioa
 {
-  ainp(aino paramaino, String paramString) {}
+  private aioq a;
   
-  public void run()
+  public ainp(aioq paramaioq)
   {
-    this.jdField_a_of_type_Aino.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout13.a(this.jdField_a_of_type_Aino.jdField_a_of_type_AndroidContentResResources, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aino.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout13$ViewHolder.a);
-    this.jdField_a_of_type_Aino.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout13.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aino.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message.frienduin, this.jdField_a_of_type_Aino.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.author);
+    this.a = paramaioq;
   }
+  
+  public int a()
+  {
+    if (this.a == null) {
+      return 0;
+    }
+    return this.a.b;
+  }
+  
+  public int a(int paramInt)
+  {
+    return 0;
+  }
+  
+  public int a(aijf paramaijf, int paramInt1, int paramInt2, String paramString, long paramLong, int paramInt3, float paramFloat)
+  {
+    return 0;
+  }
+  
+  public int a(AppInterface paramAppInterface)
+  {
+    return 0;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmAudioManager", 2, "pause all music");
+    }
+    if (ainq.a != null) {
+      synchronized (ainq.a)
+      {
+        Iterator localIterator = ainq.a.iterator();
+        while (localIterator.hasNext())
+        {
+          ainq localainq = (ainq)localIterator.next();
+          if ((localainq != null) && (localainq.b() == a())) {
+            localainq.b(new JSONObject());
+          }
+        }
+      }
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(int paramInt, AppInterface paramAppInterface) {}
+  
+  public void a(int paramInt, String paramString) {}
+  
+  public int b(int paramInt)
+  {
+    return 0;
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmAudioManager", 2, "resume all music");
+    }
+  }
+  
+  public void b(int paramInt, String paramString) {}
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CmAudioManager", 2, "destroy all music");
+    }
+    if (ainq.a != null) {
+      synchronized (ainq.a)
+      {
+        Iterator localIterator = ainq.a.iterator();
+        while (localIterator.hasNext())
+        {
+          ainq localainq = (ainq)localIterator.next();
+          if ((localainq != null) && (localainq.b() == a()))
+          {
+            localainq.a();
+            localIterator.remove();
+          }
+        }
+      }
+    }
+    if (this.a != null)
+    {
+      this.a.a();
+      this.a = null;
+    }
+  }
+  
+  public void c(int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ainp
  * JD-Core Version:    0.7.0.1
  */

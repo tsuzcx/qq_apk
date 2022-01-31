@@ -1,6 +1,5 @@
 package okio;
 
-import java.io.IOException;
 import java.util.zip.Deflater;
 
 public final class DeflaterSink
@@ -28,7 +27,6 @@ public final class DeflaterSink
   }
   
   private void deflate(boolean paramBoolean)
-    throws IOException
   {
     Buffer localBuffer = this.sink.buffer();
     Segment localSegment;
@@ -42,7 +40,8 @@ public final class DeflaterSink
           break;
         }
         localSegment.limit += i;
-        localBuffer.size += i;
+        long l = localBuffer.size;
+        localBuffer.size = (i + l);
         this.sink.emitCompleteSegments();
       }
     } while (!this.deflater.needsInput());
@@ -54,13 +53,12 @@ public final class DeflaterSink
   }
   
   public void close()
-    throws IOException
   {
     if (this.closed) {}
     for (;;)
     {
       return;
-      Object localObject2 = null;
+      Object localObject3 = null;
       try
       {
         finishDeflate();
@@ -68,56 +66,55 @@ public final class DeflaterSink
         {
           label14:
           this.deflater.end();
-          localObject1 = localObject2;
+          localObject1 = localObject3;
         }
-        catch (Throwable localThrowable2)
+        catch (Throwable localThrowable1)
         {
           for (;;)
           {
+            Object localObject1;
             label34:
-            localObject1 = localThrowable1;
-            if (localThrowable1 == null) {
-              localObject1 = localThrowable2;
+            if (localObject3 != null) {
+              localObject2 = localObject3;
             }
           }
         }
         try
         {
           this.sink.close();
-          localObject2 = localObject1;
+          localObject3 = localObject1;
         }
         catch (Throwable localThrowable3)
         {
-          Object localObject3 = localObject1;
-          if (localObject1 != null) {
+          localObject3 = localObject2;
+          if (localObject2 != null) {
             break label34;
           }
           localObject3 = localThrowable3;
           break label34;
         }
         this.closed = true;
-        if (localObject2 == null) {
+        if (localObject3 == null) {
           continue;
         }
-        Util.sneakyRethrow(localObject2);
+        Util.sneakyRethrow(localObject3);
         return;
       }
-      catch (Throwable localThrowable1)
+      catch (Throwable localThrowable2)
       {
+        Object localObject2;
         break label14;
       }
     }
   }
   
   void finishDeflate()
-    throws IOException
   {
     this.deflater.finish();
     deflate(false);
   }
   
   public void flush()
-    throws IOException
   {
     deflate(true);
     this.sink.flush();
@@ -134,7 +131,6 @@ public final class DeflaterSink
   }
   
   public void write(Buffer paramBuffer, long paramLong)
-    throws IOException
   {
     Util.checkOffsetAndCount(paramBuffer.size, 0L, paramLong);
     for (;;)

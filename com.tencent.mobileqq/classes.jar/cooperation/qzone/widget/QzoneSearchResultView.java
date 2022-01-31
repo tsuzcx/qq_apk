@@ -1,5 +1,6 @@
 package cooperation.qzone.widget;
 
+import ajjj;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v4.app.FragmentActivity;
@@ -10,8 +11,11 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import bacm;
+import baiu;
+import bfpr;
+import bfpy;
 import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
-import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -19,11 +23,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.mobileqq.utils.TimeFormatterUtils;
 import com.tencent.pb.addcontacts.AccountSearchPb.ResultItem;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.QZoneHelper.UserInfo;
 import java.util.List;
 
 public class QzoneSearchResultView
@@ -49,7 +49,7 @@ public class QzoneSearchResultView
   
   public static void a(FragmentActivity paramFragmentActivity, String paramString)
   {
-    QZoneHelper.a(paramFragmentActivity, paramString, -1, null, null);
+    bfpr.a(paramFragmentActivity, paramString, -1, null, null);
   }
   
   public String a()
@@ -59,7 +59,7 @@ public class QzoneSearchResultView
   
   public void a(FragmentActivity paramFragmentActivity)
   {
-    QZoneHelper.a(paramFragmentActivity, QZoneHelper.UserInfo.a(), this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$ResultItem.jmp_url.get().toStringUtf8(), -1);
+    bfpr.a(paramFragmentActivity, bfpy.a(), this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$ResultItem.jmp_url.get().toStringUtf8(), -1);
   }
   
   public void a(QQAppInterface paramQQAppInterface, SearchBaseFragment paramSearchBaseFragment, AccountSearchPb.ResultItem paramResultItem)
@@ -71,7 +71,7 @@ public class QzoneSearchResultView
     }
     setVisibility(0);
     this.jdField_a_of_type_ComTencentPbAddcontactsAccountSearchPb$ResultItem = paramResultItem;
-    Object localObject1 = ((FriendsManager)paramQQAppInterface.getManager(50)).c(a());
+    Object localObject1 = ((ajjj)paramQQAppInterface.getManager(51)).e(a());
     paramQQAppInterface = "";
     if (localObject1 != null) {
       paramQQAppInterface = ((Friends)localObject1).name;
@@ -82,7 +82,7 @@ public class QzoneSearchResultView
     localObject1 = paramResultItem.pic_url_list.get();
     int i = paramResultItem.total_pic_num.get();
     long l = paramResultItem.ftime.get();
-    CharSequence localCharSequence = TimeFormatterUtils.a(getContext(), 3, 1000L * l, false);
+    CharSequence localCharSequence = baiu.a(getContext(), 3, 1000L * l, false);
     localObject3 = paramSearchBaseFragment.a(80000004, (String)localObject3);
     if (!TextUtils.isEmpty((CharSequence)localObject3))
     {
@@ -138,12 +138,12 @@ public class QzoneSearchResultView
   protected void onFinishInflate()
   {
     super.onFinishInflate();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362874));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369429));
-    this.b = ((TextView)findViewById(2131374354));
-    this.c = ((TextView)findViewById(2131363397));
-    this.d = ((TextView)findViewById(2131363546));
-    this.jdField_a_of_type_CooperationQzoneWidgetQzoneImagesContainer = ((QzoneImagesContainer)findViewById(2131366968));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131301797));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131300688));
+    this.b = ((TextView)findViewById(2131306445));
+    this.c = ((TextView)findViewById(2131311534));
+    this.d = ((TextView)findViewById(2131310903));
+    this.jdField_a_of_type_CooperationQzoneWidgetQzoneImagesContainer = ((QzoneImagesContainer)findViewById(2131302226));
   }
   
   public void setAvartaView(Bitmap paramBitmap)
@@ -155,7 +155,7 @@ public class QzoneSearchResultView
       return;
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(ImageUtil.a());
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(bacm.a());
   }
 }
 

@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class FlyTicket$DiscussSigDecodeRequest
-  extends MessageMicro
+  extends MessageMicro<DiscussSigDecodeRequest>
 {
   public static final int SIG_FIELD_NUMBER = 1;
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "sig" }, new Object[] { "" }, DiscussSigDecodeRequest.class);

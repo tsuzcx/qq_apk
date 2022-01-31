@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class StructMsg$SendMenuEventRequest
-  extends MessageMicro
+  extends MessageMicro<SendMenuEventRequest>
 {
   public static final int CLICK = 1;
   public static final int EVENT = 3;

@@ -1,27 +1,48 @@
+import UserGrowth.stSimpleMetaFeed;
 import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class ryi
-  implements Runnable
+  extends rxz
 {
-  public ryi(BaseChatPie paramBaseChatPie, FrameLayout paramFrameLayout) {}
+  private TextView a;
   
-  public void run()
+  private ryi(ViewGroup paramViewGroup, rwm paramrwm)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.delmsg", 2, "hor anim onAnimationEnd() is called,time is:" + System.currentTimeMillis());
+    super(paramViewGroup, paramrwm, 2131494547);
+  }
+  
+  public static ryi a(ViewGroup paramViewGroup, rwm paramrwm)
+  {
+    return new ryi(paramViewGroup, paramrwm);
+  }
+  
+  protected void a()
+  {
+    this.a = ((TextView)a(1).findViewById(2131313269));
+  }
+  
+  protected void a(int paramInt)
+  {
+    super.a(paramInt);
+    this.a.setVisibility(paramInt);
+  }
+  
+  public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    super.a(paramstSimpleMetaFeed);
+    if (paramstSimpleMetaFeed == null) {
+      return;
     }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.f != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.f.setVisibility(0);
-    }
+    this.a.setText(paramstSimpleMetaFeed.feed_desc);
+    a(1, paramstSimpleMetaFeed);
+    a(2, 1, paramstSimpleMetaFeed);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ryi
  * JD-Core Version:    0.7.0.1
  */

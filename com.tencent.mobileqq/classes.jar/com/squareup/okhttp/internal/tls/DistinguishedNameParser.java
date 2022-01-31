@@ -130,71 +130,56 @@ final class DistinguishedNameParser
   
   private char getUTF8()
   {
-    char c2 = '?';
     int i = getByte(this.pos);
     this.pos += 1;
-    char c1;
     if (i < 128) {
-      c1 = (char)i;
+      return (char)i;
     }
-    do
+    if ((i >= 192) && (i <= 247))
     {
-      do
+      int j;
+      int m;
+      int k;
+      if (i <= 223)
       {
-        return c1;
-        c1 = c2;
-      } while (i < 192);
-      c1 = c2;
-    } while (i > 247);
-    int j;
-    if (i <= 223)
-    {
-      j = 1;
-      i &= 0x1F;
-    }
-    int k;
-    for (;;)
-    {
-      int m = 0;
-      k = i;
-      i = m;
+        j = 1;
+        i &= 0x1F;
+        m = 0;
+        k = i;
+        i = m;
+      }
       for (;;)
       {
         if (i >= j) {
-          break label214;
+          break label198;
         }
         this.pos += 1;
-        c1 = c2;
-        if (this.pos == this.length) {
-          break;
-        }
-        c1 = c2;
-        if (this.chars[this.pos] != '\\') {
+        if ((this.pos == this.length) || (this.chars[this.pos] != '\\'))
+        {
+          return '?';
+          if (i <= 239)
+          {
+            j = 2;
+            i &= 0xF;
+            break;
+          }
+          j = 3;
+          i &= 0x7;
           break;
         }
         this.pos += 1;
         m = getByte(this.pos);
         this.pos += 1;
-        c1 = c2;
         if ((m & 0xC0) != 128) {
-          break;
+          return '?';
         }
         k = (k << 6) + (m & 0x3F);
         i += 1;
       }
-      if (i <= 239)
-      {
-        j = 2;
-        i &= 0xF;
-      }
-      else
-      {
-        j = 3;
-        i &= 0x7;
-      }
+      label198:
+      return (char)k;
     }
-    label214:
-    return (char)k;
+    return '?';
   }
   
   private String hexAV()

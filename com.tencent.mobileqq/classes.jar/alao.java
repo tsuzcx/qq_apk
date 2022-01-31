@@ -1,29 +1,44 @@
-import android.os.Handler;
-import com.tencent.mobileqq.widget.CircleProgressView;
+import com.tencent.ark.ark.Application;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallbackTimeOut;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class alao
-  implements Runnable
+final class alao
+  implements ArkAppMgr.IGetAppPathByNameCallbackTimeOut
 {
-  private alao(CircleProgressView paramCircleProgressView) {}
+  alao(String paramString1, String paramString2, alaq paramalaq) {}
   
-  public void run()
+  public void onGetAppPathByNameTimeout(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
   {
-    if (CircleProgressView.a(this.a)) {
-      CircleProgressView.a(this.a, CircleProgressView.a(this.a) + CircleProgressView.b(this.a));
-    }
-    for (;;)
+    if ((paramInt == 0) && (paramAppPathInfo != null) && (paramAppPathInfo.path != null))
     {
-      CircleProgressView.a(this.a, CircleProgressView.a(this.a) % 360);
-      CircleProgressView.a(this.a).postDelayed(this, 16L);
-      this.a.invalidate();
+      paramString = ark.Application.Create(this.jdField_a_of_type_JavaLangString, paramAppPathInfo.path);
+      if (paramString != null)
+      {
+        boolean bool = paramString.CheckShareUrlLegality(this.b);
+        paramString.Release();
+        if (bool)
+        {
+          this.jdField_a_of_type_Alaq.a(true);
+          ArkAppCenter.c("ArkApp", String.format("CheckShareUrlLegality, url is in whileList, appName=%s and url=%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
+        }
+      }
+      else
+      {
+        return;
+      }
+      this.jdField_a_of_type_Alaq.a(false);
+      ArkAppCenter.c("ArkApp", String.format("CheckShareUrlLegality, url is not in whileList, appName=%s and url=%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
       return;
-      CircleProgressView.a(this.a, CircleProgressView.a(this.a) + 1);
     }
+    this.jdField_a_of_type_Alaq.a(false);
+    alep.a(alan.a(), this.jdField_a_of_type_JavaLangString, "ArkCheckShareUrlLegality", paramInt, 0, 0L, 0L, 0L, "", "");
+    ArkAppCenter.c("ArkApp", String.format("CheckShareUrlLegality,getAppInfo is failed and msg=%s", new Object[] { paramString }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alao
  * JD-Core Version:    0.7.0.1
  */

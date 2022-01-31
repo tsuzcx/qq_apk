@@ -1,21 +1,21 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.armap.ARMapOpenRedPackDialog;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class abiz
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public abiz(ARMapOpenRedPackDialog paramARMapOpenRedPackDialog) {}
+  public abiz(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onClick(View paramView)
+  {
+    this.a.a.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abiz
  * JD-Core Version:    0.7.0.1
  */

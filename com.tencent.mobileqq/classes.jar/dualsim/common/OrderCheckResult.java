@@ -2,26 +2,22 @@ package dualsim.common;
 
 public class OrderCheckResult
 {
-  public static final int FREE_TYPE_KINGCARD = 1;
-  public static final int FREE_TYPE_USAGE_PACKAGE = 2;
-  public static final int REQUEST_TYPE_CACHE = 3;
-  public static final int REQUEST_TYPE_IMSI = 1;
-  public static final int REQUEST_TYPE_PHONE_NUMBER = 2;
-  public String cardStatus;
-  public int errCode;
-  public int freeType;
-  public boolean isKingCard;
-  public int networkCode;
+  public static final int KINGCARD_NEGATIVE = -1;
+  public static final int KINGCARD_POSITIVE = 1;
+  public static final int KINGCARD_UNKNOWN = 0;
+  public static final int OPERATOR_CHINA_MOBILE = 0;
+  public static final int OPERATOR_CHINA_TELECOM = 2;
+  public static final int OPERATOR_CHINA_UNICOM = 1;
+  public static final int OPERATOR_UNKNOWN = -2;
+  public String activationUrl;
+  public int kingcard;
+  public int operator;
+  public String phoneNum;
   public int product;
-  public int requestParamType;
-  public String requestParamValue;
-  public int subErrCode;
   
-  public OrderCheckResult() {}
-  
-  public OrderCheckResult(int paramInt)
+  public String toString()
   {
-    this.errCode = paramInt;
+    return "OrderCheckResult{kingcard=" + this.kingcard + ", product=" + this.product + ", phoneNum='" + this.phoneNum + '\'' + ", operator=" + this.operator + ", activationUrl='" + this.activationUrl + '\'' + '}';
   }
 }
 

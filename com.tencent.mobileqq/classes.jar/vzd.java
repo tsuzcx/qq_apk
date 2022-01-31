@@ -1,51 +1,49 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
-import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
-import com.tencent.mobileqq.werewolves.WerewolvesObserver;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginInterface;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StLike;
+import NS_CERTIFIED_ACCOUNT_WRITE.CertifiedAccountWrite.StDoLikeRsp;
+import android.os.Bundle;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
+import com.tencent.biz.subscribe.event.PraisedUpdateEvents;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 
 public class vzd
-  extends WerewolvesObserver
+  implements wxx<CertifiedAccountWrite.StDoLikeRsp>
 {
-  public vzd(GameRoomChatPie paramGameRoomChatPie) {}
+  public vzd(CommentBottomBar paramCommentBottomBar) {}
   
-  public void a(int paramInt)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountWrite.StDoLikeRsp paramStDoLikeRsp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.werewolf.GameRoomChatPie", 2, "onDownLoadedPluginResult result = " + paramInt);
+    int i = 1;
+    CommentBottomBar.a(this.a, true);
+    if ((!paramBoolean) || (paramLong != 0L) || (paramStDoLikeRsp == null)) {
+      bbmy.a(this.a.getContext(), 1, paramString, 0).a();
     }
-    if (paramInt == 0) {
-      this.a.bf();
-    }
-    do
+    for (;;)
     {
       return;
-      QQToast.a(this.a.a(), "游戏加载失败", 0).a();
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.setProgress(0);
-  }
-  
-  public void a(long paramLong1, long paramLong2, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.werewolf.GameRoomChatPie", 2, "onNotifyGameRoomSpeakerStatus uin = " + paramLong2 + " isSeaking = " + paramBoolean);
+      if (CommentBottomBar.a(this.a) != null) {
+        CommentBottomBar.a(this.a).likeInfo.status.set(paramStDoLikeRsp.like.status.get());
+      }
+      wcj.a().a(new PraisedUpdateEvents(CommentBottomBar.a(this.a).id.get(), paramStDoLikeRsp.like.status.get()));
+      if (BaseApplicationImpl.sProcessId == 1) {}
+      while (i == 0)
+      {
+        paramString = new Bundle();
+        paramString.putString("feed_id", CommentBottomBar.a(this.a).id.get());
+        paramString.putInt("feed_like_status", paramStDoLikeRsp.like.status.get());
+        QIPCClientHelper.getInstance().callServer(wcj.a, wcj.b, paramString, null);
+        return;
+        i = 0;
+      }
     }
-    if ((!this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(String.valueOf(paramLong1))) || (this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager == null)) {}
-    WerewolvesPluginInterface localWerewolvesPluginInterface;
-    do
-    {
-      return;
-      localWerewolvesPluginInterface = this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a();
-    } while (localWerewolvesPluginInterface == null);
-    localWerewolvesPluginInterface.a(String.valueOf(paramLong2), paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vzd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverActivity;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class oax
-  implements DialogInterface.OnClickListener
+class oax
+  implements ViewBase.OnClickListener
 {
-  public oax(StoryDiscoverActivity paramStoryDiscoverActivity) {}
+  oax(oal paramoal) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(ViewBase paramViewBase)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      StoryReportor.a("content_flow", "cancel_hot", 0, 0, new String[0]);
-      return;
-    }
-    this.a.a(false, true, null);
-    StoryReportor.a("content_flow", "sure_hot", 0, 0, new String[0]);
+    rvb.a((Activity)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), (AdvertisementInfo)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.a.jdField_a_of_type_Opw.a(), this.a.jdField_a_of_type_Opw.e(), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oax
  * JD-Core Version:    0.7.0.1
  */

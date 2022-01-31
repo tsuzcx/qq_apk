@@ -1,31 +1,34 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class tud
-  extends Handler
+public final class tud
+  extends QQUIEventReceiver<ttr, ujj>
 {
-  public tud(RegisterNewBaseActivity paramRegisterNewBaseActivity) {}
-  
-  public void handleMessage(Message paramMessage)
+  public tud(@NonNull ttr paramttr)
   {
-    switch (paramMessage.what)
+    super(paramttr);
+  }
+  
+  public void a(@NonNull ttr paramttr, @NonNull ujj paramujj)
+  {
+    if ((paramujj.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramujj.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramttr.a != null) && (TextUtils.equals(paramujj.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramttr.a.b)))
     {
-    default: 
-      return;
+      urk.a(paramttr.b, "refresh feed item , feed id :%s", paramttr.a.b);
+      paramttr.i();
     }
-    this.a.c();
-    String str = paramMessage.obj.toString();
-    paramMessage = str;
-    if (str == null) {
-      paramMessage = this.a.getString(2131434857);
-    }
-    this.a.a(paramMessage, 1);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return ujj.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tud
  * JD-Core Version:    0.7.0.1
  */

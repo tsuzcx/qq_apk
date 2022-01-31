@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class appoint_define$AppointInfoEx
-  extends MessageMicro
+  extends MessageMicro<AppointInfoEx>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 50, 58, 64 }, new String[] { "str_feeds_pic_url", "str_feeds_url", "str_detail_title", "str_detail_describe", "uint32_show_publisher", "str_detail_pic_url", "str_detail_url", "uint32_show_attend" }, new Object[] { "", "", "", "", Integer.valueOf(0), "", "", Integer.valueOf(0) }, AppointInfoEx.class);
   public final PBStringField str_detail_describe = PBField.initString("");

@@ -1,23 +1,56 @@
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class kzs
-  implements Runnable
+  extends Handler
 {
-  public kzs(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
-  
-  public void run()
+  public kzs(CameraUtils paramCameraUtils, Looper paramLooper)
   {
-    ReadInJoyNativeAdAppVideoView.e(this.a, 6);
-    ReadInJoyNativeAdAppVideoView.a(this.a).pause();
-    QQToast.a(ReadInJoyNativeAdAppVideoView.a(this.a), 1, "视频加载失败，请稍后重试", 0).a();
-    ReadInJoyNativeAdAppVideoView.a(this.a);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool = true;
+    long l = min.a(paramMessage.obj);
+    if (AudioHelper.e()) {
+      QLog.w("CameraUtils", 1, "CameraHandlerThread, seq[" + l + "], event[" + paramMessage.what + "]");
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      CameraUtils.a(this.a, l);
+      return;
+    case 2: 
+      if (paramMessage.arg1 == 1) {}
+      for (;;)
+      {
+        CameraUtils.a(this.a, l, bool);
+        return;
+        bool = false;
+      }
+    case 3: 
+      i = paramMessage.arg1;
+      int j = paramMessage.arg2;
+      CameraUtils.a(this.a, l, i, j);
+      return;
+    case 4: 
+      CameraUtils.b(this.a, l);
+      return;
+    }
+    int i = paramMessage.arg1;
+    CameraUtils.a(this.a, l, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     kzs
  * JD-Core Version:    0.7.0.1
  */

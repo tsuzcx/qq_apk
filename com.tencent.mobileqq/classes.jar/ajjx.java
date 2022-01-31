@@ -1,48 +1,74 @@
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.ControlerCallback;
-import com.tencent.mobileqq.filemanager.data.FMConfig;
-import com.tencent.mobileqq.troop.data.TroopFilePreviewController;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.PreviewInfo;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajjx
-  extends BizTroopObserver
 {
-  public ajjx(TroopFilePreviewController paramTroopFilePreviewController) {}
+  public static final String[] a;
+  private static final String[] b = { "MSG", "RESUME", "TICK", "FG", "BG", "ENTER", "MAIN" };
+  public int a;
+  public GuardManager a;
+  protected long c;
+  protected long d;
   
-  protected void c(Object paramObject)
+  static
   {
-    TroopFileTransferManager.PreviewInfo localPreviewInfo = (TroopFileTransferManager.PreviewInfo)paramObject;
-    String str1 = localPreviewInfo.c;
-    if (!NetworkUtil.g(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) {
-      str1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131428327);
-    }
-    String str2;
-    if (str1 != null)
-    {
-      str2 = str1;
-      if (str1.length() >= 1) {}
-    }
-    else
-    {
-      str2 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435117);
-    }
-    if (FMConfig.jdField_a_of_type_Boolean)
-    {
-      localPreviewInfo.jdField_a_of_type_JavaLangString = "183.61.37.13";
-      localPreviewInfo.b = "443";
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity$ControlerCallback != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity$ControlerCallback.a(localPreviewInfo.jdField_a_of_type_Boolean, localPreviewInfo.jdField_a_of_type_JavaLangString, localPreviewInfo.b, localPreviewInfo.jdField_a_of_type_Int, str2, localPreviewInfo.d, null, localPreviewInfo.e);
-    }
-    super.c(paramObject);
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "EMPTY", "BG_FETCH", "FG_MAIN", "FG_OTHER", "BG_GUARD", "BG_UNGUARD", "LITE_GUARD", "LITE_UNGUARD", "DEAD" };
   }
+  
+  public void a()
+  {
+    this.c += 1L;
+    this.d += 1L;
+  }
+  
+  public final void a(int paramInt, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GuardManager", 2, jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int] + " onEvent " + b[paramInt] + ", " + paramObject + ", " + this.c + ", " + this.d);
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 2: 
+      a();
+      return;
+    case 0: 
+      b();
+      return;
+    case 3: 
+      a((String)paramObject);
+      return;
+    case 4: 
+      d((String)paramObject);
+      return;
+    case 5: 
+      b((String)paramObject);
+      return;
+    case 6: 
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(2, null);
+      return;
+    }
+    c((String)paramObject);
+  }
+  
+  protected void a(String paramString) {}
+  
+  protected void b() {}
+  
+  protected void b(String paramString)
+  {
+    this.d = 0L;
+    this.c = 0L;
+  }
+  
+  protected void c(String paramString) {}
+  
+  protected void d(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajjx
  * JD-Core Version:    0.7.0.1
  */

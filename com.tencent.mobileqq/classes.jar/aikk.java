@@ -1,25 +1,17 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-
-public final class aikk
-  implements Runnable
+public class aikk
 {
-  public aikk(String paramString) {}
+  public int a;
+  public String a;
   
-  public void run()
+  public aikk(String paramString, int paramInt)
   {
-    Intent localIntent = new Intent();
-    localIntent.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
-    localIntent.putExtra("reporting_tag", "dc01616");
-    localIntent.putExtra("reporting_detail", this.a);
-    localIntent.putExtra("reporting_count", 1);
-    localIntent.putExtra("is_runtime", 0);
-    BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aikk
  * JD-Core Version:    0.7.0.1
  */

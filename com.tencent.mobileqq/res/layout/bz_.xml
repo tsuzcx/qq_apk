@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.profile.view.SoftInputDetectView android:id="@id/dmq" android:layout_width="fill_parent" android:layout_height="0.0px" />
+    <RelativeLayout android:id="@id/do3" android:layout_width="fill_parent" android:layout_height="37.0dip" android:layout_alignParentTop="true">
+        <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:layout_gravity="center_horizontal" android:id="@id/e9y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/tjd" android:layout_centerInParent="true" />
+        <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:id="@id/e9x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/hmn" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:textColor="#ff03081a" android:gravity="center" android:id="@id/e9w" android:background="@drawable/cox" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="10.0dip" android:maxWidth="88.0dip" android:minWidth="40.0dip" android:text="@null" android:singleLine="true" android:includeFontPadding="false" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <LinearLayout android:id="@id/dwk" android:background="#fff5f6fa" android:layout_width="fill_parent" android:layout_height="75.0dip" android:layout_alignParentBottom="true">
+        <Button android:textSize="17.0sp" android:textColor="@color/al3" android:layout_gravity="center" android:id="@id/dwm" android:background="@drawable/common_btn_blue" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:minHeight="45.0dip" android:text="@string/h2n" />
+    </LinearLayout>
+    <com.tencent.widget.XListView android:id="@id/b9y" android:background="@null" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:cacheColorHint="@color/ajr" android:divider="@null" android:layout_above="@id/dwk" android:layout_below="@id/do3" />
+    <View android:id="@id/e51" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:id="@id/bvc" android:background="#fffdfdfe" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <include android:id="@id/bve" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/n0" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/do2" android:background="#fffdfdfe" android:paddingTop="7.0dip" android:paddingBottom="7.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bl3" android:background="@drawable/ym" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="14.0dip" android:layout_marginBottom="12.0dip" android:minHeight="36.0dip" android:layout_toLeftOf="@id/ajw">
+            <com.tencent.widget.XEditTextEx android:id="@id/byq" android:background="@color/ajr" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:maxLines="6" android:layout_weight="1.0" android:lineSpacingMultiplier="1.5" />
+            <ImageView android:layout_gravity="bottom" android:id="@id/bvo" android:paddingLeft="4.0dip" android:paddingRight="8.0dip" android:layout_width="36.0dip" android:layout_height="36.0dip" android:src="@drawable/skin_aio_panel_emotion_nor" android:scaleType="centerInside" />
+        </LinearLayout>
+        <Button android:textSize="14.0dip" android:textColor="@color/skin_aio_send_button" android:id="@id/ajw" android:background="@drawable/dj" android:layout_width="60.0dip" android:layout_height="34.0dip" android:layout_marginLeft="3.0dip" android:layout_marginRight="16.0dip" android:text="@string/a1p" android:layout_alignBottom="@id/bl3" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -12,7 +12,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Common$WifiPOIInfo
-  extends MessageMicro
+  extends MessageMicro<WifiPOIInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField banner_url = PBField.initString("");
@@ -23,7 +23,7 @@ public final class Common$WifiPOIInfo
   public final PBUInt32Field hot_theme_group_flag = PBField.initUInt32(0);
   public final PBInt32Field latitude = PBField.initInt32(0);
   public final PBInt32Field longitude = PBField.initInt32(0);
-  public final PBRepeatMessageField rpt_msg_seats_info = PBField.initRepeatMessage(Common.SeatsInfo.class);
+  public final PBRepeatMessageField<Common.SeatsInfo> rpt_msg_seats_info = PBField.initRepeatMessage(Common.SeatsInfo.class);
   public final PBStringField smemo = PBField.initString("");
   public final PBStringField string_join_group_url = PBField.initString("");
   public final PBUInt32Field uint32_audit_flag = PBField.initUInt32(0);
@@ -74,7 +74,7 @@ public final class Common$WifiPOIInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.hotchat.Common.WifiPOIInfo
  * JD-Core Version:    0.7.0.1
  */

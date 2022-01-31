@@ -1,19 +1,13 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.view.GuideVideoView.OnCompleteListener;
-
 public class ahnv
-  implements GuideVideoView.OnCompleteListener
 {
-  public ahnv(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
-  
-  public void a()
-  {
-    EffectsCameraCaptureFragment.c(this.a);
-  }
+  public int a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahnv
  * JD-Core Version:    0.7.0.1
  */

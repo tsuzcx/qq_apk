@@ -1,22 +1,45 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpeg;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
 public class otn
-  extends ExecuteBinResponseCallback
+  implements owa
 {
-  public otn(FFmpeg paramFFmpeg, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback) {}
-  
-  public void a(String paramString)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs change ts onSuccess: " + paramString);
+    return null;
   }
   
-  public void b(String paramString)
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs change ts onFail: " + paramString);
-    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback.b(paramString);
+    return osq.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, opw paramopw, int paramInt2)
+  {
+    paramContainer = paramContainer.getVirtualView();
+    if ((paramopw != null) && (paramopw.a() != null) && (AdvertisementInfo.isAdvertisementInfo(paramopw.a())))
+    {
+      Object localObject = paramContainer.findViewBaseByName("id_view_AdDownloadView");
+      if ((localObject != null) && ((localObject instanceof nqv)))
+      {
+        localObject = (nqv)localObject;
+        ((nqv)localObject).a(paramInt1);
+        ((nqv)localObject).a(paramopw, true);
+      }
+      paramContainer = paramContainer.findViewBaseByName("id_article_double_image");
+      if ((paramContainer != null) && ((paramContainer instanceof nrp))) {
+        ((nrp)paramContainer).a(paramopw);
+      }
+    }
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, opw paramopw, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

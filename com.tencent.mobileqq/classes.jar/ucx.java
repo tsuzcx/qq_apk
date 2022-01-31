@@ -1,18 +1,30 @@
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import java.util.Comparator;
 
-class ucx
-  implements Runnable
+public class ucx
+  implements Comparator<CommentEntry>
 {
-  ucx(ucv paramucv) {}
+  public ucx(ucw paramucw) {}
   
-  public void run()
+  public int a(CommentEntry paramCommentEntry1, CommentEntry paramCommentEntry2)
   {
-    TroopInfoActivity.g(this.a.a);
+    if ((paramCommentEntry1.status == 0) && (paramCommentEntry2.status == 0)) {
+      if (paramCommentEntry1.replyTime >= paramCommentEntry2.replyTime) {}
+    }
+    while ((paramCommentEntry1.status == 0) && (paramCommentEntry2.status != 0))
+    {
+      return -1;
+      if (paramCommentEntry1.replyTime > paramCommentEntry2.replyTime) {
+        return 1;
+      }
+      return 0;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ucx
  * JD-Core Version:    0.7.0.1
  */

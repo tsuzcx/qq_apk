@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.qzone.widget.cardview.CardView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f46" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" card_view:cardBackgroundColor="#ffffffff" card_view:cardCornerRadius="8.0dip" card_view:cardElevation="8.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:card_view="http://schemas.android.com/apk/res-auto">
-    <include android:layout_width="fill_parent" android:layout_height="100.0dip" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040af5" />
-</com.qzone.widget.cardview.CardView>

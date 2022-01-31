@@ -1,31 +1,34 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.mobileqq.armap.ARMapManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.profile.ProfileLabelInfo;
+import java.util.List;
 
-public class abix
-  implements MediaPlayer.OnPreparedListener
+class abix
+  implements View.OnClickListener
 {
-  public abix(ARMapManager paramARMapManager) {}
+  abix(abiw paramabiw) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void onClick(View paramView)
   {
-    if ((ARMapManager.a(this.a) == 0) && (paramMediaPlayer != null)) {}
-    try
+    paramView = paramView.getTag();
+    if ((paramView instanceof abiv))
     {
-      paramMediaPlayer.start();
-      return;
-    }
-    catch (Exception paramMediaPlayer)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ARMapManager", 2, "playMapBGSound2-----" + paramMediaPlayer.getMessage());
+      paramView = (abiv)paramView;
+      if ((paramView.a >= 0) && (paramView.a < this.a.a.a.size()))
+      {
+        paramView = (ProfileLabelInfo)this.a.a.a.remove(paramView.a);
+        this.a.a.a(this.a.a.a.size());
+        this.a.notifyDataSetChanged();
+        abiw.a(this.a, paramView);
+        awqx.b(this.a.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "2", "", "", "");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abix
  * JD-Core Version:    0.7.0.1
  */

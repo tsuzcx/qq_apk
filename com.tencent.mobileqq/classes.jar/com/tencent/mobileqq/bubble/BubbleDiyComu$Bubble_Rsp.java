@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class BubbleDiyComu$Bubble_Rsp
-  extends MessageMicro
+  extends MessageMicro<Bubble_Rsp>
 {
   public static final int CMD_FIELD_NUMBER = 3;
   public static final int COMM_FIELD_NUMBER = 5;
@@ -27,7 +27,7 @@ public final class BubbleDiyComu$Bubble_Rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleDiyComu.Bubble_Rsp
  * JD-Core Version:    0.7.0.1
  */

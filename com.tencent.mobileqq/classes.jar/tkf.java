@@ -1,170 +1,152 @@
-import android.content.Context;
-import android.content.Intent;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
-import com.tencent.mobileqq.activity.PhoneUnityVerifyActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.SecSvcObserver;
-import com.tencent.mobileqq.equipmentlock.EquipLockWebEntrance;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.ActionSheet;
-import java.net.URLEncoder;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class tkf
-  extends SecSvcObserver
+  extends tjx
 {
-  public tkf(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
+  private final MsgTabPlayInfo jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo;
+  private final List<ssm> jdField_a_of_type_JavaUtilList;
   
-  public void a(int paramInt, String paramString)
+  public tkf(MsgTabPlayInfo paramMsgTabPlayInfo)
   {
-    Object localObject = this.a;
-    RelativeLayout localRelativeLayout = this.a.jdField_b_of_type_AndroidWidgetRelativeLayout;
-    if (paramInt == 0) {}
-    for (int i = 1;; i = 3)
-    {
-      PhoneUnityBindInfoActivity.a((PhoneUnityBindInfoActivity)localObject, localRelativeLayout, i, 2);
-      if (paramInt != 0)
-      {
-        if (paramInt != 39) {
-          break;
-        }
-        ReportController.b(this.a.app, "CliOper", "", "", "0X8005BFD", "0X8005BFD", 0, 0, "", "", "", "");
-        DialogUtil.a(this.a, 230, this.a.getString(2131436876), this.a.getString(2131436877), null, this.a.getString(2131436648), new tkk(this), null).show();
-      }
-      return;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo = paramMsgTabPlayInfo;
+    stf localstf = (stf)tfy.a().getManager(251);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (paramMsgTabPlayInfo.source == 0) {
+      suk.a(localstf.a().b(), this.jdField_a_of_type_JavaUtilList, paramMsgTabPlayInfo.nodeUnionId);
     }
-    localObject = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      localObject = this.a.getString(2131436871);
-    }
-    QQToast.a(this.a, (CharSequence)localObject, 0).b(this.a.getTitleBarHeight());
   }
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  public static tfv a(List<tfv> paramList)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    PhoneUnityBindInfoActivity.a(this.a);
-    if (paramBoolean)
+    Object localObject1 = null;
+    Object localObject2 = localObject1;
+    int i;
+    if (paramList != null)
     {
-      ActionSheet localActionSheet = this.a.jdField_a_of_type_ComTencentWidgetActionSheet;
-      if (localActionSheet != null) {
-        localActionSheet.dismiss();
+      localObject2 = localObject1;
+      if (paramList.size() > 0)
+      {
+        int j = paramList.size();
+        i = 0;
+        localObject1 = null;
+        if (i >= j) {
+          break label100;
+        }
+        localObject2 = (tfv)paramList.get(i);
+        if (!((tfv)localObject2).b) {
+          break label60;
+        }
       }
+    }
+    return localObject2;
+    label60:
+    if (localObject1 == null) {
+      localObject1 = localObject2;
     }
     for (;;)
     {
-      PhoneUnityBindInfoActivity.a(this.a, paramBoolean, paramBundle, true);
-      return;
-      PhoneUnityBindInfoActivity.a(this.a, 2131435619);
+      i += 1;
+      break;
+      if ((localObject1.jdField_a_of_type_Boolean) && (!((tfv)localObject2).jdField_a_of_type_Boolean))
+      {
+        return (tfv)paramList.get(i);
+        label100:
+        return localObject1;
+      }
     }
   }
   
-  public void b(boolean paramBoolean, Bundle paramBundle)
+  public List<tjz> a(List<tjs> paramList)
   {
-    PhoneUnityBindInfoActivity.a(this.a);
-    if (this.a.isFinishing()) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          int i;
-          do
-          {
-            return;
-            if (paramBoolean) {
-              break label572;
-            }
-            if (paramBundle == null) {
-              break label536;
-            }
-            this.a.jdField_a_of_type_AndroidOsBundle = paramBundle;
-            localObject = this.a;
-            i = paramBundle.getInt("sso_result", -1);
-            if (i != 66) {
-              break;
-            }
-            if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null)
-            {
-              this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a((Context)localObject, 230, "绑定冲突", "该手机号码已绑定一个无密码的QQ号，需给原QQ号设置密码后才能解绑并绑定新QQ号。", null, "我知道了", new tkg(this), null);
-              this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnCancelListener(new tkh(this));
-            }
-            if ((this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (!this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) && (!this.a.isFinishing()))
-            {
-              this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-              this.a.e = true;
-            }
-            paramBundle = this.a.jdField_a_of_type_ComTencentWidgetActionSheet;
-          } while (paramBundle == null);
-          paramBundle.dismiss();
-          return;
-          if (i != 65) {
-            break;
-          }
-          if (this.a.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog == null)
-          {
-            this.a.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a((Context)localObject, 230, "无法绑定", "当前要改绑QQ号未设置密码，无法绑定新的手机号码。请设置密码后重试。", null, "我知道了", new tki(this), null);
-            this.a.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnCancelListener(new tkj(this));
-          }
-          if ((this.a.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (!this.a.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) && (!this.a.isFinishing()))
-          {
-            this.a.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-            this.a.e = true;
-          }
-          paramBundle = this.a.jdField_a_of_type_ComTencentWidgetActionSheet;
-        } while (paramBundle == null);
-        paramBundle.dismiss();
-        return;
-      } while (!paramBundle.containsKey("skip_url"));
-      paramBundle = paramBundle.getString("skip_url");
-    } while (TextUtils.isEmpty(paramBundle));
-    paramBundle = new StringBuilder(paramBundle);
-    paramBundle.append("?");
-    paramBundle.append("type=" + EquipLockWebEntrance.d);
-    paramBundle.append("&plat=1");
-    paramBundle.append("&app=1");
-    paramBundle.append("&version=7.6.8.3615");
-    paramBundle.append("&device=" + URLEncoder.encode(Build.DEVICE));
-    paramBundle.append("&system=" + Build.VERSION.RELEASE);
-    paramBundle.append("&systemInt=" + Integer.toString(Build.VERSION.SDK_INT));
-    paramBundle = paramBundle.toString();
-    Object localObject = new Intent(this.a, PhoneUnityVerifyActivity.class);
-    ((Intent)localObject).putExtra("url", paramBundle);
-    this.a.startActivityForResult((Intent)localObject, 1006);
-    BaseActivity.sTopActivity.overridePendingTransition(2131034134, 0);
-    return;
-    label536:
-    QQToast.a(this.a, this.a.getString(2131436865), 0).b(this.a.getTitleBarHeight());
-    this.a.finish();
-    return;
-    label572:
-    PhoneUnityBindInfoActivity.a(this.a);
-    if (paramBoolean)
-    {
-      localObject = this.a.jdField_a_of_type_ComTencentWidgetActionSheet;
-      if (localObject != null) {
-        ((ActionSheet)localObject).dismiss();
-      }
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8005D0B", "0X8005D0B", 0, 0, "", "", "", "");
-      PhoneUnityBindInfoActivity.a(this.a, paramBoolean, paramBundle, true);
-      return;
+    ArrayList localArrayList = new ArrayList(1);
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localArrayList.add(new tkh((tkg)paramList.next()));
     }
-    PhoneUnityBindInfoActivity.a(this.a, "统一绑定失败，请重新尝试！");
+    return localArrayList;
   }
+  
+  public tjv a()
+  {
+    Object localObject = new tkg(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.nodeUnionId);
+    ((tkg)localObject).jdField_a_of_type_Ssm = ((stf)QQStoryContext.a().getManager(251)).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.nodeUnionId);
+    tjv localtjv = new tjv((tjs)localObject, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.mStartVid, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.mStartVideoFeedId);
+    if ((this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.mVids != null) && (!this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.mVids.isEmpty()) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.mFeedIdMap != null) && (!this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.mFeedIdMap.isEmpty()))
+    {
+      localObject = new tjt((tjs)localObject);
+      ((tjt)localObject).jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.mVids;
+      ((tjt)localObject).jdField_a_of_type_JavaUtilMap = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.mFeedIdMap;
+      localtjv.a = ((tjt)localObject);
+    }
+    return localtjv;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt, tjy paramtjy)
+  {
+    Object localObject;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.source == 1)
+    {
+      localObject = ((sgj)tfy.a().getManager(197)).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.uin);
+      if (localObject == null) {
+        break label112;
+      }
+      ((ssm)localObject).f = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderMsgTabPlayInfo.source;
+      this.jdField_a_of_type_JavaUtilList.add(localObject);
+    }
+    for (;;)
+    {
+      localObject = new ArrayList();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        ((List)localObject).add(tkg.a((ssm)localIterator.next()));
+      }
+      label112:
+      urk.d("Q.qqstory.player.data.MsgTabPlayPageLoader", "no data for header group");
+    }
+    paramtjy.a(new ErrorMessage(), (List)localObject, true);
+  }
+  
+  public boolean a(tjt paramtjt)
+  {
+    if ((paramtjt == null) || (!paramtjt.d()))
+    {
+      urk.c("Q.qqstory.player.data.MsgTabPlayPageLoader", "needSyncVidList. need sync");
+      return true;
+    }
+    vkw.a(paramtjt.jdField_a_of_type_Tjs instanceof tkg);
+    tkg localtkg = (tkg)paramtjt.jdField_a_of_type_Tjs;
+    if (localtkg.jdField_a_of_type_Boolean)
+    {
+      urk.a("Q.qqstory.player.data.MsgTabPlayPageLoader", "won't needSyncVidList. groupId %s is end", localtkg.a());
+      return false;
+    }
+    int i = localtkg.jdField_a_of_type_Int;
+    if (paramtjt.jdField_a_of_type_Int != i) {
+      urk.a("Q.qqstory.player.data.MsgTabPlayPageLoader", "needSyncVidList() groupId %s, position not match: %d != %d", localtkg.a(), Integer.valueOf(paramtjt.jdField_a_of_type_Int), Integer.valueOf(i));
+    }
+    if ((i < 0) || (paramtjt.jdField_a_of_type_JavaUtilList.size() - i < 10))
+    {
+      urk.b("Q.qqstory.player.data.MsgTabPlayPageLoader", "needSyncVidList. need sync postion=%d, vidlist.size=%d, group=%s", Integer.valueOf(i), Integer.valueOf(paramtjt.jdField_a_of_type_JavaUtilList.size()), paramtjt);
+      return true;
+    }
+    urk.b("Q.qqstory.player.data.MsgTabPlayPageLoader", "needSyncVidList. not need sync postion=%d, vidlist.size=%d, group=%s", Integer.valueOf(i), Integer.valueOf(paramtjt.jdField_a_of_type_JavaUtilList.size()), paramtjt);
+    return false;
+  }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tkf
  * JD-Core Version:    0.7.0.1
  */

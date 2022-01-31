@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class submsgtype0x7e$WalletMsgPush
-  extends MessageMicro
+  extends MessageMicro<WalletMsgPush>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_extend = PBField.initBytes(ByteStringMicro.EMPTY);

@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class FeedsProtocol$LiveAnchorItem
-  extends MessageMicro
+  extends MessageMicro<LiveAnchorItem>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field anchor_type = PBField.initUInt32(0);
@@ -21,7 +21,7 @@ public final class FeedsProtocol$LiveAnchorItem
   public final PBUInt32Field room_id = PBField.initUInt32(0);
   public final PBBytesField room_img_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField room_name = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_msg_rich_title = PBField.initRepeatMessage(FeedsProtocol.RichTitleElement.class);
+  public final PBRepeatMessageField<FeedsProtocol.RichTitleElement> rpt_msg_rich_title = PBField.initRepeatMessage(FeedsProtocol.RichTitleElement.class);
   public final PBUInt32Field sub_room_id = PBField.initUInt32(0);
   public FeedsProtocol.UserInfo user_info = new FeedsProtocol.UserInfo();
   public final PBUInt32Field watch_count = PBField.initUInt32(0);
@@ -38,7 +38,7 @@ public final class FeedsProtocol$LiveAnchorItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.FeedsProtocol.LiveAnchorItem
  * JD-Core Version:    0.7.0.1
  */

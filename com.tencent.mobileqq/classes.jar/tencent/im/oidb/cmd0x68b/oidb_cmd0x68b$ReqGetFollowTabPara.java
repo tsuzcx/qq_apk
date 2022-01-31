@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_cmd0x68b$ReqGetFollowTabPara
-  extends MessageMicro
+  extends MessageMicro<ReqGetFollowTabPara>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_device_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -19,9 +19,9 @@ public final class oidb_cmd0x68b$ReqGetFollowTabPara
   public final PBBytesField bytes_red_dot_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_refresh_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_set_top_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField rpt_curr_article_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
-  public final PBRepeatMessageField rpt_expose_topic_list = PBField.initRepeatMessage(oidb_cmd0x68b.ExposeTopic.class);
-  public final PBRepeatMessageField rpt_inner_msg_list = PBField.initRepeatMessage(oidb_cmd0x68b.InnerMsg.class);
+  public final PBRepeatField<Long> rpt_curr_article_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatMessageField<oidb_cmd0x68b.ExposeTopic> rpt_expose_topic_list = PBField.initRepeatMessage(oidb_cmd0x68b.ExposeTopic.class);
+  public final PBRepeatMessageField<oidb_cmd0x68b.InnerMsg> rpt_inner_msg_list = PBField.initRepeatMessage(oidb_cmd0x68b.InnerMsg.class);
   public final PBUInt32Field uint32_enter_topic_reddot_time = PBField.initUInt32(0);
   public final PBUInt32Field uint32_update_times = PBField.initUInt32(0);
   public final PBUInt64Field uint64_begin_recommend_seq = PBField.initUInt64(0L);
@@ -40,7 +40,7 @@ public final class oidb_cmd0x68b$ReqGetFollowTabPara
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.ReqGetFollowTabPara
  * JD-Core Version:    0.7.0.1
  */

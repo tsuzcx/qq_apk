@@ -1,15 +1,19 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
+import atmo;
 import java.io.Serializable;
 
 public class ApolloGameRoamData
-  extends Entity
+  extends atmo
   implements Serializable
 {
   public static final int TYPE_RECOMMEND = 1;
   public static final int TYPE_USER_PLAYED = 2;
   public int gameId;
+  public long tagBegTs;
+  public long tagEndTs;
+  public int tagType;
+  public String tagUrl;
   public int type = 2;
 }
 

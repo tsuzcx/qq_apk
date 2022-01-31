@@ -85,6 +85,12 @@ class SmttWebViewClient
     this.mClient.onLoadResource(this.mWebView, paramString);
   }
   
+  public void onPageCommitVisible(IX5WebViewBase paramIX5WebViewBase, String paramString)
+  {
+    this.mWebView.setX5WebView(paramIX5WebViewBase);
+    this.mClient.onPageCommitVisible(this.mWebView, paramString);
+  }
+  
   public void onPageFinished(IX5WebViewBase paramIX5WebViewBase, int paramInt1, int paramInt2, String paramString)
   {
     if (result_configForceSyswebview == null)
@@ -112,15 +118,7 @@ class SmttWebViewClient
       if ((!TbsShareManager.mHasQueryed) && (this.mWebView.getContext() != null) && (TbsShareManager.isThirdPartyApp(this.mWebView.getContext())))
       {
         TbsShareManager.mHasQueryed = true;
-        new Thread(new Runnable()
-        {
-          public void run()
-          {
-            if ((!TbsShareManager.forceLoadX5FromTBSDemo(SmttWebViewClient.this.mWebView.getContext())) && (TbsDownloader.needDownload(SmttWebViewClient.this.mWebView.getContext(), false))) {
-              TbsDownloader.startDownload(SmttWebViewClient.this.mWebView.getContext());
-            }
-          }
-        }).start();
+        new Thread(new SmttWebViewClient.1(this)).start();
       }
       if ((this.mWebView.getContext() != null) && (!TbsLogReport.getInstance(this.mWebView.getContext()).getShouldUploadEventReport()))
       {
@@ -304,7 +302,7 @@ class SmttWebViewClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.smtt.sdk.SmttWebViewClient
  * JD-Core Version:    0.7.0.1
  */

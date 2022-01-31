@@ -1,18 +1,13 @@
-import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.biz.pubaccount.subscript.SubscriptConstants.1;
+import java.util.Map;
 
-class row
-  implements Runnable
+public class row
 {
-  row(rot paramrot) {}
-  
-  public void run()
-  {
-    this.a.a.d();
-  }
+  public static final Map<String, String> a = new SubscriptConstants.1();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     row
  * JD-Core Version:    0.7.0.1
  */

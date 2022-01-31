@@ -1,17 +1,21 @@
 package dov.com.tencent.biz.qqstory.takevideo.doodle.model;
 
-import com.tencent.biz.qqstory.network.response.GetEmojiPackInfoListResponse.EmojiPack;
+import azxx;
+import badq;
+import bhfm;
+import bhki;
+import bioo;
+import biop;
+import bior;
+import biou;
+import biov;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.util.JSONUtils;
-import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.QIMManager;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.LocationFacePackage;
 import java.util.List;
+import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
+import tbl;
 
 public class DoodleEmojiItem
   implements Cloneable
@@ -24,8 +28,9 @@ public class DoodleEmojiItem
   @Deprecated
   public int hide;
   public String icon;
-  public List mInfoItemList;
-  public List mItemList;
+  public Map<String, Map<String, biop>> mCityRes;
+  public List<bior> mInfoItemList;
+  public List<biov> mItemList;
   public String mLocalEmojiFolderPath;
   public int mask;
   public String md5;
@@ -35,18 +40,6 @@ public class DoodleEmojiItem
   public int type;
   
   public DoodleEmojiItem() {}
-  
-  public DoodleEmojiItem(GetEmojiPackInfoListResponse.EmojiPack paramEmojiPack)
-  {
-    this.pack_id = paramEmojiPack.a;
-    this.icon = paramEmojiPack.jdField_b_of_type_JavaLangString;
-    this.download_icon = paramEmojiPack.c;
-    this.name = paramEmojiPack.d;
-    this.download_url = paramEmojiPack.e;
-    this.config = paramEmojiPack.g;
-    this.md5 = paramEmojiPack.f;
-    this.type = paramEmojiPack.jdField_b_of_type_Int;
-  }
   
   public DoodleEmojiItem(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
@@ -61,27 +54,40 @@ public class DoodleEmojiItem
     this.mask = 0;
   }
   
+  public DoodleEmojiItem(tbl paramtbl)
+  {
+    this.pack_id = paramtbl.a;
+    this.icon = paramtbl.jdField_b_of_type_JavaLangString;
+    this.download_icon = paramtbl.c;
+    this.name = paramtbl.d;
+    this.download_url = paramtbl.e;
+    this.config = paramtbl.g;
+    this.md5 = paramtbl.f;
+    this.type = paramtbl.jdField_b_of_type_Int;
+  }
+  
   public static DoodleEmojiItem getDoodleEmojiItemFromJsonObj(JSONObject paramJSONObject)
   {
-    DoodleEmojiItem localDoodleEmojiItem = (DoodleEmojiItem)JSONUtils.a(paramJSONObject, DoodleEmojiItem.class);
-    if (localDoodleEmojiItem.type != 1)
+    DoodleEmojiItem localDoodleEmojiItem = (DoodleEmojiItem)azxx.a(paramJSONObject, DoodleEmojiItem.class);
+    if ((localDoodleEmojiItem != null) && (localDoodleEmojiItem.type != 1))
     {
       try
       {
         if (localDoodleEmojiItem.type == 2)
         {
-          localDoodleEmojiItem.mItemList = LocationFacePackage.a(paramJSONObject.getJSONArray("poi_poster_list"));
+          localDoodleEmojiItem.mItemList = biou.a(paramJSONObject.getJSONArray("poi_poster_list"));
           return localDoodleEmojiItem;
         }
         if (localDoodleEmojiItem.type != 3) {
           return localDoodleEmojiItem;
         }
-        localDoodleEmojiItem.mInfoItemList = InfomationFacePackage.a(paramJSONObject.getJSONArray("info_poster_list"));
+        localDoodleEmojiItem.mInfoItemList = bioo.a(paramJSONObject.getJSONArray("info_poster_list"));
+        localDoodleEmojiItem.mCityRes = bioo.a(paramJSONObject.optJSONArray("city_res"));
         if (QLog.isColorLevel()) {
           QLog.d("QIMInformationPasterManager", 2, "parsed information item list");
         }
-        paramJSONObject = (QIMInformationPasterManager)QIMManager.a().c(12);
-        if (NetworkUtil.h(BaseApplicationImpl.getContext()))
+        paramJSONObject = (bhki)bhfm.a().c(12);
+        if (badq.h(BaseApplicationImpl.getContext()))
         {
           if (QLog.isColorLevel()) {
             QLog.d("QIMInformationPasterManager", 2, "batchPullAllRes");

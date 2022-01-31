@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.nearby.NearbyLikeLimitManager.onDoVoteListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
+import com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocFragment;
+import com.tencent.mobileqq.activity.history.tendoc.TencentDocItem;
 
 public class afki
-  implements NearbyLikeLimitManager.onDoVoteListener
+  implements afkf
 {
-  public afki(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  public afki(ChatHistoryBaseTenDocFragment paramChatHistoryBaseTenDocFragment) {}
   
-  public void a(String paramString, boolean paramBoolean)
+  public boolean a(TencentDocItem paramTencentDocItem)
   {
-    this.a.c(paramBoolean);
-    this.a.u = paramBoolean;
+    return (this.a.a != null) && (this.a.a.a(paramTencentDocItem));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afki
  * JD-Core Version:    0.7.0.1
  */

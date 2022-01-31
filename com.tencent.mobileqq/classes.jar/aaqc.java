@@ -1,45 +1,33 @@
-import android.graphics.drawable.Drawable;
-import android.support.annotation.Nullable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.ar.config.MainEntryAni;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionData;
 
 public class aaqc
-  implements OnCompositionLoadedListener
+  extends ajhy
 {
-  public aaqc(MainEntryAni paramMainEntryAni, aaqf paramaaqf, aaqg paramaaqg, String paramString) {}
+  public aaqc(EditActivity paramEditActivity) {}
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_Aaqf.d.get();
-    Object localObject = new StringBuilder().append("onCompositionLoaded, rollView[");
-    if (localImageView != null) {}
-    for (boolean bool = true;; bool = false)
+    EditActivity.a(this.a);
+    if (paramBoolean)
     {
-      QLog.w("WorldCupMgr", 1, bool + "]");
-      if (localImageView != null) {
-        break;
+      paramObject = (CustomEmotionData)paramObject;
+      if (paramObject != null)
+      {
+        ((anch)this.a.app.getManager(103)).c(paramObject);
+        EditActivity.b(this.a);
       }
-      MainEntryAni.a(this.jdField_a_of_type_ComTencentMobileqqArConfigMainEntryAni, this.jdField_a_of_type_Aaqf);
+    }
+    while (!(paramObject instanceof String)) {
       return;
     }
-    localObject = new LottieDrawable();
-    ((LottieDrawable)localObject).setImageAssetDelegate(new aaqd(this));
-    ((LottieDrawable)localObject).addAnimatorListener(new aaqe(this));
-    ((LottieDrawable)localObject).setImagesAssetsFolder(this.jdField_a_of_type_JavaLangString);
-    ((LottieDrawable)localObject).setComposition(paramLottieComposition);
-    ((LottieDrawable)localObject).loop(false);
-    ((LottieDrawable)localObject).playAnimation();
-    localImageView.setImageDrawable((Drawable)localObject);
+    bbmy.a(this.a, 1, (String)paramObject, 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaqc
  * JD-Core Version:    0.7.0.1
  */

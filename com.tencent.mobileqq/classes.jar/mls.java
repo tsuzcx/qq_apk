@@ -1,14 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.biz.PoiMapActivity;
 
 public class mls
-  implements Runnable
+  implements View.OnClickListener
 {
-  public mls(ReadInJoyHeadImageView paramReadInJoyHeadImageView, ReadInJoyUserInfo paramReadInJoyUserInfo) {}
+  public mls(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ReadInJoyHeadImageView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadInJoyUserInfo);
+    this.jdField_a_of_type_AndroidAppDialog.cancel();
+    String str = this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getText().toString();
+    paramView = str;
+    if (str == null) {
+      paramView = "";
+    }
+    this.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "click_sch_cancel", paramView, "", "", "");
   }
 }
 

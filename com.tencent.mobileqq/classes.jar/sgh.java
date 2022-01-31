@@ -1,24 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class sgh
-  implements DialogInterface.OnClickListener
+class sgh
+  implements ThreadExcutor.IThreadListener
 {
-  public sgh(ChatHistoryImageView paramChatHistoryImageView) {}
+  sgh(sgg paramsgg, Runnable paramRunnable) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    if (this.a.a != null)
-    {
-      this.a.a.b = false;
-      this.a.a.a(false);
+    sgg.a(this.jdField_a_of_type_Sgg).decrementAndGet();
+    urk.b(sgg.a(this.jdField_a_of_type_Sgg), "threshold after running current task is " + sgg.a(this.jdField_a_of_type_Sgg).get());
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      urk.b(sgg.a(this.jdField_a_of_type_Sgg), "threshold after running current task is:" + this.jdField_a_of_type_JavaLangRunnable.hashCode());
+    }
+  }
+  
+  public void onPreRun()
+  {
+    sgg.a(this.jdField_a_of_type_Sgg).incrementAndGet();
+    urk.a(sgg.a(this.jdField_a_of_type_Sgg), "execute %s", this.jdField_a_of_type_JavaLangRunnable);
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      urk.b(sgg.a(this.jdField_a_of_type_Sgg), "execute hashcode:" + this.jdField_a_of_type_JavaLangRunnable.hashCode());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sgh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,80 +1,39 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-import java.util.List;
-import tencent.im.nearfield_discuss.nearfield_discuss.UserProfile;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.tgpa.vendorpd.GameCallback;
+import org.json.JSONObject;
 
-public class yex
-  extends BaseAdapter
+public final class yex
+  implements GameCallback
 {
-  LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  yey jdField_a_of_type_Yey;
+  public yex(JSONObject paramJSONObject) {}
   
-  public yex(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity)
+  public int getPreDownloadVersionInfo(String paramString)
   {
-    this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramCreateFaceToFaceDiscussionActivity.jdField_a_of_type_AndroidContentContext);
-  }
-  
-  public int getCount()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList == null) {
+    if (QLog.isColorLevel()) {
+      QLog.d("GameCenterCheck", 2, "checkGameRes.getGameVersionUpdateInfo res =" + paramString);
+    }
+    try
+    {
+      paramString = new JSONObject(paramString);
+      if (paramString.optInt("ret") == 0)
+      {
+        paramString = paramString.optJSONObject("data");
+        bgtf.a().a(paramString, this.a);
+      }
       return 0;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.size() < 50) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.size() + 1;
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList == null) {
-      return null;
-    }
-    return (nearfield_discuss.UserProfile)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    catch (Throwable paramString)
     {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970369, null);
-      this.jdField_a_of_type_Yey = new yey(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity);
-      this.jdField_a_of_type_Yey.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362724));
-      this.jdField_a_of_type_Yey.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362759));
-      paramView.setTag(this.jdField_a_of_type_Yey);
-    }
-    while ((paramInt == getCount() - 1) && (getCount() < 50))
-    {
-      CreateFaceToFaceDiscussionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity, paramView);
-      return paramView;
-      this.jdField_a_of_type_Yey = ((yey)paramView.getTag());
-      if (this.jdField_a_of_type_Yey.jdField_a_of_type_Boolean)
+      for (;;)
       {
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970369, null);
-        this.jdField_a_of_type_Yey = new yey(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity);
-        this.jdField_a_of_type_Yey.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362724));
-        this.jdField_a_of_type_Yey.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362759));
-        paramView.setTag(this.jdField_a_of_type_Yey);
-        this.jdField_a_of_type_Yey.jdField_a_of_type_Boolean = false;
+        QLog.e("GameCenterCheck", 1, "checkGameRes.getPreDownloadVersionInfo e=" + paramString.toString());
       }
     }
-    CreateFaceToFaceDiscussionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity, paramView, (nearfield_discuss.UserProfile)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberCreateFaceToFaceDiscussionActivity.jdField_a_of_type_JavaUtilList.get(paramInt));
-    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yex
  * JD-Core Version:    0.7.0.1
  */

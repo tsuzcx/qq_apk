@@ -1,44 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import java.io.File;
 
-public class tir
-  extends Handler
+final class tir
+  implements shc
 {
-  public tir(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  tir(File paramFile, String paramString) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(sha paramsha)
   {
-    for (;;)
+    String str = paramsha.b;
+    if (str != null)
     {
-      try
-      {
-        int i = paramMessage.what;
-        switch (i)
-        {
-        default: 
-          return;
-        }
+      if ((paramsha.a) && (this.jdField_a_of_type_JavaIoFile.exists()) && (!shq.a(this.jdField_a_of_type_JavaIoFile))) {
+        this.jdField_a_of_type_JavaIoFile.delete();
       }
-      finally {}
-      boolean bool = ((Boolean)paramMessage.obj).booleanValue();
-      NotifyPushSettingActivity.g(this.a).setChecked(bool);
-      continue;
-      paramMessage = (String)paramMessage.obj;
-      NotifyPushSettingActivity.a(this.a, paramMessage);
-      continue;
-      paramMessage = (String)paramMessage.obj;
-      NotifyPushSettingActivity.b(this.a, paramMessage);
-      continue;
-      bool = ((Boolean)paramMessage.obj).booleanValue();
-      NotifyPushSettingActivity.h(this.a).setChecked(bool);
+      tio.a(new tiu(this.jdField_a_of_type_JavaLangString, str, this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), ""));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tir
  * JD-Core Version:    0.7.0.1
  */

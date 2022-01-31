@@ -1,55 +1,82 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.adapter.ImageHolder;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileBaseExpandableListAdapter.LocalItemHolder;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
+import android.content.Context;
+import android.graphics.Paint;
+import android.text.SpannableString;
+import android.text.TextPaint;
+import android.text.style.ForegroundColorSpan;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.widget.TextView;
 
-public class aczp
-  implements View.OnClickListener
+class aczp
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public aczp(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
+  aczp(aczo paramaczo, TextView paramTextView, String paramString) {}
   
-  public void onClick(View paramView)
+  private String a(String paramString)
   {
-    Object localObject2 = paramView.getTag();
-    Object localObject1 = null;
-    if ((localObject2 instanceof QfileLocalFileBaseExpandableListAdapter.LocalItemHolder)) {
-      localObject1 = (FileInfo)((QfileLocalFileBaseExpandableListAdapter.LocalItemHolder)paramView.getTag()).jdField_a_of_type_JavaLangObject;
+    paramString = paramString.toCharArray();
+    int i = 0;
+    if (i < paramString.length)
+    {
+      if (paramString[i] == '　') {
+        paramString[i] = 32;
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        if ((paramString[i] > 65280) && (paramString[i] < 65375)) {
+          paramString[i] = ((char)(paramString[i] - 65248));
+        }
+      }
     }
+    return new String(paramString);
+  }
+  
+  public boolean onPreDraw()
+  {
+    int j = 0;
+    int k = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth() * 2;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+    TextPaint localTextPaint = this.jdField_a_of_type_AndroidWidgetTextView.getPaint();
+    String str2 = a(this.jdField_a_of_type_Aczo.a.getString(2131631762) + ">");
+    String str3 = a(this.jdField_a_of_type_JavaLangString);
+    String str1 = "  " + str2;
+    Object localObject = str3 + str1;
+    if (localTextPaint.measureText((String)localObject + "      ") < k) {}
+    label329:
     for (;;)
     {
-      if (localObject1 != null) {
-        this.a.c((FileInfo)localObject1);
+      k = ((String)localObject).length();
+      int i = j;
+      if (k > str2.length()) {
+        i = k - str2.length();
       }
-      return;
-      if ((localObject2 instanceof ImageHolder))
+      localObject = new SpannableString((CharSequence)localObject);
+      ((SpannableString)localObject).setSpan(new ForegroundColorSpan(-12541697), i, k, 33);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      return true;
+      String str4 = "..." + str1;
+      int m = str3.length();
+      i = 0;
+      for (;;)
       {
-        localObject2 = (ImageHolder)paramView.getTag();
-        paramView = (FileInfo)((ImageHolder)localObject2).jdField_a_of_type_JavaLangObject;
-        if (!this.a.a.g())
-        {
-          localObject1 = paramView;
-          if (!this.a.a.h()) {}
+        if (i >= m) {
+          break label329;
         }
-        else
-        {
-          localObject1 = this.a.a.getSharedPreferences("LAST_CHOOSE_", 0).edit();
-          ((SharedPreferences.Editor)localObject1).putInt("GROUP", ((ImageHolder)localObject2).b);
-          ((SharedPreferences.Editor)localObject1).putInt("CHILD", (((ImageHolder)localObject2).jdField_a_of_type_Int + 1) / 4);
-          ((SharedPreferences.Editor)localObject1).commit();
-          localObject1 = paramView;
+        str1 = str3.substring(0, m - i) + str4;
+        localObject = str1;
+        if (localTextPaint.measureText(str1 + "      ") < k) {
+          break;
         }
+        i += 1;
+        localObject = str1;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aczp
  * JD-Core Version:    0.7.0.1
  */

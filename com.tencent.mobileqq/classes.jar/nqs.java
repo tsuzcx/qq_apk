@@ -1,23 +1,35 @@
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler;
-import java.util.ArrayList;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-public class nqs
-  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
+class nqs
+  implements Animator.AnimatorListener
 {
-  public nqs(BatchGetVideoInfoHandler paramBatchGetVideoInfoHandler, BatchGetVideoInfo paramBatchGetVideoInfo) {}
+  nqs(nqp paramnqp) {}
   
-  public void a()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler.b(1);
+    nqp.a(this.a, false);
   }
   
-  public void a(ArrayList paramArrayList)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler.a(1, paramArrayList);
+    nqp.a(this.a, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator)
+  {
+    nqp.a(this.a, true);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    nqp.a(this.a, true);
+    nqp.a(this.a).setAlpha(0.0F);
+    nqp.b(this.a).setAlpha(0.0F);
+    nqp.c(this.a).setAlpha(0.0F);
+    nqp.a(this.a).setVisibility(0);
   }
 }
 

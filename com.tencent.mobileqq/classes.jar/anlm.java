@@ -1,20 +1,25 @@
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-import cooperation.qzone.webviewplugin.QzoneVideoTabJsPlugin;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.List;
 
-public class anlm
-  implements Runnable
+class anlm
+  implements arol<Void, List<anjy>>
 {
-  public anlm(QzoneVideoTabJsPlugin paramQzoneVideoTabJsPlugin, String paramString) {}
+  anlm(anlk paramanlk) {}
   
-  public void run()
+  public List<anjy> a(Void paramVoid)
   {
-    RemoteHandleManager.a().a().f(this.jdField_a_of_type_JavaLangString);
+    paramVoid = ((arnz)this.a.a.getManager(14)).a(false, anlk.a(this.a), false);
+    ArrayList localArrayList = new ArrayList();
+    if (paramVoid != null) {
+      localArrayList.addAll(paramVoid);
+    }
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anlm
  * JD-Core Version:    0.7.0.1
  */

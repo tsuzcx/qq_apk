@@ -36,6 +36,7 @@ public final class e_busi_param
   public static final int _BatchPhotoNum = 30;
   public static final int _BizModTraceInfo = 92;
   public static final int _BrandUgcId = 162;
+  public static final int _ClientAppId = 182;
   public static final int _CmtNum = 23;
   public static final int _ComboCounts = 111;
   public static final int _CoupleCommentID = 134;
@@ -44,9 +45,12 @@ public final class e_busi_param
   public static final int _CustomPraiseType = 120;
   public static final int _Danmaku = 148;
   public static final int _DayInfoInDeparture = 86;
+  public static final int _DebugInfoFromServer = 194;
   public static final int _DepartureTime = 83;
   public static final int _Document = 109;
+  public static final int _DontNeedEntranceVideo = 196;
   public static final int _DropListSubType = 123;
+  public static final int _EnableFloatingView = 188;
   public static final int _EventFeedkey = 99;
   public static final int _EventTagId = 126;
   public static final int _EventTagJumpParam = 127;
@@ -65,6 +69,7 @@ public final class e_busi_param
   public static final int _Framerate = 110;
   public static final int _FriendshipEndTime = 129;
   public static final int _FriendshipQueryType = 130;
+  public static final int _FromIntimacyPage = 193;
   public static final int _GetFeedsRawData = 31;
   public static final int _GetVideoAdvFeedsDetail = 68;
   public static final int _GifFirstUrl = 63;
@@ -83,8 +88,10 @@ public final class e_busi_param
   public static final int _IsBrandUgcAdv = 102;
   public static final int _IsDelete = 35;
   public static final int _IsDirectApp = 61;
+  public static final int _IsDiss = 169;
   public static final int _IsFilterHasRead = 112;
   public static final int _IsGetTihSelf = 66;
+  public static final int _IsKuolieFeeds = 165;
   public static final int _IsLike = 24;
   public static final int _IsLiveRecomFeeds = 104;
   public static final int _IsNewSearch = 135;
@@ -92,9 +99,12 @@ public final class e_busi_param
   public static final int _IsRealTimeReportTTT = 122;
   public static final int _IsServiceLink = 27;
   public static final int _IsSignIn = 50;
+  public static final int _IsSuportTbsDownload = 167;
+  public static final int _IsTimerMachineFeeds = 183;
   public static final int _JumpIndexEndTime = 81;
   public static final int _JumpIndexPicNum = 82;
   public static final int _JumpIndexStartTime = 80;
+  public static final int _KuolieWeeklyReportType = 191;
   public static final int _LAST_PAVFEED_TIME = 94;
   public static final int _LifeMomentFeed = 147;
   public static final int _LifeMomentID = 150;
@@ -103,10 +113,17 @@ public final class e_busi_param
   public static final int _LikeCurKey = 6;
   public static final int _LikeNum = 22;
   public static final int _LikeUniKey = 5;
+  public static final int _LogTraceId = 181;
   public static final int _MessageHostUin = 14;
   public static final int _MessageType = 45;
+  public static final int _MiniProgramScene = 195;
+  public static final int _Minico_appid = 170;
+  public static final int _Minico_openid = 171;
+  public static final int _Minico_token = 172;
   public static final int _MobileFeedsType = 38;
+  public static final int _MoodContent = 184;
   public static final int _MultiSessionId = 141;
+  public static final int _NeedParentChildGuideFeeds = 186;
   public static final int _NewCoverid = 11;
   public static final int _NewRecomFeedsType = 70;
   public static final int _OperateRef = 54;
@@ -123,6 +140,7 @@ public final class e_busi_param
   public static final int _PhotoWithComm = 9;
   public static final int _PicEnlargeRate = 53;
   public static final int _PublishSource = 51;
+  public static final int _QQGroupId = 166;
   public static final int _QuanKey = 144;
   public static final int _QzmallFlexibility = 145;
   public static final int _ReadspaceDownloadApkLevel = 47;
@@ -146,11 +164,13 @@ public final class e_busi_param
   public static final int _ShootingAddressName = 84;
   public static final int _ShootingTime = 90;
   public static final int _ShuoshuoSyncToFeed = 65;
+  public static final int _SmallBusType = 180;
   public static final int _SourceTitle = 4;
   public static final int _SqDynamicFeedsKey = 131;
   public static final int _SubPraiseType = 125;
   public static final int _SuperPraise = 71;
   public static final int _SupportFeedsNoUpdate = 29;
+  public static final int _TIHFrdUin = 187;
   public static final int _TabPageTypeId = 163;
   public static final int _ThumbFillPic = 44;
   public static final int _TihHasMore = 67;
@@ -170,10 +190,13 @@ public final class e_busi_param
   public static final int _ViewMoreBackPicUrl = 153;
   public static final int _ViewMoreCookie = 103;
   public static final int _ViewMoreIcon = 154;
+  public static final int _need_expose_rept = 189;
+  public static final int _shield_mini_program = 190;
+  public static final int _tihlasttime = 168;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.e_busi_param
  * JD-Core Version:    0.7.0.1
  */

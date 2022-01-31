@@ -1,15 +1,12 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetUserSelfInfoStep;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
-import com.tencent.biz.qqstory.utils.UncheckedCallable;
+import android.view.View;
 
-public class ofu
-  implements UncheckedCallable
+class ofu
+  extends bequ
 {
-  public ofu(NewMyStorySegment paramNewMyStorySegment) {}
-  
-  public GetUserSelfInfoStep a()
+  ofu(ofs paramofs, View paramView)
   {
-    return new GetUserSelfInfoStep(null);
+    super(paramView);
+    paramView.setTag(this);
   }
 }
 

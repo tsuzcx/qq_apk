@@ -1,17 +1,70 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager;
+import java.io.FileInputStream;
 
 public class agjb
-  extends AnimatorListenerAdapter
+  extends agja
 {
-  public agjb(ARTipsManager paramARTipsManager) {}
+  private static final byte[] a;
+  private static final byte[] b;
   
-  public void onAnimationStart(Animator paramAnimator)
+  static
   {
-    if (ARTipsManager.a(this.a) != null) {
-      ARTipsManager.a(this.a).setVisibility(0);
+    jdField_a_of_type_ArrayOfByte = "WEBP".getBytes();
+    jdField_b_of_type_ArrayOfByte = "RIFF".getBytes();
+  }
+  
+  public agjb(String paramString)
+  {
+    super(paramString);
+    this.jdField_a_of_type_JavaLangString = "PhotoIncompatibleWebp";
+    this.jdField_b_of_type_JavaLangString = "reportGenerateWebp";
+  }
+  
+  static boolean a(String paramString)
+  {
+    byte[] arrayOfByte = new byte[16];
+    int i;
+    for (;;)
+    {
+      try
+      {
+        new FileInputStream(paramString).read(arrayOfByte);
+        if (arrayOfByte.length >= 12) {
+          break label98;
+        }
+        return false;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
+      if (i >= jdField_b_of_type_ArrayOfByte.length) {
+        break label103;
+      }
+      if (jdField_b_of_type_ArrayOfByte[i] != arrayOfByte[i]) {
+        break;
+      }
+      i += 1;
+    }
+    for (;;)
+    {
+      if (i < 12)
+      {
+        int j = jdField_a_of_type_ArrayOfByte[(i - 8)];
+        int k = arrayOfByte[i];
+        if (j == k) {
+          i += 1;
+        }
+      }
+      else
+      {
+        return true;
+      }
+      return false;
+      label98:
+      i = 0;
+      break;
+      label103:
+      i = 8;
     }
   }
 }

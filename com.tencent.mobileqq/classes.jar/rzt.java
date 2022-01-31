@@ -1,86 +1,69 @@
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.text.TextUtils;
-import com.tencent.biz.anonymous.AnonymousChatHelper;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.confess.ConfessMsgUtil;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.data.MessageForMarketFace;
-import com.tencent.mobileqq.data.RecentEmotion;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
+import com.tencent.biz.pubaccount.weishi_new.push.biz.WSWeSeeClientBiz.1;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 
-class rzt
-  implements Runnable
+public class rzt
+  extends rzo<WSRedDotPushMsg, WSPushStrategyInfo>
 {
-  rzt(rzs paramrzs, MessageForMarketFace paramMessageForMarketFace, EmoticonPackage paramEmoticonPackage) {}
+  private int jdField_a_of_type_Int;
+  private Intent jdField_a_of_type_AndroidContentIntent;
   
-  public void run()
+  public rzt(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace.sendFaceName = this.jdField_a_of_type_Rzs.jdField_a_of_type_ComTencentMobileqqDataEmoticon.name;
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace.msgVia = this.jdField_a_of_type_Rzs.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.c;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace.istroop == 1)
-    {
-      AnonymousChatHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace);
-      if (GoldMsgChatHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace.istroop)) {
-        GoldMsgChatHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace);
-      }
-      if (MsgProxyUtils.a(this.jdField_a_of_type_Rzs.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) != 1032) {
-        break label320;
-      }
-      ConfessMsgUtil.a(this.jdField_a_of_type_Rzs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace, this.jdField_a_of_type_Rzs.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Rzs.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Rzs.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e);
+    super(paramWSRedDotPushMsg);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+  }
+  
+  private String a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      return Uri.parse(paramString).getQueryParameter("logsour");
     }
-    for (;;)
+    return null;
+  }
+  
+  private void a(String paramString)
+  {
+    if ((this.jdField_a_of_type_Int == 2) && (TextUtils.equals(a(paramString), "2020020163")))
     {
-      this.jdField_a_of_type_Rzs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace, null);
-      EmoticonManager localEmoticonManager = (EmoticonManager)this.jdField_a_of_type_Rzs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13);
-      if (localEmoticonManager == null) {
-        break label400;
-      }
-      Object localObject = localEmoticonManager.a(this.jdField_a_of_type_Rzs.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
-      if ((localObject == null) || (((List)localObject).size() <= 0)) {
-        break label400;
-      }
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      rzw.a();
+      WSPublicAccReport.getInstance().feedsItemForPushReport("gzh_click", 1000003);
+    }
+  }
+  
+  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
+  {
+    boolean bool3 = vnd.a(paramContext);
+    sai.d("WSPushLog", "WSWeSeeClientBiz strategyInfo.scheme = " + paramWSPushStrategyInfo.mScheme + ", isInstallWeishi = " + bool3);
+    boolean bool1 = false;
+    if (this.jdField_a_of_type_Int == 2)
+    {
+      WSRecommendFragment.a(paramContext);
+      bool1 = true;
+    }
+    boolean bool2 = bool1;
+    if (!TextUtils.isEmpty(paramWSPushStrategyInfo.mScheme))
+    {
+      bool2 = bool1;
+      if (bool3)
       {
-        String str = (String)((Iterator)localObject).next();
-        if (!TextUtils.isEmpty(str))
-        {
-          RecentEmotion localRecentEmotion = new RecentEmotion();
-          localRecentEmotion.epId = this.jdField_a_of_type_Rzs.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId;
-          localRecentEmotion.eId = this.jdField_a_of_type_Rzs.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId;
-          localRecentEmotion.keyword = str.toLowerCase();
-          localRecentEmotion.exposeNum = 0;
-          localEmoticonManager.a(localRecentEmotion);
-        }
-      }
-      if (!AnonymousChatHelper.a().a) {
-        break;
-      }
-      AnonymousChatHelper.a().a = false;
-      break;
-      label320:
-      if (this.jdField_a_of_type_Rzs.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.j) {
-        ConfessMsgUtil.a(this.jdField_a_of_type_Rzs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace, this.jdField_a_of_type_Rzs.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      } else if (this.jdField_a_of_type_Rzs.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.k) {
-        ConfessMsgUtil.b(this.jdField_a_of_type_Rzs.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMarketFace, this.jdField_a_of_type_Rzs.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        rys.a().a(new WSWeSeeClientBiz.1(this, paramContext, paramWSPushStrategyInfo), 200L);
+        bool2 = true;
       }
     }
-    label400:
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatActivityFacade", 2, "mainRunnable, epId = " + this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId + " ePackage.copywritingType = " + this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.copywritingType + " currentTime = " + System.currentTimeMillis());
-    }
+    return bool2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rzt
  * JD-Core Version:    0.7.0.1
  */

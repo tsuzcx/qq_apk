@@ -9,17 +9,17 @@ import java.lang.ref.WeakReference;
 public class InvalidationHandler
   extends Handler
 {
-  private final WeakReference a;
+  private final WeakReference<Drawable> mDrawableRef;
   
   public InvalidationHandler(Drawable paramDrawable)
   {
     super(Looper.getMainLooper());
-    this.a = new WeakReference(paramDrawable);
+    this.mDrawableRef = new WeakReference(paramDrawable);
   }
   
   public void handleMessage(Message paramMessage)
   {
-    paramMessage = (Drawable)this.a.get();
+    paramMessage = (Drawable)this.mDrawableRef.get();
     if (paramMessage != null) {
       paramMessage.invalidateSelf();
     }

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class nearby_troop_activity$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   public static final int INT64_LATITUDE_FIELD_NUMBER = 2;
   public static final int INT64_LONGTITUDE_FIELD_NUMBER = 1;
@@ -19,7 +19,7 @@ public final class nearby_troop_activity$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.nearby_troop_activity.nearby_troop_activity.ReqBody
  * JD-Core Version:    0.7.0.1
  */

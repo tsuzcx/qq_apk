@@ -1,17 +1,25 @@
-import com.tencent.mobileqq.util.FaceDecoderImpl;
-import com.tencent.mobileqq.util.FaceInfo;
-import com.tencent.mobileqq.util.IdleUpdater;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BrowserAppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class akhe
-  extends IdleUpdater
+  extends avyu
 {
-  public akhe(FaceDecoderImpl paramFaceDecoderImpl, FaceInfo paramFaceInfo) {}
+  BrowserAppInterface a;
   
-  public void a()
+  public akhe(BrowserAppInterface paramBrowserAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoderImpl.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b, false, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Int, true, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Byte, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.c, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.d, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Boolean);
-    FaceDecoderImpl.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoderImpl).remove(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString);
+    this.a = paramBrowserAppInterface;
+  }
+  
+  public AppInterface a()
+  {
+    return this.a;
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg)
+  {
+    super.b(paramToServiceMsg, null, aquf.class);
   }
 }
 

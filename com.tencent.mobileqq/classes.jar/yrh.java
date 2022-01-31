@@ -1,24 +1,32 @@
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.apollo.ApolloRender;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxView;
 
-public final class yrh
-  implements Runnable
+public class yrh
+  implements TextView.OnEditorActionListener
 {
-  public yrh(ApolloRender paramApolloRender) {}
+  public yrh(GdtFormItemTextBoxView paramGdtFormItemTextBoxView) {}
   
-  public void run()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.a.mShowEditWindow)
+    if (paramInt == 6)
     {
-      this.a.mEditWindow.dismiss();
-      this.a.mShowEditWindow = false;
-      ApolloRender.sIsKeyBoardDissmiss = true;
+      yny.b("GdtFormItemTextBoxView", "onEditorActionDone " + GdtFormItemTextBoxView.b(this.a));
+      GdtFormItemTextBoxView.a(this.a).clearFocus();
+      GdtFormItemTextBoxView.a(paramTextView);
+    }
+    for (;;)
+    {
+      return false;
+      yny.b("GdtFormItemTextBoxView", "onEditorAction " + paramInt + " " + GdtFormItemTextBoxView.c(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yrh
  * JD-Core Version:    0.7.0.1
  */

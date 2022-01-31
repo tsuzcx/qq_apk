@@ -1,20 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class ajqo
-  implements DialogInterface.OnClickListener
+  extends ajfb
 {
-  public ajqo(ReciteRecordLayout paramReciteRecordLayout) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ajqo(QQAppInterface paramQQAppInterface)
   {
-    paramDialogInterface.dismiss();
+    super(paramQQAppInterface);
+  }
+  
+  protected Class<? extends ajfe> observerClass()
+  {
+    return ajqp.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  {
+    if ("QzoneService.GetNewAndUnread".equals(paramToServiceMsg.getServiceCmd()))
+    {
+      if (paramObject == null) {
+        notifyUI(1, false, null);
+      }
+    }
+    else {
+      return;
+    }
+    notifyUI(1, true, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajqo
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class DynamicAssociationWord$SuggestUrlItem
-  extends MessageMicro
+  extends MessageMicro<SuggestUrlItem>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField title = PBField.initBytes(ByteStringMicro.EMPTY);

@@ -1,33 +1,42 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.open.agent.BindGroupConfirmActivity;
-
 public class aljd
-  implements Runnable
 {
-  public aljd(BindGroupConfirmActivity paramBindGroupConfirmActivity, String paramString) {}
+  public int a;
+  public alje a;
+  public Object a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public String c;
   
-  public void run()
+  public aljd()
   {
-    if (this.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity.a == null) {
-      this.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity.a = DialogUtil.a(this.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity, 230);
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("|_DownloadParam_start");
+    localStringBuilder.append("|").append(" type:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("|").append(" md5:").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("|").append(" endFix:").append(this.c);
+    localStringBuilder.append("|").append(" retryCount:").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("|").append(" needUnzip:").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("|").append(" needVerify:").append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("|").append(" url:").append(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_JavaLangObject != null) {
+      localStringBuilder.append("|").append(" userData:").append(this.jdField_a_of_type_JavaLangObject);
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity.a.setMessage(this.jdField_a_of_type_JavaLangString);
-    }
-    alje localalje = new alje(this);
-    this.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity.a.setTitle(2131433709);
-    this.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity.a.setPositiveButton(2131432428, localalje);
-    this.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity.a.setNegativeButton(2131433029, localalje);
-    if (!this.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity.a.isShowing()) {
-      this.jdField_a_of_type_ComTencentOpenAgentBindGroupConfirmActivity.a.show();
-    }
+    localStringBuilder.append("|end");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aljd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,73 +1,104 @@
-import android.os.SystemClock;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder.FlashPicHolder;
-import com.tencent.mobileqq.app.FlashPicHelper;
-import com.tencent.mobileqq.app.HotChatHelper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.RelativeLayout.LayoutParams;
+import java.io.File;
 
 public class vcn
+  extends vcg<vcd>
   implements View.OnClickListener
 {
-  public vcn(FlashPicItemBuilder paramFlashPicItemBuilder) {}
+  public vcn(Context paramContext)
+  {
+    super(paramContext);
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (this.jdField_a_of_type_Vbx == null) {
+      return paramView;
+    }
+    if (paramView == null) {}
+    for (paramView = new vco(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((vcd)this.jdField_a_of_type_Vbx).a(), ((vcd)this.jdField_a_of_type_Vbx).a(), this);; paramView = (vco)paramView)
+    {
+      paramView.a((vcd)this.jdField_a_of_type_Vbx, paramInt, getCount());
+      return paramView;
+    }
+  }
   
   public void onClick(View paramView)
   {
-    long l = SystemClock.uptimeMillis();
-    if (l - FlashPicItemBuilder.a(this.a) < 800L) {}
-    FlashPicItemBuilder.FlashPicHolder localFlashPicHolder;
-    label169:
-    for (;;)
+    int i = 0;
+    ImageView localImageView = (ImageView)paramView;
+    int j = ((Integer)localImageView.getTag(2131311062)).intValue();
+    vcd localvcd = (vcd)this.jdField_a_of_type_Vbx;
+    Object localObject3 = Uri.parse(localvcd.a(j));
+    Object localObject1 = ((Uri)localObject3).getPath();
+    String str = new File((String)localObject1).getName();
+    try
     {
-      return;
-      FlashPicItemBuilder.a(this.a, l);
-      localFlashPicHolder = (FlashPicItemBuilder.FlashPicHolder)AIOUtils.a(paramView);
-      if (localFlashPicHolder != null)
+      localObject1 = Drawable.createFromPath((String)localObject1);
+      if (localObject1 != null)
       {
-        Object localObject2 = localFlashPicHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-        Object localObject1 = null;
-        paramView = localObject1;
-        if (localObject2 != null)
+        ((Drawable)localObject1).setBounds(0, 0, ((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight());
+        try
         {
-          localObject2 = this.a.a.a().a(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop, ((MessageRecord)localObject2).uniseq);
-          paramView = localObject1;
-          if ((localObject2 instanceof MessageForPic)) {
-            paramView = (MessageForPic)localObject2;
+          j = ((RelativeLayout.LayoutParams)((ListView)paramView.getParent().getParent()).getLayoutParams()).leftMargin;
+          i = j;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            float f2;
+            float f3;
+            float f4;
+            float f5;
+            int k;
+            Object localObject2;
+            urk.c("NormalFaceAdapter", "get marginLeft error : %s", localException);
+            continue;
+            float f1 = (i - (k + (i - j) / 2) * 2) / i;
           }
         }
-        if (paramView != null)
+        localObject3 = (vco)paramView.getParent();
+        j = (int)uxr.b((View)localObject3);
+        f2 = uxr.a(paramView);
+        f3 = paramView.getWidth() / 2;
+        f4 = i;
+        f5 = ((vco)localObject3).getHeight() / 2 + j;
+        i = ((Drawable)localObject1).getIntrinsicWidth();
+        j = localImageView.getWidth();
+        k = localImageView.getPaddingLeft();
+        if (j > i)
         {
-          if (HotChatHelper.a(paramView)) {}
-          for (boolean bool = HotChatHelper.b(paramView);; bool = FlashPicHelper.b(paramView))
-          {
-            if (bool) {
-              break label169;
-            }
-            if (localFlashPicHolder.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 0) {
-              break label171;
-            }
-            if (localFlashPicHolder.jdField_a_of_type_ComTencentImageURLDrawable.isDownloadStarted()) {
-              break;
-            }
-            localFlashPicHolder.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
-            return;
-          }
+          f1 = (((j - i) / 2 - k) * 2 + i) / i;
+          paramView = new uyv(localvcd.b, str, (Drawable)localObject1);
+          this.jdField_a_of_type_Vbz.a(paramView, f4 + (f2 + f3), f5, f1 * 1.2F);
+          return;
         }
       }
     }
-    label171:
-    FlashPicItemBuilder.a(this.a, paramView, localFlashPicHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemFlashPicItemBuilder$FlashPicAIOThumbView);
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      for (;;)
+      {
+        urk.c("NormalFaceAdapter", "createFromPath error", localOutOfMemoryError);
+        localObject2 = null;
+      }
+      urk.e("NormalFaceAdapter", "can create drawable from uri:" + localException);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vcn
  * JD-Core Version:    0.7.0.1
  */

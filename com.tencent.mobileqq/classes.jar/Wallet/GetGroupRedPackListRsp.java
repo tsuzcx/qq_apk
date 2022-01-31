@@ -8,11 +8,11 @@ import java.util.ArrayList;
 public final class GetGroupRedPackListRsp
   extends JceStruct
 {
-  static ArrayList cache_vecRedPackList = new ArrayList();
+  static ArrayList<RedPackGrapInfo> cache_vecRedPackList = new ArrayList();
   public int iRedPackNum;
   public int iRetCode;
   public long lFailureTime;
-  public ArrayList vecRedPackList;
+  public ArrayList<RedPackGrapInfo> vecRedPackList;
   
   static
   {

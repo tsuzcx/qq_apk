@@ -1,26 +1,59 @@
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.localmedia.baoutils.common.Callbacks.Callback;
-import dov.com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailResult;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.utils.MediaUtil;
+import java.util.UUID;
 
-public final class aowj
-  implements Callbacks.Callback
+class aowj
+  implements aott
 {
-  public aowj(Object paramObject) {}
+  aowj(aovz paramaovz) {}
   
-  public Void a(Boolean arg1, MediaCodecThumbnailGenerator.ThumbnailResult paramThumbnailResult)
+  public void a(aovl paramaovl)
   {
-    QLog.e(MediaUtil.a(), 2, "MediaCodecThumbnailGenerator finished().");
-    synchronized (this.a)
+    paramaovl = ((aotw)paramaovl).a();
+    if (paramaovl == null) {}
+    Object localObject;
+    do
     {
-      this.a.notifyAll();
-      return null;
-    }
+      do
+      {
+        return;
+      } while ((apck.a(paramaovl.a()) != 0) || (TextUtils.isEmpty(paramaovl.a())) || (!TextUtils.isEmpty(paramaovl.g())));
+      FileManagerEntity localFileManagerEntity = paramaovl.a();
+      if (localFileManagerEntity == null)
+      {
+        QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb : can not get the troop file entity, return.");
+        return;
+      }
+      localObject = azjg.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.TroopUin, localFileManagerEntity.strTroopFileID, localFileManagerEntity.strTroopFilePath, localFileManagerEntity.fileName, localFileManagerEntity.fileSize, localFileManagerEntity.busId);
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb : troopUin[" + localFileManagerEntity.TroopUin + "] troopFileId[" + localFileManagerEntity.strTroopFileID + "] troopFilePath[" + localFileManagerEntity.strTroopFilePath + "]");
+      }
+      if (TextUtils.isEmpty(((ayqd)localObject).c))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb :  can not find local thumb file, download.");
+        }
+        localObject = TroopFileTransferManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.TroopUin);
+        if (localFileManagerEntity.strTroopFileID == null)
+        {
+          ((TroopFileTransferManager)localObject).a(localFileManagerEntity.strTroopFilePath, paramaovl.a(), localFileManagerEntity.busId, 640);
+          return;
+        }
+        ((TroopFileTransferManager)localObject).a(UUID.fromString(localFileManagerEntity.strTroopFileID), 640);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb :  can find local thumb file, refresh the picture browser.");
+      }
+    } while (this.a.jdField_a_of_type_Aovn == null);
+    this.a.jdField_a_of_type_Aovn.a(((ayqd)localObject).e, ((ayqd)localObject).c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aowj
  * JD-Core Version:    0.7.0.1
  */

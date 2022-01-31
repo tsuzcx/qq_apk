@@ -1,26 +1,27 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.OnProviderContainerTriggerLisener;
-
-public class ahob
-  implements ProviderContainerView.OnProviderContainerTriggerLisener
+public final class ahob
+  implements ahoe
 {
-  public ahob(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
-  
-  public void a()
+  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    this.a.b = true;
-    this.a.l();
+    paramInt1 = paramInt2 - paramInt1;
+    if (paramInt1 >= 0) {
+      return paramInt1;
+    }
+    return -paramInt1;
   }
   
-  public void b()
+  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    this.a.b = false;
-    this.a.m();
+    paramInt1 = paramInt2 - paramInt1;
+    if (paramInt1 >= 0) {
+      return paramInt1;
+    }
+    return -paramInt1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahob
  * JD-Core Version:    0.7.0.1
  */

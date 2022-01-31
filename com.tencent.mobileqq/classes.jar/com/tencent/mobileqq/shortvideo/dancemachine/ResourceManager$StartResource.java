@@ -2,14 +2,11 @@ package com.tencent.mobileqq.shortvideo.dancemachine;
 
 public class ResourceManager$StartResource
 {
-  public String a;
-  public String b = this.c + "start.mp3";
-  private String c = ResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager) + "start/";
+  private String prefix = ResourceManager.access$000(this.this$0) + "start/";
+  public String startPic = this.prefix + "start.png";
+  public String startSound = this.prefix + "start.mp3";
   
-  public ResourceManager$StartResource(ResourceManager paramResourceManager)
-  {
-    this.jdField_a_of_type_JavaLangString = (this.c + "start.png");
-  }
+  public ResourceManager$StartResource(ResourceManager paramResourceManager) {}
 }
 
 

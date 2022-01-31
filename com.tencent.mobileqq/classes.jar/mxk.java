@@ -1,43 +1,42 @@
+import android.content.res.Resources;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageButton;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class mxk
-  implements View.OnClickListener
+  implements begw
 {
-  public mxk(SubscriptRecommendController paramSubscriptRecommendController) {}
+  public mxk(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005733", "0X8005733", 0, 0, "", "", "", "");
-    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006430", "0X8006430", 0, 0, "", "", "", "");
-    this.a.jdField_a_of_type_Boolean = false;
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setEnabled(false);
-    ThreadManager.getSubThreadHandler().post(new mxl(this));
-    if (this.a.jdField_a_of_type_Int == 1) {
-      SubscriptRecommendController.a(this.a);
-    }
-    do
+    PublicAccountAdvertisementActivity.a(this.a).dismiss();
+    if (paramView != null)
     {
-      do
+      paramView = PublicAccountAdvertisementActivity.a(this.a).a(paramInt);
+      if (QLog.isColorLevel()) {
+        QLog.i("PublicAccountAdvertisementActivity", 2, "action" + paramView);
+      }
+      if (!TextUtils.isEmpty(paramView))
       {
-        return;
-      } while (this.a.jdField_a_of_type_Int != 3);
-      paramView = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(SubscriptFeedsActivity.class);
-    } while ((paramView == null) || (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (!(this.a.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof SubscriptFeedsActivity)));
-    paramView.sendEmptyMessage(1006);
+        if (!paramView.equals(this.a.getResources().getString(2131627103))) {
+          break label91;
+        }
+        PublicAccountAdvertisementActivity.d(this.a);
+      }
+    }
+    label91:
+    while (!paramView.equals(this.a.getResources().getString(2131627727))) {
+      return;
+    }
+    aqiw.a().a(PublicAccountAdvertisementActivity.a(this.a), null, 3, 2);
+    awqx.a(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a).a.a, "0X80090FC", "0X80090FC", 0, 0, PublicAccountAdvertisementActivity.a(this.a).a.c, "", "", PublicAccountAdvertisementActivity.a(this.a).a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     mxk
  * JD-Core Version:    0.7.0.1
  */

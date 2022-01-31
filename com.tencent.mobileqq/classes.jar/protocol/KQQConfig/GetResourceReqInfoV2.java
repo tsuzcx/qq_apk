@@ -7,6 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class GetResourceReqInfoV2
   extends JceStruct
 {
+  public byte cDelFlag;
   public byte cPush;
   public byte cState;
   public byte cStatus;
@@ -19,7 +20,7 @@ public final class GetResourceReqInfoV2
   
   public GetResourceReqInfoV2() {}
   
-  public GetResourceReqInfoV2(String paramString, long paramLong1, short paramShort1, short paramShort2, byte paramByte1, long paramLong2, byte paramByte2, byte paramByte3, int paramInt)
+  public GetResourceReqInfoV2(String paramString, long paramLong1, short paramShort1, short paramShort2, byte paramByte1, long paramLong2, byte paramByte2, byte paramByte3, int paramInt, byte paramByte4)
   {
     this.strPkgName = paramString;
     this.uiCurVer = paramLong1;
@@ -30,6 +31,7 @@ public final class GetResourceReqInfoV2
     this.cStatus = paramByte2;
     this.cPush = paramByte3;
     this.iPluginType = paramInt;
+    this.cDelFlag = paramByte4;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -43,6 +45,7 @@ public final class GetResourceReqInfoV2
     this.cStatus = paramJceInputStream.read(this.cStatus, 7, false);
     this.cPush = paramJceInputStream.read(this.cPush, 8, false);
     this.iPluginType = paramJceInputStream.read(this.iPluginType, 9, false);
+    this.cDelFlag = paramJceInputStream.read(this.cDelFlag, 10, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -56,6 +59,7 @@ public final class GetResourceReqInfoV2
     paramJceOutputStream.write(this.cStatus, 7);
     paramJceOutputStream.write(this.cPush, 8);
     paramJceOutputStream.write(this.iPluginType, 9);
+    paramJceOutputStream.write(this.cDelFlag, 10);
   }
 }
 

@@ -1,7 +1,7 @@
 package cooperation.qzone.report.lp;
 
+import bfpk;
 import com.tencent.common.app.BaseApplicationImpl;
-import cooperation.qzone.QUA;
 import java.util.HashMap;
 import java.util.Map;
 import mqq.app.AppRuntime;
@@ -9,6 +9,10 @@ import mqq.app.AppRuntime;
 public class LpReportInfo_dc02216
   implements LpReportInfo
 {
+  public static final int ACTION_TYPE_HOME_PAGE_FOOTER_BANNER = 17;
+  public static final int SUB_ACTION_FOOTER_BANNER_CLICK = 1;
+  public static final int SUB_ACTION_FOOTER_BANNER_CLOSE = 2;
+  public static final int SUB_ACTION_FOOTER_BANNER_EXPOSE = 3;
   public int actiontype;
   public String platform;
   public String qua;
@@ -44,7 +48,7 @@ public class LpReportInfo_dc02216
     return "dc02216:" + "actiontype:" + this.actiontype + " subactiontype:" + this.subactiontype;
   }
   
-  public Map toMap()
+  public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
     if (this.uin != 0L) {
@@ -52,7 +56,7 @@ public class LpReportInfo_dc02216
     }
     for (;;)
     {
-      localHashMap.put("qua", QUA.a());
+      localHashMap.put("qua", bfpk.a());
       LpReportUtils.safePut(localHashMap, "platform", this.platform);
       localHashMap.put("actiontype", String.valueOf(this.actiontype));
       localHashMap.put("subactiontype", String.valueOf(this.subactiontype));

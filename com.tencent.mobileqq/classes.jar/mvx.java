@@ -1,14 +1,15 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class mvx
-  implements Runnable
+class mvx
+  implements View.OnClickListener
 {
-  public mvx(ServiceAccountFolderManager paramServiceAccountFolderManager, QQAppInterface paramQQAppInterface, String paramString) {}
+  mvx(mut parammut, String paramString, nbu paramnbu) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString);
+    mut.c(this.jdField_a_of_type_Mut, this.jdField_a_of_type_JavaLangString);
+    mut.a(this.jdField_a_of_type_Mut, this.jdField_a_of_type_Nbu.jdField_a_of_type_JavaLangString);
   }
 }
 

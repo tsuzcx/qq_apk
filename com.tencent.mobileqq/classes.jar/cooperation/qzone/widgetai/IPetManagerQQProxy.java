@@ -25,7 +25,7 @@ public abstract interface IPetManagerQQProxy
   
   public abstract View getCocosView();
   
-  public abstract ArrayList getQuickCommentUrlList(String paramString);
+  public abstract ArrayList<String> getQuickCommentUrlList(String paramString);
   
   public abstract boolean isHardwareSupport();
   
@@ -49,7 +49,7 @@ public abstract interface IPetManagerQQProxy
   
   public abstract void restorePetOriPos();
   
-  public abstract void sendPetUgcEventReq(int paramInt, String paramString1, long paramLong1, HashMap paramHashMap, String paramString2, long paramLong2);
+  public abstract void sendPetUgcEventReq(int paramInt, String paramString1, long paramLong1, HashMap<String, String> paramHashMap, String paramString2, long paramLong2);
   
   public abstract void setCoverRect(int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
@@ -67,7 +67,7 @@ public abstract interface IPetManagerQQProxy
   
   public abstract void setWidgetAIVisibleByTrans(String paramString1, boolean paramBoolean, String paramString2);
   
-  public abstract void showQuickComentEmotionList(String paramString, ArrayList paramArrayList);
+  public abstract void showQuickComentEmotionList(String paramString, ArrayList<String> paramArrayList);
   
   public abstract void showQuickCommentInFeedArea(int paramInt);
   

@@ -8,11 +8,11 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 
 public final class qqstory_service$RspGetJoinedShareGroupFriList
-  extends MessageMicro
+  extends MessageMicro<RspGetJoinedShareGroupFriList>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public qqstory_struct.ErrorInfo result = new qqstory_struct.ErrorInfo();
-  public final PBRepeatField uin_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> uin_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
   
   static
   {
@@ -22,7 +22,7 @@ public final class qqstory_service$RspGetJoinedShareGroupFriList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetJoinedShareGroupFriList
  * JD-Core Version:    0.7.0.1
  */

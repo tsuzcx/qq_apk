@@ -12,6 +12,7 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtils;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.VirtualViewUtils;
 import java.util.Iterator;
 import java.util.List;
@@ -20,131 +21,203 @@ public class NativeLayoutImpl
   extends ViewGroup
   implements IContainer, IView
 {
-  private int jdField_a_of_type_Int = 0;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  protected ViewBase a;
-  private int jdField_b_of_type_Int;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private int c;
-  private int d;
-  private int e;
-  private int f;
-  private int g = -16777216;
+  private static final String TAG = "NativeLayoutImpl";
+  private int mBackgroundColor = 0;
+  private Paint mBackgroundPaint;
+  private int mBorderBottomLeftRadius = 0;
+  private int mBorderBottomRightRadius = 0;
+  private int mBorderColor = -16777216;
+  private Paint mBorderPaint;
+  private int mBorderTopLeftRadius = 0;
+  private int mBorderTopRightRadius = 0;
+  private int mBorderWidth = 0;
+  protected ViewBase mView;
   
   public NativeLayoutImpl(Context paramContext)
   {
     super(paramContext);
   }
   
-  public int a()
+  public void attachViews()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase != null) {
-      return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.a();
+    attachViews(this.mView);
+  }
+  
+  protected void attachViews(ViewBase paramViewBase)
+  {
+    if (LogUtils.shouldLog()) {
+      LogUtils.d("NativeLayoutImpl", "[attachViews] for [" + this.mView.getClass().getSimpleName() + ", " + this.mView.getName() + "]");
     }
-    return 0;
-  }
-  
-  public View a()
-  {
-    return this;
-  }
-  
-  public ViewBase a()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase != null) {
-      setMeasuredDimension(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.a(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.b());
+    if (paramViewBase == null) {
+      if (LogUtils.shouldLog()) {
+        LogUtils.d("NativeLayoutImpl", "[attachViews] did not attach since view is null");
+      }
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase != null) {
-      layout(paramInt1, paramInt2, paramInt3, paramInt4);
-    }
-  }
-  
-  protected void a(ViewBase paramViewBase)
-  {
-    if (paramViewBase == null) {}
-    View localView;
-    do
+    for (;;)
     {
-      for (;;)
-      {
-        return;
-        if (!(paramViewBase instanceof Layout)) {
-          break;
-        }
-        if (paramViewBase.a() != null)
+      return;
+      if (LogUtils.shouldLog()) {
+        LogUtils.d("NativeLayoutImpl", "[attachViews] try to attach [" + paramViewBase.getClass().getSimpleName() + ", " + paramViewBase.getName() + "]");
+      }
+      View localView;
+      if ((paramViewBase instanceof Layout)) {
+        if (paramViewBase.getNativeView() != null)
         {
-          localView = paramViewBase.a();
-          if (localView != null) {
-            addView(localView, new ViewGroup.LayoutParams(paramViewBase.b().jdField_a_of_type_Int, paramViewBase.b().jdField_b_of_type_Int));
-          }
-        }
-        else
-        {
-          paramViewBase = ((Layout)paramViewBase).a();
-          if (paramViewBase != null)
+          localView = paramViewBase.getNativeView();
+          if (localView != null)
           {
-            paramViewBase = paramViewBase.iterator();
-            while (paramViewBase.hasNext()) {
-              a((ViewBase)paramViewBase.next());
+            if (LogUtils.shouldLog()) {
+              LogUtils.d("NativeLayoutImpl", "[attachViews] try to add native view of [" + paramViewBase.getClass().getSimpleName() + ", " + paramViewBase.getName() + "]");
+            }
+            addView(localView, new ViewGroup.LayoutParams(paramViewBase.getComLayoutParams().mLayoutWidth, paramViewBase.getComLayoutParams().mLayoutHeight));
+            if (LogUtils.shouldLog()) {
+              LogUtils.d("NativeLayoutImpl", "[attachViews] child count after add native view: " + getChildCount());
             }
           }
         }
       }
-      localView = paramViewBase.a();
-    } while (localView == null);
-    addView(localView, new ViewGroup.LayoutParams(paramViewBase.b().jdField_a_of_type_Int, paramViewBase.b().jdField_b_of_type_Int));
+      while (LogUtils.shouldLog())
+      {
+        LogUtils.d("NativeLayoutImpl", "[attachViews] childCount after [" + this.mView.getClass().getSimpleName() + ", " + this.mView.getName() + "] attach children: " + getChildCount());
+        return;
+        if (LogUtils.shouldLog())
+        {
+          LogUtils.d("NativeLayoutImpl", "[attachViews] child native view is null");
+          continue;
+          if (LogUtils.shouldLog()) {
+            LogUtils.d("NativeLayoutImpl", "[attachViews] native view is null, attach subviews");
+          }
+          paramViewBase = ((Layout)paramViewBase).getSubViews();
+          if (paramViewBase != null)
+          {
+            paramViewBase = paramViewBase.iterator();
+            while (paramViewBase.hasNext()) {
+              attachViews((ViewBase)paramViewBase.next());
+            }
+          }
+          else if (LogUtils.shouldLog())
+          {
+            LogUtils.d("NativeLayoutImpl", "[attachViews] subViews is null");
+            continue;
+            localView = paramViewBase.getNativeView();
+            if (localView != null)
+            {
+              if (LogUtils.shouldLog()) {
+                LogUtils.d("NativeLayoutImpl", "[attachViews] try to add native view of [" + paramViewBase.getClass().getSimpleName() + ", " + paramViewBase.getName() + "]");
+              }
+              addView(localView, new ViewGroup.LayoutParams(paramViewBase.getComLayoutParams().mLayoutWidth, paramViewBase.getComLayoutParams().mLayoutHeight));
+              if (LogUtils.shouldLog()) {
+                LogUtils.d("NativeLayoutImpl", "[attachViews] child count after add native view: " + getChildCount());
+              }
+            }
+            else if (LogUtils.shouldLog())
+            {
+              LogUtils.d("NativeLayoutImpl", "[attachViews] " + paramViewBase.getName() + " native view is null");
+            }
+          }
+        }
+      }
+    }
   }
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
-  
-  public int b()
+  public void comLayout(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase != null) {
-      return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.b();
+    if (this.mView != null) {
+      layout(paramInt1, paramInt2, paramInt3, paramInt4);
+    }
+  }
+  
+  public void destroy()
+  {
+    this.mView.destroy();
+    this.mView = null;
+  }
+  
+  protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+  {
+    ViewGroup.LayoutParams localLayoutParams = paramLayoutParams;
+    if (paramLayoutParams == null) {
+      localLayoutParams = generateDefaultLayoutParams();
+    }
+    return localLayoutParams;
+  }
+  
+  public int getBackgroundColor()
+  {
+    return this.mBackgroundColor;
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    if (this.mView != null) {
+      return this.mView.getComMeasuredHeight();
     }
     return 0;
   }
   
-  public void b(int paramInt1, int paramInt2)
+  public int getComMeasuredWidth()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase != null) {
-      setMeasuredDimension(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.a(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.b());
+    if (this.mView != null) {
+      return this.mView.getComMeasuredWidth();
+    }
+    return 0;
+  }
+  
+  public View getHolderView()
+  {
+    return this;
+  }
+  
+  public int getType()
+  {
+    return 0;
+  }
+  
+  public ViewBase getVirtualView()
+  {
+    return this.mView;
+  }
+  
+  public void measureComponent(int paramInt1, int paramInt2)
+  {
+    if (this.mView != null) {
+      setMeasuredDimension(this.mView.getComMeasuredWidth(), this.mView.getComMeasuredHeight());
+    }
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    if (this.mView != null) {
+      setMeasuredDimension(this.mView.getComMeasuredWidth(), this.mView.getComMeasuredHeight());
     }
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Int != 0)
+    if (this.mBackgroundColor != 0)
     {
-      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+      if (this.mBackgroundPaint == null)
       {
-        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+        this.mBackgroundPaint = new Paint();
+        this.mBackgroundPaint.setAntiAlias(true);
       }
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-      VirtualViewUtils.b(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint, getWidth(), getHeight(), this.f, this.jdField_b_of_type_Int, this.c, this.d, this.e);
+      this.mBackgroundPaint.setColor(this.mBackgroundColor);
+      VirtualViewUtils.drawBackground(paramCanvas, this.mBackgroundPaint, getWidth(), getHeight(), this.mBorderWidth, this.mBorderTopLeftRadius, this.mBorderTopRightRadius, this.mBorderBottomLeftRadius, this.mBorderBottomRightRadius);
     }
     super.onDraw(paramCanvas);
-    if (this.f > 0)
+    if (this.mBorderWidth > 0)
     {
-      if (this.jdField_b_of_type_AndroidGraphicsPaint == null)
+      if (this.mBorderPaint == null)
       {
-        this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-        this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+        this.mBorderPaint = new Paint();
+        this.mBorderPaint.setStyle(Paint.Style.STROKE);
+        this.mBorderPaint.setAntiAlias(true);
       }
-      this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.f);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.g);
-      VirtualViewUtils.a(paramCanvas, this.jdField_b_of_type_AndroidGraphicsPaint, getWidth(), getHeight(), this.f, this.jdField_b_of_type_Int, this.c, this.d, this.e);
+      this.mBorderPaint.setStrokeWidth(this.mBorderWidth);
+      this.mBorderPaint.setColor(this.mBorderColor);
+      VirtualViewUtils.drawBorder(paramCanvas, this.mBorderPaint, getWidth(), getHeight(), this.mBorderWidth, this.mBorderTopLeftRadius, this.mBorderTopRightRadius, this.mBorderBottomLeftRadius, this.mBorderBottomRightRadius);
     }
   }
   
@@ -154,46 +227,46 @@ public class NativeLayoutImpl
   
   public void setBackgroundColor(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.mBackgroundColor = paramInt;
   }
   
   public void setBorderBottomLeftRadius(int paramInt)
   {
-    this.d = paramInt;
+    this.mBorderBottomLeftRadius = paramInt;
   }
   
   public void setBorderBottomRightRadius(int paramInt)
   {
-    this.e = paramInt;
+    this.mBorderBottomRightRadius = paramInt;
   }
   
   public void setBorderColor(int paramInt)
   {
-    this.g = paramInt;
+    this.mBorderColor = paramInt;
   }
   
   public void setBorderTopLeftRadius(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.mBorderTopLeftRadius = paramInt;
   }
   
   public void setBorderTopRightRadius(int paramInt)
   {
-    this.c = paramInt;
+    this.mBorderTopRightRadius = paramInt;
   }
   
   public void setBorderWidth(int paramInt)
   {
-    this.f = paramInt;
+    this.mBorderWidth = paramInt;
   }
   
   public void setVirtualView(ViewBase paramViewBase)
   {
     if (paramViewBase != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase = paramViewBase;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.a(this);
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.f()) {
+      this.mView = paramViewBase;
+      this.mView.setHoldView(this);
+      if (this.mView.shouldDraw()) {
         setWillNotDraw(false);
       }
     }
@@ -201,7 +274,7 @@ public class NativeLayoutImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.layout.helper.nativelayout.NativeLayoutImpl
  * JD-Core Version:    0.7.0.1
  */

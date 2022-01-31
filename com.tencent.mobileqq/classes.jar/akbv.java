@@ -1,28 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.widget.TroopPickerViewHelper;
-import com.tencent.mobileqq.troop.widget.TroopPickerViewHelper.OnConfirmListener;
-import com.tencent.widget.ActionSheet;
-import java.util.Calendar;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.observer.SubAccountObserver;
 
-public class akbv
-  implements View.OnClickListener
+class akbv
+  extends SubAccountObserver
 {
-  public akbv(TroopPickerViewHelper paramTroopPickerViewHelper, TroopPickerViewHelper.OnConfirmListener paramOnConfirmListener) {}
+  akbv(akbt paramakbt, axat paramaxat) {}
   
-  public void onClick(View paramView)
+  public void onGetKeyBack(String paramString1, String paramString2, String paramString3)
   {
-    if ((TroopPickerViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper) != null) && (TroopPickerViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper).isShowing())) {
-      TroopPickerViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper).dismiss();
+    if ((paramString3 == null) || (this.jdField_a_of_type_Akbt.a == null) || (paramString1 == null)) {}
+    while (!paramString1.equalsIgnoreCase(this.jdField_a_of_type_Akbt.a.getAccount())) {
+      return;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper$OnConfirmListener != null) && (TroopPickerViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper) != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper$OnConfirmListener.a(TroopPickerViewHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopPickerViewHelper).getTimeInMillis());
-    }
+    this.jdField_a_of_type_Axat.a(paramString2, paramString3, true);
+    axam.a(this.jdField_a_of_type_Akbt.a, (byte)1, paramString2);
+    axam.a(this.jdField_a_of_type_Akbt.a, paramString2, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akbv
  * JD-Core Version:    0.7.0.1
  */

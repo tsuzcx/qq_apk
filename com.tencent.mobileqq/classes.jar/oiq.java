@@ -1,16 +1,15 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.POIPostersRequestCallback;
-import java.util.Collections;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
 
 public class oiq
-  implements Runnable
+  extends ohe
 {
-  public oiq(EditVideoDoodle paramEditVideoDoodle) {}
+  public oiq(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment) {}
   
-  public void run()
+  public void a(TopBannerInfo paramTopBannerInfo)
   {
-    if (!this.a.jdField_a_of_type_Boolean) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiManager$POIPostersRequestCallback.a(1, Collections.EMPTY_LIST);
+    if (paramTopBannerInfo.mChannelId == 2000000000) {
+      this.a.a(paramTopBannerInfo);
     }
   }
 }

@@ -1,37 +1,60 @@
-import com.tencent.mobileqq.activity.AuthDevRenameActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.biz.pubaccount.CustomWebView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class rst
-  implements Runnable
+class rst
+  implements bakb
 {
-  public rst(AuthDevRenameActivity paramAuthDevRenameActivity) {}
+  rst(rss paramrss) {}
   
-  public void run()
+  public void a(int paramInt1, String paramString, int paramInt2)
   {
-    try
+    paramString = new JSONObject();
+    if (paramInt1 == 8) {}
+    for (;;)
     {
-      if ((AuthDevRenameActivity.a(this.a) == null) && (!this.a.isFinishing())) {
-        AuthDevRenameActivity.a(this.a, new QQProgressDialog(this.a, this.a.getTitleBarHeight()));
-      }
-      if ((AuthDevRenameActivity.a(this.a) != null) && (!AuthDevRenameActivity.a(this.a).isShowing()))
+      try
       {
-        AuthDevRenameActivity.a(this.a).a(this.a.getString(2131436638));
-        AuthDevRenameActivity.a(this.a).show();
+        paramString.put("retCode", -1);
+        paramString.put("msg", "fail");
+        paramString.put("localId", this.a.d());
+        if (this.a.jdField_a_of_type_Bbac.a() != null) {
+          this.a.jdField_a_of_type_Bbac.a().callJs(rsv.h, new String[] { paramString.toString() });
+        }
+        awqx.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2F", "0X8005D2F", 0, 0, "1", "", "", "");
+        if (this.a.jdField_a_of_type_Baka != null) {
+          this.a.jdField_a_of_type_Baka.f();
+        }
+        this.a.jdField_a_of_type_Baka = null;
+        return;
       }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      catch (JSONException localJSONException1)
       {
-        localThrowable.printStackTrace();
+        localJSONException1.printStackTrace();
+        continue;
+      }
+      if (paramInt1 == 4) {
+        try
+        {
+          paramString.put("retCode", 0);
+          paramString.put("msg", ajjy.a(2131642991) + this.a.d() + ajjy.a(2131642985));
+          paramString.put("localId", this.a.d());
+        }
+        catch (JSONException localJSONException2)
+        {
+          localJSONException2.printStackTrace();
+        }
       }
     }
   }
+  
+  public void a(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void b(String paramString, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rst
  * JD-Core Version:    0.7.0.1
  */

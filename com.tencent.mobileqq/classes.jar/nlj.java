@@ -1,15 +1,24 @@
-import com.tencent.biz.qqstory.newshare.callback.OnPrepareShareListener;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareData;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.Switch;
 
 public class nlj
-  implements Runnable
+  implements begy
 {
-  public nlj(ShareModeBase paramShareModeBase, ShareData paramShareData) {}
+  public nlj(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void run()
+  public void onDismiss()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModeBaseShareModeBase.a.b(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareData);
+    boolean bool = true;
+    ReadInJoySettingActivity.a(this.a, true);
+    Switch localSwitch = ReadInJoySettingActivity.a(this.a);
+    if (!ReadInJoySettingActivity.a(this.a)) {}
+    for (;;)
+    {
+      localSwitch.setChecked(bool);
+      ReadInJoySettingActivity.a(this.a).cancel();
+      return;
+      bool = false;
+    }
   }
 }
 

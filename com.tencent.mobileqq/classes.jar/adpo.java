@@ -1,51 +1,21 @@
-import android.graphics.Bitmap;
-import com.dataline.util.file.MediaStoreUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.IGetVideoCallback;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-public final class adpo
-  implements FileManagerUtil.IGetVideoCallback
+public class adpo
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public adpo(String paramString1, String paramString2) {}
+  public adpo(SixCombolEffectView paramSixCombolEffectView, adpz paramadpz) {}
   
-  public void a(Bitmap paramBitmap)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramBitmap == null) {
-      return;
-    }
-    try
-    {
-      FileUtil.a(paramBitmap, this.a);
-      paramBitmap.recycle();
-      int i = MediaStoreUtil.a(this.b);
-      MediaStoreUtil.a(this.a, i);
-      return;
-    }
-    catch (FileNotFoundException paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail FileNotFoundException:" + paramBitmap.getMessage());
-      return;
-    }
-    catch (IOException paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail IOException:" + paramBitmap.getMessage());
-      return;
-    }
-    catch (OutOfMemoryError paramBitmap)
-    {
-      paramBitmap.printStackTrace();
-      QLog.w("FileManagerUtil<FileAssistant>", 1, "createThumbnail OutOfMemoryError:" + paramBitmap.getMessage());
-    }
+    this.jdField_a_of_type_Adpz.b = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adpo
  * JD-Core Version:    0.7.0.1
  */

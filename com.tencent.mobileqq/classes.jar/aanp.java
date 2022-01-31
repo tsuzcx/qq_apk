@@ -1,24 +1,25 @@
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.ar.config.WorldCupMgr;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.Conversation;
+import mqq.app.QQPermissionCallback;
 
 public class aanp
-  implements Runnable
+  implements QQPermissionCallback
 {
-  public aanp(AREngine paramAREngine) {}
+  public aanp(Conversation paramConversation, View paramView) {}
   
-  public void run()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    QLog.i("AREngine_AREngine", 2, "downloadWorldCupIdx1Res. download timeout.");
-    WorldCupMgr.a(AREngine.a(this.a)).b(this.a.a);
-    if ((AREngine.e(this.a)) && (AREngine.e(this.a) == 2) && (AREngine.a(this.a) != null)) {
-      AREngine.b(this.a, 7);
-    }
+    babr.b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a());
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityConversation.d(this.jdField_a_of_type_AndroidViewView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aanp
  * JD-Core Version:    0.7.0.1
  */

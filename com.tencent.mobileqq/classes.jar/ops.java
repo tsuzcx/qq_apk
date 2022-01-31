@@ -1,50 +1,18 @@
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetMusicListConfig;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.MusicConfigInfo;
-import com.tencent.biz.qqstory.network.request.GetMusicConfigRequest;
-import com.tencent.biz.qqstory.network.response.GetMusicConfigResponse;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.takevideo.music.QQStoryMusicInfo;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import java.util.ArrayList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.cmd0x977.oidb_cmd0x977.FollowStatusInfo;
+import tencent.im.oidb.cmd0x977.oidb_cmd0x977.KdUserInfo;
 
-public class ops
-  implements CmdTaskManger.CommandCallback
+class ops
+  implements psh<oidb_cmd0x977.FollowStatusInfo, ppg>
 {
-  long jdField_a_of_type_Long = System.currentTimeMillis();
-  Context jdField_a_of_type_AndroidContentContext;
+  ops(opp paramopp) {}
   
-  public ops(@NonNull Context paramContext)
+  public ppg a(oidb_cmd0x977.FollowStatusInfo paramFollowStatusInfo)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-  }
-  
-  public void a(@NonNull GetMusicConfigRequest paramGetMusicConfigRequest, @Nullable GetMusicConfigResponse paramGetMusicConfigResponse, @NonNull ErrorMessage paramErrorMessage)
-  {
-    StoryReportor.a("edit_video", "music_list_time", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long), "", "", "" });
-    if ((paramErrorMessage.isFail()) || (paramGetMusicConfigResponse == null))
-    {
-      StoryReportor.a("edit_video", "music_list_failed", 0, 0, new String[] { "", "", "", "" });
-      return;
-    }
-    paramGetMusicConfigRequest = paramGetMusicConfigResponse.a;
-    int j = paramGetMusicConfigRequest.music_config.size();
-    paramGetMusicConfigResponse = new ArrayList(j);
-    if (j > 0)
-    {
-      int i = 0;
-      while (i < j)
-      {
-        paramGetMusicConfigResponse.add(new QQStoryMusicInfo((qqstory_struct.MusicConfigInfo)paramGetMusicConfigRequest.music_config.get(i)));
-        i += 1;
-      }
-    }
-    StoryReportor.a("edit_video", "music_list_count", 0, 0, new String[] { String.valueOf(j), "", "", "" });
-    QQStoryMusicInfo.a(this.jdField_a_of_type_AndroidContentContext, paramGetMusicConfigResponse);
+    return new ppg(Long.valueOf(paramFollowStatusInfo.uint64_uin.get()), Integer.valueOf(paramFollowStatusInfo.enum_account_type.get()), paramFollowStatusInfo.user_info.bytes_nick.get().toStringUtf8(), paramFollowStatusInfo.user_info.bytes_qq_head_url.get().toStringUtf8());
   }
 }
 

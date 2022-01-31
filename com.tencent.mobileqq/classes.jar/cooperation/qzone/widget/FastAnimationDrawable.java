@@ -14,9 +14,11 @@ import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.util.DisplayMetrics;
 import android.util.LruCache;
-import anmb;
+import bggt;
+import bgln;
+import bglo;
+import bglp;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.gifCoderWnsConfig;
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,14 +35,14 @@ public class FastAnimationDrawable
 {
   public static byte[] a;
   private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = gifCoderWnsConfig.d;
+  private long jdField_a_of_type_Long = bggt.d;
   private Context jdField_a_of_type_AndroidContentContext;
   private volatile BitmapDrawable jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable;
-  public LruCache a;
-  private FastAnimationDrawable.CallAntiShakeListener jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable$CallAntiShakeListener;
-  private FastAnimationDrawable.InvalidationHandler jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable$InvalidationHandler;
-  private ArrayList jdField_a_of_type_JavaUtilArrayList;
-  private Set jdField_a_of_type_JavaUtilSet;
+  public LruCache<Integer, BitmapDrawable> a;
+  private bglo jdField_a_of_type_Bglo;
+  private bglp jdField_a_of_type_Bglp;
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  private Set<SoftReference<Bitmap>> jdField_a_of_type_JavaUtilSet;
   private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
   private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(-1);
   private volatile boolean jdField_a_of_type_Boolean;
@@ -52,21 +54,21 @@ public class FastAnimationDrawable
     jdField_a_of_type_ArrayOfByte = new byte[24576];
   }
   
-  public FastAnimationDrawable(Context paramContext, ArrayList paramArrayList, long paramLong, FastAnimationDrawable.CallAntiShakeListener paramCallAntiShakeListener)
+  public FastAnimationDrawable(Context paramContext, ArrayList<String> paramArrayList, long paramLong, bglo parambglo)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newCachedThreadPool();
-    this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable$InvalidationHandler = new FastAnimationDrawable.InvalidationHandler(this, this);
+    this.jdField_a_of_type_Bglp = new bglp(this, this);
     this.jdField_a_of_type_Int = paramContext.getResources().getDisplayMetrics().widthPixels;
     this.jdField_b_of_type_Int = paramContext.getResources().getDisplayMetrics().heightPixels;
     this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable$CallAntiShakeListener = paramCallAntiShakeListener;
+    this.jdField_a_of_type_Bglo = parambglo;
     if (Build.VERSION.SDK_INT >= 11) {
       this.jdField_a_of_type_JavaUtilSet = Collections.synchronizedSet(new HashSet());
     }
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_a_of_type_AndroidUtilLruCache = new anmb(this, paramArrayList.size());
+    this.jdField_a_of_type_AndroidUtilLruCache = new bgln(this, paramArrayList.size());
   }
   
   private static int a(Bitmap.Config paramConfig)
@@ -115,7 +117,7 @@ public class FastAnimationDrawable
   }
   
   /* Error */
-  public static Bitmap a(java.lang.String paramString, BitmapFactory.Options paramOptions)
+  public static Bitmap a(String paramString, BitmapFactory.Options paramOptions)
   {
     // Byte code:
     //   0: aconst_null
@@ -123,23 +125,23 @@ public class FastAnimationDrawable
     //   2: aload_1
     //   3: ifnull +54 -> 57
     //   6: aload_1
-    //   7: getfield 156	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   7: getfield 161	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   10: ifeq +47 -> 57
-    //   13: new 158	java/io/BufferedInputStream
+    //   13: new 163	java/io/BufferedInputStream
     //   16: dup
-    //   17: new 160	java/io/FileInputStream
+    //   17: new 165	java/io/FileInputStream
     //   20: dup
     //   21: aload_0
-    //   22: invokespecial 163	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   22: invokespecial 168	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   25: sipush 2048
-    //   28: invokespecial 166	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   28: invokespecial 171	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
     //   31: astore_0
     //   32: aload_0
     //   33: astore_2
     //   34: aload_0
     //   35: aconst_null
     //   36: aload_1
-    //   37: invokestatic 172	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   37: invokestatic 177	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   40: astore_1
     //   41: aload_1
     //   42: astore_2
@@ -148,18 +150,18 @@ public class FastAnimationDrawable
     //   45: aload_0
     //   46: ifnull +9 -> 55
     //   49: aload_0
-    //   50: invokevirtual 177	java/io/InputStream:close	()V
+    //   50: invokevirtual 182	java/io/InputStream:close	()V
     //   53: aload_2
     //   54: astore_1
     //   55: aload_1
     //   56: areturn
-    //   57: new 158	java/io/BufferedInputStream
+    //   57: new 163	java/io/BufferedInputStream
     //   60: dup
-    //   61: new 160	java/io/FileInputStream
+    //   61: new 165	java/io/FileInputStream
     //   64: dup
     //   65: aload_0
-    //   66: invokespecial 163	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   69: invokespecial 180	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   66: invokespecial 168	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   69: invokespecial 185	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   72: astore_0
     //   73: goto -41 -> 32
     //   76: astore_1
@@ -167,17 +169,17 @@ public class FastAnimationDrawable
     //   78: astore_0
     //   79: aload_0
     //   80: astore_2
-    //   81: ldc 182
+    //   81: ldc 187
     //   83: iconst_1
-    //   84: ldc 184
+    //   84: ldc 189
     //   86: aload_1
-    //   87: invokestatic 190	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   87: invokestatic 195	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   90: aload_3
     //   91: astore_1
     //   92: aload_0
     //   93: ifnull -38 -> 55
     //   96: aload_0
-    //   97: invokevirtual 177	java/io/InputStream:close	()V
+    //   97: invokevirtual 182	java/io/InputStream:close	()V
     //   100: aconst_null
     //   101: areturn
     //   102: astore_0
@@ -188,17 +190,17 @@ public class FastAnimationDrawable
     //   107: astore_0
     //   108: aload_0
     //   109: astore_2
-    //   110: ldc 182
+    //   110: ldc 187
     //   112: iconst_1
-    //   113: ldc 192
+    //   113: ldc 197
     //   115: aload_1
-    //   116: invokestatic 190	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   116: invokestatic 195	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   119: aload_3
     //   120: astore_1
     //   121: aload_0
     //   122: ifnull -67 -> 55
     //   125: aload_0
-    //   126: invokevirtual 177	java/io/InputStream:close	()V
+    //   126: invokevirtual 182	java/io/InputStream:close	()V
     //   129: aconst_null
     //   130: areturn
     //   131: astore_0
@@ -210,7 +212,7 @@ public class FastAnimationDrawable
     //   137: aload_2
     //   138: ifnull +7 -> 145
     //   141: aload_2
-    //   142: invokevirtual 177	java/io/InputStream:close	()V
+    //   142: invokevirtual 182	java/io/InputStream:close	()V
     //   145: aload_0
     //   146: athrow
     //   147: astore_0
@@ -226,7 +228,7 @@ public class FastAnimationDrawable
     //   163: goto -84 -> 79
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	166	0	paramString	java.lang.String
+    //   0	166	0	paramString	String
     //   0	166	1	paramOptions	BitmapFactory.Options
     //   33	116	2	localObject1	java.lang.Object
     //   1	119	3	localObject2	java.lang.Object
@@ -251,7 +253,7 @@ public class FastAnimationDrawable
   
   /* Error */
   @TargetApi(12)
-  private BitmapDrawable a(java.lang.String paramString)
+  private BitmapDrawable a(String paramString)
   {
     // Byte code:
     //   0: aload_0
@@ -260,75 +262,75 @@ public class FastAnimationDrawable
     //   3: astore 7
     //   5: aload 7
     //   7: astore 6
-    //   9: new 139	android/graphics/BitmapFactory$Options
+    //   9: new 144	android/graphics/BitmapFactory$Options
     //   12: dup
-    //   13: invokespecial 203	android/graphics/BitmapFactory$Options:<init>	()V
+    //   13: invokespecial 208	android/graphics/BitmapFactory$Options:<init>	()V
     //   16: astore 8
     //   18: aload 7
     //   20: astore 6
     //   22: aload 8
     //   24: iconst_1
-    //   25: putfield 156	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   25: putfield 161	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   28: aload 7
     //   30: astore 6
     //   32: aload 8
-    //   34: getstatic 25	cooperation/qzone/widget/FastAnimationDrawable:jdField_a_of_type_ArrayOfByte	[B
-    //   37: putfield 206	android/graphics/BitmapFactory$Options:inTempStorage	[B
+    //   34: getstatic 28	cooperation/qzone/widget/FastAnimationDrawable:jdField_a_of_type_ArrayOfByte	[B
+    //   37: putfield 211	android/graphics/BitmapFactory$Options:inTempStorage	[B
     //   40: aload 7
     //   42: astore 6
     //   44: aload_1
     //   45: aload 8
-    //   47: invokestatic 209	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   47: invokestatic 214	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   50: pop
     //   51: aload 7
     //   53: astore 6
     //   55: aload 8
     //   57: aload_0
-    //   58: getfield 82	cooperation/qzone/widget/FastAnimationDrawable:jdField_a_of_type_Int	I
+    //   58: getfield 85	cooperation/qzone/widget/FastAnimationDrawable:jdField_a_of_type_Int	I
     //   61: aload_0
-    //   62: getfield 87	cooperation/qzone/widget/FastAnimationDrawable:jdField_b_of_type_Int	I
-    //   65: invokestatic 211	cooperation/qzone/widget/FastAnimationDrawable:a	(Landroid/graphics/BitmapFactory$Options;II)I
+    //   62: getfield 90	cooperation/qzone/widget/FastAnimationDrawable:jdField_b_of_type_Int	I
+    //   65: invokestatic 216	cooperation/qzone/widget/FastAnimationDrawable:a	(Landroid/graphics/BitmapFactory$Options;II)I
     //   68: istore_2
     //   69: aload 7
     //   71: astore 6
     //   73: aload 8
     //   75: iconst_0
-    //   76: putfield 156	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   76: putfield 161	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   79: aload 7
     //   81: astore 6
     //   83: aload 8
     //   85: iload_2
-    //   86: putfield 214	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   86: putfield 219	android/graphics/BitmapFactory$Options:inSampleSize	I
     //   89: aload 7
     //   91: astore 6
     //   93: aload 8
-    //   95: getstatic 25	cooperation/qzone/widget/FastAnimationDrawable:jdField_a_of_type_ArrayOfByte	[B
-    //   98: putfield 206	android/graphics/BitmapFactory$Options:inTempStorage	[B
+    //   95: getstatic 28	cooperation/qzone/widget/FastAnimationDrawable:jdField_a_of_type_ArrayOfByte	[B
+    //   98: putfield 211	android/graphics/BitmapFactory$Options:inTempStorage	[B
     //   101: aload 7
     //   103: astore 6
     //   105: aload 8
-    //   107: getstatic 130	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
-    //   110: putfield 217	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
+    //   107: getstatic 135	android/graphics/Bitmap$Config:RGB_565	Landroid/graphics/Bitmap$Config;
+    //   110: putfield 222	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
     //   113: aload 7
     //   115: astore 6
-    //   117: getstatic 94	android/os/Build$VERSION:SDK_INT	I
+    //   117: getstatic 97	android/os/Build$VERSION:SDK_INT	I
     //   120: bipush 11
     //   122: if_icmplt +13 -> 135
     //   125: aload 7
     //   127: astore 6
     //   129: aload_0
     //   130: aload 8
-    //   132: invokespecial 220	cooperation/qzone/widget/FastAnimationDrawable:a	(Landroid/graphics/BitmapFactory$Options;)V
+    //   132: invokespecial 225	cooperation/qzone/widget/FastAnimationDrawable:a	(Landroid/graphics/BitmapFactory$Options;)V
     //   135: aload 7
     //   137: astore 6
     //   139: aload_1
     //   140: aload 8
-    //   142: invokestatic 222	cooperation/qzone/widget/FastAnimationDrawable:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   142: invokestatic 227	cooperation/qzone/widget/FastAnimationDrawable:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   145: astore 8
     //   147: aload 8
     //   149: astore 6
     //   151: aload_1
-    //   152: invokestatic 227	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)I
+    //   152: invokestatic 232	bacm:b	(Ljava/lang/String;)I
     //   155: istore_3
     //   156: aload 8
     //   158: astore 7
@@ -342,36 +344,36 @@ public class FastAnimationDrawable
     //   172: ifne +119 -> 291
     //   175: aload 8
     //   177: astore 6
-    //   179: invokestatic 231	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   179: invokestatic 236	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   182: ifeq +32 -> 214
     //   185: aload 8
     //   187: astore 6
-    //   189: ldc 182
+    //   189: ldc 187
     //   191: iconst_2
-    //   192: new 233	java/lang/StringBuilder
+    //   192: new 238	java/lang/StringBuilder
     //   195: dup
-    //   196: invokespecial 234	java/lang/StringBuilder:<init>	()V
-    //   199: ldc 236
-    //   201: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   196: invokespecial 239	java/lang/StringBuilder:<init>	()V
+    //   199: ldc 241
+    //   201: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   204: iload_3
-    //   205: invokevirtual 243	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   208: invokevirtual 247	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   211: invokestatic 250	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   205: invokevirtual 248	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   208: invokevirtual 252	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   211: invokestatic 255	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   214: aload 8
     //   216: astore 6
     //   218: aload 8
-    //   220: invokevirtual 255	android/graphics/Bitmap:getWidth	()I
+    //   220: invokevirtual 260	android/graphics/Bitmap:getWidth	()I
     //   223: istore 4
     //   225: aload 8
     //   227: astore 6
     //   229: aload 8
-    //   231: invokevirtual 258	android/graphics/Bitmap:getHeight	()I
+    //   231: invokevirtual 263	android/graphics/Bitmap:getHeight	()I
     //   234: istore 5
     //   236: aload 8
     //   238: astore 6
-    //   240: new 260	android/graphics/Matrix
+    //   240: new 265	android/graphics/Matrix
     //   243: dup
-    //   244: invokespecial 261	android/graphics/Matrix:<init>	()V
+    //   244: invokespecial 266	android/graphics/Matrix:<init>	()V
     //   247: astore 7
     //   249: aload 8
     //   251: astore 6
@@ -386,7 +388,7 @@ public class FastAnimationDrawable
     //   264: i2f
     //   265: fconst_2
     //   266: fdiv
-    //   267: invokevirtual 265	android/graphics/Matrix:postRotate	(FFF)Z
+    //   267: invokevirtual 270	android/graphics/Matrix:postRotate	(FFF)Z
     //   270: pop
     //   271: aload 8
     //   273: astore 6
@@ -397,42 +399,42 @@ public class FastAnimationDrawable
     //   281: iload 5
     //   283: aload 7
     //   285: iconst_1
-    //   286: invokestatic 269	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
+    //   286: invokestatic 274	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
     //   289: astore 7
     //   291: aload 7
     //   293: astore 8
     //   295: aload 7
     //   297: astore 6
-    //   299: invokestatic 231	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   299: invokestatic 236	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   302: ifeq +61 -> 363
     //   305: aload 7
     //   307: astore 6
-    //   309: ldc 182
+    //   309: ldc 187
     //   311: iconst_2
-    //   312: new 233	java/lang/StringBuilder
+    //   312: new 238	java/lang/StringBuilder
     //   315: dup
-    //   316: invokespecial 234	java/lang/StringBuilder:<init>	()V
-    //   319: ldc_w 271
-    //   322: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   316: invokespecial 239	java/lang/StringBuilder:<init>	()V
+    //   319: ldc_w 276
+    //   322: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   325: aload_1
-    //   326: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   329: ldc_w 273
-    //   332: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   326: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   329: ldc_w 278
+    //   332: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   335: iload_2
-    //   336: invokevirtual 243	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   339: ldc_w 275
-    //   342: invokevirtual 240	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   336: invokevirtual 248	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   339: ldc_w 280
+    //   342: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   345: aload 7
-    //   347: invokevirtual 278	android/graphics/Bitmap:getByteCount	()I
-    //   350: invokevirtual 243	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   353: invokevirtual 247	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   356: invokestatic 250	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   347: invokevirtual 283	android/graphics/Bitmap:getByteCount	()I
+    //   350: invokevirtual 248	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   353: invokevirtual 252	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   356: invokestatic 255	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   359: aload 7
     //   361: astore 8
-    //   363: new 280	android/graphics/drawable/BitmapDrawable
+    //   363: new 285	android/graphics/drawable/BitmapDrawable
     //   366: dup
     //   367: aload 8
-    //   369: invokespecial 283	android/graphics/drawable/BitmapDrawable:<init>	(Landroid/graphics/Bitmap;)V
+    //   369: invokespecial 288	android/graphics/drawable/BitmapDrawable:<init>	(Landroid/graphics/Bitmap;)V
     //   372: astore_1
     //   373: aload_0
     //   374: monitorexit
@@ -450,7 +452,7 @@ public class FastAnimationDrawable
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	390	0	this	FastAnimationDrawable
-    //   0	390	1	paramString	java.lang.String
+    //   0	390	1	paramString	String
     //   68	268	2	i	int
     //   155	101	3	j	int
     //   223	57	4	k	int
@@ -667,7 +669,7 @@ public class FastAnimationDrawable
     if (isRunning())
     {
       this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_CooperationQzoneWidgetFastAnimationDrawable$CallAntiShakeListener = null;
+      this.jdField_a_of_type_Bglo = null;
     }
   }
 }

@@ -1,29 +1,59 @@
-import android.widget.LinearLayout;
-import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
-import com.tencent.biz.pubaccount.AccountDetailBounceScrollView;
-import com.tencent.mobileqq.widget.BounceScrollView.OnScrollChangedListener;
+import com.tencent.qphone.base.util.QLog;
+import java.security.cert.X509Certificate;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocket;
+import org.apache.http.conn.ssl.SSLSocketFactory;
+import org.apache.http.conn.ssl.X509HostnameVerifier;
 
-public class kps
-  implements BounceScrollView.OnScrollChangedListener
+class kps
+  implements X509HostnameVerifier
 {
-  public kps(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
+  private X509HostnameVerifier jdField_a_of_type_OrgApacheHttpConnSslX509HostnameVerifier = SSLSocketFactory.STRICT_HOSTNAME_VERIFIER;
   
-  public void a(float paramFloat1, float paramFloat2) {}
+  kps(kpr paramkpr) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void verify(String paramString, X509Certificate paramX509Certificate)
   {
-    paramInt1 = (int)(this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getHeight() - this.a.b * (1.0D - LebaSearchPluginManagerActivity.jdField_a_of_type_Double) + 56.0F * this.a.jdField_a_of_type_Float);
-    this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView.setMaxOverScrollY(paramInt1);
-    if (LebaSearchPluginManagerActivity.a(this.a))
-    {
-      this.a.a(paramInt2);
-      LebaSearchPluginManagerActivity.b(this.a, paramInt2);
+    String str = paramString;
+    if (paramString.equalsIgnoreCase("datamarket.accesscontrol.windows.net")) {
+      str = "accesscontrol.windows.net";
     }
+    this.jdField_a_of_type_OrgApacheHttpConnSslX509HostnameVerifier.verify(str, paramX509Certificate);
+  }
+  
+  public void verify(String paramString, SSLSocket paramSSLSocket)
+  {
+    String str = paramString;
+    if (paramString.equalsIgnoreCase("datamarket.accesscontrol.windows.net")) {
+      str = "accesscontrol.windows.net";
+    }
+    this.jdField_a_of_type_OrgApacheHttpConnSslX509HostnameVerifier.verify(str, paramSSLSocket);
+  }
+  
+  public void verify(String paramString, String[] paramArrayOfString1, String[] paramArrayOfString2)
+  {
+    String str = paramString;
+    if (paramString.equalsIgnoreCase("datamarket.accesscontrol.windows.net")) {
+      str = "accesscontrol.windows.net";
+    }
+    this.jdField_a_of_type_OrgApacheHttpConnSslX509HostnameVerifier.verify(str, paramArrayOfString1, paramArrayOfString2);
+  }
+  
+  public boolean verify(String paramString, SSLSession paramSSLSession)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Translator", 2, "[AsyncHttpClient] host:" + paramString);
+    }
+    String str = paramString;
+    if (paramString.equalsIgnoreCase("datamarket.accesscontrol.windows.net")) {
+      str = "accesscontrol.windows.net";
+    }
+    return this.jdField_a_of_type_OrgApacheHttpConnSslX509HostnameVerifier.verify(str, paramSSLSession);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     kps
  * JD-Core Version:    0.7.0.1
  */

@@ -3,18 +3,18 @@ package com.tencent.tmdownloader.internal.downloadclient;
 import android.content.Context;
 import android.text.TextUtils;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ac;
 import com.tencent.tmassistantsdk.internal.b.b;
 import com.tencent.tmassistantsdk.internal.openSDK.param.jce.BatchSDKDownloadActionResponse;
 import com.tencent.tmassistantsdk.internal.openSDK.param.jce.SubScribeSDKDownloadTaskByViaResponse;
-import com.tencent.tmdownloader.s;
 import com.tencent.tmdownloader.t;
+import com.tencent.tmdownloader.u;
 
 public class c
 {
   private static String a = "TMAssistantYYBManager";
   private volatile b b;
-  private t c;
+  private u c;
   private Context d;
   private String e;
   private String f;
@@ -23,33 +23,33 @@ public class c
   
   public static byte[] a(JceStruct paramJceStruct, String paramString)
   {
-    r.c(a, "jceStruct = " + paramJceStruct);
+    ac.c(a, "jceStruct = " + paramJceStruct);
     paramJceStruct = com.tencent.tmassistantsdk.internal.openSDK.param.a.a(paramJceStruct, paramString);
     if (paramJceStruct != null)
     {
       paramJceStruct = com.tencent.tmassistantsdk.internal.openSDK.param.a.a(paramJceStruct);
       if ((paramJceStruct != null) && (paramJceStruct.length > 0))
       {
-        r.c(a, "return sendData length = " + paramJceStruct.length);
+        ac.c(a, "return sendData length = " + paramJceStruct.length);
         return paramJceStruct;
       }
-      r.c(a, "handleUriAction sendData = null");
+      ac.c(a, "handleUriAction sendData = null");
       return null;
     }
-    r.c(a, "handleUriAction IPCRequest = null");
+    ac.c(a, "handleUriAction IPCRequest = null");
     return null;
   }
   
   public void a()
   {
-    s.a().post(new e(this));
+    t.a().post(new e(this));
   }
   
   public void a(Context paramContext, String paramString)
   {
     this.d = paramContext;
     this.e = paramString;
-    r.c(a, "initYYBClient yybOpenClient......" + this.b);
+    ac.c(a, "initYYBClient yybOpenClient......" + this.b);
     if (this.b == null) {
       try
       {
@@ -66,7 +66,7 @@ public class c
   {
     if (this.c == null)
     {
-      this.c = new t(this.d, this.f);
+      this.c = new u(this.d, this.f);
       this.c.a(this.h);
     }
     try
@@ -84,7 +84,7 @@ public class c
   {
     if (this.c == null)
     {
-      this.c = new t(this.d, this.f);
+      this.c = new u(this.d, this.f);
       this.c.a(this.h);
     }
     try
@@ -108,13 +108,13 @@ public class c
       this.f = paramString;
     } while (this.c != null);
     this.f = paramString;
-    this.c = new t(paramContext, paramString);
+    this.c = new u(paramContext, paramString);
     this.c.a(this.h);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.downloadclient.c
  * JD-Core Version:    0.7.0.1
  */

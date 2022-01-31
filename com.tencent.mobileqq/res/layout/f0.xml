@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/elg" android:background="@drawable/skin_aio_input_bar_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/d65" android:background="@drawable/skin_aio_input_bar_bg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="2.0" android:minHeight="44.0dip" android:layout_alignParentBottom="true">
+        <ImageView android:gravity="center" android:layout_gravity="center|left" android:id="@id/cju" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/j_" android:layout_weight="1.0" android:contentDescription="@string/hwe" />
+        <ImageView android:gravity="center" android:layout_gravity="center|right" android:id="@id/bf5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ix" android:layout_weight="1.0" android:contentDescription="@string/hwa" />
+    </LinearLayout>
+</RelativeLayout>

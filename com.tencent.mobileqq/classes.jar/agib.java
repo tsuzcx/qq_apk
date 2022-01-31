@@ -1,22 +1,29 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.ocr.view.ScanOcrView;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import java.util.ArrayList;
+import mqq.util.WeakReference;
 
-public class agib
-  implements ValueAnimator.AnimatorUpdateListener
+class agib
+  implements agal
 {
-  public agib(ScanOcrView paramScanOcrView, agic paramagic) {}
+  agib(agia paramagia, Intent paramIntent, ArrayList paramArrayList) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.jdField_a_of_type_Agic.e = i;
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.invalidate();
+    ((NewPhotoListActivity)this.jdField_a_of_type_Agia.a.get()).f();
+    if (biys.a((Activity)this.jdField_a_of_type_Agia.a.get(), paramLocalMediaInfo))
+    {
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("media_info", paramLocalMediaInfo);
+      PhotoUtils.a((Activity)this.jdField_a_of_type_Agia.a.get(), this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaUtilArrayList, 2, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agib
  * JD-Core Version:    0.7.0.1
  */

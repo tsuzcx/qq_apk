@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.activity.aio.photo;
 
 import android.os.Parcel;
+import aoig;
+import ayqd;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import java.io.File;
 
@@ -18,7 +19,7 @@ public class AIOFilePicData
   public long b;
   public String b;
   public boolean b;
-  public String c = "I:N";
+  public String c;
   public boolean c;
   public String d;
   public boolean d;
@@ -27,10 +28,12 @@ public class AIOFilePicData
   public String f;
   public boolean f;
   public String g;
+  public String h;
   
   public AIOFilePicData()
   {
     this.jdField_b_of_type_JavaLangString = "I:N";
+    this.jdField_c_of_type_JavaLangString = "I:N";
     this.jdField_d_of_type_JavaLangString = "I:N";
     this.jdField_e_of_type_JavaLangString = "I:N";
   }
@@ -59,7 +62,7 @@ public class AIOFilePicData
       return localObject;
       localObject = this.jdField_b_of_type_JavaLangString;
       continue;
-      localObject = this.c;
+      localObject = this.jdField_c_of_type_JavaLangString;
       continue;
       localObject = this.jdField_d_of_type_JavaLangString;
     }
@@ -94,7 +97,7 @@ public class AIOFilePicData
       return localObject1;
       str = this.jdField_b_of_type_JavaLangString;
       continue;
-      str = this.c;
+      str = this.jdField_c_of_type_JavaLangString;
       continue;
       str = this.jdField_d_of_type_JavaLangString;
     }
@@ -106,26 +109,81 @@ public class AIOFilePicData
   
   public void a(Parcel paramParcel)
   {
+    boolean bool = true;
     super.a(paramParcel);
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.c = paramParcel.readString();
+    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
     this.jdField_d_of_type_JavaLangString = paramParcel.readString();
     this.jdField_e_of_type_JavaLangString = paramParcel.readString();
-    this.f = paramParcel.readString();
+    this.jdField_f_of_type_JavaLangString = paramParcel.readString();
     this.jdField_b_of_type_Int = paramParcel.readInt();
-    this.jdField_g_of_type_JavaLangString = paramParcel.readString();
+    this.g = paramParcel.readString();
     this.jdField_d_of_type_Boolean = Boolean.valueOf(paramParcel.readString()).booleanValue();
     this.jdField_a_of_type_Long = Long.valueOf(paramParcel.readString()).longValue();
     this.jdField_b_of_type_Long = Long.valueOf(paramParcel.readString()).longValue();
     this.jdField_e_of_type_Boolean = Boolean.valueOf(paramParcel.readString()).booleanValue();
+    this.jdField_h_of_type_JavaLangString = paramParcel.readString();
+    if (paramParcel.readInt() == 1) {}
+    for (;;)
+    {
+      this.jdField_f_of_type_Boolean = bool;
+      return;
+      bool = false;
+    }
+  }
+  
+  public void a(ayqd paramayqd)
+  {
+    if (paramayqd == null) {
+      return;
+    }
+    String str;
+    if (paramayqd.jdField_d_of_type_JavaLangString != null)
+    {
+      str = paramayqd.jdField_d_of_type_JavaLangString;
+      this.jdField_b_of_type_JavaLangString = str;
+      if (paramayqd.jdField_c_of_type_JavaLangString == null) {
+        break label108;
+      }
+      str = paramayqd.jdField_c_of_type_JavaLangString;
+      label34:
+      this.jdField_c_of_type_JavaLangString = str;
+      if (paramayqd.jdField_a_of_type_JavaLangString == null) {
+        break label114;
+      }
+      str = paramayqd.jdField_a_of_type_JavaLangString;
+      label51:
+      this.jdField_d_of_type_JavaLangString = str;
+      this.g = paramayqd.g;
+      if (paramayqd.jdField_b_of_type_Int != 12) {
+        break label120;
+      }
+    }
+    label108:
+    label114:
+    label120:
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_d_of_type_Boolean = bool;
+      this.jdField_a_of_type_Long = paramayqd.jdField_c_of_type_Long;
+      this.jdField_h_of_type_Long = paramayqd.jdField_c_of_type_Long;
+      this.jdField_e_of_type_Boolean = false;
+      return;
+      str = "I:N";
+      break;
+      str = "I:N";
+      break label34;
+      str = "I:N";
+      break label51;
+    }
   }
   
   public void a(QQAppInterface paramQQAppInterface)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramQQAppInterface.a().a(this.jdField_g_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramQQAppInterface.a().a(this.jdField_f_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
     }
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null)
     {
@@ -139,14 +197,14 @@ public class AIOFilePicData
       }
       paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath;
       label78:
-      this.c = paramQQAppInterface;
+      this.jdField_c_of_type_JavaLangString = paramQQAppInterface;
       if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFilePath == null) {
         break label193;
       }
       paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFilePath;
       label101:
       this.jdField_d_of_type_JavaLangString = paramQQAppInterface;
-      this.jdField_g_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName;
+      this.g = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName;
       if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status != 16) {
         break label199;
       }
@@ -159,7 +217,7 @@ public class AIOFilePicData
     {
       this.jdField_d_of_type_Boolean = bool;
       this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
-      this.i = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
+      this.jdField_h_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
       this.jdField_b_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastSuccessTime;
       this.jdField_e_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.sendCloudUnsuccessful();
       return;
@@ -192,7 +250,7 @@ public class AIOFilePicData
       } while (!this.jdField_b_of_type_JavaLangString.equals("I:N"));
       return false;
       bool1 = bool2;
-    } while (!this.c.equals("I:N"));
+    } while (!this.jdField_c_of_type_JavaLangString.equals("I:N"));
     return false;
   }
   
@@ -202,21 +260,28 @@ public class AIOFilePicData
     paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
     paramParcel.writeInt(this.jdField_a_of_type_Int);
     paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeString(this.c);
+    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
     paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
     paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
-    paramParcel.writeString(this.f);
+    paramParcel.writeString(this.jdField_f_of_type_JavaLangString);
     paramParcel.writeInt(this.jdField_b_of_type_Int);
-    paramParcel.writeString(this.jdField_g_of_type_JavaLangString);
+    paramParcel.writeString(this.g);
     paramParcel.writeString(String.valueOf(this.jdField_d_of_type_Boolean));
     paramParcel.writeString(String.valueOf(this.jdField_a_of_type_Long));
     paramParcel.writeString(String.valueOf(this.jdField_b_of_type_Long));
     paramParcel.writeString(String.valueOf(this.jdField_e_of_type_Boolean));
+    paramParcel.writeString(this.jdField_h_of_type_JavaLangString);
+    if (this.jdField_f_of_type_Boolean) {}
+    for (paramInt = 1;; paramInt = 0)
+    {
+      paramParcel.writeInt(paramInt);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOFilePicData
  * JD-Core Version:    0.7.0.1
  */

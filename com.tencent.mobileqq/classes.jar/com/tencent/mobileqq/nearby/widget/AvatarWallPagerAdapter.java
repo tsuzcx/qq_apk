@@ -6,14 +6,14 @@ import java.lang.ref.SoftReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AvatarWallPagerAdapter
+public abstract class AvatarWallPagerAdapter<T>
 {
-  protected AvatarWallPagerAdapter.InnerPagerAdapter a;
+  protected AvatarWallPagerAdapter<T>.InnerPagerAdapter a;
   protected AvatarWallViewPager a;
-  protected SoftReference a;
-  protected final List a;
+  protected SoftReference<View> a;
+  protected final List<T> a;
   protected boolean a;
-  protected SoftReference b;
+  protected SoftReference<View> b;
   
   public AvatarWallPagerAdapter(AvatarWallViewPager paramAvatarWallViewPager)
   {
@@ -46,7 +46,7 @@ public abstract class AvatarWallPagerAdapter
     return this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallPagerAdapter$InnerPagerAdapter;
   }
   
-  public abstract View a(int paramInt, Object paramObject);
+  public abstract View a(int paramInt, T paramT);
   
   public abstract View a(boolean paramBoolean, int paramInt);
   
@@ -60,7 +60,7 @@ public abstract class AvatarWallPagerAdapter
   
   public void a(int paramInt, View paramView) {}
   
-  public void a(List paramList)
+  public void a(List<T> paramList)
   {
     if (this.jdField_a_of_type_Boolean) {
       return;
@@ -82,12 +82,12 @@ public abstract class AvatarWallPagerAdapter
     this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetAvatarWallViewPager.a().setCurrentItem(1);
   }
   
-  public boolean a(Object paramObject1, Object paramObject2)
+  public boolean a(T paramT1, T paramT2)
   {
-    if ((paramObject1 == null) || (paramObject2 == null)) {
+    if ((paramT1 == null) || (paramT2 == null)) {
       return false;
     }
-    return paramObject1.equals(paramObject2);
+    return paramT1.equals(paramT2);
   }
 }
 

@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 
-class wfd
-  implements Runnable
+public class wfd
+  implements bbqq
 {
-  wfd(wfb paramwfb) {}
+  public wfd(VideoPlayerView paramVideoPlayerView) {}
   
-  public void run()
+  public boolean a()
   {
-    this.a.a.a.ar();
+    return false;
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    VideoPlayerView.d(this.a, true);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wfd
  * JD-Core Version:    0.7.0.1
  */

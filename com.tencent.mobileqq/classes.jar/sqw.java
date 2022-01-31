@@ -1,72 +1,39 @@
-import android.text.Layout;
-import android.text.Selection;
-import android.text.Spannable;
-import android.text.method.LinkMovementMethod;
-import android.view.MotionEvent;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.activity.EditInfoActivity.TouchableSpan;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class sqw
-  extends LinkMovementMethod
+class sqw
+  implements slx<tap, tca>
 {
-  private EditInfoActivity.TouchableSpan jdField_a_of_type_ComTencentMobileqqActivityEditInfoActivity$TouchableSpan;
+  sqw(squ paramsqu) {}
   
-  private sqw(EditInfoActivity paramEditInfoActivity) {}
-  
-  private EditInfoActivity.TouchableSpan a(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
+  public void a(@NonNull tap paramtap, @Nullable tca paramtca, @NonNull ErrorMessage paramErrorMessage)
   {
-    int i = (int)paramMotionEvent.getX();
-    int j = (int)paramMotionEvent.getY();
-    int k = paramTextView.getTotalPaddingLeft();
-    int m = paramTextView.getTotalPaddingTop();
-    int n = paramTextView.getScrollX();
-    int i1 = paramTextView.getScrollY();
-    paramTextView = paramTextView.getLayout();
-    i = paramTextView.getOffsetForHorizontal(paramTextView.getLineForVertical(j - m + i1), i - k + n);
-    paramTextView = (EditInfoActivity.TouchableSpan[])paramSpannable.getSpans(i, i, EditInfoActivity.TouchableSpan.class);
-    if (paramTextView.length > 0) {
-      return paramTextView[0];
-    }
-    return null;
-  }
-  
-  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 0)
+    urk.b("WeatherDataProvider", "requestWeather Cmd Respond.");
+    if ((paramErrorMessage.isSuccess()) && (paramtca != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityEditInfoActivity$TouchableSpan = a(paramTextView, paramSpannable, paramMotionEvent);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityEditInfoActivity$TouchableSpan != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityEditInfoActivity$TouchableSpan.a(true);
-        Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(this.jdField_a_of_type_ComTencentMobileqqActivityEditInfoActivity$TouchableSpan), paramSpannable.getSpanEnd(this.jdField_a_of_type_ComTencentMobileqqActivityEditInfoActivity$TouchableSpan));
-      }
+      urk.a("WeatherDataProvider", "requestWeather onCmdRespond success, temperature : %s .", Integer.valueOf(paramtca.b));
+      this.a.jdField_a_of_type_JavaLangObject = new sqx(paramtca.b, paramtca.a);
+      urk.c("WeatherDataProvider", "update local weather data.");
+      paramtap = (spz)sqg.a(10);
+      paramtap.b("edit_video_weather_filter_data", Integer.valueOf(paramtca.b));
+      paramtap.b("edit_video_weather_desc", paramtca.a);
+      squ.a(this.a, System.currentTimeMillis() + 14400000L);
+      paramtap.b("edit_video_weather_expiry_time", Long.valueOf(squ.a(this.a)));
+      this.a.a(true, this.a.jdField_a_of_type_JavaLangObject);
     }
-    do
+    for (;;)
     {
-      return true;
-      if (paramMotionEvent.getAction() != 2) {
-        break;
-      }
-      paramTextView = a(paramTextView, paramSpannable, paramMotionEvent);
-    } while ((this.jdField_a_of_type_ComTencentMobileqqActivityEditInfoActivity$TouchableSpan == null) || (paramTextView == this.jdField_a_of_type_ComTencentMobileqqActivityEditInfoActivity$TouchableSpan));
-    this.jdField_a_of_type_ComTencentMobileqqActivityEditInfoActivity$TouchableSpan.a(false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityEditInfoActivity$TouchableSpan = null;
-    Selection.removeSelection(paramSpannable);
-    return true;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityEditInfoActivity$TouchableSpan != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityEditInfoActivity$TouchableSpan.a(false);
-      super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+      this.a.jdField_a_of_type_Boolean = false;
+      return;
+      urk.d("WeatherDataProvider", "requestWeather onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramtap });
+      this.a.a(false, null);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityEditInfoActivity$TouchableSpan = null;
-    Selection.removeSelection(paramSpannable);
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sqw
  * JD-Core Version:    0.7.0.1
  */

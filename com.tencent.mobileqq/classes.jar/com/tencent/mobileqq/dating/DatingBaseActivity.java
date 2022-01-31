@@ -2,42 +2,42 @@ package com.tencent.mobileqq.dating;
 
 import android.content.Intent;
 import android.os.Bundle;
+import bbmv;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.nearby.NearbyTitleBarActivity;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
 
 public class DatingBaseActivity
   extends NearbyTitleBarActivity
 {
   public static final boolean a;
   protected int a;
-  protected QQProgressNotifier a;
+  protected bbmv a;
   public boolean b;
   public boolean c;
   
   static
   {
-    jdField_a_of_type_Boolean = AppSetting.b;
+    jdField_a_of_type_Boolean = AppSetting.c;
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_Int = getTitleBarHeight();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this);
+    this.jdField_a_of_type_Bbmv = new bbmv(this);
     this.b = getIntent().getBooleanExtra("abp_flag", false);
     this.c = getIntent().getBooleanExtra("is_from_web", false);
     if ((this.c) && (!this.b)) {
-      setLeftViewName(2131432425);
+      setLeftViewName(2131624770);
     }
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a();
+    if (this.jdField_a_of_type_Bbmv != null) {
+      this.jdField_a_of_type_Bbmv.b();
     }
   }
   
@@ -45,13 +45,13 @@ public class DatingBaseActivity
   {
     super.finish();
     if (this.b) {
-      overridePendingTransition(2131034129, 2131034130);
+      overridePendingTransition(2130771988, 2130771989);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.dating.DatingBaseActivity
  * JD-Core Version:    0.7.0.1
  */

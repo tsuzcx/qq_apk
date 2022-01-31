@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.msf.sdk;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.msf.core.c.o;
-import com.tencent.mobileqq.msf.core.c.o.a;
+import com.tencent.mobileqq.msf.core.c.p;
+import com.tencent.mobileqq.msf.core.c.p.a;
 import com.tencent.mobileqq.msf.sdk.handler.IErrorHandler;
 import com.tencent.mobileqq.msf.sdk.report.c;
 import com.tencent.qphone.base.remote.FromServiceMsg;
@@ -38,7 +38,7 @@ class t
     for (;;)
     {
       if (paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c")) {
-        o.a().a(o.a.e, paramFromServiceMsg.getWupBuffer(), 0);
+        p.a().a(p.a.e, paramFromServiceMsg.getWupBuffer(), 0);
       }
       synchronized (this.syncQueueLock)
       {

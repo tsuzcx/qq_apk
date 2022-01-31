@@ -1,52 +1,23 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import com.tencent.open.agent.BindGroupConfirmActivity;
-import com.tencent.open.agent.util.AuthorityUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.armap.POIInfo;
 
-public class alix
-  implements Runnable
+public final class alix
+  implements Parcelable.Creator<POIInfo>
 {
-  public alix(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
-  
-  public void run()
+  public POIInfo a(Parcel paramParcel)
   {
-    if (this.a.a == null) {}
-    for (;;)
-    {
-      return;
-      Object localObject2 = null;
-      try
-      {
-        Bitmap localBitmap = BitmapFactory.decodeResource(this.a.a, 2130840658);
-        if (localBitmap == null) {
-          continue;
-        }
-        localBitmap = AuthorityUtil.a(this.a, localBitmap, 50, 50);
-        if (localBitmap == null) {
-          continue;
-        }
-        this.a.runOnUiThread(new aliy(this, localBitmap));
-        return;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        for (;;)
-        {
-          Object localObject1 = localObject2;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("BindGroupConfirmActivity", 2, "initUI decodeResource has OutOfMemoryError!");
-            localObject1 = localObject2;
-          }
-        }
-      }
-    }
+    return new POIInfo(paramParcel);
+  }
+  
+  public POIInfo[] a(int paramInt)
+  {
+    return new POIInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alix
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,17 @@
-import com.tencent.biz.qqstory.view.widget.RateWidget;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ovu
-  implements Runnable
+class ovu
+  implements View.OnClickListener
 {
-  public ovu(RateWidget paramRateWidget) {}
+  ovu(ovq paramovq, opw paramopw, qoe paramqoe) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (RateWidget.a(this.a))
-    {
-      RateWidget.a(this.a, false);
-      this.a.c(false);
+    this.jdField_a_of_type_Opw.a();
+    qpj localqpj = this.jdField_a_of_type_Qoe.a();
+    if (localqpj != null) {
+      localqpj.a(paramView, this.jdField_a_of_type_Opw.a(), 2);
     }
   }
 }

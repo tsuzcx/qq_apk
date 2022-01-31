@@ -1,19 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.annotation.SuppressLint;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
+@SuppressLint({"HandlerLeak"})
 class rxy
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  rxy(rxu paramrxu) {}
+  WeakReference<rxx> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  rxy(rxx paramrxx1, rxx paramrxx2)
   {
-    paramDialogInterface.dismiss();
+    sai.b("WSFallKeyPicMonitor", "init DownloadHandler");
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramrxx2);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    sai.b("WSFallKeyPicMonitor", "handleMessage to download");
+    if (paramMessage.what == 1)
+    {
+      if (rxx.a(this.jdField_a_of_type_Rxx) != 4) {
+        break label46;
+      }
+      rxx.a(this.jdField_a_of_type_Rxx);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Rxx.b();
+      return;
+      label46:
+      rxx.b(this.jdField_a_of_type_Rxx);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rxy
  * JD-Core Version:    0.7.0.1
  */

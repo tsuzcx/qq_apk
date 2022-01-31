@@ -1,24 +1,41 @@
+import android.os.Handler;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.nearby.profilecard.moment.CommentsAdapter;
-import com.tencent.mobileqq.nearby.profilecard.moment.CommentsAdapter.CommentsItemClickListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.AnimationEndClearListener.1;
 
 public class afov
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public afov(CommentsAdapter paramCommentsAdapter, ViewGroup paramViewGroup) {}
+  public int a;
+  public View a;
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (CommentsAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentCommentsAdapter) != null) {
-      CommentsAdapter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentCommentsAdapter).a(this.jdField_a_of_type_AndroidViewViewGroup);
+    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.b.postDelayed(new ChatHistoryTroopMemberFragment.AnimationEndClearListener.1(this), 0L);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    paramAnimation = (String)this.jdField_a_of_type_AndroidViewView.getTag();
+    if ((this.jdField_a_of_type_Int == 1) && (paramAnimation.equals("left")))
+    {
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      this.jdField_a_of_type_Int = 6;
+    }
+    if ((this.jdField_a_of_type_Int == 0) && (paramAnimation.equals("right")))
+    {
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      this.jdField_a_of_type_Int = 6;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afov
  * JD-Core Version:    0.7.0.1
  */

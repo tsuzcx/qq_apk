@@ -1,30 +1,23 @@
-import android.content.Context;
-import com.tencent.open.adapter.OpenAppClient;
-import com.tencent.open.base.LogUtility;
-import java.util.HashMap;
+import com.tencent.ark.ArkEnvironmentManager.LibraryLoader;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public final class alhi
-  implements Runnable
+final class alhi
+  implements ArkEnvironmentManager.LibraryLoader
 {
-  public alhi(Context paramContext, HashMap paramHashMap) {}
-  
-  public void run()
+  public boolean Load()
   {
-    try
-    {
-      OpenAppClient.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilHashMap);
-      return;
-    }
-    catch (Exception localException)
-    {
-      String str = "onPushMsg exception: " + this.jdField_a_of_type_JavaUtilHashMap;
-      LogUtility.c(OpenAppClient.a, str, localException);
-    }
+    ArkAppCenter.f();
+    return ArkAppCenter.b;
+  }
+  
+  public boolean isLibraryLoad()
+  {
+    return ArkAppCenter.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alhi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,12 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.QQStoryHandler;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-public class nyf
-  implements Runnable
+public abstract class nyf
 {
-  public nyf(QQStoryMainController paramQQStoryMainController) {}
+  private nyf(nxd paramnxd) {}
   
-  public void run()
-  {
-    ((QQStoryHandler)QQStoryContext.a().a(98)).a(2001, true, null);
-  }
+  public abstract void a(nyi paramnyi);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nyf
  * JD-Core Version:    0.7.0.1
  */

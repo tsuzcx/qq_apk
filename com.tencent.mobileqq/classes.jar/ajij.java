@@ -1,23 +1,18 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-
-public final class ajij
-  implements Parcelable.Creator
+class ajij
+  implements awog
 {
-  public TroopBarPOI a(Parcel paramParcel)
+  ajij(ajii paramajii) {}
+  
+  public void a()
   {
-    return new TroopBarPOI(paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString());
+    this.a.m();
   }
   
-  public TroopBarPOI[] a(int paramInt)
-  {
-    return null;
-  }
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajij
  * JD-Core Version:    0.7.0.1
  */

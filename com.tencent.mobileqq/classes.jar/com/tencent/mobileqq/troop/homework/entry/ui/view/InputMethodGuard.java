@@ -1,16 +1,17 @@
 package com.tencent.mobileqq.troop.homework.entry.ui.view;
 
-import ajpq;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import ayxi;
+import ayxj;
 
 public class InputMethodGuard
   extends View
 {
   private int jdField_a_of_type_Int = 0;
-  private InputMethodGuard.InputMethodChangeListener jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewInputMethodGuard$InputMethodChangeListener = null;
+  private ayxi jdField_a_of_type_Ayxi = null;
   private boolean jdField_a_of_type_Boolean = true;
   private boolean b = false;
   
@@ -27,7 +28,7 @@ public class InputMethodGuard
   public InputMethodGuard(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    getViewTreeObserver().addOnGlobalLayoutListener(new ajpq(this, null));
+    getViewTreeObserver().addOnGlobalLayoutListener(new ayxj(this, null));
   }
   
   public boolean a()
@@ -35,14 +36,14 @@ public class InputMethodGuard
     return this.b;
   }
   
-  public void setOnInputMethodChangeListener(InputMethodGuard.InputMethodChangeListener paramInputMethodChangeListener)
+  public void setOnInputMethodChangeListener(ayxi paramayxi)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiViewInputMethodGuard$InputMethodChangeListener = paramInputMethodChangeListener;
+    this.jdField_a_of_type_Ayxi = paramayxi;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard
  * JD-Core Version:    0.7.0.1
  */

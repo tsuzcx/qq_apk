@@ -8,11 +8,12 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class qq_ad_get$QQAdGetRsp$PosAdInfo
-  extends MessageMicro
+  extends MessageMicro<PosAdInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34 }, new String[] { "ret", "msg", "pos_id", "ads_info" }, new Object[] { Integer.valueOf(0), "", "", null }, PosAdInfo.class);
-  public final PBRepeatMessageField ads_info = PBField.initRepeatMessage(qq_ad_get.QQAdGetRsp.AdInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42 }, new String[] { "ret", "msg", "pos_id", "ads_info", "no_ad_indicator" }, new Object[] { Integer.valueOf(0), "", "", null, null }, PosAdInfo.class);
+  public final PBRepeatMessageField<qq_ad_get.QQAdGetRsp.AdInfo> ads_info = PBField.initRepeatMessage(qq_ad_get.QQAdGetRsp.AdInfo.class);
   public final PBStringField msg = PBField.initString("");
+  public indicator.NoAdIndicator no_ad_indicator = new indicator.NoAdIndicator();
   public final PBStringField pos_id = PBField.initString("");
   public final PBInt32Field ret = PBField.initInt32(0);
 }

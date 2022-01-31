@@ -6,10 +6,10 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class SubMsgType0x27$ModFrdRoamPriv
-  extends MessageMicro
+  extends MessageMicro<ModFrdRoamPriv>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "rpt_msg_roam_priv" }, new Object[] { null }, ModFrdRoamPriv.class);
-  public final PBRepeatMessageField rpt_msg_roam_priv = PBField.initRepeatMessage(SubMsgType0x27.OneRoamPriv.class);
+  public final PBRepeatMessageField<SubMsgType0x27.OneRoamPriv> rpt_msg_roam_priv = PBField.initRepeatMessage(SubMsgType0x27.OneRoamPriv.class);
 }
 
 

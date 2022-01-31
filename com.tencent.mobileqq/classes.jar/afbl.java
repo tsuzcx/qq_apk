@@ -1,27 +1,25 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopGiftProtocolObserver;
-import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager;
-import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager.Callback;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
 
-public class afbl
-  extends ProtoUtils.TroopGiftProtocolObserver
+class afbl
+  implements View.OnClickListener
 {
-  public afbl(NowShortVideoProtoManager paramNowShortVideoProtoManager, String paramString, NowShortVideoProtoManager.Callback paramCallback) {}
+  afbl(afbk paramafbk) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramInt != 0) {
-      QLog.i("getMediaDetailInfo", 1, "getMediaDetailInfo错误   errorCode=   " + paramInt + ",data=" + paramArrayOfByte + ",mQueryString=" + this.jdField_a_of_type_JavaLangString);
+    if (afbk.a(this.a))
+    {
+      TroopSuspiciousFragment.a(afbk.a(this.a));
+      return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolNowShortVideoProtoManager$Callback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolNowShortVideoProtoManager$Callback.a(paramInt, paramArrayOfByte, paramBundle);
-    }
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afbl
  * JD-Core Version:    0.7.0.1
  */

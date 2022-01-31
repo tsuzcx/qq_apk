@@ -9,22 +9,23 @@ import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import ons;
 import tencent.im.oidb.FavoriteCKVData.KandianFavoriteBizData;
 
 public class KandianFavoriteBroadcastReceiver
   extends BroadcastReceiver
 {
   public static final String a;
-  private ReadInJoyAtlasManager.AtlasCallback a;
+  private ons a;
   
   static
   {
     jdField_a_of_type_JavaLangString = "Q.readinjoy.atlas.." + KandianFavoriteBroadcastReceiver.class.getSimpleName();
   }
   
-  public KandianFavoriteBroadcastReceiver(ReadInJoyAtlasManager.AtlasCallback paramAtlasCallback)
+  public KandianFavoriteBroadcastReceiver(ons paramons)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback = paramAtlasCallback;
+    this.jdField_a_of_type_Ons = paramons;
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
@@ -48,9 +49,9 @@ public class KandianFavoriteBroadcastReceiver
           if (QLog.isColorLevel()) {
             QLog.d(jdField_a_of_type_JavaLangString, 2, "BroadcastReceiver.onReceive  operation == " + i + " rowkey=" + paramIntent + " cid=" + paramContext);
           }
-          if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback != null)
+          if (this.jdField_a_of_type_Ons != null)
           {
-            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback.a(bool, paramIntent, i, paramContext);
+            this.jdField_a_of_type_Ons.a(bool, paramIntent, i, paramContext);
             return;
           }
         }

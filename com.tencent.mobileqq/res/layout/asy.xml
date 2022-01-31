@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/d6j" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.confess.CircleGuideView android:id="@id/axy" android:layout_width="fill_parent" android:layout_height="100.0dip" />
+        <View android:background="#b4000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/d6i" android:paddingTop="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+        <ImageView android:id="@id/d6d" android:layout_width="70.0dip" android:layout_height="60.0dip" android:layout_marginTop="60.0dip" android:layout_marginRight="62.0dip" android:src="@drawable/ep7" android:layout_alignParentRight="true" />
+        <FrameLayout android:layout_width="250.0dip" android:layout_height="50.0dip" android:layout_marginTop="130.0dip" android:layout_centerHorizontal="true">
+            <ImageView android:id="@id/d6k" android:focusable="true" android:layout_width="250.0dip" android:layout_height="50.0dip" android:src="@drawable/epj" />
+            <ImageView android:layout_gravity="right" android:id="@id/d6l" android:layout_width="14.0dip" android:layout_height="20.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="75.0dip" android:src="@drawable/epd" />
+        </FrameLayout>
+        <Button android:textSize="18.0sp" android:id="@id/d6h" android:layout_width="200.0dip" android:layout_height="40.0dip" android:layout_marginTop="200.0dip" android:text="@string/qnn" android:layout_centerHorizontal="true" style="@style/b9" />
+    </RelativeLayout>
+</RelativeLayout>

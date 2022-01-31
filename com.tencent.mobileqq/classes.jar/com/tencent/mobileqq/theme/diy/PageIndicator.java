@@ -40,7 +40,7 @@ public class PageIndicator
       localLayoutParams.setMargins((int)(4.0F * this.density), 0, (int)(5.0F * this.density), 0);
       localImageView.setLayoutParams(localLayoutParams);
       super.addView(localImageView);
-      localImageView.setBackgroundResource(2130844300);
+      localImageView.setBackgroundResource(2130846373);
       if (i == j - 1) {
         generatePageControl(paramScrollLayout.getCurScreen());
       }
@@ -58,7 +58,7 @@ public class PageIndicator
     {
       localView = super.getChildAt(i);
       if (localView != null) {
-        localView.setBackgroundResource(2130844300);
+        localView.setBackgroundResource(2130846373);
       }
       i += 1;
     }
@@ -71,7 +71,7 @@ public class PageIndicator
       {
         localView = super.getChildAt(i);
         if (localView != null) {
-          localView.setBackgroundResource(2130844301);
+          localView.setBackgroundResource(2130846374);
         }
       }
       return;
@@ -84,7 +84,7 @@ public class PageIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.PageIndicator
  * JD-Core Version:    0.7.0.1
  */

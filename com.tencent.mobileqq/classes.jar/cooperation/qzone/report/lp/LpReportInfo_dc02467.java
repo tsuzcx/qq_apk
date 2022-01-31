@@ -41,7 +41,7 @@ public class LpReportInfo_dc02467
     return "dc02467";
   }
   
-  public Map toMap()
+  public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
     if (this.uin <= 1000L) {}

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class device_lock_recommend_auth$DeviceInfo
-  extends MessageMicro
+  extends MessageMicro<DeviceInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_appname = PBField.initBytes(ByteStringMicro.EMPTY);

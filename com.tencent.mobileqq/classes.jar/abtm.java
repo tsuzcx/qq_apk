@@ -1,47 +1,80 @@
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.activity.SubAccountBindActivity.5.1;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.business.sougou.WordMatchManager;
-import com.tencent.mobileqq.business.sougou.WordMatchManager.TaskHttpDownload;
+import com.tencent.qphone.base.remote.SimpleAccount;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class abtm
-  implements Runnable
+  extends ajjh
 {
-  public abtm(WordMatchManager paramWordMatchManager, int paramInt) {}
+  public abtm(SubAccountBindActivity paramSubAccountBindActivity) {}
   
-  public void run()
+  void a(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_Int == 2) {
-      this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.a(this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.a, 1);
-    }
-    do
+    ThreadManager.getFileThreadHandler().post(new SubAccountBindActivity.5.1(this, paramString, paramInt));
+  }
+  
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  {
+    int j = 0;
+    if ((!paramBoolean) || (paramString == null)) {}
+    for (;;)
     {
       return;
-      if (this.jdField_a_of_type_Int == 1)
+      int i;
+      if (SubAccountBindActivity.a(this.a) != null) {
+        i = SubAccountBindActivity.a(this.a).getChildCount();
+      }
+      while (j < SubAccountBindActivity.a(this.a).size())
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.e)
+        if ((i > j) && (SubAccountBindActivity.a(this.a).get(j) != null) && (paramString.equals(((SimpleAccount)SubAccountBindActivity.a(this.a).get(j)).getUin())))
         {
-          ThreadManager.post(new WordMatchManager.TaskHttpDownload(this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager, 3), 8, null, true);
+          a(paramString, j);
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.a(true);
-        return;
+        j += 1;
+        continue;
+        i = 0;
       }
-      if (this.jdField_a_of_type_Int == 3)
+    }
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    int j = 0;
+    if ((!paramBoolean) || (paramString == null)) {}
+    for (;;)
+    {
+      return;
+      int i;
+      if (SubAccountBindActivity.a(this.a) != null) {
+        i = SubAccountBindActivity.a(this.a).getChildCount();
+      }
+      while (j < SubAccountBindActivity.a(this.a).size())
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.e)
+        if ((i > j) && (SubAccountBindActivity.a(this.a).get(j) != null) && (paramString.equals(((SimpleAccount)SubAccountBindActivity.a(this.a).get(j)).getUin())))
         {
-          ThreadManager.post(new WordMatchManager.TaskHttpDownload(this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager, 4), 8, null, true);
+          TextView localTextView1 = (TextView)SubAccountBindActivity.a(this.a).getChildAt(j).findViewById(2131304981);
+          TextView localTextView2 = (TextView)SubAccountBindActivity.a(this.a).getChildAt(j).findViewById(2131296287);
+          localTextView1.setText(babh.h(this.a.app, paramString));
+          localTextView2.setText(paramString);
+          a(paramString, j);
           return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.a(true);
-        return;
+        j += 1;
+        continue;
+        i = 0;
       }
-    } while (this.jdField_a_of_type_Int != 4);
-    this.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager.a(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abtm
  * JD-Core Version:    0.7.0.1
  */

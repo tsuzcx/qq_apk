@@ -11,8 +11,9 @@ public class HotWordSearchEntryDataModel$HotSearchItem
   public String indexBgColor;
   public String indexTextColor;
   public String jumpUrl;
-  public int showType;
+  public String rightIconUrl;
   public String title;
+  public String titleTextColor;
 }
 
 

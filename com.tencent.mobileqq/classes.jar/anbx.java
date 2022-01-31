@@ -1,23 +1,35 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.DiscoverTab;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
 
-public final class anbx
-  implements Parcelable.Creator
+class anbx
+  implements Handler.Callback
 {
-  public DiscoverTab a(Parcel paramParcel)
-  {
-    return new DiscoverTab(paramParcel);
-  }
+  anbx(anbw paramanbw) {}
   
-  public DiscoverTab[] a(int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    return new DiscoverTab[paramInt];
+    switch (paramMessage.what)
+    {
+    default: 
+      return true;
+    case 1: 
+      bbmy.a(anbw.a(this.a), 2131627191, 0).b(2131167766);
+      return true;
+    }
+    if (paramMessage.obj != null)
+    {
+      paramMessage = (EmoticonFromGroupEntity)paramMessage.obj;
+      this.a.a(paramMessage);
+      return true;
+    }
+    bbmy.a(anbw.a(this.a), 1, 2131624147, 0).b(2131167766);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anbx
  * JD-Core Version:    0.7.0.1
  */

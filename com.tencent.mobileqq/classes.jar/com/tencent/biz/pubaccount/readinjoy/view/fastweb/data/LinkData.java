@@ -3,12 +3,9 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb.data;
 public class LinkData
   extends BaseData
 {
-  public String a;
-  public String b;
-  
   public LinkData()
   {
-    this.d = 4;
+    super(4);
   }
 }
 

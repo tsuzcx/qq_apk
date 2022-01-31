@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class MixedMsg$Elem
-  extends MessageMicro
+  extends MessageMicro<Elem>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34 }, new String[] { "textMsg", "picMsg", "markfaceMsg", "sourceMsgInfo" }, new Object[] { "", null, null, "" }, Elem.class);
   public MarketFaceMsg.MarketFaceRec markfaceMsg = new MarketFaceMsg.MarketFaceRec();

@@ -45,7 +45,7 @@ public class ArcImageView
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131492969));
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131101537));
       this.jdField_a_of_type_Int = ((int)(getResources().getDisplayMetrics().density * 1.5F));
       this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Int);
       return;
@@ -65,15 +65,10 @@ public class ArcImageView
     {
       this.jdField_a_of_type_Boolean = paramBoolean;
       if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846133);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849053);
       }
       postInvalidate();
     }
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_a_of_type_Boolean;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -120,7 +115,7 @@ public class ArcImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ArcImageView
  * JD-Core Version:    0.7.0.1
  */

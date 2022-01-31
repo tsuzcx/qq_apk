@@ -1,21 +1,14 @@
-import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleLayout;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-
-public class ahnm
-  implements Runnable
+public abstract interface ahnm
 {
-  public ahnm(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public abstract int a(int paramInt1, int paramInt2, ahnf paramahnf);
   
-  public void run()
-  {
-    if ((EffectsCameraCaptureFragment.a(this.a) != null) && (EffectsCameraCaptureFragment.a(this.a).a())) {
-      EffectsCameraCaptureFragment.a(this.a).a();
-    }
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahnm
  * JD-Core Version:    0.7.0.1
  */

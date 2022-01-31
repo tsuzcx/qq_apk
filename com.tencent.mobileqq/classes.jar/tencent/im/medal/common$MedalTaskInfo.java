@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class common$MedalTaskInfo
-  extends MessageMicro
+  extends MessageMicro<MedalTaskInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 256, 264, 272, 280 }, new String[] { "uint32_taskid", "int32_task_value", "uint32_tar_value", "uint32_tar_value_level2", "uint32_tar_value_level3" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, MedalTaskInfo.class);
   public final PBInt32Field int32_task_value = PBField.initInt32(0);
@@ -18,7 +18,7 @@ public final class common$MedalTaskInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.medal.common.MedalTaskInfo
  * JD-Core Version:    0.7.0.1
  */

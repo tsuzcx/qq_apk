@@ -1,31 +1,35 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.util.VersionUtils;
-
-public class sft
-  implements View.OnClickListener
+public abstract class sft<T>
+  implements sfu<T>
 {
-  public sft(ChatHistoryForC2C paramChatHistoryForC2C) {}
+  private sfv<T> a;
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (!this.a.a)
+    Object localObject = this.a.a();
+    if (localObject != null)
     {
-      if (VersionUtils.e()) {
-        this.a.startActivity(new Intent("android.settings.SETTINGS"));
-      }
-    }
-    else {
+      a(localObject);
+      urk.a("Q.qqstory.home.data.Producer", "start one consumer:%s", localObject);
       return;
     }
-    this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
+    urk.d("Q.qqstory.home.data.Producer", "no data return");
+  }
+  
+  public abstract void a(T paramT);
+  
+  public void a(sfv<T> paramsfv)
+  {
+    this.a = paramsfv;
+  }
+  
+  public void b()
+  {
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sft
  * JD-Core Version:    0.7.0.1
  */

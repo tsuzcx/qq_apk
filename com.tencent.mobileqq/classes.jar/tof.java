@@ -1,57 +1,46 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.managers.QQLSRecentManager;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 public class tof
-  extends BroadcastReceiver
+  extends tog
+  implements View.OnClickListener
 {
-  private String jdField_a_of_type_JavaLangString;
+  private long a;
   
-  private tof(QQLSActivity paramQQLSActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public tof(@NonNull ViewGroup paramViewGroup)
   {
-    if (QQLSActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity)) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          this.jdField_a_of_type_JavaLangString = paramIntent.getAction();
-          if (!"android.intent.action.SCREEN_ON".equals(this.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("QQLSActivity", 2, "ScreenBroadcastReceiver ACTION_SCREEN_ON");
-        return;
-        if (!"android.intent.action.SCREEN_OFF".equals(this.jdField_a_of_type_JavaLangString)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("QQLSActivity", 2, "ScreenBroadcastReceiver ACTION_SCREEN_OFF");
+    super(paramViewGroup);
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+  }
+  
+  protected View a(ViewGroup paramViewGroup)
+  {
+    return paramViewGroup;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Tnz == null) {}
+    while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 500L) {
       return;
-    } while (!"android.intent.action.USER_PRESENT".equals(this.jdField_a_of_type_JavaLangString));
-    if (QLog.isColorLevel())
+    }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    paramView = this.jdField_a_of_type_Tnz.a().getVideoLinkInfo();
+    if ((paramView != null) && (paramView.a()) && (paramView.a.a()))
     {
-      paramContext = new StringBuilder().append("ScreenBroadcastReceiver ACTION_USER_PRESENTmanager.isEnterAio");
-      paramIntent = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a;
-      QLog.d("QQLSActivity", 2, QQLSRecentManager.f);
+      tij.a(a(), paramView.a.c, paramView.a.b, 1010);
+      urp.a("play_video", "clk_tips", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_Tnz.a });
+      return;
     }
-    paramContext = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a;
-    if (!QQLSRecentManager.f) {
-      QQLSActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.finish();
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tof
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
 package cooperation.qqpim;
 
-import amyd;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bflb;
 
 public class QQPimTipsInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amyd();
+  public static final Parcelable.Creator<QQPimTipsInfo> CREATOR = new bflb();
   public byte a;
   public int a;
   public String a;

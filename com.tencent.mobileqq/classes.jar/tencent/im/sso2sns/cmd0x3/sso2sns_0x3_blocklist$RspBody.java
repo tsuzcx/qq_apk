@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class sso2sns_0x3_blocklist$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   public static final int MSG_BODY_ADD_BLOCKLIST_FIELD_NUMBER = 2;
   public static final int MSG_BODY_DEL_BLOCKLIST_FIELD_NUMBER = 3;
@@ -16,7 +16,7 @@ public final class sso2sns_0x3_blocklist$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.sso2sns.cmd0x3.sso2sns_0x3_blocklist.RspBody
  * JD-Core Version:    0.7.0.1
  */

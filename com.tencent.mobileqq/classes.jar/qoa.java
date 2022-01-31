@@ -1,30 +1,29 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.gamecenter.common.util.ReportInfoManager;
-import com.tencent.gamecenter.common.util.TrafficStatistics;
+import com.tencent.biz.pubaccount.readinjoy.view.RainView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class qoa
-  extends Handler
+  implements axbf
 {
-  public qoa(ReportInfoManager paramReportInfoManager, long paramLong) {}
+  public qoa(RainView paramRainView, axci paramaxci) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    super.handleMessage(paramMessage);
-    if (paramMessage == null) {
-      return;
-    }
-    switch (paramMessage.what)
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView.b(this.jdField_a_of_type_Axci);
+    if ((RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).incrementAndGet() == RainView.a() * RainView.b() * RainView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).get()) && (RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView) != null))
     {
-    default: 
-      return;
+      RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).set(0);
+      RainView.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).set(0);
+      RainView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewRainView).a();
+      if (QLog.isColorLevel()) {
+        QLog.d("SpriteGLView", 2, "rain animation end");
+      }
     }
-    TrafficStatistics.a("post report", this.jdField_a_of_type_Long, (short)1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qoa
  * JD-Core Version:    0.7.0.1
  */

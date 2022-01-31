@@ -1,81 +1,112 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopTopicMgr;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.lang.ref.SoftReference;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Observable;
+import mqq.manager.Manager;
 
 public class ajyk
-  extends DownloadListener
+  extends Observable
+  implements Manager
 {
-  public ajyk(TroopTopicMgr paramTroopTopicMgr, int paramInt) {}
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private HashMap<String, SoftReference<ajym>> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public ajyk(QQAppInterface paramQQAppInterface)
   {
-    if (paramDownloadTask.jdField_a_of_type_Int == 0)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private ajym a(String paramString)
+  {
+    for (;;)
     {
-      Object localObject = paramDownloadTask.a().getString("filePath");
-      try
+      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
       {
-        paramDownloadTask = new File((String)localObject);
-        String str = FileUtils.b(paramDownloadTask);
-        if (QLog.isColorLevel()) {
-          QLog.d(".troop.troop_topic.TroopTopicMgr", 2, "onDone() content =  " + str + ", filePath = " + (String)localObject);
-        }
-        boolean bool = TextUtils.isEmpty(str);
-        if (bool) {
-          return;
-        }
-        try
+        localObject1 = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        if (localObject1 != null)
         {
-          localObject = new JSONObject(str);
-          ((JSONObject)localObject).put("version", this.jdField_a_of_type_Int);
-          TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr).getApp().getSharedPreferences(TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr).getCurrentAccountUin() + "_TroopTopic", 0).edit().putString("ShareCommentWhiteList", ((JSONObject)localObject).toString()).commit();
-          this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr.b(((JSONObject)localObject).toString());
-          paramDownloadTask.deleteOnExit();
-          return;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
+          localObject1 = (ajym)((SoftReference)localObject1).get();
+          Object localObject2 = localObject1;
+          if (localObject1 == null)
           {
-            if (QLog.isColorLevel()) {
-              QLog.d(".troop.troop_topic.TroopTopicMgr", 2, "handleSaveWhiteList exception: " + localJSONException.getMessage());
-            }
+            localObject2 = new ajym(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, new ajyl(this));
+            this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new SoftReference(localObject2));
           }
-        }
-        QLog.d(".troop.troop_topic.TroopTopicMgr", 2, QLog.getStackTraceString(paramDownloadTask));
-      }
-      catch (IOException paramDownloadTask)
-      {
-        if (!QLog.isColorLevel()) {
-          return;
+          return localObject2;
         }
       }
-    }
-    else if (QLog.isColorLevel())
-    {
-      QLog.d(".troop.troop_topic.TroopTopicMgr", 2, "errorCode = " + paramDownloadTask.jdField_a_of_type_Int);
+      Object localObject1 = null;
     }
   }
   
-  public boolean onStart(DownloadTask paramDownloadTask)
+  public FullMessageSearchResult a(String paramString)
   {
-    return super.onStart(paramDownloadTask);
+    return a(paramString).b();
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.FullMessageSearch", 2, "stopSearch " + this.jdField_a_of_type_JavaUtilHashMap.size());
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject2 = (SoftReference)localIterator.next();
+        if (localObject2 != null)
+        {
+          localObject2 = (ajym)((SoftReference)localObject2).get();
+          if (localObject2 != null) {
+            ((ajym)localObject2).b(2);
+          }
+        }
+      }
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.FullMessageSearch", 2, "pauseSearch " + paramString);
+    }
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+      {
+        paramString = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+        if (paramString != null)
+        {
+          paramString = (ajym)paramString.get();
+          if (paramString != null) {
+            paramString.a();
+          }
+          return;
+        }
+      }
+      paramString = null;
+    }
+  }
+  
+  public FullMessageSearchResult b(String paramString)
+  {
+    return a(paramString).c();
+  }
+  
+  public void onDestroy()
+  {
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajyk
  * JD-Core Version:    0.7.0.1
  */

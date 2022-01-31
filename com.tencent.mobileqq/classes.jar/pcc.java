@@ -1,26 +1,56 @@
-import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
-import com.tencent.biz.troop.VideoCombineHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.OnChildAttachStateChangeListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeVideoView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.polymeric.ProteusRecycleView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 class pcc
-  extends ExecuteBinResponseCallback
+  implements RecyclerView.OnChildAttachStateChangeListener
 {
-  pcc(pbw parampbw, pcg parampcg) {}
+  pcc(pbz parampbz) {}
   
-  public void a(String paramString)
+  public void onChildViewAttachedToWindow(View paramView)
   {
-    if (QLog.isColorLevel())
+    if ((paramView instanceof Container))
     {
-      QLog.w(".troop.trace_video_combine", 2, "concatMediaByTs change ts onSuccess: " + paramString);
-      QLog.d(".troop.trace_video_combine", 2, "convertToTsTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Pbw.a.a));
+      if (pbz.a(this.a) != null)
+      {
+        int j = pbz.a(this.a).getChildCount();
+        int i = 0;
+        while (i < j)
+        {
+          Iterator localIterator = ((Container)pbz.a(this.a).getChildAt(i)).getViewIdMapping().entrySet().iterator();
+          while (localIterator.hasNext())
+          {
+            Object localObject = (Map.Entry)localIterator.next();
+            if ((((Map.Entry)localObject).getValue() instanceof paj))
+            {
+              localObject = (paj)((Map.Entry)localObject).getValue();
+              if ((((paj)localObject).getNativeView() instanceof NativeVideoView))
+              {
+                localObject = (NativeVideoView)((paj)localObject).getNativeView();
+                if (localObject != null) {
+                  ((NativeVideoView)localObject).setVideoPlayListener(new pcd(this));
+                }
+              }
+            }
+          }
+          i += 1;
+        }
+      }
+      omf.a((Container)paramView);
     }
-    this.jdField_a_of_type_Pbw.a.a = System.currentTimeMillis();
   }
   
-  public void b(String paramString)
+  public void onChildViewDetachedFromWindow(View paramView)
   {
-    QLog.w(".troop.VideoCombineHelper", 1, "concatMediaByTs change ts onSuccess: " + paramString);
-    this.jdField_a_of_type_Pcg.b(paramString);
+    if ((paramView instanceof Container)) {
+      omf.b((Container)paramView);
+    }
   }
 }
 

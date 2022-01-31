@@ -1,73 +1,31 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipListPb.RspBody;
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.arcard.ARCardObserver;
-import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 
 public class aatq
-  extends ARCardObserver
+  extends VasQuickUpdateManager.CallBacker
 {
-  public aatq(ARGreetingCardListManager paramARGreetingCardListManager) {}
+  public aatq(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void a(int paramInt, ARRelationShipListPb.RspBody paramRspBody)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    boolean bool = false;
-    ARGreetingCardListManager.a(this.a, false);
-    if (paramInt == 0)
+    if ((VipProfileCardDiyActivity.a(paramLong, paramString1, this.a.a.a.diyTextFontId)) && (paramInt1 == 0))
     {
-      try
-      {
-        if ((ARGreetingCardListManager.b(this.a) == 0) && (ARGreetingCardListManager.c(this.a) == 0))
-        {
-          ARGreetingCardListManager.a(this.a, paramRspBody.uint32_total_send_count.get());
-          ARGreetingCardListManager.b(this.a, paramRspBody.uint32_total_recv_count.get());
-        }
-        ARGreetingCardListManager.a(this.a, paramRspBody.bytes_rsp_page_cookies.get().toByteArray());
-        ARGreetingCardListManager localARGreetingCardListManager = this.a;
-        if (paramRspBody.uint32_is_end.get() == 1) {
-          bool = true;
-        }
-        ARGreetingCardListManager.b(localARGreetingCardListManager, bool);
-        QLog.d("ARGreetingCardListManager", 2, String.format("onGetARRelationShipList mTotalSendCount=%s mTotalReceiveCount=%s mRequestEnd=%s", new Object[] { Integer.valueOf(ARGreetingCardListManager.b(this.a)), Integer.valueOf(ARGreetingCardListManager.c(this.a)), Boolean.valueOf(ARGreetingCardListManager.b(this.a)) }));
-        ARGreetingCardListManager.a(this.a, paramRspBody.rpt_send_recv_share_list);
-      }
-      catch (Exception paramRspBody)
-      {
-        for (;;)
-        {
-          QLog.d("ARGreetingCardListManager", 1, "onGetARRelationShipList fail.", paramRspBody);
-        }
-      }
-      if ((ARGreetingCardListManager.a(this.a) != null) && (ARGreetingCardListManager.a(this.a) != null) && (ARGreetingCardListManager.a(this.a).isResume()))
-      {
-        ARGreetingCardListManager.a(this.a).a(ARGreetingCardListManager.a(this.a));
-        ARGreetingCardListManager.a(this.a).a.sendEmptyMessage(307);
-      }
+      paramString1 = this.a.b.obtainMessage();
+      paramString1.what = 5;
+      paramString1.obj = this.a.a.a;
+      paramString1.arg1 = 0;
+      paramString1.arg2 = 17;
+      this.a.b.sendMessage(paramString1);
+      paramVasQuickUpdateManager.removeCallBacker(this);
     }
-    do
-    {
-      do
-      {
-        return;
-        QLog.e("ARGreetingCardListManager", 1, String.format("onGetARRelationShipList fail! retCode=0x%X", new Object[] { Integer.valueOf(paramInt) }));
-      } while ((ARGreetingCardListManager.a(this.a) == null) || (ARGreetingCardListManager.a(this.a) == null) || (!ARGreetingCardListManager.a(this.a).isResume()));
-      if (ARGreetingCardListManager.d(this.a) == 0)
-      {
-        ARGreetingCardListManager.a(this.a).a(false, ARGreetingCardListManager.a(this.a));
-        return;
-      }
-    } while (ARGreetingCardListManager.d(this.a) != 1);
-    ARGreetingCardListManager.a(this.a).c(false, ARGreetingCardListManager.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aatq
  * JD-Core Version:    0.7.0.1
  */

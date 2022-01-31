@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.leba.LebaFeedsVideoPlayController;
-import com.tencent.mobileqq.leba.LebaFeedsVideoPlayer;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class aehe
-  implements Runnable
+class aehe
+  implements Animation.AnimationListener
 {
-  public aehe(LebaFeedsVideoPlayController paramLebaFeedsVideoPlayController, LebaFeedsVideoPlayer paramLebaFeedsVideoPlayer) {}
+  aehe(aegy paramaegy) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayer.d();
+    this.a.W = false;
+    this.a.af = false;
+    this.a.d(this.a.o);
+    this.a.s = 1;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aehe
  * JD-Core Version:    0.7.0.1
  */

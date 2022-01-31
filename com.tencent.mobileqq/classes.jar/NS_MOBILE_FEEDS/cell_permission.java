@@ -9,8 +9,8 @@ import java.util.Map;
 public final class cell_permission
   extends JceStruct
 {
-  static Map cache_map_permission_msg = new HashMap();
-  public Map map_permission_msg;
+  static Map<Integer, String> cache_map_permission_msg = new HashMap();
+  public Map<Integer, String> map_permission_msg;
   public String permission_info = "";
   public int permission_mask;
   public String permission_tips = "";
@@ -24,7 +24,7 @@ public final class cell_permission
   
   public cell_permission() {}
   
-  public cell_permission(String paramString1, int paramInt, String paramString2, byte paramByte, String paramString3, Map paramMap)
+  public cell_permission(String paramString1, int paramInt, String paramString2, byte paramByte, String paramString3, Map<Integer, String> paramMap)
   {
     this.permission_info = paramString1;
     this.permission_mask = paramInt;
@@ -64,7 +64,7 @@ public final class cell_permission
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_permission
  * JD-Core Version:    0.7.0.1
  */

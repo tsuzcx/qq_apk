@@ -10,15 +10,15 @@ public final class FacadeView
 {
   static CustomFileInfo cache_stFileInfo;
   static ProfileRect cache_stProfileRect;
-  static ArrayList cache_vecConfRect;
+  static ArrayList<ConfigRect> cache_vecConfRect;
   public int iNeedProfileAdjust;
   public CustomFileInfo stFileInfo;
   public ProfileRect stProfileRect;
-  public ArrayList vecConfRect;
+  public ArrayList<ConfigRect> vecConfRect;
   
   public FacadeView() {}
   
-  public FacadeView(CustomFileInfo paramCustomFileInfo, ArrayList paramArrayList, ProfileRect paramProfileRect, int paramInt)
+  public FacadeView(CustomFileInfo paramCustomFileInfo, ArrayList<ConfigRect> paramArrayList, ProfileRect paramProfileRect, int paramInt)
   {
     this.stFileInfo = paramCustomFileInfo;
     this.vecConfRect = paramArrayList;

@@ -1,31 +1,81 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.widget.QQToast;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_COMM.COMM.Entry;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.biz.videostory.network.request.SubscribePersonalDetailRequest;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import mqq.app.AppRuntime;
 
-class vvt
-  implements Runnable
+public class vvt
 {
-  vvt(vvr paramvvr, int paramInt) {}
+  private static volatile CertifiedAccountMeta.StUser a;
   
-  public void run()
+  public static CertifiedAccountMeta.StUser a()
   {
-    ArkDebugChatPie.a(this.jdField_a_of_type_Vvr.a.a);
-    if (this.jdField_a_of_type_Int == 1) {}
-    for (String str = "(监听超时)";; str = "")
+    try
     {
-      ((ArkAppCenter)this.jdField_a_of_type_Vvr.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(120)).a().f();
-      QQToast.a(this.jdField_a_of_type_Vvr.a.a.jdField_a_of_type_AndroidContentContext, String.format("连接已经关闭%s...", new Object[] { str }), 0).a();
-      ArkDispatchTask.getInstance().postToMainThreadDelayed(new vvu(this), 60L);
+      if (a == null)
+      {
+        localObject1 = new COMM.StCommonExt();
+        COMM.Entry localEntry = new COMM.Entry();
+        localEntry.key.set("user_info");
+        localEntry.value.set("1");
+        ((COMM.StCommonExt)localObject1).mapInfo.add(localEntry);
+        if (VSNetworkHelper.a() != null) {
+          VSNetworkHelper.a().a(new SubscribePersonalDetailRequest(BaseApplicationImpl.getApplication().getRuntime().getAccount(), (COMM.StCommonExt)localObject1), new vvu());
+        }
+      }
+      Object localObject1 = a;
+      return localObject1;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
+    finally {}
+  }
+  
+  public static void a()
+  {
+    try
+    {
+      a = null;
       return;
     }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static void a(CertifiedAccountMeta.StUser paramStUser)
+  {
+    if (a == null) {
+      a = new CertifiedAccountMeta.StUser();
+    }
+    if ((paramStUser == null) || (!a.id.get().equals(paramStUser.id.get()))) {
+      return;
+    }
+    a.id.set(paramStUser.id.get());
+    a.nick.set(paramStUser.nick.get());
+    a.icon.set(paramStUser.icon.get());
+    a.followState.set(paramStUser.followState.get());
+    a.attr.set(paramStUser.attr.get());
+    a.youZhan.set(paramStUser.youZhan.get());
+    a.type.set(paramStUser.type.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vvt
  * JD-Core Version:    0.7.0.1
  */

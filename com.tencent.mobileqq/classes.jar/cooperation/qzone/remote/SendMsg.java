@@ -4,13 +4,13 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anfy;
+import bgby;
 import com.tencent.qphone.base.util.QLog;
 
 public class SendMsg
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new anfy();
+  public static final Parcelable.Creator<SendMsg> CREATOR = new bgby();
   private static final String tag = "SendMsg";
   public IActionListener actionListener;
   public final Bundle extraData = new Bundle();
@@ -35,49 +35,49 @@ public class SendMsg
     // Byte code:
     //   0: aload_0
     //   1: aload_1
-    //   2: invokevirtual 61	android/os/Parcel:readInt	()I
-    //   5: putfield 63	cooperation/qzone/remote/SendMsg:requestId	I
+    //   2: invokevirtual 62	android/os/Parcel:readInt	()I
+    //   5: putfield 64	cooperation/qzone/remote/SendMsg:requestId	I
     //   8: aload_0
     //   9: aload_1
-    //   10: invokevirtual 67	android/os/Parcel:readString	()Ljava/lang/String;
-    //   13: putfield 51	cooperation/qzone/remote/SendMsg:serviceCmd	Ljava/lang/String;
+    //   10: invokevirtual 68	android/os/Parcel:readString	()Ljava/lang/String;
+    //   13: putfield 52	cooperation/qzone/remote/SendMsg:serviceCmd	Ljava/lang/String;
     //   16: aload_0
     //   17: aload_1
-    //   18: invokevirtual 71	android/os/Parcel:readLong	()J
-    //   21: putfield 43	cooperation/qzone/remote/SendMsg:timeout	J
+    //   18: invokevirtual 72	android/os/Parcel:readLong	()J
+    //   21: putfield 44	cooperation/qzone/remote/SendMsg:timeout	J
     //   24: aload_0
-    //   25: getfield 39	cooperation/qzone/remote/SendMsg:extraData	Landroid/os/Bundle;
-    //   28: invokevirtual 74	android/os/Bundle:clear	()V
+    //   25: getfield 40	cooperation/qzone/remote/SendMsg:extraData	Landroid/os/Bundle;
+    //   28: invokevirtual 75	android/os/Bundle:clear	()V
     //   31: aload_1
     //   32: aload_0
-    //   33: invokevirtual 78	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   36: invokevirtual 84	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
-    //   39: invokevirtual 88	android/os/Parcel:readBundle	(Ljava/lang/ClassLoader;)Landroid/os/Bundle;
+    //   33: invokevirtual 79	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   36: invokevirtual 85	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
+    //   39: invokevirtual 89	android/os/Parcel:readBundle	(Ljava/lang/ClassLoader;)Landroid/os/Bundle;
     //   42: astore_2
     //   43: aload_2
-    //   44: invokestatic 94	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   47: invokestatic 100	cooperation/qzone/QzonePluginProxyActivity:a	(Landroid/content/Context;)Ljava/lang/ClassLoader;
-    //   50: invokevirtual 104	android/os/Bundle:setClassLoader	(Ljava/lang/ClassLoader;)V
+    //   44: invokestatic 95	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   47: invokestatic 101	cooperation/qzone/QzonePluginProxyActivity:a	(Landroid/content/Context;)Ljava/lang/ClassLoader;
+    //   50: invokevirtual 105	android/os/Bundle:setClassLoader	(Ljava/lang/ClassLoader;)V
     //   53: aload_0
-    //   54: getfield 39	cooperation/qzone/remote/SendMsg:extraData	Landroid/os/Bundle;
+    //   54: getfield 40	cooperation/qzone/remote/SendMsg:extraData	Landroid/os/Bundle;
     //   57: aload_2
-    //   58: invokevirtual 108	android/os/Bundle:putAll	(Landroid/os/Bundle;)V
+    //   58: invokevirtual 109	android/os/Bundle:putAll	(Landroid/os/Bundle;)V
     //   61: aload_0
     //   62: aload_1
-    //   63: invokevirtual 112	android/os/Parcel:readStrongBinder	()Landroid/os/IBinder;
-    //   66: invokestatic 118	cooperation/qzone/remote/IActionListener$Stub:asInterface	(Landroid/os/IBinder;)Lcooperation/qzone/remote/IActionListener;
-    //   69: putfield 120	cooperation/qzone/remote/SendMsg:actionListener	Lcooperation/qzone/remote/IActionListener;
+    //   63: invokevirtual 113	android/os/Parcel:readStrongBinder	()Landroid/os/IBinder;
+    //   66: invokestatic 119	cooperation/qzone/remote/IActionListener$Stub:asInterface	(Landroid/os/IBinder;)Lcooperation/qzone/remote/IActionListener;
+    //   69: putfield 121	cooperation/qzone/remote/SendMsg:actionListener	Lcooperation/qzone/remote/IActionListener;
     //   72: return
     //   73: astore_3
     //   74: aload_3
-    //   75: invokevirtual 123	java/lang/Exception:printStackTrace	()V
+    //   75: invokevirtual 124	java/lang/Exception:printStackTrace	()V
     //   78: goto -25 -> 53
     //   81: astore_1
-    //   82: ldc 12
+    //   82: ldc 13
     //   84: iconst_1
-    //   85: ldc 125
+    //   85: ldc 126
     //   87: aload_1
-    //   88: invokestatic 131	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   88: invokestatic 132	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   91: aload_1
     //   92: athrow
     // Local variable table:

@@ -1,30 +1,40 @@
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.pic.PicPreDownloader;
-import com.tencent.qphone.base.util.QLog;
-
-public class agpp
-  implements Runnable
+public abstract class agpp
+  extends batl
 {
-  public agpp(PicPreDownloader paramPicPreDownloader, MessageForPic paramMessageForPic, int paramInt) {}
+  private batl a;
   
-  public void run()
+  public agpp(batl parambatl)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PIC_TAG_PRELOAD", 2, "productAysnc(): cannot predownload");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, -1);
+    this.a = parambatl;
+  }
+  
+  public void onDoneFile(batm parambatm)
+  {
+    super.onDoneFile(parambatm);
+    if (this.a != null) {
+      this.a.onDoneFile(parambatm);
     }
-    while ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic == null) || (!(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic instanceof MessageForPic))) {
-      return;
+  }
+  
+  public void onProgress(batm parambatm)
+  {
+    super.onProgress(parambatm);
+    if (this.a != null) {
+      this.a.onProgress(parambatm);
     }
-    this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, this.jdField_a_of_type_Int, 5);
+  }
+  
+  public boolean onStart(batm parambatm)
+  {
+    if (this.a != null) {
+      this.a.onStart(parambatm);
+    }
+    return super.onStart(parambatm);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agpp
  * JD-Core Version:    0.7.0.1
  */

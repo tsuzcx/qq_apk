@@ -5,20 +5,18 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ScrollView;
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.mobileqq.utils.ViewUtils;
-import qqw;
-import qqx;
-import qqy;
-import qqz;
+import bajq;
+import yny;
+import yql;
+import yqm;
 
 public class GdtCanvasScrollView
   extends ScrollView
 {
   public static String a;
   public int a;
-  public GdtCanvasScrollView.OnScrollEventListener a;
   private Runnable jdField_a_of_type_JavaLangRunnable;
+  public yqm a;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -39,7 +37,7 @@ public class GdtCanvasScrollView
   public GdtCanvasScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = ViewUtils.b(25.0F);
+    this.jdField_a_of_type_Int = bajq.b(25.0F);
     a();
   }
   
@@ -47,8 +45,8 @@ public class GdtCanvasScrollView
   {
     setVerticalScrollBarEnabled(false);
     setVerticalFadingEdgeEnabled(false);
-    this.jdField_a_of_type_JavaLangRunnable = new qqw(this);
-    setOnTouchListener(new qqx(this));
+    this.jdField_a_of_type_JavaLangRunnable = new GdtCanvasScrollView.1(this);
+    setOnTouchListener(new yql(this));
   }
   
   private boolean a(MotionEvent paramMotionEvent)
@@ -57,15 +55,15 @@ public class GdtCanvasScrollView
     paramMotionEvent = getChildAt(0);
     if (this.jdField_b_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasScrollView$OnScrollEventListener != null) {
-        this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasScrollView$OnScrollEventListener.a(this);
+      if (this.jdField_a_of_type_Yqm != null) {
+        this.jdField_a_of_type_Yqm.a(this);
       }
       if ((this.c - i > this.jdField_a_of_type_Int) && (paramMotionEvent != null) && (paramMotionEvent.getMeasuredHeight() <= this.d + getHeight() + (this.e - i)) && (!this.jdField_a_of_type_Boolean))
       {
         this.jdField_a_of_type_Boolean = true;
-        post(new qqy(this));
-        if (this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasScrollView$OnScrollEventListener != null) {
-          this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasScrollView$OnScrollEventListener.a();
+        post(new GdtCanvasScrollView.3(this));
+        if (this.jdField_a_of_type_Yqm != null) {
+          this.jdField_a_of_type_Yqm.a();
         }
       }
       do
@@ -75,9 +73,9 @@ public class GdtCanvasScrollView
           break;
         }
         this.jdField_a_of_type_Boolean = true;
-        post(new qqz(this));
-      } while (this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasScrollView$OnScrollEventListener == null);
-      this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasScrollView$OnScrollEventListener.b();
+        post(new GdtCanvasScrollView.4(this));
+      } while (this.jdField_a_of_type_Yqm == null);
+      this.jdField_a_of_type_Yqm.b();
       return true;
     }
     return false;
@@ -110,7 +108,7 @@ public class GdtCanvasScrollView
       {
         for (;;)
         {
-          GdtLog.d(jdField_a_of_type_JavaLangString, "onInterceptTouchEvent", localThrowable);
+          yny.d(jdField_a_of_type_JavaLangString, "onInterceptTouchEvent", localThrowable);
           continue;
           this.e = i;
           this.jdField_b_of_type_Int = j;
@@ -127,7 +125,7 @@ public class GdtCanvasScrollView
   protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasScrollView$OnScrollEventListener.a(this);
+    this.jdField_a_of_type_Yqm.a(this);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -146,7 +144,7 @@ public class GdtCanvasScrollView
       catch (Throwable paramMotionEvent)
       {
         boolean bool;
-        GdtLog.d(jdField_a_of_type_JavaLangString, "onTouchEvent error", paramMotionEvent);
+        yny.d(jdField_a_of_type_JavaLangString, "onTouchEvent error", paramMotionEvent);
       }
       bool = a(paramMotionEvent);
       this.e = ((int)paramMotionEvent.getY());
@@ -164,7 +162,7 @@ public class GdtCanvasScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.framework.GdtCanvasScrollView
  * JD-Core Version:    0.7.0.1
  */

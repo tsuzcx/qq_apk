@@ -1,72 +1,115 @@
-import android.os.FileObserver;
-import android.os.Handler;
-import android.util.Pair;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.ViolaBizLibData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.QZoneStartupMonitor;
+import java.io.File;
 
 public class amzs
-  extends FileObserver
+  extends amza
 {
-  public amzs(QZoneStartupMonitor paramQZoneStartupMonitor, String paramString, int paramInt)
+  public static final String[] a = { "libviola.so" };
+  
+  public amzs(QQAppInterface paramQQAppInterface)
   {
-    super(paramString, paramInt);
+    super("android.qq.readinjoy.viola_biz_810", paramQQAppInterface);
   }
   
-  public void onEvent(int paramInt, String paramString)
+  public static void a()
   {
-    if (!"qzone_startup_monitor".equals(paramString))
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("QZoneStartupMonitor", 2, "path:" + paramString + ",非监控文件：" + "qzone_startup_monitor");
+      localObject = (amyp)((QQAppInterface)localObject).getManager(77);
+      if (localObject != null)
+      {
+        localObject = (amzs)((amyp)localObject).a("android.qq.readinjoy.viola_biz_810");
+        if (localObject != null)
+        {
+          ((amzs)localObject).a(true);
+          QLog.i("viola.ViolaBizLibHandler", 1, "restartDownloadLib");
+        }
       }
-      return;
     }
-    switch (paramInt & 0xFFF)
+  }
+  
+  public static boolean i()
+  {
+    String str = oho.a();
+    int i = 0;
+    while (i < a.length)
     {
-    default: 
-      return;
-    case 256: 
-      paramInt = QzoneConfig.getInstance().getConfig("QZoneSetting", "startupFailTimeout", 60000);
-      QZoneStartupMonitor.a(this.a, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneStartupMonitor", 2, "如果" + paramInt + "ms 后，未收到启动成功的消息，则认为启动失败");
+      File localFile = new File(str, a[i]);
+      if ((localFile == null) || (!localFile.exists()) || (!localFile.isFile())) {
+        return false;
       }
-      QZoneStartupMonitor.a(this.a).sendEmptyMessageDelayed(1, paramInt);
-      return;
+      i += 1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneStartupMonitor", 2, "启动成功，清理超时，并校验odex和上报");
+    return true;
+  }
+  
+  public int a()
+  {
+    return 10079;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return ViolaBizLibData.class;
+  }
+  
+  public String a()
+  {
+    return "viola.ViolaBizLibHandler";
+  }
+  
+  public void a(String paramString)
+  {
+    QLog.i("viola.ViolaBizLibHandler", 1, "[doOnDownloadSuccess]:" + paramString);
+    XmlData localXmlData = a();
+    if (localXmlData != null) {
+      QLog.i("viola.ViolaBizLibHandler", 1, "version:" + localXmlData.Version);
     }
-    QZoneStartupMonitor.a(this.a).removeMessages(1);
-    paramString = QZoneStartupMonitor.a(BaseApplicationImpl.getApplication(), "qzone_plugin.apk");
-    if (paramString != null) {}
-    for (paramInt = ((Integer)paramString.first).intValue();; paramInt = 0)
+    if (new File(paramString).exists())
     {
-      QZoneStartupMonitor.a(this.a, true);
-      QZoneStartupMonitor.a(this.a, paramInt, QZoneStartupMonitor.a(this.a), LocalMultiProcConfig.getInt("key_recovery_count", 0));
-      LocalMultiProcConfig.putInt("key_recovery_count", 0);
-      return;
+      if (oho.a(paramString)) {
+        break label124;
+      }
+      if (localXmlData != null)
+      {
+        localXmlData.loadState = 0;
+        localXmlData.Version = 0;
+        amyo.a(localXmlData, new String[] { "loadState", "Version" });
+      }
+      QLog.e("viola.ViolaBizLibHandler", 1, "[doOnDownloadSuccess],unzip android.qq.readinjoy.viola_biz_810 lib failed!");
     }
+    label124:
+    do
+    {
+      return;
+      paramString = BaseApplicationImpl.getApplication().getSharedPreferences("readinjoy_web_render_sp", 0);
+      if (paramString != null) {
+        paramString.edit().putString("res_name", "android.qq.readinjoy.viola_biz_810").commit();
+      }
+    } while (!amzt.i());
+    ohi.a("biz doOnDownloadSuccess");
   }
   
-  public void startWatching()
+  public boolean a()
   {
-    super.startWatching();
-    QLog.i("QZoneStartupMonitor", 1, "startWatching");
+    return true;
   }
   
-  public void stopWatching()
+  public String b()
   {
-    super.stopWatching();
-    QLog.i("QZoneStartupMonitor", 1, "stopWatching");
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amzs
  * JD-Core Version:    0.7.0.1
  */

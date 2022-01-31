@@ -1,38 +1,30 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.photo.PeakService;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.qphone.base.util.QLog;
+import UserGrowth.stSimpleMetaFeed;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
 
 public class rwt
-  implements Runnable
+  implements rwn
 {
-  public rwt(BaseChatPie paramBaseChatPie) {}
+  public rwt(WSRecommendFragment paramWSRecommendFragment) {}
   
-  public void run()
+  public void a(bequ<stSimpleMetaFeed> parambequ)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, "start preload peak process");
-    }
-    Intent localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, PeakService.class);
-    if (VideoEnvironment.d(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-      localIntent.putExtra("ServiceAction", 2);
-    }
-    try
+    int i;
+    if (WSRecommendFragment.d(this.a))
     {
-      this.a.jdField_a_of_type_AndroidContentContext.startService(localIntent);
+      i = parambequ.getAdapterPosition();
+      parambequ = (stSimpleMetaFeed)WSRecommendFragment.a(this.a).a(i);
+      if (parambequ != null) {}
+    }
+    else
+    {
       return;
     }
-    catch (Exception localException)
-    {
-      QLog.e("Q.aio.BaseChatPie", 1, "onShow_otherThings startService ", localException);
-    }
+    WSRecommendFragment.a(this.a, parambequ, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rwt
  * JD-Core Version:    0.7.0.1
  */

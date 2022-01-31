@@ -1,33 +1,58 @@
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.extendfriend.limitchat.ExtendFriendLimitChatMatchFragment;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.QIMCaptureController;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPoiPickerCallback;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import java.lang.ref.WeakReference;
 
 public class ansu
-  implements EditVideoPoiPickerCallback
+  extends Handler
 {
-  public ansu(QIMCaptureController paramQIMCaptureController) {}
+  public static int a;
+  public static int b = 2;
+  private WeakReference<ExtendFriendLimitChatMatchFragment> a;
   
-  public void a() {}
-  
-  public void a(TroopBarPOI paramTroopBarPOI)
+  static
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CaptureController", 2, "onSelectLocation " + paramTroopBarPOI);
-    }
-    this.a.a.setLocation(paramTroopBarPOI);
-    if (paramTroopBarPOI != null) {}
-    for (boolean bool = true;; bool = false)
+    jdField_a_of_type_Int = 1;
+  }
+  
+  public ansu(ExtendFriendLimitChatMatchFragment paramExtendFriendLimitChatMatchFragment)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramExtendFriendLimitChatMatchFragment);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    if (paramMessage.what == jdField_a_of_type_Int)
     {
-      dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage.b = bool;
-      return;
+      paramMessage = (ExtendFriendLimitChatMatchFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramMessage != null)
+      {
+        QLog.e("ExtendFriendLimitChatMatchFragment", 1, "limitchat matching time out from ui");
+        ExtendFriendLimitChatMatchFragment.a(paramMessage, true);
+      }
     }
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+        } while (paramMessage.what != b);
+        paramMessage = (ExtendFriendLimitChatMatchFragment)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      } while (paramMessage == null);
+      ExtendFriendLimitChatMatchFragment.b(paramMessage);
+      paramMessage = paramMessage.getActivity();
+    } while (paramMessage == null);
+    paramMessage.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ansu
  * JD-Core Version:    0.7.0.1
  */

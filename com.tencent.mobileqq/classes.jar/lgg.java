@@ -1,28 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-
-class lgg
-  implements View.OnClickListener
+public class lgg
 {
-  lgg(lgf paramlgf, FrameLayout paramFrameLayout) {}
+  private float jdField_a_of_type_Float = 1.0F;
+  private int jdField_a_of_type_Int;
   
-  public void onClick(View paramView)
+  public float a()
   {
-    this.jdField_a_of_type_Lgf.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a.a();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(this.jdField_a_of_type_Lgf.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a);
-    if (260 == this.jdField_a_of_type_Lgf.jdField_a_of_type_Int) {
-      SharedPreUtils.u(this.jdField_a_of_type_Lgf.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity, this.jdField_a_of_type_Lgf.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.app.getCurrentAccountUin(), null);
+    return this.jdField_a_of_type_Float;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (paramFloat >= 0.0F) {}
+    for (boolean bool = true;; bool = false)
+    {
+      beeo.a(bool);
+      this.jdField_a_of_type_Float = paramFloat;
+      return;
     }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lgg
  * JD-Core Version:    0.7.0.1
  */

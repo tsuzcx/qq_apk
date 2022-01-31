@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class ilive$iLiveRequest
-  extends MessageMicro
+  extends MessageMicro<iLiveRequest>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field auth_appid = PBField.initUInt64(0L);
@@ -51,7 +51,7 @@ public final class ilive$iLiveRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.ilive.iLiveRequest
  * JD-Core Version:    0.7.0.1
  */

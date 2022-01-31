@@ -1,49 +1,36 @@
-import android.graphics.Color;
-import android.os.Message;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.apollo.script.SpriteCommFunc;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.database.LiveVideoEntry;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.ArrayList;
+import java.util.List;
 
 public class spj
-  implements ActionSheet.OnButtonClickListener
+  extends sfo
 {
-  public spj(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, ActionSheet paramActionSheet) {}
+  public int a;
+  public long a;
+  public LiveVideoEntry a;
+  public String a;
+  public List<StoryVideoItem> a;
+  public boolean a;
+  public long b;
+  public String b;
+  public boolean b;
+  public String c;
+  public boolean c;
   
-  public void OnClick(View paramView, int paramInt)
+  public spj()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app.a().a(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), 3000);
-      this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app.a().e(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), 3000);
-      SpriteCommFunc.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, "chat_history_confirm_del_msg");
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app.getHandler(Conversation.class);
-      Message localMessage = paramView.obtainMessage(1017);
-      localMessage.obj = DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity);
-      localMessage.arg1 = 3000;
-      paramView.sendMessage(localMessage);
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity, 2, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.getString(2131434501), 0).a();
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a != null) {
-        ((TextView)this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a.findViewById(2131363397)).setTextColor(Color.parseColor("#cccccc"));
-      }
-    }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public String toString()
+  {
+    return "PlayerVideoListEvent{context='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uid='" + this.jdField_b_of_type_JavaLangString + '\'' + ", label='" + this.jdField_c_of_type_JavaLangString + '\'' + ", topicId=" + this.jdField_a_of_type_Long + ", mStoryVideoItems=" + this.jdField_a_of_type_JavaUtilList + ", totalTime=" + this.jdField_b_of_type_Long + ", videoCount=" + this.jdField_a_of_type_Int + ", isFromCache=" + this.jdField_a_of_type_Boolean + ", isEnd=" + this.jdField_b_of_type_Boolean + ", interactStatus=" + this.jdField_c_of_type_Boolean + ", liveVideoInfo=" + this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLiveVideoEntry + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     spj
  * JD-Core Version:    0.7.0.1
  */

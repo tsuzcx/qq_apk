@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.biz.qqstory.view.widget.FullScreenKeyBoardLayout android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:mobileqq="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/ixl" android:layout_width="fill_parent" android:layout_height="55.0dip">
+        <TextView android:textSize="14.0dip" android:textColor="@android:color/white" android:gravity="center_vertical" android:id="@id/jbi" android:layout_width="wrap_content" android:layout_height="55.0dip" android:layout_marginLeft="12.5dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@android:color/white" android:gravity="center_vertical" android:id="@id/jbl" android:layout_width="wrap_content" android:layout_height="55.0dip" android:layout_marginLeft="37.0dip" android:layout_toRightOf="@id/jbi" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/az7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:src="@drawable/fcs" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <View android:background="#55ffffff" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
+        <com.tencent.biz.qqstory.view.widget.ViewPagerTapBlockView android:id="@id/jbj" android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_alignParentBottom="true" mobileqq:blockColor="#ffffffff" mobileqq:blockHeight="3.0dip" mobileqq:blockOffset="12.5dip" mobileqq:blockWidth="56.0dip" />
+    </RelativeLayout>
+    <android.support.v4.view.ViewPager android:id="@id/bd6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/ixl" />
+</com.tencent.biz.qqstory.view.widget.FullScreenKeyBoardLayout>

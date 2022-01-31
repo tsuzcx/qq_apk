@@ -1,61 +1,126 @@
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.MemoryInfoEntry;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import com.tribe.async.dispatch.Dispatcher;
 import java.util.List;
-import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
 class ugn
-  implements Runnable
+  extends SimpleJob<Object>
 {
-  ugn(ugj paramugj, List paramList) {}
-  
-  public void run()
+  ugn(ugl paramugl, String paramString, VideoCollectionItem paramVideoCollectionItem)
   {
-    Object localObject1 = (TroopManager)this.jdField_a_of_type_Ugj.a.app.getManager(51);
-    TroopInfo localTroopInfo = ((TroopManager)localObject1).a(this.jdField_a_of_type_Ugj.a.b);
-    if (localTroopInfo == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (int i = 0;; i = this.jdField_a_of_type_JavaUtilList.size())
+    super(paramString);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    long l = System.currentTimeMillis();
+    paramJobContext = (spt)sqg.a(19);
+    MemoryInfoEntry localMemoryInfoEntry = paramJobContext.a(swm.a(this.jdField_a_of_type_Ugl.jdField_b_of_type_JavaLangString));
+    boolean bool1;
+    boolean bool2;
+    label56:
+    List localList;
+    if ((localMemoryInfoEntry != null) && (localMemoryInfoEntry.isEnd == 1))
     {
-      if (i == 1)
-      {
-        Object localObject2 = (oidb_0x899.memberlist)this.jdField_a_of_type_JavaUtilList.get(0);
-        if ((localObject2 == null) || (!((oidb_0x899.memberlist)localObject2).uint64_member_uin.has())) {
-          break;
-        }
-        localObject2 = String.valueOf(((oidb_0x899.memberlist)localObject2).uint64_member_uin.get());
-        if ((localObject2 != null) && (!"".equals(((String)localObject2).trim()))) {
-          localTroopInfo.troopowneruin = ((String)localObject2).trim();
-        }
+      bool1 = true;
+      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem != null) {
+        break label250;
       }
-      ((TroopManager)localObject1).b(localTroopInfo);
-      localObject1 = (TroopHandler)this.jdField_a_of_type_Ugj.a.app.a(20);
-      if (localObject1 == null) {
-        break;
+      bool2 = true;
+      if (this.jdField_a_of_type_Ugl.jdField_b_of_type_Boolean) {
+        break label414;
       }
-      try
-      {
-        ((TroopHandler)localObject1).a(Long.parseLong(this.jdField_a_of_type_Ugj.a.b), 0L, 2, 0, 0);
-        return;
+      localList = paramJobContext.a(this.jdField_a_of_type_Ugl.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem, 10L);
+      paramVarArgs = new swq(this.jdField_a_of_type_Ugl.c, new ErrorMessage());
+      paramVarArgs.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Ugl.jdField_b_of_type_JavaLangString;
+      paramVarArgs.jdField_b_of_type_Boolean = true;
+      paramVarArgs.c = bool2;
+      paramVarArgs.e = true;
+      paramVarArgs.jdField_a_of_type_Boolean = bool1;
+      paramVarArgs.jdField_a_of_type_JavaUtilList = localList;
+      if (localList.size() <= 0) {
+        break label256;
       }
-      catch (Exception localException) {}
-      if (!QLog.isColorLevel()) {
-        break;
+      paramJobContext = (VideoCollectionItem)localList.get(localList.size() - 1);
+      label177:
+      if (paramJobContext != null) {
+        break label285;
       }
-      QLog.i("TroopMemberListActivityget_troop_member", 2, localException.toString());
-      return;
+      this.jdField_a_of_type_Ugl.jdField_b_of_type_Boolean = true;
+      if (!bool2) {
+        break label261;
+      }
+      this.jdField_a_of_type_Ugl.a.a(null, 0);
+      label206:
+      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem != null) {
+        break label274;
+      }
+    }
+    label256:
+    label261:
+    label274:
+    for (paramJobContext = "null";; paramJobContext = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem.key)
+    {
+      urk.d("Q.qqstory.memories:MemoryDataPuller", "Req local data ,start key: %s , not found in db , start get from net , spend time = %d", new Object[] { paramJobContext, Long.valueOf(System.currentTimeMillis() - l) });
+      return null;
+      bool1 = false;
+      break;
+      label250:
+      bool2 = false;
+      break label56;
+      paramJobContext = null;
+      break label177;
+      this.jdField_a_of_type_Ugl.a.c();
+      break label206;
+    }
+    label285:
+    if ((localMemoryInfoEntry != null) && (paramJobContext.dbIndex >= localMemoryInfoEntry.maxCollectionIndex))
+    {
+      paramVarArgs.jdField_a_of_type_Boolean = bool1;
+      this.jdField_a_of_type_Ugl.jdField_b_of_type_Boolean = true;
+      label317:
+      sgi.a().dispatch(paramVarArgs);
+      this.jdField_a_of_type_Ugl.a(localList, false);
+      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem != null) {
+        break label397;
+      }
+      paramJobContext = "null";
+      label346:
+      if (!paramVarArgs.jdField_a_of_type_Boolean) {
+        break label408;
+      }
+    }
+    label397:
+    label408:
+    for (paramVarArgs = "true";; paramVarArgs = "false")
+    {
+      urk.d("Q.qqstory.memories:MemoryDataPuller", "Req local data ,start key: %s , isEnd = %s ,spend time = %d", new Object[] { paramJobContext, paramVarArgs, Long.valueOf(System.currentTimeMillis() - l) });
+      break;
+      paramVarArgs.jdField_a_of_type_Boolean = false;
+      break label317;
+      paramJobContext = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryModelVideoCollectionItem.key;
+      break label346;
+    }
+    label414:
+    if (bool2) {
+      this.jdField_a_of_type_Ugl.a.a(null, 0);
+    }
+    for (;;)
+    {
+      urk.d("Q.qqstory.memories:MemoryDataPuller", String.format("Req from net ,  spend time = %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) }));
+      break;
+      this.jdField_a_of_type_Ugl.a.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ugn
  * JD-Core Version:    0.7.0.1
  */

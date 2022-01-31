@@ -1,20 +1,12 @@
-import com.tencent.widget.AbsListView;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferUploadChnConfigInfo;
 
-public class amhm
+public abstract interface amhm
 {
-  private int a;
+  public abstract long a();
   
-  private amhm(AbsListView paramAbsListView) {}
+  public abstract ExcitingTransferUploadChnConfigInfo a();
   
-  public void a()
-  {
-    this.a = AbsListView.access$200(this.b);
-  }
-  
-  public boolean a()
-  {
-    return (this.b.hasWindowFocus()) && (AbsListView.access$300(this.b) == this.a);
-  }
+  public abstract boolean a();
 }
 
 

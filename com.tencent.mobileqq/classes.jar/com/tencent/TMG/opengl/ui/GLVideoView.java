@@ -8,7 +8,6 @@ import com.tencent.TMG.opengl.glrenderer.GLCanvas;
 import com.tencent.TMG.opengl.texture.BasicTexture;
 import com.tencent.TMG.opengl.texture.StringTexture;
 import com.tencent.TMG.opengl.texture.YUVTexture;
-import com.tencent.TMG.opengl.texture.YUVTexture.GLRenderListener;
 import com.tencent.TMG.opengl.utils.Utils;
 import com.tencent.TMG.utils.QLog;
 
@@ -24,18 +23,7 @@ public class GLVideoView
   private static final int RIGHT = 2;
   private static final String TAG = "GLVideoView";
   private static final int TOP = 4;
-  private Runnable loadingRunnable = new Runnable()
-  {
-    public void run()
-    {
-      GLRootView localGLRootView = GLVideoView.this.getGLRootView();
-      if (localGLRootView != null)
-      {
-        GLVideoView.this.invalidate();
-        localGLRootView.postDelayed(GLVideoView.this.loadingRunnable, 80L);
-      }
-    }
-  };
+  private Runnable loadingRunnable = new GLVideoView.2(this);
   private Context mContext;
   private boolean mDragging = false;
   int mGlVersion = -1;
@@ -67,34 +55,7 @@ public class GLVideoView
     this.mContext = paramContext;
     this.mGlVersion = Utils.getGLVersion(this.mContext);
     this.mYuvTexture = new YUVTexture(this.mContext);
-    this.mYuvTexture.setGLRenderListener(new YUVTexture.GLRenderListener()
-    {
-      public void onRenderFlush()
-      {
-        GLVideoView.this.flush();
-        GLVideoView.this.invalidate();
-      }
-      
-      public void onRenderFrame()
-      {
-        GLVideoView.this.invalidate();
-      }
-      
-      public void onRenderInfoNotify(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("GLVideoView", 0, "onRenderInfoNotify uin: " + GLVideoView.this.mIdentifier + ", mVideoSrcType: " + GLVideoView.this.mVideoSrcType + ", width: " + paramAnonymousInt1 + ", height: " + paramAnonymousInt2 + ", angle: " + paramAnonymousInt3);
-        }
-        GLVideoView.this.mYuvTexture.setTextureSize(paramAnonymousInt1, paramAnonymousInt2);
-        GLVideoView.this.invalidate();
-      }
-      
-      public void onRenderReset()
-      {
-        GLVideoView.this.flush();
-        GLVideoView.this.invalidate();
-      }
-    });
+    this.mYuvTexture.setGLRenderListener(new GLVideoView.1(this));
     this.mGraphicRenderMgr = paramGraphicRendererMgr;
   }
   
@@ -159,7 +120,6 @@ public class GLVideoView
   }
   
   protected void finalize()
-    throws Throwable
   {
     super.finalize();
     if (this.mStringTexture != null)
@@ -667,7 +627,7 @@ public class GLVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.TMG.opengl.ui.GLVideoView
  * JD-Core Version:    0.7.0.1
  */

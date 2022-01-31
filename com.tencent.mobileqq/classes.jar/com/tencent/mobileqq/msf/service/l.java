@@ -1,140 +1,82 @@
 package com.tencent.mobileqq.msf.service;
 
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.msf.core.af;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.msf.core.MsfCore;
+import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.p;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import java.util.Map;
 
-public class l
+final class l
+  extends Thread
 {
-  public static final String a = "MSF.S.Util";
+  l(long paramLong1, long paramLong2) {}
   
-  public static FromServiceMsg a(ToServiceMsg paramToServiceMsg)
+  public void run()
   {
-    FromServiceMsg localFromServiceMsg = new FromServiceMsg(paramToServiceMsg.getUin(), paramToServiceMsg.getServiceCmd());
-    localFromServiceMsg.setAppId(paramToServiceMsg.getAppId());
-    localFromServiceMsg.setAppSeq(paramToServiceMsg.getAppSeq());
-    localFromServiceMsg.setRequestSsoSeq(paramToServiceMsg.getRequestSsoSeq());
-    localFromServiceMsg.setMsfCommand(paramToServiceMsg.getMsfCommand());
-    MsfSdkUtils.addFromMsgProcessName(b(paramToServiceMsg), localFromServiceMsg);
-    return localFromServiceMsg;
-  }
-  
-  public static String a()
-  {
-    Random localRandom = new Random(System.currentTimeMillis());
-    String str = "---------";
-    int i = 0;
-    while (i < 12)
+    Object localObject = new HashMap();
+    ((HashMap)localObject).put("msfCoreCost", "" + (this.a - MsfService.serviceInitStart));
+    k localk;
+    if (MsfService.core.statReporter != null)
     {
-      str = str + String.valueOf(localRandom.nextInt(10));
-      i += 1;
+      localk = MsfService.core.statReporter;
+      if (this.b <= 2000L) {
+        break label159;
+      }
     }
-    return str;
-  }
-  
-  public static String a(FromServiceMsg paramFromServiceMsg)
-  {
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getAttributes().get("to_SenderProcessName") != null)) {
-      return (String)paramFromServiceMsg.getAttributes().get("to_SenderProcessName");
+    int i;
+    label159:
+    for (boolean bool = false;; bool = true)
+    {
+      localk.a("msfInitCost", bool, this.b, 0L, (Map)localObject, false, false);
+      p.c();
+      localObject = BaseApplication.getContext().getSharedPreferences("crashcontrol", 4);
+      j = ((SharedPreferences)localObject).getInt("countRecvKillMsf", 0);
+      if (j <= 0) {
+        break label185;
+      }
+      if (MsfService.core.statReporter == null) {
+        break;
+      }
+      i = 0;
+      while (i < j)
+      {
+        MsfService.core.statReporter.a("countRecvKillMsf", true, 0L, 0L, null, false, false);
+        i += 1;
+      }
     }
-    return "";
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, FromServiceMsg paramFromServiceMsg)
-  {
-    Intent localIntent = new Intent(paramString3);
-    localIntent.putExtra("uin", paramString2);
-    localIntent.putExtra("istatus", paramInt);
-    localIntent.putExtra("gatewayip", af.n());
-    localIntent.setPackage(paramContext.getPackageName());
+    ((SharedPreferences)localObject).edit().putInt("countRecvKillMsf", 0).commit();
+    label185:
+    int j = ((SharedPreferences)localObject).getInt("countMsfRealExit", 0);
+    if (j > 0)
+    {
+      if (MsfService.core.statReporter != null)
+      {
+        i = 0;
+        while (i < j)
+        {
+          MsfService.core.statReporter.a("countMsfRealExit", true, 0L, 0L, null, false, false);
+          i += 1;
+        }
+      }
+      ((SharedPreferences)localObject).edit().putInt("countMsfRealExit", 0).commit();
+    }
     try
     {
-      if (paramString3.toLowerCase().indexOf("activity", 0) != -1)
-      {
-        localIntent.setFlags(268435456);
-        if ((paramFromServiceMsg != null) && (paramString1 != null) && (paramString1.endsWith(":video"))) {
-          localIntent.putExtra("fromServiceMsg", paramFromServiceMsg);
-        }
-        paramContext.startActivity(localIntent);
-      }
-      localIntent.setFlags(32);
-      paramContext.sendBroadcast(localIntent);
+      Thread.sleep(5000L);
+      g.b();
+      g.a();
+      return;
     }
-    catch (Exception paramContext)
+    catch (InterruptedException localInterruptedException)
     {
       for (;;)
       {
-        QLog.d("MSF.S.Util", 1, "sendBootAction " + paramContext);
+        localInterruptedException.printStackTrace();
       }
     }
-    QLog.d("MSF.S.Util", 1, "send bootAction " + paramString3 + " for " + paramString1 + " uin:" + MsfSdkUtils.getShortUin(paramString2) + " istatus:" + paramInt + ",msg = " + paramFromServiceMsg);
-  }
-  
-  public static String b(ToServiceMsg paramToServiceMsg)
-  {
-    if ((paramToServiceMsg != null) && (paramToServiceMsg.getAttributes().get("to_SenderProcessName") != null)) {
-      return (String)paramToServiceMsg.getAttributes().get("to_SenderProcessName");
-    }
-    return "";
-  }
-  
-  public static boolean b()
-  {
-    for (;;)
-    {
-      try
-      {
-        Object localObject = ((ActivityManager)BaseApplication.getContext().getSystemService("activity")).getRunningAppProcesses();
-        if (localObject == null)
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("MSF.S.Util", 2, "can not load appProcesses.");
-          break;
-        }
-        String str = MsfSdkUtils.getProcessName(BaseApplication.getContext());
-        if ((str != null) && (str.indexOf(":") > 0))
-        {
-          str = str.substring(0, str.indexOf(":"));
-          localObject = ((List)localObject).iterator();
-          if (!((Iterator)localObject).hasNext()) {
-            break;
-          }
-          boolean bool = ((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).processName.equals(str);
-          if (bool) {
-            return true;
-          }
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.d("MSF.S.Util", 1, "check isMainProcessRunning error " + localException);
-        return false;
-      }
-    }
-    return false;
-  }
-  
-  public static String c()
-  {
-    c localc = d.a(BaseApplication.getContext().getPackageName());
-    String str = "com.tencent.mobileqq.broadcast.qq";
-    if (localc != null) {
-      str = localc.b();
-    }
-    return str;
   }
 }
 

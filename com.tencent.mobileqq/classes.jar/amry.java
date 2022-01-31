@@ -1,77 +1,31 @@
-import android.os.IBinder;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.utils.QQComicPluginBridge;
-import cooperation.comic.utils.QQComicPluginBridge.PluginInstallCallback;
-import cooperation.comic.utils.QQComicPluginBridge.PluginInstallObserver;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Book;
 
-class amry
-  implements OnPluginInstallListener
+public final class amry
+  implements Parcelable.Creator
 {
-  amry(amrx paramamrx) {}
-  
-  public IBinder asBinder()
+  public IPSiteModel.Book a(Parcel paramParcel)
   {
-    return null;
+    IPSiteModel.Book localBook = new IPSiteModel.Book();
+    localBook.cover = paramParcel.readString();
+    localBook.desc = paramParcel.readString();
+    localBook.id = paramParcel.readString();
+    localBook.jumpUrl = paramParcel.readString();
+    localBook.name = paramParcel.readString();
+    localBook.recommDesc = paramParcel.readString();
+    localBook.authorName = paramParcel.readString();
+    return localBook;
   }
   
-  public void onInstallBegin(String paramString)
+  public IPSiteModel.Book[] a(int paramInt)
   {
-    if ((this.a.a != null) && (this.a.a.jdField_a_of_type_CooperationComicUtilsQQComicPluginBridge$PluginInstallCallback != null)) {
-      this.a.a.jdField_a_of_type_CooperationComicUtilsQQComicPluginBridge$PluginInstallCallback.a(98, "载入中,（我会越来越快的>_<）");
-    }
-  }
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
-  {
-    if ((this.a.a != null) && (paramInt1 > 0) && (paramInt2 > 0))
-    {
-      this.a.a.jdField_a_of_type_Long = System.currentTimeMillis();
-      if (this.a.a.jdField_a_of_type_CooperationComicUtilsQQComicPluginBridge$PluginInstallCallback != null)
-      {
-        paramInt1 = (int)(paramInt1 / paramInt2 * 95.0F);
-        this.a.a.jdField_a_of_type_CooperationComicUtilsQQComicPluginBridge$PluginInstallCallback.a(paramInt1, "加载中,（别紧张啊我很小的>_<）");
-      }
-    }
-  }
-  
-  public void onInstallError(String arg1, int paramInt)
-  {
-    synchronized ()
-    {
-      QQComicPluginBridge.a().notifyAll();
-      if (this.a.a != null) {
-        this.a.a.jdField_a_of_type_Int = paramInt;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QQComicPluginBridge", 2, "QQComic install error");
-      }
-      return;
-    }
-  }
-  
-  public void onInstallFinish(String arg1)
-  {
-    synchronized ()
-    {
-      QQComicPluginBridge.a().notifyAll();
-      if (this.a.a != null)
-      {
-        this.a.a.b = System.currentTimeMillis();
-        if (this.a.a.jdField_a_of_type_CooperationComicUtilsQQComicPluginBridge$PluginInstallCallback != null) {
-          this.a.a.jdField_a_of_type_CooperationComicUtilsQQComicPluginBridge$PluginInstallCallback.a(99, "载入中,（我会越来越快的>_<）");
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QQComicPluginBridge", 2, "QQComic is installed");
-      }
-      return;
-    }
+    return new IPSiteModel.Book[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amry
  * JD-Core Version:    0.7.0.1
  */

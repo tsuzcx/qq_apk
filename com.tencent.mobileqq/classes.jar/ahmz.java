@@ -1,18 +1,10 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.CaptureSoDownloadFragment;
-
-public class ahmz
-  implements Runnable
+public abstract interface ahmz
 {
-  public ahmz(CaptureSoDownloadFragment paramCaptureSoDownloadFragment) {}
-  
-  public void run()
-  {
-    this.a.a();
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahmz
  * JD-Core Version:    0.7.0.1
  */

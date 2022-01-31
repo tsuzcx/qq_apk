@@ -1,14 +1,16 @@
 package com.tencent.component.network.utils.thread;
 
-public abstract interface Future
+public abstract interface Future<T>
 {
   public abstract void cancel();
   
-  public abstract Object get();
+  public abstract T get();
   
   public abstract boolean isCancelled();
   
   public abstract boolean isDone();
+  
+  public abstract void waitDone();
 }
 
 

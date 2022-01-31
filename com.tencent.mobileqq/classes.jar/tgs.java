@@ -1,23 +1,23 @@
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.app.NearbyHandler;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
 
 public class tgs
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
-  public tgs(NearbyActivity paramNearbyActivity) {}
+  public tgs(FollowCaptureLauncher paramFollowCaptureLauncher) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.a.c();
-    NearbyHandler localNearbyHandler = (NearbyHandler)this.a.a.a(3);
-    localNearbyHandler.a(this.a.a.getCurrentAccountUin());
-    localNearbyHandler.a(2);
+    FollowCaptureLauncher.a(this.a, true);
+    FollowCaptureLauncher.a(this.a);
+    FollowCaptureLauncher.a(this.a, false);
+    urp.a("FollowLaunchCancel", true, System.currentTimeMillis() - FollowCaptureLauncher.a(this.a), new String[] { "dialog_cancel" });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tgs
  * JD-Core Version:    0.7.0.1
  */

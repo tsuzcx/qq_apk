@@ -1,21 +1,14 @@
-import android.view.View;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView;
+import android.graphics.Bitmap;
 
-class acsh
-  implements Runnable
+public abstract interface acsh
 {
-  acsh(acsg paramacsg) {}
+  public abstract void a(String paramString, int paramInt);
   
-  public void run()
-  {
-    if (ExtendFriendVoiceView.a(this.a.a) != null) {
-      ExtendFriendVoiceView.a(this.a.a).setBackgroundDrawable(ExtendFriendVoiceView.a(this.a.a));
-    }
-  }
+  public abstract void a(String paramString, long paramLong, Bitmap paramBitmap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acsh
  * JD-Core Version:    0.7.0.1
  */

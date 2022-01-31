@@ -1,14 +1,14 @@
 package cooperation.qzone.model;
 
-import ancg;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bfwk;
 
 public class PublishEventTag
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ancg();
+  public static final Parcelable.Creator<PublishEventTag> CREATOR = new bfwk();
   public String a;
   public String b;
   public String c;

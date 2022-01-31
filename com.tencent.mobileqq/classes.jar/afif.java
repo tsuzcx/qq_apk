@@ -1,27 +1,27 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
 
 public class afif
-  implements Handler.Callback
+  implements URLDrawable.URLDrawableListener
 {
-  public afif(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  public afif(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      NearbyProfileDisplayPanel.a(this.a);
-    }
+    EmoticonGroupStoreFragment.a(this.a).invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afif
  * JD-Core Version:    0.7.0.1
  */

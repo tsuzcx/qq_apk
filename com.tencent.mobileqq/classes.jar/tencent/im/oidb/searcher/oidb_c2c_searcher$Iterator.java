@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_c2c_searcher$Iterator
-  extends MessageMicro
+  extends MessageMicro<Iterator>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "complete", "uin", "key" }, new Object[] { Boolean.valueOf(false), Long.valueOf(0L), null }, Iterator.class);
   public final PBBoolField complete = PBField.initBool(false);
@@ -16,7 +16,7 @@ public final class oidb_c2c_searcher$Iterator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.searcher.oidb_c2c_searcher.Iterator
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,30 @@
-import android.widget.TextView;
-import com.tencent.gdtad.views.GdtUIUtils;
-import com.tencent.gdtad.views.video.GdtVideoCommonView;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup.43.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup.43.2;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class qro
-  implements Runnable
+  implements ogq
 {
-  public qro(GdtVideoCommonView paramGdtVideoCommonView) {}
+  public qro(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void run()
+  public void a(MessageRecord paramMessageRecord) {}
+  
+  public void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle)
   {
-    GdtVideoCommonView.a(this.a).setText(GdtUIUtils.a(GdtVideoCommonView.a(this.a)));
+    this.a.a().runOnUiThread(new ReadInJoyListViewGroup.43.2(this));
+  }
+  
+  public void b(MessageRecord paramMessageRecord)
+  {
+    this.a.a().runOnUiThread(new ReadInJoyListViewGroup.43.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qro
  * JD-Core Version:    0.7.0.1
  */

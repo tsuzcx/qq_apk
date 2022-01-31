@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class mobileqq_mp$SubscribeRequest
-  extends MessageMicro
+  extends MessageMicro<SubscribeRequest>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32 }, new String[] { "puin", "template_id", "msg_id", "index" }, new Object[] { Long.valueOf(0L), "", Long.valueOf(0L), Integer.valueOf(0) }, SubscribeRequest.class);
   public final PBUInt32Field index = PBField.initUInt32(0);

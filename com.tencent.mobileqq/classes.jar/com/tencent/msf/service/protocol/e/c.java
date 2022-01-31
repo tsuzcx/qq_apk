@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class c
   extends JceStruct
 {
-  public int a;
+  public int a = 0;
   public String b = "";
   public String c = "";
   public String d = "";

@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.UpdateAppByNameTask;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
 
-class abcj
-  implements Runnable
+public class abcj
+  implements abcs
 {
-  abcj(abci paramabci, boolean paramBoolean, byte[] paramArrayOfByte, Object paramObject) {}
+  public abcj(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
   
-  public void run()
+  public void a()
   {
-    ArkLocalAppMgr.a(this.jdField_a_of_type_Abci.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ArrayOfByte, (ArkLocalAppMgr.UpdateAppByNameTask)this.jdField_a_of_type_JavaLangObject);
+    LoginPhoneNumActivity.a(this.a);
+  }
+  
+  public void b()
+  {
+    LoginPhoneNumActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abcj
  * JD-Core Version:    0.7.0.1
  */

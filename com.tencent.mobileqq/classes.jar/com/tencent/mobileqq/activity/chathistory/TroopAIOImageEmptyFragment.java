@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity.chathistory;
 
+import aciy;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -11,12 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import axwd;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
 
 public class TroopAIOImageEmptyFragment
   extends IphoneTitleBarFragment
@@ -44,22 +44,22 @@ public class TroopAIOImageEmptyFragment
     {
       paramLayoutInflater = this.mContentView.getContext().getResources();
       paramViewGroup = URLDrawable.URLDrawableOptions.obtain();
-      paramViewGroup.mRequestWidth = AIOUtils.a(320.0F, paramLayoutInflater);
-      paramViewGroup.mRequestHeight = AIOUtils.a(177.5F, paramLayoutInflater);
-      paramViewGroup.mLoadingDrawable = URLDrawableHelper.a;
-      paramViewGroup.mFailedDrawable = URLDrawableHelper.a;
+      paramViewGroup.mRequestWidth = aciy.a(321.0F, paramLayoutInflater);
+      paramViewGroup.mRequestHeight = aciy.a(200.0F, paramLayoutInflater);
+      paramViewGroup.mLoadingDrawable = axwd.a;
+      paramViewGroup.mFailedDrawable = axwd.a;
       paramLayoutInflater = URLDrawable.getDrawable(this.b, paramViewGroup);
-      ((ImageView)this.mContentView.findViewById(2131364216)).setImageDrawable(paramLayoutInflater);
+      ((ImageView)this.mContentView.findViewById(2131311432)).setImageDrawable(paramLayoutInflater);
     }
-    ((TextView)this.mContentView.findViewById(2131365558)).setText(this.c);
+    ((TextView)this.mContentView.findViewById(2131311233)).setText(this.c);
   }
   
-  protected int getContentLayoutId()
+  public int getContentLayoutId()
   {
-    return 2130969881;
+    return 2131494739;
   }
   
-  protected void init(Bundle paramBundle)
+  public void init(Bundle paramBundle)
   {
     super.init(paramBundle);
     this.a = paramBundle.getString("title");

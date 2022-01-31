@@ -1,24 +1,31 @@
-import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager.ArkGetLocationCallback;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IPassiveSearchIntentByServerHandler;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
 
-public final class abdn
-  implements ArkAppLocationManager.ArkGetLocationCallback
+public class abdn
+  extends ajjh
 {
-  public abdn(String paramString, Object paramObject, ArkMessageServerLogic.IPassiveSearchIntentByServerHandler paramIPassiveSearchIntentByServerHandler) {}
+  public abdn(MoveToGroupActivity paramMoveToGroupActivity) {}
   
-  public void a(String paramString, double paramDouble1, double paramDouble2)
+  protected void onUpdateMoveGroup(String paramString, byte paramByte1, byte paramByte2)
   {
-    abdt localabdt = new abdt(null);
-    localabdt.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localabdt.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangObject;
-    localabdt.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IPassiveSearchIntentByServerHandler = this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IPassiveSearchIntentByServerHandler;
-    ThreadManager.post(new abdo(this, localabdt, paramString, paramDouble1, paramDouble2), 5, null, true);
+    if (this.a.isFinishing()) {
+      return;
+    }
+    MoveToGroupActivity.a(this.a);
+    if (paramString == null) {
+      bbmy.a(this.a, this.a.getString(2131628671), 0).b(this.a.getTitleBarHeight());
+    }
+    for (;;)
+    {
+      MoveToGroupActivity.b(this.a);
+      this.a.removeObserver(MoveToGroupActivity.a(this.a));
+      return;
+      bbmy.a(this.a, 2, this.a.getString(2131628673), 0).b(this.a.getTitleBarHeight());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abdn
  * JD-Core Version:    0.7.0.1
  */

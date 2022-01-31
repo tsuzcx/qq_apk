@@ -1,23 +1,17 @@
-import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.data.FileCategoryAdapter;
-import com.tencent.widget.XListView;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
 
-class acyw
-  implements Runnable
+public class acyw
 {
-  acyw(acyv paramacyv) {}
-  
-  public void run()
+  public static View a(Context paramContext)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantQfileFileAssistantActivity.a(2130970041, 2130842701, 4, this.a.jdField_a_of_type_JavaLangString, 0, false, 0, "other", 1, false, false);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantQfileFileAssistantActivity.a(2130970041, 2130842701, 4, this.a.jdField_a_of_type_JavaLangString, 0, true, 21, "other", 1, false, false);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantQfileFileAssistantActivity.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileCategoryAdapter.notifyDataSetChanged();
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantQfileFileAssistantActivity.jdField_a_of_type_ComTencentWidgetXListView.smoothScrollToPosition(0);
+    return LayoutInflater.from(paramContext).inflate(2131493581, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acyw
  * JD-Core Version:    0.7.0.1
  */

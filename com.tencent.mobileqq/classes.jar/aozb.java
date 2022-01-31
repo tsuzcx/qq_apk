@@ -1,18 +1,21 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
 
 public class aozb
-  implements FileFilter
+  implements aosd
 {
-  public boolean accept(File paramFile)
+  public aozb(SimpleFileViewer paramSimpleFileViewer) {}
+  
+  public void a()
   {
-    return Pattern.matches("cpu[0-9]", paramFile.getName());
+    if (SimpleFileViewer.d(this.a) != null) {
+      SimpleFileViewer.d(this.a).setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aozb
  * JD-Core Version:    0.7.0.1
  */

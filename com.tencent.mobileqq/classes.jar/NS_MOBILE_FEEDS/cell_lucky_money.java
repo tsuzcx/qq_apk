@@ -10,11 +10,11 @@ import java.util.Map;
 public final class cell_lucky_money
   extends JceStruct
 {
-  static Map cache_extendinfo;
-  static ArrayList cache_getLuckyMoneyMen = new ArrayList();
+  static Map<String, String> cache_extendinfo;
+  static ArrayList<s_user> cache_getLuckyMoneyMen = new ArrayList();
   public String actionUrl = "";
-  public Map extendinfo;
-  public ArrayList getLuckyMoneyMen;
+  public Map<String, String> extendinfo;
+  public ArrayList<s_user> getLuckyMoneyMen;
   public int isGeted;
   public int isGrabEnd;
   public int luckyMoneyAllocType;
@@ -36,7 +36,7 @@ public final class cell_lucky_money
   
   public cell_lucky_money() {}
   
-  public cell_lucky_money(int paramInt1, int paramInt2, ArrayList paramArrayList, String paramString1, Map paramMap, String paramString2, String paramString3, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong1, long paramLong2)
+  public cell_lucky_money(int paramInt1, int paramInt2, ArrayList<s_user> paramArrayList, String paramString1, Map<String, String> paramMap, String paramString2, String paramString3, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong1, long paramLong2)
   {
     this.num = paramInt1;
     this.isGeted = paramInt2;
@@ -99,7 +99,7 @@ public final class cell_lucky_money
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_lucky_money
  * JD-Core Version:    0.7.0.1
  */

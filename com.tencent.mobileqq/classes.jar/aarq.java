@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArModelResource;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FontSettingActivity;
 
-public final class aarq
-  implements Parcelable.Creator
+public class aarq
+  implements View.OnClickListener
 {
-  public ArModelResource a(Parcel paramParcel)
-  {
-    return new ArModelResource(paramParcel);
-  }
+  public aarq(FontSettingActivity paramFontSettingActivity) {}
   
-  public ArModelResource[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new ArModelResource[paramInt];
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aarq
  * JD-Core Version:    0.7.0.1
  */

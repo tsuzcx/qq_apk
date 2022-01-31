@@ -1,353 +1,114 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.AdapterView;
-import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface.ActionItem;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItemViewHolder;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserShareMenuHandler;
-import com.tencent.qidian.QidianManager;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.av.chatroom.ChatRoomInfo;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.av.chatroom.chatroom_sso.Msg;
 
 public class laf
-  extends SwiftBrowserShareMenuHandler
 {
-  laf(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment) {}
+  public static int a;
+  public static int b;
+  public static int c;
+  public static int d;
+  private static long e;
+  public final long a;
+  public ChatRoomInfo a;
+  public final String a;
+  public final long b;
+  public long c;
+  public long d;
+  public int e;
+  private int f;
   
-  public List[] a()
+  static
   {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject1 = (SwiftBrowserShareMenuHandler)this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider.a(4);
-    if ((localObject1 != null) && (((SwiftBrowserShareMenuHandler)localObject1).c()) && (!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:diandian")))
-    {
-      localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430140);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130840688;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_Boolean = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).c = 34;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
-      localArrayList.add(localObject2);
-    }
-    if ((!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:qq")) && ((this.jdField_a_of_type_Long & 0x8) == 0L))
-    {
-      localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430110);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838341;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_Boolean = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).c = 2;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
-      localArrayList.add(localObject2);
-    }
-    if ((!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:QZone")) && ((this.jdField_a_of_type_Long & 0x10) == 0L))
-    {
-      localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430116);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838342;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_Boolean = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).c = 3;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
-      localArrayList.add(localObject2);
-    }
-    if (((this.jdField_a_of_type_Long & 0x8000000) != 0L) && (ReadInJoyHelper.a()) && (this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.jdField_a_of_type_ComTencentCommonAppAppInterface != null))
-    {
-      localObject2 = "readinjoy_" + this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount() + "_" + 1;
-      localObject2 = BaseApplicationImpl.getApplication().getSharedPreferences((String)localObject2, 4);
-      if ((localObject2 != null) && (((SharedPreferences)localObject2).getBoolean("share_to_news", false)))
-      {
-        localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430130);
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838340;
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_Boolean = true;
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).c = 13;
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
-        localArrayList.add(localObject2);
-      }
-    }
-    if ((!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:appMessage")) && ((this.jdField_a_of_type_Long & 0x4000) == 0L))
-    {
-      localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430128);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838345;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).c = 9;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
-      localArrayList.add(localObject2);
-    }
-    if ((!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:timeline")) && ((this.jdField_a_of_type_Long & 0x8000) == 0L))
-    {
-      localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430129);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838339;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).c = 10;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
-      localArrayList.add(localObject2);
-    }
-    if ((localObject1 != null) && (((SwiftBrowserShareMenuHandler)localObject1).b()) && (!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:sinaWeibo")))
-    {
-      localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430134);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_Boolean = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838344;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).c = 12;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
-      localArrayList.add(localObject2);
-    }
-    if ((!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:openWithQQBrowser")) && ((this.jdField_a_of_type_Long & 0x200) == 0L))
-    {
-      localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430115);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130840691;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).c = 5;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
-      localArrayList.add(localObject2);
-    }
-    if ((!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:openWithSafari")) && ((this.jdField_a_of_type_Long & 0x100) == 0L))
-    {
-      localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430114);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_Boolean = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130840687;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).c = 4;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
-      localArrayList.add(localObject2);
-    }
-    Object localObject2 = BaseApplicationImpl.getApplication().getPackageManager();
-    if ((!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:qiDian")) && ((this.jdField_a_of_type_Long & 0x10) == 0L)) {
-      QidianManager.a(BaseApplicationImpl.getApplication(), localArrayList);
-    }
-    if ((!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:qiYeQQ")) && ((this.jdField_a_of_type_Long & 0x20) == 0L) && (new Intent().setPackage("com.tencent.eim").setData(Uri.parse("eimapi://")).resolveActivity((PackageManager)localObject2) != null))
-    {
-      localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430133);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_Boolean = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130841743;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).c = 20;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
-      localArrayList.add(localObject2);
-    }
-    localObject2 = new ArrayList();
-    int i;
-    Object localObject4;
-    ShareActionSheetBuilder.ActionSheetItem localActionSheetItem;
-    if ((this.e) && (this.b != null))
-    {
-      localObject3 = this.b.iterator();
-      j = 0;
-      i = j;
-      if (((Iterator)localObject3).hasNext())
-      {
-        localObject4 = (PublicAccountJavascriptInterface.ActionItem)((Iterator)localObject3).next();
-        localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-        switch (((PublicAccountJavascriptInterface.ActionItem)localObject4).jdField_a_of_type_Int)
-        {
-        default: 
-          i = j;
-        }
-        for (;;)
-        {
-          j = i;
-          break;
-          if (TextUtils.isEmpty(((PublicAccountJavascriptInterface.ActionItem)localObject4).jdField_a_of_type_JavaLangString)) {}
-          for (localActionSheetItem.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430018);; localActionSheetItem.jdField_a_of_type_JavaLangString = ((PublicAccountJavascriptInterface.ActionItem)localObject4).jdField_a_of_type_JavaLangString)
-          {
-            localActionSheetItem.jdField_b_of_type_Int = 2130840693;
-            localActionSheetItem.jdField_a_of_type_Boolean = true;
-            localActionSheetItem.c = 30;
-            localActionSheetItem.jdField_b_of_type_JavaLangString = "";
-            ((ArrayList)localObject2).add(localActionSheetItem);
-            i = 1;
-            break;
-          }
-          localObject4 = new ShareActionSheetBuilder.ActionSheetItem();
-          ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430055);
-          ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_b_of_type_Int = 2130840686;
-          ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_a_of_type_Boolean = true;
-          ((ShareActionSheetBuilder.ActionSheetItem)localObject4).c = 31;
-          ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_b_of_type_JavaLangString = "";
-          ((ArrayList)localObject2).add(localObject4);
-          i = 1;
-        }
-      }
-    }
-    else
-    {
-      i = 0;
-    }
-    int j = i;
-    if (this.f)
-    {
-      j = i;
-      if (this.b != null)
-      {
-        localObject3 = this.b.iterator();
-        for (;;)
-        {
-          j = i;
-          if (!((Iterator)localObject3).hasNext()) {
-            break;
-          }
-          localObject4 = (PublicAccountJavascriptInterface.ActionItem)((Iterator)localObject3).next();
-          localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-          switch (((PublicAccountJavascriptInterface.ActionItem)localObject4).jdField_a_of_type_Int)
-          {
-          case 2: 
-          default: 
-            break;
-          case 1: 
-            if (TextUtils.isEmpty(((PublicAccountJavascriptInterface.ActionItem)localObject4).jdField_a_of_type_JavaLangString)) {}
-            for (localActionSheetItem.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430018);; localActionSheetItem.jdField_a_of_type_JavaLangString = ((PublicAccountJavascriptInterface.ActionItem)localObject4).jdField_a_of_type_JavaLangString)
-            {
-              localActionSheetItem.jdField_b_of_type_Int = 2130840693;
-              localActionSheetItem.jdField_a_of_type_Boolean = true;
-              localActionSheetItem.c = 37;
-              localActionSheetItem.jdField_b_of_type_JavaLangString = "";
-              ((ArrayList)localObject2).add(localActionSheetItem);
-              i = 1;
-              break;
-            }
-          case 3: 
-            localObject4 = new ShareActionSheetBuilder.ActionSheetItem();
-            ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430141);
-            ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_b_of_type_Int = 2130840694;
-            ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_a_of_type_Boolean = true;
-            ((ShareActionSheetBuilder.ActionSheetItem)localObject4).c = 35;
-            ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_b_of_type_JavaLangString = "";
-            ((ArrayList)localObject2).add(localObject4);
-            i = 1;
-          }
-        }
-      }
-    }
-    Object localObject3 = (SwiftBrowserScreenShotHandler)this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider.a(64);
-    if ((localObject3 != null) && (((SwiftBrowserScreenShotHandler)localObject3).a()) && (!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:screenShotShare")))
-    {
-      localObject3 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430135);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_a_of_type_Boolean = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_b_of_type_Int = 2130840692;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject3).c = 21;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_b_of_type_JavaLangString = "";
-      ((ArrayList)localObject2).add(localObject3);
-    }
-    if ((!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:favorite")) && ((this.jdField_a_of_type_Long & 0x2000) == 0L))
-    {
-      localObject3 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430126);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_a_of_type_Boolean = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_b_of_type_Int = 2130841600;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject3).c = 6;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_b_of_type_JavaLangString = "";
-      ((ArrayList)localObject2).add(localObject3);
-    }
-    if ((!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:setFont")) && (this.jdField_a_of_type_Boolean))
-    {
-      localObject3 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430111);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_b_of_type_Int = 2130840689;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_a_of_type_Boolean = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject3).c = 7;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_b_of_type_JavaLangString = "";
-      ((ArrayList)localObject2).add(localObject3);
-    }
-    if ((!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:copyUrl")) && ((this.jdField_a_of_type_Long & 0x20) == 0L))
-    {
-      localObject3 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430112);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_b_of_type_Int = 2130838337;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_a_of_type_Boolean = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject3).c = 1;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_b_of_type_JavaLangString = "";
-      ((ArrayList)localObject2).add(localObject3);
-    }
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && ((this.jdField_a_of_type_Long & 0x40) == 0L) && (j == 0))
-    {
-      localObject3 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430120);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_b_of_type_Int = 2130840686;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_a_of_type_Boolean = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject3).c = 8;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_b_of_type_JavaLangString = "";
-      ((ArrayList)localObject2).add(localObject3);
-    }
-    if ((localObject1 != null) && (((SwiftBrowserShareMenuHandler)localObject1).d()))
-    {
-      localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430144);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130840690;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_Boolean = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).c = 38;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_JavaLangString = "";
-      ((ArrayList)localObject2).add(localObject1);
-    }
-    if (!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:exposeArticle"))
-    {
-      localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430113);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130840678;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_Boolean = true;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).c = 11;
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_JavaLangString = "";
-      ((ArrayList)localObject2).add(localObject1);
-    }
-    return (List[])new ArrayList[] { localArrayList, localObject2 };
+    jdField_a_of_type_Int = 1;
+    jdField_b_of_type_Int = 2;
+    jdField_c_of_type_Int = 3;
+    jdField_d_of_type_Int = 4;
   }
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public laf(ChatRoomInfo paramChatRoomInfo, long paramLong1, String paramString, long paramLong2, long paramLong3, int paramInt)
   {
-    Object localObject = paramView.getTag();
-    if (!(localObject instanceof ShareActionSheetBuilder.ActionSheetItemViewHolder)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("WebLog_WebViewFragment", 2, "Item clicked but tag not found");
+    this.jdField_b_of_type_Long = a();
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo = paramChatRoomInfo;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_c_of_type_Long = paramLong2;
+    this.jdField_d_of_type_Long = paramLong3;
+    this.jdField_e_of_type_Int = paramInt;
+    if (this.jdField_e_of_type_Int == jdField_a_of_type_Int)
+    {
+      paramChatRoomInfo = this.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo;
+      paramChatRoomInfo.jdField_b_of_type_Int += 1;
+    }
+    this.f = 0;
+  }
+  
+  private static long a()
+  {
+    long l = jdField_e_of_type_Long + 1L;
+    jdField_e_of_type_Long = l;
+    return l;
+  }
+  
+  public void a()
+  {
+    this.f += 1;
+  }
+  
+  public void a(int paramInt)
+  {
+    ChatRoomInfo localChatRoomInfo;
+    if (paramInt == jdField_c_of_type_Int)
+    {
+      localChatRoomInfo = this.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo;
+      localChatRoomInfo.jdField_d_of_type_Int += 1;
+    }
+    for (;;)
+    {
+      if ((this.jdField_d_of_type_Long == -9223372036854775808L) || (this.jdField_e_of_type_Int != jdField_d_of_type_Int)) {
+        this.jdField_e_of_type_Int = paramInt;
+      }
+      return;
+      if (paramInt == jdField_b_of_type_Int)
+      {
+        localChatRoomInfo = this.jdField_a_of_type_ComTencentAvChatroomChatRoomInfo;
+        localChatRoomInfo.jdField_c_of_type_Int += 1;
       }
     }
-    int i;
-    do
-    {
-      do
-      {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.b();
-        i = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)localObject).a.c;
-        if (i == 7)
-        {
-          super.onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-          this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.a(i);
-          return;
-        }
-        if (i == 8)
-        {
-          this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.a(this.jdField_a_of_type_JavaLangString);
-          this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.a(i);
-          return;
-        }
-        super.onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-        if ((i != 2) && (i != 3)) {
-          break;
-        }
-      } while (this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.jdField_a_of_type_ComTencentCommonAppAppInterface == null);
-      ReportController.b(null, "CliOper", "", this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "0X8004B5D", "0X8004B5D", 0, 0, "", "", "", "");
-      return;
-    } while ((i != 6) || (this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.jdField_a_of_type_ComTencentCommonAppAppInterface == null));
-    ReportController.b(null, "CliOper", "", this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountBrowser$PublicAccountBrowserFragment.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "0X8004B5E", "0X8004B5E", 0, 0, "", "", "", "");
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_d_of_type_Long != -9223372036854775808L;
+  }
+  
+  public boolean a(chatroom_sso.Msg paramMsg)
+  {
+    if (paramMsg == null) {}
+    while ((this.jdField_d_of_type_Long != paramMsg.msg_id.get()) || (this.jdField_a_of_type_Long != paramMsg.uin.get()) || (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramMsg.msg.get()))) {
+      return false;
+    }
+    return true;
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_e_of_type_Int == jdField_b_of_type_Int) && (this.f < 3) && (this.jdField_d_of_type_Long == -9223372036854775808L);
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(60);
+    localStringBuilder.append("ChatRoomMsg{senderUin: ").append(this.jdField_a_of_type_Long).append(", serverSeq: ").append(this.jdField_d_of_type_Long).append(", localSeq: ").append(this.jdField_b_of_type_Long).append(", state: ").append(this.jdField_e_of_type_Int).append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     laf
  * JD-Core Version:    0.7.0.1
  */

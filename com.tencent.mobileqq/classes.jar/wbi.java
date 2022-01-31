@@ -1,20 +1,35 @@
-import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
+import android.app.Activity;
+import android.content.Context;
+import java.lang.ref.WeakReference;
 
-class wbi
-  implements Runnable
+public class wbi
+  extends vyy
 {
-  wbi(wbh paramwbh) {}
+  protected WeakReference<Context> a;
   
-  public void run()
+  public wbi(Context paramContext, int paramInt)
   {
-    if (!NearbyChatPie.a(this.a.a)) {
-      this.a.a.k();
+    super(paramContext, paramInt);
+    this.a = new WeakReference(paramContext);
+  }
+  
+  public boolean a()
+  {
+    Context localContext = (Context)this.a.get();
+    return ((localContext instanceof Activity)) && (((Activity)localContext).isFinishing());
+  }
+  
+  public void show()
+  {
+    if (a()) {
+      return;
     }
+    super.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wbi
  * JD-Core Version:    0.7.0.1
  */

@@ -7,20 +7,28 @@ public class PreloadManager$PathResult
 {
   public String filePath;
   public String folderPath;
+  public boolean isAlreadyExist;
+  public int subErrCode;
   public String url;
   
   public PreloadManager$PathResult() {}
   
-  public PreloadManager$PathResult(String paramString1, String paramString2, String paramString3)
+  public PreloadManager$PathResult(String paramString1, String paramString2, String paramString3, int paramInt)
   {
     this.filePath = paramString1;
     this.folderPath = paramString2;
     this.url = paramString3;
+    this.subErrCode = paramInt;
   }
   
   public static PathResult getFailRes(String paramString)
   {
-    return new PathResult(null, null, paramString);
+    return getFailRes(paramString, 0);
+  }
+  
+  public static PathResult getFailRes(String paramString, int paramInt)
+  {
+    return new PathResult(null, null, paramString, paramInt);
   }
   
   public String toString()
@@ -30,7 +38,7 @@ public class PreloadManager$PathResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult
  * JD-Core Version:    0.7.0.1
  */

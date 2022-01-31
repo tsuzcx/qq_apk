@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
+import android.support.annotation.Nullable;
 
-public class wub
-  implements Runnable
+class wub
+  implements bhwg<wwj>
 {
-  public wub(CommonRefreshLayout paramCommonRefreshLayout) {}
+  wub(wtw paramwtw) {}
   
-  public void run()
+  public void a(@Nullable wwj paramwwj)
   {
-    this.a.b();
+    wtw.a(this.a, paramwwj);
+    if (wtw.a(this.a) != null) {
+      wtw.a(this.a).a(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wub
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class BusinessInfoCheckUpdate$AppSetting
-  extends MessageMicro
+  extends MessageMicro<AppSetting>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "appid", "setting", "modify_ts" }, new Object[] { Integer.valueOf(0), Boolean.valueOf(false), Long.valueOf(0L) }, AppSetting.class);
   public final PBUInt32Field appid = PBField.initUInt32(0);
@@ -17,7 +17,7 @@ public final class BusinessInfoCheckUpdate$AppSetting
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppSetting
  * JD-Core Version:    0.7.0.1
  */

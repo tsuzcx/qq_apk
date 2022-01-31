@@ -1,17 +1,17 @@
 package com.tencent.device.file;
 
+import ajed;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.device.msg.data.DeviceMsgHandle;
+import bace;
 import com.tencent.litetransfersdk.ActionInfo;
 import com.tencent.litetransfersdk.Session;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.utils.FileUtils;
 import java.util.HashMap;
 import java.util.HashSet;
+import xvq;
 
 public class DeviceFileHandler$DeviceNotifyReceiver
   extends BroadcastReceiver
@@ -63,7 +63,7 @@ public class DeviceFileHandler$DeviceNotifyReceiver
                     if (paramContext.uFileSizeSrc == 0L) {
                       paramContext.uFileSizeSrc = l3;
                     }
-                    this.a.a(102, true, new Object[] { paramContext, Float.valueOf((float)((float)l2 * 1.0D / (float)l3)) });
+                    this.a.notifyUI(102, true, new Object[] { paramContext, Float.valueOf((float)((float)l2 * 1.0D / (float)l3)) });
                     return;
                     if (!paramContext.equalsIgnoreCase("SmartDevice_OnMiniFileTransferComplete")) {
                       break;
@@ -80,8 +80,8 @@ public class DeviceFileHandler$DeviceNotifyReceiver
                       if (str.lastIndexOf(".") > 0)
                       {
                         paramContext = str.substring(str.lastIndexOf("."));
-                        paramContext = AppConstants.aK + "/smart_device/" + System.currentTimeMillis() + paramContext;
-                        FileUtils.b(str, paramContext);
+                        paramContext = ajed.aU + "/smart_device/" + System.currentTimeMillis() + paramContext;
+                        bace.b(str, paramContext);
                         paramIntent.strFilePathSrc = paramContext;
                         this.a.b.remove(Long.valueOf(l1));
                       }
@@ -99,11 +99,11 @@ public class DeviceFileHandler$DeviceNotifyReceiver
                   }
                   for (bool = true;; bool = false)
                   {
-                    paramContext.a(103, bool, paramIntent);
+                    paramContext.notifyUI(103, bool, paramIntent);
                     return;
                     paramContext = ".amr";
                     break;
-                    if (!paramIntent.actionInfo.strServiceName.equalsIgnoreCase(DeviceMsgHandle.c)) {
+                    if (!paramIntent.actionInfo.strServiceName.equalsIgnoreCase(xvq.c)) {
                       break label301;
                     }
                     paramIntent.vFileMD5Src = str.getBytes();
@@ -114,14 +114,14 @@ public class DeviceFileHandler$DeviceNotifyReceiver
                   }
                   paramContext = paramIntent.getExtras();
                 } while (paramContext == null);
-                this.a.a(104, true, paramContext);
+                this.a.notifyUI(104, true, paramContext);
                 return;
                 if (!paramContext.equalsIgnoreCase("SmartDevice_OnDataPointFileMsgSendRet")) {
                   break;
                 }
                 paramContext = paramIntent.getExtras();
               } while (paramContext == null);
-              this.a.a(105, true, paramContext);
+              this.a.notifyUI(105, true, paramContext);
               return;
             } while (!paramContext.equalsIgnoreCase("CloudPrintJobNotifyEvent"));
             paramIntent = paramIntent.getExtras();
@@ -141,17 +141,17 @@ public class DeviceFileHandler$DeviceNotifyReceiver
           return;
         }
       } while (j == 0);
-      this.a.a(103, false, paramContext);
+      this.a.notifyUI(103, false, paramContext);
       return;
       if (j == 100)
       {
-        this.a.a(103, true, paramContext);
+        this.a.notifyUI(103, true, paramContext);
         return;
       }
-      this.a.a(102, true, new Object[] { paramContext, Float.valueOf((float)(j / 100.0D)) });
+      this.a.notifyUI(102, true, new Object[] { paramContext, Float.valueOf((float)(j / 100.0D)) });
       return;
       this.a.c.put(Long.valueOf(paramContext.uSessionID), Integer.valueOf(j));
-      this.a.a(103, false, paramContext);
+      this.a.notifyUI(103, false, paramContext);
       return;
       l1 = paramIntent.getLong("uDin", 0L);
     } while (l1 == 0L);

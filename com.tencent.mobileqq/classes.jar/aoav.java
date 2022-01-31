@@ -1,23 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditTakeGifSource;
+import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelPicTabView.1;
+import java.util.Comparator;
 
-public final class aoav
-  implements Parcelable.Creator
+public class aoav
+  implements Comparator<Long>
 {
-  public EditTakeGifSource a(Parcel paramParcel)
-  {
-    return new EditTakeGifSource(paramParcel);
-  }
+  public aoav(QfileLocalFileDelPicTabView.1 param1) {}
   
-  public EditTakeGifSource[] a(int paramInt)
+  public int a(Long paramLong1, Long paramLong2)
   {
-    return new EditTakeGifSource[paramInt];
+    if (paramLong1.equals(paramLong2)) {
+      return 1;
+    }
+    return (int)(paramLong1.longValue() - paramLong2.longValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoav
  * JD-Core Version:    0.7.0.1
  */

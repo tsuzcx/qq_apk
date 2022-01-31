@@ -9,10 +9,10 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_service$RspCardList
-  extends MessageMicro
+  extends MessageMicro<RspCardList>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatMessageField card_info_list = PBField.initRepeatMessage(qqstory_struct.CardInfo.class);
+  public final PBRepeatMessageField<qqstory_struct.CardInfo> card_info_list = PBField.initRepeatMessage(qqstory_struct.CardInfo.class);
   public final PBUInt32Field is_end = PBField.initUInt32(0);
   public final PBBytesField next_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
   public qqstory_struct.ErrorInfo result = new qqstory_struct.ErrorInfo();
@@ -25,7 +25,7 @@ public final class qqstory_service$RspCardList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspCardList
  * JD-Core Version:    0.7.0.1
  */

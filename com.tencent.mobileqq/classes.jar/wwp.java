@@ -1,21 +1,25 @@
-import com.tencent.mobileqq.activity.messagesearch.C2CMessageResultAdapter;
-import com.tencent.mobileqq.activity.messagesearch.MessageItem;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.support.annotation.FloatRange;
 
 public class wwp
-  implements Comparator
 {
-  public wwp(C2CMessageResultAdapter paramC2CMessageResultAdapter) {}
+  private float jdField_a_of_type_Float = 1.0F;
+  private wwo jdField_a_of_type_Wwo = new wwo();
   
-  public int a(MessageItem paramMessageItem1, MessageItem paramMessageItem2)
+  public wwo a()
   {
-    return (int)(paramMessageItem2.a.time - paramMessageItem1.a.time);
+    wwo.b(this.jdField_a_of_type_Wwo, this.jdField_a_of_type_Float - wwo.a(this.jdField_a_of_type_Wwo));
+    return this.jdField_a_of_type_Wwo;
+  }
+  
+  public wwp a(@FloatRange(from=0.01D) float paramFloat)
+  {
+    wwo.a(this.jdField_a_of_type_Wwo, paramFloat);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wwp
  * JD-Core Version:    0.7.0.1
  */

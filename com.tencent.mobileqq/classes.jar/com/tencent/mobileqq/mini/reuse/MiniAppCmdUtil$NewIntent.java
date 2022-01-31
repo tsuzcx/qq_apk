@@ -1,0 +1,23 @@
+package com.tencent.mobileqq.mini.reuse;
+
+import android.content.Context;
+import mqq.app.NewIntent;
+import mqq.app.Servlet;
+
+public class MiniAppCmdUtil$NewIntent
+  extends NewIntent
+{
+  public MiniAppCmdUtil$NewIntent(Context paramContext, Class<? extends Servlet> paramClass, MiniAppCmdInterface paramMiniAppCmdInterface, String paramString)
+  {
+    super(paramClass, paramMiniAppCmdInterface);
+    String str;
+    putExtra("key_index", MiniAppCmdUtil.access$000(paramContext, paramString, str));
+    setObserver(MiniAppCmdUtil.access$100(paramContext));
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     com.tencent.mobileqq.mini.reuse.MiniAppCmdUtil.NewIntent
+ * JD-Core Version:    0.7.0.1
+ */

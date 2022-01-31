@@ -1,27 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.kwstudio.office.preview.IHostInterface.IWebClient;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
 
-public class aosl
-  implements DialogInterface.OnClickListener
+public final class aosl
+  extends WebChromeClient
 {
-  public aosl(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  private final IHostInterface.IWebClient a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private aosl(IHostInterface.IWebClient paramIWebClient)
   {
-    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
-    {
-      if (this.a.jdField_a_of_type_Int == 2) {
-        this.a.a();
-      }
-      this.a.a(this.a.c);
+    this.a = paramIWebClient;
+  }
+  
+  public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
+  {
+    if ((this.a == null) || (!this.a.onConsoleMessage(paramConsoleMessage.message(), paramConsoleMessage.lineNumber(), paramConsoleMessage.sourceId()))) {
+      return super.onConsoleMessage(paramConsoleMessage);
     }
-    dov.com.tencent.mobileqq.shortvideo.ShortVideoBusiManager.a = true;
+    return true;
+  }
+  
+  public boolean onJsPrompt(WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
+  {
+    if ((this.a == null) || (!this.a.onJsPrompt(paramWebView, paramString1, paramString2, paramString3))) {
+      return super.onJsPrompt(paramWebView, paramString1, paramString2, paramString3, paramJsPromptResult);
+    }
+    if (paramJsPromptResult != null) {
+      paramJsPromptResult.cancel();
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aosl
  * JD-Core Version:    0.7.0.1
  */

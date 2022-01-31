@@ -10,14 +10,16 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
-import aoiq;
-import aoir;
-import aoit;
-import aoiu;
-import aoiv;
-import aoix;
-import aoiy;
-import aoja;
+import bino;
+import binq;
+import binr;
+import bins;
+import bint;
+import binu;
+import binv;
+import binx;
+import biny;
+import bioa;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Method;
@@ -28,15 +30,15 @@ public class GLTextureView
   implements TextureView.SurfaceTextureListener
 {
   private static int jdField_a_of_type_Int;
-  private static final aoiy jdField_a_of_type_Aoiy = new aoiy(null);
+  private static final binx jdField_a_of_type_Binx = new binx(null);
   private GLSurfaceView.Renderer jdField_a_of_type_AndroidOpenglGLSurfaceView$Renderer;
-  private aoix jdField_a_of_type_Aoix;
-  private GLTextureView.EGLConfigChooser jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EGLConfigChooser;
-  private GLTextureView.EGLContextFactory jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EGLContextFactory;
-  private GLTextureView.EGLWindowSurfaceFactory jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EGLWindowSurfaceFactory;
-  private GLTextureView.GLWrapper jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLWrapper;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new aoir(this);
-  private final WeakReference jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this);
+  private bint jdField_a_of_type_Bint;
+  private binu jdField_a_of_type_Binu;
+  private binv jdField_a_of_type_Binv;
+  private biny jdField_a_of_type_Biny;
+  private GLTextureView.GLThread jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new GLTextureView.2(this);
+  private final WeakReference<GLTextureView> jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this);
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
@@ -87,7 +89,7 @@ public class GLTextureView
   {
     jdField_a_of_type_Int = a(getContext(), "ro.opengles.version", 0).intValue();
     setSurfaceTextureListener(this);
-    addOnLayoutChangeListener(new aoiq(this));
+    addOnLayoutChangeListener(new bino(this));
   }
   
   @TargetApi(14)
@@ -104,14 +106,14 @@ public class GLTextureView
   
   private void b()
   {
-    if (this.jdField_a_of_type_Aoix != null) {
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread != null) {
       throw new IllegalStateException("setRenderer has already been called for this instance.");
     }
   }
   
   public void a(SurfaceTexture paramSurfaceTexture)
   {
-    this.jdField_a_of_type_Aoix.b();
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread.b();
   }
   
   public void a(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2, int paramInt3)
@@ -121,7 +123,7 @@ public class GLTextureView
     {
       this.jdField_c_of_type_Int = paramInt2;
       this.d = paramInt3;
-      this.jdField_a_of_type_Aoix.a(paramInt2, paramInt3);
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread.a(paramInt2, paramInt3);
       if (QLog.isColorLevel()) {
         QLog.d("GLTextureView", 2, " surfaceChanged, onWindowResize");
       }
@@ -137,25 +139,25 @@ public class GLTextureView
   
   public void b(SurfaceTexture paramSurfaceTexture)
   {
-    this.jdField_a_of_type_Aoix.c();
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread.c();
   }
   
   public void b(Runnable paramRunnable)
   {
-    this.jdField_a_of_type_Aoix.a(paramRunnable);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread.a(paramRunnable);
   }
   
   public void c()
   {
-    this.jdField_a_of_type_Aoix.a();
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread.a();
   }
   
   protected void finalize()
   {
     try
     {
-      if (this.jdField_a_of_type_Aoix != null) {
-        this.jdField_a_of_type_Aoix.d();
+      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread != null) {
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread.d();
       }
       return;
     }
@@ -169,18 +171,18 @@ public class GLTextureView
   {
     super.onAttachedToWindow();
     if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidOpenglGLSurfaceView$Renderer != null)) {
-      if (this.jdField_a_of_type_Aoix == null) {
+      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread == null) {
         break label74;
       }
     }
     label74:
-    for (int i = this.jdField_a_of_type_Aoix.a();; i = 1)
+    for (int i = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread.a();; i = 1)
     {
-      this.jdField_a_of_type_Aoix = new aoix(this.jdField_a_of_type_JavaLangRefWeakReference);
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread = new GLTextureView.GLThread(this.jdField_a_of_type_JavaLangRefWeakReference);
       if (i != 1) {
-        this.jdField_a_of_type_Aoix.a(i);
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread.a(i);
       }
-      this.jdField_a_of_type_Aoix.start();
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread.start();
       this.jdField_b_of_type_Boolean = false;
       return;
     }
@@ -188,8 +190,8 @@ public class GLTextureView
   
   protected void onDetachedFromWindow()
   {
-    if (this.jdField_a_of_type_Aoix != null) {
-      this.jdField_a_of_type_Aoix.d();
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread != null) {
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread.d();
     }
     this.jdField_b_of_type_Boolean = true;
     super.onDetachedFromWindow();
@@ -240,18 +242,18 @@ public class GLTextureView
   
   public void setEGLConfigChooser(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    setEGLConfigChooser(new aoit(this, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6));
+    setEGLConfigChooser(new binq(this, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6));
   }
   
-  public void setEGLConfigChooser(GLTextureView.EGLConfigChooser paramEGLConfigChooser)
+  public void setEGLConfigChooser(bint parambint)
   {
     b();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EGLConfigChooser = paramEGLConfigChooser;
+    this.jdField_a_of_type_Bint = parambint;
   }
   
   public void setEGLConfigChooser(boolean paramBoolean)
   {
-    setEGLConfigChooser(new aoja(this, paramBoolean));
+    setEGLConfigChooser(new bioa(this, paramBoolean));
   }
   
   public void setEGLContextClientVersion(int paramInt)
@@ -260,21 +262,21 @@ public class GLTextureView
     this.e = paramInt;
   }
   
-  public void setEGLContextFactory(GLTextureView.EGLContextFactory paramEGLContextFactory)
+  public void setEGLContextFactory(binu parambinu)
   {
     b();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EGLContextFactory = paramEGLContextFactory;
+    this.jdField_a_of_type_Binu = parambinu;
   }
   
-  public void setEGLWindowSurfaceFactory(GLTextureView.EGLWindowSurfaceFactory paramEGLWindowSurfaceFactory)
+  public void setEGLWindowSurfaceFactory(binv parambinv)
   {
     b();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EGLWindowSurfaceFactory = paramEGLWindowSurfaceFactory;
+    this.jdField_a_of_type_Binv = parambinv;
   }
   
-  public void setGLWrapper(GLTextureView.GLWrapper paramGLWrapper)
+  public void setGLWrapper(biny parambiny)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLWrapper = paramGLWrapper;
+    this.jdField_a_of_type_Biny = parambiny;
   }
   
   public void setPreserveEGLContextOnPause(boolean paramBoolean)
@@ -284,24 +286,24 @@ public class GLTextureView
   
   public void setRenderMode(int paramInt)
   {
-    this.jdField_a_of_type_Aoix.a(paramInt);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread.a(paramInt);
   }
   
   public void setRenderer(GLSurfaceView.Renderer paramRenderer)
   {
     b();
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EGLConfigChooser == null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EGLConfigChooser = new aoja(this, true);
+    if (this.jdField_a_of_type_Bint == null) {
+      this.jdField_a_of_type_Bint = new bioa(this, true);
     }
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EGLContextFactory == null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EGLContextFactory = new aoiu(this, null);
+    if (this.jdField_a_of_type_Binu == null) {
+      this.jdField_a_of_type_Binu = new binr(this, null);
     }
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EGLWindowSurfaceFactory == null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$EGLWindowSurfaceFactory = new aoiv(null);
+    if (this.jdField_a_of_type_Binv == null) {
+      this.jdField_a_of_type_Binv = new bins(null);
     }
     this.jdField_a_of_type_AndroidOpenglGLSurfaceView$Renderer = paramRenderer;
-    this.jdField_a_of_type_Aoix = new aoix(this.jdField_a_of_type_JavaLangRefWeakReference);
-    this.jdField_a_of_type_Aoix.start();
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread = new GLTextureView.GLThread(this.jdField_a_of_type_JavaLangRefWeakReference);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleGLTextureView$GLThread.start();
   }
 }
 

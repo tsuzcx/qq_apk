@@ -1,10 +1,17 @@
-import com.tencent.mobileqq.search.model.ContactSearchModelGlobalTroop.TroopSearchMemberInfo;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.vas.avatar.VasAvatar;
 
 public class ahys
 {
-  public long a;
-  public ContactSearchModelGlobalTroop.TroopSearchMemberInfo a;
-  public String a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public VasAvatar a;
+  public ImageView b;
+  
+  public ahys(ahyr paramahyr) {}
 }
 
 

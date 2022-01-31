@@ -1,28 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class vpa
-  extends Handler
+class vpa
+  implements View.OnClickListener
 {
-  boolean jdField_a_of_type_Boolean = true;
+  vpa(voy paramvoy) {}
   
-  public vpa(TroopGiftMsgItemBuilder paramTroopGiftMsgItemBuilder) {}
-  
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (paramMessage.what == TroopGiftMsgItemBuilder.a()) {}
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      if (paramMessage.what != TroopGiftMsgItemBuilder.b()) {}
-    }
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vpa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.intervideo.od;
 
-import com.sixgod.pluginsdk.component.SixGodPreLoadActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class ODLoadApkActivity
-  extends SixGodPreLoadActivity
+  extends BaseActivity
 {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.od.ODLoadApkActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,75 +1,30 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.HintDrawable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
+import com.tencent.weiyun.transmission.upload.UploadManager;
 
-public class aomz
-  implements Animator.AnimatorListener
+class aomz
+  implements bgwk
 {
-  public aomz(HintDrawable paramHintDrawable) {}
+  aomz(aomp paramaomp) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void a(long paramLong, float paramFloat) {}
+  
+  public void a(String paramString)
   {
-    if (!HintDrawable.a(this.a)) {
-      return;
-    }
-    if (!HintDrawable.b(this.a))
-    {
-      HintDrawable.a(this.a, false);
-      if (HintDrawable.b(this.a) == 1)
-      {
-        HintDrawable.a(this.a, 3);
-        return;
-      }
-      HintDrawable.a(this.a, 0);
-      HintDrawable.a(this.a, "");
-      return;
-    }
-    if (HintDrawable.b(this.a) == 1)
-    {
-      HintDrawable.a(this.a, 2);
-      HintDrawable.a(this.a, HintDrawable.b(this.a), 1000);
-      return;
-    }
-    HintDrawable.a(this.a, "");
-    HintDrawable.a(this.a, 0);
-    HintDrawable.a(this.a, false);
+    aomp.b(this.a, false);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(String paramString1, String paramString2)
   {
-    if (!HintDrawable.a(this.a)) {
-      return;
-    }
-    if (!HintDrawable.b(this.a))
-    {
-      HintDrawable.a(this.a, false);
-      if (HintDrawable.b(this.a) == 1)
-      {
-        HintDrawable.a(this.a, 3);
-        return;
-      }
-      HintDrawable.a(this.a, 0);
-      HintDrawable.a(this.a, "");
-      return;
-    }
-    if (HintDrawable.b(this.a) == 1)
-    {
-      HintDrawable.a(this.a, 2);
-      HintDrawable.a(this.a, HintDrawable.b(this.a), 1000);
-      return;
-    }
-    HintDrawable.a(this.a, "");
-    HintDrawable.a(this.a, 0);
-    HintDrawable.a(this.a, false);
+    aomp.a(this.a, true);
+    aomp.b(this.a, false);
+    bgti.a(aomp.a(this.a).getApplication(), true);
+    WeiyunTransmissionGlobal.getInstance().getUploadManager().loadLibFromPath(paramString1);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aomz
  * JD-Core Version:    0.7.0.1
  */

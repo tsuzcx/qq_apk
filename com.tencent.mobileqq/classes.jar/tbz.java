@@ -1,36 +1,32 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.observer.QZoneObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetFeedVisitor;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserSimpleInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.List;
 
 public class tbz
-  extends QZoneObserver
+  extends slu
 {
-  public tbz(Leba paramLeba) {}
+  public long a;
+  public List<qqstory_struct.UserSimpleInfo> a;
+  public long b;
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
+  public tbz(String paramString, qqstory_service.RspGetFeedVisitor paramRspGetFeedVisitor)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UndealCount.Q.lebatab.leba", 2, "on Get QZone Count:" + paramBoolean1 + ",HasNew:" + paramBoolean2);
-    }
-    if (QLog.isColorLevel())
-    {
-      if ((paramLong >>> 17 & 1L) != 0L) {
-        QLog.d("UndealCount.ZebraAlbum.", 2, "Leba onGetQZoneFeedCountFin Zebra album and then call Leba freshEntryItemUI");
-      }
-      QLog.d("UndealCount.", 2, "Leba onGetQZoneFeedCountFin type: " + paramLong + " and then call Leba freshEntryItemUI");
-    }
-    if (paramBoolean1)
-    {
-      Leba.c(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.lebatab.leba", 2, "onGetQZoneFeedCountFin. notifyData.");
-      }
-    }
+    super(paramRspGetFeedVisitor.result);
+    this.b = paramRspGetFeedVisitor.view_total_num.get();
+    this.jdField_a_of_type_JavaUtilList = paramRspGetFeedVisitor.user_list.get();
+    this.jdField_a_of_type_Long = this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public String toString()
+  {
+    return "GetVideoWatcherListResponse{totalReadTime=" + this.b + "totalWatcherCount=" + this.jdField_a_of_type_Long + ", userList=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tbz
  * JD-Core Version:    0.7.0.1
  */

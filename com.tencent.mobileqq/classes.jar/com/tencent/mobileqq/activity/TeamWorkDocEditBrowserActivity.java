@@ -1,31 +1,44 @@
 package com.tencent.mobileqq.activity;
 
+import alzw;
+import amga;
+import amgb;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
-import com.tencent.biz.common.util.HttpUtil;
+import apdh;
+import axfs;
+import axhg;
+import babh;
+import badq;
+import bbmy;
+import bfqn;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.GifDrawable;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.mini.sdk.LaunchParam;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
 import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.CookieManager;
-import cooperation.qzone.QZoneShareManager;
 import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import mpl;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.manager.TicketManager;
@@ -50,54 +63,266 @@ public class TeamWorkDocEditBrowserActivity
     paramIntent.putExtra("isScreenOrientationPortrait", true);
     paramIntent.putExtra("url", paramString);
     paramIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
+    paramIntent.putExtra("big_brother_source_key", "biz_src_jc_xiaolv");
     return paramIntent;
   }
   
   public static void a(Context paramContext, Bundle paramBundle, boolean paramBoolean)
   {
-    Intent localIntent;
-    if (NetworkUtil.d(BaseApplication.getContext()))
+    Object localObject3;
+    Object localObject1;
+    if (badq.d(BaseApplication.getContext()))
     {
-      localIntent = new Intent(paramContext, TeamWorkDocEditBrowserActivity.class);
-      String str = paramBundle.getString("url");
+      localObject3 = paramBundle.getString("tdsourcetag");
+      if (localObject3 != null)
+      {
+        localObject2 = paramBundle.getString("url");
+        localObject1 = localObject2;
+        if (!TextUtils.isEmpty((CharSequence)localObject2))
+        {
+          localObject1 = localObject2;
+          if (!((String)localObject2).contains("tdsourcetag")) {
+            localObject1 = axfs.b((String)localObject2, (String)localObject3);
+          }
+        }
+        if (a(paramContext, (String)localObject1, (String)localObject3, paramBundle.getBoolean("temp_preview_from_qq")))
+        {
+          QLog.e("TeamWorkDocEditBrowserActivity", 2, "openDocsMiniApp");
+          localObject1 = paramBundle.getString("tdsourcetag", "");
+          if (((paramContext instanceof Activity)) && ((((String)localObject1).equals("s_QQ_file_share_edit")) || (((String)localObject1).equals("s_qq_file_edit"))))
+          {
+            QLog.d("TeamWorkDocEditBrowserActivity", 2, "openDocsMiniApp in TeamWorkDocEditBrowserActivity");
+            ((Activity)paramContext).finish();
+          }
+          axfs.a(paramBundle, "0X8009ED7");
+          return;
+        }
+      }
+      axfs.a(paramBundle, "0X8009ED6");
+      localObject3 = new Intent(paramContext, TeamWorkDocEditBrowserActivity.class);
+      Object localObject2 = paramBundle.getString("url");
       i = paramBundle.getInt("key_team_work_edit_type");
+      localObject1 = localObject2;
+      Object localObject4;
+      Object localObject5;
+      if (axfs.b((String)localObject2))
+      {
+        localObject1 = localObject2;
+        if ((paramContext instanceof FragmentActivity))
+        {
+          localObject4 = (FragmentActivity)paramContext;
+          localObject5 = ((FragmentActivity)localObject4).getChatFragment();
+          localObject1 = localObject2;
+          if (localObject5 != null)
+          {
+            localObject5 = ((ChatFragment)localObject5).a();
+            localObject1 = localObject2;
+            if (localObject5 != null)
+            {
+              String str = ((BaseChatPie)localObject5).a.jdField_a_of_type_JavaLangString;
+              localObject1 = localObject2;
+              if (!TextUtils.isEmpty((CharSequence)localObject2))
+              {
+                localObject1 = localObject2;
+                if (!TextUtils.isEmpty(str)) {
+                  if (((BaseChatPie)localObject5).a.jdField_a_of_type_Int != 0)
+                  {
+                    localObject1 = localObject2;
+                    if (((BaseChatPie)localObject5).a.jdField_a_of_type_Int != 1) {}
+                  }
+                  else
+                  {
+                    localObject4 = axfs.a(((FragmentActivity)localObject4).app, str, ((BaseChatPie)localObject5).a.jdField_a_of_type_Int);
+                    localObject1 = "?" + (String)localObject4;
+                    if (((String)localObject2).contains("?")) {
+                      localObject1 = "&" + (String)localObject4;
+                    }
+                    localObject1 = (String)localObject2 + (String)localObject1;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
       if (paramBundle.getBoolean("temp_preview_from_qq")) {
-        localIntent.putExtra("temp_preview_from_qq", true);
+        ((Intent)localObject3).putExtra("temp_preview_from_qq", true);
       }
       if (paramBundle.getParcelable("key_team_work_file_import_info") != null)
       {
-        localIntent.putExtra("key_team_work_file_import_info", paramBundle.getParcelable("key_team_work_file_import_info"));
-        if (((TeamWorkFileImportInfo)paramBundle.getParcelable("key_team_work_file_import_info")).e) {
-          localIntent.putExtra("key_is_new_pad_flag", true);
+        ((Intent)localObject3).putExtra("key_team_work_file_import_info", paramBundle.getParcelable("key_team_work_file_import_info"));
+        if (((TeamWorkFileImportInfo)paramBundle.getParcelable("key_team_work_file_import_info")).f) {
+          ((Intent)localObject3).putExtra("key_is_new_pad_flag", true);
         }
       }
-      localIntent.putExtra("url", str);
-      localIntent.putExtra("key_team_work_edit_type", i);
-      localIntent.putExtra("hide_more_button", true);
-      localIntent.putExtra("webStyle", "noBottomBar");
-      localIntent.putExtra("isScreenOrientationPortrait", true);
-      localIntent.putExtra("title", " ");
-      localIntent.addFlags(603979776);
-      if ((!paramBoolean) || (!(paramContext instanceof Activity))) {
-        break label236;
+      if (paramBundle.getBoolean("doc_from_aio", false))
+      {
+        ((Intent)localObject3).putExtra("doc_from_aio", true);
+        if ((((Intent)localObject3).getBooleanExtra("doc_from_aio", false)) && ((paramContext instanceof FragmentActivity)))
+        {
+          localObject2 = (FragmentActivity)paramContext;
+          localObject4 = ((FragmentActivity)localObject2).getChatFragment();
+          if (localObject4 != null)
+          {
+            localObject4 = ((ChatFragment)localObject4).a();
+            if (localObject4 != null)
+            {
+              localObject5 = ((BaseChatPie)localObject4).a.jdField_a_of_type_JavaLangString;
+              int j = ((BaseChatPie)localObject4).a.jdField_a_of_type_Int;
+              if ((!TextUtils.isEmpty((CharSequence)localObject5)) && (j != -1))
+              {
+                ((Intent)localObject3).putExtra("doc_from_aio_uin", (String)localObject5);
+                ((Intent)localObject3).putExtra("doc_from_aio_peertype", j);
+                ((Intent)localObject3).putExtra("doc_from_aio_nickname", babh.b(((FragmentActivity)localObject2).app, (String)localObject5, j));
+              }
+            }
+          }
+        }
+        if (paramBundle.getBoolean("doc_from_forward_dialog", false)) {
+          ((Intent)localObject3).putExtra("doc_from_forward_dialog", true);
+        }
+        if (paramBundle.getString("tdsourcetag") == null) {
+          break label838;
+        }
+        localObject2 = paramBundle.getString("tdsourcetag");
+        ((Intent)localObject3).putExtra("tdsourcetag", (String)localObject2);
+        ((Intent)localObject3).putExtra("url", axfs.b((String)localObject1, (String)localObject2));
+        label670:
+        ((Intent)localObject3).putExtra("key_team_work_edit_type", i);
+        ((Intent)localObject3).putExtra("hide_more_button", true);
+        ((Intent)localObject3).putExtra("webStyle", "noBottomBar");
+        ((Intent)localObject3).putExtra("isScreenOrientationPortrait", true);
+        ((Intent)localObject3).putExtra("title", " ");
+        ((Intent)localObject3).putExtra("big_brother_source_key", "biz_src_jc_file");
+        if (TextUtils.isEmpty(((Intent)localObject3).getStringExtra("big_brother_source_key"))) {
+          ((Intent)localObject3).putExtra("big_brother_source_key", "biz_src_jc_xiaolv");
+        }
+        if (paramBundle.getBoolean("doc_from_forward_dialog", false)) {
+          break label851;
+        }
+        i = 1;
+        label762:
+        if (i != 0) {
+          ((Intent)localObject3).addFlags(603979776);
+        }
+        if ((!paramBoolean) || (!(paramContext instanceof Activity))) {
+          break label895;
+        }
       }
     }
-    label236:
+    label838:
+    label851:
+    label895:
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        ((Activity)paramContext).startActivityForResult(localIntent, 14001);
+        ((Activity)paramContext).startActivityForResult((Intent)localObject3, 14001);
         return;
+        if ((BaseActivity.sTopActivity == null) || (!(BaseActivity.sTopActivity instanceof SplashActivity)) || (SplashActivity.jdField_a_of_type_Int != 2)) {
+          break;
+        }
+        ((Intent)localObject3).putExtra("doc_from_aio", true);
+        break;
+        ((Intent)localObject3).putExtra("url", (String)localObject1);
+        break label670;
+        i = 0;
+        break label762;
       }
-      paramContext.startActivity(localIntent);
+      paramContext.startActivity((Intent)localObject3);
       return;
-      QQToast.a(BaseApplication.getContext(), paramContext.getResources().getString(2131433023), 0).b(paramContext.getResources().getDimensionPixelSize(2131558448));
+      bbmy.a(BaseApplication.getContext(), paramContext.getResources().getString(2131626719), 0).b(paramContext.getResources().getDimensionPixelSize(2131167766));
       return;
     }
   }
   
-  public ArrayList a(ArrayList paramArrayList, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
+  public static boolean a(Context paramContext, String paramString1, String paramString2)
+  {
+    return a(paramContext, paramString1, paramString2, false);
+  }
+  
+  public static boolean a(Context paramContext, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    if ((paramString2 == null) || (paramContext == null)) {
+      return false;
+    }
+    String str3 = (String)axfs.a.get(paramString2);
+    if (str3 == null) {
+      return false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("TeamWorkDocEditBrowserActivity", 2, "openDocsMiniApp:configType " + str3);
+    }
+    paramString2 = (amga)alzw.a().a(418);
+    if (paramString2 == null) {
+      return false;
+    }
+    paramString2 = (amgb)paramString2.a().get(str3);
+    if (paramString2 == null) {
+      return false;
+    }
+    if (paramString2.a()) {}
+    for (;;)
+    {
+      try
+      {
+        LaunchParam localLaunchParam = new LaunchParam();
+        String str4 = paramString2.a();
+        String str2 = paramString2.b();
+        String str1 = "";
+        paramString2 = str2;
+        Object localObject = str1;
+        if (!str3.equals("docs_miniapp_config_templatelist"))
+        {
+          if (TextUtils.isEmpty(paramString1))
+          {
+            paramString2 = new StringBuilder().append(str2).append("?needSave=");
+            if (!paramBoolean) {
+              break label436;
+            }
+            paramString1 = "1";
+            paramString2 = paramString1;
+            localObject = str1;
+          }
+        }
+        else
+        {
+          MiniAppLauncher.launchMiniAppById(paramContext, str4, paramString2, (String)localObject, null, null, 2012);
+          if (!QLog.isColorLevel()) {
+            break label434;
+          }
+          QLog.i("TeamWorkDocEditBrowserActivity", 2, "openDocsMiniApp:open :scene = " + localLaunchParam.scene + "miniAppId = " + localLaunchParam.miniAppId + "entryPath = " + localLaunchParam.entryPath + "navigateExtData = " + localLaunchParam.navigateExtData);
+          break label434;
+        }
+        localObject = new StringBuilder().append(str2).append("?url=").append(URLEncoder.encode(paramString1, "utf-8")).append("&needSave=");
+        if (paramBoolean)
+        {
+          paramString2 = "1";
+          paramString2 = paramString2;
+          localObject = "url=" + paramString1;
+          continue;
+        }
+        paramString2 = "0";
+        continue;
+        return false;
+      }
+      catch (UnsupportedEncodingException paramContext)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("TeamWorkDocEditBrowserActivity", 2, "openDocsMiniApp " + paramContext.getMessage());
+        }
+        if (TextUtils.equals(str3, "s_qq_mini_importing")) {
+          axhg.a(null, "0X800A4B5");
+        }
+      }
+      label434:
+      return true;
+      label436:
+      paramString1 = "0";
+    }
+  }
+  
+  public ArrayList<String> a(ArrayList<String> paramArrayList, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
   {
     if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
       return paramArrayList;
@@ -106,29 +331,29 @@ public class TeamWorkDocEditBrowserActivity
     ArrayList localArrayList2 = new ArrayList();
     int i = 0;
     String str;
-    label190:
+    label192:
     HashMap localHashMap;
     Object localObject3;
     if (i < paramArrayList.size())
     {
       str = (String)paramArrayList.get(i);
-      if (FileUtil.a(str))
+      if (apdh.a(str))
       {
         if (QLog.isColorLevel()) {
           QLog.d("TeamWorkDocEditBrowserActivity", 4, "local url:" + str);
         }
-        if (FileUtil.a(str) <= 5242880L) {
-          break label448;
+        if (apdh.a(str) <= 5242880L) {
+          break label452;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("TeamWorkDocEditBrowserActivity", 4, "file length:" + FileUtil.a(str));
+          QLog.d("TeamWorkDocEditBrowserActivity", 4, "file length:" + apdh.a(str));
         }
         if ((paramInt != 0) || (GifDrawable.isGifFile(new File(str)))) {
-          break label442;
+          break label446;
         }
-        localObject1 = QZoneShareManager.a(str, i);
+        localObject1 = bfqn.a(str, i);
         if (localObject1 == null) {
-          break label440;
+          break label444;
         }
         str = ((File)localObject1).getAbsolutePath();
         localArrayList2.add(localObject1);
@@ -142,19 +367,19 @@ public class TeamWorkDocEditBrowserActivity
           localObject3 = localWebViewFragment.b();
         }
         if (TextUtils.isEmpty((CharSequence)localObject3)) {
-          break label575;
+          break label579;
         }
         if (!((String)localObject3).contains("docx.qq.com")) {
-          break label451;
+          break label455;
         }
       }
     }
-    label440:
-    label442:
-    label448:
-    label451:
+    label444:
+    label446:
+    label452:
+    label455:
     Object localObject2;
-    label575:
+    label579:
     for (Object localObject1 = ((TicketManager)localObject1).getPskey(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "docx.qq.com");; localObject2 = null)
     {
       for (;;)
@@ -169,7 +394,7 @@ public class TeamWorkDocEditBrowserActivity
           ((Map)localObject1).put("type", paramString3);
           localObject3 = new HashMap();
           ((Map)localObject3).put("share_image", str);
-          localObject1 = HttpUtil.a(paramString4, paramString1, paramString2, (Map)localObject1, (Map)localObject3, localHashMap);
+          localObject1 = mpl.a(paramString4, paramString1, paramString2, (Map)localObject1, (Map)localObject3, localHashMap);
           if (localObject1 == null) {}
         }
         try
@@ -182,9 +407,9 @@ public class TeamWorkDocEditBrowserActivity
           break;
           return null;
           if (paramInt == 2) {}
-          break label190;
+          break label192;
           if (!((String)localObject3).contains("docs.qq.com")) {
-            break label575;
+            break label579;
           }
           localObject1 = ((TicketManager)localObject1).getPskey(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "docs.qq.com");
           continue;
@@ -200,7 +425,7 @@ public class TeamWorkDocEditBrowserActivity
           }
         }
       }
-      QZoneShareManager.a(localArrayList2);
+      bfqn.a(localArrayList2);
       return localArrayList1;
     }
   }
@@ -213,13 +438,13 @@ public class TeamWorkDocEditBrowserActivity
     }
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web"));
     return super.doOnCreate(paramBundle);
   }
   
-  protected void doOnStop()
+  public void doOnStop()
   {
     ((InputMethodManager)getSystemService("input_method")).hideSoftInputFromWindow(getWindow().getDecorView().getWindowToken(), 0);
     super.doOnStop();

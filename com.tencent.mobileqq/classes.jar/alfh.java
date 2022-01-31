@@ -1,30 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
+import com.tencent.ark.ark.PlayerStub;
+import com.tencent.ark.ark.PlayerStubFactory;
 
-public class alfh
-  implements Runnable
+final class alfh
+  implements ark.PlayerStubFactory
 {
-  public alfh(ARWorldCupGameLogicManager paramARWorldCupGameLogicManager, boolean paramBoolean) {}
-  
-  public void run()
+  public ark.PlayerStub CreateStub()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      if (ARWorldCupGameLogicManager.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager) != null)
-      {
-        ARWorldCupGameLogicManager.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager).setOnTouchListener(new alfi(this));
-        ARWorldCupGameLogicManager.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager).setVisibility(0);
-      }
-    }
-    while (ARWorldCupGameLogicManager.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager) == null) {
-      return;
-    }
-    ARWorldCupGameLogicManager.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager).setOnTouchListener(null);
-    ARWorldCupGameLogicManager.a(this.jdField_a_of_type_ComTencentMobileqqWorldcupARWorldCupGameLogicManager).setVisibility(8);
+    return new alfg();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alfh
  * JD-Core Version:    0.7.0.1
  */

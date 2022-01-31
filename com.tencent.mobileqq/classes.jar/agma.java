@@ -1,26 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
 
 public class agma
-  implements Runnable
+  implements View.OnClickListener
 {
-  public agma(ScanTorchActivity paramScanTorchActivity) {}
+  public agma(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ScanTorchActivity.r(this.a);
-    if ((!TextUtils.isEmpty(ScanTorchActivity.b(this.a))) && (new File(ScanTorchActivity.b(this.a)).exists()))
-    {
-      this.a.runOnUiThread(new agmb(this));
-      return;
+    TroopUnAccalimedRedPacketList.a(this.a, true);
+    if (this.a.a != null) {
+      this.a.a.dismiss();
     }
-    this.a.runOnUiThread(new agmd(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agma
  * JD-Core Version:    0.7.0.1
  */

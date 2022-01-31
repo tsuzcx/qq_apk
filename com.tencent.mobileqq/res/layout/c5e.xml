@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_gravity="bottom" android:id="@id/hg7" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/lhf" android:background="@drawable/b46" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_weight="0.0" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/qzone_skin_feed_second_content_text_color" android:gravity="center" android:id="@id/lhe" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="42.0dip" android:layout_below="@id/lhf" />
+    <RelativeLayout android:id="@id/lhg" android:layout_width="fill_parent" android:layout_height="42.0dip" android:layout_below="@id/lhf">
+        <ImageView android:id="@id/c5n" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_marginRight="19.0dip" android:src="@drawable/ayx" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <com.qzone.module.feedcomponent.ui.common.SuperLikeView android:layout_gravity="center" android:id="@id/c5o" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_marginRight="29.0dip" android:src="@drawable/ayw" android:scaleType="fitXY" android:layout_toLeftOf="@id/c5n" android:layout_centerVertical="true" />
+        <RelativeLayout android:gravity="center" android:layout_gravity="bottom" android:background="@drawable/asr" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="26.0dip" android:layout_marginBottom="6.0dip" android:baselineAligned="false" android:layout_toLeftOf="@id/c5o" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
+            <ViewStub android:id="@id/cnf" android:layout="@layout/afo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/bhg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/qzone_skin_feed_inputbox_rapid_comment_icon" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <View android:id="@id/bn_" android:background="@drawable/b46" android:layout_width="1.0dip" android:layout_height="fill_parent" android:layout_marginTop="4.0dip" android:layout_marginBottom="4.0dip" android:layout_toLeftOf="@id/bhg" android:layout_centerVertical="true" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/a_e" android:textColorHint="@color/qzone_skin_feed_input_box_hint_color" android:id="@id/bh5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:hint="@string/rqj" android:layout_toLeftOf="@id/bhg" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

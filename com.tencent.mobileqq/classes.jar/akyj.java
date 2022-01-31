@@ -1,28 +1,57 @@
-import com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
 import com.tencent.qphone.base.util.QLog;
 
 public class akyj
-  implements Runnable
+  implements View.OnClickListener
 {
-  public akyj(SwiftWebAccelerator paramSwiftWebAccelerator, SwiftReuseTouchWebView paramSwiftReuseTouchWebView) {}
+  public akyj(QRScanEntryView paramQRScanEntryView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
+    boolean bool2 = false;
+    if (QRScanEntryView.a(this.a))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView.destroy();
-      return;
+      paramView = akwj.a();
+      if (!QRScanEntryView.b(this.a))
+      {
+        bool1 = true;
+        if (paramView.a(bool1))
+        {
+          paramView = this.a;
+          if (QRScanEntryView.b(this.a)) {
+            break label118;
+          }
+          bool1 = true;
+          QRScanEntryView.a(paramView, bool1);
+          paramView = (akwo)this.a.a;
+          bool1 = bool2;
+          if (!QRScanEntryView.b(this.a)) {
+            bool1 = true;
+          }
+          paramView.a(bool1, 0L);
+          QRScanEntryView.a(this.a, true);
+          QRScanEntryView.b(this.a, QRScanEntryView.b(this.a));
+        }
+      }
     }
-    catch (Exception localException)
-    {
-      QLog.e("WebLog_SwiftWebAccelerator", 1, "doMainStep_WarnUpWebView error:" + localException.toString());
+    label118:
+    while (!QLog.isColorLevel()) {
+      for (;;)
+      {
+        return;
+        boolean bool1 = false;
+        continue;
+        bool1 = false;
+      }
     }
+    QLog.d("AREngine_QRScanEntryView", 2, "initView click mFlashLightTips when view invisble.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akyj
  * JD-Core Version:    0.7.0.1
  */

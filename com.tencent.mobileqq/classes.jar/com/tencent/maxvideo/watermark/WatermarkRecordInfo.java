@@ -19,8 +19,8 @@ public class WatermarkRecordInfo
     int i;
     if ((paramList != null) && (!paramList.isEmpty()))
     {
-      i = 0;
       int j = paramList.size();
+      i = 0;
       if (i >= j) {
         localStringBuffer.append("]");
       }

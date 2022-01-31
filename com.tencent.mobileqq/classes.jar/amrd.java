@@ -1,53 +1,48 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pic.UpCallBack;
-import com.tencent.mobileqq.pic.UpCallBack.SendResult;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.emoticon.VipComicEmoticonUploadManager;
-import tencent.im.msg.im_msg_body.RichText;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.support.v4.util.LruCache;
 
-public class amrd
-  implements UpCallBack
+public class amrd<T>
 {
-  public amrd(VipComicEmoticonUploadManager paramVipComicEmoticonUploadManager) {}
+  private LruCache<String, T> a = new amre(this, (int)Runtime.getRuntime().maxMemory() / 32);
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  private static int a(Bitmap paramBitmap)
   {
-    return null;
+    if (paramBitmap == null) {
+      return 0;
+    }
+    return paramBitmap.getRowBytes() * paramBitmap.getHeight();
   }
   
-  public void a(UpCallBack.SendResult paramSendResult) {}
-  
-  public void b(UpCallBack.SendResult paramSendResult)
+  private int b(T paramT)
   {
-    if ((paramSendResult == null) || (this.a.a == null)) {
-      return;
+    if ((paramT instanceof Bitmap)) {
+      return a((Bitmap)paramT);
     }
-    if (paramSendResult.jdField_a_of_type_Int == 0)
+    if ((paramT instanceof BitmapDrawable)) {
+      return a(((BitmapDrawable)paramT).getBitmap());
+    }
+    return 0;
+  }
+  
+  protected int a(T paramT)
+  {
+    return 0;
+  }
+  
+  public void a(int paramInt)
+  {
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("VipComicEmoticonUploader", 2, "Upload finish, id=" + paramSendResult.c);
-      }
-      localBundle = new Bundle();
-      localBundle.putInt("result", 0);
-      localBundle.putString("id", paramSendResult.c);
-      this.a.a.onInvokeFinish(localBundle);
+      this.a.trimToSize(paramInt);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("VipComicEmoticonUploader", 2, "Upload error");
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("result", 1);
-    localBundle.putInt("errCode", paramSendResult.b);
-    localBundle.putString("errMsg", paramSendResult.jdField_a_of_type_JavaLangString);
-    this.a.a.onInvokeFinish(localBundle);
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amrd
  * JD-Core Version:    0.7.0.1
  */

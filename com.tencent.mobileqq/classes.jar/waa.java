@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.app.HotChatManager;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class waa
-  implements Runnable
+class waa
+  implements View.OnClickListener
 {
-  public waa(HotChatPie paramHotChatPie) {}
+  waa(vzz paramvzz) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAppHotChatManager.a(this.a.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo);
+    vzz.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     waa
  * JD-Core Version:    0.7.0.1
  */

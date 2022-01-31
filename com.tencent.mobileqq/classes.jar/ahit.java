@@ -1,119 +1,33 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.PttItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import java.lang.ref.WeakReference;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.widget.CircleProgress;
 
 public class ahit
-  extends Handler
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private WeakReference a;
+  public ahit(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt1, int paramInt2) {}
   
-  public ahit(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a = new WeakReference(paramReceiptMessageDetailFragment);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.a.get();
-    if ((localReceiptMessageDetailFragment == null) || (!localReceiptMessageDetailFragment.isAdded())) {}
-    label124:
-    int i;
-    label126:
-    do
-    {
-      return;
-      switch (paramMessage.what)
-      {
-      case 8: 
-      case 9: 
-      case 12: 
-      case 13: 
-      case 14: 
-      case 15: 
-      case 16: 
-      case 17: 
-      case 18: 
-      case 19: 
-      default: 
-        i = 0;
-      }
-    } while (i == 0);
-    localReceiptMessageDetailFragment.stopTitleProgress();
-    ReceiptMessageDetailFragment.m(localReceiptMessageDetailFragment);
-    if ((ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a == 0) && (!ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment)))
-    {
-      if (!ReceiptMessageDetailFragment.b(localReceiptMessageDetailFragment)) {
-        break label399;
-      }
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, 1, true);
-    }
-    while (ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment))
-    {
-      ReceiptMessageDetailFragment.h(localReceiptMessageDetailFragment);
-      return;
-      if (!(paramMessage.obj instanceof MessageForText)) {
-        break;
-      }
-      ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment, 1);
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, (MessageForText)paramMessage.obj);
-      i = 1;
-      break label126;
-      if (!(paramMessage.obj instanceof MessageForPic)) {
-        break;
-      }
-      ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment, 2);
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, (MessageForPic)paramMessage.obj);
-      i = 1;
-      break label126;
-      if (!(paramMessage.obj instanceof MessageForPtt)) {
-        break;
-      }
-      ReceiptMessageDetailFragment.c(localReceiptMessageDetailFragment, 3);
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, (MessageForPtt)paramMessage.obj);
-      ReceiptMessageDetailFragment.h(localReceiptMessageDetailFragment);
-      i = 1;
-      break label126;
-      ReceiptMessageDetailFragment.i(localReceiptMessageDetailFragment);
-      i = 0;
-      break label126;
-      ReceiptMessageDetailFragment.j(localReceiptMessageDetailFragment);
-      i = 0;
-      break label126;
-      ReceiptMessageDetailFragment.h(localReceiptMessageDetailFragment);
-      i = 0;
-      break label126;
-      QQToast.a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).getApp(), 1, 2131439027, 0).a(localReceiptMessageDetailFragment);
-      i = 0;
-      break label126;
-      i = PttItemBuilder.a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment));
-      localReceiptMessageDetailFragment.a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), i, false);
-      i = 0;
-      break label126;
-      ReceiptMessageDetailFragment.k(localReceiptMessageDetailFragment);
-      i = 0;
-      break label126;
-      ThreadManager.post(new ahiu(this, localReceiptMessageDetailFragment), 8, null, false);
-      i = 0;
-      break label126;
-      ReceiptMessageDetailFragment.l(localReceiptMessageDetailFragment);
-      break label124;
-      label399:
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, 0, true);
-    }
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+    paramValueAnimator.width = ((int)(this.jdField_a_of_type_Int * f));
+    paramValueAnimator.height = ((int)(this.jdField_a_of_type_Int * f));
+    paramValueAnimator.addRule(13);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramValueAnimator);
+    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.getLayoutParams();
+    paramValueAnimator.width = ((int)(this.b * f));
+    paramValueAnimator.height = ((int)(f * this.b));
+    paramValueAnimator.addRule(13);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setLayoutParams(paramValueAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahit
  * JD-Core Version:    0.7.0.1
  */

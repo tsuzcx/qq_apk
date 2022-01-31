@@ -1,69 +1,19 @@
-import android.app.Activity;
-import android.app.Dialog;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.contactsync.syncadapter.SyncService;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.qcall.QCallFacade;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.PatternLockUtils;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import org.json.JSONObject;
 
 public class rln
-  implements View.OnClickListener
+  implements rlp
 {
-  public rln(AccountManageActivity paramAccountManageActivity, Dialog paramDialog) {}
+  public rln(BridgeModule paramBridgeModule) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, JSONObject paramJSONObject)
   {
-    QLog.flushLog();
-    boolean bool = ((CheckBox)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363708)).isChecked();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.d = bool;
-    SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.getCurrentAccountUin(), this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getString(2131435419), "qqsetting_receivemsg_whenexit_key", bool);
-    SyncService.a(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.d);
-    int i = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.a().b();
-    int j = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.a().a();
-    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity().getSharedPreferences("unreadcount", 4).edit();
-    paramView.putInt("unread", i + j);
-    paramView.commit();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.i();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.a = this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.d;
-    com.tencent.mobileqq.activity.MainFragment.c = true;
-    if (QQPlayerService.a())
-    {
-      paramView = new Intent();
-      paramView.setAction("qqplayer_exit_action");
-      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity().sendBroadcast(paramView);
-    }
-    PatternLockUtils.setFirstEnterAfterLoginState(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app.getCurrentAccountUin(), true);
-    paramView = new Intent("QQ_ACTION_MENU_QUIT");
-    paramView.setClass(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.getActivity(), SplashActivity.class);
-    paramView.addFlags(67108864);
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.startActivity(paramView);
-      label265:
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity.app, "CliOper", "", "", "0X800932A", "0X800932A", 0, 0, "0", "", "", "");
-      return;
-    }
-    catch (Exception paramView)
-    {
-      break label265;
-    }
+    this.a.invokeCallJS(paramString, paramJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rln
  * JD-Core Version:    0.7.0.1
  */

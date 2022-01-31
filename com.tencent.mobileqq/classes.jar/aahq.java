@@ -1,37 +1,39 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
-import com.tencent.mobileqq.ar.ARRenderModel.GreetingCardRender;
-import com.tencent.mobileqq.ar.ARRenderModel.GreetingCardResourceInfo;
-import com.tencent.mobileqq.arcard.ARcardSound;
-import com.tencent.mobileqq.armap.sensor.ARSensorManager;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class aahq
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aahq(GreetingCardRender paramGreetingCardRender) {}
+  public aahq(ChatHistory paramChatHistory) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (GreetingCardRender.d(this.a) == 6)
+    if (this.a.d > 1)
     {
-      if (GreetingCardRender.a(this.a) != null) {
-        GreetingCardRender.a(this.a).a(0, 1);
+      this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(true);
+      this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838747);
+      paramView = this.a;
+      paramView.d -= 1;
+      if (this.a.d <= 1)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840138);
       }
-      if (GreetingCardRender.a(this.a) == null) {
-        GreetingCardRender.a(this.a, new ARcardSound());
-      }
-      if (GreetingCardRender.a(this.a) != null) {
-        GreetingCardRender.a(this.a).a(GreetingCardRender.a(this.a).c + "bgmusic.mp3");
-      }
-      if ((GreetingCardRender.a(this.a) != null) && (GreetingCardRender.a(this.a).b == 1)) {
-        QLog.d("GreetingCardRender", 2, String.format("setNativeState start sensor result=%s", new Object[] { Boolean.valueOf(GreetingCardRender.a(this.a).a(GreetingCardRender.a(this.a))) }));
-      }
+      this.a.e = ((this.a.d - 1) * 8);
+      this.a.jdField_a_of_type_Aahr.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.a.d));
+      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+      this.a.t();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aahq
  * JD-Core Version:    0.7.0.1
  */

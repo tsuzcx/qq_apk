@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class subcmd0x533$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 40, 48, 90, 106 }, new String[] { "string_session_id", "uint64_req_recog_type", "uint32_business_type", "string_clt_version", "msg_ocr_info" }, new Object[] { "", Long.valueOf(0L), Integer.valueOf(0), "", null }, ReqBody.class);
   public subcmd0x533.HttpAROcrInfo msg_ocr_info = new subcmd0x533.HttpAROcrInfo();
@@ -19,7 +19,7 @@ public final class subcmd0x533$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.cmd0x6ff.subcmd0x533.ReqBody
  * JD-Core Version:    0.7.0.1
  */

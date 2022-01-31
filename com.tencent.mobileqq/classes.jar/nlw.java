@@ -1,14 +1,24 @@
-import com.tencent.biz.qqstory.newshare.model.Job;
-import com.tencent.biz.qqstory.newshare.model.JobExecutor;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity.1;
 
 public class nlw
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
-  public nlw(JobExecutor paramJobExecutor, Job paramJob) {}
+  public nlw(ReadInJoyUploadAvatarActivity.1 param1) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    JobExecutor.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor, this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob.a);
+    paramDialogInterface = this.a.this$0.getIntent();
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("retCode", 1);
+    localBundle.putString("msg", ajjy.a(2131647299));
+    paramDialogInterface.putExtra("Bundle", localBundle);
+    this.a.this$0.setResult(-1, paramDialogInterface);
+    this.a.this$0.finish();
   }
 }
 

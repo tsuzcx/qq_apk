@@ -1,151 +1,90 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.FunnyPicHelper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emosm.favroaming.FavEmoConstant;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.mqsafeedit.MD5;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.aio.BabyQAIOPanel;
+import java.util.ArrayList;
 
-class acjk
-  implements Runnable
+public class acjk
+  extends BaseAdapter
 {
-  acjk(acjg paramacjg, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public acjk(BabyQAIOPanel paramBabyQAIOPanel) {}
   
-  public void run()
+  public acji a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    Object localObject2 = (FavroamingDBManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(148);
-    Object localObject3 = ((FavroamingDBManager)localObject2).a();
-    HashSet localHashSet;
-    int i;
-    if (localObject3 != null) {
-      for (;;)
-      {
-        try
-        {
-          JSONArray localJSONArray = new JSONArray();
-          localHashSet = new HashSet();
-          localObject3 = ((List)localObject3).iterator();
-          i = 0;
-        }
-        catch (JSONException localJSONException)
-        {
-          int j;
-          this.jdField_a_of_type_AndroidOsBundle.putInt("result", 1);
-          localObject2 = localJSONException.getMessage();
-          if (localObject2 == null) {
-            continue;
-          }
-          this.jdField_a_of_type_AndroidOsBundle.putString("message", (String)localObject2);
-          this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.i("Q.emoji.web.MessengerService", 2, localJSONException.getMessage());
-          return;
-          i = j;
-          if (TextUtils.isEmpty(((CustomEmotionData)localObject4).md5)) {
-            continue;
-          }
-          i = j;
-          if (((CustomEmotionData)localObject4).md5.length() <= 8) {
-            continue;
-          }
-          Object localObject4 = ((CustomEmotionData)localObject4).md5.substring(0, 8).toLowerCase();
-          localHashSet.add("qto_" + (String)localObject4);
-          i = j;
-          continue;
-        }
-        catch (Exception localException1)
-        {
-          this.jdField_a_of_type_AndroidOsBundle.putInt("result", 1);
-          localObject1 = localException1.getMessage();
-          if (localObject1 == null) {
-            continue;
-          }
-          this.jdField_a_of_type_AndroidOsBundle.putString("message", (String)localObject1);
-          this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.i("Q.emoji.web.MessengerService", 2, (String)localObject1);
-          return;
-        }
-        if (!((Iterator)localObject3).hasNext()) {
-          break label440;
-        }
-        localObject4 = (CustomEmotionData)((Iterator)localObject3).next();
-        if (!"needDel".equals(((CustomEmotionData)localObject4).RomaingType))
-        {
-          j = i + 1;
-          if ((!((CustomEmotionData)localObject4).isMarkFace) && (TextUtils.isEmpty(((CustomEmotionData)localObject4).md5)) && (!TextUtils.isEmpty(((CustomEmotionData)localObject4).emoPath)))
-          {
-            ((CustomEmotionData)localObject4).md5 = HexUtil.a(MD5.getFileMd5(((CustomEmotionData)localObject4).emoPath));
-            ((FavroamingDBManager)localObject2).b((CustomEmotionData)localObject4);
-          }
-          if ((TextUtils.isEmpty(((CustomEmotionData)localObject4).url)) || (!((CustomEmotionData)localObject4).url.contains("qto_"))) {
-            continue;
-          }
-          localObject4 = FunnyPicHelper.a(((CustomEmotionData)localObject4).url);
-          i = j;
-          if (!TextUtils.isEmpty((CharSequence)localObject4))
-          {
-            i = j;
-            if (((String)localObject4).length() > "qto_".length() + 8)
-            {
-              localHashSet.add(((String)localObject4).substring(0, "qto_".length() + 8));
-              i = j;
-            }
-          }
-        }
-      }
+    if ((paramInt >= 0) && (paramInt < BabyQAIOPanel.a(this.a).size())) {
+      return (acji)BabyQAIOPanel.a(this.a).get(paramInt);
     }
-    label440:
-    do
+    return new acji();
+  }
+  
+  public int getCount()
+  {
+    return BabyQAIOPanel.a(this.a).size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if (paramView == null)
     {
-      Object localObject1;
-      localHashSet.addAll(FunnyPicHelper.a);
-      localObject2 = localHashSet.iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        ((JSONArray)localObject1).put((String)((Iterator)localObject2).next());
+      localObject = new acjj();
+      paramView = LayoutInflater.from(BabyQAIOPanel.a(this.a)).inflate(2131492979, paramViewGroup, false);
+      ((acjj)localObject).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131302722));
+      ((acjj)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131302082));
+      ((acjj)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131311234));
+      ((acjj)localObject).b = ((ImageView)paramView.findViewById(2131305095));
+      paramView.setTag(localObject);
+      paramViewGroup = (ViewGroup)localObject;
+      localObject = (RelativeLayout.LayoutParams)paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      if (paramInt % 2 == 0) {
+        break label249;
       }
-      localObject2 = new JSONObject();
-      ((JSONObject)localObject2).put("remainNum", FavEmoConstant.a - i);
-      ((JSONObject)localObject2).put("uid", localObject1);
-      this.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
-      this.jdField_a_of_type_AndroidOsBundle.putString("data", ((JSONObject)localObject2).toString());
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      try
-      {
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("remainNum", FavEmoConstant.a);
-        ((JSONObject)localObject1).put("uid", new JSONArray());
-        this.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
-        this.jdField_a_of_type_AndroidOsBundle.putString("data", ((JSONObject)localObject1).toString());
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-        return;
+      ((RelativeLayout.LayoutParams)localObject).leftMargin = azvv.a(this.a.getContext(), 8.0F);
+      ((RelativeLayout.LayoutParams)localObject).rightMargin = azvv.a(this.a.getContext(), 12.0F);
+      label148:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      localObject = a(paramInt);
+      paramViewGroup.jdField_a_of_type_Int = ((acji)localObject).jdField_a_of_type_Int;
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((acji)localObject).jdField_a_of_type_JavaLangString);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(((acji)localObject).jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      if (!((acji)localObject).jdField_a_of_type_Boolean) {
+        break label286;
       }
-      catch (Exception localException2) {}
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.emoji.web.MessengerService", 2, localException2.getMessage());
+      paramViewGroup.b.setVisibility(0);
+    }
+    for (;;)
+    {
+      paramView.setOnClickListener(this.a);
+      if (AppSetting.c) {
+        paramView.setContentDescription(((acji)localObject).jdField_a_of_type_JavaLangString);
+      }
+      return paramView;
+      paramViewGroup = (acjj)paramView.getTag();
+      break;
+      label249:
+      ((RelativeLayout.LayoutParams)localObject).leftMargin = azvv.a(this.a.getContext(), 12.0F);
+      ((RelativeLayout.LayoutParams)localObject).rightMargin = azvv.a(this.a.getContext(), 8.0F);
+      break label148;
+      label286:
+      paramViewGroup.b.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acjk
  * JD-Core Version:    0.7.0.1
  */

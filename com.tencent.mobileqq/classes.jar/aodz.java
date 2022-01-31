@@ -1,42 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoVote;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.VoteItem;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class aodz
-  implements DialogInterface.OnClickListener
+class aodz
+  extends BroadcastReceiver
 {
-  static
+  private aodz(aodw paramaodw) {}
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (!EditVideoVote.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
+    QLog.i("FileManagerEngine<FileAssistant>", 1, "!!!extCard changed[" + paramIntent.getAction() + "]!!!");
+    paramContext = paramIntent.getAction();
+    if ((paramContext.equalsIgnoreCase("android.intent.action.MEDIA_UNMOUNTED")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_UNMOUNTABLE")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_EJECT")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_REMOVED"))) {
+      apbo.a().a("externalSdCard");
+    }
+    try
     {
-      jdField_a_of_type_Boolean = bool;
+      this.a.a.a().a(true);
+      label96:
+      if ((paramContext.equalsIgnoreCase("android.intent.action.MEDIA_MOUNTED")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_SCANNER_STARTED"))) {
+        apbo.a().a();
+      }
+      this.a.a.a().a(true, 3, null);
       return;
     }
-  }
-  
-  public aodz(EditVideoVote paramEditVideoVote, int paramInt) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = new Bundle();
-    VoteLayer.VoteItem localVoteItem = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoVote.a().a;
-    if ((!jdField_a_of_type_Boolean) && (localVoteItem == null)) {
-      throw new AssertionError();
+    catch (Exception paramIntent)
+    {
+      break label96;
     }
-    EditVideoVote.a(paramDialogInterface, localVoteItem);
-    paramDialogInterface.putInt("element_index", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoVote.a.a(35, paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aodz
  * JD-Core Version:    0.7.0.1
  */

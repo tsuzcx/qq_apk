@@ -1,0 +1,387 @@
+{
+	"ReadInjoy_native_pk_cell": {
+		"view_type": "cell",
+		"direction": "vertical",
+		"view_id": "id_view_ad_coordiiew",
+		"height": {
+			"type": "wrap_content"
+		},
+		"width": {
+			"type": "relative",
+			"value": "351"
+		},
+		"subviews": [{
+			"view_type": "UIView",
+			"view_id": "id_native_pk_container",
+			"event_type": "cmd_native_pk_click",
+			"layout_type": "layout_relative",
+			"margin_left": "12",
+			"margin_right": "12",
+			"margin_top": "30",
+			"height": {
+				"type": "wrap_content"
+			},
+			"width": {
+				"type": "match_parent"
+			},
+			"attributes": {
+				"setBackgroundColorString:": "#F7F7F7",
+				"setAttatchInfo:": "-1",
+				"setBorderWidthString:": "0.5",
+				"setBorderColorString:": "#E5E5E5"
+			},
+			"subviews": [{
+					"view_type": "UILabel",
+					"view_id": "id_pk_title",
+					"margin_left": "10",
+					"margin_right": "30",
+					"margin_top": "15",
+					"height": {
+						"type": "wrap_content"
+					},
+					"width": {
+						"type": "match_parent"
+					},
+					"attributes": {
+						"setNumberOfLinesString:": "1",
+						"setTextColorString:": "#262626",
+						"setText:": "-1",
+						"setBoldFontSizeString:": "18",
+						"setFrameString:": "-1"
+					}
+				}, {
+					"view_type": "UILabel",
+					"view_id": "id_pk_sub_title",
+					"below_of_view": "id_pk_title",
+					"margin_left": "10",
+					"margin_right": "10",
+					"margin_top": "3",
+					"height": {
+						"type": "wrap_content"
+					},
+					"width": {
+						"type": "wrap_content"
+					},
+					"attributes": {
+						"setNumberOfLinesString:": "1",
+						"setTextColorString:": "#737373",
+						"setText:": "-1",
+						"setFontSizeString:": "12"
+					}
+				},
+
+				{
+					"view_type": "UIImageView",
+					"view_id": "id_top_right_arrow",
+					"align_parent_right": "YES",
+					"align_parent_top": "YES",
+					"margin_right": "10",
+					"margin_top": "26",
+					"height": {
+						"type": "relative",
+						"value": "18"
+					},
+					"width": {
+						"type": "relative",
+						"value": "18"
+					},
+					"attributes": {
+						"setFrameString:": "-1",
+						"setImageWithURLString:lineup:": [
+							"-1",
+							"-1"
+						]
+					}
+				}, {
+					"view_type": "container",
+					"layout_type": "layout_relative",
+					"view_id": "id_pk_bottom",
+					"below_of_view": "id_pk_sub_title",
+					"margin_top": "10",
+					"margin_left": "10",
+					"margin_right": "10",
+					"margin_bottom": "15",
+					"height": {
+						"type": "relative",
+						"value": "111"
+					},
+					"width": {
+						"type": "relative",
+						"value": "331"
+					},
+					"subviews": [{
+							"view_type": "UIImageView",
+							"view_id": "id_pk_bg",
+							"height": {
+								"type": "match_parent"
+							},
+							"width": {
+								"type": "match_parent"
+							},
+							"attributes": {
+								"setFrameString:": "-1",
+								"setNumberOfLinesString:": "1",
+								"setImageWithURLString:lineup:": [
+									"-1",
+									"-1"
+								]
+							}
+						},
+						{
+							"view_type": "UILabel",
+							"view_id": "id_left_opinion",
+							"margin_top": "15",
+							"margin_left": "10",
+							"align_parent_left": "YES",
+							"height": {
+								"type": "wrap_content"
+
+							},
+							"width": {
+								"type": "relative",
+								"value": "140"
+							},
+							"attributes": {
+								"setTextColorString:": "#FFFFFF",
+								"setText:": "-1",
+								"setFontSizeString:": "14",
+								"setNumberOfLinesString:": "2",
+								"setTextAlignmentString:": "0"
+							}
+						},
+						{
+							"view_type": "UILabel",
+							"view_id": "id_right_opinion",
+							"margin_top": "15",
+							"margin_right": "10",
+							"align_parent_right": "YES",
+							"height": {
+								"type": "wrap_content"
+
+							},
+							"width": {
+								"type": "relative",
+								"value": "140"
+							},
+							"attributes": {
+								"setTextColorString:": "#FFFFFF",
+								"setText:": "-1",
+								"setFontSizeString:": "14",
+								"setNumberOfLinesString:": "2",
+								"setTextAlignmentString:": "0"
+							}
+						},
+						{
+							"view_type": "container",
+							"view_id": "id_jump_container",
+							"layout_type": "layout_relative",
+							"align_parent_bottom": "YES",
+							"height": {
+								"type": "relative",
+								"value": "44"
+							},
+							"width": {
+								"type": "match_parent"
+							},
+							"subviews": [{
+									"view_type": "UIView",
+									"view_id": "id_pk_bottom_bg",
+									"height": {
+										"type": "match_parent"
+									},
+									"width": {
+										"type": "match_parent"
+
+									},
+									"attributes": {
+										"setBackgroundColorString:": "#26000000"
+									}
+								},
+								{
+									"view_type": "UILabel",
+									"view_id": "id_jump_opinion",
+									"align_parent_center": "YES",
+									"height": {
+										"type": "wrap_content"
+									},
+									"width": {
+										"type": "wrap_content"
+									},
+									"attributes": {
+										"setTextColorString:": "#FFFFFF",
+										"setText:": "-1",
+										"setFontSizeString:": "14"
+									}
+								},
+								{
+									"view_type": "UIImageView",
+									"view_id": "id_right_arrow",
+									"align_parent_center": "YES",
+									"right_of_view": "id_jump_opinion",
+									"height": {
+										"type": "relative",
+										"value": "18"
+									},
+									"width": {
+										"type": "relative",
+										"value": "18"
+									},
+									"attributes": {
+										"setFrameString:": "-1",
+										"setImageWithURLString:lineup:": [
+											"-1",
+											"-1"
+										]
+									}
+								},
+								{
+									"view_type": "UIView",
+									"view_id": "id_left_ticket_number_container",
+									"align_parent_left": "YES",
+									"margin_left": "17",
+									"layout_type": "layout_relative",
+									"height": {
+										"type": "relative",
+										"value": "33"
+									},
+									"width": {
+										"type": "relative",
+										"value": "130"
+									},
+									"subviews": [{
+										"view_type": "container",
+										"direction": "horizontal",
+										"align_parent_center": "YES",
+										"height": {
+											"type": "relative",
+											"value": "18"
+										},
+										"width": {
+											"type": "wrap_content"
+										},
+										"subviews": [{
+												"view_type": "UIImageView",
+												"view_id": "id_left_ticket_number_icon",
+												"margin_top": "2",
+												"height": {
+													"type": "relative",
+													"value": "15"
+												},
+												"width": {
+													"type": "relative",
+													"value": "15"
+												},
+												"attributes": {
+													"setFrameString:": "-1",
+													"setImageWithURLString:lineup:": [
+														"-1",
+														"-1"
+													]
+												}
+											}
+
+											, {
+												"view_type": "UILabel",
+												"view_id": "id_left_ticket_number",
+												"margin_left": "2",
+												"height": {
+													"type": "relative",
+													"value": "18"
+												},
+												"width": {
+													"type": "wrap_content"
+												},
+												"attributes": {
+													"setTextColorString:": "#FFFFFF",
+													"setText:": "-1",
+													"setFontSizeString:": "14",
+													"setNumberOfLinesString:": "1"
+												}
+											}
+										]
+									}],
+									"attributes": {
+										"setCornerRadiusString:": "16.5",
+										"setBackgroundColorString:": "#E75333"
+									}
+								},
+								{
+									"view_type": "UIView",
+									"view_id": "id_right_ticket_number_container",
+									"align_parent_right": "YES",
+									"margin_right": "17",
+									"layout_type": "layout_relative",
+									"height": {
+										"type": "relative",
+										"value": "33"
+									},
+									"width": {
+										"type": "relative",
+										"value": "130"
+									},
+									"subviews": [{
+										"view_type": "container",
+										"direction": "horizontal",
+										"align_parent_center": "YES",
+										"height": {
+											"type": "relative",
+											"value": "18"
+										},
+										"width": {
+											"type": "wrap_content"
+										},
+										"subviews": [{
+												"view_type": "UIImageView",
+												"view_id": "id_right_ticket_number_icon",
+												"margin_top": "2",
+												"height": {
+													"type": "relative",
+													"value": "15"
+												},
+												"width": {
+													"type": "relative",
+													"value": "15"
+												},
+												"attributes": {
+													"setFrameString:": "-1",
+													"setImageWithURLString:lineup:": [
+														"-1",
+														"-1"
+													]
+												}
+											}
+
+											, {
+												"view_type": "UILabel",
+												"view_id": "id_right_ticket_number",
+												"margin_left": "2",
+												"height": {
+													"type": "relative",
+													"value": "18"
+												},
+												"width": {
+													"type": "wrap_content"
+												},
+												"attributes": {
+													"setTextColorString:": "#FFFFFF",
+													"setText:": "-1",
+													"setFontSizeString:": "14",
+													"setNumberOfLinesString:": "1"
+												}
+											}
+										]
+									}],
+									"attributes": {
+										"setCornerRadiusString:": "16.5",
+										"setBackgroundColorString:": "#0F70DD"
+									}
+								}
+
+							]
+						}
+					]
+				}
+			]
+		}]
+	}
+}

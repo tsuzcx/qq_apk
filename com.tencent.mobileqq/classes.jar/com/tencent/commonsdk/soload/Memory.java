@@ -11,12 +11,12 @@ public class Memory
       i = paramInt + 1;
       paramInt = paramArrayOfByte[paramInt];
       j = i + 1;
-      return (paramInt & 0xFF) << 24 | (paramArrayOfByte[i] & 0xFF) << 16 | (paramArrayOfByte[j] & 0xFF) << 8 | (paramArrayOfByte[(j + 1)] & 0xFF) << 0;
+      return (paramArrayOfByte[i] & 0xFF) << 16 | (paramInt & 0xFF) << 24 | (paramArrayOfByte[j] & 0xFF) << 8 | (paramArrayOfByte[(j + 1)] & 0xFF) << 0;
     }
     int i = paramInt + 1;
     paramInt = paramArrayOfByte[paramInt];
     int j = i + 1;
-    return (paramInt & 0xFF) << 0 | (paramArrayOfByte[i] & 0xFF) << 8 | (paramArrayOfByte[j] & 0xFF) << 16 | (paramArrayOfByte[(j + 1)] & 0xFF) << 24;
+    return (paramArrayOfByte[i] & 0xFF) << 8 | (paramInt & 0xFF) << 0 | (paramArrayOfByte[j] & 0xFF) << 16 | (paramArrayOfByte[(j + 1)] & 0xFF) << 24;
   }
   
   public static short peekShort(byte[] paramArrayOfByte, int paramInt, ByteOrder paramByteOrder)

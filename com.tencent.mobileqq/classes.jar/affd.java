@@ -1,28 +1,32 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class affd
-  implements View.OnTouchListener
+  extends ajfo
 {
-  public affd(PlayOperationViewModel paramPlayOperationViewModel) {}
+  private affd(FriendFragment paramFriendFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      this.a.a.findViewById(2131370599).setAlpha(0.5F);
+    if ((paramBoolean) && (FriendFragment.b(this.a))) {
+      FriendFragment.a(this.a, 1400L, true);
     }
-    for (;;)
+  }
+  
+  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
     {
-      return false;
-      this.a.a.findViewById(2131370599).setAlpha(1.0F);
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " contacts onGetCalReactiveDays isAllow= " + paramBoolean2);
+      }
+      FriendFragment.a(this.a, 1400L, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     affd
  * JD-Core Version:    0.7.0.1
  */

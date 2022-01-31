@@ -1,24 +1,20 @@
-import android.content.Context;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
-import com.tencent.mobileqq.ark.ArkTipsManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class abfc
-  implements ArkLocalAppMgr.IGetAppPathByNameCallback
+  implements DialogInterface.OnClickListener
 {
-  public abfc(ArkTipsManager paramArkTipsManager, Context paramContext) {}
+  public abfc(NotificationActivity paramNotificationActivity) {}
   
-  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt == 0) && (paramAppPathInfo.a != null)) {
-      ArkAppCenter.a(paramAppPathInfo.a, new abfd(this));
-    }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abfc
  * JD-Core Version:    0.7.0.1
  */

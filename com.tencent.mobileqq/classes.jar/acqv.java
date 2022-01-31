@@ -1,46 +1,28 @@
-import android.graphics.Rect;
+import android.content.Context;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenPanel;
 
 public class acqv
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends AccessibilityDelegateCompat
 {
-  private int jdField_a_of_type_Int;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private boolean jdField_a_of_type_Boolean;
+  public acqv(ListenPanel paramListenPanel) {}
   
-  public acqv(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
-  
-  public void onGlobalLayout()
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    ExtendFriendProfileEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment).getWindowVisibleDisplayFrame(this.jdField_a_of_type_AndroidGraphicsRect);
-    int i = this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top;
-    if (i != this.jdField_a_of_type_Int)
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    if (ListenPanel.a(this.a) < 1000.0D) {}
+    for (int i = 0;; i = (int)(ListenPanel.a(this.a) / 1000.0D + 0.5D))
     {
-      int j = ExtendFriendProfileEditFragment.b(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment).getRootView().getHeight();
-      int k = j - i;
-      if (k <= j / 4) {
-        break label90;
-      }
-      ExtendFriendProfileEditFragment.c(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment, k);
-      this.jdField_a_of_type_Boolean = true;
-      ExtendFriendProfileEditFragment.d(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = i;
+      paramAccessibilityNodeInfoCompat.setContentDescription(i + this.a.getContext().getString(2131625532));
       return;
-      label90:
-      if (this.jdField_a_of_type_Boolean) {
-        ExtendFriendProfileEditFragment.e(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendProfileEditFragment);
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acqv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomFloatView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchResultItem;
 
-public class aewc
-  extends BroadcastReceiver
+public final class aewc
+  implements Parcelable.Creator<SearchResultItem>
 {
-  public aewc(GameRoomFloatView paramGameRoomFloatView) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public SearchResultItem a(Parcel paramParcel)
   {
-    int i = paramIntent.getIntExtra("SmallScreenState", 0);
-    if (i == 3) {
-      this.a.a.setVisibility(4);
-    }
-    while ((i != 2) && (i != 0)) {
-      return;
-    }
-    this.a.a.setVisibility(0);
+    return new SearchResultItem(paramParcel);
+  }
+  
+  public SearchResultItem[] a(int paramInt)
+  {
+    return new SearchResultItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aewc
  * JD-Core Version:    0.7.0.1
  */

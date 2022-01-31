@@ -1,21 +1,17 @@
-import android.view.View;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewProxy;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aafd
-  implements Runnable
+public final class aafd
+  implements DialogInterface.OnClickListener
 {
-  public aafd(ARVideoRecordViewProxy paramARVideoRecordViewProxy) {}
-  
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (ARVideoRecordViewProxy.b(this.a) != null) {
-      ARVideoRecordViewProxy.b(this.a).setVisibility(8);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aafd
  * JD-Core Version:    0.7.0.1
  */

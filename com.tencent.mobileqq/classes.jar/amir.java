@@ -1,26 +1,76 @@
-import com.tencent.widget.DynamicGridView;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amir
-  implements amis
+  extends amie<amiq>
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  
-  public amir(DynamicGridView paramDynamicGridView, int paramInt1, int paramInt2)
+  public static amiq c()
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
+    amiq localamiq2 = (amiq)alzw.a().a(498);
+    amiq localamiq1 = localamiq2;
+    if (localamiq2 == null) {
+      localamiq1 = new amiq();
+    }
+    return localamiq1;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public int a()
   {
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) + this.jdField_a_of_type_Int);
-    DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) + this.b);
+    return 498;
+  }
+  
+  @NonNull
+  public amiq a()
+  {
+    return new amiq();
+  }
+  
+  @NonNull
+  public amiq a(@NonNull alzs[] paramArrayOfalzs)
+  {
+    amiq localamiq = new amiq();
+    paramArrayOfalzs = paramArrayOfalzs[0].jdField_a_of_type_JavaLangString;
+    if (TextUtils.isEmpty(paramArrayOfalzs)) {}
+    for (;;)
+    {
+      return localamiq;
+      try
+      {
+        paramArrayOfalzs = new JSONObject(paramArrayOfalzs);
+        localamiq.jdField_a_of_type_Int = paramArrayOfalzs.optInt("stage");
+        localamiq.jdField_a_of_type_JavaLangString = paramArrayOfalzs.optString("pay_url");
+        if (QLog.isColorLevel())
+        {
+          QLog.d("vip_ptt.ConfigProcessor", 1, "json parse config.stage:" + localamiq.jdField_a_of_type_Int + " url=" + localamiq.jdField_a_of_type_JavaLangString);
+          return localamiq;
+        }
+      }
+      catch (JSONException paramArrayOfalzs)
+      {
+        QLog.e("vip_ptt.ConfigProcessor", 1, "json parse error:" + paramArrayOfalzs);
+        localamiq.b = paramArrayOfalzs.toString();
+      }
+    }
+    return localamiq;
+  }
+  
+  public Class<amiq> a()
+  {
+    return amiq.class;
+  }
+  
+  @NonNull
+  public amiq b()
+  {
+    return new amiq();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amir
  * JD-Core Version:    0.7.0.1
  */

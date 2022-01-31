@@ -1,48 +1,72 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ThirdVideoManager;
-import com.tencent.biz.pubaccount.readinjoy.common.ThirdVideoManager.UUIDToUrlCallback;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper.MediaPlayListenerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoInfo;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.AccountDetail.activity.PubAccountMoreInfoActivity;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse;
 
-class mtb
-  implements ThirdVideoManager.UUIDToUrlCallback
+public class mtb
+  implements BusinessObserver
 {
-  mtb(mta parammta, VideoPlayerWrapper paramVideoPlayerWrapper, long paramLong, ThirdVideoManager paramThirdVideoManager) {}
+  public mtb(PubAccountMoreInfoActivity paramPubAccountMoreInfoActivity) {}
   
-  public void a(String paramString1, String paramString2, int paramInt, boolean paramBoolean, String paramString3)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "UUIDToUrlCallback Callback vid:" + paramString2 + " url:" + paramString1);
+      QLog.d("PubAccountMoreInfoActivity", 2, "success:" + String.valueOf(paramBoolean));
     }
-    paramString3 = FastWebVideoFeedsPlayManager.a(this.jdField_a_of_type_Mta.a);
-    if ((paramString3 != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper != null) && (paramString2.equals(paramString3.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoInfo.a))) {
-      if (TextUtils.isEmpty(paramString1)) {
-        if (FastWebVideoFeedsPlayManager.a(this.jdField_a_of_type_Mta.a) != null) {
-          FastWebVideoFeedsPlayManager.a(this.jdField_a_of_type_Mta.a).a(null, 123, 107, 0, "UUIDToUrlCallback vid2url ERROR ", null);
-        }
-      }
+    if (!paramBoolean)
+    {
+      this.a.a(2131629887);
+      return;
     }
-    while (!QLog.isColorLevel()) {
-      for (;;)
+    for (;;)
+    {
+      byte[] arrayOfByte;
+      oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse;
+      try
       {
-        return;
-        if (paramInt == 1) {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.a(paramString2, paramString1, 1, this.jdField_a_of_type_Long, 0L, 0, paramBoolean);
+        arrayOfByte = paramBundle.getByteArray("data");
+        paramInt = paramBundle.getInt("type", 0);
+        if (arrayOfByte == null) {
+          break;
         }
-        while (paramString3.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData != null)
+        paramBundle = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
+        localGetPublicAccountDetailInfoResponse = new oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse();
+        if (paramInt == 0)
         {
-          paramString3.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonThirdVideoManager.a.longValue();
-          paramString3.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyVideoReportData.d = paramBoolean;
+          paramBundle.mergeFrom(arrayOfByte);
+          paramBoolean = true;
+          if (!paramBoolean) {
+            break;
+          }
+          if (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.get() != 0) {
+            break label259;
+          }
+          if ((this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null) && ((!paramBundle.seqno.has()) || (paramBundle.seqno.get() == this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.seqno))) {
+            break;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("PubAccountMoreInfoActivity", 2, "sendPublicAccountDetailInfoRequest: need update local data , new seqno = " + paramBundle.seqno.get());
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse = paramBundle;
+          this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail = new AccountDetail(this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse);
+          PubAccountMoreInfoActivity.a(this.a);
           return;
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.a(paramString2, paramString1, 2, this.jdField_a_of_type_Long, 0L, 0, paramBoolean);
         }
       }
+      catch (Exception paramBundle)
+      {
+        this.a.a(2131629887);
+        return;
+      }
+      paramBoolean = rtr.a(arrayOfByte, localGetPublicAccountDetailInfoResponse, paramBundle);
     }
-    QLog.d("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "vid2url换回来后，当前视频已经不再播放，vid:" + paramString2 + " url:" + paramString1);
+    label259:
+    this.a.a(2131629887);
   }
 }
 

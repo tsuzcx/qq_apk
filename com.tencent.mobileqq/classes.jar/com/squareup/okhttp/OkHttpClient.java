@@ -1,25 +1,18 @@
 package com.squareup.okhttp;
 
-import com.squareup.okhttp.internal.Internal;
 import com.squareup.okhttp.internal.InternalCache;
 import com.squareup.okhttp.internal.RouteDatabase;
 import com.squareup.okhttp.internal.Util;
 import com.squareup.okhttp.internal.http.AuthenticatorAdapter;
-import com.squareup.okhttp.internal.http.HttpEngine;
-import com.squareup.okhttp.internal.http.StreamAllocation;
-import com.squareup.okhttp.internal.io.RealConnection;
 import com.squareup.okhttp.internal.tls.OkHostnameVerifier;
 import java.net.CookieHandler;
-import java.net.MalformedURLException;
 import java.net.Proxy;
 import java.net.ProxySelector;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import javax.net.SocketFactory;
 import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 
 public class OkHttpClient
@@ -56,69 +49,7 @@ public class OkHttpClient
   static
   {
     DEFAULT_CONNECTION_SPECS = Util.immutableList(new ConnectionSpec[] { ConnectionSpec.MODERN_TLS, ConnectionSpec.COMPATIBLE_TLS, ConnectionSpec.CLEARTEXT });
-    Internal.instance = new Internal()
-    {
-      public void addLenient(Headers.Builder paramAnonymousBuilder, String paramAnonymousString)
-      {
-        paramAnonymousBuilder.addLenient(paramAnonymousString);
-      }
-      
-      public void addLenient(Headers.Builder paramAnonymousBuilder, String paramAnonymousString1, String paramAnonymousString2)
-      {
-        paramAnonymousBuilder.addLenient(paramAnonymousString1, paramAnonymousString2);
-      }
-      
-      public void apply(ConnectionSpec paramAnonymousConnectionSpec, SSLSocket paramAnonymousSSLSocket, boolean paramAnonymousBoolean)
-      {
-        paramAnonymousConnectionSpec.apply(paramAnonymousSSLSocket, paramAnonymousBoolean);
-      }
-      
-      public StreamAllocation callEngineGetStreamAllocation(Call paramAnonymousCall)
-      {
-        return paramAnonymousCall.engine.streamAllocation;
-      }
-      
-      public void callEnqueue(Call paramAnonymousCall, Callback paramAnonymousCallback, boolean paramAnonymousBoolean)
-      {
-        paramAnonymousCall.enqueue(paramAnonymousCallback, paramAnonymousBoolean);
-      }
-      
-      public boolean connectionBecameIdle(ConnectionPool paramAnonymousConnectionPool, RealConnection paramAnonymousRealConnection)
-      {
-        return paramAnonymousConnectionPool.connectionBecameIdle(paramAnonymousRealConnection);
-      }
-      
-      public RealConnection get(ConnectionPool paramAnonymousConnectionPool, Address paramAnonymousAddress, StreamAllocation paramAnonymousStreamAllocation)
-      {
-        return paramAnonymousConnectionPool.get(paramAnonymousAddress, paramAnonymousStreamAllocation);
-      }
-      
-      public HttpUrl getHttpUrlChecked(String paramAnonymousString)
-        throws MalformedURLException, UnknownHostException
-      {
-        return HttpUrl.getChecked(paramAnonymousString);
-      }
-      
-      public InternalCache internalCache(OkHttpClient paramAnonymousOkHttpClient)
-      {
-        return paramAnonymousOkHttpClient.internalCache();
-      }
-      
-      public void put(ConnectionPool paramAnonymousConnectionPool, RealConnection paramAnonymousRealConnection)
-      {
-        paramAnonymousConnectionPool.put(paramAnonymousRealConnection);
-      }
-      
-      public RouteDatabase routeDatabase(ConnectionPool paramAnonymousConnectionPool)
-      {
-        return paramAnonymousConnectionPool.routeDatabase;
-      }
-      
-      public void setCache(OkHttpClient paramAnonymousOkHttpClient, InternalCache paramAnonymousInternalCache)
-      {
-        paramAnonymousOkHttpClient.setInternalCache(paramAnonymousInternalCache);
-      }
-    };
+    com.squareup.okhttp.internal.Internal.instance = new OkHttpClient.1();
   }
   
   public OkHttpClient()
@@ -380,11 +311,6 @@ public class OkHttpClient
   public Call newCall(Request paramRequest)
   {
     return new Call(this, paramRequest);
-  }
-  
-  public Call newCall(Request paramRequest, Proxy paramProxy)
-  {
-    return new Call(this, paramRequest, paramProxy);
   }
   
   RouteDatabase routeDatabase()

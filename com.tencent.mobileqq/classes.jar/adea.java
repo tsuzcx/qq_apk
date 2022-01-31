@@ -1,26 +1,26 @@
-import com.tencent.mobileqq.filemanager.core.FileUploader;
-import com.tencent.mobileqq.filemanager.core.FileUploader.IFileUploaderSink;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class adea
-  implements Runnable
+class adea
+  implements apca
 {
-  public adea(FileUploader paramFileUploader) {}
+  adea(addx paramaddx, FileManagerEntity paramFileManagerEntity) {}
   
-  public void run()
+  public void a()
   {
-    if (FileUploader.a(this.a)) {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 0)
+    {
+      this.jdField_a_of_type_Addx.a.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
       return;
     }
-    if (FileUploader.a(this.a) != null) {
-      FileUploader.a(this.a).i();
-    }
-    FileUploader.a(this.a, 0L);
-    this.a.a(0L);
+    this.jdField_a_of_type_Addx.a.a().b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adea
  * JD-Core Version:    0.7.0.1
  */

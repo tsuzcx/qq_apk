@@ -10,13 +10,13 @@ import android.util.TypedValue;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.LayoutParams;
-import jxv;
+import luf;
 
 public class MultiMembersAudioIndicator
   extends RadioGroup
   implements ViewPager.OnPageChangeListener
 {
-  ViewPager a;
+  public ViewPager a;
   
   public MultiMembersAudioIndicator(Context paramContext)
   {
@@ -32,21 +32,21 @@ public class MultiMembersAudioIndicator
     super.setGravity(17);
   }
   
-  RadioButton a()
+  public RadioButton a()
   {
-    jxv localjxv = new jxv(this, super.getContext());
-    localjxv.setButtonDrawable(2130840293);
-    localjxv.setGravity(17);
+    luf localluf = new luf(this, super.getContext());
+    localluf.setButtonDrawable(2130841590);
+    localluf.setGravity(17);
     Resources localResources = super.getContext().getResources();
     RadioGroup.LayoutParams localLayoutParams = new RadioGroup.LayoutParams((int)TypedValue.applyDimension(1, 10.0F, localResources.getDisplayMetrics()), (int)TypedValue.applyDimension(1, 10.0F, localResources.getDisplayMetrics()));
     localLayoutParams.gravity = 17;
     int i = (int)TypedValue.applyDimension(1, 3.0F, localResources.getDisplayMetrics());
     localLayoutParams.leftMargin = i;
     localLayoutParams.rightMargin = i;
-    localjxv.setLayoutParams(localLayoutParams);
-    localjxv.setClickable(false);
-    localjxv.setFocusable(false);
-    return localjxv;
+    localluf.setLayoutParams(localLayoutParams);
+    localluf.setClickable(false);
+    localluf.setFocusable(false);
+    return localluf;
   }
   
   public void a()
@@ -115,7 +115,7 @@ public class MultiMembersAudioIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.ui.MultiMembersAudioIndicator
  * JD-Core Version:    0.7.0.1
  */

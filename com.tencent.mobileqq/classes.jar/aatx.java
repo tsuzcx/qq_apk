@@ -1,37 +1,21 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipUploadRusult.StoryVideoExtRsp;
-import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipUploadRusult.UploadPicExtInfo;
-import com.tencent.mobileqq.arcard.ARRelationShipFileUpload.ARRelationShipFileUploadCallBack;
-import com.tencent.mobileqq.arcard.ARVideoPreviewActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.15.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class aatx
-  implements ARRelationShipFileUpload.ARRelationShipFileUploadCallBack
+public class aatx
+  extends atdh
 {
-  aatx(aatw paramaatw) {}
+  public aatx(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void a(int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.a.a(2, paramInt);
+    ThreadManager.post(new FriendProfileCardActivity.15.1(this), 5, null, false);
   }
-  
-  public void a(String paramString)
-  {
-    ARVideoPreviewActivity.a(this.a.a).post(new aaty(this));
-  }
-  
-  public void a(String paramString, ARRelationShipUploadRusult.StoryVideoExtRsp paramStoryVideoExtRsp)
-  {
-    paramString = paramStoryVideoExtRsp.bytes_cdn_url.get().toStringUtf8();
-    this.a.a.a(2, paramString);
-  }
-  
-  public void a(String paramString, ARRelationShipUploadRusult.UploadPicExtInfo paramUploadPicExtInfo) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aatx
  * JD-Core Version:    0.7.0.1
  */

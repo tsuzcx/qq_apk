@@ -1,58 +1,44 @@
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.log.ReportLog;
+import android.graphics.Bitmap;
+import com.tencent.image.NativeGifImage;
+import java.io.File;
 
-public final class aeko
-  extends Handler
+public class aeko
+  extends NativeGifImage
 {
-  public aeko(Looper paramLooper)
+  public aeko(File paramFile, boolean paramBoolean)
   {
-    super(paramLooper);
+    super(paramFile, paramBoolean);
   }
   
-  public void handleMessage(Message paramMessage)
+  public int a()
   {
-    if (paramMessage.what == 10000001)
-    {
-      paramMessage = (ProgressBar)ReportLog.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131362780);
-      localDrawable = ReportLog.jdField_a_of_type_AndroidAppProgressDialog.getContext().getResources().getDrawable(2130838759);
-      paramMessage.setIndeterminateDrawable(localDrawable);
-      paramMessage.setBackgroundDrawable(localDrawable);
-      ((TextView)ReportLog.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131362781)).setText(2131435069);
-      ReportLog.a().sendEmptyMessageDelayed(10000002, 2000L);
-    }
-    while ((paramMessage.what != 10000002) || (ReportLog.jdField_a_of_type_AndroidAppProgressDialog == null))
-    {
-      Drawable localDrawable;
-      return;
-    }
-    try
-    {
-      ReportLog.jdField_a_of_type_Boolean = false;
-      ReportLog.jdField_a_of_type_AndroidAppProgressDialog.dismiss();
-      return;
-    }
-    catch (Exception paramMessage)
-    {
-      paramMessage.printStackTrace();
-      return;
-    }
-    finally
-    {
-      ReportLog.jdField_a_of_type_AndroidAppProgressDialog = null;
-    }
+    return this.mMetaData[POST_INVALIDATION_TIME_INDEX];
+  }
+  
+  public Bitmap a()
+  {
+    return this.mCurrentFrameBitmap;
+  }
+  
+  public void a()
+  {
+    getNextFrame();
+    applyNextFrame();
+  }
+  
+  public int b()
+  {
+    return this.mMetaData[FRAME_COUNT_INDEX];
+  }
+  
+  public int c()
+  {
+    return this.mCurrentFrameIndex;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeko
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,38 @@
-import com.tencent.component.media.gif.InvalidationHandler;
-import com.tencent.component.media.gif.NewGifDecoder;
-import com.tencent.component.media.gif.NewGifDrawable;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowGroup;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class pko
-  extends pkv
+  implements oqx
 {
-  public pko(NewGifDrawable paramNewGifDrawable1, NewGifDrawable paramNewGifDrawable2, int paramInt)
-  {
-    super(paramNewGifDrawable2);
-  }
+  public pko(ComponentContentRecommendFollowGroup paramComponentContentRecommendFollowGroup, List paramList, boolean paramBoolean) {}
   
-  public void doWork()
+  public void a(boolean paramBoolean, ArrayList<ooz> paramArrayList, String paramString)
   {
-    synchronized (this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.mLock4Bmp)
+    if (QLog.isColorLevel()) {
+      QLog.e("ComponentContentRecommendFollowGroup", 2, "followThem, isSuccess = " + paramBoolean + ", followList = " + paramArrayList + ", errorMsg = " + paramString);
+    }
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.mBuffer = this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.seekToTime(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.mBuffer);
-      if (!this.b.jdField_a_of_type_ComTencentComponentMediaGifInvalidationHandler.hasMessages(0)) {
-        this.b.jdField_a_of_type_ComTencentComponentMediaGifInvalidationHandler.sendEmptyMessageAtTime(0, 0L);
+      int i = 0;
+      while (i < this.jdField_a_of_type_JavaUtilList.size())
+      {
+        paramArrayList = (RecommendFollowInfo)this.jdField_a_of_type_JavaUtilList.get(i);
+        paramArrayList.isFollowed = this.jdField_a_of_type_Boolean;
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowGroup.b(paramArrayList);
+        i += 1;
       }
+      ComponentContentRecommendFollowGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowGroup).notifyDataSetChanged();
       return;
     }
+    bbmy.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowGroup.getContext(), 1, 2131652679, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pko
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/sq" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@color/aam" android:layout_width="fill_parent" android:layout_height="@dimen/asx" android:layout_marginLeft="@dimen/asy" android:layout_marginRight="@dimen/asy" />
+    <com.tencent.biz.widgets.KandianTextView android:textSize="@dimen/atj" android:textColor="@color/a2p" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/cnx" android:layout_width="wrap_content" android:layout_height="@dimen/ass" android:layout_marginLeft="@dimen/asy" android:layout_marginRight="@dimen/asy" android:text="@string/pvn" android:maxLines="2" android:drawableLeft="@drawable/d8l" android:drawablePadding="6.0dip" />
+</LinearLayout>

@@ -1,50 +1,29 @@
-import com.tencent.mobileqq.ar.ARDeviceController;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
+import com.tencent.mobileqq.activity.qwallet.RedPacketVoiceFragment;
 
 public class aglg
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aglg(ScanTorchActivity paramScanTorchActivity) {}
+  public aglg(RedPacketVoiceFragment paramRedPacketVoiceFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    boolean bool1 = ARDeviceController.a().a();
-    boolean bool2 = ARDeviceController.a().b();
-    if ((bool1) && (bool2))
+    if ((!this.a.c()) && (RedPacketVoiceFragment.a(this.a) != null) && (paramView != null))
     {
-      if ((!ScanTorchActivity.b(this.a)) || (!ScanTorchActivity.c(this.a)) || (!ScanTorchActivity.d(this.a)) || (!ScanTorchActivity.e(this.a))) {
-        break label244;
-      }
-      if (!ScanTorchActivity.f(this.a)) {
-        break label195;
-      }
-      QLog.i("ScanTorchActivity", 1, "ARLoadFailed. mIsArSoReady = " + ScanTorchActivity.b(this.a) + ", mIsVideoPluginReady = " + ScanTorchActivity.c(this.a) + ", mIsFaceModelReady = " + ScanTorchActivity.d(this.a) + ", mIsFaceSoReady = " + ScanTorchActivity.e(this.a) + ", mARStartFail = " + ScanTorchActivity.f(this.a));
-      if (ScanTorchActivity.a(this.a) != null) {
-        ScanTorchActivity.a(this.a).a("AR组件加载失败，请退出后重试。");
-      }
-    }
-    for (;;)
-    {
-      ScanTorchActivity.a(this.a, null);
-      return;
-      label195:
-      if (ScanTorchActivity.a(this.a) != null) {
-        ScanTorchActivity.a(this.a).a("未识别到有效内容，请换个角度重试。");
-      }
-      ReportController.b(null, "dc00898", "", "", "0X80085B3", "0X80085B3", 0, 0, "", "", "", "");
-      continue;
-      label244:
-      ScanTorchActivity.i(this.a, true);
-      ScanTorchActivity.f(this.a);
+      Intent localIntent = new Intent(paramView.getContext(), PayBridgeActivity.class);
+      localIntent.putExtras(RedPacketVoiceFragment.a(this.a));
+      localIntent.putExtra("pay_requestcode", 5);
+      paramView.getContext().startActivity(localIntent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aglg
  * JD-Core Version:    0.7.0.1
  */

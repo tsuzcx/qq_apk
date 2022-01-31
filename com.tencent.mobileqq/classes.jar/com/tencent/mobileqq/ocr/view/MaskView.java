@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.ocr.view;
 
+import aciy;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -12,7 +13,6 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class MaskView
@@ -48,8 +48,8 @@ public class MaskView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842954);
-    this.jdField_a_of_type_Int = AIOUtils.a(3.0F, getResources());
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130844703);
+    this.jdField_a_of_type_Int = aciy.a(3.0F, getResources());
     DisplayMetrics localDisplayMetrics = getResources().getDisplayMetrics();
     int j;
     int i;
@@ -60,7 +60,7 @@ public class MaskView
     }
     for (;;)
     {
-      int k = j - AIOUtils.a(18.0F, getResources());
+      int k = j - aciy.a(18.0F, getResources());
       int m = k * 424 / 680;
       int n = (j - k) / 2 + 0;
       int i1 = (i - m) / 2 + 0;

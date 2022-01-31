@@ -1,37 +1,22 @@
-import com.tencent.mobileqq.filemanager.core.FileVideoManager;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
-public final class adef
-  implements Runnable
+public class adef
+  extends acju
 {
-  public adef(long paramLong) {}
+  public ProgressBar a;
+  public TextView a;
+  public AsyncImageView a;
+  public TextView b;
+  public TextView c;
+  public int e;
   
-  public void run()
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.a + "]FreeVideoControl");
-    }
-    if ((FileVideoManager.a == null) || (FileVideoManager.a(FileVideoManager.a) == null) || (!FileVideoManager.a(FileVideoManager.a).containsKey(Long.valueOf(this.a)))) {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.a + "]queue is zero return");
-      }
-    }
-    do
-    {
-      return;
-      FileVideoManager.VideoControl localVideoControl = (FileVideoManager.VideoControl)FileVideoManager.a(FileVideoManager.a).get(Long.valueOf(this.a));
-      localVideoControl.a();
-      FileVideoManager.a(localVideoControl);
-      FileVideoManager.a(FileVideoManager.a).remove(Long.valueOf(this.a));
-    } while (!QLog.isDevelopLevel());
-    QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.a + "]removed");
-  }
+  public adef(addx paramaddx) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adef
  * JD-Core Version:    0.7.0.1
  */

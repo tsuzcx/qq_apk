@@ -9,11 +9,11 @@ import java.util.Map;
 public final class material_save_user_item_req
   extends JceStruct
 {
-  static Map cache_mapExtInfo = new HashMap();
+  static Map<String, String> cache_mapExtInfo = new HashMap();
   public int iAppid;
   public int iSendFeed;
   public long lUin;
-  public Map mapExtInfo;
+  public Map<String, String> mapExtInfo;
   public String strItemId = "";
   public String strQua = "";
   public String strSkey = "";
@@ -25,7 +25,7 @@ public final class material_save_user_item_req
   
   public material_save_user_item_req() {}
   
-  public material_save_user_item_req(long paramLong, int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3, Map paramMap)
+  public material_save_user_item_req(long paramLong, int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3, Map<String, String> paramMap)
   {
     this.lUin = paramLong;
     this.iAppid = paramInt1;

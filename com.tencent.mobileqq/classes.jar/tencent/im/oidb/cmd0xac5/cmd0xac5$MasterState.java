@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class cmd0xac5$MasterState
-  extends MessageMicro
+  extends MessageMicro<MasterState>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_jump_url = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -22,7 +22,7 @@ public final class cmd0xac5$MasterState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0xac5.cmd0xac5.MasterState
  * JD-Core Version:    0.7.0.1
  */

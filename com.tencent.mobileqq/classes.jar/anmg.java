@@ -1,30 +1,22 @@
-import cooperation.qzone.plugin.IQZonePluginManager;
-import cooperation.qzone.plugin.PluginRecord;
-import cooperation.qzone.plugin.QZonePluginMangerHelper;
-import cooperation.qzone.plugin.QZonePluginMangerHelper.OnQzonePluginClientReadyListner;
-import cooperation.qzone.widgetai.QzoneWidgetAIInterface;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanelWithActionBar;
 
-public final class anmg
-  implements QZonePluginMangerHelper.OnQzonePluginClientReadyListner
+public class anmg
+  implements View.OnClickListener
 {
-  public anmg(String paramString) {}
+  public anmg(SystemAndEmojiEmoticonPanelWithActionBar paramSystemAndEmojiEmoticonPanelWithActionBar) {}
   
-  public void a(IQZonePluginManager paramIQZonePluginManager)
+  public void onClick(View paramView)
   {
-    if (paramIQZonePluginManager == null) {
-      QZonePluginMangerHelper.a(QzoneWidgetAIInterface.getContext(), this);
+    if (this.a.a != null) {
+      this.a.a.c();
     }
-    do
-    {
-      return;
-      paramIQZonePluginManager = paramIQZonePluginManager.a(this.a);
-    } while (paramIQZonePluginManager == null);
-    QzoneWidgetAIInterface.access$002(paramIQZonePluginManager.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anmg
  * JD-Core Version:    0.7.0.1
  */

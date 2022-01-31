@@ -1,18 +1,26 @@
-import com.tencent.mobileqq.webviewplugin.SocialWeeklyWebViewPlugin;
+import com.tencent.ark.ark.VariantWrapper;
 
-public class akzg
-  implements Runnable
+class akzg
+  implements alah
 {
-  public akzg(SocialWeeklyWebViewPlugin paramSocialWeeklyWebViewPlugin, String paramString) {}
+  akzg(akyy paramakyy, long paramLong) {}
   
-  public void run()
+  public void a(long paramLong)
   {
-    SocialWeeklyWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqWebviewpluginSocialWeeklyWebViewPlugin, SocialWeeklyWebViewPlugin.b(this.jdField_a_of_type_ComTencentMobileqqWebviewpluginSocialWeeklyWebViewPlugin, this.jdField_a_of_type_JavaLangString));
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Akyy.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    akyv.a(this.jdField_a_of_type_Akyy.a, this.jdField_a_of_type_Long, paramBoolean, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akzg
  * JD-Core Version:    0.7.0.1
  */

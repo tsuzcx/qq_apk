@@ -1,51 +1,20 @@
-public class wzw
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+
+class wzw
+  implements View.OnClickListener
 {
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
+  wzw(wzt paramwzt) {}
   
-  public wzw(String paramString)
+  public void onClick(View paramView)
   {
-    String[] arrayOfString = paramString.split(" ");
-    if (arrayOfString.length == 1)
-    {
-      this.jdField_a_of_type_JavaLangString = arrayOfString[0];
-      this.jdField_a_of_type_Boolean = true;
-      return;
-    }
-    if (arrayOfString.length == 4)
-    {
-      this.b = arrayOfString[0];
-      this.c = arrayOfString[1];
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaLangString = arrayOfString[3];
-      return;
-    }
-    if (arrayOfString.length > 4)
-    {
-      int j = arrayOfString.length;
-      paramString = "";
-      int i = 0;
-      while (i < j - 4)
-      {
-        paramString = paramString + arrayOfString[i] + " ";
-        i += 1;
-      }
-      this.d = paramString;
-      this.b = arrayOfString[(j - 4)];
-      this.c = arrayOfString[(j - 3)];
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_JavaLangString = arrayOfString[(j - 1)];
-      return;
-    }
-    throw new RuntimeException("format error!");
+    wzt.b(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wzw
  * JD-Core Version:    0.7.0.1
  */

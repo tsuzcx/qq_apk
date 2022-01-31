@@ -9,9 +9,10 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ResvAttrForGiftMsg$ResvAttr
-  extends MessageMicro
+  extends MessageMicro<ResvAttr>
 {
   static final MessageMicro.FieldMap __fieldMap__;
+  public ResvAttrForGiftMsg.ActivityGiftInfo activity_gift_info = new ResvAttrForGiftMsg.ActivityGiftInfo();
   public final PBBytesField bytes_charm_heroism = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBInt32Field int32_recv_score = PBField.initInt32(0);
   public final PBInt32Field int32_send_score = PBField.initInt32(0);
@@ -23,7 +24,7 @@ public final class ResvAttrForGiftMsg$ResvAttr
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 48, 58 }, new String[] { "int32_send_score", "int32_recv_score", "bytes_charm_heroism", "uint32_button_flag", "uint32_obj_color", "uint32_animation_type", "msg_interact_gift" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null }, ResvAttr.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 48, 58, 66 }, new String[] { "int32_send_score", "int32_recv_score", "bytes_charm_heroism", "uint32_button_flag", "uint32_obj_color", "uint32_animation_type", "msg_interact_gift", "activity_gift_info" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, null }, ResvAttr.class);
   }
 }
 

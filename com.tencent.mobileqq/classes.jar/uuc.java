@@ -1,39 +1,33 @@
 import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.anim.goldmsg.FlyIconAnimListener;
-import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgNumAnim;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.Pair;
-import java.util.List;
 
-public class uuc
-  extends FlyIconAnimListener
+class uuc
+  extends AnimatorListenerAdapter
 {
-  public uuc(GoldMsgNumAnim paramGoldMsgNumAnim, Pair paramPair)
+  uuc(uub paramuub, View paramView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    super(paramPair);
+    urk.b("Q.qqstory.record.EditVideoFragment", "resetAnimator cancel!");
+    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(false));
   }
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    super.onAnimationEnd(paramAnimator);
-    if (this.jdField_a_of_type_ComTencentUtilPair != null)
-    {
-      if (this.jdField_a_of_type_ComTencentUtilPair.first != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgNumAnim.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView((View)this.jdField_a_of_type_ComTencentUtilPair.first);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgNumAnim.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_ComTencentUtilPair);
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("GoldMsgNumAnim", 4, "flyIconAnimListener.onAnimationEnd flyIconList size=" + this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgNumAnim.jdField_a_of_type_JavaUtilList.size());
-    }
-    GoldMsgNumAnim.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgNumAnim);
+    urk.c("Q.qqstory.record.EditVideoFragment", "resetAnimator end!");
+    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(false));
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    urk.c("Q.qqstory.record.EditVideoFragment", "resetAnimator start!");
+    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(true));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uuc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,31 @@
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.widget.AnimationView;
 
-class aeam
-  implements Runnable
+public class aeam
+  extends acju
 {
-  aeam(aeal paramaeal) {}
-  
-  public void run()
-  {
-    this.a.a.a(0, this.a.a.a);
-  }
+  public long a;
+  public ImageView a;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
+  public AnimationView a;
+  public RelativeLayout b;
+  public TextView b;
+  public AnimationView b;
+  public String b = "";
+  public RelativeLayout c;
+  public RelativeLayout d;
+  public RelativeLayout e;
+  public RelativeLayout f;
+  public RelativeLayout g;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeam
  * JD-Core Version:    0.7.0.1
  */

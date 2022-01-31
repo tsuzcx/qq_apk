@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_group$VideoObject
-  extends MessageMicro
+  extends MessageMicro<VideoObject>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field time_zone = PBField.initInt32(0);
@@ -24,7 +24,7 @@ public final class qqstory_group$VideoObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_group.VideoObject
  * JD-Core Version:    0.7.0.1
  */

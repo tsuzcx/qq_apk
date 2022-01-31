@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202cb" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.PinnedDividerListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a052f" android:visibility="visible" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-    <com.tencent.mobileqq.widget.IndexView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a080e" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0206d7" android:paddingLeft="8.0dip" android:paddingTop="6.0dip" android:paddingRight="8.0dip" android:paddingBottom="6.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d00b7" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d00b7" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-</RelativeLayout>

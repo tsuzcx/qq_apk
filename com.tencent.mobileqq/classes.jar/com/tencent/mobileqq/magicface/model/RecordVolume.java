@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.magicface.model;
 
 import android.media.AudioRecord;
-import com.tencent.mobileqq.utils.RecordParams;
+import arhe;
+import bahn;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecordVolume
@@ -9,12 +10,12 @@ public class RecordVolume
 {
   private int jdField_a_of_type_Int;
   private AudioRecord jdField_a_of_type_AndroidMediaAudioRecord;
-  private RecordVolume.RecordVolumeListener jdField_a_of_type_ComTencentMobileqqMagicfaceModelRecordVolume$RecordVolumeListener;
+  private arhe jdField_a_of_type_Arhe;
   private volatile boolean jdField_a_of_type_Boolean;
   
-  public RecordVolume(RecordVolume.RecordVolumeListener paramRecordVolumeListener)
+  public RecordVolume(arhe paramarhe)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelRecordVolume$RecordVolumeListener = paramRecordVolumeListener;
+    this.jdField_a_of_type_Arhe = paramarhe;
   }
   
   public void a()
@@ -26,7 +27,7 @@ public class RecordVolume
   {
     try
     {
-      int i = RecordParams.jdField_a_of_type_Int;
+      int i = bahn.jdField_a_of_type_Int;
       this.jdField_a_of_type_Int = AudioRecord.getMinBufferSize(i, 2, 2);
       this.jdField_a_of_type_AndroidMediaAudioRecord = new AudioRecord(1, i, 2, 2, this.jdField_a_of_type_Int);
       this.jdField_a_of_type_AndroidMediaAudioRecord.startRecording();
@@ -54,8 +55,8 @@ public class RecordVolume
             if (QLog.isColorLevel()) {
               QLog.i("recordVolume", 2, "====dB===" + d);
             }
-            if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelRecordVolume$RecordVolumeListener != null) {
-              this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelRecordVolume$RecordVolumeListener.a((int)Math.round(d));
+            if (this.jdField_a_of_type_Arhe != null) {
+              this.jdField_a_of_type_Arhe.a((int)Math.round(d));
             }
           }
           Thread.sleep(100L);

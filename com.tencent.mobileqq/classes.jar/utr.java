@@ -1,47 +1,62 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipWaveView;
-import com.tencent.mobileqq.surfaceviewaction.action.Action;
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.surfaceviewaction.action.ScaleAction;
-import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
-import com.tencent.mobileqq.util.DisplayUtil;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
-public class utr
-  implements Action.OnActionEndListener
+class utr
+  extends vci
 {
-  public utr(FriendShipWaveView paramFriendShipWaveView) {}
+  private final List<vbx> a = new ArrayList();
   
-  public void a()
+  public int a()
   {
-    ScaleAction localScaleAction = new ScaleAction(500, 0.0F, 1.0F);
-    this.a.d.b = 255;
-    this.a.d.a(new Action[] { localScaleAction });
-    localScaleAction.a(new uts(this));
-    this.a.e = new Sprite();
-    this.a.e.a(FriendShipWaveView.a(this.a));
-    this.a.e.a(this.a.jdField_a_of_type_Int / 2 + DisplayUtil.a(this.a.jdField_a_of_type_AndroidContentContext, 120.0F), this.a.b.d + 30.0F);
-    this.a.a(this.a.e);
-    localScaleAction = new ScaleAction(500, 0.0F, 1.0F);
-    this.a.e.a(new Action[] { localScaleAction });
-    localScaleAction.a(new utt(this));
-    this.a.f = new Sprite();
-    this.a.f.a(FriendShipWaveView.b(this.a));
-    this.a.f.a(this.a.jdField_a_of_type_Int / 2 - DisplayUtil.a(this.a.jdField_a_of_type_AndroidContentContext, 142.0F), this.a.c.d - 50.0F);
-    this.a.a(this.a.f);
-    localScaleAction = new ScaleAction(500, 0.0F, 1.0F);
-    this.a.f.a(new Action[] { localScaleAction });
-    localScaleAction.a(new utu(this));
-    this.a.g = new Sprite();
-    this.a.g.a(FriendShipWaveView.c(this.a));
-    this.a.g.a(this.a.jdField_a_of_type_Int / 2 + DisplayUtil.a(this.a.jdField_a_of_type_AndroidContentContext, 140.0F), this.a.c.d);
-    this.a.a(this.a.g);
-    localScaleAction = new ScaleAction(500, 0.0F, 1.0F);
-    this.a.g.a(new Action[] { localScaleAction });
-    localScaleAction.a(new utv(this));
+    return this.a.size();
+  }
+  
+  public vbx a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.a.size())) {
+      return (vbx)this.a.get(paramInt);
+    }
+    return null;
+  }
+  
+  public vbx a(String paramString)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      vbx localvbx = (vbx)localIterator.next();
+      if (TextUtils.equals(paramString, localvbx.a)) {
+        return localvbx;
+      }
+    }
+    return null;
+  }
+  
+  public void a(Collection<vbx> paramCollection)
+  {
+    urk.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackages size = " + paramCollection.size());
+    this.a.clear();
+    this.a.addAll(paramCollection);
+    a();
+  }
+  
+  public void a(vbx paramvbx)
+  {
+    urk.b("Q.qqstory.publish.edit.StoryDoodle", "DoodleFacePanelAdapter updateFacePackage " + paramvbx);
+    int i = this.a.indexOf(paramvbx);
+    if (i >= 0)
+    {
+      this.a.set(i, paramvbx);
+      a(i);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     utr
  * JD-Core Version:    0.7.0.1
  */

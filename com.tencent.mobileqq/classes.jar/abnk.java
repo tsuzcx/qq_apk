@@ -1,21 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.armap.POIInfo;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class abnk
-  implements View.OnClickListener
+  extends ajjh
 {
-  public abnk(ARGridMapViewDialog paramARGridMapViewDialog, POIInfo paramPOIInfo, int paramInt) {}
+  public abnk(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    ARGridMapViewDialog.a(this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog, this.jdField_a_of_type_ComTencentMobileqqArmapPOIInfo, this.jdField_a_of_type_Int);
+    if ((!paramBoolean) || (paramString == null)) {
+      return;
+    }
+    this.a.a(this.a.app.getCurrentAccountUin());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abnk
  * JD-Core Version:    0.7.0.1
  */

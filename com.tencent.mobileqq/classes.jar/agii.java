@@ -1,97 +1,81 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.olympic.OlympicManager;
-import com.tencent.mobileqq.olympic.OlympicResources;
-import com.tencent.mobileqq.olympic.OlympicResources.DownloadListener;
-import com.tencent.mobileqq.olympic.ShuayishuaConfig;
-import com.tencent.mobileqq.olympic.utils.OlympicUtil;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import java.util.ArrayList;
+import mqq.util.WeakReference;
 
 public class agii
-  implements OlympicResources.DownloadListener
+  extends aggx
 {
-  public agii(OlympicManager paramOlympicManager) {}
+  private final String a;
   
-  public void a(String paramString1, String paramString2, Object paramObject, int paramInt, String paramString3)
+  private agii(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    if ((paramObject == null) || (!(paramObject instanceof String[]))) {}
-    do
-    {
-      for (;;)
-      {
-        return;
-        OlympicUtil.b("OlympicManager", new Object[] { "onDownloadFinish, url=", paramString1, ", md5=", paramString2, ", errCode=", Integer.valueOf(paramInt) });
-        if (paramInt == 0) {
-          this.a.a(paramString1, 0, true);
-        }
-        String[] arrayOfString = (String[])paramObject;
-        String str = arrayOfString[0];
-        if ("shuayishua".equals(str))
-        {
-          int i = Integer.valueOf(arrayOfString[1]).intValue();
-          if (QLog.isColorLevel()) {
-            QLog.i("OlympicManager", 2, "onDownloadFinish.type=shuayishuaurl=" + paramString1 + ",md5=" + paramString2 + ",userData=" + paramObject + ",errCode=" + paramInt + ",filePath=" + paramString3);
-          }
-          paramString1 = OlympicManager.a(this.a);
-          if ((paramInt == 0) && (paramString1 != null) && (paramString1.id == i)) {
-            OlympicManager.b(this.a).obtainMessage(5).sendToTarget();
-          }
-        }
-        else if ("shuayishua_anim".equals(str))
-        {
-          if (paramInt == 0) {
-            try
-            {
-              OlympicManager.a(this.a);
-              paramString1 = OlympicResources.a(paramString2);
-              FileUtils.a(paramString3, paramString1, false);
-              if (QLog.isColorLevel()) {
-                QLog.d("OlympicManager", 2, "un compressZip shuayishua_anim success.destDir=" + paramString1);
-              }
-              paramString1 = OlympicManager.a(this.a);
-              if ((paramString1 == null) || (paramString1.id != -1)) {
-                continue;
-              }
-              OlympicManager.b(this.a).obtainMessage(5).sendToTarget();
-              return;
-            }
-            catch (Exception paramString1)
-            {
-              for (;;)
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("OlympicManager", 2, "un compressZip shuayishua_anim failed: " + paramString1.getMessage());
-                }
-              }
-            }
-          }
-        }
-        else if ("ActConfig".equals(str))
-        {
-          paramObject = arrayOfString[1];
-          OlympicUtil.a("OlympicManager", new Object[] { "mDownloadListener.onDownloadFinish, type=", str, ", itemType=", paramObject, ", url=", paramString1, ", md5=", paramString2, ", errCode=", Integer.valueOf(paramInt), ", filePath=", paramString3 });
-          if (("TorchAnim".equals(paramObject)) && (paramInt == 0)) {
-            try
-            {
-              OlympicManager.a(this.a);
-              paramString1 = OlympicResources.a(paramString2);
-              FileUtils.a(paramString3, paramString1, false);
-              if (QLog.isColorLevel())
-              {
-                QLog.d("OlympicManager", 2, "un compressZip TorchAnim success.destDir=" + paramString1);
-                return;
-              }
-            }
-            catch (Exception paramString1) {}
-          }
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("OlympicManager", 2, "un compressZip TorchAnim failed: " + paramString1.getMessage());
+    super(paramNewPhotoPreviewActivity);
+    this.jdField_a_of_type_JavaLangString = "PhotoPreviewLogicAEPlay";
   }
   
-  public void a(String paramString1, String paramString2, Object paramObject, long paramLong1, long paramLong2) {}
+  private void a(String paramString)
+  {
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Aggs.a >= 700L)
+    {
+      this.jdField_a_of_type_Aggs.a = l;
+      bbmy.a((Context)this.jdField_a_of_type_MqqUtilWeakReference.get(), paramString, 0).b(((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getResources().getDimensionPixelSize(2131167766));
+    }
+  }
+  
+  public static aggt b(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  {
+    if ((jdField_a_of_type_Aggt == null) || (jdField_a_of_type_Aggt.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoPreviewActivity)) {}
+    try
+    {
+      if ((jdField_a_of_type_Aggt == null) || (jdField_a_of_type_Aggt.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoPreviewActivity)) {
+        jdField_a_of_type_Aggt = new agii(paramNewPhotoPreviewActivity);
+      }
+      return jdField_a_of_type_Aggt;
+    }
+    finally {}
+  }
+  
+  private boolean d()
+  {
+    return this.jdField_a_of_type_Aggf.jdField_a_of_type_JavaUtilArrayList.size() < this.jdField_a_of_type_Aggf.jdField_a_of_type_Int;
+  }
+  
+  protected void a(View paramView)
+  {
+    if ((!this.jdField_a_of_type_Aggf.b.contains(Integer.valueOf(((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).a()))) && (this.jdField_a_of_type_Aggf.jdField_a_of_type_JavaUtilArrayList.size() >= this.jdField_a_of_type_Aggf.jdField_a_of_type_Int))
+    {
+      a(String.format(((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getString(2131624248), new Object[] { Integer.valueOf(this.jdField_a_of_type_Aggf.jdField_a_of_type_Int) }));
+      return;
+    }
+    super.a(paramView);
+  }
+  
+  protected void b()
+  {
+    super.b();
+    ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).b.setOnClickListener(new agij(this));
+  }
+  
+  protected void c()
+  {
+    super.c();
+    String str = ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getString(2131651310);
+    int i = this.jdField_a_of_type_Aggf.jdField_a_of_type_JavaUtilArrayList.size();
+    str = str + " " + i + "/" + this.jdField_a_of_type_Aggf.jdField_a_of_type_Int;
+    ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).b.setText(str);
+    ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).b.setEnabled(true);
+    if (d())
+    {
+      ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).b.setBackgroundResource(2130848461);
+      return;
+    }
+    ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).b.setBackgroundResource(2130837660);
+  }
 }
 
 

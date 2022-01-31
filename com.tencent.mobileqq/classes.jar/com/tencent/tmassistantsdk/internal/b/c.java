@@ -1,8 +1,8 @@
 package com.tencent.tmassistantsdk.internal.b;
 
 import com.tencent.assistant.sdk.remote.SDKActionCallback.Stub;
-import com.tencent.tmassistantbase.util.r;
-import com.tencent.tmdownloader.s;
+import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmdownloader.t;
 import java.util.ArrayList;
 
 class c
@@ -12,13 +12,13 @@ class c
   
   public void onActionResult(byte[] paramArrayOfByte)
   {
-    r.c("TMAssistantDownloadOpenSDKClient", "onActionResult  callBack data:" + paramArrayOfByte + "  mListeners.size:" + this.a.a.size());
-    s.a().a(paramArrayOfByte, this.a.a);
+    ac.c("TMAssistantDownloadOpenSDKClient", "onActionResult  callBack data:" + paramArrayOfByte + "  mListeners.size:" + this.a.a.size());
+    t.a().a(paramArrayOfByte, this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.b.c
  * JD-Core Version:    0.7.0.1
  */

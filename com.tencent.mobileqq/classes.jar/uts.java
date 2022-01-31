@@ -1,24 +1,17 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipWaveView;
-import com.tencent.mobileqq.surfaceviewaction.action.Action;
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.surfaceviewaction.action.RotateAction;
-import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
-
-class uts
-  implements Action.OnActionEndListener
+public class uts
 {
-  uts(utr paramutr) {}
+  public final String a;
+  public final uvl a;
   
-  public void a()
+  public uts(uvl paramuvl, String paramString)
   {
-    RotateAction localRotateAction = new RotateAction(3000, 360, 0);
-    localRotateAction.a = true;
-    this.a.a.d.a(new Action[] { localRotateAction });
+    this.jdField_a_of_type_Uvl = paramuvl;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uts
  * JD-Core Version:    0.7.0.1
  */

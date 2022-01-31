@@ -1,25 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.RunningJob;
-import com.tencent.image.URLDrawableHandler;
+import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.1.1;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
 public class muj
-  implements URLDrawableHandler
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  public muj(RunningJob paramRunningJob) {}
+  muj(mui parammui) {}
   
-  public void doCancel() {}
-  
-  public boolean isCancelled()
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    return false;
+    this.a.a.start();
+    new Thread(new AccountDetailVideoManager.1.1(this)).start();
   }
-  
-  public void onFileDownloadFailed(int paramInt) {}
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong) {}
-  
-  public void publishProgress(int paramInt) {}
 }
 
 

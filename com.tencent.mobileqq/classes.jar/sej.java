@@ -1,22 +1,184 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
+import java.util.List;
 
 public class sej
-  implements View.OnClickListener
 {
-  public sej(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, String paramString) {}
+  private static String jdField_a_of_type_JavaLangString = "0123456789bcdefghjkmnpqrstuvwxyz";
+  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "b", "c", "d", "e", "f", "g", "h", "j", "k", "m", "n", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
   
-  public void onClick(View paramView)
+  public static String a(double paramDouble1, double paramDouble2, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.app.a(this.jdField_a_of_type_JavaLangString, false);
+    StringBuilder localStringBuilder = new StringBuilder();
+    double d5 = 90.0D;
+    double d3 = -90.0D;
+    double d2 = 0.0D;
+    double d6 = 180.0D;
+    double d4 = -180.0D;
+    double d1 = 0.0D;
+    int i = 1;
+    int k = 0;
+    while (k < paramInt)
+    {
+      int m = 0;
+      int n = 0;
+      int j = i;
+      i = n;
+      if (m < 5)
+      {
+        double d8;
+        double d7;
+        if (j != 0)
+        {
+          i <<= 1;
+          if (paramDouble2 >= d1)
+          {
+            d8 = (d6 + d1) / 2.0D;
+            i += 1;
+            d4 = d6;
+            d7 = d2;
+            d2 = d3;
+            d6 = d5;
+            d5 = d7;
+            d3 = d1;
+            d1 = d8;
+            label131:
+            if (j != 0) {
+              break label309;
+            }
+          }
+        }
+        label309:
+        for (j = 1;; j = 0)
+        {
+          m += 1;
+          d7 = d6;
+          d8 = d2;
+          d2 = d5;
+          d6 = d4;
+          d4 = d3;
+          d3 = d8;
+          d5 = d7;
+          break;
+          d8 = (d1 + d4) / 2.0D;
+          d6 = d3;
+          d7 = d5;
+          d3 = d4;
+          d4 = d1;
+          d1 = d8;
+          d5 = d2;
+          d2 = d6;
+          d6 = d7;
+          break label131;
+          i <<= 1;
+          if (paramDouble1 >= d2)
+          {
+            d3 = (d5 + d2) / 2.0D;
+            i += 1;
+            d7 = d5;
+            d5 = d3;
+            d3 = d4;
+            d4 = d6;
+            d6 = d7;
+            break label131;
+          }
+          d5 = (d2 + d3) / 2.0D;
+          d7 = d2;
+          d2 = d3;
+          d3 = d4;
+          d4 = d6;
+          d6 = d7;
+          break label131;
+        }
+      }
+      localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[i]);
+      k += 1;
+      i = j;
+    }
+    return localStringBuilder.toString();
+  }
+  
+  public static List<sek> a(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {
+      throw new Error("Invalid geoHash");
+    }
+    paramString = paramString.toLowerCase();
+    int i = 1;
+    double d3 = -90.0D;
+    double d4 = 90.0D;
+    double d1 = -180.0D;
+    double d2 = 180.0D;
+    int j = 0;
+    while (j < paramString.length())
+    {
+      int k = paramString.charAt(j);
+      int m = jdField_a_of_type_JavaLangString.indexOf(k);
+      if (m == -1) {
+        throw new Error("Invalid geoHash");
+      }
+      k = 4;
+      if (k >= 0)
+      {
+        double d6 = m >> k & 0x1;
+        double d5;
+        if (i != 0)
+        {
+          d5 = (d1 + d2) / 2.0D;
+          if (d6 == 1.0D)
+          {
+            d1 = d5;
+            label135:
+            if (i != 0) {
+              break label190;
+            }
+          }
+        }
+        label190:
+        for (i = 1;; i = 0)
+        {
+          k -= 1;
+          break;
+          d2 = d5;
+          break label135;
+          d5 = (d3 + d4) / 2.0D;
+          if (d6 == 1.0D)
+          {
+            d3 = d5;
+            break label135;
+          }
+          d4 = d5;
+          break label135;
+        }
+      }
+      j += 1;
+    }
+    paramString = new sek(d3, d1);
+    sek localsek = new sek(d4, d2);
+    ArrayList localArrayList = new ArrayList(2);
+    localArrayList.add(paramString);
+    localArrayList.add(localsek);
+    return localArrayList;
+  }
+  
+  public static sek a(String paramString)
+  {
+    Object localObject = a(paramString);
+    sek localsek = (sek)((List)localObject).get(0);
+    localObject = (sek)((List)localObject).get(1);
+    double d3 = sek.a(localsek);
+    double d1 = sek.b(localsek);
+    double d4 = sek.a((sek)localObject);
+    double d2 = sek.b((sek)localObject);
+    d3 = (d3 + d4) / 2.0D;
+    d1 = (d2 + d1) / 2.0D;
+    localsek = new sek(d3, d1);
+    urk.a("Q.qqstory.recommendAlbum.logic.decodeGeoHash", " geoHash=%s, lat=%s, lon=%s", paramString, Double.valueOf(d3), Double.valueOf(d1));
+    return localsek;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sej
  * JD-Core Version:    0.7.0.1
  */

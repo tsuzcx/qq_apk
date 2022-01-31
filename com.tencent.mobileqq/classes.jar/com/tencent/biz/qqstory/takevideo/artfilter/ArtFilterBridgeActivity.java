@@ -1,12 +1,12 @@
 package com.tencent.biz.qqstory.takevideo.artfilter;
 
+import ajjy;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
 import com.tencent.biz.qqstory.takevideo.EditPicActivity;
-import com.tencent.biz.qqstory.takevideo.EditPicQzonePublishActivity;
 import com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
 import com.tencent.biz.qqstory.takevideo.EditVideoParams;
 import com.tencent.biz.qqstory.takevideo.EditVideoParams.EditSource;
@@ -15,7 +15,7 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
-import omj;
+import uxe;
 
 public class ArtFilterBridgeActivity
   extends BaseActivity
@@ -31,11 +31,11 @@ public class ArtFilterBridgeActivity
     Object localObject3;
     if (getIntent().getBooleanExtra("USE_FILTER", false))
     {
-      localObject1 = ArtFilterModule.a();
+      localObject1 = uxe.a();
       i = k;
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        localObject3 = ArtFilterModule.b();
+        localObject3 = uxe.b();
         i = k;
         if (localObject3 != null)
         {
@@ -70,7 +70,7 @@ public class ArtFilterBridgeActivity
           }
           boolean bool2 = localIntent.getBooleanExtra("go_publish_activity", false);
           if (bool2) {
-            ((Bundle)localObject3).putString("extra_publish_text", "发表");
+            ((Bundle)localObject3).putString("extra_publish_text", ajjy.a(2131634958));
           }
           if (localIntent.hasExtra("troop_uin")) {
             ((Bundle)localObject3).putString("troop_uin", localIntent.getStringExtra("troop_uin"));
@@ -82,6 +82,10 @@ public class ArtFilterBridgeActivity
           Object localObject2;
           for (localObject1 = (LocalMediaInfo)((HashMap)localObject1).get("param_localmediainfo");; localObject2 = null)
           {
+            Object localObject4 = localObject1;
+            if (localObject1 == null) {
+              localObject4 = new LocalMediaInfo();
+            }
             if (bool1) {}
             for (;;)
             {
@@ -92,28 +96,20 @@ public class ArtFilterBridgeActivity
               }
               catch (IllegalArgumentException localIllegalArgumentException)
               {
-                Object localObject4;
                 localIllegalArgumentException.printStackTrace();
                 QLog.d("ArtFilterBridgeActivity", 2, " Can not find file by sourcePath: busiType=" + j + " isTakePhoto:" + bool1 + " subBusinessId:" + k);
                 localObject2 = null;
-                continue;
-                localIntent.setClass(this, EditPicQzonePublishActivity.class);
                 continue;
               }
               if (localObject1 != null) {
                 localIntent.putExtra(EditVideoParams.class.getName(), (Parcelable)localObject1);
               }
-              if (bool2) {
-                continue;
+              if (!bool2) {
+                localIntent.setClass(this, EditPicActivity.class);
               }
-              localIntent.setClass(this, EditPicActivity.class);
               localIntent.putExtra("ReceiptMsgManager.EXTRA_KEY_IS_RECEIPT", getIntent().getBooleanExtra("ReceiptMsgManager.EXTRA_KEY_IS_RECEIPT", false));
               startActivityForResult(localIntent, 88);
               return;
-              localObject4 = localObject1;
-              if (localObject1 == null) {
-                localObject4 = new LocalMediaInfo();
-              }
               localObject1 = new EditLocalPhotoSource(str, (LocalMediaInfo)localObject4);
             }
           }
@@ -122,20 +118,20 @@ public class ArtFilterBridgeActivity
     }
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     a();
-    ThreadManager.post(new omj(this), 8, null, true);
+    ThreadManager.post(new ArtFilterBridgeActivity.1(this), 8, null, true);
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.setResult(paramInt2, paramIntent);
     finish();
@@ -143,7 +139,7 @@ public class ArtFilterBridgeActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterBridgeActivity
  * JD-Core Version:    0.7.0.1
  */

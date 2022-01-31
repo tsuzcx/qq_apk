@@ -9,14 +9,14 @@ import java.util.Map;
 public final class operat_data
   extends JceStruct
 {
-  static Map cache_mapExt;
+  static Map<String, String> cache_mapExt;
   public int cmd;
   public String desc = "";
-  public Map mapExt;
+  public Map<String, String> mapExt;
   
   public operat_data() {}
   
-  public operat_data(int paramInt, String paramString, Map paramMap)
+  public operat_data(int paramInt, String paramString, Map<String, String> paramMap)
   {
     this.cmd = paramInt;
     this.desc = paramString;

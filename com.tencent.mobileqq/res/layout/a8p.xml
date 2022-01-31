@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.widgets.TabLayout android:id="@id/j_z" android:background="@color/al3" android:paddingLeft="7.0dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <FrameLayout android:layout_gravity="center|right" android:layout_width="75.5dip" android:layout_height="24.0dip">
+        <View android:layout_gravity="center|right" android:background="@color/al3" android:layout_width="48.0dip" android:layout_height="24.0dip" />
+        <ImageView android:layout_gravity="center|right" android:id="@id/dwf" android:paddingLeft="20.0dip" android:paddingRight="12.0dip" android:layout_width="56.0dip" android:layout_height="24.0dip" android:src="@drawable/dq7" />
+        <View android:background="@drawable/ss" android:layout_width="8.0dip" android:layout_height="24.0dip" android:layout_marginLeft="21.0dip" />
+        <ImageView android:layout_gravity="right" android:id="@id/dxs" android:visibility="gone" android:layout_width="6.0dip" android:layout_height="6.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="14.0dip" android:src="@drawable/skin_tips_dot" />
+    </FrameLayout>
+</FrameLayout>

@@ -1,21 +1,12 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyMsgManagerActivity;
-
-public class lhw
-  implements View.OnTouchListener
+public abstract interface lhw
 {
-  public lhw(ReadinjoyMsgManagerActivity paramReadinjoyMsgManagerActivity) {}
+  public abstract void a(int paramInt);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lhw
  * JD-Core Version:    0.7.0.1
  */

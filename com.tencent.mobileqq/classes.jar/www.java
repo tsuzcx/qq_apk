@@ -1,62 +1,55 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.messagesearch.C2CMessageResultAdapter;
-import com.tencent.mobileqq.activity.messagesearch.C2CMessageSearchDialog;
-import com.tencent.mobileqq.activity.messagesearch.MessageItem;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import java.util.Set;
+import org.json.JSONObject;
 
 public class www
-  implements AdapterView.OnItemClickListener
 {
-  public www(C2CMessageSearchDialog paramC2CMessageSearchDialog) {}
+  private String jdField_a_of_type_JavaLangString = "";
+  private JSONObject jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
+  private String b = "";
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static www a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("C2CMessageSearchDialog", 2, "onItemClick, position = " + paramInt);
+    if (paramString == null) {
+      return null;
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.getCount() <= 0) || (paramInt <= 0)) {}
-    do
+    try
     {
-      return;
-      paramAdapterView = (MessageItem)this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.getItem(paramInt - 1);
-    } while (paramAdapterView == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramAdapterView.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    if (QLog.isColorLevel()) {
-      QLog.i("C2CMessageSearchDialog", 2, "onItemClick, mRecordCount = " + this.a.jdField_a_of_type_Int + ",needSearchInCloud:" + this.a.b);
+      www localwww = new www();
+      paramString = new JSONObject(paramString);
+      localwww.jdField_a_of_type_JavaLangString = paramString.optString("icon_image_url", "");
+      localwww.jdField_a_of_type_OrgJsonJSONObject = paramString.optJSONObject("config");
+      localwww.b = paramString.optString("md5", "");
+      return localwww;
     }
-    boolean bool1;
-    boolean bool2;
-    if (this.a.b)
+    catch (Exception paramString)
     {
-      bool1 = C2CMessageSearchDialog.a(this.a).contains(Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq));
-      bool2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.a.contains(Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq));
-      if ((!bool1) || (!bool2)) {
-        break label256;
-      }
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005FC5", "0X8005FC5", 0, 0, "", "", "", "");
+      paramString.printStackTrace();
     }
-    for (;;)
-    {
-      this.a.a(true);
-      this.a.dismiss();
-      return;
-      label256:
-      if (bool1) {
-        ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005FC4", "0X8005FC4", 0, 0, "", "", "", "");
-      } else if (bool2) {
-        ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005FC3", "0X8005FC3", 0, 0, "", "", "", "");
-      }
-    }
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public JSONObject a()
+  {
+    return this.jdField_a_of_type_OrgJsonJSONObject;
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public String toString()
+  {
+    return "k = icon_image_url, value = " + this.jdField_a_of_type_JavaLangString + "\n k = config, value = " + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "\n k = md5, value = " + this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     www
  * JD-Core Version:    0.7.0.1
  */

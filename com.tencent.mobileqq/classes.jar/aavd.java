@@ -1,23 +1,24 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
-class aavd
-  implements ArkAppCenter.OnGetAppIcon
+public class aavd
+  implements ajub
 {
-  aavd(aavc paramaavc, QQCustomDialog paramQQCustomDialog) {}
+  public aavd(FriendProfileCardActivity paramFriendProfileCardActivity, Intent paramIntent) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void a(Object paramObject)
   {
-    if (paramBitmap != null) {
-      ((ImageView)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131364066)).setImageBitmap(paramBitmap);
+    if ((paramObject instanceof String))
+    {
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("troop_uin", (String)paramObject);
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("cSpecialFlag", 0);
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.startActivity(this.jdField_a_of_type_AndroidContentIntent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aavd
  * JD-Core Version:    0.7.0.1
  */

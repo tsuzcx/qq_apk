@@ -1,35 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.pubaccount.PublicAccountManager;
-
-public class lav
-  extends BroadcastReceiver
+class lav
 {
-  public lav(PublicAccountManager paramPublicAccountManager, String paramString, boolean paramBoolean) {}
+  int jdField_a_of_type_Int = 0;
+  int b = 0;
+  int c = 0;
+  int d = 0;
+  int e = 0;
+  int f = 0;
+  int g = 0;
+  int h = 0;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    double d1 = Double.parseDouble(paramIntent.getStringExtra("latitude"));
-    double d2 = Double.parseDouble(paramIntent.getStringExtra("longitude"));
-    paramIntent = paramIntent.getStringExtra("name");
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.a(d1, d2, paramIntent, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
-    try
-    {
-      paramContext.unregisterReceiver(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.c);
-      label58:
-      this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.c = null;
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      break label58;
-    }
-  }
+  lav(lar paramlar) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lav
  * JD-Core Version:    0.7.0.1
  */

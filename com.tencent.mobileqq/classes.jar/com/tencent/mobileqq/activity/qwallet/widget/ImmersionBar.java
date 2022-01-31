@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
+import agwc;
+import agwf;
 import android.app.Activity;
 import android.os.Build.VERSION;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
-import com.tencent.mobileqq.activity.qwallet.utils.FlymeOSStatusBarFontUtils;
-import com.tencent.mobileqq.activity.qwallet.utils.OSUtils;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -50,7 +50,7 @@ public class ImmersionBar
           break;
         }
         int i = 256;
-        if ((Build.VERSION.SDK_INT >= 21) && (!OSUtils.d()))
+        if ((Build.VERSION.SDK_INT >= 21) && (!agwf.d()))
         {
           if (this.statusBarView != null) {
             i = 1280;
@@ -87,7 +87,7 @@ public class ImmersionBar
   
   public static boolean isSupportStatusBarDarkFont()
   {
-    return (OSUtils.b()) || (OSUtils.f()) || (Build.VERSION.SDK_INT >= 23);
+    return (agwf.b()) || (agwf.f()) || (Build.VERSION.SDK_INT >= 23);
   }
   
   private static void setMIUIStatusBarDarkFont(Window paramWindow, boolean paramBoolean)
@@ -131,7 +131,7 @@ public class ImmersionBar
   private void setupStatusBarView(int paramInt)
   {
     ViewGroup.LayoutParams localLayoutParams = this.statusBarView.getLayoutParams();
-    localLayoutParams.height = ImmersiveUtils.a(this.mActivity);
+    localLayoutParams.height = ImmersiveUtils.getStatusBarHeight(this.mActivity);
     this.statusBarView.setLayoutParams(localLayoutParams);
     if (this.resId != 0)
     {
@@ -149,11 +149,11 @@ public class ImmersionBar
       if (isSupportStatusBarDarkFont())
       {
         initStateBar(this.statusBarViewColor);
-        if (OSUtils.b()) {
+        if (agwf.b()) {
           setMIUIStatusBarDarkFont(this.mWindow, paramBoolean);
         }
-        if (OSUtils.f()) {
-          FlymeOSStatusBarFontUtils.a(this.mActivity, paramBoolean);
+        if (agwf.f()) {
+          agwc.a(this.mActivity, paramBoolean);
         }
       }
       return;
@@ -166,7 +166,7 @@ public class ImmersionBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.ImmersionBar
  * JD-Core Version:    0.7.0.1
  */

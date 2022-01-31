@@ -10,12 +10,12 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class cmd0x6d1$InviteReqBody
-  extends MessageMicro
+  extends MessageMicro<InviteReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_group_name = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_uin_nick = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField rpt_uin_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> rpt_uin_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBUInt32Field uint32_first_flag = PBField.initUInt32(0);
   public final PBUInt64Field uint64_group_code = PBField.initUInt64(0L);
   

@@ -1,158 +1,142 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.webviewplugin.NewReportPlugin;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.open.base.MD5Utils;
-import com.tencent.open.base.http.HttpBaseUtil;
-import com.tencent.open.base.http.HttpBaseUtil.Statistic;
-import com.tencent.qphone.base.util.MD5;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.applets.data.AppletItem;
+import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URLDecoder;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public final class akif
-  implements Runnable
+public class akif
+  implements ajfe
 {
-  public akif(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, BaseActivity paramBaseActivity, QQProgressDialog paramQQProgressDialog) {}
+  public static final String TAG = "AppletsObserver";
   
-  public void run()
+  protected void onAppletsSettingSwitchChange(int paramInt) {}
+  
+  protected void onGetAppletsDetail(boolean paramBoolean, List<AppletsAccountInfo> paramList) {}
+  
+  protected void onGetAppletsPushUnreadInfo(Object paramObject) {}
+  
+  protected void onGetAppletsSettingSwitch(boolean paramBoolean, List<akio> paramList)
   {
-    for (;;)
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletsObserver", 2, "onGetAppletsSettingSwitch:  isSuccess: " + paramBoolean);
+    }
+    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject1 instanceof QQAppInterface)) {}
+    for (localObject1 = (agxk)((QQAppInterface)localObject1).getManager(315);; localObject1 = null)
     {
-      Object localObject2;
-      Object localObject4;
-      try
-      {
-        switch (this.jdField_a_of_type_Int)
-        {
-        default: 
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("system=android");
-          localStringBuilder.append("&version=7.6.8");
-          localStringBuilder.append("&uintype=1");
-          localObject3 = new StringBuilder().append("&eviluin=");
-          if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-          {
-            localObject2 = this.b;
-            localStringBuilder.append((String)localObject2);
-            localStringBuilder.append("&appname=KQQ");
-            localStringBuilder.append("&appid=2400002");
-            localStringBuilder.append("&subapp=" + (String)localObject1);
-            localStringBuilder.append("&scene=" + this.jdField_a_of_type_Int);
-            if (TextUtils.isEmpty(this.c)) {
-              continue;
-            }
-            localStringBuilder.append("&buddyflag=" + this.c);
-            if (!TextUtils.isEmpty(this.d)) {
-              localStringBuilder.append("&groupid=" + this.d);
-            }
-            if (!TextUtils.isEmpty(this.e)) {
-              break label1013;
-            }
-            localObject2 = ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.b, this.d, this.jdField_a_of_type_Int);
-            localStringBuilder.append("&srv_para=" + (String)localObject2);
-            localStringBuilder.append("&text_evidence=" + "");
-            localStringBuilder.append("&img_evidence=" + "");
-            localStringBuilder.append("&url_evidence=" + "");
-            localStringBuilder.append("&video_evidence=" + "");
-            localStringBuilder.append("&file_evidence=" + "");
-            localStringBuilder.append("&audio_evidence=" + "");
-            localStringBuilder.append("&user_input_param=" + "REPORT_IP=0&EVIL_IP=0");
-            localObject3 = "abcdabcdabcdabcd";
-            localObject1 = localObject3;
-          }
-          break;
-        }
-      }
-      catch (Exception localException1)
-      {
-        StringBuilder localStringBuilder;
-        Object localObject3;
-        Object localObject1;
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new akih(this, localException1));
+      if (localObject1 == null) {
         return;
       }
-      try
+      HashSet localHashSet = new HashSet();
+      if ((paramList != null) && (paramBoolean) && (paramList.size() > 0))
       {
-        localObject4 = HttpBaseUtil.a("http://jubao.qq.com/uniform_impeach/impeach_cryptokey", "GET", new Bundle()).jdField_a_of_type_JavaLangString;
-        localObject1 = localObject3;
-        if (QLog.isColorLevel())
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
         {
-          localObject1 = localObject3;
-          QLog.d("safetyNewReport", 1, "get cryptograph step1 : get response=" + (String)localObject4);
-        }
-        localObject1 = localObject3;
-        localObject3 = NewReportPlugin.a((String)localObject4);
-        localObject4 = localObject3;
-        localObject1 = localObject3;
-        if (QLog.isColorLevel())
-        {
-          localObject1 = localObject3;
-          QLog.d("safetyNewReport", 1, "get cryptograph step2 : get encryptedKey=" + (String)localObject3);
-          localObject4 = localObject3;
-        }
-      }
-      catch (Exception localException2)
-      {
-        QLog.d("safetyNewReport", 1, "get cryptograph exception" + localException2.getMessage());
-        localObject4 = localException1;
-        continue;
-        str = this.jdField_a_of_type_JavaLangString;
-        continue;
-        localObject2 = new StringBuilder();
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          break label1123;
-        }
-        for (str = this.b;; str = this.jdField_a_of_type_JavaLangString)
-        {
-          str = str + "_" + this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getCurrentAccountUin() + "_" + localException2;
-          break;
-        }
-        str = "";
-      }
-      localObject1 = NewReportPlugin.a("d41d8cd98f00b204e9800998ecf8427e", (String)localObject4);
-      if (QLog.isColorLevel()) {
-        QLog.d("safetyNewReport", 1, "get cryptograph step3 : get decryptedKey=" + (String)localObject1);
-      }
-      localObject1 = "android_7.6.8_" + this.jdField_a_of_type_Int + "_" + (String)localObject1;
-      localObject3 = MD5Utils.d((String)localObject1).toUpperCase();
-      if (QLog.isColorLevel()) {
-        QLog.d("safetyNewReport", 1, "get cryptograph step4 : scretKey=" + (String)localObject3 + ", scretKeyStr=" + (String)localObject1);
-      }
-      if (this.jdField_a_of_type_Int > 3001)
-      {
-        localObject4 = new StringBuilder();
-        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-        {
-          localObject1 = this.b;
-          localObject1 = (String)localObject1 + "_" + URLDecoder.decode((String)localObject2, "UTF-8") + "_" + "" + "_" + "" + "_" + "" + "_" + "" + "_" + "" + "_" + "" + "_" + (String)localObject3;
-          localObject2 = MD5.toMD5(((String)localObject1).getBytes("UTF-8"));
-          if (QLog.isColorLevel()) {
-            QLog.d("safetyNewReport", 1, "get cryptograph step5 : get cryptograph=" + (String)localObject2 + ", cryptographStr=" + (String)localObject1);
+          Object localObject2 = (akio)paramList.next();
+          if ((((akio)localObject2).a != null) && (((akio)localObject2).a.size() > 0) && (((akio)localObject2).a.get(0) != null) && (((AppletItem)((akio)localObject2).a.get(0)).a() == 1L))
+          {
+            localObject2 = (AppletItem)((akio)localObject2).a.get(0);
+            if (((AppletItem)localObject2).b() == 1) {}
+            for (paramBoolean = true;; paramBoolean = false)
+            {
+              ((agxk)localObject1).a(paramBoolean);
+              onAppletsSettingSwitchChange(((AppletItem)localObject2).b());
+              break;
+            }
           }
-          localStringBuilder.append("&cryptograph=" + (String)localObject2);
-          localObject1 = localStringBuilder.toString();
-          if (QLog.isColorLevel()) {
-            QLog.d("safetyNewReport", 1, "postData=" + (String)localObject1);
+          if ((((akio)localObject2).a != null) && (((akio)localObject2).a.size() > 0))
+          {
+            localObject2 = ((akio)localObject2).a.iterator();
+            while (((Iterator)localObject2).hasNext())
+            {
+              AppletItem localAppletItem = (AppletItem)((Iterator)localObject2).next();
+              if ((localAppletItem.a() != 1L) && (localAppletItem.b() != 1)) {
+                localHashSet.add(String.valueOf(localAppletItem.a()));
+              }
+            }
           }
-          this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new akig(this, (String)localObject1));
-          return;
-          localObject2 = this.jdField_a_of_type_JavaLangString;
-          continue;
-          localStringBuilder.append("&buddyflag=0");
-          continue;
-          label1013:
-          localObject2 = this.e;
-          continue;
         }
       }
-      label1123:
-      continue;
-      String str = "c2c_honest_say";
-      continue;
-      str = "nearby_kuoli";
+      ((agxk)localObject1).a(localHashSet);
+      return;
     }
+  }
+  
+  protected void onReceiveAppletsMessageUnreadInfo(Map<String, Integer> paramMap) {}
+  
+  protected void onSetAppletsSettingSwitch(boolean paramBoolean, List<AppletItem> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletsObserver", 2, "onSetAppletsSettingSwitch:  isSuccess: " + paramBoolean);
+    }
+    agxk localagxk = null;
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface)) {
+      localagxk = (agxk)((QQAppInterface)localObject).getManager(315);
+    }
+    if (localagxk == null) {}
+    for (;;)
+    {
+      return;
+      if ((paramList != null) && (paramBoolean))
+      {
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          localObject = (AppletItem)paramList.next();
+          int i = ((AppletItem)localObject).b();
+          if (((AppletItem)localObject).a() == 1L)
+          {
+            if (i == 1) {}
+            for (paramBoolean = true;; paramBoolean = false)
+            {
+              localagxk.a(paramBoolean);
+              onAppletsSettingSwitchChange(i);
+              break;
+            }
+          }
+          if (localagxk != null) {
+            if (i == 0) {
+              localagxk.c(String.valueOf(((AppletItem)localObject).a()));
+            } else {
+              localagxk.d(String.valueOf(((AppletItem)localObject).a()));
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    case 4: 
+    case 5: 
+    case 6: 
+    case 7: 
+    default: 
+      return;
+    case 1: 
+      onGetAppletsDetail(paramBoolean, (List)paramObject);
+      return;
+    case 2: 
+      onGetAppletsSettingSwitch(paramBoolean, (List)paramObject);
+      return;
+    case 3: 
+      onSetAppletsSettingSwitch(paramBoolean, (List)paramObject);
+      return;
+    case 8: 
+      onReceiveAppletsMessageUnreadInfo((Map)paramObject);
+      return;
+    }
+    onGetAppletsPushUnreadInfo(paramObject);
   }
 }
 

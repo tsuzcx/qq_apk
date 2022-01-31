@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.pb;
 
-import java.io.IOException;
-
 public final class PBEnumField
   extends PBPrimitiveField<Integer>
 {
@@ -48,14 +46,12 @@ public final class PBEnumField
   }
   
   public void readFrom(CodedInputStreamMicro paramCodedInputStreamMicro)
-    throws IOException
   {
     this.value = paramCodedInputStreamMicro.readEnum();
     setHasFlag(true);
   }
   
   protected Integer readFromDirectly(CodedInputStreamMicro paramCodedInputStreamMicro)
-    throws IOException
   {
     return Integer.valueOf(paramCodedInputStreamMicro.readEnum());
   }
@@ -72,7 +68,6 @@ public final class PBEnumField
   }
   
   public void writeTo(CodedOutputStreamMicro paramCodedOutputStreamMicro, int paramInt)
-    throws IOException
   {
     if (has()) {
       paramCodedOutputStreamMicro.writeEnum(paramInt, this.value);
@@ -80,7 +75,6 @@ public final class PBEnumField
   }
   
   protected void writeToDirectly(CodedOutputStreamMicro paramCodedOutputStreamMicro, int paramInt, Integer paramInteger)
-    throws IOException
   {
     paramCodedOutputStreamMicro.writeEnum(paramInt, paramInteger.intValue());
   }

@@ -1,50 +1,38 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor;
-import com.tencent.open.data.SharedPrefs;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.observer.SSOAccountObserver;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
 
-class aiut
-  extends SSOAccountObserver
+public class aiut
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  aiut(aius paramaius) {}
+  public aiut(ApolloCardWindow paramApolloCardWindow, TextView paramTextView) {}
   
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    QLog.w("Q.share.ForwardSdkShareProcessor", 1, "GetSKeyStep|onFailed|account=" + paramString + ",ret=" + paramInt2);
-    this.a.b.b(9401, "get sKey failed");
-    this.a.c();
-  }
-  
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.share.ForwardSdkShareProcessor", 2, "GetSKeyStep|onGetTicketNoPasswd|account=" + paramString + ",type=" + paramInt);
-    }
-    long l = System.currentTimeMillis();
-    if (paramInt == 4096)
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
     {
-      ForwardSdkShareProcessor.d(this.a.b, new String(paramArrayOfByte));
-      aius.a(this.a).set(true);
-      SharedPrefs.a(paramString, l);
-      this.a.b();
-      return;
+      if (this.jdField_a_of_type_AndroidWidgetTextView != ApolloCardWindow.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow)) {
+        break label42;
+      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(aiuq.c(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
     }
-    this.a.b.b(9401, "get sKey failed");
-    this.a.c();
-  }
-  
-  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
-  {
-    QLog.w("Q.share.ForwardSdkShareProcessor", 1, "GetSKeyStep|onUserCancel|action=" + paramInt);
-    this.a.b.b(9401, "onUserCancel");
-    this.a.c();
+    label42:
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_AndroidWidgetTextView == ApolloCardWindow.b(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow))
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(aiuq.b(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
+        return;
+      }
+    } while (this.jdField_a_of_type_AndroidWidgetTextView != ApolloCardWindow.c(this.jdField_a_of_type_ComTencentMobileqqApolloStoreOpenboxApolloCardWindow));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(aiuq.a(((Integer)paramValueAnimator.getAnimatedValue()).intValue()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiut
  * JD-Core Version:    0.7.0.1
  */

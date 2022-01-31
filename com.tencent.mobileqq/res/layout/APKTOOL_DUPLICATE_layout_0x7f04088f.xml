@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0034" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f20" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0396" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentTop="true" />
-    <com.tencent.widget.HorizontalListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2728" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="40.0dip" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:cacheColorHint="@null" android:divider="@null" android:dividerHeight="0.0dip" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a2729" android:layout_centerVertical="true" />
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a272a" android:background="#80ffffff" android:layout_width="1.0px" android:layout_height="32.0dip" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a2729" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2729" android:layout_width="60.0dip" android:layout_height="40.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02051c" android:scaleType="centerInside" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a05cc" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0396" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
-</RelativeLayout>

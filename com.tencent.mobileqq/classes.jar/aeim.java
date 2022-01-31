@@ -1,37 +1,47 @@
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
-import com.tencent.mobileqq.leba.header.LebaGridShowManager;
-import com.tencent.mobileqq.observer.GameCenterObserver;
+import android.os.Bundle;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class aeim
-  extends GameCenterObserver
+class aeim
+  implements BusinessObserver
 {
-  public aeim(LebaWithFeeds paramLebaWithFeeds) {}
+  aeim(aegy paramaegy) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((!paramBoolean1) || (paramInt == 2)) {}
-    for (;;)
-    {
-      return;
-      if (LebaWithFeeds.b(this.a))
-      {
-        LebaGridShowManager.a().b(this.a.a);
-        this.a.a(new aein(this));
-      }
-      while (QLog.isColorLevel())
-      {
-        QLog.i("Q.lebatab.leba_with_feeds", 2, "onGameCenterMsgReceive, " + LebaWithFeeds.c(this.a));
-        return;
-        LebaShowListManager.a |= 0x2;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "requestQidiKefu ... onReceive = " + paramBoolean);
     }
+    if (paramBoolean) {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        mobileqq_mp.SendMenuEventResponse localSendMenuEventResponse = new mobileqq_mp.SendMenuEventResponse();
+        localSendMenuEventResponse.mergeFrom(paramBundle);
+        paramInt = localSendMenuEventResponse.ret_info.ret_code.get();
+        if (QLog.isColorLevel()) {
+          QLog.d(this.a.a, 2, "requestQidiKefu ... onReceive: retCode = " + paramInt);
+        }
+        if (paramInt == 0)
+        {
+          this.a.ap = true;
+          this.a.bC();
+          this.a.bn();
+          return;
+        }
+      }
+      catch (Exception paramBundle) {}
+    }
+    this.a.B(2131629887);
+    this.a.bn();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeim
  * JD-Core Version:    0.7.0.1
  */

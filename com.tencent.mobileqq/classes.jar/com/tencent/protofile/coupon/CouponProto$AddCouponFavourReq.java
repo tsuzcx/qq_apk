@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class CouponProto$AddCouponFavourReq
-  extends MessageMicro
+  extends MessageMicro<AddCouponFavourReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "bid", "cid", "source_id", "city" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "" }, AddCouponFavourReq.class);
   public final PBUInt32Field bid = PBField.initUInt32(0);

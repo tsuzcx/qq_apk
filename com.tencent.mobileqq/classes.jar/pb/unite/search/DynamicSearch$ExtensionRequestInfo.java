@@ -12,7 +12,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class DynamicSearch$ExtensionRequestInfo
-  extends MessageMicro
+  extends MessageMicro<ExtensionRequestInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField action = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -22,7 +22,7 @@ public final class DynamicSearch$ExtensionRequestInfo
   public final PBFloatField longitude = PBField.initFloat(0.0F);
   public final PBInt32Field radius = PBField.initInt32(0);
   public final PBBytesField region = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField rpt_pubacc_local_result = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> rpt_pubacc_local_result = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   
   static
   {

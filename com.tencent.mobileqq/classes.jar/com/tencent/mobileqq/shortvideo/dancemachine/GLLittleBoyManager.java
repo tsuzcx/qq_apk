@@ -1,9 +1,5 @@
 package com.tencent.mobileqq.shortvideo.dancemachine;
 
-import aifb;
-import aifc;
-import aifd;
-import aife;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.SystemClock;
@@ -24,83 +20,45 @@ import java.util.TreeSet;
 public class GLLittleBoyManager
   implements Animation.AnimationListener
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long = 0L;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  private GLViewContext jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private Comparator jdField_a_of_type_JavaUtilComparator = new aife(this);
-  private TreeSet jdField_a_of_type_JavaUtilTreeSet;
-  private boolean jdField_a_of_type_Boolean;
-  private RectF[] jdField_a_of_type_ArrayOfAndroidGraphicsRectF = new RectF[2];
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
-  private ArrayList jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_b_of_type_Boolean;
-  private float jdField_c_of_type_Float;
-  private int jdField_c_of_type_Int = 0;
-  private float jdField_d_of_type_Float;
-  private final int jdField_d_of_type_Int = 65;
-  private float e = 0.0F;
+  private GLViewContext context;
+  private float halfSizeDismiss = 0.0F;
+  private String key;
+  private Comparator<GLLittleBoy> mCompare = new GLLittleBoyManager.4(this);
+  private RectF mCurrentBlastRegion = new RectF();
+  private int mCurrentScoreLevel;
+  private ArrayList<GLLittleBoy> mDeadBoyList = new ArrayList();
+  private float mDistanceX20;
+  private float mDistanceX40;
+  private float mDistanceX60;
+  private float mDistanceX80;
+  private boolean mHaveMatched;
+  private boolean mHaveMissed;
+  private RectF[] mLittleBoyColum = new RectF[2];
+  private int mLittleBoyCount = 0;
+  private ArrayList<GLLittleBoy> mLittleBoyList = new ArrayList();
+  private final int mOffsetBoy = 65;
+  private RectF mRecognizeRegion = new RectF();
+  private int mScoreTotal;
+  private TreeSet<GLLittleBoy> mSortedLittleBoyList;
+  private long mStartRecordMis = 0L;
   
   public GLLittleBoyManager(GLViewContext paramGLViewContext, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext = paramGLViewContext;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilTreeSet = new TreeSet(this.jdField_a_of_type_JavaUtilComparator);
+    this.context = paramGLViewContext;
+    this.key = paramString;
+    this.mSortedLittleBoyList = new TreeSet(this.mCompare);
   }
   
-  private Animation a(GLLittleBoy paramGLLittleBoy, double paramDouble)
-  {
-    paramGLLittleBoy = paramGLLittleBoy.a();
-    int i = (int)(1.0D / paramDouble * 1000.0D);
-    float f = paramGLLittleBoy.height() / 2.0F;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext.a();
-    paramGLLittleBoy = new TranslateAnimation(paramGLLittleBoy.left, paramGLLittleBoy.left, paramGLLittleBoy.top, 0.0F);
-    paramGLLittleBoy.setDuration(i);
-    paramGLLittleBoy.setFillEnabled(true);
-    paramGLLittleBoy.setFillAfter(true);
-    paramGLLittleBoy.setInterpolator(new LinearInterpolator());
-    paramGLLittleBoy.setAnimationListener(new aifb(this));
-    return paramGLLittleBoy;
-  }
-  
-  private void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext.b();
-    int k = ((Rect)localObject).width();
-    int m = ((Rect)localObject).height();
-    localObject = ResourceManager.a();
-    int j = paramInt2;
-    int i = paramInt3;
-    if (((ResourceManager)localObject).jdField_a_of_type_Boolean)
-    {
-      j = (int)(paramInt2 / ((ResourceManager)localObject).jdField_a_of_type_Float);
-      i = (int)(paramInt3 / ((ResourceManager)localObject).jdField_a_of_type_Float);
-    }
-    paramInt2 = (int)(j * 0.82F);
-    paramInt3 = (int)(i * 0.82F);
-    if (paramInt1 == 0)
-    {
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsRectF[0].set(DisplayUtils.a(65.0F), m, DisplayUtils.a(paramInt2 + 65), m + DisplayUtils.a(paramInt3));
-      return;
-    }
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsRectF[1] = new RectF(k - DisplayUtils.a(paramInt2 + 65), m, k - DisplayUtils.a(65.0F), m + DisplayUtils.a(paramInt3));
-  }
-  
-  private void a(Animation paramAnimation)
+  private void addDeadListLittleBoy(Animation paramAnimation)
   {
     int i = 0;
     for (;;)
     {
-      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      if (i < this.mLittleBoyList.size())
       {
-        GLLittleBoy localGLLittleBoy = (GLLittleBoy)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        if (localGLLittleBoy.a() == paramAnimation) {
-          a(localGLLittleBoy);
+        GLLittleBoy localGLLittleBoy = (GLLittleBoy)this.mLittleBoyList.get(i);
+        if (localGLLittleBoy.getAnimation() == paramAnimation) {
+          addDeadListLittleBoy(localGLLittleBoy);
         }
       }
       else
@@ -111,41 +69,72 @@ public class GLLittleBoyManager
     }
   }
   
-  private void a(GLLittleBoy paramGLLittleBoy)
+  private void addDeadListLittleBoy(GLLittleBoy paramGLLittleBoy)
   {
-    if (paramGLLittleBoy.e) {
+    if (paramGLLittleBoy.mIsValidBoy) {
       throw new RuntimeException("状态错误,消失动画的对象是有效对象");
     }
-    paramGLLittleBoy.f_(false);
-    paramGLLittleBoy.e();
-    paramGLLittleBoy.d();
-    this.jdField_b_of_type_JavaUtilArrayList.add(paramGLLittleBoy);
+    paramGLLittleBoy.setVisibility(false);
+    paramGLLittleBoy.clearAnimation();
+    paramGLLittleBoy.clearStatus();
+    this.mDeadBoyList.add(paramGLLittleBoy);
   }
   
-  private void b(Animation paramAnimation)
+  private void adjustLittleBoyRegion(int paramInt1, int paramInt2, int paramInt3)
+  {
+    Object localObject = this.context.getSurfaceViewSize();
+    int k = ((Rect)localObject).width();
+    int m = ((Rect)localObject).height();
+    localObject = ResourceManager.getInstance();
+    int j = paramInt2;
+    int i = paramInt3;
+    if (((ResourceManager)localObject).isCompressed)
+    {
+      j = (int)(paramInt2 / ((ResourceManager)localObject).compressRatio);
+      i = (int)(paramInt3 / ((ResourceManager)localObject).compressRatio);
+    }
+    paramInt2 = (int)(j * 0.82F);
+    paramInt3 = (int)(i * 0.82F);
+    if (paramInt1 == 0)
+    {
+      this.mLittleBoyColum[0].set(DisplayUtils.pixelToRealPixel(65.0F), m, DisplayUtils.pixelToRealPixel(paramInt2 + 65), m + DisplayUtils.pixelToRealPixel(paramInt3));
+      return;
+    }
+    this.mLittleBoyColum[1] = new RectF(k - DisplayUtils.pixelToRealPixel(paramInt2 + 65), m, k - DisplayUtils.pixelToRealPixel(65.0F), m + DisplayUtils.pixelToRealPixel(paramInt3));
+  }
+  
+  private void changeLittleBoyMissStatus(Animation paramAnimation)
   {
     int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.mLittleBoyList.size())
     {
-      GLLittleBoy localGLLittleBoy = (GLLittleBoy)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if ((localGLLittleBoy.a() == paramAnimation) && (localGLLittleBoy.e))
+      GLLittleBoy localGLLittleBoy = (GLLittleBoy)this.mLittleBoyList.get(i);
+      if ((localGLLittleBoy.getAnimation() == paramAnimation) && (localGLLittleBoy.mIsValidBoy))
       {
-        localGLLittleBoy.d = true;
-        float f = localGLLittleBoy.b().centerY();
-        DanceLog.a("changeLittleBoyMissStatus", "[false]ID=" + localGLLittleBoy.a().jdField_a_of_type_JavaLangString + " index" + localGLLittleBoy.jdField_b_of_type_Int + " centerY=" + f + " top=" + this.jdField_a_of_type_AndroidGraphicsRectF.top);
+        localGLLittleBoy.mMissed = true;
+        float f = localGLLittleBoy.getCurrentDrawRegionSize().centerY();
+        DanceLog.print("changeLittleBoyMissStatus", "[false]ID=" + localGLLittleBoy.getDanceData().id + " index" + localGLLittleBoy.mIndex + " centerY=" + f + " top=" + this.mRecognizeRegion.top);
       }
       i += 1;
     }
   }
   
-  private void b(GLLittleBoy paramGLLittleBoy)
+  private Animation getLittleBoyAnimation(GLLittleBoy paramGLLittleBoy, double paramDouble)
   {
-    if ((!paramGLLittleBoy.e) && (!paramGLLittleBoy.c) && (!paramGLLittleBoy.d)) {
-      throw new RuntimeException("对象不是无效对象,mMatched=false mMissed=false");
-    }
+    paramGLLittleBoy = paramGLLittleBoy.getImageRegion();
+    int i = (int)(1.0D / paramDouble * 1000.0D);
+    float f = paramGLLittleBoy.height() / 2.0F;
+    this.context.getViewPortRatio();
+    paramGLLittleBoy = new TranslateAnimation(paramGLLittleBoy.left, paramGLLittleBoy.left, paramGLLittleBoy.top, 0.0F);
+    paramGLLittleBoy.setDuration(i);
+    paramGLLittleBoy.setFillEnabled(true);
+    paramGLLittleBoy.setFillAfter(true);
+    paramGLLittleBoy.setInterpolator(new LinearInterpolator());
+    paramGLLittleBoy.setAnimationListener(new GLLittleBoyManager.1(this));
+    return paramGLLittleBoy;
   }
   
-  private Animation c()
+  private Animation getMissedAnimation()
   {
     AnimationSet localAnimationSet = new AnimationSet(false);
     localAnimationSet.addAnimation(new ScaleAnimation(1.0F, 0.0F, 1.0F, 0.0F, 1, 0.5F, 1, 0.5F));
@@ -154,147 +143,277 @@ public class GLLittleBoyManager
     localAnimationSet.setFillAfter(true);
     localAnimationSet.setDuration(160L);
     localAnimationSet.setInterpolator(new LinearInterpolator());
-    localAnimationSet.setAnimationListener(new aifc(this));
+    localAnimationSet.setAnimationListener(new GLLittleBoyManager.2(this));
     return localAnimationSet;
   }
   
-  private void e()
+  private void judgeHaveMatchedItemsAndComputeScore()
   {
-    this.jdField_a_of_type_JavaUtilTreeSet.clear();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      GLLittleBoy localGLLittleBoy = (GLLittleBoy)localIterator.next();
-      this.jdField_a_of_type_JavaUtilTreeSet.add(localGLLittleBoy);
-    }
-  }
-  
-  private void f()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      GLLittleBoy localGLLittleBoy = (GLLittleBoy)localIterator.next();
-      if (!localGLLittleBoy.e)
-      {
-        b(localGLLittleBoy);
-        localGLLittleBoy.jdField_b_of_type_Boolean = false;
-      }
-      else
-      {
-        RectF localRectF = localGLLittleBoy.b();
-        float f1 = localRectF.centerY();
-        localGLLittleBoy.i();
-        if (f1 >= this.jdField_a_of_type_AndroidGraphicsRectF.bottom)
-        {
-          localGLLittleBoy.jdField_b_of_type_Boolean = false;
-        }
-        else if (f1 <= this.jdField_a_of_type_AndroidGraphicsRectF.top)
-        {
-          localGLLittleBoy.d = true;
-          localGLLittleBoy.jdField_b_of_type_Boolean = false;
-          DanceLog.a("judgeLittleBoyValidate", "[true]ID=" + localGLLittleBoy.a().jdField_a_of_type_JavaLangString + " index" + localGLLittleBoy.jdField_b_of_type_Int + " centerY=" + f1 + " top=" + this.jdField_a_of_type_AndroidGraphicsRectF.top);
-        }
-        else
-        {
-          DanceLog.a("judgeLittleBoyValidate", "[false]ID=" + localGLLittleBoy.a().jdField_a_of_type_JavaLangString + " index" + localGLLittleBoy.jdField_b_of_type_Int + " centerY=" + f1 + " top=" + this.jdField_a_of_type_AndroidGraphicsRectF.top + " [AccumulationBug]region.top=" + localRectF.top);
-          if (localRectF.top <= 0.0F)
-          {
-            float f2 = f1 - this.jdField_a_of_type_AndroidGraphicsRectF.top;
-            if (f2 < 45.0F)
-            {
-              localGLLittleBoy.d = true;
-              localGLLittleBoy.jdField_b_of_type_Boolean = false;
-            }
-            else
-            {
-              throw new RuntimeException("judgeLittleBoyValidate:centerY=" + f1 + " mRecognizeRegion.top" + this.jdField_a_of_type_AndroidGraphicsRectF.top + " diff=" + f2 + " 图片过大,设计优化资源");
-            }
-          }
-        }
-      }
-    }
-  }
-  
-  private void g()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = -1;
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    this.mHaveMatched = false;
+    this.mHaveMissed = false;
+    this.mCurrentScoreLevel = -1;
+    Iterator localIterator = this.mLittleBoyList.iterator();
     label149:
     label308:
     label474:
     while (localIterator.hasNext())
     {
       GLLittleBoy localGLLittleBoy = (GLLittleBoy)localIterator.next();
-      if (!localGLLittleBoy.e)
+      if (!localGLLittleBoy.mIsValidBoy)
       {
-        b(localGLLittleBoy);
+        makeSureBoyIsInvalid(localGLLittleBoy);
       }
       else
       {
         int i;
-        if (localGLLittleBoy.c)
+        if (localGLLittleBoy.mMatched)
         {
-          this.jdField_a_of_type_Boolean = true;
-          f = localGLLittleBoy.b().centerY() - this.jdField_a_of_type_AndroidGraphicsRectF.top;
+          this.mHaveMatched = true;
+          f = localGLLittleBoy.getCurrentDrawRegionSize().centerY() - this.mRecognizeRegion.top;
           if (f <= 0.0F)
           {
-            localGLLittleBoy.d = true;
-            localGLLittleBoy.jdField_b_of_type_Boolean = false;
+            localGLLittleBoy.mMissed = true;
+            localGLLittleBoy.mNeedMatch = false;
             continue;
           }
-          if ((f >= this.jdField_a_of_type_Float) && (f <= this.jdField_d_of_type_Float)) {
+          if ((f >= this.mDistanceX20) && (f <= this.mDistanceX80)) {
             break label308;
           }
-          this.jdField_a_of_type_Int += 20;
+          this.mScoreTotal += 20;
           i = 20;
-          localGLLittleBoy.jdField_a_of_type_Int = 1;
-          localGLLittleBoy.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBoyDataReport$BoyItem.jdField_a_of_type_Int = i;
-          if (localGLLittleBoy.jdField_a_of_type_Int > this.jdField_b_of_type_Int) {
-            this.jdField_b_of_type_Int = localGLLittleBoy.jdField_a_of_type_Int;
+          localGLLittleBoy.mMatchedStatus = 1;
+          localGLLittleBoy.mDataReport.mScore = i;
+          if (localGLLittleBoy.mMatchedStatus > this.mCurrentScoreLevel) {
+            this.mCurrentScoreLevel = localGLLittleBoy.mMatchedStatus;
           }
         }
-        RectF localRectF = localGLLittleBoy.b();
+        RectF localRectF = localGLLittleBoy.getCurrentDrawRegionSize();
         float f = localRectF.centerY();
-        if (f <= this.jdField_a_of_type_AndroidGraphicsRectF.top)
+        if (f <= this.mRecognizeRegion.top)
         {
-          localGLLittleBoy.d = true;
-          localGLLittleBoy.jdField_b_of_type_Boolean = false;
-          DanceLog.a("HaveMatchedItems", "[true]ID=" + localGLLittleBoy.a().jdField_a_of_type_JavaLangString + " index" + localGLLittleBoy.jdField_b_of_type_Int + " centerY=" + f + " top=" + this.jdField_a_of_type_AndroidGraphicsRectF.top);
+          localGLLittleBoy.mMissed = true;
+          localGLLittleBoy.mNeedMatch = false;
+          DanceLog.print("HaveMatchedItems", "[true]ID=" + localGLLittleBoy.getDanceData().id + " index" + localGLLittleBoy.mIndex + " centerY=" + f + " top=" + this.mRecognizeRegion.top);
         }
         for (;;)
         {
-          if (!localGLLittleBoy.d) {
+          if (!localGLLittleBoy.mMissed) {
             break label474;
           }
-          localGLLittleBoy.jdField_a_of_type_Int = 0;
-          this.jdField_b_of_type_Boolean = true;
+          localGLLittleBoy.mMatchedStatus = 0;
+          this.mHaveMissed = true;
           break;
-          if (((f >= this.jdField_a_of_type_Float) && (f <= this.jdField_b_of_type_Float)) || ((f >= this.jdField_c_of_type_Float) && (f <= this.jdField_d_of_type_Float)))
+          if (((f >= this.mDistanceX20) && (f <= this.mDistanceX40)) || ((f >= this.mDistanceX60) && (f <= this.mDistanceX80)))
           {
-            this.jdField_a_of_type_Int += 40;
+            this.mScoreTotal += 40;
             i = 40;
-            localGLLittleBoy.jdField_a_of_type_Int = 2;
+            localGLLittleBoy.mMatchedStatus = 2;
             break label149;
           }
-          this.jdField_a_of_type_Int += 50;
+          this.mScoreTotal += 50;
           i = 50;
-          localGLLittleBoy.jdField_a_of_type_Int = 3;
+          localGLLittleBoy.mMatchedStatus = 3;
           break label149;
-          DanceLog.a("HaveMatchedItems", "[false]ID=" + localGLLittleBoy.a().jdField_a_of_type_JavaLangString + " index" + localGLLittleBoy.jdField_b_of_type_Int + " centerY=" + f + " top=" + this.jdField_a_of_type_AndroidGraphicsRectF.top + " [AccumulationBug]region.top=" + localRectF.top);
+          DanceLog.print("HaveMatchedItems", "[false]ID=" + localGLLittleBoy.getDanceData().id + " index" + localGLLittleBoy.mIndex + " centerY=" + f + " top=" + this.mRecognizeRegion.top + " [AccumulationBug]region.top=" + localRectF.top);
         }
       }
     }
   }
   
-  public int a()
+  private void judgeLittleBoyValidate()
   {
-    return this.jdField_a_of_type_Int;
+    Iterator localIterator = this.mLittleBoyList.iterator();
+    while (localIterator.hasNext())
+    {
+      GLLittleBoy localGLLittleBoy = (GLLittleBoy)localIterator.next();
+      if (!localGLLittleBoy.mIsValidBoy)
+      {
+        makeSureBoyIsInvalid(localGLLittleBoy);
+        localGLLittleBoy.mNeedMatch = false;
+      }
+      else
+      {
+        RectF localRectF = localGLLittleBoy.getCurrentDrawRegionSize();
+        float f1 = localRectF.centerY();
+        localGLLittleBoy.resetValidBoyStatus();
+        if (f1 >= this.mRecognizeRegion.bottom)
+        {
+          localGLLittleBoy.mNeedMatch = false;
+        }
+        else if (f1 <= this.mRecognizeRegion.top)
+        {
+          localGLLittleBoy.mMissed = true;
+          localGLLittleBoy.mNeedMatch = false;
+          DanceLog.print("judgeLittleBoyValidate", "[true]ID=" + localGLLittleBoy.getDanceData().id + " index" + localGLLittleBoy.mIndex + " centerY=" + f1 + " top=" + this.mRecognizeRegion.top);
+        }
+        else
+        {
+          DanceLog.print("judgeLittleBoyValidate", "[false]ID=" + localGLLittleBoy.getDanceData().id + " index" + localGLLittleBoy.mIndex + " centerY=" + f1 + " top=" + this.mRecognizeRegion.top + " [AccumulationBug]region.top=" + localRectF.top);
+          if (localRectF.top <= 0.0F)
+          {
+            float f2 = f1 - this.mRecognizeRegion.top;
+            if (f2 < 45.0F)
+            {
+              localGLLittleBoy.mMissed = true;
+              localGLLittleBoy.mNeedMatch = false;
+            }
+            else
+            {
+              throw new RuntimeException("judgeLittleBoyValidate:centerY=" + f1 + " mRecognizeRegion.top" + this.mRecognizeRegion.top + " diff=" + f2 + " 图片过大,设计优化资源");
+            }
+          }
+        }
+      }
+    }
   }
   
-  public Animation a()
+  private void makeSureBoyIsInvalid(GLLittleBoy paramGLLittleBoy)
+  {
+    if ((!paramGLLittleBoy.mIsValidBoy) && (!paramGLLittleBoy.mMatched) && (!paramGLLittleBoy.mMissed)) {
+      throw new RuntimeException("对象不是无效对象,mMatched=false mMissed=false");
+    }
+  }
+  
+  private void sortByCenterHeightValue()
+  {
+    this.mSortedLittleBoyList.clear();
+    Iterator localIterator = this.mLittleBoyList.iterator();
+    while (localIterator.hasNext())
+    {
+      GLLittleBoy localGLLittleBoy = (GLLittleBoy)localIterator.next();
+      this.mSortedLittleBoyList.add(localGLLittleBoy);
+    }
+  }
+  
+  public void clearStatus()
+  {
+    this.mDeadBoyList.clear();
+    this.mLittleBoyList.clear();
+    this.mSortedLittleBoyList.clear();
+    this.mStartRecordMis = 0L;
+    this.mScoreTotal = 0;
+    this.mHaveMatched = false;
+    this.mHaveMissed = false;
+    this.mLittleBoyCount = 0;
+    this.mCurrentScoreLevel = -1;
+    Iterator localIterator = ResourceManager.getInstance().getDancePostures().iterator();
+    while (localIterator.hasNext()) {
+      ((ResourceManager.DancePosture)localIterator.next()).haveCreated = false;
+    }
+  }
+  
+  public void drawFrame()
+  {
+    if (this.mStartRecordMis > 0L)
+    {
+      judgeHaveMatchedItemsAndComputeScore();
+      generateNewLittleBoy();
+      Iterator localIterator = this.mLittleBoyList.iterator();
+      GLLittleBoy localGLLittleBoy;
+      if (localIterator.hasNext())
+      {
+        localGLLittleBoy = (GLLittleBoy)localIterator.next();
+        if (localGLLittleBoy.mIsValidBoy)
+        {
+          if (localGLLittleBoy.mMissed)
+          {
+            localGLLittleBoy.mIsValidBoy = false;
+            initLittleBoyNewRegion(localGLLittleBoy, false);
+            localGLLittleBoy.mDataReport.mEnd = true;
+            localGLLittleBoy.mDataReport.status = 0;
+            if (!this.context.mReport.mHasReported) {
+              this.context.mReport.mBoyData.add(localGLLittleBoy.mDataReport);
+            }
+          }
+          if (localGLLittleBoy.mMatched)
+          {
+            localGLLittleBoy.mIsValidBoy = false;
+            initLittleBoyNewRegion(localGLLittleBoy, true);
+            localGLLittleBoy.mDataReport.mEnd = true;
+            localGLLittleBoy.mDataReport.status = localGLLittleBoy.mMatchedStatus;
+            if (!this.context.mReport.mHasReported) {
+              this.context.mReport.mBoyData.add(localGLLittleBoy.mDataReport);
+            }
+          }
+        }
+        for (;;)
+        {
+          localGLLittleBoy.draw();
+          break;
+          makeSureBoyIsInvalid(localGLLittleBoy);
+        }
+      }
+      localIterator = this.mDeadBoyList.iterator();
+      while (localIterator.hasNext())
+      {
+        localGLLittleBoy = (GLLittleBoy)localIterator.next();
+        if (!localGLLittleBoy.mIsValidBoy) {
+          this.mLittleBoyList.remove(localGLLittleBoy);
+        } else {
+          throw new RuntimeException("状态错误,清理的对象是有效对象");
+        }
+      }
+      this.mDeadBoyList.clear();
+    }
+  }
+  
+  public void generateNewLittleBoy()
+  {
+    float f = (float)((SystemClock.uptimeMillis() - this.mStartRecordMis) / 100L) / 10.0F;
+    ResourceManager localResourceManager = ResourceManager.getInstance();
+    Iterator localIterator = localResourceManager.getDancePostures().iterator();
+    while (localIterator.hasNext())
+    {
+      ResourceManager.DancePosture localDancePosture = (ResourceManager.DancePosture)localIterator.next();
+      if ((localDancePosture.appearTime <= f) && (!localDancePosture.haveCreated))
+      {
+        GLLittleBoy localGLLittleBoy = new GLLittleBoy(this.context, this.key);
+        localGLLittleBoy.setAnimationFrames(localResourceManager.getPostureById(localDancePosture.id).danceCartoon);
+        localGLLittleBoy.setAnimationPlayMode(1);
+        localGLLittleBoy.setLoadTextureMode(1);
+        localGLLittleBoy.setFrameDuration(62.0F);
+        localGLLittleBoy.initAnimationFrame();
+        localGLLittleBoy.setFrameAnimationParams(localDancePosture);
+        int i = this.mLittleBoyCount;
+        this.mLittleBoyCount = (i + 1);
+        localGLLittleBoy.mIndex = i;
+        Object localObject = localGLLittleBoy.getImageSize();
+        i = localDancePosture.appearCol - 1;
+        adjustLittleBoyRegion(i, ((GLImage)localObject).getWidth(), ((GLImage)localObject).getHeight());
+        localObject = this.mLittleBoyColum[i];
+        localGLLittleBoy.setImageRegion((RectF)localObject);
+        localGLLittleBoy.setImageClipDrawRegion((RectF)localObject);
+        localGLLittleBoy.setVisibility(true);
+        localGLLittleBoy.startAnimation(getLittleBoyAnimation(localGLLittleBoy, localDancePosture.speed));
+        this.mLittleBoyList.add(localGLLittleBoy);
+        localDancePosture.haveCreated = true;
+        localGLLittleBoy.mDataReport.mEnd = false;
+        localGLLittleBoy.mDataReport.mId = localGLLittleBoy.getDanceData().id;
+      }
+    }
+  }
+  
+  public Animation getBlastAnimation()
+  {
+    AnimationSet localAnimationSet = new AnimationSet(false);
+    localAnimationSet.addAnimation(new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 1, 0.5F, 1, 0.5F));
+    localAnimationSet.addAnimation(new AlphaAnimation(1.0F, 0.0F));
+    localAnimationSet.setFillEnabled(true);
+    localAnimationSet.setFillAfter(true);
+    localAnimationSet.setDuration(130L);
+    localAnimationSet.setInterpolator(new LinearInterpolator());
+    localAnimationSet.setAnimationListener(this);
+    return localAnimationSet;
+  }
+  
+  public TreeSet<GLLittleBoy> getItems()
+  {
+    judgeLittleBoyValidate();
+    sortByCenterHeightValue();
+    return this.mSortedLittleBoyList;
+  }
+  
+  public Animation getMatchedAnimation()
   {
     AnimationSet localAnimationSet = new AnimationSet(false);
     ScaleAnimation localScaleAnimation = new ScaleAnimation(1.0F, 1.1F, 1.0F, 1.1F, 1, 0.5F, 1, 0.5F);
@@ -310,81 +429,23 @@ public class GLLittleBoyManager
     localAnimationSet.addAnimation(localScaleAnimation);
     localAnimationSet.setFillEnabled(true);
     localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(new aifd(this));
+    localAnimationSet.setAnimationListener(new GLLittleBoyManager.3(this));
     return localAnimationSet;
   }
   
-  public TreeSet a()
-  {
-    f();
-    e();
-    return this.jdField_a_of_type_JavaUtilTreeSet;
-  }
-  
-  public void a()
-  {
-    Rect localRect = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext.b();
-    int i = localRect.width();
-    int j = localRect.height();
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsRectF[0] = new RectF(DisplayUtils.a(65.0F), j, DisplayUtils.a(315), DisplayUtils.a(400) + j);
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsRectF[1] = new RectF(i - DisplayUtils.a(315), j, i - DisplayUtils.a(65.0F), j + DisplayUtils.a(400));
-  }
-  
-  public void a(long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void a(RectF paramRectF)
-  {
-    if (!this.jdField_a_of_type_AndroidGraphicsRectF.equals(paramRectF))
-    {
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(paramRectF);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext.a(this.jdField_a_of_type_AndroidGraphicsRectF);
-    }
-    this.jdField_a_of_type_Float = (this.jdField_a_of_type_AndroidGraphicsRectF.height() / 5.0F);
-    this.jdField_b_of_type_Float = (this.jdField_a_of_type_Float * 2.0F);
-    this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float * 3.0F);
-    this.jdField_d_of_type_Float = (this.jdField_a_of_type_Float * 4.0F);
-  }
-  
-  public void a(GLLittleBoy paramGLLittleBoy, boolean paramBoolean)
-  {
-    paramGLLittleBoy.j();
-    paramGLLittleBoy.c(paramGLLittleBoy.c());
-    paramGLLittleBoy.e();
-    if (paramBoolean)
-    {
-      if (paramGLLittleBoy.c)
-      {
-        paramGLLittleBoy.a(a());
-        return;
-      }
-      throw new RuntimeException("initLittleBoyNewRegion,状态错误 mMatched=false");
-    }
-    if (paramGLLittleBoy.d)
-    {
-      paramGLLittleBoy.a(c());
-      return;
-    }
-    throw new RuntimeException("initLittleBoyNewRegion,状态错误 mMissed=false");
-  }
-  
-  public int b()
+  public int getShowStatus()
   {
     int i;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.mHaveMatched)
     {
-      i = this.jdField_b_of_type_Int;
-      if (this.jdField_b_of_type_Int == -1) {
-        throw new RuntimeException("匹配成功，但是状态不对.mHaveMatched=true,mCurrentScoreLevel=" + this.jdField_b_of_type_Int);
+      i = this.mCurrentScoreLevel;
+      if (this.mCurrentScoreLevel == -1) {
+        throw new RuntimeException("匹配成功，但是状态不对.mHaveMatched=true,mCurrentScoreLevel=" + this.mCurrentScoreLevel);
       }
     }
     else
     {
-      if (!this.jdField_b_of_type_Boolean) {
+      if (!this.mHaveMissed) {
         break label62;
       }
       i = 0;
@@ -394,135 +455,70 @@ public class GLLittleBoyManager
     return -1;
   }
   
-  public Animation b()
+  public int getTotalScore()
   {
-    AnimationSet localAnimationSet = new AnimationSet(false);
-    localAnimationSet.addAnimation(new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 1, 0.5F, 1, 0.5F));
-    localAnimationSet.addAnimation(new AlphaAnimation(1.0F, 0.0F));
-    localAnimationSet.setFillEnabled(true);
-    localAnimationSet.setFillAfter(true);
-    localAnimationSet.setDuration(130L);
-    localAnimationSet.setInterpolator(new LinearInterpolator());
-    localAnimationSet.setAnimationListener(this);
-    return localAnimationSet;
+    return this.mScoreTotal;
   }
   
-  public void b()
+  public void initLittleBoyBeginRegion()
   {
-    float f = (float)((SystemClock.uptimeMillis() - this.jdField_a_of_type_Long) / 100L) / 10.0F;
-    ResourceManager localResourceManager = ResourceManager.a();
-    Iterator localIterator = localResourceManager.a().iterator();
-    while (localIterator.hasNext())
+    Rect localRect = this.context.getSurfaceViewSize();
+    int i = localRect.width();
+    int j = localRect.height();
+    this.mLittleBoyColum[0] = new RectF(DisplayUtils.pixelToRealPixel(65.0F), j, DisplayUtils.pixelToRealPixel(315), DisplayUtils.pixelToRealPixel(400) + j);
+    this.mLittleBoyColum[1] = new RectF(i - DisplayUtils.pixelToRealPixel(315), j, i - DisplayUtils.pixelToRealPixel(65.0F), j + DisplayUtils.pixelToRealPixel(400));
+  }
+  
+  public void initLittleBoyNewRegion(GLLittleBoy paramGLLittleBoy, boolean paramBoolean)
+  {
+    paramGLLittleBoy.saveMatchedPointRegion();
+    paramGLLittleBoy.setConvertedImageAndClipRegion(paramGLLittleBoy.getSaveMatchedPointRegion());
+    paramGLLittleBoy.clearAnimation();
+    if (paramBoolean)
     {
-      ResourceManager.DancePosture localDancePosture = (ResourceManager.DancePosture)localIterator.next();
-      if ((localDancePosture.jdField_a_of_type_Double <= f) && (!localDancePosture.jdField_a_of_type_Boolean))
+      if (paramGLLittleBoy.mMatched)
       {
-        GLLittleBoy localGLLittleBoy = new GLLittleBoy(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext, this.jdField_a_of_type_JavaLangString);
-        localGLLittleBoy.a(localResourceManager.a(localDancePosture.jdField_a_of_type_JavaLangString).a);
-        localGLLittleBoy.b(1);
-        localGLLittleBoy.a(1);
-        localGLLittleBoy.a(62.0F);
-        localGLLittleBoy.b();
-        localGLLittleBoy.a(localDancePosture);
-        int i = this.jdField_c_of_type_Int;
-        this.jdField_c_of_type_Int = (i + 1);
-        localGLLittleBoy.jdField_b_of_type_Int = i;
-        Object localObject = localGLLittleBoy.a();
-        i = localDancePosture.jdField_b_of_type_Int - 1;
-        a(i, ((GLImage)localObject).b(), ((GLImage)localObject).c());
-        localObject = this.jdField_a_of_type_ArrayOfAndroidGraphicsRectF[i];
-        localGLLittleBoy.b((RectF)localObject);
-        localGLLittleBoy.d((RectF)localObject);
-        localGLLittleBoy.f_(true);
-        localGLLittleBoy.a(a(localGLLittleBoy, localDancePosture.jdField_b_of_type_Double));
-        this.jdField_a_of_type_JavaUtilArrayList.add(localGLLittleBoy);
-        localDancePosture.jdField_a_of_type_Boolean = true;
-        localGLLittleBoy.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBoyDataReport$BoyItem.jdField_a_of_type_Boolean = false;
-        localGLLittleBoy.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBoyDataReport$BoyItem.jdField_a_of_type_JavaLangString = localGLLittleBoy.a().jdField_a_of_type_JavaLangString;
+        paramGLLittleBoy.startAnimation(getMatchedAnimation());
+        return;
       }
+      throw new RuntimeException("initLittleBoyNewRegion,状态错误 mMatched=false");
     }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Long > 0L)
+    if (paramGLLittleBoy.mMissed)
     {
-      g();
-      b();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      GLLittleBoy localGLLittleBoy;
-      if (localIterator.hasNext())
-      {
-        localGLLittleBoy = (GLLittleBoy)localIterator.next();
-        if (localGLLittleBoy.e)
-        {
-          if (localGLLittleBoy.d)
-          {
-            localGLLittleBoy.e = false;
-            a(localGLLittleBoy, false);
-            localGLLittleBoy.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBoyDataReport$BoyItem.jdField_a_of_type_Boolean = true;
-            localGLLittleBoy.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBoyDataReport$BoyItem.jdField_b_of_type_Int = 0;
-            if (!this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext.a.jdField_a_of_type_Boolean) {
-              this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext.a.jdField_a_of_type_JavaUtilArrayList.add(localGLLittleBoy.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBoyDataReport$BoyItem);
-            }
-          }
-          if (localGLLittleBoy.c)
-          {
-            localGLLittleBoy.e = false;
-            a(localGLLittleBoy, true);
-            localGLLittleBoy.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBoyDataReport$BoyItem.jdField_a_of_type_Boolean = true;
-            localGLLittleBoy.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBoyDataReport$BoyItem.jdField_b_of_type_Int = localGLLittleBoy.jdField_a_of_type_Int;
-            if (!this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext.a.jdField_a_of_type_Boolean) {
-              this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLViewContext.a.jdField_a_of_type_JavaUtilArrayList.add(localGLLittleBoy.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBoyDataReport$BoyItem);
-            }
-          }
-        }
-        for (;;)
-        {
-          localGLLittleBoy.a();
-          break;
-          b(localGLLittleBoy);
-        }
-      }
-      localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        localGLLittleBoy = (GLLittleBoy)localIterator.next();
-        if (!localGLLittleBoy.e) {
-          this.jdField_a_of_type_JavaUtilArrayList.remove(localGLLittleBoy);
-        } else {
-          throw new RuntimeException("状态错误,清理的对象是有效对象");
-        }
-      }
-      this.jdField_b_of_type_JavaUtilArrayList.clear();
+      paramGLLittleBoy.startAnimation(getMissedAnimation());
+      return;
     }
-  }
-  
-  public void d()
-  {
-    this.jdField_b_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilTreeSet.clear();
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_b_of_type_Int = -1;
-    Iterator localIterator = ResourceManager.a().a().iterator();
-    while (localIterator.hasNext()) {
-      ((ResourceManager.DancePosture)localIterator.next()).jdField_a_of_type_Boolean = false;
-    }
+    throw new RuntimeException("initLittleBoyNewRegion,状态错误 mMissed=false");
   }
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    a(paramAnimation);
+    addDeadListLittleBoy(paramAnimation);
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
   
   public void onAnimationStart(Animation paramAnimation) {}
+  
+  public void updateRecognizeRegion(RectF paramRectF)
+  {
+    if (!this.mRecognizeRegion.equals(paramRectF))
+    {
+      this.mRecognizeRegion.set(paramRectF);
+      this.context.mapNormalRegion(this.mRecognizeRegion);
+    }
+    this.mDistanceX20 = (this.mRecognizeRegion.height() / 5.0F);
+    this.mDistanceX40 = (this.mDistanceX20 * 2.0F);
+    this.mDistanceX60 = (this.mDistanceX20 * 3.0F);
+    this.mDistanceX80 = (this.mDistanceX20 * 4.0F);
+  }
+  
+  public void updateStartTimestamp(long paramLong)
+  {
+    this.mStartRecordMis = paramLong;
+    this.mScoreTotal = 0;
+    this.mHaveMatched = false;
+  }
 }
 
 

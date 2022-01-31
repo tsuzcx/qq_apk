@@ -10,8 +10,8 @@ public final class RespGetVoterList
 {
   static RespHead cache_stHeader = new RespHead();
   static UserCntlData cache_stUserData;
-  static ArrayList cache_vTodayFavoriteInfos;
-  static ArrayList cache_vVoterInfos = new ArrayList();
+  static ArrayList<UserProfile> cache_vTodayFavoriteInfos;
+  static ArrayList<UserProfile> cache_vVoterInfos = new ArrayList();
   public long RespTime;
   public int iMaxFriendFavoriteCount = 50;
   public int iMaxStrangerFavoriteCount = 50;
@@ -20,8 +20,8 @@ public final class RespGetVoterList
   public int iTotalVoteCount;
   public RespHead stHeader;
   public UserCntlData stUserData;
-  public ArrayList vTodayFavoriteInfos;
-  public ArrayList vVoterInfos;
+  public ArrayList<UserProfile> vTodayFavoriteInfos;
+  public ArrayList<UserProfile> vVoterInfos;
   
   static
   {
@@ -35,7 +35,7 @@ public final class RespGetVoterList
   
   public RespGetVoterList() {}
   
-  public RespGetVoterList(RespHead paramRespHead, long paramLong, ArrayList paramArrayList1, UserCntlData paramUserCntlData, ArrayList paramArrayList2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  public RespGetVoterList(RespHead paramRespHead, long paramLong, ArrayList<UserProfile> paramArrayList1, UserCntlData paramUserCntlData, ArrayList<UserProfile> paramArrayList2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     this.stHeader = paramRespHead;
     this.RespTime = paramLong;

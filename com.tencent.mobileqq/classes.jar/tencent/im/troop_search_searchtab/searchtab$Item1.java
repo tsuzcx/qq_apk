@@ -12,21 +12,12 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import tencent.im.group.group_label.GroupLabel.Label;
 
 public final class searchtab$Item1
-  extends MessageMicro
+  extends MessageMicro<Item1>
 {
-  public static final int BYTES_GROUP_FINGER_MEMO_FIELD_NUMBER = 10;
-  public static final int RPT_MSG_GROUP_LABEL_FIELD_NUMBER = 9;
-  public static final int STR_IMG_URL_FIELD_NUMBER = 3;
-  public static final int STR_LOC_FIELD_NUMBER = 4;
-  public static final int STR_NAME_FIELD_NUMBER = 2;
-  public static final int STR_OPER_DESC_FIELD_NUMBER = 6;
-  public static final int STR_OPER_TRANSFER_URL_FIELD_NUMBER = 7;
-  public static final int STR_TRANSFER_URL_FIELD_NUMBER = 8;
-  public static final int UINT32_MEM_CNT_FIELD_NUMBER = 5;
-  public static final int UINT64_GROUP_CODE_FIELD_NUMBER = 1;
   static final MessageMicro.FieldMap __fieldMap__;
+  public final PBBytesField bytes_algorithm = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_group_finger_memo = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_msg_group_label = PBField.initRepeatMessage(GroupLabel.Label.class);
+  public final PBRepeatMessageField<GroupLabel.Label> rpt_msg_group_label = PBField.initRepeatMessage(GroupLabel.Label.class);
   public final PBStringField str_img_url = PBField.initString("");
   public final PBStringField str_loc = PBField.initString("");
   public final PBStringField str_name = PBField.initString("");
@@ -38,13 +29,14 @@ public final class searchtab$Item1
   
   static
   {
-    ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 50, 58, 66, 74, 82 }, new String[] { "uint64_group_code", "str_name", "str_img_url", "str_loc", "uint32_mem_cnt", "str_oper_desc", "str_oper_transfer_url", "str_transfer_url", "rpt_msg_group_label", "bytes_group_finger_memo" }, new Object[] { Long.valueOf(0L), "", "", "", Integer.valueOf(0), "", "", "", null, localByteStringMicro }, Item1.class);
+    ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
+    ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 50, 58, 66, 74, 82, 90 }, new String[] { "uint64_group_code", "str_name", "str_img_url", "str_loc", "uint32_mem_cnt", "str_oper_desc", "str_oper_transfer_url", "str_transfer_url", "rpt_msg_group_label", "bytes_group_finger_memo", "bytes_algorithm" }, new Object[] { Long.valueOf(0L), "", "", "", Integer.valueOf(0), "", "", "", null, localByteStringMicro1, localByteStringMicro2 }, Item1.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.troop_search_searchtab.searchtab.Item1
  * JD-Core Version:    0.7.0.1
  */

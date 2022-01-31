@@ -1,28 +1,43 @@
+import android.content.Context;
+import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.teamwork.TeamWorkShareActionSheetBuilder;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
-public class airn
+class airn
   implements View.OnClickListener
 {
-  public airn(TeamWorkShareActionSheetBuilder paramTeamWorkShareActionSheetBuilder) {}
+  airn(airm paramairm) {}
   
   public void onClick(View paramView)
   {
-    if ((TeamWorkShareActionSheetBuilder.a(this.a) instanceof CustomWebView))
+    if (airm.a(this.a) == null) {
+      return;
+    }
+    boolean bool = airm.a(this.a).a();
+    if (bool)
     {
-      ((CustomWebView)TeamWorkShareActionSheetBuilder.a(this.a)).c("openCooperationMobile()");
-      this.a.b();
-      ReportController.b(TeamWorkShareActionSheetBuilder.a(this.a).app, "dc00898", "", "", "0x8009412", "0x8009412", 0, 0, "", "", "", "");
+      airm.a(this.a).setImageDrawable(airm.a(this.a).getContext().getResources().getDrawable(2130838307));
+      paramView = this.a;
+      if (bool) {
+        break label124;
+      }
+    }
+    label124:
+    for (bool = true;; bool = false)
+    {
+      airm.a(paramView, bool);
+      airm.a(this.a).a(airm.a(this.a));
+      return;
+      airm.a(this.a).setImageDrawable(airm.a(this.a).getContext().getResources().getDrawable(2130838306));
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     airn
  * JD-Core Version:    0.7.0.1
  */

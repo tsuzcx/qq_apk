@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class hd_video_putinfo$MobileHardWareValue
-  extends MessageMicro
+  extends MessageMicro<MobileHardWareValue>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32 }, new String[] { "uint32_mobile_cpu_struct", "uint32_mobile_cpu_number", "uint32_mobile_cpu_hertz", "uint32_mobile_camera_turn" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, MobileHardWareValue.class);
   public final PBUInt32Field uint32_mobile_camera_turn = PBField.initUInt32(0);
@@ -16,7 +16,7 @@ public final class hd_video_putinfo$MobileHardWareValue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.longconn.putinfo.hd_video_putinfo.MobileHardWareValue
  * JD-Core Version:    0.7.0.1
  */

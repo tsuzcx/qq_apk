@@ -1,24 +1,66 @@
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.lbs.BasicLocation;
-import com.tencent.biz.qqstory.model.lbs.LbsManager;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.LbsUpdateListener;
-import com.tencent.biz.qqstory.network.handler.OfficialRecommendListPageLoader;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.graphics.drawable.Drawable;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
 
 public class nkb
-  implements LbsManager.LbsUpdateListener
+  implements anhs
 {
-  public nkb(OfficialRecommendListPageLoader paramOfficialRecommendListPageLoader) {}
+  public nkb(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public void a(boolean paramBoolean, BasicLocation paramBasicLocation)
+  public void a(anht paramanht)
   {
-    SLog.b(":OfficialRecommendListPageLoader", "GetOfficialRecommendStoryListRequest onLbsUpdate.");
-    if (!paramBoolean) {
-      SLog.e(":OfficialRecommendListPageLoader", "GetOfficialRecommendStoryListRequest failed.");
+    if ((paramanht instanceof anla))
+    {
+      paramanht = (anla)paramanht;
+      if ((this.a instanceof ReadInJoyDeliverUGCActivity)) {
+        ((ReadInJoyDeliverUGCActivity)this.a).a(paramanht);
+      }
+      return;
     }
-    this.a.a(paramBasicLocation);
-    ((LbsManager)SuperManager.a(9)).b(OfficialRecommendListPageLoader.a(this.a));
+    ReadInJoyBaseDeliverActivity.a(this.a.app, paramanht, this.a.a);
   }
+  
+  public void a(anht paramanht1, anht paramanht2, Drawable paramDrawable) {}
+  
+  public boolean a(anht paramanht)
+  {
+    return true;
+  }
+  
+  public void b()
+  {
+    if (this.a.a.getSelectionStart() == 0) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        Editable localEditable = this.a.a.getText();
+        int i = this.a.a.getSelectionStart();
+        int j = TextUtils.getOffsetBefore(this.a.a.getText(), i);
+        if (i != j)
+        {
+          localEditable.delete(Math.min(i, j), Math.max(i, j));
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+    }
+  }
+  
+  public void b(anht paramanht) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 

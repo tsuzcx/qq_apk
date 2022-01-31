@@ -1,30 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
-public class acqe
-  implements View.OnTouchListener
+class acqe
+  implements axbf
 {
-  public acqe(ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
+  acqe(acqc paramacqc) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    axbl localaxbl = new axbl(3000, 360, 0);
+    localaxbl.a = true;
+    this.a.a.e.a(new axbe[] { localaxbl });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acqe
  * JD-Core Version:    0.7.0.1
  */

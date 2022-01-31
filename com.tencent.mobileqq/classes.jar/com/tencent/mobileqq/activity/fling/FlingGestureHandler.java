@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
 public class FlingGestureHandler
@@ -35,31 +36,33 @@ public class FlingGestureHandler
     return paramActivity;
   }
   
-  public void a()
+  protected void a()
   {
     if (!b()) {}
     ViewGroup localViewGroup;
     do
     {
-      Object localObject;
       do
       {
-        return;
-        localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      } while (localObject == null);
-      localViewGroup = a((Activity)localObject);
-      if (this.mTopLayout == null)
-      {
+        do
+        {
+          return;
+          localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        } while (localObject == null);
+        localViewGroup = a((Activity)localObject);
+        if (this.mTopLayout != null) {
+          break;
+        }
         this.jdField_a_of_type_AndroidViewView = localViewGroup.getChildAt(0);
-        View localView = this.jdField_a_of_type_AndroidViewView;
-        this.mTopLayout = new TopGestureLayout((Context)localObject);
-        localObject = this.mTopLayout;
-        ((TopGestureLayout)localObject).setOnFlingGesture(this);
-        localViewGroup.addView((View)localObject);
-        ((ViewGroup)localView.getParent()).removeView(localView);
-        ((TopGestureLayout)localObject).addView(localView);
-        return;
-      }
+      } while (this.jdField_a_of_type_AndroidViewView == null);
+      View localView = this.jdField_a_of_type_AndroidViewView;
+      this.mTopLayout = new TopGestureLayout((Context)localObject);
+      Object localObject = this.mTopLayout;
+      ((TopGestureLayout)localObject).setOnFlingGesture(this);
+      localViewGroup.addView((View)localObject);
+      ((ViewGroup)localView.getParent()).removeView(localView);
+      ((TopGestureLayout)localObject).addView(localView);
+      return;
     } while (a());
     if ((this.mTopLayout != null) && (this.mTopLayout.getParent() != null)) {
       ((ViewGroup)this.mTopLayout.getParent()).removeView(this.mTopLayout);
@@ -68,10 +71,18 @@ public class FlingGestureHandler
     if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getParent() != null)) {
       ((ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.jdField_a_of_type_AndroidViewView);
     }
-    this.mTopLayout.addView(this.jdField_a_of_type_AndroidViewView);
+    try
+    {
+      this.mTopLayout.addView(this.jdField_a_of_type_AndroidViewView);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("FlingGestureHandler", 1, localException, new Object[0]);
+    }
   }
   
-  public boolean a()
+  protected boolean a()
   {
     return (this.mTopLayout != null) && (this.mTopLayout.getParent() != null) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getParent() == this.mTopLayout);
   }

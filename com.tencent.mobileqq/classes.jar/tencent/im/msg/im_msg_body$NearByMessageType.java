@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class im_msg_body$NearByMessageType
-  extends MessageMicro
+  extends MessageMicro<NearByMessageType>
 {
   public static final int ETypeClearingImg = 2;
   public static final int ETypeClearingText = 1;

@@ -1,33 +1,25 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.utils.DingdongPluginBizObserver;
-
 public class tqw
-  extends DingdongPluginBizObserver
 {
-  public tqw(QQSettingMe paramQQSettingMe) {}
-  
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
-  {
-    if (paramInt == 5)
-    {
-      QQSettingMe.a(this.a, true);
-      this.a.I();
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (paramInt != 13);
-      QQSettingMe.a(this.a, true);
-    } while (!QQSettingMe.f(this.a));
-    QQSettingMe.d(this.a);
-    this.a.a(true);
-  }
+  @vlq(a="clipNo")
+  int jdField_a_of_type_Int;
+  @vlq(a="fileSize")
+  long jdField_a_of_type_Long;
+  @vlq(a="errorMsg")
+  String jdField_a_of_type_JavaLangString;
+  @vlq(a="speedKBS")
+  int b;
+  @vlq(a="offset")
+  int c;
+  @vlq(a="callBackType")
+  int d;
+  @vlq(a="errorCode")
+  int e;
+  @vlq(a="errorDetailCode")
+  int f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tqw
  * JD-Core Version:    0.7.0.1
  */

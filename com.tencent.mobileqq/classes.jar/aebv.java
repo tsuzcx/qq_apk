@@ -1,65 +1,72 @@
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.intervideo.groupvideo.GVideoLoadingUI;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment;
-import com.tencent.mobileqq.intervideo.groupvideo.PluginLoadListener;
+import android.os.SystemClock;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class aebv
-  implements PluginLoadListener
+class aebv
+  implements BusinessObserver
 {
-  public aebv(GroupVideoLoadingFragment paramGroupVideoLoadingFragment) {}
+  aebv(aebk paramaebk) {}
   
-  public void a(int paramInt, Bundle paramBundle)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((this.a.getActivity() == null) || (this.a.getActivity().isFinishing())) {}
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("BusinessChatPie", 2, "success:" + String.valueOf(paramBoolean));
+    }
+    if (!paramBoolean) {
+      this.a.A(2131629887);
+    }
+    for (;;)
     {
+      ChatActivityUtils.b();
       return;
-      GroupVideoLoadingFragment.a(this.a, paramInt);
-      switch (paramInt)
+      try
       {
-      case 4: 
-      case 8: 
-      default: 
-        return;
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
+          localFollowResponse.mergeFrom(paramBundle);
+          paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+          if (paramInt == 0)
+          {
+            ((FriendListHandler)this.a.a.a(1)).a(true, false);
+            paramBundle = (ajho)this.a.a.a(21);
+            if (paramBundle != null) {
+              paramBundle.a(SystemClock.uptimeMillis());
+            }
+          }
+          else if (paramInt == 58)
+          {
+            this.a.A(2131629884);
+          }
+          else if (paramInt == 65)
+          {
+            this.a.A(2131629857);
+          }
+          else if (paramInt == 20)
+          {
+            this.a.A(2131629858);
+          }
+          else
+          {
+            this.a.A(2131629887);
+          }
+        }
       }
-    } while (!GroupVideoLoadingFragment.a(this.a));
-    long l = paramBundle.getLong("key_totalSize", 0L);
-    GroupVideoLoadingFragment.a(this.a).a("请进行更新", "当前处于移动网络环境下,是否继续？");
-    GroupVideoLoadingFragment.a(this.a).a("立即更新(" + GVideoLoadingUI.a(l) + ")", new aeby(this.a, null));
-    return;
-    GroupVideoLoadingFragment.a(this.a).a("正在下载更新", "群视频体验群，可尝鲜更酷炫的多人互动");
-    paramInt = paramBundle.getInt("key_progress", 0);
-    l = paramBundle.getLong("key_totalSize", 0L);
-    GroupVideoLoadingFragment.a(this.a).a(paramInt, l);
-    GroupVideoLoadingFragment.a(this.a).b();
-    return;
-    GroupVideoLoadingFragment.a(this.a).a();
-    GroupVideoLoadingFragment.a(this.a).a("正在努力加载", "群视频体验群，可尝鲜更酷炫的多人互动");
-    paramBundle = Message.obtain();
-    paramBundle.arg1 = 10;
-    GroupVideoLoadingFragment.a(this.a).sendMessage(paramBundle);
-    return;
-    GroupVideoLoadingFragment.a(this.a).a("下载失败，请重试!", "请检查网络设置后重试");
-    GroupVideoLoadingFragment.a(this.a).a("重新下载", new aeby(this.a, null));
-    return;
-    GroupVideoLoadingFragment.a(this.a).b();
-    GroupVideoLoadingFragment.a(this.a).a("加载失败", "");
-    GroupVideoLoadingFragment.a(this.a).a("重新加载", new aeby(this.a, null));
-    return;
-    GroupVideoLoadingFragment.b(this.a, 90);
-    GroupVideoLoadingFragment.a(this.a).a(90, 0L);
-    return;
-    GroupVideoLoadingFragment.b(this.a, 100);
-    GroupVideoLoadingFragment.a(this.a).a(100, 0L);
-    GroupVideoLoadingFragment.a(this.a).postDelayed(new aebw(this), 1500L);
+      catch (Exception paramBundle) {}
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aebv
  * JD-Core Version:    0.7.0.1
  */

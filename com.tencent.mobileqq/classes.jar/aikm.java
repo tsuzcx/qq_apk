@@ -1,34 +1,24 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.statistics.DailyReport;
-import com.tencent.mobileqq.utils.AvatarPendantUtil;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import java.io.File;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
 
 public class aikm
-  extends DownloadListener
+  extends RecyclerView.ViewHolder
 {
-  public aikm(DailyReport paramDailyReport, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public aikm(aikl paramaikl, View paramView)
   {
-    super.onDone(paramDownloadTask);
-    long l = paramDownloadTask.a().getLong("id");
-    VasWebviewUtil.reportVasStatus("AvatarPendant", "AvatarPendantOn", String.valueOf(l), 0, 0, 0, 0, AvatarPendantUtil.a(new File(AvatarPendantUtil.b(l, 4))), "");
-  }
-  
-  public boolean onStart(DownloadTask paramDownloadTask)
-  {
-    return true;
+    super(paramView);
+    if (paramView == aikl.a(paramaikl)) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131298757));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aikm
  * JD-Core Version:    0.7.0.1
  */

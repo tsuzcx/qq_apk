@@ -1,23 +1,20 @@
-import android.widget.PopupWindow.OnDismissListener;
-import com.tencent.mobileqq.ar.config.MainDownAni;
-import com.tencent.mobileqq.ar.config.WorldCupStaticInstance;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class aapp
-  implements PopupWindow.OnDismissListener
+  extends ajjh
 {
-  public aapp(MainDownAni paramMainDownAni, aapz paramaapz) {}
+  public aapp(DiscussionMemberActivity paramDiscussionMemberActivity) {}
   
-  public void onDismiss()
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    QLog.w(MainDownAni.a(this.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni), 1, "modifyMenu, onDismiss");
-    WorldCupStaticInstance.a().a = false;
-    this.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni.a(this.jdField_a_of_type_Aapz.d);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aapp
  * JD-Core Version:    0.7.0.1
  */

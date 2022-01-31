@@ -8,13 +8,13 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class Qworkflow$ContentElement
-  extends MessageMicro
+  extends MessageMicro<ContentElement>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_userdef = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_file_list = PBField.initRepeatMessage(Qworkflow.OrdinaryFile.class);
-  public final PBRepeatMessageField rpt_picture_list = PBField.initRepeatMessage(Qworkflow.Picture.class);
-  public final PBRepeatMessageField rpt_text_list = PBField.initRepeatMessage(Qworkflow.Text.class);
+  public final PBRepeatMessageField<Qworkflow.OrdinaryFile> rpt_file_list = PBField.initRepeatMessage(Qworkflow.OrdinaryFile.class);
+  public final PBRepeatMessageField<Qworkflow.Picture> rpt_picture_list = PBField.initRepeatMessage(Qworkflow.Picture.class);
+  public final PBRepeatMessageField<Qworkflow.Text> rpt_text_list = PBField.initRepeatMessage(Qworkflow.Text.class);
   
   static
   {

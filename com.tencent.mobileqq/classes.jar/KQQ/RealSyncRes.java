@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class RealSyncRes
   extends JceStruct
 {
-  static ArrayList cache_vecResPkg;
+  static ArrayList<InfoItem> cache_vecResPkg;
   public byte result;
-  public ArrayList vecResPkg;
+  public ArrayList<InfoItem> vecResPkg;
   
   public RealSyncRes() {}
   
-  public RealSyncRes(byte paramByte, ArrayList paramArrayList)
+  public RealSyncRes(byte paramByte, ArrayList<InfoItem> paramArrayList)
   {
     this.result = paramByte;
     this.vecResPkg = paramArrayList;
@@ -40,7 +40,7 @@ public final class RealSyncRes
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     KQQ.RealSyncRes
  * JD-Core Version:    0.7.0.1
  */

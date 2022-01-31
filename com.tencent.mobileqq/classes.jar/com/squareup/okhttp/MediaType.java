@@ -30,17 +30,17 @@ public final class MediaType
     if (!((Matcher)localObject1).lookingAt()) {}
     String str1;
     String str2;
-    Object localObject2;
     Matcher localMatcher;
     int i;
+    Object localObject2;
     do
     {
       return null;
       str1 = ((Matcher)localObject1).group(1).toLowerCase(Locale.US);
       str2 = ((Matcher)localObject1).group(2).toLowerCase(Locale.US);
-      localObject2 = null;
       localMatcher = PARAMETER.matcher(paramString);
       i = ((Matcher)localObject1).end();
+      localObject2 = null;
       if (i >= paramString.length()) {
         break;
       }

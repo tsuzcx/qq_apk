@@ -1,45 +1,100 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.NativeAd.data.BannerInfo;
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
-import com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase;
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.text.TextUtils;
+import java.util.Map;
 
-public class kyk
-  implements ViewPager.OnPageChangeListener
+final class kyk
+  implements Handler.Callback
 {
-  public kyk(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
-  
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    ReadInJoyNativeAdFragment.a(this.a, Math.max(ReadInJoyNativeAdFragment.a(this.a), paramInt + 1));
-    ((AdModuleBase)ReadInJoyNativeAdFragment.a(this.a).get(paramInt)).a();
-    if (paramInt + 1 < ReadInJoyNativeAdFragment.a(this.a).size()) {
-      ((AdModuleBase)ReadInJoyNativeAdFragment.a(this.a).get(paramInt + 1)).b();
-    }
-    if ((ReadInJoyNativeAdFragment.a(this.a) != null) && (ReadInJoyNativeAdFragment.a(this.a).a == 1) && ((ReadInJoyNativeAdFragment.b(this.a) == 1) || (ReadInJoyNativeAdFragment.b(this.a) == 2)))
+    Bundle localBundle = paramMessage.getData();
+    switch (paramMessage.what)
     {
-      if (paramInt != ReadInJoyNativeAdFragment.a(this.a).size() - 1) {
-        break label155;
-      }
-      ReadInJoyNativeAdFragment.a(this.a).setVisibility(8);
     }
-    for (;;)
+    do
     {
-      ReadInJoyNativeAdFragment.a(this.a);
-      return;
-      label155:
-      ReadInJoyNativeAdFragment.a(this.a).setVisibility(0);
-    }
+      do
+      {
+        long l1;
+        int i;
+        long l2;
+        boolean bool;
+        do
+        {
+          do
+          {
+            do
+            {
+              return false;
+            } while (kyj.a() == null);
+            kyj.c();
+            kyj.a(24, kyj.b());
+            try
+            {
+              kyj.a().sendEmptyMessageDelayed(1, 5000L);
+              return false;
+            }
+            catch (NullPointerException paramMessage)
+            {
+              paramMessage.printStackTrace();
+              return false;
+            }
+            l1 = localBundle.getLong("roomId");
+            i = localBundle.getInt("node");
+            l2 = localBundle.getLong("value");
+            bool = localBundle.getBoolean("isNode");
+            kyj.a(i, true);
+          } while (kyj.a(i, true, bool));
+          if ((bool) && (kyj.a(33, true)))
+          {
+            krx.b("VideoNodeManager", "--> TempSeesion THE node_session_close has write !!  this node  be rejected !!   node = " + kyi.a(i));
+            return false;
+          }
+          kyj.a(i + "", l2 + "", bool);
+          kyj.a(i, l2, true);
+          krx.b("VideoNodeManager", "reportToTempSeesionRecord ,roomId = " + l1 + "  node = " + kyi.a(i) + ", value = " + l2 + "   isNode = " + bool);
+          return false;
+          l1 = localBundle.getLong("roomId");
+          i = localBundle.getInt("node");
+          l2 = localBundle.getLong("value");
+          bool = localBundle.getBoolean("isNode");
+          kyj.a(i, false);
+        } while (kyj.a(i, false, bool));
+        if ((bool) && (kyj.a(33, false)))
+        {
+          krx.b("VideoNodeManager", "--> THE node_session_close has write !!  this node  be rejected !!   node = " + kyi.a(i));
+          return false;
+        }
+        if (kyj.a(i)) {
+          krx.a("VideoNodeManager", "reportToHandler  roomId = " + l1 + "  node = " + kyi.a(i) + ",  value = " + l2 + "   isNode = " + bool);
+        }
+        kyj.b(i + "", l2 + "", bool);
+        kyj.a(i, l2, false);
+        return false;
+        paramMessage = kyj.a();
+        if (!TextUtils.isEmpty(paramMessage))
+        {
+          krx.a("VideoNodeManager", "--> handleMessage() what = MSG_REPORT_TO_SERVER detail = " + paramMessage);
+          awpy.a(null, "dc03209", paramMessage);
+          kyj.e();
+        }
+      } while ((kyj.a() == null) || (kyj.a().size() == 0));
+      kyj.j();
+      return false;
+      paramMessage = kyj.b();
+      krx.b("VideoNodeManager", "--> handleMessage() what = MSG_REPORT_TEMP_RECORD_TO_SERVER detail = " + paramMessage);
+    } while (TextUtils.isEmpty(paramMessage));
+    awpy.a(null, "dc03209", paramMessage);
+    kyj.f();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     kyk
  * JD-Core Version:    0.7.0.1
  */

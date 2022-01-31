@@ -1,0 +1,18 @@
+package com.tencent.mobileqq.transfile;
+
+class ShortVideoUploadProcessor$1
+  implements Runnable
+{
+  ShortVideoUploadProcessor$1(ShortVideoUploadProcessor paramShortVideoUploadProcessor) {}
+  
+  public void run()
+  {
+    this.this$0.h();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+ * Qualified Name:     com.tencent.mobileqq.transfile.ShortVideoUploadProcessor.1
+ * JD-Core Version:    0.7.0.1
+ */

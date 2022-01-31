@@ -1,42 +1,18 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloPushManager;
-import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
-import com.tencent.mobileqq.apollo.task.ApolloActionHelper;
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionPush;
+import com.tencent.ad.tangram.net.AdHttp.Params;
 
-public class yrb
-  implements Runnable
+class yrb
+  extends AdHttp.Params
 {
-  public yrb(ApolloPushManager paramApolloPushManager, ApolloActionPush paramApolloActionPush, SpriteTaskParam paramSpriteTaskParam) {}
+  public int a = -2147483648;
   
-  public void run()
+  public boolean isSuccess()
   {
-    QQAppInterface localQQAppInterface;
-    SpriteTaskParam localSpriteTaskParam;
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPush != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam != null))
-    {
-      localQQAppInterface = ApolloPushManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloPushManager);
-      localSpriteTaskParam = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam;
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPush.mContent)) {
-        break label99;
-      }
-    }
-    label99:
-    for (boolean bool = true;; bool = false)
-    {
-      ApolloActionHelper.a(localQQAppInterface, localSpriteTaskParam, bool, this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.b);
-      if ((ApolloPushManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloPushManager) != null) && (this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPush != null)) {
-        ((ApolloDaoManager)ApolloPushManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloPushManager).getManager(154)).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPush.mId);
-      }
-      return;
-    }
+    return (super.isSuccess()) && (this.responseData != null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yrb
  * JD-Core Version:    0.7.0.1
  */

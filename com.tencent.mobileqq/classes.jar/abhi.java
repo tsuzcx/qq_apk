@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
-public class abhi
-  implements Runnable
+class abhi
+  implements DialogInterface.OnCancelListener
 {
-  public abhi(ARMapActivity paramARMapActivity, long paramLong1, long paramLong2) {}
+  abhi(abhe paramabhe) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    ARMapEngine.updateSinglePOITaskStatus(this.jdField_a_of_type_Long, this.b, 1);
+    this.a.a.setResult(4003);
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abhi
  * JD-Core Version:    0.7.0.1
  */

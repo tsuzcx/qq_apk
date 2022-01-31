@@ -2,36 +2,41 @@ package com.tencent.sharpP;
 
 public class SharpPDecoderWrapper$SharpPFeatureWrapper
 {
-  SharpPDecoder.SharpPFeature a;
+  SharpPDecoder.SharpPFeature info;
   
   public SharpPDecoderWrapper$SharpPFeatureWrapper(SharpPDecoder.SharpPFeature paramSharpPFeature)
   {
-    this.a = paramSharpPFeature;
+    this.info = paramSharpPFeature;
   }
   
-  public int a()
+  public SharpPDecoder.SharpPFeature getFeatureInfo()
   {
-    return this.a.width;
+    return this.info;
   }
   
-  public SharpPDecoder.SharpPFeature a()
+  public int getFrameCount()
   {
-    return this.a;
+    return this.info.frameCount;
   }
   
-  public int b()
+  public int getHeight()
   {
-    return this.a.height;
+    return this.info.height;
   }
   
-  public int c()
+  public int getImageMode()
   {
-    return this.a.imageMode;
+    return this.info.imageMode;
   }
   
-  public int d()
+  public int getLayerNum()
   {
-    return this.a.frameCount;
+    return this.info.layerNum;
+  }
+  
+  public int getWidth()
+  {
+    return this.info.width;
   }
 }
 

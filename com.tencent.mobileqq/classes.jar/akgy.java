@@ -1,44 +1,42 @@
-import android.annotation.TargetApi;
-import android.os.Handler;
-import android.view.Choreographer;
-import com.tencent.mobileqq.util.FPSCalculator;
+import android.util.SparseArray;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileFilter;
+import org.json.JSONObject;
 
-public class akgy
-  implements Runnable
+class akgy
+  implements FileFilter
 {
-  public akgy(FPSCalculator paramFPSCalculator) {}
+  akgy(akgx paramakgx, SparseArray paramSparseArray) {}
   
-  @TargetApi(16)
-  public void run()
+  public boolean accept(File paramFile)
   {
-    for (;;)
+    Object localObject = new File(paramFile, "config.json");
+    if ((((File)localObject).exists()) && (((File)localObject).isFile())) {
+      localObject = bace.a((File)localObject);
+    }
+    try
     {
-      try
+      int i = Integer.parseInt(paramFile.getName());
+      long l = new JSONObject((String)localObject).optLong("version");
+      this.jdField_a_of_type_AndroidUtilSparseArray.append(i, Long.valueOf(l));
+      QLog.i("ApolloContentUpdateHandler", 1, "getApolloRoleReqInfo roleId: " + i + ", ver: " + l / 1000L);
+      return false;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        if (FPSCalculator.a(this.a) == null) {
-          continue;
+        if (QLog.isColorLevel()) {
+          QLog.e("ApolloContentUpdateHandler", 1, "getApolloRoleReqInfo failed role: " + paramFile.getAbsolutePath());
         }
-        FPSCalculator.a(this.a).removeFrameCallback(FPSCalculator.a(this.a));
-        FPSCalculator.a(this.a).postFrameCallback(FPSCalculator.a(this.a));
       }
-      catch (Exception localException)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("FPSCalculator", 2, "Choreographer.getInstance", localException);
-        continue;
-      }
-      FPSCalculator.a(this.a).removeCallbacks(FPSCalculator.a(this.a));
-      return;
-      FPSCalculator.a(this.a, Choreographer.getInstance());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akgy
  * JD-Core Version:    0.7.0.1
  */

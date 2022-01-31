@@ -1,25 +1,24 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.mobileqq.troop.widget.PublishItemBar;
+import com.tencent.mobileqq.apollo.utils.ApolloConfigDataReport.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class aiyp
-  implements Animation.AnimationListener
+  implements aifv
 {
-  public aiyp(AbsPublishActivity paramAbsPublishActivity) {}
+  public aiyp(ApolloConfigDataReport.1 param1) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.a.a.clearAnimation();
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloConfigDataReport", 2, new Object[] { "checkReportConfigJson errorCode:", Integer.valueOf(paramInt1), ", httpCode:", Integer.valueOf(paramInt2) });
+    }
+    if ((paramInt1 == 0) && (paramInt2 == 200)) {
+      aiyo.b();
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiyp
  * JD-Core Version:    0.7.0.1
  */

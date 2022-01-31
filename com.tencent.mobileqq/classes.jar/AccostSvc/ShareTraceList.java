@@ -8,15 +8,15 @@ import java.util.ArrayList;
 public final class ShareTraceList
   extends JceStruct
 {
-  static ArrayList cache_vecClose;
-  static ArrayList cache_vecOpen;
+  static ArrayList<Long> cache_vecClose;
+  static ArrayList<Long> cache_vecOpen;
   public byte cType;
-  public ArrayList vecClose;
-  public ArrayList vecOpen;
+  public ArrayList<Long> vecClose;
+  public ArrayList<Long> vecOpen;
   
   public ShareTraceList() {}
   
-  public ShareTraceList(byte paramByte, ArrayList paramArrayList1, ArrayList paramArrayList2)
+  public ShareTraceList(byte paramByte, ArrayList<Long> paramArrayList1, ArrayList<Long> paramArrayList2)
   {
     this.cType = paramByte;
     this.vecOpen = paramArrayList1;

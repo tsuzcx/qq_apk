@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="500" android:drawable="@drawable/gli" />
+    <item android:duration="500" android:drawable="@drawable/glj" />
+    <item android:duration="500" android:drawable="@drawable/glk" />
+</animation-list>

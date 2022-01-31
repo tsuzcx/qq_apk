@@ -1,46 +1,96 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.TroopRedpoint.TroopRedTouchManager;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.struct.LebaViewItem;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.EmoticonPack;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class tbl
-  implements View.OnClickListener
+  implements Cloneable
 {
-  public tbl(Leba paramLeba) {}
+  public final int a;
+  public final String a;
+  public final int b;
+  public final String b;
+  public final String c;
+  public final String d;
+  public final String e;
+  public final String f;
+  public final String g;
   
-  public void onClick(View paramView)
+  public tbl(qqstory_struct.EmoticonPack paramEmoticonPack)
   {
-    try
+    this.jdField_a_of_type_JavaLangString = String.valueOf(paramEmoticonPack.pack_id.get());
+    this.jdField_b_of_type_JavaLangString = paramEmoticonPack.icon.get().toStringUtf8();
+    this.d = paramEmoticonPack.name.get().toStringUtf8();
+    this.e = paramEmoticonPack.download_url.get().toStringUtf8();
+    this.f = paramEmoticonPack.md5.get().toStringUtf8();
+    this.jdField_a_of_type_Int = paramEmoticonPack.version.get();
+    this.jdField_b_of_type_Int = a(paramEmoticonPack.type.get());
+    this.c = paramEmoticonPack.download_icon.get().toStringUtf8();
+    this.g = paramEmoticonPack.config.get().toStringUtf8();
+  }
+  
+  private int a(int paramInt)
+  {
+    int i = paramInt;
+    switch (paramInt)
     {
-      int i = ((Integer)paramView.getTag(-1)).intValue();
-      if (i > -1)
-      {
-        LebaViewItem localLebaViewItem = (LebaViewItem)this.a.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter.getItem(i);
-        if ((localLebaViewItem != null) && (localLebaViewItem.a != null) && (localLebaViewItem.a.uiResId == 6005L)) {
-          StoryReportor.a("dynamic", "clk_story", 0, ((TroopRedTouchManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(69)).c(), new String[0]);
-        }
-      }
+    default: 
+      i = 1;
     }
-    catch (NullPointerException localNullPointerException)
+    return i;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_b_of_type_Int == 1) {
+      if ((TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) || (TextUtils.isEmpty(this.d)) || (TextUtils.isEmpty(this.e)) || (TextUtils.isEmpty(this.f))) {}
+    }
+    while ((!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.d)))
     {
-      for (;;)
-      {
-        QLog.w("Q.lebatab.leba", 2, "" + localNullPointerException);
-      }
+      return true;
+      return false;
     }
-    this.a.jdField_a_of_type_ComTencentWidgetAdapterView$OnItemClickListener.a(this.a.jdField_a_of_type_ComTencentMobileqqFpsreportFPSXListView, paramView, ((Integer)paramView.getTag(-1)).intValue(), 0L);
+    return false;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
+    {
+      return true;
+      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+        return false;
+      }
+      paramObject = (tbl)paramObject;
+      if (this.jdField_a_of_type_JavaLangString == null) {
+        break;
+      }
+    } while (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString));
+    while (paramObject.jdField_a_of_type_JavaLangString != null) {
+      return false;
+    }
+    return true;
+  }
+  
+  public int hashCode()
+  {
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      return this.jdField_a_of_type_JavaLangString.hashCode();
+    }
+    return 0;
+  }
+  
+  public String toString()
+  {
+    return "EmojiPack{mPackId=" + this.jdField_a_of_type_JavaLangString + ", mLogoUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mPackName='" + this.d + '\'' + ", mPackDownloadUrl='" + this.e + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tbl
  * JD-Core Version:    0.7.0.1
  */

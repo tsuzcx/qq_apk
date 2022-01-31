@@ -1,24 +1,21 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.adapter.ShowExternalTroopListAdapter;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.util.FaceDecoder;
+import android.text.TextUtils;
+import com.tencent.gdtad.statistics.GdtCgiReportRunnable;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class yol
-  extends TroopObserver
 {
-  public yol(ShowExternalTroopListAdapter paramShowExternalTroopListAdapter) {}
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  public static void a(String paramString)
   {
-    Bitmap localBitmap = this.a.a.a(113, paramString);
-    if (localBitmap != null) {
-      this.a.a(paramString, localBitmap);
+    if (TextUtils.isEmpty(paramString)) {
+      return;
     }
+    ThreadManager.post(new GdtCgiReportRunnable(paramString), 2, null, false);
+    yny.b("GDT_CGI_REPORT", paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yol
  * JD-Core Version:    0.7.0.1
  */

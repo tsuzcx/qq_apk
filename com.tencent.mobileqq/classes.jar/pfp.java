@@ -1,21 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.webviewbase.WebAIOController;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
 
-public class pfp
-  extends BroadcastReceiver
+class pfp
+  implements View.OnTouchListener
 {
-  public pfp(WebAIOController paramWebAIOController) {}
+  pfp(pfl parampfl, LinearLayout paramLinearLayout) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ("com.tencent.msg.newmessage".equals(paramIntent.getAction()))
-    {
-      WebAIOController.b = false;
-      WebAIOController.c = true;
-      this.a.a(true);
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
     }
+    return false;
   }
 }
 

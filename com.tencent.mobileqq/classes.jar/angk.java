@@ -1,19 +1,39 @@
-import cooperation.qzone.report.lp.LpReportInfo;
-import cooperation.qzone.report.lp.MachinelearningReport;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.qphone.base.util.QLog;
 
-public class angk
-  implements Runnable
+class angk
+  extends anfx
 {
-  public angk(MachinelearningReport paramMachinelearningReport, int paramInt, LpReportInfo paramLpReportInfo) {}
+  angk(angj paramangj) {}
   
-  public void run()
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt, Bundle paramBundle)
   {
-    MachinelearningReport.access$100(this.jdField_a_of_type_CooperationQzoneReportLpMachinelearningReport, this.jdField_a_of_type_Int, this.jdField_a_of_type_CooperationQzoneReportLpLpReportInfo);
+    super.a(paramEmoticonPackage, paramInt, paramBundle);
+    if ((paramEmoticonPackage != null) && (paramInt == 0))
+    {
+      paramBundle = paramBundle.getBundle("jsonReqParams");
+      if (paramBundle != null)
+      {
+        paramInt = paramBundle.getInt(angj.jdField_a_of_type_JavaLangString);
+        paramBundle = paramBundle.getString(angj.b);
+        if (QLog.isColorLevel()) {
+          QLog.d("SogouEmoji", 2, "func onEmojiJsonBack begins, taskId:" + paramInt + ",packId:" + paramEmoticonPackage.epId);
+        }
+        boolean bool = this.a.jdField_a_of_type_Ango.a(paramInt);
+        if (bool) {
+          this.a.a(paramEmoticonPackage.epId, paramBundle, false);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("SogouEmoji", 2, "func onEmojiJsonBack ends, isTaskExist:" + bool);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     angk
  * JD-Core Version:    0.7.0.1
  */

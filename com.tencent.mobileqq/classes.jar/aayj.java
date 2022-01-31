@@ -1,23 +1,30 @@
-import android.view.View;
-import com.tencent.mobileqq.ark.ArkAiAppPanel;
-import com.tencent.widget.HorizontalListView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aayj
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public aayj(ArkAiAppPanel paramArkAiAppPanel) {}
+  public aayj(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    View localView = ArkAiAppPanel.a(this.a).getSelectedView();
-    if (localView != null) {
-      localView.setSelected(true);
+    if (paramIntent != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.gesturelock.unlock", 2, "GesturePWDUnlockActivity finish onReceive");
+      }
+      if ((paramIntent.getLongExtra("timeid", 0L) > this.a.a) && (!this.a.isFinishing())) {
+        this.a.finish();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aayj
  * JD-Core Version:    0.7.0.1
  */

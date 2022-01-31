@@ -1,20 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.activity.PreloadWebService;
+import com.tencent.smtt.sdk.WebView;
+import com.tencent.smtt.sdk.WebViewClient;
 
 public class abib
-  implements DialogInterface.OnClickListener
+  extends WebViewClient
 {
-  public abib(ARMapActivity paramARMapActivity) {}
+  public abib(PreloadWebService paramPreloadWebService) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    paramDialogInterface.dismiss();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abib
  * JD-Core Version:    0.7.0.1
  */

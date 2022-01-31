@@ -1,20 +1,19 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder.Holder;
+import android.graphics.Canvas;
+import android.view.MotionEvent;
 
-class uyr
-  implements Runnable
+public abstract interface uyr
 {
-  uyr(uyq paramuyq) {}
+  public abstract void a();
   
-  public void run()
-  {
-    this.a.a.d.setVisibility(8);
-    this.a.a.c.setVisibility(8);
-  }
+  public abstract boolean a();
+  
+  public abstract void b(Canvas paramCanvas);
+  
+  public abstract boolean b(MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uyr
  * JD-Core Version:    0.7.0.1
  */

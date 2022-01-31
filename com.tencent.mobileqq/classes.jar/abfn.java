@@ -1,22 +1,50 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.widget.ActionSheet;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
-class abfn
-  implements DialogInterface.OnDismissListener
+public class abfn
+  implements CompoundButton.OnCheckedChangeListener
 {
-  abfn(abfm paramabfm, ActionSheet paramActionSheet) {}
+  public abfn(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    ArkAppCenter.b("ArkApp.DebugOnlineActivity", String.format("ClearData actionsheet is closed", new Object[0]));
+    QQAppInterface localQQAppInterface;
+    if (paramBoolean)
+    {
+      beeq.a();
+      localQQAppInterface = this.a.app;
+      if (!paramBoolean) {
+        break label81;
+      }
+      paramCompoundButton = "0X8004BE7";
+      label23:
+      if (!paramBoolean) {
+        break label87;
+      }
+    }
+    label81:
+    label87:
+    for (String str = "0X8004BE7";; str = "0X8004BE6")
+    {
+      awqx.b(localQQAppInterface, "CliOper", "", "", paramCompoundButton, str, 0, 1, "1", "", "", "");
+      if (AppSetting.c) {
+        NotifyPushSettingActivity.d(this.a).setContentDescription(ajjy.a(2131641854));
+      }
+      return;
+      beeq.b();
+      break;
+      paramCompoundButton = "0X8004BE6";
+      break label23;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abfn
  * JD-Core Version:    0.7.0.1
  */

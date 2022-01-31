@@ -1,22 +1,15 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.richstatus.RichStatus;
-import com.tencent.mobileqq.richstatus.StatusManager;
-
 public class tqc
-  implements Runnable
+  implements tpx
 {
-  public tqc(QQSettingMe paramQQSettingMe) {}
+  public void a(int paramInt) {}
   
-  public void run()
-  {
-    RichStatus localRichStatus = QQSettingMe.a(this.a).a(true);
-    this.a.a.runOnUiThread(new tqd(this, localRichStatus));
-  }
+  public void a(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void b(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tqc
  * JD-Core Version:    0.7.0.1
  */

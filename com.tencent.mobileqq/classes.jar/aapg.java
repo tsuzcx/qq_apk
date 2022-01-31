@@ -1,36 +1,34 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.troop.widget.FollowImageTextView;
 
-public final class aapg
-  implements INetEngine.IBreakDownFix
+public class aapg
+  implements View.OnTouchListener
 {
-  public void a(NetReq paramNetReq, NetResp paramNetResp)
+  public aapg(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramNetReq == null) || (paramNetResp == null)) {}
-    while (!(paramNetReq instanceof HttpNetReq)) {
-      return;
-    }
-    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetReq;
-    localHttpNetReq.jdField_a_of_type_Long += paramNetResp.c;
-    paramNetResp.c = 0L;
-    paramNetResp = "bytes=" + localHttpNetReq.jdField_a_of_type_Long + "-";
-    localHttpNetReq.jdField_a_of_type_JavaUtilHashMap.put("Range", paramNetResp);
-    paramNetResp = localHttpNetReq.jdField_a_of_type_JavaLangString;
-    if (paramNetResp.contains("range="))
+    if ((paramMotionEvent != null) && (this.a.a != null))
     {
-      paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
-      localHttpNetReq.jdField_a_of_type_JavaLangString = (paramNetResp + "range=" + localHttpNetReq.jdField_a_of_type_Long);
+      paramView = this.a.a;
+      if (paramMotionEvent.getAction() != 0) {
+        break label39;
+      }
     }
-    QLog.i("AREngine_ARResourceDownload", 1, "IBreakDownFix. url = " + ((HttpNetReq)paramNetReq).jdField_a_of_type_JavaLangString + ", offset=" + localHttpNetReq.jdField_a_of_type_Long);
+    label39:
+    for (float f = 0.5F;; f = 1.0F)
+    {
+      paramView.setAlpha(f);
+      return false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aapg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.qqstory.app.QQStoryContext;
 
 class uqa
-  implements Runnable
+  extends ulp
 {
-  uqa(upz paramupz, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
+  uqa(upw paramupw) {}
   
-  public void run()
+  public void a(int paramInt, View paramView, Object paramObject, unw paramunw)
   {
-    try
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "ThemeCustomizeStrategy");
-      }
-      if ((upz.a(this.jdField_a_of_type_Upz) == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.templateId)))
-      {
-        CustomizeStrategyFactory.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo);
-        return;
-      }
-      String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.templateId + ".png";
-      upz.a(this.jdField_a_of_type_Upz).b(str, new uqb(this));
+    if (vms.b()) {}
+    while (paramView.getId() != 2131311247) {
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+    urp.a("mystory", "clk_all_story", 0, 0, new String[0]);
+    paramView = QQStoryContext.a().b();
+    skt.a(upw.c(this.a), 1, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uqa
  * JD-Core Version:    0.7.0.1
  */

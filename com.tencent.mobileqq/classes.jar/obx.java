@@ -1,50 +1,96 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.MemoryManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.network.request.GetProfileYearNodeListRequest;
-import com.tencent.biz.qqstory.network.request.GetProfileYearNodeListRequest.GetProfileYearNodeListResponse;
-import com.tencent.biz.qqstory.storyHome.memory.controller.ProfileFeedPresenter;
-import com.tencent.biz.qqstory.storyHome.memory.controller.ProfileFeedPresenter.GetYearNodeListEvent;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
-import java.util.concurrent.atomic.AtomicBoolean;
-
 public class obx
-  implements CmdTaskManger.CommandCallback
 {
-  public obx(ProfileFeedPresenter paramProfileFeedPresenter, boolean paramBoolean) {}
+  private static String[][] a;
   
-  public void a(@NonNull GetProfileYearNodeListRequest paramGetProfileYearNodeListRequest, @Nullable GetProfileYearNodeListRequest.GetProfileYearNodeListResponse arg2, @NonNull ErrorMessage paramErrorMessage)
+  static
   {
-    if (ProfileFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter).get())
+    String[] arrayOfString1 = { "&lt;", "<" };
+    String[] arrayOfString2 = { "&gt;", ">" };
+    String[] arrayOfString3 = { "&amp;", "&" };
+    String[] arrayOfString4 = { "&quot;", "\"" };
+    String[] arrayOfString5 = { "&agrave;", "à" };
+    String[] arrayOfString6 = { "&Agrave;", "À" };
+    String[] arrayOfString7 = { "&acirc;", "â" };
+    String[] arrayOfString8 = { "&auml;", "ä" };
+    String[] arrayOfString9 = { "&Auml;", "Ä" };
+    String[] arrayOfString10 = { "&aring;", "å" };
+    String[] arrayOfString11 = { "&Aring;", "Å" };
+    String[] arrayOfString12 = { "&aelig;", "æ" };
+    String[] arrayOfString13 = { "&AElig;", "Æ" };
+    String[] arrayOfString14 = { "&ccedil;", "ç" };
+    String[] arrayOfString15 = { "&Ccedil;", "Ç" };
+    String[] arrayOfString16 = { "&eacute;", "é" };
+    String[] arrayOfString17 = { "&Eacute;", "É" };
+    String[] arrayOfString18 = { "&egrave;", "è" };
+    String[] arrayOfString19 = { "&Egrave;", "È" };
+    String[] arrayOfString20 = { "&Ecirc;", "Ê" };
+    String[] arrayOfString21 = { "&Euml;", "Ë" };
+    String[] arrayOfString22 = { "&iuml;", "ï" };
+    String[] arrayOfString23 = { "&Iuml;", "Ï" };
+    String[] arrayOfString24 = { "&ocirc;", "ô" };
+    String[] arrayOfString25 = { "&Ocirc;", "Ô" };
+    String[] arrayOfString26 = { "&ouml;", "ö" };
+    String[] arrayOfString27 = { "&Ouml;", "Ö" };
+    String[] arrayOfString28 = { "&Oslash;", "Ø" };
+    String[] arrayOfString29 = { "&Ugrave;", "Ù" };
+    String[] arrayOfString30 = { "&ucirc;", "û" };
+    String[] arrayOfString31 = { "&Ucirc;", "Û" };
+    String[] arrayOfString32 = { "&nbsp;", " " };
+    String[] arrayOfString33 = { "&reg;", "®" };
+    String[] arrayOfString34 = { "&euro;", "₠" };
+    a = new String[][] { arrayOfString1, arrayOfString2, arrayOfString3, arrayOfString4, arrayOfString5, arrayOfString6, arrayOfString7, arrayOfString8, arrayOfString9, { "&Acirc;", "Â" }, arrayOfString10, arrayOfString11, arrayOfString12, arrayOfString13, arrayOfString14, arrayOfString15, arrayOfString16, arrayOfString17, arrayOfString18, arrayOfString19, { "&ecirc;", "ê" }, arrayOfString20, { "&euml;", "ë" }, arrayOfString21, arrayOfString22, arrayOfString23, arrayOfString24, arrayOfString25, arrayOfString26, arrayOfString27, { "&oslash;", "ø" }, arrayOfString28, { "&szlig;", "ß" }, { "&ugrave;", "ù" }, arrayOfString29, arrayOfString30, arrayOfString31, { "&uuml;", "ü" }, { "&Uuml;", "Ü" }, arrayOfString32, { "&copy;", "©" }, arrayOfString33, arrayOfString34 };
+  }
+  
+  public static String a(String paramString)
+  {
+    return a(paramString, 0);
+  }
+  
+  public static String a(String paramString, int paramInt)
+  {
+    int i = paramString.indexOf("&", paramInt);
+    String str = paramString;
+    int j;
+    if (i > -1)
     {
-      SLog.e("Q.qqstory.memories.ProfileFeedPresenter", "year node data back when activity has been destroyed.");
-      return;
+      j = paramString.indexOf(";", i);
+      str = paramString;
+      if (j > i)
+      {
+        str = paramString.substring(i, j + 1);
+        paramInt = 0;
+      }
     }
-    SLog.a("Q.qqstory.memories.ProfileFeedPresenter", "on year node data back. is successful : %s.", Boolean.valueOf(paramErrorMessage.isSuccess()));
-    paramGetProfileYearNodeListRequest = new ProfileFeedPresenter.GetYearNodeListEvent(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter, paramErrorMessage);
-    paramGetProfileYearNodeListRequest.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    if ((??? == null) || (paramErrorMessage.isFail()))
+    for (;;)
     {
-      Dispatchers.get().dispatch(paramGetProfileYearNodeListRequest);
-      return;
+      if ((paramInt >= a.length) || (a[paramInt][0].equals(str)))
+      {
+        str = paramString;
+        if (paramInt < a.length) {
+          str = a(paramString.substring(0, i) + a[paramInt][1] + paramString.substring(j + 1), i);
+        }
+        return str;
+      }
+      paramInt += 1;
     }
-    paramGetProfileYearNodeListRequest.jdField_a_of_type_JavaUtilList = ???.jdField_a_of_type_JavaUtilList;
-    ((MemoryManager)SuperManager.a(19)).a(???.jdField_a_of_type_JavaUtilList, true);
-    synchronized (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerProfileFeedPresenter)
-    {
-      Dispatchers.get().dispatch(paramGetProfileYearNodeListRequest);
-      return;
+  }
+  
+  public static String b(String paramString)
+  {
+    int i = paramString.length();
+    while ((i < 0) && (paramString.charAt(i - 1) <= ' ')) {
+      i -= 1;
     }
+    String str = paramString;
+    if (i < paramString.length()) {
+      str = paramString.substring(0, i);
+    }
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     obx
  * JD-Core Version:    0.7.0.1
  */

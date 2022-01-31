@@ -1,38 +1,28 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.utils.MusicCacheManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
+import android.widget.TextView;
+import com.tencent.widget.AbsListView;
 
-public class aesk
-  implements Runnable
+class aesk
+  implements begh
 {
-  public aesk(QQPlayerService paramQQPlayerService) {}
+  aesk(aesj paramaesj) {}
   
-  public void run()
+  private boolean a(AbsListView paramAbsListView)
   {
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    localCalendar.set(14, 0);
-    SharedPreferences localSharedPreferences = this.a.getSharedPreferences("QQPlayerService.sp", 0);
-    long l1 = localSharedPreferences.getLong("del_timestamp", 0L);
-    long l2 = localCalendar.getTimeInMillis();
-    if (l1 < l2)
-    {
-      localSharedPreferences.edit().putLong("del_timestamp", l2).commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("MusicCacheManager", 2, "lastDel<today =====>> delCacheByTimeAndSpace");
-      }
-      MusicCacheManager.b();
+    return (paramAbsListView.getChildAt(paramAbsListView.getChildCount() - 1) == this.a.a) && (this.a.a.getBottom() == this.a.a.getBottom());
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((paramInt == 0) && (a(paramAbsListView))) {
+      this.a.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aesk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,20 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.util.TroopReportor;
+import android.view.View;
 
-public class oxs
-  implements Runnable
+class oxs
+  implements begw
 {
-  public oxs(QRDisplayActivity paramQRDisplayActivity) {}
+  oxs(oxq paramoxq) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    String str = "temp_qrcode_share_" + this.a.jdField_c_of_type_JavaLangString + ".png";
-    try
+    switch (paramInt)
     {
-      str = QRUtils.a(this.a.getApplicationContext(), str, this.a.b);
-      this.a.runOnUiThread(new oxu(this, str));
-      return;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    for (;;)
     {
-      if (this.a.jdField_c_of_type_Int == 2) {
-        TroopReportor.a("Grp_share", "grpData_admin", "qr_qzone", 0, 0, new String[] { this.a.jdField_c_of_type_JavaLangString, String.valueOf(this.a.a), "1" });
-      }
-      this.a.runOnUiThread(new oxt(this));
+      oxq.a(this.a).dismiss();
+      return;
+      oxq.a(this.a, false);
     }
   }
 }

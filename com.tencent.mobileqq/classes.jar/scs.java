@@ -1,32 +1,35 @@
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.vip.CUKingCardHelper.CUKingDialogListener;
-import com.tencent.qphone.base.util.QLog;
-
-public final class scs
-  implements CUKingCardHelper.CUKingDialogListener
+class scs
+  implements moc
 {
-  public scs(DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2) {}
+  scs(scq paramscq, boolean paramBoolean) {}
   
-  public void callback(int paramInt)
+  public void loaded(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatActivityUtils", 2, "showDlgWithCuOpenCheck type = " + paramInt);
-    }
+    urk.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkResource loaded code = %d ", Integer.valueOf(paramInt));
     switch (paramInt)
     {
-    default: 
-      return;
+    case -1: 
     case 1: 
     case 2: 
-      this.a.onClick(null, 0);
+    case 3: 
+    case 4: 
+    case 5: 
+    case 6: 
+    case 7: 
+    default: 
       return;
     }
-    this.b.onClick(null, 0);
+    if (this.jdField_a_of_type_Boolean) {
+      scq.a(this.jdField_a_of_type_Scq);
+    }
+    urk.a("Q.qqstory.recommendAlbum.logic.StoryAlbumResourceDownloader", "checkResource download success", Integer.valueOf(paramInt));
   }
+  
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     scs
  * JD-Core Version:    0.7.0.1
  */

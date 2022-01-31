@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class interact_value$FreshThing
-  extends MessageMicro
+  extends MessageMicro<FreshThing>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_content_2 = PBField.initBytes(ByteStringMicro.EMPTY);

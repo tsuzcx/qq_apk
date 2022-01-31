@@ -1,6 +1,7 @@
 package com.tencent.qqlive.mediaplayer.api;
 
 import android.content.Context;
+import java.util.Map;
 
 public abstract interface TVK_ISDKInitBridge
 {
@@ -9,6 +10,10 @@ public abstract interface TVK_ISDKInitBridge
   public abstract void deInit();
   
   public abstract String getAdChid();
+  
+  public abstract int getHevcHwMaxResolution();
+  
+  public abstract int getHevcSwMaxResolution();
   
   public abstract String getPlatform();
   
@@ -21,6 +26,8 @@ public abstract interface TVK_ISDKInitBridge
   public abstract boolean isAuthorized();
   
   public abstract boolean isUseFileConfig();
+  
+  public abstract void setConfigMap(Map<String, String> paramMap);
   
   public abstract void setDebugEnable(boolean paramBoolean);
   
@@ -42,7 +49,7 @@ public abstract interface TVK_ISDKInitBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqlive.mediaplayer.api.TVK_ISDKInitBridge
  * JD-Core Version:    0.7.0.1
  */

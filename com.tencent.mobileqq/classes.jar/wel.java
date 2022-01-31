@@ -1,19 +1,18 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-
-public class wel
-  implements Runnable
+class wel
+  implements wem
 {
-  public wel(PublicAccountChatPie paramPublicAccountChatPie) {}
+  wel(wek paramwek) {}
   
-  public void run()
+  public void a(int paramInt, boolean paramBoolean, String paramString, Object... paramVarArgs)
   {
-    ServiceAccountFolderManager.a().b(this.a.a);
+    if (this.a.jdField_a_of_type_Wes != null) {
+      this.a.jdField_a_of_type_Wes.a(paramBoolean, this.a.jdField_a_of_type_JavaLangString, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wel
  * JD-Core Version:    0.7.0.1
  */

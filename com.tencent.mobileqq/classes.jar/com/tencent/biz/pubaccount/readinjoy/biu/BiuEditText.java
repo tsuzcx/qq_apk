@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.util.AttributeSet;
 import android.widget.EditText;
+import reo;
+import rep;
 
 public class BiuEditText
   extends EditText
@@ -12,11 +14,18 @@ public class BiuEditText
   public BiuEditText(Context paramContext)
   {
     super(paramContext);
+    a();
   }
   
   public BiuEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    a();
+  }
+  
+  private void a()
+  {
+    addTextChangedListener(new rep());
   }
   
   public boolean onPrivateIMECommand(String paramString, Bundle paramBundle)
@@ -35,16 +44,16 @@ public class BiuEditText
     {
       return;
       Editable localEditable = getEditableText();
-      BiuNicknameSpan[] arrayOfBiuNicknameSpan = (BiuNicknameSpan[])localEditable.getSpans(paramInt1, paramInt2, BiuNicknameSpan.class);
-      if ((arrayOfBiuNicknameSpan != null) && (arrayOfBiuNicknameSpan.length > 0))
+      reo[] arrayOfreo = (reo[])localEditable.getSpans(paramInt1, paramInt2, reo.class);
+      if ((arrayOfreo != null) && (arrayOfreo.length > 0))
       {
-        int i = arrayOfBiuNicknameSpan.length;
+        int i = arrayOfreo.length;
         paramInt2 = 0;
         while (paramInt2 < i)
         {
-          BiuNicknameSpan localBiuNicknameSpan = arrayOfBiuNicknameSpan[paramInt2];
-          int j = localEditable.getSpanStart(localBiuNicknameSpan);
-          int k = localEditable.getSpanEnd(localBiuNicknameSpan);
+          reo localreo = arrayOfreo[paramInt2];
+          int j = localEditable.getSpanStart(localreo);
+          int k = localEditable.getSpanEnd(localreo);
           if ((j >= 0) && (k >= j) && (paramInt1 > j) && (paramInt1 < k))
           {
             setSelection(k);

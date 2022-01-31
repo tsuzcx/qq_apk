@@ -1,31 +1,21 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
-import dov.com.qq.im.capture.view.VideoSegmentPickerProviderView;
-import dov.com.qq.im.capture.view.VideoSegmentPickerProviderView.VideoSegmentPickerListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
 public class anyt
   implements View.OnClickListener
 {
-  public anyt(VideoSegmentPickerProviderView paramVideoSegmentPickerProviderView) {}
+  public anyt(UniformDownloadActivity paramUniformDownloadActivity) {}
   
   public void onClick(View paramView)
   {
-    VideoSegmentPickerProviderView.a(this.a).a.a();
-    if (VideoSegmentPickerProviderView.a(this.a) != null)
-    {
-      paramView = (VideoSegmentPickerProviderView.VideoSegmentPickerListener)VideoSegmentPickerProviderView.a(this.a).get();
-      if (paramView != null) {
-        paramView.a(0L, 0L);
-      }
-    }
+    this.a.finish();
+    this.a.overridePendingTransition(0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anyt
  * JD-Core Version:    0.7.0.1
  */

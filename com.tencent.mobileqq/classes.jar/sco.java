@@ -1,25 +1,23 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.qphone.base.util.BaseApplication;
-
-class sco
-  implements Runnable
+public class sco
+  extends scp
 {
-  sco(scl paramscl) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
   
-  public void run()
+  public sco(int paramInt)
   {
-    Object localObject = BaseApplication.getContext().getSharedPreferences("free_call", 0);
-    long l = MessageCache.a();
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putString(this.a.a, String.valueOf(l * 1000L));
-    ((SharedPreferences.Editor)localObject).commit();
+    super(paramInt);
+    this.g = 6;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sco
  * JD-Core Version:    0.7.0.1
  */

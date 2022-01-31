@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.ar.model;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class ArDownloadInfo
-  extends Entity
+  extends atmo
 {
   public int dailyRetryCount;
   public long dailyStartTime;
-  @unique
+  @atoc
   public String md5;
   public int totalRetryCount;
   
@@ -25,7 +25,7 @@ public class ArDownloadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.ArDownloadInfo
  * JD-Core Version:    0.7.0.1
  */

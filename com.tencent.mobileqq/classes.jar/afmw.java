@@ -1,52 +1,21 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import java.util.Calendar;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment;
+import com.tencent.mobileqq.filemanager.data.search.FileSearchActivity;
 
 public class afmw
-  implements IphonePickerView.PickerViewAdapter
+  extends apfd
 {
-  public afmw(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel) {}
+  public afmw(ChatHistoryTroopFileFragment paramChatHistoryTroopFileFragment) {}
   
-  public int getColumnCount()
+  public void a(View paramView)
   {
-    return 3;
-  }
-  
-  public int getRowCount(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return 0;
-    case 0: 
-      return this.a.b - 1896 + 1;
-    case 1: 
-      return 12;
-    }
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(1, this.a.e + 1896);
-    localCalendar.set(2, this.a.f);
-    localCalendar.set(5, 1);
-    return localCalendar.getActualMaximum(5);
-  }
-  
-  public String getText(int paramInt1, int paramInt2)
-  {
-    switch (paramInt1)
-    {
-    default: 
-      return "";
-    case 0: 
-      return paramInt2 + 1896 + "年";
-    case 1: 
-      return paramInt2 + 1 + "月";
-    }
-    return paramInt2 + 1 + "日";
+    awqx.b(this.a.a, "dc00898", "", "", "0X800A0BF", "0X800A0BF", 2, 0, "", "", "", "");
+    FileSearchActivity.a(this.a.getActivity(), 13, this.a.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afmw
  * JD-Core Version:    0.7.0.1
  */

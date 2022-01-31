@@ -1,23 +1,14 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.troop.robot.RobotResourcesManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class ajtu
-  implements FrameSprite.OnFrameEndListener
+public final class ajtu
+  implements DialogInterface.OnClickListener
 {
-  ajtu(ajts paramajts) {}
-  
-  public void a()
-  {
-    if (RobotResourcesManager.a(this.a.a) != null) {
-      new Handler(Looper.getMainLooper()).post(new ajtv(this));
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajtu
  * JD-Core Version:    0.7.0.1
  */

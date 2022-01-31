@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.shortvideo.dancemachine;
 
-import aifh;
 import android.annotation.TargetApi;
 import android.opengl.EGL14;
 import android.os.Handler;
@@ -14,46 +13,46 @@ import java.util.Set;
 @TargetApi(18)
 public class TrAsyncTextureLoad
 {
-  private static volatile TrAsyncTextureLoad jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineTrAsyncTextureLoad;
-  private EglHandlerThread jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglHandlerThread;
-  private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static volatile TrAsyncTextureLoad INSTANCE;
+  private EglHandlerThread eglHandlerThread;
+  private final Object mLock = new Object();
+  private ArrayList<HashMap<String, GLImage>> needUpdateCache = new ArrayList();
   
-  public static TrAsyncTextureLoad a()
+  public static TrAsyncTextureLoad getInstance()
   {
-    if (jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineTrAsyncTextureLoad == null) {}
+    if (INSTANCE == null) {}
     try
     {
-      if (jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineTrAsyncTextureLoad == null) {
-        jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineTrAsyncTextureLoad = new TrAsyncTextureLoad();
+      if (INSTANCE == null) {
+        INSTANCE = new TrAsyncTextureLoad();
       }
-      return jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineTrAsyncTextureLoad;
+      return INSTANCE;
     }
     finally {}
   }
   
-  public void a()
+  public void asyncLoadBoyTexture()
   {
-    EglHandlerThread localEglHandlerThread = this.jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglHandlerThread;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglHandlerThread = new EglHandlerThread("async_load_texture", EGL14.eglGetCurrentContext());
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglHandlerThread.start();
-    if (localEglHandlerThread != null)
-    {
-      DanceLog.b("GLFrameImage", "TrAsyncTextureLoad lastHandler!=null");
-      localEglHandlerThread.quitSafely();
+    boolean bool = false;
+    if (this.eglHandlerThread != null) {
+      bool = this.eglHandlerThread.isInitSuccess();
+    }
+    DanceLog.printFrameQueue("GLFrameImage", "asyncLoadBoyTexture initSuccess=" + bool);
+    if (bool) {
+      this.eglHandlerThread.getHandler().post(new TrAsyncTextureLoad.1(this));
     }
   }
   
-  void a(HashMap paramHashMap)
+  void notifyGLThreadUpdateTextureCache(HashMap<String, GLImage> paramHashMap)
   {
     if ((paramHashMap != null) && (paramHashMap.size() > 0)) {}
     for (boolean bool = true;; bool = false)
     {
-      DanceLog.b("GLFrameImage", "notifyGLThreadUpdateTextureCache needDo=" + bool + " itemSize=" + paramHashMap.size());
+      DanceLog.printFrameQueue("GLFrameImage", "notifyGLThreadUpdateTextureCache needDo=" + bool + " itemSize=" + paramHashMap.size());
       if (bool) {
-        synchronized (this.jdField_a_of_type_JavaLangObject)
+        synchronized (this.mLock)
         {
-          this.jdField_a_of_type_JavaUtilArrayList.add(paramHashMap);
+          this.needUpdateCache.add(paramHashMap);
           return;
         }
       }
@@ -61,34 +60,43 @@ public class TrAsyncTextureLoad
     }
   }
   
-  public void b()
+  public void onSurfaceCreate()
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglHandlerThread != null) {
-      bool = this.jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglHandlerThread.a();
-    }
-    DanceLog.b("GLFrameImage", "asyncLoadBoyTexture initSuccess=" + bool);
-    if (bool) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglHandlerThread.a().post(new aifh(this));
+    EglHandlerThread localEglHandlerThread = this.eglHandlerThread;
+    this.eglHandlerThread = new EglHandlerThread("async_load_texture", EGL14.eglGetCurrentContext());
+    this.eglHandlerThread.start();
+    if (localEglHandlerThread != null)
+    {
+      DanceLog.printFrameQueue("GLFrameImage", "TrAsyncTextureLoad lastHandler!=null");
+      localEglHandlerThread.quitSafely();
     }
   }
   
-  public void c()
+  public void onSurfaceDestroy()
   {
-    DanceLog.b("GLFrameImage", "processInterrupt");
-    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-    DanceLog.b("GLFrameImage", "processInterrupt unsafeSize=" + i);
+    if (this.eglHandlerThread != null)
+    {
+      this.eglHandlerThread.quitSafely();
+      this.eglHandlerThread = null;
+    }
+  }
+  
+  public void processInterrupt()
+  {
+    DanceLog.printFrameQueue("GLFrameImage", "processInterrupt");
+    int i = this.needUpdateCache.size();
+    DanceLog.printFrameQueue("GLFrameImage", "processInterrupt unsafeSize=" + i);
     if (i > 0)
     {
       for (;;)
       {
         HashMap localHashMap;
-        synchronized (this.jdField_a_of_type_JavaLangObject)
+        synchronized (this.mLock)
         {
-          if (this.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
+          if (this.needUpdateCache.size() <= 0) {
             break;
           }
-          Iterator localIterator1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+          Iterator localIterator1 = this.needUpdateCache.iterator();
           if (!localIterator1.hasNext()) {
             break;
           }
@@ -100,47 +108,38 @@ public class TrAsyncTextureLoad
             if (localGLImage == null) {
               continue;
             }
-            localGLImage.a();
+            localGLImage.release();
           }
         }
         localHashMap.clear();
       }
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      this.needUpdateCache.clear();
     }
   }
   
-  public void d()
+  public void updateGLFrameImageCache()
   {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-    DanceLog.b("GLFrameImage", "updateGLFrameImageCache unsafeSize=" + i);
+    int i = this.needUpdateCache.size();
+    DanceLog.printFrameQueue("GLFrameImage", "updateGLFrameImageCache unsafeSize=" + i);
     if (i > 0)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      synchronized (this.mLock)
       {
-        i = this.jdField_a_of_type_JavaUtilArrayList.size();
-        DanceLog.b("GLFrameImage", "updateGLFrameImageCache safeSize=" + i);
+        i = this.needUpdateCache.size();
+        DanceLog.printFrameQueue("GLFrameImage", "updateGLFrameImageCache safeSize=" + i);
         if (i > 0)
         {
-          Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+          Iterator localIterator = this.needUpdateCache.iterator();
           if (localIterator.hasNext())
           {
             HashMap localHashMap = (HashMap)localIterator.next();
-            DanceLog.b("GLFrameImage", "updateGLFrameImageCache itemSize=" + localHashMap.size());
-            GLFrameImage.a(localHashMap);
+            DanceLog.printFrameQueue("GLFrameImage", "updateGLFrameImageCache itemSize=" + localHashMap.size());
+            GLFrameImage.updateGLFrameImageCache(localHashMap);
             localHashMap.clear();
           }
         }
       }
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-    }
-  }
-  
-  public void e()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglHandlerThread != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglHandlerThread.quitSafely();
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoEglwraperEglHandlerThread = null;
+      this.needUpdateCache.clear();
     }
   }
 }

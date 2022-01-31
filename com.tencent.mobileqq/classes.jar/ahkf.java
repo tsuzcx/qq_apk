@@ -1,62 +1,87 @@
-import android.os.Build.VERSION;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.ReportReqBody;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import org.json.JSONObject;
-
-public class ahkf
-  implements Runnable
+public final class ahkf
 {
-  public ahkf(RedTouchManager paramRedTouchManager, BusinessInfoCheckUpdate.AppInfo paramAppInfo, long paramLong) {}
+  public final int a;
+  public final int b;
   
-  public void run()
+  public ahkf(int paramInt1, int paramInt2)
   {
-    BusinessInfoCheckUpdate.ReportReqBody localReportReqBody = new BusinessInfoCheckUpdate.ReportReqBody();
-    localReportReqBody.uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchManager.a.getCurrentAccountUin()));
-    localReportReqBody.clientver.set("7.6.8.3615");
-    localReportReqBody.platid.set(109);
-    localReportReqBody.appid.set(RedTouchManager.a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.path.get()));
-    localReportReqBody.platver.set(Build.VERSION.SDK_INT + "");
-    localReportReqBody.cmd.set(18);
-    if (this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.missions.has()) {
-      localReportReqBody.missionid.set(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.missions.get());
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public static ahkf a(String paramString)
+  {
+    if ((paramString == null) || (paramString.length() == 0)) {
+      return null;
     }
-    Object localObject1 = new JSONObject();
-    try
+    int i = paramString.indexOf('*');
+    if (i < 0) {
+      i = paramString.indexOf('x');
+    }
+    for (;;)
     {
-      localJSONObject = new JSONObject();
+      if (i < 0) {
+        throw a(paramString);
+      }
+      try
+      {
+        ahkf localahkf = new ahkf(Integer.parseInt(paramString.substring(0, i)), Integer.parseInt(paramString.substring(i + 1)));
+        return localahkf;
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        throw a(paramString);
+      }
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        throw a(paramString);
+      }
     }
-    catch (Exception localException2)
+  }
+  
+  private static NumberFormatException a(String paramString)
+  {
+    throw new NumberFormatException("Invalid SizeF: \"" + paramString + "\"");
+  }
+  
+  public int a()
+  {
+    return this.a;
+  }
+  
+  public int b()
+  {
+    return this.b;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    boolean bool = true;
+    if (paramObject == null) {}
+    do
     {
-      JSONObject localJSONObject;
-      label162:
-      break label162;
-    }
-    try
+      return false;
+      if (this == paramObject) {
+        return true;
+      }
+    } while (!(paramObject instanceof ahkf));
+    paramObject = (ahkf)paramObject;
+    if ((this.a == paramObject.a) && (this.b == paramObject.b)) {}
+    for (;;)
     {
-      localJSONObject.put("time_on_page", this.jdField_a_of_type_Long);
-      localObject1 = localJSONObject;
+      return bool;
+      bool = false;
     }
-    catch (Exception localException1)
-    {
-      Object localObject2 = localException2;
-      break label162;
-    }
-    localReportReqBody.buffer.set(((JSONObject)localObject1).toString());
-    localObject1 = RedTouchManager.a(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchManager, "RedTouchSvc.ClientReport");
-    ((ToServiceMsg)localObject1).putWupBuffer(localReportReqBody.toByteArray());
-    RedTouchManager.a(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchManager, (ToServiceMsg)localObject1);
+  }
+  
+  public String toString()
+  {
+    return this.a + "x" + this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahkf
  * JD-Core Version:    0.7.0.1
  */

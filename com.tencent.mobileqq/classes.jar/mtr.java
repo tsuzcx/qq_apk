@@ -1,13 +1,17 @@
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.image.URLImageView;
 
 public class mtr
 {
-  public TextView a;
-  public URLImageView a;
-  public mtq a;
-  public TextView b;
-  public TextView c;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public ImageView b;
+  TextView b;
+  public ImageView c;
+  TextView c;
+  public ImageView d;
+  
+  mtr(mtc parammtc) {}
 }
 
 

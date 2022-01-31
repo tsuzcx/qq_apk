@@ -1,15 +1,19 @@
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
-import java.io.File;
-import java.io.FileFilter;
+import android.os.Handler;
+import android.os.Message;
 
-public class onc
-  implements FileFilter
+class onc
+  extends Handler
 {
-  public onc(DoodleEmojiManager paramDoodleEmojiManager) {}
+  private onc(oms paramoms) {}
   
-  public boolean accept(File paramFile)
+  public void handleMessage(Message paramMessage)
   {
-    return (paramFile.isDirectory()) && (paramFile.getName().startsWith("emoji_folder_"));
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    ona.a((ona)paramMessage.obj, paramMessage.arg1);
   }
 }
 

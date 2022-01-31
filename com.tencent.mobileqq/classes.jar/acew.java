@@ -1,44 +1,32 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class acew
-  implements Runnable
+  extends WtloginObserver
 {
-  public acew(HotChatFlashPicActivity paramHotChatFlashPicActivity) {}
+  public acew(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
   
-  public void run()
+  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
   {
-    SharedPreferences.Editor localEditor = this.a.getSharedPreferences(HotChatFlashPicActivity.f(this.a), 4).edit();
-    if (HotChatFlashPicActivity.b(this.a))
+    if (QLog.isColorLevel())
     {
-      localEditor.putInt("HOTCHAT_FLASHPIC_SHOT", HotChatFlashPicActivity.a(this.a));
-      if (HotChatFlashPicActivity.a(this.a) != 1) {
-        break label115;
+      QLog.d("VerifyPhoneNumActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
+      if (paramErrMsg != null) {
+        QLog.d("VerifyPhoneNumActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
       }
-      ReportController.b(this.a.app, "CliOper", "", "", "0X800597A", "0X800597A", 0, 0, "", "", "", "");
     }
-    for (;;)
-    {
-      localEditor.commit();
+    if (paramInt2 == 0) {
       return;
-      localEditor.putInt("commen_flashpic_shot", HotChatFlashPicActivity.a(this.a));
-      break;
-      label115:
-      if (HotChatFlashPicActivity.a(this.a) == 2)
-      {
-        if (!HotChatFlashPicActivity.b(this.a)) {
-          localEditor.putLong("commen_flashpic_shot_deadlineday", HotChatFlashPicActivity.b(this.a) + 518400000L);
-        }
-        ReportController.b(this.a.app, "CliOper", "", "", "0X800597B", "0X800597B", 0, 0, "", "", "", "");
-      }
     }
+    VerifyPhoneNumActivity.a(this.a);
+    VerifyPhoneNumActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acew
  * JD-Core Version:    0.7.0.1
  */

@@ -38,7 +38,7 @@ public class BuglyBroadcastReceiver
           bool1 = bool2;
           continue;
         }
-        str1 = com.tencent.bugly.crashreport.common.info.b.f(this.b);
+        str1 = com.tencent.bugly.crashreport.common.info.b.c(this.b);
       }
       finally {}
       String str1;
@@ -133,26 +133,7 @@ public class BuglyBroadcastReceiver
     try
     {
       this.b = paramContext;
-      z.a(new Runnable()
-      {
-        public final void run()
-        {
-          try
-          {
-            x.a(BuglyBroadcastReceiver.a().getClass(), "Register broadcast receiver of Bugly.", new Object[0]);
-            synchronized (jdField_this)
-            {
-              BuglyBroadcastReceiver.b(BuglyBroadcastReceiver.this).registerReceiver(BuglyBroadcastReceiver.a(), BuglyBroadcastReceiver.a(BuglyBroadcastReceiver.this));
-              return;
-            }
-            return;
-          }
-          catch (Throwable localThrowable)
-          {
-            localThrowable.printStackTrace();
-          }
-        }
-      });
+      z.a(new BuglyBroadcastReceiver.1(this, this));
       return;
     }
     finally

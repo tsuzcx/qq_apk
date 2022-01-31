@@ -6,7 +6,7 @@ import com.qq.taf.jce.JceStruct;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 import com.tencent.tmassistant.common.ProtocolPackage;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ac;
 import com.tencent.tmassistantsdk.internal.openSDK.param.jce.IPCCmd;
 import com.tencent.tmassistantsdk.internal.openSDK.param.jce.IPCHead;
 import com.tencent.tmassistantsdk.internal.openSDK.param.jce.IPCRequest;
@@ -31,22 +31,32 @@ public class a
   
   public static JceStruct a(IPCResponse paramIPCResponse)
   {
-    JceStruct localJceStruct = a(IPCCmd.convert(paramIPCResponse.head.cmdId).toString());
-    if ((localJceStruct != null) && (paramIPCResponse.body.length > 0)) {
+    try
+    {
+      int i = paramIPCResponse.head.cmdId;
+      ac.c("nemo", "unpackBodyStruct cmdid=" + i);
+      Object localObject = IPCCmd.convert(i).toString();
+      localObject = a((String)localObject);
+      if ((localObject != null) && (paramIPCResponse.body.length > 0)) {}
+      return null;
+    }
+    catch (Exception paramIPCResponse)
+    {
       try
       {
         paramIPCResponse = new JceInputStream(paramIPCResponse.body);
         paramIPCResponse.setServerEncoding("utf-8");
-        localJceStruct.readFrom(paramIPCResponse);
-        return localJceStruct;
+        ((JceStruct)localObject).readFrom(paramIPCResponse);
+        return localObject;
       }
       catch (Exception paramIPCResponse)
       {
         paramIPCResponse.printStackTrace();
         return null;
       }
+      paramIPCResponse = paramIPCResponse;
+      return null;
     }
-    return null;
   }
   
   private static JceStruct a(String paramString)
@@ -101,6 +111,7 @@ public class a
     localIPCHead.hostPackageName = GlobalUtil.getAppPackageName(GlobalUtil.getInstance().getContext());
     localIPCHead.hostVersionCode = String.valueOf(GlobalUtil.getAppVersionCode(GlobalUtil.getInstance().getContext()));
     localIPCHead.traceId = paramString;
+    localIPCHead.sdkIpcJceVersion = 1;
     localIPCRequest.head = localIPCHead;
     localIPCRequest.body = b(paramJceStruct);
     return localIPCRequest;
@@ -140,7 +151,7 @@ public class a
     if (paramTMAssistantDownloadTaskInfo == null) {
       return null;
     }
-    r.c("IPCPackageTools", "TMAssistantDownloadTaskInfo ......mAppName: " + paramTMAssistantDownloadTaskInfo.mAppName);
+    ac.c("IPCPackageTools", "TMAssistantDownloadTaskInfo ......mAppName: " + paramTMAssistantDownloadTaskInfo.mAppName);
     IPCSDKDownloadInfo localIPCSDKDownloadInfo = new IPCSDKDownloadInfo();
     if (paramTMAssistantDownloadTaskInfo != null)
     {
@@ -192,7 +203,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.param.a
  * JD-Core Version:    0.7.0.1
  */

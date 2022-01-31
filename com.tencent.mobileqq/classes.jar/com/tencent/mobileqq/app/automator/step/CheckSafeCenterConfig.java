@@ -7,16 +7,16 @@ import com.tencent.mqp.app.sec.ScConfigManager;
 public class CheckSafeCenterConfig
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
     if (this.b == 97) {
-      ScConfigManager.a().a(this.a.b, "SecCenterConfig");
+      ScConfigManager.a().a(this.a.app, "SecCenterConfig");
     }
     for (;;)
     {
       return 7;
       if (this.b == 98) {
-        ScConfigManager.a().a(this.a.b, "SecCenterConfig", true);
+        ScConfigManager.a().a(this.a.app, "SecCenterConfig", true);
       }
     }
   }

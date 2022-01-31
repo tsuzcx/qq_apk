@@ -1,32 +1,57 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Color;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletRedPacketMsg;
+import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
 
 public class adzy
-  implements Runnable
+  extends adzu
 {
-  public adzy(PresenceInterfaceImpl paramPresenceInterfaceImpl, String paramString) {}
+  agjk a;
   
-  public void run()
+  public adzy(QQAppInterface paramQQAppInterface, aeam paramaeam, QQWalletTransferMsgElem paramQQWalletTransferMsgElem, int paramInt, ackq paramackq)
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl.a, 232, null, this.jdField_a_of_type_JavaLangString, new adzz(this), null);
-    try
+    super(paramQQAppInterface, paramaeam, paramQQWalletTransferMsgElem, paramInt, paramackq);
+    this.jdField_a_of_type_Agjk = ((agjk)paramQQAppInterface.getManager(125));
+    if (a(this.jdField_a_of_type_Agjk.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.mQQWalletRedPacketMsg.redPacketId)))
     {
-      localQQCustomDialog.show();
+      this.i = 0;
       return;
     }
-    catch (Exception localException)
+    this.i = paramQQWalletTransferMsgElem.effectsId;
+  }
+  
+  public boolean b()
+  {
+    boolean bool = super.b();
+    if (bool) {
+      return bool;
+    }
+    this.jdField_a_of_type_Aeam.b.setVisibility(0);
+    this.jdField_a_of_type_Aeam.b.setTextColor(-8947849);
+    this.jdField_a_of_type_Aeam.b.setText(adzz.d);
+    return true;
+  }
+  
+  public void f()
+  {
+    super.f();
+    try
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("PresenceInterfaceImpl", 2, "show dialog fail");
+      this.jdField_a_of_type_Aeam.a.setTextColor(Color.parseColor("#604121"));
+      this.jdField_a_of_type_Aeam.a.setText(agwj.a(this.jdField_a_of_type_Aeam.a.getContext(), this.jdField_a_of_type_ComTencentMobileqqDataQQWalletTransferMsgElem.title, 330, this.jdField_a_of_type_Aeam.a.getPaint()));
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adzy
  * JD-Core Version:    0.7.0.1
  */

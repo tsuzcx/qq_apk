@@ -1,32 +1,57 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.model.GeneralHomeFeed;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedData;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.HomeFeedPresenterListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.util.ArrayList;
-import java.util.Collections;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class odj
-  implements Runnable
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  public odj(HomeFeedPresenter paramHomeFeedPresenter, HomeFeedData paramHomeFeedData) {}
+  public static String a = "CommentFamilyConfigHandler";
   
-  public void run()
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    long l = System.currentTimeMillis();
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData.c) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData.errorInfo.isSuccess())) {
-      HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter).clear();
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    paramString = ocx.a(paramString);
+    Object localObject = paramString.keySet();
+    for (;;)
+    {
+      String str1;
+      String str2;
+      try
+      {
+        localObject = ((Set)localObject).iterator();
+        if (((Iterator)localObject).hasNext())
+        {
+          str1 = (String)((Iterator)localObject).next();
+          str2 = (String)paramString.get(str1);
+          if (TextUtils.equals(str1, "rij_comment_family_entrance_switch")) {
+            bgmq.n(Integer.parseInt(str2));
+          }
+        }
+        else
+        {
+          return true;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        paramString.printStackTrace();
+      }
+      if (TextUtils.equals(str1, "rij_small_zhitiao_entrance_switch")) {
+        bgmq.a("readinjjoy_notes_config", Integer.valueOf(Integer.parseInt(str2)));
+      }
     }
-    HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter).addAll(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData.b);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a(HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter));
-    Collections.sort(HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter), GeneralHomeFeed.a);
-    HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData.a);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData.b = HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter);
-    SLog.a("Q.qqstory.home.data.HomeFeedPresenter", "had load feed size:%d, take time:%d", Integer.valueOf(HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter).size()), Long.valueOf(System.currentTimeMillis() - l));
-    if (HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter) != null) {
-      HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedData);
-    }
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    super.onWipeConfig(paramInt);
+    bgmq.n(0);
   }
 }
 

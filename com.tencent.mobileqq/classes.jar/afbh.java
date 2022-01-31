@@ -1,72 +1,120 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopGiftProtocolObserver;
-import com.tencent.mobileqq.nearby.now.protocol.CsTask;
-import com.tencent.mobileqq.nearby.now.protocol.CsTask.Callback;
-import com.tencent.mobileqq.nearby.now.protocol.CsTask.OnCsError;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
+import tencent.mobileim.structmsg.structmsg.GroupInfo;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class afbh
-  extends ProtoUtils.TroopGiftProtocolObserver
+  implements View.OnClickListener
 {
-  public afbh(CsTask paramCsTask) {}
+  public afbh(NotificationView paramNotificationView) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null))
+    afbb localafbb = (afbb)paramView.getTag();
+    if (localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() == 80)
     {
-      oidb_0xada.RspBody localRspBody = new oidb_0xada.RspBody();
-      try
-      {
-        localRspBody.mergeFrom(paramArrayOfByte);
-        QLog.i("QQ_NOW_TASK", 2, "err_msg:   " + localRspBody.err_msg.get());
-        if (!localRspBody.busi_buf.has()) {
-          break label202;
-        }
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$Callback != null) && (paramInt == 0))
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$Callback.a(paramInt, localRspBody.busi_buf.get().toByteArray(), paramBundle);
-          return;
-        }
-        QLog.i("QQ_NOW_TASK", 1, "err_msg1:   " + localRspBody.err_msg.get());
-        if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError == null) {
-          return;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError.a(paramInt, paramArrayOfByte);
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-        QLog.i("QQ_NOW_TASK", 1, "err_msg3:   ");
-        if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError == null) {
-          return;
-        }
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError.a(paramInt, null);
+      paramView = TroopInfoActivity.a(String.valueOf(localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get()), 5);
+      TroopInfoActivity.a(this.a.a(), paramView);
       return;
-      label202:
-      QLog.i("QQ_NOW_TASK", 1, "err_msg2:   ");
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError.a(paramInt, null);
-      }
     }
-    else
+    if (!badq.d(this.a.a()))
     {
-      QLog.i("QQ_NOW_TASK", 1, "err_msg4:   ");
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolCsTask$OnCsError.a(paramInt, null);
+      bbmy.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.a().getString(2131628946), 0).b(this.a.a());
+      return;
+    }
+    ((FriendListHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).b(String.valueOf(localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get()));
+    NotificationView.a(this.a, (structmsg.StructMsg)localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.get(), localafbb.c);
+    String str2 = localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_info.msg_alert.get();
+    String str3 = localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get() + "";
+    int i;
+    label265:
+    String str1;
+    if (localafbb.b < this.a.jdField_a_of_type_Afaz.jdField_a_of_type_Int)
+    {
+      paramView = "1";
+      i = localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_inviter_role.get();
+      if ((i != 2) && (i != 3)) {
+        break label419;
+      }
+      i = 0;
+      if (i == 0) {
+        break label424;
+      }
+      str1 = "0";
+      label272:
+      if ((str2 != null) && (!"".equals(str2))) {
+        break label752;
+      }
+      if (localafbb.jdField_a_of_type_Int != 82) {
+        break label430;
+      }
+      awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_public", "", "oper", "focus_notice", 0, 0, "", "", "", localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "");
+      NotificationView.a(this.a, localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get(), (structmsg.StructMsg)localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.get());
+    }
+    for (;;)
+    {
+      NotificationView.c(this.a);
+      this.a.jdField_a_of_type_Bbms.c(2131653452);
+      this.a.jdField_a_of_type_Bbms.show();
+      return;
+      paramView = "0";
+      break;
+      label419:
+      i = 1;
+      break label265;
+      label424:
+      str1 = "1";
+      break label272;
+      label430:
+      if (localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get() == 2)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("NotificationView", 2, "doCheckPayTroopReq start: " + str3);
+        }
+        TroopRequestActivity.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str3, localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg, this.a.jdField_a_of_type_Afcf);
+        azzx.a("Grp_contacts_news", "notice", "agree_invite", 0, 0, new String[] { str3, paramView, str1, "1" });
+      }
+      else
+      {
+        NotificationView.a(this.a, 1, (structmsg.StructMsg)localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.get());
+        if ((localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.has()) && (localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.req_uin_nick.has())) {
+          ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).b(str3, localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.req_uin.get() + "", localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.req_uin_nick.get());
+        }
+        if (localafbb.jdField_a_of_type_Int == 1)
+        {
+          azzx.a("Grp_contacts_news", "notice", "agree_ask", 0, 0, new String[] { str3, paramView, str1, "1" });
+        }
+        else if (localafbb.jdField_a_of_type_Int == 2)
+        {
+          azzx.a("Grp_contacts_news", "notice", "agree_invite", 0, 0, new String[] { str3, paramView, str1, "1" });
+          continue;
+          label752:
+          NotificationView.a(this.a, 0, (structmsg.StructMsg)localafbb.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.get());
+          if (localafbb.jdField_a_of_type_Int == 1) {
+            azzx.a("Grp_contacts_news", "notice", "refuse_ask", 0, 0, new String[] { str3, paramView, str1, "1" });
+          } else if (localafbb.jdField_a_of_type_Int == 2) {
+            azzx.a("Grp_contacts_news", "notice", "refuse_invite", 0, 0, new String[] { str3, paramView, str1, "1" });
+          }
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afbh
  * JD-Core Version:    0.7.0.1
  */

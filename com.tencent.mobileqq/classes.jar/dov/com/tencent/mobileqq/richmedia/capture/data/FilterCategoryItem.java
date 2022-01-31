@@ -3,17 +3,18 @@ package dov.com.tencent.mobileqq.richmedia.capture.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aoui;
+import bjds;
+import bjdz;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
 import java.util.ArrayList;
 
 public class FilterCategoryItem
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator CREATOR = new aoui();
+  public static final Parcelable.Creator<FilterCategoryItem> CREATOR = new bjdz();
   public int a;
   public String a;
-  public ArrayList a;
+  public ArrayList<String> a;
   public boolean a;
   public int b;
   public String b;
@@ -84,7 +85,7 @@ public class FilterCategoryItem
   public FilterDesc a()
   {
     if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
-      return CaptureVideoFilterManager.a().a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0));
+      return bjds.a().a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0));
     }
     return null;
   }

@@ -1,30 +1,79 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.qphone.base.util.QLog;
 
-public class lnw
-  implements Runnable
+class lnw
+  implements lof
 {
-  public lnw(KandianMergeManager paramKandianMergeManager, int paramInt) {}
+  lnw(lnv paramlnv, long paramLong) {}
   
-  public void run()
+  public Bitmap a(long paramLong)
   {
-    Object localObject = ReadInJoyHelper.a(KandianMergeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineKandianMergeManager), true, false);
-    if (localObject != null)
+    if (this.jdField_a_of_type_Lnv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+      return null;
+    }
+    return this.jdField_a_of_type_Lnv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_Lnv.jdField_a_of_type_JavaLangString, (byte)3, false, false);
+  }
+  
+  public TroopInfoData a()
+  {
+    return this.jdField_a_of_type_Lnv.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData;
+  }
+  
+  public String a()
+  {
+    return lnv.a(this.jdField_a_of_type_Lnv.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Lnv.jdField_a_of_type_JavaLangString);
+  }
+  
+  public String a(int paramInt)
+  {
+    return null;
+  }
+  
+  public String a(long paramLong, int paramInt)
+  {
+    Object localObject;
+    if (this.jdField_a_of_type_Lnv.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) {
+      localObject = null;
+    }
+    String str;
+    do
     {
-      localObject = ((SharedPreferences)localObject).edit();
-      if (localObject != null)
-      {
-        ((SharedPreferences.Editor)localObject).putInt("kandian_follow_data_length", this.jdField_a_of_type_Int);
-        ReadInJoyHelper.a((SharedPreferences.Editor)localObject, true);
-      }
+      return localObject;
+      str = lnv.a(this.jdField_a_of_type_Lnv, paramInt);
+      localObject = str;
+    } while (!TextUtils.isEmpty(str));
+    this.jdField_a_of_type_Lnv.a(paramLong, this.jdField_a_of_type_Lnv.jdField_a_of_type_Long, this.jdField_a_of_type_Lnv.jdField_a_of_type_Int);
+    return str;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    QLog.w("ShareChat", 1, "onFinish, choosedChannel[" + paramInt1 + "], choosedLinkType[" + paramInt2 + "], result[" + paramInt3 + "], seq[" + this.jdField_a_of_type_Long + "]");
+    mgc.a(paramInt1, paramInt2);
+    if (paramInt3 == 2) {
+      mgc.a(paramInt1, paramInt2, 99, null);
+    }
+  }
+  
+  public String b()
+  {
+    return lnv.a(this.jdField_a_of_type_Lnv.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3)
+  {
+    QLog.w("ShareChat", 1, "onQRForward, choosedChannel[" + paramInt1 + "], choosedLinkType[" + paramInt2 + "], result[" + paramInt3 + "], seq[" + this.jdField_a_of_type_Long + "]");
+    if (paramInt3 == 2) {
+      mgc.a(paramInt1, paramInt2, 99, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lnw
  * JD-Core Version:    0.7.0.1
  */

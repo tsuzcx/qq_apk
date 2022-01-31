@@ -1,22 +1,21 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.ipc.QrHandleResultCallBack;
-import cooperation.qlink.QQProxyForQlink;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
 
-public class amuv
+class amuv
   implements DialogInterface.OnClickListener
 {
-  public amuv(QQProxyForQlink paramQQProxyForQlink, QrHandleResultCallBack paramQrHandleResultCallBack) {}
+  amuv(amuu paramamuu) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQrcodeIpcQrHandleResultCallBack.a();
-    paramDialogInterface.dismiss();
+    amvk.a().b(this.a.jdField_a_of_type_Amum);
+    this.a.jdField_a_of_type_ComTencentMobileqqDatareportviewerDataReportSettingFragment.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amuv
  * JD-Core Version:    0.7.0.1
  */

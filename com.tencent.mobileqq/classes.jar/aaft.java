@@ -1,22 +1,23 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupResourceInfo;
-import com.tencent.mobileqq.arcard.ARcardSound;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aaft
-  implements Runnable
+public final class aaft
+  implements DialogInterface.OnClickListener
 {
-  public aaft(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
+  public aaft(QQAppInterface paramQQAppInterface, String paramString) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((ARWorldCupGlobalSceneRenderable.a(this.a) != null) && (ARWorldCupGlobalSceneRenderable.a(this.a) == 6)) {
-      ARWorldCupGlobalSceneRenderable.a(this.a).a(ARWorldCupGlobalSceneRenderable.a(this.a).a() + "/res/worldcup/doorOpen.mp3", false);
+    baep.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), null);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaft
  * JD-Core Version:    0.7.0.1
  */

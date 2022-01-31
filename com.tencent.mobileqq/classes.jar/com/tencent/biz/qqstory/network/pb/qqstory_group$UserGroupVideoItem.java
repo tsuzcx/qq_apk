@@ -10,13 +10,13 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_group$UserGroupVideoItem
-  extends MessageMicro
+  extends MessageMicro<UserGroupVideoItem>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField cover_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt64Field group_id = PBField.initUInt64(0L);
   public final PBUInt32Field publish_time = PBField.initUInt32(0);
-  public final PBRepeatField top_uin_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> top_uin_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBUInt32Field total = PBField.initUInt32(0);
   public final PBUInt32Field total_unread = PBField.initUInt32(0);
   
@@ -28,7 +28,7 @@ public final class qqstory_group$UserGroupVideoItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_group.UserGroupVideoItem
  * JD-Core Version:    0.7.0.1
  */

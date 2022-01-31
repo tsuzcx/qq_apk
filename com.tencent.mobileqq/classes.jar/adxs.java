@@ -1,47 +1,39 @@
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-import com.tencent.mobileqq.hiboom.RichTextPanel;
-import com.tencent.mobileqq.widget.QQViewPager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
 
 public class adxs
-  extends PagerAdapter
+  extends awfs
 {
-  public adxs(RichTextPanel paramRichTextPanel) {}
+  public adxs(AIOImageProviderService paramAIOImageProviderService, long paramLong, int paramInt1, int paramInt2) {}
   
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  public void a(int paramInt)
   {
-    paramViewGroup.removeView(RichTextPanel.a(this.a)[paramInt]);
-  }
-  
-  public int getCount()
-  {
-    return RichTextPanel.a().length;
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RichTextPanel", 2, "instantiateItem position = " + paramInt);
+    adyh localadyh = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
+    if (localadyh != null) {
+      localadyh.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, paramInt, 0L, true);
     }
-    ViewParent localViewParent = RichTextPanel.a(this.a).getParent();
-    if (localViewParent != null) {
-      ((ViewGroup)localViewParent).removeView(RichTextPanel.a(this.a)[paramInt]);
-    }
-    paramViewGroup.addView(RichTextPanel.a(this.a)[paramInt]);
-    return RichTextPanel.a(this.a)[paramInt];
   }
   
-  public boolean isViewFromObject(View paramView, Object paramObject)
+  public void a(int paramInt, awfk paramawfk)
   {
-    return paramView == paramObject;
+    adyh localadyh = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
+    if (paramawfk.jdField_a_of_type_Int == 0)
+    {
+      paramawfk = (atpb)paramawfk.jdField_a_of_type_JavaLangObject;
+      if (localadyh != null) {
+        localadyh.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, 1, paramawfk.b, false);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, paramawfk.b);
+      return;
+    }
+    if (localadyh != null) {
+      localadyh.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, 2, "step:" + paramawfk.jdField_a_of_type_Atpr.a + ", desc:" + paramawfk.jdField_a_of_type_Atpr.b, false);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, "I:E");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adxs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,63 +1,96 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 class siw
-  implements Runnable
+  implements ThreadExcutor.IThreadListener
 {
-  siw(siv paramsiv) {}
+  siw(sis paramsis, skl paramskl) {}
   
-  public void run()
+  public void onAdded() {}
+  
+  public void onPostRun() {}
+  
+  public void onPreRun()
   {
-    ArrayList localArrayList = this.a.jdField_a_of_type_AndroidContentIntent.getExtras().getStringArrayList("deleted_members");
-    if (localArrayList != null)
+    boolean bool1;
+    int i;
+    int j;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Skl.b))
     {
-      int i;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.c != null)
-      {
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.d == 2) && (!this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.isMember)) {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.c.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.wMemberNum + "人");
-        }
+      bool1 = this.jdField_a_of_type_Skl.a().getBooleanExtra("landscape_video", false);
+      boolean bool2 = this.jdField_a_of_type_Skl.a().isLocalPublish;
+      boolean bool3 = this.jdField_a_of_type_Skl.a().getBooleanExtra("is_hw_encode", false);
+      if (this.jdField_a_of_type_Skl.a().businessId != 1) {
+        break label240;
       }
-      else {
-        i = localArrayList.size() - 1;
+      i = 1;
+      j = this.jdField_a_of_type_Skl.a().getIntExtra("thumb_rotation", 0);
+      if (!bool2) {
+        break label245;
       }
-      for (;;)
-      {
-        if (i < 0) {
-          break label277;
-        }
-        int j = this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.e.size() - 1;
-        label136:
-        if (j >= 0)
-        {
-          oidb_0x899.memberlist localmemberlist = (oidb_0x899.memberlist)this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.e.get(j);
-          if ((localmemberlist == null) || (!localmemberlist.uint64_member_uin.has())) {}
-          while (!String.valueOf(localmemberlist.uint64_member_uin.get()).equals(localArrayList.get(i)))
-          {
-            j -= 1;
-            break label136;
-            this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.c.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.wMemberNum + "名成员");
-            break;
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.e.remove(j);
-        }
-        i -= 1;
-      }
+      j = 0;
+      label91:
+      if ((i == 0) || (!bool3) || ((bool2) && (!bool1)) || (j == 0)) {}
     }
-    label277:
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.e);
+    for (;;)
+    {
+      try
+      {
+        BufferedInputStream localBufferedInputStream = new BufferedInputStream(new FileInputStream(this.jdField_a_of_type_Skl.b));
+        if (localBufferedInputStream != null)
+        {
+          Bitmap localBitmap1 = BitmapFactory.decodeStream(localBufferedInputStream);
+          Bitmap localBitmap2 = vlc.a(localBitmap1, j);
+          bool1 = vlc.a(localBitmap2, this.jdField_a_of_type_Skl.b);
+          if (localBitmap2 != null) {
+            localBitmap2.recycle();
+          }
+          localBitmap1.recycle();
+          localBufferedInputStream.close();
+          if (bool1) {
+            continue;
+          }
+          urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "compress file fail, %s", new Object[] { this.jdField_a_of_type_Skl.b });
+        }
+      }
+      catch (FileNotFoundException localFileNotFoundException)
+      {
+        urk.b("Q.qqstory.publish.upload:StoryVideoUploadManager", "FileNotFoundException =", localFileNotFoundException);
+        continue;
+      }
+      catch (IOException localIOException)
+      {
+        urk.b("Q.qqstory.publish.upload:StoryVideoUploadManager", "IOException =", localIOException);
+        continue;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        label240:
+        label245:
+        urk.b("Q.qqstory.publish.upload:StoryVideoUploadManager", "OutOfMemoryError = ", localOutOfMemoryError);
+        continue;
+      }
+      sis.a(this.jdField_a_of_type_Sis);
+      urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "create story %s", new Object[] { this.jdField_a_of_type_Skl });
+      return;
+      i = 0;
+      break;
+      j = 360 - j;
+      break label91;
+      urk.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "video local file exist %b, %s", new Object[] { Boolean.valueOf(vlm.b(this.jdField_a_of_type_Skl.b)), this.jdField_a_of_type_Skl.b });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     siw
  * JD-Core Version:    0.7.0.1
  */

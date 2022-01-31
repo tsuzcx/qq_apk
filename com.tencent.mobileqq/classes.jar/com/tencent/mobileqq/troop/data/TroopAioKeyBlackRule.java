@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.troop.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class TroopAioKeyBlackRule
-  extends Entity
+  extends atmo
 {
-  @unique
+  @atoc
   public String mBlackUinKeywordRuleId;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioKeyBlackRule
  * JD-Core Version:    0.7.0.1
  */

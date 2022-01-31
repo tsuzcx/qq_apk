@@ -1,31 +1,45 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 
 public class wce
-  implements Animation.AnimationListener
+  extends StaggeredGridLayoutManager
 {
-  public wce(PublicAccountChatPie paramPublicAccountChatPie) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public wce(int paramInt1, int paramInt2)
   {
-    this.a.R = false;
-    this.a.jdField_o_of_type_Int = 0;
-    this.a.S = false;
-    this.a.ab = false;
-    this.a.aa = false;
+    super(paramInt1, paramInt2);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void onLayoutChildren(RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
   {
-    this.a.a(this.a.jdField_o_of_type_AndroidViewView, PublicAccountChatPie.a(this.a));
+    try
+    {
+      super.onLayoutChildren(paramRecycler, paramState);
+      return;
+    }
+    catch (IndexOutOfBoundsException paramRecycler)
+    {
+      paramRecycler.printStackTrace();
+    }
+  }
+  
+  public int scrollVerticallyBy(int paramInt, RecyclerView.Recycler paramRecycler, RecyclerView.State paramState)
+  {
+    try
+    {
+      paramInt = super.scrollVerticallyBy(paramInt, paramRecycler, paramState);
+      return paramInt;
+    }
+    catch (IndexOutOfBoundsException paramRecycler)
+    {
+      paramRecycler.printStackTrace();
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wce
  * JD-Core Version:    0.7.0.1
  */

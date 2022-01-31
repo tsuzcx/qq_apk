@@ -1,29 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.open.agent.AuthorityLoginView;
+import android.view.animation.Animation;
+import android.widget.ImageView;
 
-public class alik
-  implements DialogInterface.OnClickListener
+class alik
+  extends beem
 {
-  public alik(AuthorityLoginView paramAuthorityLoginView, String paramString) {}
+  alik(alij paramalij) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if (paramInt == 1) {
-      ThreadManager.executeOnSubThread(new alil(this));
-    }
-    while ((paramInt != 0) || (this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.a == null)) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.a.dismiss();
-    this.jdField_a_of_type_ComTencentOpenAgentAuthorityLoginView.a = null;
+    this.a.a.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alik
  * JD-Core Version:    0.7.0.1
  */

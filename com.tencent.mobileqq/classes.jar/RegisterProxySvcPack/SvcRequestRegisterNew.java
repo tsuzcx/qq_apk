@@ -12,6 +12,7 @@ import com.tencent.msf.service.protocol.push.SvcReqRegister;
 public final class SvcRequestRegisterNew
   extends JceStruct
 {
+  static byte[] cache_bytes_0x769_reqbody;
   static SvcRequestGetMsgV2 cache_c2cmsg;
   static SvcRequestPullDisMsgSeq cache_confmsg;
   static SvcRequestPullDisGroupSeq cache_disgroupmsg;
@@ -22,6 +23,7 @@ public final class SvcRequestRegisterNew
   static byte[] cache_vSaveTraffic;
   static byte[] cache_vSig;
   public long badge;
+  public byte[] bytes_0x769_reqbody;
   public SvcRequestGetMsgV2 c2cmsg;
   public byte cDisgroupMsgFilter;
   public byte cGetDisPttUrl;
@@ -35,6 +37,7 @@ public final class SvcRequestRegisterNew
   public SvcReqGet heartbeat;
   public SvcReqRegister regist;
   public long uEndSeq;
+  public long ulMaxDisGrpMsgTime;
   public long ulRequestOptional;
   public long ulSyncTime;
   public byte[] vCookies;
@@ -43,7 +46,7 @@ public final class SvcRequestRegisterNew
   
   public SvcRequestRegisterNew() {}
   
-  public SvcRequestRegisterNew(long paramLong1, SvcRequestGetMsgV2 paramSvcRequestGetMsgV2, SvcRequestPullGroupMsgSeq paramSvcRequestPullGroupMsgSeq, SvcRequestPullDisMsgSeq paramSvcRequestPullDisMsgSeq, SvcReqRegister paramSvcReqRegister, byte paramByte1, byte paramByte2, byte paramByte3, long paramLong2, SvcRequestPullDisGroupSeq paramSvcRequestPullDisGroupSeq, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, SvcReqGet paramSvcReqGet, byte paramByte4, byte paramByte5, long paramLong3, byte paramByte6, long paramLong4)
+  public SvcRequestRegisterNew(long paramLong1, SvcRequestGetMsgV2 paramSvcRequestGetMsgV2, SvcRequestPullGroupMsgSeq paramSvcRequestPullGroupMsgSeq, SvcRequestPullDisMsgSeq paramSvcRequestPullDisMsgSeq, SvcReqRegister paramSvcReqRegister, byte paramByte1, byte paramByte2, byte paramByte3, long paramLong2, SvcRequestPullDisGroupSeq paramSvcRequestPullDisGroupSeq, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, SvcReqGet paramSvcReqGet, byte paramByte4, byte paramByte5, long paramLong3, byte paramByte6, long paramLong4, long paramLong5, byte[] paramArrayOfByte4)
   {
     this.ulRequestOptional = paramLong1;
     this.c2cmsg = paramSvcRequestGetMsgV2;
@@ -64,6 +67,8 @@ public final class SvcRequestRegisterNew
     this.uEndSeq = paramLong3;
     this.cOptGroupMsgFlag = paramByte6;
     this.ulSyncTime = paramLong4;
+    this.ulMaxDisGrpMsgTime = paramLong5;
+    this.bytes_0x769_reqbody = paramArrayOfByte4;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -120,6 +125,13 @@ public final class SvcRequestRegisterNew
     this.uEndSeq = paramJceInputStream.read(this.uEndSeq, 16, false);
     this.cOptGroupMsgFlag = paramJceInputStream.read(this.cOptGroupMsgFlag, 17, false);
     this.ulSyncTime = paramJceInputStream.read(this.ulSyncTime, 18, false);
+    this.ulMaxDisGrpMsgTime = paramJceInputStream.read(this.ulMaxDisGrpMsgTime, 19, false);
+    if (cache_bytes_0x769_reqbody == null)
+    {
+      cache_bytes_0x769_reqbody = (byte[])new byte[1];
+      ((byte[])cache_bytes_0x769_reqbody)[0] = 0;
+    }
+    this.bytes_0x769_reqbody = ((byte[])paramJceInputStream.read(cache_bytes_0x769_reqbody, 20, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -161,6 +173,10 @@ public final class SvcRequestRegisterNew
     paramJceOutputStream.write(this.uEndSeq, 16);
     paramJceOutputStream.write(this.cOptGroupMsgFlag, 17);
     paramJceOutputStream.write(this.ulSyncTime, 18);
+    paramJceOutputStream.write(this.ulMaxDisGrpMsgTime, 19);
+    if (this.bytes_0x769_reqbody != null) {
+      paramJceOutputStream.write(this.bytes_0x769_reqbody, 20);
+    }
   }
 }
 

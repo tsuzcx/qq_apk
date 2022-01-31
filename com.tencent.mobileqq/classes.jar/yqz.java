@@ -1,31 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.ApolloPushManager;
-import com.tencent.mobileqq.apollo.ApolloPushManager.OnActionPushListener;
-import com.tencent.mobileqq.data.ApolloActionPush;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.gdtad.views.form.framework.GdtFormTableView;
+import com.tencent.gdtad.views.form.framework.GdtFormTableView.1.1;
 
 public class yqz
-  implements ApolloPushManager.OnActionPushListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public yqz(ApolloPushManager paramApolloPushManager) {}
+  public yqz(GdtFormTableView paramGdtFormTableView) {}
   
-  public void a(int paramInt, ApolloActionPush paramApolloActionPush)
+  public void onGlobalLayout()
   {
-    if ((ApolloPushManager.a(this.a) != null) && (paramApolloActionPush != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloPushManager", 2, "[onActionPush], aioType:" + paramInt + ";pushData:" + paramApolloActionPush.toString());
-      }
-      if ((ApolloPushManager.a(this.a).jdField_a_of_type_Int == paramInt) && (paramInt == ApolloPushManager.a(this.a).jdField_a_of_type_Int) && (!TextUtils.isEmpty(ApolloPushManager.a(this.a).jdField_a_of_type_JavaLangString)) && (ApolloPushManager.a(this.a).jdField_a_of_type_JavaLangString.equals(String.valueOf(paramApolloActionPush.mSessionId)))) {
-        this.a.a(paramApolloActionPush);
-      }
-    }
+    this.a.a(-1);
+    this.a.post(new GdtFormTableView.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yqz
  * JD-Core Version:    0.7.0.1
  */

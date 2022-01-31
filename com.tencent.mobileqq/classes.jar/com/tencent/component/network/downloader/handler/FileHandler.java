@@ -2,7 +2,7 @@ package com.tencent.component.network.downloader.handler;
 
 public abstract interface FileHandler
 {
-  public abstract boolean a(String paramString1, String paramString2);
+  public abstract boolean handleFile(String paramString1, String paramString2);
 }
 
 

@@ -1,22 +1,31 @@
-import com.tencent.biz.qqstory.playmode.child.ShareGroupHotSortPlayMode;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import java.util.concurrent.ConcurrentHashMap;
 
-class npt
-  implements Runnable
+public class npt
 {
-  npt(npq paramnpq) {}
+  public static ConcurrentHashMap<Integer, Object> a = new ConcurrentHashMap();
   
-  public void run()
+  public static Object a(int paramInt)
   {
-    this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
-    StoryReportor.b("play_video", "play_done", 0, 0, new String[] { "1", String.valueOf(111) });
-    this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.a(1);
-    this.a.a.a.jdField_a_of_type_Int = 1;
-    this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(0);
-    this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(new npu(this));
+    if (a.containsKey(Integer.valueOf(paramInt))) {
+      return a.get(Integer.valueOf(paramInt));
+    }
+    return null;
+  }
+  
+  public static void a(int paramInt)
+  {
+    a.remove(Integer.valueOf(paramInt));
+  }
+  
+  public static void a(int paramInt, Object paramObject)
+  {
+    if (paramObject == null) {
+      return;
+    }
+    if (a.containsKey(Integer.valueOf(paramInt))) {
+      a.remove(Integer.valueOf(paramInt));
+    }
+    a.put(Integer.valueOf(paramInt), paramObject);
   }
 }
 

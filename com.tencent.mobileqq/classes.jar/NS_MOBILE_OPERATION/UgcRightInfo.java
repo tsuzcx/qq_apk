@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class UgcRightInfo
   extends JceStruct
 {
-  static ArrayList cache_allow_uins;
-  public ArrayList allow_uins;
+  static ArrayList<Long> cache_allow_uins;
+  public ArrayList<Long> allow_uins;
   public int ugc_right = 1;
   
   public UgcRightInfo() {}
   
-  public UgcRightInfo(int paramInt, ArrayList paramArrayList)
+  public UgcRightInfo(int paramInt, ArrayList<Long> paramArrayList)
   {
     this.ugc_right = paramInt;
     this.allow_uins = paramArrayList;
@@ -41,7 +41,7 @@ public final class UgcRightInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     NS_MOBILE_OPERATION.UgcRightInfo
  * JD-Core Version:    0.7.0.1
  */

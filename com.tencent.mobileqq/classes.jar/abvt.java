@@ -1,18 +1,21 @@
-import com.tencent.image.URLDrawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 
-public final class abvt
-  implements Runnable
+public class abvt
+  implements View.OnClickListener
 {
-  public abvt(URLDrawable paramURLDrawable) {}
+  public abvt(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.downloadImediatly();
+    TroopAssistantActivity.a(this.a);
+    awqx.b(this.a.app, "dc00899", "Grp_msg", "", "helper-guide", "Clk_close", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abvt
  * JD-Core Version:    0.7.0.1
  */

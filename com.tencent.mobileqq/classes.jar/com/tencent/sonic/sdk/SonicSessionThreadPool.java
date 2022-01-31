@@ -1,18 +1,15 @@
 package com.tencent.sonic.sdk;
 
-import android.support.annotation.NonNull;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.SynchronousQueue;
-import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
 
 class SonicSessionThreadPool
 {
   private static final String TAG = "SonicSdk_SonicSessionThreadPool";
   private static final SonicSessionThreadPool sInstance = new SonicSessionThreadPool();
-  private final ExecutorService executorServiceImpl = new ThreadPoolExecutor(1, 6, 60L, TimeUnit.SECONDS, new SynchronousQueue(), new SessionThreadFactory());
+  private final ExecutorService executorServiceImpl = new ThreadPoolExecutor(1, 6, 60L, TimeUnit.SECONDS, new SynchronousQueue(), new SonicSessionThreadPool.SessionThreadFactory());
   
   private boolean execute(Runnable paramRunnable)
   {
@@ -31,37 +28,6 @@ class SonicSessionThreadPool
   static boolean postTask(Runnable paramRunnable)
   {
     return sInstance.execute(paramRunnable);
-  }
-  
-  private static class SessionThreadFactory
-    implements ThreadFactory
-  {
-    private static final String NAME_PREFIX = "pool-sonic-session-thread-";
-    private final ThreadGroup group;
-    private final AtomicInteger threadNumber = new AtomicInteger(1);
-    
-    SessionThreadFactory()
-    {
-      Object localObject = System.getSecurityManager();
-      if (localObject != null) {}
-      for (localObject = ((SecurityManager)localObject).getThreadGroup();; localObject = Thread.currentThread().getThreadGroup())
-      {
-        this.group = ((ThreadGroup)localObject);
-        return;
-      }
-    }
-    
-    public Thread newThread(@NonNull Runnable paramRunnable)
-    {
-      paramRunnable = new Thread(this.group, paramRunnable, "pool-sonic-session-thread-" + this.threadNumber.getAndIncrement(), 0L);
-      if (paramRunnable.isDaemon()) {
-        paramRunnable.setDaemon(false);
-      }
-      if (paramRunnable.getPriority() != 5) {
-        paramRunnable.setPriority(5);
-      }
-      return paramRunnable;
-    }
   }
 }
 

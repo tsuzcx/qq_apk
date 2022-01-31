@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:padding="5.0dip" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/j3z" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.image.URLImageView android:id="@id/bat" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginRight="10.0dip" android:scaleType="centerCrop" android:includeFontPadding="false" android:layout_alignParentLeft="true" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/bat" android:layout_alignTop="@id/bat" android:layout_centerInParent="true">
+            <TextView android:textSize="14.0dip" android:textColor="#70000000" android:gravity="center_vertical" android:id="@id/title" android:padding="0.0dip" android:layout_width="148.0dip" android:layout_height="wrap_content" android:maxWidth="148.0dip" android:text="@string/rbx" android:singleLine="false" />
+            <TextView android:textSize="12.0dip" android:textColor="#50000000" android:ellipsize="end" android:id="@id/jl7" android:padding="0.0dip" android:layout_width="148.0dip" android:layout_height="wrap_content" android:maxWidth="148.0dip" android:text="7月20日 10:30" android:lines="1" />
+        </LinearLayout>
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/j3y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/j3z" android:layout_alignLeft="@id/j3z" android:layout_alignRight="@id/j3z">
+        <View android:id="@id/d7v" android:background="#70000000" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="12.0dip" android:layout_marginBottom="10.0dip" />
+        <com.etrump.mixlayout.ETTextView android:textSize="16.0dip" android:textColor="#70000000" android:id="@id/b2y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rbe" android:layout_below="@id/d7v" />
+    </RelativeLayout>
+</RelativeLayout>

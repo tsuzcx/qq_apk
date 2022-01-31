@@ -25,7 +25,7 @@ public class e
   private URL d;
   private int e = 10000;
   private int f = 30000;
-  private int g;
+  private int g = 0;
   private Object h;
   private HttpURLConnection i;
   private int j;
@@ -39,51 +39,51 @@ public class e
   public static String a(String paramString)
   {
     if (NetConnInfoCenter.getSystemNetworkType() == 0) {
-      return v.m.toString();
+      return x.m.toString();
     }
     if (paramString.indexOf("illegal") > -1) {
-      return v.g.toString();
+      return x.g.toString();
     }
     if (paramString.indexOf("route to host") > -1) {
-      return v.q.toString();
+      return x.q.toString();
     }
     if (paramString.indexOf("unreachable") > -1) {
-      return v.m.toString();
+      return x.m.toString();
     }
     if (paramString.indexOf("permission") > -1) {
-      return v.i.toString();
+      return x.i.toString();
     }
     if (paramString.indexOf("refused") > -1) {
-      return v.s.toString();
+      return x.s.toString();
     }
     if (paramString.indexOf("reset") > -1) {
-      return v.r.toString();
+      return x.r.toString();
     }
     if ((paramString.indexOf("timeoutexception") > -1) || (paramString.indexOf(") after") > -1)) {
-      return v.t.toString();
+      return x.t.toString();
     }
     if (paramString.indexOf("unknownhost") > -1) {
-      return v.p.toString();
+      return x.p.toString();
     }
     if (paramString.indexOf("unresolved") > -1) {
-      return v.o.toString();
+      return x.o.toString();
     }
     if (paramString.indexOf("enotsock") > -1) {
-      return v.h.toString();
+      return x.h.toString();
     }
     if (paramString.indexOf("enobufs") > -1) {
-      return v.l.toString();
+      return x.l.toString();
     }
     if (paramString.indexOf("ebadf") > -1) {
-      return v.j.toString();
+      return x.j.toString();
     }
     if (paramString.indexOf("operation") > -1) {
-      return v.t.toString();
+      return x.t.toString();
     }
     if (paramString.indexOf("invalid") > -1) {
-      return v.n.toString();
+      return x.n.toString();
     }
-    return v.u.toString();
+    return x.u.toString();
   }
   
   private String a(String paramString, int paramInt)
@@ -156,7 +156,7 @@ public class e
     {
       try
       {
-        this.f = a.aa();
+        this.f = a.ab();
         l1 = l2;
         paramString1 = "http://" + paramString1 + ":" + paramInt;
         l1 = l2;

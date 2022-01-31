@@ -1,29 +1,54 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.widget.DynamicGridView;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
 
 public class amik
-  extends AnimatorListenerAdapter
+  extends amie<amih>
 {
-  public amik(DynamicGridView paramDynamicGridView, View paramView) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  @NonNull
+  public static amih c()
   {
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, false);
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, this.jdField_a_of_type_AndroidViewView);
+    amih localamih2 = (amih)alzw.a().a(541);
+    amih localamih1 = localamih2;
+    if (localamih2 == null) {
+      localamih1 = amih.a();
+    }
+    return localamih1;
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  public int a()
   {
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, true);
-    DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
+    return 541;
+  }
+  
+  @NonNull
+  public amih a()
+  {
+    return amih.a();
+  }
+  
+  @NonNull
+  public amih a(@NonNull alzs[] paramArrayOfalzs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("KC.ConfigProcessor", 1, paramArrayOfalzs[0].a);
+    }
+    return amih.a(paramArrayOfalzs[0].a);
+  }
+  
+  public Class<amih> a()
+  {
+    return amih.class;
+  }
+  
+  @NonNull
+  public amih b()
+  {
+    return amih.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amik
  * JD-Core Version:    0.7.0.1
  */

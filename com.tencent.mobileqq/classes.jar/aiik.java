@@ -1,21 +1,10 @@
-import com.tencent.mobileqq.shortvideo.util.NativeSoLoader;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-public final class aiik
-  implements Runnable
+public abstract interface aiik
 {
-  public void run()
-  {
-    if (!NativeSoLoader.a().get())
-    {
-      boolean bool = NativeSoLoader.a("TKGLRenderer");
-      NativeSoLoader.a().getAndSet(bool);
-    }
-  }
+  public abstract void onRender();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiik
  * JD-Core Version:    0.7.0.1
  */

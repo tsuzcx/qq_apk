@@ -1,21 +1,69 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.service.gamecenter.AppLaucherHelper;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MayKnowRecommend;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import java.util.List;
 
-public class aiby
-  extends Handler
+class aiby
+  extends ajjh
 {
-  public aiby(AppLaucherHelper paramAppLaucherHelper) {}
+  aiby(aibw paramaibw) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
   {
-    super.handleMessage(paramMessage);
-    if (paramMessage.what == 0)
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendAdapter", 2, "onCancelMayKnowRecommend isSuccess = " + paramBoolean);
+    }
+    if (paramBoolean)
     {
-      AppLaucherHelper.a = false;
-      if (QLog.isColorLevel()) {
-        QLog.d(getClass().getSimpleName(), 2, "wtlogin time out");
+      if ((this.a.jdField_a_of_type_Aibk != null) && ((this.a.jdField_a_of_type_Aibk instanceof aibl))) {
+        ((aibl)this.a.jdField_a_of_type_Aibk).a(paramString);
+      }
+      aibw.a(this.a);
+    }
+  }
+  
+  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (paramBoolean) {
+      aibw.a(this.a);
+    }
+  }
+  
+  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
+  {
+    super.onMayKnowListPushAdd(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendAdapter", 2, "onMayKnowListPushAdd isSuccess = " + paramBoolean);
+    }
+    if (paramBoolean) {
+      aibw.a(this.a);
+    }
+  }
+  
+  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
+  {
+    super.onMayKnowListPushDel(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendAdapter", 2, "onMayKnowListPushDel isSuccess = " + paramBoolean);
+    }
+    if (paramBoolean) {
+      aibw.a(this.a);
+    }
+  }
+  
+  protected void onMayknowStateChanged(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendAdapter", 2, "onMayknowStateChanged isSuccess = " + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      this.a.notifyDataSetChanged();
+      if (aibw.a(this.a) != null)
+      {
+        aibw.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+        aibw.a(this.a).postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1600L);
       }
     }
   }

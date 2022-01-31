@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.extendfriend.pulltorefresh.extras.PullToRefreshRecyclerView android:id="@id/g5m" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" ptf:ptfAnimationStyle="cd6" ptf:ptfDrawableStart="@drawable/ci9" ptf:ptfHeaderBackground="@color/ajr" ptf:ptfHeaderSubTextColor="#ffffffff" ptf:ptfHeaderTextColor="#ffffffff" ptf:ptfMode="g5g" xmlns:ptf="http://schemas.android.com/apk/res-auto" />
+</FrameLayout>

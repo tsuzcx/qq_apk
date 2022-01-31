@@ -10,12 +10,12 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x8b2$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField bool_clear_all_administrator = PBField.initBool(false);
   public final PBBytesField string_hot_group_id = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField uint64_administrator_uin = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> uint64_administrator_uin = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBUInt64Field uint64_group_code = PBField.initUInt64(0L);
   
   static
@@ -26,7 +26,7 @@ public final class oidb_0x8b2$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8b2.oidb_0x8b2.ReqBody
  * JD-Core Version:    0.7.0.1
  */

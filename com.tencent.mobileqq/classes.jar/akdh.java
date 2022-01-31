@@ -1,21 +1,14 @@
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-
-class akdh
-  implements Action.OnActionEndListener
+public abstract interface akdh
 {
-  akdh(akdg paramakdg) {}
+  public abstract void a(int paramInt);
   
-  public void a()
-  {
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
-  }
+  public abstract void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akdh
  * JD-Core Version:    0.7.0.1
  */

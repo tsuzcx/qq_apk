@@ -1,218 +1,107 @@
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.res.Configuration;
-import android.graphics.Rect;
-import android.view.KeyEvent;
-import android.view.KeyEvent.DispatcherState;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import com.tencent.widget.BubblePopupWindow;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class amid
-  extends FrameLayout
+  extends alzl<amic>
 {
-  View jdField_a_of_type_AndroidViewView = null;
-  
-  public amid(BubblePopupWindow paramBubblePopupWindow, Context paramContext)
+  public int a()
   {
-    super(paramContext);
+    return 449;
   }
   
-  private View a(View paramView)
+  @NonNull
+  public amic a(int paramInt)
   {
-    if (paramView.isPressed()) {
-      return paramView;
-    }
-    if ((paramView instanceof ViewGroup))
-    {
-      paramView = (ViewGroup)paramView;
-      int i = 0;
-      while (i < paramView.getChildCount())
+    QLog.i("QFileIPv6ConfigProcessor", 1, "migrateOldOrDefaultContent: type[" + paramInt + "]");
+    return new amic();
+  }
+  
+  @Nullable
+  public amic a(alzs[] paramArrayOfalzs)
+  {
+    QLog.i("QFileIPv6ConfigProcessor", 1, "onParsed");
+    if (paramArrayOfalzs != null) {
+      try
       {
-        View localView = a(paramView.getChildAt(i));
-        if (localView != null) {
-          return localView;
+        if (paramArrayOfalzs.length > 0)
+        {
+          paramArrayOfalzs = (amic)amaf.a(paramArrayOfalzs[0].a, amic.class);
+          return paramArrayOfalzs;
         }
-        i += 1;
       }
+      catch (QStorageInstantiateException paramArrayOfalzs) {}
     }
     return null;
   }
   
-  private void a(View paramView1, View paramView2, Rect paramRect)
+  public Class<amic> a()
   {
-    if (paramView1 == paramView2) {
-      return;
-    }
-    paramRect.top += paramView1.getTop();
-    paramRect.bottom += paramView1.getTop();
-    paramRect.left += paramView1.getLeft();
-    paramRect.right += paramView1.getLeft();
-    a((View)paramView1.getParent(), paramView2, paramRect);
+    return amic.class;
   }
   
-  public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
+  public void a(int paramInt)
   {
-    boolean bool = true;
-    if (paramKeyEvent.getKeyCode() == 4)
+    QLog.i("QFileIPv6ConfigProcessor", 1, "onReqFailed: failCode[" + paramInt + "]");
+  }
+  
+  public void a(amic paramamic)
+  {
+    if (paramamic == null) {
+      QLog.i("QFileIPv6ConfigProcessor", 1, "onUpdate: newConf is null.");
+    }
+    label141:
+    for (;;)
     {
-      if (getKeyDispatcherState() == null) {
-        bool = super.dispatchKeyEvent(paramKeyEvent);
-      }
-      KeyEvent.DispatcherState localDispatcherState;
-      do
+      return;
+      QLog.i("QFileIPv6ConfigProcessor", 1, "onUpdate");
+      Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject1 instanceof QQAppInterface)) {}
+      for (localObject1 = (QQAppInterface)localObject1;; localObject1 = null)
       {
-        return bool;
-        if ((paramKeyEvent.getAction() != 0) || (paramKeyEvent.getRepeatCount() != 0)) {
+        if (localObject1 == null) {
+          break label141;
+        }
+        Object localObject2 = ((QQAppInterface)localObject1).getApp().getSharedPreferences("file_config_" + ((QQAppInterface)localObject1).c(), 0).edit();
+        ((SharedPreferences.Editor)localObject2).putBoolean("ipv6_all_switch", paramamic.a);
+        ((SharedPreferences.Editor)localObject2).apply();
+        localObject2 = new Bundle();
+        ((Bundle)localObject2).putBoolean("ipv6_all_switch", paramamic.a);
+        paramamic = (aofy)((QQAppInterface)localObject1).getManager(317);
+        if (paramamic == null) {
           break;
         }
-        localDispatcherState = getKeyDispatcherState();
-      } while (localDispatcherState == null);
-      localDispatcherState.startTracking(paramKeyEvent, this);
-      return true;
-      if (paramKeyEvent.getAction() == 1)
-      {
-        localDispatcherState = getKeyDispatcherState();
-        if ((localDispatcherState != null) && (localDispatcherState.isTracking(paramKeyEvent)) && (!paramKeyEvent.isCanceled()))
-        {
-          this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a();
-          return true;
-        }
-      }
-      return super.dispatchKeyEvent(paramKeyEvent);
-    }
-    return super.dispatchKeyEvent(paramKeyEvent);
-  }
-  
-  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
-  {
-    if ((BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow) != null) && (BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).onTouch(this, paramMotionEvent))) {
-      return true;
-    }
-    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    if (BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow) == null) {
-      return bool;
-    }
-    View localView = a(BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow));
-    int i;
-    if ((this.jdField_a_of_type_AndroidViewView == null) && (localView == null))
-    {
-      i = 0;
-      if ((i == 0) && ((paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1)))
-      {
-        BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).a(0, 0);
-        BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).a(0, 0);
-        BubblePopupWindow.c(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).a(0, 0);
-        BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).invalidate();
-      }
-      return bool;
-    }
-    this.jdField_a_of_type_AndroidViewView = localView;
-    if (this.jdField_a_of_type_AndroidViewView != null)
-    {
-      this.jdField_a_of_type_AndroidViewView.scrollTo(0, 0);
-      this.jdField_a_of_type_AndroidViewView.getDrawingRect(BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow));
-      a(this.jdField_a_of_type_AndroidViewView, BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow), BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow));
-      if (BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).left != 0) {
-        break label488;
-      }
-    }
-    label315:
-    label488:
-    for (int j = 1;; j = 0)
-    {
-      if (BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).right == BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).getWidth()) {
-        i = BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).getWidth();
-      }
-      for (int k = 1;; k = 0)
-      {
-        if ((j == 0) || (k == 0))
-        {
-          this.jdField_a_of_type_AndroidViewView.getDrawingRect(BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow));
-          a(this.jdField_a_of_type_AndroidViewView, BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow), BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow));
-          if (j == 0)
-          {
-            j = BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).left;
-            if (k == 0) {
-              i = BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).right;
-            }
-          }
-        }
-        for (;;)
-        {
-          BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).a(j, i);
-          BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).a(j - BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).getLeft(), i - BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).getLeft());
-          BubblePopupWindow.c(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).a(j - BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).getLeft(), i - BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).getLeft());
-          for (i = 0;; i = 1)
-          {
-            BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).invalidate();
-            break;
-            BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).a(0, 0);
-            BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).a(0, 0);
-            BubblePopupWindow.c(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).a(0, 0);
-          }
-          continue;
-          j = 0;
-          break label315;
-          j = 0;
-        }
-        i = 0;
+        paramamic.b((Bundle)localObject2);
+        return;
       }
     }
   }
   
-  @TargetApi(8)
-  protected void onConfigurationChanged(Configuration paramConfiguration)
+  public int b()
   {
-    super.onConfigurationChanged(paramConfiguration);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a();
+    return 0;
   }
   
-  protected int[] onCreateDrawableState(int paramInt)
+  public boolean b()
   {
-    if (BubblePopupWindow.a(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow))
-    {
-      int[] arrayOfInt = super.onCreateDrawableState(paramInt + 1);
-      View.mergeDrawableStates(arrayOfInt, BubblePopupWindow.a());
-      return arrayOfInt;
-    }
-    return super.onCreateDrawableState(paramInt);
+    return false;
   }
   
-  public boolean onTouchEvent(MotionEvent paramMotionEvent)
+  public boolean c()
   {
-    int i = (int)paramMotionEvent.getX();
-    int j = (int)paramMotionEvent.getY();
-    if ((paramMotionEvent.getAction() == 0) && ((i < 0) || (i >= getWidth()) || (j < 0) || (j >= getHeight())))
-    {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a();
-      return true;
-    }
-    if (paramMotionEvent.getAction() == 4)
-    {
-      this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a();
-      return true;
-    }
-    return super.onTouchEvent(paramMotionEvent);
-  }
-  
-  public void sendAccessibilityEvent(int paramInt)
-  {
-    if (BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow) != null)
-    {
-      BubblePopupWindow.b(this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow).sendAccessibilityEvent(paramInt);
-      return;
-    }
-    super.sendAccessibilityEvent(paramInt);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amid
  * JD-Core Version:    0.7.0.1
  */

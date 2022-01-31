@@ -6,10 +6,10 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class value$CourseList
-  extends MessageMicro
+  extends MessageMicro<CourseList>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "course_info" }, new Object[] { null }, CourseList.class);
-  public final PBRepeatMessageField course_info = PBField.initRepeatMessage(value.CourseInfo.class);
+  public final PBRepeatMessageField<value.CourseInfo> course_info = PBField.initRepeatMessage(value.CourseInfo.class);
 }
 
 

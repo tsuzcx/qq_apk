@@ -1,0 +1,12 @@
+import java.util.List;
+
+public abstract interface axgw
+{
+  public abstract void a(List<String> paramList);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+ * Qualified Name:     axgw
+ * JD-Core Version:    0.7.0.1
+ */

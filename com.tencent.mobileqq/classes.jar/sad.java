@@ -1,28 +1,20 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.photo.StatisticConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
+import UserGrowth.stReportItem;
+import UserGrowth.stWeishiReportReq;
+import UserGrowth.stWeishiReportRsp;
+import java.util.ArrayList;
 
-public final class sad
-  implements Runnable
+public class sad
+  extends ryw<stWeishiReportRsp>
 {
-  public sad(String paramString, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
+  public sad(ArrayList<stReportItem> paramArrayList)
   {
-    try
-    {
-      String str = this.jdField_a_of_type_JavaLangString;
-      int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      StatisticConstants.a(new String[] { str }, i, false, false, -1, localQQAppInterface);
-      return;
-    }
-    catch (Exception localException) {}
+    super("WeishiReport");
+    this.a = new stWeishiReportReq(paramArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sad
  * JD-Core Version:    0.7.0.1
  */

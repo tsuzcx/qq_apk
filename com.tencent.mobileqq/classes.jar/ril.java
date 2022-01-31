@@ -1,27 +1,25 @@
-import android.os.AsyncTask;
-import com.tencent.mfsdk.collector.FPSCalculator;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ReadInJoyColorBandEntranceButton;
 
 public class ril
-  extends AsyncTask
+  extends AnimatorListenerAdapter
 {
-  public ril(FPSCalculator paramFPSCalculator) {}
+  public ril(ReadInJoyColorBandEntranceButton paramReadInJoyColorBandEntranceButton) {}
   
-  protected Void a(Void... paramVarArgs)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    paramVarArgs = FPSCalculator.a(this.a).iterator();
-    while (paramVarArgs.hasNext()) {
-      QLog.d("Q.PerfTrace", 2, (String)paramVarArgs.next());
-    }
-    FPSCalculator.a(this.a).clear();
-    return null;
+    this.a.a();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ril
  * JD-Core Version:    0.7.0.1
  */

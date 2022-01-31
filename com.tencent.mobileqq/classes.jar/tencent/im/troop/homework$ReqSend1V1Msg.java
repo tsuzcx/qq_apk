@@ -10,13 +10,13 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class homework$ReqSend1V1Msg
-  extends MessageMicro
+  extends MessageMicro<ReqSend1V1Msg>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field group_id = PBField.initUInt64(0L);
   public final PBInt32Field int32_time_zone = PBField.initInt32(0);
   public final PBBytesField text = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField to_uins = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> to_uins = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   
   static
   {
@@ -26,7 +26,7 @@ public final class homework$ReqSend1V1Msg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.troop.homework.ReqSend1V1Msg
  * JD-Core Version:    0.7.0.1
  */

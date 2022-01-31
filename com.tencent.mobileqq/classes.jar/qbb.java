@@ -1,43 +1,51 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.device.ble.QFindGattManager;
-import com.tencent.device.qfind.BluetoothLeService;
-import com.tencent.device.qfind.BluetoothLeService.LocalBinder;
-import com.tencent.device.qfind.PeerInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
 
-public class qbb
-  implements ServiceConnection
+class qbb
+  implements nwb
 {
-  public qbb(QFindGattManager paramQFindGattManager) {}
+  qbb(qaz paramqaz) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void a()
   {
-    QFindGattManager.a(this.a, ((BluetoothLeService.LocalBinder)paramIBinder).a());
-    if ((!QFindGattManager.a(this.a).a()) && (QLog.isColorLevel())) {
-      QLog.e("DeviceBLE2", 2, "Unable to initialize Bluetooth");
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("DeviceBLE2", 2, "ServiceConnection onServiceConnected ");
-    }
-    if (!QFindGattManager.a(this.a).isEmpty())
-    {
-      this.a.a = ((PeerInfo)QFindGattManager.a(this.a).get(0));
-      QFindGattManager.a(this.a).remove(0);
-      QFindGattManager.a(this.a).a(this.a.a.a, this.a.a.b);
+    if (qaz.a(this.a) != null) {
+      qaz.a(this.a).b();
     }
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void a(int paramInt)
   {
-    QFindGattManager.a(this.a, null);
+    if (paramInt < 0) {
+      return;
+    }
+    qaz.a(this.a).e = paramInt;
+    qaz.a(this.a).b(qaz.a(this.a));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.a.e();
+      return;
+    }
+    this.a.f();
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    qaz.a(this.a).e();
+    this.a.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qbb
  * JD-Core Version:    0.7.0.1
  */

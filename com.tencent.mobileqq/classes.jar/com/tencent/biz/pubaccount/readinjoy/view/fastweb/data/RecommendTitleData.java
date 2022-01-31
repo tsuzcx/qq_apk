@@ -4,12 +4,7 @@ public class RecommendTitleData
   extends BaseData
 {
   public String a;
-  
-  public RecommendTitleData(String paramString)
-  {
-    this.a = paramString;
-    this.d = 7;
-  }
+  public boolean a;
 }
 
 

@@ -1,48 +1,39 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.fileviewer.model.C2CFileModel;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnTransEventListener;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.data.MessageForPLNews;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
 
 class adkr
-  implements FMDialogUtil.FMDialogInterface
+  implements View.OnClickListener
 {
-  adkr(adkq paramadkq) {}
+  adkr(adkq paramadkq, MessageForPLNews paramMessageForPLNews, String paramString) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    int i = this.a.a.i();
-    int j = this.a.a.d();
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    if (i == 6) {
-      if (j == 0) {
-        localQQAppInterface.a().b(this.a.a.c());
-      }
-    }
-    for (;;)
-    {
-      if (this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener != null) {
-        this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener.d();
-      }
+    paramView = (adks)paramView.getTag();
+    if (paramView == null) {
       return;
-      localQQAppInterface.a().a(this.a.a.c());
-      continue;
-      if (j == 0) {
-        localQQAppInterface.a().a(this.a.a.c());
-      } else {
-        localQQAppInterface.a().b(this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a());
-      }
     }
+    paramView = new ProfileActivity.AllInOne(paramView.jdField_a_of_type_JavaLangString, 1);
+    Intent localIntent = new Intent(this.jdField_a_of_type_Adkq.jdField_a_of_type_AndroidContentContext, PersonalityLabelGalleryActivity.class);
+    localIntent.putExtra("personality_label_allinone", paramView);
+    localIntent.putExtra("fromType", 2);
+    localIntent.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqDataMessageForPLNews.frienduin);
+    localIntent.putExtra("nickname", this.jdField_a_of_type_JavaLangString);
+    if (!(this.jdField_a_of_type_Adkq.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+      localIntent.addFlags(268435456);
+    }
+    this.jdField_a_of_type_Adkq.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    awqx.b(this.jdField_a_of_type_Adkq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0x8009434", "0x8009434", 0, 0, "", "3", "", "");
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adkr
  * JD-Core Version:    0.7.0.1
  */

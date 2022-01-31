@@ -9,8 +9,7 @@ import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
 public abstract interface PluginLoader
 {
   @API
-  public abstract ProgressFuture<RunningPlugin> loadPlugin(Context paramContext, InstalledPlugin paramInstalledPlugin)
-    throws LoadPluginException;
+  public abstract ProgressFuture<RunningPlugin> loadPlugin(Context paramContext, InstalledPlugin paramInstalledPlugin);
   
   @API
   public abstract boolean setPluginDisabled(InstalledPlugin paramInstalledPlugin);

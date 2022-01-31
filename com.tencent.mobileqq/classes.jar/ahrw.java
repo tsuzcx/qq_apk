@@ -1,20 +1,33 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.richmedia.conn.ConnManager;
-import com.tencent.mobileqq.richmedia.server.PeakAudioTransHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
-public class ahrw
-  implements Runnable
+class ahrw
+  implements DialogInterface.OnClickListener
 {
-  public ahrw(ConnManager paramConnManager, long paramLong) {}
+  ahrw(ahrv paramahrv) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((PeakAudioTransHandler)ConnManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager).getBusinessHandler(0)).b(this.jdField_a_of_type_Long);
+    if (this.a.a.d == 36) {
+      if (this.a.a.a == 1) {
+        this.a.a.m();
+      }
+    }
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      awqx.b(null, "CliOper", "", "", "0X8004CEE", "0X8004CEE", 0, 0, "", "", "", "");
+      return;
+      this.a.a.a();
+      continue;
+      this.a.a.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahrw
  * JD-Core Version:    0.7.0.1
  */

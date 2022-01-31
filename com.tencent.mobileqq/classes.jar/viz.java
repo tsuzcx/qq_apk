@@ -1,27 +1,14 @@
-import com.tencent.mobileqq.activity.aio.item.QQWalletMsgItemBuilder;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.QWalletHelper;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import java.util.ArrayList;
 
-public class viz
-  implements Runnable
+public abstract interface viz
 {
-  public viz(QQWalletMsgItemBuilder paramQQWalletMsgItemBuilder, int paramInt) {}
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQWalletMsgItemBuilder.jdField_a_of_type_AndroidContentContext == null) {}
-    while (QWalletHelper.isQWalletProcessExist(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQWalletMsgItemBuilder.jdField_a_of_type_AndroidContentContext)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(QQWalletMsgItemBuilder.jdField_a_of_type_JavaLangString, 2, "preload qwallet process by qqWalletMsg isTroop=" + this.jdField_a_of_type_Int);
-    }
-    QWalletHelper.preloadQWallet(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQWalletMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, "qwallet_red");
-  }
+  public abstract void a(@NonNull ArrayList<vja> paramArrayList, @NonNull Context paramContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     viz
  * JD-Core Version:    0.7.0.1
  */

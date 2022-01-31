@@ -1,40 +1,67 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
+
 public class amfo
+  extends alzl<amfn>
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public int d;
-  public String d;
-  public int e;
-  
-  public amfo(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt3, boolean paramBoolean, int paramInt4, long paramLong, int paramInt5)
+  public int a()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_d_of_type_JavaLangString = paramString4;
-    this.jdField_c_of_type_Int = paramInt3;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_d_of_type_Int = paramInt4;
-    this.jdField_a_of_type_Long = paramLong;
-    this.e = paramInt5;
+    return 490;
   }
   
-  public String toString()
+  @NonNull
+  public amfn a(int paramInt)
   {
-    return "filePath=" + this.jdField_a_of_type_JavaLangString + ",fileName=" + this.jdField_b_of_type_JavaLangString + ",fileId=" + this.jdField_b_of_type_Int + ",fileUrl=" + this.jdField_c_of_type_JavaLangString + ",fileHash=" + this.jdField_d_of_type_JavaLangString + ",fileVersion=" + this.jdField_c_of_type_Int + ",zipFlag=" + this.jdField_a_of_type_Boolean + ",startTime=" + this.jdField_a_of_type_Long + ",tryTimes=" + this.jdField_d_of_type_Int + ",downloadFlag=" + this.e;
+    return new amfn();
+  }
+  
+  @Nullable
+  public amfn a(alzs[] paramArrayOfalzs)
+  {
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
+    {
+      amfn localamfn = amfn.a(paramArrayOfalzs[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("RelationVipGrayProcessor", 2, "onParsed " + paramArrayOfalzs[0].a);
+      }
+      return localamfn;
+    }
+    return new amfn();
+  }
+  
+  public Class<amfn> a()
+  {
+    return amfn.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amfn paramamfn) {}
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,44 @@
-import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
-import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
-import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class ahqk
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ahqk(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
+  public ahqk(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.setVisibility(0);
-    List localList = CaptureVideoFilterManager.a().b();
-    this.a.a.clear();
-    int i = 0;
-    if (i < localList.size())
+    switch (paramInt)
     {
-      if (i != 0)
-      {
-        FilterCategoryItem localFilterCategoryItem = (FilterCategoryItem)localList.get(i);
-        if (!localFilterCategoryItem.a()) {
-          this.a.a.add(localFilterCategoryItem);
-        }
-      }
-      for (;;)
-      {
-        i += 1;
+    }
+    boolean bool;
+    do
+    {
+      return;
+      paramDialogInterface = this.a.jdField_a_of_type_AndroidWidgetCheckBox;
+      if (this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
         break;
-        this.a.a.add(localList.get(i));
       }
-    }
-    CaptureVideoFilterViewPager.a(this.a).a();
-    if (CaptureVideoFilterManager.a().a() == null) {
-      this.a.setCurrentItem(CaptureVideoFilterViewPager.a(this.a).a() * 50, false);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager update size=" + this.a.a.size());
+      bool = true;
+      paramDialogInterface.setChecked(bool);
+      this.a.onCheckedChanged(this.a.jdField_a_of_type_AndroidWidgetCheckBox, this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
+    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d != 32);
+    if (this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
+    for (paramDialogInterface = "friendsfinder.all.confirm";; paramDialogInterface = "friendsfinder.all.cancel")
+    {
+      agwj.a(0, paramDialogInterface);
+      return;
+      bool = false;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahqk
  * JD-Core Version:    0.7.0.1
  */

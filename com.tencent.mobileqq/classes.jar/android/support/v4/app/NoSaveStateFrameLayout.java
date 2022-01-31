@@ -1,6 +1,7 @@
 package android.support.v4.app;
 
 import android.content.Context;
+import android.os.Parcelable;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,12 +29,12 @@ class NoSaveStateFrameLayout
     return localNoSaveStateFrameLayout;
   }
   
-  protected void dispatchRestoreInstanceState(SparseArray paramSparseArray)
+  protected void dispatchRestoreInstanceState(SparseArray<Parcelable> paramSparseArray)
   {
     dispatchThawSelfOnly(paramSparseArray);
   }
   
-  protected void dispatchSaveInstanceState(SparseArray paramSparseArray)
+  protected void dispatchSaveInstanceState(SparseArray<Parcelable> paramSparseArray)
   {
     dispatchFreezeSelfOnly(paramSparseArray);
   }

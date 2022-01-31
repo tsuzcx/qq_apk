@@ -1,27 +1,14 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.os.Handler;
-import com.tencent.mobileqq.trooppiceffects.view.ShakePicView;
-
-public class akes
-  implements Animator.AnimatorListener
+public abstract interface akes
 {
-  public akes(ShakePicView paramShakePicView) {}
+  public abstract void a(String paramString);
   
-  public void onAnimationCancel(Animator paramAnimator) {}
+  public abstract void a(String paramString, int paramInt);
   
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.a.postDelayed(new aket(this), 160L);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
+  public abstract void b(String paramString, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akes
  * JD-Core Version:    0.7.0.1
  */

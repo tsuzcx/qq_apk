@@ -1,22 +1,20 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
-import java.util.List;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.model.BannerFeedItem;
 
-class tdh
-  implements Runnable
+public class tdh
+  extends tem
 {
-  tdh(tdg paramtdg, List paramList) {}
-  
-  public void run()
+  public tdh(@NonNull BannerFeedItem paramBannerFeedItem)
   {
-    if (LebaListMgrActivity.a(this.jdField_a_of_type_Tdg.a) != null) {
-      LebaListMgrActivity.a(this.jdField_a_of_type_Tdg.a).a(this.jdField_a_of_type_JavaUtilList);
-    }
+    this.a = paramBannerFeedItem.shareInfo.a;
+    this.b = paramBannerFeedItem.shareInfo.b;
+    this.c = paramBannerFeedItem.shareInfo.d;
+    this.d = paramBannerFeedItem.shareInfo.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tdh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,25 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.Tag;
-import com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagCloudView;
-import java.util.Comparator;
-
 public class agtu
-  implements Comparator
 {
-  Point jdField_a_of_type_AndroidGraphicsPoint;
-  
-  public agtu(TagCloudView paramTagCloudView, Point paramPoint)
+  public static String a(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
-  }
-  
-  public int a(Tag paramTag1, Tag paramTag2)
-  {
-    return TagCloudView.a(paramTag1.a(), this.jdField_a_of_type_AndroidGraphicsPoint) - TagCloudView.a(paramTag2.a(), this.jdField_a_of_type_AndroidGraphicsPoint);
+    switch (paramInt)
+    {
+    case 1: 
+    default: 
+      return "";
+    case 0: 
+      return "status_before_config_ready";
+    case 2: 
+      return "status_in_party";
+    case 4: 
+      return "status_beyong_party";
+    }
+    return "status_after_party";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agtu
  * JD-Core Version:    0.7.0.1
  */

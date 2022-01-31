@@ -87,6 +87,8 @@ public abstract interface IX5WebViewExtension
   
   public abstract boolean getDrawWithBuffer();
   
+  public abstract void getFakeLoginStatus(Bundle paramBundle, ValueCallback<Bundle> paramValueCallback);
+  
   public abstract String getFocusCandidateText();
   
   public abstract IX5WebHistoryItem getHistoryItem(int paramInt);
@@ -153,6 +155,8 @@ public abstract interface IX5WebViewExtension
   
   public abstract boolean isVerticalScrollBarEnabled();
   
+  public abstract boolean isX5CoreSandboxMode();
+  
   public abstract void leaveSelectionMode();
   
   public abstract void loadDataWithBaseURLWithHeaders(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, Map<String, String> paramMap);
@@ -184,6 +188,8 @@ public abstract interface IX5WebViewExtension
   public abstract void preLoad(String paramString, int paramInt1, int paramInt2, Map<String, String> paramMap);
   
   public abstract void pruneMemoryCache();
+  
+  public abstract boolean registerEmbeddedWidget(String[] paramArrayOfString, Object paramObject);
   
   public abstract void registerServiceWorkerBackground(String paramString1, String paramString2);
   
@@ -230,6 +236,8 @@ public abstract interface IX5WebViewExtension
   public abstract void setDrawWithBuffer(boolean paramBoolean);
   
   public abstract void setEmbTitleView(View paramView, ViewGroup.LayoutParams paramLayoutParams);
+  
+  public abstract void setFakeLoginParams(Bundle paramBundle);
   
   public abstract void setForceEnableZoom(boolean paramBoolean);
   
@@ -321,7 +329,7 @@ public abstract interface IX5WebViewExtension
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension
  * JD-Core Version:    0.7.0.1
  */

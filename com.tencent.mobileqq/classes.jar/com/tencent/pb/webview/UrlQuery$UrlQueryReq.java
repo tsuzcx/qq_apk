@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class UrlQuery$UrlQueryReq
-  extends MessageMicro
+  extends MessageMicro<UrlQueryReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_app_name = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -44,7 +44,7 @@ public final class UrlQuery$UrlQueryReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.webview.UrlQuery.UrlQueryReq
  * JD-Core Version:    0.7.0.1
  */

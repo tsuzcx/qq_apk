@@ -1,88 +1,179 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
-import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController;
+import com.tencent.mobileqq.search.model.BusinessGroupWord;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
-import tencent.im.oidb.cmd0x962.oidb_0x962.FinishInfo;
-import tencent.im.oidb.cmd0x962.oidb_0x962.RspBody;
+import pb.unify.search.UnifySearchAssociationWord.SuggestUrlItem;
+import pb.unite.search.DynamicTabSearch.SubHotWord;
 
 public class ajup
-  extends TroopGiftCallback
+  implements ajfe
 {
-  public ajup(AIOAnimationControlManager paramAIOAnimationControlManager, MessageForDeliverGiftTips paramMessageForDeliverGiftTips, List paramList1, boolean paramBoolean, List paramList2, String paramString) {}
+  public void a(int paramInt, String paramString) {}
   
-  public void a(int paramInt, oidb_0x962.RspBody paramRspBody)
+  public void a(int paramInt1, String paramString, int paramInt2) {}
+  
+  public void a(int paramInt, List<BusinessGroupWord> paramList) {}
+  
+  public void a(String paramString, int paramInt, List<avld> paramList, List<UnifySearchAssociationWord.SuggestUrlItem> paramList1, UnifySearchAssociationWord.SuggestUrlItem paramSuggestUrlItem) {}
+  
+  public void a(String paramString1, Integer paramInteger, String paramString2) {}
+  
+  public void a(String paramString, UnifySearchAssociationWord.SuggestUrlItem paramSuggestUrlItem, int paramInt) {}
+  
+  public void a(String paramString1, boolean paramBoolean, String paramString2, int paramInt, String paramString3) {}
+  
+  public void a(String paramString1, boolean paramBoolean, String paramString2, int paramInt, String paramString3, long[] paramArrayOfLong) {}
+  
+  public void a(String paramString1, boolean paramBoolean1, String paramString2, byte[] paramArrayOfByte, boolean paramBoolean2, List<avoh> paramList, List<avom> paramList1) {}
+  
+  public void a(String paramString1, boolean paramBoolean1, String paramString2, byte[] paramArrayOfByte, boolean paramBoolean2, List<avom> paramList, long[] paramArrayOfLong, String paramString3, List<DynamicTabSearch.SubHotWord> paramList1, boolean paramBoolean3, String paramString4) {}
+  
+  public void a(List<avpu> paramList, int paramInt) {}
+  
+  public void b(String paramString1, Integer paramInteger, String paramString2) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactState = paramRspBody.uint32_play_state.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOAnimationControlManager", 2, "checkInteract interactId: " + this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactId + ", interactState: " + this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactState);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.alreadyPlayMicroseconds = paramRspBody.uint64_already_pay_microseconds.get();
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.playTotalMicroseconds = paramRspBody.uint64_play_total_microseconds.get();
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactState == 2) && (paramRspBody.msg_finish_info.has()))
-      {
-        paramRspBody = (oidb_0x962.FinishInfo)paramRspBody.msg_finish_info.get();
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactText = paramRspBody.bytes_text.get().toStringUtf8();
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.participateNum = paramRspBody.uint32_participate_num.get();
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactFirstUin = paramRspBody.uint64_first_uin.get();
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interactFirstNickname = paramRspBody.bytes_first_nick_name.get().toStringUtf8();
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.interacEndtUrl = paramRspBody.bytes_url.get().toStringUtf8();
-        this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips);
-        if (this.jdField_a_of_type_Boolean)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, false);
-          if ((this.jdField_a_of_type_JavaUtilList.isEmpty()) && (this.b != null)) {
-            Collections.sort(this.b, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.jdField_a_of_type_JavaUtilComparator);
-          }
-        }
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.jdField_a_of_type_Int = 1;
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a(this.jdField_a_of_type_Boolean);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.jdField_a_of_type_ComTencentCommonAppAppInterface.getEntityManagerFactory().createEntityManager().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips);
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.h();
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.jdField_a_of_type_Int = 2;
-        if ((this.jdField_a_of_type_Boolean) && (this.b != null)) {
-          this.b.clear();
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null)
-        {
-          this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips);
-          this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, this.jdField_a_of_type_JavaLangString, true, new ajuq(this));
-        }
-      }
-    }
     if (QLog.isColorLevel()) {
-      QLog.e("AIOAnimationControlManager", 2, "checkInteract errorCode: " + paramInt);
+      QLog.d("Q.uniteSearch.UnifySearchObserver", 2, "UnifySearchObserver onUpdate type" + paramInt + " isSuccess=" + paramBoolean + " data=" + paramObject);
     }
-    this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips);
-    if (!this.jdField_a_of_type_Boolean)
+    Object localObject1;
+    Object localObject2;
+    switch (paramInt)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips, false);
-      if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
-        Collections.sort(this.b, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.jdField_a_of_type_JavaUtilComparator);
+    case 1001: 
+    case 1003: 
+    default: 
+    case 1005: 
+    case 1006: 
+    case 1004: 
+    case 1000: 
+      Object localObject4;
+      do
+      {
+        boolean bool;
+        long[] arrayOfLong;
+        do
+        {
+          return;
+          if (paramBoolean)
+          {
+            paramObject = (Object[])paramObject;
+            a((String)paramObject[0], (UnifySearchAssociationWord.SuggestUrlItem)paramObject[1], ((Integer)paramObject[2]).intValue());
+            return;
+          }
+          paramObject = (Object[])paramObject;
+          b((String)paramObject[0], (Integer)paramObject[1], (String)paramObject[2]);
+          return;
+          if (paramBoolean)
+          {
+            paramObject = (Object[])paramObject;
+            a((String)paramObject[0], ((Integer)paramObject[1]).intValue(), (List)paramObject[2], (List)paramObject[3], (UnifySearchAssociationWord.SuggestUrlItem)paramObject[4]);
+            return;
+          }
+          paramObject = (Object[])paramObject;
+          a((String)paramObject[0], (Integer)paramObject[1], (String)paramObject[2]);
+          return;
+          if (paramBoolean)
+          {
+            paramObject = (Object[])paramObject;
+            a((String)paramObject[0], ((Boolean)paramObject[1]).booleanValue(), (String)paramObject[2], (byte[])paramObject[3], ((Boolean)paramObject[4]).booleanValue(), (List)paramObject[5], (List)paramObject[6]);
+            return;
+          }
+          localObject3 = (Object[])paramObject;
+          paramObject = (String)localObject3[0];
+          paramBoolean = ((Boolean)localObject3[1]).booleanValue();
+          localObject1 = (String)localObject3[2];
+          localObject2 = (Integer)localObject3[3];
+          localObject3 = (String)localObject3[4];
+          a(paramObject, paramBoolean, (String)localObject1, ((Integer)localObject2).intValue(), (String)localObject3);
+          return;
+          if (!paramBoolean) {
+            break;
+          }
+          paramObject = (Object[])paramObject;
+          localObject1 = (String)paramObject[0];
+          paramBoolean = ((Boolean)paramObject[1]).booleanValue();
+          localObject2 = (String)paramObject[2];
+          localObject3 = (byte[])paramObject[3];
+          bool = ((Boolean)paramObject[4]).booleanValue();
+          localObject4 = (List)paramObject[5];
+          arrayOfLong = (long[])paramObject[6];
+          a((String)localObject1, paramBoolean, (String)localObject2, (byte[])localObject3, bool, (List)localObject4, arrayOfLong, (String)paramObject[7], (List)paramObject[8], ((Boolean)paramObject[9]).booleanValue(), (String)paramObject[10]);
+        } while (!QLog.isColorLevel());
+        QLog.i("Q.uniteSearch.UnifySearchObserver", 2, "handleTabSearchResult_NOTIFY_TYPE_TAB_SEARCH isEnd = " + bool + " mask;" + Arrays.toString(arrayOfLong) + " key=" + (String)localObject1 + " time=" + (String)localObject2);
+        return;
+        localObject4 = (Object[])paramObject;
+        paramObject = (String)localObject4[0];
+        paramBoolean = ((Boolean)localObject4[1]).booleanValue();
+        localObject1 = (String)localObject4[2];
+        localObject2 = (Integer)localObject4[3];
+        Object localObject3 = (String)localObject4[4];
+        localObject4 = (long[])localObject4[5];
+        a(paramObject, paramBoolean, (String)localObject1, ((Integer)localObject2).intValue(), (String)localObject3, (long[])localObject4);
+      } while (!QLog.isColorLevel());
+      QLog.w("Q.uniteSearch.UnifySearchObserver", 2, "handleTabSearchResult_NOTIFY_TYPE_TAB_SEARCH error!  mask;" + Arrays.toString((long[])localObject4) + " key=" + paramObject + " time=" + (String)localObject1);
+      return;
+    case 1002: 
+      if (paramObject != null)
+      {
+        if (paramBoolean)
+        {
+          localObject1 = (Object[])paramObject;
+          paramObject = (Integer)localObject1[0];
+          localObject1 = (List)localObject1[1];
+          a(paramObject.intValue(), (List)localObject1);
+          return;
+        }
+        localObject1 = (Object[])paramObject;
+        paramObject = (Integer)localObject1[0];
+        localObject1 = (String)localObject1[1];
+        a(paramObject.intValue(), (String)localObject1);
+        return;
+      }
+      a(-1, "");
+      return;
+    }
+    if (paramObject != null)
+    {
+      if (paramBoolean)
+      {
+        localObject1 = (Object[])paramObject;
+        paramObject = (List)localObject1[0];
+        localObject1 = (Integer)localObject1[1];
+        if (localObject1 != null) {}
+        for (paramInt = ((Integer)localObject1).intValue();; paramInt = -1)
+        {
+          a(paramObject, paramInt);
+          return;
+        }
+      }
+      localObject2 = (Object[])paramObject;
+      paramObject = (Integer)localObject2[0];
+      localObject1 = (String)localObject2[1];
+      localObject2 = (Integer)localObject2[2];
+      if (paramObject != null)
+      {
+        paramInt = paramObject.intValue();
+        if (localObject2 == null) {
+          break label938;
+        }
+      }
+      label938:
+      for (int i = ((Integer)localObject2).intValue();; i = -1)
+      {
+        a(paramInt, (String)localObject1, i);
+        return;
+        paramInt = -1;
+        break;
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.jdField_a_of_type_Int = 1;
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a(this.jdField_a_of_type_Boolean);
+    a(-1, null, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajup
  * JD-Core Version:    0.7.0.1
  */

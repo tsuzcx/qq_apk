@@ -3,144 +3,158 @@ package com.tencent.component.media.image;
 import com.tencent.component.media.ImageManagerEnv;
 import com.tencent.component.media.utils.LruCache;
 import java.util.concurrent.ConcurrentHashMap;
-import pma;
 
 public class ImageTaskTracer
 {
+  private static int MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_DecodeFailed;
+  private static int MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_DecodeThreadDecoding;
+  private static int MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_DecodeThreadPending;
+  private static int MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_Download;
+  private static int MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_DownloadFailed;
+  private static int MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_ImageTaskLifeCycle;
+  private static int MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_ListScrollWaitDecode;
+  private static int MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_LruCacheEvicted;
+  private static int MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_MsgGetNull;
+  private static int MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_NonPreDecodeRequest;
+  private static int MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_NonPreDecodeRequest_ExceedMemorySize;
+  private static int MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_NonPreDecodeRequest_ListView_Sroll;
+  private static int MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_NonPreDecodeRequest_NO_CODE;
+  private static int MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_NonPreDecodeRequest_OptionNotMatch;
+  private static int MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_Other;
+  private static int MM_REPORT_GET_IMAGE_SUCCESS_CODE = 0;
   public static boolean OPEN_GET_IMAGE_SUCCESS_RECORDER;
-  private static int jdField_a_of_type_Int = 0;
-  private static LruCache jdField_a_of_type_ComTencentComponentMediaUtilsLruCache;
-  private static Object jdField_a_of_type_JavaLangObject;
-  private static ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private static int jdField_b_of_type_Int = 1;
-  private static LruCache jdField_b_of_type_ComTencentComponentMediaUtilsLruCache = new LruCache(150);
-  private static ConcurrentHashMap jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private static int jdField_c_of_type_Int = 2;
-  private static LruCache jdField_c_of_type_ComTencentComponentMediaUtilsLruCache = new LruCache(150);
-  private static ConcurrentHashMap jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private static int jdField_d_of_type_Int = 3;
-  private static ConcurrentHashMap jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private static int jdField_e_of_type_Int = 4;
-  private static ConcurrentHashMap jdField_e_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private static int jdField_f_of_type_Int = 5;
-  private static ConcurrentHashMap jdField_f_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private static int jdField_g_of_type_Int = 6;
-  private static ConcurrentHashMap jdField_g_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private static int jdField_h_of_type_Int = 7;
-  private static ConcurrentHashMap jdField_h_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private static int jdField_i_of_type_Int = 8;
-  private static ConcurrentHashMap jdField_i_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private static int j = 9;
-  private static int k = 10;
-  private static int l = 11;
-  private static int m = 12;
-  private static int n = 13;
-  private static int o = 14;
-  private static int p = 15;
+  private static Object PLACEHOLDER;
+  private static LruCache<Integer, Object> mImageDecodeFailedRecorder = new LruCache(150);
+  private static ConcurrentHashMap<Integer, Object> mImageDecodeThreadDecodingRecorder;
+  private static ConcurrentHashMap<Integer, Object> mImageDecodeThreadPendingRecorder;
+  private static LruCache<String, Object> mImageDownloadFailedRecorder = new LruCache(150);
+  private static ConcurrentHashMap<String, Object> mImageDownloadRecorder;
+  private static LruCache<Integer, Object> mImageLruCacheEvictedRecorder;
+  private static ConcurrentHashMap<Integer, Object> mImageMsgGetNullRecorder;
+  private static ConcurrentHashMap<Integer, Object> mImagePreDecodeRequestRecorder;
+  private static ConcurrentHashMap<String, Integer> mImagePreDecodeRequest_DecodeOptions = new ConcurrentHashMap();
+  private static ConcurrentHashMap<Integer, Object> mImagePreDecodeRequest_ExceedMemorySize = new ConcurrentHashMap();
+  private static ConcurrentHashMap<Integer, Object> mImageTaskLifeCycleRecorder;
+  private static ConcurrentHashMap<String, Object> mhasImagePreDecodeRequestIntrinsic = new ConcurrentHashMap();
   
   static
   {
-    jdField_a_of_type_JavaLangObject = new Object();
+    MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_NonPreDecodeRequest = 1;
+    MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_Download = 2;
+    MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_DecodeThreadPending = 3;
+    MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_DecodeThreadDecoding = 4;
+    MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_LruCacheEvicted = 5;
+    MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_ListScrollWaitDecode = 6;
+    MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_MsgGetNull = 7;
+    MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_DecodeFailed = 8;
+    MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_ImageTaskLifeCycle = 9;
+    MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_DownloadFailed = 10;
+    MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_Other = 11;
+    MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_NonPreDecodeRequest_NO_CODE = 12;
+    MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_NonPreDecodeRequest_OptionNotMatch = 13;
+    MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_NonPreDecodeRequest_ExceedMemorySize = 14;
+    MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_NonPreDecodeRequest_ListView_Sroll = 15;
+    PLACEHOLDER = new Object();
     OPEN_GET_IMAGE_SUCCESS_RECORDER = ImageManagerEnv.g().isOpenGetImageSuccessRecorder();
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    jdField_a_of_type_ComTencentComponentMediaUtilsLruCache = new LruCache(250);
-    jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    jdField_e_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    jdField_f_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  }
-  
-  private static int a(String paramString, ImageLoader.Options paramOptions)
-  {
-    ImageKey localImageKey = ImageKey.obtain();
-    localImageKey.setUrl(paramString);
-    localImageKey.options = paramOptions;
-    return localImageKey.hashCodeEx();
+    mImagePreDecodeRequestRecorder = new ConcurrentHashMap();
+    mImageDecodeThreadPendingRecorder = new ConcurrentHashMap();
+    mImageDecodeThreadDecodingRecorder = new ConcurrentHashMap();
+    mImageLruCacheEvictedRecorder = new LruCache(250);
+    mImageDownloadRecorder = new ConcurrentHashMap();
+    mImageMsgGetNullRecorder = new ConcurrentHashMap();
+    mImageTaskLifeCycleRecorder = new ConcurrentHashMap();
   }
   
   public static void addImageDecodeFailedRecord(int paramInt)
   {
-    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (jdField_b_of_type_ComTencentComponentMediaUtilsLruCache != null)) {
-      jdField_b_of_type_ComTencentComponentMediaUtilsLruCache.put(Integer.valueOf(paramInt), jdField_a_of_type_JavaLangObject);
+    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (mImageDecodeFailedRecorder != null)) {
+      mImageDecodeFailedRecorder.put(Integer.valueOf(paramInt), PLACEHOLDER);
     }
   }
   
   public static void addImageDecodeThreadDecodingRecord(int paramInt)
   {
-    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap != null)) {
-      jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), jdField_a_of_type_JavaLangObject);
+    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (mImageDecodeThreadDecodingRecorder != null)) {
+      mImageDecodeThreadDecodingRecorder.put(Integer.valueOf(paramInt), PLACEHOLDER);
     }
   }
   
   public static void addImageDecodeThreadPendingRecord(int paramInt)
   {
-    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap != null)) {
-      jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), jdField_a_of_type_JavaLangObject);
+    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (mImageDecodeThreadPendingRecorder != null)) {
+      mImageDecodeThreadPendingRecorder.put(Integer.valueOf(paramInt), PLACEHOLDER);
     }
   }
   
   public static void addImageDownloadFailedRecord(String paramString)
   {
-    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (jdField_c_of_type_ComTencentComponentMediaUtilsLruCache != null)) {
-      jdField_c_of_type_ComTencentComponentMediaUtilsLruCache.put(paramString, jdField_a_of_type_JavaLangObject);
+    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (mImageDownloadFailedRecorder != null)) {
+      mImageDownloadFailedRecorder.put(paramString, PLACEHOLDER);
     }
   }
   
   public static void addImageDownloadRecord(String paramString)
   {
-    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap != null)) {
-      jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, jdField_a_of_type_JavaLangObject);
+    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (mImageDownloadRecorder != null)) {
+      mImageDownloadRecorder.put(paramString, PLACEHOLDER);
     }
   }
   
   public static void addImageLruCacheEvictedRecord(int paramInt)
   {
-    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (jdField_a_of_type_ComTencentComponentMediaUtilsLruCache != null)) {
-      jdField_a_of_type_ComTencentComponentMediaUtilsLruCache.put(Integer.valueOf(paramInt), jdField_a_of_type_JavaLangObject);
+    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (mImageLruCacheEvictedRecorder != null)) {
+      mImageLruCacheEvictedRecorder.put(Integer.valueOf(paramInt), PLACEHOLDER);
     }
   }
   
   public static void addImageMsgGetNullRecord(int paramInt)
   {
-    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (jdField_e_of_type_JavaUtilConcurrentConcurrentHashMap != null)) {
-      jdField_e_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), jdField_a_of_type_JavaLangObject);
+    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (mImageMsgGetNullRecorder != null)) {
+      mImageMsgGetNullRecorder.put(Integer.valueOf(paramInt), PLACEHOLDER);
     }
   }
   
   public static void addImagePreDecodeOptionsRecord(String paramString, ImageLoader.Options paramOptions)
   {
-    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (jdField_g_of_type_JavaUtilConcurrentConcurrentHashMap != null)) {
-      jdField_g_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Integer.valueOf(a(paramString, paramOptions)));
+    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (mImagePreDecodeRequest_DecodeOptions != null)) {
+      mImagePreDecodeRequest_DecodeOptions.put(paramString, Integer.valueOf(getHashCodeEx(paramString, paramOptions)));
     }
   }
   
   public static void addImagePreDecodeRequestRecord(String paramString, ImageLoader.Options paramOptions)
   {
-    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)) {
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(a(paramString, paramOptions)), jdField_a_of_type_JavaLangObject);
+    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (mImagePreDecodeRequestRecorder != null)) {
+      mImagePreDecodeRequestRecorder.put(Integer.valueOf(getHashCodeEx(paramString, paramOptions)), PLACEHOLDER);
     }
   }
   
   public static void addImagePreExceedMemorySizeRecord(String paramString, ImageLoader.Options paramOptions)
   {
-    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (jdField_h_of_type_JavaUtilConcurrentConcurrentHashMap != null)) {
-      jdField_h_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(a(paramString, paramOptions)), jdField_a_of_type_JavaLangObject);
+    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (mImagePreDecodeRequest_ExceedMemorySize != null)) {
+      mImagePreDecodeRequest_ExceedMemorySize.put(Integer.valueOf(getHashCodeEx(paramString, paramOptions)), PLACEHOLDER);
     }
   }
   
   public static void addImageTaskLifeCycleRecord(int paramInt)
   {
-    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (jdField_f_of_type_JavaUtilConcurrentConcurrentHashMap != null)) {
-      jdField_f_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), jdField_a_of_type_JavaLangObject);
+    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (mImageTaskLifeCycleRecorder != null)) {
+      mImageTaskLifeCycleRecorder.put(Integer.valueOf(paramInt), PLACEHOLDER);
     }
   }
   
   public static void addhasImagePreDecodeRequestIntrinsicRecord(String paramString, ImageLoader.Options paramOptions)
   {
-    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (jdField_i_of_type_JavaUtilConcurrentConcurrentHashMap != null)) {
-      jdField_i_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, jdField_a_of_type_JavaLangObject);
+    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (mhasImagePreDecodeRequestIntrinsic != null)) {
+      mhasImagePreDecodeRequestIntrinsic.put(paramString, PLACEHOLDER);
     }
+  }
+  
+  private static int getHashCodeEx(String paramString, ImageLoader.Options paramOptions)
+  {
+    ImageKey localImageKey = ImageKey.obtain();
+    localImageKey.setUrl(paramString);
+    localImageKey.options = paramOptions;
+    return localImageKey.hashCodeEx();
   }
   
   public static boolean hasImageDecodeFailedRecord(int paramInt)
@@ -150,10 +164,10 @@ public class ImageTaskTracer
     if (OPEN_GET_IMAGE_SUCCESS_RECORDER)
     {
       bool1 = bool2;
-      if (jdField_b_of_type_ComTencentComponentMediaUtilsLruCache != null)
+      if (mImageDecodeFailedRecorder != null)
       {
         bool1 = bool2;
-        if (jdField_b_of_type_ComTencentComponentMediaUtilsLruCache.get(Integer.valueOf(paramInt)) != null) {
+        if (mImageDecodeFailedRecorder.get(Integer.valueOf(paramInt)) != null) {
           bool1 = true;
         }
       }
@@ -163,16 +177,16 @@ public class ImageTaskTracer
   
   public static boolean hasImageDecodeThreadDecodingRecord(int paramInt)
   {
-    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap != null)) {
-      return jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt));
+    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (mImageDecodeThreadDecodingRecorder != null)) {
+      return mImageDecodeThreadDecodingRecorder.containsKey(Integer.valueOf(paramInt));
     }
     return false;
   }
   
   public static boolean hasImageDecodeThreadPendingRecord(int paramInt)
   {
-    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap != null)) {
-      return jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt));
+    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (mImageDecodeThreadPendingRecorder != null)) {
+      return mImageDecodeThreadPendingRecorder.containsKey(Integer.valueOf(paramInt));
     }
     return false;
   }
@@ -184,10 +198,10 @@ public class ImageTaskTracer
     if (OPEN_GET_IMAGE_SUCCESS_RECORDER)
     {
       bool1 = bool2;
-      if (jdField_c_of_type_ComTencentComponentMediaUtilsLruCache != null)
+      if (mImageDownloadFailedRecorder != null)
       {
         bool1 = bool2;
-        if (jdField_c_of_type_ComTencentComponentMediaUtilsLruCache.get(paramString) != null) {
+        if (mImageDownloadFailedRecorder.get(paramString) != null) {
           bool1 = true;
         }
       }
@@ -197,8 +211,8 @@ public class ImageTaskTracer
   
   public static boolean hasImageDownloadRecord(String paramString)
   {
-    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap != null)) {
-      return jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
+    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (mImageDownloadRecorder != null)) {
+      return mImageDownloadRecorder.containsKey(paramString);
     }
     return false;
   }
@@ -210,10 +224,10 @@ public class ImageTaskTracer
     if (OPEN_GET_IMAGE_SUCCESS_RECORDER)
     {
       bool1 = bool2;
-      if (jdField_a_of_type_ComTencentComponentMediaUtilsLruCache != null)
+      if (mImageLruCacheEvictedRecorder != null)
       {
         bool1 = bool2;
-        if (jdField_a_of_type_ComTencentComponentMediaUtilsLruCache.get(Integer.valueOf(paramInt)) != null) {
+        if (mImageLruCacheEvictedRecorder.get(Integer.valueOf(paramInt)) != null) {
           bool1 = true;
         }
       }
@@ -223,84 +237,84 @@ public class ImageTaskTracer
   
   public static boolean hasImageMsgGetNullRecord(int paramInt)
   {
-    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (jdField_e_of_type_JavaUtilConcurrentConcurrentHashMap != null)) {
-      return jdField_e_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt));
+    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (mImageMsgGetNullRecorder != null)) {
+      return mImageMsgGetNullRecorder.containsKey(Integer.valueOf(paramInt));
     }
     return false;
   }
   
   public static boolean hasImagePreDecodeOptionsRecord(String paramString)
   {
-    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (jdField_g_of_type_JavaUtilConcurrentConcurrentHashMap != null)) {
-      return jdField_g_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
+    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (mImagePreDecodeRequest_DecodeOptions != null)) {
+      return mImagePreDecodeRequest_DecodeOptions.containsKey(paramString);
     }
     return false;
   }
   
   public static boolean hasImagePreDecodeRequestIntrinsicRecord(String paramString)
   {
-    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (jdField_i_of_type_JavaUtilConcurrentConcurrentHashMap != null)) {
-      return jdField_i_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
+    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (mhasImagePreDecodeRequestIntrinsic != null)) {
+      return mhasImagePreDecodeRequestIntrinsic.containsKey(paramString);
     }
     return false;
   }
   
   public static boolean hasImagePreDecodeRequestRecord(int paramInt)
   {
-    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)) {
-      return jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt));
+    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (mImagePreDecodeRequestRecorder != null)) {
+      return mImagePreDecodeRequestRecorder.containsKey(Integer.valueOf(paramInt));
     }
     return false;
   }
   
   public static boolean hasImagePreExceedMemorySizeRecord(int paramInt)
   {
-    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (jdField_h_of_type_JavaUtilConcurrentConcurrentHashMap != null)) {
-      return jdField_h_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt));
+    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (mImagePreDecodeRequest_ExceedMemorySize != null)) {
+      return mImagePreDecodeRequest_ExceedMemorySize.containsKey(Integer.valueOf(paramInt));
     }
     return false;
   }
   
   public static boolean hasImageTaskLifeCycleRecord(int paramInt)
   {
-    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (jdField_f_of_type_JavaUtilConcurrentConcurrentHashMap != null)) {
-      return jdField_f_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt));
+    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (mImageTaskLifeCycleRecorder != null)) {
+      return mImageTaskLifeCycleRecorder.containsKey(Integer.valueOf(paramInt));
     }
     return false;
   }
   
   public static void removeImageDecodeThreadDecodingRecord(int paramInt)
   {
-    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap != null)) {
-      jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramInt));
+    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (mImageDecodeThreadDecodingRecorder != null)) {
+      mImageDecodeThreadDecodingRecorder.remove(Integer.valueOf(paramInt));
     }
   }
   
   public static void removeImageDecodeThreadPendingRecord(int paramInt)
   {
-    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap != null)) {
-      jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramInt));
+    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (mImageDecodeThreadPendingRecorder != null)) {
+      mImageDecodeThreadPendingRecorder.remove(Integer.valueOf(paramInt));
     }
   }
   
   public static void removeImageDownloadRecord(String paramString)
   {
-    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap != null)) {
-      jdField_d_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
+    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (mImageDownloadRecorder != null)) {
+      mImageDownloadRecorder.remove(paramString);
     }
   }
   
   public static void removeImageMsgGetNullRecord(int paramInt)
   {
-    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (jdField_e_of_type_JavaUtilConcurrentConcurrentHashMap != null)) {
-      jdField_e_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramInt));
+    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (mImageMsgGetNullRecorder != null)) {
+      mImageMsgGetNullRecorder.remove(Integer.valueOf(paramInt));
     }
   }
   
   public static void removeImageTaskLifeCycleRecord(int paramInt)
   {
-    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (jdField_f_of_type_JavaUtilConcurrentConcurrentHashMap != null)) {
-      jdField_f_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramInt));
+    if ((OPEN_GET_IMAGE_SUCCESS_RECORDER) && (mImageTaskLifeCycleRecorder != null)) {
+      mImageTaskLifeCycleRecorder.remove(Integer.valueOf(paramInt));
     }
   }
   
@@ -308,79 +322,77 @@ public class ImageTaskTracer
   {
     if (OPEN_GET_IMAGE_SUCCESS_RECORDER)
     {
-      if (paramBoolean) {
-        ImageManagerEnv.g().reportGetImageCacheToMM(jdField_a_of_type_Int);
+      if (!paramBoolean) {
+        break label20;
       }
+      ImageManagerEnv.g().reportGetImageCacheToMM(MM_REPORT_GET_IMAGE_SUCCESS_CODE);
     }
-    else {
-      return;
-    }
-    if (!hasImagePreDecodeRequestRecord(paramImageKey.hashCodeEx()))
+    label20:
+    do
     {
-      if (!hasImagePreDecodeRequestIntrinsicRecord(paramImageKey.url))
-      {
-        ImageManagerEnv.g().reportGetImageCacheToMM(m);
-        return;
+      return;
+      if (hasImagePreDecodeRequestRecord(paramImageKey.hashCodeEx())) {
+        break;
       }
-      if (hasImagePreDecodeOptionsRecord(paramImageKey.url))
-      {
-        ImageManagerEnv.g().reportGetImageCacheToMM(n);
-        return;
-      }
-      if (hasImagePreExceedMemorySizeRecord(paramImageKey.hashCodeEx()))
-      {
-        ImageManagerEnv.g().reportGetImageCacheToMM(o);
-        return;
-      }
-      ImageManagerEnv.g().reportGetImageCacheToMM(p);
+    } while (!hasImagePreDecodeRequestIntrinsicRecord(paramImageKey.url));
+    if (hasImagePreDecodeOptionsRecord(paramImageKey.url))
+    {
+      ImageManagerEnv.g().reportGetImageCacheToMM(MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_NonPreDecodeRequest_OptionNotMatch);
       return;
     }
+    if (hasImagePreExceedMemorySizeRecord(paramImageKey.hashCodeEx()))
+    {
+      ImageManagerEnv.g().reportGetImageCacheToMM(MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_NonPreDecodeRequest_ExceedMemorySize);
+      return;
+    }
+    ImageManagerEnv.g().reportGetImageCacheToMM(MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_NonPreDecodeRequest_ListView_Sroll);
+    return;
     if (hasImageDownloadRecord(paramImageKey.urlKey))
     {
-      ImageManagerEnv.g().reportGetImageCacheToMM(jdField_c_of_type_Int);
+      ImageManagerEnv.g().reportGetImageCacheToMM(MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_Download);
       return;
     }
     if (hasImageDecodeThreadPendingRecord(paramImageKey.hashCodeEx()))
     {
-      ImageManagerEnv.g().reportGetImageCacheToMM(jdField_d_of_type_Int);
+      ImageManagerEnv.g().reportGetImageCacheToMM(MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_DecodeThreadPending);
       return;
     }
     if (hasImageDecodeThreadDecodingRecord(paramImageKey.hashCodeEx()))
     {
-      ImageManagerEnv.g().reportGetImageCacheToMM(jdField_e_of_type_Int);
+      ImageManagerEnv.g().reportGetImageCacheToMM(MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_DecodeThreadDecoding);
       return;
     }
     if (hasImageLruCacheEvictedRecord(paramImageKey.hashCodeEx()))
     {
-      ImageManagerEnv.g().reportGetImageCacheToMM(jdField_f_of_type_Int);
+      ImageManagerEnv.g().reportGetImageCacheToMM(MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_LruCacheEvicted);
       return;
     }
-    if (pma.a().a(paramImageKey.hashCodeEx()))
+    if (ImageTaskManager.getInstance().hasWaitToDecodeImageTask(paramImageKey.hashCodeEx()))
     {
-      ImageManagerEnv.g().reportGetImageCacheToMM(jdField_g_of_type_Int);
+      ImageManagerEnv.g().reportGetImageCacheToMM(MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_ListScrollWaitDecode);
       return;
     }
     if (hasImageMsgGetNullRecord(paramImageKey.hashCodeEx()))
     {
-      ImageManagerEnv.g().reportGetImageCacheToMM(jdField_h_of_type_Int);
+      ImageManagerEnv.g().reportGetImageCacheToMM(MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_MsgGetNull);
       return;
     }
     if (hasImageDecodeFailedRecord(paramImageKey.hashCodeEx()))
     {
-      ImageManagerEnv.g().reportGetImageCacheToMM(jdField_i_of_type_Int);
+      ImageManagerEnv.g().reportGetImageCacheToMM(MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_DecodeFailed);
       return;
     }
     if (hasImageTaskLifeCycleRecord(paramImageKey.hashCodeEx()))
     {
-      ImageManagerEnv.g().reportGetImageCacheToMM(j);
+      ImageManagerEnv.g().reportGetImageCacheToMM(MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_ImageTaskLifeCycle);
       return;
     }
     if (hasImageDownloadFailedRecord(paramImageKey.urlKey))
     {
-      ImageManagerEnv.g().reportGetImageCacheToMM(k);
+      ImageManagerEnv.g().reportGetImageCacheToMM(MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_DownloadFailed);
       return;
     }
-    ImageManagerEnv.g().reportGetImageCacheToMM(l);
+    ImageManagerEnv.g().reportGetImageCacheToMM(MM_REPORT_GET_IMAGE_FAILED_ERROR_CODE_Other);
   }
 }
 

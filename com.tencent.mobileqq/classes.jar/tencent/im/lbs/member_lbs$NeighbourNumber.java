@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class member_lbs$NeighbourNumber
-  extends MessageMicro
+  extends MessageMicro<NeighbourNumber>
 {
   public static final int UINT64_GROUP_CODE_FIELD_NUMBER = 1;
   public static final int UINT64_LOCATED_NUMBER_FIELD_NUMBER = 3;
@@ -18,7 +18,7 @@ public final class member_lbs$NeighbourNumber
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.lbs.member_lbs.NeighbourNumber
  * JD-Core Version:    0.7.0.1
  */

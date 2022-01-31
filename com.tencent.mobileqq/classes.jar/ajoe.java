@@ -1,134 +1,84 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.util.TroopReportor;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.util.Xml;
+import java.io.ByteArrayInputStream;
+import org.xmlpull.v1.XmlPullParser;
 
 public class ajoe
-  extends TroopObserver
 {
-  public ajoe(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public int d;
+  public int e;
   
-  protected void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
+  public ajoe()
   {
-    super.a(paramBoolean, paramString1, paramString2, paramInt, paramString3, paramString4);
-    if (QLog.isColorLevel()) {
-      QLog.d("PublishHomeWorkFragment", 2, "onGetHomeworkTroopIdentity: isSuccess:" + paramBoolean + ", identity:" + paramInt + ", course:" + paramString3);
-    }
-    if (!PublishHomeWorkFragment.a(this.a))
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public static ajoe a(String paramString)
+  {
+    Object localObject = null;
+    if (!TextUtils.isEmpty(paramString))
     {
-      if (!PublishHomeWorkFragment.b(this.a)) {
-        PublishHomeWorkFragment.a(this.a, paramString3);
-      }
-      switch (paramInt)
+      ajoe localajoe = new ajoe();
+      XmlPullParser localXmlPullParser = Xml.newPullParser();
+      localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
+      for (int i = 0;; i = localXmlPullParser.next())
       {
-      default: 
-        PublishHomeWorkFragment.a(this.a, "");
-        PublishHomeWorkFragment.a(this.a, false);
-        PublishHomeWorkFragment.b(this.a, paramString3);
-        PublishHomeWorkFragment.c(this.a, paramString4);
-        if (PublishHomeWorkFragment.a(this.a) == null)
+        localObject = localajoe;
+        if (i == 1) {
+          break;
+        }
+        if ((i == 2) && (localXmlPullParser.getName().equalsIgnoreCase("banner")))
         {
-          paramString2 = "";
-          label176:
-          paramString4 = PublishHomeWorkFragment.b(this.a);
-          if (!PublishHomeWorkFragment.c(this.a)) {
-            break label496;
-          }
-          if (PublishHomeWorkFragment.c(this.a) != null) {
-            break label485;
-          }
-          paramString1 = "";
-          label208:
-          TroopReportor.a("Grp_edu", "homework", "CreateHw_Show", 0, 0, new String[] { paramString2, paramString4, paramString1 });
-          if (!paramBoolean) {
-            break label523;
-          }
-          PublishHomeWorkFragment.d(this.a, paramString3);
-          if (PublishHomeWorkFragment.e(this.a) == null) {
-            PublishHomeWorkFragment.d(this.a, "");
-          }
-          if (!TextUtils.isEmpty(PublishHomeWorkFragment.e(this.a)))
+          int j = localXmlPullParser.getAttributeCount();
+          i = 0;
+          if (i < j)
           {
-            if (QLog.isColorLevel()) {
-              QLog.d("PublishHomeWorkFragment", 2, "检测到你是" + PublishHomeWorkFragment.e(this.a) + "老师，将按照需求定制入口");
+            paramString = localXmlPullParser.getAttributeName(i);
+            if ("text".equals(paramString)) {
+              localajoe.jdField_b_of_type_JavaLangString = localXmlPullParser.getAttributeValue(i);
             }
-            paramString1 = this.a.a(PublishHomeWorkFragment.e(this.a));
-            if (paramString1 != null)
+            for (;;)
             {
-              PublishHomeWorkFragment.a(this.a).clear();
-              PublishHomeWorkFragment.a(this.a).addAll(paramString1);
+              i += 1;
+              break;
+              if ("url".equals(paramString)) {
+                localajoe.jdField_a_of_type_JavaLangString = localXmlPullParser.getAttributeValue(i);
+              } else if ("dayNum".equals(paramString)) {
+                localajoe.jdField_a_of_type_Int = Integer.valueOf(localXmlPullParser.getAttributeValue(i)).intValue();
+              } else if ("dayIntervalNum".equals(paramString)) {
+                localajoe.jdField_b_of_type_Int = Integer.valueOf(localXmlPullParser.getAttributeValue(i)).intValue();
+              } else if ("totalNum".equals(paramString)) {
+                localajoe.c = Integer.valueOf(localXmlPullParser.getAttributeValue(i)).intValue();
+              } else if ("loginNum".equals(paramString)) {
+                localajoe.e = Integer.valueOf(localXmlPullParser.getAttributeValue(i)).intValue();
+              } else if ("banner".equals(paramString)) {
+                localajoe.jdField_a_of_type_Boolean = "1".equals(localXmlPullParser.getAttributeValue(i));
+              } else if ("setEntry".equals(paramString)) {
+                localajoe.jdField_b_of_type_Boolean = "1".equals(localXmlPullParser.getAttributeValue(i));
+              }
             }
           }
         }
-        break;
       }
     }
-    for (;;)
-    {
-      QLog.i("PublishHomeWorkFragment", 1, "init data success");
-      PublishHomeWorkFragment.b(this.a);
-      return;
-      PublishHomeWorkFragment.a(this.a, "classteacher");
-      PublishHomeWorkFragment.a(this.a, true);
-      break;
-      PublishHomeWorkFragment.a(this.a, "teacher");
-      PublishHomeWorkFragment.a(this.a, true);
-      break;
-      PublishHomeWorkFragment.a(this.a, "parent");
-      PublishHomeWorkFragment.a(this.a, false);
-      break;
-      PublishHomeWorkFragment.a(this.a, "student");
-      PublishHomeWorkFragment.a(this.a, false);
-      break;
-      paramString2 = PublishHomeWorkFragment.a(this.a);
-      break label176;
-      label485:
-      paramString1 = PublishHomeWorkFragment.c(this.a);
-      break label208;
-      label496:
-      if (PublishHomeWorkFragment.d(this.a) == null)
-      {
-        paramString1 = "";
-        break label208;
-      }
-      paramString1 = PublishHomeWorkFragment.d(this.a);
-      break label208;
-      label523:
-      QQToast.a(this.a.getActivity(), "获取教师身份失败", 0).a();
-    }
+    return localObject;
   }
   
-  public void b(boolean paramBoolean, long paramLong, int paramInt)
+  public String toString()
   {
-    super.b(paramBoolean, paramLong, paramInt);
-    this.a.a();
-    if (paramBoolean)
-    {
-      PublishHomeWorkFragment.a(this.a);
-      return;
-    }
-    if (paramInt == 10022)
-    {
-      PublishHomeWorkFragment.a(this.a, 1, null, null);
-      return;
-    }
-    if (paramInt == 1002)
-    {
-      PublishHomeWorkFragment.a(this.a, 2, null, null);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("PublishHomeWorkFragment", 2, "UPLOAD_ERROR_UNKNOWN_ERROR: server error " + paramInt);
-    }
-    PublishHomeWorkFragment.a(this.a, 3, null, null);
+    return "MobileUnityBannerData [url=" + this.jdField_a_of_type_JavaLangString + ", text=" + this.jdField_b_of_type_JavaLangString + ", dayNum=" + this.jdField_a_of_type_Int + ", dayIntervalNum=" + this.jdField_b_of_type_Int + ", totalNum=" + this.c + ", loginNum = " + this.e + ", version=" + this.d + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajoe
  * JD-Core Version:    0.7.0.1
  */

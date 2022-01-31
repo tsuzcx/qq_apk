@@ -1,55 +1,100 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.portal.PortalUtils;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.photoplus.PhotoPlusManager;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-public class amtc
-  extends DownloadListener
+public final class amtc
+  implements Parcelable.Creator<MessageForShortVideo>
 {
-  public amtc(PhotoPlusManager paramPhotoPlusManager, String paramString1, String paramString2, String paramString3) {}
-  
-  public void onCancel(DownloadTask paramDownloadTask)
+  public MessageForShortVideo a(Parcel paramParcel)
   {
-    PhotoPlusManager.a(this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager).remove(this.jdField_a_of_type_JavaLangString);
+    boolean bool2 = true;
+    MessageForShortVideo localMessageForShortVideo = new MessageForShortVideo();
+    localMessageForShortVideo.uniseq = paramParcel.readLong();
+    localMessageForShortVideo.istroop = paramParcel.readInt();
+    localMessageForShortVideo.selfuin = paramParcel.readString();
+    localMessageForShortVideo.frienduin = paramParcel.readString();
+    localMessageForShortVideo.senderuin = paramParcel.readString();
+    localMessageForShortVideo.uuid = paramParcel.readString();
+    localMessageForShortVideo.md5 = paramParcel.readString();
+    localMessageForShortVideo.videoFileName = paramParcel.readString();
+    localMessageForShortVideo.videoFileSize = paramParcel.readInt();
+    localMessageForShortVideo.videoFileFormat = paramParcel.readInt();
+    localMessageForShortVideo.videoFileTime = paramParcel.readInt();
+    localMessageForShortVideo.thumbWidth = paramParcel.readInt();
+    localMessageForShortVideo.thumbHeight = paramParcel.readInt();
+    localMessageForShortVideo.videoFileStatus = paramParcel.readInt();
+    localMessageForShortVideo.videoFileProgress = paramParcel.readInt();
+    localMessageForShortVideo.fileType = paramParcel.readInt();
+    localMessageForShortVideo.thumbMD5 = paramParcel.readString();
+    localMessageForShortVideo.fileSource = paramParcel.readString();
+    localMessageForShortVideo.lastModified = paramParcel.readLong();
+    localMessageForShortVideo.thumbFileSize = paramParcel.readInt();
+    localMessageForShortVideo.busiType = paramParcel.readInt();
+    localMessageForShortVideo.fromChatType = paramParcel.readInt();
+    localMessageForShortVideo.toChatType = paramParcel.readInt();
+    localMessageForShortVideo.uiOperatorFlag = paramParcel.readInt();
+    localMessageForShortVideo.mVideoFileSourceDir = paramParcel.readString();
+    if (paramParcel.readByte() != 0)
+    {
+      bool1 = true;
+      localMessageForShortVideo.supportProgressive = bool1;
+      localMessageForShortVideo.fileWidth = paramParcel.readInt();
+      localMessageForShortVideo.fileHeight = paramParcel.readInt();
+      localMessageForShortVideo.transferedSize = paramParcel.readInt();
+      localMessageForShortVideo.subBusiType = paramParcel.readInt();
+      localMessageForShortVideo.videoAttr = paramParcel.readInt();
+      localMessageForShortVideo.binarySet = paramParcel.readInt();
+      if (paramParcel.readByte() == 0) {
+        break label457;
+      }
+      bool1 = true;
+      label314:
+      localMessageForShortVideo.mediacodecEncode = bool1;
+      localMessageForShortVideo.hotVideoIconUrl = paramParcel.readString();
+      localMessageForShortVideo.hotVideoSubIconUrl = paramParcel.readString();
+      localMessageForShortVideo.hotVideoTitle = paramParcel.readString();
+      localMessageForShortVideo.hotVideoUrl = paramParcel.readString();
+      localMessageForShortVideo.specialVideoType = paramParcel.readInt();
+      localMessageForShortVideo.msgTailType = paramParcel.readInt();
+      localMessageForShortVideo.redBagType = paramParcel.readInt();
+      localMessageForShortVideo.shortVideoId = paramParcel.readString();
+      localMessageForShortVideo.redBagStat = paramParcel.readInt();
+      if (paramParcel.readByte() == 0) {
+        break label462;
+      }
+      bool1 = true;
+      label410:
+      localMessageForShortVideo.syncToStory = bool1;
+      localMessageForShortVideo.videoKandianType = paramParcel.readInt();
+      if (paramParcel.readByte() == 0) {
+        break label467;
+      }
+    }
+    label457:
+    label462:
+    label467:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localMessageForShortVideo.sendRawVideo = bool1;
+      localMessageForShortVideo.templateId = paramParcel.readString();
+      return localMessageForShortVideo;
+      bool1 = false;
+      break;
+      bool1 = false;
+      break label314;
+      bool1 = false;
+      break label410;
+    }
   }
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public MessageForShortVideo[] a(int paramInt)
   {
-    PhotoPlusManager.a(this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager).remove(this.jdField_a_of_type_JavaLangString);
-    if (paramDownloadTask.a() == 3)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoPlusManager", 2, "[onDone] download finished " + this.b);
-      }
-      if (TextUtils.isEmpty(this.c)) {
-        this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager.a(this.jdField_a_of_type_JavaLangString);
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      return;
-      paramDownloadTask = PortalUtils.a(this.jdField_a_of_type_JavaLangString);
-      if (this.c.equalsIgnoreCase(paramDownloadTask))
-      {
-        this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager.a(this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoPlusManager", 2, "[onDone] checkMd5 failed: " + this.jdField_a_of_type_JavaLangString);
-      }
-      FileUtils.d(this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    QLog.d("PhotoPlusManager", 2, "[onDone] downloadFile failed: " + paramDownloadTask.b + " code=" + paramDownloadTask.a);
+    return new MessageForShortVideo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amtc
  * JD-Core Version:    0.7.0.1
  */

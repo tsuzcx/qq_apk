@@ -1,80 +1,35 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.view.View;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.jumplightalk.CLJumpLightalkConfig;
-import com.tencent.mobileqq.jumplightalk.JumpLightalkUtil;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.qcall.QCallFacade;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeDetailActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class agyt
-  implements ActionSheet.OnButtonClickListener
+class agyt
+  implements View.OnClickListener
 {
-  public agyt(QCallDetailActivity paramQCallDetailActivity, Context paramContext, String paramString, ActionSheet paramActionSheet) {}
+  agyt(agxq paramagxq) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity) == null) || (paramInt >= QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity).length)) {
-      return;
-    }
-    switch (QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity)[paramInt])
+    agxq.a(this.a).app.getPreferences();
+    akgo.a().a();
+    if (akgo.a().a() == 4)
     {
-    default: 
-      return;
-    case 1: 
-      if (JumpLightalkUtil.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.getActivity()))
-      {
-        JumpLightalkUtil.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, "10001", "com.tencent.mobileqq", "", "0", "0");
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, "CliOper", "", "", "0X8005AF8", "0X8005AF8", 0, 1, "", "", "", "");
-      }
-      for (;;)
-      {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, "CliOper", "", "", "0X8005AF8", "0X8005AF8", 0, 0, "", "", "", "");
-        return;
-        JumpLightalkUtil.a(this.jdField_a_of_type_AndroidContentContext, QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity).f);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, "CliOper", "", "", "0X8005AF8", "0X8005AF8", 0, 2, "", "", "", "");
-      }
-    }
-    if (QCallDetailActivity.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity) == 0)
-    {
-      long l = MessageCache.a();
-      paramView = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-      this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.startActivity(paramView);
-      QCallFacade localQCallFacade = QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity);
-      if (QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity) == 56938)
-      {
-        paramView = this.jdField_a_of_type_JavaLangString;
-        localQCallFacade.a(paramView, QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity), QCallDetailActivity.c(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity), l, this.jdField_a_of_type_JavaLangString);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, "CliOper", "", "", "0X8005AF9", "0X8005AF9", 0, 0, "", "", "", "");
-      }
+      akgo.a().a(agxq.a(this.a));
+      awqx.b(agxq.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, akgn.b(), akgo.b(), akgo.a(), "1");
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.a.a(-1, null);
       return;
-      paramView = QCallDetailActivity.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity);
-      break;
-      if ((QCallDetailActivity.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity) == 1) || (QCallDetailActivity.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity) == 2))
-      {
-        ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.a, 2);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, "CliOper", "", "", "0X8006406", "0X8006406", 4, 0, "", "", "", "");
-      }
-      else if (QCallDetailActivity.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity) == 5)
-      {
-        PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, this.jdField_a_of_type_AndroidContentContext, 1, 5);
-      }
+      UpgradeDetailActivity.a(agxq.a(this.a), akgo.a().a(), true, true, true);
+      awqx.b(agxq.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, akgn.b(), akgo.b(), akgo.a(), "1");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agyt
  * JD-Core Version:    0.7.0.1
  */

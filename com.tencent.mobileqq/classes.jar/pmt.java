@@ -1,33 +1,17 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.component.media.image.drawable.ScaleDrawable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTopicItemSingle;
 
 public class pmt
-  extends pmn
+  implements View.OnClickListener
 {
-  public pmt(Drawable paramDrawable, ScaleDrawable paramScaleDrawable)
-  {
-    super(paramDrawable, paramScaleDrawable);
-  }
+  public pmt(ComponentTopicItemSingle paramComponentTopicItemSingle) {}
   
-  public pmt(pmt parampmt, ScaleDrawable paramScaleDrawable, Resources paramResources)
-  {
-    super(parampmt, paramScaleDrawable, paramResources);
-  }
-  
-  public Drawable newDrawable()
-  {
-    return new ScaleDrawable(this, null, null);
-  }
-  
-  public Drawable newDrawable(Resources paramResources)
-  {
-    return new ScaleDrawable(this, paramResources, null);
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pmt
  * JD-Core Version:    0.7.0.1
  */

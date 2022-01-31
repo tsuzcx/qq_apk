@@ -1,58 +1,24 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.statistics.ReportController;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 
 public class mzc
-  implements TroopMemberApiClient.Callback
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public mzc(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin, String paramString, boolean paramBoolean) {}
+  public mzc(VideoCoverView paramVideoCoverView) {}
   
-  public void a(Bundle paramBundle)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramBundle != null)
-    {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.a != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.l();
-      }
-      String str = paramBundle.getString("pic_server_id");
-      this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.a(paramBundle);
-      if ("-1".equals(str)) {
-        paramBundle = new JSONObject();
-      }
-    }
-    else
-    {
-      try
-      {
-        paramBundle.put("retCode", -1);
-        paramBundle.put("msg", "fail");
-        this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
-        if (this.jdField_a_of_type_Boolean)
-        {
-          PublicAccountReportUtils.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D27", "0X8005D27", 0, -1, "1", "", "", "", false);
-          return;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
-        ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D30", "0X8005D30", 0, -1, "1", "", "", "");
-        return;
-      }
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.a(localJSONException, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
+    float f1 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.setRotation(90.0F * f1);
+    float f2 = VideoCoverView.c(this.a) * 1.0F / VideoCoverView.d(this.a);
+    this.a.setScaleX((f2 - 1.0F) * f1 + 1.0F);
+    this.a.setScaleY(f1 * 0.7774618F + 1.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     mzc
  * JD-Core Version:    0.7.0.1
  */

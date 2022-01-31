@@ -1,34 +1,23 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.search.adapter.BaseMvpFaceAdapter;
-import com.tencent.mobileqq.search.fragment.FunctionSearchFragment;
-import com.tencent.mobileqq.search.presenter.ActiveEntitySearchResultPresenter;
-import com.tencent.mobileqq.search.presenter.IPresenter;
-import com.tencent.mobileqq.search.view.IView;
-import com.tencent.mobileqq.search.view.SearchResultFromNetView;
-import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.widget.ListView;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahxs
-  extends BaseMvpFaceAdapter
+  implements aliw
 {
-  public ahxs(FunctionSearchFragment paramFunctionSearchFragment, ListView paramListView, FaceDecoder paramFaceDecoder)
-  {
-    super(paramListView, paramFaceDecoder);
-  }
+  public ahxs(SessionClearFragment paramSessionClearFragment) {}
   
-  protected IPresenter a(int paramInt)
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    return new ActiveEntitySearchResultPresenter(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, 268435456);
-  }
-  
-  protected IView a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new SearchResultFromNetView(paramViewGroup, 268435456);
+    if (QLog.isColorLevel()) {
+      QLog.i("SessionClearFragment", 4, "mHeaderLoaderForTroop onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
+    }
+    SessionClearFragment.a(this.a).a(paramString1, paramBitmap, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahxs
  * JD-Core Version:    0.7.0.1
  */

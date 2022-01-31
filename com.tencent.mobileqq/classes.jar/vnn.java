@@ -1,59 +1,51 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
-import com.tencent.mobileqq.data.MessageForText;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
-import com.tencent.mobileqq.utils.httputils.PkgTools;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class vnn
-  implements View.OnClickListener
+class vnn
+  extends BroadcastReceiver
 {
-  public vnn(TextItemBuilder paramTextItemBuilder) {}
+  vnn(vni paramvni) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Object localObject = AIOUtils.a(paramView);
-    if (!(localObject instanceof MessageForText)) {
-      if (QLog.isColorLevel()) {
-        QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: AIOUtils.getMessage(v) is not MessageForText");
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("android.intent.action.SCREEN_OFF")) {
+      if ((this.a.jdField_a_of_type_Vnp != null) && (!this.a.jdField_a_of_type_Vnp.a()))
+      {
+        this.a.b = true;
+        urk.d("Q.qqstory.ffmpeg.FFmpegCmd", "屏幕灭屏了，FFmpeg还在执行当中");
       }
     }
     do
     {
       do
       {
-        do
-        {
-          return;
-          localObject = (MessageForText)localObject;
-        } while (TextItemBuilder.a(this.a));
-        if (((MessageForText)localObject).msgtype == -1003)
-        {
-          AIOUtils.m = true;
-          localObject = PkgTools.a(((MessageForText)localObject).action);
-          localObject = JumpParser.a(this.a.a, paramView.getContext(), (String)localObject);
-          if (localObject != null) {
-            ((JumpAction)localObject).b();
-          }
-        }
-      } while (!(paramView instanceof ETTextView));
-      paramView = (ETTextView)paramView;
-      if (paramView.c())
-      {
-        paramView.a(true);
         return;
-      }
-    } while (!paramView.b());
-    paramView.b(true);
+      } while ((!paramContext.equals("android.intent.action.SCREEN_ON")) || (!this.a.b));
+      this.a.b = false;
+    } while ((this.a.jdField_a_of_type_Vno == null) || (this.a.jdField_a_of_type_Int == -9999) || (this.a.jdField_a_of_type_Vno.a == null));
+    if (this.a.jdField_a_of_type_Int == 1)
+    {
+      paramContext = ajjy.a(2131638696);
+      this.a.jdField_a_of_type_Vno.a.onSuccess(paramContext);
+      this.a.jdField_a_of_type_Vno.a.onFinish(true);
+      urk.d("Q.qqstory.ffmpeg.FFmpegCmd", paramContext);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Int = -9999;
+      return;
+      paramContext = ajjy.a(2131638695);
+      this.a.jdField_a_of_type_Vno.a.onFailure(paramContext);
+      this.a.jdField_a_of_type_Vno.a.onFinish(false);
+      urk.d("Q.qqstory.ffmpeg.FFmpegCmd", paramContext);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vnn
  * JD-Core Version:    0.7.0.1
  */

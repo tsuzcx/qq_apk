@@ -4,9 +4,11 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
 import com.tencent.component.network.downloader.DownloadRequest;
+import com.tencent.component.network.downloader.DownloadResult;
 import com.tencent.component.network.downloader.Downloader;
 import com.tencent.component.network.downloader.Downloader.DownloadListener;
 import com.tencent.component.network.downloader.Downloader.DownloadMode;
@@ -15,45 +17,72 @@ import com.tencent.component.network.module.base.QDLog;
 import com.tencent.component.network.utils.MultiHashMap;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
 public class DownloaderProxy
   extends Downloader
 {
-  private int jdField_a_of_type_Int;
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection;
-  private Messenger jdField_a_of_type_AndroidOsMessenger;
-  private final MultiHashMap jdField_a_of_type_ComTencentComponentNetworkUtilsMultiHashMap;
-  private final List jdField_a_of_type_JavaUtilList;
-  private Messenger b;
+  private static final String TAG = "RemoteDownloader";
+  private Messenger mClientMessenger;
+  private ServiceConnection mConnection = new DownloaderProxy.1(this);
+  private DownloaderProxy.DownloadHandler mHandler;
+  private final MultiHashMap<String, Const.SimpleRequest> mPendingRequests = new MultiHashMap();
+  private Messenger mServiceMessenger;
+  private int mType = 2;
+  private final List<Const.SimpleRequest> mWaitingRequest = new ArrayList();
   
-  private void a()
+  public DownloaderProxy(Context paramContext, String paramString, int paramInt)
   {
-    Intent localIntent;
-    if (this.jdField_a_of_type_AndroidOsMessenger == null)
-    {
-      localIntent = new Intent();
-      localIntent.setComponent(new ComponentName(this.mContext, "com.tencent.component.network.downloader.impl.ipc.DownloadSerice"));
+    super(paramContext, paramString);
+    this.mType = paramInt;
+    init();
+  }
+  
+  private boolean addPendingRequest(String arg1, String paramString2, Const.SimpleRequest paramSimpleRequest)
+  {
+    boolean bool = false;
+    if (paramSimpleRequest == null) {
+      return false;
     }
-    try
+    synchronized (this.mPendingRequests)
     {
-      this.mContext.bindService(localIntent, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QDLog.d("RemoteDownloader", "exception when bind download service!!!", localThrowable);
+      int i = this.mPendingRequests.sizeOf(paramString2);
+      this.mPendingRequests.add(paramString2, paramSimpleRequest);
+      if (i == 0) {
+        bool = true;
+      }
+      return bool;
     }
   }
   
-  private void a(String paramString, String[] paramArrayOfString, Downloader.DownloadMode paramDownloadMode)
+  private Collection<Const.SimpleRequest> collectPendingRequest(String paramString, boolean paramBoolean, Collection<Const.SimpleRequest> paramCollection)
   {
-    paramString = Const.a(paramString, paramArrayOfString, this.jdField_a_of_type_Int, paramDownloadMode, this.b);
+    MultiHashMap localMultiHashMap = this.mPendingRequests;
+    if (paramBoolean) {}
     try
     {
-      if (this.jdField_a_of_type_AndroidOsMessenger != null) {
-        this.jdField_a_of_type_AndroidOsMessenger.send(paramString);
+      for (paramString = (HashSet)this.mPendingRequests.remove(paramString); paramCollection != null; paramString = (HashSet)this.mPendingRequests.get(paramString))
+      {
+        paramCollection.clear();
+        if (paramString != null) {
+          paramCollection.addAll(paramString);
+        }
+        return paramCollection;
+      }
+      return paramString;
+    }
+    finally {}
+  }
+  
+  private void doRequestDownload(String paramString, String[] paramArrayOfString, Downloader.DownloadMode paramDownloadMode)
+  {
+    paramString = Const.obtainDownloadRequestMsg(paramString, paramArrayOfString, this.mType, paramDownloadMode, this.mClientMessenger);
+    try
+    {
+      if (this.mServiceMessenger != null) {
+        this.mServiceMessenger.send(paramString);
       }
       return;
     }
@@ -63,7 +92,14 @@ public class DownloaderProxy
     }
   }
   
-  private void a(Collection paramCollection)
+  private void init()
+  {
+    this.mHandler = new DownloaderProxy.DownloadHandler(this, Looper.getMainLooper());
+    this.mClientMessenger = new Messenger(this.mHandler);
+    startService();
+  }
+  
+  private void notifyDownloadCanceled(Collection<Const.SimpleRequest> paramCollection)
   {
     if (paramCollection == null) {}
     for (;;)
@@ -75,35 +111,98 @@ public class DownloaderProxy
         Const.SimpleRequest localSimpleRequest = (Const.SimpleRequest)paramCollection.next();
         if (localSimpleRequest != null)
         {
-          Downloader.DownloadListener localDownloadListener = localSimpleRequest.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener;
+          Downloader.DownloadListener localDownloadListener = localSimpleRequest.listener;
           if (localDownloadListener != null) {
-            localDownloadListener.onDownloadCanceled(localSimpleRequest.jdField_a_of_type_JavaLangString);
+            localDownloadListener.onDownloadCanceled(localSimpleRequest.url);
           }
         }
       }
     }
   }
   
-  private boolean a(String paramString, Const.SimpleRequest paramSimpleRequest, Collection paramCollection)
+  private void notifyDownloadFailed(Collection<Const.SimpleRequest> paramCollection, DownloadResult paramDownloadResult)
+  {
+    if (paramCollection == null) {}
+    for (;;)
+    {
+      return;
+      paramCollection = paramCollection.iterator();
+      while (paramCollection.hasNext())
+      {
+        Const.SimpleRequest localSimpleRequest = (Const.SimpleRequest)paramCollection.next();
+        if (localSimpleRequest != null)
+        {
+          Downloader.DownloadListener localDownloadListener = localSimpleRequest.listener;
+          if (localDownloadListener != null) {
+            localDownloadListener.onDownloadFailed(localSimpleRequest.url, paramDownloadResult);
+          }
+        }
+      }
+    }
+  }
+  
+  private void notifyDownloadProgress(Collection<Const.SimpleRequest> paramCollection, long paramLong, float paramFloat)
+  {
+    if (paramCollection == null) {}
+    for (;;)
+    {
+      return;
+      paramCollection = paramCollection.iterator();
+      while (paramCollection.hasNext())
+      {
+        Const.SimpleRequest localSimpleRequest = (Const.SimpleRequest)paramCollection.next();
+        if (localSimpleRequest != null)
+        {
+          Downloader.DownloadListener localDownloadListener = localSimpleRequest.listener;
+          if (localDownloadListener != null) {
+            localDownloadListener.onDownloadProgress(localSimpleRequest.url, paramLong, paramFloat);
+          }
+        }
+      }
+    }
+  }
+  
+  private void notifyDownloadSucceed(Collection<Const.SimpleRequest> paramCollection, DownloadResult paramDownloadResult)
+  {
+    if (paramCollection == null) {}
+    for (;;)
+    {
+      return;
+      paramCollection = paramCollection.iterator();
+      while (paramCollection.hasNext())
+      {
+        Const.SimpleRequest localSimpleRequest = (Const.SimpleRequest)paramCollection.next();
+        if (localSimpleRequest != null)
+        {
+          Downloader.DownloadListener localDownloadListener = localSimpleRequest.listener;
+          if (localDownloadListener != null) {
+            localDownloadListener.onDownloadSucceed(localSimpleRequest.url, paramDownloadResult);
+          }
+        }
+      }
+    }
+  }
+  
+  private boolean removePendingRequest(String paramString, Const.SimpleRequest paramSimpleRequest, Collection<Const.SimpleRequest> paramCollection)
   {
     boolean bool2 = false;
     if (paramSimpleRequest == null) {
       return false;
     }
-    synchronized (this.jdField_a_of_type_ComTencentComponentNetworkUtilsMultiHashMap)
+    synchronized (this.mPendingRequests)
     {
-      int i = this.jdField_a_of_type_ComTencentComponentNetworkUtilsMultiHashMap.sizeOf(paramString);
+      int i = this.mPendingRequests.sizeOf(paramString);
       if (paramCollection != null) {
         paramCollection.clear();
       }
-      if ((this.jdField_a_of_type_ComTencentComponentNetworkUtilsMultiHashMap.remove(paramString, paramSimpleRequest)) && (paramCollection != null)) {
+      if ((this.mPendingRequests.remove(paramString, paramSimpleRequest)) && (paramCollection != null)) {
         paramCollection.add(paramSimpleRequest);
       }
       boolean bool1 = bool2;
       if (i > 0)
       {
         bool1 = bool2;
-        if (this.jdField_a_of_type_ComTencentComponentNetworkUtilsMultiHashMap.sizeOf(paramString) == 0) {
+        if (this.mPendingRequests.sizeOf(paramString) == 0) {
           bool1 = true;
         }
       }
@@ -111,20 +210,22 @@ public class DownloaderProxy
     }
   }
   
-  private boolean a(String arg1, String paramString2, Const.SimpleRequest paramSimpleRequest)
+  private void startService()
   {
-    boolean bool = false;
-    if (paramSimpleRequest == null) {
-      return false;
-    }
-    synchronized (this.jdField_a_of_type_ComTencentComponentNetworkUtilsMultiHashMap)
+    Intent localIntent;
+    if (this.mServiceMessenger == null)
     {
-      int i = this.jdField_a_of_type_ComTencentComponentNetworkUtilsMultiHashMap.sizeOf(paramString2);
-      this.jdField_a_of_type_ComTencentComponentNetworkUtilsMultiHashMap.add(paramString2, paramSimpleRequest);
-      if (i == 0) {
-        bool = true;
-      }
-      return bool;
+      localIntent = new Intent();
+      localIntent.setComponent(new ComponentName(this.mContext, "com.tencent.component.network.downloader.impl.ipc.DownloadSerice"));
+    }
+    try
+    {
+      this.mContext.bindService(localIntent, this.mConnection, 1);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QDLog.e("RemoteDownloader", "exception when bind download service!!!", localThrowable);
     }
   }
   
@@ -134,18 +235,18 @@ public class DownloaderProxy
       return;
     }
     Const.SimpleRequest localSimpleRequest = new Const.SimpleRequest();
-    localSimpleRequest.jdField_a_of_type_JavaLangString = paramString;
-    localSimpleRequest.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener = paramDownloadListener;
+    localSimpleRequest.url = paramString;
+    localSimpleRequest.listener = paramDownloadListener;
     paramDownloadListener = new ArrayList();
-    if (a(paramString, localSimpleRequest, paramDownloadListener))
+    if (removePendingRequest(paramString, localSimpleRequest, paramDownloadListener))
     {
-      paramString = Const.a(paramString, this.jdField_a_of_type_Int, this.b);
-      if (this.jdField_a_of_type_AndroidOsMessenger == null) {}
+      paramString = Const.obtainDownloadCancelMsg(paramString, this.mType, this.mClientMessenger);
+      if (this.mServiceMessenger == null) {}
     }
     try
     {
-      this.jdField_a_of_type_AndroidOsMessenger.send(paramString);
-      a(paramDownloadListener);
+      this.mServiceMessenger.send(paramString);
+      notifyDownloadCanceled(paramDownloadListener);
       return;
     }
     catch (Throwable paramString)
@@ -163,18 +264,18 @@ public class DownloaderProxy
       return;
     }
     Const.SimpleRequest localSimpleRequest = new Const.SimpleRequest();
-    localSimpleRequest.jdField_a_of_type_JavaLangString = paramString;
-    localSimpleRequest.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener = paramDownloadListener;
+    localSimpleRequest.url = paramString;
+    localSimpleRequest.listener = paramDownloadListener;
     paramDownloadListener = new ArrayList();
-    if (a(paramString, localSimpleRequest, paramDownloadListener))
+    if (removePendingRequest(paramString, localSimpleRequest, paramDownloadListener))
     {
-      paramString = Const.a(paramString, this.jdField_a_of_type_Int, this.b);
-      if (this.jdField_a_of_type_AndroidOsMessenger == null) {}
+      paramString = Const.obtainDownloadCancelMsg(paramString, this.mType, this.mClientMessenger);
+      if (this.mServiceMessenger == null) {}
     }
     try
     {
-      this.jdField_a_of_type_AndroidOsMessenger.send(paramString);
-      a(paramDownloadListener);
+      this.mServiceMessenger.send(paramString);
+      notifyDownloadCanceled(paramDownloadListener);
       return;
     }
     catch (Throwable paramString)
@@ -190,11 +291,11 @@ public class DownloaderProxy
   
   public void cleanCache()
   {
-    Message localMessage = Const.b("", this.jdField_a_of_type_Int, this.b);
-    if (this.jdField_a_of_type_AndroidOsMessenger != null) {}
+    Message localMessage = Const.obtainCleanCacheMsg("", this.mType, this.mClientMessenger);
+    if (this.mServiceMessenger != null) {}
     try
     {
-      this.jdField_a_of_type_AndroidOsMessenger.send(localMessage);
+      this.mServiceMessenger.send(localMessage);
       return;
     }
     catch (Throwable localThrowable)
@@ -209,11 +310,11 @@ public class DownloaderProxy
     do
     {
       return;
-      paramString = Const.b(paramString, this.jdField_a_of_type_Int, this.b);
-    } while (this.jdField_a_of_type_AndroidOsMessenger == null);
+      paramString = Const.obtainCleanCacheMsg(paramString, this.mType, this.mClientMessenger);
+    } while (this.mServiceMessenger == null);
     try
     {
-      this.jdField_a_of_type_AndroidOsMessenger.send(paramString);
+      this.mServiceMessenger.send(paramString);
       return;
     }
     catch (Throwable paramString)
@@ -235,26 +336,33 @@ public class DownloaderProxy
     {
       return paramBoolean;
       Const.SimpleRequest localSimpleRequest1 = new Const.SimpleRequest();
-      localSimpleRequest1.jdField_a_of_type_JavaLangString = str;
+      localSimpleRequest1.url = str;
       int j = arrayOfString.length;
       while (i < j)
       {
-        localSimpleRequest1.a(arrayOfString[i]);
+        localSimpleRequest1.addDstPath(arrayOfString[i]);
         i += 1;
       }
-      localSimpleRequest1.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener = ???.getListener();
-      localSimpleRequest1.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadMode = ???.mode;
-      if (this.jdField_a_of_type_AndroidOsMessenger == null) {
-        synchronized (this.jdField_a_of_type_JavaUtilList)
+      localSimpleRequest1.listener = ???.getListener();
+      localSimpleRequest1.mode = ???.mode;
+      if (this.mServiceMessenger == null) {
+        synchronized (this.mWaitingRequest)
         {
-          this.jdField_a_of_type_JavaUtilList.add(localSimpleRequest1);
-          a();
+          this.mWaitingRequest.add(localSimpleRequest1);
+          startService();
           return true;
         }
       }
-    } while (!a(str, str, localSimpleRequest2));
-    a(str, arrayOfString, ???.mode);
+    } while (!addPendingRequest(str, str, localSimpleRequest2));
+    doRequestDownload(str, arrayOfString, ???.mode);
     return true;
+  }
+  
+  public void uninit()
+  {
+    if ((this.mServiceMessenger != null) && (this.mConnection != null)) {
+      this.mContext.unbindService(this.mConnection);
+    }
   }
 }
 

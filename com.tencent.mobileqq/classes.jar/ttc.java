@@ -1,21 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnSeekCompleteListener;
 
-public class ttc
-  implements DialogInterface.OnClickListener
+class ttc
+  implements MediaPlayer.OnSeekCompleteListener
 {
-  public ttc(RegisterActivity paramRegisterActivity) {}
+  ttc(tsy paramtsy, tsu paramtsu) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
-    this.a.a = 0;
-    this.a.finish();
+    this.jdField_a_of_type_Tsu.a(this.jdField_a_of_type_Tsy);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ttc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.biz.qqstory.view.widget.TroopStoryLineLinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="94.5dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/e2a" android:background="@drawable/ak8" android:paddingLeft="46.5dip" android:descendantFocusability="beforeDescendants" android:layout_width="fill_parent" android:layout_height="@dimen/b1x" android:layout_marginBottom="16.0dip">
+        <com.tencent.image.URLImageView android:id="@id/a2o" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/f5e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:maxWidth="180.0dip" android:maxLines="1" android:layout_toRightOf="@id/a2o" android:layout_alignTop="@id/a2o" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/skin_gray_group_item" android:id="@id/jl7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_below="@id/f5e" android:layout_alignLeft="@id/f5e" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/skin_gray_group_item" android:id="@id/b3u" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginTop="8.0dip" android:layout_toRightOf="@id/jl7" android:layout_below="@id/f5e" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/skin_gray_group_item" android:id="@id/e9h" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginTop="8.0dip" android:layout_toRightOf="@id/b3u" android:layout_below="@id/f5e" />
+        <com.tencent.image.URLImageView android:id="@id/kuw" android:layout_width="55.0dip" android:layout_height="78.5dip" android:layout_marginRight="11.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</com.tencent.biz.qqstory.view.widget.TroopStoryLineLinearLayout>

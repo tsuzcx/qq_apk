@@ -1,35 +1,21 @@
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class rtb
-  implements Runnable
+class rtb
+  implements View.OnClickListener
 {
-  public rtb(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
+  rtb(rsv paramrsv, int paramInt1, int paramInt2, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      if ((AuthDevVerifyCodeActivity.a(this.a) != null) && (AuthDevVerifyCodeActivity.a(this.a).isShowing()))
-      {
-        AuthDevVerifyCodeActivity.a(this.a).dismiss();
-        AuthDevVerifyCodeActivity.a(this.a).cancel();
-      }
-      AuthDevVerifyCodeActivity.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_Rsv.a(this.jdField_a_of_type_Int, this.b);
+    this.jdField_a_of_type_Rsv.o = this.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Rsv.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rtb
  * JD-Core Version:    0.7.0.1
  */

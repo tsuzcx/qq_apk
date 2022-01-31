@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class ykg
-  implements Runnable
+class ykg
+  implements DialogInterface.OnDismissListener
 {
-  public ykg(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  ykg(ykf paramykf) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.p();
+    this.a.jdField_a_of_type_Yko.d();
+    this.a.jdField_a_of_type_Ykd.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ykg
  * JD-Core Version:    0.7.0.1
  */

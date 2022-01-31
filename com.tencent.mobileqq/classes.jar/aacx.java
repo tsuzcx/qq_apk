@@ -1,19 +1,30 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.XEditTextEx;
+import mqq.os.MqqHandler;
 
-public final class aacx
-  implements Runnable
+public class aacx
+  implements anjp
 {
-  public void run()
+  public aacx(BaseChatPie paramBaseChatPie) {}
+  
+  public void a(int paramInt)
   {
-    if (SosoInterface.a().size() == 0) {
-      SosoInterface.d();
+    switch (paramInt)
+    {
+    case 2: 
+    default: 
+      return;
+    case 0: 
+      this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(67);
+      awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "slide", 0, 0, "", "", "", this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
+      return;
     }
+    this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(67, 6000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aacx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,24 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import com.tencent.mobileqq.activity.contacts.base.CardViewController;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.PeakAppInterface;
 
-public class wrz
-  implements SharedPreferences.OnSharedPreferenceChangeListener
+class wrz
+  implements View.OnClickListener
 {
-  public wrz(CardViewController paramCardViewController) {}
+  wrz(wru paramwru) {}
   
-  public void onSharedPreferenceChanged(SharedPreferences paramSharedPreferences, String paramString)
+  public void onClick(View paramView)
   {
-    paramSharedPreferences = "contact_recommend_config_json_" + CardViewController.a(this.a).getCurrentAccountUin();
-    if (QLog.isColorLevel()) {
-      QLog.d("CardViewController", 2, "mConfigChangelistener CONTACT_RECOMMEND_CONFIG_JSON ");
-    }
-    if (paramSharedPreferences.equals(paramString)) {
-      CardViewController.a(this.a, true, true);
-    }
+    wru.c(this.a);
+    wru.b(this.a).setVisibility(8);
+    bgxb.a().a("CameraModuleSvc.GetPlayShowCatMatTree", "", 4);
+    PeakAppInterface.a.a(1010);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wrz
  * JD-Core Version:    0.7.0.1
  */

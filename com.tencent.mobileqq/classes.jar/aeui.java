@@ -1,25 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.nearby.NearbyFragmentEnterAdapter;
-import com.tencent.mobileqq.nearby.NearbyFragmentEnterAdapter.ViewHolder;
+import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aeui
-  implements View.OnClickListener
+  extends msa
 {
-  public aeui(NearbyFragmentEnterAdapter paramNearbyFragmentEnterAdapter) {}
+  public aeui(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, List<SearchProtocol.WordItem> paramList)
   {
-    NearbyFragmentEnterAdapter.ViewHolder localViewHolder = (NearbyFragmentEnterAdapter.ViewHolder)paramView.getTag();
-    if (this.a.a != null) {
-      this.a.a.onItemClick(null, paramView, localViewHolder.a, localViewHolder.a);
+    if (paramInt == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ClassificationSearchActivity", 2, "hot words size: " + paramList.size());
+      }
+      this.a.b = paramList;
+      ClassificationSearchActivity.a(this.a, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeui
  * JD-Core Version:    0.7.0.1
  */

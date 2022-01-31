@@ -2,10 +2,10 @@ package com.tencent.mobileqq.vip;
 
 import java.util.HashMap;
 
-final class DownloaderFactory$2
-  extends HashMap
+public final class DownloaderFactory$2
+  extends HashMap<String, Integer>
 {
-  DownloaderFactory$2()
+  public DownloaderFactory$2()
   {
     put("cmshow.gtimg.cn", Integer.valueOf(1015));
     put("imgcache.qq.com", Integer.valueOf(1016));
@@ -15,7 +15,7 @@ final class DownloaderFactory$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.vip.DownloaderFactory.2
  * JD-Core Version:    0.7.0.1
  */

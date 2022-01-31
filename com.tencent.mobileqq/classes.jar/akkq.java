@@ -1,44 +1,23 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NewUpgradeDialog;
-import com.tencent.open.appcircle.st.AppCircleReportManager;
-import com.tencent.open.appcircle.st.STUtils;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.ARRecognition;
 
-public class akkq
-  implements View.OnClickListener
+public final class akkq
+  implements Parcelable.Creator<ARRecognition>
 {
-  public akkq(NewUpgradeDialog paramNewUpgradeDialog, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean) {}
-  
-  public void onClick(View paramView)
+  public ARRecognition a(Parcel paramParcel)
   {
-    LogUtility.b("NewUpgradeDialog", STUtils.a(10010, NewUpgradeDialog.a(), 2, 200));
-    AppCircleReportManager.a().a(17, STUtils.a(10010, NewUpgradeDialog.a(), 2, 200));
-    if (NewUpgradeDialog.a() == 2) {
-      ReportController.b(null, "dc00898", "", "", "0X8008F80", "0X8008F80", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-        this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsNewUpgradeDialog, 0);
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        DownloadManager.a().b(NewUpgradeDialog.a(this.jdField_a_of_type_ComTencentMobileqqUtilsNewUpgradeDialog));
-        this.jdField_a_of_type_ComTencentMobileqqUtilsNewUpgradeDialog.dismiss();
-      }
-      NewUpgradeDialog.a(this.jdField_a_of_type_ComTencentMobileqqUtilsNewUpgradeDialog, true);
-      return;
-      ReportController.b(null, "dc00898", "", "", "0X8008F83", "0X8008F83", 0, 0, "", "", "", "");
-    }
+    return new ARRecognition(paramParcel);
+  }
+  
+  public ARRecognition[] a(int paramInt)
+  {
+    return new ARRecognition[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akkq
  * JD-Core Version:    0.7.0.1
  */

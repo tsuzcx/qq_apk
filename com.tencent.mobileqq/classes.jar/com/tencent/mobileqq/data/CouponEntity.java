@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
+import atmo;
+import atnz;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.util.ArrayList;
 import java.util.List;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="cid,bid,source_id")
 public class CouponEntity
-  extends Entity
+  extends atmo
 {
   public static final int VERIFY_TYPE_BARCODE = 2;
   public static final int VERIFY_TYPE_DIGITAL_CODE = 1;
@@ -29,10 +29,10 @@ public class CouponEntity
   public long rcv_time;
   public String rebate;
   public String shids;
-  @notColumn
+  @atnz
   public CharSequence shopData;
-  @notColumn
-  private List shopList;
+  @atnz
+  private List<Integer> shopList;
   public int source_id;
   public long stime;
   public String tag;
@@ -41,7 +41,7 @@ public class CouponEntity
   
   public CouponEntity() {}
   
-  public CouponEntity(int paramInt1, int paramInt2, String paramString1, String paramString2, long paramLong1, long paramLong2, int paramInt3, String paramString3, String paramString4, List paramList, int paramInt4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt5, long paramLong3, int paramInt6)
+  public CouponEntity(int paramInt1, int paramInt2, String paramString1, String paramString2, long paramLong1, long paramLong2, int paramInt3, String paramString3, String paramString4, List<Integer> paramList, int paramInt4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt5, long paramLong3, int paramInt6)
   {
     this.cid = paramInt1;
     this.bid = paramInt2;
@@ -65,7 +65,7 @@ public class CouponEntity
     this.isNew = false;
   }
   
-  public List getShopList()
+  public List<Integer> getShopList()
   {
     if (this.shopList == null)
     {

@@ -2,6 +2,7 @@ package com.tencent.mobileqq.highway;
 
 import android.content.Context;
 import android.util.SparseArray;
+import com.tencent.mobileqq.highway.api.HighwayConfBean;
 import com.tencent.mobileqq.highway.api.RequestOps;
 import com.tencent.mobileqq.highway.api.TransactionOps;
 import com.tencent.mobileqq.highway.config.ConfigManager;
@@ -15,24 +16,22 @@ import com.tencent.mobileqq.highway.transaction.Transaction;
 import com.tencent.mobileqq.highway.transaction.TransactionWorker;
 import com.tencent.mobileqq.highway.utils.BdhLogUtil;
 import com.tencent.mobileqq.highway.utils.HwNetworkCenter;
-import com.tencent.mobileqq.msf.sdk.MsfMsgUtil;
-import com.tencent.mobileqq.msf.sdk.MsfServiceSdk;
-import com.tencent.mobileqq.msf.sdk.RdmReq;
 import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicLong;
 import mqq.app.AppRuntime;
 
 public class HwEngine
-  implements TransactionOps, RequestOps, INetInfoHandler
+  implements RequestOps, TransactionOps, INetInfoHandler
 {
   public static final boolean ISDEBUG = true;
   public static int appId;
+  public static int localeId;
   public AppRuntime app;
   public String currentUin;
   public AtomicLong dwFlow_Wifi = new AtomicLong(0L);
   public AtomicLong dwFlow_Xg = new AtomicLong(0L);
+  public boolean ipv6Switch;
+  public boolean ipv6SwitchDual;
   private SparseArray<HwNetSegConf> mBuzSegConfigs;
   public ConnManager mConnManager;
   private Context mContext;
@@ -40,46 +39,19 @@ public class HwEngine
   private HwNetSegConf mSegConfig;
   public TransactionWorker mTransWorker;
   public WeakNetLearner mWeakNetLearner;
-  private WeakNetCallback probeEngineCallBack = new WeakNetCallback()
-  {
-    public void onResultOverflow(HashMap<String, String> paramAnonymousHashMap)
-    {
-      if ((paramAnonymousHashMap == null) || (paramAnonymousHashMap.isEmpty())) {
-        return;
-      }
-      BdhLogUtil.LogEvent("P", "probe result upload to dengta, count " + paramAnonymousHashMap.size());
-      RdmReq localRdmReq = new RdmReq();
-      localRdmReq.isMerge = false;
-      localRdmReq.isRealTime = true;
-      localRdmReq.isSucceed = true;
-      localRdmReq.eventName = "actWeaknetProbe";
-      localRdmReq.elapse = 0L;
-      localRdmReq.size = 0L;
-      localRdmReq.params = paramAnonymousHashMap;
-      try
-      {
-        paramAnonymousHashMap = MsfMsgUtil.getRdmReportMsg(MsfServiceSdk.get().getMsfServiceName(), localRdmReq);
-        paramAnonymousHashMap.setAppId(HwEngine.appId);
-        paramAnonymousHashMap.setTimeout(30000L);
-        MsfServiceSdk.get().sendMsg(paramAnonymousHashMap);
-        return;
-      }
-      catch (Exception paramAnonymousHashMap)
-      {
-        paramAnonymousHashMap.printStackTrace();
-        BdhLogUtil.LogException("P", "upload report has exception ", paramAnonymousHashMap);
-      }
-    }
-  };
+  private WeakNetCallback probeEngineCallBack = new HwEngine.1(this);
   public AtomicLong upFlow_Wifi = new AtomicLong(0L);
   public AtomicLong upFlow_Xg = new AtomicLong(0L);
   
-  public HwEngine(Context paramContext, String paramString, int paramInt, AppRuntime paramAppRuntime)
+  public HwEngine(Context paramContext, String paramString, int paramInt1, AppRuntime paramAppRuntime, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
     this.mContext = paramContext;
-    appId = paramInt;
+    appId = paramInt1;
+    localeId = paramInt2;
     this.currentUin = paramString;
     this.app = paramAppRuntime;
+    this.ipv6Switch = paramBoolean1;
+    this.ipv6SwitchDual = paramBoolean2;
     initHwEngine();
   }
   
@@ -127,7 +99,7 @@ public class HwEngine
     SparseArray localSparseArray1 = localSparseArray2;
     if (localSparseArray2 == null)
     {
-      localSparseArray1 = ConfigManager.getInstance(getAppContext(), this.app, appId, this.currentUin).getAllBuzSegConfs(getAppContext());
+      localSparseArray1 = ConfigManager.getInstance(getAppContext(), this).getAllBuzSegConfs(getAppContext());
       this.mBuzSegConfigs = localSparseArray1;
     }
     return localSparseArray1;
@@ -139,7 +111,7 @@ public class HwEngine
     HwNetSegConf localHwNetSegConf1 = localHwNetSegConf2;
     if (localHwNetSegConf2 == null)
     {
-      localHwNetSegConf1 = ConfigManager.getInstance(getAppContext(), this.app, appId, this.currentUin).getNetSegConf(getAppContext());
+      localHwNetSegConf1 = ConfigManager.getInstance(getAppContext(), this).getNetSegConf(getAppContext());
       this.mSegConfig = localHwNetSegConf1;
     }
     return localHwNetSegConf1;
@@ -155,6 +127,7 @@ public class HwEngine
     this.mRequestWorker.onInit();
     this.mTransWorker.onInit();
     HwNetworkCenter.getInstance(this.mContext).updateNetInfo(this.mContext);
+    HighwayConfBean.init(this.app);
   }
   
   public void onNetMobile2None()
@@ -164,7 +137,7 @@ public class HwEngine
     this.mBuzSegConfigs = null;
     HwNetworkCenter.getInstance(this.mContext).updateNetInfo(this.mContext);
     this.mRequestWorker.onNetworkChanged(false);
-    ConfigManager.getInstance(this.mContext, this.app, appId, this.currentUin).onNetWorkChange(this.mContext, this.app, this.currentUin, false);
+    ConfigManager.getInstance(this.mContext, this).onNetWorkChange(this.mContext, this.app, this.currentUin, false);
   }
   
   public void onNetMobile2Wifi(String paramString)
@@ -174,7 +147,7 @@ public class HwEngine
     this.mBuzSegConfigs = null;
     HwNetworkCenter.getInstance(this.mContext).updateNetInfo(this.mContext);
     this.mRequestWorker.onNetworkChanged(true);
-    ConfigManager.getInstance(this.mContext, this.app, appId, this.currentUin).onNetWorkChange(this.mContext, this.app, this.currentUin, false);
+    ConfigManager.getInstance(this.mContext, this).onNetWorkChange(this.mContext, this.app, this.currentUin, false);
   }
   
   public void onNetNone2Mobile(String paramString)
@@ -184,7 +157,7 @@ public class HwEngine
     this.mBuzSegConfigs = null;
     HwNetworkCenter.getInstance(this.mContext).updateNetInfo(this.mContext);
     this.mRequestWorker.onNetworkChanged(true);
-    ConfigManager.getInstance(this.mContext, this.app, appId, this.currentUin).onNetWorkChange(this.mContext, this.app, this.currentUin, true);
+    ConfigManager.getInstance(this.mContext, this).onNetWorkChange(this.mContext, this.app, this.currentUin, true);
   }
   
   public void onNetNone2Wifi(String paramString)
@@ -194,7 +167,7 @@ public class HwEngine
     this.mBuzSegConfigs = null;
     HwNetworkCenter.getInstance(this.mContext).updateNetInfo(this.mContext);
     this.mRequestWorker.onNetworkChanged(true);
-    ConfigManager.getInstance(this.mContext, this.app, appId, this.currentUin).onNetWorkChange(this.mContext, this.app, this.currentUin, false);
+    ConfigManager.getInstance(this.mContext, this).onNetWorkChange(this.mContext, this.app, this.currentUin, false);
   }
   
   public void onNetWifi2Mobile(String paramString)
@@ -204,7 +177,7 @@ public class HwEngine
     this.mBuzSegConfigs = null;
     HwNetworkCenter.getInstance(this.mContext).updateNetInfo(this.mContext);
     this.mRequestWorker.onNetworkChanged(true);
-    ConfigManager.getInstance(this.mContext, this.app, appId, this.currentUin).onNetWorkChange(this.mContext, this.app, this.currentUin, true);
+    ConfigManager.getInstance(this.mContext, this).onNetWorkChange(this.mContext, this.app, this.currentUin, true);
   }
   
   public void onNetWifi2None()
@@ -214,7 +187,7 @@ public class HwEngine
     this.mBuzSegConfigs = null;
     HwNetworkCenter.getInstance(this.mContext).updateNetInfo(this.mContext);
     this.mRequestWorker.onNetworkChanged(false);
-    ConfigManager.getInstance(this.mContext, this.app, appId, this.currentUin).onNetWorkChange(this.mContext, this.app, this.currentUin, false);
+    ConfigManager.getInstance(this.mContext, this).onNetWorkChange(this.mContext, this.app, this.currentUin, false);
   }
   
   public void preConnect()
@@ -242,7 +215,7 @@ public class HwEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.highway.HwEngine
  * JD-Core Version:    0.7.0.1
  */

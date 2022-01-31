@@ -1,7 +1,5 @@
 package okio;
 
-import java.io.IOException;
-
 public abstract class ForwardingSink
   implements Sink
 {
@@ -16,7 +14,6 @@ public abstract class ForwardingSink
   }
   
   public void close()
-    throws IOException
   {
     this.delegate.close();
   }
@@ -27,7 +24,6 @@ public abstract class ForwardingSink
   }
   
   public void flush()
-    throws IOException
   {
     this.delegate.flush();
   }
@@ -43,7 +39,6 @@ public abstract class ForwardingSink
   }
   
   public void write(Buffer paramBuffer, long paramLong)
-    throws IOException
   {
     this.delegate.write(paramBuffer, paramLong);
   }

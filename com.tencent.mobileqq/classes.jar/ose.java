@@ -1,12 +1,33 @@
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class ose
   implements View.OnClickListener
 {
-  ose(osd paramosd) {}
+  ose(orz paramorz, ArticleInfo paramArticleInfo) {}
   
-  public void onClick(View paramView) {}
+  public void onClick(View paramView)
+  {
+    int i = 0;
+    nji.a(orz.a(this.jdField_a_of_type_Orz), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoName, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoType, 1);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.hasChannelInfo()) {
+      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId;
+    }
+    try
+    {
+      paramView = new JSONObject();
+      paramView.put("feeds_channel_entrance", i);
+      ndn.a(null, "CliOper", "", "", "0X8006DF3", "0X8006DF3", 0, 0, "", "", "", paramView.toString(), false);
+      return;
+    }
+    catch (JSONException paramView)
+    {
+      paramView.printStackTrace();
+    }
+  }
 }
 
 

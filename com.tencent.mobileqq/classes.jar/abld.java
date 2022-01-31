@@ -1,55 +1,67 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.RemoteArConfigManager;
-import com.tencent.mobileqq.armap.ShopScanActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQLSActivity;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class abld
-  implements TVK_SDKMgr.InstallListener
+  extends BroadcastReceiver
 {
-  public abld(ShopScanActivity paramShopScanActivity) {}
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onInstallProgress(float paramFloat)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShopScanActivity", 1, "video sdk, onInstallProgress, v=" + paramFloat + ", mVideoSdkInstallCancel=" + ShopScanActivity.c(this.a));
-    }
-    if ((ShopScanActivity.a(this.a)) || (ShopScanActivity.c(this.a))) {
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new ablh(this, paramFloat));
-  }
+  private abld(QQLSActivity paramQQLSActivity) {}
   
-  public void onInstalledFailed(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShopScanActivity", 1, "video sdk, onInstalledFailed, i=" + paramInt + ", mVideoSdkInstallCancel=" + ShopScanActivity.c(this.a));
-    }
-    if ((ShopScanActivity.a(this.a)) || (ShopScanActivity.c(this.a))) {
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new ablg(this));
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShopScanActivity", 2, "video sdk, onInstalledSuccessed, mVideoSdkInstallCancel=" + ShopScanActivity.c(this.a));
-    }
-    if ((ShopScanActivity.a(this.a)) || (ShopScanActivity.c(this.a))) {
-      return;
-    }
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqArRemoteArConfigManager.a())
+    if (QQLSActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity)) {}
+    do
     {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new able(this));
+      do
+      {
+        for (;;)
+        {
+          return;
+          if (paramIntent != null) {}
+          try
+          {
+            this.jdField_a_of_type_JavaLangString = paramIntent.getAction();
+            if ("android.intent.action.SCREEN_ON".equals(this.jdField_a_of_type_JavaLangString))
+            {
+              if (!QLog.isColorLevel()) {
+                continue;
+              }
+              QLog.d("QQLSActivity", 2, "ScreenBroadcastReceiver ACTION_SCREEN_ON");
+            }
+          }
+          catch (Exception paramContext)
+          {
+            QLog.e("QQLSActivity", 1, paramContext, new Object[0]);
+            return;
+          }
+        }
+        if (!"android.intent.action.SCREEN_OFF".equals(this.jdField_a_of_type_JavaLangString)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("QQLSActivity", 2, "ScreenBroadcastReceiver ACTION_SCREEN_OFF");
       return;
+    } while (!"android.intent.action.USER_PRESENT".equals(this.jdField_a_of_type_JavaLangString));
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder().append("ScreenBroadcastReceiver ACTION_USER_PRESENTmanager.isEnterAio");
+      paramIntent = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a;
+      QLog.d("QQLSActivity", 2, ario.f);
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.post(new ablf(this));
+    paramContext = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a;
+    if (!ario.f) {
+      QQLSActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abld
  * JD-Core Version:    0.7.0.1
  */

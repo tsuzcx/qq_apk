@@ -1,16 +1,23 @@
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import java.util.ArrayList;
 
-class amyc
-  implements EIPCResultCallback
+public class amyc
 {
-  amyc(amyb paramamyb) {}
+  public String a;
+  public ArrayList<String> a;
+  public String b;
+  public ArrayList<String> b;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
   
-  public void onCallback(EIPCResult paramEIPCResult) {}
+  public amyc(amyb paramamyb) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amyc
  * JD-Core Version:    0.7.0.1
  */

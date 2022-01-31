@@ -1,24 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.ocr.SearchQuestionCameraFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.widget.AdapterView;
 
-public class aggk
-  implements DialogInterface.OnDismissListener
+abstract interface aggk
 {
-  public aggk(SearchQuestionCameraFragment paramSearchQuestionCameraFragment) {}
+  public abstract Intent a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    SearchQuestionCameraFragment.a(this.a, -1);
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchQuestionFragment", 2, "mProgressDialog dismiss");
-    }
-  }
+  public abstract void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
+  
+  public abstract void b(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
+  
+  public abstract void c(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aggk
  * JD-Core Version:    0.7.0.1
  */

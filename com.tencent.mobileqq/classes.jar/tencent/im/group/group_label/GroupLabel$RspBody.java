@@ -8,13 +8,13 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class GroupLabel$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   public static final int BYTES_ERROR_FIELD_NUMBER = 1;
   public static final int RPT_GROUP_INFO_FIELD_NUMBER = 2;
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_error = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_group_info = PBField.initRepeatMessage(GroupLabel.GroupInfo.class);
+  public final PBRepeatMessageField<GroupLabel.GroupInfo> rpt_group_info = PBField.initRepeatMessage(GroupLabel.GroupInfo.class);
   
   static
   {
@@ -24,7 +24,7 @@ public final class GroupLabel$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.group.group_label.GroupLabel.RspBody
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.troop.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 import java.io.Serializable;
 
 public class TroopAioKeywordTipInfo
-  extends Entity
+  extends atmo
   implements Serializable
 {
   public String icon;
-  @unique
+  @atoc
   public int ruleId;
   public String summary;
   public String title;
@@ -25,7 +25,7 @@ public class TroopAioKeywordTipInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,20 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.ar.ARScanFragment;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 
 public class aglv
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public aglv(ScanTorchActivity paramScanTorchActivity) {}
+  public aglv(TransactionActivity paramTransactionActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b = null;
-    this.a.a.b(false);
-    this.a.a.c(false);
-    ScanTorchActivity.c(this.a, true);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aglv
  * JD-Core Version:    0.7.0.1
  */

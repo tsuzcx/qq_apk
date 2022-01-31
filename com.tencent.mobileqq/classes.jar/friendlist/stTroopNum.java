@@ -16,6 +16,7 @@ public final class stTroopNum
   public long dwAdditionalFlag;
   public long dwAppPrivilegeFlag;
   public long dwCertificationType;
+  public long dwCmdUinGroupMask;
   public long dwCmdUinUinFlag;
   public long dwCmduinJoinTime;
   public long dwGroupClassExt;
@@ -27,6 +28,7 @@ public final class stTroopNum
   public long dwGroupSecType;
   public long dwGroupSecTypeInfo;
   public long dwGroupTypeFlag;
+  public long dwMaxGroupMemberNum;
   public long dwMemberCardSeq;
   public long dwMemberNum;
   public long dwMemberNumSeq;
@@ -35,10 +37,15 @@ public final class stTroopNum
   public long dwSubscriptionUin;
   public String strGroupMemo = "";
   public String strGroupName = "";
+  public long udwCmdUinFlagEx2;
+  public long udwCmdUinRingtoneID;
+  public long udwHLGuildAppid;
+  public long udwHLGuildSubType;
+  public long ulCompanyId;
   
   public stTroopNum() {}
   
-  public stTroopNum(long paramLong1, long paramLong2, byte paramByte1, long paramLong3, String paramString1, String paramString2, long paramLong4, long paramLong5, long paramLong6, long paramLong7, long paramLong8, long paramLong9, long paramLong10, long paramLong11, long paramLong12, long paramLong13, long paramLong14, long paramLong15, long paramLong16, long paramLong17, long paramLong18, long paramLong19, long paramLong20, long paramLong21, byte paramByte2, byte paramByte3, byte paramByte4, long paramLong22)
+  public stTroopNum(long paramLong1, long paramLong2, byte paramByte1, long paramLong3, String paramString1, String paramString2, long paramLong4, long paramLong5, long paramLong6, long paramLong7, long paramLong8, long paramLong9, long paramLong10, long paramLong11, long paramLong12, long paramLong13, long paramLong14, long paramLong15, long paramLong16, long paramLong17, long paramLong18, long paramLong19, long paramLong20, long paramLong21, byte paramByte2, byte paramByte3, byte paramByte4, long paramLong22, long paramLong23, long paramLong24, long paramLong25, long paramLong26, long paramLong27, long paramLong28, long paramLong29)
   {
     this.GroupUin = paramLong1;
     this.GroupCode = paramLong2;
@@ -68,6 +75,13 @@ public final class stTroopNum
     this.cIsModifyConfGroupFace = paramByte3;
     this.cIsModifyConfGroupName = paramByte4;
     this.dwCmduinJoinTime = paramLong22;
+    this.ulCompanyId = paramLong23;
+    this.dwMaxGroupMemberNum = paramLong24;
+    this.dwCmdUinGroupMask = paramLong25;
+    this.udwHLGuildAppid = paramLong26;
+    this.udwHLGuildSubType = paramLong27;
+    this.udwCmdUinRingtoneID = paramLong28;
+    this.udwCmdUinFlagEx2 = paramLong29;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -100,6 +114,13 @@ public final class stTroopNum
     this.cIsModifyConfGroupFace = paramJceInputStream.read(this.cIsModifyConfGroupFace, 25, false);
     this.cIsModifyConfGroupName = paramJceInputStream.read(this.cIsModifyConfGroupName, 26, false);
     this.dwCmduinJoinTime = paramJceInputStream.read(this.dwCmduinJoinTime, 27, false);
+    this.ulCompanyId = paramJceInputStream.read(this.ulCompanyId, 28, false);
+    this.dwMaxGroupMemberNum = paramJceInputStream.read(this.dwMaxGroupMemberNum, 29, false);
+    this.dwCmdUinGroupMask = paramJceInputStream.read(this.dwCmdUinGroupMask, 30, false);
+    this.udwHLGuildAppid = paramJceInputStream.read(this.udwHLGuildAppid, 31, false);
+    this.udwHLGuildSubType = paramJceInputStream.read(this.udwHLGuildSubType, 32, false);
+    this.udwCmdUinRingtoneID = paramJceInputStream.read(this.udwCmdUinRingtoneID, 33, false);
+    this.udwCmdUinFlagEx2 = paramJceInputStream.read(this.udwCmdUinFlagEx2, 34, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -136,6 +157,13 @@ public final class stTroopNum
     paramJceOutputStream.write(this.cIsModifyConfGroupFace, 25);
     paramJceOutputStream.write(this.cIsModifyConfGroupName, 26);
     paramJceOutputStream.write(this.dwCmduinJoinTime, 27);
+    paramJceOutputStream.write(this.ulCompanyId, 28);
+    paramJceOutputStream.write(this.dwMaxGroupMemberNum, 29);
+    paramJceOutputStream.write(this.dwCmdUinGroupMask, 30);
+    paramJceOutputStream.write(this.udwHLGuildAppid, 31);
+    paramJceOutputStream.write(this.udwHLGuildSubType, 32);
+    paramJceOutputStream.write(this.udwCmdUinRingtoneID, 33);
+    paramJceOutputStream.write(this.udwCmdUinFlagEx2, 34);
   }
 }
 

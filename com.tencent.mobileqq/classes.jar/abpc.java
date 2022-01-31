@@ -1,22 +1,25 @@
-import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import mqq.os.MqqHandler;
 
 public class abpc
-  implements Runnable
+  extends MqqHandler
 {
-  public abpc(ARMapLoadingActivity paramARMapLoadingActivity, boolean paramBoolean) {}
+  public abpc(RegisterSendUpSms paramRegisterSendUpSms) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    HashMap localHashMap = new HashMap();
-    StatisticCollector.a(BaseApplication.getContext()).a("", "REPORT_TAG_START_THREAD_TIMEOUT", this.jdField_a_of_type_Boolean, 0L, 0L, localHashMap, "", false);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abpc
  * JD-Core Version:    0.7.0.1
  */

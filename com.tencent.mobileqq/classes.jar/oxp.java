@@ -1,50 +1,63 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity.GetNicknameObserver;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class oxp
-  extends QRDisplayActivity.GetNicknameObserver
+  implements ViewBase.OnClickListener
 {
-  public oxp(QRDisplayActivity paramQRDisplayActivity)
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  
+  public oxp(ArticleInfo paramArticleInfo, Context paramContext)
   {
-    super(paramQRDisplayActivity);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  protected void a(boolean paramBoolean, List paramList1, List paramList2)
+  private void a()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QRDisplayActivity", 4, "onGetNicknameList: " + paramBoolean);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {
+      return;
     }
-    if ((paramBoolean) && (paramList1 != null) && (paramList2 != null))
+    if (QLog.isColorLevel()) {
+      QLog.d("OnTopicRecommendHeaderClickListener", 2, "business url is " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.businessUrl);
+    }
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo.a != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo.a.size() > 0)) {}
+    for (Object localObject = (prx)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mTopicRecommendFeedsInfo.a.get(0);; localObject = null)
     {
-      int j = paramList2.size();
-      if ((j > 0) && (paramList1.size() == j))
+      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) || (localObject == null))
       {
-        if (this.a.jdField_b_of_type_JavaUtilList == null) {
-          this.a.jdField_b_of_type_JavaUtilList = new ArrayList();
-        }
-        this.a.jdField_b_of_type_JavaUtilList.addAll(paramList1);
-        int i = 0;
-        while (i < j)
-        {
-          if (this.a.a((String)paramList2.get(i)) == null) {
-            this.a.a((String)paramList2.get(i), (String)paramList1.get(i));
-          }
-          i += 1;
-        }
-        Collections.sort(this.a.jdField_b_of_type_JavaUtilList, new oyu(this.a));
+        QLog.d("OnTopicRecommendHeaderClickListener", 1, new Object[] { "articleInfo is null or topicRecommendInfo is null, articleInfo: ", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, " topicRecommendInfo: ", localObject });
+        return;
       }
+      String str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.businessUrl;
+      if (TextUtils.isEmpty(str)) {
+        break;
+      }
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, PublicAccountBrowser.class);
+      localIntent.putExtra("url", str);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+      str = obz.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      localObject = obz.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID, ((prx)localObject).a + "", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      ndn.a(null, str, "0X8008A63", "0X8008A63", 0, 0, Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId), Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleID), Long.toString(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mStrategyId), (String)localObject, false);
+      qoe.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+      obz.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+      return;
     }
-    this.a.jdField_a_of_type_JavaLangString = this.a.a(this.a.jdField_b_of_type_JavaUtilList);
-    if (this.a.jdField_a_of_type_JavaLangString != null)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.a.jdField_a_of_type_JavaLangString + "," + this.a.jdField_b_of_type_JavaLangString);
-      this.a.c.post(this.a.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    int i = qoe.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    if (((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (i != 79)) {
+      a();
     }
   }
 }

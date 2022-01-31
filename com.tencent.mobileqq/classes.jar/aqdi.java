@@ -1,0 +1,31 @@
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import mqq.app.AppRuntime;
+
+final class aqdi
+  implements aqcy
+{
+  public String a()
+  {
+    return aqcx.b;
+  }
+  
+  public void a(int paramInt)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      ((VasQuickUpdateManager)((AppRuntime)localObject).getManager(184)).downloadItem(5L, "font.hifont.android." + paramInt, "HiBoomDownloader");
+      localObject = ((aqdf)((AppRuntime)localObject).getManager(219)).a(paramInt);
+      ((aqde)localObject).b = true;
+      ((aqde)localObject).c = 0;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+ * Qualified Name:     aqdi
+ * JD-Core Version:    0.7.0.1
+ */

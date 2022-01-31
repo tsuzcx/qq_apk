@@ -1,14 +1,23 @@
-import com.tencent.biz.qqstory.newshare.model.Job;
-import com.tencent.biz.qqstory.newshare.model.JobExecutor;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
 public class nlv
-  implements Runnable
+  implements begw
 {
-  public nlv(JobExecutor paramJobExecutor, Job paramJob) {}
+  public nlv(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob.b());
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      ReadInJoySettingActivity.a(this.a).cancel();
+      return;
+      ReadInJoySettingActivity.a(this.a, false);
+      ReadInJoySettingActivity.b(this.a, ReadInJoySettingActivity.a(this.a));
+    }
   }
 }
 

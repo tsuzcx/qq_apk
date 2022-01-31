@@ -1,47 +1,26 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback;
-import com.tencent.biz.qqstory.network.request.GetTagListRequest;
-import com.tencent.biz.qqstory.network.response.GetTagListResponse;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
-import com.tencent.biz.qqstory.takevideo.tag.IEditVideoTagView;
-import com.tencent.biz.qqstory.takevideo.tag.TagItem;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq;
 
 public class oqj
-  extends CmdTaskManger.UIThreadCallback
 {
-  public oqj(EditVideoTagPresenter paramEditVideoTagPresenter) {}
+  private int jdField_a_of_type_Int = 1;
+  private long jdField_a_of_type_Long;
+  private long b = 0L;
   
-  public void a(@NonNull GetTagListRequest paramGetTagListRequest, @Nullable GetTagListResponse paramGetTagListResponse, @NonNull ErrorMessage paramErrorMessage)
+  public ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq a()
   {
-    SLog.b("EditVideoTagPresenter", "refresh onCmdRespond.");
-    if ((paramErrorMessage.isSuccess()) && (paramGetTagListResponse != null))
-    {
-      SLog.a("EditVideoTagPresenter", "refresh onCmdRespond, refresh success:[%s]", paramGetTagListResponse.toString());
-      paramGetTagListRequest = paramGetTagListResponse.jdField_a_of_type_JavaUtilList;
-      if (paramGetTagListRequest.contains(EditVideoTagPresenter.a(this.a)))
-      {
-        int i = paramGetTagListRequest.indexOf(EditVideoTagPresenter.a(this.a));
-        EditVideoTagPresenter.a(this.a, (TagItem)paramGetTagListRequest.get(i));
-        EditVideoTagPresenter.a(this.a).clear();
-        EditVideoTagPresenter.a(this.a).addAll(paramGetTagListRequest);
-        EditVideoTagPresenter.a(this.a, paramGetTagListResponse.jdField_a_of_type_JavaLangString);
-        EditVideoTagPresenter.a(this.a, paramGetTagListResponse.b);
-        ThreadManager.executeOnSubThread(new oqk(this));
-      }
-    }
-    for (;;)
-    {
-      EditVideoTagPresenter.a(this.a).a(paramErrorMessage.errorCode, EditVideoTagPresenter.a(this.a), this.a.a());
-      return;
-      EditVideoTagPresenter.a(this.a, null);
-      break;
-      SLog.e("EditVideoTagPresenter", "refresh onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
-    }
+    return new ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq(this, null);
+  }
+  
+  public oqj a(long paramLong)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
+  }
+  
+  public oqj b(long paramLong)
+  {
+    this.b = paramLong;
+    return this;
   }
 }
 

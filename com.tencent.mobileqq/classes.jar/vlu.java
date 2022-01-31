@@ -1,21 +1,25 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
+import android.content.Context;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 
-public class vlu
-  implements View.OnTouchListener
+final class vlu
+  implements INetEventHandler
 {
-  public vlu(SixCombolEffectView paramSixCombolEffectView) {}
+  vlu(Context paramContext) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    return true;
+    if (paramBoolean)
+    {
+      vlt.a(this.a);
+      return;
+    }
+    vlt.a("");
+    vlt.b("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vlu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,46 @@
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.ReqGroupStoryFeedIdList;
+import com.tencent.biz.qqstory.network.pb.qqstory_group.RspGroupStoryFeedIdList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 
 public class tal
-  extends FriendListObserver
+  extends slz
 {
-  public tal(JoinDiscussionActivity paramJoinDiscussionActivity) {}
+  public String a;
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public String a()
   {
-    if (paramBoolean)
+    return skt.a("StoryGroupSvc.get_dynamic_group_feedid_list");
+  }
+  
+  public slu a(byte[] paramArrayOfByte)
+  {
+    qqstory_group.RspGroupStoryFeedIdList localRspGroupStoryFeedIdList = new qqstory_group.RspGroupStoryFeedIdList();
+    try
     {
-      paramString = ((FriendsManager)this.a.app.getManager(50)).c(this.a.a + "");
-      if (paramString != null)
+      localRspGroupStoryFeedIdList.mergeFrom(paramArrayOfByte);
+      return new tam(localRspGroupStoryFeedIdList);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
       {
-        this.a.e = paramString.name;
-        JoinDiscussionActivity.a(this.a);
+        paramArrayOfByte.printStackTrace();
       }
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("IphoneTitleBarActivity", 2, "get owner name failed");
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_group.ReqGroupStoryFeedIdList localReqGroupStoryFeedIdList = new qqstory_group.ReqGroupStoryFeedIdList();
+    localReqGroupStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
+    return localReqGroupStoryFeedIdList.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tal
  * JD-Core Version:    0.7.0.1
  */

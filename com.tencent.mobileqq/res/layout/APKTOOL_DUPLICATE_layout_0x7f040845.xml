@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1406" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <ImageView android:layout_width="43.0dip" android:layout_height="43.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020009" />
-        <TextView android:textSize="8.0dip" android:textColor="#ffadadad" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1407" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="当前网络不可用，请检查你的网络设置\n点击屏幕刷新" />
-    </LinearLayout>
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0035" android:layout_width="45.0dip" android:layout_height="45.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020b5c" android:layout_centerInParent="true" />
-</RelativeLayout>

@@ -1,9 +1,9 @@
 package com.tencent.av.business.manager.pendant;
 
-import com.tencent.av.business.manager.EffectConfigBase.ItemBase;
+import kxb;
 
 public class PendantItem
-  extends EffectConfigBase.ItemBase
+  extends kxb
 {
   public static final int Category_Face = 0;
   public static final int Category_FaceAndGesture = 2;
@@ -16,6 +16,7 @@ public class PendantItem
   private String iconurl;
   private String id;
   private boolean isshow = true;
+  private int kind;
   private String md5;
   private String name = "";
   private int platform;
@@ -34,6 +35,21 @@ public class PendantItem
   public static boolean isGesture(int paramInt)
   {
     return (paramInt == 2) || (paramInt == 1);
+  }
+  
+  public static boolean isOnlySupportNewFilter(int paramInt)
+  {
+    return 21 == paramInt;
+  }
+  
+  public static boolean isOnlySupportOldFilter(int paramInt)
+  {
+    return 22 == paramInt;
+  }
+  
+  public static boolean isPanorama(int paramInt)
+  {
+    return 7 == paramInt;
   }
   
   public int getCategory()
@@ -69,6 +85,11 @@ public class PendantItem
   public String getId()
   {
     return this.id;
+  }
+  
+  public int getKind()
+  {
+    return this.kind;
   }
   
   public String getMd5()
@@ -128,12 +149,12 @@ public class PendantItem
   
   public String toString()
   {
-    return "id[" + this.id + "], name[" + this.name + "], type[" + this.type + "], category[" + this.category + "], gestureType[" + this.gestureType + "]";
+    return "id[" + this.id + "], name[" + this.name + "], type[" + this.type + "], category[" + this.category + "], gestureType[" + this.gestureType + "], kind[" + this.kind + "], isDownloading[" + this.isDownloading + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.business.manager.pendant.PendantItem
  * JD-Core Version:    0.7.0.1
  */

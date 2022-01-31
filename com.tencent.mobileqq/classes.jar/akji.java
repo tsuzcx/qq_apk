@@ -1,40 +1,39 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.AvatarPendantUtil;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import java.util.HashSet;
 
-public final class akji
-  implements Runnable
+class akji
+  implements SoundPool.OnLoadCompleteListener
 {
-  public akji(QQAppInterface paramQQAppInterface) {}
+  akji(akje paramakje) {}
   
-  public void run()
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    AvatarPendantUtil.jdField_a_of_type_Boolean = false;
-    do
+    if (paramInt2 != 0) {}
+    try
     {
-      synchronized (AvatarPendantUtil.jdField_a_of_type_JavaUtilArrayList)
-      {
-        String[] arrayOfString1 = new String[AvatarPendantUtil.jdField_a_of_type_JavaUtilArrayList.size()];
-        AvatarPendantUtil.jdField_a_of_type_JavaUtilArrayList.toArray(arrayOfString1);
-        AvatarPendantUtil.jdField_a_of_type_JavaUtilArrayList.clear();
-        if (arrayOfString1.length == 0) {
-          return;
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("AvatarPendantUtil", 2, "bulkGetStrangerPendantId, getStrangerInfo, size=" + arrayOfString2.length);
-      }
-      ??? = (VasExtensionHandler)this.a.a(71);
-    } while (??? == null);
-    ((VasExtensionHandler)???).a(arrayOfString2, new int[] { 40530, 27025, 27201, 27235, 27238, 27254 });
-    AvatarPendantUtil.a(System.currentTimeMillis());
+      QLog.e("ARMusicController", 2, "load fire music failed. id=" + paramInt1);
+      return;
+    }
+    catch (Exception paramSoundPool)
+    {
+      paramSoundPool.printStackTrace();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ARMusicController", 2, "load fire music success. id=" + paramInt1);
+    }
+    akje.a(this.a).add(Integer.valueOf(paramInt1));
+    if (akje.b(this.a).contains(Integer.valueOf(paramInt1)))
+    {
+      paramSoundPool.play(paramInt1, 1.0F, 1.0F, 1, 0, 1.0F);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akji
  * JD-Core Version:    0.7.0.1
  */

@@ -6,6 +6,8 @@ import android.opengl.GLES20;
 import android.os.Build.VERSION;
 import com.tencent.qphone.base.util.QLog;
 import javax.microedition.khronos.egl.EGL10;
+import mjw;
+import mjz;
 
 public class VideoEffectTest
   implements Runnable
@@ -13,16 +15,16 @@ public class VideoEffectTest
   private android.opengl.EGLContext jdField_a_of_type_AndroidOpenglEGLContext;
   private android.opengl.EGLDisplay jdField_a_of_type_AndroidOpenglEGLDisplay;
   private android.opengl.EGLSurface jdField_a_of_type_AndroidOpenglEGLSurface;
-  VideoEffectTest.TestResultCallback jdField_a_of_type_ComTencentAvVideoeffectVideoEffectTest$TestResultCallback = null;
   Thread jdField_a_of_type_JavaLangThread = null;
   private EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
   private javax.microedition.khronos.egl.EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
   private javax.microedition.khronos.egl.EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
   private javax.microedition.khronos.egl.EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
+  mjz jdField_a_of_type_Mjz = null;
   
-  public VideoEffectTest(VideoEffectTest.TestResultCallback paramTestResultCallback)
+  public VideoEffectTest(mjz parammjz)
   {
-    this.jdField_a_of_type_ComTencentAvVideoeffectVideoEffectTest$TestResultCallback = paramTestResultCallback;
+    this.jdField_a_of_type_Mjz = parammjz;
   }
   
   private void c()
@@ -116,10 +118,10 @@ public class VideoEffectTest
     {
       try
       {
-        localObject = new FilterProcess((byte[])localObject, 480, 640);
-        ((FilterProcess)localObject).a();
-        l2 = (((FilterProcess)localObject).a() + 0L + ((FilterProcess)localObject).a()) / 2L;
-        ((FilterProcess)localObject).b();
+        localObject = new mjw((byte[])localObject, 480, 640);
+        ((mjw)localObject).a();
+        l2 = (((mjw)localObject).a() + 0L + ((mjw)localObject).a()) / 2L;
+        ((mjw)localObject).b();
         if (l2 > 0L) {
           continue;
         }
@@ -132,8 +134,8 @@ public class VideoEffectTest
         i = 0;
         continue;
       }
-      if (this.jdField_a_of_type_ComTencentAvVideoeffectVideoEffectTest$TestResultCallback != null) {
-        this.jdField_a_of_type_ComTencentAvVideoeffectVideoEffectTest$TestResultCallback.a(i, l1, GLES20.glGetString(7936), GLES20.glGetString(7937));
+      if (this.jdField_a_of_type_Mjz != null) {
+        this.jdField_a_of_type_Mjz.a(i, l1, GLES20.glGetString(7936), GLES20.glGetString(7937));
       }
       return;
       i = 1;
@@ -162,9 +164,9 @@ public class VideoEffectTest
     }
     catch (Throwable localThrowable)
     {
-      if (this.jdField_a_of_type_ComTencentAvVideoeffectVideoEffectTest$TestResultCallback != null)
+      if (this.jdField_a_of_type_Mjz != null)
       {
-        this.jdField_a_of_type_ComTencentAvVideoeffectVideoEffectTest$TestResultCallback.a(0, 0L, null, null);
+        this.jdField_a_of_type_Mjz.a(0, 0L, null, null);
         return;
         d();
       }
@@ -173,7 +175,7 @@ public class VideoEffectTest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.videoeffect.VideoEffectTest
  * JD-Core Version:    0.7.0.1
  */

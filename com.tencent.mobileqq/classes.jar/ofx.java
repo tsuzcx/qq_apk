@@ -1,42 +1,90 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.QQStoryObserver;
-import com.tencent.biz.qqstory.model.item.FeedFeatureItem;
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.MyStorys;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetMyStoryVideoListStep.Result;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStep.GetResultSimpleStep;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStep.InitParamSimpleStep;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.Step;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.UncheckedCallable;
+import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class ofx
-  extends QQStoryObserver
 {
-  public ofx(NewMyStorySegment paramNewMyStorySegment) {}
+  private static volatile ofx jdField_a_of_type_Ofx;
+  private final List<ofy> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void a(StoryPushMsg paramStoryPushMsg)
+  public static ofx a()
   {
-    if ((NewMyStorySegment.a(this.a) == null) || (NewMyStorySegment.a(this.a).a == null))
+    if (jdField_a_of_type_Ofx == null) {}
+    try
     {
-      SLog.e("NewMyStorySegment", "onPushMessage MyStory feed is null!");
+      if (jdField_a_of_type_Ofx == null) {
+        jdField_a_of_type_Ofx = new ofx();
+      }
+      return jdField_a_of_type_Ofx;
+    }
+    finally {}
+  }
+  
+  public void a(int paramInt, List<DynamicChannelDataModel> paramList)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilList).iterator();
+      if (localIterator.hasNext()) {
+        ((ofy)localIterator.next()).a(paramInt, paramList);
+      }
+    }
+  }
+  
+  public void a(int paramInt1, boolean paramBoolean, List<ogf> paramList, int paramInt2)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilList).iterator();
+      if (localIterator.hasNext()) {
+        ((ofy)localIterator.next()).a(paramInt1, paramBoolean, paramList, paramInt2);
+      }
+    }
+  }
+  
+  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilList).iterator();
+      if (localIterator.hasNext()) {
+        ((ofy)localIterator.next()).a(paramInt, paramBoolean1, paramBoolean2, paramList);
+      }
+    }
+  }
+  
+  public void a(ofy paramofy)
+  {
+    if (paramofy == null) {}
+    while (this.jdField_a_of_type_JavaUtilList.contains(paramofy)) {
       return;
     }
-    String str = NewMyStorySegment.a(this.a).a.a;
-    if (!TextUtils.equals(str, paramStoryPushMsg.d))
+    synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      SLog.a("NewMyStorySegment", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.d, str);
+      this.jdField_a_of_type_JavaUtilList.add(paramofy);
       return;
     }
-    switch (paramStoryPushMsg.a)
+  }
+  
+  public void b(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-    case 16: 
-    case 17: 
-    default: 
+      Iterator localIterator = new ArrayList(this.jdField_a_of_type_JavaUtilList).iterator();
+      if (localIterator.hasNext()) {
+        ((ofy)localIterator.next()).b(paramInt, paramBoolean1, paramBoolean2, paramList);
+      }
+    }
+  }
+  
+  public void b(ofy paramofy)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      this.jdField_a_of_type_JavaUtilList.remove(paramofy);
       return;
     }
-    this.a.a(new Step[] { new SimpleStep.InitParamSimpleStep(GetMyStoryVideoListStep.Result.a(str)), (Step)this.a.b.a(), new SimpleStep.GetResultSimpleStep(new ofy(this, str)) });
   }
 }
 

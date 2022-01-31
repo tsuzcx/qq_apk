@@ -49,184 +49,180 @@ public class QBInstallerRecorder
     //   35: astore_1
     //   36: aload 5
     //   38: invokevirtual 65	java/io/File:exists	()Z
-    //   41: ifne +29 -> 70
+    //   41: ifne +26 -> 67
     //   44: ldc 53
-    //   46: astore_3
-    //   47: aload_3
-    //   48: astore_1
-    //   49: iconst_0
-    //   50: ifeq -41 -> 9
-    //   53: new 67	java/lang/NullPointerException
-    //   56: dup
-    //   57: invokespecial 68	java/lang/NullPointerException:<init>	()V
-    //   60: athrow
-    //   61: astore_2
-    //   62: aload_3
-    //   63: astore_1
-    //   64: aload_2
-    //   65: invokevirtual 71	java/io/IOException:printStackTrace	()V
-    //   68: aload_1
-    //   69: areturn
-    //   70: aload_2
-    //   71: astore_1
-    //   72: aload 5
-    //   74: invokestatic 75	com/tencent/smtt/utils/FileUtil:read	(Ljava/io/File;)[B
-    //   77: astore 6
-    //   79: aload 6
-    //   81: ifnull +11 -> 92
-    //   84: aload_2
-    //   85: astore_1
-    //   86: aload 6
-    //   88: arraylength
-    //   89: ifgt +28 -> 117
-    //   92: ldc 53
-    //   94: astore_2
-    //   95: aload_2
-    //   96: astore_1
-    //   97: iconst_0
-    //   98: ifeq -89 -> 9
-    //   101: new 67	java/lang/NullPointerException
-    //   104: dup
-    //   105: invokespecial 68	java/lang/NullPointerException:<init>	()V
-    //   108: athrow
-    //   109: astore_3
-    //   110: aload_2
-    //   111: astore_1
-    //   112: aload_3
-    //   113: astore_2
-    //   114: goto -50 -> 64
-    //   117: aload_2
-    //   118: astore_1
-    //   119: new 77	java/io/DataInputStream
-    //   122: dup
-    //   123: aload 5
-    //   125: invokestatic 81	com/tencent/smtt/utils/FileUtil:openInputStream	(Ljava/io/File;)Ljava/io/FileInputStream;
-    //   128: invokespecial 84	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
-    //   131: astore_2
-    //   132: aload_2
-    //   133: invokevirtual 87	java/io/DataInputStream:readUTF	()Ljava/lang/String;
-    //   136: astore_3
-    //   137: aload_3
-    //   138: astore_1
-    //   139: aload_2
-    //   140: ifnull -131 -> 9
-    //   143: aload_2
-    //   144: invokevirtual 90	java/io/DataInputStream:close	()V
-    //   147: aload_3
-    //   148: areturn
-    //   149: astore_2
-    //   150: aload_3
-    //   151: astore_1
-    //   152: goto -88 -> 64
-    //   155: astore_3
-    //   156: aload 4
-    //   158: astore_2
-    //   159: aload_2
-    //   160: astore_1
-    //   161: aload_3
-    //   162: invokevirtual 91	java/lang/Exception:printStackTrace	()V
+    //   46: astore_1
+    //   47: iconst_0
+    //   48: ifeq -39 -> 9
+    //   51: new 67	java/lang/NullPointerException
+    //   54: dup
+    //   55: invokespecial 68	java/lang/NullPointerException:<init>	()V
+    //   58: athrow
+    //   59: astore_1
+    //   60: aload_1
+    //   61: invokevirtual 71	java/io/IOException:printStackTrace	()V
+    //   64: ldc 53
+    //   66: areturn
+    //   67: aload_2
+    //   68: astore_1
+    //   69: aload 5
+    //   71: invokestatic 75	com/tencent/smtt/utils/FileUtil:read	(Ljava/io/File;)[B
+    //   74: astore 6
+    //   76: aload 6
+    //   78: ifnull +11 -> 89
+    //   81: aload_2
+    //   82: astore_1
+    //   83: aload 6
+    //   85: arraylength
+    //   86: ifgt +26 -> 112
+    //   89: ldc 53
+    //   91: astore_1
+    //   92: iconst_0
+    //   93: ifeq -84 -> 9
+    //   96: new 67	java/lang/NullPointerException
+    //   99: dup
+    //   100: invokespecial 68	java/lang/NullPointerException:<init>	()V
+    //   103: athrow
+    //   104: astore_1
+    //   105: aload_1
+    //   106: invokevirtual 71	java/io/IOException:printStackTrace	()V
+    //   109: ldc 53
+    //   111: areturn
+    //   112: aload_2
+    //   113: astore_1
+    //   114: new 77	java/io/DataInputStream
+    //   117: dup
+    //   118: aload 5
+    //   120: invokestatic 81	com/tencent/smtt/utils/FileUtil:openInputStream	(Ljava/io/File;)Ljava/io/FileInputStream;
+    //   123: invokespecial 84	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
+    //   126: astore_2
+    //   127: aload_2
+    //   128: invokevirtual 87	java/io/DataInputStream:readUTF	()Ljava/lang/String;
+    //   131: astore_3
+    //   132: aload_3
+    //   133: astore_1
+    //   134: aload_2
+    //   135: ifnull -126 -> 9
+    //   138: aload_2
+    //   139: invokevirtual 90	java/io/DataInputStream:close	()V
+    //   142: aload_3
+    //   143: areturn
+    //   144: astore_1
+    //   145: aload_1
+    //   146: invokevirtual 71	java/io/IOException:printStackTrace	()V
+    //   149: aload_3
+    //   150: areturn
+    //   151: astore_3
+    //   152: aload 4
+    //   154: astore_2
+    //   155: aload_2
+    //   156: astore_1
+    //   157: aload_3
+    //   158: invokevirtual 91	java/lang/Exception:printStackTrace	()V
+    //   161: aload_2
+    //   162: ifnull +7 -> 169
     //   165: aload_2
-    //   166: ifnull +7 -> 173
-    //   169: aload_2
-    //   170: invokevirtual 90	java/io/DataInputStream:close	()V
-    //   173: ldc 53
-    //   175: areturn
-    //   176: astore_1
-    //   177: aload_3
-    //   178: astore_2
-    //   179: aload_1
-    //   180: astore_3
-    //   181: aload_2
-    //   182: astore_1
-    //   183: aload_3
-    //   184: invokevirtual 92	java/lang/Error:printStackTrace	()V
-    //   187: aload_2
-    //   188: ifnull -15 -> 173
+    //   166: invokevirtual 90	java/io/DataInputStream:close	()V
+    //   169: ldc 53
+    //   171: areturn
+    //   172: astore_1
+    //   173: aload_1
+    //   174: invokevirtual 71	java/io/IOException:printStackTrace	()V
+    //   177: goto -8 -> 169
+    //   180: astore_1
+    //   181: aload_3
+    //   182: astore_2
+    //   183: aload_1
+    //   184: astore_3
+    //   185: aload_2
+    //   186: astore_1
+    //   187: aload_3
+    //   188: invokevirtual 92	java/lang/Error:printStackTrace	()V
     //   191: aload_2
-    //   192: invokevirtual 90	java/io/DataInputStream:close	()V
-    //   195: goto -22 -> 173
-    //   198: astore_1
-    //   199: aload_1
-    //   200: invokevirtual 71	java/io/IOException:printStackTrace	()V
-    //   203: goto -30 -> 173
-    //   206: astore_3
-    //   207: aload_1
-    //   208: astore_2
-    //   209: aload_3
-    //   210: astore_1
-    //   211: aload_2
-    //   212: ifnull +7 -> 219
+    //   192: ifnull -23 -> 169
+    //   195: aload_2
+    //   196: invokevirtual 90	java/io/DataInputStream:close	()V
+    //   199: goto -30 -> 169
+    //   202: astore_1
+    //   203: aload_1
+    //   204: invokevirtual 71	java/io/IOException:printStackTrace	()V
+    //   207: goto -38 -> 169
+    //   210: astore_3
+    //   211: aload_1
+    //   212: astore_2
+    //   213: aload_3
+    //   214: astore_1
     //   215: aload_2
-    //   216: invokevirtual 90	java/io/DataInputStream:close	()V
-    //   219: aload_1
-    //   220: athrow
-    //   221: astore_2
-    //   222: aload_2
-    //   223: invokevirtual 71	java/io/IOException:printStackTrace	()V
-    //   226: goto -7 -> 219
-    //   229: astore_1
-    //   230: goto -31 -> 199
+    //   216: ifnull +7 -> 223
+    //   219: aload_2
+    //   220: invokevirtual 90	java/io/DataInputStream:close	()V
+    //   223: aload_1
+    //   224: athrow
+    //   225: astore_2
+    //   226: aload_2
+    //   227: invokevirtual 71	java/io/IOException:printStackTrace	()V
+    //   230: goto -7 -> 223
     //   233: astore_1
-    //   234: goto -23 -> 211
+    //   234: goto -19 -> 215
     //   237: astore_3
-    //   238: goto -57 -> 181
+    //   238: goto -53 -> 185
     //   241: astore_3
-    //   242: goto -83 -> 159
+    //   242: goto -87 -> 155
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	245	0	this	QBInstallerRecorder
-    //   8	153	1	localObject1	Object
-    //   176	4	1	localError1	java.lang.Error
-    //   182	1	1	localObject2	Object
-    //   198	10	1	localIOException1	java.io.IOException
-    //   210	10	1	localObject3	Object
-    //   229	1	1	localIOException2	java.io.IOException
-    //   233	1	1	localObject4	Object
-    //   14	21	2	localObject5	Object
-    //   61	24	2	localIOException3	java.io.IOException
-    //   94	50	2	localObject6	Object
-    //   149	1	2	localIOException4	java.io.IOException
-    //   158	58	2	localObject7	Object
-    //   221	2	2	localIOException5	java.io.IOException
-    //   12	51	3	str1	String
-    //   109	4	3	localIOException6	java.io.IOException
-    //   136	15	3	str2	String
-    //   155	23	3	localException1	Exception
-    //   180	4	3	localError2	java.lang.Error
-    //   206	4	3	localObject8	Object
+    //   8	39	1	localObject1	Object
+    //   59	2	1	localIOException1	java.io.IOException
+    //   68	24	1	localObject2	Object
+    //   104	2	1	localIOException2	java.io.IOException
+    //   113	21	1	localObject3	Object
+    //   144	2	1	localIOException3	java.io.IOException
+    //   156	1	1	localObject4	Object
+    //   172	2	1	localIOException4	java.io.IOException
+    //   180	4	1	localError1	java.lang.Error
+    //   186	1	1	localObject5	Object
+    //   202	10	1	localIOException5	java.io.IOException
+    //   214	10	1	localObject6	Object
+    //   233	1	1	localObject7	Object
+    //   14	206	2	localObject8	Object
+    //   225	2	2	localIOException6	java.io.IOException
+    //   12	138	3	str	String
+    //   151	31	3	localException1	Exception
+    //   184	4	3	localError2	java.lang.Error
+    //   210	4	3	localObject9	Object
     //   237	1	3	localError3	java.lang.Error
     //   241	1	3	localException2	Exception
-    //   16	141	4	localObject9	Object
-    //   32	92	5	localFile	java.io.File
-    //   77	10	6	arrayOfByte	byte[]
+    //   16	137	4	localObject10	Object
+    //   32	87	5	localFile	java.io.File
+    //   74	10	6	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   53	61	61	java/io/IOException
-    //   101	109	109	java/io/IOException
-    //   143	147	149	java/io/IOException
-    //   20	34	155	java/lang/Exception
-    //   36	44	155	java/lang/Exception
-    //   72	79	155	java/lang/Exception
-    //   86	92	155	java/lang/Exception
-    //   119	132	155	java/lang/Exception
-    //   20	34	176	java/lang/Error
-    //   36	44	176	java/lang/Error
-    //   72	79	176	java/lang/Error
-    //   86	92	176	java/lang/Error
-    //   119	132	176	java/lang/Error
-    //   191	195	198	java/io/IOException
-    //   20	34	206	finally
-    //   36	44	206	finally
-    //   72	79	206	finally
-    //   86	92	206	finally
-    //   119	132	206	finally
-    //   161	165	206	finally
-    //   183	187	206	finally
-    //   215	219	221	java/io/IOException
-    //   169	173	229	java/io/IOException
-    //   132	137	233	finally
-    //   132	137	237	java/lang/Error
-    //   132	137	241	java/lang/Exception
+    //   51	59	59	java/io/IOException
+    //   96	104	104	java/io/IOException
+    //   138	142	144	java/io/IOException
+    //   20	34	151	java/lang/Exception
+    //   36	44	151	java/lang/Exception
+    //   69	76	151	java/lang/Exception
+    //   83	89	151	java/lang/Exception
+    //   114	127	151	java/lang/Exception
+    //   165	169	172	java/io/IOException
+    //   20	34	180	java/lang/Error
+    //   36	44	180	java/lang/Error
+    //   69	76	180	java/lang/Error
+    //   83	89	180	java/lang/Error
+    //   114	127	180	java/lang/Error
+    //   195	199	202	java/io/IOException
+    //   20	34	210	finally
+    //   36	44	210	finally
+    //   69	76	210	finally
+    //   83	89	210	finally
+    //   114	127	210	finally
+    //   157	161	210	finally
+    //   187	191	210	finally
+    //   219	223	225	java/io/IOException
+    //   127	132	233	finally
+    //   127	132	237	java/lang/Error
+    //   127	132	241	java/lang/Exception
   }
   
   private String loadQBInstallerFromSysSetting()
@@ -325,39 +321,41 @@ public class QBInstallerRecorder
     //   107: invokevirtual 133	java/io/DataOutputStream:close	()V
     //   110: return
     //   111: astore_1
-    //   112: goto -25 -> 87
-    //   115: astore_1
-    //   116: aload_2
-    //   117: ifnull +7 -> 124
-    //   120: aload_2
-    //   121: invokevirtual 133	java/io/DataOutputStream:close	()V
-    //   124: aload_1
-    //   125: athrow
-    //   126: astore_2
-    //   127: aload_2
-    //   128: invokevirtual 71	java/io/IOException:printStackTrace	()V
-    //   131: goto -7 -> 124
-    //   134: astore_1
-    //   135: aload_3
-    //   136: astore_2
-    //   137: goto -21 -> 116
-    //   140: astore_2
-    //   141: aload_3
-    //   142: astore_1
-    //   143: aload_2
-    //   144: astore_3
-    //   145: goto -49 -> 96
+    //   112: aload_1
+    //   113: invokevirtual 71	java/io/IOException:printStackTrace	()V
+    //   116: return
+    //   117: astore_1
+    //   118: aload_2
+    //   119: ifnull +7 -> 126
+    //   122: aload_2
+    //   123: invokevirtual 133	java/io/DataOutputStream:close	()V
+    //   126: aload_1
+    //   127: athrow
+    //   128: astore_2
+    //   129: aload_2
+    //   130: invokevirtual 71	java/io/IOException:printStackTrace	()V
+    //   133: goto -7 -> 126
+    //   136: astore_1
+    //   137: aload_3
+    //   138: astore_2
+    //   139: goto -21 -> 118
+    //   142: astore_2
+    //   143: aload_3
+    //   144: astore_1
+    //   145: aload_2
+    //   146: astore_3
+    //   147: goto -51 -> 96
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	148	0	this	QBInstallerRecorder
-    //   0	148	1	paramString	String
-    //   13	108	2	localObject1	Object
-    //   126	2	2	localIOException	java.io.IOException
-    //   136	1	2	localException1	Exception
-    //   140	4	2	localException2	Exception
+    //   0	150	0	this	QBInstallerRecorder
+    //   0	150	1	paramString	String
+    //   13	110	2	localObject1	Object
+    //   128	2	2	localIOException	java.io.IOException
+    //   138	1	2	localException1	Exception
+    //   142	4	2	localException2	Exception
     //   8	74	3	localDataOutputStream	java.io.DataOutputStream
-    //   92	50	3	localException3	Exception
-    //   144	1	3	localObject2	Object
+    //   92	52	3	localException3	Exception
+    //   146	1	3	localObject2	Object
     //   10	84	4	localObject3	Object
     //   26	31	5	localFile	java.io.File
     // Exception table:
@@ -368,14 +366,14 @@ public class QBInstallerRecorder
     //   40	46	92	java/lang/Exception
     //   48	68	92	java/lang/Exception
     //   106	110	111	java/io/IOException
-    //   14	28	115	finally
-    //   30	38	115	finally
-    //   40	46	115	finally
-    //   48	68	115	finally
-    //   98	102	115	finally
-    //   120	124	126	java/io/IOException
-    //   68	77	134	finally
-    //   68	77	140	java/lang/Exception
+    //   14	28	117	finally
+    //   30	38	117	finally
+    //   40	46	117	finally
+    //   48	68	117	finally
+    //   98	102	117	finally
+    //   122	126	128	java/io/IOException
+    //   68	77	136	finally
+    //   68	77	142	java/lang/Exception
   }
   
   private void recordInstallerToSysSetting(String paramString)
@@ -410,7 +408,7 @@ public class QBInstallerRecorder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.smtt.utils.QBInstallerRecorder
  * JD-Core Version:    0.7.0.1
  */

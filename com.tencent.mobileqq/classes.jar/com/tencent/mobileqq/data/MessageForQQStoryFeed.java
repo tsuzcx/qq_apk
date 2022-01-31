@@ -3,6 +3,7 @@ package com.tencent.mobileqq.data;
 import aio.qq_story.feed.AIOQQStoryFeedPB.AIOQQStoryFeed;
 import aio.qq_story.feed.AIOQQStoryFeedPB.CoverItem;
 import aio.qq_story.feed.AIOQQStoryFeedPB.MsgBody;
+import ajjy;
 import android.text.TextUtils;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -50,12 +51,12 @@ public class MessageForQQStoryFeed
   {
     AIOQQStoryFeedPB.CoverItem localCoverItem = new AIOQQStoryFeedPB.CoverItem();
     localCoverItem.str_cover.set("https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D500/sign=e65f24392c2dd42a5b0901ab333a5b2f/00e93901213fb80e4a9910873fd12f2eb9389411.jpg");
-    localCoverItem.str_content.set("我发表了2个日迹");
+    localCoverItem.str_content.set("我发表了2个小视频");
     AIOQQStoryFeedPB.MsgBody localMsgBody = new AIOQQStoryFeedPB.MsgBody();
     AIOQQStoryFeedPB.AIOQQStoryFeed localAIOQQStoryFeed = new AIOQQStoryFeedPB.AIOQQStoryFeed();
     localAIOQQStoryFeed.msg_covers_info.set(localCoverItem);
     localAIOQQStoryFeed.uint64_time.set(System.currentTimeMillis() / 1000L);
-    localAIOQQStoryFeed.str_location.set("江南");
+    localAIOQQStoryFeed.str_location.set(ajjy.a(2131640813));
     localAIOQQStoryFeed.str_feed_id.set("FEED-1000-2f583f987a1ffd3644b2672111f0d64b31d30c72d9598be3-20180412");
     localAIOQQStoryFeed.str_union_id.set("0_2463624242");
     localMsgBody.msg_aio_feed.set(localAIOQQStoryFeed);
@@ -109,7 +110,7 @@ public class MessageForQQStoryFeed
     }
   }
   
-  protected void postRead()
+  public void postRead()
   {
     doParse();
   }

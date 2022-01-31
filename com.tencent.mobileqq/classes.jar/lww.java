@@ -1,26 +1,21 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeCommonPgcVideo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnSubRegionClickListener;
 
-public class lww
+class lww
   implements View.OnClickListener
 {
-  public lww(FeedItemCellTypeCommonPgcVideo paramFeedItemCellTypeCommonPgcVideo) {}
+  lww(lwq paramlwq) {}
   
   public void onClick(View paramView)
   {
-    ReadInJoyBaseAdapter.OnSubRegionClickListener localOnSubRegionClickListener = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
-    if (localOnSubRegionClickListener != null) {
-      localOnSubRegionClickListener.a(paramView, ((IReadInJoyModel)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    if (!lwq.a(this.a)) {
+      this.a.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lww
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,54 @@
-import com.tencent.mobileqq.activity.aio.HotReactiveHelper;
-import com.tencent.mobileqq.adapter.BuddyListAdapter;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
-import java.util.HashSet;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class ynf
-  implements Runnable
+class ynf
+  implements ynl
 {
-  public ynf(BuddyListAdapter paramBuddyListAdapter) {}
-  
-  public void run()
+  public boolean a(ymw paramymw, String paramString, String... paramVarArgs)
   {
-    if ((FriendsManager)BuddyListAdapter.a(this.a).getManager(50) != null)
+    Object localObject = null;
+    if (paramymw != null) {}
+    for (paramVarArgs = paramymw.a(); (paramymw == null) || (paramVarArgs == null); paramVarArgs = null)
     {
-      HashSet localHashSet = HotReactiveHelper.a();
-      if ((localHashSet != null) && (localHashSet.size() > 0))
+      yny.d("GdtCarrierJsCallHandler", "handleJsCallRequest error");
+      return true;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("carrier", ypb.a(paramVarArgs));
+    }
+    catch (JSONException localJSONException)
+    {
+      try
       {
-        ArrayList localArrayList = new ArrayList(localHashSet);
-        BuddyListAdapter.a(this.a).b(localArrayList);
-        localHashSet.clear();
+        for (;;)
+        {
+          paramymw.callJs(paramString, new String[] { localJSONObject.toString() });
+          paramString = localObject;
+          if (paramymw != null) {
+            paramString = paramymw.a();
+          }
+          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getCarrier", paramString);
+          return true;
+          localJSONException = localJSONException;
+          yny.d("GdtCarrierJsCallHandler", "handleJsCallRequest error", localJSONException);
+        }
+      }
+      catch (Throwable paramString)
+      {
+        for (;;)
+        {
+          yny.d("GdtCarrierJsCallHandler", "handleJsCallRequest error", paramString);
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ynf
  * JD-Core Version:    0.7.0.1
  */

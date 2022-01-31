@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="110.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.album.business.photolist.ui.listitem.NormalHeaderCell android:id="@id/faf" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/hck" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/yw" android:baselineAligned="false" />
+</LinearLayout>

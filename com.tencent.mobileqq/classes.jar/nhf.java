@@ -1,47 +1,22 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem.UserID;
-import com.tencent.biz.qqstory.network.request.ConvertUinAndUnionIdRequest;
-import com.tencent.biz.qqstory.network.response.ConvertUinAndUnionIdResponse;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
+import org.json.JSONObject;
 
-public class nhf
-  implements CmdTaskManger.CommandCallback
+final class nhf
+  implements ViewFactory.FoundClickableViewListener
 {
-  public nhf(UserManager paramUserManager, QQUserUIItem.UserID paramUserID, boolean paramBoolean, long paramLong) {}
+  nhf(String paramString, JSONObject paramJSONObject) {}
   
-  public void a(ConvertUinAndUnionIdRequest arg1, ConvertUinAndUnionIdResponse paramConvertUinAndUnionIdResponse, ErrorMessage paramErrorMessage)
+  public void onFound(ViewBase paramViewBase)
   {
-    long l = System.currentTimeMillis();
-    if (paramErrorMessage.isSuccess())
+    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
     {
-      ??? = paramConvertUinAndUnionIdResponse.a;
-      if (???.size() > 0)
-      {
-        ??? = (QQUserUIItem)???.get(0);
-        ??? = this.jdField_a_of_type_ComTencentBizQqstoryModelUserManager.a(???);
-        this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID.a = ???.qq;
-        this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID.b = ???.uid;
-        if (this.jdField_a_of_type_Boolean)
-        {
-          ??? = (StoryConfigManager)SuperManager.a(10);
-          ???.b("qqstory_my_uin", this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID.a);
-          ???.b("qqstory_my_union_id", this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID.b);
-        }
-      }
-      SLog.d("Q.qqstory.user.UserManager", "get server inf success ,%s , time :%d", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID, Long.valueOf(l - this.jdField_a_of_type_Long) });
-    }
-    synchronized (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem$UserID.notifyAll();
+    default: 
+      paramViewBase.setOnClickListener(new nhh(this));
       return;
-      SLog.d("Q.qqstory.user.UserManager", "get server info fail , %s, time :%d", new Object[] { paramErrorMessage, Long.valueOf(l - this.jdField_a_of_type_Long) });
     }
+    paramViewBase.setOnClickListener(new nhg(this));
   }
 }
 

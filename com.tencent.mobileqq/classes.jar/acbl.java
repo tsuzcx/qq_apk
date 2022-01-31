@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.data.FeedsManager;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class acbl
-  implements Runnable
+  implements View.OnClickListener
 {
-  public acbl(FeedsManager paramFeedsManager, ArrayList paramArrayList) {}
+  public acbl(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    FeedsManager.access$400(this.jdField_a_of_type_ComTencentMobileqqDataFeedsManager, this.jdField_a_of_type_JavaUtilArrayList);
+    TroopRequestActivity.a(this.a).setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.security_verify", 2, "close warning tips");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acbl
  * JD-Core Version:    0.7.0.1
  */

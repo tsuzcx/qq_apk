@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.HashMap;
+import java.util.Map;
 
-class tet
-  implements Runnable
+public class tet
 {
-  tet(tes paramtes) {}
+  public int a;
+  public StoryVideoItem a;
+  public Map<String, String> a = new HashMap();
+  public final String b = "Q.qqstory.share." + getClass().getSimpleName();
   
-  public void run()
+  public final void a(String paramString1, String paramString2)
   {
-    QQToast.a(this.a.a.a.getApplicationContext(), this.a.a.a.getString(2131436529), 0).b(this.a.a.a.getTitleBarHeight());
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
+      this.a.put(paramString1, paramString2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tet
  * JD-Core Version:    0.7.0.1
  */

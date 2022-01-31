@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import android.view.View;
+import com.tencent.widget.AdapterView;
 
-public final class aghf
-  implements Parcelable.Creator
+class aghf
+  implements behk
 {
-  public OcrRecogResult a(Parcel paramParcel)
-  {
-    return new OcrRecogResult(paramParcel);
-  }
+  aghf(aggx paramaggx) {}
   
-  public OcrRecogResult[] a(int paramInt)
+  public void a(AdapterView<?> paramAdapterView) {}
+  
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    return new OcrRecogResult[paramInt];
+    this.a.a(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aghf
  * JD-Core Version:    0.7.0.1
  */

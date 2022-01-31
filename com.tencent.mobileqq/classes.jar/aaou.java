@@ -1,26 +1,20 @@
-import android.os.Build;
-import com.tencent.mobileqq.ar.arengine.ARReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class aaou
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aaou(ARReport paramARReport, int paramInt, long paramLong) {}
+  public aaou(DialogActivity paramDialogActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("ar_model", Build.MODEL);
-    localHashMap.put("result", this.jdField_a_of_type_Int + "");
-    localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
-    StatisticCollector.a(BaseApplication.getContext()).a("", "AREngine_openCamera", true, 0L, 0L, localHashMap, "", true);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaou
  * JD-Core Version:    0.7.0.1
  */

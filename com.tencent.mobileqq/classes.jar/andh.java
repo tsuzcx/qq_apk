@@ -1,18 +1,17 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import android.graphics.Point;
+import android.view.View;
 
-public class andh
-  implements andz
+public abstract interface andh
 {
-  public andh(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
+  public abstract View a(int paramInt);
   
-  public void a()
-  {
-    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.playMusicList(this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a(View paramView);
+  
+  public abstract void a(View paramView, Point paramPoint1, Point paramPoint2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     andh
  * JD-Core Version:    0.7.0.1
  */

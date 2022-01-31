@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.dating;
 
-import acen;
+import ajjy;
+import amvu;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -11,7 +12,7 @@ import java.io.UnsupportedEncodingException;
 public class DatingFilters
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new acen();
+  public static final Parcelable.Creator<DatingFilters> CREATOR = new amvu();
   public static final int[] a;
   public static final String[] a;
   public static final int[] b;
@@ -28,11 +29,11 @@ public class DatingFilters
   
   static
   {
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "不限", "18-22岁", "23-26岁", "27-35岁", "35岁以上" };
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { ajjy.a(2131637061), "18-22岁", "23-26岁", "27-35岁", "35岁以上" };
     jdField_a_of_type_ArrayOfInt = new int[] { 0, 22, 26, 35, 120 };
     jdField_b_of_type_ArrayOfInt = new int[] { 0, 18, 23, 27, 36 };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { "不限", "今天", "明天", "一周内", "一个月内" };
-    jdField_c_of_type_ArrayOfJavaLangString = new String[] { "不限", "吃饭", "看电影", "唱歌", "出行", "运动" };
+    jdField_b_of_type_ArrayOfJavaLangString = new String[] { ajjy.a(2131637059), ajjy.a(2131637065), ajjy.a(2131637064), ajjy.a(2131637062), ajjy.a(2131637060) };
+    jdField_c_of_type_ArrayOfJavaLangString = new String[] { ajjy.a(2131637067), ajjy.a(2131637069), ajjy.a(2131637066), ajjy.a(2131637063), ajjy.a(2131637058), ajjy.a(2131637068) };
   }
   
   private DatingFilters(Parcel paramParcel)
@@ -150,7 +151,7 @@ public class DatingFilters
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.dating.DatingFilters
  * JD-Core Version:    0.7.0.1
  */

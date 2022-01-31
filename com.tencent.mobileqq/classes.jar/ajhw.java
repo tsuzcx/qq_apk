@@ -1,28 +1,40 @@
-import com.tencent.mobileqq.troop.data.TroopAioKeywordHelper;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
-import java.util.List;
+import com.tencent.mobileqq.util.FaceInfo;
 
 public class ajhw
-  implements Runnable
+  implements ajfe
 {
-  public ajhw(TroopAioKeywordTipManager paramTroopAioKeywordTipManager, String paramString1, String paramString2, Integer paramInteger) {}
+  public void a(boolean paramBoolean, FaceInfo paramFaceInfo) {}
   
-  public void run()
+  public void b(boolean paramBoolean, FaceInfo paramFaceInfo) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    String str = TroopAioKeywordTipManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_JavaLangInteger);
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager.b)
-    {
-      if (!this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager.b.contains(str)) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager.b.add(str);
+    Object localObject = null;
+    if (paramInt == 0) {
+      if (paramObject == null)
+      {
+        paramObject = null;
+        a(paramBoolean, paramObject);
       }
-      TroopAioKeywordHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager.a, str);
+    }
+    while (paramInt != 1) {
+      for (;;)
+      {
+        return;
+        paramObject = (FaceInfo)paramObject;
+      }
+    }
+    if (paramObject == null) {}
+    for (paramObject = localObject;; paramObject = (FaceInfo)paramObject)
+    {
+      b(paramBoolean, paramObject);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajhw
  * JD-Core Version:    0.7.0.1
  */

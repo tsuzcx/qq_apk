@@ -1,19 +1,25 @@
-import com.tencent.biz.common.offline.util.OfflineDownloader;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMManager;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.FavEmosmManageActivity;
 
-class aade
-  implements Runnable
+public class aade
+  implements DialogInterface.OnClickListener
 {
-  aade(aadc paramaadc) {}
+  public aade(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    UpgradeTIMManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMManager).a(this.a.jdField_a_of_type_JavaLangString);
+    Intent localIntent = new Intent(this.a.a, FavEmosmManageActivity.class);
+    this.a.a.startActivity(localIntent);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aade
  * JD-Core Version:    0.7.0.1
  */

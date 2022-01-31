@@ -9,10 +9,10 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class apollo_game_status$STCMGameMessage$STGameQuitRoom
-  extends MessageMicro
+  extends MessageMicro<STGameQuitRoom>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatField rpt_uint32_uin_list = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
+  public final PBRepeatField<Integer> rpt_uint32_uin_list = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
   public final PBBytesField str_game_quit_info = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field uint32_room_vol = PBField.initUInt32(0);
   
@@ -24,7 +24,7 @@ public final class apollo_game_status$STCMGameMessage$STGameQuitRoom
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.apollo_game_status.STCMGameMessage.STGameQuitRoom
  * JD-Core Version:    0.7.0.1
  */

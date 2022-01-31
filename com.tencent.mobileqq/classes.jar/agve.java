@@ -1,23 +1,14 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
-
-public class agve
-  implements ValueAnimation.AnimationUpdateListener
+public abstract interface agve
 {
-  public agve(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
+  public abstract void a();
   
-  public void a(ValueAnimation paramValueAnimation, float paramFloat, Rect paramRect, Transformation paramTransformation)
-  {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramRect);
-  }
+  public abstract void a(int paramInt1, int paramInt2, String paramString, Object paramObject);
+  
+  public abstract void au_();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agve
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,54 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.net.GdtAdHandler;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.data.MessageForApollo;
+import java.util.List;
 
-public class aimt
-  implements View.OnClickListener
+public abstract interface aimt
 {
-  public aimt(StructMsgForGeneralShare paramStructMsgForGeneralShare, Context paramContext, PopupWindow paramPopupWindow) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(View paramView)
-  {
-    QLog.d(StructMsgForGeneralShare.access$000(), 1, "filter_ad");
-    ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().b((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
-    ((GdtAdHandler)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(110)).a(7, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
-    QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131432435), 1).a();
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()) {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
-    }
-  }
+  public abstract void a(int paramInt1, String paramString1, long paramLong, String paramString2, int paramInt2);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(String paramString, int paramInt1, int paramInt2);
+  
+  public abstract void a(String paramString, int paramInt, long paramLong);
+  
+  public abstract void a(String paramString, int paramInt, List<MessageForApollo> paramList);
+  
+  public abstract void a(String paramString, aeco paramaeco);
+  
+  public abstract void a(String paramString, aimv paramaimv);
+  
+  public abstract void a(String paramString, List<ApolloGameData> paramList);
+  
+  public abstract void a(String paramString, boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean, int paramInt1, long paramLong, int paramInt2);
+  
+  public abstract void a(boolean paramBoolean, String paramString, int paramInt, long paramLong);
+  
+  public abstract void a(boolean paramBoolean, String paramString1, int paramInt, long paramLong, String paramString2);
+  
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2, String paramString, int paramInt, long paramLong);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void b(String paramString, int paramInt1, int paramInt2);
+  
+  public abstract void b(boolean paramBoolean, String paramString, int paramInt, long paramLong);
+  
+  public abstract void c(String paramString);
+  
+  public abstract void d(String paramString);
+  
+  public abstract void e(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aimt
  * JD-Core Version:    0.7.0.1
  */

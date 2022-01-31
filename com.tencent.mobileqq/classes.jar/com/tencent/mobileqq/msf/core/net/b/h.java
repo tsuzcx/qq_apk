@@ -7,12 +7,12 @@ import com.tencent.qphone.base.util.QLog;
 public class h
 {
   private static final String a = "Traceroute";
-  private boolean b;
+  private boolean b = false;
   private String c = "";
   private String d = "";
   private int e = 30;
   private int f = 10;
-  private a g = new a();
+  private h.a g = new h.a();
   
   public h(String paramString, boolean paramBoolean)
   {
@@ -47,7 +47,6 @@ public class h
   
   /* Error */
   private String a(String paramString, int paramInt)
-    throws Exception
   {
     // Byte code:
     //   0: invokestatic 89	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
@@ -197,7 +196,7 @@ public class h
     return this.d;
   }
   
-  public a a()
+  public h.a a()
   {
     String str1 = "Traceroute start host: " + this.c + " maxTTL: " + this.e + " timeout: " + this.f + "s";
     if (this.b) {
@@ -261,7 +260,7 @@ public class h
     this.e = paramInt;
   }
   
-  public a b()
+  public h.a b()
   {
     return this.g;
   }
@@ -269,13 +268,6 @@ public class h
   public void b(int paramInt)
   {
     this.f = paramInt;
-  }
-  
-  public static class a
-  {
-    public int a;
-    public boolean b;
-    public String c = "";
   }
 }
 

@@ -1,21 +1,27 @@
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.TribeShortVideoItemBuilder;
 
 public class adrw
-  implements FMDialogUtil.FMDialogInterface
+  implements View.OnClickListener
 {
-  public adrw(SendBottomBar paramSendBottomBar) {}
+  public adrw(TribeShortVideoItemBuilder paramTribeShortVideoItemBuilder) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.c();
+    adsa localadsa = (adsa)aciy.a(paramView);
+    if (paramView == localadsa.jdField_a_of_type_AndroidWidgetFrameLayout) {
+      this.a.b(localadsa);
+    }
+    while (paramView != localadsa.jdField_a_of_type_AndroidWidgetRelativeLayout) {
+      return;
+    }
+    this.a.a(localadsa);
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adrw
  * JD-Core Version:    0.7.0.1
  */

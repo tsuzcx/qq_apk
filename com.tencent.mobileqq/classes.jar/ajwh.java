@@ -1,294 +1,230 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.biz.troop.file.TroopFileProtocol;
-import com.tencent.biz.troop.file.TroopFileProtocol.ReqCopyToObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.IForwardCallBack;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileError.SimpleErrorInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.TaskPool;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.TaskScan;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.ResponseHandler;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.Map;
-import java.util.UUID;
-import mqq.app.MobileQQ;
-import tencent.im.cs.cmd0x383.cmd0x383.ApplyCopyToRspBody;
-import tencent.im.cs.cmd0x383.cmd0x383.RspBody;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Vector;
+import mqq.manager.Manager;
 
 public class ajwh
-  extends TroopFileProtocol.ReqCopyToObserver
+  implements Manager
 {
-  public ajwh(TroopFileTransferManager paramTroopFileTransferManager) {}
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  Vector<ajwe> jdField_a_of_type_JavaUtilVector;
+  boolean jdField_a_of_type_Boolean = false;
   
-  private final void a(TroopFileTransferManager.Item paramItem, cmd0x383.RspBody paramRspBody, long paramLong)
+  public ajwh(QQAppInterface paramQQAppInterface)
   {
-    if (paramRspBody == null) {}
-    for (;;)
-    {
-      try
-      {
-        if (paramItem.mForwardCallback != null)
-        {
-          paramRspBody = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources().getString(2131429810);
-          paramItem.mForwardCallback.a(false, paramLong, 801, paramRspBody, paramItem.Id.toString(), String.valueOf(paramItem.ForwardTroopuin), "");
-        }
-        return;
-      }
-      finally {}
-      int i = paramRspBody.int32_ret_code.get();
-      String str1 = paramRspBody.str_client_wording.get();
-      String str2 = paramRspBody.str_ret_msg.get();
-      if (QLog.isDevelopLevel()) {
-        QLog.e("TroopFileTransferManager", 4, String.format("onRspCopyToOffline -fileName: %s ,- retCode: %d, -retMsg: %s", new Object[] { paramItem.FileName, Integer.valueOf(i), str2 }));
-      }
-      if (i != 0)
-      {
-        if (paramItem.mForwardCallback != null) {
-          paramItem.mForwardCallback.a(false, paramLong, i, str1, paramItem.Id.toString(), String.valueOf(paramItem.ForwardTroopuin), "");
-        }
-      }
-      else
-      {
-        paramRspBody = ((cmd0x383.ApplyCopyToRspBody)paramRspBody.msg_copy_to_rsp_body.get()).str_save_file_path.get();
-        if (paramItem.mForwardCallback != null) {
-          paramItem.mForwardCallback.a(true, paramLong, i, "", paramItem.Id.toString(), String.valueOf(paramItem.ForwardTroopuin), paramRspBody);
-        }
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_JavaUtilVector = new Vector();
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public final void a(TroopFileTransferManager.Item paramItem, cmd0x383.RspBody paramRspBody)
+  private void a(atmp paramatmp)
   {
-    int i = 207;
-    if (paramRspBody == null) {}
-    try
-    {
-      paramRspBody = new TroopFileError.SimpleErrorInfo(paramItem.FileName, this.a.e, 5, 207);
-      this.a.a(paramItem, 5, paramRspBody);
-      return;
-    }
-    finally {}
-    int j = paramRspBody.int32_ret_code.get();
-    if (QLog.isDevelopLevel()) {
-      QLog.e("TroopFileTransferManager", 4, String.format("onRspCopyToGroup - retCode: %d", new Object[] { Integer.valueOf(j) }));
-    }
-    if (j < 0)
-    {
-      paramRspBody = paramRspBody.str_client_wording.get();
-      switch (j)
-      {
-      }
-    }
     for (;;)
     {
-      paramRspBody = new TroopFileError.SimpleErrorInfo(paramItem.FileName, paramItem.ForwardTroopuin, 5, i, paramRspBody);
-      this.a.a(paramItem, 5, paramRspBody);
-      paramItem = ((QQAppInterface)this.b.get()).a().a(paramItem.entrySessionID);
-      if (paramItem == null) {
-        break;
-      }
-      long l = paramItem.structMsgSeq;
-      ((QQAppInterface)this.b.get()).a().b("" + this.a.e, 1, l);
-      break;
-      i = 202;
-      continue;
-      i = 600;
-      continue;
-      i = 701;
-      continue;
-      i = 706;
-      paramRspBody = "转发的群仅允许群主和管理员上传文件";
-      continue;
-      if (paramItem.BusId == 102)
+      atmr localatmr;
+      ajwe localajwe;
+      String str;
+      ajwj localajwj;
+      synchronized (this.jdField_a_of_type_JavaUtilVector)
       {
-        paramItem.BusId = 104;
-        TroopFileProtocol.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, this.a.e, paramItem, this.a.e, 0L, TroopFileTransferManager.a(this.a));
-        break;
-        if ((TextUtils.isEmpty(paramItem.LocalFile)) || (!new File(paramItem.LocalFile).exists())) {
-          break label605;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.db.Cache", 2, "transSaveToDatabase writeRunable msgQueue size:" + this.jdField_a_of_type_JavaUtilVector.size());
         }
-        this.a.a(paramItem, 0);
-        paramItem.BusId = 102;
-        this.a.jdField_a_of_type_ArrayOfComTencentMobileqqTroopUtilsTroopFileTransferManager$TaskPool[0].a(new TroopFileTransferManager.TaskScan(this.a, paramItem));
-        break;
-        new Handler(Looper.getMainLooper()).post(new ajwi(this));
-        paramRspBody = ((cmd0x383.ApplyCopyToRspBody)paramRspBody.msg_copy_to_rsp_body.get()).str_save_file_path.get();
-        paramItem.FilePath = paramRspBody;
-        Object localObject = paramItem.getInfo(this.a.e);
-        if (localObject != null) {
-          ((TroopFileStatusInfo)localObject).e = paramRspBody;
+        if (this.jdField_a_of_type_JavaUtilVector.isEmpty()) {
+          return;
         }
-        localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramItem.entrySessionID);
-        if (localObject != null) {
-          ((FileManagerEntity)localObject).strTroopFilePath = paramRspBody;
+        Object localObject3 = (List)this.jdField_a_of_type_JavaUtilVector.clone();
+        this.jdField_a_of_type_JavaUtilVector.clear();
+        if (localObject3 == null) {
+          break label477;
         }
-        this.a.a(paramItem, 7, 0);
-        this.a.c(paramItem);
-        break;
-        continue;
-      }
-      i = 204;
-      continue;
-      i = -139;
-      continue;
-      label605:
-      i = 603;
-      continue;
-      i = 705;
-    }
-  }
-  
-  public void a(boolean paramBoolean, cmd0x383.RspBody paramRspBody, Bundle paramBundle)
-  {
-    long l = paramBundle.getLong("troopUin");
-    TroopFileTransferManager localTroopFileTransferManager;
-    Object localObject;
-    try
-    {
-      localTroopFileTransferManager = (TroopFileTransferManager)TroopFileTransferManager.a().get(Long.valueOf(l));
-      if (localTroopFileTransferManager == null)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.i("TroopFileTransferManager", 4, "bad troopUin" + l);
-        }
-        return;
-      }
-      String str = paramBundle.getString("itemKey");
-      if (str == null) {
-        return;
-      }
-      localObject = UUID.fromString(str);
-      try
-      {
-        localObject = (TroopFileTransferManager.Item)localTroopFileTransferManager.jdField_a_of_type_JavaUtilMap.get(localObject);
-        if (localObject == null)
+        localObject2 = null;
+        ??? = null;
+        try
         {
-          if (QLog.isDevelopLevel()) {
-            QLog.i("TroopFileTransferManager", 4, "bad item key" + str);
+          localatmr = paramatmp.a();
+          ??? = localatmr;
+          localObject2 = localatmr;
+          localatmr.a();
+          ??? = localatmr;
+          localObject2 = localatmr;
+          localObject3 = ((List)localObject3).iterator();
+        }
+        catch (Exception paramatmp)
+        {
+          localObject2 = ???;
+          paramatmp.printStackTrace();
+          localObject2 = ???;
+          if (!QLog.isColorLevel()) {
+            break label351;
           }
+          localObject2 = ???;
+          QLog.w("Q.db.Cache", 2, "writeRunable write exception: " + paramatmp.getMessage());
+          if (??? == null) {
+            break label477;
+          }
+          ((atmr)???).b();
+          return;
+          paramatmp = finally;
+          throw paramatmp;
+          ??? = localatmr;
+          localObject2 = localatmr;
+          paramatmp.a(localajwe.jdField_a_of_type_Atmo);
+          if (localajwj == null) {
+            continue;
+          }
+          ??? = localatmr;
+          localObject2 = localatmr;
+          localajwj.a(str, 1);
+          continue;
+        }
+        finally
+        {
+          if (localObject2 == null) {
+            break label414;
+          }
+          localObject2.b();
+        }
+        ??? = localatmr;
+        localObject2 = localatmr;
+        if (!((Iterator)localObject3).hasNext()) {
+          break label456;
+        }
+        ??? = localatmr;
+        localObject2 = localatmr;
+        localajwe = (ajwe)((Iterator)localObject3).next();
+        ??? = localatmr;
+        localObject2 = localatmr;
+        str = localajwe.jdField_a_of_type_Atmo.getTableName();
+        ??? = localatmr;
+        localObject2 = localatmr;
+        localajwj = localajwe.jdField_a_of_type_Ajwj;
+        ??? = localatmr;
+        localObject2 = localatmr;
+        if (QLog.isColorLevel())
+        {
+          ??? = localatmr;
+          localObject2 = localatmr;
+          QLog.d("Q.db.Cache", 2, "writeRunable QueueItem.action: " + localajwe.jdField_a_of_type_Int);
+        }
+        ??? = localatmr;
+        localObject2 = localatmr;
+        switch (localajwe.jdField_a_of_type_Int)
+        {
+        case 0: 
+          ??? = localatmr;
+          localObject2 = localatmr;
+          paramatmp.b(localajwe.jdField_a_of_type_Atmo);
+          if (localajwj == null) {
+            continue;
+          }
+          ??? = localatmr;
+          localObject2 = localatmr;
+          localajwj.a(str);
+        }
+      }
+      label351:
+      ??? = localatmr;
+      label414:
+      Object localObject2 = localatmr;
+      paramatmp.b(localajwe.jdField_a_of_type_Atmo);
+      if (localajwj != null)
+      {
+        ??? = localatmr;
+        localObject2 = localatmr;
+        localajwj.b(str, 1);
+        continue;
+        label456:
+        ??? = localatmr;
+        localObject2 = localatmr;
+        localatmr.c();
+        if (localatmr != null) {
+          localatmr.b();
+        }
+        label477:
+        return;
+      }
+    }
+  }
+  
+  public Vector<ajwe> a()
+  {
+    return this.jdField_a_of_type_JavaUtilVector;
+  }
+  
+  public void a() {}
+  
+  public void a(atmo arg1, int paramInt1, int paramInt2, ajwj paramajwj)
+  {
+    paramajwj = new ajwe(???, paramInt1, paramInt2, paramajwj);
+    do
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilVector)
+      {
+        this.jdField_a_of_type_JavaUtilVector.add(paramajwj);
+        if (this.jdField_a_of_type_Boolean)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.db.Cache", 2, "addQueue after destroy");
+          }
+          b();
           return;
         }
       }
-      finally {}
+      switch (paramInt2)
+      {
+      case 2: 
+      default: 
+        return;
+      }
+    } while (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Pause);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.db.Cache", 2, "addMsgQueue write notify");
     }
-    finally {}
-    if ((!paramBoolean) || (paramRspBody == null))
-    {
-      if (((TroopFileTransferManager.Item)localObject).BusId == 38)
-      {
-        a((TroopFileTransferManager.Item)localObject, paramRspBody, paramBundle.getLong("sessionId"));
-        return;
-      }
-      if ((((TroopFileTransferManager.Item)localObject).BusId == 3) || (((TroopFileTransferManager.Item)localObject).BusId == 106))
-      {
-        a((TroopFileTransferManager.Item)localObject, paramRspBody, paramBundle.getLong("sessionId"));
-        return;
-      }
-      if (((TroopFileTransferManager.Item)localObject).BusId == 25)
-      {
-        b((TroopFileTransferManager.Item)localObject, paramRspBody);
-        return;
-      }
-      if ((((TroopFileTransferManager.Item)localObject).BusId == 102) || (((TroopFileTransferManager.Item)localObject).BusId == 104)) {
-        a((TroopFileTransferManager.Item)localObject, paramRspBody);
-      }
+    b();
+    return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.db.Cache", 2, "addMsgQueue write notify");
     }
-    else
-    {
-      l = paramBundle.getLong("sessionId");
-      int i = paramRspBody.int32_ret_code.get();
-      if (QLog.isDevelopLevel()) {
-        QLog.e("TroopFileTransferManager", 4, String.format("onCopyToResult - retCode: %d", new Object[] { Integer.valueOf(i) }));
-      }
-      if (((TroopFileTransferManager.Item)localObject).BusId == 25)
-      {
-        b((TroopFileTransferManager.Item)localObject, paramRspBody);
-        return;
-      }
-      if ((((TroopFileTransferManager.Item)localObject).BusId == 102) || (((TroopFileTransferManager.Item)localObject).BusId == 104))
-      {
-        a((TroopFileTransferManager.Item)localObject, paramRspBody);
-        return;
-      }
-      if ((((TroopFileTransferManager.Item)localObject).BusId == 3) || (((TroopFileTransferManager.Item)localObject).BusId == 106) || (((TroopFileTransferManager.Item)localObject).BusId == 38)) {
-        a((TroopFileTransferManager.Item)localObject, paramRspBody, l);
-      }
-    }
+    b();
   }
   
-  public final void b(TroopFileTransferManager.Item paramItem, cmd0x383.RspBody paramRspBody)
+  public void b()
   {
-    int j = 702;
-    if (paramRspBody == null) {}
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().f();
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.db.Cache", 2, "transSaveToDatabase");
+    }
+    atmp localatmp = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    a(localatmp);
+    localatmp.a();
+  }
+  
+  public void onDestroy()
+  {
     try
     {
-      paramRspBody = new TroopFileError.SimpleErrorInfo(paramItem.FileName, this.a.e, 5, 601);
-      this.a.a(paramItem, 5, paramRspBody);
+      this.jdField_a_of_type_Boolean = true;
+      c();
       return;
     }
-    finally {}
-    int k = paramRspBody.int32_ret_code.get();
-    paramRspBody = paramRspBody.str_client_wording.get();
-    if (QLog.isDevelopLevel()) {
-      QLog.e("TroopFileTransferManager", 4, String.format("onRspCopyToWeiyun - retCode: %d", new Object[] { Integer.valueOf(k) }));
-    }
-    ResponseHandler.a(k);
-    int i;
-    if (k != 0)
+    finally
     {
-      i = j;
-      switch (k)
-      {
-      }
-    }
-    for (;;)
-    {
-      paramRspBody = new TroopFileError.SimpleErrorInfo(paramItem.FileName, this.a.e, 5, i, paramRspBody);
-      this.a.a(paramItem, 5, paramRspBody);
-      break;
-      i = 202;
-      continue;
-      i = j;
-      if (paramItem.BusId == 102)
-      {
-        paramItem.BusId = 104;
-        TroopFileProtocol.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, this.a.e, paramItem, this.a.e, 0L, TroopFileTransferManager.a(this.a));
-        break;
-        if (!TextUtils.isEmpty(paramRspBody))
-        {
-          i = 704;
-          continue;
-          paramRspBody = new TroopFileError.SimpleErrorInfo(paramItem.FileName, this.a.e, 5, 602);
-          this.a.a(paramItem, 5, paramRspBody);
-          break;
-        }
-        i = 601;
-        continue;
-        i = 703;
-        continue;
-        i = 701;
-        continue;
-        i = 705;
-      }
+      localObject = finally;
+      throw localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajwh
  * JD-Core Version:    0.7.0.1
  */

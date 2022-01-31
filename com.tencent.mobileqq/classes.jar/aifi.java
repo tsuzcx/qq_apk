@@ -1,32 +1,67 @@
-import com.tencent.mobileqq.shortvideo.dancemachine.GLProgressBar;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLRecognizeRegionView;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLRecognizeRegionView.StatusListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DancePlayFilter;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class aifi
-  implements GLRecognizeRegionView.StatusListener
+class aifi
+  implements aiud
 {
-  public aifi(DancePlayFilter paramDancePlayFilter) {}
+  aifi(aifg paramaifg) {}
   
-  public void a(int paramInt)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    if (paramInt == 2)
-    {
-      DancePlayFilter.a(this.a, DancePlayFilter.a(this.a).a(DancePlayFilter.a(this.a), 75, 1));
-      DancePlayFilter.a(this.a).e();
-      DancePlayFilter.a(this.a).a(DancePlayFilter.a(this.a));
+    if (paramBoolean) {
+      if ((paramInt1 > 0) && (!ApolloUtil.c(paramInt1))) {
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloManager", 2, "role rsc NOT complete.");
+        }
+      }
     }
-    if (paramInt == 3)
+    label96:
+    do
     {
-      DancePlayFilter.b(this.a, DancePlayFilter.a(this.a).a(DancePlayFilter.a(this.a), 75, 2));
-      DancePlayFilter.a(this.a).e();
-      DancePlayFilter.a(this.a).a(DancePlayFilter.b(this.a));
-    }
+      do
+      {
+        return;
+        if (paramArrayOfInt != null)
+        {
+          paramInt1 = 0;
+          for (;;)
+          {
+            if (paramInt1 >= paramArrayOfInt.length) {
+              break label96;
+            }
+            if (!ApolloUtil.b(paramArrayOfInt[paramInt1]))
+            {
+              if (!QLog.isColorLevel()) {
+                break;
+              }
+              QLog.d("ApolloManager", 2, "dress rsc NOT complete, id:" + paramArrayOfInt[paramInt1]);
+              return;
+            }
+            paramInt1 += 1;
+          }
+        }
+        paramArrayOfInt = new ArrayList(1);
+        paramArrayOfInt.add(paramString);
+        ((baot)this.a.a.a(71)).notifyUI(2, true, paramArrayOfInt);
+      } while (!QLog.isColorLevel());
+      QLog.d("ApolloManager", 2, "apollo dress download ok notifyUI uin: " + ApolloUtil.d(paramString));
+      return;
+      if (!TextUtils.isEmpty(paramString))
+      {
+        paramArrayOfInt = new ArrayList(1);
+        paramArrayOfInt.add(paramString);
+        ((baot)this.a.a.a(71)).notifyUI(2, false, paramArrayOfInt);
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ApolloManager", 2, "apollo dress download failed " + ApolloUtil.d(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aifi
  * JD-Core Version:    0.7.0.1
  */

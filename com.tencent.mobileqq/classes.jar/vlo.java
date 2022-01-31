@@ -1,27 +1,25 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.widget.ProgressPieDrawable;
-import com.tencent.mobileqq.widget.ProgressPieDrawable.OnProgressListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.biz.qqstory.utils.FileUtils.1;
+import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
 
 public class vlo
-  implements ProgressPieDrawable.OnProgressListener
+  implements DialogInterface.OnClickListener
 {
-  public vlo(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder) {}
+  public vlo(FileUtils.1 param1) {}
   
-  public void a(ProgressPieDrawable paramProgressPieDrawable)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ShortVideoRealItemBuilder", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + paramProgressPieDrawable);
-    }
-    ShortVideoRealItemBuilder.a(this.a).postDelayed(new vlp(this, paramProgressPieDrawable), 100L);
+    paramDialogInterface.dismiss();
+    paramDialogInterface = new Intent(this.a.a, QQSettingMsgHistoryActivity.class);
+    this.a.a.startActivity(paramDialogInterface);
   }
-  
-  public void a(ProgressPieDrawable paramProgressPieDrawable, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vlo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,25 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.GalleryImageStruct;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import android.view.MotionEvent;
+import android.view.View;
 
-public class vrn
-  implements TroopMemberApiClient.Callback
+public abstract interface vrn
 {
-  public vrn(AIOGalleryAdapter paramAIOGalleryAdapter, int paramInt, AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, AIOImageData paramAIOImageData) {}
+  public abstract void a(int paramInt);
   
-  public void a(Bundle paramBundle)
-  {
-    paramBundle = paramBundle.getString("ThumbnailFile_Large");
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a.runOnUiThread(new vro(this, paramBundle));
-  }
+  public abstract void a(View paramView, float paramFloat);
+  
+  public abstract void a(View paramView, float paramFloat, MotionEvent paramMotionEvent);
+  
+  public abstract void a(View paramView, vrk paramvrk);
+  
+  public abstract boolean a(View paramView);
+  
+  public abstract boolean a(View paramView, vrq paramvrq, MotionEvent paramMotionEvent);
+  
+  public abstract boolean b(View paramView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vrn
  * JD-Core Version:    0.7.0.1
  */

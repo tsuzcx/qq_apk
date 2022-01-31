@@ -1,19 +1,17 @@
-import android.content.DialogInterface.OnClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.widgets.ShareAioResultDialog;
 
-public class pjc
+class pjc
   implements View.OnClickListener
 {
-  public pjc(ShareAioResultDialog paramShareAioResultDialog, DialogInterface.OnClickListener paramOnClickListener) {}
+  pjc(pjb parampjb) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog, 1);
+    qpj localqpj = this.a.jdField_a_of_type_Qoe.a();
+    if (localqpj != null) {
+      localqpj.a(paramView, ((opw)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
     }
-    this.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.dismiss();
   }
 }
 

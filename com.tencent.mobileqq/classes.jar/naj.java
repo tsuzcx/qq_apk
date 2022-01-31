@@ -1,18 +1,16 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.util.ProfileParams;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
 
-public final class naj
-  implements BusinessObserver
+public class naj
+  implements View.OnClickListener
 {
-  public naj(Activity paramActivity, QQAppInterface paramQQAppInterface, ProfileParams paramProfileParams) {}
+  public naj(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new nak(this, paramObject));
-    }
+    ReadInJoyNativeAdFragment.a(this.a).dismiss();
   }
 }
 

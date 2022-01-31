@@ -10,14 +10,14 @@ public final class m
   static byte[] i;
   static byte[] j;
   static byte[] k;
-  public byte[] a;
+  public byte[] a = null;
   public String b = "";
   public String c = "";
-  public byte d;
+  public byte d = 0;
   public String e = "";
-  public byte f;
-  public byte[] g;
-  public byte[] h;
+  public byte f = 0;
+  public byte[] g = null;
+  public byte[] h = null;
   
   public m() {}
   

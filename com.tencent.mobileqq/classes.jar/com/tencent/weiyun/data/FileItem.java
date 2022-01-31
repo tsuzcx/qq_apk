@@ -17,7 +17,7 @@ public class FileItem
   private int commentCount;
   private long createTime;
   private long currentSize;
-  private DownloadServerInfo downloadServerInfo;
+  private FileItem.DownloadServerInfo downloadServerInfo;
   private long duration;
   private String eventId;
   private String fileId;
@@ -42,7 +42,7 @@ public class FileItem
   private long starTime;
   private long takenTime = -1L;
   private String thumbUrl;
-  private UploadServerInfo uploadServerInfo;
+  private FileItem.UploadServerInfo uploadServerInfo;
   private String uploaderNickname;
   private long uploaderUin;
   private int width;
@@ -120,9 +120,9 @@ public class FileItem
     return CBundleReader.getLong(this.nativePtr, "current_size", 0L);
   }
   
-  public DownloadServerInfo getDownloadServerInfo()
+  public FileItem.DownloadServerInfo getDownloadServerInfo()
   {
-    DownloadServerInfo localDownloadServerInfo = new DownloadServerInfo();
+    FileItem.DownloadServerInfo localDownloadServerInfo = new FileItem.DownloadServerInfo();
     localDownloadServerInfo.downloadKey = CBundleReader.getString(this.nativePtr, "download_key");
     if (TextUtils.isEmpty(localDownloadServerInfo.downloadKey)) {
       localDownloadServerInfo.downloadKey = CBundleReader.getString(this.nativePtr, "share_key");
@@ -270,9 +270,9 @@ public class FileItem
     return CBundleReader.getString(this.nativePtr, "backup_path");
   }
   
-  public UploadServerInfo getUploadServerInfo()
+  public FileItem.UploadServerInfo getUploadServerInfo()
   {
-    UploadServerInfo localUploadServerInfo = new UploadServerInfo();
+    FileItem.UploadServerInfo localUploadServerInfo = new FileItem.UploadServerInfo();
     localUploadServerInfo.url = CBundleReader.getString(this.nativePtr, "upload_server_url");
     localUploadServerInfo.isAuto = CBundleReader.getBoolean(this.nativePtr, "is_auto", false);
     localUploadServerInfo.fileExist = CBundleReader.getBoolean(this.nativePtr, "file_exist", false);
@@ -347,34 +347,10 @@ public class FileItem
   {
     this.takenTime = paramLong;
   }
-  
-  public static class DownloadServerInfo
-  {
-    public String cookie;
-    public String downloadKey;
-    public String serverDns;
-    public String serverIp;
-    public String serverName;
-    public int serverPort;
-    public String url;
-    public String videoUrl;
-  }
-  
-  public static class UploadServerInfo
-  {
-    public int channelCount;
-    public String checkKey;
-    public boolean fileExist;
-    public boolean isAuto;
-    public String serverIp;
-    public String serverName;
-    public int serverPort;
-    public String url;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.weiyun.data.FileItem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,43 @@
-import com.tencent.mobileqq.Doraemon.AppInfo;
-import com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAPIManager;
-import com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAppInfoHelper.OnGetAppInfo;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.util.TypedValue;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ticker.TickerView;
 
 public class riw
-  implements DefaultDoraemonAppInfoHelper.OnGetAppInfo
 {
-  public riw(DefaultDoraemonAPIManager paramDefaultDoraemonAPIManager) {}
+  public float a;
+  public int a;
+  public String a;
+  public float b;
+  public int b;
+  public float c;
+  public int c;
+  public float d;
+  public int d;
   
-  public void a(AppInfo paramAppInfo)
+  public riw(TickerView paramTickerView, Resources paramResources)
   {
-    if (paramAppInfo != null)
-    {
-      DefaultDoraemonAPIManager.a(this.a, paramAppInfo);
-      DefaultDoraemonAPIManager.a(this.a, true);
-      return;
-    }
-    DefaultDoraemonAPIManager.b(this.a, false);
+    this.jdField_c_of_type_Int = -16777216;
+    this.jdField_d_of_type_Float = TypedValue.applyDimension(2, 12.0F, paramResources.getDisplayMetrics());
+    this.jdField_a_of_type_Int = 8388611;
+  }
+  
+  public void a(TypedArray paramTypedArray)
+  {
+    this.jdField_a_of_type_Int = paramTypedArray.getInt(4, this.jdField_a_of_type_Int);
+    this.jdField_b_of_type_Int = paramTypedArray.getColor(6, this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_Float = paramTypedArray.getFloat(7, this.jdField_a_of_type_Float);
+    this.jdField_b_of_type_Float = paramTypedArray.getFloat(8, this.jdField_b_of_type_Float);
+    this.jdField_c_of_type_Float = paramTypedArray.getFloat(9, this.jdField_c_of_type_Float);
+    this.jdField_a_of_type_JavaLangString = paramTypedArray.getString(5);
+    this.jdField_c_of_type_Int = paramTypedArray.getColor(3, this.jdField_c_of_type_Int);
+    this.jdField_d_of_type_Float = paramTypedArray.getDimension(1, this.jdField_d_of_type_Float);
+    this.jdField_d_of_type_Int = paramTypedArray.getInt(2, this.jdField_d_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     riw
  * JD-Core Version:    0.7.0.1
  */

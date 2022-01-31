@@ -1,114 +1,47 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.device.JNICallCenter.DataPoint;
-import com.tencent.device.msg.data.DeviceCommonMsgProcessor;
-import com.tencent.device.msg.data.DeviceMsgHandle;
-import com.tencent.litetransfersdk.ActionInfo;
-import com.tencent.litetransfersdk.Session;
-import com.tencent.mobileqq.app.ThreadManager;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.util.Random;
 
 public class qfw
-  implements Runnable
+  extends avyu
 {
-  public Session a;
-  public boolean a;
+  VideoFeedsAppInterface jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface;
+  Random jdField_a_of_type_JavaUtilRandom = new Random();
   
-  public qfw(Session paramSession, boolean paramBoolean)
+  public qfw(VideoFeedsAppInterface paramVideoFeedsAppInterface)
   {
-    this.jdField_a_of_type_ComTencentLitetransfersdkSession = paramSession;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface = paramVideoFeedsAppInterface;
+    jdField_a_of_type_Int = Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt());
   }
   
-  public void a()
+  public AppInterface a()
   {
-    ThreadManager.post(this, 8, null, false);
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAppInterface;
   }
   
-  public void run()
+  protected void a()
   {
-    if ((this.jdField_a_of_type_ComTencentLitetransfersdkSession == null) || (this.jdField_a_of_type_ComTencentLitetransfersdkSession.actionInfo == null)) {
+    try
+    {
+      super.a();
       return;
     }
-    for (;;)
+    finally
     {
-      try
-      {
-        JSONArray localJSONArray = new JSONObject(new String(this.jdField_a_of_type_ComTencentLitetransfersdkSession.actionInfo.vServiceInfo)).getJSONArray("datapoint");
-        if (localJSONArray == null) {
-          break;
-        }
-        int j = localJSONArray.length();
-        if (j <= 0) {
-          break;
-        }
-        int i = 0;
-        if (i >= j) {
-          break;
-        }
-        try
-        {
-          localObject2 = localJSONArray.getJSONObject(i);
-          localDataPoint = new DataPoint(((JSONObject)localObject2).optString("apiName"), ((JSONObject)localObject2).optInt("id"), ((JSONObject)localObject2).optString("type"), ((JSONObject)localObject2).optString("value"));
-          localDataPoint.mSeq = ((JSONObject)localObject2).optString("seq", "0");
-          localDataPoint.mDin = ((JSONObject)localObject2).optLong("din");
-          if ((DeviceMsgHandle.d.equalsIgnoreCase(this.jdField_a_of_type_ComTencentLitetransfersdkSession.actionInfo.strServiceName)) || (DeviceMsgHandle.e.equalsIgnoreCase(this.jdField_a_of_type_ComTencentLitetransfersdkSession.actionInfo.strServiceName)) || (DeviceMsgHandle.h.equalsIgnoreCase(this.jdField_a_of_type_ComTencentLitetransfersdkSession.actionInfo.strServiceName)))
-          {
-            boolean bool = TextUtils.isEmpty(localDataPoint.mValue);
-            if (!bool) {
-              continue;
-            }
-          }
-        }
-        catch (Exception localException2)
-        {
-          for (;;)
-          {
-            Object localObject2;
-            DataPoint localDataPoint;
-            Object localObject1;
-            Object localObject3;
-            qfv localqfv;
-            localException2.printStackTrace();
-            continue;
-            String str = "1";
-          }
-        }
-        i += 1;
-        continue;
-      }
-      catch (Exception localException1)
-      {
-        localException1.printStackTrace();
-        localObject1 = null;
-        continue;
-        localObject3 = new qfv();
-        ((qfv)localObject3).a = "path";
-        ((qfv)localObject3).b = localDataPoint.mValue;
-        localqfv = new qfv();
-        localqfv.a = "ret";
-        if (!this.jdField_a_of_type_Boolean) {
-          break label370;
-        }
-      }
-      localObject2 = "0";
-      localqfv.b = ((String)localObject2);
-      localDataPoint.mValue = DeviceCommonMsgProcessor.a((qfv)localObject3, localqfv);
-      localObject2 = new Intent();
-      ((Intent)localObject2).setAction("SmartDevice_receiveDPMsg");
-      localObject3 = new Bundle();
-      ((Bundle)localObject3).putParcelable("dataPoint", localDataPoint);
-      ((Intent)localObject2).putExtras((Bundle)localObject3);
-      BaseApplicationImpl.getApplication().sendBroadcast((Intent)localObject2, "com.tencent.smartdevice.permission.broadcast");
+      localObject = finally;
+      throw localObject;
     }
+  }
+  
+  public void a(ToServiceMsg paramToServiceMsg)
+  {
+    super.b(paramToServiceMsg, null, qfx.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qfw
  * JD-Core Version:    0.7.0.1
  */

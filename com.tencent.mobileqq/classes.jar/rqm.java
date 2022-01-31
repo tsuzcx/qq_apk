@@ -1,42 +1,26 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.qqstory.base.QQStoryHandler;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryNodeConfigManager;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import java.net.URL;
 
 public class rqm
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public rqm(AssistantSettingActivity paramAssistantSettingActivity, MsgTabStoryNodeConfigManager paramMsgTabStoryNodeConfigManager) {}
+  public int a;
+  public String a;
+  public URL a;
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public rqm()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager.a(paramBoolean);
-    paramCompoundButton = (QQStoryHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.app.a(98);
-    int i;
-    if (paramBoolean)
-    {
-      i = 2;
-      paramCompoundButton.b(i);
-      if (!paramBoolean) {
-        break label70;
-      }
-    }
-    label70:
-    for (paramCompoundButton = "1";; paramCompoundButton = "2")
-    {
-      StoryReportor.a("msg_tab", "turn_story", 0, 0, new String[] { "2", paramCompoundButton });
-      return;
-      i = 1;
-      break;
-    }
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaLangString = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rqm
  * JD-Core Version:    0.7.0.1
  */

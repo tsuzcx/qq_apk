@@ -1,9 +1,6 @@
-public class mnj
+public abstract interface mnj
 {
-  public int a;
-  public int b;
-  public int c;
-  public int d;
+  public abstract void a(String paramString1, String paramString2);
 }
 
 

@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.VideoAdInfo;
+import com.tencent.av.AVFunDrawing.MessageBody;
+import com.tencent.mobileqq.utils.AudioHelper;
 
-public final class lbp
-  implements Parcelable.Creator
+class lbp
 {
-  public VideoAdInfo a(Parcel paramParcel)
-  {
-    return new VideoAdInfo(paramParcel);
-  }
+  long jdField_a_of_type_Long = AudioHelper.a();
+  AVFunDrawing.MessageBody jdField_a_of_type_ComTencentAvAVFunDrawing$MessageBody;
   
-  public VideoAdInfo[] a(int paramInt)
+  lbp(AVFunDrawing.MessageBody paramMessageBody)
   {
-    return new VideoAdInfo[paramInt];
+    this.jdField_a_of_type_ComTencentAvAVFunDrawing$MessageBody = paramMessageBody;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lbp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,20 @@
-import com.tencent.kingkong.Common;
-import com.tencent.kingkong.Common.Log;
-import com.tencent.kingkong.DataReport;
-import com.tencent.kingkong.ReportThread;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
 
-class rhh
-  implements Runnable
+public class rhh
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  rhh(rhg paramrhg) {}
+  public rhh(TabLayoutCompat paramTabLayoutCompat) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    Common.a.a(2088, 0, 0, "");
-    Common.Log.a("KingKongCommon", "QQ Login " + DataReport.o());
+    this.a.scrollTo(((Integer)paramValueAnimator.getAnimatedValue()).intValue(), 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rhh
  * JD-Core Version:    0.7.0.1
  */

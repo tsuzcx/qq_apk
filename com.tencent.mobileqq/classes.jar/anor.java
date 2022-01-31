@@ -1,61 +1,35 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.open.wadl.WLog;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.wadl.ipc.IWadlServiceCallBack.Stub;
-import cooperation.wadl.ipc.WadlProxyServiceManager;
+import java.util.ArrayList;
 
 public class anor
-  extends IWadlServiceCallBack.Stub
 {
-  public anor(WadlProxyServiceManager paramWadlProxyServiceManager) {}
+  public String a;
+  public ArrayList<String> a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void a(String paramString, Bundle paramBundle)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      WLog.b("WadlProxyServiceManager", "##@Call back from Service: " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{friendUin: ").append(this.jdField_a_of_type_JavaLangString).append("}");
+    localStringBuilder.append("{age: ").append(this.b).append("}");
+    localStringBuilder.append("{constellation: ").append(this.c).append("}");
+    localStringBuilder.append("{city: ").append(this.d).append("}");
+    localStringBuilder.append("{school: ").append(this.e).append("}");
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      localStringBuilder.append("{personalTags: is empty ").append("}");
     }
-    paramBundle.setClassLoader(getClass().getClassLoader());
-    if (paramString != null)
+    for (;;)
     {
-      if (!paramString.equals("WADL.REVERSE_HEART_CMD")) {
-        break label88;
-      }
-      paramString = WadlProxyServiceManager.a(this.a).obtainMessage();
-      paramString.what = 4;
-      paramString.setData(paramBundle);
-      WadlProxyServiceManager.a(this.a).sendMessage(paramString);
+      return localStringBuilder.toString();
+      localStringBuilder.append("{personalTags:size  ").append(this.jdField_a_of_type_JavaUtilArrayList.size()).append("}");
     }
-    label88:
-    do
-    {
-      return;
-      if (paramString.equals("WADL.REVERSE_ACTION_CMD"))
-      {
-        paramString = WadlProxyServiceManager.a(this.a).obtainMessage();
-        paramString.what = 3;
-        paramString.setData(paramBundle);
-        WadlProxyServiceManager.a(this.a).sendMessage(paramString);
-        return;
-      }
-      if (paramString.equals("WADL.REVERSE_STOP_MONITOR_CMD"))
-      {
-        paramString = WadlProxyServiceManager.a(this.a).obtainMessage();
-        paramString.what = 5;
-        paramString.setData(paramBundle);
-        WadlProxyServiceManager.a(this.a).sendMessage(paramString);
-        return;
-      }
-    } while (!paramString.equals("WADL.REVERSE_START_MONITOR_CMD"));
-    paramString = WadlProxyServiceManager.a(this.a).obtainMessage();
-    paramString.what = 6;
-    paramString.setData(paramBundle);
-    WadlProxyServiceManager.a(this.a).sendMessage(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anor
  * JD-Core Version:    0.7.0.1
  */

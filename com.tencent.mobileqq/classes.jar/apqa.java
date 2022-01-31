@@ -1,0 +1,22 @@
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.fragment.TempMsgSettingFragment;
+
+public class apqa
+  implements CompoundButton.OnCheckedChangeListener
+{
+  public apqa(TempMsgSettingFragment paramTempMsgSettingFragment) {}
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    ((ariq)this.a.a.getManager(303)).a((short)-23308, paramBoolean, true);
+    awqx.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 1, 1, "", "", "", "");
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+ * Qualified Name:     apqa
+ * JD-Core Version:    0.7.0.1
+ */

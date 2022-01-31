@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.qmcf;
 
-import ahac;
 import android.app.Application;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -21,63 +20,206 @@ import org.json.JSONObject;
 
 public class QmcfManager
 {
-  private static QmcfManager jdField_a_of_type_ComTencentMobileqqQmcfQmcfManager;
-  private static QmcfReporter jdField_a_of_type_ComTencentMobileqqQmcfQmcfReporter;
-  private static QmcfSwitchStrategy jdField_a_of_type_ComTencentMobileqqQmcfQmcfSwitchStrategy;
-  public static String a;
-  public static boolean a;
-  public static boolean b;
-  private static int jdField_d_of_type_Int;
-  public static boolean d;
-  public static boolean e = true;
-  public int a;
-  private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap(16);
-  ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService = null;
-  public float[] a;
-  private int b;
-  public String b;
-  private int c;
-  public String c;
-  public boolean c;
-  private String jdField_d_of_type_JavaLangString;
+  public static final int FRAME_TYPE_CL_MALI = 2;
+  public static final int FRAME_TYPE_CL_OCL = 3;
+  public static final int FRAME_TYPE_GL = 4;
+  public static final int FRAME_TYPE_NONE = -1;
+  public static final int FRAME_TYPE_NO_SUPPORT = 0;
+  public static final int FRAME_TYPE_SNPE = 1;
+  public static boolean FrameExtraction = false;
+  public static String QMCF_FRAME_TYPE = "qmcf_frame_type";
+  public static final int QMCF_MODE_ART = 1;
+  public static final int QMCF_MODE_BIGHEAD = 3;
+  public static final int QMCF_MODE_NONE = 0;
+  public static final int QMCF_MODE_POSE = 2;
+  private static final String TAG = "QMCF_MGR";
+  private static int artFilterLimitVersion = 1;
+  private static QmcfManager g_sInstance;
+  public static boolean hasSNPESo = false;
+  public static boolean isDebugMode = false;
+  public static boolean isQQRun = true;
+  private static QmcfReporter mReporter;
+  private static QmcfSwitchStrategy mSwitchStrategy;
+  public String CommonPrefixPath = null;
+  private int currFrameType = -1;
+  private String currModelResFolder;
+  private int currQmcfMode = 0;
+  public int mCameraMode = 1;
+  private Object mReadResLock = new Object();
+  public float[] mSTMatrix = new float[16];
+  public boolean modeChanged = false;
+  private HashMap modelItemsMap = new HashMap(16);
+  private ArrayList<String> modelSwichList = new ArrayList();
+  public boolean modelSwitched = false;
+  ExecutorService singleThreadExecutor = null;
   
   static
   {
-    jdField_a_of_type_JavaLangString = "qmcf_frame_type";
-    jdField_a_of_type_Boolean = false;
-    jdField_b_of_type_Boolean = false;
-    jdField_a_of_type_ComTencentMobileqqQmcfQmcfSwitchStrategy = new QmcfSwitchStrategy();
-    jdField_a_of_type_ComTencentMobileqqQmcfQmcfReporter = new QmcfReporter();
-    jdField_d_of_type_Int = 1;
-    jdField_d_of_type_Boolean = false;
+    FrameExtraction = false;
+    mSwitchStrategy = new QmcfSwitchStrategy();
+    mReporter = new QmcfReporter();
   }
   
-  public QmcfManager()
+  public static QmcfManager getInstance()
   {
-    this.jdField_a_of_type_ArrayOfFloat = new float[16];
-    this.jdField_a_of_type_Int = 1;
-    this.jdField_b_of_type_JavaLangString = null;
-    this.jdField_c_of_type_JavaLangString = null;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Int = -1;
-  }
-  
-  public static QmcfManager a()
-  {
-    if (jdField_a_of_type_ComTencentMobileqqQmcfQmcfManager == null) {
-      jdField_a_of_type_ComTencentMobileqqQmcfQmcfManager = new QmcfManager();
+    if (g_sInstance == null) {
+      g_sInstance = new QmcfManager();
     }
-    return jdField_a_of_type_ComTencentMobileqqQmcfQmcfManager;
+    return g_sInstance;
   }
   
-  public int a()
+  private String getQmcfModelPath(String paramString)
   {
-    return this.jdField_b_of_type_Int;
+    int j = 0;
+    boolean bool2 = false;
+    Object localObject3 = null;
+    localObject1 = null;
+    localObject2 = localObject1;
+    Object localObject4;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      localFile = new File(paramString + "params.json");
+      localObject2 = localObject1;
+      if (localFile.exists())
+      {
+        localObject4 = FileUtils.readFileContent(localFile);
+        localObject2 = localObject1;
+        if (localObject4 != null)
+        {
+          localObject2 = localObject1;
+          if (((String)localObject4).length() > 0)
+          {
+            localObject1 = localObject3;
+            bool1 = bool2;
+            i = j;
+          }
+        }
+      }
+    }
+    try
+    {
+      localObject4 = new JSONObject((String)localObject4);
+      localObject1 = localObject3;
+      bool1 = bool2;
+      i = j;
+      localObject2 = ((JSONObject)localObject4).getString("model_name");
+      localObject1 = localObject3;
+      bool1 = bool2;
+      i = j;
+      localObject4 = ((JSONObject)localObject4).getString("model_struct");
+      localObject1 = localObject3;
+      bool1 = bool2;
+      i = j;
+      String str = paramString + (String)localObject2;
+      localObject1 = localObject3;
+      bool1 = bool2;
+      i = j;
+      paramString = paramString + (String)localObject4;
+      localObject1 = paramString;
+      bool1 = bool2;
+      i = j;
+      boolean bool3 = new File(str).exists();
+      localObject1 = paramString;
+      bool1 = bool2;
+      i = j;
+      bool2 = new File(paramString).exists();
+      localObject1 = paramString;
+      bool1 = bool2;
+      i = bool2;
+      if (SLog.isEnable())
+      {
+        localObject1 = paramString;
+        bool1 = bool2;
+        i = bool2;
+        SLog.d("QMCF_MGR", String.format("getQmcfModelPath paramExit[%s], modelExist[%s], paramName[%s], modelName[%s]", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool2), localObject2, localObject4 }));
+      }
+      localObject2 = paramString;
+      if (!bool2)
+      {
+        localFile.delete();
+        localObject2 = paramString;
+      }
+    }
+    catch (Exception paramString)
+    {
+      i = bool1;
+      paramString.printStackTrace();
+      localObject2 = localObject1;
+      return localObject1;
+    }
+    finally
+    {
+      if (i != 0) {
+        break label375;
+      }
+      localFile.delete();
+    }
+    return localObject2;
   }
   
-  public int a(int paramInt)
+  public boolean checkPathValid()
+  {
+    try
+    {
+      this.CommonPrefixPath = (SdkContext.getInstance().getResources().getArtFilterResource().getCommonPrefix() + "binarys/");
+      File localFile = new File(this.CommonPrefixPath);
+      if (!localFile.exists()) {
+        localFile.mkdirs();
+      }
+      return true;
+    }
+    catch (Exception localException)
+    {
+      if (SLog.isEnable()) {
+        SLog.d("QMCF_MGR", "createDir excep");
+      }
+      localException.printStackTrace();
+    }
+    return false;
+  }
+  
+  public void destroy()
+  {
+    if (SLog.isEnable()) {
+      SLog.d("QMCF_MGR", "destroy");
+    }
+    mReporter.clearReporter();
+    this.modelSwitched = false;
+  }
+  
+  public byte[] drink(byte[] paramArrayOfByte)
+  {
+    return QMCF.nDrink(paramArrayOfByte, paramArrayOfByte.length, QMCF.getDefaultSign());
+  }
+  
+  public int getCurrFrameType()
+  {
+    if (this.currFrameType == -1)
+    {
+      this.currFrameType = SdkContext.getInstance().getApplication().getSharedPreferences("QmcfConfig", 4).getInt(QMCF_FRAME_TYPE, 4);
+      if (SLog.isEnable()) {
+        SLog.d("QMCF_MGR", "getCurrFrameType:" + this.currFrameType);
+      }
+    }
+    return this.currFrameType;
+  }
+  
+  public int getCurrQmcfMode()
+  {
+    return this.currQmcfMode;
+  }
+  
+  public String getCurrResFolder()
+  {
+    return this.currModelResFolder;
+  }
+  
+  public QmcfSwitchStrategy getCurrSwitchStrategy()
+  {
+    return mSwitchStrategy;
+  }
+  
+  public int getMatchQmcfMode(int paramInt)
   {
     if (paramInt == 1) {
       return 1;
@@ -88,370 +230,148 @@ public class QmcfManager
     return 0;
   }
   
-  public QmcfModelItem a()
+  public QmcfModelItem getQmcfModelItem()
   {
-    if (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
-      localObject2 = null;
-    }
-    label465:
-    do
+    if (TextUtils.isEmpty(this.currModelResFolder))
     {
-      return localObject2;
-      Object localObject7 = new File(this.jdField_d_of_type_JavaLangString + "params.json");
-      if (!((File)localObject7).exists())
+      if (SLog.isEnable()) {
+        SLog.d("QMCF_MGR", "getQmcfModelItem currModelResFolder is null");
+      }
+      return null;
+    }
+    String str2 = null;
+    Object localObject8 = null;
+    File localFile;
+    synchronized (this.mReadResLock)
+    {
+      localFile = new File(this.currModelResFolder + "params.json");
+      if (!localFile.exists())
       {
-        if (SLog.a()) {
-          SLog.d("QMCF_MGR", "getQmcfModelItem file not exist " + ((File)localObject7).getAbsolutePath());
+        if (SLog.isEnable()) {
+          SLog.d("QMCF_MGR", "getQmcfModelItem file not exist " + localFile.getAbsolutePath());
         }
         return null;
       }
-      Object localObject5 = FileUtils.a((File)localObject7);
-      if (TextUtils.isEmpty((CharSequence)localObject5)) {
-        return null;
-      }
-      String str = null;
-      Object localObject4 = null;
-      int i = 0;
-      Object localObject1 = localObject4;
-      localObject2 = str;
-      Object localObject3;
-      try
-      {
-        localObject6 = new JSONObject((String)localObject5);
-        localObject1 = localObject4;
-        localObject2 = str;
-        str = ((JSONObject)localObject6).getString("model_name");
-        localObject1 = localObject4;
-        localObject2 = str;
-        localObject4 = ((JSONObject)localObject6).getString("model_struct");
-        localObject1 = localObject4;
-        localObject2 = str;
-        localObject5 = ((JSONObject)localObject6).optString("model_dlc");
-        localObject1 = localObject5;
-      }
-      catch (Exception localException1)
+    }
+    Object localObject10 = FileUtils.readFileContent(localFile);
+    if (TextUtils.isEmpty((CharSequence)localObject10)) {
+      return null;
+    }
+    Object localObject5 = null;
+    Object localObject7 = null;
+    String str1 = null;
+    Object localObject4 = str1;
+    Object localObject3 = localObject7;
+    Object localObject2 = localObject5;
+    try
+    {
+      localObject10 = new JSONObject((String)localObject10);
+      localObject4 = str1;
+      localObject3 = localObject7;
+      localObject2 = localObject5;
+      localObject5 = ((JSONObject)localObject10).getString("model_name");
+      localObject4 = str1;
+      localObject3 = localObject7;
+      localObject2 = localObject5;
+      localObject7 = ((JSONObject)localObject10).getString("model_struct");
+      localObject4 = str1;
+      localObject3 = localObject7;
+      localObject2 = localObject5;
+      str1 = ((JSONObject)localObject10).optString("model_dlc");
+      localObject4 = str1;
+      localObject3 = localObject7;
+      localObject2 = localObject5;
+      i = ((JSONObject)localObject10).optInt("model_encrypt");
+      localObject4 = localObject5;
+      localObject5 = str1;
+    }
+    catch (Exception localException)
+    {
+      do
       {
         for (;;)
         {
-          Object localObject6;
-          int j;
           long l;
           boolean bool2;
           boolean bool3;
-          localObject5 = null;
-          localException1.printStackTrace();
-          localObject4 = localObject1;
-          localObject3 = localObject2;
+          localException.printStackTrace();
+          int i = 0;
+          Object localObject6 = localObject4;
+          localObject7 = localObject3;
+          localObject4 = localObject2;
         }
-        boolean bool1;
-        if (SLog.a())
-        {
-          if (TextUtils.isEmpty((CharSequence)localObject7)) {
-            break label566;
-          }
-          bool1 = true;
-          SLog.d("QMCF_MGR", String.format("getQmcfModelItem modelValid[%s]", new Object[] { Boolean.valueOf(bool1) }));
-        }
-        for (;;)
-        {
-          localObject1 = null;
-          break;
-          bool1 = false;
-          break label538;
-          ((File)localObject7).delete();
-        }
+        localObject2 = localObject8;
+      } while (!SLog.isEnable());
+      if (TextUtils.isEmpty(str2)) {
+        break label659;
       }
-      try
-      {
-        j = ((JSONObject)localObject6).optInt("model_encrypt");
-        i = j;
-        localObject5 = localObject1;
-        if (this.jdField_a_of_type_JavaUtilHashMap.get(str) != null) {
-          break label602;
-        }
-        l = System.currentTimeMillis();
-        localObject2 = this.jdField_d_of_type_JavaLangString + str;
-        localObject1 = this.jdField_d_of_type_JavaLangString + (String)localObject4;
-        localObject6 = this.jdField_d_of_type_JavaLangString + (String)localObject5;
-        bool2 = new File((String)localObject2).exists();
-        bool3 = new File((String)localObject1).exists();
-        if ((!bool2) || (!bool3)) {
-          break label572;
-        }
-        localObject7 = a((String)localObject1);
-        if (TextUtils.isEmpty((CharSequence)localObject7)) {
-          break label521;
-        }
-        localObject1 = new QmcfModelItem();
-        ((QmcfModelItem)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject7);
-        ((QmcfModelItem)localObject1).jdField_b_of_type_JavaLangString = ((String)localObject2);
-        ((QmcfModelItem)localObject1).jdField_c_of_type_JavaLangString = ((String)localObject6);
-        ((QmcfModelItem)localObject1).jdField_a_of_type_Int = i;
-        this.jdField_a_of_type_JavaUtilHashMap.put(str, localObject1);
-        localObject2 = localObject1;
-        if (SLog.a())
-        {
-          SLog.d("QMCF_MGR", String.format("getQmcfModelItem cost[%s], paramExit[%s], modelExist[%s], paramName[%s], modelName[%s], dlcName[%s]", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Boolean.valueOf(bool2), Boolean.valueOf(bool3), str, localObject4, localObject5 }));
-          localObject2 = localObject1;
-        }
-      }
-      catch (Exception localException2)
-      {
-        localObject5 = localObject1;
-        localObject1 = localObject4;
-        localObject2 = localObject3;
-        localObject3 = localException2;
-        break;
-        localObject2 = null;
-        break label465;
-      }
-    } while (this.jdField_a_of_type_JavaUtilHashMap.get(str) == null);
-    localObject1 = (QmcfModelItem)this.jdField_a_of_type_JavaUtilHashMap.get(str);
-    this.jdField_b_of_type_JavaLangString = str;
-    return localObject1;
-  }
-  
-  public QmcfSwitchStrategy a()
-  {
-    return jdField_a_of_type_ComTencentMobileqqQmcfQmcfSwitchStrategy;
-  }
-  
-  /* Error */
-  public String a(String paramString)
-  {
-    // Byte code:
-    //   0: invokestatic 169	java/lang/System:currentTimeMillis	()J
-    //   3: lstore_2
-    //   4: new 98	java/io/File
-    //   7: dup
-    //   8: aload_1
-    //   9: invokespecial 114	java/io/File:<init>	(Ljava/lang/String;)V
-    //   12: astore_1
-    //   13: aload_1
-    //   14: invokevirtual 118	java/io/File:exists	()Z
-    //   17: ifeq +198 -> 215
-    //   20: new 212	java/io/FileInputStream
-    //   23: dup
-    //   24: aload_1
-    //   25: invokespecial 215	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   28: astore 5
-    //   30: aload 5
-    //   32: astore_1
-    //   33: new 197	java/lang/String
-    //   36: dup
-    //   37: aload_0
-    //   38: aload 5
-    //   40: invokestatic 221	com/tencent/util/IOUtils:toByteArray	(Ljava/io/InputStream;)[B
-    //   43: invokevirtual 224	com/tencent/mobileqq/qmcf/QmcfManager:a	([B)[B
-    //   46: invokespecial 227	java/lang/String:<init>	([B)V
-    //   49: astore 6
-    //   51: aload 6
-    //   53: astore_1
-    //   54: aload 5
-    //   56: ifnull +11 -> 67
-    //   59: aload 5
-    //   61: invokevirtual 230	java/io/FileInputStream:close	()V
-    //   64: aload 6
-    //   66: astore_1
-    //   67: invokestatic 122	com/tencent/sveffects/SLog:a	()Z
-    //   70: ifeq +55 -> 125
-    //   73: new 100	java/lang/StringBuilder
-    //   76: dup
-    //   77: invokespecial 101	java/lang/StringBuilder:<init>	()V
-    //   80: ldc 232
-    //   82: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   85: invokestatic 169	java/lang/System:currentTimeMillis	()J
-    //   88: lload_2
-    //   89: lsub
-    //   90: invokevirtual 235	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   93: ldc 237
-    //   95: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   98: astore 5
-    //   100: aload_1
-    //   101: invokestatic 96	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   104: ifne +95 -> 199
-    //   107: iconst_1
-    //   108: istore 4
-    //   110: ldc 124
-    //   112: aload 5
-    //   114: iload 4
-    //   116: invokevirtual 240	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   119: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   122: invokestatic 132	com/tencent/sveffects/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   125: aload_1
-    //   126: areturn
-    //   127: astore_1
-    //   128: aload_1
-    //   129: invokevirtual 204	java/lang/Exception:printStackTrace	()V
-    //   132: aload 6
-    //   134: astore_1
-    //   135: goto -68 -> 67
-    //   138: astore 6
-    //   140: aconst_null
-    //   141: astore 5
-    //   143: aload 5
-    //   145: astore_1
-    //   146: aload 6
-    //   148: invokevirtual 204	java/lang/Exception:printStackTrace	()V
-    //   151: aload 5
-    //   153: ifnull +8 -> 161
-    //   156: aload 5
-    //   158: invokevirtual 230	java/io/FileInputStream:close	()V
-    //   161: aconst_null
-    //   162: astore_1
-    //   163: goto -96 -> 67
-    //   166: astore_1
-    //   167: aload_1
-    //   168: invokevirtual 204	java/lang/Exception:printStackTrace	()V
-    //   171: aconst_null
-    //   172: astore_1
-    //   173: goto -106 -> 67
-    //   176: astore 5
-    //   178: aconst_null
-    //   179: astore_1
-    //   180: aload_1
-    //   181: ifnull +7 -> 188
-    //   184: aload_1
-    //   185: invokevirtual 230	java/io/FileInputStream:close	()V
-    //   188: aload 5
-    //   190: athrow
-    //   191: astore_1
-    //   192: aload_1
-    //   193: invokevirtual 204	java/lang/Exception:printStackTrace	()V
-    //   196: goto -8 -> 188
-    //   199: iconst_0
-    //   200: istore 4
-    //   202: goto -92 -> 110
-    //   205: astore 5
-    //   207: goto -27 -> 180
-    //   210: astore 6
-    //   212: goto -69 -> 143
-    //   215: aconst_null
-    //   216: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	217	0	this	QmcfManager
-    //   0	217	1	paramString	String
-    //   3	86	2	l	long
-    //   108	93	4	bool	boolean
-    //   28	129	5	localObject1	Object
-    //   176	13	5	localObject2	Object
-    //   205	1	5	localObject3	Object
-    //   49	84	6	str	String
-    //   138	9	6	localException1	Exception
-    //   210	1	6	localException2	Exception
-    // Exception table:
-    //   from	to	target	type
-    //   59	64	127	java/lang/Exception
-    //   20	30	138	java/lang/Exception
-    //   156	161	166	java/lang/Exception
-    //   20	30	176	finally
-    //   184	188	191	java/lang/Exception
-    //   33	51	205	finally
-    //   146	151	205	finally
-    //   33	51	210	java/lang/Exception
-  }
-  
-  public void a()
-  {
-    if (SLog.a()) {
-      SLog.d("QMCF_MGR", "destroy");
     }
-    jdField_a_of_type_ComTencentMobileqqQmcfQmcfReporter.a();
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt1, int paramInt2, String paramString)
-  {
-    jdField_a_of_type_ComTencentMobileqqQmcfQmcfReporter.a(paramInt1, paramInt2, paramString, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (SLog.a()) {
-      SLog.d("QMCF_MGR", "switchQmcfModel begin resFold" + paramString);
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    localObject3 = str2;
+    if (this.modelItemsMap.get(localObject4) == null)
     {
-      if (paramInt == this.jdField_b_of_type_Int)
-      {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-        this.jdField_b_of_type_Int = paramInt;
-        if (this.jdField_a_of_type_JavaUtilConcurrentExecutorService == null)
-        {
-          if (SLog.a()) {
-            SLog.d("QMCF_MGR", "switchQmcfModel create singleThreadExecutor");
-          }
-          this.jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newSingleThreadExecutor();
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentExecutorService.execute(new ahac(this));
-        return;
+      l = System.currentTimeMillis();
+      localObject3 = this.currModelResFolder + (String)localObject4;
+      localObject2 = this.currModelResFolder + (String)localObject7;
+      str1 = this.currModelResFolder + (String)localObject5;
+      bool2 = new File((String)localObject3).exists();
+      bool3 = new File((String)localObject2).exists();
+      if ((!bool2) || (!bool3)) {
+        break label646;
       }
-      this.jdField_c_of_type_Boolean = true;
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
+      str2 = readQmcfModelFile((String)localObject2);
+      if (TextUtils.isEmpty(str2)) {
+        break label595;
+      }
+      localObject2 = new QmcfModelItem();
+      ((QmcfModelItem)localObject2).modelDeployString = str2;
+      ((QmcfModelItem)localObject2).modelParamPath = ((String)localObject3);
+      ((QmcfModelItem)localObject2).modelDlcPath = str1;
+      ((QmcfModelItem)localObject2).modelEncrypt = i;
+      this.modelItemsMap.put(localObject4, localObject2);
+      localObject3 = localObject2;
+      if (SLog.isEnable())
+      {
+        SLog.d("QMCF_MGR", String.format("getQmcfModelItem cost[%s], paramExit[%s], modelExist[%s], paramName[%s], modelName[%s], dlcName[%s]", new Object[] { Long.valueOf(System.currentTimeMillis() - l), Boolean.valueOf(bool2), Boolean.valueOf(bool3), localObject4, localObject7, localObject5 }));
+        localObject3 = localObject2;
+      }
     }
-  }
-  
-  public void a(long paramLong)
-  {
-    jdField_a_of_type_ComTencentMobileqqQmcfQmcfReporter.a(paramLong);
-  }
-  
-  public void a(String paramString)
-  {
-    if (jdField_a_of_type_ComTencentMobileqqQmcfQmcfSwitchStrategy.c())
+    if (this.modelItemsMap.get(localObject4) != null) {
+      localObject3 = (QmcfModelItem)this.modelItemsMap.get(localObject4);
+    }
+    return localObject3;
+    label595:
+    for (boolean bool1 = true;; bool1 = false)
     {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("svaf_gpuinfo", paramString);
-      paramString = jdField_a_of_type_ComTencentMobileqqQmcfQmcfReporter;
-      QmcfReporter.a("svaf_nosupport_ocl", localHashMap, true);
+      SLog.d("QMCF_MGR", String.format("getQmcfModelItem modelValid[%s]", new Object[] { Boolean.valueOf(bool1) }));
+      localObject2 = localObject8;
+      break;
+      localFile.delete();
+      localObject2 = localObject8;
+      break;
     }
-    jdField_a_of_type_ComTencentMobileqqQmcfQmcfSwitchStrategy.b(false);
   }
   
-  public void a(JSONObject paramJSONObject)
+  public int getRunType()
   {
-    jdField_a_of_type_ComTencentMobileqqQmcfQmcfSwitchStrategy.a(paramJSONObject);
+    if (getCurrFrameType() == 4) {
+      return 1;
+    }
+    return 0;
   }
   
-  public void a(boolean paramBoolean)
+  public boolean hasQmcfEntrance(int paramInt)
   {
-    e = paramBoolean;
+    return hasQmcfEntrance(paramInt, false);
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
-  {
-    jdField_a_of_type_ComTencentMobileqqQmcfQmcfSwitchStrategy.a(paramBoolean1, paramBoolean2, paramInt);
-  }
-  
-  public void a(float[] paramArrayOfFloat)
-  {
-    this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat;
-  }
-  
-  public boolean a()
-  {
-    return this.jdField_b_of_type_Int != 0;
-  }
-  
-  public boolean a(int paramInt)
-  {
-    return a(paramInt, false);
-  }
-  
-  public boolean a(int paramInt, boolean paramBoolean)
+  public boolean hasQmcfEntrance(int paramInt, boolean paramBoolean)
   {
     if (Build.VERSION.SDK_INT < 21) {}
     for (;;)
     {
       return false;
-      boolean bool3 = c(paramInt);
-      boolean bool2 = SoLoader.b();
+      boolean bool3 = isQmcfSupported(paramInt);
+      boolean bool2 = SoLoader.isLoadArtFilterSuccess();
       boolean bool1 = bool2;
       if (bool3)
       {
@@ -461,109 +381,301 @@ public class QmcfManager
           if (!paramBoolean) {
             break label98;
           }
-          paramBoolean = SoLoader.a(SdkContext.a().a());
+          paramBoolean = SoLoader.loadSvArtFilterSO(SdkContext.getInstance().getApplication());
           bool1 = paramBoolean;
-          if (SLog.a()) {
+          if (SLog.isEnable()) {
             SLog.d("QMCF_MGR", "reloadso :" + paramBoolean);
           }
         }
       }
       label98:
-      for (bool1 = paramBoolean; (bool3) && (bool1); bool1 = SoLoader.a()) {
+      for (bool1 = paramBoolean; (bool3) && (bool1); bool1 = SoLoader.isQmcfSoUnLoaded()) {
         return true;
       }
     }
   }
   
-  public byte[] a(byte[] paramArrayOfByte)
+  public boolean isArtFilterVersionOK(int paramInt)
   {
-    return QMCF.nDrink(paramArrayOfByte, paramArrayOfByte.length, QMCF.getDefaultSign());
+    return paramInt >= artFilterLimitVersion;
   }
   
-  public int b()
+  public boolean isQmcfNoNeedBeauty()
   {
-    if (this.jdField_c_of_type_Int == -1)
+    return (this.currQmcfMode == 1) || (this.currQmcfMode == 2);
+  }
+  
+  public boolean isQmcfSupported()
+  {
+    return (mSwitchStrategy.isModeSupported(1)) || (mSwitchStrategy.isModeSupported(2)) || (mSwitchStrategy.isModeSupported(3));
+  }
+  
+  public boolean isQmcfSupported(int paramInt)
+  {
+    return mSwitchStrategy.isModeSupported(paramInt);
+  }
+  
+  public boolean isQmcfWork()
+  {
+    return this.currQmcfMode != 0;
+  }
+  
+  public boolean needConvertCoor()
+  {
+    return this.mCameraMode == 1;
+  }
+  
+  /* Error */
+  public String readQmcfModelFile(String paramString)
+  {
+    // Byte code:
+    //   0: invokestatic 316	java/lang/System:currentTimeMillis	()J
+    //   3: lstore_2
+    //   4: new 143	java/io/File
+    //   7: dup
+    //   8: aload_1
+    //   9: invokespecial 159	java/io/File:<init>	(Ljava/lang/String;)V
+    //   12: astore_1
+    //   13: aload_1
+    //   14: invokevirtual 163	java/io/File:exists	()Z
+    //   17: ifeq +200 -> 217
+    //   20: new 389	java/io/FileInputStream
+    //   23: dup
+    //   24: aload_1
+    //   25: invokespecial 392	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   28: astore 5
+    //   30: aload 5
+    //   32: astore_1
+    //   33: new 171	java/lang/String
+    //   36: dup
+    //   37: aload_0
+    //   38: aload 5
+    //   40: invokestatic 398	com/tencent/ttpic/baseutils/io/IOUtils:toByteArray	(Ljava/io/InputStream;)[B
+    //   43: invokevirtual 400	com/tencent/mobileqq/qmcf/QmcfManager:drink	([B)[B
+    //   46: invokespecial 403	java/lang/String:<init>	([B)V
+    //   49: astore 6
+    //   51: aload 6
+    //   53: astore_1
+    //   54: aload 5
+    //   56: ifnull +11 -> 67
+    //   59: aload 5
+    //   61: invokevirtual 406	java/io/FileInputStream:close	()V
+    //   64: aload 6
+    //   66: astore_1
+    //   67: invokestatic 190	com/tencent/sveffects/SLog:isEnable	()Z
+    //   70: ifeq +57 -> 127
+    //   73: new 145	java/lang/StringBuilder
+    //   76: dup
+    //   77: invokespecial 146	java/lang/StringBuilder:<init>	()V
+    //   80: ldc_w 408
+    //   83: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   86: invokestatic 316	java/lang/System:currentTimeMillis	()J
+    //   89: lload_2
+    //   90: lsub
+    //   91: invokevirtual 411	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   94: ldc_w 413
+    //   97: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   100: astore 5
+    //   102: aload_1
+    //   103: invokestatic 141	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   106: ifne +95 -> 201
+    //   109: iconst_1
+    //   110: istore 4
+    //   112: ldc 28
+    //   114: aload 5
+    //   116: iload 4
+    //   118: invokevirtual 377	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   121: invokevirtual 156	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   124: invokestatic 206	com/tencent/sveffects/SLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   127: aload_1
+    //   128: areturn
+    //   129: astore_1
+    //   130: aload_1
+    //   131: invokevirtual 212	java/lang/Exception:printStackTrace	()V
+    //   134: aload 6
+    //   136: astore_1
+    //   137: goto -70 -> 67
+    //   140: astore 6
+    //   142: aconst_null
+    //   143: astore 5
+    //   145: aload 5
+    //   147: astore_1
+    //   148: aload 6
+    //   150: invokevirtual 212	java/lang/Exception:printStackTrace	()V
+    //   153: aload 5
+    //   155: ifnull +8 -> 163
+    //   158: aload 5
+    //   160: invokevirtual 406	java/io/FileInputStream:close	()V
+    //   163: aconst_null
+    //   164: astore_1
+    //   165: goto -98 -> 67
+    //   168: astore_1
+    //   169: aload_1
+    //   170: invokevirtual 212	java/lang/Exception:printStackTrace	()V
+    //   173: aconst_null
+    //   174: astore_1
+    //   175: goto -108 -> 67
+    //   178: astore 5
+    //   180: aconst_null
+    //   181: astore_1
+    //   182: aload_1
+    //   183: ifnull +7 -> 190
+    //   186: aload_1
+    //   187: invokevirtual 406	java/io/FileInputStream:close	()V
+    //   190: aload 5
+    //   192: athrow
+    //   193: astore_1
+    //   194: aload_1
+    //   195: invokevirtual 212	java/lang/Exception:printStackTrace	()V
+    //   198: goto -8 -> 190
+    //   201: iconst_0
+    //   202: istore 4
+    //   204: goto -92 -> 112
+    //   207: astore 5
+    //   209: goto -27 -> 182
+    //   212: astore 6
+    //   214: goto -69 -> 145
+    //   217: aconst_null
+    //   218: areturn
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	219	0	this	QmcfManager
+    //   0	219	1	paramString	String
+    //   3	87	2	l	long
+    //   110	93	4	bool	boolean
+    //   28	131	5	localObject1	Object
+    //   178	13	5	localObject2	Object
+    //   207	1	5	localObject3	Object
+    //   49	86	6	str	String
+    //   140	9	6	localException1	Exception
+    //   212	1	6	localException2	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   59	64	129	java/lang/Exception
+    //   20	30	140	java/lang/Exception
+    //   158	163	168	java/lang/Exception
+    //   20	30	178	finally
+    //   186	190	193	java/lang/Exception
+    //   33	51	207	finally
+    //   148	153	207	finally
+    //   33	51	212	java/lang/Exception
+  }
+  
+  public void reportQmcfFrameConsume(int paramInt1, int paramInt2, String paramString)
+  {
+    mReporter.reportMtaFrameCost(paramInt1, paramInt2, paramString, this.currQmcfMode, this.currFrameType);
+  }
+  
+  public void setCameraMode(int paramInt)
+  {
+    this.mCameraMode = paramInt;
+  }
+  
+  public void setCurrFrameType(int paramInt)
+  {
+    if (this.currFrameType != paramInt)
     {
-      this.jdField_c_of_type_Int = SdkContext.a().a().getSharedPreferences("QmcfConfig", 4).getInt(jdField_a_of_type_JavaLangString, -1);
-      if (SLog.a()) {
-        SLog.d("QMCF_MGR", "getCurrFrameType:" + this.jdField_c_of_type_Int);
-      }
-    }
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void b(long paramLong)
-  {
-    jdField_a_of_type_ComTencentMobileqqQmcfQmcfReporter.b(paramLong);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    jdField_a_of_type_ComTencentMobileqqQmcfQmcfSwitchStrategy.a(paramBoolean);
-  }
-  
-  public boolean b()
-  {
-    return this.jdField_a_of_type_Int == 1;
-  }
-  
-  public boolean b(int paramInt)
-  {
-    return paramInt >= jdField_d_of_type_Int;
-  }
-  
-  public void c(int paramInt)
-  {
-    if (this.jdField_c_of_type_Int != paramInt)
-    {
-      SharedPreferences.Editor localEditor = SdkContext.a().a().getSharedPreferences("QmcfConfig", 4).edit();
-      localEditor.putInt(jdField_a_of_type_JavaLangString, paramInt);
+      SharedPreferences.Editor localEditor = SdkContext.getInstance().getApplication().getSharedPreferences("QmcfConfig", 4).edit();
+      localEditor.putInt(QMCF_FRAME_TYPE, paramInt);
       localEditor.commit();
-      if (SLog.a()) {
+      if (SLog.isEnable()) {
         SLog.d("QMCF_MGR", "setCurrFrameType:" + paramInt);
       }
     }
-    this.jdField_c_of_type_Int = paramInt;
+    this.currFrameType = paramInt;
   }
   
-  public boolean c()
+  public void setCurrQmcfMode(int paramInt)
   {
-    try
+    this.currQmcfMode = paramInt;
+  }
+  
+  public void setCurrResFolder(String paramString)
+  {
+    this.currModelResFolder = paramString;
+  }
+  
+  public void setIsQQRun(boolean paramBoolean)
+  {
+    isQQRun = paramBoolean;
+  }
+  
+  public void setQmcfInitSuccess(boolean paramBoolean)
+  {
+    mSwitchStrategy.setInitSuccess(paramBoolean);
+  }
+  
+  public void setQmcfMobileNotSupport(String paramString)
+  {
+    if (mSwitchStrategy.isMobileSupported())
     {
-      this.jdField_c_of_type_JavaLangString = SdkContext.a().a().a().c();
-      File localFile = new File(this.jdField_c_of_type_JavaLangString);
-      if (!localFile.exists()) {
-        localFile.mkdirs();
-      }
-      localFile = new File(this.jdField_c_of_type_JavaLangString + "binarys/");
-      if (!localFile.exists()) {
-        localFile.mkdirs();
-      }
-      return true;
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("svaf_gpuinfo", paramString);
+      paramString = mReporter;
+      QmcfReporter.report("svaf_nosupport_ocl", localHashMap, true);
     }
-    catch (Exception localException)
+    mSwitchStrategy.setMobileSupport(false);
+  }
+  
+  public void setQmcfMobileSupport()
+  {
+    mSwitchStrategy.setMobileSupport(true);
+  }
+  
+  public void setQmcfProcessConsume(long paramLong)
+  {
+    mReporter.updateProcessConsume(paramLong);
+  }
+  
+  public void setQmcfRunSupported(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    mSwitchStrategy.setQmcfRunSupported(paramBoolean1, paramBoolean2, paramInt);
+  }
+  
+  public void setSTMatrix(float[] paramArrayOfFloat)
+  {
+    this.mSTMatrix = paramArrayOfFloat;
+  }
+  
+  public void switchQmcfModel(int paramInt, String paramString)
+  {
+    if (SLog.isEnable()) {
+      SLog.d("QMCF_MGR", "switchQmcfModel begin resFold" + paramString);
+    }
+    synchronized (this.modelSwichList)
     {
-      if (SLog.a()) {
-        SLog.d("QMCF_MGR", "createDir excep");
+      if (paramInt == this.currQmcfMode)
+      {
+        this.modelSwichList.add(paramString);
+        if (this.currQmcfMode == 1) {
+          this.modelSwitched = true;
+        }
+        this.currQmcfMode = paramInt;
+        this.currModelResFolder = paramString;
+        if (this.singleThreadExecutor == null)
+        {
+          if (SLog.isEnable()) {
+            SLog.d("QMCF_MGR", "switchQmcfModel create singleThreadExecutor");
+          }
+          this.singleThreadExecutor = Executors.newSingleThreadExecutor();
+        }
+        this.singleThreadExecutor.execute(new QmcfManager.1(this));
+        return;
       }
-      localException.printStackTrace();
+      this.modeChanged = true;
+      this.modelSwichList.clear();
+      this.modelSwichList.add(paramString);
     }
-    return false;
   }
   
-  public boolean c(int paramInt)
+  public void updateQmcfFrameConsume(long paramLong)
   {
-    return jdField_a_of_type_ComTencentMobileqqQmcfQmcfSwitchStrategy.a(paramInt);
+    mReporter.updateFrameConsume(paramLong);
   }
   
-  public boolean d()
+  public void updateQmcfMainSwitch(JSONObject paramJSONObject)
   {
-    return (jdField_a_of_type_ComTencentMobileqqQmcfQmcfSwitchStrategy.a(1)) || (jdField_a_of_type_ComTencentMobileqqQmcfQmcfSwitchStrategy.a(2));
+    mSwitchStrategy.updateMainSwitch(paramJSONObject);
   }
 }
 

@@ -12,16 +12,7 @@ public final class HttpDate
   private static final DateFormat[] BROWSER_COMPATIBLE_DATE_FORMATS = new DateFormat[BROWSER_COMPATIBLE_DATE_FORMAT_STRINGS.length];
   private static final String[] BROWSER_COMPATIBLE_DATE_FORMAT_STRINGS;
   private static final TimeZone GMT = TimeZone.getTimeZone("GMT");
-  private static final ThreadLocal<DateFormat> STANDARD_DATE_FORMAT = new ThreadLocal()
-  {
-    protected DateFormat initialValue()
-    {
-      SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss 'GMT'", Locale.US);
-      localSimpleDateFormat.setLenient(false);
-      localSimpleDateFormat.setTimeZone(HttpDate.GMT);
-      return localSimpleDateFormat;
-    }
-  };
+  private static final ThreadLocal<DateFormat> STANDARD_DATE_FORMAT = new HttpDate.1();
   
   static
   {
@@ -35,6 +26,7 @@ public final class HttpDate
   
   public static Date parse(String paramString)
   {
+    int i = 0;
     Object localObject;
     if (paramString.length() == 0) {
       localObject = null;
@@ -46,11 +38,9 @@ public final class HttpDate
       localParsePosition = new ParsePosition(0);
       localObject = ((DateFormat)STANDARD_DATE_FORMAT.get()).parse(paramString, localParsePosition);
     } while (localParsePosition.getIndex() == paramString.length());
-    String[] arrayOfString = BROWSER_COMPATIBLE_DATE_FORMAT_STRINGS;
-    int i = 0;
     for (;;)
     {
-      try
+      synchronized (BROWSER_COMPATIBLE_DATE_FORMAT_STRINGS)
       {
         int j = BROWSER_COMPATIBLE_DATE_FORMAT_STRINGS.length;
         if (i >= j) {
@@ -70,7 +60,6 @@ public final class HttpDate
           return localObject;
         }
       }
-      finally {}
       i += 1;
     }
     return null;

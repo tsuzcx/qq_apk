@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.data;
 
 import android.database.Cursor;
+import atmo;
+import atnz;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.io.Serializable;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="troopuin,memberuin")
 public class TroopMemberInfo
-  extends Entity
+  extends atmo
   implements Serializable
 {
   public static final long VALUE_DISTANCE_TO_SELF_EXPIRED = -1000L;
   public static final long VALUE_DISTANCE_TO_SELF_UNKOWN = -100L;
   public static final long VALUE_MEMBER_CLOSE_SHARE_LBS = -1001L;
   public long active_point;
-  @notColumn
+  @atnz
   public int addState;
   public byte age;
   public String alias;
@@ -24,7 +24,7 @@ public class TroopMemberInfo
   public int commonFrdCnt = -2147483648;
   public long credit_level;
   public long datetime;
-  @notColumn
+  @atnz
   public String displayedNamePinyinFirst;
   public int distance;
   public double distanceToSelf = -100.0D;
@@ -33,6 +33,7 @@ public class TroopMemberInfo
   public String friendnick;
   public long gagTimeStamp;
   public int globalTroopLevel = -100;
+  public String honorList;
   public int hotChatGlamourLevel = -100;
   public String hwCourse;
   public int hwIdentity;
@@ -42,10 +43,17 @@ public class TroopMemberInfo
   public long join_time;
   public long last_active_time;
   public int level;
+  public int mBigClubTemplateId;
+  public int mBigClubVipLevel;
+  public int mBigClubVipType;
   public int mGlamourLevel;
+  public int mIsHideBigClub;
   public boolean mIsShielded;
   public String mUniqueTitle;
   public int mUniqueTitleExpire;
+  public int mVipLevel;
+  public int mVipTemplateId;
+  public int mVipType;
   public String memberuin;
   public long msgseq = -100L;
   public String pyAll_autoremark;
@@ -63,11 +71,12 @@ public class TroopMemberInfo
   public int superVipInfo;
   public int tribeLevel;
   public int tribePoint;
+  public String troopColorNick;
   public String troopnick;
   public String troopremark;
   public String troopuin;
   
-  protected boolean entityByCursor(Cursor paramCursor)
+  public boolean entityByCursor(Cursor paramCursor)
   {
     boolean bool2 = false;
     this.troopuin = paramCursor.getString(paramCursor.getColumnIndex("troopuin"));
@@ -75,6 +84,7 @@ public class TroopMemberInfo
     this.friendnick = paramCursor.getString(paramCursor.getColumnIndex("friendnick"));
     this.pyAll_friendnick = paramCursor.getString(paramCursor.getColumnIndex("pyAll_friendnick"));
     this.pyFirst_friendnick = paramCursor.getString(paramCursor.getColumnIndex("pyFirst_friendnick"));
+    this.troopColorNick = paramCursor.getString(paramCursor.getColumnIndex("troopColorNick"));
     this.troopnick = paramCursor.getString(paramCursor.getColumnIndex("troopnick"));
     this.pyAll_troopnick = paramCursor.getString(paramCursor.getColumnIndex("pyAll_troopnick"));
     this.pyFirst_troopnick = paramCursor.getString(paramCursor.getColumnIndex("pyFirst_troopnick"));
@@ -122,6 +132,14 @@ public class TroopMemberInfo
       this.hwIdentity = paramCursor.getInt(paramCursor.getColumnIndex("hwIdentity"));
       this.recommendRemark = paramCursor.getString(paramCursor.getColumnIndex("recommendRemark"));
       this.isShowQZone = paramCursor.getInt(paramCursor.getColumnIndex("isShowQZone"));
+      this.mVipType = paramCursor.getInt(paramCursor.getColumnIndex("mVipType"));
+      this.mVipLevel = paramCursor.getInt(paramCursor.getColumnIndex("mVipLevel"));
+      this.mVipTemplateId = paramCursor.getInt(paramCursor.getColumnIndex("mVipTemplateId"));
+      this.mBigClubVipType = paramCursor.getInt(paramCursor.getColumnIndex("mBigClubVipType"));
+      this.mBigClubVipLevel = paramCursor.getInt(paramCursor.getColumnIndex("mBigClubVipLevel"));
+      this.mBigClubTemplateId = paramCursor.getInt(paramCursor.getColumnIndex("mBigClubTemplateId"));
+      this.mIsHideBigClub = paramCursor.getInt(paramCursor.getColumnIndex("mIsHideBigClub"));
+      this.honorList = paramCursor.getString(paramCursor.getColumnIndex("honorList"));
       return true;
     }
   }
@@ -173,6 +191,9 @@ public class TroopMemberInfo
     localStringBuilder.append(", hwIdentity=").append(this.hwIdentity);
     localStringBuilder.append(", recommendRemark=").append(this.recommendRemark);
     localStringBuilder.append(", isShowQzone=").append(this.isShowQZone);
+    localStringBuilder.append(", mVipType=").append(this.mVipType);
+    localStringBuilder.append(", mVipLevel=").append(this.mVipLevel);
+    localStringBuilder.append(", honorList=").append(this.honorList);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }

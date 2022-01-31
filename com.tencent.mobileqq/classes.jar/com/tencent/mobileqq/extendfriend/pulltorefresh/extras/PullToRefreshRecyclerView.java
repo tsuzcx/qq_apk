@@ -6,10 +6,12 @@ import android.support.v7.widget.RecyclerView.Adapter;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.AnimationStyle;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Mode;
 import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Orientation;
 
 public class PullToRefreshRecyclerView
-  extends PullToRefreshBase
+  extends PullToRefreshBase<RecyclerView>
 {
   public PullToRefreshRecyclerView(Context paramContext)
   {
@@ -19,6 +21,16 @@ public class PullToRefreshRecyclerView
   public PullToRefreshRecyclerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+  }
+  
+  public PullToRefreshRecyclerView(Context paramContext, PullToRefreshBase.Mode paramMode)
+  {
+    super(paramContext, paramMode);
+  }
+  
+  public PullToRefreshRecyclerView(Context paramContext, PullToRefreshBase.Mode paramMode, PullToRefreshBase.AnimationStyle paramAnimationStyle)
+  {
+    super(paramContext, paramMode, paramAnimationStyle);
   }
   
   private int d()
@@ -73,14 +85,14 @@ public class PullToRefreshRecyclerView
     return PullToRefreshBase.Orientation.VERTICAL;
   }
   
-  protected boolean c()
-  {
-    return f();
-  }
-  
-  protected boolean d()
+  public boolean a()
   {
     return e();
+  }
+  
+  public boolean b()
+  {
+    return f();
   }
 }
 

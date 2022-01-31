@@ -1,11 +1,10 @@
 package com.tencent.widget;
 
-import amlr;
-import amls;
-import amlt;
-import amlu;
+import aciy;
+import aloa;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -17,24 +16,38 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.view.Window;
+import android.view.WindowManager.LayoutParams;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
+import aniw;
+import baio;
+import balc;
+import beel;
+import befo;
+import bepd;
+import bepe;
+import bepf;
+import bepg;
+import beph;
+import bepi;
+import bepj;
+import bepk;
+import bepl;
+import bepu;
 import com.tencent.image.ApngImage;
 import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
 import com.tencent.mobileqq.activity.qwallet.widget.HongBaoPanel;
+import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.emoticonview.EmoticonPanelViewBinder;
-import com.tencent.mobileqq.utils.StartupTracker;
-import com.tencent.mobileqq.utils.kapalaiadapter.DeviceInfoUtil2;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.AnimateUtils;
-import com.tencent.util.VersionUtils;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import com.tencent.widget.immersive.SystemBarTintManager;
-import java.lang.reflect.Field;
+import java.lang.ref.WeakReference;
 
 public class XPanelContainer
   extends FrameLayout
@@ -47,10 +60,12 @@ public class XPanelContainer
   public static volatile int d;
   private static boolean d;
   private long jdField_a_of_type_Long = -1L;
-  private SparseArray jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(4);
+  private SparseArray<View> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(4);
   private View jdField_a_of_type_AndroidViewView;
-  public XPanelContainer.OnChangeMultiScreenListener a;
-  private XPanelContainer.PanelCallback jdField_a_of_type_ComTencentWidgetXPanelContainer$PanelCallback;
+  public beph a;
+  private bepj jdField_a_of_type_Bepj;
+  private bepk jdField_a_of_type_Bepk;
+  public WeakReference<bepi> a;
   public boolean a;
   private int[] jdField_a_of_type_ArrayOfInt = new int[2];
   private View b;
@@ -65,15 +80,17 @@ public class XPanelContainer
   private boolean jdField_h_of_type_Boolean;
   private int jdField_i_of_type_Int = -1;
   private boolean jdField_i_of_type_Boolean = true;
-  private int j = -1;
-  private int k = -1;
+  private int jdField_j_of_type_Int = -1;
+  private boolean jdField_j_of_type_Boolean;
+  private int jdField_k_of_type_Int = -1;
+  private boolean jdField_k_of_type_Boolean;
   private int l;
   private int m = 0;
   private int n;
   
   static
   {
-    jdField_d_of_type_Boolean = VersionUtils.e();
+    jdField_d_of_type_Boolean = befo.e();
   }
   
   public XPanelContainer(Context paramContext)
@@ -89,14 +106,14 @@ public class XPanelContainer
     this.jdField_c_of_type_Boolean = true;
     if (jdField_a_of_type_Int == 0)
     {
-      jdField_a_of_type_Int = (int)(196.0F * paramContext.getResources().getDisplayMetrics().density);
+      jdField_a_of_type_Int = (int)(b() * paramContext.getResources().getDisplayMetrics().density);
       jdField_b_of_type_Int = jdField_a_of_type_Int;
-      if (!SystemBarTintManager.a(paramContext)) {
-        break label307;
+      if (!bepu.a(paramContext)) {
+        break label309;
       }
-      i1 = SystemBarTintManager.a(paramContext);
+      i1 = bepu.a(paramContext);
     }
-    label307:
+    label309:
     for (jdField_c_of_type_Int = (int)((paramContext.getResources().getDisplayMetrics().heightPixels + i1) * 0.4D);; jdField_c_of_type_Int = (int)(paramContext.getResources().getDisplayMetrics().heightPixels * 0.4D))
     {
       if (QLog.isColorLevel()) {
@@ -105,9 +122,21 @@ public class XPanelContainer
       if (QLog.isColorLevel()) {
         QLog.d("XPanelContainer", 2, " mDefaultExternalPanelheight = " + jdField_b_of_type_Int + "mMAXExternalPanelheight=" + jdField_c_of_type_Int + "density=" + paramContext.getResources().getDisplayMetrics().density + "mNavigationBarHeight=" + i1);
       }
-      this.l = ImmersiveUtils.a(getContext());
-      if ((Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT < 24) && (!DeviceInfoUtil2.a())) {
-        setOnSystemUiVisibilityChangeListener(new amlr(this));
+      this.l = ImmersiveUtils.getStatusBarHeight(getContext());
+      if ((Build.VERSION.SDK_INT >= 21) && (Build.VERSION.SDK_INT < 24) && (!balc.a())) {
+        setOnSystemUiVisibilityChangeListener(new bepd(this));
+      }
+      return;
+    }
+  }
+  
+  private void a(int paramInt1, int paramInt2)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    for (bepi localbepi = null;; localbepi = (bepi)this.jdField_a_of_type_JavaLangRefWeakReference.get())
+    {
+      if (localbepi != null) {
+        localbepi.b(paramInt1, paramInt2);
       }
       return;
     }
@@ -129,37 +158,64 @@ public class XPanelContainer
     }
   }
   
+  private void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_Bepk != null) {
+      this.jdField_a_of_type_Bepk.a(paramBoolean);
+    }
+  }
+  
+  public static int b()
+  {
+    return 250;
+  }
+  
   private void b(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("XPanelContainer", 2, "setStatus status=" + paramInt + "mStatus=" + this.jdField_f_of_type_Int);
+      QLog.d("XPanelContainer", 2, "setStatus status=" + paramInt + " mStatus=" + this.jdField_f_of_type_Int + " mSoftInputChange=" + this.jdField_k_of_type_Boolean + " mSoftInputShowing=" + this.jdField_j_of_type_Boolean);
     }
     if (paramInt != this.jdField_f_of_type_Int)
     {
       int i1 = this.jdField_f_of_type_Int;
       this.jdField_f_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_ComTencentWidgetXPanelContainer$PanelCallback != null) {
-        this.jdField_a_of_type_ComTencentWidgetXPanelContainer$PanelCallback.a(i1, this.jdField_f_of_type_Int);
+      if (this.jdField_a_of_type_Bepj != null) {
+        this.jdField_a_of_type_Bepj.a(i1, this.jdField_f_of_type_Int);
       }
       URLDrawable.resume();
       ApngImage.playByTag(0);
-      if ((this.jdField_b_of_type_AndroidViewView != null) && (paramInt <= 1))
+      if ((this.jdField_b_of_type_AndroidViewView != null) && (paramInt <= 1) && ((!(this.jdField_b_of_type_AndroidViewView instanceof VoiceTextEditPanel)) || (paramInt != 1)))
       {
-        if (this.jdField_b_of_type_AndroidViewView.getVisibility() != 0) {
-          break label133;
+        if ((!this.jdField_k_of_type_Boolean) || (this.jdField_j_of_type_Boolean)) {
+          break label171;
         }
-        this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-        this.jdField_b_of_type_AndroidViewView = null;
-        postDelayed(this, 1L);
+        if ((this.jdField_b_of_type_AndroidViewView instanceof VoiceTextEditPanel)) {
+          this.jdField_f_of_type_Int = 36;
+        }
       }
     }
     return;
-    label133:
+    label171:
+    if (this.jdField_b_of_type_AndroidViewView.getVisibility() == 0)
+    {
+      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_b_of_type_AndroidViewView = null;
+      postDelayed(this, 1L);
+      return;
+    }
     this.jdField_b_of_type_AndroidViewView = null;
   }
   
+  private int c()
+  {
+    if ((this.jdField_b_of_type_AndroidViewView != null) && ((this.jdField_b_of_type_AndroidViewView instanceof bepl))) {
+      return ((bepl)this.jdField_b_of_type_AndroidViewView).a();
+    }
+    return jdField_b_of_type_Int;
+  }
+  
   @TargetApi(11)
-  private void d()
+  private void f()
   {
     if ((jdField_d_of_type_Boolean) && (this.jdField_g_of_type_Boolean))
     {
@@ -183,7 +239,7 @@ public class XPanelContainer
       return;
     }
     float f1 = (float)(AnimationUtils.currentAnimationTimeMillis() - this.jdField_a_of_type_Long) / 0.0F;
-    this.n = ((int)(jdField_a_of_type_Int - AnimateUtils.a(f1) * jdField_a_of_type_Int));
+    this.n = ((int)(jdField_a_of_type_Int - beel.a(f1) * jdField_a_of_type_Int));
   }
   
   public int a()
@@ -198,14 +254,7 @@ public class XPanelContainer
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("XPanelContainer", 2, "-->finish--reset resetPosition");
-    }
-    this.jdField_g_of_type_Int = -1;
-    b(0);
-    this.jdField_a_of_type_Boolean = true;
-    this.n = 0;
-    requestLayout();
+    ((InputMethodManager)getContext().getSystemService("input_method")).hideSoftInputFromWindow(getWindowToken(), 0);
   }
   
   public void a(int paramInt)
@@ -220,57 +269,32 @@ public class XPanelContainer
       QLog.d("Q.aio.XPanelContainer", 2, " showExternalPanel panelId = " + paramInt + " mStatus = " + this.jdField_f_of_type_Int + " ready = " + this.jdField_i_of_type_Boolean);
     }
     if (!this.jdField_i_of_type_Boolean) {}
-    label157:
-    label200:
-    label223:
+    label116:
     do
     {
-      for (;;)
+      do
       {
-        return;
-        this.m = paramInt;
-        Object localObject1;
-        Object localObject3;
-        if (jdField_b_of_type_Boolean)
+        for (;;)
         {
-          if (paramInt == 1) {
-            if (this.jdField_a_of_type_AndroidViewView.requestFocusFromTouch())
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.aio.XPanelContainer", 2, " requestFocusFromTouch success ");
-              }
-              if (!this.jdField_a_of_type_AndroidViewView.requestFocus()) {
-                break label280;
-              }
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.aio.XPanelContainer", 2, " requestFocus success ");
-              }
-              if (!this.jdField_a_of_type_AndroidViewView.hasFocus()) {
-                break label262;
-              }
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.aio.XPanelContainer", 2, " hasFocus true ");
-              }
-              localObject1 = (InputMethodManager)getContext().getSystemService("input_method");
-              if (!((InputMethodManager)localObject1).showSoftInput(this.jdField_a_of_type_AndroidViewView, 0)) {
-                break label298;
-              }
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.aio.XPanelContainer", 2, " showSoftInput success ");
-              }
-              if (!((InputMethodManager)localObject1).isActive()) {
-                break label536;
-              }
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.aio.XPanelContainer", 2, " imm.isActive() = true");
-              }
-              if (this.jdField_b_of_type_AndroidViewView != null) {
-                this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+          return;
+          this.m = paramInt;
+          a(this.jdField_f_of_type_Int, paramInt);
+          Object localObject2;
+          Object localObject1;
+          if (jdField_b_of_type_Boolean)
+          {
+            if (paramInt == 1) {
+              if (this.jdField_a_of_type_AndroidViewView.requestFocusFromTouch())
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("Q.aio.XPanelContainer", 2, " requestFocusFromTouch success ");
+                }
+                aciy.a(this.jdField_a_of_type_AndroidViewView);
+                if (this.jdField_b_of_type_AndroidViewView != null) {
+                  this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+                }
               }
             }
-          }
-          for (;;)
-          {
             for (;;)
             {
               for (;;)
@@ -278,234 +302,108 @@ public class XPanelContainer
                 requestLayout();
                 return;
                 if (!QLog.isColorLevel()) {
-                  break;
+                  break label116;
                 }
                 QLog.e("Q.aio.XPanelContainer", 2, " requestFocusFromTouch fail ");
-                break;
-                if (!QLog.isColorLevel()) {
-                  break label157;
-                }
-                QLog.d("Q.aio.XPanelContainer", 2, " hasFocus false ");
-                break label157;
-                if (!QLog.isColorLevel()) {
-                  break label157;
-                }
-                QLog.e("Q.aio.XPanelContainer", 2, " requestFocus fail ");
-                break label157;
-                if (QLog.isColorLevel()) {
-                  QLog.e("Q.aio.XPanelContainer", 2, " showSoftInput fail ");
-                }
-                try
+                break label116;
+                if (paramInt > 1)
                 {
-                  Object localObject5 = localObject1.getClass();
-                  Object localObject2 = ((Class)localObject5).getDeclaredField("mServedView");
-                  localObject5 = ((Class)localObject5).getDeclaredField("mNextServedView");
-                  ((Field)localObject2).setAccessible(true);
-                  ((Field)localObject5).setAccessible(true);
-                  localObject2 = ((Field)localObject2).get(localObject1);
-                  localObject5 = ((Field)localObject5).get(localObject1);
-                  if (QLog.isColorLevel()) {
-                    QLog.d("Q.aio.XPanelContainer", 2, " showSoftInput fail mNextServedObject = " + localObject5 + " mServedObject" + localObject2 + " messageInputer = " + this.jdField_a_of_type_AndroidViewView);
+                  a();
+                  if (this.jdField_f_of_type_Int == 1) {
+                    this.jdField_f_of_type_Int = 0;
                   }
-                  if ((localObject2 == null) || (localObject2 == this.jdField_a_of_type_AndroidViewView) || (!(localObject2 instanceof View))) {
-                    break label200;
-                  }
-                  ((InputMethodManager)localObject1).hideSoftInputFromWindow(((View)localObject2).getWindowToken(), 0);
-                  this.jdField_a_of_type_AndroidViewView.requestFocusFromTouch();
-                  this.jdField_a_of_type_AndroidViewView.requestFocus();
-                  if ((!((InputMethodManager)localObject1).showSoftInput(this.jdField_a_of_type_AndroidViewView, 0)) && (QLog.isColorLevel())) {
-                    QLog.d("Q.aio.XPanelContainer", 2, " try showSoftInput fail ");
-                  }
-                  if (!QLog.isColorLevel()) {
-                    break label200;
-                  }
-                  QLog.d("Q.aio.XPanelContainer", 2, " try showSoftInput end");
-                }
-                catch (Exception localException1)
-                {
-                  localException1.printStackTrace();
-                }
-              }
-              break label200;
-              if (!QLog.isColorLevel()) {
-                break label223;
-              }
-              QLog.d("Q.aio.XPanelContainer", 2, " imm.isActive() = false");
-              break label223;
-              if (paramInt > 1)
-              {
-                ((InputMethodManager)getContext().getSystemService("input_method")).hideSoftInputFromWindow(getWindowToken(), 0);
-                if (this.jdField_f_of_type_Int == 1) {
-                  this.jdField_f_of_type_Int = 0;
-                }
-                localObject3 = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-                localObject1 = localObject3;
-                if (localObject3 != null)
-                {
-                  localObject1 = localObject3;
-                  if (this.jdField_a_of_type_ComTencentWidgetXPanelContainer$PanelCallback.a(paramInt))
+                  localObject2 = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+                  localObject1 = localObject2;
+                  if (localObject2 != null)
                   {
-                    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-                    removeView((View)localObject3);
-                    localObject1 = null;
-                  }
-                }
-                a(paramInt, (View)localObject1);
-                localObject3 = localObject1;
-                if (localObject1 == null) {}
-                try
-                {
-                  localObject3 = this.jdField_a_of_type_ComTencentWidgetXPanelContainer$PanelCallback.a(paramInt);
-                  if (localObject3 == null) {
-                    break;
-                  }
-                  addView((View)localObject3);
-                  this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject3);
-                  if (localObject3 != this.jdField_b_of_type_AndroidViewView)
-                  {
-                    if (this.jdField_b_of_type_AndroidViewView != null) {
-                      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-                    }
-                    ((View)localObject3).setVisibility(0);
-                    this.jdField_b_of_type_AndroidViewView = ((View)localObject3);
-                  }
-                }
-                catch (Exception localException3)
-                {
-                  for (;;)
-                  {
-                    localObject3 = localObject1;
-                    if (QLog.isColorLevel())
+                    localObject1 = localObject2;
+                    if (this.jdField_a_of_type_Bepj.a(paramInt))
                     {
-                      QLog.d("XPanelContainer", 2, localException3, new Object[0]);
-                      localObject3 = localObject1;
+                      this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
+                      removeView((View)localObject2);
+                      localObject1 = null;
+                    }
+                  }
+                  a(paramInt, (View)localObject1);
+                  localObject2 = localObject1;
+                  if (localObject1 == null) {}
+                  try
+                  {
+                    localObject2 = this.jdField_a_of_type_Bepj.a(paramInt);
+                    if (localObject2 == null) {
+                      break;
+                    }
+                    addView((View)localObject2);
+                    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject2);
+                    if (localObject2 != this.jdField_b_of_type_AndroidViewView)
+                    {
+                      if (this.jdField_b_of_type_AndroidViewView != null) {
+                        this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+                      }
+                      ((View)localObject2).setVisibility(0);
+                      this.jdField_b_of_type_AndroidViewView = ((View)localObject2);
+                    }
+                  }
+                  catch (Exception localException1)
+                  {
+                    for (;;)
+                    {
+                      localObject2 = localObject1;
+                      if (QLog.isColorLevel())
+                      {
+                        QLog.d("XPanelContainer", 2, localException1, new Object[0]);
+                        localObject2 = localObject1;
+                      }
                     }
                   }
                 }
               }
-            }
-            a();
-          }
-        }
-        if (paramInt == 1)
-        {
-          if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.requestFocus()))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.aio.XPanelContainer", 2, " requestFocus success ");
-            }
-            if (this.jdField_a_of_type_AndroidViewView.hasFocus())
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.aio.XPanelContainer", 2, " hasFocus true ");
-              }
-              localObject1 = (InputMethodManager)getContext().getSystemService("input_method");
-              if (!((InputMethodManager)localObject1).showSoftInput(this.jdField_a_of_type_AndroidViewView, 0)) {
-                break label943;
-              }
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.aio.XPanelContainer", 2, " showSoftInput success ");
-              }
+              a();
             }
           }
-          for (;;)
+          if (paramInt == 1)
           {
-            if (!((InputMethodManager)localObject1).isActive()) {
-              break label1188;
-            }
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            QLog.d("Q.aio.XPanelContainer", 2, " imm.isActive() = true");
+            aciy.a(this.jdField_a_of_type_AndroidViewView);
             return;
-            if (!QLog.isColorLevel()) {
-              break label840;
-            }
-            QLog.d("Q.aio.XPanelContainer", 2, " hasFocus false ");
-            break label840;
-            if (!QLog.isColorLevel()) {
-              break label840;
-            }
-            QLog.e("Q.aio.XPanelContainer", 2, " requestFocus fail ");
-            break label840;
-            if (QLog.isColorLevel()) {
-              QLog.e("Q.aio.XPanelContainer", 2, " showSoftInput fail ");
-            }
-            try
-            {
-              Object localObject6 = localObject1.getClass();
-              localObject3 = ((Class)localObject6).getDeclaredField("mServedView");
-              localObject6 = ((Class)localObject6).getDeclaredField("mNextServedView");
-              ((Field)localObject3).setAccessible(true);
-              ((Field)localObject6).setAccessible(true);
-              localObject3 = ((Field)localObject3).get(localObject1);
-              localObject6 = ((Field)localObject6).get(localObject1);
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.aio.XPanelContainer", 2, " showSoftInput fail mNextServedObject = " + localObject6 + " mServedObject" + localObject3 + " messageInputer = " + this.jdField_a_of_type_AndroidViewView);
-              }
-              if ((localObject3 != null) && (this.jdField_a_of_type_AndroidViewView != null) && (localObject3 != this.jdField_a_of_type_AndroidViewView) && ((localObject3 instanceof View)))
-              {
-                ((InputMethodManager)localObject1).hideSoftInputFromWindow(((View)localObject3).getWindowToken(), 0);
-                this.jdField_a_of_type_AndroidViewView.requestFocusFromTouch();
-                this.jdField_a_of_type_AndroidViewView.requestFocus();
-                if ((!((InputMethodManager)localObject1).showSoftInput(this.jdField_a_of_type_AndroidViewView, 0)) && (QLog.isColorLevel())) {
-                  QLog.d("Q.aio.XPanelContainer", 2, " try showSoftInput fail ");
-                }
-                if (QLog.isColorLevel()) {
-                  QLog.d("Q.aio.XPanelContainer", 2, " try showSoftInput end");
-                }
-              }
-            }
-            catch (Exception localException2)
-            {
-              localException2.printStackTrace();
-            }
           }
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.aio.XPanelContainer", 2, " imm.isActive() = false");
-          }
-        }
-        else
-        {
           if (paramInt <= 1) {
-            break label1718;
+            break label928;
           }
           this.jdField_a_of_type_Boolean = false;
-          Object localObject4;
           if (paramInt == 3)
           {
             EmoticonMainPanel.jdField_a_of_type_Long = System.currentTimeMillis();
-            StartupTracker.a(null, "AIO_EmoticonPanel_OpenDuration");
-            localObject4 = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-            localObject1 = localObject4;
-            if (localObject4 != null)
+            baio.a(null, "AIO_EmoticonPanel_OpenDuration");
+            localObject2 = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+            localObject1 = localObject2;
+            if (localObject2 != null)
             {
-              localObject1 = localObject4;
-              if (this.jdField_a_of_type_ComTencentWidgetXPanelContainer$PanelCallback.a(paramInt))
+              localObject1 = localObject2;
+              if (this.jdField_a_of_type_Bepj.a(paramInt))
               {
                 this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-                removeView((View)localObject4);
+                removeView((View)localObject2);
                 localObject1 = null;
               }
             }
             a(paramInt, (View)localObject1);
-            localObject4 = localObject1;
+            localObject2 = localObject1;
             if (localObject1 != null) {}
           }
           try
           {
-            localObject4 = this.jdField_a_of_type_ComTencentWidgetXPanelContainer$PanelCallback.a(paramInt);
-            if (localObject4 != null)
+            localObject2 = this.jdField_a_of_type_Bepj.a(paramInt);
+            if (localObject2 != null)
             {
-              addView((View)localObject4);
-              this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject4);
-              if (localObject4 != this.jdField_b_of_type_AndroidViewView)
+              addView((View)localObject2);
+              this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject2);
+              if (localObject2 != this.jdField_b_of_type_AndroidViewView)
               {
                 if (this.jdField_b_of_type_AndroidViewView != null) {
                   this.jdField_b_of_type_AndroidViewView.setVisibility(8);
                 }
-                ((View)localObject4).setVisibility(0);
-                this.jdField_b_of_type_AndroidViewView = ((View)localObject4);
+                ((View)localObject2).setVisibility(0);
+                this.jdField_b_of_type_AndroidViewView = ((View)localObject2);
               }
               if (this.jdField_f_of_type_Int == 0)
               {
@@ -526,26 +424,26 @@ public class XPanelContainer
                   int i1 = jdField_a_of_type_Int;
                   localObject1 = ValueAnimator.ofInt(new int[] { paramInt, paramInt - jdField_a_of_type_Int });
                   ((ValueAnimator)localObject1).setDuration(150L);
-                  ((ValueAnimator)localObject1).addUpdateListener(new amlt(this, paramInt));
+                  ((ValueAnimator)localObject1).addUpdateListener(new bepf(this, paramInt));
                   ((ValueAnimator)localObject1).start();
                   return;
                   if (paramInt != 21) {
-                    break label1232;
+                    break label409;
                   }
-                  StartupTracker.a(null, "apollo_panel_open");
+                  baio.a(null, "apollo_panel_open");
                 }
               }
             }
           }
-          catch (Exception localException4)
+          catch (Exception localException2)
           {
             for (;;)
             {
-              localObject4 = localObject1;
+              localObject2 = localObject1;
               if (QLog.isColorLevel())
               {
-                QLog.d("XPanelContainer", 2, localException4, new Object[0]);
-                localObject4 = localObject1;
+                QLog.d("XPanelContainer", 2, localException2, new Object[0]);
+                localObject2 = localObject1;
               }
             }
             this.n = jdField_a_of_type_Int;
@@ -554,9 +452,9 @@ public class XPanelContainer
             return;
           }
         }
-      }
-      if (this.jdField_f_of_type_Int == 1)
-      {
+        if (this.jdField_f_of_type_Int != 1) {
+          break;
+        }
         if ((this.n != 0) && (this.n != jdField_a_of_type_Int))
         {
           if (QLog.isColorLevel()) {
@@ -566,21 +464,18 @@ public class XPanelContainer
           this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
         }
         this.jdField_g_of_type_Int = paramInt;
-        ((InputMethodManager)getContext().getSystemService("input_method")).hideSoftInputFromWindow(getWindowToken(), 0);
-        return;
+        a();
+      } while ((this.n != 0) || (this.jdField_j_of_type_Boolean) || (this.jdField_h_of_type_Int <= 0) || (getHeight() < this.jdField_h_of_type_Int));
+      if (QLog.isColorLevel()) {
+        QLog.w("XPanelContainer", 2, "soft input status error, reset");
       }
+      c();
+      return;
     } while (this.jdField_f_of_type_Int == paramInt);
-    label262:
-    label280:
-    label298:
-    label840:
-    label1232:
+    label409:
     b(paramInt);
-    label536:
-    label943:
     return;
-    label1188:
-    label1718:
+    label928:
     throw new IllegalArgumentException("wrong argument..must be SOFT_INPUT,EXTERNAL_EMOTICON,EXTERNAL_INPUT");
   }
   
@@ -593,7 +488,7 @@ public class XPanelContainer
   {
     this.jdField_a_of_type_AndroidViewView = paramView;
     if (paramView.getOnFocusChangeListener() == null) {
-      paramView.setOnFocusChangeListener(new amls(this));
+      paramView.setOnFocusChangeListener(new bepe(this));
     }
     if ((paramBoolean) && (paramView.getParent() != null) && ((paramView.getParent() instanceof ViewGroup)))
     {
@@ -612,37 +507,62 @@ public class XPanelContainer
   @TargetApi(11)
   public boolean a(boolean paramBoolean)
   {
-    Object localObject;
+    return a(paramBoolean, false);
+  }
+  
+  @TargetApi(11)
+  public boolean a(boolean paramBoolean1, boolean paramBoolean2)
+  {
     if ((this.jdField_b_of_type_AndroidViewView instanceof EmoticonMainPanel))
     {
-      localObject = (EmoticonMainPanel)this.jdField_b_of_type_AndroidViewView;
-      ((EmoticonMainPanel)localObject).removeView(((EmoticonMainPanel)localObject).jdField_b_of_type_AndroidViewView);
+      EmoticonMainPanel localEmoticonMainPanel = (EmoticonMainPanel)this.jdField_b_of_type_AndroidViewView;
+      localEmoticonMainPanel.removeView(localEmoticonMainPanel.jdField_b_of_type_AndroidViewView);
     }
-    if (this.jdField_a_of_type_ComTencentWidgetXPanelContainer$PanelCallback != null) {
-      this.jdField_a_of_type_ComTencentWidgetXPanelContainer$PanelCallback.q();
+    if (this.jdField_a_of_type_Bepj != null) {
+      this.jdField_a_of_type_Bepj.r();
     }
     boolean bool;
     if (this.jdField_f_of_type_Int > 0)
     {
       bool = true;
       if (!jdField_b_of_type_Boolean) {
-        break label106;
+        break label102;
       }
-      if (this.jdField_f_of_type_Int == 1) {
-        ((InputMethodManager)getContext().getSystemService("input_method")).hideSoftInputFromWindow(getWindowToken(), 0);
+      if (this.jdField_f_of_type_Int == 1)
+      {
+        if (!paramBoolean2) {
+          break label95;
+        }
+        b();
       }
+      label77:
       this.m = 0;
       requestLayout();
     }
-    label106:
+    label95:
+    label102:
     do
     {
       return bool;
       bool = false;
       break;
+      a();
+      break label77;
       if (this.jdField_f_of_type_Int == 1)
       {
-        ((InputMethodManager)getContext().getSystemService("input_method")).hideSoftInputFromWindow(getWindowToken(), 0);
+        if (paramBoolean2) {
+          try
+          {
+            b();
+            return bool;
+          }
+          catch (Exception localException)
+          {
+            QLog.e("XPanelContainer", 1, localException, new Object[0]);
+            return bool;
+          }
+        }
+        a();
         return bool;
       }
     } while (this.jdField_f_of_type_Int <= 1);
@@ -655,20 +575,20 @@ public class XPanelContainer
     }
     this.m = 0;
     this.jdField_g_of_type_Int = 0;
-    if (paramBoolean) {}
+    if (paramBoolean1) {}
     for (int i1 = jdField_a_of_type_Int;; i1 = 0)
     {
       this.n = i1;
       this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
-      if ((!jdField_d_of_type_Boolean) || (!paramBoolean)) {
+      if ((!jdField_d_of_type_Boolean) || (!paramBoolean1)) {
         break;
       }
       this.jdField_f_of_type_Boolean = true;
       i1 = getHeight();
-      localObject = ValueAnimator.ofInt(new int[] { i1 - jdField_a_of_type_Int, i1 });
-      ((ValueAnimator)localObject).setDuration(150L);
-      ((ValueAnimator)localObject).addUpdateListener(new amlu(this, i1));
-      ((ValueAnimator)localObject).start();
+      ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { i1 - jdField_a_of_type_Int, i1 });
+      localValueAnimator.setDuration(150L);
+      localValueAnimator.addUpdateListener(new bepg(this, i1));
+      localValueAnimator.start();
       return bool;
     }
     requestLayout();
@@ -677,8 +597,51 @@ public class XPanelContainer
   
   public void b()
   {
+    boolean bool = true;
+    if ((this.jdField_a_of_type_Bepj instanceof BaseChatPie)) {
+      bool = ((BaseChatPie)this.jdField_a_of_type_Bepj).a.a.a();
+    }
+    if (bool)
+    {
+      a();
+      if (QLog.isColorLevel()) {
+        QLog.w("XPanelContainer", 2, "hideKeyboardInConsiderLeftSwipe");
+      }
+    }
+  }
+  
+  @TargetApi(11)
+  public boolean b()
+  {
+    return a(true, true);
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("XPanelContainer", 2, "-->finish--reset resetPosition");
+    }
+    this.jdField_g_of_type_Int = -1;
+    b(0);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_e_of_type_Boolean = false;
+    this.jdField_f_of_type_Boolean = false;
+    this.n = 0;
+    requestLayout();
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_i_of_type_Boolean;
+  }
+  
+  public void d()
+  {
     if (QLog.isColorLevel()) {
       QLog.d("Q.aio.XPanelContainer", 2, " clearAllPanel ");
+    }
+    if ((this.jdField_b_of_type_AndroidViewView instanceof VoiceTextEditPanel)) {
+      return;
     }
     int i1 = 0;
     try
@@ -697,15 +660,20 @@ public class XPanelContainer
     {
       this.jdField_a_of_type_AndroidUtilSparseArray.clear();
       this.jdField_b_of_type_AndroidViewView = null;
-      EmoticonPanelViewBinder.b();
+      aniw.b();
     }
   }
   
-  public void c()
+  public boolean d()
+  {
+    return (this.jdField_b_of_type_AndroidViewView != null) && ((this.jdField_b_of_type_AndroidViewView instanceof VoiceTextEditPanel));
+  }
+  
+  public void e()
   {
     if (jdField_b_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_ComTencentWidgetXPanelContainer$PanelCallback != null) {}
+      if (this.jdField_a_of_type_Bepj != null) {}
       this.jdField_f_of_type_Int = 1;
       this.m = 1;
       this.jdField_g_of_type_Int = 0;
@@ -727,12 +695,12 @@ public class XPanelContainer
   protected void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    if (VersionUtils.f()) {
-      if ((paramConfiguration.orientation != this.jdField_i_of_type_Int) && ((this.j != paramConfiguration.screenWidthDp) || (this.k != paramConfiguration.screenHeightDp)))
+    if (befo.f()) {
+      if ((paramConfiguration.orientation != this.jdField_i_of_type_Int) && ((this.jdField_j_of_type_Int != paramConfiguration.screenWidthDp) || (this.jdField_k_of_type_Int != paramConfiguration.screenHeightDp)))
       {
         this.jdField_i_of_type_Int = -1;
-        this.k = -1;
-        this.k = -1;
+        this.jdField_k_of_type_Int = -1;
+        this.jdField_k_of_type_Int = -1;
         this.jdField_h_of_type_Int = -1;
         a();
       }
@@ -751,26 +719,51 @@ public class XPanelContainer
     if (QLog.isColorLevel()) {
       QLog.d("Q.aio.XPanelContainer", 2, "  changed = " + paramInt1 + "top=" + paramInt2 + "bottom=" + paramInt4 + " mAnimationPosition = " + this.n);
     }
+    if ((getContext() instanceof SplashActivity))
+    {
+      i1 = ((Activity)getContext()).getWindow().getAttributes().softInputMode;
+      if (i1 != 18)
+      {
+        QLog.e("XPanelContainer", 1, "illegal soft input mode: " + i1);
+        ((Activity)getContext()).getWindow().setSoftInputMode(18);
+        requestLayout();
+      }
+    }
     int i5 = getPaddingRight();
     int i2 = getPaddingLeft();
     int i4 = getPaddingBottom();
     int i3 = getPaddingTop();
-    if (Build.VERSION.SDK_INT >= 24) {}
     boolean bool;
+    if (Build.VERSION.SDK_INT >= 24) {
+      if (jdField_b_of_type_Boolean)
+      {
+        long l1 = System.currentTimeMillis();
+        if ((getContext() instanceof Activity))
+        {
+          bool = ((Activity)getContext()).isInMultiWindowMode();
+          QLog.d("XPanelContainer", 1, "targetSdk > 24 tmpIsMultiScreen= " + bool + ",calltime = " + (System.currentTimeMillis() - l1));
+          if (jdField_b_of_type_Boolean != bool)
+          {
+            this.jdField_h_of_type_Boolean = true;
+            jdField_b_of_type_Boolean = bool;
+          }
+        }
+      }
+    }
     for (;;)
     {
       if (this.jdField_c_of_type_Boolean)
       {
-        if (this.jdField_a_of_type_ComTencentWidgetXPanelContainer$OnChangeMultiScreenListener != null) {
-          this.jdField_a_of_type_ComTencentWidgetXPanelContainer$OnChangeMultiScreenListener.j(jdField_b_of_type_Boolean);
+        if (this.jdField_a_of_type_Beph != null) {
+          this.jdField_a_of_type_Beph.l(jdField_b_of_type_Boolean);
         }
         this.jdField_c_of_type_Boolean = false;
       }
       if (this.jdField_h_of_type_Boolean)
       {
         this.jdField_h_of_type_Boolean = false;
-        if (this.jdField_a_of_type_ComTencentWidgetXPanelContainer$OnChangeMultiScreenListener != null) {
-          this.jdField_a_of_type_ComTencentWidgetXPanelContainer$OnChangeMultiScreenListener.j(jdField_b_of_type_Boolean);
+        if (this.jdField_a_of_type_Beph != null) {
+          this.jdField_a_of_type_Beph.l(jdField_b_of_type_Boolean);
         }
         if (this.jdField_b_of_type_AndroidViewView != null)
         {
@@ -781,11 +774,11 @@ public class XPanelContainer
           this.jdField_b_of_type_AndroidViewView = null;
         }
         ((InputMethodManager)getContext().getSystemService("input_method")).hideSoftInputFromWindow(getWindowToken(), 0);
-        b();
+        d();
         b(0);
         this.m = 0;
         this.jdField_g_of_type_Int = -1;
-        jdField_b_of_type_Int = (int)(196.0F * getContext().getResources().getDisplayMetrics().density);
+        jdField_b_of_type_Int = (int)(b() * getContext().getResources().getDisplayMetrics().density);
         jdField_a_of_type_Int = jdField_b_of_type_Int;
         jdField_d_of_type_Int = 0;
         paramInt1 = paramInt3 - paramInt1 - i5;
@@ -827,25 +820,31 @@ public class XPanelContainer
     {
       localObject = getResources().getConfiguration();
       this.jdField_i_of_type_Int = ((Configuration)localObject).orientation;
-      if (VersionUtils.f())
+      if (befo.f())
       {
-        this.j = ((Configuration)localObject).screenWidthDp;
-        this.k = ((Configuration)localObject).screenHeightDp;
+        this.jdField_j_of_type_Int = ((Configuration)localObject).screenWidthDp;
+        this.jdField_k_of_type_Int = ((Configuration)localObject).screenHeightDp;
       }
       this.jdField_h_of_type_Int = i6;
       if (getResources().getConfiguration().orientation != 2) {
-        break label1080;
+        break label1291;
       }
       f1 = 0.3F * this.jdField_h_of_type_Int;
-      label620:
+      label796:
       int i7 = (int)f1;
       if ((this.jdField_h_of_type_Int <= i6) || (this.jdField_h_of_type_Int - i6 <= i7)) {
-        break label1094;
+        break label1305;
       }
       bool = true;
-      label649:
+      label825:
+      if (bool != this.jdField_j_of_type_Boolean) {
+        break label1311;
+      }
+      this.jdField_k_of_type_Boolean = false;
+      label839:
+      this.jdField_j_of_type_Boolean = bool;
       if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.XPanelContainer", 2, new Object[] { " onLayout before finalStatus = ", Integer.valueOf(i1), " softInputShowing = ", Boolean.valueOf(bool), " mStatus = ", Integer.valueOf(this.jdField_f_of_type_Int), " changed = ", Boolean.valueOf(paramBoolean), " mPendingStatus = ", Integer.valueOf(this.jdField_g_of_type_Int), " mIsMultiScreen = ", Boolean.valueOf(jdField_b_of_type_Boolean), " mCoordinates[1] = ", Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[1]), " mClickStatus = ", Integer.valueOf(this.m), "mNormalSize = ", Integer.valueOf(this.jdField_h_of_type_Int), " height = ", Integer.valueOf(i6), " dHeight = " + i7 });
+        QLog.d("Q.aio.XPanelContainer", 2, new Object[] { " setStatus onLayout before finalStatus = ", Integer.valueOf(i1), " softInputShowing = ", Boolean.valueOf(bool), " mStatus = ", Integer.valueOf(this.jdField_f_of_type_Int), " changed = ", Boolean.valueOf(paramBoolean), " mPendingStatus = ", Integer.valueOf(this.jdField_g_of_type_Int), " mIsMultiScreen = ", Boolean.valueOf(jdField_b_of_type_Boolean), " mCoordinates[1] = ", Integer.valueOf(this.jdField_a_of_type_ArrayOfInt[1]), " mClickStatus = ", Integer.valueOf(this.m), "mNormalSize = ", Integer.valueOf(this.jdField_h_of_type_Int), " height = ", Integer.valueOf(i6), " dHeight = " + i7 + " mSoftInputChange=" + this.jdField_k_of_type_Boolean });
       }
       paramInt3 = paramInt3 - paramInt1 - i5;
       paramInt2 = paramInt4 - paramInt2 - i4;
@@ -856,13 +855,13 @@ public class XPanelContainer
       try
       {
         if (!jdField_b_of_type_Boolean) {
-          break label1281;
+          break label1500;
         }
-        jdField_b_of_type_Int = (int)(196.0F * getContext().getResources().getDisplayMetrics().density);
-        jdField_a_of_type_Int = jdField_b_of_type_Int;
+        jdField_b_of_type_Int = (int)(b() * getContext().getResources().getDisplayMetrics().density);
+        jdField_a_of_type_Int = c();
         jdField_d_of_type_Int = 0;
         if (this.m != 1) {
-          break label1100;
+          break label1319;
         }
         ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2 - i3, 1073741824));
         ((View)localObject).layout(i2, i3, paramInt3, paramInt2);
@@ -886,13 +885,16 @@ public class XPanelContainer
       }
       this.jdField_h_of_type_Int = i6;
       break;
-      label1080:
+      label1291:
       f1 = 0.2F * this.jdField_h_of_type_Int;
-      break label620;
-      label1094:
+      break label796;
+      label1305:
       bool = false;
-      break label649;
-      label1100:
+      break label825;
+      label1311:
+      this.jdField_k_of_type_Boolean = true;
+      break label839;
+      label1319:
       if (this.m == 0)
       {
         ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2 - i3, 1073741824));
@@ -908,90 +910,99 @@ public class XPanelContainer
           requestLayout();
           return;
         }
-        this.jdField_b_of_type_AndroidViewView.measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(jdField_b_of_type_Int, 1073741824));
-        this.jdField_b_of_type_AndroidViewView.layout(i2, paramInt2 - jdField_b_of_type_Int, paramInt3, paramInt2);
-        ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2 - i3 - jdField_b_of_type_Int, 1073741824));
-        ((View)localObject).layout(i2, i3, paramInt3, paramInt2 - jdField_b_of_type_Int);
+        this.jdField_b_of_type_AndroidViewView.measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(jdField_a_of_type_Int, 1073741824));
+        this.jdField_b_of_type_AndroidViewView.layout(i2, paramInt2 - jdField_a_of_type_Int, paramInt3, paramInt2);
+        ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2 - i3 - jdField_a_of_type_Int, 1073741824));
+        ((View)localObject).layout(i2, i3, paramInt3, paramInt2 - jdField_a_of_type_Int);
       }
     }
-    label1281:
+    label1500:
     if (((!bool) || (this.jdField_f_of_type_Int == 1)) && (this.jdField_e_of_type_Int == 0)) {
       this.jdField_e_of_type_Int = paramInt2;
     }
     if (getResources().getConfiguration().orientation == 2)
     {
       if (jdField_d_of_type_Int != 0) {
-        b();
+        d();
       }
       jdField_d_of_type_Int = 0;
-      jdField_b_of_type_Int = (int)(196.0F * getContext().getResources().getDisplayMetrics().density);
-      jdField_a_of_type_Int = jdField_b_of_type_Int;
+      jdField_b_of_type_Int = (int)(b() * getContext().getResources().getDisplayMetrics().density);
+      jdField_a_of_type_Int = c();
     }
-    if ((bool) && (this.jdField_f_of_type_Int != 1))
-    {
-      ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2 - i3, 1073741824));
-      ((View)localObject).layout(i2, i3, paramInt3, paramInt2);
-      paramInt1 = this.jdField_e_of_type_Int - paramInt2;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.XPanelContainer", 2, new Object[] { " onLayout inputHeight ", Integer.valueOf(paramInt1), " mExternalPanelheight = ", Integer.valueOf(jdField_a_of_type_Int), " mDefaultExternalPanelheight = ", Integer.valueOf(jdField_b_of_type_Int), " mAddedHeight = ", Integer.valueOf(jdField_d_of_type_Int) });
-      }
-      if (getResources().getConfiguration().orientation == 1)
+    if ((bool) && (this.jdField_f_of_type_Int != 1)) {
+      if ((this.jdField_b_of_type_AndroidViewView instanceof VoiceTextEditPanel))
       {
-        jdField_b_of_type_Int = (int)(196.0F * getContext().getResources().getDisplayMetrics().density);
-        if (jdField_a_of_type_Int != paramInt1)
+        ((VoiceTextEditPanel)this.jdField_b_of_type_AndroidViewView).a(true);
+        ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2 - i3 - jdField_a_of_type_Int, 1073741824));
+        ((View)localObject).layout(i2, i3, paramInt3, paramInt2 - jdField_a_of_type_Int);
+        ((VoiceTextEditPanel)this.jdField_b_of_type_AndroidViewView).a(i2, i3, paramInt3, paramInt2, bool);
+        label1681:
+        paramInt1 = this.jdField_e_of_type_Int - paramInt2;
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.aio.XPanelContainer", 2, new Object[] { " onLayout inputHeight ", Integer.valueOf(paramInt1), " mExternalPanelheight = ", Integer.valueOf(jdField_a_of_type_Int), " mDefaultExternalPanelheight = ", Integer.valueOf(jdField_b_of_type_Int), " mAddedHeight = ", Integer.valueOf(jdField_d_of_type_Int) });
+        }
+        if (getResources().getConfiguration().orientation == 1)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.aio.XPanelContainer", 2, " mExternalPanelheight=" + jdField_a_of_type_Int + " inputHeight=" + paramInt1 + " mDefaultExternalPanelheight=" + jdField_b_of_type_Int + " mMAXHExternalPanelheight=" + jdField_c_of_type_Int + " mAnimationPosition=" + this.n);
-          }
-          if (this.n == 0)
+          jdField_b_of_type_Int = (int)(b() * getContext().getResources().getDisplayMetrics().density);
+          if (jdField_a_of_type_Int != paramInt1)
           {
-            if (paramInt1 <= jdField_b_of_type_Int) {
-              break label1847;
+            if (QLog.isColorLevel()) {
+              QLog.d("Q.aio.XPanelContainer", 2, " mExternalPanelheight=" + jdField_a_of_type_Int + " inputHeight=" + paramInt1 + " mDefaultExternalPanelheight=" + jdField_b_of_type_Int + " mMAXHExternalPanelheight=" + jdField_c_of_type_Int + " mAnimationPosition=" + this.n);
             }
-            if (paramInt1 <= jdField_c_of_type_Int) {
-              break label1840;
+            if (this.n == 0)
+            {
+              if (paramInt1 <= jdField_b_of_type_Int) {
+                break label2180;
+              }
+              if (paramInt1 <= jdField_c_of_type_Int) {
+                break label2173;
+              }
+              if (jdField_c_of_type_Int <= jdField_b_of_type_Int) {
+                break label2164;
+              }
+              jdField_a_of_type_Int = jdField_c_of_type_Int;
+              label1924:
+              jdField_d_of_type_Int = jdField_a_of_type_Int - jdField_b_of_type_Int;
             }
-            if (jdField_c_of_type_Int <= jdField_b_of_type_Int) {
-              break label1831;
+            d();
+            if (QLog.isColorLevel()) {
+              QLog.d("XPanelContainer", 2, "mExternalPanelheight=" + jdField_a_of_type_Int + "mAddedHeight=" + jdField_d_of_type_Int);
             }
-            jdField_a_of_type_Int = jdField_c_of_type_Int;
-            label1652:
-            jdField_d_of_type_Int = jdField_a_of_type_Int - jdField_b_of_type_Int;
-          }
-          b();
-          if (QLog.isColorLevel()) {
-            QLog.d("XPanelContainer", 2, "mExternalPanelheight=" + jdField_a_of_type_Int + "mAddedHeight=" + jdField_d_of_type_Int);
           }
         }
+        label1983:
+        if ((!paramBoolean) || (!bool)) {
+          break label3373;
+        }
+        paramInt1 = 1;
+        this.jdField_g_of_type_Int = -1;
       }
-      label1711:
-      if ((!paramBoolean) || (!bool)) {
-        break label2831;
-      }
-      paramInt1 = 1;
-      this.jdField_g_of_type_Int = -1;
     }
-    label1831:
-    label1840:
-    label1847:
-    label2623:
+    label2164:
+    label2173:
     do
     {
       do
       {
         b(paramInt1);
         this.m = paramInt1;
-        if (!QLog.isColorLevel()) {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.aio.XPanelContainer", 2, new Object[] { " onLayout after finalStatus = ", Integer.valueOf(paramInt1), " softInputShowing = ", Boolean.valueOf(bool), " mStatus = ", Integer.valueOf(this.jdField_f_of_type_Int), " changed = ", Boolean.valueOf(paramBoolean), " mPendingStatus = ", Integer.valueOf(this.jdField_g_of_type_Int) });
+        }
+        if (!(this.jdField_b_of_type_AndroidViewView instanceof VoiceTextEditPanel)) {
           break;
         }
-        QLog.d("Q.aio.XPanelContainer", 2, new Object[] { " onLayout after finalStatus = ", Integer.valueOf(paramInt1), " softInputShowing = ", Boolean.valueOf(bool), " mStatus = ", Integer.valueOf(this.jdField_f_of_type_Int), " changed = ", Boolean.valueOf(paramBoolean), " mPendingStatus = ", Integer.valueOf(this.jdField_g_of_type_Int) });
+        ((VoiceTextEditPanel)this.jdField_b_of_type_AndroidViewView).f();
         return;
+        ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2 - i3, 1073741824));
+        ((View)localObject).layout(i2, i3, paramInt3, paramInt2);
+        break label1681;
         jdField_a_of_type_Int = jdField_b_of_type_Int;
-        break label1652;
+        break label1924;
         jdField_a_of_type_Int = paramInt1;
-        break label1652;
+        break label1924;
         jdField_a_of_type_Int = jdField_b_of_type_Int;
-        break label1652;
+        break label1924;
         if ((this.jdField_g_of_type_Int > 1) && ((!bool) || (paramBoolean)))
         {
           if (QLog.isDevelopLevel()) {
@@ -1002,7 +1013,7 @@ public class XPanelContainer
             requestLayout();
             return;
           }
-          d();
+          f();
           if ((jdField_d_of_type_Boolean) && (this.jdField_g_of_type_Boolean)) {
             if (this.jdField_e_of_type_Boolean) {
               paramInt1 = this.n;
@@ -1022,15 +1033,19 @@ public class XPanelContainer
             }
             paramInt1 = jdField_a_of_type_Int - this.n;
           }
-          this.jdField_b_of_type_AndroidViewView.measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(jdField_a_of_type_Int, 1073741824));
-          this.jdField_b_of_type_AndroidViewView.layout(i2, paramInt2 - paramInt1, paramInt3, paramInt2 - paramInt1 + jdField_a_of_type_Int);
-          if (QLog.isDevelopLevel()) {
-            QLog.d("Q.aio.XPanelContainer", 4, " onLayout bom panel mannule layout calcposition d= " + paramInt1 + "mAnimationPosition = " + this.n + "isOpenAnim=" + this.jdField_e_of_type_Boolean + "mExternalPanelheight=" + jdField_a_of_type_Int);
+          if ((this.jdField_b_of_type_AndroidViewView instanceof VoiceTextEditPanel)) {
+            ((VoiceTextEditPanel)this.jdField_b_of_type_AndroidViewView).a(i2, paramInt2 - paramInt1, paramInt3, paramInt2 - paramInt1 + jdField_a_of_type_Int, bool);
           }
-          ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2 - i3 - paramInt1, 1073741824));
-          ((View)localObject).layout(i2, i3, paramInt3, paramInt2 - paramInt1);
-          if ((!this.jdField_e_of_type_Boolean) && ((this.n == 0) || (this.jdField_g_of_type_Int > 1)))
+          for (;;)
           {
+            if (QLog.isDevelopLevel()) {
+              QLog.d("Q.aio.XPanelContainer", 4, " onLayout bom panel mannule layout calcposition d= " + paramInt1 + "mAnimationPosition = " + this.n + "isOpenAnim=" + this.jdField_e_of_type_Boolean + "mExternalPanelheight=" + jdField_a_of_type_Int);
+            }
+            ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2 - i3 - paramInt1, 1073741824));
+            ((View)localObject).layout(i2, i3, paramInt3, paramInt2 - paramInt1);
+            if ((this.jdField_e_of_type_Boolean) || ((this.n != 0) && (this.jdField_g_of_type_Int <= 1))) {
+              break label2636;
+            }
             b(this.jdField_g_of_type_Int);
             this.jdField_g_of_type_Int = -1;
             if (!QLog.isDevelopLevel()) {
@@ -1038,6 +1053,8 @@ public class XPanelContainer
             }
             QLog.d("Q.aio.XPanelContainer", 4, " onLayout bom panel mannule layout,end ，not canvas =  isOpenAnim " + this.jdField_e_of_type_Boolean + " mAnimationPosition = " + this.n);
             return;
+            this.jdField_b_of_type_AndroidViewView.measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(jdField_a_of_type_Int, 1073741824));
+            this.jdField_b_of_type_AndroidViewView.layout(i2, paramInt2 - paramInt1, paramInt3, paramInt2 - paramInt1 + jdField_a_of_type_Int);
           }
           if (jdField_d_of_type_Boolean) {
             break;
@@ -1050,7 +1067,7 @@ public class XPanelContainer
           if (QLog.isDevelopLevel()) {
             QLog.d("Q.aio.XPanelContainer", 4, " onLayout reget =  mAnimationPosition = " + this.n);
           }
-          d();
+          f();
           if (this.jdField_b_of_type_AndroidViewView == null)
           {
             QLog.e("XPanelContainer", 1, " onLayout panel error:curPanel==nulll ,restore status NONE ");
@@ -1059,15 +1076,21 @@ public class XPanelContainer
             requestLayout();
             return;
           }
-          this.jdField_b_of_type_AndroidViewView.measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(jdField_a_of_type_Int, 1073741824));
-          this.jdField_b_of_type_AndroidViewView.layout(i2, paramInt2 - this.n, paramInt3, paramInt2 - this.n + jdField_a_of_type_Int);
-          ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2 - i3 - this.n, 1073741824));
-          ((View)localObject).layout(i2, i3, paramInt3, paramInt2 - this.n);
-          if (this.n == 0)
+          if ((this.jdField_b_of_type_AndroidViewView instanceof VoiceTextEditPanel)) {
+            ((VoiceTextEditPanel)this.jdField_b_of_type_AndroidViewView).a(i2, paramInt2 - this.n, paramInt3, paramInt2 - this.n + jdField_a_of_type_Int, bool);
+          }
+          for (;;)
           {
+            ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2 - i3 - this.n, 1073741824));
+            ((View)localObject).layout(i2, i3, paramInt3, paramInt2 - this.n);
+            if (this.n != 0) {
+              break;
+            }
             b(this.jdField_g_of_type_Int);
             this.jdField_g_of_type_Int = -1;
             return;
+            this.jdField_b_of_type_AndroidViewView.measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(jdField_a_of_type_Int, 1073741824));
+            this.jdField_b_of_type_AndroidViewView.layout(i2, paramInt2 - this.n, paramInt3, paramInt2 - this.n + jdField_a_of_type_Int);
           }
           if (jdField_d_of_type_Boolean) {
             break;
@@ -1079,7 +1102,7 @@ public class XPanelContainer
         {
           if (QLog.isDevelopLevel()) {
             if (this.jdField_b_of_type_AndroidViewView != null) {
-              break label2623;
+              break label3040;
             }
           }
           for (paramInt1 = 0;; paramInt1 = this.jdField_b_of_type_AndroidViewView.getVisibility())
@@ -1103,30 +1126,58 @@ public class XPanelContainer
           }
           ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2 - i3 - jdField_a_of_type_Int, 1073741824));
           ((View)localObject).layout(i2, i3, paramInt3, paramInt2 - jdField_a_of_type_Int);
-          this.jdField_b_of_type_AndroidViewView.measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(jdField_a_of_type_Int, 1073741824));
-          this.jdField_b_of_type_AndroidViewView.layout(i2, paramInt2 - jdField_a_of_type_Int, paramInt3, paramInt2);
-          break label1711;
+          if (!(this.jdField_b_of_type_AndroidViewView instanceof VoiceTextEditPanel))
+          {
+            this.jdField_b_of_type_AndroidViewView.measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(jdField_a_of_type_Int, 1073741824));
+            this.jdField_b_of_type_AndroidViewView.layout(i2, paramInt2 - jdField_a_of_type_Int, paramInt3, paramInt2);
+            break label1983;
+          }
+          ((VoiceTextEditPanel)this.jdField_b_of_type_AndroidViewView).a(i2, paramInt2 - jdField_a_of_type_Int, paramInt3, paramInt2, bool);
+          break label1983;
         }
         if (QLog.isDevelopLevel()) {
           QLog.d("Q.aio.XPanelContainer", 4, " onLayout use default layout = ");
         }
+        if ((this.jdField_b_of_type_AndroidViewView instanceof VoiceTextEditPanel))
+        {
+          ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2 - i3 - jdField_a_of_type_Int, 1073741824));
+          ((View)localObject).layout(i2, i3, paramInt3, paramInt2 - jdField_a_of_type_Int);
+          ((VoiceTextEditPanel)this.jdField_b_of_type_AndroidViewView).a(i2, i3, paramInt3, paramInt2, bool);
+          ((VoiceTextEditPanel)this.jdField_b_of_type_AndroidViewView).a(bool);
+          break label1983;
+        }
         ((View)localObject).measure(View.MeasureSpec.makeMeasureSpec(paramInt3 - i2, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2 - i3, 1073741824));
         ((View)localObject).layout(i2, i3, paramInt3, paramInt2);
-        break label1711;
+        break label1983;
         if (this.jdField_g_of_type_Int == 0) {
-          break label2853;
+          break label3395;
         }
         paramInt1 = i1;
       } while (!paramBoolean);
       paramInt1 = i1;
     } while (bool);
-    label2831:
-    label2853:
-    if ((paramBoolean) && (i1 == 28)) {}
-    for (paramInt1 = i1;; paramInt1 = 0)
+    label2180:
+    label2636:
+    label3040:
+    if (paramBoolean)
     {
+      if (i1 == 28) {
+        break label3429;
+      }
+      if (i1 == 35) {
+        paramInt1 = i1;
+      }
+    }
+    for (;;)
+    {
+      label3373:
+      label3395:
       this.jdField_g_of_type_Int = -1;
       break;
+      paramInt1 = 0;
+      continue;
+      label3429:
+      paramInt1 = i1;
     }
   }
   
@@ -1149,24 +1200,41 @@ public class XPanelContainer
     }
   }
   
-  public void setOnChangeMultiScreenListener(XPanelContainer.OnChangeMultiScreenListener paramOnChangeMultiScreenListener)
+  public void setOnChangeMultiScreenListener(beph parambeph)
   {
-    this.jdField_a_of_type_ComTencentWidgetXPanelContainer$OnChangeMultiScreenListener = paramOnChangeMultiScreenListener;
+    this.jdField_a_of_type_Beph = parambeph;
   }
   
-  public void setOnPanelChangeListener(XPanelContainer.PanelCallback paramPanelCallback)
+  public void setOnGoingToShowPanelListener(bepi parambepi)
   {
-    this.jdField_a_of_type_ComTencentWidgetXPanelContainer$PanelCallback = paramPanelCallback;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambepi);
+  }
+  
+  public void setOnPanelChangeListener(bepj parambepj)
+  {
+    this.jdField_a_of_type_Bepj = parambepj;
   }
   
   public void setReadyToShow(boolean paramBoolean)
   {
-    this.jdField_i_of_type_Boolean = paramBoolean;
+    if (QLog.isColorLevel()) {
+      QLog.d("XPanelContainer", 2, "setReadyToShow() called with: readyToShow = [" + paramBoolean + "]");
+    }
+    if (this.jdField_i_of_type_Boolean != paramBoolean)
+    {
+      this.jdField_i_of_type_Boolean = paramBoolean;
+      a(paramBoolean);
+    }
+  }
+  
+  public void setReadyToShowChangeListener(bepk parambepk)
+  {
+    this.jdField_a_of_type_Bepk = parambepk;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.widget.XPanelContainer
  * JD-Core Version:    0.7.0.1
  */

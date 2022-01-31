@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.statistics;
 
+import ajia;
+import ajlo;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Application.ActivityLifecycleCallbacks;
@@ -11,16 +13,22 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.Fragment.IFragmentAttachCallback;
 import android.support.v4.app.Fragment.IFragmentLifecycleCallback;
 import android.support.v4.app.FragmentActivity;
+import awsb;
+import baip;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mfsdk.MagnifierSDK;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.FontSettingManager;
+import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
-import com.tencent.mobileqq.utils.StringUtil;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.List;
+import xfq;
 
 @TargetApi(14)
 public final class UEC
@@ -28,10 +36,11 @@ public final class UEC
 {
   public static UEC a;
   private int jdField_a_of_type_Int;
-  private LinkedHashMap jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap(8);
+  private LinkedHashMap<String, UEC.UECItem> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap(8);
+  private final List<Application.ActivityLifecycleCallbacks> jdField_a_of_type_JavaUtilList = new ArrayList();
   private final boolean jdField_a_of_type_Boolean;
   
-  public UEC()
+  private UEC()
   {
     if (BaseApplicationImpl.sProcessId == 1) {}
     for (;;)
@@ -42,6 +51,19 @@ public final class UEC
       return;
       bool = false;
     }
+  }
+  
+  public static UEC a()
+  {
+    if (jdField_a_of_type_ComTencentMobileqqStatisticsUEC == null) {}
+    try
+    {
+      if (jdField_a_of_type_ComTencentMobileqqStatisticsUEC == null) {
+        jdField_a_of_type_ComTencentMobileqqStatisticsUEC = new UEC();
+      }
+      return jdField_a_of_type_ComTencentMobileqqStatisticsUEC;
+    }
+    finally {}
   }
   
   private String a(Fragment paramFragment)
@@ -131,16 +153,30 @@ public final class UEC
     BaseApplicationImpl.sApplication.sendBroadcast((Intent)localObject);
   }
   
-  private void a(Object paramObject, String paramString1, boolean paramBoolean, String paramString2)
+  private void a(Object paramObject1, String paramString1, boolean paramBoolean, String paramString2, Object paramObject2)
   {
-    int i = paramObject.hashCode();
+    int i = paramObject1.hashCode();
     if (paramBoolean)
     {
-      a(paramString1, i, paramString2);
+      a(paramString1, i, paramString2, paramObject2);
       return;
     }
-    a(paramString1, null, 0L, paramString2);
-    b(paramString1, i, paramString2);
+    a(paramString1, null, 0L, paramString2, paramObject2);
+    b(paramString1, i, paramString2, paramObject2);
+  }
+  
+  public static boolean a(Object paramObject)
+  {
+    if ((FragmentActivity.class.isInstance(paramObject)) || (MainFragment.class.isInstance(paramObject))) {}
+    do
+    {
+      return false;
+      if (!Fragment.class.isInstance(paramObject)) {
+        break;
+      }
+      paramObject = (Fragment)paramObject;
+    } while ((SplashActivity.class.isInstance(paramObject.getActivity())) && (!ChatFragment.class.isInstance(paramObject)));
+    return true;
   }
   
   private String b(Activity paramActivity)
@@ -168,7 +204,7 @@ public final class UEC
   private String b(String paramString)
   {
     String str;
-    if (StringUtil.a(paramString)) {
+    if (baip.a(paramString)) {
       str = "null";
     }
     int i;
@@ -205,7 +241,7 @@ public final class UEC
   private String c(String paramString)
   {
     String str;
-    if (StringUtil.a(paramString)) {
+    if (baip.a(paramString)) {
       str = "null";
     }
     int i;
@@ -232,30 +268,30 @@ public final class UEC
     return paramString.substring(0, i);
   }
   
-  public UEC.UECItem a(String paramString1, String paramString2, long paramLong, String paramString3)
+  public UEC.UECItem a(String paramString1, String paramString2, long paramLong, String paramString3, Object paramObject)
   {
-    UEC.UECItem localUECItem = (UEC.UECItem)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString1);
-    if (localUECItem == null)
+    paramObject = (UEC.UECItem)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString1);
+    if (paramObject == null)
     {
-      localUECItem = new UEC.UECItem();
-      localUECItem.jdField_a_of_type_JavaLangString = paramString1;
-      localUECItem.jdField_a_of_type_Int = 1;
-      if ((paramString1.startsWith(QQBrowserActivity.class.getSimpleName())) && (localUECItem.d == null))
+      paramObject = new UEC.UECItem();
+      paramObject.jdField_a_of_type_JavaLangString = paramString1;
+      paramObject.jdField_a_of_type_Int = 1;
+      if ((paramString1.startsWith(QQBrowserActivity.class.getSimpleName())) && (paramObject.d == null))
       {
         int i = paramString1.indexOf("_");
         if ((i >= 0) && (paramString1.length() > i)) {
-          localUECItem.d = c(paramString1.substring(paramString1.indexOf("_") + 1));
+          paramObject.d = c(paramString1.substring(paramString1.indexOf("_") + 1));
         }
       }
-      localUECItem.f = paramString3;
-      localUECItem.e = "7.6.8";
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramString1, localUECItem);
+      paramObject.f = paramString3;
+      paramObject.e = "8.2.6";
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramString1, paramObject);
     }
-    for (paramString1 = localUECItem;; paramString1 = localUECItem)
+    for (paramString1 = paramObject;; paramString1 = paramObject)
     {
       paramString1.jdField_b_of_type_JavaLangString = a(paramString1.jdField_b_of_type_JavaLangString, paramString2, 1, paramLong);
       return paramString1;
-      localUECItem.jdField_a_of_type_Int += 1;
+      paramObject.jdField_a_of_type_Int += 1;
     }
   }
   
@@ -275,30 +311,42 @@ public final class UEC
     return paramActivity;
   }
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void a(Application.ActivityLifecycleCallbacks paramActivityLifecycleCallbacks)
+  {
+    if (paramActivityLifecycleCallbacks == null) {}
+    while (this.jdField_a_of_type_JavaUtilList.contains(paramActivityLifecycleCallbacks)) {
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilList.add(paramActivityLifecycleCallbacks);
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2, Object paramObject)
   {
     UEC.UECItem localUECItem2 = (UEC.UECItem)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString1);
     UEC.UECItem localUECItem1 = localUECItem2;
     if (localUECItem2 == null) {
-      localUECItem1 = a(paramString1, null, 0L, paramString2);
+      localUECItem1 = a(paramString1, null, 0L, paramString2, paramObject);
     }
     if ((paramInt == localUECItem1.c) && (localUECItem1.jdField_b_of_type_Long > 0L))
     {
       localUECItem1.jdField_a_of_type_Long = (SystemClock.uptimeMillis() - localUECItem1.jdField_b_of_type_Long + localUECItem1.jdField_a_of_type_Long);
       localUECItem1.jdField_b_of_type_Long = 0L;
+      if (a(paramObject)) {
+        MagnifierSDK.b(paramString2);
+      }
     }
   }
   
-  public void a(String paramString, Activity paramActivity, boolean paramBoolean)
+  public void a(String paramString, Activity paramActivity, boolean paramBoolean, Object paramObject)
   {
     if (paramString != null)
     {
       paramActivity = a(paramString, paramActivity);
-      a(paramString, paramActivity, paramBoolean, paramActivity);
+      a(paramString, paramActivity, paramBoolean, paramActivity, paramObject);
     }
   }
   
-  public void a(ArrayList paramArrayList)
+  public void a(ArrayList<UEC.UECItem> paramArrayList)
   {
     if (!"Success".equals(BaseApplicationImpl.sInjectResult)) {}
     Object localObject;
@@ -313,97 +361,132 @@ public final class UEC
         localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
         if (localObject != null)
         {
-          UEC.IReporter localIReporter = (UEC.IReporter)((QQAppInterface)localObject).getManager(133);
-          if (localIReporter != null) {
-            localIReporter.a(paramArrayList);
+          awsb localawsb = (awsb)((QQAppInterface)localObject).getManager(134);
+          if (localawsb != null) {
+            localawsb.a(paramArrayList);
           }
         }
       } while (localObject == null);
-      localObject = (UEC.IReporter)((QQAppInterface)localObject).getManager(157);
+      localObject = (awsb)((QQAppInterface)localObject).getManager(158);
     } while (localObject == null);
-    ((UEC.IReporter)localObject).a(paramArrayList);
+    ((awsb)localObject).a(paramArrayList);
   }
   
-  public void b(String paramString1, int paramInt, String paramString2)
+  public void b(String paramString1, int paramInt, String paramString2, Object paramObject)
   {
     UEC.UECItem localUECItem2 = (UEC.UECItem)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString1);
     UEC.UECItem localUECItem1 = localUECItem2;
     if (localUECItem2 == null) {
-      localUECItem1 = a(paramString1, null, 0L, paramString2);
+      localUECItem1 = a(paramString1, null, 0L, paramString2, paramObject);
     }
     localUECItem1.c = paramInt;
     localUECItem1.jdField_b_of_type_Int += 1;
     localUECItem1.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+    if (a(paramObject)) {
+      MagnifierSDK.a(paramString2);
+    }
   }
   
   public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
   {
-    localObject = null;
-    l1 = 0L;
+    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((Application.ActivityLifecycleCallbacks)((Iterator)localObject).next()).onActivityCreated(paramActivity, paramBundle);
+    }
     try
     {
       if (paramActivity.getIntent() == null) {
-        break label111;
+        break label148;
       }
-      paramBundle = paramActivity.getIntent().getExtras();
-      if (paramBundle == null) {
-        break label111;
+      localObject = paramActivity.getIntent().getExtras();
+      if (localObject == null) {
+        break label148;
       }
-      String str = paramBundle.getString("preAct");
-      long l2 = paramBundle.getLong("preAct_time", 0L);
-      paramBundle = str;
-      if (l2 != 0L)
-      {
-        l1 = System.currentTimeMillis();
-        l1 -= l2;
-        paramBundle = str;
+      paramBundle = ((Bundle)localObject).getString("preAct");
+      l1 = ((Bundle)localObject).getLong("preAct_time", 0L);
+      if (l1 == 0L) {
+        break label143;
       }
+      long l2 = System.currentTimeMillis();
+      l1 = l2 - l1;
     }
     catch (Throwable paramBundle)
     {
       for (;;)
       {
         paramBundle.printStackTrace();
+        long l1 = 0L;
+        paramBundle = null;
+        continue;
         l1 = 0L;
-        paramBundle = localObject;
         continue;
         paramBundle = null;
+        l1 = 0L;
       }
     }
     if ((paramActivity instanceof FragmentActivity)) {
       ((FragmentActivity)paramActivity).setFragmentAttachListener(this);
     }
-    a(b(paramActivity), paramBundle, l1, c(paramActivity));
+    a(b(paramActivity), paramBundle, l1, c(paramActivity), paramActivity);
   }
   
-  public void onActivityDestroyed(Activity paramActivity) {}
+  public void onActivityDestroyed(Activity paramActivity)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((Application.ActivityLifecycleCallbacks)localIterator.next()).onActivityDestroyed(paramActivity);
+    }
+  }
   
   public void onActivityPaused(Activity paramActivity)
   {
-    String str1 = b(paramActivity);
-    String str2 = c(paramActivity);
-    a(str1, paramActivity.hashCode(), str2);
+    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((Application.ActivityLifecycleCallbacks)((Iterator)localObject).next()).onActivityPaused(paramActivity);
+    }
+    localObject = b(paramActivity);
+    String str = c(paramActivity);
+    a((String)localObject, paramActivity.hashCode(), str, paramActivity);
+    if (Build.VERSION.SDK_INT >= 23) {
+      xfq.b(paramActivity);
+    }
   }
   
   public void onActivityResumed(Activity paramActivity)
   {
-    String str1 = b(paramActivity);
-    String str2 = c(paramActivity);
-    b(str1, paramActivity.hashCode(), str2);
+    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((Application.ActivityLifecycleCallbacks)((Iterator)localObject).next()).onActivityResumed(paramActivity);
+    }
+    localObject = b(paramActivity);
+    String str = c(paramActivity);
+    b((String)localObject, paramActivity.hashCode(), str, paramActivity);
+    if (Build.VERSION.SDK_INT >= 23) {
+      xfq.a(paramActivity);
+    }
   }
   
   public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
   
   public void onActivityStarted(Activity paramActivity)
   {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((Application.ActivityLifecycleCallbacks)localIterator.next()).onActivityStarted(paramActivity);
+    }
     this.jdField_a_of_type_Int += 1;
+    ajlo.b(paramActivity);
     if (Build.VERSION.SDK_INT >= 26) {
-      FontSettingManager.a(paramActivity, true, false);
+      ajia.a(paramActivity, true, false);
     }
   }
   
   public void onActivityStopped(Activity paramActivity)
   {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((Application.ActivityLifecycleCallbacks)localIterator.next()).onActivityStopped(paramActivity);
+    }
     this.jdField_a_of_type_Int -= 1;
     if (this.jdField_a_of_type_Int == 0) {
       a();
@@ -422,7 +505,7 @@ public final class UEC
     if (paramFragment != null)
     {
       String str = a(paramFragment);
-      a(paramFragment, str, paramBoolean, str);
+      a(paramFragment, str, paramBoolean, str, paramFragment);
     }
   }
 }

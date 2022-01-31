@@ -1,61 +1,28 @@
-import com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.qphone.base.util.QLog;
 
 public class kyw
-  implements INetInfoHandler
 {
-  public kyw(AdModuleBase paramAdModuleBase) {}
-  
-  public void onNetMobile2None()
+  public static void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdModuleBase", 2, "onNetMobile2None");
-    }
-    AdModuleBase.b(this.a);
+    a("0X8009850");
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  static void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdModuleBase", 2, "onNetMobile2Wifi");
+    if (QLog.isDevelopLevel()) {
+      QLog.w("VoiceRecogReport", 1, "report, key[" + paramString + "]");
     }
+    awqx.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", null, null);
   }
   
-  public void onNetNone2Mobile(String paramString)
+  public static void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdModuleBase", 2, "onNetNone2Mobile");
-    }
-    AdModuleBase.b(this.a);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdModuleBase", 2, "onNetNone2Wifi");
-    }
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdModuleBase", 2, "onNetWifi2Mobile");
-    }
-    AdModuleBase.b(this.a);
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdModuleBase", 2, "onNetWifi2None");
-    }
-    AdModuleBase.b(this.a);
+    a("0X8009851");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     kyw
  * JD-Core Version:    0.7.0.1
  */

@@ -7,22 +7,22 @@ import com.qq.taf.jce.JceStruct;
 public final class a
   extends JceStruct
 {
-  static k g;
-  static k h;
-  public int a;
-  public k b;
-  public k c;
-  public byte d;
-  public int e;
+  static l g;
+  static l h;
+  public int a = 0;
+  public l b = null;
+  public l c = null;
+  public byte d = 0;
+  public int e = 0;
   public long f;
   
   public a() {}
   
-  public a(int paramInt1, k paramk1, k paramk2, byte paramByte, int paramInt2)
+  public a(int paramInt1, l paraml1, l paraml2, byte paramByte, int paramInt2)
   {
     this.a = paramInt1;
-    this.b = paramk1;
-    this.c = paramk2;
+    this.b = paraml1;
+    this.c = paraml2;
     this.d = paramByte;
     this.e = paramInt2;
   }
@@ -31,13 +31,13 @@ public final class a
   {
     this.a = paramJceInputStream.read(this.a, 1, true);
     if (g == null) {
-      g = new k();
+      g = new l();
     }
-    this.b = ((k)paramJceInputStream.read(g, 2, false));
+    this.b = ((l)paramJceInputStream.read(g, 2, false));
     if (h == null) {
-      h = new k();
+      h = new l();
     }
-    this.c = ((k)paramJceInputStream.read(h, 3, false));
+    this.c = ((l)paramJceInputStream.read(h, 3, false));
     this.d = paramJceInputStream.read(this.d, 4, false);
     this.e = paramJceInputStream.read(this.e, 5, false);
   }

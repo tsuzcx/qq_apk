@@ -1,29 +1,62 @@
-import com.tencent.device.msg.data.DeviceComnFileMsgProcessor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class qfx
-  implements Runnable
+  extends MSFServlet
 {
-  public qfx(DeviceComnFileMsgProcessor paramDeviceComnFileMsgProcessor, MessageForDeviceFile paramMessageForDeviceFile) {}
-  
-  public void run()
+  public String[] getPreferSSOCommands()
   {
-    if (DeviceComnFileMsgProcessor.a(this.jdField_a_of_type_ComTencentDeviceMsgDataDeviceComnFileMsgProcessor).containsKey(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile.uSessionID)))
+    return null;
+  }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    if (paramIntent != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile.nFileStatus = 23;
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile.serial();
-      DeviceComnFileMsgProcessor.a(this.jdField_a_of_type_ComTencentDeviceMsgDataDeviceComnFileMsgProcessor).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile.frienduin, 9501, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile.msgData);
-      DeviceComnFileMsgProcessor.a(this.jdField_a_of_type_ComTencentDeviceMsgDataDeviceComnFileMsgProcessor, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
-      DeviceComnFileMsgProcessor.a(this.jdField_a_of_type_ComTencentDeviceMsgDataDeviceComnFileMsgProcessor).remove(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile.uSessionID));
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
+    }
+    for (;;)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("VideoFeedsServlet", 4, "onReceive: " + paramFromServiceMsg.getServiceCmd());
+      }
+      ((VideoFeedsAppInterface)getAppRuntime()).a(paramIntent, paramFromServiceMsg);
+      return;
+      paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (paramIntent != null)
+    {
+      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+      if (paramIntent != null)
+      {
+        paramPacket.setSSOCommand(paramIntent.getServiceCmd());
+        paramPacket.putSendData(paramIntent.getWupBuffer());
+        paramPacket.setTimeout(paramIntent.getTimeout());
+        paramPacket.setAttributes(paramIntent.getAttributes());
+        if (!paramIntent.isNeedCallback()) {
+          paramPacket.setNoResponse();
+        }
+        if (QLog.isDevelopLevel()) {
+          QLog.i("VideoFeedsServlet", 4, "send: " + paramIntent.getServiceCmd());
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qfx
  * JD-Core Version:    0.7.0.1
  */

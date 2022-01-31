@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class ArticleComment$ArticleLikeRespond
-  extends MessageMicro
+  extends MessageMicro<ArticleLikeRespond>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "ret" }, new Object[] { null }, ArticleLikeRespond.class);
   public ArticleComment.RetInfo ret = new ArticleComment.RetInfo();

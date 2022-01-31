@@ -1,119 +1,46 @@
-import com.tencent.mobileqq.shortvideo.gesture.GestureKeyInfo;
-import com.tencent.mobileqq.shortvideo.gesture.GestureMgrRecognize;
-import com.tencent.sveffects.SLog;
-import java.util.HashMap;
+import android.view.View;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import org.json.JSONObject;
 
-public class aign
-  implements Runnable
+public final class aign
+  implements zrt
 {
-  int jdField_a_of_type_Int = 0;
+  public aign(View paramView, zrw paramzrw, long paramLong, int paramInt) {}
   
-  public aign(GestureMgrRecognize paramGestureMgrRecognize, int paramInt)
+  public void onComplete() {}
+  
+  public void onFailure(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Zrw, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location failed," + paramString);
   }
   
-  public void run()
+  public void onPermission(int paramInt)
   {
-    Thread localThread = Thread.currentThread();
-    Object localObject2;
-    aigm localaigm;
-    for (;;)
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Zrw, this.jdField_a_of_type_Long, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D, "", paramInt, "location permision code");
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    double d1 = paramJSONObject.optDouble("altitude", 0.0D);
+    double d2 = paramJSONObject.optDouble("latitude", 0.0D);
+    double d3 = paramJSONObject.optDouble("longitude", 0.0D);
+    double d4 = paramJSONObject.optDouble("horizontalAccuracy", 0.0D);
+    paramJSONObject.optDouble("verticalAccuracy", 0.0D);
+    paramJSONObject.optDouble("accuracy", 0.0D);
+    double d5 = paramJSONObject.optDouble("speed", 0.0D);
+    if (this.jdField_a_of_type_Int == 1)
     {
-      HashMap localHashMap;
-      aigm[] arrayOfaigm;
-      try
-      {
-        long[] arrayOfLong1 = new long[15];
-        localHashMap = new HashMap();
-        arrayOfaigm = new aigm[5];
-        i = 0;
-        if (i < 5)
-        {
-          arrayOfaigm[i] = new aigm(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize);
-          i += 1;
-          continue;
-        }
-        SLog.d("GestureMgrRecognize", String.format("RecognizeRunnable, ThreadId[%s], token[%s]", new Object[] { Long.valueOf(localThread.getId()), Integer.valueOf(this.jdField_a_of_type_Int) }));
-        j = 0;
-        i = 0;
-        if (this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.a()) {
-          continue;
-        }
-        SLog.d("GestureMgrRecognize", String.format("RecognizeRunnable load so fail, ThreadId[%s], token[%s]", new Object[] { Long.valueOf(localThread.getId()), Integer.valueOf(this.jdField_a_of_type_Int) }));
-        GestureMgrRecognize.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize, localHashMap);
-        GestureMgrRecognize.a(arrayOfLong1, i);
-      }
-      catch (Exception localException1)
-      {
-        SLog.a("GestureMgrRecognize", String.format("RecognizeRunnable occured exception[%s]", new Object[] { localException1.getClass().getName() }), localException1);
-        continue;
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.jdField_a_of_type_Aigl;
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.jdField_a_of_type_Aigl = null;
-        if (localObject2 == null) {
-          break label557;
-        }
-      }
-      SLog.d("GestureMgrRecognize", String.format("RecognizeRunnable, finaly exit, ThreadId[%s], token[%s]", new Object[] { Long.valueOf(localThread.getId()), Integer.valueOf(this.jdField_a_of_type_Int) }));
+      ApolloRender.getLocationCity(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Zrw, this.jdField_a_of_type_Long, d4, d2, d3, d5, d1, 0.0D);
       return;
-      if (this.jdField_a_of_type_Int != this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.c)
-      {
-        SLog.d("GestureMgrRecognize", String.format("RecognizeRunnable exit1, ThreadId[%s], token[%s], curToken[%s]", new Object[] { Long.valueOf(localThread.getId()), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.c) }));
-      }
-      else
-      {
-        localaigm = arrayOfaigm[j];
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.jdField_a_of_type_Aigm.a(localaigm);
-        synchronized (GestureMgrRecognize.jdField_a_of_type_JavaLangObject)
-        {
-          localObject2 = GestureMgrRecognize.a(this.jdField_a_of_type_Int, (aigl)localObject2, localaigm.a, localException1, i);
-          if (!localHashMap.containsKey(((GestureKeyInfo)localObject2).a)) {
-            break label552;
-          }
-          k = ((Integer)localHashMap.get(((GestureKeyInfo)localObject2).a)).intValue();
-          label388:
-          localHashMap.put(((GestureKeyInfo)localObject2).a, Integer.valueOf(k + 1));
-          if (this.jdField_a_of_type_Int != this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.c) {
-            SLog.d("GestureMgrRecognize", String.format("RecognizeRunnable exit2, ThreadId[%s], token[%s], curToken[%s]", new Object[] { Long.valueOf(localThread.getId()), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.c) }));
-          }
-        }
-      }
     }
-    GestureMgrRecognize.a(this.jdField_a_of_type_Int, localaigm, (GestureKeyInfo)localObject2);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.jdField_a_of_type_Aigm = localaigm;
-    int k = (j + 1) % 5;
-    i += 1;
-    if (i == 15) {
-      GestureMgrRecognize.a(arrayOfLong2, i);
-    }
-    int j = i % 15;
-    int i = k;
-    for (;;)
-    {
-      try
-      {
-        Thread.sleep(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureMgrRecognize.jdField_a_of_type_Long);
-        k = j;
-        j = i;
-        i = k;
-      }
-      catch (Exception localException2)
-      {
-        continue;
-      }
-      label552:
-      k = 0;
-      break label388;
-      label557:
-      k = i;
-      i = j;
-      j = k;
-    }
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Zrw, this.jdField_a_of_type_Long, d4, d2, d3, d5, d1, 0.0D, "", 0, "location success");
   }
+  
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aign
  * JD-Core Version:    0.7.0.1
  */

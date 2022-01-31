@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x8bb$ForbidUin
-  extends MessageMicro
+  extends MessageMicro<ForbidUin>
 {
   public static final int UINT32_UPDATE_TIME_FIELD_NUMBER = 2;
   public static final int UINT64_UIN_FIELD_NUMBER = 1;
@@ -17,7 +17,7 @@ public final class oidb_0x8bb$ForbidUin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8bb.oidb_0x8bb.ForbidUin
  * JD-Core Version:    0.7.0.1
  */

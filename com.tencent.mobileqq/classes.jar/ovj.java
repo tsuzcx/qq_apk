@@ -1,82 +1,77 @@
-import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
+import android.content.Context;
+import android.os.Build.VERSION;
+import com.tencent.biz.pubaccount.readinjoy.notecard.SoundCheckRunnable;
+import com.tencent.biz.pubaccount.readinjoy.proteus.item.NoteCardProteusItem.1.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
 
 public class ovj
-  extends Thread
+  implements qnt
 {
-  private ovj(AutoStartProgressBar paramAutoStartProgressBar) {}
+  ovj(ovi paramovi, ozq paramozq, opw paramopw, Container paramContainer) {}
   
-  private boolean a()
+  public void a()
   {
-    boolean bool = false;
-    if (this.a.jdField_a_of_type_Boolean) {
-      bool = a(this.a.c, 400, 0.3300000131130219D, false);
+    int j = 1;
+    QLog.d("NoteCardProteusItem", 1, "onItemResume");
+    ovi.a(this.jdField_a_of_type_Ovi, true);
+    if (ovi.a(this.jdField_a_of_type_Ovi) != null) {
+      ovi.a(this.jdField_a_of_type_Ovi).a();
     }
-    return bool;
-  }
-  
-  private boolean a(int paramInt1, int paramInt2)
-  {
-    return a(paramInt1, paramInt2, 1.0D, true);
-  }
-  
-  private boolean a(int paramInt1, int paramInt2, double paramDouble)
-  {
-    return a(paramInt1, paramInt2, paramDouble, true);
-  }
-  
-  private boolean a(int paramInt1, int paramInt2, double paramDouble, boolean paramBoolean)
-  {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((paramInt1 < 0) || (paramInt2 < 0)) {
-      bool1 = false;
+    if (this.jdField_a_of_type_Ozq != null) {
+      this.jdField_a_of_type_Ozq.a();
     }
-    do
+    Object localObject = this.jdField_a_of_type_Opw.a().scripCmsInfo;
+    String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+    if ((ovi.a(this.jdField_a_of_type_Ovi)) && (orc.a() != 0))
     {
-      return bool1;
-      if (this.a.e >= paramInt1) {
-        break;
-      }
-      int i = (paramInt1 - this.a.e) / (paramInt2 / AutoStartProgressBar.jdField_a_of_type_Int);
-      paramInt2 = i;
-      if (i == 0) {
-        paramInt2 = 1;
-      }
-      bool1 = bool2;
-    } while (this.a.e > paramInt1);
-    if ((paramBoolean) && (a())) {
-      return false;
-    }
-    AutoStartProgressBar localAutoStartProgressBar = this.a;
-    localAutoStartProgressBar.e += paramInt2;
-    this.a.setAnimProgress(this.a.e, this.a.jdField_a_of_type_JavaLangString);
-    this.a.postInvalidate();
-    for (;;)
-    {
-      try
+      i = orc.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str);
+      int k = orc.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str);
+      if ((i < orc.b()) && (k < orc.c()))
       {
-        double d2 = AutoStartProgressBar.jdField_a_of_type_Int;
-        if (paramDouble >= 0.0D) {
-          break label170;
-        }
-        d1 = AutoStartProgressBar.a(this.a, (int)paramDouble);
-        Thread.sleep((d1 * d2));
+        ((pqi)localObject).a = 2;
+        orc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str, i + 1);
+        orc.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str, k + 1);
       }
-      catch (InterruptedException localInterruptedException) {}
-      break;
-      label170:
-      double d1 = paramDouble;
     }
-    return false;
-  }
-  
-  public void run()
-  {
-    if (!a((int)(40.0D + Math.random() * 31.0D) * this.a.c / 100, 1500)) {}
-    while (!a(this.a.c * 90 / 100, 1500)) {
+    if ((orc.a() == 1) && (orc.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str) > 0))
+    {
+      localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext();
+      i = j;
+      if (Build.VERSION.SDK_INT >= 23)
+      {
+        i = j;
+        if (localObject != null) {
+          if (((Context)localObject).checkSelfPermission("android.permission.RECORD_AUDIO") != 0) {
+            break label263;
+          }
+        }
+      }
+    }
+    label263:
+    for (int i = j;; i = 0)
+    {
+      if (i != 0) {
+        ThreadManager.getUIHandler().postDelayed(new NoteCardProteusItem.1.1(this), 1000L);
+      }
+      ovi.b(this.jdField_a_of_type_Ovi, false);
       return;
     }
-    a(this.a.c * 99 / 100, AutoStartProgressBar.jdField_a_of_type_Int * 10, AutoStartProgressBar.b);
+  }
+  
+  public void b()
+  {
+    QLog.d("NoteCardProteusItem", 1, "onItemPause");
+    ovi.a(this.jdField_a_of_type_Ovi, false);
+    if (this.jdField_a_of_type_Ozq != null) {
+      this.jdField_a_of_type_Ozq.b();
+    }
+    ovi.b(this.jdField_a_of_type_Ovi);
   }
 }
 

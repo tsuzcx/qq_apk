@@ -4,8 +4,8 @@ import android.os.Bundle;
 
 public abstract class EIPCModule
 {
-  EIPCModuleManager a;
-  int[] b = new int[0];
+  int[] listenMessages = new int[0];
+  EIPCModuleManager mgr;
   public String name;
   
   public EIPCModule(String paramString)
@@ -16,12 +16,12 @@ public abstract class EIPCModule
   public EIPCModule(String paramString, int[] paramArrayOfInt)
   {
     this.name = paramString;
-    this.b = paramArrayOfInt;
+    this.listenMessages = paramArrayOfInt;
   }
   
   public void callbackResult(int paramInt, EIPCResult paramEIPCResult)
   {
-    this.a.callbackResult(paramInt, paramEIPCResult);
+    this.mgr.callbackResult(paramInt, paramEIPCResult);
   }
   
   public abstract EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt);

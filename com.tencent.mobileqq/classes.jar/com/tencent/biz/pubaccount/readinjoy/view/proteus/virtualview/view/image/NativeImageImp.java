@@ -1,63 +1,88 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.image;
 
 import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
-import java.net.MalformedURLException;
-import java.net.URL;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.VirtualViewUtils;
 
 public class NativeImageImp
-  extends KandianUrlImageView
+  extends ImageView
   implements IView
 {
+  private static final String TAG = "NativeImageImp_TMTEST";
+  private int mBorderBottomLeftRadius;
+  private int mBorderBottomRightRadius;
+  private int mBorderTopLeftRadius;
+  private int mBorderTopRightRadius;
+  private Drawable mPlaceHolder;
+  
   public NativeImageImp(Context paramContext)
   {
     super(paramContext);
   }
   
-  public int a()
+  public void comLayout(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return getMeasuredWidth();
+    onComLayout(true, paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    measure(paramInt1, paramInt2);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    a(true, paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    layout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public int b()
+  public int getComMeasuredHeight()
   {
     return getMeasuredHeight();
   }
   
-  public void b(int paramInt1, int paramInt2)
+  public int getComMeasuredWidth()
   {
-    a(paramInt1, paramInt2);
+    return getMeasuredWidth();
+  }
+  
+  public void measureComponent(int paramInt1, int paramInt2)
+  {
+    onComMeasure(paramInt1, paramInt2);
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    layout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    measure(paramInt1, paramInt2);
+  }
+  
+  protected void onDraw(Canvas paramCanvas)
+  {
+    if ((this.mBorderBottomLeftRadius > 0) || (this.mBorderBottomRightRadius > 0) || (this.mBorderTopLeftRadius > 0) || (this.mBorderTopRightRadius > 0)) {
+      VirtualViewUtils.clipCanvas(paramCanvas, getWidth(), getHeight(), 0, this.mBorderTopLeftRadius, this.mBorderTopRightRadius, this.mBorderBottomLeftRadius, this.mBorderBottomRightRadius);
+    }
+    super.onDraw(paramCanvas);
+  }
+  
+  public void setCorner(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.mBorderTopLeftRadius = paramInt1;
+    this.mBorderTopRightRadius = paramInt2;
+    this.mBorderBottomRightRadius = paramInt4;
+    this.mBorderBottomLeftRadius = paramInt3;
   }
   
   public void setImageSrc(String paramString)
   {
     try
     {
-      a(new URL(paramString));
+      setImageDrawable(DrawableUtil.getDrawable(getContext(), paramString, null, null));
       return;
     }
-    catch (MalformedURLException paramString) {}
+    catch (Exception paramString) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.image.NativeImageImp
  * JD-Core Version:    0.7.0.1
  */

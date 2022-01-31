@@ -5,11 +5,11 @@ import java.util.List;
 
 public class ResourceManager$Posture
 {
-  public FaceDanceTemplateConfig a;
-  public String a;
-  public List a;
-  public String b;
-  public List b;
+  public String blastPicture;
+  public List<String> danceCartoon;
+  public FaceDanceTemplateConfig faceDanceConfig;
+  public List<MatchTemplateConfig> gestureConfigs;
+  public String id;
 }
 
 

@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
+import ajjy;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,7 +14,8 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
+import ausu;
+import auwc;
 
 public class BeautyProviderView
   extends ProviderView
@@ -32,19 +34,14 @@ public class BeautyProviderView
   
   private void a(TextView paramTextView)
   {
-    paramTextView.setBackgroundResource(2130843194);
+    paramTextView.setBackgroundResource(2130844987);
     paramTextView.setTextColor(Color.parseColor("#12B7F5"));
   }
   
   private void b(TextView paramTextView)
   {
-    paramTextView.setBackgroundResource(2130843193);
+    paramTextView.setBackgroundResource(2130844986);
     paramTextView.setTextColor(Color.parseColor("#FFFFFF"));
-  }
-  
-  protected int a()
-  {
-    return 2130970593;
   }
   
   public void a(Bundle paramBundle)
@@ -53,10 +50,10 @@ public class BeautyProviderView
     super.a(paramBundle);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView);
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2130970593, this, false));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131495450, this, false));
     }
     a(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131371218));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131297565));
     int i = 0;
     while (i < this.jdField_a_of_type_Int)
     {
@@ -68,34 +65,29 @@ public class BeautyProviderView
       paramBundle.setOnClickListener(this);
       paramBundle.setTag(Integer.valueOf(i));
       localObject = new TextView(getContext());
-      ((TextView)localObject).setBackgroundResource(2130843193);
+      ((TextView)localObject).setBackgroundResource(2130844986);
       ((TextView)localObject).setText(i + "");
       ((TextView)localObject).setTextSize(18.0F);
       ((TextView)localObject).setGravity(17);
       ((TextView)localObject).setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
       paramBundle.addView((View)localObject);
-      paramBundle.setContentDescription("美颜度" + i);
+      paramBundle.setContentDescription(ajjy.a(2131635289) + i);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramBundle);
       i += 1;
     }
     setBeautyLevel(this.b);
   }
   
-  public void ak_()
+  public void aO_()
   {
-    super.ak_();
-    CaptureVideoFilterManager.a().b(getContext());
-  }
-  
-  public int b()
-  {
-    return this.b;
+    super.aO_();
+    ausu.a().b(getContext());
   }
   
   public void onClick(View paramView)
   {
     setBeautyLevel(((Integer)paramView.getTag()).intValue());
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewProviderView$ProviderViewListener.a(((Integer)paramView.getTag()).intValue());
+    this.jdField_a_of_type_Auwc.a(((Integer)paramView.getTag()).intValue());
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -123,7 +115,7 @@ public class BeautyProviderView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.BeautyProviderView
  * JD-Core Version:    0.7.0.1
  */

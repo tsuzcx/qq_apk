@@ -1,44 +1,36 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.LoginVerifyCodeActivity2;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.SSOAccountObserver;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.notification.StoryPushMsg;
 
-public class tfn
-  extends SSOAccountObserver
+public final class tfn
+  implements Parcelable.Creator
 {
-  public tfn(LoginVerifyCodeActivity2 paramLoginVerifyCodeActivity2) {}
-  
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  public StoryPushMsg a(Parcel paramParcel)
   {
-    this.a.c();
+    int i = paramParcel.readInt();
+    Object localObject = paramParcel.readString();
+    String str1 = paramParcel.readString();
+    long l = paramParcel.readLong();
+    String str2 = paramParcel.readString();
+    String str3 = paramParcel.readString();
+    int j = paramParcel.readInt();
+    String str4 = paramParcel.readString();
+    String str5 = paramParcel.readString();
+    String str6 = paramParcel.readString();
+    paramParcel = paramParcel.readBundle();
+    localObject = new StoryPushMsg(i, (String)localObject, str1, l, str3, str4, j, str5, str6, str2);
+    ((StoryPushMsg)localObject).a = paramParcel;
+    return localObject;
   }
   
-  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
+  public StoryPushMsg[] a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SSOAccountObserver", 2, "onGetTicketNoPasswd wtTicket=" + paramArrayOfByte);
-    }
-    String str = null;
-    if (paramInt == 4096) {
-      str = new String(paramArrayOfByte);
-    }
-    paramArrayOfByte = new Intent();
-    paramArrayOfByte.putExtra("last_account", paramString);
-    paramArrayOfByte.putExtra("wtTicket", str);
-    paramArrayOfByte.putExtra("ssobundle", paramBundle);
-    this.a.setResult(-1, paramArrayOfByte);
-    this.a.finish();
-  }
-  
-  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
-  {
-    this.a.c();
+    return new StoryPushMsg[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tfn
  * JD-Core Version:    0.7.0.1
  */

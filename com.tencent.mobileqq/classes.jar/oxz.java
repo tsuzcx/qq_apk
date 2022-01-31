@@ -1,15 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class oxz
-  implements DialogInterface.OnDismissListener
 {
-  public oxz(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public static void a(String paramString1, String paramString2)
   {
-    this.a.e = false;
+    QLog.d("FluencyLogUtil", 1, "Class : " + paramString1 + " Scene : " + paramString2);
   }
 }
 

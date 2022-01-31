@@ -72,14 +72,15 @@ public abstract class SonicRuntime
     }
     LinkedHashSet localLinkedHashSet = new LinkedHashSet();
     int j = 0;
-    int i = paramUri.indexOf('&', j);
-    if (i == -1) {
-      i = paramUri.length();
-    }
-    for (;;)
+    int i;
+    do
     {
+      int k = paramUri.indexOf('&', j);
+      i = k;
+      if (k == -1) {
+        i = paramUri.length();
+      }
       int m = paramUri.indexOf('=', j);
-      int k;
       if (m <= i)
       {
         k = m;
@@ -92,11 +93,8 @@ public abstract class SonicRuntime
       localLinkedHashSet.add(Uri.decode(paramUri.substring(j, k)));
       i += 1;
       j = i;
-      if (i < paramUri.length()) {
-        break;
-      }
-      return Collections.unmodifiableSet(localLinkedHashSet);
-    }
+    } while (i < paramUri.length());
+    return Collections.unmodifiableSet(localLinkedHashSet);
   }
   
   public File getSonicCacheDir()

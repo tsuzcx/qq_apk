@@ -1,0 +1,377 @@
+{
+	"readinjoy_native_relative_search_cell": {
+		"view_type": "cell",
+		"direction": "vertical",
+		"height": {
+			"type": "wrap_content"
+		},
+		"width": {
+			"type": "relative",
+			"value": "375"
+		},
+		"subviews": [{
+			"view_type": "UIView",
+			"view_id": "id_relative_search_container",
+			"direction": "vertical",
+			"align_parent_right": "YES",
+			"margin_left": "16",
+			"margin_right": "16",
+			"margin_top": "33",
+			"margin_bottom": "34",
+			"height": {
+				"type": "wrap_content"
+			},
+			"width": {
+				"type": "relative",
+				"value": "351"
+			},
+			"subviews": [{
+					"view_type": "UILabel",
+					"view_id": "id_search_title",
+					"align_parent_left": "YES",
+					"height": {
+						"type": "wrap_content"
+					},
+					"width": {
+						"type": "wrap_content"
+					},
+					"attributes": {
+						"setTextColorString:": "#000000",
+						"setText:": "-1",
+						"setBoldFontSizeString:": "16"
+					}
+				},
+				{
+					"view_type": "container",
+					"view_id": "id_item1_container",
+					"layout_type": "layout_relative",
+					"margin_top": "26",
+					"align_parent_left": "YES",
+					"align_parent_right": "YES",
+					"height": {
+						"type": "wrap_content"
+					},
+					"width": {
+						"type": "match_parent"
+					},
+					"subviews": [{
+							"view_type": "ReadInjoyAsynImageView",
+							"view_id": "id_item1_result1_icon",
+							"layout_type": "layout_relative",
+							"visible_depend_on_brother": "id_item1_result1",
+							"default_visible": "YES",
+							"align_parent_center_vertical": "YES",
+							"height": {
+								"type": "relative",
+								"value": "3"
+							},
+							"width": {
+								"type": "relative",
+								"value": "3"
+							},
+							"attributes": {
+								"setImageWithURLString:lineup:": ["http://pub.idqqimg.com/pc/misc/files/20191202/1585778f880b4745b31ced0fa8106352.png", "1"]
+							}
+						},
+						{
+							"view_type": "UILabel",
+							"view_id": "id_item1_result1",
+							"right_of_view": "id_item1_result1_icon",
+							"event_type": "id_item1_result1_click",
+							"margin_left": "6",
+							"height": {
+								"type": "wrap_content"
+							},
+							"width": {
+								"type": "relative",
+								"value": "149"
+							},
+							"attributes": {
+								"setTextColorString:": "#000000",
+								"setText:": "-1",
+								"setFontSizeString:": "14",
+								"setNumberOfLinesString:": "1",
+								"setAttatchInfo:": "-1"
+							}
+						},
+						{
+							"view_type": "UIView",
+							"view_id": "id_item1_center_line",
+							"align_parent_center_horizontal": "YES",
+							"height": {
+								"type": "absolutely",
+								"value": "0.5"
+							},
+							"width": {
+								"type": "absolutely",
+								"value": "0.5"
+							}
+						},
+						{
+							"view_type": "ReadInjoyAsynImageView",
+							"view_id": "id_item1_result2_icon",
+							"layout_type": "layout_relative",
+							"visible_depend_on_brother": "id_item1_result2",
+							"right_of_view": "id_item1_center_line",
+							"margin_left": "20",
+							"default_visible": "YES",
+							"align_parent_center_vertical": "YES",
+							"height": {
+								"type": "relative",
+								"value": "3"
+							},
+							"width": {
+								"type": "relative",
+								"value": "3"
+							},
+							"attributes": {
+								"setImageWithURLString:lineup:": ["http://pub.idqqimg.com/pc/misc/files/20191202/1585778f880b4745b31ced0fa8106352.png", "1"]
+							}
+						},
+						{
+							"view_type": "UILabel",
+							"view_id": "id_item1_result2",
+							"right_of_view": "id_item1_result2_icon",
+							"event_type": "id_item1_result2_click",
+							"margin_left": "6",
+							"height": {
+								"type": "wrap_content"
+							},
+							"width": {
+								"type": "relative",
+								"value": "149"
+							},
+							"attributes": {
+								"setTextColorString:": "#000000",
+								"setText:": "-1",
+								"setFontSizeString:": "14",
+								"setNumberOfLinesString:": "1",
+								"setAttatchInfo:": "-1"
+							}
+						}
+					]
+				},
+				{
+					"view_type": "container",
+					"view_id": "id_item2_container",
+					"layout_type": "layout_relative",
+					"align_parent_left": "YES",
+					"align_parent_right": "YES",
+					"margin_top": "18",
+					"height": {
+						"type": "wrap_content"
+					},
+					"width": {
+						"type": "match_parent"
+					},
+					"subviews": [{
+							"view_type": "ReadInjoyAsynImageView",
+							"view_id": "id_item2_result1_icon",
+							"layout_type": "layout_relative",
+							"visible_depend_on_brother": "id_item2_result1",
+							"default_visible": "YES",
+							"align_parent_center_vertical": "YES",
+							"height": {
+								"type": "relative",
+								"value": "3"
+							},
+							"width": {
+								"type": "relative",
+								"value": "3"
+							},
+							"attributes": {
+								"setImageWithURLString:lineup:": ["http://pub.idqqimg.com/pc/misc/files/20191202/1585778f880b4745b31ced0fa8106352.png", "1"]
+							}
+						},
+						{
+							"view_type": "UILabel",
+							"view_id": "id_item2_result1",
+							"margin_left": "6",
+							"right_of_view": "id_item2_result1_icon",
+							"event_type": "id_item2_result1_click",
+							"height": {
+								"type": "wrap_content"
+							},
+							"width": {
+								"type": "relative",
+								"value": "149"
+							},
+							"attributes": {
+								"setTextColorString:": "#000000",
+								"setText:": "-1",
+								"setFontSizeString:": "14",
+								"setNumberOfLinesString:": "1",
+								"setAttatchInfo:": "-1"
+							}
+						},
+						{
+							"view_type": "UIView",
+							"view_id": "id_item2_center_line",
+							"align_parent_center_horizontal": "YES",
+							"height": {
+								"type": "absolutely",
+								"value": "0.5"
+							},
+							"width": {
+								"type": "absolutely",
+								"value": "0.5"
+							}
+						},
+						{
+							"view_type": "ReadInjoyAsynImageView",
+							"view_id": "id_item2_result2_icon",
+							"layout_type": "layout_relative",
+							"visible_depend_on_brother": "id_item2_result2",
+							"right_of_view": "id_item2_center_line",
+							"margin_left": "20",
+							"default_visible": "YES",
+							"align_parent_center_vertical": "YES",
+							"height": {
+								"type": "relative",
+								"value": "3"
+							},
+							"width": {
+								"type": "relative",
+								"value": "3"
+							},
+							"attributes": {
+								"setImageWithURLString:lineup:": ["http://pub.idqqimg.com/pc/misc/files/20191202/1585778f880b4745b31ced0fa8106352.png", "1"]
+							}
+						},
+						{
+							"view_type": "UILabel",
+							"view_id": "id_item2_result2",
+							"right_of_view": "id_item2_result2_icon",
+							"margin_left": "6",
+							"event_type": "id_item2_result2_click",
+							"height": {
+								"type": "wrap_content"
+							},
+							"width": {
+								"type": "relative",
+								"value": "149"
+							},
+							"attributes": {
+								"setTextColorString:": "#000000",
+								"setText:": "-1",
+								"setFontSizeString:": "14",
+								"setNumberOfLinesString:": "1",
+								"setAttatchInfo:": "-1"
+							}
+						}
+					]
+				},
+				{
+					"view_type": "container",
+					"view_id": "id_item3_container",
+					"layout_type": "layout_relative",
+					"align_parent_left": "YES",
+					"align_parent_right": "YES",
+					"margin_top": "18",
+					"height": {
+						"type": "wrap_content"
+					},
+					"width": {
+						"type": "match_parent"
+					},
+					"subviews": [{
+							"view_type": "ReadInjoyAsynImageView",
+							"view_id": "id_item3_result1_icon",
+							"layout_type": "layout_relative",
+							"visible_depend_on_brother": "id_item3_result1",
+							"default_visible": "YES",
+							"align_parent_center_vertical": "YES",
+							"height": {
+								"type": "relative",
+								"value": "3"
+							},
+							"width": {
+								"type": "relative",
+								"value": "3"
+							},
+							"attributes": {
+								"setImageWithURLString:lineup:": ["http://pub.idqqimg.com/pc/misc/files/20191202/1585778f880b4745b31ced0fa8106352.png", "1"]
+							}
+						},
+						{
+							"view_type": "UILabel",
+							"view_id": "id_item3_result1",
+							"margin_left": "6",
+							"right_of_view": "id_item3_result1_icon",
+							"event_type": "id_item3_result1_click",
+							"height": {
+								"type": "wrap_content"
+							},
+							"width": {
+								"type": "relative",
+								"value": "149"
+							},
+							"attributes": {
+								"setTextColorString:": "#000000",
+								"setText:": "-1",
+								"setFontSizeString:": "14",
+								"setNumberOfLinesString:": "1",
+								"setAttatchInfo:": "-1"
+							}
+						},
+						{
+							"view_type": "UIView",
+							"view_id": "id_item3_center_line",
+							"align_parent_center_horizontal": "YES",
+							"height": {
+								"type": "absolutely",
+								"value": "0.5"
+							},
+							"width": {
+								"type": "absolutely",
+								"value": "0.5"
+							}
+						},
+						{
+							"view_type": "ReadInjoyAsynImageView",
+							"view_id": "id_item3_result2_icon",
+							"layout_type": "layout_relative",
+							"visible_depend_on_brother": "id_item3_result2",
+							"right_of_view": "id_item3_center_line",
+							"margin_left": "20",
+							"default_visible": "YES",
+							"align_parent_center_vertical": "YES",
+							"height": {
+								"type": "relative",
+								"value": "3"
+							},
+							"width": {
+								"type": "relative",
+								"value": "3"
+							},
+							"attributes": {
+								"setImageWithURLString:lineup:": ["http://pub.idqqimg.com/pc/misc/files/20191202/1585778f880b4745b31ced0fa8106352.png", "1"]
+							}
+						},
+						{
+							"view_type": "UILabel",
+							"view_id": "id_item3_result2",
+							"margin_left": "6",
+							"right_of_view": "id_item3_result2_icon",
+							"event_type": "id_item3_result2_click",
+							"height": {
+								"type": "wrap_content"
+							},
+							"width": {
+								"type": "relative",
+								"value": "149"
+							},
+							"attributes": {
+								"setTextColorString:": "#000000",
+								"setText:": "-1",
+								"setFontSizeString:": "14",
+								"setNumberOfLinesString:": "1",
+								"setAttatchInfo:": "-1"
+							}
+						}
+					]
+				}
+			]
+		}]
+	}
+}

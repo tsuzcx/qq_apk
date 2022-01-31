@@ -2,8 +2,10 @@ package cooperation.qzone.widget;
 
 import android.graphics.drawable.BitmapDrawable;
 import android.util.LruCache;
+import bgfc;
+import bglo;
+import bglp;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.GifAntishakeModule;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -14,19 +16,19 @@ public class FastAnimationDrawable$LoopReadWriteRunnable
   
   public void run()
   {
-    while (this.a.isRunning())
+    while (this.this$0.isRunning())
     {
-      FastAnimationDrawable.a(this.a).set(FastAnimationDrawable.a(this.a).incrementAndGet() % FastAnimationDrawable.a(this.a).size());
+      FastAnimationDrawable.a(this.this$0).set(FastAnimationDrawable.a(this.this$0).incrementAndGet() % FastAnimationDrawable.a(this.this$0).size());
       if (QLog.isColorLevel()) {
-        QLog.d("FastAnimationDrawable", 2, "LoopReadWriteRunnable index:" + FastAnimationDrawable.a(this.a).get());
+        QLog.d("FastAnimationDrawable", 2, "LoopReadWriteRunnable index:" + FastAnimationDrawable.a(this.this$0).get());
       }
-      if ((this.a.a != null) && (this.a.a.get(Integer.valueOf(FastAnimationDrawable.a(this.a).get())) != null))
+      if ((this.this$0.a != null) && (this.this$0.a.get(Integer.valueOf(FastAnimationDrawable.a(this.this$0).get())) != null))
       {
-        FastAnimationDrawable.a(this.a, (BitmapDrawable)this.a.a.get(Integer.valueOf(FastAnimationDrawable.a(this.a).get())));
+        FastAnimationDrawable.a(this.this$0, (BitmapDrawable)this.this$0.a.get(Integer.valueOf(FastAnimationDrawable.a(this.this$0).get())));
         try
         {
-          Thread.sleep(FastAnimationDrawable.a(this.a));
-          FastAnimationDrawable.a(this.a).sendEmptyMessage(0);
+          Thread.sleep(FastAnimationDrawable.a(this.this$0));
+          FastAnimationDrawable.a(this.this$0).sendEmptyMessage(0);
         }
         catch (InterruptedException localInterruptedException)
         {
@@ -39,23 +41,23 @@ public class FastAnimationDrawable$LoopReadWriteRunnable
       else
       {
         long l = System.currentTimeMillis();
-        BitmapDrawable localBitmapDrawable = FastAnimationDrawable.a(this.a, (String)FastAnimationDrawable.a(this.a).get(FastAnimationDrawable.a(this.a).get()));
+        BitmapDrawable localBitmapDrawable = FastAnimationDrawable.a(this.this$0, (String)FastAnimationDrawable.a(this.this$0).get(FastAnimationDrawable.a(this.this$0).get()));
         if (localBitmapDrawable != null)
         {
           l = System.currentTimeMillis() - l;
-          FastAnimationDrawable.a(this.a, localBitmapDrawable);
+          FastAnimationDrawable.a(this.this$0, localBitmapDrawable);
           if (QLog.isColorLevel()) {
-            QLog.d("FastAnimationDrawable", 2, "LoopReadWriteRunnable decodeBitmap index:" + FastAnimationDrawable.a(this.a).get() + " cost:" + l + " delay:" + FastAnimationDrawable.a(this.a));
+            QLog.d("FastAnimationDrawable", 2, "LoopReadWriteRunnable decodeBitmap index:" + FastAnimationDrawable.a(this.this$0).get() + " cost:" + l + " delay:" + FastAnimationDrawable.a(this.this$0));
           }
-          this.a.a.put(Integer.valueOf(FastAnimationDrawable.a(this.a).get()), localBitmapDrawable);
-          if ((this.a.a.size() == FastAnimationDrawable.a(this.a).size()) && (FastAnimationDrawable.a(this.a) != null) && (this.a.a.size() <= GifAntishakeModule.a().a())) {
-            FastAnimationDrawable.a(this.a).a(this.a.a);
+          this.this$0.a.put(Integer.valueOf(FastAnimationDrawable.a(this.this$0).get()), localBitmapDrawable);
+          if ((this.this$0.a.size() == FastAnimationDrawable.a(this.this$0).size()) && (FastAnimationDrawable.a(this.this$0) != null) && (this.this$0.a.size() <= bgfc.a().a())) {
+            FastAnimationDrawable.a(this.this$0).a(this.this$0.a);
           }
-          if (!FastAnimationDrawable.a(this.a).hasMessages(0)) {
-            if (FastAnimationDrawable.a(this.a) > l) {
-              FastAnimationDrawable.a(this.a).sendEmptyMessageDelayed(0, FastAnimationDrawable.a(this.a) - l);
+          if (!FastAnimationDrawable.a(this.this$0).hasMessages(0)) {
+            if (FastAnimationDrawable.a(this.this$0) > l) {
+              FastAnimationDrawable.a(this.this$0).sendEmptyMessageDelayed(0, FastAnimationDrawable.a(this.this$0) - l);
             } else {
-              FastAnimationDrawable.a(this.a).sendEmptyMessage(0);
+              FastAnimationDrawable.a(this.this$0).sendEmptyMessage(0);
             }
           }
         }

@@ -10,150 +10,151 @@ public class Md5Utils
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 4
-    //   3: aconst_null
-    //   4: astore 5
-    //   6: ldc 19
-    //   8: invokestatic 25	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
-    //   11: astore_2
-    //   12: new 27	java/io/FileInputStream
-    //   15: dup
-    //   16: aload_0
-    //   17: invokespecial 30	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   20: astore_0
-    //   21: sipush 8192
-    //   24: newarray byte
-    //   26: astore_3
-    //   27: aload_0
-    //   28: aload_3
-    //   29: invokevirtual 34	java/io/FileInputStream:read	([B)I
-    //   32: istore_1
-    //   33: iload_1
-    //   34: iconst_m1
-    //   35: if_icmpeq +40 -> 75
-    //   38: aload_2
-    //   39: aload_3
-    //   40: iconst_0
-    //   41: iload_1
-    //   42: invokevirtual 38	java/security/MessageDigest:update	([BII)V
-    //   45: goto -18 -> 27
-    //   48: astore_2
-    //   49: aload 5
-    //   51: astore_3
-    //   52: aload_0
-    //   53: ifnull +10 -> 63
-    //   56: aload_0
-    //   57: invokevirtual 41	java/io/FileInputStream:close	()V
-    //   60: aload 5
-    //   62: astore_3
-    //   63: aload_3
-    //   64: areturn
-    //   65: astore_2
-    //   66: aload_2
-    //   67: invokevirtual 44	java/security/NoSuchAlgorithmException:printStackTrace	()V
-    //   70: aconst_null
-    //   71: astore_2
-    //   72: goto -60 -> 12
-    //   75: aload_2
-    //   76: invokevirtual 48	java/security/MessageDigest:digest	()[B
-    //   79: invokestatic 54	com/tencent/smtt/utils/ByteUtils:byteToHexString	([B)Ljava/lang/String;
-    //   82: astore_2
-    //   83: aload_2
-    //   84: astore_3
-    //   85: aload_0
-    //   86: ifnull -23 -> 63
-    //   89: aload_0
-    //   90: invokevirtual 41	java/io/FileInputStream:close	()V
-    //   93: aload_2
-    //   94: areturn
-    //   95: astore_0
-    //   96: aload_0
-    //   97: invokevirtual 55	java/io/IOException:printStackTrace	()V
-    //   100: aload_2
-    //   101: areturn
-    //   102: astore_2
-    //   103: aconst_null
-    //   104: astore_0
-    //   105: aload_0
-    //   106: ifnull +7 -> 113
-    //   109: aload_0
-    //   110: invokevirtual 41	java/io/FileInputStream:close	()V
-    //   113: aload_2
-    //   114: athrow
-    //   115: astore_0
-    //   116: aload 4
-    //   118: astore_2
-    //   119: goto -23 -> 96
-    //   122: astore_0
-    //   123: aconst_null
-    //   124: astore_0
-    //   125: aload 5
-    //   127: astore_3
-    //   128: aload_0
-    //   129: ifnull -66 -> 63
-    //   132: aload_0
-    //   133: invokevirtual 41	java/io/FileInputStream:close	()V
-    //   136: aconst_null
-    //   137: areturn
-    //   138: astore_0
-    //   139: aload 4
-    //   141: astore_2
-    //   142: goto -46 -> 96
-    //   145: astore_0
-    //   146: aload_0
-    //   147: invokevirtual 55	java/io/IOException:printStackTrace	()V
-    //   150: goto -37 -> 113
-    //   153: astore_2
-    //   154: goto -49 -> 105
-    //   157: astore_2
-    //   158: goto -33 -> 125
+    //   1: astore_3
+    //   2: ldc 19
+    //   4: invokestatic 25	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
+    //   7: astore_2
+    //   8: new 27	java/io/FileInputStream
+    //   11: dup
+    //   12: aload_0
+    //   13: invokespecial 30	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   16: astore_0
+    //   17: sipush 8192
+    //   20: newarray byte
+    //   22: astore 4
+    //   24: aload_0
+    //   25: aload 4
+    //   27: invokevirtual 34	java/io/FileInputStream:read	([B)I
+    //   30: istore_1
+    //   31: iload_1
+    //   32: iconst_m1
+    //   33: if_icmpeq +39 -> 72
+    //   36: aload_2
+    //   37: aload 4
+    //   39: iconst_0
+    //   40: iload_1
+    //   41: invokevirtual 38	java/security/MessageDigest:update	([BII)V
+    //   44: goto -20 -> 24
+    //   47: astore_2
+    //   48: aload_3
+    //   49: astore_2
+    //   50: aload_0
+    //   51: ifnull +9 -> 60
+    //   54: aload_0
+    //   55: invokevirtual 41	java/io/FileInputStream:close	()V
+    //   58: aload_3
+    //   59: astore_2
+    //   60: aload_2
+    //   61: areturn
+    //   62: astore_2
+    //   63: aload_2
+    //   64: invokevirtual 44	java/security/NoSuchAlgorithmException:printStackTrace	()V
+    //   67: aconst_null
+    //   68: astore_2
+    //   69: goto -61 -> 8
+    //   72: aload_2
+    //   73: invokevirtual 48	java/security/MessageDigest:digest	()[B
+    //   76: invokestatic 54	com/tencent/smtt/utils/ByteUtils:byteToHexString	([B)Ljava/lang/String;
+    //   79: astore_2
+    //   80: aload_2
+    //   81: astore_3
+    //   82: aload_3
+    //   83: astore_2
+    //   84: aload_0
+    //   85: ifnull -25 -> 60
+    //   88: aload_0
+    //   89: invokevirtual 41	java/io/FileInputStream:close	()V
+    //   92: aload_3
+    //   93: areturn
+    //   94: astore_0
+    //   95: aload_0
+    //   96: invokevirtual 55	java/io/IOException:printStackTrace	()V
+    //   99: aload_3
+    //   100: areturn
+    //   101: astore_0
+    //   102: aload_0
+    //   103: invokevirtual 55	java/io/IOException:printStackTrace	()V
+    //   106: aconst_null
+    //   107: areturn
+    //   108: astore_0
+    //   109: aconst_null
+    //   110: astore_0
+    //   111: aload_3
+    //   112: astore_2
+    //   113: aload_0
+    //   114: ifnull -54 -> 60
+    //   117: aload_0
+    //   118: invokevirtual 41	java/io/FileInputStream:close	()V
+    //   121: aconst_null
+    //   122: areturn
+    //   123: astore_0
+    //   124: aload_0
+    //   125: invokevirtual 55	java/io/IOException:printStackTrace	()V
+    //   128: aconst_null
+    //   129: areturn
+    //   130: astore_2
+    //   131: aconst_null
+    //   132: astore_0
+    //   133: aload_0
+    //   134: ifnull +7 -> 141
+    //   137: aload_0
+    //   138: invokevirtual 41	java/io/FileInputStream:close	()V
+    //   141: aload_2
+    //   142: athrow
+    //   143: astore_0
+    //   144: aload_0
+    //   145: invokevirtual 55	java/io/IOException:printStackTrace	()V
+    //   148: goto -7 -> 141
+    //   151: astore_2
+    //   152: goto -19 -> 133
+    //   155: astore_2
+    //   156: goto -45 -> 111
+    //   159: astore_0
+    //   160: aconst_null
     //   161: astore_0
-    //   162: aconst_null
-    //   163: astore_0
-    //   164: goto -115 -> 49
+    //   162: goto -114 -> 48
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	167	0	paramFile	java.io.File
-    //   32	10	1	i	int
-    //   11	28	2	localMessageDigest	MessageDigest
-    //   48	1	2	localFileNotFoundException	java.io.FileNotFoundException
-    //   65	2	2	localNoSuchAlgorithmException	java.security.NoSuchAlgorithmException
-    //   71	30	2	str	String
-    //   102	12	2	localObject1	Object
-    //   118	24	2	localObject2	Object
-    //   153	1	2	localObject3	Object
-    //   157	1	2	localIOException	java.io.IOException
-    //   26	102	3	localObject4	Object
-    //   1	139	4	localObject5	Object
-    //   4	122	5	localObject6	Object
+    //   0	165	0	paramFile	java.io.File
+    //   30	11	1	i	int
+    //   7	30	2	localMessageDigest	MessageDigest
+    //   47	1	2	localFileNotFoundException	java.io.FileNotFoundException
+    //   49	12	2	localObject1	Object
+    //   62	2	2	localNoSuchAlgorithmException	java.security.NoSuchAlgorithmException
+    //   68	45	2	localObject2	Object
+    //   130	12	2	localObject3	Object
+    //   151	1	2	localObject4	Object
+    //   155	1	2	localIOException	java.io.IOException
+    //   1	111	3	localObject5	Object
+    //   22	16	4	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   21	27	48	java/io/FileNotFoundException
-    //   27	33	48	java/io/FileNotFoundException
-    //   38	45	48	java/io/FileNotFoundException
-    //   75	83	48	java/io/FileNotFoundException
-    //   6	12	65	java/security/NoSuchAlgorithmException
-    //   89	93	95	java/io/IOException
-    //   6	12	102	finally
-    //   12	21	102	finally
-    //   66	70	102	finally
-    //   56	60	115	java/io/IOException
-    //   6	12	122	java/io/IOException
-    //   12	21	122	java/io/IOException
-    //   66	70	122	java/io/IOException
-    //   132	136	138	java/io/IOException
-    //   109	113	145	java/io/IOException
-    //   21	27	153	finally
-    //   27	33	153	finally
-    //   38	45	153	finally
-    //   75	83	153	finally
-    //   21	27	157	java/io/IOException
-    //   27	33	157	java/io/IOException
-    //   38	45	157	java/io/IOException
-    //   75	83	157	java/io/IOException
-    //   6	12	161	java/io/FileNotFoundException
-    //   12	21	161	java/io/FileNotFoundException
-    //   66	70	161	java/io/FileNotFoundException
+    //   17	24	47	java/io/FileNotFoundException
+    //   24	31	47	java/io/FileNotFoundException
+    //   36	44	47	java/io/FileNotFoundException
+    //   72	80	47	java/io/FileNotFoundException
+    //   2	8	62	java/security/NoSuchAlgorithmException
+    //   88	92	94	java/io/IOException
+    //   54	58	101	java/io/IOException
+    //   2	8	108	java/io/IOException
+    //   8	17	108	java/io/IOException
+    //   63	67	108	java/io/IOException
+    //   117	121	123	java/io/IOException
+    //   2	8	130	finally
+    //   8	17	130	finally
+    //   63	67	130	finally
+    //   137	141	143	java/io/IOException
+    //   17	24	151	finally
+    //   24	31	151	finally
+    //   36	44	151	finally
+    //   72	80	151	finally
+    //   17	24	155	java/io/IOException
+    //   24	31	155	java/io/IOException
+    //   36	44	155	java/io/IOException
+    //   72	80	155	java/io/IOException
+    //   2	8	159	java/io/FileNotFoundException
+    //   8	17	159	java/io/FileNotFoundException
+    //   63	67	159	java/io/FileNotFoundException
   }
   
   public static String getMD5(String paramString)
@@ -214,7 +215,7 @@ public class Md5Utils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.smtt.utils.Md5Utils
  * JD-Core Version:    0.7.0.1
  */

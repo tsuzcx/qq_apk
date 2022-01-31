@@ -1,19 +1,20 @@
-import com.tencent.component.network.DownloaderFactory;
-import com.tencent.component.network.downloader.handler.FileHandler;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.AppInterface;
+import mqq.app.MobileQQ;
 
-public class pnw
-  implements FileHandler
+class pnw
+  extends pnc
 {
-  public pnw(DownloaderFactory paramDownloaderFactory) {}
+  pnw(pnn parampnn, AppInterface paramAppInterface) {}
   
-  public boolean a(String paramString1, String paramString2)
+  public Drawable a()
   {
-    return false;
+    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_video_selected");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     pnw
  * JD-Core Version:    0.7.0.1
  */

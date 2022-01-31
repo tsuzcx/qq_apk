@@ -1,61 +1,73 @@
-import android.graphics.Point;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.widget.BaseDraggableGridViewAdapter;
-import com.tencent.mobileqq.widget.DraggableGridView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+import org.json.JSONObject;
 
 public class albr
-  extends BaseAdapter
+  implements albq
 {
-  private int jdField_a_of_type_Int;
-  
-  public albr(DraggableGridView paramDraggableGridView, int paramInt)
+  public boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    notifyDataSetChanged();
-  }
-  
-  public int getCount()
-  {
-    return DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_Int);
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(this.jdField_a_of_type_Int, paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null) {
-      localView = DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView.getContext()), this.jdField_a_of_type_Int, paramInt, paramViewGroup);
+    if (paramLong != 0L) {
+      return false;
     }
-    DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).a(localView, this.jdField_a_of_type_Int, paramInt);
-    paramView = new albp(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView, this.jdField_a_of_type_Int, paramInt);
-    localView.setOnClickListener(paramView);
-    localView.setOnLongClickListener(paramView);
-    if ((!DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView)) && ((DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).y != this.jdField_a_of_type_Int) || (DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).x != paramInt) || (!DraggableGridView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView)))) {
-      localView.setVisibility(0);
+    paramString2 = BaseActivity.sTopActivity;
+    if (paramString2 == null) {
+      return false;
     }
-    return localView;
+    if (paramString1.startsWith("open/")) {
+      try
+      {
+        int j = Integer.parseInt(paramString1.substring("open/".length(), paramString1.indexOf("?")));
+        paramJSONObject = (String)befm.a(paramString1).get("url");
+        int i = j;
+        if (j != 1007)
+        {
+          i = j;
+          if (j != 1008)
+          {
+            i = j;
+            if (j != 1014)
+            {
+              i = j;
+              if (j != 1036)
+              {
+                i = j;
+                if (j != 2061)
+                {
+                  i = j;
+                  if (j != 2072)
+                  {
+                    i = j;
+                    if (j != 2075)
+                    {
+                      i = j;
+                      if (j != 2085) {
+                        i = 2059;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        MiniAppLauncher.startMiniApp(paramString2, paramJSONObject, i, albn.a(), null);
+        return true;
+      }
+      catch (Exception paramString2)
+      {
+        QLog.e("ArkApp", 1, "parse miniapp scheme failed:" + paramString1, paramString2);
+        return false;
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     albr
  * JD-Core Version:    0.7.0.1
  */

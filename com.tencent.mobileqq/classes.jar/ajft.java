@@ -1,47 +1,81 @@
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.troop.browser.TroopWebviewPlugin;
-import org.json.JSONException;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import mqq.app.MobileQQ;
 import org.json.JSONObject;
 
-public class ajft
-  implements TroopMemberApiClient.Callback
+class ajft
+  extends batl
 {
-  public ajft(TroopWebviewPlugin paramTroopWebviewPlugin, String paramString) {}
+  ajft(ajfs paramajfs) {}
   
-  public void a(Bundle paramBundle)
+  public void onDone(batm parambatm)
   {
-    long l = paramBundle.getLong("lastMsgTime");
-    paramBundle = paramBundle.getString("lastMsgContent");
-    try
+    super.onDone(parambatm);
+    parambatm = parambatm.a();
+    if ((parambatm.containsKey("version")) && (parambatm.containsKey("json_name")))
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("lastMsgTime", l);
-      localJSONObject.put("lastMsgContent", paramBundle);
-      if (!TextUtils.isEmpty(paramBundle))
+      int i = parambatm.getInt("version", -1);
+      parambatm = parambatm.getString("json_name");
+      if (balu.e.d.equals(parambatm))
       {
-        localJSONObject.put("ret", 0);
-        localJSONObject.put("errorMsg", "");
+        Object localObject = new File(this.a.a.getApplication().getApplicationContext().getFilesDir(), balu.e.a);
+        if ((((File)localObject).exists()) && (((File)localObject).isFile()))
+        {
+          localObject = bace.a((File)localObject);
+          try
+          {
+            localObject = new JSONObject((String)localObject);
+            long l = ((JSONObject)localObject).getLong("timestamp") / 1000L;
+            if (Math.abs(i - l) <= 5L)
+            {
+              balu.a(this.a.a.getApplication().getApplicationContext(), parambatm, i);
+              if (QLog.isColorLevel()) {
+                QLog.i("ClubContentUpdateHandler", 2, "json file update success!");
+              }
+              boolean bool1 = true;
+              if (((JSONObject)localObject).has("enableX5Report"))
+              {
+                boolean bool2 = ((JSONObject)localObject).getBoolean("enableX5Report");
+                bool1 = bool2;
+                if (QLog.isColorLevel())
+                {
+                  QLog.i("ClubContentUpdateHandler", 2, "json file got isEnableX5Report: " + bool2);
+                  bool1 = bool2;
+                }
+              }
+              parambatm = this.a.a.getApplication().getApplicationContext().getSharedPreferences("WebView_X5_Report", 4);
+              parambatm.edit().putBoolean("enableX5Report", bool1).commit();
+              parambatm.edit().putLong("read_vas_asyncCookie", 0L).commit();
+            }
+            for (;;)
+            {
+              ajfs.a(this.a, (JSONObject)localObject);
+              return;
+              if (QLog.isColorLevel()) {
+                QLog.i("ClubContentUpdateHandler", 2, "json file update get old file!");
+              }
+            }
+            return;
+          }
+          catch (Exception parambatm)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("ClubContentUpdateHandler", 2, "Parse webview josn Exception:" + parambatm.toString());
+            }
+          }
+        }
       }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTroopBrowserTroopWebviewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
-        return;
-        localJSONObject.put("ret", -1);
-        localJSONObject.put("errorMsg", "lastSpeakMsg is empty");
-      }
-      return;
-    }
-    catch (JSONException paramBundle)
-    {
-      paramBundle.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajft
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class C2CType0x211_SubC2CType0x8$NearFieldAbiQuery
-  extends MessageMicro
+  extends MessageMicro<NearFieldAbiQuery>
 {
   public static final int BOOL_NEED_TIPS_FIELD_NUMBER = 3;
   public static final int BYTES_COOKIE_FIELD_NUMBER = 5;

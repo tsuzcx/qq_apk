@@ -1,44 +1,30 @@
+import android.content.Intent;
 import android.view.View;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.av.utils.VideoActionSheet;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class agze
-  implements ActionSheet.OnButtonClickListener
+class agze
+  implements View.OnClickListener
 {
-  public agze(QCallDetailActivity paramQCallDetailActivity, VideoActionSheet paramVideoActionSheet) {}
+  agze(agxq paramagxq) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentAvUtilsVideoActionSheet.dismiss();
-    switch (paramInt)
+    if ((this.a.c != null) && ("1600000104".equals(this.a.c.trim())))
     {
-    default: 
-      return;
-    case 0: 
-      QCallDetailActivity.c(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity);
+      this.a.k();
       return;
     }
-    if ((QCallDetailActivity.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity) == 1) || (QCallDetailActivity.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity) == 2))
-    {
-      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity, this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.a, 2);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, "CliOper", "", "", "0X8006406", "0X8006406", 5, 0, "", "", "", "");
-      return;
-    }
-    if (QCallDetailActivity.b(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity) == 5)
-    {
-      PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity.app, this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity, 1, 5);
-      return;
-    }
-    QCallDetailActivity.c(this.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity);
+    paramView = new Intent(agxq.a(this.a), QRLoginMgrActivity.class);
+    paramView.putExtra("qrlogin_position", this.a.b);
+    paramView.putExtra("qrlogin_appid", this.a.a);
+    agxq.a(this.a).startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agze
  * JD-Core Version:    0.7.0.1
  */

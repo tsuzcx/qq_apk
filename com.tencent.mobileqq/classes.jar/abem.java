@@ -1,45 +1,111 @@
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAiAppPanel;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.mobileqq.ark.ArkRecommendController.AttachAppHolder;
-import com.tencent.mobileqq.data.RecommendCommonMessage;
-import com.tencent.mobileqq.statistics.ArkAppReportController;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import java.util.List;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class abem
   implements DialogInterface.OnClickListener
 {
-  public abem(ArkRecommendController paramArkRecommendController, QQCustomDialog paramQQCustomDialog, boolean paramBoolean1, ArkAiAppPanel paramArkAiAppPanel, List paramList, int paramInt1, boolean paramBoolean2, Context paramContext1, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, RecommendCommonMessage paramRecommendCommonMessage, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener, ArkRecommendController.AttachAppHolder paramAttachAppHolder, boolean paramBoolean3, int paramInt2, Context paramContext2) {}
+  public abem(NotificationActivity paramNotificationActivity, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  /* Error */
+  public void onClick(android.content.DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
-    try
-    {
-      ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppPanel, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener, this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController$AttachAppHolder, this.c, this.jdField_b_of_type_Int);
-      ArkAppReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "__global__", "ArkAlertDialogConfirm", 0L, 0L, 0L, 0L, 0L, "", "");
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      ArkRecommendController.a(this.jdField_b_of_type_AndroidContentContext, "open", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      ArkAppCenter.b("ArkDialog", String.format("PositiveButton click failed, err=%s", new Object[] { paramDialogInterface.getMessage() }));
-    }
+    // Byte code:
+    //   0: new 25	android/content/Intent
+    //   3: dup
+    //   4: ldc 27
+    //   6: aload_0
+    //   7: getfield 15	abem:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   10: invokestatic 33	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   13: invokespecial 36	android/content/Intent:<init>	(Ljava/lang/String;Landroid/net/Uri;)V
+    //   16: astore_1
+    //   17: aload_0
+    //   18: getfield 13	abem:jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity	Lcom/tencent/mobileqq/activity/NotificationActivity;
+    //   21: aload_1
+    //   22: invokevirtual 42	com/tencent/mobileqq/activity/NotificationActivity:startActivity	(Landroid/content/Intent;)V
+    //   25: aconst_null
+    //   26: ldc 44
+    //   28: ldc 46
+    //   30: ldc 48
+    //   32: ldc 50
+    //   34: ldc 52
+    //   36: iconst_0
+    //   37: iconst_0
+    //   38: ldc 48
+    //   40: ldc 48
+    //   42: ldc 48
+    //   44: ldc 48
+    //   46: invokestatic 58	awqx:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   49: aload_0
+    //   50: getfield 13	abem:jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity	Lcom/tencent/mobileqq/activity/NotificationActivity;
+    //   53: invokevirtual 61	com/tencent/mobileqq/activity/NotificationActivity:finish	()V
+    //   56: return
+    //   57: astore_1
+    //   58: aload_1
+    //   59: invokevirtual 64	java/lang/Exception:printStackTrace	()V
+    //   62: goto -13 -> 49
+    //   65: astore_1
+    //   66: aconst_null
+    //   67: ldc 44
+    //   69: ldc 46
+    //   71: ldc 48
+    //   73: ldc 50
+    //   75: ldc 52
+    //   77: iconst_0
+    //   78: iconst_0
+    //   79: ldc 48
+    //   81: ldc 48
+    //   83: ldc 48
+    //   85: ldc 48
+    //   87: invokestatic 58	awqx:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   90: aload_0
+    //   91: getfield 13	abem:jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity	Lcom/tencent/mobileqq/activity/NotificationActivity;
+    //   94: invokevirtual 61	com/tencent/mobileqq/activity/NotificationActivity:finish	()V
+    //   97: return
+    //   98: astore_1
+    //   99: aload_1
+    //   100: invokevirtual 64	java/lang/Exception:printStackTrace	()V
+    //   103: goto -13 -> 90
+    //   106: astore_1
+    //   107: aconst_null
+    //   108: ldc 44
+    //   110: ldc 46
+    //   112: ldc 48
+    //   114: ldc 50
+    //   116: ldc 52
+    //   118: iconst_0
+    //   119: iconst_0
+    //   120: ldc 48
+    //   122: ldc 48
+    //   124: ldc 48
+    //   126: ldc 48
+    //   128: invokestatic 58	awqx:b	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   131: aload_0
+    //   132: getfield 13	abem:jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity	Lcom/tencent/mobileqq/activity/NotificationActivity;
+    //   135: invokevirtual 61	com/tencent/mobileqq/activity/NotificationActivity:finish	()V
+    //   138: aload_1
+    //   139: athrow
+    //   140: astore_3
+    //   141: aload_3
+    //   142: invokevirtual 64	java/lang/Exception:printStackTrace	()V
+    //   145: goto -14 -> 131
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	148	0	this	abem
+    //   0	148	1	paramDialogInterface	android.content.DialogInterface
+    //   0	148	2	paramInt	int
+    //   140	2	3	localException	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   25	49	57	java/lang/Exception
+    //   0	25	65	java/lang/Exception
+    //   66	90	98	java/lang/Exception
+    //   0	25	106	finally
+    //   107	131	140	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abem
  * JD-Core Version:    0.7.0.1
  */

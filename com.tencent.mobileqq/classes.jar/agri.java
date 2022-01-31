@@ -1,28 +1,17 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.portal.PortalManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
-import mqq.os.MqqHandler;
-
 public class agri
-  extends FriendListObserver
 {
-  public agri(PortalManager paramPortalManager) {}
+  float jdField_a_of_type_Float;
+  String jdField_a_of_type_JavaLangString;
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public agri(String paramString, float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PortalManagerhead", 2, "onUpdateCustomHead isSuccess = " + paramBoolean + ", mobileNumber = " + paramString);
-    }
-    if (this.a.a.containsKey(paramString)) {
-      ThreadManager.getSubThreadHandler().post(new agrj(this, paramString, paramBoolean));
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Float = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agri
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,27 @@
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
-public final class ott
-  extends ExecuteBinResponseCallback
+public class ott
+  implements owa
 {
-  public ott(ExecuteBinResponseCallback paramExecuteBinResponseCallback) {}
-  
-  public void a()
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    super.a();
+    return null;
   }
   
-  public void a(String paramString)
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    String str = String.valueOf(System.currentTimeMillis() - this.b);
-    StoryReportor.a("music_composite", "music_clip", 0, 0, new String[] { str });
-    if (QLog.isColorLevel()) {
-      QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 2, "音乐截取成功耗时：" + str + '\n' + paramString);
-    }
+    return osu.a(paramBaseArticleInfo);
   }
   
-  public void b(String paramString)
+  public void a(int paramInt1, Container paramContainer, opw paramopw, int paramInt2) {}
+  
+  public boolean a(int paramInt, Container paramContainer, opw paramopw, ViewBase paramViewBase)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
-    }
-    this.a.b(paramString);
-    StoryReportor.a("music_composite", "music_clip", 0, 1, new String[0]);
+    return false;
   }
 }
 

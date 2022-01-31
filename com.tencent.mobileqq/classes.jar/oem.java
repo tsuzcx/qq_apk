@@ -1,36 +1,24 @@
-import android.view.MotionEvent;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.daily.DailyTipsFoldUtils.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.qphone.base.util.QLog;
 
 public class oem
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  int jdField_a_of_type_Int = -1;
+  public oem(DailyTipsFoldUtils.1 param1, View paramView, int paramInt) {}
   
-  public oem(MystoryListView paramMystoryListView, int[] paramArrayOfInt1, int[] paramArrayOfInt2, float[] paramArrayOfFloat) {}
-  
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    int i = 0;
-    if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_ArrayOfInt.length) {}
-    do
-    {
-      return;
-      if (this.jdField_a_of_type_Int < 0)
-      {
-        this.jdField_a_of_type_Int += 1;
-        if (this.jdField_a_of_type_Int >= 0) {
-          i = this.b[this.jdField_a_of_type_Int];
-        }
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.postDelayed(this, i);
-        return;
-      }
-      long l = System.currentTimeMillis();
-      MotionEvent localMotionEvent = MotionEvent.obtain(l, l, this.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int], this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.getWidth() / 2, this.jdField_a_of_type_ArrayOfFloat[this.jdField_a_of_type_Int], 0);
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.dispatchTouchEvent(localMotionEvent);
-      localMotionEvent.recycle();
-      this.jdField_a_of_type_Int += 1;
-    } while (this.jdField_a_of_type_Int >= this.jdField_a_of_type_ArrayOfInt.length);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.postDelayed(this, this.b[this.jdField_a_of_type_Int]);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F - f);
+    int i = (int)(this.jdField_a_of_type_Int * f);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDailyDailyTipsFoldUtils$1.a.smoothScrollToPositionFromTop(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyDailyDailyTipsFoldUtils$1.a.getHeaderViewsCount(), -i, 0);
+    if (QLog.isColorLevel()) {
+      QLog.d("DailyTipsFoldUtils", 2, "percent = " + f + ", scrollHeight = " + i);
+    }
   }
 }
 

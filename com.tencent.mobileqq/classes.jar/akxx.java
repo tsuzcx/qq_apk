@@ -1,31 +1,54 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
-import com.tencent.open.downloadnew.DownloadApi;
-import com.tencent.open.downloadnew.DownloadConstants;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.qphone.base.util.QLog;
 
 public class akxx
-  implements Runnable
+  implements akws
 {
-  public akxx(SwiftBrowserTBSHandler paramSwiftBrowserTBSHandler, String paramString1, String paramString2) {}
+  public akxx(ARScanEntryView paramARScanEntryView) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserTBSHandler.a(MsfSdkUtils.insertMtype("Web", this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserTBSHandler.jdField_a_of_type_JavaLangString), 0);
-    Bundle localBundle = new Bundle();
-    localBundle.putString(DownloadConstants.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
-    localBundle.putString(DownloadConstants.i, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserTBSHandler.jdField_a_of_type_JavaLangString);
-    localBundle.putInt(DownloadConstants.j, 2);
-    localBundle.putString(DownloadConstants.k, this.b);
-    localBundle.putBoolean(DownloadConstants.q, false);
-    localBundle.putBoolean(DownloadConstants.w, false);
-    localBundle.putString(DownloadConstants.l, "_" + this.jdField_a_of_type_JavaLangString);
-    DownloadApi.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserTBSHandler.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity, localBundle, 0, null, 0);
+    QLog.d("AREngine_ARScanEntryView", 1, "onAsyncFaceResDownLoadComplete " + this.a.m);
+    if (!this.a.m) {
+      return;
+    }
+    ARScanEntryView.b(this.a, 100);
+    if ((ARScanEntryView.a(this.a).a != null) && (ARScanEntryView.a(this.a).a.a != null)) {
+      ARScanEntryView.a(this.a).a.a.a();
+    }
+    if (ARScanEntryView.a(this.a) != null)
+    {
+      ARScanEntryView.a(this.a).removeMessages(324);
+      ARScanEntryView.a(this.a).sendEmptyMessage(324);
+    }
+    if ((ARScanEntryView.b(this.a)) && (this.a.a.a().a()))
+    {
+      ARScanEntryView.b(this.a);
+      QLog.d("AREngine_ARScanEntryView", 1, "everything is ready,so quit update resources");
+      return;
+    }
+    this.a.k();
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("AREngine_ARScanEntryView", 1, "onAsyncFaceResUpdateProgress " + paramInt + ";" + this.a.m);
+    if (!this.a.m) {
+      return;
+    }
+    ARScanEntryView.b(this.a, paramInt);
+    ARScanEntryView.a(this.a);
+  }
+  
+  public void b()
+  {
+    this.a.k();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akxx
  * JD-Core Version:    0.7.0.1
  */

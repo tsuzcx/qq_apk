@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class mobile_set_visitor_notify_list_req
   extends JceStruct
 {
-  static ArrayList cache_fuin_vec;
-  public ArrayList fuin_vec;
+  static ArrayList<Long> cache_fuin_vec;
+  public ArrayList<Long> fuin_vec;
   public int operation;
   
   public mobile_set_visitor_notify_list_req() {}
   
-  public mobile_set_visitor_notify_list_req(ArrayList paramArrayList, int paramInt)
+  public mobile_set_visitor_notify_list_req(ArrayList<Long> paramArrayList, int paramInt)
   {
     this.fuin_vec = paramArrayList;
     this.operation = paramInt;

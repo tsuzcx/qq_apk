@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.trunk.Qworkflow.Qworkflow.Workflow;
 
 public final class oidb_0x4d4$GetWorkflowResult
-  extends MessageMicro
+  extends MessageMicro<GetWorkflowResult>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26 }, new String[] { "uint32_result", "msg_workflow_source", "msg_workflow" }, new Object[] { Integer.valueOf(0), null, null }, GetWorkflowResult.class);
   public Qworkflow.Workflow msg_workflow = new Qworkflow.Workflow();
@@ -16,7 +16,7 @@ public final class oidb_0x4d4$GetWorkflowResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x4d4.oidb_0x4d4.GetWorkflowResult
  * JD-Core Version:    0.7.0.1
  */

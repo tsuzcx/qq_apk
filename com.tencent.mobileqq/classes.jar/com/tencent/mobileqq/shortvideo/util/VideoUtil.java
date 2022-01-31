@@ -5,9 +5,26 @@ import android.os.Build.VERSION;
 
 public class VideoUtil
 {
-  public static float a(String paramString)
+  public static long getDurationOfVideo(String paramString)
   {
-    if (!FileUtil.a(paramString)) {}
+    if (!FileUtil.checkFileExist(paramString)) {}
+    while (Build.VERSION.SDK_INT < 10) {
+      return 0L;
+    }
+    try
+    {
+      MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
+      localMediaMetadataRetriever.setDataSource(paramString);
+      long l = Long.valueOf(localMediaMetadataRetriever.extractMetadata(9)).longValue();
+      return l;
+    }
+    catch (Exception paramString) {}
+    return 0L;
+  }
+  
+  public static float getHeightWidthRatioOfVideo(String paramString)
+  {
+    if (!FileUtil.checkFileExist(paramString)) {}
     while (Build.VERSION.SDK_INT < 10) {
       return 0.0F;
     }
@@ -27,23 +44,6 @@ public class VideoUtil
       paramString.printStackTrace();
     }
     return 0.0F;
-  }
-  
-  public static long a(String paramString)
-  {
-    if (!FileUtil.a(paramString)) {}
-    while (Build.VERSION.SDK_INT < 10) {
-      return 0L;
-    }
-    try
-    {
-      MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-      localMediaMetadataRetriever.setDataSource(paramString);
-      long l = Long.valueOf(localMediaMetadataRetriever.extractMetadata(9)).longValue();
-      return l;
-    }
-    catch (Exception paramString) {}
-    return 0L;
   }
 }
 

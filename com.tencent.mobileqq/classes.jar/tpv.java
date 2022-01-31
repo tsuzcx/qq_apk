@@ -1,28 +1,12 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import android.support.v4.view.PagerAdapter;
 
-public class tpv
-  implements Runnable
+public abstract interface tpv
 {
-  public tpv(QQSettingMe paramQQSettingMe) {}
-  
-  public void run()
-  {
-    if (this.a.a == null) {}
-    String str;
-    do
-    {
-      return;
-      str = this.a.a.getCurrentAccountUin();
-    } while (TextUtils.isEmpty(str));
-    WebProcessManager.b(str, System.currentTimeMillis());
-  }
+  public abstract void a(PagerAdapter paramPagerAdapter1, PagerAdapter paramPagerAdapter2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tpv
  * JD-Core Version:    0.7.0.1
  */

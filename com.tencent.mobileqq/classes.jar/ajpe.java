@@ -1,31 +1,136 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.HomeworkInfo;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import com.tencent.biz.pubaccount.AccountDetail.jce.SetRecvMsgStateRsp;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ajpe
-  implements DialogInterface.OnClickListener
+  implements ajfe
 {
-  public ajpe(SubmitHomeWorkFragment paramSubmitHomeWorkFragment, HomeworkInfo paramHomeworkInfo) {}
+  public void a(int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo) {}
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean) {}
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void a(boolean paramBoolean, int paramInt, long paramLong) {}
+  
+  public void a(boolean paramBoolean, long paramLong, int paramInt) {}
+  
+  public void a(boolean paramBoolean, SetRecvMsgStateRsp paramSetRecvMsgStateRsp) {}
+  
+  public void a(boolean paramBoolean, String paramString) {}
+  
+  public void a(boolean paramBoolean, ArrayList<Long> paramArrayList) {}
+  
+  public void a(boolean paramBoolean, nbu paramnbu) {}
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo) {}
+  
+  public void b(boolean paramBoolean, int paramInt) {}
+  
+  public void b(boolean paramBoolean, String paramString) {}
+  
+  public final void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (100 == paramInt)
     {
-    default: 
-      return;
+      paramObject = (ajpg)paramObject;
+      a(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_Boolean);
     }
-    if (SubmitHomeWorkFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment) > 0L)
+    do
     {
-      SubmitHomeWorkFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkHomeworkInfo);
       return;
-    }
-    SubmitHomeWorkFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiSubmitHomeWorkFragment, 3, null, null, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkHomeworkInfo);
+      if (101 == paramInt)
+      {
+        if ((paramObject instanceof ajpf))
+        {
+          paramObject = (ajpf)paramObject;
+          b(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
+          return;
+        }
+        if ((paramObject instanceof Integer))
+        {
+          b(paramBoolean, ((Integer)paramObject).intValue());
+          return;
+        }
+        a(paramBoolean, String.valueOf(paramObject));
+        return;
+      }
+      if (102 == paramInt)
+      {
+        if ((paramObject instanceof ajpf))
+        {
+          paramObject = (ajpf)paramObject;
+          a(paramObject.jdField_a_of_type_Int, paramObject.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
+          return;
+        }
+        b(paramBoolean, String.valueOf(paramObject));
+        return;
+      }
+      if (103 == paramInt)
+      {
+        v_();
+        return;
+      }
+      if (104 == paramInt)
+      {
+        a(paramBoolean);
+        return;
+      }
+      if (105 == paramInt)
+      {
+        a(((Integer)paramObject).intValue());
+        return;
+      }
+      if (106 == paramInt)
+      {
+        a(paramBoolean, ((Boolean)paramObject).booleanValue());
+        return;
+      }
+      if (109 == paramInt)
+      {
+        a(paramBoolean, (nbu)paramObject);
+        return;
+      }
+      if (108 == paramInt)
+      {
+        paramObject = (HashMap)paramObject;
+        a(paramBoolean, ((Integer)paramObject.get("seq")).intValue(), ((Long)paramObject.get("uin")).longValue());
+        return;
+      }
+      if (110 == paramInt)
+      {
+        a(paramBoolean, (ArrayList)paramObject);
+        return;
+      }
+      if (111 == paramInt)
+      {
+        paramObject = (HashMap)paramObject;
+        long l = 0L;
+        paramInt = 0;
+        if (paramObject != null)
+        {
+          l = ((Long)paramObject.get("uin")).longValue();
+          paramInt = ((Integer)paramObject.get("status")).intValue();
+        }
+        a(paramBoolean, l, paramInt);
+        return;
+      }
+    } while ((112 != paramInt) || (!(paramObject instanceof SetRecvMsgStateRsp)));
+    a(paramBoolean, (SetRecvMsgStateRsp)paramObject);
   }
+  
+  public void v_() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajpe
  * JD-Core Version:    0.7.0.1
  */

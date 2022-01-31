@@ -1,19 +1,12 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
-import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
-
-public class wts
-  implements Runnable
+public abstract interface wts
 {
-  public wts(TroopFragment paramTroopFragment) {}
+  public abstract void a(String paramString, int paramInt);
   
-  public void run()
-  {
-    this.a.a.notifyDataSetChanged();
-  }
+  public abstract void a(String paramString, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wts
  * JD-Core Version:    0.7.0.1
  */

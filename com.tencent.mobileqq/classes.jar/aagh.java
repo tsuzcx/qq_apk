@@ -1,20 +1,25 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class aagh
-  implements Runnable
+public final class aagh
+  implements DialogInterface.OnCancelListener
 {
-  public aagh(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
+  public aagh(aagn paramaagn, aagm paramaagm) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    ARWorldCupGlobalSceneRenderable.a(this.a, new aagi(this));
-    QLog.d("ARWorldCupGlobalSceneRenderable", 2, "post mRepeatCheckRunnable ");
+    if (this.jdField_a_of_type_Aagn.a) {
+      awqx.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "3", "", "", "");
+    }
+    if (this.jdField_a_of_type_Aagm != null) {
+      this.jdField_a_of_type_Aagm.a();
+    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aagh
  * JD-Core Version:    0.7.0.1
  */

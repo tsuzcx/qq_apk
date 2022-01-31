@@ -1,30 +1,30 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
 
-public class ytd
-  implements Runnable
+final class ytd
+  implements Comparator<ytb>
 {
-  public ytd(ApolloTextureView paramApolloTextureView, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int[] paramArrayOfInt1, int[] paramArrayOfInt2) {}
-  
-  public void run()
+  public int a(ytb paramytb1, ytb paramytb2)
   {
-    try
+    if ((paramytb1 == null) && (paramytb2 == null)) {}
+    do
     {
-      ApolloSurfaceView.nativeTouchInput(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRender().getSavaWrapper().a, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ApolloTextureView", 1, "send touch event err e=" + localThrowable.toString());
-    }
+      return 0;
+      if ((paramytb1 == null) && (paramytb2 != null)) {
+        return 1;
+      }
+      if ((paramytb1 != null) && (paramytb2 == null)) {
+        return -1;
+      }
+      if (paramytb1.a() > paramytb2.a()) {
+        return -1;
+      }
+    } while (paramytb1.a() >= paramytb2.a());
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ytd
  * JD-Core Version:    0.7.0.1
  */

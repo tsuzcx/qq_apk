@@ -6,9 +6,9 @@ import com.tencent.mobileqq.app.automator.Automator;
 public class CheckUpgrade
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
-    if (this.a.b != null) {}
+    if (this.a.app != null) {}
     return 7;
   }
 }

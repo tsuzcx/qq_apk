@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
 
-public final class aevr
-  implements Runnable
+public class aevr
+  implements View.OnClickListener
 {
-  public aevr(QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
+  public aevr(SearchContactsActivity paramSearchContactsActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    DynamicUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, 39, this.jdField_a_of_type_Int, 640);
+    this.a.setResult(0);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aevr
  * JD-Core Version:    0.7.0.1
  */

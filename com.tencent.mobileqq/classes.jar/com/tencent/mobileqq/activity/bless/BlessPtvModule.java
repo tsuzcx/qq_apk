@@ -1,24 +1,25 @@
 package com.tencent.mobileqq.activity.bless;
 
+import aciy;
+import ajjy;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import apdh;
+import atmo;
+import atoc;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.io.File;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="id")
 public class BlessPtvModule
-  extends Entity
+  extends atmo
 {
   public static final String DEFAULT_MODULE_ID = "0";
-  public static final String DEFAULT_MODULE_TITLE = "原创";
+  public static final String DEFAULT_MODULE_TITLE = ajjy.a(2131635366);
   public static final String DEFAULT_VIP_LEVEL = "0";
   public static String path;
   public int audioLength;
@@ -26,7 +27,7 @@ public class BlessPtvModule
   public String data;
   private String defaultM4aPath;
   public boolean downloaded;
-  @unique
+  @atoc
   public String id;
   public String shareTitle;
   public String title;
@@ -65,13 +66,13 @@ public class BlessPtvModule
   public Drawable getPngDrawable(Activity paramActivity)
   {
     if ("0".equals(this.id)) {
-      return paramActivity.getResources().getDrawable(2130838249);
+      return paramActivity.getResources().getDrawable(2130838536);
     }
     String str = path + File.separator + this.id + File.separator + this.id + ".png";
     try
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      int i = AIOUtils.a(56.0F, paramActivity.getResources());
+      int i = aciy.a(56.0F, paramActivity.getResources());
       localURLDrawableOptions.mRequestHeight = i;
       localURLDrawableOptions.mRequestWidth = i;
       paramActivity = URLDrawable.getDrawable(new File(str), localURLDrawableOptions);
@@ -90,10 +91,10 @@ public class BlessPtvModule
   {
     if (this.id == "0")
     {
-      if ((this.defaultM4aPath == null) || (!FileUtil.a(this.defaultM4aPath))) {}
+      if ((this.defaultM4aPath == null) || (!apdh.a(this.defaultM4aPath))) {}
     }
     else {
-      while ((FileUtil.a(getLrcPath())) && (FileUtil.a(getM4aPath())) && (FileUtil.a(getPicPath()))) {
+      while ((apdh.a(getLrcPath())) && (apdh.a(getM4aPath())) && (apdh.a(getPicPath()))) {
         return true;
       }
     }

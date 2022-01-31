@@ -1,25 +1,17 @@
-import com.tencent.biz.qqstory.base.videoupload.UploadResult;
-import com.tencent.biz.qqstory.base.videoupload.meta.UploadObject;
-import com.tencent.biz.qqstory.base.videoupload.meta.UploadObject.UploadFinishListener;
-import com.tencent.mobileqq.tribe.videoupload.TribeVideoFileObject;
-import com.tencent.mobileqq.tribe.videoupload.TribeVideoTaskInfo;
-import com.tencent.mobileqq.tribe.videoupload.TribeVideoUploadTask;
-
 public class aiyg
-  implements UploadObject.UploadFinishListener
 {
-  public aiyg(TribeVideoUploadTask paramTribeVideoUploadTask, TribeVideoTaskInfo paramTribeVideoTaskInfo) {}
+  public int a;
+  public int b;
   
-  public void a(UploadObject paramUploadObject)
+  public aiyg(int paramInt1, int paramInt2)
   {
-    paramUploadObject = (TribeVideoFileObject)paramUploadObject;
-    this.jdField_a_of_type_ComTencentMobileqqTribeVideouploadTribeVideoTaskInfo.b = paramUploadObject.a.c;
-    this.jdField_a_of_type_ComTencentMobileqqTribeVideouploadTribeVideoTaskInfo.c = paramUploadObject.a.a;
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiyg
  * JD-Core Version:    0.7.0.1
  */

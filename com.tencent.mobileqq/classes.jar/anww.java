@@ -1,21 +1,22 @@
-import android.support.annotation.NonNull;
-import dov.com.qq.im.capture.text.PinYinSpan.OnPinYinDrawListener;
-import dov.com.qq.im.capture.text.SupernaturalTextItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
 
 public class anww
-  implements PinYinSpan.OnPinYinDrawListener
+  implements DialogInterface.OnClickListener
 {
-  public anww(SupernaturalTextItem paramSupernaturalTextItem) {}
+  public anww(FMActivity paramFMActivity) {}
   
-  @NonNull
-  public String a(@NonNull String paramString1, @NonNull String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return paramString2.toUpperCase();
+    paramDialogInterface.dismiss();
+    this.a.setResult(8001);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anww
  * JD-Core Version:    0.7.0.1
  */

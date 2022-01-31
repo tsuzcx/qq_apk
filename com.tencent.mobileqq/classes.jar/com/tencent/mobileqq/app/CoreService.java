@@ -17,7 +17,7 @@ import com.tencent.qphone.base.util.QLog;
 public class CoreService
   extends Service
 {
-  static final int NOTIFICATION_ID = AppSetting.a;
+  static final int NOTIFICATION_ID = ;
   private static final String TAG = "GuardManager";
   static CoreService sCore = null;
   static boolean sDisableForeground;
@@ -27,15 +27,15 @@ public class CoreService
     if (paramBoolean)
     {
       localObject = new Notification();
-      ((Notification)localObject).icon = 2130839210;
-      ((Notification)localObject).contentView = new RemoteViews(BaseApplicationImpl.sApplication.getPackageName(), 2130969243);
+      ((Notification)localObject).icon = 2130839762;
+      ((Notification)localObject).contentView = new RemoteViews(BaseApplicationImpl.sApplication.getPackageName(), 2131493898);
       return localObject;
     }
     Object localObject = new Intent(BaseApplicationImpl.sApplication, SplashActivity.class);
     ((Intent)localObject).addFlags(67108864);
     localObject = PendingIntent.getActivity(BaseApplicationImpl.sApplication, 0, (Intent)localObject, 402653184);
     NotificationCompat.Builder localBuilder = new NotificationCompat.Builder(BaseApplicationImpl.sApplication);
-    localBuilder.setContentTitle("QQ").setContentText("QQ正在后台运行").setWhen(System.currentTimeMillis()).setSmallIcon(2130839210);
+    localBuilder.setContentTitle("QQ").setContentText("QQ正在后台运行").setWhen(System.currentTimeMillis()).setSmallIcon(2130839762);
     localBuilder.setContentIntent((PendingIntent)localObject);
     return localBuilder.build();
   }
@@ -46,31 +46,31 @@ public class CoreService
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 46	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   3: getstatic 47	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
     //   6: astore_1
-    //   7: new 60	android/content/Intent
+    //   7: new 61	android/content/Intent
     //   10: dup
     //   11: aload_1
     //   12: ldc 2
-    //   14: invokespecial 65	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   14: invokespecial 66	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
     //   17: astore_2
     //   18: iload_0
-    //   19: putstatic 121	com/tencent/mobileqq/app/CoreService:sDisableForeground	Z
+    //   19: putstatic 122	com/tencent/mobileqq/app/CoreService:sDisableForeground	Z
     //   22: aload_1
     //   23: aload_2
-    //   24: invokevirtual 127	android/content/Context:startService	(Landroid/content/Intent;)Landroid/content/ComponentName;
+    //   24: invokevirtual 128	android/content/Context:startService	(Landroid/content/Intent;)Landroid/content/ComponentName;
     //   27: pop
     //   28: ldc 2
     //   30: monitorexit
     //   31: return
     //   32: astore_1
-    //   33: invokestatic 133	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   33: invokestatic 134	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   36: ifeq -8 -> 28
     //   39: ldc 10
     //   41: iconst_2
-    //   42: ldc 135
+    //   42: ldc 136
     //   44: aload_1
-    //   45: invokestatic 139	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   45: invokestatic 140	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   48: goto -20 -> 28
     //   51: astore_1
     //   52: ldc 2
@@ -115,27 +115,27 @@ public class CoreService
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: new 60	android/content/Intent
+    //   3: new 61	android/content/Intent
     //   6: dup
-    //   7: getstatic 46	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   7: getstatic 47	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
     //   10: ldc 2
-    //   12: invokespecial 65	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   12: invokespecial 66	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
     //   15: astore_0
-    //   16: invokestatic 151	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   16: invokestatic 152	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   19: aload_0
-    //   20: invokevirtual 159	com/tencent/qphone/base/util/BaseApplication:stopService	(Landroid/content/Intent;)Z
+    //   20: invokevirtual 160	com/tencent/qphone/base/util/BaseApplication:stopService	(Landroid/content/Intent;)Z
     //   23: pop
     //   24: ldc 2
     //   26: monitorexit
     //   27: return
     //   28: astore_0
-    //   29: invokestatic 133	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   29: invokestatic 134	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   32: ifeq -8 -> 24
     //   35: ldc 10
     //   37: iconst_2
-    //   38: ldc 135
+    //   38: ldc 136
     //   40: aload_0
-    //   41: invokestatic 139	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   41: invokestatic 140	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   44: goto -20 -> 24
     //   47: astore_0
     //   48: ldc 2

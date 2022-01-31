@@ -1,21 +1,7 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-
-public class ahod
-  extends AnimatorListenerAdapter
-{
-  public ahod(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    EffectsCameraCaptureFragment.a(this.a).setAlpha(1.0F);
-  }
-}
+public class ahod {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahod
  * JD-Core Version:    0.7.0.1
  */

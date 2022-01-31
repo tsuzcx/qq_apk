@@ -1,26 +1,29 @@
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
+import android.animation.TypeEvaluator;
+import com.tencent.qphone.base.util.QLog;
 
-public class acql
-  extends RecyclerView.ItemDecoration
+class acql
+  implements TypeEvaluator
 {
-  private final int jdField_a_of_type_Int = AIOUtils.a(3.0F, this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment.getResources());
-  
-  private acql(ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  public Object evaluate(float paramFloat, Object paramObject1, Object paramObject2)
   {
-    paramRect.right = this.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.d("AdditionalAnimController", 2, "AlphaEvaluator value: " + paramFloat);
+    }
+    if ((paramFloat >= 0.0F) && (paramFloat <= 0.02985074626865672D)) {
+      return Double.valueOf(paramFloat * 0.5D / 0.02985074626865672D);
+    }
+    if ((paramFloat > 0.02985074626865672D) && (paramFloat <= 0.9253731343283582D)) {
+      return Double.valueOf(0.5D);
+    }
+    if ((paramFloat > 0.9253731343283582D) && (paramFloat <= 1.0F)) {
+      return Double.valueOf((1.0F - paramFloat) * 0.5D / 0.07462686567164178D);
+    }
+    return Double.valueOf(0.0D);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acql
  * JD-Core Version:    0.7.0.1
  */

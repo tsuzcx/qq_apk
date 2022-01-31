@@ -1,16 +1,21 @@
 package com.tencent.mobileqq.msf.sdk;
 
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.feedback.eup.CrashReport;
+import com.tencent.mobileqq.msf.core.auth.m;
 import com.tencent.mobileqq.msf.sdk.handler.IErrorHandler;
 import com.tencent.mobileqq.msf.sdk.handler.IMsfProxy;
 import com.tencent.mobileqq.msf.sdk.utils.b;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.reflect.Field;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
@@ -23,10 +28,17 @@ public class MsfServiceSdk
   static boolean isMainProcess = false;
   public static boolean isUseNewProxy = false;
   private static Object netImplRef;
-  private static MsfServiceSdk sdk;
+  private static Field sDetailMessageField;
+  private static MsfServiceSdk sdk = null;
   private static final String tag = "MsfServiceSdk";
   private final BroadcastReceiver msfServiceListener = new s(this);
   private IMsfProxy proxy;
+  
+  static
+  {
+    isUseNewProxy = false;
+    netImplRef = null;
+  }
   
   private void beforeSend(ToServiceMsg paramToServiceMsg)
   {
@@ -73,114 +85,159 @@ public class MsfServiceSdk
     }
   }
   
+  public static void reportStartServiceException(Class paramClass, Intent paramIntent, Throwable paramThrowable)
+  {
+    if ((paramClass == null) || (paramIntent == null) || (paramThrowable == null)) {
+      return;
+    }
+    paramClass = new StringBuilder("StartServiceException");
+    paramClass.append(" ");
+    String str = paramIntent.getAction();
+    if (!TextUtils.isEmpty(str)) {
+      paramClass.append("Act:").append(str);
+    }
+    for (;;)
+    {
+      try
+      {
+        if (sDetailMessageField == null)
+        {
+          sDetailMessageField = Throwable.class.getDeclaredField("detailMessage");
+          sDetailMessageField.setAccessible(true);
+        }
+        sDetailMessageField.set(paramThrowable, "StartServiceException" + " : " + paramThrowable.getMessage());
+      }
+      catch (Exception paramIntent)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("MsfServiceSdk", 2, "StartServiceException failed : ", paramIntent);
+        continue;
+      }
+      CrashReport.handleCatchException(Thread.currentThread(), paramThrowable, paramClass.toString(), null);
+      return;
+      paramIntent = paramIntent.getComponent();
+      if (paramIntent != null)
+      {
+        paramIntent = paramIntent.getClassName();
+        paramClass.append("Clazz:").append(paramIntent);
+      }
+      else
+      {
+        paramClass.append("Intent:valid");
+      }
+    }
+  }
+  
   /* Error */
   private static void testRandomProxy()
   {
     // Byte code:
     //   0: iconst_0
     //   1: istore_2
-    //   2: new 143	java/lang/StringBuilder
+    //   2: new 148	java/lang/StringBuilder
     //   5: dup
-    //   6: invokespecial 144	java/lang/StringBuilder:<init>	()V
-    //   9: getstatic 149	android/os/Build:MANUFACTURER	Ljava/lang/String;
-    //   12: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   15: ldc 155
-    //   17: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   20: getstatic 158	android/os/Build:MODEL	Ljava/lang/String;
-    //   23: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   26: invokevirtual 161	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   29: invokevirtual 164	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   6: invokespecial 189	java/lang/StringBuilder:<init>	()V
+    //   9: getstatic 237	android/os/Build:MANUFACTURER	Ljava/lang/String;
+    //   12: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   15: ldc 239
+    //   17: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   20: getstatic 242	android/os/Build:MODEL	Ljava/lang/String;
+    //   23: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: invokevirtual 197	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   29: invokevirtual 245	java/lang/String:toLowerCase	()Ljava/lang/String;
     //   32: astore 4
-    //   34: ldc 166
-    //   36: invokestatic 80	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   39: invokestatic 172	com/tencent/mobileqq/msf/core/c:c	(Landroid/content/Context;)Ljava/lang/String;
-    //   42: invokevirtual 91	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   45: ifeq +138 -> 183
-    //   48: invokestatic 80	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   51: ldc 174
+    //   34: ldc 247
+    //   36: invokestatic 89	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   39: invokestatic 253	com/tencent/mobileqq/msf/core/c:c	(Landroid/content/Context;)Ljava/lang/String;
+    //   42: invokevirtual 100	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   45: ifeq +142 -> 187
+    //   48: invokestatic 89	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   51: ldc 255
     //   53: iconst_4
-    //   54: invokevirtual 178	com/tencent/qphone/base/util/BaseApplication:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   54: invokevirtual 259	com/tencent/qphone/base/util/BaseApplication:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
     //   57: astore_3
     //   58: aload_3
-    //   59: ifnull +124 -> 183
+    //   59: ifnull +128 -> 187
     //   62: aload_3
-    //   63: ldc 180
-    //   65: iconst_m1
-    //   66: invokeinterface 186 3 0
-    //   71: istore_1
-    //   72: iload_1
-    //   73: istore_0
-    //   74: iload_1
-    //   75: iconst_m1
-    //   76: if_icmpne +38 -> 114
-    //   79: new 188	java/util/Random
-    //   82: dup
-    //   83: invokespecial 189	java/util/Random:<init>	()V
-    //   86: bipush 100
-    //   88: invokevirtual 193	java/util/Random:nextInt	(I)I
-    //   91: istore_0
-    //   92: iload_0
-    //   93: istore_1
-    //   94: aload_3
-    //   95: invokeinterface 197 1 0
-    //   100: ldc 180
-    //   102: iload_0
-    //   103: invokeinterface 203 3 0
-    //   108: invokeinterface 206 1 0
-    //   113: pop
-    //   114: iload_0
-    //   115: iconst_1
-    //   116: if_icmpge +5 -> 121
-    //   119: iconst_1
-    //   120: istore_2
-    //   121: iload_2
-    //   122: putstatic 95	com/tencent/mobileqq/msf/sdk/MsfServiceSdk:isUseNewProxy	Z
-    //   125: ldc 19
-    //   127: iconst_1
-    //   128: new 143	java/lang/StringBuilder
-    //   131: dup
-    //   132: invokespecial 144	java/lang/StringBuilder:<init>	()V
-    //   135: aload 4
-    //   137: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   140: ldc 208
-    //   142: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   145: getstatic 95	com/tencent/mobileqq/msf/sdk/MsfServiceSdk:isUseNewProxy	Z
-    //   148: invokevirtual 211	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   151: ldc 213
-    //   153: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   156: iload_0
-    //   157: invokevirtual 216	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   160: invokevirtual 161	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   163: invokestatic 219	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   166: return
-    //   167: astore_3
-    //   168: iconst_0
-    //   169: istore_0
-    //   170: aload_3
-    //   171: invokevirtual 222	java/lang/Exception:printStackTrace	()V
-    //   174: goto -60 -> 114
-    //   177: astore_3
-    //   178: iload_1
-    //   179: istore_0
-    //   180: goto -10 -> 170
-    //   183: iconst_0
-    //   184: istore_0
-    //   185: goto -71 -> 114
+    //   63: ldc_w 261
+    //   66: iconst_m1
+    //   67: invokeinterface 267 3 0
+    //   72: istore_1
+    //   73: iload_1
+    //   74: istore_0
+    //   75: iload_1
+    //   76: iconst_m1
+    //   77: if_icmpne +39 -> 116
+    //   80: new 269	java/util/Random
+    //   83: dup
+    //   84: invokespecial 270	java/util/Random:<init>	()V
+    //   87: bipush 100
+    //   89: invokevirtual 274	java/util/Random:nextInt	(I)I
+    //   92: istore_0
+    //   93: iload_0
+    //   94: istore_1
+    //   95: aload_3
+    //   96: invokeinterface 278 1 0
+    //   101: ldc_w 261
+    //   104: iload_0
+    //   105: invokeinterface 284 3 0
+    //   110: invokeinterface 287 1 0
+    //   115: pop
+    //   116: iload_0
+    //   117: iconst_1
+    //   118: if_icmpge +5 -> 123
+    //   121: iconst_1
+    //   122: istore_2
+    //   123: iload_2
+    //   124: putstatic 31	com/tencent/mobileqq/msf/sdk/MsfServiceSdk:isUseNewProxy	Z
+    //   127: ldc 21
+    //   129: iconst_1
+    //   130: new 148	java/lang/StringBuilder
+    //   133: dup
+    //   134: invokespecial 189	java/lang/StringBuilder:<init>	()V
+    //   137: aload 4
+    //   139: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   142: ldc_w 289
+    //   145: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   148: getstatic 31	com/tencent/mobileqq/msf/sdk/MsfServiceSdk:isUseNewProxy	Z
+    //   151: invokevirtual 292	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   154: ldc_w 294
+    //   157: invokevirtual 157	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   160: iload_0
+    //   161: invokevirtual 297	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   164: invokevirtual 197	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   167: invokestatic 300	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   170: return
+    //   171: astore_3
+    //   172: iconst_0
+    //   173: istore_0
+    //   174: aload_3
+    //   175: invokevirtual 303	java/lang/Exception:printStackTrace	()V
+    //   178: goto -62 -> 116
+    //   181: astore_3
+    //   182: iload_1
+    //   183: istore_0
+    //   184: goto -10 -> 174
+    //   187: iconst_0
+    //   188: istore_0
+    //   189: goto -73 -> 116
     // Local variable table:
     //   start	length	slot	name	signature
-    //   73	112	0	i	int
-    //   71	108	1	j	int
-    //   1	121	2	bool	boolean
-    //   57	38	3	localSharedPreferences	android.content.SharedPreferences
-    //   167	4	3	localException1	Exception
-    //   177	1	3	localException2	Exception
-    //   32	104	4	str	String
+    //   74	115	0	i	int
+    //   72	111	1	j	int
+    //   1	123	2	bool	boolean
+    //   57	39	3	localSharedPreferences	android.content.SharedPreferences
+    //   171	4	3	localException1	Exception
+    //   181	1	3	localException2	Exception
+    //   32	106	4	str	String
     // Exception table:
     //   from	to	target	type
-    //   34	58	167	java/lang/Exception
-    //   62	72	167	java/lang/Exception
-    //   79	92	177	java/lang/Exception
-    //   94	114	177	java/lang/Exception
+    //   34	58	171	java/lang/Exception
+    //   62	73	171	java/lang/Exception
+    //   80	93	181	java/lang/Exception
+    //   95	116	181	java/lang/Exception
   }
   
   private void unregisterServiceListener()
@@ -257,6 +314,16 @@ public class MsfServiceSdk
     return paramString;
   }
   
+  public int getConnectedIPFamily()
+  {
+    return this.proxy.getMsfConnectedIPFamily();
+  }
+  
+  public int getConnectedNetowrkType()
+  {
+    return this.proxy.getMsfConnectedNetType();
+  }
+  
   public ToServiceMsg getDataFlowMsg(String paramString, b paramb)
   {
     ToServiceMsg localToServiceMsg = new ToServiceMsg(getMsfServiceName(), "0", "socketnetflow");
@@ -284,6 +351,11 @@ public class MsfServiceSdk
     paramString1.getAttributes().put("delAlias", paramString3);
     beforeSend(paramString1);
     return paramString1;
+  }
+  
+  public String getDeviceToken(String paramString)
+  {
+    return m.a(paramString);
   }
   
   public ToServiceMsg getKeyMsg(String paramString)
@@ -320,9 +392,10 @@ public class MsfServiceSdk
   
   public ToServiceMsg getPluginConfigMsg(String paramString)
   {
-    paramString = new ToServiceMsg(getMsfServiceName(), paramString, "ConfigService.ClientReq");
+    paramString = new ToServiceMsg(getMsfServiceName(), paramString, "ResourceConfig.ClientReq");
     paramString.setMsfCommand(MsfCommand.getPluginConfig);
     beforeSend(paramString);
+    QLog.d("Config", 1, "getPluginConfigMsg");
     return paramString;
   }
   
@@ -412,7 +485,7 @@ public class MsfServiceSdk
     return localToServiceMsg;
   }
   
-  public ToServiceMsg getRegisterCommitPassMsg(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
+  public ToServiceMsg getRegisterCommitPassMsg(String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4)
   {
     ToServiceMsg localToServiceMsg = new ToServiceMsg(getMsfServiceName(), "0", "wtlogin.trans_emp");
     localToServiceMsg.setMsfCommand(MsfCommand.regUin_commitPass);
@@ -420,8 +493,31 @@ public class MsfServiceSdk
     localToServiceMsg.getAttributes().put("To_register_pass", paramString2);
     localToServiceMsg.getAttributes().put("To_register_nick", paramString3);
     localToServiceMsg.getAttributes().put("To_register_type", Boolean.valueOf(paramBoolean));
+    localToServiceMsg.getAttributes().put("to_register_cr_appVersion", paramString4);
     beforeSend(localToServiceMsg);
     return localToServiceMsg;
+  }
+  
+  public ToServiceMsg getRegisterCommitPassMsg(String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4, String paramString5, String paramString6)
+  {
+    ToServiceMsg localToServiceMsg = new ToServiceMsg(getMsfServiceName(), "0", "wtlogin.trans_emp");
+    localToServiceMsg.setMsfCommand(MsfCommand.regUin_commitPass);
+    localToServiceMsg.getAttributes().put("To_register_smsCode", paramString1);
+    localToServiceMsg.getAttributes().put("To_register_pass", paramString2);
+    localToServiceMsg.getAttributes().put("To_register_nick", paramString3);
+    localToServiceMsg.getAttributes().put("To_register_type", Boolean.valueOf(paramBoolean));
+    if ((paramString4 != null) && (paramString4.length() > 0)) {
+      localToServiceMsg.getAttributes().put("To_register_lh_uin", paramString4);
+    }
+    for (;;)
+    {
+      localToServiceMsg.getAttributes().put("to_register_cr_appVersion", paramString6);
+      beforeSend(localToServiceMsg);
+      return localToServiceMsg;
+      if ((paramString5 != null) && (paramString5.length() > 0)) {
+        localToServiceMsg.getAttributes().put("To_register_unbind_lh_uin", paramString5);
+      }
+    }
   }
   
   public ToServiceMsg getRegisterCommitSmsCodeMsg(String paramString)
@@ -656,6 +752,11 @@ public class MsfServiceSdk
     this.proxy.initMsfService();
   }
   
+  public int onProcessViewableChanged(boolean paramBoolean, long paramLong)
+  {
+    return this.proxy.onProcessViewableChanged(paramBoolean, paramLong, BaseApplication.processName);
+  }
+  
   public void registerMsfService()
   {
     if (QLog.isColorLevel()) {
@@ -694,6 +795,7 @@ public class MsfServiceSdk
       Intent localIntent = new Intent("com.tencent.mobileqq.usersync");
       localIntent.putExtra("uin", paramString);
       localIntent.putExtra("action", "enter");
+      localIntent.setPackage(paramContext.getPackageName());
       paramContext.sendBroadcast(localIntent);
     } while (!QLog.isColorLevel());
     QLog.d("MsfServiceSdk", 2, "send bootAction user " + paramString + " enter broadcast");
@@ -712,6 +814,7 @@ public class MsfServiceSdk
       Intent localIntent = new Intent("com.tencent.mobileqq.usersync");
       localIntent.putExtra("uin", paramString);
       localIntent.putExtra("action", "exit");
+      localIntent.setPackage(paramContext.getPackageName());
       paramContext.sendBroadcast(localIntent);
     } while (!QLog.isColorLevel());
     QLog.d("MsfServiceSdk", 2, "send bootAction user " + paramString + " exit broadcast");

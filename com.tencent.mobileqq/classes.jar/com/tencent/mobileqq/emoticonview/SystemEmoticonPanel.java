@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.emoticonview;
 
 import android.content.Context;
+import android.os.Build.VERSION;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
@@ -9,6 +10,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
 import android.widget.RelativeLayout;
+import anhs;
+import anmi;
+import anmk;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -20,10 +24,11 @@ public class SystemEmoticonPanel
 {
   protected Context a;
   protected ViewPager a;
-  protected View a;
+  private anmi a;
   protected EmoticonPagerAdapter a;
   protected EmoticonPagerRadioGroup a;
-  private SystemEmoticonPanel.DispatchKeyEventListener a;
+  protected boolean a;
+  protected View b;
   
   public SystemEmoticonPanel(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,16 +42,23 @@ public class SystemEmoticonPanel
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public SystemEmoticonPanel(Context paramContext, EmoticonCallback paramEmoticonCallback)
+  public SystemEmoticonPanel(Context paramContext, anhs paramanhs)
+  {
+    this(paramContext, paramanhs, false);
+  }
+  
+  public SystemEmoticonPanel(Context paramContext, anhs paramanhs, boolean paramBoolean)
   {
     super(paramContext);
+    if (Build.VERSION.SDK_INT < 24) {}
     try
     {
       Field localField = Class.forName("android.view.LayoutInflater").getDeclaredField("sConstructorMap");
       localField.setAccessible(true);
       ((HashMap)localField.get(LayoutInflater.from(paramContext))).remove("android.support.v4.view.ViewPager");
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2130968977, this);
-      a(paramContext, paramEmoticonCallback);
+      this.b = LayoutInflater.from(paramContext).inflate(a(), this);
+      this.jdField_a_of_type_Boolean = paramBoolean;
+      a(paramContext, paramanhs);
       return;
     }
     catch (ClassNotFoundException localClassNotFoundException)
@@ -72,6 +84,11 @@ public class SystemEmoticonPanel
     }
   }
   
+  protected int a()
+  {
+    return 2131493468;
+  }
+  
   public void a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter != null) {
@@ -79,23 +96,23 @@ public class SystemEmoticonPanel
     }
   }
   
-  protected void a(Context paramContext, EmoticonCallback paramEmoticonCallback)
+  protected void a(Context paramContext, anhs paramanhs)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131364593));
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131364522));
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)this.b.findViewById(2131308941));
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)this.b.findViewById(2131313312));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.setViewPager(this.jdField_a_of_type_AndroidSupportV4ViewViewPager);
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter = new EmoticonPagerAdapter();
     ArrayList localArrayList = new ArrayList(1);
-    localArrayList.add(new SystemEmoticonPanelViewBinder(paramContext, paramEmoticonCallback, 0));
+    localArrayList.add(new anmk(paramContext, paramanhs, 0));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter.a(localArrayList);
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter);
     this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(0);
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter.getCount(), false);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerAdapter.getCount());
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel$DispatchKeyEventListener != null) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel$DispatchKeyEventListener.a(paramKeyEvent))) {
+    if ((this.jdField_a_of_type_Anmi != null) && (this.jdField_a_of_type_Anmi.a(paramKeyEvent))) {
       return true;
     }
     return super.dispatchKeyEvent(paramKeyEvent);
@@ -103,12 +120,22 @@ public class SystemEmoticonPanel
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    int i = paramMotionEvent.getAction() & 0xFF;
-    if (i == 0) {
-      getParent().requestDisallowInterceptTouchEvent(true);
-    }
     for (;;)
     {
+      try
+      {
+        i = paramMotionEvent.getAction() & 0xFF;
+        if (i != 0) {
+          continue;
+        }
+        getParent().requestDisallowInterceptTouchEvent(true);
+      }
+      catch (Exception localException)
+      {
+        int i;
+        QLog.e("SystemEmoticonPanel", 1, "onInterceptTouchEvent failed", localException);
+        continue;
+      }
       return super.onInterceptTouchEvent(paramMotionEvent);
       if ((i == 1) || (i == 3)) {
         getParent().requestDisallowInterceptTouchEvent(false);
@@ -116,14 +143,14 @@ public class SystemEmoticonPanel
     }
   }
   
-  public void setCallBack(EmoticonCallback paramEmoticonCallback)
+  public void setCallBack(anhs paramanhs)
   {
-    a(this.jdField_a_of_type_AndroidContentContext, paramEmoticonCallback);
+    a(this.jdField_a_of_type_AndroidContentContext, paramanhs);
   }
   
-  public void setDispatchKeyEventListener(SystemEmoticonPanel.DispatchKeyEventListener paramDispatchKeyEventListener)
+  public void setDispatchKeyEventListener(anmi paramanmi)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel$DispatchKeyEventListener = paramDispatchKeyEventListener;
+    this.jdField_a_of_type_Anmi = paramanmi;
   }
 }
 

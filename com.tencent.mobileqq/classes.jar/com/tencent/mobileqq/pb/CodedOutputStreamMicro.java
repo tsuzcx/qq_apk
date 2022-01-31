@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.pb;
 
-import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 
@@ -319,10 +318,9 @@ public final class CodedOutputStreamMicro
   }
   
   private void refreshBuffer()
-    throws IOException
   {
     if (this.output == null) {
-      throw new OutOfSpaceException();
+      throw new CodedOutputStreamMicro.OutOfSpaceException();
     }
     this.output.write(this.buffer, 0, this.position);
     this.position = 0;
@@ -336,7 +334,6 @@ public final class CodedOutputStreamMicro
   }
   
   public void flush()
-    throws IOException
   {
     if (this.output != null) {
       refreshBuffer();
@@ -352,14 +349,12 @@ public final class CodedOutputStreamMicro
   }
   
   public void writeBool(int paramInt, boolean paramBoolean)
-    throws IOException
   {
     writeTag(paramInt, 0);
     writeBoolNoTag(paramBoolean);
   }
   
   public void writeBoolNoTag(boolean paramBoolean)
-    throws IOException
   {
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
@@ -370,28 +365,24 @@ public final class CodedOutputStreamMicro
   }
   
   public void writeByteArray(int paramInt, byte[] paramArrayOfByte)
-    throws IOException
   {
     writeTag(paramInt, 2);
     writeByteArrayNoTag(paramArrayOfByte);
   }
   
   public void writeByteArrayNoTag(byte[] paramArrayOfByte)
-    throws IOException
   {
     writeRawVarint32(paramArrayOfByte.length);
     writeRawBytes(paramArrayOfByte);
   }
   
   public void writeBytes(int paramInt, ByteStringMicro paramByteStringMicro)
-    throws IOException
   {
     writeTag(paramInt, 2);
     writeBytesNoTag(paramByteStringMicro);
   }
   
   public void writeBytesNoTag(ByteStringMicro paramByteStringMicro)
-    throws IOException
   {
     paramByteStringMicro = paramByteStringMicro.toByteArray();
     writeRawVarint32(paramByteStringMicro.length);
@@ -399,72 +390,61 @@ public final class CodedOutputStreamMicro
   }
   
   public void writeDouble(int paramInt, double paramDouble)
-    throws IOException
   {
     writeTag(paramInt, 1);
     writeDoubleNoTag(paramDouble);
   }
   
   public void writeDoubleNoTag(double paramDouble)
-    throws IOException
   {
     writeRawLittleEndian64(Double.doubleToLongBits(paramDouble));
   }
   
   public void writeEnum(int paramInt1, int paramInt2)
-    throws IOException
   {
     writeTag(paramInt1, 0);
     writeEnumNoTag(paramInt2);
   }
   
   public void writeEnumNoTag(int paramInt)
-    throws IOException
   {
     writeRawVarint32(paramInt);
   }
   
   public void writeFixed32(int paramInt1, int paramInt2)
-    throws IOException
   {
     writeTag(paramInt1, 5);
     writeFixed32NoTag(paramInt2);
   }
   
   public void writeFixed32NoTag(int paramInt)
-    throws IOException
   {
     writeRawLittleEndian32(paramInt);
   }
   
   public void writeFixed64(int paramInt, long paramLong)
-    throws IOException
   {
     writeTag(paramInt, 1);
     writeFixed64NoTag(paramLong);
   }
   
   public void writeFixed64NoTag(long paramLong)
-    throws IOException
   {
     writeRawLittleEndian64(paramLong);
   }
   
   public void writeFloat(int paramInt, float paramFloat)
-    throws IOException
   {
     writeTag(paramInt, 5);
     writeFloatNoTag(paramFloat);
   }
   
   public void writeFloatNoTag(float paramFloat)
-    throws IOException
   {
     writeRawLittleEndian32(Float.floatToIntBits(paramFloat));
   }
   
   public void writeGroup(int paramInt, MessageMicro<?> paramMessageMicro)
-    throws IOException
   {
     writeTag(paramInt, 3);
     writeGroupNoTag(paramMessageMicro);
@@ -472,20 +452,17 @@ public final class CodedOutputStreamMicro
   }
   
   public void writeGroupNoTag(MessageMicro<?> paramMessageMicro)
-    throws IOException
   {
     paramMessageMicro.writeTo(this);
   }
   
   public void writeInt32(int paramInt1, int paramInt2)
-    throws IOException
   {
     writeTag(paramInt1, 0);
     writeInt32NoTag(paramInt2);
   }
   
   public void writeInt32NoTag(int paramInt)
-    throws IOException
   {
     if (paramInt >= 0)
     {
@@ -496,34 +473,29 @@ public final class CodedOutputStreamMicro
   }
   
   public void writeInt64(int paramInt, long paramLong)
-    throws IOException
   {
     writeTag(paramInt, 0);
     writeInt64NoTag(paramLong);
   }
   
   public void writeInt64NoTag(long paramLong)
-    throws IOException
   {
     writeRawVarint64(paramLong);
   }
   
   public void writeMessage(int paramInt, MessageMicro<?> paramMessageMicro)
-    throws IOException
   {
     writeTag(paramInt, 2);
     writeMessageNoTag(paramMessageMicro);
   }
   
   public void writeMessageNoTag(MessageMicro<?> paramMessageMicro)
-    throws IOException
   {
     writeRawVarint32(paramMessageMicro.getCachedSize());
     paramMessageMicro.writeTo(this);
   }
   
   public void writeRawByte(byte paramByte)
-    throws IOException
   {
     if (this.position == this.limit) {
       refreshBuffer();
@@ -535,19 +507,16 @@ public final class CodedOutputStreamMicro
   }
   
   public void writeRawByte(int paramInt)
-    throws IOException
   {
     writeRawByte((byte)paramInt);
   }
   
   public void writeRawBytes(byte[] paramArrayOfByte)
-    throws IOException
   {
     writeRawBytes(paramArrayOfByte, 0, paramArrayOfByte.length);
   }
   
   public void writeRawBytes(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-    throws IOException
   {
     if (this.limit - this.position >= paramInt2)
     {
@@ -571,7 +540,6 @@ public final class CodedOutputStreamMicro
   }
   
   public void writeRawLittleEndian32(int paramInt)
-    throws IOException
   {
     writeRawByte(paramInt & 0xFF);
     writeRawByte(paramInt >> 8 & 0xFF);
@@ -580,7 +548,6 @@ public final class CodedOutputStreamMicro
   }
   
   public void writeRawLittleEndian64(long paramLong)
-    throws IOException
   {
     writeRawByte((int)paramLong & 0xFF);
     writeRawByte((int)(paramLong >> 8) & 0xFF);
@@ -593,7 +560,6 @@ public final class CodedOutputStreamMicro
   }
   
   public void writeRawVarint32(int paramInt)
-    throws IOException
   {
     for (;;)
     {
@@ -608,7 +574,6 @@ public final class CodedOutputStreamMicro
   }
   
   public void writeRawVarint64(long paramLong)
-    throws IOException
   {
     for (;;)
     {
@@ -623,66 +588,56 @@ public final class CodedOutputStreamMicro
   }
   
   public void writeSFixed32(int paramInt1, int paramInt2)
-    throws IOException
   {
     writeTag(paramInt1, 5);
     writeSFixed32NoTag(paramInt2);
   }
   
   public void writeSFixed32NoTag(int paramInt)
-    throws IOException
   {
     writeRawLittleEndian32(paramInt);
   }
   
   public void writeSFixed64(int paramInt, long paramLong)
-    throws IOException
   {
     writeTag(paramInt, 1);
     writeSFixed64NoTag(paramLong);
   }
   
   public void writeSFixed64NoTag(long paramLong)
-    throws IOException
   {
     writeRawLittleEndian64(paramLong);
   }
   
   public void writeSInt32(int paramInt1, int paramInt2)
-    throws IOException
   {
     writeTag(paramInt1, 0);
     writeSInt32NoTag(paramInt2);
   }
   
   public void writeSInt32NoTag(int paramInt)
-    throws IOException
   {
     writeRawVarint32(encodeZigZag32(paramInt));
   }
   
   public void writeSInt64(int paramInt, long paramLong)
-    throws IOException
   {
     writeTag(paramInt, 0);
     writeSInt64NoTag(paramLong);
   }
   
   public void writeSInt64NoTag(long paramLong)
-    throws IOException
   {
     writeRawVarint64(encodeZigZag64(paramLong));
   }
   
   public void writeString(int paramInt, String paramString)
-    throws IOException
   {
     writeTag(paramInt, 2);
     writeStringNoTag(paramString);
   }
   
   public void writeStringNoTag(String paramString)
-    throws IOException
   {
     paramString = paramString.getBytes("UTF-8");
     writeRawVarint32(paramString.length);
@@ -690,46 +645,30 @@ public final class CodedOutputStreamMicro
   }
   
   public void writeTag(int paramInt1, int paramInt2)
-    throws IOException
   {
     writeRawVarint32(WireFormatMicro.makeTag(paramInt1, paramInt2));
   }
   
   public void writeUInt32(int paramInt1, int paramInt2)
-    throws IOException
   {
     writeTag(paramInt1, 0);
     writeUInt32NoTag(paramInt2);
   }
   
   public void writeUInt32NoTag(int paramInt)
-    throws IOException
   {
     writeRawVarint32(paramInt);
   }
   
   public void writeUInt64(int paramInt, long paramLong)
-    throws IOException
   {
     writeTag(paramInt, 0);
     writeUInt64NoTag(paramLong);
   }
   
   public void writeUInt64NoTag(long paramLong)
-    throws IOException
   {
     writeRawVarint64(paramLong);
-  }
-  
-  public static class OutOfSpaceException
-    extends IOException
-  {
-    private static final long serialVersionUID = -6947486886997889499L;
-    
-    OutOfSpaceException()
-    {
-      super();
-    }
   }
 }
 

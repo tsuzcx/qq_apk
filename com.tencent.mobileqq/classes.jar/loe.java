@@ -1,27 +1,36 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager.OnTabRedNumsChangeListenner;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
-public class loe
-  implements Runnable
+class loe
+  implements begw
 {
-  public loe(KandianMergeManager paramKandianMergeManager) {}
+  loe(loa paramloa, long paramLong, begr parambegr) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (KandianMergeManager.a(this.a) != null)
+    if (QLog.isColorLevel()) {
+      QLog.w("ShareChat", 1, "showChooseTypeActionSheet, which[" + paramInt + "], seq[" + this.jdField_a_of_type_Long + "], mIHandle[" + this.jdField_a_of_type_Loa.a + "]");
+    }
+    if (this.jdField_a_of_type_Loa.a == null) {
+      return;
+    }
+    paramView = paramView.getContext();
+    switch (paramInt)
     {
-      Iterator localIterator = KandianMergeManager.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((KandianMergeManager.OnTabRedNumsChangeListenner)localIterator.next()).b();
-      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Begr.dismiss();
+      return;
+      this.jdField_a_of_type_Loa.b(this.jdField_a_of_type_Long, paramView);
+      continue;
+      this.jdField_a_of_type_Loa.a(this.jdField_a_of_type_Long, paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     loe
  * JD-Core Version:    0.7.0.1
  */

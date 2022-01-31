@@ -7,7 +7,7 @@ import java.lang.ref.WeakReference;
 
 public abstract class FlingHandler
 {
-  public WeakReference a;
+  WeakReference<Activity> a;
   
   public FlingHandler(Activity paramActivity)
   {

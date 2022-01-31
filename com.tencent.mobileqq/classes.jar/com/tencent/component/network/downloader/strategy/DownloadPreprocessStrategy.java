@@ -5,11 +5,11 @@ import org.apache.http.HttpRequest;
 
 public abstract interface DownloadPreprocessStrategy
 {
-  public abstract DownloadPreprocessStrategy.DownloadPool a(String paramString1, String paramString2);
+  public abstract DownloadPreprocessStrategy.DownloadPool downloadPool(String paramString1, String paramString2);
   
-  public abstract String a(String paramString);
+  public abstract void prepareRequest(String paramString1, String paramString2, HttpRequest paramHttpRequest, Request.Builder paramBuilder, int paramInt);
   
-  public abstract void a(String paramString1, String paramString2, HttpRequest paramHttpRequest, Request.Builder paramBuilder, int paramInt);
+  public abstract String prepareUrl(String paramString);
 }
 
 

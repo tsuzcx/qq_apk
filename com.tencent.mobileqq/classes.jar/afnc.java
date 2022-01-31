@@ -1,29 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMediaFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import mqq.os.MqqHandler;
 
-class afnc
-  implements DialogInterface.OnClickListener
+public class afnc
+  extends azig
 {
-  afnc(afna paramafna, QQCustomDialog paramQQCustomDialog) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public afnc(ChatHistoryTroopMediaFragment paramChatHistoryTroopMediaFragment, Context paramContext, azif paramazif, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    this.jdField_a_of_type_Afna.a.a.c();
-    paramInt = ((Integer)NearbySPUtil.a(this.jdField_a_of_type_Afna.a.a.app.getCurrentAccountUin(), "self_gender", Integer.valueOf(-1))).intValue();
-    ReportController.b(this.jdField_a_of_type_Afna.a.a.app, "dc00899", "grp_lbs", "", "data_card", "return_no", 0, 0, NearbyUtils.a(this.jdField_a_of_type_Afna.a.a.j), paramInt + "", "", "");
+    super(paramContext, paramazif, paramQQAppInterface);
+  }
+  
+  protected void b(Object paramObject)
+  {
+    super.b(paramObject);
+    if (this.a.a != null) {
+      this.a.a.sendEmptyMessage(102);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afnc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,24 @@
-import android.animation.Animator;
-import com.tencent.mobileqq.activity.richmedia.AnimatorAdapter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.EditInfoActivity.12.1;
 
-class aaqm
-  extends AnimatorAdapter
+public class aaqm
+  extends ajjh
 {
-  aaqm(aaqk paramaaqk) {}
+  public aaqm(EditInfoActivity paramEditInfoActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
   {
-    QLog.w("WorldCupMgr", 1, "loadMovingAnimation动画结束");
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    QLog.w("WorldCupMgr", 1, "loadMovingAnimation动画开始");
+    if (!this.a.f.equals(paramString1)) {}
+    while (!this.a.j) {
+      return;
+    }
+    this.a.j = false;
+    this.a.runOnUiThread(new EditInfoActivity.12.1(this, paramBoolean, paramString2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaqm
  * JD-Core Version:    0.7.0.1
  */

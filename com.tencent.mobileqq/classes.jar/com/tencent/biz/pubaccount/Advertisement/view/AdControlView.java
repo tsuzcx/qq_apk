@@ -8,21 +8,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.RelativeLayout;
-import kxd;
-import kxe;
+import myo;
+import myp;
 
 public class AdControlView
   extends RelativeLayout
 {
   private int jdField_a_of_type_Int = 1;
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  public View a;
+  private View jdField_a_of_type_AndroidViewView;
   private AdvertisementSplitedProgressBar jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdvertisementSplitedProgressBar;
   public boolean a;
-  public View b;
+  private View b;
   public boolean b;
-  public View c;
+  private View c;
+  public boolean c;
   private View d;
+  private View e;
   
   public AdControlView(Context paramContext)
   {
@@ -43,16 +45,18 @@ public class AdControlView
   
   private void a(Context paramContext)
   {
-    LayoutInflater.from(getContext()).inflate(2130969033, this);
-    this.d = findViewById(2131364833);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131364834);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131364836);
-    this.c = findViewById(2131364835);
-    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdvertisementSplitedProgressBar = ((AdvertisementSplitedProgressBar)findViewById(2131364837));
-    this.d.setContentDescription(getResources().getString(2131436009));
-    this.jdField_a_of_type_AndroidViewView.setContentDescription(getResources().getString(2131436821));
-    this.jdField_b_of_type_AndroidViewView.setContentDescription(getResources().getString(2131437798));
-    this.c.setContentDescription(getResources().getString(2131437798));
+    LayoutInflater.from(getContext()).inflate(2131493571, this);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131313110);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131313293);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131296491);
+    this.d = findViewById(2131296503);
+    this.e = findViewById(2131304756);
+    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdvertisementSplitedProgressBar = ((AdvertisementSplitedProgressBar)findViewById(2131313244));
+    this.jdField_a_of_type_AndroidViewView.setContentDescription(getResources().getString(2131653392));
+    this.jdField_b_of_type_AndroidViewView.setContentDescription(getResources().getString(2131633667));
+    this.jdField_c_of_type_AndroidViewView.setContentDescription(getResources().getString(2131624020));
+    this.d.setContentDescription(getResources().getString(2131627103));
+    this.e.setContentDescription(getResources().getString(2131624020));
   }
   
   private void d()
@@ -60,13 +64,13 @@ public class AdControlView
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F, 1.0F }).setDuration(1000L);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new DecelerateInterpolator());
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(3);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new kxd(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new kxe(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new myo(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new myp(this));
   }
   
   public View a()
   {
-    return this.d;
+    return this.jdField_a_of_type_AndroidViewView;
   }
   
   public AdvertisementSplitedProgressBar a()
@@ -77,8 +81,8 @@ public class AdControlView
   public void a()
   {
     this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839675);
+    this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+    this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130841080);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
     this.jdField_a_of_type_Boolean = true;
   }
@@ -90,21 +94,21 @@ public class AdControlView
   
   public View b()
   {
-    return this.jdField_a_of_type_AndroidViewView;
+    return this.jdField_b_of_type_AndroidViewView;
   }
   
   public void b()
   {
-    if (this.jdField_b_of_type_Boolean)
+    if ((this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning()))
     {
       this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-      this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+      this.jdField_b_of_type_AndroidViewView.setAlpha(1.0F);
     }
   }
   
   public View c()
   {
-    return this.jdField_b_of_type_AndroidViewView;
+    return this.jdField_c_of_type_AndroidViewView;
   }
   
   public void c()
@@ -114,7 +118,12 @@ public class AdControlView
   
   public View d()
   {
-    return this.c;
+    return this.d;
+  }
+  
+  public View e()
+  {
+    return this.e;
   }
   
   public void setMode(int paramInt)
@@ -127,23 +136,25 @@ public class AdControlView
     if (paramInt == 0) {
       if (this.jdField_a_of_type_Int == 2)
       {
-        this.d.setVisibility(0);
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        this.jdField_c_of_type_AndroidViewView.setVisibility(4);
+        this.d.setVisibility(4);
         this.jdField_b_of_type_AndroidViewView.setVisibility(4);
-        this.jdField_a_of_type_AndroidViewView.setVisibility(4);
         this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdvertisementSplitedProgressBar.setVisibility(4);
-        this.c.setVisibility(0);
+        this.e.setVisibility(0);
       }
     }
     for (;;)
     {
       if (this.jdField_b_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        this.jdField_b_of_type_AndroidViewView.setVisibility(0);
       }
       return;
-      this.d.setVisibility(0);
-      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
-      this.c.setVisibility(4);
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.jdField_c_of_type_AndroidViewView.setVisibility(0);
+      this.d.setVisibility(0);
+      this.e.setVisibility(4);
+      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
       this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdvertisementSplitedProgressBar.setVisibility(0);
       super.setVisibility(paramInt);
       continue;
@@ -151,19 +162,30 @@ public class AdControlView
       {
         if (this.jdField_a_of_type_Int == 2)
         {
-          this.d.setVisibility(0);
+          this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+          this.jdField_c_of_type_AndroidViewView.setVisibility(4);
+          this.d.setVisibility(4);
           this.jdField_b_of_type_AndroidViewView.setVisibility(4);
-          this.jdField_a_of_type_AndroidViewView.setVisibility(4);
           this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdvertisementSplitedProgressBar.setVisibility(4);
-          this.c.setVisibility(0);
+          this.e.setVisibility(0);
+        }
+        else if (this.jdField_c_of_type_Boolean)
+        {
+          this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+          this.jdField_c_of_type_AndroidViewView.setVisibility(0);
+          this.d.setVisibility(0);
+          this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+          this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdvertisementSplitedProgressBar.setVisibility(0);
+          this.e.setVisibility(4);
         }
         else
         {
+          this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+          this.jdField_c_of_type_AndroidViewView.setVisibility(4);
           this.d.setVisibility(4);
           this.jdField_b_of_type_AndroidViewView.setVisibility(4);
-          this.jdField_a_of_type_AndroidViewView.setVisibility(4);
           this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdvertisementSplitedProgressBar.setVisibility(4);
-          this.c.setVisibility(4);
+          this.e.setVisibility(4);
         }
       }
       else {
@@ -174,7 +196,7 @@ public class AdControlView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.view.AdControlView
  * JD-Core Version:    0.7.0.1
  */

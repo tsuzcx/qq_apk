@@ -1,89 +1,55 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public final class accq
-  implements Parcelable.Creator
+public class accq
+  implements DialogInterface.OnClickListener
 {
-  public MessageForShortVideo a(Parcel paramParcel)
-  {
-    boolean bool2 = true;
-    MessageForShortVideo localMessageForShortVideo = new MessageForShortVideo();
-    localMessageForShortVideo.uniseq = paramParcel.readLong();
-    localMessageForShortVideo.istroop = paramParcel.readInt();
-    localMessageForShortVideo.selfuin = paramParcel.readString();
-    localMessageForShortVideo.frienduin = paramParcel.readString();
-    localMessageForShortVideo.senderuin = paramParcel.readString();
-    localMessageForShortVideo.uuid = paramParcel.readString();
-    localMessageForShortVideo.md5 = paramParcel.readString();
-    localMessageForShortVideo.videoFileName = paramParcel.readString();
-    localMessageForShortVideo.videoFileSize = paramParcel.readInt();
-    localMessageForShortVideo.videoFileFormat = paramParcel.readInt();
-    localMessageForShortVideo.videoFileTime = paramParcel.readInt();
-    localMessageForShortVideo.thumbWidth = paramParcel.readInt();
-    localMessageForShortVideo.thumbHeight = paramParcel.readInt();
-    localMessageForShortVideo.videoFileStatus = paramParcel.readInt();
-    localMessageForShortVideo.videoFileProgress = paramParcel.readInt();
-    localMessageForShortVideo.fileType = paramParcel.readInt();
-    localMessageForShortVideo.thumbMD5 = paramParcel.readString();
-    localMessageForShortVideo.fileSource = paramParcel.readString();
-    localMessageForShortVideo.lastModified = paramParcel.readLong();
-    localMessageForShortVideo.thumbFileSize = paramParcel.readInt();
-    localMessageForShortVideo.busiType = paramParcel.readInt();
-    localMessageForShortVideo.fromChatType = paramParcel.readInt();
-    localMessageForShortVideo.toChatType = paramParcel.readInt();
-    localMessageForShortVideo.uiOperatorFlag = paramParcel.readInt();
-    localMessageForShortVideo.mVideoFileSourceDir = paramParcel.readString();
-    if (paramParcel.readByte() != 0)
-    {
-      bool1 = true;
-      localMessageForShortVideo.supportProgressive = bool1;
-      localMessageForShortVideo.fileWidth = paramParcel.readInt();
-      localMessageForShortVideo.fileHeight = paramParcel.readInt();
-      localMessageForShortVideo.transferedSize = paramParcel.readInt();
-      localMessageForShortVideo.subBusiType = paramParcel.readInt();
-      localMessageForShortVideo.videoAttr = paramParcel.readInt();
-      localMessageForShortVideo.binarySet = paramParcel.readInt();
-      if (paramParcel.readByte() == 0) {
-        break label424;
-      }
-      bool1 = true;
-      label314:
-      localMessageForShortVideo.mediacodecEncode = bool1;
-      localMessageForShortVideo.hotVideoIconUrl = paramParcel.readString();
-      localMessageForShortVideo.hotVideoSubIconUrl = paramParcel.readString();
-      localMessageForShortVideo.hotVideoTitle = paramParcel.readString();
-      localMessageForShortVideo.hotVideoUrl = paramParcel.readString();
-      localMessageForShortVideo.specialVideoType = paramParcel.readInt();
-      localMessageForShortVideo.msgTailType = paramParcel.readInt();
-      localMessageForShortVideo.redBagType = paramParcel.readInt();
-      localMessageForShortVideo.shortVideoId = paramParcel.readString();
-      localMessageForShortVideo.redBagStat = paramParcel.readInt();
-      if (paramParcel.readByte() == 0) {
-        break label429;
-      }
-    }
-    label424:
-    label429:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localMessageForShortVideo.syncToStory = bool1;
-      return localMessageForShortVideo;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label314;
-    }
-  }
+  public accq(TroopTransferActivity paramTroopTransferActivity, String paramString, bafb parambafb) {}
   
-  public MessageForShortVideo[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new MessageForShortVideo[paramInt];
+    if (!badq.d(BaseApplication.getContext()))
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Bbmv == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Bbmv = new bbmv(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Bbmv.b(2, 2131626719, 1000);
+      return;
+    }
+    paramDialogInterface = (ajtg)this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.a(20);
+    if (paramDialogInterface != null) {}
+    try
+    {
+      long l1 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_JavaLangString);
+      long l2 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app.getCurrentAccountUin());
+      long l3 = Long.parseLong(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Boolean = true;
+      paramDialogInterface.a(l1, l2, l3);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Bbmv == null) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Bbmv = new bbmv(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.jdField_a_of_type_Bbmv.b(0, 2131654488, 1000);
+    }
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.troopdisband.transfer", 2, paramDialogInterface.toString());
+        }
+      }
+    }
+    this.jdField_a_of_type_Bafb.cancel();
+    awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity.app, "CliOper", "", "", "Grp", "Transgrp_OK", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     accq
  * JD-Core Version:    0.7.0.1
  */

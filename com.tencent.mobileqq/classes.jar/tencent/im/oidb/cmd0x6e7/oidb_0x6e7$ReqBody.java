@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x6e7$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42 }, new String[] { "uint64_group_code", "str_app_src", "str_version", "uint64_number", "combine_key" }, new Object[] { Long.valueOf(0L), "", "", Long.valueOf(0L), null }, ReqBody.class);
   public oidb_0x6e7.CombineKey combine_key = new oidb_0x6e7.CombineKey();
@@ -18,7 +18,7 @@ public final class oidb_0x6e7$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x6e7.oidb_0x6e7.ReqBody
  * JD-Core Version:    0.7.0.1
  */

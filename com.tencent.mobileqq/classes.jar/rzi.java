@@ -1,35 +1,35 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.multimsg.LongTextMsgManager;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import org.json.JSONObject;
 
-public final class rzi
-  implements Runnable
+public class rzi
 {
-  public rzi(boolean paramBoolean, QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage) {}
+  public String mAbTest;
+  public int mType;
   
-  public void run()
+  protected rzi(Parcel paramParcel)
   {
-    try
-    {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        ((LongTextMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(165)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, null);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ChatActivityFacade", 1, "life circle2:", localException);
-    }
+    this.mType = paramParcel.readInt();
+    this.mAbTest = paramParcel.readString();
+  }
+  
+  protected rzi(JSONObject paramJSONObject)
+  {
+    this.mType = paramJSONObject.optInt("type");
+    this.mAbTest = paramJSONObject.optString("qq_abtest");
+    parseJson(paramJSONObject);
+  }
+  
+  protected void parseJson(JSONObject paramJSONObject) {}
+  
+  public void writeToParcel(Parcel paramParcel, int paramInt)
+  {
+    paramParcel.writeInt(this.mType);
+    paramParcel.writeString(this.mAbTest);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rzi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.open.adapter;
 
-import alhh;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -8,17 +7,18 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
+import bbtm;
+import bcau;
+import bcax;
+import bcdn;
+import bcds;
+import bcfs;
+import bcgh;
+import bcie;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BrowserAppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.appcommon.AppClient;
-import com.tencent.open.appcommon.Common;
-import com.tencent.open.base.APNUtil;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.component.cache.CacheManager;
-import com.tencent.open.downloadnew.DownloadApi;
-import com.tencent.open.downloadnew.common.IntentFactory;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
@@ -40,10 +40,10 @@ public class OpenAppClient
   
   public static Intent a(Context paramContext, String paramString1, String paramString2, int paramInt)
   {
-    LogUtility.b(jdField_a_of_type_JavaLangString, "onPcPushMsgBackground " + paramString1);
-    if (APNUtil.c(paramContext))
+    bcds.b(jdField_a_of_type_JavaLangString, "onPcPushMsgBackground " + paramString1);
+    if (bcdn.c(paramContext))
     {
-      Object localObject = Common.a(paramString1);
+      Object localObject = bcax.a(paramString1);
       ((HashMap)localObject).put("schemaUrl", paramString1);
       ((HashMap)localObject).put("friendUin", paramString2);
       ((HashMap)localObject).put("istroop", paramInt + "");
@@ -55,14 +55,14 @@ public class OpenAppClient
       String str2 = (String)((HashMap)localObject).get("downurl");
       localObject = (String)((HashMap)localObject).get("appname");
       String str3 = "_" + paramContext;
-      if (DownloadApi.a(paramContext))
+      if (bcgh.a(paramContext))
       {
-        new Handler(Looper.getMainLooper()).post(new alhh(paramContext, (String)localObject, str1, str3, str2, paramString1, paramString2, paramInt));
+        new Handler(Looper.getMainLooper()).post(new OpenAppClient.1(paramContext, (String)localObject, str1, str3, str2, paramString1, paramString2, paramInt));
         return null;
       }
-      return IntentFactory.a(paramString1, paramString2, paramInt);
+      return bcie.a(paramString1, paramString2, paramInt);
     }
-    return IntentFactory.a(paramString1, paramString2, paramInt);
+    return bcie.a(paramString1, paramString2, paramInt);
   }
   
   public static void a(Activity paramActivity, Bundle paramBundle)
@@ -88,11 +88,11 @@ public class OpenAppClient
         }
         else
         {
-          paramBundle = String.valueOf(CommonDataAdapter.a().a());
+          paramBundle = String.valueOf(bbtm.a().a());
         }
         localObject = str1;
         if (TextUtils.isEmpty(str1)) {
-          localObject = CommonDataAdapter.a().a();
+          localObject = bbtm.a().a();
         }
         if (TextUtils.isEmpty((CharSequence)localObject))
         {
@@ -102,20 +102,20 @@ public class OpenAppClient
         jdField_a_of_type_Boolean = false;
       }
       finally {}
-      AppClient.a(paramActivity, str2, paramBundle, (String)localObject);
+      bcau.a(paramActivity, str2, paramBundle, (String)localObject);
     }
   }
   
   public static void a(Context paramContext, String paramString)
   {
-    LogUtility.b(jdField_a_of_type_JavaLangString, "onPcPushMsgForground " + paramString);
-    if (APNUtil.c(paramContext)) {
-      a(paramContext, Common.a(paramString));
+    bcds.b(jdField_a_of_type_JavaLangString, "onPcPushMsgForground " + paramString);
+    if (bcdn.c(paramContext)) {
+      a(paramContext, bcax.a(paramString));
     }
   }
   
   /* Error */
-  public static void a(Context paramContext, HashMap paramHashMap)
+  protected static void a(Context paramContext, HashMap<String, String> paramHashMap)
   {
     // Byte code:
     //   0: getstatic 19	com/tencent/open/adapter/OpenAppClient:jdField_a_of_type_JavaLangString	Ljava/lang/String;
@@ -127,7 +127,7 @@ public class OpenAppClient
     //   15: aload_1
     //   16: invokevirtual 192	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   19: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   22: invokestatic 45	com/tencent/open/base/LogUtility:b	(Ljava/lang/String;Ljava/lang/String;)V
+    //   22: invokestatic 45	bcds:b	(Ljava/lang/String;Ljava/lang/String;)V
     //   25: iconst_m1
     //   26: istore_2
     //   27: iconst_m1
@@ -178,21 +178,21 @@ public class OpenAppClient
     //   122: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   125: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   128: astore 14
-    //   130: invokestatic 201	com/tencent/open/downloadnew/DownloadManager:a	()Lcom/tencent/open/downloadnew/DownloadManager;
+    //   130: invokestatic 201	bcgo:a	()Lbcgo;
     //   133: aload 11
-    //   135: invokevirtual 203	com/tencent/open/downloadnew/DownloadManager:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   135: invokevirtual 203	bcgo:a	(Ljava/lang/String;)Ljava/lang/String;
     //   138: astore_1
     //   139: aload 12
-    //   141: invokestatic 208	com/tencent/open/business/base/AppUtil:a	(Ljava/lang/String;)I
+    //   141: invokestatic 208	bcev:a	(Ljava/lang/String;)I
     //   144: ifle +9 -> 153
     //   147: aload 12
-    //   149: invokestatic 208	com/tencent/open/business/base/AppUtil:a	(Ljava/lang/String;)I
+    //   149: invokestatic 208	bcev:a	(Ljava/lang/String;)I
     //   152: istore_2
     //   153: aload_1
-    //   154: invokestatic 210	com/tencent/open/business/base/AppUtil:b	(Ljava/lang/String;)I
+    //   154: invokestatic 210	bcev:b	(Ljava/lang/String;)I
     //   157: ifle +8 -> 165
     //   160: aload_1
-    //   161: invokestatic 210	com/tencent/open/business/base/AppUtil:b	(Ljava/lang/String;)I
+    //   161: invokestatic 210	bcev:b	(Ljava/lang/String;)I
     //   164: istore_3
     //   165: getstatic 19	com/tencent/open/adapter/OpenAppClient:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   168: new 30	java/lang/StringBuilder
@@ -211,7 +211,7 @@ public class OpenAppClient
     //   198: iload_3
     //   199: invokevirtual 71	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   202: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   205: invokestatic 218	com/tencent/open/base/LogUtility:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   205: invokestatic 218	bcds:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   208: aload 8
     //   210: invokestatic 223	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
     //   213: invokevirtual 227	java/lang/Integer:intValue	()I
@@ -279,7 +279,7 @@ public class OpenAppClient
     //   335: aload 8
     //   337: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   340: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   343: invokestatic 240	com/tencent/open/base/LogUtility:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   343: invokestatic 240	bcds:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   346: iconst_0
     //   347: istore 4
     //   349: goto -131 -> 218
@@ -302,7 +302,7 @@ public class OpenAppClient
     //   385: getstatic 19	com/tencent/open/adapter/OpenAppClient:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   388: ldc 244
     //   390: aload 8
-    //   392: invokestatic 247	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   392: invokestatic 247	bcds:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   395: aload 9
     //   397: astore 8
     //   399: aload_1
@@ -356,7 +356,7 @@ public class OpenAppClient
     //   506: ldc_w 275
     //   509: ldc_w 277
     //   512: aload 11
-    //   514: invokestatic 282	com/tencent/open/business/base/StaticAnalyz:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   514: invokestatic 282	bcfb:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   517: aload_1
     //   518: iconst_2
     //   519: putfield 283	com/tencent/open/downloadnew/common/NoticeParam:jdField_b_of_type_Int	I
@@ -365,22 +365,22 @@ public class OpenAppClient
     //   525: putfield 285	com/tencent/open/downloadnew/common/NoticeParam:e	Ljava/lang/String;
     //   528: aload_1
     //   529: aload 9
-    //   531: invokestatic 288	com/tencent/open/downloadnew/common/IntentFactory:a	(Landroid/os/Bundle;)Landroid/content/Intent;
+    //   531: invokestatic 288	bcie:a	(Landroid/os/Bundle;)Landroid/content/Intent;
     //   534: putfield 291	com/tencent/open/downloadnew/common/NoticeParam:jdField_a_of_type_AndroidContentIntent	Landroid/content/Intent;
-    //   537: invokestatic 296	com/tencent/open/downloadnew/common/AppNotificationManager:a	()Lcom/tencent/open/downloadnew/common/AppNotificationManager;
+    //   537: invokestatic 296	bcia:a	()Lbcia;
     //   540: aload_1
-    //   541: invokevirtual 299	com/tencent/open/downloadnew/common/AppNotificationManager:a	(Lcom/tencent/open/downloadnew/common/NoticeParam;)V
+    //   541: invokevirtual 299	bcia:a	(Lcom/tencent/open/downloadnew/common/NoticeParam;)V
     //   544: return
     //   545: aconst_null
     //   546: astore_1
     //   547: goto -152 -> 395
     //   550: iload 4
     //   552: iload_3
-    //   553: if_icmpgt +75 -> 628
+    //   553: if_icmpgt +87 -> 640
     //   556: ldc_w 275
     //   559: ldc_w 301
     //   562: aload 11
-    //   564: invokestatic 282	com/tencent/open/business/base/StaticAnalyz:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   564: invokestatic 282	bcfb:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     //   567: aload_1
     //   568: iconst_3
     //   569: putfield 283	com/tencent/open/downloadnew/common/NoticeParam:jdField_b_of_type_Int	I
@@ -389,88 +389,93 @@ public class OpenAppClient
     //   575: putfield 285	com/tencent/open/downloadnew/common/NoticeParam:e	Ljava/lang/String;
     //   578: aload_1
     //   579: aload 9
-    //   581: invokestatic 288	com/tencent/open/downloadnew/common/IntentFactory:a	(Landroid/os/Bundle;)Landroid/content/Intent;
+    //   581: invokestatic 288	bcie:a	(Landroid/os/Bundle;)Landroid/content/Intent;
     //   584: putfield 291	com/tencent/open/downloadnew/common/NoticeParam:jdField_a_of_type_AndroidContentIntent	Landroid/content/Intent;
-    //   587: invokestatic 296	com/tencent/open/downloadnew/common/AppNotificationManager:a	()Lcom/tencent/open/downloadnew/common/AppNotificationManager;
+    //   587: invokestatic 296	bcia:a	()Lbcia;
     //   590: aload_1
-    //   591: invokevirtual 299	com/tencent/open/downloadnew/common/AppNotificationManager:a	(Lcom/tencent/open/downloadnew/common/NoticeParam;)V
-    //   594: invokestatic 201	com/tencent/open/downloadnew/DownloadManager:a	()Lcom/tencent/open/downloadnew/DownloadManager;
+    //   591: invokevirtual 299	bcia:a	(Lcom/tencent/open/downloadnew/common/NoticeParam;)V
+    //   594: invokestatic 201	bcgo:a	()Lbcgo;
     //   597: aload 11
-    //   599: invokevirtual 203	com/tencent/open/downloadnew/DownloadManager:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   599: invokevirtual 203	bcgo:a	(Ljava/lang/String;)Ljava/lang/String;
     //   602: astore_1
-    //   603: aload_1
-    //   604: invokestatic 302	com/tencent/open/business/base/AppUtil:a	(Ljava/lang/String;)Ljava/lang/String;
-    //   607: ifnull +11 -> 618
-    //   610: aload_0
-    //   611: aload_1
-    //   612: invokestatic 305	com/tencent/open/business/base/AppUtil:a	(Landroid/content/Context;Ljava/lang/String;)Z
-    //   615: ifeq -71 -> 544
-    //   618: getstatic 19	com/tencent/open/adapter/OpenAppClient:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   621: ldc_w 307
-    //   624: invokestatic 240	com/tencent/open/base/LogUtility:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   627: return
-    //   628: invokestatic 201	com/tencent/open/downloadnew/DownloadManager:a	()Lcom/tencent/open/downloadnew/DownloadManager;
-    //   631: aload 11
-    //   633: invokevirtual 310	com/tencent/open/downloadnew/DownloadManager:a	(Ljava/lang/String;)Lcom/tencent/open/downloadnew/DownloadInfo;
-    //   636: ifnull +14 -> 650
-    //   639: ldc_w 275
-    //   642: ldc_w 312
-    //   645: aload 11
-    //   647: invokestatic 282	com/tencent/open/business/base/StaticAnalyz:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   650: aload 9
-    //   652: invokestatic 288	com/tencent/open/downloadnew/common/IntentFactory:a	(Landroid/os/Bundle;)Landroid/content/Intent;
-    //   655: astore_0
-    //   656: aload 12
-    //   658: ifnull +52 -> 710
-    //   661: aload 12
-    //   663: invokevirtual 315	java/lang/String:trim	()Ljava/lang/String;
-    //   666: ldc 73
-    //   668: invokevirtual 143	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   671: ifne +39 -> 710
-    //   674: iconst_1
-    //   675: istore 6
-    //   677: new 317	com/tencent/open/downloadnew/DownloadInfo
-    //   680: dup
-    //   681: aload 11
-    //   683: aload 13
-    //   685: invokevirtual 315	java/lang/String:trim	()Ljava/lang/String;
-    //   688: aload 12
-    //   690: aload 7
-    //   692: aload 8
-    //   694: aload_0
-    //   695: iconst_0
-    //   696: iload 6
-    //   698: invokespecial 320	com/tencent/open/downloadnew/DownloadInfo:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/content/Intent;IZ)V
-    //   701: astore_0
-    //   702: invokestatic 201	com/tencent/open/downloadnew/DownloadManager:a	()Lcom/tencent/open/downloadnew/DownloadManager;
-    //   705: aload_0
-    //   706: invokevirtual 323	com/tencent/open/downloadnew/DownloadManager:a	(Lcom/tencent/open/downloadnew/DownloadInfo;)V
-    //   709: return
-    //   710: iconst_0
-    //   711: istore 6
-    //   713: goto -36 -> 677
-    //   716: astore 8
-    //   718: aload 10
-    //   720: astore_1
-    //   721: goto -336 -> 385
+    //   603: invokestatic 201	bcgo:a	()Lbcgo;
+    //   606: aload 11
+    //   608: invokevirtual 303	bcgo:b	(Ljava/lang/String;)Ljava/lang/String;
+    //   611: astore 7
+    //   613: aload_1
+    //   614: invokestatic 304	bcev:a	(Ljava/lang/String;)Ljava/lang/String;
+    //   617: ifnull +13 -> 630
+    //   620: aload_0
+    //   621: aload_1
+    //   622: aload 7
+    //   624: invokestatic 307	bcev:a	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Z
+    //   627: ifeq -83 -> 544
+    //   630: getstatic 19	com/tencent/open/adapter/OpenAppClient:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   633: ldc_w 309
+    //   636: invokestatic 240	bcds:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   639: return
+    //   640: invokestatic 201	bcgo:a	()Lbcgo;
+    //   643: aload 11
+    //   645: invokevirtual 312	bcgo:a	(Ljava/lang/String;)Lcom/tencent/open/downloadnew/DownloadInfo;
+    //   648: ifnull +14 -> 662
+    //   651: ldc_w 275
+    //   654: ldc_w 314
+    //   657: aload 11
+    //   659: invokestatic 282	bcfb:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   662: aload 9
+    //   664: invokestatic 288	bcie:a	(Landroid/os/Bundle;)Landroid/content/Intent;
+    //   667: astore_0
+    //   668: aload 12
+    //   670: ifnull +54 -> 724
+    //   673: aload 12
+    //   675: invokevirtual 317	java/lang/String:trim	()Ljava/lang/String;
+    //   678: ldc 73
+    //   680: invokevirtual 143	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   683: ifne +41 -> 724
+    //   686: iconst_1
+    //   687: istore 6
+    //   689: new 319	com/tencent/open/downloadnew/DownloadInfo
+    //   692: dup
+    //   693: aload 11
+    //   695: aload 13
+    //   697: invokevirtual 317	java/lang/String:trim	()Ljava/lang/String;
+    //   700: aload 12
+    //   702: aload 7
+    //   704: aload 8
+    //   706: aload_0
+    //   707: ldc_w 321
+    //   710: iload 6
+    //   712: invokespecial 324	com/tencent/open/downloadnew/DownloadInfo:<init>	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/content/Intent;Ljava/lang/String;Z)V
+    //   715: astore_0
+    //   716: invokestatic 201	bcgo:a	()Lbcgo;
+    //   719: aload_0
+    //   720: invokevirtual 327	bcgo:a	(Lcom/tencent/open/downloadnew/DownloadInfo;)V
+    //   723: return
+    //   724: iconst_0
+    //   725: istore 6
+    //   727: goto -38 -> 689
+    //   730: astore 8
+    //   732: aload 10
+    //   734: astore_1
+    //   735: goto -350 -> 385
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	724	0	paramContext	Context
-    //   0	724	1	paramHashMap	HashMap
+    //   0	738	0	paramContext	Context
+    //   0	738	1	paramHashMap	HashMap<String, String>
     //   26	478	2	i	int
     //   28	526	3	j	int
     //   216	338	4	k	int
     //   262	95	5	m	int
-    //   675	37	6	bool	boolean
-    //   95	596	7	localObject1	Object
-    //   60	633	8	localObject2	Object
-    //   716	1	8	localException1	Exception
-    //   82	569	9	localObject3	Object
+    //   687	39	6	bool	boolean
+    //   95	608	7	localObject1	Object
+    //   60	645	8	localObject2	Object
+    //   730	1	8	localException1	Exception
+    //   82	581	9	localObject3	Object
     //   221	1	10	localObject4	Object
-    //   376	343	10	localException2	Exception
-    //   38	644	11	str1	String
-    //   49	640	12	str2	String
-    //   71	613	13	str3	String
+    //   376	357	10	localException2	Exception
+    //   38	656	11	str1	String
+    //   49	652	12	str2	String
+    //   71	625	13	str3	String
     //   128	309	14	str4	String
     //   238	117	15	arrayOfString	String[]
     // Exception table:
@@ -480,13 +485,13 @@ public class OpenAppClient
     //   281	292	376	java/lang/Exception
     //   292	310	376	java/lang/Exception
     //   352	373	376	java/lang/Exception
-    //   231	240	716	java/lang/Exception
-    //   245	261	716	java/lang/Exception
+    //   231	240	730	java/lang/Exception
+    //   245	261	730	java/lang/Exception
   }
   
   public static void a(AppInterface paramAppInterface)
   {
-    CacheManager.a(CommonDataAdapter.a().a());
+    bcfs.a(bbtm.a().a());
     String str = "";
     if (paramAppInterface != null)
     {
@@ -502,7 +507,7 @@ public class OpenAppClient
       label70:
       try
       {
-        CommonDataAdapter.a().a(Long.valueOf(str).longValue());
+        bbtm.a().a(Long.valueOf(str).longValue());
         return;
       }
       catch (Exception paramAppInterface) {}
@@ -515,21 +520,21 @@ public class OpenAppClient
   }
   
   /* Error */
-  protected static boolean a(Context paramContext, HashMap paramHashMap)
+  protected static boolean a(Context paramContext, HashMap<String, String> paramHashMap)
   {
     // Byte code:
     //   0: aload_1
     //   1: ifnull +10 -> 11
     //   4: aload_1
-    //   5: invokevirtual 372	java/util/HashMap:size	()I
+    //   5: invokevirtual 378	java/util/HashMap:size	()I
     //   8: ifne +5 -> 13
     //   11: iconst_0
     //   12: ireturn
     //   13: aload_1
-    //   14: ldc_w 374
+    //   14: ldc_w 380
     //   17: invokevirtual 82	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   20: checkcast 84	java/lang/String
-    //   23: invokestatic 377	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   23: invokestatic 383	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   26: istore_2
     //   27: iload_2
     //   28: iconst_1
@@ -538,7 +543,7 @@ public class OpenAppClient
     //   33: ldc 78
     //   35: invokevirtual 82	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   38: checkcast 84	java/lang/String
-    //   41: invokestatic 97	com/tencent/open/downloadnew/DownloadApi:a	(Ljava/lang/String;)Z
+    //   41: invokestatic 97	bcgh:a	(Ljava/lang/String;)Z
     //   44: istore_3
     //   45: iload_3
     //   46: ifeq +23 -> 69
@@ -546,17 +551,17 @@ public class OpenAppClient
     //   50: ireturn
     //   51: astore 4
     //   53: getstatic 19	com/tencent/open/adapter/OpenAppClient:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   56: ldc_w 379
+    //   56: ldc_w 385
     //   59: aload 4
-    //   61: invokestatic 381	com/tencent/open/base/LogUtility:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   61: invokestatic 387	bcds:a	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   64: iconst_m1
     //   65: istore_2
     //   66: goto -39 -> 27
-    //   69: new 383	alhi
+    //   69: new 389	com/tencent/open/adapter/OpenAppClient$2
     //   72: dup
     //   73: aload_0
     //   74: aload_1
-    //   75: invokespecial 385	alhi:<init>	(Landroid/content/Context;Ljava/util/HashMap;)V
+    //   75: invokespecial 391	com/tencent/open/adapter/OpenAppClient$2:<init>	(Landroid/content/Context;Ljava/util/HashMap;)V
     //   78: invokestatic 174	com/tencent/mobileqq/app/ThreadManager:executeOnSubThread	(Ljava/lang/Runnable;)V
     //   81: iconst_1
     //   82: ireturn
@@ -564,7 +569,7 @@ public class OpenAppClient
     //   84: new 30	java/lang/StringBuilder
     //   87: dup
     //   88: invokespecial 31	java/lang/StringBuilder:<init>	()V
-    //   91: ldc_w 387
+    //   91: ldc_w 393
     //   94: invokevirtual 37	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   97: aload_1
     //   98: invokevirtual 192	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -573,13 +578,13 @@ public class OpenAppClient
     //   105: getstatic 19	com/tencent/open/adapter/OpenAppClient:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   108: aload_1
     //   109: aload_0
-    //   110: invokestatic 247	com/tencent/open/base/LogUtility:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   110: invokestatic 247	bcds:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   113: iconst_0
     //   114: ireturn
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	115	0	paramContext	Context
-    //   0	115	1	paramHashMap	HashMap
+    //   0	115	1	paramHashMap	HashMap<String, String>
     //   26	40	2	i	int
     //   44	2	3	bool	boolean
     //   51	9	4	localNumberFormatException	java.lang.NumberFormatException
@@ -623,7 +628,7 @@ public class OpenAppClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.adapter.OpenAppClient
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,16 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.biz.webviewplugin.HotchatPlugin;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class pfz
-  implements TroopMemberApiClient.Callback
+class pfz
+  implements View.OnClickListener
 {
-  public pfz(HotchatPlugin paramHotchatPlugin) {}
+  pfz(pfu parampfu) {}
   
-  public void a(Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if ((paramBundle != null) && (paramBundle.getBoolean("isSuccess")))
-    {
-      ArrayList localArrayList = paramBundle.getStringArrayList("uins");
-      paramBundle = paramBundle.getStringArrayList("tinyIds");
-      int i = 0;
-      while (i < localArrayList.size())
-      {
-        HotchatPlugin.a(this.a).put(paramBundle.get(i), localArrayList.get(i));
-        i += 1;
-      }
+    paramView = this.a.jdField_a_of_type_Qoe.a();
+    if (paramView != null) {
+      paramView.a(null, ((opw)this.a.jdField_a_of_type_JavaLangObject).a(), 1);
     }
   }
 }

@@ -1,19 +1,35 @@
-import android.widget.ScrollView;
-import com.tencent.mobileqq.forward.ForwardTribeShortVideoMsgOption;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class aduu
-  implements Runnable
+class aduu
+  implements View.OnTouchListener
 {
-  public aduu(ForwardTribeShortVideoMsgOption paramForwardTribeShortVideoMsgOption) {}
+  aduu(aduq paramaduq) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a.fullScroll(130);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (Build.VERSION.SDK_INT >= 11)
+      {
+        paramView.setAlpha(0.5F);
+        continue;
+        if (Build.VERSION.SDK_INT >= 11) {
+          paramView.setAlpha(1.0F);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aduu
  * JD-Core Version:    0.7.0.1
  */

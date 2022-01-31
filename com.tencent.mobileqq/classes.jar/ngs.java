@@ -1,19 +1,20 @@
-import com.tencent.biz.qqstory.model.StoryManager;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Comparator;
+import org.json.JSONObject;
 
 public class ngs
-  implements Runnable
+  implements Comparator<JSONObject>
 {
-  public ngs(StoryManager paramStoryManager, String paramString) {}
+  String a;
   
-  public void run()
+  public ngs(String paramString)
   {
-    StoryVideoItem localStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryModelStoryManager.a(this.jdField_a_of_type_JavaLangString);
-    if (localStoryVideoItem != null)
-    {
-      localStoryVideoItem.mHadRead = 1;
-      this.jdField_a_of_type_ComTencentBizQqstoryModelStoryManager.a(this.jdField_a_of_type_JavaLangString, localStoryVideoItem);
-    }
+    this.a = paramString;
+  }
+  
+  public int a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
+  {
+    long l = paramJSONObject1.optLong(this.a);
+    return (int)(paramJSONObject2.optLong(this.a) - l);
   }
 }
 

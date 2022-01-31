@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class appoint_define$AppointID
-  extends MessageMicro
+  extends MessageMicro<AppointID>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "str_request_id" }, new Object[] { "" }, AppointID.class);
   public final PBStringField str_request_id = PBField.initString("");

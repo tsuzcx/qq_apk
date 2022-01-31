@@ -1,17 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.arcard.ARVideoPreviewActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import java.util.ArrayList;
 
 public class aauc
-  implements DialogInterface.OnClickListener
+  implements begw
 {
-  public aauc(ARVideoPreviewActivity paramARVideoPreviewActivity) {}
+  public aauc(FriendProfileCardActivity paramFriendProfileCardActivity, ArrayList paramArrayList, begr parambegr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void OnClick(View paramView, int paramInt)
+  {
+    ((bajp)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a();
+    this.jdField_a_of_type_Begr.e();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aauc
  * JD-Core Version:    0.7.0.1
  */

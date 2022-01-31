@@ -1,32 +1,36 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.biz.qqstory.storyHome.QQStoryHomeJumpHelper.JumpListener;
-import com.tencent.biz.qqstory.storyHome.QQStoryTakeVideoActivityLauncher;
-import com.tencent.biz.qqstory.takevideo2.StoryPublishLauncher;
-import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.qphone.base.util.QLog;
 
-public class akka
-  implements QQStoryHomeJumpHelper.JumpListener
+class akka
+  extends akqg
 {
-  public akka(JumpAction paramJumpAction) {}
+  akka(akjz paramakjz) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
+  public void a()
   {
-    paramString = StoryPublishLauncher.a();
-    if (paramString.a())
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("entrance_type", 15);
-      paramString.a((Activity)this.a.a, localBundle, 20000);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(akkm.a, 2, "onArSoDownloadSuccess");
     }
-    paramString = new QQStoryTakeVideoActivityLauncher(JumpAction.a(this.a)).a(this.a.a, 15);
-    ((Activity)this.a.a).startActivityForResult(paramString, 20000);
+    this.a.a();
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(akkm.a, 2, "onArSoDownloadProcess process=" + paramInt);
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(akkm.a, 2, "onArSoDownloadFail");
+    }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akka
  * JD-Core Version:    0.7.0.1
  */

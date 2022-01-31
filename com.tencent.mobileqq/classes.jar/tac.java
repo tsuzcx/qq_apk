@@ -1,72 +1,56 @@
-import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.HotChatObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetShareGroupInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetShareGroupInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.Iterator;
+import java.util.List;
 
 public class tac
-  extends HotChatObserver
+  extends slz<tbs>
 {
-  public tac(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
+  private final String a;
+  public List<String> a;
   
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  public tac()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HotChatAnnounceActivity", 2, "onSetUserCreateHotChatAnnounce.isSuccess=" + paramBoolean + ",result=" + paramInt + ", strErr=" + paramString2);
-    }
-    HotChatAnnounceActivity.a(this.a);
-    if ((paramBoolean) && (paramInt == 0))
-    {
-      paramString1 = ((HotChatManager)this.a.app.getManager(59)).a(this.a.a);
-      if (paramString1 != null)
-      {
-        paramString1.memo = this.a.d;
-        paramString1.memoUrl = this.a.e;
-        paramString1.memoShowed = false;
-      }
-      QQToast.a(this.a, 2, "设置公告成功", 0).b(this.a.getTitleBarHeight());
-      this.a.setResult(-1);
-      this.a.finish();
-      return;
-    }
-    paramString1 = "设置公告失败";
-    if (paramInt == 1282) {
-      paramString1 = "公告含有敏感词，设置失败";
-    }
-    QQToast.a(this.a, 1, paramString1, 0).b(this.a.getTitleBarHeight());
+    this.jdField_a_of_type_JavaLangString = skt.a("StorySvc.get_share_group_info");
   }
   
-  public void a(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt, String paramString)
+  public String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HotChatAnnounceActivity", 2, "onSetHotChatAnnounce.isSuccess=" + paramBoolean + ",result=" + paramInt + ", strErr=" + paramString);
-    }
-    HotChatAnnounceActivity.a(this.a);
-    if ((paramBoolean) && (paramInt == 0))
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public slu a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetShareGroupInfo localRspGetShareGroupInfo = new qqstory_service.RspGetShareGroupInfo();
+    try
     {
-      paramArrayOfByte = ((HotChatManager)this.a.app.getManager(59)).a(this.a.a);
-      if (paramArrayOfByte != null)
-      {
-        paramArrayOfByte.memo = this.a.d;
-        paramArrayOfByte.memoUrl = this.a.e;
-        paramArrayOfByte.memoShowed = false;
-      }
-      QQToast.a(this.a, 2, "设置公告成功", 0).b(this.a.getTitleBarHeight());
-      this.a.setResult(-1);
-      this.a.finish();
-      return;
+      localRspGetShareGroupInfo.mergeFrom(paramArrayOfByte);
+      return new tbs(localRspGetShareGroupInfo);
     }
-    paramArrayOfByte = "设置公告失败";
-    if (paramInt == 1288) {
-      paramArrayOfByte = "公告含有敏感词，设置失败";
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      urk.b("Q.qqstory.shareGroup:GetShareGroupInfoRequest", a(), paramArrayOfByte);
     }
-    QQToast.a(this.a, 1, paramArrayOfByte, 0).b(this.a.getTitleBarHeight());
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetShareGroupInfo localReqGetShareGroupInfo = new qqstory_service.ReqGetShareGroupInfo();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      localReqGetShareGroupInfo.share_group_id_list.add(str);
+    }
+    return localReqGetShareGroupInfo.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tac
  * JD-Core Version:    0.7.0.1
  */

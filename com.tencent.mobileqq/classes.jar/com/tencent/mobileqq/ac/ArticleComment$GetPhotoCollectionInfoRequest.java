@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class ArticleComment$GetPhotoCollectionInfoRequest
-  extends MessageMicro
+  extends MessageMicro<GetPhotoCollectionInfoRequest>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField article_id = PBField.initBytes(ByteStringMicro.EMPTY);

@@ -1,22 +1,23 @@
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
 
-class vkd
-  implements Runnable
+public class vkd
+  implements View.OnLongClickListener
 {
-  vkd(vkc paramvkc, int paramInt1, int paramInt2, String paramString) {}
+  public vkd(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, int paramInt) {}
   
-  public void run()
+  public boolean onLongClick(View paramView)
   {
-    vkb localvkb = (vkb)this.jdField_a_of_type_Vkc.a.get();
-    if (localvkb == null) {
-      return;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
+      return this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(paramView, this.jdField_a_of_type_Int);
     }
-    localvkb.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vkd
  * JD-Core Version:    0.7.0.1
  */

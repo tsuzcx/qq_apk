@@ -1,66 +1,60 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import java.util.Iterator;
 import java.util.List;
-import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class sgz
-  extends TroopObserver
+class sgz
+  implements slx<tan, tby>
 {
-  public sgz(ChatSettingForTroop paramChatSettingForTroop) {}
+  sgz(sgs paramsgs, String paramString, Object paramObject, AtomicBoolean paramAtomicBoolean1, AtomicBoolean paramAtomicBoolean2) {}
   
-  protected void a(boolean paramBoolean, int paramInt, ArrayList paramArrayList, String paramString)
+  public void a(@NonNull tan arg1, @Nullable tby paramtby, @NonNull ErrorMessage paramErrorMessage)
   {
-    super.a(paramBoolean, paramInt, paramArrayList, paramString);
-    if (!paramBoolean) {}
-    Object localObject1;
-    do
+    if ((paramErrorMessage.isSuccess()) && (paramtby != null))
     {
-      return;
-      localObject2 = "";
-      localObject1 = localObject2;
-      if (this.a.a != null)
+      urk.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url success , vid : %s", new Object[] { this.jdField_a_of_type_JavaLangString });
+      ??? = (sqd)sqg.a(5);
+      if (paramtby.a != null)
       {
-        localObject1 = localObject2;
-        if (this.a.a.troopuin != null) {
-          localObject1 = this.a.a.troopuin;
+        paramErrorMessage = paramtby.a.iterator();
+        while (paramErrorMessage.hasNext()) {
+          ((StoryVideoItem)paramErrorMessage.next()).mBasicInfoState = 1;
         }
       }
-    } while (this.a.e == null);
-    Object localObject2 = new HashSet();
-    if ((paramString != null) && (paramString.equals(localObject1)))
+      paramtby.a = ???.a(paramtby.a);
+      ((sgs)sqg.a(28)).a(paramtby.b);
+      this.jdField_a_of_type_Sgs.c(this.jdField_a_of_type_JavaLangString, 0);
+    }
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
+      for (;;)
       {
-        paramString = (String)paramArrayList.next();
-        localObject1 = this.a.e.iterator();
-        while (((Iterator)localObject1).hasNext())
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+        try
         {
-          oidb_0x899.memberlist localmemberlist = (oidb_0x899.memberlist)((Iterator)localObject1).next();
-          if (paramString.equals(localmemberlist.uint64_member_uin.get() + "")) {
-            ((Collection)localObject2).add(localmemberlist);
+          if (this.b.get()) {
+            this.jdField_a_of_type_JavaLangObject.notifyAll();
+          }
+          return;
+          urk.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url fail , vid : %s", new Object[] { this.jdField_a_of_type_JavaLangString });
+        }
+        catch (Exception paramtby)
+        {
+          for (;;)
+          {
+            urk.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary lock error");
           }
         }
       }
-      paramArrayList = ((Collection)localObject2).iterator();
-      while (paramArrayList.hasNext())
-      {
-        paramString = (oidb_0x899.memberlist)paramArrayList.next();
-        this.a.e.remove(paramString);
-      }
     }
-    this.a.a(this.a.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sgz
  * JD-Core Version:    0.7.0.1
  */

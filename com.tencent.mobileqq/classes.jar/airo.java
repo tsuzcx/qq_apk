@@ -1,25 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.teamwork.TeamWorkShareActionSheetBuilder;
-import com.tencent.widget.ActionSheet;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.ImageView;
 
-public class airo
-  implements View.OnClickListener
+class airo
+  implements DialogInterface.OnClickListener
 {
-  public airo(TeamWorkShareActionSheetBuilder paramTeamWorkShareActionSheetBuilder) {}
+  airo(airm paramairm) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (TeamWorkShareActionSheetBuilder.a(this.a).isShowing())
+    if (airm.a(this.a) != null)
     {
-      TeamWorkShareActionSheetBuilder.b(this.a).cancel();
-      TeamWorkShareActionSheetBuilder.c(this.a).dismiss();
+      airm.b(this.a).setVisibility(8);
+      airm.c(this.a).setVisibility(8);
+      airm.b(this.a, false);
+      airm.a(this.a).a();
     }
+    this.a.a(6, 3, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     airo
  * JD-Core Version:    0.7.0.1
  */

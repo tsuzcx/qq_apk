@@ -1,40 +1,41 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
-public class tuu
-  extends WtloginObserver
+public final class tuu
+  extends QQUIEventReceiver<tun, swv>
 {
-  public tuu(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
-  
-  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, ErrMsg paramErrMsg)
+  public tuu(@NonNull tun paramtun)
   {
-    if (QLog.isColorLevel())
+    super(paramtun);
+  }
+  
+  public void a(@NonNull tun paramtun, @NonNull swv paramswv)
+  {
+    if ((paramswv.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramswv.jdField_a_of_type_JavaUtilList != null) && (paramtun.a != null))
     {
-      QLog.d("RegisterQQNumberActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
-      if (paramErrMsg != null) {
-        QLog.d("RegisterQQNumberActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
+      paramswv = paramswv.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramswv.hasNext())
+      {
+        srj localsrj = (srj)paramswv.next();
+        if (TextUtils.equals(paramtun.a.b, localsrj.a)) {
+          paramtun.i();
+        }
       }
     }
-    if (paramInt2 == 0) {
-      return;
-    }
-    RegisterQQNumberActivity.a(this.a);
-    paramString = new Intent(this.a, LoginActivity.class);
-    paramString.putExtra("uin", RegisterQQNumberActivity.a(this.a));
-    paramString.putExtra("tab_index", MainFragment.a);
-    paramString.addFlags(131072);
-    this.a.startActivity(paramString);
-    this.a.finish();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return swv.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tuu
  * JD-Core Version:    0.7.0.1
  */

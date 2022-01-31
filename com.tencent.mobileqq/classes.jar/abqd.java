@@ -1,23 +1,24 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarDownloadManager;
+import android.view.View;
+import com.tencent.mobileqq.activity.SearchMightKnowFragment;
 
 public class abqd
-  implements Runnable
+  implements benm
 {
-  public abqd(DynamicAvatarDownloadManager paramDynamicAvatarDownloadManager, long paramLong) {}
+  public abqd(SearchMightKnowFragment paramSearchMightKnowFragment) {}
   
-  public void run()
+  public void a(View paramView)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(this.jdField_a_of_type_Long).append("#").append(0);
-    BaseApplicationImpl.getApplication().getSharedPreferences("dynamic_avatar", 4).edit().putString("dynamic_load_count_one_day", localStringBuilder.toString()).commit();
+    SearchMightKnowFragment.a(this.a, false);
+  }
+  
+  public void b(View paramView)
+  {
+    SearchMightKnowFragment.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abqd
  * JD-Core Version:    0.7.0.1
  */

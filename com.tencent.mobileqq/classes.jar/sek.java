@@ -1,43 +1,60 @@
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
+import com.tencent.mobileqq.pb.PBInt32Field;
 
 public class sek
-  extends ClickableSpan
 {
-  public sek(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, String paramString1, String paramString2) {}
+  private double a;
+  private double b;
   
-  public void onClick(View paramView)
+  public sek(double paramDouble1, double paramDouble2)
   {
-    paramView = new Intent("android.intent.action.VIEW", Uri.parse(this.jdField_a_of_type_JavaLangString));
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.app, "CliOper", "", this.b, "0X8004937", "0X8004937", 0, 0, "", "", "", "");
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      return;
-    }
-    catch (ActivityNotFoundException paramView)
-    {
-      paramView.printStackTrace();
-    }
+    this.a = paramDouble1;
+    this.b = paramDouble2;
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public double a()
   {
-    paramTextPaint.setColor(-16732929);
-    paramTextPaint.setUnderlineText(false);
+    return this.a;
+  }
+  
+  public qqstory_struct.GpsMsg a()
+  {
+    qqstory_struct.GpsMsg localGpsMsg = new qqstory_struct.GpsMsg();
+    localGpsMsg.setHasFlag(true);
+    localGpsMsg.lat.set((int)(a() * 1000000.0D));
+    localGpsMsg.lng.set((int)(b() * 1000000.0D));
+    return localGpsMsg;
+  }
+  
+  public double b()
+  {
+    return this.b;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {
+      return true;
+    }
+    if (!(paramObject instanceof sek)) {
+      return false;
+    }
+    return (((sek)paramObject).a == this.a) && (((sek)paramObject).b == this.b);
+  }
+  
+  public int hashCode()
+  {
+    return "Gps".hashCode() + (int)(this.a * 1000000.0D) + (int)(this.b * 1000000.0D);
+  }
+  
+  public String toString()
+  {
+    return "Gps{lat=" + this.a + ", lng=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sek
  * JD-Core Version:    0.7.0.1
  */

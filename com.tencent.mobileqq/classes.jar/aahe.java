@@ -1,27 +1,23 @@
-import com.tencent.mobileqq.ar.ARMusicController;
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatHistory;
 
-class aahe
-  implements Runnable
+public class aahe
+  implements DialogInterface.OnClickListener
 {
-  aahe(aahd paramaahd) {}
+  public aahe(ChatHistory paramChatHistory) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (aahd.a(this.a) != 9) {}
-    do
-    {
-      return;
-      if (aahd.a(this.a) != null) {
-        aahd.a(this.a).a(0, 1);
-      }
-    } while (aahd.a(this.a) == null);
-    aahd.a(this.a).a();
+    this.a.a.setEnabled(true);
+    this.a.c.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aahe
  * JD-Core Version:    0.7.0.1
  */

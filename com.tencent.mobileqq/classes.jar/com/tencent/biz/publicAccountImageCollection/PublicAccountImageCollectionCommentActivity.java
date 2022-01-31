@@ -11,12 +11,12 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import com.tencent.mobileqq.app.BaseActivity;
-import nbf;
-import nbg;
-import nbh;
-import nbi;
-import nbj;
-import nbk;
+import sbe;
+import sbf;
+import sbg;
+import sbh;
+import sbi;
+import sbj;
 
 public class PublicAccountImageCollectionCommentActivity
   extends BaseActivity
@@ -66,24 +66,24 @@ public class PublicAccountImageCollectionCommentActivity
     return true;
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     this.mNeedStatusTrans = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2130969210);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131365624);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131365626));
+    super.setContentView(2131493861);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131298889);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131298886));
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new nbf(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new nbg(this));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131365625).setOnClickListener(new nbh(this));
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new nbi(this));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365627));
-    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new nbj(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new sbe(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new sbf(this));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131298880).setOnClickListener(new sbg(this));
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new sbh(this));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131310071));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new sbi(this));
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("anonymous", false);
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131365628));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131297015));
     this.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new nbk(this));
+    this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(new sbj(this));
     paramBundle = getIntent().getStringExtra("comment");
     if (!TextUtils.isEmpty(paramBundle))
     {
@@ -94,14 +94,14 @@ public class PublicAccountImageCollectionCommentActivity
     return true;
   }
   
-  protected boolean isWrapContent()
+  public boolean isWrapContent()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionCommentActivity
  * JD-Core Version:    0.7.0.1
  */

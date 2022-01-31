@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class C2CType0x211_SubC2CType0x8$IPAddrInfo
-  extends MessageMicro
+  extends MessageMicro<IPAddrInfo>
 {
   public static final int INT32_GATEWAY_FIELD_NUMBER = 3;
   public static final int INT32_IP_FIELD_NUMBER = 1;

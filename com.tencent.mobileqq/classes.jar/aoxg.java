@@ -1,24 +1,31 @@
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class aoxg
-  implements Runnable
+class aoxg
+  implements View.OnClickListener
 {
-  public aoxg(String paramString1, String paramString2) {}
+  aoxg(aoxe paramaoxe) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    FileUtils.a(QIMPtvTemplateManager.a.getPath() + File.separator, this.a, this.b);
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMPtvTemplateManager", 2, "save Config to file finish.");
+    int i = this.a.a.h();
+    if ((i == 2) || (i == 3))
+    {
+      i = apdq.b(this.a.a.e());
+      awqx.b(null, "dc00898", "", "", "0X800A688", "0X800A688", 0, 0, i + "", "", "", "");
+      if (this.a.a.a() != null) {
+        this.a.a.a().a();
+      }
     }
+    while ((i != 1) || (this.a.a.a() == null)) {
+      return;
+    }
+    this.a.a.a().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoxg
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import android.widget.EditText;
 public class CursorEditText
   extends EditText
 {
-  protected Class a;
+  protected Class<?> a;
   
   public CursorEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -68,14 +68,14 @@ public class CursorEditText
     super.setSelection(paramInt1, paramInt2);
   }
   
-  public void setSpannedClassToSkip(Class paramClass)
+  public void setSpannedClassToSkip(Class<?> paramClass)
   {
     this.a = paramClass;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.widget.CursorEditText
  * JD-Core Version:    0.7.0.1
  */

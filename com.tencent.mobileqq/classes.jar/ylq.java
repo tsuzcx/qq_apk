@@ -1,142 +1,75 @@
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
+import com.tencent.gdtad.views.video.GdtVideoData;
+import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
 public class ylq
-  extends FriendListObserver
 {
-  public ylq(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
+  private GdtAd jdField_a_of_type_ComTencentGdtadAditemGdtAd;
+  private GdtMotiveVideoPageData jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData;
+  private GdtVideoData jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData;
+  private qq_ad_get.QQAdGetRsp.AdInfo jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo;
   
-  protected void onSetSpecialCareSwitch_global(boolean paramBoolean, Object[] paramArrayOfObject)
+  public ylq(GdtMotiveVideoPageData paramGdtMotiveVideoPageData)
   {
-    int i = 2;
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialFriendSettingActivity", 2, "onSetSpecialCareSwith_global isSuccess: " + paramBoolean + ",isFromForwardFriendActivity=" + QQSpecialFriendSettingActivity.a(this.a));
-    }
-    if (QQSpecialFriendSettingActivity.a(this.a)) {
+    yny.a("GdtMotiveVideoModel", "[GdtMotiveVideoModel]\n" + paramGdtMotiveVideoPageData.adsContent);
+    this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData = paramGdtMotiveVideoPageData;
+    b(paramGdtMotiveVideoPageData);
+    a(paramGdtMotiveVideoPageData);
+  }
+  
+  private void a(GdtMotiveVideoPageData paramGdtMotiveVideoPageData)
+  {
+    this.jdField_a_of_type_ComTencentGdtadAditemGdtAd = new GdtAd(this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo);
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData = new GdtVideoData();
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData.setAd(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd);
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData.setPlayScene(11);
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData.setUrl(paramGdtMotiveVideoPageData.url);
+  }
+  
+  private void b(GdtMotiveVideoPageData paramGdtMotiveVideoPageData)
+  {
+    if (TextUtils.isEmpty(paramGdtMotiveVideoPageData.adsContent))
+    {
+      yny.d("GdtMotiveVideoModel", "[adJson==null error]");
       return;
     }
-    this.a.a.sendEmptyMessage(8194);
-    paramArrayOfObject = this.a.a.obtainMessage(8195);
-    if (paramBoolean)
+    try
     {
-      label91:
-      paramArrayOfObject.arg1 = i;
-      if (!paramBoolean) {
-        break label137;
-      }
-    }
-    label137:
-    for (i = 2131435302;; i = 2131436923)
-    {
-      paramArrayOfObject.arg2 = i;
-      this.a.a.sendMessage(paramArrayOfObject);
-      if (!paramBoolean) {
-        break;
-      }
-      this.a.finish();
+      this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo = ((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(ynv.a(new qq_ad_get.QQAdGetRsp.AdInfo(), new JSONObject(paramGdtMotiveVideoPageData.adsContent))));
       return;
-      i = 1;
-      break label91;
+    }
+    catch (Throwable paramGdtMotiveVideoPageData)
+    {
+      yny.d("GdtMotiveVideoModel", "GdtMotiveVideoModel error]", paramGdtMotiveVideoPageData);
     }
   }
   
-  protected void onSetSpecialCareSwitch_qzone(boolean paramBoolean, Object[] paramArrayOfObject)
+  public GdtAd a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialFriendSettingActivity", 2, "onSetSpecialCareSwith_qzone isSuccess: " + paramBoolean);
-    }
-    if (QQSpecialFriendSettingActivity.a(this.a)) {}
-    while (paramBoolean) {
-      return;
-    }
-    paramArrayOfObject = this.a;
-    FormSwitchItem localFormSwitchItem = QQSpecialFriendSettingActivity.b(this.a);
-    if (!QQSpecialFriendSettingActivity.b(this.a).a()) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      paramArrayOfObject.a(localFormSwitchItem, paramBoolean);
-      return;
-    }
+    return this.jdField_a_of_type_ComTencentGdtadAditemGdtAd;
   }
   
-  protected void onSetSpecialCareSwitch_specialRing(boolean paramBoolean, Object[] paramArrayOfObject)
+  public GdtMotiveVideoPageData a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialFriendSettingActivity", 2, "onSetSpecialCareSwith_specialRing isSuccess: " + paramBoolean);
-    }
-    if (QQSpecialFriendSettingActivity.a(this.a)) {
-      return;
-    }
-    QQSpecialFriendSettingActivity.b(this.a);
+    return this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData;
   }
   
-  protected void onSetSpecialCareSwitchesOfAPerson(boolean paramBoolean, Object[] paramArrayOfObject)
+  public GdtVideoData a()
   {
-    int j = ((Integer)paramArrayOfObject[0]).intValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialFriendSettingActivity", 2, "onSetSpecialCareSwitchesOfAPerson isSuccess: " + paramBoolean + ",isFromForwardFriendActivity=" + QQSpecialFriendSettingActivity.a(this.a) + ",result=" + j);
-    }
-    if (!QQSpecialFriendSettingActivity.a(this.a)) {
-      return;
-    }
-    this.a.a.sendEmptyMessage(8194);
-    paramArrayOfObject = this.a.a.obtainMessage(8195);
-    if ((paramBoolean) && (j == 0))
-    {
-      i = 2;
-      label117:
-      paramArrayOfObject.arg1 = i;
-      if ((!paramBoolean) || (j != 0)) {
-        break label223;
-      }
-    }
-    label223:
-    for (int i = 2131435302;; i = 2131436921)
-    {
-      paramArrayOfObject.arg2 = i;
-      this.a.a.sendMessage(paramArrayOfObject);
-      if ((!paramBoolean) || (j != 0)) {
-        break;
-      }
-      paramArrayOfObject = new Intent();
-      paramArrayOfObject.setClass(this.a, SpecailCareListActivity.class);
-      paramArrayOfObject.addFlags(67108864);
-      paramArrayOfObject.putExtra("selfSet_leftViewText", this.a.getString(2131437790));
-      this.a.startActivity(paramArrayOfObject);
-      this.a.finish();
-      return;
-      i = 1;
-      break label117;
-    }
+    return this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoData;
   }
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  public qq_ad_get.QQAdGetRsp.AdInfo a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialFriendSettingActivity", 2, "onUpdateDelFriend isSuccess: " + paramBoolean + ", uin: " + paramObject);
-    }
-    if ((paramBoolean) && (QQSpecialFriendSettingActivity.a(this.a).equals(String.valueOf(paramObject)))) {
-      this.a.finish();
-    }
-  }
-  
-  protected void onUpdateSpecialCareList(boolean paramBoolean1, boolean paramBoolean2, List paramList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialFriendSettingActivity", 2, "onUpdateSpecialCareList isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2);
-    }
-    QQSpecialFriendSettingActivity.b(this.a);
+    return this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp$AdInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ylq
  * JD-Core Version:    0.7.0.1
  */

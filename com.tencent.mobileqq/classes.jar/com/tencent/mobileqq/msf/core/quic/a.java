@@ -28,7 +28,7 @@ public class a
   public static final int s = -103;
   public static final int t = -104;
   public static final int u = -105;
-  private static boolean x;
+  private static boolean x = false;
   private long v;
   private b w;
   

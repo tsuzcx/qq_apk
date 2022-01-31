@@ -1,24 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SendMultiPictureHelper;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.qqstory.playvideo.playerwidget.StoryPlayerWebFragment;
 
 public class twf
-  implements DialogInterface.OnClickListener
+  extends BroadcastReceiver
 {
-  public twf(SendMultiPictureHelper paramSendMultiPictureHelper) {}
+  public twf(StoryPlayerWebFragment paramStoryPlayerWebFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.b = true;
-    SendMultiPictureHelper.b(this.a);
-    this.a.a.setResult(-1);
-    this.a.a.finish();
+    urk.a("StoryPlayerWebFragment", "onReceive() Action: %s", paramIntent.getAction());
+    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramIntent.getAction()))
+    {
+      paramContext = paramIntent.getStringExtra("event");
+      urk.a("StoryPlayerWebFragment", "onReceive() Event: %s", paramContext);
+      if (!"closeMeEvent".equals(paramContext)) {
+        break label70;
+      }
+      if (this.a.a != null) {
+        this.a.a.a();
+      }
+    }
+    label70:
+    do
+    {
+      return;
+      if (!"readyEvent".equals(paramContext)) {
+        break;
+      }
+    } while (this.a.a == null);
+    this.a.a.b();
+    return;
+    bbmy.a(this.a.getActivity(), 1, "unknown event: " + paramContext, 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     twf
  * JD-Core Version:    0.7.0.1
  */

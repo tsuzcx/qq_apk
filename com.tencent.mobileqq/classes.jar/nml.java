@@ -1,16 +1,20 @@
-import com.tencent.biz.qqstory.pgc.QQStoryDiscoverSearchDialog;
-import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView.PullToRefreshListener;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
 
 public class nml
-  implements QQStoryPullToRefreshListView.PullToRefreshListener
 {
-  public nml(QQStoryDiscoverSearchDialog paramQQStoryDiscoverSearchDialog) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private Button jdField_a_of_type_AndroidWidgetButton;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private String jdField_a_of_type_JavaLangString;
+  private View b;
+  private View c;
   
-  public void a()
-  {
-    this.a.a = 1;
-    this.a.a(null);
-  }
+  private nml(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
 }
 
 

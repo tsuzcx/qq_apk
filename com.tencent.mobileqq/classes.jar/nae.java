@@ -1,88 +1,38 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import java.util.ArrayList;
 
-public final class nae
-  implements BusinessObserver
+public class nae
+  implements ViewPager.OnPageChangeListener
 {
-  public nae(PublicAccountObserver paramPublicAccountObserver, String paramString, Context paramContext, AppInterface paramAppInterface) {}
+  public nae(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
+    ReadInJoyNativeAdFragment.a(this.a, Math.max(ReadInJoyNativeAdFragment.a(this.a), paramInt + 1));
+    ((nak)ReadInJoyNativeAdFragment.a(this.a).get(paramInt)).a();
+    if (paramInt + 1 < ReadInJoyNativeAdFragment.a(this.a).size()) {
+      ((nak)ReadInJoyNativeAdFragment.a(this.a).get(paramInt + 1)).b();
     }
-    if (!paramBoolean)
+    if ((ReadInJoyNativeAdFragment.a(this.a) != null) && (ReadInJoyNativeAdFragment.a(this.a).a == 1) && ((ReadInJoyNativeAdFragment.b(this.a) == 1) || (ReadInJoyNativeAdFragment.b(this.a) == 2)))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+      if (paramInt != ReadInJoyNativeAdFragment.a(this.a).size() - 1) {
+        break label155;
       }
-      PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430035);
+      ReadInJoyNativeAdFragment.a(this.a).setVisibility(8);
+    }
+    for (;;)
+    {
+      ReadInJoyNativeAdFragment.a(this.a);
       return;
+      label155:
+      ReadInJoyNativeAdFragment.a(this.a).setVisibility(0);
     }
-    try
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle == null) {
-        break label360;
-      }
-      mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
-      localFollowResponse.mergeFrom(paramBundle);
-      paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("PublicAccountUtil", 2, "followUin2, retCode=" + paramInt + ", uin=" + this.jdField_a_of_type_JavaLangString + ", errInfo=" + ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).err_info.get());
-      }
-      if (paramInt == 0)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
-          this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
-        }
-        PublicAccountUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-    }
-    catch (Exception paramBundle)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
-      }
-      PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430035);
-      return;
-    }
-    if (paramInt == 58)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
-      }
-      PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430043);
-      return;
-    }
-    if (paramInt == 65)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
-      }
-      PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430044);
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
-    }
-    PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430035);
-    return;
-    label360:
-    if (this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountObserver.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
-    }
-    PublicAccountUtil.a(this.jdField_a_of_type_AndroidContentContext, 2131430035);
   }
 }
 

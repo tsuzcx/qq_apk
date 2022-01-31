@@ -1,35 +1,45 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
-import com.tencent.mobileqq.activity.ChatHistory.PlayingPttHistoryInfo;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emoticonview.EmoticonUtils;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.album.tools.PhotoSelecter;
 
 public class sen
-  implements View.OnClickListener
+  implements Comparable<sen>
 {
-  public sen(ChatHistory.ChatHistoryAdapter paramChatHistoryAdapter, PicEmoticonInfo paramPicEmoticonInfo) {}
+  public int a;
+  Bitmap a;
+  public sdg a;
   
-  public void onClick(View paramView)
+  public int a(@NonNull sen paramsen)
   {
-    if ((paramView != null) && ((paramView instanceof ImageView)))
+    return (int)(this.jdField_a_of_type_Sdg.b - paramsen.jdField_a_of_type_Sdg.b);
+  }
+  
+  public Bitmap a(Context paramContext)
+  {
+    BitmapFactory.Options localOptions;
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+      localOptions = new BitmapFactory.Options();
+    }
+    try
     {
-      View localView = (View)paramView.getParent();
-      paramView = paramView.getTag();
-      String str = EmoticonUtils.o.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.epId).replace("[eId]", this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.eId);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a = new ChatHistory.PlayingPttHistoryInfo(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = this.jdField_a_of_type_Sdg.a(paramContext, 1, localOptions);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = seo.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      return this.jdField_a_of_type_AndroidGraphicsBitmap;
+    }
+    catch (Exception paramContext)
+    {
+      for (;;)
+      {
+        urk.c(PhotoSelecter.a, "get thumbnail failed!", paramContext);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a.a.a(1, localView, paramView, str);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sen
  * JD-Core Version:    0.7.0.1
  */

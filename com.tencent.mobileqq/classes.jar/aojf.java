@@ -1,21 +1,20 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.NormalFacePackage;
-import java.io.File;
-import java.io.FileFilter;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aojf
-  implements FileFilter
+class aojf
+  implements DialogInterface.OnClickListener
 {
-  public aojf(NormalFacePackage paramNormalFacePackage) {}
+  aojf(aojd paramaojd, Context paramContext, aoji paramaoji) {}
   
-  public boolean accept(File paramFile)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramFile = paramFile.getName();
-    return (paramFile.endsWith(".jpg")) || (paramFile.endsWith(".png")) || (paramFile.endsWith(".bmp")) || (paramFile.endsWith(".apng")) || (paramFile.endsWith(".gif"));
+    aojd.b(this.jdField_a_of_type_Aojd, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Aoji);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aojf
  * JD-Core Version:    0.7.0.1
  */

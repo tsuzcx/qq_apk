@@ -1,29 +1,28 @@
-import com.tencent.mobileqq.troop.utils.TroopFileError.TroopFileErrorFilter;
+import android.support.v4.view.ViewPager;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView;
 
 public class wgw
-  implements TroopFileError.TroopFileErrorFilter
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public String a;
+  public wgw(RelativePersonalBottomView paramRelativePersonalBottomView) {}
   
-  public wgw(String paramString)
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    this.a = paramString;
-  }
-  
-  public long a()
-  {
-    try
-    {
-      long l = Long.parseLong(this.a);
-      return l;
+    if (RelativePersonalBottomView.a(this.a).getId() == paramInt) {
+      RelativePersonalBottomView.a(this.a).setCurrentItem(0);
     }
-    catch (Exception localException) {}
-    return 0L;
+    while (RelativePersonalBottomView.b(this.a).getId() != paramInt) {
+      return;
+    }
+    RelativePersonalBottomView.a(this.a).setCurrentItem(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wgw
  * JD-Core Version:    0.7.0.1
  */

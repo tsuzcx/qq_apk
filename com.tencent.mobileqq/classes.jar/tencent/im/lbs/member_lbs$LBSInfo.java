@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class member_lbs$LBSInfo
-  extends MessageMicro
+  extends MessageMicro<LBSInfo>
 {
   public static final int INT64_PRECISION_FIELD_NUMBER = 6;
   public static final int MSG_ATTR_FIELD_NUMBER = 5;
@@ -20,13 +20,13 @@ public final class member_lbs$LBSInfo
   public final PBInt64Field int64_precision = PBField.initInt64(0L);
   public member_lbs.Attr msg_attr = new member_lbs.Attr();
   public member_lbs.GPS msg_gps = new member_lbs.GPS();
-  public final PBRepeatMessageField rpt_msg_cells = PBField.initRepeatMessage(member_lbs.Cell.class);
-  public final PBRepeatMessageField rpt_msg_wifis = PBField.initRepeatMessage(member_lbs.Wifi.class);
+  public final PBRepeatMessageField<member_lbs.Cell> rpt_msg_cells = PBField.initRepeatMessage(member_lbs.Cell.class);
+  public final PBRepeatMessageField<member_lbs.Wifi> rpt_msg_wifis = PBField.initRepeatMessage(member_lbs.Wifi.class);
   public final PBFixed32Field uint32_ip = PBField.initFixed32(0);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.lbs.member_lbs.LBSInfo
  * JD-Core Version:    0.7.0.1
  */

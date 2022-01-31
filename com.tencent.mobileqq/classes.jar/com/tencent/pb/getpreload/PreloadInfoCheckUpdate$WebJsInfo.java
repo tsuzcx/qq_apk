@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class PreloadInfoCheckUpdate$WebJsInfo
-  extends MessageMicro
+  extends MessageMicro<WebJsInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 48, 58, 66 }, new String[] { "head", "err_page_url", "err_file", "err_line", "err_message", "err_timestamp", "err_level", "phone_model" }, new Object[] { null, "", "", "", "", Long.valueOf(0L), "", "" }, WebJsInfo.class);
   public final PBStringField err_file = PBField.initString("");
@@ -21,7 +21,7 @@ public final class PreloadInfoCheckUpdate$WebJsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.getpreload.PreloadInfoCheckUpdate.WebJsInfo
  * JD-Core Version:    0.7.0.1
  */

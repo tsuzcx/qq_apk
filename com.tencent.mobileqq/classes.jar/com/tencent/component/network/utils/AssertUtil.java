@@ -2,7 +2,7 @@ package com.tencent.component.network.utils;
 
 public class AssertUtil
 {
-  public static void a(boolean paramBoolean)
+  public static void assertTrue(boolean paramBoolean)
   {
     if (!paramBoolean) {
       throw new AssertionError();

@@ -1,76 +1,60 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import com.tencent.widget.PullToZoomHeaderListView;
-import com.tencent.widget.immersive.ImmersiveTitleBar2;
+import android.text.TextUtils;
 
 public class svm
-  implements AbsListView.OnScrollListener
 {
-  public svm(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public int a;
+  public String a;
+  public int b;
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public svm()
   {
-    if (this.a.jdField_b_of_type_Int != paramInt) {
-      this.a.jdField_b_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = "";
+    spz localspz = (spz)sqg.a(10);
+    String str = vlf.a();
+    this.jdField_a_of_type_JavaLangString = ((String)localspz.b("key_story_msg_tab_autoshow_date", this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_Int = ((Integer)localspz.b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int))).intValue();
+    this.b = ((Integer)localspz.b("key_story_msg_tab_autoshow_quota", Integer.valueOf(this.b))).intValue();
+    if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, str))
+    {
+      this.jdField_a_of_type_JavaLangString = str;
+      this.jdField_a_of_type_Int = 0;
+      localspz.b("key_story_msg_tab_autoshow_date", this.jdField_a_of_type_JavaLangString);
+      localspz.b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int));
     }
+    urk.a(svc.b(), "MsgTabShowCounter(): %d/%d @ %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString);
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a()
   {
-    paramAbsListView = this.a.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView.getChildAt(0);
-    Object localObject;
-    if ((paramAbsListView != null) && (paramInt1 == 0))
+    b();
+    this.jdField_a_of_type_Int += 1;
+    ((spz)sqg.a(10)).b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int));
+    urk.a(svc.b(), "addAutoShowCount(): %d/%d @ %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public boolean a()
+  {
+    b();
+    urk.a(svc.b(), "shouldAutoShow(): %d/%d @ %s", Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), this.jdField_a_of_type_JavaLangString);
+    return this.jdField_a_of_type_Int < this.b;
+  }
+  
+  public void b()
+  {
+    String str = vlf.a();
+    if (!TextUtils.equals(str, this.jdField_a_of_type_JavaLangString))
     {
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.jdField_a_of_type_Int == 33) || (this.a.d == null)) {
-        return;
-      }
-      paramInt1 = Math.abs(paramAbsListView.getTop());
-      localObject = null;
-      if ((paramInt1 <= this.a.jdField_a_of_type_Int) || (paramInt1 < this.a.c) || (this.a.d.getVisibility() != 8)) {
-        break label180;
-      }
-      paramAbsListView = this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation;
-    }
-    for (;;)
-    {
-      if ((paramAbsListView != null) && (paramAbsListView != this.a.d.getAnimation()))
-      {
-        paramAbsListView.reset();
-        this.a.d.startAnimation(paramAbsListView);
-        this.a.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.startAnimation(paramAbsListView);
-      }
-      this.a.jdField_a_of_type_Int = paramInt1;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView == null) {
-        break;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.b("map_key_extend_friend_info");
-      return;
-      label180:
-      paramAbsListView = localObject;
-      if (paramInt1 < this.a.jdField_a_of_type_Int)
-      {
-        paramAbsListView = localObject;
-        if (paramInt1 <= this.a.c)
-        {
-          paramAbsListView = localObject;
-          if (this.a.d.getVisibility() == 0) {
-            paramAbsListView = this.a.jdField_b_of_type_AndroidViewAnimationAlphaAnimation;
-          }
-        }
-      }
+      spz localspz = (spz)sqg.a(10);
+      this.jdField_a_of_type_JavaLangString = str;
+      this.jdField_a_of_type_Int = 0;
+      localspz.b("key_story_msg_tab_autoshow_date", this.jdField_a_of_type_JavaLangString);
+      localspz.b("key_story_msg_tab_autoshow_count", Integer.valueOf(this.jdField_a_of_type_Int));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     svm
  * JD-Core Version:    0.7.0.1
  */

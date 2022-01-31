@@ -1,22 +1,20 @@
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.View;
-import android.view.View.OnCreateContextMenuListener;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class tuo
-  implements View.OnCreateContextMenuListener
+class tuo
+  implements DialogInterface.OnDismissListener
 {
-  public tuo(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  tuo(tun paramtun, VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramContextMenu.clear();
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoViewVideoHolder.c(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tuo
  * JD-Core Version:    0.7.0.1
  */

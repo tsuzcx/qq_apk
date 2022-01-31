@@ -1,19 +1,20 @@
-import android.os.Bundle;
-import com.tencent.open.downloadnew.MyAppApi;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public final class alob
-  implements Runnable
+class alob
+  extends AnimatorListenerAdapter
 {
-  public alob(Bundle paramBundle) {}
+  alob(aloa paramaloa) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    MyAppApi.a().a(this.a);
+    super.onAnimationEnd(paramAnimator);
+    aloa.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alob
  * JD-Core Version:    0.7.0.1
  */

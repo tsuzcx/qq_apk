@@ -239,9 +239,9 @@ public final class a
       if (!paramBoolean1) {
         break label729;
       }
-      localCrashDetailBean.C = com.tencent.bugly.crashreport.common.info.b.h();
-      localCrashDetailBean.D = com.tencent.bugly.crashreport.common.info.b.f();
-      localCrashDetailBean.E = com.tencent.bugly.crashreport.common.info.b.j();
+      localCrashDetailBean.C = com.tencent.bugly.crashreport.common.info.b.k();
+      localCrashDetailBean.D = com.tencent.bugly.crashreport.common.info.b.i();
+      localCrashDetailBean.E = com.tencent.bugly.crashreport.common.info.b.m();
       if (localCrashDetailBean.w == null) {
         localCrashDetailBean.w = z.a(this.a, c.e, c.h);
       }

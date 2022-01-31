@@ -2,12 +2,17 @@ package com.tencent.upload.uinterface.data;
 
 import FileUpload.UploadVideoInfoReq;
 import FileUpload.UploadVideoInfoRsp;
+import android.media.MediaMetadataRetriever;
+import android.text.TextUtils;
 import android.util.Log;
-import com.tencent.upload.a.a;
-import com.tencent.upload.common.Const.UploadRetCode;
-import com.tencent.upload.common.Const.b;
+import com.tencent.upload.report.ReportManager;
 import com.tencent.upload.uinterface.AbstractUploadTask;
 import com.tencent.upload.uinterface.TaskTypeConfig;
+import com.tencent.upload.utils.Const.FileType;
+import com.tencent.upload.utils.Const.UploadRetCode;
+import com.tencent.upload.utils.JceEncoder;
+import com.tencent.upload.utils.UploadLog;
+import java.io.File;
 import java.util.Map;
 
 public class VideoUploadTask
@@ -21,6 +26,8 @@ public class VideoUploadTask
   public int iIsNew;
   public int iIsOriginalVideo = 0;
   public int iPlayTime = 0;
+  private int iVideoH;
+  private int iVideoW;
   public String sCoverUrl = "";
   public String sDesc = "";
   public String sTitle = "";
@@ -32,8 +39,66 @@ public class VideoUploadTask
     this.mAppid = "video_qzone";
   }
   
+  private void initVideoSize()
+  {
+    k = 0;
+    i = 0;
+    if (TextUtils.isEmpty(this.uploadFilePath)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!new File(this.uploadFilePath).exists());
+      localMediaMetadataRetriever = new MediaMetadataRetriever();
+      for (;;)
+      {
+        try
+        {
+          localMediaMetadataRetriever.setDataSource(this.uploadFilePath);
+          str1 = localMediaMetadataRetriever.extractMetadata(18);
+          str2 = localMediaMetadataRetriever.extractMetadata(19);
+          str3 = localMediaMetadataRetriever.extractMetadata(24);
+        }
+        catch (Exception localException)
+        {
+          String str1;
+          String str2;
+          String str3;
+          int j;
+          UploadLog.w("VideoUploadTask", "MediaMetadataRetriever exception", localException);
+          localMediaMetadataRetriever.release();
+          i = k;
+          continue;
+        }
+        finally
+        {
+          localMediaMetadataRetriever.release();
+        }
+        try
+        {
+          this.iVideoW = Integer.parseInt(str1);
+          this.iVideoH = Integer.parseInt(str2);
+          j = Integer.valueOf(str3).intValue();
+          i = j;
+        }
+        catch (NumberFormatException localNumberFormatException)
+        {
+          this.iVideoW = 0;
+          this.iVideoH = 0;
+          UploadLog.w("VideoUploadTask", "Video size is not number format...", localNumberFormatException);
+        }
+      }
+      localMediaMetadataRetriever.release();
+    } while (i % 180 == 0);
+    i = this.iVideoH;
+    this.iVideoH = this.iVideoW;
+    this.iVideoW = i;
+  }
+  
   public byte[] buildExtra()
   {
+    initVideoSize();
     UploadVideoInfoReq localUploadVideoInfoReq = new UploadVideoInfoReq();
     localUploadVideoInfoReq.sTitle = this.sTitle;
     localUploadVideoInfoReq.sDesc = this.sDesc;
@@ -50,25 +115,27 @@ public class VideoUploadTask
       localUploadVideoInfoReq.iIsOriginalVideo = this.iIsOriginalVideo;
       localUploadVideoInfoReq.iIsFormatF20 = this.iIsFormatF20;
       localUploadVideoInfoReq.extend_info = this.extend_info;
+      localUploadVideoInfoReq.width = this.iVideoW;
+      localUploadVideoInfoReq.height = this.iVideoH;
       try
       {
-        arrayOfByte = com.tencent.upload.e.b.a(localUploadVideoInfoReq);
+        arrayOfByte = JceEncoder.encode(localUploadVideoInfoReq);
         return arrayOfByte;
       }
       catch (Exception localException)
       {
-        com.tencent.upload.common.b.e("VideoUploadTask", localException.toString());
+        UploadLog.e("VideoUploadTask", localException.toString());
       }
     }
     return null;
   }
   
-  public Const.b getFileType()
+  public Const.FileType getFileType()
   {
-    return Const.b.d;
+    return Const.FileType.Video;
   }
   
-  protected int getMaxNetworkRetryTimes()
+  public int getMaxNetworkRetryTimes()
   {
     return 24;
   }
@@ -78,17 +145,12 @@ public class VideoUploadTask
     return TaskTypeConfig.VideoUploadTaskType;
   }
   
-  protected void onDestroy()
-  {
-    a.b(this, this.mSessionId);
-  }
-  
-  protected void processFileUploadFinishRsp(byte[] paramArrayOfByte)
+  public void processFileUploadFinishRsp(byte[] paramArrayOfByte)
   {
     Object localObject2 = null;
     try
     {
-      localObject1 = (UploadVideoInfoRsp)com.tencent.upload.e.b.a(UploadVideoInfoRsp.class, paramArrayOfByte);
+      localObject1 = (UploadVideoInfoRsp)JceEncoder.decode(UploadVideoInfoRsp.class, paramArrayOfByte);
       localObject2 = localObject1;
       localObject1 = null;
     }
@@ -97,9 +159,9 @@ public class VideoUploadTask
       for (;;)
       {
         localObject1 = Log.getStackTraceString(localException);
-        com.tencent.upload.common.b.b("VideoUploadTask", "process finish", localException);
+        UploadLog.w("VideoUploadTask", "process finish", localException);
       }
-      com.tencent.upload.common.b.b("VideoUploadTask", "onUploadSucceed flowid = " + this.flowId + " filepath = " + this.mFilePath);
+      UploadLog.d("VideoUploadTask", "onUploadSucceed flowid = " + this.flowId + " filepath = " + this.mFilePath);
       Object localObject1 = new VideoUploadResult();
       ((VideoUploadResult)localObject1).flowId = this.flowId;
       ((VideoUploadResult)localObject1).sVid = ((UploadVideoInfoRsp)localObject2).sVid;
@@ -120,7 +182,7 @@ public class VideoUploadTask
     }
   }
   
-  protected void report(int paramInt, String paramString)
+  public void report(int paramInt, String paramString)
   {
     super.report(paramInt, paramString);
     paramString = this.mReportObj;
@@ -130,7 +192,7 @@ public class VideoUploadTask
       paramString.source = paramInt;
       if (!this.mReported)
       {
-        com.tencent.upload.report.b.a(getReportObj());
+        ReportManager.report(getReportObj());
         this.mReported = true;
       }
       return;

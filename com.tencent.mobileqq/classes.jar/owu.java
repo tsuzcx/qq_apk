@@ -1,24 +1,48 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.RectF;
-import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
-import com.tencent.biz.qqstory.widget.circularreveal.RectangleRevealAnimator;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class owu
-  implements ValueAnimator.AnimatorUpdateListener
+  implements ViewBase.OnClickListener
 {
-  public owu(RectangleRevealAnimator paramRectangleRevealAnimator, CircularRevealCompatLayout paramCircularRevealCompatLayout) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+  public final String a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public owu(ArticleInfo paramArticleInfo, Context paramContext)
   {
-    RectF localRectF = new RectF();
-    localRectF.top = ((Float)paramValueAnimator.getAnimatedValue("top")).floatValue();
-    localRectF.left = ((Float)paramValueAnimator.getAnimatedValue("left")).floatValue();
-    float f = localRectF.left;
-    localRectF.right = (((Float)paramValueAnimator.getAnimatedValue("width")).floatValue() + f);
-    f = localRectF.top;
-    localRectF.bottom = (((Float)paramValueAnimator.getAnimatedValue("height")).floatValue() + f);
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.setClipRect(localRectF, ((Float)paramValueAnimator.getAnimatedValue("radius")).floatValue());
+    this.jdField_a_of_type_JavaLangString = "OnCommunityCapsuleClickListener";
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  private void a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {}
+    String str;
+    do
+    {
+      return;
+      str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.b;
+      if (QLog.isColorLevel()) {
+        QLog.d("OnCommunityCapsuleClickListener", 2, "business url is " + str);
+      }
+    } while ((TextUtils.isEmpty(str)) || (this.jdField_a_of_type_AndroidContentContext == null));
+    obz.a(this.jdField_a_of_type_AndroidContentContext, str);
+    ndn.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    qoe.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID);
+    ndn.a(null, "", "0X8009BA6", "0X8009BA6", 0, 0, ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.a.a + "", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelID + "", "", false);
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    a();
   }
 }
 

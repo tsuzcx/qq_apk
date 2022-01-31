@@ -12,18 +12,19 @@ public class EditVideoMusicDialog$MusicPlayTask
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoMusic.a() != null)
+    if (this.this$0.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoMusic.a() != null)
     {
-      EditVideoMusicDialog localEditVideoMusicDialog = this.a;
+      EditVideoMusicDialog localEditVideoMusicDialog = this.this$0;
       localEditVideoMusicDialog.b += 1;
-      if (QLog.isColorLevel()) {}
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
+      if ((!QLog.isColorLevel()) || (this.this$0.isShowing())) {
+        this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(8);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog.MusicPlayTask
  * JD-Core Version:    0.7.0.1
  */

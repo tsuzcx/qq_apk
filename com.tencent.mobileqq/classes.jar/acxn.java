@@ -1,30 +1,31 @@
-import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
-import com.tencent.widget.ExpandableListView.OnGroupExpandListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import java.util.ArrayList;
+import java.util.List;
 
-public class acxn
-  implements ExpandableListView.OnGroupExpandListener
+class acxn
+  implements DialogInterface.OnClickListener
 {
-  public acxn(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  acxn(acxm paramacxm, List paramList, BaseChatPie paramBaseChatPie) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt == this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getGroupCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout != null))
+    switch (paramInt)
     {
-      if (!this.a.a()) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setVisible();
-      }
     }
-    else {
+    do
+    {
       return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
+      paramDialogInterface = aryb.a(acxm.a(this.jdField_a_of_type_Acxm), (ArrayList)this.jdField_a_of_type_JavaUtilList);
+    } while ((paramDialogInterface == null) || (paramDialogInterface.size() == 0));
+    acxm.a(this.jdField_a_of_type_Acxm, paramDialogInterface);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(false, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acxn
  * JD-Core Version:    0.7.0.1
  */

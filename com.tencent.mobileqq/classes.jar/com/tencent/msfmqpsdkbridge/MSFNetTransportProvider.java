@@ -1,11 +1,12 @@
 package com.tencent.msfmqpsdkbridge;
 
+import ajfb;
+import ajfe;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.BusinessHandler;
+import bbsx;
+import bbsy;
+import bbsz;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mqpsdk.INetTransportProvider;
-import com.tencent.mqpsdk.INetTransportProvider.INetTransportCodec;
-import com.tencent.mqpsdk.INetTransportProvider.INetTransportEventListener;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import java.util.Iterator;
@@ -14,54 +15,46 @@ import java.util.Map;
 import java.util.Set;
 
 public class MSFNetTransportProvider
-  extends BusinessHandler
-  implements INetTransportProvider
+  extends ajfb
+  implements bbsx
 {
-  private Map a;
-  private Map b;
-  private Map c = new LinkedHashMap();
+  private Map<String, bbsy> mCodecMap;
+  private Map<String, bbsz> mEventListenerMap;
+  private Map<String, String> mServiceNameMap = new LinkedHashMap();
   
   public MSFNetTransportProvider(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.c.put("SecIntChkSvc.MainCmd", "intchk");
-    this.c.put("SecSafeChkSvc.MainCmd", "app_scan");
-    this.c.put("SecCheckSigSvc.UploadReq", "sig_check");
+    this.mServiceNameMap.put("SecIntChkSvc.MainCmd", "intchk");
+    this.mServiceNameMap.put("SecSafeChkSvc.MainCmd", "app_scan");
+    this.mServiceNameMap.put("SecCheckSigSvc.UploadReq", "sig_check");
   }
   
-  public int a(Object paramObject)
+  public bbsy getCodec(String paramString)
   {
-    if ((paramObject instanceof ToServiceMsg)) {
-      b((ToServiceMsg)paramObject);
-    }
-    return 0;
-  }
-  
-  public INetTransportProvider.INetTransportCodec a(String paramString)
-  {
-    if (this.a == null) {
-      this.a = new LinkedHashMap();
+    if (this.mCodecMap == null) {
+      this.mCodecMap = new LinkedHashMap();
     }
     Object localObject2;
-    if (this.a.containsKey(paramString))
+    if (this.mCodecMap.containsKey(paramString))
     {
-      localObject2 = (INetTransportProvider.INetTransportCodec)this.a.get(paramString);
+      localObject2 = (bbsy)this.mCodecMap.get(paramString);
       return localObject2;
     }
     Object localObject1;
     if ((TextUtils.equals(paramString, "intchk")) || (TextUtils.equals(paramString, "app_scan")) || (TextUtils.equals(paramString, "sig_check")))
     {
-      if (!this.c.containsValue(paramString)) {
+      if (!this.mServiceNameMap.containsValue(paramString)) {
         break label182;
       }
-      localObject2 = this.c.keySet().iterator();
+      localObject2 = this.mServiceNameMap.keySet().iterator();
       do
       {
         if (!((Iterator)localObject2).hasNext()) {
           break;
         }
         localObject1 = (String)((Iterator)localObject2).next();
-      } while (!((String)this.c.get(localObject1)).equalsIgnoreCase(paramString));
+      } while (!((String)this.mServiceNameMap.get(localObject1)).equalsIgnoreCase(paramString));
     }
     for (;;)
     {
@@ -72,7 +65,7 @@ public class MSFNetTransportProvider
         if (localObject1 == null) {
           break;
         }
-        this.a.put(paramString, localObject1);
+        this.mCodecMap.put(paramString, localObject1);
         return localObject1;
       }
       label182:
@@ -80,12 +73,12 @@ public class MSFNetTransportProvider
     }
   }
   
-  protected Class a()
+  public Class<? extends ajfe> observerClass()
   {
     return null;
   }
   
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     if ((paramObject == null) || (!paramFromServiceMsg.isSuccess())) {}
     label11:
@@ -99,26 +92,34 @@ public class MSFNetTransportProvider
           do
           {
             return;
-          } while (this.b == null);
+          } while (this.mEventListenerMap == null);
           paramObject = paramFromServiceMsg.getServiceCmd();
-        } while (!this.c.containsKey(paramObject));
-        paramObject = (String)this.c.get(paramObject);
-      } while (!this.b.containsKey(paramObject));
-      paramObject = (INetTransportProvider.INetTransportEventListener)this.b.get(paramObject);
+        } while (!this.mServiceNameMap.containsKey(paramObject));
+        paramObject = (String)this.mServiceNameMap.get(paramObject);
+      } while (!this.mEventListenerMap.containsKey(paramObject));
+      paramObject = (bbsz)this.mEventListenerMap.get(paramObject);
     } while (paramObject == null);
     paramObject.a(paramToServiceMsg, paramFromServiceMsg);
   }
   
-  public void a(String paramString, INetTransportProvider.INetTransportEventListener paramINetTransportEventListener)
+  public int send(Object paramObject)
+  {
+    if ((paramObject instanceof ToServiceMsg)) {
+      sendPbReq((ToServiceMsg)paramObject);
+    }
+    return 0;
+  }
+  
+  public void setNetTransportEventListener(String paramString, bbsz parambbsz)
   {
     if (TextUtils.isEmpty(paramString)) {}
-    while (paramINetTransportEventListener == null) {
+    while (parambbsz == null) {
       return;
     }
-    if (this.b == null) {
-      this.b = new LinkedHashMap();
+    if (this.mEventListenerMap == null) {
+      this.mEventListenerMap = new LinkedHashMap();
     }
-    this.b.put(paramString, paramINetTransportEventListener);
+    this.mEventListenerMap.put(paramString, parambbsz);
   }
 }
 

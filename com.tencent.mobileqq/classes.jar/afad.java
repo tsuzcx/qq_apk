@@ -1,31 +1,107 @@
-import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.PinnedHeaderExpandableListView;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemRequestInfoView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-class afad
-  implements Runnable
+public class afad
+  extends ajmm
 {
-  afad(afac paramafac, boolean paramBoolean1, boolean paramBoolean2) {}
+  public afad(SystemRequestInfoView paramSystemRequestInfoView) {}
   
-  public void run()
+  protected void a(String paramString)
   {
-    this.jdField_a_of_type_Afac.a.a(this.jdField_a_of_type_Boolean, this.b);
-    this.jdField_a_of_type_Afac.a.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.springBackOverScrollHeaderView();
-    if (this.b)
+    if (this.a.a())
     {
-      this.jdField_a_of_type_Afac.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Afac.a.jdField_a_of_type_ComTencentWidgetPinnedHeaderExpandableListView.setSelection(0);
-      }
+      paramString = this.a.getResources().getString(2131654104);
+      bbmy.a(this.a.getContext(), 1, paramString, 0).b(this.a.a());
+    }
+    while (!QLog.isColorLevel()) {
       return;
     }
-    QQToast.a(this.jdField_a_of_type_Afac.a, 1, this.jdField_a_of_type_Afac.a.getString(2131434365), 0).b(this.jdField_a_of_type_Afac.a.getTitleBarHeight());
+    QLog.d("SystemRequestInfoView", 2, "onSendSystemMsgActionError");
   }
+  
+  protected void a(boolean paramBoolean, String paramString) {}
+  
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SystemRequestInfoView", 2, "onSendSystemMsgActionFin");
+    }
+    if (!this.a.a()) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SystemRequestInfoView", 2, "onSendSystemMsgActionFin stopProgress = fasle");
+      }
+    }
+    long l1;
+    structmsg.StructMsg localStructMsg;
+    for (;;)
+    {
+      return;
+      long l2 = axcy.a().b();
+      l1 = l2;
+      if (!TextUtils.isEmpty(paramString1)) {}
+      try
+      {
+        l1 = Long.parseLong(paramString1);
+        localStructMsg = axcy.a().a(Long.valueOf(l1));
+        if (!paramBoolean) {
+          if (!TextUtils.isEmpty(paramString3))
+          {
+            bbmy.a(this.a.getContext(), 1, paramString3, 0).b(this.a.a());
+            if (!axda.a(localStructMsg, paramInt3, paramString2, paramString4)) {
+              continue;
+            }
+            SystemRequestInfoView.a(this.a).finish();
+            return;
+          }
+        }
+      }
+      catch (Exception paramString1)
+      {
+        for (;;)
+        {
+          paramString1.printStackTrace();
+          l1 = l2;
+          continue;
+          paramString3 = this.a.getResources().getString(2131653422);
+        }
+        axda.a(localStructMsg, paramInt1, paramString2, paramInt2);
+        paramString2 = null;
+        if (paramInt1 != 1) {
+          break label234;
+        }
+      }
+    }
+    SystemRequestInfoView.a(this.a).finish();
+    paramString1 = this.a.getResources().getString(2131627155);
+    for (;;)
+    {
+      bbmy.a(this.a.getContext(), 2, paramString1, 0).b(this.a.a());
+      return;
+      label234:
+      paramString1 = paramString2;
+      if (paramInt1 == 0)
+      {
+        paramString1 = paramString2;
+        if (localStructMsg != null)
+        {
+          paramString1 = this.a.getResources().getString(2131627143);
+          AutoRemarkActivity.a(SystemRequestInfoView.a(this.a), 1017, String.valueOf(localStructMsg.req_uin.get()), l1, null);
+        }
+      }
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afad
  * JD-Core Version:    0.7.0.1
  */

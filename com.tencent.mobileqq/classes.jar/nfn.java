@@ -1,14 +1,28 @@
-import com.tencent.biz.qqstory.comment.FeedCommentEventHandler;
-import com.tencent.biz.qqstory.comment.FeedCommentEventHandler.OnActionSheetButtonClickListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
 
 public class nfn
-  implements Runnable
+  extends ajpe
 {
-  public nfn(FeedCommentEventHandler.OnActionSheetButtonClickListener paramOnActionSheetButtonClickListener) {}
+  public nfn(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString)
   {
-    FeedCommentEventHandler.a(this.a.a, FeedCommentEventHandler.OnActionSheetButtonClickListener.a(this.a), FeedCommentEventHandler.OnActionSheetButtonClickListener.a(this.a));
+    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null)
+    {
+      if ((paramBoolean) && (this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(paramString)))
+      {
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(ajjy.a(2131635475));
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
+      }
+    }
+    else {
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(ajjy.a(2131635454));
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130845999);
   }
 }
 

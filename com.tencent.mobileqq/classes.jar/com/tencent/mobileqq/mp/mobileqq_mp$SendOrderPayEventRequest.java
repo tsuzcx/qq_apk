@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class mobileqq_mp$SendOrderPayEventRequest
-  extends MessageMicro
+  extends MessageMicro<SendOrderPayEventRequest>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26 }, new String[] { "versionInfo", "cmd", "body" }, new Object[] { "", Integer.valueOf(0), "" }, SendOrderPayEventRequest.class);
   public final PBStringField body = PBField.initString("");

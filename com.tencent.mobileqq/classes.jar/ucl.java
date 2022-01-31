@@ -1,26 +1,29 @@
-import com.tencent.biz.helper.TroopInfoActivityHelper.ISetSameCityCheckTypeInfo;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.parallel.ParallelJobSegment;
 
-public class ucl
-  implements TroopInfoActivityHelper.ISetSameCityCheckTypeInfo
+class ucl
+  extends ParallelJobSegment<uiv, uci>
 {
-  public ucl(TroopInfoActivity paramTroopInfoActivity) {}
-  
-  public void a()
+  public ucl(uch paramuch)
   {
-    TroopInfoActivity.a(this.a, true, 0L, "", this.a.a.dwGroupClassExt, this.a.a.dwGroupClassExt);
+    this(paramuch, "RequestCommentListSegment");
   }
   
-  public void a(String paramString)
+  public ucl(uch paramuch, String paramString)
   {
-    this.a.j();
-    TroopInfoActivity.a(this.a, false, 0L, paramString, this.a.a.dwGroupClassExt, this.a.a.dwGroupClassExt);
+    super(paramString);
+  }
+  
+  protected void a(JobContext paramJobContext, uiv paramuiv)
+  {
+    szn localszn = new szn();
+    localszn.a = paramuiv;
+    slv.a().a(localszn, new ucm(this, paramJobContext, paramuiv));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ucl
  * JD-Core Version:    0.7.0.1
  */

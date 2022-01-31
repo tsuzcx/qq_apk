@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class SCUpdatePB$SCUpdateReq
-  extends MessageMicro
+  extends MessageMicro<SCUpdateReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34 }, new String[] { "cmd", "comm", "req0x01", "req0x02" }, new Object[] { Integer.valueOf(0), null, null, null }, SCUpdateReq.class);
   public final PBInt32Field cmd = PBField.initInt32(0);
@@ -16,7 +16,7 @@ public final class SCUpdatePB$SCUpdateReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.scupdate.SCUpdatePB.SCUpdateReq
  * JD-Core Version:    0.7.0.1
  */

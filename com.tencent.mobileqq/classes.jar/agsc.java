@@ -1,48 +1,24 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DoodleLayout;
+import com.tencent.mobileqq.activity.qwallet.redpacket.draw.DrawRedpacketPannelPreviewFragment;
 
 public class agsc
-  implements Runnable
+  implements View.OnLongClickListener
 {
-  public agsc(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, PersonalityLabel paramPersonalityLabel) {}
+  public agsc(DrawRedpacketPannelPreviewFragment paramDrawRedpacketPannelPreviewFragment) {}
   
-  public void run()
+  public boolean onLongClick(View paramView)
   {
-    PersonalityLabelGalleryActivity localPersonalityLabelGalleryActivity;
-    if (!this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.isFinishing())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabel, false);
-      if (NetworkUtil.d(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity)) {
-        break label101;
-      }
-      PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity, this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity.getResources().getString(2131433227));
-      if ((this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabel == null) || (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabel.getSize() <= 0)) {
-        break label91;
-      }
-      i = 1;
-      localPersonalityLabelGalleryActivity = this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity;
-      if (i == 0) {
-        break label96;
-      }
+    if ((DrawRedpacketPannelPreviewFragment.a(this.a) != null) && (DrawRedpacketPannelPreviewFragment.a(this.a).a(false, false) > 0) && (DrawRedpacketPannelPreviewFragment.a(this.a) != null)) {
+      DrawRedpacketPannelPreviewFragment.a(this.a).show();
     }
-    label91:
-    label96:
-    for (int i = 8;; i = 0)
-    {
-      localPersonalityLabelGalleryActivity.a(i, "加载失败", false);
-      return;
-      i = 0;
-      break;
-    }
-    label101:
-    PersonalityLabelGalleryActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelPersonalityLabelGalleryActivity);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agsc
  * JD-Core Version:    0.7.0.1
  */

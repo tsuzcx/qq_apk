@@ -1,29 +1,44 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class akwp
-  implements Runnable
+class akwp
+  extends Handler
 {
-  public akwp(SwiftBrowserLongClickHandler paramSwiftBrowserLongClickHandler, String paramString) {}
-  
-  public void run()
+  public akwp(akwo paramakwo, Looper paramLooper)
   {
-    Intent localIntent = new Intent("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
-    localIntent.setData(Uri.parse("file://" + this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserLongClickHandler.jdField_a_of_type_AndroidAppActivity.sendBroadcast(localIntent);
-    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserLongClickHandler.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserLongClickHandler.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserLongClickHandler.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserLongClickHandler.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 2, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserLongClickHandler.jdField_a_of_type_AndroidAppActivity.getString(2131430003, new Object[] { this.jdField_a_of_type_JavaLangString }), 1).b(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserLongClickHandler.jdField_a_of_type_Int);
+    do
+    {
+      return;
+      akwo.a(this.a);
+      return;
+      if (akwo.a(this.a))
+      {
+        akwo.a(this.a, false);
+        akvj.a();
+      }
+      try
+      {
+        akwo.b(this.a);
+        return;
+      }
+      catch (Throwable paramMessage) {}
+    } while (!QLog.isColorLevel());
+    QLog.i("QRSession", 2, paramMessage.getMessage(), paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akwp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.graphics.PointF;
-import android.util.Log;
-import android.view.View;
-
-public class aekc
-  implements ValueAnimator.AnimatorUpdateListener
+class aekc
+  implements aaed
 {
-  private View a;
+  aekc(aejb paramaejb) {}
   
-  public aekc(View paramView)
+  public void a()
   {
-    this.a = paramView;
+    ((aqyr)this.a.a(33)).c(2);
   }
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void b()
   {
-    paramValueAnimator = (PointF)paramValueAnimator.getAnimatedValue();
-    this.a.setX(paramValueAnimator.x);
-    this.a.setY(paramValueAnimator.y);
-    Log.i("tag", "x:" + paramValueAnimator.x + ",y:" + paramValueAnimator.y);
+    ((aqyr)this.a.a(33)).d(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aekc
  * JD-Core Version:    0.7.0.1
  */

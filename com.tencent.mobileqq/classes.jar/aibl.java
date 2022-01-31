@@ -1,22 +1,12 @@
-public class aibl
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.List;
+
+public abstract interface aibl
+  extends aibk
 {
-  public int a;
-  public CharSequence a;
-  public int b;
+  public abstract void a(String paramString);
   
-  public aibl(CharSequence paramCharSequence)
-  {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    this.jdField_a_of_type_Int = -1;
-    this.b = 0;
-  }
-  
-  public aibl(CharSequence paramCharSequence, int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
+  public abstract void a(List<MayKnowRecommend> paramList);
 }
 
 

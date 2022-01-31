@@ -1,31 +1,37 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
-import com.tencent.mobileqq.richmedia.capture.view.PtvTemplateProviderView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
-public final class ahrk
-  extends BroadcastReceiver
+public class ahrk
+  implements View.OnTouchListener
 {
-  private ahrk(PtvTemplateProviderView paramPtvTemplateProviderView) {}
+  float jdField_a_of_type_Float = 0.0F;
+  float b = 0.0F;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public ahrk(SelectMemberActivity paramSelectMemberActivity) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ("action_brocassreceiver_for_ptv".equals(paramIntent.getAction()))
+    int i = paramMotionEvent.getAction();
+    if (i == 0)
     {
-      CapturePtvTemplateManager.a().b(false);
-      PtvTemplateProviderView.a(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("PtvTemplateProviderView", 2, "PtvTemplateProviderView PtvBroadcastReceiver size=" + this.a.a.size());
+      this.jdField_a_of_type_Float = paramMotionEvent.getRawX();
+      this.b = paramMotionEvent.getRawY();
+    }
+    for (;;)
+    {
+      return false;
+      if ((i == 2) && ((paramMotionEvent.getRawX() - this.jdField_a_of_type_Float > 10.0F) || (paramMotionEvent.getRawY() - this.b > 10.0F))) {
+        this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a.b();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahrk
  * JD-Core Version:    0.7.0.1
  */

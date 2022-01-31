@@ -1,30 +1,37 @@
 package c.t.m.g;
 
+import android.location.Location;
+import android.os.Bundle;
+
 public final class ed
 {
-  public final float a;
-  public final float b;
-  public final float c;
-  private final long d;
-  private final long e;
+  public static final Location a = new Location("Empty");
   
-  public ed(long paramLong1, long paramLong2, float paramFloat1, float paramFloat2, float paramFloat3)
+  static
   {
-    this.d = paramLong1;
-    this.e = paramLong2;
-    this.a = paramFloat1;
-    this.b = paramFloat2;
-    this.c = paramFloat3;
+    new Bundle();
   }
   
-  public final float a()
+  public static String a(int paramInt1, int paramInt2)
   {
-    return (float)Math.sqrt(Math.pow(this.a, 2.0D) + Math.pow(this.b, 2.0D) + Math.pow(this.c, 2.0D));
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    boolean bool = cz.a().d("https");
+    StringBuilder localStringBuilder2 = new StringBuilder("http");
+    if (bool) {}
+    for (String str = "s";; str = "")
+    {
+      localStringBuilder1.append(str + "://lbs.map.qq.com/loc");
+      localStringBuilder1.append("?");
+      localStringBuilder1.append("c=1");
+      localStringBuilder1.append("&mars=").append(paramInt1);
+      localStringBuilder1.append("&obs=").append(paramInt2);
+      return localStringBuilder1.toString();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     c.t.m.g.ed
  * JD-Core Version:    0.7.0.1
  */

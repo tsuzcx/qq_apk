@@ -1,24 +1,34 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
+import android.content.DialogInterface.OnClickListener;
 import com.dataline.activities.LiteActivity;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class bj
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public bj(LiteActivity paramLiteActivity) {}
+  public bj(LiteActivity paramLiteActivity, InputStream paramInputStream) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (LiteActivity.a(this.a))
+    try
     {
-      LiteActivity.a(this.a, false);
-      this.a.finish();
+      this.jdField_a_of_type_JavaIoInputStream.close();
+      this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.finish();
+      return;
+    }
+    catch (IOException paramDialogInterface)
+    {
+      for (;;)
+      {
+        paramDialogInterface.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bj
  * JD-Core Version:    0.7.0.1
  */

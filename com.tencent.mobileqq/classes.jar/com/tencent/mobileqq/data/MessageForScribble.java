@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.widget.ProgressPieDrawable;
+import ajjy;
+import bbmh;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
@@ -22,7 +23,7 @@ public class MessageForScribble
   public int gifId;
   public String localFildPath = "";
   public MessageForScribble.FileExistInfo mExistInfo = new MessageForScribble.FileExistInfo(this);
-  public ProgressPieDrawable mProgressPie;
+  public bbmh mProgressPie;
   public int mRealProgress;
   public int mUiProgress;
   public Runnable mUpdateProgressRunnable;
@@ -81,7 +82,7 @@ public class MessageForScribble
     //   40: getfield 58	com/tencent/mobileqq/data/MessageForScribble:mExistInfo	Lcom/tencent/mobileqq/data/MessageForScribble$FileExistInfo;
     //   43: aload_0
     //   44: getfield 51	com/tencent/mobileqq/data/MessageForScribble:localFildPath	Ljava/lang/String;
-    //   47: invokestatic 112	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Z
+    //   47: invokestatic 112	bace:a	(Ljava/lang/String;)Z
     //   50: putfield 116	com/tencent/mobileqq/data/MessageForScribble$FileExistInfo:mLocalPathExist	Z
     //   53: aload_2
     //   54: astore_1
@@ -90,8 +91,8 @@ public class MessageForScribble
     //   57: aload_0
     //   58: getfield 58	com/tencent/mobileqq/data/MessageForScribble:mExistInfo	Lcom/tencent/mobileqq/data/MessageForScribble$FileExistInfo;
     //   61: aload_0
-    //   62: invokestatic 122	com/tencent/mobileqq/scribble/ScribbleMsgUtils:b	(Lcom/tencent/mobileqq/data/MessageForScribble;)Ljava/lang/String;
-    //   65: invokestatic 112	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Z
+    //   62: invokestatic 122	avhd:b	(Lcom/tencent/mobileqq/data/MessageForScribble;)Ljava/lang/String;
+    //   65: invokestatic 112	bace:a	(Ljava/lang/String;)Z
     //   68: putfield 125	com/tencent/mobileqq/data/MessageForScribble$FileExistInfo:mDataFileExist	Z
     //   71: aload_2
     //   72: astore_1
@@ -100,8 +101,8 @@ public class MessageForScribble
     //   75: aload_0
     //   76: getfield 58	com/tencent/mobileqq/data/MessageForScribble:mExistInfo	Lcom/tencent/mobileqq/data/MessageForScribble$FileExistInfo;
     //   79: aload_0
-    //   80: invokestatic 127	com/tencent/mobileqq/scribble/ScribbleMsgUtils:a	(Lcom/tencent/mobileqq/data/MessageForScribble;)Ljava/lang/String;
-    //   83: invokestatic 112	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Z
+    //   80: invokestatic 127	avhd:a	(Lcom/tencent/mobileqq/data/MessageForScribble;)Ljava/lang/String;
+    //   83: invokestatic 112	bace:a	(Ljava/lang/String;)Z
     //   86: putfield 130	com/tencent/mobileqq/data/MessageForScribble$FileExistInfo:mCombineFileExist	Z
     //   89: aload_2
     //   90: astore_1
@@ -237,10 +238,15 @@ public class MessageForScribble
   
   public String getSummaryMsg()
   {
-    return "[涂鸦]";
+    return ajjy.a(2131640783);
   }
   
-  protected void postRead()
+  public boolean isSupportReply()
+  {
+    return true;
+  }
+  
+  public void postRead()
   {
     parse();
   }
@@ -249,52 +255,52 @@ public class MessageForScribble
   public void prewrite()
   {
     // Byte code:
-    //   0: new 186	java/io/ByteArrayOutputStream
+    //   0: new 191	java/io/ByteArrayOutputStream
     //   3: dup
-    //   4: invokespecial 187	java/io/ByteArrayOutputStream:<init>	()V
+    //   4: invokespecial 192	java/io/ByteArrayOutputStream:<init>	()V
     //   7: astore 4
-    //   9: new 189	java/io/ObjectOutputStream
+    //   9: new 194	java/io/ObjectOutputStream
     //   12: dup
     //   13: aload 4
-    //   15: invokespecial 192	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   15: invokespecial 197	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   18: astore_2
     //   19: aload_2
     //   20: astore_1
     //   21: aload_0
     //   22: aload_2
-    //   23: invokespecial 194	com/tencent/mobileqq/data/MessageForScribble:writeExternal	(Ljava/io/ObjectOutput;)V
+    //   23: invokespecial 199	com/tencent/mobileqq/data/MessageForScribble:writeExternal	(Ljava/io/ObjectOutput;)V
     //   26: aload_2
     //   27: astore_1
     //   28: aload_2
-    //   29: invokevirtual 195	java/io/ObjectOutputStream:close	()V
+    //   29: invokevirtual 200	java/io/ObjectOutputStream:close	()V
     //   32: aload_2
     //   33: astore_1
     //   34: aload_0
     //   35: aload 4
-    //   37: invokevirtual 199	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   37: invokevirtual 204	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   40: putfield 94	com/tencent/mobileqq/data/MessageForScribble:msgData	[B
     //   43: aload_2
     //   44: ifnull +7 -> 51
     //   47: aload_2
-    //   48: invokevirtual 195	java/io/ObjectOutputStream:close	()V
+    //   48: invokevirtual 200	java/io/ObjectOutputStream:close	()V
     //   51: aload 4
     //   53: ifnull +8 -> 61
     //   56: aload 4
-    //   58: invokevirtual 200	java/io/ByteArrayOutputStream:close	()V
+    //   58: invokevirtual 205	java/io/ByteArrayOutputStream:close	()V
     //   61: return
     //   62: astore_1
     //   63: invokestatic 172	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   66: ifeq -15 -> 51
     //   69: ldc 8
     //   71: iconst_2
-    //   72: ldc 202
+    //   72: ldc 207
     //   74: aload_1
     //   75: invokestatic 177	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   78: goto -27 -> 51
     //   81: astore_1
     //   82: ldc 8
     //   84: iconst_2
-    //   85: ldc 202
+    //   85: ldc 207
     //   87: aload_1
     //   88: invokestatic 177	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   91: return
@@ -309,22 +315,22 @@ public class MessageForScribble
     //   104: astore_1
     //   105: ldc 8
     //   107: iconst_2
-    //   108: ldc 202
+    //   108: ldc 207
     //   110: aload_3
     //   111: invokestatic 177	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   114: aload_2
     //   115: ifnull +7 -> 122
     //   118: aload_2
-    //   119: invokevirtual 195	java/io/ObjectOutputStream:close	()V
+    //   119: invokevirtual 200	java/io/ObjectOutputStream:close	()V
     //   122: aload 4
     //   124: ifnull -63 -> 61
     //   127: aload 4
-    //   129: invokevirtual 200	java/io/ByteArrayOutputStream:close	()V
+    //   129: invokevirtual 205	java/io/ByteArrayOutputStream:close	()V
     //   132: return
     //   133: astore_1
     //   134: ldc 8
     //   136: iconst_2
-    //   137: ldc 202
+    //   137: ldc 207
     //   139: aload_1
     //   140: invokestatic 177	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   143: return
@@ -333,7 +339,7 @@ public class MessageForScribble
     //   148: ifeq -26 -> 122
     //   151: ldc 8
     //   153: iconst_2
-    //   154: ldc 202
+    //   154: ldc 207
     //   156: aload_1
     //   157: invokestatic 177	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   160: goto -38 -> 122
@@ -343,11 +349,11 @@ public class MessageForScribble
     //   166: aload_1
     //   167: ifnull +7 -> 174
     //   170: aload_1
-    //   171: invokevirtual 195	java/io/ObjectOutputStream:close	()V
+    //   171: invokevirtual 200	java/io/ObjectOutputStream:close	()V
     //   174: aload 4
     //   176: ifnull +8 -> 184
     //   179: aload 4
-    //   181: invokevirtual 200	java/io/ByteArrayOutputStream:close	()V
+    //   181: invokevirtual 205	java/io/ByteArrayOutputStream:close	()V
     //   184: aload_2
     //   185: athrow
     //   186: astore_1
@@ -355,14 +361,14 @@ public class MessageForScribble
     //   190: ifeq -16 -> 174
     //   193: ldc 8
     //   195: iconst_2
-    //   196: ldc 202
+    //   196: ldc 207
     //   198: aload_1
     //   199: invokestatic 177	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   202: goto -28 -> 174
     //   205: astore_1
     //   206: ldc 8
     //   208: iconst_2
-    //   209: ldc 202
+    //   209: ldc 207
     //   211: aload_1
     //   212: invokestatic 177	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   215: goto -31 -> 184

@@ -1,20 +1,27 @@
-import com.tencent.mobileqq.data.LebaFeedInfo;
-import com.tencent.mobileqq.leba.LebaFeedsManager;
-import java.util.Comparator;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
-public class aehc
-  implements Comparator
+class aehc
+  implements Animator.AnimatorListener
 {
-  private aehc(LebaFeedsManager paramLebaFeedsManager) {}
+  aehc(aegy paramaegy) {}
   
-  public int a(LebaFeedInfo paramLebaFeedInfo1, LebaFeedInfo paramLebaFeedInfo2)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return paramLebaFeedInfo2.serverUpdateTime - paramLebaFeedInfo1.serverUpdateTime;
+    this.a.a.removeHeaderView(aegy.a(this.a));
+    aegy.a(this.a, true);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aehc
  * JD-Core Version:    0.7.0.1
  */

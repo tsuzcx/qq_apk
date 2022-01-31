@@ -1,9 +1,9 @@
 package com.tencent.litetransfersdk;
 
+import atmp;
+import atmq;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RouterMsgRecord;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;

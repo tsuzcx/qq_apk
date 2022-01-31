@@ -1,32 +1,25 @@
-import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil;
-import com.tencent.mobileqq.richmedia.capture.util.DanceGameReporter;
-import com.tencent.mobileqq.shortvideo.dancemachine.BoyDataReport;
-import com.tencent.mobileqq.shortvideo.dancemachine.BoyDataReport.BoyItem;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public final class ahpi
-  implements Runnable
+class ahpi
+  implements View.OnTouchListener
 {
-  public ahpi(BoyDataReport paramBoyDataReport) {}
+  ahpi(ahph paramahph) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    CaptureReportUtil.a(this.a.b, this.a.jdField_a_of_type_Long);
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    if (paramMotionEvent.getAction() == 0)
     {
-      BoyDataReport.BoyItem localBoyItem = (BoyDataReport.BoyItem)localIterator.next();
-      if (localBoyItem.jdField_a_of_type_Boolean) {
-        CaptureReportUtil.a(localBoyItem.jdField_a_of_type_JavaLangString, "" + localBoyItem.jdField_a_of_type_Int, CaptureReportUtil.a(localBoyItem.b));
-      }
+      ahph.a(this.a).x = ((int)paramMotionEvent.getRawX());
+      ahph.a(this.a).y = ((int)paramMotionEvent.getRawY());
     }
-    DanceGameReporter.a().a(this.a);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahpi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,122 @@
-import android.os.Handler;
-import com.tencent.mobileqq.intervideo.huayang.HuayangPluginLauncher;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageView;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.confess.CircleGuideView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-public class aecr
-  implements Runnable
+class aecr
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private int jdField_a_of_type_Int;
+  aecr(aecp paramaecp, View paramView1, View paramView2) {}
   
-  public aecr(HuayangPluginLauncher paramHuayangPluginLauncher) {}
-  
-  public void run()
+  public void onGlobalLayout()
   {
-    HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Int += 20;
-    if (this.jdField_a_of_type_Int < 80) {
-      HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher).postDelayed(this, 300L);
+    int j;
+    Object localObject1;
+    int i;
+    Object localObject2;
+    alxu localalxu;
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getParent() == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(this.jdField_a_of_type_Aecp.jdField_a_of_type_JavaLangString, 2, "show holmes guide!");
+      }
+      j = ImmersiveUtils.getStatusBarHeight(this.jdField_a_of_type_Aecp.jdField_a_of_type_AndroidContentContext);
+      if (this.jdField_a_of_type_Aecp.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != 1034) {
+        break label488;
+      }
+      localObject1 = (CircleGuideView)this.jdField_a_of_type_AndroidViewView.findViewById(2131298654);
+      float f1 = this.b.getX();
+      float f2 = this.b.getWidth() / 2;
+      float f3 = j;
+      float f4 = this.b.getY();
+      float f5 = this.b.getHeight() / 2;
+      i = 24;
+      if (Build.VERSION.SDK_INT <= 18) {
+        i = 20;
+      }
+      ((CircleGuideView)localObject1).setCircle(f2 + f1, f5 + (f3 + f4), aciy.a(i, aecp.a(this.jdField_a_of_type_Aecp).getResources()));
+      localObject1 = this.jdField_a_of_type_Aecp.jdField_a_of_type_AndroidContentContext.getResources().getString(2131625462);
+      this.jdField_a_of_type_AndroidViewView.findViewById(2131301934).setPadding(0, j, 0, 0);
+      localObject2 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131301937);
+      localalxu = ((alxy)this.jdField_a_of_type_Aecp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(269)).b();
+      if (localalxu != null) {
+        break label585;
+      }
+      j = 5;
+      switch (j)
+      {
+      default: 
+        label247:
+        i = 2130844088;
+      }
+    }
+    for (;;)
+    {
+      ((ImageView)localObject2).setImageResource(i);
+      ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131301936)).setContentDescription(String.format((String)localObject1, new Object[] { Integer.valueOf(j) }));
+      this.jdField_a_of_type_Aecp.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(this.jdField_a_of_type_Aecp.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_Aecp.jdField_a_of_type_AndroidWidgetPopupWindow.setWindowLayoutMode(-1, -1);
+      this.jdField_a_of_type_Aecp.jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(true);
+      this.jdField_a_of_type_Aecp.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(new ColorDrawable(0));
+      this.jdField_a_of_type_Aecp.jdField_a_of_type_AndroidWidgetPopupWindow.setContentView(this.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_Aecp.jdField_a_of_type_AndroidWidgetPopupWindow.setClippingEnabled(false);
+      this.jdField_a_of_type_Aecp.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(new View(this.jdField_a_of_type_Aecp.jdField_a_of_type_AndroidContentContext), 0, 0, 0);
+      if (Build.VERSION.SDK_INT >= 16) {
+        this.jdField_a_of_type_Aecp.d.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+      }
+      return;
+      label488:
+      localObject1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131306301);
+      localObject2 = (ViewGroup.MarginLayoutParams)((View)localObject1).getLayoutParams();
+      ((ViewGroup.MarginLayoutParams)localObject2).leftMargin = (this.b.getLeft() + aecp.a(this.jdField_a_of_type_Aecp).getLeft());
+      ((ViewGroup.MarginLayoutParams)localObject2).topMargin = (this.b.getTop() + j + aecp.a(this.jdField_a_of_type_Aecp).getTop());
+      ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      localObject1 = this.jdField_a_of_type_Aecp.jdField_a_of_type_AndroidContentContext.getResources().getString(2131625461);
+      break;
+      label585:
+      j = localalxu.k;
+      break label247;
+      i = 2130844082;
+      continue;
+      i = 2130844083;
+      continue;
+      i = 2130844085;
+      continue;
+      i = 2130844086;
+      continue;
+      i = 2130844087;
+      continue;
+      i = 2130844088;
+      continue;
+      i = 2130844089;
+      continue;
+      i = 2130844090;
+      continue;
+      i = 2130844091;
+      continue;
+      i = 2130844092;
+      continue;
+      i = 2130844084;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aecr
  * JD-Core Version:    0.7.0.1
  */

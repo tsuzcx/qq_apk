@@ -1,19 +1,23 @@
-import cooperation.weiyun.channel.HttpChannel;
-import org.json.JSONObject;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
 
 public final class anpn
-  implements Runnable
+  implements Parcelable.Creator<MiniAppRecommInfo>
 {
-  public anpn(String paramString, JSONObject paramJSONObject) {}
-  
-  public void run()
+  public MiniAppRecommInfo a(Parcel paramParcel)
   {
-    HttpChannel.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject);
+    return new MiniAppRecommInfo(paramParcel);
+  }
+  
+  public MiniAppRecommInfo[] a(int paramInt)
+  {
+    return new MiniAppRecommInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anpn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,29 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.activity.aio.anim.ComboAnimation3;
+import android.widget.TextView;
+import java.util.List;
 
-public class usi
-  extends AnimatorListenerAdapter
+class usi
+  implements vdr<Boolean, vdx>
 {
-  public usi(ComboAnimation3 paramComboAnimation3) {}
+  usi(ush paramush) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public Void a(Boolean paramBoolean, vdx paramvdx)
   {
-    this.a.d();
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.d();
+    if (paramBoolean.booleanValue())
+    {
+      urk.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult succ=%b size=%d", paramBoolean, Integer.valueOf(Math.max(paramvdx.b.size(), paramvdx.jdField_a_of_type_JavaUtilList.size())));
+      this.a.a.setEnabled(true);
+    }
+    for (;;)
+    {
+      return null;
+      urk.e("Q.qqstory.record.EditLocalVideoPlayer.Flow", "ThumbnailResult error!!! errorCode=" + paramvdx.jdField_a_of_type_Int);
+      bbmy.a(this.a.a(), 1, ajjy.a(2131637858) + paramvdx.jdField_a_of_type_Int, 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     usi
  * JD-Core Version:    0.7.0.1
  */

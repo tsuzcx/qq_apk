@@ -1,21 +1,31 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
-import com.tencent.mobileqq.widget.CircleProgress;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
 
 class lju
-  implements Runnable
+  implements SoundPool.OnLoadCompleteListener
 {
-  lju(ljs paramljs, int paramInt) {}
+  lju(ljt paramljt, ljv paramljv) {}
   
-  public void run()
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Ljs.a).setProgress(this.jdField_a_of_type_Int);
-    ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_Ljs.a).setText(this.jdField_a_of_type_Int + "%");
+    paramSoundPool = this.jdField_a_of_type_Ljt;
+    paramSoundPool.c += 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("SoundPoolHelper", 2, "loadMusic onLoadComplete,sampleId = " + paramInt1 + ",status = " + paramInt2 + ",loadedCount = " + this.jdField_a_of_type_Ljt.c + ",musicCount = " + this.jdField_a_of_type_Ljt.b);
+    }
+    if (paramInt2 == 0) {
+      this.jdField_a_of_type_Ljt.a.add(Integer.valueOf(paramInt1));
+    }
+    if (this.jdField_a_of_type_Ljt.c == this.jdField_a_of_type_Ljt.b) {
+      this.jdField_a_of_type_Ljv.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lju
  * JD-Core Version:    0.7.0.1
  */

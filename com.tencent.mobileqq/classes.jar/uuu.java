@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class uuu
-  implements Runnable
+class uuu
+  implements DialogInterface.OnClickListener
 {
-  public uuu(ListenChangeVoicePanel paramListenChangeVoicePanel) {}
+  uuu(uut paramuut) {}
   
-  public void run()
-  {
-    this.a.a(false);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uuu
  * JD-Core Version:    0.7.0.1
  */

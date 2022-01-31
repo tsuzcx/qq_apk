@@ -1,32 +1,34 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.HintDrawable;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.channel.pb.WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp;
 
-public class aomx
-  extends Property
+class aomx
+  implements bgun<WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp>
 {
-  public aomx(HintDrawable paramHintDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  aomx(aomp paramaomp, aonc paramaonc) {}
   
-  public Integer a(HintDrawable paramHintDrawable)
+  public void a(int paramInt, String paramString, WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp paramAioPicAndVideoCopyToWeiyunMsgRsp)
   {
-    if (paramHintDrawable != null) {
-      return Integer.valueOf(HintDrawable.a(paramHintDrawable));
+    if (QLog.isColorLevel()) {
+      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "saveAioMedia2Weiyun Failed errorCode=" + paramInt + "; errorMsg=" + paramString);
     }
-    return Integer.valueOf(0);
+    if (this.jdField_a_of_type_Aonc != null) {
+      this.jdField_a_of_type_Aonc.a(paramInt, paramString);
+    }
   }
   
-  public void a(HintDrawable paramHintDrawable, Integer paramInteger)
+  public void a(WeiyunPB.AioPicAndVideoCopyToWeiyunMsgRsp paramAioPicAndVideoCopyToWeiyunMsgRsp)
   {
-    if (paramHintDrawable != null) {
-      HintDrawable.a(paramHintDrawable, paramInteger.intValue());
+    if (QLog.isColorLevel()) {
+      QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "saveAioMedia2Weiyun Success");
+    }
+    if (this.jdField_a_of_type_Aonc != null) {
+      this.jdField_a_of_type_Aonc.a(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aomx
  * JD-Core Version:    0.7.0.1
  */

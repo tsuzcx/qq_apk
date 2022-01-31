@@ -1,19 +1,8 @@
-import com.tencent.mobileqq.search.model.IContactSearchModel;
-import com.tencent.mobileqq.search.searchengine.ContactSearchEngine;
-import java.util.Comparator;
+import com.tencent.mobileqq.data.PhoneContact;
 
-public final class ahzs
-  implements Comparator
+public abstract interface ahzs
 {
-  public int a(IContactSearchModel paramIContactSearchModel1, IContactSearchModel paramIContactSearchModel2)
-  {
-    int j = Long.signum(paramIContactSearchModel2.b() - paramIContactSearchModel1.b());
-    int i = j;
-    if (j == 0) {
-      i = ContactSearchEngine.a(paramIContactSearchModel1, paramIContactSearchModel2);
-    }
-    return i;
-  }
+  public abstract void a(PhoneContact paramPhoneContact, boolean paramBoolean);
 }
 
 

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.qzoneplayer.video.OperationContainer android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/ho9" android:background="@drawable/b0i" android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_alignParentTop="true" />
+    <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="14.0sp" android:textColor="#ffffffff" android:id="@id/hop" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="22.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="22.0dip" android:singleLine="true" />
+    <ImageView android:id="@id/hol" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="70.0dip" android:src="@drawable/gck" android:scaleType="fitXY" android:layout_alignParentTop="true" />
+    <RelativeLayout android:id="@id/ho1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip">
+        <ImageView android:id="@id/hnu" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="17.0dip" android:src="@drawable/gc_" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        <ImageView android:id="@id/hno" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:src="@drawable/gc1" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/hnn" android:paddingLeft="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/hno" />
+        <TextView android:textSize="16.0sp" android:textColor="#ffffffff" android:id="@id/ho5" android:paddingLeft="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/hnn" android:layout_alignParentTop="true" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/hnn" android:layout_below="@id/ho5">
+            <TextView android:textSize="12.0sp" android:textColor="#80ffffff" android:id="@id/hnw" android:paddingLeft="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <ImageView android:id="@id/ho4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/gcd" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <Button android:textSize="14.0sp" android:textColor="@drawable/az2" android:id="@id/b70" android:background="@drawable/az1" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginRight="13.0dip" android:text="@string/s4_" android:layout_toLeftOf="@id/ho4" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <TextView android:textSize="11.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/ho_" android:background="@drawable/aw3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginRight="12.0dip" android:text="@string/s49" android:height="22.0dip" android:width="31.0dip" android:layout_alignParentRight="true" />
+    <ImageView android:id="@id/hoh" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ghl" android:layout_centerInParent="true" />
+</com.tencent.mobileqq.qzoneplayer.video.OperationContainer>

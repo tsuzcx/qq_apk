@@ -1,18 +1,12 @@
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import android.view.View;
 
-class nws
-  implements Runnable
+public abstract interface nws
 {
-  nws(nwr paramnwr, QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.finish();
-  }
+  public abstract void a(int paramInt, View paramView);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nws
  * JD-Core Version:    0.7.0.1
  */

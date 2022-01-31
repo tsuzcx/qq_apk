@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class hd_video_voip2$CmdPhoneMultiChatQueryReqBody
-  extends MessageMicro
+  extends MessageMicro<CmdPhoneMultiChatQueryReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_conf_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -21,7 +21,7 @@ public final class hd_video_voip2$CmdPhoneMultiChatQueryReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.video.voip.hd_video_voip2.CmdPhoneMultiChatQueryReqBody
  * JD-Core Version:    0.7.0.1
  */

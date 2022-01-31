@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.addon;
 
+import atmo;
+import atnz;
+import atoc;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
-import com.tencent.mobileqq.persistence.unique;
 import com.tencent.pb.pendant.DiyAddonUser.UserStickerInfo;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -16,18 +16,18 @@ import java.util.Iterator;
 import java.util.List;
 
 public class DiyPendantEntity
-  extends Entity
+  extends atmo
 {
   public int borderId;
   public int diyId;
-  @notColumn
-  public ArrayList stickerList;
+  @atnz
+  public ArrayList<DiyPendantSticker> stickerList;
   public byte[] stickers;
-  @unique
+  @atoc
   public String uinAndDiyId;
   public long updateTs;
   
-  public ArrayList getStickerInfoList()
+  public ArrayList<DiyPendantSticker> getStickerInfoList()
   {
     if (this.stickerList != null) {
       return this.stickerList;
@@ -47,7 +47,7 @@ public class DiyPendantEntity
     }
   }
   
-  public byte[] setStickerInfoList(List paramList)
+  public byte[] setStickerInfoList(List<DiyAddonUser.UserStickerInfo> paramList)
   {
     if ((paramList == null) || (paramList.isEmpty())) {
       return null;

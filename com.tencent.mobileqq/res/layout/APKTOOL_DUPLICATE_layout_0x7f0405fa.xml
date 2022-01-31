@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c29" android:layout_width="fill_parent" android:layout_height="200.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1bfd" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0433" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1bfe" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0433" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c2a" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021ed1" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginLeft="24.0dip" android:layout_marginBottom="55.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" android:contentDescription="本地视频" />
-</RelativeLayout>

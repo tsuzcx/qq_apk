@@ -1,15 +1,14 @@
-import com.tencent.biz.qqstory.takevideo.TakeVideoUtils;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import java.util.Comparator;
 
 class oon
-  implements Runnable
+  implements Comparator<AdvertisementInfo>
 {
   oon(oom paramoom) {}
   
-  public void run()
+  public int a(AdvertisementInfo paramAdvertisementInfo1, AdvertisementInfo paramAdvertisementInfo2)
   {
-    TakeVideoUtils.b(this.a.a.b, false);
-    this.a.a.d(4);
+    return paramAdvertisementInfo1.mAdKdPos - paramAdvertisementInfo2.mAdKdPos;
   }
 }
 

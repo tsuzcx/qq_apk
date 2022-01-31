@@ -1,27 +1,24 @@
-import android.content.Context;
-import com.tencent.mobileqq.surfaceviewaction.gl.RobotSpriteVideoView;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
+import java.util.Comparator;
 
-public class aiqd
-  extends VideoSprite
+class aiqd
+  implements Comparator<aiqe>
 {
-  public aiqd(RobotSpriteVideoView paramRobotSpriteVideoView, SpriteGLView paramSpriteGLView, Context paramContext, boolean paramBoolean)
-  {
-    super(paramSpriteGLView, paramContext, paramBoolean);
-  }
+  aiqd(aiqc paramaiqc) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public int a(aiqe paramaiqe1, aiqe paramaiqe2)
   {
-    if (this.a.a == 0) {
-      this.a.a = paramInt2;
+    if (paramaiqe1.a == paramaiqe2.a) {
+      return 0;
     }
-    super.a(paramInt1, this.a.a);
+    if (paramaiqe1.a > paramaiqe2.a) {
+      return -1;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiqd
  * JD-Core Version:    0.7.0.1
  */

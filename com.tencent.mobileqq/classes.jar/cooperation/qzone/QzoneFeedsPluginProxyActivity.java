@@ -1,18 +1,23 @@
 package cooperation.qzone;
 
+import android.content.Intent;
 import android.os.Bundle;
+import zrr;
 
 public class QzoneFeedsPluginProxyActivity
   extends QzonePluginProxyActivity
 {
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
   }
   
-  protected void onResume()
+  public void onResume()
   {
     super.onResume();
+    if (getIntent().getIntExtra("hc_code", 0) != 0) {
+      zrr.a().a(getIntent().getIntExtra("hc_code", 0), true);
+    }
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

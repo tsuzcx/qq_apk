@@ -1,14 +1,21 @@
-import com.tencent.biz.qqstory.view.widget.AbsEmptyView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class ovh
-  implements Runnable
+class ovh
+  implements ViewBase.OnClickListener
 {
-  public ovh(AbsEmptyView paramAbsEmptyView) {}
+  ovh(ove paramove, ArticleInfo paramArticleInfo, Container paramContainer) {}
   
-  public void run()
+  public void onClick(ViewBase paramViewBase)
   {
-    if (AbsEmptyView.a(this.a) == 0) {
-      AbsEmptyView.a(this.a, 3, true);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mNewPolymericInfo.a != null)
+    {
+      paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mNewPolymericInfo.a;
+      qcn.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
+      ove.a(this.jdField_a_of_type_Ove, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, paramViewBase.e);
     }
   }
 }

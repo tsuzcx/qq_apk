@@ -1,22 +1,211 @@
-import android.os.Handler;
+import android.app.Activity;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.FeedFeatureItem;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetMyStoryVideoListStep.Result;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStep.SimpleStepResultCallback;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
+import java.util.List;
+import java.util.Map;
+import mqq.app.AppRuntime;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ofs
-  implements SimpleStep.SimpleStepResultCallback
+  extends ofg<Long, BaseArticleInfo>
 {
-  public ofs(NewMyStorySegment paramNewMyStorySegment, String paramString) {}
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new oft(this);
+  private ofq jdField_a_of_type_Ofq = new ofq();
+  private int b;
+  public final String b;
   
-  public void a(GetMyStoryVideoListStep.Result paramResult)
+  public ofs(Activity paramActivity, RecyclerViewWithHeaderFooter paramRecyclerViewWithHeaderFooter, int paramInt)
   {
-    if ((paramResult.a != null) && (TextUtils.equals(paramResult.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)))
-    {
-      NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment).a = paramResult.a;
-      NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment).sendMessage(NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment).obtainMessage(0, NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment)));
+    super(paramActivity, paramRecyclerViewWithHeaderFooter, paramInt);
+    this.jdField_b_of_type_JavaLangString = "ReadInJoyDynamicChannelAdapter";
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_Ofq.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, 3);
+  }
+  
+  private BaseArticleInfo a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return (BaseArticleInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
+    return null;
+  }
+  
+  private void a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    try
+    {
+      if (!TextUtils.isEmpty(paramBaseArticleInfo.proteusItemsData))
+      {
+        paramBaseArticleInfo = new JSONObject(paramBaseArticleInfo.proteusItemsData).getString("style_ID");
+        if (!TextUtils.isEmpty(paramBaseArticleInfo))
+        {
+          QLog.d("ReadInJoyDynamicChannelAdapter", 2, new Object[] { "addViewTypeStyleMap, adapterViewType = ", Integer.valueOf(paramInt), ", styleID = ", paramBaseArticleInfo });
+          this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramBaseArticleInfo);
+          return;
+        }
+        QLog.d("ReadInJoyDynamicChannelAdapter", 2, "addViewTypeStyleMap, styleID is null");
+        return;
+      }
+    }
+    catch (JSONException paramBaseArticleInfo)
+    {
+      QLog.d("ReadInJoyDynamicChannelAdapter", 1, "addViewTypeStyleMap, e", paramBaseArticleInfo);
+      return;
+    }
+    QLog.d("ReadInJoyDynamicChannelAdapter", 2, "addViewTypeStyleMap, proteusItemData is empty");
+  }
+  
+  private void a(ArticleInfo paramArticleInfo)
+  {
+    oph localoph = ogy.a().a();
+    ArticleInfo localArticleInfo = paramArticleInfo;
+    if (obz.s(paramArticleInfo))
+    {
+      localArticleInfo = paramArticleInfo;
+      if (!paramArticleInfo.mNewPolymericInfo.a) {
+        localArticleInfo = ReadInJoyListViewGroup.a(paramArticleInfo);
+      }
+    }
+    if (localoph != null) {
+      this.jdField_b_of_type_Int = localoph.a(localArticleInfo.mArticleContentUrl, String.valueOf(localArticleInfo.innerUniqueID), localArticleInfo.mSubscribeID, 1, null);
+    }
+    b(localArticleInfo);
+  }
+  
+  private void b(ArticleInfo paramArticleInfo)
+  {
+    if (paramArticleInfo == null)
+    {
+      QLog.d("ReadInJoyDynamicChannelAdapter", 2, "startWebFastActivity, articleInfo is null.");
+      return;
+    }
+    obz.a((Activity)this.jdField_a_of_type_AndroidContentContext, paramArticleInfo);
+  }
+  
+  public bequ a(ViewGroup paramViewGroup, int paramInt)
+  {
+    if (this.jdField_a_of_type_Ofq.a(paramInt))
+    {
+      Object localObject = (String)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        paramViewGroup = off.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, a(), (String)localObject);
+        if ((paramInt == ofd.jdField_b_of_type_Int) && (paramViewGroup != null)) {
+          paramViewGroup.setVisibility(8);
+        }
+        QLog.d("ReadInJoyDynamicChannelAdapter", 2, new Object[] { "onCreateViewHolder, viewType = ", Integer.valueOf(paramInt), ", styleID =", localObject });
+        localObject = paramViewGroup;
+        if (paramViewGroup == null)
+        {
+          localObject = new ProteusItemView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext());
+          QLog.d("ReadInJoyDynamicChannelAdapter", 2, "proteusItemView is null");
+        }
+        QLog.d("ReadInJoyDynamicChannelAdapter", 2, new Object[] { "onCreateViewHolder, proteusItemView = ", localObject, ", viewType = ", Integer.valueOf(paramInt) });
+        return new ofu(this, (View)localObject);
+      }
+      QLog.d("ReadInJoyDynamicChannelAdapter", 2, "onCreateViewHolder styleID is empty");
+    }
+    for (;;)
+    {
+      paramViewGroup = null;
+      break;
+      if (ofr.a(paramInt))
+      {
+        paramViewGroup = ofr.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramInt, a());
+        break;
+      }
+      QLog.d("ReadInJoyDynamicChannelAdapter", 1, "onCreateViewHolder not the right type");
+    }
+  }
+  
+  public void a(int paramInt, View paramView)
+  {
+    paramView = (ArticleInfo)a(paramInt);
+    if (paramView == null) {
+      QLog.d("ReadInJoyDynamicChannelAdapter", 1, "onItemClick articleInfo is null.");
+    }
+    while (!obz.a(paramView.mArticleContentUrl, paramView.mChannelID, paramView.mFeedType, paramView)) {
+      return;
+    }
+    a(paramView);
+  }
+  
+  public void a(bequ parambequ, int paramInt)
+  {
+    BaseArticleInfo localBaseArticleInfo = a(paramInt);
+    int i = parambequ.getItemViewType();
+    parambequ = (ProteusItemView)parambequ.itemView;
+    if (localBaseArticleInfo != null)
+    {
+      if (!this.jdField_a_of_type_Ofq.a(i)) {
+        break label143;
+      }
+      if (i != ofd.jdField_b_of_type_Int) {
+        break label124;
+      }
+      parambequ.setVisibility(8);
+    }
+    for (;;)
+    {
+      a(Long.valueOf(localBaseArticleInfo.mArticleID), localBaseArticleInfo);
+      QLog.d("ReadInJoyDynamicChannelAdapter", 2, new Object[] { "onBindViewHolder, articleInfo = ", localBaseArticleInfo, ", proteusItemView = ", parambequ, ", position = ", Integer.valueOf(paramInt), ", type = ", Integer.valueOf(i) });
+      return;
+      label124:
+      this.jdField_a_of_type_Ofq.a(parambequ, i, localBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramInt);
+      continue;
+      label143:
+      if (ofr.a(i)) {
+        ofr.a(parambequ, i, localBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext, paramInt, a());
+      } else {
+        QLog.d("ReadInJoyDynamicChannelAdapter", 1, "onBindViewHolder not the right type");
+      }
+    }
+  }
+  
+  public void b()
+  {
+    oph localoph = ((ohd)obz.a().getManager(163)).a().a();
+    if (localoph != null) {
+      localoph.b(this.jdField_b_of_type_Int);
+    }
+    if (this.jdField_a_of_type_JavaUtilMap != null) {
+      this.jdField_a_of_type_JavaUtilMap.clear();
+    }
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    BaseArticleInfo localBaseArticleInfo = a(paramInt);
+    int i = 0;
+    paramInt = i;
+    if (localBaseArticleInfo != null)
+    {
+      if (!this.jdField_a_of_type_Ofq.a(localBaseArticleInfo)) {
+        break label42;
+      }
+      paramInt = this.jdField_a_of_type_Ofq.a(localBaseArticleInfo);
+      a(paramInt, localBaseArticleInfo);
+    }
+    label42:
+    do
+    {
+      return paramInt;
+      if (localBaseArticleInfo.mShowBigPicture) {
+        return 2;
+      }
+      paramInt = i;
+    } while (TextUtils.isEmpty(localBaseArticleInfo.mFirstPagePicUrl));
+    return 1;
   }
 }
 

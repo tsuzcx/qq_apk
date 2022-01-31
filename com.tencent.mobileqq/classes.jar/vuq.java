@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.MyAdapter;
-import java.util.List;
-
-public class vuq
-  implements Runnable
+final class vuq
+  extends vuo
 {
-  public vuq(PhotoListPanel.MyAdapter paramMyAdapter, List paramList) {}
+  vuq(vux paramvux) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel$MyAdapter.a(this.jdField_a_of_type_JavaUtilList);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     vuq
  * JD-Core Version:    0.7.0.1
  */

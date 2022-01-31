@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/h0l" android:background="@drawable/bg_texture" android:paddingLeft="@dimen/vh" android:paddingRight="@dimen/vh" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/az7" android:textColor="@color/skin_gray2" android:id="@id/kes" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_alignParentTop="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/e4r" android:background="@drawable/common_strip_setting_bg" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginTop="15.0dip" android:layout_below="@id/kes">
+        <com.tencent.mobileqq.widget.ClearableEditText android:textSize="@dimen/az6" android:textColor="@color/skin_dark_gray" android:textColorHint="@color/skin_gray2" android:gravity="center_vertical" android:id="@id/fcb" android:background="@null" android:padding="6.0dip" android:longClickable="false" android:layout_width="wrap_content" android:layout_height="fill_parent" android:hint="@string/fz6" android:singleLine="true" android:maxLength="8" android:layout_weight="1.0" android:inputType="number" />
+        <requestFocus />
+        <View android:background="@drawable/bg_texture" android:layout_width="1.0dip" android:layout_height="fill_parent" />
+        <TextView android:textSize="@dimen/az6" android:textColor="@color/skin_color_button_white" android:ellipsize="middle" android:gravity="center" android:id="@id/aji" android:background="@drawable/oq" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:singleLine="true" />
+    </LinearLayout>
+    <Button android:enabled="false" android:id="@id/b7p" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/ok" android:layout_below="@id/e4r" style="@style/b9" />
+</RelativeLayout>

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.nearby.now.model;
 
-import afbe;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import aslm;
 
 public class MedalItem
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new afbe();
+  public static final Parcelable.Creator<MedalItem> CREATOR = new aslm();
   public int a;
   public long a;
   public String a;

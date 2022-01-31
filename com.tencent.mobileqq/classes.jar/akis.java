@@ -1,21 +1,12 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
+import android.view.MotionEvent;
 
-public class akis
-  implements Runnable
+public abstract interface akis
 {
-  public akis(AntiFraudConfigFileUtil paramAntiFraudConfigFileUtil, String paramString) {}
-  
-  public void run()
-  {
-    if (!AntiFraudConfigFileUtil.a(this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil).containsKey(this.jdField_a_of_type_JavaLangString)) {
-      AntiFraudConfigFileUtil.a(this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil, this.jdField_a_of_type_JavaLangString);
-    }
-  }
+  public abstract void a(MotionEvent paramMotionEvent, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akis
  * JD-Core Version:    0.7.0.1
  */

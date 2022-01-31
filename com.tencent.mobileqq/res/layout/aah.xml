@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/g1f" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.CircleProgress android:id="@id/kiw" android:layout_width="125.0dip" android:layout_height="125.0dip" android:scaleType="center" android:layout_centerInParent="true" />
+    <TextView android:textSize="14.0sp" android:textColor="#7fffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pud" android:layout_centerInParent="true" />
+    <TextView android:textSize="16.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/aoy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/gyf" android:layout_below="@id/kiw" android:layout_centerInParent="true" />
+</RelativeLayout>

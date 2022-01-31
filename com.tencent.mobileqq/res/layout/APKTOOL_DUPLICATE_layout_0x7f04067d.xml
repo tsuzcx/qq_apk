@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.armap.CameraSurfaceView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1e71" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mobileqq.armap.ARGLSurfaceView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1041" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1eee" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="线框" />
-    <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1eef" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1eee" />
-</RelativeLayout>

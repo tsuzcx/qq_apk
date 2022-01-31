@@ -1,38 +1,22 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.UIBaseEventReceiver;
-import com.tencent.biz.qqstory.playmode.child.DiscoverPlayMode.PlayVideoEvent;
-import com.tencent.biz.qqstory.storyHome.discover.view.DiscoverPresenter;
-import com.tencent.biz.qqstory.storyHome.discover.view.IDiscoverView;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class oar
-  extends UIBaseEventReceiver
+class oar
+  implements ViewBase.OnClickListener
 {
-  public oar(DiscoverPresenter paramDiscoverPresenter)
-  {
-    super(paramDiscoverPresenter);
-  }
+  oar(oal paramoal) {}
   
-  public void a(@NonNull DiscoverPresenter paramDiscoverPresenter, @NonNull DiscoverPlayMode.PlayVideoEvent paramPlayVideoEvent)
+  public void onClick(ViewBase paramViewBase)
   {
-    if (DiscoverPresenter.a.size() == 0) {}
-    while ((DiscoverPresenter)((WeakReference)DiscoverPresenter.a.get(DiscoverPresenter.a.size() - 1)).get() != paramDiscoverPresenter) {
-      return;
-    }
-    DiscoverPresenter.a(paramDiscoverPresenter).a(paramPlayVideoEvent);
+    rvb.a((Activity)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), (AdvertisementInfo)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.a.jdField_a_of_type_Opw.a(), this.a.jdField_a_of_type_Opw.e(), false);
   }
-  
-  public Class acceptEventClass()
-  {
-    return DiscoverPlayMode.PlayVideoEvent.class;
-  }
-  
-  public void b(@NonNull DiscoverPresenter paramDiscoverPresenter, @NonNull DiscoverPlayMode.PlayVideoEvent paramPlayVideoEvent) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oar
  * JD-Core Version:    0.7.0.1
  */

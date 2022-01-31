@@ -1,9 +1,5 @@
 package com.tencent.weiyun.data;
 
-import android.text.TextUtils;
-import java.util.ArrayList;
-import java.util.List;
-
 public class NoteItem
   extends CNativeObject
 {
@@ -12,9 +8,9 @@ public class NoteItem
   public static final int TYPE_COLLECTION = 4;
   public static final int TYPE_HTML_TEXT = 2;
   public static final int TYPE_MAIL = 3;
-  public ArticleText articleText;
+  public NoteItem.ArticleText articleText;
   public long createTime;
-  public HtmlText htmlText;
+  public NoteItem.HtmlText htmlText;
   public boolean isDeleted = false;
   public String md5;
   public long modifyTime;
@@ -55,11 +51,11 @@ public class NoteItem
     localNoteItem.isDeleted = CBundleReader.getBoolean(paramLong, "is_deleted", false);
     long l = CBundleReader.getLong(paramLong, "article_text", 0L);
     if (l != 0L) {
-      localNoteItem.articleText = ArticleText.newInstance(l);
+      localNoteItem.articleText = NoteItem.ArticleText.newInstance(l);
     }
     paramLong = CBundleReader.getLong(paramLong, "html_text", 0L);
     if (paramLong != 0L) {
-      localNoteItem.htmlText = HtmlText.newInstance(paramLong);
+      localNoteItem.htmlText = NoteItem.HtmlText.newInstance(paramLong);
     }
     localNoteItem.releaseNative();
     return localNoteItem;
@@ -83,156 +79,10 @@ public class NoteItem
     }
     super.releaseNative();
   }
-  
-  public static class ArticleText
-    extends CNativeObject
-  {
-    public NoteItem.HtmlText articleComment;
-    public String articleContent;
-    public String articlePicsUrl;
-    public String articleRawUrl;
-    public String articleThumbId;
-    public String articleTitle;
-    public String articleUrl;
-    
-    private ArticleText()
-    {
-      super();
-    }
-    
-    private ArticleText(long paramLong)
-    {
-      super();
-    }
-    
-    public static ArticleText newInstance(long paramLong)
-    {
-      if (paramLong == 0L) {
-        return null;
-      }
-      ArticleText localArticleText = new ArticleText(paramLong);
-      localArticleText.articleRawUrl = CBundleReader.getString(paramLong, "article_raw_url");
-      localArticleText.articleTitle = CBundleReader.getString(paramLong, "article_title");
-      localArticleText.articleUrl = CBundleReader.getString(paramLong, "article_url");
-      localArticleText.articlePicsUrl = CBundleReader.getString(paramLong, "article_pics_url");
-      localArticleText.articleThumbId = CBundleReader.getString(paramLong, "article_thumb_id");
-      localArticleText.articleContent = CBundleReader.getString(paramLong, "article_content");
-      paramLong = CBundleReader.getLong(paramLong, "article_comment", 0L);
-      if (paramLong != 0L) {
-        localArticleText.articleComment = NoteItem.HtmlText.newInstance(paramLong);
-      }
-      localArticleText.releaseNative();
-      return localArticleText;
-    }
-    
-    public void releaseNative()
-    {
-      if ((isNative()) && (this.articleComment != null)) {
-        this.articleComment.releaseNative();
-      }
-      super.releaseNative();
-    }
-  }
-  
-  public static class HtmlText
-    extends CNativeObject
-  {
-    public FileItem[] fileList;
-    public String htmlContent;
-    public String[] picUrlList;
-    
-    private HtmlText()
-    {
-      super();
-    }
-    
-    private HtmlText(long paramLong)
-    {
-      super();
-    }
-    
-    public static HtmlText newInstance(long paramLong)
-    {
-      if (paramLong == 0L) {
-        return null;
-      }
-      HtmlText localHtmlText = new HtmlText(paramLong);
-      localHtmlText.htmlContent = CBundleReader.getString(paramLong, "html_content");
-      long[] arrayOfLong = CBundleReader.getLongArray(paramLong, "pic_url_list");
-      ArrayList localArrayList;
-      int j;
-      int i;
-      Object localObject;
-      if (arrayOfLong != null)
-      {
-        localArrayList = new ArrayList(arrayOfLong.length);
-        j = arrayOfLong.length;
-        i = 0;
-        while (i < j)
-        {
-          long l = arrayOfLong[i];
-          if (l != 0L)
-          {
-            localObject = CBundleReader.getString(l, "url");
-            if (!TextUtils.isEmpty((CharSequence)localObject)) {
-              localArrayList.add(localObject);
-            }
-          }
-          i += 1;
-        }
-        if (!localArrayList.isEmpty()) {
-          localHtmlText.picUrlList = ((String[])localArrayList.toArray(new String[localArrayList.size()]));
-        }
-      }
-      arrayOfLong = CBundleReader.getLongArray(paramLong, "file_list");
-      if (arrayOfLong != null)
-      {
-        localArrayList = new ArrayList(arrayOfLong.length);
-        j = arrayOfLong.length;
-        i = 0;
-        while (i < j)
-        {
-          paramLong = arrayOfLong[i];
-          if (paramLong != 0L)
-          {
-            localObject = FileItem.newInstance(paramLong);
-            if (localObject != null) {
-              localArrayList.add(localObject);
-            }
-          }
-          i += 1;
-        }
-        if (!localArrayList.isEmpty()) {
-          localHtmlText.fileList = ((FileItem[])localArrayList.toArray(new FileItem[localArrayList.size()]));
-        }
-      }
-      localHtmlText.releaseNative();
-      return localHtmlText;
-    }
-    
-    public void releaseNative()
-    {
-      if ((isNative()) && (this.fileList != null))
-      {
-        FileItem[] arrayOfFileItem = this.fileList;
-        int j = arrayOfFileItem.length;
-        int i = 0;
-        while (i < j)
-        {
-          FileItem localFileItem = arrayOfFileItem[i];
-          if (localFileItem != null) {
-            localFileItem.releaseNative();
-          }
-          i += 1;
-        }
-      }
-      super.releaseNative();
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.weiyun.data.NoteItem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,110 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindServlet;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.NewIntent;
+import java.io.File;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.nio.channels.FileChannel;
+import java.nio.channels.FileLock;
 
 public class zpv
-  implements Runnable
 {
-  public zpv(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  private String jdField_a_of_type_JavaLangString = "";
+  private FileChannel jdField_a_of_type_JavaNioChannelsFileChannel;
+  private FileLock jdField_a_of_type_JavaNioChannelsFileLock;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public void run()
+  public zpv(String paramString)
   {
-    if (PhoneContactManagerImp.a(this.a) == null) {}
-    long l2;
-    do
+    this.jdField_a_of_type_JavaLangString = paramString;
+    try
     {
+      this.jdField_a_of_type_Boolean = true;
       return;
-      l1 = this.a.a.getLong("key_req_last_login_time", 0L);
-      l2 = this.a.a.getLong("key_req_login_interval", 86400000L);
-      if (QLog.isColorLevel())
+    }
+    catch (Exception paramString)
+    {
+      zph.a("KingKongUtils", "Initial FileChannel exception : " + paramString);
+      this.jdField_a_of_type_Boolean = false;
+    }
+  }
+  
+  public void a()
+  {
+    if (!this.b) {
+      return;
+    }
+    zph.a("KingKongUtils", "Release Inter-Process Lock " + this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_JavaNioChannelsFileLock != null) {}
+    try
+    {
+      this.jdField_a_of_type_JavaNioChannelsFileLock.release();
+      if (this.jdField_a_of_type_JavaNioChannelsFileChannel == null) {}
+    }
+    catch (IOException localIOException1)
+    {
+      try
       {
-        localObject = new StringBuilder(100);
-        ((StringBuilder)localObject).append("checkLastLogin, lastReqTime = ").append(l1);
-        ((StringBuilder)localObject).append(", current = ").append(System.currentTimeMillis());
-        ((StringBuilder)localObject).append(", interval = ").append(l2);
-        ((StringBuilder)localObject).append(", isRequesting = ").append(PhoneContactManagerImp.d(this.a));
-        QLog.d("PhoneContact.Manager", 2, ((StringBuilder)localObject).toString());
+        this.jdField_a_of_type_JavaNioChannelsFileChannel.close();
+        this.b = false;
+        return;
+        localIOException1 = localIOException1;
+        zph.a("KingKongUtils", "Release Inter-Process Lock " + this.jdField_a_of_type_JavaLangString + " exception : " + localIOException1);
+        localIOException1.printStackTrace();
       }
-    } while ((PhoneContactManagerImp.d(this.a)) || (!this.a.c()) || (Math.abs(System.currentTimeMillis() - l1) < l2));
-    PhoneContactManagerImp.a(this.a, true);
-    Object localObject = new NewIntent(PhoneContactManagerImp.a(this.a).getApplication(), ContactBindServlet.class);
-    ((NewIntent)localObject).putExtra("req_type", 32);
-    long l1 = this.a.a.getLong("key_login_info_timestamp", 0L);
-    ((NewIntent)localObject).putExtra("next_flag", 0);
-    ((NewIntent)localObject).putExtra("time_stamp", l1);
-    ((NewIntent)localObject).putExtra("unique_phone_no", this.a.a());
-    PhoneContactManagerImp.a(this.a).startServlet((NewIntent)localObject);
+      catch (IOException localIOException2)
+      {
+        for (;;)
+        {
+          zph.a("KingKongUtils", "Release Inter-Process Lock " + this.jdField_a_of_type_JavaLangString + " exception : " + localIOException2);
+        }
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    if ((!this.jdField_a_of_type_Boolean) || (this.b)) {
+      return false;
+    }
+    zph.a("KingKongUtils", "Do Inter-Process Lock " + this.jdField_a_of_type_JavaLangString);
+    try
+    {
+      this.jdField_a_of_type_JavaNioChannelsFileChannel = new RandomAccessFile(new File(this.jdField_a_of_type_JavaLangString), "rw").getChannel();
+      this.jdField_a_of_type_JavaNioChannelsFileLock = this.jdField_a_of_type_JavaNioChannelsFileChannel.lock();
+      this.b = true;
+      zph.a("KingKongUtils", "Do Inter-Process Lock OK " + this.jdField_a_of_type_JavaLangString);
+      return true;
+    }
+    catch (Exception localException)
+    {
+      zph.a("KingKongUtils", "Do Inter-Process Lock " + this.jdField_a_of_type_JavaLangString + " exception : " + localException);
+      if (this.jdField_a_of_type_JavaNioChannelsFileLock == null) {}
+    }
+    try
+    {
+      this.jdField_a_of_type_JavaNioChannelsFileLock.release();
+      label166:
+      if (this.jdField_a_of_type_JavaNioChannelsFileChannel != null) {}
+      try
+      {
+        this.jdField_a_of_type_JavaNioChannelsFileChannel.close();
+        label180:
+        zph.a("KingKongUtils", "Do Inter-Process Lock failed " + this.jdField_a_of_type_JavaLangString);
+        return false;
+      }
+      catch (IOException localIOException1)
+      {
+        break label180;
+      }
+    }
+    catch (IOException localIOException2)
+    {
+      break label166;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zpv
  * JD-Core Version:    0.7.0.1
  */

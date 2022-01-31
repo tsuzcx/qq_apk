@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class publicaccount_recommend$BusinessRecommendRequest
-  extends MessageMicro
+  extends MessageMicro<BusinessRecommendRequest>
 {
   public static final int BASE_STATION_FIELD_NUMBER = 5;
   public static final int CATEGORYN_FIELD_NUMBER = 1;

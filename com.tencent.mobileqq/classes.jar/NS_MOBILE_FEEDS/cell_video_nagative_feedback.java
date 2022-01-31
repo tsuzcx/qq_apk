@@ -8,11 +8,11 @@ import java.util.ArrayList;
 public final class cell_video_nagative_feedback
   extends JceStruct
 {
-  static ArrayList cache_vecNagFbInfo = new ArrayList();
+  static ArrayList<nagative_fb_info> cache_vecNagFbInfo = new ArrayList();
   public String buttonTxt = "";
   public String leftTitle = "";
   public String toastTxt = "";
-  public ArrayList vecNagFbInfo;
+  public ArrayList<nagative_fb_info> vecNagFbInfo;
   
   static
   {
@@ -22,7 +22,7 @@ public final class cell_video_nagative_feedback
   
   public cell_video_nagative_feedback() {}
   
-  public cell_video_nagative_feedback(ArrayList paramArrayList, String paramString1, String paramString2, String paramString3)
+  public cell_video_nagative_feedback(ArrayList<nagative_fb_info> paramArrayList, String paramString1, String paramString2, String paramString3)
   {
     this.vecNagFbInfo = paramArrayList;
     this.leftTitle = paramString1;
@@ -56,7 +56,7 @@ public final class cell_video_nagative_feedback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_video_nagative_feedback
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,22 @@
-import com.tencent.biz.qqstory.newshare.job.UploadImageJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareQZoneData;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
 
 public class nkv
-  extends UploadImageJob
+  implements begw
 {
-  public nkv(ShareModeBase paramShareModeBase, ShareQZoneData paramShareQZoneData) {}
+  public nkv(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity, String paramString, begr parambegr) {}
   
-  public boolean b()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareQZoneData.a = ((String)a("UploadImageJob_out_image_url"));
-    return true;
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Begr.dismiss();
+      return;
+      ogy.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyMessagesActivity.getActivity());
+    }
   }
 }
 

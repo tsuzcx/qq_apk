@@ -1,32 +1,22 @@
-import android.graphics.drawable.Drawable;
-import cooperation.qzone.webviewwrapper.LiveVideoFeedVipIconListner;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-
-public final class anjf
-  implements InvocationHandler
+public abstract class anjf
 {
-  public anjf(LiveVideoFeedVipIconListner paramLiveVideoFeedVipIconListner) {}
+  public int b;
   
-  public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
+  public anjf(int paramInt)
   {
-    if (paramMethod.getName().equals("onFailed")) {
-      if (this.a != null) {
-        this.a.onFailed();
-      }
-    }
-    for (;;)
-    {
-      return null;
-      if ((paramMethod.getName().equals("onLoaded")) && (this.a != null)) {
-        this.a.onLoaded((Drawable)paramArrayOfObject[0]);
-      }
-    }
+    this.b = paramInt;
+  }
+  
+  public void a() {}
+  
+  public int b()
+  {
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anjf
  * JD-Core Version:    0.7.0.1
  */

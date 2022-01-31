@@ -9,17 +9,17 @@ public final class ProfileRect
   extends JceStruct
 {
   static int cache_eAlignType;
-  static ArrayList cache_vecIndexContainer;
+  static ArrayList<Integer> cache_vecIndexContainer;
   public int eAlignType;
   public int iHp;
   public int iWp;
   public int iXp;
   public int iYp;
-  public ArrayList vecIndexContainer;
+  public ArrayList<Integer> vecIndexContainer;
   
   public ProfileRect() {}
   
-  public ProfileRect(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, ArrayList paramArrayList)
+  public ProfileRect(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, ArrayList<Integer> paramArrayList)
   {
     this.iXp = paramInt1;
     this.iYp = paramInt2;

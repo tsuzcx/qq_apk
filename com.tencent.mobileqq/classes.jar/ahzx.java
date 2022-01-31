@@ -1,26 +1,21 @@
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
-import com.tencent.mobileqq.search.util.SearchConfigManager;
-import java.util.Comparator;
-import java.util.Map;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class ahzx
-  implements Comparator
+class ahzx
+  implements View.OnClickListener
 {
-  public int a(GroupSearchEngine.SearchEngineEntity paramSearchEngineEntity1, GroupSearchEngine.SearchEngineEntity paramSearchEngineEntity2)
+  ahzx(ahzv paramahzv) {}
+  
+  public void onClick(View paramView)
   {
-    paramSearchEngineEntity2 = (Integer)SearchConfigManager.searchEngineOrder.get(paramSearchEngineEntity2.a);
-    if (paramSearchEngineEntity2 == null) {
-      paramSearchEngineEntity2 = Integer.valueOf(0);
-    }
-    for (;;)
+    paramView = paramView.getTag();
+    if (!(paramView instanceof aiaa)) {}
+    do
     {
-      Integer localInteger = (Integer)SearchConfigManager.searchEngineOrder.get(paramSearchEngineEntity1.a);
-      paramSearchEngineEntity1 = localInteger;
-      if (localInteger == null) {
-        paramSearchEngineEntity1 = Integer.valueOf(0);
-      }
-      return Integer.signum(paramSearchEngineEntity2.intValue() - paramSearchEngineEntity1.intValue());
-    }
+      return;
+      paramView = (aiaa)paramView;
+    } while ((paramView.a == null) || (this.a.a == null));
+    this.a.a.a(paramView.a);
   }
 }
 

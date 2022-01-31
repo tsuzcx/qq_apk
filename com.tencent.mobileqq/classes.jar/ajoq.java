@@ -1,23 +1,24 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.util.InputMethodUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ajoq
-  implements View.OnClickListener
+final class ajoq
+  implements DialogInterface.OnClickListener
 {
-  public ajoq(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  ajoq(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    InputMethodUtil.b(paramView);
-    this.a.getActivity().doOnBackPressed();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    if (this.a != null) {
+      this.a.onClick(paramDialogInterface, paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajoq
  * JD-Core Version:    0.7.0.1
  */

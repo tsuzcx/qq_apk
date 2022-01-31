@@ -1,11 +1,15 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import abre;
-import abrf;
-import abrg;
-import abrh;
-import abri;
-import abrj;
+import agdx;
+import ajjy;
+import alkl;
+import alkx;
+import alky;
+import alkz;
+import alla;
+import allb;
+import allc;
+import alld;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
@@ -46,23 +50,21 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import axsm;
+import axvo;
+import azyk;
+import bace;
+import badq;
+import bbmv;
+import bbmy;
+import befo;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.avatar.dynamicavatar.videodrawable.DrawableSeekbar;
-import com.tencent.mobileqq.avatar.dynamicavatar.videodrawable.DrawableSeekbar.OnProgressChangedListener;
-import com.tencent.mobileqq.avatar.dynamicavatar.videodrawable.VideoDrawable;
 import com.tencent.mobileqq.avatar.dynamicavatar.videodrawable.VideoDrawableHandler;
-import com.tencent.mobileqq.avatar.dynamicavatar.videodrawable.VideoDrawableHandler.OnGetFrameListener;
-import com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.VersionUtils;
 import com.tencent.widget.CustomImgView;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
@@ -70,50 +72,48 @@ import java.io.File;
 
 public class SelectCoverActivity
   extends IphoneTitleBarActivity
-  implements Handler.Callback, View.OnClickListener, View.OnTouchListener, DrawableSeekbar.OnProgressChangedListener, VideoDrawableHandler.OnGetFrameListener
+  implements allb, alld, Handler.Callback, View.OnClickListener, View.OnTouchListener
 {
   float jdField_a_of_type_Float = 0.0F;
-  public int a;
-  abrj jdField_a_of_type_Abrj;
+  int jdField_a_of_type_Int;
+  alkl jdField_a_of_type_Alkl;
+  alla jdField_a_of_type_Alla;
+  allc jdField_a_of_type_Allc;
   public Animator a;
   Rect jdField_a_of_type_AndroidGraphicsRect = null;
   Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getFileThreadLooper(), this);
   View jdField_a_of_type_AndroidViewView;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  public DynamicAvatarManager a;
+  bbmv jdField_a_of_type_Bbmv;
   DrawableSeekbar jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar;
-  VideoDrawable jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawable;
   VideoDrawableHandler jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawableHandler;
-  QQProgressNotifier jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier;
   CustomImgView jdField_a_of_type_ComTencentWidgetCustomImgView;
-  public String a;
+  String jdField_a_of_type_JavaLangString;
   public boolean a;
   int jdField_b_of_type_Int;
+  allc jdField_b_of_type_Allc;
   Rect jdField_b_of_type_AndroidGraphicsRect = null;
-  public Handler b;
+  Handler jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
   View jdField_b_of_type_AndroidViewView;
-  VideoDrawable jdField_b_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawable;
   public String b;
-  public volatile boolean b;
+  volatile boolean jdField_b_of_type_Boolean = false;
   int jdField_c_of_type_Int;
+  allc jdField_c_of_type_Allc;
   View jdField_c_of_type_AndroidViewView;
-  VideoDrawable jdField_c_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawable;
   public String c;
   private boolean jdField_c_of_type_Boolean;
   public int d;
   View d;
   public String d;
-  public int e;
+  int jdField_e_of_type_Int;
   View jdField_e_of_type_AndroidViewView;
   private String jdField_e_of_type_JavaLangString;
   public int f;
   
   public SelectCoverActivity()
   {
-    this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
     this.jdField_a_of_type_AndroidAnimationAnimator = null;
-    this.jdField_b_of_type_Boolean = false;
   }
   
   private int a()
@@ -132,17 +132,17 @@ public class SelectCoverActivity
   
   private void a(Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawable = new VideoDrawable(paramBitmap, getResources());
-    this.jdField_b_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawable = new VideoDrawable(paramBitmap, getResources());
-    this.jdField_c_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawable = new VideoDrawable(paramBitmap, getResources());
-    this.jdField_a_of_type_ComTencentWidgetCustomImgView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawable);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_c_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawable);
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawableHandler.a(this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawable);
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawableHandler.a(this.jdField_b_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawable);
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawableHandler.a(this.jdField_c_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawable);
-    this.jdField_c_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawable.a(true);
+    this.jdField_a_of_type_Allc = new allc(paramBitmap, getResources());
+    this.jdField_b_of_type_Allc = new allc(paramBitmap, getResources());
+    this.jdField_c_of_type_Allc = new allc(paramBitmap, getResources());
+    this.jdField_a_of_type_ComTencentWidgetCustomImgView.setImageDrawable(this.jdField_a_of_type_Allc);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_c_of_type_Allc);
+    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawableHandler.a(this.jdField_a_of_type_Allc);
+    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawableHandler.a(this.jdField_b_of_type_Allc);
+    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawableHandler.a(this.jdField_c_of_type_Allc);
+    this.jdField_c_of_type_Allc.a(true);
     this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar.setOnProgressChangedListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar.setThumb(a(this.jdField_b_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawable));
+    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar.setThumb(a(this.jdField_b_of_type_Allc));
     this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar.setMax((int)this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawableHandler.a());
     this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar.setThumbSize(this.jdField_c_of_type_Int, this.jdField_c_of_type_Int);
   }
@@ -163,14 +163,14 @@ public class SelectCoverActivity
   @TargetApi(11)
   private void c()
   {
-    this.jdField_a_of_type_ComTencentWidgetCustomImgView = ((CustomImgView)findViewById(2131363530));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131363068);
-    this.jdField_d_of_type_AndroidViewView = findViewById(2131362846);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131371209);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131364082);
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar = ((DrawableSeekbar)findViewById(2131367158));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131371211));
-    this.jdField_e_of_type_AndroidViewView = findViewById(2131371208);
+    this.jdField_a_of_type_ComTencentWidgetCustomImgView = ((CustomImgView)findViewById(2131306209));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131301766);
+    this.jdField_d_of_type_AndroidViewView = findViewById(2131299097);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131301773);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131301798);
+    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar = ((DrawableSeekbar)findViewById(2131310016));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131303783));
+    this.jdField_e_of_type_AndroidViewView = findViewById(2131312380);
     int k = ImmersiveUtils.a();
     int j = ImmersiveUtils.b();
     Object localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentWidgetCustomImgView.getLayoutParams();
@@ -178,7 +178,7 @@ public class SelectCoverActivity
     this.jdField_a_of_type_ComTencentWidgetCustomImgView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     int m = (int)(0.125D * j);
     int i = (int)(0.125F * k);
-    j = (int)(j - (getTitleBarHeight() + m + this.mDensity * 100.0F + ImmersiveUtils.a(this)));
+    j = (int)(j - (getTitleBarHeight() + m + this.mDensity * 100.0F + ImmersiveUtils.getStatusBarHeight(this)));
     int n = k - i * 2;
     float f1 = j / n;
     if (QLog.isColorLevel()) {
@@ -201,7 +201,7 @@ public class SelectCoverActivity
     if (Build.VERSION.SDK_INT <= 9)
     {
       this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar.setVisibility(8);
-      findViewById(2131371210).setVisibility(8);
+      findViewById(2131311428).setVisibility(8);
       this.jdField_e_of_type_AndroidViewView.setVisibility(8);
     }
     for (;;)
@@ -216,12 +216,12 @@ public class SelectCoverActivity
         this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
       return;
-      this.jdField_b_of_type_Int = ((int)getResources().getDimension(2131559340));
-      this.jdField_c_of_type_Int = ((int)getResources().getDimension(2131559339));
+      this.jdField_b_of_type_Int = ((int)getResources().getDimension(2131167752));
+      this.jdField_c_of_type_Int = ((int)getResources().getDimension(2131167756));
       localObject = (RelativeLayout.LayoutParams)this.jdField_e_of_type_AndroidViewView.getLayoutParams();
       ((RelativeLayout.LayoutParams)localObject).height = m;
       this.jdField_e_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      i = (int)getResources().getDimension(2131559342);
+      i = (int)getResources().getDimension(2131167751);
       this.jdField_a_of_type_Int = ((k - i * 2) / this.jdField_b_of_type_Int);
       if ((k - i * 2) % this.jdField_b_of_type_Int != 0) {
         this.jdField_a_of_type_Int += 1;
@@ -272,49 +272,60 @@ public class SelectCoverActivity
   
   private void d()
   {
-    setRightButton(2131434550, this);
-    setTitle("设置静态头像");
-    this.leftView.setTextColor(getResources().getColorStateList(2131494140));
-    this.rightViewText.setTextColor(getResources().getColorStateList(2131494140));
-    int i = Color.parseColor("#1a1a1a");
-    getTitleBarView().setBackgroundDrawable(null);
-    getTitleBarView().setBackgroundColor(i);
-    if (this.mSystemBarComp != null)
+    setRightButton(2131626982, this);
+    if (this.jdField_d_of_type_Int == 3) {
+      setTitle("设置QQ动态头像");
+    }
+    for (;;)
     {
-      this.mSystemBarComp.setStatusDrawable(null);
-      this.mSystemBarComp.setStatusBarDrawable(null);
-      this.mSystemBarComp.setStatusColor(i);
-      this.mSystemBarComp.setStatusBarColor(i);
+      if (ThemeUtil.isNowThemeIsSimple(this.app, false, null))
+      {
+        this.leftView.setBackgroundResource(2130849305);
+        this.rightViewText.setTextColor(getResources().getColorStateList(2131100628));
+        this.centerView.setTextColor(getResources().getColorStateList(2131100628));
+      }
+      int i = Color.parseColor("#1a1a1a");
+      getTitleBarView().setBackgroundDrawable(null);
+      getTitleBarView().setBackgroundColor(i);
+      if (this.mSystemBarComp != null)
+      {
+        this.mSystemBarComp.setStatusDrawable(null);
+        this.mSystemBarComp.setStatusBarDrawable(null);
+        this.mSystemBarComp.setStatusColor(i);
+        this.mSystemBarComp.setStatusBarColor(i);
+      }
+      return;
+      setTitle(ajjy.a(2131647921));
     }
   }
   
   private void e()
   {
-    String str = DynamicUtils.a(this.jdField_a_of_type_JavaLangString, 200);
-    DynamicUtils.a(this.jdField_a_of_type_JavaLangString, str, 200, this);
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.jdField_a_of_type_JavaLangString = str;
-    str = DynamicUtils.a(this.jdField_a_of_type_JavaLangString, 100);
-    DynamicUtils.a(this.jdField_a_of_type_JavaLangString, str, 100, this);
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.b = str;
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a())) {}
+    String str = alkx.a(this.jdField_a_of_type_JavaLangString, 200);
+    alkx.a(this.jdField_a_of_type_JavaLangString, str, 200, this);
+    this.jdField_a_of_type_Alkl.jdField_a_of_type_JavaLangString = str;
+    str = alkx.a(this.jdField_a_of_type_JavaLangString, 100);
+    alkx.a(this.jdField_a_of_type_JavaLangString, str, 100, this);
+    this.jdField_a_of_type_Alkl.b = str;
+    if ((this.jdField_a_of_type_Bbmv != null) && (this.jdField_a_of_type_Bbmv.a())) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        if ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.jdField_a_of_type_JavaLangString)) || (!new File(this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.jdField_a_of_type_JavaLangString).exists()) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.b)) || (!new File(this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.b).exists())) {
+        if ((TextUtils.isEmpty(this.jdField_a_of_type_Alkl.jdField_a_of_type_JavaLangString)) || (!new File(this.jdField_a_of_type_Alkl.jdField_a_of_type_JavaLangString).exists()) || (TextUtils.isEmpty(this.jdField_a_of_type_Alkl.b)) || (!new File(this.jdField_a_of_type_Alkl.b).exists())) {
           break;
         }
         h();
       }
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a();
-    a(2, "处理失败，请重新拍摄", 0);
+    this.jdField_a_of_type_Bbmv.b();
+    a(2, ajjy.a(2131647923), 0);
   }
   
   private void f()
   {
-    if (VersionUtils.d())
+    if (befo.d())
     {
       a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentWidgetCustomImgView);
       return;
@@ -327,7 +338,7 @@ public class SelectCoverActivity
   
   private void g()
   {
-    if (VersionUtils.d())
+    if (befo.d())
     {
       b(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentWidgetCustomImgView);
       return;
@@ -340,135 +351,135 @@ public class SelectCoverActivity
   
   private void h()
   {
-    this.jdField_a_of_type_Abrj.a(new Class[] { NearbyPeoplePhotoUploadProcessor.class });
-    this.app.a().a(this.jdField_a_of_type_Abrj);
+    this.jdField_a_of_type_Alla.addFilter(new Class[] { axsm.class });
+    this.app.a().a(this.jdField_a_of_type_Alla);
     this.jdField_e_of_type_Int = ((int)(System.currentTimeMillis() / 1000L));
-    DynamicUtils.a(this.app, this.jdField_a_of_type_JavaLangString, 36, this.jdField_e_of_type_Int, 640);
-    ProfileCardUtil.a(this.jdField_a_of_type_JavaLangString);
+    alkx.a(this.app, this.jdField_a_of_type_JavaLangString, 36, this.jdField_e_of_type_Int, 640);
+    azyk.a(this.jdField_a_of_type_JavaLangString);
   }
   
   Drawable a(Drawable paramDrawable)
   {
-    paramDrawable = new LayerDrawable(new Drawable[] { paramDrawable, (GradientDrawable)getResources().getDrawable(2130843153) });
+    paramDrawable = new LayerDrawable(new Drawable[] { paramDrawable, (GradientDrawable)getResources().getDrawable(2130844935) });
     int i = (int)(1.0F * ImmersiveUtils.a());
     paramDrawable.setLayerInset(0, i, i, i, i);
     return paramDrawable;
   }
   
   /* Error */
-  public String a(Bitmap paramBitmap)
+  String a(Bitmap paramBitmap)
   {
     // Byte code:
-    //   0: new 497	java/io/File
+    //   0: new 521	java/io/File
     //   3: dup
-    //   4: getstatic 591	com/tencent/mobileqq/app/AppConstants:bJ	Ljava/lang/String;
-    //   7: invokespecial 500	java/io/File:<init>	(Ljava/lang/String;)V
+    //   4: getstatic 611	ajed:bX	Ljava/lang/String;
+    //   7: invokespecial 524	java/io/File:<init>	(Ljava/lang/String;)V
     //   10: astore_2
     //   11: aload_2
-    //   12: invokevirtual 594	java/io/File:mkdirs	()Z
+    //   12: invokevirtual 614	java/io/File:mkdirs	()Z
     //   15: pop
-    //   16: new 497	java/io/File
+    //   16: new 521	java/io/File
     //   19: dup
     //   20: aload_2
     //   21: new 171	java/lang/StringBuilder
     //   24: dup
     //   25: invokespecial 172	java/lang/StringBuilder:<init>	()V
-    //   28: ldc_w 596
+    //   28: ldc_w 616
     //   31: invokevirtual 181	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   34: invokestatic 547	java/lang/System:currentTimeMillis	()J
-    //   37: invokevirtual 599	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   34: invokestatic 567	java/lang/System:currentTimeMillis	()J
+    //   37: invokevirtual 619	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   40: invokevirtual 190	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   43: invokespecial 602	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   43: invokespecial 622	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   46: astore 6
     //   48: aload 6
-    //   50: invokevirtual 503	java/io/File:exists	()Z
+    //   50: invokevirtual 527	java/io/File:exists	()Z
     //   53: ifeq +9 -> 62
     //   56: aload 6
-    //   58: invokevirtual 605	java/io/File:delete	()Z
+    //   58: invokevirtual 625	java/io/File:delete	()Z
     //   61: pop
-    //   62: new 607	java/io/FileOutputStream
+    //   62: new 627	java/io/FileOutputStream
     //   65: dup
     //   66: aload 6
-    //   68: invokespecial 610	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   68: invokespecial 630	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   71: astore_2
-    //   72: new 612	java/io/BufferedOutputStream
+    //   72: new 632	java/io/BufferedOutputStream
     //   75: dup
     //   76: aload_2
     //   77: sipush 4096
-    //   80: invokespecial 615	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;I)V
+    //   80: invokespecial 635	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;I)V
     //   83: astore 5
     //   85: aload 5
     //   87: astore 4
     //   89: aload_2
     //   90: astore_3
     //   91: aload_1
-    //   92: getstatic 621	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   92: getstatic 641	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   95: bipush 100
     //   97: aload 5
-    //   99: invokevirtual 627	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   99: invokevirtual 647	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   102: pop
     //   103: aload 5
     //   105: astore 4
     //   107: aload_2
     //   108: astore_3
     //   109: aload 5
-    //   111: invokevirtual 630	java/io/BufferedOutputStream:flush	()V
+    //   111: invokevirtual 650	java/io/BufferedOutputStream:flush	()V
     //   114: aload 5
     //   116: astore 4
     //   118: aload_2
     //   119: astore_3
     //   120: aload 6
-    //   122: invokevirtual 633	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   122: invokevirtual 653	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   125: astore 6
     //   127: aload 6
     //   129: astore_3
     //   130: aload_2
     //   131: ifnull +7 -> 138
     //   134: aload_2
-    //   135: invokevirtual 636	java/io/FileOutputStream:close	()V
+    //   135: invokevirtual 656	java/io/FileOutputStream:close	()V
     //   138: aload_3
     //   139: astore_2
     //   140: aload 5
     //   142: ifnull +10 -> 152
     //   145: aload 5
-    //   147: invokevirtual 637	java/io/BufferedOutputStream:close	()V
+    //   147: invokevirtual 657	java/io/BufferedOutputStream:close	()V
     //   150: aload_3
     //   151: astore_2
     //   152: aload_0
     //   153: getfield 165	com/tencent/mobileqq/avatar/dynamicavatar/SelectCoverActivity:jdField_c_of_type_Boolean	Z
     //   156: ifeq +148 -> 304
-    //   159: new 497	java/io/File
+    //   159: new 521	java/io/File
     //   162: dup
-    //   163: getstatic 640	com/tencent/mobileqq/app/AppConstants:cv	Ljava/lang/String;
-    //   166: invokespecial 500	java/io/File:<init>	(Ljava/lang/String;)V
+    //   163: getstatic 660	ajed:cL	Ljava/lang/String;
+    //   166: invokespecial 524	java/io/File:<init>	(Ljava/lang/String;)V
     //   169: astore_3
     //   170: aload_3
-    //   171: invokevirtual 503	java/io/File:exists	()Z
+    //   171: invokevirtual 527	java/io/File:exists	()Z
     //   174: ifne +8 -> 182
     //   177: aload_3
-    //   178: invokevirtual 594	java/io/File:mkdirs	()Z
+    //   178: invokevirtual 614	java/io/File:mkdirs	()Z
     //   181: pop
-    //   182: new 497	java/io/File
+    //   182: new 521	java/io/File
     //   185: dup
     //   186: aload_3
-    //   187: ldc_w 642
-    //   190: invokespecial 602	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   187: ldc_w 662
+    //   190: invokespecial 622	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   193: astore 6
     //   195: aload 6
-    //   197: invokevirtual 503	java/io/File:exists	()Z
+    //   197: invokevirtual 527	java/io/File:exists	()Z
     //   200: ifeq +9 -> 209
     //   203: aload 6
-    //   205: invokevirtual 605	java/io/File:delete	()Z
+    //   205: invokevirtual 625	java/io/File:delete	()Z
     //   208: pop
-    //   209: new 607	java/io/FileOutputStream
+    //   209: new 627	java/io/FileOutputStream
     //   212: dup
     //   213: aload 6
-    //   215: invokespecial 610	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   215: invokespecial 630	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   218: astore_3
-    //   219: new 612	java/io/BufferedOutputStream
+    //   219: new 632	java/io/BufferedOutputStream
     //   222: dup
     //   223: aload_3
-    //   224: invokespecial 645	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   224: invokespecial 665	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   227: astore 7
     //   229: aload 7
     //   231: astore 5
@@ -478,34 +489,34 @@ public class SelectCoverActivity
     //   237: sipush 200
     //   240: sipush 200
     //   243: iconst_1
-    //   244: invokestatic 649	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
-    //   247: getstatic 621	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   244: invokestatic 669	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
+    //   247: getstatic 641	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   250: bipush 100
     //   252: aload 7
-    //   254: invokevirtual 627	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   254: invokevirtual 647	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   257: pop
     //   258: aload 7
     //   260: astore 5
     //   262: aload_3
     //   263: astore 4
     //   265: aload 7
-    //   267: invokevirtual 630	java/io/BufferedOutputStream:flush	()V
+    //   267: invokevirtual 650	java/io/BufferedOutputStream:flush	()V
     //   270: aload 7
     //   272: astore 5
     //   274: aload_3
     //   275: astore 4
     //   277: aload_0
     //   278: aload 6
-    //   280: invokevirtual 633	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   280: invokevirtual 653	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   283: putfield 78	com/tencent/mobileqq/avatar/dynamicavatar/SelectCoverActivity:jdField_e_of_type_JavaLangString	Ljava/lang/String;
     //   286: aload_3
     //   287: ifnull +7 -> 294
     //   290: aload_3
-    //   291: invokevirtual 636	java/io/FileOutputStream:close	()V
+    //   291: invokevirtual 656	java/io/FileOutputStream:close	()V
     //   294: aload 7
     //   296: ifnull +8 -> 304
     //   299: aload 7
-    //   301: invokevirtual 637	java/io/BufferedOutputStream:close	()V
+    //   301: invokevirtual 657	java/io/BufferedOutputStream:close	()V
     //   304: invokestatic 203	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   307: ifeq +29 -> 336
     //   310: ldc 205
@@ -513,7 +524,7 @@ public class SelectCoverActivity
     //   313: new 171	java/lang/StringBuilder
     //   316: dup
     //   317: invokespecial 172	java/lang/StringBuilder:<init>	()V
-    //   320: ldc_w 651
+    //   320: ldc_w 671
     //   323: invokevirtual 181	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   326: aload_2
     //   327: invokevirtual 181	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -523,11 +534,11 @@ public class SelectCoverActivity
     //   337: areturn
     //   338: astore_2
     //   339: aload_2
-    //   340: invokevirtual 654	java/io/IOException:printStackTrace	()V
+    //   340: invokevirtual 674	java/io/IOException:printStackTrace	()V
     //   343: goto -205 -> 138
     //   346: astore_2
     //   347: aload_2
-    //   348: invokevirtual 654	java/io/IOException:printStackTrace	()V
+    //   348: invokevirtual 674	java/io/IOException:printStackTrace	()V
     //   351: aload_3
     //   352: astore_2
     //   353: goto -201 -> 152
@@ -541,25 +552,25 @@ public class SelectCoverActivity
     //   367: aload_2
     //   368: astore_3
     //   369: aload 6
-    //   371: invokevirtual 655	java/io/FileNotFoundException:printStackTrace	()V
+    //   371: invokevirtual 675	java/io/FileNotFoundException:printStackTrace	()V
     //   374: aload_2
     //   375: ifnull +7 -> 382
     //   378: aload_2
-    //   379: invokevirtual 636	java/io/FileOutputStream:close	()V
+    //   379: invokevirtual 656	java/io/FileOutputStream:close	()V
     //   382: aload 5
     //   384: ifnull +303 -> 687
     //   387: aload 5
-    //   389: invokevirtual 637	java/io/BufferedOutputStream:close	()V
+    //   389: invokevirtual 657	java/io/BufferedOutputStream:close	()V
     //   392: aconst_null
     //   393: astore_2
     //   394: goto -242 -> 152
     //   397: astore_2
     //   398: aload_2
-    //   399: invokevirtual 654	java/io/IOException:printStackTrace	()V
+    //   399: invokevirtual 674	java/io/IOException:printStackTrace	()V
     //   402: goto -20 -> 382
     //   405: astore_2
     //   406: aload_2
-    //   407: invokevirtual 654	java/io/IOException:printStackTrace	()V
+    //   407: invokevirtual 674	java/io/IOException:printStackTrace	()V
     //   410: aconst_null
     //   411: astore_2
     //   412: goto -260 -> 152
@@ -573,25 +584,25 @@ public class SelectCoverActivity
     //   426: aload_2
     //   427: astore_3
     //   428: aload 6
-    //   430: invokevirtual 654	java/io/IOException:printStackTrace	()V
+    //   430: invokevirtual 674	java/io/IOException:printStackTrace	()V
     //   433: aload_2
     //   434: ifnull +7 -> 441
     //   437: aload_2
-    //   438: invokevirtual 636	java/io/FileOutputStream:close	()V
+    //   438: invokevirtual 656	java/io/FileOutputStream:close	()V
     //   441: aload 5
     //   443: ifnull +244 -> 687
     //   446: aload 5
-    //   448: invokevirtual 637	java/io/BufferedOutputStream:close	()V
+    //   448: invokevirtual 657	java/io/BufferedOutputStream:close	()V
     //   451: aconst_null
     //   452: astore_2
     //   453: goto -301 -> 152
     //   456: astore_2
     //   457: aload_2
-    //   458: invokevirtual 654	java/io/IOException:printStackTrace	()V
+    //   458: invokevirtual 674	java/io/IOException:printStackTrace	()V
     //   461: goto -20 -> 441
     //   464: astore_2
     //   465: aload_2
-    //   466: invokevirtual 654	java/io/IOException:printStackTrace	()V
+    //   466: invokevirtual 674	java/io/IOException:printStackTrace	()V
     //   469: aconst_null
     //   470: astore_2
     //   471: goto -319 -> 152
@@ -603,20 +614,20 @@ public class SelectCoverActivity
     //   480: aload_2
     //   481: ifnull +7 -> 488
     //   484: aload_2
-    //   485: invokevirtual 636	java/io/FileOutputStream:close	()V
+    //   485: invokevirtual 656	java/io/FileOutputStream:close	()V
     //   488: aload 4
     //   490: ifnull +8 -> 498
     //   493: aload 4
-    //   495: invokevirtual 637	java/io/BufferedOutputStream:close	()V
+    //   495: invokevirtual 657	java/io/BufferedOutputStream:close	()V
     //   498: aload_1
     //   499: athrow
     //   500: astore_2
     //   501: aload_2
-    //   502: invokevirtual 654	java/io/IOException:printStackTrace	()V
+    //   502: invokevirtual 674	java/io/IOException:printStackTrace	()V
     //   505: goto -17 -> 488
     //   508: astore_2
     //   509: aload_2
-    //   510: invokevirtual 654	java/io/IOException:printStackTrace	()V
+    //   510: invokevirtual 674	java/io/IOException:printStackTrace	()V
     //   513: goto -15 -> 498
     //   516: astore 6
     //   518: aconst_null
@@ -629,9 +640,9 @@ public class SelectCoverActivity
     //   526: astore 4
     //   528: ldc 205
     //   530: iconst_1
-    //   531: ldc_w 657
+    //   531: ldc_w 677
     //   534: aload 6
-    //   536: invokestatic 660	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   536: invokestatic 680	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   539: aload_1
     //   540: astore 5
     //   542: aload_3
@@ -642,11 +653,11 @@ public class SelectCoverActivity
     //   550: aload_3
     //   551: ifnull +7 -> 558
     //   554: aload_3
-    //   555: invokevirtual 636	java/io/FileOutputStream:close	()V
+    //   555: invokevirtual 656	java/io/FileOutputStream:close	()V
     //   558: aload_1
     //   559: ifnull -255 -> 304
     //   562: aload_1
-    //   563: invokevirtual 637	java/io/BufferedOutputStream:close	()V
+    //   563: invokevirtual 657	java/io/BufferedOutputStream:close	()V
     //   566: goto -262 -> 304
     //   569: astore_1
     //   570: goto -266 -> 304
@@ -658,11 +669,11 @@ public class SelectCoverActivity
     //   579: aload_3
     //   580: ifnull +7 -> 587
     //   583: aload_3
-    //   584: invokevirtual 636	java/io/FileOutputStream:close	()V
+    //   584: invokevirtual 656	java/io/FileOutputStream:close	()V
     //   587: aload 5
     //   589: ifnull +8 -> 597
     //   592: aload 5
-    //   594: invokevirtual 637	java/io/BufferedOutputStream:close	()V
+    //   594: invokevirtual 657	java/io/BufferedOutputStream:close	()V
     //   597: aload_1
     //   598: athrow
     //   599: astore_1
@@ -801,7 +812,7 @@ public class SelectCoverActivity
     if (QLog.isColorLevel()) {
       QLog.i("SelectCoverActivity", 2, "onSeekStart");
     }
-    DynamicUtils.a(this.app, "0X800710B", a());
+    alkx.a(this.app, "0X800710B", a());
     if (this.jdField_b_of_type_AndroidOsHandler.hasMessages(8)) {
       this.jdField_b_of_type_AndroidOsHandler.removeMessages(8);
     }
@@ -842,12 +853,12 @@ public class SelectCoverActivity
     paramView1.play(ObjectAnimator.ofFloat(paramView2, View.X, new float[] { this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_b_of_type_AndroidGraphicsRect.left })).with(ObjectAnimator.ofFloat(paramView2, View.Y, new float[] { this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_b_of_type_AndroidGraphicsRect.top })).with(ObjectAnimator.ofFloat(paramView2, View.SCALE_X, new float[] { this.jdField_a_of_type_Float, 1.0F })).with(ObjectAnimator.ofFloat(paramView2, View.SCALE_Y, new float[] { this.jdField_a_of_type_Float, 1.0F }));
     paramView1.setDuration(250L);
     paramView1.setInterpolator(new DecelerateInterpolator());
-    paramView1.addListener(new abrh(this));
+    paramView1.addListener(new alky(this));
     paramView1.start();
     this.jdField_a_of_type_AndroidAnimationAnimator = paramView1;
   }
   
-  public boolean a()
+  boolean a()
   {
     this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawableHandler = new VideoDrawableHandler(this.app, this);
     if (!this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawableHandler.a(this.jdField_a_of_type_JavaLangString))
@@ -861,7 +872,7 @@ public class SelectCoverActivity
     return true;
   }
   
-  public boolean a(int paramInt)
+  boolean a(int paramInt)
   {
     if (paramInt > this.jdField_a_of_type_Int - 1) {
       return true;
@@ -878,7 +889,7 @@ public class SelectCoverActivity
         if (localObject1 == null) {
           continue;
         }
-        localBitmap = DynamicUtils.a((Bitmap)localObject1, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int);
+        localBitmap = alkx.a((Bitmap)localObject1, this.jdField_b_of_type_Int, this.jdField_b_of_type_Int);
         if ((localObject1 == null) || (localObject1 == localBitmap) || (((Bitmap)localObject1).isRecycled())) {
           continue;
         }
@@ -908,7 +919,7 @@ public class SelectCoverActivity
       localObject1 = null;
       try
       {
-        localObject2 = AnimationUtils.loadAnimation(this, 2131034324);
+        localObject2 = AnimationUtils.loadAnimation(this, 2130772214);
         localObject1 = localObject2;
         ((Animation)localObject2).setInterpolator(new DecelerateInterpolator(2.0F));
         localObject1 = localObject2;
@@ -962,13 +973,13 @@ public class SelectCoverActivity
     localAnimatorSet.play(ObjectAnimator.ofFloat(paramView2, View.X, new float[] { this.jdField_a_of_type_AndroidGraphicsRect.left })).with(ObjectAnimator.ofFloat(paramView2, View.Y, new float[] { this.jdField_a_of_type_AndroidGraphicsRect.top })).with(ObjectAnimator.ofFloat(paramView2, View.SCALE_X, new float[] { this.jdField_a_of_type_Float })).with(ObjectAnimator.ofFloat(paramView2, View.SCALE_Y, new float[] { this.jdField_a_of_type_Float }));
     localAnimatorSet.setDuration(250L);
     localAnimatorSet.setInterpolator(new DecelerateInterpolator());
-    localAnimatorSet.addListener(new abri(this, paramView1, paramView2));
+    localAnimatorSet.addListener(new alkz(this, paramView1, paramView2));
     localAnimatorSet.start();
     this.jdField_a_of_type_AndroidAnimationAnimator = localAnimatorSet;
   }
   
   @TargetApi(14)
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     this.jdField_d_of_type_Int = getIntent().getIntExtra("param_source", 0);
@@ -979,15 +990,15 @@ public class SelectCoverActivity
     this.f = getIntent().getIntExtra("key_video_duration", 0);
     this.jdField_c_of_type_JavaLangString = getIntent().getStringExtra("key_video_has_voice");
     this.jdField_d_of_type_JavaLangString = getIntent().getStringExtra("key_camera_id");
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager = ((DynamicAvatarManager)this.app.getManager(179));
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.jdField_a_of_type_JavaLangString = null;
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.b = null;
-    setContentView(getLayoutInflater().inflate(2130970587, null));
+    this.jdField_a_of_type_Alkl = ((alkl)this.app.getManager(180));
+    this.jdField_a_of_type_Alkl.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Alkl.b = null;
+    setContentView(getLayoutInflater().inflate(2131495440, null));
     d();
     getWindow().setBackgroundDrawable(null);
     c();
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("key_video_file_path");
-    if (!FileUtils.a(this.jdField_a_of_type_JavaLangString))
+    if (!bace.a(this.jdField_a_of_type_JavaLangString))
     {
       if (QLog.isColorLevel()) {
         QLog.i("SelectCoverActivity", 2, "doOnCreate return filepath:" + this.jdField_a_of_type_JavaLangString);
@@ -995,19 +1006,22 @@ public class SelectCoverActivity
       finish();
       return false;
     }
-    this.jdField_a_of_type_Abrj = new abrj(this.app, this);
+    this.jdField_a_of_type_Alla = new alla(this.app, this);
     if (Build.VERSION.SDK_INT <= 9) {
-      ThreadManager.postImmediately(new abre(this), null, true);
+      ThreadManager.postImmediately(new SelectCoverActivity.1(this), null, true);
     }
     for (;;)
     {
+      if (this.jdField_d_of_type_Int == 3) {
+        agdx.a(this, this.jdField_a_of_type_JavaLangString);
+      }
       return true;
-      ThreadManager.postImmediately(new abrf(this), null, true);
+      ThreadManager.postImmediately(new SelectCoverActivity.2(this), null, true);
     }
   }
   
   @TargetApi(11)
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
     this.jdField_b_of_type_Boolean = true;
@@ -1019,12 +1033,12 @@ public class SelectCoverActivity
     if (this.jdField_a_of_type_AndroidAnimationAnimator != null) {
       this.jdField_a_of_type_AndroidAnimationAnimator.cancel();
     }
-    if (this.jdField_a_of_type_Abrj != null) {
-      this.app.a().b(this.jdField_a_of_type_Abrj);
+    if (this.jdField_a_of_type_Alla != null) {
+      this.app.a().b(this.jdField_a_of_type_Alla);
     }
   }
   
-  protected void doOnResume()
+  public void doOnResume()
   {
     super.doOnResume();
     d();
@@ -1072,31 +1086,32 @@ public class SelectCoverActivity
           this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawableHandler.b();
           a(paramMessage.arg1);
           return true;
-          this.jdField_c_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawable = new VideoDrawable((Bitmap)paramMessage.obj, getResources());
-          this.jdField_c_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawable.a(true);
-          this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_c_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableVideoDrawable);
+          this.jdField_c_of_type_Allc = new allc((Bitmap)paramMessage.obj, getResources());
+          this.jdField_c_of_type_Allc.a(true);
+          this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_c_of_type_Allc);
           this.jdField_a_of_type_AndroidViewView.setVisibility(0);
           return true;
           i = paramMessage.arg1;
         } while (paramMessage.arg2 == 0);
-        QQToast.a(this, String.format("获取%.3fms处图片帧失败。", new Object[] { Float.valueOf(i / 1000.0F) }), 0).a();
+        float f1 = i / 1000.0F;
+        bbmy.a(this, String.format(ajjy.a(2131647916), new Object[] { Float.valueOf(f1) }), 0).a();
         return true;
-        QQToast.a(this, "获取封面失败。", 0).a();
+        bbmy.a(this, ajjy.a(2131647927), 0).a();
         return true;
         i = paramMessage.arg1;
         j = paramMessage.arg2;
         paramMessage = (String)paramMessage.obj;
-      } while ((this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(i, paramMessage, j);
+      } while ((this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Bbmv == null));
+      this.jdField_a_of_type_Bbmv.a(i, paramMessage, j);
       return true;
     }
     g();
     return true;
   }
   
-  protected boolean onBackEvent()
+  public boolean onBackEvent()
   {
-    DynamicUtils.a(this.app, "0X800710C", a());
+    alkx.a(this.app, "0X800710C", a());
     return super.onBackEvent();
   }
   
@@ -1104,18 +1119,18 @@ public class SelectCoverActivity
   {
     if (paramView == this.rightViewText)
     {
-      DynamicUtils.a(this.app, "0X800710D", a());
-      if (ProfileCardUtil.a()) {
-        a(2, "正在上传视频", 0);
+      alkx.a(this.app, "0X800710D", a());
+      if (azyk.a()) {
+        a(2, ajjy.a(2131647925), 0);
       }
     }
     else
     {
       return;
     }
-    if (!NetworkUtil.g(this))
+    if (!badq.g(this))
     {
-      QQToast.a(this, 1, getString(2131434827), 0).b(getTitleBarHeight());
+      bbmy.a(this, 1, getString(2131628948), 0).b(getTitleBarHeight());
       return;
     }
     paramView = this.jdField_a_of_type_AndroidViewView.getBackground();
@@ -1126,25 +1141,25 @@ public class SelectCoverActivity
     {
       if (paramView == null)
       {
-        QQToast.a(this, "选取帧失败。", 0).a();
+        bbmy.a(this, ajjy.a(2131647922), 0).a();
         if (!QLog.isColorLevel()) {
           break;
         }
         QLog.i("SelectCoverActivity", 2, "android version:" + Build.VERSION.SDK_INT);
         return;
-        if ((paramView == null) || (!(paramView instanceof VideoDrawable))) {
-          break label210;
+        if ((paramView == null) || (!(paramView instanceof allc))) {
+          break label219;
         }
-        paramView = ((VideoDrawable)paramView).a();
+        paramView = ((allc)paramView).a();
         continue;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this);
+      if (this.jdField_a_of_type_Bbmv == null) {
+        this.jdField_a_of_type_Bbmv = new bbmv(this);
       }
-      a(0, "正在处理图片", 0);
-      ThreadManager.postImmediately(new abrg(this, paramView), null, true);
+      a(0, ajjy.a(2131647918), 0);
+      ThreadManager.postImmediately(new SelectCoverActivity.3(this, paramView), null, true);
       return;
-      label210:
+      label219:
       paramView = null;
     }
   }
@@ -1160,7 +1175,7 @@ public class SelectCoverActivity
     int i = ((Integer)paramView.getTag()).intValue();
     this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2, i, 0).sendToTarget();
     this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar.setThumbOffset(paramView.getLeft());
-    DynamicUtils.a(this.app, "0X800710A", a());
+    alkx.a(this.app, "0X800710A", a());
     if (QLog.isColorLevel()) {
       QLog.i("SelectCoverActivity", 2, "onTouchDown");
     }

@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_struct$DateVideoCollection
-  extends MessageMicro
+  extends MessageMicro<DateVideoCollection>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField address = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -24,8 +24,8 @@ public final class qqstory_struct$DateVideoCollection
   public final PBUInt32Field share_to_discover = PBField.initUInt32(0);
   public final PBUInt32Field total_view_count = PBField.initUInt32(0);
   public final PBUInt32Field total_view_times = PBField.initUInt32(0);
-  public final PBRepeatField vid_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
-  public final PBRepeatMessageField video_list = PBField.initRepeatMessage(qqstory_struct.StoryVideoSimpleInfo.class);
+  public final PBRepeatField<ByteStringMicro> vid_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatMessageField<qqstory_struct.StoryVideoSimpleInfo> video_list = PBField.initRepeatMessage(qqstory_struct.StoryVideoSimpleInfo.class);
   
   static
   {
@@ -38,7 +38,7 @@ public final class qqstory_struct$DateVideoCollection
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.DateVideoCollection
  * JD-Core Version:    0.7.0.1
  */

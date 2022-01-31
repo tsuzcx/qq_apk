@@ -1,22 +1,27 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.lightReply.FacePicDectect.FaceDetectFinishedListener;
-import com.tencent.mobileqq.lightReply.LightReplyMenuManager;
-import mqq.os.MqqHandler;
-
-public class aekh
-  implements FacePicDectect.FaceDetectFinishedListener
+class aekh
+  implements azif
 {
-  public aekh(LightReplyMenuManager paramLightReplyMenuManager, Context paramContext, boolean paramBoolean, String paramString) {}
+  public String a;
   
-  public void a(int paramInt)
+  public aekh(String paramString)
   {
-    ThreadManager.getUIHandler().post(new aeki(this, paramInt));
+    this.a = paramString;
+  }
+  
+  public long a()
+  {
+    try
+    {
+      long l = Long.parseLong(this.a);
+      return l;
+    }
+    catch (Exception localException) {}
+    return 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aekh
  * JD-Core Version:    0.7.0.1
  */

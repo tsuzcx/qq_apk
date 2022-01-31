@@ -1,8 +1,8 @@
 package com.tencent.component.network.utils.thread;
 
-public abstract interface ThreadPool$Job
+public abstract interface ThreadPool$Job<T>
 {
-  public abstract Object run(ThreadPool.JobContext paramJobContext);
+  public abstract T run(ThreadPool.JobContext paramJobContext);
 }
 
 

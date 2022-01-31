@@ -1,40 +1,53 @@
 package com.tencent.mobileqq.ark;
 
-import abal;
-import abam;
-import aban;
-import abaq;
-import abar;
-import abas;
-import abat;
-import abau;
-import abav;
-import abaw;
-import abax;
-import abay;
+import adaj;
+import alck;
+import aldo;
+import aldv;
+import aled;
+import alee;
+import alef;
+import aleg;
+import aleh;
+import alei;
+import alem;
+import aleq;
+import aler;
+import aleu;
+import alez;
+import algs;
+import alhf;
+import alhy;
+import alib;
+import amas;
+import amax;
+import amay;
+import ambm;
+import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build;
+import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import awqx;
+import beff;
 import com.tencent.ark.ArkDispatchTask;
 import com.tencent.ark.ArkEnvironmentManager;
 import com.tencent.ark.ark;
+import com.tencent.ark.open.ArkAppConfigMgr;
+import com.tencent.ark.open.ArkAppMgr;
+import com.tencent.ark.open.ArkUtil;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.startup.step.UpdateArkSo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.SOPreLoader;
 import java.io.File;
 import java.lang.ref.WeakReference;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
 import mqq.manager.Manager;
 
 public class ArkAppCenter
@@ -42,90 +55,53 @@ public class ArkAppCenter
 {
   private static double jdField_a_of_type_Double;
   private static String jdField_a_of_type_JavaLangString;
-  public static Map a;
   public static volatile boolean a;
   private static double jdField_b_of_type_Double;
-  private static Map jdField_b_of_type_JavaUtilMap = Collections.synchronizedMap(new HashMap());
   public static volatile boolean b;
-  public static volatile boolean c;
-  static boolean d;
-  private static boolean e;
+  static boolean jdField_c_of_type_Boolean;
+  private static boolean d;
+  private static boolean e = BaseApplicationImpl.getApplication().getSharedPreferences("arkappmsg_entry", 4).getBoolean("arkapp_pa_nshow", e);
   private static boolean f;
-  private static boolean g;
   private final int jdField_a_of_type_Int = 0;
-  private abay jdField_a_of_type_Abay = new abay(null);
-  private ArkActionAppMgr jdField_a_of_type_ComTencentMobileqqArkArkActionAppMgr;
-  private ArkAiAppCenter jdField_a_of_type_ComTencentMobileqqArkArkAiAppCenter;
-  private ArkAppCGI jdField_a_of_type_ComTencentMobileqqArkArkAppCGI;
-  private ArkAppEntityManagerFactory jdField_a_of_type_ComTencentMobileqqArkArkAppEntityManagerFactory;
-  private ArkAppSSO jdField_a_of_type_ComTencentMobileqqArkArkAppSSO;
-  private ArkLocalAppMgr jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr;
-  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new abar(this);
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  private alck jdField_a_of_type_Alck;
+  private aldo jdField_a_of_type_Aldo;
+  private aleq jdField_a_of_type_Aleq;
+  private aleu jdField_a_of_type_Aleu;
+  private alez jdField_a_of_type_Alez;
+  private alhy jdField_a_of_type_Alhy;
+  private alib jdField_a_of_type_Alib;
+  private ArkAppCenter.ProxyChangeNotifier jdField_a_of_type_ComTencentMobileqqArkArkAppCenter$ProxyChangeNotifier = new ArkAppCenter.ProxyChangeNotifier(null);
+  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new aled(this);
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   private final int jdField_b_of_type_Int = 1;
-  private final int c;
+  private final int jdField_c_of_type_Int = 2;
   
   static
   {
-    jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new HashMap());
-    f = BaseApplicationImpl.getApplication().getSharedPreferences("arkappmsg_entry", 4).getBoolean("arkapp_pa_nshow", f);
-    String str1 = Build.CPU_ABI;
-    String str2 = Build.CPU_ABI2;
-    if ((a(str1).booleanValue()) || (a(str2).booleanValue())) {
-      jdField_c_of_type_Boolean = true;
-    }
+    alhf.a(true);
+    alhf.a();
   }
   
   public ArkAppCenter(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_c_of_type_Int = 2;
+    g();
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI = new ArkAppCGI(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqArkArkAppSSO = new ArkAppSSO(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr = new ArkLocalAppMgr(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqArkArkActionAppMgr = new ArkActionAppMgr(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqArkArkAppEntityManagerFactory = new ArkAppEntityManagerFactory(paramQQAppInterface.getCurrentAccountUin());
+    this.jdField_a_of_type_Aldo = new aldo(paramQQAppInterface);
+    this.jdField_a_of_type_Alez = new alez(paramQQAppInterface);
+    this.jdField_a_of_type_Aleq = new aleq(paramQQAppInterface.getCurrentAccountUin());
     AppNetConnInfo.registerConnectionChangeReceiver(paramQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
     IntentFilter localIntentFilter = new IntentFilter("android.intent.action.PROXY_CHANGE");
-    paramQQAppInterface.getApp().registerReceiver(this.jdField_a_of_type_Abay, localIntentFilter);
-    this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppCenter = new ArkAiAppCenter(this);
-  }
-  
-  public static int a(String paramString)
-  {
-    ArkAppCenter.ApplicationInformation localApplicationInformation = (ArkAppCenter.ApplicationInformation)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if (localApplicationInformation != null) {
-      return localApplicationInformation.jdField_a_of_type_Int;
-    }
-    paramString = a(paramString);
-    if (paramString != null) {
-      return paramString.jdField_a_of_type_Int;
-    }
-    return 0;
+    paramQQAppInterface.getApp().registerReceiver(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCenter$ProxyChangeNotifier, localIntentFilter);
+    this.jdField_a_of_type_Alck = new alck(this);
+    this.jdField_a_of_type_Aleu = new aleu(paramQQAppInterface);
+    this.jdField_a_of_type_Alhy = new alhy(paramQQAppInterface);
+    this.jdField_a_of_type_Alib = new alib(paramQQAppInterface);
   }
   
   public static ArkDispatchTask a()
   {
-    a(false);
+    b(true);
     return ArkDispatchTask.getInstance();
-  }
-  
-  protected static ArkAppCenter.ApplicationInformation a(String paramString)
-  {
-    a(true);
-    if (!jdField_b_of_type_Boolean) {
-      return null;
-    }
-    a().send(new abal(paramString));
-    return (ArkAppCenter.ApplicationInformation)jdField_a_of_type_JavaUtilMap.get(paramString);
-  }
-  
-  private static Boolean a(String paramString)
-  {
-    if ((paramString.equalsIgnoreCase("armeabi-v7a")) || (paramString.equalsIgnoreCase("arm64-v8a"))) {}
-    for (boolean bool = true;; bool = false) {
-      return Boolean.valueOf(bool);
-    }
   }
   
   public static String a()
@@ -133,89 +109,73 @@ public class ArkAppCenter
     return jdField_a_of_type_JavaLangString;
   }
   
-  public static String a(String paramString)
-  {
-    ArkAppCenter.ApplicationInformation localApplicationInformation = (ArkAppCenter.ApplicationInformation)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if ((localApplicationInformation != null) && (!TextUtils.isEmpty(localApplicationInformation.jdField_a_of_type_JavaLangString))) {
-      return localApplicationInformation.jdField_a_of_type_JavaLangString;
-    }
-    paramString = a(paramString);
-    if (paramString != null) {
-      return paramString.jdField_a_of_type_JavaLangString;
-    }
-    return "";
-  }
-  
-  public static Map a(String paramString1, String paramString2)
-  {
-    HashMap localHashMap = new HashMap();
-    paramString1 = ((ArkAppCenter)((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime()).getManager(120)).a().a(paramString1, paramString2);
-    if (paramString1 != null)
-    {
-      localHashMap.put("desc", b(paramString1));
-      localHashMap.put("version", d(paramString1));
-      return localHashMap;
-    }
-    return null;
-  }
-  
   private void a(int paramInt1, int paramInt2)
   {
     if (paramInt2 == 2)
     {
-      ArkAppContainer.setArkHttpProxy();
+      adaj.setArkHttpProxy();
       return;
     }
-    ArkAppContainer.clearArkHttpProxy();
+    adaj.clearArkHttpProxy();
+  }
+  
+  public static void a(Intent paramIntent)
+  {
+    a(paramIntent, null);
+  }
+  
+  public static void a(Intent paramIntent, String paramString)
+  {
+    if (paramIntent != null)
+    {
+      String str = paramString;
+      if (TextUtils.isEmpty(paramString)) {
+        str = "biz_src_jc_ark";
+      }
+      paramIntent.putExtra("big_brother_source_key", str);
+    }
+  }
+  
+  public static void a(Bundle paramBundle)
+  {
+    if (paramBundle != null) {
+      paramBundle.putString("big_brother_source_key", "biz_src_jc_ark");
+    }
+  }
+  
+  public static void a(Runnable paramRunnable)
+  {
+    a().post("logicqueue", paramRunnable);
+  }
+  
+  public static void a(Runnable paramRunnable, long paramLong)
+  {
+    a().postDelayed("logicqueue", paramRunnable, paramLong);
   }
   
   public static void a(String paramString)
   {
-    if (paramString == null) {
-      return;
-    }
-    abax localabax;
-    synchronized (jdField_b_of_type_JavaUtilMap)
+    if (paramString != null) {}
+    for (;;)
     {
-      localabax = (abax)jdField_b_of_type_JavaUtilMap.get(paramString);
-      if (localabax == null)
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArkApp", 1, String.format("releaseAppIcon.notfound!! path: %s", new Object[] { paramString }));
-        }
-        return;
+        e = "1".equalsIgnoreCase(paramString);
+        BaseApplicationImpl.getApplication().getSharedPreferences("arkappmsg_entry", 4).edit().putBoolean("arkapp_pa_nshow", e).apply();
       }
-    }
-    int i = localabax.jdField_a_of_type_Int - 1;
-    localabax.jdField_a_of_type_Int = i;
-    if (i != 0) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkApp", 1, String.format("releaseAppIcon.release!! path: %s", new Object[] { paramString }));
-    }
-    jdField_b_of_type_JavaUtilMap.remove(paramString);
-    a().post(new abaq(localabax));
-  }
-  
-  public static void a(String paramString, ArkAppCenter.OnGetAppIcon paramOnGetAppIcon)
-  {
-    if ((paramString == null) || (paramOnGetAppIcon == null)) {
-      return;
-    }
-    synchronized (jdField_b_of_type_JavaUtilMap)
-    {
-      abax localabax = (abax)jdField_b_of_type_JavaUtilMap.get(paramString);
-      if (localabax != null) {
-        localabax.jdField_a_of_type_Int += 1;
-      }
-      if (localabax != null)
+      catch (Exception localException)
       {
-        paramOnGetAppIcon.a(paramString, localabax.jdField_a_of_type_AndroidGraphicsBitmap);
-        return;
+        localException.printStackTrace();
+        continue;
+        c("ArkApp", "updatePANShowSwitch, value = null");
       }
+      if (paramString == null) {
+        continue;
+      }
+      c("ArkApp", "updatePANShowSwitch, value = " + paramString);
+      return;
+      e = false;
     }
-    a().post(new aban(paramString, paramOnGetAppIcon));
   }
   
   public static void a(String paramString1, String paramString2)
@@ -225,40 +185,37 @@ public class ArkAppCenter
     }
   }
   
-  public static void a(boolean paramBoolean)
-  {
-    ArkEnvironmentManager localArkEnvironmentManager = ArkEnvironmentManager.getInstance();
-    if (!jdField_a_of_type_Boolean) {}
-    try
-    {
-      if (!jdField_a_of_type_Boolean)
-      {
-        localArkEnvironmentManager.setThreadCreator(new abat());
-        localArkEnvironmentManager.setLogCallback(new abau());
-        localArkEnvironmentManager.setLibraryLoader(new abav());
-        localArkEnvironmentManager.setDebugFlag(false);
-        localArkEnvironmentManager.setProfilingLogFlag(false);
-        jdField_a_of_type_Boolean = true;
-      }
-      if ((paramBoolean) && (!jdField_b_of_type_Boolean)) {
-        localArkEnvironmentManager.loadLibrary();
-      }
-      if ((paramBoolean) && (jdField_b_of_type_Boolean)) {
-        ThreadManager.post(new abaw(), 5, null, true);
-      }
-      return;
-    }
-    finally {}
-  }
+  public static void a(boolean paramBoolean) {}
   
   public static boolean a()
   {
-    return d;
+    return jdField_c_of_type_Boolean;
+  }
+  
+  private static boolean a(String paramString1, String paramString2)
+  {
+    boolean bool = true;
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
+      bool = false;
+    }
+    do
+    {
+      return bool;
+      paramString1 = new File(paramString1, paramString2);
+    } while ((paramString1 != null) && (paramString1.exists()) && (paramString1.isFile()));
+    QLog.d("ArkApp", 1, "load lib " + paramString2 + " NOT exist.");
+    return false;
+  }
+  
+  public static boolean a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    b(true);
+    return ark.arkNotify(paramString1, paramString2, paramString3, paramString4);
   }
   
   public static double[] a()
   {
-    if (!g) {
+    if (!f) {
       return null;
     }
     return new double[] { jdField_a_of_type_Double, jdField_b_of_type_Double };
@@ -266,84 +223,90 @@ public class ArkAppCenter
   
   public static String b()
   {
-    return ArkAppEnvConfig.a().a();
-  }
-  
-  public static String b(String paramString)
-  {
-    ArkAppCenter.ApplicationInformation localApplicationInformation = (ArkAppCenter.ApplicationInformation)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if ((localApplicationInformation != null) && (!TextUtils.isEmpty(localApplicationInformation.b))) {
-      return localApplicationInformation.b;
-    }
-    paramString = a(paramString);
-    if (paramString != null) {
-      return paramString.b;
-    }
-    return "";
+    return aler.a().c();
   }
   
   public static void b()
   {
-    b("ArkApp", "cleanArkAppCache");
+    c("ArkApp", "cleanArkAppCache");
     c();
-  }
-  
-  public static void b(String paramString)
-  {
-    if (paramString != null) {}
-    for (;;)
-    {
-      try
-      {
-        f = "1".equalsIgnoreCase(paramString);
-        BaseApplicationImpl.getApplication().getSharedPreferences("arkappmsg_entry", 4).edit().putBoolean("arkapp_pa_nshow", f).apply();
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        continue;
-        b("ArkApp", "updatePANShowSwitch, value = null");
-      }
-      if (paramString == null) {
-        continue;
-      }
-      b("ArkApp", "updatePANShowSwitch, value = " + paramString);
-      return;
-      f = false;
-    }
+    e();
   }
   
   public static void b(String paramString1, String paramString2)
   {
-    QLog.i(paramString1, 1, paramString2);
+    if (QLog.isDevelopLevel()) {
+      QLog.d(paramString1, 4, paramString2);
+    }
+  }
+  
+  public static void b(boolean paramBoolean)
+  {
+    Object localObject1 = ArkEnvironmentManager.getInstance();
+    if (!jdField_a_of_type_Boolean) {}
+    for (;;)
+    {
+      try
+      {
+        if (!jdField_a_of_type_Boolean)
+        {
+          ((ArkEnvironmentManager)localObject1).setThreadCreator(new alef());
+          ((ArkEnvironmentManager)localObject1).setLogCallback(new aleg());
+          ((ArkEnvironmentManager)localObject1).setLibraryLoader(new aleh());
+          ((ArkEnvironmentManager)localObject1).setDebugFlag(false);
+          ((ArkEnvironmentManager)localObject1).setProfilingLogFlag(true);
+          ((ArkEnvironmentManager)localObject1).setDataReport(new alei());
+          jdField_a_of_type_Boolean = true;
+        }
+        if ((paramBoolean) && (!jdField_b_of_type_Boolean))
+        {
+          ((ArkEnvironmentManager)localObject1).loadLibrary();
+          if (jdField_b_of_type_Boolean)
+          {
+            boolean bool1 = alck.a();
+            ark.SetUseAndroidHTTP(bool1);
+            boolean bool2 = alck.b();
+            ark.arkSetAndroid9EmojiFeatureSupport(bool2);
+            if (BaseApplicationImpl.getContext() != null)
+            {
+              localObject1 = alem.a;
+              ark.arkSetScreenSize(((DisplayMetrics)localObject1).widthPixels / ((DisplayMetrics)localObject1).density, ((DisplayMetrics)localObject1).heightPixels / ((DisplayMetrics)localObject1).density);
+            }
+            boolean bool3 = "true".equals(alck.a("ark_engine_multi_thread"));
+            localObject1 = ArkEnvironmentManager.getInstance();
+            if (bool3) {
+              break label244;
+            }
+            paramBoolean = true;
+            ((ArkEnvironmentManager)localObject1).setSingleThreadMode(paramBoolean);
+            ArkEnvironmentManager.getInstance().setThreadMode();
+            c("ArkApp", String.format("setupArkEnvironment, https=%s, multithreads=%s, supportAndroid9EmojiFeature=%s", new Object[] { Boolean.toString(bool1), Boolean.toString(bool3), Boolean.toString(bool2) }));
+          }
+        }
+        return;
+      }
+      finally {}
+      label244:
+      paramBoolean = false;
+    }
   }
   
   public static boolean b()
   {
-    return jdField_c_of_type_Boolean;
+    if (QLog.isDevelopLevel()) {
+      QLog.i("ArkApp", 4, "isPANonShow,  bRet = " + e);
+    }
+    return (e) || (!ArkUtil.isDeviceSupportArkMsg());
   }
   
   public static String c()
   {
-    return ArkAppEnvConfig.a().b();
-  }
-  
-  public static String c(String paramString)
-  {
-    ArkAppCenter.ApplicationInformation localApplicationInformation = (ArkAppCenter.ApplicationInformation)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if ((localApplicationInformation != null) && (!TextUtils.isEmpty(localApplicationInformation.b))) {
-      return localApplicationInformation.e;
-    }
-    paramString = a(paramString);
-    if (paramString != null) {
-      return paramString.e;
-    }
-    return "";
+    return aler.a().d();
   }
   
   public static void c()
   {
-    File[] arrayOfFile = new File(c()).listFiles(new abas());
+    File[] arrayOfFile = new File(ArkEnvironmentManager.getInstance().getCacheDirectory()).listFiles(new alee());
     if (arrayOfFile != null)
     {
       int j = arrayOfFile.length;
@@ -356,100 +319,161 @@ public class ArkAppCenter
     }
   }
   
+  public static void c(String paramString1, String paramString2)
+  {
+    QLog.i(paramString1, 1, paramString2);
+  }
+  
   public static boolean c()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("ArkApp", 4, "isPANonShow,  bRet = " + f);
-    }
-    return (f) || (!b());
-  }
-  
-  public static String d()
-  {
-    return ArkAppEnvConfig.a().c();
-  }
-  
-  public static String d(String paramString)
-  {
-    ArkAppCenter.ApplicationInformation localApplicationInformation = (ArkAppCenter.ApplicationInformation)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if ((localApplicationInformation != null) && (!TextUtils.isEmpty(localApplicationInformation.c))) {
-      return localApplicationInformation.c;
-    }
-    paramString = a(paramString);
-    if (paramString != null) {
-      return paramString.c;
-    }
-    return "0.0.0.1";
-  }
-  
-  public static void d()
-  {
-    new File(b() + "/storage.db").delete();
-  }
-  
-  public static boolean d()
-  {
-    boolean bool = true;
-    File localFile = new File(SOPreLoader.a(), "libjsc.so");
-    if ((localFile == null) || (!localFile.exists()) || (!localFile.isFile()))
+    String str = algs.a();
+    if (a(str, "libjsc_ark.so"))
     {
-      QLog.d("ArkApp", 1, "load lib libjsc.so NOT exist.");
-      bool = false;
+      ark.arkSetLibraryPath(str, "libjsc_ark.so");
+      if (QLog.isDevelopLevel()) {
+        QLog.i("ArkApp", 4, "InitJSCLibPath with debug libjsc_ark.so ");
+      }
+      return true;
     }
-    return bool;
-  }
-  
-  public static String e()
-  {
-    return ArkAppEnvConfig.a().d();
-  }
-  
-  public static String e(String paramString)
-  {
-    ArkAppCenter.ApplicationInformation localApplicationInformation = (ArkAppCenter.ApplicationInformation)jdField_a_of_type_JavaUtilMap.get(paramString);
-    if ((localApplicationInformation != null) && (!TextUtils.isEmpty(localApplicationInformation.d))) {
-      return localApplicationInformation.d;
-    }
-    paramString = a(paramString);
-    if (paramString != null) {
-      return paramString.d;
-    }
-    return "";
-  }
-  
-  public static void e()
-  {
-    if ((jdField_b_of_type_Boolean) || (!jdField_c_of_type_Boolean)) {
-      return;
-    }
-    ArkDispatchTask.getInstance().send(new abam());
-  }
-  
-  public static String f()
-  {
-    return ArkAppEnvConfig.a().e();
-  }
-  
-  public static String g()
-  {
-    return String.format(Locale.CHINA, "%d", new Object[] { Integer.valueOf(ark.arkGetPlatformVersion()) });
-  }
-  
-  private static boolean g()
-  {
-    String str = SOPreLoader.a();
+    str = beff.a();
     if (str == null)
     {
       QLog.d("ArkApp", 1, "InitJSCLibPath folder path is null.");
       return false;
     }
-    ark.arkSetLibraryPath(str);
+    ark.arkSetLibraryPath(str, "libjsc.so");
+    QLog.i("ArkApp", 4, "InitJSCLibPath with  libjsc.so");
     return true;
   }
   
-  public static String h()
+  public static String d()
   {
-    return String.format(Locale.CHINA, "%d", new Object[] { Integer.valueOf(ark.arkGetMinPlatformVersion()) });
+    String str = aler.a().e();
+    File localFile = new File(str);
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return str;
+  }
+  
+  public static void d()
+  {
+    new File(ArkEnvironmentManager.getInstance().getStorageDirectory() + "/storage.db").delete();
+  }
+  
+  public static boolean d()
+  {
+    if (a(algs.a(), "libjsc_ark.so")) {}
+    String str;
+    do
+    {
+      return true;
+      str = beff.a();
+      if (str == null)
+      {
+        QLog.d("ArkApp", 1, "isJSCLibExist folder path is null.");
+        return false;
+      }
+    } while (a(str, "libjsc.so"));
+    return false;
+  }
+  
+  public static void e()
+  {
+    String str = ArkEnvironmentManager.getInstance().getResDirectory();
+    String[] arrayOfString = new File(str).list();
+    if ((arrayOfString != null) && (arrayOfString.length > 0))
+    {
+      int i = 0;
+      while (i < arrayOfString.length)
+      {
+        File localFile = new File(str + "/" + arrayOfString[i]);
+        if (localFile.isDirectory())
+        {
+          File[] arrayOfFile = localFile.listFiles();
+          c("ArkApp", "cleanAppRes, path = " + localFile.getAbsolutePath());
+          if (arrayOfFile != null)
+          {
+            int j = 0;
+            while (j < arrayOfFile.length)
+            {
+              arrayOfFile[j].delete();
+              j += 1;
+            }
+          }
+        }
+        else
+        {
+          localFile.delete();
+        }
+        i += 1;
+      }
+    }
+  }
+  
+  public static void f()
+  {
+    if ((jdField_b_of_type_Boolean) || (!ArkUtil.sARMv7Compatible)) {}
+    do
+    {
+      return;
+      if ((!jdField_b_of_type_Boolean) && (ArkUtil.sARMv7Compatible))
+      {
+        long l1 = System.currentTimeMillis();
+        UpdateArkSo.a(BaseApplicationImpl.getContext(), "png-armeabi-v7a");
+        jdField_b_of_type_Boolean = UpdateArkSo.b(BaseApplicationImpl.getContext(), "ark-armeabi-v7a");
+        long l2 = System.currentTimeMillis();
+        QLog.d("ArkApp", 1, "load libark.so for ARMv7!, loaded=" + Boolean.toString(jdField_b_of_type_Boolean) + ", time=" + (l2 - l1));
+      }
+    } while (d);
+    d = true;
+    if (jdField_b_of_type_Boolean)
+    {
+      c();
+      return;
+    }
+    awqx.b(null, "CliOper", "", "", "0X8006365", "ark.lib.load.fail", 1, 1, "1", "1", Build.CPU_ABI, Build.CPU_ABI2);
+  }
+  
+  private void g()
+  {
+    Object localObject = amay.b(380).a();
+    if ((localObject != null) && (((amax)localObject).a() != null))
+    {
+      QLog.d("ArkApp", 1, "ArkSafe.initGlobalWhiteListAndUrlCheckStatus.loadConfig content = " + ((amax)localObject).a());
+      localObject = ((amax)localObject).a();
+      ArkAppConfigMgr.getInstance().initGlobalWhiteListAndUrlCheckStatus(((ambm)localObject).jdField_a_of_type_Boolean, ((ambm)localObject).jdField_b_of_type_JavaUtilArrayList, ((ambm)localObject).jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap);
+    }
+  }
+  
+  public alck a()
+  {
+    return this.jdField_a_of_type_Alck;
+  }
+  
+  public aldo a()
+  {
+    return this.jdField_a_of_type_Aldo;
+  }
+  
+  public aleu a()
+  {
+    return this.jdField_a_of_type_Aleu;
+  }
+  
+  public alez a()
+  {
+    return this.jdField_a_of_type_Alez;
+  }
+  
+  public alhy a()
+  {
+    return this.jdField_a_of_type_Alhy;
+  }
+  
+  public alib a()
+  {
+    return this.jdField_a_of_type_Alib;
   }
   
   public QQAppInterface a()
@@ -457,45 +481,20 @@ public class ArkAppCenter
     return (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
   }
   
-  public ArkActionAppMgr a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqArkArkActionAppMgr;
-  }
-  
-  public ArkAiAppCenter a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppCenter;
-  }
-  
-  public ArkAppCGI a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI;
-  }
-  
-  public ArkAppSSO a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqArkArkAppSSO;
-  }
-  
-  public ArkLocalAppMgr a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr;
-  }
-  
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr.b();
+    ArkAppMgr.getInstance().updateInstalledApps();
+    if (this.jdField_a_of_type_Alck != null) {
+      this.jdField_a_of_type_Alck.b();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArkArkAiAppCenter != null) {}
   }
   
-  public boolean a(String paramString, Object paramObject, ArkAppCGI.ArkAppCGICallback paramArkAppCGICallback)
+  public boolean a(String paramString, Object paramObject, aldv paramaldv)
   {
     if ((paramString == null) || (paramString.length() <= 0)) {
       return false;
     }
-    this.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI.b(paramString, paramObject, paramArkAppCGICallback);
+    this.jdField_a_of_type_Aldo.a(paramString, paramObject, paramaldv);
     return true;
   }
   
@@ -506,14 +505,12 @@ public class ArkAppCenter
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr.a();
-    }
+    ArkAppMgr.getInstance().onDestroy();
     QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (localQQAppInterface != null)
     {
       AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
-      localQQAppInterface.getApp().unregisterReceiver(this.jdField_a_of_type_Abay);
+      localQQAppInterface.getApp().unregisterReceiver(this.jdField_a_of_type_ComTencentMobileqqArkArkAppCenter$ProxyChangeNotifier);
     }
   }
 }

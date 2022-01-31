@@ -1,31 +1,28 @@
-import com.tencent.mobileqq.app.message.MsgProxy;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.persistence.qslowtable.QSlowTableManager;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.widget.FormMultiLineSwitchItem;
 
 public class zzt
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public zzt(MsgProxy paramMsgProxy, QSlowTableManager paramQSlowTableManager, String paramString, int paramInt) {}
+  public zzt(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    try
+    AssistantSettingActivity.a(this.a, this.a.f.a(), paramBoolean);
+    AssistantSettingActivity.a(this.a).a(paramBoolean, true);
+    if (paramBoolean)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager != null) {
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager.a(MessageRecord.getTableName(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int), null, null);
-      }
+      awqx.b(this.a.app, "dc00898", "", "", "0X8009C0C", "0X8009C0C", 0, 0, "", "", "", "");
       return;
     }
-    catch (RuntimeException localRuntimeException)
-    {
-      QLog.e("Q.msg.MsgProxy", 1, "delete slowtable excep :", localRuntimeException);
-    }
+    awqx.b(this.a.app, "dc00898", "", "", "0X8009C0D", "0X8009C0D", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zzt
  * JD-Core Version:    0.7.0.1
  */

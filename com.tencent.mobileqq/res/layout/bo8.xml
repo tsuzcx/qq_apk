@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="60.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.AvatarImageView android:id="@id/c1q" android:padding="10.0dip" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_margin="1.0px" android:layout_alignParentLeft="true" qzone:avatarSize="40.0dip"
+      xmlns:qzone="http://schemas.android.com/apk/res/com.tencent.mobileqq" />
+    <TextView android:textSize="@dimen/aw6" android:textColor="@color/bp" android:id="@id/c22" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <LinearLayout android:gravity="left" android:orientation="vertical" android:paddingTop="10.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toLeftOf="@id/c22" android:layout_toRightOf="@id/c1q">
+        <TextView android:textSize="@dimen/aw4" android:textColor="@color/g1" android:id="@id/c1u" android:layout_width="wrap_content" android:layout_height="0.0dip" android:singleLine="true" android:layout_weight="1.0" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/aw4" android:id="@id/c1t" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:textSize="@dimen/aw4" android:id="@id/c1s" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:textSize="@dimen/aw4" android:id="@id/c1r" android:paddingLeft="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+    <include android:id="@id/bmt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_alignParentBottom="true" layout="@layout/bhr" />
+</RelativeLayout>

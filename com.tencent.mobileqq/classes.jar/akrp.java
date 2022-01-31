@@ -1,45 +1,35 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
-
-public final class akrp
-  extends SosoInterface.OnLocationListener
+public abstract class akrp
+  extends aksd
 {
-  public akrp(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong1, boolean paramBoolean3, boolean paramBoolean4, String paramString, SharedPreferences paramSharedPreferences, long paramLong2)
+  private int a = 1;
+  private int b = 1;
+  
+  public akrp(int paramInt1, int paramInt2)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong1, paramBoolean3, paramBoolean4, paramString);
+    this(paramInt1, paramInt2, 5);
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public akrp(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramInt == 0)
-    {
-      d1 = paramSosoLbsInfo.a.a;
-      d2 = paramSosoLbsInfo.a.b;
-      paramSosoLbsInfo = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      paramSosoLbsInfo.putFloat("search_lbs_logitude", (float)d2);
-      paramSosoLbsInfo.putFloat("search_lbs_latitude", (float)d1);
-      paramSosoLbsInfo.putLong("search_lbs_timestamp", this.jdField_a_of_type_Long);
-      paramSosoLbsInfo.commit();
-      if (QLog.isColorLevel()) {
-        QLog.i("SSOHttpUtils", 2, "Soso location info lat: " + d1 + ",lon:" + d2);
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      double d1;
-      double d2;
-      return;
-    }
-    QLog.i("SSOHttpUtils", 2, "Soso location failed error = " + paramInt);
+    this.a = paramInt1;
+    this.b = paramInt2;
   }
+  
+  public static boolean a(akrp paramakrp)
+  {
+    return (paramakrp != null) && (paramakrp.a());
+  }
+  
+  public int a()
+  {
+    return this.b;
+  }
+  
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akrp
  * JD-Core Version:    0.7.0.1
  */

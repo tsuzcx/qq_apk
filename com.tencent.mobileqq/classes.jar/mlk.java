@@ -1,18 +1,18 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import android.view.View;
+import android.view.animation.Transformation;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.biz.PoiMapActivity;
 
 public class mlk
-  implements Runnable
+  implements bajj<Integer>
 {
-  public mlk(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, BaseArticleInfo paramBaseArticleInfo) {}
+  public mlk(PoiMapActivity paramPoiMapActivity) {}
   
-  public void run()
+  public void a(bajd<Integer> parambajd, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo != null) {
-      PublicAccountReportUtils.a(null, "", "0X8008AD1", "0X8008AD1", 0, 0, "", "", "", VideoReporter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mVideoVid, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.innerUniqueID, (int)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mChannelID, null), false);
-    }
+    parambajd = (FrameLayout.LayoutParams)this.a.b.getLayoutParams();
+    parambajd.bottomMargin = (this.a.o - paramInteger.intValue());
+    this.a.b.setLayoutParams(parambajd);
   }
 }
 

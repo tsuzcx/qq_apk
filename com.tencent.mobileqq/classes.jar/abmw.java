@@ -1,42 +1,23 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.armap.ipc.ArMapIPC;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
 
 public class abmw
-  implements EIPCResultCallback
+  extends ajrp
 {
-  public abmw(ArMapIPC paramArMapIPC) {}
+  public abmw(QQSettingMe paramQQSettingMe) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void a()
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramEIPCResult != null)
-    {
-      localObject1 = localObject2;
-      if (paramEIPCResult.isSuccess()) {
-        localObject1 = paramEIPCResult.data.getString("action");
-      }
-    }
-    if (TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("ArMapIPC", 2, "onCallback error");
-      }
-      return;
-    }
     if (QLog.isColorLevel()) {
-      QLog.i("ArMapIPC", 2, "onCallback action:" + (String)localObject1);
+      QLog.d("QQSettingRedesign", 2, "updateLevelAndVip from mVipInfoChangedObserver");
     }
-    this.a.a((String)localObject1, paramEIPCResult);
+    this.a.c(this.a.a.getCurrentAccountUin());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abmw
  * JD-Core Version:    0.7.0.1
  */

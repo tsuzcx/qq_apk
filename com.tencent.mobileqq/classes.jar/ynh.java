@@ -1,23 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GroupManagerActivity;
-import com.tencent.mobileqq.adapter.BuddyListAdapter;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.ad.tangram.thread.AdThreadManager;
+import com.tencent.gdtad.jsbridge.GdtDeviceInfoJsCallHandler.1;
+import java.lang.ref.WeakReference;
 
 public class ynh
-  implements View.OnClickListener
+  implements ynl
 {
-  public ynh(BuddyListAdapter paramBuddyListAdapter) {}
-  
-  public void onClick(View paramView)
+  public boolean a(ymw paramymw, String paramString, String... paramVarArgs)
   {
-    GroupManagerActivity.a(this.a.a);
-    ReportController.b(BuddyListAdapter.a(this.a), "CliOper", "", "", "category", "Edit_category", 0, 0, "", "", "", "");
+    Object localObject = null;
+    WeakReference localWeakReference = new WeakReference(paramymw);
+    AdThreadManager.INSTANCE.post(new GdtDeviceInfoJsCallHandler.1(this, localWeakReference, paramVarArgs, paramString), 4);
+    if (paramymw != null) {}
+    for (paramString = paramymw.a();; paramString = null)
+    {
+      paramVarArgs = localObject;
+      if (paramymw != null) {
+        paramVarArgs = paramymw.a();
+      }
+      AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, true, "getDeviceInfo", paramVarArgs);
+      return false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ynh
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0xb40$Author
-  extends MessageMicro
+  extends MessageMicro<Author>
 {
   public static final int Email = 4;
   public static final int Group = 2;
@@ -32,7 +32,7 @@ public final class oidb_0xb40$Author
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0xb40.oidb_0xb40.Author
  * JD-Core Version:    0.7.0.1
  */

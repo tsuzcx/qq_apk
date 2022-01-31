@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -14,8 +16,8 @@ import java.util.HashMap;
 public abstract class PluginProxyFragmentActivity
   extends PluginProxyActivity
 {
-  private static final String b = "PluginProxyFragmentActivity";
-  private static final HashMap c = new HashMap();
+  private static final String TAG = "PluginProxyFragmentActivity";
+  private static final HashMap<String, String> pluginInstalledPathMap = new HashMap();
   
   protected void attachBaseContext(Context paramContext)
   {
@@ -27,12 +29,12 @@ public abstract class PluginProxyFragmentActivity
         if (QLog.isColorLevel()) {
           QLog.d("PluginProxyFragmentActivity", 2, "new PluginContext start");
         }
-        String str = (String)c.get(getPluginID());
+        String str = (String)pluginInstalledPathMap.get(getPluginID());
         if (TextUtils.isEmpty(str))
         {
           str = PluginUtils.getInstalledPluginPath(paramContext, getPluginID()).getAbsolutePath();
-          c.put(getPluginID(), str);
-          paramContext = preAttachBaseContext(new c(paramContext, getThemeResId(), str, PluginStatic.getOrCreateClassLoader(paramContext, getPluginID()), paramContext.getResources(), getPluginResType()));
+          pluginInstalledPathMap.put(getPluginID(), str);
+          paramContext = new PluginContext(paramContext, getThemeResId(), str, PluginStatic.getOrCreateClassLoader(paramContext, getPluginID()), paramContext.getResources(), getPluginResType());
           if (QLog.isColorLevel()) {
             QLog.d("PluginProxyFragmentActivity", 2, new Object[] { "new PluginContext end ,cost:", Long.valueOf(System.currentTimeMillis() - l) });
           }
@@ -74,14 +76,9 @@ public abstract class PluginProxyFragmentActivity
     }
   }
   
-  protected Context preAttachBaseContext(Context paramContext)
-  {
-    return paramContext;
-  }
-  
   public void startActivityForResult(Intent paramIntent, int paramInt)
   {
-    if ((this.mPluginActivity != null) && ((this.mPluginActivity instanceof BasePluginActivity)) && (((BasePluginActivity)this.mPluginActivity).b(paramIntent))) {}
+    if ((this.mPluginActivity != null) && ((this.mPluginActivity instanceof BasePluginActivity)) && (((BasePluginActivity)this.mPluginActivity).isSamePackage2(paramIntent))) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
@@ -92,15 +89,15 @@ public abstract class PluginProxyFragmentActivity
     }
   }
   
-  public void startActivityFromFragment(Fragment paramFragment, Intent paramIntent, int paramInt)
+  public void startActivityFromFragment(@NonNull Fragment paramFragment, Intent paramIntent, int paramInt)
   {
     startActivityFromFragment(paramFragment, paramIntent, paramInt, null);
   }
   
-  public void startActivityFromFragment(Fragment paramFragment, Intent paramIntent, int paramInt, Bundle paramBundle)
+  public void startActivityFromFragment(@NonNull Fragment paramFragment, Intent paramIntent, int paramInt, @Nullable Bundle paramBundle)
   {
     int i;
-    if ((this.mPluginActivity != null) && ((this.mPluginActivity instanceof BasePluginActivity)) && (((BasePluginActivity)this.mPluginActivity).b(paramIntent))) {
+    if ((this.mPluginActivity != null) && ((this.mPluginActivity instanceof BasePluginActivity)) && (((BasePluginActivity)this.mPluginActivity).isSamePackage2(paramIntent))) {
       i = 1;
     }
     while (i != 0)
@@ -126,7 +123,7 @@ public abstract class PluginProxyFragmentActivity
     super.startActivityFromFragment(paramFragment, paramIntent, paramInt, paramBundle);
   }
   
-  public void startPluginActivityFromFragment(Fragment paramFragment, String paramString, Intent paramIntent, int paramInt, Bundle paramBundle)
+  public void startPluginActivityFromFragment(@NonNull Fragment paramFragment, String paramString, Intent paramIntent, int paramInt, @Nullable Bundle paramBundle)
   {
     Intent localIntent = new Intent(this, getProxyActivity(paramString));
     localIntent.putExtra("pluginsdk_pluginName", this.mPluginName);

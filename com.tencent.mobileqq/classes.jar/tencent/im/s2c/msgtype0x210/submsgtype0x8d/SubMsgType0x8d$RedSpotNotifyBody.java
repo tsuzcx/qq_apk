@@ -10,12 +10,12 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0x8d$RedSpotNotifyBody
-  extends MessageMicro
+  extends MessageMicro<RedSpotNotifyBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_guide_wording = PBField.initBytes(ByteStringMicro.EMPTY);
   public SubMsgType0x8d.ChannelNotify msg_channel_notify = new SubMsgType0x8d.ChannelNotify();
-  public final PBRepeatField rpt_new_channel_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> rpt_new_channel_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBUInt32Field uint32_time = PBField.initUInt32(0);
   
   static

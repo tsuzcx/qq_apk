@@ -1,24 +1,19 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppMusicModule;
-import com.tencent.mobileqq.music.QQPlayerService;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public class aaxe
-  implements Runnable
+class aaxe
+  implements Handler.Callback
 {
-  public aaxe(ArkAppMusicModule paramArkAppMusicModule) {}
+  aaxe(aaxd paramaaxd) {}
   
-  public void run()
+  public boolean handleMessage(Message paramMessage)
   {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if ((localBaseActivity instanceof FragmentActivity)) {
-      QQPlayerService.c(localBaseActivity);
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaxe
  * JD-Core Version:    0.7.0.1
  */

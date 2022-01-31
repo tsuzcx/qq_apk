@@ -1,17 +1,16 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
-import com.tencent.mobileqq.widget.ImageProgressCircle;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
 
-public class nbd
+class nbd
+  implements DialogInterface.OnShowListener
 {
-  int jdField_a_of_type_Int;
-  View jdField_a_of_type_AndroidViewView;
-  public TextView a;
-  public VideoFeedsAlphaMaskView a;
-  public ZImageView a;
-  ImageProgressCircle jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle;
+  nbd(naz paramnaz) {}
+  
+  public void onShow(DialogInterface paramDialogInterface)
+  {
+    naz.a(this.a).getWindow().clearFlags(8);
+  }
 }
 
 

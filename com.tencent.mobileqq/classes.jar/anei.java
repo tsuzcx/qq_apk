@@ -1,31 +1,43 @@
-import android.app.Activity;
-import android.content.Context;
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.IBinder;
+import android.os.IBinder.DeathRecipient;
+import android.os.Messenger;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.plugin.IQZonePluginManager;
-import cooperation.qzone.plugin.IQZonePluginManager.OnPluginReadyListener;
-import cooperation.qzone.plugin.IQZonePluginManager.PluginParams;
+import java.lang.ref.WeakReference;
 
-public final class anei
-  implements IQZonePluginManager.OnPluginReadyListener
+class anei
+  implements IBinder.DeathRecipient
 {
-  public void a(boolean paramBoolean, Context paramContext, IQZonePluginManager.PluginParams paramPluginParams)
+  anei(aned paramaned) {}
+  
+  public void binderDied()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "openActivityForResult onPluginReady." + paramBoolean);
-    }
-    if (paramBoolean)
+    if (QLog.isColorLevel())
     {
-      IQZonePluginManager.b((Activity)paramContext, paramPluginParams);
+      QLog.d("MessengerService$IncomingHandler", 2, "-->binder died");
+      MessengerService.a((MessengerService)this.a.a.get());
+      MessengerService.b((MessengerService)this.a.a.get());
+    }
+    MessengerService localMessengerService;
+    if (this.a.a != null)
+    {
+      localMessengerService = (MessengerService)this.a.a.get();
+      if ((localMessengerService == null) || (localMessengerService.a == null)) {}
+    }
+    try
+    {
+      localMessengerService.a.getBinder().unlinkToDeath(aned.a(this.a), 0);
       return;
     }
-    Toast.makeText(BaseApplicationImpl.getContext(), "加载失败", 0).show();
+    catch (Exception localException)
+    {
+      QLog.d("MessengerService$IncomingHandler", 1, "-->binder died unlink to death error=" + localException.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anei
  * JD-Core Version:    0.7.0.1
  */

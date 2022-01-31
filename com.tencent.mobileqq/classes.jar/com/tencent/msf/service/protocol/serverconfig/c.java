@@ -8,10 +8,10 @@ public final class c
   extends JceStruct
 {
   static byte[] e;
-  public long a;
-  public long b;
+  public long a = 0L;
+  public long b = 0L;
   public String c = "";
-  public byte[] d;
+  public byte[] d = null;
   
   public c() {}
   

@@ -1,31 +1,61 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class amlu
-  implements ValueAnimator.AnimatorUpdateListener
+  extends alzl<amlt>
 {
-  public amlu(XPanelContainer paramXPanelContainer, int paramInt) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public static amlt a()
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("XPanelContainer", 2, "colseAnim resetPosition");
-      }
-      XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, 0);
-      return;
+    return (amlt)alzw.a().a(377);
+  }
+  
+  public int a()
+  {
+    return 377;
+  }
+  
+  @NonNull
+  public amlt a(int paramInt)
+  {
+    return new amlt();
+  }
+  
+  @Nullable
+  public amlt a(alzs[] paramArrayOfalzs)
+  {
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
+      return amlt.a(paramArrayOfalzs);
     }
-    XPanelContainer.a(this.jdField_a_of_type_ComTencentWidgetXPanelContainer, this.jdField_a_of_type_Int - i);
-    this.jdField_a_of_type_ComTencentWidgetXPanelContainer.requestLayout();
+    return null;
+  }
+  
+  public Class<amlt> a()
+  {
+    return amlt.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amlt paramamlt) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amlu
  * JD-Core Version:    0.7.0.1
  */

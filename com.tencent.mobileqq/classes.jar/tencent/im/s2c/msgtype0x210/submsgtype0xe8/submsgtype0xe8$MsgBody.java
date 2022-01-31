@@ -5,7 +5,7 @@ import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 import tencent.im.apollo_push_msgInfo.STPushMsgElem;
 
 public final class submsgtype0xe8$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "msg_item" }, new Object[] { null }, MsgBody.class);
   public apollo_push_msgInfo.STPushMsgElem msg_item = new apollo_push_msgInfo.STPushMsgElem();

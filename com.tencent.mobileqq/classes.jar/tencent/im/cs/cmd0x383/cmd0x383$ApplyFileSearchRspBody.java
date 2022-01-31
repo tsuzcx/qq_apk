@@ -9,12 +9,12 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class cmd0x383$ApplyFileSearchRspBody
-  extends MessageMicro
+  extends MessageMicro<ApplyFileSearchRspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_key_word = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_sync_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField item_list = PBField.initRepeatMessage(cmd0x383.ApplyFileSearchRspBody.Item.class);
+  public final PBRepeatMessageField<cmd0x383.ApplyFileSearchRspBody.Item> item_list = PBField.initRepeatMessage(cmd0x383.ApplyFileSearchRspBody.Item.class);
   public final PBUInt32Field uint32_is_end = PBField.initUInt32(0);
   public final PBUInt32Field uint32_total_match_count = PBField.initUInt32(0);
   
@@ -27,7 +27,7 @@ public final class cmd0x383$ApplyFileSearchRspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.cmd0x383.cmd0x383.ApplyFileSearchRspBody
  * JD-Core Version:    0.7.0.1
  */

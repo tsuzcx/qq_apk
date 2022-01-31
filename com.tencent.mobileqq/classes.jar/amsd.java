@@ -1,20 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import cooperation.dingdong.DingdongPluginBridgeActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Goods;
 
-public class amsd
-  implements DialogInterface.OnDismissListener
+public final class amsd
+  implements Parcelable.Creator
 {
-  public amsd(DingdongPluginBridgeActivity paramDingdongPluginBridgeActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public IPSiteModel.Goods a(Parcel paramParcel)
   {
-    this.a.finish();
+    IPSiteModel.Goods localGoods = new IPSiteModel.Goods();
+    localGoods.cover = paramParcel.readString();
+    localGoods.goodsTags = paramParcel.readString();
+    localGoods.id = paramParcel.readString();
+    localGoods.name = paramParcel.readString();
+    localGoods.price = paramParcel.readString();
+    localGoods.saleTags = paramParcel.readString();
+    localGoods.svipPrice = paramParcel.readString();
+    localGoods.url = paramParcel.readString();
+    localGoods.moreUrl = paramParcel.readString();
+    localGoods.saleNum = paramParcel.readString();
+    return localGoods;
+  }
+  
+  public IPSiteModel.Goods[] a(int paramInt)
+  {
+    return new IPSiteModel.Goods[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amsd
  * JD-Core Version:    0.7.0.1
  */

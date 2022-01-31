@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class hd_video_voip_2$BalanceAccount
-  extends MessageMicro
+  extends MessageMicro<BalanceAccount>
 {
   public static final int AT_MULTI = 2;
   public static final int AT_PAIR = 1;
@@ -32,7 +32,7 @@ public final class hd_video_voip_2$BalanceAccount
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.longconn.voip.hd_video_voip_2.BalanceAccount
  * JD-Core Version:    0.7.0.1
  */

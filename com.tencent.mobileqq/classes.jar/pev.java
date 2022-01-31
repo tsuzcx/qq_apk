@@ -1,53 +1,24 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.biz.ui.RefreshView;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.biz.ui.TouchWebView.OnOverScrollHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import java.util.HashSet;
+import java.util.Set;
 
 public class pev
-  extends GestureDetector.SimpleOnGestureListener
 {
-  public pev(TouchWebView paramTouchWebView) {}
+  public int a;
+  public long a;
+  public Set<String> a;
+  public Set<String> b = new HashSet();
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public pev()
   {
-    return true;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilSet = new HashSet();
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  @NonNull
+  public String toString()
   {
-    return false;
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if (((this.a.f) && (paramFloat2 < 0.0F)) || ((this.a.g) && (this.a.a != null)))
-    {
-      this.a.a.a((int)(paramFloat2 / 1.5D));
-      this.a.g = true;
-    }
-    if ((this.a.getParent() instanceof RefreshView))
-    {
-      paramMotionEvent1 = (RefreshView)this.a.getParent();
-      if ((paramMotionEvent1.getScrollY() >= 0) && (this.a.a != null) && (this.a.g))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("CustomWebView", 2, "RefreshView scrollY: " + paramMotionEvent1.getScrollY());
-        }
-        this.a.a.a();
-        this.a.g = false;
-        this.a.f = false;
-      }
-    }
-    return false;
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    return true;
+    return "time:" + this.jdField_a_of_type_Long + "effectTime:" + this.jdField_a_of_type_Int + "  " + this.jdField_a_of_type_JavaUtilSet + "  " + this.b;
   }
 }
 

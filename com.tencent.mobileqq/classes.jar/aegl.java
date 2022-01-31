@@ -1,22 +1,18 @@
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.util.ScreenShotUtil;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import org.json.JSONObject;
-
-public class aegl
-  implements Runnable
+class aegl
+  extends ajey
 {
-  public aegl(UiApiPlugin paramUiApiPlugin, JSONObject paramJSONObject) {}
+  aegl(aege paramaege) {}
   
-  public void run()
+  protected void a(Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.i = this.jdField_a_of_type_OrgJsonJSONObject.optString("callback");
-    ScreenShotUtil.a(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a(), new aegm(this));
+    if (aege.a(this.a) != null) {
+      aege.a(this.a).notifyDataSetChanged();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aegl
  * JD-Core Version:    0.7.0.1
  */

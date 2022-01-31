@@ -1,24 +1,23 @@
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.tribe.view.TEditText;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.view.View;
 
-class ajde
-  extends AnimatorListenerAdapter
+public class ajde
 {
-  ajde(ajdd paramajdd) {}
+  int jdField_a_of_type_Int;
+  View jdField_a_of_type_AndroidViewView;
+  String jdField_a_of_type_JavaLangString;
+  int b;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public ajde(View paramView, int paramInt1, String paramString, int paramInt2)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.r();
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b.requestFocus();
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajde
  * JD-Core Version:    0.7.0.1
  */

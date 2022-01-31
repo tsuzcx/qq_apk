@@ -1,22 +1,27 @@
-import com.tencent.ark.ArkDebugger;
-import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.widget.QQToast;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetMainPageRsp;
+import com.tencent.qphone.base.util.QLog;
 
-class vvu
-  implements Runnable
+final class vvu
+  implements wxx<CertifiedAccountRead.StGetMainPageRsp>
 {
-  vvu(vvt paramvvt) {}
-  
-  public void run()
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetMainPageRsp paramStGetMainPageRsp)
   {
-    ArkDebugger.Listen("127.0.0.1", 23333L, 600000L, ArkAppCenter.f());
-    QQToast.a(this.a.a.a.a.a, "已经开启监听，可以连接调试...", 0).a();
+    if ((paramBoolean) && (paramLong == 0L))
+    {
+      if (paramStGetMainPageRsp != null) {
+        vvt.a((CertifiedAccountMeta.StUser)paramStGetMainPageRsp.user.get());
+      }
+    }
+    else {
+      return;
+    }
+    QLog.w(vvt.class.getSimpleName(), 1, "getPuinUser empty");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vvu
  * JD-Core Version:    0.7.0.1
  */

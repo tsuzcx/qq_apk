@@ -13,17 +13,11 @@ import android.view.Surface;
 import java.util.Locale;
 
 public class ArkPlayer
-  implements ark.PlayerStub, MediaPlayer.OnPreparedListener, MediaPlayer.OnCompletionListener, MediaPlayer.OnInfoListener, MediaPlayer.OnErrorListener, MediaPlayer.OnBufferingUpdateListener, MediaPlayer.OnVideoSizeChangedListener, MediaPlayer.OnSeekCompleteListener
+  implements MediaPlayer.OnBufferingUpdateListener, MediaPlayer.OnCompletionListener, MediaPlayer.OnErrorListener, MediaPlayer.OnInfoListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnSeekCompleteListener, MediaPlayer.OnVideoSizeChangedListener, ark.PlayerStub
 {
   protected static final ArkEnvironmentManager ENV = ;
-  public static final String TAG = "Ark.ArkPlayer";
-  public static final ark.PlayerStubFactory sFactory = new ark.PlayerStubFactory()
-  {
-    public ark.PlayerStub CreateStub()
-    {
-      return new ArkPlayer();
-    }
-  };
+  public static final String TAG = "ArkApp.ArkPlayer";
+  public static final ark.PlayerStubFactory sFactory = new ArkPlayer.1();
   protected int mBufferPercent = 0;
   protected long mBufferingCallback = 0L;
   protected long mBufferingUserdata = 0L;
@@ -33,6 +27,7 @@ public class ArkPlayer
   protected ark.PlayerStub.MediaInfo mMediaInfo = new ark.PlayerStub.MediaInfo();
   protected boolean mPlayWhenReady;
   protected MediaPlayer mPlayer;
+  protected String mQueueKey = ArkDispatchQueue.getCurrentQueueKey();
   protected double mSeekPos = -1.0D;
   protected long mStateCallback = 0L;
   protected long mStateUserdata = 0L;
@@ -40,30 +35,24 @@ public class ArkPlayer
   
   protected ArkPlayer()
   {
-    ENV.logI("Ark.ArkPlayer", String.format("player.create.%h", new Object[] { this }));
+    ENV.logI("ArkApp.ArkPlayer", String.format("player.create.%h", new Object[] { this }));
   }
   
   private void bufferingChange(boolean paramBoolean)
   {
-    ark.PlayerBufferingChange(this.mBufferingCallback, this.mBufferingUserdata, paramBoolean);
+    ArkDispatchQueue.asyncRun(this.mQueueKey, new ArkPlayer.4(this, paramBoolean));
   }
   
-  private void changeState(final int paramInt)
+  private void changeState(int paramInt)
   {
-    final int i = this.mMediaInfo.state;
+    int i = this.mMediaInfo.state;
     this.mMediaInfo.state = paramInt;
-    ArkDispatchTask.getInstance().post(new Runnable()
-    {
-      public void run()
-      {
-        ark.PlayerStateChange(ArkPlayer.this.mStateCallback, ArkPlayer.this.mStateUserdata, i, paramInt);
-      }
-    });
+    ArkDispatchQueue.asyncRun(this.mQueueKey, new ArkPlayer.3(this, i, paramInt));
   }
   
   public void Destroy()
   {
-    ENV.logI("Ark.ArkPlayer", String.format("player.destroy.%h", new Object[] { this }));
+    ENV.logI("ArkApp.ArkPlayer", String.format("player.destroy.%h", new Object[] { this }));
     if (this.mSurfaceHolder != null)
     {
       this.mSurfaceHolder.deinitialize();
@@ -111,7 +100,7 @@ public class ArkPlayer
     Object localObject = null;
     if (!VideoPreviewSupported())
     {
-      ENV.logE("Ark.ArkPlayer", "Load.unsupport.hardware!!");
+      ENV.logE("ArkApp.ArkPlayer", "Load.unsupport.hardware!!");
       this.mErrorCode = -4;
       changeState(6);
       return false;
@@ -127,7 +116,7 @@ public class ArkPlayer
         if (!this.mSurfaceHolder.initialize())
         {
           this.mSurfaceHolder = null;
-          ENV.logE("Ark.ArkPlayer", "Load.mSurfaceHolder.initialize.fail!!");
+          ENV.logE("ArkApp.ArkPlayer", "Load.mSurfaceHolder.initialize.fail!!");
           return false;
           i = 0;
         }
@@ -143,15 +132,15 @@ public class ArkPlayer
         if (localSurface != null) {
           break label159;
         }
-        ENV.logE("Ark.ArkPlayer", "Load.mSurfaceHolder.getSurface.null!!");
+        ENV.logE("ArkApp.ArkPlayer", "Load.mSurfaceHolder.getSurface.null!!");
         return false;
       }
     }
-    ENV.logI("Ark.ArkPlayer", "Load.not.support.hw.rendering.play.audio.only!!");
+    ENV.logI("ArkApp.ArkPlayer", "Load.not.support.hw.rendering.play.audio.only!!");
     label159:
     if (this.mMediaInfo.state == 1)
     {
-      ENV.logE("Ark.ArkPlayer", "Load.state.is.loading!!");
+      ENV.logE("ArkApp.ArkPlayer", "Load.state.is.loading!!");
       return false;
     }
     this.mErrorCode = 0;
@@ -162,7 +151,7 @@ public class ArkPlayer
     {
       this.mPlayer.reset();
       changeState(0);
-      ENV.logI("Ark.ArkPlayer", "Load.url.is.null!!");
+      ENV.logI("ArkApp.ArkPlayer", "Load.url.is.null!!");
       return true;
     }
     if (this.mMediaInfo.state != 0) {
@@ -179,6 +168,7 @@ public class ArkPlayer
       this.mPlayer.setOnVideoSizeChangedListener(this);
     }
     this.mPlayWhenReady = false;
+    ENV.logI("ArkApp.ArkPlayer", "ArkPlayer.load.setDataSource url=" + paramString);
     try
     {
       this.mPlayer.setDataSource(paramString);
@@ -188,7 +178,7 @@ public class ArkPlayer
     }
     catch (Exception paramString)
     {
-      ENV.logE("Ark.ArkPlayer", "Load.mPlayer.setDataSource.fail!!" + paramString.getLocalizedMessage());
+      ENV.logE("ArkApp.ArkPlayer", "Load.mPlayer.setDataSource.fail!!" + paramString.getMessage());
     }
     return false;
   }
@@ -197,7 +187,7 @@ public class ArkPlayer
   {
     if (!VideoPreviewSupported())
     {
-      ENV.logE("Ark.ArkPlayer", "Pause.unsupport.hardware!!");
+      ENV.logE("ArkApp.ArkPlayer", "Pause.unsupport.hardware!!");
       this.mErrorCode = -4;
       changeState(6);
     }
@@ -206,7 +196,7 @@ public class ArkPlayer
     }
     if (this.mMediaInfo.state != 3)
     {
-      ENV.logE("Ark.ArkPlayer", String.format(Locale.CHINA, "Pause.wrong.state.%d!!", new Object[] { Integer.valueOf(this.mMediaInfo.state) }));
+      ENV.logE("ArkApp.ArkPlayer", String.format(Locale.CHINA, "Pause.wrong.state.%d!!", new Object[] { Integer.valueOf(this.mMediaInfo.state) }));
       return false;
     }
     try
@@ -217,7 +207,7 @@ public class ArkPlayer
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      ENV.logD("Ark.ArkPlayer", localIllegalStateException.getLocalizedMessage());
+      ENV.logD("ArkApp.ArkPlayer", localIllegalStateException.getLocalizedMessage());
     }
     return false;
   }
@@ -226,7 +216,7 @@ public class ArkPlayer
   {
     if (!VideoPreviewSupported())
     {
-      ENV.logE("Ark.ArkPlayer", "Play.unsupport.hardware!!");
+      ENV.logE("ArkApp.ArkPlayer", "Play.unsupport.hardware!!");
       this.mErrorCode = -4;
       changeState(6);
     }
@@ -235,7 +225,7 @@ public class ArkPlayer
     }
     if ((this.mMediaInfo.state != 2) && (this.mMediaInfo.state != 4) && (this.mMediaInfo.state != 5) && (this.mMediaInfo.state != 3))
     {
-      ENV.logE("Ark.ArkPlayer", String.format(Locale.CHINA, "Play.wrong.state.%d!!", new Object[] { Integer.valueOf(this.mMediaInfo.state) }));
+      ENV.logE("ArkApp.ArkPlayer", String.format(Locale.CHINA, "Play.wrong.state.%d!!", new Object[] { Integer.valueOf(this.mMediaInfo.state) }));
       return false;
     }
     try
@@ -248,14 +238,16 @@ public class ArkPlayer
         this.mMediaInfo.state = 1;
         return true;
       }
-      this.mPlayer.seekTo(0);
+      if (this.mPlayer.getDuration() > 0) {
+        this.mPlayer.seekTo(0);
+      }
       this.mPlayer.start();
       changeState(3);
       return true;
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      ENV.logD("Ark.ArkPlayer", localIllegalStateException.getLocalizedMessage());
+      ENV.logD("ArkApp.ArkPlayer", localIllegalStateException.getLocalizedMessage());
     }
     return false;
   }
@@ -264,7 +256,7 @@ public class ArkPlayer
   {
     if (!VideoPreviewSupported())
     {
-      ENV.logE("Ark.ArkPlayer", "Resume.unsupport.hardware!!");
+      ENV.logE("ArkApp.ArkPlayer", "Resume.unsupport.hardware!!");
       this.mErrorCode = -4;
       changeState(6);
     }
@@ -273,7 +265,7 @@ public class ArkPlayer
     }
     if (this.mMediaInfo.state != 4)
     {
-      ENV.logE("Ark.ArkPlayer", String.format(Locale.CHINA, "Resume.wrong.state.%d!!", new Object[] { Integer.valueOf(this.mMediaInfo.state) }));
+      ENV.logE("ArkApp.ArkPlayer", String.format(Locale.CHINA, "Resume.wrong.state.%d!!", new Object[] { Integer.valueOf(this.mMediaInfo.state) }));
       return false;
     }
     try
@@ -284,7 +276,7 @@ public class ArkPlayer
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      ENV.logD("Ark.ArkPlayer", localIllegalStateException.getLocalizedMessage());
+      ENV.logD("ArkApp.ArkPlayer", localIllegalStateException.getLocalizedMessage());
     }
     return false;
   }
@@ -294,7 +286,7 @@ public class ArkPlayer
     double d = 0.0D;
     if (!VideoPreviewSupported())
     {
-      ENV.logE("Ark.ArkPlayer", "Seek.unsupport.hardware!!");
+      ENV.logE("ArkApp.ArkPlayer", "Seek.unsupport.hardware!!");
       this.mErrorCode = -4;
       changeState(6);
     }
@@ -303,7 +295,7 @@ public class ArkPlayer
     }
     if ((this.mMediaInfo.state != 2) && (this.mMediaInfo.state != 4) && (this.mMediaInfo.state != 3))
     {
-      ENV.logE("Ark.ArkPlayer", String.format(Locale.CHINA, "Seek.wrong.state.%d!!", new Object[] { Integer.valueOf(this.mMediaInfo.state) }));
+      ENV.logE("ArkApp.ArkPlayer", String.format(Locale.CHINA, "Seek.wrong.state.%d!!", new Object[] { Integer.valueOf(this.mMediaInfo.state) }));
       return false;
     }
     if (paramDouble < 0.0D) {
@@ -323,7 +315,7 @@ public class ArkPlayer
       }
       catch (IllegalStateException localIllegalStateException)
       {
-        ENV.logD("Ark.ArkPlayer", localIllegalStateException.getLocalizedMessage());
+        ENV.logD("ArkApp.ArkPlayer", localIllegalStateException.getLocalizedMessage());
       }
     }
     return false;
@@ -357,14 +349,14 @@ public class ArkPlayer
     float f = 1.0F;
     if (!VideoPreviewSupported())
     {
-      ENV.logE("Ark.ArkPlayer", "SetVolume.unsupport.hardware!!");
+      ENV.logE("ArkApp.ArkPlayer", "SetVolume.unsupport.hardware!!");
       this.mErrorCode = -4;
       changeState(6);
       return false;
     }
     if ((this.mMediaInfo.state != 2) && (this.mMediaInfo.state != 4) && (this.mMediaInfo.state != 3) && (this.mMediaInfo.state != 5))
     {
-      ENV.logE("Ark.ArkPlayer", String.format(Locale.CHINA, "SetVolume.wrong.state.%d!!", new Object[] { Integer.valueOf(this.mMediaInfo.state) }));
+      ENV.logE("ArkApp.ArkPlayer", String.format(Locale.CHINA, "SetVolume.wrong.state.%d!!", new Object[] { Integer.valueOf(this.mMediaInfo.state) }));
       return false;
     }
     if (this.mPlayer == null) {
@@ -391,7 +383,7 @@ public class ArkPlayer
   {
     if (!VideoPreviewSupported())
     {
-      ENV.logE("Ark.ArkPlayer", "Stop.unsupport.hardware!!");
+      ENV.logE("ArkApp.ArkPlayer", "Stop.unsupport.hardware!!");
       this.mErrorCode = -4;
       changeState(6);
     }
@@ -400,7 +392,7 @@ public class ArkPlayer
     }
     if ((this.mMediaInfo.state == 1) || (this.mMediaInfo.state == 0))
     {
-      ENV.logE("Ark.ArkPlayer", String.format(Locale.CHINA, "Stop.wrong.state.%d!!", new Object[] { Integer.valueOf(this.mMediaInfo.state) }));
+      ENV.logE("ArkApp.ArkPlayer", String.format(Locale.CHINA, "Stop.wrong.state.%d!!", new Object[] { Integer.valueOf(this.mMediaInfo.state) }));
       return false;
     }
     try
@@ -411,28 +403,28 @@ public class ArkPlayer
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      ENV.logD("Ark.ArkPlayer", localIllegalStateException.getLocalizedMessage());
+      ENV.logD("ArkApp.ArkPlayer", localIllegalStateException.getLocalizedMessage());
     }
     return false;
   }
   
   public boolean VideoPreviewSupported()
   {
-    return ENV.isHardwareAcceleration();
+    return true;
   }
   
   public void onBufferingUpdate(MediaPlayer paramMediaPlayer, int paramInt)
   {
     this.mBufferPercent = paramInt;
     if (ENV.mIsDebug) {
-      ENV.logD("Ark.ArkPlayer", String.format(Locale.CHINA, "onBufferingUpdate.%d", new Object[] { Integer.valueOf(paramInt) }));
+      ENV.logD("ArkApp.ArkPlayer", String.format(Locale.CHINA, "onBufferingUpdate.%d", new Object[] { Integer.valueOf(paramInt) }));
     }
   }
   
   public void onCompletion(MediaPlayer paramMediaPlayer)
   {
     if (ENV.mIsDebug) {
-      ENV.logD("Ark.ArkPlayer", "onCompletion.call!!");
+      ENV.logD("ArkApp.ArkPlayer", "onCompletion.call!!");
     }
     paramMediaPlayer.stop();
     changeState(5);
@@ -440,7 +432,7 @@ public class ArkPlayer
   
   public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    ENV.logE("Ark.ArkPlayer", String.format(Locale.CHINA, "onError.what.%d.extra.%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+    ENV.logE("ArkApp.ArkPlayer", String.format(Locale.CHINA, "onError.what.%d.extra.%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
     switch (paramInt1)
     {
     default: 
@@ -459,7 +451,7 @@ public class ArkPlayer
   public boolean onInfo(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
     if (ENV.mIsDebug) {
-      ENV.logD("Ark.ArkPlayer", String.format(Locale.CHINA, "onInfo.what.%d.extra.%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+      ENV.logD("ArkApp.ArkPlayer", String.format(Locale.CHINA, "onInfo.what.%d.extra.%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
     }
     switch (paramInt1)
     {
@@ -477,7 +469,7 @@ public class ArkPlayer
   {
     boolean bool = true;
     if (ENV.mIsDebug) {
-      ENV.logD("Ark.ArkPlayer", "onPrepared.call!!");
+      ENV.logD("ArkApp.ArkPlayer", "onPrepared.call!!");
     }
     int j = paramMediaPlayer.getDuration();
     int k = paramMediaPlayer.getVideoWidth();
@@ -491,7 +483,7 @@ public class ArkPlayer
       this.mMediaInfo.duration = (j / 1000.0D);
       paramMediaPlayer = this.mMediaInfo;
       if (j > 0) {
-        break label174;
+        break label184;
       }
     }
     for (;;)
@@ -506,25 +498,25 @@ public class ArkPlayer
         this.mMediaInfo.height = m;
       }
       if (!this.mPlayWhenReady) {
-        break label180;
+        break label190;
       }
       this.mPlayWhenReady = false;
       this.mMediaInfo.state = 2;
-      Play();
+      ArkDispatchQueue.asyncRun(this.mQueueKey, new ArkPlayer.2(this));
       return;
       i = 1;
       break;
-      label174:
+      label184:
       bool = false;
     }
-    label180:
+    label190:
     changeState(2);
   }
   
   public void onSeekComplete(MediaPlayer paramMediaPlayer)
   {
     if (ENV.mIsDebug) {
-      ENV.logD("Ark.ArkPlayer", String.format(Locale.CHINA, "onSeekComplete.pos.%.3f", new Object[] { Double.valueOf(this.mSeekPos) }));
+      ENV.logD("ArkApp.ArkPlayer", String.format(Locale.CHINA, "onSeekComplete.pos.%.3f", new Object[] { Double.valueOf(this.mSeekPos) }));
     }
     this.mSeekPos = -1.0D;
   }
@@ -532,7 +524,7 @@ public class ArkPlayer
   public void onVideoSizeChanged(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
     if (ENV.mIsDebug) {
-      ENV.logD("Ark.ArkPlayer", String.format(Locale.CHINA, "onVideoSizeChanged.%d.%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+      ENV.logD("ArkApp.ArkPlayer", String.format(Locale.CHINA, "onVideoSizeChanged.%d.%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
     }
     if (VideoPreviewSupported())
     {
@@ -546,7 +538,7 @@ public class ArkPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.ark.ArkPlayer
  * JD-Core Version:    0.7.0.1
  */

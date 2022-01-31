@@ -1,12 +1,14 @@
 package com.tencent.mobileqq.troop.widget;
 
 import NearbyGroup.GroupLabel;
-import akbm;
+import aciy;
+import ajjy;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.text.SpannableString;
 import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
 import android.text.style.ImageSpan;
 import android.util.AttributeSet;
 import android.util.SparseIntArray;
@@ -15,12 +17,15 @@ import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.utils.DisplayUtils;
+import bacc;
+import bajq;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.mobileqq.data.MayKnowRecommend.MayKnowRecommendLabel;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -28,20 +33,20 @@ import java.util.Set;
 public class TroopLabelLayout
   extends ViewGroup
 {
-  public static final SparseIntArray a;
+  static final SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
   int jdField_a_of_type_Int = 5;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  Runnable jdField_a_of_type_JavaLangRunnable = new akbm(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new TroopLabelLayout.1(this);
   private String jdField_a_of_type_JavaLangString = "TroopLabelLayout";
-  public ArrayList a;
-  private Map jdField_a_of_type_JavaUtilMap;
+  ArrayList<GroupLabel> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private Map<Integer, TroopLabelTextView> jdField_a_of_type_JavaUtilMap;
   boolean jdField_a_of_type_Boolean = false;
-  int b = 0;
+  int jdField_b_of_type_Int = 0;
+  boolean jdField_b_of_type_Boolean;
   
   static
   {
-    jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray();
     jdField_a_of_type_AndroidUtilSparseIntArray.put(1, 1);
     jdField_a_of_type_AndroidUtilSparseIntArray.put(4, 2);
     jdField_a_of_type_AndroidUtilSparseIntArray.put(8, 3);
@@ -56,19 +61,16 @@ public class TroopLabelLayout
   public TroopLabelLayout(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
   public TroopLabelLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
   public TroopLabelLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
   public TroopLabelTextView a(int paramInt)
@@ -80,12 +82,118 @@ public class TroopLabelLayout
     return (TroopLabelTextView)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
   }
   
-  public boolean a(ArrayList paramArrayList)
+  public boolean a(MayKnowRecommend paramMayKnowRecommend)
   {
-    label350:
-    label739:
+    int i;
+    int m;
+    if (paramMayKnowRecommend != null)
+    {
+      i = 0;
+      if (paramMayKnowRecommend.msgLabel != null) {
+        i = paramMayKnowRecommend.msgLabel.size();
+      }
+      if ((paramMayKnowRecommend.gender != 0) && (paramMayKnowRecommend.gender != 1)) {
+        break label545;
+      }
+      m = 1;
+    }
+    for (int k = i + 1;; k = i)
+    {
+      int j = 0;
+      removeAllViews();
+      i = 0;
+      Object localObject;
+      label118:
+      TroopLabelTextView localTroopLabelTextView;
+      if ((i < k) && (j < this.jdField_a_of_type_Int))
+      {
+        if ((m != 0) && (i == 0))
+        {
+          if (paramMayKnowRecommend.age > 0)
+          {
+            localObject = "[icon]" + " " + paramMayKnowRecommend.age + "";
+            localObject = new SpannableString((CharSequence)localObject);
+            if (paramMayKnowRecommend.gender != 0) {
+              break label296;
+            }
+            n = android.graphics.Color.rgb(0, 202, 252);
+          }
+          for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130844933);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130844931))
+          {
+            localTroopLabelTextView = new TroopLabelTextView(getContext(), n, -1, this.jdField_b_of_type_Int);
+            if (j >= this.jdField_a_of_type_Int) {
+              break label515;
+            }
+            addView(localTroopLabelTextView);
+            n = (int)(localTroopLabelTextView.getTextSize() * 0.8D + 0.5D);
+            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, n, n);
+            ((SpannableString)localObject).setSpan(new ImageSpan(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, 1), 0, "[icon]".length(), 17);
+            localTroopLabelTextView.setText((CharSequence)localObject);
+            j += 1;
+            label264:
+            i += 1;
+            break;
+            localObject = "[icon]" + " ";
+            break label118;
+            label296:
+            n = android.graphics.Color.rgb(255, 128, 191);
+          }
+        }
+        if (m == 0) {
+          break label539;
+        }
+      }
+      label515:
+      label539:
+      for (int n = i - 1;; n = i)
+      {
+        if ((paramMayKnowRecommend.msgLabel != null) && (paramMayKnowRecommend.msgLabel.size() > n))
+        {
+          localObject = (MayKnowRecommend.MayKnowRecommendLabel)paramMayKnowRecommend.msgLabel.get(n);
+          n = ((MayKnowRecommend.MayKnowRecommendLabel)localObject).edging_color;
+          int i1 = ((MayKnowRecommend.MayKnowRecommendLabel)localObject).text_color;
+          localTroopLabelTextView = new TroopLabelTextView(getContext(), n, i1, this.jdField_b_of_type_Int);
+          if (j < this.jdField_a_of_type_Int)
+          {
+            addView(localTroopLabelTextView);
+            localTroopLabelTextView.setEllipsize(TextUtils.TruncateAt.END);
+            localTroopLabelTextView.bringToFront();
+            if (((MayKnowRecommend.MayKnowRecommendLabel)localObject).bytes_name != null)
+            {
+              localTroopLabelTextView.setText(((MayKnowRecommend.MayKnowRecommendLabel)localObject).bytes_name);
+              localTroopLabelTextView.setContentDescription(((MayKnowRecommend.MayKnowRecommendLabel)localObject).bytes_name);
+              if (((m == 0) || (i != 1)) && ((m != 0) || (i != 0))) {
+                break;
+              }
+              localTroopLabelTextView.setMaxWidth(bajq.a(150.0F));
+              break;
+            }
+            localTroopLabelTextView.setText("");
+            localTroopLabelTextView.setContentDescription("");
+            break;
+          }
+          if (k == 0) {
+            setVisibility(8);
+          }
+          for (;;)
+          {
+            return true;
+            setVisibility(0);
+          }
+        }
+        break label264;
+      }
+      label545:
+      m = 0;
+    }
+  }
+  
+  public boolean a(ArrayList<GroupLabel> paramArrayList)
+  {
+    label357:
     label752:
-    label754:
+    label765:
+    label767:
     for (;;)
     {
       HashMap localHashMap;
@@ -95,29 +203,29 @@ public class TroopLabelLayout
       {
         this.jdField_a_of_type_JavaUtilArrayList.clear();
         if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-          break label752;
+          break label765;
         }
         localHashMap = new HashMap();
         int m = paramArrayList.size();
         i = 0;
         int j = 0;
         if ((j >= m) || (i >= this.jdField_a_of_type_Int)) {
-          break label739;
+          break label752;
         }
         localGroupLabel = (GroupLabel)paramArrayList.get(j);
         if (TextUtils.isEmpty(localGroupLabel.strWording)) {
           j += 1;
         }
       }
-      if ((localGroupLabel.type != 2001L) && ((this.b >= 2) || (localGroupLabel.type < 1000L) || (localGroupLabel.type >= 2000L)) && ((this.b != 2) || (localGroupLabel.type >= 1000L)))
+      if ((localGroupLabel.type != 2001L) && ((this.jdField_b_of_type_Int >= 2) || (localGroupLabel.type < 1000L) || (localGroupLabel.type >= 2000L)) && ((this.jdField_b_of_type_Int != 2) || (localGroupLabel.type >= 1000L)))
       {
         synchronized (this.jdField_a_of_type_JavaUtilArrayList)
         {
           this.jdField_a_of_type_JavaUtilArrayList.add(localGroupLabel);
-          if (localGroupLabel.type == 4L)
+          if ((!this.jdField_b_of_type_Boolean) && (localGroupLabel.type == 4L))
           {
             if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
-              break label754;
+              break label767;
             }
             this.jdField_a_of_type_AndroidWidgetTextView.setText(localGroupLabel.strWording);
           }
@@ -127,42 +235,42 @@ public class TroopLabelLayout
         int n = android.graphics.Color.rgb((int)localGroupLabel.text_color.R, (int)localGroupLabel.text_color.G, (int)localGroupLabel.text_color.B);
         if (localObject2 == null)
         {
-          ??? = new TroopLabelTextView(getContext(), k, n, this.b);
+          ??? = new TroopLabelTextView(getContext(), k, n, this.jdField_b_of_type_Int);
           if (i >= this.jdField_a_of_type_Int) {
-            break label739;
+            break label752;
           }
           addView((View)???);
           setTroopLabel(i, (TroopLabelTextView)???);
           ((TroopLabelTextView)???).bringToFront();
-          if (this.b == 2)
+          if (this.jdField_b_of_type_Int == 2)
           {
-            k = AIOUtils.a(42.0F, getResources());
-            n = AIOUtils.a(16.0F, getResources());
+            k = aciy.a(42.0F, getResources());
+            n = aciy.a(16.0F, getResources());
             ((TroopLabelTextView)???).setWidth(k);
             ((TroopLabelTextView)???).setHeight(n);
-            ((TroopLabelTextView)???).setMaskImage(2130841473);
+            ((TroopLabelTextView)???).setMaskImage(2130843162);
             if (localGroupLabel.strWording.length() < 2) {
-              break label671;
+              break label685;
             }
             k = 2;
             localGroupLabel.strWording = localGroupLabel.strWording.substring(0, k);
           }
           if (localGroupLabel.type != 1L) {
-            break label697;
+            break label711;
           }
           localObject2 = new SpannableString("[icon]" + " " + localGroupLabel.strWording);
           if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
           {
-            if (this.b != 0) {
-              break label677;
+            if (this.jdField_b_of_type_Int != 0) {
+              break label691;
             }
-            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130846379);
+            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130849352);
           }
           k = (int)(((TroopLabelTextView)???).getTextSize() * 0.8D + 0.5D);
           this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, k, k);
           ((SpannableString)localObject2).setSpan(new ImageSpan(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, 1), 0, "[icon]".length(), 17);
           ((TroopLabelTextView)???).setText((CharSequence)localObject2);
-          ((TroopLabelTextView)???).setContentDescription(localGroupLabel.strWording + "人");
+          ((TroopLabelTextView)???).setContentDescription(localGroupLabel.strWording + ajjy.a(2131649683));
         }
         for (;;)
         {
@@ -173,15 +281,15 @@ public class TroopLabelLayout
           ((TroopLabelTextView)localObject2).setColor(k, n);
           ??? = localObject2;
           if (!QLog.isColorLevel()) {
-            break label350;
+            break label357;
           }
           QLog.d(this.jdField_a_of_type_JavaLangString, 2, "labeltextview cache");
           ??? = localObject2;
-          break label350;
+          break label357;
           k = 1;
-          break label421;
-          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130841467);
-          break label514;
+          break label431;
+          this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130843160);
+          break label525;
           ((TroopLabelTextView)???).setText(localGroupLabel.strWording + "");
           ((TroopLabelTextView)???).setContentDescription(localGroupLabel.strWording);
         }
@@ -192,11 +300,112 @@ public class TroopLabelLayout
     }
   }
   
+  public boolean a(List<MayKnowRecommend.MayKnowRecommendLabel> paramList, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_b_of_type_Int = paramInt3;
+    paramInt3 = 0;
+    if (paramList != null) {
+      paramInt3 = paramList.size();
+    }
+    int k;
+    if ((paramInt2 == 0) || (paramInt2 == 1)) {
+      k = 1;
+    }
+    for (int j = paramInt3 + 1;; j = paramInt3)
+    {
+      int i = 0;
+      removeAllViews();
+      paramInt3 = 0;
+      Object localObject;
+      label110:
+      TroopLabelTextView localTroopLabelTextView;
+      if ((paramInt3 < j) && (i < this.jdField_a_of_type_Int))
+      {
+        if ((k != 0) && (paramInt3 == 0))
+        {
+          if (paramInt1 > 0)
+          {
+            localObject = "[icon]" + " " + paramInt1 + "";
+            localObject = new SpannableString((CharSequence)localObject);
+            if (paramInt2 != 0) {
+              break label290;
+            }
+            m = android.graphics.Color.rgb(0, 202, 252);
+          }
+          for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130844933);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130844931))
+          {
+            localTroopLabelTextView = new TroopLabelTextView(getContext(), m, -1, this.jdField_b_of_type_Int);
+            if (i >= this.jdField_a_of_type_Int) {
+              break label504;
+            }
+            addView(localTroopLabelTextView);
+            m = (int)(localTroopLabelTextView.getTextSize() * 0.8D + 0.5D);
+            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, m, m);
+            ((SpannableString)localObject).setSpan(new ImageSpan(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, 1), 0, "[icon]".length(), 17);
+            localTroopLabelTextView.setText((CharSequence)localObject);
+            i += 1;
+            label256:
+            paramInt3 += 1;
+            break;
+            localObject = "[icon]" + " ";
+            break label110;
+            label290:
+            m = android.graphics.Color.rgb(255, 128, 191);
+          }
+        }
+        if (k == 0) {
+          break label528;
+        }
+      }
+      label528:
+      for (int m = paramInt3 - 1;; m = paramInt3)
+      {
+        if ((paramList != null) && (paramList.size() > m))
+        {
+          localObject = (MayKnowRecommend.MayKnowRecommendLabel)paramList.get(m);
+          m = ((MayKnowRecommend.MayKnowRecommendLabel)localObject).edging_color;
+          int n = ((MayKnowRecommend.MayKnowRecommendLabel)localObject).text_color;
+          localTroopLabelTextView = new TroopLabelTextView(getContext(), m, n, this.jdField_b_of_type_Int);
+          if (i < this.jdField_a_of_type_Int)
+          {
+            addView(localTroopLabelTextView);
+            localTroopLabelTextView.setEllipsize(TextUtils.TruncateAt.END);
+            localTroopLabelTextView.bringToFront();
+            if (((MayKnowRecommend.MayKnowRecommendLabel)localObject).bytes_name != null)
+            {
+              localTroopLabelTextView.setText(((MayKnowRecommend.MayKnowRecommendLabel)localObject).bytes_name);
+              localTroopLabelTextView.setContentDescription(((MayKnowRecommend.MayKnowRecommendLabel)localObject).bytes_name);
+              if (((k == 0) || (paramInt3 != 1)) && ((k != 0) || (paramInt3 != 0))) {
+                break;
+              }
+              localTroopLabelTextView.setMaxWidth(bajq.a(150.0F));
+              break;
+            }
+            localTroopLabelTextView.setText("");
+            localTroopLabelTextView.setContentDescription("");
+            break;
+          }
+          label504:
+          if (j == 0) {
+            setVisibility(8);
+          }
+          for (;;)
+          {
+            return true;
+            setVisibility(0);
+          }
+        }
+        break label256;
+      }
+      k = 0;
+    }
+  }
+  
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     int j = getPaddingLeft();
     int k = getPaddingRight();
-    int m = (int)DisplayUtils.a(getContext(), 2.0F);
+    int m = (int)bacc.a(getContext(), 2.0F);
     int n = getChildCount();
     paramInt2 = getPaddingLeft();
     int i1 = getPaddingTop();
@@ -278,6 +487,11 @@ public class TroopLabelLayout
     }
   }
   
+  public void setAutoCreateDistanceTextView(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
   public void setDistanceTextView(TextView paramTextView)
   {
     this.jdField_a_of_type_AndroidWidgetTextView = paramTextView;
@@ -285,10 +499,10 @@ public class TroopLabelLayout
   
   public void setLabelType(int paramInt)
   {
-    this.b = paramInt;
+    this.jdField_b_of_type_Int = paramInt;
   }
   
-  public void setLabelsUnVisible(Map paramMap)
+  public void setLabelsUnVisible(Map<Integer, Boolean> paramMap)
   {
     if (this.jdField_a_of_type_JavaUtilMap == null) {}
     for (;;)
@@ -327,7 +541,7 @@ public class TroopLabelLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopLabelLayout
  * JD-Core Version:    0.7.0.1
  */

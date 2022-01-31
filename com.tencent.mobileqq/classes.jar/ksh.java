@@ -1,24 +1,19 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
-
 public class ksh
 {
-  public Button a;
-  public ImageView a;
-  public TextView a;
-  public ImageView b;
-  public TextView b;
-  public ImageView c;
-  public TextView c;
-  public ImageView d;
-  
-  public ksh(AccountDetailBaseAdapter paramAccountDetailBaseAdapter) {}
+  @aqrf(a="w")
+  public int a;
+  @aqrf(a="exp")
+  public String a;
+  @aqrf(a="h")
+  public int b;
+  @aqrf(a="url")
+  public String b;
+  @aqrf(a="md5")
+  public String c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ksh
  * JD-Core Version:    0.7.0.1
  */

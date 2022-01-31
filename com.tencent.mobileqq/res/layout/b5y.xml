@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/c15" android:padding="12.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <ImageView android:id="@id/c1n" android:layout_width="110.0dip" android:layout_height="110.0dip" android:layout_centerVertical="true" />
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_toRightOf="@id/c1n" android:layout_centerVertical="true">
+                <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/c1o" android:layout_width="88.0dip" android:layout_height="wrap_content" android:text="@string/r5w" android:layout_alignParentTop="true" />
+                <ProgressBar android:id="@id/g1f" android:visibility="invisible" android:layout_width="88.0dip" android:layout_height="30.0dip" android:layout_marginTop="6.0dip" android:max="100" android:progress="100" android:indeterminateOnly="false" android:progressDrawable="@drawable/akg" android:layout_below="@id/c1o" />
+                <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/bow" android:background="@drawable/akh" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/r5p" android:layout_alignLeft="@id/g1f" android:layout_alignTop="@id/g1f" android:layout_alignRight="@id/g1f" android:layout_alignBottom="@id/g1f" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/egb" android:paddingBottom="@dimen/ac2" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/egf" android:visibility="invisible" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="174.0dip">
+            <ImageView android:layout_width="100.0dip" android:layout_height="100.0dip" android:src="@drawable/fdy" android:scaleType="fitCenter" />
+            <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/egh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:text="@string/r5r" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/eg9" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryLoadingView android:layout_width="55.0dip" android:layout_height="55.0dip" android:layout_marginBottom="35.0dip" />
+        </LinearLayout>
+    </RelativeLayout>
+    <ListView android:id="@id/c1b" android:visibility="invisible" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="#00000000" android:divider="@null" android:overScrollMode="never" />
+</RelativeLayout>

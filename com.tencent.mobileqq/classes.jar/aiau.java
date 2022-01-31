@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.app.fms.FullMessageSearchManager;
-import com.tencent.mobileqq.search.searchengine.MessageSearchEngine;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.redtouch.RedTouch;
 
-public class aiau
-  implements Runnable
+class aiau
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aiau(MessageSearchEngine paramMessageSearchEngine, String paramString) {}
+  aiau(aiat paramaiat, RedTouch paramRedTouch, amnq paramamnq) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineMessageSearchEngine.a.a(this.jdField_a_of_type_JavaLangString);
+    if (!AppSetting.c) {
+      aiat.a(this.jdField_a_of_type_Aiat, this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch, this.jdField_a_of_type_Amnq, paramBoolean);
+    }
   }
 }
 

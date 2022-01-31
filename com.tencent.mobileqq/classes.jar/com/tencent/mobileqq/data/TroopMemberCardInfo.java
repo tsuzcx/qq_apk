@@ -1,17 +1,20 @@
 package com.tencent.mobileqq.data;
 
+import atmo;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="troopuin,memberuin")
 public class TroopMemberCardInfo
-  extends Entity
+  extends atmo
 {
   public int charm;
+  public String colorNick;
   public String email;
   public String job;
   public String level;
+  public int mVipLevel;
+  public int mVipType;
   public String memberuin;
   public String memo;
   public String name;

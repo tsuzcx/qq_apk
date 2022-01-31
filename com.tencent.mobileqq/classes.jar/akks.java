@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.utils.NewUpgradeDialog;
-
 public class akks
-  implements Runnable
 {
-  public akks(NewUpgradeDialog paramNewUpgradeDialog) {}
+  public int a;
+  public long a;
   
-  public void run()
+  public akks(long paramLong, int paramInt)
   {
-    NewUpgradeDialog.d(this.a);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akks
  * JD-Core Version:    0.7.0.1
  */

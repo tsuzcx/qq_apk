@@ -9,11 +9,11 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_service$RspGetLabelList
-  extends MessageMicro
+  extends MessageMicro<RspGetLabelList>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field is_end = PBField.initUInt32(0);
-  public final PBRepeatField label_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> label_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBBytesField next_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
   public qqstory_struct.ErrorInfo result = new qqstory_struct.ErrorInfo();
   
@@ -26,7 +26,7 @@ public final class qqstory_service$RspGetLabelList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetLabelList
  * JD-Core Version:    0.7.0.1
  */

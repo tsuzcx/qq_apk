@@ -1,38 +1,78 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.content.Context;
+import android.util.Log;
+import com.tencent.mobileqq.emoticonview.EmotionPanelListView;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewplugin.QzoneAudioRecordPlugin;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.List;
 
 public class anke
-  implements MediaPlayer.OnCompletionListener
 {
-  public anke(QzoneAudioRecordPlugin paramQzoneAudioRecordPlugin) {}
+  private static anke jdField_a_of_type_Anke;
+  private List<EmotionPanelListView> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public static anke a()
   {
-    QzoneAudioRecordPlugin.a(this.a, null);
-    paramMediaPlayer = new JSONObject();
-    JSONObject localJSONObject = new JSONObject();
+    if (jdField_a_of_type_Anke == null) {}
     try
     {
-      localJSONObject.put("stopped", 1);
-      localJSONObject.put("errorcode", 0);
-      localJSONObject.put("audioClientKey", QzoneAudioRecordPlugin.a(this.a));
-      this.a.a.dispatchJsEvent("QzoneJSBridgeQzoneAudioPlugin_PlayState", localJSONObject, paramMediaPlayer);
-      return;
+      if (jdField_a_of_type_Anke == null) {
+        jdField_a_of_type_Anke = new anke();
+      }
+      return jdField_a_of_type_Anke;
     }
-    catch (JSONException paramMediaPlayer)
+    finally {}
+  }
+  
+  public EmotionPanelListView a(Context paramContext)
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
     {
-      QLog.w("QzoneVoiceRecordPlugin", 1, "args is null or empty");
+      paramContext = (EmotionPanelListView)this.jdField_a_of_type_JavaUtilList.remove(0);
+      if (QLog.isColorLevel()) {
+        Log.d("EmotionPanelListViewPool", "from listview pool and poolSize = " + this.jdField_a_of_type_JavaUtilList.size());
+      }
+      return paramContext;
+    }
+    return new EmotionPanelListView(paramContext);
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      Log.d("EmotionPanelListViewPool", "destory");
+    }
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList = null;
+    }
+  }
+  
+  public void a(EmotionPanelListView paramEmotionPanelListView)
+  {
+    if (paramEmotionPanelListView == null) {}
+    for (;;)
+    {
+      return;
+      if (this.jdField_a_of_type_JavaUtilList == null)
+      {
+        this.jdField_a_of_type_JavaUtilList = new ArrayList();
+        this.jdField_a_of_type_JavaUtilList.add(paramEmotionPanelListView);
+      }
+      while (QLog.isColorLevel())
+      {
+        Log.d("EmotionPanelListViewPool", "relase listview");
+        return;
+        if (!this.jdField_a_of_type_JavaUtilList.contains(paramEmotionPanelListView)) {
+          this.jdField_a_of_type_JavaUtilList.add(0, paramEmotionPanelListView);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anke
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,27 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.profile.upload.VipUploadUtils;
-import com.tencent.mobileqq.profile.upload.config.VipUploadConfigImpl;
-import com.tencent.mobileqq.profile.upload.task.VipImageUploadManager;
-import com.tencent.upload.uinterface.AbstractUploadTask;
-import com.tencent.upload.uinterface.IUploadConfig.UploadImageSize;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbTranslucentBrowserActivity;
 
 public class agux
-  extends VipUploadConfigImpl
+  implements Animation.AnimationListener
 {
-  public agux(VipImageUploadManager paramVipImageUploadManager, long paramLong)
+  public agux(SpringHbTranslucentBrowserActivity paramSpringHbTranslucentBrowserActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramLong);
+    if (SpringHbTranslucentBrowserActivity.a(this.a) != null) {
+      SpringHbTranslucentBrowserActivity.a(this.a).setAlpha(1.0F);
+    }
   }
   
-  public IUploadConfig.UploadImageSize getUploadImageSize(IUploadConfig.UploadImageSize paramUploadImageSize, int paramInt, AbstractUploadTask paramAbstractUploadTask)
-  {
-    paramUploadImageSize = VipUploadUtils.a(paramAbstractUploadTask.uploadFilePath);
-    if (paramUploadImageSize != null)
-    {
-      paramAbstractUploadTask = new IUploadConfig.UploadImageSize(paramUploadImageSize.getWidth(), paramUploadImageSize.getHeight(), 100);
-      paramUploadImageSize.recycle();
-      return paramAbstractUploadTask;
-    }
-    return new IUploadConfig.UploadImageSize(640, 1136, 100);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agux
  * JD-Core Version:    0.7.0.1
  */

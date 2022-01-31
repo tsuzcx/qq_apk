@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ShortVideo$DeleteReq
-  extends MessageMicro
+  extends MessageMicro<DeleteReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField file_id = PBField.initBytes(ByteStringMicro.EMPTY);

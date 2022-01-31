@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.widget.ProgressPieDrawable;
-import com.tencent.qphone.base.util.QLog;
+import java.io.Closeable;
 
-class vlp
-  implements Runnable
+public final class vlp
 {
-  vlp(vlo paramvlo, ProgressPieDrawable paramProgressPieDrawable) {}
-  
-  public void run()
+  public static void a(Closeable paramCloseable)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.setVisible(false, true);
-    if (QLog.isColorLevel()) {
-      QLog.i("ShortVideoRealItemBuilder", 2, "[onProgressCompleted] set ProgressPieDrawable invisible,ppd = " + this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable);
+    if (paramCloseable != null) {}
+    try
+    {
+      paramCloseable.close();
+      return;
     }
+    catch (Exception paramCloseable) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vlp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,16 @@
-import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface.OnCancelListener;
 
-public class rut
-  implements DialogInterface.OnClickListener
+class rut
+  implements DialogInterface.OnCancelListener
 {
-  public rut(BaseChatPie paramBaseChatPie) {}
+  rut(rus paramrus) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    QQToast.a(this.a.a, 0, this.a.a.getResources().getString(2131433780), 0).a();
-    paramDialogInterface.dismiss();
-  }
+  public void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rut
  * JD-Core Version:    0.7.0.1
  */

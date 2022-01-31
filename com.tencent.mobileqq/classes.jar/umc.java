@@ -1,103 +1,101 @@
-import android.annotation.TargetApi;
-import android.os.Message;
-import android.util.Pair;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.ArrayList;
 
 public class umc
-  extends CardObserver
+  implements unf
 {
-  public umc(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  protected swi a;
+  private ulj jdField_a_of_type_Ulj;
+  private ume jdField_a_of_type_Ume;
+  protected umi a;
+  protected ung a;
+  protected unh a;
   
-  @TargetApi(9)
-  public void e(boolean paramBoolean, Object paramObject)
+  public umc(ume paramume)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipProfileCardDiyActivity", 2, "CardObserver onSetCardTemplateReturn isSuccess : " + paramBoolean + ", obj : " + paramObject);
-    }
-    this.a.b.set(false);
-    this.a.a.removeMessages(6);
-    this.a.i();
-    if ((paramBoolean) && (paramObject != null)) {
-      if ((paramObject instanceof Card)) {
-        ThreadManager.post(new umd(this, (Card)paramObject), 5, null, true);
-      }
-    }
-    for (;;)
+    this.jdField_a_of_type_Ume = paramume;
+    this.jdField_a_of_type_Ulj = new ulj();
+  }
+  
+  public Object a()
+  {
+    return null;
+  }
+  
+  public String a()
+  {
+    return getClass().getSimpleName();
+  }
+  
+  public void a()
+  {
+    urk.c("GetMyStoryDesFromVidListStep", "GetMyStoryDesFromVidListStep");
+    if (this.jdField_a_of_type_Umi == null)
     {
-      this.a.e = null;
-      this.a.j = 0;
-      return;
-      if ((paramObject instanceof Pair))
+      if (this.jdField_a_of_type_Unh != null)
       {
-        paramObject = (Pair)paramObject;
-        QLog.e("VipProfileCardDiyActivity", 1, "set diy card failed, code=" + paramObject.first + ", msg=" + (String)paramObject.second);
-        if (((Integer)paramObject.first).intValue() == 101107)
-        {
-          this.a.n = 1;
-          this.a.a.obtainMessage(2, paramObject.second).sendToTarget();
-          if (VipUtils.b(this.a.app)) {}
-          for (paramObject = "3";; paramObject = "2")
-          {
-            VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081C2", "", 1, 0, 0, "", paramObject, String.valueOf(this.a.j));
-            break;
-          }
-        }
-        if (((Integer)paramObject.first).intValue() == 101108)
-        {
-          this.a.n = 2;
-          this.a.a.obtainMessage(2, paramObject.second).sendToTarget();
-          if (VipUtils.a(this.a.app)) {}
-          for (paramObject = "3";; paramObject = "2")
-          {
-            VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081C2", "", 1, 0, 0, "", paramObject, String.valueOf(this.a.j));
-            break;
-          }
-        }
-        if (((Integer)paramObject.first).intValue() == 401019)
-        {
-          this.a.a.obtainMessage(8, paramObject.second).sendToTarget();
-        }
-        else if (((Integer)paramObject.first).intValue() == 401020)
-        {
-          this.a.a.obtainMessage(7, paramObject.second).sendToTarget();
-        }
-        else
-        {
-          if (((Integer)paramObject.first).intValue() == 401009)
-          {
-            this.a.n = 2;
-            this.a.a.obtainMessage(2, paramObject.second).sendToTarget();
-            if (VipUtils.a(this.a.app)) {}
-            for (paramObject = "3";; paramObject = "2")
-            {
-              VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081C2", "", 1, 0, 0, "", paramObject, String.valueOf(this.a.j));
-              break;
-            }
-          }
-          Message localMessage = this.a.a.obtainMessage(1);
-          if ((((Integer)paramObject.first).intValue() >= 400000) && (((Integer)paramObject.first).intValue() <= 499999)) {
-            localMessage.obj = paramObject.second;
-          }
-          this.a.a.sendMessage(localMessage);
-          continue;
-          paramObject = this.a.a.obtainMessage(1);
-          this.a.a.sendMessage(paramObject);
-        }
+        this.jdField_a_of_type_Unh.a(a());
+        return;
       }
+      urk.d("GetMyStoryDesFromVidListStep", "finish callBack is null");
+      return;
+    }
+    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_Umi.a);
+    this.jdField_a_of_type_Swi = swi.a(localArrayList);
+    this.jdField_a_of_type_Swi.a("GetMyStoryDesFromVidListStep");
+    this.jdField_a_of_type_Swi.a(new umd(this, localArrayList));
+    this.jdField_a_of_type_Swi.b();
+  }
+  
+  public void a(Object paramObject)
+  {
+    boolean bool2 = true;
+    if ((paramObject instanceof umi))
+    {
+      this.jdField_a_of_type_Umi = ((umi)paramObject);
+      return;
+    }
+    paramObject = new StringBuilder().append("GetMyStoryDesFromVidListStep 没拿到正确的VidList,reason:");
+    if (this.jdField_a_of_type_Umi == null)
+    {
+      bool1 = true;
+      urk.e("GetMyStoryDesFromVidListStep", bool1);
+      paramObject = new StringBuilder().append("GetMyStoryDesFromVidListStep 没拿到正确的VidList,reason:");
+      if (this.jdField_a_of_type_Umi != null) {
+        break label96;
+      }
+    }
+    label96:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      vkw.a(bool1, new Object[0]);
+      return;
+      bool1 = false;
+      break;
     }
   }
+  
+  public void a(ung paramung)
+  {
+    this.jdField_a_of_type_Ung = paramung;
+  }
+  
+  public void a(unh paramunh)
+  {
+    this.jdField_a_of_type_Unh = paramunh;
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     umc
  * JD-Core Version:    0.7.0.1
  */

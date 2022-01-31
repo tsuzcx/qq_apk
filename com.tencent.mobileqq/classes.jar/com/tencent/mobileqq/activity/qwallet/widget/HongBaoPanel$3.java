@@ -1,36 +1,60 @@
 package com.tencent.mobileqq.activity.qwallet.widget;
 
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.OnCustomizeListener;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import agqn;
+import agwi;
+import android.view.View;
+import android.view.View.OnClickListener;
+import baip;
+import org.json.JSONObject;
 
 class HongBaoPanel$3
-  implements CustomizeStrategyFactory.OnCustomizeListener
+  implements View.OnClickListener
 {
-  HongBaoPanel$3(HongBaoPanel paramHongBaoPanel, String paramString, ImageView paramImageView, int paramInt) {}
+  HongBaoPanel$3(HongBaoPanel paramHongBaoPanel) {}
   
-  public void onSucc(int paramInt, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HongBaoPanel", 2, "templateId = " + this.val$templateId + ",action info.icon = " + paramRedPacketInfo.icon + ",imageView.getTag() = " + this.val$imageView.getTag() + ",info.skinType = " + paramRedPacketInfo.skinType);
-    }
-    if (this.val$templateId.equals(this.val$imageView.getTag()))
+    do
     {
-      if (paramRedPacketInfo.icon != null) {
-        this.val$imageView.setImageBitmap(paramRedPacketInfo.icon);
+      try
+      {
+        paramView = (agqn)paramView.getTag();
+        if (paramView == null) {
+          return;
+        }
       }
-    }
-    else {
+      catch (Throwable paramView)
+      {
+        do
+        {
+          do
+          {
+            for (;;)
+            {
+              paramView.printStackTrace();
+              paramView = null;
+            }
+            switch (paramView.jdField_a_of_type_Int)
+            {
+            default: 
+              return;
+            }
+          } while (paramView.jdField_a_of_type_OrgJsonJSONObject == null);
+          paramView = paramView.jdField_a_of_type_OrgJsonJSONObject.optString("url");
+        } while (baip.a(paramView));
+        agwi.b(this.this$0.mContext, paramView);
+        return;
+      }
+      HongBaoPanel.access$200(this.this$0);
       return;
-    }
-    HongBaoPanel.access$500(this.this$0).add(Integer.valueOf(this.val$pos));
+      paramView = paramView.jdField_a_of_type_OrgJsonJSONObject.optString("url");
+    } while (baip.a(paramView));
+    agwi.b(this.this$0.mContext, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.HongBaoPanel.3
  * JD-Core Version:    0.7.0.1
  */

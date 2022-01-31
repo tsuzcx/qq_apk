@@ -1,69 +1,40 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.EmosmUtils;
-import com.tencent.mobileqq.emoticon.EmojiListenerManager;
-import com.tencent.mobileqq.emoticon.EmojiManager;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.ThemeAnimStrategy.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public class acky
-  extends DownloadListener
+  implements agpe
 {
-  public acky(EmojiManager paramEmojiManager, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  public acky(CustomizeStrategyFactory.ThemeAnimStrategy.1 param1) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    super.onDone(paramDownloadTask);
-    Object localObject = paramDownloadTask.a();
-    int j = ((Bundle)localObject).getInt(paramDownloadTask.c);
-    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "coverDownloadListener| onDone:epId=" + ((EmoticonPackage)localObject).epId + " task:" + paramDownloadTask + " localVersion=" + ((EmoticonPackage)localObject).localVersion + ",latestVersion=" + ((EmoticonPackage)localObject).latestVersion + ",updateFlag=" + ((EmoticonPackage)localObject).updateFlag);
-    }
-    int i = 0;
-    if (paramDownloadTask.a() != 3)
+    paramPathResult = paramPathResult.folderPath;
+    if (paramInt == 0) {}
+    try
     {
-      i = EmosmUtils.a(paramDownloadTask.a);
-      if (EmojiManager.a(j)) {
-        EmojiManager.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a((EmoticonPackage)localObject, j, -1, i);
+      this.a.a.animInfo = AnimationView.AnimationInfo.loadFromFolder(paramPathResult);
+      if (QLog.isColorLevel()) {
+        QLog.d("CustomizeStrategyFactory", 2, "TYPE_AIO_REDPACKET background=" + this.a.a.background + ",animInfo=" + this.a.a.animInfo);
       }
-      EmojiManager.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a((EmoticonPackage)localObject, i, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    }
-    for (;;)
-    {
-      long l1 = paramDownloadTask.h;
-      long l2 = paramDownloadTask.g;
-      this.a.a((EmoticonPackage)localObject, i, l1 - l2, paramDownloadTask.d);
+      CustomizeStrategyFactory.a().a(this.a.a);
       return;
-      EmojiManager.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a((EmoticonPackage)localObject, j, 0, 0);
     }
-  }
-  
-  public void onDoneFile(DownloadTask paramDownloadTask)
-  {
-    Object localObject = paramDownloadTask.a();
-    int i = ((Bundle)localObject).getInt(paramDownloadTask.c);
-    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "coverDownloadListener | onProgress:epId=" + ((EmoticonPackage)localObject).epId + paramDownloadTask);
+    catch (Throwable paramPathResult)
+    {
+      for (;;)
+      {
+        paramPathResult.printStackTrace();
+      }
     }
-    if (EmojiManager.a(i)) {
-      EmojiManager.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiListenerManager.a((EmoticonPackage)localObject, i, 0, 0);
-    }
-  }
-  
-  public boolean onStart(DownloadTask paramDownloadTask)
-  {
-    return super.onStart(paramDownloadTask);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acky
  * JD-Core Version:    0.7.0.1
  */

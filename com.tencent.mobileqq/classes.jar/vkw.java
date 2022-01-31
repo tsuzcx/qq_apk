@@ -1,45 +1,103 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Environment;
-import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter.fileAssistantReportData;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
 
-class vkw
-  implements DialogInterface.OnClickListener
+public class vkw
 {
-  vkw(vkv paramvkv, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static <T> T a(T paramT)
   {
-    if (Environment.getExternalStorageState().equals("mounted"))
-    {
-      if (this.jdField_a_of_type_Vkv.a.a != 1) {
-        break label79;
-      }
-      PlusPanelUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Vkv.a);
+    if (paramT == null) {
+      urk.e("Q.qqstory.AssertUtils", "checkNotNull failed:" + a(2));
     }
+    return paramT;
+  }
+  
+  public static String a(int paramInt)
+  {
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setCanLock(false);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80061FC", "0X80061FC", 0, 0, "1", "", "", "");
-      return;
-      label79:
-      paramDialogInterface = new FileManagerReporter.fileAssistantReportData();
-      paramDialogInterface.b = "send_file";
-      paramDialogInterface.a = 1;
-      FileManagerReporter.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramDialogInterface);
-      PlusPanelUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Vkv.a);
+      try
+      {
+        localObject = new RuntimeException("getStackTrace").getStackTrace();
+        localStringBuilder = new StringBuilder();
+        i = paramInt;
+        if (localObject.length > paramInt) {
+          break label87;
+        }
+        i = localObject.length;
+      }
+      catch (Exception localException)
+      {
+        Object localObject;
+        StringBuilder localStringBuilder;
+        int i;
+        return "";
+      }
+      if (paramInt < i)
+      {
+        localStringBuilder.append("\n" + localObject[paramInt].toString());
+        paramInt += 1;
+      }
+      else
+      {
+        localObject = localStringBuilder.toString();
+        return localObject;
+        label87:
+        paramInt = 2;
+      }
     }
   }
+  
+  public static void a() {}
+  
+  public static <T> void a(T paramT)
+  {
+    if (paramT == null)
+    {
+      paramT = vmn.a("StoryAssertUtils Exception!");
+      awpu.a(paramT, "StoryAssertUtils assertNotNull_DEBUG()");
+      urk.c("Q.qqstory.AssertUtils", "assertNotNull_DEBUG failed: ", paramT);
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    urk.e("Q.qqstory.AssertUtils", "checkNotEmpty failed :" + a(2));
+  }
+  
+  public static void a(String paramString, Object... paramVarArgs)
+  {
+    if (paramVarArgs.length == 0) {}
+    for (;;)
+    {
+      urk.e("Q.qqstory.AssertUtils", paramString);
+      return;
+      paramString = String.format(paramString, paramVarArgs);
+    }
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      urk.e("Q.qqstory.AssertUtils", "assertTrue failed:" + a(4));
+    }
+  }
+  
+  public static void a(boolean paramBoolean, @NonNull String paramString)
+  {
+    if (paramBoolean) {
+      return;
+    }
+    urk.e("Q.qqstory.AssertUtils", paramString);
+  }
+  
+  public static void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vkw
  * JD-Core Version:    0.7.0.1
  */

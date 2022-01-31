@@ -6,12 +6,12 @@ import java.util.ArrayList;
 public class PortalManager$RedPacketConfig
   implements Serializable
 {
-  public ArrayList bannerConfigs = new ArrayList();
-  public ArrayList comboNumberConfigs = new ArrayList();
+  public ArrayList<PortalManager.BannerConfig> bannerConfigs = new ArrayList();
+  public ArrayList<PortalManager.ComboNumber> comboNumberConfigs = new ArrayList();
   public long grebInterval = -1L;
   public int id;
   public long lastGrabTime;
-  public ArrayList portalConfigs = new ArrayList();
+  public ArrayList<PortalManager.PortalConfig> portalConfigs = new ArrayList();
   public long reportActiveInterval = -1L;
   public long reportNormalInterval = -1L;
   public int shareBaseLine;

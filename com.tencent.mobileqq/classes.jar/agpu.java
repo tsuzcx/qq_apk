@@ -1,20 +1,24 @@
-import com.tencent.mobileqq.pic.PicBusiManager;
-import com.tencent.mobileqq.pic.PicPreDownloader;
-import com.tencent.mobileqq.pic.PicReq;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import eipc.EIPCResult;
+import java.util.HashMap;
 
-public class agpu
-  implements Runnable
+class agpu
+  implements agpf
 {
-  public agpu(PicPreDownloader paramPicPreDownloader, PicReq paramPicReq) {}
+  agpu(agpt paramagpt, int paramInt) {}
   
-  public void run()
+  public void a(int paramInt, HashMap<String, PreloadManager.PathResult> paramHashMap)
   {
-    PicBusiManager.a(this.jdField_a_of_type_ComTencentMobileqqPicPicReq, this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.a);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result_code", paramInt);
+    localBundle.putSerializable("path_result", paramHashMap);
+    this.jdField_a_of_type_Agpt.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult(localBundle));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agpu
  * JD-Core Version:    0.7.0.1
  */

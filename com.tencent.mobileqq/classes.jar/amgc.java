@@ -1,134 +1,69 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Build.VERSION;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioManager;
-import com.tencent.sharp.jni.TraeAudioManager.DeviceConfigManager;
 
-public abstract class amgc
+public class amgc
+  extends alzl<amga>
 {
-  amgc(TraeAudioManager paramTraeAudioManager) {}
-  
-  public abstract String a();
-  
-  String a(int paramInt)
+  public int a()
   {
-    String str;
-    switch (paramInt)
+    return 418;
+  }
+  
+  @NonNull
+  public amga a(int paramInt)
+  {
+    return new amga();
+  }
+  
+  @Nullable
+  public amga a(alzs[] paramArrayOfalzs)
+  {
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
     {
-    default: 
-      str = "unknow";
+      new amga();
+      return amga.a(paramArrayOfalzs);
     }
-    for (;;)
-    {
-      return str + ":" + paramInt;
-      str = "STATE_OFF";
-      continue;
-      str = "STATE_TURNING_ON";
-      continue;
-      str = "STATE_ON";
-      continue;
-      str = "STATE_TURNING_OFF";
+    return null;
+  }
+  
+  public Class<amga> a()
+  {
+    return amga.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amga paramamga)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TencentDocsPushProcessor", 2, "onUpdate " + paramamga.toString());
     }
   }
   
-  public abstract void a();
-  
-  abstract void a(Context paramContext, Intent paramIntent);
-  
-  public void a(Context paramContext, Intent paramIntent, TraeAudioManager.DeviceConfigManager paramDeviceConfigManager)
+  public boolean a()
   {
-    if ("android.bluetooth.adapter.action.STATE_CHANGED".equals(paramIntent.getAction()))
-    {
-      i = paramIntent.getIntExtra("android.bluetooth.adapter.extra.STATE", -1);
-      j = paramIntent.getIntExtra("android.bluetooth.adapter.extra.PREVIOUS_STATE", -1);
-      if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 2, "BT ACTION_STATE_CHANGED|   EXTRA_STATE " + a(i));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 2, "BT ACTION_STATE_CHANGED|   EXTRA_PREVIOUS_STATE " + a(j));
-      }
-      if (i == 10) {
-        if (QLog.isColorLevel()) {
-          QLog.w("TRAE", 2, "    BT off");
-        }
-      }
-    }
-    while ((("android.bluetooth.device.action.ACL_CONNECTED".equals(paramIntent.getAction())) && (Build.VERSION.SDK_INT < 11)) || (("android.bluetooth.device.action.ACL_DISCONNECTED".equals(paramIntent.getAction())) && (Build.VERSION.SDK_INT < 11)))
-    {
-      int i;
-      int j;
-      paramDeviceConfigManager.a("DEVICE_BLUETOOTHHEADSET", false);
-      do
-      {
-        return;
-      } while ((i != 12) || (!QLog.isColorLevel()));
-      QLog.w("TRAE", 2, "BT OFF-->ON,Visiable it...");
-      return;
-    }
-    a(paramContext, paramIntent);
+    return true;
   }
   
-  abstract void a(IntentFilter paramIntentFilter);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(Context paramContext, TraeAudioManager.DeviceConfigManager paramDeviceConfigManager);
-  
-  String b(int paramInt)
+  public int b()
   {
-    String str;
-    switch (paramInt)
-    {
-    default: 
-      str = "unknow";
-    }
-    for (;;)
-    {
-      return str + ":" + paramInt;
-      str = "SCO_AUDIO_STATE_DISCONNECTED";
-      continue;
-      str = "SCO_AUDIO_STATE_CONNECTED";
-      continue;
-      str = "SCO_AUDIO_STATE_CONNECTING";
-      continue;
-      str = "SCO_AUDIO_STATE_ERROR";
-    }
+    return 0;
   }
   
-  public void b(IntentFilter paramIntentFilter)
+  public boolean b()
   {
-    paramIntentFilter.addAction("android.bluetooth.adapter.action.STATE_CHANGED");
-    paramIntentFilter.addAction("android.bluetooth.device.action.ACL_CONNECTED");
-    paramIntentFilter.addAction("android.bluetooth.device.action.ACL_DISCONNECTED");
-    a(paramIntentFilter);
+    return false;
   }
   
-  String c(int paramInt)
+  public boolean c()
   {
-    String str;
-    switch (paramInt)
-    {
-    default: 
-      str = "unknow";
-    }
-    for (;;)
-    {
-      return str + ":" + paramInt;
-      str = "STATE_DISCONNECTED";
-      continue;
-      str = "STATE_CONNECTING";
-      continue;
-      str = "STATE_CONNECTED";
-      continue;
-      str = "STATE_DISCONNECTING";
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amgc
  * JD-Core Version:    0.7.0.1
  */

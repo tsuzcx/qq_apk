@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Submsgtype0xe5$MsgBody$S2CUserGetCouponForKFExtEventPush
-  extends MessageMicro
+  extends MessageMicro<S2CUserGetCouponForKFExtEventPush>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 56, 64, 72, 82, 88, 96 }, new String[] { "uint32_channel_type", "uint64_fakeuin", "uint64_qquin", "str_openid", "str_visitorid", "str_appid", "uint64_qq_pub_uin", "uint64_kfuin", "uint64_coupon_id", "str_notify_tips", "uint32_timestamp", "uint64_kfext" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), "", "", "", Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), "", Integer.valueOf(0), Long.valueOf(0L) }, S2CUserGetCouponForKFExtEventPush.class);
   public final PBStringField str_appid = PBField.initString("");

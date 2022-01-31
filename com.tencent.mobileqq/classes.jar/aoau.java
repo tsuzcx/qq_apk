@@ -1,29 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import dov.com.tencent.biz.qqstory.takevideo.EditSyncQzonePart;
+import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelMediaTabView.1;
+import java.util.Comparator;
 
 public class aoau
-  implements View.OnClickListener
+  implements Comparator<Long>
 {
-  public aoau(EditSyncQzonePart paramEditSyncQzonePart) {}
+  public aoau(QfileLocalFileDelMediaTabView.1 param1) {}
   
-  public void onClick(View paramView)
+  public int a(Long paramLong1, Long paramLong2)
   {
-    paramView = this.a;
-    if (!EditSyncQzonePart.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      EditSyncQzonePart.a(paramView, bool);
-      EditSyncQzonePart.a(this.a, EditSyncQzonePart.a(this.a));
-      StoryConfigManager.c(EditSyncQzonePart.a(this.a));
-      return;
+    if (paramLong1.equals(paramLong2)) {
+      return 1;
     }
+    return (int)(paramLong1.longValue() - paramLong2.longValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoau
  * JD-Core Version:    0.7.0.1
  */

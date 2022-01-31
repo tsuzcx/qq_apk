@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/gds" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/jwb" android:background="@drawable/cin" android:focusable="false" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:contentDescription="">
+        <TextView android:ellipsize="middle" android:gravity="center_vertical" android:id="@id/jwc" android:focusable="true" android:clickable="true" android:layout_width="0.0dip" android:layout_height="44.0dip" android:layout_marginLeft="10.0dip" android:text="@string/elf" android:singleLine="true" android:layout_weight="1.0" style="@style/my" />
+        <ImageView android:id="@id/jwa" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/b9m" android:contentDescription="@string/cancel" />
+    </LinearLayout>
+    <LinearLayout android:id="@id/jyf" android:background="@drawable/skin_searchbar_bg_theme_version2" android:focusable="true" android:focusableInTouchMode="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="60.0dip">
+        <include android:id="@id/search_box" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/bx6" />
+    </LinearLayout>
+</LinearLayout>

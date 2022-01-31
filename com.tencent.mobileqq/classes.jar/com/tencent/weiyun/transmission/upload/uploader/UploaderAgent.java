@@ -1,13 +1,12 @@
 package com.tencent.weiyun.transmission.upload.uploader;
 
 import android.content.Context;
-import android.os.Handler;
 import android.os.Handler.Callback;
-import android.os.HandlerThread;
 import android.os.Message;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.weiyun.transmission.utils.TsLog;
+import com.tencent.weiyun.transmission.utils.handler.ReleaseLooperHandler;
 import com.tencent.weiyun.uploader.IUploader;
 import com.tencent.weiyun.uploader.IUploader.IUploadListener;
 import com.tencent.weiyun.uploader.UploadRequest;
@@ -24,23 +23,22 @@ public class UploaderAgent
 {
   private static final long LARGE_MIN_SPLIT_SIZE = 655360L;
   private static final long MAX_SPLIT_NUM = 100L;
-  private static final int MSG_MISSING_UPLOAD = 2;
-  private static final int MSG_SECOND_UPLOAD = 1;
+  private static final int MSG_MISSING_UPLOAD = 32;
+  private static final int MSG_SECOND_UPLOAD = 31;
   private static final long SMALL_FILE_THRESHOLD = 1048576L;
   private static final long SMALL_MIN_SPLIT_SIZE = 65536L;
   private static final String TAG = "UploaderAgent";
   private final Context mContext;
-  private final Handler mHandler;
+  private final ReleaseLooperHandler mHandler;
   private IUploader mUploaderInner;
   
-  public UploaderAgent(Context paramContext)
+  public UploaderAgent(Context paramContext, ReleaseLooperHandler paramReleaseLooperHandler)
   {
     Uploader.init(new UploaderConfig(), new UploaderLog());
     this.mContext = paramContext;
     initDefaultUploader();
-    paramContext = new HandlerThread("upload-fake-transport");
-    paramContext.start();
-    this.mHandler = new Handler(paramContext.getLooper(), this);
+    this.mHandler = paramReleaseLooperHandler;
+    this.mHandler.addCallback(this);
   }
   
   private void initDefaultUploader()
@@ -77,55 +75,55 @@ public class UploaderAgent
   
   public boolean handleMessage(Message paramMessage)
   {
-    long l4;
-    long l2;
-    long l1;
-    label80:
-    long l3;
-    label103:
-    long l6;
-    label155:
-    float f;
-    if (paramMessage.what == 1)
+    if (paramMessage.what == 31)
     {
       paramMessage = (UploadRequest)paramMessage.obj;
       if (paramMessage == null) {
         return true;
       }
       ((HashMap)paramMessage.businessData()).put("second_upload", Boolean.toString(true));
-      l4 = paramMessage.size();
+      long l4 = paramMessage.size();
       if (paramMessage.listener() != null)
       {
-        l2 = l4;
-        if (l4 >= 1048576L) {
-          break label221;
-        }
-        l1 = 65536L;
-        if (l1 <= l2 / 100L) {
-          break label228;
-        }
-        long l5 = SystemClock.elapsedRealtime();
-        for (;;)
+        long l1;
+        label77:
+        long l2;
+        long l3;
+        label104:
+        long l6;
+        label156:
+        IUploader.IUploadListener localIUploadListener;
+        if (l4 < 1048576L)
         {
-          if (l2 > 0L)
+          l1 = 65536L;
+          if (l1 <= l4 / 100L) {
+            break label206;
+          }
+          long l5 = SystemClock.elapsedRealtime();
+          l2 = l4;
+          if (l2 <= 0L) {
+            break label248;
+          }
+          if (l2 >= l1) {
+            break label216;
+          }
+          l3 = l2;
+          l3 = l2 - l3;
+          l6 = l4 - l3;
+          l2 = SystemClock.elapsedRealtime() - l5;
+          if ((l6 <= 0L) || (l2 <= 0L)) {
+            break label222;
+          }
+          l2 = ((float)l6 / 1024.0F / ((float)l2 / 1000.0F));
+          localIUploadListener = paramMessage.listener();
+          if (l4 != 0L) {
+            break label228;
+          }
+        }
+        for (float f = 1.0F;; f = (float)l6 / (float)l4)
+        {
+          for (;;)
           {
-            if (l2 >= l1) {
-              break label238;
-            }
-            l3 = l2;
-            l3 = l2 - l3;
-            l6 = l4 - l3;
-            l2 = SystemClock.elapsedRealtime() - l5;
-            if ((l6 <= 0L) || (l2 <= 0L)) {
-              break label244;
-            }
-            l2 = ((float)l6 / 1024.0F / ((float)l2 / 1000.0F));
-            IUploader.IUploadListener localIUploadListener = paramMessage.listener();
-            if (l4 != 0L) {
-              break label250;
-            }
-            f = 1.0F;
-            label170:
             localIUploadListener.onUploadProgress(paramMessage, l4, f, l2, 0L, 0L);
             try
             {
@@ -134,44 +132,41 @@ public class UploaderAgent
             }
             catch (InterruptedException localInterruptedException)
             {
+              label206:
+              label216:
+              label222:
+              label228:
               TsLog.e("UploaderAgent", localInterruptedException);
             }
           }
+          l1 = 655360L;
+          break;
+          l1 = l4 / 100L;
+          break label77;
+          l3 = l1;
+          break label104;
+          l2 = 0L;
+          break label156;
         }
+        label248:
         paramMessage.listener().onUploadFinished(paramMessage, true, null);
       }
-    }
-    for (;;)
-    {
       return true;
-      label221:
-      l1 = 655360L;
-      break;
-      label228:
-      l1 = l2 / 100L;
-      break label80;
-      label238:
-      l3 = l1;
-      break label103;
-      label244:
-      l2 = 0L;
-      break label155;
-      label250:
-      f = (float)l6 / (float)l4;
-      break label170;
-      if (paramMessage.what == 2)
-      {
-        paramMessage = (UploadRequest)paramMessage.obj;
-        if (paramMessage == null) {
-          return true;
-        }
-        if (paramMessage.listener() != null)
-        {
-          UploadResponse localUploadResponse = new UploadResponse.Builder().code(1810024).errMsg("Uploader missing..").request(paramMessage).build();
-          paramMessage.listener().onUploadFinished(paramMessage, false, localUploadResponse);
-        }
-      }
     }
+    if (paramMessage.what == 32)
+    {
+      paramMessage = (UploadRequest)paramMessage.obj;
+      if (paramMessage == null) {
+        return true;
+      }
+      if (paramMessage.listener() != null)
+      {
+        UploadResponse localUploadResponse = new UploadResponse.Builder().code(1810024).errMsg("Uploader missing..").request(paramMessage).build();
+        paramMessage.listener().onUploadFinished(paramMessage, false, localUploadResponse);
+      }
+      return true;
+    }
+    return false;
   }
   
   public void loadLibFromPath(String paramString)
@@ -206,7 +201,7 @@ public class UploaderAgent
     if (paramUploadRequest == null) {
       return;
     }
-    Message.obtain(this.mHandler, 1, paramUploadRequest).sendToTarget();
+    this.mHandler.sendMessage(Message.obtain(null, 31, paramUploadRequest));
   }
   
   public void setHttpProxy(String paramString1, int paramInt, String paramString2, String paramString3)
@@ -253,7 +248,7 @@ public class UploaderAgent
     if (this.mUploaderInner == null)
     {
       if (paramUploadRequest != null) {
-        Message.obtain(this.mHandler, 2, paramUploadRequest).sendToTarget();
+        this.mHandler.sendMessage(Message.obtain(null, 32, paramUploadRequest));
       }
       return false;
     }

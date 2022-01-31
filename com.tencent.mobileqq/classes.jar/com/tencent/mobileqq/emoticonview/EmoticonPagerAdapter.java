@@ -3,6 +3,8 @@ package com.tencent.mobileqq.emoticonview;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
+import aniw;
+import anjf;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -10,7 +12,7 @@ import java.util.List;
 public class EmoticonPagerAdapter
   extends PagerAdapter
 {
-  private List jdField_a_of_type_JavaUtilList;
+  private List<anjf> jdField_a_of_type_JavaUtilList;
   private boolean jdField_a_of_type_Boolean = true;
   
   public void a()
@@ -19,19 +21,19 @@ public class EmoticonPagerAdapter
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((EmoticonViewBinder)localIterator.next()).a();
+        ((anjf)localIterator.next()).a();
       }
       this.jdField_a_of_type_JavaUtilList = null;
     }
-    EmoticonPanelViewBinder.b();
+    aniw.b();
   }
   
-  public void a(List paramList)
+  public void a(List<anjf> paramList)
   {
     a(paramList, true);
   }
   
-  public void a(List paramList, boolean paramBoolean)
+  public void a(List<anjf> paramList, boolean paramBoolean)
   {
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilList = paramList;
@@ -54,15 +56,15 @@ public class EmoticonPagerAdapter
       int i;
       for (int j = 0; paramView.hasNext(); j = i)
       {
-        paramObject = (EmoticonViewBinder)paramView.next();
+        paramObject = (anjf)paramView.next();
         i = j;
         if (paramObject != null)
         {
           i = j;
-          if ((paramObject instanceof EmoticonPanelViewBinder))
+          if ((paramObject instanceof aniw))
           {
-            paramObject = (EmoticonPanelViewBinder)paramObject;
-            int k = paramObject.a();
+            paramObject = (aniw)paramObject;
+            int k = paramObject.b();
             j += k;
             i = j;
             if (paramInt + 1 <= j)
@@ -95,9 +97,9 @@ public class EmoticonPagerAdapter
       i = 0;
       j = i;
     } while (!localIterator.hasNext());
-    EmoticonViewBinder localEmoticonViewBinder = (EmoticonViewBinder)localIterator.next();
-    if ((localEmoticonViewBinder != null) && ((localEmoticonViewBinder instanceof EmoticonPanelViewBinder))) {
-      i += ((EmoticonPanelViewBinder)localEmoticonViewBinder).a();
+    anjf localanjf = (anjf)localIterator.next();
+    if ((localanjf != null) && ((localanjf instanceof aniw))) {
+      i += ((aniw)localanjf).b();
     }
     for (;;)
     {
@@ -120,22 +122,22 @@ public class EmoticonPagerAdapter
     int k;
     if (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (EmoticonViewBinder)((Iterator)localObject1).next();
+      localObject2 = (anjf)((Iterator)localObject1).next();
       i = j;
       if (localObject2 != null)
       {
         i = j;
-        if ((localObject2 instanceof EmoticonPanelViewBinder))
+        if ((localObject2 instanceof aniw))
         {
-          localObject2 = (EmoticonPanelViewBinder)localObject2;
-          k = ((EmoticonPanelViewBinder)localObject2).a();
+          localObject2 = (aniw)localObject2;
+          k = ((aniw)localObject2).b();
           j += k;
           i = j;
           if (paramInt + 1 > j) {}
         }
       }
     }
-    for (localObject1 = ((EmoticonPanelViewBinder)localObject2).b(k - (j - paramInt));; localObject1 = null)
+    for (localObject1 = ((aniw)localObject2).b(k - (j - paramInt));; localObject1 = null)
     {
       if ((localObject1 != null) && (((View)localObject1).getParent() != paramView) && (paramInt < getCount())) {
         ((ViewGroup)paramView).addView((View)localObject1);

@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.unifiedebug.SnapshotService;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
+import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
+import java.util.ArrayList;
 
-public class akfk
-  implements Runnable
+class akfk
+  implements View.OnClickListener
 {
-  public akfk(SnapshotService paramSnapshotService, akfm paramakfm, akfo paramakfo) {}
+  akfk(akfj paramakfj, ArrayList paramArrayList, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    SnapshotService.a(this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService, this.jdField_a_of_type_Akfm, this.jdField_a_of_type_Akfo);
+    paramView = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString), 120);
+    paramView.a();
+    tij.a(this.jdField_a_of_type_Akfj.a.a, paramView.a(), null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akfk
  * JD-Core Version:    0.7.0.1
  */

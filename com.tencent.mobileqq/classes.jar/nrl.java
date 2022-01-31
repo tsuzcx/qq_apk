@@ -1,42 +1,73 @@
-import android.text.TextUtils;
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.handler.ReportEvilToXinanHandler;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeText;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp;
+import com.tencent.qphone.base.util.QLog;
 
-public final class nrl
-  implements ActionSheet.OnButtonClickListener
+public class nrl
+  extends NativeText
 {
-  public nrl(StoryVideoItem paramStoryVideoItem, ActionSheet paramActionSheet) {}
+  protected String a;
   
-  public void OnClick(View paramView, int paramInt)
+  public nrl(VafContext paramVafContext)
   {
-    switch (paramInt)
+    super(paramVafContext);
+    QLog.d("ReadInJoyIconText", 2, "ReadInJoyIconText create");
+  }
+  
+  public boolean setAttribute(int paramInt, String paramString)
+  {
+    QLog.d("ReadInJoyIconText", 2, "key ->" + paramInt + " , value = " + paramString);
+    if (paramInt == 1083)
     {
-    default: 
-      paramView = "16384";
-      QQUserUIItem localQQUserUIItem = ((UserManager)SuperManager.a(2)).b(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid);
-      if (!TextUtils.isEmpty(localQQUserUIItem.qq)) {
-        new ReportEvilToXinanHandler().b(localQQUserUIItem.qq, localQQUserUIItem.isFriend(), paramView, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getVideoUrl());
+      if (paramString != null)
+      {
+        this.a = paramString;
+        setDrawableLeft(null);
       }
-      break;
+      return true;
+    }
+    if (paramInt == 1084) {
+      if (paramString != null)
+      {
+        int i = Utils.dp2px(nbj.a(paramString, 0));
+        this.mNative.setCompoundDrawablePadding(i);
+      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      paramView = "2";
-      break;
-      paramView = "1";
-      break;
-      paramView = "4";
-      break;
-      SLog.d("Q.qqstory.player.PlayModeUtils", "report video error because evil uin is empty.");
+      return super.setAttribute(paramInt, paramString);
+      if (paramInt == 48)
+      {
+        Float localFloat = Utils.toFloat(paramString);
+        if (localFloat != null)
+        {
+          this.mAlpha = localFloat.floatValue();
+          getNativeView().setAlpha(this.mAlpha);
+        }
+        else
+        {
+          QLog.d("ReadInJoyIconText", 2, "setAttribute: fail to parse - " + paramInt + ": " + paramString);
+        }
+      }
+    }
+  }
+  
+  public void setDrawableLeft(String paramString)
+  {
+    QLog.d("ReadInJoyIconText", 2, "setDrawableLeft drawableLeftPath->" + this.drawableLeftPath + " , drawableRightPath = " + this.a);
+    if (this.drawableLeftPath != null) {}
+    for (paramString = DrawableUtil.getDrawable(this.mNative.getContext(), this.drawableLeftPath, (Drawable)null, (Drawable)null);; paramString = null)
+    {
+      if (this.a != null) {}
+      for (Drawable localDrawable = DrawableUtil.getDrawable(this.mNative.getContext(), this.a, (Drawable)null, (Drawable)null);; localDrawable = null)
+      {
+        this.mNative.setCompoundDrawablesWithIntrinsicBounds(paramString, (Drawable)null, localDrawable, (Drawable)null);
+        return;
+      }
     }
   }
 }

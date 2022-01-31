@@ -1,26 +1,52 @@
-import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule.Ox978RespCallBack;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.readinjoy.ReadInJoyHelper;
-import mqq.app.AppRuntime;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoInviteActivity;
 
 public class lzn
-  implements UserOperationModule.Ox978RespCallBack
+  implements lxc
 {
-  public lzn(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend, AppRuntime paramAppRuntime) {}
+  public lzn(VideoInviteActivity paramVideoInviteActivity, long paramLong) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void a()
   {
-    if ((paramBoolean) && (paramInt == 2))
+    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a != null)
     {
-      ReadInJoyHelper.d(this.jdField_a_of_type_MqqAppAppRuntime, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend.getContext(), ComponentHeaderTopicRecommend.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend));
-      ThreadManager.post(new lzo(this), 5, null, true);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131306670, false);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131297382, false);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131297394, false);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setViewEnable(2131297393, false);
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.d = false;
+    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.i)
+    {
+      long l = mfy.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_Long, 3, l);
+      if (!this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h)
+      {
+        this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h = true;
+        this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_Long, l, 2);
+      }
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.e = true;
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.overridePendingTransition(0, 2130772163);
+      return;
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 246);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().b(246);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a().b(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c, 0);
+      this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lzn
  * JD-Core Version:    0.7.0.1
  */

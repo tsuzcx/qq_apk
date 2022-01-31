@@ -1,22 +1,20 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.arithmetic.ui.HomeworkGuideFragment;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
 public class ajns
-  implements View.OnClickListener
+  implements Comparator<PhoneContact>
 {
-  public ajns(HomeworkGuideFragment paramHomeworkGuideFragment) {}
+  public ajns(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  public void onClick(View paramView)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    this.a.getActivity().setResult(1000);
-    this.a.getActivity().finish();
+    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajns
  * JD-Core Version:    0.7.0.1
  */

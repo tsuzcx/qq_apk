@@ -1,22 +1,38 @@
-import android.support.v4.app.FragmentActivity;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
+import com.tencent.mobileqq.pb.PBStringField;
 
-class wgu
-  implements Runnable
+public class wgu
+  implements View.OnClickListener
 {
-  wgu(wgt paramwgt) {}
+  public wgu(RelativeFeedItemView paramRelativeFeedItemView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.jdField_a_of_type_AndroidWidgetToast = ChatActivityUtils.a(this.a.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131433366));
-    this.a.a.jdField_a_of_type_AndroidWidgetToast.show();
+    paramView = (CertifiedAccountMeta.StFeed)this.a.a();
+    vvy.a(null, paramView);
+    ExtraTypeInfo localExtraTypeInfo = this.a.a();
+    if ((localExtraTypeInfo != null) && (paramView != null))
+    {
+      if (localExtraTypeInfo.pageType != 7003) {
+        break label96;
+      }
+      wye.a(paramView.poster.id.get(), "auth_follow", "new_c_clk", 0, 0, new String[] { "", "", paramView.id.get(), paramView.title.get() });
+    }
+    label96:
+    while (localExtraTypeInfo.pageType != 7004) {
+      return;
+    }
+    wye.a(paramView.poster.id.get(), "auth_discover", "clk_content", 0, 0, new String[] { "", "", paramView.id.get(), paramView.title.get() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wgu
  * JD-Core Version:    0.7.0.1
  */

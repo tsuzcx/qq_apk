@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/klq" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="3.0dip">
+            <ImageView android:id="@id/klf" android:visibility="visible" android:layout_width="35.0dip" android:layout_height="35.0dip" android:layout_centerHorizontal="true" android:contentDescription="@string/b2q" />
+            <com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView android:id="@id/glu" android:visibility="gone" android:layout_width="13.0dip" android:layout_height="13.0dip" android:layout_alignRight="@id/klf" android:layout_alignBottom="@id/klf" />
+            <ImageView android:id="@id/j6u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="-7.0dip" android:src="@drawable/fgn" android:layout_alignBottom="@id/klf" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip">
+            <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/ieb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip">
+                <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/f9d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="125.0dip" android:text="QQ User" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+                <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/kux" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:text="5:30" android:maxLines="1" android:singleLine="true" android:layout_below="@id/f9d" android:layout_alignParentLeft="true" />
+                <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/kyx" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="0.0dip" android:singleLine="true" android:layout_toRightOf="@id/kux" android:layout_below="@id/f9d" />
+                <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:id="@id/k78" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:text=" •" android:layout_toRightOf="@id/kyx" android:layout_below="@id/f9d" />
+                <ImageView android:id="@id/kvf" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/fk7" android:layout_toRightOf="@id/k78" android:layout_below="@id/f9d" android:layout_alignBottom="@id/kux" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center" android:id="@id/j3x" android:background="@drawable/amn" android:paddingLeft="6.0dip" android:paddingRight="9.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="26.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:singleLine="true" android:drawableLeft="@drawable/fjs" android:drawablePadding="2.0dip" android:layout_below="@id/klq" />
+    <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:ellipsize="end" android:gravity="center" android:id="@id/l2p" android:background="@drawable/amn" android:paddingLeft="6.0dip" android:paddingRight="9.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="26.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" android:text="@string/rbl" android:singleLine="true" android:drawableLeft="@drawable/cqu" android:drawablePadding="2.0dip" android:layout_below="@id/j3x" />
+</merge>

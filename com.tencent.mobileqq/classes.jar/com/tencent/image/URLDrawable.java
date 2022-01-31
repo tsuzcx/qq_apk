@@ -20,27 +20,22 @@ import android.os.SystemClock;
 import android.support.v4.util.LruCache;
 import android.support.v4.util.MQLruCache;
 import android.util.DisplayMetrics;
-import android.util.Pair;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.app.ThreadPoolParams;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLStreamHandler;
 import java.net.URLStreamHandlerFactory;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
 import org.apache.http.Header;
 import org.apache.http.client.CookieStore;
 import org.apache.http.impl.client.BasicCookieStore;
@@ -49,13 +44,16 @@ import org.apache.http.message.BasicHeader;
 
 public class URLDrawable
   extends Drawable
-  implements Drawable.Callback, Runnable, URLState.Callback
+  implements Drawable.Callback, URLState.Callback, Runnable
 {
   static final int ANIMATION_DURATION = 600;
   public static final int CANCLED = 3;
   private static final int CORE_POOL_SIZE = CPU_COUNT + 1;
   private static final int CPU_COUNT;
   public static boolean DEBUG = false;
+  public static final int DECODE_FAIL_COMMON = 1;
+  public static final int DECODE_FAIL_DEFAULT_IGNORE_DELETE_FILE = 3;
+  public static final int DECODE_FAIL_DOWNLOADER_DELETE_FILE = 2;
   public static final int FAILED = 2;
   public static final int FILE_DOWNLOADED = 4;
   private static final int KEEP_ALIVE = 1;
@@ -66,42 +64,15 @@ public class URLDrawable
   public static final String TAG = "URLDrawable_";
   public static final String THREAD_SUB_TAG = "Thread";
   static Context mApplicationContext;
-  static DebuggableCallback sDebugCallback;
+  static URLDrawable.DebuggableCallback sDebugCallback;
   static URLDrawableParams sDefaultDrawableParms;
   static MQLruCache<String, Object> sMemoryCache;
   static boolean sPause = false;
   static Object sPauseLock = new Object();
   private static final LruCache<URLDrawable, LruCache> sPendingActions = new LruCache(100);
   private static final BlockingQueue<Runnable> sPoolWorkQueue = new LinkedBlockingQueue(128);
-  private static URLStreamHandlerFactory sStreamHandler = new URLStreamHandlerFactory()
-  {
-    URLStreamHandler handler = new URLStreamHandler()
-    {
-      protected URLConnection openConnection(URL paramAnonymous2URL)
-        throws IOException
-      {
-        return null;
-      }
-    };
-    
-    public URLStreamHandler createURLStreamHandler(String paramAnonymousString)
-    {
-      if (("http".equalsIgnoreCase(paramAnonymousString)) || ("https".equalsIgnoreCase(paramAnonymousString)) || ("file".equalsIgnoreCase(paramAnonymousString))) {}
-      while ("jar".equalsIgnoreCase(paramAnonymousString)) {
-        return null;
-      }
-      return this.handler;
-    }
-  };
-  private static final ThreadFactory sThreadFactory = new ThreadFactory()
-  {
-    private final AtomicInteger mCount = new AtomicInteger(1);
-    
-    public Thread newThread(Runnable paramAnonymousRunnable)
-    {
-      return new Thread(paramAnonymousRunnable, "URLDrawable #" + this.mCount.getAndIncrement());
-    }
-  };
+  private static URLStreamHandlerFactory sStreamHandler = new URLDrawable.1();
+  private static final ThreadFactory sThreadFactory = new URLDrawable.2();
   public boolean individualPause = false;
   private int individualPauseCount = 0;
   private int mAlpha = 255;
@@ -111,7 +82,7 @@ public class URLDrawable
   private ColorFilter mColorFilter;
   private CookieStore mCookies;
   private Drawable mCurrDrawable;
-  private DownloadListener mDownloadListener;
+  private URLDrawable.DownloadListener mDownloadListener;
   protected URLState mDrawableContainerState;
   private Matrix mExifMatrix;
   private Object mExtraInfo;
@@ -122,7 +93,7 @@ public class URLDrawable
   private float mGifRoundCorner;
   private Header[] mHeaders;
   private boolean mIsShowWatermark = false;
-  private URLDrawableListener mListener;
+  private URLDrawable.URLDrawableListener mListener;
   private int mProgress = 0;
   private Drawable mProgressDrawable;
   private Object mTag;
@@ -152,7 +123,7 @@ public class URLDrawable
     this.mDrawableContainerState.addCallBack(this);
   }
   
-  private URLDrawable(URL paramURL, URLDrawableOptions paramURLDrawableOptions)
+  private URLDrawable(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
   {
     this.mDrawableContainerState = new URLState(paramURL, paramURLDrawableOptions);
     this.mFailedDrawable = paramURLDrawableOptions.mFailedDrawable;
@@ -196,27 +167,26 @@ public class URLDrawable
         this.mAlreadyChecked = true;
         localObject1 = getCallback();
       } while (!ImageView.class.isInstance(localObject1));
-      localObject2 = (ImageView)localObject1;
-      i = ((ImageView)localObject2).getMeasuredWidth();
-      j = ((ImageView)localObject2).getMeasuredHeight();
-      localObject1 = (RegionDrawable)this.mCurrDrawable;
-      k = ((RegionDrawable)localObject1).getBitmap().getWidth();
-      m = ((RegionDrawable)localObject1).getBitmap().getHeight();
+      localObject1 = (ImageView)localObject1;
+      i = ((ImageView)localObject1).getMeasuredWidth();
+      j = ((ImageView)localObject1).getMeasuredHeight();
+      localObject2 = (RegionDrawable)this.mCurrDrawable;
+      k = ((RegionDrawable)localObject2).getBitmap().getWidth();
+      m = ((RegionDrawable)localObject2).getBitmap().getHeight();
     } while (!isBitmapOversize(k, m, i, j));
-    String str2 = "(" + i + "," + j + ")";
-    String str3 = "(" + k + "," + m + ")";
-    String str1 = "";
-    Object localObject1 = str1;
-    if (((ImageView)localObject2).getContext() != null)
+    Object localObject2 = "(" + i + "," + j + ")";
+    String str1 = "(" + k + "," + m + ")";
+    if ((((ImageView)localObject1).getContext() != null) && ((((ImageView)localObject1).getContext() instanceof Activity))) {}
+    for (Object localObject1 = ((ImageView)localObject1).getContext().getClass().getName();; localObject1 = "")
     {
-      localObject1 = str1;
-      if ((((ImageView)localObject2).getContext() instanceof Activity)) {
-        localObject1 = ((ImageView)localObject2).getContext().getClass().getName();
-      }
+      i = this.mDrawableContainerState.mParams.reqHeight;
+      j = this.mDrawableContainerState.mParams.reqWidth;
+      String str2 = "(" + j + "," + i + ")";
+      String str3 = getURL().toString();
+      Exception localException = this.mCallStack;
+      sDebugCallback.onDebug(1, new Object[] { localObject2, str1, str3, localObject1, localException, str2 });
+      return;
     }
-    str1 = getURL().toString();
-    Object localObject2 = this.mCallStack;
-    sDebugCallback.onDebug(1, new Object[] { str2, str3, str1, localObject1, localObject2 });
   }
   
   private static void checkParams()
@@ -232,71 +202,76 @@ public class URLDrawable
   }
   
   /* Error */
-  public static URLDrawable getDrawable(File paramFile, URLDrawableOptions paramURLDrawableOptions)
+  @Deprecated
+  public static URLDrawable getDrawable(File paramFile, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 392	java/io/File:toURI	()Ljava/net/URI;
-    //   4: invokevirtual 397	java/net/URI:toURL	()Ljava/net/URL;
-    //   7: astore_0
-    //   8: aload_0
-    //   9: ifnull +11 -> 20
-    //   12: aload_0
-    //   13: aload_1
-    //   14: invokestatic 400	com/tencent/image/URLDrawable:getDrawable	(Ljava/net/URL;Lcom/tencent/image/URLDrawable$URLDrawableOptions;)Lcom/tencent/image/URLDrawable;
-    //   17: areturn
-    //   18: aload_0
-    //   19: athrow
-    //   20: aconst_null
-    //   21: areturn
-    //   22: astore_0
-    //   23: iconst_0
-    //   24: ifeq -4 -> 20
-    //   27: aconst_null
-    //   28: aload_1
-    //   29: invokestatic 400	com/tencent/image/URLDrawable:getDrawable	(Ljava/net/URL;Lcom/tencent/image/URLDrawable$URLDrawableOptions;)Lcom/tencent/image/URLDrawable;
-    //   32: areturn
-    //   33: astore_0
-    //   34: iconst_0
-    //   35: ifeq -17 -> 18
-    //   38: aconst_null
-    //   39: aload_1
-    //   40: invokestatic 400	com/tencent/image/URLDrawable:getDrawable	(Ljava/net/URL;Lcom/tencent/image/URLDrawable$URLDrawableOptions;)Lcom/tencent/image/URLDrawable;
-    //   43: areturn
+    //   0: aconst_null
+    //   1: astore_2
+    //   2: aload_0
+    //   3: invokevirtual 391	java/io/File:toURI	()Ljava/net/URI;
+    //   6: invokevirtual 396	java/net/URI:toURL	()Ljava/net/URL;
+    //   9: astore_3
+    //   10: aload_2
+    //   11: astore_0
+    //   12: aload_3
+    //   13: ifnull +9 -> 22
+    //   16: aload_3
+    //   17: aload_1
+    //   18: invokestatic 399	com/tencent/image/URLDrawable:getDrawable	(Ljava/net/URL;Lcom/tencent/image/URLDrawable$URLDrawableOptions;)Lcom/tencent/image/URLDrawable;
+    //   21: astore_0
+    //   22: aload_0
+    //   23: areturn
+    //   24: aload_0
+    //   25: athrow
+    //   26: astore_0
+    //   27: aload_2
+    //   28: astore_0
+    //   29: iconst_0
+    //   30: ifeq -8 -> 22
+    //   33: aconst_null
+    //   34: aload_1
+    //   35: invokestatic 399	com/tencent/image/URLDrawable:getDrawable	(Ljava/net/URL;Lcom/tencent/image/URLDrawable$URLDrawableOptions;)Lcom/tencent/image/URLDrawable;
+    //   38: areturn
+    //   39: astore_0
+    //   40: iconst_0
+    //   41: ifeq -17 -> 24
+    //   44: aconst_null
+    //   45: aload_1
+    //   46: invokestatic 399	com/tencent/image/URLDrawable:getDrawable	(Ljava/net/URL;Lcom/tencent/image/URLDrawable$URLDrawableOptions;)Lcom/tencent/image/URLDrawable;
+    //   49: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	44	0	paramFile	File
-    //   0	44	1	paramURLDrawableOptions	URLDrawableOptions
+    //   0	50	0	paramFile	File
+    //   0	50	1	paramURLDrawableOptions	URLDrawable.URLDrawableOptions
+    //   1	27	2	localObject	Object
+    //   9	8	3	localURL	URL
     // Exception table:
     //   from	to	target	type
-    //   0	8	22	java/net/MalformedURLException
-    //   0	8	33	finally
+    //   2	10	26	java/net/MalformedURLException
+    //   2	10	39	finally
   }
   
   @Deprecated
   public static URLDrawable getDrawable(String paramString)
-    throws IllegalArgumentException
   {
     return getDrawable(paramString, null, null);
   }
   
   @Deprecated
   public static URLDrawable getDrawable(String paramString, int paramInt1, int paramInt2)
-    throws IllegalArgumentException
   {
     return getDrawable(paramString, paramInt1, paramInt2, null, null);
   }
   
   @Deprecated
   public static URLDrawable getDrawable(String paramString, int paramInt1, int paramInt2, Drawable paramDrawable1, Drawable paramDrawable2)
-    throws IllegalArgumentException
   {
     return getDrawable(paramString, paramInt1, paramInt2, paramDrawable1, paramDrawable2, false);
   }
   
   @Deprecated
   public static URLDrawable getDrawable(String paramString, int paramInt1, int paramInt2, Drawable paramDrawable1, Drawable paramDrawable2, boolean paramBoolean)
-    throws IllegalArgumentException
   {
     try
     {
@@ -311,26 +286,23 @@ public class URLDrawable
   
   @Deprecated
   public static URLDrawable getDrawable(String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
-    throws IllegalArgumentException
   {
     return getDrawable(paramString, paramInt1, paramInt2, null, null, paramBoolean);
   }
   
   @Deprecated
   public static URLDrawable getDrawable(String paramString, Drawable paramDrawable1, Drawable paramDrawable2)
-    throws IllegalArgumentException
   {
     return getDrawable(paramString, 0, 0, paramDrawable1, paramDrawable2);
   }
   
   @Deprecated
   public static URLDrawable getDrawable(String paramString, Drawable paramDrawable1, Drawable paramDrawable2, boolean paramBoolean)
-    throws IllegalArgumentException
   {
     return getDrawable(paramString, 0, 0, paramDrawable1, paramDrawable2, paramBoolean);
   }
   
-  public static URLDrawable getDrawable(String paramString, URLDrawableOptions paramURLDrawableOptions)
+  public static URLDrawable getDrawable(String paramString, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
   {
     try
     {
@@ -345,7 +317,6 @@ public class URLDrawable
   
   @Deprecated
   public static URLDrawable getDrawable(String paramString, boolean paramBoolean)
-    throws IllegalArgumentException
   {
     return getDrawable(paramString, null, null, paramBoolean);
   }
@@ -377,7 +348,7 @@ public class URLDrawable
   @Deprecated
   public static URLDrawable getDrawable(URL paramURL, int paramInt1, int paramInt2, Drawable paramDrawable1, Drawable paramDrawable2, boolean paramBoolean, float paramFloat)
   {
-    URLDrawableOptions localURLDrawableOptions = URLDrawableOptions.obtain();
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mRequestWidth = paramInt1;
     localURLDrawableOptions.mRequestHeight = paramInt2;
     localURLDrawableOptions.mLoadingDrawable = paramDrawable1;
@@ -405,9 +376,9 @@ public class URLDrawable
     return getDrawable(paramURL, 0, 0, paramDrawable1, paramDrawable2, paramBoolean, 0.0F);
   }
   
-  public static URLDrawable getDrawable(URL paramURL, URLDrawableOptions paramURLDrawableOptions)
+  public static URLDrawable getDrawable(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
   {
-    URLDrawableOptions localURLDrawableOptions;
+    URLDrawable.URLDrawableOptions localURLDrawableOptions;
     int i;
     do
     {
@@ -418,11 +389,11 @@ public class URLDrawable
           checkParams();
           localURLDrawableOptions = paramURLDrawableOptions;
           if (paramURLDrawableOptions == null) {
-            localURLDrawableOptions = URLDrawableOptions.obtain();
+            localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
           }
           localObject = URLState.getConstants(paramURL.toString(), localURLDrawableOptions);
           if (localObject == null) {
-            break label556;
+            break label596;
           }
           paramURLDrawableOptions = (URLDrawable)((URLState)localObject).newDrawable(null);
           if (((URLState)localObject).mParams.mAutoScaleByDensity)
@@ -432,7 +403,7 @@ public class URLDrawable
             paramURLDrawableOptions.mExtraInfo = localURLDrawableOptions.mExtraInfo;
             i = paramURLDrawableOptions.getStatus();
             if (i != 1) {
-              break label343;
+              break label366;
             }
             if ((paramURLDrawableOptions.mCurrDrawable instanceof GifDrawable))
             {
@@ -450,6 +421,7 @@ public class URLDrawable
           if ((paramURLDrawableOptions.mCurrDrawable instanceof ApngDrawable))
           {
             ((ApngDrawable)paramURLDrawableOptions.mCurrDrawable).mUseAnimation = localURLDrawableOptions.mUseApngImage;
+            ((ApngDrawable)paramURLDrawableOptions.mCurrDrawable).setUseRect(localURLDrawableOptions.mExtraInfo);
             paramURLDrawableOptions.mUseApngImage = localURLDrawableOptions.mUseApngImage;
             continue;
           }
@@ -473,6 +445,7 @@ public class URLDrawable
     {
       paramURL.setOnStateListener(((QQLiveDrawable.QQLiveDrawableParams)localObject).mListener);
       paramURL.setOnDownloadListener(((QQLiveDrawable.QQLiveDrawableParams)localObject).mDownloadListener);
+      paramURL.setOnLoopBackListener(((QQLiveDrawable.QQLiveDrawableParams)localObject).mLoopBackListener);
       break;
       if (((QQLiveDrawable.QQLiveDrawableParams)localObject).mStartPosi > 0) {
         paramURL.resumeFromPosi(((QQLiveDrawable.QQLiveDrawableParams)localObject).mStartPosi);
@@ -480,31 +453,35 @@ public class URLDrawable
         paramURL.resume();
       }
     }
-    label343:
+    label366:
     paramURLDrawableOptions.mUseGifAnimation = localURLDrawableOptions.mPlayGifImage;
     paramURLDrawableOptions.mUseApngImage = localURLDrawableOptions.mUseApngImage;
     paramURLDrawableOptions.mUseSharpPImage = localURLDrawableOptions.mUseSharpPImage;
     paramURLDrawableOptions.mGifRoundCorner = localURLDrawableOptions.mGifRoundCorner;
     paramURLDrawableOptions.mFadeInImage = sDefaultDrawableParms.mFadeInImage;
+    CustomError localCustomError = ((URLState)localObject).mCustomError;
     if (i == 2)
     {
       if (QLog.isColorLevel()) {
         QLog.d("URLDrawable_", 2, "getDrawable from cache url= " + paramURL.toString() + ",isLoadingStarted" + ((URLState)localObject).mIsLoadingStarted);
       }
-      paramURL = sDefaultDrawableParms.getDefualtFailedDrawable();
-      if ((localURLDrawableOptions.mFailedDrawable == null) && (paramURL != null)) {}
+      if (localCustomError != null) {
+        paramURLDrawableOptions.mFailedDrawable = localCustomError.getFailedDrawable();
+      }
       for (;;)
       {
-        paramURLDrawableOptions.mFailedDrawable = paramURL;
         paramURLDrawableOptions.mCurrDrawable = paramURLDrawableOptions.mFailedDrawable;
         break;
-        paramURL = localURLDrawableOptions.mFailedDrawable;
+        if (localURLDrawableOptions.mFailedDrawable != null) {
+          paramURLDrawableOptions.mFailedDrawable = localURLDrawableOptions.mFailedDrawable;
+        } else {
+          paramURLDrawableOptions.mFailedDrawable = sDefaultDrawableParms.getDefualtFailedDrawable();
+        }
       }
     }
     paramURLDrawableOptions.mFailedDrawable = localURLDrawableOptions.mFailedDrawable;
-    paramURL = sDefaultDrawableParms.getDefaultLoadingDrawable();
-    if ((localURLDrawableOptions.mLoadingDrawable == null) && (paramURL != null)) {}
-    for (;;)
+    if (localURLDrawableOptions.mLoadingDrawable == null) {}
+    for (paramURL = sDefaultDrawableParms.getDefaultLoadingDrawable();; paramURL = localURLDrawableOptions.mLoadingDrawable)
     {
       paramURLDrawableOptions.mProgressDrawable = paramURL;
       paramURLDrawableOptions.mCurrDrawable = paramURLDrawableOptions.mProgressDrawable;
@@ -516,9 +493,8 @@ public class URLDrawable
         break;
       }
       break;
-      paramURL = localURLDrawableOptions.mLoadingDrawable;
     }
-    label556:
+    label596:
     paramURLDrawableOptions = new URLDrawable(paramURL, localURLDrawableOptions);
     paramURLDrawableOptions.mUseGifAnimation = localURLDrawableOptions.mPlayGifImage;
     paramURLDrawableOptions.mUseApngImage = localURLDrawableOptions.mUseApngImage;
@@ -536,25 +512,20 @@ public class URLDrawable
     if (localURLDrawableOptions.mUseAutoScaleParams) {
       ((DownloadParams)localObject).mAutoScaleByDensity = sDefaultDrawableParms.mAutoScaleByDensity;
     }
-    if ((localURLDrawableOptions.mRequestWidth == 0) || (localURLDrawableOptions.mRequestHeight == 0))
-    {
+    if ((localURLDrawableOptions.mRequestWidth == 0) || (localURLDrawableOptions.mRequestHeight == 0)) {
       ((DownloadParams)localObject).reqWidth = sDefaultDrawableParms.mReqWidth;
-      ((DownloadParams)localObject).reqHeight = sDefaultDrawableParms.mReqHeight;
-      label729:
-      ((DownloadParams)localObject).mImgType = localURLDrawableOptions.mImgType;
-      if (!localURLDrawableOptions.mUseAutoScaleParams) {
-        break label793;
-      }
     }
-    label793:
-    for (paramURL = autoScale(null, paramURLDrawableOptions);; paramURL = paramURLDrawableOptions)
+    for (((DownloadParams)localObject).reqHeight = sDefaultDrawableParms.mReqHeight;; ((DownloadParams)localObject).reqHeight = localURLDrawableOptions.mRequestHeight)
     {
+      ((DownloadParams)localObject).mImgType = localURLDrawableOptions.mImgType;
+      paramURL = paramURLDrawableOptions;
+      if (localURLDrawableOptions.mUseAutoScaleParams) {
+        paramURL = autoScale(null, paramURLDrawableOptions);
+      }
       paramURL.mCallStack = new IllegalStateException("UrlDrawable getStack");
       localURLDrawableOptions.Recycle();
       break;
       ((DownloadParams)localObject).reqWidth = localURLDrawableOptions.mRequestWidth;
-      ((DownloadParams)localObject).reqHeight = localURLDrawableOptions.mRequestHeight;
-      break label729;
     }
   }
   
@@ -564,9 +535,41 @@ public class URLDrawable
     return getDrawable(paramURL, null, null, paramBoolean);
   }
   
+  public static URLDrawable getFileDrawable(String paramString, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
+  {
+    Object localObject = null;
+    try
+    {
+      URL localURL = new URI("file", null, paramString, null).toURL();
+      paramString = localObject;
+      if (localURL != null) {
+        paramString = getDrawable(localURL, paramURLDrawableOptions);
+      }
+    }
+    catch (MalformedURLException paramString)
+    {
+      paramString.printStackTrace();
+      paramString = localObject;
+      return getDrawable(null, paramURLDrawableOptions);
+    }
+    catch (URISyntaxException paramString)
+    {
+      paramString.printStackTrace();
+      paramString = localObject;
+      return getDrawable(null, paramURLDrawableOptions);
+      throw paramString;
+    }
+    finally
+    {
+      while (0 == 0) {}
+    }
+    return paramString;
+    return getDrawable(null, paramURLDrawableOptions);
+  }
+  
   public static int getPoolSize()
   {
-    return URLDrawableOptions.sPoolSize;
+    return URLDrawable.URLDrawableOptions.access$000();
   }
   
   private void httpdownloadError()
@@ -585,60 +588,15 @@ public class URLDrawable
     if (sDefaultDrawableParms != null) {
       throw new IllegalArgumentException("please don't call setURLDrawableParams twice");
     }
-    Object localObject;
-    if (paramURLDrawableParams.mURLDrawableExecutor == null)
-    {
-      localObject = new ThreadPoolParams();
-      ((ThreadPoolParams)localObject).corePoolsize = CORE_POOL_SIZE;
-      ((ThreadPoolParams)localObject).maxPooolSize = MAXIMUM_POOL_SIZE;
-      ((ThreadPoolParams)localObject).keepAliveTime = 1;
-      ((ThreadPoolParams)localObject).poolThreadName = "URLDrawable";
-      paramURLDrawableParams.mURLDrawableExecutor = ThreadManagerV2.newFreeThreadPool((ThreadPoolParams)localObject);
-    }
-    if (paramURLDrawableParams.mSubHandler == null)
-    {
-      localObject = ThreadManagerV2.newFreeHandlerThread("URLDrawableSub", 0);
-      ((HandlerThread)localObject).start();
-      paramURLDrawableParams.mSubHandler = new Handler(((HandlerThread)localObject).getLooper());
-    }
-    if (paramURLDrawableParams.mFileHandler == null)
-    {
-      localObject = ThreadManagerV2.newFreeHandlerThread("URLDrawableFile", 0);
-      ((HandlerThread)localObject).start();
-      paramURLDrawableParams.mFileHandler = new Handler(((HandlerThread)localObject).getLooper());
-    }
-    if (paramURLDrawableParams.mBatchHandler == null)
-    {
-      localObject = ThreadManagerV2.newFreeHandlerThread("URLDrawableBatch", 0);
-      ((HandlerThread)localObject).start();
-      paramURLDrawableParams.mBatchHandler = new Handler(((HandlerThread)localObject).getLooper());
+    if (paramURLDrawableParams.mSubHandler == null) {
+      paramURLDrawableParams.mSubHandler = new Handler(((HandlerThread)ThreadManagerV2.getSubThread()).getLooper());
     }
     sDefaultDrawableParms = paramURLDrawableParams;
     if (paramURLDrawableParams.mMemoryCache == null) {}
-    for (sMemoryCache = new MQLruCache(paramURLDrawableParams.mMemoryCacheSize)
-        {
-          protected int sizeOfObj(String paramAnonymousString, Object paramAnonymousObject)
-          {
-            if (paramAnonymousObject != null)
-            {
-              if ((paramAnonymousObject instanceof Pair)) {
-                return ((Integer)((Pair)paramAnonymousObject).second).intValue();
-              }
-              if ((paramAnonymousObject instanceof Bitmap))
-              {
-                paramAnonymousString = (Bitmap)paramAnonymousObject;
-                return paramAnonymousString.getRowBytes() * paramAnonymousString.getHeight();
-              }
-            }
-            return 12;
-          }
-        };; sMemoryCache = paramURLDrawableParams.mMemoryCache)
+    for (sMemoryCache = new URLDrawable.3(paramURLDrawableParams.mMemoryCacheSize);; sMemoryCache = paramURLDrawableParams.mMemoryCache)
     {
       mApplicationContext = paramContext;
-      paramURLDrawableParams.mSubHandler.post(new Runnable()
-      {
-        public void run() {}
-      });
+      paramURLDrawableParams.mSubHandler.post(new URLDrawable.4());
       return;
     }
   }
@@ -666,7 +624,7 @@ public class URLDrawable
   public static void pause()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("URLDrawable_pause", 2, "pause load image " + new java.lang.RuntimeException("getStack").getStackTrace()[1].toString());
+      QLog.d("URLDrawable_pause", 2, "pause load image ");
     }
     synchronized (sPauseLock)
     {
@@ -675,9 +633,23 @@ public class URLDrawable
     }
   }
   
+  @Deprecated
   public static void removeMemoryCacheByUrl(String paramString)
   {
     sMemoryCache.remove(paramString);
+  }
+  
+  public static void removeMemoryCacheByUrl(String paramString, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
+  {
+    paramString = URLState.getMemoryCacheKey(paramString, paramURLDrawableOptions);
+    sMemoryCache.remove(paramString);
+  }
+  
+  public static void reportLoadingDrawableError()
+  {
+    if ((sDebugCallback != null) && (sDebugCallback.isNeedSample())) {
+      sDebugCallback.onReportLoadingDrawableError();
+    }
   }
   
   public static void resume()
@@ -703,7 +675,7 @@ public class URLDrawable
     }
   }
   
-  public static void setDebuggableCallback(DebuggableCallback paramDebuggableCallback)
+  public static void setDebuggableCallback(URLDrawable.DebuggableCallback paramDebuggableCallback)
   {
     if ((DEBUG) && (sDebugCallback != null)) {
       throw new IllegalArgumentException("please don't call setDebuggableCallback twice");
@@ -753,12 +725,12 @@ public class URLDrawable
   
   public void downloadImediatly()
   {
-    this.mDrawableContainerState.downloadImediatly(this.mHeaders, this.mCookies, this.mTag, true, this.mUseGifAnimation, this.mUseApngImage, this.mUseSharpPImage, this.mGifRoundCorner);
+    this.mDrawableContainerState.downloadImediatly(this.mHeaders, this.mCookies, this.mTag, true, this.mUseGifAnimation, this.mUseApngImage, this.mUseSharpPImage, this.mGifRoundCorner, this.mUseExifOrientation, this.mExtraInfo);
   }
   
   public void downloadImediatly(boolean paramBoolean)
   {
-    this.mDrawableContainerState.downloadImediatly(this.mHeaders, this.mCookies, this.mTag, paramBoolean, this.mUseGifAnimation, this.mUseApngImage, this.mUseSharpPImage, this.mGifRoundCorner);
+    this.mDrawableContainerState.downloadImediatly(this.mHeaders, this.mCookies, this.mTag, paramBoolean, this.mUseGifAnimation, this.mUseApngImage, this.mUseSharpPImage, this.mGifRoundCorner, this.mUseExifOrientation, this.mExtraInfo);
   }
   
   public void draw(Canvas paramCanvas)
@@ -781,7 +753,7 @@ public class URLDrawable
         if ((f < 0.0F) || (f > 1.0F)) {
           break label396;
         }
-        j = Math.min((int)(255.0F * (1.0F - (1.0F - f) * (1.0F - f))), 255);
+        j = Math.min((int)((1.0F - (1.0F - f) * (1.0F - f)) * 255.0F), 255);
         Rect localRect = getBounds();
         paramCanvas.saveLayerAlpha(localRect.left, localRect.top, localRect.width(), localRect.height(), j, 20);
         invalidateSelf();
@@ -839,6 +811,14 @@ public class URLDrawable
   public Drawable getCurrDrawable()
   {
     return this.mCurrDrawable;
+  }
+  
+  public long getCurrentPostion()
+  {
+    if ((this.mCurrDrawable != null) && ((this.mCurrDrawable instanceof QQLiveDrawable))) {
+      return ((QQLiveDrawable)this.mCurrDrawable).getCurrentPosition();
+    }
+    return 0L;
   }
   
   public int getExifOrientation()
@@ -956,9 +936,25 @@ public class URLDrawable
     return super.getPadding(paramRect);
   }
   
+  public int getPlayState()
+  {
+    if ((this.mCurrDrawable != null) && ((this.mCurrDrawable instanceof QQLiveDrawable))) {
+      return ((QQLiveDrawable)this.mCurrDrawable).getPlayState();
+    }
+    return -1;
+  }
+  
   public int getProgress()
   {
     return this.mProgress;
+  }
+  
+  public CustomError getStateError()
+  {
+    if (this.mDrawableContainerState != null) {
+      return this.mDrawableContainerState.mCustomError;
+    }
+    return null;
   }
   
   public Object getStateTag()
@@ -1006,7 +1002,9 @@ public class URLDrawable
   
   public Drawable mutate()
   {
-    this.mCurrDrawable.mutate();
+    if (this.mCurrDrawable != null) {
+      this.mCurrDrawable.mutate();
+    }
     return this;
   }
   
@@ -1016,23 +1014,23 @@ public class URLDrawable
     float f1;
     int k;
     float f2;
-    Rect localRect;
-    Matrix localMatrix;
+    Object localObject1;
+    Object localObject2;
     if ((this.mUseExifOrientation) && (this.mDrawableContainerState.mStatus == 1) && (this.mCurrDrawable != null) && (this.mDrawableContainerState.mOrientation != 0) && (this.mDrawableContainerState.mOrientation != 1))
     {
       j = paramRect.width();
       f1 = j / 2.0F;
       k = paramRect.height();
       f2 = k / 2.0F;
-      localRect = new Rect();
-      localMatrix = new Matrix();
+      localObject1 = new Rect();
+      localObject2 = new Matrix();
       switch (this.mDrawableContainerState.mOrientation)
       {
       default: 
-        localMatrix = null;
-        localRect = paramRect;
-        this.mExifMatrix = localMatrix;
-        this.mCurrDrawable.setBounds(localRect);
+        localObject1 = null;
+        localObject2 = paramRect;
+        this.mExifMatrix = ((Matrix)localObject1);
+        this.mCurrDrawable.setBounds((Rect)localObject2);
       }
     }
     for (;;)
@@ -1041,39 +1039,54 @@ public class URLDrawable
         this.mProgressDrawable.setBounds(paramRect);
       }
       return;
-      localRect.set(0, 0, j, k);
-      localMatrix.setTranslate(-f1, -f2);
-      localMatrix.postScale(-1.0F, 1.0F);
-      localMatrix.postTranslate(paramRect.left + f1, paramRect.top + f2);
+      ((Rect)localObject1).set(0, 0, j, k);
+      ((Matrix)localObject2).setTranslate(-f1, -f2);
+      ((Matrix)localObject2).postScale(-1.0F, 1.0F);
+      ((Matrix)localObject2).postTranslate(paramRect.left + f1, paramRect.top + f2);
+      Object localObject3 = localObject1;
+      localObject1 = localObject2;
+      localObject2 = localObject3;
       break;
-      localRect.set(0, 0, j, k);
-      localMatrix.setTranslate(-f1, -f2);
-      localMatrix.postScale(1.0F, -1.0F);
-      localMatrix.postTranslate(paramRect.left + f1, paramRect.top + f2);
+      ((Rect)localObject1).set(0, 0, j, k);
+      ((Matrix)localObject2).setTranslate(-f1, -f2);
+      ((Matrix)localObject2).postScale(1.0F, -1.0F);
+      ((Matrix)localObject2).postTranslate(paramRect.left + f1, paramRect.top + f2);
+      localObject3 = localObject1;
+      localObject1 = localObject2;
+      localObject2 = localObject3;
       break;
       if (this.mDrawableContainerState.mOrientation == 5) {}
       for (int i = 90;; i = 270)
       {
-        localRect.set(0, 0, j, k);
-        localMatrix.setTranslate(-f1, -f2);
-        localMatrix.postScale(1.0F, -1.0F);
-        localMatrix.postRotate(i);
-        localMatrix.postTranslate(paramRect.left + f1, paramRect.top + f2);
+        ((Rect)localObject1).set(0, 0, j, k);
+        ((Matrix)localObject2).setTranslate(-f1, -f2);
+        ((Matrix)localObject2).postScale(1.0F, -1.0F);
+        ((Matrix)localObject2).postRotate(i);
+        ((Matrix)localObject2).postTranslate(paramRect.left + f1, paramRect.top + f2);
+        localObject3 = localObject1;
+        localObject1 = localObject2;
+        localObject2 = localObject3;
         break;
       }
       if (this.mDrawableContainerState.mOrientation == 6) {}
       for (i = 90;; i = 270)
       {
-        localRect.set(0, 0, k, j);
-        localMatrix.setTranslate(-f2, -f1);
-        localMatrix.postRotate(i);
-        localMatrix.postTranslate(paramRect.left + f1, paramRect.top + f2);
+        ((Rect)localObject1).set(0, 0, k, j);
+        ((Matrix)localObject2).setTranslate(-f2, -f1);
+        ((Matrix)localObject2).postRotate(i);
+        ((Matrix)localObject2).postTranslate(paramRect.left + f1, paramRect.top + f2);
+        localObject3 = localObject1;
+        localObject1 = localObject2;
+        localObject2 = localObject3;
         break;
       }
-      localRect.set(0, 0, j, k);
-      localMatrix.setTranslate(-f1, -f2);
-      localMatrix.postRotate(180.0F);
-      localMatrix.postTranslate(paramRect.left + f1, paramRect.top + f2);
+      ((Rect)localObject1).set(0, 0, j, k);
+      ((Matrix)localObject2).setTranslate(-f1, -f2);
+      ((Matrix)localObject2).postRotate(180.0F);
+      ((Matrix)localObject2).postTranslate(paramRect.left + f1, paramRect.top + f2);
+      localObject3 = localObject1;
+      localObject1 = localObject2;
+      localObject2 = localObject3;
       break;
       if (this.mCurrDrawable != null) {
         this.mCurrDrawable.setBounds(paramRect);
@@ -1104,8 +1117,8 @@ public class URLDrawable
   
   public void onFileDownloaded(URLState paramURLState)
   {
-    if ((getStatus() == 4) && (this.mListener != null) && ((this.mListener instanceof URLDrawableListener2))) {
-      ((URLDrawableListener2)this.mListener).onFileDownloaded(this);
+    if ((getStatus() == 4) && (this.mListener != null) && ((this.mListener instanceof URLDrawable.URLDrawableListener2))) {
+      ((URLDrawable.URLDrawableListener2)this.mListener).onFileDownloaded(this);
     }
   }
   
@@ -1130,35 +1143,43 @@ public class URLDrawable
   
   public void onLoadFailed(URLState paramURLState, Throwable paramThrowable)
   {
-    paramURLState = this.mCurrDrawable;
-    if (this.mFailedDrawable == null) {
-      this.mFailedDrawable = sDefaultDrawableParms.getDefualtFailedDrawable();
-    }
-    this.mCurrDrawable = this.mFailedDrawable;
-    if (this.mCurrDrawable != null)
-    {
-      this.mCurrDrawable.setAlpha(this.mAlpha);
-      this.mCurrDrawable.setVisible(isVisible(), true);
-      this.mCurrDrawable.setDither(this.mDrawableContainerState.mDither);
-      this.mCurrDrawable.setColorFilter(this.mColorFilter);
-      this.mCurrDrawable.setState(getState());
-      this.mCurrDrawable.setLevel(getLevel());
-      this.mCurrDrawable.setCallback(this);
-      this.mCurrDrawable.setBounds(getBounds());
-    }
+    Drawable localDrawable = this.mCurrDrawable;
+    paramURLState = paramURLState.mCustomError;
     if (paramURLState != null) {
-      paramURLState.setCallback(null);
+      this.mFailedDrawable = paramURLState.getFailedDrawable();
     }
-    if (this.mListener != null) {
-      this.mListener.onLoadFialed(this, paramThrowable);
-    }
-    if (this.mFadeInImage) {
-      this.mFadeInAnimationStarted = true;
-    }
-    this.mDrawableContainerState.mCacheFile = null;
-    invalidateSelf();
-    if (paramThrowable.toString().contains("response_code=404")) {
-      httpdownloadError();
+    for (;;)
+    {
+      this.mCurrDrawable = this.mFailedDrawable;
+      if (this.mCurrDrawable != null)
+      {
+        this.mCurrDrawable.setAlpha(this.mAlpha);
+        this.mCurrDrawable.setVisible(isVisible(), true);
+        this.mCurrDrawable.setDither(this.mDrawableContainerState.mDither);
+        this.mCurrDrawable.setColorFilter(this.mColorFilter);
+        this.mCurrDrawable.setState(getState());
+        this.mCurrDrawable.setLevel(getLevel());
+        this.mCurrDrawable.setCallback(this);
+        this.mCurrDrawable.setBounds(getBounds());
+      }
+      if (localDrawable != null) {
+        localDrawable.setCallback(null);
+      }
+      if (this.mListener != null) {
+        this.mListener.onLoadFialed(this, paramThrowable);
+      }
+      if (this.mFadeInImage) {
+        this.mFadeInAnimationStarted = true;
+      }
+      this.mDrawableContainerState.mCacheFile = null;
+      invalidateSelf();
+      if (paramThrowable.toString().contains("response_code=404")) {
+        httpdownloadError();
+      }
+      return;
+      if (this.mFailedDrawable == null) {
+        this.mFailedDrawable = sDefaultDrawableParms.getDefualtFailedDrawable();
+      }
     }
   }
   
@@ -1215,6 +1236,7 @@ public class URLDrawable
       else if ((paramURLState instanceof ApngDrawable))
       {
         ((ApngDrawable)paramURLState).setTargetDensity(this.mTargetDensity);
+        ((ApngDrawable)paramURLState).setUseRect(this.mExtraInfo);
         ((ApngDrawable)paramURLState).mUseAnimation = this.mUseApngImage;
       }
       else if ((paramURLState instanceof RoundRectDrawable))
@@ -1256,10 +1278,31 @@ public class URLDrawable
     }
   }
   
+  public void pauseVideo()
+  {
+    if ((this.mCurrDrawable != null) && ((this.mCurrDrawable instanceof QQLiveDrawable))) {
+      ((QQLiveDrawable)this.mCurrDrawable).pause();
+    }
+  }
+  
+  public void replay()
+  {
+    if ((this.mCurrDrawable != null) && ((this.mCurrDrawable instanceof QQLiveDrawable))) {
+      ((QQLiveDrawable)this.mCurrDrawable).replay();
+    }
+  }
+  
   public void restartDownload()
   {
     if (this.mDrawableContainerState.reStartDownload(this.mHeaders, this.mCookies, this.mTag, true, this.mUseGifAnimation, this.mUseApngImage, this.mUseSharpPImage, this.mGifRoundCorner, this.mUseExifOrientation, this.mExtraInfo)) {
       invalidateSelf();
+    }
+  }
+  
+  public void resumeVideo()
+  {
+    if ((this.mCurrDrawable != null) && ((this.mCurrDrawable instanceof QQLiveDrawable))) {
+      ((QQLiveDrawable)this.mCurrDrawable).resume();
     }
   }
   
@@ -1272,7 +1315,6 @@ public class URLDrawable
   }
   
   public String saveTo(String paramString)
-    throws IOException
   {
     return this.mDrawableContainerState.saveTo(paramString);
   }
@@ -1280,6 +1322,13 @@ public class URLDrawable
   public void scheduleDrawable(Drawable paramDrawable, Runnable paramRunnable, long paramLong)
   {
     scheduleSelf(paramRunnable, paramLong);
+  }
+  
+  public void seek(int paramInt)
+  {
+    if ((this.mCurrDrawable != null) && ((this.mCurrDrawable instanceof QQLiveDrawable))) {
+      ((QQLiveDrawable)this.mCurrDrawable).seek(paramInt);
+    }
   }
   
   public void setAlpha(int paramInt)
@@ -1333,7 +1382,7 @@ public class URLDrawable
     }
   }
   
-  public void setDownloadListener(DownloadListener paramDownloadListener)
+  public void setDownloadListener(URLDrawable.DownloadListener paramDownloadListener)
   {
     this.mDownloadListener = paramDownloadListener;
   }
@@ -1368,6 +1417,13 @@ public class URLDrawable
   {
     if ((this.mCurrDrawable instanceof GifDrawable)) {
       ((GifDrawable.GifState)((GifDrawable)this.mCurrDrawable).getConstantState()).setStickerPause(paramBoolean);
+    }
+  }
+  
+  public void setMute(boolean paramBoolean)
+  {
+    if ((this.mCurrDrawable != null) && ((this.mCurrDrawable instanceof QQLiveDrawable))) {
+      ((QQLiveDrawable)this.mCurrDrawable).setMute(paramBoolean);
     }
   }
   
@@ -1448,7 +1504,7 @@ public class URLDrawable
     ((QQLiveDrawable)this.mCurrDrawable).setTargetDensity(paramInt);
   }
   
-  public void setURLDrawableListener(URLDrawableListener paramURLDrawableListener)
+  public void setURLDrawableListener(URLDrawable.URLDrawableListener paramURLDrawableListener)
   {
     this.mListener = paramURLDrawableListener;
   }
@@ -1489,6 +1545,13 @@ public class URLDrawable
     this.mDrawableContainerState.startDownload(this.mHeaders, this.mCookies, this.mTag, paramBoolean, this.mUseGifAnimation, this.mUseApngImage, this.mUseSharpPImage, this.mGifRoundCorner, this.mUseExifOrientation, this.mExtraInfo);
   }
   
+  public void startVideo()
+  {
+    if ((this.mCurrDrawable != null) && ((this.mCurrDrawable instanceof QQLiveDrawable))) {
+      ((QQLiveDrawable)this.mCurrDrawable).startVideo();
+    }
+  }
+  
   public void unscheduleDrawable(Drawable paramDrawable, Runnable paramRunnable)
   {
     unscheduleSelf(paramRunnable);
@@ -1512,145 +1575,6 @@ public class URLDrawable
       localRectF.round(paramRegionDrawableData.mImageArea);
     }
     ((RegionDrawable)this.mCurrDrawable).updateRegionRect(paramRegionDrawableData);
-  }
-  
-  public static abstract interface DebuggableCallback
-  {
-    public static final int TYPE_CALLBACK_HTTP_ERROR = 2;
-    public static final int TYPE_CALLBACK_OVERSIZE = 1;
-    
-    public abstract boolean isNeedSample();
-    
-    public abstract void onDebug(int paramInt, Object paramObject);
-    
-    public abstract void onReportThread(HashMap<String, String> paramHashMap);
-  }
-  
-  public static abstract interface DownloadListener
-  {
-    public abstract void onFileDownloadFailed(int paramInt);
-    
-    public abstract void onFileDownloadStarted();
-    
-    public abstract void onFileDownloadSucceed(long paramLong);
-  }
-  
-  public static abstract interface URLDrawableListener
-  {
-    public abstract void onLoadCanceled(URLDrawable paramURLDrawable);
-    
-    public abstract void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable);
-    
-    public abstract void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt);
-    
-    public abstract void onLoadSuccessed(URLDrawable paramURLDrawable);
-  }
-  
-  public static abstract interface URLDrawableListener2
-    extends URLDrawable.URLDrawableListener
-  {
-    public abstract void onFileDownloaded(URLDrawable paramURLDrawable);
-  }
-  
-  public static class URLDrawableOptions
-  {
-    private static final int MAX_POOL_SIZE = 30;
-    private static final String TAG = "URLDrawableOptions";
-    private static URLDrawableOptions sPool;
-    private static int sPoolSize = 0;
-    private static final Object sPoolSync = new Object();
-    public boolean isFlashPic = false;
-    public Object mExtraInfo;
-    public Drawable mFailedDrawable = null;
-    public float mGifRoundCorner = 0.0F;
-    public Object mHttpDownloaderParams;
-    public int mImgType;
-    public Drawable mLoadingDrawable = null;
-    public String mMemoryCacheKeySuffix = null;
-    public boolean mNeedCheckNetType = false;
-    private URLDrawableOptions mNext;
-    public boolean mPlayGifImage = false;
-    public byte mPriority = 1;
-    private boolean mRecycled = false;
-    public int mRequestHeight = 0;
-    public int mRequestWidth = 0;
-    public int mRetryCount = 0;
-    public boolean mUseApngImage = false;
-    public boolean mUseAutoScaleParams = true;
-    public boolean mUseExifOrientation = true;
-    public boolean mUseMemoryCache = true;
-    public boolean mUseSharpPImage = false;
-    public boolean mUseThreadPool = true;
-    public boolean mUseUnFinishCache = true;
-    
-    private void clearForRecycle()
-    {
-      this.mRequestWidth = 0;
-      this.mRequestHeight = 0;
-      this.mLoadingDrawable = null;
-      this.mFailedDrawable = null;
-      this.mPlayGifImage = false;
-      this.mUseApngImage = false;
-      this.mUseSharpPImage = false;
-      this.mGifRoundCorner = 0.0F;
-      this.mUseAutoScaleParams = true;
-      this.mUseExifOrientation = true;
-      this.mUseMemoryCache = true;
-      this.mUseUnFinishCache = true;
-      this.mUseThreadPool = true;
-      this.mRecycled = true;
-      this.mExtraInfo = null;
-      this.mMemoryCacheKeySuffix = null;
-      this.mPriority = 1;
-      this.mHttpDownloaderParams = null;
-      this.mNeedCheckNetType = false;
-    }
-    
-    public static URLDrawableOptions obtain()
-    {
-      synchronized (sPoolSync)
-      {
-        if (sPool != null)
-        {
-          sPool.mUseApngImage = false;
-          sPool.mExtraInfo = null;
-          sPool.mHttpDownloaderParams = null;
-          localURLDrawableOptions = sPool;
-          sPool = localURLDrawableOptions.mNext;
-          localURLDrawableOptions.mRecycled = false;
-          localURLDrawableOptions.mNext = null;
-          localURLDrawableOptions.isFlashPic = false;
-          sPoolSize -= 1;
-          return localURLDrawableOptions;
-        }
-        URLDrawableOptions localURLDrawableOptions = new URLDrawableOptions();
-        return localURLDrawableOptions;
-      }
-    }
-    
-    public void Recycle()
-    {
-      if (this.mRecycled) {
-        return;
-      }
-      clearForRecycle();
-      for (;;)
-      {
-        synchronized (sPoolSync)
-        {
-          if (sPoolSize < 30)
-          {
-            this.mNext = sPool;
-            sPool = this;
-            sPoolSize += 1;
-            return;
-          }
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("URLDrawableOptions", 2, "URLDrawableOptions pool size is full");
-        }
-      }
-    }
   }
 }
 

@@ -1,28 +1,25 @@
-import android.os.Message;
-import com.tencent.mobileqq.leba.model.pluginactions.JDPluginAction;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class aejl
-  extends MqqHandler
+class aejl
+  implements DialogInterface.OnClickListener
 {
-  public aejl(JDPluginAction paramJDPluginAction) {}
+  aejl(aejb paramaejb) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1134008: 
-      this.a.a(paramMessage);
-      return;
-    }
-    this.a.a();
+    paramDialogInterface = new Intent(this.a.jdField_a_of_type_AndroidContentContext, TroopLowCreditLevelNotifyActivity.class);
+    paramDialogInterface.putExtra("troopUin", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aejl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,26 @@
-import com.tencent.biz.ui.RefreshView;
-import com.tencent.biz.ui.RefreshView.OnRefreshListener;
-import com.tencent.mobileqq.fragment.NowLiveFragment;
-import com.tencent.mobileqq.fragment.NowLiveFragment.NowLiveWebView;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
-public class adwi
-  implements RefreshView.OnRefreshListener
+class adwi
+  implements DialogInterface.OnKeyListener
 {
-  public adwi(NowLiveFragment paramNowLiveFragment) {}
+  adwi(advv paramadvv) {}
   
-  public void a()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment$NowLiveWebView.x();
-    this.a.jdField_a_of_type_ComTencentBizUiRefreshView.c();
+    if (paramInt == 4)
+    {
+      this.a.n = true;
+      advv.a(this.a).dismiss();
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adwi
  * JD-Core Version:    0.7.0.1
  */

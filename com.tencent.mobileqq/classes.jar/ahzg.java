@@ -1,17 +1,24 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.model.NetSearchTemplateSubItem;
-import com.tencent.mobileqq.search.presenter.SearchTemplatePresenter;
-import com.tencent.mobileqq.search.view.NetSearchTemplateSubItemView;
+import android.view.View.OnLongClickListener;
+import java.lang.ref.WeakReference;
 
-public class ahzg
-  implements View.OnClickListener
+class ahzg
+  implements View.OnLongClickListener
 {
-  public ahzg(SearchTemplatePresenter paramSearchTemplatePresenter, NetSearchTemplateSubItem paramNetSearchTemplateSubItem, NetSearchTemplateSubItemView paramNetSearchTemplateSubItemView) {}
+  private WeakReference<ahzb> a;
   
-  public void onClick(View paramView)
+  public ahzg(ahzb paramahzb)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateSubItem.a(this.jdField_a_of_type_ComTencentMobileqqSearchViewNetSearchTemplateSubItemView.a());
+    this.a = new WeakReference(paramahzb);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    ahzb localahzb = (ahzb)this.a.get();
+    if (localahzb != null) {
+      return localahzb.onLongClick(paramView);
+    }
+    return false;
   }
 }
 

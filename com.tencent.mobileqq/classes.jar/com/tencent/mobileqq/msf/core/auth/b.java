@@ -4,7 +4,7 @@ import android.text.TextUtils;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.MsfStore;
-import com.tencent.mobileqq.msf.core.af;
+import com.tencent.mobileqq.msf.core.ag;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.VerifyCodeInfo;
 import com.tencent.msf.boot.config.NativeConfigStore;
@@ -222,7 +222,7 @@ public class b
       a(parama);
       QLog.d("MSF.C.AccountCenter", 1, Thread.currentThread().getName() + " handleLoadedAccounts setKey " + MsfSdkUtils.getShortUin(parama.d()));
       CodecWarpper.nativeSetAccountKey(parama.d(), parama.e(), parama.f(), parama.g(), parama.h(), parama.i(), parama.j(), parama.k(), parama.l(), null);
-      af.a(parama.d(), false);
+      ag.a(parama.d(), false);
       String str = MsfStore.getNativeConfigStore().getConfig("__loginSdk_uinMapping_" + parama.d());
       if ((str != null) && (str.length() > 0)) {
         this.m.put(parama.d(), str);
@@ -517,7 +517,7 @@ public class b
     CodecWarpper.nativeSetUseSimpleHead(parama.d(), false);
     a(parama);
     m(parama.d());
-    af.a(parama.d(), false);
+    ag.a(parama.d(), false);
   }
   
   public void b(String paramString)
@@ -643,9 +643,6 @@ public class b
         this.g.a(paramString1);
       }
       MsfStore.getNativeConfigStore().setConfig(this.p, this.o);
-      if ((this.a != null) && (this.a.getSsoListManager() != null)) {
-        this.a.getSsoListManager().b(paramString1);
-      }
     }
     while (!QLog.isColorLevel()) {
       return;
@@ -780,19 +777,19 @@ public class b
     //   10: ifeq +22 -> 32
     //   13: aload_0
     //   14: ldc 54
-    //   16: ldc_w 781
-    //   19: invokevirtual 783	com/tencent/mobileqq/msf/core/auth/b:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   16: ldc_w 774
+    //   19: invokevirtual 776	com/tencent/mobileqq/msf/core/auth/b:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   22: aload_0
     //   23: getfield 64	com/tencent/mobileqq/msf/core/auth/b:a	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   26: ldc_w 781
-    //   29: invokevirtual 786	com/tencent/mobileqq/msf/core/MsfCore:stopPCActivePolling	(Ljava/lang/String;)V
+    //   26: ldc_w 774
+    //   29: invokevirtual 779	com/tencent/mobileqq/msf/core/MsfCore:stopPCActivePolling	(Ljava/lang/String;)V
     //   32: aload_0
     //   33: aload_1
     //   34: invokevirtual 567	com/tencent/mobileqq/msf/core/auth/b:l	(Ljava/lang/String;)Lcom/tencent/mobileqq/msf/core/auth/a;
     //   37: astore_2
     //   38: aload_1
     //   39: iconst_0
-    //   40: invokestatic 391	com/tencent/mobileqq/msf/core/af:a	(Ljava/lang/String;Z)V
+    //   40: invokestatic 391	com/tencent/mobileqq/msf/core/ag:a	(Ljava/lang/String;Z)V
     //   43: aload_2
     //   44: ifnull +20 -> 64
     //   47: aload_2
@@ -802,16 +799,16 @@ public class b
     //   53: aload_1
     //   54: invokevirtual 569	com/tencent/mobileqq/msf/core/auth/b:m	(Ljava/lang/String;)V
     //   57: aload_1
-    //   58: invokestatic 789	com/tencent/qphone/base/util/CodecWarpper:nativeRemoveAccountKey	(Ljava/lang/String;)V
+    //   58: invokestatic 782	com/tencent/qphone/base/util/CodecWarpper:nativeRemoveAccountKey	(Ljava/lang/String;)V
     //   61: aload_0
     //   62: monitorexit
     //   63: return
     //   64: ldc 14
     //   66: iconst_1
-    //   67: ldc_w 791
+    //   67: ldc_w 784
     //   70: invokestatic 268	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   73: aload_1
-    //   74: invokestatic 789	com/tencent/qphone/base/util/CodecWarpper:nativeRemoveAccountKey	(Ljava/lang/String;)V
+    //   74: invokestatic 782	com/tencent/qphone/base/util/CodecWarpper:nativeRemoveAccountKey	(Ljava/lang/String;)V
     //   77: goto -16 -> 61
     //   80: astore_1
     //   81: aload_0
@@ -872,7 +869,7 @@ public class b
     byte[] arrayOfByte5 = ((a)localObject).j();
     localObject = ((a)localObject).k();
     CodecWarpper.nativeSetAccountKey(str, new byte[0], arrayOfByte1, arrayOfByte2, arrayOfByte3, arrayOfByte4, arrayOfByte5, (byte[])localObject, new byte[0], null);
-    af.a(paramString, false);
+    ag.a(paramString, false);
   }
 }
 

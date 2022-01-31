@@ -1,26 +1,38 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.widget.HorizontalListViewAdapter;
-import com.tencent.mobileqq.filemanager.widget.HorizontalListViewAdapter.MenuData;
-import com.tencent.widget.ActionSheet;
-import java.util.ArrayList;
+import android.view.ViewGroup;
+import java.lang.ref.SoftReference;
 
 public class adqz
-  implements View.OnClickListener
 {
-  public adqz(HorizontalListViewAdapter paramHorizontalListViewAdapter, int paramInt) {}
+  public String a;
+  SoftReference<View> a;
+  SoftReference<ViewGroup> b;
   
-  public void onClick(View paramView)
+  public adqz(String paramString, View paramView, ViewGroup paramViewGroup)
   {
-    if ((HorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetHorizontalListViewAdapter) != null) && (HorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetHorizontalListViewAdapter).isShowing())) {
-      HorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetHorizontalListViewAdapter).dismiss();
-    }
-    ((HorizontalListViewAdapter.MenuData)HorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetHorizontalListViewAdapter).get(this.jdField_a_of_type_Int)).a.onClick(paramView);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramView);
+    this.b = new SoftReference(paramViewGroup);
+  }
+  
+  public View a()
+  {
+    return (View)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+  }
+  
+  public ViewGroup a()
+  {
+    return (ViewGroup)this.b.get();
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    this.b = new SoftReference(paramViewGroup);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adqz
  * JD-Core Version:    0.7.0.1
  */

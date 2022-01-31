@@ -31,7 +31,6 @@ public final class InflaterSource
   }
   
   private void releaseInflatedBytes()
-    throws IOException
   {
     if (this.bufferBytesHeldByInflater == 0) {
       return;
@@ -42,7 +41,6 @@ public final class InflaterSource
   }
   
   public void close()
-    throws IOException
   {
     if (this.closed) {
       return;
@@ -53,7 +51,6 @@ public final class InflaterSource
   }
   
   public long read(Buffer paramBuffer, long paramLong)
-    throws IOException
   {
     if (paramLong < 0L) {
       throw new IllegalArgumentException("byteCount < 0: " + paramLong);
@@ -103,7 +100,6 @@ public final class InflaterSource
   }
   
   public boolean refill()
-    throws IOException
   {
     if (!this.inflater.needsInput()) {
       return false;

@@ -1,22 +1,25 @@
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
-class akia
-  implements Runnable
+public class akia
+  extends ajfb
 {
-  akia(akhy paramakhy, Exception paramException) {}
-  
-  public void run()
+  public akia(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Akhy.a.dismiss();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "safetyReport exception1" + this.jdField_a_of_type_JavaLangException.getMessage());
-    }
+    super(paramQQAppInterface);
   }
+  
+  protected Class<? extends ajfe> observerClass()
+  {
+    return ajsa.class;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akia
  * JD-Core Version:    0.7.0.1
  */

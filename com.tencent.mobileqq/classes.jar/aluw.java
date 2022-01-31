@@ -1,33 +1,46 @@
-import com.tencent.qidian.controller.QidianPubAccountBigDataHandler;
-import com.tencent.qidian.data.PubAccountNavigationMenu;
-import java.util.Map;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.colornote.swipeback.SwipeBackLayout;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
 public class aluw
-  implements Runnable
+  extends Handler
 {
-  public aluw(QidianPubAccountBigDataHandler paramQidianPubAccountBigDataHandler, long paramLong1, long paramLong2) {}
+  private WeakReference<SwipeBackLayout> a;
   
-  public void run()
+  public aluw(SwipeBackLayout paramSwipeBackLayout)
   {
-    this.jdField_a_of_type_ComTencentQidianControllerQidianPubAccountBigDataHandler.a(this.jdField_a_of_type_Long);
-    PubAccountNavigationMenu localPubAccountNavigationMenu = (PubAccountNavigationMenu)this.jdField_a_of_type_ComTencentQidianControllerQidianPubAccountBigDataHandler.a.get(Long.valueOf(this.jdField_a_of_type_Long));
-    if (localPubAccountNavigationMenu == null)
+    this.a = new WeakReference(paramSwipeBackLayout);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    SwipeBackLayout localSwipeBackLayout = (SwipeBackLayout)this.a.get();
+    switch (paramMessage.what)
     {
-      localPubAccountNavigationMenu = new PubAccountNavigationMenu();
-      localPubAccountNavigationMenu.version = 0;
-      localPubAccountNavigationMenu.puin = this.jdField_a_of_type_Long;
-      localPubAccountNavigationMenu.xml = "";
+    default: 
+      super.handleMessage(paramMessage);
     }
-    for (;;)
+    do
     {
-      QidianPubAccountBigDataHandler.a(this.jdField_a_of_type_ComTencentQidianControllerQidianPubAccountBigDataHandler, this.jdField_a_of_type_Long, localPubAccountNavigationMenu, this.b);
-      return;
+      do
+      {
+        return;
+      } while (SwipeBackLayout.a(localSwipeBackLayout));
+      SwipeBackLayout.a(localSwipeBackLayout, true);
+    } while (!(localSwipeBackLayout.a instanceof Activity));
+    if (QLog.isColorLevel()) {
+      QLog.d("SwipeBackLayout", 2, "SwipeBackLayout finish()");
     }
+    localSwipeBackLayout.c = true;
+    ((Activity)localSwipeBackLayout.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aluw
  * JD-Core Version:    0.7.0.1
  */

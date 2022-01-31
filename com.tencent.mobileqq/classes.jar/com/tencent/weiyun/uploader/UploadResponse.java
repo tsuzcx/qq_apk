@@ -9,14 +9,14 @@ public class UploadResponse
   private long mSpeed;
   private long mTotalSize;
   
-  private UploadResponse(Builder paramBuilder)
+  private UploadResponse(UploadResponse.Builder paramBuilder)
   {
-    this.mRequest = paramBuilder.request;
-    this.mCode = paramBuilder.code;
-    this.mErrMsg = paramBuilder.errMsg;
-    this.mTotalSize = paramBuilder.totalSize;
-    this.mCurrentSize = paramBuilder.currentSize;
-    this.mSpeed = paramBuilder.speed;
+    this.mRequest = UploadResponse.Builder.access$000(paramBuilder);
+    this.mCode = UploadResponse.Builder.access$100(paramBuilder);
+    this.mErrMsg = UploadResponse.Builder.access$200(paramBuilder);
+    this.mTotalSize = UploadResponse.Builder.access$300(paramBuilder);
+    this.mCurrentSize = UploadResponse.Builder.access$400(paramBuilder);
+    this.mSpeed = UploadResponse.Builder.access$500(paramBuilder);
   }
   
   public int code()
@@ -34,9 +34,9 @@ public class UploadResponse
     return this.mErrMsg;
   }
   
-  public Builder newBuilder()
+  public UploadResponse.Builder newBuilder()
   {
-    return new Builder(this, null);
+    return new UploadResponse.Builder(this, null);
   }
   
   public UploadRequest request()
@@ -57,75 +57,6 @@ public class UploadResponse
   public long totalSize()
   {
     return this.mTotalSize;
-  }
-  
-  public static final class Builder
-  {
-    private int code;
-    private long currentSize;
-    private String errMsg;
-    private UploadRequest request;
-    private long speed;
-    private long totalSize;
-    
-    public Builder()
-    {
-      this.code = 0;
-    }
-    
-    private Builder(UploadResponse paramUploadResponse)
-    {
-      this.request = paramUploadResponse.mRequest;
-      this.code = paramUploadResponse.mCode;
-      this.errMsg = paramUploadResponse.mErrMsg;
-      this.totalSize = paramUploadResponse.mTotalSize;
-      this.currentSize = paramUploadResponse.mCurrentSize;
-      this.speed = paramUploadResponse.mSpeed;
-    }
-    
-    public UploadResponse build()
-    {
-      if (this.request == null) {
-        throw new IllegalStateException("request == null");
-      }
-      return new UploadResponse(this, null);
-    }
-    
-    public Builder code(int paramInt)
-    {
-      this.code = paramInt;
-      return this;
-    }
-    
-    public Builder currentSize(long paramLong)
-    {
-      this.currentSize = paramLong;
-      return this;
-    }
-    
-    public Builder errMsg(String paramString)
-    {
-      this.errMsg = paramString;
-      return this;
-    }
-    
-    public Builder request(UploadRequest paramUploadRequest)
-    {
-      this.request = paramUploadRequest;
-      return this;
-    }
-    
-    public Builder speed(long paramLong)
-    {
-      this.speed = paramLong;
-      return this;
-    }
-    
-    public Builder totalSize(long paramLong)
-    {
-      this.totalSize = paramLong;
-      return this;
-    }
   }
 }
 

@@ -4,61 +4,60 @@ import java.nio.FloatBuffer;
 
 public class Color4f
 {
-  public static final Color4f a;
-  public static final Color4f b;
+  public static final Color4f BLACK = new Color4f(0.0F, 0.0F, 0.0F, 1.0F);
+  public static final Color4f WHITE = new Color4f(1.0F, 1.0F, 1.0F, 1.0F);
   private float a;
   private float b;
-  private float c;
-  private float d;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineColor4f = new Color4f(0.0F, 0.0F, 0.0F, 1.0F);
-    jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineColor4f = new Color4f(1.0F, 1.0F, 1.0F, 1.0F);
-  }
+  private float g;
+  private float r;
   
   public Color4f(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.c = paramFloat3;
-    this.d = paramFloat4;
+    this.r = paramFloat1;
+    this.g = paramFloat2;
+    this.b = paramFloat3;
+    this.a = paramFloat4;
   }
   
-  public float a()
+  public float getAlpha()
   {
-    return this.jdField_a_of_type_Float;
+    return this.a;
   }
   
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public float getBlue()
   {
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.c = paramFloat3;
-    this.d = paramFloat4;
+    return this.b;
   }
   
-  public void a(FloatBuffer paramFloatBuffer)
+  public float getGreen()
   {
-    paramFloatBuffer.put(this.jdField_a_of_type_Float);
-    paramFloatBuffer.put(this.jdField_b_of_type_Float);
-    paramFloatBuffer.put(this.c);
-    paramFloatBuffer.put(this.d);
+    return this.g;
   }
   
-  public float b()
+  public float[] getPremultipliedRGBComponents()
   {
-    return this.jdField_b_of_type_Float;
+    return new float[] { this.r * this.a, this.g * this.a, this.b * this.a, this.a };
   }
   
-  public float c()
+  public float getRed()
   {
-    return this.c;
+    return this.r;
   }
   
-  public float d()
+  public void putValue(FloatBuffer paramFloatBuffer)
   {
-    return this.d;
+    paramFloatBuffer.put(this.r);
+    paramFloatBuffer.put(this.g);
+    paramFloatBuffer.put(this.b);
+    paramFloatBuffer.put(this.a);
+  }
+  
+  public void setValue(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    this.r = paramFloat1;
+    this.g = paramFloat2;
+    this.b = paramFloat3;
+    this.a = paramFloat4;
   }
 }
 

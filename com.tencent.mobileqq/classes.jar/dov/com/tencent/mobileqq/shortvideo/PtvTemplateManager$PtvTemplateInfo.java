@@ -3,8 +3,8 @@ package dov.com.tencent.mobileqq.shortvideo;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
+import awrn;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,16 +21,23 @@ public class PtvTemplateManager$PtvTemplateInfo
   public static final int Category_Gesture = 1;
   public static final int D3D_TK = 1;
   public static final int DG_FILTER = 5;
+  public static final int DISPLAY_TYPE_AR = 2;
+  public static final int DISPLAY_TYPE_AUDIO = 1;
+  public static final int DISPLAY_TYPE_CHANGE_VOICE = 4;
+  public static final int DISPLAY_TYPE_DEFAULT = 0;
+  public static final int DISPLAY_TYPE_WM = 3;
   public static final int DOODLE = 1;
   public static final int DOV_FILTER = 13;
   public static final int FDG_FILTER = 6;
   public static final int FILTER = 0;
   public static final int FOOLS_DAY = 10;
+  public static int FUNC_REDBAG_GET = 1;
   public static final int LBS_MACDONALD = 1;
   public static final int LBS_NORMAL_FILTER = 0;
   public static final int MOVIE_FILTER = 3;
   public static final int NORMAL = 0;
   public static final int PORTRAIT_FILTER = 7;
+  public static final int QQ_BIG_HEAD = 20;
   public static final int RANDOM_FORTUNE = 9;
   public static final int SHOOK_HEAD = 8;
   static final String SV_FILTER_DOWNLOAD_TIME = "sv_filter_download_time";
@@ -40,8 +47,14 @@ public class PtvTemplateManager$PtvTemplateInfo
   public boolean advertisement;
   public String androidopenurlheader;
   public String badgeurl;
+  public String bigHeadMd5 = "";
+  public boolean bigHeadModelUsable;
+  public String bigHeadName = "";
+  public String bigHeadUrl = "";
   public int businessID;
   public String buttonbgcolor;
+  public String cameraScheme;
+  public String cameraTitle;
   public int category = 0;
   public int categoryId;
   public String dgModelName;
@@ -52,8 +65,11 @@ public class PtvTemplateManager$PtvTemplateInfo
   public String dgStageResmd5;
   public String dgStageResurl;
   public boolean dgStageUsable;
-  public ArrayList doodleInfos;
+  public int displayType = 0;
+  public ArrayList<PtvTemplateManager.DoodleInfo> doodleInfos;
   public boolean downloading;
+  public boolean editablewatermark;
+  public int funcType;
   public String gestureType = "";
   public String gestureWording = "";
   public String iconurl;
@@ -66,6 +82,8 @@ public class PtvTemplateManager$PtvTemplateInfo
   public boolean needRedDot;
   public String openurl;
   public int platform;
+  public String playShowCoverImg;
+  public String playShowDisplayText;
   public boolean popup = true;
   public String popupbtn;
   public String popupbtn2;
@@ -75,13 +93,13 @@ public class PtvTemplateManager$PtvTemplateInfo
   public boolean predownload;
   public String resurl;
   public double sizeFree;
-  long startDownloadTime;
+  public long startDownloadTime;
   public String storeurl;
   public int templateStyle;
   public long totalLen;
   public boolean usable;
   
-  public static List convertFrom(String paramString)
+  public static List<PtvTemplateInfo> convertFrom(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
     do
@@ -98,7 +116,7 @@ public class PtvTemplateManager$PtvTemplateInfo
     return null;
   }
   
-  public static List convertFrom(JSONArray paramJSONArray)
+  public static List<PtvTemplateInfo> convertFrom(JSONArray paramJSONArray)
   {
     if (paramJSONArray == null) {
       return null;
@@ -216,6 +234,15 @@ public class PtvTemplateManager$PtvTemplateInfo
       if (paramJSONObject.has("kind")) {
         localPtvTemplateInfo.kind = paramJSONObject.getInt("kind");
       }
+      if (paramJSONObject.has("displayType")) {
+        localPtvTemplateInfo.displayType = paramJSONObject.getInt("displayType");
+      }
+      if (paramJSONObject.has("qq_camera_top_title")) {
+        localPtvTemplateInfo.cameraTitle = paramJSONObject.getString("qq_camera_top_title");
+      }
+      if (paramJSONObject.has("qq_camera_scheme")) {
+        localPtvTemplateInfo.cameraScheme = paramJSONObject.getString("qq_camera_scheme");
+      }
       if (paramJSONObject.has("activityType")) {
         localPtvTemplateInfo.activityType = paramJSONObject.getInt("activityType");
       }
@@ -273,6 +300,9 @@ public class PtvTemplateManager$PtvTemplateInfo
       if (paramJSONObject.has("jump_app")) {
         localPtvTemplateInfo.jump_app = paramJSONObject.getString("jump_app");
       }
+      if (paramJSONObject.has("funcType")) {
+        localPtvTemplateInfo.funcType = paramJSONObject.getInt("funcType");
+      }
     }
     catch (Exception paramJSONObject)
     {
@@ -294,7 +324,23 @@ public class PtvTemplateManager$PtvTemplateInfo
     localHashMap.put("timems", "" + (l1 - l2));
     localHashMap.put("totalsize", "" + this.totalLen);
     localHashMap.put("success", "" + this.usable);
-    StatisticCollector.a(VideoEnvironment.a()).a(null, "sv_filter_download_time", true, 0L, 0L, localHashMap, "");
+    awrn.a(VideoEnvironment.a()).a(null, "sv_filter_download_time", true, 0L, 0L, localHashMap, "");
+  }
+  
+  public int getDisplayIconByType()
+  {
+    switch (this.displayType)
+    {
+    default: 
+      return -1;
+    case 1: 
+      return 2130843685;
+    case 2: 
+      return 2130843686;
+    case 3: 
+      return 2130843688;
+    }
+    return 2130843687;
   }
   
   public String getLbsActivityType(int paramInt)
@@ -334,6 +380,11 @@ public class PtvTemplateManager$PtvTemplateInfo
   public boolean isWsBanner()
   {
     return this.kind == 12;
+  }
+  
+  public boolean needDisplayType()
+  {
+    return this.displayType != 0;
   }
   
   public String toString()

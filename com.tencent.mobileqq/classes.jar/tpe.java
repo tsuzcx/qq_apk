@@ -1,22 +1,41 @@
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 
-class tpe
-  implements Runnable
+public class tpe
+  extends JobSegment<String, String>
 {
-  tpe(tpd paramtpd) {}
+  private tpe(VideoViewVideoHolder paramVideoViewVideoHolder) {}
   
-  public void run()
+  protected void a(JobContext paramJobContext, String paramString)
   {
-    ReportController.b(this.a.a.app, "dc00898", "", "", "0X8007914", "0X8007914", 0, 0, this.a.a.app.getCurrentAccountUin(), "", "", "");
-    HttpDownloadUtil.a("http://qqwx.qq.com/s?aid=index&g_f=429&mType=QQSpaceClean", this.a.a);
+    this.a.jdField_a_of_type_Tqg.a(null);
+    this.a.jdField_a_of_type_Tqg.a(null);
+    this.a.jdField_a_of_type_Tqg.a(null);
+    this.a.jdField_a_of_type_Tqg.a(null);
+    this.a.jdField_a_of_type_Tqg.a(null);
+    if (VideoViewVideoHolder.f(this.a) == 0)
+    {
+      urk.d(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. already idle state");
+      notifyResult(paramString);
+      return;
+    }
+    if (VideoViewVideoHolder.f(this.a) < 7)
+    {
+      urk.d(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. change to idle directly");
+      VideoViewVideoHolder.a(this.a, 0);
+      notifyResult(paramString);
+      return;
+    }
+    urk.b(this.a.jdField_a_of_type_JavaLangString, "VideoIdleSegment. stop video view");
+    this.a.jdField_a_of_type_Tqg.a();
+    VideoViewVideoHolder.a(this.a, 0);
+    notifyResult(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tpe
  * JD-Core Version:    0.7.0.1
  */

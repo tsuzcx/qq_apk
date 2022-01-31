@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class BypassInterceptConfig
   extends JceStruct
 {
-  static ArrayList<String> a = new ArrayList();
+  static ArrayList<String> cache_pkgList = new ArrayList();
   public ArrayList<String> pkgList = null;
   public int status = 0;
   
   static
   {
-    a.add("");
+    cache_pkgList.add("");
   }
   
   public BypassInterceptConfig() {}
@@ -28,7 +28,7 @@ public final class BypassInterceptConfig
   public void readFrom(JceInputStream paramJceInputStream)
   {
     this.status = paramJceInputStream.read(this.status, 0, true);
-    this.pkgList = ((ArrayList)paramJceInputStream.read(a, 1, true));
+    this.pkgList = ((ArrayList)paramJceInputStream.read(cache_pkgList, 1, true));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -39,7 +39,7 @@ public final class BypassInterceptConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmassistant.common.jce.BypassInterceptConfig
  * JD-Core Version:    0.7.0.1
  */

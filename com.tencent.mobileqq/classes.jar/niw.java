@@ -1,25 +1,24 @@
-import com.tencent.biz.qqstory.msgTabNode.network.MsgTabStoryVideoPreloader.OnPreloaderListener;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.2;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview;
 
 public class niw
-  implements MsgTabStoryVideoPreloader.OnPreloaderListener
+  implements Animation.AnimationListener
 {
-  private long jdField_a_of_type_Long;
+  public niw(ReadInJoyNaviController.2 param2) {}
   
-  public niw(MsgTabStoryNodeDelegate paramMsgTabStoryNodeDelegate) {}
-  
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    nit.a(this.a.this$0, true);
+    nit.a(this.a.this$0).setAlpha(0.0F);
+    nit.a(this.a.this$0).removeView(nit.a(this.a.this$0));
   }
   
-  public void b()
-  {
-    if (this.jdField_a_of_type_Long != 0L) {
-      StoryReportor.b("msgtab", "preload_time", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), 0, new String[0]);
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

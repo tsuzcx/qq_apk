@@ -2,6 +2,7 @@ package com.tencent.component.media.gif;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
+import android.os.Handler;
 import com.tencent.component.media.ILog;
 import com.tencent.component.media.ImageManagerEnv;
 import com.tencent.sharpP.SharpPGifDecoder;
@@ -9,19 +10,21 @@ import com.tencent.sharpP.SharpPGifDecoder;
 public class SharpPNewGifDecoder
   implements NewGifDecoder
 {
-  private float jdField_a_of_type_Float = 1.0F;
-  private int jdField_a_of_type_Int = 0;
-  private SharpPGifDecoder jdField_a_of_type_ComTencentSharpPSharpPGifDecoder;
-  private boolean jdField_a_of_type_Boolean = false;
+  private static final String TAG = "SharpPNewGifDecoder";
+  private boolean isRecycled = false;
+  private Handler mCtrlHandler = new Handler(ImageManagerEnv.g().getDispatcher());
+  private int mCurFrameIndex = 0;
+  private SharpPGifDecoder mDecoder;
+  private float speedFactor = 1.0F;
   
   public SharpPNewGifDecoder(String paramString)
   {
-    this.jdField_a_of_type_ComTencentSharpPSharpPGifDecoder = new SharpPGifDecoder(paramString);
+    this.mDecoder = new SharpPGifDecoder(paramString);
   }
   
   public SharpPNewGifDecoder(String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentSharpPSharpPGifDecoder = new SharpPGifDecoder(paramString, paramInt1, paramInt2);
+    this.mDecoder = new SharpPGifDecoder(paramString, paramInt1, paramInt2);
   }
   
   public void changeFile(String paramString) {}
@@ -33,12 +36,12 @@ public class SharpPNewGifDecoder
   
   public Bitmap.Config getAcceptableConfig()
   {
-    return this.jdField_a_of_type_ComTencentSharpPSharpPGifDecoder.a();
+    return this.mDecoder.getAcceptableBitmapConfig();
   }
   
   public long getAllocationByteCount()
   {
-    return this.jdField_a_of_type_ComTencentSharpPSharpPGifDecoder.i();
+    return this.mDecoder.getAllocationByteCount();
   }
   
   public String getComment()
@@ -48,17 +51,17 @@ public class SharpPNewGifDecoder
   
   public int getCurrentFrameIndex()
   {
-    return this.jdField_a_of_type_ComTencentSharpPSharpPGifDecoder.c();
+    return this.mDecoder.getCurFrameIndex();
   }
   
   public int getCurrentLoop()
   {
-    return this.jdField_a_of_type_ComTencentSharpPSharpPGifDecoder.h();
+    return this.mDecoder.getCurrentLoop();
   }
   
   public int getCurrentPosition()
   {
-    return this.jdField_a_of_type_ComTencentSharpPSharpPGifDecoder.c();
+    return this.mDecoder.getCurFrameIndex();
   }
   
   public int getDuration()
@@ -73,17 +76,17 @@ public class SharpPNewGifDecoder
   
   public int getFrameCount()
   {
-    return this.jdField_a_of_type_ComTencentSharpPSharpPGifDecoder.f();
+    return this.mDecoder.getFrameCount();
   }
   
   public int getFrameDuration(int paramInt)
   {
-    return this.jdField_a_of_type_ComTencentSharpPSharpPGifDecoder.b();
+    return this.mDecoder.getCurFrameDuration();
   }
   
   public int getHeight()
   {
-    return this.jdField_a_of_type_ComTencentSharpPSharpPGifDecoder.e();
+    return this.mDecoder.getDstHeight();
   }
   
   public int getImageCount()
@@ -93,17 +96,17 @@ public class SharpPNewGifDecoder
   
   public int getLoopCount()
   {
-    return this.jdField_a_of_type_ComTencentSharpPSharpPGifDecoder.g();
+    return this.mDecoder.getLoopCount();
   }
   
   public long getSourceLength()
   {
-    return this.jdField_a_of_type_ComTencentSharpPSharpPGifDecoder.a();
+    return this.mDecoder.getSourceLength();
   }
   
   public int getWidth()
   {
-    return this.jdField_a_of_type_ComTencentSharpPSharpPGifDecoder.d();
+    return this.mDecoder.getDstWidth();
   }
   
   public boolean isAnimationCompleted()
@@ -113,15 +116,15 @@ public class SharpPNewGifDecoder
   
   public boolean isRecycled()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.isRecycled;
   }
   
   public NewGifDecoder.GifFrame next(Bitmap paramBitmap)
   {
-    NewGifDecoder.GifFrame localGifFrame = this.jdField_a_of_type_ComTencentSharpPSharpPGifDecoder.a(paramBitmap);
+    NewGifDecoder.GifFrame localGifFrame = this.mDecoder.next(paramBitmap);
     if (localGifFrame != null)
     {
-      localGifFrame.delay = ((int)((float)localGifFrame.delay / this.jdField_a_of_type_Float));
+      localGifFrame.delay = ((int)((float)localGifFrame.delay / this.speedFactor));
       return localGifFrame;
     }
     return new NewGifDecoder.GifFrame(paramBitmap, 200L);
@@ -137,20 +140,20 @@ public class SharpPNewGifDecoder
   public void recycle()
   {
     ImageManagerEnv.getLogger().d("SharpPNewGifDecoder", new Object[] { "recycle" });
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentSharpPSharpPGifDecoder.a();
+    this.isRecycled = true;
+    this.mDecoder.close();
   }
   
   public boolean reset()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = 0;
-    return this.jdField_a_of_type_ComTencentSharpPSharpPGifDecoder.a();
+    this.isRecycled = false;
+    this.mCurFrameIndex = 0;
+    return this.mDecoder.reset();
   }
   
   public Bitmap seekToFrame(int paramInt, Bitmap paramBitmap)
   {
-    return this.jdField_a_of_type_ComTencentSharpPSharpPGifDecoder.a(paramInt, paramBitmap);
+    return this.mDecoder.seekToFrame(paramInt, paramBitmap);
   }
   
   public NewGifDecoder.GifFrame seekToFrameGetTime(int paramInt, Bitmap paramBitmap)
@@ -167,7 +170,7 @@ public class SharpPNewGifDecoder
   
   public void setLoopCount(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentSharpPSharpPGifDecoder.b(paramInt);
+    this.mDecoder.setLoopCount(paramInt);
   }
   
   public void setSpeed(float paramFloat)
@@ -179,20 +182,19 @@ public class SharpPNewGifDecoder
     if (paramFloat < 0.0F) {
       f = 0.0F;
     }
-    this.jdField_a_of_type_Float = f;
+    this.speedFactor = f;
   }
   
   public long start()
   {
-    this.jdField_a_of_type_ComTencentSharpPSharpPGifDecoder.a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Boolean = false;
+    this.mCtrlHandler.post(new SharpPNewGifDecoder.1(this));
     return 0L;
   }
   
   public void stop()
   {
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentSharpPSharpPGifDecoder.c();
-    this.jdField_a_of_type_ComTencentSharpPSharpPGifDecoder.a();
+    this.mCurFrameIndex = this.mDecoder.getCurFrameIndex();
+    this.mDecoder.close();
   }
   
   public void updateFile(String paramString) {}

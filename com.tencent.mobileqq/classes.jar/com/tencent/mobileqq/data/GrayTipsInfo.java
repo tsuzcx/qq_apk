@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class GrayTipsInfo
   implements Serializable
 {
-  public ArrayList spans;
+  public ArrayList<GrayTipsSpan> spans;
   public String text;
 }
 

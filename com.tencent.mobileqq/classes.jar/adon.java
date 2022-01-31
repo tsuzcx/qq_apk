@@ -1,41 +1,22 @@
-import com.tencent.mobileqq.filemanager.settings.FMSettings;
-import java.io.File;
+import android.text.TextUtils;
+import com.tencent.mobileqq.customviews.VideoProgressView;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class adon
-  implements Runnable
+class adon
+  implements bbjy
 {
-  public adon(FMSettings paramFMSettings, String paramString) {}
+  adon(adoi paramadoi, ados paramados) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    try
-    {
-      Object localObject = new File(this.jdField_a_of_type_JavaLangString);
-      if (!((File)localObject).exists()) {
-        return;
-      }
-      if (((File)localObject).isDirectory())
-      {
-        localObject = ((File)localObject).listFiles();
-        if ((localObject != null) && (localObject.length != 0))
-        {
-          int j = localObject.length;
-          int i = 0;
-          while (i < j)
-          {
-            localObject[i].delete();
-            i += 1;
-          }
-        }
-      }
-      return;
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Ados.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Ados.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+      this.jdField_a_of_type_Ados.jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setVisibility(8);
     }
-    catch (Exception localException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adon
  * JD-Core Version:    0.7.0.1
  */

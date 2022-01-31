@@ -2,7 +2,7 @@ package com.tencent.mobileqq.shortvideo.resource;
 
 public abstract interface BeautyResource
 {
-  public abstract String a();
+  public abstract String getBeautyFilePath();
 }
 
 

@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.activity.aio.item.DetectableAnimationDrawable;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
 public class vas
-  implements Runnable
+  implements vbk
 {
-  public vas(DetectableAnimationDrawable paramDetectableAnimationDrawable) {}
+  public vas(DoodleLayout paramDoodleLayout) {}
   
-  public void run()
+  public void a()
   {
-    this.a.a();
+    if (this.a.a != null) {
+      this.a.a.f();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vas
  * JD-Core Version:    0.7.0.1
  */

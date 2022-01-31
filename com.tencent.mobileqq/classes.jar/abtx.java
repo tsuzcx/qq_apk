@@ -1,27 +1,33 @@
-import android.app.Dialog;
+import android.text.Editable;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
+import android.view.View.OnFocusChangeListener;
+import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.SubLoginActivity;
 
 public class abtx
-  implements View.OnClickListener
+  implements View.OnFocusChangeListener
 {
-  public abtx(BusinessCardEditActivity paramBusinessCardEditActivity, String paramString) {}
+  public abtx(SubLoginActivity paramSubLoginActivity) {}
   
-  public void onClick(View paramView)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.jdField_a_of_type_AndroidAppDialog.isShowing()))
+    if (true == paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.jdField_a_of_type_AndroidAppDialog.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.jdField_a_of_type_AndroidAppDialog = null;
+      if ((SubLoginActivity.a(this.a) != null) && (SubLoginActivity.a(this.a).getText().length() > 0)) {
+        SubLoginActivity.a(this.a).setVisibility(0);
+      }
+      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
     }
-    this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setEllipsisText(this.jdField_a_of_type_JavaLangString);
+    while ((SubLoginActivity.a(this.a) == null) || (!SubLoginActivity.a(this.a).isShown())) {
+      return;
+    }
+    SubLoginActivity.a(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abtx
  * JD-Core Version:    0.7.0.1
  */

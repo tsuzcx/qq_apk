@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.persistence.fts;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.utils.fts.SQLiteFTSUtils;
+import bakq;
 
 public abstract class FTSEntity
 {
@@ -37,6 +37,7 @@ public abstract class FTSEntity
   public int mProximityEnd = -1;
   public int mProximityStart = -1;
   public int mSearchScene;
+  public int mSegmentCount;
   public int mType = -1;
   
   public FTSEntity() {}
@@ -97,9 +98,9 @@ public abstract class FTSEntity
     this.mOpt = 16;
   }
   
-  public abstract void doDeserialize();
+  protected abstract void doDeserialize();
   
-  public abstract void doSerialize();
+  protected abstract void doSerialize();
   
   public abstract String getTableName();
   
@@ -119,11 +120,15 @@ public abstract class FTSEntity
   
   public void preWrite()
   {
-    if ((this.mContent == null) || (TextUtils.isEmpty(this.mContent))) {}
-    for (this.mContentIndex = null;; this.mContentIndex = SQLiteFTSUtils.a(this.mContent))
+    if ((this.mContent == null) || (TextUtils.isEmpty(this.mContent))) {
+      this.mContentIndex = null;
+    }
+    for (;;)
     {
       doSerialize();
       return;
+      this.mContentIndex = bakq.a(this.mContent);
+      this.mSegmentCount += bakq.a(this.mContentIndex);
     }
   }
   
@@ -134,7 +139,8 @@ public abstract class FTSEntity
       this.mContentIndex = null;
       return;
     }
-    this.mContentIndex = SQLiteFTSUtils.a(this.mContent);
+    this.mContentIndex = bakq.a(this.mContent);
+    this.mSegmentCount += bakq.a(this.mContentIndex);
   }
   
   public void preWriteTwo()

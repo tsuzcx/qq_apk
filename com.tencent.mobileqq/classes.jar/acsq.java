@@ -1,17 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import msg.aio_doodle.DoodleMsgProto.DoodleData;
+import msg.aio_doodle.DoodleMsgProto.DoodleHeader;
 
-public class acsq
-  implements DialogInterface.OnClickListener
+public abstract interface acsq
 {
-  public acsq(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  public abstract boolean a(DoodleMsgProto.DoodleData paramDoodleData);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract boolean a(DoodleMsgProto.DoodleHeader paramDoodleHeader);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acsq
  * JD-Core Version:    0.7.0.1
  */

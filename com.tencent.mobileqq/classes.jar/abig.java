@@ -1,63 +1,44 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashView;
-import com.tencent.mobileqq.armap.wealthgod.WealthGodInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class abig
-  implements Runnable
+public class abig
+  extends apqw
 {
-  abig(abif paramabif) {}
+  public abig(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, String paramString)
   {
-    int i = 0;
-    int j = 0;
-    if (ARMapActivity.a(this.a.a) != null)
-    {
-      ARMapActivity.k(this.a.a, true);
-      ARMapActivity.a(this.a.a).setLoadStatus(0);
-      if (ARMapActivity.a(this.a.a) != null) {
-        ARMapActivity.a(this.a.a).b = System.currentTimeMillis();
-      }
-      ARMapActivity.o(this.a.a);
-      if (ARMapActivity.c(this.a.a) == 3)
-      {
-        ARMapActivity.a(this.a.a).b();
-        ARMapActivity.p(this.a.a);
-        if (j == 0) {
-          break label302;
-        }
-        this.a.a.n();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, "onBandIntimateRelationship");
     }
-    else
-    {
+    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.a.a))) {
+      QLog.d("intimate_relationship", 1, String.format("onBandIntimateRelationship return, friendUin: %s", new Object[] { paramString }));
+    }
+    while (!paramBoolean) {
       return;
     }
-    if ((ARMapActivity.c(this.a.a) == 1) || (ARMapActivity.c(this.a.a) == 7) || ((ARMapActivity.c(this.a.a) == 4) && (ARMapActivity.a(this.a.a).a == 1))) {
-      i = 1;
+    ProfileCardMoreActivity.a(this.a);
+  }
+  
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, "ProfileCard onDisbandIntimateRelationship");
     }
-    for (;;)
-    {
-      j = i;
-      if (!this.a.a.f) {
-        break;
-      }
-      ARMapActivity.p(this.a.a);
-      j = i;
-      break;
-      if ((ARMapActivity.c(this.a.a) == 2) || ((ARMapActivity.c(this.a.a) == 4) && (ARMapActivity.a(this.a.a).a == 0))) {
-        ARMapActivity.a(this.a.a).b();
-      } else {
-        ARMapActivity.a(this.a.a).a();
-      }
+    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.a.a))) {
+      QLog.d("intimate_relationship", 1, String.format("ProfileCard onDisbandIntimateRelationship, friendUin: %s", new Object[] { paramString }));
     }
-    label302:
-    ARMapActivity.a(this.a.a).d();
+    while (!paramBoolean1) {
+      return;
+    }
+    ProfileCardMoreActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abig
  * JD-Core Version:    0.7.0.1
  */

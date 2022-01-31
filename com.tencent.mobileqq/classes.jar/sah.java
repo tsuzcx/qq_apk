@@ -1,35 +1,39 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Build.VERSION;
+import android.os.HandlerThread;
 
-public final class sah
-  implements DialogInterface.OnClickListener
+public class sah
 {
-  public sah(QQAppInterface paramQQAppInterface, Context paramContext, ChatActivityUtils.StartVideoListener paramStartVideoListener, int paramInt) {}
+  private HandlerThread a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public HandlerThread a()
   {
-    paramDialogInterface.dismiss();
-    PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, 2, 12);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener.a();
+    if (this.a == null) {
+      this.a = new HandlerThread("WeishiHandlerThread");
     }
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (this.jdField_a_of_type_Int == 6) {}
-    for (paramInt = 1;; paramInt = 4)
+    return this.a;
+  }
+  
+  public void a()
+  {
+    if (this.a != null)
     {
-      ReportController.b(paramDialogInterface, "CliOper", "", "", "0X80063F9", "0X80063F9", paramInt, 0, "", "", "", "");
+      if (Build.VERSION.SDK_INT < 18) {
+        break label29;
+      }
+      this.a.quitSafely();
+    }
+    for (;;)
+    {
+      this.a = null;
       return;
+      label29:
+      this.a.quit();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sah
  * JD-Core Version:    0.7.0.1
  */

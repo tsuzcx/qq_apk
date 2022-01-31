@@ -1,18 +1,23 @@
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.data.Emoticon;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class acnr
+public final class acnr
+  implements Parcelable.Creator<SessionInfo>
 {
-  public ProgressBar a;
-  public RelativeLayout a;
-  public URLImageView a;
-  public Emoticon a;
+  public SessionInfo a(Parcel paramParcel)
+  {
+    return new SessionInfo(paramParcel);
+  }
+  
+  public SessionInfo[] a(int paramInt)
+  {
+    return new SessionInfo[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acnr
  * JD-Core Version:    0.7.0.1
  */

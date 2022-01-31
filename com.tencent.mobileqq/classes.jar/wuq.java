@@ -1,21 +1,18 @@
-import android.view.View;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-
-public class wuq
-  implements Runnable
+class wuq
+  implements wpy
 {
-  public wuq(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  wuq(wuh paramwuh, Runnable paramRunnable) {}
   
-  public void run()
+  public void a()
   {
-    EmoticonGroupStoreFragment.a(this.a).setVisibility(8);
-    EmoticonGroupStoreFragment.c(this.a).setVisibility(0);
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wuq
  * JD-Core Version:    0.7.0.1
  */

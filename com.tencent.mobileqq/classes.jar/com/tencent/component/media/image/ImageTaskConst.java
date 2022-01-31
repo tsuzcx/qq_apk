@@ -9,6 +9,7 @@ public class ImageTaskConst
   public static final String FAIL_CODE = "failCode";
   public static final String FILE_PATH = "filePath";
   public static final int IMAGE_TASK_DECODE_EXCEPTION = 110;
+  public static final int IMAGE_TASK_DECODE_GET_ANIMATEDWEBP_DRAWABLE_THROWABLE = 113;
   public static final int IMAGE_TASK_DECODE_GET_PHOTO_GIF_DRAWABLE_FAILED = 106;
   public static final int IMAGE_TASK_DECODE_GIF_DRAWABLE_FIALED = 107;
   public static final int IMAGE_TASK_DECODE_NORMAL_IMAGE_THROWABLE = 112;

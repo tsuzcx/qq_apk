@@ -3,10 +3,12 @@ package mqq.app;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Handler.Callback;
@@ -14,211 +16,211 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
+import android.support.v4.util.ArraySet;
 import android.text.TextUtils;
 import android.util.Pair;
+import com.tencent.mobileqq.msf.core.MsfExitReceiver;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.msf.sdk.MsfServiceSdk;
 import com.tencent.mobileqq.msf.sdk.utils.MonitorSocketStat;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
 import java.util.Queue;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.util.WeakReference;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public abstract class MobileQQ
   extends BaseApplication
   implements Handler.Callback
 {
   public static final String ACTION_MAIN_PROCESS_ALIVE = "com.tencent.mobileqq__alive";
+  public static final String ACTION_PROCESS_EXIT = "com.tencent.process.exit";
   public static final int BROADCAST_INFO_LIST_SIZE = 5;
+  private static final ArraySet<String> BROADCAST_WHITE_LIST = new ArraySet();
   public static final String KEY_UIN = "uin";
   private static final int MSG_ACCOUNT = 1;
   protected static final int MSG_LAST_UIN = 3;
   private static final int MSG_MONITOR = 2;
   public static final String PACKAGE_NAME = "com.tencent.mobileqq";
+  private static final String[] PERMS = { "android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.READ_PHONE_STATE" };
+  public static final String PREF_BROADCAST = "broadcast_white_pref";
   private static final String PREF_KEY = "currentAccount";
   private static final String PREF_SHARE = "share";
+  public static final String PREF_WHITE_LIST_KEY = "white_list";
   private static final String PROPERTY_NAME = "Properties";
   public static final int STATE_EMPTY = 1;
   public static final int STATE_INITING = 2;
   public static final int STATE_READY = 3;
+  private static boolean hasInit;
   private static boolean hasTryExit;
   public static String processName;
+  private static volatile boolean sHasPhonePermission;
+  private static volatile boolean sHasSDCardPermission;
   public static String sInjectResult;
   public static boolean sIsToolProc;
   public static MobileQQ sMobileQQ;
+  public static final ConcurrentHashMap<String, Boolean> sModuleLoaded = new ConcurrentHashMap();
   private boolean accountChanged;
   private final List<WeakReference<BaseActivity>> activitys = new ArrayList();
   public final ArrayList<WeakReference<AppActivity>> appActivities = new ArrayList();
   protected final ArrayList<WeakReference<AppService>> appServices = new ArrayList();
-  public Queue<Pair<Long, String>> broadcastInfoQueue = new LinkedList();
-  private Runnable doExit = new Runnable()
-  {
-    public void run()
-    {
-      if ((MobileQQ.this.activitys.isEmpty()) && (MobileQQ.this.appActivities.isEmpty()) && (MobileQQ.this.otherTypeActivitys.isEmpty()))
-      {
-        localObject1 = new Intent("mqq.intent.action.EXIT_" + MobileQQ.processName);
-        MobileQQ.this.sendBroadcast((Intent)localObject1);
-        if (MobileQQ.this.getProcessName().endsWith(":video"))
-        {
-          MobileQQ.this.mService.msfSub.unbindMsfService();
-          MobileQQ.this.mAppRuntime.onDestroy();
-        }
-        MobileQQ.this.mHandler.postDelayed(new Runnable()
-        {
-          public void run()
-          {
-            if (MobileQQ.this.stopMSF)
-            {
-              MobileQQ.this.mService.msfSub.stopMsfService();
-              MobileQQ.killProcess(BaseApplication.getContext(), "com.tencent.mobileqq:MSF");
-            }
-            if (QLog.isColorLevel())
-            {
-              QLog.i("mqq", 2, String.format("Application(%s) exit.", new Object[] { MobileQQ.processName }));
-              QLog.i("mqq", 2, "===========================================================");
-            }
-            System.exit(0);
-          }
-        }, 300L);
-        return;
-      }
-      Object localObject1 = new StringBuffer();
-      Iterator localIterator = MobileQQ.this.activitys.iterator();
-      Object localObject2;
-      while (localIterator.hasNext())
-      {
-        localObject2 = (BaseActivity)((WeakReference)localIterator.next()).get();
-        if (localObject2 != null)
-        {
-          ((StringBuffer)localObject1).append(localObject2.getClass().getSimpleName());
-          ((StringBuffer)localObject1).append(",");
-        }
-      }
-      localIterator = MobileQQ.this.appActivities.iterator();
-      while (localIterator.hasNext())
-      {
-        localObject2 = (AppActivity)((WeakReference)localIterator.next()).get();
-        if (localObject2 != null)
-        {
-          ((StringBuffer)localObject1).append(localObject2.getClass().getSimpleName());
-          ((StringBuffer)localObject1).append(",");
-        }
-      }
-      localIterator = MobileQQ.this.otherTypeActivitys.iterator();
-      while (localIterator.hasNext())
-      {
-        localObject2 = (Activity)((WeakReference)localIterator.next()).get();
-        if (localObject2 != null)
-        {
-          ((StringBuffer)localObject1).append(localObject2.getClass().getSimpleName());
-          ((StringBuffer)localObject1).append(",");
-        }
-      }
-      if ((!MobileQQ.hasTryExit) && (QLog.isColorLevel()))
-      {
-        QLog.i("mqq", 2, "do exit ->" + ((StringBuffer)localObject1).toString());
-        MobileQQ.access$702(true);
-      }
-      ((StringBuffer)localObject1).delete(0, ((StringBuffer)localObject1).length());
-      MobileQQ.this.mHandler.postDelayed(this, 50L);
-    }
-  };
+  public Queue<Pair<Long, String>> broadcastInfoQueue;
+  private Runnable doExit;
   private boolean isCrashed;
   public boolean isPCActive;
+  private ArrayList<AppCallback> mAppCallbacks;
   private AppRuntime mAppRuntime;
-  final Handler mHandler = new Handler(this);
-  private volatile AtomicInteger mRuntimeState = new AtomicInteger(1);
+  final Handler mHandler;
+  private volatile AtomicInteger mRuntimeState;
   private MainService mService;
   protected final ArrayList<WeakReference<Activity>> otherTypeActivitys = new ArrayList();
-  private final Properties properties = new Properties();
-  List<SimpleAccount> sortAccountList = null;
+  private volatile Properties properties;
+  List<SimpleAccount> sortAccountList;
   public String startComponentInfo;
   private boolean stopMSF;
   private boolean stopMsfOnCrash;
   private Handler subHandler;
   
-  private void exit(final boolean paramBoolean1, boolean paramBoolean2)
+  public MobileQQ()
+  {
+    BROADCAST_WHITE_LIST.add("android.intent.action.MEDIA_SCANNER_SCAN_FILE");
+    BROADCAST_WHITE_LIST.add("com.android.launcher.action.INSTALL_SHORTCUT");
+    BROADCAST_WHITE_LIST.add("android.intent.action.APPLICATION_MESSAGE_UPDATE");
+    BROADCAST_WHITE_LIST.add("com.tencent.qlauncher.action.ACTION_UPDATE_SHORTCUT");
+    BROADCAST_WHITE_LIST.add("android.intent.action.BADGE_COUNT_UPDATE");
+    BROADCAST_WHITE_LIST.add("com.sonyericsson.home.action.UPDATE_BADGE");
+    BROADCAST_WHITE_LIST.add("launcher.action.CHANGE_APPLICATION_NOTIFICATION_NUM");
+    BROADCAST_WHITE_LIST.add("com.miui.util.LongScreenshotUtils.LongScreenshot");
+    this.broadcastInfoQueue = new LinkedList();
+    this.mRuntimeState = new AtomicInteger(1);
+    this.mHandler = new Handler(this);
+    this.mAppCallbacks = new ArrayList();
+    this.doExit = new MobileQQ.3(this);
+    this.sortAccountList = null;
+  }
+  
+  public static void addBroadcastWhitList(Collection<String> paramCollection)
+  {
+    if (paramCollection != null) {
+      synchronized (BROADCAST_WHITE_LIST)
+      {
+        BROADCAST_WHITE_LIST.addAll(paramCollection);
+        return;
+      }
+    }
+  }
+  
+  private void ensureInitProperty()
+  {
+    Object localObject4;
+    if (this.properties == null) {
+      for (;;)
+      {
+        Properties localProperties;
+        Object localObject1;
+        FileInputStream localFileInputStream;
+        try
+        {
+          if (this.properties == null)
+          {
+            localProperties = new Properties();
+            localObject4 = null;
+            localObject1 = null;
+          }
+        }
+        finally {}
+        try
+        {
+          localFileInputStream = openFileInput("Properties");
+          localObject1 = localFileInputStream;
+          localObject4 = localFileInputStream;
+          localProperties.load(localFileInputStream);
+          if (localFileInputStream == null) {}
+        }
+        catch (Exception localException)
+        {
+          localObject4 = localObject2;
+          QLog.e("mqq", 1, "", localException);
+          if (localObject2 == null) {
+            continue;
+          }
+          try
+          {
+            localObject2.close();
+          }
+          catch (IOException localIOException2)
+          {
+            localIOException2.printStackTrace();
+          }
+          continue;
+        }
+        finally
+        {
+          if (localObject4 == null) {
+            break label118;
+          }
+          try
+          {
+            localObject4.close();
+            throw localObject3;
+          }
+          catch (IOException localIOException3)
+          {
+            for (;;)
+            {
+              localIOException3.printStackTrace();
+            }
+          }
+        }
+        try
+        {
+          localFileInputStream.close();
+          this.properties = localProperties;
+          return;
+        }
+        catch (IOException localIOException1)
+        {
+          localIOException1.printStackTrace();
+        }
+      }
+    }
+    label118:
+  }
+  
+  private void exit(boolean paramBoolean1, boolean paramBoolean2)
   {
     this.stopMSF = paramBoolean2;
     Object localObject;
-    if (getProcessName().endsWith(":video"))
+    if (getQQProcessName().endsWith(":video"))
     {
       localObject = this.mService.msfSub;
       if (paramBoolean1) {
-        break label126;
+        break label130;
       }
     }
-    label126:
+    label130:
     for (paramBoolean2 = true;; paramBoolean2 = false)
     {
       ((MsfServiceSdk)localObject).unRegisterMsfService(Boolean.valueOf(paramBoolean2));
       this.mService.reportMSFCallBackCost(-1L, true);
       closeAllActivitys();
       QLog.d("mqq", 1, "exit isCrashed=" + this.isCrashed + " stopMsfOnCrash=" + this.stopMsfOnCrash);
-      localObject = new Runnable()
-      {
-        public void run()
-        {
-          try
-          {
-            if (MobileQQ.this.mAppRuntime == null) {
-              MobileQQ.this.waitAppRuntime(null);
-            }
-            if (!MobileQQ.this.getProcessName().endsWith(":video"))
-            {
-              MobileQQ.this.mAppRuntime.onDestroy();
-              if (!paramBoolean1) {
-                MobileQQ.this.mService.msfSub.unRegisterMsfService();
-              }
-              MobileQQ.this.mService.msfSub.unbindMsfService();
-            }
-            if (MobileQQ.this.isCrashed)
-            {
-              Object localObject = new Intent("mqq.intent.action.EXIT_" + MobileQQ.processName);
-              MobileQQ.this.sendBroadcast((Intent)localObject);
-              localObject = MobileQQ.this.getProcessName();
-              if ((((String)localObject).equals("com.tencent.mobileqq")) && (MobileQQ.this.stopMsfOnCrash))
-              {
-                QLog.d("mqq", 1, "stop and kill msf service");
-                MobileQQ.this.mService.msfSub.stopMsfService();
-                MobileQQ.killProcess(BaseApplication.getContext(), "com.tencent.mobileqq:MSF");
-                System.exit(0);
-                return;
-              }
-              if (((String)localObject).endsWith(":video")) {
-                MobileQQ.this.mAppRuntime.onDestroy();
-              }
-              System.exit(0);
-              return;
-            }
-          }
-          catch (Exception localException)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("mqq", 2, "exit exception=" + localException);
-            }
-            System.exit(0);
-            return;
-          }
-          MobileQQ.this.doExit.run();
-        }
-      };
+      localObject = new MobileQQ.1(this, paramBoolean1);
       if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
         break;
       }
@@ -249,143 +251,65 @@ public abstract class MobileQQ
   
   public static boolean killProcess(Context paramContext, String paramString)
   {
-    if ((paramContext == null) || (paramString == null)) {}
-    ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo;
-    do
+    if ((paramContext == null) || (paramString == null)) {
+      return false;
+    }
+    paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
+    if (paramContext != null)
     {
-      while (!paramContext.hasNext())
+      paramContext = paramContext.iterator();
+      while (paramContext.hasNext())
       {
-        do
+        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
+        if (localRunningAppProcessInfo.processName.equals(paramString))
         {
-          return false;
-          paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses();
-        } while (paramContext == null);
-        paramContext = paramContext.iterator();
+          Process.killProcess(localRunningAppProcessInfo.pid);
+          return true;
+        }
       }
-      localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-    } while (!localRunningAppProcessInfo.processName.equals(paramString));
-    Process.killProcess(localRunningAppProcessInfo.pid);
-    return true;
+    }
+    return false;
   }
   
-  private void loadProperites()
+  public static void restrictBroadcast(Intent paramIntent)
   {
-    Object localObject7 = null;
-    Object localObject8 = null;
-    Object localObject1 = null;
-    Object localObject6 = null;
-    for (;;)
-    {
-      try
+    if ((TextUtils.isEmpty(paramIntent.getPackage())) && ((paramIntent.getFlags() & 0x1000000) == 0)) {
+      synchronized (BROADCAST_WHITE_LIST)
       {
-        localFileInputStream = openFileInput("Properties");
-        localObject6 = localFileInputStream;
-        localObject7 = localFileInputStream;
-        localObject8 = localFileInputStream;
-        localObject1 = localFileInputStream;
-        this.properties.load(localFileInputStream);
-      }
-      catch (FileNotFoundException localFileNotFoundException)
-      {
-        FileInputStream localFileInputStream;
-        Object localObject2 = localObject6;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        localObject2 = localObject6;
-        QLog.d("mqq", 2, "can not loadProperites => file not found");
-        localObject2 = localObject6;
-        localFileNotFoundException.printStackTrace();
-        if (localObject6 == null) {
-          continue;
-        }
-        try
+        boolean bool = hasInit;
+        if (!bool)
         {
-          localObject6.close();
-          return;
+          try
+          {
+            Object localObject = getContext().getSharedPreferences("broadcast_white_pref", 4).getString("white_list", null);
+            if (localObject != null)
+            {
+              localObject = new JSONObject((String)localObject).getJSONArray("white_list");
+              int i = 0;
+              while (i < ((JSONArray)localObject).length())
+              {
+                BROADCAST_WHITE_LIST.add(((JSONArray)localObject).optString(i, ""));
+                i += 1;
+              }
+            }
+            if (BROADCAST_WHITE_LIST.contains(paramIntent.getAction())) {
+              break label151;
+            }
+          }
+          catch (Throwable localThrowable)
+          {
+            hasInit = true;
+          }
         }
-        catch (IOException localIOException2)
+        else
         {
-          localIOException2.printStackTrace();
-          return;
+          paramIntent.setPackage("com.tencent.mobileqq");
+          if (QLog.isColorLevel()) {
+            QLog.i("mqq", 2, "sending broadcast without package");
+          }
         }
-      }
-      catch (IOException localIOException6)
-      {
-        Object localObject3 = localObject7;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        localObject3 = localObject7;
-        QLog.d("mqq", 2, "can not loadProperites => IOException");
-        localObject3 = localObject7;
-        localIOException6.printStackTrace();
-        if (localObject7 == null) {
-          continue;
-        }
-        try
-        {
-          localObject7.close();
-          return;
-        }
-        catch (IOException localIOException3)
-        {
-          localIOException3.printStackTrace();
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        Object localObject4 = localObject8;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        localObject4 = localObject8;
-        QLog.d("mqq", 2, "can not loadProperites ");
-        localObject4 = localObject8;
-        localException.printStackTrace();
-        if (localObject8 == null) {
-          continue;
-        }
-        try
-        {
-          localObject8.close();
-          return;
-        }
-        catch (IOException localIOException4)
-        {
-          localIOException4.printStackTrace();
-          return;
-        }
-      }
-      finally
-      {
-        if (localIOException4 == null) {
-          break label192;
-        }
-      }
-      try
-      {
-        localFileInputStream.close();
+        label151:
         return;
-      }
-      catch (IOException localIOException1)
-      {
-        localIOException1.printStackTrace();
-        return;
-      }
-    }
-    try
-    {
-      localIOException4.close();
-      label192:
-      throw localObject5;
-    }
-    catch (IOException localIOException5)
-    {
-      for (;;)
-      {
-        localIOException5.printStackTrace();
       }
     }
   }
@@ -410,104 +334,7 @@ public abstract class MobileQQ
   
   public void closeAllActivitys()
   {
-    Runnable local2 = new Runnable()
-    {
-      public void run()
-      {
-        try
-        {
-          i = MobileQQ.this.activitys.size();
-          QLog.d("mqq", 1, "closeAllActivitys...BaseActivity count: " + i);
-          i -= 1;
-          if (i < 0) {
-            break label163;
-          }
-          Object localObject1 = (WeakReference)MobileQQ.this.activitys.get(i);
-          if (localObject1 == null) {
-            break label408;
-          }
-          localObject1 = (BaseActivity)((WeakReference)localObject1).get();
-          label75:
-          if (localObject1 == null) {
-            MobileQQ.this.activitys.remove(i);
-          } else if (!((Activity)localObject1).isFinishing()) {
-            ((Activity)localObject1).finish();
-          }
-        }
-        catch (Exception localException)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("mqq", 2, "closeAllActivitys: " + localException.getMessage());
-          }
-        }
-        label145:
-        return;
-        MobileQQ.this.activitys.remove(i);
-        break label401;
-        label163:
-        int i = MobileQQ.this.appActivities.size();
-        QLog.d("mqq", 1, "closeAllActivitys...AppActivity count: " + i);
-        i -= 1;
-        label203:
-        if (i >= 0)
-        {
-          localObject2 = (WeakReference)MobileQQ.this.appActivities.get(i);
-          if (localObject2 == null) {
-            break label420;
-          }
-          localObject2 = (AppActivity)((WeakReference)localObject2).get();
-          label234:
-          if (localObject2 == null) {
-            MobileQQ.this.appActivities.remove(i);
-          } else if (!((Activity)localObject2).isFinishing()) {
-            ((Activity)localObject2).finish();
-          } else {
-            MobileQQ.this.appActivities.remove(i);
-          }
-        }
-        else
-        {
-          i = MobileQQ.this.otherTypeActivitys.size();
-          QLog.d("mqq", 1, "closeAllActivitys...other Activity count: " + i);
-          i -= 1;
-          if (i < 0) {
-            break label430;
-          }
-          localObject2 = (WeakReference)MobileQQ.this.otherTypeActivitys.get(i);
-          if (localObject2 == null) {
-            break label432;
-          }
-        }
-        label322:
-        for (Object localObject2 = (Activity)((WeakReference)localObject2).get();; localObject2 = null)
-        {
-          if (localObject2 == null)
-          {
-            MobileQQ.this.otherTypeActivitys.remove(i);
-          }
-          else if (!((Activity)localObject2).isFinishing())
-          {
-            ((Activity)localObject2).finish();
-          }
-          else
-          {
-            MobileQQ.this.otherTypeActivitys.remove(i);
-            break label425;
-            i -= 1;
-            break;
-            localObject2 = null;
-            break label75;
-            i -= 1;
-            break label203;
-            localObject2 = null;
-            break label234;
-          }
-          i -= 1;
-          break label322;
-          break label145;
-        }
-      }
-    };
+    MobileQQ.2 local2 = new MobileQQ.2(this);
     if (Thread.currentThread() != Looper.getMainLooper().getThread())
     {
       this.mHandler.postAtFrontOfQueue(local2);
@@ -521,125 +348,10 @@ public abstract class MobileQQ
     this.isCrashed = true;
   }
   
-  void createNewRuntime(final SimpleAccount paramSimpleAccount, final boolean paramBoolean1, final boolean paramBoolean2, final int paramInt, final String paramString)
+  void createNewRuntime(SimpleAccount paramSimpleAccount, boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
   {
     QLog.d("MobileQQ", 1, "createNewRuntime, " + paramBoolean2 + paramBoolean1 + paramInt + paramString);
-    paramSimpleAccount = new Runnable()
-    {
-      public void run()
-      {
-        if (MobileQQ.this.mAppRuntime == null) {}
-        for (int i = 1;; i = 0)
-        {
-          localObject1 = MobileQQ.this.createRuntime(MobileQQ.processName, true);
-          if (localObject1 != null) {
-            break;
-          }
-          QLog.i("mqq", 1, MobileQQ.processName + " needn't AppRuntime!");
-          return;
-        }
-        ((AppRuntime)localObject1).init(MobileQQ.this, MobileQQ.this.mService, paramSimpleAccount);
-        if (!MobileQQ.this.getProcessName().endsWith(":video")) {
-          ((AppRuntime)localObject1).getService().msfSub.registerMsfService();
-        }
-        long l3;
-        long l1;
-        long l2;
-        if ((paramSimpleAccount != null) && (paramSimpleAccount.isLogined()))
-        {
-          boolean bool = true;
-          if (paramInt != 2) {
-            bool = ((AppRuntime)localObject1).canAutoLogin(paramSimpleAccount.getUin());
-          }
-          if ((paramBoolean1) || (bool)) {
-            ((AppRuntime)localObject1).setLogined();
-          }
-          QLog.d("MobileQQ", 1, "createNewRuntime, canAutoOK: " + bool);
-          MobileQQ.access$802(MobileQQ.this, ((AppRuntime)localObject1).isLogin());
-          if (!((AppRuntime)localObject1).isLogin()) {
-            break label609;
-          }
-          if (MobileQQ.this.mAppRuntime != null)
-          {
-            MobileQQ.this.mAppRuntime.logout(Constants.LogoutReason.switchAccount, true);
-            MobileQQ.this.mAppRuntime.onDestroy();
-          }
-          if (paramBoolean2)
-          {
-            localObject2 = MobileQQ.this.getFirstSimpleAccount();
-            l3 = System.currentTimeMillis();
-            l1 = l3;
-            if (localObject2 != null) {
-              l2 = l3;
-            }
-          }
-        }
-        try
-        {
-          long l4 = MobileQQ.this.string2Long(MobileQQ.this.getProperty(((SimpleAccount)localObject2).getUin() + Constants.Key._logintime));
-          l1 = l3;
-          if (l3 <= l4)
-          {
-            l3 = l4 + 1L;
-            l1 = l3;
-            l2 = l3;
-            if (QLog.isColorLevel())
-            {
-              l2 = l3;
-              QLog.d("mqq", 2, "CNR account savetime => system time is error..shit");
-              l1 = l3;
-            }
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            localException.printStackTrace();
-            l1 = l2;
-          }
-        }
-        Object localObject2 = ((AppRuntime)localObject1).getAccount();
-        if ((localObject2 != null) && (MobileQQ.this.getProcessName().equals(MobileQQ.this.getPackageName())))
-        {
-          localObject2 = MobileQQ.this.mHandler.obtainMessage(3, localObject2);
-          MobileQQ.this.mHandler.sendMessageDelayed((Message)localObject2, 1000L);
-        }
-        MobileQQ.this.setProperty(((AppRuntime)localObject1).getAccount() + Constants.Key._logintime, String.valueOf(l1));
-        ((AppRuntime)localObject1).onCreate(null);
-        MobileQQ.access$002(MobileQQ.this, (AppRuntime)localObject1);
-        label477:
-        Object localObject1 = MobileQQ.this.mHandler.obtainMessage(1);
-        if (i != 0) {}
-        for (i = 1;; i = 0)
-        {
-          ((Message)localObject1).arg2 = i;
-          ((Message)localObject1).arg1 = paramInt;
-          ((Message)localObject1).obj = paramString;
-          if (Looper.getMainLooper() != Looper.myLooper()) {
-            break label643;
-          }
-          MobileQQ.this.mHandler.dispatchMessage((Message)localObject1);
-          return;
-          if (paramSimpleAccount != null)
-          {
-            QLog.d("MobileQQ", 1, "CNR account != null and account.isLogined =" + paramSimpleAccount.isLogined());
-            break;
-          }
-          QLog.d("MobileQQ", 1, "CNR account == null");
-          break;
-          label609:
-          if (MobileQQ.this.mAppRuntime != null) {
-            break label477;
-          }
-          ((AppRuntime)localObject1).onCreate(null);
-          MobileQQ.access$002(MobileQQ.this, (AppRuntime)localObject1);
-          break label477;
-        }
-        label643:
-        MobileQQ.this.mHandler.sendMessage((Message)localObject1);
-      }
-    };
+    paramSimpleAccount = new MobileQQ.5(this, paramSimpleAccount, paramInt, paramBoolean1, paramBoolean2, paramString);
     if (this.mAppRuntime == null)
     {
       paramSimpleAccount.run();
@@ -762,15 +474,15 @@ public abstract class MobileQQ
       }
     }
     Foreground.updateRuntimeState(this.mAppRuntime);
-    if (getPackageName().equals(getProcessName()))
+    if (getPackageName().equals(getQQProcessName()))
     {
       if (i != 0) {
-        break label594;
+        break label613;
       }
       if (this.accountChanged)
       {
         if (paramBoolean) {
-          break label571;
+          break label590;
         }
         paramLogoutReason = new Intent("mqq.intent.action.ACCOUNT_CHANGED");
         paramLogoutReason.putExtra("account", this.mAppRuntime.getAccount());
@@ -783,13 +495,22 @@ public abstract class MobileQQ
         sendBroadcast(paramLogoutReason);
       }
     }
-    return;
-    label571:
+    try
+    {
+      QIPCServerHelper.getInstance().notifyOnAccountChanged();
+      return;
+    }
+    catch (Exception paramLogoutReason)
+    {
+      QLog.d("mqq", 1, "onAccountChanged", paramLogoutReason);
+      return;
+    }
+    label590:
     paramLogoutReason = new Intent("com.tencent.mobileqq__alive");
     paramLogoutReason.setPackage("com.tencent.mobileqq");
     sendBroadcast(paramLogoutReason);
     return;
-    label594:
+    label613:
     sendBroadcast(new Intent("mqq.intent.action.LOGOUT"));
   }
   
@@ -797,308 +518,309 @@ public abstract class MobileQQ
   public final void doInit(boolean paramBoolean)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: getfield 128	mqq/app/MobileQQ:mRuntimeState	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   4: iconst_1
-    //   5: iconst_2
-    //   6: invokevirtual 519	java/util/concurrent/atomic/AtomicInteger:compareAndSet	(II)Z
-    //   9: ifne +4 -> 13
-    //   12: return
-    //   13: aload_0
-    //   14: getstatic 520	mqq/app/MobileQQ:processName	Ljava/lang/String;
-    //   17: invokevirtual 523	mqq/app/MobileQQ:isNeedMSF	(Ljava/lang/String;)Z
-    //   20: istore_2
-    //   21: ldc 222
-    //   23: iconst_1
-    //   24: new 224	java/lang/StringBuilder
-    //   27: dup
-    //   28: invokespecial 225	java/lang/StringBuilder:<init>	()V
-    //   31: ldc_w 525
-    //   34: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: getstatic 520	mqq/app/MobileQQ:processName	Ljava/lang/String;
-    //   40: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   43: invokevirtual 239	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   46: invokestatic 245	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   49: getstatic 520	mqq/app/MobileQQ:processName	Ljava/lang/String;
-    //   52: ldc_w 527
-    //   55: invokevirtual 193	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   58: ifne +245 -> 303
-    //   61: iload_2
-    //   62: ifeq +241 -> 303
-    //   65: aload_0
-    //   66: invokespecial 529	mqq/app/MobileQQ:loadProperites	()V
-    //   69: aload_0
-    //   70: new 195	mqq/app/MainService
-    //   73: dup
-    //   74: aload_0
-    //   75: aload_0
-    //   76: getstatic 520	mqq/app/MobileQQ:processName	Ljava/lang/String;
-    //   79: invokevirtual 533	mqq/app/MobileQQ:getAppId	(Ljava/lang/String;)I
-    //   82: aload_0
-    //   83: getstatic 520	mqq/app/MobileQQ:processName	Ljava/lang/String;
-    //   86: invokevirtual 536	mqq/app/MobileQQ:getBootBroadcastName	(Ljava/lang/String;)Ljava/lang/String;
-    //   89: iload_1
-    //   90: invokespecial 539	mqq/app/MainService:<init>	(Lmqq/app/MobileQQ;ILjava/lang/String;Z)V
-    //   93: putfield 153	mqq/app/MobileQQ:mService	Lmqq/app/MainService;
-    //   96: aload_0
-    //   97: invokevirtual 185	mqq/app/MobileQQ:getProcessName	()Ljava/lang/String;
-    //   100: ldc 187
-    //   102: invokevirtual 193	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   105: ifne +13 -> 118
-    //   108: aload_0
-    //   109: getfield 153	mqq/app/MobileQQ:mService	Lmqq/app/MainService;
-    //   112: getfield 199	mqq/app/MainService:msfSub	Lcom/tencent/mobileqq/msf/sdk/MsfServiceSdk;
-    //   115: invokevirtual 542	com/tencent/mobileqq/msf/sdk/MsfServiceSdk:initMsfService	()V
-    //   118: aload_0
-    //   119: invokevirtual 545	mqq/app/MobileQQ:getAllAccounts	()Ljava/util/List;
-    //   122: astore_3
-    //   123: aload_3
-    //   124: ifnull +258 -> 382
-    //   127: aload_3
-    //   128: iconst_0
-    //   129: invokeinterface 417 2 0
-    //   134: checkcast 547	com/tencent/qphone/base/remote/SimpleAccount
-    //   137: astore_3
-    //   138: aload_3
-    //   139: astore 4
-    //   141: aload_3
-    //   142: ifnonnull +136 -> 278
-    //   145: ldc 222
-    //   147: iconst_1
-    //   148: ldc_w 549
-    //   151: invokestatic 245	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   154: aload_0
-    //   155: ldc 49
-    //   157: iconst_0
-    //   158: invokevirtual 553	mqq/app/MobileQQ:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   161: astore 6
-    //   163: aload_3
-    //   164: astore 4
-    //   166: aload 6
-    //   168: ifnull +110 -> 278
-    //   171: aload 6
-    //   173: ldc 46
-    //   175: aconst_null
-    //   176: invokeinterface 559 3 0
-    //   181: astore 5
-    //   183: invokestatic 360	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   186: ifeq +30 -> 216
-    //   189: ldc 222
-    //   191: iconst_1
-    //   192: new 224	java/lang/StringBuilder
-    //   195: dup
-    //   196: invokespecial 225	java/lang/StringBuilder:<init>	()V
-    //   199: ldc_w 561
-    //   202: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   205: aload 5
-    //   207: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   210: invokevirtual 239	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   213: invokestatic 245	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   216: aload_3
-    //   217: astore 4
-    //   219: aload 5
-    //   221: ifnull +57 -> 278
-    //   224: aload 6
-    //   226: invokeinterface 565 1 0
-    //   231: ldc 46
-    //   233: invokeinterface 570 2 0
-    //   238: invokeinterface 573 1 0
-    //   243: pop
-    //   244: new 547	com/tencent/qphone/base/remote/SimpleAccount
-    //   247: dup
-    //   248: invokespecial 574	com/tencent/qphone/base/remote/SimpleAccount:<init>	()V
-    //   251: astore 4
-    //   253: aload 4
-    //   255: aload 5
-    //   257: invokevirtual 577	com/tencent/qphone/base/remote/SimpleAccount:setUin	(Ljava/lang/String;)V
-    //   260: aload 4
-    //   262: invokevirtual 580	com/tencent/qphone/base/remote/SimpleAccount:isLogined	()Z
-    //   265: pop
-    //   266: aload 4
-    //   268: ldc_w 582
-    //   271: iconst_1
-    //   272: invokestatic 585	java/lang/String:valueOf	(Z)Ljava/lang/String;
-    //   275: invokevirtual 589	com/tencent/qphone/base/remote/SimpleAccount:setAttribute	(Ljava/lang/String;Ljava/lang/String;)V
-    //   278: iconst_0
-    //   279: istore_1
-    //   280: getstatic 520	mqq/app/MobileQQ:processName	Ljava/lang/String;
-    //   283: ldc 43
-    //   285: invokevirtual 327	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   288: ifeq +5 -> 293
-    //   291: iconst_1
+    //   0: aconst_null
+    //   1: astore 4
+    //   3: iconst_0
+    //   4: istore_2
+    //   5: aload_0
+    //   6: getfield 167	mqq/app/MobileQQ:mRuntimeState	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   9: iconst_1
+    //   10: iconst_2
+    //   11: invokevirtual 637	java/util/concurrent/atomic/AtomicInteger:compareAndSet	(II)Z
+    //   14: ifne +4 -> 18
+    //   17: return
+    //   18: aload_0
+    //   19: getstatic 638	mqq/app/MobileQQ:processName	Ljava/lang/String;
+    //   22: invokevirtual 641	mqq/app/MobileQQ:isNeedMSF	(Ljava/lang/String;)Z
+    //   25: istore_3
+    //   26: ldc_w 257
+    //   29: iconst_1
+    //   30: new 306	java/lang/StringBuilder
+    //   33: dup
+    //   34: invokespecial 307	java/lang/StringBuilder:<init>	()V
+    //   37: ldc_w 643
+    //   40: invokevirtual 313	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   43: getstatic 638	mqq/app/MobileQQ:processName	Ljava/lang/String;
+    //   46: invokevirtual 313	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   49: invokevirtual 321	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   52: invokestatic 325	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   55: getstatic 638	mqq/app/MobileQQ:processName	Ljava/lang/String;
+    //   58: ldc_w 645
+    //   61: invokevirtual 277	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   64: ifne +252 -> 316
+    //   67: iload_3
+    //   68: ifeq +248 -> 316
+    //   71: aload_0
+    //   72: new 279	mqq/app/MainService
+    //   75: dup
+    //   76: aload_0
+    //   77: aload_0
+    //   78: getstatic 638	mqq/app/MobileQQ:processName	Ljava/lang/String;
+    //   81: invokevirtual 649	mqq/app/MobileQQ:getAppId	(Ljava/lang/String;)I
+    //   84: aload_0
+    //   85: getstatic 638	mqq/app/MobileQQ:processName	Ljava/lang/String;
+    //   88: invokevirtual 652	mqq/app/MobileQQ:getBootBroadcastName	(Ljava/lang/String;)Ljava/lang/String;
+    //   91: iload_1
+    //   92: invokespecial 655	mqq/app/MainService:<init>	(Lmqq/app/MobileQQ;ILjava/lang/String;Z)V
+    //   95: putfield 195	mqq/app/MobileQQ:mService	Lmqq/app/MainService;
+    //   98: aload_0
+    //   99: invokevirtual 271	mqq/app/MobileQQ:getQQProcessName	()Ljava/lang/String;
+    //   102: ldc_w 273
+    //   105: invokevirtual 277	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   108: ifne +13 -> 121
+    //   111: aload_0
+    //   112: getfield 195	mqq/app/MobileQQ:mService	Lmqq/app/MainService;
+    //   115: getfield 283	mqq/app/MainService:msfSub	Lcom/tencent/mobileqq/msf/sdk/MsfServiceSdk;
+    //   118: invokevirtual 658	com/tencent/mobileqq/msf/sdk/MsfServiceSdk:initMsfService	()V
+    //   121: aload_0
+    //   122: invokevirtual 661	mqq/app/MobileQQ:getAllAccounts	()Ljava/util/List;
+    //   125: astore 5
+    //   127: aload 5
+    //   129: ifnull +16 -> 145
+    //   132: aload 5
+    //   134: iconst_0
+    //   135: invokeinterface 534 2 0
+    //   140: checkcast 663	com/tencent/qphone/base/remote/SimpleAccount
+    //   143: astore 4
+    //   145: aload 4
+    //   147: astore 5
+    //   149: aload 4
+    //   151: ifnonnull +140 -> 291
+    //   154: ldc_w 257
+    //   157: iconst_1
+    //   158: ldc_w 665
+    //   161: invokestatic 325	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   164: aload_0
+    //   165: ldc 42
+    //   167: iconst_0
+    //   168: invokevirtual 666	mqq/app/MobileQQ:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   171: astore 7
+    //   173: aload 4
+    //   175: astore 5
+    //   177: aload 7
+    //   179: ifnull +112 -> 291
+    //   182: aload 7
+    //   184: ldc 39
+    //   186: aconst_null
+    //   187: invokeinterface 448 3 0
+    //   192: astore 6
+    //   194: invokestatic 477	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   197: ifeq +31 -> 228
+    //   200: ldc_w 257
+    //   203: iconst_1
+    //   204: new 306	java/lang/StringBuilder
+    //   207: dup
+    //   208: invokespecial 307	java/lang/StringBuilder:<init>	()V
+    //   211: ldc_w 668
+    //   214: invokevirtual 313	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   217: aload 6
+    //   219: invokevirtual 313	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   222: invokevirtual 321	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   225: invokestatic 325	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   228: aload 4
+    //   230: astore 5
+    //   232: aload 6
+    //   234: ifnull +57 -> 291
+    //   237: aload 7
+    //   239: invokeinterface 672 1 0
+    //   244: ldc 39
+    //   246: invokeinterface 677 2 0
+    //   251: invokeinterface 680 1 0
+    //   256: pop
+    //   257: new 663	com/tencent/qphone/base/remote/SimpleAccount
+    //   260: dup
+    //   261: invokespecial 681	com/tencent/qphone/base/remote/SimpleAccount:<init>	()V
+    //   264: astore 5
+    //   266: aload 5
+    //   268: aload 6
+    //   270: invokevirtual 684	com/tencent/qphone/base/remote/SimpleAccount:setUin	(Ljava/lang/String;)V
+    //   273: aload 5
+    //   275: invokevirtual 687	com/tencent/qphone/base/remote/SimpleAccount:isLogined	()Z
+    //   278: pop
+    //   279: aload 5
+    //   281: ldc_w 689
+    //   284: iconst_1
+    //   285: invokestatic 692	java/lang/String:valueOf	(Z)Ljava/lang/String;
+    //   288: invokevirtual 696	com/tencent/qphone/base/remote/SimpleAccount:setAttribute	(Ljava/lang/String;Ljava/lang/String;)V
+    //   291: iload_2
     //   292: istore_1
-    //   293: aload_0
-    //   294: aload 4
-    //   296: iconst_0
-    //   297: iload_1
-    //   298: iconst_5
-    //   299: aconst_null
-    //   300: invokevirtual 591	mqq/app/MobileQQ:createNewRuntime	(Lcom/tencent/qphone/base/remote/SimpleAccount;ZZILjava/lang/String;)V
-    //   303: aload_0
-    //   304: new 475	android/content/Intent
-    //   307: dup
-    //   308: new 224	java/lang/StringBuilder
-    //   311: dup
-    //   312: invokespecial 225	java/lang/StringBuilder:<init>	()V
-    //   315: ldc_w 593
-    //   318: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   321: getstatic 520	mqq/app/MobileQQ:processName	Ljava/lang/String;
-    //   324: invokevirtual 231	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   327: invokevirtual 239	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   330: invokespecial 480	android/content/Intent:<init>	(Ljava/lang/String;)V
-    //   333: invokevirtual 504	mqq/app/MobileQQ:sendBroadcast	(Landroid/content/Intent;)V
-    //   336: aload_0
-    //   337: getfield 128	mqq/app/MobileQQ:mRuntimeState	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   340: astore_3
-    //   341: aload_3
-    //   342: monitorenter
-    //   343: aload_0
-    //   344: getfield 128	mqq/app/MobileQQ:mRuntimeState	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   347: iconst_3
-    //   348: invokevirtual 596	java/util/concurrent/atomic/AtomicInteger:set	(I)V
-    //   351: aload_0
-    //   352: getfield 128	mqq/app/MobileQQ:mRuntimeState	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   355: invokevirtual 601	java/lang/Object:notifyAll	()V
-    //   358: aload_3
-    //   359: monitorexit
-    //   360: ldc 222
-    //   362: iconst_1
-    //   363: ldc_w 603
-    //   366: invokestatic 245	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   369: aload_0
-    //   370: getfield 135	mqq/app/MobileQQ:mHandler	Landroid/os/Handler;
-    //   373: iconst_2
-    //   374: ldc2_w 604
-    //   377: invokevirtual 609	android/os/Handler:sendEmptyMessageDelayed	(IJ)Z
-    //   380: pop
-    //   381: return
-    //   382: aconst_null
-    //   383: astore_3
-    //   384: goto -246 -> 138
-    //   387: astore 4
-    //   389: aload_3
-    //   390: monitorexit
-    //   391: aload 4
-    //   393: athrow
-    //   394: astore_3
-    //   395: ldc 222
-    //   397: iconst_1
-    //   398: ldc_w 611
-    //   401: aload_3
-    //   402: invokestatic 615	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   405: new 617	java/lang/RuntimeException
-    //   408: dup
-    //   409: aload_3
-    //   410: invokespecial 620	java/lang/RuntimeException:<init>	(Ljava/lang/Throwable;)V
-    //   413: athrow
-    //   414: astore 4
-    //   416: aload_0
-    //   417: getfield 128	mqq/app/MobileQQ:mRuntimeState	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   420: astore_3
-    //   421: aload_3
-    //   422: monitorenter
-    //   423: aload_0
-    //   424: getfield 128	mqq/app/MobileQQ:mRuntimeState	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   427: iconst_3
-    //   428: invokevirtual 596	java/util/concurrent/atomic/AtomicInteger:set	(I)V
-    //   431: aload_0
-    //   432: getfield 128	mqq/app/MobileQQ:mRuntimeState	Ljava/util/concurrent/atomic/AtomicInteger;
-    //   435: invokevirtual 601	java/lang/Object:notifyAll	()V
-    //   438: aload_3
-    //   439: monitorexit
-    //   440: ldc 222
-    //   442: iconst_1
-    //   443: ldc_w 603
-    //   446: invokestatic 245	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   449: aload_0
-    //   450: getfield 135	mqq/app/MobileQQ:mHandler	Landroid/os/Handler;
-    //   453: iconst_2
-    //   454: ldc2_w 604
-    //   457: invokevirtual 609	android/os/Handler:sendEmptyMessageDelayed	(IJ)Z
-    //   460: pop
-    //   461: aload 4
-    //   463: athrow
-    //   464: astore 4
-    //   466: aload_3
-    //   467: monitorexit
-    //   468: aload 4
-    //   470: athrow
+    //   293: getstatic 638	mqq/app/MobileQQ:processName	Ljava/lang/String;
+    //   296: ldc 31
+    //   298: invokevirtual 406	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   301: ifeq +5 -> 306
+    //   304: iconst_1
+    //   305: istore_1
+    //   306: aload_0
+    //   307: aload 5
+    //   309: iconst_0
+    //   310: iload_1
+    //   311: iconst_5
+    //   312: aconst_null
+    //   313: invokevirtual 698	mqq/app/MobileQQ:createNewRuntime	(Lcom/tencent/qphone/base/remote/SimpleAccount;ZZILjava/lang/String;)V
+    //   316: aload_0
+    //   317: new 419	android/content/Intent
+    //   320: dup
+    //   321: new 306	java/lang/StringBuilder
+    //   324: dup
+    //   325: invokespecial 307	java/lang/StringBuilder:<init>	()V
+    //   328: ldc_w 700
+    //   331: invokevirtual 313	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   334: getstatic 638	mqq/app/MobileQQ:processName	Ljava/lang/String;
+    //   337: invokevirtual 313	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   340: invokevirtual 321	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   343: invokespecial 593	android/content/Intent:<init>	(Ljava/lang/String;)V
+    //   346: invokevirtual 612	mqq/app/MobileQQ:sendBroadcast	(Landroid/content/Intent;)V
+    //   349: aload_0
+    //   350: getfield 167	mqq/app/MobileQQ:mRuntimeState	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   353: astore 4
+    //   355: aload 4
+    //   357: monitorenter
+    //   358: aload_0
+    //   359: getfield 167	mqq/app/MobileQQ:mRuntimeState	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   362: iconst_3
+    //   363: invokevirtual 703	java/util/concurrent/atomic/AtomicInteger:set	(I)V
+    //   366: aload_0
+    //   367: getfield 167	mqq/app/MobileQQ:mRuntimeState	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   370: invokevirtual 708	java/lang/Object:notifyAll	()V
+    //   373: aload 4
+    //   375: monitorexit
+    //   376: ldc_w 257
+    //   379: iconst_1
+    //   380: ldc_w 710
+    //   383: invokestatic 325	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   386: aload_0
+    //   387: getfield 174	mqq/app/MobileQQ:mHandler	Landroid/os/Handler;
+    //   390: iconst_2
+    //   391: ldc2_w 711
+    //   394: invokevirtual 716	android/os/Handler:sendEmptyMessageDelayed	(IJ)Z
+    //   397: pop
+    //   398: return
+    //   399: astore 5
+    //   401: aload 4
+    //   403: monitorexit
+    //   404: aload 5
+    //   406: athrow
+    //   407: astore 4
+    //   409: ldc_w 257
+    //   412: iconst_1
+    //   413: ldc_w 718
+    //   416: aload 4
+    //   418: invokestatic 265	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   421: new 720	java/lang/RuntimeException
+    //   424: dup
+    //   425: aload 4
+    //   427: invokespecial 723	java/lang/RuntimeException:<init>	(Ljava/lang/Throwable;)V
+    //   430: athrow
+    //   431: astore 5
+    //   433: aload_0
+    //   434: getfield 167	mqq/app/MobileQQ:mRuntimeState	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   437: astore 4
+    //   439: aload 4
+    //   441: monitorenter
+    //   442: aload_0
+    //   443: getfield 167	mqq/app/MobileQQ:mRuntimeState	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   446: iconst_3
+    //   447: invokevirtual 703	java/util/concurrent/atomic/AtomicInteger:set	(I)V
+    //   450: aload_0
+    //   451: getfield 167	mqq/app/MobileQQ:mRuntimeState	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   454: invokevirtual 708	java/lang/Object:notifyAll	()V
+    //   457: aload 4
+    //   459: monitorexit
+    //   460: ldc_w 257
+    //   463: iconst_1
+    //   464: ldc_w 710
+    //   467: invokestatic 325	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   470: aload_0
+    //   471: getfield 174	mqq/app/MobileQQ:mHandler	Landroid/os/Handler;
+    //   474: iconst_2
+    //   475: ldc2_w 711
+    //   478: invokevirtual 716	android/os/Handler:sendEmptyMessageDelayed	(IJ)Z
+    //   481: pop
+    //   482: aload 5
+    //   484: athrow
+    //   485: astore 5
+    //   487: aload 4
+    //   489: monitorexit
+    //   490: aload 5
+    //   492: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	471	0	this	MobileQQ
-    //   0	471	1	paramBoolean	boolean
-    //   20	42	2	bool	boolean
-    //   394	16	3	localThrowable	Throwable
-    //   139	156	4	localObject2	Object
-    //   387	5	4	localObject3	Object
-    //   414	48	4	localObject4	Object
-    //   464	5	4	localObject5	Object
-    //   181	75	5	str	String
-    //   161	64	6	localSharedPreferences	SharedPreferences
+    //   0	493	0	this	MobileQQ
+    //   0	493	1	paramBoolean	boolean
+    //   4	288	2	bool1	boolean
+    //   25	43	3	bool2	boolean
+    //   407	19	4	localThrowable	Throwable
+    //   125	183	5	localObject2	Object
+    //   399	6	5	localObject3	Object
+    //   431	52	5	localObject4	Object
+    //   485	6	5	localObject5	Object
+    //   192	77	6	str	String
+    //   171	67	7	localSharedPreferences	SharedPreferences
     // Exception table:
     //   from	to	target	type
-    //   343	360	387	finally
-    //   389	391	387	finally
-    //   13	61	394	java/lang/Throwable
-    //   65	118	394	java/lang/Throwable
-    //   118	123	394	java/lang/Throwable
-    //   127	138	394	java/lang/Throwable
-    //   145	163	394	java/lang/Throwable
-    //   171	216	394	java/lang/Throwable
-    //   224	278	394	java/lang/Throwable
-    //   280	291	394	java/lang/Throwable
-    //   293	303	394	java/lang/Throwable
-    //   303	336	394	java/lang/Throwable
-    //   13	61	414	finally
-    //   65	118	414	finally
-    //   118	123	414	finally
-    //   127	138	414	finally
-    //   145	163	414	finally
-    //   171	216	414	finally
-    //   224	278	414	finally
-    //   280	291	414	finally
-    //   293	303	414	finally
-    //   303	336	414	finally
-    //   395	414	414	finally
-    //   423	440	464	finally
-    //   466	468	464	finally
+    //   358	376	399	finally
+    //   401	404	399	finally
+    //   18	67	407	java/lang/Throwable
+    //   71	121	407	java/lang/Throwable
+    //   121	127	407	java/lang/Throwable
+    //   132	145	407	java/lang/Throwable
+    //   154	173	407	java/lang/Throwable
+    //   182	228	407	java/lang/Throwable
+    //   237	291	407	java/lang/Throwable
+    //   293	304	407	java/lang/Throwable
+    //   306	316	407	java/lang/Throwable
+    //   316	349	407	java/lang/Throwable
+    //   18	67	431	finally
+    //   71	121	431	finally
+    //   121	127	431	finally
+    //   132	145	431	finally
+    //   154	173	431	finally
+    //   182	228	431	finally
+    //   237	291	431	finally
+    //   293	304	431	finally
+    //   306	316	431	finally
+    //   316	349	431	finally
+    //   409	431	431	finally
+    //   442	460	485	finally
+    //   487	490	485	finally
+  }
+  
+  public boolean doesHasPhonePermission()
+  {
+    if (!sHasPhonePermission)
+    {
+      if (Build.VERSION.SDK_INT < 23) {
+        break label42;
+      }
+      if ((context == null) || (context.checkSelfPermission(PERMS[1]) != 0)) {}
+    }
+    label42:
+    for (sHasPhonePermission = true;; sHasPhonePermission = true) {
+      return sHasPhonePermission;
+    }
+  }
+  
+  public boolean doesHasSDCardPermission()
+  {
+    if (!sHasSDCardPermission)
+    {
+      if (Build.VERSION.SDK_INT < 23) {
+        break label42;
+      }
+      if ((context == null) || (context.checkSelfPermission(PERMS[0]) != 0)) {}
+    }
+    label42:
+    for (sHasSDCardPermission = true;; sHasSDCardPermission = true) {
+      return sHasSDCardPermission;
+    }
   }
   
   public List<SimpleAccount> getAllAccounts()
   {
-    if (this.sortAccountList == null)
-    {
-      ArrayList localArrayList = MsfSdkUtils.getLoginedAccountList();
-      if ((localArrayList != null) && (!localArrayList.isEmpty())) {
-        this.sortAccountList = localArrayList;
-      }
+    if (this.sortAccountList == null) {
+      return refreAccountList();
     }
-    if ((this.sortAccountList != null) && (this.sortAccountList.size() > 0))
-    {
-      Collections.sort(this.sortAccountList, new Comparator()
-      {
-        public int compare(SimpleAccount paramAnonymousSimpleAccount1, SimpleAccount paramAnonymousSimpleAccount2)
-        {
-          long l1 = MobileQQ.this.string2Long(MobileQQ.this.getProperty(paramAnonymousSimpleAccount1.getUin() + Constants.Key._logintime));
-          long l2 = MobileQQ.this.string2Long(MobileQQ.this.getProperty(paramAnonymousSimpleAccount2.getUin() + Constants.Key._logintime));
-          if (paramAnonymousSimpleAccount1 != null) {
-            QLog.d("mqq", 1, "a1.getUin() = " + MsfSdkUtils.getShortUin(paramAnonymousSimpleAccount1.getUin()) + ";key.time = " + l1 + ", isLogined=" + paramAnonymousSimpleAccount1.isLogined());
-          }
-          if (paramAnonymousSimpleAccount2 != null) {
-            QLog.d("mqq", 1, "a2.getUin() = " + MsfSdkUtils.getShortUin(paramAnonymousSimpleAccount2.getUin()) + ";key.time = " + l2 + ", isLogined=" + paramAnonymousSimpleAccount2.isLogined());
-          }
-          if (l2 > l1) {
-            return 1;
-          }
-          return -1;
-        }
-      });
-      return Collections.unmodifiableList(this.sortAccountList);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.w("mqq", 2, "Account list is NULL!");
-    }
-    return null;
+    return this.sortAccountList;
   }
   
   public List<SimpleAccount> getAllNotSynAccountList()
@@ -1109,7 +831,6 @@ public abstract class MobileQQ
   public abstract int getAppId(String paramString);
   
   public AppRuntime getAppRuntime(String paramString)
-    throws AccountNotMatchException
   {
     AppRuntime localAppRuntime = waitAppRuntime(null);
     if ((paramString != null) && (paramString.equals(localAppRuntime.getAccount()))) {}
@@ -1130,30 +851,46 @@ public abstract class MobileQQ
     return (SimpleAccount)localList.get(0);
   }
   
-  public String getProcessName()
+  public int getMsfConnectedNetType()
   {
-    if (processName == null)
+    try
     {
-      int i = 0;
-      String str2;
-      do
-      {
-        str2 = MsfSdkUtils.getProcessName(this);
-        i += 1;
-      } while ((i < 3) && ("unknown".equals(str2)));
-      String str1 = str2;
-      if ("unknown".equals(str2)) {
-        str1 = "com.tencent.mobileqq";
-      }
-      processName = str1;
-      BaseApplication.processName = str1;
+      int i = this.mService.msfSub.getConnectedNetowrkType();
+      return i;
     }
-    return processName;
+    catch (Exception localException) {}
+    return 0;
   }
   
   public String getProperty(String paramString)
   {
+    ensureInitProperty();
     return this.properties.getProperty(paramString);
+  }
+  
+  public String getQQProcessName()
+  {
+    String str;
+    if (processName == null)
+    {
+      int i = 0;
+      do
+      {
+        str = MsfSdkUtils.getProcessName(this);
+        i += 1;
+      } while ((i < 3) && ("unknown".equals(str)));
+      if (!"unknown".equals(str)) {
+        break label57;
+      }
+      str = "com.tencent.mobileqq";
+    }
+    label57:
+    for (;;)
+    {
+      processName = str;
+      BaseApplication.processName = str;
+      return processName;
+    }
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -1190,11 +927,31 @@ public abstract class MobileQQ
     return true;
   }
   
+  public boolean isModuleLoaded(String paramString)
+  {
+    if (paramString != null)
+    {
+      paramString = (Boolean)sModuleLoaded.get(paramString);
+      if (paramString != null) {
+        return paramString.booleanValue();
+      }
+    }
+    return false;
+  }
+  
   public abstract boolean isNeedMSF(String paramString);
   
   public boolean isRuntimeReady()
   {
     return this.mRuntimeState.get() == 3;
+  }
+  
+  public void loadModule(String paramString)
+  {
+    if (paramString == null) {
+      return;
+    }
+    sModuleLoaded.put(paramString, Boolean.valueOf(true));
   }
   
   public boolean onActivityCreate(Object paramObject, Intent paramIntent)
@@ -1210,6 +967,33 @@ public abstract class MobileQQ
     super.onCreate();
   }
   
+  public void onSendBroadcast(Context paramContext, Intent paramIntent)
+  {
+    for (;;)
+    {
+      synchronized (this.mAppCallbacks)
+      {
+        if (this.mAppCallbacks.size() <= 0) {
+          break label77;
+        }
+        arrayOfObject = this.mAppCallbacks.toArray();
+        if (arrayOfObject != null)
+        {
+          int j = arrayOfObject.length;
+          int i = 0;
+          if (i < j)
+          {
+            ((AppCallback)arrayOfObject[i]).onSendBroadcast(paramContext, paramIntent);
+            i += 1;
+          }
+        }
+      }
+      return;
+      label77:
+      Object[] arrayOfObject = null;
+    }
+  }
+  
   public void otherProcessExit(boolean paramBoolean)
   {
     exit(paramBoolean, false);
@@ -1222,29 +1006,16 @@ public abstract class MobileQQ
   
   public List<SimpleAccount> refreAccountList()
   {
-    ArrayList localArrayList = MsfSdkUtils.getLoginedAccountList();
-    if ((localArrayList != null) && (!localArrayList.isEmpty())) {
-      this.sortAccountList = localArrayList;
-    }
-    if ((this.sortAccountList != null) && (this.sortAccountList.size() > 0))
+    return setSortAccountList(MsfSdkUtils.getLoginedAccountList());
+  }
+  
+  public void registerAppCallbacks(AppCallback paramAppCallback)
+  {
+    synchronized (this.mAppCallbacks)
     {
-      Collections.sort(this.sortAccountList, new Comparator()
-      {
-        public int compare(SimpleAccount paramAnonymousSimpleAccount1, SimpleAccount paramAnonymousSimpleAccount2)
-        {
-          long l = MobileQQ.this.string2Long(MobileQQ.this.getProperty(paramAnonymousSimpleAccount1.getUin() + Constants.Key._logintime));
-          if (MobileQQ.this.string2Long(MobileQQ.this.getProperty(paramAnonymousSimpleAccount2.getUin() + Constants.Key._logintime)) > l) {
-            return 1;
-          }
-          return -1;
-        }
-      });
-      return Collections.unmodifiableList(this.sortAccountList);
+      this.mAppCallbacks.add(paramAppCallback);
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("mqq", 2, "refreAccountList Account list is NULL!");
-    }
-    return this.sortAccountList;
   }
   
   void removeActivity(BaseActivity paramBaseActivity)
@@ -1256,6 +1027,34 @@ public abstract class MobileQQ
   
   public void reportPCActive(String paramString, int paramInt) {}
   
+  public void sendBroadcast(Intent paramIntent)
+  {
+    restrictBroadcast(paramIntent);
+    super.sendBroadcast(paramIntent);
+    sMobileQQ.onSendBroadcast(this, paramIntent);
+  }
+  
+  public void sendBroadcast(Intent paramIntent, String paramString)
+  {
+    restrictBroadcast(paramIntent);
+    super.sendBroadcast(paramIntent, paramString);
+    sMobileQQ.onSendBroadcast(this, paramIntent);
+  }
+  
+  public void sendOrderedBroadcast(Intent paramIntent, String paramString)
+  {
+    restrictBroadcast(paramIntent);
+    super.sendOrderedBroadcast(paramIntent, paramString);
+    sMobileQQ.onSendBroadcast(this, paramIntent);
+  }
+  
+  public void sendOrderedBroadcast(Intent paramIntent, String paramString1, BroadcastReceiver paramBroadcastReceiver, Handler paramHandler, int paramInt, String paramString2, Bundle paramBundle)
+  {
+    restrictBroadcast(paramIntent);
+    super.sendOrderedBroadcast(paramIntent, paramString1, paramBroadcastReceiver, paramHandler, paramInt, paramString2, paramBundle);
+    sMobileQQ.onSendBroadcast(this, paramIntent);
+  }
+  
   public void setAutoLogin(boolean paramBoolean)
   {
     if ((this.mAppRuntime != null) && (this.mAppRuntime.getAccount() != null) && (this.mAppRuntime.getAccount().length() > 0)) {
@@ -1265,7 +1064,11 @@ public abstract class MobileQQ
   
   public void setProperty(String arg1, String paramString2)
   {
+    ensureInitProperty();
     this.properties.setProperty(???, paramString2);
+    if (???.endsWith(Constants.Key._logintime.toString())) {
+      setSortAccountList(this.sortAccountList);
+    }
     if (this.subHandler == null) {}
     synchronized (this.properties)
     {
@@ -1275,99 +1078,21 @@ public abstract class MobileQQ
         paramString2.start();
         this.subHandler = new Handler(paramString2.getLooper());
       }
-      this.subHandler.post(new Runnable()
-      {
-        public void run()
-        {
-          Object localObject3 = null;
-          Object localObject1 = null;
-          for (;;)
-          {
-            try
-            {
-              localFileOutputStream = MobileQQ.this.openFileOutput("Properties", 0);
-              localObject1 = localFileOutputStream;
-              localObject3 = localFileOutputStream;
-              MobileQQ.this.properties.store(localFileOutputStream, null);
-              localObject1 = localFileOutputStream;
-              localObject3 = localFileOutputStream;
-              localFileOutputStream.flush();
-            }
-            catch (Exception localException)
-            {
-              FileOutputStream localFileOutputStream;
-              localObject3 = localIOException1;
-              localException.printStackTrace();
-              if (localIOException1 == null) {
-                continue;
-              }
-              try
-              {
-                localIOException1.close();
-                return;
-              }
-              catch (IOException localIOException2)
-              {
-                localIOException2.printStackTrace();
-                return;
-              }
-            }
-            finally
-            {
-              if (localObject3 == null) {
-                break label85;
-              }
-            }
-            try
-            {
-              localFileOutputStream.close();
-              return;
-            }
-            catch (IOException localIOException1)
-            {
-              localIOException1.printStackTrace();
-              return;
-            }
-          }
-          try
-          {
-            localObject3.close();
-            label85:
-            throw localObject2;
-          }
-          catch (IOException localIOException3)
-          {
-            for (;;)
-            {
-              localIOException3.printStackTrace();
-            }
-          }
-        }
-      });
+      this.subHandler.post(new MobileQQ.6(this));
       return;
     }
   }
   
-  public void setSortAccountList(List<SimpleAccount> paramList)
+  public List<SimpleAccount> setSortAccountList(List<SimpleAccount> paramList)
   {
     if ((paramList != null) && (!paramList.isEmpty()))
     {
-      Collections.sort(paramList, new Comparator()
-      {
-        public int compare(SimpleAccount paramAnonymousSimpleAccount1, SimpleAccount paramAnonymousSimpleAccount2)
-        {
-          long l = MobileQQ.this.string2Long(MobileQQ.this.getProperty(paramAnonymousSimpleAccount1.getUin() + Constants.Key._logintime));
-          if (MobileQQ.this.string2Long(MobileQQ.this.getProperty(paramAnonymousSimpleAccount2.getUin() + Constants.Key._logintime)) > l) {
-            return 1;
-          }
-          return -1;
-        }
-      });
-      this.sortAccountList = paramList;
+      Collections.sort(paramList, new MobileQQ.4(this));
+      if (paramList != this.sortAccountList) {
+        this.sortAccountList = paramList;
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("mqq", 2, "sort AccountList" + this.sortAccountList);
-    }
+    return this.sortAccountList;
   }
   
   public void startActivity(Intent paramIntent)
@@ -1411,7 +1136,10 @@ public abstract class MobileQQ
           this.mService.msfSub.stopMsfService();
           try
           {
-            killProcess(getContext(), "com.tencent.mobileqq:MSF");
+            Intent localIntent = new Intent("com.tencent.process.exit");
+            localIntent.putExtra("procName", "com.tencent.mobileqq:MSF");
+            localIntent.putExtra("verify", MsfExitReceiver.getLocalVerify("com.tencent.mobileqq:MSF", false));
+            sendBroadcast(localIntent);
             return;
           }
           catch (Throwable localThrowable3)
@@ -1454,6 +1182,15 @@ public abstract class MobileQQ
       paramString.printStackTrace();
     }
     return 0L;
+  }
+  
+  public void unregisterAppCallbacks(AppCallback paramAppCallback)
+  {
+    synchronized (this.mAppCallbacks)
+    {
+      this.mAppCallbacks.remove(paramAppCallback);
+      return;
+    }
   }
   
   public AppRuntime waitAppRuntime(BaseActivity arg1)

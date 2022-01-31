@@ -1,18 +1,45 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import cooperation.qzone.util.QZLog;
 
 public class ryu
-  implements Runnable
 {
-  public ryu(BaseChatPie paramBaseChatPie) {}
+  public static int a;
+  public static String a;
   
-  public void run()
+  static
   {
-    this.a.an();
+    jdField_a_of_type_JavaLangString = "1522415138827987";
+    int j = a();
+    if (j == -1) {}
+    for (int i = 760;; i = j)
+    {
+      jdField_a_of_type_Int = i;
+      QZLog.d("WeishiHeaderConst", 4, "appversion:" + j);
+      jdField_a_of_type_Int = 760;
+      return;
+    }
+  }
+  
+  static int a()
+  {
+    String str = bfpk.a();
+    int i = str.indexOf(".");
+    int j = str.lastIndexOf(".");
+    if ((j <= i) || (j - i != 2)) {}
+    while (i <= 1) {
+      return -1;
+    }
+    try
+    {
+      i = Integer.parseInt(str.substring(i - 1, j + 2).replace(".", ""));
+      return i;
+    }
+    catch (Throwable localThrowable) {}
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ryu
  * JD-Core Version:    0.7.0.1
  */

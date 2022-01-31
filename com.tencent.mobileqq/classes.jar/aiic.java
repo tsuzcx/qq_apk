@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable.AnimationEndListener;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLDisplay;
+import javax.microedition.khronos.egl.EGLSurface;
 
-public class aiic
-  implements CustomFrameAnimationDrawable.AnimationEndListener
+public abstract interface aiic
 {
-  public aiic(RedBagVideoManager paramRedBagVideoManager) {}
+  public abstract EGLSurface a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, Object paramObject);
   
-  public void a()
-  {
-    RedBagVideoManager.e(this.a);
-  }
+  public abstract void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLSurface paramEGLSurface);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiic
  * JD-Core Version:    0.7.0.1
  */

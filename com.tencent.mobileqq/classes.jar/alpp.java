@@ -1,20 +1,49 @@
-import android.app.Activity;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.open.downloadnew.MyAppApi;
+import ProfileLogic.QC.setUserProfileRsp;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class alpp
-  implements Runnable
+  extends ajrp
 {
-  public alpp(MyAppApi paramMyAppApi, String paramString, DialogInterface.OnClickListener paramOnClickListener, Activity paramActivity) {}
+  public alpp(CardPicGalleryActivity paramCardPicGalleryActivity) {}
   
-  public void run()
+  public void e(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.jdField_a_of_type_AndroidAppActivity);
+    if ((paramBoolean) && ((paramObject instanceof setUserProfileRsp)))
+    {
+      i = ((setUserProfileRsp)paramObject).ret;
+      if (QLog.isColorLevel()) {
+        QLog.d("qqBaseActivity", 2, "mSvipObserver: [setUserProfileRsp] ret=" + i);
+      }
+      if (i == 0)
+      {
+        if (this.a.app != null)
+        {
+          paramObject = new ProfileActivity.AllInOne(this.a.app.getCurrentAccountUin(), 0);
+          paramObject.g = 1;
+          paramObject.h = 8;
+          ProfileActivity.b(this.a, paramObject);
+          bbmy.a(this.a, 0, 2131654640, 0).a();
+        }
+        this.a.finish();
+      }
+    }
+    while (!"profilelogic.setUserProfile".equals(paramObject))
+    {
+      int i;
+      return;
+      bbmy.a(this.a, 1, 2131654637, 0).a();
+      return;
+    }
+    bbmy.a(this.a, 1, 2131654637, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     alpp
  * JD-Core Version:    0.7.0.1
  */

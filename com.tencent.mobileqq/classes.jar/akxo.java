@@ -1,25 +1,17 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserShareMenuHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
 
 public class akxo
-  implements TroopMemberApiClient.Callback
+  implements DialogInterface.OnClickListener
 {
-  public akxo(SwiftBrowserShareMenuHandler paramSwiftBrowserShareMenuHandler) {}
+  public akxo(ARScanEntryView paramARScanEntryView) {}
   
-  public void a(Bundle paramBundle)
-  {
-    int i = paramBundle.getInt("fontSize", 1);
-    if (i != this.a.b)
-    {
-      this.a.b = i;
-      this.a.b(this.a.b);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akxo
  * JD-Core Version:    0.7.0.1
  */

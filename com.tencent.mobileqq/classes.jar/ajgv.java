@@ -1,90 +1,44 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.recent.TimeManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopSearchResultDialog;
-import com.tencent.mobileqq.troop.logic.TroopSearchLogic.SearchResult;
-import com.tencent.mobileqq.util.FaceDrawable;
-import java.util.List;
+import com.tencent.mobileqq.app.DataMigrationService;
+import com.tencent.qphone.base.util.QLog;
+import oicq.wlogin_sdk.request.WFastLoginInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.request.WtloginHelper;
+import oicq.wlogin_sdk.request.WtloginListener;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class ajgv
-  extends BaseAdapter
+  extends WtloginListener
 {
-  List jdField_a_of_type_JavaUtilList;
+  public ajgv(DataMigrationService paramDataMigrationService, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, WtloginHelper paramWtloginHelper) {}
   
-  public ajgv(NewTroopSearchResultDialog paramNewTroopSearchResultDialog, List paramList)
+  public void OnException(ErrMsg paramErrMsg, int paramInt, WUserSigInfo paramWUserSigInfo)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    TroopSearchLogic.SearchResult localSearchResult;
-    if (paramView == null)
-    {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopSearchResultDialog.getContext()).inflate(2130969892, null);
-      paramViewGroup = new ajgw(this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopSearchResultDialog);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362759));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365002));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131363205));
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365559);
-      paramView.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopSearchResultDialog);
-      paramView.setTag(paramViewGroup);
-      localSearchResult = (TroopSearchLogic.SearchResult)getItem(paramInt);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localSearchResult.a.getTroopName());
-      if (localSearchResult.a.lastMsgTime == 0L) {
-        break label267;
-      }
-      paramViewGroup.b.setVisibility(0);
-      paramViewGroup.b.setText("最近活跃：" + TimeManager.a().a(localSearchResult.a.troopuin, localSearchResult.a.lastMsgTime));
-      label188:
-      if (!localSearchResult.a.hasSetTroopHead()) {
-        break label350;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("DataMigrationService", 2, "sendActionAfterGetTicket| OnException=" + paramErrMsg + ", cmd=" + paramInt);
     }
-    label267:
-    label350:
-    for (paramInt = 4;; paramInt = 113)
-    {
-      FaceDrawable localFaceDrawable = FaceDrawable.a(this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopSearchResultDialog.a, paramInt, localSearchResult.a.troopuin, 3, FaceDrawable.a(4, 3), FaceDrawable.a(4, 3));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localFaceDrawable);
-      paramViewGroup.jdField_a_of_type_JavaLangString = localSearchResult.a.troopuin;
-      return paramView;
-      paramViewGroup = (ajgw)paramView.getTag();
-      break;
-      if (localSearchResult.a.troopCreateTime != 0L)
-      {
-        paramViewGroup.b.setVisibility(0);
-        paramViewGroup.b.setText("建群时间：" + TimeManager.a().a(localSearchResult.a.troopuin, localSearchResult.a.troopCreateTime));
-        break label188;
-      }
-      paramViewGroup.b.setVisibility(8);
-      break label188;
+    DataMigrationService.a(this.jdField_a_of_type_ComTencentMobileqqAppDataMigrationService, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, null, this.jdField_b_of_type_Int);
+  }
+  
+  public void onGetA1WithA1(String paramString, long paramLong1, int paramInt1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo, int paramInt2, ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DataMigrationService", 2, "sendActionAfterGetTicket| onGetA1WithA1 ret=" + paramInt2);
     }
+    if (paramInt2 != 0)
+    {
+      DataMigrationService.a(this.jdField_a_of_type_ComTencentMobileqqAppDataMigrationService, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, null, this.jdField_b_of_type_Int);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("DataMigrationService", 2, "sendActionAfterGetTicket| send action");
+    }
+    paramString = this.jdField_a_of_type_OicqWlogin_sdkRequestWtloginHelper.PrepareQloginResult(paramString, paramLong4, paramLong5, paramInt2, paramWFastLoginInfo);
+    DataMigrationService.a(this.jdField_a_of_type_ComTencentMobileqqAppDataMigrationService, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Int, paramString, this.jdField_b_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajgv
  * JD-Core Version:    0.7.0.1
  */

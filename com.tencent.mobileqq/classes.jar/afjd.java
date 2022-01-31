@@ -1,25 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-public class afjd
-  implements View.OnClickListener
+class afjd
+  implements ancn
 {
-  public afjd(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  afjd(afiu paramafiu, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void a(float paramFloat, List<Integer> paramList)
   {
-    if (!this.a.a.onBackEvent())
+    if (QLog.isColorLevel()) {
+      QLog.d("SDKEmotionSettingManager", 2, "upLoadEmotions progress=" + paramFloat + ", addEmotionsResults=" + paramList + ", isTimeOut=" + afiu.b(this.jdField_a_of_type_Afiu));
+    }
+    if (!afiu.b(this.jdField_a_of_type_Afiu))
     {
-      this.a.a.finish();
-      this.a.a.b(false);
+      afiu.b(this.jdField_a_of_type_Afiu, paramList);
+      afiu.a(this.jdField_a_of_type_Afiu, this.jdField_a_of_type_Int, paramFloat);
+    }
+  }
+  
+  public void a(List<Integer> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SDKEmotionSettingManager", 2, "onUploadFinish , addEmotionsResults=" + paramList + ", isTimeOut=" + afiu.b(this.jdField_a_of_type_Afiu));
+    }
+    if (!afiu.b(this.jdField_a_of_type_Afiu))
+    {
+      afiu.a(this.jdField_a_of_type_Afiu).removeMessages(11);
+      afiu.a(this.jdField_a_of_type_Afiu, this.jdField_a_of_type_Int, paramList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afjd
  * JD-Core Version:    0.7.0.1
  */

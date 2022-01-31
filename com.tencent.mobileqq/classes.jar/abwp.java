@@ -1,50 +1,50 @@
-import com.tencent.mobileqq.campuscircle.CampusCircleHandler;
-import com.tencent.mobileqq.campuscircle.CampusCircleManager;
-import com.tencent.mobileqq.campuscircle.CampusCirclePublishActivity;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.TroopGagActivity;
+import com.tencent.mobileqq.activity.TroopGagActivity.3.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopMemberInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import java.util.Locale;
 
 public class abwp
-  implements Runnable
+  extends ajuc
 {
-  public abwp(CampusCirclePublishActivity paramCampusCirclePublishActivity) {}
+  public abwp(TroopGagActivity paramTroopGagActivity) {}
   
-  public void run()
+  protected void a(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    boolean bool1 = true;
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleManager.a(1, null);
-    if ((localObject != null) && (((List)localObject).size() > 0)) {
-      this.a.a((List)localObject);
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleHandler.a(1);
-    try
-    {
-      boolean bool2 = PtvFilterSoLoad.a(VideoEnvironment.a(), false);
-      localObject = this.a;
-      if ((VideoEnvironment.b()) && (bool2)) {}
-      for (;;)
-      {
-        ((CampusCirclePublishActivity)localObject).c = bool1;
-        if (QLog.isColorLevel()) {
-          QLog.i("CampusCircle", 2, String.format(Locale.getDefault(), "initAsync hasFilterSoLib:%b isSurpportFilter:%b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(this.a.c) }));
-        }
-        return;
-        bool1 = false;
-      }
+    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (!this.a.jdField_a_of_type_JavaLangString.equals(paramString))) {
       return;
     }
-    catch (Exception localException)
+    if (paramBoolean)
     {
-      localException.printStackTrace();
+      this.a.jdField_a_of_type_Abwr.notifyDataSetChanged();
+      if (this.a.jdField_a_of_type_Abwr.getCount() != 0) {
+        break label209;
+      }
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+    for (;;)
+    {
+      this.a.getSharedPreferences("last_update_time" + this.a.app.getCurrentAccountUin(), 4).edit().putLong("key_last_update_time" + this.a.jdField_a_of_type_JavaLangString, System.currentTimeMillis()).commit();
+      ThreadManager.post(new TroopGagActivity.3.1(this, (azjh)this.a.app.getManager(48)), 8, null, false);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("TroopGagActivity", 2, "onUpdateTroopGetMemberList: isSuccess=" + paramBoolean);
+      return;
+      label209:
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abwp
  * JD-Core Version:    0.7.0.1
  */

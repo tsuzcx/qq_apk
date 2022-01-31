@@ -1,12 +1,17 @@
-import com.tencent.mobileqq.richmedia.capture.gesture.GLGestureProxy;
-
-public class ahpf
+public final class ahpf
 {
-  private static final GLGestureProxy a = new GLGestureProxy(null);
+  public final int a;
+  public final int b;
+  
+  ahpf(int paramInt1, int paramInt2)
+  {
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahpf
  * JD-Core Version:    0.7.0.1
  */

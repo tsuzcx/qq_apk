@@ -1,15 +1,18 @@
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.VideoCompositeRec;
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeManager.CompositeVideoEvent;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.KdTagItem;
 
-public class nen
-  implements Runnable
+public final class nen
+  implements Parcelable.Creator<VideoInfo.KdTagItem>
 {
-  public nen(StoryVideoUploadManager.VideoCompositeRec paramVideoCompositeRec, StoryVideoUploadManager paramStoryVideoUploadManager, VideoCompositeManager.CompositeVideoEvent paramCompositeVideoEvent) {}
-  
-  public void run()
+  public VideoInfo.KdTagItem a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadStoryVideoUploadManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeManager$CompositeVideoEvent.a, this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeManager$CompositeVideoEvent.b);
+    return new VideoInfo.KdTagItem(paramParcel);
+  }
+  
+  public VideoInfo.KdTagItem[] a(int paramInt)
+  {
+    return new VideoInfo.KdTagItem[paramInt];
   }
 }
 

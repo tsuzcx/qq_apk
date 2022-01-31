@@ -1,19 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment;
 
-public final class oij
-  implements Parcelable.Creator
+public class oij
+  implements Animation.AnimationListener
 {
-  public EditTakeVideoSource a(Parcel paramParcel)
+  public oij(ReadInJoyAtlasCommentFragment paramReadInJoyAtlasCommentFragment) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new EditTakeVideoSource(paramParcel);
+    this.a.getView().setVisibility(8);
+    this.a.getActivity().setResult(-1);
+    this.a.getActivity().finish();
+    this.a.getActivity().overridePendingTransition(0, 0);
   }
   
-  public EditTakeVideoSource[] a(int paramInt)
-  {
-    return new EditTakeVideoSource[paramInt];
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

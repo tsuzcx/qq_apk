@@ -1,33 +1,28 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class syb
-  implements ConditionSearchManager.IConfigListener
+  extends sfo
 {
-  public syb(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public final int a;
+  public final String a;
+  public final String b;
   
-  public void a(int paramInt, boolean paramBoolean)
+  public syb(sya paramsya, ErrorMessage paramErrorMessage, String paramString1, String paramString2, int paramInt)
   {
-    if ((this.a.a == 1) || (this.a.a == 2))
-    {
-      if (paramBoolean) {
-        break label55;
-      }
-      FriendProfileMoreInfoActivity.a(this.a);
-      QQToast.a(this.a, 2131437318, 0).b(this.a.getTitleBarHeight());
-    }
-    label55:
-    while (paramInt != 2) {
-      return;
-    }
-    FriendProfileMoreInfoActivity.a(this.a);
-    FriendProfileMoreInfoActivity.a(this.a, this.a.a);
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.b = paramString2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public String toString()
+  {
+    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin='" + this.b + '\'' + ", impeachType=" + this.jdField_a_of_type_Int + "} " + super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     syb
  * JD-Core Version:    0.7.0.1
  */

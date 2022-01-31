@@ -1,21 +1,14 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
-import com.tencent.mobileqq.activity.aio.audiopanel.PttTipSwitchView;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
 
-public class uvl
-  implements Runnable
+public abstract interface uvl
 {
-  public uvl(PressToSpeakPanel paramPressToSpeakPanel) {}
+  public abstract void a();
   
-  public void run()
-  {
-    if (PressToSpeakPanel.a(this.a) != null) {
-      PressToSpeakPanel.a(this.a).a();
-    }
-  }
+  public abstract void a(TroopBarPOI paramTroopBarPOI);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uvl
  * JD-Core Version:    0.7.0.1
  */

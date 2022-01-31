@@ -8,17 +8,20 @@ import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.ui.AVActivity;
 import com.tencent.av.ui.BaseToolbar;
-import com.tencent.av.ui.BaseToolbar.UIInfo;
 import com.tencent.av.ui.VideoControlUI;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
+import lbn;
+import lbq;
+import lbr;
+import lrg;
 
 public class DoodleToolbar
   extends BaseToolbar
 {
-  public static String TAG = "DoodleToolbar";
-  private DoodleLogic mDoodleLogic = DoodleLogic.a();
-  BaseToolbar.UIInfo mUIInfo = null;
+  private lbn mDoodleLogic = lbn.a();
+  lrg mUIInfo = null;
   
   public DoodleToolbar(VideoAppInterface paramVideoAppInterface, AVActivity paramAVActivity)
   {
@@ -27,15 +30,15 @@ public class DoodleToolbar
   
   private ColorPickerView addColorPickerView(ViewGroup paramViewGroup)
   {
-    Object localObject2 = (ColorPickerView)paramViewGroup.findViewById(2131362539);
+    Object localObject2 = (ColorPickerView)paramViewGroup.findViewById(2131306532);
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
       localObject1 = new ColorPickerView(paramViewGroup.getContext());
       localObject2 = paramViewGroup.getResources();
-      int i = ((Resources)localObject2).getDimensionPixelOffset(2131560054);
-      int j = ((Resources)localObject2).getDimensionPixelOffset(2131560055);
-      int k = ((Resources)localObject2).getDimensionPixelOffset(2131560056);
+      int i = ((Resources)localObject2).getDimensionPixelOffset(2131166413);
+      int j = ((Resources)localObject2).getDimensionPixelOffset(2131166402);
+      int k = ((Resources)localObject2).getDimensionPixelOffset(2131166403);
       localObject2 = new RelativeLayout.LayoutParams(i, j);
       ((RelativeLayout.LayoutParams)localObject2).setMargins(0, k, 0, 0);
       ((RelativeLayout.LayoutParams)localObject2).addRule(11);
@@ -46,22 +49,21 @@ public class DoodleToolbar
   
   private void removeColorPickerView(ViewGroup paramViewGroup)
   {
-    View localView = paramViewGroup.findViewById(2131362539);
+    View localView = paramViewGroup.findViewById(2131306532);
     if (localView != null) {
       paramViewGroup.removeView(localView);
     }
   }
   
-  protected BaseToolbar.UIInfo getUIInfo()
+  public lrg getUIInfo()
   {
     if (this.mUIInfo == null)
     {
-      this.mUIInfo = new BaseToolbar.UIInfo();
+      this.mUIInfo = new lrg();
       this.mUIInfo.d = 3;
-      this.mUIInfo.g = 2130969357;
-      this.mUIInfo.e = 103413;
-      this.mUIInfo.f = 2130840159;
-      this.mUIInfo.a = this.mApp.getApp().getResources().getString(2131428743);
+      this.mUIInfo.f = 2131494015;
+      this.mUIInfo.e = 2130841431;
+      this.mUIInfo.a = this.mApp.getApp().getString(2131630508);
     }
     return this.mUIInfo;
   }
@@ -72,17 +74,17 @@ public class DoodleToolbar
     {
       AVActivity localAVActivity = (AVActivity)this.mActivity.get();
       int i = 0;
-      DoodleLogic localDoodleLogic = DoodleLogic.a();
-      if (!DoodleUtils.a()) {
-        i = 2131429593;
+      lbn locallbn = lbn.a();
+      if (!lbr.a()) {
+        i = 2131630074;
       }
       while (i != 0)
       {
         return localAVActivity.getString(i);
-        if (!localDoodleLogic.a()) {
-          i = 2131429595;
-        } else if (!localDoodleLogic.b) {
-          i = 2131429594;
+        if (!locallbn.a()) {
+          i = 2131630073;
+        } else if (!locallbn.b) {
+          i = 2131630072;
         }
       }
     }
@@ -91,51 +93,61 @@ public class DoodleToolbar
   
   public boolean isEffectBtnEnable()
   {
-    DoodleLogic localDoodleLogic = DoodleLogic.a();
-    return (DoodleUtils.a()) && (localDoodleLogic.b) && (localDoodleLogic.a());
+    lbn locallbn = lbn.a();
+    return (lbr.a()) && (locallbn.b) && (locallbn.a());
   }
   
-  protected void onHide()
+  public void onDestroy(long paramLong, VideoAppInterface paramVideoAppInterface)
   {
-    if (this.mActivity != null)
+    onHide(paramLong);
+  }
+  
+  public void onHide(long paramLong)
+  {
+    AVActivity localAVActivity = getAVActivity();
+    Object localObject1 = this.TAG;
+    Object localObject2 = new StringBuilder().append("onHide, avActivity[");
+    if (localAVActivity != null) {}
+    for (boolean bool = true;; bool = false)
     {
-      AVActivity localAVActivity = (AVActivity)this.mActivity.get();
+      QLog.w((String)localObject1, 1, bool + "], seq[" + paramLong + "]");
       if (localAVActivity != null)
       {
-        ViewGroup localViewGroup = (ViewGroup)localAVActivity.findViewById(2131365830);
-        if (localViewGroup != null)
+        localObject1 = (ViewGroup)localAVActivity.findViewById(2131297390);
+        if (localObject1 != null)
         {
-          Object localObject = (DoodleSurfaceView)localViewGroup.findViewById(2131362540);
-          if (localObject != null)
+          localObject2 = (DoodleSurfaceView)((ViewGroup)localObject1).findViewById(2131306542);
+          if (localObject2 != null)
           {
-            ((DoodleSurfaceView)localObject).setClickable(false);
-            if (!((DoodleSurfaceView)localObject).a()) {
-              DoodleUtils.a(localViewGroup);
+            ((DoodleSurfaceView)localObject2).setClickable(false);
+            if (!((DoodleSurfaceView)localObject2).a()) {
+              lbr.a((ViewGroup)localObject1);
             }
           }
-          localObject = (ColorPickerView)localViewGroup.findViewById(2131362539);
-          if (localObject != null)
+          localObject2 = (ColorPickerView)((ViewGroup)localObject1).findViewById(2131306532);
+          if (localObject2 != null)
           {
-            ((ColorPickerView)localObject).clearAnimation();
-            ((ColorPickerView)localObject).setVisibility(8);
-            removeColorPickerView(localViewGroup);
+            ((ColorPickerView)localObject2).clearAnimation();
+            ((ColorPickerView)localObject2).setVisibility(8);
+            removeColorPickerView((ViewGroup)localObject1);
           }
           this.mDoodleLogic.a.a(false);
-          localAVActivity.a.ad();
+          localAVActivity.a.y(paramLong);
         }
       }
+      return;
     }
   }
   
-  protected void onShow(int paramInt, boolean paramBoolean)
+  public void onShow(long paramLong, int paramInt, boolean paramBoolean)
   {
     if (this.mActivity.get() != null)
     {
       AVActivity localAVActivity = (AVActivity)this.mActivity.get();
-      Object localObject = (ViewGroup)localAVActivity.findViewById(2131365830);
+      Object localObject = (ViewGroup)localAVActivity.findViewById(2131297390);
       if (localObject != null)
       {
-        DoodleSurfaceView localDoodleSurfaceView = DoodleUtils.a((ViewGroup)localObject);
+        DoodleSurfaceView localDoodleSurfaceView = lbr.a((ViewGroup)localObject);
         if (localDoodleSurfaceView != null) {
           localDoodleSurfaceView.setClickable(true);
         }
@@ -146,14 +158,14 @@ public class DoodleToolbar
           ((ColorPickerView)localObject).setVisibility(0);
         }
         this.mDoodleLogic.a.a(true);
-        localAVActivity.a.z();
+        localAVActivity.a.K();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.doodle.DoodleToolbar
  * JD-Core Version:    0.7.0.1
  */

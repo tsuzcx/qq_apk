@@ -1,64 +1,38 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contacts.base.ContactsViewController;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.ContactRefreshHeader;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class wsf
-  implements Handler.Callback
+class wsf
+  implements View.OnClickListener
 {
-  public wsf(ContactsViewController paramContactsViewController) {}
+  wsf(wse paramwse, int paramInt) {}
   
-  private void a()
+  public void onClick(View paramView)
   {
-    if (ContactsViewController.a(this.a) != null) {
-      ContactsViewController.a(this.a).setRefreshing(false);
-    }
-    if (ContactsViewController.a(this.a) != null) {
-      ContactsViewController.a(this.a).setRefresh(false);
-    }
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
+    wsa.a(this.jdField_a_of_type_Wse.a, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Int == wsh.c.jdField_a_of_type_Int)
     {
-    default: 
-      return false;
-    case 3: 
-      QQToast.a(this.a.a(), 1, 2131434365, 0).b(ContactsViewController.a(this.a));
-      a();
-      return false;
-    case 4: 
-      int i = paramMessage.arg1;
-      if (paramMessage.arg2 == 1) {}
-      for (i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label134;
-        }
-        ContactsViewController.a(this.a);
-        if (ContactsViewController.a(this.a) == null) {
-          break;
-        }
-        ContactsViewController.a(this.a).a(0);
-        this.a.a.sendEmptyMessageDelayed(5, 800L);
-        return false;
-      }
-      label134:
-      a();
-      QQToast.a(this.a.a(), 1, 2131434365, 0).b(ContactsViewController.a(this.a));
-      return false;
+      bhci.a().p();
+      wse.a(this.jdField_a_of_type_Wse, this.jdField_a_of_type_Int);
     }
-    a();
-    return false;
+    for (;;)
+    {
+      bhcs.a("AEVideoStoryCaptureModePart", 1, "【AE_CAPTURE_MODE】:" + this.jdField_a_of_type_Int);
+      return;
+      if (this.jdField_a_of_type_Int == wsh.jdField_a_of_type_Wsh.jdField_a_of_type_Int)
+      {
+        bhci.a().o();
+      }
+      else if (this.jdField_a_of_type_Int == wsh.b.jdField_a_of_type_Int)
+      {
+        bhcm.a().e("3");
+        bhci.a().u();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wsf
  * JD-Core Version:    0.7.0.1
  */

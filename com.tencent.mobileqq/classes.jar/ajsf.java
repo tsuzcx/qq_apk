@@ -1,23 +1,67 @@
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem;
-import com.tencent.mobileqq.utils.VoicePlayer.VoicePlayerListener;
-
 public class ajsf
-  implements VoicePlayer.VoicePlayerListener
+  implements ajfe
 {
-  public ajsf(AudioItem paramAudioItem) {}
+  protected void a(boolean paramBoolean, Object paramObject) {}
   
-  public void a(int paramInt1, String paramString, int paramInt2)
+  protected void b(boolean paramBoolean, Object paramObject) {}
+  
+  protected void c(boolean paramBoolean, Object paramObject) {}
+  
+  protected void d(boolean paramBoolean, Object paramObject) {}
+  
+  protected void e(boolean paramBoolean, Object paramObject) {}
+  
+  protected void f(boolean paramBoolean, Object paramObject) {}
+  
+  protected void g(boolean paramBoolean, Object paramObject) {}
+  
+  protected void h(boolean paramBoolean, Object paramObject) {}
+  
+  protected void i(boolean paramBoolean, Object paramObject) {}
+  
+  protected void j(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a.b(AudioItem.a(this.a));
+    switch (paramInt)
+    {
+    case 4: 
+    default: 
+      return;
+    case 7: 
+      b(paramBoolean, paramObject);
+      return;
+    case 5: 
+      c(paramBoolean, paramObject);
+      return;
+    case 6: 
+      a(paramBoolean, paramObject);
+      return;
+    case 3: 
+      d(paramBoolean, paramObject);
+      return;
+    case 8: 
+      e(paramBoolean, paramObject);
+      return;
+    case 9: 
+      f(paramBoolean, paramObject);
+      return;
+    case 10: 
+      g(paramBoolean, paramObject);
+      return;
+    case 11: 
+      h(paramBoolean, paramObject);
+      return;
+    case 12: 
+      i(paramBoolean, paramObject);
+      return;
+    }
+    j(paramBoolean, paramObject);
   }
-  
-  public void a(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void b(String paramString, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajsf
  * JD-Core Version:    0.7.0.1
  */

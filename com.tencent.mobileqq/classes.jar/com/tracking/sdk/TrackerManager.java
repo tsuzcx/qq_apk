@@ -17,7 +17,7 @@ public class TrackerManager
   
   public static TrackerManager newInstance()
   {
-    return ObjTrackHolder.instance;
+    return TrackerManager.ObjTrackHolder.instance;
   }
   
   public void init() {}
@@ -27,11 +27,6 @@ public class TrackerManager
   public native float[] processTrackFrame(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3);
   
   public native void release();
-  
-  private static class ObjTrackHolder
-  {
-    public static TrackerManager instance = new TrackerManager(null);
-  }
 }
 
 

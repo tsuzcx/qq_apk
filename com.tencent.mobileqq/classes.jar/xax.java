@@ -1,24 +1,48 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.os.Build.VERSION;
 
 public class xax
-  implements ActionSheet.OnButtonClickListener
+  implements SensorEventListener
 {
-  public xax(SettingActivity2 paramSettingActivity2, ActionSheet paramActionSheet) {}
+  protected byte a;
+  protected String a;
   
-  public void OnClick(View paramView, int paramInt)
+  public xax(xaw paramxaw, byte paramByte, String paramString)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-    DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneSettingActivity2, 230, "停用手机通讯录匹配", "停用后，你将无法使用QQ跟手机通讯录中的朋友联系。服务器上属于你的通讯录加密数据也将被删除。", "停用", "取消", new xay(this), new xaz(this)).show();
+    this.jdField_a_of_type_Byte = paramByte;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    switch (this.jdField_a_of_type_Byte)
+    {
+    }
+    do
+    {
+      return;
+      float[] arrayOfFloat = new float[4];
+      if (Build.VERSION.SDK_INT >= 9)
+      {
+        SensorManager localSensorManager = this.jdField_a_of_type_Xaw.a;
+        SensorManager.getQuaternionFromVector(arrayOfFloat, paramSensorEvent.values);
+        xaw.a(this.jdField_a_of_type_Xaw)[0] = arrayOfFloat[1];
+        xaw.a(this.jdField_a_of_type_Xaw)[1] = arrayOfFloat[2];
+        xaw.a(this.jdField_a_of_type_Xaw)[2] = arrayOfFloat[3];
+        xaw.a(this.jdField_a_of_type_Xaw)[3] = arrayOfFloat[0];
+      }
+    } while ((!xaw.a()) || (!xaw.b()));
+    this.jdField_a_of_type_Xaw.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(xaw.a(this.jdField_a_of_type_Xaw)[0]), String.valueOf(xaw.a(this.jdField_a_of_type_Xaw)[1]), String.valueOf(xaw.a(this.jdField_a_of_type_Xaw)[2]), String.valueOf(xaw.a(this.jdField_a_of_type_Xaw)[3]) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xax
  * JD-Core Version:    0.7.0.1
  */

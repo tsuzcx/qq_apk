@@ -1,28 +1,30 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
 
 public class ltf
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public ltf(ArticleInfoModule paramArticleInfoModule, int paramInt1, int paramInt2) {}
+  public ltf(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool = true;
-    ReadInJoyLogicEngineEventDispatcher localReadInJoyLogicEngineEventDispatcher = ReadInJoyLogicEngineEventDispatcher.a();
-    long l = this.jdField_a_of_type_Int;
-    if (this.b == 1) {}
+    switch (paramMotionEvent.getAction())
+    {
+    }
     for (;;)
     {
-      localReadInJoyLogicEngineEventDispatcher.a(l, bool);
-      return;
-      bool = false;
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ltf
  * JD-Core Version:    0.7.0.1
  */

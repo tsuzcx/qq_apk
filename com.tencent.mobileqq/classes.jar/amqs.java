@@ -1,21 +1,12 @@
-import android.os.Bundle;
-import cooperation.comic.VipComicConfigHelper;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.graphics.Canvas;
 
-public final class amqs
-  implements EIPCResultCallback
+public abstract interface amqs
 {
-  public void onCallback(EIPCResult paramEIPCResult)
-  {
-    if (paramEIPCResult.isSuccess()) {
-      VipComicConfigHelper.a(paramEIPCResult.data.getString("config_json"));
-    }
-  }
+  public abstract void a(Canvas paramCanvas, ampx paramampx, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amqs
  * JD-Core Version:    0.7.0.1
  */

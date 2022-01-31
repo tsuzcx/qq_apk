@@ -1,21 +1,22 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.qidian.QidianProfileCardActivity;
 
-public class altz
+class altz
   implements DialogInterface.OnClickListener
 {
-  public altz(QidianProfileCardActivity paramQidianProfileCardActivity, URLDrawable paramURLDrawable, String paramString) {}
+  altz(alty paramalty) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_JavaLangString);
+    if (alty.a(this.a).isShowing()) {
+      alty.a(this.a).dismiss();
+    }
+    aluq.a(alty.a(this.a), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     altz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,30 @@
-import android.text.Editable;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
-import com.tencent.mobileqq.util.Utils;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class tvf
-  implements Runnable
+class tvf
+  implements begw
 {
-  public tvf(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity, String paramString1, String paramString2) {}
+  tvf(tvd paramtvd, StoryVideoItem paramStoryVideoItem, VideoViewVideoHolder paramVideoViewVideoHolder, AtomicBoolean paramAtomicBoolean, begr parambegr) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    int j = 0;
-    String str = Utils.a(this.jdField_a_of_type_JavaLangString, this.b);
-    if ((str != null) && (str.length() == 6) && (RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity) != null) && (!str.equals(RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity))))
+    switch (paramInt)
     {
-      RegisterVerifyCodeActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity, str);
-      i = 0;
-      if (i >= 6) {
-        break label160;
-      }
-      Editable localEditable = RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity)[i].getText();
-      if ((localEditable == null) || (localEditable.toString().length() <= 0)) {}
     }
-    label160:
-    for (int i = 0;; i = 1)
+    for (;;)
     {
-      if (i != 0)
-      {
-        i = j;
-        for (;;)
-        {
-          if (i < 6)
-          {
-            RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity)[i].setText(str.substring(i, i + 1));
-            i += 1;
-            continue;
-            i += 1;
-            break;
-          }
-        }
-        RegisterVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterVerifyCodeActivity)[5].setSelection(1);
-      }
+      this.jdField_a_of_type_Begr.dismiss();
       return;
+      tfy.a(this.jdField_a_of_type_Tvd.b(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, new tvg(this));
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tvf
  * JD-Core Version:    0.7.0.1
  */

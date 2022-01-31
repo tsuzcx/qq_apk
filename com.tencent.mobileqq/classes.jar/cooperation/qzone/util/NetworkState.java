@@ -1,9 +1,10 @@
 package cooperation.qzone.util;
 
 import android.net.NetworkInfo;
-import android.telephony.TelephonyManager;
 import android.text.TextUtils;
-import aniq;
+import bfpj;
+import bgfj;
+import bgfk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
@@ -17,9 +18,10 @@ import mqq.app.AppRuntime;
 
 public class NetworkState
 {
-  public static final int NET_TYPE_2G = 3;
-  public static final int NET_TYPE_3G = 2;
+  public static final int NET_TYPE_2G = 2;
+  public static final int NET_TYPE_3G = 3;
   public static final int NET_TYPE_4G = 4;
+  public static final int NET_TYPE_5G = 5;
   public static final int NET_TYPE_UNKNOWN = 0;
   public static final int NET_TYPE_WIFI = 1;
   public static final String SP_KEY_FLAG_FORCE_WIFI_TO_4G = "key_force_wifi_to_4g";
@@ -27,14 +29,17 @@ public class NetworkState
   public static final int VALUE_FLAG_FORCE_WIFI_TO_4G_DEFAULT = 0;
   public static final int VALUE_FLAG_FORCE_WIFI_TO_4G_NO = 0;
   public static final int VALUE_FLAG_FORCE_WIFI_TO_4G_YES = 1;
-  private static Map mApnMap = new HashMap();
+  private static Map<String, Integer> mApnMap = new HashMap();
+  private static Map<Long, Boolean> map = new HashMap();
   private static INetEventHandler netEventHandler;
-  private static List observers = new ArrayList();
+  private static List<bgfk> observers;
   private static String providerName;
+  public static long uin = -1L;
   
   static
   {
-    netEventHandler = new aniq();
+    observers = new ArrayList();
+    netEventHandler = new bgfj();
     mApnMap.put("unknown", Integer.valueOf(0));
     mApnMap.put("cmnet", Integer.valueOf(1));
     mApnMap.put("cmwap", Integer.valueOf(2));
@@ -58,17 +63,24 @@ public class NetworkState
     return localStringBuffer.toString();
   }
   
-  public static void addListener(NetworkState.NetworkStateListener paramNetworkStateListener)
+  public static void addListener(bgfk parambgfk)
   {
-    if (paramNetworkStateListener == null) {
+    if (parambgfk == null) {
       return;
     }
     synchronized (observers)
     {
-      if (!observers.contains(paramNetworkStateListener)) {
-        observers.add(paramNetworkStateListener);
+      if (!observers.contains(parambgfk)) {
+        observers.add(parambgfk);
       }
       return;
+    }
+  }
+  
+  public static void clearConfigCache()
+  {
+    if (map != null) {
+      map.clear();
     }
   }
   
@@ -127,7 +139,18 @@ public class NetworkState
   
   public static boolean getConfigIsForceWifiTo4g()
   {
-    return 1 == LocalMultiProcConfig.getInt4Uin("key_force_wifi_to_4g", 0, BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin());
+    boolean bool = true;
+    uin = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
+    if (map.get(Long.valueOf(uin)) != null) {
+      return ((Boolean)map.get(Long.valueOf(uin))).booleanValue();
+    }
+    if (1 == LocalMultiProcConfig.getInt4Uin("key_force_wifi_to_4g", 0, uin)) {}
+    for (;;)
+    {
+      map.put(Long.valueOf(uin), Boolean.valueOf(bool));
+      return bool;
+      bool = false;
+    }
   }
   
   private static boolean getIsMobileForDebugVersion()
@@ -187,11 +210,13 @@ public class NetworkState
     default: 
       return 0;
     case 1: 
-      return 3;
-    case 2: 
       return 2;
+    case 2: 
+      return 3;
+    case 3: 
+      return 4;
     }
-    return 4;
+    return 5;
   }
   
   public static String getProviderName()
@@ -199,16 +224,16 @@ public class NetworkState
     String str;
     if (TextUtils.isEmpty(providerName))
     {
-      str = ((TelephonyManager)BaseApplication.getContext().getSystemService("phone")).getSubscriberId();
+      str = bfpj.a().a();
       if ((str != null) && (!"".equals(str))) {
-        break label47;
+        break label39;
       }
       providerName = "unknown";
     }
     for (;;)
     {
       return providerName;
-      label47:
+      label39:
       if ((str.startsWith("46000")) || (str.startsWith("46002"))) {
         providerName = "ChinaMobile";
       } else if (str.startsWith("46001")) {
@@ -267,15 +292,15 @@ public class NetworkState
   {
     synchronized (observers)
     {
-      NetworkState.NetworkStateListener[] arrayOfNetworkStateListener = new NetworkState.NetworkStateListener[observers.size()];
-      observers.toArray(arrayOfNetworkStateListener);
-      if (arrayOfNetworkStateListener != null)
+      bgfk[] arrayOfbgfk = new bgfk[observers.size()];
+      observers.toArray(arrayOfbgfk);
+      if (arrayOfbgfk != null)
       {
-        int j = arrayOfNetworkStateListener.length;
+        int j = arrayOfbgfk.length;
         int i = 0;
         if (i < j)
         {
-          arrayOfNetworkStateListener[i].onNetworkConnect(paramBoolean);
+          arrayOfbgfk[i].onNetworkConnect(paramBoolean);
           i += 1;
         }
       }
@@ -295,11 +320,11 @@ public class NetworkState
     }
   }
   
-  public static void removeListener(NetworkState.NetworkStateListener paramNetworkStateListener)
+  public static void removeListener(bgfk parambgfk)
   {
     synchronized (observers)
     {
-      observers.remove(paramNetworkStateListener);
+      observers.remove(parambgfk);
       return;
     }
   }

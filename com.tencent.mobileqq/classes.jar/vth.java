@@ -1,22 +1,25 @@
-import com.tencent.common.galleryactivity.AbstractImageAdapter;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
-import com.tencent.mobileqq.activity.aio.photo.AIOPhotoListAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
 public class vth
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
-  public vth(AIOImageListScene paramAIOImageListScene) {}
+  public vth(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if ((this.a.a != null) && (!((AIOPhotoListAdapter)this.a.a).a(false))) {
-      this.a.a.notifyDataSetChanged();
+    if (this.a.f) {
+      return;
     }
+    this.a.h = -1;
+    this.a.f = true;
+    QRDisplayActivity.a(this.a).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     vth
  * JD-Core Version:    0.7.0.1
  */

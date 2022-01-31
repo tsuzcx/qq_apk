@@ -1,30 +1,57 @@
+import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.utils.AlbumUtil;
-import java.util.Map;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
-public class xdj
-  implements Runnable
+class xdj
+  extends Handler
 {
-  public xdj(PhotoListActivity paramPhotoListActivity, String paramString) {}
-  
-  public void run()
+  xdj(xdi paramxdi, Looper paramLooper)
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = 3;
-    String str = PhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity, this.jdField_a_of_type_JavaLangString);
-    localMessage.obj = str;
-    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    AlbumUtil.a(localLocalMediaInfo, str);
-    PhotoListActivity.a().put(str, localLocalMediaInfo);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.a.sendMessage(localMessage);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Object localObject;
+    int i;
+    if ((paramMessage.what == 203) && ((paramMessage.obj instanceof Bundle)))
+    {
+      paramMessage = (Bundle)paramMessage.obj;
+      localObject = paramMessage.getString("url");
+      if ((paramMessage.getInt("req_state", 0) == 2) && (!TextUtils.isEmpty(xdi.a(this.a))) && (!TextUtils.isEmpty(xdi.b(this.a))) && (xdi.b(this.a).equals(localObject)))
+      {
+        i = paramMessage.getInt("result_code");
+        localObject = new JSONObject();
+        if (i != 0) {
+          break label158;
+        }
+      }
+    }
+    try
+    {
+      ((JSONObject)localObject).put("code", 0);
+      for (;;)
+      {
+        label113:
+        this.a.callJs(xdi.a(this.a) + "(" + ((JSONObject)localObject).toString() + ");");
+        return;
+        label158:
+        ((JSONObject)localObject).put("code", i);
+        ((JSONObject)localObject).put("msg", paramMessage.getString("error_message"));
+      }
+    }
+    catch (Exception paramMessage)
+    {
+      break label113;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xdj
  * JD-Core Version:    0.7.0.1
  */

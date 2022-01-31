@@ -1,11 +1,9 @@
 package com.tencent.filter.ttpic;
 
-import android.graphics.Bitmap;
+import com.tencent.aekit.openrender.UniformParam.TextureBitmapParam;
 import com.tencent.filter.BaseFilter;
-import com.tencent.filter.GLSLRender;
-import com.tencent.filter.Param.TextureBitmapParam;
 import com.tencent.filter.art.BaibianFilter;
-import com.tencent.view.FilterDefault;
+import com.tencent.ttpic.baseutils.bitmap.BitmapUtils;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,29 +12,25 @@ public class TransMeiWeiFilter
 {
   public TransMeiWeiFilter()
   {
-    super(GLSLRender.FILTER_SHADER_NONE);
+    super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
   }
   
-  public void ApplyGLSLFilter(boolean paramBoolean, float paramFloat1, float paramFloat2)
+  public void applyFilterChain(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
-    BaibianFilter localBaibianFilter = new BaibianFilter(GLSLRender.FILTER_SHADER_NONE, null, 0.3F, 0.5F, 0.0F, 0.12F, 0.02F);
+    BaibianFilter localBaibianFilter = new BaibianFilter(0, null, 0.3F, 0.5F, 0.0F, 0.12F, 0.02F);
     Object localObject = new HashMap();
     ((Map)localObject).put("intensity", Float.valueOf(0.65F));
     localBaibianFilter.setParameterDic((Map)localObject);
     setNextFilter(localBaibianFilter, null);
     localObject = new GPUImageLookupFilter();
-    boolean bool = FilterDefault.ENABLE＿ASSERT;
-    FilterDefault.ENABLE＿ASSERT = true;
-    Bitmap localBitmap = FilterDefault.decodeBitmap("filter/egWeizhidao/eftMeiwei/meiwei_lf.png");
-    FilterDefault.ENABLE＿ASSERT = bool;
-    ((BaseFilter)localObject).addParam(new Param.TextureBitmapParam("inputImageTexture2", localBitmap, 33986, true));
+    ((BaseFilter)localObject).addParam(new UniformParam.TextureBitmapParam("inputImageTexture2", BitmapUtils.decodeBitmap("filter/egWeizhidao1/eftMeiwei/meiwei_lf.png"), 33986, true));
     localBaibianFilter.setNextFilter((BaseFilter)localObject, null);
-    super.ApplyGLSLFilter(paramBoolean, paramFloat1, paramFloat2);
+    super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.filter.ttpic.TransMeiWeiFilter
  * JD-Core Version:    0.7.0.1
  */

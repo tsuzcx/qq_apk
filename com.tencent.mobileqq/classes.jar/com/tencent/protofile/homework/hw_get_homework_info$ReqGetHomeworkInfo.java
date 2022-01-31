@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class hw_get_homework_info$ReqGetHomeworkInfo
-  extends MessageMicro
+  extends MessageMicro<ReqGetHomeworkInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8 }, new String[] { "hw_id" }, new Object[] { Long.valueOf(0L) }, ReqGetHomeworkInfo.class);
   public final PBUInt64Field hw_id = PBField.initUInt64(0L);

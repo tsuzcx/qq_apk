@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.wadl.ipc.WadlResult;
+import java.util.ArrayList;
 
-public final class anox
-  implements Parcelable.Creator
+public class anox
 {
-  public WadlResult a(Parcel paramParcel)
-  {
-    return new WadlResult(paramParcel);
-  }
-  
-  public WadlResult[] a(int paramInt)
-  {
-    return new WadlResult[paramInt];
-  }
+  public int a;
+  public String a;
+  public ArrayList<String> a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anox
  * JD-Core Version:    0.7.0.1
  */

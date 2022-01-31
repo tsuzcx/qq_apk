@@ -1,21 +1,18 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
+import java.util.List;
 
-public class shs
-  implements Runnable
+public abstract interface shs
 {
-  public shs(ChatSettingForTroop paramChatSettingForTroop, String paramString) {}
+  public abstract void a();
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoGroupCatalogBean = GroupCatalogTool.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop).a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(16);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(List<shp> paramList, boolean paramBoolean);
+  
+  public abstract void a(sht paramsht);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     shs
  * JD-Core Version:    0.7.0.1
  */

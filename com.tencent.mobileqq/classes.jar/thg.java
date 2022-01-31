@@ -1,25 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
+import com.tencent.widget.AbsListView;
 
 public class thg
-  implements DialogInterface.OnClickListener
+  implements begh
 {
-  public thg(NotificationActivity paramNotificationActivity) {}
+  public thg(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramDialogInterface = "http://aq.qq.com/007?from=andapp&account=" + NotificationActivity.b(this.a);
-    Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-    this.a.startActivity(localIntent.putExtra("url", paramDialogInterface));
-    this.a.finish();
+    this.a.a = paramInt1;
   }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     thg
  * JD-Core Version:    0.7.0.1
  */

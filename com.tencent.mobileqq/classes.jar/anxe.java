@@ -1,23 +1,40 @@
-import com.tencent.mobileqq.utils.FileUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import mqq.app.MobileQQ;
 
-public final class anxe
-  implements Runnable
+public class anxe
+  implements View.OnClickListener
 {
-  public anxe(File paramFile, String paramString1, String paramString2) {}
+  public anxe(FMLocalFileActivity paramFMLocalFileActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    FileUtils.a(this.jdField_a_of_type_JavaIoFile.getPath() + File.separator, this.jdField_a_of_type_JavaLangString, this.b);
-    if (QLog.isColorLevel()) {
-      QLog.i("QIMFileUtils", 2, "paster config save to file " + this.jdField_a_of_type_JavaIoFile.getPath() + File.separator + this.jdField_a_of_type_JavaLangString);
+    if (!this.a.a()) {
+      if (QLog.isColorLevel()) {
+        QLog.i(FMLocalFileActivity.g, 2, "click too fast , wait a minute.");
+      }
     }
+    do
+    {
+      return;
+      this.a.e();
+      paramView = (aonp)paramView.getTag();
+    } while (paramView.a == 0);
+    int i = paramView.a;
+    paramView = this.a.app.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
+    paramView.putBoolean("last_select_All", true);
+    paramView.commit();
+    FMLocalFileActivity.a(this.a, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anxe
  * JD-Core Version:    0.7.0.1
  */

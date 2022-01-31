@@ -1,17 +1,11 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil;
+import java.nio.charset.Charset;
 
-public class mqk
-  implements MessageQueue.IdleHandler
+final class mqk
+  extends ThreadLocal<Charset>
 {
-  public mqk(FastWebActivity paramFastWebActivity) {}
-  
-  public boolean queueIdle()
+  protected Charset a()
   {
-    FastWebRequestUtil.a(FastWebActivity.a(this.a).l, FastWebActivity.a(this.a).j, String.valueOf(FastWebActivity.a(this.a).c), FastWebActivity.a(this.a).k, FastWebActivity.a(this.a).c(), FastWebActivity.a(this.a));
-    return false;
+    return Charset.forName("UTF-8");
   }
 }
 

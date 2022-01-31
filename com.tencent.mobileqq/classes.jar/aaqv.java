@@ -1,35 +1,20 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ar.config.SplashPopupWin;
-import com.tencent.mobileqq.ar.config.WorldCup;
-import com.tencent.mobileqq.ar.config.WorldCupConfigInfo;
-import com.tencent.mobileqq.ar.config.WorldCupReport;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
 public class aaqv
-  implements View.OnClickListener
+  implements View.OnLongClickListener
 {
-  public aaqv(SplashPopupWin paramSplashPopupWin, aaqw paramaaqw, AppInterface paramAppInterface, BaseActivity paramBaseActivity) {}
+  public aaqv(EditInfoActivity paramEditInfoActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onLongClick(View paramView)
   {
-    if (SplashPopupWin.a(this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin) != null) {
-      SplashPopupWin.a(this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin).dismiss();
-    }
-    if (this.jdField_a_of_type_Aaqw.a.b)
-    {
-      WorldCup.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, 1);
-      WorldCupReport.d();
-      RecentOptPopBar.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2L, 4096L, 2);
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaqv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,42 @@
-import com.tencent.mobileqq.search.ISearchable;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ahvy
-  implements Comparator
+public class ahvy
+  implements ahwm
 {
-  public int a(ISearchable paramISearchable1, ISearchable paramISearchable2)
+  public ahvy(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
+  
+  public void a(boolean paramBoolean)
   {
-    long l1 = paramISearchable1.c();
-    long l2 = paramISearchable2.c();
-    if (l1 < l2) {
-      return 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialCareSettingActivity", 2, "loadSpecialSoundConfig onResult: " + paramBoolean);
     }
-    if (l1 > l2) {
-      return -1;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      try
+      {
+        QQSpecialCareSettingActivity.a(this.a);
+        return;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return;
+      }
+      finally
+      {
+        this.a.stopTitleProgress();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSpecialCareSettingActivity", 2, "loadSpecialSoundConfig fail.");
+      }
     }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahvy
  * JD-Core Version:    0.7.0.1
  */

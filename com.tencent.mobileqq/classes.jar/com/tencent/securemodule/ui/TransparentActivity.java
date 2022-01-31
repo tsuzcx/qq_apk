@@ -9,9 +9,7 @@ import android.content.ServiceConnection;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.view.Window;
-import com.qq.jce.wup.UniAttribute;
 import com.tencent.securemodule.impl.AppInfo;
 import com.tencent.securemodule.impl.SecureService;
 import com.tencent.securemodule.service.IControlService;
@@ -23,9 +21,7 @@ import sm.an;
 import sm.ao;
 import sm.ap;
 import sm.aq;
-import sm.ar;
 import sm.as;
-import sm.az;
 import sm.e;
 import sm.u;
 
@@ -135,80 +131,6 @@ public class TransparentActivity
       unbindService(this.n);
     }
     super.onDestroy();
-  }
-  
-  public class a
-    extends Thread
-    implements Runnable
-  {
-    private int b;
-    
-    public a(int paramInt)
-    {
-      this.b = paramInt;
-    }
-    
-    private void a()
-    {
-      for (;;)
-      {
-        try
-        {
-          int i = this.b;
-          if (i < 5) {
-            try
-            {
-              Thread.sleep(2000L);
-              Message localMessage1 = TransparentActivity.c(TransparentActivity.this).obtainMessage(4);
-              localMessage1.arg1 = (this.b + 1);
-              TransparentActivity.c(TransparentActivity.this).sendMessage(localMessage1);
-              return;
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              localInterruptedException.printStackTrace();
-              continue;
-            }
-          }
-          localMessage2 = TransparentActivity.c(TransparentActivity.this).obtainMessage(2);
-        }
-        finally {}
-        Message localMessage2;
-        localMessage2.arg1 = 0;
-        TransparentActivity.c(TransparentActivity.this).sendMessage(localMessage2);
-      }
-    }
-    
-    public void run()
-    {
-      j = 0;
-      i = j;
-      try
-      {
-        if (TransparentActivity.d(TransparentActivity.this) != null)
-        {
-          Object localObject = new UniAttribute();
-          ((UniAttribute)localObject).setEncodeName("UTF-8");
-          ((UniAttribute)localObject).put("data", TransparentActivity.e(TransparentActivity.this));
-          localObject = ((UniAttribute)localObject).encode();
-          if (localObject != null) {
-            TransparentActivity.d(TransparentActivity.this).doRemoteTask(az.a((byte[])localObject), new ar(this));
-          }
-          i = 1;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          localThrowable.printStackTrace();
-          i = j;
-        }
-      }
-      if (i == 0) {
-        a();
-      }
-    }
   }
 }
 

@@ -1,31 +1,43 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
-import com.tencent.ttpic.util.VideoGlobalContext;
-import com.tencent.ttpic.util.VideoPrefsUtil;
-import com.tencent.ttpic.util.youtu.VideoFaceDetector;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-public final class yrj
-  implements EIPCResultCallback
+class yrj
+  implements URLDrawable.URLDrawableListener
 {
-  public yrj(ApolloRender paramApolloRender) {}
+  yrj(yri paramyri) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    VideoPrefsUtil.init(BaseApplicationImpl.getContext());
-    VideoGlobalContext.setContext(BaseApplicationImpl.getContext());
-    if (PtvFilterSoLoad.a(BaseApplicationImpl.getContext(), false))
-    {
-      this.a.mDetector = new VideoFaceDetector(PtvFilterSoLoad.a(BaseApplicationImpl.getContext(), null));
-      this.a.mDetector.init();
+    yri.a(this.a, paramURLDrawable);
+    yny.b("GdtDrawableLoader", "onLoadCanceled " + yri.a(this.a));
+    yri.a(this.a, false);
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    yri.a(this.a, paramURLDrawable);
+    yny.d("GdtDrawableLoader", "onLoadFialed " + yri.a(this.a), paramThrowable);
+    if (!yri.a(this.a)) {
+      yri.a(this.a, false);
     }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    yri.a(this.a, paramURLDrawable);
+    yny.b("GdtDrawableLoader", "onLoadProgressed " + paramInt + " " + yri.a(this.a));
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    yri.a(this.a, paramURLDrawable);
+    yny.b("GdtDrawableLoader", "onLoadSuccessed " + yri.a(this.a));
+    yri.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yrj
  * JD-Core Version:    0.7.0.1
  */

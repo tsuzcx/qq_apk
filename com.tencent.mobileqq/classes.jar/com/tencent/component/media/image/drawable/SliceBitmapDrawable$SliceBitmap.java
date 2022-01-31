@@ -12,45 +12,47 @@ import android.util.DisplayMetrics;
 public class SliceBitmapDrawable$SliceBitmap
 {
   public static final int DENSITY_NONE = 0;
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
-  Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap;
-  int b;
-  int c;
-  int d;
-  int e;
+  public static final int SLICE_SIZE = 2048;
+  boolean hasAlpha;
+  Bitmap[] mBitmaps;
+  int mChangingConfigurations;
+  int mColumnCount;
+  int mDensity;
+  int mHeight;
+  int mRowCount;
+  int mWidth;
   
   public SliceBitmapDrawable$SliceBitmap(Bitmap paramBitmap)
   {
     if (needSlice(paramBitmap))
     {
-      this.c = paramBitmap.getWidth();
-      this.d = paramBitmap.getHeight();
-      this.e = paramBitmap.getDensity();
-      this.jdField_a_of_type_Boolean = paramBitmap.hasAlpha();
-      this.jdField_a_of_type_Int = ((this.c + 2048 - 1) / 2048);
-      this.b = ((this.d + 2048 - 1) / 2048);
-      Bitmap[] arrayOfBitmap = new Bitmap[this.jdField_a_of_type_Int * this.b];
+      this.mWidth = paramBitmap.getWidth();
+      this.mHeight = paramBitmap.getHeight();
+      this.mDensity = paramBitmap.getDensity();
+      this.hasAlpha = paramBitmap.hasAlpha();
+      this.mRowCount = ((this.mWidth + 2048 - 1) / 2048);
+      this.mColumnCount = ((this.mHeight + 2048 - 1) / 2048);
+      Bitmap[] arrayOfBitmap = new Bitmap[this.mRowCount * this.mColumnCount];
       int i = 0;
       int j = 0;
-      while (i < this.jdField_a_of_type_Int)
+      while (i < this.mRowCount)
       {
         int k = 0;
-        if (k < this.b)
+        if (k < this.mColumnCount)
         {
           int i1 = i * 2048;
           int i2 = k * 2048;
           int m;
-          if (i1 + 2048 > this.c)
+          if (i1 + 2048 > this.mWidth)
           {
-            m = this.c - i1;
+            m = this.mWidth - i1;
             label154:
-            if (i2 + 2048 <= this.d) {
+            if (i2 + 2048 <= this.mHeight) {
               break label213;
             }
           }
           label213:
-          for (int n = this.d - i2;; n = 2048)
+          for (int n = this.mHeight - i2;; n = 2048)
           {
             arrayOfBitmap[j] = Bitmap.createBitmap(paramBitmap, i1, i2, m, n);
             k += 1;
@@ -62,7 +64,7 @@ public class SliceBitmapDrawable$SliceBitmap
         }
         i += 1;
       }
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = arrayOfBitmap;
+      this.mBitmaps = arrayOfBitmap;
       return;
     }
     throw new IllegalArgumentException("the bitmap no need to Slice");
@@ -94,26 +96,26 @@ public class SliceBitmapDrawable$SliceBitmap
   }
   
   @TargetApi(11)
-  void a(Canvas paramCanvas, Rect paramRect, Paint paramPaint)
+  void draw(Canvas paramCanvas, Rect paramRect, Paint paramPaint)
   {
     int m = paramCanvas.save();
     boolean bool = paramCanvas.isHardwareAccelerated();
     int n = paramCanvas.getDensity();
     paramCanvas.translate(paramRect.left, paramRect.top);
-    if ((paramRect.width() != this.c) || (paramRect.height() != this.d)) {
-      paramCanvas.scale(paramRect.width() / this.c, paramRect.height() / this.d);
+    if ((paramRect.width() != this.mWidth) || (paramRect.height() != this.mHeight)) {
+      paramCanvas.scale(paramRect.width() / this.mWidth, paramRect.height() / this.mHeight);
     }
     if (!bool) {
-      paramCanvas.setDensity(this.e);
+      paramCanvas.setDensity(this.mDensity);
     }
     int i = 0;
     int j = 0;
-    while (i < this.jdField_a_of_type_Int)
+    while (i < this.mRowCount)
     {
       int k = 0;
-      while (k < this.b)
+      while (k < this.mColumnCount)
       {
-        paramRect = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[j];
+        paramRect = this.mBitmaps[j];
         if (paramRect != null) {
           paramCanvas.drawBitmap(paramRect, i * 2048, k * 2048, paramPaint);
         }
@@ -130,8 +132,8 @@ public class SliceBitmapDrawable$SliceBitmap
   
   public Bitmap getBitmap(int paramInt)
   {
-    if ((this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap != null) && (this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap.length > paramInt)) {
-      return this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[paramInt];
+    if ((this.mBitmaps != null) && (this.mBitmaps.length > paramInt)) {
+      return this.mBitmaps[paramInt];
     }
     return null;
   }
@@ -139,7 +141,7 @@ public class SliceBitmapDrawable$SliceBitmap
   public final int getByteCount()
   {
     int i = 0;
-    Bitmap[] arrayOfBitmap = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap;
+    Bitmap[] arrayOfBitmap = this.mBitmaps;
     int k = arrayOfBitmap.length;
     int j = 0;
     while (i < k)
@@ -152,62 +154,62 @@ public class SliceBitmapDrawable$SliceBitmap
   
   public int getColumnCount()
   {
-    return this.b;
+    return this.mColumnCount;
   }
   
   public final int getHeight()
   {
-    return this.d;
+    return this.mHeight;
   }
   
   public int getRowCount()
   {
-    return this.jdField_a_of_type_Int;
+    return this.mRowCount;
   }
   
   public int getScaledHeight(int paramInt)
   {
-    return scaleFromDensity(getHeight(), this.e, paramInt);
+    return scaleFromDensity(getHeight(), this.mDensity, paramInt);
   }
   
   public int getScaledHeight(Canvas paramCanvas)
   {
-    return scaleFromDensity(getHeight(), this.e, paramCanvas.getDensity());
+    return scaleFromDensity(getHeight(), this.mDensity, paramCanvas.getDensity());
   }
   
   public int getScaledHeight(DisplayMetrics paramDisplayMetrics)
   {
-    return scaleFromDensity(getHeight(), this.e, paramDisplayMetrics.densityDpi);
+    return scaleFromDensity(getHeight(), this.mDensity, paramDisplayMetrics.densityDpi);
   }
   
   public int getScaledWidth(int paramInt)
   {
-    return scaleFromDensity(getWidth(), this.e, paramInt);
+    return scaleFromDensity(getWidth(), this.mDensity, paramInt);
   }
   
   public int getScaledWidth(Canvas paramCanvas)
   {
-    return scaleFromDensity(getWidth(), this.e, paramCanvas.getDensity());
+    return scaleFromDensity(getWidth(), this.mDensity, paramCanvas.getDensity());
   }
   
   public int getScaledWidth(DisplayMetrics paramDisplayMetrics)
   {
-    return scaleFromDensity(getWidth(), this.e, paramDisplayMetrics.densityDpi);
+    return scaleFromDensity(getWidth(), this.mDensity, paramDisplayMetrics.densityDpi);
   }
   
   public final int getWidth()
   {
-    return this.c;
+    return this.mWidth;
   }
   
   public final boolean hasAlpha()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.hasAlpha;
   }
   
   public void recyle()
   {
-    Bitmap[] arrayOfBitmap = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap;
+    Bitmap[] arrayOfBitmap = this.mBitmaps;
     int j = arrayOfBitmap.length;
     int i = 0;
     while (i < j)

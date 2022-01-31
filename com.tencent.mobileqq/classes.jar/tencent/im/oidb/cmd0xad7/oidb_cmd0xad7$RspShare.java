@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class oidb_cmd0xad7$RspShare
-  extends MessageMicro
+  extends MessageMicro<RspShare>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_biu = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -32,7 +32,7 @@ public final class oidb_cmd0xad7$RspShare
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0xad7.oidb_cmd0xad7.RspShare
  * JD-Core Version:    0.7.0.1
  */

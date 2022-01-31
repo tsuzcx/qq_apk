@@ -1,29 +1,35 @@
 import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class ajbm
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  ajbm(ajbl paramajbl, ActionSheet paramActionSheet) {}
+  ajbm(ajbl paramajbl) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    if (ajbl.a(this.a) != null)
     {
+      if (ajbl.a(this.a).a != 1036) {
+        break label62;
+      }
+      ((aifg)ajbl.a(this.a).a.getManager(153)).a().c(ajbl.a(this.a).c());
     }
-    for (;;)
+    label62:
+    do
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
-      this.jdField_a_of_type_Ajbl.a.a(this.jdField_a_of_type_Ajbl.a.a);
-    }
+      paramView = (aifc)ajbl.a(this.a).getManager(211);
+    } while (paramView == null);
+    paramView.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajbm
  * JD-Core Version:    0.7.0.1
  */

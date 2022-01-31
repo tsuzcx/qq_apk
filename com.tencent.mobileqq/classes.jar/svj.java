@@ -1,32 +1,23 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.fpsreport.OnDrawCompleteListener;
-import com.tencent.util.ProfilePerformanceReport;
+import android.database.DataSetObserver;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.7.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class svj
-  implements OnDrawCompleteListener
+  extends DataSetObserver
 {
-  public svj(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  svj(svc paramsvc) {}
   
-  public void a()
+  public void onChanged()
   {
-    ProfilePerformanceReport localProfilePerformanceReport = ProfilePerformanceReport.a;
-    if ((localProfilePerformanceReport != null) && (localProfilePerformanceReport.a()))
-    {
-      if (!localProfilePerformanceReport.a(1)) {
-        localProfilePerformanceReport.b(1);
-      }
-      if ((!localProfilePerformanceReport.a(8)) && (localProfilePerformanceReport.a(5)) && (localProfilePerformanceReport.a(7))) {
-        localProfilePerformanceReport.b(8);
-      }
-      if ((!localProfilePerformanceReport.a(9)) && (localProfilePerformanceReport.a(6)) && (localProfilePerformanceReport.a(7))) {
-        localProfilePerformanceReport.b(9);
-      }
+    if (this.a.a == 0) {
+      ThreadManager.getUIHandler().post(new MsgTabStoryNodeListManager.7.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     svj
  * JD-Core Version:    0.7.0.1
  */

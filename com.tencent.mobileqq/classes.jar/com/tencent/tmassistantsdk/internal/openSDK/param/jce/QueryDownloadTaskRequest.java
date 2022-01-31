@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class QueryDownloadTaskRequest
   extends JceStruct
 {
-  static IPCBaseParam a;
+  static IPCBaseParam cache_baseParam;
   public IPCBaseParam baseParam = null;
   
   public QueryDownloadTaskRequest() {}
@@ -19,10 +19,10 @@ public final class QueryDownloadTaskRequest
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
-    if (a == null) {
-      a = new IPCBaseParam();
+    if (cache_baseParam == null) {
+      cache_baseParam = new IPCBaseParam();
     }
-    this.baseParam = ((IPCBaseParam)paramJceInputStream.read(a, 0, true));
+    this.baseParam = ((IPCBaseParam)paramJceInputStream.read(cache_baseParam, 0, true));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -32,7 +32,7 @@ public final class QueryDownloadTaskRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.param.jce.QueryDownloadTaskRequest
  * JD-Core Version:    0.7.0.1
  */

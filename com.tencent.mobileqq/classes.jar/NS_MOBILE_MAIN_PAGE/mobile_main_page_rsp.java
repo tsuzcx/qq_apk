@@ -1,6 +1,7 @@
 package NS_MOBILE_MAIN_PAGE;
 
 import NS_MOBILE_AD_BANNER.QueryADBannerUnit;
+import NS_MOBILE_FEEDS.FunnySpace;
 import NS_MOBILE_FEEDS.single_feed;
 import NS_MOBILE_MUSIC.MusicInfo;
 import com.qq.taf.jce.JceInputStream;
@@ -13,9 +14,10 @@ import java.util.Map;
 public final class mobile_main_page_rsp
   extends JceStruct
 {
-  static ArrayList cache_adv_banner;
-  static ArrayList cache_all_acc;
-  static ArrayList cache_all_music_list;
+  static FunnySpace cache_StuFunnySpace;
+  static ArrayList<QueryADBannerUnit> cache_adv_banner;
+  static ArrayList<s_app_acc> cache_all_acc;
+  static ArrayList<MusicInfo> cache_all_music_list;
   static s_appinfo cache_appinfo;
   static byte[] cache_bgvoice_buf;
   static s_birthday cache_birthday;
@@ -27,24 +29,32 @@ public final class mobile_main_page_rsp
   static s_friendreq cache_friendreq;
   static s_game cache_game;
   static s_gift cache_gift;
+  static s_limit_page_card cache_limit_page_card;
   static s_main_page cache_mainpage = new s_main_page();
+  static Map<Integer, s_mainPageTabItem> cache_map_entrys;
   static s_mayknow cache_mayknow;
   static s_msgb_festival cache_msgb_festival;
+  static s_mainPageTabItem cache_myFriendEntryItem;
   static s_part_error cache_part_error;
   static s_rec_photo_list cache_photos;
-  static ArrayList cache_photos_buf;
+  static ArrayList<byte[]> cache_photos_buf;
+  static s_gamebar_pk_banner cache_pk_banner;
   static s_profile cache_profile = new s_profile();
   static s_read_space cache_readspace;
-  static ArrayList cache_recent_photos;
-  static Map cache_redinfo;
+  static ArrayList<single_feed> cache_recent_photos;
+  static Map<Integer, s_red_comm> cache_redinfo;
+  static s_qzone_reward_data cache_reward_data;
   static s_special cache_special;
-  static s_sq_mainpage_switch cache_sq_mainpage_switch = new s_sq_mainpage_switch();
+  static s_sq_mainpage_switch cache_sq_mainpage_switch;
+  static byte[] cache_stShangchengInfo;
   static s_tab_list cache_tab_lst;
+  static s_tab_list cache_tab_lst_mq = new s_tab_list();
   static s_visit cache_visit;
   static s_visit cache_visit_no_right;
-  public ArrayList adv_banner;
-  public ArrayList all_acc;
-  public ArrayList all_music_list;
+  public FunnySpace StuFunnySpace;
+  public ArrayList<QueryADBannerUnit> adv_banner;
+  public ArrayList<s_app_acc> all_acc;
+  public ArrayList<MusicInfo> all_music_list;
   public int all_music_nums;
   public s_appinfo appinfo;
   public String attach_info = "";
@@ -59,26 +69,33 @@ public final class mobile_main_page_rsp
   public s_game game;
   public s_gift gift;
   public byte green_diamond_flag;
+  public s_limit_page_card limit_page_card;
   public byte loop_playback_flag;
   public s_main_page mainpage;
+  public Map<Integer, s_mainPageTabItem> map_entrys;
   public s_mayknow mayknow;
   public s_msgb_festival msgb_festival;
   public boolean music_can_play = true;
+  public s_mainPageTabItem myFriendEntryItem;
   public int no_update;
   public boolean open_msg_board = true;
   public s_part_error part_error;
   public s_rec_photo_list photos;
-  public ArrayList photos_buf;
+  public ArrayList<byte[]> photos_buf;
+  public s_gamebar_pk_banner pk_banner;
   public byte play_mode_flag;
   public s_profile profile;
   public String qzmall_cover_url = "";
   public s_read_space readspace;
-  public ArrayList recent_photos;
-  public Map redinfo;
+  public ArrayList<single_feed> recent_photos;
+  public Map<Integer, s_red_comm> redinfo;
+  public s_qzone_reward_data reward_data;
   public String share_bg_url = "";
   public s_special special;
   public s_sq_mainpage_switch sq_mainpage_switch;
+  public byte[] stShangchengInfo;
   public s_tab_list tab_lst;
+  public s_tab_list tab_lst_mq;
   public long uWanBaNew;
   public s_visit visit;
   public s_visit visit_no_right;
@@ -126,11 +143,22 @@ public final class mobile_main_page_rsp
     cache_bgvoice_buf = (byte[])new byte[1];
     ((byte[])cache_bgvoice_buf)[0] = 0;
     cache_tab_lst = new s_tab_list();
+    cache_sq_mainpage_switch = new s_sq_mainpage_switch();
+    cache_pk_banner = new s_gamebar_pk_banner();
+    cache_limit_page_card = new s_limit_page_card();
+    cache_reward_data = new s_qzone_reward_data();
+    cache_myFriendEntryItem = new s_mainPageTabItem();
+    cache_StuFunnySpace = new FunnySpace();
+    cache_map_entrys = new HashMap();
+    localObject = new s_mainPageTabItem();
+    cache_map_entrys.put(Integer.valueOf(0), localObject);
+    cache_stShangchengInfo = (byte[])new byte[1];
+    ((byte[])cache_stShangchengInfo)[0] = 0;
   }
   
   public mobile_main_page_rsp() {}
   
-  public mobile_main_page_rsp(s_main_page params_main_page, s_profile params_profile, s_count params_count, s_visit params_visit1, s_birthday params_birthday, s_gift params_gift, s_friendreq params_friendreq, s_special params_special, s_mayknow params_mayknow, s_part_error params_part_error, s_appinfo params_appinfo, s_rec_photo_list params_rec_photo_list, s_visit params_visit2, ArrayList paramArrayList1, ArrayList paramArrayList2, s_read_space params_read_space, String paramString1, int paramInt1, s_flower params_flower, s_game params_game, Map paramMap, long paramLong, s_friend_ship params_friend_ship, byte paramByte1, boolean paramBoolean1, int paramInt2, ArrayList paramArrayList3, ArrayList paramArrayList4, byte paramByte2, byte paramByte3, ArrayList paramArrayList5, s_msgb_festival params_msgb_festival, s_brandspace_h5 params_brandspace_h5, s_campus_qz params_campus_qz, byte[] paramArrayOfByte, byte paramByte4, s_tab_list params_tab_list, String paramString2, String paramString3, boolean paramBoolean2, s_sq_mainpage_switch params_sq_mainpage_switch)
+  public mobile_main_page_rsp(s_main_page params_main_page, s_profile params_profile, s_count params_count, s_visit params_visit1, s_birthday params_birthday, s_gift params_gift, s_friendreq params_friendreq, s_special params_special, s_mayknow params_mayknow, s_part_error params_part_error, s_appinfo params_appinfo, s_rec_photo_list params_rec_photo_list, s_visit params_visit2, ArrayList<byte[]> paramArrayList, ArrayList<single_feed> paramArrayList1, s_read_space params_read_space, String paramString1, int paramInt1, s_flower params_flower, s_game params_game, Map<Integer, s_red_comm> paramMap, long paramLong, s_friend_ship params_friend_ship, byte paramByte1, boolean paramBoolean1, int paramInt2, ArrayList<MusicInfo> paramArrayList2, ArrayList<s_app_acc> paramArrayList3, byte paramByte2, byte paramByte3, ArrayList<QueryADBannerUnit> paramArrayList4, s_msgb_festival params_msgb_festival, s_brandspace_h5 params_brandspace_h5, s_campus_qz params_campus_qz, byte[] paramArrayOfByte1, byte paramByte4, s_tab_list params_tab_list1, String paramString2, String paramString3, boolean paramBoolean2, s_sq_mainpage_switch params_sq_mainpage_switch, s_gamebar_pk_banner params_gamebar_pk_banner, s_limit_page_card params_limit_page_card, s_qzone_reward_data params_qzone_reward_data, s_mainPageTabItem params_mainPageTabItem, FunnySpace paramFunnySpace, Map<Integer, s_mainPageTabItem> paramMap1, byte[] paramArrayOfByte2, s_tab_list params_tab_list2)
   {
     this.mainpage = params_main_page;
     this.profile = params_profile;
@@ -145,8 +173,8 @@ public final class mobile_main_page_rsp
     this.appinfo = params_appinfo;
     this.photos = params_rec_photo_list;
     this.visit_no_right = params_visit2;
-    this.photos_buf = paramArrayList1;
-    this.recent_photos = paramArrayList2;
+    this.photos_buf = paramArrayList;
+    this.recent_photos = paramArrayList1;
     this.readspace = params_read_space;
     this.attach_info = paramString1;
     this.no_update = paramInt1;
@@ -158,21 +186,29 @@ public final class mobile_main_page_rsp
     this.green_diamond_flag = paramByte1;
     this.music_can_play = paramBoolean1;
     this.all_music_nums = paramInt2;
-    this.all_music_list = paramArrayList3;
-    this.all_acc = paramArrayList4;
+    this.all_music_list = paramArrayList2;
+    this.all_acc = paramArrayList3;
     this.wifi_auto_play = paramByte2;
     this.play_mode_flag = paramByte3;
-    this.adv_banner = paramArrayList5;
+    this.adv_banner = paramArrayList4;
     this.msgb_festival = params_msgb_festival;
     this.brandspace_h5 = params_brandspace_h5;
     this.campus_qz = params_campus_qz;
-    this.bgvoice_buf = paramArrayOfByte;
+    this.bgvoice_buf = paramArrayOfByte1;
     this.loop_playback_flag = paramByte4;
-    this.tab_lst = params_tab_list;
+    this.tab_lst = params_tab_list1;
     this.share_bg_url = paramString2;
     this.qzmall_cover_url = paramString3;
     this.open_msg_board = paramBoolean2;
     this.sq_mainpage_switch = params_sq_mainpage_switch;
+    this.pk_banner = params_gamebar_pk_banner;
+    this.limit_page_card = params_limit_page_card;
+    this.reward_data = params_qzone_reward_data;
+    this.myFriendEntryItem = params_mainPageTabItem;
+    this.StuFunnySpace = paramFunnySpace;
+    this.map_entrys = paramMap1;
+    this.stShangchengInfo = paramArrayOfByte2;
+    this.tab_lst_mq = params_tab_list2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -218,6 +254,14 @@ public final class mobile_main_page_rsp
     this.qzmall_cover_url = paramJceInputStream.readString(38, false);
     this.open_msg_board = paramJceInputStream.read(this.open_msg_board, 39, false);
     this.sq_mainpage_switch = ((s_sq_mainpage_switch)paramJceInputStream.read(cache_sq_mainpage_switch, 40, false));
+    this.pk_banner = ((s_gamebar_pk_banner)paramJceInputStream.read(cache_pk_banner, 41, false));
+    this.limit_page_card = ((s_limit_page_card)paramJceInputStream.read(cache_limit_page_card, 42, false));
+    this.reward_data = ((s_qzone_reward_data)paramJceInputStream.read(cache_reward_data, 43, false));
+    this.myFriendEntryItem = ((s_mainPageTabItem)paramJceInputStream.read(cache_myFriendEntryItem, 44, false));
+    this.StuFunnySpace = ((FunnySpace)paramJceInputStream.read(cache_StuFunnySpace, 45, false));
+    this.map_entrys = ((Map)paramJceInputStream.read(cache_map_entrys, 46, false));
+    this.stShangchengInfo = ((byte[])paramJceInputStream.read(cache_stShangchengInfo, 47, false));
+    this.tab_lst_mq = ((s_tab_list)paramJceInputStream.read(cache_tab_lst_mq, 48, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -326,6 +370,30 @@ public final class mobile_main_page_rsp
     paramJceOutputStream.write(this.open_msg_board, 39);
     if (this.sq_mainpage_switch != null) {
       paramJceOutputStream.write(this.sq_mainpage_switch, 40);
+    }
+    if (this.pk_banner != null) {
+      paramJceOutputStream.write(this.pk_banner, 41);
+    }
+    if (this.limit_page_card != null) {
+      paramJceOutputStream.write(this.limit_page_card, 42);
+    }
+    if (this.reward_data != null) {
+      paramJceOutputStream.write(this.reward_data, 43);
+    }
+    if (this.myFriendEntryItem != null) {
+      paramJceOutputStream.write(this.myFriendEntryItem, 44);
+    }
+    if (this.StuFunnySpace != null) {
+      paramJceOutputStream.write(this.StuFunnySpace, 45);
+    }
+    if (this.map_entrys != null) {
+      paramJceOutputStream.write(this.map_entrys, 46);
+    }
+    if (this.stShangchengInfo != null) {
+      paramJceOutputStream.write(this.stShangchengInfo, 47);
+    }
+    if (this.tab_lst_mq != null) {
+      paramJceOutputStream.write(this.tab_lst_mq, 48);
     }
   }
 }

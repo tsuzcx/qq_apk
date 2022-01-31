@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a20c5" android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <RelativeLayout android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c019a" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d030f" android:layout_alignParentBottom="true">
-        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a20c6" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021660" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0311" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0311" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0317" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0316" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" android:contentDescription="重拍照片" />
-        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a20c7" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021684" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0311" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0311" android:layout_marginRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0317" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0316" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:contentDescription="发送照片" />
-    </RelativeLayout>
-</RelativeLayout>

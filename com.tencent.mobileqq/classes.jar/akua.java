@@ -1,19 +1,46 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.webview.WebSecurityPlugin;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 class akua
-  implements Runnable
+  extends axxh
 {
-  akua(aktz paramaktz, boolean paramBoolean, Bundle paramBundle) {}
-  
-  public void run()
+  akua(aktx paramaktx, QQAppInterface paramQQAppInterface, String paramString, axxi paramaxxi, axro paramaxro, akud paramakud, akuc paramakuc)
   {
-    this.jdField_a_of_type_Aktz.a.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
+    super(paramQQAppInterface, paramString, paramaxxi, paramaxro);
+  }
+  
+  protected void realCancel()
+  {
+    QLog.i("AREngine_ARPreSoResourceDownload", 1, " HttpEngineTask realCancel");
+    synchronized (aktx.a(this.jdField_a_of_type_Aktx))
+    {
+      akuc localakuc = (akuc)aktx.a(this.jdField_a_of_type_Aktx).get(this.jdField_a_of_type_Akud.b);
+      if (localakuc != null) {
+        localakuc.b();
+      }
+      super.realCancel();
+      return;
+    }
+  }
+  
+  protected void realStart()
+  {
+    QLog.i("AREngine_ARPreSoResourceDownload", 1, " HttpEngineTask  realStart");
+    synchronized (aktx.a(this.jdField_a_of_type_Aktx))
+    {
+      akuc localakuc = (akuc)aktx.a(this.jdField_a_of_type_Aktx).get(this.jdField_a_of_type_Akud.b);
+      if (localakuc != null) {
+        this.jdField_a_of_type_Akuc.a();
+      }
+      super.realStart();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akua
  * JD-Core Version:    0.7.0.1
  */

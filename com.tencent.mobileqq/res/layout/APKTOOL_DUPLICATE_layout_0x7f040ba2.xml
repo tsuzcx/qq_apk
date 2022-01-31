@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33db" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a310e" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040bb1" />
-    <com.tencent.mobileqq.widget.RightArrowTextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c01de" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03a0" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02043f" android:padding="10.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="50.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2a20" android:drawablePadding="10.0dip" />
-</LinearLayout>

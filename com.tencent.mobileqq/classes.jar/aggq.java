@@ -1,28 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ocr.OcrControl;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import mqq.util.WeakReference;
 
-public class aggq
-  implements View.OnClickListener
+class aggq
+  implements apca
 {
-  public aggq(ScanOcrActivity paramScanOcrActivity) {}
+  aggq(aggm paramaggm) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if ((ScanOcrActivity.a(this.a) == 1) && ((ScanOcrActivity.b(this.a) == 0) || (ScanOcrActivity.b(this.a) == 4)))
-    {
-      ScanOcrActivity.a(this.a).a();
-      ScanOcrActivity.a(this.a, false);
-      ScanOcrActivity.b(this.a);
-      return;
-    }
-    this.a.finish();
+    this.a.e();
+  }
+  
+  public void b()
+  {
+    ((NewPhotoListActivity)this.a.a.get()).c.setClickable(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aggq
  * JD-Core Version:    0.7.0.1
  */

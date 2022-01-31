@@ -1,41 +1,20 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
 
-class skn
-  implements Runnable
+public class skn
+  implements skf
 {
-  skn(skk paramskk) {}
+  public skn(StoryVideoUploadTask paramStoryVideoUploadTask, skl paramskl) {}
   
-  public void run()
+  public void a(ske paramske)
   {
-    long l = SharedPreUtils.a(this.a.a.a.getApplication(), this.a.a.a.getCurrentAccountUin());
-    if (System.currentTimeMillis() - l >= 86400000L)
-    {
-      localUpgradeTIMWrapper = UpgradeTIMWrapper.a();
-      if (localUpgradeTIMWrapper != null)
-      {
-        localMessage = this.a.a.b.obtainMessage(1134045);
-        localMessage.obj = localUpgradeTIMWrapper;
-        this.a.a.a(new sko(this, localMessage));
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      UpgradeTIMWrapper localUpgradeTIMWrapper;
-      Message localMessage;
-      return;
-    }
-    QLog.e("UpgradeTIMWrapper", 2, "Conversation onReceiveShowTIMUpgradeTips smaller than 24 hours");
+    this.jdField_a_of_type_Skl.l = ((sjz)paramske).b;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoUploadTask.a(1, new ErrorMessage());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     skn
  * JD-Core Version:    0.7.0.1
  */

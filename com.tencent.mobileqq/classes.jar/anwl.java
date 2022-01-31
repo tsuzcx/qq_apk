@@ -1,23 +1,42 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.text.DynamicTextItem.TextMap;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
 
-public final class anwl
-  implements Parcelable.Creator
+public class anwl
+  implements Animation.AnimationListener
 {
-  public DynamicTextItem.TextMap a(Parcel paramParcel)
+  private int jdField_a_of_type_Int = 0;
+  private View jdField_a_of_type_AndroidViewView;
+  
+  public anwl(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView, int paramInt, View paramView)
   {
-    return new DynamicTextItem.TextMap(paramParcel);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidViewView = paramView;
   }
   
-  public DynamicTextItem.TextMap[] a(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new DynamicTextItem.TextMap[paramInt];
+    if (this.jdField_a_of_type_AndroidViewView == null) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Int == 0)
+      {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        return;
+      }
+    } while (this.jdField_a_of_type_Int != 1);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anwl
  * JD-Core Version:    0.7.0.1
  */

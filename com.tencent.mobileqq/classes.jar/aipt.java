@@ -1,23 +1,24 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder;
-import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.OnBuiltListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import java.util.Comparator;
 
-public class aipt
-  implements Runnable
+class aipt
+  implements Comparator<aipv>
 {
-  public aipt(SceneBuilder paramSceneBuilder, SpriteGLView paramSpriteGLView, SceneBuilder.OnBuiltListener paramOnBuiltListener) {}
+  aipt(aips paramaips) {}
   
-  public void run()
+  public int a(aipv paramaipv1, aipv paramaipv2)
   {
-    String str = SceneBuilder.a(SceneBuilder.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder) + "/scene.json");
-    new Handler(Looper.getMainLooper()).post(new aipu(this, str));
+    if (paramaipv1.a == paramaipv2.a) {
+      return 0;
+    }
+    if (paramaipv1.a > paramaipv2.a) {
+      return 1;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aipt
  * JD-Core Version:    0.7.0.1
  */

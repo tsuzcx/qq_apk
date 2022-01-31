@@ -1,22 +1,33 @@
 package com.tencent.mobileqq.model;
 
-import aerd;
+import arok;
+import arol;
 import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public class QueryTask
+public class QueryTask<Param, Result>
+  implements Runnable
 {
-  public QueryCallback a;
-  public QueryTask.Query a;
+  public arok<Result> a;
+  public arol<Param, Result> a;
+  private Param a;
   
-  public QueryTask(QueryTask.Query paramQuery, QueryCallback paramQueryCallback)
+  public QueryTask(arol<Param, Result> paramarol, arok<Result> paramarok)
   {
-    this.jdField_a_of_type_ComTencentMobileqqModelQueryTask$Query = paramQuery;
-    this.jdField_a_of_type_ComTencentMobileqqModelQueryCallback = paramQueryCallback;
+    this.jdField_a_of_type_Arol = paramarol;
+    this.jdField_a_of_type_Arok = paramarok;
   }
   
-  public void a(Object paramObject)
+  public void a(Param paramParam)
   {
-    ThreadManager.post(new aerd(this, paramObject), 5, null, true);
+    this.jdField_a_of_type_JavaLangObject = paramParam;
+    ThreadManager.excute(this, 32, null, true);
+  }
+  
+  public void run()
+  {
+    Object localObject = this.jdField_a_of_type_Arol.a(this.jdField_a_of_type_JavaLangObject);
+    ThreadManager.getUIHandler().post(new QueryTask.1(this, localObject));
   }
 }
 

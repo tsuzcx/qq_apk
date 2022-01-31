@@ -1,36 +1,44 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.app.Activity;
+import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.dinifly.ViewAnimation;
 
-public class vcz
-  extends AnimatorListenerAdapter
+public abstract class vcz<T extends vcy>
 {
-  public vcz(GivingHeartItemBuilder paramGivingHeartItemBuilder) {}
+  protected int a;
+  public final View a;
+  public T a;
   
-  public void onAnimationStart(Animator paramAnimator)
+  protected vcz(@NonNull Context paramContext, ViewGroup paramViewGroup)
   {
-    super.onAnimationStart(paramAnimator);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation != null)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation.mImageLayer = null;
-      paramAnimator = ((ViewGroup)((Activity)this.a.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView()).getChildAt(0).findViewById(2131363510);
-      if (paramAnimator != null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation.setDuration(this.a.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getDuration());
-        paramAnimator.startAnimation(this.a.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation);
-      }
+    this.jdField_a_of_type_AndroidViewView = a(paramContext, paramViewGroup);
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      throw new NullPointerException("onCreateView can not return null");
     }
+  }
+  
+  protected abstract View a(@NonNull Context paramContext, ViewGroup paramViewGroup);
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Vcy = null;
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public void a(T paramT, int paramInt)
+  {
+    this.jdField_a_of_type_Vcy = paramT;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Vcy != null) && (this.jdField_a_of_type_Vcy.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vcz
  * JD-Core Version:    0.7.0.1
  */

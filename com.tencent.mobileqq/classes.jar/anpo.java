@@ -1,67 +1,23 @@
-import com.tencent.mobileqq.util.EndianUtil;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo.MiniApp;
 
-final class anpo
+public final class anpo
+  implements Parcelable.Creator<MiniAppRecommInfo.MiniApp>
 {
-  public static int d = 16;
-  int jdField_a_of_type_Int = 538116905;
-  short jdField_a_of_type_Short = 1;
-  int jdField_b_of_type_Int;
-  short jdField_b_of_type_Short = 0;
-  int c;
-  
-  public int a()
+  public MiniAppRecommInfo.MiniApp a(Parcel paramParcel)
   {
-    return this.jdField_b_of_type_Int;
+    return new MiniAppRecommInfo.MiniApp(paramParcel);
   }
   
-  public void a(int paramInt)
+  public MiniAppRecommInfo.MiniApp[] a(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    byte[] arrayOfByte = new byte[4];
-    System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, 4);
-    this.jdField_a_of_type_Int = EndianUtil.a(arrayOfByte);
-    arrayOfByte = new byte[2];
-    System.arraycopy(paramArrayOfByte, 4, arrayOfByte, 0, 2);
-    this.jdField_a_of_type_Short = EndianUtil.a(arrayOfByte);
-    arrayOfByte = new byte[4];
-    System.arraycopy(paramArrayOfByte, 6, arrayOfByte, 0, 4);
-    this.jdField_b_of_type_Int = EndianUtil.a(arrayOfByte);
-    arrayOfByte = new byte[4];
-    System.arraycopy(paramArrayOfByte, 10, arrayOfByte, 0, 4);
-    this.c = EndianUtil.a(arrayOfByte);
-    arrayOfByte = new byte[2];
-    System.arraycopy(paramArrayOfByte, 14, arrayOfByte, 0, 2);
-    this.jdField_b_of_type_Short = EndianUtil.a(arrayOfByte);
-  }
-  
-  public byte[] a()
-  {
-    byte[] arrayOfByte = new byte[16];
-    System.arraycopy(EndianUtil.a(this.jdField_a_of_type_Int), 0, arrayOfByte, 0, 4);
-    System.arraycopy(EndianUtil.a(this.jdField_a_of_type_Short), 0, arrayOfByte, 4, 2);
-    System.arraycopy(EndianUtil.a(this.jdField_b_of_type_Int), 0, arrayOfByte, 6, 4);
-    System.arraycopy(EndianUtil.a(this.c), 0, arrayOfByte, 10, 4);
-    System.arraycopy(EndianUtil.a(this.jdField_b_of_type_Short), 0, arrayOfByte, 14, 2);
-    return arrayOfByte;
-  }
-  
-  public int b()
-  {
-    return this.c;
-  }
-  
-  public void b(int paramInt)
-  {
-    this.c = paramInt;
+    return new MiniAppRecommInfo.MiniApp[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anpo
  * JD-Core Version:    0.7.0.1
  */

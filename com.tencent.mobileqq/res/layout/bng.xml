@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="230.0dip">
+        <com.tencent.mobileqq.widget.AnyScaleTypeImageView android:id="@id/a82" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <cooperation.qzone.contentbox.QzoneMsgViewPager android:id="@id/kwk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/ayq" />
+    </FrameLayout>
+    <TextView android:textSize="16.0sp" android:textColor="#ff000000" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/j8_" android:background="@drawable/ay9" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="74.0dip" android:maxLines="2" android:lineSpacingExtra="5.0dip" />
+</LinearLayout>

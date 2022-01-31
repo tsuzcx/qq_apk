@@ -5,13 +5,13 @@ import android.support.v4.util.DebugUtils;
 import java.io.FileDescriptor;
 import java.io.PrintWriter;
 
-public class Loader
+public class Loader<D>
 {
   boolean mAbandoned = false;
   boolean mContentChanged = false;
   Context mContext;
   int mId;
-  Loader.OnLoadCompleteListener mListener;
+  Loader.OnLoadCompleteListener<D> mListener;
   boolean mProcessingChange = false;
   boolean mReset = true;
   boolean mStarted = false;
@@ -32,18 +32,18 @@ public class Loader
     this.mProcessingChange = false;
   }
   
-  public String dataToString(Object paramObject)
+  public String dataToString(D paramD)
   {
     StringBuilder localStringBuilder = new StringBuilder(64);
-    DebugUtils.buildShortClassTag(paramObject, localStringBuilder);
+    DebugUtils.buildShortClassTag(paramD, localStringBuilder);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
   
-  public void deliverResult(Object paramObject)
+  public void deliverResult(D paramD)
   {
     if (this.mListener != null) {
-      this.mListener.onLoadComplete(this, paramObject);
+      this.mListener.onLoadComplete(this, paramD);
     }
   }
   
@@ -124,7 +124,7 @@ public class Loader
   
   protected void onStopLoading() {}
   
-  public void registerListener(int paramInt, Loader.OnLoadCompleteListener paramOnLoadCompleteListener)
+  public void registerListener(int paramInt, Loader.OnLoadCompleteListener<D> paramOnLoadCompleteListener)
   {
     if (this.mListener != null) {
       throw new IllegalStateException("There is already a listener registered");
@@ -182,7 +182,7 @@ public class Loader
     return localStringBuilder.toString();
   }
   
-  public void unregisterListener(Loader.OnLoadCompleteListener paramOnLoadCompleteListener)
+  public void unregisterListener(Loader.OnLoadCompleteListener<D> paramOnLoadCompleteListener)
   {
     if (this.mListener == null) {
       throw new IllegalStateException("No listener register");

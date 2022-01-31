@@ -1,21 +1,66 @@
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel.15;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.qphone.base.util.QLog;
+
 public class aowh
+  extends wlu
 {
-  final int jdField_a_of_type_Int;
-  final long jdField_a_of_type_Long;
-  final byte[] jdField_a_of_type_ArrayOfByte;
-  final int b;
+  public aowh(TroopFileModel.15 param15) {}
   
-  public aowh(byte[] paramArrayOfByte, int paramInt1, int paramInt2, long paramLong)
+  public void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, ByteStringMicro paramByteStringMicro1, String paramString4, ByteStringMicro paramByteStringMicro2, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Long = paramLong;
+    paramByteStringMicro1 = apck.a(paramByteStringMicro1);
+    paramString2 = null;
+    paramString1 = paramString2;
+    if (paramBoolean)
+    {
+      paramString1 = paramString2;
+      if (!TextUtils.isEmpty(paramByteStringMicro1))
+      {
+        paramInt1 = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.zipType;
+        paramString1 = "http://" + paramString3 + ":" + paramInt3 + "/ftn_compress_getfile/rkey=" + paramByteStringMicro1 + "&filetype=" + paramInt1 + "&path=" + befm.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.zipInnerPath) + "&";
+      }
+    }
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      if (this.a.jdField_a_of_type_Aovm != null) {
+        this.a.jdField_a_of_type_Aovm.a(paramString1, paramString4);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("zivonchen", 2, "url = " + paramString1 + ", cookies = " + paramString4);
+      }
+      if (this.a.this$0.a.a() != null)
+      {
+        paramString1 = String.valueOf(this.a.this$0.a.a().TroopUin);
+        if (this.a.this$0.a.a() == null) {
+          break label299;
+        }
+        paramString2 = apck.b(this.a.this$0.a.a().nFileType);
+        label269:
+        awqx.b(null, "dc00899", "Grp_files", "", "oper", "Clk_pre_video", 0, 0, paramString1, "", paramString2, "1");
+      }
+    }
+    label299:
+    do
+    {
+      return;
+      paramString1 = "";
+      break;
+      paramString2 = "unknow";
+      break label269;
+      if (this.a.jdField_a_of_type_Aovm != null) {
+        this.a.jdField_a_of_type_Aovm.c();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("zivonchen", 2, "url = " + paramString1 + ", cookies = " + paramString4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aowh
  * JD-Core Version:    0.7.0.1
  */

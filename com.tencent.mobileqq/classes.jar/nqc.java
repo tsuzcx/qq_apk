@@ -1,15 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playmode.child.TroopProfileVideoPlayMode;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.GiftPkgSelectDialog.1.1;
 
 public class nqc
-  implements DialogInterface.OnDismissListener
+  implements AdapterView.OnItemClickListener
 {
-  public nqc(TroopProfileVideoPlayMode paramTroopProfileVideoPlayMode) {}
+  nqc(nqb paramnqb) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.s();
+    nqb.a(this.a, paramInt);
+    nqb.a(this.a).notifyDataSetChanged();
+    nqb.a(this.a).postDelayed(new GiftPkgSelectDialog.1.1(this, paramInt), 100L);
   }
 }
 

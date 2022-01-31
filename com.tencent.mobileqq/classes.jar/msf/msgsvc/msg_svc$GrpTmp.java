@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class msg_svc$GrpTmp
-  extends MessageMicro
+  extends MessageMicro<GrpTmp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "group_uin", "to_uin" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L) }, GrpTmp.class);
   public final PBUInt64Field group_uin = PBField.initUInt64(0L);

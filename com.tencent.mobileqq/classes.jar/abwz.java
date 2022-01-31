@@ -1,32 +1,23 @@
-import android.os.Message;
-import com.tencent.mobileqq.campuscircle.CampusCircleObserver;
-import com.tencent.mobileqq.campuscircle.CampusCircleSelTopicFragment;
-import java.util.List;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
 public class abwz
-  extends CampusCircleObserver
+  implements View.OnClickListener
 {
-  public abwz(CampusCircleSelTopicFragment paramCampusCircleSelTopicFragment) {}
+  public abwz(TroopInfoActivity paramTroopInfoActivity, Dialog paramDialog) {}
   
-  public void a(boolean paramBoolean, List paramList1, List paramList2, List paramList3, List paramList4)
+  public void onClick(View paramView)
   {
-    if (!paramBoolean) {}
-    do
-    {
-      return;
-      if (paramList2 != null) {
-        Message.obtain(this.a.a, 1, 0, 0, paramList2).sendToTarget();
-      }
-      if (paramList3 != null) {
-        Message.obtain(this.a.a, 2, 0, 0, paramList3).sendToTarget();
-      }
-    } while ((paramList4 == null) || (paramList4.size() <= 0));
-    Message.obtain(this.a.a, 3, 0, 0, paramList4).sendToTarget();
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abwz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,96 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.common.util.NetworkUtil;
-import com.tencent.biz.qqstory.model.DefaultPlayerVideoListSynchronizer.RetryableSynchronizer;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHolder;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class nmx
-  implements View.OnClickListener
 {
-  public nmx(VideoPlayModeBase paramVideoPlayModeBase, VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder, int paramInt, String paramString) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
+  public String k;
+  public String l;
+  public String m;
+  public String n;
+  public String o;
+  public String p;
+  public String q;
+  public String r;
+  public String s;
+  public String t;
+  public String u;
+  public String v;
+  public String w;
   
-  public void onClick(View paramView)
+  public nmx(String paramString)
   {
-    if (!NetworkUtil.a(VideoPlayModeBase.a()))
-    {
-      QQToast.a(VideoPlayModeBase.a(), 1, 2131433227, 0).a();
-      return;
+    if (!TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AdvertisementSoftInfo", 2, "softData = " + paramString);
+      }
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
-    paramView = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.a(this.jdField_a_of_type_Int);
-    if ((paramView instanceof DefaultPlayerVideoListSynchronizer.RetryableSynchronizer))
-    {
-      ((DefaultPlayerVideoListSynchronizer.RetryableSynchronizer)paramView).a(this.jdField_a_of_type_JavaLangString, new nmy(this));
-      return;
+    while (!QLog.isColorLevel()) {
+      try
+      {
+        paramString = new JSONObject(new JSONObject(paramString).optString("SoftAd"));
+        this.jdField_a_of_type_JavaLangString = paramString.optString("sAdID");
+        this.jdField_b_of_type_JavaLangString = paramString.optString("adImg");
+        this.jdField_d_of_type_JavaLangString = paramString.optString("adTxt");
+        this.jdField_c_of_type_JavaLangString = paramString.optString("adAbb");
+        this.jdField_e_of_type_JavaLangString = paramString.optString("buttonTxt");
+        this.jdField_f_of_type_JavaLangString = paramString.optString("jmpUrl");
+        this.g = paramString.optString("appScheme");
+        this.h = paramString.optString("miniProgramUrl");
+        this.jdField_a_of_type_Int = paramString.optInt("contentType");
+        this.jdField_b_of_type_Int = paramString.optInt("video_percent");
+        this.jdField_c_of_type_Int = paramString.optInt("sourceId");
+        this.jdField_d_of_type_Int = paramString.optInt("bizPlatId");
+        this.jdField_e_of_type_Int = paramString.optInt("goodsType");
+        this.i = paramString.optString("goodsId");
+        this.j = paramString.optString("goodsName");
+        this.jdField_f_of_type_Int = paramString.optInt("accountId");
+        this.k = paramString.optString("goodsPrice");
+        this.l = paramString.optString("goodsPromotionPrice");
+        this.m = paramString.optString("goodsPromotionTxt");
+        paramString = new JSONObject(paramString.optString("extendInfo"));
+        this.n = paramString.optString("game_pkg_name");
+        this.o = paramString.optString("game_app_id");
+        this.p = paramString.optString("game_app_name");
+        this.q = paramString.optString("game_apk_url");
+        this.r = paramString.optString("app_download_schema");
+        this.s = paramString.optString("download_api_url");
+        this.t = paramString.optString("downloadNum");
+        this.u = paramString.optString("game_adtag");
+        this.v = paramString.optString("__ADSTR__");
+        this.w = paramString.optString("cmsid");
+        if (QLog.isColorLevel()) {
+          QLog.d("AdvertisementSoftInfo", 2, "AdvertisementSoftInfo = " + toString());
+        }
+        return;
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("AdvertisementSoftInfo", 2, "AdvertisementSoftInfo Exception = " + paramString.getMessage());
+          }
+        }
+      }
     }
-    SLog.e("VideoPlayModeBase", "cannot found synchronizer , vid = %s , index = %d", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int) });
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.t();
+    QLog.d("AdvertisementSoftInfo", 2, "softData = null");
   }
 }
 

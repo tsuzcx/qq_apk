@@ -6,10 +6,10 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class SubMsgType0x27$ModSnsGeneralInfo
-  extends MessageMicro
+  extends MessageMicro<ModSnsGeneralInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "rpt_msg_sns_general_infos" }, new Object[] { null }, ModSnsGeneralInfo.class);
-  public final PBRepeatMessageField rpt_msg_sns_general_infos = PBField.initRepeatMessage(SubMsgType0x27.SnsUpateBuffer.class);
+  public final PBRepeatMessageField<SubMsgType0x27.SnsUpateBuffer> rpt_msg_sns_general_infos = PBField.initRepeatMessage(SubMsgType0x27.SnsUpateBuffer.class);
 }
 
 

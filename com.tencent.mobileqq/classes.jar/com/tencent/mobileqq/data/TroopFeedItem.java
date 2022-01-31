@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
+import atmo;
+import baip;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
-import com.tencent.mobileqq.utils.StringUtil;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="id")
 public class TroopFeedItem
-  extends Entity
+  extends atmo
 {
   public static final int ABLUM_FEED_TYPE = 18;
   public static final String APPID_STORY_PGC_CONTENT = "1105527223";
@@ -46,8 +46,8 @@ public class TroopFeedItem
   
   public boolean isVaild()
   {
-    if ((StringUtil.a(this.tag)) || (StringUtil.a(this.title))) {}
-    while (((this.type == 0) || (this.type == 131)) && (StringUtil.a(this.content))) {
+    if ((baip.a(this.tag)) || (baip.a(this.title))) {}
+    while (((this.type == 0) || (this.type == 131)) && (baip.a(this.content))) {
       return false;
     }
     return true;

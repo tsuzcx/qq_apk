@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_service$ReqGetCommentList
-  extends MessageMicro
+  extends MessageMicro<ReqGetCommentList>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField cookie = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -24,7 +24,7 @@ public final class qqstory_service$ReqGetCommentList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetCommentList
  * JD-Core Version:    0.7.0.1
  */

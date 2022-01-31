@@ -1,22 +1,32 @@
-import android.view.View;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.ContainerViewListener;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-
-class ansk
-  implements ProviderContainerView.ContainerViewListener
+public abstract interface ansk
 {
-  ansk(ansi paramansi) {}
+  public abstract long a();
   
-  public void a(View paramView, int paramInt)
-  {
-    QIMEffectCameraCaptureUnit.b(this.a.a);
-  }
+  public abstract void a(int paramInt);
   
-  public void y_() {}
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt);
+  
+  public abstract int c();
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt);
+  
+  public abstract void d();
+  
+  public abstract void d(int paramInt);
+  
+  public abstract void e(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ansk
  * JD-Core Version:    0.7.0.1
  */

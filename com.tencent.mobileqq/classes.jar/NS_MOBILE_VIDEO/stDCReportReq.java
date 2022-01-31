@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class stDCReportReq
   extends JceStruct
 {
-  static ArrayList cache_data = new ArrayList();
-  public ArrayList data;
+  static ArrayList<stMetaReportDataItem> cache_data = new ArrayList();
+  public ArrayList<stMetaReportDataItem> data;
   public String dcid = "";
   
   static
@@ -20,7 +20,7 @@ public final class stDCReportReq
   
   public stDCReportReq() {}
   
-  public stDCReportReq(String paramString, ArrayList paramArrayList)
+  public stDCReportReq(String paramString, ArrayList<stMetaReportDataItem> paramArrayList)
   {
     this.dcid = paramString;
     this.data = paramArrayList;

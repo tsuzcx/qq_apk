@@ -1,76 +1,120 @@
-import com.tencent.mobileqq.troop.widget.TrooFileTextViewMenuBuilder;
-import com.tencent.mobileqq.troop.widget.TroopFileItemBuilder;
-import com.tencent.widget.SwipRightMenuBuilder.SwipRightMenuItem;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageForStructing;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class akaz
-  extends TrooFileTextViewMenuBuilder
 {
-  public akaz(TroopFileItemBuilder paramTroopFileItemBuilder, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
+  public static int a(MessageRecord paramMessageRecord, int paramInt)
   {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+    paramMessageRecord = a(paramMessageRecord);
+    int j;
+    if (paramMessageRecord != null)
+    {
+      paramMessageRecord = paramMessageRecord.iterator();
+      int i = 0;
+      j = i;
+      if (!paramMessageRecord.hasNext()) {
+        break label62;
+      }
+      akba localakba = (akba)paramMessageRecord.next();
+      if (localakba.a != paramInt) {
+        break label64;
+      }
+      i = localakba.b + i;
+    }
+    label62:
+    label64:
+    for (;;)
+    {
+      break;
+      j = 0;
+      return j;
+    }
   }
   
-  public void a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
+  public static List<akba> a(MessageRecord paramMessageRecord)
   {
-    if ((paramObject instanceof Object[]))
+    ArrayList localArrayList;
+    String str;
+    int j;
+    int i;
+    if (((paramMessageRecord instanceof MessageForStructing)) && ((((MessageForStructing)paramMessageRecord).structingMsg instanceof AbsShareMsg)) && (((MessageForStructing)paramMessageRecord).structingMsg.mMsgServiceID == 52))
     {
-      paramObject = (Object[])paramObject;
-      if (paramObject.length == 2) {
-        break label22;
-      }
-    }
-    label22:
-    do
-    {
-      do
+      paramMessageRecord = (AbsShareMsg)((MessageForStructing)paramMessageRecord).structingMsg;
+      localArrayList = new ArrayList();
+      Iterator localIterator = paramMessageRecord.iterator();
+      for (;;)
       {
-        return;
-        paramObject = paramObject[0];
-      } while (!(paramObject instanceof boolean[]));
-      paramObject = (boolean[])paramObject;
-    } while ((paramArrayOfSwipRightMenuItem == null) || (paramArrayOfSwipRightMenuItem.length <= 0) || (paramObject.length != 3));
-    if ((paramArrayOfSwipRightMenuItem.length < 0) && (paramObject[0] != 0))
-    {
-      paramArrayOfSwipRightMenuItem[0].b = 0;
-      paramArrayOfSwipRightMenuItem[0].a = 0;
-    }
-    for (int i = 1;; i = 0)
-    {
-      paramInt = i;
-      if (i < paramArrayOfSwipRightMenuItem.length)
-      {
-        paramInt = i;
-        if (paramObject[1] != 0)
+        if (localIterator.hasNext())
         {
-          paramArrayOfSwipRightMenuItem[i].b = 1;
-          paramArrayOfSwipRightMenuItem[i].a = 1;
-          paramInt = i + 1;
+          paramMessageRecord = (awul)localIterator.next();
+          if (paramMessageRecord != null)
+          {
+            str = ajjy.a(2131639480);
+            j = 1;
+            if ((paramMessageRecord instanceof awwx))
+            {
+              i = ((awwx)paramMessageRecord).a.getInt("count");
+              j = 1;
+              paramMessageRecord = str;
+            }
+          }
         }
       }
-      i = paramInt;
-      if (paramInt < paramArrayOfSwipRightMenuItem.length)
-      {
-        i = paramInt;
-        if (paramObject[2] != 0)
-        {
-          paramArrayOfSwipRightMenuItem[paramInt].b = 2;
-          paramArrayOfSwipRightMenuItem[paramInt].a = 0;
-          i = paramInt + 1;
-        }
-      }
-      while (i < paramArrayOfSwipRightMenuItem.length)
-      {
-        paramArrayOfSwipRightMenuItem[i].b = -1;
-        paramArrayOfSwipRightMenuItem[i].a = -1;
-        i += 1;
-      }
+    }
+    for (;;)
+    {
+      localArrayList.add(new akba(paramMessageRecord, j, i));
       break;
+      Object localObject = paramMessageRecord.h;
+      if (localObject != null)
+      {
+        i = j;
+        paramMessageRecord = str;
+        try
+        {
+          localObject = new JSONObject((String)localObject);
+          i = j;
+          paramMessageRecord = str;
+          str = ((JSONObject)localObject).getString("giftName");
+          i = j;
+          paramMessageRecord = str;
+          j = ((JSONObject)localObject).getInt("giftType");
+          i = j;
+          paramMessageRecord = str;
+          int k = ((JSONObject)localObject).getInt("giftCount");
+          i = k;
+          paramMessageRecord = str;
+        }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+          j = i;
+          i = 0;
+        }
+        continue;
+        return localArrayList;
+        return null;
+      }
+      else
+      {
+        i = 0;
+        j = 1;
+        paramMessageRecord = localJSONException;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akaz
  * JD-Core Version:    0.7.0.1
  */

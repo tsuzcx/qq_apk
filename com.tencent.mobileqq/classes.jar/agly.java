@@ -1,31 +1,34 @@
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.content.Context;
+import android.view.KeyEvent;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 
-class agly
-  implements Runnable
+public class agly
+  implements TextView.OnEditorActionListener
 {
-  agly(aglx paramaglx) {}
+  public agly(TransactionActivity paramTransactionActivity) {}
   
-  public void run()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    long l = System.currentTimeMillis() - ScanTorchActivity.a(this.a.a);
-    if (l > 300L)
+    if ((paramInt == 6) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
     {
-      if (TextUtils.isEmpty(ScanTorchActivity.b(this.a.a)))
-      {
-        ScanTorchActivity.s(this.a.a);
-        return;
+      if (TransactionActivity.a(this.a).isEnabled()) {
+        TransactionActivity.a(this.a).performClick();
       }
-      ScanTorchActivity.c(this.a.a, ScanTorchActivity.b(this.a.a));
-      return;
+      if (TransactionActivity.a(this.a) != null) {
+        ((InputMethodManager)TransactionActivity.a(this.a).getSystemService("input_method")).hideSoftInputFromWindow(TransactionActivity.c(this.a).getWindowToken(), 0);
+      }
     }
-    ScanTorchActivity.b(this.a.a).postDelayed(new aglz(this), 300L - l);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agly
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_0x8f9$GetLatestNodeInfoReq
-  extends MessageMicro
+  extends MessageMicro<GetLatestNodeInfoReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "uint32_node_type", "uint32_unread_count_flag" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0) }, GetLatestNodeInfoReq.class);
   public final PBUInt32Field uint32_node_type = PBField.initUInt32(0);
@@ -14,7 +14,7 @@ public final class oidb_0x8f9$GetLatestNodeInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8f9.oidb_0x8f9.GetLatestNodeInfoReq
  * JD-Core Version:    0.7.0.1
  */

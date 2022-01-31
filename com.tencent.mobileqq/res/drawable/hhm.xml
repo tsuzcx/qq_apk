@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="100" android:drawable="@drawable/hwi" />
+    <item android:duration="100" android:drawable="@drawable/hwj" />
+    <item android:duration="100" android:drawable="@drawable/hwk" />
+    <item android:duration="100" android:drawable="@drawable/hwl" />
+    <item android:duration="100" android:drawable="@drawable/hwm" />
+</animation-list>

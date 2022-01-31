@@ -1,22 +1,14 @@
-import android.app.Activity;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.open.downloadnew.MyAppApi;
-
-public class akvb
-  implements Runnable
+public abstract interface akvb
 {
-  public akvb(WebViewFragment paramWebViewFragment, Activity paramActivity) {}
+  public abstract void b();
   
-  public void run()
-  {
-    if (MyAppApi.d()) {
-      MyAppApi.a().a(this.jdField_a_of_type_AndroidAppActivity);
-    }
-  }
+  public abstract void b(int paramInt);
+  
+  public abstract void c(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akvb
  * JD-Core Version:    0.7.0.1
  */

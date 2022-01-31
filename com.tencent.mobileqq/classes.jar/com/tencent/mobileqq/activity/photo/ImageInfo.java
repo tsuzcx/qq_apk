@@ -1,15 +1,16 @@
 package com.tencent.mobileqq.activity.photo;
 
+import afzj;
+import afzv;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import xbw;
 
 public class ImageInfo
-  extends BaseImageInfo
+  extends afzj
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new xbw();
+  public static final Parcelable.Creator<ImageInfo> CREATOR = new afzv();
   public long a;
   public int b;
   public long b;

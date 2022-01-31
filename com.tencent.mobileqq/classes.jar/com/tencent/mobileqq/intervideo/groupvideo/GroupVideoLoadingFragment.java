@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.intervideo.groupvideo;
 
-import aebu;
-import aebv;
-import aebx;
+import ajjy;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -11,10 +9,15 @@ import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import aqkq;
+import aqkv;
+import aqkw;
+import aqkx;
+import aqkz;
+import aqlk;
+import aqmd;
+import badq;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import com.tencent.mobileqq.intervideo.huayang.Monitor;
-import com.tencent.mobileqq.utils.NetworkUtil;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 
@@ -25,23 +28,24 @@ public class GroupVideoLoadingFragment
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Context jdField_a_of_type_AndroidContentContext;
-  private Handler jdField_a_of_type_AndroidOsHandler = new aebx(this, Looper.getMainLooper());
-  private GVideoLoadingUI jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGVideoLoadingUI;
-  private GroupVideoManager jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGroupVideoManager;
-  private PluginLoadListener jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoPluginLoadListener = new aebv(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new aqkx(this, Looper.getMainLooper());
+  private aqkq jdField_a_of_type_Aqkq;
+  private aqkz jdField_a_of_type_Aqkz;
+  private aqlk jdField_a_of_type_Aqlk = new aqkw(this);
+  private IVPluginDataReporter jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
   
   private void a()
   {
-    if (!NetworkUtil.g(this.jdField_a_of_type_AndroidContentContext))
+    if (!badq.g(this.jdField_a_of_type_AndroidContentContext))
     {
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGVideoLoadingUI.a("网络连接错误，请检查网络后再试!", "");
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGVideoLoadingUI.c();
+      this.jdField_a_of_type_Aqkq.a(ajjy.a(2131639613), "");
+      this.jdField_a_of_type_Aqkq.c();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGVideoLoadingUI.a("正在检查环境", "群视频体验群，可尝鲜更酷炫的多人互动");
-    GroupVideoManager.a("group_video", new aebu(this));
+    this.jdField_a_of_type_Aqkq.a(ajjy.a(2131639609), ajjy.a(2131639605));
+    aqkz.a("group_video", new aqkv(this));
   }
   
   private void a(boolean paramBoolean)
@@ -60,13 +64,10 @@ public class GroupVideoLoadingFragment
       str1 = "checkVersion";
     }
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGroupVideoManager.a(this.jdField_a_of_type_AndroidContentContext, str2, str3, i, str1, str5, str4, str6, str7, this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoPluginLoadListener);
+    this.jdField_a_of_type_Aqkz.a(this.jdField_a_of_type_AndroidContentContext, str2, str3, i, str1, str5, str4, str6, str7, this.jdField_a_of_type_Aqlk);
   }
   
-  public void initWindowStyleAndAnimation(Activity paramActivity)
-  {
-    paramActivity.requestWindowFeature(1);
-  }
+  public void initWindowStyleAndAnimation(Activity paramActivity) {}
   
   public boolean needImmersive()
   {
@@ -80,26 +81,28 @@ public class GroupVideoLoadingFragment
   
   public boolean onBackEvent()
   {
-    Monitor.b("2856633");
-    StoryReportor.a("group_video", "exitLoadPage", this.jdField_b_of_type_Int, (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), new String[] { "", "", "", "7.6.8" });
+    aqmd.b("2856633");
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opType("exitLoadPage").opIn(this.jdField_b_of_type_Int).opResult((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long)).report();
     return super.onBackEvent();
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGroupVideoManager = ((GroupVideoManager)MobileQQ.sMobileQQ.waitAppRuntime(null).getManager(235));
+    this.jdField_a_of_type_Aqkz = ((aqkz)MobileQQ.sMobileQQ.waitAppRuntime(null).getManager(236));
     jdField_a_of_type_Boolean = true;
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2130969026, null);
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGVideoLoadingUI = new GVideoLoadingUI();
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGVideoLoadingUI.a(getActivity(), paramLayoutInflater);
+    paramLayoutInflater = paramLayoutInflater.inflate(2131493564, null);
+    this.jdField_a_of_type_Aqkq = new aqkq();
+    this.jdField_a_of_type_Aqkq.a(getActivity(), paramLayoutInflater);
     this.jdField_a_of_type_AndroidContentContext = getActivity();
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter = new IVPluginDataReporter();
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoIVPluginDataReporter.opDepartment("group_video");
     a();
-    Monitor.b("2856632");
+    aqmd.b("2856632");
     return paramLayoutInflater;
   }
   
@@ -107,14 +110,14 @@ public class GroupVideoLoadingFragment
   {
     super.onDestroy();
     jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoGroupVideoManager.a(getActivity());
+    this.jdField_a_of_type_Aqkz.a(getActivity());
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoGroupvideoPluginLoadListener = null;
+    this.jdField_a_of_type_Aqlk = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.GroupVideoLoadingFragment
  * JD-Core Version:    0.7.0.1
  */

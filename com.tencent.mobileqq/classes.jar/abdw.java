@@ -1,30 +1,26 @@
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import java.util.List;
 
-public final class abdw
+public class abdw
   implements View.OnClickListener
 {
-  public abdw(boolean paramBoolean, String paramString) {}
+  public abdw(NearbyActivity paramNearbyActivity) {}
   
   public void onClick(View paramView)
   {
-    paramView = new Intent();
-    paramView.setClassName("com.tencent.mobileqq", "com.tencent.mobileqq.activity.QQBrowserDelegationActivity");
-    paramView.putExtra("param_force_internal_browser", this.jdField_a_of_type_Boolean);
-    paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    paramView.putExtra("injectrecommend", false);
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if (localBaseActivity != null) {
-      localBaseActivity.startActivity(paramView);
+    int i = 0;
+    while (i < this.a.a.size())
+    {
+      ((View.OnClickListener)this.a.a.get(i)).onClick(paramView);
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abdw
  * JD-Core Version:    0.7.0.1
  */

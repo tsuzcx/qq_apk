@@ -1,29 +1,30 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
-import aevv;
-import aevw;
+import aeeh;
+import ajjy;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
+import asfy;
+import asfz;
+import bbfc;
+import bbfr;
+import bbfs;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.werewolves.WerewolvesHandler;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginInterface;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
 import com.tencent.widget.XListView;
 import java.util.ArrayList;
 
 public class GameQuickWordsPanel
   extends RelativeLayout
 {
+  public aeeh a;
+  public bbfs a;
   public SessionInfo a;
-  public GameRoomChatPie a;
   public QQAppInterface a;
-  public WerewolvesPluginManager a;
   XListView a;
   public String a;
-  public ArrayList a;
+  public ArrayList<String> a;
   
   public GameQuickWordsPanel(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,17 +34,17 @@ public class GameQuickWordsPanel
   
   public void a()
   {
-    ((aevw)this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter()).notifyDataSetChanged();
+    ((asfz)this.jdField_a_of_type_ComTencentWidgetXListView.getAdapter()).notifyDataSetChanged();
   }
   
-  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, GameRoomChatPie paramGameRoomChatPie)
+  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, aeeh paramaeeh)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
     this.jdField_a_of_type_JavaLangString = paramSessionInfo.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie = paramGameRoomChatPie;
-    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager = ((WerewolvesHandler)paramQQAppInterface.a(107)).a(this.jdField_a_of_type_JavaLangString);
-    paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a();
+    this.jdField_a_of_type_Aeeh = paramaeeh;
+    this.jdField_a_of_type_Bbfs = ((bbfc)paramQQAppInterface.a(107)).a(this.jdField_a_of_type_JavaLangString);
+    paramQQAppInterface = this.jdField_a_of_type_Bbfs.a();
     if (paramQQAppInterface != null)
     {
       paramQQAppInterface = paramQQAppInterface.a();
@@ -54,9 +55,9 @@ public class GameQuickWordsPanel
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131362992));
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new aevv(this));
-      paramQQAppInterface = new aevw(this);
+      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131301322));
+      this.jdField_a_of_type_ComTencentWidgetXListView.setOnItemClickListener(new asfy(this));
+      paramQQAppInterface = new asfz(this);
       this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(paramQQAppInterface);
       paramQQAppInterface.notifyDataSetChanged();
       return;
@@ -64,11 +65,11 @@ public class GameQuickWordsPanel
       break;
       label131:
       this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      this.jdField_a_of_type_JavaUtilArrayList.add("快点准备，我等到花儿都谢了!");
-      this.jdField_a_of_type_JavaUtilArrayList.add("高配玩家在此，狼人这局雪崩");
-      this.jdField_a_of_type_JavaUtilArrayList.add("怎么会推我？给你跪下了，大哥");
-      this.jdField_a_of_type_JavaUtilArrayList.add("这个发言优秀！感觉可以躺赢");
-      this.jdField_a_of_type_JavaUtilArrayList.add("分析的什么鬼，肯定铁狼!");
+      this.jdField_a_of_type_JavaUtilArrayList.add(ajjy.a(2131639266));
+      this.jdField_a_of_type_JavaUtilArrayList.add(ajjy.a(2131639267));
+      this.jdField_a_of_type_JavaUtilArrayList.add(ajjy.a(2131639270));
+      this.jdField_a_of_type_JavaUtilArrayList.add(ajjy.a(2131639269));
+      this.jdField_a_of_type_JavaUtilArrayList.add(ajjy.a(2131639268));
     }
   }
 }

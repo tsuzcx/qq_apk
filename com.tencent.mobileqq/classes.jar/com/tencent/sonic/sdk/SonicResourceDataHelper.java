@@ -25,19 +25,33 @@ public class SonicResourceDataHelper
       SonicDBHelper.getInstance().getWritableDatabase().delete("ResourceData", null, null);
       return;
     }
-    finally
+    catch (Throwable localThrowable)
     {
-      localObject = finally;
-      throw localObject;
+      for (;;)
+      {
+        SonicUtils.log("SonicSdk_SonicResourceDataHelper", 6, "getWritableDatabase encounter error." + localThrowable.getMessage());
+      }
     }
+    finally {}
   }
   
-  static List<ResourceData> getAllResourceData()
+  static List<SonicResourceDataHelper.ResourceData> getAllResourceData()
   {
     ArrayList localArrayList = new ArrayList();
-    Cursor localCursor = SonicDBHelper.getInstance().getWritableDatabase().query("ResourceData", getAllResourceDataColumn(), null, null, null, null, "");
-    while ((localCursor != null) && (localCursor.moveToNext())) {
-      localArrayList.add(queryResourceData(localCursor));
+    try
+    {
+      Cursor localCursor = SonicDBHelper.getInstance().getWritableDatabase().query("ResourceData", getAllResourceDataColumn(), null, null, null, null, "");
+      while ((localCursor != null) && (localCursor.moveToNext())) {
+        localArrayList.add(queryResourceData(localCursor));
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        SonicUtils.log("SonicSdk_SonicResourceDataHelper", 6, "getWritableDatabase encounter error." + localThrowable.getMessage());
+        Object localObject = null;
+      }
     }
     return localArrayList;
   }
@@ -48,7 +62,7 @@ public class SonicResourceDataHelper
   }
   
   @NonNull
-  private static ContentValues getContentValues(String paramString, ResourceData paramResourceData)
+  private static ContentValues getContentValues(String paramString, SonicResourceDataHelper.ResourceData paramResourceData)
   {
     ContentValues localContentValues = new ContentValues();
     localContentValues.put("resourceID", paramString);
@@ -59,43 +73,54 @@ public class SonicResourceDataHelper
     return localContentValues;
   }
   
-  private static ResourceData getResourceData(SQLiteDatabase paramSQLiteDatabase, String paramString)
+  private static SonicResourceDataHelper.ResourceData getResourceData(SQLiteDatabase paramSQLiteDatabase, String paramString)
   {
-    Cursor localCursor = paramSQLiteDatabase.query("ResourceData", getAllResourceDataColumn(), "resourceID=?", new String[] { paramString }, null, null, null);
-    paramString = null;
-    paramSQLiteDatabase = paramString;
-    if (localCursor != null)
+    Object localObject = null;
+    paramString = paramSQLiteDatabase.query("ResourceData", getAllResourceDataColumn(), "resourceID=?", new String[] { paramString }, null, null, null);
+    paramSQLiteDatabase = localObject;
+    if (paramString != null)
     {
-      paramSQLiteDatabase = paramString;
-      if (localCursor.moveToFirst()) {
-        paramSQLiteDatabase = queryResourceData(localCursor);
+      paramSQLiteDatabase = localObject;
+      if (paramString.moveToFirst()) {
+        paramSQLiteDatabase = queryResourceData(paramString);
       }
     }
-    if (localCursor != null) {
-      localCursor.close();
+    if (paramString != null) {
+      paramString.close();
     }
     return paramSQLiteDatabase;
   }
   
   @NonNull
-  public static ResourceData getResourceData(String paramString)
+  public static SonicResourceDataHelper.ResourceData getResourceData(String paramString)
   {
-    ResourceData localResourceData = getResourceData(SonicDBHelper.getInstance().getWritableDatabase(), paramString);
-    paramString = localResourceData;
-    if (localResourceData == null) {
-      paramString = new ResourceData();
+    try
+    {
+      paramString = getResourceData(SonicDBHelper.getInstance().getWritableDatabase(), paramString);
+      Object localObject = paramString;
+      if (paramString == null) {
+        localObject = new SonicResourceDataHelper.ResourceData();
+      }
+      return localObject;
     }
-    return paramString;
+    catch (Throwable paramString)
+    {
+      for (;;)
+      {
+        SonicUtils.log("SonicSdk_SonicResourceDataHelper", 6, "getWritableDatabase encounter error." + paramString.getMessage());
+        paramString = null;
+      }
+    }
   }
   
-  private static void insertResourceData(SQLiteDatabase paramSQLiteDatabase, String paramString, ResourceData paramResourceData)
+  private static void insertResourceData(SQLiteDatabase paramSQLiteDatabase, String paramString, SonicResourceDataHelper.ResourceData paramResourceData)
   {
     paramSQLiteDatabase.insert("ResourceData", null, getContentValues(paramString, paramResourceData));
   }
   
-  private static ResourceData queryResourceData(Cursor paramCursor)
+  private static SonicResourceDataHelper.ResourceData queryResourceData(Cursor paramCursor)
   {
-    ResourceData localResourceData = new ResourceData();
+    SonicResourceDataHelper.ResourceData localResourceData = new SonicResourceDataHelper.ResourceData();
     localResourceData.resourceId = paramCursor.getString(paramCursor.getColumnIndex("resourceID"));
     localResourceData.resourceSha1 = paramCursor.getString(paramCursor.getColumnIndex("resourceSha1"));
     localResourceData.resourceSize = paramCursor.getLong(paramCursor.getColumnIndex("resourceSize"));
@@ -106,10 +131,18 @@ public class SonicResourceDataHelper
   
   static void removeResourceData(String paramString)
   {
-    SonicDBHelper.getInstance().getWritableDatabase().delete("ResourceData", "resourceID=?", new String[] { paramString });
+    try
+    {
+      SonicDBHelper.getInstance().getWritableDatabase().delete("ResourceData", "resourceID=?", new String[] { paramString });
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      SonicUtils.log("SonicSdk_SonicResourceDataHelper", 6, "getWritableDatabase encounter error." + paramString.getMessage());
+    }
   }
   
-  private static void saveResourceData(SQLiteDatabase paramSQLiteDatabase, String paramString, ResourceData paramResourceData)
+  private static void saveResourceData(SQLiteDatabase paramSQLiteDatabase, String paramString, SonicResourceDataHelper.ResourceData paramResourceData)
   {
     paramResourceData.resourceId = paramString;
     if (getResourceData(paramSQLiteDatabase, paramString) != null)
@@ -120,31 +153,22 @@ public class SonicResourceDataHelper
     insertResourceData(paramSQLiteDatabase, paramString, paramResourceData);
   }
   
-  static void saveResourceData(String paramString, ResourceData paramResourceData)
+  static void saveResourceData(String paramString, SonicResourceDataHelper.ResourceData paramResourceData)
   {
-    saveResourceData(SonicDBHelper.getInstance().getWritableDatabase(), paramString, paramResourceData);
+    try
+    {
+      saveResourceData(SonicDBHelper.getInstance().getWritableDatabase(), paramString, paramResourceData);
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      SonicUtils.log("SonicSdk_SonicResourceDataHelper", 6, "getWritableDatabase encounter error." + paramString.getMessage());
+    }
   }
   
-  private static void updateResourceData(SQLiteDatabase paramSQLiteDatabase, String paramString, ResourceData paramResourceData)
+  private static void updateResourceData(SQLiteDatabase paramSQLiteDatabase, String paramString, SonicResourceDataHelper.ResourceData paramResourceData)
   {
     paramSQLiteDatabase.update("ResourceData", getContentValues(paramString, paramResourceData), "resourceID=?", new String[] { paramString });
-  }
-  
-  public static class ResourceData
-  {
-    public long expiredTime;
-    long lastUpdateTime;
-    String resourceId;
-    public String resourceSha1;
-    public long resourceSize;
-    
-    public void reset()
-    {
-      this.resourceSha1 = "";
-      this.resourceSize = 0L;
-      this.lastUpdateTime = 0L;
-      this.expiredTime = 0L;
-    }
   }
 }
 

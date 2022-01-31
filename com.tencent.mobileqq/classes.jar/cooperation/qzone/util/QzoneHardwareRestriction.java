@@ -6,7 +6,7 @@ import android.app.ActivityManager.MemoryInfo;
 import android.os.Build.VERSION;
 import android.os.Environment;
 import android.os.StatFs;
-import aniy;
+import bggc;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -27,6 +27,11 @@ public class QzoneHardwareRestriction
   public static int sCpuCoreNum = -1;
   private static long sCpuMaxFreq;
   
+  public static boolean equalHardwareRestriction(int paramInt1, int paramInt2)
+  {
+    return (paramInt1 <= getCurrentMemLevelNew()) && (paramInt2 <= getCurrentCpuFreSumLevel());
+  }
+  
   public static long getAvailableMem()
   {
     ActivityManager localActivityManager = (ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity");
@@ -44,6 +49,39 @@ public class QzoneHardwareRestriction
       initCpuFreq();
     }
     return sCpuMaxFreq;
+  }
+  
+  public static int getCurrentCpuFreSumLevel()
+  {
+    if (curCpuLevel != -1) {
+      return curCpuLevel;
+    }
+    curCpuLevel = 1;
+    Object localObject = QzoneConfig.getInstance().getConfig("QZoneSetting", "hardwarerestriction_cpu_fre_sum", "4000,8000,14000");
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneHardwareRestriction", 2, "cpuLevelList " + (String)localObject);
+    }
+    localObject = ((String)localObject).split(",");
+    long l = getCpuMaxFreq() / 1024L * getNumberOfCores();
+    if ((localObject.length == 3) && (l != 0L))
+    {
+      if ((float)l >= Float.valueOf(localObject[0]).floatValue()) {
+        break label114;
+      }
+      curCpuLevel = 0;
+    }
+    for (;;)
+    {
+      return curCpuLevel;
+      label114:
+      if (((float)l >= Float.valueOf(localObject[0]).floatValue()) && ((float)l < Float.valueOf(localObject[1]).floatValue())) {
+        curCpuLevel = 1;
+      } else if (((float)l >= Float.valueOf(localObject[1]).floatValue()) && ((float)l < Float.valueOf(localObject[2]).floatValue())) {
+        curCpuLevel = 2;
+      } else if ((float)l >= Float.valueOf(localObject[2]).floatValue()) {
+        curCpuLevel = 3;
+      }
+    }
   }
   
   public static int getCurrentCpuLevel()
@@ -112,11 +150,44 @@ public class QzoneHardwareRestriction
     }
   }
   
+  public static int getCurrentMemLevelNew()
+  {
+    if (curMemLevel != -1) {
+      return curMemLevel;
+    }
+    curMemLevel = 1;
+    Object localObject = QzoneConfig.getInstance().getConfig("QZoneSetting", "hardwarerestriction_ram_size_new", "1000,2000,6000");
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneHardwareRestriction", 2, "memLevelList " + (String)localObject);
+    }
+    localObject = ((String)localObject).split(",");
+    long l = getTotalMem() / 1024L;
+    if ((localObject.length == 3) && (l != 0L))
+    {
+      if ((float)l >= Float.valueOf(localObject[0]).floatValue()) {
+        break label109;
+      }
+      curMemLevel = 0;
+    }
+    for (;;)
+    {
+      return curMemLevel;
+      label109:
+      if (((float)l >= Float.valueOf(localObject[0]).floatValue()) && ((float)l < Float.valueOf(localObject[1]).floatValue())) {
+        curMemLevel = 1;
+      } else if (((float)l >= Float.valueOf(localObject[1]).floatValue()) && ((float)l < Float.valueOf(localObject[2]).floatValue())) {
+        curMemLevel = 2;
+      } else if ((float)l >= Float.valueOf(localObject[2]).floatValue()) {
+        curMemLevel = 3;
+      }
+    }
+  }
+  
   private static final int getNumCoresOldPhones()
   {
     try
     {
-      int i = new File("/sys/devices/system/cpu/").listFiles(new aniy()).length;
+      int i = new File("/sys/devices/system/cpu/").listFiles(new bggc()).length;
       return i;
     }
     catch (Exception localException) {}
@@ -196,19 +267,19 @@ public class QzoneHardwareRestriction
     //   6: astore 4
     //   8: lconst_0
     //   9: lstore_0
-    //   10: new 223	java/io/BufferedReader
+    //   10: new 241	java/io/BufferedReader
     //   13: dup
-    //   14: new 225	java/io/FileReader
+    //   14: new 243	java/io/FileReader
     //   17: dup
-    //   18: ldc 227
-    //   20: invokespecial 228	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   18: ldc 245
+    //   20: invokespecial 246	java/io/FileReader:<init>	(Ljava/lang/String;)V
     //   23: bipush 8
-    //   25: invokespecial 231	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   25: invokespecial 249	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
     //   28: astore_3
     //   29: aload_3
     //   30: astore_2
     //   31: aload_3
-    //   32: invokevirtual 234	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   32: invokevirtual 252	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   35: astore 6
     //   37: aload 4
     //   39: astore_2
@@ -221,7 +292,7 @@ public class QzoneHardwareRestriction
     //   51: aload_3
     //   52: ifnull +10 -> 62
     //   55: aload_3
-    //   56: invokevirtual 237	java/io/BufferedReader:close	()V
+    //   56: invokevirtual 255	java/io/BufferedReader:close	()V
     //   59: aload_2
     //   60: astore 4
     //   62: aload 4
@@ -229,35 +300,35 @@ public class QzoneHardwareRestriction
     //   67: aload 4
     //   69: aload 4
     //   71: bipush 58
-    //   73: invokevirtual 241	java/lang/String:indexOf	(I)I
+    //   73: invokevirtual 259	java/lang/String:indexOf	(I)I
     //   76: iconst_1
     //   77: iadd
     //   78: aload 4
     //   80: bipush 107
-    //   82: invokevirtual 241	java/lang/String:indexOf	(I)I
-    //   85: invokevirtual 245	java/lang/String:substring	(II)Ljava/lang/String;
-    //   88: invokevirtual 248	java/lang/String:trim	()Ljava/lang/String;
-    //   91: invokestatic 254	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   82: invokevirtual 259	java/lang/String:indexOf	(I)I
+    //   85: invokevirtual 263	java/lang/String:substring	(II)Ljava/lang/String;
+    //   88: invokevirtual 266	java/lang/String:trim	()Ljava/lang/String;
+    //   91: invokestatic 272	java/lang/Integer:parseInt	(Ljava/lang/String;)I
     //   94: i2l
     //   95: lstore_0
-    //   96: invokestatic 70	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   96: invokestatic 79	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   99: ifeq +29 -> 128
     //   102: ldc 22
     //   104: iconst_2
-    //   105: new 72	java/lang/StringBuilder
+    //   105: new 81	java/lang/StringBuilder
     //   108: dup
-    //   109: invokespecial 73	java/lang/StringBuilder:<init>	()V
-    //   112: ldc_w 256
-    //   115: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   109: invokespecial 82	java/lang/StringBuilder:<init>	()V
+    //   112: ldc_w 274
+    //   115: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   118: lload_0
-    //   119: invokevirtual 87	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   122: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   125: invokestatic 95	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   119: invokevirtual 96	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   122: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   125: invokestatic 104	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   128: lload_0
     //   129: lreturn
     //   130: astore_3
     //   131: aload_3
-    //   132: invokevirtual 259	java/io/IOException:printStackTrace	()V
+    //   132: invokevirtual 277	java/io/IOException:printStackTrace	()V
     //   135: aload_2
     //   136: astore 4
     //   138: goto -76 -> 62
@@ -267,19 +338,19 @@ public class QzoneHardwareRestriction
     //   145: aload_3
     //   146: astore_2
     //   147: aload 4
-    //   149: invokevirtual 260	java/io/FileNotFoundException:printStackTrace	()V
+    //   149: invokevirtual 278	java/io/FileNotFoundException:printStackTrace	()V
     //   152: aload 5
     //   154: astore 4
     //   156: aload_3
     //   157: ifnull -95 -> 62
     //   160: aload_3
-    //   161: invokevirtual 237	java/io/BufferedReader:close	()V
+    //   161: invokevirtual 255	java/io/BufferedReader:close	()V
     //   164: aload 5
     //   166: astore 4
     //   168: goto -106 -> 62
     //   171: astore_2
     //   172: aload_2
-    //   173: invokevirtual 259	java/io/IOException:printStackTrace	()V
+    //   173: invokevirtual 277	java/io/IOException:printStackTrace	()V
     //   176: aload 5
     //   178: astore 4
     //   180: goto -118 -> 62
@@ -289,19 +360,19 @@ public class QzoneHardwareRestriction
     //   187: aload_3
     //   188: astore_2
     //   189: aload 4
-    //   191: invokevirtual 259	java/io/IOException:printStackTrace	()V
+    //   191: invokevirtual 277	java/io/IOException:printStackTrace	()V
     //   194: aload 5
     //   196: astore 4
     //   198: aload_3
     //   199: ifnull -137 -> 62
     //   202: aload_3
-    //   203: invokevirtual 237	java/io/BufferedReader:close	()V
+    //   203: invokevirtual 255	java/io/BufferedReader:close	()V
     //   206: aload 5
     //   208: astore 4
     //   210: goto -148 -> 62
     //   213: astore_2
     //   214: aload_2
-    //   215: invokevirtual 259	java/io/IOException:printStackTrace	()V
+    //   215: invokevirtual 277	java/io/IOException:printStackTrace	()V
     //   218: aload 5
     //   220: astore 4
     //   222: goto -160 -> 62
@@ -313,12 +384,12 @@ public class QzoneHardwareRestriction
     //   232: aload_3
     //   233: ifnull +7 -> 240
     //   236: aload_3
-    //   237: invokevirtual 237	java/io/BufferedReader:close	()V
+    //   237: invokevirtual 255	java/io/BufferedReader:close	()V
     //   240: aload_2
     //   241: athrow
     //   242: astore_3
     //   243: aload_3
-    //   244: invokevirtual 259	java/io/IOException:printStackTrace	()V
+    //   244: invokevirtual 277	java/io/IOException:printStackTrace	()V
     //   247: goto -7 -> 240
     //   250: astore 4
     //   252: aload_2
@@ -374,39 +445,39 @@ public class QzoneHardwareRestriction
   private static void initCpuFreq()
   {
     // Byte code:
-    //   0: invokestatic 262	cooperation/qzone/util/QzoneHardwareRestriction:getNumberOfCores	()I
+    //   0: invokestatic 141	cooperation/qzone/util/QzoneHardwareRestriction:getNumberOfCores	()I
     //   3: istore_1
     //   4: iconst_0
     //   5: istore_0
     //   6: iload_0
     //   7: iload_1
     //   8: if_icmpge +336 -> 344
-    //   11: new 225	java/io/FileReader
+    //   11: new 243	java/io/FileReader
     //   14: dup
-    //   15: new 72	java/lang/StringBuilder
+    //   15: new 81	java/lang/StringBuilder
     //   18: dup
-    //   19: invokespecial 73	java/lang/StringBuilder:<init>	()V
-    //   22: ldc_w 264
-    //   25: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   19: invokespecial 82	java/lang/StringBuilder:<init>	()V
+    //   22: ldc_w 280
+    //   25: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   28: iload_0
-    //   29: invokevirtual 267	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   32: ldc_w 269
-    //   35: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   38: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   41: invokespecial 228	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   29: invokevirtual 283	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   32: ldc_w 285
+    //   35: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   41: invokespecial 246	java/io/FileReader:<init>	(Ljava/lang/String;)V
     //   44: astore 5
-    //   46: new 223	java/io/BufferedReader
+    //   46: new 241	java/io/BufferedReader
     //   49: dup
     //   50: aload 5
     //   52: sipush 1024
-    //   55: invokespecial 231	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   55: invokespecial 249	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
     //   58: astore 4
     //   60: aload 4
     //   62: astore 7
     //   64: aload 5
     //   66: astore 6
     //   68: aload 4
-    //   70: invokevirtual 234	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   70: invokevirtual 252	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   73: astore 8
     //   75: aload 8
     //   77: ifnull +127 -> 204
@@ -415,13 +486,13 @@ public class QzoneHardwareRestriction
     //   84: aload 5
     //   86: astore 6
     //   88: aload 8
-    //   90: invokestatic 275	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   90: invokestatic 291	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   93: lstore_2
     //   94: aload 4
     //   96: astore 7
     //   98: aload 5
     //   100: astore 6
-    //   102: getstatic 98	cooperation/qzone/util/QzoneHardwareRestriction:sCpuMaxFreq	J
+    //   102: getstatic 107	cooperation/qzone/util/QzoneHardwareRestriction:sCpuMaxFreq	J
     //   105: lload_2
     //   106: lcmp
     //   107: ifge +15 -> 122
@@ -430,12 +501,12 @@ public class QzoneHardwareRestriction
     //   114: aload 5
     //   116: astore 6
     //   118: lload_2
-    //   119: putstatic 98	cooperation/qzone/util/QzoneHardwareRestriction:sCpuMaxFreq	J
+    //   119: putstatic 107	cooperation/qzone/util/QzoneHardwareRestriction:sCpuMaxFreq	J
     //   122: aload 4
     //   124: astore 7
     //   126: aload 5
     //   128: astore 6
-    //   130: invokestatic 70	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   130: invokestatic 79	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   133: ifeq +44 -> 177
     //   136: aload 4
     //   138: astore 7
@@ -443,30 +514,30 @@ public class QzoneHardwareRestriction
     //   142: astore 6
     //   144: ldc 22
     //   146: iconst_2
-    //   147: invokestatic 281	java/util/Locale:getDefault	()Ljava/util/Locale;
-    //   150: ldc_w 283
+    //   147: invokestatic 297	java/util/Locale:getDefault	()Ljava/util/Locale;
+    //   150: ldc_w 299
     //   153: iconst_2
     //   154: anewarray 4	java/lang/Object
     //   157: dup
     //   158: iconst_0
     //   159: iload_0
-    //   160: invokestatic 286	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   160: invokestatic 302	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   163: aastore
     //   164: dup
     //   165: iconst_1
     //   166: lload_2
-    //   167: invokestatic 289	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   167: invokestatic 305	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   170: aastore
-    //   171: invokestatic 293	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   174: invokestatic 95	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   171: invokestatic 309	java/lang/String:format	(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   174: invokestatic 104	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   177: aload 4
     //   179: ifnull +8 -> 187
     //   182: aload 4
-    //   184: invokevirtual 237	java/io/BufferedReader:close	()V
+    //   184: invokevirtual 255	java/io/BufferedReader:close	()V
     //   187: aload 5
     //   189: ifnull +8 -> 197
     //   192: aload 5
-    //   194: invokevirtual 294	java/io/FileReader:close	()V
+    //   194: invokevirtual 310	java/io/FileReader:close	()V
     //   197: iload_0
     //   198: iconst_1
     //   199: iadd
@@ -477,11 +548,11 @@ public class QzoneHardwareRestriction
     //   206: goto -112 -> 94
     //   209: astore 4
     //   211: aload 4
-    //   213: invokevirtual 295	java/lang/Exception:printStackTrace	()V
+    //   213: invokevirtual 311	java/lang/Exception:printStackTrace	()V
     //   216: goto -29 -> 187
     //   219: astore 4
     //   221: aload 4
-    //   223: invokevirtual 295	java/lang/Exception:printStackTrace	()V
+    //   223: invokevirtual 311	java/lang/Exception:printStackTrace	()V
     //   226: goto -29 -> 197
     //   229: astore 8
     //   231: aconst_null
@@ -493,23 +564,23 @@ public class QzoneHardwareRestriction
     //   241: aload 5
     //   243: astore 6
     //   245: aload 8
-    //   247: invokevirtual 295	java/lang/Exception:printStackTrace	()V
+    //   247: invokevirtual 311	java/lang/Exception:printStackTrace	()V
     //   250: aload 4
     //   252: ifnull +8 -> 260
     //   255: aload 4
-    //   257: invokevirtual 237	java/io/BufferedReader:close	()V
+    //   257: invokevirtual 255	java/io/BufferedReader:close	()V
     //   260: aload 5
     //   262: ifnull -65 -> 197
     //   265: aload 5
-    //   267: invokevirtual 294	java/io/FileReader:close	()V
+    //   267: invokevirtual 310	java/io/FileReader:close	()V
     //   270: goto -73 -> 197
     //   273: astore 4
     //   275: aload 4
-    //   277: invokevirtual 295	java/lang/Exception:printStackTrace	()V
+    //   277: invokevirtual 311	java/lang/Exception:printStackTrace	()V
     //   280: goto -83 -> 197
     //   283: astore 4
     //   285: aload 4
-    //   287: invokevirtual 295	java/lang/Exception:printStackTrace	()V
+    //   287: invokevirtual 311	java/lang/Exception:printStackTrace	()V
     //   290: goto -30 -> 260
     //   293: astore 4
     //   295: aconst_null
@@ -519,49 +590,49 @@ public class QzoneHardwareRestriction
     //   301: aload 7
     //   303: ifnull +8 -> 311
     //   306: aload 7
-    //   308: invokevirtual 237	java/io/BufferedReader:close	()V
+    //   308: invokevirtual 255	java/io/BufferedReader:close	()V
     //   311: aload 5
     //   313: ifnull +8 -> 321
     //   316: aload 5
-    //   318: invokevirtual 294	java/io/FileReader:close	()V
+    //   318: invokevirtual 310	java/io/FileReader:close	()V
     //   321: aload 4
     //   323: athrow
     //   324: astore 6
     //   326: aload 6
-    //   328: invokevirtual 295	java/lang/Exception:printStackTrace	()V
+    //   328: invokevirtual 311	java/lang/Exception:printStackTrace	()V
     //   331: goto -20 -> 311
     //   334: astore 5
     //   336: aload 5
-    //   338: invokevirtual 295	java/lang/Exception:printStackTrace	()V
+    //   338: invokevirtual 311	java/lang/Exception:printStackTrace	()V
     //   341: goto -20 -> 321
-    //   344: getstatic 300	android/os/Build:MODEL	Ljava/lang/String;
-    //   347: invokestatic 306	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   344: getstatic 316	android/os/Build:MODEL	Ljava/lang/String;
+    //   347: invokestatic 322	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   350: ifne +67 -> 417
-    //   353: getstatic 300	android/os/Build:MODEL	Ljava/lang/String;
-    //   356: ldc_w 308
-    //   359: invokevirtual 312	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   353: getstatic 316	android/os/Build:MODEL	Ljava/lang/String;
+    //   356: ldc_w 324
+    //   359: invokevirtual 328	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   362: ifne +15 -> 377
-    //   365: getstatic 300	android/os/Build:MODEL	Ljava/lang/String;
-    //   368: ldc_w 314
-    //   371: invokevirtual 312	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   365: getstatic 316	android/os/Build:MODEL	Ljava/lang/String;
+    //   368: ldc_w 330
+    //   371: invokevirtual 328	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   374: ifeq +43 -> 417
-    //   377: getstatic 98	cooperation/qzone/util/QzoneHardwareRestriction:sCpuMaxFreq	J
+    //   377: getstatic 107	cooperation/qzone/util/QzoneHardwareRestriction:sCpuMaxFreq	J
     //   380: l2d
-    //   381: ldc2_w 315
+    //   381: ldc2_w 331
     //   384: dmul
     //   385: d2l
-    //   386: putstatic 98	cooperation/qzone/util/QzoneHardwareRestriction:sCpuMaxFreq	J
+    //   386: putstatic 107	cooperation/qzone/util/QzoneHardwareRestriction:sCpuMaxFreq	J
     //   389: ldc 22
     //   391: iconst_2
-    //   392: new 72	java/lang/StringBuilder
+    //   392: new 81	java/lang/StringBuilder
     //   395: dup
-    //   396: invokespecial 73	java/lang/StringBuilder:<init>	()V
-    //   399: ldc_w 318
-    //   402: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   405: getstatic 300	android/os/Build:MODEL	Ljava/lang/String;
-    //   408: invokevirtual 79	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   411: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   414: invokestatic 321	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   396: invokespecial 82	java/lang/StringBuilder:<init>	()V
+    //   399: ldc_w 334
+    //   402: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   405: getstatic 316	android/os/Build:MODEL	Ljava/lang/String;
+    //   408: invokevirtual 88	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   411: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   414: invokestatic 337	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   417: return
     //   418: astore 4
     //   420: aconst_null

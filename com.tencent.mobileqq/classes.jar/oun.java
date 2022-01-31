@@ -1,18 +1,26 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.view.NeoVideoRecordButton;
-import com.tencent.biz.qqstory.view.RingView.DrawInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import cooperation.liveroom.LiveRoomProxyActivity;
 
-public class oun
-  implements ValueAnimator.AnimatorUpdateListener
+class oun
+  implements View.OnClickListener
 {
-  public oun(NeoVideoRecordButton paramNeoVideoRecordButton) {}
+  oun(ouk paramouk, opw paramopw, qoe paramqoe) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    this.a.c.a(((Integer)paramValueAnimator.getAnimatedValue("radius")).intValue(), 0.0F);
-    this.a.c.e = ((Integer)paramValueAnimator.getAnimatedValue("color")).intValue();
-    NeoVideoRecordButton.a(this.a);
+    if ((this.jdField_a_of_type_Opw.a() != null) && (this.jdField_a_of_type_Opw.a().mSocialFeedInfo != null) && (this.jdField_a_of_type_Opw.a().mSocialFeedInfo.a != null)) {
+      LiveRoomProxyActivity.open(this.jdField_a_of_type_Qoe.a(), this.jdField_a_of_type_Opw.a().mSocialFeedInfo.a.c, "kandian biu feed click");
+    }
+    qpj localqpj;
+    do
+    {
+      return;
+      localqpj = this.jdField_a_of_type_Qoe.a();
+    } while (localqpj == null);
+    localqpj.a(paramView, this.jdField_a_of_type_Opw.a(), 2);
   }
 }
 

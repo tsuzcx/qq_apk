@@ -1,85 +1,134 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.QZoneHttpDownloadUtil;
-import cooperation.qzone.webviewplugin.QzoneOfflineCacheHelper;
-import cooperation.qzone.webviewplugin.QzoneOfflineCacheHelperCallBack;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.data.IPSiteModel.Goods;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.util.List;
 
-public final class anks
-  implements Runnable
+public class anks
+  extends BaseAdapter
 {
-  public anks(String paramString1, String paramString2, AppInterface paramAppInterface, String paramString3, int paramInt) {}
+  private static int jdField_a_of_type_Int = 6;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private URLDrawable.URLDrawableListener jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener;
+  private String jdField_a_of_type_JavaLangString;
+  private List<Object> jdField_a_of_type_JavaUtilList;
+  private String b;
+  private String c;
   
-  public void run()
+  public anks(Context paramContext, List<Object> paramList, URLDrawable.URLDrawableListener paramURLDrawableListener, Drawable paramDrawable, String paramString1, String paramString2, String paramString3)
   {
-    try
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = paramURLDrawableListener;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("QzoneOfflineCacheHelper", 4, String.format("delay 10s,url:%s ,path:%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
+      int i = this.jdField_a_of_type_JavaUtilList.size();
+      if (i > jdField_a_of_type_Int) {
+        return jdField_a_of_type_Int + 1;
       }
-      ??? = new File(this.b);
-      boolean bool = QZoneHttpDownloadUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, (File)???, this.c, this.jdField_a_of_type_Int);
-      if (bool)
+      return i + 1;
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramInt < getCount() - 1)
+    {
+      localObject2 = (IPSiteModel.Goods)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      if (paramView == null)
       {
-        QzoneOfflineCacheHelper.updateLruFileInNewThread(this.b);
-        if (QLog.isDevelopLevel()) {
-          QLog.i("QzoneOfflineCacheHelper", 4, String.format("download succ,path:%s", new Object[] { this.b }));
-        }
+        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131493460, null, false);
+        paramViewGroup = new ankv(this, null);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131296747));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131296748));
+        paramViewGroup.b = ((TextView)paramView.findViewById(2131296746));
+        paramView.setTag(paramViewGroup);
       }
       for (;;)
       {
-        synchronized (QzoneOfflineCacheHelper.access$100())
+        if (localObject2 != null)
         {
-          if (QzoneOfflineCacheHelper.access$200() != null)
-          {
-            Object localObject2 = (ArrayList)QzoneOfflineCacheHelper.access$200().get(this.jdField_a_of_type_JavaLangString);
-            if (localObject2 != null)
-            {
-              localObject2 = ((ArrayList)localObject2).iterator();
-              if (((Iterator)localObject2).hasNext())
-              {
-                Object localObject4 = ((Iterator)localObject2).next();
-                if (!(localObject4 instanceof QzoneOfflineCacheHelperCallBack)) {
-                  continue;
-                }
-                ((QzoneOfflineCacheHelperCallBack)localObject4).onResultOfNativeRequest(bool, this.b);
-              }
-            }
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(bajo.a(((IPSiteModel.Goods)localObject2).cover, this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable));
+          paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((IPSiteModel.Goods)localObject2).name);
+          localObject1 = "0";
+          if (!TextUtils.isEmpty(((IPSiteModel.Goods)localObject2).saleNum)) {
+            localObject1 = ((IPSiteModel.Goods)localObject2).saleNum;
           }
+          paramViewGroup.b.setText((String)localObject1 + ajjy.a(2131640050));
+          paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new ankt(this, (IPSiteModel.Goods)localObject2));
         }
-        try
-        {
-          if (localException.exists()) {
-            FileUtil.a(localException);
-          }
-          if (!QLog.isDevelopLevel()) {
-            continue;
-          }
-          QLog.i("QzoneOfflineCacheHelper", 4, String.format("download fail,url:%s ,path:%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
-          continue;
-          QzoneOfflineCacheHelper.access$200().remove(this.jdField_a_of_type_JavaLangString);
-          return;
-        }
-        catch (Throwable localThrowable)
-        {
-          break label213;
-        }
+        return paramView;
+        paramViewGroup = (ankv)paramView.getTag();
       }
     }
-    catch (Exception localException)
-    {
-      QLog.w("QzoneOfflineCacheHelper", 1, "预下载offline资源发生异常", localException);
-      return;
-    }
+    paramView = (IPSiteModel.Goods)this.jdField_a_of_type_JavaUtilList.get(0);
+    paramViewGroup = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+    paramViewGroup.setBackgroundColor(Color.parseColor("#fafafa"));
+    Object localObject1 = new AbsListView.LayoutParams(aciy.a(75.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aciy.a(75.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    paramViewGroup.setMinimumWidth(aciy.a(75.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    paramViewGroup.setMinimumHeight(aciy.a(75.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    paramViewGroup.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+    localObject1 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
+    Object localObject2 = new RelativeLayout.LayoutParams(-2, -2);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(15);
+    ((RelativeLayout.LayoutParams)localObject2).addRule(14);
+    ((RelativeLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+    localObject2 = new TextView(this.jdField_a_of_type_AndroidContentContext);
+    ((TextView)localObject2).setId(2131296756);
+    ((TextView)localObject2).setTextSize(12.0F);
+    ((TextView)localObject2).setTextColor(Color.parseColor("#777777"));
+    ((TextView)localObject2).setText(ajjy.a(2131640051));
+    ((TextView)localObject2).setLayoutParams(new RelativeLayout.LayoutParams(-2, -2));
+    ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+    localImageView.setImageResource(2130846019);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams.addRule(1, 2131296756);
+    localLayoutParams.addRule(15);
+    localLayoutParams.leftMargin = aciy.a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    localImageView.setLayoutParams(localLayoutParams);
+    ((RelativeLayout)localObject1).addView((View)localObject2);
+    ((RelativeLayout)localObject1).addView(localImageView);
+    paramViewGroup.addView((View)localObject1);
+    paramViewGroup.setOnClickListener(new anku(this, paramView));
+    return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anks
  * JD-Core Version:    0.7.0.1
  */

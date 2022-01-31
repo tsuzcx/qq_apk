@@ -1,21 +1,13 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.List;
 
-public class swv
-  implements AdapterView.OnItemClickListener
+public final class swv
+  extends sfo
 {
-  public swv(FriendProfileImageActivity paramFriendProfileImageActivity) {}
-  
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    this.a.b();
-  }
+  public List<srj> a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     swv
  * JD-Core Version:    0.7.0.1
  */

@@ -6,73 +6,76 @@ import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafCon
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.layout.RelativeLayout;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.layout.RelativeLayout.Params;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtils;
 
 public class NativeRelativeLayout
   extends RelativeLayout
 {
-  private NativeLayoutImpl a;
+  private static final String TAG = "NativeRelativeLayout";
+  protected NativeLayoutImpl mNative;
   
   public NativeRelativeLayout(VafContext paramVafContext)
   {
     super(paramVafContext);
-    this.a = new NativeLayoutImpl(paramVafContext.a());
-    this.a.setVirtualView(this);
+    this.mNative = new NativeLayoutImpl(paramVafContext.getContext());
+    this.mNative.setVirtualView(this);
   }
   
-  public View a()
+  public void addView(ViewBase paramViewBase)
   {
-    return this.a;
+    if (LogUtils.shouldLog()) {
+      LogUtils.d("NativeRelativeLayout", "[addView] for " + this.mName);
+    }
+    super.addView(paramViewBase);
+    this.mNative.attachViews(paramViewBase);
+    if (LogUtils.shouldLog()) {
+      LogUtils.d("NativeRelativeLayout", "[addView] native child count: " + this.mNative.getChildCount());
+    }
   }
   
-  public RelativeLayout.Params a()
+  public RelativeLayout.Params generateParams()
   {
     return new RelativeLayout.Params();
   }
   
-  public void a()
+  public View getNativeView()
   {
-    this.a.setBorderColor(this.f);
-    this.a.setBorderWidth(this.e);
-    this.a.setBorderTopLeftRadius(this.h);
-    this.a.setBorderTopRightRadius(this.i);
-    this.a.setBorderBottomLeftRadius(this.j);
-    this.a.setBorderBottomRightRadius(this.k);
-    this.a.setBackgroundColor(this.d);
+    return this.mNative;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void onComDraw(Canvas paramCanvas)
   {
-    super.a(paramInt1, paramInt2);
-    this.a.b(this.t, this.u);
+    if (this.mGradientColorBg != null) {
+      setBackgroundColor(this.mGradientColorBg);
+    }
   }
   
-  public void a(ViewBase paramViewBase)
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    super.a(paramViewBase);
-    this.a.a(paramViewBase);
+    super.onComLayout(paramBoolean, 0, 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
+    this.mNative.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void onComMeasure(int paramInt1, int paramInt2)
   {
-    super.a(paramBoolean, 0, 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
-    this.a.a(paramInt1, paramInt2, paramInt3, paramInt4);
+    super.onComMeasure(paramInt1, paramInt2);
+    this.mNative.measureComponent(this.mMeasuredWidth, this.mMeasuredHeight);
   }
   
-  public boolean a(int paramInt1, int paramInt2)
+  public void onParseValueFinished()
   {
-    return super.a(paramInt1 - d(), paramInt2 - e());
+    this.mNative.setBorderColor(this.mBorderColor);
+    this.mNative.setBorderWidth(this.mBorderWidth);
+    this.mNative.setBorderTopLeftRadius(this.mBorderTopLeftRadius);
+    this.mNative.setBorderTopRightRadius(this.mBorderTopRightRadius);
+    this.mNative.setBorderBottomLeftRadius(this.mBorderBottomLeftRadius);
+    this.mNative.setBorderBottomRightRadius(this.mBorderBottomRightRadius);
+    this.mNative.setBackgroundColor(this.mBackground);
   }
-  
-  public boolean a(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    return super.a(paramInt1 - d(), paramInt2 - e(), paramBoolean);
-  }
-  
-  protected void b(Canvas paramCanvas) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.layout.helper.nativelayout.NativeRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.search.FunctionModuleConfigManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.IOException;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
 public class ahvi
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ahvi(FunctionModuleConfigManager paramFunctionModuleConfigManager, String paramString) {}
+  public ahvi(ShortVideoPreviewActivity paramShortVideoPreviewActivity, Runnable paramRunnable) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      Object localObject = HttpUtil.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
-      if (localObject != null)
-      {
-        localObject = FunctionModuleConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqSearchFunctionModuleConfigManager, (byte[])localObject);
-        if (!TextUtils.isEmpty((CharSequence)localObject))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqSearchFunctionModuleConfigManager.a((String)localObject);
-          this.jdField_a_of_type_ComTencentMobileqqSearchFunctionModuleConfigManager.c(this.jdField_a_of_type_JavaLangString);
-        }
-      }
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.uniteSearch.FunctionModuleConfigManager", 2, localIOException.toString());
-    }
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahvi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,20 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-
-public class mcs
-  implements AdapterView.OnItemClickListener
+public abstract interface mcs
 {
-  public mcs(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
+  public abstract void a(int paramInt, Throwable paramThrowable);
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
-  {
-    paramAdapterView = (TagInfo)ReadInJoyVideoTagSelectionFragment.a(this.a).getItem(paramInt);
-    ReadInJoyVideoTagSelectionFragment.a(this.a).b(paramAdapterView);
-  }
+  public abstract void a(String paramString);
+  
+  public abstract void g();
+  
+  public abstract void h();
+  
+  public abstract void i();
+  
+  public abstract void j();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mcs
  * JD-Core Version:    0.7.0.1
  */

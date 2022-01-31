@@ -1,19 +1,31 @@
-import com.tencent.mobileqq.confess.ConfessMsgListFragment;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class abza
-  implements Runnable
+  implements View.OnClickListener
 {
-  public abza(ConfessMsgListFragment paramConfessMsgListFragment) {}
+  public abza(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ReportController.b(this.a.a, "dc00898", "", "", "0X8008F4A", "0X8008F4A", 2, 0, "", "", "", "");
+    this.a.c = false;
+    this.a.t = "";
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (this.a.d != 22) {
+      this.a.b.setVisibility(0);
+    }
+    if (this.a.jdField_a_of_type_Acao != null) {
+      this.a.jdField_a_of_type_Acao.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abza
  * JD-Core Version:    0.7.0.1
  */

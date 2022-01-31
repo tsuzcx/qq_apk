@@ -1,69 +1,34 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.search.adapter.BaseMvpFaceAdapter;
-import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
-import com.tencent.mobileqq.search.presenter.ContactSearchResultMobileMultiPresenter;
-import com.tencent.mobileqq.search.presenter.ContactSearchResultMobilePresenter;
-import com.tencent.mobileqq.search.presenter.ContactSearchResultPresenter;
-import com.tencent.mobileqq.search.presenter.IPresenter;
-import com.tencent.mobileqq.search.presenter.SelectMemberContactSearchResultPresenter;
-import com.tencent.mobileqq.search.presenter.TroopAddFrdsSrchResultMultiPresenter;
-import com.tencent.mobileqq.search.presenter.TroopAddFrdsSrchResultPresenter;
-import com.tencent.mobileqq.search.util.SearchUtils;
-import com.tencent.mobileqq.search.view.ContactSearchResultMobileView;
-import com.tencent.mobileqq.search.view.ContactSearchResultView;
-import com.tencent.mobileqq.search.view.IView;
-import com.tencent.mobileqq.search.view.TroopAddFrdsSrchResultView;
-import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.widget.ListView;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment.1.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class ahxq
-  extends BaseMvpFaceAdapter
+  implements akdg
 {
-  public ahxq(ContactSearchFragment paramContactSearchFragment, ListView paramListView, FaceDecoder paramFaceDecoder)
+  public ahxq(SessionClearFragment paramSessionClearFragment) {}
+  
+  public void a()
   {
-    super(paramListView, paramFaceDecoder);
+    if (QLog.isColorLevel())
+    {
+      QLog.d("SessionClearFragment", 2, "onLoadStart");
+      this.a.a();
+    }
   }
   
-  protected IPresenter a(int paramInt)
+  public void a(List<akda> paramList)
   {
-    if (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == -1) {
-      return new SelectMemberContactSearchResultPresenter(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment), ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment), ContactSearchFragment.b(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment));
+    if (QLog.isColorLevel()) {
+      QLog.d("SessionClearFragment", 2, "onLoadFinish");
     }
-    if (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 17) {
-      return new ContactSearchResultMobilePresenter(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment));
-    }
-    if (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 19) {
-      return new ContactSearchResultMobileMultiPresenter(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment), ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment));
-    }
-    if (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 23) {
-      return new TroopAddFrdsSrchResultPresenter(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, null);
-    }
-    if (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 24) {
-      return new TroopAddFrdsSrchResultMultiPresenter(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment), ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment));
-    }
-    return new ContactSearchResultPresenter(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment));
-  }
-  
-  protected IView a(int paramInt, ViewGroup paramViewGroup)
-  {
-    if ((SearchUtils.a(ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment))) || (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 5) || (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 8)) {
-      return new ContactSearchResultView(paramViewGroup, 2130971561);
-    }
-    if ((ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == -1) || (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 19) || (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 24)) {
-      return new ContactSearchResultView(paramViewGroup, 2130971560);
-    }
-    if (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 17) {
-      return new ContactSearchResultMobileView(paramViewGroup, 2130970314);
-    }
-    if (ContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentContactSearchFragment) == 23) {
-      return new TroopAddFrdsSrchResultView(paramViewGroup, 2130970314);
-    }
-    return new ContactSearchResultView(paramViewGroup, 2130971559);
+    SessionClearFragment.a(this.a).runOnUiThread(new SessionClearFragment.1.1(this, paramList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahxq
  * JD-Core Version:    0.7.0.1
  */

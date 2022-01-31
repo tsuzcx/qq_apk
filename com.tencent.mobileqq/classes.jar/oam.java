@@ -1,26 +1,23 @@
-import com.tencent.biz.qqstory.model.DiscoverManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.storyHome.discover.model.DiscoverPagerLoader;
-import com.tencent.biz.qqstory.storyHome.discover.view.DiscoverPresenter;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class oam
-  implements Runnable
+class oam
+  implements ViewBase.OnClickListener
 {
-  public oam(DiscoverPresenter paramDiscoverPresenter) {}
+  oam(oal paramoal, ViewBase paramViewBase) {}
   
-  public void run()
+  public void onClick(ViewBase paramViewBase)
   {
-    byte[] arrayOfByte = ((DiscoverManager)SuperManager.a(22)).a(DiscoverPresenter.a(this.a));
-    if (arrayOfByte != null)
-    {
-      DiscoverPresenter.a(this.a, arrayOfByte);
-      DiscoverPresenter.a(this.a).a();
-    }
+    paramViewBase = new phm(this.jdField_a_of_type_Oal.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), this.jdField_a_of_type_Oal.jdField_a_of_type_Azwg, this.jdField_a_of_type_Oal.jdField_a_of_type_Qoe);
+    paramViewBase.a(this.jdField_a_of_type_Oal.jdField_a_of_type_Opw);
+    paramViewBase.a(this.jdField_a_of_type_Oal.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer);
+    paramViewBase.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getNativeView());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oam
  * JD-Core Version:    0.7.0.1
  */

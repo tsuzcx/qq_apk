@@ -1,31 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.image.RegionDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.content.res.Resources;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class mer
-  implements URLDrawable.URLDrawableListener
+class mer
+  implements View.OnTouchListener
 {
-  public mer(VideoFeedsAdapter paramVideoFeedsAdapter) {}
+  mer(meo parammeo) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((VideoFeedsAdapter.a(this.a) != null) && (VideoFeedsAdapter.a(this.a).getStatus() == 1) && ((VideoFeedsAdapter.a(this.a).getCurrDrawable() instanceof RegionDrawable)))
+    try
     {
-      paramURLDrawable = (RegionDrawable)VideoFeedsAdapter.a(this.a).getCurrDrawable();
-      VideoFeedsAdapter.a(this.a, paramURLDrawable.getBitmap());
+      QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getResources().getResourceName(paramView.getId()) + "]");
+      this.a.a(false, 3);
+      return true;
+    }
+    catch (Exception paramMotionEvent)
+    {
+      for (;;)
+      {
+        QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getId() + "]");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,136 +1,152 @@
-import android.content.Intent;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.troop.activity.TroopCreateLogicActivity;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.troopshare.TroopShareUtility;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
-import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItemViewHolder;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.fts.FTSMessage;
+import com.tencent.mobileqq.persistence.fts.FTSEntity;
 
 public class akev
-  implements AdapterView.OnItemClickListener
 {
-  public akev(TroopShareUtility paramTroopShareUtility) {}
-  
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public static atny a(Class<FTSMessage> paramClass, String paramString)
   {
-    int j = 0;
-    paramAdapterView = paramView.getTag();
-    if (paramAdapterView == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.b();
-    switch (((ShareActionSheetBuilder.ActionSheetItemViewHolder)paramAdapterView).a.c)
+    return new atny(a(paramString), paramClass, new String[] { paramString }, false, 1);
+  }
+  
+  public static atny a(String[] paramArrayOfString1, String[] paramArrayOfString2, Class<? extends FTSEntity> paramClass, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    paramArrayOfString1 = new atny(a(paramArrayOfString1, paramArrayOfString2, paramBoolean1, paramBoolean2), paramClass, paramArrayOfString2, paramBoolean1, 1);
+    paramArrayOfString1.jdField_b_of_type_Boolean = paramBoolean2;
+    return paramArrayOfString1;
+  }
+  
+  public static atny a(String[] paramArrayOfString1, String[] paramArrayOfString2, Class<? extends FTSEntity> paramClass, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    paramArrayOfString1 = new atny(a(paramArrayOfString1, paramArrayOfString2, paramBoolean1, paramBoolean2), paramClass, paramArrayOfString2, paramBoolean1, 1);
+    paramArrayOfString1.jdField_b_of_type_Boolean = paramBoolean2;
+    paramArrayOfString1.c = paramInt;
+    return paramArrayOfString1;
+  }
+  
+  public static atny a(String[] paramArrayOfString1, String[] paramArrayOfString2, Class<? extends FTSEntity> paramClass, boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
+  {
+    paramArrayOfString1 = new atny(a(paramArrayOfString1, paramArrayOfString2, paramBoolean1, paramBoolean2, paramInt, paramString), paramClass, paramArrayOfString2, paramBoolean1, 1);
+    paramArrayOfString1.jdField_b_of_type_Boolean = paramBoolean2;
+    paramArrayOfString1.jdField_b_of_type_Int = paramInt;
+    paramArrayOfString1.jdField_b_of_type_JavaLangString = paramString;
+    return paramArrayOfString1;
+  }
+  
+  private static String a(int paramInt1, int paramInt2, String paramString)
+  {
+    StringBuffer localStringBuffer = new StringBuffer("SELECT DISTINCT type, oid, content, ext1, ext2, ext3, ext4, ext5, ext6, ext7, ext8, ext9, exts FROM IndexContent WHERE IndexContent MATCH 'type:");
+    localStringBuffer.append(paramInt1);
+    switch (paramInt2)
     {
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_Int = ((int)paramLong);
-      if (paramLong != 7L) {
-        break;
-      }
-      paramAdapterView = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, Face2FaceAddFriendActivity.class);
-      paramAdapterView.putExtra("activity_from_type", 1);
-      paramAdapterView.putExtra("activity_troop_uin", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramAdapterView);
-      return;
-      paramLong = 0L;
+      localStringBuffer.append("';");
+      return localStringBuffer.toString();
+      localStringBuffer.append(" ");
+      localStringBuffer.append("ext1:");
+      localStringBuffer.append(paramString);
       continue;
-      paramLong = 1L;
+      localStringBuffer.append(" ");
+      localStringBuffer.append("ext2:");
+      localStringBuffer.append(paramString);
       continue;
-      paramLong = 3L;
-      continue;
-      paramLong = 2L;
-      continue;
-      paramLong = 4L;
-      continue;
-      paramLong = 5L;
-      continue;
-      paramLong = 7L;
+      localStringBuffer.append(" ");
+      localStringBuffer.append("ext3:");
+      localStringBuffer.append(paramString);
     }
-    int i;
-    if ((paramLong == 2L) || (paramLong == 3L)) {
-      if (!WXShareHelper.a().a()) {
-        i = 2131435335;
-      }
-    }
-    for (;;)
+  }
+  
+  private static String a(String paramString)
+  {
+    return a(1, 2, String.valueOf(paramString));
+  }
+  
+  private static String a(String[] paramArrayOfString1, String[] paramArrayOfString2, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2, String paramString)
+  {
+    paramArrayOfString2 = new StringBuilder(256);
+    paramArrayOfString2.append("SELECT DISTINCT type, oid, content, ext1, ext2, ext3, ext4, ext5, ext6, ext7, ext8, ext9, exts FROM IndexContent WHERE contentindex MATCH '");
+    paramInt1 = 0;
+    if (paramInt1 < paramArrayOfString1.length - 1)
     {
-      if (i != -1)
+      paramArrayOfString2.append("\"");
+      paramString = paramArrayOfString1[paramInt1].split(" ");
+      paramInt2 = 0;
+      if (paramInt2 < paramString.length - 1)
       {
-        this.a.a(false);
-        QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(i), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-        this.a.jdField_a_of_type_Int = -1;
-        this.a.b = -1;
-        if (!(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
-          break;
-        }
-        ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
-        return;
-        if (WXShareHelper.a().b()) {
-          break label672;
-        }
-        i = 2131435336;
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopShareUtility", 2, "onItemClick.chooseChannel: " + paramInt + "," + paramLong);
-      }
-      if ((this.a.jdField_a_of_type_Int == 5) && (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isMember))
-      {
-        this.a.g();
-        if (!(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
-          break;
-        }
-        ((TroopCreateLogicActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).finish();
-        return;
-      }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isOwnerOrAdim()) && (!TroopInfo.isQidianPrivateTroop((QQAppInterface)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime(), this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin)))
-      {
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
-          this.a.jdField_a_of_type_Boolean = true;
-        }
-        if ((TroopInfo.hasPayPrivilege(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopPrivilegeFlag, 128)) && (TroopInfo.hasPayPrivilege(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopPrivilegeFlag, 512))) {}
-        for (paramInt = 1;; paramInt = 0)
+        if ((paramString[paramInt2].length() == 1) || ((paramString[paramInt2].charAt(0) >= '0') && (paramString[paramInt2].charAt(0) <= '9')) || ((paramString[paramInt2].charAt(0) >= 'a') && (paramString[paramInt2].charAt(0) <= 'z')))
         {
-          i = j;
-          if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.cGroupOption == 1) {
-            i = 1;
-          }
-          if ((paramInt | i) == 0) {
-            break;
-          }
-          this.a.a(true);
-          this.a.c();
-          return;
+          paramArrayOfString2.append(paramString[paramInt2]);
+          paramArrayOfString2.append("*");
         }
-        this.a.e();
-        return;
+        for (;;)
+        {
+          paramArrayOfString2.append(" ");
+          paramInt2 += 1;
+          break;
+          paramArrayOfString2.append(paramString[paramInt2]);
+        }
       }
-      this.a.a(true);
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof TroopCreateLogicActivity)) {
-        this.a.jdField_a_of_type_Boolean = false;
+      if ((paramString[(paramString.length - 1)].length() == 1) || ((paramString[(paramString.length - 1)].charAt(0) >= '0') && (paramString[(paramString.length - 1)].charAt(0) <= '9')) || ((paramString[(paramString.length - 1)].charAt(0) >= 'a') && (paramString[(paramString.length - 1)].charAt(0) <= 'z')))
+      {
+        paramArrayOfString2.append(paramString[(paramString.length - 1)]);
+        paramArrayOfString2.append("*");
       }
-      this.a.b = 0;
-      TroopShareUtility.a(this.a);
-      return;
-      label672:
-      i = -1;
+      for (;;)
+      {
+        paramArrayOfString2.append("\"");
+        paramArrayOfString2.append(" OR ");
+        paramInt1 += 1;
+        break;
+        paramArrayOfString2.append(paramString[(paramString.length - 1)]);
+      }
     }
+    paramArrayOfString2.append("\"");
+    paramArrayOfString1 = paramArrayOfString1[(paramArrayOfString1.length - 1)].split(" ");
+    paramInt1 = 0;
+    if (paramInt1 < paramArrayOfString1.length - 1)
+    {
+      if ((paramArrayOfString1[paramInt1].length() == 1) || ((paramArrayOfString1[paramInt1].charAt(0) >= '0') && (paramArrayOfString1[paramInt1].charAt(0) <= '9')) || ((paramArrayOfString1[paramInt1].charAt(0) >= 'a') && (paramArrayOfString1[paramInt1].charAt(0) <= 'z')))
+      {
+        paramArrayOfString2.append(paramArrayOfString1[paramInt1]);
+        paramArrayOfString2.append("*");
+      }
+      for (;;)
+      {
+        paramArrayOfString2.append(" ");
+        paramInt1 += 1;
+        break;
+        paramArrayOfString2.append(paramArrayOfString1[paramInt1]);
+      }
+    }
+    if ((paramArrayOfString1[(paramArrayOfString1.length - 1)].length() == 1) || ((paramArrayOfString1[(paramArrayOfString1.length - 1)].charAt(0) >= '0') && (paramArrayOfString1[(paramArrayOfString1.length - 1)].charAt(0) <= '9')) || ((paramArrayOfString1[(paramArrayOfString1.length - 1)].charAt(0) >= 'a') && (paramArrayOfString1[(paramArrayOfString1.length - 1)].charAt(0) <= 'z')))
+    {
+      paramArrayOfString2.append(paramArrayOfString1[(paramArrayOfString1.length - 1)]);
+      paramArrayOfString2.append("*");
+    }
+    for (;;)
+    {
+      paramArrayOfString2.append("\"");
+      paramArrayOfString2.append("'");
+      paramArrayOfString2.append(";");
+      return paramArrayOfString2.toString();
+      paramArrayOfString2.append(paramArrayOfString1[(paramArrayOfString1.length - 1)]);
+    }
+  }
+  
+  private static String a(String[] paramArrayOfString1, String[] paramArrayOfString2, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    return a(paramArrayOfString1, paramArrayOfString2, 1, paramBoolean1, paramBoolean2, 0, null);
+  }
+  
+  private static String a(String[] paramArrayOfString1, String[] paramArrayOfString2, boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
+  {
+    return a(paramArrayOfString1, paramArrayOfString2, 1, paramBoolean1, paramBoolean2, paramInt, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akev
  * JD-Core Version:    0.7.0.1
  */

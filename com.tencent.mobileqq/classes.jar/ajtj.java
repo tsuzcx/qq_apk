@@ -1,36 +1,28 @@
-import com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler;
-import org.json.JSONArray;
-import org.json.JSONException;
+import org.xmlpull.v1.XmlSerializer;
 
-public class ajtj
-  implements Runnable
+final class ajtj
+  extends awwo
 {
-  public ajtj(TroopNoticeJsHandler paramTroopNoticeJsHandler, String paramString) {}
-  
-  public void run()
+  ajtj(String paramString)
   {
-    try
+    super(paramString);
+  }
+  
+  public void a(XmlSerializer paramXmlSerializer)
+  {
+    paramXmlSerializer.startTag(null, "picture");
+    if (this.S == null) {}
+    for (String str = "";; str = this.S)
     {
-      JSONArray localJSONArray = new JSONArray(this.jdField_a_of_type_JavaLangString);
-      int i = 0;
-      int j = localJSONArray.length();
-      while (i < j)
-      {
-        String str = localJSONArray.get(i).toString();
-        this.jdField_a_of_type_ComTencentMobileqqTroopJspTroopNoticeJsHandler.c(str);
-        i += 1;
-      }
+      paramXmlSerializer.attribute(null, "cover", str);
+      paramXmlSerializer.endTag(null, "picture");
       return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajtj
  * JD-Core Version:    0.7.0.1
  */

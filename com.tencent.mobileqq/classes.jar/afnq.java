@@ -1,19 +1,27 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
 public class afnq
-  implements ActionSheet.OnDismissListener
+  implements View.OnTouchListener
 {
-  public afnq(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel) {}
+  public afnq(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void onDismiss()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    NearbyProfileEditTribePanel.a(this.a, this.a.h, false);
+    if (paramMotionEvent.getAction() == 1)
+    {
+      this.a.x();
+      paramView = this.a.o;
+      this.a.a("Clk_find", paramView, "");
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afnq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,33 @@
-import android.view.View;
-import android.view.Window;
-import android.view.animation.TranslateAnimation;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tencent.biz.qqstory.storyHome.memory.view.StoryMemoriesListView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class uha
-  implements Runnable
+  extends QQUIEventReceiver<ugy, spk>
 {
-  private WeakReference a;
-  
-  public uha(TroopMemberListActivity paramTroopMemberListActivity)
+  public uha(@NonNull ugy paramugy)
   {
-    this.a = new WeakReference(paramTroopMemberListActivity);
+    super(paramugy);
   }
   
-  public void run()
+  public void a(@NonNull ugy paramugy, @NonNull spk paramspk)
   {
-    TroopMemberListActivity localTroopMemberListActivity = (TroopMemberListActivity)this.a.get();
-    if (localTroopMemberListActivity != null)
+    if (paramspk.a)
     {
-      localTroopMemberListActivity.h = false;
-      int i = localTroopMemberListActivity.a.getHeight();
-      localTroopMemberListActivity.b.offsetTopAndBottom(-i);
-      localTroopMemberListActivity.a.setVisibility(0);
-      TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, -i, 0.0F);
-      localTranslateAnimation.setDuration(300L);
-      localTroopMemberListActivity.b.startAnimation(localTranslateAnimation);
-      ((InputMethodManager)localTroopMemberListActivity.getSystemService("input_method")).hideSoftInputFromWindow(localTroopMemberListActivity.getWindow().peekDecorView().getWindowToken(), 0);
+      urk.b("Q.qqstory.memories.QQStoryMemoriesPresenter", "receive delete share group member event. %s.", paramspk);
+      ugy.a(paramugy).a.h();
     }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return spk.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uha
  * JD-Core Version:    0.7.0.1
  */

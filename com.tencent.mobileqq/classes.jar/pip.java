@@ -1,22 +1,17 @@
-import android.os.Handler;
-import com.tencent.biz.widgets.ScannerView;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class pip
-  implements Runnable
+class pip
+  implements View.OnClickListener
 {
-  public pip(ScannerView paramScannerView) {}
+  pip(pio parampio) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((ScannerView.a(this.a)) && (ScannerView.b(this.a)))
-    {
-      ThreadManager.getUIHandler().post(new piq(this));
-      this.a.b.sendEmptyMessage(7);
-      return;
+    paramView = this.a.jdField_a_of_type_Qoe.a();
+    if (paramView != null) {
+      paramView.a(null, ((opw)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
     }
-    this.a.b.sendEmptyMessage(8);
   }
 }
 

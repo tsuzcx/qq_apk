@@ -1,18 +1,27 @@
-import com.tencent.component.media.image.ImageManager;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderRecommend;
 
 public class plp
-  implements Runnable
+  extends ClickableSpan
 {
-  public plp(ImageManager paramImageManager) {}
+  public plp(ComponentHeaderRecommend paramComponentHeaderRecommend) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ImageManager.a(this.a, ImageManager.b());
+    obz.a(this.a.getContext(), this.a.a.a.a(), 1, false, 8, false);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-14132075);
+    paramTextPaint.setTextSize(aciy.a(2, 14, this.a.getResources()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     plp
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class WeiyunPB$CrossBidProxyCopyFileToOtherBidMsgReq
-  extends MessageMicro
+  extends MessageMicro<CrossBidProxyCopyFileToOtherBidMsgReq>
 {
   public static final int DST_BID_FIELD_NUMBER = 200;
   public static final int DST_UIN_FIELD_NUMBER = 201;
@@ -53,7 +53,7 @@ public final class WeiyunPB$CrossBidProxyCopyFileToOtherBidMsgReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cooperation.weiyun.channel.pb.WeiyunPB.CrossBidProxyCopyFileToOtherBidMsgReq
  * JD-Core Version:    0.7.0.1
  */

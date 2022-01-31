@@ -1,42 +1,38 @@
-import com.tencent.mobileqq.armap.ConversationARMap;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ARMapHongBaoListView;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 public class abjm
-  implements Runnable
 {
-  public abjm(ConversationARMap paramConversationARMap) {}
+  public PublicAccountInfo a;
+  public String a;
+  public String b = "";
   
-  public void run()
+  public abjm(PublicAccountInfo paramPublicAccountInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConversationARMap", 2, "mTouchReleaseRunnable mState:" + this.a.jdField_a_of_type_Int + "  mResume:" + this.a.c + " mTitleIsVisible:" + this.a.j);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
+  }
+  
+  public void a(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    if ((this.a.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView != null) && (this.a.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.getScrollY() != 0))
-    {
-      this.a.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.setSpringbackOffset(0);
-      this.a.c(0);
+    this.jdField_a_of_type_JavaLangString = str;
+  }
+  
+  public void b(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    if (this.a.c) {
-      this.a.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.setEnableTouch(true);
-    }
-    if (!this.a.j)
-    {
-      if (this.a.c) {
-        break label159;
-      }
-      this.a.b(true);
-    }
-    label159:
-    while (this.a.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.m) {
-      return;
-    }
-    this.a.b(false);
+    this.b = str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abjm
  * JD-Core Version:    0.7.0.1
  */

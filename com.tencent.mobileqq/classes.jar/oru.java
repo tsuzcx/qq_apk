@@ -1,20 +1,22 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter.OnUIClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class oru
-  implements View.OnLongClickListener
+class oru
+  implements ohx
 {
-  public oru(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, int paramInt) {}
+  oru(ort paramort) {}
   
-  public boolean onLongClick(View paramView)
+  public void l()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
-      return this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(paramView, this.jdField_a_of_type_Int);
+    if (!orx.b())
+    {
+      QLog.d("FeedsPreloadManager", 1, "foreground, feeds preload.");
+      this.a.a(false);
+      return;
     }
-    return true;
+    QLog.d("FeedsPreloadManager", 1, "lock screen enter foreground, no need to preload.");
   }
+  
+  public void m() {}
 }
 
 

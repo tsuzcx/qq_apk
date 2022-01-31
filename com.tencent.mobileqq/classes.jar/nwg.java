@@ -1,123 +1,87 @@
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.shareGroup.icon.IconLog;
+import android.content.res.Resources;
+import android.graphics.Color;
+import android.text.Layout;
+import android.text.Selection;
+import android.text.Spannable;
+import android.text.method.LinkMovementMethod;
+import android.text.style.BackgroundColorSpan;
+import android.text.style.ClickableSpan;
+import android.view.MotionEvent;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-class nwg
-  extends Drawable
+public class nwg
+  extends LinkMovementMethod
 {
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private String jdField_a_of_type_JavaLangString = "story.icon.ShareGroupIconDrawable";
-  private nwb jdField_a_of_type_Nwb;
-  private nwd jdField_a_of_type_Nwd = new nwh(this);
-  private Drawable b;
+  private static nwg jdField_a_of_type_Nwg;
+  private BackgroundColorSpan jdField_a_of_type_AndroidTextStyleBackgroundColorSpan;
   
-  nwg(@NonNull nwb paramnwb, @NonNull Drawable paramDrawable)
+  public static nwg a()
   {
-    this.jdField_a_of_type_Nwb = paramnwb;
-    this.jdField_a_of_type_Nwb.a(this.jdField_a_of_type_Nwd);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.b = paramDrawable;
-    paramnwb = this.jdField_a_of_type_Nwb.a();
-    if (paramnwb != null) {
-      a(paramnwb);
+    if (jdField_a_of_type_Nwg == null) {
+      jdField_a_of_type_Nwg = new nwg();
     }
+    return jdField_a_of_type_Nwg;
   }
   
-  private void a(@NonNull Drawable paramDrawable)
+  public boolean onTouchEvent(TextView paramTextView, Spannable paramSpannable, MotionEvent paramMotionEvent)
   {
-    IconLog.a(this.jdField_a_of_type_JavaLangString, "updateCurrentDrawable view:%s drawable: %s", getCallback(), paramDrawable);
-    if (paramDrawable != this.b)
+    int i = paramMotionEvent.getAction();
+    if ((i == 1) || (i == 0) || (i == 2) || (i == 3))
     {
-      paramDrawable.setBounds(getBounds());
-      paramDrawable.setVisible(isVisible(), true);
-      paramDrawable.setState(getState());
-      paramDrawable.setLevel(getLevel());
-      paramDrawable.setCallback(getCallback());
-      if (Build.VERSION.SDK_INT >= 19) {
-        paramDrawable.setAlpha(getAlpha());
+      int j = (int)paramMotionEvent.getX();
+      int k = (int)paramMotionEvent.getY();
+      int m = paramTextView.getTotalPaddingLeft();
+      int n = paramTextView.getTotalPaddingTop();
+      int i1 = paramTextView.getScrollX();
+      int i2 = paramTextView.getScrollY();
+      Object localObject = paramTextView.getLayout();
+      j = ((Layout)localObject).getOffsetForHorizontal(((Layout)localObject).getLineForVertical(k - n + i2), j - m + i1);
+      localObject = (ClickableSpan[])paramSpannable.getSpans(j, j, ClickableSpan.class);
+      if (localObject.length != 0)
+      {
+        if (i == 1)
+        {
+          paramSpannable.removeSpan(this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan);
+          paramSpannable.setSpan(new BackgroundColorSpan(0), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
+          Selection.removeSelection(paramSpannable);
+          localObject[0].onClick(paramTextView);
+        }
+        for (;;)
+        {
+          return true;
+          if (i == 0)
+          {
+            this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan = new BackgroundColorSpan(Color.parseColor("#DBE5EF"));
+            paramSpannable.setSpan(this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan, paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
+          }
+          else if ((i == 3) || (i == 2))
+          {
+            paramSpannable.removeSpan(this.jdField_a_of_type_AndroidTextStyleBackgroundColorSpan);
+            paramSpannable.setSpan(new BackgroundColorSpan(0), paramSpannable.getSpanStart(localObject[0]), paramSpannable.getSpanEnd(localObject[0]), 33);
+          }
+        }
       }
-      Drawable localDrawable = this.b;
-      this.b = paramDrawable;
-      if (localDrawable != null) {
-        localDrawable.setCallback(null);
+      if ((paramTextView.getTag(2131309083) != null) && ((paramTextView.getTag(2131309083) instanceof Boolean)) && (((Boolean)paramTextView.getTag(2131309083)).booleanValue()))
+      {
+        switch (paramMotionEvent.getAction())
+        {
+        }
+        for (;;)
+        {
+          return true;
+          ((LinearLayout)paramTextView.getParent()).setBackgroundDrawable(paramTextView.getResources().getDrawable(2130848146));
+          continue;
+          ((LinearLayout)paramTextView.getParent()).setBackgroundDrawable(paramTextView.getResources().getDrawable(2130848148));
+        }
       }
-      invalidateSelf();
     }
-  }
-  
-  public void draw(@NonNull Canvas paramCanvas)
-  {
-    this.b.draw(paramCanvas);
-    this.jdField_a_of_type_Nwb.b();
-  }
-  
-  public int getOpacity()
-  {
-    return this.b.getOpacity();
-  }
-  
-  public boolean getPadding(@NonNull Rect paramRect)
-  {
-    return this.b.getPadding(paramRect);
-  }
-  
-  @NonNull
-  public Drawable mutate()
-  {
-    this.b.mutate();
-    return super.mutate();
-  }
-  
-  protected void onBoundsChange(Rect paramRect)
-  {
-    super.onBoundsChange(paramRect);
-    this.b.setBounds(paramRect);
-  }
-  
-  protected boolean onLevelChange(int paramInt)
-  {
-    this.b.setLevel(paramInt);
-    return true;
-  }
-  
-  protected boolean onStateChange(int[] paramArrayOfInt)
-  {
-    this.b.setState(paramArrayOfInt);
-    return true;
-  }
-  
-  public void setAlpha(int paramInt)
-  {
-    this.b.setAlpha(paramInt);
-  }
-  
-  public void setColorFilter(int paramInt, @NonNull PorterDuff.Mode paramMode)
-  {
-    super.setColorFilter(paramInt, paramMode);
-    this.b.setColorFilter(paramInt, paramMode);
-  }
-  
-  public void setColorFilter(@Nullable ColorFilter paramColorFilter)
-  {
-    this.b.setColorFilter(paramColorFilter);
-  }
-  
-  public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    boolean bool = super.setVisible(paramBoolean1, paramBoolean2);
-    this.b.setVisible(paramBoolean1, paramBoolean2);
-    return bool;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nwg
  * JD-Core Version:    0.7.0.1
  */

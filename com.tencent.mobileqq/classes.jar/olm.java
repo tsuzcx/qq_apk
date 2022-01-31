@@ -1,37 +1,58 @@
-import com.qq.taf.jce.HexUtil;
-import com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
-import com.tencent.biz.qqstory.takevideo.EditWebVideoPartManager;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
-import com.tencent.util.MqqWeakReferenceHandler;
+import android.os.Handler;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import org.json.JSONObject;
 
 public class olm
-  implements EncodeVideoTask.ResultListener
+  implements TVK_SDKMgr.InstallListener
 {
-  public olm(EditWebVideoActivity paramEditWebVideoActivity) {}
+  private Handler a;
   
-  public void a(int paramInt)
+  public olm(Handler paramHandler)
   {
-    this.a.runOnUiThread(new oln(this));
+    this.a = paramHandler;
   }
   
-  public void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
+  public void onInstallProgress(float paramFloat)
   {
-    int i = ((EditWebVideoPartManager)this.a.a).a;
-    EditWebVideoActivity.a(this.a, paramString1);
-    EditWebVideoActivity.a(this.a, paramArrayOfByte1);
-    EditWebVideoActivity.b(this.a, HexUtil.bytes2HexStr(EditWebVideoActivity.a(this.a)));
-    paramString1 = this.a;
-    if (i <= 0) {}
-    for (;;)
+    if (this.a != null) {
+      this.a.sendEmptyMessage(2);
+    }
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      EditWebVideoActivity.a(paramString1, paramInt3);
-      EditWebVideoActivity.c(this.a, paramString2);
-      EditWebVideoActivity.b(this.a, paramArrayOfByte2);
-      EditWebVideoActivity.b(this.a, paramInt1);
-      EditWebVideoActivity.c(this.a, paramInt2);
-      EditWebVideoActivity.a(this.a).sendEmptyMessage(1002);
+      localJSONObject.put("version", "8.2.6");
+      localJSONObject.put("error_code", paramInt);
+      label25:
+      if (this.a != null) {
+        this.a.sendEmptyMessage(1);
+      }
       return;
-      paramInt3 = i;
+    }
+    catch (Exception localException)
+    {
+      break label25;
+    }
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("version", "8.2.6");
+      label17:
+      if (this.a != null) {
+        this.a.sendEmptyMessage(0);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      break label17;
     }
   }
 }

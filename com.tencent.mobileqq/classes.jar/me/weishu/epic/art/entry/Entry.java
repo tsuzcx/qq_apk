@@ -260,7 +260,7 @@ public class Entry
       label792:
       paramArrayOfByte1 = paramMethodInfo[paramInt2];
       i = arrayOfInt[paramInt2];
-      localObject[paramInt2] = wrapArgument(paramArrayOfByte1, paramInt1, Arrays.copyOfRange(arrayOfByte, i, i + getTypeLength(paramArrayOfByte1)));
+      localObject[paramInt2] = wrapArgument(paramArrayOfByte1, paramInt1, Arrays.copyOfRange(arrayOfByte, i, getTypeLength(paramArrayOfByte1) + i));
       paramInt2 += 1;
       break label141;
       label837:

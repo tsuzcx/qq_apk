@@ -1,25 +1,21 @@
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout20;
-import com.tencent.widget.SingleLineTextView;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import org.json.JSONObject;
 
-public class ainv
-  implements Runnable
+class ainv
+  implements MediaPlayer.OnCompletionListener
 {
-  public ainv(StructMsgItemLayout20 paramStructMsgItemLayout20, int paramInt, ainw paramainw) {}
+  ainv(ainq paramainq, aioq paramaioq, JSONObject paramJSONObject) {}
   
-  public void run()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    int i = this.jdField_a_of_type_Int;
-    int j = this.jdField_a_of_type_Ainw.jdField_a_of_type_AndroidWidgetTextView.getWidth();
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_Ainw.jdField_a_of_type_ComTencentWidgetSingleLineTextView.getLayoutParams();
-    localLayoutParams.rightMargin = (j + i);
-    this.jdField_a_of_type_Ainw.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setLayoutParams(localLayoutParams);
+    this.jdField_a_of_type_Aioq.a(this.jdField_a_of_type_OrgJsonJSONObject);
+    this.jdField_a_of_type_Ainq.a(10);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ainv
  * JD-Core Version:    0.7.0.1
  */

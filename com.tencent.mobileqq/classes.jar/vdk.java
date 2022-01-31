@@ -1,28 +1,44 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
-import com.tencent.mobileqq.activity.PublicTransFragmentActivity;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
 
 public class vdk
-  implements View.OnClickListener
+  extends vcy
 {
-  public vdk(GrayTipsItemBuilder paramGrayTipsItemBuilder, long paramLong) {}
+  public int c;
   
-  public void onClick(View paramView)
+  public vdk(int paramInt1, String paramString, int paramInt2, int paramInt3)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("uinType", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.a.a);
-    localIntent.putExtra("uniseq", this.jdField_a_of_type_Long);
-    PublicFragmentActivity.Launcher.a(paramView.getContext(), localIntent, PublicTransFragmentActivity.class, ScoreQAVFragment.class);
+    super(paramInt1, paramString, paramInt2);
+    this.c = paramInt3;
+  }
+  
+  @NonNull
+  public Class<? extends vcz> a()
+  {
+    return vdl.class;
+  }
+  
+  @NonNull
+  public vcz a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    return new vdl(this, paramContext, paramViewGroup);
+  }
+  
+  public void a(int paramInt)
+  {
+    urk.a("WeatherFilterData", "updateWeather:%s", Integer.valueOf(paramInt));
+    this.c = paramInt;
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vdk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,63 @@
 package com.tencent.mobileqq.startup.step;
 
+import ahca;
+import awnu;
+import awoa;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.startup.director.StartupDirector;
+import com.tencent.mobileqq.pluginsdk.PluginUtils;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QzonePluginProxyActivity;
+import java.io.File;
 import mqq.app.AppActivity;
 import mqq.app.AppRuntime;
+import xfs;
 
 public class LoadData
   extends Step
 {
-  protected boolean a()
+  protected boolean doStep()
   {
-    AppActivity localAppActivity = this.a.a;
+    boolean bool2 = true;
+    AppActivity localAppActivity = this.mDirector.a;
     long l = System.currentTimeMillis();
-    if (localAppActivity != null)
+    xfs.a = l;
+    if ((!awnu.a()) || (BaseApplicationImpl.isCurrentVersionFirstLaunch) || (PluginUtils.getInstalledPluginPath(localAppActivity, "qzone_plugin.apk").exists())) {}
+    for (;;)
     {
-      AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.waitAppRuntime(null);
-      if (this.c == 17) {}
-      for (boolean bool = true; (localAppActivity.preloadData(localAppRuntime, bool)) && (System.currentTimeMillis() - l < 550L); bool = false) {
-        return true;
+      try
+      {
+        QzonePluginProxyActivity.a(localAppActivity);
+        if (localAppActivity != null)
+        {
+          if (!xfs.a(BaseApplicationImpl.sApplication)) {
+            break;
+          }
+          ahca.a(BaseApplicationImpl.sApplication, true);
+        }
+        return false;
       }
-      return false;
+      catch (Exception localException)
+      {
+        QLog.e("LoadData", 1, "getQZonePluginClassLoader" + localException);
+        continue;
+      }
+      QLog.e("LoadData", 1, "file == null");
     }
-    return false;
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.waitAppRuntime(null);
+    if (this.mId == 18)
+    {
+      bool1 = true;
+      if ((!localAppActivity.preloadData(localAppRuntime, bool1)) || (System.currentTimeMillis() - l >= 550L)) {
+        break label167;
+      }
+    }
+    label167:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      return bool1;
+      bool1 = false;
+      break;
+    }
   }
 }
 

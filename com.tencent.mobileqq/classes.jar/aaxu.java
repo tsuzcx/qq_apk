@@ -1,35 +1,28 @@
-import com.tencent.mobileqq.ark.ArkActionAppMgr;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import java.util.ArrayList;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
-class aaxu
-  implements Runnable
+public class aaxu
+  implements CompoundButton.OnCheckedChangeListener
 {
-  aaxu(aaxt paramaaxt, Object paramObject, boolean paramBoolean, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
+  public aaxu(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    aayb localaayb = (aayb)this.jdField_a_of_type_JavaLangObject;
-    if (this.jdField_a_of_type_Boolean)
+    paramCompoundButton = this.a.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-      long l1 = ArkActionAppMgr.a(this.jdField_a_of_type_Aaxt.a, 2, this.jdField_a_of_type_JavaUtilArrayList);
-      long l2 = ArkActionAppMgr.a(this.jdField_a_of_type_Aaxt.a, 1, this.b);
-      if ((l1 < 0L) || (l2 < 0L))
-      {
-        ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("getContextActionAppList, fail, gray-app-id=%d, app-id=%d", new Object[] { Long.valueOf(l2), Long.valueOf(l1) }));
-        ArkActionAppMgr.a(this.jdField_a_of_type_Aaxt.a, localaayb, false);
-        return;
-      }
-      ArkActionAppMgr.a(this.jdField_a_of_type_Aaxt.a, localaayb, true);
+      awqx.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Enter_sendmsg", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131629595), "qqsetting_enter_sendmsg_key", paramBoolean);
       return;
     }
-    ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("getContextActionAppList, fail, success is false.", new Object[0]));
-    ArkActionAppMgr.a(this.jdField_a_of_type_Aaxt.a, localaayb, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaxu
  * JD-Core Version:    0.7.0.1
  */

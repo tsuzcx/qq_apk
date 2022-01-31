@@ -1,39 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.open.agent.AuthorityLoginView;
+import com.tencent.qphone.base.util.QLog;
 
 public class alif
-  implements View.OnClickListener
+  implements ajfe
 {
-  public alif(AuthorityLoginView paramAuthorityLoginView) {}
+  public void a(boolean paramBoolean, int paramInt, long paramLong) {}
   
-  public void onClick(View paramView)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    paramView = this.a.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
-    View localView = this.a.jdField_a_of_type_AndroidViewView.findViewById(2131365732);
-    if (paramView == this.a.b)
+    if (QLog.isColorLevel()) {
+      QLog.d("ArMapObserver", 2, new Object[] { "onUpdate, type=", Integer.valueOf(paramInt), ", isSuccess=", Boolean.valueOf(paramBoolean) });
+    }
+    switch (paramInt)
     {
-      if (localView != null) {
-        localView.setVisibility(8);
-      }
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
     }
-    while (paramView != this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) {
+    do
+    {
       return;
-    }
-    if (localView != null) {
-      localView.setVisibility(0);
-    }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.a.b);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    } while (!(paramObject instanceof Object[]));
+    paramObject = (Object[])paramObject;
+    a(paramBoolean, ((Integer)paramObject[0]).intValue(), ((Long)paramObject[1]).longValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alif
  * JD-Core Version:    0.7.0.1
  */

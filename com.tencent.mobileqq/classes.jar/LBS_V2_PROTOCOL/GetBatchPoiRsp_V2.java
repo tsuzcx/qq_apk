@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class GetBatchPoiRsp_V2
   extends JceStruct
 {
-  static ArrayList cache_vecPoiInfoCell = new ArrayList();
-  public ArrayList vecPoiInfoCell;
+  static ArrayList<PoiInfoCell_V2> cache_vecPoiInfoCell = new ArrayList();
+  public ArrayList<PoiInfoCell_V2> vecPoiInfoCell;
   
   static
   {
@@ -19,7 +19,7 @@ public final class GetBatchPoiRsp_V2
   
   public GetBatchPoiRsp_V2() {}
   
-  public GetBatchPoiRsp_V2(ArrayList paramArrayList)
+  public GetBatchPoiRsp_V2(ArrayList<PoiInfoCell_V2> paramArrayList)
   {
     this.vecPoiInfoCell = paramArrayList;
   }

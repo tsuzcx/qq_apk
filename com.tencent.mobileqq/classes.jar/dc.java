@@ -1,32 +1,32 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.dataline.util.DatalineSessionAdapter;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import java.util.List;
 
 public class dc
-  extends ClickableSpan
 {
-  public dc(DatalineSessionAdapter paramDatalineSessionAdapter) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public boolean b = true;
+  public boolean c = false;
   
-  public void onClick(View paramView)
+  public dc()
   {
-    FileManagerUtil.a(DatalineSessionAdapter.a(this.a), DatalineSessionAdapter.a(this.a).getCurrentAccountUin(), "我的电脑", "我的电脑");
-    ReportController.b(DatalineSessionAdapter.a(this.a), "CliOper", "", "", "0X800513D", "0X800513D", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_JavaLangString = "Printer";
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public boolean a(List<FileInfo> paramList, String paramString, QQAppInterface paramQQAppInterface)
   {
-    paramTextPaint.setColor(Color.parseColor("#00a5e0"));
-    paramTextPaint.setUnderlineText(false);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     dc
  * JD-Core Version:    0.7.0.1
  */

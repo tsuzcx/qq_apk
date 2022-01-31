@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class adrp
-  implements Runnable
+class adrp
+  extends Handler
 {
-  public adrp(SendBottomBar paramSendBottomBar) {}
-  
-  public void run()
+  adrp(adro paramadro, Looper paramLooper)
   {
-    new adrq(this).execute(new Object[0]);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == adro.a) {
+      this.a.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adrp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,58 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.text.TextPaint;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.widget.FollowImageTextView;
+import android.content.SharedPreferences;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.memory.QLogReporter.1;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class ajzs
-  extends TextView
 {
-  public ajzs(FollowImageTextView paramFollowImageTextView, Context paramContext)
+  private static volatile ajzs a;
+  public static final SimpleDateFormat a;
+  
+  static
   {
-    super(paramContext);
+    jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yy.MM.dd");
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public static ajzs a()
   {
-    if (FollowImageTextView.a(this.a))
+    if (jdField_a_of_type_Ajzs == null) {}
+    try
     {
-      super.onDraw(paramCanvas);
-      return;
+      if (jdField_a_of_type_Ajzs == null) {
+        jdField_a_of_type_Ajzs = new ajzs();
+      }
+      return jdField_a_of_type_Ajzs;
     }
-    Object localObject = getPaint();
-    ((TextPaint)localObject).setColor(getCurrentTextColor());
-    ((TextPaint)localObject).drawableState = getDrawableState();
-    localObject = FollowImageTextView.a(this.a);
-    ((ajzu)localObject).a(FollowImageTextView.a(this.a) - 1);
-    ((ajzu)localObject).a(paramCanvas);
+    finally {}
+  }
+  
+  public void a()
+  {
+    if (new GregorianCalendar().get(11) < 2) {}
+    SharedPreferences localSharedPreferences;
+    long l1;
+    Calendar localCalendar;
+    String str;
+    do
+    {
+      return;
+      localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qlog_reporter", 0);
+      l1 = System.currentTimeMillis();
+      long l2 = localSharedPreferences.getLong("LastLogSizeReportTime", 0L);
+      localCalendar = Calendar.getInstance();
+      localCalendar.setTimeInMillis(l2);
+      str = jdField_a_of_type_JavaTextSimpleDateFormat.format(localCalendar.getTime());
+      localCalendar.setTimeInMillis(l1);
+    } while (str.equals(jdField_a_of_type_JavaTextSimpleDateFormat.format(localCalendar.getTime())));
+    ThreadManager.executeOnSubThread(new QLogReporter.1(this, localSharedPreferences, l1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajzs
  * JD-Core Version:    0.7.0.1
  */

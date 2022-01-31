@@ -1,18 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.lebasearch.widget.ScrolledTabHost;
 
 public class mse
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public mse(FastWebVideoFeedsListView paramFastWebVideoFeedsListView, int paramInt1, int paramInt2) {}
+  public mse(ScrolledTabHost paramScrolledTabHost, View paramView1, View paramView2, int paramInt) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView.smoothScrollBy(this.jdField_a_of_type_Int, this.b);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    this.b.setVisibility(0);
+    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_a_of_type_ComTencentBizLebasearchWidgetScrolledTabHost.a(this.jdField_a_of_type_Int);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     mse
  * JD-Core Version:    0.7.0.1
  */

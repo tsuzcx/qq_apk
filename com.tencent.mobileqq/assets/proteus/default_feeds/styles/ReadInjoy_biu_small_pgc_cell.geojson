@@ -1,0 +1,145 @@
+{
+  "ReadInjoy_biu_small_pgc_cell": {
+    "view_type": "cell",
+    "direction": "vertical",
+    "height": {
+      "type": "wrap_content"
+    },
+    "width": {
+      "type": "relative",
+      "value": "375"
+    },
+    "subviews": [
+                 {
+                 "$includeComponet": "componet/label.geojson"
+                 },
+      {
+        "$includeComponet": "componet/social_header.geojson"
+      },
+      {
+        "$includeComponet": "componet/socialize_recommend_follow.geojson"
+      },
+      {
+        "view_type": "ReadInJoyBiuCommentView",
+        "view_id": "id_biu_comment",
+        "margin_left": "12",
+        "margin_bottom": "10",
+        "height": {
+          "type": "wrap_content"
+        },
+        "width": {
+          "type": "relative",
+          "value": "351"
+        },
+        "attributes": {
+          "setFrameString:": "-1",
+          "setArticleModel:": "-1"
+        }
+      },
+      {
+        "view_type": "UIView",
+        "view_id": "id_middle_body_wrapper",
+        "direction": "vertical",
+        "height": {
+          "type": "wrap_content"
+        },
+        "width": {
+          "type": "relative",
+          "value": "375"
+        },
+        "attributes": {
+          "setBackgroundColorString:": "#FFFFFF"
+        },
+        "subviews": [
+          {
+            "view_type": "ReadInJoySummaryView",
+            "view_id": "id_summary",
+            "margin_left": "0",
+            "margin_bottom": "10",
+            "padding_bottom": "10",
+            "padding_top": "10",
+            "padding_left": "12",
+            "padding_right": "12",
+            "height": {
+              "type": "wrap_content"
+            },
+            "width": {
+              "type": "relative",
+              "value": "375"
+            },
+            "attributes": {
+              "setFrameString:": "-1",
+              "setArticleModel:": "-1",
+              "setBackgroundColorString:": "#08000000"
+            }
+          },
+          {
+            "$includeComponet": "componet/read_article.geojson"
+          },
+          {
+            "view_type": "ReadInJoyMiddleBodyView",
+            "view_id": "id_middle_body_content",
+            "margin_bottom": "10",
+            "height": {
+              "type": "wrap_content"
+            },
+            "width": {
+              "type": "relative",
+              "value": "375"
+            },
+            "attributes": {
+              "setArticleModel:": "-1"
+            }
+          },
+          {
+            "$includeComponet": "componet/capsule.geojson"
+          },
+          {
+            "$includeComponet": "componet/answer_capsule.geojson"
+          },
+          {
+            "$includeComponet": "componet/super_topic_gray.geojson"
+          },
+		  {
+			  "view_type":"UIView",
+			  "view_id":"id_account_card_container",
+			  "margin_bottom":"10",
+			  "margin_left":"12",
+			  "height":{
+				  "type":"relative",
+				  "value":"65"
+			  },
+			  "width":{
+				  "type":"relative",
+				  "value":"351"
+			  },
+			"attributes": {
+			  "setAttatchInfo:":"-1",
+			  "setBackgroundColorString:": "#FFFFFF"
+			},
+			  "subviews":[
+				  {
+					  "$includeComponet":"componet/cmp_account_card.geojson"
+				  }
+			  ]
+		  }
+        ]
+      },
+      {
+        "$includeComponet": "componet/social_bottom.geojson"
+      },
+      {
+        "$includeComponet": "componet/pack_bottom.geojson"
+      },
+      {
+        "$includeComponet": "componet/friends_biu.geojson"
+      },
+      {
+        "$includeComponet": "componet/flow_guide_bottom_1_2_3.geojson"
+      },
+      {
+        "$includeComponet": "componet/separator.geojson"
+      }
+    ]
+  }
+}

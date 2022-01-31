@@ -18,7 +18,7 @@ public class CrashHandler
       paramThread = MobileQQ.sMobileQQ;
       if (paramThread != null)
       {
-        String str = paramThread.getProcessName();
+        String str = paramThread.getQQProcessName();
         QLog.e("crash", 1, str + " has crashed.", paramThrowable);
         paramThread.closeAllActivitys();
         QLog.flushLog();

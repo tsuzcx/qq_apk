@@ -1,19 +1,11 @@
-import android.content.Context;
-import android.widget.RadioButton;
-import com.tencent.biz.troopgift.RadioButtonIndicator;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
 
 public class pdp
-  extends RadioButton
+  implements niq
 {
-  public pdp(RadioButtonIndicator paramRadioButtonIndicator, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public pdp(PTSFragment paramPTSFragment) {}
   
-  public boolean performClick()
-  {
-    return true;
-  }
+  public void a(String paramString) {}
 }
 
 

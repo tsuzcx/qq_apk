@@ -1,39 +1,34 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.ArrayList;
+import java.lang.ref.WeakReference;
 
 public class uew
-  implements View.OnClickListener
+  implements udf
 {
-  public uew(TroopMemberListActivity paramTroopMemberListActivity) {}
+  private int jdField_a_of_type_Int;
+  private WeakReference<ucg> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onClick(View paramView)
+  public uew(int paramInt)
   {
-    if ((this.a.d == 15) && (TroopMemberListActivity.a(this.a).size() > 0))
-    {
-      paramView = new Intent();
-      paramView.putExtra("param_deleted_uins", TroopMemberListActivity.a(this.a));
-      this.a.setResult(-1, paramView);
-      if ((this.a.e == null) || (!this.a.e.equals(this.a.app.getCurrentAccountUin()))) {
-        break label159;
-      }
-    }
-    label159:
-    for (int i = 0;; i = 1)
-    {
-      ReportController.b(this.a.app, "dc00899", "Grp_mber", "", "mber_list", "del_inacmem", 0, 0, this.a.b, "" + i, "1", TroopMemberListActivity.a(this.a).toString());
-      this.a.finish();
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    urk.a("Q.qqstory.detail.DetailCommentSegment", "on nick click. unionId = %s.", paramString);
+    if ((paramInt == 1002) || (paramInt == 1003)) {}
+    while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
       return;
     }
+    ((ucg)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_Int, paramString);
+  }
+  
+  public void a(ucg paramucg)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramucg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uew
  * JD-Core Version:    0.7.0.1
  */

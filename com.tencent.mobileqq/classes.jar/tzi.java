@@ -1,84 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.app.SubAccountBindObserver;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.database.MemoryInfoEntry;
 
 public class tzi
-  extends SubAccountBindObserver
 {
-  public tzi(SubLoginActivity paramSubLoginActivity) {}
+  public int a;
+  public long a;
+  public String a;
   
-  protected void b(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  public tzi(tzf paramtzf, String paramString)
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("SUB_ACCOUNT", 2, "SubLoginActivity.onBindSubAccount() isSucc=" + paramBoolean + " isBindFromThis=" + this.a.a);
-      if (paramSubAccountBackProtocData != null) {
-        QLog.d("SUB_ACCOUNT", 2, "SubLoginActivity.onBindSubAccount() mainAccount=" + paramSubAccountBackProtocData.b + " subAccount=" + paramSubAccountBackProtocData.c + " errType=" + paramSubAccountBackProtocData.jdField_a_of_type_Int + " errMsg=" + paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString);
-      }
+    this.jdField_a_of_type_JavaLangString = "";
+    paramtzf = ((spt)sqg.a(19)).a(paramString);
+    if (paramtzf != null) {
+      a(paramtzf);
     }
-    if (!this.a.a) {}
-    label428:
-    for (;;)
-    {
-      return;
-      this.a.a = false;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.subaccount.SubLoginActivity", 2, "onBindSubAccount: start");
-      }
-      this.a.c();
-      if (paramBoolean)
-      {
-        this.a.c(this.a.getString(2131436393));
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.subaccount.SubLoginActivity", 2, "onBindSubAccount:....SubloginActivity......bindSub success............");
-        }
-        SubAccountAssistantForward.b(this.a.app);
-        SubAccountAssistantForward.a(this.a.app);
-        this.a.finish();
-      }
-      for (;;)
-      {
-        if ((paramSubAccountBackProtocData == null) || (!QLog.isColorLevel())) {
-          break label428;
-        }
-        QLog.d("Q.subaccount.SubLoginActivity", 2, "onBindSubAccount:....SubloginActivity......bindSub failed............ ...errorMsg = " + paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString + "...errorType = " + paramSubAccountBackProtocData.jdField_a_of_type_Int);
-        return;
-        if (paramSubAccountBackProtocData == null) {
-          break;
-        }
-        switch (paramSubAccountBackProtocData.jdField_a_of_type_Int)
-        {
-        default: 
-          this.a.b(this.a.getString(2131436374));
-          break;
-        case 1002: 
-          SubAccountControll.a(this.a.app, this.a);
-          break;
-        case 1003: 
-          this.a.b(this.a.getString(2131436371));
-          break;
-        case 1004: 
-          String str2 = paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString;
-          String str1 = str2;
-          if (TextUtils.isEmpty(str2)) {
-            str1 = this.a.getString(2131436373);
-          }
-          this.a.b(str1);
-          this.a.runOnUiThread(new tzj(this));
-          SubLoginActivity.a(this.a, null);
-          SubAccountAssistantForward.a(this.a.app, 300L);
-        }
-      }
-    }
+  }
+  
+  public void a(@NonNull MemoryInfoEntry paramMemoryInfoEntry)
+  {
+    this.jdField_a_of_type_Long = paramMemoryInfoEntry.seq;
+    this.jdField_a_of_type_JavaLangString = paramMemoryInfoEntry.cookie;
+    this.jdField_a_of_type_Int = paramMemoryInfoEntry.timeZone;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tzi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
-
-public final class ahmk
-  implements Parcelable.Creator
+class ahmk
+  implements ahmn
 {
-  public FilterCategoryItem a(Parcel paramParcel)
-  {
-    return new FilterCategoryItem(paramParcel);
-  }
+  ahmk(ahmj paramahmj) {}
   
-  public FilterCategoryItem[] a(int paramInt)
+  public boolean a(int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
   {
-    return new FilterCategoryItem[paramInt];
+    if ((paramInt1 != this.a.a) && (this.a.a != 0)) {
+      return false;
+    }
+    return ahmj.a(this.a, paramInt1, paramInt2, paramString, paramInt3, paramInt4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahmk
  * JD-Core Version:    0.7.0.1
  */

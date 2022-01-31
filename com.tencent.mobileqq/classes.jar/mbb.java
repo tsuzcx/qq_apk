@@ -1,23 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.av.ui.VoiceChangeItemView1;
 
-public final class mbb
-  implements Parcelable.Creator
+public abstract interface mbb
 {
-  public DislikeInfo a(Parcel paramParcel)
-  {
-    return new DislikeInfo(paramParcel);
-  }
-  
-  public DislikeInfo[] a(int paramInt)
-  {
-    return new DislikeInfo[paramInt];
-  }
+  public abstract void a(VoiceChangeItemView1 paramVoiceChangeItemView1, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mbb
  * JD-Core Version:    0.7.0.1
  */

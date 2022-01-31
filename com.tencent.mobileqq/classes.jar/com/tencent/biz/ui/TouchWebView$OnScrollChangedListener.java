@@ -4,7 +4,7 @@ import android.view.View;
 
 public abstract interface TouchWebView$OnScrollChangedListener
 {
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView);
+  public abstract void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView);
 }
 
 

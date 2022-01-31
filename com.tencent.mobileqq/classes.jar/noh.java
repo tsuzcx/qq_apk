@@ -1,27 +1,45 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.child.MsgTabPlayMode;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
-import java.util.ArrayList;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.ADVideoAppDownloadManager;
 
-class noh
-  implements Runnable
+public class noh
 {
-  noh(nog paramnog, ArrayList paramArrayList) {}
-  
-  public void run()
+  public static void a(Activity paramActivity, int paramInt, VideoInfo paramVideoInfo)
   {
-    StoryVideoItem localStoryVideoItem = (StoryVideoItem)this.jdField_a_of_type_JavaUtilArrayList.get(0);
-    if (localStoryVideoItem.equals(this.jdField_a_of_type_Nog.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem)) {
-      this.jdField_a_of_type_Nog.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.copy(localStoryVideoItem);
+    if (paramVideoInfo == null) {
+      return;
     }
-    if (MsgTabPlayMode.a(this.jdField_a_of_type_Nog.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode) != 0) {
-      this.jdField_a_of_type_Nog.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.c(0);
+    AdvertisementInfo localAdvertisementInfo = nbe.a(paramVideoInfo.a);
+    if (paramVideoInfo.a(paramActivity))
+    {
+      nbe.a(new nmv().a(paramActivity).a(nbe.a).b(nbe.P).a(localAdvertisementInfo).a(paramVideoInfo.a).d(paramInt).a());
+      return;
     }
-    this.jdField_a_of_type_Nog.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.e = this.jdField_a_of_type_Nog.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.equals(this.jdField_a_of_type_Nog.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Nog.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.b));
-    this.jdField_a_of_type_Nog.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.notifyDataSetChanged();
-    this.jdField_a_of_type_Nog.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.e = false;
-    this.jdField_a_of_type_Nog.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.setCurrentItem(this.jdField_a_of_type_Nog.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.b, false);
+    nbe.a(new nmv().a(paramActivity).a(nbe.a).b(nbe.N).a(localAdvertisementInfo).a(paramVideoInfo.a).d(paramInt).a());
+  }
+  
+  public static void a(Activity paramActivity, int paramInt, VideoInfo paramVideoInfo, AdvertisementInfo paramAdvertisementInfo, ADVideoAppDownloadManager paramADVideoAppDownloadManager)
+  {
+    if (paramVideoInfo.c)
+    {
+      if (!paramADVideoAppDownloadManager.a(paramVideoInfo)) {
+        break label33;
+      }
+      rvb.b(paramActivity, paramAdvertisementInfo, null, 3, true, null);
+    }
+    for (;;)
+    {
+      a(paramActivity, paramInt, paramVideoInfo);
+      return;
+      label33:
+      if (paramAdvertisementInfo != null) {
+        paramAdvertisementInfo.setClickPos(paramInt);
+      }
+      paramADVideoAppDownloadManager = new nmr();
+      paramADVideoAppDownloadManager.c = true;
+      rvb.b(paramActivity, paramAdvertisementInfo, null, 3, true, paramADVideoAppDownloadManager);
+    }
   }
 }
 

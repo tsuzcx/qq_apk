@@ -8,6 +8,7 @@ import java.io.ObjectInputStream;
 public class MessageForTroopConfess
   extends ChatMessage
 {
+  public boolean isToSelf;
   public TroopConfessMsg mTroopConfessMsg;
   
   public MessageForTroopConfess() {}
@@ -60,12 +61,12 @@ public class MessageForTroopConfess
     return false;
   }
   
-  protected void postRead()
+  public void postRead()
   {
     parse();
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     if (this.mTroopConfessMsg != null) {}
     try

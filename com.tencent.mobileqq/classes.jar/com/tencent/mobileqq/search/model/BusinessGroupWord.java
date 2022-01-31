@@ -1,5 +1,8 @@
 package com.tencent.mobileqq.search.model;
 
+import avmp;
+import avmq;
+import avmr;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,18 +10,18 @@ import java.util.List;
 public class BusinessGroupWord
   implements Serializable
 {
-  public BusinessGroupWord.ClueWordItem clueWordItem;
-  public BusinessGroupWord.GroupID groupID;
-  public List hotWordItemList;
+  public avmp clueWordItem;
+  public avmq groupID;
+  public List<avmr> hotWordItemList;
   
   public BusinessGroupWord() {}
   
-  public BusinessGroupWord(BusinessGroupWord.GroupID paramGroupID, List paramList, BusinessGroupWord.ClueWordItem paramClueWordItem)
+  public BusinessGroupWord(avmq paramavmq, List<avmr> paramList, avmp paramavmp)
   {
-    this.groupID = paramGroupID;
+    this.groupID = paramavmq;
     this.hotWordItemList = new ArrayList();
     this.hotWordItemList = paramList;
-    this.clueWordItem = paramClueWordItem;
+    this.clueWordItem = paramavmp;
   }
 }
 

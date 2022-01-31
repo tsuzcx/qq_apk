@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.hotpic.HotPicPageView;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
 
-class adyv
-  implements Runnable
+public class adyv
+  implements bbrx
 {
-  adyv(adyu paramadyu) {}
+  public adyv(PhotoListPanel paramPhotoListPanel, Runnable paramRunnable) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a(this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder, this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoData);
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adyv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,65 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStepExector.ErrorHandler;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class oej
-  implements SimpleStepExector.ErrorHandler
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  public oej(StoryListPresenter paramStoryListPresenter) {}
+  public static String a = "ViolaPicSerPreloadHandler";
+  public static String b = "viola_service_instance";
   
-  public void a(ErrorMessage paramErrorMessage)
+  public static boolean a()
   {
-    SLog.e("Q.qqstory.home.StoryListPresenter", "step %s error occur when requestAllDataFromNet error=%s", new Object[] { paramErrorMessage.extraMsg, paramErrorMessage.getErrorMessage() });
+    return ((Boolean)bgmq.a(b, Boolean.valueOf(false))).booleanValue();
+  }
+  
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  {
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    Map localMap = ocx.a(paramString);
+    Object localObject = localMap.keySet();
+    for (;;)
+    {
+      try
+      {
+        localObject = ((Set)localObject).iterator();
+        if (((Iterator)localObject).hasNext())
+        {
+          String str2 = (String)((Iterator)localObject).next();
+          String str1 = (String)localMap.get(str2);
+          if (!TextUtils.equals(str2, "viola_service_instance_open")) {
+            continue;
+          }
+          str2 = b;
+          if (Integer.parseInt(str1) == 1)
+          {
+            bool = true;
+            bgmq.a(str2, Boolean.valueOf(bool));
+          }
+        }
+        else
+        {
+          return true;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e(a, 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString + " , error= " + localThrowable.getMessage());
+      }
+      boolean bool = false;
+    }
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    super.onWipeConfig(paramInt);
+    bgmq.a(b, Boolean.valueOf(false));
   }
 }
 

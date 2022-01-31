@@ -1,26 +1,41 @@
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-import com.tencent.mobileqq.activity.ContactSyncJumpActivity;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class ske
-  implements ChatActivityUtils.StartVideoListener
+public abstract class ske
+  extends JobSegment<ErrorMessage, ErrorMessage>
 {
-  public ske(ContactSyncJumpActivity paramContactSyncJumpActivity) {}
+  protected AtomicInteger a;
+  public skf a;
   
-  public void a()
+  public ske()
   {
-    this.a.finish();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   }
   
-  public void b() {}
+  protected abstract void a();
   
-  public void c()
+  protected void a(JobContext paramJobContext, ErrorMessage paramErrorMessage)
   {
-    this.a.finish();
+    a();
+  }
+  
+  public void a(skf paramskf)
+  {
+    this.jdField_a_of_type_Skf = paramskf;
+  }
+  
+  protected void b()
+  {
+    if (this.jdField_a_of_type_Skf != null) {
+      this.jdField_a_of_type_Skf.a(this);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ske
  * JD-Core Version:    0.7.0.1
  */

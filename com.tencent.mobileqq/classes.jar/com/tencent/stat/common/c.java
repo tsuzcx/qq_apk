@@ -11,13 +11,12 @@ import com.tencent.stat.af;
 import java.util.Locale;
 import java.util.TimeZone;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 class c
 {
   String a;
-  String b = "2.2.4";
+  String b = "2.4.2";
   DisplayMetrics c;
   int d = Build.VERSION.SDK_INT;
   String e = Build.MODEL;
@@ -59,7 +58,6 @@ class c
   }
   
   void a(JSONObject paramJSONObject, Thread paramThread)
-    throws JSONException
   {
     if (paramThread == null)
     {

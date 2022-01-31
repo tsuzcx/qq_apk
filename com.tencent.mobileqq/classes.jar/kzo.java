@@ -1,18 +1,10 @@
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
-
-class kzo
-  implements Runnable
+public abstract interface kzo
 {
-  kzo(kzn paramkzn) {}
-  
-  public void run()
-  {
-    ReadInJoyNativeAdAppVideoView.a(this.a.a.jdField_a_of_type_ComTencentBizPubaccountNativeAdViewReadInJoyNativeAdAppVideoView, this.a.a.jdField_a_of_type_AndroidContentContext);
-  }
+  public abstract void a(long paramLong1, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong2, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     kzo
  * JD-Core Version:    0.7.0.1
  */

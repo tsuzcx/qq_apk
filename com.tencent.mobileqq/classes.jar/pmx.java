@@ -1,34 +1,28 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import com.tencent.component.media.image.drawable.DrawableContainer;
-import com.tencent.component.media.image.drawable.SpecifiedDrawable;
-
 public class pmx
-  extends pmn
 {
+  public double a;
+  public int a;
+  public long a;
+  public String a;
   public int b;
-  public int c;
+  public long b;
+  public int c = -2019;
+  public int d = -2019;
+  public int e = -2019;
   
-  public pmx(Drawable paramDrawable, DrawableContainer paramDrawableContainer)
+  public pmx(pmv parampmv)
   {
-    super(paramDrawable, paramDrawableContainer);
+    this.jdField_b_of_type_Int = -2019;
   }
   
-  public pmx(pmx parampmx, DrawableContainer paramDrawableContainer, Resources paramResources)
+  public String toString()
   {
-    super(parampmx, paramDrawableContainer, paramResources);
-    this.b = parampmx.b;
-    this.c = parampmx.c;
-  }
-  
-  public Drawable newDrawable()
-  {
-    return new SpecifiedDrawable(this, null, null);
+    return "\nFeedScrollStateInfo{feedID='" + this.jdField_a_of_type_JavaLangString + '\'' + ", viewHeight=" + this.jdField_a_of_type_Int + ", starTopOffset=" + this.jdField_b_of_type_Int + ", endTopOffset=" + this.c + ", startBottomOffset=" + this.d + ", endBottomOffset=" + this.e + ", enterAZSpeed=" + this.jdField_a_of_type_Double + ", enterAZTime=" + this.jdField_a_of_type_Long + ", exitAZTime=" + this.jdField_b_of_type_Long + "}";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pmx
  * JD-Core Version:    0.7.0.1
  */

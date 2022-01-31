@@ -1,6 +1,5 @@
 package com.tencent.qqprotect.sfcfg;
 
-import amfm;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.ApplicationInfo;
@@ -8,6 +7,9 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
+import becf;
+import becg;
+import beek;
 import com.tencent.common.config.AppSetting;
 import com.tencent.ims.SecVerifyApk.ReportDetectResultPacket;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -20,7 +22,6 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.usq.u;
 import java.util.TimerTask;
 import mqq.app.MobileQQ;
 
@@ -98,7 +99,7 @@ public class QPTxVerifyApkTimerTask
     //   81: astore_1
     //   82: aload 4
     //   84: invokevirtual 72	java/security/MessageDigest:digest	()[B
-    //   87: invokestatic 77	com/tencent/qqprotect/sfcfg/TXSafeCheckUtil:a	([B)Ljava/lang/String;
+    //   87: invokestatic 77	becf:a	([B)Ljava/lang/String;
     //   90: astore 4
     //   92: aload 4
     //   94: astore_1
@@ -397,7 +398,7 @@ public class QPTxVerifyApkTimerTask
         {
           localReportDetectResultPacket.uint32_cmd.set(2);
           localReportDetectResultPacket.uint32_result.set(jdField_a_of_type_Int);
-          localReportDetectResultPacket.uint32_appid.set(AppSetting.jdField_a_of_type_Int);
+          localReportDetectResultPacket.uint32_appid.set(AppSetting.a());
           Object localObject1 = localQQAppInterface.getApplication().getApplicationInfo().sourceDir;
           if (localObject1 == null) {
             break;
@@ -414,7 +415,7 @@ public class QPTxVerifyApkTimerTask
             if (str4 != null) {
               jdField_b_of_type_JavaLangString = str4;
             }
-            if ((str2 == null) || (!str2.equalsIgnoreCase(jdField_b_of_type_JavaLangString)) || (localObject3 == null) || (!((String)localObject3).equalsIgnoreCase("7.6.8.3615"))) {
+            if ((str2 == null) || (!str2.equalsIgnoreCase(jdField_b_of_type_JavaLangString)) || (localObject3 == null) || (!((String)localObject3).equalsIgnoreCase("8.2.6.4370"))) {
               break label455;
             }
             if (localObject2 != null) {
@@ -431,8 +432,8 @@ public class QPTxVerifyApkTimerTask
           localReportDetectResultPacket.str_apkmd5.set(jdField_a_of_type_JavaLangString);
           localReportDetectResultPacket.str_rsamd5.set(jdField_b_of_type_JavaLangString);
           localReportDetectResultPacket.str_txsfcfgkmd5.set(jdField_c_of_type_JavaLangString);
-          localReportDetectResultPacket.str_apkversion.set("7.6.8.3615");
-          localReportDetectResultPacket.str_channelid.set("70124");
+          localReportDetectResultPacket.str_apkversion.set("8.2.6.4370");
+          localReportDetectResultPacket.str_channelid.set(AppSetting.c());
           localReportDetectResultPacket.str_uin.set(localQQAppInterface.getCurrentAccountUin());
           localReportDetectResultPacket.bytes_guid.set(ByteStringMicro.copyFrom(NetConnInfoCenter.GUID));
           localReportDetectResultPacket.str_sysversion.set(Build.VERSION.RELEASE);
@@ -463,13 +464,13 @@ public class QPTxVerifyApkTimerTask
       localReportDetectResultPacket.uint32_cmd.set(1);
       continue;
       label455:
-      d = u.a(BaseApplication.getContext());
-      jdField_a_of_type_JavaLangString = u.a(localException);
+      d = beek.a(BaseApplication.getContext());
+      jdField_a_of_type_JavaLangString = beek.a(localException);
       Object localObject2 = new byte[16];
       if (localObject2 != null)
       {
-        TXSafeCheckUtil.a(localException, "txsfcfg.dat", (byte[])localObject2);
-        jdField_c_of_type_JavaLangString = u.a((byte[])localObject2);
+        becf.a(localException, "txsfcfg.dat", (byte[])localObject2);
+        jdField_c_of_type_JavaLangString = beek.a((byte[])localObject2);
       }
       jdField_b_of_type_Boolean = true;
     }
@@ -485,7 +486,7 @@ public class QPTxVerifyApkTimerTask
       localEditor.putString("SecHisTxs", jdField_c_of_type_JavaLangString);
       localEditor.putString("SecHisRa", jdField_b_of_type_JavaLangString);
       localEditor.putString("SecHisAk", jdField_a_of_type_JavaLangString);
-      localEditor.putString("SecVer", "7.6.8.3615");
+      localEditor.putString("SecVer", "8.2.6.4370");
       localEditor.commit();
       return;
     }
@@ -514,15 +515,15 @@ public class QPTxVerifyApkTimerTask
           localObject = ((QQAppInterface)localObject).getApplication().getApplicationInfo().sourceDir;
           if (localObject != null)
           {
-            jdField_a_of_type_Int = TXVerifyAPKUtil.a((String)localObject, "txsfcfg.dat");
+            jdField_a_of_type_Int = becg.a((String)localObject, "txsfcfg.dat");
             if ((jdField_a_of_type_Int != 0) && (jdField_a_of_type_Int != 143)) {
-              jdField_a_of_type_Int = TXVerifyAPKUtil.a((String)localObject, "txsfcfg.dat");
+              jdField_a_of_type_Int = becg.a((String)localObject, "txsfcfg.dat");
             }
             jdField_a_of_type_Boolean = true;
           }
         }
       }
-      else if ((jdField_c_of_type_Boolean) || (jdField_a_of_type_Int != 0))
+      else
       {
         long l2 = System.currentTimeMillis();
         b();
@@ -541,12 +542,12 @@ public class QPTxVerifyApkTimerTask
   
   public void run()
   {
-    ThreadManager.post(new amfm(this), 5, null, true);
+    ThreadManager.post(new QPTxVerifyApkTimerTask.1(this), 5, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.qqprotect.sfcfg.QPTxVerifyApkTimerTask
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,66 @@
-import android.os.Handler;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.arcard.ARCardCamereButtonLayout;
-import com.tencent.mobileqq.arcard.ARCardCamereButtonLayout.CaptureButtonListenerInterceptor;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class aasm
-  implements View.OnTouchListener
+  implements avrb
 {
-  public aasm(ARCardCamereButtonLayout paramARCardCamereButtonLayout) {}
+  public aasm(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ARCardCamereButtonLayout", 2, "touch action:" + (paramMotionEvent.getAction() & 0xFF) + ", shortVideoShot:" + this.a.a.get() + ", actionUp:" + this.a.b.get() + ", isOver:" + ARCardCamereButtonLayout.a(this.a));
+    int i = 3000;
+    paramView = (avoj)paramView.getTag(2131313373);
+    if (paramView == null) {
+      return;
     }
-    this.a.a();
-    if (ARCardCamereButtonLayout.a(this.a)) {}
-    do
+    String str1 = paramView.b();
+    String str2 = paramView.a().toString();
+    if ((paramView instanceof avmx)) {
+      paramView = ((avmx)paramView).e();
+    }
+    for (;;)
     {
-      return false;
-      switch (paramMotionEvent.getAction() & 0xFF)
-      {
-      case 2: 
-      default: 
-        return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardOption.ForwardEntranceActivity", 2, "onAction, uin = " + str1 + ", displayName = " + str2 + ", troopUin = " + paramView + ", type = " + i);
       }
-    } while (ARCardCamereButtonLayout.b(this.a));
-    if ((ARCardCamereButtonLayout.a(this.a) != null) && (!ARCardCamereButtonLayout.a(this.a).a())) {
-      return true;
+      if ((i != -1) && (ForwardRecentActivity.a(this.a, new ResultRecord(str1, str2, i, paramView, "")))) {
+        ForwardRecentActivity.a(this.a).notifyDataSetChanged();
+      }
+      ForwardRecentActivity.g(this.a);
+      return;
+      if ((paramView instanceof avmv))
+      {
+        paramView = ((avmv)paramView).b();
+      }
+      else if ((paramView instanceof avnd))
+      {
+        paramView = ((avnd)paramView).a;
+        i = 1;
+      }
+      else if ((paramView instanceof avni))
+      {
+        paramView = ((avni)paramView).a().troopuin;
+        i = 1;
+      }
+      else if ((paramView instanceof avmy))
+      {
+        i = 0;
+        paramView = "-1";
+      }
+      else
+      {
+        i = -1;
+        paramView = "-1";
+      }
     }
-    this.a.b();
-    if ((ARCardCamereButtonLayout.a(this.a) == 3) || (ARCardCamereButtonLayout.a(this.a) == 1)) {
-      ARCardCamereButtonLayout.a(this.a).sendEmptyMessageDelayed(1, 100L);
-    }
-    ARCardCamereButtonLayout.a(this.a, true);
-    return true;
-    ARCardCamereButtonLayout.b(this.a);
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aasm
  * JD-Core Version:    0.7.0.1
  */

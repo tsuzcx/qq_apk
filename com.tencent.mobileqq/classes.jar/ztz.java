@@ -1,33 +1,16 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.StartAppCheckHandler;
-import java.util.Queue;
-
-public class ztz
-  extends Handler
+public abstract class ztz
+  extends zrx
 {
-  public ztz(StartAppCheckHandler paramStartAppCheckHandler, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  protected zua a;
   
-  public void handleMessage(Message paramMessage)
+  protected void a()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    paramMessage = (zuc)paramMessage.obj;
-    this.a.a.remove(paramMessage);
-    paramMessage.jdField_a_of_type_AndroidContentContext.startActivity(paramMessage.jdField_a_of_type_AndroidContentIntent);
+    this.jdField_a_of_type_Zua = new zua(this.jdField_a_of_type_Zrw.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ztz
  * JD-Core Version:    0.7.0.1
  */

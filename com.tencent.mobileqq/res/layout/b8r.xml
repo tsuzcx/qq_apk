@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="#ffeeeeee" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
+    <TextView android:textColor="@color/bm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="5.0dip" android:layout_marginBottom="5.0dip" android:text="本页面设置修改后需重启使用so进程后生效！" />
+    <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/e8x" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="(优先)使用APK SO(libs/armeabi/)" />
+    <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/iin" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="使用SD卡SO(html5/89757/qgamelibs/)" />
+    <com.tencent.mobileqq.widget.FormSwitchItem android:id="@id/dze" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" formItem:bgType="iwf" formItem:switchChecked="false" formItem:switchText="本地js调试(拍摄页趣玩)" />
+</LinearLayout>

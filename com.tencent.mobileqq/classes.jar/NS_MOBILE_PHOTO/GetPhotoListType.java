@@ -2,12 +2,13 @@ package NS_MOBILE_PHOTO;
 
 import java.io.Serializable;
 
-public class GetPhotoListType
+public final class GetPhotoListType
   implements Serializable
 {
-  public static final int eGetPhotoListTypeGetShareMemberPhoto = 2;
-  public static final int eGetPhotoListTypeNormal = 0;
-  public static final int eGetPhotoListTypeVideoFlowUser = 1;
+  public static final int _eGetPhotoListTypeGetAIOPicList = 3;
+  public static final int _eGetPhotoListTypeGetShareMemberPhoto = 2;
+  public static final int _eGetPhotoListTypeNormal = 0;
+  public static final int _eGetPhotoListTypeVideoFlowUser = 1;
 }
 
 

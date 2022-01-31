@@ -1,7 +1,7 @@
 package cooperation.qzone.report.lp;
 
+import bfpk;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import cooperation.qzone.QUA;
 import cooperation.qzone.util.QZLog;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +14,7 @@ public class LpReportInfo_DC02543
   private static final String TABLE_NAME = "DC02543";
   private long clientTime;
   private String envent;
-  private HashMap msgMap;
+  private HashMap<String, String> msgMap;
   private String retcode = "0";
   private long serverTime;
   private long timeCost;
@@ -25,7 +25,7 @@ public class LpReportInfo_DC02543
     this(paramString1, paramString2, "0", paramLong, null);
   }
   
-  public LpReportInfo_DC02543(String paramString1, String paramString2, String paramString3, long paramLong, HashMap paramHashMap)
+  public LpReportInfo_DC02543(String paramString1, String paramString2, String paramString3, long paramLong, HashMap<String, String> paramHashMap)
   {
     this.uin = paramString1;
     this.envent = paramString2;
@@ -41,7 +41,7 @@ public class LpReportInfo_DC02543
     return "DC02543";
   }
   
-  public Map toMap()
+  public Map<String, String> toMap()
   {
     localObject3 = "";
     Object localObject1 = localObject3;

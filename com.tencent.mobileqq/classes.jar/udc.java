@@ -1,34 +1,53 @@
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.utils.TroopAvatarManger;
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspFeedLikeList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedLikeInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoLikeInfo;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.ArrayList;
-import mqq.observer.AccountObserver;
+import java.util.List;
 
 public class udc
-  extends AccountObserver
+  extends slu
 {
-  public udc(TroopInfoActivity paramTroopInfoActivity, TroopAvatarManger paramTroopAvatarManger, ArrayList paramArrayList) {}
+  public List<LikeEntry> a;
+  public int b;
+  public int c;
   
-  public void onUpdateSKey(String paramString1, String paramString2)
+  public udc(qqstory_service.RspFeedLikeList paramRspFeedLikeList)
   {
-    super.onUpdateSKey(paramString1, paramString2);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.c) {
-      return;
-    }
-    if (paramString1 == null)
+    super(paramRspFeedLikeList.result);
+    paramRspFeedLikeList = (qqstory_struct.FeedLikeInfo)paramRspFeedLikeList.feed_like_info.get();
+    this.a = a(paramRspFeedLikeList);
+    this.b = paramRspFeedLikeList.like_total_count.get();
+    this.c = paramRspFeedLikeList.has_like.get();
+  }
+  
+  public List<LikeEntry> a(qqstory_struct.FeedLikeInfo paramFeedLikeInfo)
+  {
+    paramFeedLikeInfo = paramFeedLikeInfo.like_list.get();
+    ArrayList localArrayList1 = new ArrayList();
+    sqs localsqs = (sqs)sqg.a(2);
+    ArrayList localArrayList2 = new ArrayList();
+    int i = 0;
+    while (i < paramFeedLikeInfo.size())
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.runOnUiThread(new udd(this));
-      return;
+      LikeEntry localLikeEntry = LikeEntry.convertFrom((qqstory_struct.StoryVideoLikeInfo)paramFeedLikeInfo.get(i));
+      if (localsqs.b(localLikeEntry.unionId) == null) {
+        localArrayList2.add(new srn("", localLikeEntry.unionId));
+      }
+      localArrayList1.add(localLikeEntry);
+      i += 1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAvatarManger.a(TroopInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity));
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAvatarManger.a(TroopUploadingThread.class, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.app, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.a.troopcode, paramString1, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.app.getCurrentAccountUin(), null);
+    if (!localArrayList2.isEmpty()) {
+      new sxp().a(1, localArrayList2);
+    }
+    return localArrayList1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     udc
  * JD-Core Version:    0.7.0.1
  */

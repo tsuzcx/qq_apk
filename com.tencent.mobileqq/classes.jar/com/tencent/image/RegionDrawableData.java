@@ -19,6 +19,7 @@ public class RegionDrawableData
   int mSourceDensity;
   public int mState;
   int mTargetDensity;
+  public long mTaskTime;
   
   private int scaleToSampleRoundDown(float paramFloat)
   {
@@ -41,24 +42,27 @@ public class RegionDrawableData
   
   private int scaleToSampleRoundup(float paramFloat)
   {
-    int j = (int)Math.ceil(1.0F / paramFloat);
+    int j = (int)Math.round(1.0D / paramFloat);
     int i = j;
-    if (j > 64) {
-      i = 64;
+    if (j < 1) {
+      i = 1;
     }
-    j = 64;
-    while (j != 0)
+    j = i;
+    if (i > 64) {
+      j = 64;
+    }
+    i = 64;
+    while (i != 0)
     {
-      int k = i & j;
+      int k = j & i;
       if (k != 0)
       {
-        j = k;
-        if ((i - 1 & i) != 0) {
-          j = k << 1;
+        if (((i >> 1 & j) == 0) || ((j & i - 1) == 0)) {
+          return k;
         }
-        return j;
+        return k << 1;
       }
-      j >>= 1;
+      i >>= 1;
     }
     return 1;
   }

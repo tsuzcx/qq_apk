@@ -1,22 +1,23 @@
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
-import mqq.app.TicketManagerListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArDefaultSetting;
 
-public class akwd
-  implements TicketManagerListener
+public final class akwd
+  implements Parcelable.Creator<ArDefaultSetting>
 {
-  public void onTicketRefreshed()
+  public ArDefaultSetting a(Parcel paramParcel)
   {
-    QLog.i("SwiftBrowserCookieMonster", 1, "TicketManager invoke onTicketRefreshed");
-    SwiftBrowserCookieMonster.d();
-    SwiftBrowserCookieMonster.b(MobileQQ.sMobileQQ.waitAppRuntime(null), new Intent());
+    return new ArDefaultSetting(paramParcel);
+  }
+  
+  public ArDefaultSetting[] a(int paramInt)
+  {
+    return new ArDefaultSetting[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akwd
  * JD-Core Version:    0.7.0.1
  */

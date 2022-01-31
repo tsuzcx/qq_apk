@@ -1,18 +1,70 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
+import com.tencent.av.app.VideoAppInterface;
 
 public class kwn
-  implements Runnable
 {
-  public kwn(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager, String paramString) {}
+  private ajfb[] a = new ajfb[4];
   
-  public void run()
+  private ajfb b(VideoAppInterface paramVideoAppInterface, int paramInt)
   {
-    AdvertisementVideoPreloadManager.b(this.jdField_a_of_type_JavaLangString);
+    Object localObject = null;
+    long l1 = System.currentTimeMillis();
+    switch (paramInt)
+    {
+    }
+    for (paramVideoAppInterface = localObject;; paramVideoAppInterface = new kwb(paramVideoAppInterface))
+    {
+      krx.c("BusinessHandlerFactory", "createHandler unknown name");
+      for (;;)
+      {
+        long l2 = System.currentTimeMillis();
+        krx.c("BusinessHandlerFactory", "createHandler,cost time:" + (l2 - l1));
+        return paramVideoAppInterface;
+        paramVideoAppInterface = new kwm(paramVideoAppInterface);
+        continue;
+        paramVideoAppInterface = new kwj(paramVideoAppInterface);
+        continue;
+        paramVideoAppInterface = new lji(paramVideoAppInterface);
+      }
+    }
+  }
+  
+  public ajfb a(VideoAppInterface paramVideoAppInterface, int paramInt)
+  {
+    Object localObject = this.a[paramInt];
+    if (localObject != null) {
+      return localObject;
+    }
+    synchronized (this.a)
+    {
+      ajfb localajfb = this.a[paramInt];
+      localObject = localajfb;
+      if (localajfb == null)
+      {
+        paramVideoAppInterface = b(paramVideoAppInterface, paramInt);
+        localObject = paramVideoAppInterface;
+        if (paramVideoAppInterface != null)
+        {
+          this.a[paramInt] = paramVideoAppInterface;
+          localObject = paramVideoAppInterface;
+        }
+      }
+      return localObject;
+    }
+  }
+  
+  public void a(kvy paramkvy)
+  {
+    paramkvy.a("TransInfoCreate.CreateSession", new int[] { 1 });
+    paramkvy.a("TransInfo.JoinSession", new int[] { 0 });
+    paramkvy.a("TransInfo.ExitSession", new int[] { 0 });
+    paramkvy.a("TransInfo.ChangeSession", new int[] { 0 });
+    paramkvy.a("TransInfo.RawData", new int[] { 0 });
+    paramkvy.a("OidbSvc.0xa75", new int[] { 2 });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     kwn
  * JD-Core Version:    0.7.0.1
  */

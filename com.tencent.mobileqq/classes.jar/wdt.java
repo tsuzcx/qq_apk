@@ -1,35 +1,27 @@
-import android.widget.ImageView;
-import com.tencent.av.ui.AIOTopRightButtonConfig;
-import com.tencent.biz.pubaccount.ecshopassit.EcShopObserver;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.navbar.NavBarAIO;
-
 public class wdt
-  extends EcShopObserver
 {
-  public wdt(PublicAccountChatPie paramPublicAccountChatPie) {}
-  
-  protected void d(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && (PublicAccountChatPie.a(this.a).getVisibility() != 0))
-    {
-      if (AIOTopRightButtonConfig.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
-      {
-        PublicAccountChatPie.b(this.a).setVisibility(0);
-        PublicAccountChatPie.c(this.a).setOnClickListener(this.a);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setRight2Icon(2130844001, 2130844002);
-      }
-    }
-    else {
-      return;
-    }
-    PublicAccountChatPie.d(this.a).setVisibility(8);
-  }
+  public String a = "";
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public String j = "";
+  public String k = "";
+  public String l = "";
+  public String m = "";
+  public String n = "";
+  public String o = "";
+  public String p = "";
+  public String q = "";
+  public String r = "";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wdt
  * JD-Core Version:    0.7.0.1
  */

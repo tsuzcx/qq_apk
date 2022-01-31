@@ -1,5 +1,8 @@
 package com.tencent.mobileqq.activity;
 
+import aazo;
+import ajdo;
+import ajjy;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -15,17 +18,15 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import badq;
+import bbmy;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.apollo.view.ChatApolloViewListener;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import tag;
 
 public class JDHongbaoActivity
   extends BaseActivity
@@ -33,7 +34,7 @@ public class JDHongbaoActivity
 {
   long jdField_a_of_type_Long = 0L;
   private View jdField_a_of_type_AndroidViewView;
-  AlphaAnimation jdField_a_of_type_AndroidViewAnimationAlphaAnimation;
+  public AlphaAnimation a;
   private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
@@ -57,25 +58,25 @@ public class JDHongbaoActivity
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363218));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131309631));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131363219));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)super.findViewById(2131363222));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363220));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363223));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363224));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363225));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363226));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363227));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131363221));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131302908));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)super.findViewById(2131302984));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131312217));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131312215));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131312214));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131312216));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131312268));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131312375));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131309611));
     this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_f_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(2, 0.0F, 2, 0.0F, 2, -1.0F, 2, 0.0F);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setInterpolator(new JDHongbaoActivity.MyOvershotInterpolator(this));
+    this.jdField_a_of_type_AndroidViewAnimationAnimation.setInterpolator(new aazo(this));
     this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(800L);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131363217);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131301961);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation = new AlphaAnimation(0.0F, 0.7F);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setDuration(350L);
     this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.setFillAfter(true);
@@ -86,8 +87,8 @@ public class JDHongbaoActivity
     if (QLog.isColorLevel()) {
       QLog.d("JDHongbaoActivity", 2, "showHongbaoResult jumpUrl " + paramString);
     }
-    if (!NetworkUtil.d(this)) {
-      QQToast.a(this, "当前网络不可用", 1).a();
+    if (!badq.d(this)) {
+      bbmy.a(this, ajjy.a(2131640078), 1).a();
     }
     while (paramString == null) {
       return;
@@ -124,12 +125,12 @@ public class JDHongbaoActivity
       this.jdField_f_of_type_AndroidWidgetTextView.setText(this.jdField_e_of_type_JavaLangString + ">");
       this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
-      ChatApolloViewListener.a(134247337, this.app);
+      ajdo.a(134247337, this.app);
     }
     for (;;)
     {
       Object localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = getApplicationContext().getResources().getDrawable(2130842359);
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = getApplicationContext().getResources().getDrawable(2130844041);
       localObject = URLDrawable.getDrawable(this.jdField_f_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
       if ((this.jdField_a_of_type_ComTencentImageURLImageView != null) && (localObject != null)) {
         this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
@@ -138,16 +139,16 @@ public class JDHongbaoActivity
       this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(8);
       this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_e_of_type_AndroidWidgetTextView.setText(this.jdField_e_of_type_JavaLangString);
-      ChatApolloViewListener.a(134247333, this.app);
+      ajdo.a(134247333, this.app);
     }
   }
   
   private void c()
   {
-    ThreadManager.getUIHandler().postDelayed(new tag(this), 500L);
+    ThreadManager.getUIHandler().postDelayed(new JDHongbaoActivity.1(this), 500L);
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
@@ -157,14 +158,14 @@ public class JDHongbaoActivity
       finish();
       return false;
     }
-    setContentView(2130968689);
+    setContentView(2131493063);
     a();
     b();
     c();
     return true;
   }
   
-  protected boolean isWrapContent()
+  public boolean isWrapContent()
   {
     return false;
   }
@@ -180,25 +181,25 @@ public class JDHongbaoActivity
       a(this.g);
       if (this.jdField_a_of_type_Boolean)
       {
-        ChatApolloViewListener.a(134247339, this.app);
+        ajdo.a(134247339, this.app);
         return;
       }
-      ChatApolloViewListener.a(134247335, this.app);
+      ajdo.a(134247335, this.app);
       return;
-      ChatApolloViewListener.a(134247334, this.app);
+      ajdo.a(134247334, this.app);
       a(this.h);
       return;
-      ChatApolloViewListener.a(134247338, this.app);
+      ajdo.a(134247338, this.app);
       a(this.h);
       return;
     } while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 2000L);
     finish();
     if (this.jdField_a_of_type_Boolean)
     {
-      ChatApolloViewListener.a(134247340, this.app);
+      ajdo.a(134247340, this.app);
       return;
     }
-    ChatApolloViewListener.a(134247336, this.app);
+    ajdo.a(134247336, this.app);
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
@@ -209,7 +210,7 @@ public class JDHongbaoActivity
     return super.onKeyDown(paramInt, paramKeyEvent);
   }
   
-  protected void requestWindowFeature(Intent paramIntent)
+  public void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
     getWindow().setFlags(1024, 1024);

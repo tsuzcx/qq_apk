@@ -1,51 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.profile.DataTag;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspQQStoryGuide;
 
-class sui
-  implements View.OnClickListener
+public class sui
+  extends slu
 {
-  sui(sug paramsug) {}
-  
-  public void onClick(View paramView)
+  public sui(qqstory_service.RspQQStoryGuide paramRspQQStoryGuide)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqProfileDataTag == null) {}
-    for (;;)
-    {
-      return;
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqProfileDataTag.a instanceof String)) {
-        paramView = (String)this.a.jdField_a_of_type_ComTencentMobileqqProfileDataTag.a;
-      }
-      while (paramView != null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b(paramView);
-        ThreadManager.post(new suj(this), 5, null, true);
-        return;
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqProfileDataTag.a instanceof ProfileActivity.CardContactInfo))
-        {
-          paramView = (ProfileActivity.CardContactInfo)this.a.jdField_a_of_type_ComTencentMobileqqProfileDataTag.a;
-          if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.a != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.a.a == 33)) {
-            paramView = paramView.c;
-          } else {
-            paramView = paramView.a + " " + paramView.c;
-          }
-        }
-        else
-        {
-          paramView = null;
-        }
-      }
-    }
+    super(paramRspQQStoryGuide.result);
+  }
+  
+  public String toString()
+  {
+    return "QQStoryGuideResponse{}";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sui
  * JD-Core Version:    0.7.0.1
  */

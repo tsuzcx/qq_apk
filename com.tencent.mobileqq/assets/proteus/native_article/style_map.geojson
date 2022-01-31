@@ -1,0 +1,264 @@
+{
+	"data_map": {
+		"id_pk_title": {
+			"setText:": "text"
+		},
+		"id_pk_sub_title": {
+			"setText:": "text"
+		},
+		"id_pk_bg": {
+			"setImageWithURLString:lineup:": ["image_url", "lineup"]
+		},
+		"id_left_opinion": {
+			"setText:": "text"
+		},
+		"id_right_opinion": {
+			"setText:": "text"
+		},
+		"id_jump_opinion": {
+			"setText:": "text"
+		},
+		"id_native_pk_container": {
+			"setAttatchInfo:": "jump_url"
+		},
+		"id_right_arrow": {
+			"setImageWithURLString:lineup:": ["image_url", "lineup"]
+		},
+		"id_top_right_arrow": {
+			"setImageWithURLString:lineup:": ["image_url", "lineup"]
+		},
+		"id_left_ticket_number": {
+			"setText:": "text"
+		},
+		"id_right_ticket_number": {
+			"setText:": "text"
+		},
+		"id_star_icon": {
+			"setImageWithURLString:lineup:": ["image_url", "lineup"]
+		},
+		"id_star_list_title": {
+			"setText:": "text"
+		},
+		"id_star1_number": {
+			"setText:": "text"
+		},
+		"id_star1_name": {
+			"setText:": "text"
+		},
+		"id_star1_ticket_number": {
+			"setText:": "text"
+		},
+		"id_star2_number": {
+			"setText:": "text"
+		},
+		"id_star2_name": {
+			"setText:": "text"
+		},
+		"id_star2_ticket_number": {
+			"setText:": "text"
+		},
+		"id_star3_number": {
+			"setText:": "text"
+		},
+		"id_star3_name": {
+			"setText:": "text"
+		},
+		"id_star3_ticket_number": {
+			"setText:": "text"
+		},
+		"id_star_list_jump": {
+			"setText:": "text"
+		},
+		"id_star_list_jump_icon": {
+			"loadImageWithPath:": "image_url"
+		},
+		"id_native_star_container": {
+			"setAttatchInfo:": "jump_url"
+		},
+
+		"id_recommend_title": {
+			"setText:": "text"
+		},
+
+		"id_recommend_account_name": {
+			"setText:": "text"
+		},
+		"id_recommend_category_txt": {
+			"setText:": "text"
+		},
+
+		"id_recommend_cover_img": {
+			"loadImageWithPath:": "image_url"
+		},
+		"id_recommend_video_bg": {
+			"loadImageWithPath:": "image_url"
+		},
+
+		"id_recommend_video_duration": {
+			"setText:": "text"
+		},
+		"id_native_recommend_small_container": {
+			"setAttatchInfo:": "jump_url"
+		},
+		"id_recommend_video_icon": {
+			"loadImageWithPath:": "image_url"
+		},
+		"id_gallery_icon": {
+			"loadImageWithPath:": "image_url"
+		},
+		"id_gallery_number_txt": {
+			"setText:": "text"
+		},
+		"id_search_title": {
+			"setText:": "text"
+		},
+		"id_item1_result1": {
+			"setText:": "text",
+			"setAttatchInfo:": "jump_url",
+			"setProteusReportInfo:":"reportInfo"
+		},
+		"id_item1_result2": {
+			"setText:": "text",
+			"setAttatchInfo:": "jump_url",
+			"setProteusReportInfo:":"reportInfo"
+		},
+		"id_item2_result1": {
+			"setText:": "text",
+			"setAttatchInfo:": "jump_url",
+			"setProteusReportInfo:":"reportInfo"
+		},
+		"id_item2_result2": {
+			"setText:": "text",
+			"setAttatchInfo:": "jump_url",
+			"setProteusReportInfo:":"reportInfo"
+		},
+		"id_item3_result1": {
+			"setText:": "text",
+			"setAttatchInfo:": "jump_url",
+			"setProteusReportInfo:":"reportInfo"
+		},
+		"id_item3_result2": {
+			"setText:": "text",
+			"setAttatchInfo:": "jump_url",
+			"setProteusReportInfo:":"reportInfo"
+		},
+		"id_proteus_collection_view": {
+			"setCellArray:": "datas",
+			"setScrollJumpUrl:": "jump_url",
+			"setScrollTypeString:": "scrollType",
+			"setScrollIndicatorString:": "scrollIndicator",
+			"setScrollBounceString:": "scrollBounce",
+			"setEdgeDragString:": "edgeDrag"
+		},
+		"id_mid_img": {
+			"setImageWithURLString:lineup:": ["src", "lineup"]
+		},
+		"id_fg_icon_title": {
+			"setText:": "text"
+		},
+		"id_fg_title": {
+			"setText:": "text"
+		},
+		"id_fg_enter_title": {
+			"setText:": "text"
+		},
+		"id_mid_sub_title": {
+			"setText:": "text"
+		},
+		"id_mid_title": {
+			"setText:": "text"
+		},
+		"id_fg_button": {
+			"setAttatchInfo:": "url"
+		},
+		"id_fg_icon_view": {
+			"setBackgroundColorString:": "color"
+		},
+		"id_mid_img_cover": {
+			"setAttatchInfo:": "url"
+		},
+		"id_article_large_imge": {
+			"setImageWithURLString:lineup:": ["article_large_imge_url", "lineup"]
+		},
+		"id_artilce_title": {
+			"setText:": "artilce_title_text",
+			"setText:lineSpace:": [
+				"artilce_title_text",
+				"0"
+			],
+			"setTextColorString:": "title_text_color"
+
+		},
+		"id_dislike_button": {
+			"setImage:": "feeds_dislike_icon"
+		},
+		"id_large_video_icon": {
+			"loadImageWithPath:": "large_video_icon"
+		},
+		"id_info_avator": {
+			"loadQQAvatar:": "info_avator_uin",
+			"setArticleModel:": "article_model"
+		},
+		"id_large_video_cover": {
+			"loadImageWithPath:": "large_video_cover"
+		},
+		"id_large_video_duration": {
+			"setText:": "large_video_duration"
+		},
+		"id_info_status": {
+			"setText:": "info_status_text",
+			"setTextColorString:": "info_status_text_color",
+			"setBorderColorString:": "info_status_text_color"
+		},
+		"id_comment_num": {
+			"setText:": "article_comment_num"
+
+		},
+		"id_info_source": {
+			"setText:": "info_source_text"
+
+		},
+		"id_view_app": {
+			"setText:": "view_app_text"
+		},
+		"id_video_play_icon": {
+			"loadImageWithPath:": "video_play_icon"
+		},
+		"id_video_paly_text": {
+			"setText:": "video_paly_text"
+		},
+		"id_multi_img_1": {
+			"setImageWithURLString:lineup:": ["multi_img_url1", "lineup"]
+		},
+		"id_multi_img_2": {
+			"setImageWithURLString:lineup:": ["multi_img_url2", "lineup"]
+		},
+		"id_multi_img_3": {
+			"setImageWithURLString:lineup:": ["multi_img_url3", "lineup"]
+		},
+		"id_right_ticket_number_icon": {
+			"setImageWithURLString:lineup:": ["image_url", "lineup"]
+		},
+		"triple_img_container": {
+			"setAttatchInfo:": "jump_url"
+		},
+		"id_large_image_container": {
+			"setAttatchInfo:": "jump_url"
+		},
+		"id_left_ticket_number_icon": {
+			"setImageWithURLString:lineup:": ["image_url", "lineup"]
+		},
+		"id_recommend_category_download": {
+            "setRecommendAdModel:": "recommendAdModel",
+		    "setText:": "text",
+		    "setImage:": "left_image"
+		},
+        "id_native_ad_banner_large_pic_container": {
+            "setAttatchInfo:": "jump_url"
+        },
+        "id_ad_banner_bottom_imge": {
+            "setImageWithURLString:lineup:": ["image_url", "lineup"]
+        }
+	},
+	"version": "201901231648"
+}

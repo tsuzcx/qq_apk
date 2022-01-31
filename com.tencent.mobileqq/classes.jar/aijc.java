@@ -1,127 +1,13 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Rect;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
-import com.tencent.qphone.base.util.QLog;
-
 public class aijc
-  extends aijd
 {
-  float jdField_a_of_type_Float = 0.0F;
-  int jdField_a_of_type_Int = -1;
-  public boolean a;
-  int b;
-  public boolean b;
-  public int c;
-  public boolean c;
-  int d = 0;
-  public int e;
-  
-  public aijc(TCProgressBar paramTCProgressBar)
+  public static boolean a(String paramString)
   {
-    super(paramTCProgressBar);
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_c_of_type_Boolean = true;
-  }
-  
-  public int a()
-  {
-    return this.f + this.d;
-  }
-  
-  public void a(Canvas paramCanvas)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.left = this.f;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.right = (this.f + this.g);
-    int i = this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.top;
-    int j = this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.bottom;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.top = 0;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.bottom = this.e;
-    if (this.jdField_a_of_type_Boolean) {
-      a(paramCanvas, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsBitmap);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.top = i;
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect.bottom = j;
-      super.a(paramCanvas);
-      return;
-      a(paramCanvas, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsBitmap);
-    }
-  }
-  
-  void a(Canvas paramCanvas, Bitmap paramBitmap)
-  {
-    if (paramBitmap == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setColor(-65536);
-      }
-      paramCanvas.drawRect(this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
-    paramCanvas.drawBitmap(paramBitmap, null, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoWidgetTCProgressBar.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(false);
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_c_of_type_Int < 0) {}
-    for (int i = -this.jdField_c_of_type_Int; i > 1; i = this.jdField_c_of_type_Int) {
-      return true;
-    }
-    return false;
-  }
-  
-  public boolean a(float paramFloat)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TCProgressBar", 2, "checkBounds,x = " + paramFloat + ",x_coord = " + this.f + ",x_coord + length = " + (this.f + this.g));
-    }
-    return (paramFloat > this.f - 25) && (paramFloat < this.f + this.g + 25);
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    float f = paramMotionEvent.getX();
-    int i = paramMotionEvent.getAction();
-    switch (i)
-    {
-    default: 
-    case 0: 
-    case 2: 
-      do
-      {
-        return true;
-        this.jdField_b_of_type_Boolean = true;
-        this.jdField_a_of_type_Int = i;
-        this.jdField_a_of_type_Float = f;
-        this.jdField_b_of_type_Int = 0;
-        this.jdField_a_of_type_Boolean = false;
-        return true;
-        this.jdField_c_of_type_Int = ((int)(f - this.jdField_a_of_type_Float));
-        this.jdField_a_of_type_Int = i;
-        this.jdField_a_of_type_Float = f;
-        this.jdField_b_of_type_Int += 1;
-        this.jdField_c_of_type_Boolean = false;
-      } while (!a());
-      this.f += this.jdField_c_of_type_Int;
-      return true;
-    }
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.jdField_c_of_type_Boolean = true;
-    return true;
+    return ("cs.close_room.local".equals(paramString)) || ("cs.create_room.local".equals(paramString)) || ("sc.force_stop_game.local".equals(paramString)) || ("cs.get_dress_path.local".equals(paramString)) || ("cs.join_room.local".equals(paramString)) || ("cs.game_tips.local".equals(paramString)) || ("cs.make_room_min.local".equals(paramString)) || ("cs.first_frame_drawn.local".equals(paramString)) || ("cs.share_game_result.local".equals(paramString)) || ("sc.init_global_var.local".equals(paramString)) || ("cs.report_data_2_compass.local".equals(paramString)) || ("cs.report_data_2_backstage.local".equals(paramString)) || ("cs.report_event.local".equals(paramString)) || ("cs.report_flow_data.local".equals(paramString)) || ("cs.encrypt_data.local".equals(paramString)) || ("cs.decrypt_data.local".equals(paramString)) || ("cs.get_server_ip_port.local".equals(paramString)) || ("cs.save_recommend_ip.local".equals(paramString)) || ("cs.game_start.local".equals(paramString)) || ("cs.check_pubAccount_state.local".equals(paramString)) || ("cs.enter_pubAccount_card.local".equals(paramString)) || ("cs.invite_friends.local".equals(paramString)) || ("cs.send_b2c_redpacket.local".equals(paramString)) || ("cs.finish_group_whiteface.local".equals(paramString)) || ("cs.ready_play_whiteface.local".equals(paramString)) || ("cs.on_get_open_key.local".equals(paramString)) || ("cs.apolloGameWebMessage.local".equals(paramString)) || ("cs.openFloatTransparentView.local".equals(paramString)) || ("cs.openWebView.local".equals(paramString)) || ("cs.show_apollo_panel.local".equals(paramString)) || ("cs.slave_action_status_notify.local".equals(paramString)) || ("cs.qta_notify_test_result.local".equals(paramString)) || ("cs.share_pic.local".equals(paramString)) || ("cs.single_action_status_changed.local".equals(paramString)) || ("cs.audioRoom_enter.local".equals(paramString)) || ("cs.audioRoom_exit.local".equals(paramString)) || ("cs.audioRoom_set_mic.local".equals(paramString)) || ("cs.audioRoom_set_speaker.local".equals(paramString)) || ("cs.script_action_status_notify.local".equals(paramString)) || ("cs.script_get_dress_data.local".equals(paramString)) || ("cs.script_change_panel_status.local".equals(paramString)) || ("cs.script_sprite_status_change.local".equals(paramString)) || ("cs.script_get_show_action.local".equals(paramString)) || ("cs.script_is_allow_play_audio.local".equals(paramString)) || ("cs.script_show_barrage.local".equals(paramString)) || ("cs.script_send_action_msg.local".equals(paramString)) || ("cs.script_show_toast.local".equals(paramString)) || ("cs.script_get_config.local".equals(paramString)) || ("cs.script_get_nickname.local".equals(paramString)) || ("cs.script_get_action_data.local".equals(paramString)) || ("cs.send_game_msg.local".equals(paramString)) || ("cs.share_game_in_ark.local".equals(paramString)) || ("cs.h5_communicate.local".equals(paramString)) || ("cs.get_cm3D_state.local".equals(paramString)) || ("cs.trace_begin.local".equals(paramString)) || ("cs.trace_end.local".equals(paramString)) || ("cs.trace_span_begin.local".equals(paramString)) || ("cs.trace_span_end.local".equals(paramString)) || ("cs.trace_log.local".equals(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aijc
  * JD-Core Version:    0.7.0.1
  */

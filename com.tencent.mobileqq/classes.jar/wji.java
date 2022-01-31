@@ -1,20 +1,79 @@
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituImgResponse;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituResponse;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
 
 public class wji
-  implements Runnable
+  extends ohe
 {
-  public wji(ZhituManager paramZhituManager, String paramString1, int paramInt1, ZhituResponse paramZhituResponse, ZhituImgResponse paramZhituImgResponse, int paramInt2, String paramString2) {}
+  public wji(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public void run()
+  public void a(String paramString1, String paramString2, int paramInt)
   {
-    ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituResponse, this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituImgResponse, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("rowKey", paramString1);
+    localBundle.putString("action", paramString2);
+    localBundle.putInt("seq", paramInt);
+    localBundle.putString("processName", wis.a());
+    this.a.a(135, localBundle);
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2)
+  {
+    if (paramBoolean)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("rowKey", paramString1);
+      localBundle.putString("commentId", paramString2);
+      localBundle.putString("action", paramString3);
+      localBundle.putInt("seq", paramInt1);
+      localBundle.putInt("totalDeleteCount", paramInt2);
+      localBundle.putString("processName", wis.a());
+      this.a.a(134, localBundle);
+    }
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2, String paramString5)
+  {
+    if (paramBoolean)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("rowKey", paramString1);
+      localBundle.putString("commentId", paramString2);
+      localBundle.putString("commentContent", paramString3);
+      localBundle.putInt("commentLevel", paramInt1);
+      localBundle.putString("action", paramString4);
+      localBundle.putString("parentCommentId", paramString5);
+      localBundle.putInt("seq", paramInt2);
+      localBundle.putString("processName", wis.a());
+      this.a.a(132, localBundle);
+    }
+  }
+  
+  public void a(boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt)
+  {
+    if (paramBoolean)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("rowKey", paramString1);
+      localBundle.putString("commentId", paramString2);
+      localBundle.putString("likeStatus", paramString3);
+      localBundle.putString("action", paramString4);
+      localBundle.putInt("seq", paramInt);
+      localBundle.putString("processName", wis.a());
+      this.a.a(133, localBundle);
+    }
+  }
+  
+  public void g(int paramInt)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("seq", paramInt);
+    localBundle.putString("processName", wis.a());
+    this.a.a(136, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wji
  * JD-Core Version:    0.7.0.1
  */

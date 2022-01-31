@@ -1,23 +1,24 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppDataReport;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
 
-class aazc
-  implements aazl
+public class aazc
+  implements View.OnTouchListener
 {
-  aazc(aazb paramaazb) {}
+  public aazc(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  public void a(boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ArkAppCenter.b("ArkApp.Dict.Update", String.format("updateDict, incremental update fail, full update result, success=%s, name=%s", new Object[] { Boolean.toString(paramBoolean), this.a.jdField_a_of_type_Aazj.a }));
-    if (paramBoolean) {
-      ArkAppDataReport.a(this.a.jdField_a_of_type_Aazj.a, 2);
+    switch (paramMotionEvent.getAction())
+    {
     }
-    this.a.jdField_a_of_type_Aazl.a(paramBoolean);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aazc
  * JD-Core Version:    0.7.0.1
  */

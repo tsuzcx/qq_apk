@@ -1,26 +1,21 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import android.content.Context;
+import android.graphics.Color;
+import android.widget.TextView;
 
 public class wbm
-  implements Runnable
 {
-  public wbm(NearbyChatPie paramNearbyChatPie) {}
-  
-  public void run()
+  public static TextView a(Context paramContext, float paramFloat, String paramString1, String paramString2)
   {
-    NearbyPeopleCard localNearbyPeopleCard = (NearbyPeopleCard)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().a(NearbyPeopleCard.class, "uin=?", new String[] { this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a });
-    if (localNearbyPeopleCard != null) {
-      this.a.n = localNearbyPeopleCard.gender;
-    }
+    paramContext = new TextView(paramContext);
+    paramContext.setTextSize(1, paramFloat);
+    paramContext.setTextColor(Color.parseColor(paramString1));
+    paramContext.setText(paramString2);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wbm
  * JD-Core Version:    0.7.0.1
  */

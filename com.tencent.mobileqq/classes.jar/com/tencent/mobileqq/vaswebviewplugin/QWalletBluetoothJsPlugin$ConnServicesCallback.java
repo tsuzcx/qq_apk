@@ -9,6 +9,7 @@ import android.os.Handler;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.UUID;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,18 +20,19 @@ class QWalletBluetoothJsPlugin$ConnServicesCallback
 {
   private int cur;
   private int mCount;
-  private List mDevices;
+  private List<BluetoothDevice> mDevices;
   private Runnable mRunnable;
-  private List mSearchUuids;
+  private List<UUID> mSearchUuids;
   
-  QWalletBluetoothJsPlugin$ConnServicesCallback(QWalletBluetoothJsPlugin paramQWalletBluetoothJsPlugin, List paramList, int paramInt)
+  QWalletBluetoothJsPlugin$ConnServicesCallback(List<UUID> paramList, int paramInt)
   {
-    this.mSearchUuids = paramList;
+    this.mSearchUuids = paramInt;
     this.mDevices = new ArrayList();
-    this.mCount = paramInt;
+    int i;
+    this.mCount = i;
     this.cur = 0;
-    this.mRunnable = new QWalletBluetoothJsPlugin.ConnServicesCallback.1(this, paramQWalletBluetoothJsPlugin);
-    QWalletBluetoothJsPlugin.access$1300(paramQWalletBluetoothJsPlugin).postDelayed(this.mRunnable, 15000L);
+    this.mRunnable = new QWalletBluetoothJsPlugin.ConnServicesCallback.1(this, paramList);
+    QWalletBluetoothJsPlugin.access$1300(paramList).postDelayed(this.mRunnable, 15000L);
   }
   
   public void onConnectionStateChange(BluetoothGatt paramBluetoothGatt, int paramInt1, int paramInt2)
@@ -85,7 +87,7 @@ class QWalletBluetoothJsPlugin$ConnServicesCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletBluetoothJsPlugin.ConnServicesCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,24 @@
-import android.app.Activity;
-import com.tencent.biz.addContactTroopView.AddContactTroopHandler.IGetPopClassAndSearchCB;
-import com.tencent.mobileqq.activity.contact.addcontact.ContactBaseView.IAddContactContext;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 
-public class wos
-  implements AddContactTroopHandler.IGetPopClassAndSearchCB
+class wos
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public wos(TroopView paramTroopView) {}
+  wos(woq paramwoq, Container paramContainer) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
-      return;
-    }
-    TroopView.d(this.a, true);
-    TroopView.e(this.a, true);
-    TroopView.a(this.a).sendEmptyMessage(4);
-  }
-  
-  public void b()
-  {
-    if ((this.a.a == null) || (this.a.a.a() == null) || (this.a.a.a().isFinishing())) {
-      return;
-    }
-    TroopView.d(this.a, true);
-    TroopView.e(this.a, false);
-    TroopView.a(this.a).sendEmptyMessage(5);
+    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getLayoutParams();
+    localLayoutParams.topMargin = paramValueAnimator.intValue();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.setLayoutParams(localLayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wos
  * JD-Core Version:    0.7.0.1
  */

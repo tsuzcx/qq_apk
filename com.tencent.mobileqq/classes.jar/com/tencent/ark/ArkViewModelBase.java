@@ -1,16 +1,26 @@
 package com.tencent.ark;
 
+import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
+import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Locale;
 
 public class ArkViewModelBase
-  implements ark.ContainerCallback, ArkVsync.ArkFrameCallback
+  implements ArkVsync.ArkFrameCallback, ark.ContainerCallback
 {
+  public static final int APP_CREATE_FAILED = 104;
+  public static final int APP_CREATE_ROOTVIEW_FAILED = 105;
+  public static final int APP_JSCORE_NOT_LOADED = 107;
+  public static final int APP_LOAD_APPLICATION_FAILED = 106;
+  public static final int APP_LOAD_FAILED = 101;
+  public static final int APP_LOAD_SUCCESS = 100;
+  public static final int APP_RUN_FAILED = 102;
+  public static final int APP_VIEW_IMPL_EMPTY = 103;
   public static final int ARKAPP_TYPE_DESTROY = 2;
   public static final int ARKAPP_TYPE_PAUSE = 0;
   public static final int ARKAPP_TYPE_RELOAD = 3;
@@ -19,48 +29,38 @@ public class ArkViewModelBase
   protected static final String KEY_FORMAT = "%s_%s";
   protected static final String TAG = "ArkApp.ArkViewModelBase";
   protected static boolean sAppInit = false;
-  protected static HashMap<String, Size> sAppSizeHint = new HashMap();
+  protected static HashMap<String, ArkViewModelBase.Size> sAppSizeHint = new HashMap(8);
   protected ark.ApplicationCallback mAppCallback;
-  protected AppInfo mAppInfo = new AppInfo();
+  public ArkViewModelBase.AppInfo mAppInfo = new ArkViewModelBase.AppInfo();
   protected int mAppScriptType = 0;
   protected ark.Application mApplication;
   protected volatile boolean mAttached = false;
   protected ark.Container mContainer;
-  public ErrorInfo mErrorInfo = new ErrorInfo();
+  protected int mDrawCount = 0;
+  public ArkViewModelBase.ErrorInfo mErrorInfo = new ArkViewModelBase.ErrorInfo();
   protected boolean mFirstDraw = true;
   protected boolean mHasLoaded = false;
   protected boolean mInActivateStatus = true;
   protected boolean mInSyncRect = false;
   protected boolean mInit = false;
   protected volatile boolean mIsActivated = true;
+  protected volatile boolean mIsForeground = true;
+  protected boolean mIsGpuRendering = false;
+  protected volatile boolean mIsVisible = true;
   protected boolean mLoadFailed = false;
-  private Runnable mPostInvalid = new Runnable()
-  {
-    public void run()
-    {
-      ArkViewImplement localArkViewImplement = ArkViewModelBase.this.mViewImpl;
-      if ((localArkViewImplement != null) && (!ArkViewModelBase.this.mRectArkContainer.isEmpty())) {
-        localArkViewImplement.onInvalidate(ArkViewModelBase.this.mRectArkContainer);
-      }
-    }
-  };
-  protected Runnable mPostRedraw = new Runnable()
-  {
-    public void run()
-    {
-      if (!ArkViewModelBase.this.mRectContainerF.isEmpty()) {
-        ArkViewModelBase.this.Update(ArkViewModelBase.this.mRectContainerF.left, ArkViewModelBase.this.mRectContainerF.top, ArkViewModelBase.this.mRectContainerF.right, ArkViewModelBase.this.mRectContainerF.bottom);
-      }
-    }
-  };
+  protected boolean mNeedFirstPaint = false;
+  protected boolean mPerfTaskRunning = false;
+  private Runnable mPostInvalid = new ArkViewModelBase.15(this);
+  protected Runnable mPostRedraw = new ArkViewModelBase.14(this);
+  protected String mQueueKey;
   protected Rect mRectArkContainer = new Rect();
   protected Rect mRectContainer = new Rect();
   protected RectF mRectContainerF = new RectF();
   protected RectF mRectInvalidF = new RectF();
   protected boolean mRoundCorner = false;
   protected volatile boolean mSyncRectLock = false;
-  protected TimeRecord mTimeRecord = new TimeRecord();
-  protected ArkViewImplement mViewImpl;
+  protected ArkViewModelBase.TimeRecord mTimeRecord = new ArkViewModelBase.TimeRecord();
+  public ArkViewImplement mViewImpl;
   
   public ArkViewModelBase(ark.ApplicationCallback paramApplicationCallback)
   {
@@ -97,6 +97,13 @@ public class ArkViewModelBase
     return localRect;
   }
   
+  private void reportPerfStat()
+  {
+    if ((this.mAppInfo != null) && (this.mAppInfo.name != null) && (this.mAppInfo.view != null)) {
+      ArkPerfMonitor.getInstance().doReport(this.mAppInfo.name, this.mAppInfo.view, new ArkViewModelBase.9(this));
+    }
+  }
+  
   public static Rect scaleRect(Rect paramRect, float paramFloat)
   {
     if (paramRect == null) {
@@ -119,7 +126,7 @@ public class ArkViewModelBase
       str = ENV.getProxyHost();
       i = ENV.getProxyPort();
       if ((!TextUtils.isEmpty(str)) && (i != 0)) {
-        break label69;
+        break label70;
       }
       ark.arkHTTPSetDefaultHttpProxy("", 0);
     }
@@ -127,7 +134,7 @@ public class ArkViewModelBase
     {
       ENV.logI("ArkApp.ArkViewModelBase", String.format("setArkHttpProxy, host=%s, port=%d", new Object[] { str, Integer.valueOf(i) }));
       return;
-      label69:
+      label70:
       ark.arkHTTPSetDefaultHttpProxy(str, i);
     }
   }
@@ -161,20 +168,14 @@ public class ArkViewModelBase
     return false;
   }
   
-  public void InputFocusChanged(final boolean paramBoolean1, final boolean paramBoolean2, final int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public void InputFocusChanged(boolean paramBoolean1, boolean paramBoolean2, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    final ArkViewImplement localArkViewImplement = this.mViewImpl;
+    ArkViewImplement localArkViewImplement = this.mViewImpl;
     if (localArkViewImplement == null) {
       return;
     }
-    final Rect localRect = new Rect((int)paramFloat1, (int)paramFloat2, (int)paramFloat3, (int)paramFloat4);
-    ArkDispatchTask.getInstance().postToMainThread(new Runnable()
-    {
-      public void run()
-      {
-        localArkViewImplement.onInputFocusChanged(paramBoolean1, paramBoolean2, paramInt, localRect);
-      }
-    });
+    Rect localRect = new Rect((int)paramFloat1, (int)paramFloat2, (int)paramFloat3, (int)paramFloat4);
+    ArkDispatchTask.getInstance().postToMainThread(new ArkViewModelBase.18(this, localArkViewImplement, paramBoolean1, paramBoolean2, paramInt, localRect));
   }
   
   public String InputGetSelectText()
@@ -201,22 +202,16 @@ public class ArkViewModelBase
     return false;
   }
   
-  public void InputMenuChanged(final boolean paramBoolean, final int paramInt1, final int paramInt2, final int paramInt3, final int paramInt4)
+  public void InputMenuChanged(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    final ArkViewImplement localArkViewImplement = this.mViewImpl;
+    ArkViewImplement localArkViewImplement = this.mViewImpl;
     if (localArkViewImplement == null) {
       return;
     }
     paramInt1 = (int)(paramInt1 * this.mAppInfo.scale);
     paramInt2 = (int)(paramInt2 * this.mAppInfo.scale);
     paramInt3 = (int)(paramInt3 * this.mAppInfo.scale);
-    ArkDispatchTask.getInstance().postToMainThread(new Runnable()
-    {
-      public void run()
-      {
-        localArkViewImplement.onInputMenuChanged(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-      }
-    });
+    ArkDispatchTask.getInstance().postToMainThread(new ArkViewModelBase.19(this, localArkViewImplement, paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4));
   }
   
   public boolean InputRedo()
@@ -243,24 +238,18 @@ public class ArkViewModelBase
     return false;
   }
   
-  public void InputSelectChanged(final int paramInt1, final int paramInt2, final int paramInt3, final int paramInt4, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public void InputSelectChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    final ArkViewImplement localArkViewImplement = this.mViewImpl;
+    ArkViewImplement localArkViewImplement = this.mViewImpl;
     if (localArkViewImplement == null) {
       return;
     }
-    final Rect localRect = new Rect((int)paramFloat1, (int)paramFloat2, (int)paramFloat3, (int)paramFloat4);
+    Rect localRect = new Rect((int)paramFloat1, (int)paramFloat2, (int)paramFloat3, (int)paramFloat4);
     paramInt1 = (int)(paramInt1 * this.mAppInfo.scale);
     paramInt2 = (int)(paramInt2 * this.mAppInfo.scale);
     paramInt3 = (int)(paramInt3 * this.mAppInfo.scale);
     paramInt4 = (int)(paramInt4 * this.mAppInfo.scale);
-    ArkDispatchTask.getInstance().postToMainThread(new Runnable()
-    {
-      public void run()
-      {
-        localArkViewImplement.onInputSelectChanged(paramInt1, paramInt2, paramInt3, paramInt4, localRect);
-      }
-    });
+    ArkDispatchTask.getInstance().postToMainThread(new ArkViewModelBase.20(this, localArkViewImplement, paramInt1, paramInt2, paramInt3, paramInt4, localRect));
   }
   
   public boolean InputSetCaretHolderSize(int paramInt1, int paramInt2)
@@ -293,14 +282,50 @@ public class ArkViewModelBase
     return false;
   }
   
+  public void SafeAsyncRun(Runnable paramRunnable)
+  {
+    if ((!this.mInit) && (TextUtils.isEmpty(this.mQueueKey)))
+    {
+      ENV.logE("ArkApp.ArkViewModelBase", "SafeAsyncRun mInit == false && mQueueKey == null ");
+      return;
+    }
+    try
+    {
+      ArkDispatchQueue.asyncRun(this.mQueueKey, paramRunnable);
+      return;
+    }
+    catch (UnsatisfiedLinkError paramRunnable)
+    {
+      ENV.logE("ArkApp.ArkViewModelBase", String.format("SafeAsyncRun, exception=%s", new Object[] { paramRunnable.getMessage() }));
+    }
+  }
+  
+  public void SafeAsyncRunDelay(Runnable paramRunnable, long paramLong)
+  {
+    if ((!this.mInit) && (TextUtils.isEmpty(this.mQueueKey)))
+    {
+      ENV.logE("ArkApp.ArkViewModelBase", "SafeAsyncRun mInit == false && mQueueKey == null ");
+      return;
+    }
+    try
+    {
+      ArkDispatchQueue.asyncRun(this.mQueueKey, paramRunnable, paramLong);
+      return;
+    }
+    catch (UnsatisfiedLinkError paramRunnable)
+    {
+      ENV.logE("ArkApp.ArkViewModelBase", String.format("SafeAsyncRun, exception=%s", new Object[] { paramRunnable.getMessage() }));
+    }
+  }
+  
   public void SyncRect(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     this.mRectContainerF.set(paramFloat1, paramFloat2, paramFloat3, paramFloat4);
     this.mRectArkContainer = convertRect(this.mRectContainerF);
-    final ArkViewImplement localArkViewImplement = this.mViewImpl;
+    ArkViewImplement localArkViewImplement = this.mViewImpl;
     if ((this.mSyncRectLock) || (localArkViewImplement == null)) {
       if (localArkViewImplement == null) {
-        ENV.logE("ArkApp.ArkViewModelBase", String.format("SyncRect.1.rect: %s, this.%h has return incorrect.", new Object[] { this.mRectArkContainer.toString(), this }));
+        ENV.logWithLimit("SyncRect.1.rect", "ArkApp.ArkViewModelBase", String.format("SyncRect.1.rect: %s, this.%h has return incorrect.", new Object[] { this.mRectArkContainer.toString(), this }));
       }
     }
     do
@@ -315,7 +340,7 @@ public class ArkViewModelBase
     this.mInSyncRect = true;
     if (notInSizeRange(this.mRectArkContainer.width(), this.mRectArkContainer.height()))
     {
-      Size localSize = limitToSizeRange(this.mRectArkContainer.width(), this.mRectArkContainer.height());
+      ArkViewModelBase.Size localSize = limitToSizeRange(this.mRectArkContainer.width(), this.mRectArkContainer.height());
       this.mRectContainer.set(0, 0, localSize.width, localSize.height);
     }
     for (;;)
@@ -323,13 +348,7 @@ public class ArkViewModelBase
       this.mContainer.SetSize(this.mRectContainer.width(), this.mRectContainer.height());
       this.mInSyncRect = false;
       createDrawTarget(localArkViewImplement);
-      ArkDispatchTask.getInstance().postToMainThread(new Runnable()
-      {
-        public void run()
-        {
-          localArkViewImplement.onSyncRect(ArkViewModelBase.this.mRectContainer);
-        }
-      });
+      ArkDispatchTask.getInstance().postToMainThread(new ArkViewModelBase.17(this, localArkViewImplement));
       return;
       this.mRectContainer = this.mRectArkContainer;
     }
@@ -344,32 +363,17 @@ public class ArkViewModelBase
     this.mRectInvalidF.intersect(this.mRectContainerF);
   }
   
-  public void activateView(final boolean paramBoolean)
+  public void activateView(boolean paramBoolean)
   {
-    ArkDispatchTask.getInstance().post(new Runnable()
-    {
-      public void run()
-      {
-        ArkViewModelBase.this.mIsActivated = paramBoolean;
-        if (ArkViewModelBase.this.mContainer == null)
-        {
-          ArkViewModelBase.ENV.logE("ArkApp.ArkViewModelBase", "activateView error mContainer is null");
-          return;
-        }
-        if (!ArkViewModelBase.this.mHasLoaded)
-        {
-          ArkViewModelBase.ENV.logE("ArkApp.ArkViewModelBase", "activateView error mHasLoaded is false");
-          return;
-        }
-        ArkViewModelBase.this.changeContainerActivateStatus(paramBoolean);
-        if (paramBoolean)
-        {
-          ArkVsync.getInstance().addFrameCallback(ArkViewModelBase.this);
-          return;
-        }
-        ArkVsync.getInstance().removeFrameCallback(ArkViewModelBase.this);
-      }
-    });
+    if (this.mIsActivated == paramBoolean) {
+      return;
+    }
+    this.mIsActivated = paramBoolean;
+    int i = 0;
+    if (!paramBoolean) {
+      i = 200;
+    }
+    SafeAsyncRunDelay(new ArkViewModelBase.13(this, paramBoolean), i);
   }
   
   protected void applicationCreate(ark.Application paramApplication) {}
@@ -395,21 +399,41 @@ public class ArkViewModelBase
     if (this.mFirstDraw) {
       this.mTimeRecord.beginOfFirstDraw = System.currentTimeMillis();
     }
+    int i = this.mDrawCount + 1;
+    this.mDrawCount = i;
+    if (i % 2 == 0) {
+      runPerfStat();
+    }
   }
   
-  protected void changeContainerActivateStatus(boolean paramBoolean)
+  protected void changeContainerActivateStatus()
   {
-    if ((this.mContainer == null) || (this.mInActivateStatus == paramBoolean)) {
-      return;
-    }
-    if (paramBoolean)
+    boolean bool2 = this.mInActivateStatus;
+    if ((this.mIsActivated) && (this.mIsForeground) && (this.mIsVisible)) {}
+    for (boolean bool1 = true;; bool1 = false)
     {
-      this.mInActivateStatus = true;
-      this.mContainer.ActivateRootView();
+      this.mInActivateStatus = bool1;
+      ENV.logI("ArkApp.ArkViewModelBase", String.format("changeContainerActivateStatus, this=%h, app=%s, container=%h, mInActivateStatus=%s, oldActivateStatus=%s", new Object[] { this, this.mAppInfo.name, this.mContainer, Boolean.toString(this.mInActivateStatus), Boolean.toString(bool2) }));
+      if (this.mContainer != null) {
+        break;
+      }
+      ENV.logE("ArkApp.ArkViewModelBase", "changeContainerActivateStatus error mContainer == null");
       return;
     }
-    this.mInActivateStatus = false;
-    this.mContainer.DeactivateRootView();
+    if (this.mInActivateStatus)
+    {
+      invalidateRect();
+      if (this.mInActivateStatus != bool2) {
+        this.mContainer.ActivateRootView();
+      }
+      ArkVsync.getInstance().addFrameCallback(getQueueKey(), this);
+      this.mPostRedraw.run();
+      return;
+    }
+    if (this.mInActivateStatus != bool2) {
+      this.mContainer.DeactivateRootView();
+    }
+    ArkVsync.getInstance().removeFrameCallback(this);
   }
   
   public boolean checkShare()
@@ -427,6 +451,9 @@ public class ArkViewModelBase
     if (paramArkViewImplement != null) {
       if (this.mContainer != null)
       {
+        if (this.mApplication != null) {
+          this.mApplication.IncreaseGraphicMemSize(paramArkViewImplement.getWidth() * paramArkViewImplement.getHeight() * 4 * 2);
+        }
         this.mContainer.DetachBitmap(null);
         if (!this.mContainer.AttachBitmap(paramArkViewImplement)) {
           ENV.logE("ArkApp.ArkViewModelBase", String.format("createDrawTarget.1.rect.%s.this.%h.attach.failed", new Object[] { this.mRectContainer.toString(), this }));
@@ -449,39 +476,19 @@ public class ArkViewModelBase
   
   protected void destroy()
   {
+    ENV.logD("ArkApp.ArkViewModelBase", String.format("ArkViewModelBase.destroy", new Object[0]));
+    reportPerfStat();
     if (this.mViewImpl != null) {
       this.mViewImpl.onDestroy();
     }
-    ArkDispatchTask.getInstance().post(new Runnable()
-    {
-      public void run()
-      {
-        ArkViewImplement localArkViewImplement = ArkViewModelBase.this.mViewImpl;
-        if (localArkViewImplement != null) {
-          localArkViewImplement.destroyBitmapBuffer();
-        }
-      }
-    });
+    SafeAsyncRun(new ArkViewModelBase.10(this));
     detachView();
-    ArkDispatchTask.getInstance().post(new Runnable()
-    {
-      public void run()
-      {
-        ArkVsync.getInstance().removeFrameCallback(ArkViewModelBase.this);
-        if (ArkViewModelBase.this.mContainer != null)
-        {
-          ArkViewModelBase.this.mContainer.DeletePtr();
-          ArkViewModelBase.this.mContainer = null;
-        }
-        if (ArkViewModelBase.this.mApplication != null)
-        {
-          ArkViewModelBase.this.applicationRelease(ArkViewModelBase.this.mApplication);
-          ArkViewModelBase.this.mApplication.Release();
-          ArkViewModelBase.this.mApplication = null;
-        }
-      }
-    });
-    ENV.logI("ArkApp.ArkViewModelBase", String.format("destroy. this.%h", new Object[] { this }));
+    SafeAsyncRun(new ArkViewModelBase.11(this));
+    String str = this.mAppInfo.name;
+    ENV.logI("ArkApp.ArkViewModelBase", String.format("destroy. this.%h,and.delay to release preloadApp:%s", new Object[] { this, str }));
+    if (ArkAppPreloader.isAppPreloaded(str)) {
+      SafeAsyncRunDelay(new ArkViewModelBase.12(this, str), 5000L);
+    }
     this.mInit = false;
     this.mAppInfo.canceled = true;
     this.mLoadFailed = false;
@@ -489,6 +496,7 @@ public class ArkViewModelBase
   
   public void destroyDrawTarget()
   {
+    ENV.logD("ArkApp.ArkViewModelBase", String.format("ArkViewModelBase.destroyDrawTarget", new Object[0]));
     if (this.mContainer != null) {
       this.mContainer.DetachBitmap(null);
     }
@@ -496,6 +504,7 @@ public class ArkViewModelBase
   
   public void detachView()
   {
+    ENV.logI("ArkApp.ArkViewModelBase", String.format("ArkViewModelBase.detachView.mViewImpl=%h.app.%s", new Object[] { this.mViewImpl, this.mAppInfo.name }));
     this.mAttached = false;
     if (this.mViewImpl != null)
     {
@@ -503,20 +512,21 @@ public class ArkViewModelBase
       this.mViewImpl = null;
     }
     activateView(false);
-    ENV.logI("ArkApp.ArkViewModelBase", String.format("detachView.1.this.%h", new Object[] { this }));
-    ArkDispatchTask.getInstance().post(new Runnable()
+    ENV.logI("ArkApp.ArkViewModelBase", String.format("detachView.1.this.%h.app.%s", new Object[] { this, this.mAppInfo.name }));
+    SafeAsyncRun(new ArkViewModelBase.4(this));
+  }
+  
+  protected void didFirstPaint()
+  {
+    if (this.mViewImpl == null) {}
+    ArkViewImplement localArkViewImplement;
+    do
     {
-      public void run()
-      {
-        ArkVsync.getInstance().removeFrameCallback(ArkViewModelBase.this);
-        if (ArkViewModelBase.this.mContainer != null)
-        {
-          ArkViewModelBase.this.mContainer.SetContainerCallback(null);
-          ArkViewModelBase.ENV.logI("ArkApp.ArkViewModelBase", String.format("detachViewArkThread.this.%h", new Object[] { ArkViewModelBase.this }));
-        }
-        ArkViewModelBase.this.destroyDrawTarget();
-      }
-    });
+      return;
+      localArkViewImplement = this.mViewImpl;
+    } while (!this.mNeedFirstPaint);
+    ArkDispatchTask.getInstance().postToMainThread(new ArkViewModelBase.21(this, localArkViewImplement));
+    this.mNeedFirstPaint = false;
   }
   
   public void doFrame()
@@ -535,11 +545,12 @@ public class ArkViewModelBase
     localArkViewImplement.onInvalidate(convertRect(this.mRectInvalidF));
     this.mRectInvalidF.setEmpty();
     endDraw();
+    didFirstPaint();
   }
   
-  protected void doLoadArkApp(final String paramString1, final String paramString2, final String paramString3, boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString4)
+  protected void doLoadArkApp(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString5)
   {
-    final AppInfo localAppInfo = this.mAppInfo;
+    ArkViewModelBase.AppInfo localAppInfo = this.mAppInfo;
     localAppInfo.path = paramString1;
     this.mLoadFailed = false;
     this.mHasLoaded = false;
@@ -548,7 +559,7 @@ public class ArkViewModelBase
     {
       this.mLoadFailed = true;
       this.mInit = false;
-      this.mErrorInfo.msg = paramString4;
+      this.mErrorInfo.msg = paramString5;
       this.mErrorInfo.retCode = paramInt;
       this.mErrorInfo.canRetry = paramBoolean2;
       if (ArkDispatchTask.getInstance().isMainThread())
@@ -560,166 +571,32 @@ public class ArkViewModelBase
         paramString1 = ENV;
         paramBoolean2 = this.mLoadFailed;
         if ((localAppInfo == null) || (!localAppInfo.canceled)) {
-          break label213;
+          break label219;
         }
       }
-      label213:
+      label219:
       for (paramBoolean1 = true;; paramBoolean1 = false)
       {
         paramString1.logI("ArkApp.ArkViewModelBase", String.format("doLoadArkApp.Failed.mLoadFailed.%b.info.canceled.%b", new Object[] { Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean1) }));
+        onLoadReport(101);
         return;
-        ArkDispatchTask.getInstance().postToMainThread(new Runnable()
-        {
-          public void run()
-          {
-            ArkViewImplement localArkViewImplement = ArkViewModelBase.this.mViewImpl;
-            if (localArkViewImplement != null) {
-              localArkViewImplement.onLoadFailed(ArkViewModelBase.this.mErrorInfo.msg, ArkViewModelBase.this.mErrorInfo.retCode, ArkViewModelBase.this.mErrorInfo.canRetry);
-            }
-          }
-        });
+        ArkDispatchTask.getInstance().postToMainThread(new ArkViewModelBase.2(this));
         break;
       }
     }
     if (ENV.mIsDebug) {
-      ENV.logD("ArkApp.ArkViewModelBase", String.format("doLoadArkApp.beginOfDisplyView.this.%h", new Object[] { this }));
+      ENV.logD("ArkApp.ArkViewModelBase", String.format("doLoadArkApp.beginOfDisplyView.this.%h.queueKey=%s", new Object[] { this, this.mQueueKey }));
     }
     this.mTimeRecord.beginOfDisplyView = System.currentTimeMillis();
-    paramString1 = getViewId();
-    ArkDispatchTask.getInstance().post(new Runnable()
-    {
-      public void run()
-      {
-        if (!ArkViewModelBase.sAppInit)
-        {
-          ark.arkHTTPStartup();
-          ark.arkSetPixelScale(localAppInfo.scale);
-          ArkViewModelBase.this.initLibrary();
-          ArkViewModelBase.sAppInit = true;
-        }
-        ark.arkSetStoragePath(paramString3, paramString2);
-        ark.arkHTTPSetDownloadDirectory(paramString2);
-        ArkViewModelBase.setArkHttpProxy();
-        ArkViewModelBase.this.mHasLoaded = true;
-        ArkViewModelBase.this.mSyncRectLock = true;
-        ArkViewModelBase.this.mTimeRecord.beginOfCreateView = System.currentTimeMillis();
-        if (ArkViewModelBase.this.mApplication != null)
-        {
-          ArkViewModelBase.this.applicationRelease(ArkViewModelBase.this.mApplication);
-          ArkViewModelBase.this.mApplication.Release();
-        }
-        if (ArkViewModelBase.ENV.mIsDebug) {
-          ArkViewModelBase.ENV.logD("ArkApp.ArkViewModelBase", String.format("doLoadArkApp.beginOfCreateApplication.this.%h", new Object[] { ArkViewModelBase.this }));
-        }
-        ArkViewModelBase.this.mTimeRecord.beginOfCreateApplication = System.currentTimeMillis();
-        ArkViewModelBase.this.mApplication = ark.Application.Create(localAppInfo.path);
-        if (ArkViewModelBase.this.mApplication == null)
-        {
-          ArkViewModelBase.ENV.logI("ArkApp.ArkViewModelBase", "loadArkApp.mApplication.create.fail!!");
-          i = 0;
-        }
-        while (i == 0)
-        {
-          ArkViewModelBase.this.mHasLoaded = false;
-          ArkViewModelBase.this.mSyncRectLock = false;
-          ArkViewModelBase.this.onRunAppFailed();
-          return;
-          ArkViewModelBase.this.applicationCreate(ArkViewModelBase.this.mApplication);
-          ArkViewModelBase.this.mAppScriptType = ArkViewModelBase.this.mApplication.GetScriptType();
-          ArkViewModelBase.this.mTimeRecord.beginOfRunApplication = System.currentTimeMillis();
-          if (!ArkViewModelBase.this.mApplication.Run(paramString3, null, paramString2, ArkViewModelBase.this.mAppCallback))
-          {
-            i = 0;
-          }
-          else
-          {
-            if (ArkViewModelBase.this.mContainer != null)
-            {
-              ArkViewModelBase.ENV.logI("ArkApp.ArkViewModelBase", "loadArkApp.mContainer.not.null");
-              ArkViewModelBase.this.mContainer.DeletePtr();
-            }
-            ArkViewModelBase.this.mTimeRecord.beginOfCreateContainer = System.currentTimeMillis();
-            ArkViewModelBase.this.beforeContainerCreate();
-            ArkViewModelBase.this.mContainer = new ark.Container();
-            ArkViewModelBase.this.mContainer.SetContainerCallback(ArkViewModelBase.this);
-            if (!ArkViewModelBase.this.mContainer.CreateRootView(ArkViewModelBase.this.mApplication, localAppInfo.name, localAppInfo.path, localAppInfo.view))
-            {
-              ArkViewModelBase.ENV.logI("ArkApp.ArkViewModelBase", "loadArkApp.CreateRootView.fail!!");
-              i = 0;
-            }
-            else
-            {
-              i = 1;
-            }
-          }
-        }
-        ArkViewModelBase.this.mTimeRecord.beginOfInitContainer = System.currentTimeMillis();
-        if (!TextUtils.isEmpty(paramString1)) {
-          ArkViewModelBase.this.mContainer.SetID(paramString1);
-        }
-        int j = localAppInfo.width;
-        int k = localAppInfo.height;
-        int i = j;
-        if (j <= 0) {
-          i = ArkViewModelBase.this.mRectArkContainer.width();
-        }
-        j = k;
-        if (k <= 0) {
-          j = ArkViewModelBase.this.mRectArkContainer.height();
-        }
-        ??? = ArkViewModelBase.this.limitToSizeRange(i, j);
-        ArkViewModelBase.this.mContainer.SetSize(((ArkViewModelBase.Size)???).width, ((ArkViewModelBase.Size)???).height);
-        ArkViewModelBase.this.mContainer.SetMetadata(localAppInfo.meta, "json");
-        ArkViewModelBase.this.mTimeRecord.endOfCreateView = System.currentTimeMillis();
-        ArkViewModelBase.this.mSyncRectLock = false;
-        if (ArkViewModelBase.this.notInSizeRange(ArkViewModelBase.this.mRectArkContainer.width(), ArkViewModelBase.this.mRectArkContainer.height()))
-        {
-          ??? = ArkViewModelBase.this.limitToSizeRange(ArkViewModelBase.this.mRectArkContainer.width(), ArkViewModelBase.this.mRectArkContainer.height());
-          ArkViewModelBase.this.mRectContainer.set(0, 0, ((ArkViewModelBase.Size)???).width, ((ArkViewModelBase.Size)???).height);
-        }
-        for (;;)
-        {
-          ??? = ArkViewModelBase.this.mViewImpl;
-          if ((ArkViewModelBase.this.mAttached) && (??? != null)) {
-            break;
-          }
-          ArkViewModelBase.ENV.logI("ArkApp.ArkViewModelBase", "loadArkApp.mViewImpl.null");
-          return;
-          ArkViewModelBase.this.mRectContainer = ArkViewModelBase.this.mRectArkContainer;
-        }
-        ArkVsync.getInstance().addFrameCallback(ArkViewModelBase.this);
-        ArkViewModelBase.this.mContainer.SetBorderType(((ArkViewImplement)???).mBorderType);
-        ArkViewModelBase.this.mContainer.SetBorderRadiusTop(((ArkViewImplement)???).mClipRadiusTop);
-        ArkViewModelBase.this.mContainer.SetBorderRadius(((ArkViewImplement)???).mClipRadius);
-        ArkViewModelBase.this.mContainer.SetBorderHornLeft(((ArkViewImplement)???).mAlignLeft);
-        ArkViewModelBase.this.SyncRect(ArkViewModelBase.this.mRectContainerF.left, ArkViewModelBase.this.mRectContainerF.top, ArkViewModelBase.this.mRectContainerF.right, ArkViewModelBase.this.mRectContainerF.bottom);
-        ArkViewModelBase.this.mTimeRecord.endOfDisplyView = System.currentTimeMillis();
-        if (ArkViewModelBase.ENV.mIsDebug) {
-          ArkViewModelBase.ENV.logD("ArkApp.ArkViewModelBase", String.format("doLoadArkApp.endOfDisplyView.this.%h", new Object[] { ArkViewModelBase.this }));
-        }
-        synchronized (ArkViewModelBase.sAppSizeHint)
-        {
-          ArkViewModelBase.sAppSizeHint.put(String.format("%s_%s", new Object[] { localAppInfo.path, localAppInfo.view }), new ArkViewModelBase.Size(ArkViewModelBase.this.mRectContainer.width(), ArkViewModelBase.this.mRectContainer.height()));
-          ArkViewModelBase.this.onAppDisplay(ArkViewModelBase.this.mTimeRecord);
-          return;
-        }
-      }
-    });
+    SafeAsyncRun(new ArkViewModelBase.3(this, localAppInfo, paramString3, paramString2, paramString4, getViewId()));
     ENV.logD("ArkApp.ArkViewModelBase", String.format("doLoadArkApp.leave.this.%h", new Object[] { this }));
   }
   
   public void doOnEvent(int paramInt)
   {
     if (paramInt == 0) {
-      if ((this.mHasLoaded) && (this.mIsActivated)) {
-        ArkDispatchTask.getInstance().post(new Runnable()
-        {
-          public void run()
-          {
-            ArkViewModelBase.this.changeContainerActivateStatus(false);
-            ArkVsync.getInstance().removeFrameCallback(ArkViewModelBase.this);
-          }
-        });
+      if (this.mHasLoaded) {
+        SafeAsyncRun(new ArkViewModelBase.7(this));
       }
     }
     do
@@ -730,18 +607,8 @@ public class ArkViewModelBase
         if (paramInt != 1) {
           break;
         }
-      } while ((!this.mHasLoaded) || (!this.mIsActivated));
-      ArkDispatchTask.getInstance().post(new Runnable()
-      {
-        public void run()
-        {
-          ArkViewModelBase.this.changeContainerActivateStatus(true);
-          if (ArkViewModelBase.this.mContainer != null) {
-            ArkVsync.getInstance().addFrameCallback(ArkViewModelBase.this);
-          }
-          ArkViewModelBase.this.mPostRedraw.run();
-        }
-      });
+      } while (!this.mHasLoaded);
+      SafeAsyncRun(new ArkViewModelBase.8(this));
       return;
       if (paramInt == 2)
       {
@@ -778,7 +645,7 @@ public class ArkViewModelBase
     return this.mRectContainer;
   }
   
-  public ErrorInfo getErrorInfo()
+  public ArkViewModelBase.ErrorInfo getErrorInfo()
   {
     return this.mErrorInfo;
   }
@@ -790,7 +657,7 @@ public class ArkViewModelBase
     }
     synchronized (sAppSizeHint)
     {
-      Size localSize = (Size)sAppSizeHint.get(String.format("%s_%s", new Object[] { this.mAppInfo.path, this.mAppInfo.view }));
+      ArkViewModelBase.Size localSize = (ArkViewModelBase.Size)sAppSizeHint.get(String.format("%s_%s", new Object[] { this.mAppInfo.path, this.mAppInfo.view }));
       if (localSize != null)
       {
         int i = localSize.height;
@@ -801,6 +668,11 @@ public class ArkViewModelBase
       return this.mAppInfo.height;
     }
     return this.mAppInfo.hintHeight;
+  }
+  
+  public String getQueueKey()
+  {
+    return this.mQueueKey;
   }
   
   public float getScale()
@@ -841,7 +713,7 @@ public class ArkViewModelBase
     }
     synchronized (sAppSizeHint)
     {
-      Size localSize = (Size)sAppSizeHint.get(String.format("%s_%s", new Object[] { this.mAppInfo.path, this.mAppInfo.view }));
+      ArkViewModelBase.Size localSize = (ArkViewModelBase.Size)sAppSizeHint.get(String.format("%s_%s", new Object[] { this.mAppInfo.path, this.mAppInfo.view }));
       if (localSize != null)
       {
         int i = localSize.width;
@@ -854,14 +726,15 @@ public class ArkViewModelBase
     return this.mAppInfo.hintWidth;
   }
   
-  public boolean init(String paramString1, String paramString2, String paramString3, String paramString4, float paramFloat)
+  public boolean init(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, float paramFloat)
   {
     if ((paramString1 == null) || (paramString2 == null))
     {
       ENV.logD("ArkApp.ArkViewModelBase", "init got null app name and viewImpl name.");
       return false;
     }
-    if (this.mLoadFailed)
+    this.mQueueKey = paramString1;
+    if ((this.mLoadFailed) || (this.mQueueKey == null))
     {
       paramString1 = this.mViewImpl;
       if (paramString1 != null) {
@@ -870,7 +743,7 @@ public class ArkViewModelBase
       ENV.logI("ArkApp.ArkViewModelBase", String.format("init mLoadFailed true!!! viewModel: %h.", new Object[] { this }));
       return true;
     }
-    if ((!paramString1.equals(this.mAppInfo.name)) || (!paramString2.equals(this.mAppInfo.view))) {
+    if ((!paramString1.equals(this.mAppInfo.name)) || (!paramString2.equals(this.mAppInfo.view)) || (Math.abs(paramFloat - this.mAppInfo.scale) >= 1.E-005D)) {
       this.mInit = false;
     }
     if (this.mInit)
@@ -878,10 +751,12 @@ public class ArkViewModelBase
       ENV.logD("ArkApp.ArkViewModelBase", String.format("init mInit is true!!! viewModel: %h.", new Object[] { this }));
       return true;
     }
+    ENV.logI("ArkApp.ArkViewModelBase", String.format("init app:%s, appView=%s, scale=%f, appMinVersion=%s, viewModel: %h.", new Object[] { paramString1, paramString2, Float.valueOf(paramFloat), paramString3, this }));
     this.mAppInfo.scale = paramFloat;
     this.mAppInfo.name = paramString1;
     this.mAppInfo.view = paramString2;
     this.mAppInfo.meta = paramString4;
+    this.mAppInfo.appConfig = paramString5;
     this.mAppInfo.appMinVersion = paramString3;
     this.mAppInfo.canceled = false;
     this.mTimeRecord.appName = paramString1;
@@ -891,6 +766,7 @@ public class ArkViewModelBase
   
   protected boolean initArkContainer(ArkViewImplement paramArkViewImplement)
   {
+    ENV.logI("ArkApp.ArkViewModelBase", String.format("initArkContainer.0.viewModel: %h, container:%h", new Object[] { this, this.mContainer }));
     this.mViewImpl = paramArkViewImplement;
     if (this.mLoadFailed)
     {
@@ -900,33 +776,12 @@ public class ArkViewModelBase
       ENV.logI("ArkApp.ArkViewModelBase", String.format("initArkContainer.mLoadFailed.true!.viewModel: %h.", new Object[] { this }));
       return true;
     }
+    this.mViewImpl.mViewInterface.createViewContext();
     if (this.mInit)
     {
-      ArkDispatchTask.getInstance().post(new Runnable()
-      {
-        public void run()
-        {
-          if ((ArkViewModelBase.this.mContainer == null) || (!ArkViewModelBase.this.mAttached))
-          {
-            ArkViewModelBase.ENV.logE("ArkApp.ArkViewModelBase", String.format("initArkContainer.0.viewModel: %h", new Object[] { ArkViewModelBase.this }));
-            return;
-          }
-          ArkViewModelBase.this.mContainer.SetContainerCallback(ArkViewModelBase.this);
-          ArkViewModelBase.ENV.logI("ArkApp.ArkViewModelBase", String.format("initArkContainer.1.viewModel: %h", new Object[] { ArkViewModelBase.this }));
-          ArkViewImplement localArkViewImplement = ArkViewModelBase.this.mViewImpl;
-          if ((ArkViewModelBase.this.mRectContainerF.isEmpty()) || (localArkViewImplement == null))
-          {
-            ArkViewModelBase.ENV.logE("ArkApp.ArkViewModelBase", String.format("initArkContainer.2.viewModel: %h", new Object[] { this }));
-            return;
-          }
-          ArkViewModelBase.this.mContainer.SetBorderType(localArkViewImplement.mBorderType);
-          ArkViewModelBase.this.mContainer.SetBorderRadiusTop(localArkViewImplement.mClipRadiusTop);
-          ArkViewModelBase.this.mContainer.SetBorderRadius(localArkViewImplement.mClipRadius);
-          ArkViewModelBase.this.SyncRect(ArkViewModelBase.this.mRectContainerF.left, ArkViewModelBase.this.mRectContainerF.top, ArkViewModelBase.this.mRectContainerF.right, ArkViewModelBase.this.mRectContainerF.bottom);
-        }
-      });
+      SafeAsyncRun(new ArkViewModelBase.1(this));
       activateView(true);
-      ENV.logD("ArkApp.ArkViewModelBase", String.format("init.finished.and.mInit.true!.viewModel: %h.", new Object[] { this }));
+      ENV.logI("ArkApp.ArkViewModelBase", String.format("init.finished.and.mInit.true!.viewModel: %h.", new Object[] { this }));
       return true;
     }
     this.mInit = true;
@@ -935,7 +790,12 @@ public class ArkViewModelBase
   
   protected void initLibrary() {}
   
-  protected Size limitToSizeRange(int paramInt1, int paramInt2)
+  public void invalidateRect()
+  {
+    this.mRectInvalidF.set(this.mRectContainerF);
+  }
+  
+  protected ArkViewModelBase.Size limitToSizeRange(int paramInt1, int paramInt2)
   {
     int i = paramInt1;
     if (this.mAppInfo.minWidth > 0)
@@ -969,7 +829,7 @@ public class ArkViewModelBase
         i = this.mAppInfo.maxHeight;
       }
     }
-    return new Size(paramInt2, i);
+    return new ArkViewModelBase.Size(paramInt2, i);
   }
   
   protected boolean notInSizeRange(int paramInt1, int paramInt2)
@@ -981,18 +841,31 @@ public class ArkViewModelBase
     return false;
   }
   
-  protected void onAppDisplay(TimeRecord paramTimeRecord) {}
+  protected void onAppDisplay(ArkViewModelBase.TimeRecord paramTimeRecord) {}
   
   protected void onFirstDrawEnd()
   {
     if (ENV.mShowProfilingLog) {
-      ENV.logI("ArkApp.ArkViewModelBase", String.format(Locale.CHINA, "profiling.%h.beginOfDisplyView.%d.endOfDisplyView.%d\n.beginOfCreateApplication.%d.beginOfRunApplication.%d\n.beginOfCreateContainer.%d.beginOfInitContainer.%d\n.beginOfCreateView.%d.endOfCreateView.%d\n.beginOfCreateContext.%d\n.beginOfCreateDrawTarget.%d.endOfCreateDrawTarget.%d\n.beginOfFirstDraw.%d.endOfFirstDraw.%d\n.total.%d", new Object[] { this, Long.valueOf(this.mTimeRecord.beginOfDisplyView), Long.valueOf(this.mTimeRecord.endOfDisplyView), Long.valueOf(this.mTimeRecord.beginOfCreateApplication), Long.valueOf(this.mTimeRecord.beginOfRunApplication), Long.valueOf(this.mTimeRecord.beginOfCreateContainer), Long.valueOf(this.mTimeRecord.beginOfInitContainer), Long.valueOf(this.mTimeRecord.beginOfCreateView), Long.valueOf(this.mTimeRecord.endOfCreateView), Long.valueOf(this.mTimeRecord.beginOfCreateContext), Long.valueOf(this.mTimeRecord.beginOfCreateDrawTarget), Long.valueOf(this.mTimeRecord.endOfCreateDrawTarget), Long.valueOf(this.mTimeRecord.beginOfFirstDraw), Long.valueOf(this.mTimeRecord.endOfFirstDraw), Long.valueOf(this.mTimeRecord.endOfFirstDraw - this.mTimeRecord.beginOfDisplyView) }));
+      if (this.mAppInfo == null) {
+        break label423;
+      }
+    }
+    label423:
+    for (String str = this.mAppInfo.name;; str = "")
+    {
+      ENV.logI("ArkApp.ArkViewModelBase", String.format(Locale.CHINA, "profiling.%h.app.%s\n.DisplayView.%d (%d-%d)\n.CreateApplication.%d (%d-%d)\n.CreateContainer.%d (%d-%d)\n.CreateView.%d.(%d-%d)\n.CreateContext.%d.(%d-%d)\n.CreateDrawTarget.%d.(%d-%d)\n.FirstDraw.%d. (%d-%d)\n.total.%d", new Object[] { this, str, Long.valueOf(this.mTimeRecord.endOfDisplyView - this.mTimeRecord.beginOfDisplyView), Long.valueOf(this.mTimeRecord.beginOfDisplyView), Long.valueOf(this.mTimeRecord.endOfDisplyView), Long.valueOf(this.mTimeRecord.beginOfRunApplication - this.mTimeRecord.beginOfCreateApplication), Long.valueOf(this.mTimeRecord.beginOfCreateApplication), Long.valueOf(this.mTimeRecord.beginOfRunApplication), Long.valueOf(this.mTimeRecord.beginOfInitContainer - this.mTimeRecord.beginOfCreateContainer), Long.valueOf(this.mTimeRecord.beginOfCreateContainer), Long.valueOf(this.mTimeRecord.beginOfInitContainer), Long.valueOf(this.mTimeRecord.endOfCreateView - this.mTimeRecord.beginOfCreateView), Long.valueOf(this.mTimeRecord.beginOfCreateView), Long.valueOf(this.mTimeRecord.endOfCreateView), Long.valueOf(this.mTimeRecord.endOfCreateContext - this.mTimeRecord.beginOfCreateContext), Long.valueOf(this.mTimeRecord.beginOfCreateContext), Long.valueOf(this.mTimeRecord.endOfCreateContext), Long.valueOf(this.mTimeRecord.endOfCreateDrawTarget - this.mTimeRecord.beginOfCreateDrawTarget), Long.valueOf(this.mTimeRecord.beginOfCreateDrawTarget), Long.valueOf(this.mTimeRecord.endOfCreateDrawTarget), Long.valueOf(this.mTimeRecord.endOfFirstDraw - this.mTimeRecord.beginOfFirstDraw), Long.valueOf(this.mTimeRecord.beginOfFirstDraw), Long.valueOf(this.mTimeRecord.endOfFirstDraw), Long.valueOf(this.mTimeRecord.endOfFirstDraw - this.mTimeRecord.beginOfDisplyView) }));
+      return;
     }
   }
   
-  protected boolean onLoadApp(AppInfo paramAppInfo)
+  protected boolean onLoadApp(ArkViewModelBase.AppInfo paramAppInfo)
   {
     return true;
+  }
+  
+  protected void onLoadReport(int paramInt)
+  {
+    ENV.logD("ArkApp.ArkViewModelBase", String.format("doLoadArkApp.onLoadReport.loadstate.%d", new Object[] { Integer.valueOf(paramInt) }));
   }
   
   protected void onRunAppFailed()
@@ -1000,15 +873,7 @@ public class ArkViewModelBase
     if (this.mViewImpl == null) {
       return;
     }
-    ArkDispatchTask.getInstance().postToMainThread(new Runnable()
-    {
-      public void run()
-      {
-        if (ArkViewModelBase.this.mViewImpl != null) {
-          ArkViewModelBase.this.mViewImpl.onLoadFailed(ArkViewModelBase.this.mErrorInfo.msg, ArkViewModelBase.this.mErrorInfo.retCode, ArkViewModelBase.this.mErrorInfo.canRetry);
-        }
-      }
-    });
+    ArkDispatchTask.getInstance().postToMainThread(new ArkViewModelBase.16(this));
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
@@ -1017,18 +882,29 @@ public class ArkViewModelBase
       return false;
     }
     float f = this.mAppInfo.scale;
-    ArkDispatchTask.getInstance().post(new TouchRunnable(paramMotionEvent, this.mContainer, f));
+    SafeAsyncRun(new ArkViewModelBase.TouchRunnable(paramMotionEvent, this.mContainer, f));
+    return true;
+  }
+  
+  public boolean onViewEvent(String paramString1, String paramString2)
+  {
+    if (this.mContainer == null)
+    {
+      ENV.logE("ArkApp.ArkViewModelBase", "onViewEvent mContainer is null");
+      return false;
+    }
+    SafeAsyncRun(new ArkViewModelBase.6(this, paramString1, paramString2));
     return true;
   }
   
   public void postInvalid()
   {
-    ArkDispatchTask.getInstance().post(this.mPostInvalid);
+    SafeAsyncRun(this.mPostInvalid);
   }
   
   public void postRedraw()
   {
-    ArkDispatchTask.getInstance().post(this.mPostRedraw);
+    SafeAsyncRun(this.mPostRedraw);
   }
   
   public void reinitArkContainer()
@@ -1045,6 +921,19 @@ public class ArkViewModelBase
     initArkContainer(this.mViewImpl);
   }
   
+  protected void runPerfStat()
+  {
+    if ((!this.mAttached) || (!this.mInActivateStatus)) {}
+    while (this.mPerfTaskRunning) {
+      return;
+    }
+    this.mPerfTaskRunning = true;
+    WeakReference localWeakReference = new WeakReference(this);
+    String str1 = this.mAppInfo.name;
+    String str2 = this.mAppInfo.view;
+    SafeAsyncRun(new ArkViewModelBase.22(this, System.currentTimeMillis(), str1, str2, localWeakReference));
+  }
+  
   public Rect scaleRect(Rect paramRect)
   {
     return scaleRect(paramRect, this.mAppInfo.scale);
@@ -1058,6 +947,16 @@ public class ArkViewModelBase
     if (paramInt2 > 0) {
       this.mAppInfo.height = ((int)(paramInt2 / this.mAppInfo.scale));
     }
+  }
+  
+  public void setForeground(boolean paramBoolean)
+  {
+    ENV.logE("ArkApp.ArkViewModelBase", "setForeground isForeground = " + paramBoolean);
+    if (this.mIsForeground == paramBoolean) {
+      return;
+    }
+    this.mIsForeground = paramBoolean;
+    SafeAsyncRun(new ArkViewModelBase.23(this, paramBoolean));
   }
   
   public void setHintSize(int paramInt1, int paramInt2)
@@ -1090,154 +989,25 @@ public class ArkViewModelBase
     }
   }
   
-  public void setViewRect(final Rect paramRect)
+  public void setViewRect(Rect paramRect)
   {
+    if (paramRect == null)
+    {
+      ENV.logE("ArkApp.ArkViewModelBase", "setViewRect.1.rect return for null param");
+      return;
+    }
     ENV.logI("ArkApp.ArkViewModelBase", String.format("setViewRect.1.rect: %s, this.%h", new Object[] { paramRect.toString(), this }));
-    ArkDispatchTask.getInstance().post(new Runnable()
-    {
-      public void run()
-      {
-        if ((ArkViewModelBase.this.mContainer != null) && (!paramRect.equals(ArkViewModelBase.this.mRectContainer)))
-        {
-          ArkViewModelBase.ENV.logI("ArkApp.ArkViewModelBase", String.format("setViewRect.2.rect: %s, this.%h", new Object[] { paramRect.toString(), this }));
-          ArkViewModelBase.Size localSize = ArkViewModelBase.this.limitToSizeRange(paramRect.width(), paramRect.height());
-          ArkViewModelBase.this.mContainer.SetSize(localSize.width, localSize.height);
-        }
-      }
-    });
+    SafeAsyncRun(new ArkViewModelBase.5(this, paramRect));
   }
   
-  public static class AppInfo
+  public void updateMetaData(String paramString)
   {
-    public String appMinVersion;
-    public boolean canceled = false;
-    public int height = 0;
-    public int hintHeight = -1;
-    public int hintWidth = -1;
-    public int maxHeight = -1;
-    public int maxWidth = -1;
-    public String meta;
-    public int minHeight = -1;
-    public int minWidth = -1;
-    public String name;
-    public String path;
-    public float scale;
-    public String view;
-    public int width = 0;
-  }
-  
-  public static class ErrorInfo
-  {
-    public boolean canRetry = true;
-    public String msg;
-    public int retCode;
-  }
-  
-  public static class Size
-  {
-    public int height = 0;
-    public int width = 0;
-    
-    public Size(int paramInt1, int paramInt2)
-    {
-      this.width = paramInt1;
-      this.height = paramInt2;
-    }
-  }
-  
-  public static class TimeRecord
-  {
-    public String appName;
-    public long beginOfCreateApplication = 0L;
-    public long beginOfCreateContainer = 0L;
-    public long beginOfCreateContext = 0L;
-    public long beginOfCreateDrawTarget = 0L;
-    public long beginOfCreateView = 0L;
-    public long beginOfDisplyView = 0L;
-    public long beginOfFirstDraw = 0L;
-    public long beginOfInitContainer = 0L;
-    public long beginOfRunApplication = 0L;
-    public long endOfCreateDrawTarget = 0L;
-    public long endOfCreateView = 0L;
-    public long endOfDisplyView = 0L;
-    public long endOfFirstDraw = 0L;
-    public String view;
-  }
-  
-  static final class TouchRunnable
-    implements Runnable
-  {
-    private int mAction;
-    private ark.Container mContainer;
-    private int[] mId;
-    private float[] mX;
-    private float[] mY;
-    
-    public TouchRunnable(MotionEvent paramMotionEvent, ark.Container paramContainer, float paramFloat)
-    {
-      this.mAction = paramMotionEvent.getActionMasked();
-      this.mContainer = paramContainer;
-      int i;
-      if ((this.mAction == 5) || (this.mAction == 6))
-      {
-        this.mId = new int[1];
-        this.mX = new float[1];
-        this.mY = new float[1];
-        i = paramMotionEvent.getActionIndex();
-        this.mId[0] = paramMotionEvent.getPointerId(i);
-        this.mX[0] = (paramMotionEvent.getX(i) / paramFloat);
-        this.mY[0] = (paramMotionEvent.getY(i) / paramFloat);
-      }
-      for (;;)
-      {
-        return;
-        int k = paramMotionEvent.getPointerCount();
-        i = k;
-        if (k > ark.arkGetMaxTouchPoints()) {
-          i = ark.arkGetMaxTouchPoints();
-        }
-        this.mId = new int[i];
-        this.mX = new float[i];
-        this.mY = new float[i];
-        while (j < i)
-        {
-          this.mId[j] = paramMotionEvent.getPointerId(j);
-          this.mX[j] = (paramMotionEvent.getX(j) / paramFloat);
-          this.mY[j] = (paramMotionEvent.getY(j) / paramFloat);
-          j += 1;
-        }
-      }
-    }
-    
-    public void run()
-    {
-      if ((ArkViewModelBase.ENV.mIsDebug) && (this.mAction != 2)) {
-        ArkViewModelBase.ENV.logD("ArkApp.ArkViewModelBase", String.format("TouchRunnable.action.%d.count.%d", new Object[] { Integer.valueOf(this.mAction), Integer.valueOf(this.mId.length) }));
-      }
-      switch (this.mAction)
-      {
-      case 4: 
-      default: 
-        return;
-      case 0: 
-      case 5: 
-        this.mContainer.TouchStart(this.mX, this.mY, this.mId, this.mId.length);
-        return;
-      case 2: 
-        this.mContainer.TouchMove(this.mX, this.mY, this.mId, this.mId.length);
-        return;
-      case 1: 
-      case 6: 
-        this.mContainer.TouchEnd(this.mX, this.mY, this.mId, this.mId.length);
-        return;
-      }
-      this.mContainer.TouchCancel(this.mX, this.mY, this.mId, this.mId.length);
-    }
+    SafeAsyncRun(new ArkViewModelBase.24(this, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.ark.ArkViewModelBase
  * JD-Core Version:    0.7.0.1
  */

@@ -11,11 +11,11 @@ import java.util.Map;
 public final class GetBottomNaviRsp
   extends JceStruct
 {
-  static Map cache_app_list;
-  static ArrayList cache_vec_out_app = new ArrayList();
-  public Map app_list;
+  static Map<String, ArrayList<SchoolSingleGameItem>> cache_app_list;
+  static ArrayList<ActInfo> cache_vec_out_app = new ArrayList();
+  public Map<String, ArrayList<SchoolSingleGameItem>> app_list;
   public int bitmap_flag;
-  public ArrayList vec_out_app;
+  public ArrayList<ActInfo> vec_out_app;
   
   static
   {
@@ -29,7 +29,7 @@ public final class GetBottomNaviRsp
   
   public GetBottomNaviRsp() {}
   
-  public GetBottomNaviRsp(ArrayList paramArrayList, Map paramMap, int paramInt)
+  public GetBottomNaviRsp(ArrayList<ActInfo> paramArrayList, Map<String, ArrayList<SchoolSingleGameItem>> paramMap, int paramInt)
   {
     this.vec_out_app = paramArrayList;
     this.app_list = paramMap;

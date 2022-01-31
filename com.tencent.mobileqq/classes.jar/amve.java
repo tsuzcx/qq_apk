@@ -1,33 +1,30 @@
-import cooperation.qlink.QlinkServiceProxy;
-import cooperation.qlink.SendMsg;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
 public class amve
-  extends Thread
+  implements Animation.AnimationListener
 {
-  public amve(QlinkServiceProxy paramQlinkServiceProxy) {}
+  public amve(DataReportViewer paramDataReportViewer) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    while (!QlinkServiceProxy.a(this.a).isEmpty())
-    {
-      SendMsg localSendMsg = (SendMsg)QlinkServiceProxy.a(this.a).poll();
-      if (localSendMsg != null) {
-        try
-        {
-          QlinkServiceProxy.a(this.a, localSendMsg);
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-        }
-      }
-    }
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amve
  * JD-Core Version:    0.7.0.1
  */

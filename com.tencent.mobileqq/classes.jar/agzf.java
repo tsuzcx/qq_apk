@@ -1,60 +1,48 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.DiscussionObserver;
-import com.tencent.mobileqq.app.GroupIconHelper;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.webkit.URLUtil;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class agzf
-  extends DiscussionObserver
+class agzf
+  implements View.OnClickListener
 {
-  public agzf(QCallDetailActivity paramQCallDetailActivity) {}
+  agzf(agxq paramagxq, ajoe paramajoe) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if ((((ArrayList)paramObject).indexOf(QCallDetailActivity.a(this.a)) != -1) && (paramBoolean) && (QCallDetailActivity.a(this.a) == 3000)) {
-      this.a.a(QCallDetailActivity.a(this.a));
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if ((QCallDetailActivity.a(this.a) != null) && (QCallDetailActivity.a(this.a).equals(paramString)) && (QCallDetailActivity.a(this.a) == 3000)) {
-      this.a.a(paramString);
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QCallDetailActivity", 2, " === onUpdateDiscussionFaceIcon isSuccess | " + paramBoolean1 + ", disUin | " + paramString + ",isComplete | " + paramBoolean2);
-    }
-    if ((paramBoolean1) && (paramBoolean2) && (QCallDetailActivity.a(this.a) != null) && (QCallDetailActivity.a(this.a) == 3000))
+    awqx.b(agxq.a(this.jdField_a_of_type_Agxq).app, "CliOper", "", "", "0X8005B73", "0X8005B73", 0, 0, "", "", "", "");
+    paramView = BaseActivity.sTopActivity;
+    Intent localIntent;
+    if (paramView != null)
     {
-      String str = paramString;
-      if (GroupIconHelper.a(paramString)) {
-        str = GroupIconHelper.b(paramString);
+      if (!URLUtil.isValidUrl(this.jdField_a_of_type_Ajoe.a)) {
+        break label144;
       }
-      if (QCallDetailActivity.a(this.a).equals(str))
-      {
-        this.a.a(QCallDetailActivity.a(this.a));
-        if (QLog.isColorLevel()) {
-          QLog.i("QCallDetailActivity", 2, "==== onUpdateDiscussionFaceIcon updateUin ===");
-        }
-      }
+      localIntent = new Intent(paramView, QQBrowserActivity.class);
+      localIntent.putExtra("hide_operation_bar", true);
+      localIntent.putExtra("url", this.jdField_a_of_type_Ajoe.a);
+      localIntent.putExtra("hideRightButton", true);
+      paramView.startActivity(localIntent);
     }
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (!TextUtils.isEmpty(QCallDetailActivity.a(this.a))) && (QCallDetailActivity.a(this.a).equals(paramString)) && (!this.a.isFinishing())) {
-      this.a.finish();
+    for (;;)
+    {
+      this.jdField_a_of_type_Agxq.a(6, 0);
+      awqx.a(agxq.a(this.jdField_a_of_type_Agxq).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 5, 0, "", "", "", "");
+      return;
+      label144:
+      localIntent = new Intent(paramView, PhoneUnityBindInfoActivity.class);
+      localIntent.putExtra("kSrouce", 0);
+      paramView.startActivity(localIntent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agzf
  * JD-Core Version:    0.7.0.1
  */

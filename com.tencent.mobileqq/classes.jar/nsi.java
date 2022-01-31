@@ -1,27 +1,35 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.boundaries.StoryApi;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.common.ChildViewClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.BaseViewHolder;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-
 public class nsi
-  extends ChildViewClickListener
+  extends axkn
 {
-  public nsi(QQStoryWatcherListActivity paramQQStoryWatcherListActivity) {}
-  
-  public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
+  public nsi(CharSequence paramCharSequence, int paramInt1, int paramInt2)
   {
-    if ((paramObject instanceof QQUserUIItem))
+    super(paramCharSequence, paramInt1, paramInt2);
+  }
+  
+  public int a()
+  {
+    int j = 0;
+    axkk[] arrayOfaxkk = (axkk[])getSpans(0, super.length(), axkk.class);
+    if ((arrayOfaxkk == null) || (arrayOfaxkk.length <= 0)) {
+      return super.length();
+    }
+    int k = arrayOfaxkk.length;
+    int i = 0;
+    if (i < k)
     {
-      paramView = (QQUserUIItem)paramObject;
-      StoryApi.a(this.a, 10, paramView.uid);
-      if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem != null)) {
-        StoryReportor.a("home_page", "clk_head_list", StoryReportor.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem), 0, new String[] { "1", StoryReportor.a(this.a.jdField_a_of_type_Int), "", this.a.jdField_a_of_type_JavaLangString });
+      axkk localaxkk = arrayOfaxkk[i];
+      switch (localaxkk.c)
+      {
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        int m = getSpanStart(localaxkk);
+        j += getSpanEnd(localaxkk) - m - 1;
       }
     }
+    return super.length() - j;
   }
 }
 

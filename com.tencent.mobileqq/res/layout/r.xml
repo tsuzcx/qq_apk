@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/bg_texture" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.profile.view.SoftInputDetectView android:id="@id/dmq" android:layout_width="fill_parent" android:layout_height="0.0px" />
+    <LinearLayout android:orientation="vertical" android:id="@id/bt1" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/bvc" android:layout_alignParentTop="true">
+        <com.tencent.widget.XEditTextEx android:textSize="17.0dip" android:textColor="@color/skin_input" android:textColorHint="#ffb0b3bf" android:gravity="center|left|top" android:id="@id/a1p" android:background="@drawable/skin_entry_background_theme_version2" android:padding="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:minHeight="250.0dip" android:hint="@string/tq" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/bvc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <View android:id="@id/jta" android:background="#ffeaebed" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/skin_entry_background_theme_version2" android:layout_width="fill_parent" android:layout_height="50.0dip">
+            <ImageView android:id="@id/bvo" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+            <View android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+            <ImageView android:id="@id/bvq" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+        </LinearLayout>
+        <View android:id="@id/acn" android:background="#ffeaebed" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+        <include android:id="@id/bve" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/n0" />
+    </LinearLayout>
+</RelativeLayout>

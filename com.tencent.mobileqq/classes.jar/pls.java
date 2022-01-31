@@ -1,26 +1,27 @@
-import com.tencent.component.media.image.ImageDefaultConfig;
-import com.tencent.component.media.image.ImageManager;
-import com.tencent.component.media.image.PoolParams;
-import com.tencent.component.media.image.PoolParams.BucketParams;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
 public class pls
-  implements PoolParams
+  implements sch
 {
-  public pls(ImageManager paramImageManager) {}
+  public pls(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
   
-  public PoolParams.BucketParams getBucketParams(int paramInt)
-  {
-    return ImageDefaultConfig.getArtBitmapBucketParams(ImageManager.a(this.a), paramInt);
-  }
+  public void a(URL paramURL, int paramInt) {}
   
-  public int getBucketPoolSize()
+  public void a(URL paramURL, Throwable paramThrowable) {}
+  
+  public void a(URL paramURL, rcs paramrcs)
   {
-    return ImageDefaultConfig.getArtBitmapPoolSize(ImageManager.a(this.a));
+    if (QLog.isColorLevel()) {
+      QLog.d("ComponentHeaderTopicRecommend", 2, "topic image view download success");
+    }
+    ComponentHeaderTopicRecommend.a(this.a, paramrcs.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pls
  * JD-Core Version:    0.7.0.1
  */

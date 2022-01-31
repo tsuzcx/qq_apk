@@ -1,20 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher;
+import com.tencent.biz.qqstory.playvideo.FollowCaptureLauncher.1;
 
 public class tgq
-  implements View.OnClickListener
+  implements bjis
 {
-  public tgq(MoveToGroupActivity paramMoveToGroupActivity) {}
+  public tgq(FollowCaptureLauncher.1 param1) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    MoveToGroupActivity.b(this.a);
+    FollowCaptureLauncher.a(this.a.this$0).sendEmptyMessage(65541);
+  }
+  
+  public void a(long paramLong1, long paramLong2) {}
+  
+  public void b()
+  {
+    FollowCaptureLauncher.a(this.a.this$0).sendEmptyMessage(65542);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tgq
  * JD-Core Version:    0.7.0.1
  */

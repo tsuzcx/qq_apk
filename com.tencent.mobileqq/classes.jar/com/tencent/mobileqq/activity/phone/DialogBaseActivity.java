@@ -1,60 +1,73 @@
 package com.tencent.mobileqq.activity.phone;
 
+import afya;
+import afyb;
+import afyc;
+import afyd;
+import afye;
+import ajjy;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.View;
+import awqx;
+import babr;
+import bafb;
+import bbms;
+import bbmy;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import xaa;
-import xab;
-import xac;
-import xad;
-import xae;
 
 public class DialogBaseActivity
   extends IphoneTitleBarActivity
 {
+  private afye jdField_a_of_type_Afye;
   private View jdField_a_of_type_AndroidViewView;
+  public bbms a;
   public PhoneContactManagerImp a;
-  public QQProgressDialog a;
-  private xae jdField_a_of_type_Xae;
   
   public void a(int paramInt, long paramLong, boolean paramBoolean)
   {
-    Object localObject = this.jdField_a_of_type_Xae;
+    Object localObject = this.jdField_a_of_type_Afye;
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
-      localObject = ((xae)localObject).obtainMessage(1, paramInt, i);
-      this.jdField_a_of_type_Xae.sendMessageDelayed((Message)localObject, paramLong);
+      localObject = ((afye)localObject).obtainMessage(1, paramInt, i);
+      this.jdField_a_of_type_Afye.sendMessageDelayed((Message)localObject, paramLong);
       return;
+    }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (!isFinishing()) {
+      bbmy.a(this, paramInt, paramString, 0).b(getTitleBarHeight());
     }
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if ((!isFinishing()) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null))
+    if ((!isFinishing()) && (this.jdField_a_of_type_Bbms == null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setOnDismissListener(new xad(this));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(paramBoolean);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCanceledOnTouchOutside(false);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+      this.jdField_a_of_type_Bbms = new bbms(this, getTitleBarHeight());
+      this.jdField_a_of_type_Bbms.setOnDismissListener(new afyd(this));
+      this.jdField_a_of_type_Bbms.c(paramInt);
+      this.jdField_a_of_type_Bbms.setCancelable(paramBoolean);
+      this.jdField_a_of_type_Bbms.setCanceledOnTouchOutside(false);
+      this.jdField_a_of_type_Bbms.show();
     }
+  }
+  
+  public void a(String paramString)
+  {
+    a(0, paramString);
   }
   
   public void a(String paramString1, String paramString2)
   {
     if (!isFinishing()) {
-      DialogUtil.a(this, 231, paramString1, paramString2, new xaa(this), null).show();
+      babr.a(this, 231, paramString1, paramString2, new afya(this), null).show();
     }
   }
   
@@ -64,51 +77,45 @@ public class DialogBaseActivity
     String str1;
     if (!isFinishing())
     {
-      ReportController.b(this.app, "dc00898", "", "", "0X8006AA4", "0X8006AA4", 0, 0, "", "", "", "");
-      str3 = getResources().getString(2131436880);
+      awqx.b(this.app, "dc00898", "", "", "0X8006AA4", "0X8006AA4", 0, 0, "", "", "", "");
+      str3 = getResources().getString(2131629324);
       if (!paramBoolean) {
-        break label94;
+        break label103;
       }
-      str1 = "确定跳过吗？";
+      str1 = ajjy.a(2131637458);
       if (!paramBoolean) {
-        break label100;
+        break label112;
       }
     }
-    label94:
-    label100:
-    for (String str2 = "跳过";; str2 = "关闭")
+    label103:
+    label112:
+    for (String str2 = ajjy.a(2131637461);; str2 = ajjy.a(2131637459))
     {
-      DialogUtil.a(this, 230, str1, str3, "继续绑定", str2, new xab(this, paramBoolean), new xac(this, paramBoolean)).show();
+      babr.a(this, 230, str1, str3, ajjy.a(2131637460), str2, new afyb(this, paramBoolean), new afyc(this, paramBoolean)).show();
       return;
-      str1 = "确定关闭吗？";
+      str1 = ajjy.a(2131637457);
       break;
     }
   }
   
   public void b(int paramInt)
   {
-    b(getResources().getString(paramInt));
-  }
-  
-  public void b(String paramString)
-  {
-    if (!isFinishing()) {
-      QQToast.a(this, 0, paramString, 0).b(getTitleBarHeight());
-    }
+    a(getResources().getString(paramInt));
   }
   
   public boolean b()
   {
     boolean bool = false;
-    if (this.jdField_a_of_type_Xae.hasMessages(1))
+    if (this.jdField_a_of_type_Afye.hasMessages(1))
     {
-      this.jdField_a_of_type_Xae.removeMessages(1);
+      this.jdField_a_of_type_Afye.removeMessages(1);
       bool = true;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
+    if (this.jdField_a_of_type_Bbms != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
+      this.jdField_a_of_type_Bbms.cancel();
+      this.jdField_a_of_type_Bbms.setOnDismissListener(null);
+      this.jdField_a_of_type_Bbms = null;
       return true;
     }
     return bool;
@@ -117,8 +124,8 @@ public class DialogBaseActivity
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_Xae = new xae(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp = ((PhoneContactManagerImp)this.app.getManager(10));
+    this.jdField_a_of_type_Afye = new afye(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp = ((PhoneContactManagerImp)this.app.getManager(11));
     return true;
   }
   
@@ -140,7 +147,7 @@ public class DialogBaseActivity
     this.jdField_a_of_type_AndroidViewView = setContentViewB(paramInt);
   }
   
-  protected String setLastActivityName()
+  public String setLastActivityName()
   {
     return null;
   }

@@ -116,7 +116,7 @@ public final class Unsafe
         return getLong(arrayOfObject, arrayBaseOffset([Ljava.lang.Object.class));
       }
       int i = getInt(arrayOfObject, arrayBaseOffset([Ljava.lang.Object.class));
-      return 0xFFFFFFFF & i;
+      return i & 0xFFFFFFFF;
     }
     catch (Exception paramObject)
     {

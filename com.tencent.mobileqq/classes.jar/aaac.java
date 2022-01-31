@@ -1,28 +1,49 @@
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.OnLinePushMessageProcessor;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
-import mqq.observer.SubAccountObserver;
 
 public class aaac
-  extends SubAccountObserver
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aaac(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, SubAccountManager paramSubAccountManager) {}
+  public aaac(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  protected void onGetKeyBack(String paramString1, String paramString2, String paramString3)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((paramString3 == null) || (this.jdField_a_of_type_ComTencentMobileqqAppMessageOnLinePushMessageProcessor.a == null) || (paramString1 == null)) {}
-    while (!paramString1.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqAppMessageOnLinePushMessageProcessor.a.getAccount())) {
+    int j = 1;
+    if (!paramCompoundButton.isPressed()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqSubaccountDatamanagerSubAccountManager.a(paramString2, paramString3, true);
-    SubAccountControll.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageOnLinePushMessageProcessor.a, (byte)1, paramString2);
-    SubAccountControll.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageOnLinePushMessageProcessor.a, paramString2, false);
+    if (paramBoolean)
+    {
+      paramCompoundButton = "open_storyset";
+      urp.a("dynamic_more", paramCompoundButton, 0, 0, new String[0]);
+      paramCompoundButton = new Integer[5];
+      paramCompoundButton[0] = Integer.valueOf(1);
+      if (!paramBoolean) {
+        break label106;
+      }
+    }
+    label106:
+    for (int i = 1;; i = 0)
+    {
+      paramCompoundButton[3] = Integer.valueOf(i);
+      this.a.app.a().a(paramCompoundButton);
+      paramCompoundButton = (sfz)this.a.app.a(98);
+      i = j;
+      if (paramBoolean) {
+        i = 2;
+      }
+      paramCompoundButton.a(i);
+      return;
+      paramCompoundButton = "close_storyset";
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaac
  * JD-Core Version:    0.7.0.1
  */

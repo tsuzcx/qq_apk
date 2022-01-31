@@ -1,28 +1,16 @@
-import android.os.FileObserver;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.util.ScreenshotContentObserver;
-import com.tencent.biz.pubaccount.util.ScreenshotContentObserver.Listener;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class nao
-  extends FileObserver
+class nao
+  implements View.OnClickListener
 {
-  public nao(ScreenshotContentObserver paramScreenshotContentObserver, String paramString1, int paramInt, String paramString2)
-  {
-    super(paramString1, paramInt);
-  }
+  nao(nak paramnak) {}
   
-  public void onEvent(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ScreenshotContentObserver", 2, "onEvent->time:" + System.currentTimeMillis() + ", path:" + paramString);
-    }
-    if ((TextUtils.isEmpty(paramString)) || (paramInt != 256)) {}
-    while ((paramString.equalsIgnoreCase(ScreenshotContentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver))) || (paramString.contains("temp")) || (ScreenshotContentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver) == null)) {
-      return;
-    }
-    ScreenshotContentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver).a(null, this.jdField_a_of_type_JavaLangString + paramString, 1);
-    ScreenshotContentObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilScreenshotContentObserver, paramString);
+    this.a.a.dismiss();
+    nak.c(this.a);
   }
 }
 

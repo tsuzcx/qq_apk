@@ -1,30 +1,57 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.ChannelCoverInfoModule;
+import android.os.Handler;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
-public class ltu
-  implements Runnable
+class ltu
+  extends kvw
 {
-  public ltu(ChannelCoverInfoModule paramChannelCoverInfoModule, int paramInt, List paramList) {}
+  ltu(ltr paramltr) {}
   
-  public void run()
+  protected void a(long paramLong)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ChannelCoverInfoModule", 2, "notifyUIToRefresh channelId=" + this.jdField_a_of_type_Int + " ;size = " + this.jdField_a_of_type_JavaUtilList.size());
+      QLog.w("MultiIncomingCallUICtr", 1, "onConnected, seq[" + paramLong + "]");
     }
-    if (this.jdField_a_of_type_Int == 0) {
-      ReadInJoyLogicEngineEventDispatcher.a().e(true, this.jdField_a_of_type_JavaUtilList);
+    this.a.jdField_a_of_type_ComTencentAvVideoController.c();
+    loj.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(paramLong, false);
+    if (this.a.jdField_a_of_type_Lzu != null) {
+      this.a.jdField_a_of_type_Lzu.c();
     }
-    while (this.jdField_a_of_type_Int != 56) {
-      return;
+    if (this.a.jdField_a_of_type_Kvq.d == 1) {
+      this.a.f = "DEVICE_SPEAKERPHONE;DEVICE_EARPHONE;DEVICE_BLUETOOTHHEADSET;DEVICE_WIREDHEADSET;";
     }
-    ReadInJoyLogicEngineEventDispatcher.a().f(true, this.jdField_a_of_type_JavaUtilList);
+    miu.a().a(this.a.f);
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.jdField_c_of_type_JavaLangRunnable, 1000L);
+  }
+  
+  protected void a(long paramLong, int paramInt, String paramString)
+  {
+    if ((this.a.jdField_c_of_type_JavaLangString != null) && (this.a.jdField_c_of_type_JavaLangString.equals(paramString)))
+    {
+      this.a.a(paramLong, paramInt);
+      this.a.a();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.w("MultiIncomingCallUICtr", 1, "onClose, reason[" + paramInt + "], peerUin[" + paramString + "], mPeerUin[" + this.a.jdField_c_of_type_JavaLangString + "], seq[" + paramLong + "]");
+    }
+  }
+  
+  protected void a(String paramString, boolean paramBoolean)
+  {
+    super.a(paramString, paramBoolean);
+    if (this.a.jdField_a_of_type_Lzu != null) {
+      this.a.jdField_a_of_type_Lzu.a();
+    }
+    this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiIncomingCallUICtr", 2, "onDestroyUI, peerUin:" + paramString + ", isQuit:" + paramBoolean + ", mPeerUin:" + this.a.jdField_c_of_type_JavaLangString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ltu
  * JD-Core Version:    0.7.0.1
  */

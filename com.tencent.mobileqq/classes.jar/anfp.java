@@ -1,39 +1,23 @@
-import android.content.Intent;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import cooperation.qzone.networkedmodule.QzoneModuleConfigManager;
-import cooperation.qzone.patch.QZonePatchRequest;
-import cooperation.qzone.plugin.PluginIntent.OnResultListner;
-import cooperation.qzone.plugin.QZonePluginUpdater;
-import cooperation.qzone.plugin.QZonePluginUpdater.OnUpdateListner;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import java.util.List;
 
-public class anfp
-  implements PluginIntent.OnResultListner
+class anfp
+  extends ajhy
 {
-  public anfp(QZonePluginUpdater paramQZonePluginUpdater) {}
+  anfp(anfj paramanfj, Object paramObject) {}
   
-  public void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  protected void a(List<CustomEmotionData> arg1)
   {
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getResultCode() == 1000))
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      paramIntent = QZonePatchRequest.a(paramFromServiceMsg.getWupBuffer());
-      QZonePluginUpdater.a(this.a, paramIntent);
-      QZonePluginUpdater.a(this.a, paramIntent, null);
-      QzoneModuleConfigManager.a().a(paramIntent);
-      if (this.a.a != null) {
-        this.a.a.a(true);
-      }
-    }
-    do
-    {
+      this.jdField_a_of_type_JavaLangObject.notify();
       return;
-      QZonePluginUpdater.a(this.a, null, null);
-    } while (this.a.a == null);
-    this.a.a.a(false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anfp
  * JD-Core Version:    0.7.0.1
  */

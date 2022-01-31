@@ -1,38 +1,27 @@
-import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment.RefreshDataListener;
-import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.Nullable;
 
-public class wtf
-  extends ContactBindObserver
+class wtf
+  implements bhwg<Boolean>
 {
-  private wtf(PhoneContactFragment paramPhoneContactFragment) {}
+  wtf(wta paramwta) {}
   
-  protected void a(boolean paramBoolean)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    this.a.c();
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("contacts.fragment.PhoneContactFragment", 2, "onQueryBindState " + paramBoolean1 + " " + paramBoolean2);
+    if (paramBoolean == null) {
+      return;
     }
-    if (PhoneContactFragment.b(this.a))
+    wta localwta = this.a;
+    if (!paramBoolean.booleanValue()) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (this.a.a != null) {
-        this.a.a.a(4, paramBoolean1, null);
-      }
-      if (paramBoolean1) {
-        this.a.c();
-      }
-      PhoneContactFragment.a(this.a, false);
+      wta.a(localwta, bool);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wtf
  * JD-Core Version:    0.7.0.1
  */

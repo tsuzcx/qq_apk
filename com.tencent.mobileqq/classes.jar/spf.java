@@ -1,80 +1,77 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.DiscussionHandler;
-import com.tencent.mobileqq.app.DiscussionManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionMemberInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.TroopReportor;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public class spf
-  implements CompoundButton.OnCheckedChangeListener
+public abstract class spf<DATA>
 {
-  public spf(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public static final String a;
+  protected DATA a;
+  protected List<spg<DATA>> a;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  static
   {
-    if (AppSetting.b)
-    {
-      paramCompoundButton = this.a.getString(2131435358);
-      DiscussionInfoCardActivity.a(this.a).setContentDescription(paramCompoundButton);
+    jdField_a_of_type_JavaLangString = spf.class.getName();
+  }
+  
+  public spf()
+  {
+    this.jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  }
+  
+  public DATA a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public void a()
+  {
+    a(null);
+  }
+  
+  public void a(@NonNull spg<DATA> paramspg)
+  {
+    if (!this.jdField_a_of_type_JavaUtilList.contains(paramspg)) {
+      this.jdField_a_of_type_JavaUtilList.add(paramspg);
     }
-    paramCompoundButton = DiscussionInfoCardActivity.a(this.a).a(DiscussionInfoCardActivity.a(this.a), this.a.app.getCurrentAccountUin());
-    int i = paramCompoundButton.flag;
-    label171:
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
-    {
-      paramCompoundButton.flag = ((byte)(paramCompoundButton.flag | 0x1));
-      if (i != paramCompoundButton.flag)
-      {
-        byte b = (byte)(paramCompoundButton.flag & 0x1);
-        if (QLog.isDevelopLevel()) {
-          QLog.d("DiscussionInfoCardActivity", 4, "DiscussionMemberInfo.flag changed save now:" + paramCompoundButton.flag + " flag:" + b);
-        }
-        DiscussionInfoCardActivity.a(this.a).a(Long.valueOf(DiscussionInfoCardActivity.a(this.a)).longValue(), b, paramCompoundButton.flag);
-        if (!paramBoolean) {
-          break label341;
-        }
-        paramCompoundButton = "msg_open";
-        TroopReportor.a("Grp_Dis_set", "Dis_info", paramCompoundButton, 0, 0, new String[] { DiscussionInfoCardActivity.a(this.a), TroopReportor.a(this.a.app, this.a.a) });
-      }
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label347;
-      }
-      paramCompoundButton = "1";
-      label231:
-      ReportController.b(localQQAppInterface, "CliOper", "", "", "0X800629B", "0X800629B", 0, 0, paramCompoundButton, "", "", "");
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label353;
-      }
+  }
+  
+  protected abstract void a(sry paramsry);
+  
+  protected void a(boolean paramBoolean, DATA paramDATA)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((spg)localIterator.next()).a(paramBoolean, paramDATA);
     }
-    label341:
-    label347:
-    label353:
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
-    {
-      ReportController.b(localQQAppInterface, "CliOper", "", "", "0X8006679", "0X8006679", 0, 0, paramCompoundButton, "", "", "");
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8006668", "0X8006668", 0, 0, "", "", "", "");
-      return;
-      paramCompoundButton.flag = ((byte)(paramCompoundButton.flag & 0xFFFFFFFE));
-      break;
-      paramCompoundButton = "msg_close";
-      break label171;
-      paramCompoundButton = "0";
-      break label231;
+  }
+  
+  public void b()
+  {
+    urk.b(jdField_a_of_type_JavaLangString, "onInit");
+  }
+  
+  public void b(@NonNull spg<DATA> paramspg)
+  {
+    if (this.jdField_a_of_type_JavaUtilList.contains(paramspg)) {
+      this.jdField_a_of_type_JavaUtilList.remove(paramspg);
     }
+  }
+  
+  public void b(sry paramsry)
+  {
+    a(paramsry);
+  }
+  
+  public void c()
+  {
+    urk.b(jdField_a_of_type_JavaLangString, "onDestroy");
+    this.jdField_a_of_type_JavaUtilList.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     spf
  * JD-Core Version:    0.7.0.1
  */

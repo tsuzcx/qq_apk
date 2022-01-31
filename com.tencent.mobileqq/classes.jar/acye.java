@@ -1,19 +1,24 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class acye
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class acye
+  implements View.OnClickListener
 {
-  public acye(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  acye(acyd paramacyd) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    this.a.e();
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    acyd.a(this.a, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acye
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class MqqLbsPack$LBSSig
-  extends MessageMicro
+  extends MessageMicro<LBSSig>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_verify_key = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -25,7 +25,7 @@ public final class MqqLbsPack$LBSSig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.lbspack.MqqLbsPack.LBSSig
  * JD-Core Version:    0.7.0.1
  */

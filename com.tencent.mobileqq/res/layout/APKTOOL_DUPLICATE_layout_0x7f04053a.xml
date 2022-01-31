@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a19e4" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a19e5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mobileqq.widget.MessageProgressView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a19e6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a19e7" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020f39" android:layout_alignTop="@id/APKTOOL_DUPLICATE_id_0x7f0a19e5" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0a19e5" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a19e8" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021fe1" android:layout_centerInParent="true" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a19e9" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020f3c" android:layout_centerInParent="true" />
-</RelativeLayout>

@@ -1,18 +1,30 @@
-import android.widget.TextView;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import java.util.Iterator;
+import java.util.Set;
 
-class vjs
-  implements Runnable
+public class vjs
 {
-  vjs(vjr paramvjr, String paramString) {}
-  
-  public void run()
+  public static void a(@NonNull String paramString, Bundle paramBundle)
   {
-    this.jdField_a_of_type_Vjr.a.setText(this.jdField_a_of_type_JavaLangString + " " + this.jdField_a_of_type_Vjr.b);
+    if (paramBundle == null)
+    {
+      urk.b(paramString, ", logBundleDetails : null");
+      return;
+    }
+    urk.b(paramString, "-- ----------- logBundleDetails ------------- [[[");
+    Iterator localIterator = paramBundle.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      urk.a(paramString, "-- - %s : %s", str, paramBundle.get(str));
+    }
+    urk.b(paramString, "-- ----------- logBundleDetails ------------- ]]]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vjs
  * JD-Core Version:    0.7.0.1
  */

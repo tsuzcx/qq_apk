@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class hiboom_auth$AuthRspBody
-  extends MessageMicro
+  extends MessageMicro<AuthRspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_err_msg = PBField.initBytes(ByteStringMicro.EMPTY);

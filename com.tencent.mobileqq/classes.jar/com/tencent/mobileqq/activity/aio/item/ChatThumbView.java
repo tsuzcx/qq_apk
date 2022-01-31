@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity.aio.item;
 
+import acjt;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -12,11 +13,10 @@ import android.view.animation.Animation;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.TouchDelegate;
 
 public class ChatThumbView
   extends URLImageView
-  implements BaseBubbleBuilder.TouchDelegate
+  implements acjt
 {
   public boolean a;
   public boolean b = true;
@@ -107,7 +107,7 @@ public class ChatThumbView
     super.onLoadSuccessed(paramURLDrawable);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     if (BaseBubbleBuilder.jdField_a_of_type_Boolean)
     {
@@ -177,7 +177,7 @@ public class ChatThumbView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ChatThumbView
  * JD-Core Version:    0.7.0.1
  */

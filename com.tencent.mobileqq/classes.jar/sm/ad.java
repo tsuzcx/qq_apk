@@ -12,7 +12,7 @@ import org.apache.http.params.HttpParams;
 public class ad
 {
   protected HttpParams a = null;
-  protected a b = null;
+  protected ad.a b = null;
   private boolean c = false;
   private String d = null;
   private int e = 0;
@@ -57,7 +57,7 @@ public class ad
     this.e = paramInt;
   }
   
-  public void a(a parama)
+  public void a(ad.a parama)
   {
     this.b = parama;
   }
@@ -65,13 +65,6 @@ public class ad
   public void a(boolean paramBoolean)
   {
     this.c = paramBoolean;
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void a(Bundle paramBundle);
-    
-    public abstract void b(Bundle paramBundle);
   }
 }
 

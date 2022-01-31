@@ -5,12 +5,12 @@ import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import java.io.File;
-import oii;
+import usz;
 
 public class EditTakePhotoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator CREATOR = new oii();
+  public static final Parcelable.Creator<EditTakePhotoSource> CREATOR = new usz();
   public final double a;
   public final int a;
   @NonNull
@@ -27,11 +27,6 @@ public class EditTakePhotoSource
     this.c = paramParcel.readInt();
     this.jdField_a_of_type_Double = paramParcel.readDouble();
     this.jdField_b_of_type_Double = paramParcel.readDouble();
-  }
-  
-  public EditTakePhotoSource(String paramString)
-  {
-    this(paramString, 2, 0, 0);
   }
   
   public EditTakePhotoSource(String paramString, int paramInt1, int paramInt2, int paramInt3)
@@ -97,7 +92,7 @@ public class EditTakePhotoSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.EditTakePhotoSource
  * JD-Core Version:    0.7.0.1
  */

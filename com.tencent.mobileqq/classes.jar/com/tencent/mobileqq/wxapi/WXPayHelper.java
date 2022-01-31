@@ -20,7 +20,7 @@ public class WXPayHelper
   private static WXPayHelper jdField_a_of_type_ComTencentMobileqqWxapiWXPayHelper;
   private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
   private IWXAPI jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI = WXAPIFactory.createWXAPI(BaseApplicationImpl.getApplication().getApplicationContext(), "wxf0a80d0ac2e82aa7", true);
-  private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+  private ArrayList<Handler> jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
   
   private WXPayHelper()
   {
@@ -67,7 +67,7 @@ public class WXPayHelper
   
   public boolean isWXsupportApi()
   {
-    return this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.isWXAppSupportAPI();
+    return this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.getWXAppSupportAPI() >= 553779201;
   }
   
   public boolean isWXsupportPayApi()
@@ -134,7 +134,7 @@ public class WXPayHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.wxapi.WXPayHelper
  * JD-Core Version:    0.7.0.1
  */

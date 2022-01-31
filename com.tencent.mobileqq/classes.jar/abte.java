@@ -1,32 +1,20 @@
-import android.content.res.Resources;
-import android.graphics.NinePatch;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import com.tencent.mobileqq.bubble.ReversedNinePatchDrawable;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SplashActivity;
 
-public final class abte
-  extends Drawable.ConstantState
+public class abte
+  implements DialogInterface.OnClickListener
 {
-  public final NinePatch a;
+  public abte(SplashActivity paramSplashActivity) {}
   
-  public int getChangingConfigurations()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return 0;
-  }
-  
-  public Drawable newDrawable()
-  {
-    return new ReversedNinePatchDrawable(null, this);
-  }
-  
-  public Drawable newDrawable(Resources paramResources)
-  {
-    return new ReversedNinePatchDrawable(paramResources, this);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abte
  * JD-Core Version:    0.7.0.1
  */

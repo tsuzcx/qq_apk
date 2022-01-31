@@ -1,64 +1,61 @@
-import android.view.View;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.av.utils.VideoActionSheet;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.Arrays;
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import java.util.List;
 
-class sun
-  implements ActionSheet.OnButtonClickListener
+public class sun
+  extends sok<ssm, son<ssm>>
 {
-  sun(suk paramsuk, int[] paramArrayOfInt, VideoActionSheet paramVideoActionSheet) {}
+  private int a;
   
-  public void OnClick(View paramView, int paramInt)
+  public sun(Context paramContext)
   {
-    int i = this.jdField_a_of_type_ArrayOfInt[paramInt];
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileCardActivity", 2, "videoActionSheet onClick,showItems =  " + Arrays.toString(this.jdField_a_of_type_ArrayOfInt) + ",which = " + paramInt + ",item = " + i);
+    super(paramContext);
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public int a(int paramInt)
+  {
+    ssm localssm = (ssm)a(paramInt);
+    if (localssm != null) {
+      return localssm.jdField_a_of_type_Int;
     }
-    this.jdField_a_of_type_ComTencentAvUtilsVideoActionSheet.dismiss();
-    switch (i)
+    return 0;
+  }
+  
+  public int a(String paramString)
+  {
+    List localList = a();
+    int i = 0;
+    while (i < localList.size())
     {
-    case 3: 
-    default: 
-    case 1: 
-    case 4: 
-      do
-      {
-        return;
-        FriendProfileCardActivity.a(this.jdField_a_of_type_Suk.a.app, this.jdField_a_of_type_Suk.a, this.jdField_a_of_type_Suk.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
-        ReportController.b(this.jdField_a_of_type_Suk.a.app, "CliOper", "", "", "0X8008405", "0X8008405", 0, 0, "", "", "", "");
-        return;
-        if ((this.jdField_a_of_type_Suk.a.l == 1) || (this.jdField_a_of_type_Suk.a.l == 2))
-        {
-          ChatActivityUtils.a(this.jdField_a_of_type_Suk.a.app, this.jdField_a_of_type_Suk.a, this.jdField_a_of_type_Suk.a.jdField_a_of_type_ComTencentAvAppPstnSessionInfo, 1);
-          ReportController.b(this.jdField_a_of_type_Suk.a.app, "CliOper", "", "", "0X8006406", "0X8006406", 9, 0, "", "", "", "");
-          return;
-        }
-      } while (this.jdField_a_of_type_Suk.a.l != 5);
-      PstnUtils.a(this.jdField_a_of_type_Suk.a.app, this.jdField_a_of_type_Suk.a, 1, 7);
-      return;
+      if (TextUtils.equals(((ssm)localList.get(i)).jdField_a_of_type_JavaLangString, paramString)) {
+        return b() + i;
+      }
+      i += 1;
     }
-    paramView = new SessionInfo();
-    paramView.jdField_a_of_type_Int = ProfileCardUtil.a(this.jdField_a_of_type_Suk.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a);
-    paramView.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Suk.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.jdField_a_of_type_JavaLangString;
-    paramView.d = FriendProfileCardActivity.a(this.jdField_a_of_type_Suk.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo, this.jdField_a_of_type_Suk.a.app);
-    paramView.b = this.jdField_a_of_type_Suk.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.d;
-    PlusPanelUtils.a(this.jdField_a_of_type_Suk.a.app, this.jdField_a_of_type_Suk.a, paramView, false, null, null);
-    ReportController.b(this.jdField_a_of_type_Suk.a.app, "CliOper", "", "", "0X80085D6", "0X80085D6", 9, 0, "", "", "", "");
+    return b();
+  }
+  
+  public void a(son<ssm> paramson)
+  {
+    super.onViewDetachedFromWindow(paramson);
+    paramson.a();
+  }
+  
+  public son b(ViewGroup paramViewGroup, int paramInt)
+  {
+    return swa.a(paramViewGroup, paramInt);
+  }
+  
+  public void b(son paramson, int paramInt)
+  {
+    paramson.a((ssm)a(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sun
  * JD-Core Version:    0.7.0.1
  */

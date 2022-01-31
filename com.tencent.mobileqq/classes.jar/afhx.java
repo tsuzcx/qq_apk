@@ -1,41 +1,33 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.util.NearbyProfileUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.GridView;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class afhx
-  implements Runnable
 {
-  public afhx(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  private BaseActivity a;
   
-  public void run()
+  public afhx(BaseActivity paramBaseActivity)
   {
-    if ((!NetworkUtil.d(BaseApplication.getContext())) && (this.a.k)) {}
-    byte[] arrayOfByte;
-    long l;
-    do
-    {
-      do
-      {
-        return;
-      } while (NearbyPeopleProfileActivity.a(this.a) == null);
-      arrayOfByte = NearbyPeopleProfileActivity.a(this.a).vSeed;
-      l = NearbyPeopleProfileActivity.a(this.a).feedPreviewTime;
-      if (this.a.jdField_a_of_type_Long > 0L)
-      {
-        NearbyProfileUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler, this.a.app, this.a.jdField_a_of_type_Long, null, this.a.d, arrayOfByte, l, true, this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Long);
-        return;
-      }
-    } while (StringUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString));
-    NearbyProfileUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler, this.a.app, 0L, this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.a.d, arrayOfByte, l, true, this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Long);
+    this.a = paramBaseActivity;
+  }
+  
+  public begr a(AdapterView.OnItemClickListener paramOnItemClickListener)
+  {
+    begr localbegr = (begr)behe.a(this.a, null);
+    GridView localGridView = (GridView)View.inflate(this.a, 2131496974, null);
+    localGridView.setBackgroundDrawable(this.a.getResources().getDrawable(2130837557));
+    localGridView.setAdapter(new afhz(this, null));
+    localGridView.setOnItemClickListener(paramOnItemClickListener);
+    localbegr.a(localGridView);
+    localbegr.c(2131625035);
+    return localbegr;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afhx
  * JD-Core Version:    0.7.0.1
  */

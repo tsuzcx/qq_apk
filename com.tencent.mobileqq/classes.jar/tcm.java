@@ -1,21 +1,14 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.LebaQZoneFacePlayHelper;
-
-class tcm
-  implements Runnable
+public abstract interface tcm
 {
-  tcm(tck paramtck) {}
+  public abstract void a(tet paramtet);
   
-  public void run()
-  {
-    if (Leba.a(this.a.a) != null) {
-      Leba.a(this.a.a).e();
-    }
-  }
+  public abstract void b(tet paramtet);
+  
+  public abstract void c(tet paramtet);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tcm
  * JD-Core Version:    0.7.0.1
  */

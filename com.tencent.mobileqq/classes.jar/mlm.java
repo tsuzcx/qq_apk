@@ -1,24 +1,18 @@
 import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.ViewHolder;
-import com.tencent.widget.KandianPopupWindow.OnUninterestConfirmListener;
-import java.util.ArrayList;
+import android.view.animation.Transformation;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.biz.PoiMapActivity;
 
 public class mlm
-  implements KandianPopupWindow.OnUninterestConfirmListener
+  implements bajj<Integer>
 {
-  public mlm(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, int paramInt, ReadInJoyBaseAdapter.ViewHolder paramViewHolder, BaseArticleInfo paramBaseArticleInfo) {}
+  public mlm(PoiMapActivity paramPoiMapActivity) {}
   
-  public void a(View paramView, int paramInt, ArrayList paramArrayList, Object paramObject)
+  public void a(bajd<Integer> parambajd, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    if (paramInt == this.jdField_a_of_type_Int)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.k();
-      ((Animation)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter$ViewHolder.f.getTag(2131362291)).setAnimationListener(new mln(this, paramArrayList, paramObject));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter$ViewHolder.f.startAnimation((Animation)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter$ViewHolder.f.getTag(2131362291));
-    }
+    parambajd = (FrameLayout.LayoutParams)PoiMapActivity.c(this.a).getLayoutParams();
+    parambajd.bottomMargin = (this.a.q + this.a.t);
+    PoiMapActivity.c(this.a).setLayoutParams(parambajd);
   }
 }
 

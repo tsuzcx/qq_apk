@@ -5,13 +5,13 @@ import android.view.VelocityTracker;
 
 public final class VelocityTrackerCompat
 {
-  static final VelocityTrackerVersionImpl IMPL = new BaseVelocityTrackerVersionImpl();
+  static final VelocityTrackerCompat.VelocityTrackerVersionImpl IMPL = new VelocityTrackerCompat.BaseVelocityTrackerVersionImpl();
   
   static
   {
     if (Build.VERSION.SDK_INT >= 11)
     {
-      IMPL = new HoneycombVelocityTrackerVersionImpl();
+      IMPL = new VelocityTrackerCompat.HoneycombVelocityTrackerVersionImpl();
       return;
     }
   }
@@ -24,41 +24,6 @@ public final class VelocityTrackerCompat
   public static float getYVelocity(VelocityTracker paramVelocityTracker, int paramInt)
   {
     return IMPL.getYVelocity(paramVelocityTracker, paramInt);
-  }
-  
-  static class BaseVelocityTrackerVersionImpl
-    implements VelocityTrackerCompat.VelocityTrackerVersionImpl
-  {
-    public float getXVelocity(VelocityTracker paramVelocityTracker, int paramInt)
-    {
-      return paramVelocityTracker.getXVelocity();
-    }
-    
-    public float getYVelocity(VelocityTracker paramVelocityTracker, int paramInt)
-    {
-      return paramVelocityTracker.getYVelocity();
-    }
-  }
-  
-  static class HoneycombVelocityTrackerVersionImpl
-    implements VelocityTrackerCompat.VelocityTrackerVersionImpl
-  {
-    public float getXVelocity(VelocityTracker paramVelocityTracker, int paramInt)
-    {
-      return VelocityTrackerCompatHoneycomb.getXVelocity(paramVelocityTracker, paramInt);
-    }
-    
-    public float getYVelocity(VelocityTracker paramVelocityTracker, int paramInt)
-    {
-      return VelocityTrackerCompatHoneycomb.getYVelocity(paramVelocityTracker, paramInt);
-    }
-  }
-  
-  static abstract interface VelocityTrackerVersionImpl
-  {
-    public abstract float getXVelocity(VelocityTracker paramVelocityTracker, int paramInt);
-    
-    public abstract float getYVelocity(VelocityTracker paramVelocityTracker, int paramInt);
   }
 }
 

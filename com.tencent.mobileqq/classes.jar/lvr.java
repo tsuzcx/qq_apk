@@ -1,22 +1,62 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.MultiMembersAudioUI;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import java.util.ArrayList;
 
 public class lvr
-  implements View.OnClickListener
+  extends kur
 {
-  public lvr(ReadInJoyFooterPresenter paramReadInJoyFooterPresenter, String paramString1, String paramString2) {}
+  public lvr(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(int paramInt)
   {
-    ReadInJoyFooterPresenter.a(2, this.jdField_a_of_type_JavaLangString);
-    ReadInJoyUtils.a(ReadInJoyFooterPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPresenterReadInJoyFooterPresenter), this.b);
+    if (this.a.b()) {
+      return;
+    }
+    this.a.c(paramInt);
+  }
+  
+  protected void a(long paramLong, ArrayList<kth> paramArrayList, int paramInt1, int paramInt2)
+  {
+    if (this.a.b()) {
+      return;
+    }
+    this.a.a(paramLong, paramArrayList, paramInt1, paramInt2);
+  }
+  
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  {
+    if (this.a.b()) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (paramLong != this.a.jdField_a_of_type_Long);
+      if (paramBoolean)
+      {
+        this.a.b(paramInt);
+        return;
+      }
+    } while (((paramInt != 10) && (paramInt != 1)) || (!MultiVideoEnterPageActivity.a(this.a)));
+    this.a.a(paramInt);
+  }
+  
+  protected void d()
+  {
+    if (this.a.b()) {}
+    while (this.a.jdField_a_of_type_Boolean) {
+      return;
+    }
+    super.d();
+    ArrayList localArrayList = this.a.jdField_a_of_type_ComTencentAvVideoController.e();
+    localArrayList = this.a.jdField_a_of_type_ComTencentAvVideoController.a(localArrayList.size(), localArrayList);
+    this.a.jdField_a_of_type_ComTencentAvUiMultiMembersAudioUI.a(localArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lvr
  * JD-Core Version:    0.7.0.1
  */

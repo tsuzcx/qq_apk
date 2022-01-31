@@ -1,20 +1,16 @@
-import android.graphics.Bitmap;
-import com.tencent.component.media.image.BitmapReference;
-
-public class pnq
+class pnq
+  extends pnb
 {
-  public int a;
-  public BitmapReference a;
+  pnq(pnn parampnn) {}
   
-  public pnq(BitmapReference paramBitmapReference)
+  public int a()
   {
-    this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference = paramBitmapReference;
-    this.jdField_a_of_type_Int = paramBitmapReference.getBitmap().getGenerationId();
+    return -15550475;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     pnq
  * JD-Core Version:    0.7.0.1
  */

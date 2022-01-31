@@ -1,29 +1,73 @@
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyVideoCompositeManager;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
-import com.tencent.qphone.base.util.QLog;
-
 public class lks
-  extends ExecuteBinResponseCallback
+  extends lka
 {
-  public lks(ReadInJoyVideoCompositeManager paramReadInJoyVideoCompositeManager, PublishVideoEntry paramPublishVideoEntry, String paramString) {}
+  public int b;
   
-  public void a(String paramString)
+  protected float a(int paramInt1, int paramInt2)
   {
-    ReadInJoyVideoCompositeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyVideoCompositeManager, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_JavaLangString + ".doodle.mp4");
+    return this.b + paramInt1;
   }
   
-  public void b(String paramString)
+  public void a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Q.readinjoy.videocapture.ReadInJoyVideoCompositeManager", 2, "compositeVideo->combineDoodle: " + paramString);
+    paramLong -= this.a;
+    float f2 = 0.0F;
+    float f1 = f2;
+    if (paramLong <= 3733L)
+    {
+      paramLong = paramLong * 3L % 2800L / 3L;
+      if ((paramLong < 0L) || (paramLong >= 133L)) {
+        break label65;
+      }
+      f1 = (float)(-3L * paramLong) / 100.0F;
     }
-    ReadInJoyVideoCompositeManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyVideoCompositeManager, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, 999, "本地视频合成涂鸦是出错！");
+    for (;;)
+    {
+      a(f1);
+      return;
+      label65:
+      if ((paramLong >= 133L) && (paramLong < 266L))
+      {
+        f1 = (float)(3L * paramLong) / 50.0F - 12.0F;
+      }
+      else if ((paramLong >= 266L) && (paramLong < 400L))
+      {
+        f1 = (float)(-3L * paramLong) / 50.0F + 20.0F;
+      }
+      else if ((paramLong >= 400L) && (paramLong < 533L))
+      {
+        f1 = (float)(3L * paramLong) / 50.0F - 28.0F;
+      }
+      else
+      {
+        f1 = f2;
+        if (paramLong >= 533L)
+        {
+          f1 = f2;
+          if (paramLong < 666L) {
+            f1 = (float)(-3L * paramLong) / 100.0F + 20.0F;
+          }
+        }
+      }
+    }
+  }
+  
+  protected float b(int paramInt1, int paramInt2)
+  {
+    return paramInt2;
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    paramInt3 = paramInt1 * 102 / 160;
+    paramInt4 = paramInt1 * 140 / 160;
+    this.b = (paramInt1 * 24 / 160);
+    a((paramInt1 - paramInt3) / 2, (paramInt2 - paramInt4) / 2, (paramInt3 + paramInt1) / 2, (paramInt4 + paramInt2) / 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lks
  * JD-Core Version:    0.7.0.1
  */

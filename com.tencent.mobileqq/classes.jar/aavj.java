@@ -1,28 +1,34 @@
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.GetCurrentPositionCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
-class aavj
-  implements ArkAppEventObserverManager.GetCurrentPositionCallback
+public class aavj
+  implements DialogInterface.OnClickListener
 {
-  aavj(aauq paramaauq, long paramLong) {}
+  public aavj(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void a(long paramLong)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Aauq.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
+    if (this.a.f == 1) {
+      bajr.a(this.a, 1, azyk.a(3));
     }
-  }
-  
-  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
-  {
-    ArkAppDeviceModule.a(this.jdField_a_of_type_Aauq.a, this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
+    for (;;)
+    {
+      this.a.D();
+      return;
+      if (this.a.f == 2) {
+        bajr.b(this.a, 1, azyk.a(6));
+      } else if (this.a.f == 3) {
+        bajr.a(this.a, true, 12, false, azyk.a(6));
+      } else if (this.a.f == 4) {
+        baoz.a(this.a, azyk.a(6), "SVHHZLH", 0, false, false);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aavj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
+import aewr;
+import aews;
 import android.content.Context;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
@@ -14,13 +16,18 @@ public class ViewFactory$GuideView
   extends LinearLayout
   implements View.OnClickListener
 {
-  private int a;
-  public ViewFactory.GuideView.OnItemClickListener a;
+  public static final int a;
+  public aews a;
+  private int b = -1;
+  
+  static
+  {
+    jdField_a_of_type_Int = 3;
+  }
   
   public ViewFactory$GuideView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = -1;
     a(paramContext);
   }
   
@@ -29,9 +36,9 @@ public class ViewFactory$GuideView
     setOrientation(1);
     paramContext = LayoutInflater.from(paramContext);
     int i = 0;
-    while (i < 3)
+    while (i < jdField_a_of_type_Int)
     {
-      addView(paramContext.inflate(2130968616, this, false));
+      addView(paramContext.inflate(2131492925, this, false));
       i += 1;
     }
   }
@@ -44,7 +51,7 @@ public class ViewFactory$GuideView
     {
       View localView = getChildAt(i);
       localView.setTag(((Integer)localView.getTag()).intValue(), paramString);
-      ((TextView)localView.findViewById(2131362881)).setText(paramString);
+      ((TextView)localView.findViewById(2131301657)).setText(paramString);
       String str = localView.getContentDescription().toString();
       int k = str.length();
       int m = str.indexOf(":");
@@ -58,7 +65,7 @@ public class ViewFactory$GuideView
     }
   }
   
-  private void a(ArrayList paramArrayList, String paramString)
+  private void a(ArrayList<aewr> paramArrayList, String paramString)
   {
     int j = getChildCount();
     int i = 0;
@@ -66,33 +73,33 @@ public class ViewFactory$GuideView
     {
       View localView = getChildAt(i);
       localView.setOnClickListener(this);
-      localView.setTag(Integer.valueOf(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).b));
-      localView.setTag(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).b, paramString);
-      ((ImageView)localView.findViewById(2131362879)).setImageResource(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).b);
-      ((TextView)localView.findViewById(2131362880)).setText(localView.getContext().getResources().getString(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).jdField_a_of_type_Int) + ":");
-      ((TextView)localView.findViewById(2131362881)).setText(paramString);
-      localView.setContentDescription(getResources().getString(((ViewFactory.GuideView.DataHolder)paramArrayList.get(i)).jdField_a_of_type_Int) + ":" + paramString);
+      localView.setTag(Integer.valueOf(((aewr)paramArrayList.get(i)).b));
+      localView.setTag(((aewr)paramArrayList.get(i)).b, paramString);
+      ((ImageView)localView.findViewById(2131301652)).setImageResource(((aewr)paramArrayList.get(i)).b);
+      ((TextView)localView.findViewById(2131301667)).setText(localView.getContext().getResources().getString(((aewr)paramArrayList.get(i)).jdField_a_of_type_Int) + ":");
+      ((TextView)localView.findViewById(2131301657)).setText(paramString);
+      localView.setContentDescription(getResources().getString(((aewr)paramArrayList.get(i)).jdField_a_of_type_Int) + ":" + paramString);
       i += 1;
     }
   }
   
-  public ViewFactory.GuideView.DataHolder a(int paramInt)
+  public aewr a(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     case 80000000: 
-      return new ViewFactory.GuideView.DataHolder(2131434377, 2130842179);
+      return new aewr(2131624177, 2130843832);
     case 80000001: 
-      return new ViewFactory.GuideView.DataHolder(2131434378, 2130842180);
+      return new aewr(2131624179, 2130843833);
     }
-    return new ViewFactory.GuideView.DataHolder(2131434379, 2130842181);
+    return new aewr(2131624178, 2130843834);
   }
   
   public void a(int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_Int != paramInt)
+    if (this.b != paramInt)
     {
       ArrayList localArrayList = new ArrayList(3);
       int[] arrayOfInt = ViewFactory.a(paramInt);
@@ -103,7 +110,7 @@ public class ViewFactory$GuideView
         localArrayList.add(a(arrayOfInt[i]));
         i += 1;
       }
-      this.jdField_a_of_type_Int = paramInt;
+      this.b = paramInt;
       a(localArrayList, paramString);
       return;
     }
@@ -119,8 +126,8 @@ public class ViewFactory$GuideView
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView$OnItemClickListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView$OnItemClickListener.a(i, paramView);
+      if (this.jdField_a_of_type_Aews != null) {
+        this.jdField_a_of_type_Aews.a(i, paramView);
       }
       return;
       i = 80000000;
@@ -131,14 +138,14 @@ public class ViewFactory$GuideView
     }
   }
   
-  public void setListener(ViewFactory.GuideView.OnItemClickListener paramOnItemClickListener)
+  public void setListener(aews paramaews)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactViewFactory$GuideView$OnItemClickListener = paramOnItemClickListener;
+    this.jdField_a_of_type_Aews = paramaews;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ViewFactory.GuideView
  * JD-Core Version:    0.7.0.1
  */

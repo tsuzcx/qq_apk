@@ -1,0 +1,69 @@
+{
+	"view_type": "UIView",
+	"view_id": "id_comment_expose_subcomment_two",
+	"visible_depend_on_children": "YES",
+	"layout_type": "layout_relative",
+	"height": {
+		"type": "wrap_content"
+	},
+	"width": {
+		"type": "relative",
+		"value": "307"
+	},
+	"subviews": [{
+			"view_type": "UIButton",
+			"view_id": "id_comment_expose_subcomment_two_bg",
+			"visible_depend_on_brother": "id_comment_expose_subcomment_two_container",
+			"height": {
+				"type": "match_parent"
+			},
+			"width": {
+				"type": "relative",
+				"value": "307"
+			},
+			"attributes": {
+				"setBackgroundColor:forStates:": [
+					["#00000000", "#e5e5e5"],
+					["0", "1"]
+				]
+			}
+		},
+		{
+			"view_type": "UIView",
+			"view_id": "id_comment_expose_subcomment_two_container",
+			"visible_depend_on_children": "YES",
+			"layout_type": "layout_linear",
+			"align_parent_center": "YES",
+			"direction": "horizontal",
+			"height": {
+				"type": "wrap_content"
+			},
+			"width": {
+				"type": "relative",
+				"value": "307"
+			},
+			"subviews": [
+				{
+					"view_type": "QQRIJCommentEmotioinLabel",
+					"view_id": "id_comment_expose_subcomment_content_two",
+					"align_parent_center_vertical": "YES",
+					"event_type":"cmd_expose_subcommment_two",
+					"margin_left": "4",
+					"attributes": {
+						"setCommentModel:": "$subcomment_two",
+						"setUserInteractionEnabledString:": "0",
+						"setFontSizeString:": "15"
+					},
+					"height": {
+						"type": "wrap_content"
+					},
+					"width": {
+						"type": "match_parent"
+					}
+				}
+			]
+		}
+
+	]
+
+}

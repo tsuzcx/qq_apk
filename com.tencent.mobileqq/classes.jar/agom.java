@@ -1,22 +1,38 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import android.widget.EditText;
 
 public class agom
-  implements ValueAnimator.AnimatorUpdateListener
+  extends agnx
 {
-  public agom(ScanIconAnimateView paramScanIconAnimateView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public agom(EditText paramEditText)
   {
-    this.a.d = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * -1.0F * AIOUtils.a(1.5F, this.a.getResources()));
-    this.a.invalidate();
+    super(paramEditText);
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    paramInt1 = 1;
+    paramCharSequence = paramCharSequence.toString();
+    if (paramCharSequence.startsWith("0"))
+    {
+      paramInt2 = bfod.a(paramCharSequence, 1);
+      if (paramInt2 != 0) {
+        break label53;
+      }
+    }
+    for (;;)
+    {
+      paramCharSequence = String.valueOf(paramInt1);
+      this.a.setText(paramCharSequence);
+      this.a.setSelection(paramCharSequence.length());
+      return;
+      label53:
+      paramInt1 = paramInt2;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agom
  * JD-Core Version:    0.7.0.1
  */

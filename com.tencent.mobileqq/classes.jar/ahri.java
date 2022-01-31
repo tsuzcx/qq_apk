@@ -1,42 +1,52 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.richmedia.capture.view.PtvTemplateProviderView;
-import com.tencent.mobileqq.richmedia.capture.view.QQSlidingTabView;
-import com.tencent.mobileqq.widget.QQViewPager;
-import java.util.List;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import java.util.Comparator;
 
 public class ahri
-  implements Runnable
+  implements Comparator<ResultRecord>
 {
-  public ahri(PtvTemplateProviderView paramPtvTemplateProviderView) {}
-  
-  public void run()
+  public int a(ResultRecord paramResultRecord1, ResultRecord paramResultRecord2)
   {
-    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (this.a.jdField_a_of_type_JavaUtilList.size() > 1) && (!this.a.jdField_a_of_type_Boolean))
+    int j = -1;
+    long l1;
+    long l2;
+    label17:
+    int i;
+    if (paramResultRecord1 == null)
     {
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.setTab(this.a.jdField_a_of_type_JavaLangString);
-      this.a.jdField_a_of_type_JavaLangString = "";
-      this.a.e = -1;
+      l1 = 0L;
+      if (paramResultRecord2 != null) {
+        break label38;
+      }
+      l2 = 0L;
+      if (l1 != l2) {
+        break label47;
+      }
+      i = 0;
     }
+    label38:
+    label47:
     do
     {
-      return;
-      if ((this.a.e > 0) && (this.a.jdField_a_of_type_JavaUtilList.size() > 1) && (!this.a.jdField_a_of_type_Boolean))
+      do
       {
-        this.a.jdField_a_of_type_Boolean = true;
-        this.a.setTab(this.a.e);
-        this.a.jdField_a_of_type_JavaLangString = "";
-        this.a.e = -1;
-        return;
+        return i;
+        l1 = paramResultRecord1.a;
+        break;
+        l2 = paramResultRecord2.a;
+        break label17;
+        i = j;
+      } while (l1 == 0L);
+      if (l2 == 0L) {
+        return 1;
       }
-    } while ((this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_JavaUtilList.size() <= this.a.b) || (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem() != 0));
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(this.a.b);
-    this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.a(this.a.b);
+      i = j;
+    } while (l1 < l2);
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ahri
  * JD-Core Version:    0.7.0.1
  */

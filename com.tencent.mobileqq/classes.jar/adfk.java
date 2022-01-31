@@ -1,23 +1,35 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.mobileqq.service.message.MessageCache;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.app.Activity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.dinifly.ViewAnimation;
 
-public class adfk
+class adfk
+  extends AnimatorListenerAdapter
 {
-  public int a;
-  public long a;
-  public String a;
-  public int b;
-  public long b;
+  adfk(adfe paramadfe) {}
   
-  public adfk(OnlineFileSessionCenter paramOnlineFileSessionCenter, int paramInt)
+  public void onAnimationStart(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = MessageCache.a();
+    super.onAnimationStart(paramAnimator);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation != null)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation.mImageLayer = null;
+      paramAnimator = ((ViewGroup)((Activity)this.a.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView()).getChildAt(0).findViewById(2131296648);
+      if (paramAnimator != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation.setDuration(this.a.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getDuration());
+        paramAnimator.startAnimation(this.a.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adfk
  * JD-Core Version:    0.7.0.1
  */

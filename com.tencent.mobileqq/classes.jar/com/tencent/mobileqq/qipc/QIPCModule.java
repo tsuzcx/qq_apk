@@ -7,6 +7,7 @@ public abstract class QIPCModule
   extends EIPCModule
 {
   public static final int[] LISTEN_MSGS = { 1 };
+  static final int MSG_ACCOUNT_CHANGE = 1;
   
   public QIPCModule(String paramString)
   {

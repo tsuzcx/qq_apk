@@ -1,129 +1,99 @@
-import android.util.Pair;
-import java.io.RandomAccessFile;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
+import android.text.TextUtils;
+import com.tencent.TMG.utils.QLog;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public abstract class amfw
+public class amfw
 {
-  private static int a(ByteBuffer paramByteBuffer)
+  private amfx[] a = new amfx[0];
+  
+  public static amfw a(String paramString)
   {
-    a(paramByteBuffer);
-    int j = paramByteBuffer.capacity();
-    if (j < 22) {}
+    int i = 0;
+    amfw localamfw = new amfw();
+    if (TextUtils.isEmpty(paramString)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("SingTogetherConfigBean", 0, "parse content is empty");
+      }
+    }
     for (;;)
     {
-      return -1;
-      int k = Math.min(j - 22, 65535);
-      int i = 0;
-      while (i < k)
+      return localamfw;
+      try
       {
-        int m = j - 22 - i;
-        if ((paramByteBuffer.getInt(m) == 101010256) && (a(paramByteBuffer, m + 20) == i)) {
-          return m;
+        paramString = new JSONObject(paramString).getJSONArray("array");
+        if ((paramString != null) && (paramString.length() > 0))
+        {
+          localamfw.a = new amfx[paramString.length()];
+          while (i < paramString.length())
+          {
+            amfx localamfx = amfx.a(paramString.getJSONObject(i));
+            localamfw.a[i] = localamfx;
+            i += 1;
+          }
+          if (QLog.isColorLevel())
+          {
+            QLog.d("SingTogetherConfigBean", 0, "parse config=" + localamfw);
+            return localamfw;
+          }
         }
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+      }
+    }
+    return localamfw;
+  }
+  
+  public amfx a(int paramInt)
+  {
+    Object localObject;
+    if ((this.a == null) || (this.a.length <= 0))
+    {
+      localObject = null;
+      return localObject;
+    }
+    amfx[] arrayOfamfx = this.a;
+    int j = arrayOfamfx.length;
+    int i = 0;
+    for (;;)
+    {
+      if (i >= j) {
+        break label64;
+      }
+      amfx localamfx = arrayOfamfx[i];
+      localObject = localamfx;
+      if (localamfx.a == paramInt) {
+        break;
+      }
+      i += 1;
+    }
+    label64:
+    return null;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(super.toString()).append(" ");
+    if ((this.a != null) && (this.a.length > 0))
+    {
+      amfx[] arrayOfamfx = this.a;
+      int j = arrayOfamfx.length;
+      int i = 0;
+      while (i < j)
+      {
+        localStringBuilder.append(arrayOfamfx[i]).append(" ");
         i += 1;
       }
     }
-  }
-  
-  private static int a(ByteBuffer paramByteBuffer, int paramInt)
-  {
-    return paramByteBuffer.getShort(paramInt) & 0xFFFF;
-  }
-  
-  public static long a(ByteBuffer paramByteBuffer)
-  {
-    a(paramByteBuffer);
-    return a(paramByteBuffer, paramByteBuffer.position() + 16);
-  }
-  
-  private static long a(ByteBuffer paramByteBuffer, int paramInt)
-  {
-    return paramByteBuffer.getInt(paramInt) & 0xFFFFFFFF;
-  }
-  
-  public static Pair a(RandomAccessFile paramRandomAccessFile)
-  {
-    Object localObject;
-    if (paramRandomAccessFile.length() < 22L) {
-      localObject = null;
-    }
-    Pair localPair;
-    do
-    {
-      return localObject;
-      localPair = a(paramRandomAccessFile, 0);
-      localObject = localPair;
-    } while (localPair != null);
-    return a(paramRandomAccessFile, 65535);
-  }
-  
-  private static Pair a(RandomAccessFile paramRandomAccessFile, int paramInt)
-  {
-    if ((paramInt < 0) || (paramInt > 65535)) {
-      throw new IllegalArgumentException("maxCommentSize: " + paramInt);
-    }
-    long l = paramRandomAccessFile.length();
-    if (l < 22L) {}
-    ByteBuffer localByteBuffer;
-    do
-    {
-      return null;
-      localByteBuffer = ByteBuffer.allocate((int)Math.min(paramInt, l - 22L) + 22);
-      localByteBuffer.order(ByteOrder.LITTLE_ENDIAN);
-      l -= localByteBuffer.capacity();
-      paramRandomAccessFile.seek(l);
-      paramRandomAccessFile.readFully(localByteBuffer.array(), localByteBuffer.arrayOffset(), localByteBuffer.capacity());
-      paramInt = a(localByteBuffer);
-    } while (paramInt == -1);
-    localByteBuffer.position(paramInt);
-    paramRandomAccessFile = localByteBuffer.slice();
-    paramRandomAccessFile.order(ByteOrder.LITTLE_ENDIAN);
-    return Pair.create(paramRandomAccessFile, Long.valueOf(l + paramInt));
-  }
-  
-  private static void a(ByteBuffer paramByteBuffer)
-  {
-    if (paramByteBuffer.order() != ByteOrder.LITTLE_ENDIAN) {
-      throw new IllegalArgumentException("ByteBuffer byte order must be little endian");
-    }
-  }
-  
-  private static void a(ByteBuffer paramByteBuffer, int paramInt, long paramLong)
-  {
-    if ((paramLong < 0L) || (paramLong > 4294967295L)) {
-      throw new IllegalArgumentException("uint32 value of out range: " + paramLong);
-    }
-    paramByteBuffer.putInt(paramByteBuffer.position() + paramInt, (int)paramLong);
-  }
-  
-  public static void a(ByteBuffer paramByteBuffer, long paramLong)
-  {
-    a(paramByteBuffer);
-    a(paramByteBuffer, paramByteBuffer.position() + 16, paramLong);
-  }
-  
-  public static final boolean a(RandomAccessFile paramRandomAccessFile, long paramLong)
-  {
-    paramLong -= 20L;
-    if (paramLong < 0L) {}
-    do
-    {
-      return false;
-      paramRandomAccessFile.seek(paramLong);
-    } while (paramRandomAccessFile.readInt() != 1347094023);
-    return true;
-  }
-  
-  public static long b(ByteBuffer paramByteBuffer)
-  {
-    a(paramByteBuffer);
-    return a(paramByteBuffer, paramByteBuffer.position() + 12);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amfw
  * JD-Core Version:    0.7.0.1
  */

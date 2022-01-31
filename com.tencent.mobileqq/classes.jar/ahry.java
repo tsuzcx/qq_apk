@@ -1,47 +1,27 @@
-import com.tencent.mobileqq.richmedia.conn.LiteTcpConnection;
-import com.tencent.mobileqq.richmedia.conn.SubTitleProtocoDataCodec;
-import com.tencent.qphone.base.util.MsfSocketInputBuffer;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
 
 public class ahry
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ahry(LiteTcpConnection paramLiteTcpConnection) {}
+  public ahry(SelectMemberActivity paramSelectMemberActivity, ArrayList paramArrayList) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    while (LiteTcpConnection.a(this.a).get()) {
-      try
-      {
-        MsfSocketInputBuffer localMsfSocketInputBuffer = LiteTcpConnection.a(this.a);
-        if (localMsfSocketInputBuffer == null) {
-          return;
-        }
-        while (!localMsfSocketInputBuffer.isDataAvailable(10000)) {
-          if (!LiteTcpConnection.a(this.a).get()) {
-            return;
-          }
-        }
-        if (!LiteTcpConnection.a(this.a).get()) {
-          break;
-        }
-        LiteTcpConnection.a(this.a).a(localMsfSocketInputBuffer);
-        localMsfSocketInputBuffer.reset();
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PeakAudioTransHandler LiteTcpConnection", 2, "read exception " + localException.getMessage() + ";");
-        }
-        LiteTcpConnection.a(this.a, 1);
-      }
-    }
+    paramDialogInterface.dismiss();
+    ((ajtg)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.app.a(20)).b(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.c, this.jdField_a_of_type_JavaUtilArrayList, "");
+    SelectMemberActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b.show();
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d("Clk_invite");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahry
  * JD-Core Version:    0.7.0.1
  */

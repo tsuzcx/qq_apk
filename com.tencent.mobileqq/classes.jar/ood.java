@@ -1,15 +1,18 @@
-import android.view.View;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.magic.models.CG;
 
-public class ood
-  implements Runnable
+public final class ood
+  implements Parcelable.Creator<CG>
 {
-  public ood(DoodleLayout paramDoodleLayout) {}
-  
-  public void run()
+  public CG a(Parcel paramParcel)
   {
-    this.a.a(true);
-    this.a.b(new View[] { this.a.a });
+    return new CG(paramParcel);
+  }
+  
+  public CG[] a(int paramInt)
+  {
+    return new CG[paramInt];
   }
 }
 

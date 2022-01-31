@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.activity.bless;
 
+import aeqz;
 import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import com.tencent.mobileqq.utils.AudioUtil;
-import wlg;
+import baan;
 
 public class CountDownView
   extends ImageView
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130838229, 2130838228, 2130838227 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130838516, 2130838515, 2130838514 };
   private int jdField_a_of_type_Int;
-  private CountDownView.CountDownFinishedListener jdField_a_of_type_ComTencentMobileqqActivityBlessCountDownView$CountDownFinishedListener;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new wlg(this);
+  private aeqz jdField_a_of_type_Aeqz;
+  private Runnable jdField_a_of_type_JavaLangRunnable = new CountDownView.1(this);
   private boolean jdField_a_of_type_Boolean;
   
   public CountDownView(Context paramContext)
@@ -33,8 +33,8 @@ public class CountDownView
   
   private void b()
   {
-    AudioUtil.a();
-    AudioUtil.a(2131230746, 1, null, null);
+    baan.a();
+    baan.a(2131230746, 1, null, null);
   }
   
   public void a()
@@ -49,9 +49,9 @@ public class CountDownView
     setVisibility(4);
   }
   
-  public void setListener(CountDownView.CountDownFinishedListener paramCountDownFinishedListener)
+  public void setListener(aeqz paramaeqz)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBlessCountDownView$CountDownFinishedListener = paramCountDownFinishedListener;
+    this.jdField_a_of_type_Aeqz = paramaeqz;
   }
 }
 

@@ -6,14 +6,14 @@ import oicq.wlogin_sdk.tlv_type.tlv_t;
 import oicq.wlogin_sdk.tools.util;
 
 public class fetch_code
-  extends b
+  extends c
 {
   public fetch_code()
   {
     this._cmd = 49;
   }
   
-  public byte[] get_request(long paramLong1, long paramLong2, long paramLong3, byte[] paramArrayOfByte1, QRCodeCustom paramQRCodeCustom, long paramLong4, long paramLong5, byte[] paramArrayOfByte2)
+  public byte[] get_request(long paramLong1, long paramLong2, long paramLong3, byte[] paramArrayOfByte1, fetch_code.QRCodeCustom paramQRCodeCustom, long paramLong4, long paramLong5, byte[] paramArrayOfByte2)
   {
     int j = paramArrayOfByte1.length + 17 + 2;
     int[] arrayOfInt = new int[7];
@@ -106,7 +106,7 @@ public class fetch_code
       i = t.K.length + 3 + 2 + t.J.length + 2 + 2 + t.C.length + 2 + 0 + 2 + t.F.length;
       localObject1 = new byte[i];
       util.LOGI("os " + new String(t.K) + " sim info " + new String(t.C) + " apn " + new String(t.F), "");
-      util.int8_to_buf((byte[])localObject1, 0, t.Z);
+      util.int8_to_buf((byte[])localObject1, 0, t.aa);
       m = fill_staff((byte[])localObject1, t.K, 1);
       m = fill_staff((byte[])localObject1, t.J, m);
       util.int16_to_buf((byte[])localObject1, m, t.D);
@@ -119,7 +119,7 @@ public class fetch_code
       break label184;
       i = 4;
       localObject1 = new byte[4];
-      util.int32_to_buf((byte[])localObject1, 0, t.au);
+      util.int32_to_buf((byte[])localObject1, 0, t.ax);
       break label184;
       paramQRCodeCustom = new byte[j];
       util.int64_to_buf32(paramQRCodeCustom, 2, paramLong2);
@@ -158,8 +158,8 @@ public class fetch_code
       return _status.b;
     }
     int i = util.buf_to_int16(paramArrayOfByte, 7);
-    c.i = new byte[i];
-    System.arraycopy(paramArrayOfByte, 9, c.i, 0, i);
+    d.i = new byte[i];
+    System.arraycopy(paramArrayOfByte, 9, d.i, 0, i);
     i += 9;
     int k = util.buf_to_int16(paramArrayOfByte, i);
     i += 2;
@@ -188,17 +188,6 @@ public class fetch_code
       }
     }
     return _status.b;
-  }
-  
-  public static class QRCodeCustom
-  {
-    public int Dpi = 72;
-    public int EcLevel = 2;
-    public int Hint = 2;
-    public int Margin = 4;
-    public int Micro = 0;
-    public int Size = 3;
-    public int Version = 0;
   }
 }
 

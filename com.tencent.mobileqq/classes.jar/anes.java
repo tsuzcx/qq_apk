@@ -1,70 +1,81 @@
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.ServiceConnection;
-import android.os.IBinder;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.subscribe.event.FollowUpdateEvent;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 import com.tencent.qphone.base.util.QLog;
-import java.util.LinkedList;
 
 class anes
-  implements ServiceConnection
+  extends ajpe
 {
-  private Context jdField_a_of_type_AndroidContentContext;
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection;
+  anes(aned paramaned, Bundle paramBundle, MessengerService paramMessengerService, boolean paramBoolean) {}
   
-  public anes(aneq paramaneq, ServiceConnection paramServiceConnection, Context paramContext, int paramInt)
+  public void a(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_AndroidContentServiceConnection = paramServiceConnection;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
-  }
-  
-  public void onServiceConnected(ComponentName arg1, IBinder paramIBinder)
-  {
-    do
+    int i = 1;
+    super.a(paramBoolean, paramString);
+    try
     {
-      try
+      Object localObject = new Bundle();
+      if (paramBoolean) {}
+      for (;;)
       {
-        this.jdField_a_of_type_AndroidContentContext.getApplicationContext().unbindService(this);
+        ((Bundle)localObject).putInt("retCode", i);
+        this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject);
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
         if (QLog.isColorLevel()) {
-          QLog.i("QZonePluginManger", 2, "onServiceConnected, " + this);
+          QLog.d("MessengerService$IncomingHandler", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW success! isFollow: " + this.jdField_a_of_type_Boolean + "  uin: " + paramString);
         }
-        this.jdField_a_of_type_AndroidContentServiceConnection.onServiceConnected(???, paramIBinder);
+        localObject = new Intent("com.tencent.mobileqq.PublicAccountObserver");
+        ((Intent)localObject).putExtra("action", "follow");
+        ((Intent)localObject).putExtra("isSuccess", paramBoolean);
+        ((Intent)localObject).putExtra("uin", paramString);
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.getApplicationContext().sendBroadcast((Intent)localObject);
+        wcj.a().a(new FollowUpdateEvent(1, paramString));
+        return;
+        i = 0;
       }
-      catch (Exception localException)
-      {
-        synchronized (aneq.a(this.jdField_a_of_type_Aneq))
-        {
-          do
-          {
-            paramIBinder = (anes)aneq.a(this.jdField_a_of_type_Aneq).poll();
-            if (paramIBinder == null) {
-              break;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.i("QZonePluginManger", 2, "continue process");
-            }
-            aneq.a(this.jdField_a_of_type_Aneq, paramIBinder, 300);
-            return;
-            localException = localException;
-          } while (!QLog.isColorLevel());
-          QLog.i("QZonePluginManger", 2, "unbindService, " + this);
-        }
-      }
-      aneq.a(this.jdField_a_of_type_Aneq, false);
-    } while (!QLog.isColorLevel());
-    QLog.i("QZonePluginManger", 2, "queue empty");
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("MessengerService$IncomingHandler", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW failed! " + QLog.getStackTraceString(paramString));
+    }
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void b(boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QZonePluginManger", 2, "onServiceDisconnected, " + this);
+    int i = 0;
+    super.b(paramBoolean, paramString);
+    try
+    {
+      Object localObject = new Bundle();
+      if (paramBoolean) {
+        i = 1;
+      }
+      ((Bundle)localObject).putInt("retCode", i);
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      if (QLog.isColorLevel()) {
+        QLog.d("MessengerService$IncomingHandler", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW failed! isFollow: " + this.jdField_a_of_type_Boolean + "  uin: " + paramString);
+      }
+      localObject = new Intent("com.tencent.mobileqq.PublicAccountObserver");
+      ((Intent)localObject).putExtra("action", "unFollow");
+      ((Intent)localObject).putExtra("isSuccess", paramBoolean);
+      ((Intent)localObject).putExtra("uin", paramString);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.getApplicationContext().sendBroadcast((Intent)localObject);
+      wcj.a().a(new FollowUpdateEvent(0, paramString));
+      return;
     }
-    this.jdField_a_of_type_AndroidContentServiceConnection.onServiceDisconnected(paramComponentName);
+    catch (Throwable paramString)
+    {
+      QLog.e("MessengerService$IncomingHandler", 2, "IPC_CMD_CERTIFIED_ACCOUNT_WEB_PLUGIN_FOLLOW failed! " + QLog.getStackTraceString(paramString));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anes
  * JD-Core Version:    0.7.0.1
  */

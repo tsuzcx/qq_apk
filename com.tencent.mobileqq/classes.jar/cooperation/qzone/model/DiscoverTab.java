@@ -1,15 +1,15 @@
 package cooperation.qzone.model;
 
-import anbx;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bfwa;
 import cooperation.qzone.widget.RedTouchExtendButton.RedInfo;
 
 public class DiscoverTab
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new anbx();
+  public static final Parcelable.Creator<DiscoverTab> CREATOR = new bfwa();
   public int a;
   public RedTouchExtendButton.RedInfo a;
   public String a;

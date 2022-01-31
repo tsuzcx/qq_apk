@@ -1,41 +1,47 @@
-import com.tencent.biz.helper.TroopCardAppInfoHelper.IGetAppInfoCB;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopAppInfo;
-import com.tencent.mobileqq.model.TroopInfoManager;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 
-public class shj
-  implements TroopCardAppInfoHelper.IGetAppInfoCB
+class shj
+  implements sho
 {
-  public shj(ChatSettingForTroop paramChatSettingForTroop) {}
+  private shj(shg paramshg) {}
   
-  public void a() {}
-  
-  public void a(ArrayList paramArrayList)
+  public void a(shp paramshp)
   {
-    if ((this.a.isFinishing()) || (paramArrayList == null) || (paramArrayList.size() == 0)) {}
-    do
+    QQStoryContext.a();
+    QQAppInterface localQQAppInterface = QQStoryContext.a();
+    awey localawey = aweg.a(2, 2);
+    MessageForShortVideo localMessageForShortVideo = paramshp.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
+    awej localawej = localMessageForShortVideo.getDownloadInfo(localawey.b);
+    if (paramshp.jdField_a_of_type_Int == 2)
     {
+      localawej.i = ShortVideoUtils.a(localMessageForShortVideo.thumbMD5, "jpg");
+      localawej.a(localMessageForShortVideo.istroop, 1);
+    }
+    for (;;)
+    {
+      localawey.a(localawej);
+      localawey.a(new shk(this, paramshp.jdField_a_of_type_JavaLangString));
+      aweg.a(localawey, localQQAppInterface);
+      urk.b("AsyncFileDownloader", String.format("start download with shortvideo downloader, task = %s", new Object[] { paramshp }));
       return;
-      ArrayList localArrayList = new ArrayList();
-      TroopInfoManager localTroopInfoManager = (TroopInfoManager)this.a.app.getManager(36);
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        TroopAppInfo localTroopAppInfo = (TroopAppInfo)paramArrayList.next();
-        localTroopInfoManager.a(Long.valueOf(localTroopAppInfo.appId), localTroopAppInfo);
-        localArrayList.add(Long.valueOf(localTroopAppInfo.appId));
-      }
-      localTroopInfoManager.a(this.a.a.troopUin, localArrayList);
-    } while (this.a.k);
+      localawej.h = ShortVideoUtils.a(localMessageForShortVideo, "mp4");
+      localawej.a(localMessageForShortVideo.istroop, 0);
+    }
   }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public void b(shp paramshp) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     shj
  * JD-Core Version:    0.7.0.1
  */

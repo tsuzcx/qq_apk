@@ -1,31 +1,19 @@
-import android.view.SurfaceView;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.mobileqq.video.IMediaPlayer.OnPlayStateListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.pb.PBStringField;
 
-public class xdy
-  implements IMediaPlayer.OnPlayStateListener
+public final class xdy
 {
-  public xdy(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  public PBStringField a;
+  public PBStringField b;
   
-  public void a(int paramInt)
+  public xdy(PBStringField paramPBStringField1, PBStringField paramPBStringField2)
   {
-    if (paramInt == 1) {
-      this.a.a.setVisibility(0);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoPreviewActivity", 2, "changePlayState, playState => " + this.a.a(paramInt));
-      }
-      return;
-      this.a.a.setVisibility(8);
-    }
+    this.a = paramPBStringField1;
+    this.b = paramPBStringField2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xdy
  * JD-Core Version:    0.7.0.1
  */

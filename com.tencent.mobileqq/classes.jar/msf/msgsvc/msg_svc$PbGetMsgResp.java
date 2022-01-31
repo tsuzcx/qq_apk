@@ -14,7 +14,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import msf.msgcomm.msg_comm.UinPairMsg;
 
 public final class msg_svc$PbGetMsgResp
-  extends MessageMicro
+  extends MessageMicro<PbGetMsgResp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field bind_uin = PBField.initUInt64(0L);
@@ -26,7 +26,7 @@ public final class msg_svc$PbGetMsgResp
   public final PBUInt32Field result = PBField.initUInt32(0);
   public final PBBytesField sync_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBEnumField sync_flag = PBField.initEnum(0);
-  public final PBRepeatMessageField uin_pair_msgs = PBField.initRepeatMessage(msg_comm.UinPairMsg.class);
+  public final PBRepeatMessageField<msg_comm.UinPairMsg> uin_pair_msgs = PBField.initRepeatMessage(msg_comm.UinPairMsg.class);
   
   static
   {

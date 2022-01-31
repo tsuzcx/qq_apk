@@ -1,27 +1,30 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.os.Build.VERSION;
+import android.widget.ImageView;
 
-public class tml
-  implements View.OnTouchListener
+class tml
+  extends AnimatorListenerAdapter
 {
-  public tml(PublicAccountListActivity paramPublicAccountListActivity) {}
+  tml(tmj paramtmj) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      this.a.a();
-      PublicAccountReportUtils.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573C", "0X800573C", 0, 0, "", "", "", "", false);
+    super.onAnimationEnd(paramAnimator);
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.a.a.setImageAlpha(255);
     }
-    return true;
+    for (;;)
+    {
+      this.a.a.setVisibility(8);
+      return;
+      this.a.a.setImageResource(2130849314);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tml
  * JD-Core Version:    0.7.0.1
  */

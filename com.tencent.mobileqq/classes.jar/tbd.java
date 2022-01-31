@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.activity.KPLProfileCardActivity;
-
 public class tbd
-  implements Runnable
+  extends slu
 {
-  public tbd(KPLProfileCardActivity paramKPLProfileCardActivity) {}
+  public final byte[] a;
   
-  public void run()
+  public tbd(byte[] paramArrayOfByte)
   {
-    KPLProfileCardActivity.a(this.a, this.a.a);
+    this.a = paramArrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tbd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/mu" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.pay.ui.common.APHead android:id="@id/es4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
+    <ScrollView android:id="@id/esc" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:layout_below="@id/es4">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/es4">
+            <RelativeLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:background="#ffffffff" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip">
+                <include layout="@layout/rn" />
+            </RelativeLayout>
+            <com.pay.ui.common.APEditText android:id="@id/esa" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <LinearLayout android:id="@id/esg" android:visibility="gone" style="@style/q7">
+                <EditText android:id="@id/esh" android:hint="@string/o5h" android:inputType="number" style="@style/qa" />
+                <ImageButton android:id="@id/esi" style="@style/midas_input_cell_button_clear" />
+                <Button android:id="@id/esj" android:visibility="gone" android:text="@string/o56" style="@style/q9" />
+                <LinearLayout android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/esk" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" style="@style/q_">
+                    <TextView android:textSize="14.0sp" android:id="@id/esl" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="60" style="@style/q_" />
+                    <TextView android:textSize="14.0sp" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/o4q" style="@style/q_" />
+                </LinearLayout>
+            </LinearLayout>
+            <Button android:id="@id/esd" android:layout_marginTop="30.0dip" android:text="@string/o5e" style="@style/oy" />
+            <TextView android:gravity="center" android:id="@id/ese" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="15.0dip" android:text="@string/o5b" style="@style/qv" />
+            <TextView android:id="@id/esf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="15.0dip" android:text="@string/o4x" android:lineSpacingMultiplier="1.2" style="@style/qv" />
+            <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/esb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="15.0dip">
+                <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/czq" />
+                <TextView android:gravity="center" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/o58" style="@style/qu" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/es6" android:padding="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="14.0sp" android:textColor="#ffbbbbbb" android:id="@id/es_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/o4n" android:lineSpacingMultiplier="1.2" />
+                <TextView android:textSize="14.0sp" android:textColor="#ffbbbbbb" android:id="@id/es7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/o57" android:singleLine="false" android:lineSpacingMultiplier="1.2" />
+                <TextView android:textSize="14.0sp" android:textColor="#ffbbbbbb" android:id="@id/es9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/o4l" android:singleLine="false" android:lineSpacingMultiplier="1.2" />
+                <TextView android:textSize="14.0sp" android:textColor="#ffbbbbbb" android:id="@id/es8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="@string/o5k" android:singleLine="false" android:lineSpacingMultiplier="1.2" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <com.tenpay.api.MyKeyboardWindow android:id="@id/es5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+</RelativeLayout>

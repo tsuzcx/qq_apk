@@ -1,22 +1,20 @@
-import dov.com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer;
-import dov.com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer.IMPlayerEndListener;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aozg
-  implements Runnable
+class aozg
+  implements View.OnClickListener
 {
-  public aozg(ImageViewVideoPlayer paramImageViewVideoPlayer) {}
+  aozg(aozd paramaozd) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.ax_();
-    }
-    this.a.setVisibility(8);
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aozg
  * JD-Core Version:    0.7.0.1
  */

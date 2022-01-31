@@ -1,63 +1,43 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Process;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.activity.QQMapActivity.MapRuntime;
-import com.tencent.mobileqq.util.CommonUtil;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.lang.ref.WeakReference;
 
 public class tpb
-  extends BroadcastReceiver
+  implements DialogInterface.OnDismissListener
 {
-  public tpb(QQMapActivity.MapRuntime paramMapRuntime) {}
+  private final WeakReference<VideoViewVideoHolder> jdField_a_of_type_JavaLangRefWeakReference;
+  private final boolean jdField_a_of_type_Boolean;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public tpb(VideoViewVideoHolder paramVideoViewVideoHolder, boolean paramBoolean)
   {
-    int j = 1;
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    for (;;)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramVideoViewVideoHolder);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    paramDialogInterface = (VideoViewVideoHolder)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramDialogInterface != null)
     {
-      return;
-      int i;
-      if (paramContext.equals("com.tencent.process.exit"))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQMapActivity", 2, "receive kill map process broadcast");
-        }
-        paramContext = paramIntent.getExtras().getStringArrayList("procNameList");
-        if ((!QQMapActivity.a(paramIntent.getExtras().getString("verify"), paramContext)) || (!CommonUtil.a(paramContext, MobileQQ.getContext()))) {
-          break label144;
-        }
-        i = j;
+      if ((paramDialogInterface.a()) && (!paramDialogInterface.a().isFinishing())) {
+        break label40;
       }
-      while (i != 0)
-      {
-        Process.killProcess(Process.myPid());
-        return;
-        i = j;
-        if (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED"))
-        {
-          i = j;
-          if (!paramContext.equals("mqq.intent.action.LOGOUT"))
-          {
-            i = j;
-            if (!paramContext.equals("mqq.intent.action.EXIT_" + MobileQQ.getMobileQQ().getPackageName())) {
-              label144:
-              i = 0;
-            }
-          }
-        }
-      }
+      urk.b("OnNewGuideDialogDismissListener", "activity token invalid, preventing from showing dialog");
     }
+    label40:
+    while (paramDialogInterface.e()) {
+      return;
+    }
+    paramDialogInterface.c(this.jdField_a_of_type_Boolean);
+    paramDialogInterface.d();
+    paramDialogInterface.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tpb
  * JD-Core Version:    0.7.0.1
  */

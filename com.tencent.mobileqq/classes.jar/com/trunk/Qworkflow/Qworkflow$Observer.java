@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Qworkflow$Observer
-  extends MessageMicro
+  extends MessageMicro<Observer>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "uint64_uin", "msg_observer_source" }, new Object[] { Long.valueOf(0L), null }, Observer.class);
   public Qworkflow.UserSource msg_observer_source = new Qworkflow.UserSource();

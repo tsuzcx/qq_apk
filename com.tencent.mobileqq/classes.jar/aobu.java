@@ -1,29 +1,17 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1.1;
 
 public class aobu
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public aobu(EditVideoDoodle paramEditVideoDoodle) {}
+  public aobu(QfileLocalFileAppTabView.1.1 param1) {}
   
-  public void run()
-  {
-    if (this.a.jdField_a_of_type_Int == 2) {
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.e();
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Int = 1;
-      return;
-      if (this.a.jdField_a_of_type_Int == 3) {
-        this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.s();
-      }
-    }
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aobu
  * JD-Core Version:    0.7.0.1
  */

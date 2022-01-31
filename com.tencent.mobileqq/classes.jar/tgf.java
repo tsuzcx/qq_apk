@@ -1,78 +1,42 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianRedDotInfo.RedPntInfoForReport;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouch;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
-import java.util.HashMap;
-import org.json.JSONObject;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public class tgf
-  implements Runnable
+final class tgf
+  implements begw
 {
-  public tgf(MainFragment paramMainFragment) {}
+  tgf(StoryVideoItem paramStoryVideoItem, begr parambegr) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
+    switch (paramInt)
+    {
+    default: 
+      paramView = "16384";
+      QQUserUIItem localQQUserUIItem = ((sqs)sqg.a(2)).b(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid);
+      if ((localQQUserUIItem != null) && (!TextUtils.isEmpty(localQQUserUIItem.qq))) {
+        new syc().a(localQQUserUIItem.qq, localQQUserUIItem.isFriend(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, paramView, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getVideoUrl());
+      }
+      break;
+    }
     for (;;)
     {
-      try
-      {
-        if ((MainFragment.a(this.a) != null) && (MainFragment.a(this.a).get("看点") != null))
-        {
-          BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = (BusinessInfoCheckUpdate.RedTypeInfo)((RedTouch)MainFragment.a(this.a).get("看点")).getTag(2131362416);
-          JSONObject localJSONObject = ReadInJoyUtils.a();
-          if (localRedTypeInfo == null)
-          {
-            i = 1;
-            if (i == 3)
-            {
-              localRedTypeInfo.red_content.get();
-              localJSONObject.put("tab_status", i);
-              localJSONObject.put("kandian_mode_new", VideoReporter.a());
-              if (i == 3) {
-                localJSONObject.put("reddot_num", localRedTypeInfo.red_content.get());
-              }
-              if (ReadInJoyUtils.f != 0) {
-                continue;
-              }
-              i = 0;
-              localJSONObject.put("button_state", i);
-              PublicAccountReportUtils.a(null, "CliOper", "", null, "0X80081C3", "0X80081C3", 0, 1, null, ReadInJoyUtils.a.c, ReadInJoyUtils.a.b, localJSONObject.toString(), false);
-            }
-          }
-          else
-          {
-            if (localRedTypeInfo.red_type.get() != 5) {
-              break label189;
-            }
-            i = 3;
-            continue;
-          }
-          continue;
-          i = 1;
-          continue;
-        }
-        else
-        {
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      label189:
-      int i = 2;
+      this.jdField_a_of_type_Begr.dismiss();
+      return;
+      paramView = "2";
+      break;
+      paramView = "1";
+      break;
+      paramView = "4";
+      break;
+      urk.d("Q.qqstory.player.PlayModeUtils", "report video error because evil uin is empty.");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tgf
  * JD-Core Version:    0.7.0.1
  */

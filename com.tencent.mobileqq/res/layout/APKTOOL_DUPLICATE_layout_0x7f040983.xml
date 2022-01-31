@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.AnimationView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a29e0" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <RelativeLayout android:layout_gravity="bottom|center|left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a29e1" android:paddingLeft="6.0dip" android:paddingRight="9.0dip" android:visibility="gone" android:layout_width="109.0dip" android:layout_height="19.0dip" android:layout_marginBottom="4.0dip">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a29e2" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginRight="4.5dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0219db" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-        <TextView android:textSize="12.0dip" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a29e3" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a29e2" android:layout_centerVertical="true" />
-    </RelativeLayout>
-</FrameLayout>

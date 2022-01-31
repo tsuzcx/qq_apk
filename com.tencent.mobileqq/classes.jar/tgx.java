@@ -1,34 +1,23 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.app.NearbyObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
 
-public class tgx
-  extends NearbyObserver
+class tgx
+  implements ViewPager.OnPageChangeListener
 {
-  public tgx(NearbyActivity paramNearbyActivity) {}
+  tgx(tgv paramtgv) {}
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.heart_beat", 2, "onNearbyHeartBeat:isSucc=" + paramBoolean + ", cmd=" + paramString + ", interval=" + paramLong);
-    }
-    if ("OidbSvc.0xafc_1".equals(paramString))
-    {
-      if (paramBoolean) {
-        this.a.n = paramLong;
-      }
-      if (!this.a.c)
-      {
-        this.a.b.removeMessages(this.a.d);
-        this.a.b.sendEmptyMessageDelayed(this.a.d, this.a.n);
-      }
-    }
+    this.a.a.setSelectedTab(paramInt, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tgx
  * JD-Core Version:    0.7.0.1
  */

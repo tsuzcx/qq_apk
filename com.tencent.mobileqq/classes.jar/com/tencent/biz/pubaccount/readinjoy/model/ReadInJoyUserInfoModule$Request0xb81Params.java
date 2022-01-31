@@ -1,22 +1,23 @@
 package com.tencent.biz.pubaccount.readinjoy.model;
 
 import java.util.List;
+import oqk;
 
 public class ReadInJoyUserInfoModule$Request0xb81Params
 {
   private int jdField_a_of_type_Int;
-  private List jdField_a_of_type_JavaUtilList;
+  private List<ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq> jdField_a_of_type_JavaUtilList;
   private int b;
   private int c;
   private int d;
   
-  private ReadInJoyUserInfoModule$Request0xb81Params(ReadInJoyUserInfoModule.Request0xb81Params.Builder paramBuilder)
+  private ReadInJoyUserInfoModule$Request0xb81Params(oqk paramoqk)
   {
-    this.jdField_a_of_type_Int = ReadInJoyUserInfoModule.Request0xb81Params.Builder.a(paramBuilder);
-    this.b = ReadInJoyUserInfoModule.Request0xb81Params.Builder.b(paramBuilder);
-    this.c = ReadInJoyUserInfoModule.Request0xb81Params.Builder.c(paramBuilder);
-    this.d = ReadInJoyUserInfoModule.Request0xb81Params.Builder.d(paramBuilder);
-    this.jdField_a_of_type_JavaUtilList = ReadInJoyUserInfoModule.Request0xb81Params.Builder.a(paramBuilder);
+    this.jdField_a_of_type_Int = oqk.a(paramoqk);
+    this.b = oqk.b(paramoqk);
+    this.c = oqk.c(paramoqk);
+    this.d = oqk.d(paramoqk);
+    this.jdField_a_of_type_JavaUtilList = oqk.a(paramoqk);
   }
   
   public String toString()

@@ -10,30 +10,42 @@ import java.util.Map;
 public final class operation_forward_req
   extends JceStruct
 {
-  static Map cache_busi_param;
-  static Map cache_photoids;
-  static ArrayList cache_srcImages;
-  static ArrayList cache_srcSubid = new ArrayList();
+  public static final String XCX_MAPEX_KEY_APPID = "xcxAppId";
+  public static final String XCX_MAPEX_KEY_FAKE_LINK = "xcxFakeLink";
+  public static final String XCX_MAPEX_KEY_PATH = "xcxPath";
+  public static final String XCX_MAPEX_KEY_SOURCE_TYPE = "xcxSourceType";
+  static Map<Integer, String> cache_busi_param;
+  static Map<String, ArrayList<String>> cache_photoids;
+  static share_tail_info cache_sharetailinfo = new share_tail_info();
+  static ArrayList<String> cache_srcImages;
+  static ArrayList<String> cache_srcSubid = new ArrayList();
+  static Map<String, String> cache_stored_extend_info;
+  static Map<String, String> cache_xcxMapEx;
   public int appid;
-  public Map busi_param;
+  public Map<Integer, String> busi_param;
   public String category = "";
+  public String ciphertext = "";
   public String dstAlbumId = "";
   public int dstAlbumType;
   public int iUrlInfoFrm;
   public int isverified;
   public int operatemask;
   public long ownUin;
-  public Map photoids;
+  public Map<String, ArrayList<String>> photoids;
   public String reason = "";
+  public share_tail_info sharetailinfo;
   public int source;
   public String srcAbstract = "";
   public String srcId = "";
-  public ArrayList srcImages;
+  public ArrayList<String> srcImages;
   public int srcPicNum;
-  public ArrayList srcSubid;
+  public ArrayList<String> srcSubid;
   public String srcTitle = "";
+  public Map<String, String> stored_extend_info;
   public int subid;
   public long uin;
+  public Map<String, String> xcxMapEx;
+  public int xcxZZType;
   
   static
   {
@@ -46,11 +58,15 @@ public final class operation_forward_req
     ArrayList localArrayList = new ArrayList();
     localArrayList.add("");
     cache_photoids.put("", localArrayList);
+    cache_xcxMapEx = new HashMap();
+    cache_xcxMapEx.put("", "");
+    cache_stored_extend_info = new HashMap();
+    cache_stored_extend_info.put("", "");
   }
   
   public operation_forward_req() {}
   
-  public operation_forward_req(int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString1, ArrayList paramArrayList1, String paramString2, String paramString3, String paramString4, ArrayList paramArrayList2, int paramInt3, int paramInt4, int paramInt5, String paramString5, int paramInt6, String paramString6, int paramInt7, Map paramMap1, Map paramMap2, int paramInt8)
+  public operation_forward_req(int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString1, ArrayList<String> paramArrayList1, String paramString2, String paramString3, String paramString4, ArrayList<String> paramArrayList2, int paramInt3, int paramInt4, int paramInt5, String paramString5, int paramInt6, String paramString6, int paramInt7, Map<Integer, String> paramMap, Map<String, ArrayList<String>> paramMap1, int paramInt8, String paramString7, int paramInt9, Map<String, String> paramMap2, Map<String, String> paramMap3, share_tail_info paramshare_tail_info)
   {
     this.appid = paramInt1;
     this.subid = paramInt2;
@@ -69,9 +85,14 @@ public final class operation_forward_req
     this.operatemask = paramInt6;
     this.dstAlbumId = paramString6;
     this.dstAlbumType = paramInt7;
-    this.busi_param = paramMap1;
-    this.photoids = paramMap2;
+    this.busi_param = paramMap;
+    this.photoids = paramMap1;
     this.iUrlInfoFrm = paramInt8;
+    this.ciphertext = paramString7;
+    this.xcxZZType = paramInt9;
+    this.xcxMapEx = paramMap2;
+    this.stored_extend_info = paramMap3;
+    this.sharetailinfo = paramshare_tail_info;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -96,6 +117,11 @@ public final class operation_forward_req
     this.busi_param = ((Map)paramJceInputStream.read(cache_busi_param, 17, false));
     this.photoids = ((Map)paramJceInputStream.read(cache_photoids, 18, false));
     this.iUrlInfoFrm = paramJceInputStream.read(this.iUrlInfoFrm, 19, false);
+    this.ciphertext = paramJceInputStream.readString(20, false);
+    this.xcxZZType = paramJceInputStream.read(this.xcxZZType, 21, false);
+    this.xcxMapEx = ((Map)paramJceInputStream.read(cache_xcxMapEx, 22, false));
+    this.stored_extend_info = ((Map)paramJceInputStream.read(cache_stored_extend_info, 23, false));
+    this.sharetailinfo = ((share_tail_info)paramJceInputStream.read(cache_sharetailinfo, 24, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -140,11 +166,24 @@ public final class operation_forward_req
       paramJceOutputStream.write(this.photoids, 18);
     }
     paramJceOutputStream.write(this.iUrlInfoFrm, 19);
+    if (this.ciphertext != null) {
+      paramJceOutputStream.write(this.ciphertext, 20);
+    }
+    paramJceOutputStream.write(this.xcxZZType, 21);
+    if (this.xcxMapEx != null) {
+      paramJceOutputStream.write(this.xcxMapEx, 22);
+    }
+    if (this.stored_extend_info != null) {
+      paramJceOutputStream.write(this.stored_extend_info, 23);
+    }
+    if (this.sharetailinfo != null) {
+      paramJceOutputStream.write(this.sharetailinfo, 24);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     NS_MOBILE_OPERATION.operation_forward_req
  * JD-Core Version:    0.7.0.1
  */

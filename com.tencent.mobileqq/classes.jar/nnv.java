@@ -1,17 +1,16 @@
-import android.graphics.drawable.AnimationDrawable;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHolder;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class nnv
-  implements Runnable
+class nnv
+  implements ViewFactory.FoundClickableViewListener
 {
-  public nnv(FeedsPlayModeBase paramFeedsPlayModeBase, AnimationDrawable paramAnimationDrawable, VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder) {}
+  nnv(nnu paramnnu, BaseData paramBaseData, Context paramContext) {}
   
-  public void run()
+  public void onFound(ViewBase paramViewBase)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.stop();
-    this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.c.setVisibility(8);
+    paramViewBase.setOnClickListener(new nnw(this));
   }
 }
 

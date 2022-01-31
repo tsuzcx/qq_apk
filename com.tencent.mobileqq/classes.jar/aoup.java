@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.shortvideo.gesture.GestureMgr;
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragmentAllWaite;
-
-public class aoup
-  implements Runnable
+class aoup
+  implements apca
 {
-  public aoup(CaptureQmcfSoDownloadFragmentAllWaite paramCaptureQmcfSoDownloadFragmentAllWaite) {}
+  aoup(aouo paramaouo) {}
   
-  public void run()
+  public void a()
   {
-    GestureMgr.a().b();
+    aoum.a(this.a.a);
+    if (this.a.a.a != null) {
+      this.a.a.a.d();
+    }
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoup
  * JD-Core Version:    0.7.0.1
  */

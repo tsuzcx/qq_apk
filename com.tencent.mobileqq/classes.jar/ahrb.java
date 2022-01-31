@@ -1,31 +1,45 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
-import com.tencent.mobileqq.richmedia.capture.view.FilterProviderView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class ahrb
-  extends BroadcastReceiver
+public class ahrb
+  extends atog
 {
-  private ahrb(FilterProviderView paramFilterProviderView) {}
+  public ahrb(PhoneContactTabView paramPhoneContactTabView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ("action_brocassreceiver_for_filter".equals(paramIntent.getAction()))
+    this.a.a.unRegistObserver(this);
+    switch (PhoneContactTabView.a(this.a).d())
     {
-      CaptureVideoFilterManager.a().b();
-      FilterProviderView.a(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("FilterProviderView", 2, "FilterProviderView FilterBroadcastReceiver size=" + this.a.a.size());
-      }
+    case 2: 
+    case 3: 
+    case 4: 
+    case 8: 
+    default: 
+      PhoneContactTabView.b(this.a);
+      return;
+    case 9: 
+      this.a.d();
+      return;
+    case 0: 
+    case 1: 
+    case 5: 
+    case 7: 
+      PhoneContactTabView.a(this.a);
+      return;
     }
+    if (PhoneContactTabView.a(this.a).a().lastUsedFlag == 2L)
+    {
+      this.a.d();
+      return;
+    }
+    PhoneContactTabView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahrb
  * JD-Core Version:    0.7.0.1
  */

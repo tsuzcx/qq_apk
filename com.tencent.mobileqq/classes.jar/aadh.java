@@ -1,39 +1,54 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.config.operation.QQOperationViopTipTask;
+import com.tencent.mobileqq.data.AppShareID;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public final class aadh
-  implements Runnable
+public class aadh
+  extends ajgf
 {
-  public aadh(QQAppInterface paramQQAppInterface, String paramString) {}
+  public aadh(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  protected void a(String paramString, int paramInt, ArrayList<QQOperationViopTipTask> paramArrayList)
   {
-    Object localObject2 = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
-    Object localObject1 = ((TroopManager)localObject2).a(this.jdField_a_of_type_JavaLangString);
-    String str;
-    if (localObject1 != null)
+    if (this.a.A()) {}
+    do
     {
-      ((TroopInfo)localObject1).wClickBAFTipCount += 1;
-      ((TroopManager)localObject2).b((TroopInfo)localObject1);
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      str = this.jdField_a_of_type_JavaLangString;
-      if (((TroopInfo)localObject1).wInsertBAFTipCount != 1) {
-        break label85;
-      }
-    }
-    label85:
-    for (localObject1 = "0";; localObject1 = "1")
-    {
-      ReportController.b((QQAppInterface)localObject2, "dc00899", "Grp_addFrd", "", "Grp_AIO", "greyTips_clk", 0, 0, str, (String)localObject1, "", "");
+      do
+      {
+        do
+        {
+          return;
+          if (QLog.isDevelopLevel()) {
+            QLog.d("QQOperateVoIP", 4, "on showTips, chatactivity upadte ui");
+          }
+          if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramString)) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == paramInt)) {
+            break;
+          }
+        } while (!QLog.isDevelopLevel());
+        QLog.d("QQOperateVoIP", 4, "on showTips, uin dosenot equal");
+        return;
+        if ((paramArrayList != null) && (paramArrayList.size() != 0)) {
+          break;
+        }
+      } while (!QLog.isDevelopLevel());
+      QLog.d("QQOperateVoIP", 4, "on showTips,tasklist is null");
       return;
+    } while (this.a.jdField_a_of_type_Aenu == null);
+    this.a.jdField_a_of_type_Aenu.a(paramArrayList);
+  }
+  
+  protected void a(boolean paramBoolean, AppShareID paramAppShareID)
+  {
+    if ((paramBoolean) && (this.a.jdField_a_of_type_Acka != null)) {
+      this.a.jdField_a_of_type_Acka.notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aadh
  * JD-Core Version:    0.7.0.1
  */

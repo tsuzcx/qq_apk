@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
 public class adqq
-  implements Runnable
+  implements PopupWindow.OnDismissListener
 {
-  public adqq(UniformDownloaderAppBabySdk paramUniformDownloaderAppBabySdk, String paramString) {}
+  public adqq(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public void run()
+  public void onDismiss()
   {
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloaderAppBabySdk, this.jdField_a_of_type_JavaLangString, 2);
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloaderAppBabySdk);
+    StructingMsgItemBuilder.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adqq
  * JD-Core Version:    0.7.0.1
  */

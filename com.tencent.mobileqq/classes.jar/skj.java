@@ -1,22 +1,47 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.Contacts;
-import com.tencent.mobileqq.observer.GameCenterObserver;
+import android.annotation.TargetApi;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.util.ArrayList;
+import java.util.List;
 
+@TargetApi(14)
 public class skj
-  extends GameCenterObserver
 {
-  public skj(Contacts paramContacts) {}
+  public volatile int a;
+  public long a;
+  public ErrorMessage a;
+  public List<ske> a;
+  public int b;
+  public int c;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public skj()
   {
-    if (Contacts.a(this.a)) {
-      Contacts.a(this.a);
-    }
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Int == 6) || (this.jdField_a_of_type_Int == 3);
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Int == 5;
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("BaseTaskInfo{");
+    localStringBuffer.append("status=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", retryTimes=").append(this.b);
+    localStringBuffer.append(", result=").append(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     skj
  * JD-Core Version:    0.7.0.1
  */

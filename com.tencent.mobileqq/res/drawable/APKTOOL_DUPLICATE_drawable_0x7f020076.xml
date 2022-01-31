@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<selector
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022017" android:state_activated="false" />
-    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022016" android:state_activated="false" />
-    <item android:state_pressed="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022019" android:state_activated="true" />
-    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022018" android:state_activated="true" />
-</selector>

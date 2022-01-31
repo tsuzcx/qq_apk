@@ -1,34 +1,35 @@
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.LocalVideoPusher.Condition;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.LocalVideoPushSegment;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.Aladdin;
+import com.tencent.aladdin.config.AladdinConfig;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.basic.Utils.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class ofk
-  implements LocalVideoPusher.Condition
 {
-  public ofk(LocalVideoPushSegment paramLocalVideoPushSegment) {}
-  
-  public boolean a()
+  public static void a()
   {
-    long l = ((Long)this.a.a.b("last_cancel_time", Long.valueOf(0L))).longValue();
-    try
+    if (a())
     {
-      String str = (String)this.a.a.b("localVideoScanInterval", "1440");
-      SLog.a("Q.qqstory.home.LocalVideoPushSegment", "localVideoScanInterval config=%s", str);
-      i = Integer.valueOf(str).intValue();
-      if (NetConnInfoCenter.getServerTimeMillis() - l < i * 60 * 1000) {
-        return false;
-      }
+      QLog.d("DynamicChannelUtils", 1, "dynamicChannelSwitch is on, prepare it.");
+      ThreadManager.getSubThreadHandler().postDelayed(new Utils.1(), 3000L);
     }
-    catch (Exception localException)
+  }
+  
+  public static boolean a()
+  {
+    Object localObject = Aladdin.getConfig(144);
+    if (localObject != null)
     {
-      for (;;)
-      {
-        int i = 1440;
-      }
+      localObject = ((AladdinConfig)localObject).getString("dc_switch", "0");
+      QLog.d("DynamicChannelUtils", 1, new Object[] { "dcSwitch = ", localObject });
     }
-    return true;
+    for (boolean bool = TextUtils.equals((CharSequence)localObject, "1");; bool = false)
+    {
+      QLog.d("DynamicChannelUtils", 1, new Object[] { "isDynamicChannelSwitchOn = ", Boolean.valueOf(bool) });
+      return bool;
+    }
   }
 }
 

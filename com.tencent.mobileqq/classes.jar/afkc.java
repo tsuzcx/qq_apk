@@ -1,25 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.widget.ActionSheet;
+import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryBaseFragment;
 
 public class afkc
-  implements View.OnClickListener
+  implements afmn
 {
-  public afkc(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  public afkc(ChatHistoryBaseFragment paramChatHistoryBaseFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    paramView = ActionSheet.a(this.a.a);
-    paramView.a(2131432537, 1);
-    paramView.c(2131433029);
-    paramView.a(new afkd(this, paramView));
-    paramView.show();
+    this.a.j();
+  }
+  
+  public void b()
+  {
+    if ((!(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity instanceof ChatHistoryActivity)) || (!((ChatHistoryActivity)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).c)) {
+      this.a.jdField_a_of_type_Afps.a();
+    }
+    this.a.c = true;
+    this.a.b(true);
+  }
+  
+  public void c()
+  {
+    this.a.jdField_a_of_type_Afps.b();
+    this.a.c = false;
+    this.a.b(false);
+    this.a.jdField_a_of_type_Afpf.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afkc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.ComicRich;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
 
-public final class acbp
-  implements Parcelable.Creator
+public class acbp
+  implements View.OnClickListener
 {
-  public IPSiteModel.ComicRich a(Parcel paramParcel)
-  {
-    IPSiteModel.ComicRich localComicRich = new IPSiteModel.ComicRich();
-    localComicRich.extCover = paramParcel.readString();
-    localComicRich.extName = paramParcel.readString();
-    localComicRich.extTitle = paramParcel.readString();
-    localComicRich.extUrl = paramParcel.readString();
-    return localComicRich;
-  }
+  public acbp(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public IPSiteModel.ComicRich[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new IPSiteModel.ComicRich[paramInt];
+    this.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acbp
  * JD-Core Version:    0.7.0.1
  */

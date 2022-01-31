@@ -1,20 +1,9 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-
-public class ande
-  implements Runnable
-{
-  public ande(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
-  
-  public void run()
-  {
-    RemoteHandleManager.a().a().e();
-  }
-}
+public abstract interface ande
+  extends andc, andg, andk
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ande
  * JD-Core Version:    0.7.0.1
  */

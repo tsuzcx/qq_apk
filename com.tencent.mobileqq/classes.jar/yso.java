@@ -1,24 +1,12 @@
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.ApolloResponseManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Map;
 
-class yso
-  implements Runnable
+public abstract interface yso
 {
-  yso(ysn paramysn, ApolloActionData paramApolloActionData) {}
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_Ysn.a.a == null) {
-      return;
-    }
-    ((ApolloManager)this.jdField_a_of_type_Ysn.a.a.getManager(152)).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData, 4);
-  }
+  public abstract boolean a(String paramString, long paramLong, Map<String, Object> paramMap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yso
  * JD-Core Version:    0.7.0.1
  */

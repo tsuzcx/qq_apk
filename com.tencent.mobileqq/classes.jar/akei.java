@@ -1,49 +1,58 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForTroopEffectPic;
-import com.tencent.mobileqq.pic.PicDownloadInfo;
-import com.tencent.mobileqq.pic.PicResult;
-import com.tencent.mobileqq.pic.UiCallBack.DownAdapter;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
-import com.tencent.mobileqq.trooppiceffects.TroopPicEffectsController;
+import android.content.Context;
+import android.content.res.Resources;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class akei
-  extends UiCallBack.DownAdapter
 {
-  public akei(TroopPicEffectsController paramTroopPicEffectsController, PicDownloadInfo paramPicDownloadInfo, TroopChatPie paramTroopChatPie, MessageForTroopEffectPic paramMessageForTroopEffectPic, boolean paramBoolean) {}
+  private Resources jdField_a_of_type_AndroidContentResResources;
+  private String jdField_a_of_type_JavaLangString;
+  private Resources b;
   
-  public void a(int paramInt, PicResult paramPicResult)
+  public akei(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopPicEffectsController", 2, "2g diy gif onDownload");
-    }
-    paramPicResult = new File(this.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.c());
-    AIOAnimationControlManager localAIOAnimationControlManager = (AIOAnimationControlManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.a.getManager(222);
-    if ((paramPicResult.exists()) && (localAIOAnimationControlManager != null))
-    {
-      localAIOAnimationControlManager.a = 1;
-      localAIOAnimationControlManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie);
-      localAIOAnimationControlManager.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopEffectPic, this.jdField_a_of_type_Boolean);
-      localAIOAnimationControlManager.g();
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("TroopPicEffectsController", 2, "[EffectPic] file not exist or isplaying.");
+    this.jdField_a_of_type_AndroidContentResResources = paramContext.getResources();
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  public int a(int paramInt)
   {
+    if ((this.jdField_a_of_type_AndroidContentResResources == null) || (this.b == null)) {}
+    String str1;
+    int i;
+    do
+    {
+      return paramInt;
+      str1 = this.jdField_a_of_type_AndroidContentResResources.getResourceEntryName(paramInt);
+      String str2 = this.jdField_a_of_type_AndroidContentResResources.getResourceTypeName(paramInt);
+      i = this.b.getIdentifier(str1, str2, this.jdField_a_of_type_JavaLangString);
+    } while (i <= 0);
     if (QLog.isColorLevel()) {
-      QLog.d("TroopPicEffectsController", 2, "2g diy gif onUpdateProgress");
+      QLog.d("MultiLanguageEngine", 2, new Object[] { "resourceName:", str1, " ,lanResID:", Integer.valueOf(i), " ,oldId:", Integer.valueOf(paramInt) });
     }
+    return i;
+  }
+  
+  public Resources a()
+  {
+    if (this.b == null) {
+      return this.jdField_a_of_type_AndroidContentResResources;
+    }
+    return this.b;
+  }
+  
+  public void a(Resources paramResources, String paramString)
+  {
+    this.b = paramResources;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public Resources b()
+  {
+    return this.jdField_a_of_type_AndroidContentResResources;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akei
  * JD-Core Version:    0.7.0.1
  */

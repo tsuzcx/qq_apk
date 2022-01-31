@@ -1,26 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SearchHistoryManager;
-import com.tencent.mobileqq.data.SearchHistory;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.MayKnowRecommend;
 
-public final class aibi
-  implements Runnable
+public class aibi
 {
-  public aibi(int paramInt, String paramString1, String paramString2, String paramString3, QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
-  {
-    SearchHistory localSearchHistory = new SearchHistory();
-    localSearchHistory.type = this.jdField_a_of_type_Int;
-    localSearchHistory.uin = this.jdField_a_of_type_JavaLangString;
-    localSearchHistory.troopUin = this.b;
-    localSearchHistory.displayName = this.c;
-    SearchHistoryManager localSearchHistoryManager = (SearchHistoryManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(54);
-    if (localSearchHistoryManager == null) {
-      return;
-    }
-    localSearchHistoryManager.a(localSearchHistory);
-    com.tencent.mobileqq.search.activity.UniteSearchActivity.b = true;
-  }
+  public int a = 1;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public MayKnowRecommend a;
+  public String a;
+  public boolean a;
+  public TextView b;
+  public String b;
+  public TextView c;
+  public TextView d;
 }
 
 

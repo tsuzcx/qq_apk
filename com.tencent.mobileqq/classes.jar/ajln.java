@@ -1,20 +1,39 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
+import mqq.app.AppRuntime;
 
 public class ajln
-  implements Runnable
+  extends ajjx
 {
-  public ajln(TroopFileDownloadMgr paramTroopFileDownloadMgr, long paramLong, TroopFileTransferManager.Item paramItem, Bundle paramBundle) {}
-  
-  public void run()
+  protected void a(String paramString)
   {
-    TroopFileDownloadMgr.b(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadTroopFileDownloadMgr, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, this.jdField_a_of_type_AndroidOsBundle);
+    GuardManager localGuardManager = this.a;
+    if ("com.tencent.mobileqq".equals(paramString)) {}
+    for (int i = 2;; i = 3)
+    {
+      localGuardManager.a(i, paramString);
+      return;
+    }
+  }
+  
+  protected void b()
+  {
+    this.a.a(6, "fake_p_msg");
+  }
+  
+  public void b(String paramString)
+  {
+    super.b(paramString);
+    this.a.c();
+    this.a.c(true);
+    BaseApplicationImpl.sApplication.getRuntime().onGuardEvent(4, ajjv.a().a, 0L);
+    CoreService.stopCoreService();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajln
  * JD-Core Version:    0.7.0.1
  */

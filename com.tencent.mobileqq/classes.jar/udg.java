@@ -1,53 +1,73 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.List;
-import tencent.im.oidb.cmd0x6f6.oidb_cmd0x6f6.GbarInfo;
-import tencent.im.oidb.cmd0x6f6.oidb_cmd0x6f6.RspBody;
-import tencent.im.oidb.cmd0x6f6.oidb_cmd0x6f6.RspInfo;
+import android.content.Context;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import java.lang.ref.WeakReference;
 
 public class udg
-  extends ProtoUtils.TroopProtocolObserver
+  implements udf
 {
-  public udg(TroopInfoActivity paramTroopInfoActivity) {}
+  private int jdField_a_of_type_Int;
+  private CommentLikeFeedItem jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+  private WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public udg(Context paramContext, CommentLikeFeedItem paramCommentLikeFeedItem, int paramInt, boolean paramBoolean)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
-    for (;;)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(CommentLikeFeedItem paramCommentLikeFeedItem)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeFeedItem;
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    urk.a("Q.qqstory.detail.SpannableStringUtils", "on nick click. unionId = %s.", paramString);
+    if ((paramInt == 1002) || (paramInt == 1003)) {}
+    Object localObject;
+    do
     {
       return;
-      try
-      {
-        paramBundle = new oidb_cmd0x6f6.RspBody();
-        paramBundle.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = paramBundle.rpt_msg_rsp_info.get();
-        if ((paramArrayOfByte != null) && (paramArrayOfByte.size() > 0))
-        {
-          paramArrayOfByte = (oidb_cmd0x6f6.RspInfo)paramArrayOfByte.get(0);
-          if ((paramArrayOfByte != null) && (paramArrayOfByte.uint32_result.get() == 0))
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId = paramArrayOfByte.stgbarinfo.uint32_bid.get();
-            this.a.c = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId;
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeName = paramArrayOfByte.stgbarinfo.str_name.get().toStringUtf8();
-            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
-            return;
-          }
-        }
+      localObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localObject != null) {
+        skt.a((Context)localObject, 12, paramString);
       }
-      catch (Exception paramArrayOfByte) {}
+    } while (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem == null);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      localObject = "clk_reply_nick";
+      paramString = "2";
+      if (!(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem instanceof VideoListFeedItem)) {
+        break label157;
+      }
+      paramString = (VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+      paramInt = urp.a(paramString);
+      if (!paramString.getOwner().isMe()) {
+        break label151;
+      }
+      paramString = "1";
+    }
+    for (;;)
+    {
+      urp.a("home_page", (String)localObject, paramInt, 0, new String[] { paramString, urp.a(this.jdField_a_of_type_Int), "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
+      return;
+      localObject = "clk_like_name";
+      break;
+      label151:
+      paramString = "2";
+      continue;
+      label157:
+      paramInt = 4;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     udg
  * JD-Core Version:    0.7.0.1
  */

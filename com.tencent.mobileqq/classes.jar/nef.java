@@ -1,37 +1,18 @@
-import com.tencent.biz.qqstory.base.preload.cachecleaner.MyVideoCleanStep;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.io.File;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.ChannelInfo;
 
-public class nef
-  implements Comparable
+public final class nef
+  implements Parcelable.Creator<VideoInfo.ChannelInfo>
 {
-  public long a;
-  public final File a;
-  
-  public nef(MyVideoCleanStep paramMyVideoCleanStep, File paramFile)
+  public VideoInfo.ChannelInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    paramMyVideoCleanStep = paramFile.getName();
-    try
-    {
-      this.jdField_a_of_type_Long = Long.parseLong(paramMyVideoCleanStep);
-      return;
-    }
-    catch (Exception paramFile)
-    {
-      SLog.d("Q.qqstory.cleaner:MyVideoCleanStep", "Parse %s error , %s", new Object[] { paramMyVideoCleanStep, paramFile.getMessage() });
-    }
+    return new VideoInfo.ChannelInfo(paramParcel);
   }
   
-  public int a(nef paramnef)
+  public VideoInfo.ChannelInfo[] a(int paramInt)
   {
-    if (this.jdField_a_of_type_Long < paramnef.jdField_a_of_type_Long) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_Long == paramnef.jdField_a_of_type_Long) {
-      return 0;
-    }
-    return 1;
+    return new VideoInfo.ChannelInfo[paramInt];
   }
 }
 

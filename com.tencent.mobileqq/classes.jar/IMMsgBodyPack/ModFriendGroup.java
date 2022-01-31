@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class ModFriendGroup
   extends JceStruct
 {
-  static ArrayList cache_vMsgFrdGroup;
-  public ArrayList vMsgFrdGroup;
+  static ArrayList<FriendGroup> cache_vMsgFrdGroup;
+  public ArrayList<FriendGroup> vMsgFrdGroup;
   
   public ModFriendGroup() {}
   
-  public ModFriendGroup(ArrayList paramArrayList)
+  public ModFriendGroup(ArrayList<FriendGroup> paramArrayList)
   {
     this.vMsgFrdGroup = paramArrayList;
   }

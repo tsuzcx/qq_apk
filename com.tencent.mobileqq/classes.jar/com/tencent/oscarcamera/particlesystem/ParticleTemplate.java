@@ -6,11 +6,15 @@ import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.PointF;
 import android.text.TextUtils;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
+import com.tencent.ttpic.util.GsonUtils;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
-import org.json.JSONObject;
+import java.util.Set;
 
 public class ParticleTemplate
 {
@@ -27,20 +31,20 @@ public class ParticleTemplate
   public static final String ATTR_POS_Z = String.format("%s", new Object[] { "positionZ" });
   public static final String ATTR_WIDTH;
   private static final String TAG = ParticleTemplate.class.getSimpleName();
-  String mColorA = "0";
-  String mColorB = "0";
-  String mColorG = "0";
-  String mColorR = "0";
-  double mEmitRate;
-  String mHeight = "0";
-  String mLife = "0";
-  int mMaxCount;
-  String mPosX = "0";
-  String mPosY = "0";
-  String mPosZ = "0";
+  private String mColorA = "0";
+  private String mColorB = "0";
+  private String mColorG = "0";
+  private String mColorR = "0";
+  private double mEmitRate;
+  private String mHeight = "0";
+  private String mLife = "0";
+  public int mMaxCount;
+  private String mPosX = "0";
+  private String mPosY = "0";
+  private String mPosZ = "0";
   public Sprite mSprite;
   private ParticleSystemEx mSystem;
-  String mWidth = "0";
+  private String mWidth = "0";
   
   static
   {
@@ -60,49 +64,57 @@ public class ParticleTemplate
     this.mSprite = new Sprite();
   }
   
-  private double doubleValue(JSONObject paramJSONObject, String paramString)
+  private double doubleValue(JsonObject paramJsonObject, String paramString)
   {
-    paramJSONObject = paramJSONObject.opt(paramString);
-    if ((paramJSONObject != null) && ((paramJSONObject instanceof Number))) {
-      return ((Number)paramJSONObject).doubleValue();
+    paramJsonObject = paramJsonObject.get(paramString);
+    if (((paramJsonObject instanceof JsonPrimitive)) && (((JsonPrimitive)paramJsonObject).isNumber())) {
+      return paramJsonObject.getAsNumber().doubleValue();
     }
     return 0.0D;
   }
   
-  static ParticleTemplate fromJson(ParticleSystemEx paramParticleSystemEx, JSONObject paramJSONObject, String paramString)
+  static ParticleTemplate fromJson(ParticleSystemEx paramParticleSystemEx, JsonObject paramJsonObject, String paramString)
   {
-    ParticleTemplate localParticleTemplate = new ParticleTemplate(paramParticleSystemEx);
+    paramParticleSystemEx = new ParticleTemplate(paramParticleSystemEx);
     for (;;)
     {
-      Object localObject;
+      String str;
+      JsonElement localJsonElement;
       try
       {
-        Iterator localIterator = paramJSONObject.keys();
-        paramParticleSystemEx = localParticleTemplate;
-        if (localIterator.hasNext())
-        {
-          paramParticleSystemEx = (String)localIterator.next();
-          localObject = paramJSONObject.get(paramParticleSystemEx);
-          if (((localObject instanceof Number)) || ((localObject instanceof String))) {
-            initAttr(localParticleTemplate, paramParticleSystemEx, localObject);
-          }
+        Iterator localIterator = paramJsonObject.keySet().iterator();
+        if (!localIterator.hasNext()) {
+          break;
         }
-        else
+        str = (String)localIterator.next();
+        localJsonElement = paramJsonObject.get(str);
+        if (!(localJsonElement instanceof JsonPrimitive)) {
+          break label112;
+        }
+        if (((JsonPrimitive)localJsonElement).isNumber())
         {
-          return paramParticleSystemEx;
+          initAttr(paramParticleSystemEx, str, localJsonElement.getAsNumber());
+          continue;
+        }
+        if (!((JsonPrimitive)localJsonElement).isString()) {
+          continue;
         }
       }
       catch (Exception paramParticleSystemEx)
       {
         paramParticleSystemEx.printStackTrace();
-        paramParticleSystemEx = null;
+        return null;
       }
-      if (((localObject instanceof JSONObject)) && (TextUtils.equals(paramParticleSystemEx, "sprite"))) {
-        localParticleTemplate.initSprite((JSONObject)localObject, paramString);
-      } else if (((localObject instanceof JSONObject)) && (TextUtils.equals(paramParticleSystemEx, "audio"))) {
-        localParticleTemplate.mSprite.audioPath = ((JSONObject)localObject).getString("path");
+      initAttr(paramParticleSystemEx, str, localJsonElement.getAsString());
+      continue;
+      label112:
+      if (((localJsonElement instanceof JsonObject)) && (TextUtils.equals(str, "sprite"))) {
+        paramParticleSystemEx.initSprite((JsonObject)localJsonElement, paramString);
+      } else if (((localJsonElement instanceof JsonObject)) && (TextUtils.equals(str, "audio"))) {
+        paramParticleSystemEx.mSprite.audioPath = GsonUtils.getStringUnsafe((JsonObject)localJsonElement, "path");
       }
     }
+    return paramParticleSystemEx;
   }
   
   private static void initAttr(ParticleTemplate paramParticleTemplate, String paramString, Object paramObject)
@@ -197,35 +209,35 @@ public class ParticleTemplate
     paramParticleTemplate.mPosZ = str;
   }
   
-  private void initSprite(JSONObject paramJSONObject, String paramString)
+  private void initSprite(JsonObject paramJsonObject, String paramString)
   {
-    this.mSprite.path = paramJSONObject.optString("path");
-    Object localObject2 = paramString + File.separator + this.mSprite.path;
+    Object localObject = null;
+    InputStream localInputStream = null;
+    this.mSprite.path = GsonUtils.optString(paramJsonObject, "path");
+    String str = paramString + File.separator + this.mSprite.path;
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     localOptions.inJustDecodeBounds = true;
-    if (((String)localObject2).startsWith("/")) {
-      BitmapFactory.decodeFile((String)localObject2, localOptions);
+    if (str.startsWith("/")) {
+      BitmapFactory.decodeFile(str, localOptions);
     }
-    Object localObject1;
     for (;;)
     {
       if ((localOptions.outWidth != 0) && (localOptions.outHeight != 0)) {
-        break label213;
+        break label218;
       }
       throw new RuntimeException("tex outWith or outHeight is 0");
       AssetManager localAssetManager = this.mSystem.mContext.getAssets();
-      localObject1 = null;
-      paramString = null;
+      paramString = localInputStream;
       try
       {
-        localObject2 = localAssetManager.open((String)localObject2);
-        paramString = (String)localObject2;
-        localObject1 = localObject2;
-        BitmapFactory.decodeStream((InputStream)localObject2, null, localOptions);
-        if (localObject2 != null) {
+        localInputStream = localAssetManager.open(str);
+        paramString = localInputStream;
+        localObject = localInputStream;
+        BitmapFactory.decodeStream(localInputStream, null, localOptions);
+        if (localInputStream != null) {
           try
           {
-            ((InputStream)localObject2).close();
+            localInputStream.close();
           }
           catch (IOException paramString)
           {
@@ -235,7 +247,7 @@ public class ParticleTemplate
       }
       catch (IOException localIOException)
       {
-        localObject1 = paramString;
+        localObject = paramString;
         localIOException.printStackTrace();
         if (paramString != null) {
           try
@@ -250,13 +262,13 @@ public class ParticleTemplate
       }
       finally
       {
-        if (localObject1 == null) {}
+        if (localObject == null) {}
       }
     }
     try
     {
-      ((InputStream)localObject1).close();
-      throw paramJSONObject;
+      ((InputStream)localObject).close();
+      throw paramJsonObject;
     }
     catch (IOException paramString)
     {
@@ -265,14 +277,14 @@ public class ParticleTemplate
         paramString.printStackTrace();
       }
     }
-    label213:
-    this.mSprite.frameCount = ((int)doubleValue(paramJSONObject, "frameCount"));
-    this.mSprite.width = ((int)doubleValue(paramJSONObject, "width"));
-    this.mSprite.height = ((int)doubleValue(paramJSONObject, "height"));
-    this.mSprite.blendMode = ((int)doubleValue(paramJSONObject, "blendMode"));
-    this.mSprite.animated = ((int)doubleValue(paramJSONObject, "animated"));
-    this.mSprite.looped = ((int)doubleValue(paramJSONObject, "looped"));
-    this.mSprite.frameDuration = doubleValue(paramJSONObject, "frameDuration");
+    label218:
+    this.mSprite.frameCount = ((int)doubleValue(paramJsonObject, "frameCount"));
+    this.mSprite.width = ((int)doubleValue(paramJsonObject, "width"));
+    this.mSprite.height = ((int)doubleValue(paramJsonObject, "height"));
+    this.mSprite.blendMode = ((int)doubleValue(paramJsonObject, "blendMode"));
+    this.mSprite.animated = ((int)doubleValue(paramJsonObject, "animated"));
+    this.mSprite.looped = ((int)doubleValue(paramJsonObject, "looped"));
+    this.mSprite.frameDuration = doubleValue(paramJsonObject, "frameDuration");
     preCalTexCoords(this.mSprite, localOptions.outWidth, localOptions.outHeight, this.mSprite.width, this.mSprite.height);
   }
   
@@ -283,62 +295,62 @@ public class ParticleTemplate
     float f1 = paramInt3 * 1.0F / paramInt1;
     float f2 = paramInt4 * 1.0F / paramInt2;
     paramSprite.texCoords = new float[i * j * 12];
+    paramInt3 = 0;
     paramInt1 = 0;
-    paramInt2 = 0;
-    while (paramInt2 < i)
+    while (paramInt1 < i)
     {
-      paramInt3 = 0;
-      while (paramInt3 < j)
+      paramInt2 = 0;
+      while (paramInt2 < j)
       {
-        PointF localPointF = new PointF(paramInt3 * f1, paramInt2 * f2);
+        PointF localPointF = new PointF(paramInt2 * f1, paramInt1 * f2);
         Object localObject1 = new PointF(localPointF.x, localPointF.y + f2);
         Object localObject2 = new PointF(localPointF.x + f1, localPointF.y);
         Object localObject3 = new PointF(((PointF)localObject2).x, localPointF.y + f2);
         float[] arrayOfFloat = paramSprite.texCoords;
-        paramInt4 = paramInt1 + 1;
-        arrayOfFloat[paramInt1] = ((PointF)localObject2).x;
+        paramInt4 = paramInt3 + 1;
+        arrayOfFloat[paramInt3] = ((PointF)localObject2).x;
         arrayOfFloat = paramSprite.texCoords;
-        paramInt1 = paramInt4 + 1;
+        paramInt3 = paramInt4 + 1;
         arrayOfFloat[paramInt4] = ((PointF)localObject2).y;
         arrayOfFloat = paramSprite.texCoords;
-        paramInt4 = paramInt1 + 1;
-        arrayOfFloat[paramInt1] = ((PointF)localObject3).x;
+        paramInt4 = paramInt3 + 1;
+        arrayOfFloat[paramInt3] = ((PointF)localObject3).x;
         arrayOfFloat = paramSprite.texCoords;
-        paramInt1 = paramInt4 + 1;
+        paramInt3 = paramInt4 + 1;
         arrayOfFloat[paramInt4] = ((PointF)localObject3).y;
         localObject3 = paramSprite.texCoords;
-        paramInt4 = paramInt1 + 1;
-        localObject3[paramInt1] = ((PointF)localObject1).x;
+        paramInt4 = paramInt3 + 1;
+        localObject3[paramInt3] = ((PointF)localObject1).x;
         localObject3 = paramSprite.texCoords;
-        paramInt1 = paramInt4 + 1;
+        paramInt3 = paramInt4 + 1;
         localObject3[paramInt4] = ((PointF)localObject1).y;
         localObject3 = paramSprite.texCoords;
-        paramInt4 = paramInt1 + 1;
-        localObject3[paramInt1] = ((PointF)localObject2).x;
+        paramInt4 = paramInt3 + 1;
+        localObject3[paramInt3] = ((PointF)localObject2).x;
         localObject3 = paramSprite.texCoords;
-        paramInt1 = paramInt4 + 1;
+        paramInt3 = paramInt4 + 1;
         localObject3[paramInt4] = ((PointF)localObject2).y;
         localObject2 = paramSprite.texCoords;
-        paramInt4 = paramInt1 + 1;
-        localObject2[paramInt1] = ((PointF)localObject1).x;
+        paramInt4 = paramInt3 + 1;
+        localObject2[paramInt3] = ((PointF)localObject1).x;
         localObject2 = paramSprite.texCoords;
-        paramInt1 = paramInt4 + 1;
+        paramInt3 = paramInt4 + 1;
         localObject2[paramInt4] = ((PointF)localObject1).y;
         localObject1 = paramSprite.texCoords;
-        paramInt4 = paramInt1 + 1;
-        localObject1[paramInt1] = localPointF.x;
+        paramInt4 = paramInt3 + 1;
+        localObject1[paramInt3] = localPointF.x;
         localObject1 = paramSprite.texCoords;
-        paramInt1 = paramInt4 + 1;
+        paramInt3 = paramInt4 + 1;
         localObject1[paramInt4] = localPointF.y;
-        paramInt3 += 1;
+        paramInt2 += 1;
       }
-      paramInt2 += 1;
+      paramInt1 += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oscarcamera.particlesystem.ParticleTemplate
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.structmsg;
 
-import aimd;
-import aimf;
-import aimg;
-import aimh;
+import aciy;
+import acmv;
+import ajjy;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -17,21 +16,26 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import arzq;
+import awbk;
+import awqx;
+import awuk;
+import awul;
+import awuw;
+import awux;
+import awuy;
+import awwc;
+import awwf;
+import axoa;
+import axwd;
+import baak;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.mobileqq.music.QQPlayerService.QQPlayerCallback;
 import com.tencent.mobileqq.music.SongInfo;
-import com.tencent.mobileqq.service.message.MessageUtils;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.transfile.AbsDownloader;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import com.tencent.mobileqq.utils.AppShareIDUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
@@ -39,22 +43,23 @@ import java.io.ObjectInput;
 import java.io.ObjectOutput;
 import java.lang.ref.WeakReference;
 import java.util.Date;
+import rtr;
 
 public class StructMsgForAudioShare
   extends AbsShareMsg
-  implements QQPlayerService.QQPlayerCallback
+  implements arzq
 {
-  private static View.OnClickListener a = new aimd();
-  private WeakReference mCoverImage;
+  private static View.OnClickListener a = new awux();
+  private WeakReference<URLImageView> mCoverImage;
   private boolean mIsShowCommentLayout;
-  private View.OnClickListener musicShareCoverClikListener = new aimf(this);
+  private View.OnClickListener musicShareCoverClikListener = new awuy(this);
   
-  StructMsgForAudioShare()
+  public StructMsgForAudioShare()
   {
     this.mMsgServiceID = 2;
   }
   
-  StructMsgForAudioShare(Bundle paramBundle)
+  public StructMsgForAudioShare(Bundle paramBundle)
   {
     super(paramBundle);
     this.mContentSrc = paramBundle.getString("audio_url");
@@ -63,9 +68,9 @@ public class StructMsgForAudioShare
     this.mMsgAction = "web";
   }
   
-  StructMsgForAudioShare(StructMsgNode paramStructMsgNode)
+  public StructMsgForAudioShare(awwc paramawwc)
   {
-    super(paramStructMsgNode);
+    super(paramawwc);
     this.mMsgServiceID = 2;
   }
   
@@ -77,11 +82,11 @@ public class StructMsgForAudioShare
     localStructMsgForAudioShare.mContentCover = "http://url.cn/R3i1JD";
     localStructMsgForAudioShare.mContentLayout = 2;
     localStructMsgForAudioShare.mContentSrc = "http://url.cn/JpkdzT";
-    localStructMsgForAudioShare.mContentSummary = "张惠妹";
-    localStructMsgForAudioShare.mContentTitle = ("记得" + new Date());
+    localStructMsgForAudioShare.mContentSummary = ajjy.a(2131648810);
+    localStructMsgForAudioShare.mContentTitle = (ajjy.a(2131648813) + new Date());
     localStructMsgForAudioShare.mMsgUrl = "http://y.qq.com/i/song.html?songid=625023&source=qq";
     localStructMsgForAudioShare.mSourceName = "QQ音乐";
-    localStructMsgForAudioShare.mMsgBrief = "QQ音乐 的分享";
+    localStructMsgForAudioShare.mMsgBrief = ajjy.a(2131648822);
     localStructMsgForAudioShare.mMsgAction = "web";
     localStructMsgForAudioShare.mMsgActionData = "y.qq.com";
     localStructMsgForAudioShare.mMsg_A_ActionData = "com.tencent.qqmusic";
@@ -100,24 +105,25 @@ public class StructMsgForAudioShare
     if ("web".equals(paramStructMsgForAudioShare.mMsgAction))
     {
       Intent localIntent = new Intent(paramContext, QQBrowserDelegationActivity.class);
+      localIntent.putExtra("big_brother_source_key", "biz_src_jc_aio");
       localIntent.putExtra("key_isReadModeEnabled", true);
       localIntent.putExtra("url", paramStructMsgForAudioShare.mMsgUrl);
       localIntent.putExtra("param_force_internal_browser", true);
       localIntent.putExtra("isAppShare", true);
-      localIntent.putExtra("appShareID", AppShareIDUtil.a(paramStructMsgForAudioShare.mSourceAppid));
+      localIntent.putExtra("appShareID", baak.a(paramStructMsgForAudioShare.mSourceAppid));
       paramContext.sendBroadcast(new Intent("qqplayer_exit_action"));
-      PublicAccountUtil.a(paramStructMsgForAudioShare.message, localIntent, paramStructMsgForAudioShare.mMsgUrl);
+      rtr.a(paramStructMsgForAudioShare.message, localIntent, paramStructMsgForAudioShare.mMsgUrl);
       paramContext.startActivity(localIntent);
-      ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, paramStructMsgForAudioShare.mMsgUrl, "", "", "");
+      awqx.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, paramStructMsgForAudioShare.mMsgUrl, "", "", "");
     }
     for (int i = 1;; i = 0)
     {
       if (i != 0) {}
       for (i = j;; i = 0)
       {
-        ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", paramStructMsgForAudioShare.uin, "0X80055C7", "0X80055C7", 0, i, "" + paramStructMsgForAudioShare.msgId, paramStructMsgForAudioShare.templateIDForPortal, "", paramStructMsgForAudioShare.mMsgUrl);
-        paramContext = new StringBuilder().append("MSGID=").append(Long.toString(paramStructMsgForAudioShare.msgId)).append(";TEPLATEID=").append(paramStructMsgForAudioShare.templateIDForPortal).append(";ARTICALID=").append("").append(";REFERRER=").append(AbsStructMsgElement.a(paramStructMsgForAudioShare.mMsgUrl));
-        ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", paramStructMsgForAudioShare.uin, "0X8005D49", "0X8005D49", 0, i, paramContext.toString(), "", "", "");
+        awqx.b(null, "P_CliOper", "Pb_account_lifeservice", paramStructMsgForAudioShare.uin, "0X80055C7", "0X80055C7", 0, i, "" + paramStructMsgForAudioShare.msgId, paramStructMsgForAudioShare.templateIDForPortal, "", paramStructMsgForAudioShare.mMsgUrl);
+        paramContext = new StringBuilder().append("MSGID=").append(Long.toString(paramStructMsgForAudioShare.msgId)).append(";TEPLATEID=").append(paramStructMsgForAudioShare.templateIDForPortal).append(";ARTICALID=").append("").append(";REFERRER=").append(awul.a(paramStructMsgForAudioShare.mMsgUrl));
+        awqx.b(null, "P_CliOper", "Pb_account_lifeservice", paramStructMsgForAudioShare.uin, "0X8005D49", "0X8005D49", 0, i, paramContext.toString(), "", "", "");
         return;
       }
     }
@@ -136,9 +142,9 @@ public class StructMsgForAudioShare
     String str1;
     if (paramView != null)
     {
-      localImageView = (ImageView)paramView.findViewById(2131361925);
-      localObject = (TextView)paramView.findViewById(2131361926);
-      localTextView = (TextView)paramView.findViewById(2131361927);
+      localImageView = (ImageView)paramView.findViewById(2131302327);
+      localObject = (TextView)paramView.findViewById(2131312553);
+      localTextView = (TextView)paramView.findViewById(2131312537);
       str1 = this.mContentCover;
       String str2 = this.mContentTitle;
       String str3 = this.mContentSummary;
@@ -159,14 +165,14 @@ public class StructMsgForAudioShare
     for (int i = 3;; i = 2)
     {
       ((TextView)localObject).setMaxLines(i);
-      localObject = paramContext.getResources().getDrawable(2130846184);
+      localObject = paramContext.getResources().getDrawable(2130849119);
       localImageView.setBackgroundDrawable(null);
       if (!TextUtils.isEmpty(str1)) {
         break label179;
       }
       localImageView.setImageDrawable((Drawable)localObject);
       return paramView;
-      paramView = LayoutInflater.from(paramContext).inflate(2130971621, null);
+      paramView = LayoutInflater.from(paramContext).inflate(2131496853, null);
       break;
       ((TextView)localObject).setVisibility(8);
       localTextView.setMaxLines(4);
@@ -186,75 +192,64 @@ public class StructMsgForAudioShare
     return QQPlayerService.a(1, String.valueOf(this.uniseq));
   }
   
-  public View getView(Context paramContext, View paramView, OnLongClickAndTouchListener paramOnLongClickAndTouchListener, Bundle paramBundle)
+  public View getView(Context paramContext, View paramView, acmv paramacmv, Bundle paramBundle)
   {
     if (this.mMsgException)
     {
-      paramContext = getVersionExceptionView(paramContext, paramView, paramOnLongClickAndTouchListener, paramBundle);
-      paramContext.setId(2131361855);
-      paramContext.setTag(2131361855, this);
+      paramContext = getVersionExceptionView(paramContext, paramView, paramacmv, paramBundle);
+      paramContext.setId(2131310787);
+      paramContext.setTag(2131310787, this);
       return paramContext;
     }
-    this.mIsShowCommentLayout = paramBundle.getBoolean("isShowCommentLayout", false);
     paramBundle = paramContext.getResources();
-    paramView = LayoutInflater.from(paramContext).inflate(2130971618, null);
-    paramOnLongClickAndTouchListener = (URLImageView)paramView.findViewById(2131361925);
-    Object localObject1 = paramView.findViewById(2131368332);
+    paramView = LayoutInflater.from(paramContext).inflate(2131496850, null);
+    paramacmv = (URLImageView)paramView.findViewById(2131302327);
+    this.mCoverImage = new WeakReference(paramacmv);
+    Object localObject1 = (TextView)paramView.findViewById(2131312553);
+    Object localObject2 = (TextView)paramView.findViewById(2131312537);
+    ((TextView)localObject1).setText(this.mContentTitle);
+    ((TextView)localObject2).setText(this.mContentSummary);
     int i;
-    Object localObject2;
-    if (this.mIsShowCommentLayout)
+    if (!TextUtils.isEmpty(this.mContentTitle))
     {
-      ((View)localObject1).setVisibility(0);
-      i = AIOUtils.a(2.0F, paramBundle);
-      paramView.setPadding(paramView.getPaddingLeft(), paramView.getPaddingTop(), paramView.getPaddingRight(), i);
-      this.mCoverImage = new WeakReference(paramOnLongClickAndTouchListener);
-      localObject1 = (TextView)paramView.findViewById(2131361926);
-      localObject2 = (TextView)paramView.findViewById(2131361927);
-      ((TextView)localObject1).setText(this.mContentTitle);
-      ((TextView)localObject2).setText(this.mContentSummary);
-      if (TextUtils.isEmpty(this.mContentTitle)) {
-        break label399;
-      }
       ((TextView)localObject2).setMaxLines(2);
       ((TextView)localObject1).setVisibility(0);
-      label199:
       if (!TextUtils.isEmpty(this.mContentSummary)) {
-        break label415;
+        break label344;
       }
       i = 3;
-      label212:
+      label151:
       ((TextView)localObject1).setMaxLines(i);
-      paramOnLongClickAndTouchListener.setVisibility(0);
+      paramacmv.setVisibility(0);
       if (!QQPlayerService.a(this)) {
-        break label421;
+        break label350;
       }
-      paramOnLongClickAndTouchListener.setImageResource(2130842780);
-      paramOnLongClickAndTouchListener.setContentDescription(paramBundle.getString(2131437039));
-      label250:
+      paramacmv.setImageResource(2130844499);
+      paramacmv.setContentDescription(paramBundle.getString(2131624714));
+      label189:
       if (TextUtils.isEmpty(this.mContentCover)) {
-        break label489;
+        break label418;
       }
       localObject1 = this.mContentCover;
-      localObject2 = paramBundle.getDrawable(2130846184);
+      localObject2 = paramBundle.getDrawable(2130849119);
     }
     for (;;)
     {
       try
       {
-        i = AIOUtils.a(140.0F, paramBundle);
+        i = aciy.a(70.0F, paramBundle);
         paramBundle = URLDrawable.getDrawable((String)localObject1, i, i, (Drawable)localObject2, (Drawable)localObject2);
-        if (AbsDownloader.a((String)localObject1)) {
-          break label515;
+        if (axoa.b((String)localObject1)) {
+          break label444;
         }
-        if (URLDrawableHelper.a(paramContext)) {
+        if (axwd.a(paramContext)) {
           continue;
         }
       }
       catch (Exception paramContext)
       {
-        label399:
-        label415:
-        label421:
+        label344:
+        label350:
         if (!QLog.isColorLevel()) {
           continue;
         }
@@ -262,37 +257,35 @@ public class StructMsgForAudioShare
         continue;
       }
       paramBundle.setAutoDownload(bool);
-      paramOnLongClickAndTouchListener.setBackgroundDrawable(paramBundle);
+      paramacmv.setBackgroundDrawable(paramBundle);
       paramContext = paramView.getLayoutParams();
       if (paramContext == null)
       {
-        paramContext = new RelativeLayout.LayoutParams(BaseChatItemLayout.e, -2);
+        paramContext = new RelativeLayout.LayoutParams(BaseChatItemLayout.A, -2);
         paramView.setLayoutParams(paramContext);
-        paramOnLongClickAndTouchListener.setTag(this);
-        paramOnLongClickAndTouchListener.setOnClickListener(this.musicShareCoverClikListener);
-        paramView.setId(2131361855);
-        paramView.setTag(2131361855, this);
+        paramacmv.setTag(this);
+        paramacmv.setOnClickListener(this.musicShareCoverClikListener);
+        paramView.setId(2131310787);
+        paramView.setTag(2131310787, this);
         return paramView;
-        ((View)localObject1).setVisibility(8);
-        break;
         ((TextView)localObject1).setVisibility(8);
         ((TextView)localObject2).setMaxLines(4);
-        break label199;
+        break;
         i = 2;
-        break label212;
-        paramOnLongClickAndTouchListener.setImageResource(2130842779);
-        paramOnLongClickAndTouchListener.setContentDescription(paramBundle.getString(2131437038));
-        break label250;
+        break label151;
+        paramacmv.setImageResource(2130844498);
+        paramacmv.setContentDescription(paramBundle.getString(2131624712));
+        break label189;
         bool = false;
         continue;
-        label489:
-        paramOnLongClickAndTouchListener.setBackgroundResource(2130846184);
+        label418:
+        paramacmv.setBackgroundResource(2130849119);
         continue;
       }
-      paramContext.width = BaseChatItemLayout.e;
+      paramContext.width = BaseChatItemLayout.A;
       paramContext.height = -2;
       continue;
-      label515:
+      label444:
       boolean bool = true;
     }
   }
@@ -311,37 +304,37 @@ public class StructMsgForAudioShare
     Resources localResources = localURLImageView.getContext().getResources();
     if ((paramInt == 2) || (paramInt == 1))
     {
-      localURLImageView.post(new aimg(this, localURLImageView));
-      localURLImageView.setContentDescription(localResources.getString(2131437039));
+      localURLImageView.post(new StructMsgForAudioShare.3(this, localURLImageView));
+      localURLImageView.setContentDescription(localResources.getString(2131624714));
       return;
     }
-    localURLImageView.post(new aimh(this, localURLImageView));
-    localURLImageView.setContentDescription(localResources.getString(2131437038));
+    localURLImageView.post(new StructMsgForAudioShare.4(this, localURLImageView));
+    localURLImageView.setContentDescription(localResources.getString(2131624712));
   }
   
-  protected boolean parseContentNode(StructMsgNode paramStructMsgNode)
+  protected boolean parseContentNode(awwc paramawwc)
   {
-    if (paramStructMsgNode == null) {}
+    if (paramawwc == null) {}
     do
     {
       do
       {
         return true;
-        this.mContentLayout = StructMsgUtils.a(paramStructMsgNode.a("layout"));
-      } while ((paramStructMsgNode == null) || (paramStructMsgNode.a() < 3));
-      StructMsgNode localStructMsgNode = paramStructMsgNode.a(0);
-      if (localStructMsgNode != null)
+        this.mContentLayout = awwf.a(paramawwc.a("layout"));
+      } while ((paramawwc == null) || (paramawwc.a() < 3));
+      awwc localawwc = paramawwc.a(0);
+      if (localawwc != null)
       {
-        this.mContentCover = localStructMsgNode.a("cover");
-        this.mContentSrc = localStructMsgNode.a("src");
+        this.mContentCover = localawwc.a("cover");
+        this.mContentSrc = localawwc.a("src");
       }
-      localStructMsgNode = paramStructMsgNode.a(1);
-      if (localStructMsgNode != null) {
-        this.mContentTitle = MessageUtils.a(StructMsgFactory.a(localStructMsgNode), false);
+      localawwc = paramawwc.a(1);
+      if (localawwc != null) {
+        this.mContentTitle = awbk.a(awuw.a(localawwc), false);
       }
-      paramStructMsgNode = paramStructMsgNode.a(2);
-    } while (paramStructMsgNode == null);
-    this.mContentSummary = MessageUtils.a(StructMsgFactory.a(paramStructMsgNode), false);
+      paramawwc = paramawwc.a(2);
+    } while (paramawwc == null);
+    this.mContentSummary = awbk.a(awuw.a(paramawwc), false);
     return true;
   }
   
@@ -446,31 +439,39 @@ public class StructMsgForAudioShare
     }
   }
   
-  protected void toContentXml(AbsStructMsg.XmlSerializerWithFilter paramXmlSerializerWithFilter)
+  public void report(Object paramObject)
   {
-    paramXmlSerializerWithFilter.startTag(null, "item");
-    paramXmlSerializerWithFilter.attribute(null, "layout", String.valueOf(this.mContentLayout));
-    paramXmlSerializerWithFilter.startTag(null, "audio");
+    awqx.b(null, "dc00898", "", "", "0X800A62F", "0X800A62F", 0, 0, "2", ForwardUtils.b(this.uinType), this.mContentTitle, "");
+    if (QLog.isColorLevel()) {
+      QLog.d("StructMsg", 2, new Object[] { "音乐曝光=0X800A62F, type=", "2", ", title=", this.mContentTitle, ", uinType=", ForwardUtils.b(this.uinType) });
+    }
+  }
+  
+  protected void toContentXml(awuk paramawuk)
+  {
+    paramawuk.startTag(null, "item");
+    paramawuk.attribute(null, "layout", String.valueOf(this.mContentLayout));
+    paramawuk.startTag(null, "audio");
     if (this.mContentCover == null)
     {
       str = "";
-      paramXmlSerializerWithFilter.attribute(null, "cover", str);
+      paramawuk.attribute(null, "cover", str);
       if (this.mContentSrc != null) {
         break label169;
       }
       str = "";
       label64:
-      paramXmlSerializerWithFilter.attribute(null, "src", str);
-      paramXmlSerializerWithFilter.endTag(null, "audio");
-      paramXmlSerializerWithFilter.startTag(null, "title");
+      paramawuk.attribute(null, "src", str);
+      paramawuk.endTag(null, "audio");
+      paramawuk.startTag(null, "title");
       if (this.mContentTitle != null) {
         break label177;
       }
       str = "";
       label102:
-      paramXmlSerializerWithFilter.text(str);
-      paramXmlSerializerWithFilter.endTag(null, "title");
-      paramXmlSerializerWithFilter.startTag(null, "summary");
+      paramawuk.text(str);
+      paramawuk.endTag(null, "title");
+      paramawuk.startTag(null, "summary");
       if (this.mContentSummary != null) {
         break label185;
       }
@@ -480,9 +481,9 @@ public class StructMsgForAudioShare
     label185:
     for (String str = "";; str = this.mContentSummary)
     {
-      paramXmlSerializerWithFilter.text(str);
-      paramXmlSerializerWithFilter.endTag(null, "summary");
-      paramXmlSerializerWithFilter.endTag(null, "item");
+      paramawuk.text(str);
+      paramawuk.endTag(null, "summary");
+      paramawuk.endTag(null, "item");
       return;
       str = this.mContentCover;
       break;
@@ -698,9 +699,9 @@ public class StructMsgForAudioShare
       break label152;
       str = this.mContentSrc;
       break label169;
-      str = MessageUtils.a(this.mContentTitle, false);
+      str = awbk.a(this.mContentTitle, false);
       break label186;
-      str = MessageUtils.a(this.mContentSummary, false);
+      str = awbk.a(this.mContentSummary, false);
       break label203;
       label686:
       str = this.mSourceIcon;
@@ -750,7 +751,7 @@ public class StructMsgForAudioShare
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForAudioShare
  * JD-Core Version:    0.7.0.1
  */

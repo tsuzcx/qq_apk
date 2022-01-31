@@ -10,6 +10,8 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.ImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.theme.ThemeUtil;
 
 public class RedDotImageView
   extends ImageView
@@ -22,6 +24,7 @@ public class RedDotImageView
   private float jdField_b_of_type_Float = getResources().getDisplayMetrics().density;
   protected int b;
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
+  private boolean jdField_b_of_type_Boolean;
   private int c = 0;
   private int d = 13;
   private int e = 13;
@@ -48,10 +51,15 @@ public class RedDotImageView
     {
       this.jdField_a_of_type_Boolean = paramBoolean;
       if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_AndroidGraphicsDrawableDrawable == null)) {
-        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130846133);
+        this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130849053);
       }
       postInvalidate();
     }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -63,7 +71,7 @@ public class RedDotImageView
     {
       this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setState(getDrawableState());
       if (this.c != 0) {
-        break label311;
+        break label318;
       }
       j = (int)Math.ceil(getWidth() * 0.5D + this.jdField_b_of_type_Float * this.d - this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth() * 0.5D);
       i = (int)Math.ceil(getHeight() * 0.5D - this.jdField_b_of_type_Float * this.e - this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight() * 0.5D);
@@ -75,26 +83,32 @@ public class RedDotImageView
       if ((this.jdField_b_of_type_Int > 0) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
       {
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(getDrawableState());
-        i = (int)Math.ceil(getWidth() - this.jdField_a_of_type_Int - this.f);
+        i = getWidth();
+        if (i <= this.jdField_a_of_type_Int * 2) {
+          break label396;
+        }
+      }
+      label396:
+      for (i = (int)Math.ceil(i / 2);; i = (int)Math.ceil(i - this.jdField_a_of_type_Int - this.f))
+      {
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(i, 0, this.jdField_a_of_type_Int + i, this.jdField_a_of_type_Int);
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
         j = (int)Math.ceil(this.jdField_a_of_type_AndroidGraphicsPaint.measureText(String.valueOf(this.jdField_b_of_type_Int)));
         int k = this.jdField_b_of_type_Int;
         double d1 = i;
         paramCanvas.drawText(String.valueOf(k), (int)((this.jdField_a_of_type_Int - j) * 0.5D + d1), (int)(this.jdField_a_of_type_Int - this.jdField_a_of_type_Float * 0.5D), this.jdField_a_of_type_AndroidGraphicsPaint);
-      }
-      return;
-      label311:
-      if (this.c == 1)
-      {
+        return;
+        label318:
+        if (this.c != 1) {
+          break label418;
+        }
         j = (int)Math.ceil(getWidth() + this.jdField_b_of_type_Float * this.d - this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth() * 0.5D);
         i = (int)Math.ceil(-this.jdField_b_of_type_Float * this.e - this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight() * 0.5D);
+        break;
       }
-      else
-      {
-        i = 0;
-        j = 0;
-      }
+      label418:
+      i = 0;
+      j = 0;
     }
   }
   
@@ -132,6 +146,11 @@ public class RedDotImageView
     }
   }
   
+  public void setShowBorder(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
   public void setUnreadNumber(int paramInt)
   {
     if ((paramInt > 0) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null))
@@ -141,20 +160,30 @@ public class RedDotImageView
       this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
       this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
+      if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1509949441);
+      }
       this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
       this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_b_of_type_Float * 12.0F);
       Paint.FontMetrics localFontMetrics = new Paint.FontMetrics();
       this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics(localFontMetrics);
-      this.jdField_a_of_type_Float = (localFontMetrics.descent - localFontMetrics.ascent);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130845689);
+      this.jdField_a_of_type_Float = Math.abs(localFontMetrics.ascent);
+      if (!this.jdField_b_of_type_Boolean) {
+        break label167;
+      }
     }
-    this.jdField_b_of_type_Int = paramInt;
-    postInvalidate();
+    label167:
+    for (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130844779);; this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130848492))
+    {
+      this.jdField_b_of_type_Int = paramInt;
+      postInvalidate();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.RedDotImageView
  * JD-Core Version:    0.7.0.1
  */

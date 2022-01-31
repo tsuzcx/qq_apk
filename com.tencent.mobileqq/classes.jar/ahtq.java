@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUBaseFilter;
-import com.tencent.mobileqq.richmedia.mediacodec.widget.VideoFilterPlayView;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import java.util.Comparator;
 
 public class ahtq
-  implements Runnable
+  implements Comparator<TroopMemberInfo>
 {
-  public ahtq(VideoFilterPlayView paramVideoFilterPlayView) {}
+  private ahtq(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
   
-  public void run()
+  public int a(TroopMemberInfo paramTroopMemberInfo1, TroopMemberInfo paramTroopMemberInfo2)
   {
-    VideoFilterPlayView.a(this.a).a();
-    VideoFilterPlayView.a(this.a).a(this.a.b, this.a.c);
+    if ((paramTroopMemberInfo1 != null) && (paramTroopMemberInfo1.displayedNamePinyinFirst != null) && (paramTroopMemberInfo2 != null)) {
+      return paramTroopMemberInfo1.displayedNamePinyinFirst.compareToIgnoreCase(paramTroopMemberInfo2.displayedNamePinyinFirst);
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahtq
  * JD-Core Version:    0.7.0.1
  */

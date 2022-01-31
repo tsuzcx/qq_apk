@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.data;
 
-import acbh;
+import alkg;
+import alkh;
+import alki;
+import amrv;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarInfo.OneUinHeadInfo;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarInfo.UinHeadInfo;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarInfo.VideoHeadInfo;
-import com.tencent.mobileqq.persistence.Entity;
+import atmo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class DynamicAvatar
-  extends Entity
+  extends atmo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new acbh();
+  public static final Parcelable.Creator<DynamicAvatar> CREATOR = new amrv();
   public String basicBigUrl = "";
   public String basicMiddleUrl = "";
   public int basicOverdueTimeStamp;
@@ -54,68 +54,68 @@ public class DynamicAvatar
     this.playTimeStamp = paramParcel.readLong();
   }
   
-  public static DynamicAvatar convertFrom(DynamicAvatarInfo.OneUinHeadInfo paramOneUinHeadInfo)
+  public static DynamicAvatar convertFrom(alkg paramalkg)
   {
-    if (paramOneUinHeadInfo == null) {
+    if (paramalkg == null) {
       return null;
     }
     DynamicAvatar localDynamicAvatar = new DynamicAvatar();
-    localDynamicAvatar.tinyId = paramOneUinHeadInfo.b;
-    localDynamicAvatar.uin = paramOneUinHeadInfo.jdField_a_of_type_Long;
-    localDynamicAvatar.getTimeStamp = paramOneUinHeadInfo.jdField_a_of_type_Int;
-    if ((paramOneUinHeadInfo.jdField_a_of_type_JavaUtilArrayList == null) || (paramOneUinHeadInfo.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
+    localDynamicAvatar.tinyId = paramalkg.b;
+    localDynamicAvatar.uin = paramalkg.jdField_a_of_type_Long;
+    localDynamicAvatar.getTimeStamp = paramalkg.jdField_a_of_type_Int;
+    if ((paramalkg.jdField_a_of_type_JavaUtilArrayList == null) || (paramalkg.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
     {
       QLog.i("Q.dynamicAvatar", 1, "convertFrom oneUinHeadInfo's headInfos is null.");
       return localDynamicAvatar;
     }
-    paramOneUinHeadInfo = paramOneUinHeadInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (paramOneUinHeadInfo.hasNext())
+    paramalkg = paramalkg.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (paramalkg.hasNext())
     {
-      Object localObject1 = (DynamicAvatarInfo.UinHeadInfo)paramOneUinHeadInfo.next();
+      Object localObject1 = (alkh)paramalkg.next();
       if (localObject1 != null)
       {
-        Object localObject2 = ((DynamicAvatarInfo.UinHeadInfo)localObject1).jdField_a_of_type_JavaUtilArrayList;
-        if (((DynamicAvatarInfo.UinHeadInfo)localObject1).d == 17)
+        Object localObject2 = ((alkh)localObject1).jdField_a_of_type_JavaUtilArrayList;
+        if (((alkh)localObject1).d == 17)
         {
-          localDynamicAvatar.basicSetTimeStamp = ((DynamicAvatarInfo.UinHeadInfo)localObject1).c;
-          localDynamicAvatar.basicOverdueTimeStamp = ((DynamicAvatarInfo.UinHeadInfo)localObject1).b;
-          localDynamicAvatar.basicStaticUrl = ((DynamicAvatarInfo.UinHeadInfo)localObject1).jdField_a_of_type_JavaLangString;
+          localDynamicAvatar.basicSetTimeStamp = ((alkh)localObject1).c;
+          localDynamicAvatar.basicOverdueTimeStamp = ((alkh)localObject1).b;
+          localDynamicAvatar.basicStaticUrl = ((alkh)localObject1).jdField_a_of_type_JavaLangString;
           if ((localObject2 != null) && (!((ArrayList)localObject2).isEmpty()))
           {
             localObject1 = ((ArrayList)localObject2).iterator();
             while (((Iterator)localObject1).hasNext())
             {
-              localObject2 = (DynamicAvatarInfo.VideoHeadInfo)((Iterator)localObject1).next();
+              localObject2 = (alki)((Iterator)localObject1).next();
               if (localObject2 != null) {
-                if ((((DynamicAvatarInfo.VideoHeadInfo)localObject2).jdField_a_of_type_Int == 80) || (((DynamicAvatarInfo.VideoHeadInfo)localObject2).jdField_a_of_type_Int == 100)) {
-                  localDynamicAvatar.basicSmallUrl = ((DynamicAvatarInfo.VideoHeadInfo)localObject2).jdField_a_of_type_JavaLangString;
-                } else if (((DynamicAvatarInfo.VideoHeadInfo)localObject2).jdField_a_of_type_Int == 200) {
-                  localDynamicAvatar.basicMiddleUrl = ((DynamicAvatarInfo.VideoHeadInfo)localObject2).jdField_a_of_type_JavaLangString;
-                } else if (((DynamicAvatarInfo.VideoHeadInfo)localObject2).jdField_a_of_type_Int == 640) {
-                  localDynamicAvatar.basicBigUrl = ((DynamicAvatarInfo.VideoHeadInfo)localObject2).jdField_a_of_type_JavaLangString;
+                if ((((alki)localObject2).jdField_a_of_type_Int == 80) || (((alki)localObject2).jdField_a_of_type_Int == 100)) {
+                  localDynamicAvatar.basicSmallUrl = ((alki)localObject2).jdField_a_of_type_JavaLangString;
+                } else if (((alki)localObject2).jdField_a_of_type_Int == 200) {
+                  localDynamicAvatar.basicMiddleUrl = ((alki)localObject2).jdField_a_of_type_JavaLangString;
+                } else if (((alki)localObject2).jdField_a_of_type_Int == 640) {
+                  localDynamicAvatar.basicBigUrl = ((alki)localObject2).jdField_a_of_type_JavaLangString;
                 }
               }
             }
           }
         }
-        else if (((DynamicAvatarInfo.UinHeadInfo)localObject1).d == 18)
+        else if (((alkh)localObject1).d == 18)
         {
-          localDynamicAvatar.nearbySetTimeStamp = ((DynamicAvatarInfo.UinHeadInfo)localObject1).c;
-          localDynamicAvatar.nearbyOverdueTimeStamp = ((DynamicAvatarInfo.UinHeadInfo)localObject1).b;
-          localDynamicAvatar.nearbyStaticUrl = ((DynamicAvatarInfo.UinHeadInfo)localObject1).jdField_a_of_type_JavaLangString;
+          localDynamicAvatar.nearbySetTimeStamp = ((alkh)localObject1).c;
+          localDynamicAvatar.nearbyOverdueTimeStamp = ((alkh)localObject1).b;
+          localDynamicAvatar.nearbyStaticUrl = ((alkh)localObject1).jdField_a_of_type_JavaLangString;
           if ((localObject2 != null) && (!((ArrayList)localObject2).isEmpty()))
           {
             localObject1 = ((ArrayList)localObject2).iterator();
             while (((Iterator)localObject1).hasNext())
             {
-              localObject2 = (DynamicAvatarInfo.VideoHeadInfo)((Iterator)localObject1).next();
+              localObject2 = (alki)((Iterator)localObject1).next();
               if (localObject2 != null) {
-                if ((((DynamicAvatarInfo.VideoHeadInfo)localObject2).jdField_a_of_type_Int == 80) || (((DynamicAvatarInfo.VideoHeadInfo)localObject2).jdField_a_of_type_Int == 100)) {
-                  localDynamicAvatar.nearbySmallUrl = ((DynamicAvatarInfo.VideoHeadInfo)localObject2).jdField_a_of_type_JavaLangString;
-                } else if (((DynamicAvatarInfo.VideoHeadInfo)localObject2).jdField_a_of_type_Int == 200) {
-                  localDynamicAvatar.nearbyMiddleUrl = ((DynamicAvatarInfo.VideoHeadInfo)localObject2).jdField_a_of_type_JavaLangString;
-                } else if (((DynamicAvatarInfo.VideoHeadInfo)localObject2).jdField_a_of_type_Int == 640) {
-                  localDynamicAvatar.nearbyBigUrl = ((DynamicAvatarInfo.VideoHeadInfo)localObject2).jdField_a_of_type_JavaLangString;
+                if ((((alki)localObject2).jdField_a_of_type_Int == 80) || (((alki)localObject2).jdField_a_of_type_Int == 100)) {
+                  localDynamicAvatar.nearbySmallUrl = ((alki)localObject2).jdField_a_of_type_JavaLangString;
+                } else if (((alki)localObject2).jdField_a_of_type_Int == 200) {
+                  localDynamicAvatar.nearbyMiddleUrl = ((alki)localObject2).jdField_a_of_type_JavaLangString;
+                } else if (((alki)localObject2).jdField_a_of_type_Int == 640) {
+                  localDynamicAvatar.nearbyBigUrl = ((alki)localObject2).jdField_a_of_type_JavaLangString;
                 }
               }
             }

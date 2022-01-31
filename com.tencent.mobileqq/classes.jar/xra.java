@@ -1,20 +1,36 @@
-import android.content.DialogInterface;
-import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
-import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.device.datadef.ProductInfo;
 
-public class xra
-  extends DialogUtil.DialogOnClickAdapter
+public final class xra
+  implements Parcelable.Creator<ProductInfo>
 {
-  public xra(RecentOptPopBar paramRecentOptPopBar) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ProductInfo a(Parcel paramParcel)
   {
-    paramDialogInterface.dismiss();
+    ProductInfo localProductInfo = new ProductInfo();
+    localProductInfo.productId = paramParcel.readInt();
+    localProductInfo.deviceType = paramParcel.readInt();
+    localProductInfo.bindType = paramParcel.readInt();
+    localProductInfo.supportMainMsgType = paramParcel.readInt();
+    localProductInfo.supportFuncMsgType = paramParcel.readInt();
+    localProductInfo.deviceName = paramParcel.readString();
+    localProductInfo.uConnectType = paramParcel.readInt();
+    localProductInfo.deviceOSType = paramParcel.readInt();
+    localProductInfo.regType = paramParcel.readInt();
+    localProductInfo.linkStateDesc = paramParcel.readString();
+    localProductInfo.linkStepDesc = paramParcel.readString();
+    localProductInfo.linkDescImg = paramParcel.readString();
+    return localProductInfo;
+  }
+  
+  public ProductInfo[] a(int paramInt)
+  {
+    return new ProductInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     xra
  * JD-Core Version:    0.7.0.1
  */

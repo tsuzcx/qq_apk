@@ -37,7 +37,7 @@ class VasCommonJsPlugin$JsDebugDialog
     super.dismiss();
   }
   
-  public void log(List paramList)
+  public void log(List<String> paramList)
   {
     if (paramList == null) {
       return;
@@ -53,7 +53,7 @@ class VasCommonJsPlugin$JsDebugDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin.JsDebugDialog
  * JD-Core Version:    0.7.0.1
  */

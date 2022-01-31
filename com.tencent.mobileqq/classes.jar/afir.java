@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.nearby.NearbyLikeLimitManager.onDoVoteListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
 
 public class afir
-  implements NearbyLikeLimitManager.onDoVoteListener
+  extends RecyclerView.ViewHolder
 {
-  public afir(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  TextView a;
   
-  public void a(String paramString, boolean paramBoolean)
+  afir(View paramView)
   {
-    this.a.c(paramBoolean);
-    this.a.t = paramBoolean;
+    super(paramView);
+    this.a = ((TextView)paramView.findViewById(2131312639));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afir
  * JD-Core Version:    0.7.0.1
  */

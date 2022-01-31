@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.widget.CheckBox;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
 
 public class afln
-  implements ActionSheet.OnDismissListener
 {
-  public afln(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
+  public CheckBox a;
+  public RelativeLayout a;
+  public TextView a;
+  public URLImageView a;
+  public Object a;
+  public String a;
+  public TextView b;
+  public TextView c;
   
-  public void onDismiss()
-  {
-    NearbyProfileEditPanel.a(this.a, this.a.b, false);
-  }
+  public afln(afll paramafll) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afln
  * JD-Core Version:    0.7.0.1
  */

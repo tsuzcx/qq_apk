@@ -1,55 +1,36 @@
-import android.graphics.PointF;
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.ar.arengine.ARLocalGestureCircleRecog;
-import com.tencent.mobileqq.ar.arengine.ARLocalGestureCircleRecogResult;
-import com.tencent.mobileqq.ar.arengine.ARLocalGestureCircleRecogResult.ARCircleResult;
-import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
+import android.opengl.GLSurfaceView.Renderer;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.Conversation.19.1;
+import com.tencent.mobileqq.activity.Conversation.19.2;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
 
 public class aamq
-  implements Runnable
+  implements GLSurfaceView.Renderer
 {
-  public aamq(AREngine paramAREngine) {}
+  public aamq(Conversation paramConversation) {}
   
-  public void run()
+  public void onDrawFrame(GL10 paramGL10) {}
+  
+  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2) {}
+  
+  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
   {
-    int i = 0;
-    if (i < 2)
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a.g <= this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a.e - 1) {
-        break label75;
-      }
-      this.a.c = true;
+    this.a.a = paramGL10.glGetString(7937);
+    if (this.a.a != null) {
+      ThreadManager.post(new Conversation.19.1(this), 5, null, true);
     }
-    label75:
-    while (this.a.c == true)
-    {
-      if (!this.a.c) {
-        AREngine.a(this.a.jdField_a_of_type_JavaLangRunnable, this.a.b);
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_GPU", 2, "onSurfaceCreated|GL_RENDERER= " + this.a.a);
     }
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a.b[this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a.g];
-    localObject = ARLocalGestureCircleRecog.a(AREngine.f(this.a), AREngine.g(this.a), AREngine.h(this.a), AREngine.i(this.a), (PointF)localObject);
-    int j = (int)((PointF)localObject).x;
-    int k = (int)((PointF)localObject).y;
-    int m = this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a.a[this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a.g];
-    localObject = ARWorldCupGameLogicManager.a();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a.g == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ((ARWorldCupGameLogicManager)localObject).a(new int[] { j }, new int[] { k }, new int[] { m }, bool);
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a;
-      ((ARLocalGestureCircleRecogResult.ARCircleResult)localObject).g += 1;
-      QLog.i("AREngine_AREngine", 1, "DrawCircle. mDrawCirclePuase = " + this.a.c + ", genIdx = " + this.a.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecogResult.a.g);
-      i += 1;
-      break;
-    }
+    this.a.a(new Conversation.19.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aamq
  * JD-Core Version:    0.7.0.1
  */

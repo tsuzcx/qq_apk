@@ -1,18 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditTakeGifSource;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdPopSheetBrowserFragment;
 
-public final class oih
-  implements Parcelable.Creator
+public class oih
+  implements nrd
 {
-  public EditTakeGifSource a(Parcel paramParcel)
-  {
-    return new EditTakeGifSource(paramParcel);
-  }
+  public oih(ReadInJoyAdPopSheetBrowserFragment paramReadInJoyAdPopSheetBrowserFragment) {}
   
-  public EditTakeGifSource[] a(int paramInt)
+  public void a()
   {
-    return new EditTakeGifSource[paramInt];
+    this.a.getActivity().finish();
   }
 }
 

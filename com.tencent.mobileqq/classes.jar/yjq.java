@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.gdtad.aditem.GdtBaseAdItem;
 
-class yjq
-  implements DialogInterface.OnClickListener
+public final class yjq
+  implements Parcelable.Creator<GdtBaseAdItem>
 {
-  yjq(yjp paramyjp) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public GdtBaseAdItem a(Parcel paramParcel)
   {
-    this.a.a.s();
+    return new GdtBaseAdItem(paramParcel);
+  }
+  
+  public GdtBaseAdItem[] a(int paramInt)
+  {
+    return new GdtBaseAdItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yjq
  * JD-Core Version:    0.7.0.1
  */

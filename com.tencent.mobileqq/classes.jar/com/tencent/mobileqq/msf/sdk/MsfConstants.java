@@ -38,10 +38,13 @@ public class MsfConstants
   public static final String ATTRIBUTE_REGISTER_CM_LANGUAGE = "to_register_cr_language";
   public static final String ATTRIBUTE_REGISTER_CM_MOBILE = "to_register_cr_mobile";
   public static final String ATTRIBUTE_REGISTER_CM_PIGTYPE = "to_register_cr_pigType";
+  public static final String ATTRIBUTE_REGISTER_INVITATION_CODE = "To_register_Invitation_code";
+  public static final String ATTRIBUTE_REGISTER_LH_UIN = "To_register_lh_uin";
   public static final String ATTRIBUTE_REGISTER_NICK = "To_register_nick";
   public static final String ATTRIBUTE_REGISTER_PASS = "To_register_pass";
   public static final String ATTRIBUTE_REGISTER_SMSCODE = "To_register_smsCode";
   public static final String ATTRIBUTE_REGISTER_TYPE = "To_register_type";
+  public static final String ATTRIBUTE_REGISTER_UNBIND_LH_UIN = "To_register_unbind_lh_uin";
   public static final String ATTRIBUTE_REPORT_CONTENT = "to_report_content";
   public static final String ATTRIBUTE_REPORT_TYPE = "to_report_type";
   public static final String ATTRIBUTE_RESP_ACCOUNT_FACEURL = "resp_verify_account_faceUrl";
@@ -54,6 +57,7 @@ public class MsfConstants
   public static final String ATTRIBUTE_RESP_NEEDBOOTAPP = "resp_needBootApp";
   public static final String ATTRIBUTE_RESP_REGISTER_CONTACTSIG = "resp_register_contactssig";
   public static final String ATTRIBUTE_RESP_REGISTER_ERRMSG = "res_register_errmsg";
+  public static final String ATTRIBUTE_RESP_REGISTER_LH_SIG = "resp_register_lh_sig";
   public static final String ATTRIBUTE_RESP_REGISTER_NICK = "resp_register_nick";
   public static final String ATTRIBUTE_RESP_REGISTER_PICTURE_URL = "resp_register_picture_url";
   public static final String ATTRIBUTE_RESP_REGISTER_PROMPTINFO = "resp_register_promptinfo";

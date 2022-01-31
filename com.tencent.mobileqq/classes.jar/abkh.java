@@ -1,34 +1,34 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.ar.ARScanFragment;
-import com.tencent.mobileqq.ar.ARTarget;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.model.ArWebInfo;
-import com.tencent.mobileqq.armap.ShopScanActivity;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.VideoCaptureResult;
 
 public class abkh
-  implements Runnable
+  implements auuu
 {
-  public abkh(ShopScanActivity paramShopScanActivity, ARTarget paramARTarget) {}
+  public abkh(QQIdentiferActivity paramQQIdentiferActivity) {}
   
-  public void run()
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(auuy paramauuy) {}
+  
+  public void a(CameraCaptureView.VideoCaptureResult paramVideoCaptureResult) {}
+  
+  public void a(boolean paramBoolean, String paramString)
   {
-    ShopScanActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity, true);
-    this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.jdField_a_of_type_ComTencentMobileqqArARScanFragment.e(true);
-    this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    ShopScanActivity.c(this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity);
-    this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.jdField_a_of_type_ComTencentMobileqqArARScanFragment.a(false);
-    if ((this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.g) && (this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.i))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.d();
-      return;
+    if (!paramBoolean) {
+      babr.a(this.a, 230, this.a.getString(2131632717), ajjy.a(2131644566), new abki(this), null).show();
     }
-    ShopScanActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity, this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.a.a);
-    this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.h = true;
   }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abkh
  * JD-Core Version:    0.7.0.1
  */

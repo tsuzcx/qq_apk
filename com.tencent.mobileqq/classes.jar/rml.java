@@ -1,56 +1,39 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.AddAccountActivity;
-import com.tencent.mobileqq.widget.CustomSafeEditText;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VideoPlayManager;
+import java.util.Iterator;
+import java.util.List;
 
 public class rml
-  implements TextWatcher
+  extends Handler
 {
-  public rml(AddAccountActivity paramAddAccountActivity) {}
+  private rml(VideoPlayManager paramVideoPlayManager) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void handleMessage(Message paramMessage)
   {
-    AddAccountActivity.a(this.a, null);
-  }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    AddAccountActivity.a(this.a, paramCharSequence.toString());
-  }
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount != null)
+    switch (paramMessage.what)
     {
-      paramCharSequence = paramCharSequence.toString();
-      if ((paramCharSequence != null) && (AddAccountActivity.a(this.a) != null) && (AddAccountActivity.a(this.a).length() != paramCharSequence.length()) && (paramInt3 != 0)) {
-        BaseApplicationImpl.sApplication.refreAccountList();
-      }
-      AddAccountActivity.a(this.a, null);
-      if ((AddAccountActivity.a(this.a) == null) || (AddAccountActivity.a(this.a).length() == 0)) {}
-      do
-      {
-        return;
-        if ((paramCharSequence == null) || (paramCharSequence.length() == 0) || (paramCharSequence.length() != AddAccountActivity.a(this.a).length() + 1))
-        {
-          BaseApplicationImpl.sApplication.refreAccountList();
-          return;
-        }
-        if ((!paramCharSequence.substring(0, AddAccountActivity.a(this.a).length()).equals(AddAccountActivity.a(this.a))) || (this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText == null)) {
-          break;
-        }
-        paramCharSequence = paramCharSequence.substring(AddAccountActivity.a(this.a).length());
-      } while ((paramCharSequence == null) || (paramCharSequence.length() != 1));
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setText(paramCharSequence);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetCustomSafeEditText.setSelection(1);
     }
-    AddAccountActivity.a(this.a, null);
+    do
+    {
+      return;
+    } while ((VideoPlayManager.a(this.a) == null) || (rmm.a(VideoPlayManager.a(this.a)) == null));
+    Object localObject = rmm.a(VideoPlayManager.a(this.a));
+    paramMessage = VideoPlayManager.a(this.a);
+    if ((localObject != null) && (((qhw)localObject).b()))
+    {
+      long l = ((qhw)localObject).a();
+      localObject = VideoPlayManager.a(this.a).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((rmn)((Iterator)localObject).next()).a(paramMessage, rmo.a(l) * 1000);
+      }
+    }
+    VideoPlayManager.a(this.a).sendEmptyMessageDelayed(0, VideoPlayManager.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rml
  * JD-Core Version:    0.7.0.1
  */

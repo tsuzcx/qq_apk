@@ -1,46 +1,38 @@
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
 
-class afhk
-  implements URLDrawable.URLDrawableListener
+public class afhk
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  afhk(afhj paramafhj, ImageView paramImageView) {}
+  public afhk(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public void onGlobalLayout()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "download vote onLoadCanceled");
+    if (Build.VERSION.SDK_INT < 16) {
+      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
     }
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "download vote onLoadFialed");
+    for (;;)
+    {
+      this.a.b(this.a.e);
+      this.a.c(this.a.e);
+      View localView = this.a.a.getChildAt(this.a.e);
+      if (localView != null)
+      {
+        this.a.h = localView.getLeft();
+        this.a.invalidate();
+      }
+      return;
+      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "download vote onLoadProgressed");
-    }
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.nearby_people_card.", 2, "download vote headImage success");
-    }
-    this.jdField_a_of_type_Afhj.a.a(this.jdField_a_of_type_AndroidWidgetImageView, paramURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afhk
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class cmd0x7c4$OneFrdData
-  extends MessageMicro
+  extends MessageMicro<OneFrdData>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_smart_remark = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -26,7 +26,7 @@ public final class cmd0x7c4$OneFrdData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x7c4.cmd0x7c4.OneFrdData
  * JD-Core Version:    0.7.0.1
  */

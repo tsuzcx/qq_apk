@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_width="fill_parent" android:layout_height="64.0dip" android:src="@drawable/s_" android:layout_alignParentTop="true" />
+    <ImageView android:id="@id/kq2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:layout_marginTop="20.0dip" android:src="@drawable/d69" android:layout_alignParentLeft="true" android:contentDescription="@string/u3" />
+    <ImageView android:id="@id/kvj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginRight="13.0dip" android:src="@drawable/d6a" android:layout_alignParentRight="true" />
+    <ImageView android:id="@id/f06" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginRight="13.0dip" android:src="@drawable/fcu" android:layout_alignParentRight="true" />
+    <ImageView android:id="@id/fv" android:layout_width="48.0dip" android:layout_height="26.0dip" android:layout_marginTop="20.5dip" android:layout_marginRight="95.0dip" android:src="@drawable/d70" android:layout_alignParentRight="true" />
+    <ImageView android:id="@id/fl" android:layout_width="48.0dip" android:layout_height="26.0dip" android:layout_marginTop="20.5dip" android:layout_marginRight="50.0dip" android:src="@drawable/bq3" android:layout_alignParentRight="true" />
+    <com.tencent.biz.pubaccount.Advertisement.view.AdvertisementSplitedProgressBar android:id="@id/ktq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="7.5dip" android:layout_marginRight="15.0dip" />
+</RelativeLayout>

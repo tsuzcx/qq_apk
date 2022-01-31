@@ -84,7 +84,7 @@ public class WebpSoLoader
       BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4).edit().putBoolean("WebpHookSupported", false).commit();
       a = null;
       if (QLog.isColorLevel()) {
-        QLog.d("WebpSoLoader", 2, String.format("Crash in libwebp support library at %s process!", new Object[] { BaseApplicationImpl.getMobileQQ().getProcessName() }));
+        QLog.d("WebpSoLoader", 2, String.format("Crash in libwebp support library at %s process!", new Object[] { BaseApplicationImpl.getMobileQQ().getQQProcessName() }));
       }
     }
   }

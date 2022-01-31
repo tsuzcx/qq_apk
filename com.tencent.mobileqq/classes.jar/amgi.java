@@ -1,58 +1,64 @@
-import com.tencent.sharp.jni.TraeAudioManager;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amgi
-  extends amgl
 {
-  public amgi(TraeAudioManager paramTraeAudioManager)
-  {
-    super(paramTraeAudioManager);
-  }
+  public int a;
+  public int b;
   
-  public String a()
+  public static amgi a(alzs[] paramArrayOfalzs)
   {
-    return "DEVICE_EARPHONE";
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a, false);
-    e();
-    int i = 0;
-    for (;;)
+    amgi localamgi = new amgi();
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
     {
-      if (this.jdField_a_of_type_Boolean == true)
+      int j = paramArrayOfalzs.length;
+      int i = 0;
+      if (i < j)
       {
-        if (TraeAudioManager.a(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager)) {
-          this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a, false);
-        }
-        long l;
-        if (i < 5) {
-          l = 1000L;
-        }
-        try
+        Object localObject = paramArrayOfalzs[i];
+        if (localObject == null) {}
+        for (;;)
         {
-          for (;;)
+          i += 1;
+          break;
+          localObject = ((alzs)localObject).a;
+          try
           {
-            Thread.sleep(l);
-            label69:
-            i += 1;
-            break;
-            l = 4000L;
+            localObject = new JSONObject((String)localObject);
+            if (((JSONObject)localObject).has("gtcSwitch")) {
+              localamgi.a = ((JSONObject)localObject).optInt("gtcSwitch");
+            }
+            if (((JSONObject)localObject).has("groupMemberCount")) {
+              localamgi.b = ((JSONObject)localObject).optInt("groupMemberCount");
+            }
           }
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          break label69;
+          catch (JSONException localJSONException)
+          {
+            for (;;)
+            {
+              localJSONException.printStackTrace();
+            }
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopMemberRecommend.ConfBean", 2, "parse: " + localamgi.toString());
+          }
         }
       }
     }
+    return localamgi;
   }
   
-  public void b() {}
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("TroopMemRecommendConfBean [gtcSwitch: ").append(this.a).append(", groupMemberCount: ").append(this.b).append("]");
+    return localStringBuilder.toString();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amgi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
-class aceh
-  implements Runnable
+public class aceh
+  implements DialogInterface.OnClickListener
 {
-  aceh(aceg paramaceg, boolean paramBoolean, String paramString) {}
+  public aceh(UpgradeActivity paramUpgradeActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Aceg.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null)) {
-      this.jdField_a_of_type_Aceg.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aceg.a.jdField_a_of_type_Int);
-    }
+    UpgradeActivity.a(this.a, false);
+    awqx.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, akgn.b(), String.valueOf(0), akgo.a(), "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aceh
  * JD-Core Version:    0.7.0.1
  */

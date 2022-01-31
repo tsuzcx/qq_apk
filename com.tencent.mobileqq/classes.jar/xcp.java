@@ -1,49 +1,37 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import cooperation.qzone.util.QZLog;
-import java.io.File;
-import java.util.Map;
+import android.view.View;
+import com.tencent.qphone.base.util.QLog;
 
 class xcp
-  implements Runnable
+  implements begw
 {
-  xcp(xco paramxco, String paramString1, String paramString2, int paramInt) {}
+  xcp(xco paramxco) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = 1;
-    String str = PhotoListActivity.a(this.jdField_a_of_type_Xco.a, this.jdField_a_of_type_JavaLangString);
-    localMessage.obj = str;
-    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    try
+    this.a.a.dismiss();
+    switch (paramInt)
     {
-      localLocalMediaInfo.path = str;
-      localLocalMediaInfo.mMimeType = "video/mp4";
-      localLocalMediaInfo.addedDate = System.currentTimeMillis();
-      localLocalMediaInfo.modifiedDate = System.currentTimeMillis();
-      localLocalMediaInfo.thumbnailPath = this.b;
-      localLocalMediaInfo.mDuration = this.jdField_a_of_type_Int;
-      localLocalMediaInfo.fileSize = new File(str).length();
-      localLocalMediaInfo.isSystemMeidaStore = false;
-      PhotoListActivity.a().put(str, localLocalMediaInfo);
-      this.jdField_a_of_type_Xco.a.a.sendMessage(localMessage);
+    default: 
+      if (QLog.isColorLevel()) {
+        QLog.d("PubAccountMailJsPlugin", 2, String.format("Unknow button %d", new Object[] { Integer.valueOf(paramInt) }));
+      }
+      return;
+    case 0: 
+      xco.a(this.a);
+      return;
+    case 1: 
+      xco.b(this.a);
+      return;
+    case 2: 
+      xco.c(this.a);
       return;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QZLog.e("PhotoListActivity", 2, new Object[] { "get new video info exception", localException });
-      }
-    }
+    xco.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xcp
  * JD-Core Version:    0.7.0.1
  */

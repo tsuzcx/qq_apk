@@ -1,20 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.gdtad.views.canvas.framework.GdtCanvasView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class qra
-  implements View.OnClickListener
+  extends omr
 {
-  public qra(GdtCanvasView paramGdtCanvasView) {}
-  
-  public void onClick(View paramView)
+  public qra(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
   {
-    this.a.a();
+    super(paramString);
+  }
+  
+  public void a(oml paramoml)
+  {
+    paramoml.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qra
  * JD-Core Version:    0.7.0.1
  */

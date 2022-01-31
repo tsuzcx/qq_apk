@@ -9,29 +9,23 @@ public class AudioSampleUtil
   
   public static int bytesInSecond(int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = 1;
+    int i = 2;
     switch (paramInt2)
     {
     default: 
-      paramInt2 = i;
-      i = 1;
+      paramInt2 = 1;
       switch (paramInt3)
       {
-      default: 
-        paramInt3 = i;
       }
       break;
     }
-    for (;;)
+    for (i = 1;; i = 1)
     {
-      return paramInt1 * paramInt3 * paramInt2;
+      return i * paramInt1 * paramInt2;
       paramInt2 = 1;
       break;
       paramInt2 = 2;
       break;
-      paramInt3 = 2;
-      continue;
-      paramInt3 = 1;
     }
   }
 }

@@ -1,0 +1,19 @@
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+
+class bfnw
+  implements RadioGroup.OnCheckedChangeListener
+{
+  bfnw(bfnu parambfnu) {}
+  
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  {
+    bfnu.a(this.a, paramInt);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     bfnw
+ * JD-Core Version:    0.7.0.1
+ */

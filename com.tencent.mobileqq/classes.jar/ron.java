@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.data.Card;
+import java.util.Comparator;
 
-class ron
-  implements Runnable
+public class ron
+  implements Comparator<rof>
 {
-  ron(rom paramrom, Card paramCard) {}
+  public ron(rol paramrol) {}
   
-  public void run()
+  public int a(rof paramrof1, rof paramrof2)
   {
-    this.jdField_a_of_type_Rom.a.a(this.jdField_a_of_type_ComTencentMobileqqDataCard);
+    long l1 = paramrof1.a;
+    long l2 = paramrof2.a;
+    if (l2 > l1) {
+      return 1;
+    }
+    if (l2 < l1) {
+      return -1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ron
  * JD-Core Version:    0.7.0.1
  */

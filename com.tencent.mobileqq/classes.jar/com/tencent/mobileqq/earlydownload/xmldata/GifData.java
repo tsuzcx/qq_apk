@@ -1,9 +1,11 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
+import amzv;
+
 public class GifData
   extends XmlData
 {
-  @saveInSP(a=false, b=true)
+  @amzv(a=false, b=true)
   public boolean gif_so_is_update;
   public String m2_2;
   public String m2_3;
@@ -20,7 +22,7 @@ public class GifData
   public String m5_4;
   public String m6_0;
   public String m6_1;
-  @saveInSP(a=false, b=true)
+  @amzv(a=false, b=true)
   public boolean use_new_gif_so;
   public String v2_2;
   public String v2_3;
@@ -50,7 +52,7 @@ public class GifData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.xmldata.GifData
  * JD-Core Version:    0.7.0.1
  */

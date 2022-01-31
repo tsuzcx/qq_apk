@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/cg_" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView android:id="@id/aog" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/aoe" />
+    <com.tencent.biz.qqstory.takevideo.CameraFocusView android:id="@id/aoj" android:paddingLeft="50.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/f7n" android:layout_below="@id/cey" />
+    <com.tencent.biz.qqstory.view.widget.QQStoryLoadingView android:textSize="14.0dip" android:id="@id/gm6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="15.0dip" android:layout_centerInParent="true" />
+    <dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout android:gravity="center" android:id="@id/apc" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/mn" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout android:gravity="center" android:id="@id/ilu" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/mn" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <include android:id="@id/apj" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/anr" />
+    <include android:id="@id/apm" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" layout="@layout/ans" />
+    <ImageView android:id="@id/eg4" android:visibility="gone" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginLeft="60.0dip" android:layout_marginBottom="60.0dip" android:layout_alignParentBottom="true" android:contentDescription="@string/qcc" />
+</RelativeLayout>

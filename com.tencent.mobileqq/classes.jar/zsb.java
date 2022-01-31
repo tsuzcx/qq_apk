@@ -1,35 +1,90 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
+import android.app.Activity;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.mobileqq.Doraemon.DoraemonOpenAPI.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.Constants.LogoutReason;
 
 public class zsb
-  implements Runnable
 {
-  public zsb(QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
+  public static zrw a(@NonNull Activity paramActivity, int paramInt, String paramString)
   {
-    if (!QQAppInterface.a(this.a).verifyAuthentication())
-    {
-      QLog.e("QQAppInterface", 1, "", new RuntimeException("WTF"));
-      if (this.a.isLogin()) {
-        this.a.logout(true);
-      }
-      Intent localIntent = new Intent("mqq.intent.action.ACCOUNT_KICKED");
-      localIntent.putExtra("title", "登录失败");
-      localIntent.putExtra("msg", "登录失败");
-      localIntent.putExtra("reason", Constants.LogoutReason.kicked);
-      localIntent.addFlags(268435456);
-      BaseApplicationImpl.sApplication.startActivity(localIntent);
+    return a(paramActivity, paramInt, paramString, null);
+  }
+  
+  public static zrw a(@NonNull Activity paramActivity, int paramInt, String paramString, Bundle paramBundle)
+  {
+    String str = null;
+    zsd localzsd = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("DoraemonOpenAPI", 2, "createAPIManager type=" + paramInt + ", appid=" + paramString);
     }
+    if (paramActivity == null)
+    {
+      QLog.e("DoraemonOpenAPI", 1, "can not create APIManager activity == null");
+      return null;
+    }
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("DoraemonOpenAPI", 1, "can not create APIManager appid is empty");
+    }
+    Object localObject = localzsd;
+    switch (paramInt)
+    {
+    default: 
+      localObject = localzsd;
+    case 2: 
+    case 0: 
+    case 1: 
+    case 3: 
+    case 4: 
+    case 5: 
+      while (localObject == null)
+      {
+        QLog.e("DoraemonOpenAPI", 1, "can not create APIManager type=" + paramInt + ", appid=" + paramString);
+        return localObject;
+        if (paramBundle == null) {}
+        for (paramBundle = null; TextUtils.isEmpty(paramBundle); paramBundle = paramBundle.getString("urlSummary", ""))
+        {
+          QLog.e("DoraemonOpenAPI", 1, "can not create APIManger url is empty");
+          return null;
+        }
+        localObject = new ztw(paramActivity, paramInt, paramString, paramBundle);
+        continue;
+        localzsd = new zsd(paramActivity, paramInt, paramString);
+        if (paramBundle == null) {
+          break label305;
+        }
+        localObject = paramBundle.getString("sdkVersion");
+        str = paramBundle.getString("pkgName");
+        paramActivity = paramBundle.getString("signature");
+        paramBundle = str;
+      }
+    }
+    for (;;)
+    {
+      ((zsd)localzsd).a((String)localObject, paramBundle, paramActivity);
+      localObject = localzsd;
+      break;
+      localObject = new zst(paramActivity, paramInt, paramString);
+      break;
+      ((zrw)localObject).a();
+      return localObject;
+      label305:
+      paramBundle = null;
+      localObject = null;
+      paramActivity = str;
+    }
+  }
+  
+  public static void a()
+  {
+    ThreadManager.post(new DoraemonOpenAPI.1(), 5, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zsb
  * JD-Core Version:    0.7.0.1
  */

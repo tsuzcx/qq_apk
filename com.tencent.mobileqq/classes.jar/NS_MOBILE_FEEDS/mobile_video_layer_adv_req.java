@@ -10,12 +10,12 @@ import java.util.Map;
 public final class mobile_video_layer_adv_req
   extends JceStruct
 {
-  static Map cache_busi_param;
-  static ArrayList cache_context_list = new ArrayList();
-  static Map cache_mapExt;
-  public Map busi_param;
-  public ArrayList context_list;
-  public Map mapExt;
+  static Map<Integer, String> cache_busi_param;
+  static ArrayList<feeds_context_info> cache_context_list = new ArrayList();
+  static Map<String, String> cache_mapExt;
+  public Map<Integer, String> busi_param;
+  public ArrayList<feeds_context_info> context_list;
+  public Map<String, String> mapExt;
   public int req_type;
   public long uin;
   
@@ -31,12 +31,12 @@ public final class mobile_video_layer_adv_req
   
   public mobile_video_layer_adv_req() {}
   
-  public mobile_video_layer_adv_req(long paramLong, ArrayList paramArrayList, Map paramMap1, Map paramMap2, int paramInt)
+  public mobile_video_layer_adv_req(long paramLong, ArrayList<feeds_context_info> paramArrayList, Map<Integer, String> paramMap, Map<String, String> paramMap1, int paramInt)
   {
     this.uin = paramLong;
     this.context_list = paramArrayList;
-    this.busi_param = paramMap1;
-    this.mapExt = paramMap2;
+    this.busi_param = paramMap;
+    this.mapExt = paramMap1;
     this.req_type = paramInt;
   }
   
@@ -66,7 +66,7 @@ public final class mobile_video_layer_adv_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_video_layer_adv_req
  * JD-Core Version:    0.7.0.1
  */

@@ -2,9 +2,10 @@ package cooperation.qlink;
 
 import android.content.Intent;
 import android.os.Bundle;
+import aoig;
+import bffc;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
@@ -12,7 +13,7 @@ import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
 public class QlinkAgentActivity
   extends BaseActivity
 {
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if (10 == paramInt2) {
       setResult(10, paramIntent);
@@ -72,14 +73,14 @@ public class QlinkAgentActivity
     super.finish();
   }
   
-  protected void requestWindowFeature(Intent paramIntent)
+  public void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cooperation.qlink.QlinkAgentActivity
  * JD-Core Version:    0.7.0.1
  */

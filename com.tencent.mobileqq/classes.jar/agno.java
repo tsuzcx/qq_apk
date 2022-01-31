@@ -1,34 +1,28 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.fragment.SendHbMainFragment;
+import org.json.JSONObject;
 
 public class agno
-  extends AnimatorListenerAdapter
+  implements View.OnClickListener
 {
-  public agno(ScanTorchActivity paramScanTorchActivity, View paramView, boolean paramBoolean) {}
+  public agno(SendHbMainFragment paramSendHbMainFragment, JSONObject paramJSONObject) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null)
+    if (bfod.a()) {}
+    do
     {
-      this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      }
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
+      return;
+      paramView = this.jdField_a_of_type_OrgJsonJSONObject.optString("url");
+    } while (TextUtils.isEmpty(paramView));
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentSendHbMainFragment.openUrl(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agno
  * JD-Core Version:    0.7.0.1
  */

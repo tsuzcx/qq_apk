@@ -1,8 +1,5 @@
 package cooperation.groupvideo;
 
-import amst;
-import amsu;
-import amsv;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,11 +7,14 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import android.text.format.Time;
 import android.widget.TextView;
+import bfcd;
+import bfce;
+import bfch;
+import bfcz;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
 import com.tencent.qphone.base.util.MD5;
-import cooperation.plugin.IPluginManager;
 import java.util.ArrayList;
 
 public class GVideoPluginInstallerActivity
@@ -23,9 +23,9 @@ public class GVideoPluginInstallerActivity
   final int jdField_a_of_type_Int = 1;
   Handler jdField_a_of_type_AndroidOsHandler;
   public TextView a;
-  private final OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new amsu(this);
-  public IPluginManager a;
-  private final Runnable jdField_a_of_type_JavaLangRunnable = new amsv(this);
+  bfcz jdField_a_of_type_Bfcz;
+  private final OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new bfce(this);
+  private final Runnable jdField_a_of_type_JavaLangRunnable = new GVideoPluginInstallerActivity.3(this);
   public final String a;
   final int jdField_b_of_type_Int = 2;
   public final Handler b;
@@ -36,10 +36,10 @@ public class GVideoPluginInstallerActivity
   public GVideoPluginInstallerActivity()
   {
     this.jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-    this.jdField_b_of_type_AndroidOsHandler = new amst(this, Looper.getMainLooper());
+    this.jdField_b_of_type_AndroidOsHandler = new bfcd(this, Looper.getMainLooper());
   }
   
-  private String a(ArrayList paramArrayList, boolean paramBoolean)
+  private String a(ArrayList<String> paramArrayList, boolean paramBoolean)
   {
     Time localTime = new Time();
     localTime.setToNow();
@@ -74,16 +74,16 @@ public class GVideoPluginInstallerActivity
     if (this.leftView != null) {
       localIntent.putExtra("leftViewString", this.leftView.getText().toString());
     }
-    GroupVideoHelper.a(this.app, this, localIntent, 1);
+    bfch.a(this.app, this, localIntent, 1);
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131430793));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131632317));
     this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessageDelayed(4, 1000L);
   }
   
-  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
     if (paramInt1 == 1) {
@@ -91,21 +91,21 @@ public class GVideoPluginInstallerActivity
     }
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    super.setContentView(2130969976);
-    super.setTitle(getString(2131430794));
+    super.setContentView(2131494835);
+    super.setTitle(getString(2131632319));
     if ((this.leftView != null) && (getIntent() != null)) {
       this.leftView.setText(getIntent().getExtras().getString("leftViewText"));
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365558));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131430792));
-    this.jdField_a_of_type_CooperationPluginIPluginManager = ((IPluginManager)this.app.getManager(26));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131311233));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131632318));
+    this.jdField_a_of_type_Bfcz = ((bfcz)this.app.getManager(27));
     return bool;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
     this.jdField_b_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
@@ -119,18 +119,18 @@ public class GVideoPluginInstallerActivity
     }
   }
   
-  protected void doOnWindowFocusChanged(boolean paramBoolean)
+  public void doOnWindowFocusChanged(boolean paramBoolean)
   {
     super.doOnWindowFocusChanged(paramBoolean);
-    if ((!paramBoolean) || (this.jdField_a_of_type_CooperationPluginIPluginManager == null)) {
+    if ((!paramBoolean) || (this.jdField_a_of_type_Bfcz == null)) {
       return;
     }
-    if (this.jdField_a_of_type_CooperationPluginIPluginManager.isPlugininstalled("group_video_plugin.apk"))
+    if (this.jdField_a_of_type_Bfcz.isPlugininstalled("group_video_plugin.apk"))
     {
       this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
       return;
     }
-    if (GroupVideoHelper.a(getApplicationContext()))
+    if (bfch.a(getApplicationContext()))
     {
       localObject = new Intent("com.tencent.process.exit");
       ArrayList localArrayList = new ArrayList();

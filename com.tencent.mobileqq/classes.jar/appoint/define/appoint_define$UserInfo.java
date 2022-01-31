@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class appoint_define$UserInfo
-  extends MessageMicro
+  extends MessageMicro<UserInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_avatar = PBField.initBytes(ByteStringMicro.EMPTY);

@@ -1,18 +1,19 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class akjb
-  implements MediaPlayer.OnCompletionListener
+class akjb
+  implements View.OnClickListener
 {
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  akjb(akja paramakja) {}
+  
+  public void onClick(View paramView)
   {
-    paramMediaPlayer.release();
-    com.tencent.mobileqq.utils.AudioUtil.a = null;
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akjb
  * JD-Core Version:    0.7.0.1
  */

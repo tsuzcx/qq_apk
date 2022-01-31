@@ -1,22 +1,19 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.hotpic.HotPicMainPanel;
-import com.tencent.widget.XPanelContainer;
+import android.os.Environment;
+import android.os.StatFs;
+import java.io.File;
 
 public class adxz
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public adxz(HotPicMainPanel paramHotPicMainPanel) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public static long a()
   {
-    XPanelContainer.a = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    this.a.a.requestLayout();
+    StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
+    long l = localStatFs.getBlockSize();
+    return localStatFs.getAvailableBlocks() * l / 1024L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adxz
  * JD-Core Version:    0.7.0.1
  */

@@ -7,10 +7,10 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class QSecCloudAVEngineMsg$QSecCloudRespBody
-  extends MessageMicro
+  extends MessageMicro<QSecCloudRespBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "status", "version", "respEntry" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), null }, QSecCloudRespBody.class);
-  public final PBRepeatMessageField respEntry = PBField.initRepeatMessage(QSecCloudAVEngineMsg.QSecCloudRespEntry.class);
+  public final PBRepeatMessageField<QSecCloudAVEngineMsg.QSecCloudRespEntry> respEntry = PBField.initRepeatMessage(QSecCloudAVEngineMsg.QSecCloudRespEntry.class);
   public final PBUInt32Field status = PBField.initUInt32(0);
   public final PBUInt32Field version = PBField.initUInt32(0);
 }

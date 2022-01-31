@@ -1,20 +1,33 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.widget.DynamicGridView;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
-public class amij
-  implements ValueAnimator.AnimatorUpdateListener
+class amij
+  extends ClickableSpan
 {
-  public amij(DynamicGridView paramDynamicGridView) {}
+  amij(amii paramamii, String paramString, Context paramContext) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    this.a.invalidate();
+    bahl.a(this.jdField_a_of_type_JavaLangString, BaseApplicationImpl.getApplication().getRuntime().getAccount(), (Activity)this.jdField_a_of_type_AndroidContentContext);
+    awqx.b(null, "dc00898", "", "", amii.a(this.jdField_a_of_type_Amii), amii.a(this.jdField_a_of_type_Amii), 2, 0, "", "", "", "");
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#4D94FF"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amij
  * JD-Core Version:    0.7.0.1
  */

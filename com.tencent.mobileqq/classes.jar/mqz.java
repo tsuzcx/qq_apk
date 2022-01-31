@@ -1,57 +1,73 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ImageData;
-import com.tencent.biz.pubaccount.util.PubAccountHttpDownloader;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
+import OnlinePushPack.SvcRespPushMsg;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.biz.game.SensorAPIJavaScript.9.1;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 
-class mqz
-  implements URLDrawableDownListener
+public class mqz
+  implements mqp
 {
-  mqz(mqy parammqy) {}
+  public mqz(SensorAPIJavaScript paramSensorAPIJavaScript) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public void a(int paramInt, SvcRespPushMsg paramSvcRespPushMsg)
   {
-    QLog.d("Q.readinjoy.fast_web", 2, " onLoadFailed: " + paramURLDrawable.getURL().toString() + " retryCnt: " + mqy.a(this.a));
-    paramView = PubAccountHttpDownloader.a(((ImageData)this.a.a).jdField_a_of_type_JavaLangString, 4);
-    if ((paramView != null) && (paramView.equals(paramURLDrawable.getURL())))
+    if (this.a.jdField_a_of_type_AndroidAppActivity != null)
     {
-      if (mqy.b(this.a) < 2) {
-        mqy.c(this.a);
+      AppInterface localAppInterface = this.a.mRuntime.a();
+      if (localAppInterface != null)
+      {
+        ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", localAppInterface.getAccount(), "OnlinePush.RespPush");
+        localToServiceMsg.setNeedCallback(false);
+        UniPacket localUniPacket = new UniPacket(true);
+        localUniPacket.setEncodeName("utf-8");
+        int i = avys.a;
+        avys.a = i + 1;
+        localUniPacket.setRequestId(i);
+        localUniPacket.setServantName("OnlinePush");
+        localUniPacket.setFuncName("SvcRespPushMsg");
+        localUniPacket.setRequestId(paramInt);
+        localUniPacket.put("resp", paramSvcRespPushMsg);
+        localToServiceMsg.putWupBuffer(localUniPacket.encode());
+        paramSvcRespPushMsg = new NewIntent(this.a.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), alwi.class);
+        paramSvcRespPushMsg.putExtra(ToServiceMsg.class.getSimpleName(), localToServiceMsg);
+        localAppInterface.startServlet(paramSvcRespPushMsg);
+        if (QLog.isColorLevel()) {
+          QLog.d("SensorApi", 2, "reply push");
+        }
       }
-      mqy.d(this.a);
-      StatisticCollector.a(BaseApplication.getContext()).a(null, "NativeWebImageUI", false, 0L, 0L, null, "", true);
     }
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void a(int paramInt, String paramString)
   {
-    paramView = (ImageData)this.a.a;
-    URL localURL = PubAccountHttpDownloader.a(paramView.jdField_a_of_type_JavaLangString, 4);
-    if ((localURL != null) && (localURL.equals(paramURLDrawable.getURL())))
+    String str = SensorAPIJavaScript.jdField_a_of_type_Mqm.a(String.valueOf(paramInt));
+    if (!TextUtils.isEmpty(str))
     {
-      if ((paramView.jdField_a_of_type_Int == 0) || (paramView.b == 0))
-      {
-        mqy.a(this.a, paramURLDrawable);
-        mqy.a(this.a).setImageDrawable(paramURLDrawable);
+      if (QLog.isColorLevel()) {
+        QLog.d("SensorApi", 2, "send data to appId=" + paramInt);
       }
-      StatisticCollector.a(BaseApplication.getContext()).a(null, "NativeWebImageUI", true, 0L, 0L, null, "", true);
+      if (this.a.jdField_a_of_type_AndroidOsHandler == null) {
+        this.a.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new SensorAPIJavaScript.9.1(this, str, paramString));
     }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("SensorApi", 2, "appId=" + paramInt + "'s callback is empty");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     mqz
  * JD-Core Version:    0.7.0.1
  */

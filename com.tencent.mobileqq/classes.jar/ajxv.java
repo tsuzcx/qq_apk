@@ -1,30 +1,52 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import android.webkit.URLUtil;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.mtt.MttBrowerWrapper;
+import com.tencent.mobileqq.app.automator.step.GetTroopAssisMsg;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ajxv
-  extends ClickableSpan
+public class ajxv
+  extends ajmm
 {
-  public ajxv(String paramString, MessageRecord paramMessageRecord) {}
+  private ajxv(GetTroopAssisMsg paramGetTroopAssisMsg) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2)
   {
-    String str = URLUtil.guessUrl(this.jdField_a_of_type_JavaLangString);
-    MttBrowerWrapper.a(paramView.getContext(), str, true, true, true, false, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "onGetAllProxyMsgFin:" + paramBoolean + ", timeoutFlag=" + paramLong1 + ", type=" + paramLong2);
+    }
+    if (paramLong2 == 1L) {
+      if ((!paramBoolean) || (paramLong1 == 8L) || (paramLong1 == 4L)) {
+        break label95;
+      }
+    }
+    label95:
+    for (int i = 1; i == 0; i = 0)
+    {
+      this.a.a(6);
+      return;
+    }
+    this.a.a(7);
   }
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  protected void a(boolean paramBoolean, String[] paramArrayOfString)
   {
-    paramTextPaint.setColor(paramTextPaint.linkColor);
-    paramTextPaint.setUnderlineText(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "on GetTroopMsg Fin:" + paramBoolean);
+    }
+    befa.a().h();
+    this.a.a(7);
+  }
+  
+  protected void g(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "on RegisterProxy Fin:" + paramBoolean);
+    }
+    if (!paramBoolean) {
+      this.a.a(6);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajxv
  * JD-Core Version:    0.7.0.1
  */

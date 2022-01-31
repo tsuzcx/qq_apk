@@ -1,17 +1,47 @@
-public class agyj
+import android.content.ComponentName;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity;
+import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+
+class agyj
+  implements View.OnClickListener
 {
-  public String a;
-  public String b;
+  agyj(agxq paramagxq) {}
   
-  public agyj(String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    paramView = QQPlayerService.a();
+    int i;
+    if (paramView != null)
+    {
+      agxq.a(this.a).startActivity(paramView);
+      paramView = paramView.getComponent().getClassName();
+      if (!paramView.equals(MusicPlayerActivity.class.getName())) {
+        break label125;
+      }
+      i = 0;
+    }
+    for (;;)
+    {
+      awqx.a(agxq.a(this.a).app, "dc00898", "", "", "0X8009EE4", "0X8009EE4", 1, 0, "", "", "", "");
+      awqx.b(agxq.a(this.a).app, "CliOper", "", "", "Msg_tab", "Mt_music_tips", 0, 0, "" + i, "", "", "");
+      return;
+      label125:
+      if (paramView.equals(MusicGeneQQBrowserActivity.class.getName())) {
+        i = 1;
+      } else {
+        i = -1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agyj
  * JD-Core Version:    0.7.0.1
  */

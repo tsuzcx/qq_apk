@@ -1,25 +1,32 @@
-import com.tencent.mobileqq.ar.ScanningData;
-import com.tencent.mobileqq.ar.ScanningSurfaceView;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.data.AccountDetail;
 
 public class aakv
-  implements Runnable
+  extends azhw
 {
-  public aakv(ScanningSurfaceView paramScanningSurfaceView, ScanningData paramScanningData1, ScanningData paramScanningData2) {}
+  public aakv(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail)
   {
-    ScanningData localScanningData = this.jdField_a_of_type_ComTencentMobileqqArScanningData;
-    if ((this.b != null) && (this.b.a) && (this.b.f) && (!this.b.e)) {}
-    for (boolean bool = true;; bool = false)
+    if (paramBoolean)
     {
-      localScanningData.a(bool);
-      return;
+      Message localMessage = Message.obtain();
+      localMessage.what = 16;
+      Bundle localBundle = new Bundle();
+      localBundle.putString("uinname", paramAccountDetail.name);
+      localBundle.putString("extra_type", paramAccountDetail.summary);
+      localBundle.putLong("uin", paramLong);
+      localMessage.setData(localBundle);
+      this.a.a.sendMessage(localMessage);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aakv
  * JD-Core Version:    0.7.0.1
  */

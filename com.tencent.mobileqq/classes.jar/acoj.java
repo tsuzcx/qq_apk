@@ -1,24 +1,56 @@
-import com.tencent.mobileqq.emoticonview.EmotionPanelDataBuilder.EmotionPanelDataCallback;
-import com.tencent.mobileqq.emoticonview.MagicFaceAdapter;
-import java.util.List;
+import android.graphics.Matrix;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 
-public class acoj
-  implements EmotionPanelDataBuilder.EmotionPanelDataCallback
+class acoj
+  extends Animation
 {
-  public acoj(MagicFaceAdapter paramMagicFaceAdapter) {}
+  private float jdField_a_of_type_Float;
+  private float b;
   
-  public void a(List paramList)
+  acoj(acoh paramacoh) {}
+  
+  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
-    if (paramList != null)
+    float f2 = 1.0F;
+    float f1;
+    if (paramFloat < this.jdField_a_of_type_Acoh.jdField_a_of_type_Float * 11.0F)
     {
-      this.a.a(paramList);
-      this.a.notifyDataSetChanged();
+      f1 = paramFloat / (this.jdField_a_of_type_Acoh.jdField_a_of_type_Float * 11.0F);
+      if (paramFloat >= this.jdField_a_of_type_Acoh.jdField_a_of_type_Float * 6.0F) {
+        break label139;
+      }
+      f2 = 1.0F + paramFloat / (this.jdField_a_of_type_Acoh.jdField_a_of_type_Float * 6.0F) * 0.5F;
     }
+    for (;;)
+    {
+      paramTransformation.setAlpha(f1);
+      paramTransformation.getMatrix().setScale(f2, f2, this.jdField_a_of_type_Float, this.b);
+      return;
+      if (paramFloat < this.jdField_a_of_type_Acoh.jdField_a_of_type_Float * 20.0F)
+      {
+        f1 = 1.0F;
+        break;
+      }
+      f1 = 1.0F - (paramFloat - this.jdField_a_of_type_Acoh.jdField_a_of_type_Float * 20.0F) / (4.0F * this.jdField_a_of_type_Acoh.jdField_a_of_type_Float);
+      break;
+      label139:
+      if (paramFloat < this.jdField_a_of_type_Acoh.jdField_a_of_type_Float * 11.0F) {
+        f2 = 1.5F - (paramFloat - this.jdField_a_of_type_Acoh.jdField_a_of_type_Float * 6.0F) * 0.5F / (5.0F * this.jdField_a_of_type_Acoh.jdField_a_of_type_Float);
+      }
+    }
+  }
+  
+  public void initialize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.jdField_a_of_type_Float = (paramInt1 * 0.5F);
+    this.b = (paramInt2 * 0.5F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acoj
  * JD-Core Version:    0.7.0.1
  */

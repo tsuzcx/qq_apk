@@ -1,125 +1,71 @@
-import android.util.SparseArray;
-import android.view.View;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.QQStoryManager;
-import com.tencent.biz.qqstory.base.QQStoryObserver;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.MainPageChangeEvent;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHolder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.jsp.QQStoryApiPlugin;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-import com.tribe.async.dispatch.Dispatchers;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import java.net.URL;
 import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class nou
-  extends QQStoryObserver
 {
-  public nou(NewFriendsPlayMode paramNewFriendsPlayMode) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
+  public static JSONObject a(JSONObject paramJSONObject, AdData paramAdData)
   {
-    Object localObject1 = (UserManager)SuperManager.a(2);
-    Object localObject2 = ((UserManager)localObject1).a(paramString, false);
-    QQUserUIItem localQQUserUIItem = ((UserManager)localObject1).b(paramString);
-    QQStoryApiPlugin.a(PlayModeUtils.a(), paramBoolean2, (String)localObject2, QQStoryContext.a().a());
-    if (paramBoolean1)
+    try
     {
-      label159:
-      int j;
-      if (paramBoolean2)
-      {
-        paramInt = 1;
-        localQQUserUIItem.isSubscribe = paramInt;
-        ThreadManager.post(new nov(this, (UserManager)localObject1, localQQUserUIItem), 5, null, false);
-        if (paramBoolean2)
-        {
-          localObject1 = (QQStoryManager)PlayModeUtils.a().getManager(180);
-          if (!((QQStoryManager)localObject1).h())
-          {
-            ((QQStoryManager)localObject1).c();
-            QQToast.a(PlayModeUtils.a(), 2, "已关注，可随时查看对方的最新视频", 0).a();
-          }
-          localObject1 = new MainPageChangeEvent(2);
-          Dispatchers.get().dispatch((Dispatcher.Dispatchable)localObject1);
-        }
-        int i = this.a.a.jdField_a_of_type_AndroidUtilSparseArray.size();
-        paramInt = 0;
-        if (paramInt >= i) {
-          break label454;
-        }
-        j = this.a.a.jdField_a_of_type_AndroidUtilSparseArray.keyAt(paramInt);
-        localObject1 = (VideoPlayerPagerAdapter.VideoViewHolder)this.a.a.jdField_a_of_type_AndroidUtilSparseArray.valueAt(paramInt);
-        if (localObject1 != null) {
-          break label217;
-        }
+      if (paramAdData.jdField_a_of_type_Nmo == null) {
+        return paramJSONObject;
       }
-      for (;;)
-      {
-        paramInt += 1;
-        break label159;
-        paramInt = 0;
-        break;
-        label217:
-        if ((Math.abs(this.a.b - j) <= 2) && (j < this.a.a.jdField_a_of_type_JavaUtilArrayList.size()))
-        {
-          localObject2 = (StoryVideoItem)this.a.a.jdField_a_of_type_JavaUtilArrayList.get(j);
-          if ((localObject2 != null) && (((StoryVideoItem)localObject2).mStoryType == 1) && (((StoryVideoItem)localObject2).mOwnerUid.equals(localQQUserUIItem.uid))) {
-            if (paramString.equals(((StoryVideoItem)localObject2).mOwnerUid))
-            {
-              if (paramBoolean2) {
-                ((View)((VideoPlayerPagerAdapter.VideoViewHolder)localObject1).jdField_a_of_type_AndroidUtilSparseArray.get(2131371693)).setVisibility(8);
-              } else {
-                ((View)((VideoPlayerPagerAdapter.VideoViewHolder)localObject1).jdField_a_of_type_AndroidUtilSparseArray.get(2131371693)).setVisibility(0);
-              }
-            }
-            else if (QLog.isColorLevel()) {
-              QLog.d("VipCardPlayMode", 2, "他人视频, 不刷新关注按钮");
-            }
-          }
-        }
+      paramJSONObject.put("style_ID", "ReadInjoy_ad_banner_triple_pic_game_cell");
+      if (!TextUtils.isEmpty(paramAdData.J)) {
+        paramJSONObject.put("id_game_small_img", new JSONObject());
       }
+      if (!TextUtils.isEmpty(paramAdData.q))
+      {
+        localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("text", paramAdData.q);
+        paramJSONObject.put("id_tv_author", localObject1);
+      }
+      if (!TextUtils.isEmpty(paramAdData.k))
+      {
+        localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("text", paramAdData.k);
+        paramJSONObject.put("id_tv_title", localObject1);
+      }
+      if ((paramAdData.jdField_a_of_type_JavaUtilArrayList != null) && (paramAdData.jdField_a_of_type_JavaUtilArrayList.size() > 2))
+      {
+        Object localObject3 = rsl.a((String)paramAdData.jdField_a_of_type_JavaUtilArrayList.get(0), 4);
+        Object localObject2 = rsl.a((String)paramAdData.jdField_a_of_type_JavaUtilArrayList.get(1), 4);
+        localObject1 = rsl.a((String)paramAdData.jdField_a_of_type_JavaUtilArrayList.get(2), 4);
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("multi_img_url1", ((URL)localObject3).toString());
+        paramJSONObject.put("id_multi_img_1", localJSONObject);
+        localObject3 = new JSONObject();
+        ((JSONObject)localObject3).put("multi_img_url2", ((URL)localObject2).toString());
+        paramJSONObject.put("id_multi_img_2", localObject3);
+        localObject2 = new JSONObject();
+        ((JSONObject)localObject2).put("multi_img_url3", ((URL)localObject1).toString());
+        paramJSONObject.put("id_multi_img_3", localObject2);
+      }
+      paramJSONObject.put("id_ad_triple_imge_container", new JSONObject());
+      Object localObject1 = new JSONObject();
+      if (!TextUtils.isEmpty(paramAdData.L))
+      {
+        ((JSONObject)localObject1).put("text", paramAdData.L);
+        paramJSONObject.put("id_ad_dislike_button", localObject1);
+      }
+      paramJSONObject.put("id_game_operate_area", new JSONObject());
+      paramJSONObject.put("id_separator", new JSONObject());
+      paramJSONObject.put("id_ad_title", new JSONObject());
+      paramJSONObject.put("id_ad_title_rl", new JSONObject());
+      localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("innerGameModel", paramAdData);
+      paramJSONObject.put("id_view_AdDownloadView", localObject1);
+      return paramJSONObject;
     }
-    else
+    catch (JSONException paramAdData)
     {
-      if (!paramBoolean2) {
-        break label455;
-      }
-      paramString = "取消";
-      if (paramInt != 1) {
-        break label462;
-      }
-      QQToast.a(PlayModeUtils.a(), 1, paramString + "关注失败，请稍后重试", 0).a();
-      StoryReportor.a("play_video", "follow_fail", 0, 0, new String[] { "1" });
+      paramAdData.printStackTrace();
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("VipCardPlayMode", 2, "onSetPGCSubscribeStatus failed.");
-      }
-      label454:
-      return;
-      label455:
-      paramString = "";
-      break;
-      label462:
-      if (paramInt == 0)
-      {
-        QQToast.a(PlayModeUtils.a(), 1, paramString + "订阅失败，请稍后重试", 0).a();
-        StoryReportor.a("play_video", "follow_fail", 0, 0, new String[] { "2" });
-      }
-    }
+    return paramJSONObject;
   }
 }
 

@@ -1,32 +1,43 @@
-import android.annotation.TargetApi;
-import android.view.View;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
+import java.util.Iterator;
+import java.util.List;
 
-public final class anxd
-  implements ValueAnimation.AnimationUpdateListener
+public class anxd
+  extends AsyncTask<Void, Void, Integer>
 {
-  public anxd(View paramView) {}
+  public anxd(FMLocalFileActivity paramFMLocalFileActivity) {}
   
-  @TargetApi(11)
-  public void a(ValueAnimation paramValueAnimation, float paramFloat, Float paramFloat1, Transformation paramTransformation)
+  protected Integer a(Void... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("QIMAnimationUtils", 2, "alphaAnimation value = " + paramFloat1);
-    }
-    paramFloat = paramFloat1.floatValue();
-    if (this.a != null)
+    return Integer.valueOf(apcc.b(this.a));
+  }
+  
+  protected void a(Integer paramInteger)
+  {
+    super.onPostExecute(paramInteger);
+    this.a.stopTitleProgress();
+    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      this.a.setAlpha(paramFloat);
-      this.a.invalidate();
+      aonq localaonq = (aonq)localIterator.next();
+      if (localaonq.e == 4)
+      {
+        localaonq.d = paramInteger.intValue();
+        this.a.jdField_a_of_type_Aono.notifyDataSetChanged();
+      }
     }
+  }
+  
+  protected void onPreExecute()
+  {
+    super.onPreExecute();
+    this.a.startTitleProgress();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anxd
  * JD-Core Version:    0.7.0.1
  */

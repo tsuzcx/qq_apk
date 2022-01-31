@@ -1,18 +1,31 @@
 package com.tencent.mobileqq.activity.registerGuideLogin;
 
+import ahen;
+import aheo;
+import ajop;
 import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.content.res.Resources;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import awqx;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
+import java.io.InputStream;
 
 public class RegisterGuideView
   extends GuideBaseFragment
@@ -20,9 +33,7 @@ public class RegisterGuideView
 {
   private View jdField_a_of_type_AndroidViewView;
   private Button jdField_a_of_type_AndroidWidgetButton;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private Button jdField_b_of_type_AndroidWidgetButton;
-  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private Button b;
   
   public RegisterGuideView() {}
   
@@ -32,62 +43,90 @@ public class RegisterGuideView
     super(paramQQAppInterface);
   }
   
-  public void a(boolean paramBoolean)
+  public Dialog a(int paramInt)
   {
-    if (paramBoolean) {
-      if (this.jdField_b_of_type_AndroidWidgetImageView != null) {
-        this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    }
+    if (getActivity() != null)
+    {
+      localObject = getActivity();
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {}
+      for (str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();; str = "") {
+        return ajop.a((Context)localObject, str);
       }
     }
-    while (this.jdField_b_of_type_AndroidWidgetImageView == null) {
-      return;
+    Object localObject = BaseApplicationImpl.getContext();
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {}
+    for (String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();; str = "") {
+      return ajop.a((Context)localObject, str);
     }
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
   }
   
   public void onClick(View paramView)
   {
+    int i = paramView.getId();
+    if ((i != 2131298029) && (i == 2131298077)) {}
     switch (paramView.getId())
     {
     default: 
-    case 2131364911: 
+    case 2131298029: 
       do
       {
         return;
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007575", "0X8007575", 0, 0, "", "", "", "");
+        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007575", "0X8007575", 0, 0, "", "", "", "");
         paramView = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent();
         paramView.putExtra("from_register_guide", true);
         paramView.putExtra("is_need_show_logo_animation", true);
-        paramView = GuideHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      } while (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment$GuideCallBack == null);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment$GuideCallBack.a(paramView);
+        paramView = aheo.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      } while (this.jdField_a_of_type_Ahen == null);
+      this.jdField_a_of_type_Ahen.a(paramView);
       return;
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007576", "0X8007576", 0, 0, "", "", "", "");
+    awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007576", "0X8007576", 0, 0, "", "", "", "");
     paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, RegisterPhoneNumActivity.class);
-    paramView.putExtra("leftViewText", this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131433712));
+    paramView.putExtra("key_register_from", 2);
+    paramView.putExtra("leftViewText", this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131625011));
     paramView.addFlags(67108864);
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramView);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2130969060, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131364907));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramLayoutInflater.findViewById(2131364908));
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.findViewById(2131363113);
+    paramViewGroup = paramLayoutInflater.inflate(2131493629, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = paramViewGroup.findViewById(2131297793);
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramLayoutInflater.findViewById(2131364911));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramLayoutInflater.findViewById(2131364912));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131298029));
+    this.b = ((Button)paramViewGroup.findViewById(2131298077));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.isInMultiWindow())
+    this.b.setOnClickListener(this);
+    paramBundle = (ImageView)paramViewGroup.findViewById(2131310603);
+    paramLayoutInflater = "splash.jpg";
+    try
     {
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      return paramLayoutInflater;
+      if (paramViewGroup.getContext().getResources().getDisplayMetrics().widthPixels > 1500) {
+        paramLayoutInflater = "splash_big.jpg";
+      }
+      paramLayoutInflater = getActivity().getAssets().open(paramLayoutInflater);
+      paramBundle.setImageDrawable(new BitmapDrawable(getResources(), paramLayoutInflater));
+      try
+      {
+        paramLayoutInflater.close();
+        return paramViewGroup;
+      }
+      catch (Throwable paramLayoutInflater)
+      {
+        QLog.e("LoginActivity.RegisterGuideView", 1, "onCreateView error1:" + paramLayoutInflater.getMessage());
+        return paramViewGroup;
+      }
+      return paramViewGroup;
     }
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-    return paramLayoutInflater;
+    catch (Throwable paramLayoutInflater)
+    {
+      QLog.e("LoginActivity.RegisterGuideView", 1, "onCreateView error2:" + paramLayoutInflater.getMessage());
+    }
   }
 }
 

@@ -1,19 +1,13 @@
-import android.graphics.drawable.Animatable;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import java.util.HashMap;
 
 public class aldx
-  implements Runnable
 {
-  public aldx(QQProgressDialog paramQQProgressDialog) {}
-  
-  public void run()
-  {
-    QQProgressDialog.a(this.a).start();
-  }
+  public int a;
+  public final HashMap<String, aldy> a = new HashMap();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aldx
  * JD-Core Version:    0.7.0.1
  */

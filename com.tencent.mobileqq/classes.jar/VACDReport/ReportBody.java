@@ -9,8 +9,8 @@ public final class ReportBody
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList cache_reportItems;
-  public ArrayList reportItems;
+  static ArrayList<ReportItem> cache_reportItems;
+  public ArrayList<ReportItem> reportItems;
   public String sKey = "";
   public long startTime;
   public long totalTime;

@@ -1,43 +1,29 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.app.BizTroopHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
 
 class vet
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  vet(ves paramves, ActionSheet paramActionSheet) {}
+  vet(ves paramves, vev paramvev) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    switch (paramInt)
-    {
+    if (!this.jdField_a_of_type_Vev.a()) {
+      this.jdField_a_of_type_Vev.b();
     }
-    do
+    for (;;)
     {
-      return;
-    } while (this.jdField_a_of_type_Ves.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 3000);
-    try
-    {
-      long l = Long.valueOf(this.jdField_a_of_type_Ves.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue();
-      paramView = (BizTroopHandler)this.jdField_a_of_type_Ves.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22);
-      if (paramView != null) {
-        paramView.a(l);
+      if (this.jdField_a_of_type_Ves.a != null) {
+        this.jdField_a_of_type_Ves.a.a(this.jdField_a_of_type_Ves);
       }
-      ReportController.b(this.jdField_a_of_type_Ves.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_discuss", "", "grey", "Clk", 0, 0, "", String.valueOf(this.jdField_a_of_type_Ves.jdField_a_of_type_Int), "", "");
       return;
+      this.jdField_a_of_type_Vev.c();
     }
-    catch (NumberFormatException paramView) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vet
  * JD-Core Version:    0.7.0.1
  */

@@ -1,94 +1,60 @@
-import com.tencent.mobileqq.activity.bless.BlessManager;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.HashMap;
 
-public class wks
-  extends MessageObserver
+public abstract class wks
 {
-  public wks(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  wks jdField_a_of_type_Wks;
+  wkt jdField_a_of_type_Wkt;
+  String c;
+  String d;
   
-  public void a(boolean paramBoolean, int paramInt)
+  public wks(wju paramwju, wkt paramwkt, String paramString)
   {
-    int i = 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessManager", 2, "onBlessDirtyTextCheck " + paramBoolean + " ,code=" + paramInt);
-    }
-    if (paramBoolean) {}
-    while ((i != 0) && (!BlessSelectMemberActivity.b()))
-    {
-      BlessSelectMemberActivity.a(this.a, BlessSelectMemberActivity.a(this.a));
-      return;
-      if (paramInt != 0) {
-        if (paramInt == 1)
-        {
-          BlessSelectMemberActivity.a(this.a, 2131438302, true);
-          i = 0;
-        }
-        else
-        {
-          if (paramInt == 8) {
-            BlessSelectMemberActivity.a(this.a, 2131438303, true);
-          }
-          i = 0;
-        }
-      }
-    }
-    this.a.e();
+    this.jdField_a_of_type_Wkt = paramwkt;
+    this.c = paramString;
   }
   
-  public void a(boolean paramBoolean1, int paramInt, long paramLong, boolean paramBoolean2)
+  public File a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessManager", 2, "onSendBlessMsgResp " + paramBoolean1 + " ,replyCode=" + paramInt + " waitTime=" + paramLong + " ,entrance=" + BlessSelectMemberActivity.a(this.a));
+    int i = this.c.indexOf("_");
+    Object localObject = this.c.substring(i + 1, this.c.length());
+    localObject = new File(wju.jdField_a_of_type_JavaLangString + File.separator + (String)localObject);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
     }
-    if (!this.a.a) {
-      return;
-    }
-    this.a.a = false;
-    if (paramInt == 67L)
-    {
-      BlessSelectMemberActivity.a(System.currentTimeMillis());
-      this.a.a(paramLong);
-      this.a.e();
-      BlessSelectMemberActivity.a(this.a, 2131438305, true);
-      return;
-    }
-    this.a.a(paramBoolean1, paramBoolean2);
+    return localObject;
   }
   
-  protected void c(boolean paramBoolean, String paramString)
+  public wke a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessSelectMemberActivity", 2, "onUpdateMsgContent, isSuc:" + paramBoolean + " ,type:" + BlessSelectMemberActivity.b(this.a));
-    }
-    if (BlessSelectMemberActivity.b(this.a) == 3) {
-      if (paramBoolean) {
-        BlessSelectMemberActivity.a(this.a);
-      }
-    }
-    do
+    synchronized (this.b.jdField_a_of_type_JavaLangObject)
     {
-      do
-      {
-        return;
-        this.a.e();
-        BlessSelectMemberActivity.a(this.a, 2131438306, false);
-        return;
-      } while (BlessSelectMemberActivity.b(this.a) != 2);
-      if ((BlessSelectMemberActivity.a(this.a).a() == null) || (!paramBoolean))
-      {
-        this.a.e();
-        BlessSelectMemberActivity.a(this.a, 2131438307, false);
-        return;
-      }
-    } while (BlessSelectMemberActivity.b());
-    BlessSelectMemberActivity.b(this.a);
+      wke localwke = (wke)this.b.jdField_a_of_type_JavaUtilHashMap.get(this.c);
+      return localwke;
+    }
+  }
+  
+  public abstract void a();
+  
+  public File b()
+  {
+    File localFile = new File(wju.jdField_a_of_type_JavaLangString + File.separator + "cache");
+    if (!localFile.exists()) {
+      localFile.mkdirs();
+    }
+    return localFile;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Wks != null) {
+      this.jdField_a_of_type_Wks.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wks
  * JD-Core Version:    0.7.0.1
  */

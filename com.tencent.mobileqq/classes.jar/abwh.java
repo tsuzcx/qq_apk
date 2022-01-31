@@ -1,48 +1,48 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Locale;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class abwh
-  implements Runnable
+public class abwh
+  implements DialogInterface.OnClickListener
 {
-  public abwh(int paramInt, String paramString1, String paramString2, long paramLong) {}
+  public abwh(TroopDisbandActivity paramTroopDisbandActivity, bafb parambafb) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Bbmv == null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Bbmv = new bbmv(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity);
+    }
+    if (badq.d(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity))
+    {
+      paramDialogInterface = (ajtg)this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.app.a(20);
+      if (paramDialogInterface != null)
+      {
+        if ((this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.b & 0x1) == 0)
+        {
+          TroopDisbandActivity localTroopDisbandActivity = this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity;
+          localTroopDisbandActivity.b |= 0x1;
+          paramDialogInterface.l(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_JavaLangString);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Bbmv.b(0, 2131626630, 1000);
+      }
+    }
     for (;;)
     {
-      try
-      {
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("param_FailCode", String.valueOf(this.jdField_a_of_type_Int));
-        StatisticCollector localStatisticCollector = StatisticCollector.a(BaseApplicationImpl.getContext());
-        String str1 = this.jdField_a_of_type_JavaLangString;
-        String str2 = this.b;
-        if (this.jdField_a_of_type_Int != 0) {
-          continue;
-        }
-        bool = true;
-        localStatisticCollector.a(str1, str2, bool, this.jdField_a_of_type_Long, 0L, localHashMap, "");
+      if ((this.jdField_a_of_type_Bafb != null) && (this.jdField_a_of_type_Bafb.isShowing())) {
+        this.jdField_a_of_type_Bafb.cancel();
       }
-      catch (Exception localException)
-      {
-        boolean bool;
-        localException.printStackTrace();
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("CampusCircleHelper", 2, String.format(Locale.getDefault(), "reportPerformance account: %s tag: %s resultCode: %d cost: %d", new Object[] { this.jdField_a_of_type_JavaLangString, this.b, Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_Long) }));
-      }
+      awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.app, "CliOper", "", "", "Grp", "Dismiss_grp_OK", 0, 0, "", "", "", "");
       return;
-      bool = false;
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Bbmv.b(2, 2131626626, 1500);
+      continue;
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopDisbandActivity.jdField_a_of_type_Bbmv.b(2, 2131629008, 1500);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abwh
  * JD-Core Version:    0.7.0.1
  */

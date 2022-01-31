@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.msf.sdk.utils;
 
 import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -21,9 +19,9 @@ public class MonitorSocketStat
   private static Handler mMonitorSocketHandler;
   private static HandlerThread mMonitorSocketThread;
   static final String tag = "MonitorSocketStat";
-  private byte STATUS;
+  private byte STATUS = 0;
   private final LinkedBlockingDeque dataFlow = new LinkedBlockingDeque();
-  private boolean isScreenOff;
+  private boolean isScreenOff = false;
   private long lastgotStatusTime;
   private BroadcastReceiver mReceiver;
   private String processName;
@@ -32,7 +30,7 @@ public class MonitorSocketStat
   public MonitorSocketStat()
   {
     setName("MonitorSocketStat");
-    this.mReceiver = new a(null);
+    this.mReceiver = new MonitorSocketStat.a(this, null);
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.intent.action.SCREEN_ON");
     localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
@@ -44,7 +42,7 @@ public class MonitorSocketStat
   
   private void getnetFlowStatus()
   {
-    runOnMonitorSocketThread(new e(this), 0);
+    runOnMonitorSocketThread(new f(this), 0);
   }
   
   public static boolean runOnMonitorSocketThread(Runnable paramRunnable, int paramInt)
@@ -93,49 +91,59 @@ public class MonitorSocketStat
     if (this.processName == null) {
       this.processName = MsfSdkUtils.getProcessName(BaseApplication.getContext());
     }
-    try
+    for (;;)
     {
       boolean bool;
-      if ((BaseApplication.getContext().getPackageName() + ":MSF").equals(this.processName))
+      try
       {
-        for (;;)
+        if ((BaseApplication.getContext().getPackageName() + ":MSF").equals(this.processName))
         {
           bool = this.running;
-          if (!bool) {
-            return;
-          }
-          try
-          {
-            b localb1 = (b)this.dataFlow.take();
-            localb1.a = this.processName;
-            if (localb1 != null) {
-              MsfService.getCore().getNetFlowStore().a(localb1);
-            }
-            if ((this.dataFlow.size() <= 1) && (System.currentTimeMillis() - this.lastgotStatusTime >= 60000L))
+          if (bool) {
+            try
             {
+              b localb1 = (b)this.dataFlow.take();
+              localb1.a = this.processName;
+              if (localb1 != null) {
+                MsfService.getCore().getNetFlowStore().a(localb1);
+              }
+              if ((this.dataFlow.size() > 1) || (System.currentTimeMillis() - this.lastgotStatusTime < 60000L)) {
+                continue;
+              }
               getnetFlowStatus();
               this.lastgotStatusTime = System.currentTimeMillis();
             }
-          }
-          catch (Throwable localThrowable)
-          {
-            QLog.d("MSF.D.MonitorSocket", 1, "" + localThrowable, localThrowable);
-            com.tencent.mobileqq.msf.sdk.report.e.a(localThrowable);
-            this.running = false;
-            if (this.dataFlow == null) {
-              return;
+            catch (Throwable localThrowable1)
+            {
+              QLog.d("MSF.D.MonitorSocket", 1, "" + localThrowable1, localThrowable1);
+              com.tencent.mobileqq.msf.sdk.report.e.a(localThrowable1);
+              this.running = false;
             }
           }
+          try
+          {
+            if (this.dataFlow != null) {
+              this.dataFlow.clear();
+            }
+            return;
+          }
+          catch (Throwable localThrowable2)
+          {
+            QLog.d("MSF.D.MonitorSocket", 1, "clear", localThrowable2);
+            return;
+          }
         }
-        this.dataFlow.clear();
+        bool = this.running;
+      }
+      catch (Exception localException1)
+      {
+        if (this.dataFlow != null) {
+          this.dataFlow.clear();
+        }
+        QLog.d("MSF.D.MonitorSocket", 1, "" + localException1, localException1);
         return;
       }
-      for (;;)
-      {
-        bool = this.running;
-        if (!bool) {
-          break;
-        }
+      while (bool) {
         try
         {
           b localb2 = (b)this.dataFlow.take();
@@ -146,7 +154,7 @@ public class MonitorSocketStat
             if (i < 0)
             {
               int j = (int)(Math.random() * 5.0D + 3.0D);
-              runOnMonitorSocketThread(new d(this, localb2, i), j * 1000);
+              runOnMonitorSocketThread(new e(this, localb2, i), j * 1000);
             }
           }
           if ((this.dataFlow.size() <= 1) && (System.currentTimeMillis() - this.lastgotStatusTime >= 60000L))
@@ -155,55 +163,18 @@ public class MonitorSocketStat
             this.lastgotStatusTime = System.currentTimeMillis();
           }
         }
-        catch (Exception localException1)
+        catch (Exception localException2)
         {
-          QLog.d("MSF.D.MonitorSocket", 1, "" + localException1, localException1);
+          QLog.d("MSF.D.MonitorSocket", 1, "" + localException2, localException2);
           this.running = false;
         }
       }
-      return;
-    }
-    catch (Exception localException2)
-    {
-      if (this.dataFlow != null) {
-        this.dataFlow.clear();
-      }
-      QLog.d("MSF.D.MonitorSocket", 1, "" + localException2, localException2);
     }
   }
   
   public void setProcessName(String paramString)
   {
     this.processName = paramString;
-  }
-  
-  private class a
-    extends BroadcastReceiver
-  {
-    private String b;
-    
-    private a() {}
-    
-    public void onReceive(Context paramContext, Intent paramIntent)
-    {
-      this.b = paramIntent.getAction();
-      if ("android.intent.action.SCREEN_ON".equals(this.b))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.D.MonitorSocket", 2, "screenOn");
-        }
-        MonitorSocketStat.access$202(MonitorSocketStat.this, false);
-        MonitorSocketStat.this.getnetFlowStatus();
-      }
-      while (!"android.intent.action.SCREEN_OFF".equals(this.b)) {
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.D.MonitorSocket", 2, "screenOff");
-      }
-      MonitorSocketStat.access$202(MonitorSocketStat.this, true);
-      MonitorSocketStat.this.getnetFlowStatus();
-    }
   }
 }
 

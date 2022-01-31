@@ -9,8 +9,9 @@ public class CropByPivotProcessor
   extends ImageProcessor
 {
   public static float GOLDEN_CUDGEL_RATIO = 1.78F;
-  public float mPivotXRate = 0.0F;
-  public float mPivotYRate = 0.0F;
+  private static final float PIVOT_DEFAULT_VALUE = 0.0F;
+  protected float mPivotXRate = 0.0F;
+  protected float mPivotYRate = 0.0F;
   
   public CropByPivotProcessor() {}
   

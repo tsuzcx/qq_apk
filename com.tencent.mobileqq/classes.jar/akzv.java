@@ -1,22 +1,24 @@
-import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController.OnBindCallback;
-import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppDownloadModule.5;
+import cooperation.wadl.ipc.WadlParams;
 
 public class akzv
-  implements GameRoomAVController.OnBindCallback
+  implements DialogInterface.OnClickListener
 {
-  public akzv(WerewolvesHostInterface paramWerewolvesHostInterface) {}
+  public akzv(ArkAppDownloadModule.5 param5) {}
   
-  public void bc()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.mGameRoomAVController.c();
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
+    awqx.a(null, "dc00898", "", "", "0X8009E13", "0X8009E13", 0, 0, "8", "", this.a.a.a, "");
   }
-  
-  public void bd() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akzv
  * JD-Core Version:    0.7.0.1
  */

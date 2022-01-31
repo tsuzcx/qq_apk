@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/bti" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/dwz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <RelativeLayout android:gravity="center" android:id="@id/icf" android:background="#b4000000" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="22.0sp" android:textColor="@color/al3" android:id="@id/k8c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip" android:text="@string/lrd" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="18.0sp" android:textColor="@color/al3" android:id="@id/k8d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip" android:layout_below="@id/k8c" android:layout_centerHorizontal="true" />
+        <ProgressBar android:id="@id/fk7" android:layout_width="220.0dip" android:layout_height="4.0dip" android:layout_marginBottom="24.0dip" android:progressDrawable="@drawable/aun" android:layout_below="@id/k8d" android:layout_centerHorizontal="true" style="@style/x7" />
+        <TextView android:textSize="17.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/k61" android:background="@drawable/apy" android:layout_width="84.0dip" android:layout_height="32.0dip" android:text="@string/lrc" android:layout_below="@id/fk7" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

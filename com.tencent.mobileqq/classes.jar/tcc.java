@@ -1,28 +1,58 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.MsgTabNodeInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgListHeadNode;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-class tcc
-  implements Runnable
+public class tcc
+  extends slu
 {
-  tcc(tcb paramtcb, List paramList) {}
+  private String jdField_a_of_type_JavaLangString;
+  private List<ssm> jdField_a_of_type_JavaUtilList;
   
-  public void run()
+  public tcc(@NonNull qqstory_service.RspMsgListHeadNode paramRspMsgListHeadNode)
   {
-    if (Leba.a(this.jdField_a_of_type_Tcb.a) != null)
+    super(paramRspMsgListHeadNode.result);
+    this.jdField_a_of_type_JavaLangString = paramRspMsgListHeadNode.list_seq.get().toStringUtf8();
+    this.jdField_a_of_type_JavaUtilList = a(paramRspMsgListHeadNode.node_list.get());
+  }
+  
+  private static List<ssm> a(List<qqstory_service.MsgTabNodeInfo> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      Leba.a(this.jdField_a_of_type_Tcb.a).clear();
-      Leba.a(this.jdField_a_of_type_Tcb.a).addAll(this.jdField_a_of_type_JavaUtilList);
-      if (this.jdField_a_of_type_Tcb.a.a != null) {
-        this.jdField_a_of_type_Tcb.a.a.notifyDataSetChanged();
-      }
-      Leba.c(this.jdField_a_of_type_Tcb.a);
+      qqstory_service.MsgTabNodeInfo localMsgTabNodeInfo = (qqstory_service.MsgTabNodeInfo)paramList.next();
+      ssm localssm = new ssm();
+      localssm.a(localMsgTabNodeInfo);
+      localArrayList.add(localssm);
     }
+    return localArrayList;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public List<ssm> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public String toString()
+  {
+    return "RecentTabHaloResponse{mSeq='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mMsgTabNodeInfos=" + this.jdField_a_of_type_JavaUtilList + ", errorCode=" + this.jdField_a_of_type_Int + ", errorMsg='" + this.b + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tcc
  * JD-Core Version:    0.7.0.1
  */

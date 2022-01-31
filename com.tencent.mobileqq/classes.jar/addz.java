@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.filemanager.core.FileUploader;
+import android.content.Context;
+import com.tencent.mobileqq.data.MessageForFile;
 
-public class addz
-  implements Runnable
+class addz
+  implements apca
 {
-  public addz(FileUploader paramFileUploader) {}
+  addz(addx paramaddx, MessageForFile paramMessageForFile, Context paramContext) {}
   
-  public void run()
+  public void a()
   {
-    if (FileUploader.a(this.a)) {
-      return;
-    }
-    this.a.a(FileUploader.a(this.a));
+    apck.a(this.jdField_a_of_type_Addx.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     addz
  * JD-Core Version:    0.7.0.1
  */

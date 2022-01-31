@@ -1,151 +1,173 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewplugin.QzoneDynamicAlbumPlugin;
-import cooperation.qzone.webviewplugin.QzoneUiJsPlugin;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
 
 public class anlh
-  extends BroadcastReceiver
+  extends BaseAdapter
+  implements AdapterView.OnItemClickListener
 {
-  public anlh(QzoneUiJsPlugin paramQzoneUiJsPlugin) {}
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private anlj jdField_a_of_type_Anlj;
+  private String jdField_a_of_type_JavaLangString;
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public anlh(Context paramContext, anlj paramanlj)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneUiJsPlugin", 2, paramContext);
-    }
-    if ("com.qzone.topic.video.FakeFeed".equals(paramContext)) {
-      if (!TextUtils.isEmpty(QzoneUiJsPlugin.a(this.a))) {}
-    }
-    int i;
-    do
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Anlj = paramanlj;
+    this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(570425344);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846730);
+    this.jdField_a_of_type_Int = aciy.a(50.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+  }
+  
+  public static URL a(String paramString1, String paramString2)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("albumthumbpreview");
+    localStringBuilder.append("://");
+    localStringBuilder.append(paramString1);
+    if (paramString2 != null)
     {
-      JSONObject localJSONObject;
-      do
-      {
-        return;
-        paramContext = paramIntent.getStringExtra("key_topic_video_thumb_path");
-        i = paramIntent.getIntExtra("key_topic_video_thumb_width", 0);
-        int j = paramIntent.getIntExtra("key_topic_video_thumb_height", 0);
-        if (TextUtils.isEmpty(paramContext))
-        {
-          QLog.w("QzoneUiJsPlugin", 1, "topic video upload, video path is empty");
-          return;
-        }
-        localObject2 = QzoneDynamicAlbumPlugin.a(paramContext, i, j, true);
-        if (TextUtils.isEmpty((CharSequence)localObject2))
-        {
-          QLog.w("QzoneUiJsPlugin", 1, "topic video upload pic not exist,imageBase64 empty. path=" + paramContext);
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("QzoneUiJsPlugin", 2, "topicUploadVideo base64=data:image/jpg;base64," + (String)localObject2);
-        }
-        localObject1 = paramIntent.getStringExtra("key_topic_video_shuoshuo_content");
-        paramContext = (Context)localObject1;
-        if (localObject1 == null) {
-          paramContext = "";
-        }
-        paramIntent = paramIntent.getStringExtra("key_topic_video_clientkey");
-        localObject1 = new JSONObject();
-        try
-        {
-          ((JSONObject)localObject1).put("code", 0);
-          localJSONObject = new JSONObject();
-          localJSONObject.put("content", paramContext);
-          localJSONObject.put("msg", "");
-          localJSONObject.put("base64", "data:image/jpg;base64," + (String)localObject2);
-          localJSONObject.put("timestamp", paramIntent);
-          localJSONObject.put("isFakeFeed", true);
-          ((JSONObject)localObject1).put("data", localJSONObject);
-          this.a.a.callJs(QzoneUiJsPlugin.a(this.a), new String[] { ((JSONObject)localObject1).toString() });
-          return;
-        }
-        catch (JSONException paramContext)
-        {
-          QLog.w("QzoneUiJsPlugin", 1, "topicUploadVideo fake feed  callback error", paramContext);
-          return;
-        }
-        if (!"com.qzone.topic.video.HalfFakeFeed".equals(paramContext)) {
-          break;
-        }
-      } while (TextUtils.isEmpty(QzoneUiJsPlugin.a(this.a)));
-      paramContext = paramIntent.getStringExtra("key_topic_video_publish_msg");
-      localObject1 = paramIntent.getStringExtra("key_topic_video_tid");
-      paramIntent = paramIntent.getStringExtra("key_topic_video_clientkey");
-      localObject2 = new JSONObject();
-      try
-      {
-        ((JSONObject)localObject2).put("code", 0);
-        localJSONObject = new JSONObject();
-        localJSONObject.put("msg", paramContext);
-        localJSONObject.put("timestamp", paramIntent);
-        localJSONObject.put("ugcKey", localObject1);
-        ((JSONObject)localObject2).put("data", localJSONObject);
-        this.a.a.callJs(QzoneUiJsPlugin.a(this.a), new String[] { ((JSONObject)localObject2).toString() });
-        return;
+      localStringBuilder.append("#");
+      localStringBuilder.append(paramString2);
+    }
+    try
+    {
+      paramString1 = new URL(localStringBuilder.toString());
+      return paramString1;
+    }
+    catch (MalformedURLException paramString1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PreviewThumbAdapter", 2, paramString1.getMessage(), paramString1);
       }
-      catch (JSONException paramContext)
-      {
-        QLog.w("QzoneUiJsPlugin", 1, "topicUploadVideo half fake feed  callback error", paramContext);
-        return;
-      }
-    } while ((!"com.qzone.h5.video.recordCallback".equals(paramContext)) || (TextUtils.isEmpty(QzoneUiJsPlugin.b(this.a))));
-    paramContext = paramIntent.getStringExtra("param.thumbnailPath");
-    if (TextUtils.isEmpty(paramContext))
+    }
+    return null;
+  }
+  
+  public LocalMediaInfo a(String paramString)
+  {
+    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
+    localLocalMediaInfo.mMediaType = 0;
+    localLocalMediaInfo.path = paramString;
+    localLocalMediaInfo.thumbWidth = this.jdField_a_of_type_Int;
+    localLocalMediaInfo.thumbHeight = this.jdField_a_of_type_Int;
+    return localLocalMediaInfo;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public String a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      return (String)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public ArrayList<String> a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(ArrayList<String> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      return this.jdField_a_of_type_JavaUtilArrayList.size();
+    }
+    return 0;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject1;
+    if (paramView == null)
     {
-      QLog.e("QzoneUiJsPlugin", 1, "recordVideo callback thumbnailPath is empty");
-      return;
+      paramView = new anli(this);
+      localObject1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131493829, paramViewGroup, false);
+      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)((View)localObject1).findViewById(2131311431));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject1).findViewById(2131311429));
+      ((View)localObject1).setTag(paramView);
+      paramViewGroup = paramView;
+      paramView = (View)localObject1;
     }
-    Object localObject2 = QzoneDynamicAlbumPlugin.a(paramContext, paramIntent.getIntExtra("param.thumbnailWidth", 0), paramIntent.getIntExtra("param.thumbnailHeight", 0), true);
-    if (TextUtils.isEmpty((CharSequence)localObject2))
-    {
-      QLog.w("QzoneUiJsPlugin", 1, "h5 video record pic not exist,imageBase64 empty. thumbnailPath=" + paramContext);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("QzoneUiJsPlugin", 2, "h5 video record base64=data:image/jpg;base64," + (String)localObject2);
-    }
-    Object localObject1 = paramIntent.getStringExtra("param.content");
-    paramContext = (Context)localObject1;
-    if (localObject1 == null) {
-      paramContext = "";
-    }
-    boolean bool = paramIntent.getBooleanExtra("param.topicSyncQzone", false);
+    Object localObject2;
     for (;;)
     {
-      try
-      {
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("text", paramContext);
-        if (bool)
-        {
-          i = 1;
-          ((JSONObject)localObject1).put("sync_qzone", i);
-          ((JSONObject)localObject1).put("thumbnail", "data:image/jpg;base64," + (String)localObject2);
-          ((JSONObject)localObject1).put("video_info", QzoneUiJsPlugin.a(this.a, paramIntent));
-          this.a.a.callJs(QzoneUiJsPlugin.b(this.a), new String[] { ((JSONObject)localObject1).toString() });
-          return;
-        }
+      localObject2 = a(paramInt);
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        break;
       }
-      catch (JSONException paramContext)
-      {
-        QLog.w("QzoneUiJsPlugin", 1, "recordVideo callback error", paramContext);
-        return;
+      return paramView;
+      paramViewGroup = (anli)paramView.getTag();
+    }
+    if (((String)localObject2).equals(this.jdField_a_of_type_JavaLangString)) {
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    }
+    for (;;)
+    {
+      localObject1 = a((String)localObject2);
+      localObject2 = a((String)localObject2, "DEFAULT");
+      URLDrawable localURLDrawable = paramViewGroup.jdField_a_of_type_ComTencentImageURLDrawable;
+      if ((localURLDrawable != null) && (localURLDrawable.getURL().toString().equals(((URL)localObject2).toString()))) {
+        break;
       }
-      i = 0;
+      localObject2 = axwd.a((URL)localObject2, this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      ((URLDrawable)localObject2).setTag(localObject1);
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject2);
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLDrawable = ((URLDrawable)localObject2);
+      return paramView;
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    }
+  }
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    if (this.jdField_a_of_type_Anlj != null) {
+      this.jdField_a_of_type_Anlj.a(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anlh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
 
 public class rmy
-  implements DialogInterface.OnDismissListener
+  extends rmo
+  implements rmh
 {
-  public rmy(AddFriendLogicActivity paramAddFriendLogicActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public rmy(Activity paramActivity, rmc paramrmc, VVideoView paramVVideoView)
   {
-    this.a.finish();
+    super(paramActivity, paramrmc, paramVVideoView);
   }
+  
+  public void a() {}
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rmy
  * JD-Core Version:    0.7.0.1
  */

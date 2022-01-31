@@ -1,25 +1,12 @@
-import com.tencent.mobileqq.text.AppleEmojiManager;
-import java.io.File;
-
-public final class aisr
-  implements Runnable
+public abstract interface aisr
 {
-  public aisr(File paramFile1, File paramFile2, File paramFile3) {}
+  public abstract void a(aisk paramaisk, long paramLong);
   
-  public void run()
-  {
-    if (this.a.exists()) {
-      this.a.delete();
-    }
-    if (this.b.exists()) {
-      this.b.delete();
-    }
-    AppleEmojiManager.a(this.c);
-  }
+  public abstract void a(aisk paramaisk, long paramLong, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aisr
  * JD-Core Version:    0.7.0.1
  */

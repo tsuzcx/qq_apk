@@ -3,11 +3,9 @@ package com.tencent.mobileqq.msf.core;
 import java.io.File;
 import java.util.Comparator;
 
-class n
+final class n
   implements Comparator
 {
-  n(m paramm) {}
-  
   public int a(File paramFile1, File paramFile2)
   {
     if (paramFile1.lastModified() > paramFile2.lastModified()) {

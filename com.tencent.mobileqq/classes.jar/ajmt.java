@@ -1,23 +1,10 @@
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadMgr;
-
-public class ajmt
-  implements Runnable
+public abstract interface ajmt
 {
-  public ajmt(TroopFileUploadMgr paramTroopFileUploadMgr) {}
-  
-  public void run()
-  {
-    if (!this.a.a) {
-      return;
-    }
-    AppNetConnInfo.unregisterNetInfoHandler(this.a);
-    this.a.a = false;
-  }
+  public abstract void a(boolean paramBoolean, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajmt
  * JD-Core Version:    0.7.0.1
  */

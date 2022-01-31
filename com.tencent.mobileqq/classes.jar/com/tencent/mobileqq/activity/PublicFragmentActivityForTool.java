@@ -1,10 +1,18 @@
 package com.tencent.mobileqq.activity;
 
+import abju;
+import android.app.Activity;
 import android.content.Intent;
+import com.tencent.mobileqq.fragment.PublicBaseFragment;
 
 public class PublicFragmentActivityForTool
   extends PublicFragmentActivity
 {
+  public static void b(Activity paramActivity, Intent paramIntent, Class<? extends PublicBaseFragment> paramClass, int paramInt)
+  {
+    abju.a(paramActivity, paramIntent, PublicFragmentActivityForTool.class, paramClass, paramInt);
+  }
+  
   public String getModuleId()
   {
     String str2 = getIntent().getStringExtra("moduleId");

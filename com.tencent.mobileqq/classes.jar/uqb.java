@@ -1,43 +1,23 @@
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.text.TextUtils;
 
 class uqb
-  implements PreloadManager.OnGetPathListener
+  implements unb<umi>
 {
-  uqb(uqa paramuqa) {}
+  uqb(upw paramupw, String paramString) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void a(umi paramumi)
   {
-    paramPathResult = paramPathResult.filePath;
-    if (paramInt == 0) {}
-    try
+    if ((paramumi.a != null) && (TextUtils.equals(paramumi.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)))
     {
-      paramPathResult = SafeBitmapFactory.decodeFile(paramPathResult, ImageUtil.a(paramPathResult, (int)(CustomizeStrategyFactory.a * 300.0F + 0.5D)));
-      if (paramPathResult != null) {
-        this.a.a.background = paramPathResult;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "ThemeCustomizeStrategy info.background=" + this.a.a.background);
-      }
+      upw.a(this.jdField_a_of_type_Upw).a = paramumi.a;
+      upw.a(this.jdField_a_of_type_Upw).sendMessage(upw.a(this.jdField_a_of_type_Upw).obtainMessage(0, upw.a(this.jdField_a_of_type_Upw)));
     }
-    catch (Throwable paramPathResult)
-    {
-      for (;;)
-      {
-        paramPathResult.printStackTrace();
-      }
-    }
-    CustomizeStrategyFactory.a().a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uqb
  * JD-Core Version:    0.7.0.1
  */

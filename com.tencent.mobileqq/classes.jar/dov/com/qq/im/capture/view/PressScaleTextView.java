@@ -5,11 +5,12 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.TextView;
+import bhpm;
 
 public class PressScaleTextView
   extends TextView
 {
-  private final PressScaleAnimDelegate a = new PressScaleAnimDelegate(this);
+  private final bhpm a = new bhpm(this);
   
   public PressScaleTextView(Context paramContext)
   {

@@ -1,22 +1,37 @@
-import android.view.WindowManager;
-import com.tencent.mobileqq.emoticonview.SystemEmoticonPanel;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput;
-
 public class akmh
-  implements Runnable
+  extends aklv
 {
-  public akmh(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput) {}
+  public akpn a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void run()
+  public akmh(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, String paramString4, akpn paramakpn, int paramInt3, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.a.jdField_a_of_type_AndroidViewWindowManager.addView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel, this.a.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
-    this.a.b = true;
-    this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel.post(new akmi(this));
+    super(paramString1, paramInt1, paramInt2, paramInt3, paramFloat1, paramFloat2, paramFloat3);
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = paramString3;
+    this.d = paramString4;
+    this.jdField_a_of_type_Akpn = paramakpn;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("GeneralAR_3D_ResourceInfo{");
+    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", trackMode=").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", mLuaScriptPath=").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", mResourceDirPath='").append(this.c).append('\'');
+    localStringBuilder.append(", mMusicPath='").append(this.d).append('\'');
+    localStringBuilder.append(", mLayout='").append(this.jdField_a_of_type_Akpn).append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akmh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,12 @@
 package com.tencent.component.media;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.HandlerThread;
 import android.os.Looper;
+import android.support.v4.util.MQLruCache;
 import android.util.Pair;
 import com.tencent.component.media.image.BitmapReference;
 import com.tencent.component.media.image.ImageLoader.Options;
@@ -123,6 +125,8 @@ public abstract class ImageManagerEnv
     }
   }
   
+  public abstract boolean canDoSuperResolution(int paramInt1, int paramInt2);
+  
   public abstract boolean checkShouldRunSuperResolutionBenchmark();
   
   public abstract boolean checkSuperResolutionSo();
@@ -131,7 +135,11 @@ public abstract class ImageManagerEnv
   
   public abstract boolean closeNativeAndinBitmap();
   
+  public abstract String convertSrUrlToBigUrl(String paramString);
+  
   public abstract boolean copyFiles(File paramFile1, File paramFile2);
+  
+  public abstract Bitmap doSuperResolution(Bitmap paramBitmap, int paramInt);
   
   public BitmapReference drawableToBitmap(Drawable paramDrawable)
   {
@@ -175,6 +183,8 @@ public abstract class ImageManagerEnv
   
   public abstract boolean getCurrentLoadingImgStatus();
   
+  public abstract int getCurrentSuperResolutionModelId();
+  
   public abstract int getDecodeThreadNum(boolean paramBoolean);
   
   public abstract int getDefaultSuperResolutionModelId();
@@ -186,6 +196,8 @@ public abstract class ImageManagerEnv
   public abstract IDownloader getDownloader(ImageManagerEnv.ImageDownloaderListener paramImageDownloaderListener);
   
   public abstract Executor getExecutor();
+  
+  public abstract Looper getFileThreadLooper();
   
   public abstract int getHaboReportSampleRange();
   
@@ -201,6 +213,8 @@ public abstract class ImageManagerEnv
   
   public abstract int getMinMemoryClassInArt();
   
+  public abstract int getModelIdFromUrl(String paramString);
+  
   public abstract int getNetWorkState();
   
   public abstract long getNoCacheImageExpiredTime();
@@ -210,6 +224,8 @@ public abstract class ImageManagerEnv
   public abstract String getProcessName(Context paramContext);
   
   public abstract String getQAParameterRex();
+  
+  public abstract MQLruCache getQQImagecache();
   
   public abstract int getRotationDegree(String paramString);
   
@@ -229,7 +245,7 @@ public abstract class ImageManagerEnv
   
   public abstract float getSuperResolutionGpuPercent();
   
-  public abstract Pair getSuperResolutionGpuRatioBoundary();
+  public abstract Pair<Float, Float> getSuperResolutionGpuRatioBoundary();
   
   public abstract int getSuperResolutionHighScaleModelId();
   
@@ -241,7 +257,15 @@ public abstract class ImageManagerEnv
   
   public abstract Drawable getWatermarkLogoDrawable();
   
+  public abstract boolean hasSuperResolutionInit();
+  
+  public abstract boolean isBigUrl(String paramString);
+  
+  public abstract boolean isForceShutdownGif();
+  
   public abstract boolean isGifSupport565();
+  
+  public abstract boolean isHighScaleUrl(String paramString);
   
   public abstract boolean isMainProcess(Context paramContext);
   
@@ -253,21 +277,31 @@ public abstract class ImageManagerEnv
   
   public abstract boolean isPreferNewGifDecodeTask();
   
+  public abstract boolean isQQProcess(Context paramContext);
+  
   public abstract boolean isSuperResolutionEnvReady();
   
   public abstract boolean isSuperResolutionModelReady(int paramInt);
+  
+  public abstract boolean isSuperResolutionUrl(String paramString);
   
   public abstract boolean isSupportGifPlaying();
   
   public abstract boolean isSupportSharpp();
   
+  public abstract boolean isWNSSupportPieceLoad();
+  
   public abstract boolean loadLibrary(String paramString);
   
   public abstract int loadSuperResolutionLibrary();
   
-  public abstract Pair loadSuperResolutionModelFile(int paramInt);
+  public abstract Pair<String, String> loadSuperResolutionModelFile(int paramInt);
   
   public abstract boolean needCheckAvatar();
+  
+  public abstract boolean needRerunSuperResolutionBenchmark(String paramString);
+  
+  public abstract boolean needSuperResolution(String paramString);
   
   public abstract boolean openProgressTracer();
   
@@ -301,15 +335,21 @@ public abstract class ImageManagerEnv
   
   public abstract void saveSuperResolutionLastModelId(int paramInt);
   
+  public abstract boolean shouldPlayAnimWebp();
+  
   public abstract boolean shouldPlayPhotoGif();
   
   public abstract void showToast(int paramInt1, Context paramContext, CharSequence paramCharSequence, int paramInt2);
   
   public abstract void startSuperResolutionModelDownload(int paramInt);
   
-  public abstract void statisticCollectorReport(String paramString, HashMap paramHashMap);
+  public abstract void statisticCollectorReport(String paramString, HashMap<String, String> paramHashMap);
+  
+  public abstract void tryInitSuperResolutionLibrary();
   
   public abstract void updateSuperResolutionDownloadedModel();
+  
+  public abstract boolean useARGB8888Config();
 }
 
 

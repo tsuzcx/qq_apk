@@ -1,18 +1,22 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 class tea
+  extends tcq
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  tea(tdo paramtdo, StoryVideoItem paramStoryVideoItem, teu paramteu)
+  {
+    super(paramStoryVideoItem);
+  }
   
-  tea(tdz paramtdz) {}
+  public boolean b()
+  {
+    this.jdField_a_of_type_Teu.a = ((String)a("result"));
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tea
  * JD-Core Version:    0.7.0.1
  */

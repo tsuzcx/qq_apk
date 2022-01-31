@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class TroopAppFlagInfo$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   public static final int STR_TAG_FIELD_NUMBER = 8;
   public static final int UINT32_APP_COUNT_FIELD_NUMBER = 4;
@@ -37,7 +37,7 @@ public final class TroopAppFlagInfo$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.pb.TroopAppFlagInfo.RspBody
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,84 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.WebSsoBody.WebSsoControlData;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class xdr
-  implements View.OnClickListener
+class xdr
+  implements BusinessObserver
 {
-  public xdr(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  xdr(xdo paramxdo, String paramString1, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.a.r)
+    if (paramBoolean) {}
+    for (;;)
     {
-      PhotoPreviewActivity.a(this.a);
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle != null)
+        {
+          WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+          localWebSsoResponseBody.mergeFrom(paramBundle);
+          JSONObject localJSONObject = new JSONObject();
+          localJSONObject.put("data", localWebSsoResponseBody.data.get());
+          localJSONObject.put("retcode", localWebSsoResponseBody.ret.get());
+          localJSONObject.put("cret", 0);
+          this.jdField_a_of_type_Xdo.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+          if (((WebSsoBody.WebSsoControlData)localWebSsoResponseBody.controlData.get()).frequency.has()) {
+            this.jdField_a_of_type_Xdo.a = ((WebSsoBody.WebSsoControlData)localWebSsoResponseBody.controlData.get()).frequency.get();
+          }
+          if (((WebSsoBody.WebSsoControlData)localWebSsoResponseBody.controlData.get()).packageSize.has()) {
+            this.jdField_a_of_type_Xdo.b = ((WebSsoBody.WebSsoControlData)localWebSsoResponseBody.controlData.get()).packageSize.get();
+          }
+          if (QLog.isDevelopLevel()) {
+            QLog.i("SSOWebviewPlugin", 2, String.format("onReceive cmd=%s %b frequency=%d result=%s", new Object[] { this.b, Boolean.valueOf(((WebSsoBody.WebSsoControlData)localWebSsoResponseBody.controlData.get()).frequency.has()), Integer.valueOf(this.jdField_a_of_type_Xdo.a), localJSONObject }));
+          }
+        }
+        if (!QLog.isColorLevel()) {
+          break label385;
+        }
+        if (paramBundle == null) {
+          break label386;
+        }
+        paramBoolean = true;
+        QLog.i("SSOWebviewPlugin", 2, String.format("onReceive data!=null[%b]", new Object[] { Boolean.valueOf(paramBoolean) }));
+        return;
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle = new JSONObject();
+        try
+        {
+          paramBundle.put("cret", 2);
+          this.jdField_a_of_type_Xdo.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+          return;
+        }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+          continue;
+        }
+      }
+      paramBundle = new JSONObject();
+      paramBundle.put("cret", 1);
+      this.jdField_a_of_type_Xdo.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
       return;
+      label385:
+      return;
+      label386:
+      paramBoolean = false;
     }
-    this.a.a.toggle();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xdr
  * JD-Core Version:    0.7.0.1
  */

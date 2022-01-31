@@ -1,37 +1,24 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
-public final class abay
-  extends BroadcastReceiver
-  implements Runnable
+class abay
+  extends ajfo
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ("android.intent.action.PROXY_CHANGE".equals(paramIntent.getAction()))
-    {
-      ArkAppCenter.b("ArkApp", "receive broadcast proxy change.");
-      ThreadManager.executeOnSubThread(this);
-    }
-  }
+  abay(abai paramabai) {}
   
-  public void run()
+  protected void onGetWholePeopleVoteLebaSwitch(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if (AppNetConnInfo.isWifiConn())
-    {
-      ArkAppContainer.setArkHttpProxy();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.lebatab.leba", 2, String.format(Locale.getDefault(), "onGetWholePeopleVoteLebaSwitch isSuc: %b cur: %b pre: %b", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
     }
-    ArkAppContainer.clearArkHttpProxy();
+    if ((paramBoolean1) && (paramBoolean2 != paramBoolean3)) {
+      this.a.a.sendEmptyMessage(11340002);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abay
  * JD-Core Version:    0.7.0.1
  */

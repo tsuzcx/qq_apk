@@ -1,26 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.QZoneHelper.UserInfo;
+import com.tencent.biz.pubaccount.troopbarassit.TroopBarData;
+import java.util.Comparator;
 
-public class rqo
-  implements View.OnClickListener
+class rqo
+  implements Comparator<TroopBarData>
 {
-  public rqo(AssistantSettingActivity paramAssistantSettingActivity) {}
+  rqo(rqn paramrqn) {}
   
-  public void onClick(View paramView)
+  public int a(TroopBarData paramTroopBarData1, TroopBarData paramTroopBarData2)
   {
-    paramView = QZoneHelper.UserInfo.a();
-    paramView.a = this.a.app.getCurrentAccountUin();
-    paramView.b = this.a.app.getCurrentNickname();
-    QZoneHelper.a(this.a, paramView);
+    long l1 = Math.max(paramTroopBarData1.mLastMsgTime, paramTroopBarData1.mLastDraftTime);
+    long l2 = Math.max(paramTroopBarData2.mLastMsgTime, paramTroopBarData2.mLastDraftTime);
+    if ((paramTroopBarData2.mIsSticky) && (!paramTroopBarData1.mIsSticky)) {}
+    do
+    {
+      do
+      {
+        return 1;
+        if ((!paramTroopBarData2.mIsSticky) && (paramTroopBarData1.mIsSticky)) {
+          return -1;
+        }
+        if ((!paramTroopBarData2.mIsSticky) || (!paramTroopBarData1.mIsSticky)) {
+          break;
+        }
+      } while (paramTroopBarData2.mLastStickyTime > paramTroopBarData1.mLastStickyTime);
+      if (paramTroopBarData2.mLastStickyTime == paramTroopBarData1.mLastStickyTime) {
+        return 0;
+      }
+      return -1;
+    } while (l1 < l2);
+    if (l1 == l2) {
+      return 0;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rqo
  * JD-Core Version:    0.7.0.1
  */

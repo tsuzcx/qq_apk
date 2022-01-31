@@ -1,33 +1,44 @@
-import android.os.AsyncTask;
-import android.text.TextUtils;
-import com.tencent.device.msg.activities.DevLittleVideoItemBuilder;
-import com.tencent.device.msg.data.MessageForDevLittleVideo;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ThumbInfo;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
 
 public class qey
-  implements Runnable
+  extends rwf
 {
-  public qey(DevLittleVideoItemBuilder paramDevLittleVideoItemBuilder, MessageForDevLittleVideo paramMessageForDevLittleVideo) {}
+  private qey(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    Object localObject = DevLittleVideoItemBuilder.a(this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevLittleVideoItemBuilder, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo);
-    DevLittleVideoItemBuilder.a(this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevLittleVideoItemBuilder, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo);
-    if (!TextUtils.isEmpty((CharSequence)localObject))
+    VideoFeedsPlayActivity.a("onGetDianZanState isSuccess: " + paramBoolean);
+    if ((!paramBoolean) || (paramBundle == null)) {}
+    int i;
+    do
     {
-      EncodeVideoTask.ThumbInfo localThumbInfo = new EncodeVideoTask.ThumbInfo(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.mThumbFilePath, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.thumbMD5, null, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.thumbWidth, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.thumbHeight);
-      localObject = new EncodeVideoTask(this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevLittleVideoItemBuilder.a, (String)localObject, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.mediacodecEncode, localThumbInfo);
-      ((EncodeVideoTask)localObject).a(DevLittleVideoItemBuilder.a(this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevLittleVideoItemBuilder));
-      ((EncodeVideoTask)localObject).a(false);
-      Utils.executeAsyncTaskOnSerialExcuter((AsyncTask)localObject, new Void[] { (Void)null });
+      String str;
+      do
+      {
+        return;
+        str = paramBundle.getString("VALUE_VIDEO_ARTICLE_ID");
+        i = paramBundle.getInt("VALUE_VIDEO_FAVORITE_STATE");
+      } while (str == null);
+      paramBundle = VideoFeedsRecommendFragment.a(this.a).a(str);
+    } while (paramBundle == null);
+    if (i == 1) {
+      paramBundle.l = true;
+    }
+    for (;;)
+    {
+      VideoFeedsRecommendFragment.a(this.a).b(paramBundle);
+      return;
+      if (i == 0) {
+        paramBundle.l = false;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qey
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,73 @@
+{
+    "ReadInjoy_daily_header_cell": {
+        "view_type": "cell",
+        "direction": "vertical",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "subviews": [
+            {
+                "view_type": "UIView",
+                "view_id": "id_daily_header_wrapper",
+                "layout_type": "layout_relative",
+                "event_type": "cmd_do_nothing",
+                "height": {
+                    "type": "absolutely",
+                    "value": "45"
+                },
+                "width": {
+                    "type": "match_parent"
+                },
+                "attributes":{
+                    "setBackgroundColorString:":"#ffffff"
+                },
+                "subviews": [
+                    {
+                        "view_type": "ReadInjoyAsynImageView",
+                        "view_id": "id_daily_header_icon",
+                        "margin_left": "12",
+                        "align_parent_center_vertical": "YES",
+                        "height": {
+                            "type": "absolutely",
+                            "value": "18"
+                        },
+                        "width": {
+                            "type": "absolutely",
+                            "value": "18"
+                        },
+                        "attributes": {
+                            "setImageWithURLString:lineup:": [
+                                "-1",
+                                "-1"
+                            ]
+                        }
+                    },
+                    {
+                        "view_type": "UILabel",
+                        "view_id": "id_daily_header_name",
+                        "margin_left": "6",
+                        "align_parent_center_vertical": "YES",
+                        "right_of_view": "id_daily_header_icon",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "wrap_content"
+                        },
+                        "attributes": {
+                            "setFrameString:": "-1",
+                            "setTextColorString:": "#262626",
+                            "setText:": "-1",
+                            "setBoldFontSizeString:": "17"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}
+

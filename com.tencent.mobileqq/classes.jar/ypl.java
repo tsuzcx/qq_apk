@@ -1,49 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.antiphing.AntiphishingUrlConfig;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.LinearGradient;
+import android.graphics.Shader;
+import android.graphics.Shader.TileMode;
+import android.graphics.drawable.ShapeDrawable.ShaderFactory;
 
-public class ypl
-  extends Handler
+final class ypl
+  extends ShapeDrawable.ShaderFactory
 {
-  public ypl(AntiphishingUrlConfig paramAntiphishingUrlConfig, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  ypl(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int[] paramArrayOfInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public Shader resize(int paramInt1, int paramInt2)
   {
-    if (paramMessage.what == AntiphishingUrlConfig.a(this.a))
-    {
-      QLog.d(AntiphishingUrlConfig.a(this.a), 4, "Receive Message!");
-      this.a.a();
-    }
-    for (;;)
-    {
-      try
-      {
-        ReportController.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 1, "", "", "", "");
-        return;
-      }
-      catch (Exception paramMessage) {}
-      if (paramMessage.what == AntiphishingUrlConfig.b(this.a))
-      {
-        QLog.d(AntiphishingUrlConfig.a(this.a), 4, "Receive Message!");
-        try
-        {
-          ReportController.b(null, "P_CliOper", "Safe_Antiphishing", "", "AlertDialog", "config", 0, 0, "", "", "", "");
-          return;
-        }
-        catch (Exception paramMessage) {}
-      }
-    }
+    return new LinearGradient(paramInt1 * this.jdField_a_of_type_Float, paramInt2 * this.b, paramInt1 * this.c, paramInt2 * this.d, this.jdField_a_of_type_ArrayOfInt, null, Shader.TileMode.CLAMP);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ypl
  * JD-Core Version:    0.7.0.1
  */

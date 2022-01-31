@@ -1,35 +1,36 @@
-import MyCarrier.Carrier;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.mybusiness.MyBusinessManager;
-import com.tencent.mobileqq.mybusiness.MyBusinessObserver;
+import com.tencent.av.service.LBSInfo;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
 
 public class aeto
-  extends MyBusinessObserver
+  extends ajlg
 {
-  public aeto(MyBusinessManager paramMyBusinessManager) {}
+  public aeto(AddContactsView paramAddContactsView) {}
   
-  public void a(boolean paramBoolean, Carrier paramCarrier, int paramInt)
+  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("MyBusinessManager", 4, "onCarrierQuery refreshTimeSpan = " + paramInt);
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_ArrayOfJavaLangString = paramLBSInfo.a();
     }
-    this.a.a = paramInt;
-    if (this.a.a > 86400) {
-      this.a.a = 86400;
+    if ((this.a.jdField_a_of_type_ArrayOfJavaLangString == null) || (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 4)) {
+      this.a.jdField_a_of_type_ArrayOfJavaLangString = new String[] { "-1", "-1", "-1", "-1" };
     }
-    if (!paramBoolean)
+    if (this.a.c) {
+      this.a.f();
+    }
+    if (!"-1".equals(this.a.jdField_a_of_type_ArrayOfJavaLangString[0]))
     {
-      this.a.b = false;
-      return;
+      this.a.jdField_a_of_type_ArrayOfJavaLangString[3] = "0";
+      this.a.jdField_a_of_type_Ajfw.a(this.a.jdField_a_of_type_ArrayOfJavaLangString);
     }
-    ThreadManager.getFileThreadHandler().post(new aetp(this, paramCarrier));
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactsView", 2, "onGetUserLocation|isSuccess : " + paramBoolean + ", autoReqLocation : " + this.a.c + ", locationCodes[0] : " + this.a.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeto
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class ilive_user_basic_info$UserInfo
-  extends MessageMicro
+  extends MessageMicro<UserInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26 }, new String[] { "uin", "basic_info", "extra_info" }, new Object[] { Long.valueOf(0L), null, null }, UserInfo.class);
   public ilive_user_basic_info.UserBasicInfo basic_info = new ilive_user_basic_info.UserBasicInfo();

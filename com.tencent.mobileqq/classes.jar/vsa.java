@@ -1,19 +1,27 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
 
 public class vsa
-  implements Runnable
+  implements Animator.AnimatorListener
 {
-  public vsa(AIOGalleryScene paramAIOGalleryScene) {}
+  public vsa(RotateCircleImageView paramRotateCircleImageView) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    AIOGalleryScene.a(this.a).show();
+    RotateCircleImageView.b(this.a).start();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vsa
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class oidb_0x4d4$HastenWorkflowReq
-  extends MessageMicro
+  extends MessageMicro<HastenWorkflowReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_workflow_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -20,7 +20,7 @@ public final class oidb_0x4d4$HastenWorkflowReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x4d4.oidb_0x4d4.HastenWorkflowReq
  * JD-Core Version:    0.7.0.1
  */

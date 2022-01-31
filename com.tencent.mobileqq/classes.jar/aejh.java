@@ -1,46 +1,41 @@
-import android.graphics.Bitmap;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.leba.header.LebaGridMenuAdapter;
-import com.tencent.mobileqq.leba.header.LebaGridMenuAdapter.LebaGridItemViewHolder;
-import com.tencent.mobileqq.leba.header.LebaGridUtils;
-import com.tencent.mobileqq.leba.model.LebaGridItemInfo;
-import com.tencent.mobileqq.leba.model.PluginInfo;
-import com.tencent.mobileqq.leba.model.pluginactions.PluginAction;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class aejh
-  implements Runnable
+class aejh
+  implements DialogInterface.OnClickListener
 {
-  public aejh(LebaGridMenuAdapter paramLebaGridMenuAdapter, LebaGridItemInfo paramLebaGridItemInfo, String paramString, PluginAction paramPluginAction, LebaGridMenuAdapter.LebaGridItemViewHolder paramLebaGridItemViewHolder) {}
+  aejh(aejb paramaejb) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = LebaGridUtils.a(this.jdField_a_of_type_ComTencentMobileqqLebaHeaderLebaGridMenuAdapter.a, this.jdField_a_of_type_ComTencentMobileqqLebaModelLebaGridItemInfo.a.pkgName, this.jdField_a_of_type_ComTencentMobileqqLebaModelLebaGridItemInfo.a.resBigUrl);
-    if (((File)localObject).exists())
+    paramDialogInterface = (ajtg)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+    if ((badq.d(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext())) && (paramDialogInterface != null)) {
+      if (((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).c(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a).isTroopOwner(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+        paramDialogInterface.l(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      }
+    }
+    for (;;)
     {
-      localObject = LebaGridUtils.a((File)localObject);
-      if (localObject == null) {
-        break label122;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("LebaGridMenuAdapter", 2, "found bitmap from sdcard, info=" + this.jdField_a_of_type_ComTencentMobileqqLebaModelLebaGridItemInfo.a.resName);
-      }
-      BaseApplicationImpl.sImageHashMap.put(this.jdField_a_of_type_JavaLangString, localObject);
-      ((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqLebaHeaderLebaGridMenuAdapter.a).runOnUiThread(new aeji(this, (Bitmap)localObject));
-    }
-    label122:
-    while (!QLog.isColorLevel()) {
+      new awrb(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_banned").c("Grp_AIO").d("clk_quitgrp").a(new String[] { this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a }).a();
       return;
+      paramDialogInterface.k(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      continue;
+      if (paramDialogInterface != null) {
+        bbmy.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, 2131629008, 0).a();
+      } else {
+        bbmy.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 1, 2131626626, 0).a();
+      }
     }
-    QLog.d("LebaGridMenuAdapter", 2, "can't find bitmap form cache & sdcard" + this.jdField_a_of_type_ComTencentMobileqqLebaModelLebaGridItemInfo.a.resName);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aejh
  * JD-Core Version:    0.7.0.1
  */

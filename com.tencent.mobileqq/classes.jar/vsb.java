@@ -1,30 +1,21 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
 
 public class vsb
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public vsb(AIOGalleryScene paramAIOGalleryScene) {}
+  public vsb(RotateCircleImageView paramRotateCircleImageView) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.a.o) {
-      return;
-    }
-    AIOGalleryScene localAIOGalleryScene = this.a;
-    localAIOGalleryScene.h += this.a.i;
-    if (this.a.h > 99)
-    {
-      this.a.h = 99;
-      this.a.d(this.a.h);
-      return;
-    }
-    this.a.d(this.a.h);
-    this.a.v();
+    RotateCircleImageView.c(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vsb
  * JD-Core Version:    0.7.0.1
  */

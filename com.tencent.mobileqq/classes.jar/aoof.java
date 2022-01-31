@@ -1,58 +1,24 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Button;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.List;
 
 public class aoof
-  implements View.OnTouchListener
+  extends aooj
 {
-  public aoof(FlowCameraActivity2 paramFlowCameraActivity2) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public CharSequence c()
   {
-    int i = paramMotionEvent.getAction();
-    paramMotionEvent.getX();
-    float f = paramMotionEvent.getY();
-    if (i == 0) {
-      this.a.jdField_b_of_type_AndroidWidgetButton.setText(null);
-    }
-    do
-    {
-      return false;
-      if (i == 2)
-      {
-        if (f < this.a.jdField_b_of_type_Int * -1)
-        {
-          this.a.a(false, false);
-          return true;
-        }
-        this.a.a(true, false);
-        return true;
-      }
-      if (i == 3)
-      {
-        this.a.a(false, true);
-        return false;
-      }
-    } while (i != 1);
-    if (f < this.a.jdField_b_of_type_Int * -1)
-    {
-      this.a.l = false;
-      this.a.a(false, true);
-    }
-    for (;;)
-    {
-      this.a.jdField_b_of_type_AndroidWidgetButton.setText(2131438183);
-      return false;
-      this.a.l = true;
-      this.a.a(true, true);
-    }
+    Object localObject = (FileManagerEntity)this.a.get(0);
+    String str1 = apea.b(((FileManagerEntity)localObject).srvTime);
+    String str2 = apck.b((FileManagerEntity)localObject);
+    localObject = apdh.a(((FileManagerEntity)localObject).fileSize);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str2).append("  ").append(str1).append("  ").append((String)localObject);
+    this.b = localStringBuilder;
+    return localStringBuilder;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoof
  * JD-Core Version:    0.7.0.1
  */

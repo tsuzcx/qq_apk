@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewConfiguration;
 import android.view.animation.AccelerateInterpolator;
-import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
 
 public abstract class AutoScrollHelper
@@ -48,7 +47,7 @@ public abstract class AutoScrollHelper
   private float[] mRelativeEdges = { 0.0F, 0.0F };
   private float[] mRelativeVelocity = { 0.0F, 0.0F };
   private Runnable mRunnable;
-  private final ClampedScroller mScroller = new ClampedScroller();
+  private final AutoScrollHelper.ClampedScroller mScroller = new AutoScrollHelper.ClampedScroller();
   private final View mTarget;
   
   public AutoScrollHelper(View paramView)
@@ -56,7 +55,7 @@ public abstract class AutoScrollHelper
     this.mTarget = paramView;
     paramView = Resources.getSystem().getDisplayMetrics();
     int i = (int)(1575.0F * paramView.density + 0.5F);
-    int j = (int)(315.0F * paramView.density + 0.5F);
+    int j = (int)(paramView.density * 315.0F + 0.5F);
     setMaximumVelocity(i, i);
     setMinimumVelocity(j, j);
     setEdgeType(1);
@@ -169,7 +168,7 @@ public abstract class AutoScrollHelper
   
   private boolean shouldAnimate()
   {
-    ClampedScroller localClampedScroller = this.mScroller;
+    AutoScrollHelper.ClampedScroller localClampedScroller = this.mScroller;
     int i = localClampedScroller.getVerticalDirection();
     int j = localClampedScroller.getHorizontalDirection();
     return ((i != 0) && (canTargetScrollVertically(i))) || ((j != 0) && (canTargetScrollHorizontally(j)));
@@ -178,7 +177,7 @@ public abstract class AutoScrollHelper
   private void startAnimating()
   {
     if (this.mRunnable == null) {
-      this.mRunnable = new ScrollAnimationRunnable(null);
+      this.mRunnable = new AutoScrollHelper.ScrollAnimationRunnable(this, null);
     }
     this.mAnimating = true;
     this.mNeedsReset = true;
@@ -313,146 +312,6 @@ public abstract class AutoScrollHelper
     this.mRelativeVelocity[0] = (paramFloat1 / 1000.0F);
     this.mRelativeVelocity[1] = (paramFloat2 / 1000.0F);
     return this;
-  }
-  
-  private static class ClampedScroller
-  {
-    private long mDeltaTime = 0L;
-    private int mDeltaX = 0;
-    private int mDeltaY = 0;
-    private int mEffectiveRampDown;
-    private int mRampDownDuration;
-    private int mRampUpDuration;
-    private long mStartTime = -9223372036854775808L;
-    private long mStopTime = -1L;
-    private float mStopValue;
-    private float mTargetVelocityX;
-    private float mTargetVelocityY;
-    
-    private float getValueAt(long paramLong)
-    {
-      if (paramLong < this.mStartTime) {
-        return 0.0F;
-      }
-      if ((this.mStopTime < 0L) || (paramLong < this.mStopTime)) {
-        return AutoScrollHelper.constrain((float)(paramLong - this.mStartTime) / this.mRampUpDuration, 0.0F, 1.0F) * 0.5F;
-      }
-      long l = this.mStopTime;
-      float f1 = this.mStopValue;
-      float f2 = this.mStopValue;
-      return AutoScrollHelper.constrain((float)(paramLong - l) / this.mEffectiveRampDown, 0.0F, 1.0F) * f2 + (1.0F - f1);
-    }
-    
-    private float interpolateValue(float paramFloat)
-    {
-      return -4.0F * paramFloat * paramFloat + 4.0F * paramFloat;
-    }
-    
-    public void computeScrollDelta()
-    {
-      if (this.mDeltaTime == 0L) {
-        throw new RuntimeException("Cannot compute scroll delta before calling start()");
-      }
-      long l1 = AnimationUtils.currentAnimationTimeMillis();
-      float f = interpolateValue(getValueAt(l1));
-      long l2 = l1 - this.mDeltaTime;
-      this.mDeltaTime = l1;
-      this.mDeltaX = ((int)((float)l2 * f * this.mTargetVelocityX));
-      this.mDeltaY = ((int)((float)l2 * f * this.mTargetVelocityY));
-    }
-    
-    public int getDeltaX()
-    {
-      return this.mDeltaX;
-    }
-    
-    public int getDeltaY()
-    {
-      return this.mDeltaY;
-    }
-    
-    public int getHorizontalDirection()
-    {
-      return (int)(this.mTargetVelocityX / Math.abs(this.mTargetVelocityX));
-    }
-    
-    public int getVerticalDirection()
-    {
-      return (int)(this.mTargetVelocityY / Math.abs(this.mTargetVelocityY));
-    }
-    
-    public boolean isFinished()
-    {
-      return (this.mStopTime > 0L) && (AnimationUtils.currentAnimationTimeMillis() > this.mStopTime + this.mEffectiveRampDown);
-    }
-    
-    public void requestStop()
-    {
-      long l = AnimationUtils.currentAnimationTimeMillis();
-      this.mEffectiveRampDown = AutoScrollHelper.constrain((int)(l - this.mStartTime), 0, this.mRampDownDuration);
-      this.mStopValue = getValueAt(l);
-      this.mStopTime = l;
-    }
-    
-    public void setRampDownDuration(int paramInt)
-    {
-      this.mRampDownDuration = paramInt;
-    }
-    
-    public void setRampUpDuration(int paramInt)
-    {
-      this.mRampUpDuration = paramInt;
-    }
-    
-    public void setTargetVelocity(float paramFloat1, float paramFloat2)
-    {
-      this.mTargetVelocityX = paramFloat1;
-      this.mTargetVelocityY = paramFloat2;
-    }
-    
-    public void start()
-    {
-      this.mStartTime = AnimationUtils.currentAnimationTimeMillis();
-      this.mStopTime = -1L;
-      this.mDeltaTime = this.mStartTime;
-      this.mStopValue = 0.5F;
-      this.mDeltaX = 0;
-      this.mDeltaY = 0;
-    }
-  }
-  
-  private class ScrollAnimationRunnable
-    implements Runnable
-  {
-    private ScrollAnimationRunnable() {}
-    
-    public void run()
-    {
-      if (!AutoScrollHelper.this.mAnimating) {
-        return;
-      }
-      if (AutoScrollHelper.this.mNeedsReset)
-      {
-        AutoScrollHelper.access$202(AutoScrollHelper.this, false);
-        AutoScrollHelper.this.mScroller.start();
-      }
-      AutoScrollHelper.ClampedScroller localClampedScroller = AutoScrollHelper.this.mScroller;
-      if ((localClampedScroller.isFinished()) || (!AutoScrollHelper.this.shouldAnimate()))
-      {
-        AutoScrollHelper.access$102(AutoScrollHelper.this, false);
-        return;
-      }
-      if (AutoScrollHelper.this.mNeedsCancel)
-      {
-        AutoScrollHelper.access$502(AutoScrollHelper.this, false);
-        AutoScrollHelper.this.cancelTargetTouch();
-      }
-      localClampedScroller.computeScrollDelta();
-      int i = localClampedScroller.getDeltaX();
-      int j = localClampedScroller.getDeltaY();
-      AutoScrollHelper.this.scrollTargetBy(i, j);
-      ViewCompat.postOnAnimation(AutoScrollHelper.this.mTarget, this);
-    }
   }
 }
 

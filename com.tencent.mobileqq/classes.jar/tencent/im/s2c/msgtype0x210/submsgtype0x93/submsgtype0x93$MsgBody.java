@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class submsgtype0x93$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26 }, new String[] { "uint32_msg_type", "msg_umc_changed", "msg_state_changed" }, new Object[] { Integer.valueOf(0), null, null }, MsgBody.class);
   public submsgtype0x93.StateChangeNotify msg_state_changed = new submsgtype0x93.StateChangeNotify();

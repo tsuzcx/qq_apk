@@ -1,44 +1,27 @@
-import android.content.ContentResolver;
-import android.database.ContentObserver;
-import android.os.Handler;
-import android.provider.Settings.System;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.apollo.view.ApolloMainViewBinder.1;
+import com.tencent.mobileqq.apollo.view.ApolloMainViewBinder.1.1.1;
 
 public class ajcf
-  extends ContentObserver
+  implements Animation.AnimationListener
 {
-  private ContentResolver jdField_a_of_type_AndroidContentContentResolver;
+  public ajcf(ApolloMainViewBinder.1 param1) {}
   
-  public ajcf(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, Handler paramHandler)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super(paramHandler);
-    this.jdField_a_of_type_AndroidContentContentResolver = paramTroopAvatarWallPreviewActivity.getContentResolver();
+    this.a.a.setVisibility(8);
+    this.a.a.postDelayed(new ApolloMainViewBinder.1.1.1(this), 300L);
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidContentContentResolver.registerContentObserver(Settings.System.getUriFor("accelerometer_rotation"), false, this);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidContentContentResolver.unregisterContentObserver(this);
-  }
-  
-  public void onChange(boolean paramBoolean)
-  {
-    super.onChange(paramBoolean);
-    if (Settings.System.getInt(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getContentResolver(), "accelerometer_rotation", -1) == 1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.setRequestedOrientation(4);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.setRequestedOrientation(1);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajcf
  * JD-Core Version:    0.7.0.1
  */

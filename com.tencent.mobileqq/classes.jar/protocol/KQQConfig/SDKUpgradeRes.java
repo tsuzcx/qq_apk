@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class SDKUpgradeRes
   extends JceStruct
 {
-  static ArrayList cache_vUpgradeInfo;
+  static ArrayList<UpgradeInfo> cache_vUpgradeInfo;
   public int iActionType;
-  public ArrayList vUpgradeInfo;
+  public ArrayList<UpgradeInfo> vUpgradeInfo;
   
   public SDKUpgradeRes() {}
   
-  public SDKUpgradeRes(ArrayList paramArrayList, int paramInt)
+  public SDKUpgradeRes(ArrayList<UpgradeInfo> paramArrayList, int paramInt)
   {
     this.vUpgradeInfo = paramArrayList;
     this.iActionType = paramInt;

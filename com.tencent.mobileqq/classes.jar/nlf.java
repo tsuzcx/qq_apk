@@ -1,16 +1,35 @@
-import com.tencent.biz.qqstory.newshare.job.DownloadPic2FileJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareSinaData;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySubChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
 
 public class nlf
-  extends DownloadPic2FileJob
+  implements qmz
 {
-  public nlf(ShareModeBase paramShareModeBase, ShareSinaData paramShareSinaData) {}
+  public nlf(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
   
-  public boolean b()
+  public void a(int paramInt)
   {
-    a("UploadImageJob_in_image_file_path", this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d);
-    return true;
+    if ((ReadInJoyNewFeedsActivity.a(this.a).a(paramInt) != null) && (ReadInJoyNewFeedsActivity.a(this.a).a(paramInt).a() != null)) {
+      ReadInJoyNewFeedsActivity.a(this.a).a(paramInt).a().k();
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == paramInt2) {
+      rvf.a(false);
+    }
+    if (paramInt2 == 1) {
+      this.a.getIntent().putExtra("channel_from", 7);
+    }
+    if ((paramInt1 == paramInt2) && (paramInt2 == 0) && ((this.a.a() instanceof ReadInJoySubChannelFragment)))
+    {
+      this.a.a().f();
+      return;
+    }
+    this.a.a(paramInt2, 256, null, true);
   }
 }
 

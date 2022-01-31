@@ -1,39 +1,128 @@
-import android.text.Editable;
-import android.widget.EditText;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.EmosmUtils;
-import com.tencent.mobileqq.emoticonview.SmallEmoticonInfo;
-import com.tencent.mobileqq.model.QueryCallback;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
 
 public class acow
-  implements QueryCallback
+  extends Drawable
 {
-  public acow(SmallEmoticonInfo paramSmallEmoticonInfo, int paramInt1, int paramInt2, EditText paramEditText, QQAppInterface paramQQAppInterface) {}
+  protected int a;
+  acox jdField_a_of_type_Acox;
+  Resources jdField_a_of_type_AndroidContentResResources;
+  protected Paint a;
+  Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  protected Object a;
+  protected int b = 50;
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public acow(Resources paramResources)
   {
-    char[] arrayOfChar1 = EmosmUtils.a(this.jdField_a_of_type_Int, this.b);
-    char[] arrayOfChar2 = new char[5];
-    arrayOfChar2[0] = '\024';
-    arrayOfChar2[1] = arrayOfChar1[3];
-    arrayOfChar2[2] = arrayOfChar1[2];
-    arrayOfChar2[3] = arrayOfChar1[1];
-    arrayOfChar2[4] = arrayOfChar1[0];
-    if ((paramEmoticonPackage != null) && (paramEmoticonPackage.isAPNG == 2)) {
-      arrayOfChar2[1] = 'ǿ';
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
+    this.jdField_a_of_type_AndroidContentResResources = paramResources;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.b = 50;
+  }
+  
+  public void a(acox paramacox)
+  {
+    this.jdField_a_of_type_Acox = paramacox;
+  }
+  
+  public void a(String paramString)
+  {
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof acoy)) && (((acoy)this.jdField_a_of_type_JavaLangObject).a != null) && (this.jdField_a_of_type_Int == 1) && (((acoy)this.jdField_a_of_type_JavaLangObject).a.equals(paramString))) {
+      return;
     }
-    int i = this.jdField_a_of_type_AndroidWidgetEditText.getSelectionStart();
-    int j = this.jdField_a_of_type_AndroidWidgetEditText.getSelectionEnd();
-    this.jdField_a_of_type_AndroidWidgetEditText.getEditableText().replace(i, j, String.valueOf(arrayOfChar2));
-    this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X800717E", 0, 0, this.jdField_a_of_type_Int + "", this.b + "", "", "");
+    a();
+    this.jdField_a_of_type_Int = 1;
+    this.jdField_a_of_type_JavaLangObject = new acoy(this, paramString);
+  }
+  
+  public void a(String[] paramArrayOfString, int paramInt)
+  {
+    if (paramArrayOfString == null) {}
+    for (;;)
+    {
+      return;
+      try
+      {
+        if ((this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_JavaLangObject != null) && (!(this.jdField_a_of_type_JavaLangObject instanceof acoy)))
+        {
+          boolean bool = Arrays.equals((String[])this.jdField_a_of_type_JavaLangObject, paramArrayOfString);
+          if (bool) {
+            continue;
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          QLog.e("VipPendantDrawable", 1, "setPngPaths, exception=" + MsfSdkUtils.getStackTraceString(localException));
+        }
+      }
+    }
+    a();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangObject = paramArrayOfString;
+    this.b = paramInt;
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    if (this.jdField_a_of_type_Int == -1) {}
+    Bitmap localBitmap;
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_Acox == null);
+      localBitmap = this.jdField_a_of_type_Acox.a();
+    } while ((localBitmap == null) || (localBitmap.isRecycled()));
+    paramCanvas.drawBitmap(localBitmap, null, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
+  }
+  
+  public int getOpacity()
+  {
+    return -3;
+  }
+  
+  public void setAlpha(int paramInt)
+  {
+    if (paramInt != this.jdField_a_of_type_AndroidGraphicsPaint.getAlpha())
+    {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+      invalidateSelf();
+    }
+  }
+  
+  public void setColorFilter(ColorFilter paramColorFilter)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    invalidateSelf();
+  }
+  
+  public void setDither(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setDither(paramBoolean);
+    invalidateSelf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acow
  * JD-Core Version:    0.7.0.1
  */

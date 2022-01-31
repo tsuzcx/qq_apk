@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class group_mgr$CardInfo
-  extends MessageMicro
+  extends MessageMicro<CardInfo>
 {
   public static final int COMMON_FIELD_NUMBER = 1;
   public static final int HWINFO_FIELD_NUMBER = 2;
@@ -14,7 +14,7 @@ public final class group_mgr$CardInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.hw.group_mgr.CardInfo
  * JD-Core Version:    0.7.0.1
  */

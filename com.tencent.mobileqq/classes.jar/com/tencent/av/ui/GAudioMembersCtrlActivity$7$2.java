@@ -1,0 +1,20 @@
+package com.tencent.av.ui;
+
+import ltj;
+
+public class GAudioMembersCtrlActivity$7$2
+  implements Runnable
+{
+  public GAudioMembersCtrlActivity$7$2(ltj paramltj) {}
+  
+  public void run()
+  {
+    this.a.a.a();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     com.tencent.av.ui.GAudioMembersCtrlActivity.7.2
+ * JD-Core Version:    0.7.0.1
+ */

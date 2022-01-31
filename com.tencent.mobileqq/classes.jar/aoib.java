@@ -1,148 +1,233 @@
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.text.DynamicTextItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextFaceEditLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.EditTextDialogEventListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
+import java.util.List;
 
-public class aoib
-  implements EditTextDialog.EditTextDialogEventListener
+class aoib
+  extends aofk
 {
-  private aoib(DoodleLayout paramDoodleLayout) {}
+  aoib(aoia paramaoia) {}
   
-  public void a()
+  protected void a(boolean paramBoolean, long paramLong1, String paramString1, String paramString2, ByteStringMicro paramByteStringMicro, String paramString3, short paramShort, String paramString4, List<String> paramList, int paramInt, String paramString5, String paramString6, String paramString7, long paramLong2, Bundle paramBundle)
   {
-    this.a.q();
-  }
-  
-  public void a(int paramInt)
-  {
-    if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleEventListener != null) {
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleEventListener.a(3, paramInt);
+    QLog.i("DiscPicThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong2 + "] OnDiscDownloadInfo");
+    paramList = aoia.a(this.a, paramLong2, false);
+    if (paramList == null)
+    {
+      QLog.e("DiscPicThumbDownloader<FileAssistant>", 2, "onUpdateGetOfflineDownloadInfo, mapDowload is not existed taskid[" + String.valueOf(paramLong2) + "]");
+      this.a.a(paramLong2, false, null, 0, null, null, paramString2, false, null, (short)0, null);
+      return;
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("DoodleLayout", 2, "onEditTextOffsetChange centerX:" + paramInt1 + " centerY:" + paramInt2);
+    if ((TextUtils.isEmpty(paramList.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5)) && (!TextUtils.isEmpty(paramString6))) {
+      paramList.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5 = paramString6;
     }
-    this.a.a().b(paramInt1, paramInt2);
-    this.a.p();
-  }
-  
-  public void a(DynamicTextItem paramDynamicTextItem, boolean paramBoolean, int paramInt)
-  {
-    TextLayer localTextLayer = this.a.a();
-    if (paramBoolean) {
-      if ((paramDynamicTextItem == null) || (paramDynamicTextItem.b()) || ((paramDynamicTextItem.a(0)) && (paramDynamicTextItem.c() == 0)))
+    apck.a(paramList.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.a.a, null);
+    if (paramLong1 != 0L)
+    {
+      QLog.e("DiscPicThumbDownloader<FileAssistant>", 1, "[downloadThumb]  ID[" + paramLong2 + "] OnDiscDownloadInfo isSuccess[false],retCode[" + String.valueOf(paramLong1) + "],retMsg[" + String.valueOf(paramString1) + "]");
+      if (paramLong1 == -100001L) {}
+      for (;;)
       {
-        localTextLayer.a(paramDynamicTextItem);
-        if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView != null) {
-          this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a(null);
+        this.a.a.a().a(false, 51, new Object[] { paramList.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, Integer.valueOf(paramList.jdField_a_of_type_Int) });
+        this.a.a(paramLong2);
+        this.a.a(paramLong2, false, null, 0, null, null, paramString2, false, null, (short)0, null);
+        return;
+        if ((paramLong1 == -25081L) || (paramLong1 == -6101L) || (paramLong1 == -7003L))
+        {
+          paramList.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 16;
+          this.a.a.a().c(paramList.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
         }
-        paramInt = 0;
       }
+    }
+    if ((paramString3 == null) || (paramByteStringMicro == null))
+    {
+      QLog.i("DiscPicThumbDownloader<FileAssistant>", 1, "[downloadThumb]  ID[" + paramLong2 + "]  get DiscdownLoad info Url is null ");
+      if ((paramLong1 == -25081L) || (paramLong1 == -6101L) || (paramLong1 == -7003L))
+      {
+        paramList.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 16;
+        this.a.a.a().c(paramList.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      }
+      if (paramLong1 == 0L) {}
+      this.a.a(paramLong2);
+      this.a.a(paramLong2, false, null, 0, null, null, paramString2, false, null, (short)0, null);
+      return;
+    }
+    if ((TextUtils.isEmpty(paramList.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5)) && (!TextUtils.isEmpty(paramString6))) {
+      paramList.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5 = paramString6;
+    }
+    short s1;
+    switch (paramList.jdField_a_of_type_Int)
+    {
+    default: 
+      new StringBuilder().append("http://").append(paramString3).append(":").append(String.valueOf(paramShort)).append(paramString4).toString();
+      QLog.e("DiscPicThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong2 + "] unknow thumbSize!!!info:" + paramList.toString());
+      this.a.a.a().a(false, 51, new Object[] { paramList.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, Integer.valueOf(paramList.jdField_a_of_type_Int) });
+      this.a.a(paramLong2);
+      this.a.a(paramLong2, false, paramString3, paramShort, paramString4, null, paramString2, false, null, (short)0, null);
+      return;
+    case 0: 
+      paramString1 = "?pictype=scaled&size=16*16";
+      paramString4 = paramString4 + paramString1;
+      paramBoolean = false;
+      s1 = 0;
+      if ((aonj.d(this.a.a)) && (paramBundle != null))
+      {
+        paramByteStringMicro = paramBundle.getString("strHttpsDomain");
+        if (!TextUtils.isEmpty(paramByteStringMicro))
+        {
+          boolean bool = true;
+          short s2 = paramBundle.getShort("httpsPort", (short)0);
+          paramBoolean = bool;
+          paramString1 = paramByteStringMicro;
+          s1 = s2;
+          if (s2 == 0)
+          {
+            s1 = 443;
+            paramString1 = paramByteStringMicro;
+            paramBoolean = bool;
+          }
+        }
+      }
+      break;
     }
     for (;;)
     {
-      if (this.a.a() != null) {
-        this.a.a().i();
+      paramByteStringMicro = "";
+      if (apdq.b(this.a.a)) {
+        paramByteStringMicro = paramBundle.getString("IPv6Dns");
       }
-      if (paramDynamicTextItem != null) {
-        paramDynamicTextItem.b();
-      }
-      if ((DoodleLayout.a(this.a) != null) && (paramInt != 0)) {
-        DoodleLayout.a(this.a).c(false);
-      }
-      if (paramInt != 0) {
-        localTextLayer.g();
-      }
-      DoodleLayout.a(this.a, null);
-      if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView != null) {
-        this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.b(true);
-      }
+      this.a.a(paramLong2, true, paramString3, paramShort, paramString4, null, paramString2, paramBoolean, paramString1, s1, paramByteStringMicro);
       return;
-      localTextLayer.b(paramDynamicTextItem);
-      paramInt = 1;
-      continue;
-      if (paramInt == 0)
+      paramString1 = "?pictype=scaled&size=32*32";
+      break;
+      paramString1 = "?pictype=scaled&size=64*64";
+      break;
+      paramString1 = "?pictype=scaled&size=128*128";
+      break;
+      paramString1 = "?pictype=scaled&size=320*320";
+      break;
+      paramString1 = "?pictype=scaled&size=384*384";
+      break;
+      paramString1 = "?pictype=scaled&size=640*640";
+      break;
+      paramString1 = "?pictype=scaled&size=750*750";
+      break;
+      paramString1 = "?pictype=scaled&size=1024*1024";
+      break;
+      paramString1 = null;
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, long paramLong2, Bundle paramBundle)
+  {
+    QLog.i("DiscPicThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong2 + "] OnDiscDownloadInfo");
+    paramString2 = aoia.a(this.a, paramLong2, false);
+    if (paramString2 == null)
+    {
+      QLog.e("DiscPicThumbDownloader<FileAssistant>", 2, "OnDiscDownloadInfo, mapDowload is not existed taskid[" + String.valueOf(paramLong2) + "]");
+      apck.a(this.a.a, 0L, "actFileDiscThumb", 0L, "", "", "", "", 9005L, "get info null", 0L, 0L, 0L, "", "", 0, "get info null", "");
+      apck.a(this.a.a, 0L, "actFileDiscThumbDetail", 0L, "", "", "", "", 9005L, "get info null", 0L, 0L, 0L, "", "", 0, "get info null", "");
+      this.a.a(paramLong2, false, null, 0, null, null, paramString5, false, null, (short)0, null);
+      return;
+    }
+    if (!paramBoolean)
+    {
+      QLog.e("DiscPicThumbDownloader<FileAssistant>", 1, "[downloadThumb]  ID[" + paramLong2 + "] OnDiscDownloadInfo isSuccess[false],retCode[" + String.valueOf(paramLong1) + "],retMsg[" + String.valueOf(paramString1) + "]");
+      long l = 0L;
+      if (paramLong1 == -100001L) {
+        l = 9043L;
+      }
+      for (;;)
       {
-        localTextLayer.d();
-        if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView != null) {
-          this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.a(null);
+        apck.a(this.a.a, paramString2.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, "actFileDiscThumb", paramString2.b, "", paramString2.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, paramString2.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, paramString2.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, l, String.valueOf(paramInt2) + "&" + String.valueOf(paramLong1), 0L, 0L, 0L, "", "", 0, "ret error", null);
+        apck.a(this.a.a, paramString2.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, "actFileDiscThumbDetail", paramString2.b, "", paramString2.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, paramString2.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, paramString2.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, l, String.valueOf(paramInt2) + "&" + String.valueOf(paramLong1), 0L, 0L, 0L, "", "", 0, "ret error", null);
+        this.a.a.a().a(false, 50, new Object[] { paramString2.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, Integer.valueOf(paramString2.jdField_a_of_type_Int) });
+        this.a.a(paramLong2);
+        this.a.a(paramLong2, false, null, 0, null, null, paramString5, false, null, (short)0, null);
+        return;
+        if ((paramLong1 == -25081L) || (paramLong1 == -6101L) || (paramLong1 == -7003L))
+        {
+          paramString2.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 16;
+          this.a.a.a().c(paramString2.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
         }
-        paramInt = 0;
-      }
-      else
-      {
-        paramInt = 1;
+        else
+        {
+          l = 9045L;
+        }
       }
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    TextLayer localTextLayer = this.a.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("DoodleLayout", 2, "onSoftKeyboardStateChange show:" + paramBoolean);
-    }
-    if (paramBoolean)
+    paramString2.jdField_a_of_type_JavaLangString = paramString5;
+    short s1;
+    switch (paramString2.jdField_a_of_type_Int)
     {
-      localTextLayer.a(true);
-      if (DoodleLayout.a(this.a) != null)
-      {
-        DoodleLayout.a(this.a).a();
-        DoodleLayout.a(this.a, null);
-      }
+    default: 
+      paramString1 = "http://" + paramString3 + ":" + String.valueOf(paramInt1) + "/ftn_handler/" + paramString4;
+      QLog.e("DiscPicThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong2 + "] unknow thumbSize!!!info:" + paramString2.toString());
+      this.a.a.a().a(false, 50, new Object[] { paramString2.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, Integer.valueOf(paramString2.jdField_a_of_type_Int) });
+      apck.a(this.a.a, paramString2.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, "actFileDiscThumb", paramString2.b, paramString1, paramString2.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, paramString2.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, paramString2.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 9005L, "size error", 0L, 0L, 0L, paramString1, "", 0, "size error", "");
+      apck.a(this.a.a, paramString2.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, "actFileDiscThumbDetail", paramString2.b, paramString1, paramString2.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, paramString2.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, paramString2.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5, 9005L, "size error", 0L, 0L, 0L, paramString1, "", 0, "size error", "");
+      this.a.a(paramLong2);
+      this.a.a(paramLong2, false, paramString3, paramInt1, "/ftn_handler/" + paramString4, null, paramString5, false, null, (short)0, null);
       return;
-    }
-    DoodleLayout.a(this.a, null);
-    localTextLayer.a(false);
-    if (this.a.b == 3)
-    {
-      this.a.b(0);
-      this.a.c(0);
-    }
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleEventListener.m();
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    if (this.a.b == 3)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("DoodleLayout", 2, "onPanelChanged old:" + paramInt1 + " new:" + paramInt2);
+    case 0: 
+      paramString1 = "?pictype=scaled&size=16*16";
+      paramString4 = "/ftn_handler/" + paramString4 + paramString1;
+      paramBoolean = false;
+      s1 = 0;
+      if ((aonj.h(this.a.a)) && (paramBundle != null))
+      {
+        paramString2 = paramBundle.getString("strHttpsDomain");
+        if (!TextUtils.isEmpty(paramString2))
+        {
+          boolean bool = true;
+          short s2 = paramBundle.getShort("httpsPort", (short)0);
+          paramBoolean = bool;
+          paramString1 = paramString2;
+          s1 = s2;
+          if (s2 == 0)
+          {
+            s1 = 443;
+            paramString1 = paramString2;
+            paramBoolean = bool;
+          }
+        }
       }
-      this.a.a(3, new Integer(paramInt2));
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if ((!paramBoolean) || (this.a.a().c()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("DoodleLayout", 2, "onDialogLayout needAnim:" + paramBoolean + " y:" + this.a.a().o);
-      }
-      if (DoodleLayout.a(this.a) != null) {
-        DoodleLayout.a(this.a).c(true);
-      }
-      this.a.a().b(paramBoolean);
+      break;
     }
     for (;;)
     {
-      this.a.setTrackerState(this.a.a().a, 0);
+      paramString2 = "";
+      if (apdq.b(this.a.a)) {
+        paramString2 = paramBundle.getString("IPv6Dns");
+      }
+      this.a.a(paramLong2, true, paramString3, paramInt1, paramString4, null, paramString5, paramBoolean, paramString1, s1, paramString2);
       return;
-      DoodleLayout.a(this.a, new aoic(this, paramBoolean));
+      paramString1 = "?pictype=scaled&size=32*32";
+      break;
+      paramString1 = "?pictype=scaled&size=64*64";
+      break;
+      paramString1 = "?pictype=scaled&size=128*128";
+      break;
+      paramString1 = "?pictype=scaled&size=320*320";
+      break;
+      paramString1 = "?pictype=scaled&size=384*384";
+      break;
+      paramString1 = "?pictype=scaled&size=640*640";
+      break;
+      paramString1 = "?pictype=scaled&size=750*750";
+      break;
+      paramString1 = "?pictype=scaled&size=1024*1024";
+      break;
+      paramString1 = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoib
  * JD-Core Version:    0.7.0.1
  */

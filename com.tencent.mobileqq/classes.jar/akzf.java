@@ -1,20 +1,26 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.webview.webso.WebSoCgiService;
-import com.tencent.mobileqq.webview.webso.WebSoServlet;
+import com.tencent.ark.ark.VariantWrapper;
 
-public class akzf
-  implements Runnable
+class akzf
+  implements alam
 {
-  public akzf(WebSoServlet paramWebSoServlet, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  akzf(akyy paramakyy, long paramLong) {}
   
-  public void run()
+  public void a(long paramLong)
   {
-    WebSoCgiService.a().onReceive(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Akyy.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
+  }
+  
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  {
+    akyv.a(this.jdField_a_of_type_Akyy.a, this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akzf
  * JD-Core Version:    0.7.0.1
  */

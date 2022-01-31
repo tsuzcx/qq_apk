@@ -6,10 +6,10 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class ArticleComment$CheckArticleLikeRespond
-  extends MessageMicro
+  extends MessageMicro<CheckArticleLikeRespond>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "ret", "data" }, new Object[] { null, null }, CheckArticleLikeRespond.class);
-  public final PBRepeatMessageField data = PBField.initRepeatMessage(ArticleComment.LikeRet.class);
+  public final PBRepeatMessageField<ArticleComment.LikeRet> data = PBField.initRepeatMessage(ArticleComment.LikeRet.class);
   public ArticleComment.RetInfo ret = new ArticleComment.RetInfo();
 }
 

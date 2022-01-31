@@ -1,19 +1,18 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
 
 public class aatn
-  implements Runnable
+  extends ajmm
 {
-  public aatn(ARGreetingCardListManager paramARGreetingCardListManager) {}
+  public aatn(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void run()
+  protected void a()
   {
-    ARGreetingCardListManager.a(this.a).setVisibility(0);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aatn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,29 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashView;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
 
-class abiq
-  implements Runnable
+public class abiq
+  extends ajfo
 {
-  abiq(abip paramabip, Bitmap paramBitmap) {}
+  public abiq(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  public void run()
+  protected void onCardLabelUpdate(boolean paramBoolean, Object paramObject)
   {
-    ARMapActivity.a(this.jdField_a_of_type_Abip.a).a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if (paramBoolean)
+    {
+      this.a.setResult(-1);
+      this.a.b(2131654149);
+    }
+    for (;;)
+    {
+      this.a.a = false;
+      this.a.finish();
+      return;
+      this.a.b(2131654147);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abiq
  * JD-Core Version:    0.7.0.1
  */

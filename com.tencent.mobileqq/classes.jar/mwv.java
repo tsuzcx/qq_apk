@@ -1,8 +1,19 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsAdapter;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class mwv
+  implements View.OnClickListener
 {
-  private mwv(SubscriptFeedsAdapter paramSubscriptFeedsAdapter) {}
+  public mwv(AccountDetailActivity paramAccountDetailActivity, String paramString) {}
+  
+  public void onClick(View paramView)
+  {
+    paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.startActivity(paramView);
+  }
 }
 
 

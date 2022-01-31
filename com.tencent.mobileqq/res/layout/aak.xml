@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/vu" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <include layout="@layout/adk" />
+        <include android:id="@id/bz6" layout="@layout/aaz" />
+        <include android:id="@id/bq1" android:visibility="gone" layout="@layout/ab_" />
+    </LinearLayout>
+    <com.tenpay.api.MyKeyboardWindow android:id="@id/a_1" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+</RelativeLayout>

@@ -3,8 +3,6 @@ package com.tencent.TMG.utils;
 import android.os.Build;
 import android.os.Build.VERSION;
 import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
 
 public class VcSystemInfo
 {
@@ -72,37 +70,37 @@ public class VcSystemInfo
   public static void getCpuInfo()
   {
     // Byte code:
-    //   0: getstatic 72	com/tencent/TMG/utils/VcSystemInfo:mfReadCpuInfo	Z
+    //   0: getstatic 69	com/tencent/TMG/utils/VcSystemInfo:mfReadCpuInfo	Z
     //   3: iconst_1
     //   4: if_icmpne +4 -> 8
     //   7: return
     //   8: aconst_null
     //   9: astore 9
-    //   11: ldc2_w 114
+    //   11: ldc2_w 111
     //   14: lstore 4
-    //   16: ldc 116
+    //   16: ldc 113
     //   18: fstore_0
-    //   19: new 118	java/io/FileReader
+    //   19: new 115	java/io/FileReader
     //   22: dup
-    //   23: ldc 120
-    //   25: invokespecial 123	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   23: ldc 117
+    //   25: invokespecial 120	java/io/FileReader:<init>	(Ljava/lang/String;)V
     //   28: astore 8
-    //   30: new 125	java/io/BufferedReader
+    //   30: new 122	java/io/BufferedReader
     //   33: dup
     //   34: aload 8
-    //   36: invokespecial 128	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   36: invokespecial 125	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   39: astore 9
     //   41: aload 9
-    //   43: invokevirtual 131	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   43: invokevirtual 128	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   46: astore 10
     //   48: aload 10
     //   50: ifnonnull +262 -> 312
     //   53: iconst_1
-    //   54: putstatic 72	com/tencent/TMG/utils/VcSystemInfo:mfReadCpuInfo	Z
+    //   54: putstatic 69	com/tencent/TMG/utils/VcSystemInfo:mfReadCpuInfo	Z
     //   57: aload 9
     //   59: ifnull +8 -> 67
     //   62: aload 9
-    //   64: invokevirtual 134	java/io/BufferedReader:close	()V
+    //   64: invokevirtual 131	java/io/BufferedReader:close	()V
     //   67: lload 4
     //   69: lstore 6
     //   71: fload_0
@@ -110,109 +108,109 @@ public class VcSystemInfo
     //   73: aload 8
     //   75: ifnull +14 -> 89
     //   78: aload 8
-    //   80: invokevirtual 135	java/io/FileReader:close	()V
+    //   80: invokevirtual 132	java/io/FileReader:close	()V
     //   83: fload_0
     //   84: fstore_1
     //   85: lload 4
     //   87: lstore 6
-    //   89: invokestatic 139	com/tencent/TMG/utils/VcSystemInfo:readMaxCpuFreq	()J
+    //   89: invokestatic 136	com/tencent/TMG/utils/VcSystemInfo:readMaxCpuFreq	()J
     //   92: lstore 4
     //   94: lload 4
     //   96: lconst_0
     //   97: lcmp
     //   98: ifle +1084 -> 1182
     //   101: lload 4
-    //   103: putstatic 66	com/tencent/TMG/utils/VcSystemInfo:mMaxCpuFreq	J
-    //   106: invokestatic 145	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   103: putstatic 63	com/tencent/TMG/utils/VcSystemInfo:mMaxCpuFreq	J
+    //   106: invokestatic 142	com/tencent/TMG/utils/QLog:isColorLevel	()Z
     //   109: ifeq +30 -> 139
-    //   112: ldc 28
+    //   112: ldc 25
     //   114: iconst_0
-    //   115: new 147	java/lang/StringBuilder
+    //   115: new 144	java/lang/StringBuilder
     //   118: dup
-    //   119: invokespecial 148	java/lang/StringBuilder:<init>	()V
-    //   122: ldc 150
-    //   124: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   127: getstatic 66	com/tencent/TMG/utils/VcSystemInfo:mMaxCpuFreq	J
-    //   130: invokevirtual 157	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   133: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   136: invokestatic 164	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   139: invokestatic 167	com/tencent/TMG/utils/VcSystemInfo:getCurrentCpuFreq	()J
+    //   119: invokespecial 145	java/lang/StringBuilder:<init>	()V
+    //   122: ldc 147
+    //   124: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   127: getstatic 63	com/tencent/TMG/utils/VcSystemInfo:mMaxCpuFreq	J
+    //   130: invokevirtual 154	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   133: invokevirtual 157	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   136: invokestatic 161	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   139: invokestatic 164	com/tencent/TMG/utils/VcSystemInfo:getCurrentCpuFreq	()J
     //   142: lstore 4
     //   144: lload 4
     //   146: lconst_0
     //   147: lcmp
     //   148: ifle +41 -> 189
     //   151: lload 4
-    //   153: putstatic 70	com/tencent/TMG/utils/VcSystemInfo:mCurrCpuFreq	J
-    //   156: invokestatic 145	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   153: putstatic 67	com/tencent/TMG/utils/VcSystemInfo:mCurrCpuFreq	J
+    //   156: invokestatic 142	com/tencent/TMG/utils/QLog:isColorLevel	()Z
     //   159: ifeq +30 -> 189
-    //   162: ldc 28
+    //   162: ldc 25
     //   164: iconst_0
-    //   165: new 147	java/lang/StringBuilder
+    //   165: new 144	java/lang/StringBuilder
     //   168: dup
-    //   169: invokespecial 148	java/lang/StringBuilder:<init>	()V
-    //   172: ldc 169
-    //   174: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   177: getstatic 70	com/tencent/TMG/utils/VcSystemInfo:mCurrCpuFreq	J
-    //   180: invokevirtual 157	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   183: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   186: invokestatic 164	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   189: invokestatic 172	com/tencent/TMG/utils/VcSystemInfo:readNumCores	()I
+    //   169: invokespecial 145	java/lang/StringBuilder:<init>	()V
+    //   172: ldc 166
+    //   174: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   177: getstatic 67	com/tencent/TMG/utils/VcSystemInfo:mCurrCpuFreq	J
+    //   180: invokevirtual 154	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   183: invokevirtual 157	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   186: invokestatic 161	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   189: invokestatic 169	com/tencent/TMG/utils/VcSystemInfo:readNumCores	()I
     //   192: istore_2
     //   193: iload_2
     //   194: ifle +1087 -> 1281
     //   197: iload_2
-    //   198: putstatic 68	com/tencent/TMG/utils/VcSystemInfo:mCoreNumber	I
-    //   201: invokestatic 145	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   198: putstatic 65	com/tencent/TMG/utils/VcSystemInfo:mCoreNumber	I
+    //   201: invokestatic 142	com/tencent/TMG/utils/QLog:isColorLevel	()Z
     //   204: ifeq +30 -> 234
-    //   207: ldc 28
+    //   207: ldc 25
     //   209: iconst_0
-    //   210: new 147	java/lang/StringBuilder
+    //   210: new 144	java/lang/StringBuilder
     //   213: dup
-    //   214: invokespecial 148	java/lang/StringBuilder:<init>	()V
-    //   217: ldc 174
-    //   219: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   222: getstatic 68	com/tencent/TMG/utils/VcSystemInfo:mCoreNumber	I
-    //   225: invokevirtual 177	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   228: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   231: invokestatic 164	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   234: invokestatic 180	com/tencent/TMG/utils/VcSystemInfo:readCpuArchitecture	()I
-    //   237: putstatic 76	com/tencent/TMG/utils/VcSystemInfo:mChip	I
-    //   240: invokestatic 183	com/tencent/TMG/utils/VcSystemInfo:readSupportSharpAudio	()Z
-    //   243: putstatic 78	com/tencent/TMG/utils/VcSystemInfo:mIsSupportSharpAudio	Z
-    //   246: getstatic 78	com/tencent/TMG/utils/VcSystemInfo:mIsSupportSharpAudio	Z
+    //   214: invokespecial 145	java/lang/StringBuilder:<init>	()V
+    //   217: ldc 171
+    //   219: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   222: getstatic 65	com/tencent/TMG/utils/VcSystemInfo:mCoreNumber	I
+    //   225: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   228: invokevirtual 157	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   231: invokestatic 161	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   234: invokestatic 177	com/tencent/TMG/utils/VcSystemInfo:readCpuArchitecture	()I
+    //   237: putstatic 73	com/tencent/TMG/utils/VcSystemInfo:mChip	I
+    //   240: invokestatic 180	com/tencent/TMG/utils/VcSystemInfo:readSupportSharpAudio	()Z
+    //   243: putstatic 75	com/tencent/TMG/utils/VcSystemInfo:mIsSupportSharpAudio	Z
+    //   246: getstatic 75	com/tencent/TMG/utils/VcSystemInfo:mIsSupportSharpAudio	Z
     //   249: ifeq +1082 -> 1331
     //   252: iconst_1
-    //   253: putstatic 80	com/tencent/TMG/utils/VcSystemInfo:mIsSupportSharpVideo	Z
-    //   256: invokestatic 145	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   253: putstatic 77	com/tencent/TMG/utils/VcSystemInfo:mIsSupportSharpVideo	Z
+    //   256: invokestatic 142	com/tencent/TMG/utils/QLog:isColorLevel	()Z
     //   259: ifeq -252 -> 7
-    //   262: ldc 28
+    //   262: ldc 25
     //   264: iconst_0
-    //   265: new 147	java/lang/StringBuilder
+    //   265: new 144	java/lang/StringBuilder
     //   268: dup
-    //   269: invokespecial 148	java/lang/StringBuilder:<init>	()V
-    //   272: ldc 185
-    //   274: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   277: getstatic 76	com/tencent/TMG/utils/VcSystemInfo:mChip	I
-    //   280: invokevirtual 177	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   283: ldc 187
-    //   285: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   288: getstatic 80	com/tencent/TMG/utils/VcSystemInfo:mIsSupportSharpVideo	Z
-    //   291: invokevirtual 190	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   294: ldc 192
-    //   296: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   299: getstatic 78	com/tencent/TMG/utils/VcSystemInfo:mIsSupportSharpAudio	Z
-    //   302: invokevirtual 190	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   305: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   308: invokestatic 164	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   269: invokespecial 145	java/lang/StringBuilder:<init>	()V
+    //   272: ldc 182
+    //   274: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   277: getstatic 73	com/tencent/TMG/utils/VcSystemInfo:mChip	I
+    //   280: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   283: ldc 184
+    //   285: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   288: getstatic 77	com/tencent/TMG/utils/VcSystemInfo:mIsSupportSharpVideo	Z
+    //   291: invokevirtual 187	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   294: ldc 189
+    //   296: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   299: getstatic 75	com/tencent/TMG/utils/VcSystemInfo:mIsSupportSharpAudio	Z
+    //   302: invokevirtual 187	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   305: invokevirtual 157	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   308: invokestatic 161	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   311: return
     //   312: aload 10
-    //   314: ldc 194
-    //   316: invokevirtual 200	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   314: ldc 191
+    //   316: invokevirtual 197	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   319: ifeq +140 -> 459
     //   322: aload 10
     //   324: bipush 58
-    //   326: invokevirtual 204	java/lang/String:indexOf	(I)I
+    //   326: invokevirtual 201	java/lang/String:indexOf	(I)I
     //   329: istore_2
     //   330: iload_2
     //   331: iconst_1
@@ -222,35 +220,35 @@ public class VcSystemInfo
     //   338: iconst_1
     //   339: iadd
     //   340: aload 10
-    //   342: invokevirtual 207	java/lang/String:length	()I
-    //   345: invokevirtual 211	java/lang/String:substring	(II)Ljava/lang/String;
-    //   348: putstatic 56	com/tencent/TMG/utils/VcSystemInfo:mProcessorName	Ljava/lang/String;
-    //   351: getstatic 56	com/tencent/TMG/utils/VcSystemInfo:mProcessorName	Ljava/lang/String;
-    //   354: invokevirtual 214	java/lang/String:trim	()Ljava/lang/String;
-    //   357: putstatic 56	com/tencent/TMG/utils/VcSystemInfo:mProcessorName	Ljava/lang/String;
-    //   360: invokestatic 145	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   342: invokevirtual 204	java/lang/String:length	()I
+    //   345: invokevirtual 208	java/lang/String:substring	(II)Ljava/lang/String;
+    //   348: putstatic 53	com/tencent/TMG/utils/VcSystemInfo:mProcessorName	Ljava/lang/String;
+    //   351: getstatic 53	com/tencent/TMG/utils/VcSystemInfo:mProcessorName	Ljava/lang/String;
+    //   354: invokevirtual 211	java/lang/String:trim	()Ljava/lang/String;
+    //   357: putstatic 53	com/tencent/TMG/utils/VcSystemInfo:mProcessorName	Ljava/lang/String;
+    //   360: invokestatic 142	com/tencent/TMG/utils/QLog:isColorLevel	()Z
     //   363: ifeq -322 -> 41
-    //   366: ldc 28
+    //   366: ldc 25
     //   368: iconst_0
-    //   369: new 147	java/lang/StringBuilder
+    //   369: new 144	java/lang/StringBuilder
     //   372: dup
-    //   373: invokespecial 148	java/lang/StringBuilder:<init>	()V
-    //   376: ldc 216
-    //   378: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   381: getstatic 56	com/tencent/TMG/utils/VcSystemInfo:mProcessorName	Ljava/lang/String;
-    //   384: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   387: ldc 218
-    //   389: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   373: invokespecial 145	java/lang/StringBuilder:<init>	()V
+    //   376: ldc 213
+    //   378: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   381: getstatic 53	com/tencent/TMG/utils/VcSystemInfo:mProcessorName	Ljava/lang/String;
+    //   384: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   387: ldc 215
+    //   389: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   392: aload 10
-    //   394: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   397: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   400: invokestatic 164	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   394: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   397: invokevirtual 157	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   400: invokestatic 161	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   403: goto -362 -> 41
     //   406: astore 10
     //   408: aload 9
     //   410: ifnull +8 -> 418
     //   413: aload 9
-    //   415: invokevirtual 134	java/io/BufferedReader:close	()V
+    //   415: invokevirtual 131	java/io/BufferedReader:close	()V
     //   418: lload 4
     //   420: lstore 6
     //   422: fload_0
@@ -258,7 +256,7 @@ public class VcSystemInfo
     //   424: aload 8
     //   426: ifnull -337 -> 89
     //   429: aload 8
-    //   431: invokevirtual 135	java/io/FileReader:close	()V
+    //   431: invokevirtual 132	java/io/FileReader:close	()V
     //   434: lload 4
     //   436: lstore 6
     //   438: fload_0
@@ -266,19 +264,19 @@ public class VcSystemInfo
     //   440: goto -351 -> 89
     //   443: astore 8
     //   445: aload 8
-    //   447: invokevirtual 221	java/lang/Exception:printStackTrace	()V
+    //   447: invokevirtual 218	java/lang/Exception:printStackTrace	()V
     //   450: lload 4
     //   452: lstore 6
     //   454: fload_0
     //   455: fstore_1
     //   456: goto -367 -> 89
     //   459: aload 10
-    //   461: ldc 223
-    //   463: invokevirtual 200	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   461: ldc 220
+    //   463: invokevirtual 197	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   466: ifeq +218 -> 684
     //   469: aload 10
     //   471: bipush 58
-    //   473: invokevirtual 204	java/lang/String:indexOf	(I)I
+    //   473: invokevirtual 201	java/lang/String:indexOf	(I)I
     //   476: istore_2
     //   477: iload_2
     //   478: iconst_1
@@ -288,50 +286,50 @@ public class VcSystemInfo
     //   485: iconst_1
     //   486: iadd
     //   487: aload 10
-    //   489: invokevirtual 207	java/lang/String:length	()I
-    //   492: invokevirtual 211	java/lang/String:substring	(II)Ljava/lang/String;
-    //   495: invokevirtual 214	java/lang/String:trim	()Ljava/lang/String;
+    //   489: invokevirtual 204	java/lang/String:length	()I
+    //   492: invokevirtual 208	java/lang/String:substring	(II)Ljava/lang/String;
+    //   495: invokevirtual 211	java/lang/String:trim	()Ljava/lang/String;
     //   498: astore 11
     //   500: aload 11
     //   502: ifnull +22 -> 524
     //   505: aload 11
-    //   507: invokevirtual 207	java/lang/String:length	()I
+    //   507: invokevirtual 204	java/lang/String:length	()I
     //   510: istore_2
     //   511: iload_2
     //   512: ifle +12 -> 524
     //   515: aload 11
-    //   517: invokestatic 229	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   517: invokestatic 226	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   520: l2i
-    //   521: putstatic 64	com/tencent/TMG/utils/VcSystemInfo:mCpuArchitecture	I
+    //   521: putstatic 61	com/tencent/TMG/utils/VcSystemInfo:mCpuArchitecture	I
     //   524: aload 10
-    //   526: ldc 231
-    //   528: invokevirtual 235	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   526: ldc 228
+    //   528: invokevirtual 232	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   531: ifeq +7 -> 538
     //   534: iconst_5
-    //   535: putstatic 64	com/tencent/TMG/utils/VcSystemInfo:mCpuArchitecture	I
-    //   538: invokestatic 145	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   535: putstatic 61	com/tencent/TMG/utils/VcSystemInfo:mCpuArchitecture	I
+    //   538: invokestatic 142	com/tencent/TMG/utils/QLog:isColorLevel	()Z
     //   541: ifeq -500 -> 41
-    //   544: ldc 28
+    //   544: ldc 25
     //   546: iconst_0
-    //   547: new 147	java/lang/StringBuilder
+    //   547: new 144	java/lang/StringBuilder
     //   550: dup
-    //   551: invokespecial 148	java/lang/StringBuilder:<init>	()V
-    //   554: ldc 237
-    //   556: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   559: getstatic 64	com/tencent/TMG/utils/VcSystemInfo:mCpuArchitecture	I
-    //   562: invokevirtual 177	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   565: ldc 218
-    //   567: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   551: invokespecial 145	java/lang/StringBuilder:<init>	()V
+    //   554: ldc 234
+    //   556: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   559: getstatic 61	com/tencent/TMG/utils/VcSystemInfo:mCpuArchitecture	I
+    //   562: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   565: ldc 215
+    //   567: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   570: aload 10
-    //   572: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   575: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   578: invokestatic 164	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   572: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   575: invokevirtual 157	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   578: invokestatic 161	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   581: goto -540 -> 41
     //   584: astore 10
     //   586: aload 9
     //   588: ifnull +8 -> 596
     //   591: aload 9
-    //   593: invokevirtual 134	java/io/BufferedReader:close	()V
+    //   593: invokevirtual 131	java/io/BufferedReader:close	()V
     //   596: lload 4
     //   598: lstore 6
     //   600: fload_0
@@ -339,7 +337,7 @@ public class VcSystemInfo
     //   602: aload 8
     //   604: ifnull -515 -> 89
     //   607: aload 8
-    //   609: invokevirtual 135	java/io/FileReader:close	()V
+    //   609: invokevirtual 132	java/io/FileReader:close	()V
     //   612: lload 4
     //   614: lstore 6
     //   616: fload_0
@@ -347,7 +345,7 @@ public class VcSystemInfo
     //   618: goto -529 -> 89
     //   621: astore 8
     //   623: aload 8
-    //   625: invokevirtual 221	java/lang/Exception:printStackTrace	()V
+    //   625: invokevirtual 218	java/lang/Exception:printStackTrace	()V
     //   628: lload 4
     //   630: lstore 6
     //   632: fload_0
@@ -357,7 +355,7 @@ public class VcSystemInfo
     //   639: iconst_1
     //   640: istore_2
     //   641: aload 11
-    //   643: invokevirtual 207	java/lang/String:length	()I
+    //   643: invokevirtual 204	java/lang/String:length	()I
     //   646: istore_3
     //   647: iload_2
     //   648: iload_3
@@ -365,13 +363,13 @@ public class VcSystemInfo
     //   652: aload 11
     //   654: iconst_0
     //   655: aload 11
-    //   657: invokevirtual 207	java/lang/String:length	()I
+    //   657: invokevirtual 204	java/lang/String:length	()I
     //   660: iload_2
     //   661: isub
-    //   662: invokevirtual 211	java/lang/String:substring	(II)Ljava/lang/String;
-    //   665: invokestatic 229	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   662: invokevirtual 208	java/lang/String:substring	(II)Ljava/lang/String;
+    //   665: invokestatic 226	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   668: l2i
-    //   669: putstatic 64	com/tencent/TMG/utils/VcSystemInfo:mCpuArchitecture	I
+    //   669: putstatic 61	com/tencent/TMG/utils/VcSystemInfo:mCpuArchitecture	I
     //   672: goto -148 -> 524
     //   675: astore 12
     //   677: iload_2
@@ -380,12 +378,12 @@ public class VcSystemInfo
     //   680: istore_2
     //   681: goto -40 -> 641
     //   684: aload 10
-    //   686: ldc 239
-    //   688: invokevirtual 200	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   686: ldc 236
+    //   688: invokevirtual 197	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   691: ifeq +134 -> 825
     //   694: aload 10
     //   696: bipush 58
-    //   698: invokevirtual 204	java/lang/String:indexOf	(I)I
+    //   698: invokevirtual 201	java/lang/String:indexOf	(I)I
     //   701: istore_2
     //   702: iload_2
     //   703: iconst_1
@@ -395,33 +393,33 @@ public class VcSystemInfo
     //   710: iconst_1
     //   711: iadd
     //   712: aload 10
-    //   714: invokevirtual 207	java/lang/String:length	()I
-    //   717: invokevirtual 211	java/lang/String:substring	(II)Ljava/lang/String;
-    //   720: invokevirtual 214	java/lang/String:trim	()Ljava/lang/String;
-    //   723: putstatic 58	com/tencent/TMG/utils/VcSystemInfo:mFeature	Ljava/lang/String;
-    //   726: invokestatic 145	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   714: invokevirtual 204	java/lang/String:length	()I
+    //   717: invokevirtual 208	java/lang/String:substring	(II)Ljava/lang/String;
+    //   720: invokevirtual 211	java/lang/String:trim	()Ljava/lang/String;
+    //   723: putstatic 55	com/tencent/TMG/utils/VcSystemInfo:mFeature	Ljava/lang/String;
+    //   726: invokestatic 142	com/tencent/TMG/utils/QLog:isColorLevel	()Z
     //   729: ifeq -688 -> 41
-    //   732: ldc 28
+    //   732: ldc 25
     //   734: iconst_0
-    //   735: new 147	java/lang/StringBuilder
+    //   735: new 144	java/lang/StringBuilder
     //   738: dup
-    //   739: invokespecial 148	java/lang/StringBuilder:<init>	()V
-    //   742: ldc 241
-    //   744: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   747: getstatic 58	com/tencent/TMG/utils/VcSystemInfo:mFeature	Ljava/lang/String;
-    //   750: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   753: ldc 218
-    //   755: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   739: invokespecial 145	java/lang/StringBuilder:<init>	()V
+    //   742: ldc 238
+    //   744: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   747: getstatic 55	com/tencent/TMG/utils/VcSystemInfo:mFeature	Ljava/lang/String;
+    //   750: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   753: ldc 215
+    //   755: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   758: aload 10
-    //   760: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   763: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   766: invokestatic 164	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   760: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   763: invokevirtual 157	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   766: invokestatic 161	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   769: goto -728 -> 41
     //   772: astore 10
     //   774: aload 9
     //   776: ifnull +8 -> 784
     //   779: aload 9
-    //   781: invokevirtual 134	java/io/BufferedReader:close	()V
+    //   781: invokevirtual 131	java/io/BufferedReader:close	()V
     //   784: lload 4
     //   786: lstore 6
     //   788: fload_0
@@ -429,7 +427,7 @@ public class VcSystemInfo
     //   790: aload 8
     //   792: ifnull -703 -> 89
     //   795: aload 8
-    //   797: invokevirtual 135	java/io/FileReader:close	()V
+    //   797: invokevirtual 132	java/io/FileReader:close	()V
     //   800: lload 4
     //   802: lstore 6
     //   804: fload_0
@@ -437,19 +435,19 @@ public class VcSystemInfo
     //   806: goto -717 -> 89
     //   809: astore 8
     //   811: aload 8
-    //   813: invokevirtual 221	java/lang/Exception:printStackTrace	()V
+    //   813: invokevirtual 218	java/lang/Exception:printStackTrace	()V
     //   816: lload 4
     //   818: lstore 6
     //   820: fload_0
     //   821: fstore_1
     //   822: goto -733 -> 89
     //   825: aload 10
-    //   827: ldc 243
-    //   829: invokevirtual 200	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   827: ldc 240
+    //   829: invokevirtual 197	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   832: ifeq +114 -> 946
     //   835: aload 10
     //   837: bipush 58
-    //   839: invokevirtual 204	java/lang/String:indexOf	(I)I
+    //   839: invokevirtual 201	java/lang/String:indexOf	(I)I
     //   842: istore_2
     //   843: iload_2
     //   844: iconst_1
@@ -459,27 +457,27 @@ public class VcSystemInfo
     //   851: iconst_1
     //   852: iadd
     //   853: aload 10
-    //   855: invokevirtual 207	java/lang/String:length	()I
-    //   858: invokevirtual 211	java/lang/String:substring	(II)Ljava/lang/String;
-    //   861: invokevirtual 214	java/lang/String:trim	()Ljava/lang/String;
-    //   864: putstatic 60	com/tencent/TMG/utils/VcSystemInfo:mVendorId	Ljava/lang/String;
-    //   867: invokestatic 145	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   855: invokevirtual 204	java/lang/String:length	()I
+    //   858: invokevirtual 208	java/lang/String:substring	(II)Ljava/lang/String;
+    //   861: invokevirtual 211	java/lang/String:trim	()Ljava/lang/String;
+    //   864: putstatic 57	com/tencent/TMG/utils/VcSystemInfo:mVendorId	Ljava/lang/String;
+    //   867: invokestatic 142	com/tencent/TMG/utils/QLog:isColorLevel	()Z
     //   870: ifeq -829 -> 41
-    //   873: ldc 28
+    //   873: ldc 25
     //   875: iconst_0
-    //   876: new 147	java/lang/StringBuilder
+    //   876: new 144	java/lang/StringBuilder
     //   879: dup
-    //   880: invokespecial 148	java/lang/StringBuilder:<init>	()V
-    //   883: ldc 245
-    //   885: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   888: getstatic 60	com/tencent/TMG/utils/VcSystemInfo:mVendorId	Ljava/lang/String;
-    //   891: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   894: ldc 218
-    //   896: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   880: invokespecial 145	java/lang/StringBuilder:<init>	()V
+    //   883: ldc 242
+    //   885: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   888: getstatic 57	com/tencent/TMG/utils/VcSystemInfo:mVendorId	Ljava/lang/String;
+    //   891: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   894: ldc 215
+    //   896: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   899: aload 10
-    //   901: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   904: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   907: invokestatic 164	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   901: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   904: invokevirtual 157	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   907: invokestatic 161	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   910: goto -869 -> 41
     //   913: astore 11
     //   915: aload 9
@@ -489,51 +487,51 @@ public class VcSystemInfo
     //   923: aload 10
     //   925: ifnull +8 -> 933
     //   928: aload 10
-    //   930: invokevirtual 134	java/io/BufferedReader:close	()V
+    //   930: invokevirtual 131	java/io/BufferedReader:close	()V
     //   933: aload 8
     //   935: ifnull +8 -> 943
     //   938: aload 8
-    //   940: invokevirtual 135	java/io/FileReader:close	()V
+    //   940: invokevirtual 132	java/io/FileReader:close	()V
     //   943: aload 9
     //   945: athrow
     //   946: aload 10
-    //   948: ldc 247
-    //   950: invokevirtual 200	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   948: ldc 244
+    //   950: invokevirtual 197	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   953: ifeq +71 -> 1024
     //   956: aload 10
-    //   958: invokevirtual 214	java/lang/String:trim	()Ljava/lang/String;
-    //   961: putstatic 62	com/tencent/TMG/utils/VcSystemInfo:mHardware	Ljava/lang/String;
+    //   958: invokevirtual 211	java/lang/String:trim	()Ljava/lang/String;
+    //   961: putstatic 59	com/tencent/TMG/utils/VcSystemInfo:mHardware	Ljava/lang/String;
     //   964: aload 10
-    //   966: ldc 249
-    //   968: invokevirtual 235	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
+    //   966: ldc 246
+    //   968: invokevirtual 232	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
     //   971: ifeq +7 -> 978
     //   974: iconst_1
-    //   975: putstatic 82	com/tencent/TMG/utils/VcSystemInfo:mIsMarvell	Z
-    //   978: invokestatic 145	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   975: putstatic 79	com/tencent/TMG/utils/VcSystemInfo:mIsMarvell	Z
+    //   978: invokestatic 142	com/tencent/TMG/utils/QLog:isColorLevel	()Z
     //   981: ifeq -940 -> 41
-    //   984: ldc 28
+    //   984: ldc 25
     //   986: iconst_0
-    //   987: new 147	java/lang/StringBuilder
+    //   987: new 144	java/lang/StringBuilder
     //   990: dup
-    //   991: invokespecial 148	java/lang/StringBuilder:<init>	()V
-    //   994: ldc 251
-    //   996: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   999: getstatic 82	com/tencent/TMG/utils/VcSystemInfo:mIsMarvell	Z
-    //   1002: invokevirtual 190	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1005: ldc 218
-    //   1007: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   991: invokespecial 145	java/lang/StringBuilder:<init>	()V
+    //   994: ldc 248
+    //   996: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   999: getstatic 79	com/tencent/TMG/utils/VcSystemInfo:mIsMarvell	Z
+    //   1002: invokevirtual 187	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   1005: ldc 215
+    //   1007: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1010: aload 10
-    //   1012: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1015: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1018: invokestatic 164	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1012: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1015: invokevirtual 157	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1018: invokestatic 161	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1021: goto -980 -> 41
     //   1024: aload 10
-    //   1026: ldc 253
-    //   1028: invokevirtual 200	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   1026: ldc 250
+    //   1028: invokevirtual 197	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   1031: ifeq +67 -> 1098
     //   1034: aload 10
     //   1036: bipush 58
-    //   1038: invokevirtual 204	java/lang/String:indexOf	(I)I
+    //   1038: invokevirtual 201	java/lang/String:indexOf	(I)I
     //   1041: istore_2
     //   1042: iload_2
     //   1043: iconst_1
@@ -543,12 +541,12 @@ public class VcSystemInfo
     //   1050: iconst_1
     //   1051: iadd
     //   1052: aload 10
-    //   1054: invokevirtual 207	java/lang/String:length	()I
-    //   1057: invokevirtual 211	java/lang/String:substring	(II)Ljava/lang/String;
-    //   1060: invokevirtual 214	java/lang/String:trim	()Ljava/lang/String;
+    //   1054: invokevirtual 204	java/lang/String:length	()I
+    //   1057: invokevirtual 208	java/lang/String:substring	(II)Ljava/lang/String;
+    //   1060: invokevirtual 211	java/lang/String:trim	()Ljava/lang/String;
     //   1063: astore 10
     //   1065: aload 10
-    //   1067: invokestatic 229	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   1067: invokestatic 226	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   1070: lstore 6
     //   1072: lload 6
     //   1074: lconst_0
@@ -566,12 +564,12 @@ public class VcSystemInfo
     //   1093: lstore 4
     //   1095: goto -1054 -> 41
     //   1098: aload 10
-    //   1100: ldc 255
-    //   1102: invokevirtual 200	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   1100: ldc 252
+    //   1102: invokevirtual 197	java/lang/String:startsWith	(Ljava/lang/String;)Z
     //   1105: ifeq -1064 -> 41
     //   1108: aload 10
     //   1110: bipush 58
-    //   1112: invokevirtual 204	java/lang/String:indexOf	(I)I
+    //   1112: invokevirtual 201	java/lang/String:indexOf	(I)I
     //   1115: istore_2
     //   1116: iload_2
     //   1117: iconst_1
@@ -581,12 +579,12 @@ public class VcSystemInfo
     //   1124: iconst_1
     //   1125: iadd
     //   1126: aload 10
-    //   1128: invokevirtual 207	java/lang/String:length	()I
-    //   1131: invokevirtual 211	java/lang/String:substring	(II)Ljava/lang/String;
-    //   1134: invokevirtual 214	java/lang/String:trim	()Ljava/lang/String;
+    //   1128: invokevirtual 204	java/lang/String:length	()I
+    //   1131: invokevirtual 208	java/lang/String:substring	(II)Ljava/lang/String;
+    //   1134: invokevirtual 211	java/lang/String:trim	()Ljava/lang/String;
     //   1137: astore 10
     //   1139: aload 10
-    //   1141: invokestatic 261	java/lang/Float:parseFloat	(Ljava/lang/String;)F
+    //   1141: invokestatic 258	java/lang/Float:parseFloat	(Ljava/lang/String;)F
     //   1144: fstore_1
     //   1145: fload_1
     //   1146: fload_0
@@ -597,7 +595,7 @@ public class VcSystemInfo
     //   1153: goto -1112 -> 41
     //   1156: astore 8
     //   1158: aload 8
-    //   1160: invokevirtual 221	java/lang/Exception:printStackTrace	()V
+    //   1160: invokevirtual 218	java/lang/Exception:printStackTrace	()V
     //   1163: lload 4
     //   1165: lstore 6
     //   1167: fload_0
@@ -605,55 +603,55 @@ public class VcSystemInfo
     //   1169: goto -1080 -> 89
     //   1172: astore 8
     //   1174: aload 8
-    //   1176: invokevirtual 221	java/lang/Exception:printStackTrace	()V
+    //   1176: invokevirtual 218	java/lang/Exception:printStackTrace	()V
     //   1179: goto -236 -> 943
     //   1182: fload_1
     //   1183: fconst_0
     //   1184: fcmpl
     //   1185: ifle -1046 -> 139
-    //   1188: ldc_w 262
+    //   1188: ldc_w 259
     //   1191: fload_1
     //   1192: fmul
     //   1193: f2l
-    //   1194: putstatic 66	com/tencent/TMG/utils/VcSystemInfo:mMaxCpuFreq	J
+    //   1194: putstatic 63	com/tencent/TMG/utils/VcSystemInfo:mMaxCpuFreq	J
     //   1197: fload_1
-    //   1198: ldc_w 263
+    //   1198: ldc_w 260
     //   1201: fcmpg
     //   1202: ifge +54 -> 1256
     //   1205: fload_1
     //   1206: f2d
-    //   1207: ldc2_w 264
+    //   1207: ldc2_w 261
     //   1210: dmul
-    //   1211: ldc2_w 266
+    //   1211: ldc2_w 263
     //   1214: dmul
     //   1215: d2l
-    //   1216: putstatic 66	com/tencent/TMG/utils/VcSystemInfo:mMaxCpuFreq	J
-    //   1219: invokestatic 145	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   1216: putstatic 63	com/tencent/TMG/utils/VcSystemInfo:mMaxCpuFreq	J
+    //   1219: invokestatic 142	com/tencent/TMG/utils/QLog:isColorLevel	()Z
     //   1222: ifeq -1083 -> 139
-    //   1225: ldc 28
+    //   1225: ldc 25
     //   1227: iconst_0
-    //   1228: new 147	java/lang/StringBuilder
+    //   1228: new 144	java/lang/StringBuilder
     //   1231: dup
-    //   1232: invokespecial 148	java/lang/StringBuilder:<init>	()V
-    //   1235: ldc_w 269
-    //   1238: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1241: getstatic 66	com/tencent/TMG/utils/VcSystemInfo:mMaxCpuFreq	J
-    //   1244: invokevirtual 157	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1247: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1250: invokestatic 164	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1232: invokespecial 145	java/lang/StringBuilder:<init>	()V
+    //   1235: ldc_w 266
+    //   1238: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1241: getstatic 63	com/tencent/TMG/utils/VcSystemInfo:mMaxCpuFreq	J
+    //   1244: invokevirtual 154	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1247: invokevirtual 157	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1250: invokestatic 161	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1253: goto -1114 -> 139
     //   1256: fload_1
-    //   1257: ldc_w 270
+    //   1257: ldc_w 267
     //   1260: fcmpl
     //   1261: ifle -42 -> 1219
     //   1264: fload_1
     //   1265: f2d
-    //   1266: ldc2_w 271
+    //   1266: ldc2_w 268
     //   1269: ddiv
-    //   1270: ldc2_w 266
+    //   1270: ldc2_w 263
     //   1273: dmul
     //   1274: d2l
-    //   1275: putstatic 66	com/tencent/TMG/utils/VcSystemInfo:mMaxCpuFreq	J
+    //   1275: putstatic 63	com/tencent/TMG/utils/VcSystemInfo:mMaxCpuFreq	J
     //   1278: goto -59 -> 1219
     //   1281: lload 6
     //   1283: lconst_0
@@ -661,23 +659,23 @@ public class VcSystemInfo
     //   1285: ifle -1051 -> 234
     //   1288: lload 6
     //   1290: l2i
-    //   1291: putstatic 68	com/tencent/TMG/utils/VcSystemInfo:mCoreNumber	I
-    //   1294: invokestatic 145	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   1291: putstatic 65	com/tencent/TMG/utils/VcSystemInfo:mCoreNumber	I
+    //   1294: invokestatic 142	com/tencent/TMG/utils/QLog:isColorLevel	()Z
     //   1297: ifeq -1063 -> 234
-    //   1300: ldc 28
+    //   1300: ldc 25
     //   1302: iconst_0
-    //   1303: new 147	java/lang/StringBuilder
+    //   1303: new 144	java/lang/StringBuilder
     //   1306: dup
-    //   1307: invokespecial 148	java/lang/StringBuilder:<init>	()V
-    //   1310: ldc_w 274
-    //   1313: invokevirtual 154	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1316: getstatic 68	com/tencent/TMG/utils/VcSystemInfo:mCoreNumber	I
-    //   1319: invokevirtual 177	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1322: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1325: invokestatic 164	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1307: invokespecial 145	java/lang/StringBuilder:<init>	()V
+    //   1310: ldc_w 271
+    //   1313: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1316: getstatic 65	com/tencent/TMG/utils/VcSystemInfo:mCoreNumber	I
+    //   1319: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1322: invokevirtual 157	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1325: invokestatic 161	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1328: goto -1094 -> 234
     //   1331: iconst_0
-    //   1332: putstatic 80	com/tencent/TMG/utils/VcSystemInfo:mIsSupportSharpVideo	Z
+    //   1332: putstatic 77	com/tencent/TMG/utils/VcSystemInfo:mIsSupportSharpVideo	Z
     //   1335: goto -1079 -> 256
     //   1338: astore 10
     //   1340: goto -1299 -> 41
@@ -898,7 +896,7 @@ public class VcSystemInfo
   public static String getCpuReport()
   {
     getCpuInfo();
-    return "prcs(" + mProcessorName + ") " + "arch(" + mCpuArchitecture + ") " + "hard(" + mHardware + ") " + "chip(" + mChip + ") " + "freq(" + mMaxCpuFreq + ") " + "num(" + mCoreNumber + ")";
+    return "prcs(" + mProcessorName + ") arch(" + mCpuArchitecture + ") hard(" + mHardware + ") chip(" + mChip + ") freq(" + mMaxCpuFreq + ") num(" + mCoreNumber + ")";
   }
   
   /* Error */
@@ -915,30 +913,30 @@ public class VcSystemInfo
     //   10: astore 5
     //   12: lconst_0
     //   13: lstore_2
-    //   14: new 118	java/io/FileReader
+    //   14: new 115	java/io/FileReader
     //   17: dup
-    //   18: ldc_w 293
-    //   21: invokespecial 123	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   18: ldc_w 288
+    //   21: invokespecial 120	java/io/FileReader:<init>	(Ljava/lang/String;)V
     //   24: astore 4
-    //   26: new 125	java/io/BufferedReader
+    //   26: new 122	java/io/BufferedReader
     //   29: dup
     //   30: aload 4
-    //   32: invokespecial 128	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   32: invokespecial 125	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   35: astore 5
     //   37: lload_2
     //   38: lstore_0
     //   39: aload 5
     //   41: ifnull +53 -> 94
     //   44: aload 5
-    //   46: invokevirtual 131	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   46: invokevirtual 128	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   49: astore 6
     //   51: aload 6
     //   53: ifnull +297 -> 350
     //   56: aload 6
-    //   58: invokestatic 298	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   58: invokestatic 293	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   61: ifne +289 -> 350
     //   64: aload 6
-    //   66: invokevirtual 214	java/lang/String:trim	()Ljava/lang/String;
+    //   66: invokevirtual 211	java/lang/String:trim	()Ljava/lang/String;
     //   69: astore 6
     //   71: lload_2
     //   72: lstore_0
@@ -947,28 +945,28 @@ public class VcSystemInfo
     //   78: lload_2
     //   79: lstore_0
     //   80: aload 6
-    //   82: invokevirtual 207	java/lang/String:length	()I
+    //   82: invokevirtual 204	java/lang/String:length	()I
     //   85: ifle +9 -> 94
     //   88: aload 6
-    //   90: invokestatic 229	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   90: invokestatic 226	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   93: lstore_0
     //   94: aload 5
     //   96: ifnull +8 -> 104
     //   99: aload 5
-    //   101: invokevirtual 134	java/io/BufferedReader:close	()V
+    //   101: invokevirtual 131	java/io/BufferedReader:close	()V
     //   104: lload_0
     //   105: lstore_2
     //   106: aload 4
     //   108: ifnull +10 -> 118
     //   111: aload 4
-    //   113: invokevirtual 135	java/io/FileReader:close	()V
+    //   113: invokevirtual 132	java/io/FileReader:close	()V
     //   116: lload_0
     //   117: lstore_2
     //   118: lload_2
     //   119: lreturn
     //   120: astore 4
     //   122: aload 4
-    //   124: invokevirtual 221	java/lang/Exception:printStackTrace	()V
+    //   124: invokevirtual 218	java/lang/Exception:printStackTrace	()V
     //   127: lload_0
     //   128: lreturn
     //   129: astore 4
@@ -981,16 +979,16 @@ public class VcSystemInfo
     //   142: aload 5
     //   144: ifnull +8 -> 152
     //   147: aload 5
-    //   149: invokevirtual 134	java/io/BufferedReader:close	()V
+    //   149: invokevirtual 131	java/io/BufferedReader:close	()V
     //   152: aload 4
     //   154: ifnull -36 -> 118
     //   157: aload 4
-    //   159: invokevirtual 135	java/io/FileReader:close	()V
+    //   159: invokevirtual 132	java/io/FileReader:close	()V
     //   162: lconst_0
     //   163: lreturn
     //   164: astore 4
     //   166: aload 4
-    //   168: invokevirtual 221	java/lang/Exception:printStackTrace	()V
+    //   168: invokevirtual 218	java/lang/Exception:printStackTrace	()V
     //   171: lconst_0
     //   172: lreturn
     //   173: astore 4
@@ -1001,16 +999,16 @@ public class VcSystemInfo
     //   182: aload 5
     //   184: ifnull +8 -> 192
     //   187: aload 5
-    //   189: invokevirtual 134	java/io/BufferedReader:close	()V
+    //   189: invokevirtual 131	java/io/BufferedReader:close	()V
     //   192: aload 4
     //   194: ifnull -76 -> 118
     //   197: aload 4
-    //   199: invokevirtual 135	java/io/FileReader:close	()V
+    //   199: invokevirtual 132	java/io/FileReader:close	()V
     //   202: lconst_0
     //   203: lreturn
     //   204: astore 4
     //   206: aload 4
-    //   208: invokevirtual 221	java/lang/Exception:printStackTrace	()V
+    //   208: invokevirtual 218	java/lang/Exception:printStackTrace	()V
     //   211: lconst_0
     //   212: lreturn
     //   213: astore 4
@@ -1021,16 +1019,16 @@ public class VcSystemInfo
     //   222: aload 5
     //   224: ifnull +8 -> 232
     //   227: aload 5
-    //   229: invokevirtual 134	java/io/BufferedReader:close	()V
+    //   229: invokevirtual 131	java/io/BufferedReader:close	()V
     //   232: aload 4
     //   234: ifnull -116 -> 118
     //   237: aload 4
-    //   239: invokevirtual 135	java/io/FileReader:close	()V
+    //   239: invokevirtual 132	java/io/FileReader:close	()V
     //   242: lconst_0
     //   243: lreturn
     //   244: astore 4
     //   246: aload 4
-    //   248: invokevirtual 221	java/lang/Exception:printStackTrace	()V
+    //   248: invokevirtual 218	java/lang/Exception:printStackTrace	()V
     //   251: lconst_0
     //   252: lreturn
     //   253: astore 5
@@ -1039,16 +1037,16 @@ public class VcSystemInfo
     //   258: aload 6
     //   260: ifnull +8 -> 268
     //   263: aload 6
-    //   265: invokevirtual 134	java/io/BufferedReader:close	()V
+    //   265: invokevirtual 131	java/io/BufferedReader:close	()V
     //   268: aload 4
     //   270: ifnull +8 -> 278
     //   273: aload 4
-    //   275: invokevirtual 135	java/io/FileReader:close	()V
+    //   275: invokevirtual 132	java/io/FileReader:close	()V
     //   278: aload 5
     //   280: athrow
     //   281: astore 4
     //   283: aload 4
-    //   285: invokevirtual 221	java/lang/Exception:printStackTrace	()V
+    //   285: invokevirtual 218	java/lang/Exception:printStackTrace	()V
     //   288: goto -10 -> 278
     //   291: astore 5
     //   293: goto -35 -> 258
@@ -1076,7 +1074,7 @@ public class VcSystemInfo
     //   342: goto -200 -> 142
     //   345: astore 6
     //   347: goto -205 -> 142
-    //   350: ldc 54
+    //   350: ldc 51
     //   352: astore 6
     //   354: goto -283 -> 71
     // Local variable table:
@@ -1167,7 +1165,7 @@ public class VcSystemInfo
   public static String getModelReport()
   {
     getCpuInfo();
-    return "model(" + Build.MODEL + ") " + "Mnfc(" + Build.MANUFACTURER + ") " + "dev(" + Build.VERSION.INCREMENTAL + ") " + "sdk(" + Build.VERSION.SDK_INT + ") " + "gl(" + mOpenGLVersion + ")";
+    return "model(" + Build.MODEL + ") Mnfc(" + Build.MANUFACTURER + ") dev(" + Build.VERSION.INCREMENTAL + ") sdk(" + Build.VERSION.SDK_INT + ") gl(" + mOpenGLVersion + ")";
   }
   
   public static int getNumCores()
@@ -1234,7 +1232,7 @@ public class VcSystemInfo
   {
     
     if (QLog.isColorLevel()) {
-      QLog.d("VcSystemInfo", 0, "[isSupportSharpVideo] [CpuInfo] mProcessorName=" + mProcessorName + " \n" + "mCpuArchitecture=" + mCpuArchitecture + " \n" + "mFeature=" + mFeature + " \n" + "mVendorId=" + mVendorId + " \n" + "mMaxCpuFreq=" + mMaxCpuFreq + " \n" + "mCoreNumber=" + mCoreNumber + " \n" + "mOpenGLVersion=" + mOpenGLVersion + " \n" + "mIsMarvell=" + mIsMarvell + " \n" + "Chip=" + mChip + ", Video=" + mIsSupportSharpVideo + ", Audio=" + mIsSupportSharpAudio + " \n" + "devModel=" + Build.MODEL + " \n" + "devVersion=" + Build.VERSION.INCREMENTAL + " \n" + "devManufacturer=" + Build.MANUFACTURER + " \n" + "sdkVersion=" + Build.VERSION.SDK_INT + " \n");
+      QLog.d("VcSystemInfo", 0, "[isSupportSharpVideo] [CpuInfo] mProcessorName=" + mProcessorName + " \nmCpuArchitecture=" + mCpuArchitecture + " \nmFeature=" + mFeature + " \nmVendorId=" + mVendorId + " \nmMaxCpuFreq=" + mMaxCpuFreq + " \nmCoreNumber=" + mCoreNumber + " \nmOpenGLVersion=" + mOpenGLVersion + " \nmIsMarvell=" + mIsMarvell + " \nChip=" + mChip + ", Video=" + mIsSupportSharpVideo + ", Audio=" + mIsSupportSharpAudio + " \ndevModel=" + Build.MODEL + " \ndevVersion=" + Build.VERSION.INCREMENTAL + " \ndevManufacturer=" + Build.MANUFACTURER + " \nsdkVersion=" + Build.VERSION.SDK_INT + " \n");
     }
     return mIsSupportSharpVideo;
   }
@@ -1292,28 +1290,28 @@ public class VcSystemInfo
     //   10: astore 5
     //   12: lconst_0
     //   13: lstore_2
-    //   14: new 118	java/io/FileReader
+    //   14: new 115	java/io/FileReader
     //   17: dup
-    //   18: ldc_w 413
-    //   21: invokespecial 123	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   18: ldc_w 408
+    //   21: invokespecial 120	java/io/FileReader:<init>	(Ljava/lang/String;)V
     //   24: astore 4
-    //   26: new 125	java/io/BufferedReader
+    //   26: new 122	java/io/BufferedReader
     //   29: dup
     //   30: aload 4
-    //   32: invokespecial 128	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   32: invokespecial 125	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   35: astore 5
     //   37: lload_2
     //   38: lstore_0
     //   39: aload 5
     //   41: ifnull +48 -> 89
     //   44: aload 5
-    //   46: invokevirtual 131	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   46: invokevirtual 128	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   49: astore 6
     //   51: aload 6
-    //   53: invokestatic 298	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   53: invokestatic 293	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   56: ifne +289 -> 345
     //   59: aload 6
-    //   61: invokevirtual 214	java/lang/String:trim	()Ljava/lang/String;
+    //   61: invokevirtual 211	java/lang/String:trim	()Ljava/lang/String;
     //   64: astore 6
     //   66: lload_2
     //   67: lstore_0
@@ -1322,28 +1320,28 @@ public class VcSystemInfo
     //   73: lload_2
     //   74: lstore_0
     //   75: aload 6
-    //   77: invokevirtual 207	java/lang/String:length	()I
+    //   77: invokevirtual 204	java/lang/String:length	()I
     //   80: ifle +9 -> 89
     //   83: aload 6
-    //   85: invokestatic 229	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   85: invokestatic 226	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   88: lstore_0
     //   89: aload 5
     //   91: ifnull +8 -> 99
     //   94: aload 5
-    //   96: invokevirtual 134	java/io/BufferedReader:close	()V
+    //   96: invokevirtual 131	java/io/BufferedReader:close	()V
     //   99: lload_0
     //   100: lstore_2
     //   101: aload 4
     //   103: ifnull +10 -> 113
     //   106: aload 4
-    //   108: invokevirtual 135	java/io/FileReader:close	()V
+    //   108: invokevirtual 132	java/io/FileReader:close	()V
     //   111: lload_0
     //   112: lstore_2
     //   113: lload_2
     //   114: lreturn
     //   115: astore 4
     //   117: aload 4
-    //   119: invokevirtual 221	java/lang/Exception:printStackTrace	()V
+    //   119: invokevirtual 218	java/lang/Exception:printStackTrace	()V
     //   122: lload_0
     //   123: lreturn
     //   124: astore 4
@@ -1356,16 +1354,16 @@ public class VcSystemInfo
     //   137: aload 5
     //   139: ifnull +8 -> 147
     //   142: aload 5
-    //   144: invokevirtual 134	java/io/BufferedReader:close	()V
+    //   144: invokevirtual 131	java/io/BufferedReader:close	()V
     //   147: aload 4
     //   149: ifnull -36 -> 113
     //   152: aload 4
-    //   154: invokevirtual 135	java/io/FileReader:close	()V
+    //   154: invokevirtual 132	java/io/FileReader:close	()V
     //   157: lconst_0
     //   158: lreturn
     //   159: astore 4
     //   161: aload 4
-    //   163: invokevirtual 221	java/lang/Exception:printStackTrace	()V
+    //   163: invokevirtual 218	java/lang/Exception:printStackTrace	()V
     //   166: lconst_0
     //   167: lreturn
     //   168: astore 4
@@ -1376,16 +1374,16 @@ public class VcSystemInfo
     //   177: aload 5
     //   179: ifnull +8 -> 187
     //   182: aload 5
-    //   184: invokevirtual 134	java/io/BufferedReader:close	()V
+    //   184: invokevirtual 131	java/io/BufferedReader:close	()V
     //   187: aload 4
     //   189: ifnull -76 -> 113
     //   192: aload 4
-    //   194: invokevirtual 135	java/io/FileReader:close	()V
+    //   194: invokevirtual 132	java/io/FileReader:close	()V
     //   197: lconst_0
     //   198: lreturn
     //   199: astore 4
     //   201: aload 4
-    //   203: invokevirtual 221	java/lang/Exception:printStackTrace	()V
+    //   203: invokevirtual 218	java/lang/Exception:printStackTrace	()V
     //   206: lconst_0
     //   207: lreturn
     //   208: astore 4
@@ -1396,16 +1394,16 @@ public class VcSystemInfo
     //   217: aload 5
     //   219: ifnull +8 -> 227
     //   222: aload 5
-    //   224: invokevirtual 134	java/io/BufferedReader:close	()V
+    //   224: invokevirtual 131	java/io/BufferedReader:close	()V
     //   227: aload 4
     //   229: ifnull -116 -> 113
     //   232: aload 4
-    //   234: invokevirtual 135	java/io/FileReader:close	()V
+    //   234: invokevirtual 132	java/io/FileReader:close	()V
     //   237: lconst_0
     //   238: lreturn
     //   239: astore 4
     //   241: aload 4
-    //   243: invokevirtual 221	java/lang/Exception:printStackTrace	()V
+    //   243: invokevirtual 218	java/lang/Exception:printStackTrace	()V
     //   246: lconst_0
     //   247: lreturn
     //   248: astore 5
@@ -1414,16 +1412,16 @@ public class VcSystemInfo
     //   253: aload 6
     //   255: ifnull +8 -> 263
     //   258: aload 6
-    //   260: invokevirtual 134	java/io/BufferedReader:close	()V
+    //   260: invokevirtual 131	java/io/BufferedReader:close	()V
     //   263: aload 4
     //   265: ifnull +8 -> 273
     //   268: aload 4
-    //   270: invokevirtual 135	java/io/FileReader:close	()V
+    //   270: invokevirtual 132	java/io/FileReader:close	()V
     //   273: aload 5
     //   275: athrow
     //   276: astore 4
     //   278: aload 4
-    //   280: invokevirtual 221	java/lang/Exception:printStackTrace	()V
+    //   280: invokevirtual 218	java/lang/Exception:printStackTrace	()V
     //   283: goto -10 -> 273
     //   286: astore 5
     //   288: goto -35 -> 253
@@ -1451,7 +1449,7 @@ public class VcSystemInfo
     //   337: goto -200 -> 137
     //   340: astore 6
     //   342: goto -205 -> 137
-    //   345: ldc 54
+    //   345: ldc 51
     //   347: astore 6
     //   349: goto -283 -> 66
     // Local variable table:
@@ -1523,13 +1521,7 @@ public class VcSystemInfo
   {
     try
     {
-      int i = new File("/sys/devices/system/cpu/").listFiles(new FileFilter()
-      {
-        public boolean accept(File paramAnonymousFile)
-        {
-          return Pattern.matches("cpu[0-9]", paramAnonymousFile.getName());
-        }
-      }).length;
+      int i = new File("/sys/devices/system/cpu/").listFiles(new VcSystemInfo.1CpuFilter()).length;
       return i;
     }
     catch (Exception localException) {}
@@ -1543,7 +1535,7 @@ public class VcSystemInfo
     String str3 = Build.MANUFACTURER;
     int i = Build.VERSION.SDK_INT;
     if (QLog.isColorLevel()) {
-      QLog.d("VcSystemInfo", 0, "Model: " + str1 + "\n" + "Version: " + str2 + "\n" + "Manufacturer: " + str3 + "\n" + "SDK Version: " + i);
+      QLog.d("VcSystemInfo", 0, "Model: " + str1 + "\nVersion: " + str2 + "\nManufacturer: " + str3 + "\nSDK Version: " + i);
     }
     if ((mChip < 1) || (i < 8)) {
       if (QLog.isColorLevel()) {
@@ -1697,7 +1689,7 @@ public class VcSystemInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.TMG.utils.VcSystemInfo
  * JD-Core Version:    0.7.0.1
  */

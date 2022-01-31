@@ -10,9 +10,9 @@ public final class UploadSDKContext
   private static final int LOG_LEVEL_DEBUG = 3;
   private static final int LOG_LEVEL_ERROR = 1;
   private static final int LOG_LEVEL_INFO = 2;
-  private final IUploadSDKCallback mCallback;
+  private final UploadSDKContext.IUploadSDKCallback mCallback;
   
-  public UploadSDKContext(IUploadSDKCallback paramIUploadSDKCallback)
+  public UploadSDKContext(UploadSDKContext.IUploadSDKCallback paramIUploadSDKCallback)
   {
     this.mCallback = paramIUploadSDKCallback;
   }
@@ -76,15 +76,6 @@ public final class UploadSDKContext
   public void uploadProgress(String paramString, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5)
   {
     this.mCallback.uploadProgress(paramString, paramLong1, paramLong2, paramLong3, paramLong4, paramLong5);
-  }
-  
-  public static abstract interface IUploadSDKCallback
-  {
-    public abstract void uploadCancelled(String paramString);
-    
-    public abstract void uploadFinish(String paramString1, int paramInt, String paramString2);
-    
-    public abstract void uploadProgress(String paramString, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5);
   }
 }
 

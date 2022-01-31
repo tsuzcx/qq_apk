@@ -12,7 +12,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class group_feeds$GroupFeedsMessage$MessageContent
-  extends MessageMicro
+  extends MessageMicro<MessageContent>
 {
   public static final int CONTENT_TYPE_CONTROL = 14;
   public static final int CONTENT_TYPE_C_VOTE = 9;

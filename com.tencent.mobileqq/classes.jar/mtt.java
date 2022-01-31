@@ -1,32 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController;
-import com.tencent.mobileqq.app.UniteSearchObserver;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.util.Pair;
+import java.net.URL;
 
 public class mtt
-  extends UniteSearchObserver
 {
-  public mtt(ReadInJoyFeedsHeaderViewController paramReadInJoyFeedsHeaderViewController) {}
+  public Pair<Integer, Integer> a;
+  public URL a;
   
-  public void a(int paramInt1, String paramString, int paramInt2)
+  public static mtt a(URL paramURL, Pair<Integer, Integer> paramPair)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ReadInJoyFeedsHeaderVie", 2, "handleKandianSearchHotwordError, resultCode = " + paramInt1 + "， errorMsg = " + paramString + ", fromType = " + paramInt2);
-    }
-  }
-  
-  public void a(List paramList, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyFeedsHeaderVie", 2, "handleKandianSearchHotwordResult, result = " + paramList + ", fromType = " + paramInt);
-    }
-    if (((this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel == null) || (this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a == null) || (this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a.size() == 0)) && (paramList != null) && (paramList.size() > 0) && ((paramList.get(0) instanceof HotWordSearchEntryDataModel)))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel = ((HotWordSearchEntryDataModel)paramList.get(0));
-      ReadInJoyFeedsHeaderViewController.jdField_a_of_type_Int = 0;
-      this.a.e();
-    }
+    mtt localmtt = new mtt();
+    localmtt.jdField_a_of_type_JavaNetURL = paramURL;
+    localmtt.jdField_a_of_type_AndroidUtilPair = paramPair;
+    return localmtt;
   }
 }
 

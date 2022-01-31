@@ -1,25 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout.OnReciteListener;
-
 public class ajqr
-  implements DialogInterface.OnClickListener
+  implements ajfe
 {
-  public ajqr(ReciteRecordLayout paramReciteRecordLayout) {}
+  public void a(Object paramObject) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void b(Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a.c();
-    if (ReciteRecordLayout.a(this.a) != null) {
-      ReciteRecordLayout.a(this.a).c();
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1000: 
+      a(paramObject);
+      return;
     }
-    paramDialogInterface.dismiss();
+    b(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajqr
  * JD-Core Version:    0.7.0.1
  */

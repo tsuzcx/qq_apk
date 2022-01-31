@@ -1,51 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.pluginbridge.BridgeHelper;
-import cooperation.pluginbridge.BridgePluginInstallActivity;
-import cooperation.qqwifi.PluginLoadDialog;
 
-public class amud
-  extends BroadcastReceiver
+class amud
+  implements DialogInterface.OnClickListener
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  amud(amua paramamua) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramIntent = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.i("BridgeHelper", 2, "action:" + paramIntent);
-    }
-    if (("bridge.plugin.onresume.broadcast".equals(paramIntent)) || ("bridge.onresume.broadcast".equals(paramIntent))) {}
-    try
-    {
-      paramContext.unregisterReceiver(BridgeHelper.a());
-      BridgeHelper.a(null);
-      if (BridgeHelper.a() != null)
-      {
-        BridgeHelper.a().dismiss();
-        BridgeHelper.a(null);
-      }
-      if ((paramContext instanceof BridgePluginInstallActivity))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("BridgeHelper", 2, "Activity finish!");
-        }
-        ((BridgePluginInstallActivity)paramContext).finish();
-      }
-      return;
-    }
-    catch (Exception paramIntent)
-    {
-      for (;;)
-      {
-        paramIntent.printStackTrace();
-      }
-    }
+    paramDialogInterface.cancel();
+    QLog.d(amua.a(), 1, "showConfirmDialog, cancel click");
+    awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", this.a.jdField_a_of_type_JavaLangString, amua.d, amua.d, 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amud
  * JD-Core Version:    0.7.0.1
  */

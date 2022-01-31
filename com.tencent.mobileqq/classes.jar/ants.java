@@ -1,186 +1,349 @@
-import com.tencent.common.app.AppInterface;
-import dov.com.qq.im.capture.banner.QIMCaptureBannerConfig;
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.graphics.Typeface;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
+import android.view.animation.Interpolator;
+import android.view.animation.LinearInterpolator;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.LoadingLayoutBase;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Mode;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase.Orientation;
 
-public final class ants
-  implements Runnable
+@SuppressLint({"ViewConstructor"})
+public abstract class ants
+  extends LoadingLayoutBase
 {
-  public ants(String paramString, AppInterface paramAppInterface, QIMCaptureBannerConfig paramQIMCaptureBannerConfig) {}
+  protected static final Interpolator a;
+  private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
+  protected final ImageView a;
+  protected final ProgressBar a;
+  private final TextView jdField_a_of_type_AndroidWidgetTextView;
+  protected final PullToRefreshBase.Mode a;
+  protected final PullToRefreshBase.Orientation a;
+  private CharSequence jdField_a_of_type_JavaLangCharSequence;
+  private boolean jdField_a_of_type_Boolean;
+  private final TextView jdField_b_of_type_AndroidWidgetTextView;
+  private CharSequence jdField_b_of_type_JavaLangCharSequence;
+  private CharSequence c;
+  private CharSequence d;
   
-  /* Error */
-  public void run()
+  static
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: new 29	java/io/File
-    //   5: dup
-    //   6: aload_0
-    //   7: getfield 14	ants:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   10: new 31	java/lang/StringBuilder
-    //   13: dup
-    //   14: invokespecial 32	java/lang/StringBuilder:<init>	()V
-    //   17: aload_0
-    //   18: getfield 16	ants:jdField_a_of_type_ComTencentCommonAppAppInterface	Lcom/tencent/common/app/AppInterface;
-    //   21: invokevirtual 38	com/tencent/common/app/AppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   24: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   27: ldc 44
-    //   29: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   32: invokevirtual 47	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   35: invokespecial 50	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   38: astore 4
-    //   40: aload 4
-    //   42: invokevirtual 54	java/io/File:exists	()Z
-    //   45: ifeq +9 -> 54
-    //   48: aload 4
-    //   50: invokevirtual 57	java/io/File:delete	()Z
-    //   53: pop
-    //   54: aload 4
-    //   56: invokevirtual 61	java/io/File:getParentFile	()Ljava/io/File;
-    //   59: invokevirtual 54	java/io/File:exists	()Z
-    //   62: ifne +12 -> 74
-    //   65: aload 4
-    //   67: invokevirtual 61	java/io/File:getParentFile	()Ljava/io/File;
-    //   70: invokevirtual 64	java/io/File:mkdir	()Z
-    //   73: pop
-    //   74: new 66	java/io/ObjectOutputStream
-    //   77: dup
-    //   78: new 68	java/io/BufferedOutputStream
-    //   81: dup
-    //   82: new 70	java/io/FileOutputStream
-    //   85: dup
-    //   86: aload 4
-    //   88: invokespecial 73	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   91: invokespecial 76	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   94: invokespecial 77	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   97: astore_2
-    //   98: aload_2
-    //   99: astore_1
-    //   100: aload_2
-    //   101: aload_0
-    //   102: getfield 18	ants:jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerConfig	Ldov/com/qq/im/capture/banner/QIMCaptureBannerConfig;
-    //   105: invokevirtual 81	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
-    //   108: aload_2
-    //   109: astore_1
-    //   110: invokestatic 86	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   113: ifeq +13 -> 126
-    //   116: aload_2
-    //   117: astore_1
-    //   118: ldc 88
-    //   120: iconst_2
-    //   121: ldc 90
-    //   123: invokestatic 94	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   126: aload_2
-    //   127: ifnull +7 -> 134
-    //   130: aload_2
-    //   131: invokevirtual 97	java/io/ObjectOutputStream:close	()V
-    //   134: aload_0
-    //   135: monitorexit
-    //   136: return
-    //   137: astore_3
-    //   138: aconst_null
-    //   139: astore_2
-    //   140: aload_2
-    //   141: astore_1
-    //   142: aload_3
-    //   143: invokevirtual 100	java/lang/Exception:printStackTrace	()V
-    //   146: aload_2
-    //   147: astore_1
-    //   148: ldc 88
-    //   150: iconst_2
-    //   151: new 31	java/lang/StringBuilder
-    //   154: dup
-    //   155: invokespecial 32	java/lang/StringBuilder:<init>	()V
-    //   158: ldc 102
-    //   160: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   163: aload_3
-    //   164: invokevirtual 105	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   167: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   170: invokevirtual 47	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   173: invokestatic 108	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   176: aload_2
-    //   177: astore_1
-    //   178: aload 4
-    //   180: invokevirtual 54	java/io/File:exists	()Z
-    //   183: ifeq +11 -> 194
-    //   186: aload_2
-    //   187: astore_1
-    //   188: aload 4
-    //   190: invokevirtual 57	java/io/File:delete	()Z
-    //   193: pop
-    //   194: aload_2
-    //   195: ifnull -61 -> 134
-    //   198: aload_2
-    //   199: invokevirtual 97	java/io/ObjectOutputStream:close	()V
-    //   202: goto -68 -> 134
-    //   205: astore_1
-    //   206: goto -72 -> 134
-    //   209: astore_2
-    //   210: aconst_null
-    //   211: astore_1
-    //   212: aload_1
-    //   213: ifnull +7 -> 220
-    //   216: aload_1
-    //   217: invokevirtual 97	java/io/ObjectOutputStream:close	()V
-    //   220: aload_2
-    //   221: athrow
-    //   222: astore_1
-    //   223: aload_0
-    //   224: monitorexit
-    //   225: aload_1
-    //   226: athrow
-    //   227: astore_1
-    //   228: goto -94 -> 134
-    //   231: astore_1
-    //   232: goto -12 -> 220
-    //   235: astore_2
-    //   236: goto -24 -> 212
-    //   239: astore_3
-    //   240: goto -100 -> 140
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	243	0	this	ants
-    //   99	89	1	localObjectOutputStream1	java.io.ObjectOutputStream
-    //   205	1	1	localIOException1	java.io.IOException
-    //   211	6	1	localObject1	Object
-    //   222	4	1	localObject2	Object
-    //   227	1	1	localIOException2	java.io.IOException
-    //   231	1	1	localIOException3	java.io.IOException
-    //   97	102	2	localObjectOutputStream2	java.io.ObjectOutputStream
-    //   209	12	2	localObject3	Object
-    //   235	1	2	localObject4	Object
-    //   137	27	3	localException1	java.lang.Exception
-    //   239	1	3	localException2	java.lang.Exception
-    //   38	151	4	localFile	java.io.File
-    // Exception table:
-    //   from	to	target	type
-    //   74	98	137	java/lang/Exception
-    //   198	202	205	java/io/IOException
-    //   74	98	209	finally
-    //   2	54	222	finally
-    //   54	74	222	finally
-    //   130	134	222	finally
-    //   134	136	222	finally
-    //   198	202	222	finally
-    //   216	220	222	finally
-    //   220	222	222	finally
-    //   223	225	222	finally
-    //   130	134	227	java/io/IOException
-    //   216	220	231	java/io/IOException
-    //   100	108	235	finally
-    //   110	116	235	finally
-    //   118	126	235	finally
-    //   142	146	235	finally
-    //   148	176	235	finally
-    //   178	186	235	finally
-    //   188	194	235	finally
-    //   100	108	239	java/lang/Exception
-    //   110	116	239	java/lang/Exception
-    //   118	126	239	java/lang/Exception
+    jdField_a_of_type_AndroidViewAnimationInterpolator = new LinearInterpolator();
+  }
+  
+  public ants(Context paramContext, PullToRefreshBase.Mode paramMode, PullToRefreshBase.Orientation paramOrientation, TypedArray paramTypedArray)
+  {
+    super(paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Mode = paramMode;
+    this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Orientation = paramOrientation;
+    FrameLayout.LayoutParams localLayoutParams;
+    int i;
+    switch (antt.a[paramOrientation.ordinal()])
+    {
+    default: 
+      LayoutInflater.from(paramContext).inflate(2131493839, this);
+      this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)findViewById(2131300726));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131306465));
+      this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131306463));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131306464));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131306460));
+      localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
+      switch (antt.b[paramMode.ordinal()])
+      {
+      default: 
+        if (paramOrientation == PullToRefreshBase.Orientation.VERTICAL)
+        {
+          i = 80;
+          label179:
+          localLayoutParams.gravity = i;
+          this.jdField_a_of_type_JavaLangCharSequence = paramContext.getString(2131629947);
+          this.jdField_b_of_type_JavaLangCharSequence = paramContext.getString(2131629948);
+          this.c = paramContext.getString(2131629949);
+          if (paramTypedArray.hasValue(7))
+          {
+            paramOrientation = paramTypedArray.getDrawable(7);
+            if (paramOrientation != null) {
+              antu.a(this, paramOrientation);
+            }
+          }
+          if (paramTypedArray.hasValue(11))
+          {
+            paramOrientation = new TypedValue();
+            paramTypedArray.getValue(11, paramOrientation);
+            b(paramOrientation.data);
+          }
+          if (paramTypedArray.hasValue(21))
+          {
+            paramOrientation = new TypedValue();
+            paramTypedArray.getValue(21, paramOrientation);
+            a(paramOrientation.data);
+          }
+          if (paramTypedArray.hasValue(12))
+          {
+            paramOrientation = paramTypedArray.getColorStateList(12);
+            if (paramOrientation != null) {
+              b(paramOrientation);
+            }
+          }
+          if (paramTypedArray.hasValue(10))
+          {
+            paramOrientation = paramTypedArray.getColorStateList(10);
+            if (paramOrientation != null) {
+              a(paramOrientation);
+            }
+          }
+          paramOrientation = null;
+          if (paramTypedArray.hasValue(2)) {
+            paramOrientation = paramTypedArray.getDrawable(2);
+          }
+          switch (antt.b[paramMode.ordinal()])
+          {
+          default: 
+            if (paramTypedArray.hasValue(5)) {
+              paramMode = paramTypedArray.getDrawable(5);
+            }
+            break;
+          }
+        }
+        break;
+      }
+      break;
+    }
+    for (;;)
+    {
+      paramOrientation = paramMode;
+      if (paramMode == null) {
+        paramOrientation = paramContext.getResources().getDrawable(b());
+      }
+      setLoadingDrawable(paramOrientation);
+      g();
+      return;
+      LayoutInflater.from(paramContext).inflate(2131493838, this);
+      break;
+      if (paramOrientation == PullToRefreshBase.Orientation.VERTICAL) {}
+      for (i = 48;; i = 3)
+      {
+        localLayoutParams.gravity = i;
+        this.jdField_a_of_type_JavaLangCharSequence = paramContext.getString(2131629944);
+        this.jdField_b_of_type_JavaLangCharSequence = paramContext.getString(2131629945);
+        this.c = paramContext.getString(2131629946);
+        break;
+      }
+      i = 5;
+      break label179;
+      paramMode = paramOrientation;
+      if (paramTypedArray.hasValue(6))
+      {
+        paramMode = paramTypedArray.getDrawable(6);
+        continue;
+        if (paramTypedArray.hasValue(4))
+        {
+          paramMode = paramTypedArray.getDrawable(4);
+        }
+        else
+        {
+          paramMode = paramOrientation;
+          if (paramTypedArray.hasValue(3)) {
+            paramMode = paramTypedArray.getDrawable(3);
+          }
+        }
+      }
+    }
+  }
+  
+  private void a(int paramInt)
+  {
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextAppearance(getContext(), paramInt);
+    }
+  }
+  
+  private void a(ColorStateList paramColorStateList)
+  {
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramColorStateList);
+    }
+  }
+  
+  private void a(CharSequence paramCharSequence)
+  {
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+    }
+  }
+  
+  private void b(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextAppearance(getContext(), paramInt);
+    }
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextAppearance(getContext(), paramInt);
+    }
+  }
+  
+  private void b(ColorStateList paramColorStateList)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramColorStateList);
+    }
+    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramColorStateList);
+    }
+  }
+  
+  public final int a()
+  {
+    switch (antt.a[this.jdField_a_of_type_ComTencentMobileqqExtendfriendPulltorefreshPullToRefreshBase$Orientation.ordinal()])
+    {
+    default: 
+      return this.jdField_a_of_type_AndroidWidgetFrameLayout.getHeight();
+    }
+    return this.jdField_a_of_type_AndroidWidgetFrameLayout.getWidth();
+  }
+  
+  public final void a(float paramFloat)
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      b(paramFloat);
+    }
+  }
+  
+  protected abstract void a(Drawable paramDrawable);
+  
+  protected abstract int b();
+  
+  protected abstract void b(float paramFloat);
+  
+  public final void d()
+  {
+    g();
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
+    }
+    i();
+  }
+  
+  public final void e()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.c);
+    }
+    k();
+  }
+  
+  public final void f()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangCharSequence);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      ((AnimationDrawable)this.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).start();
+    }
+    for (;;)
+    {
+      if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
+        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      }
+      return;
+      j();
+    }
+  }
+  
+  public final void g()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangCharSequence);
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (this.jdField_a_of_type_Boolean) {
+      ((AnimationDrawable)this.jdField_a_of_type_AndroidWidgetImageView.getDrawable()).stop();
+    }
+    for (;;)
+    {
+      if (this.jdField_b_of_type_AndroidWidgetTextView != null)
+      {
+        if (!TextUtils.isEmpty(this.jdField_b_of_type_AndroidWidgetTextView.getText())) {
+          break;
+        }
+        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      }
+      return;
+      l();
+    }
+    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+  }
+  
+  public final void h()
+  {
+    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.d);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetProgressBar != null) {
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
+    }
+  }
+  
+  protected abstract void i();
+  
+  protected abstract void j();
+  
+  protected abstract void k();
+  
+  protected abstract void l();
+  
+  public void setLastUpdatedLabel(CharSequence paramCharSequence)
+  {
+    a(paramCharSequence);
+  }
+  
+  public final void setLoadingDrawable(Drawable paramDrawable)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
+    this.jdField_a_of_type_Boolean = (paramDrawable instanceof AnimationDrawable);
+    a(paramDrawable);
+  }
+  
+  public void setPullLabel(CharSequence paramCharSequence)
+  {
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+  }
+  
+  public void setRefreshResultLabel(CharSequence paramCharSequence)
+  {
+    this.d = paramCharSequence;
+  }
+  
+  public void setRefreshingLabel(CharSequence paramCharSequence)
+  {
+    this.jdField_b_of_type_JavaLangCharSequence = paramCharSequence;
+  }
+  
+  public void setReleaseLabel(CharSequence paramCharSequence)
+  {
+    this.c = paramCharSequence;
+  }
+  
+  public void setTextTypeface(Typeface paramTypeface)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setTypeface(paramTypeface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ants
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,12 @@ public class StatusServlet$RspGetHistory
   public int endTime;
   public boolean isAddFromCard;
   public boolean over;
-  public ArrayList richStatus;
+  public ArrayList<RichStatus> richStatus;
   public int startTime;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.StatusServlet.RspGetHistory
  * JD-Core Version:    0.7.0.1
  */

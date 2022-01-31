@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data.fts;
 
-import com.tencent.mobileqq.persistence.Entity;
+import atmo;
 
 public class FTSTroopTime
-  extends Entity
+  extends atmo
 {
   public long mTimeStamp;
   public String mTroopUin;
   public long mUin;
   
-  protected void prewrite()
+  public void prewrite()
   {
     super.prewrite();
     this.mUin = Long.parseLong(this.mTroopUin);

@@ -1,25 +1,24 @@
-import android.app.Dialog;
+import android.text.Editable;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class abty
-  implements View.OnClickListener
+  implements View.OnFocusChangeListener
 {
-  public abty(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  public abty(SubLoginActivity paramSubLoginActivity) {}
   
-  public void onClick(View paramView)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing()))
-    {
-      this.a.a.dismiss();
-      this.a.a = null;
+    if (true == paramBoolean) {
+      SubLoginActivity.a(this.a).setSelection(SubLoginActivity.a(this.a).getText().length());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abty
  * JD-Core Version:    0.7.0.1
  */

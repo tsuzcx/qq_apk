@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.activity.book;
 
+import aerc;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ScrollView;
-import wli;
 
 public class ResizeLayout
   extends ScrollView
 {
-  private ResizeLayout.OnResizeListener jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout$OnResizeListener;
+  private aerc jdField_a_of_type_Aerc;
   private boolean jdField_a_of_type_Boolean = true;
   
   public ResizeLayout(Context paramContext, AttributeSet paramAttributeSet)
@@ -35,9 +35,9 @@ public class ResizeLayout
       return;
       super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
       if (paramInt2 > paramInt4) {}
-      for (this.jdField_a_of_type_Boolean = false; this.jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout$OnResizeListener != null; this.jdField_a_of_type_Boolean = true)
+      for (this.jdField_a_of_type_Boolean = false; this.jdField_a_of_type_Aerc != null; this.jdField_a_of_type_Boolean = true)
       {
-        new Handler(Looper.getMainLooper()).postDelayed(new wli(this, paramInt1, paramInt2, paramInt3, paramInt4), 50L);
+        new Handler(Looper.getMainLooper()).postDelayed(new ResizeLayout.1(this, paramInt1, paramInt2, paramInt3, paramInt4), 50L);
         return;
       }
     }
@@ -51,9 +51,9 @@ public class ResizeLayout
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setOnResizeListener(ResizeLayout.OnResizeListener paramOnResizeListener)
+  public void setOnResizeListener(aerc paramaerc)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout$OnResizeListener = paramOnResizeListener;
+    this.jdField_a_of_type_Aerc = paramaerc;
   }
 }
 

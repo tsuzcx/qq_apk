@@ -1,17 +1,16 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.daily.DailyTipsFoldUtils.1;
 
 public class oen
-  implements Runnable
+  extends AnimatorListenerAdapter
 {
-  public oen(MystoryListView paramMystoryListView) {}
+  public oen(DailyTipsFoldUtils.1 param1, View paramView) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.a.a != null)
-    {
-      this.a.postDelayed(this.a.a, 100L);
-      this.a.a = null;
-    }
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
   }
 }
 

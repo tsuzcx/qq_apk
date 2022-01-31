@@ -7,11 +7,11 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class group_effect_commu$TGetEffectDetailRsp0x1
-  extends MessageMicro
+  extends MessageMicro<TGetEffectDetailRsp0x1>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "ret", "rpt_effectinfo" }, new Object[] { Integer.valueOf(0), null }, TGetEffectDetailRsp0x1.class);
   public final PBInt32Field ret = PBField.initInt32(0);
-  public final PBRepeatMessageField rpt_effectinfo = PBField.initRepeatMessage(group_effect.EffectInfo.class);
+  public final PBRepeatMessageField<group_effect.EffectInfo> rpt_effectinfo = PBField.initRepeatMessage(group_effect.EffectInfo.class);
 }
 
 

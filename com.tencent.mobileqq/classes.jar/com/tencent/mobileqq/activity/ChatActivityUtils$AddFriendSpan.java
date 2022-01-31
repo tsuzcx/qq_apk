@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity;
 
+import aeiv;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextPaint;
 import android.text.style.URLSpan;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.rebuild.StrangerChatPie;
 
 class ChatActivityUtils$AddFriendSpan
   extends URLSpan
@@ -23,8 +23,8 @@ class ChatActivityUtils$AddFriendSpan
     if (((paramView instanceof SplashActivity)) || ((paramView instanceof ChatActivity)))
     {
       paramView = (FragmentActivity)paramView;
-      if ((paramView.getChatFragment().a() instanceof StrangerChatPie)) {
-        ((StrangerChatPie)paramView.getChatFragment().a()).aX();
+      if ((paramView.getChatFragment().a() instanceof aeiv)) {
+        ((aeiv)paramView.getChatFragment().a()).bm();
       }
     }
   }

@@ -1,23 +1,26 @@
-import com.tencent.mobileqq.search.searchengine.ISearchListener;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
-import com.tencent.mobileqq.search.util.SearchUtils;
-import java.util.List;
-import java.util.concurrent.CountDownLatch;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import android.view.accessibility.AccessibilityNodeInfo;
+import com.tencent.widget.Switch;
 
-public class aiaw
-  implements ISearchListener
+class aiaw
+  extends View.AccessibilityDelegate
 {
-  public aiaw(NetSearchEngine paramNetSearchEngine, List paramList) {}
+  aiaw(aiat paramaiat) {}
   
-  public void a(List paramList) {}
-  
-  public void a(List paramList, int paramInt)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
   {
-    if ((paramList != null) && (!paramList.isEmpty())) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
+    if (paramView != null)
+    {
+      paramView = (Switch)paramView.findViewById(2131298121);
+      if ((paramView != null) && (paramView.getVisibility() != 8))
+      {
+        paramAccessibilityNodeInfo.setCheckable(true);
+        paramAccessibilityNodeInfo.setChecked(paramView.isChecked());
+        paramAccessibilityNodeInfo.setClassName(Switch.class.getName());
+      }
     }
-    SearchUtils.a();
-    NetSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine).a.countDown();
   }
 }
 

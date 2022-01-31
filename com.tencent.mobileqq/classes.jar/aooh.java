@@ -1,31 +1,56 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraConstant;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
-import java.io.File;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.search.ChatFileSearchFragment;
+import com.tencent.widget.ListView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class aooh
-  implements View.OnClickListener
+  extends avkk<avon, avww>
 {
-  public aooh(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile) {}
-  
-  public void onClick(View paramView)
+  public aooh(ListView paramListView, azwg paramazwg, List<avon> paramList, String paramString, QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.l();
-    if (((!QLog.isColorLevel()) || (!FileUtils.d(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()))) || (FlowCameraConstant.a == 1))
-    {
-      FlowCameraMqqAction.b("", "0X8005F5B", "0");
+    super(paramazwg, paramList);
+    if (paramString == null) {
       return;
     }
-    FlowCameraMqqAction.b("", "0X8005F5B", "1");
+    if (paramString.size() == 1)
+    {
+      paramListView = (aoof)paramString.get(0);
+      if (paramListView.jdField_a_of_type_JavaUtilList.size() > 1)
+      {
+        paramazwg = new ArrayList();
+        paramList = paramListView.jdField_a_of_type_JavaUtilList.iterator();
+        while (paramList.hasNext())
+        {
+          paramString = (FileManagerEntity)paramList.next();
+          paramQQAppInterface = new aoof();
+          paramQQAppInterface.jdField_a_of_type_JavaLangString = paramListView.jdField_a_of_type_JavaLangString;
+          paramQQAppInterface.jdField_a_of_type_JavaUtilList.add(paramString);
+          paramazwg.add(paramQQAppInterface);
+        }
+        a(paramazwg);
+        return;
+      }
+    }
+    a(paramString);
+  }
+  
+  protected avri<avon, avww> a(int paramInt)
+  {
+    return new aooo(ChatFileSearchFragment.a(this.a));
+  }
+  
+  protected avwx a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new aooi(paramViewGroup);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aooh
  * JD-Core Version:    0.7.0.1
  */

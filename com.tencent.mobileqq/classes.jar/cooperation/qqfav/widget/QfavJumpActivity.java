@@ -1,26 +1,28 @@
 package cooperation.qqfav.widget;
 
-import amxd;
-import amxe;
-import amxf;
-import amxg;
+import ajjy;
+import ajqg;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
+import android.text.TextUtils;
+import apir;
+import babr;
+import badd;
+import bafb;
+import beez;
+import bfjo;
+import bfjp;
+import bfjq;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.activity.LoginActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQMapActivityProxy;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.forward.ForwardFileOption;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MqqWeakReferenceHandler;
 import cooperation.qqfav.QfavPluginProxyActivity;
 import java.io.File;
 import java.io.InputStream;
@@ -30,18 +32,13 @@ public class QfavJumpActivity
   extends BaseActivity
   implements Handler.Callback
 {
-  public static String a;
-  private QQMapActivityProxy jdField_a_of_type_ComTencentMobileqqAppQQMapActivityProxy;
-  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  public MqqHandler a;
+  protected static String a;
+  private ajqg jdField_a_of_type_Ajqg;
+  private bafb jdField_a_of_type_Bafb;
+  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new beez(Looper.getMainLooper(), this);
   private boolean jdField_a_of_type_Boolean;
   String jdField_b_of_type_JavaLangString;
   private boolean jdField_b_of_type_Boolean;
-  
-  public QfavJumpActivity()
-  {
-    this.jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this);
-  }
   
   /* Error */
   private String a(Uri paramUri)
@@ -91,7 +88,7 @@ public class QfavJumpActivity
     //   89: lstore 4
     //   91: lload 4
     //   93: l2f
-    //   94: invokestatic 87	com/tencent/mobileqq/utils/FileUtils:c	()F
+    //   94: invokestatic 87	bace:c	()F
     //   97: fcmpl
     //   98: ifle +26 -> 124
     //   101: aload_0
@@ -138,7 +135,7 @@ public class QfavJumpActivity
     //   195: aastore
     //   196: iconst_0
     //   197: aaload
-    //   198: invokestatic 125	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   198: invokestatic 125	bace:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   201: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   204: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   207: astore 7
@@ -149,217 +146,218 @@ public class QfavJumpActivity
     //   218: astore 9
     //   220: aload 9
     //   222: invokevirtual 132	java/io/File:exists	()Z
-    //   225: ifne +31 -> 256
+    //   225: ifne +34 -> 259
     //   228: aload 9
     //   230: invokevirtual 135	java/io/File:mkdirs	()Z
-    //   233: ifne +23 -> 256
+    //   233: ifne +26 -> 259
     //   236: aload_0
-    //   237: ldc 137
-    //   239: invokespecial 139	cooperation/qqfav/widget/QfavJumpActivity:a	(Ljava/lang/String;)V
-    //   242: aload 6
-    //   244: ifnull +10 -> 254
-    //   247: aload 6
-    //   249: invokeinterface 63 1 0
-    //   254: aconst_null
-    //   255: areturn
-    //   256: aload 8
-    //   258: aload_1
-    //   259: invokevirtual 143	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
-    //   262: astore_1
-    //   263: aload_1
-    //   264: ifnonnull +31 -> 295
-    //   267: invokestatic 50	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   270: ifeq +11 -> 281
-    //   273: ldc 52
-    //   275: iconst_2
-    //   276: ldc 145
-    //   278: invokestatic 58	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
-    //   281: aload 6
-    //   283: ifnull +10 -> 293
-    //   286: aload 6
-    //   288: invokeinterface 63 1 0
-    //   293: aconst_null
-    //   294: areturn
-    //   295: lload 4
-    //   297: ldc2_w 146
-    //   300: lcmp
-    //   301: ifle +132 -> 433
-    //   304: aload_0
-    //   305: iconst_1
-    //   306: putfield 149	cooperation/qqfav/widget/QfavJumpActivity:jdField_b_of_type_Boolean	Z
-    //   309: new 151	com/tencent/mobileqq/utils/QQCustomDialog
-    //   312: dup
-    //   313: aload_0
-    //   314: ldc 152
-    //   316: invokespecial 155	com/tencent/mobileqq/utils/QQCustomDialog:<init>	(Landroid/content/Context;I)V
-    //   319: astore 8
-    //   321: aload 8
-    //   323: ldc 156
-    //   325: invokevirtual 160	com/tencent/mobileqq/utils/QQCustomDialog:setContentView	(I)V
-    //   328: aload 8
-    //   330: aload_0
-    //   331: ldc 161
-    //   333: invokevirtual 92	cooperation/qqfav/widget/QfavJumpActivity:getString	(I)Ljava/lang/String;
-    //   336: invokevirtual 165	com/tencent/mobileqq/utils/QQCustomDialog:setTitle	(Ljava/lang/String;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
-    //   339: pop
-    //   340: aload 8
-    //   342: aload_0
-    //   343: ldc 166
-    //   345: invokevirtual 92	cooperation/qqfav/widget/QfavJumpActivity:getString	(I)Ljava/lang/String;
-    //   348: invokevirtual 170	com/tencent/mobileqq/utils/QQCustomDialog:setMessage	(Ljava/lang/CharSequence;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
-    //   351: pop
-    //   352: aload 8
-    //   354: iconst_0
-    //   355: invokevirtual 174	com/tencent/mobileqq/utils/QQCustomDialog:setCanceledOnTouchOutside	(Z)V
-    //   358: aload 8
-    //   360: iconst_0
-    //   361: invokevirtual 177	com/tencent/mobileqq/utils/QQCustomDialog:setCancelable	(Z)V
-    //   364: aload 8
-    //   366: aload_0
-    //   367: ldc 178
-    //   369: invokevirtual 92	cooperation/qqfav/widget/QfavJumpActivity:getString	(I)Ljava/lang/String;
-    //   372: new 180	amxb
-    //   375: dup
-    //   376: aload_0
-    //   377: aload_1
-    //   378: invokespecial 183	amxb:<init>	(Lcooperation/qqfav/widget/QfavJumpActivity;Ljava/io/InputStream;)V
-    //   381: invokevirtual 187	com/tencent/mobileqq/utils/QQCustomDialog:setNegativeButton	(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
-    //   384: pop
-    //   385: aload 8
-    //   387: aload_0
-    //   388: ldc 188
-    //   390: invokevirtual 92	cooperation/qqfav/widget/QfavJumpActivity:getString	(I)Ljava/lang/String;
-    //   393: new 190	amxc
-    //   396: dup
-    //   397: aload_0
-    //   398: aload 7
-    //   400: aload_1
-    //   401: lload 4
-    //   403: invokespecial 193	amxc:<init>	(Lcooperation/qqfav/widget/QfavJumpActivity;Ljava/lang/String;Ljava/io/InputStream;J)V
-    //   406: invokevirtual 196	com/tencent/mobileqq/utils/QQCustomDialog:setPositiveButton	(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)Lcom/tencent/mobileqq/utils/QQCustomDialog;
-    //   409: pop
-    //   410: aload 8
-    //   412: invokevirtual 199	com/tencent/mobileqq/utils/QQCustomDialog:show	()V
-    //   415: aload 7
-    //   417: astore_1
-    //   418: aload 6
-    //   420: ifnull -369 -> 51
-    //   423: aload 6
-    //   425: invokeinterface 63 1 0
-    //   430: aload 7
-    //   432: areturn
-    //   433: aload_0
-    //   434: aload 7
-    //   436: aload_1
-    //   437: lload 4
-    //   439: invokespecial 202	cooperation/qqfav/widget/QfavJumpActivity:a	(Ljava/lang/String;Ljava/io/InputStream;J)V
-    //   442: goto -27 -> 415
-    //   445: astore 7
-    //   447: aload 6
-    //   449: astore_1
-    //   450: aload 7
-    //   452: astore 6
-    //   454: aload_0
-    //   455: iconst_0
-    //   456: putfield 204	cooperation/qqfav/widget/QfavJumpActivity:jdField_a_of_type_Boolean	Z
-    //   459: invokestatic 50	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   462: ifeq +13 -> 475
-    //   465: ldc 52
-    //   467: iconst_2
-    //   468: ldc 206
-    //   470: aload 6
-    //   472: invokestatic 209	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   475: aload_1
-    //   476: ifnull +9 -> 485
-    //   479: aload_1
-    //   480: invokeinterface 63 1 0
-    //   485: aconst_null
-    //   486: areturn
-    //   487: astore_1
+    //   237: ldc 136
+    //   239: invokestatic 140	ajjy:a	(I)Ljava/lang/String;
+    //   242: invokespecial 142	cooperation/qqfav/widget/QfavJumpActivity:a	(Ljava/lang/String;)V
+    //   245: aload 6
+    //   247: ifnull +10 -> 257
+    //   250: aload 6
+    //   252: invokeinterface 63 1 0
+    //   257: aconst_null
+    //   258: areturn
+    //   259: aload 8
+    //   261: aload_1
+    //   262: invokevirtual 146	android/content/ContentResolver:openInputStream	(Landroid/net/Uri;)Ljava/io/InputStream;
+    //   265: astore_1
+    //   266: aload_1
+    //   267: ifnonnull +31 -> 298
+    //   270: invokestatic 50	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   273: ifeq +11 -> 284
+    //   276: ldc 52
+    //   278: iconst_2
+    //   279: ldc 148
+    //   281: invokestatic 58	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   284: aload 6
+    //   286: ifnull +10 -> 296
+    //   289: aload 6
+    //   291: invokeinterface 63 1 0
+    //   296: aconst_null
+    //   297: areturn
+    //   298: lload 4
+    //   300: ldc2_w 149
+    //   303: lcmp
+    //   304: ifle +132 -> 436
+    //   307: aload_0
+    //   308: iconst_1
+    //   309: putfield 152	cooperation/qqfav/widget/QfavJumpActivity:jdField_b_of_type_Boolean	Z
+    //   312: new 154	bafb
+    //   315: dup
+    //   316: aload_0
+    //   317: ldc 155
+    //   319: invokespecial 158	bafb:<init>	(Landroid/content/Context;I)V
+    //   322: astore 8
+    //   324: aload 8
+    //   326: ldc 159
+    //   328: invokevirtual 163	bafb:setContentView	(I)V
+    //   331: aload 8
+    //   333: aload_0
+    //   334: ldc 164
+    //   336: invokevirtual 92	cooperation/qqfav/widget/QfavJumpActivity:getString	(I)Ljava/lang/String;
+    //   339: invokevirtual 168	bafb:setTitle	(Ljava/lang/String;)Lbafb;
+    //   342: pop
+    //   343: aload 8
+    //   345: aload_0
+    //   346: ldc 169
+    //   348: invokevirtual 92	cooperation/qqfav/widget/QfavJumpActivity:getString	(I)Ljava/lang/String;
+    //   351: invokevirtual 173	bafb:setMessage	(Ljava/lang/CharSequence;)Lbafb;
+    //   354: pop
+    //   355: aload 8
+    //   357: iconst_0
+    //   358: invokevirtual 177	bafb:setCanceledOnTouchOutside	(Z)V
+    //   361: aload 8
+    //   363: iconst_0
+    //   364: invokevirtual 180	bafb:setCancelable	(Z)V
+    //   367: aload 8
+    //   369: aload_0
+    //   370: ldc 181
+    //   372: invokevirtual 92	cooperation/qqfav/widget/QfavJumpActivity:getString	(I)Ljava/lang/String;
+    //   375: new 183	bfjm
+    //   378: dup
+    //   379: aload_0
+    //   380: aload_1
+    //   381: invokespecial 186	bfjm:<init>	(Lcooperation/qqfav/widget/QfavJumpActivity;Ljava/io/InputStream;)V
+    //   384: invokevirtual 190	bafb:setNegativeButton	(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)Lbafb;
+    //   387: pop
+    //   388: aload 8
+    //   390: aload_0
+    //   391: ldc 191
+    //   393: invokevirtual 92	cooperation/qqfav/widget/QfavJumpActivity:getString	(I)Ljava/lang/String;
+    //   396: new 193	bfjn
+    //   399: dup
+    //   400: aload_0
+    //   401: aload 7
+    //   403: aload_1
+    //   404: lload 4
+    //   406: invokespecial 196	bfjn:<init>	(Lcooperation/qqfav/widget/QfavJumpActivity;Ljava/lang/String;Ljava/io/InputStream;J)V
+    //   409: invokevirtual 199	bafb:setPositiveButton	(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)Lbafb;
+    //   412: pop
+    //   413: aload 8
+    //   415: invokevirtual 202	bafb:show	()V
+    //   418: aload 7
+    //   420: astore_1
+    //   421: aload 6
+    //   423: ifnull -372 -> 51
+    //   426: aload 6
+    //   428: invokeinterface 63 1 0
+    //   433: aload 7
+    //   435: areturn
+    //   436: aload_0
+    //   437: aload 7
+    //   439: aload_1
+    //   440: lload 4
+    //   442: invokespecial 205	cooperation/qqfav/widget/QfavJumpActivity:a	(Ljava/lang/String;Ljava/io/InputStream;J)V
+    //   445: goto -27 -> 418
+    //   448: astore 7
+    //   450: aload 6
+    //   452: astore_1
+    //   453: aload 7
+    //   455: astore 6
+    //   457: aload_0
+    //   458: iconst_0
+    //   459: putfield 207	cooperation/qqfav/widget/QfavJumpActivity:jdField_a_of_type_Boolean	Z
+    //   462: invokestatic 50	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   465: ifeq +13 -> 478
+    //   468: ldc 52
+    //   470: iconst_2
+    //   471: ldc 209
+    //   473: aload 6
+    //   475: invokestatic 212	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   478: aload_1
+    //   479: ifnull +9 -> 488
+    //   482: aload_1
+    //   483: invokeinterface 63 1 0
     //   488: aconst_null
-    //   489: astore 6
-    //   491: aload 6
-    //   493: ifnull +10 -> 503
-    //   496: aload 6
-    //   498: invokeinterface 63 1 0
-    //   503: aload_1
-    //   504: athrow
-    //   505: astore_1
-    //   506: goto -15 -> 491
-    //   509: astore 7
-    //   511: aload_1
-    //   512: astore 6
-    //   514: aload 7
-    //   516: astore_1
-    //   517: goto -26 -> 491
-    //   520: astore 6
-    //   522: aconst_null
-    //   523: astore_1
-    //   524: goto -70 -> 454
+    //   489: areturn
+    //   490: astore_1
+    //   491: aconst_null
+    //   492: astore 6
+    //   494: aload 6
+    //   496: ifnull +10 -> 506
+    //   499: aload 6
+    //   501: invokeinterface 63 1 0
+    //   506: aload_1
+    //   507: athrow
+    //   508: astore_1
+    //   509: goto -15 -> 494
+    //   512: astore 7
+    //   514: aload_1
+    //   515: astore 6
+    //   517: aload 7
+    //   519: astore_1
+    //   520: goto -26 -> 494
+    //   523: astore 6
+    //   525: aconst_null
+    //   526: astore_1
+    //   527: goto -70 -> 457
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	527	0	this	QfavJumpActivity
-    //   0	527	1	paramUri	Uri
+    //   0	530	0	this	QfavJumpActivity
+    //   0	530	1	paramUri	Uri
     //   62	65	2	i	int
     //   72	12	3	j	int
-    //   89	349	4	l	long
-    //   16	497	6	localObject1	Object
-    //   520	1	6	localException1	Exception
-    //   132	303	7	str	String
-    //   445	6	7	localException2	Exception
-    //   509	6	7	localObject2	Object
-    //   4	407	8	localObject3	Object
+    //   89	352	4	l	long
+    //   16	500	6	localObject1	Object
+    //   523	1	6	localException1	Exception
+    //   132	306	7	str	String
+    //   448	6	7	localException2	Exception
+    //   512	6	7	localObject2	Object
+    //   4	410	8	localObject3	Object
     //   166	63	9	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   23	37	445	java/lang/Exception
-    //   53	110	445	java/lang/Exception
-    //   124	242	445	java/lang/Exception
-    //   256	263	445	java/lang/Exception
-    //   267	281	445	java/lang/Exception
-    //   304	415	445	java/lang/Exception
-    //   433	442	445	java/lang/Exception
-    //   6	18	487	finally
-    //   23	37	505	finally
-    //   53	110	505	finally
-    //   124	242	505	finally
-    //   256	263	505	finally
-    //   267	281	505	finally
-    //   304	415	505	finally
-    //   433	442	505	finally
-    //   454	475	509	finally
-    //   6	18	520	java/lang/Exception
+    //   23	37	448	java/lang/Exception
+    //   53	110	448	java/lang/Exception
+    //   124	245	448	java/lang/Exception
+    //   259	266	448	java/lang/Exception
+    //   270	284	448	java/lang/Exception
+    //   307	418	448	java/lang/Exception
+    //   436	445	448	java/lang/Exception
+    //   6	18	490	finally
+    //   23	37	508	finally
+    //   53	110	508	finally
+    //   124	245	508	finally
+    //   259	266	508	finally
+    //   270	284	508	finally
+    //   307	418	508	finally
+    //   436	445	508	finally
+    //   457	478	512	finally
+    //   6	18	523	java/lang/Exception
   }
   
   private void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    if (this.jdField_a_of_type_Bafb != null) {
+      this.jdField_a_of_type_Bafb.dismiss();
     }
   }
   
   private void a(String paramString)
   {
-    QQCustomDialog localQQCustomDialog = new QQCustomDialog(this, 2131624516);
-    localQQCustomDialog.setContentView(2130968855);
-    localQQCustomDialog.setTitle(getString(2131434797));
-    localQQCustomDialog.setMessage(paramString);
-    localQQCustomDialog.setCanceledOnTouchOutside(false);
-    localQQCustomDialog.setCancelable(false);
-    localQQCustomDialog.setNegativeButton(getString(2131433712), new amxg(this));
-    localQQCustomDialog.show();
+    bafb localbafb = new bafb(this, 2131690181);
+    localbafb.setContentView(2131493345);
+    localbafb.setTitle(getString(2131654355));
+    localbafb.setMessage(paramString);
+    localbafb.setCanceledOnTouchOutside(false);
+    localbafb.setCancelable(false);
+    localbafb.setNegativeButton(getString(2131625011), new bfjq(this));
+    localbafb.show();
   }
   
   private void a(String paramString, InputStream paramInputStream, long paramLong)
   {
     this.jdField_a_of_type_Boolean = true;
-    ThreadManager.post(new amxd(this, paramString, paramInputStream, paramLong), 5, null, true);
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null)
+    ThreadManager.post(new QfavJumpActivity.3(this, paramString, paramInputStream, paramLong), 5, null, true);
+    if (this.jdField_a_of_type_Bafb == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, getString(2131436315), "取消", new amxe(this));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new amxf(this));
+      this.jdField_a_of_type_Bafb = babr.a(this, getString(2131625736), ajjy.a(2131643810), new bfjo(this));
+      this.jdField_a_of_type_Bafb.setOnDismissListener(new bfjp(this));
     }
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+    this.jdField_a_of_type_Bafb.show();
   }
   
   private boolean a(Intent paramIntent)
@@ -375,8 +373,8 @@ public class QfavJumpActivity
     }
     if ("qqfav.action.ENTER_QQMAP".equals(localObject))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQMapActivityProxy == null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQMapActivityProxy = new QQMapActivityProxy(this.app.getAccount());
+      if (this.jdField_a_of_type_Ajqg == null) {
+        this.jdField_a_of_type_Ajqg = new ajqg(this.app.getAccount());
       }
       paramIntent.setClassName("com.tencent.mobileqq", "cooperation.qqfav.widget.LocationDetailActivity");
       paramIntent.setAction(null);
@@ -410,12 +408,12 @@ public class QfavJumpActivity
   public String a()
   {
     if (jdField_a_of_type_JavaLangString == null) {
-      return getString(2131436306);
+      return getString(2131653600);
     }
     return jdField_a_of_type_JavaLangString;
   }
   
-  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     switch (paramInt1)
     {
@@ -429,64 +427,70 @@ public class QfavJumpActivity
       } while ((paramInt2 == -1) && (a(getIntent())));
       super.finish();
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQMapActivityProxy != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQMapActivityProxy.a();
+      if (this.jdField_a_of_type_Ajqg != null) {
+        this.jdField_a_of_type_Ajqg.a();
       }
     }
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
+    try
+    {
+      this.mNeedStatusTrans = false;
+      super.doOnCreate(paramBundle);
+      if (!badd.a(this, true))
+      {
+        super.finish();
+        return false;
+      }
+      paramBundle = super.getIntent();
+      if (paramBundle == null)
+      {
+        super.finish();
+        return false;
+      }
+    }
+    catch (Exception paramBundle)
+    {
+      QLog.e("qqfav|QfavJumpActivity", 1, "QfavJumpActivity doOnCreate|exp:" + paramBundle.getMessage());
+      super.finish();
+      return false;
+    }
+    Object localObject1 = paramBundle.getAction();
+    String str = paramBundle.getType();
+    this.jdField_b_of_type_JavaLangString = null;
+    int i;
+    if (("android.intent.action.SEND".equals(localObject1)) || ("android.intent.action.SEND_MULTIPLE".equals(localObject1)))
+    {
+      localObject1 = paramBundle.getParcelableExtra("android.intent.extra.STREAM");
+      if (!(localObject1 instanceof Uri)) {
+        break label348;
+      }
+      Object localObject2 = apir.a(this, (Uri)localObject1);
+      if (localObject2 == null) {
+        break label348;
+      }
+      localObject2 = new File((String)localObject2);
+      if ((!((File)localObject2).exists()) || (!((File)localObject2).isFile())) {
+        break label353;
+      }
+      i = 1;
+    }
     for (;;)
     {
-      try
+      if ((!TextUtils.isEmpty(str)) && (str.startsWith("image")) && (i == 0) && ((localObject1 instanceof Uri)))
       {
-        this.mNeedStatusTrans = false;
-        super.doOnCreate(paramBundle);
-        paramBundle = super.getIntent();
-        if (paramBundle == null)
-        {
-          super.finish();
-          return false;
-        }
-        Object localObject1 = paramBundle.getAction();
-        String str = paramBundle.getType();
-        this.jdField_b_of_type_JavaLangString = null;
-        if (("android.intent.action.SEND".equals(localObject1)) || ("android.intent.action.SEND_MULTIPLE".equals(localObject1)))
-        {
-          localObject1 = paramBundle.getParcelableExtra("android.intent.extra.STREAM");
-          if ((localObject1 == null) || (!(localObject1 instanceof Uri))) {
-            break label317;
-          }
-          Object localObject2 = ForwardFileOption.a(this, (Uri)localObject1);
-          if (localObject2 == null) {
-            break label317;
-          }
-          localObject2 = new File((String)localObject2);
-          if ((!((File)localObject2).exists()) || (!((File)localObject2).isFile())) {
-            break label322;
-          }
-          i = 1;
-          if ((str.startsWith("image")) && (i == 0))
-          {
-            this.jdField_b_of_type_JavaLangString = a((Uri)localObject1);
-            if (this.jdField_b_of_type_JavaLangString != null) {
-              return true;
-            }
-          }
-          if ((str.startsWith("image")) || ((str.startsWith("text")) && (i == 0)))
-          {
-            paramBundle.setClass(this, JumpActivity.class);
-            paramBundle.putExtra("qqfav_extra_from_system_share", true);
-            super.startActivity(paramBundle);
-            super.finish();
-            return false;
-          }
+        this.jdField_b_of_type_JavaLangString = a((Uri)localObject1);
+        if (this.jdField_b_of_type_JavaLangString != null) {
+          return true;
         }
       }
-      catch (Exception paramBundle)
+      if ((!TextUtils.isEmpty(str)) && ((str.startsWith("image")) || (str.startsWith("text"))) && (i == 0))
       {
-        QLog.e("qqfav|QfavJumpActivity", 1, "QfavJumpActivity doOnCreate|exp:" + paramBundle.getMessage());
+        paramBundle.setClass(this, JumpActivity.class);
+        paramBundle.putExtra("qqfav_extra_from_system_share", true);
+        super.startActivity(paramBundle);
         super.finish();
         return false;
       }
@@ -502,10 +506,10 @@ public class QfavJumpActivity
         super.finish();
       }
       return true;
-      label317:
-      int i = 0;
+      label348:
+      i = 0;
       continue;
-      label322:
+      label353:
       i = 0;
     }
   }
@@ -530,8 +534,21 @@ public class QfavJumpActivity
       super.finish();
       continue;
       QLog.i("qqfav|QfavJumpActivity", 2, "progress: " + paramMessage.arg1);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setProgress(paramMessage.arg1);
+      this.jdField_a_of_type_Bafb.setProgress(paramMessage.arg1);
     }
+  }
+  
+  public boolean showPreview()
+  {
+    try
+    {
+      boolean bool = badd.a(this);
+      if (bool) {
+        return true;
+      }
+    }
+    catch (Throwable localThrowable) {}
+    return super.showPreview();
   }
 }
 

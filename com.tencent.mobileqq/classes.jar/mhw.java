@@ -1,48 +1,98 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
 
-public class mhw
-  implements SeekBar.OnSeekBarChangeListener
+class mhw
 {
-  public mhw(VideoFeedsPlayManager paramVideoFeedsPlayManager) {}
+  int jdField_a_of_type_Int;
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
+  int jdField_c_of_type_Int;
+  String jdField_c_of_type_JavaLangString;
+  String d;
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  private mhw(mht parammht)
   {
-    if ((VideoFeedsPlayManager.a(this.a) == null) || (!paramBoolean) || (VideoFeedsPlayManager.a(this.a) == null)) {
-      return;
-    }
-    VideoFeedsPlayManager.b(this.a, System.currentTimeMillis());
-    long l = VideoFeedsPlayManager.a(this.a).b();
-    double d = paramInt / 100.0D;
-    paramInt = (int)(l * d);
-    VideoFeedsHelper.a(VideoFeedsPlayManager.a(this.a).a, paramInt);
+    a(null);
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  mhw(mht parammht, String paramString1, String paramString2, Bitmap paramBitmap, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4)
   {
-    VideoFeedsPlayManager.e(this.a, true);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.d = paramString4;
   }
   
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  private void a(mhw parammhw)
   {
-    if (VideoFeedsPlayManager.a(this.a) == null) {
+    if (parammhw != null)
+    {
+      this.jdField_a_of_type_JavaLangString = parammhw.jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_Int = parammhw.jdField_a_of_type_Int;
+      this.jdField_c_of_type_JavaLangString = parammhw.jdField_c_of_type_JavaLangString;
+      this.jdField_b_of_type_JavaLangString = parammhw.jdField_b_of_type_JavaLangString;
+      this.d = parammhw.d;
+      this.jdField_b_of_type_Int = parammhw.jdField_b_of_type_Int;
+      this.jdField_c_of_type_Int = parammhw.jdField_c_of_type_Int;
+      this.jdField_a_of_type_Boolean = parammhw.jdField_a_of_type_Boolean;
       return;
     }
-    VideoFeedsPlayManager.e(this.a, false);
-    int i = paramSeekBar.getProgress();
-    long l = VideoFeedsPlayManager.a(this.a).b();
-    i = (int)(i / 100.0D * l);
-    VideoFeedsPlayManager.a(this.a).a(i);
-    VideoFeedsPlayManager.c(this.a, false);
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_c_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.d = "";
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  private boolean a()
+  {
+    return (this.jdField_a_of_type_Int == 47) || (this.jdField_a_of_type_Int == 42) || (this.jdField_a_of_type_Int == 48) || (this.jdField_a_of_type_Int == 44);
+  }
+  
+  private boolean a(mhw parammhw)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (parammhw != null) {
+      if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, parammhw.jdField_a_of_type_JavaLangString))
+      {
+        bool1 = bool2;
+        if (this.jdField_a_of_type_Int != parammhw.jdField_a_of_type_Int)
+        {
+          bool1 = bool2;
+          if (!parammhw.a()) {}
+        }
+      }
+      else
+      {
+        bool1 = true;
+      }
+    }
+    return bool1;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder().append("NotifyData{sessionId[").append(this.jdField_a_of_type_JavaLangString).append("], id[").append(this.jdField_c_of_type_JavaLangString).append("], type[").append(this.jdField_a_of_type_Int).append("], uinType[").append(this.jdField_b_of_type_Int).append("], name[").append(this.jdField_b_of_type_JavaLangString).append("], extraName[").append(this.d).append("], head[");
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {}
+    for (boolean bool = true;; bool = false) {
+      return bool + "], isHide[" + this.jdField_a_of_type_Boolean + "]}";
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mhw
  * JD-Core Version:    0.7.0.1
  */

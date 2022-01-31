@@ -1,26 +1,19 @@
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader;
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader.VideoFrameLoaderListener;
-import java.lang.ref.WeakReference;
-
-public class aole
-  implements Runnable
+class aole
+  extends aokw
 {
-  public aole(VideoFrameLoader paramVideoFrameLoader) {}
-  
-  public void run()
+  public aole(aokk paramaokk)
   {
-    VideoFrameLoader.VideoFrameLoaderListener localVideoFrameLoaderListener = null;
-    if (VideoFrameLoader.a(this.a) != null) {
-      localVideoFrameLoaderListener = (VideoFrameLoader.VideoFrameLoaderListener)VideoFrameLoader.a(this.a).get();
-    }
-    if (localVideoFrameLoaderListener != null) {
-      localVideoFrameLoaderListener.b();
-    }
+    super(paramaokk);
+  }
+  
+  protected String a()
+  {
+    return "StateRefuseByPC";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aole
  * JD-Core Version:    0.7.0.1
  */

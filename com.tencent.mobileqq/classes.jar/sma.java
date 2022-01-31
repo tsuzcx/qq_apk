@@ -1,21 +1,10 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-
-class sma
-  implements Runnable
+public abstract interface sma<T extends slu>
 {
-  sma(slw paramslw) {}
-  
-  public void run()
-  {
-    if (this.a.a.a.b == 5) {
-      this.a.a.a.b();
-    }
-  }
+  public abstract void a(int paramInt, String paramString, T paramT);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sma
  * JD-Core Version:    0.7.0.1
  */

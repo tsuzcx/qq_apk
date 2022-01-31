@@ -1,5 +1,11 @@
 package com.tencent.mobileqq.activity;
 
+import aagm;
+import abrq;
+import abrr;
+import abrs;
+import ajjj;
+import ajjy;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -7,22 +13,18 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
+import babr;
+import bafb;
+import bbmy;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQToast;
 import mqq.app.AppRuntime;
-import txd;
-import txe;
-import txf;
 
 public class ShortcutRouterActivity
   extends BaseActivity
 {
-  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new txf(this);
-  private ChatActivityUtils.StartVideoListener jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener;
+  private aagm jdField_a_of_type_Aagm;
+  DialogInterface.OnClickListener jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new abrs(this);
   
   private int a(Intent paramIntent)
   {
@@ -34,7 +36,7 @@ public class ShortcutRouterActivity
     if (paramIntent.getBooleanExtra("isTroopCard", false)) {
       return 0;
     }
-    if (!((FriendsManager)this.app.getManager(50)).b(str)) {
+    if (!((ajjj)this.app.getManager(51)).b(str)) {
       return 2;
     }
     return 0;
@@ -43,29 +45,29 @@ public class ShortcutRouterActivity
   private void a()
   {
     String str = getAppRuntime().getAccount();
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this, 230);
+    bafb localbafb = babr.a(this, 230);
     TextView localTextView = new TextView(this);
     localTextView.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
     localTextView.setGravity(17);
-    localTextView.setTextSize(getResources().getInteger(2131689474));
-    localTextView.setTextColor(getResources().getColor(2131492879));
+    localTextView.setTextSize(getResources().getInteger(2131361800));
+    localTextView.setTextColor(getResources().getColor(2131099854));
     if (TextUtils.isEmpty(str)) {
-      localTextView.setText("当前帐号没有添加该联系人，无法与他聊天。");
+      localTextView.setText(ajjy.a(2131648213));
     }
     for (;;)
     {
-      localQQCustomDialog.setNegativeButton(2131435285, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
-      localQQCustomDialog.addView(localTextView);
-      localQQCustomDialog.setOnDismissListener(new txe(this));
+      localbafb.setNegativeButton(2131653656, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+      localbafb.addView(localTextView);
+      localbafb.setOnDismissListener(new abrr(this));
       if (!isFinishing()) {
-        localQQCustomDialog.show();
+        localbafb.show();
       }
       return;
-      localTextView.setText("当前帐号（" + str + "）没有添加该联系人，无法与他聊天。");
+      localTextView.setText(ajjy.a(2131648229) + str + ajjy.a(2131648232));
     }
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool2 = true;
     super.doOnCreate(paramBundle);
@@ -98,7 +100,7 @@ public class ShortcutRouterActivity
       if ((!TextUtils.isEmpty(str2)) && (str2.equals("starClub")) && (str1.equals(ChatActivity.class.getName())))
       {
         paramBundle.putExtra("uin", "1413778541");
-        paramBundle.putExtra("uinname", "星影联盟");
+        paramBundle.putExtra("uinname", ajjy.a(2131648234));
         paramBundle.putExtra("uintype", 1008);
         paramBundle.putExtra("from", "starShortcut");
         paramBundle.setClassName(this, str1);
@@ -119,7 +121,7 @@ public class ShortcutRouterActivity
         }
         break;
       case 1: 
-        QQToast.a(this, getString(2131433250), 0).b(getTitleBarHeight());
+        bbmy.a(this, getString(2131653654), 0).b(getTitleBarHeight());
         finish();
         return true;
       case 2: 
@@ -130,16 +132,16 @@ public class ShortcutRouterActivity
       str2 = paramBundle.getStringExtra("uinname");
       i = paramBundle.getIntExtra("uintype", 0);
       paramBundle = paramBundle.getStringExtra("extraUin");
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener = new txd(this);
+      if (this.jdField_a_of_type_Aagm == null) {
+        this.jdField_a_of_type_Aagm = new abrq(this);
       }
       bool1 = bool2;
-    } while (!ChatActivityUtils.a(this.app, this, i, str1, str2, null, true, paramBundle, true, true, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener, "from_internal"));
+    } while (!ChatActivityUtils.a(this.app, this, i, str1, str2, null, true, paramBundle, true, true, this.jdField_a_of_type_Aagm, "from_internal"));
     finish();
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
   }
@@ -149,7 +151,7 @@ public class ShortcutRouterActivity
     finish();
   }
   
-  protected void onStop()
+  public void onStop()
   {
     super.onStop();
     finish();

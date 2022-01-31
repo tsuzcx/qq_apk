@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class WeatherReportInfo$PbReqMsgHead
-  extends MessageMicro
+  extends MessageMicro<PbReqMsgHead>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "uint32_platform_type", "uint32_version", "uint32_ext_mask" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, PbReqMsgHead.class);
   public final PBUInt32Field uint32_ext_mask = PBField.initUInt32(0);

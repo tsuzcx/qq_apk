@@ -1,8 +1,10 @@
 package com.tencent.mobileqq.utils.fts;
 
+import com.tencent.mobileqq.data.FTSMessageDelete;
 import com.tencent.mobileqq.data.FTSMessageSync;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.fts.FTSMessage;
+import com.tencent.mobileqq.data.fts.FTSMessageForDel;
 import com.tencent.qphone.base.util.QLog;
 import java.nio.ByteBuffer;
 
@@ -14,6 +16,42 @@ public class FTSMessageCodec
     localByteBuffer.put(paramArrayOfByte);
     localByteBuffer.flip();
     return localByteBuffer.getLong();
+  }
+  
+  public static FTSMessageDelete a(FTSMessage paramFTSMessage)
+  {
+    if (paramFTSMessage == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.fts.utils", 2, "codecFTSMessage ftsMessage is null");
+      }
+      return null;
+    }
+    FTSMessageDelete localFTSMessageDelete = new FTSMessageDelete();
+    localFTSMessageDelete.mOpt = paramFTSMessage.mOpt;
+    localFTSMessageDelete.mType = paramFTSMessage.mType;
+    localFTSMessageDelete.mContent = paramFTSMessage.mContent;
+    localFTSMessageDelete.mOId = paramFTSMessage.mOId;
+    localFTSMessageDelete.uin = paramFTSMessage.uin;
+    localFTSMessageDelete.istroop = paramFTSMessage.istroop;
+    localFTSMessageDelete.senderuin = paramFTSMessage.senderuin;
+    localFTSMessageDelete.msgtype = paramFTSMessage.msgtype;
+    try
+    {
+      if (paramFTSMessage.msgExts != null) {
+        localFTSMessageDelete.msgExts = ((FTSMessageCodec.MsgExts)paramFTSMessage.msgExts.clone());
+      } else {
+        localFTSMessageDelete.msgExts = null;
+      }
+    }
+    catch (Exception paramFTSMessage)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.fts.utils", 2, "codecFTSMessage, ", paramFTSMessage);
+      }
+      localFTSMessageDelete.msgExts = null;
+    }
+    return localFTSMessageDelete;
   }
   
   public static FTSMessageSync a(FTSMessage paramFTSMessage)
@@ -117,6 +155,42 @@ public class FTSMessageCodec
       localTextMsgExts.shmsgseq = paramMessageRecord.shmsgseq;
       localFTSMessage.msgExts = localTextMsgExts;
     }
+  }
+  
+  public static FTSMessageForDel a(FTSMessageSync paramFTSMessageSync)
+  {
+    if (paramFTSMessageSync == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.fts.utils", 2, "decodecFTSMessage ftsMessageSync is null");
+      }
+      return null;
+    }
+    FTSMessageForDel localFTSMessageForDel = new FTSMessageForDel();
+    localFTSMessageForDel.mOpt = paramFTSMessageSync.mOpt;
+    localFTSMessageForDel.mType = paramFTSMessageSync.mType;
+    localFTSMessageForDel.mContent = paramFTSMessageSync.mContent;
+    localFTSMessageForDel.mOId = paramFTSMessageSync.mOId;
+    localFTSMessageForDel.uin = paramFTSMessageSync.uin;
+    localFTSMessageForDel.istroop = paramFTSMessageSync.istroop;
+    localFTSMessageForDel.senderuin = paramFTSMessageSync.senderuin;
+    localFTSMessageForDel.msgtype = paramFTSMessageSync.msgtype;
+    try
+    {
+      if (paramFTSMessageSync.msgExts != null) {
+        localFTSMessageForDel.msgExts = ((FTSMessageCodec.MsgExts)paramFTSMessageSync.msgExts.clone());
+      } else {
+        localFTSMessageForDel.msgExts = null;
+      }
+    }
+    catch (Exception paramFTSMessageSync)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.fts.utils", 2, "decodecFTSMessage, ", paramFTSMessageSync);
+      }
+      localFTSMessageForDel.msgExts = null;
+    }
+    return localFTSMessageForDel;
   }
   
   public static Object a(byte[] paramArrayOfByte, int paramInt)

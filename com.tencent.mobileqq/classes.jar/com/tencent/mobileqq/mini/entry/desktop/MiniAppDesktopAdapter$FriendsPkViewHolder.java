@@ -1,0 +1,145 @@
+package com.tencent.mobileqq.mini.entry.desktop;
+
+import NS_MINI_INTERFACE.INTERFACE.StApiAppInfo;
+import NS_MINI_INTERFACE.INTERFACE.StFriendRanking;
+import NS_MINI_INTERFACE.INTERFACE.StModuleInfo;
+import NS_MINI_INTERFACE.INTERFACE.StRankingList;
+import NS_MINI_INTERFACE.INTERFACE.StUserAppInfo;
+import ajjy;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.mobileqq.mini.apkg.MiniAppInfo;
+import com.tencent.mobileqq.mini.entry.MiniAppExposureManager;
+import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.BaseExposureReport;
+import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.CardModuleExposureData;
+import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.MiniAppModuleExposureData;
+import com.tencent.mobileqq.mini.entry.MiniAppUtils;
+import com.tencent.mobileqq.mini.entry.desktop.item.DesktopFriendsPkModuleInfo;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.util.ArrayList;
+
+class MiniAppDesktopAdapter$FriendsPkViewHolder
+  extends RecyclerView.ViewHolder
+{
+  private final ImageView mBackground;
+  private final ImageView mMoreIcon;
+  private final ImageView mPkButton;
+  private final ArrayList<MiniAppDesktopAdapter.FriendsPkViewHolder.Item> mRanking = new ArrayList();
+  private final TextView mTitle;
+  private final ImageView mTitleIcon;
+  private final TextView mTopAppDesc;
+  private final ImageView mTopAppIcon;
+  private final TextView mTopAppName;
+  
+  public MiniAppDesktopAdapter$FriendsPkViewHolder(View paramView)
+  {
+    super(paramView);
+    this.mBackground = ((ImageView)paramView.findViewById(2131304502));
+    this.mTitleIcon = ((ImageView)paramView.findViewById(2131304511));
+    this.mTitle = ((TextView)paramView.findViewById(2131304510));
+    this.mMoreIcon = ((ImageView)paramView.findViewById(2131304512));
+    this.mPkButton = ((ImageView)paramView.findViewById(2131304504));
+    this.mTopAppIcon = ((ImageView)paramView.findViewById(2131304513));
+    this.mTopAppName = ((TextView)paramView.findViewById(2131304516));
+    this.mTopAppDesc = ((TextView)paramView.findViewById(2131304515));
+    this.mRanking.add(new MiniAppDesktopAdapter.FriendsPkViewHolder.Item(this, paramView.findViewById(2131304506)));
+    this.mRanking.add(new MiniAppDesktopAdapter.FriendsPkViewHolder.Item(this, paramView.findViewById(2131304507)));
+    this.mRanking.add(new MiniAppDesktopAdapter.FriendsPkViewHolder.Item(this, paramView.findViewById(2131304508)));
+    this.mRanking.add(new MiniAppDesktopAdapter.FriendsPkViewHolder.Item(this, paramView.findViewById(2131304509)));
+    ((MiniAppDesktopAdapter.FriendsPkViewHolder.Item)this.mRanking.get(0)).mCrown.setVisibility(0);
+    ((MiniAppDesktopAdapter.FriendsPkViewHolder.Item)this.mRanking.get(3)).setOutOfRankStyle();
+  }
+  
+  public void bindView(DesktopFriendsPkModuleInfo paramDesktopFriendsPkModuleInfo)
+  {
+    Object localObject1 = paramDesktopFriendsPkModuleInfo.moduleInfo;
+    Object localObject2 = paramDesktopFriendsPkModuleInfo.ranking;
+    Object localObject3 = URLDrawable.URLDrawableOptions.obtain();
+    Object localObject4 = this.itemView.getContext().getResources().getDrawable(2130847234);
+    ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Drawable)localObject4);
+    ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = ((Drawable)localObject4);
+    ((URLDrawable.URLDrawableOptions)localObject3).mPlayGifImage = false;
+    try
+    {
+      this.mBackground.setImageDrawable(MiniAppUtils.getDrawable(((INTERFACE.StModuleInfo)localObject1).backgroundPic.get(), (URLDrawable.URLDrawableOptions)localObject3));
+      MiniAppUtils.setImage(this.mTitleIcon, ((INTERFACE.StModuleInfo)localObject1).titleIcon.get());
+      this.mTitle.setText(((INTERFACE.StModuleInfo)localObject1).title.get());
+      MiniAppUtils.setImage(this.mPkButton, ((INTERFACE.StFriendRanking)localObject2).animationPic.get());
+      this.mTopAppName.setText(((INTERFACE.StFriendRanking)localObject2).gameInfo.appInfo.appName.get());
+      this.mTopAppIcon.setImageDrawable(MiniAppUtils.getIcon(this.itemView.getContext(), ((INTERFACE.StFriendRanking)localObject2).gameInfo.appInfo.icon.get(), true));
+      this.mTopAppDesc.setText(((INTERFACE.StFriendRanking)localObject2).friendsNum.get() + ajjy.a(2131641009));
+      int i = 0;
+      int j;
+      for (;;)
+      {
+        j = i;
+        if (i >= ((INTERFACE.StFriendRanking)localObject2).rankingList.size()) {
+          break;
+        }
+        j = i;
+        if (i >= this.mRanking.size()) {
+          break;
+        }
+        ((MiniAppDesktopAdapter.FriendsPkViewHolder.Item)this.mRanking.get(i)).setData((INTERFACE.StRankingList)((INTERFACE.StFriendRanking)localObject2).rankingList.get(i));
+        i += 1;
+      }
+      while (j < this.mRanking.size())
+      {
+        ((MiniAppDesktopAdapter.FriendsPkViewHolder.Item)this.mRanking.get(j)).gone();
+        j += 1;
+      }
+      MiniAppUtils.setJump(this.mMoreIcon, paramDesktopFriendsPkModuleInfo.jumpMoreInfo, 3009);
+      MiniAppUtils.setJump(this.itemView, paramDesktopFriendsPkModuleInfo.appInfo, 3009);
+      localObject1 = MiniAppUtils.getAppInterface();
+      if (localObject1 != null)
+      {
+        localObject1 = (MiniAppExposureManager)((AppInterface)localObject1).getManager(322);
+        if (localObject1 != null)
+        {
+          localObject2 = new MiniAppConfig(paramDesktopFriendsPkModuleInfo.appInfo);
+          ((MiniAppConfig)localObject2).launchParam.scene = 3009;
+          localObject2 = new MiniAppExposureManager.MiniAppModuleExposureData((MiniAppConfig)localObject2, "page_view", "expo");
+          localObject3 = new MiniAppExposureManager.CardModuleExposureData("desktop", "pk", "expo", null);
+          if (((MiniAppExposureManager)localObject1).getDesktopPullDownState() == 3)
+          {
+            ((MiniAppExposureManager)localObject1).addReportItem((MiniAppExposureManager.BaseExposureReport)localObject2);
+            ((MiniAppExposureManager)localObject1).addReportItem((MiniAppExposureManager.BaseExposureReport)localObject3);
+          }
+        }
+        else
+        {
+          return;
+        }
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append(paramDesktopFriendsPkModuleInfo.appInfo.appId).append("_").append(paramDesktopFriendsPkModuleInfo.appInfo.verType).append("_").append(paramDesktopFriendsPkModuleInfo.getModuleType());
+        ((MiniAppExposureManager)localObject1).putReportDataToMap(((StringBuilder)localObject4).toString(), (MiniAppExposureManager.BaseExposureReport)localObject2);
+        ((MiniAppExposureManager)localObject1).putReportDataToMap("pk", (MiniAppExposureManager.BaseExposureReport)localObject3);
+        return;
+      }
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      for (;;)
+      {
+        continue;
+        localObject1 = null;
+      }
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.FriendsPkViewHolder
+ * JD-Core Version:    0.7.0.1
+ */

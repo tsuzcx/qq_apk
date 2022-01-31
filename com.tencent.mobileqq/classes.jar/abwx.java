@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.campuscircle.CampusCircleReplyActivity;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class abwx
-  implements Runnable
+  implements mrj
 {
-  public abwx(CampusCircleReplyActivity paramCampusCircleReplyActivity) {}
+  public abwx(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void run()
+  public void a()
   {
-    CampusCircleReplyActivity.a(this.a, 2);
+    TroopInfoActivity.a(this.a, true, 0L, "", this.a.a.dwGroupClassExt, this.a.a.dwGroupClassExt);
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.j();
+    TroopInfoActivity.a(this.a, false, 0L, paramString, this.a.a.dwGroupClassExt, this.a.a.dwGroupClassExt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abwx
  * JD-Core Version:    0.7.0.1
  */

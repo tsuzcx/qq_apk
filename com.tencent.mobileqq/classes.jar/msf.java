@@ -1,19 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
-
-public class msf
-  implements Runnable
+public abstract interface msf
 {
-  public msf(FastWebVideoFeedsListView paramFastWebVideoFeedsListView, int paramInt) {}
+  public abstract void a(int paramInt);
   
-  public void run()
-  {
-    FastWebVideoFeedsListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView, true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView.smoothScrollBy(-this.jdField_a_of_type_Int, 0);
-  }
+  public abstract void b(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     msf
  * JD-Core Version:    0.7.0.1
  */

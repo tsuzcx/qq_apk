@@ -1,27 +1,22 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import com.tencent.open.agent.CardContainer;
-import com.tencent.qphone.base.util.QLog;
-
 public class aljh
-  extends URLDrawableDownListener.Adapter
 {
-  public aljh(CardContainer paramCardContainer) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public static float[] a(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CardContainer", 2, "-->drawabel onLoadSuccessed, view: " + paramView);
+    if ((paramArrayOfFloat1 != null) && (paramArrayOfFloat2 != null) && (paramArrayOfFloat1.length == paramArrayOfFloat2.length))
+    {
+      int i = 0;
+      while (i < paramArrayOfFloat1.length)
+      {
+        paramArrayOfFloat1[i] = (paramArrayOfFloat2[i] * 0.9F + paramArrayOfFloat1[i] * 0.1F);
+        i += 1;
+      }
     }
-    ((AnyScaleTypeImageView)paramView).setImageDrawable(paramURLDrawable);
-    this.a.a.setVisibility(8);
+    return paramArrayOfFloat1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aljh
  * JD-Core Version:    0.7.0.1
  */

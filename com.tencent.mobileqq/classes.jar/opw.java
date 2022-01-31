@@ -1,22 +1,47 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.permission.PermissionListAdapter;
-import com.tencent.biz.qqstory.takevideo.permission.PermissionSettingActivity;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 
-public class opw
-  implements View.OnClickListener
+public abstract interface opw
 {
-  public opw(PermissionSettingActivity paramPermissionSettingActivity) {}
+  public abstract int a();
   
-  public void onClick(View paramView)
-  {
-    paramView = PermissionSettingActivity.a(this.a).a();
-    if (paramView != null)
-    {
-      PermissionSettingActivity.a(this.a, paramView);
-      this.a.finish();
-    }
-  }
+  public abstract ArticleInfo a();
+  
+  public abstract VafContext a();
+  
+  public abstract qoe a();
+  
+  public abstract boolean a();
+  
+  public abstract int b();
+  
+  public abstract ArticleInfo b();
+  
+  public abstract boolean b();
+  
+  public abstract int c();
+  
+  public abstract boolean c();
+  
+  public abstract int d();
+  
+  public abstract boolean d();
+  
+  public abstract int e();
+  
+  public abstract boolean e();
+  
+  public abstract int f();
+  
+  public abstract boolean f();
+  
+  public abstract int g();
+  
+  public abstract boolean g();
+  
+  public abstract boolean h();
+  
+  public abstract boolean i();
 }
 
 

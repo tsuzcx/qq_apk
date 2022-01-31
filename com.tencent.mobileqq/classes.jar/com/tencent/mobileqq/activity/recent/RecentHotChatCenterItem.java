@@ -1,21 +1,22 @@
 package com.tencent.mobileqq.activity.recent;
 
+import ahcw;
+import ajjy;
+import ajjz;
+import akbm;
 import android.content.Context;
-import android.content.res.Resources;
 import android.text.TextUtils;
+import axkd;
+import babh;
+import bado;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
-import com.tencent.mobileqq.app.HotChatCenterManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.data.DraftSummaryInfo;
 import com.tencent.mobileqq.data.HotChatItemData;
 import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.text.QQText;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.utils.MsgUtils;
 
 public class RecentHotChatCenterItem
   extends RecentUserBaseData
@@ -23,13 +24,13 @@ public class RecentHotChatCenterItem
   public RecentHotChatCenterItem(RecentUser paramRecentUser)
   {
     super(paramRecentUser);
-    this.jdField_b_of_type_Int = 0;
+    this.mUnreadFlag = 0;
   }
   
   public void a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_Int = 0;
-    HotChatItemData localHotChatItemData = ((HotChatCenterManager)paramQQAppInterface.getManager(254)).a();
+    this.mStatus = 0;
+    HotChatItemData localHotChatItemData = ((ajjz)paramQQAppInterface.getManager(255)).a();
     if ((localHotChatItemData == null) || (TextUtils.isEmpty(localHotChatItemData.mTroopUin))) {}
     do
     {
@@ -39,10 +40,10 @@ public class RecentHotChatCenterItem
     paramQQAppInterface = paramQQAppInterface.a(localHotChatItemData.mTroopUin, 1);
     if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramQQAppInterface.getSummary())))
     {
-      this.jdField_a_of_type_Int = 4;
+      this.mStatus = 4;
       return;
     }
-    this.jdField_a_of_type_Int = 0;
+    this.mStatus = 0;
   }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
@@ -51,12 +52,12 @@ public class RecentHotChatCenterItem
       return;
     }
     super.a(paramQQAppInterface, paramContext);
-    if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-      this.jdField_b_of_type_JavaLangString = paramContext.getString(2131439143);
+    if (TextUtils.isEmpty(this.mTitleName)) {
+      this.mTitleName = paramContext.getString(2131627709);
     }
     MsgSummary localMsgSummary = null;
-    HotChatCenterManager localHotChatCenterManager = (HotChatCenterManager)paramQQAppInterface.getManager(254);
-    HotChatItemData localHotChatItemData = localHotChatCenterManager.a();
+    ajjz localajjz = (ajjz)paramQQAppInterface.getManager(255);
+    HotChatItemData localHotChatItemData = localajjz.a();
     QQMessageFacade localQQMessageFacade = paramQQAppInterface.a();
     Object localObject = localMsgSummary;
     if (localQQMessageFacade != null)
@@ -69,73 +70,73 @@ public class RecentHotChatCenterItem
     localMsgSummary = a();
     if (localObject != null)
     {
-      this.jdField_c_of_type_Int = localHotChatCenterManager.a();
-      this.jdField_a_of_type_Long = ((QQMessageFacade.Message)localObject).time;
+      this.mUnreadNum = localajjz.a();
+      this.mDisplayTime = ((QQMessageFacade.Message)localObject).time;
       a((QQMessageFacade.Message)localObject, 1, paramQQAppInterface, paramContext, localMsgSummary);
-      if ((this.jdField_a_of_type_Long > 0L) && (this.jdField_a_of_type_Long != 9223372036854775806L)) {
-        this.jdField_c_of_type_JavaLangString = TimeManager.a().a(a(), this.jdField_a_of_type_Long);
+      if ((this.mDisplayTime > 0L) && (this.mDisplayTime != 9223372036854775806L)) {
+        this.mShowTime = ahcw.a().a(a(), this.mDisplayTime);
       }
     }
     for (;;)
     {
-      if ((TextUtils.isEmpty(localMsgSummary.b)) && (TextUtils.isEmpty(localMsgSummary.jdField_c_of_type_JavaLangCharSequence)))
+      if ((TextUtils.isEmpty(localMsgSummary.strContent)) && (TextUtils.isEmpty(localMsgSummary.suffix)))
       {
-        localMsgSummary.jdField_a_of_type_JavaLangCharSequence = null;
+        localMsgSummary.strPrefix = null;
         if ((localHotChatItemData != null) && (localHotChatItemData.mState == 1)) {
-          localMsgSummary.b = "房间暂停提醒，点击重新激活";
+          localMsgSummary.strContent = ajjy.a(2131647365);
         }
       }
       a(paramQQAppInterface);
       a(paramQQAppInterface, localMsgSummary);
       a(paramQQAppInterface, paramContext, localMsgSummary);
       b(paramQQAppInterface, paramContext);
-      if (!AppSetting.b) {
+      if (!AppSetting.c) {
         break;
       }
-      if (this.jdField_c_of_type_Int <= 0) {
-        break label298;
+      if (this.mUnreadNum <= 0) {
+        break label304;
       }
-      this.jdField_d_of_type_JavaLangString = String.format("热聊房间,%d个热聊房间有新消息，%s。", new Object[] { Integer.valueOf(this.jdField_c_of_type_Int), this.jdField_c_of_type_JavaLangString });
+      this.mContentDesc = String.format(ajjy.a(2131647366), new Object[] { Integer.valueOf(this.mUnreadNum), this.mShowTime });
       return;
-      this.jdField_c_of_type_Int = 0;
-      this.jdField_a_of_type_Long = 0L;
+      this.mUnreadNum = 0;
+      this.mDisplayTime = 0L;
     }
-    label298:
-    this.jdField_d_of_type_JavaLangString = String.format("热聊房间,%s，%s。", new Object[] { this.jdField_c_of_type_JavaLangCharSequence, this.jdField_c_of_type_JavaLangString });
+    label304:
+    this.mContentDesc = String.format(ajjy.a(2131647364), new Object[] { this.mLastMsg, this.mShowTime });
   }
   
   protected void a(QQAppInterface paramQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
   {
     super.a(paramQQAppInterface, paramContext, paramMsgSummary);
-    paramQQAppInterface = ((HotChatCenterManager)paramQQAppInterface.getManager(254)).a();
+    paramQQAppInterface = ((ajjz)paramQQAppInterface.getManager(255)).a();
     if (paramQQAppInterface != null) {
       if ((!paramQQAppInterface.mIsRead4Folder) && (!TextUtils.isEmpty(paramQQAppInterface.mADsContent))) {
-        this.jdField_c_of_type_JavaLangCharSequence = (" " + paramQQAppInterface.mADsContent);
+        this.mLastMsg = (" " + paramQQAppInterface.mADsContent);
       }
     }
-    while (this.jdField_c_of_type_Int <= 0)
+    while (this.mUnreadNum <= 0)
     {
       do
       {
         return;
         if (paramQQAppInterface.mState == 1)
         {
-          this.jdField_c_of_type_JavaLangCharSequence = "房间暂停提醒，点击重新激活";
+          this.mLastMsg = ajjy.a(2131647368);
           return;
         }
-      } while (this.jdField_c_of_type_Int <= 0);
-      this.jdField_c_of_type_JavaLangCharSequence = "";
+      } while (this.mUnreadNum <= 0);
+      this.mLastMsg = "";
       return;
     }
-    this.jdField_c_of_type_JavaLangCharSequence = "";
+    this.mLastMsg = "";
   }
   
   public void a(QQAppInterface paramQQAppInterface, MsgSummary paramMsgSummary)
   {
     if (paramMsgSummary != null)
     {
-      paramMsgSummary.jdField_a_of_type_Boolean = false;
-      paramMsgSummary.jdField_d_of_type_JavaLangCharSequence = null;
+      paramMsgSummary.bShowDraft = false;
+      paramMsgSummary.mDraft = null;
     }
     Object localObject = paramQQAppInterface.a();
     if (localObject == null) {}
@@ -145,42 +146,30 @@ public class RecentHotChatCenterItem
       do
       {
         return;
-        localHotChatItemData = ((HotChatCenterManager)paramQQAppInterface.getManager(254)).a();
-      } while ((localHotChatItemData == null) || (TextUtils.isEmpty(localHotChatItemData.mTroopUin)) || (this.jdField_a_of_type_Long >= localHotChatItemData.mDraftSec));
+        localHotChatItemData = ((ajjz)paramQQAppInterface.getManager(255)).a();
+      } while ((localHotChatItemData == null) || (TextUtils.isEmpty(localHotChatItemData.mTroopUin)) || (this.mDisplayTime >= localHotChatItemData.mDraftSec));
       localObject = ((QQMessageFacade)localObject).a(localHotChatItemData.mTroopUin, 1);
     } while ((localObject == null) || (TextUtils.isEmpty(((DraftSummaryInfo)localObject).getSummary())));
-    this.jdField_a_of_type_Long = ((DraftSummaryInfo)localObject).getTime();
-    paramMsgSummary.jdField_a_of_type_Boolean = true;
+    this.mDisplayTime = ((DraftSummaryInfo)localObject).getTime();
+    paramMsgSummary.bShowDraft = true;
     localObject = ((DraftSummaryInfo)localObject).getSummary();
-    paramQQAppInterface = ContactUtils.a(paramQQAppInterface, localHotChatItemData.mTroopUin, true);
-    paramMsgSummary.jdField_d_of_type_JavaLangCharSequence = new QQText(paramQQAppInterface + ": " + (String)localObject, 3, 16);
+    paramQQAppInterface = babh.a(paramQQAppInterface, localHotChatItemData.mTroopUin, true);
+    paramMsgSummary.mDraft = new axkd(paramQQAppInterface + ": " + (String)localObject, 3, 16);
   }
   
   protected void a(QQMessageFacade.Message paramMessage, int paramInt, QQAppInterface paramQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
   {
-    String str = ContactUtils.a(paramQQAppInterface, paramMessage.frienduin, true);
-    MsgUtils.a(paramContext, paramQQAppInterface, paramMessage, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type, paramMsgSummary, str, false, false);
-    if ((paramMessage.istroop == 1) && (MsgProxyUtils.k(paramMessage.msgtype))) {
-      paramMsgSummary.jdField_a_of_type_JavaLangCharSequence = str;
+    String str = babh.a(paramQQAppInterface, paramMessage.frienduin, true);
+    bado.a(paramContext, paramQQAppInterface, paramMessage, this.mUser.getType(), paramMsgSummary, str, false, false);
+    if ((paramMessage.istroop == 1) && (akbm.l(paramMessage.msgtype))) {
+      paramMsgSummary.strPrefix = str;
     }
   }
   
   public void b(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    paramQQAppInterface = ((HotChatCenterManager)paramQQAppInterface.getManager(254)).a();
-    if ((paramQQAppInterface != null) && (!paramQQAppInterface.mIsRead4Folder) && (!TextUtils.isEmpty(paramQQAppInterface.mADsContent)))
-    {
-      this.jdField_d_of_type_JavaLangCharSequence = "[新活动]";
-      this.e = paramContext.getResources().getColor(2131494294);
-      return;
-    }
-    if ((this.jdField_c_of_type_Int > 0) && (paramQQAppInterface != null) && (paramQQAppInterface.mState != 1))
-    {
-      this.jdField_d_of_type_JavaLangCharSequence = String.format(paramContext.getString(2131436705), new Object[] { Integer.valueOf(this.jdField_c_of_type_Int) });
-      this.e = paramContext.getResources().getColor(2131494294);
-      return;
-    }
-    this.jdField_d_of_type_JavaLangCharSequence = "";
+    ((ajjz)paramQQAppInterface.getManager(255)).a();
+    this.mMsgExtroInfo = "";
   }
 }
 

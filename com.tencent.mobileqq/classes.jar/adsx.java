@@ -1,22 +1,16 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardFileBaseOption;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class adsx
-  implements DialogInterface.OnClickListener
+class adsx
+  extends adst
 {
-  public adsx(ForwardFileBaseOption paramForwardFileBaseOption) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public adsx(QQAppInterface paramQQAppInterface)
   {
-    ForwardFileBaseOption.a(this.a, false);
-    this.a.a.finish();
+    super(paramQQAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adsx
  * JD-Core Version:    0.7.0.1
  */

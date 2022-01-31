@@ -1,19 +1,25 @@
-import com.tencent.widget.XListView;
-import dov.com.qq.im.capture.poi.FacePoiUI;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
-public class anwb
-  implements Runnable
+class anwb
+  implements Animation.AnimationListener
 {
-  public anwb(FacePoiUI paramFacePoiUI) {}
+  anwb(anvy paramanvy, int paramInt, boolean paramBoolean) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.springBackOverScrollHeaderView();
+    this.jdField_a_of_type_Anvy.jdField_a_of_type_Float = this.jdField_a_of_type_Anvy.b;
+    ((Face2FaceAddFriendActivity)this.jdField_a_of_type_Anvy.jdField_a_of_type_AndroidContentContext).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anwb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,81 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.SharedPreferencesHandler;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.Set;
+import java.io.BufferedReader;
 
 public class lce
-  implements Runnable
+  extends lcd
 {
-  public lce(EcShopAssistantManager paramEcShopAssistantManager) {}
+  private float jdField_a_of_type_Float;
+  float[] jdField_a_of_type_ArrayOfFloat = { 0.0F };
+  private float jdField_b_of_type_Float;
+  private float[] jdField_b_of_type_ArrayOfFloat = { 1.0F };
+  private boolean c;
   
-  public void run()
+  public float a(float paramFloat)
   {
-    synchronized (this.a.b)
-    {
-      Object[] arrayOfObject = this.a.jdField_a_of_type_JavaUtilSet.toArray();
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        SharedPreferencesHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit(), "ec_shop_assist_new_unread_list", arrayOfObject).commit();
-      }
-      return;
+    float[] arrayOfFloat1 = this.jdField_a_of_type_ArrayOfFloat;
+    int j = arrayOfFloat1.length;
+    int i = 1;
+    if (i < j) {
+      if (arrayOfFloat1[i] <= paramFloat) {}
     }
+    for (;;)
+    {
+      if (i == -1)
+      {
+        return this.jdField_b_of_type_ArrayOfFloat[(j - 1)];
+        i += 1;
+        break;
+      }
+      float[] arrayOfFloat2 = this.jdField_b_of_type_ArrayOfFloat;
+      j = i - 1;
+      float f1 = arrayOfFloat2[j];
+      float f2 = arrayOfFloat1[j];
+      float f3 = arrayOfFloat2[i];
+      return (paramFloat - f2) / (arrayOfFloat1[i] - f2) * (f3 - f1) + f1;
+      i = -1;
+    }
+  }
+  
+  public void a(BufferedReader paramBufferedReader)
+  {
+    int j = 0;
+    super.a(paramBufferedReader);
+    if (!this.jdField_a_of_type_Boolean) {}
+    for (;;)
+    {
+      return;
+      this.jdField_a_of_type_Float = lbz.a(paramBufferedReader, "highMin");
+      this.jdField_b_of_type_Float = lbz.a(paramBufferedReader, "highMax");
+      this.c = lbz.a(paramBufferedReader, "relative");
+      this.jdField_b_of_type_ArrayOfFloat = new float[lbz.a(paramBufferedReader, "scalingCount")];
+      int i = 0;
+      while (i < this.jdField_b_of_type_ArrayOfFloat.length)
+      {
+        this.jdField_b_of_type_ArrayOfFloat[i] = lbz.a(paramBufferedReader, "scaling" + i);
+        i += 1;
+      }
+      this.jdField_a_of_type_ArrayOfFloat = new float[lbz.a(paramBufferedReader, "timelineCount")];
+      i = j;
+      while (i < this.jdField_a_of_type_ArrayOfFloat.length)
+      {
+        this.jdField_a_of_type_ArrayOfFloat[i] = lbz.a(paramBufferedReader, "timeline" + i);
+        i += 1;
+      }
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.c;
+  }
+  
+  public float b()
+  {
+    return this.jdField_a_of_type_Float + (this.jdField_b_of_type_Float - this.jdField_a_of_type_Float) * lbu.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lce
  * JD-Core Version:    0.7.0.1
  */

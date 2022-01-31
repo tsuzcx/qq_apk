@@ -1,17 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTopicItemMulti;
+import com.tencent.av.ui.VideoLayerUI;
 
 public class maf
-  implements View.OnClickListener
+  implements lic
 {
-  public maf(ComponentTopicItemMulti paramComponentTopicItemMulti) {}
+  public maf(VideoLayerUI paramVideoLayerUI, ltl paramltl, boolean paramBoolean) {}
   
-  public void onClick(View paramView) {}
+  public void a()
+  {
+    this.jdField_a_of_type_Ltl.o(true);
+    this.jdField_a_of_type_Ltl.a(-1044L, this.jdField_a_of_type_Boolean);
+    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, this.jdField_a_of_type_Ltl, this.jdField_a_of_type_Boolean);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     maf
  * JD-Core Version:    0.7.0.1
  */

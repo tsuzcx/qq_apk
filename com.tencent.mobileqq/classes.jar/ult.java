@@ -1,35 +1,16 @@
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
-import com.tencent.qphone.base.util.QLog;
-
-public class ult
-  extends ContactBindObserver
+final class ult
+  extends ThreadLocal<StringBuilder>
 {
-  public ult(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  protected StringBuilder a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VerifyPhoneNumActivity", 2, "VerifyPhoneNumActivity onReBindMblWTLogin isSuccess = " + paramBoolean1 + "; resultOk = " + paramBoolean2);
-    }
-    this.a.a();
-    if (paramBoolean1)
-    {
-      if (paramBoolean2)
-      {
-        VerifyPhoneNumActivity.a(this.a, true);
-        VerifyPhoneNumActivity.c(this.a);
-        return;
-      }
-      VerifyPhoneNumActivity.c(this.a);
-      return;
-    }
-    VerifyPhoneNumActivity.c(this.a);
+    StringBuilder localStringBuilder = new StringBuilder(512);
+    localStringBuilder.setLength(0);
+    return localStringBuilder;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ult
  * JD-Core Version:    0.7.0.1
  */

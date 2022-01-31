@@ -1,35 +1,19 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
 
-public class tte
-  extends MqqHandler
+class tte
+  implements MediaPlayer.OnErrorListener
 {
-  public tte(RegisterActivity paramRegisterActivity) {}
+  tte(tsy paramtsy, tsr paramtsr) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      paramMessage = (String)paramMessage.obj;
-      if (!TextUtils.isEmpty(paramMessage))
-      {
-        RegisterActivity.b(this.a, paramMessage);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("IphoneTitleBarActivity", 2, "captcha sig is empty");
+    return this.jdField_a_of_type_Tsr.a(this.jdField_a_of_type_Tsy, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tte
  * JD-Core Version:    0.7.0.1
  */

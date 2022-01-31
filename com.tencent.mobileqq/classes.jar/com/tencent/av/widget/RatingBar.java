@@ -10,7 +10,8 @@ import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.mobileqq.R.styleable;
-import kke;
+import mkd;
+import mke;
 
 public class RatingBar
   extends LinearLayout
@@ -18,8 +19,8 @@ public class RatingBar
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private RatingBar.OnRatingListener jdField_a_of_type_ComTencentAvWidgetRatingBar$OnRatingListener;
   private Object jdField_a_of_type_JavaLangObject;
+  private mke jdField_a_of_type_Mke;
   private boolean jdField_a_of_type_Boolean = true;
   private int jdField_b_of_type_Int;
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
@@ -29,15 +30,15 @@ public class RatingBar
     super(paramContext, paramAttributeSet);
     setOrientation(0);
     Object localObject = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.RatingBar);
-    this.jdField_a_of_type_Float = ((TypedArray)localObject).getDimension(0, 20.0F);
-    this.jdField_a_of_type_Int = ((TypedArray)localObject).getInteger(1, 5);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((TypedArray)localObject).getDrawable(2);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = ((TypedArray)localObject).getDrawable(3);
+    this.jdField_a_of_type_Float = ((TypedArray)localObject).getDimension(11, 20.0F);
+    this.jdField_a_of_type_Int = ((TypedArray)localObject).getInteger(2, 5);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((TypedArray)localObject).getDrawable(3);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = ((TypedArray)localObject).getDrawable(5);
     ((TypedArray)localObject).recycle();
     while (i < this.jdField_a_of_type_Int)
     {
       localObject = a(paramContext, paramAttributeSet);
-      ((ImageView)localObject).setOnClickListener(new kke(this));
+      ((ImageView)localObject).setOnClickListener(new mkd(this));
       addView((View)localObject);
       i += 1;
     }
@@ -64,9 +65,9 @@ public class RatingBar
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnRatingListener(RatingBar.OnRatingListener paramOnRatingListener)
+  public void setOnRatingListener(mke parammke)
   {
-    this.jdField_a_of_type_ComTencentAvWidgetRatingBar$OnRatingListener = paramOnRatingListener;
+    this.jdField_a_of_type_Mke = parammke;
   }
   
   public void setStar(int paramInt, boolean paramBoolean)
@@ -123,7 +124,7 @@ public class RatingBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.widget.RatingBar
  * JD-Core Version:    0.7.0.1
  */

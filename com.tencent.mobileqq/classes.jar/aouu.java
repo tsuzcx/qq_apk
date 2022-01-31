@@ -1,25 +1,27 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
-import dov.com.tencent.mobileqq.richmedia.capture.view.BeautyBar;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.List;
 
-public class aouu
-  implements Animation.AnimationListener
+class aouu
+  implements wlx
 {
-  public aouu(BeautyBar paramBeautyBar) {}
+  aouu(aout paramaout, boolean paramBoolean, String paramString, short paramShort) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(List<aoys> paramList)
   {
-    FlowCameraMqqAction.a("", "0X8007C05", BeautyBar.a(this.a) + "", "", "", "");
+    if (this.jdField_a_of_type_Aout.a.jdField_a_of_type_Aovp != null) {
+      this.jdField_a_of_type_Aout.a.jdField_a_of_type_Aovp.a(paramList, this.jdField_a_of_type_Aout.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aout.a.b, this.jdField_a_of_type_Aout.a.c, this.jdField_a_of_type_Aout.a.d, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Short);
+    }
+    if (paramList != null)
+    {
+      awqx.b(this.jdField_a_of_type_Aout.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_suc", 0, 0, "" + this.jdField_a_of_type_Aout.a.jdField_a_of_type_Aotf.a().TroopUin, "", apck.f(this.jdField_a_of_type_Aout.a.b()), "1");
+      return;
+    }
+    awqx.b(this.jdField_a_of_type_Aout.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_fail", 0, 0, "" + this.jdField_a_of_type_Aout.a.jdField_a_of_type_Aotf.a().TroopUin, "-1", apck.f(this.jdField_a_of_type_Aout.a.b()), "1");
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aouu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,28 @@
 package c.t.m.g;
 
-import android.os.Bundle;
-
 public final class dg
-  extends dh
-  implements df
 {
-  public static final dg a = new dg();
+  private static volatile dh a = null;
+  private static volatile boolean b = false;
   
-  private dg()
-  {
-    super("dummy", "dummy");
-  }
-  
-  public static df b()
+  public static dh a()
   {
     return a;
   }
   
-  public final void a() {}
-  
-  protected final boolean a(Bundle paramBundle)
+  public static final void a(dh paramdh)
   {
-    return false;
+    a = paramdh;
+  }
+  
+  public static boolean b()
+  {
+    return b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     c.t.m.g.dg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v4.view.ViewPager android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1208" android:layout_width="fill_parent" android:layout_height="70.0dip" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0280" />
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1209" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginBottom="5.0dip" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0a1208" />
-</merge>

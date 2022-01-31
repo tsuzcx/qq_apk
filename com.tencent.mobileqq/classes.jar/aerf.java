@@ -1,18 +1,12 @@
-import com.tencent.mobileqq.model.TroopInfoManager;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class aerf
-  implements Runnable
+public abstract interface aerf
 {
-  public aerf(TroopInfoManager paramTroopInfoManager) {}
-  
-  public void run()
-  {
-    TroopInfoManager.a(this.a);
-  }
+  public abstract void a(ChatMessage paramChatMessage);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aerf
  * JD-Core Version:    0.7.0.1
  */

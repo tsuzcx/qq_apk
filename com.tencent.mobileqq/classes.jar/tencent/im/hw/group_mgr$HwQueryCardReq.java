@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class group_mgr$HwQueryCardReq
-  extends MessageMicro
+  extends MessageMicro<HwQueryCardReq>
 {
   public static final int GID_FIELD_NUMBER = 1;
   public static final int TARGET_UIN_FIELD_NUMBER = 2;
@@ -16,7 +16,7 @@ public final class group_mgr$HwQueryCardReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.hw.group_mgr.HwQueryCardReq
  * JD-Core Version:    0.7.0.1
  */

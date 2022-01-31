@@ -1,19 +1,33 @@
-import com.tencent.mobileqq.activity.StructMsgObserver;
-import com.tencent.mobileqq.activity.WebAccelerator;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
+import java.util.List;
 
-public class tyk
-  implements Runnable
+class tyk
+  implements tyi
 {
-  public tyk(StructMsgObserver paramStructMsgObserver, String paramString1, int paramInt, String paramString2, String paramString3) {}
+  tyk(tyj paramtyj, List paramList, Bitmap[] paramArrayOfBitmap, Handler paramHandler) {}
   
-  public void run()
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    WebAccelerator.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c);
+    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString);
+    txq.b(tyj.a(this.jdField_a_of_type_Tyj), "bitmap download success index=%d, url=%s", Integer.valueOf(i), paramString);
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i] = paramBitmap;
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 0, this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap), 200L);
+  }
+  
+  public void a(String paramString, Throwable paramThrowable)
+  {
+    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString);
+    txq.c(tyj.a(this.jdField_a_of_type_Tyj), "bitmap download failed index=%s, error=%s", Integer.valueOf(i), paramThrowable);
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 1, paramThrowable), 500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tyk
  * JD-Core Version:    0.7.0.1
  */

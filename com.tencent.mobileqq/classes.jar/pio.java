@@ -1,71 +1,66 @@
 import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.biz.widgets.ScannerView;
-import com.tencent.biz.widgets.ScannerView.FileDecodeListener;
-import com.tencent.biz.widgets.ScannerView.FlashLightListener;
-import com.tencent.biz.widgets.ScannerView.ScannerListener;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcVideo;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class pio
-  extends Handler
+  extends pim
 {
-  public pio(ScannerView paramScannerView) {}
-  
-  public void handleMessage(Message paramMessage)
+  public pio(Context paramContext, azwg paramazwg, qoe paramqoe)
   {
-    if (paramMessage.what == 9)
-    {
-      paramMessage = Toast.makeText(this.a.getContext(), this.a.getContext().getString(2131429921), 1);
-      paramMessage.setGravity(17, 0, 0);
-      paramMessage.show();
+    super(paramContext, paramazwg, paramqoe);
+  }
+  
+  public pez a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return f(this.jdField_a_of_type_Qoe, this.jdField_a_of_type_Azwg).g().q().l().n();
+  }
+  
+  public pez d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("layoutComponent() must after buildComponent()!");
     }
-    Object localObject;
-    do
+    LinearLayout localLinearLayout1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout1.setOrientation(1);
+    localLinearLayout1.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderTopicRecommend);
+    }
+    if ((this.jdField_a_of_type_Pey != null) && ((this.jdField_a_of_type_Pey instanceof ComponentContentBigImageVideo)))
     {
-      return;
-      localObject = ScannerView.a(this.a);
-      if (localObject != null) {}
-      switch (paramMessage.what)
-      {
-      case 3: 
-      case 4: 
-      case 5: 
-      case 6: 
-      default: 
-        localObject = ScannerView.a(this.a);
-        if (localObject != null) {}
-        switch (paramMessage.what)
-        {
-        default: 
-          localObject = ScannerView.a(this.a);
-        }
-        break;
+      LinearLayout localLinearLayout2 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+      localLinearLayout2.setOrientation(1);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
+      localLayoutParams.setMargins(aciy.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), 0, aciy.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aciy.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      localLinearLayout2.setLayoutParams(localLayoutParams);
+      localLinearLayout2.addView((ComponentContentBigImageVideo)this.jdField_a_of_type_Pey);
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
+        localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
       }
-    } while (localObject == null);
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+      localLinearLayout2.setOnClickListener(new pip(this));
+      localLinearLayout1.addView(localLinearLayout2);
     }
-    if (((paramMessage.obj instanceof Boolean)) && (((Boolean)paramMessage.obj).booleanValue())) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ((ScannerView.FlashLightListener)localObject).a(bool);
-      return;
-      ((ScannerView.ScannerListener)localObject).b(String.valueOf(paramMessage.obj));
-      return;
-      ((ScannerView.ScannerListener)localObject).d();
-      return;
-      ((ScannerView.ScannerListener)localObject).c();
-      return;
-      ((ScannerView.ScannerListener)localObject).b();
-      return;
-      ((ScannerView.FileDecodeListener)localObject).a(String.valueOf(paramMessage.obj));
-      return;
-      ((ScannerView.FileDecodeListener)localObject).a();
-      return;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentSocialOperation);
     }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localLinearLayout1.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localLinearLayout1);
+    return this;
+  }
+  
+  public pez g()
+  {
+    this.jdField_a_of_type_Pey = new ComponentContentUgcVideo(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

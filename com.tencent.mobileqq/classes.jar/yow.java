@@ -1,35 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.adapter.TroopListAdapter2;
-import com.tencent.mobileqq.adapter.TroopListAdapter2.OnTroopListClickListener;
-import com.tencent.mobileqq.adapter.TroopListAdapter2.TroopListItem;
-import com.tencent.mobileqq.adapter.TroopListAdapter2.TroopListViewItemTag;
-import com.tencent.mobileqq.statistics.ReportTask;
-
-public class yow
-  implements View.OnClickListener
+public final class yow
 {
-  public yow(TroopListAdapter2 paramTroopListAdapter2) {}
+  public final int a;
+  public final long a;
+  final String jdField_a_of_type_JavaLangString;
+  final Throwable jdField_a_of_type_JavaLangThrowable;
+  final String b;
   
-  public void onClick(View paramView)
+  private yow(String paramString1, String paramString2, int paramInt, long paramLong)
   {
-    paramView = paramView.getTag();
-    if (!(paramView instanceof TroopListAdapter2.TroopListViewItemTag)) {
-      return;
-    }
-    paramView = (TroopListAdapter2.TroopListViewItemTag)paramView;
-    if ((paramView.a != null) && (paramView.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$OnTroopListClickListener.a(paramView.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo, paramView.a.jdField_a_of_type_Int);
-    }
-    if ((paramView.a != null) && (paramView.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$OnTroopListClickListener.a(paramView.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo);
-    }
-    new ReportTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_listNew").c("send_to").d("clk_grp").a(new String[] { "1" }).a();
+    this(paramString1, paramString2, paramInt, paramLong, null);
+  }
+  
+  private yow(String paramString1, String paramString2, int paramInt, long paramLong, Throwable paramThrowable)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangThrowable = paramThrowable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yow
  * JD-Core Version:    0.7.0.1
  */

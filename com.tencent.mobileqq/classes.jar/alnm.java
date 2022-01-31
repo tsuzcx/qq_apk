@@ -1,101 +1,50 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.open.business.base.StaticAnalyz;
-import com.tencent.open.business.base.appreport.AppReportReceiver;
-import com.tencent.open.downloadnew.YybHandleUtil;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.AvatarPendantManager;
 
-public class alnm
-  implements Runnable
+class alnm
+  extends AnimatorListenerAdapter
 {
-  public alnm(AppReportReceiver paramAppReportReceiver, Intent paramIntent, Context paramContext) {}
+  alnm(alni paramalni, alns paramalns) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    try
+    if ((this.jdField_a_of_type_Alni.d != null) && (this.jdField_a_of_type_Alni.e != null))
     {
-      str2 = this.jdField_a_of_type_AndroidContentIntent.getAction();
-      if (str2 == null) {
-        return;
-      }
-      bool = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("android.intent.extra.REPLACING", false);
-      Object localObject = this.jdField_a_of_type_AndroidContentIntent.getDataString();
-      if ((localObject != null) && (((String)localObject).startsWith("package:")))
-      {
-        str3 = ((String)localObject).substring(8);
-        String str1 = "";
-        localObject = str1;
-        if (BaseApplicationImpl.getApplication() != null)
-        {
-          localObject = str1;
-          if (BaseApplicationImpl.getApplication().getFirstSimpleAccount() != null) {
-            localObject = BaseApplicationImpl.getApplication().getFirstSimpleAccount().getUin();
-          }
-        }
-        if ((str2.equals("android.intent.action.PACKAGE_ADDED")) && (!bool)) {
-          if (str3.equals("com.tencent.mobileqq"))
-          {
-            if (!QLog.isColorLevel()) {
-              return;
-            }
-            QLog.d("AppReportReceiver", 2, "mobileqq ACTION_PACKAGE_ADDED");
-            return;
-          }
-        }
-      }
+      this.jdField_a_of_type_Alni.d.setVisibility(4);
+      this.jdField_a_of_type_Alni.e.setVisibility(0);
+      paramAnimator = (AvatarPendantManager)this.jdField_a_of_type_Alni.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46);
+      paramAnimator.jdField_a_of_type_Long = -1L;
+      this.jdField_a_of_type_Alni.a("show pendant, " + this.jdField_a_of_type_Alni.jdField_a_of_type_Long);
+      paramAnimator.b();
     }
-    catch (Throwable localThrowable)
+    if (this.jdField_a_of_type_Alni.c != null) {
+      this.jdField_a_of_type_Alni.c.setVisibility(0);
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if ((this.jdField_a_of_type_Alni.d != null) && (this.jdField_a_of_type_Alni.e != null))
     {
-      String str2;
-      boolean bool;
-      String str3;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("crash", 2, "", localThrowable);
-        return;
-        bool = str3.equals("com.tencent.android.qqdownloader");
-        if (bool) {}
-        try
-        {
-          StaticAnalyz.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), localThrowable);
-          label166:
-          while ((BaseApplicationImpl.isCurrentVersionFirstLaunch) && (QLog.isColorLevel()))
-          {
-            QLog.d("isFirstLaunch", 2, "firstlaunch!");
-            return;
-            if ((str2.equals("android.intent.action.PACKAGE_REMOVED")) && (!bool))
-            {
-              if (str3.equals("com.tencent.mobileqq")) {
-                if (QLog.isColorLevel()) {
-                  QLog.d("AppReportReceiver", 2, "mobileqq ACTION_PACKAGE_REMOVED");
-                }
-              }
-            }
-            else if ((str2.equals("android.intent.action.PACKAGE_REPLACED")) && (bool)) {
-              if (str3.equals("com.tencent.mobileqq"))
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("AppReportReceiver", 2, "mobileqq ACTION_PACKAGE_REPLACED deleteYYBApkPackage");
-                }
-                YybHandleUtil.a();
-                return;
-              }
-            }
-          }
-        }
-        catch (Exception localException)
-        {
-          break label166;
-        }
-      }
+      this.jdField_a_of_type_Alni.d.setVisibility(0);
+      this.jdField_a_of_type_Alni.e.setVisibility(4);
+      paramAnimator = (AvatarPendantManager)this.jdField_a_of_type_Alni.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(46);
+      this.jdField_a_of_type_Alni.a("stop show pendant, " + this.jdField_a_of_type_Alni.jdField_a_of_type_Long);
+      paramAnimator.jdField_a_of_type_Long = this.jdField_a_of_type_Alni.jdField_a_of_type_Long;
+      paramAnimator.a();
+    }
+    if ((this.jdField_a_of_type_Alni.c != null) && (TextUtils.isEmpty(this.jdField_a_of_type_Alns.e))) {
+      this.jdField_a_of_type_Alni.c.setVisibility(4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alnm
  * JD-Core Version:    0.7.0.1
  */

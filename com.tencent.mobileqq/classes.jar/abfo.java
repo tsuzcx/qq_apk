@@ -1,26 +1,44 @@
-import android.view.View;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import cooperation.qzone.LocalMultiProcConfig;
 
-class abfo
-  implements ActionSheet.OnButtonClickListener
+public class abfo
+  implements CompoundButton.OnCheckedChangeListener
 {
-  abfo(abfm paramabfm, ActionSheet paramActionSheet) {}
+  public abfo(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Abfm.a.e();
-    this.jdField_a_of_type_Abfm.a.f();
-    this.jdField_a_of_type_Abfm.a.g();
-    this.jdField_a_of_type_Abfm.a.h();
-    this.jdField_a_of_type_Abfm.a.b("本地所有数据已删除成功");
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    LocalMultiProcConfig.putBooleanAsync(this.a.getString(2131653020) + this.a.a, paramBoolean);
+    if (AppSetting.c) {
+      NotifyPushSettingActivity.e(this.a).setContentDescription(ajjy.a(2131641873));
+    }
+    QQAppInterface localQQAppInterface = this.a.app;
+    int i;
+    if (paramBoolean)
+    {
+      i = 1;
+      if (!paramBoolean) {
+        break label109;
+      }
+    }
+    label109:
+    for (paramCompoundButton = "1";; paramCompoundButton = "0")
+    {
+      awqx.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "Clk_about_me", 0, i, paramCompoundButton, "", "", "");
+      return;
+      i = 0;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abfo
  * JD-Core Version:    0.7.0.1
  */

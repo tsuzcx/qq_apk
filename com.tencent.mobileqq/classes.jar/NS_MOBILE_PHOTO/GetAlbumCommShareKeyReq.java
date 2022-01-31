@@ -9,9 +9,9 @@ import java.util.Map;
 public final class GetAlbumCommShareKeyReq
   extends JceStruct
 {
-  static Map cache_ins;
+  static Map<String, String> cache_ins;
   static int cache_scene = 0;
-  public Map ins;
+  public Map<String, String> ins;
   public int scene = 0;
   public long uin;
   
@@ -23,7 +23,7 @@ public final class GetAlbumCommShareKeyReq
   
   public GetAlbumCommShareKeyReq() {}
   
-  public GetAlbumCommShareKeyReq(long paramLong, int paramInt, Map paramMap)
+  public GetAlbumCommShareKeyReq(long paramLong, int paramInt, Map<String, String> paramMap)
   {
     this.uin = paramLong;
     this.scene = paramInt;

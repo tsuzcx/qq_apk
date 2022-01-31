@@ -1,24 +1,23 @@
-import com.tencent.mobileqq.ark.ArkActionAppMgr;
-import com.tencent.mobileqq.ark.ArkAppInfo.Context;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
 public class aaxo
-  implements Comparator
+  implements DialogInterface.OnClickListener
 {
-  public aaxo(ArkActionAppMgr paramArkActionAppMgr) {}
+  public aaxo(GeneralSettingActivity paramGeneralSettingActivity, Runnable paramRunnable) {}
   
-  public int a(ArkAppInfo.Context paramContext1, ArkAppInfo.Context paramContext2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = paramContext1.a.compareTo(paramContext2.a);
-    if (i != 0) {
-      return i;
+    if ((paramDialogInterface instanceof bafb)) {
+      ((bafb)paramDialogInterface).setOnDismissListener(null);
     }
-    return paramContext1.b.compareTo(paramContext2.b);
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaxo
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ class m
 {
   m(k paramk) {}
   
-  public void a(int paramInt1, int paramInt2, String paramString, Object paramObject)
+  public void a(a parama, int paramInt1, int paramInt2, String paramString, Object paramObject)
   {
     String str = paramString;
     if (paramString != null)
@@ -23,8 +23,10 @@ class m
     paramInt2 = k.a(this.a, paramInt2);
     k.a(this.a, paramInt2, (String)paramObject);
     k.b(this.a, k.a(this.a) - (1 << paramInt1));
-    if (k.a(this.a) == 0) {
-      this.a.d();
+    if (k.a(this.a) == 0)
+    {
+      parama = (String)parama.g;
+      this.a.b(parama);
     }
   }
 }

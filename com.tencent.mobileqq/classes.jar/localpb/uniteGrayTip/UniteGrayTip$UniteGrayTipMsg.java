@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class UniteGrayTip$UniteGrayTipMsg
-  extends MessageMicro
+  extends MessageMicro<UniteGrayTipMsg>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public UniteGrayTip.BusinessData business_data = new UniteGrayTip.BusinessData();
@@ -20,8 +20,8 @@ public final class UniteGrayTip$UniteGrayTipMsg
   public final PBUInt32Field graytip_id = PBField.initUInt32(0);
   public final PBStringField graytip_key = PBField.initString("");
   public final PBUInt32Field graytip_level = PBField.initUInt32(0);
-  public final PBRepeatField graytip_mutex_id = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
-  public final PBRepeatMessageField hightlight_item = PBField.initRepeatMessage(UniteGrayTip.HightlightParam.class);
+  public final PBRepeatField<Integer> graytip_mutex_id = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
+  public final PBRepeatMessageField<UniteGrayTip.HightlightParam> hightlight_item = PBField.initRepeatMessage(UniteGrayTip.HightlightParam.class);
   public final PBUInt32Field isLocalTroopMsg = PBField.initUInt32(0);
   
   static

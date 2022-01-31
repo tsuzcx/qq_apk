@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.nearby.now.view.widget.MetaballView;
+import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
 
 public class affx
+  extends ajmm
 {
-  public float a;
-  public float[] a;
+  public affx(TroopFragment paramTroopFragment) {}
   
-  private affx(MetaballView paramMetaballView) {}
+  protected void a()
+  {
+    this.a.h();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     affx
  * JD-Core Version:    0.7.0.1
  */

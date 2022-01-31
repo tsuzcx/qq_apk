@@ -1,25 +1,20 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARBaseRender;
-import com.tencent.mobileqq.arcard.ARCardRender;
-import java.util.Map;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
 
 public class aasy
-  implements Runnable
+  extends ajjh
 {
-  public aasy(ARCardRender paramARCardRender) {}
+  public aasy(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void run()
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender != null)
-    {
-      this.a.jdField_a_of_type_JavaUtilMap.remove(this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.a());
-      this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.d();
-      this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender = null;
+    if (paramBoolean) {
+      ForwardRecentActivity.e(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aasy
  * JD-Core Version:    0.7.0.1
  */

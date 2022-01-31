@@ -1,19 +1,13 @@
-import com.tencent.biz.qqstory.view.widget.RateWidget;
-
-public class ovt
-  implements Runnable
+class ovt
+  implements pjw
 {
-  public ovt(RateWidget paramRateWidget) {}
+  ovt(ovq paramovq, opw paramopw) {}
   
-  public void run()
+  public void a()
   {
-    RateWidget localRateWidget = this.a;
-    if (!RateWidget.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      RateWidget.a(localRateWidget, bool);
-      this.a.c(RateWidget.a(this.a));
-      return;
+    qpj localqpj = this.jdField_a_of_type_Opw.a().a();
+    if (localqpj != null) {
+      localqpj.a(null, this.jdField_a_of_type_Opw.a(), 1);
     }
   }
 }

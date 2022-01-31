@@ -5,7 +5,13 @@ import java.util.Map;
 
 public abstract interface IX5WebSettingsExtension
 {
+  public static final int PicModel_NORMAL = 1;
+  public static final int PicModel_NetNoPic = 3;
+  public static final int PicModel_NoPic = 2;
+  
   public abstract void customDiskCachePathEnabled(boolean paramBoolean, String paramString);
+  
+  public abstract boolean getBlockLocalAddressEnable();
   
   public abstract boolean getPageSolarEnableFlag();
   
@@ -27,9 +33,13 @@ public abstract interface IX5WebSettingsExtension
   
   public abstract void setAutoRecoredAndRestoreScaleEnabled(boolean paramBoolean);
   
+  public abstract void setBlockLocalAddressEnable(boolean paramBoolean);
+  
   public abstract void setContentCacheEnable(boolean paramBoolean);
   
   public abstract void setDayOrNight(boolean paramBoolean);
+  
+  public abstract void setDisplayCutoutEnable(boolean paramBoolean);
   
   public abstract void setEnableUnderLine(boolean paramBoolean);
   
@@ -63,6 +73,8 @@ public abstract interface IX5WebSettingsExtension
   
   public abstract void setPageSolarEnableFlag(boolean paramBoolean);
   
+  public abstract void setPicModel(int paramInt);
+  
   public abstract void setPreFectch(boolean paramBoolean);
   
   public abstract void setPreFectchEnableWhenHasMedia(boolean paramBoolean);
@@ -93,7 +105,7 @@ public abstract interface IX5WebSettingsExtension
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.smtt.export.external.extension.interfaces.IX5WebSettingsExtension
  * JD-Core Version:    0.7.0.1
  */

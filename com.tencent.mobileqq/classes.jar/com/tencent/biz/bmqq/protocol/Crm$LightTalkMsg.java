@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Crm$LightTalkMsg
-  extends MessageMicro
+  extends MessageMicro<LightTalkMsg>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_cuin = PBField.initBytes(ByteStringMicro.EMPTY);

@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.view.View;
+import com.tencent.gdtad.aditem.GdtAd;
 
-public class ymk
-  implements Runnable
+class ymk
+  implements yoj
 {
-  public ymk(SpecailCareListActivity paramSpecailCareListActivity) {}
+  ymk(yme paramyme) {}
   
-  public void run()
+  public void reportImpression(View paramView)
   {
-    if (this.a.a(2)) {
-      this.a.runOnUiThread(new yml(this));
+    paramView = paramView.getTag(2131313371);
+    if ((paramView != null) && ((paramView instanceof GdtAd))) {
+      yol.a(((GdtAd)paramView).getUrlForImpression());
     }
-    this.a.a(2, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ymk
  * JD-Core Version:    0.7.0.1
  */

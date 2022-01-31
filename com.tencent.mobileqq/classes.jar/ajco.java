@@ -1,28 +1,51 @@
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
-import com.tencent.biz.qqstory.utils.FileUtils;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloActionData;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.Map;
 
-class ajco
-  implements VideoCompositeHelper.VideoCompositeCallBack
+public class ajco
+  extends baox
 {
-  ajco(ajcn paramajcn, String paramString1, String paramString2) {}
+  public ajco(ApolloPanel paramApolloPanel, ApolloActionData paramApolloActionData) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  protected void onAuthResponse(boolean paramBoolean, Object paramObject)
   {
-    FileUtils.f(this.jdField_a_of_type_JavaLangString);
-    if (paramInt != 0)
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloPanel", 2, new Object[] { "[showNewActionFloatView] onAuthResponse, result=", Boolean.valueOf(paramBoolean), ", data=", paramObject });
+    }
+    if ((paramObject != null) && ((paramObject instanceof HashMap)))
     {
-      QLog.i("tribe_publish_TroopBarPublishActivity", 1, "merge music failed. merge file path:" + this.jdField_a_of_type_JavaLangString + " merge result:" + paramInt);
-      this.jdField_a_of_type_Ajcn.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.a(null, this.jdField_a_of_type_Ajcn.jdField_a_of_type_Long);
+      paramObject = (HashMap)paramObject;
+      localObject = (String)paramObject.get("optFrom");
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && ("newActionFloatView".equals(localObject))) {}
+    }
+    else
+    {
       return;
     }
-    this.jdField_a_of_type_Ajcn.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.a(this.b, this.jdField_a_of_type_Ajcn.jdField_a_of_type_Long);
+    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a.removeObserver(this);
+    if (paramBoolean)
+    {
+      ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel, this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData, 0, 21, null);
+      return;
+    }
+    Object localObject = new Bundle();
+    paramObject = (String)paramObject.get("url");
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloPanel", 2, new Object[] { "[showNewActionFloatView] onAuthResponse, activityUrl=", paramObject });
+    }
+    ((Bundle)localObject).putString("activityUrl", paramObject);
+    ApolloPanel.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel, this.jdField_a_of_type_ComTencentMobileqqDataApolloActionData, 1, 22, (Bundle)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajco
  * JD-Core Version:    0.7.0.1
  */

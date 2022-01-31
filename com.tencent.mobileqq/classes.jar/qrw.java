@@ -1,31 +1,16 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.gdtad.views.video.GdtVideoCommonView;
+import android.view.View;
+import android.widget.TextView;
 
-public class qrw
-  extends ContentObserver
+class qrw
 {
-  public qrw(GdtVideoCommonView paramGdtVideoCommonView, Handler paramHandler)
-  {
-    super(paramHandler);
-  }
+  View jdField_a_of_type_AndroidViewView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public boolean deliverSelfNotifications()
-  {
-    return super.deliverSelfNotifications();
-  }
-  
-  public void onChange(boolean paramBoolean)
-  {
-    super.onChange(paramBoolean);
-    if (GdtVideoCommonView.a(this.a) != null) {
-      GdtVideoCommonView.a(this.a).post(new qrx(this));
-    }
-  }
+  private qrw(qrt paramqrt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qrw
  * JD-Core Version:    0.7.0.1
  */

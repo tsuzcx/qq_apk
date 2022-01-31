@@ -1,24 +1,21 @@
-import com.tencent.mobileqq.portal.PortalManager.TimerConfig;
 import java.util.Comparator;
 
-public final class agrh
-  implements Comparator
+class agrh
+  implements Comparator<agri>
 {
-  public int a(PortalManager.TimerConfig paramTimerConfig1, PortalManager.TimerConfig paramTimerConfig2)
+  agrh(agrg paramagrg) {}
+  
+  public int a(agri paramagri1, agri paramagri2)
   {
-    long l = paramTimerConfig1.uiBegin - paramTimerConfig2.uiBegin;
-    if (l > 0L) {
+    if (paramagri2.a - paramagri1.a > 0.0F) {
       return 1;
     }
-    if (l < 0L) {
-      return -1;
-    }
-    return 0;
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agrh
  * JD-Core Version:    0.7.0.1
  */

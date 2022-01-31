@@ -1,0 +1,30 @@
+{
+    "view_type":"ReadInJoyAdLocationView",
+    "view_id":"id_view_ad_locationView",
+    "margin_left":"8",
+    "margin_top":"5",
+    "margin_bottom":"0",
+    "event_type": "cmd_location_click",
+    "height":{
+        "type":"relative",
+        "value":"27"
+    },
+    "width":{
+        "type":"wrap_content"
+    },
+    "attributes":{
+        "setLocation:":"$ad_Location",
+        "setBackgroundColorString:":"#F1F3F6",
+        "setCornerRadiusString:":"2",
+        "setAdLocationStyle:":{
+            "setLocationTextColorString:":"#737373",
+            "setLocationTextSizeString:":"12",
+            "setDistanceTextColorString:":"#737373",
+            "setDistanceTextSizeString:":"12",
+            "setMidMarginString:":"3",
+            "setLeftPaddingString:":"7",
+            "setRightPaddingString:":"7"
+        }
+
+    }
+}

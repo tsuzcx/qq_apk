@@ -1,13 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.biz.PoiMapActivity;
 
-class mlw
-  implements Runnable
+public class mlw
+  extends mmg
 {
-  mlw(mlv parammlv) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void run()
+  public mlw(PoiMapActivity paramPoiMapActivity)
   {
-    ReadInJoyListViewGroup.b(this.a.a);
+    super(paramPoiMapActivity);
   }
 }
 

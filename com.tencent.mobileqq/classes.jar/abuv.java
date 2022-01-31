@@ -1,23 +1,31 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.TextPreviewTranslateActivity;
 
 public class abuv
-  implements ActionSheet.OnButtonClickListener
+  implements TextView.OnEditorActionListener
 {
-  public abuv(CardPicGalleryActivity paramCardPicGalleryActivity, URLDrawable paramURLDrawable, ActionSheet paramActionSheet) {}
+  public abuv(TextPreviewTranslateActivity paramTextPreviewTranslateActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityCardPicGalleryActivity.a(paramInt, this.jdField_a_of_type_ComTencentImageURLDrawable);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    if ((paramInt == 6) && (TextPreviewTranslateActivity.a(this.a) != null))
+    {
+      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.a(this.a).getText().toString());
+      TextPreviewTranslateActivity.a(this.a);
+      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.a(this.a));
+      TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.b(this.a));
+      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.c(this.a), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abuv
  * JD-Core Version:    0.7.0.1
  */

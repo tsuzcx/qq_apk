@@ -8,7 +8,69 @@ import java.net.UnknownHostException;
 
 public class DnsMain
 {
-  public static String a(String paramString)
+  private static final String TAG = "DnsMain";
+  
+  public static InetAddress[] getBetterHostByName(String paramString, long paramLong)
+  {
+    paramString = getHostName(paramString);
+    if (QDLog.isInfoEnable()) {
+      QDLog.i("DnsMain", "hostName:" + paramString + ",timeout:" + paramLong + "get better host for name:" + paramString);
+    }
+    if ((paramString == null) || (paramString.trim().length() <= 0)) {}
+    do
+    {
+      return null;
+      paramString = paramString.trim();
+      if (0 == 0) {
+        break;
+      }
+    } while (!QDLog.isInfoEnable());
+    QDLog.i("DnsMain", "get ip from cache: " + paramString + " --- " + null);
+    return null;
+    try
+    {
+      InetAddress[] arrayOfInetAddress = new Lookup("114.114.114.114").run(paramString, paramLong);
+      if ((arrayOfInetAddress != null) && (arrayOfInetAddress.length > 0))
+      {
+        if (QDLog.isInfoEnable()) {
+          QDLog.i("DnsMain", "get ip from Lookup: " + paramString + " --- " + arrayOfInetAddress);
+        }
+      }
+      else
+      {
+        QDLog.e("DnsMain", "114 - Address == null ? WTF ?!");
+        return null;
+      }
+    }
+    catch (UnknownHostException localUnknownHostException)
+    {
+      QDLog.e("DnsMain", "UnknownHostException cause[" + paramString + "][114.114.114.114]." + localUnknownHostException.getMessage());
+      return null;
+    }
+    catch (WireParseException localWireParseException)
+    {
+      QDLog.e("DnsMain", "WireParseException cause[" + paramString + "][114.114.114.114]." + localWireParseException.getMessage());
+      return null;
+    }
+    catch (SocketTimeoutException localSocketTimeoutException)
+    {
+      QDLog.e("DnsMain", "SocketTimeoutException cause[" + paramString + "][114.114.114.114]." + localSocketTimeoutException.getMessage());
+      return null;
+    }
+    catch (IOException localIOException)
+    {
+      QDLog.e("DnsMain", "IOException cause[" + paramString + "][114.114.114.114]." + localIOException.getMessage());
+      return null;
+    }
+    catch (Exception localException)
+    {
+      QDLog.e("DnsMain", "Exception cause[" + paramString + "][114.114.114.114]." + localException.getMessage());
+      return null;
+    }
+    return localException;
+  }
+  
+  public static String getHostName(String paramString)
   {
     if (paramString == null) {
       paramString = "";
@@ -39,66 +101,6 @@ public class DnsMain
       paramString = str;
     } while (str.indexOf("/", 1) <= 1);
     return str.substring(0, str.indexOf("/", 1));
-  }
-  
-  public static InetAddress[] a(String paramString, long paramLong)
-  {
-    paramString = a(paramString);
-    if (QDLog.b()) {
-      QDLog.b("DnsMain", "hostName:" + paramString + ",timeout:" + paramLong + "get better host for name:" + paramString);
-    }
-    if ((paramString == null) || (paramString.trim().length() <= 0)) {}
-    do
-    {
-      return null;
-      paramString = paramString.trim();
-      if (0 == 0) {
-        break;
-      }
-    } while (!QDLog.b());
-    QDLog.b("DnsMain", "get ip from cache: " + paramString + " --- " + null);
-    return null;
-    try
-    {
-      InetAddress[] arrayOfInetAddress = new Lookup("114.114.114.114").a(paramString, paramLong);
-      if ((arrayOfInetAddress != null) && (arrayOfInetAddress.length > 0))
-      {
-        if (QDLog.b()) {
-          QDLog.b("DnsMain", "get ip from Lookup: " + paramString + " --- " + arrayOfInetAddress);
-        }
-      }
-      else
-      {
-        QDLog.d("DnsMain", "114 - Address == null ? WTF ?!");
-        return null;
-      }
-    }
-    catch (UnknownHostException localUnknownHostException)
-    {
-      QDLog.d("DnsMain", "UnknownHostException cause[" + paramString + "][114.114.114.114]." + localUnknownHostException.getMessage());
-      return null;
-    }
-    catch (WireParseException localWireParseException)
-    {
-      QDLog.d("DnsMain", "WireParseException cause[" + paramString + "][114.114.114.114]." + localWireParseException.getMessage());
-      return null;
-    }
-    catch (SocketTimeoutException localSocketTimeoutException)
-    {
-      QDLog.d("DnsMain", "SocketTimeoutException cause[" + paramString + "][114.114.114.114]." + localSocketTimeoutException.getMessage());
-      return null;
-    }
-    catch (IOException localIOException)
-    {
-      QDLog.d("DnsMain", "IOException cause[" + paramString + "][114.114.114.114]." + localIOException.getMessage());
-      return null;
-    }
-    catch (Exception localException)
-    {
-      QDLog.d("DnsMain", "Exception cause[" + paramString + "][114.114.114.114]." + localException.getMessage());
-      return null;
-    }
-    return localException;
   }
 }
 

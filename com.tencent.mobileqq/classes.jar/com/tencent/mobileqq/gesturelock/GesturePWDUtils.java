@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.gesturelock;
 
-import adxa;
-import adxb;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.ActivityManager.RunningServiceInfo;
@@ -13,6 +11,7 @@ import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.os.Process;
 import android.text.TextUtils;
+import aqam;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -410,7 +409,7 @@ public class GesturePWDUtils
     }
   }
   
-  public static String patternToString(List paramList)
+  public static String patternToString(List<aqam> paramList)
   {
     if (paramList == null) {
       return "";
@@ -420,9 +419,9 @@ public class GesturePWDUtils
     int i = 0;
     while (i < j)
     {
-      LockPatternView.Cell localCell = (LockPatternView.Cell)paramList.get(i);
-      int k = localCell.a();
-      arrayOfByte[i] = ((byte)(localCell.b() + k * 3));
+      aqam localaqam = (aqam)paramList.get(i);
+      int k = localaqam.a();
+      arrayOfByte[i] = ((byte)(localaqam.b() + k * 3));
       i += 1;
     }
     return Arrays.toString(arrayOfByte);
@@ -460,19 +459,19 @@ public class GesturePWDUtils
       localObject = BaseApplicationImpl.getApplication().getRuntime();
       if ((localObject != null) && ((localObject instanceof QQAppInterface)))
       {
-        localObject = (DBFixManager)((QQAppInterface)localObject).getManager(204);
+        localObject = (DBFixManager)((QQAppInterface)localObject).getManager(205);
         if (localObject != null) {
           ((DBFixManager)localObject).a(paramContext);
         }
       }
       if (paramContext != null) {
-        ThreadManager.post(new adxa(paramContext), 8, null, false);
+        ThreadManager.post(new GesturePWDUtils.1(paramContext), 8, null, false);
       }
     }
     while (paramContext == null) {
       return;
     }
-    ThreadManager.post(new adxb(paramContext), 8, null, false);
+    ThreadManager.post(new GesturePWDUtils.2(paramContext), 8, null, false);
   }
   
   public static void setGestureLocking(Context paramContext, boolean paramBoolean)

@@ -1,38 +1,28 @@
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.ar.ARScanFragment;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import Wallet.SkinInfo;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import com.tencent.mobileqq.activity.qwallet.fragment.UsualHbFragment;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
 
 public class agnw
-  implements Runnable
+  implements agok
 {
-  public agnw(ScanTorchActivity paramScanTorchActivity, boolean paramBoolean1, boolean paramBoolean2) {}
+  public agnw(UsualHbFragment paramUsualHbFragment) {}
   
-  public void run()
+  public void a(agoa paramagoa)
   {
-    ScanTorchActivity.c(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(0);
-    ScanTorchActivity.b(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(0);
-    ScanTorchActivity.b(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-    ScanTorchActivity.b(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(0);
-    ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-    ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity).setVisibility(8);
-    if (this.jdField_a_of_type_Boolean) {
-      ScanTorchActivity.z(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, this.b);
-    }
-    for (;;)
+    if ((paramagoa.jdField_a_of_type_WalletSkinInfo.skin_id == 0) || (paramagoa.jdField_a_of_type_WalletSkinInfo.skin_id == -2))
     {
-      ScanTorchActivity.c(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, true);
-      ScanTorchActivity.k(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity);
+      paramagoa = agnz.a(this.a.channel, this.a.a, this.a.mActivity.a(), paramagoa.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title);
+      this.a.c.setHint(paramagoa);
       return;
-      ScanTorchActivity.z(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity.a.b(false));
     }
+    this.a.c.setHint(paramagoa.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase.title);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agnw
  * JD-Core Version:    0.7.0.1
  */

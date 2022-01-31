@@ -15,8 +15,8 @@ class LoaderManagerImpl
   static final String TAG = "LoaderManager";
   FragmentActivity mActivity;
   boolean mCreatingLoader;
-  final SparseArrayCompat mInactiveLoaders = new SparseArrayCompat();
-  final SparseArrayCompat mLoaders = new SparseArrayCompat();
+  final SparseArrayCompat<LoaderManagerImpl.LoaderInfo> mInactiveLoaders = new SparseArrayCompat();
+  final SparseArrayCompat<LoaderManagerImpl.LoaderInfo> mLoaders = new SparseArrayCompat();
   boolean mRetaining;
   boolean mRetainingStarted;
   boolean mStarted;
@@ -29,7 +29,7 @@ class LoaderManagerImpl
     this.mStarted = paramBoolean;
   }
   
-  private LoaderManagerImpl.LoaderInfo createAndInstallLoader(int paramInt, Bundle paramBundle, LoaderManager.LoaderCallbacks paramLoaderCallbacks)
+  private LoaderManagerImpl.LoaderInfo createAndInstallLoader(int paramInt, Bundle paramBundle, LoaderManager.LoaderCallbacks<Object> paramLoaderCallbacks)
   {
     try
     {
@@ -44,7 +44,7 @@ class LoaderManagerImpl
     }
   }
   
-  private LoaderManagerImpl.LoaderInfo createLoader(int paramInt, Bundle paramBundle, LoaderManager.LoaderCallbacks paramLoaderCallbacks)
+  private LoaderManagerImpl.LoaderInfo createLoader(int paramInt, Bundle paramBundle, LoaderManager.LoaderCallbacks<Object> paramLoaderCallbacks)
   {
     LoaderManagerImpl.LoaderInfo localLoaderInfo = new LoaderManagerImpl.LoaderInfo(this, paramInt, paramBundle, paramLoaderCallbacks);
     localLoaderInfo.mLoader = paramLoaderCallbacks.onCreateLoader(paramInt, paramBundle);
@@ -263,7 +263,7 @@ class LoaderManagerImpl
     }
   }
   
-  public Loader getLoader(int paramInt)
+  public <D> Loader<D> getLoader(int paramInt)
   {
     if (this.mCreatingLoader) {
       throw new IllegalStateException("Called while creating a loader");
@@ -298,7 +298,7 @@ class LoaderManagerImpl
     return bool2;
   }
   
-  public Loader initLoader(int paramInt, Bundle paramBundle, LoaderManager.LoaderCallbacks paramLoaderCallbacks)
+  public <D> Loader<D> initLoader(int paramInt, Bundle paramBundle, LoaderManager.LoaderCallbacks<D> paramLoaderCallbacks)
   {
     if (this.mCreatingLoader) {
       throw new IllegalStateException("Called while creating a loader");
@@ -340,7 +340,7 @@ class LoaderManagerImpl
     }
   }
   
-  public Loader restartLoader(int paramInt, Bundle paramBundle, LoaderManager.LoaderCallbacks paramLoaderCallbacks)
+  public <D> Loader<D> restartLoader(int paramInt, Bundle paramBundle, LoaderManager.LoaderCallbacks<D> paramLoaderCallbacks)
   {
     if (this.mCreatingLoader) {
       throw new IllegalStateException("Called while creating a loader");

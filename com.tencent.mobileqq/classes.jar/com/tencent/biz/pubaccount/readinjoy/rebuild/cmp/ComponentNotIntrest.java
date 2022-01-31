@@ -1,23 +1,24 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
+import aciy;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.ComponentView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import obz;
+import opw;
+import pey;
+import pfh;
+import pjg;
 
 public class ComponentNotIntrest
   extends FrameLayout
-  implements View.OnClickListener, ComponentView
+  implements View.OnClickListener, pey
 {
   public View a;
-  CmpCtxt a;
+  pjg a;
   
   public ComponentNotIntrest(Context paramContext)
   {
@@ -39,7 +40,7 @@ public class ComponentNotIntrest
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt = new CmpCtxt();
+    this.jdField_a_of_type_Pjg = new pjg();
     a(paramContext);
     a();
   }
@@ -51,42 +52,42 @@ public class ComponentNotIntrest
   
   public void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2130969584, this, true).findViewById(2131366878);
-  }
-  
-  public void a(FeedItemCell.CellListener paramCellListener)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a(paramCellListener);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131494310, this, true).findViewById(2131312796);
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof IReadInJoyModel))
+    if ((paramObject instanceof opw))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a((IReadInJoyModel)paramObject);
+      this.jdField_a_of_type_Pjg.a((opw)paramObject);
       b();
     }
   }
   
+  public void a(pfh parampfh)
+  {
+    this.jdField_a_of_type_Pjg.a(parampfh);
+  }
+  
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a())
+    if (this.jdField_a_of_type_Pjg.a())
     {
-      this.jdField_a_of_type_AndroidViewView.setPadding(AIOUtils.a(5.0F, getResources()), AIOUtils.a(5.0F, getResources()), AIOUtils.a(5.0F, getResources()), AIOUtils.a(5.0F, getResources()));
+      this.jdField_a_of_type_AndroidViewView.setPadding(aciy.a(5.0F, getResources()), aciy.a(5.0F, getResources()), aciy.a(5.0F, getResources()), aciy.a(5.0F, getResources()));
       return;
     }
-    if (ReadInJoyUtils.f(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelIReadInJoyModel.a()))
+    if (obz.l(this.jdField_a_of_type_Pjg.jdField_a_of_type_Opw.a()))
     {
-      this.jdField_a_of_type_AndroidViewView.setPadding(AIOUtils.a(5.0F, getResources()), AIOUtils.a(5.0F, getResources()), AIOUtils.a(9.0F, getResources()), AIOUtils.a(5.0F, getResources()));
+      this.jdField_a_of_type_AndroidViewView.setPadding(aciy.a(5.0F, getResources()), aciy.a(5.0F, getResources()), aciy.a(9.0F, getResources()), aciy.a(5.0F, getResources()));
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setPadding(AIOUtils.a(12.0F, getResources()), AIOUtils.a(9.0F, getResources()), AIOUtils.a(12.0F, getResources()), AIOUtils.a(9.0F, getResources()));
+    this.jdField_a_of_type_AndroidViewView.setPadding(aciy.a(12.0F, getResources()), aciy.a(9.0F, getResources()), aciy.a(12.0F, getResources()), aciy.a(9.0F, getResources()));
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildFeedItemCell$CellListener != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildFeedItemCell$CellListener.a(paramView, null);
+    if (this.jdField_a_of_type_Pjg.jdField_a_of_type_Pfh != null) {
+      this.jdField_a_of_type_Pjg.jdField_a_of_type_Pfh.a(paramView, null);
     }
   }
 }

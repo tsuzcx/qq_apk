@@ -4,578 +4,432 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.Paint.Style;
 import android.graphics.Rect;
+import android.support.v4.util.SimpleArrayMap;
 import android.text.TextUtils;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ValueBean;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ViewBean;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtil.QLog;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.VirtualViewUtils;
-import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import org.json.JSONArray;
 
 public abstract class ViewBase
   implements IView
 {
-  protected float a;
-  protected int a;
-  protected Bitmap a;
-  protected Matrix a;
-  public Paint a;
-  protected Rect a;
-  protected IBean a;
-  protected Layout.Params a;
-  protected Layout a;
-  public VafContext a;
-  private ViewBase.OnClickListener a;
-  protected String a;
-  protected boolean a;
-  public float b;
-  protected int b;
-  protected Paint b;
-  protected View b;
-  protected String b;
-  public float c;
-  protected int c;
-  protected Paint c;
-  protected String c;
-  public int d;
-  protected String d;
-  public int e;
-  public int f = -16777216;
-  protected int g;
-  public int h;
-  public int i;
-  public int j;
-  public int k;
-  protected int l;
-  protected int m = 1;
-  public int n = 0;
-  public int o;
-  public int p;
-  public int q;
-  public int r;
-  public int s;
-  public int t;
-  public int u;
-  protected int v;
-  protected int w;
-  protected int x;
-  protected int y;
+  private static final String TAG = "ViewBase";
+  public static final String TYPE = "type";
+  protected float mAlpha = -1.0F;
+  protected int mAutoDimDirection = 0;
+  protected float mAutoDimX = 1.0F;
+  protected float mAutoDimY = 1.0F;
+  protected int mBackground;
+  protected Bitmap mBackgroundImage = null;
+  protected String mBackgroundImagePath;
+  protected Paint mBackgroundPaint;
+  protected int mBorderBottomLeftRadius = 0;
+  protected int mBorderBottomRightRadius = 0;
+  protected int mBorderColor = -16777216;
+  protected Paint mBorderPaint;
+  protected int mBorderRadius = 0;
+  protected int mBorderTopLeftRadius = 0;
+  protected int mBorderTopRightRadius = 0;
+  protected int mBorderWidth = 0;
+  protected String mClickEvnet;
+  protected Rect mContentRect;
+  public VafContext mContext;
+  protected int mDrawLeft;
+  protected int mDrawTop;
+  protected String mEventAttachedData;
+  protected int mFlag;
+  protected int mGravity;
+  protected View mHolderView;
+  protected boolean mIsDrawed;
+  private boolean mIsSoftwareRender = false;
+  private SimpleArrayMap<String, Object> mKeyedTags;
+  protected Matrix mMatrixBG = null;
+  public int mMeasuredHeight;
+  protected int mMeasuredWidth;
+  protected int mMinHeight;
+  protected int mMinWidth;
+  public String mName;
+  private ViewBase.OnClickListener mOnClickListener;
+  protected int mPaddingBottom;
+  protected int mPaddingLeft;
+  protected int mPaddingRight;
+  protected int mPaddingTop;
+  protected Paint mPaint;
+  public Layout.Params mParams;
+  protected Layout mParent;
+  protected Object mTag;
+  protected int mUuid;
+  protected String mViewType;
+  protected int mVisibility = 0;
   
   public ViewBase(VafContext paramVafContext)
   {
-    this.jdField_a_of_type_Float = (0.0F / 0.0F);
-    this.jdField_b_of_type_Float = 1.0F;
-    this.jdField_c_of_type_Float = 1.0F;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext = paramVafContext;
-    this.jdField_d_of_type_Int = 0;
-    this.s = 9;
-    this.v = 0;
-    this.o = 0;
-    this.q = 0;
-    this.p = 0;
-    this.r = 0;
-    this.w = 0;
-    this.x = 0;
-    this.l = -1;
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = 0;
-    this.y = 0;
+    this.mContext = paramVafContext;
+    this.mBackground = 0;
+    this.mGravity = 9;
+    this.mFlag = 0;
+    this.mPaddingLeft = 0;
+    this.mPaddingTop = 0;
+    this.mPaddingRight = 0;
+    this.mPaddingBottom = 0;
+    this.mMinWidth = 0;
+    this.mMinHeight = 0;
+    this.mName = "";
+    this.mViewType = "";
+    this.mUuid = 0;
   }
   
-  private boolean a(String paramString, Object paramObject)
+  private boolean changeVisibility()
   {
-    return b(StringCommon.a(paramString), paramObject);
-  }
-  
-  private boolean b(int paramInt, Object paramObject)
-  {
-    if ((paramObject instanceof String)) {
-      return b(paramInt, (String)paramObject);
-    }
-    return a(paramInt, paramObject);
-  }
-  
-  private boolean g()
-  {
-    View localView = a();
+    View localView = getNativeView();
     if (localView != null)
     {
-      switch (this.m)
+      switch (this.mVisibility)
       {
       default: 
         return true;
-      case 0: 
+      case 4: 
         localView.setVisibility(4);
         return true;
-      case 1: 
+      case 0: 
         localView.setVisibility(0);
         return true;
       }
       localView.setVisibility(8);
       return true;
     }
-    if (a())
+    if (isContainer())
     {
-      switch (this.m)
+      switch (this.mVisibility)
       {
       default: 
         return true;
       case 0: 
-        this.jdField_b_of_type_AndroidViewView.setVisibility(4);
+        this.mHolderView.setVisibility(0);
         return true;
-      case 1: 
-        this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      case 4: 
+        this.mHolderView.setVisibility(4);
         return true;
       }
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      this.mHolderView.setVisibility(8);
       return true;
     }
     return false;
   }
   
-  public int a()
+  private void setBorderRadiusArray(JSONArray paramJSONArray)
   {
-    return this.t;
+    if (paramJSONArray == null) {}
+    JSONArray localJSONArray;
+    do
+    {
+      return;
+      localJSONArray = paramJSONArray.optJSONArray(0);
+      paramJSONArray = paramJSONArray.optString(1, "relative");
+    } while (localJSONArray == null);
+    double d1 = localJSONArray.optDouble(0, 0.0D);
+    double d2 = localJSONArray.optDouble(1, 0.0D);
+    double d3 = localJSONArray.optDouble(2, 0.0D);
+    double d4 = localJSONArray.optDouble(3, 0.0D);
+    if ("absolutely".equals(paramJSONArray))
+    {
+      this.mBorderTopLeftRadius = Utils.dp2px(d1);
+      this.mBorderTopRightRadius = Utils.dp2px(d2);
+      this.mBorderBottomRightRadius = Utils.dp2px(d3);
+      this.mBorderBottomLeftRadius = Utils.dp2px(d4);
+      return;
+    }
+    this.mBorderTopLeftRadius = Utils.rp2px(d1);
+    this.mBorderTopRightRadius = Utils.rp2px(d2);
+    this.mBorderBottomRightRadius = Utils.rp2px(d3);
+    this.mBorderBottomLeftRadius = Utils.rp2px(d4);
   }
   
-  public View a()
+  private void setTag(String paramString, Object paramObject)
   {
-    return null;
+    if (this.mKeyedTags == null) {
+      this.mKeyedTags = new SimpleArrayMap();
+    }
+    this.mKeyedTags.put(paramString, paramObject);
   }
   
-  public ViewBase a(String paramString)
+  private boolean setValue(int paramInt, Object paramObject)
   {
-    if (TextUtils.equals(this.jdField_b_of_type_JavaLangString, paramString)) {
+    boolean bool1;
+    if ((paramObject instanceof String)) {
+      bool1 = setValue(paramInt, (String)paramObject);
+    }
+    do
+    {
+      boolean bool2;
+      do
+      {
+        return bool1;
+        bool2 = setAttribute(paramInt, paramObject);
+        bool1 = bool2;
+      } while (bool2);
+      bool1 = bool2;
+    } while (this.mParams == null);
+    return this.mParams.setAttribute(paramInt, paramObject);
+  }
+  
+  private boolean setValue(String paramString, Object paramObject)
+  {
+    return setValue(StringCommon.getStrIdFromString(paramString), paramObject);
+  }
+  
+  public void bindDynamicValue(ViewBean paramViewBean)
+  {
+    clearDynamicData();
+    if ((paramViewBean != null) && (paramViewBean.valueBean != null) && (paramViewBean.valueBean.dynamicValue != null))
+    {
+      Object localObject = paramViewBean.valueBean.dynamicValue.entrySet();
+      if (!((Set)localObject).isEmpty())
+      {
+        localObject = ((Set)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+          setValue((String)localEntry.getKey(), localEntry.getValue());
+        }
+        if (this.mVisibility != 8) {
+          onParseValueFinished();
+        }
+      }
+      if (LogUtil.QLog.isColorLevel()) {
+        LogUtil.QLog.d("ViewBase", 2, "[viewBase] bind dynamicValue " + paramViewBean.valueBean.dynamicValue + " viewId = " + paramViewBean.viewId);
+      }
+    }
+  }
+  
+  public void bindNormalValue(ViewBean paramViewBean)
+  {
+    if ((paramViewBean != null) && (paramViewBean.valueBean != null) && (paramViewBean.valueBean.normalValue != null))
+    {
+      Iterator localIterator = paramViewBean.valueBean.normalValue.entrySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        setValue((String)localEntry.getKey(), localEntry.getValue());
+      }
+      if (this.mVisibility != 8) {
+        onParseValueFinished();
+      }
+      if (LogUtil.QLog.isColorLevel()) {
+        LogUtil.QLog.d("ViewBase", 2, "[viewBase] bind normalValue " + paramViewBean.valueBean.normalValue + " viewId = " + paramViewBean.viewId);
+      }
+    }
+  }
+  
+  @Deprecated
+  public final boolean canHandleEvent()
+  {
+    return false;
+  }
+  
+  public void clearDynamicData() {}
+  
+  public void comDraw(Canvas paramCanvas)
+  {
+    paramCanvas.save();
+    paramCanvas.translate(this.mDrawLeft, this.mDrawTop);
+    onComDraw(paramCanvas);
+    paramCanvas.restore();
+    this.mIsDrawed = true;
+  }
+  
+  public final void comLayout(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.mDrawLeft = paramInt1;
+    this.mDrawTop = paramInt2;
+    onComLayout(true, paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void destroy()
+  {
+    this.mContext = null;
+  }
+  
+  public ViewBase findViewBaseByName(String paramString)
+  {
+    if (TextUtils.equals(this.mName, paramString)) {
       return this;
     }
     return null;
   }
   
-  public String a()
+  public int getAlign()
   {
-    return this.jdField_c_of_type_JavaLangString;
+    return this.mGravity;
   }
   
-  public void a() {}
-  
-  protected void a(int paramInt)
+  public int getBackground()
   {
-    this.jdField_d_of_type_Int = paramInt;
-    View localView = a();
-    if (localView != null)
-    {
-      localView.setBackgroundColor(paramInt);
-      return;
+    return this.mBackground;
+  }
+  
+  public Paint getBackgroundPaint()
+  {
+    return this.mBackgroundPaint;
+  }
+  
+  public int getBorderRadius()
+  {
+    return this.mBorderRadius;
+  }
+  
+  public int getBorderWidth()
+  {
+    return this.mBorderWidth;
+  }
+  
+  public ViewBase getChild(int paramInt)
+  {
+    return null;
+  }
+  
+  public String getClickEvnet()
+  {
+    return this.mClickEvnet;
+  }
+  
+  public Layout.Params getComLayoutParams()
+  {
+    return this.mParams;
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.mMeasuredHeight;
+  }
+  
+  public final int getComMeasuredHeightWithMargin()
+  {
+    return getComMeasuredHeight() + this.mParams.mLayoutMarginTop + this.mParams.mLayoutMarginBottom;
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.mMeasuredWidth;
+  }
+  
+  public final int getComMeasuredWidthWithMargin()
+  {
+    return getComMeasuredWidth() + this.mParams.mLayoutMarginLeft + this.mParams.mLayoutMarginRight;
+  }
+  
+  public final int getComPaddingBottom()
+  {
+    return this.mPaddingBottom;
+  }
+  
+  public final int getComPaddingLeft()
+  {
+    return this.mPaddingLeft;
+  }
+  
+  public final int getComPaddingRight()
+  {
+    return this.mPaddingRight;
+  }
+  
+  public final int getComPaddingTop()
+  {
+    return this.mPaddingTop;
+  }
+  
+  public final int getDrawLeft()
+  {
+    if ((this.mDrawLeft == 0) && (getNativeView() != null)) {
+      this.mDrawLeft = getNativeView().getLeft();
     }
-    if (this.jdField_b_of_type_AndroidGraphicsPaint == null) {
-      this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
+    return this.mDrawLeft;
+  }
+  
+  public final int getDrawTop()
+  {
+    if ((this.mDrawTop == 0) && (getNativeView() != null)) {
+      this.mDrawTop = getNativeView().getTop();
     }
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.jdField_d_of_type_Int);
+    return this.mDrawTop;
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public String getEventAttachedData()
   {
-    if (this.jdField_b_of_type_AndroidViewView != null)
-    {
-      this.jdField_b_of_type_AndroidViewView.invalidate(paramInt1, paramInt2, paramInt3, paramInt4);
-      return;
+    return this.mEventAttachedData;
+  }
+  
+  public int getHeight()
+  {
+    return this.mMeasuredHeight;
+  }
+  
+  public String getName()
+  {
+    return this.mName;
+  }
+  
+  public View getNativeView()
+  {
+    return null;
+  }
+  
+  public ViewBase getParent()
+  {
+    if (this.mParent == null) {
+      return ((IContainer)this.mHolderView.getParent()).getVirtualView();
     }
-    QLog.d("ViewBase", 2, "refresh holdView is null");
+    return this.mParent;
   }
   
-  public void a(Canvas paramCanvas)
+  public Object getTag()
   {
-    paramCanvas.save();
-    paramCanvas.translate(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
-    b(paramCanvas);
-    paramCanvas.restore();
-    this.jdField_a_of_type_Boolean = true;
+    return this.mTag;
   }
   
-  public final void a(View paramView)
+  public Object getTag(String paramString)
   {
-    this.jdField_b_of_type_AndroidViewView = paramView;
-    if (e()) {
-      paramView.setLayerType(1, null);
+    if (this.mKeyedTags != null) {
+      return this.mKeyedTags.get(paramString);
     }
+    return null;
   }
   
-  public void a(ViewBean paramViewBean)
+  public int getUuid()
   {
-    if ((paramViewBean != null) && (paramViewBean.a != null) && (paramViewBean.a.b != null))
-    {
-      paramViewBean = paramViewBean.a.b.entrySet().iterator();
-      while (paramViewBean.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)paramViewBean.next();
-        a((String)localEntry.getKey(), localEntry.getValue());
-      }
-      a();
-    }
+    return this.mUuid;
   }
   
-  public final void a(Layout.Params paramParams)
+  public String getViewId()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreLayout$Params = paramParams;
+    return this.mName;
   }
   
-  public void a(ViewBase.OnClickListener paramOnClickListener)
+  public String getViewType()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase$OnClickListener = paramOnClickListener;
-    b(true);
+    return this.mViewType;
   }
   
-  public boolean a()
+  public int getVisibility()
   {
-    return false;
+    return this.mVisibility;
   }
   
-  public boolean a(int paramInt)
+  public int getWidth()
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase$OnClickListener != null)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase$OnClickListener.a(this);
-      bool = true;
-    }
-    return bool;
-  }
-  
-  public boolean a(int paramInt1, int paramInt2)
-  {
-    return b(this.l);
-  }
-  
-  public boolean a(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    return a(this.l, paramBoolean);
-  }
-  
-  public boolean a(int paramInt, Object paramObject)
-  {
-    return false;
-  }
-  
-  public boolean a(int paramInt, String paramString)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    case 7: 
-      paramInt = Utils.a(Double.valueOf(paramString).doubleValue());
-      this.r = paramInt;
-      this.q = paramInt;
-      this.p = paramInt;
-      this.o = paramInt;
-      return true;
-    case 8: 
-      this.o = Utils.a(Double.valueOf(paramString).doubleValue());
-      return true;
-    case 9: 
-      this.p = Utils.a(Double.valueOf(paramString).doubleValue());
-      return true;
-    case 13: 
-      this.e = Utils.a(Double.valueOf(paramString).doubleValue());
-      return true;
-    case 14: 
-      this.f = Utils.a(paramString);
-      return true;
-    case 15: 
-      this.g = Utils.a(Double.valueOf(paramString).doubleValue());
-      this.h = this.g;
-      this.i = this.g;
-      this.j = this.g;
-      this.k = this.g;
-      return true;
-    case 34: 
-      this.jdField_c_of_type_JavaLangString = paramString;
-      b(true);
-      return true;
-    case 35: 
-      if ("VISIBLE".equals(paramString))
-      {
-        b(1);
-        return true;
-      }
-      b(2);
-      return true;
-    case 36: 
-      this.jdField_d_of_type_JavaLangString = paramString;
-      return true;
-    }
-    a(Utils.a(paramString));
-    return true;
-  }
-  
-  protected boolean a(int paramInt, boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (boolean bool1 = d(paramInt);; bool1 = a(paramInt))
-    {
-      boolean bool2 = bool1;
-      if (!bool1)
-      {
-        bool2 = bool1;
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreLayout != null) {
-          bool2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreLayout.a(paramInt, paramBoolean);
-        }
-      }
-      return bool2;
-    }
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
-  public int b()
-  {
-    return this.u;
-  }
-  
-  public Layout.Params b()
-  {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreLayout$Params;
-  }
-  
-  public String b()
-  {
-    return this.jdField_d_of_type_JavaLangString;
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.m != paramInt)
-    {
-      this.m = paramInt;
-      if (!g()) {
-        f();
-      }
-    }
-  }
-  
-  public final void b(int paramInt1, int paramInt2)
-  {
-    this.t = paramInt1;
-    this.u = paramInt2;
-  }
-  
-  public final void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_c_of_type_Int = paramInt2;
-    a(true, paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void b(Canvas paramCanvas)
-  {
-    if (a() == null)
-    {
-      if (this.jdField_d_of_type_Int == 0) {
-        break label51;
-      }
-      VirtualViewUtils.b(paramCanvas, this.jdField_b_of_type_AndroidGraphicsPaint, this.t, this.u, this.e, this.h, this.i, this.j, this.k);
-    }
-    label51:
-    while (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(this.t / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.u / this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, this.jdField_b_of_type_AndroidGraphicsPaint);
-  }
-  
-  public void b(ViewBean paramViewBean)
-  {
-    if ((paramViewBean != null) && (paramViewBean.a != null) && (paramViewBean.a.a != null))
-    {
-      paramViewBean = paramViewBean.a.a.entrySet();
-      if (!paramViewBean.isEmpty())
-      {
-        paramViewBean = paramViewBean.iterator();
-        while (paramViewBean.hasNext())
-        {
-          Map.Entry localEntry = (Map.Entry)paramViewBean.next();
-          a((String)localEntry.getKey(), localEntry.getValue());
-        }
-        a();
-      }
-    }
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_b_of_type_JavaLangString = paramString;
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (this.v |= 0x20;; this.v &= 0xFFFFFFDF)
-    {
-      if (a() != null) {
-        a().setClickable(paramBoolean);
-      }
-      return;
-    }
-  }
-  
-  public final boolean b()
-  {
-    return (this.v & 0x20) != 0;
-  }
-  
-  protected boolean b(int paramInt)
-  {
-    boolean bool2 = c(paramInt);
-    boolean bool1 = bool2;
-    if (!bool2)
-    {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreLayout != null) {
-        bool1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreLayout.b(paramInt);
-      }
-    }
-    return bool1;
-  }
-  
-  public final boolean b(int paramInt, String paramString)
-  {
-    boolean bool2 = a(paramInt, paramString);
-    boolean bool1 = bool2;
-    if (!bool2)
-    {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreLayout$Params != null) {
-        bool1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreLayout$Params.a(paramInt, paramString);
-      }
-    }
-    return bool1;
-  }
-  
-  public int c()
-  {
-    return this.m;
-  }
-  
-  public String c()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public final void c(int paramInt1, int paramInt2)
-  {
-    int i1 = paramInt1;
-    int i2 = paramInt2;
-    if (this.n > 0) {
-      switch (this.n)
-      {
-      default: 
-        i2 = paramInt2;
-        i1 = paramInt1;
-      }
-    }
-    for (;;)
-    {
-      a(i1, i2);
-      return;
-      i1 = paramInt1;
-      i2 = paramInt2;
-      if (1073741824 == View.MeasureSpec.getMode(paramInt1))
-      {
-        i2 = View.MeasureSpec.makeMeasureSpec((int)(View.MeasureSpec.getSize(paramInt1) * this.jdField_c_of_type_Float / this.jdField_b_of_type_Float), 1073741824);
-        i1 = paramInt1;
-        continue;
-        i1 = paramInt1;
-        i2 = paramInt2;
-        if (1073741824 == View.MeasureSpec.getMode(paramInt2))
-        {
-          i1 = View.MeasureSpec.makeMeasureSpec((int)(View.MeasureSpec.getSize(paramInt2) * this.jdField_b_of_type_Float / this.jdField_c_of_type_Float), 1073741824);
-          i2 = paramInt2;
-        }
-      }
-    }
-  }
-  
-  public final boolean c()
-  {
-    return false;
-  }
-  
-  protected boolean c(int paramInt)
-  {
-    return b();
-  }
-  
-  public final int d()
-  {
-    if ((this.jdField_b_of_type_Int == 0) && (a() != null)) {
-      this.jdField_b_of_type_Int = a().getLeft();
-    }
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public boolean d()
-  {
-    return this.m == 2;
-  }
-  
-  protected boolean d(int paramInt)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreIBean != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreIBean.a(paramInt, true);
-    }
-    return false;
-  }
-  
-  public final int e()
-  {
-    if ((this.jdField_c_of_type_Int == 0) && (a() != null)) {
-      this.jdField_c_of_type_Int = a().getTop();
-    }
-    return this.jdField_c_of_type_Int;
-  }
-  
-  public boolean e()
-  {
-    return false;
-  }
-  
-  public final int f()
-  {
-    return this.o;
-  }
-  
-  public void f()
-  {
-    a(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.jdField_b_of_type_Int + this.t, this.jdField_c_of_type_Int + this.u);
-  }
-  
-  public boolean f()
-  {
-    return this.m == 1;
-  }
-  
-  public final int g()
-  {
-    return this.q;
-  }
-  
-  protected void g() {}
-  
-  public final int h()
-  {
-    return this.p;
+    return this.mMeasuredWidth;
   }
   
   public int hashCode()
@@ -583,24 +437,391 @@ public abstract class ViewBase
     return super.hashCode();
   }
   
-  public final int i()
+  public final boolean isClickable()
   {
-    return this.r;
+    return (this.mFlag & 0x20) != 0;
   }
   
-  public final int j()
+  public boolean isContainer()
   {
-    return a() + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreLayout$Params.jdField_c_of_type_Int + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreLayout$Params.jdField_d_of_type_Int;
+    return false;
   }
   
-  public final int k()
+  public boolean isGone()
   {
-    return b() + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreLayout$Params.e + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreLayout$Params.f;
+    return this.mVisibility == 8;
+  }
+  
+  public boolean isRoot()
+  {
+    return this.mParent == null;
+  }
+  
+  public final boolean isVisible()
+  {
+    return this.mVisibility == 0;
+  }
+  
+  public final void measureComponent(int paramInt1, int paramInt2)
+  {
+    int i = paramInt1;
+    int j = paramInt2;
+    if (this.mAutoDimDirection > 0) {
+      switch (this.mAutoDimDirection)
+      {
+      default: 
+        j = paramInt2;
+        i = paramInt1;
+      }
+    }
+    for (;;)
+    {
+      onComMeasure(i, j);
+      return;
+      i = paramInt1;
+      j = paramInt2;
+      if (1073741824 == View.MeasureSpec.getMode(paramInt1))
+      {
+        j = View.MeasureSpec.makeMeasureSpec((int)(View.MeasureSpec.getSize(paramInt1) * this.mAutoDimY / this.mAutoDimX), 1073741824);
+        i = paramInt1;
+        continue;
+        i = paramInt1;
+        j = paramInt2;
+        if (1073741824 == View.MeasureSpec.getMode(paramInt2))
+        {
+          i = View.MeasureSpec.makeMeasureSpec((int)(View.MeasureSpec.getSize(paramInt2) * this.mAutoDimX / this.mAutoDimY), 1073741824);
+          j = paramInt2;
+        }
+      }
+    }
+  }
+  
+  protected boolean onClick()
+  {
+    boolean bool = false;
+    if (this.mOnClickListener != null)
+    {
+      this.mOnClickListener.onClick(this);
+      bool = true;
+    }
+    return bool;
+  }
+  
+  protected void onComDraw(Canvas paramCanvas)
+  {
+    if (getNativeView() == null)
+    {
+      if (this.mBackground == 0) {
+        break label51;
+      }
+      VirtualViewUtils.drawBackground(paramCanvas, this.mBackgroundPaint, this.mMeasuredWidth, this.mMeasuredHeight, this.mBorderWidth, this.mBorderTopLeftRadius, this.mBorderTopRightRadius, this.mBorderBottomLeftRadius, this.mBorderBottomRightRadius);
+    }
+    label51:
+    while (this.mBackgroundImage == null) {
+      return;
+    }
+    this.mMatrixBG.setScale(this.mMeasuredWidth / this.mBackgroundImage.getWidth(), this.mMeasuredHeight / this.mBackgroundImage.getHeight());
+    paramCanvas.drawBitmap(this.mBackgroundImage, this.mMatrixBG, this.mBackgroundPaint);
+  }
+  
+  public void onParseValueFinished()
+  {
+    View localView = getNativeView();
+    if ((localView != null) && (softwareRender())) {
+      localView.setLayerType(1, null);
+    }
+    if ((localView != null) && (this.mAlpha > 0.0F) && (this.mAlpha <= 1.001F)) {
+      localView.setAlpha(this.mAlpha);
+    }
+  }
+  
+  public void refresh()
+  {
+    refresh(this.mDrawLeft, this.mDrawTop, this.mDrawLeft + this.mMeasuredWidth, this.mDrawTop + this.mMeasuredHeight);
+  }
+  
+  public void refresh(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if (this.mHolderView != null)
+    {
+      this.mHolderView.invalidate(paramInt1, paramInt2, paramInt3, paramInt4);
+      return;
+    }
+    LogUtil.QLog.d("ViewBase", 2, "refresh holdView is null");
+  }
+  
+  public void reset()
+  {
+    this.mContentRect = null;
+    this.mIsDrawed = false;
+  }
+  
+  protected boolean setAttribute(int paramInt, Object paramObject)
+  {
+    boolean bool = true;
+    switch (paramInt)
+    {
+    default: 
+      bool = false;
+    }
+    do
+    {
+      return bool;
+    } while (!(paramObject instanceof JSONArray));
+    setBorderRadiusArray((JSONArray)paramObject);
+    return true;
+  }
+  
+  protected boolean setAttribute(int paramInt, String paramString)
+  {
+    boolean bool = true;
+    switch (paramInt)
+    {
+    default: 
+      bool = false;
+    case 53: 
+      return bool;
+    case 7: 
+      paramInt = Utils.rp2px(Double.valueOf(paramString).doubleValue());
+      this.mPaddingBottom = paramInt;
+      this.mPaddingTop = paramInt;
+      this.mPaddingRight = paramInt;
+      this.mPaddingLeft = paramInt;
+      return true;
+    case 8: 
+      this.mPaddingLeft = Utils.rp2px(Double.valueOf(paramString).doubleValue());
+      return true;
+    case 9: 
+      this.mPaddingRight = Utils.rp2px(Double.valueOf(paramString).doubleValue());
+      return true;
+    case 10: 
+      this.mPaddingTop = Utils.rp2px(Double.valueOf(paramString).doubleValue());
+      return true;
+    case 11: 
+      this.mPaddingBottom = Utils.rp2px(Double.valueOf(paramString).doubleValue());
+      return true;
+    case 15: 
+      this.mBorderWidth = Utils.rp2px(Double.valueOf(paramString).doubleValue());
+      return true;
+    case 16: 
+      this.mBorderColor = Utils.parseColor(paramString);
+      return true;
+    case 17: 
+      this.mBorderRadius = Utils.rp2px(Double.valueOf(paramString).doubleValue());
+      this.mBorderTopLeftRadius = this.mBorderRadius;
+      this.mBorderTopRightRadius = this.mBorderRadius;
+      this.mBorderBottomLeftRadius = this.mBorderRadius;
+      this.mBorderBottomRightRadius = this.mBorderRadius;
+      return true;
+    case 36: 
+      this.mClickEvnet = paramString;
+      return true;
+    case 37: 
+      if ("VISIBLE".equals(paramString))
+      {
+        setVisibility(0);
+        return true;
+      }
+      setVisibility(8);
+      return true;
+    case 38: 
+      this.mEventAttachedData = paramString;
+      return true;
+    case 14: 
+      setBackgroundColor(Utils.parseColor(paramString));
+      return true;
+    case 62: 
+      if ("YES".equals(paramString))
+      {
+        this.mIsSoftwareRender = true;
+        return true;
+      }
+      this.mIsSoftwareRender = false;
+      return true;
+    }
+    this.mAlpha = Utils.toFloat(paramString).floatValue();
+    return true;
+  }
+  
+  public void setBackground(int paramInt)
+  {
+    this.mBackground = paramInt;
+    refresh();
+  }
+  
+  protected void setBackgroundColor(int paramInt)
+  {
+    this.mBackground = paramInt;
+    View localView = getNativeView();
+    if (localView != null)
+    {
+      localView.setBackgroundColor(paramInt);
+      return;
+    }
+    if (this.mBackgroundPaint == null) {
+      this.mBackgroundPaint = new Paint();
+    }
+    this.mBackgroundPaint.setColor(this.mBackground);
+  }
+  
+  protected void setBackgroundImage(Bitmap paramBitmap)
+  {
+    this.mBackgroundImage = paramBitmap;
+    refresh();
+  }
+  
+  public void setBackgroundImage(String paramString)
+  {
+    this.mBackgroundImagePath = paramString;
+    this.mBackgroundImage = null;
+    if (this.mBackgroundPaint == null) {
+      this.mBackgroundPaint = new Paint();
+    }
+    if (this.mMatrixBG == null) {
+      this.mMatrixBG = new Matrix();
+    }
+  }
+  
+  public void setBorderColor(int paramInt)
+  {
+    this.mBorderColor = paramInt;
+    if (this.mBorderPaint == null)
+    {
+      this.mBorderPaint = new Paint();
+      this.mBorderPaint.setStyle(Paint.Style.STROKE);
+      this.mBorderPaint.setAntiAlias(true);
+    }
+    this.mBorderPaint.setColor(this.mBorderColor);
+    refresh();
+  }
+  
+  public void setBorderWidth(int paramInt)
+  {
+    this.mBorderWidth = paramInt;
+    if (this.mBorderPaint == null)
+    {
+      this.mBorderPaint = new Paint();
+      this.mBorderPaint.setStyle(Paint.Style.STROKE);
+      this.mBorderPaint.setAntiAlias(true);
+    }
+    this.mBorderPaint.setStrokeWidth(this.mBorderWidth);
+    refresh();
+  }
+  
+  public void setClickable(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (this.mFlag |= 0x20;; this.mFlag &= 0xFFFFFFDF)
+    {
+      if (getNativeView() != null)
+      {
+        getNativeView().setFocusable(false);
+        getNativeView().setClickable(paramBoolean);
+      }
+      return;
+    }
+  }
+  
+  public final void setComLayoutParams(Layout.Params paramParams)
+  {
+    this.mParams = paramParams;
+  }
+  
+  protected final void setComMeasuredDimension(int paramInt1, int paramInt2)
+  {
+    this.mMeasuredWidth = paramInt1;
+    this.mMeasuredHeight = paramInt2;
+  }
+  
+  public final void setHoldView(View paramView)
+  {
+    this.mHolderView = paramView;
+    if (softwareRender()) {
+      paramView.setLayerType(1, null);
+    }
+  }
+  
+  public void setName(String paramString)
+  {
+    this.mName = paramString;
+  }
+  
+  public void setOnClickListener(ViewBase.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener == null)
+    {
+      setClickable(false);
+      this.mOnClickListener = null;
+    }
+    do
+    {
+      return;
+      this.mOnClickListener = paramOnClickListener;
+      setClickable(true);
+    } while (getNativeView() == null);
+    getNativeView().setOnClickListener(new ViewBase.1(this));
+  }
+  
+  public void setTag(Object paramObject)
+  {
+    this.mTag = paramObject;
+  }
+  
+  public final boolean setValue(int paramInt, String paramString)
+  {
+    boolean bool2 = setAttribute(paramInt, paramString);
+    boolean bool1 = bool2;
+    if (!bool2)
+    {
+      bool1 = bool2;
+      if (this.mParams != null)
+      {
+        bool2 = this.mParams.setAttribute(paramInt, paramString);
+        bool1 = bool2;
+        if (bool2)
+        {
+          paramString = getNativeView();
+          bool1 = bool2;
+          if (paramString != null)
+          {
+            paramString.requestLayout();
+            bool1 = bool2;
+          }
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  public void setViewType(String paramString)
+  {
+    this.mViewType = paramString;
+  }
+  
+  public void setVisibility(int paramInt)
+  {
+    if (this.mVisibility != paramInt)
+    {
+      this.mVisibility = paramInt;
+      if (!changeVisibility()) {
+        refresh();
+      }
+    }
+  }
+  
+  public boolean shouldDraw()
+  {
+    return this.mVisibility == 0;
+  }
+  
+  public boolean softwareRender()
+  {
+    return this.mIsSoftwareRender;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase
  * JD-Core Version:    0.7.0.1
  */

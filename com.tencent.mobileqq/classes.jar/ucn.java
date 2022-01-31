@@ -1,23 +1,32 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.parallel.ParallelJobSegment;
 
-public class ucn
-  implements View.OnClickListener
+class ucn
+  extends ParallelJobSegment<String, ucj>
 {
-  public ucn(TroopInfoActivity paramTroopInfoActivity, Dialog paramDialog) {}
+  public int a;
   
-  public void onClick(View paramView)
+  public ucn(uch paramuch, int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    super("RequestLikeListSegment");
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  protected void a(JobContext paramJobContext, String paramString)
+  {
+    udb localudb = new udb();
+    localudb.jdField_a_of_type_JavaLangString = paramString;
+    localudb.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Int != -1) {
+      localudb.c = this.jdField_a_of_type_Int;
     }
+    slv.a().a(localudb, new uco(this, paramJobContext, paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ucn
  * JD-Core Version:    0.7.0.1
  */

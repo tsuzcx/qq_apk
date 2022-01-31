@@ -1,34 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.utils.QQLSSensor;
-import com.tencent.qphone.base.util.QLog;
-
-public class tnh
-  implements Runnable
+class tnh
+  implements baxq
 {
-  public tnh(QQLSActivity paramQQLSActivity) {}
+  tnh(tng paramtng) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    if (this.a.a == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQLSSensor", 2, "====openSensor===" + Thread.currentThread().getId());
-      }
-      this.a.a = new QQLSSensor(this.a.getApplicationContext(), this.a);
-      this.a.a.a();
-      if (QQLSActivity.a(this.a).hasMessages(8)) {
-        QQLSActivity.a(this.a).removeMessages(8);
-      }
-      Message localMessage = QQLSActivity.a(this.a).obtainMessage(8);
-      QQLSActivity.a(this.a).sendMessageDelayed(localMessage, 1500L);
-    }
+    urk.a("PromoteWidgetController", "preloadSonicSession() doStartProcess=%b", Boolean.valueOf(paramBoolean));
+    this.a.a = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tnh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,8 @@
-import com.tencent.biz.qqstory.base.VideoServerInfoManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.ArrayList;
 
-public class ndq
-  implements INetEventHandler
+public abstract interface ndq
 {
-  private ndq(VideoServerInfoManager paramVideoServerInfoManager) {}
-  
-  public void onNetChangeEvent(boolean paramBoolean)
-  {
-    SLog.d("Q.qqstory.publish:VideoServerInfoManager", "network change");
-    this.a.b.set(true);
-  }
+  public abstract void a(ArrayList<nds> paramArrayList, String paramString, boolean paramBoolean);
 }
 
 

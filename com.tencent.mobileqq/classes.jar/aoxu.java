@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.INet_ShortVideoResource;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import java.util.List;
+import android.view.View;
 
-public final class aoxu
-  implements Runnable
+class aoxu
+  implements apcz
 {
-  public aoxu(QQAppInterface paramQQAppInterface, List paramList, ShortVideoResourceManager.INet_ShortVideoResource paramINet_ShortVideoResource) {}
+  aoxu(aoxt paramaoxt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager$INet_ShortVideoResource, "new_qq_android_native_art_filter_");
+    int i = apdq.b(this.a.a.e());
+    awqx.b(null, "dc00898", "", "", "0X800A689", "0X800A689", 0, 0, i + "", "", "", "");
+    this.a.a.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoxu
  * JD-Core Version:    0.7.0.1
  */

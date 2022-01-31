@@ -1,35 +1,62 @@
-import android.os.SystemClock;
-import com.tencent.av.avgesture.AVGestureWrapper;
-import com.tencent.mobileqq.shortvideo.facedancegame.FaceDanceDetectTask;
-import com.tencent.mobileqq.shortvideo.facedancegame.FaceDanceDetectTask.GestureDetectTaskResult;
-import com.tencent.mobileqq.shortvideo.facedancegame.GestureDetectManager;
-import com.tencent.mobileqq.shortvideo.facedancegame.IGestureDetectCallBack;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.Map;
+import mqq.app.MobileQQ;
 
 public class aifw
-  implements Runnable
+  extends batl
 {
-  public aifw(GestureDetectManager paramGestureDetectManager, byte[] paramArrayOfByte, int paramInt1, int paramInt2, IGestureDetectCallBack paramIGestureDetectCallBack) {}
+  WeakReference<QQAppInterface> a;
+  WeakReference<aifv> b;
   
-  public void run()
+  public aifw(QQAppInterface paramQQAppInterface, aifv paramaifv)
   {
-    long l = SystemClock.elapsedRealtimeNanos();
-    AVGestureWrapper localAVGestureWrapper = new AVGestureWrapper();
-    boolean bool = localAVGestureWrapper.doCalc(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Int, this.b, 0, 0, true);
-    FaceDanceDetectTask.a("AVGestureWrapper.doCalc", l, SystemClock.elapsedRealtimeNanos());
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoFacedancegameIGestureDetectCallBack != null)
-    {
-      FaceDanceDetectTask.GestureDetectTaskResult localGestureDetectTaskResult = new FaceDanceDetectTask.GestureDetectTaskResult();
-      localGestureDetectTaskResult.jdField_a_of_type_Boolean = bool;
-      if (bool) {
-        localGestureDetectTaskResult.jdField_a_of_type_JavaLangString = localAVGestureWrapper.getGestureType();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoFacedancegameIGestureDetectCallBack.a(localGestureDetectTaskResult);
+    this.a = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramaifv);
+  }
+  
+  public void onDone(batm parambatm)
+  {
+    Object localObject = (QQAppInterface)this.a.get();
+    aifv localaifv = (aifv)this.b.get();
+    if ((localObject == null) || (localaifv == null) || (parambatm == null) || (parambatm.a() == null) || (parambatm.jdField_a_of_type_JavaUtilMap == null)) {
+      return;
     }
+    super.onDone(parambatm);
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloManager", 2, new Object[] { "mDownload403Listener [onDoneFile] httpCode: ", Integer.valueOf(parambatm.f), ", status: ", Integer.valueOf(parambatm.a()), ",task.currUrl:", parambatm.c });
+    }
+    if (parambatm.jdField_a_of_type_Int == 0)
+    {
+      localObject = ((QQAppInterface)localObject).getApplication().getSharedPreferences("apollo_sp", 0).edit();
+      ((SharedPreferences.Editor)localObject).putLong(parambatm.c + "_lastModifiedTime", parambatm.i);
+      long l2 = 0L;
+      File localFile = (File)parambatm.jdField_a_of_type_JavaUtilMap.get(parambatm.c);
+      long l1 = l2;
+      if (localFile != null)
+      {
+        l1 = l2;
+        if (localFile.exists())
+        {
+          l1 = localFile.lastModified();
+          ((SharedPreferences.Editor)localObject).putLong(parambatm.c, l1);
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloManager", 2, new Object[] { "mDownload403Listener [onDoneFile] lastModifiedTime:", Long.valueOf(parambatm.i), ",file sd lastModifiedTime:", Long.valueOf(l1) });
+      }
+      ((SharedPreferences.Editor)localObject).commit();
+    }
+    localaifv.a(parambatm.jdField_a_of_type_Int, parambatm.f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aifw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-
-public class mog
-  implements Runnable
+final class mog
+  implements moc
 {
-  public mog(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
-  
-  public void run()
+  public void loaded(String paramString, int paramInt)
   {
-    ReadinjoyTabFrame.a(this.a);
+    if ((paramInt == 0) && (mof.a.a())) {
+      mof.a.a("HtmlCheckUpdate", 2, "CODE_SUCCESS");
+    }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     mog
  * JD-Core Version:    0.7.0.1
  */

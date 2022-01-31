@@ -1,49 +1,169 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
+import com.tencent.biz.pubaccount.util.ShareUtils.ShareImageUtils.2;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopAioTips;
-import com.tencent.mobileqq.widget.ScrollerRunnable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-class rvu
-  implements Runnable
+public class rvu
 {
-  rvu(rvt paramrvt, MessageRecord paramMessageRecord) {}
+  private static Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private static bbsh jdField_a_of_type_Bbsh = new rvv();
+  private static String jdField_a_of_type_JavaLangString;
   
-  public void run()
+  public static void a()
   {
-    if (this.jdField_a_of_type_Rvt.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().isFinishing()) {}
-    int i;
-    do
+    WXShareHelper.a().a(jdField_a_of_type_Bbsh);
+  }
+  
+  public static void a(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareImageUtils", 2, "launchFriendPicker path = " + jdField_a_of_type_JavaLangString);
+    }
+    if (jdField_a_of_type_JavaLangString == null)
     {
-      do
+      QLog.e("ShareImageUtils", 1, "currentPath is null");
+      return;
+    }
+    Intent localIntent = new Intent(paramActivity, ForwardRecentActivity.class);
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("key_help_forward_pic", true);
+    localIntent.putExtras(localBundle);
+    localIntent.putExtra("forward_type", 1);
+    localIntent.putExtra("key_allow_multiple_forward_from_limit", false);
+    localIntent.putExtra("key_share_from_screen_shot", true);
+    localIntent.putExtra("key_share_from_screen_need_finish", true);
+    localIntent.setData(Uri.parse(jdField_a_of_type_JavaLangString));
+    paramActivity.startActivityForResult(localIntent, 3);
+  }
+  
+  public static void a(Bitmap paramBitmap)
+  {
+    jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+  }
+  
+  public static void a(BaseActivity paramBaseActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareImageUtils", 2, "shareToQzone");
+    }
+    if (jdField_a_of_type_JavaLangString == null)
+    {
+      QLog.e("ShareImageUtils", 1, "currentPath is null");
+      return;
+    }
+    paramBaseActivity = (QQAppInterface)paramBaseActivity.getAppRuntime();
+    Bundle localBundle = new Bundle();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(jdField_a_of_type_JavaLangString);
+    localBundle.putStringArrayList("images", localArrayList);
+    bfqn.a(paramBaseActivity, BaseApplicationImpl.getContext(), localBundle, null, 2);
+  }
+  
+  public static void a(String paramString)
+  {
+    jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public static void b()
+  {
+    jdField_a_of_type_JavaLangString = null;
+    jdField_a_of_type_AndroidGraphicsBitmap = null;
+    WXShareHelper.a().b(jdField_a_of_type_Bbsh);
+  }
+  
+  public static void b(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareImageUtils", 2, "ScreenShotShareFragment shareToWXFriend");
+    }
+    if ((jdField_a_of_type_JavaLangString == null) || (jdField_a_of_type_AndroidGraphicsBitmap == null))
+    {
+      QLog.e("ShareImageUtils", 1, "currentPath or bitmap is null");
+      return;
+    }
+    int i;
+    if (!WXShareHelper.a().a()) {
+      i = 2131655008;
+    }
+    for (;;)
+    {
+      if (i != -1)
       {
+        bbmy.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getString(i), 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131167766));
         return;
-      } while ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) || (this.jdField_a_of_type_Rvt.jdField_a_of_type_Int > 200));
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.BaseChatPie.troop.special_msg", 2, "refreshHeadMessage==>fistseq:" + this.jdField_a_of_type_Rvt.jdField_b_of_type_Long + ", mr.shmsgseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq);
+        if (!WXShareHelper.a().b()) {
+          i = 2131655009;
+        }
       }
-      if ((int)this.jdField_a_of_type_Rvt.jdField_b_of_type_Long >= this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq + 1L)
+      else
       {
-        if (this.jdField_a_of_type_Rvt.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips != null) {
-          this.jdField_a_of_type_Rvt.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips.a(this.jdField_a_of_type_Rvt.jdField_b_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq, false);
-        }
-        if (this.jdField_a_of_type_Rvt.jdField_b_of_type_Int == 5) {
-          this.jdField_a_of_type_Rvt.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
-        }
-        this.jdField_a_of_type_Rvt.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable.a(this.jdField_a_of_type_Rvt.jdField_b_of_type_Int, 0, -1, this.jdField_a_of_type_Rvt.jdField_a_of_type_JavaLangRunnable);
+        WxShareHelperFromReadInjoy.a().a(jdField_a_of_type_JavaLangString, jdField_a_of_type_AndroidGraphicsBitmap, 0, false);
         return;
       }
-      i = this.jdField_a_of_type_Rvt.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.a((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-    } while (i == -1);
-    this.jdField_a_of_type_Rvt.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable.a(this.jdField_a_of_type_Rvt.jdField_b_of_type_Int, i, i, null);
+      i = -1;
+    }
+  }
+  
+  public static void c()
+  {
+    if (jdField_a_of_type_AndroidGraphicsBitmap == null)
+    {
+      QLog.e("ShareImageUtils", 1, "bitmap is null");
+      return;
+    }
+    ThreadManager.getFileThreadHandler().post(new ShareImageUtils.2());
+  }
+  
+  public static void c(Activity paramActivity)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShareImageUtils", 2, "shareToFriendCircle");
+    }
+    if ((jdField_a_of_type_JavaLangString == null) || (jdField_a_of_type_AndroidGraphicsBitmap == null))
+    {
+      QLog.e("ShareImageUtils", 1, "currentPath or bitmap is null");
+      return;
+    }
+    int i;
+    if (!WXShareHelper.a().a()) {
+      i = 2131655008;
+    }
+    for (;;)
+    {
+      if (i != -1)
+      {
+        bbmy.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getString(i), 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131167766));
+        return;
+        if (!WXShareHelper.a().b()) {
+          i = 2131655009;
+        }
+      }
+      else
+      {
+        WxShareHelperFromReadInjoy.a().a(jdField_a_of_type_JavaLangString, jdField_a_of_type_AndroidGraphicsBitmap, 1, false);
+        return;
+      }
+      i = -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rvu
  * JD-Core Version:    0.7.0.1
  */

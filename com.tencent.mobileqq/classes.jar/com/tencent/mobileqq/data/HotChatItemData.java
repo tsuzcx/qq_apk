@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class HotChatItemData
-  extends Entity
+  extends atmo
 {
   public String mADsContent;
   public long mDraftSec;
@@ -16,7 +16,7 @@ public class HotChatItemData
   public long mLatestMsgSec;
   public long mMakeTopTime;
   public int mState;
-  @unique
+  @atoc
   public String mTroopUin;
 }
 

@@ -3,7 +3,10 @@ package com.tencent.mobileqq.highway.segment;
 import com.tencent.mobileqq.highway.HwEngine;
 import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.LoginSigHead;
 import com.tencent.mobileqq.highway.protocol.CSDataHighwayHead.SegHead;
+import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.mobileqq.highway.utils.BdhLogUtil;
 import com.tencent.mobileqq.highway.utils.EndPoint;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -33,6 +36,7 @@ public abstract class HwRequest
   public boolean isOpenUpEnable;
   public long lastSendStartTime;
   public String lastUseAddress;
+  public int localeId;
   public int mBuCmdId = -1;
   public int protoType = 1;
   public IRequestListener reqListener;
@@ -56,6 +60,7 @@ public abstract class HwRequest
     this.mBuCmdId = paramInt1;
     this.hwSeq = RequestWorker.getNextSeq();
     this.appid = HwEngine.appId;
+    this.localeId = HwEngine.localeId;
     if (paramLong == -1L)
     {
       this.timeOut = 30000L;
@@ -69,6 +74,41 @@ public abstract class HwRequest
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(paramInt & 0xFF).append(".").append(paramInt >>> 8 & 0xFF).append(".").append(paramInt >>> 16 & 0xFF).append(".").append(paramInt >>> 24 & 0xFF);
     return localStringBuilder.toString();
+  }
+  
+  protected void checkCacheIp(HwResponse paramHwResponse, Transaction paramTransaction)
+  {
+    int i = 1;
+    if (paramHwResponse.segmentResp.uint32_cache_addr.has())
+    {
+      int j = paramHwResponse.segmentResp.uint32_cache_addr.get();
+      if (j == 0) {
+        break label235;
+      }
+      BdhLogUtil.LogEvent("R", getClass().getSimpleName() + "  HandleResp : cache_addr res from server is : " + j + " ( " + intToIP(j) + " ) Seq:" + getHwSeq());
+      if (paramTransaction.cacheIp == 0) {
+        paramTransaction.cacheIp = j;
+      }
+      if ((paramTransaction.cacheIp != 0) && (paramTransaction.cacheIp != j))
+      {
+        BdhLogUtil.LogEvent("R", getClass().getSimpleName() + " HandleResp : cache ip Diff ! Seq:" + getHwSeq());
+        paramTransaction.mTransReport.bCacheDiff = true;
+      }
+      if (paramHwResponse.segmentResp.uint32_update_cacheip.has())
+      {
+        if (paramHwResponse.segmentResp.uint32_update_cacheip.get() == 0) {
+          i = 0;
+        }
+        if (i != 0)
+        {
+          paramTransaction.cacheIp = j;
+          BdhLogUtil.LogEvent("R", getClass().getSimpleName() + " HandleResp :updateCacheIp");
+        }
+      }
+    }
+    return;
+    label235:
+    BdhLogUtil.LogEvent("R", getClass().getSimpleName() + " HandleResp : cache_addr res from server is 0 ! Seq:" + getHwSeq());
   }
   
   public String dumpBaseInfo()
@@ -119,7 +159,12 @@ public abstract class HwRequest
   
   public void onError(int paramInt) {}
   
-  public void onResponse(RequestWorker paramRequestWorker, HwResponse paramHwResponse) {}
+  public void onResponse(RequestWorker paramRequestWorker, HwResponse paramHwResponse)
+  {
+    onResponse(paramRequestWorker, paramHwResponse, this);
+  }
+  
+  public void onResponse(RequestWorker paramRequestWorker, HwResponse paramHwResponse, HwRequest paramHwRequest) {}
   
   public void onRetry(int paramInt) {}
   
@@ -139,7 +184,7 @@ public abstract class HwRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.highway.segment.HwRequest
  * JD-Core Version:    0.7.0.1
  */

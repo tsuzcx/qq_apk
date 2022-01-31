@@ -1,0 +1,274 @@
+{
+  "ReadInjoy_nba_header": {
+    "view_type": "cell",
+    "direction": "horizontal",
+    "height": {
+      "type": "relative",
+      "value": "55"
+    },
+    "width": {
+      "type": "relative",
+      "value": "375"
+    },
+    "data_attributes": {
+      "setLocalInfo:": {
+        "expose_T": "0X8009B58",
+        "card_name": "nba_head"
+      }
+    },
+    "subviews": [
+      {
+        "view_type": "UIView",
+        "layout_type": "layout_relative",
+        "view_id": "id_container_1",
+        "height": {
+          "type": "relative",
+          "value": "55"
+        },
+        "width": {
+          "type": "relative",
+          "value": "125"
+        },
+        "default_visible": "YES",
+        "event_type": "cmd_url_click_card_report",
+        "attributes": {
+          "setAttatchInfo:": "$jump_url1"
+        },
+        "data_attributes": {
+          "setLocalInfo:": {
+            "click_T": "0X8009B59",
+            "type": "1"
+          }
+        },
+        "subviews": [
+          {
+            "view_type": "container",
+            "layout_type": "layout_relative",
+            "view_id": "id_container_inside_1",
+            "height": {
+              "type": "relative",
+              "value": "55"
+            },
+            "width": {
+              "type": "wrap_content"
+            },
+            "default_visible": "YES",
+            "align_parent_center_horizontal": "YES",
+            "subviews": [
+              {
+                "view_type": "ReadInjoyAsynImageView",
+                "view_id": "id_icon_1",
+                "height": {
+                  "type": "relative",
+                  "value": "30"
+                },
+                "width": {
+                  "type": "relative",
+                  "value": "30"
+                },
+                "default_visible": "YES",
+                "align_parent_center_vertical": "YES",
+                "margin_right": "3",
+                "attributes": {
+                  "setImageWithURLString:lineup:": [
+                    "$img_url1",
+                    "$lineup"
+                  ]
+                }
+              },
+              {
+                "view_type": "UILabel",
+                "view_id": "id_label_1",
+                "height": {
+                  "type": "relative",
+                  "value": "20"
+                },
+                "width": {
+                  "type": "wrap_content"
+                },
+                "margin_left": "6",
+                "default_visible": "YES",
+                "align_parent_center_vertical": "YES",
+                "right_of_view": "id_icon_1",
+                "attributes": {
+                  "setTextAlignmentString:": "2",
+                  "setTextColorString:": "#262626",
+                  "setText:": "$text1",
+                  "setFontSizeString:": "16"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "view_type": "UIView",
+        "layout_type": "layout_relative",
+        "view_id": "id_container_2",
+        "height": {
+          "type": "relative",
+          "value": "55"
+        },
+        "width": {
+          "type": "relative",
+          "value": "125"
+        },
+        "default_visible": "YES",
+        "event_type": "cmd_url_click_card_report",
+        "attributes": {
+          "setAttatchInfo:": "$jump_url2"
+        },
+        "data_attributes": {
+          "setLocalInfo:": {
+            "click_T": "0X8009B59",
+            "type": "2"
+          }
+        },
+        "subviews": [
+          {
+            "view_type": "container",
+            "layout_type": "layout_relative",
+            "view_id": "id_container_inside_2",
+            "height": {
+              "type": "relative",
+              "value": "55"
+            },
+            "width": {
+              "type": "wrap_content"
+            },
+            "default_visible": "YES",
+            "align_parent_center_horizontal": "YES",
+            "subviews": [
+              {
+                "view_type": "ReadInjoyAsynImageView",
+                "view_id": "id_icon_2",
+                "height": {
+                  "type": "relative",
+                  "value": "30"
+                },
+                "width": {
+                  "type": "relative",
+                  "value": "30"
+                },
+                "default_visible": "YES",
+                "align_parent_center_vertical": "YES",
+                "margin_right": "3",
+                "attributes": {
+                  "setImageWithURLString:lineup:": [
+                    "$img_url2",
+                    "$lineup"
+                  ]
+                }
+              },
+              {
+                "view_type": "UILabel",
+                "view_id": "id_label_2",
+                "height": {
+                  "type": "relative",
+                  "value": "20"
+                },
+                "width": {
+                  "type": "wrap_content"
+                },
+                "margin_left": "6",
+                "default_visible": "YES",
+                "align_parent_center_vertical": "YES",
+                "right_of_view": "id_icon_2",
+                "attributes": {
+                  "setTextAlignmentString:": "2",
+                  "setTextColorString:": "#262626",
+                  "setText:": "$text2",
+                  "setFontSizeString:": "16"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "view_type": "UIView",
+        "view_id": "id_container_3",
+        "layout_type": "layout_relative",
+        "height": {
+          "type": "relative",
+          "value": "55"
+        },
+        "width": {
+          "type": "relative",
+          "value": "125"
+        },
+        "default_visible": "YES",
+        "event_type": "cmd_url_click_card_report",
+        "attributes": {
+          "setAttatchInfo:": "$jump_url3"
+        },
+        "data_attributes": {
+          "setLocalInfo:": {
+            "click_T": "0X8009B59",
+            "type": "3"
+          }
+        },
+        "subviews": [
+          {
+            "view_type": "container",
+            "layout_type": "layout_relative",
+            "view_id": "id_container_inside_3",
+            "height": {
+              "type": "relative",
+              "value": "55"
+            },
+            "width": {
+              "type": "wrap_content"
+            },
+            "default_visible": "YES",
+            "align_parent_center_horizontal": "YES",
+            "subviews": [
+              {
+                "view_type": "ReadInjoyAsynImageView",
+                "view_id": "id_icon_3",
+                "height": {
+                  "type": "relative",
+                  "value": "30"
+                },
+                "width": {
+                  "type": "relative",
+                  "value": "30"
+                },
+                "default_visible": "YES",
+                "align_parent_center_vertical": "YES",
+                "margin_right": "3",
+                "attributes": {
+                  "setImageWithURLString:lineup:": [
+                    "$img_url3",
+                    "$lineup"
+                  ]
+                }
+              },
+              {
+                "view_type": "UILabel",
+                "view_id": "id_label_3",
+                "height": {
+                  "type": "relative",
+                  "value": "20"
+                },
+                "width": {
+                  "type": "wrap_content"
+                },
+                "margin_left": "6",
+                "default_visible": "YES",
+                "align_parent_center_vertical": "YES",
+                "right_of_view": "id_icon_3",
+                "attributes": {
+                  "setTextAlignmentString:": "2",
+                  "setTextColorString:": "#262626",
+                  "setText:": "$text3",
+                  "setFontSizeString:": "16"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,65 +1,69 @@
 package cooperation.qqfav.globalsearch;
 
-import amwt;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.mobileqq.search.adapter.BaseMvpAdapter;
+import avkj;
+import avon;
+import avuz;
+import avvn;
+import avww;
+import bfih;
+import bfik;
+import bfim;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
-import com.tencent.mobileqq.search.searchengine.SearchRequest;
 
 public class FavoriteSearchFragment
-  extends BaseSearchFragment
+  extends BaseSearchFragment<bfik>
 {
-  private SearchRequest a;
+  private avvn a;
   
-  protected int a()
+  public int a()
   {
     return 60;
   }
   
-  protected BaseMvpAdapter a()
+  public avkj<avon, avww> a()
   {
-    return new amwt(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
+    return new bfih(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Azwg);
   }
   
-  protected ISearchEngine a()
+  public avuz<bfik> a()
   {
     return new FavoriteSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
-  protected String a()
+  public String a()
   {
-    return "我的收藏";
+    return bfim.b;
   }
   
   public void a(String paramString)
   {
-    b(false);
+    h_(false);
     if (!TextUtils.isEmpty(paramString)) {
-      this.jdField_b_of_type_JavaLangString = paramString;
+      this.c = paramString;
     }
-    while ((this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine == null) || (this.jdField_a_of_type_ComTencentWidgetListView == null))
+    while ((this.jdField_a_of_type_Avuz == null) || (this.jdField_a_of_type_ComTencentWidgetListView == null))
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine != null) && (this.jdField_a_of_type_ComTencentWidgetListView != null))
+      if ((this.jdField_a_of_type_Avuz != null) && (this.jdField_a_of_type_ComTencentWidgetListView != null))
       {
-        this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine.b();
-        FavoriteSearchEngine localFavoriteSearchEngine = (FavoriteSearchEngine)this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine;
-        this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest.a = paramString;
-        localFavoriteSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest, this);
-        this.jdField_a_of_type_Int += 1;
+        this.jdField_a_of_type_Avuz.b();
+        FavoriteSearchEngine localFavoriteSearchEngine = (FavoriteSearchEngine)this.jdField_a_of_type_Avuz;
+        this.jdField_a_of_type_Avvn.a = paramString;
+        localFavoriteSearchEngine.a(this.jdField_a_of_type_Avvn, this);
+        this.jdField_d_of_type_Int += 1;
       }
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqSearchAdapterBaseMvpAdapter.a(null);
+    this.jdField_a_of_type_Avkj.a(null);
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.d.setVisibility(8);
-    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine.b();
-    c(false);
-    b(false);
+    this.jdField_d_of_type_AndroidViewView.setVisibility(8);
+    this.b.setVisibility(8);
+    this.jdField_a_of_type_Avuz.b();
+    i_(false);
+    h_(false);
     a();
   }
   
@@ -70,7 +74,7 @@ public class FavoriteSearchFragment
     paramBundle.putBoolean("bMore", true);
     paramBundle.putBoolean("bSearchNet", true);
     paramBundle.putInt("iNumber", 12);
-    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest = new SearchRequest(this.jdField_b_of_type_JavaLangString, paramBundle);
+    this.jdField_a_of_type_Avvn = new avvn(this.c, paramBundle);
   }
 }
 

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class mobileqq_mp$ActionInfo
-  extends MessageMicro
+  extends MessageMicro<ActionInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32 }, new String[] { "actionData", "i_actionData", "a_actionData", "appid" }, new Object[] { "", "", "", Integer.valueOf(0) }, ActionInfo.class);
   public final PBStringField a_actionData = PBField.initString("");

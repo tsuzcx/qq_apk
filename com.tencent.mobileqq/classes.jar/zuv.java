@@ -1,42 +1,146 @@
-import com.tencent.av.utils.GVideoGrayConfig.GVideoGrayConfigListener;
-import com.tencent.av.utils.GVideoGrayConfig.Record;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQGAudioMsgHandler;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.troopinfo.TroopUnreadMsgInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface.OnCancelListener;
+import android.support.annotation.NonNull;
+import android.text.method.ScrollingMovementMethod;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 
 public class zuv
-  implements GVideoGrayConfig.GVideoGrayConfigListener
+  extends Dialog
 {
-  private final TroopUnreadMsgInfo jdField_a_of_type_ComTencentMobileqqTroopinfoTroopUnreadMsgInfo;
-  private final WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private final long[] jdField_a_of_type_ArrayOfLong;
+  public static boolean a;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private ImageView jdField_b_of_type_AndroidWidgetImageView;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private TextView c;
+  private TextView d;
+  private TextView e;
+  private TextView f;
   
-  public zuv(TroopHandler paramTroopHandler, TroopUnreadMsgInfo paramTroopUnreadMsgInfo, long[] paramArrayOfLong)
+  public zuv(@NonNull Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramTroopHandler);
-    this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopUnreadMsgInfo = paramTroopUnreadMsgInfo;
-    this.jdField_a_of_type_ArrayOfLong = paramArrayOfLong;
+    super(paramContext, 2131689706);
+    a(paramContext);
   }
   
-  public void a(int paramInt1, GVideoGrayConfig.Record paramRecord, int paramInt2)
+  private void a(Context paramContext)
   {
-    paramRecord = (TroopHandler)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((paramRecord != null) && (paramRecord.b != null))
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    paramContext = LayoutInflater.from(paramContext).inflate(2131493787, null);
+    setContentView(paramContext);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(paramContext, 2131297128));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(paramContext, 2131297140));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(paramContext, 2131297342));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(paramContext, 2131312933));
+    this.c = ((TextView)a(paramContext, 2131312961));
+    this.d = ((TextView)a(paramContext, 2131297332));
+    this.d.setMovementMethod(ScrollingMovementMethod.getInstance());
+    this.e = ((TextView)a(paramContext, 2131303438));
+    this.f = ((TextView)a(paramContext, 2131309522));
+    setCanceledOnTouchOutside(false);
+    paramContext = getWindow();
+    if (paramContext != null) {
+      paramContext.setGravity(80);
+    }
+  }
+  
+  public <T extends View> T a(View paramView, int paramInt)
+  {
+    return paramView.findViewById(paramInt);
+  }
+  
+  public void a()
+  {
+    try
     {
-      if (paramInt1 == 0) {
-        paramRecord.b.a().a(1, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopUnreadMsgInfo.a, this.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopUnreadMsgInfo.b, this.jdField_a_of_type_ArrayOfLong, 2);
-      }
+      super.dismiss();
       return;
     }
-    QLog.e("TroopHandler", 1, "WeakGVideoGrayConfigListener#onResult get weakAppReference " + paramRecord);
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
+  }
+  
+  public void a(DialogInterface.OnCancelListener paramOnCancelListener)
+  {
+    setOnCancelListener(new zuy(this, paramOnCancelListener));
+    setOnKeyListener(new zuz(this, paramOnCancelListener));
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    this.f.setOnClickListener(new zuw(this, paramOnClickListener));
+  }
+  
+  public void a(String paramString)
+  {
+    if (mpl.a(paramString))
+    {
+      paramString = URLDrawable.getDrawable(paramString, URLDrawable.URLDrawableOptions.obtain());
+      ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+      paramString.setTag(azue.b(localLayoutParams.width, localLayoutParams.height, vms.a(this.jdField_a_of_type_AndroidContentContext, 5.0F)));
+      paramString.setDecodeHandler(azue.i);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramString);
+    }
+  }
+  
+  public void b(View.OnClickListener paramOnClickListener)
+  {
+    this.e.setOnClickListener(new zux(this, paramOnClickListener));
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void c(String paramString)
+  {
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void d(String paramString)
+  {
+    this.d.setText(paramString);
+  }
+  
+  public void e(String paramString)
+  {
+    this.f.setText(paramString);
+  }
+  
+  public void f(String paramString)
+  {
+    this.e.setText(paramString);
+  }
+  
+  public void show()
+  {
+    try
+    {
+      super.show();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zuv
  * JD-Core Version:    0.7.0.1
  */

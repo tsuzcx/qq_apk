@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.ecshopassit;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class EcShopData
-  extends Entity
+  extends atmo
 {
   public static final String TABLE_NAME = "EcShopData";
   public long bindUin;
@@ -12,7 +12,7 @@ public class EcShopData
   public String mImgInfo = "";
   public long mLastDraftTime;
   public long mLastMsgTime;
-  @unique
+  @atoc
   public String mUin;
   public String msgId;
 }

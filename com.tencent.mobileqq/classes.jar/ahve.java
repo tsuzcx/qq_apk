@@ -1,21 +1,17 @@
-import com.tencent.mobileqq.search.BusinessSearchEntryModel;
-import com.tencent.mobileqq.search.model.BusinessSearchEntryDataModel;
-import com.tencent.util.UiThreadUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
 public class ahve
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ahve(BusinessSearchEntryModel paramBusinessSearchEntryModel, BusinessSearchEntryDataModel paramBusinessSearchEntryDataModel) {}
+  public ahve(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelBusinessSearchEntryDataModel.a();
-    UiThreadUtil.a(new ahvf(this));
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahve
  * JD-Core Version:    0.7.0.1
  */

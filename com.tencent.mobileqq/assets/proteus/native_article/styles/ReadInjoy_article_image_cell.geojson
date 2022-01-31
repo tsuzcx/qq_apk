@@ -1,0 +1,36 @@
+{
+	"ReadInjoy_article_image_cell": {
+		"view_type": "cell",
+		"layout_type": "layout_relative",
+		"height": {
+			"type": "wrap_content"
+		},
+		"width": {
+			"type": "relative",
+			"value": "375"
+		},
+		"subviews": [{
+			"view_type": "ReadInJoyGifView",
+			"view_id": "id_article_img",
+			"align_parent_center_horizontal": "YES",
+			"margin_top": "16",
+			"event_type": "cmd_article_image_click",
+			"height": {
+				"type": "relative",
+				"value": "200"
+			},
+			"width": {
+				"type": "relative",
+				"value": "345"
+			},
+			"attributes": {
+				"setFrameString:": "-1",
+				"setGifUrl:": "$articleImageUrl",
+				"setHeightString:": "$imageHeight",
+				"setWidthString:": "$imageWidth",
+				"setScaleType:": "1",
+				"setSupportGifEnable:": "1"
+			}
+		}]
+	}
+}

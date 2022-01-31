@@ -5,7 +5,7 @@ import java.lang.ref.WeakReference;
 public abstract class AudioRecordController
   extends Thread
 {
-  public WeakReference a;
+  public WeakReference<VideoRecordController> a;
   
   public AudioRecordController(VideoRecordController paramVideoRecordController)
   {
@@ -19,10 +19,6 @@ public abstract class AudioRecordController
   
   public abstract void c();
   
-  public abstract void d();
-  
-  public abstract void e();
-  
   public void run()
   {
     a();
@@ -30,7 +26,7 @@ public abstract class AudioRecordController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRecord.AudioRecordController
  * JD-Core Version:    0.7.0.1
  */

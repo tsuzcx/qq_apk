@@ -9,11 +9,11 @@ public final class BroadcastForQzone
   extends JceStruct
 {
   static BroadcastAudio cache_broadcastAudioUrl = new BroadcastAudio();
-  static ArrayList cache_showList = new ArrayList();
+  static ArrayList<BroadcastOneShow> cache_showList = new ArrayList();
   public BroadcastAudio broadcastAudioUrl;
   public String broadcastID = "";
   public String broadcastName = "";
-  public ArrayList showList;
+  public ArrayList<BroadcastOneShow> showList;
   
   static
   {
@@ -23,7 +23,7 @@ public final class BroadcastForQzone
   
   public BroadcastForQzone() {}
   
-  public BroadcastForQzone(String paramString1, String paramString2, BroadcastAudio paramBroadcastAudio, ArrayList paramArrayList)
+  public BroadcastForQzone(String paramString1, String paramString2, BroadcastAudio paramBroadcastAudio, ArrayList<BroadcastOneShow> paramArrayList)
   {
     this.broadcastID = paramString1;
     this.broadcastName = paramString2;

@@ -1,50 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.musicgene.MusicGeneQQBrowserActivity;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class aesr
-  extends BroadcastReceiver
+class aesr
+  extends akfx
 {
-  public aesr(MusicGeneQQBrowserActivity paramMusicGeneQQBrowserActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  aesr(aesq paramaesq, String paramString, ajtg paramajtg, boolean paramBoolean)
   {
-    if (paramIntent == null) {}
-    do
-    {
-      return;
-      paramContext = paramIntent.getAction();
-      String str1;
-      String str2;
-      String str3;
-      if ("BROAD_CAST_SHARE_MUSIC_GENE".equals(paramContext))
-      {
-        paramContext = paramIntent.getStringExtra("BUNDLE_KEY_TITLE");
-        str1 = paramIntent.getStringExtra("BUNDLE_KEY_DESC");
-        str2 = paramIntent.getStringExtra("BUDNLE_KEY_IMG_URL");
-        str3 = paramIntent.getStringExtra("BUNDLE_KEY_SRC");
-        paramIntent = paramIntent.getStringExtra("BUNDLE_KEY_ICON_URL");
-        MusicGeneQQBrowserActivity.a(this.a, str2, str3, "", str1, paramContext, paramIntent, 1101244924L);
-        return;
-      }
-      if ("BROAD_CAST_SHARE_SONG".equals(paramContext))
-      {
-        paramContext = paramIntent.getStringExtra("BUNDLE_KEY_TITLE");
-        str1 = paramIntent.getStringExtra("BUNDLE_KEY_DESC");
-        str2 = paramIntent.getStringExtra("BUDNLE_KEY_IMG_URL");
-        str3 = paramIntent.getStringExtra("BUNDLE_KEY_SRC");
-        String str4 = paramIntent.getStringExtra("BUNDLE_KEY_AUDIO_URL");
-        paramIntent = paramIntent.getStringExtra("BUNDLE_KEY_ICON_URL");
-        MusicGeneQQBrowserActivity.a(this.a, str2, str3, str4, str1, paramContext, paramIntent, 1101244924L);
-        return;
-      }
-    } while (!"BROAD_CAST_UPDATE_TITLE".equals(paramContext));
+    super(paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ac_ft.AddContactFindTroopRTLW", 2, "getRecommendTroopList onLocationFinish info = " + paramSosoLbsInfo);
+    }
+    if (paramInt != 0) {
+      QLog.i("ac_ft.AddContactFindTroopRTLW", 1, "getRecommendTroopList onLocationFinish, errorCode=" + paramInt);
+    }
+    this.jdField_a_of_type_Ajtg.a(1, this.jdField_a_of_type_Aesq.b, 25, this.jdField_a_of_type_Boolean, aesq.a(this.jdField_a_of_type_Aesq));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aesr
  * JD-Core Version:    0.7.0.1
  */

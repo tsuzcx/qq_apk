@@ -1,67 +1,74 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment.FirstLoadDataCallback;
-import com.tencent.mobileqq.statistics.ReportTask;
-import com.tencent.mobileqq.widget.TabBarView;
+import android.app.Activity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
-public class afjh
-  implements NearbyMomentFragment.FirstLoadDataCallback
+class afjh
+  implements zrt
 {
-  public afjh(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel, int paramInt) {}
+  afjh(afiu paramafiu, String paramString) {}
   
-  public void a(int paramInt)
+  public void onComplete()
   {
-    ReportTask localReportTask;
-    if ((this.jdField_a_of_type_Int == -1) && (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView != null))
-    {
-      if (paramInt > 0) {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(0, false);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("SDKEmotionSettingManager", 2, "check api, onComplete");
     }
-    else
-    {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment.a(null);
-      if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView != null)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a() != 0) {
-          break label179;
-        }
-        localReportTask = new ReportTask(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("data_card").d("feedtab_exp");
-        if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e != 2) {
-          break label167;
-        }
-        str = "1";
-        label124:
-        if (paramInt != 0) {
-          break label173;
-        }
-      }
+  }
+  
+  public void onFailure(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SDKEmotionSettingManager", 2, new Object[] { "check api, onFailure, code=", Integer.valueOf(paramInt), ", msg=", paramString });
     }
-    label167:
-    label173:
-    for (Object localObject = "1";; localObject = "2")
-    {
-      localReportTask.a(new String[] { str, localObject }).a();
+    if ((afiu.a(this.jdField_a_of_type_Afiu).isFinishing()) || (this.jdField_a_of_type_Afiu.b)) {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(1, false);
-      break;
-      str = "2";
-      break label124;
     }
-    label179:
-    localObject = new ReportTask(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.app).a("dc00899").b("grp_lbs").c("data_card").d("datatab_exp");
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.e == 2) {}
-    for (String str = "1";; str = "2")
-    {
-      ((ReportTask)localObject).a(new String[] { str }).a();
+    this.jdField_a_of_type_Afiu.c();
+    if (afiu.a(this.jdField_a_of_type_Afiu) != null) {
+      afiu.a(this.jdField_a_of_type_Afiu).removeCallbacks(afiu.a(this.jdField_a_of_type_Afiu));
+    }
+    this.jdField_a_of_type_Afiu.a(ajjy.a(2131647812), this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onPermission(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SDKEmotionSettingManager", 2, new Object[] { "check api, onPermission, code=", Integer.valueOf(paramInt) });
+    }
+    if ((afiu.a(this.jdField_a_of_type_Afiu).isFinishing()) || (this.jdField_a_of_type_Afiu.b)) {
       return;
+    }
+    this.jdField_a_of_type_Afiu.c();
+    if (afiu.a(this.jdField_a_of_type_Afiu) != null) {
+      afiu.a(this.jdField_a_of_type_Afiu).removeCallbacks(afiu.a(this.jdField_a_of_type_Afiu));
+    }
+    this.jdField_a_of_type_Afiu.a(ajjy.a(2131647813), this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SDKEmotionSettingManager", 2, "check api, onSuccess");
+    }
+    if ((afiu.a(this.jdField_a_of_type_Afiu).isFinishing()) || (this.jdField_a_of_type_Afiu.b)) {
+      return;
+    }
+    if (afiu.a(this.jdField_a_of_type_Afiu) != null) {
+      afiu.a(this.jdField_a_of_type_Afiu).removeCallbacks(afiu.a(this.jdField_a_of_type_Afiu));
+    }
+    afiu.b(this.jdField_a_of_type_Afiu);
+  }
+  
+  public void onTrigger(JSONObject paramJSONObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SDKEmotionSettingManager", 2, "check api, onTrigger");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afjh
  * JD-Core Version:    0.7.0.1
  */

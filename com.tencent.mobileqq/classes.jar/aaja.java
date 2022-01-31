@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.ar.ArConfigService;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryImageView;
 
-class aaja
-  implements Runnable
+public class aaja
+  implements DialogInterface.OnClickListener
 {
-  aaja(aaiy paramaaiy) {}
+  public aaja(ChatHistoryImageView paramChatHistoryImageView) {}
   
-  public void run()
-  {
-    ArConfigService.d(this.a.a);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaja
  * JD-Core Version:    0.7.0.1
  */

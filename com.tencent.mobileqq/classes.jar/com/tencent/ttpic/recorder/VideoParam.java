@@ -3,7 +3,7 @@ package com.tencent.ttpic.recorder;
 import android.annotation.TargetApi;
 import android.hardware.Camera.Parameters;
 import android.os.Environment;
-import android.util.Log;
+import com.tencent.ttpic.baseutils.log.LogUtils;
 import java.io.File;
 import java.util.Iterator;
 import java.util.List;
@@ -18,10 +18,10 @@ public class VideoParam
   private static final String TAG = "VideoParam";
   private static final int VIDEO_H = 480;
   private static final int VIDEO_W = 640;
-  public int mBps = 4194304;
+  public static int mBps = 4194304;
+  public static int mIfi = 5;
+  public static String mMime = "video/avc";
   public int[] mFpsRange;
-  public int mIfi = 5;
-  public String mMime = "video/avc";
   
   public int getMaxFps()
   {
@@ -43,27 +43,31 @@ public class VideoParam
     {
       Iterator localIterator = paramParameters.getSupportedPreviewFpsRange().iterator();
       paramParameters = localObject2;
-      for (;;)
+      localObject1 = paramParameters;
+      if (localIterator.hasNext())
       {
-        localObject1 = paramParameters;
-        if (!localIterator.hasNext()) {
-          break;
-        }
         localObject1 = (int[])localIterator.next();
-        if (localObject1[1] >= 25000) {
-          paramParameters = (Camera.Parameters)localObject1;
+        if (localObject1[1] < 25000) {
+          break label98;
         }
+        paramParameters = (Camera.Parameters)localObject1;
       }
     }
-    if (localObject1 == null) {
-      Log.e("VideoParam", String.format("Not support fps: %d", new Object[] { Integer.valueOf(25) }));
+    label98:
+    for (;;)
+    {
+      break;
+      if (localObject1 == null) {
+        LogUtils.e("VideoParam", String.format("Not support fps: %d", new Object[] { Integer.valueOf(25) }));
+      }
+      this.mFpsRange = ((int[])localObject1);
+      return;
     }
-    this.mFpsRange = ((int[])localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.recorder.VideoParam
  * JD-Core Version:    0.7.0.1
  */

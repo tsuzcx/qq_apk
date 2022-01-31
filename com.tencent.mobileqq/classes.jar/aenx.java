@@ -1,20 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aenx
-  implements DialogInterface.OnDismissListener
+class aenx
+  implements View.OnClickListener
 {
-  public aenx(MedalGuideView paramMedalGuideView) {}
+  aenx(aenw paramaenw) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    MedalGuideView.a(this.a);
+    paramView = new Intent();
+    paramView.putExtra("is_from_conversation", true);
+    paramView.putExtra("bookid", aenw.a(this.a));
+    paramView.putExtra("book_new_id", aenw.b(this.a));
+    Intent localIntent = new Intent();
+    localIntent.putExtras(paramView);
+    localIntent.putExtra("readtype", "15");
+    localIntent.setClassName(aenw.a(this.a), "cooperation.qqreader.QRBridgeActivity");
+    localIntent.addFlags(268435456);
+    aenw.a(this.a).startActivity(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aenx
  * JD-Core Version:    0.7.0.1
  */

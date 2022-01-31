@@ -1,22 +1,20 @@
-import com.tencent.mobileqq.intervideo.now.NowDataReporter;
-import com.tencent.mobileqq.intervideo.now.NowLoadingActivity;
-import com.tencent.mobileqq.intervideo.now.NowPlugin;
-import com.tencent.mobileqq.intervideo.now.NowProxy;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aedf
-  implements Runnable
+class aedf
+  implements View.OnClickListener
 {
-  public aedf(NowLoadingActivity paramNowLoadingActivity, NowProxy paramNowProxy) {}
+  aedf(aede paramaede) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowProxy.a.a.c();
-    NowLoadingActivity.b(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity);
+    aduj.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, 1, false, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aedf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,10 @@
 package com.tencent.mobileqq.shortvideo.ptvfilter;
 
+import biod;
+import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.filter.VideoFilterBase;
 import java.lang.ref.WeakReference;
+import vbo;
 
 public class DoodleMagicAlgoHandler
 {
@@ -10,7 +12,7 @@ public class DoodleMagicAlgoHandler
   public static final int TOUCH_DOWN = 0;
   public static final int TOUCH_MOVE = 1;
   public static final int TOUCH_UP = 2;
-  private static WeakReference mFilter;
+  private static WeakReference<VideoFilterBase> mFilter;
   
   public static void OnUpdateSize(int paramInt1, int paramInt2, float paramFloat)
   {
@@ -79,17 +81,17 @@ public class DoodleMagicAlgoHandler
         localRenderPoint.xList = paramArrayOfFloat1;
         localRenderPoint.yList = paramArrayOfFloat2;
         localRenderPoint.aList = paramArrayOfFloat3;
-        if (!(localVideoFilterBase instanceof com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityFireworksFilter)) {
+        if (!(localVideoFilterBase instanceof vbo)) {
           break label108;
         }
-        ((com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityFireworksFilter)localVideoFilterBase).a(localRenderPoint);
+        ((vbo)localVideoFilterBase).a(localRenderPoint);
       }
     }
     label108:
-    while (!(localVideoFilterBase instanceof dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityFireworksFilter)) {
+    while (!(localVideoFilterBase instanceof biod)) {
       return;
     }
-    ((dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityFireworksFilter)localVideoFilterBase).a(localRenderPoint);
+    ((biod)localVideoFilterBase).a(localRenderPoint);
   }
   
   public static void setFilter(VideoFilterBase paramVideoFilterBase)
@@ -110,7 +112,7 @@ public class DoodleMagicAlgoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ptvfilter.DoodleMagicAlgoHandler
  * JD-Core Version:    0.7.0.1
  */

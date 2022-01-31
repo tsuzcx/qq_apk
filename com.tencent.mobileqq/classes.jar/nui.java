@@ -1,22 +1,31 @@
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class nui
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+final class nui
+  implements DialogInterface.OnClickListener
 {
-  public nui(VideoViewTVKImpl paramVideoViewTVKImpl) {}
+  nui(nwk paramnwk, nwx paramnwx) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ThreadManager.getUIHandler().post(new nuj(this));
+    if (paramInt == 1)
+    {
+      if (this.jdField_a_of_type_Nwk != null)
+      {
+        paramDialogInterface = this.jdField_a_of_type_Nwk.a();
+        if (paramDialogInterface != null)
+        {
+          paramDialogInterface.a(this.jdField_a_of_type_Nwx);
+          this.jdField_a_of_type_Nwk.notifyDataSetChanged();
+        }
+      }
+      bgmq.a("family_comment_card_hide_timestamp", Long.valueOf(System.currentTimeMillis()));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nui
  * JD-Core Version:    0.7.0.1
  */

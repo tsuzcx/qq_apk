@@ -1,52 +1,39 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.item.LongMsgItemBuilder;
-import com.tencent.mobileqq.data.MessageForLongMsg;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.os.SystemClock;
+import com.tribe.async.async.JobSegment;
 
-public class vfu
-  implements View.OnClickListener
+public abstract class vfu<IN, OUT>
+  extends JobSegment<IN, OUT>
 {
-  public vfu(LongMsgItemBuilder paramLongMsgItemBuilder) {}
+  protected long a;
+  private final String a;
+  private long b;
   
-  public void onClick(View paramView)
+  public vfu()
   {
-    if (LongMsgItemBuilder.a(this.a)) {}
-    BaseChatPie localBaseChatPie;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          paramView = AIOUtils.a(paramView);
-          if ((paramView instanceof MessageForLongMsg)) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: AIOUtils.getMessage(v) is not MessageForLongMsg");
-        return;
-        paramView = (MessageForLongMsg)paramView;
-      } while ((paramView.mSourceMsgInfo == null) || (!(this.a.a instanceof FragmentActivity)));
-      if (QLog.isColorLevel()) {
-        QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: isReplyMsg = true");
-      }
-      localBaseChatPie = ((FragmentActivity)this.a.a).getChatFragment().a();
-    } while (!localBaseChatPie.f());
-    localBaseChatPie.a(20, paramView.mSourceMsgInfo.mSourceMsgSeq, (int)(paramView.shmsgseq - paramView.mSourceMsgInfo.mSourceMsgSeq), paramView);
-    MessageForReplyText.reportReplyMsg(null, "replyMsg_bubble", "clk_original", paramView.frienduin, paramView);
+    this.jdField_a_of_type_JavaLangString = ("Q.qqstory.publish.edit." + getClass().getSimpleName());
+  }
+  
+  public void call(IN paramIN)
+  {
+    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    super.call(paramIN);
+  }
+  
+  public void notifyError(Error paramError)
+  {
+    this.b = SystemClock.uptimeMillis();
+    super.notifyError(paramError);
+  }
+  
+  public void notifyResult(OUT paramOUT)
+  {
+    this.b = SystemClock.uptimeMillis();
+    super.notifyResult(paramOUT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vfu
  * JD-Core Version:    0.7.0.1
  */

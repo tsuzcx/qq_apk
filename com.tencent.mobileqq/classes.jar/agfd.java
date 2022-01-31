@@ -1,104 +1,75 @@
-import android.graphics.Rect;
-import android.text.Editable;
-import android.text.Spannable;
 import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.ocr.OCRRecognitionResultActivity;
-import com.tencent.mobileqq.text.QQText;
-import com.tencent.mobileqq.text.QQText.LinkSpan;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class agfd
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends agew
 {
-  public agfd(OCRRecognitionResultActivity paramOCRRecognitionResultActivity) {}
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private ImageView b;
   
-  public void onGlobalLayout()
+  public void a()
   {
-    int j = 0;
-    int i = 0;
-    Object localObject = new Rect();
-    OCRRecognitionResultActivity.a(this.a).getWindowVisibleDisplayFrame((Rect)localObject);
-    int k = OCRRecognitionResultActivity.a(this.a).getRootView().getHeight();
-    int m = k - ((Rect)localObject).bottom;
-    if (QLog.isDevelopLevel()) {
-      QLog.i("OCRRecognitionResultActivity", 2, "keypadHeight = " + m);
+    this.jdField_a_of_type_AndroidWidgetImageView = null;
+    this.b = null;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(paramInt);
     }
-    if (m > k * 0.15D)
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (paramInt == 0) {
+      b(8);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("OCRRecognitionResultActivity", 2, "soft keyboard is opened");
-      }
-      QQText.LinkSpan[] arrayOfLinkSpan;
-      if (OCRRecognitionResultActivity.a(this.a)) {
-        try
-        {
-          localObject = OCRRecognitionResultActivity.a(this.a).getText();
-          arrayOfLinkSpan = (QQText.LinkSpan[])((Spannable)localObject).getSpans(0, ((Spannable)localObject).length(), QQText.LinkSpan.class);
-          if ((arrayOfLinkSpan != null) && (arrayOfLinkSpan.length > 0))
-          {
-            j = arrayOfLinkSpan.length;
-            while (i < j)
-            {
-              ((Spannable)localObject).removeSpan(arrayOfLinkSpan[i]);
-              i += 1;
-            }
-          }
-          OCRRecognitionResultActivity.b(this.a).setVisibility(8);
-        }
-        catch (Exception localException1)
-        {
-          OCRRecognitionResultActivity.a(this.a).setText(OCRRecognitionResultActivity.a(this.a).getText());
-        }
-      }
-      for (;;)
-      {
-        return;
-        try
-        {
-          Editable localEditable = OCRRecognitionResultActivity.b(this.a).getText();
-          arrayOfLinkSpan = (QQText.LinkSpan[])localEditable.getSpans(0, localEditable.length(), QQText.LinkSpan.class);
-          if ((arrayOfLinkSpan != null) && (arrayOfLinkSpan.length > 0))
-          {
-            k = arrayOfLinkSpan.length;
-            i = j;
-            while (i < k)
-            {
-              localEditable.removeSpan(arrayOfLinkSpan[i]);
-              i += 1;
-            }
-          }
-        }
-        catch (Exception localException2)
-        {
-          OCRRecognitionResultActivity.b(this.a).setText(OCRRecognitionResultActivity.b(this.a).getText());
-        }
-      }
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(paramInt);
+      ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131300146)).setText(paramString);
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("OCRRecognitionResultActivity", 2, "soft keyboard is closed");
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131306224));
+    this.b = ((ImageView)paramView.findViewById(2131306223));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131306225));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
     }
-    if (OCRRecognitionResultActivity.a(this.a)) {
-      OCRRecognitionResultActivity.a(this.a).setText(new QQText(OCRRecognitionResultActivity.a(this.a).getText(), 8, 16));
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
     }
-    for (;;)
-    {
-      if (OCRRecognitionResultActivity.a(this.a) != null) {
-        OCRRecognitionResultActivity.a(this.a).clearFocus();
-      }
-      if (OCRRecognitionResultActivity.b(this.a) != null) {
-        OCRRecognitionResultActivity.b(this.a).clearFocus();
-      }
-      OCRRecognitionResultActivity.b(this.a).setVisibility(0);
-      return;
-      OCRRecognitionResultActivity.b(this.a).setText(new QQText(OCRRecognitionResultActivity.b(this.a).getText(), 8, 16));
+    return false;
+  }
+  
+  public void b(int paramInt)
+  {
+    if (this.b != null) {
+      this.b.setVisibility(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agfd
  * JD-Core Version:    0.7.0.1
  */

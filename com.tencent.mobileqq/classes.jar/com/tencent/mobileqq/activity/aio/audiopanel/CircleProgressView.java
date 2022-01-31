@@ -13,6 +13,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+import awmc;
 
 public class CircleProgressView
   extends ImageView
@@ -24,8 +25,9 @@ public class CircleProgressView
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private int b = -1;
-  private int c = -15158035;
-  private int d = 5;
+  private int c = -9013368;
+  private int d = 6;
+  private int e = awmc.a(11.0F);
   
   public CircleProgressView(Context paramContext)
   {
@@ -79,9 +81,9 @@ public class CircleProgressView
         continue;
       }
       if (this.b > 0) {}
-      for (float f = this.b;; f = 2.5F)
+      for (float f = this.b;; f = 3.0F)
       {
-        this.jdField_a_of_type_AndroidGraphicsRectF.set(f, f, j - f, k - f);
+        this.jdField_a_of_type_AndroidGraphicsRectF.set(this.e + f, this.e + f, j - f - this.e, k - f - this.e);
         this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
         this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.d);
         this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
@@ -121,7 +123,7 @@ public class CircleProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.CircleProgressView
  * JD-Core Version:    0.7.0.1
  */

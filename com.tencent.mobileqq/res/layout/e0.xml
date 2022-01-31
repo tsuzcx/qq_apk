@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/efh" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/jt2" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="@dimen/b8g" android:layout_marginTop="20.0dip" android:layout_alignParentTop="true">
+        <TextView android:textSize="14.0dip" android:id="@id/cancel" android:layout_width="56.0dip" android:layout_height="25.0dip" android:layout_marginLeft="15.0dip" android:text="取消" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <Button android:textColor="@color/al3" android:id="@id/b7m" android:layout_width="56.0dip" android:layout_height="25.0dip" android:layout_marginRight="15.0dip" android:minHeight="0.0dip" android:text="完成" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/ur" />
+    </RelativeLayout>
+    <EditText android:textSize="20.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/bry" android:background="@color/ajr" android:layout_width="200.0dip" android:layout_height="wrap_content" android:layout_marginTop="246.0dip" android:layout_marginRight="36.0dip" android:layout_centerHorizontal="true" android:textCursorDrawable="@drawable/gxa" />
+    <ImageView android:id="@id/lb9" android:visibility="gone" android:layout_width="13.0dip" android:layout_height="13.0dip" android:layout_marginRight="37.0dip" android:layout_marginBottom="5.0dip" android:src="@drawable/hks" android:layout_alignBottom="@id/bry" android:layout_alignParentRight="true" />
+    <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/a74" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

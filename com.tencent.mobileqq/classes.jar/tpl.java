@@ -1,42 +1,33 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.ApolloManager.CheckApolloInfoResult;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class tpl
-  extends Handler
+class tpl
+  implements tqj
 {
-  public tpl(QQSettingMe paramQQSettingMe, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  tpl(tpg paramtpg, StoryVideoItem paramStoryVideoItem) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean a(tqg paramtqg, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    switch (paramMessage.what)
-    {
+    if (this.jdField_a_of_type_Tpg.isCanceled()) {
+      return true;
     }
-    do
+    urk.e(this.jdField_a_of_type_Tpg.a.a, "onError, setOnErrorListener [videoView, model=%d, what=%d, position=%d, extra=%s, Info=%s] = ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, paramObject });
+    if (paramInt2 == 102)
     {
-      return;
-      this.a.n();
-      return;
-      QQSettingMe.a(this.a);
-      return;
-      if (QQSettingMe.a(this.a))
-      {
-        QLog.i("QQSettingRedesign", 1, "MSG_CODE_REFRESH_APOLLO on DrawerClosed!");
-        return;
-      }
-    } while (!(paramMessage.obj instanceof ApolloManager.CheckApolloInfoResult));
-    QQSettingMe.a(this.a, (ApolloManager.CheckApolloInfoResult)paramMessage.obj);
+      paramtqg.d();
+      return true;
+    }
+    VideoViewVideoHolder.c(this.jdField_a_of_type_Tpg.a, 7);
+    VideoViewVideoHolder.a(this.jdField_a_of_type_Tpg.a, false);
+    VideoViewVideoHolder.b(this.jdField_a_of_type_Tpg.a, paramInt2);
+    tpg.b(this.jdField_a_of_type_Tpg, new ErrorMessage(VideoViewVideoHolder.b(this.jdField_a_of_type_Tpg.a), "wht=" + paramInt2 + ", mod=" + paramInt1 + ", " + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tpl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,68 +1,35 @@
-import android.view.WindowManager.BadTokenException;
-import android.view.accessibility.AccessibilityManager;
-import android.view.accessibility.AccessibilityManager.AccessibilityStateChangeListener;
-import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
-import com.tencent.mobileqq.javahooksdk.MethodHookParam;
-import java.lang.reflect.Field;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class aedx
-  implements HookMethodCallback
+class aedx
+  extends aqal
 {
-  public aedx(Class paramClass) {}
+  aedx(aedo paramaedo) {}
   
-  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
+  protected void a()
   {
-    if (paramMethodHookParam.throwable == null) {
-      return;
-    }
-    Object localObject;
-    if (paramMethodHookParam.throwable.getCause() != null) {
-      localObject = paramMethodHookParam.throwable.getCause();
-    }
-    while ((localObject instanceof WindowManager.BadTokenException)) {
-      try
-      {
-        localObject = this.a.getDeclaredField("mAccessibilityInteractionConnectionManager");
-        ((Field)localObject).setAccessible(true);
-        localObject = ((Field)localObject).get(paramMethodHookParam.thisObject);
-        Field localField = this.a.getDeclaredField("mAccessibilityManager");
-        localField.setAccessible(true);
-        ((AccessibilityManager)localField.get(paramMethodHookParam.thisObject)).removeAccessibilityStateChangeListener((AccessibilityManager.AccessibilityStateChangeListener)localObject);
-        return;
-      }
-      catch (NoSuchFieldException paramMethodHookParam)
-      {
-        paramMethodHookParam.printStackTrace();
-        return;
-        localObject = paramMethodHookParam.throwable;
-      }
-      catch (IllegalArgumentException paramMethodHookParam)
-      {
-        paramMethodHookParam.printStackTrace();
-        return;
-      }
-      catch (IllegalAccessException paramMethodHookParam)
-      {
-        paramMethodHookParam.printStackTrace();
-        return;
-      }
-      catch (Exception paramMethodHookParam)
-      {
-        paramMethodHookParam.printStackTrace();
-        return;
-      }
-      catch (Error paramMethodHookParam)
-      {
-        paramMethodHookParam.printStackTrace();
-      }
+    if (((aqae)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      aedo.a(this.a).a(this.a.jdField_a_of_type_Aend, new Object[0]);
     }
   }
   
-  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
+  protected void b()
+  {
+    if (((aqae)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      this.a.jdField_a_of_type_Aend.a();
+    }
+  }
+  
+  protected void c()
+  {
+    if ((((aqae)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (aedo.b(this.a).a() == 14)) {
+      aedo.c(this.a).a();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aedx
  * JD-Core Version:    0.7.0.1
  */

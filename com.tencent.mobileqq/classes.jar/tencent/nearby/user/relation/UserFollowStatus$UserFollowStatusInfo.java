@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class UserFollowStatus$UserFollowStatusInfo
-  extends MessageMicro
+  extends MessageMicro<UserFollowStatusInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "dst_uin", "follow_status" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0) }, UserFollowStatusInfo.class);
   public final PBUInt64Field dst_uin = PBField.initUInt64(0L);

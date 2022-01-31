@@ -1,28 +1,20 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
-public class ymi
-  extends yms
+class ymi
+  implements DialogInterface.OnKeyListener
 {
-  public ymi(SpecailCareListActivity paramSpecailCareListActivity)
-  {
-    super(paramSpecailCareListActivity, null);
-  }
+  ymi(yme paramyme) {}
   
-  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (this.a.d != 0) {
-      this.a.b = true;
-    }
-    while ((paramInt2 != 200) || (paramBitmap == null)) {
-      return;
-    }
-    this.a.a.notifyDataSetChanged();
+    return (paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ymi
  * JD-Core Version:    0.7.0.1
  */

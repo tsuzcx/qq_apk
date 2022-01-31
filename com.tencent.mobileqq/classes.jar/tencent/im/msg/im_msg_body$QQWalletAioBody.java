@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class im_msg_body$QQWalletAioBody
-  extends MessageMicro
+  extends MessageMicro<QQWalletAioBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_authkey = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -33,7 +33,7 @@ public final class im_msg_body$QQWalletAioBody
   public final PBUInt32Field uint32_msg_priority = PBField.initUInt32(0);
   public final PBUInt32Field uint32_redchannel = PBField.initUInt32(0);
   public final PBUInt32Field uint32_resend = PBField.initUInt32(0);
-  public final PBRepeatField uint64_grap_uin = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> uint64_grap_uin = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBUInt64Field uint64_senduin = PBField.initUInt64(0L);
   
   static

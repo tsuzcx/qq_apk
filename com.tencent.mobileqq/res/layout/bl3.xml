@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/bwc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="34.0dip" android:layout_marginTop="@dimen/ap6">
+            <TextView android:textSize="17.0dip" android:textColor="#ffcecece" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/bwj" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ruw" />
+            <ProgressBar android:layout_gravity="center" android:id="@id/bwm" android:visibility="gone" android:layout_width="19.0dip" android:layout_height="19.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" />
+        </FrameLayout>
+        <com.qzone.widget.AsyncImageView android:layout_gravity="center_horizontal" android:id="@id/bwf" android:layout_width="241.0dip" android:layout_height="140.0dip" android:layout_marginTop="23.0dip" android:src="@drawable/g75" />
+    </LinearLayout>
+</RelativeLayout>

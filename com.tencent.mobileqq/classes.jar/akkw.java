@@ -1,22 +1,17 @@
-import android.content.Context;
-import android.os.Bundle;
-import com.tencent.mobileqq.utils.NewUpgradeDialog;
-import com.tencent.open.downloadnew.MyAppApi;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ar.ARRecord.ARRecordUtils.1;
 
 public class akkw
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public akkw(NewUpgradeDialog paramNewUpgradeDialog, Bundle paramBundle) {}
+  public akkw(ARRecordUtils.1 param1) {}
   
-  public void run()
-  {
-    MyAppApi.a().a((Context)this.jdField_a_of_type_ComTencentMobileqqUtilsNewUpgradeDialog.a.get(), this.jdField_a_of_type_AndroidOsBundle, false, false);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akkw
  * JD-Core Version:    0.7.0.1
  */

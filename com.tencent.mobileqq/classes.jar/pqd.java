@@ -1,25 +1,32 @@
-import android.os.Process;
-import com.tencent.component.network.utils.thread.AsyncTask;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfoTitle;
 
-public class pqd
-  extends pql
+public final class pqd
+  implements Parcelable.Creator<RecommendFollowInfoTitle>
 {
-  public pqd(AsyncTask paramAsyncTask)
+  public RecommendFollowInfoTitle a(Parcel paramParcel)
   {
-    super(null);
+    boolean bool = true;
+    RecommendFollowInfoTitle localRecommendFollowInfoTitle = new RecommendFollowInfoTitle();
+    localRecommendFollowInfoTitle.title = paramParcel.readString();
+    if (paramParcel.readInt() == 1) {}
+    for (;;)
+    {
+      localRecommendFollowInfoTitle.isAllFollowed = bool;
+      return localRecommendFollowInfoTitle;
+      bool = false;
+    }
   }
   
-  public Object call()
+  public RecommendFollowInfoTitle[] a(int paramInt)
   {
-    AsyncTask.a(this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadAsyncTask).set(true);
-    Process.setThreadPriority(10);
-    return AsyncTask.a(this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadAsyncTask, this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadAsyncTask.a(this.jdField_a_of_type_ArrayOfJavaLangObject));
+    return new RecommendFollowInfoTitle[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pqd
  * JD-Core Version:    0.7.0.1
  */

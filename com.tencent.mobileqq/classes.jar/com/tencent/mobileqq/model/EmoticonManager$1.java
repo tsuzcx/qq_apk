@@ -1,18 +1,21 @@
 package com.tencent.mobileqq.model;
 
+import arnz;
 import com.tencent.commonsdk.cache.QQConcurrentHashMap;
+import com.tencent.mobileqq.data.EmotionKeyword;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-class EmoticonManager$1
-  extends QQConcurrentHashMap
+public class EmoticonManager$1
+  extends QQConcurrentHashMap<String, CopyOnWriteArrayList<EmotionKeyword>>
 {
-  EmoticonManager$1(EmoticonManager paramEmoticonManager, int paramInt1, int paramInt2, int paramInt3)
+  public EmoticonManager$1(arnz paramarnz, int paramInt1, int paramInt2, int paramInt3)
   {
     super(paramInt1, paramInt2, paramInt3);
   }
   
-  public void clearMemory()
+  protected int sizeOf(String paramString, CopyOnWriteArrayList<EmotionKeyword> paramCopyOnWriteArrayList)
   {
-    clear();
+    return super.sizeOf(paramString, paramCopyOnWriteArrayList) * paramCopyOnWriteArrayList.size();
   }
 }
 

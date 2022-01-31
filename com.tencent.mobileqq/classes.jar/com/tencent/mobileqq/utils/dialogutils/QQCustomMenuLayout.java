@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.utils.dialogutils;
 
+import ajjy;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.Layout;
@@ -49,8 +50,8 @@ public class QQCustomMenuLayout
     this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(TypedValue.applyDimension(2, 15.0F, ((Resources)localObject).getDisplayMetrics()));
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838319);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("向左翻页");
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838601);
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajjy.a(2131644415));
     this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setPadding((int)(i * this.jdField_a_of_type_Float), (int)(this.jdField_a_of_type_Float * 10.0F), (int)(i * this.jdField_a_of_type_Float), (int)(this.jdField_a_of_type_Float * 10.0F));
@@ -58,8 +59,8 @@ public class QQCustomMenuLayout
     this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     addView(this.jdField_a_of_type_AndroidWidgetImageView, 0);
     this.jdField_c_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130838305);
-    if (!AppSetting.jdField_b_of_type_Boolean) {
+    this.jdField_c_of_type_AndroidWidgetImageView.setBackgroundResource(2130838585);
+    if (!AppSetting.c) {
       this.jdField_c_of_type_AndroidWidgetImageView.setContentDescription("leftIcon");
     }
     this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -67,8 +68,8 @@ public class QQCustomMenuLayout
     this.jdField_c_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     addView(this.jdField_c_of_type_AndroidWidgetImageView, 1);
     this.jdField_d_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_d_of_type_AndroidWidgetImageView.setBackgroundResource(2130838305);
-    if (!AppSetting.jdField_b_of_type_Boolean) {
+    this.jdField_d_of_type_AndroidWidgetImageView.setBackgroundResource(2130838585);
+    if (!AppSetting.c) {
       this.jdField_d_of_type_AndroidWidgetImageView.setContentDescription("rightIcon");
     }
     this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -77,8 +78,8 @@ public class QQCustomMenuLayout
     addView(this.jdField_d_of_type_AndroidWidgetImageView, 2);
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(paramContext);
     this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838324);
-    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription("向右翻页");
+    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838606);
+    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(ajjy.a(2131644401));
     this.jdField_b_of_type_AndroidWidgetImageView.setBackgroundDrawable(null);
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetImageView.setPadding((int)(i * this.jdField_a_of_type_Float), (int)(this.jdField_a_of_type_Float * 10.0F), (int)(i * this.jdField_a_of_type_Float), (int)(this.jdField_a_of_type_Float * 10.0F));

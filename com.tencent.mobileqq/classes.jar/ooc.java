@@ -1,17 +1,18 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController.DoodleOpListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.magic.models.AndroidPs;
 
-public class ooc
-  implements DoodleOpController.DoodleOpListener
+public final class ooc
+  implements Parcelable.Creator<AndroidPs>
 {
-  public ooc(DoodleLayout paramDoodleLayout) {}
-  
-  public void a()
+  public AndroidPs a(Parcel paramParcel)
   {
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
+    return new AndroidPs(paramParcel);
+  }
+  
+  public AndroidPs[] a(int paramInt)
+  {
+    return new AndroidPs[paramInt];
   }
 }
 

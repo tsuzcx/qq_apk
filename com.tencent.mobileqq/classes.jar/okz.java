@@ -1,57 +1,40 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.POIListRequestCallback;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.POIListRequestSession;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.takevideo.EditVideoPoiSearch;
-import com.tencent.biz.qqstory.takevideo.poilist.QQStoryPoiListAdapter;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class okz
-  implements LbsManager.POIListRequestCallback
+  implements URLDrawable.URLDrawableListener
 {
-  public okz(EditVideoPoiSearch paramEditVideoPoiSearch, String paramString) {}
+  public okz(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, int paramInt1, int paramInt2) {}
   
-  public void a(int paramInt, LbsManager.POIListRequestSession paramPOIListRequestSession, List paramList)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession = paramPOIListRequestSession;
-    if (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.isValidate()) {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyIMAXAdFragment", 2, "onLoadCanceled");
+    }
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyIMAXAdFragment", 2, "onLoadFialed");
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyIMAXAdFragment", 2, "onLoadProgressed =" + paramInt);
+    }
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (ReadInjoyIMAXAdFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment)) {
       return;
     }
-    if (paramInt == 0) {
-      if (paramPOIListRequestSession.a()) {
-        break label210;
-      }
-    }
-    label210:
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.d.setVisibility(0);
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.a(bool);
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.jdField_a_of_type_JavaUtilArrayList == null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession.b()) {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.jdField_a_of_type_JavaUtilArrayList.clear();
-      }
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.jdField_a_of_type_ComTencentBizQqstoryTakevideoPoilistQQStoryPoiListAdapter != null)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.jdField_a_of_type_ComTencentBizQqstoryTakevideoPoilistQQStoryPoiListAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.jdField_a_of_type_JavaUtilArrayList, null);
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.jdField_a_of_type_ComTencentBizQqstoryTakevideoPoilistQQStoryPoiListAdapter.notifyDataSetChanged();
-        if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-        {
-          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.a(this.jdField_a_of_type_JavaLangString);
-          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.d.setVisibility(4);
-        }
-      }
-      int i = paramInt;
-      if (paramInt == 0) {
-        i = 0;
-      }
-      StoryReportor.b("edit_video", "poi_list_success", 0, i, new String[0]);
-      return;
-    }
+    ReadInjoyIMAXAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInjoyIMAXAdFragment, this.jdField_a_of_type_Int, this.b);
   }
 }
 

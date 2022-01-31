@@ -1,40 +1,38 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.mobileqq.widget.AnimationTextView;
 
 public class rhs
-  implements Runnable
+  extends bafb
 {
-  public rhs(LiteTransferWrapper paramLiteTransferWrapper, boolean paramBoolean) {}
+  AnimationTextView a;
   
-  public void run()
+  public rhs(Context paramContext, int paramInt)
   {
-    try
-    {
-      if (LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper) != 0L)
-      {
-        QLog.i("dataline.LiteTTransferWrapper", 1, "destryOperator mLiteTransferOperator:" + LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper) + " threadId:" + Thread.currentThread().getId());
-        long l = LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper);
-        LiteTransferWrapper.access$202(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper, 0L);
-        this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.destryOperator(l, this.jdField_a_of_type_Boolean);
-      }
-      LiteTransferWrapper.access$002(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper, null);
-      LiteTransferWrapper.access$102(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper, null);
-      return;
+    super(paramContext, paramInt);
+    a();
+  }
+  
+  private void a()
+  {
+    this.a = ((AnimationTextView)findViewById(2131309994));
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.a != null) {
+      this.a.setText(paramString);
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("dataline.LiteTTransferWrapper", 2, "cannot endLiteTransfer, load litetranfer library error?" + QLog.getStackTraceString(localUnsatisfiedLinkError));
-        }
-      }
-    }
+  }
+  
+  public void setContentView(int paramInt)
+  {
+    super.setContentView(paramInt);
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rhs
  * JD-Core Version:    0.7.0.1
  */

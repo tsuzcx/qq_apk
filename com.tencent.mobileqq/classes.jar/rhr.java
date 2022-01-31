@@ -1,20 +1,16 @@
-import com.tencent.litetransfersdk.LiteTransferWrapper;
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class rhr
-  implements Runnable
+public abstract interface rhr
 {
-  public rhr(LiteTransferWrapper paramLiteTransferWrapper, String paramString) {}
+  public abstract View a(ViewGroup paramViewGroup);
   
-  public void run()
-  {
-    if (LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper) != 0L) {
-      this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SetThumbTempPathToJNI(LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_JavaLangString);
-    }
-  }
+  public abstract void a(rho paramrho1, @Nullable rho paramrho2, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rhr
  * JD-Core Version:    0.7.0.1
  */

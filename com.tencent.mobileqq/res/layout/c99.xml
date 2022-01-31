@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/e2h" android:background="@drawable/hco" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/b6h" android:minHeight="@dimen/b6h"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/action_sheet_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/xp" />
+    <ImageView android:id="@id/cr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:src="@drawable/hoz" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/d1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/d2" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="45.0dip" android:layout_marginTop="4.5dip" android:scaleType="fitXY" android:layout_toLeftOf="@id/action_sheet_button" />
+</RelativeLayout>

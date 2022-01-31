@@ -1,33 +1,20 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import cooperation.qlink.QQProxyForQlink;
-import cooperation.qlink.QlAndQQInterface.WorkState;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
 
 public class amup
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public amup(QQProxyForQlink paramQQProxyForQlink, ArrayList paramArrayList, Activity paramActivity, int paramInt, boolean paramBoolean) {}
+  public amup(DataReportSettingFragment paramDataReportSettingFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_CooperationQlinkQQProxyForQlink.a("0X8004855", 1);
-    this.jdField_a_of_type_CooperationQlinkQQProxyForQlink.a(QQProxyForQlink.a(this.jdField_a_of_type_CooperationQlinkQQProxyForQlink).mPeerUin, this.jdField_a_of_type_JavaUtilArrayList);
-    Bundle localBundle = new Bundle();
-    localBundle.putStringArrayList("string_filepaths", this.jdField_a_of_type_JavaUtilArrayList);
-    localBundle.putBoolean("STRING_CONTINUE_SEND_TO_", true);
-    QQProxyForQlink.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, localBundle);
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-    }
+    babr.a(this.a.getActivity(), 0, 2131493852, ajjy.a(2131636985), "", ajjy.a(2131636980), ajjy.a(2131636986), new amuq(this), new amur(this)).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amup
  * JD-Core Version:    0.7.0.1
  */

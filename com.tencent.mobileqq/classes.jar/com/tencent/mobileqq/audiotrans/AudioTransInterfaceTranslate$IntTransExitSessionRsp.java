@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class AudioTransInterfaceTranslate$IntTransExitSessionRsp
-  extends MessageMicro
+  extends MessageMicro<IntTransExitSessionRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[0], new String[0], new Object[0], IntTransExitSessionRsp.class);
 }

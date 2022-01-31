@@ -1,78 +1,68 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.drawer.ApolloDrawerContext;
-import com.tencent.mobileqq.apollo.drawer.ApolloWeatherInfo;
-import com.tencent.mobileqq.apollo.drawer.WeatherDrawerStatus;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vas.VasExtensionObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
-import org.json.JSONObject;
+import android.annotation.TargetApi;
+import android.graphics.SurfaceTexture;
+import android.os.Build.VERSION;
+import android.widget.MediaController;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
 public class tra
-  extends VasExtensionObserver
+  implements tst
 {
-  public tra(QQSettingMe paramQQSettingMe) {}
+  public tra(TextureVideoView paramTextureVideoView) {}
   
-  protected void c(boolean paramBoolean, Object paramObject)
+  @TargetApi(15)
+  public void a_(tso paramtso)
   {
-    if (paramBoolean) {
-      try
+    if (this.a.jdField_a_of_type_Tso == null) {}
+    label282:
+    do
+    {
+      int i;
+      do
       {
-        paramObject = (String)paramObject;
-        Object localObject1 = new JSONObject(paramObject);
-        int j = ((JSONObject)localObject1).optInt("actId");
-        int k = ((JSONObject)localObject1).optInt("priority", 99);
-        int i = ((JSONObject)localObject1).optInt("expts");
-        Object localObject2 = ((JSONObject)localObject1).optString("wording");
-        Object localObject3 = ((JSONObject)localObject1).optString("url");
-        String str = ((JSONObject)localObject1).optString("subDesc");
-        localObject1 = new ApolloWeatherInfo();
-        ((ApolloWeatherInfo)localObject1).jdField_a_of_type_Int = j;
-        ((ApolloWeatherInfo)localObject1).jdField_c_of_type_Int = k;
-        ((ApolloWeatherInfo)localObject1).jdField_b_of_type_Int = i;
-        ((ApolloWeatherInfo)localObject1).jdField_b_of_type_JavaLangString = ((String)localObject2);
-        ((ApolloWeatherInfo)localObject1).jdField_a_of_type_JavaLangString = ((String)localObject3);
-        ((ApolloWeatherInfo)localObject1).jdField_c_of_type_JavaLangString = str;
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext != null))
+        do
         {
-          localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getSharedPreferences("apollo_sp", 0);
-          localObject3 = Calendar.getInstance();
-          j = ((Calendar)localObject3).get(6);
-          k = ((Calendar)localObject3).get(11);
-          if (((SharedPreferences)localObject2).getInt(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c() + "sp_key_apollo_weather_flag", 0) == i)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("QQSettingRedesign", 2, "pull weatherInfo recycle expts=" + i);
-            }
+          return;
+          this.a.jdField_a_of_type_Int = 2;
+          TextureVideoView localTextureVideoView1 = this.a;
+          TextureVideoView localTextureVideoView2 = this.a;
+          this.a.jdField_d_of_type_Boolean = true;
+          localTextureVideoView2.c = true;
+          localTextureVideoView1.jdField_b_of_type_Boolean = true;
+          if (this.a.jdField_a_of_type_Tst != null) {
+            this.a.jdField_a_of_type_Tst.a_(this.a.jdField_a_of_type_Tso);
           }
-          else
-          {
-            ((SharedPreferences)localObject2).edit().putString("sp_key_apollo_weather_show", "").commit();
-            ((SharedPreferences)localObject2).edit().putInt(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c() + "sp_key_apollo_weather_flag", i).commit();
-            ((SharedPreferences)localObject2).edit().putString(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c() + "sp_key_apollo_weather_data", paramObject).commit();
-            paramObject = new WeatherDrawerStatus(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ApolloWeatherInfo)localObject1);
-            this.a.jdField_a_of_type_ComTencentMobileqqApolloDrawerApolloDrawerContext.a(paramObject);
-            i = (int)(System.currentTimeMillis() / 1000L);
-            VipUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "ask_weather", i, 0, new String[0]);
-            if (QLog.isColorLevel())
-            {
-              QLog.d("QQSettingRedesign", 2, "getWeaterInfo day=" + j + ",hour=" + k + ",info=" + ((ApolloWeatherInfo)localObject1).toString());
-              return;
-            }
+          if (this.a.jdField_a_of_type_AndroidWidgetMediaController != null) {
+            this.a.jdField_a_of_type_AndroidWidgetMediaController.setEnabled(true);
           }
-        }
-      }
-      catch (Exception paramObject) {}
-    }
+          this.a.jdField_d_of_type_Int = paramtso.c();
+          this.a.e = paramtso.d();
+          i = this.a.g;
+          if (i != 0) {
+            this.a.seekTo(i);
+          }
+          if ((this.a.jdField_d_of_type_Int == 0) || (this.a.e == 0)) {
+            break label282;
+          }
+          if (Build.VERSION.SDK_INT >= 15) {
+            this.a.getSurfaceTexture().setDefaultBufferSize(this.a.jdField_d_of_type_Int, this.a.e);
+          }
+          if (this.a.jdField_b_of_type_Int != 3) {
+            break;
+          }
+          this.a.start();
+        } while (this.a.jdField_a_of_type_AndroidWidgetMediaController == null);
+        this.a.jdField_a_of_type_AndroidWidgetMediaController.show();
+        return;
+      } while ((this.a.isPlaying()) || ((i == 0) && (this.a.getCurrentPosition() <= 0)) || (this.a.jdField_a_of_type_AndroidWidgetMediaController == null));
+      this.a.jdField_a_of_type_AndroidWidgetMediaController.show(0);
+      return;
+    } while (this.a.jdField_b_of_type_Int != 3);
+    this.a.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tra
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,75 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationRule;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationRule.BussinessData;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import com.tencent.biz.qqstory.takevideo.EditGifImage;
+import java.util.ArrayList;
 
 public class usa
-  implements Runnable
+  extends AsyncTask<ArrayList<Bitmap>, Integer, ArrayList<String>>
+  implements bgfd
 {
-  public usa(AioAnimationDetector paramAioAnimationDetector, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, int paramInt, AioAnimationRule paramAioAnimationRule) {}
+  private int jdField_a_of_type_Int;
   
-  public void run()
+  public usa(EditGifImage paramEditGifImage) {}
+  
+  protected ArrayList<String> a(ArrayList<Bitmap>... paramVarArgs)
   {
-    AIOAnimationConatiner localAIOAnimationConatiner = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner;
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    int j = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule.a == null) {}
-    for (int i = -1;; i = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule.a.jdField_a_of_type_Int)
-    {
-      localAIOAnimationConatiner.a(2, 300, new Object[] { localDrawable, Integer.valueOf(j), Integer.valueOf(i) });
-      return;
+    if ((paramVarArgs == null) || (paramVarArgs.length == 0) || (isCancelled())) {
+      return null;
     }
+    ArrayList<Bitmap> localArrayList1 = paramVarArgs[0];
+    ArrayList localArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = localArrayList1.size();
+    bgfc.a().a(this);
+    paramVarArgs = localArrayList;
+    if (!isCancelled()) {}
+    try
+    {
+      paramVarArgs = bgfc.a().a(localArrayList1);
+      localArrayList1.clear();
+      return paramVarArgs;
+    }
+    catch (Exception paramVarArgs)
+    {
+      for (;;)
+      {
+        paramVarArgs.printStackTrace();
+        paramVarArgs = localArrayList;
+      }
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    publishProgress(new Integer[] { Integer.valueOf(paramInt) });
+  }
+  
+  protected void a(ArrayList<String> paramArrayList)
+  {
+    if ((paramArrayList == null) || (paramArrayList.size() < 1) || (isCancelled())) {}
+    do
+    {
+      return;
+      EditGifImage.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage, paramArrayList);
+    } while (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage.e);
+    EditGifImage.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage.a.a.a(true, true);
+  }
+  
+  protected void a(Integer... paramVarArgs)
+  {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage.e) {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditGifImage.a.a.a(paramVarArgs[0].intValue(), this.jdField_a_of_type_Int);
+    }
+  }
+  
+  protected void onCancelled()
+  {
+    super.onCancelled();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     usa
  * JD-Core Version:    0.7.0.1
  */

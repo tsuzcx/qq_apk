@@ -1,7 +1,5 @@
 package com.immersion.touchsensesdk;
 
-import java.io.IOException;
-
 public abstract interface IConnection
 {
   public abstract void disconnect();
@@ -10,15 +8,13 @@ public abstract interface IConnection
   
   public abstract long getLastModified();
   
-  public abstract int getResponseCode()
-    throws IOException;
+  public abstract int getResponseCode();
   
-  public abstract byte[] readAllData()
-    throws IOException;
+  public abstract byte[] readAllData();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.immersion.touchsensesdk.IConnection
  * JD-Core Version:    0.7.0.1
  */

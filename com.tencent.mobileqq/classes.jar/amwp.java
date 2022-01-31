@@ -1,146 +1,98 @@
-import android.content.ContentResolver;
-import android.content.ContentValues;
-import android.database.Cursor;
-import android.net.Uri;
-import android.os.Bundle;
+import android.content.res.Resources;
+import android.os.Message;
 import android.text.TextUtils;
-import com.tencent.mobileqq.utils.SecurityUtile;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qqfav.QfavHelper.AsyncFavoritesProvider;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.dating.NearbyTransitActivity;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
 public class amwp
-  implements Runnable
+  extends ajkn
 {
-  public amwp(QfavHelper.AsyncFavoritesProvider paramAsyncFavoritesProvider) {}
+  public amwp(NearbyTransitActivity paramNearbyTransitActivity) {}
   
-  public void run()
+  protected void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, String paramString4, Boolean paramBoolean1)
   {
-    boolean bool2 = true;
-    boolean bool5 = false;
-    boolean bool4 = false;
-    boolean bool1 = false;
-    if (this.a.a == null)
-    {
-      this.a.a(false, this.a.a);
+    amvy.a("NearbyTransitActivity", new Object[] { "onJoinHotChat", Boolean.valueOf(NearbyTransitActivity.a(this.a)), Boolean.valueOf(paramBoolean), paramString1 });
+    NearbyTransitActivity.a("onJoinHotChat", 1);
+    if (NearbyTransitActivity.a(this.a)) {
       return;
     }
-    long l1 = this.a.a.getLong("req_opt_type", -1L);
-    long l2 = this.a.a.getLong("req_biz_type", -1L);
-    Object localObject1 = this.a.a.getString("req_biz_key");
-    Object localObject3 = this.a.a.getString("req_fav_uin");
-    if ((-1L == l1) || (-1L == l2) || (TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject3)))
+    NearbyTransitActivity.a(this.a).removeMessages(2);
+    NearbyTransitActivity.a(this.a).removeMessages(5);
+    if (this.a.jdField_a_of_type_Bbmv != null) {
+      this.a.jdField_a_of_type_Bbmv.b();
+    }
+    paramBoolean1 = Message.obtain();
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString1))) {
+      paramBoolean1.what = 3;
+    }
+    for (paramBoolean1.obj = new Object[] { paramString1, paramString2, paramString4 };; paramBoolean1.obj = paramString1)
     {
-      this.a.a(false, this.a.a);
+      NearbyTransitActivity.a(this.a).sendMessage(paramBoolean1);
       return;
+      paramString1 = paramString3;
+      if (TextUtils.isEmpty(paramString3)) {
+        paramString1 = NearbyTransitActivity.jdField_a_of_type_JavaLangString;
+      }
+      paramBoolean1.what = 1;
+      paramBoolean1.arg1 = 11;
     }
-    Object localObject2 = BaseApplication.getContext().getContentResolver();
-    if (localObject2 == null)
+  }
+  
+  public void a(boolean paramBoolean, HotChatInfo paramHotChatInfo, Common.WifiPOIInfo paramWifiPOIInfo, int paramInt, String paramString)
+  {
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString))
     {
-      this.a.a(false, this.a.a);
+      str = paramString;
+      if (paramHotChatInfo != null) {
+        str = paramHotChatInfo.name;
+      }
+    }
+    if ((NearbyTransitActivity.a(this.a) == 1) && (!azzz.a(str, NearbyTransitActivity.a(this.a)))) {}
+    do
+    {
       return;
+      NearbyTransitActivity.a("onQuickJoinHotChat", 1);
+      amvy.a("NearbyTransitActivity", new Object[] { "onQuickJoinHotChat", Boolean.valueOf(NearbyTransitActivity.a(this.a)), Boolean.valueOf(paramBoolean), Integer.valueOf(NearbyTransitActivity.a(this.a)), Integer.valueOf(paramInt), str, paramHotChatInfo, paramWifiPOIInfo });
+    } while (NearbyTransitActivity.a(this.a));
+    NearbyTransitActivity.a(this.a).removeMessages(2);
+    NearbyTransitActivity.a(this.a).removeMessages(5);
+    if (this.a.jdField_a_of_type_Bbmv != null) {
+      this.a.jdField_a_of_type_Bbmv.b();
     }
-    Bundle localBundle = new Bundle(this.a.a);
-    boolean bool3;
-    if (1L == l1) {
-      bool3 = bool4;
+    paramWifiPOIInfo = Message.obtain();
+    if (paramBoolean) {
+      if ((paramHotChatInfo != null) && ((paramInt == 1) || (paramInt == 2)))
+      {
+        paramWifiPOIInfo.what = 3;
+        paramWifiPOIInfo.obj = new Object[] { paramHotChatInfo.troopUin, paramHotChatInfo.troopCode, paramHotChatInfo.name };
+      }
     }
-    for (;;)
+    while ((NearbyTransitActivity.b(this.a) == 1) && (paramWifiPOIInfo.what == 3) && (paramHotChatInfo.mFissionRoomNum > 0))
     {
-      try
-      {
-        localObject3 = Uri.parse("content://qq.favorites/biz_related/" + (String)localObject3);
-        bool3 = bool4;
-        str = "" + l2;
-        bool3 = bool4;
-        localObject1 = ((ContentResolver)localObject2).query((Uri)localObject3, new String[] { "mUuid" }, "mBizType=? and mBizKey=?", new String[] { str, localObject1 }, null);
-        bool2 = bool1;
-        if (localObject1 != null)
-        {
-          bool2 = bool1;
-          bool3 = bool4;
-          if (((Cursor)localObject1).moveToFirst())
-          {
-            bool3 = bool4;
-            localObject2 = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndex("mUuid"));
-            bool2 = bool1;
-            if (localObject2 == null) {}
-          }
-        }
-      }
-      catch (Exception localException1)
-      {
-        String str;
-        ContentValues localContentValues;
-        bool1 = bool3;
-        localException1.printStackTrace();
-        continue;
-      }
-      try
-      {
-        localBundle.putString("rsp_fav_id", SecurityUtile.b((String)localObject2));
-        bool2 = true;
-        bool1 = bool2;
-        if (localObject1 != null)
-        {
-          bool3 = bool2;
-          ((Cursor)localObject1).close();
-          bool1 = bool2;
-        }
-        this.a.a(bool1, localBundle);
-        return;
-      }
-      catch (Exception localException2)
-      {
-        bool1 = true;
-        continue;
-      }
-      if (2L == l1)
-      {
-        bool3 = bool4;
-        if (((ContentResolver)localObject2).delete(Uri.parse("content://qq.favorites/biz_related/" + (String)localObject3), "mBizType=? and mBizKey=?", new String[] { "" + l2, localObject1 }) <= 0) {
-          break label632;
-        }
-        bool1 = true;
-        break label629;
-      }
-      bool1 = bool5;
-      if (3L == l1)
-      {
-        bool3 = bool4;
-        str = this.a.a.getString("req_fav_id");
-        bool1 = bool5;
-        bool3 = bool4;
-        if (!TextUtils.isEmpty(str))
-        {
-          bool3 = bool4;
-          localContentValues = new ContentValues();
-          bool3 = bool4;
-          localContentValues.put("mBizType", Long.valueOf(l2));
-          bool3 = bool4;
-          localContentValues.put("mBizKey", (String)localObject1);
-          bool3 = bool4;
-          localContentValues.put("mUuid", str);
-          bool3 = bool4;
-          localObject1 = ((ContentResolver)localObject2).insert(Uri.parse("content://qq.favorites/biz_related/" + (String)localObject3), localContentValues);
-          if (localObject1 != null) {}
-          for (bool1 = bool2;; bool1 = false) {
-            break;
-          }
-        }
-      }
+      asfl.a("NearbyTransitActivity", new Object[] { "onQuickJoinHotChat allocate room success,is to showing entering tip " });
+      paramString = Message.obtain();
+      paramString.what = 5;
+      paramString.obj = String.format(this.a.getResources().getString(2131627661), new Object[] { Integer.valueOf(paramHotChatInfo.mFissionRoomNum) });
+      NearbyTransitActivity.a(this.a).sendMessage(paramString);
+      NearbyTransitActivity.a(this.a).sendMessageDelayed(paramWifiPOIInfo, 600L);
+      return;
+      paramWifiPOIInfo.what = 1;
+      paramWifiPOIInfo.arg1 = 5;
+      paramWifiPOIInfo.obj = NearbyTransitActivity.jdField_a_of_type_JavaLangString;
+      continue;
+      paramWifiPOIInfo.what = 1;
+      paramWifiPOIInfo.arg1 = (paramInt + 100);
+      paramWifiPOIInfo.obj = ascr.a(paramInt);
     }
-    for (;;)
-    {
-      label629:
-      break;
-      label632:
-      bool1 = false;
-    }
+    NearbyTransitActivity.a(this.a).sendMessage(paramWifiPOIInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amwp
  * JD-Core Version:    0.7.0.1
  */

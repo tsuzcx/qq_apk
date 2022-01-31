@@ -1,23 +1,77 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.PinnedHeadAndFootExpandableListView;
-import com.tencent.widget.PinnedHeadAndFootExpandableListView.FooterExpandListViewListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class amkj
-  implements View.OnClickListener
+  extends alzl<amkk>
 {
-  public amkj(PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView1, PinnedHeadAndFootExpandableListView paramPinnedHeadAndFootExpandableListView2) {}
-  
-  public void onClick(View paramView)
+  public int a()
   {
-    if (this.b.jdField_a_of_type_ComTencentWidgetPinnedHeadAndFootExpandableListView$FooterExpandListViewListener != null) {
-      this.b.jdField_a_of_type_ComTencentWidgetPinnedHeadAndFootExpandableListView$FooterExpandListViewListener.a(this.a, this.b.jdField_a_of_type_AndroidViewView, this.b.f);
+    return 589;
+  }
+  
+  @NonNull
+  public amkk a(int paramInt)
+  {
+    return new amkk();
+  }
+  
+  @Nullable
+  public amkk a(alzs[] paramArrayOfalzs)
+  {
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
+    {
+      amkk localamkk = amkk.a(paramArrayOfalzs[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.i("UinSearchConfProcessor", 2, "onParsed: " + paramArrayOfalzs[0].a);
+      }
+      return localamkk;
     }
+    return new amkk();
+  }
+  
+  public Class<amkk> a()
+  {
+    return amkk.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("UinSearchConfProcessor", 2, "onReqFailed: " + paramInt);
+    }
+  }
+  
+  public void a(amkk paramamkk)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("UinSearchConfProcessor", 2, "onUpdate");
+    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amkj
  * JD-Core Version:    0.7.0.1
  */

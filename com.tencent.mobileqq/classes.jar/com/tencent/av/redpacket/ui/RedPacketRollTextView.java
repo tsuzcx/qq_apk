@@ -9,10 +9,9 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.TextSwitcher;
 import com.tencent.mobileqq.app.ThreadManager;
-import jnv;
-import jnw;
-import jnx;
-import jny;
+import lle;
+import llf;
+import llg;
 
 public class RedPacketRollTextView
   extends TextSwitcher
@@ -20,9 +19,9 @@ public class RedPacketRollTextView
 {
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  private jnx jdField_a_of_type_Jnx;
-  private jny jdField_a_of_type_Jny = new jny(this);
-  public boolean a;
+  private llf jdField_a_of_type_Llf;
+  private llg jdField_a_of_type_Llg = new llg(this);
+  protected boolean a;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean = true;
   private int c;
@@ -115,12 +114,12 @@ public class RedPacketRollTextView
     }
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     a(paramBoolean);
-    setFactory(new jnv(this, paramBoolean));
+    setFactory(new lle(this, paramBoolean));
   }
   
   public void b()
   {
-    ThreadManager.postImmediately(new jnw(this), null, true);
+    ThreadManager.postImmediately(new RedPacketRollTextView.ContentSupplyThread(this), null, true);
   }
   
   public void onAnimationEnd(Animation paramAnimation)
@@ -138,9 +137,9 @@ public class RedPacketRollTextView
     Log.e("RollTextView", "WL_DEBUG onAnimationStart");
   }
   
-  public void setListener(jnx paramjnx)
+  public void setListener(llf paramllf)
   {
-    this.jdField_a_of_type_Jnx = paramjnx;
+    this.jdField_a_of_type_Llf = paramllf;
   }
   
   public void setScope(int paramInt1, int paramInt2)
@@ -155,7 +154,7 @@ public class RedPacketRollTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.redpacket.ui.RedPacketRollTextView
  * JD-Core Version:    0.7.0.1
  */

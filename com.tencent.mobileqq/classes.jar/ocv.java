@@ -1,32 +1,18 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.config.AladdinConfigServlet.ConfigResult;
 
-public class ocv
-  extends QQUIEventReceiver
+public final class ocv
+  implements Parcelable.Creator<AladdinConfigServlet.ConfigResult>
 {
-  public ocv(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
+  public AladdinConfigServlet.ConfigResult a(Parcel paramParcel)
   {
-    super(paramStoryMessageListActivity);
+    return new AladdinConfigServlet.ConfigResult(paramParcel);
   }
   
-  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
+  public AladdinConfigServlet.ConfigResult[] a(int paramInt)
   {
-    if (paramUpdateUserInfoEvent.errorInfo.isSuccess())
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i(this.TAG, 2, "get userinfo come back. >>>>>> " + paramUpdateUserInfoEvent.a);
-      }
-      paramStoryMessageListActivity.e();
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return GetUserInfoHandler.UpdateUserInfoEvent.class;
+    return new AladdinConfigServlet.ConfigResult[paramInt];
   }
 }
 

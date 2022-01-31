@@ -1,21 +1,16 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.webview.build.WebViewBaseBuilder;
-
-public class akuc
-  implements View.OnClickListener
+public abstract interface akuc
 {
-  public akuc(WebViewBaseBuilder paramWebViewBaseBuilder) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    this.a.h.finish();
-  }
+  public abstract void a(long paramLong1, long paramLong2);
+  
+  public abstract void a(boolean paramBoolean, akud paramakud);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akuc
  * JD-Core Version:    0.7.0.1
  */

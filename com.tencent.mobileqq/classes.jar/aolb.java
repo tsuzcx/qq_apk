@@ -1,104 +1,87 @@
-import android.graphics.Bitmap;
-import android.media.MediaMetadataRetriever;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
 class aolb
-  extends aokz
+  extends aoko
 {
-  public aolb(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong1, long paramLong2, aola paramaola)
+  public aolb(aokk paramaokk)
   {
-    super(paramString, paramInt1, paramInt2, paramInt3, paramInt4, paramLong1, paramLong2, paramaola);
+    super(paramaokk);
   }
   
-  private void c()
+  protected String a()
   {
-    for (;;)
-    {
-      try
-      {
-        localMediaMetadataRetriever1 = new MediaMetadataRetriever();
-        try
-        {
-          localMediaMetadataRetriever1.setDataSource(this.jdField_a_of_type_JavaLangString);
-          this.e = -1;
-          if (QLog.isColorLevel()) {
-            QLog.d("VFLDecodeRunnable", 2, "runWithRetriever, start");
-          }
-          localMediaMetadataRetriever2 = localMediaMetadataRetriever1;
-          if (Thread.interrupted()) {
-            continue;
-          }
-          localMediaMetadataRetriever2 = localMediaMetadataRetriever1;
-          if (a()) {
-            continue;
-          }
-          localMediaMetadataRetriever2 = localMediaMetadataRetriever1;
-          if (this.e >= this.jdField_c_of_type_Int - 1) {
-            continue;
-          }
-          l = a();
-          Bitmap localBitmap1 = localMediaMetadataRetriever1.getFrameAtTime(l, 3);
-          if (localBitmap1 != null) {
-            continue;
-          }
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("VFLDecodeRunnable", 2, "runWithRetriever return null! time:" + l);
-          continue;
-          localException1.printStackTrace();
-        }
-        catch (Exception localException1) {}
-      }
-      catch (Exception localException2)
-      {
-        MediaMetadataRetriever localMediaMetadataRetriever2;
-        long l;
-        Bitmap localBitmap2;
-        MediaMetadataRetriever localMediaMetadataRetriever1 = null;
-        continue;
-      }
-      localMediaMetadataRetriever2 = localMediaMetadataRetriever1;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("VFLDecodeRunnable", 2, "runWithRetriever Load video frame execption:" + localException1);
-        localMediaMetadataRetriever2 = localMediaMetadataRetriever1;
-      }
-      if (localMediaMetadataRetriever2 != null) {
-        localMediaMetadataRetriever2.release();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("VFLDecodeRunnable", 2, "runWithRetriever, end");
-      }
-      return;
-      localBitmap2 = a(localException1);
-      a(this.e, l, localBitmap2);
-    }
+    return "StateLocalFailedWhenChangeToOff";
   }
   
-  public void run()
+  protected void a(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VFLDecodeRunnable", 2, "RetrieverDecodeRunnable run");
-    }
-    b();
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (this.jdField_b_of_type_Int <= 0) || (this.jdField_a_of_type_Int <= 0) || (this.jdField_c_of_type_Long - this.jdField_b_of_type_Long <= 0L) || (this.jdField_c_of_type_Int <= 0))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      a(1);
-      if (QLog.isColorLevel()) {
-        QLog.d("VFLDecodeRunnable", 2, "Retriever param error, path:" + this.jdField_a_of_type_JavaLangString + " height:" + this.jdField_b_of_type_Int + " width:" + this.jdField_a_of_type_Int + "time:" + this.jdField_b_of_type_Long + "-" + this.jdField_c_of_type_Long + " Count:" + this.jdField_c_of_type_Int);
-      }
+    b(paramInt1, paramInt2);
+  }
+  
+  protected void a(int paramInt, String paramString)
+  {
+    if (a("onSenderUploadException")) {
       return;
     }
-    c();
-    a(true);
+    aokk.a(this.jdField_a_of_type_Aokk, 11, 12, true);
+    a("StateExcepInvalidWhenChangeToOff");
+    this.jdField_a_of_type_Aoko = new aokx(this.jdField_a_of_type_Aokk);
   }
+  
+  protected void a(long paramLong)
+  {
+    b(paramLong);
+  }
+  
+  protected boolean a()
+  {
+    if (a("onRecvOnLineFile")) {
+      return false;
+    }
+    aokk.a(this.jdField_a_of_type_Aokk, 9, 11);
+    aokk.a(this.jdField_a_of_type_Aokk, 9, 14, false);
+    a("StateUploadingWhenRecv");
+    this.jdField_a_of_type_Aoko = new aolq(this.jdField_a_of_type_Aokk);
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 16, null, 0, null);
+    return true;
+  }
+  
+  protected boolean a(int paramInt, String paramString, long paramLong)
+  {
+    if (a("onSenderUploadCompleted")) {
+      return false;
+    }
+    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    localFileManagerEntity.Uuid = new String(paramString);
+    localFileManagerEntity.fProgress = 0.0F;
+    if ((apck.a(localFileManagerEntity.fileName) == 0) && (localFileManagerEntity.Uuid != null) && (localFileManagerEntity.Uuid.length() != 0)) {
+      this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity, 7);
+    }
+    localFileManagerEntity.setCloudType(1);
+    aokk.a(this.jdField_a_of_type_Aokk, 11, 13, true);
+    a("StateUploadoneWhenChangeToOff");
+    this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 22, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId), Long.valueOf(localFileManagerEntity.nOLfileSessionId) });
+    this.jdField_a_of_type_Aoko = new aolr(this.jdField_a_of_type_Aokk);
+    return true;
+  }
+  
+  protected void b()
+  {
+    if (a("onSenderCancelUpload")) {
+      return;
+    }
+    aokk.a(this.jdField_a_of_type_Aokk, 11, 9, true);
+    a("StateCancelUploadWhenRecv");
+    this.jdField_a_of_type_Aoko = new aokr(this.jdField_a_of_type_Aokk);
+  }
+  
+  protected void j() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aolb
  * JD-Core Version:    0.7.0.1
  */

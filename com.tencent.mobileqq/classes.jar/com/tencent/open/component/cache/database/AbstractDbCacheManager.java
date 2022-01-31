@@ -5,7 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import com.tencent.open.component.cache.util.LocalConfig;
+import bcft;
+import bcfu;
+import bcfv;
+import bcfw;
+import bcgc;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -13,18 +17,18 @@ import java.util.Iterator;
 public abstract class AbstractDbCacheManager
 {
   protected long a;
-  protected DbCacheData.DbCreator a;
-  protected DbCacheDatabase a;
+  protected bcfu a;
+  protected bcfw a;
   protected String a;
-  protected ArrayList a;
+  protected ArrayList<bcfv> a;
   protected boolean a;
   protected boolean b;
   
-  protected AbstractDbCacheManager(Context paramContext, Class paramClass, long paramLong, String paramString)
+  protected AbstractDbCacheManager(Context paramContext, Class<? extends bcft> paramClass, long paramLong, String paramString)
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheDatabase = DbCacheDatabase.a(paramContext.getApplicationContext(), paramLong);
-    this.jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheDatabase.a(hashCode());
+    this.jdField_a_of_type_Bcfw = bcfw.a(paramContext.getApplicationContext(), paramLong);
+    this.jdField_a_of_type_Bcfw.a(hashCode());
     this.jdField_a_of_type_Long = paramLong;
     this.jdField_a_of_type_JavaLangString = paramString;
     a(paramClass);
@@ -32,22 +36,22 @@ public abstract class AbstractDbCacheManager
     a(a());
   }
   
-  static String a(long paramLong, String paramString)
+  public static String a(long paramLong, String paramString)
   {
     return String.valueOf(paramLong) + "_" + paramString;
   }
   
-  final int a(SQLiteDatabase paramSQLiteDatabase, DbCacheData paramDbCacheData, String paramString)
+  final int a(SQLiteDatabase paramSQLiteDatabase, bcft parambcft, String paramString)
   {
     ContentValues localContentValues = new ContentValues();
-    paramDbCacheData.a(localContentValues);
+    parambcft.a(localContentValues);
     return paramSQLiteDatabase.update(this.jdField_a_of_type_JavaLangString, localContentValues, paramString, null);
   }
   
   final Cursor a(SQLiteDatabase paramSQLiteDatabase, String paramString1, String paramString2)
   {
     if (paramString2 == null) {
-      paramString2 = this.jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheData$DbCreator.a();
+      paramString2 = this.jdField_a_of_type_Bcfu.a();
     }
     for (;;)
     {
@@ -86,10 +90,10 @@ public abstract class AbstractDbCacheManager
     if (a()) {
       return null;
     }
-    return this.jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheDatabase.getWritableDatabase();
+    return this.jdField_a_of_type_Bcfw.getWritableDatabase();
   }
   
-  protected DbCacheData a(Cursor paramCursor, int paramInt)
+  protected bcft a(Cursor paramCursor, int paramInt)
   {
     if ((paramCursor == null) || (paramCursor.isClosed())) {}
     for (;;)
@@ -100,7 +104,7 @@ public abstract class AbstractDbCacheManager
         {
           boolean bool = paramCursor.moveToPosition(paramInt);
           if (bool) {
-            return this.jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheData$DbCreator.a(paramCursor);
+            return this.jdField_a_of_type_Bcfu.a(paramCursor);
           }
         }
         catch (Exception paramCursor)
@@ -112,14 +116,14 @@ public abstract class AbstractDbCacheManager
     return null;
   }
   
-  final String a()
+  public final String a()
   {
     return a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
   }
   
   protected abstract void a();
   
-  protected void a(int paramInt, DbCacheData... paramVarArgs)
+  protected void a(int paramInt, bcft... paramVarArgs)
   {
     if (a()) {}
     SQLiteDatabase localSQLiteDatabase;
@@ -232,19 +236,19 @@ public abstract class AbstractDbCacheManager
     a(paramSQLiteDatabase, null);
   }
   
-  final void a(SQLiteDatabase paramSQLiteDatabase, DbCacheData paramDbCacheData)
+  final void a(SQLiteDatabase paramSQLiteDatabase, bcft parambcft)
   {
     ContentValues localContentValues = new ContentValues();
-    paramDbCacheData.a(localContentValues);
+    parambcft.a(localContentValues);
     paramSQLiteDatabase.replaceOrThrow(this.jdField_a_of_type_JavaLangString, null, localContentValues);
   }
   
-  final void a(SQLiteDatabase paramSQLiteDatabase, String paramString)
+  protected final void a(SQLiteDatabase paramSQLiteDatabase, String paramString)
   {
     paramSQLiteDatabase.delete(this.jdField_a_of_type_JavaLangString, paramString, null);
   }
   
-  protected void a(DbCacheData paramDbCacheData, String paramString)
+  protected void a(bcft parambcft, String paramString)
   {
     int m = 0;
     int n = 0;
@@ -259,7 +263,7 @@ public abstract class AbstractDbCacheManager
     for (;;)
     {
       return;
-      if (paramDbCacheData != null)
+      if (parambcft != null)
       {
         localSQLiteDatabase = a();
         if (localSQLiteDatabase == null) {
@@ -274,41 +278,41 @@ public abstract class AbstractDbCacheManager
             localSQLiteDatabase.beginTransaction();
             j = m;
             k = n;
-            if (a(localSQLiteDatabase, paramDbCacheData, paramString) > 0) {
+            if (a(localSQLiteDatabase, parambcft, paramString) > 0) {
               i = 1;
             }
             j = i;
             k = i;
             localSQLiteDatabase.setTransactionSuccessful();
           }
-          catch (SQLException paramDbCacheData)
+          catch (SQLException parambcft)
           {
-            paramDbCacheData = paramDbCacheData;
-            paramDbCacheData.printStackTrace();
+            parambcft = parambcft;
+            parambcft.printStackTrace();
             try
             {
               localSQLiteDatabase.endTransaction();
               i = j;
             }
-            catch (Exception paramDbCacheData)
+            catch (Exception parambcft)
             {
-              paramDbCacheData.printStackTrace();
+              parambcft.printStackTrace();
               i = j;
             }
             continue;
           }
-          catch (Exception paramDbCacheData)
+          catch (Exception parambcft)
           {
-            paramDbCacheData = paramDbCacheData;
-            paramDbCacheData.printStackTrace();
+            parambcft = parambcft;
+            parambcft.printStackTrace();
             try
             {
               localSQLiteDatabase.endTransaction();
               i = k;
             }
-            catch (Exception paramDbCacheData)
+            catch (Exception parambcft)
             {
-              paramDbCacheData.printStackTrace();
+              parambcft.printStackTrace();
               i = k;
             }
             continue;
@@ -323,9 +327,9 @@ public abstract class AbstractDbCacheManager
             b();
             return;
           }
-          catch (Exception paramDbCacheData)
+          catch (Exception parambcft)
           {
-            paramDbCacheData.printStackTrace();
+            parambcft.printStackTrace();
           }
         }
       }
@@ -333,7 +337,7 @@ public abstract class AbstractDbCacheManager
     try
     {
       localSQLiteDatabase.endTransaction();
-      throw paramDbCacheData;
+      throw parambcft;
     }
     catch (Exception paramString)
     {
@@ -344,12 +348,12 @@ public abstract class AbstractDbCacheManager
     }
   }
   
-  protected void a(Class paramClass)
+  protected void a(Class<? extends bcft> paramClass)
   {
     String str = paramClass.getName();
     try
     {
-      paramClass = (DbCacheData.DbCreator)paramClass.getField("DB_CREATOR").get(null);
+      paramClass = (bcfu)paramClass.getField("DB_CREATOR").get(null);
       if (paramClass == null) {
         throw new AbstractDbCacheManager.BadCacheDataException("CacheData protocol requires a CacheData.Creator object called  CREATOR on class " + str);
       }
@@ -366,7 +370,7 @@ public abstract class AbstractDbCacheManager
     {
       throw new AbstractDbCacheManager.BadCacheDataException("CacheData protocol requires a CacheData.Creator object called  CacheData on class " + str);
     }
-    this.jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheData$DbCreator = paramClass;
+    this.jdField_a_of_type_Bcfu = paramClass;
     paramClass = paramClass.a();
     if (paramClass != null)
     {
@@ -430,11 +434,11 @@ public abstract class AbstractDbCacheManager
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      DbCacheData.Structure localStructure = (DbCacheData.Structure)localIterator.next();
+      bcfv localbcfv = (bcfv)localIterator.next();
       localStringBuilder.append(',');
-      localStringBuilder.append(localStructure.a());
+      localStringBuilder.append(localbcfv.a());
       localStringBuilder.append(' ');
-      localStringBuilder.append(localStructure.b());
+      localStringBuilder.append(localbcfv.b());
     }
     localStringBuilder.append(')');
     return localStringBuilder.toString();
@@ -458,8 +462,8 @@ public abstract class AbstractDbCacheManager
   
   protected void c()
   {
-    int i = this.jdField_a_of_type_ComTencentOpenComponentCacheDatabaseDbCacheData$DbCreator.a();
-    int j = LocalConfig.a(this.jdField_a_of_type_JavaLangString + "_cache_db_version", -1, this.jdField_a_of_type_Long);
+    int i = this.jdField_a_of_type_Bcfu.a();
+    int j = bcgc.a(this.jdField_a_of_type_JavaLangString + "_cache_db_version", -1, this.jdField_a_of_type_Long);
     SQLiteDatabase localSQLiteDatabase;
     if ((j == -1) || (j != i))
     {
@@ -469,7 +473,7 @@ public abstract class AbstractDbCacheManager
     try
     {
       b(localSQLiteDatabase);
-      LocalConfig.a(this.jdField_a_of_type_JavaLangString + "_cache_db_version", i, this.jdField_a_of_type_Long);
+      bcgc.a(this.jdField_a_of_type_JavaLangString + "_cache_db_version", i, this.jdField_a_of_type_Long);
       return;
     }
     catch (SQLException localSQLException)
@@ -490,7 +494,7 @@ public abstract class AbstractDbCacheManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.component.cache.database.AbstractDbCacheManager
  * JD-Core Version:    0.7.0.1
  */

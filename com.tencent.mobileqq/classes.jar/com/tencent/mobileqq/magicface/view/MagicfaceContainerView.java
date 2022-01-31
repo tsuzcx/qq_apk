@@ -1,19 +1,20 @@
 package com.tencent.mobileqq.magicface.view;
 
-import aemq;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
+import arht;
+import arhu;
 
 public class MagicfaceContainerView
   extends RelativeLayout
 {
-  GestureDetector.SimpleOnGestureListener jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new aemq(this);
+  GestureDetector.SimpleOnGestureListener jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new arht(this);
   GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  public MagicfaceContainerView.MagicfaceGestureListener a;
+  public arhu a;
   boolean jdField_a_of_type_Boolean = false;
   
   public MagicfaceContainerView(Context paramContext)
@@ -45,9 +46,9 @@ public class MagicfaceContainerView
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  public void setMagicfaceGestureListener(MagicfaceContainerView.MagicfaceGestureListener paramMagicfaceGestureListener)
+  public void setMagicfaceGestureListener(arhu paramarhu)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceContainerView$MagicfaceGestureListener = paramMagicfaceGestureListener;
+    this.jdField_a_of_type_Arhu = paramarhu;
   }
   
   public void setTouchEffect(boolean paramBoolean)

@@ -1,22 +1,10 @@
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
-import com.tencent.util.VersionUtils;
+import com.tencent.image.URLImageView;
 
-public class nbx
-  implements View.OnSystemUiVisibilityChangeListener
+class nbx
 {
-  public nbx(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
   
-  public void onSystemUiVisibilityChange(int paramInt)
-  {
-    if (paramInt == 4102) {}
-    while (!VersionUtils.e()) {
-      return;
-    }
-    this.a.getWindow().getDecorView().setSystemUiVisibility(4102);
-  }
+  nbx(nbw paramnbw) {}
 }
 
 

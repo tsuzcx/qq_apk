@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.startup.step;
 
-import com.tencent.mobileqq.startup.director.StartupDirector;
+import awoa;
 import mqq.app.AppActivity;
 
 public class LoadUi
-  extends Step
+  extends OnceIfSuccessStep
 {
-  protected boolean a()
+  protected boolean doStep()
   {
-    AppActivity localAppActivity = this.a.a;
+    AppActivity localAppActivity = this.mDirector.a;
     if (localAppActivity != null) {
       localAppActivity.preloadUi();
     }

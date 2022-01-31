@@ -1,19 +1,35 @@
-import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.video.OrientationDetector;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-public class mdd
-  implements Runnable
+class mdd
+  extends Handler
 {
-  public mdd(OrientationDetector paramOrientationDetector, Activity paramActivity) {}
+  final String jdField_a_of_type_JavaLangString;
+  WeakReference<mdc> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void run()
+  mdd(String paramString, mdc parammdc)
   {
-    OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector, this.jdField_a_of_type_AndroidAppActivity.getRequestedOrientation());
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parammdc);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    mdc localmdc = (mdc)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localmdc != null) {}
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    mdc.a(localmdc);
+    krx.c(this.jdField_a_of_type_JavaLangString, "ITEM_DISPEAR");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mdd
  * JD-Core Version:    0.7.0.1
  */

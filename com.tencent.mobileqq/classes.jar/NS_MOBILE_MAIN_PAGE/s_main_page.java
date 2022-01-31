@@ -9,15 +9,21 @@ import java.util.Map;
 public final class s_main_page
   extends JceStruct
 {
-  static Map cache_prompt_msg;
+  static Map<Integer, String> cache_prompt_msg;
   static s_question cache_question = new s_question();
   public String addblack_msg = "";
+  public String family_des = "";
+  public String family_url = "";
+  public String family_url_traceinfo = "";
   public long follow_flag;
+  public int frd_num;
   public String info_askfor_friend = "";
   public int is_askfor_friend;
   public int is_black;
   public int is_both_friend;
   public boolean is_concerned = true;
+  public boolean is_family_open;
+  public boolean is_flower_switch_open;
   public int is_friend;
   public int is_host_gray_follow_usr;
   public int is_host_gray_tongcheng_usr;
@@ -33,7 +39,7 @@ public final class s_main_page
   public int is_visitor_gray_follow_usr;
   public int is_visitor_gray_tongcheng_usr;
   public String msg = "";
-  public Map prompt_msg;
+  public Map<Integer, String> prompt_msg;
   public s_question question;
   public int relation;
   public int visit_right;
@@ -46,7 +52,7 @@ public final class s_main_page
   
   public s_main_page() {}
   
-  public s_main_page(int paramInt1, int paramInt2, String paramString1, int paramInt3, s_question params_question, String paramString2, boolean paramBoolean1, int paramInt4, int paramInt5, int paramInt6, String paramString3, Map paramMap, boolean paramBoolean2, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11, int paramInt12, int paramInt13, int paramInt14, int paramInt15, int paramInt16, int paramInt17, boolean paramBoolean3, long paramLong)
+  public s_main_page(int paramInt1, int paramInt2, String paramString1, int paramInt3, s_question params_question, String paramString2, boolean paramBoolean1, int paramInt4, int paramInt5, int paramInt6, String paramString3, Map<Integer, String> paramMap, boolean paramBoolean2, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11, int paramInt12, int paramInt13, int paramInt14, int paramInt15, int paramInt16, int paramInt17, boolean paramBoolean3, long paramLong, boolean paramBoolean4, boolean paramBoolean5, String paramString4, int paramInt18, String paramString5, String paramString6)
   {
     this.relation = paramInt1;
     this.is_askfor_friend = paramInt2;
@@ -74,6 +80,12 @@ public final class s_main_page
     this.is_host_gray_tongcheng_usr = paramInt17;
     this.is_special_concerned = paramBoolean3;
     this.follow_flag = paramLong;
+    this.is_flower_switch_open = paramBoolean4;
+    this.is_family_open = paramBoolean5;
+    this.family_url = paramString4;
+    this.frd_num = paramInt18;
+    this.family_des = paramString5;
+    this.family_url_traceinfo = paramString6;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -104,6 +116,12 @@ public final class s_main_page
     this.is_host_gray_tongcheng_usr = paramJceInputStream.read(this.is_host_gray_tongcheng_usr, 23, false);
     this.is_special_concerned = paramJceInputStream.read(this.is_special_concerned, 24, false);
     this.follow_flag = paramJceInputStream.read(this.follow_flag, 25, false);
+    this.is_flower_switch_open = paramJceInputStream.read(this.is_flower_switch_open, 26, false);
+    this.is_family_open = paramJceInputStream.read(this.is_family_open, 27, false);
+    this.family_url = paramJceInputStream.readString(28, false);
+    this.frd_num = paramJceInputStream.read(this.frd_num, 29, false);
+    this.family_des = paramJceInputStream.readString(30, false);
+    this.family_url_traceinfo = paramJceInputStream.readString(31, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -144,6 +162,18 @@ public final class s_main_page
     paramJceOutputStream.write(this.is_host_gray_tongcheng_usr, 23);
     paramJceOutputStream.write(this.is_special_concerned, 24);
     paramJceOutputStream.write(this.follow_flag, 25);
+    paramJceOutputStream.write(this.is_flower_switch_open, 26);
+    paramJceOutputStream.write(this.is_family_open, 27);
+    if (this.family_url != null) {
+      paramJceOutputStream.write(this.family_url, 28);
+    }
+    paramJceOutputStream.write(this.frd_num, 29);
+    if (this.family_des != null) {
+      paramJceOutputStream.write(this.family_des, 30);
+    }
+    if (this.family_url_traceinfo != null) {
+      paramJceOutputStream.write(this.family_url_traceinfo, 31);
+    }
   }
 }
 

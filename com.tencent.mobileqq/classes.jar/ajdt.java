@@ -1,52 +1,30 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils.AudioUploadTask;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.mobileqq.troop.data.AudioInfo;
-import com.tencent.mobileqq.troop.utils.TroopBarUtils;
-import java.io.File;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajdt
-  extends Handler
+class ajdt
+  extends batl
 {
-  public ajdt(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  ajdt(ajds paramajds, String paramString1, String paramString2, String paramString3) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDone(batm parambatm)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 3: 
-      TroopBarReplyActivity.a(this.a, false);
-      return;
+    super.onDone(parambatm);
+    if (3 == parambatm.a()) {
+      this.jdField_a_of_type_Ajds.a(true, this.jdField_a_of_type_JavaLangString, this.b, this.c);
     }
-    paramMessage = paramMessage.obj.toString();
-    File localFile = new File(paramMessage);
-    if (localFile.exists()) {}
-    for (long l = localFile.length();; l = 0L)
+    for (;;)
     {
-      TroopBarReplyActivity.a(this.a, true);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setVisibility(8);
-      TroopBarReplyActivity.a(this.a, new AudioInfo(paramMessage, (int)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a(), l));
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = TroopBarReplyActivity.a(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishUtils$AudioUploadTask = new TroopBarPublishUtils.AudioUploadTask(this.a, this.a.jdField_a_of_type_AndroidOsHandler, "https://upload.buluo.qq.com/cgi-bin/bar/upload/meida", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo.path);
-      ThreadManager.post(this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishUtils$AudioUploadTask, 5, null, true);
-      this.a.a(2, this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo);
-      TroopBarReplyActivity.a(this.a, 0);
-      if (!this.a.k) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.d("SimpleFrameZipDecoder", 2, "downloadZip onDone task.getStatus()->" + parambatm.a());
       }
-      TroopBarUtils.a(this.a.m, this.a.n, "sure_record", this.a.o, "", "", "");
       return;
+      this.jdField_a_of_type_Ajds.a = 2;
+      this.jdField_a_of_type_Ajds.a(false, this.jdField_a_of_type_JavaLangString, this.b, this.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajdt
  * JD-Core Version:    0.7.0.1
  */

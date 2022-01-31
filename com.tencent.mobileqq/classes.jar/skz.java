@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.ar.ARDeviceController;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-class skz
-  implements Runnable
+public class skz
 {
-  skz(sky paramsky) {}
-  
-  public void run()
+  public static boolean a(StoryVideoItem paramStoryVideoItem)
   {
-    ARDeviceController.a().a(this.a.a.a);
+    return sls.a(paramStoryVideoItem);
+  }
+  
+  public static boolean a(String paramString)
+  {
+    return sls.a(paramString);
+  }
+  
+  public static boolean a(String paramString, boolean paramBoolean)
+  {
+    return sls.a(paramString, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     skz
  * JD-Core Version:    0.7.0.1
  */

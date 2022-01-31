@@ -1,81 +1,31 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.eqq.CrmUtils;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.PublicAccountSearchRecommendManager.PublicAccountSearchRecommendItem;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchFragment;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchFragment.HistoryGridAdapter;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.troopgift.TroopGiftPanel;
 
 public class wno
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public wno(ClassificationSearchFragment.HistoryGridAdapter paramHistoryGridAdapter) {}
+  public wno(TroopGiftPanel paramTroopGiftPanel) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    PublicAccountSearchRecommendManager.PublicAccountSearchRecommendItem localPublicAccountSearchRecommendItem = (PublicAccountSearchRecommendManager.PublicAccountSearchRecommendItem)paramView.getTag();
-    paramView = (PublicAccountDataManager)this.a.a.a.getManager(55);
-    if ((paramView != null) && (paramView.c(localPublicAccountSearchRecommendItem.jdField_a_of_type_JavaLangString) != null)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (bool)
-      {
-        paramView = new Intent(this.a.a.a(), ChatActivity.class);
-        if (localPublicAccountSearchRecommendItem.jdField_a_of_type_Boolean)
-        {
-          paramView.putExtra("uintype", 1008);
-          paramView.putExtra("uin", localPublicAccountSearchRecommendItem.jdField_a_of_type_JavaLangString);
-          paramView.putExtra("uinname", localPublicAccountSearchRecommendItem.b);
-          paramView.putExtra("start_time", System.currentTimeMillis());
-          this.a.a.a().startActivity(paramView);
-          if (!ClassificationSearchFragment.HistoryGridAdapter.a(this.a)) {
-            break label360;
-          }
-        }
-      }
-      label360:
-      for (paramView = "houtai";; paramView = "duan")
-      {
-        PublicAccountReportUtils.a(this.a.a.a, localPublicAccountSearchRecommendItem.jdField_a_of_type_JavaLangString, "0X8007404", "0X8007404", 0, 0, "", "", paramView, "");
-        if (QLog.isColorLevel())
-        {
-          StringBuilder localStringBuilder = new StringBuilder("clickRecommendAccount->");
-          localStringBuilder.append("source:").append(paramView);
-          localStringBuilder.append(", puin:").append(localPublicAccountSearchRecommendItem.jdField_a_of_type_JavaLangString);
-          localStringBuilder.append(", isFollow:").append(bool);
-          QLog.d("ClassificationSearchFragment", 2, localStringBuilder.toString());
-        }
-        return;
-        paramView.putExtra("uintype", 1024);
-        break;
-        if (localPublicAccountSearchRecommendItem.jdField_a_of_type_Boolean)
-        {
-          paramView = new Intent(this.a.a.a(), AccountDetailActivity.class);
-          paramView.putExtra("uintype", 1008);
-          paramView.putExtra("source", 118);
-        }
-        for (;;)
-        {
-          paramView.putExtra("uin", localPublicAccountSearchRecommendItem.jdField_a_of_type_JavaLangString);
-          paramView.addFlags(67108864);
-          this.a.a.a().startActivity(paramView);
-          break;
-          paramView = CrmUtils.a(this.a.a.a(), null, "", false, -1, false, -1);
-        }
-      }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
+    if (paramInt == 1)
+    {
+      baoz.a(this.a.a, "mvip.n.a.qlw_forsvip", "CJCLUBT", 3, false, true);
+      awqx.b(null, "dc00899", "grp_lbs", "", "qq_gift", "svip_sure_click", 0, 0, "", "", "", "");
+    }
+    while (paramInt != 0) {
+      return;
+    }
+    awqx.b(null, "dc00899", "grp_lbs", "", "qq_gift", "svip_cancel_click", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wno
  * JD-Core Version:    0.7.0.1
  */

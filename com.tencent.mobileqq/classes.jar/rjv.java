@@ -1,29 +1,52 @@
-import com.tencent.mobileqq.Doraemon.monitor.APIQuotaEntity;
-import com.tencent.mobileqq.Doraemon.monitor.DoraemonAPIReporterMain;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.viola.adapter.IBridgeAdapter;
+import com.tencent.viola.adapter.IBridgeAdapter.OnInovkeCallback;
+import com.tencent.viola.core.ViolaInstance;
+import java.util.ArrayList;
 
 public class rjv
-  implements Runnable
+  implements IBridgeAdapter
 {
-  public rjv(DoraemonAPIReporterMain paramDoraemonAPIReporterMain, QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2) {}
-  
-  public void run()
+  public rjv()
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    APIQuotaEntity localAPIQuotaEntity = new APIQuotaEntity();
-    localAPIQuotaEntity.type = this.jdField_a_of_type_Int;
-    localAPIQuotaEntity.appid = this.jdField_a_of_type_JavaLangString;
-    localAPIQuotaEntity.apiName = this.jdField_b_of_type_JavaLangString;
-    localAPIQuotaEntity.remainTimes = this.jdField_a_of_type_Long;
-    localAPIQuotaEntity.expireTimeMillis = this.jdField_b_of_type_Long;
-    localEntityManager.b(localAPIQuotaEntity);
+    registerModuleFunction();
+  }
+  
+  public ArrayList<String> getAdapterUnRegisterFunction()
+  {
+    return null;
+  }
+  
+  public void registerModuleFunction() {}
+  
+  public void titleUiInvoke(String paramString, Object paramObject, IBridgeAdapter.OnInovkeCallback paramOnInovkeCallback, ViolaInstance paramViolaInstance)
+  {
+    if (paramViolaInstance == null) {
+      break label5;
+    }
+    for (;;)
+    {
+      label5:
+      return;
+      if (("change_title_transparent".equals(paramString)) && ((paramObject instanceof Boolean)))
+      {
+        paramString = paramViolaInstance.getFragment();
+        if (paramString == null) {
+          break;
+        }
+        if ((paramString instanceof ViolaFragment)) {}
+        for (paramString = ((ViolaFragment)paramString).a(); paramString != null; paramString = null)
+        {
+          paramString.a(((Boolean)paramObject).booleanValue());
+          return;
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rjv
  * JD-Core Version:    0.7.0.1
  */

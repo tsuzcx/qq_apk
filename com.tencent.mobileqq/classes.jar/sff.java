@@ -1,30 +1,22 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileView;
-import com.tencent.mobileqq.adapter.ChatHistoryFileAdapter;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-public class sff
-  extends FMObserver
+class sff
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public sff(ChatHistoryFileView paramChatHistoryFileView) {}
+  sff(sez paramsez) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public void onGlobalLayout()
   {
-    this.a.a.notifyDataSetChanged();
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    this.a.a.notifyDataSetChanged();
-  }
-  
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.a.notifyDataSetChanged();
+    int i = sez.a(this.a).getHeight();
+    if (i != sez.b(this.a)) {
+      sez.a(this.a, i);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sff
  * JD-Core Version:    0.7.0.1
  */

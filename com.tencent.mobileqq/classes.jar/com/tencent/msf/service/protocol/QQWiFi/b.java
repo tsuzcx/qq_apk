@@ -9,10 +9,10 @@ public final class b
   extends JceStruct
 {
   static ArrayList e;
-  public int a;
-  public ArrayList b;
-  public int c;
-  public int d;
+  public int a = 0;
+  public ArrayList b = null;
+  public int c = 0;
+  public int d = 0;
   
   public b() {}
   

@@ -1,27 +1,48 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.Node;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
 
 public class aiqe
-  implements Runnable
 {
-  public aiqe(SpriteGLView paramSpriteGLView) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public void run()
+  public String a()
   {
-    this.a.o();
-    int i = 0;
-    while (i < SpriteGLView.a(this.a).size())
-    {
-      ((Node)SpriteGLView.a(this.a).get(i)).b();
-      i += 1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.d == 0) {
+      localStringBuilder.append(this.jdField_a_of_type_Int).append("_").append(this.b).append("_").append(this.c).append("_").append(this.jdField_a_of_type_JavaLangString);
     }
-    SpriteGLView.a(this.a).clear();
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameShareDataHandler", 2, new Object[] { "getCacheKey:", localStringBuilder.toString() });
+      }
+      return localStringBuilder.toString();
+      localStringBuilder.append(this.jdField_a_of_type_Int).append("_").append(this.b).append("_").append(this.d);
+    }
+  }
+  
+  public String toString()
+  {
+    StringBuffer localStringBuffer = new StringBuffer("GameShareResult{");
+    localStringBuffer.append("mGameId=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", mActivityId=").append(this.b);
+    localStringBuffer.append(", mUin='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", mAIOType=").append(this.c);
+    localStringBuffer.append(", mShareTo=").append(this.d);
+    localStringBuffer.append(", mShareTS=").append(this.jdField_a_of_type_Long);
+    localStringBuffer.append(", mShareRet=").append(this.e);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiqe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,38 @@
 package com.tencent.mobileqq.flashchat;
 
+import ajjy;
+import java.io.Serializable;
+
 public class FlashChatItem
+  implements Serializable
 {
-  public static FlashChatItem a;
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f = "#02A7E3";
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem = new FlashChatItem(-100000, "随机");
-  }
+  public static final int FREETYPE_FREE = 1;
+  public static final int FREETYPE_SVIP = 5;
+  public static final int FREETYPE_VIP = 4;
+  public static final int ID_NORMAL = -100001;
+  public static final int ID_RANDOM = -100000;
+  public static FlashChatItem sDefaultItem = new FlashChatItem(-100000, ajjy.a(2131638830));
+  public String appName;
+  public String color = "#02A7E3";
+  public int feedType;
+  public String iconUrl;
+  public int id;
+  public String mainView;
+  public String name;
+  public int tabType;
+  public String ver;
   
   public FlashChatItem() {}
   
   public FlashChatItem(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.id = paramInt;
+    this.name = paramString;
   }
   
   public String toString()
   {
-    return "FlashChatItem{id=" + this.jdField_a_of_type_Int + ", appName='" + this.jdField_a_of_type_JavaLangString + '\'' + ", feedType=" + this.jdField_b_of_type_Int + ", name='" + this.jdField_b_of_type_JavaLangString + '\'' + ", iconUrl='" + this.c + '\'' + ", mainView='" + this.d + '\'' + ", ver='" + this.e + '\'' + '}';
+    return "FlashChatItem{id=" + this.id + ", appName='" + this.appName + '\'' + ", feedType=" + this.feedType + ", name='" + this.name + '\'' + ", iconUrl='" + this.iconUrl + '\'' + ", mainView='" + this.mainView + '\'' + ", ver='" + this.ver + '\'' + '}';
   }
 }
 

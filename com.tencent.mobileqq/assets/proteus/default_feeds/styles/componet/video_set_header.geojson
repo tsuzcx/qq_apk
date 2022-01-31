@@ -1,0 +1,188 @@
+{
+    "view_id": "id_video_set_header",
+    "view_type": "UIView",
+    "layout_type": "layout_linear",
+    "height": {
+        "type": "wrap_content"
+    },
+    "width": {
+        "type": "relative",
+        "value": "375"
+    },
+    "default_visible": "YES",
+    "subviews": [
+        {
+            "view_id": "id_empty_header_cell",
+            "view_type": "UIView",
+            "height": {
+                "type": "relative",
+                "value": "8"
+            },
+            "width": {
+                "type": "match_parent"
+            },
+            "attributes": {
+                "setAttatchInfo": "$empty_header_visibility"
+            }
+        },
+        {
+            "view_id": "id_common_header_cell",
+            "view_type": "UIView",
+            "layout_type": "layout_relative",
+            "height": {
+                "type": "relative",
+                "value": "40"
+            },
+            "width": {
+                "type": "relative",
+                "value": "375"
+            },
+            "attributes": {
+                "setAttatchInfo": "$common_header_visibility"
+            },
+            "subviews": [
+                {
+                    "view_id":"id_dislike_button_1",
+                    "view_type":"UIButton",
+                    "margin_right":"12",
+                    "event_type":"cmd_dislike_click",
+                    "align_parent_right":"YES",
+                    "align_parent_center_vertical": "YES",
+                    "default_visible": "YES",
+                    "height":{
+                        "type":"relative",
+                        "value":"18"
+                    },
+                    "width":{
+                        "type":"relative",
+                        "value":"18"
+                    },
+                    "attributes":{
+                        "setImage:":"feeds_dislike"
+                    }
+                },
+                {
+                    "view_id": "id_common_header_text",
+                    "view_type": "UILabel",
+                    "align_parent_left": "YES",
+                    "margin_left": "8",
+                    "left_of_view": "id_dislike_button_1",
+                    "margin_right": "12",
+                    "align_parent_center_vertical": "YES",
+                    "default_visible": "YES",
+                    "height": {
+                        "type": "wrap_content"
+                    },
+                    "width": {
+                        "type": "wrap_content"
+                    },
+                    "attributes": {
+                        "setText:": "$common_header_text",
+                        "setTextColorString:": "#4C4C4C",
+                        "setFontSizeString:": "14",
+                        "setNumberOfLinesString:": "1"
+                    }
+                }
+            ]
+        },
+        {
+            "view_id": "id_topic_header_cell",
+            "view_type": "UIView",
+            "layout_type": "layout_relative",
+            "height": {
+                "type": "relative",
+                "value": "50"
+            },
+            "width": {
+                "type": "relative",
+                "value": "375"
+            },
+            "attributes": {
+                "setAttatchInfo": "$topic_header_visibility"
+            },
+            "subviews": [
+                {
+                    "view_id":"id_dislike_button_2",
+                    "view_type":"UIButton",
+                    "margin_right":"12",
+                    "event_type":"cmd_dislike_click",
+                    "align_parent_right":"YES",
+                    "align_parent_center_vertical": "YES",
+                    "default_visible": "YES",
+                    "height":{
+                        "type":"relative",
+                        "value":"18"
+                    },
+                    "width":{
+                        "type":"relative",
+                        "value":"18"
+                    },
+                    "attributes":{
+                        "setImage:":"feeds_dislike"
+                    }
+                },
+                {
+                    "view_id": "id_topic_info_container",
+                    "view_type": "UIView",
+                    "layout_type": "layout_relative",
+                    "height": {
+                        "type": "relative",
+                        "value": "50"
+                    },
+                    "width": {
+                        "type": "wrap_content"
+                    },
+                    "align_parent_left": "YES",
+                    "align_parent_center_vertical": "YES",
+                    "margin_left": "6",
+                    "left_of_view": "id_dislike_button_2",
+                    "margin_right": "12",
+                    "default_visible": "YES",
+                    "subviews": [
+                        {
+                            "view_id": "id_topic_header_small_icon",
+                            "view_type": "ReadInjoyAsynImageView",
+                            "height": {
+                                "type": "relative",
+                                "value": "14"
+                            },
+                            "width": {
+                                "type": "relative",
+                                "value": "14"
+                            },
+                            "align_parent_left": "YES",
+                            "align_parent_center_vertical": "YES",
+                            "attributes": {
+                                "setFrameString:": "-1",
+                                "setImageWithURLString:lineup:": [
+                                    "$topic_header_small_icon_url",
+                                    "1"
+                                ]
+                            }
+                        },
+                        {
+                            "view_id": "id_topic_header_title",
+                            "view_type": "UILabel",
+                            "align_parent_left": "YES",
+                            "align_parent_center_vertical": "YES",
+                            "margin_left": "16",
+                            "default_visible": "YES",
+                            "height": {
+                                "type": "wrap_content"
+                            },
+                            "width": {
+                                "type": "wrap_content"
+                            },
+                            "attributes": {
+                                "setText:": "$common_header_text",
+                                "setTextColorString:": "#262626",
+                                "setFontSizeString:": "14",
+                                "setNumberOfLinesString:": "1"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

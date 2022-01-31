@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class TroopTips0x857$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public TroopTips0x857.InstCtrl msg_inst_ctrl = new TroopTips0x857.InstCtrl();
@@ -18,7 +18,7 @@ public final class TroopTips0x857$ReqBody
   public final PBUInt32Field opt_uint32_busi_type = PBField.initUInt32(0);
   public final PBUInt32Field opt_uint32_offline = PBField.initUInt32(0);
   public final PBUInt64Field opt_uint64_group_code = PBField.initUInt64(0L);
-  public final PBRepeatField rpt_uint64_memberuins = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> rpt_uint64_memberuins = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   
   static
   {
@@ -28,7 +28,7 @@ public final class TroopTips0x857$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x857.TroopTips0x857.ReqBody
  * JD-Core Version:    0.7.0.1
  */

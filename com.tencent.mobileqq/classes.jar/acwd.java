@@ -1,21 +1,12 @@
-import android.graphics.Color;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
-
-public class acwd
-  implements Runnable
+public abstract interface acwd
 {
-  public acwd(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
+  public abstract void a();
   
-  public void run()
-  {
-    MPFileVerifyPwdView.b(this.a).setEnabled(true);
-    MPFileVerifyPwdView.b(this.a).setTextColor(Color.parseColor("#00a5e0"));
-  }
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acwd
  * JD-Core Version:    0.7.0.1
  */

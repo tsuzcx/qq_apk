@@ -1,25 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.controller.IDownloadController;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.FileBrowserPresenterBase;
+import android.support.v4.app.FragmentActivity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
-public class admk
-  implements View.OnClickListener
+class admk
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public admk(FileBrowserPresenterBase paramFileBrowserPresenterBase) {}
+  admk(admj paramadmj) {}
   
-  public void onClick(View paramView)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    paramView = this.a.a.a();
-    if (paramView != null) {
-      paramView.a();
+    if (this.a.jdField_a_of_type_Admh.a()) {
+      return false;
+    }
+    aciy.n = true;
+    ChatActivityUtils.a(this.a.jdField_a_of_type_Admh.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidViewView, (FragmentActivity)this.a.jdField_a_of_type_Admh.jdField_a_of_type_AndroidContentContext);
+    return true;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent)
+  {
+    if (this.a.jdField_a_of_type_Acmv != null) {
+      this.a.jdField_a_of_type_Acmv.onLongClick(this.a.jdField_a_of_type_AndroidViewView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     admk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,12 @@
-import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
-import com.tencent.qphone.base.util.QLog;
+import java.nio.ByteBuffer;
 
-public class ahly
-  implements Runnable
+public abstract interface ahly
 {
-  public ahly(CapturePtvTemplateManager paramCapturePtvTemplateManager) {}
-  
-  public void run()
-  {
-    this.a.c(true);
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMRedDotConfig", 2, "saved to red dot config file");
-    }
-  }
+  public abstract void a(long paramLong, ByteBuffer paramByteBuffer);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahly
  * JD-Core Version:    0.7.0.1
  */

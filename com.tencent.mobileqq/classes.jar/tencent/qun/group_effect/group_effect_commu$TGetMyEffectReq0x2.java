@@ -7,10 +7,10 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class group_effect_commu$TGetMyEffectReq0x2
-  extends MessageMicro
+  extends MessageMicro<TGetMyEffectReq0x2>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8 }, new String[] { "group_id" }, new Object[] { Long.valueOf(0L) }, TGetMyEffectReq0x2.class);
-  public final PBRepeatField group_id = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> group_id = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
 }
 
 

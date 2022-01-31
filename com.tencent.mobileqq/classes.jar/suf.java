@@ -1,21 +1,32 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.Collections;
+import java.util.List;
 
-public class suf
-  implements Runnable
+class suf
+  extends SimpleObserver<List<tfv>>
 {
-  public suf(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  suf(suc paramsuc, sug paramsug, ssm paramssm) {}
   
-  public void run()
+  public void a(List<tfv> paramList)
   {
-    ((FriendsManager)this.a.app.getManager(50)).a(this.a.a.a);
+    super.onNext(paramList);
+    if (this.jdField_a_of_type_Sug != null) {
+      this.jdField_a_of_type_Sug.a(this.jdField_a_of_type_Ssm, Collections.emptyList());
+    }
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    if (this.jdField_a_of_type_Sug != null) {
+      this.jdField_a_of_type_Sug.a(this.jdField_a_of_type_Ssm, paramError);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     suf
  * JD-Core Version:    0.7.0.1
  */

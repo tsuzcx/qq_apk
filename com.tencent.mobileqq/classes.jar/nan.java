@@ -1,14 +1,15 @@
-import com.tencent.biz.pubaccount.util.PreloadManager;
-import com.tencent.biz.pubaccount.util.PreloadManager.ImgStruct;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class nan
-  implements Runnable
+class nan
+  implements View.OnClickListener
 {
-  public nan(PreloadManager paramPreloadManager, PreloadManager.ImgStruct paramImgStruct) {}
+  nan(nak paramnak) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilPreloadManager.b(this.jdField_a_of_type_ComTencentBizPubaccountUtilPreloadManager$ImgStruct.a);
+    this.a.a.dismiss();
   }
 }
 

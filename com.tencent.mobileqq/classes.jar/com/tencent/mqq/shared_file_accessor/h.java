@@ -1,20 +1,23 @@
 package com.tencent.mqq.shared_file_accessor;
 
-import java.util.Map;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-abstract interface h
+final class h
+  extends Handler
 {
-  public abstract Object a(String paramString, e parame, Object paramObject);
+  h(f paramf, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
-  public abstract void a();
-  
-  public abstract void a(String paramString);
-  
-  public abstract void a(String paramString, Object paramObject, e parame);
-  
-  public abstract Map b();
-  
-  public abstract void b(String paramString);
+  public final void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 0) {
+      f.a(this.a);
+    }
+  }
 }
 
 

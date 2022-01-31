@@ -5,9 +5,11 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
+import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.text.QQText.EmoticonSpan;
+import axkk;
+import fg;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,12 +21,12 @@ public class ETDecoration
 {
   public static final int DECORATION_SCENE = 2;
   public static final int DECORATION_TEMPLATE = 1;
-  private static HashMap DescriptorMap = new HashMap();
   private ETEngine mEngine;
-  private int[] mFrameDelay;
+  private int mFrameDelay;
   public int mFrameIndex = -1;
   private int mFrameNum;
-  private long mNativeDescritptorHandle;
+  public Rect mMargins;
+  private long mNativeDescriptorHandle;
   private Object[] mSpans;
   private String mText;
   
@@ -69,18 +71,31 @@ public class ETDecoration
     }
     paramCanvas.save();
     paramCanvas.setMatrix(paramMatrix);
-    paramArrayOfObject = paramArrayOfObject[paramInt1];
-    if ((paramArrayOfObject != null) && ((paramArrayOfObject instanceof QQText.EmoticonSpan)))
+    paramMatrix = paramArrayOfObject[paramInt1];
+    if (paramMatrix != null)
     {
-      paramArrayOfObject = (QQText.EmoticonSpan)paramArrayOfObject;
-      paramMatrix = new Paint(1);
-      paramMatrix.setTextSize(paramFloat4);
-      paramMatrix.setColor(paramInt2);
-      paramMatrix.setAlpha((int)(255.0F * paramFloat5));
+      paramArrayOfObject = new Paint(1);
+      paramArrayOfObject.setTextSize(paramFloat4);
+      paramArrayOfObject.setColor(paramInt2);
+      paramArrayOfObject.setAlpha((int)(255.0F * paramFloat5));
+      if (!(paramMatrix instanceof axkk)) {
+        break label114;
+      }
+      paramArrayOfObject = (axkk)paramMatrix;
       paramInt1 = (int)paramFloat3 + paramArrayOfObject.a().getBounds().height();
       paramArrayOfObject.draw(paramCanvas, null, 0, 0, paramFloat2, 0, paramInt1, paramInt1, null);
     }
-    paramCanvas.restore();
+    for (;;)
+    {
+      paramCanvas.restore();
+      return;
+      label114:
+      if ((paramMatrix instanceof fg))
+      {
+        paramMatrix = (fg)paramMatrix;
+        paramMatrix.draw(paramCanvas, null, 0, 0, paramFloat2, 0, 0, (int)(paramMatrix.getDrawable().getBounds().height() + paramFloat3), paramArrayOfObject);
+      }
+    }
   }
   
   public static void callbackDrawText(int paramInt1, Canvas paramCanvas, Matrix paramMatrix, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, boolean paramBoolean1, int paramInt2, boolean paramBoolean2, int paramInt3, float paramFloat6, float paramFloat7, float paramFloat8, boolean paramBoolean3, int paramInt4, float paramFloat9)
@@ -144,7 +159,7 @@ public class ETDecoration
   private static void checkDescriptorList(ETEngine paramETEngine)
   {
     Object localObject1 = new ArrayList();
-    Object localObject2 = DescriptorMap.entrySet().iterator();
+    Object localObject2 = paramETEngine.DescriptorMap.entrySet().iterator();
     while (((Iterator)localObject2).hasNext())
     {
       Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
@@ -159,17 +174,69 @@ public class ETDecoration
       if (((Long)localObject2).longValue() != 0L) {
         paramETEngine.native_decorationDeleteDescriptor(((Long)localObject2).longValue());
       }
-      DescriptorMap.remove(localObject2);
+      paramETEngine.DescriptorMap.remove(localObject2);
     }
   }
   
   public static void clearMap(ETEngine paramETEngine)
   {
-    checkDescriptorList(paramETEngine);
-    DescriptorMap.clear();
+    Iterator localIterator = paramETEngine.DescriptorMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (Map.Entry)localIterator.next();
+      paramETEngine.native_decorationDeleteDescriptor(((Long)((Map.Entry)localObject).getKey()).longValue());
+      if (((WeakReference)((Map.Entry)localObject).getValue()).get() != null)
+      {
+        localObject = (ETDecoration)((WeakReference)((Map.Entry)localObject).getValue()).get();
+        if (localObject != null) {
+          ((ETDecoration)localObject).mNativeDescriptorHandle = 0L;
+        }
+      }
+    }
+    paramETEngine.DescriptorMap.clear();
   }
   
-  public static ETDecoration createDecoration(ETEngine paramETEngine, String paramString, ETSegment[] paramArrayOfETSegment, Object[] paramArrayOfObject, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ETFont paramETFont)
+  public static ETDecoration createDecoration(ETEngine paramETEngine, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, ETSegment[] paramArrayOfETSegment, Object[] paramArrayOfObject, boolean paramBoolean1, int paramInt5, ETFont paramETFont, boolean paramBoolean2)
+  {
+    if ((paramETEngine == null) || (paramString == null) || (paramETFont == null) || (paramArrayOfETSegment == null)) {
+      return null;
+    }
+    if ((paramInt1 <= 0) || (paramInt2 <= 0) || (paramInt4 <= 0)) {
+      return null;
+    }
+    long l = paramETEngine.native_decorationCreateDescriptor(paramString, paramArrayOfETSegment, paramInt1, paramInt2, paramInt3, paramInt4, paramBoolean1, paramInt5, paramETFont);
+    if (l != 0L)
+    {
+      paramInt3 = paramETEngine.native_decorationGetFrameNum(l);
+      if (paramInt3 == 0)
+      {
+        paramETEngine.native_decorationDeleteDescriptor(l);
+        return null;
+      }
+      paramArrayOfETSegment = new ETDecoration();
+      paramArrayOfETSegment.mNativeDescriptorHandle = l;
+      paramInt2 = paramETEngine.native_decorationGetFrameDelay(l, 0);
+      paramInt1 = paramInt2;
+      if (paramInt2 < 50) {
+        paramInt1 = 50;
+      }
+      paramArrayOfETSegment.mFrameDelay = paramInt1;
+      paramArrayOfETSegment.mFrameNum = paramInt3;
+      paramArrayOfETSegment.mText = paramString;
+      paramArrayOfETSegment.mEngine = paramETEngine;
+      paramArrayOfETSegment.mSpans = paramArrayOfObject;
+      paramArrayOfETSegment.mMargins = paramETEngine.native_getMargins(l);
+      if (paramBoolean2)
+      {
+        checkDescriptorList(paramETEngine);
+        paramETEngine.DescriptorMap.put(Long.valueOf(l), new WeakReference(paramArrayOfETSegment));
+      }
+      return paramArrayOfETSegment;
+    }
+    return null;
+  }
+  
+  public static ETDecoration createDecorationSpace(ETEngine paramETEngine, String paramString, int paramInt1, int paramInt2, Point paramPoint, int paramInt3, Point[] paramArrayOfPoint, int paramInt4, ETSegment[] paramArrayOfETSegment, Object[] paramArrayOfObject, boolean paramBoolean1, int paramInt5, boolean paramBoolean2, ETFont paramETFont, boolean paramBoolean3)
   {
     if ((paramETEngine == null) || (paramString == null) || (paramETFont == null)) {
       return null;
@@ -177,32 +244,33 @@ public class ETDecoration
     if ((paramInt1 <= 0) || (paramInt2 <= 0) || (paramInt4 <= 0)) {
       return null;
     }
-    long l = paramETEngine.native_decorationCreateDescriptor(paramString, paramArrayOfETSegment, paramInt1, paramInt2, paramInt3, paramInt4, paramETFont);
+    paramETEngine.native_isColorVariantFont(paramETFont);
+    long l = paramETEngine.native_space_decorationCreateDescriptor(paramString, paramArrayOfETSegment, paramInt1, paramInt2, paramPoint, paramInt3, paramArrayOfPoint, paramInt4, paramBoolean1, paramInt5, paramBoolean2, paramETFont);
     if (l != 0L)
     {
-      paramInt2 = paramETEngine.native_decorationGetFrameNum(l);
-      if (paramInt2 == 0)
+      paramInt3 = paramETEngine.native_space_decorationGetFrameNum(l);
+      if (paramInt3 == 0)
       {
-        paramETEngine.native_decorationDeleteDescriptor(l);
+        paramETEngine.native_space_decorationDeleteDescriptor(l);
         return null;
       }
-      paramArrayOfETSegment = new int[paramInt2];
-      paramInt1 = 0;
-      while (paramInt1 < paramInt2)
-      {
-        paramArrayOfETSegment[paramInt1] = paramETEngine.native_decorationGetFrameDelay(l, paramInt1);
-        paramInt1 += 1;
+      paramPoint = new ETDecoration();
+      paramPoint.mNativeDescriptorHandle = l;
+      paramInt2 = paramETEngine.native_space_decorationGetFrameDelay(l, 0);
+      paramInt1 = paramInt2;
+      if (paramInt2 < 50) {
+        paramInt1 = 50;
       }
-      paramETFont = new ETDecoration();
-      paramETFont.mNativeDescritptorHandle = l;
-      paramETFont.mFrameDelay = paramArrayOfETSegment;
-      paramETFont.mFrameNum = paramInt2;
-      paramETFont.mText = paramString;
-      paramETFont.mEngine = paramETEngine;
-      paramETFont.mSpans = paramArrayOfObject;
-      checkDescriptorList(paramETEngine);
-      DescriptorMap.put(Long.valueOf(l), new WeakReference(paramETFont));
-      return paramETFont;
+      paramPoint.mFrameDelay = paramInt1;
+      paramPoint.mFrameNum = paramInt3;
+      paramPoint.mText = paramString;
+      paramPoint.mEngine = paramETEngine;
+      paramPoint.mSpans = paramArrayOfObject;
+      paramPoint.mMargins = paramETEngine.native_space_getMargins(l);
+      if (paramBoolean3) {
+        checkDescriptorList(paramETEngine);
+      }
+      return paramPoint;
     }
     return null;
   }
@@ -225,61 +293,91 @@ public class ETDecoration
   
   public void deleteDescriptor()
   {
-    if (0L != this.mNativeDescritptorHandle)
+    if (0L != this.mNativeDescriptorHandle)
     {
-      DescriptorMap.remove(Long.valueOf(this.mNativeDescritptorHandle));
-      this.mEngine.native_decorationDeleteDescriptor(this.mNativeDescritptorHandle);
-      this.mNativeDescritptorHandle = 0L;
+      this.mEngine.DescriptorMap.remove(Long.valueOf(this.mNativeDescriptorHandle));
+      this.mEngine.native_decorationDeleteDescriptor(this.mNativeDescriptorHandle);
+      this.mNativeDescriptorHandle = 0L;
+    }
+  }
+  
+  public void deleteDescriptor(ETEngine paramETEngine)
+  {
+    if ((this.mNativeDescriptorHandle != 0L) && (paramETEngine != null))
+    {
+      paramETEngine.native_decorationDeleteDescriptor(this.mNativeDescriptorHandle);
+      this.mNativeDescriptorHandle = 0L;
+    }
+  }
+  
+  void deleteDescriptorSpace()
+  {
+    if (0L != this.mNativeDescriptorHandle)
+    {
+      this.mEngine.native_space_decorationDeleteDescriptor(this.mNativeDescriptorHandle);
+      this.mNativeDescriptorHandle = 0L;
     }
   }
   
   public void drawBackground(Bitmap paramBitmap, ETFont paramETFont)
   {
     int i = currentFrameIndex();
-    if ((this.mEngine != null) && (0L != this.mNativeDescritptorHandle) && (i >= 0) && (i < this.mFrameNum)) {
-      this.mEngine.native_decorationDrawBackground(this.mNativeDescritptorHandle, i, paramETFont, paramBitmap);
+    if ((this.mEngine != null) && (0L != this.mNativeDescriptorHandle) && (i >= 0) && (i < this.mFrameNum)) {
+      this.mEngine.native_decorationDrawBackground(this.mNativeDescriptorHandle, i, paramETFont, paramBitmap);
+    }
+  }
+  
+  public void drawBackgroundSpace(Bitmap paramBitmap, ETFont paramETFont, int paramInt1, int paramInt2)
+  {
+    int i = currentFrameIndex();
+    if ((this.mEngine != null) && (0L != this.mNativeDescriptorHandle) && (i >= 0) && (i < this.mFrameNum)) {
+      this.mEngine.native_space_decorationDrawBackground(this.mNativeDescriptorHandle, i, paramETFont, paramBitmap, paramInt1, paramInt2);
     }
   }
   
   public void drawForeground(Bitmap paramBitmap, ETFont paramETFont)
   {
     int i = currentFrameIndex();
-    if ((this.mEngine != null) && (0L != this.mNativeDescritptorHandle) && (i >= 0) && (i < this.mFrameNum)) {
-      this.mEngine.native_decorationDrawForeground(this.mNativeDescritptorHandle, i, paramETFont, paramBitmap);
+    if ((this.mEngine != null) && (0L != this.mNativeDescriptorHandle) && (i >= 0) && (i < this.mFrameNum)) {
+      this.mEngine.native_decorationDrawForeground(this.mNativeDescriptorHandle, i, paramETFont, paramBitmap);
     }
   }
   
   public void drawFrameText(int paramInt1, int paramInt2, Bitmap paramBitmap, int paramInt3, int paramInt4, ETFont paramETFont)
   {
     int i = currentFrameIndex();
-    if ((this.mEngine != null) && (0L != this.mNativeDescritptorHandle) && (i >= 0) && (i < this.mFrameNum)) {
-      this.mEngine.native_decorationDrawText(this.mNativeDescritptorHandle, i, paramInt1, paramInt2, paramETFont, paramBitmap, paramInt3, paramInt4);
+    if ((this.mEngine != null) && (0L != this.mNativeDescriptorHandle) && (i >= 0) && (i < this.mFrameNum)) {
+      this.mEngine.native_decorationDrawText(this.mNativeDescriptorHandle, i, paramInt1, paramInt2, paramETFont, paramBitmap, paramInt3, paramInt4);
     }
   }
   
-  void drawScene(Bitmap paramBitmap, int paramInt1, int paramInt2, ETFont paramETFont)
+  public void drawScene(Bitmap paramBitmap, int paramInt1, int paramInt2, ETFont paramETFont)
   {
     int i = currentFrameIndex();
-    if ((this.mEngine != null) && (0L != this.mNativeDescritptorHandle) && (i >= 0) && (i < this.mFrameNum)) {
-      this.mEngine.native_decorationDrawScene(this.mNativeDescritptorHandle, i, paramETFont, this.mSpans, paramBitmap, paramInt1, paramInt2);
+    if ((this.mEngine != null) && (0L != this.mNativeDescriptorHandle) && (i >= 0) && (i < this.mFrameNum)) {
+      this.mEngine.native_decorationDrawScene(this.mNativeDescriptorHandle, i, paramETFont, this.mSpans, paramBitmap, paramInt1, paramInt2);
     }
   }
   
-  int getDecorationType()
+  public void drawSceneSpace(Bitmap paramBitmap, int paramInt1, int paramInt2, ETFont paramETFont)
+  {
+    int i = currentFrameIndex();
+    if ((this.mEngine != null) && (0L != this.mNativeDescriptorHandle) && (i >= 0) && (i < this.mFrameNum)) {
+      this.mEngine.native_space_decorationDrawScene(this.mNativeDescriptorHandle, i, paramETFont, this.mSpans, paramBitmap, paramInt1, paramInt2);
+    }
+  }
+  
+  public int getDecorationType()
   {
     if (this.mEngine != null) {
-      return this.mEngine.native_decorationGetType(this.mNativeDescritptorHandle);
+      return this.mEngine.native_decorationGetType(this.mNativeDescriptorHandle);
     }
     return 0;
   }
   
   public int getFrameDelay()
   {
-    int i = currentFrameIndex();
-    if ((this.mFrameDelay != null) && (i >= 0) && (i < this.mFrameDelay.length)) {
-      return this.mFrameDelay[i];
-    }
-    return 0;
+    return this.mFrameDelay;
   }
   
   public int getFrameNum()
@@ -287,14 +385,32 @@ public class ETDecoration
     return this.mFrameNum;
   }
   
+  public Rect getMargins()
+  {
+    return this.mMargins;
+  }
+  
   public String getText()
   {
     return this.mText;
   }
   
+  public void gotoFrame(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt >= this.mFrameNum)) {
+      return;
+    }
+    this.mFrameIndex = paramInt;
+  }
+  
   public void gotoLastFrame()
   {
     this.mFrameIndex = -1;
+  }
+  
+  public boolean isLastFrame()
+  {
+    return (this.mFrameIndex < 0) || (this.mFrameIndex >= this.mFrameNum);
   }
   
   public boolean nextFrame()
@@ -310,7 +426,7 @@ public class ETDecoration
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.etrump.mixlayout.ETDecoration
  * JD-Core Version:    0.7.0.1
  */

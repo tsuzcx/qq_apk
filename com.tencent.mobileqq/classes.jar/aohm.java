@@ -1,22 +1,16 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.LineLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
-
-public class aohm
-  implements Runnable
+class aohm
+  implements bbrx
 {
-  public aohm(DoodleLayout paramDoodleLayout, LineLayer paramLineLayer, int paramInt, int[] paramArrayOfInt) {}
+  aohm(aohk paramaohk) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    ((PersonalityOperator)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerLineLayer.a.a(102)).b(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ArrayOfInt[0] = 1;
+    apck.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, aohk.a(this.a), this.a.jdField_a_of_type_AndroidContentContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aohm
  * JD-Core Version:    0.7.0.1
  */

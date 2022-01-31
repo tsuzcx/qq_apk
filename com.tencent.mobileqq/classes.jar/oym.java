@@ -1,40 +1,22 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.app.DiscussionHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ImageUtil;
-
 class oym
-  implements Runnable
+  extends ohe
 {
   oym(oyl paramoyl) {}
   
-  public void run()
+  public void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    if (this.a.a.jdField_c_of_type_Int == 1) {
-      this.a.a.jdField_a_of_type_AndroidGraphicsBitmap = this.a.a.app.a(this.a.a.jdField_c_of_type_JavaLangString, false);
-    }
-    for (;;)
-    {
-      if (this.a.a.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-        this.a.a.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.a();
-      }
-      return;
-      if (this.a.a.jdField_c_of_type_Int == 2)
-      {
-        this.a.a.jdField_a_of_type_AndroidGraphicsBitmap = this.a.a.app.a(this.a.a.jdField_c_of_type_JavaLangString, (byte)3, false, false);
-        if (this.a.a.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-          this.a.a.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.f();
-        }
-      }
-      else
-      {
-        Drawable localDrawable = this.a.a.jdField_a_of_type_ComTencentMobileqqAppDiscussionHandler.a(this.a.a.jdField_c_of_type_JavaLangString, true);
-        if ((localDrawable instanceof BitmapDrawable)) {
-          this.a.a.jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)localDrawable).getBitmap();
-        }
-      }
+    oyl.a(this.a, paramBoolean, paramInt, paramString);
+  }
+  
+  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString)
+  {
+    oyl.a(this.a, paramBoolean, paramLong, paramInt, paramString);
+  }
+  
+  public void m()
+  {
+    if (oyl.a(this.a) == 2) {
+      oyl.a(this.a, true);
     }
   }
 }

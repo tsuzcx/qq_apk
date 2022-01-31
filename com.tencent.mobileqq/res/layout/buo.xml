@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/cna" android:visibility="gone" android:layout_width="54.0dip" android:layout_height="54.0dip" android:src="@drawable/aym" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="12.0sp" android:id="@id/cnb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="@string/sgb" android:layout_below="@id/cna" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/cn2" android:layout_width="54.0dip" android:layout_height="54.0dip" android:src="@drawable/ayl" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="12.0sp" android:textColor="#ff878b99" android:id="@id/cn6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="@string/sfq" android:layout_below="@id/cn2" android:layout_centerHorizontal="true" />
+</merge>

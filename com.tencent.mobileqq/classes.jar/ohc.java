@@ -1,17 +1,6 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment;
-
-public class ohc
-  implements View.OnClickListener
+public abstract interface ohc
 {
-  public ohc(DanceMachineQQBrowserActivity.DanceMachineQQBrowserFragment paramDanceMachineQQBrowserFragment) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.getActivity().finish();
-  }
+  public abstract void a(ohe paramohe);
 }
 
 

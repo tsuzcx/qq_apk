@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
 
 public class vud
-  implements HorizontalListView.OnScrollStateChangedListener
+  implements DialogInterface.OnClickListener
 {
-  public vud(PhotoListPanel paramPhotoListPanel) {}
+  public vud(QRLoginMgrActivity paramQRLoginMgrActivity) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.k = paramInt;
+    QRLoginMgrActivity.a(this.a, true, 0L);
+    awqx.b(null, "dc00898", "", "", "0X800A478", "0X800A478", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     vud
  * JD-Core Version:    0.7.0.1
  */

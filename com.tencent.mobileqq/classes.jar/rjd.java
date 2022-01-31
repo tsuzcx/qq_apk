@@ -1,23 +1,28 @@
-import com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAppInfoHelper;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaAccessHelper.2;
+import com.tencent.qphone.base.util.QLog;
 
 public class rjd
-  extends JobSegment
+  implements rjh
 {
-  public rjd(DefaultDoraemonAppInfoHelper paramDefaultDoraemonAppInfoHelper) {}
+  public rjd(ViolaAccessHelper.2 param2) {}
   
-  protected void a(JobContext paramJobContext, rje paramrje)
+  public void a()
   {
-    if (!this.a.a) {
-      this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaAccessHelper", 2, "preInit viola sdk error");
     }
-    notifyResult(paramrje);
+  }
+  
+  public void a(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ViolaAccessHelper", 2, "preInit viola sdk succ");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rjd
  * JD-Core Version:    0.7.0.1
  */

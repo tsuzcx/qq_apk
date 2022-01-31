@@ -37,15 +37,16 @@ public class VolumeVisualizerView
   
   private void a(TypedArray paramTypedArray)
   {
-    boolean bool = false;
-    if (paramTypedArray.getInt(0, 0) == 0) {
-      bool = true;
+    if (paramTypedArray.getInt(2, 0) == 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_Boolean = bool;
+      this.c = paramTypedArray.getInt(3, 30);
+      this.d = ((int)paramTypedArray.getDimension(5, 15.0F));
+      this.e = paramTypedArray.getColor(0, -16776961);
+      this.jdField_a_of_type_ArrayOfInt = new int[this.c];
+      return;
     }
-    this.jdField_a_of_type_Boolean = bool;
-    this.c = paramTypedArray.getInt(1, 30);
-    this.d = ((int)paramTypedArray.getDimension(4, 15.0F));
-    this.e = paramTypedArray.getColor(2, -16776961);
-    this.jdField_a_of_type_ArrayOfInt = new int[this.c];
   }
   
   public void a(int paramInt)
@@ -136,7 +137,7 @@ public class VolumeVisualizerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.recite.ui.VolumeVisualizerView
  * JD-Core Version:    0.7.0.1
  */

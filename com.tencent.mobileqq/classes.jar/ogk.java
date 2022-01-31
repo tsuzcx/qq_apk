@@ -1,16 +1,17 @@
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.NewMessageYellowBar;
-import java.util.Locale;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ogk
-  implements Runnable
+  extends ajjh
 {
-  public ogk(NewMessageYellowBar paramNewMessageYellowBar, int paramInt) {}
+  public ogk(KandianMergeManager paramKandianMergeManager) {}
   
-  public void run()
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(Locale.getDefault(), "%d个小视频更新", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar.jdField_a_of_type_AndroidWidgetTextView.startAnimation(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetNewMessageYellowBar.jdField_a_of_type_AndroidViewAnimationAnimationSet);
+    if ((paramBoolean) && (TextUtils.equals(KandianMergeManager.b(this.a), paramString)) && (!TextUtils.equals(paramString, ajed.az))) {
+      KandianMergeManager.a(this.a).a(1).notifyUI(4, true, new Object[] { ajed.az });
+    }
   }
 }
 

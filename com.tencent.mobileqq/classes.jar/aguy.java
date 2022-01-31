@@ -1,23 +1,21 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbTranslucentBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aguy
-  implements ValueAnimation.AnimationUpdateListener
+  implements View.OnClickListener
 {
-  public aguy(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
+  public aguy(SpringHbTranslucentBrowserActivity paramSpringHbTranslucentBrowserActivity) {}
   
-  public void a(ValueAnimation paramValueAnimation, float paramFloat, Rect paramRect, Transformation paramTransformation)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramRect);
+    QLog.i("springHb_SpringHbTranslucentBrowserActivity", 2, "点击视频");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aguy
  * JD-Core Version:    0.7.0.1
  */

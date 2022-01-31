@@ -1,12 +1,14 @@
 package com.tribe.async.async;
 
 import android.content.Context;
+import android.os.Looper;
 import android.support.annotation.NonNull;
 
 public class Bosses
 {
   private static Context sApp;
   private static volatile Boss sBoss;
+  private static Looper sLooper;
   
   @NonNull
   public static Boss get()
@@ -23,14 +25,20 @@ public class Bosses
       }
     }
     finally {}
-    sBoss = new BossImp(sApp);
+    sBoss = new BossImp(sApp, sLooper);
     Boss localBoss2 = sBoss;
     return localBoss2;
   }
   
   public static void init(Context paramContext)
   {
+    init(paramContext, Looper.myLooper());
+  }
+  
+  public static void init(Context paramContext, Looper paramLooper)
+  {
     sApp = paramContext.getApplicationContext();
+    sLooper = paramLooper;
   }
   
   public static void initWithBoss(Context paramContext, Boss paramBoss)
@@ -46,7 +54,7 @@ public class Bosses
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tribe.async.async.Bosses
  * JD-Core Version:    0.7.0.1
  */

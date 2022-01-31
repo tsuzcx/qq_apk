@@ -24,28 +24,12 @@ public abstract class ResponseBody
     return Util.UTF_8;
   }
   
-  public static ResponseBody create(MediaType paramMediaType, final long paramLong, BufferedSource paramBufferedSource)
+  public static ResponseBody create(MediaType paramMediaType, long paramLong, BufferedSource paramBufferedSource)
   {
     if (paramBufferedSource == null) {
       throw new NullPointerException("source == null");
     }
-    new ResponseBody()
-    {
-      public long contentLength()
-      {
-        return paramLong;
-      }
-      
-      public MediaType contentType()
-      {
-        return this.val$contentType;
-      }
-      
-      public BufferedSource source()
-      {
-        return this.val$content;
-      }
-    };
+    return new ResponseBody.1(paramMediaType, paramLong, paramBufferedSource);
   }
   
   public static ResponseBody create(MediaType paramMediaType, String paramString)
@@ -74,13 +58,11 @@ public abstract class ResponseBody
   }
   
   public final InputStream byteStream()
-    throws IOException
   {
     return source().inputStream();
   }
   
   public final byte[] bytes()
-    throws IOException
   {
     long l = contentLength();
     if (l > 2147483647L) {
@@ -103,7 +85,6 @@ public abstract class ResponseBody
   }
   
   public final Reader charStream()
-    throws IOException
   {
     Object localObject = this.reader;
     if (localObject != null) {
@@ -115,21 +96,17 @@ public abstract class ResponseBody
   }
   
   public void close()
-    throws IOException
   {
     source().close();
   }
   
-  public abstract long contentLength()
-    throws IOException;
+  public abstract long contentLength();
   
   public abstract MediaType contentType();
   
-  public abstract BufferedSource source()
-    throws IOException;
+  public abstract BufferedSource source();
   
   public final String string()
-    throws IOException
   {
     return new String(bytes(), charset().name());
   }

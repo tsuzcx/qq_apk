@@ -1,69 +1,86 @@
 package dov.com.qq.im.capture.data;
 
+import ajed;
+import ajfi;
+import ajfo;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
-import antz;
-import anua;
-import anub;
+import baig;
+import bhfc;
+import bhhe;
+import bhhf;
+import bhhg;
+import bjad;
+import bjae;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
 import com.tribe.async.dispatch.IEventReceiver;
-import dov.com.qq.im.capture.CaptureContext;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools.ComboFilterData;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools.DataSet;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
+import sgi;
 
 public class ComboLockManager
   implements IEventReceiver
 {
   public static final String a;
   int jdField_a_of_type_Int = -1;
-  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = CaptureContext.a();
-  CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new anub(this);
-  ComboLockManager.StoryVideoPublishStatusReceiver jdField_a_of_type_DovComQqImCaptureDataComboLockManager$StoryVideoPublishStatusReceiver;
+  ajfo jdField_a_of_type_Ajfo = new bhhf(this);
+  bhhg jdField_a_of_type_Bhhg;
+  bjad jdField_a_of_type_Bjad;
+  AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface = bhfc.a();
   public LockedCategory a;
   public QIMFilterCategoryItem a;
-  VideoFilterTools.ComboFilterData jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterTools$ComboFilterData;
-  HashMap jdField_a_of_type_JavaUtilHashMap;
+  WeakReference<MessengerService> jdField_a_of_type_JavaLangRefWeakReference;
+  HashMap<String, LockedCategory> jdField_a_of_type_JavaUtilHashMap;
   volatile boolean jdField_a_of_type_Boolean = false;
   boolean b;
   public boolean c;
   
   static
   {
-    jdField_a_of_type_JavaLangString = AppConstants.aJ + "/tencent/qim/share/";
+    jdField_a_of_type_JavaLangString = ajed.aT + "/tencent/qim/share/";
   }
   
-  public ComboLockManager(AppRuntime paramAppRuntime)
+  public ComboLockManager()
   {
     this.jdField_b_of_type_Boolean = true;
   }
   
+  private void a(boolean paramBoolean, String paramString1, String paramString2)
+  {
+    MessengerService localMessengerService = (MessengerService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localMessengerService != null)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("cmd", "ipc_f_c_s");
+      localBundle.putBoolean("k_r", paramBoolean);
+      localBundle.putString("k_s_p_c", paramString1);
+      localBundle.putString("k_f_id", paramString2);
+      localMessengerService.a(localBundle);
+    }
+  }
+  
   private void c()
   {
-    if (this.jdField_a_of_type_DovComQqImCaptureDataComboLockManager$StoryVideoPublishStatusReceiver == null)
+    if (this.jdField_a_of_type_Bhhg == null)
     {
-      this.jdField_a_of_type_DovComQqImCaptureDataComboLockManager$StoryVideoPublishStatusReceiver = new ComboLockManager.StoryVideoPublishStatusReceiver(this);
+      this.jdField_a_of_type_Bhhg = new bhhg(this);
       if (QLog.isColorLevel()) {
         QLog.i("ComboLockManager", 2, "registerStoryReceiver");
       }
-      Dispatchers.get().registerSubscriber(this.jdField_a_of_type_DovComQqImCaptureDataComboLockManager$StoryVideoPublishStatusReceiver);
+      sgi.a().registerSubscriber(this.jdField_a_of_type_Bhhg);
     }
   }
   
@@ -74,14 +91,14 @@ public class ComboLockManager
   
   public void a()
   {
-    if (this.jdField_a_of_type_DovComQqImCaptureDataComboLockManager$StoryVideoPublishStatusReceiver != null)
+    if (this.jdField_a_of_type_Bhhg != null)
     {
-      this.jdField_a_of_type_DovComQqImCaptureDataComboLockManager$StoryVideoPublishStatusReceiver = new ComboLockManager.StoryVideoPublishStatusReceiver(this);
+      this.jdField_a_of_type_Bhhg = new bhhg(this);
       if (QLog.isColorLevel()) {
         QLog.i("ComboLockManager", 2, "unregisterStoryReceiver");
       }
-      Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_DovComQqImCaptureDataComboLockManager$StoryVideoPublishStatusReceiver);
-      this.jdField_a_of_type_DovComQqImCaptureDataComboLockManager$StoryVideoPublishStatusReceiver = null;
+      sgi.a().unRegisterSubscriber(this.jdField_a_of_type_Bhhg);
+      this.jdField_a_of_type_Bhhg = null;
     }
   }
   
@@ -90,9 +107,9 @@ public class ComboLockManager
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(VideoFilterTools.ComboFilterData paramComboFilterData)
+  public void a(bjad parambjad)
   {
-    if (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterTools$ComboFilterData == paramComboFilterData) {
+    if (this.jdField_a_of_type_Bjad == parambjad) {
       if (QLog.isColorLevel()) {
         QLog.i("ComboLockManager", 2, "same data");
       }
@@ -110,12 +127,12 @@ public class ComboLockManager
           QLog.i("ComboLockManager", 2, "updateConfigData first card.snedSrory " + this.jdField_a_of_type_Boolean);
         }
       }
-      this.jdField_a_of_type_JavaUtilHashMap = paramComboFilterData.jdField_a_of_type_JavaUtilHashMap;
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterTools$ComboFilterData = paramComboFilterData;
-      paramComboFilterData = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-      while (paramComboFilterData.hasNext())
+      this.jdField_a_of_type_JavaUtilHashMap = parambjad.jdField_a_of_type_JavaUtilHashMap;
+      this.jdField_a_of_type_Bjad = parambjad;
+      parambjad = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+      while (parambjad.hasNext())
       {
-        Object localObject = (String)paramComboFilterData.next();
+        Object localObject = (String)parambjad.next();
         localObject = (LockedCategory)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
         ((LockedCategory)localObject).jdField_a_of_type_Boolean = a(((LockedCategory)localObject).jdField_a_of_type_JavaLangString);
         if ((((LockedCategory)localObject).jdField_a_of_type_Boolean) && (((LockedCategory)localObject).jdField_a_of_type_Int == 2))
@@ -196,7 +213,7 @@ public class ComboLockManager
       {
         if (!localLockedCategory.jdField_b_of_type_Boolean)
         {
-          localLockedCategory.jdField_a_of_type_Boolean = SharedPreUtils.A(BaseApplicationImpl.getApplication(), paramString);
+          localLockedCategory.jdField_a_of_type_Boolean = baig.y(BaseApplicationImpl.getApplication(), paramString);
           localLockedCategory.jdField_b_of_type_Boolean = true;
         }
         bool1 = localLockedCategory.jdField_a_of_type_Boolean;
@@ -240,20 +257,20 @@ public class ComboLockManager
       QLog.i("ComboLockManager", 2, "handleSendStory");
     }
     this.jdField_a_of_type_Boolean = true;
-    Dispatchers.get().unRegisterSubscriber(this.jdField_a_of_type_DovComQqImCaptureDataComboLockManager$StoryVideoPublishStatusReceiver);
-    Object localObject = (CardHandler)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(2);
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver, true);
+    sgi.a().unRegisterSubscriber(this.jdField_a_of_type_Bhhg);
+    Object localObject = (ajfi)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getBusinessHandler(2);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_Ajfo, true);
     if (this.jdField_a_of_type_DovComQqImCaptureDataLockedCategory != null)
     {
       localObject = BaseApplicationImpl.getContext();
-      antz localantz = new antz(this, (Context)localObject);
-      ThreadManager.getUIHandler().postDelayed(new anua(this, (Context)localObject, localantz), 1000L);
+      bhhe localbhhe = new bhhe(this, (Context)localObject);
+      ThreadManager.getUIHandler().postDelayed(new ComboLockManager.2(this, (Context)localObject, localbhhe), 1000L);
     }
   }
   
   public void b(String paramString)
   {
-    Object localObject1 = this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaVideoFilterTools$ComboFilterData.a(this.jdField_a_of_type_Int).a;
+    Object localObject1 = this.jdField_a_of_type_Bjad.a(this.jdField_a_of_type_Int).a;
     if (localObject1 != null)
     {
       localObject1 = ((ArrayList)localObject1).iterator();

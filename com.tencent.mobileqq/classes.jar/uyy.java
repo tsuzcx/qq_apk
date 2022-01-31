@@ -1,67 +1,75 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.MultiForwardActivity;
-import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder.Holder;
-import com.tencent.mobileqq.data.MessageForApollo;
-import java.lang.ref.WeakReference;
-
 public class uyy
-  implements Runnable
+  implements Cloneable
 {
-  int jdField_a_of_type_Int;
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  WeakReference b;
-  WeakReference c;
+  public final int a;
+  public final String a;
+  public final String b;
+  public final String c;
+  public final String d;
+  public final String e;
+  public final String f;
+  public final String g;
+  public String h;
   
-  public uyy(ApolloItemBuilder paramApolloItemBuilder, ApolloItemBuilder.Holder paramHolder, MessageForApollo paramMessageForApollo, int paramInt)
+  public uyy(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    this.b = new WeakReference(paramApolloItemBuilder);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramHolder);
-    this.c = new WeakReference(paramMessageForApollo);
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.c = null;
+    this.d = paramString3;
+    this.e = paramString4;
+    this.f = paramString5;
+    this.g = paramString6;
+    this.jdField_a_of_type_Int = 1;
   }
   
-  public void run()
+  public uyy(tbl paramtbl)
   {
-    ApolloItemBuilder localApolloItemBuilder = (ApolloItemBuilder)this.b.get();
-    ApolloItemBuilder.Holder localHolder = (ApolloItemBuilder.Holder)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    MessageForApollo localMessageForApollo = (MessageForApollo)this.c.get();
-    if ((localApolloItemBuilder == null) || (localHolder == null) || (localMessageForApollo == null)) {
-      break label45;
+    this.jdField_a_of_type_JavaLangString = paramtbl.jdField_a_of_type_JavaLangString;
+    this.jdField_b_of_type_JavaLangString = paramtbl.jdField_b_of_type_JavaLangString;
+    this.c = paramtbl.c;
+    this.d = paramtbl.d;
+    this.e = paramtbl.e;
+    this.f = paramtbl.g;
+    this.g = paramtbl.f;
+    this.jdField_a_of_type_Int = paramtbl.jdField_b_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.h;
+  }
+  
+  public void a(String paramString)
+  {
+    this.h = paramString;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {
+      return true;
     }
-    label45:
-    while (!(localHolder instanceof ApolloItemBuilder.Holder)) {
-      return;
+    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+      return false;
     }
-    if (this.jdField_a_of_type_Int == 0) {
-      if (!(localHolder.c.getContext() instanceof MultiForwardActivity))
-      {
-        if (!localMessageForApollo.isSend()) {
-          break label148;
-        }
-        localHolder.c.setVisibility(0);
-        localHolder.d.setVisibility(8);
-      }
-    }
-    for (;;)
-    {
-      ApolloItemBuilder.a(localApolloItemBuilder, true);
-      if ((this.jdField_a_of_type_Int != 1) || (ApolloItemBuilder.a(localApolloItemBuilder) != localMessageForApollo.uniseq)) {
-        break;
-      }
-      localHolder.c.setVisibility(8);
-      localHolder.d.setVisibility(8);
-      ApolloItemBuilder.a(localApolloItemBuilder, 0L);
-      return;
-      label148:
-      localHolder.c.setVisibility(8);
-      localHolder.d.setVisibility(0);
-    }
+    paramObject = (uyy)paramObject;
+    return this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString);
+  }
+  
+  public int hashCode()
+  {
+    return this.jdField_a_of_type_JavaLangString.hashCode();
+  }
+  
+  public String toString()
+  {
+    return "DoodleEmojiItem{mPackId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mLogoUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mDownloadLogoUrl='" + this.c + '\'' + ", mPackName='" + this.d + '\'' + ", mPackDownloadUrl='" + this.e + '\'' + ", mPackMd5='" + this.g + '\'' + ", mLocalEmojiFolderPath='" + this.h + '\'' + ", mConfig='" + this.f + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uyy
  * JD-Core Version:    0.7.0.1
  */

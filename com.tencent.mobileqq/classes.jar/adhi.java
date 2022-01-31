@@ -1,27 +1,38 @@
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.HttpThumbDownloader.ThumbEventCallback;
-import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager;
 
-public class adhi
-  implements HttpThumbDownloader.ThumbEventCallback
+class adhi
+  implements begw
 {
-  public adhi(ThumbDownloadManager paramThumbDownloadManager) {}
+  adhi(adhh paramadhh, begr parambegr) {}
   
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString1, boolean paramBoolean, int paramInt, String paramString2, long paramLong)
+  public void OnClick(View paramView, int paramInt)
   {
-    ThumbDownloadManager.c(this.a, paramString1);
-    ThumbDownloadManager.a(this.a).a().a(paramBoolean, 60, new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt), paramString2, paramString1 });
-    ThumbDownloadManager.a(this.a);
+    this.jdField_a_of_type_Begr.dismiss();
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+    } while (this.jdField_a_of_type_Adhh.jdField_a_of_type_Adfw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 3000);
+    try
+    {
+      long l = Long.valueOf(this.jdField_a_of_type_Adhh.jdField_a_of_type_Adfw.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString).longValue();
+      paramView = (ajex)this.jdField_a_of_type_Adhh.jdField_a_of_type_Adfw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22);
+      if (paramView != null) {
+        paramView.a(l);
+      }
+      awqx.b(this.jdField_a_of_type_Adhh.jdField_a_of_type_Adfw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_discuss", "", "grey", "Clk", 0, 0, "", String.valueOf(this.jdField_a_of_type_Adhh.jdField_a_of_type_Int), "", "");
+      return;
+    }
+    catch (NumberFormatException paramView) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adhi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,19 @@
+{
+    "view_type": "UIImageView",
+    "view_id": "id_awsome_postmark",
+    "align_parent_right": "YES",
+    "below_of_view": "id_comment_cell_header",
+    "margin_right": "56",
+    "margin_top":"-47",
+    "height": {
+        "type": "absolutely",
+        "value":"55"
+    },
+    "width": {
+        "type": "absolutely",
+        "value":"55"
+    },
+    "attributes":{
+        "loadImageWithPath:": "$awsome_postmark_img"
+    }
+}

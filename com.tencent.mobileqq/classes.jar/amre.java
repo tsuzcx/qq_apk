@@ -1,38 +1,32 @@
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import cooperation.comic.ipc.QQComicIPCModule;
-import eipc.EIPCResult;
-import org.json.JSONObject;
+import android.support.v4.util.LruCache;
 
-public class amre
-  extends VasQuickUpdateManager.CallBacker
+class amre
+  extends LruCache<String, T>
 {
-  int jdField_a_of_type_Int;
-  
-  public amre(QQComicIPCModule paramQQComicIPCModule, int paramInt)
+  amre(amrd paramamrd, int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramInt);
   }
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  protected int a(String paramString, T paramT)
   {
-    if ((paramInt1 == 0) && (paramLong == 1000L) && ("vipComic_config_v2.json".equals(paramString1)))
-    {
-      paramString1 = VasQuickUpdateManager.a(BaseApplicationImpl.getApplication().getRuntime(), paramString1, false, null);
-      if (paramString1 != null)
-      {
-        paramString2 = new Bundle();
-        paramString2.putString("config_json", paramString1.toString());
-        this.jdField_a_of_type_CooperationComicIpcQQComicIPCModule.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createResult(0, paramString2));
-      }
+    int i;
+    if (paramT == null) {
+      i = 0;
     }
+    int j;
+    do
+    {
+      return i;
+      j = amrd.a(this.a, paramT);
+      i = j;
+    } while (j != 0);
+    return this.a.a(paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amre
  * JD-Core Version:    0.7.0.1
  */

@@ -11,19 +11,21 @@ public final class s_medal
   static int cache_medal_type = 0;
   public String jump_url = "";
   public int level;
+  public int medal_id;
   public int medal_state;
   public int medal_type;
   public String pic_url = "";
   
   public s_medal() {}
   
-  public s_medal(int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2)
+  public s_medal(int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2, int paramInt4)
   {
     this.medal_type = paramInt1;
     this.medal_state = paramInt2;
     this.level = paramInt3;
     this.pic_url = paramString1;
     this.jump_url = paramString2;
+    this.medal_id = paramInt4;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -33,6 +35,7 @@ public final class s_medal
     this.level = paramJceInputStream.read(this.level, 2, false);
     this.pic_url = paramJceInputStream.readString(3, false);
     this.jump_url = paramJceInputStream.readString(4, false);
+    this.medal_id = paramJceInputStream.read(this.medal_id, 5, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -46,11 +49,12 @@ public final class s_medal
     if (this.jump_url != null) {
       paramJceOutputStream.write(this.jump_url, 4);
     }
+    paramJceOutputStream.write(this.medal_id, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_medal
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.businessCard.data;
 
-import abvh;
+import alpz;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atnz;
+import atoc;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -15,7 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 public class BusinessCard
-  extends Entity
+  extends atmo
   implements Parcelable
 {
   public static final int CARD_SRC_AB = 3;
@@ -23,42 +23,42 @@ public class BusinessCard
   public static final int CARD_SRC_FX = 2;
   public static final int CARD_SRC_SS = 1;
   public static final int CARD_SRC_ZL = 5;
-  public static final Parcelable.Creator CREATOR = new abvh();
+  public static final Parcelable.Creator<BusinessCard> CREATOR = new alpz();
   public static final int TYPE_CARD_ADD = 2;
   public static final int TYPE_CARD_MINE = 1;
   public static final int TYPE_CARD_MINE_ADD = 3;
   public static final int TYPE_CARD_OTHER = 0;
-  @notColumn
+  @atnz
   public CardOCRInfo OCRInfo;
   public String OCRInfoPacked;
   public String allPinyin;
   public String bindMobile;
   public String bindUin;
-  @unique
+  @atoc
   public String cardId;
   public String cardName;
   public int cardSrc = 1;
   public int cardType;
   public String company;
-  @notColumn
-  public List descs = new ArrayList();
+  @atnz
+  public List<String> descs = new ArrayList();
   public String descsPacked;
-  @notColumn
+  @atnz
   public String firstPinyin;
   public int lastUpdateTime;
-  @notColumn
-  public List mobileInfos = new ArrayList();
-  @notColumn
-  public List mobilesNum = new ArrayList();
+  @atnz
+  public List<CardMobileInfo> mobileInfos = new ArrayList();
+  @atnz
+  public List<String> mobilesNum = new ArrayList();
   public String moblieInfoPacked;
   public String mobulesNumPacked;
   public String picUrl;
-  @notColumn
-  public List qqNum = new ArrayList();
+  @atnz
+  public List<String> qqNum = new ArrayList();
   public String sortDesc;
   public String uinInfoPacked;
-  @notColumn
-  public List uinInfos = new ArrayList();
+  @atnz
+  public List<CardUinInfo> uinInfos = new ArrayList();
   
   public BusinessCard() {}
   
@@ -82,7 +82,7 @@ public class BusinessCard
     this.sortDesc = paramParcel.readString();
   }
   
-  public static String pack(List paramList)
+  public static String pack(List<String> paramList)
   {
     if ((paramList == null) || (paramList.isEmpty())) {
       return "";
@@ -95,7 +95,7 @@ public class BusinessCard
     return localJSONArray.toString();
   }
   
-  public static List unPack(String paramString)
+  public static List<String> unPack(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
@@ -146,7 +146,7 @@ public class BusinessCard
     return null;
   }
   
-  protected void postRead()
+  public void postRead()
   {
     super.postRead();
     if (!TextUtils.isEmpty(this.mobulesNumPacked)) {
@@ -166,7 +166,7 @@ public class BusinessCard
     }
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     super.prewrite();
     if (this.mobilesNum.size() > 0) {
@@ -213,7 +213,7 @@ public class BusinessCard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.data.BusinessCard
  * JD-Core Version:    0.7.0.1
  */

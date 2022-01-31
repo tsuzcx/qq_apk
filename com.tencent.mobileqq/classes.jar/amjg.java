@@ -1,60 +1,50 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import com.tencent.widget.GestureSelectGridView;
-import com.tencent.widget.GestureSelectGridView.OnSelectListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class amjg
-  implements AbsListView.OnScrollListener
 {
-  public amjg(GestureSelectGridView paramGestureSelectGridView) {}
+  private int a = 1;
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  @NonNull
+  public static amjg a()
   {
-    if (this.a.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener != null) {
-      this.a.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener.a(paramAbsListView, paramInt);
+    return new amjg();
+  }
+  
+  @NonNull
+  public static amjg a(@Nullable String paramString)
+  {
+    amjg localamjg = new amjg();
+    try
+    {
+      if (!TextUtils.isEmpty(paramString)) {
+        localamjg.a = new JSONObject(paramString).getInt("use_apm");
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("QVIP.SDK.ConfigProcessor", 1, " : " + localamjg.toString());
+      }
+      return localamjg;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        QLog.e("QVIP.SDK.ConfigProcessor", 1, "json parse error:" + paramString);
+      }
     }
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public String toString()
   {
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      int i = paramInt1 + paramInt2;
-      if ((!this.a.jdField_b_of_type_Boolean) || (Math.abs(i - this.a.c) < 3) || (Math.abs(i - this.a.c) > 5)) {
-        break label161;
-      }
-      if (this.a.c + 3 <= paramInt3 - 1) {
-        break label140;
-      }
-      this.a.c = (paramInt3 - 1);
-      this.a.jdField_a_of_type_ComTencentWidgetGestureSelectGridView$OnSelectListener.a(this.a.jdField_b_of_type_Int, this.a.c);
-    }
-    label140:
-    GestureSelectGridView localGestureSelectGridView;
-    label161:
-    while ((this.a.jdField_b_of_type_Boolean) || (Math.abs(paramInt1 - this.a.c) < 3) || (Math.abs(paramInt1 - this.a.c) > 5)) {
-      for (;;)
-      {
-        if (this.a.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener != null) {
-          this.a.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener.a(paramAbsListView, paramInt1, paramInt2, paramInt3);
-        }
-        return;
-        localGestureSelectGridView = this.a;
-        localGestureSelectGridView.c += 3;
-      }
-    }
-    if (this.a.c - 3 < 0) {}
-    for (this.a.c = 0;; localGestureSelectGridView.c -= 3)
-    {
-      this.a.jdField_a_of_type_ComTencentWidgetGestureSelectGridView$OnSelectListener.a(this.a.jdField_b_of_type_Int, this.a.c);
-      break;
-      localGestureSelectGridView = this.a;
-    }
+    return "QVipPerfLevelConfig{use_apm=" + this.a + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amjg
  * JD-Core Version:    0.7.0.1
  */

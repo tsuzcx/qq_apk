@@ -1,103 +1,42 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.LikeRankingListActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.LikeRankingListManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.LikeRankingInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
 
-public class tdr
-  extends CardObserver
+class tdr
+  extends tcs
 {
-  public tdr(LikeRankingListActivity paramLikeRankingListActivity) {}
-  
-  protected void a(boolean paramBoolean, Object paramObject)
+  tdr(tdo paramtdo, StoryVideoItem paramStoryVideoItem)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LikeRankingListActivity", 2, "onCardDownload isSuccess=" + paramBoolean);
-    }
-    if ((paramBoolean) && ((paramObject instanceof Card)))
-    {
-      paramObject = (Card)paramObject;
-      if (paramObject.uin.equals(this.a.b)) {
-        this.a.app.a(new tds(this, paramObject));
-      }
-    }
+    super(paramStoryVideoItem);
   }
   
-  protected void a(boolean paramBoolean1, String paramString, List paramList, int paramInt, boolean paramBoolean2)
+  public boolean b()
   {
-    int i;
-    if (QLog.isColorLevel())
+    Object localObject = (String)a("result");
+    try
     {
-      String str = "onReqLikeRankingListResult success:" + paramBoolean1;
-      paramString = new StringBuilder().append(", uin:").append(paramString).append(", size:");
-      if (paramList == null)
+      localObject = new URI((String)localObject);
+      if ("file".equals(((URI)localObject).getScheme()))
       {
-        i = 0;
-        QLog.d("LikeRankingListActivity", 2, new Object[] { str, i + ", nextIndex: " + paramInt + ", isComplete:" + paramBoolean2 });
-      }
-    }
-    else
-    {
-      if (!paramBoolean1) {
-        break label333;
-      }
-      if ((paramList == null) || ((paramList.size() <= 0) && (!paramBoolean2))) {
-        break label276;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqAppLikeRankingListManager.a(paramList, paramInt, paramBoolean2);
-      if ((!paramBoolean2) || (paramList.size() != 0)) {
-        break label250;
-      }
-      this.a.e.setVisibility(0);
-      label165:
-      this.a.jdField_a_of_type_Tdz.a(paramList, true);
-      if (this.a.jdField_a_of_type_Int == 0)
-      {
-        if (paramList.size() <= 0) {
-          break label265;
+        localObject = new File((URI)localObject);
+        if (((File)localObject).exists())
+        {
+          a("UploadImageJob_in_image_file_path", ((File)localObject).getAbsolutePath());
+          return true;
         }
-        this.a.a(String.valueOf(((LikeRankingInfo)paramList.get(0)).uin));
       }
     }
-    for (;;)
+    catch (URISyntaxException localURISyntaxException)
     {
-      paramString = this.a;
-      if (paramBoolean2) {
-        paramInt = -1;
-      }
-      paramString.jdField_a_of_type_Int = paramInt;
-      return;
-      i = paramList.size();
-      break;
-      label250:
-      this.a.e.setVisibility(8);
-      break label165;
-      label265:
-      this.a.a(null);
-      continue;
-      label276:
-      this.a.a(null);
-      this.a.jdField_a_of_type_Tdz.a = false;
-      this.a.jdField_a_of_type_Tdz.notifyDataSetChanged();
-      if (this.a.jdField_a_of_type_Tdz.getCount() <= 1) {
-        this.a.e.setVisibility(0);
-      }
+      urk.c(this.b, "Error: 保存投票失败", localURISyntaxException);
     }
-    label333:
-    this.a.jdField_a_of_type_Tdz.a = false;
-    this.a.jdField_a_of_type_Tdz.notifyDataSetChanged();
-    QQToast.a(BaseApplication.getContext(), 1, "获取排行榜失败", 0).a();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tdr
  * JD-Core Version:    0.7.0.1
  */

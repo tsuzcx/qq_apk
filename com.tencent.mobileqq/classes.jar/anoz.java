@@ -1,41 +1,70 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.os.Process;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.weiyun.ResponseHandler;
+import android.graphics.Rect;
+import android.view.View;
+import java.util.ArrayList;
 
-public class anoz
-  extends Handler
+class anoz
+  implements anuw
 {
-  public anoz(Looper paramLooper)
+  anoz(anoy paramanoy, ArrayList paramArrayList, int paramInt1, int paramInt2) {}
+  
+  public int a()
   {
-    super(paramLooper);
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
   
-  public void handleMessage(Message paramMessage)
+  public Rect a(int paramInt)
   {
-    if (paramMessage.what == 0) {
-      ResponseHandler.a(0);
+    Rect localRect = new Rect(0, 0, 0, 0);
+    int i = a();
+    if (i > 1)
+    {
+      if (paramInt == 0)
+      {
+        localRect.right = this.b;
+        localRect.left = (this.b * 2);
+      }
     }
-    while ((paramMessage.what != 1) || (!ResponseHandler.a()) || (TextUtils.isEmpty(ResponseHandler.a())) || (TextUtils.isEmpty(ResponseHandler.b()))) {
-      return;
+    else {
+      return localRect;
     }
-    String str1 = ResponseHandler.a();
-    String str2 = ResponseHandler.b();
-    int i = ResponseHandler.a();
-    int j = ResponseHandler.b();
-    String str3 = ResponseHandler.a(BaseApplicationImpl.getApplication());
-    Process.setThreadPriority(10);
-    ResponseHandler.a((QQAppInterface)paramMessage.obj, str1, str2, i, j, str3);
-    ResponseHandler.b();
+    if (paramInt == i - 1)
+    {
+      localRect.left = this.b;
+      localRect.right = (this.b * 2);
+      return localRect;
+    }
+    paramInt = this.b;
+    localRect.right = paramInt;
+    localRect.left = paramInt;
+    return localRect;
+  }
+  
+  public View a(int paramInt)
+  {
+    int j = a();
+    if (j <= b()) {}
+    for (int i = 2131495165;; i = 2131495166)
+    {
+      View localView = View.inflate(this.jdField_a_of_type_Anoy.itemView.getContext(), i, null);
+      anoy.a(this.jdField_a_of_type_Anoy, localView, (anox)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), paramInt, j);
+      anoy.a(this.jdField_a_of_type_Anoy, (anox)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), paramInt, "0X800A9B0");
+      return localView;
+    }
+  }
+  
+  public int b()
+  {
+    return 2;
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anoz
  * JD-Core Version:    0.7.0.1
  */

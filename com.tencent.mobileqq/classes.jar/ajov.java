@@ -1,30 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.HomeworkInfo;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileFilter;
+import java.util.regex.Pattern;
 
-public class ajov
-  implements DialogInterface.OnClickListener
+class ajov
+  implements FileFilter
 {
-  public ajov(PublishHomeWorkFragment paramPublishHomeWorkFragment, HomeworkInfo paramHomeworkInfo) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean accept(File paramFile)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return;
-      PublishHomeWorkFragment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkHomeworkInfo);
-    } while (!QLog.isColorLevel());
-    QLog.d("PublishHomeWorkFragment", 2, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkHomeworkInfo.b);
+    return Pattern.matches("cpu[0-9]+", paramFile.getName());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajov
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.open.business.viareport.OpenSdkStatic;
-import com.tencent.widget.ActionSheet;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.XEditTextEx;
 
-public class acxa
-  implements View.OnClickListener
+class acxa
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public acxa(UniformDownloadActivity paramUniformDownloadActivity) {}
+  acxa(acwx paramacwx) {}
   
-  public void onClick(View paramView)
+  public void onGlobalLayout()
   {
-    if (this.a.a != null)
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getLineCount() > 3) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.h()) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.C()) && (!awnu.b()))
     {
-      this.a.a.dismiss();
-      this.a.a = null;
-    }
-    if (UniformDownloadActivity.a(this.a)) {
-      OpenSdkStatic.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3009", false);
-    }
-    for (;;)
-    {
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
+      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
       return;
-      OpenSdkStatic.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3006", false);
     }
+    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acxa
  * JD-Core Version:    0.7.0.1
  */

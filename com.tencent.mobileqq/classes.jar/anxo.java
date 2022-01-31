@@ -1,47 +1,36 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.util.WeakReferenceHandler;
-import dov.com.qq.im.capture.music.MusicDownloadListener;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.6.1;
+import java.util.Random;
 
 public class anxo
-  extends MusicDownloadListener
+  implements View.OnClickListener
 {
-  public anxo(MusicProviderView paramMusicProviderView) {}
+  public anxo(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    long l = SystemClock.uptimeMillis();
-    if ((this.a.jdField_a_of_type_Long == 0L) || (l - this.a.jdField_a_of_type_Long > 16L))
+    this.a.startTitleProgress();
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.a.jdField_b_of_type_AndroidWidgetTextView.setText(2131629447);
+    this.a.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(null);
+    if (this.a.jdField_a_of_type_Aonu != null)
     {
-      this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(2);
-      this.a.jdField_a_of_type_Long = l;
+      paramView = this.a.jdField_a_of_type_Aonu;
+      paramView.a += 1;
     }
-  }
-  
-  public void a(String paramString, boolean paramBoolean)
-  {
-    this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(2);
-  }
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(2);
-    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.a().equals(paramString))) {
-      this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(1);
-    }
-    if ((!paramBoolean) && (paramInt == -104)) {
-      this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(5);
-    }
+    int i = new Random(System.currentTimeMillis()).nextInt(1500);
+    new Handler().postDelayed(new FilePreviewActivity.6.1(this), i % 1001 + 500);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anxo
  * JD-Core Version:    0.7.0.1
  */

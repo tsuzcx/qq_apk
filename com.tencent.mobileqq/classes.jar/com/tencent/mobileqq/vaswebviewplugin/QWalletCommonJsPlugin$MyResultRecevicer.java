@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
+import bfom;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qwallet.plugin.TenCookie;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -31,7 +31,7 @@ public class QWalletCommonJsPlugin$MyResultRecevicer
     }
     String str2 = paramBundle.getString("detail");
     if ((TextUtils.isEmpty(QWalletCommonJsPlugin.mParamForGarpHb)) && (!TextUtils.isEmpty(QWalletCommonJsPlugin.mListid))) {
-      QWalletCommonJsPlugin.mParamForGarpHb = TenCookie.getInstance().getTempArgs(QWalletCommonJsPlugin.mListid);
+      QWalletCommonJsPlugin.mParamForGarpHb = bfom.a().b(QWalletCommonJsPlugin.mListid);
     }
     str1 = "";
     paramBundle = str1;
@@ -56,12 +56,12 @@ public class QWalletCommonJsPlugin$MyResultRecevicer
         paramBundle = str1;
       }
     }
-    QWalletCommonJsPlugin.access$000(this.mJsPlugin, paramBundle);
+    QWalletCommonJsPlugin.access$400(this.mJsPlugin, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin.MyResultRecevicer
  * JD-Core Version:    0.7.0.1
  */

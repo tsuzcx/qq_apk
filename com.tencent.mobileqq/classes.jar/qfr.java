@@ -1,67 +1,24 @@
-import android.annotation.TargetApi;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.device.JNICallCenter.DataPoint;
-import com.tencent.device.msg.activities.DeviceTipActivity;
-import com.tencent.mobileqq.utils.AudioUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
 public class qfr
-  extends BroadcastReceiver
+  implements View.OnLayoutChangeListener
 {
-  public qfr(DeviceTipActivity paramDeviceTipActivity) {}
+  public qfr(VideoFeedsRecyclerView paramVideoFeedsRecyclerView) {}
   
-  @TargetApi(12)
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
-    {
-      paramContext = paramIntent.getStringExtra("reason");
-      if ((paramContext != null) && (paramContext.equals("homekey"))) {
-        this.a.finish();
-      }
+    this.a.removeOnLayoutChangeListener(this);
+    if (VideoFeedsRecyclerView.a(this.a) != null) {
+      VideoFeedsRecyclerView.a(this.a).a(VideoFeedsRecyclerView.a(this.a).itemView);
     }
-    long l;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          if (paramContext.equals("android.intent.action.SCREEN_OFF"))
-          {
-            AudioUtil.a();
-            return;
-          }
-          if (paramContext.equals("android.intent.action.SCREEN_ON"))
-          {
-            AudioUtil.a(2131230742, -1, null);
-            return;
-          }
-          if (!paramContext.equals("SmartDevice_receiveDPMsg")) {
-            break;
-          }
-        } while ((DataPoint)paramIntent.getExtras().getParcelable("dataPoint") != null);
-        return;
-      } while (!paramContext.equals("On_OccupyMicrophoneNotify_Push"));
-      if (QLog.isColorLevel()) {
-        QLog.d(DeviceTipActivity.a, 2, "DeviceTipActivity intent.getExtras() : " + paramIntent.getExtras());
-      }
-      paramContext = paramIntent.getExtras();
-      l = paramContext.getLong("din", 0L);
-      paramContext = paramContext.getString("uin", "");
-    } while ((!this.a.b.equals(String.valueOf(Long.valueOf(l)))) || (TextUtils.isEmpty(paramContext)));
-    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qfr
  * JD-Core Version:    0.7.0.1
  */

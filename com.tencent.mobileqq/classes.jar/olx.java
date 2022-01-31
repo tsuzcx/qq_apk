@@ -1,23 +1,28 @@
-import com.tencent.biz.qqstory.takevideo.EditMusicExport;
-import com.tencent.biz.qqstory.takevideo.EditSubtitleExport;
-import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
 
 public class olx
-  implements Runnable
+  implements Animator.AnimatorListener
 {
-  public olx(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
+  public olx(VideoView paramVideoView) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    Object localObject = (EditMusicExport)this.a.a(EditMusicExport.class);
-    if (localObject != null) {
-      ((EditMusicExport)localObject).b();
+    if (VideoView.a(this.a) != null) {
+      VideoView.a(this.a).setVisibility(4);
     }
-    localObject = (EditSubtitleExport)this.a.a(EditSubtitleExport.class);
-    if (localObject != null) {
-      ((EditSubtitleExport)localObject).b();
+    if (VideoView.b(this.a) != null) {
+      VideoView.b(this.a).setVisibility(4);
     }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,23 +1,42 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.magic.models.Status;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.config.ConfigInfo;
 
-public final class lrt
-  implements Parcelable.Creator
+class lrt
+  extends BroadcastReceiver
 {
-  public Status a(Parcel paramParcel)
-  {
-    return new Status(paramParcel, null);
-  }
+  lrt(lrs paramlrs) {}
   
-  public Status[] a(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return new Status[paramInt];
+    paramIntent = paramIntent.getAction();
+    if (paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE"))
+    {
+      if (!lrs.a(this.a))
+      {
+        lrs.a(this.a, true);
+        if (lrs.b(this.a)) {
+          lrs.a(this.a);
+        }
+      }
+      int i = ConfigInfo.getSharpConfigVersionFromFile(paramContext);
+      lll.a().a("update", i);
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while ((!paramIntent.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD")) || (lrs.b(this.a)));
+      lrs.b(this.a, true);
+    } while (!lrs.a(this.a));
+    lrs.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lrt
  * JD-Core Version:    0.7.0.1
  */

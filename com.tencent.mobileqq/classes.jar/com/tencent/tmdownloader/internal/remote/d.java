@@ -2,8 +2,8 @@ package com.tencent.tmdownloader.internal.remote;
 
 import com.tencent.tmassistant.st.SDKReportManager2;
 import com.tencent.tmassistantbase.util.Settings;
-import com.tencent.tmassistantbase.util.m;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.t;
 import com.tencent.tmdownloader.internal.a.a;
 
 public class d
@@ -16,7 +16,7 @@ public class d
   
   public void a(int paramInt, String paramString)
   {
-    r.c("RemoteOpImpl", "<RemoteOpImpl.postReport> process:" + m.e() + ", type = " + paramInt + ", data = " + paramString);
+    ac.c("RemoteOpImpl", "<RemoteOpImpl.postReport> process:" + t.e() + ", type = " + paramInt + ", data = " + paramString);
     SDKReportManager2.getInstance().postReport(paramInt, paramString);
   }
   
@@ -42,7 +42,7 @@ public class d
   
   public void a(String paramString, byte[] paramArrayOfByte)
   {
-    r.c("RemoteOpImpl", "<RemoteOpImpl.postReport> process:" + m.e() + ", key = " + paramString + ", valueSize = " + paramArrayOfByte.length);
+    ac.c("RemoteOpImpl", "<RemoteOpImpl.postReport> process:" + t.e() + ", key = " + paramString + ", valueSize = " + paramArrayOfByte.length);
     Settings.getInstance().setBlob(paramString, paramArrayOfByte);
   }
   
@@ -76,6 +76,11 @@ public class d
     return Settings.getInstance().getString(paramString);
   }
   
+  public void d()
+  {
+    a.a().d();
+  }
+  
   public boolean e(String paramString)
   {
     return Settings.getInstance().getBoolean(paramString);
@@ -83,7 +88,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.remote.d
  * JD-Core Version:    0.7.0.1
  */

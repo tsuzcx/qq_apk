@@ -1,24 +1,22 @@
 package com.tencent.mobileqq.app;
 
 import AvatarInfo.QQHeadInfo;
+import akhf;
+import alzr;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.utils.ClassicHeadActivityManager;
-import com.tencent.mobileqq.config.PicIPManager;
+import azzu;
+import babg;
 import com.tencent.mobileqq.data.Setting;
 import com.tencent.mobileqq.util.FaceInfo;
-import com.tencent.mobileqq.util.SystemUtil;
-import com.tencent.mobileqq.utils.ContactConfig;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.io.File;
 import mqq.os.MqqHandler;
-import zsr;
-import zss;
 
 public class QQHeadDownloadHandler
   extends FaceDownloader
 {
   private static Object jdField_a_of_type_JavaLangObject = new Object();
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130839298, 2130846364, 2130846365, 2130846366 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130840165, 2130849330, 2130849331, 2130849332 };
   private FriendListHandler jdField_a_of_type_ComTencentMobileqqAppFriendListHandler;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private MqqHandler b = new MqqHandler(ThreadManager.getSubThreadLooper());
@@ -172,12 +170,12 @@ public class QQHeadDownloadHandler
   
   public String a()
   {
-    return PicIPManager.a(0);
+    return alzr.a(0);
   }
   
   public String b()
   {
-    return PicIPManager.a(1);
+    return alzr.a(1);
   }
   
   protected void b(FaceInfo paramFaceInfo)
@@ -189,148 +187,148 @@ public class QQHeadDownloadHandler
     bool2 = false;
     bool1 = false;
     int i19 = 0;
-    boolean bool8 = false;
     boolean bool7 = false;
+    boolean bool8 = false;
     bool6 = false;
-    i8 = 0;
-    int i1 = 0;
+    i7 = 0;
+    int m = 0;
+    int i8 = 0;
+    int i11 = 0;
     int i12 = 0;
-    int k = 0;
-    int i13 = 0;
     int i3 = 0;
     Object localObject4 = localQQHeadInfo.downLoadUrl;
     int i17 = 0;
-    int i10 = 0;
-    int i7 = 0;
+    int i1 = 0;
+    int i13 = 0;
     i = 0;
-    j = 0;
-    int i11 = 0;
-    i2 = 0;
-    int m = 0;
-    int i16 = 0;
-    int i14 = 0;
-    int n = 0;
     int i15 = 0;
+    int i2 = 0;
+    n = 0;
+    int k = 0;
+    int i16 = 0;
+    j = 0;
+    int i10 = 0;
+    int i14 = 0;
     i4 = 0;
     bool3 = bool2;
-    int i9 = i10;
+    int i9 = i1;
     int i18 = i19;
-    int i5 = i12;
+    int i5 = i8;
     Object localObject5 = localObject4;
-    int i6 = i14;
+    int i6 = j;
     try
     {
       if (TextUtils.isEmpty(localQQHeadInfo.downLoadUrl)) {
-        break label4722;
+        break label4880;
       }
       bool3 = bool2;
-      i9 = i10;
+      i9 = i1;
       i18 = i19;
-      i5 = i12;
+      i5 = i8;
       localObject5 = localObject4;
-      i6 = i14;
+      i6 = j;
       if (localQQHeadInfo.dstUsrType != 4) {
-        break label2582;
+        break label2517;
       }
       bool3 = bool2;
-      i9 = i10;
+      i9 = i1;
       i18 = i19;
-      i5 = i12;
+      i5 = i8;
       localObject5 = localObject4;
-      i6 = i14;
+      i6 = j;
       localObject1 = "troop_" + str;
     }
     catch (Throwable paramFaceInfo) {}finally
     {
-      ThreadManager.postImmediately(new zsr(this, i9, str, localQQHeadInfo.idType, localQQHeadInfo.dstUsrType, 4, i5, (String)localObject5, i6, System.currentTimeMillis()), null, false);
+      ThreadManager.postImmediately(new QQHeadDownloadHandler.HeadCostStatRunnable(this, i9, str, localQQHeadInfo.idType, localQQHeadInfo.dstUsrType, 4, i5, (String)localObject5, i6, System.currentTimeMillis()), null, false);
       if (i18 != 0) {
-        break label3298;
+        break label3223;
       }
-      localObject1 = (ClassicHeadActivityManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(198);
-      if ((localObject1 == null) || (!((ClassicHeadActivityManager)localObject1).a())) {
-        break label3298;
+      localObject1 = (akhf)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(199);
+      if ((localObject1 == null) || (!((akhf)localObject1).a())) {
+        break label3223;
       }
-      ((ClassicHeadActivityManager)localObject1).a(String.valueOf(localQQHeadInfo.uin));
+      ((akhf)localObject1).a(String.valueOf(localQQHeadInfo.uin));
     }
     bool3 = bool2;
-    i9 = i10;
+    i9 = i1;
     i18 = i19;
-    i5 = i12;
+    i5 = i8;
     localObject5 = localObject4;
-    i6 = i14;
+    i6 = j;
     Setting localSetting = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c((String)localObject1);
     if (localSetting == null)
     {
       bool3 = bool2;
-      i9 = i10;
+      i9 = i1;
       i18 = i19;
-      i5 = i12;
+      i5 = i8;
       localObject5 = localObject4;
-      i6 = i14;
+      i6 = j;
       localSetting = new Setting();
       bool3 = bool2;
-      i9 = i10;
+      i9 = i1;
       i18 = i19;
-      i5 = i12;
+      i5 = i8;
       localObject5 = localObject4;
-      i6 = i14;
+      i6 = j;
       localSetting.uin = ((String)localObject1);
       bool1 = true;
-      label349:
+      label343:
       bool3 = bool1;
-      i9 = i10;
+      i9 = i1;
       i18 = i19;
-      i5 = i12;
+      i5 = i8;
       localObject5 = localObject4;
-      i6 = i14;
+      i6 = j;
       localSetting.bFaceFlags = localQQHeadInfo.dwFaceFlgas;
       bool3 = bool1;
-      i9 = i10;
+      i9 = i1;
       i18 = i19;
-      i5 = i12;
+      i5 = i8;
       localObject5 = localObject4;
-      i6 = i14;
+      i6 = j;
       localSetting.bUsrType = localQQHeadInfo.dstUsrType;
       bool3 = bool1;
-      i9 = i10;
+      i9 = i1;
       i18 = i19;
-      i5 = i12;
+      i5 = i8;
       localObject5 = localObject4;
-      i6 = i14;
+      i6 = j;
       localSetting.url = localQQHeadInfo.downLoadUrl;
       bool3 = bool1;
-      i9 = i10;
+      i9 = i1;
       i18 = i19;
-      i5 = i12;
+      i5 = i8;
       localObject5 = localObject4;
-      i6 = i14;
+      i6 = j;
       localSetting.updateTimestamp = System.currentTimeMillis();
       bool3 = bool1;
-      i9 = i10;
+      i9 = i1;
       i18 = i19;
-      i5 = i12;
+      i5 = i8;
       localObject5 = localObject4;
-      i6 = i14;
+      i6 = j;
       if (localQQHeadInfo.cHeadType == 0)
       {
         bool3 = bool1;
-        i9 = i10;
+        i9 = i1;
         i18 = i19;
-        i5 = i12;
+        i5 = i8;
         localObject5 = localObject4;
-        i6 = i14;
+        i6 = j;
         localSetting.bSourceType = 0;
         bool2 = bool1;
         if (!bool1)
         {
           bool3 = bool1;
-          i9 = i10;
+          i9 = i1;
           i18 = i19;
-          i5 = i12;
+          i5 = i8;
           localObject5 = localObject4;
-          i6 = i14;
+          i6 = j;
           if (localSetting.bHeadType == localQQHeadInfo.cHeadType) {
-            break label3017;
+            break label2947;
           }
         }
       }
@@ -339,11 +337,11 @@ public class QQHeadDownloadHandler
     {
       bool2 = bool1;
       bool3 = bool1;
-      i9 = i10;
+      i9 = i1;
       i18 = i19;
-      i5 = i12;
+      i5 = i8;
       localObject5 = localObject4;
-      i6 = i14;
+      i6 = j;
       if (localQQHeadInfo.dstUsrType != 32)
       {
         bool2 = bool1;
@@ -351,47 +349,47 @@ public class QQHeadDownloadHandler
         {
           bool2 = bool1;
           bool3 = bool1;
-          i9 = i10;
+          i9 = i1;
           i18 = i19;
-          i5 = i12;
+          i5 = i8;
           localObject5 = localObject4;
-          i6 = i14;
+          i6 = j;
           if (localSetting.bHeadType == 1)
           {
             bool2 = bool1;
             bool3 = bool1;
-            i9 = i10;
+            i9 = i1;
             i18 = i19;
-            i5 = i12;
+            i5 = i8;
             localObject5 = localObject4;
-            i6 = i14;
+            i6 = j;
             if (localQQHeadInfo.cHeadType == 0)
             {
               bool3 = bool1;
-              i9 = i10;
+              i9 = i1;
               i18 = i19;
-              i5 = i12;
+              i5 = i8;
               localObject5 = localObject4;
-              i6 = i14;
+              i6 = j;
               localObject1 = new File(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(localSetting.bUsrType, str, localQQHeadInfo.idType));
               bool2 = bool1;
               if (localObject1 != null)
               {
                 bool2 = bool1;
                 bool3 = bool1;
-                i9 = i10;
+                i9 = i1;
                 i18 = i19;
-                i5 = i12;
+                i5 = i8;
                 localObject5 = localObject4;
-                i6 = i14;
+                i6 = j;
                 if (((File)localObject1).exists())
                 {
                   bool3 = bool1;
-                  i9 = i10;
+                  i9 = i1;
                   i18 = i19;
-                  i5 = i12;
+                  i5 = i8;
                   localObject5 = localObject4;
-                  i6 = i14;
+                  i6 = j;
                   ((File)localObject1).delete();
                   bool2 = bool1;
                 }
@@ -401,387 +399,439 @@ public class QQHeadDownloadHandler
         }
       }
       bool3 = bool2;
-      i9 = i10;
+      i9 = i1;
       i18 = i19;
-      i5 = i12;
+      i5 = i8;
       localObject5 = localObject4;
-      i6 = i14;
+      i6 = j;
       localSetting.bHeadType = localQQHeadInfo.cHeadType;
       bool3 = bool2;
-      i9 = i10;
+      i9 = i1;
       i18 = i19;
-      i5 = i12;
+      i5 = i8;
       localObject5 = localObject4;
-      i6 = i14;
+      i6 = j;
       localSetting.systemHeadID = localQQHeadInfo.systemHeadID;
       bool3 = bool2;
-      i9 = i10;
+      i9 = i1;
       i18 = i19;
-      i5 = i12;
+      i5 = i8;
       localObject5 = localObject4;
-      i6 = i14;
+      i6 = j;
       localSetting.headImgTimestamp = localQQHeadInfo.dwTimestamp;
       bool3 = bool2;
-      i9 = i10;
+      i9 = i1;
       i18 = i19;
-      i5 = i12;
+      i5 = i8;
       localObject5 = localObject4;
-      i6 = i14;
-      if (ContactConfig.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext()))
+      i6 = j;
+      if (babg.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext()))
       {
         bool3 = bool2;
-        i9 = i10;
+        i9 = i1;
         i18 = i19;
-        i5 = i12;
+        i5 = i8;
         localObject5 = localObject4;
-        i6 = i14;
-        if (SystemUtil.a())
+        i6 = j;
+        if (azzu.a())
         {
           bool3 = bool2;
-          i9 = i10;
+          i9 = i1;
           i18 = i19;
-          i5 = i12;
+          i5 = i8;
           localObject5 = localObject4;
-          i6 = i14;
+          i6 = j;
           localObject1 = jdField_a_of_type_JavaLangObject;
           bool3 = bool2;
-          i9 = i10;
+          i9 = i1;
           i18 = i19;
-          i5 = i12;
+          i5 = i8;
           localObject5 = localObject4;
-          i6 = i14;
+          i6 = j;
         }
       }
-      label4747:
       for (;;)
       {
         Object localObject2;
         Object localObject6;
         File localFile;
-        label2072:
-        label2208:
-        label3017:
+        label2027:
+        label2159:
         long l1;
-        label2582:
+        label2517:
         long l2;
-        label3298:
+        label2947:
+        label3223:
         bool1 = false;
         continue;
-        i9 = i10;
+        i9 = i1;
         i18 = i19;
-        i5 = i12;
-        localObject5 = localObject4;
-        i6 = i14;
-        bool5 = bool1;
-        i8 = i11;
-        bool4 = bool7;
-        i1 = i13;
-        Object localObject3 = localObject4;
-        m = i15;
-        j = a((String)localObject4, localFile, paramFaceInfo, false);
-        if (j != 0) {
-          break label4784;
-        }
-        i9 = i10;
-        i18 = i19;
-        i5 = i12;
-        localObject5 = localObject4;
+        i5 = i8;
+        localObject5 = localObject6;
         i6 = j;
         bool5 = bool1;
-        i8 = i11;
-        bool4 = bool7;
-        i1 = i13;
-        localObject3 = localObject4;
-        m = j;
+        i7 = i2;
+        bool4 = bool8;
+        m = i12;
+        Object localObject3 = localObject6;
+        k = i14;
+        j = a((String)localObject6, localFile, paramFaceInfo, false);
+        if (j != 0) {
+          break label4942;
+        }
+        i9 = i1;
+        i18 = i19;
+        i5 = i8;
+        localObject5 = localObject6;
+        i6 = j;
+        bool5 = bool1;
+        i7 = i2;
+        bool4 = bool8;
+        m = i12;
+        localObject3 = localObject6;
+        k = j;
         i3 = (int)localFile.length();
         bool2 = true;
         bool6 = true;
         bool3 = true;
-        i9 = i10;
+        i9 = i1;
         i18 = bool2;
         i5 = i3;
-        localObject5 = localObject4;
+        localObject5 = localObject6;
         i6 = j;
         bool5 = bool1;
-        i8 = i11;
+        i7 = i2;
         bool4 = bool6;
-        i1 = i3;
-        localObject3 = localObject4;
-        m = j;
+        m = i3;
+        localObject3 = localObject6;
+        k = j;
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(localSetting);
-        i9 = i10;
+        i9 = i1;
         i18 = bool2;
         i5 = i3;
-        localObject5 = localObject4;
+        localObject5 = localObject6;
         i6 = j;
         bool5 = bool1;
-        i8 = i11;
+        i7 = i2;
         bool4 = bool6;
-        i1 = i3;
-        localObject3 = localObject4;
-        m = j;
-        this.b.postAtFrontOfQueue(new zss(this, localSetting, paramFaceInfo));
+        m = i3;
+        localObject3 = localObject6;
+        k = j;
+        this.b.postAtFrontOfQueue(new QQHeadDownloadHandler.UpdateSettingRunnable(this, localSetting, paramFaceInfo));
         i4 = j;
         continue;
         i9 = i;
         i18 = bool3;
         i5 = i3;
-        localObject5 = localObject4;
+        localObject5 = localObject6;
         i6 = i4;
         bool5 = bool1;
-        i8 = i2;
+        i7 = n;
         bool4 = bool3;
-        i1 = i3;
-        localObject3 = localObject4;
-        m = i4;
+        m = i3;
+        localObject3 = localObject6;
+        k = i4;
         if (localQQHeadInfo.dstUsrType == 32)
         {
           i9 = i;
           i18 = bool3;
           i5 = i3;
-          localObject5 = localObject4;
+          localObject5 = localObject6;
           i6 = i4;
           bool5 = bool1;
-          i8 = i2;
+          i7 = n;
           bool4 = bool3;
-          i1 = i3;
-          localObject3 = localObject4;
-          m = i4;
+          m = i3;
+          localObject3 = localObject6;
+          k = i4;
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(32, str, localQQHeadInfo.idType);
-          j = i2;
-          i7 = i;
+          j = n;
+          i8 = i;
           bool2 = bool3;
-          k = i3;
-          localObject6 = localObject4;
-          n = i4;
+          i1 = i3;
+          localObject4 = localObject6;
+          i2 = i4;
         }
         else
         {
           i9 = i;
           i18 = bool3;
           i5 = i3;
-          localObject5 = localObject4;
+          localObject5 = localObject6;
           i6 = i4;
           bool5 = bool1;
-          i8 = i2;
+          i7 = n;
           bool4 = bool3;
-          i1 = i3;
-          localObject3 = localObject4;
-          m = i4;
+          m = i3;
+          localObject3 = localObject6;
+          k = i4;
           if (localQQHeadInfo.dstUsrType == 16)
           {
             i9 = i;
             i18 = bool3;
             i5 = i3;
-            localObject5 = localObject4;
+            localObject5 = localObject6;
             i6 = i4;
             bool5 = bool1;
-            i8 = i2;
+            i7 = n;
             bool4 = bool3;
-            i1 = i3;
-            localObject3 = localObject4;
-            m = i4;
+            m = i3;
+            localObject3 = localObject6;
+            k = i4;
             this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(16, str, localQQHeadInfo.idType);
-            j = i2;
-            i7 = i;
+            j = n;
+            i8 = i;
             bool2 = bool3;
-            k = i3;
-            localObject6 = localObject4;
-            n = i4;
+            i1 = i3;
+            localObject4 = localObject6;
+            i2 = i4;
           }
           else
           {
             i9 = i;
             i18 = bool3;
             i5 = i3;
-            localObject5 = localObject4;
+            localObject5 = localObject6;
             i6 = i4;
             bool5 = bool1;
-            i8 = i2;
+            i7 = n;
             bool4 = bool3;
-            i1 = i3;
-            localObject3 = localObject4;
-            m = i4;
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1, str, localQQHeadInfo.idType);
-            j = i2;
-            i7 = i;
-            bool2 = bool3;
-            k = i3;
-            localObject6 = localObject4;
-            n = i4;
-            break label4747;
-            i9 = i7;
-            i18 = bool2;
-            i5 = k;
-            localObject5 = localObject6;
-            i6 = n;
-            bool5 = bool1;
-            i8 = j;
-            bool4 = bool2;
-            i1 = k;
+            m = i3;
             localObject3 = localObject6;
-            m = n;
+            k = i4;
+            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1, str, localQQHeadInfo.idType);
+            j = n;
+            i8 = i;
+            bool2 = bool3;
+            i1 = i3;
+            localObject4 = localObject6;
+            i2 = i4;
+            break label4905;
+            i9 = i1;
+            i18 = i19;
+            i5 = i8;
+            localObject5 = localObject4;
+            i6 = j;
+            bool5 = bool1;
+            i7 = i2;
+            bool4 = bool8;
+            m = i12;
+            localObject3 = localObject4;
+            k = i14;
+            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(localSetting);
+            i9 = i1;
+            i18 = i19;
+            i5 = i8;
+            localObject5 = localObject4;
+            i6 = j;
+            bool5 = bool1;
+            i7 = i2;
+            bool4 = bool8;
+            m = i12;
+            localObject3 = localObject4;
+            k = i14;
+            this.b.postAtFrontOfQueue(new QQHeadDownloadHandler.UpdateSettingRunnable(this, localSetting, paramFaceInfo));
+            j = i15;
+            i8 = i13;
+            bool2 = bool7;
+            i1 = i11;
+            i2 = i10;
+            break label4905;
+            i9 = i8;
+            i18 = bool2;
+            i5 = i1;
+            localObject5 = localObject4;
+            i6 = i2;
+            bool5 = bool1;
+            i7 = j;
+            bool4 = bool2;
+            m = i1;
+            localObject3 = localObject4;
+            k = i2;
             if (localQQHeadInfo.dstUsrType == 4)
             {
-              i9 = i7;
+              i9 = i8;
               i18 = bool2;
-              i5 = k;
-              localObject5 = localObject6;
-              i6 = n;
+              i5 = i1;
+              localObject5 = localObject4;
+              i6 = i2;
               bool5 = bool1;
-              i8 = j;
+              i7 = j;
               bool4 = bool2;
-              i1 = k;
-              localObject3 = localObject6;
-              m = n;
-              this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a(30, true, new Object[] { str });
-              i9 = i7;
+              m = i1;
+              localObject3 = localObject4;
+              k = i2;
+              this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.notifyUI(30, true, new Object[] { str });
+              i9 = i8;
               i18 = bool2;
-              i5 = k;
-              localObject5 = localObject6;
-              i6 = n;
+              i5 = i1;
+              localObject5 = localObject4;
+              i6 = i2;
               bool5 = bool1;
-              i8 = j;
+              i7 = j;
               bool4 = bool2;
-              i1 = k;
-              localObject3 = localObject6;
-              m = n;
+              m = i1;
+              localObject3 = localObject4;
+              k = i2;
               this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(4, str, 0, (String)localObject1);
               i = j;
               bool3 = bool1;
               paramFaceInfo = (FaceInfo)localObject1;
-              localObject4 = localObject6;
               bool1 = bool2;
               bool2 = bool3;
               continue;
             }
-            i9 = i7;
+            i9 = i8;
             i18 = bool2;
-            i5 = k;
-            localObject5 = localObject6;
-            i6 = n;
+            i5 = i1;
+            localObject5 = localObject4;
+            i6 = i2;
             bool5 = bool1;
-            i8 = j;
+            i7 = j;
             bool4 = bool2;
-            i1 = k;
-            localObject3 = localObject6;
-            m = n;
+            m = i1;
+            localObject3 = localObject4;
+            k = i2;
             if (localQQHeadInfo.dstUsrType == 32)
             {
-              i9 = i7;
+              i9 = i8;
               i18 = bool2;
-              i5 = k;
-              localObject5 = localObject6;
-              i6 = n;
+              i5 = i1;
+              localObject5 = localObject4;
+              i6 = i2;
               bool5 = bool1;
-              i8 = j;
+              i7 = j;
               bool4 = bool2;
-              i1 = k;
-              localObject3 = localObject6;
-              m = n;
-              this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a(5, true, new Object[] { str, Integer.valueOf(localQQHeadInfo.idType), Boolean.valueOf(true) });
-              i9 = i7;
+              m = i1;
+              localObject3 = localObject4;
+              k = i2;
+              this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.notifyUI(5, true, new Object[] { str, Integer.valueOf(localQQHeadInfo.idType), Boolean.valueOf(true) });
+              i9 = i8;
               i18 = bool2;
-              i5 = k;
-              localObject5 = localObject6;
-              i6 = n;
+              i5 = i1;
+              localObject5 = localObject4;
+              i6 = i2;
               bool5 = bool1;
-              i8 = j;
+              i7 = j;
               bool4 = bool2;
-              i1 = k;
-              localObject3 = localObject6;
-              m = n;
-              this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a(104, true, new Object[] { str, Integer.valueOf(localQQHeadInfo.idType), localObject6 });
+              m = i1;
+              localObject3 = localObject4;
+              k = i2;
+              this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.notifyUI(104, true, new Object[] { str, Integer.valueOf(localQQHeadInfo.idType), localObject4 });
               i = j;
               bool3 = bool1;
               paramFaceInfo = (FaceInfo)localObject1;
-              localObject4 = localObject6;
               bool1 = bool2;
               bool2 = bool3;
               continue;
             }
-            i9 = i7;
+            i9 = i8;
             i18 = bool2;
-            i5 = k;
-            localObject5 = localObject6;
-            i6 = n;
+            i5 = i1;
+            localObject5 = localObject4;
+            i6 = i2;
             bool5 = bool1;
-            i8 = j;
+            i7 = j;
             bool4 = bool2;
-            i1 = k;
-            localObject3 = localObject6;
-            m = n;
+            m = i1;
+            localObject3 = localObject4;
+            k = i2;
             if (localQQHeadInfo.dstUsrType == 16)
             {
-              i9 = i7;
+              i9 = i8;
               i18 = bool2;
-              i5 = k;
-              localObject5 = localObject6;
-              i6 = n;
+              i5 = i1;
+              localObject5 = localObject4;
+              i6 = i2;
               bool5 = bool1;
-              i8 = j;
+              i7 = j;
               bool4 = bool2;
-              i1 = k;
-              localObject3 = localObject6;
-              m = n;
-              this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a(6, true, new Object[] { str, Integer.valueOf(localQQHeadInfo.idType), Boolean.valueOf(true) });
+              m = i1;
+              localObject3 = localObject4;
+              k = i2;
+              this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.notifyUI(6, true, new Object[] { str, Integer.valueOf(localQQHeadInfo.idType), Boolean.valueOf(true) });
               i = j;
               bool3 = bool1;
               paramFaceInfo = (FaceInfo)localObject1;
-              localObject4 = localObject6;
               bool1 = bool2;
               bool2 = bool3;
               continue;
             }
-            i9 = i7;
+            i9 = i8;
             i18 = bool2;
-            i5 = k;
-            localObject5 = localObject6;
-            i6 = n;
+            i5 = i1;
+            localObject5 = localObject4;
+            i6 = i2;
             bool5 = bool1;
-            i8 = j;
+            i7 = j;
             bool4 = bool2;
-            i1 = k;
-            localObject3 = localObject6;
-            m = n;
+            m = i1;
+            localObject3 = localObject4;
+            k = i2;
             this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1, str, 0, (String)localObject1);
-            i9 = i7;
+            i9 = i8;
             i18 = bool2;
-            i5 = k;
-            localObject5 = localObject6;
-            i6 = n;
+            i5 = i1;
+            localObject5 = localObject4;
+            i6 = i2;
             bool5 = bool1;
-            i8 = j;
+            i7 = j;
             bool4 = bool2;
-            i1 = k;
-            localObject3 = localObject6;
-            m = n;
-            this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.a(4, true, new Object[] { str });
+            m = i1;
+            localObject3 = localObject4;
+            k = i2;
+            if (str.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
+            {
+              i9 = i8;
+              i18 = bool2;
+              i5 = i1;
+              localObject5 = localObject4;
+              i6 = i2;
+              bool5 = bool1;
+              i7 = j;
+              bool4 = bool2;
+              m = i1;
+              localObject3 = localObject4;
+              k = i2;
+              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(1, str, 0, (String)localObject1);
+            }
+            i9 = i8;
+            i18 = bool2;
+            i5 = i1;
+            localObject5 = localObject4;
+            i6 = i2;
+            bool5 = bool1;
+            i7 = j;
+            bool4 = bool2;
+            m = i1;
+            localObject3 = localObject4;
+            k = i2;
+            this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.notifyUI(4, true, new Object[] { str });
           }
         }
-        label4722:
+        label4880:
+        label4905:
         do
         {
           i = j;
           bool3 = bool1;
           paramFaceInfo = (FaceInfo)localObject1;
-          localObject4 = localObject6;
           bool1 = bool2;
           bool2 = bool3;
-          break label2208;
-          break label349;
+          break label2159;
+          break label343;
           localObject1 = str;
           break;
           i = 0;
           bool1 = false;
           bool2 = false;
           paramFaceInfo = null;
-          i7 = i17;
-          k = i8;
-          n = m;
-          break label2208;
+          i8 = i17;
+          i1 = i7;
+          i2 = k;
+          break label2159;
           if (bool2) {
-            break label2072;
+            break label2027;
           }
         } while (bool1);
       }

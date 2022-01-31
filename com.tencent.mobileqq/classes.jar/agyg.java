@@ -1,14 +1,22 @@
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class agyg
+class agyg
+  implements View.OnClickListener
 {
-  public int a;
-  public final ArrayList a = new ArrayList(100);
-  public final int b = 99;
+  agyg(agxq paramagxq) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.a.jdField_b_of_type_Long == 77313L) {
+      this.a.jdField_b_of_type_Boolean = true;
+    }
+    this.a.c();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agyg
  * JD-Core Version:    0.7.0.1
  */

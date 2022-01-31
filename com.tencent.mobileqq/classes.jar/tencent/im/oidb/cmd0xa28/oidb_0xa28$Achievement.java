@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0xa28$Achievement
-  extends MessageMicro
+  extends MessageMicro<Achievement>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_score = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -24,7 +24,7 @@ public final class oidb_0xa28$Achievement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0xa28.oidb_0xa28.Achievement
  * JD-Core Version:    0.7.0.1
  */

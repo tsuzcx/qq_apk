@@ -7,7 +7,6 @@ import com.tencent.av.video.effect.core.qqavimage.beauty.QQAVImageBeautyFilter;
 import com.tencent.av.video.effect.filter.FilterFactory;
 import com.tencent.av.video.effect.utils.CommonUtils;
 import com.tencent.av.video.effect.utils.Log;
-import java.io.File;
 import java.lang.ref.WeakReference;
 
 public class BeautyRender
@@ -19,20 +18,12 @@ public class BeautyRender
   private WeakReference<Context> mContextReference;
   private FilterFactory mFilterFactory;
   
-  public BeautyRender(Context paramContext, final String paramString)
+  public BeautyRender(Context paramContext, String paramString)
   {
     this.mContextReference = new WeakReference(paramContext);
     this.mFilterFactory = new FilterFactory(paramContext);
     Log.d("BeautyRender", "new BeautyRender resPath = " + paramString);
-    addTaskBeforeProcess(new Runnable()
-    {
-      public void run()
-      {
-        BeautyRender.access$002(BeautyRender.this, new QQAVImageBeautyFilter());
-        BeautyRender.this.mBeautyFilter.setSkinColorFilter(BeautyRender.this.mFilterFactory.getFilter(paramString + File.separator + "SKINCOLOR"));
-        BeautyRender.this.mBeautyFilter.init();
-      }
-    });
+    addTaskBeforeProcess(new BeautyRender.1(this, paramString));
   }
   
   public void destroy()
@@ -68,51 +59,27 @@ public class BeautyRender
     return new EffectTexture(this.mOutTextureId, this.mOutFbo, this.mWidth, this.mHeight);
   }
   
-  public void setBeautyLevel(final float paramFloat)
+  public void setBeautyLevel(float paramFloat)
   {
     Log.d("BeautyRender", "setBeautyLevel level = " + paramFloat);
-    addTaskBeforeProcess(new Runnable()
-    {
-      public void run()
-      {
-        if (BeautyRender.this.mBeautyFilter != null) {
-          BeautyRender.this.mBeautyFilter.setAmount(paramFloat);
-        }
-      }
-    });
+    addTaskBeforeProcess(new BeautyRender.2(this, paramFloat));
   }
   
-  public void setBeautyLevel(final float paramFloat1, final float paramFloat2, final float paramFloat3)
+  public void setBeautyLevel(float paramFloat1, float paramFloat2, float paramFloat3)
   {
     Log.d("BeautyRender", "setBeautyLevel mixPercent = " + paramFloat1 + " | sharpen =" + paramFloat2 + " | exposure = " + paramFloat3);
-    addTaskBeforeProcess(new Runnable()
-    {
-      public void run()
-      {
-        if (BeautyRender.this.mBeautyFilter != null) {
-          BeautyRender.this.mBeautyFilter.setBeauty(paramFloat1, paramFloat2, paramFloat3);
-        }
-      }
-    });
+    addTaskBeforeProcess(new BeautyRender.3(this, paramFloat1, paramFloat2, paramFloat3));
   }
   
-  public void setNeedSkinColor(final boolean paramBoolean)
+  public void setNeedSkinColor(boolean paramBoolean)
   {
     Log.d("BeautyRender", "setNeedSkinColor isNeed = " + paramBoolean);
-    addTaskBeforeProcess(new Runnable()
-    {
-      public void run()
-      {
-        if (BeautyRender.this.mBeautyFilter != null) {
-          BeautyRender.this.mBeautyFilter.setNeedSkinColor(paramBoolean);
-        }
-      }
-    });
+    addTaskBeforeProcess(new BeautyRender.4(this, paramBoolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.video.effect.beauty.BeautyRender
  * JD-Core Version:    0.7.0.1
  */

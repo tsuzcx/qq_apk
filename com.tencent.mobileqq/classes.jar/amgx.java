@@ -1,20 +1,53 @@
-import android.view.View;
-import com.tencent.widget.AbsListView;
-
 public class amgx
-  implements Runnable
 {
-  public amgx(AbsListView paramAbsListView, View paramView, amhi paramamhi) {}
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
   
-  public void run()
+  public int a()
   {
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.mTouchMode = -1;
-    this.jdField_a_of_type_AndroidViewView.setPressed(false);
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.setPressed(false);
-    if (!this.jdField_a_of_type_ComTencentWidgetAbsListView.mDataChanged) {
-      this.jdField_a_of_type_Amhi.run();
-    }
-    AbsListView.access$1002(this.jdField_a_of_type_ComTencentWidgetAbsListView, null);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  public String b()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public String toString()
+  {
+    return "WatchTogetherBean{version=" + this.jdField_a_of_type_Int + ", jumpType=" + this.jdField_b_of_type_Int + ", jumpUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", jumpExtensionInfo='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
   }
 }
 

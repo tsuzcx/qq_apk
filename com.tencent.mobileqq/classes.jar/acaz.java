@@ -1,23 +1,33 @@
-import android.accounts.AccountManagerCallback;
-import android.accounts.AccountManagerFuture;
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.data.Card;
 import com.tencent.qphone.base.util.QLog;
 
 public class acaz
-  implements AccountManagerCallback
+  extends ajfo
 {
-  public acaz(ContactSyncManager paramContactSyncManager) {}
+  public acaz(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void run(AccountManagerFuture paramAccountManagerFuture)
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ContactSync.Manager", 2, "removeSyncAccount | is done = " + paramAccountManagerFuture.isDone());
+      QLog.i("Q.systemmsg.TroopRequestActivity", 2, "onCardDownload() isSuccess = " + paramBoolean + "  data:" + paramObject);
     }
+    if (paramObject == null) {}
+    Card localCard;
+    do
+    {
+      do
+      {
+        return;
+      } while ((!paramBoolean) || (!(paramObject instanceof Card)));
+      localCard = (Card)paramObject;
+    } while ((localCard.uin == null) || (!localCard.uin.equals(this.a.b)));
+    TroopRequestActivity.a(this.a, (Card)paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acaz
  * JD-Core Version:    0.7.0.1
  */

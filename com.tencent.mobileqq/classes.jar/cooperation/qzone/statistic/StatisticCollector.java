@@ -2,10 +2,10 @@ package cooperation.qzone.statistic;
 
 import android.os.Build;
 import android.os.Build.VERSION;
-import anht;
+import bfpj;
+import bfpk;
+import bgdq;
 import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qzone.PlatformInfor;
-import cooperation.qzone.QUA;
 import cooperation.qzone.statistic.access.WnsCollector;
 import cooperation.qzone.statistic.access.concept.Statistic;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -21,13 +21,13 @@ public class StatisticCollector
   
   public static StatisticCollector getInstance()
   {
-    if (!anht.a().inited.get()) {}
+    if (!bgdq.a().inited.get()) {}
     try
     {
-      if (!anht.a().inited.get()) {
-        anht.a().init();
+      if (!bgdq.a().inited.get()) {
+        bgdq.a().init();
       }
-      return anht.a();
+      return bgdq.a();
     }
     finally {}
   }
@@ -43,7 +43,7 @@ public class StatisticCollector
       return;
     }
     WnsCollector.a().a(BaseApplication.getContext());
-    WnsCollector.a().a(getDevice(), getSDKVersion(), PlatformInfor.a().b());
+    WnsCollector.a().a(getDevice(), getSDKVersion(), bfpj.a().c());
     WnsCollector.a().a();
     this.inited.set(true);
   }
@@ -60,7 +60,7 @@ public class StatisticCollector
   
   public String getReleaseVersion()
   {
-    return QUA.c();
+    return bfpk.c();
   }
   
   public Statistic getStatistic()

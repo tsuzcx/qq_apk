@@ -1,34 +1,27 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.ptt.LSRecordAnimations.LSRecordAnimationCallback;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class agxu
-  extends LSRecordAnimations.LSRecordAnimationCallback
+class agxu
+  implements View.OnClickListener
 {
-  public agxu(LSRecordPanel paramLSRecordPanel) {}
+  agxu(agxq paramagxq) {}
   
-  public void a(Animation paramAnimation, float paramFloat)
+  public void onClick(View paramView)
   {
-    if ((this.a.c == null) && (this.a.a != null) && (paramFloat >= 0.5F)) {
-      this.a.f();
+    paramView = aipq.a();
+    if (paramView != null)
+    {
+      paramView.a(agxq.a(this.a));
+      paramView.a();
+      aipq.i();
     }
-  }
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS startExpandAnimation onAnimationEnd");
-    }
-    if (paramAnimation == this.a.a) {
-      this.a.h();
-    }
-    this.a.a = null;
+    awqx.a(agxq.a(this.a).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 10, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agxu
  * JD-Core Version:    0.7.0.1
  */

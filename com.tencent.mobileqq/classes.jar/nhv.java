@@ -1,17 +1,39 @@
-import com.tencent.biz.qqstory.model.lbs.LbsManager.POIListRequestCallback;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPOIList;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.os.Message;
+import java.lang.ref.WeakReference;
 
-class nhv
-  implements Runnable
+public class nhv
+  extends Handler
 {
-  nhv(nht paramnht, LbsManager.POIListRequestCallback paramPOIListRequestCallback, qqstory_service.RspGetPOIList paramRspGetPOIList, ArrayList paramArrayList) {}
+  private WeakReference<nhr> a;
   
-  public void run()
+  public nhv(nhr paramnhr)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestCallback.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspGetPOIList.result.error_code.get(), this.jdField_a_of_type_Nht.a, this.jdField_a_of_type_JavaUtilArrayList);
+    this.a = new WeakReference(paramnhr);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    nhr localnhr = (nhr)this.a.get();
+    if (localnhr == null) {}
+    do
+    {
+      do
+      {
+        return;
+        switch (paramMessage.what)
+        {
+        default: 
+          return;
+        case 1: 
+          nhr.a(localnhr);
+          return;
+        }
+      } while (nhr.a(localnhr) == null);
+      nhr.a(localnhr).a(nhr.a(localnhr));
+      return;
+    } while (nhr.a(localnhr) == null);
+    nhr.a(localnhr).b();
   }
 }
 

@@ -1,71 +1,53 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.photo.SendWebPicActivity;
-import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MqqWeakReferenceHandler;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.view.View;
+import android.webkit.URLUtil;
+import com.tencent.biz.pubaccount.PublicAccountBrowser;
 
 public class xep
-  extends TransProcessorHandler
+  extends axkd
 {
-  public xep(SendWebPicActivity paramSendWebPicActivity) {}
+  public String a;
+  public String b;
   
-  public void handleMessage(Message paramMessage)
+  public xep(CharSequence paramCharSequence, int paramInt)
   {
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if ((localFileMsg == null) || (localFileMsg.b != 24) || (localFileMsg.c != 51)) {}
-    do
+    super(paramCharSequence, paramInt);
+  }
+  
+  protected void a(View paramView, String paramString)
+  {
+    Context localContext = paramView.getContext();
+    Intent localIntent = new Intent(localContext, PublicAccountBrowser.class);
+    localIntent.putExtra("uin", this.a);
+    int i = paramString.lastIndexOf("#");
+    if (i > 0) {}
+    for (paramView = paramString.substring(i);; paramView = null)
     {
-      do
-      {
-        return;
-      } while (localFileMsg.f.equals(SendWebPicActivity.a(this.a)));
-      switch (paramMessage.what)
-      {
-      case 1004: 
-      default: 
-        return;
-      case 1003: 
-        if (QLog.isColorLevel()) {
-          QLog.d("SendWebPicActivity", 2, "mPicTransProcessorHandler send finished!" + SendWebPicActivity.a(this.a));
-        }
-        break;
+      String str2 = URLUtil.guessUrl(paramString);
+      String str1 = str2;
+      if (paramView != null) {
+        str1 = str2 + paramView;
       }
-    } while (SendWebPicActivity.a(this.a));
-    paramMessage = new Bdh_extinfo.UploadPicExtInfo();
-    try
-    {
-      paramMessage.mergeFrom(localFileMsg.a, 0, localFileMsg.a.length);
-      SendWebPicActivity.a(this.a, true);
-      SendWebPicActivity.a(this.a, localFileMsg.f);
-      SendWebPicActivity.b(this.a, paramMessage.bytes_file_resid.get().toStringUtf8());
-      SendWebPicActivity.c(this.a, paramMessage.bytes_download_url.get().toStringUtf8());
-      if (QLog.isColorLevel()) {
-        QLog.d("SendWebPicActivity", 2, "mPicTransProcessorHandler mUuid=" + SendWebPicActivity.b(this.a) + ", mImageMd5=" + SendWebPicActivity.a(this.a) + ", mImageUrl=" + SendWebPicActivity.c(this.a));
-      }
-      SendWebPicActivity.a(this.a).sendEmptyMessage(1001);
+      localIntent.putExtra("url", str1);
+      localIntent.putExtra("assignBackText", localContext.getResources().getString(2131625011));
+      localIntent.putExtra("puin", this.b);
+      localIntent.putExtra("key_isReadModeEnabled", true);
+      localIntent.putExtra("fromAio", true);
+      localIntent.putExtra("fromPublicAccount", true);
+      localIntent.putExtra("articalChannelId", 1);
+      localIntent.putExtra("big_brother_source_key", rtr.b(this.b));
+      rtr.a(localIntent, paramString);
+      localContext.startActivity(localIntent);
+      awqx.b(null, "P_CliOper", "Pb_account_lifeservice", "", "aio_msg_url", "aio_url_clickqq", 0, 1, 0, str1, "", "", "");
       return;
     }
-    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-    {
-      for (;;)
-      {
-        localInvalidProtocolBufferMicroException.printStackTrace();
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("SendWebPicActivity", 2, "mPicTransProcessorHandler send error:" + localFileMsg.g);
-    }
-    SendWebPicActivity.a(this.a).sendEmptyMessage(1003);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     xep
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,20 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
-import com.tencent.mobileqq.shortvideo.hwcodec.VideoSourceHelper;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
 public class okp
-  implements Runnable
 {
-  public okp(EditVideoPlayer paramEditVideoPlayer, int paramInt) {}
+  public RelativeLayout a;
+  public URLImageView a;
+  public DragTextView a;
+  public DragTextView b;
   
-  public void run()
+  public okp(DragTextView paramDragTextView1, RelativeLayout paramRelativeLayout, URLImageView paramURLImageView, DragTextView paramDragTextView2)
   {
-    SLog.a("Q.qqstory.record.EditVideoPlayer", "setPlayMode %d", Integer.valueOf(this.jdField_a_of_type_Int));
-    VideoSourceHelper.nativeSetPlayMode(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = paramDragTextView1;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
+    this.jdField_a_of_type_ComTencentImageURLImageView = paramURLImageView;
+    this.b = paramDragTextView2;
   }
 }
 

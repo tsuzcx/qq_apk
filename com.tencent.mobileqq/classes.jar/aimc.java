@@ -1,36 +1,82 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.ClipboardManager;
-import android.view.View;
-import com.tencent.mobileqq.structmsg.StructMsgClickHandler;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.Message;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.lang.ref.WeakReference;
+import tencent.im.cs.cmd0x346.cmd0x346.ApplyDownloadRsp;
+import tencent.im.cs.cmd0x346.cmd0x346.DownloadInfo;
+import tencent.im.cs.cmd0x346.cmd0x346.RspBody;
 
-public final class aimc
-  implements ActionSheet.OnButtonClickListener
+public class aimc
+  extends axvs
 {
-  public aimc(String paramString, Context paramContext) {}
+  QQAppInterface a;
   
-  public void OnClick(View paramView, int paramInt)
+  public aimc(QQAppInterface paramQQAppInterface)
   {
-    switch (paramInt)
+    this.a = paramQQAppInterface;
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    Object localObject = (axqf)paramMessage.obj;
+    if ((localObject == null) || (((axqf)localObject).c != 36)) {}
+    do
     {
-    }
-    for (;;)
-    {
-      StructMsgClickHandler.a().dismiss();
+      int i;
+      do
+      {
+        do
+        {
+          return;
+          switch (paramMessage.what)
+          {
+          case 1002: 
+          default: 
+            return;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("CmGameTemp_CmGameAudioManager", 0, "start upload cmshow record");
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("CmGameTemp_CmGameAudioManager", 0, "finish upload cmshow record" + ((axqf)localObject).g);
+        }
+        try
+        {
+          paramMessage = new cmd0x346.RspBody();
+          paramMessage.mergeFrom(((axqf)localObject).a);
+          paramMessage = (cmd0x346.ApplyDownloadRsp)paramMessage.msg_apply_download_rsp.get();
+          i = paramMessage.int32_ret_code.get();
+          if (i != 0) {
+            break;
+          }
+          paramMessage = (cmd0x346.DownloadInfo)paramMessage.msg_download_info.get();
+          if ((paramMessage != null) && (paramMessage.str_download_url.has())) {}
+          paramMessage = paramMessage.str_download_url.get();
+          QLog.i("CmGameTemp_CmGameAudioManager", 1, "[uploadFile] url:" + paramMessage);
+          localObject = (aifg)this.a.getManager(153);
+          aily localaily = ((aifg)localObject).a();
+          ((aifg)localObject).a().a(this.a.c(), paramMessage, localaily.a);
+          return;
+        }
+        catch (Exception paramMessage) {}
+      } while (!QLog.isColorLevel());
+      QLog.e("CmGameTemp_CmGameAudioManager", 0, "upload cmshow record response error e=" + paramMessage.toString());
       return;
-      paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      continue;
-      ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
-    }
+      QLog.e("CmGameTemp_CmGameAudioManager", 1, "[TransProcessorHandler] upload fail," + i);
+      paramMessage = ((aifg)this.a.getManager(153)).a();
+    } while ((paramMessage.b == null) || (paramMessage.b.get() == null));
+    ((aimd)paramMessage.b.get()).a(-1);
+    return;
+    QLog.e("CmGameTemp_CmGameAudioManager", 1, "[TransProcessorHandler] upload error:" + ((axqf)localObject).g);
+    return;
+    QLog.i("CmGameTemp_CmGameAudioManager", 1, "upload cmshow cancel:" + ((axqf)localObject).g);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aimc
  * JD-Core Version:    0.7.0.1
  */

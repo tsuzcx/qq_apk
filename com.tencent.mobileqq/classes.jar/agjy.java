@@ -1,20 +1,28 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import java.util.List;
+import java.util.Map;
 
-public class agjy
-  implements Runnable
+class agjy
+  implements agpe
 {
-  public agjy(ScanTorchActivity paramScanTorchActivity) {}
+  agjy(agjw paramagjw, AppInterface paramAppInterface) {}
   
-  public void run()
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    ScanTorchActivity.c(this.a, false);
-    ScanTorchActivity.i(this.a);
-    ScanTorchActivity.j(this.a);
+    List localList = (List)agjw.a(this.jdField_a_of_type_Agjw).get(paramPathResult.url);
+    if (paramPathResult.url.endsWith(".zip")) {
+      agjw.a(this.jdField_a_of_type_Agjw, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramPathResult.url, paramPathResult.folderPath, localList);
+    }
+    while (!paramPathResult.url.endsWith(".png")) {
+      return;
+    }
+    agjw.a(this.jdField_a_of_type_Agjw, this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramPathResult.url, localList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agjy
  * JD-Core Version:    0.7.0.1
  */

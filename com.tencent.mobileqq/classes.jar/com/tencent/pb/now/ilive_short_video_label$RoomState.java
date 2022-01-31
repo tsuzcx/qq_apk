@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class ilive_short_video_label$RoomState
-  extends MessageMicro
+  extends MessageMicro<RoomState>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_m3u8_path = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -20,7 +20,7 @@ public final class ilive_short_video_label$RoomState
   public final PBBytesField bytes_sdk_videourl = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_vid = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBInt32Field int32_transcode_result = PBField.initInt32(0);
-  public final PBRepeatMessageField rpt_extra_cb = PBField.initRepeatMessage(ilive_short_video_label.OpensdkCB.class);
+  public final PBRepeatMessageField<ilive_short_video_label.OpensdkCB> rpt_extra_cb = PBField.initRepeatMessage(ilive_short_video_label.OpensdkCB.class);
   public final PBUInt32Field uint32_callbacktime = PBField.initUInt32(0);
   public final PBUInt32Field uint32_hlsState = PBField.initUInt32(0);
   public final PBUInt32Field uint32_indeletewhitelist = PBField.initUInt32(0);
@@ -49,7 +49,7 @@ public final class ilive_short_video_label$RoomState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.ilive_short_video_label.RoomState
  * JD-Core Version:    0.7.0.1
  */

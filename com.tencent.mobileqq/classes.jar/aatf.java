@@ -1,58 +1,20 @@
-import android.app.Activity;
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.arcard.ARCardShareHelper;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
 
-class aatf
-  implements Runnable
+public class aatf
+  implements View.OnClickListener
 {
-  aatf(aate paramaate, boolean paramBoolean, String paramString) {}
+  public aatf(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Aate.jdField_a_of_type_Aasz.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-      return;
-    }
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      QRUtils.a(1, 2131433149);
-      return;
-    }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      QRUtils.a(1, 2131430006);
-      return;
-    }
-    Bitmap localBitmap = ARCardShareHelper.a(this.jdField_a_of_type_Aate.jdField_a_of_type_Aasz.a);
-    if (this.jdField_a_of_type_Aate.jdField_a_of_type_Int == 9)
-    {
-      if (this.jdField_a_of_type_Aate.jdField_a_of_type_Aasz.a.jdField_a_of_type_Boolean) {
-        ReportController.b(null, "dc00898", "", "", "0X8008F1B", "0X8008F1B", 2, 0, "", "", "", "");
-      }
-      for (;;)
-      {
-        WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, localBitmap, 0);
-        return;
-        ReportController.b(null, "dc00898", "", "", "0X8008F27", "0X8008F27", 2, 0, "", "", "", "");
-      }
-    }
-    if (this.jdField_a_of_type_Aate.jdField_a_of_type_Aasz.a.jdField_a_of_type_Boolean) {
-      ReportController.b(null, "dc00898", "", "", "0X8008F1B", "0X8008F1B", 4, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, localBitmap, 1);
-      return;
-      ReportController.b(null, "dc00898", "", "", "0X8008F27", "0X8008F27", 4, 0, "", "", "", "");
-    }
+    ForwardTroopListFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aatf
  * JD-Core Version:    0.7.0.1
  */

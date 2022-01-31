@@ -1,15 +1,16 @@
 package com.tencent.mobileqq.activity.recent.data;
 
+import aeqd;
+import ahcw;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
+import awqx;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.bless.BlessManager;
 import com.tencent.mobileqq.activity.bless.BlessTask;
-import com.tencent.mobileqq.activity.recent.TimeManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
 public class SendBlessRecentItemData
   extends RecentUserBaseData
@@ -22,63 +23,88 @@ public class SendBlessRecentItemData
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     super.a(paramQQAppInterface, paramContext);
-    BlessManager localBlessManager = (BlessManager)paramQQAppInterface.getManager(137);
-    BlessTask localBlessTask = localBlessManager.a();
+    aeqd localaeqd = (aeqd)paramQQAppInterface.getManager(138);
+    BlessTask localBlessTask = localaeqd.a();
     int i;
-    if (!localBlessManager.h())
+    if (!localaeqd.h())
     {
-      this.jdField_b_of_type_JavaLangString = paramContext.getResources().getString(2131438270);
-      this.jdField_c_of_type_JavaLangCharSequence = localBlessManager.b();
-      this.jdField_d_of_type_JavaLangCharSequence = "";
-      ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X800618A", "0X800618A", 0, 0, "", "", "", "");
-      if (localBlessManager.a() < 0) {
-        break label378;
+      this.mTitleName = paramContext.getResources().getString(2131624970);
+      if (localBlessTask != null) {
+        this.mTitleName = localBlessTask.starWord;
       }
-      if (localBlessManager.a() != 0) {
-        break label373;
+      this.mLastMsg = localaeqd.b();
+      this.mMsgExtroInfo = "";
+      if (QLog.isColorLevel()) {
+        QLog.d("SendBlessRecentItemData", 2, "not isVideoNeedToPlay");
+      }
+      awqx.b(paramQQAppInterface, "CliOper", "", "", "0X800618A", "0X800618A", 0, 0, "", "", "", "");
+      if (localaeqd.a() < 0) {
+        break label490;
+      }
+      if (localaeqd.a() != 0) {
+        break label485;
       }
       i = 2;
-      label103:
-      this.jdField_b_of_type_Int = i;
+      label131:
+      this.mUnreadFlag = i;
     }
-    label373:
-    label378:
-    for (this.jdField_c_of_type_Int = 1;; this.jdField_c_of_type_Int = 0)
+    label332:
+    label485:
+    label490:
+    for (this.mUnreadNum = 1;; this.mUnreadNum = 0)
     {
-      this.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.lastmsgtime;
-      if (this.jdField_a_of_type_Long > 0L) {
-        this.jdField_c_of_type_JavaLangString = TimeManager.a().a(a(), this.jdField_a_of_type_Long);
+      this.mDisplayTime = this.mUser.lastmsgtime;
+      if (this.mDisplayTime > 0L) {
+        this.mShowTime = ahcw.a().a(a(), this.mDisplayTime);
       }
-      localBlessManager.e();
-      if (AppSetting.b)
+      localaeqd.f();
+      if (AppSetting.c)
       {
         paramQQAppInterface = new StringBuilder(24);
-        paramQQAppInterface.append(this.jdField_b_of_type_JavaLangString);
-        if (this.jdField_c_of_type_Int == 1) {
+        paramQQAppInterface.append(this.mTitleName);
+        if (this.mUnreadNum == 1) {
           paramQQAppInterface.append("有一条未读");
         }
-        if (this.jdField_d_of_type_JavaLangCharSequence != null) {
-          paramQQAppInterface.append(this.jdField_d_of_type_JavaLangCharSequence + ",");
+        if (this.mMsgExtroInfo != null) {
+          paramQQAppInterface.append(this.mMsgExtroInfo + ",");
         }
-        paramQQAppInterface.append(this.jdField_c_of_type_JavaLangCharSequence).append(' ').append(this.jdField_c_of_type_JavaLangString);
-        this.jdField_d_of_type_JavaLangString = paramQQAppInterface.toString();
+        paramQQAppInterface.append(this.mLastMsg).append(' ').append(this.mShowTime);
+        this.mContentDesc = paramQQAppInterface.toString();
       }
       return;
       if (localBlessTask == null) {
         break;
       }
-      this.jdField_b_of_type_JavaLangString = localBlessTask.starWord;
-      this.jdField_c_of_type_JavaLangCharSequence = localBlessTask.starBless;
-      this.jdField_d_of_type_JavaLangCharSequence = localBlessTask.ex2;
-      if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangCharSequence))
+      this.mTitleName = localBlessTask.starWord;
+      this.mLastMsg = localBlessTask.starBless;
+      this.mMsgExtroInfo = localBlessTask.ex2;
+      boolean bool;
+      if (localBlessTask.ex3 == 1)
       {
-        this.jdField_d_of_type_JavaLangCharSequence = ("[" + this.jdField_d_of_type_JavaLangCharSequence + "] ");
-        this.e = paramContext.getResources().getColor(2131494294);
+        bool = true;
+        if (QLog.isColorLevel()) {
+          QLog.d("SendBlessRecentItemData", 2, "useHint: " + bool);
+        }
+        if ((!bool) || (TextUtils.isEmpty(localaeqd.b()))) {
+          break label428;
+        }
+        this.mLastMsg = localaeqd.b();
+        this.mMsgExtroInfo = "";
       }
-      ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X800632B", "0X800632B", 0, 0, "", "", "", "");
-      break;
+      for (;;)
+      {
+        awqx.b(paramQQAppInterface, "CliOper", "", "", "0X800632B", "0X800632B", 0, 0, "", "", "", "");
+        break;
+        bool = false;
+        break label332;
+        if (!TextUtils.isEmpty(this.mMsgExtroInfo))
+        {
+          this.mMsgExtroInfo = ("[" + this.mMsgExtroInfo + "] ");
+          this.mExtraInfoColor = paramContext.getResources().getColor(2131101360);
+        }
+      }
       i = 1;
-      break label103;
+      break label131;
     }
   }
 }

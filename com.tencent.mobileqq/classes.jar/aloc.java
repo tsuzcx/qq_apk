@@ -1,61 +1,93 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadApi;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.DownloadQueryListener;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForArkApp;
 
-public final class aloc
-  implements Runnable
+final class aloc
+  extends adie
 {
-  public aloc(List paramList, DownloadQueryListener paramDownloadQueryListener) {}
-  
-  public void run()
+  private aloc(QQAppInterface paramQQAppInterface)
   {
-    LogUtility.a(DownloadApi.a, "getQueryDownloadAction enter");
-    DownloadManager.a().a();
-    for (;;)
+    super(null, paramQQAppInterface, null, null, null);
+  }
+  
+  private boolean a(ChatMessage paramChatMessage)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramChatMessage != null)
     {
-      int i;
-      try
+      int i = a(paramChatMessage);
+      if ((i != 81) && (i != 66) && (i != 42) && (i != 47))
       {
-        ArrayList localArrayList = new ArrayList();
-        int j = this.jdField_a_of_type_JavaUtilList.size();
-        i = 0;
-        if (i < j)
-        {
-          DownloadInfo localDownloadInfo = (DownloadInfo)this.jdField_a_of_type_JavaUtilList.get(i);
-          if (DownloadManager.a().a(localDownloadInfo))
-          {
-            LogUtility.a(DownloadApi.a, "refreshDownloadInfo true " + localDownloadInfo);
-            localArrayList.add(localDownloadInfo);
-          }
-        }
-        else
-        {
-          if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener != null) {
-            this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.a(localArrayList);
-          }
-          return;
-        }
+        bool1 = bool2;
+        if (i != 89) {}
       }
-      catch (Exception localException)
+      else
       {
-        LogUtility.c(DownloadApi.a, "Exception>>>", localException);
-        if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener == null) {
-          continue;
-        }
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.a(-1, localException.getMessage());
-        return;
+        bool1 = true;
       }
-      i += 1;
     }
+    return bool1;
+  }
+  
+  private boolean b(ChatMessage paramChatMessage)
+  {
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    int i;
+    MessageForArkApp localMessageForArkApp;
+    if (paramChatMessage != null)
+    {
+      i = a(paramChatMessage);
+      if (i != 81) {
+        break label149;
+      }
+      if (!(paramChatMessage instanceof MessageForArkApp)) {
+        break label147;
+      }
+      localMessageForArkApp = (MessageForArkApp)paramChatMessage;
+      if ((localMessageForArkApp.isMultiMsg) || (localMessageForArkApp.istroop != 0)) {
+        break label147;
+      }
+      if ((paramChatMessage.senderuin.equals(this.a.c())) || (!paramChatMessage.isSupportReply())) {
+        break label92;
+      }
+      if (localMessageForArkApp.msg == null) {
+        break label87;
+      }
+      bool1 = true;
+    }
+    label87:
+    label92:
+    do
+    {
+      do
+      {
+        for (;;)
+        {
+          return bool1;
+          bool1 = false;
+        }
+        if ((!paramChatMessage.isSend()) || (!paramChatMessage.isSupportReply()) || (paramChatMessage.extraflag == 32772) || (paramChatMessage.extraflag == 32768) || (paramChatMessage.istroop == 3000)) {
+          break;
+        }
+        bool1 = bool2;
+      } while (localMessageForArkApp.msg != null);
+      return false;
+      return false;
+      if ((i == 66) || (i == 42) || (i == 47)) {
+        break;
+      }
+      bool1 = bool2;
+    } while (i != 89);
+    label147:
+    label149:
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aloc
  * JD-Core Version:    0.7.0.1
  */

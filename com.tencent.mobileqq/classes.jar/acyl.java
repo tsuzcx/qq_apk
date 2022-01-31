@@ -1,37 +1,39 @@
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
-import com.tencent.mobileqq.filemanager.util.QfileTimeUtils;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.List;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class acyl
-  implements Runnable
+class acyl
+  extends ajrb
 {
-  public acyl(QfileCloudFileTabView paramQfileCloudFileTabView) {}
+  acyl(acyj paramacyj) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    this.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)localIterator.next();
-      String str = QfileTimeUtils.b(localWeiYunFileInfo.b);
-      if (!this.a.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey(str)) {
-        this.a.jdField_a_of_type_JavaUtilLinkedHashMap.put(str, new ArrayList());
-      }
-      ((List)this.a.jdField_a_of_type_JavaUtilLinkedHashMap.get(str)).add(localWeiYunFileInfo);
+    if (QLog.isColorLevel()) {
+      QLog.d("RedpointHandler", 2, "troopChatPie RedpointObserver  onDataChange");
     }
-    this.a.i();
-    this.a.setSelect(0);
-    this.a.b(true);
+    BusinessInfoCheckUpdate.AppInfo localAppInfo = ((auqh)acyj.a(this.a).a.getManager(36)).a(4, String.valueOf(130500));
+    if (this.a.b == null) {
+      this.a.b = ((ImageView)acyj.a(this.a).c.findViewById(2131309284));
+    }
+    if (this.a.b == null) {
+      return;
+    }
+    if ((localAppInfo != null) && (localAppInfo.iNewFlag.get() == 1))
+    {
+      this.a.b.setVisibility(0);
+      return;
+    }
+    this.a.b.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acyl
  * JD-Core Version:    0.7.0.1
  */

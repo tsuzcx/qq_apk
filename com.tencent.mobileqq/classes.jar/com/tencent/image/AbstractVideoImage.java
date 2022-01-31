@@ -15,23 +15,7 @@ public abstract class AbstractVideoImage
   public static boolean loopEnable = true;
   protected static Object sPauseLock;
   protected static volatile boolean sPaused = false;
-  protected static final ArrayList<WeakReference<AbstractVideoImage>> sPendingActions = new ArrayList(105)
-  {
-    private void ensureCapacity()
-    {
-      int i = size();
-      if (i > 100) {
-        removeRange(0, i - 100 - 1);
-      }
-    }
-    
-    public boolean add(WeakReference<AbstractVideoImage> paramAnonymousWeakReference)
-    {
-      boolean bool = super.add(paramAnonymousWeakReference);
-      ensureCapacity();
-      return bool;
-    }
-  };
+  protected static final ArrayList<WeakReference<AbstractVideoImage>> sPendingActions = new AbstractVideoImage.1(105);
   public float mDefaultRoundCorner = 5.0F;
   private int mDensity = 160;
   private Vector<WeakReference<VideoDrawable>> mDrawableList = new Vector();
@@ -108,47 +92,35 @@ public abstract class AbstractVideoImage
   {
     if (paramVideoDrawable != null)
     {
-      localVector = this.mDrawableList;
+      Vector localVector = this.mDrawableList;
       int i = 0;
-      Object localObject;
       for (;;)
       {
-        int j;
         try
         {
           if (i < this.mDrawableList.size())
           {
-            localObject = (WeakReference)this.mDrawableList.get(i);
+            Object localObject = (WeakReference)this.mDrawableList.get(i);
             if ((localObject == null) || (((WeakReference)localObject).get() == paramVideoDrawable))
             {
               localObject = this.mDrawableList;
-              j = i - 1;
+              int j = i - 1;
+              ((Vector)localObject).remove(i);
+              i = j;
             }
+            else if (((WeakReference)localObject).get() == paramVideoDrawable)
+            {
+              this.mDrawableList.remove(i);
+            }
+          }
+          else
+          {
+            return;
           }
         }
         finally {}
-        try
-        {
-          ((Vector)localObject).remove(i);
-          i = j;
-        }
-        finally
-        {
-          continue;
-          continue;
-        }
         i += 1;
       }
-      if (((WeakReference)localObject).get() == paramVideoDrawable)
-      {
-        paramVideoDrawable = this.mDrawableList;
-        paramVideoDrawable.remove(i);
-      }
-    }
-    else
-    {
-      return;
-      return;
     }
   }
   
@@ -196,36 +168,31 @@ public abstract class AbstractVideoImage
     int i = 0;
     for (;;)
     {
-      Object localObject1;
-      int j;
       try
       {
         if (i < this.mDrawableList.size())
         {
-          localObject1 = (WeakReference)this.mDrawableList.get(i);
+          Object localObject1 = (WeakReference)this.mDrawableList.get(i);
           if ((localObject1 == null) || (((WeakReference)localObject1).get() == null))
           {
             localObject1 = this.mDrawableList;
-            j = i - 1;
+            int j = i - 1;
+            ((Vector)localObject1).remove(i);
+            i = j;
           }
+          else
+          {
+            ((VideoDrawable)((WeakReference)localObject1).get()).invalidateSelf();
+          }
+        }
+        else
+        {
+          return;
         }
       }
       finally {}
-      try
-      {
-        ((Vector)localObject1).remove(i);
-        i = j;
-        i += 1;
-      }
-      finally
-      {
-        break;
-      }
-      ((VideoDrawable)((WeakReference)localObject1).get()).invalidateSelf();
-      continue;
-      return;
+      i += 1;
     }
-    throw localObject2;
   }
   
   public abstract boolean isAudioPlaying();
@@ -272,34 +239,33 @@ public abstract class AbstractVideoImage
   public void setOnPlayRepeatListener(VideoDrawable.OnPlayRepeatListener paramOnPlayRepeatListener)
   {
     ArrayList localArrayList;
-    int k;
     int i;
     if (paramOnPlayRepeatListener != null)
     {
       localArrayList = this.mListener;
-      k = 0;
       i = 0;
     }
     for (;;)
     {
-      int j = k;
       try
       {
         if (i < this.mListener.size())
         {
           if (((WeakReference)this.mListener.get(i)).get() != paramOnPlayRepeatListener) {
-            break label83;
+            break label78;
           }
-          j = 1;
+          i = 1;
+          if (i == 0) {
+            this.mListener.add(new WeakReference(paramOnPlayRepeatListener));
+          }
+          return;
         }
-        if (j == 0) {
-          this.mListener.add(new WeakReference(paramOnPlayRepeatListener));
-        }
-        return;
       }
       finally {}
+      i = 0;
+      continue;
       return;
-      label83:
+      label78:
       i += 1;
     }
   }

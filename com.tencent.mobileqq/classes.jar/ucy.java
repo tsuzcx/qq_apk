@@ -1,54 +1,42 @@
-import android.content.Context;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.troopinfo.GroupCatalogBean;
-import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-
 public class ucy
-  implements Runnable
 {
-  public ucy(TroopInfoActivity paramTroopInfoActivity) {}
+  private int jdField_a_of_type_Int = -1;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b;
   
-  public void run()
+  public ucy(String paramString, boolean paramBoolean)
   {
-    try
-    {
-      Object localObject = BaseApplication.getContext();
-      String str = Long.toString(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
-      GroupCatalogBean localGroupCatalogBean = GroupCatalogTool.a((Context)localObject).a();
-      if ((localGroupCatalogBean != null) && (localGroupCatalogBean.b.equals(str)))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopClass = localGroupCatalogBean.a();
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopClassExtText = localGroupCatalogBean.a;
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
-        return;
-        localObject = GroupCatalogTool.a((Context)localObject).a((Context)localObject, str);
-        if (localObject != null)
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopClass = ((GroupCatalogBean)localObject).a();
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopClassExtText = ((GroupCatalogBean)localObject).a;
-        }
-      }
-      return;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public ucy(String paramString, boolean paramBoolean, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  private boolean a()
+  {
+    return (this.jdField_a_of_type_Boolean) && ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int != 0));
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    udb localudb = new udb();
+    localudb.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localudb.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    if (this.jdField_a_of_type_Int != -1) {
+      localudb.c = this.jdField_a_of_type_Int;
     }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.troopinfo", 2, localException.toString());
-      }
-    }
+    slv.a().a(localudb, new ucz(this, paramBoolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ucy
  * JD-Core Version:    0.7.0.1
  */

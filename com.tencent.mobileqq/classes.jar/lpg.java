@@ -1,70 +1,92 @@
-import android.util.Pair;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
+import com.tencent.av.so.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
-import java.util.List;
+import java.io.File;
 
-public class lpg
-  implements Runnable
+class lpg
+  implements axrt
 {
-  public lpg(ReadinjoySPEventReport paramReadinjoySPEventReport, int paramInt, List paramList) {}
+  lpg(lpf paramlpf, String paramString, int paramInt1, DownloadInfo paramDownloadInfo, int paramInt2) {}
   
-  public void run()
+  public void onResp(axsq paramaxsq)
   {
-    for (;;)
+    axro localaxro = (axro)paramaxsq.jdField_a_of_type_Axsp;
+    if (this.jdField_a_of_type_Lpf.jdField_a_of_type_Axro == localaxro) {
+      this.jdField_a_of_type_Lpf.jdField_a_of_type_Axro = null;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("QavSo", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localaxro.jdField_a_of_type_JavaLangString, Integer.valueOf(paramaxsq.jdField_a_of_type_Int), Integer.valueOf(paramaxsq.c), this.jdField_a_of_type_JavaLangString }));
+    }
+    int i;
+    if (paramaxsq.jdField_a_of_type_Int == 0)
     {
-      long l2;
-      try
+      paramaxsq = new File(localaxro.c);
+      if (paramaxsq.exists())
       {
-        int i = ReadinjoySPEventReport.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).size();
-        if (i > ReadInJoyHelper.d(ReadInJoyUtils.a()))
+        try
         {
-          l1 = i - ReadInJoyHelper.d(ReadInJoyUtils.a());
-          l2 = l1 - 1L;
-          if (l1 > 0L)
-          {
-            if (ReadinjoySPEventReport.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).size() <= 1) {
-              break label301;
-            }
-            ReadinjoySPEventReport.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).remove(1);
-            l1 = l2;
-            continue;
+          if (!lpe.a(localaxro.c, this.jdField_a_of_type_JavaLangString)) {
+            break label343;
           }
+          String str = paramaxsq.getParent();
+          bace.a(localaxro.c, str, false);
+          if (((this.jdField_a_of_type_Int != 1) || (!lpe.a(str + File.separator + this.jdField_a_of_type_ComTencentAvSoDownloadInfo.filename_so_wxvoiceembedqqegg, this.jdField_a_of_type_ComTencentAvSoDownloadInfo.MD5_so_wxvoiceembedqqegg))) && ((this.jdField_a_of_type_Int != 2) || (!lpe.a(str + File.separator + this.jdField_a_of_type_ComTencentAvSoDownloadInfo.filename_model_wxvoiceembed, this.jdField_a_of_type_ComTencentAvSoDownloadInfo.MD5_model_wxvoiceembed)))) {
+            break label343;
+          }
+          lpe.a(this.jdField_a_of_type_ComTencentAvSoDownloadInfo, this.jdField_a_of_type_Int);
+          i = 1;
         }
-        if (i == 0) {
-          ReadinjoySPEventReport.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).add(new Pair(Long.valueOf(System.currentTimeMillis() / 1000L), Integer.valueOf(0)));
-        }
-        ReadinjoySPEventReport.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).add(new Pair(Long.valueOf(System.currentTimeMillis() / 1000L - ((Long)((Pair)ReadinjoySPEventReport.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).get(0)).first).longValue()), Integer.valueOf(this.jdField_a_of_type_Int)));
-        QLog.d(ReadinjoySPEventReport.class.getSimpleName(), 2, "add aio enter or out info, type : " + this.jdField_a_of_type_Int);
-        if (this.jdField_a_of_type_JavaUtilList != null) {
-          ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport, ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport, this.jdField_a_of_type_JavaUtilList));
-        }
-        if ((this.jdField_a_of_type_Int != 0) || (!ReadinjoySPEventReport.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport))) {
-          break;
-        }
-        ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport, false);
-        if (ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport) != null)
+        catch (Exception localException)
         {
-          ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport);
+          for (;;)
+          {
+            localException.printStackTrace();
+            i = 0;
+          }
+          lpe.a(-1);
+          this.jdField_a_of_type_Lpf.jdField_a_of_type_Boolean = false;
           return;
         }
-        ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport, 0);
-        return;
+        paramaxsq.delete();
       }
-      catch (Exception localException)
+    }
+    for (;;)
+    {
+      if (i != 0)
       {
-        localException.printStackTrace();
+        lpe.a(100 / this.jdField_a_of_type_Lpf.jdField_a_of_type_Int + this.jdField_a_of_type_Lpf.b);
+        paramaxsq = this.jdField_a_of_type_Lpf;
+        paramaxsq.b += 100 / this.jdField_a_of_type_Lpf.jdField_a_of_type_Int;
+        if (!this.jdField_a_of_type_Lpf.a(this.jdField_a_of_type_ComTencentAvSoDownloadInfo, this.b - 1)) {
+          this.jdField_a_of_type_Lpf.jdField_a_of_type_Boolean = false;
+        }
         return;
       }
-      label301:
-      long l1 = l2;
+      label343:
+      i = 0;
+    }
+  }
+  
+  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2)
+  {
+    int i;
+    if (paramLong2 == 0L) {
+      i = 0;
+    }
+    for (;;)
+    {
+      lpe.a(i / this.jdField_a_of_type_Lpf.jdField_a_of_type_Int + this.jdField_a_of_type_Lpf.b);
+      return;
+      if (paramLong1 >= paramLong2) {
+        i = 99;
+      } else {
+        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lpg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,71 +1,25 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController.QQStoryMainView;
-
-public class nyc
-  implements QQStoryMainController.QQStoryMainView
+class nyc
+  extends nyf
 {
-  public nyc(QQStoryMainActivity paramQQStoryMainActivity) {}
-  
-  public View a()
+  nyc(nxd paramnxd, int paramInt)
   {
-    return QQStoryMainActivity.a(this.a);
+    super(paramnxd, null);
   }
   
-  public ImageView a()
+  void a(nyi paramnyi)
   {
-    return this.a.rightViewImg;
-  }
-  
-  public TextView a()
-  {
-    return this.a.rightViewText;
-  }
-  
-  public void a()
-  {
-    this.a.onBackEvent();
-  }
-  
-  public void a(String paramString)
-  {
-    QQStoryMainActivity.a(this.a, paramString);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.a.startTitleProgress();
+    if (this.jdField_a_of_type_Int == 1) {
+      paramnyi.onCommentListLoad(1, false, null, false, 6, 6);
+    }
+    while (this.jdField_a_of_type_Int != 2) {
       return;
     }
-    this.a.stopTitleProgress();
-  }
-  
-  public void b() {}
-  
-  public void b(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      QQStoryMainActivity.a(this.a, "小视频", "轻触回顶部");
-      return;
-    }
-    a("小视频");
-  }
-  
-  public void c() {}
-  
-  public void d()
-  {
-    QQStoryMainActivity.a(this.a);
+    paramnyi.onCommentLoadMore(1, false, null, false, 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nyc
  * JD-Core Version:    0.7.0.1
  */

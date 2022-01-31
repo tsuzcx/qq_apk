@@ -1,21 +1,21 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
-class abnn
-  implements Runnable
+public class abnn
+  implements BusinessObserver
 {
-  abnn(abnm paramabnm, Bitmap paramBitmap) {}
+  protected void a() {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    ((ImageView)this.jdField_a_of_type_Abnm.a.b.findViewById(2131369596)).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if (paramInt == 10000) {
+      a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abnn
  * JD-Core Version:    0.7.0.1
  */

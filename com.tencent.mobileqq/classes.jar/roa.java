@@ -1,27 +1,20 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.util.Utils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
 
 public class roa
-  implements Runnable
+  implements View.OnClickListener
 {
-  public roa(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString) {}
+  public roa(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((ProfileActivity.e(AddFriendVerifyActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity))) && (this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a != null))
-    {
-      String str = this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.getText().toString();
-      if (Utils.a(this.jdField_a_of_type_JavaLangString, str)) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.setText(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.e);
-      }
-    }
+    this.a.doOnBackPressed();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     roa
  * JD-Core Version:    0.7.0.1
  */

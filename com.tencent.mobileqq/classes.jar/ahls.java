@@ -1,171 +1,525 @@
-import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Typeface;
+import android.opengl.GLES20;
+import android.os.Parcel;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.richmedia.subtitles.WordingItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class ahls
-  implements Runnable
 {
-  public ahls(CapturePtvTemplateManager paramCapturePtvTemplateManager, boolean paramBoolean) {}
+  private static AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(0L);
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int = 15;
+  private long jdField_a_of_type_Long = -1L;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private RenderBuffer jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+  private String jdField_a_of_type_JavaLangString;
+  private TreeMap<Long, WordingItem> jdField_a_of_type_JavaUtilTreeMap = new TreeMap();
+  private boolean jdField_a_of_type_Boolean;
+  private float jdField_b_of_type_Float;
+  private int jdField_b_of_type_Int = 0;
+  private long jdField_b_of_type_Long = -1L;
+  private boolean jdField_b_of_type_Boolean = true;
+  private float jdField_c_of_type_Float = -1.0F;
+  private boolean jdField_c_of_type_Boolean;
+  private float jdField_d_of_type_Float = -1.0F;
+  private boolean jdField_d_of_type_Boolean;
+  private float e = 1.0F;
+  private float f = 1.0F;
+  private float g = 1.0F;
+  private float h;
+  private float i;
   
-  /* Error */
-  public void run()
+  private long a()
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: aload_0
-    //   3: getfield 13	ahls:jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager	Lcom/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager;
-    //   6: getfield 29	com/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   9: invokeinterface 35 1 0
-    //   14: ifne +11 -> 25
-    //   17: aload_0
-    //   18: getfield 15	ahls:jdField_a_of_type_Boolean	Z
-    //   21: ifne +4 -> 25
-    //   24: return
-    //   25: ldc 37
-    //   27: astore 4
-    //   29: invokestatic 43	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   32: invokevirtual 47	com/tencent/qphone/base/util/BaseApplication:getAssets	()Landroid/content/res/AssetManager;
-    //   35: ldc 49
-    //   37: invokevirtual 55	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   40: astore_1
-    //   41: aload_1
-    //   42: astore_2
-    //   43: aload_1
-    //   44: invokestatic 60	com/tencent/biz/common/util/Util:a	(Ljava/io/InputStream;)Ljava/lang/String;
-    //   47: astore_3
-    //   48: aload_3
-    //   49: astore_2
-    //   50: aload_1
-    //   51: ifnull +9 -> 60
-    //   54: aload_1
-    //   55: invokevirtual 65	java/io/InputStream:close	()V
-    //   58: aload_3
-    //   59: astore_2
-    //   60: aload_0
-    //   61: getfield 13	ahls:jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager	Lcom/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager;
-    //   64: aload_2
-    //   65: aconst_null
-    //   66: invokestatic 68	com/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager:a	(Lcom/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager;Ljava/lang/String;Lcom/tencent/mobileqq/richmedia/capture/data/CaptureRedDotConfig;)Ljava/util/List;
-    //   69: astore_1
-    //   70: aload_1
-    //   71: ifnull +29 -> 100
-    //   74: aload_0
-    //   75: getfield 13	ahls:jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager	Lcom/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager;
-    //   78: getfield 29	com/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   81: invokeinterface 71 1 0
-    //   86: aload_0
-    //   87: getfield 13	ahls:jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager	Lcom/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager;
-    //   90: getfield 29	com/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   93: aload_1
-    //   94: invokeinterface 75 2 0
-    //   99: pop
-    //   100: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   103: ifeq +11 -> 114
-    //   106: ldc 82
-    //   108: iconst_2
-    //   109: ldc 84
-    //   111: invokestatic 88	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   114: aload_0
-    //   115: getfield 13	ahls:jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager	Lcom/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager;
-    //   118: aload_1
-    //   119: iconst_0
-    //   120: invokevirtual 91	com/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager:a	(Ljava/util/List;Z)V
-    //   123: aload_0
-    //   124: getfield 13	ahls:jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager	Lcom/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager;
-    //   127: getfield 94	com/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager:jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$CapturePtvTemplateRefreshListener	Lcom/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager$CapturePtvTemplateRefreshListener;
-    //   130: ifnull -106 -> 24
-    //   133: aload_0
-    //   134: getfield 13	ahls:jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager	Lcom/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager;
-    //   137: getfield 94	com/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager:jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager$CapturePtvTemplateRefreshListener	Lcom/tencent/mobileqq/richmedia/capture/data/CapturePtvTemplateManager$CapturePtvTemplateRefreshListener;
-    //   140: invokeinterface 98 1 0
-    //   145: return
-    //   146: astore_1
-    //   147: aload_3
-    //   148: astore_2
-    //   149: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   152: ifeq -92 -> 60
-    //   155: aload_1
-    //   156: invokevirtual 101	java/lang/Exception:printStackTrace	()V
-    //   159: aload_3
-    //   160: astore_2
-    //   161: goto -101 -> 60
-    //   164: astore_3
-    //   165: aconst_null
-    //   166: astore_1
-    //   167: aload_1
-    //   168: astore_2
-    //   169: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   172: ifeq +9 -> 181
-    //   175: aload_1
-    //   176: astore_2
-    //   177: aload_3
-    //   178: invokevirtual 102	java/io/IOException:printStackTrace	()V
-    //   181: aload 4
-    //   183: astore_2
-    //   184: aload_1
-    //   185: ifnull -125 -> 60
-    //   188: aload_1
-    //   189: invokevirtual 65	java/io/InputStream:close	()V
-    //   192: aload 4
-    //   194: astore_2
-    //   195: goto -135 -> 60
-    //   198: astore_1
-    //   199: aload 4
-    //   201: astore_2
-    //   202: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   205: ifeq -145 -> 60
-    //   208: aload_1
-    //   209: invokevirtual 101	java/lang/Exception:printStackTrace	()V
-    //   212: aload 4
-    //   214: astore_2
-    //   215: goto -155 -> 60
-    //   218: astore_1
-    //   219: aload_2
-    //   220: ifnull +7 -> 227
-    //   223: aload_2
-    //   224: invokevirtual 65	java/io/InputStream:close	()V
-    //   227: aload_1
-    //   228: athrow
-    //   229: astore_2
-    //   230: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   233: ifeq -6 -> 227
-    //   236: aload_2
-    //   237: invokevirtual 101	java/lang/Exception:printStackTrace	()V
-    //   240: goto -13 -> 227
-    //   243: astore_1
-    //   244: goto -25 -> 219
-    //   247: astore_3
-    //   248: goto -81 -> 167
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	251	0	this	ahls
-    //   40	79	1	localObject1	Object
-    //   146	10	1	localException1	java.lang.Exception
-    //   166	23	1	localObject2	Object
-    //   198	11	1	localException2	java.lang.Exception
-    //   218	10	1	localObject3	Object
-    //   243	1	1	localObject4	Object
-    //   1	223	2	localObject5	Object
-    //   229	8	2	localException3	java.lang.Exception
-    //   47	113	3	str1	java.lang.String
-    //   164	14	3	localIOException1	java.io.IOException
-    //   247	1	3	localIOException2	java.io.IOException
-    //   27	186	4	str2	java.lang.String
-    // Exception table:
-    //   from	to	target	type
-    //   54	58	146	java/lang/Exception
-    //   29	41	164	java/io/IOException
-    //   188	192	198	java/lang/Exception
-    //   29	41	218	finally
-    //   223	227	229	java/lang/Exception
-    //   43	48	243	finally
-    //   169	175	243	finally
-    //   177	181	243	finally
-    //   43	48	247	java/io/IOException
+    return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.incrementAndGet();
+  }
+  
+  private WordingItem a(long paramLong1, long paramLong2)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilTreeMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      WordingItem localWordingItem = (WordingItem)((Map.Entry)localIterator.next()).getValue();
+      if ((localWordingItem != null) && (localWordingItem.jdField_b_of_type_Long == paramLong1)) {
+        return localWordingItem;
+      }
+    }
+    return null;
+  }
+  
+  private float c()
+  {
+    float f1 = this.jdField_c_of_type_Float / this.jdField_a_of_type_Float;
+    float f2 = this.jdField_d_of_type_Float / this.jdField_b_of_type_Float;
+    if (f1 > f2) {
+      return f1;
+    }
+    return f2;
+  }
+  
+  private void f()
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+      this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+    }
+    if ((this.jdField_a_of_type_AndroidGraphicsCanvas != null) && (this.jdField_a_of_type_AndroidGraphicsPaint != null)) {
+      this.jdField_a_of_type_AndroidGraphicsCanvas.drawPaint(this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+    if ((this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null) && (this.jdField_c_of_type_Boolean))
+    {
+      GLES20.glClearStencil(0);
+      GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
+      GLES20.glClear(17664);
+      GLES20.glEnable(3042);
+      GLES20.glBlendFunc(770, 771);
+    }
+  }
+  
+  protected float a()
+  {
+    return this.e;
+  }
+  
+  public float a(boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      return this.jdField_a_of_type_Float;
+    }
+    return this.jdField_c_of_type_Float;
+  }
+  
+  protected int a()
+  {
+    return 0;
+  }
+  
+  public int a(boolean paramBoolean)
+  {
+    if (this.jdField_b_of_type_Int == 3) {
+      return this.jdField_a_of_type_JavaUtilTreeMap.size();
+    }
+    if (paramBoolean) {
+      return 0;
+    }
+    return a();
+  }
+  
+  protected long a(long paramLong)
+  {
+    long l = 0L;
+    if (!this.jdField_b_of_type_Boolean)
+    {
+      paramLong = l;
+      if (this.jdField_a_of_type_Long >= 0L) {
+        paramLong = this.jdField_a_of_type_Long;
+      }
+      return paramLong;
+    }
+    return paramLong / this.jdField_a_of_type_Int;
+  }
+  
+  public long a(Canvas paramCanvas, RenderBuffer paramRenderBuffer, long paramLong)
+  {
+    if ((paramCanvas == null) && (paramRenderBuffer == null)) {
+      return -1L;
+    }
+    if ((this.jdField_a_of_type_JavaUtilTreeMap.size() == 0) && (3 == this.jdField_b_of_type_Int)) {
+      return -1L;
+    }
+    if (this.jdField_a_of_type_Long < 0L) {
+      this.jdField_a_of_type_Long = 0L;
+    }
+    long l = this.jdField_a_of_type_Long;
+    if (paramLong > 0L) {}
+    for (l = paramLong / this.jdField_a_of_type_Int;; l += 1L)
+    {
+      if (l < this.jdField_a_of_type_Long)
+      {
+        QLog.d("BaseAnimDrawer", 2, "nextFrame , targetindex <= mFrameIndex, timestamp:" + paramLong + "  frameindex:" + this.jdField_a_of_type_Long);
+        return -2L;
+      }
+      if (l == this.jdField_a_of_type_Long)
+      {
+        QLog.d("BaseAnimDrawer", 2, "nextFrame , targetindex == mFrameIndex, timestamp:" + paramLong + "  frameindex:" + this.jdField_a_of_type_Long + " cachevalid:" + this.jdField_a_of_type_Boolean);
+        if (this.jdField_a_of_type_Boolean) {
+          return this.jdField_a_of_type_Long;
+        }
+        return -2L;
+      }
+      if ((paramRenderBuffer != null) && (this.jdField_c_of_type_Boolean))
+      {
+        paramRenderBuffer.bind();
+        if (QLog.isColorLevel()) {
+          QLog.d("BaseAnimDrawer", 2, "nextFrame timestamp:" + paramLong);
+        }
+      }
+      this.h += this.i;
+      f();
+      if (this.jdField_d_of_type_Boolean) {}
+      boolean bool;
+      for (paramLong = this.jdField_a_of_type_Long - 1L;; paramLong = this.jdField_a_of_type_Long)
+      {
+        bool = a(paramCanvas, paramRenderBuffer, paramLong, this.jdField_a_of_type_Int);
+        if (!this.jdField_d_of_type_Boolean) {
+          this.jdField_a_of_type_Long += 1L;
+        }
+        if ((bool) || (this.jdField_a_of_type_Long <= this.jdField_b_of_type_Long + 1L)) {
+          break;
+        }
+        if ((paramRenderBuffer != null) && (this.jdField_c_of_type_Boolean)) {
+          paramRenderBuffer.unbind();
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("BaseAnimDrawer", 2, "nextFrame drawer is finished:" + this.jdField_a_of_type_Long);
+        }
+        return -1L;
+      }
+      if (this.jdField_d_of_type_Boolean) {}
+      for (;;)
+      {
+        if ((paramRenderBuffer != null) && (this.jdField_c_of_type_Boolean)) {
+          paramRenderBuffer.unbind();
+        }
+        if (!bool) {
+          break label428;
+        }
+        return this.jdField_a_of_type_Long;
+        if (this.jdField_a_of_type_Long < l) {
+          break;
+        }
+      }
+      label428:
+      if (!this.jdField_b_of_type_Boolean) {
+        return -1L;
+      }
+      if (this.jdField_a_of_type_Long > this.jdField_b_of_type_Long) {
+        return -1L;
+      }
+      return -2L;
+    }
+  }
+  
+  protected Typeface a(String paramString)
+  {
+    Typeface localTypeface = null;
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      localTypeface = Typeface.createFromFile(paramString);
+      return localTypeface;
+    }
+    catch (Exception paramString)
+    {
+      QLog.e("BaseAnimDrawer", 2, "createTypeFace exception:" + paramString.toString());
+    }
+    return null;
+  }
+  
+  protected void a() {}
+  
+  public void a(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    b(paramInt);
+  }
+  
+  public void a(long paramLong1, long paramLong2, String paramString1, String paramString2, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BaseAnimDrawer", 2, "setText, state:" + this.jdField_b_of_type_Int + " time:" + paramLong1 + "-" + paramLong2 + " wording: " + paramString1 + "-" + paramString2 + " final:" + paramBoolean);
+    }
+    WordingItem localWordingItem = a(paramLong1, paramLong2);
+    if (localWordingItem == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseAnimDrawer", 2, "is new item");
+      }
+      localWordingItem = new WordingItem();
+      localWordingItem.jdField_b_of_type_Long = paramLong1;
+      localWordingItem.c = paramLong2;
+      if (!TextUtils.isEmpty(paramString1)) {
+        localWordingItem.jdField_a_of_type_JavaLangString = paramString1;
+      }
+      if (localWordingItem.jdField_a_of_type_JavaLangString == null) {
+        localWordingItem.jdField_a_of_type_JavaLangString = "";
+      }
+      if (!TextUtils.isEmpty(paramString2)) {
+        localWordingItem.jdField_b_of_type_JavaLangString = paramString2;
+      }
+      if (localWordingItem.jdField_b_of_type_JavaLangString == null) {
+        localWordingItem.jdField_b_of_type_JavaLangString = "";
+      }
+      localWordingItem.jdField_a_of_type_Long = a();
+      if (this.jdField_b_of_type_Int == 3)
+      {
+        this.jdField_a_of_type_JavaUtilTreeMap.put(Long.valueOf(localWordingItem.jdField_a_of_type_Long), localWordingItem);
+        paramString1 = localWordingItem;
+      }
+    }
+    for (;;)
+    {
+      a(paramString1);
+      return;
+      paramString1 = localWordingItem;
+      if (!paramBoolean)
+      {
+        this.jdField_a_of_type_JavaUtilTreeMap.put(Long.valueOf(localWordingItem.jdField_a_of_type_Long), localWordingItem);
+        paramString1 = localWordingItem;
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("BaseAnimDrawer", 2, "is old item:" + localWordingItem.jdField_a_of_type_JavaLangString + "-" + paramString1);
+        }
+        if (!TextUtils.isEmpty(paramString1)) {
+          localWordingItem.jdField_a_of_type_JavaLangString = paramString1;
+        }
+        if (!TextUtils.isEmpty(paramString2)) {
+          localWordingItem.jdField_b_of_type_JavaLangString = paramString2;
+        }
+        localWordingItem.c = paramLong2;
+        paramString1 = localWordingItem;
+        if (paramBoolean)
+        {
+          paramString1 = localWordingItem;
+          if (this.jdField_b_of_type_Int != 3)
+          {
+            this.jdField_a_of_type_JavaUtilTreeMap.remove(Long.valueOf(localWordingItem.jdField_a_of_type_Long));
+            paramString1 = localWordingItem;
+          }
+        }
+      }
+    }
+  }
+  
+  public void a(Context paramContext, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean, String paramString)
+  {
+    if (paramFloat1 > 0.0F)
+    {
+      this.jdField_a_of_type_Float = paramFloat1;
+      this.jdField_c_of_type_Float = paramFloat1;
+    }
+    if (paramFloat2 > 0.0F)
+    {
+      this.jdField_b_of_type_Float = paramFloat2;
+      this.jdField_d_of_type_Float = paramFloat2;
+    }
+    if (paramInt > 0) {
+      this.jdField_a_of_type_Int = paramInt;
+    }
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    e();
+    a(paramContext, paramString);
+  }
+  
+  public void a(Context paramContext, float paramFloat1, float paramFloat2, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, boolean paramBoolean)
+  {
+    if (paramFloat1 > 0.0F) {
+      this.jdField_c_of_type_Float = paramFloat1;
+    }
+    if (paramFloat2 > 0.0F) {
+      this.jdField_d_of_type_Float = paramFloat2;
+    }
+    Parcel localParcel = Parcel.obtain();
+    localParcel.unmarshall(paramArrayOfByte, paramInt2, paramInt3);
+    localParcel.setDataPosition(0);
+    paramArrayOfByte = new ArrayList();
+    localParcel.readTypedList(paramArrayOfByte, WordingItem.CREATOR);
+    paramArrayOfByte = paramArrayOfByte.iterator();
+    while (paramArrayOfByte.hasNext())
+    {
+      WordingItem localWordingItem = (WordingItem)paramArrayOfByte.next();
+      this.jdField_a_of_type_JavaUtilTreeMap.put(Long.valueOf(localWordingItem.jdField_a_of_type_Long), localWordingItem);
+    }
+    this.jdField_a_of_type_Float = localParcel.readFloat();
+    this.jdField_b_of_type_Float = localParcel.readFloat();
+    if (this.jdField_d_of_type_Float <= 0.0F) {
+      this.jdField_d_of_type_Float = this.jdField_b_of_type_Float;
+    }
+    if (this.jdField_c_of_type_Float <= 0.0F) {
+      this.jdField_c_of_type_Float = this.jdField_a_of_type_Float;
+    }
+    this.jdField_a_of_type_Int = localParcel.readInt();
+    this.jdField_a_of_type_JavaLangString = localParcel.readString();
+    localParcel.recycle();
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.e = c();
+    a(paramContext, this.jdField_a_of_type_JavaLangString);
+    d();
+    a(3);
+  }
+  
+  protected void a(Context paramContext, String paramString) {}
+  
+  protected void a(WordingItem paramWordingItem) {}
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_d_of_type_Boolean = paramBoolean;
+  }
+  
+  protected boolean a()
+  {
+    return false;
+  }
+  
+  public boolean a(long paramLong)
+  {
+    if (!d()) {
+      return false;
+    }
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer == null) {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer((int)this.jdField_c_of_type_Float, (int)this.jdField_d_of_type_Float, 33984);
+    }
+    paramLong = a(null, this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer, paramLong);
+    if ((paramLong != -1L) && (paramLong != -2L)) {}
+    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false) {
+      return this.jdField_a_of_type_Boolean;
+    }
+  }
+  
+  protected boolean a(Canvas paramCanvas, RenderBuffer paramRenderBuffer, long paramLong1, long paramLong2)
+  {
+    return false;
+  }
+  
+  public boolean a(boolean paramBoolean)
+  {
+    this.jdField_c_of_type_Boolean = paramBoolean;
+    if (this.jdField_c_of_type_Boolean) {
+      this.jdField_c_of_type_Boolean = a();
+    }
+    return this.jdField_c_of_type_Boolean;
+  }
+  
+  protected float b()
+  {
+    return this.f;
+  }
+  
+  public float b(boolean paramBoolean)
+  {
+    if (!paramBoolean) {
+      return this.jdField_b_of_type_Float;
+    }
+    return this.jdField_d_of_type_Float;
+  }
+  
+  public int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
+  protected void b() {}
+  
+  protected void b(int paramInt) {}
+  
+  protected boolean b()
+  {
+    return false;
+  }
+  
+  public int c()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void c()
+  {
+    a();
+    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null)
+    {
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = null;
+    }
+    if (this.jdField_a_of_type_AndroidGraphicsCanvas != null) {
+      this.jdField_a_of_type_AndroidGraphicsCanvas = null;
+    }
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    }
+    this.jdField_a_of_type_AndroidGraphicsPaint = null;
+    this.jdField_a_of_type_JavaUtilTreeMap.clear();
+  }
+  
+  protected boolean c()
+  {
+    return this.jdField_d_of_type_Boolean;
+  }
+  
+  public int d()
+  {
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null)) {
+      return this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId();
+    }
+    return -1;
+  }
+  
+  public void d()
+  {
+    try
+    {
+      this.jdField_a_of_type_Long = -1L;
+      if (this.jdField_a_of_type_JavaUtilTreeMap.size() == 0) {
+        return;
+      }
+      if ((b()) && (this.jdField_a_of_type_JavaUtilTreeMap.size() > 0))
+      {
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilTreeMap.values().iterator();
+        while (localIterator.hasNext())
+        {
+          WordingItem localWordingItem = (WordingItem)localIterator.next();
+          if (localWordingItem != null)
+          {
+            if (this.jdField_b_of_type_Long < a(localWordingItem.jdField_b_of_type_Long)) {
+              this.jdField_b_of_type_Long = a(localWordingItem.jdField_b_of_type_Long);
+            }
+            a(localWordingItem);
+          }
+        }
+      }
+    }
+    finally {}
+  }
+  
+  public boolean d()
+  {
+    return this.jdField_c_of_type_Boolean;
+  }
+  
+  public void e()
+  {
+    try
+    {
+      b();
+      this.jdField_a_of_type_JavaUtilTreeMap.clear();
+      d();
+      return;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahls
  * JD-Core Version:    0.7.0.1
  */

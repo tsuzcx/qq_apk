@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class cmd0x383$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 90, 98, 106, 114, 122, 130, 138, 146, 154, 162, 890, 898, 906, 914, 922, 930, 938, 954 }, new String[] { "int32_ret_code", "str_ret_msg", "str_client_wording", "msg_upload_rsp_body", "msg_resend_rsp_body", "msg_download_rsp_body", "msg_del_file_rsp_body", "msg_rename_rsp_body", "msg_trans_file_rsp_body", "msg_link_file_rsp_body", "msg_feed_msg_v2_rsp_body", "msg_get_space_rsp_body", "msg_check_audit_flag_rsp_body", "msg_copy_from_rsp_body", "msg_copy_to_rsp_body", "msg_get_file_list_rsp_body", "msg_create_folder_rsp_body", "msg_get_file_count_rsp_body", "msg_get_file_info_rsp_body", "msg_get_file_list_v2_rsp_body", "msg_file_search_rsp_body" }, new Object[] { Integer.valueOf(0), "", "", null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null }, RspBody.class);
   public final PBInt32Field int32_ret_code = PBField.initInt32(0);
@@ -34,7 +34,7 @@ public final class cmd0x383$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.cmd0x383.cmd0x383.RspBody
  * JD-Core Version:    0.7.0.1
  */

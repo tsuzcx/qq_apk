@@ -1,73 +1,40 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.database.MemoryInfoEntry;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
 
 class ugo
-  implements Runnable
+  extends SimpleJob<Object>
 {
-  ugo(ugj paramugj, List paramList) {}
-  
-  public void run()
+  ugo(ugl paramugl, String paramString1, String paramString2)
   {
-    Object localObject1 = (TroopManager)this.jdField_a_of_type_Ugj.a.app.getManager(51);
-    TroopInfo localTroopInfo = ((TroopManager)localObject1).a(this.jdField_a_of_type_Ugj.a.b);
-    if (localTroopInfo == null) {}
-    label68:
-    label124:
-    do
+    super(paramString1);
+  }
+  
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    paramJobContext = (spt)sqg.a(19);
+    paramVarArgs = paramJobContext.a(swm.a(this.jdField_a_of_type_Ugl.b));
+    ugq localugq = new ugq(this.jdField_a_of_type_Ugl.c);
+    ArrayList localArrayList = new ArrayList();
+    localugq.jdField_a_of_type_JavaUtilList = paramJobContext.a(this.jdField_a_of_type_JavaLangString, localArrayList);
+    localugq.jdField_a_of_type_JavaUtilArrayList = localArrayList;
+    if ((paramVarArgs != null) && (paramVarArgs.isEnd == 1)) {}
+    for (boolean bool = true;; bool = false)
     {
-      do
-      {
-        return;
-      } while (StringUtil.a(localTroopInfo.troopowneruin));
-      localTroopInfo.Administrator = "";
-      int i;
-      int j;
-      Object localObject2;
-      if (this.jdField_a_of_type_JavaUtilList == null)
-      {
-        i = 0;
-        j = 0;
-        if (j >= i) {
-          break label204;
-        }
-        localObject2 = (oidb_0x899.memberlist)this.jdField_a_of_type_JavaUtilList.get(j);
-        if ((localObject2 != null) && (((oidb_0x899.memberlist)localObject2).uint64_member_uin.has())) {
-          break label124;
-        }
-      }
-      for (;;)
-      {
-        j += 1;
-        break label68;
-        i = this.jdField_a_of_type_JavaUtilList.size();
-        break;
-        localObject2 = String.valueOf(((oidb_0x899.memberlist)localObject2).uint64_member_uin.get());
-        if ((localObject2 != null) && (!"".equals(((String)localObject2).trim())) && (!localTroopInfo.troopowneruin.equals(((String)localObject2).trim()))) {
-          localTroopInfo.Administrator = (localTroopInfo.Administrator + (String)localObject2 + "|");
-        }
-      }
-      ((TroopManager)localObject1).b(localTroopInfo);
-      localObject1 = this.jdField_a_of_type_Ugj.a.a.obtainMessage();
-      ((Message)localObject1).what = 11;
-      ((Message)localObject1).obj = localTroopInfo;
-      this.jdField_a_of_type_Ugj.a.a.sendMessage((Message)localObject1);
-    } while (!QLog.isColorLevel());
-    label204:
-    QLog.i("TroopMemberListActivityget_troop_member", 2, localTroopInfo.Administrator);
+      localugq.jdField_a_of_type_Boolean = bool;
+      sgi.a().dispatch(localugq);
+      urk.a("Q.qqstory.memories:MemoryDataPuller", "Get memory key list %s", localugq.jdField_a_of_type_JavaUtilList);
+      return null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ugo
  * JD-Core Version:    0.7.0.1
  */

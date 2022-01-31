@@ -1,42 +1,41 @@
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.view.ViewGroup;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.FrameLayout.LayoutParams;
 import com.dataline.activities.LiteActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.drawable.ChatBackgroundDrawable;
-import com.tencent.mobileqq.vas.VasApngUtil;
+import com.dataline.activities.LiteActivity.50.1;
+import com.tencent.mobileqq.activity.aio.InputLinearLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.XEditTextEx;
+import mqq.app.MobileQQ;
+import mqq.os.MqqHandler;
 
-class br
-  implements Runnable
+public class br
+  implements Animator.AnimatorListener
 {
-  br(bq parambq, boolean paramBoolean, Bitmap paramBitmap) {}
+  public br(LiteActivity paramLiteActivity) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    Bundle localBundle;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      localObject = this.jdField_a_of_type_Bq.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources().getDrawable(2130838348);
-      localBundle = new Bundle();
-      localBundle.putBoolean("key_use_rect", true);
-      localBundle.putBoolean("key_double_bitmap", true);
-    }
-    for (Object localObject = VasApngUtil.a(BaseApplicationImpl.sApplication.getRuntime(), this.jdField_a_of_type_Bq.jdField_a_of_type_JavaLangString, "-chatBg-", (Drawable)localObject, new int[] { 0 }, "-chatBg-", localBundle);; localObject = new ChatBackgroundDrawable(this.jdField_a_of_type_Bq.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.getResources(), this.jdField_a_of_type_AndroidGraphicsBitmap))
-    {
-      this.jdField_a_of_type_Bq.jdField_a_of_type_AndroidViewViewGroup.setBackgroundDrawable((Drawable)localObject);
-      this.jdField_a_of_type_Bq.jdField_a_of_type_AndroidViewViewGroup.setTag(2131362036, this.jdField_a_of_type_Bq.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_Bq.jdField_a_of_type_AndroidViewViewGroup.setTag(2131362037, localObject);
-      LiteActivity.a(this.jdField_a_of_type_Bq.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity);
-      return;
-    }
+    LiteActivity.a(this.a).setPadding(0, aciy.a(8.0F, this.a.app.getApplication().getResources()), 0, 0);
+    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLayoutParams().height = -2;
+    ((FrameLayout.LayoutParams)this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getLayoutParams()).setMargins(aciy.a(14.0F, this.a.app.getApplication().getResources()), 0, 0, 0);
+    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setMaxLines(6);
+    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setBackgroundResource(2130848528);
+    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setGravity(16);
+    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setPadding(aciy.a(11.0F, this.a.app.getApplication().getResources()), aciy.a(6.0F, this.a.app.getApplication().getResources()), aciy.a(11.0F, this.a.app.getApplication().getResources()), aciy.a(6.0F, this.a.app.getApplication().getResources()));
+    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.requestLayout();
+    this.a.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new LiteActivity.50.1(this), 100L);
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     br
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.ark;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class ArkAppTestData
-  extends Entity
+  extends atmo
 {
   public long date;
-  @unique
+  @atoc
   public String name;
   public String value;
 }

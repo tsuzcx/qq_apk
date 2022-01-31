@@ -1,23 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.music.BroadcastMusicInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class anct
-  implements Parcelable.Creator
+class anct
+  implements DialogInterface.OnClickListener
 {
-  public BroadcastMusicInfo a(Parcel paramParcel)
-  {
-    return new BroadcastMusicInfo(paramParcel);
-  }
+  anct(ancs paramancs) {}
   
-  public BroadcastMusicInfo[] a(int paramInt)
-  {
-    return new BroadcastMusicInfo[paramInt];
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anct
  * JD-Core Version:    0.7.0.1
  */

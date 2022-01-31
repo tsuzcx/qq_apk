@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.pb;
 
-import java.io.IOException;
-
 public final class PBBoolField
   extends PBPrimitiveField<Boolean>
 {
@@ -48,14 +46,12 @@ public final class PBBoolField
   }
   
   public void readFrom(CodedInputStreamMicro paramCodedInputStreamMicro)
-    throws IOException
   {
     this.value = paramCodedInputStreamMicro.readBool();
     setHasFlag(true);
   }
   
   protected Boolean readFromDirectly(CodedInputStreamMicro paramCodedInputStreamMicro)
-    throws IOException
   {
     return Boolean.valueOf(paramCodedInputStreamMicro.readBool());
   }
@@ -72,7 +68,6 @@ public final class PBBoolField
   }
   
   public void writeTo(CodedOutputStreamMicro paramCodedOutputStreamMicro, int paramInt)
-    throws IOException
   {
     if (has()) {
       paramCodedOutputStreamMicro.writeBool(paramInt, this.value);
@@ -80,7 +75,6 @@ public final class PBBoolField
   }
   
   protected void writeToDirectly(CodedOutputStreamMicro paramCodedOutputStreamMicro, int paramInt, Boolean paramBoolean)
-    throws IOException
   {
     paramCodedOutputStreamMicro.writeBool(paramInt, paramBoolean.booleanValue());
   }

@@ -1,29 +1,37 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipWaveView;
-import com.tencent.mobileqq.surfaceviewaction.action.Action;
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.surfaceviewaction.action.MoveToAction;
-import com.tencent.mobileqq.surfaceviewaction.action.SequenceAction;
-import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
-import com.tencent.mobileqq.util.DisplayUtil;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 class utp
-  implements Action.OnActionEndListener
+  extends QQUIEventReceiver<uth, uzj>
 {
-  utp(uto paramuto) {}
-  
-  public void a()
+  public utp(@NonNull uth paramuth)
   {
-    int i = this.a.a.jdField_a_of_type_Int / 2;
-    int j = (int)(this.a.a.b - DisplayUtil.a(this.a.a.jdField_a_of_type_AndroidContentContext, 178.0F) - this.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.b / 2.0F);
-    int k = (int)(this.a.a.b - DisplayUtil.a(this.a.a.jdField_a_of_type_AndroidContentContext, 200.0F) - this.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.b / 2.0F);
-    SequenceAction localSequenceAction = new SequenceAction(new Action[] { new MoveToAction(450, i, j, i, k), new MoveToAction(450, i, k, i, j) });
-    localSequenceAction.a = true;
-    this.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(new Action[] { localSequenceAction });
+    super(paramuth);
+  }
+  
+  public void a(@NonNull uth paramuth, @NonNull uzj paramuzj)
+  {
+    utr localutr = paramuth.a;
+    if (localutr != null) {
+      localutr.a(paramuth.a());
+    }
+    for (;;)
+    {
+      urp.b("edit_video", "face_list_success", 0, paramuzj.a.errorCode, new String[0]);
+      return;
+      urk.b(this.TAG, "DoodleEmojiListEventReceiver adapter is null");
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uzj.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     utp
  * JD-Core Version:    0.7.0.1
  */

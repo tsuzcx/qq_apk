@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class AudioTransCommon$TranslateResult
-  extends MessageMicro
+  extends MessageMicro<TranslateResult>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_src_text = PBField.initBytes(ByteStringMicro.EMPTY);

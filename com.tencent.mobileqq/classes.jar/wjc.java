@@ -1,18 +1,26 @@
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.qphone.base.util.QLog;
 
 public class wjc
-  implements Runnable
+  extends ajvh
 {
-  public wjc(ZhituManager paramZhituManager) {}
+  public wjc(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle)
   {
-    ZhituManager.a(this.a);
+    if (paramBoolean) {
+      this.a.a(145, paramBundle);
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("TroopMemberApiService", 2, new Object[] { "onWebPushResp isSuc:", Boolean.valueOf(paramBoolean), " type:", Integer.valueOf(paramInt) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wjc
  * JD-Core Version:    0.7.0.1
  */

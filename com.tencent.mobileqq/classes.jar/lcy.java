@@ -1,27 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.KanDianViewController;
-import com.tencent.biz.pubaccount.readinjoy.KanDianViewController.PullRefreshCompleteListener;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshRes;
-import java.io.File;
+import com.tencent.av.gaudio.AVNotifyCenter;
 
 public class lcy
-  implements Runnable
 {
-  public lcy(KanDianViewController.PullRefreshCompleteListener paramPullRefreshCompleteListener) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void run()
+  public lcy(AVNotifyCenter paramAVNotifyCenter, String paramString1, String paramString2, String paramString3)
   {
-    String str = RefreshRes.e();
-    if ((str != null) && (new File(str).exists()))
-    {
-      KanDianViewController.a(this.a.a, str);
-      KanDianViewController.a(this.a.a).removeMessages(3);
-      KanDianViewController.a(this.a.a).sendEmptyMessage(2);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lcy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.webview.swift;
 
-import akut;
 import android.content.Context;
 import android.content.MutableContextWrapper;
 import android.os.Handler;
@@ -15,11 +14,11 @@ public class SwiftReuseTouchWebView
   extends TouchWebView
 {
   private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  public static int b;
   private static SwiftReuseTouchWebView b;
-  public static int c;
   public int a;
   private SwiftReuseTouchWebView jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView;
-  private int d;
+  private int c;
   
   private SwiftReuseTouchWebView(Context paramContext)
   {
@@ -32,12 +31,13 @@ public class SwiftReuseTouchWebView
     SwiftReuseTouchWebView localSwiftReuseTouchWebView = null;
     synchronized (jdField_a_of_type_JavaLangObject)
     {
-      if (b != null)
+      QLog.i("SwiftReuseTouchWebView", 1, "sPool acquire:" + jdField_b_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView);
+      if (jdField_b_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView != null)
       {
-        localSwiftReuseTouchWebView = b;
-        b = localSwiftReuseTouchWebView.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView;
+        localSwiftReuseTouchWebView = jdField_b_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView;
+        jdField_b_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView = localSwiftReuseTouchWebView.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView;
         localSwiftReuseTouchWebView.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView = null;
-        c -= 1;
+        jdField_b_of_type_Int -= 1;
       }
       if (localSwiftReuseTouchWebView == null) {
         return new SwiftReuseTouchWebView(new MutableContextWrapper(paramContext));
@@ -45,22 +45,22 @@ public class SwiftReuseTouchWebView
     }
     localSwiftReuseTouchWebView.clearHistory();
     localSwiftReuseTouchWebView.jdField_a_of_type_Int = 1;
-    localSwiftReuseTouchWebView.d += 1;
+    localSwiftReuseTouchWebView.c += 1;
     localSwiftReuseTouchWebView.onResume();
     ((MutableContextWrapper)localSwiftReuseTouchWebView.getContext()).setBaseContext(paramContext);
     return localSwiftReuseTouchWebView;
   }
   
-  public void b(boolean paramBoolean)
+  public void a(boolean paramBoolean)
   {
     int i = 0;
     synchronized (jdField_a_of_type_JavaLangObject)
     {
-      if (c < 4)
+      if (jdField_b_of_type_Int < 4)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView = b;
-        b = this;
-        c += 1;
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView = jdField_b_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView;
+        jdField_b_of_type_ComTencentMobileqqWebviewSwiftSwiftReuseTouchWebView = this;
+        jdField_b_of_type_Int += 1;
         i = 1;
       }
       if (i != 0)
@@ -68,7 +68,7 @@ public class SwiftReuseTouchWebView
         ((MutableContextWrapper)getContext()).setBaseContext(BaseApplicationImpl.sApplication);
         if (!paramBoolean)
         {
-          a();
+          resetForReuse();
           onPause();
         }
         return;
@@ -96,7 +96,7 @@ public class SwiftReuseTouchWebView
   
   public void destroy()
   {
-    if (this.d > 3)
+    if (this.c > 3)
     {
       super.destroy();
       return;
@@ -105,10 +105,10 @@ public class SwiftReuseTouchWebView
     try
     {
       stopLoading();
-      a("about:blank");
+      loadUrlOriginal("about:blank");
       clearHistory();
       clearView();
-      new Handler(Looper.getMainLooper()).postDelayed(new akut(this), 1000L);
+      new Handler(Looper.getMainLooper()).postDelayed(new SwiftReuseTouchWebView.1(this), 1000L);
       return;
     }
     catch (Throwable localThrowable)
@@ -122,7 +122,7 @@ public class SwiftReuseTouchWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView
  * JD-Core Version:    0.7.0.1
  */

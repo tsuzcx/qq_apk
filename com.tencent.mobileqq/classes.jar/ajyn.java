@@ -1,52 +1,52 @@
-import com.tencent.mobileqq.data.MessageForTroopTopic;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.data.TroopTopicDetailInfo;
-import com.tencent.mobileqq.troop.data.TroopTopicDetailInfoManager;
-import com.tencent.mobileqq.troop.utils.TroopTopicMgr;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.RecentUser;
+import java.util.Comparator;
 
-public class ajyn
-  implements Runnable
+class ajyn
+  implements Comparator<atmo>
 {
-  public ajyn(TroopTopicMgr paramTroopTopicMgr, MessageRecord paramMessageRecord) {}
+  ajyn(ajym paramajym) {}
   
-  public void run()
+  public int a(atmo paramatmo1, atmo paramatmo2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(".troop.troop_topic.TroopTopicMgr", 2, "syncTopicExtInfo query db");
-    }
-    TroopTopicDetailInfo localTroopTopicDetailInfo = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr.a.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq, true);
-    if (localTroopTopicDetailInfo != null)
+    int j = -1;
+    paramatmo1 = (RecentUser)paramatmo1;
+    paramatmo2 = (RecentUser)paramatmo2;
+    long l1 = Math.max(paramatmo1.lastmsgtime, paramatmo1.lastmsgdrafttime);
+    long l2 = Math.max(paramatmo2.lastmsgtime, paramatmo2.lastmsgdrafttime);
+    int i;
+    if (l1 < l2)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr.b(localTroopTopicDetailInfo);
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForTroopTopic)) {
-        if (((MessageForTroopTopic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).pVersion < localTroopTopicDetailInfo.pVersion)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i(".troop.troop_topic.TroopTopicMgr", 2, "syncTopicExtInfo fetch network");
-          }
-          TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, localTroopTopicDetailInfo);
-        }
+      i = 1;
+      if (paramatmo1.getType() != paramatmo2.getType()) {
+        break label80;
       }
     }
-    while (!QLog.isColorLevel())
+    label80:
+    do
     {
       do
       {
-        return;
-      } while (localTroopTopicDetailInfo.pVersion == localTroopTopicDetailInfo.mOldVersion);
-      if (QLog.isColorLevel()) {
-        QLog.i(".troop.troop_topic.TroopTopicMgr", 2, "syncTopicExtInfo fetch network 2");
+        return i;
+        if (l1 == l2)
+        {
+          i = 0;
+          break;
+        }
+        i = -1;
+        break;
+        i = j;
+      } while (paramatmo1.getType() == 0);
+      if (paramatmo2.getType() == 0) {
+        return 1;
       }
-      TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, localTroopTopicDetailInfo);
-      return;
-    }
-    QLog.e(".troop.troop_topic.TroopTopicMgr", 2, "syncTopicExtInfo there is no topic info in db.");
+      i = j;
+    } while (paramatmo1.getType() - paramatmo2.getType() > 0);
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajyn
  * JD-Core Version:    0.7.0.1
  */

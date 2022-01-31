@@ -1,38 +1,90 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.FastScroller;
+import android.support.annotation.NonNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amix
-  implements Runnable
+  extends amie<amiw>
 {
-  public amix(FastScroller paramFastScroller) {}
+  static amiw a = new amiw();
   
-  public void run()
+  public static amiw c()
   {
-    int k;
-    int j;
-    int i;
-    if (this.a.jdField_a_of_type_ComTencentWidgetAbsListView.mIsAttached)
-    {
-      this.a.f();
-      k = this.a.jdField_a_of_type_ComTencentWidgetAbsListView.getHeight();
-      j = (int)this.a.jdField_a_of_type_Float - this.a.jdField_a_of_type_Int + 10;
-      if (j >= 0) {
-        break label100;
-      }
-      i = 0;
+    amiw localamiw2 = (amiw)alzw.a().a(444);
+    amiw localamiw1 = localamiw2;
+    if (localamiw2 == null) {
+      localamiw1 = a;
     }
-    for (;;)
+    return localamiw1;
+  }
+  
+  public int a()
+  {
+    return 444;
+  }
+  
+  @NonNull
+  public amiw a()
+  {
+    return a;
+  }
+  
+  @NonNull
+  public amiw a(@NonNull alzs[] paramArrayOfalzs)
+  {
+    amiw localamiw = new amiw();
+    int m = paramArrayOfalzs.length;
+    int i = 0;
+    int j = 0;
+    while (i < m)
     {
-      this.a.c = i;
-      this.a.a(this.a.c / (k - this.a.jdField_a_of_type_Int));
-      this.a.b = false;
-      return;
-      label100:
-      i = j;
-      if (this.a.jdField_a_of_type_Int + j > k) {
-        i = k - this.a.jdField_a_of_type_Int;
+      Object localObject = paramArrayOfalzs[i];
+      if (j > ((alzs)localObject).jdField_a_of_type_Int)
+      {
+        i += 1;
+      }
+      else
+      {
+        int k = ((alzs)localObject).jdField_a_of_type_Int;
+        j = k;
+        for (;;)
+        {
+          try
+          {
+            if (paramArrayOfalzs[0].jdField_a_of_type_JavaLangString == null) {
+              break;
+            }
+            localObject = new JSONObject(paramArrayOfalzs[0].jdField_a_of_type_JavaLangString);
+            localamiw.a = ((JSONObject)localObject).optBoolean("enable", false);
+            if (((JSONObject)localObject).optInt("dltc", 0) != 1) {
+              break label166;
+            }
+            bool = true;
+            localamiw.b = bool;
+            j = k;
+          }
+          catch (JSONException localJSONException)
+          {
+            urk.e("QVipDiyTemplateProcessor", "parsed : " + paramArrayOfalzs[0].jdField_a_of_type_JavaLangString + " error:" + localJSONException);
+            j = k;
+          }
+          break;
+          label166:
+          boolean bool = false;
+        }
       }
     }
+    return localamiw;
+  }
+  
+  public Class<amiw> a()
+  {
+    return amiw.class;
+  }
+  
+  @NonNull
+  public amiw b()
+  {
+    return a;
   }
 }
 

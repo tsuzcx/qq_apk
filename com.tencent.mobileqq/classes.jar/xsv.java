@@ -1,25 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import android.widget.AutoCompleteTextView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.device.file.DeviceFileHandler;
 
 public class xsv
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public xsv(LoginView paramLoginView) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public xsv(DeviceFileHandler paramDeviceFileHandler, Looper paramLooper)
   {
-    paramDialogInterface = this.a.a.getText().toString();
-    if (!TextUtils.isEmpty(paramDialogInterface)) {
-      this.a.b(paramDialogInterface);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
+    this.a.notifyUI(103, true, paramMessage.obj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     xsv
  * JD-Core Version:    0.7.0.1
  */

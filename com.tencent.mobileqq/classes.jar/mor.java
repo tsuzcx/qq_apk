@@ -1,21 +1,21 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-
-public class mor
-  implements View.OnClickListener
+class mor
 {
-  public mor(ReadinjoyTabFrame paramReadinjoyTabFrame, Context paramContext) {}
+  public String a;
+  public moc a;
+  public String b;
+  public String c;
   
-  public void onClick(View paramView)
+  public mor(String paramString1, String paramString2, String paramString3, moc parammoc)
   {
-    ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame, this.jdField_a_of_type_AndroidContentContext, paramView);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+    this.jdField_a_of_type_Moc = parammoc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     mor
  * JD-Core Version:    0.7.0.1
  */

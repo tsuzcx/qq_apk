@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:gravity="center_vertical" android:id="@id/lf4" android:paddingLeft="@dimen/aes" android:paddingTop="5.0dip" android:paddingRight="@dimen/al3" android:paddingBottom="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/ij6" style="@style/C6_Font" />
+    <RadioGroup android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/l_s" android:background="@drawable/jm" android:paddingLeft="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RadioButton android:id="@id/lf5" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:checked="true" android:button="@null" android:text="@string/iiz" android:drawableLeft="@drawable/h_" android:drawablePadding="10.0dip" android:contentDescription="@string/iiz" style="@style/am" />
+        <RadioButton android:textSize="16.0sp" android:id="@id/lf6" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:checked="false" android:button="@null" android:text="@string/ij0" android:drawableLeft="@drawable/h_" android:drawablePadding="10.0dip" android:contentDescription="@string/ij0" style="@style/am" />
+    </RadioGroup>
+    <LinearLayout android:orientation="vertical" android:id="@id/lfb" android:background="@drawable/jm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/l_q" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="35.0dip">
+            <TextView android:id="@id/lf7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ij1" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@string/ij1" style="@style/am" />
+            <TextView android:id="@id/lf9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/ij3" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/ij3" style="@style/C6_Font" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/l_r" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="35.0dip">
+            <TextView android:id="@id/lf8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ij2" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@string/ij2" style="@style/am" />
+            <TextView android:id="@id/lf_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/ij3" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/ij3" style="@style/C6_Font" />
+        </RelativeLayout>
+    </LinearLayout>
+    <TextView android:gravity="center_vertical" android:id="@id/lec" android:paddingLeft="@dimen/aes" android:paddingTop="5.0dip" android:paddingRight="@dimen/al3" android:paddingBottom="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/iix" style="@style/C6_Font" />
+    <RadioGroup android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/l_p" android:background="@drawable/jm" android:paddingLeft="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RadioButton android:id="@id/lee" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:checked="true" android:button="@null" android:text="@string/iiv" android:drawableLeft="@drawable/h_" android:drawablePadding="10.0dip" android:contentDescription="@string/iiv" style="@style/am" />
+        <RadioButton android:textSize="16.0sp" android:id="@id/lef" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:checked="false" android:button="@null" android:text="@string/iiw" android:drawableLeft="@drawable/h_" android:drawablePadding="10.0dip" android:contentDescription="@string/iiw" style="@style/am" />
+    </RadioGroup>
+</LinearLayout>

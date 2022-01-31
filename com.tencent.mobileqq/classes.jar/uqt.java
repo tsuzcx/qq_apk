@@ -1,20 +1,19 @@
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class uqt
-  implements Runnable
+class uqt
+  implements View.OnClickListener
 {
-  public uqt(MediaPlayerManager paramMediaPlayerManager) {}
+  uqt(uqq paramuqq) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    MediaPlayerManager.a(this.a).unregisterListener(MediaPlayerManager.a(this.a));
-    MediaPlayerManager.a(this.a).unregisterListener(this.a);
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uqt
  * JD-Core Version:    0.7.0.1
  */

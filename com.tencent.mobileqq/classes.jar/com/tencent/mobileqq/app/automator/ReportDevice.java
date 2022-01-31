@@ -5,8 +5,8 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import awrn;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class ReportDevice
@@ -21,7 +21,7 @@ public class ReportDevice
     {
       try
       {
-        StatisticCollector.a(BaseApplication.getContext()).d("");
+        awrn.a(BaseApplication.getContext()).d("");
         localObject = ((SharedPreferences)localObject).edit();
         ((SharedPreferences.Editor)localObject).putInt("needDoReportAppDeviceStat", 0);
         ((SharedPreferences.Editor)localObject).commit();

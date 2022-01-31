@@ -1,18 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-
-public class mod
-  implements Runnable
+public abstract interface mod
 {
-  public mod(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
-  
-  public void run()
-  {
-    ReadinjoyTabFrame.a(this.a);
-  }
+  public abstract void loaded(int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     mod
  * JD-Core Version:    0.7.0.1
  */

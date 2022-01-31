@@ -1,77 +1,94 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyVideoUtils;
-import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.NearbyPeoplePhotoUploadProcessor;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeUsersCommentsView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONArray;
 
 public class pax
-  extends TransProcessorHandler
+  extends ViewBase
 {
-  public pax(TroopMemberApiService paramTroopMemberApiService) {}
+  private static String jdField_a_of_type_JavaLangString = "UsersCommentsView";
+  private NativeUsersCommentsView jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeUsersCommentsView;
   
-  public void handleMessage(Message paramMessage)
+  public pax(VafContext paramVafContext)
   {
-    FileMsg localFileMsg;
-    Bundle localBundle;
-    if ((TroopMemberApiService.h(this.a) instanceof QQAppInterface))
-    {
-      localFileMsg = (FileMsg)paramMessage.obj;
-      localBundle = new Bundle();
-      localBundle.putInt("seq", this.a.c);
-    }
-    switch (paramMessage.what)
-    {
-    case 1004: 
-    default: 
-    case 1003: 
-      do
+    super(paramVafContext);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeUsersCommentsView = new NativeUsersCommentsView(paramVafContext.getContext());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeUsersCommentsView.setOrientation(1);
+  }
+  
+  public void clearDynamicData()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeUsersCommentsView.setComments(null);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeUsersCommentsView.setCommentAllLink(null);
+  }
+  
+  public int getComMeasuredHeight()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeUsersCommentsView.getComMeasuredHeight();
+  }
+  
+  public int getComMeasuredWidth()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeUsersCommentsView.getComMeasuredWidth();
+  }
+  
+  public View getNativeView()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeUsersCommentsView;
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeUsersCommentsView.comLayout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeUsersCommentsView.measureComponent(paramInt1, paramInt2);
+  }
+  
+  public void onParseValueFinished()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeUsersCommentsView.a();
+  }
+  
+  public boolean setAttribute(int paramInt, Object paramObject)
+  {
+    if (!super.setAttribute(paramInt, paramObject)) {
+      switch (paramInt)
       {
-        do
-        {
-          return;
-          if (localFileMsg.jdField_b_of_type_Int != 64) {
-            break;
-          }
-          this.a.jdField_a_of_type_Int = NearbyPeoplePhotoUploadProcessor.jdField_a_of_type_Int;
-        } while (this.a.jdField_a_of_type_Int == this.a.jdField_b_of_type_Int);
-        this.a.jdField_b_of_type_Int = this.a.jdField_a_of_type_Int;
-        if (QLog.isColorLevel()) {
-          QLog.i("TroopMemberApiService", 2, "mPhotoUploadHandler.handleMessage(), static avatar upload success. photoId = " + this.a.jdField_a_of_type_Int);
-        }
-        paramMessage = (NearbyCardHandler)((QQAppInterface)TroopMemberApiService.i(this.a)).a(60);
-        if (paramMessage != null) {
-          paramMessage.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, true);
-        }
-        localBundle.putInt("head_id", this.a.jdField_a_of_type_Int);
-        localBundle.putString("video_id", this.a.jdField_b_of_type_JavaLangString);
-        localBundle.putBoolean("isSuccess", true);
-        this.a.a(76, localBundle);
-        return;
-        if (localFileMsg.jdField_b_of_type_Int == 39)
-        {
-          this.a.jdField_b_of_type_JavaLangString = ((NearbyPeoplePhotoUploadProcessor)localFileMsg.a).m;
-          if (QLog.isColorLevel()) {
-            QLog.i("TroopMemberApiService", 2, "mPhotoUploadHandler.handleMessage(), big video upload success. videoId = " + this.a.jdField_b_of_type_JavaLangString);
-          }
-          NearbyVideoUtils.a((QQAppInterface)TroopMemberApiService.j(this.a), this.a.jdField_a_of_type_JavaLangString);
-          return;
-        }
-        localBundle.putBoolean("isSuccess", false);
-        this.a.a(76, localBundle);
-      } while (!QLog.isColorLevel());
-      QLog.i("TroopMemberApiService", 2, "mPhotoUploadHandler.handleMessage(), upload photo failed.");
-      return;
+      default: 
+        return false;
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopMemberApiService", 2, "mPhotoUploadHandler.handleMessage(), upload photo failed. STATUS_SEND_ERROR");
+    try
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeUsersCommentsView.setComments((JSONArray)paramObject);
+      return true;
     }
-    localBundle.putBoolean("isSuccess", false);
-    this.a.a(76, localBundle);
+    catch (Exception paramObject)
+    {
+      for (;;)
+      {
+        QLog.e(jdField_a_of_type_JavaLangString, 2, "UsersCommentsView", paramObject);
+      }
+    }
+  }
+  
+  public boolean setAttribute(int paramInt, String paramString)
+  {
+    if (!super.setAttribute(paramInt, paramString))
+    {
+      switch (paramInt)
+      {
+      default: 
+        return false;
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeUsersCommentsView.setCommentAllLink(paramString);
+    }
+    return true;
   }
 }
 

@@ -13,137 +13,141 @@ class AdapterHelper
   static final int POSITION_TYPE_INVISIBLE = 0;
   static final int POSITION_TYPE_NEW_OR_LAID_OUT = 1;
   private static final String TAG = "AHT";
-  final Callback mCallback;
+  final AdapterHelper.Callback mCallback;
   final boolean mDisableRecycler;
   private int mExistingUpdateTypes = 0;
   Runnable mOnItemProcessedCallback;
   final OpReorderer mOpReorderer;
-  final ArrayList<UpdateOp> mPendingUpdates = new ArrayList();
-  final ArrayList<UpdateOp> mPostponedList = new ArrayList();
-  private Pools.Pool<UpdateOp> mUpdateOpPool = new Pools.SimplePool(30);
+  final ArrayList<AdapterHelper.UpdateOp> mPendingUpdates = new ArrayList();
+  final ArrayList<AdapterHelper.UpdateOp> mPostponedList = new ArrayList();
+  private Pools.Pool<AdapterHelper.UpdateOp> mUpdateOpPool = new Pools.SimplePool(30);
   
-  AdapterHelper(Callback paramCallback)
+  AdapterHelper(AdapterHelper.Callback paramCallback)
   {
     this(paramCallback, false);
   }
   
-  AdapterHelper(Callback paramCallback, boolean paramBoolean)
+  AdapterHelper(AdapterHelper.Callback paramCallback, boolean paramBoolean)
   {
     this.mCallback = paramCallback;
     this.mDisableRecycler = paramBoolean;
     this.mOpReorderer = new OpReorderer(this);
   }
   
-  private void applyAdd(UpdateOp paramUpdateOp)
+  private void applyAdd(AdapterHelper.UpdateOp paramUpdateOp)
   {
     postponeAndUpdateViewHolders(paramUpdateOp);
   }
   
-  private void applyMove(UpdateOp paramUpdateOp)
+  private void applyMove(AdapterHelper.UpdateOp paramUpdateOp)
   {
     postponeAndUpdateViewHolders(paramUpdateOp);
   }
   
-  private void applyRemove(UpdateOp paramUpdateOp)
+  private void applyRemove(AdapterHelper.UpdateOp paramUpdateOp)
   {
     int i2 = paramUpdateOp.positionStart;
-    int n = 0;
-    int m = paramUpdateOp.positionStart + paramUpdateOp.itemCount;
-    int i1 = -1;
+    int k = paramUpdateOp.positionStart + paramUpdateOp.itemCount;
+    int j = -1;
     int i = paramUpdateOp.positionStart;
-    if (i < m)
-    {
-      int k = 0;
-      int j = 0;
+    int n = 0;
+    if (i < k) {
       if ((this.mCallback.findViewHolder(i) != null) || (canFindInPreLayout(i)))
       {
-        if (i1 == 0)
-        {
-          dispatchAndUpdateViewHolders(obtainUpdateOp(2, i2, n, null));
-          j = 1;
+        if (j != 0) {
+          break label216;
         }
-        i1 = 1;
-        k = j;
-        j = i1;
-        label90:
-        if (k == 0) {
-          break label152;
-        }
-        i -= n;
-        m -= n;
+        dispatchAndUpdateViewHolders(obtainUpdateOp(2, i2, n, null));
       }
-      label152:
-      for (k = 1;; k = n + 1)
+    }
+    label211:
+    label216:
+    for (int m = 1;; m = 0)
+    {
+      j = 1;
+      if (m != 0)
       {
-        i += 1;
+        m = i - n;
+        i = k - n;
+        k = 1;
+        label97:
         n = k;
-        i1 = j;
+        k = i;
+        i = m + 1;
         break;
-        if (i1 == 1)
-        {
-          postponeAndUpdateViewHolders(obtainUpdateOp(2, i2, n, null));
-          k = 1;
+        if (j != 1) {
+          break label211;
         }
-        j = 0;
-        break label90;
+        postponeAndUpdateViewHolders(obtainUpdateOp(2, i2, n, null));
+      }
+      for (j = 1;; j = 0)
+      {
+        int i1 = 0;
+        m = j;
+        j = i1;
+        break;
+        n += 1;
+        m = i;
+        i = k;
+        k = n;
+        break label97;
+        AdapterHelper.UpdateOp localUpdateOp = paramUpdateOp;
+        if (n != paramUpdateOp.itemCount)
+        {
+          recycleUpdateOp(paramUpdateOp);
+          localUpdateOp = obtainUpdateOp(2, i2, n, null);
+        }
+        if (j == 0)
+        {
+          dispatchAndUpdateViewHolders(localUpdateOp);
+          return;
+        }
+        postponeAndUpdateViewHolders(localUpdateOp);
+        return;
       }
     }
-    UpdateOp localUpdateOp = paramUpdateOp;
-    if (n != paramUpdateOp.itemCount)
-    {
-      recycleUpdateOp(paramUpdateOp);
-      localUpdateOp = obtainUpdateOp(2, i2, n, null);
-    }
-    if (i1 == 0)
-    {
-      dispatchAndUpdateViewHolders(localUpdateOp);
-      return;
-    }
-    postponeAndUpdateViewHolders(localUpdateOp);
   }
   
-  private void applyUpdate(UpdateOp paramUpdateOp)
+  private void applyUpdate(AdapterHelper.UpdateOp paramUpdateOp)
   {
     int k = paramUpdateOp.positionStart;
-    int j = 0;
-    int i3 = paramUpdateOp.positionStart;
-    int i4 = paramUpdateOp.itemCount;
-    int i2 = -1;
+    int i2 = paramUpdateOp.positionStart;
+    int i3 = paramUpdateOp.itemCount;
     int i = paramUpdateOp.positionStart;
-    if (i < i3 + i4)
+    int i1 = -1;
+    int j = 0;
+    if (i < i2 + i3)
     {
-      int n;
       int m;
+      int n;
       if ((this.mCallback.findViewHolder(i) != null) || (canFindInPreLayout(i)))
       {
-        n = j;
-        int i1 = k;
-        if (i2 == 0)
+        m = j;
+        n = k;
+        if (i1 == 0)
         {
           dispatchAndUpdateViewHolders(obtainUpdateOp(4, k, j, paramUpdateOp.payload));
-          n = 0;
-          i1 = i;
+          m = 0;
+          n = i;
         }
-        m = 1;
-        k = i1;
+        k = n;
       }
-      for (;;)
+      for (j = 1;; j = 0)
       {
-        j = n + 1;
         i += 1;
-        i2 = m;
+        m += 1;
+        i1 = j;
+        j = m;
         break;
-        n = j;
-        m = k;
-        if (i2 == 1)
+        m = j;
+        n = k;
+        if (i1 == 1)
         {
           postponeAndUpdateViewHolders(obtainUpdateOp(4, k, j, paramUpdateOp.payload));
-          n = 0;
-          m = i;
+          m = 0;
+          n = i;
         }
-        j = 0;
-        k = m;
-        m = j;
+        k = n;
       }
     }
     Object localObject = paramUpdateOp;
@@ -153,12 +157,12 @@ class AdapterHelper
       recycleUpdateOp(paramUpdateOp);
       localObject = obtainUpdateOp(4, k, j, localObject);
     }
-    if (i2 == 0)
+    if (i1 == 0)
     {
-      dispatchAndUpdateViewHolders((UpdateOp)localObject);
+      dispatchAndUpdateViewHolders((AdapterHelper.UpdateOp)localObject);
       return;
     }
-    postponeAndUpdateViewHolders((UpdateOp)localObject);
+    postponeAndUpdateViewHolders((AdapterHelper.UpdateOp)localObject);
   }
   
   private boolean canFindInPreLayout(int paramInt)
@@ -167,7 +171,7 @@ class AdapterHelper
     int i = 0;
     while (i < k)
     {
-      UpdateOp localUpdateOp = (UpdateOp)this.mPostponedList.get(i);
+      AdapterHelper.UpdateOp localUpdateOp = (AdapterHelper.UpdateOp)this.mPostponedList.get(i);
       if (localUpdateOp.cmd == 8)
       {
         if (findPositionOffset(localUpdateOp.itemCount, i + 1) == paramInt) {
@@ -179,34 +183,30 @@ class AdapterHelper
         int m = localUpdateOp.positionStart;
         int n = localUpdateOp.itemCount;
         int j = localUpdateOp.positionStart;
-        for (;;)
+        while (j < m + n)
         {
-          if (j >= m + n) {
-            break label115;
-          }
           if (findPositionOffset(j, i + 1) == paramInt) {
-            break;
+            return true;
           }
           j += 1;
         }
       }
-      label115:
       i += 1;
     }
     return false;
   }
   
-  private void dispatchAndUpdateViewHolders(UpdateOp paramUpdateOp)
+  private void dispatchAndUpdateViewHolders(AdapterHelper.UpdateOp paramUpdateOp)
   {
     if ((paramUpdateOp.cmd == 1) || (paramUpdateOp.cmd == 8)) {
       throw new IllegalArgumentException("should not dispatch add or move for pre layout");
     }
     int i1 = updatePositionWithPostponed(paramUpdateOp.positionStart, paramUpdateOp.cmd);
-    int n = 1;
-    int i = paramUpdateOp.positionStart;
+    int j = paramUpdateOp.positionStart;
     int k;
+    int n;
     int m;
-    label113:
+    label112:
     int i2;
     switch (paramUpdateOp.cmd)
     {
@@ -215,61 +215,67 @@ class AdapterHelper
       throw new IllegalArgumentException("op should be remove or update." + paramUpdateOp);
     case 4: 
       k = 1;
+      n = 1;
       m = 1;
       if (m >= paramUpdateOp.itemCount) {
-        break label307;
+        break label298;
       }
       i2 = updatePositionWithPostponed(paramUpdateOp.positionStart + k * m, paramUpdateOp.cmd);
-      int i3 = 0;
-      j = i3;
       switch (paramUpdateOp.cmd)
       {
-      default: 
-        j = i3;
       case 3: 
-        if (j == 0) {}
+      default: 
+        i = 0;
+        label174:
+        if (i == 0) {}
         break;
       }
       break;
     }
-    for (int j = n + 1;; j = n)
+    for (int i = n + 1;; i = n)
     {
       m += 1;
-      n = j;
-      break label113;
+      n = i;
+      break label112;
       k = 0;
       break;
-      if (i2 == i1 + 1) {}
-      for (j = 1;; j = 0) {
-        break;
+      if (i2 == i1 + 1)
+      {
+        i = 1;
+        break label174;
       }
-      if (i2 == i1) {}
-      for (j = 1;; j = 0) {
-        break;
+      i = 0;
+      break label174;
+      if (i2 == i1)
+      {
+        i = 1;
+        break label174;
       }
+      i = 0;
+      break label174;
       localObject = obtainUpdateOp(paramUpdateOp.cmd, i1, n, paramUpdateOp.payload);
-      dispatchFirstPassAndUpdateViewHolders((UpdateOp)localObject, i);
-      recycleUpdateOp((UpdateOp)localObject);
-      j = i;
-      if (paramUpdateOp.cmd == 4) {
-        j = i + n;
-      }
-      i1 = i2;
-      n = 1;
+      dispatchFirstPassAndUpdateViewHolders((AdapterHelper.UpdateOp)localObject, j);
+      recycleUpdateOp((AdapterHelper.UpdateOp)localObject);
       i = j;
+      if (paramUpdateOp.cmd == 4) {
+        i = j + n;
+      }
+      n = 1;
+      i1 = i2;
+      j = i;
     }
-    label307:
+    label298:
     Object localObject = paramUpdateOp.payload;
     recycleUpdateOp(paramUpdateOp);
     if (n > 0)
     {
       paramUpdateOp = obtainUpdateOp(paramUpdateOp.cmd, i1, n, localObject);
-      dispatchFirstPassAndUpdateViewHolders(paramUpdateOp, i);
+      dispatchFirstPassAndUpdateViewHolders(paramUpdateOp, j);
       recycleUpdateOp(paramUpdateOp);
     }
   }
   
-  private void postponeAndUpdateViewHolders(UpdateOp paramUpdateOp)
+  private void postponeAndUpdateViewHolders(AdapterHelper.UpdateOp paramUpdateOp)
   {
     this.mPostponedList.add(paramUpdateOp);
     switch (paramUpdateOp.cmd)
@@ -295,21 +301,21 @@ class AdapterHelper
   
   private int updatePositionWithPostponed(int paramInt1, int paramInt2)
   {
-    int i = this.mPostponedList.size() - 1;
-    int j = paramInt1;
-    UpdateOp localUpdateOp;
-    if (i >= 0)
+    int j = this.mPostponedList.size() - 1;
+    AdapterHelper.UpdateOp localUpdateOp;
+    if (j >= 0)
     {
-      localUpdateOp = (UpdateOp)this.mPostponedList.get(i);
+      localUpdateOp = (AdapterHelper.UpdateOp)this.mPostponedList.get(j);
       int k;
+      int i;
       if (localUpdateOp.cmd == 8) {
         if (localUpdateOp.positionStart < localUpdateOp.itemCount)
         {
           k = localUpdateOp.positionStart;
-          paramInt1 = localUpdateOp.itemCount;
+          i = localUpdateOp.itemCount;
           label66:
-          if ((j < k) || (j > paramInt1)) {
-            break label202;
+          if ((paramInt1 < k) || (paramInt1 > i)) {
+            break label201;
           }
           if (k != localUpdateOp.positionStart) {
             break label157;
@@ -318,113 +324,110 @@ class AdapterHelper
             break label137;
           }
           localUpdateOp.itemCount += 1;
-          label106:
-          paramInt1 = j + 1;
+          label104:
+          paramInt1 += 1;
+          label108:
+          i = paramInt1;
         }
       }
       for (;;)
       {
-        i -= 1;
-        j = paramInt1;
+        j -= 1;
+        paramInt1 = i;
         break;
         k = localUpdateOp.itemCount;
-        paramInt1 = localUpdateOp.positionStart;
+        i = localUpdateOp.positionStart;
         break label66;
         label137:
         if (paramInt2 != 2) {
-          break label106;
+          break label104;
         }
         localUpdateOp.itemCount -= 1;
-        break label106;
+        break label104;
         label157:
         if (paramInt2 == 1) {
           localUpdateOp.positionStart += 1;
         }
         for (;;)
         {
-          paramInt1 = j - 1;
+          paramInt1 -= 1;
           break;
           if (paramInt2 == 2) {
             localUpdateOp.positionStart -= 1;
           }
         }
-        label202:
-        paramInt1 = j;
-        if (j < localUpdateOp.positionStart) {
+        label201:
+        if (paramInt1 < localUpdateOp.positionStart)
+        {
           if (paramInt2 == 1)
           {
             localUpdateOp.positionStart += 1;
             localUpdateOp.itemCount += 1;
-            paramInt1 = j;
+            break label108;
+          }
+          if (paramInt2 == 2)
+          {
+            localUpdateOp.positionStart -= 1;
+            localUpdateOp.itemCount -= 1;
+          }
+        }
+        break label108;
+        if (localUpdateOp.positionStart <= paramInt1)
+        {
+          if (localUpdateOp.cmd == 1)
+          {
+            i = paramInt1 - localUpdateOp.itemCount;
           }
           else
           {
-            paramInt1 = j;
-            if (paramInt2 == 2)
-            {
-              localUpdateOp.positionStart -= 1;
-              localUpdateOp.itemCount -= 1;
-              paramInt1 = j;
-              continue;
-              if (localUpdateOp.positionStart <= j)
-              {
-                if (localUpdateOp.cmd == 1)
-                {
-                  paramInt1 = j - localUpdateOp.itemCount;
-                }
-                else
-                {
-                  paramInt1 = j;
-                  if (localUpdateOp.cmd == 2) {
-                    paramInt1 = j + localUpdateOp.itemCount;
-                  }
-                }
-              }
-              else if (paramInt2 == 1)
-              {
-                localUpdateOp.positionStart += 1;
-                paramInt1 = j;
-              }
-              else
-              {
-                paramInt1 = j;
-                if (paramInt2 == 2)
-                {
-                  localUpdateOp.positionStart -= 1;
-                  paramInt1 = j;
-                }
-              }
+            i = paramInt1;
+            if (localUpdateOp.cmd == 2) {
+              i = paramInt1 + localUpdateOp.itemCount;
             }
+          }
+        }
+        else if (paramInt2 == 1)
+        {
+          localUpdateOp.positionStart += 1;
+          i = paramInt1;
+        }
+        else
+        {
+          i = paramInt1;
+          if (paramInt2 == 2)
+          {
+            localUpdateOp.positionStart -= 1;
+            i = paramInt1;
           }
         }
       }
     }
-    paramInt1 = this.mPostponedList.size() - 1;
-    if (paramInt1 >= 0)
+    paramInt2 = this.mPostponedList.size() - 1;
+    if (paramInt2 >= 0)
     {
-      localUpdateOp = (UpdateOp)this.mPostponedList.get(paramInt1);
+      localUpdateOp = (AdapterHelper.UpdateOp)this.mPostponedList.get(paramInt2);
       if (localUpdateOp.cmd == 8) {
         if ((localUpdateOp.itemCount == localUpdateOp.positionStart) || (localUpdateOp.itemCount < 0))
         {
-          this.mPostponedList.remove(paramInt1);
+          this.mPostponedList.remove(paramInt2);
           recycleUpdateOp(localUpdateOp);
         }
       }
       for (;;)
       {
-        paramInt1 -= 1;
+        paramInt2 -= 1;
         break;
         if (localUpdateOp.itemCount <= 0)
         {
-          this.mPostponedList.remove(paramInt1);
+          this.mPostponedList.remove(paramInt2);
           recycleUpdateOp(localUpdateOp);
         }
       }
     }
-    return j;
+    return paramInt1;
   }
   
-  AdapterHelper addUpdateOp(UpdateOp... paramVarArgs)
+  AdapterHelper addUpdateOp(AdapterHelper.UpdateOp... paramVarArgs)
   {
     Collections.addAll(this.mPendingUpdates, paramVarArgs);
     return this;
@@ -436,10 +439,10 @@ class AdapterHelper
     int k = 0;
     int i = paramInt;
     paramInt = i;
-    UpdateOp localUpdateOp;
+    AdapterHelper.UpdateOp localUpdateOp;
     if (k < m)
     {
-      localUpdateOp = (UpdateOp)this.mPendingUpdates.get(k);
+      localUpdateOp = (AdapterHelper.UpdateOp)this.mPendingUpdates.get(k);
       switch (localUpdateOp.cmd)
       {
       default: 
@@ -492,7 +495,7 @@ class AdapterHelper
     int i = 0;
     while (i < j)
     {
-      this.mCallback.onDispatchSecondPass((UpdateOp)this.mPostponedList.get(i));
+      this.mCallback.onDispatchSecondPass((AdapterHelper.UpdateOp)this.mPostponedList.get(i));
       i += 1;
     }
     recycleUpdateOpsAndClearList(this.mPostponedList);
@@ -506,7 +509,7 @@ class AdapterHelper
     int i = 0;
     if (i < j)
     {
-      UpdateOp localUpdateOp = (UpdateOp)this.mPendingUpdates.get(i);
+      AdapterHelper.UpdateOp localUpdateOp = (AdapterHelper.UpdateOp)this.mPendingUpdates.get(i);
       switch (localUpdateOp.cmd)
       {
       }
@@ -534,7 +537,7 @@ class AdapterHelper
     this.mExistingUpdateTypes = 0;
   }
   
-  void dispatchFirstPassAndUpdateViewHolders(UpdateOp paramUpdateOp, int paramInt)
+  void dispatchFirstPassAndUpdateViewHolders(AdapterHelper.UpdateOp paramUpdateOp, int paramInt)
   {
     this.mCallback.onDispatchFirstPass(paramUpdateOp);
     switch (paramUpdateOp.cmd)
@@ -560,10 +563,10 @@ class AdapterHelper
     int j = paramInt2;
     paramInt2 = paramInt1;
     paramInt1 = paramInt2;
-    UpdateOp localUpdateOp;
+    AdapterHelper.UpdateOp localUpdateOp;
     if (j < k)
     {
-      localUpdateOp = (UpdateOp)this.mPostponedList.get(j);
+      localUpdateOp = (AdapterHelper.UpdateOp)this.mPostponedList.get(j);
       if (localUpdateOp.cmd == 8) {
         if (localUpdateOp.positionStart == paramInt2) {
           paramInt1 = localUpdateOp.itemCount;
@@ -622,11 +625,11 @@ class AdapterHelper
     return (!this.mPostponedList.isEmpty()) && (!this.mPendingUpdates.isEmpty());
   }
   
-  public UpdateOp obtainUpdateOp(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
+  public AdapterHelper.UpdateOp obtainUpdateOp(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
   {
-    UpdateOp localUpdateOp = (UpdateOp)this.mUpdateOpPool.acquire();
+    AdapterHelper.UpdateOp localUpdateOp = (AdapterHelper.UpdateOp)this.mUpdateOpPool.acquire();
     if (localUpdateOp == null) {
-      return new UpdateOp(paramInt1, paramInt2, paramInt3, paramObject);
+      return new AdapterHelper.UpdateOp(paramInt1, paramInt2, paramInt3, paramObject);
     }
     localUpdateOp.cmd = paramInt1;
     localUpdateOp.positionStart = paramInt2;
@@ -682,7 +685,7 @@ class AdapterHelper
     int i = 0;
     if (i < j)
     {
-      UpdateOp localUpdateOp = (UpdateOp)this.mPendingUpdates.get(i);
+      AdapterHelper.UpdateOp localUpdateOp = (AdapterHelper.UpdateOp)this.mPendingUpdates.get(i);
       switch (localUpdateOp.cmd)
       {
       }
@@ -705,7 +708,7 @@ class AdapterHelper
     this.mPendingUpdates.clear();
   }
   
-  public void recycleUpdateOp(UpdateOp paramUpdateOp)
+  public void recycleUpdateOp(AdapterHelper.UpdateOp paramUpdateOp)
   {
     if (!this.mDisableRecycler)
     {
@@ -714,13 +717,13 @@ class AdapterHelper
     }
   }
   
-  void recycleUpdateOpsAndClearList(List<UpdateOp> paramList)
+  void recycleUpdateOpsAndClearList(List<AdapterHelper.UpdateOp> paramList)
   {
     int j = paramList.size();
     int i = 0;
     while (i < j)
     {
-      recycleUpdateOp((UpdateOp)paramList.get(i));
+      recycleUpdateOp((AdapterHelper.UpdateOp)paramList.get(i));
       i += 1;
     }
     paramList.clear();
@@ -731,109 +734,6 @@ class AdapterHelper
     recycleUpdateOpsAndClearList(this.mPendingUpdates);
     recycleUpdateOpsAndClearList(this.mPostponedList);
     this.mExistingUpdateTypes = 0;
-  }
-  
-  static abstract interface Callback
-  {
-    public abstract RecyclerView.ViewHolder findViewHolder(int paramInt);
-    
-    public abstract void markViewHoldersUpdated(int paramInt1, int paramInt2, Object paramObject);
-    
-    public abstract void offsetPositionsForAdd(int paramInt1, int paramInt2);
-    
-    public abstract void offsetPositionsForMove(int paramInt1, int paramInt2);
-    
-    public abstract void offsetPositionsForRemovingInvisible(int paramInt1, int paramInt2);
-    
-    public abstract void offsetPositionsForRemovingLaidOutOrNewView(int paramInt1, int paramInt2);
-    
-    public abstract void onDispatchFirstPass(AdapterHelper.UpdateOp paramUpdateOp);
-    
-    public abstract void onDispatchSecondPass(AdapterHelper.UpdateOp paramUpdateOp);
-  }
-  
-  static class UpdateOp
-  {
-    static final int ADD = 1;
-    static final int MOVE = 8;
-    static final int POOL_SIZE = 30;
-    static final int REMOVE = 2;
-    static final int UPDATE = 4;
-    int cmd;
-    int itemCount;
-    Object payload;
-    int positionStart;
-    
-    UpdateOp(int paramInt1, int paramInt2, int paramInt3, Object paramObject)
-    {
-      this.cmd = paramInt1;
-      this.positionStart = paramInt2;
-      this.itemCount = paramInt3;
-      this.payload = paramObject;
-    }
-    
-    String cmdToString()
-    {
-      switch (this.cmd)
-      {
-      case 3: 
-      case 5: 
-      case 6: 
-      case 7: 
-      default: 
-        return "??";
-      case 1: 
-        return "add";
-      case 2: 
-        return "rm";
-      case 4: 
-        return "up";
-      }
-      return "mv";
-    }
-    
-    public boolean equals(Object paramObject)
-    {
-      if (this == paramObject) {}
-      do
-      {
-        do
-        {
-          do
-          {
-            return true;
-            if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-              return false;
-            }
-            paramObject = (UpdateOp)paramObject;
-            if (this.cmd != paramObject.cmd) {
-              return false;
-            }
-          } while ((this.cmd == 8) && (Math.abs(this.itemCount - this.positionStart) == 1) && (this.itemCount == paramObject.positionStart) && (this.positionStart == paramObject.itemCount));
-          if (this.itemCount != paramObject.itemCount) {
-            return false;
-          }
-          if (this.positionStart != paramObject.positionStart) {
-            return false;
-          }
-          if (this.payload == null) {
-            break;
-          }
-        } while (this.payload.equals(paramObject.payload));
-        return false;
-      } while (paramObject.payload == null);
-      return false;
-    }
-    
-    public int hashCode()
-    {
-      return (this.cmd * 31 + this.positionStart) * 31 + this.itemCount;
-    }
-    
-    public String toString()
-    {
-      return Integer.toHexString(System.identityHashCode(this)) + "[" + cmdToString() + ",s:" + this.positionStart + "c:" + this.itemCount + ",p:" + this.payload + "]";
-    }
   }
 }
 

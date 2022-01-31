@@ -8,10 +8,10 @@ import mqq.app.MobileQQ;
 public class WebP
   extends Step
 {
-  protected boolean a()
+  protected boolean doStep()
   {
     if ((!WebpSoLoader.a()) && (QLog.isColorLevel())) {
-      QLog.d("WEBP", 2, String.format("Can't load libwebp support library when start %s process!", new Object[] { BaseApplicationImpl.getMobileQQ().getProcessName() }));
+      QLog.d("WEBP", 2, String.format("Can't load libwebp support library when start %s process!", new Object[] { BaseApplicationImpl.getMobileQQ().getQQProcessName() }));
     }
     return true;
   }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0dip" android:textColor="@color/gg" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/k6t" android:layout_width="68.0dip" android:layout_height="36.0dip" android:text="@string/pve" />
+    <View android:background="@color/gg" android:layout_width="0.5dip" android:layout_height="36.0dip" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/gg" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/k5w" android:layout_width="68.0dip" android:layout_height="36.0dip" android:text="Biu" />
+    <View android:background="@color/gg" android:layout_width="0.5dip" android:layout_height="36.0dip" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/gg" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/k7b" android:layout_width="67.0dip" android:layout_height="36.0dip" android:text="@string/pun" />
+    <View android:background="@color/gg" android:layout_width="0.5dip" android:layout_height="36.0dip" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/gg" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/ka7" android:layout_width="67.0dip" android:layout_height="36.0dip" android:text="" />
+</LinearLayout>

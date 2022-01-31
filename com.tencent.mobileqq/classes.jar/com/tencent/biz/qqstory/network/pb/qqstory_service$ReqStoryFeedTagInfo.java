@@ -9,11 +9,11 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_service$ReqStoryFeedTagInfo
-  extends MessageMicro
+  extends MessageMicro<ReqStoryFeedTagInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field date = PBField.initUInt32(0);
-  public final PBRepeatField feed_id_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> feed_id_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
   
   static
   {
@@ -23,7 +23,7 @@ public final class qqstory_service$ReqStoryFeedTagInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryFeedTagInfo
  * JD-Core Version:    0.7.0.1
  */

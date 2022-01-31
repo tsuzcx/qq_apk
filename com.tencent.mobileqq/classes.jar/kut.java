@@ -1,23 +1,26 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.av.app.VideoAppInterface;
 
-public class kut
-  implements View.OnClickListener
+class kut
+  extends BroadcastReceiver
 {
-  public kut(AccountDetailActivity paramAccountDetailActivity, String paramString) {}
+  kut(kus paramkus) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramView = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.startActivity(paramView);
+    int i = paramIntent.getIntExtra("level", 0);
+    if ((kus.a(this.a) != null) && (kus.a(this.a).a != null))
+    {
+      ((kyl)kus.a(this.a).a(4)).a(i);
+      kyj.a(18, i);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     kut
  * JD-Core Version:    0.7.0.1
  */

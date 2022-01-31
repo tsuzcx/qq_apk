@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.shortvideo.dancemachine.filter;
 
+import com.tencent.mobileqq.shortvideo.dancemachine.GLLittleBoy;
 import com.tencent.mobileqq.shortvideo.filter.QQBaseFilter;
 import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
 import java.util.TreeSet;
@@ -7,33 +8,33 @@ import java.util.TreeSet;
 public class DanceBaseFilter
   extends QQBaseFilter
 {
-  public DanceManagerFilter a = null;
+  protected DanceManagerFilter mDanceManager = null;
   
   public DanceBaseFilter(int paramInt, QQFilterRenderManager paramQQFilterRenderManager)
   {
     super(paramInt, paramQQFilterRenderManager);
   }
   
-  public TreeSet a()
+  public TreeSet<GLLittleBoy> getCurrentVisible()
   {
     return null;
   }
   
-  public void a(int paramInt1, int paramInt2) {}
-  
-  final void a(DanceManagerFilter paramDanceManagerFilter)
-  {
-    this.a = paramDanceManagerFilter;
-  }
-  
-  public boolean a()
+  public boolean getFilterParam()
   {
     return false;
   }
   
-  public void b() {}
+  public void onCloseClicked() {}
   
-  public void c() {}
+  public void rollbackStatusCallOnInitFilter() {}
+  
+  final void setDanceManager(DanceManagerFilter paramDanceManagerFilter)
+  {
+    this.mDanceManager = paramDanceManagerFilter;
+  }
+  
+  public void setViewportSize(int paramInt1, int paramInt2) {}
 }
 
 

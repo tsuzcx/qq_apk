@@ -1,58 +1,43 @@
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
-import cooperation.qzone.util.AlbumLibDownloaderUtil;
-import cooperation.qzone.util.FileUtils;
-import cooperation.qzone.util.QZLog;
-import java.io.File;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class anim
-  implements ModuleDownloadListener
+  implements arok<Integer>
 {
-  public anim(AlbumLibDownloaderUtil paramAlbumLibDownloaderUtil) {}
+  public anim(EmoticonMainPanel paramEmoticonMainPanel, long paramLong) {}
   
-  public void onDownloadCanceled(String paramString) {}
-  
-  public void onDownloadFailed(String paramString) {}
-  
-  public void onDownloadProgress(String paramString, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString)
+  public void a(Integer paramInteger)
   {
-    if (!paramString.equals("libandroidndkbeauty.so")) {}
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.c(paramInteger.intValue());
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.d(paramInteger.intValue());
+    if ((!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.c) && (!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.d)) {
+      EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.d = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonMainPanel", 2, "selectIndex = " + paramInteger + "[Performance] initEmoticonView duration:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    }
+    if (!this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_e_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.f();
+    }
+    paramInteger = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_JavaUtilList;
+    if (paramInteger.size() > EmoticonMainPanel.jdField_e_of_type_Int) {
+      if (((ankb)paramInteger.get(EmoticonMainPanel.jdField_e_of_type_Int)).a != 8) {
+        EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.h);
+      }
+    }
     for (;;)
     {
+      EmoticonMainPanel.b(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
       return;
-      String str = AlbumLibDownloaderUtil.a.getPath();
-      paramString = new File(QzoneModuleManager.getInstance().getModuleFilePath(paramString));
-      if (paramString.exists()) {}
-      try
-      {
-        AlbumLibDownloaderUtil.a(paramString, new File(AlbumLibDownloaderUtil.a.getPath() + "/libandroidndkbeauty.zip"));
-        paramString = new File(str);
-        if (!paramString.exists()) {
-          paramString.mkdirs();
-        }
-        if (this.a.a(AlbumLibDownloaderUtil.b, false)) {
-          continue;
-        }
-        QZLog.e("AlbumLibDownloaderUtil", 1, new Object[] { "unzip beauty so" });
-        FileUtils.b(new File(AlbumLibDownloaderUtil.a.getPath() + "/libandroidndkbeauty.zip"), paramString);
-        QZLog.e("AlbumLibDownloaderUtil", 1, new Object[] { "unzip beauty so finish" });
-        return;
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          paramString.printStackTrace();
-        }
-      }
+      EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.h);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anim
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.fragment.CommonTabFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.aio.panel.PEPanel;
+import com.tencent.widget.ListView;
+import com.tencent.widget.XPanelContainer;
 
 public class adux
-  implements View.OnClickListener
+  implements Handler.Callback
 {
-  public adux(CommonTabFragment paramCommonTabFragment) {}
+  public adux(PEPanel paramPEPanel) {}
   
-  public void onClick(View paramView)
+  public boolean handleMessage(Message paramMessage)
   {
-    if ((this.a.a == null) || (this.a.a.a == null)) {}
-    do
+    switch (paramMessage.what)
     {
-      return;
-      paramView = this.a.a.a.a();
-    } while (paramView == null);
-    paramView.a(this.a.a.a.getUrl(), 8589934606L, null);
+    default: 
+      return false;
+    }
+    PEPanel.a(this.a).setVisibility(0);
+    paramMessage = new TranslateAnimation(0.0F, 0.0F, XPanelContainer.a, 0.0F);
+    paramMessage.setDuration(200L);
+    PEPanel.a(this.a).startAnimation(paramMessage);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adux
  * JD-Core Version:    0.7.0.1
  */

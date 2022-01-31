@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class mobileqq_mp$GetPublicAccountDetailInfoRequest
-  extends MessageMicro
+  extends MessageMicro<GetPublicAccountDetailInfoRequest>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42 }, new String[] { "seqno", "uin", "luin", "version", "versionInfo" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), "" }, GetPublicAccountDetailInfoRequest.class);
   public final PBUInt64Field luin = PBField.initUInt64(0L);

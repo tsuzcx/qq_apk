@@ -1,15 +1,13 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.qqstory.storyHome.tag.TagFlowLayout;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.RejectedExecutionHandler;
+import java.util.concurrent.ThreadPoolExecutor;
 
 public class ogw
-  extends DataSetObserver
+  implements RejectedExecutionHandler
 {
-  public ogw(TagFlowLayout paramTagFlowLayout) {}
-  
-  public void onChanged()
+  public void rejectedExecution(Runnable paramRunnable, ThreadPoolExecutor paramThreadPoolExecutor)
   {
-    super.onChanged();
-    TagFlowLayout.a(this.a);
+    QLog.e("MonitorTimeExecutor", 1, "[rejectedExecution] r: " + paramRunnable + " executor: " + paramThreadPoolExecutor);
   }
 }
 

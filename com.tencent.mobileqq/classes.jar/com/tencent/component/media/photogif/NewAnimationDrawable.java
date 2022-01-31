@@ -32,58 +32,117 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
-import pnn;
-import pno;
-import pnp;
-import pnq;
 
 public class NewAnimationDrawable
   extends Drawable
   implements Animatable
 {
-  private static AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(0L);
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Handler jdField_a_of_type_AndroidOsHandler;
-  private BitmapReference jdField_a_of_type_ComTencentComponentMediaImageBitmapReference;
-  private ImageLoader.Options jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options;
-  private LruCache jdField_a_of_type_ComTencentComponentMediaUtilsLruCache;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new pnp(this, null);
-  private Map jdField_a_of_type_JavaUtilMap = new HashMap();
-  private volatile boolean jdField_a_of_type_Boolean;
-  private byte[] jdField_a_of_type_ArrayOfByte = new byte[16384];
-  private int jdField_b_of_type_Int = -1;
-  private BitmapReference jdField_b_of_type_ComTencentComponentMediaImageBitmapReference;
-  private Map jdField_b_of_type_JavaUtilMap = new HashMap();
-  private int c = 0;
-  private int d = 0;
-  private int e;
-  private int f;
-  private int g;
+  private static final String TAG = "NewAnimationDrawable";
+  private static AtomicLong sMaxCacheSizeForAll = new AtomicLong(0L);
+  private byte[] inTempStorage = new byte[16384];
+  private BitmapReference mCurBitmapRef;
+  private int mCurFrameIndex = -1;
+  private int mCurPlayCount = 0;
+  private Runnable mDecodeTask = new NewAnimationDrawable.DecodeTask(this, null);
+  private Drawable mDefaultFrame;
+  private long mDelayTime;
+  private final Rect mDstRect = new Rect();
+  private int mFrameCounts;
+  private Handler mInvalidHandler;
+  private volatile boolean mIsRunning;
+  private LruCache<String, BitmapReference> mLruCache;
+  private BitmapReference mNextBitmapRef;
+  private ImageLoader.Options mOptions;
+  private Map<String, BitmapFactory.Options> mOptionsMap = new HashMap();
+  private final Paint mPaint = new Paint();
+  private int mRepeatCount = 0;
+  private int mReqHeight;
+  private int mReqWidth;
+  private int mTotalSize;
+  private Map<String, WeakReference<NewAnimationDrawable.FrameRef>> mWeakRefCache = new HashMap();
   
   static
   {
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set((int)(ImageManager.getInstance().capacity() * ImageManagerEnv.g().getAnimationDrawableCacheRatio()));
-    ImageManagerEnv.getLogger().w("NewAnimationDrawable", new Object[] { "cache size:" + jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get() });
+    sMaxCacheSizeForAll.set((int)(ImageManager.getInstance().capacity() * ImageManagerEnv.g().getAnimationDrawableCacheRatio()));
+    ImageManagerEnv.getLogger().w("NewAnimationDrawable", new Object[] { "cache size:" + sMaxCacheSizeForAll.get() });
   }
   
   public NewAnimationDrawable(ImageLoader.Options paramOptions)
   {
-    this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options = ImageLoader.Options.copy(paramOptions);
-    this.jdField_a_of_type_AndroidOsHandler = new pnn(this, Looper.getMainLooper());
-    setReqWidth(this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options.clipWidth);
-    setReqHeight(this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options.clipHeight);
-    setDelayTime(this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options.photoDelayTimeInMs);
-    setFrameCounts(this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options.photoList.size());
-    this.g = getByteCount();
-    jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.addAndGet(-this.g);
-    this.jdField_a_of_type_ComTencentComponentMediaUtilsLruCache = new pno(this, getByteCount());
+    this.mOptions = ImageLoader.Options.copy(paramOptions);
+    this.mInvalidHandler = new NewAnimationDrawable.1(this, Looper.getMainLooper());
+    setReqWidth(this.mOptions.clipWidth);
+    setReqHeight(this.mOptions.clipHeight);
+    setDelayTime(this.mOptions.photoDelayTimeInMs);
+    setFrameCounts(this.mOptions.photoList.size());
+    this.mTotalSize = getByteCount();
+    sMaxCacheSizeForAll.addAndGet(-this.mTotalSize);
+    this.mLruCache = new NewAnimationDrawable.2(this, getByteCount());
   }
   
-  private static int a(Bitmap.Config paramConfig)
+  private void clearCache()
+  {
+    ImageManagerEnv.getLogger().d("NewAnimationDrawable", new Object[] { "try clear cache" });
+    this.mLruCache.evictAll();
+  }
+  
+  public static int computeSampleSize(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
+  {
+    ImageLoader.Options localOptions = ImageLoader.Options.obtain();
+    localOptions.clipWidth = paramInt1;
+    localOptions.clipHeight = paramInt2;
+    localOptions.preferQuality = false;
+    paramInt1 = ImageOptionSampleSize.computeSampleSize(localOptions, paramOptions.outWidth, paramOptions.outHeight);
+    localOptions.recycle();
+    return paramInt1;
+  }
+  
+  @TargetApi(11)
+  private BitmapReference decodeFrame(String paramString)
+  {
+    try
+    {
+      Object localObject1 = ImageManager.getInstance().getDecoder();
+      if (!TextUtils.isEmpty(paramString))
+      {
+        Object localObject2 = getBitmapOptions(paramString);
+        if (Build.VERSION.SDK_INT >= 11) {
+          ((BitmapFactory.Options)localObject2).inBitmap = null;
+        }
+        localObject2 = ((IDecoder)localObject1).decodeImage(new File(paramString), (BitmapFactory.Options)localObject2);
+        localObject1 = localObject2;
+        if (localObject2 != null) {
+          localObject1 = BitmapUtils.processExif((BitmapReference)localObject2, paramString);
+        }
+        return localObject1;
+      }
+    }
+    catch (Throwable paramString)
+    {
+      ImageManagerEnv.getLogger().e("NewAnimationDrawable", new Object[] { "catch an exception:" + Log.getStackTraceString(paramString) });
+      ImageManagerEnv.getLogger().e("NewAnimationDrawable", new Object[] { "get from decoder:deocode failed,index=" + this.mCurFrameIndex });
+    }
+    return null;
+  }
+  
+  private BitmapFactory.Options getBitmapOptions(String paramString)
+  {
+    BitmapFactory.Options localOptions2 = (BitmapFactory.Options)this.mOptionsMap.get(paramString);
+    BitmapFactory.Options localOptions1 = localOptions2;
+    if (localOptions2 == null)
+    {
+      localOptions1 = new BitmapFactory.Options();
+      localOptions1.inJustDecodeBounds = true;
+      localOptions1.inTempStorage = this.inTempStorage;
+      BitmapFactory.decodeFile(paramString, localOptions1);
+      localOptions1.inSampleSize = computeSampleSize(localOptions1, this.mReqWidth, this.mReqHeight);
+      this.mOptionsMap.put(paramString, localOptions1);
+      localOptions1.inJustDecodeBounds = false;
+    }
+    return localOptions1;
+  }
+  
+  private static int getBytesPerPixel(Bitmap.Config paramConfig)
   {
     int j = 2;
     int i;
@@ -105,131 +164,17 @@ public class NewAnimationDrawable
     return 1;
   }
   
-  private static int a(BitmapFactory.Options paramOptions)
+  private static int getFrameSize(BitmapFactory.Options paramOptions)
   {
     if (paramOptions.inSampleSize > 0) {}
     for (int i = paramOptions.inSampleSize;; i = 1)
     {
       int j = paramOptions.outWidth / i;
-      return paramOptions.outHeight / i * j * a(Bitmap.Config.ARGB_8888);
+      return paramOptions.outHeight / i * j * getBytesPerPixel(Bitmap.Config.ARGB_8888);
     }
   }
   
-  private BitmapFactory.Options a(String paramString)
-  {
-    BitmapFactory.Options localOptions2 = (BitmapFactory.Options)this.jdField_a_of_type_JavaUtilMap.get(paramString);
-    BitmapFactory.Options localOptions1 = localOptions2;
-    if (localOptions2 == null)
-    {
-      localOptions1 = new BitmapFactory.Options();
-      localOptions1.inJustDecodeBounds = true;
-      localOptions1.inTempStorage = this.jdField_a_of_type_ArrayOfByte;
-      BitmapFactory.decodeFile(paramString, localOptions1);
-      localOptions1.inSampleSize = computeSampleSize(localOptions1, this.e, this.f);
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, localOptions1);
-      localOptions1.inJustDecodeBounds = false;
-    }
-    return localOptions1;
-  }
-  
-  @TargetApi(11)
-  private BitmapReference a(String paramString)
-  {
-    try
-    {
-      Object localObject1 = ImageManager.getInstance().getDecoder();
-      if (!TextUtils.isEmpty(paramString))
-      {
-        Object localObject2 = a(paramString);
-        if (Build.VERSION.SDK_INT >= 11) {
-          ((BitmapFactory.Options)localObject2).inBitmap = null;
-        }
-        localObject2 = ((IDecoder)localObject1).decodeImage(new File(paramString), (BitmapFactory.Options)localObject2);
-        localObject1 = localObject2;
-        if (localObject2 != null) {
-          localObject1 = BitmapUtils.processExif((BitmapReference)localObject2, paramString);
-        }
-        return localObject1;
-      }
-    }
-    catch (Throwable paramString)
-    {
-      ImageManagerEnv.getLogger().e("NewAnimationDrawable", new Object[] { "catch an exception:" + Log.getStackTraceString(paramString) });
-      ImageManagerEnv.getLogger().e("NewAnimationDrawable", new Object[] { "get from decoder:deocode failed,index=" + this.jdField_b_of_type_Int });
-    }
-    return null;
-  }
-  
-  private void a()
-  {
-    try
-    {
-      if (canAnimate())
-      {
-        if (this.jdField_b_of_type_Int == this.jdField_a_of_type_Int - 1) {
-          this.d += 1;
-        }
-        this.jdField_b_of_type_Int = ((this.jdField_b_of_type_Int + 1) % this.jdField_a_of_type_Int);
-      }
-      if ((this.jdField_a_of_type_Boolean) && ((this.c == 0) || (this.d < this.c)))
-      {
-        ImageManagerEnv.getLogger().d("NewAnimationDrawable", new Object[] { "loadNextBitmap:" + this + ",delay:" + this.jdField_a_of_type_Long + ",frameIndex:" + this.jdField_b_of_type_Int });
-        ImageManager.post(this.jdField_a_of_type_JavaLangRunnable, true);
-      }
-      return;
-    }
-    finally {}
-  }
-  
-  private void b()
-  {
-    ImageManagerEnv.getLogger().d("NewAnimationDrawable", new Object[] { " reset" });
-    this.jdField_a_of_type_Boolean = false;
-    this.d = 0;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference = null;
-    this.jdField_b_of_type_ComTencentComponentMediaImageBitmapReference = null;
-  }
-  
-  private void c()
-  {
-    ImageManagerEnv.getLogger().d("NewAnimationDrawable", new Object[] { "try clear cache" });
-    this.jdField_a_of_type_ComTencentComponentMediaUtilsLruCache.evictAll();
-  }
-  
-  public static int computeSampleSize(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
-  {
-    ImageLoader.Options localOptions = ImageLoader.Options.obtain();
-    localOptions.clipWidth = paramInt1;
-    localOptions.clipHeight = paramInt2;
-    localOptions.preferQuality = false;
-    paramInt1 = ImageOptionSampleSize.computeSampleSize(localOptions, paramOptions.outWidth, paramOptions.outHeight);
-    localOptions.recycle();
-    return paramInt1;
-  }
-  
-  private void d()
-  {
-    ImageManagerEnv.getLogger().d("NewAnimationDrawable", new Object[] { "try rebuild cache from weakRef" });
-    int i = 0;
-    while (i < this.jdField_a_of_type_Int)
-    {
-      String str = (String)this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options.photoList.get(i);
-      Object localObject = (WeakReference)this.jdField_b_of_type_JavaUtilMap.get(str);
-      if (localObject != null)
-      {
-        localObject = (pnq)((WeakReference)localObject).get();
-        if ((localObject != null) && (((pnq)localObject).jdField_a_of_type_ComTencentComponentMediaImageBitmapReference.getBitmap().getGenerationId() == ((pnq)localObject).jdField_a_of_type_Int))
-        {
-          this.jdField_a_of_type_ComTencentComponentMediaUtilsLruCache.put(str, ((pnq)localObject).jdField_a_of_type_ComTencentComponentMediaImageBitmapReference);
-          ImageManagerEnv.getLogger().d("NewAnimationDrawable", new Object[] { "get one from weakRef" });
-        }
-      }
-      i += 1;
-    }
-  }
-  
-  public static boolean isSuitable(List paramList, int paramInt1, int paramInt2)
+  public static boolean isSuitable(List<String> paramList, int paramInt1, int paramInt2)
   {
     if ((paramList != null) && (paramList.size() > 0))
     {
@@ -238,12 +183,64 @@ public class NewAnimationDrawable
       localOptions.inJustDecodeBounds = true;
       BitmapFactory.decodeFile(str, localOptions);
       localOptions.inSampleSize = computeSampleSize(localOptions, paramInt1, paramInt2);
-      paramInt1 = a(localOptions) * paramList.size();
+      paramInt1 = getFrameSize(localOptions) * paramList.size();
       ImageManagerEnv.getLogger().w("NewAnimationDrawable", new Object[] { "estimate totalSize:" + paramInt1 });
       ImageManagerEnv.g().reportAnimationDrawableSize(paramInt1 / 1024);
-      return paramInt1 < jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get();
+      return paramInt1 < sMaxCacheSizeForAll.get();
     }
     return false;
+  }
+  
+  private void loadNextBitmap()
+  {
+    try
+    {
+      if (canAnimate())
+      {
+        if (this.mCurFrameIndex == this.mFrameCounts - 1) {
+          this.mCurPlayCount += 1;
+        }
+        this.mCurFrameIndex = ((this.mCurFrameIndex + 1) % this.mFrameCounts);
+      }
+      if ((this.mIsRunning) && ((this.mRepeatCount == 0) || (this.mCurPlayCount < this.mRepeatCount)))
+      {
+        ImageManagerEnv.getLogger().d("NewAnimationDrawable", new Object[] { "loadNextBitmap:" + this + ",delay:" + this.mDelayTime + ",frameIndex:" + this.mCurFrameIndex });
+        ImageManager.post(this.mDecodeTask, true);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  private void rebuildCache()
+  {
+    ImageManagerEnv.getLogger().d("NewAnimationDrawable", new Object[] { "try rebuild cache from weakRef" });
+    int i = 0;
+    while (i < this.mFrameCounts)
+    {
+      String str = (String)this.mOptions.photoList.get(i);
+      Object localObject = (WeakReference)this.mWeakRefCache.get(str);
+      if (localObject != null)
+      {
+        localObject = (NewAnimationDrawable.FrameRef)((WeakReference)localObject).get();
+        if ((localObject != null) && (((NewAnimationDrawable.FrameRef)localObject).mBmpRef.getBitmap().getGenerationId() == ((NewAnimationDrawable.FrameRef)localObject).mBmpGenerationId))
+        {
+          this.mLruCache.put(str, ((NewAnimationDrawable.FrameRef)localObject).mBmpRef);
+          ImageManagerEnv.getLogger().d("NewAnimationDrawable", new Object[] { "get one from weakRef" });
+        }
+      }
+      i += 1;
+    }
+  }
+  
+  private void reset()
+  {
+    ImageManagerEnv.getLogger().d("NewAnimationDrawable", new Object[] { " reset" });
+    this.mIsRunning = false;
+    this.mCurPlayCount = 0;
+    this.mCurFrameIndex = -1;
+    this.mCurBitmapRef = null;
+    this.mNextBitmapRef = null;
   }
   
   public boolean canAnimate()
@@ -253,26 +250,26 @@ public class NewAnimationDrawable
   
   public void draw(Canvas paramCanvas)
   {
-    if ((this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference != null) && (!this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference.isRecycled()))
+    if ((this.mCurBitmapRef != null) && (!this.mCurBitmapRef.isRecycled()))
     {
-      paramCanvas.drawBitmap(this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference.getBitmap(), null, getBounds(), this.jdField_a_of_type_AndroidGraphicsPaint);
-      ImageManagerEnv.getLogger().d("NewAnimationDrawable", new Object[] { "animation NewAnimationDrawable draw  currentBitmap != null ,frameIndex:" + this.jdField_b_of_type_Int });
+      paramCanvas.drawBitmap(this.mCurBitmapRef.getBitmap(), null, getBounds(), this.mPaint);
+      ImageManagerEnv.getLogger().d("NewAnimationDrawable", new Object[] { "animation NewAnimationDrawable draw  currentBitmap != null ,frameIndex:" + this.mCurFrameIndex });
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_Boolean) {
-        a();
+      if (this.mIsRunning) {
+        loadNextBitmap();
       }
       return;
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+      if (this.mDefaultFrame != null)
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(getBounds());
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-        ImageManagerEnv.getLogger().d("NewAnimationDrawable", new Object[] { "animation NewAnimationDrawable draw  currentBitmap = null ,frameIndex:" + this.jdField_b_of_type_Int });
+        this.mDefaultFrame.setBounds(getBounds());
+        this.mDefaultFrame.draw(paramCanvas);
+        ImageManagerEnv.getLogger().d("NewAnimationDrawable", new Object[] { "animation NewAnimationDrawable draw  currentBitmap = null ,frameIndex:" + this.mCurFrameIndex });
       }
       else
       {
-        paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawRect(this.mDstRect, this.mPaint);
       }
     }
   }
@@ -282,7 +279,7 @@ public class NewAnimationDrawable
     super.finalize();
     try
     {
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.addAndGet(getByteCount());
+      sMaxCacheSizeForAll.addAndGet(getByteCount());
       return;
     }
     catch (Throwable localThrowable)
@@ -293,32 +290,32 @@ public class NewAnimationDrawable
   
   public int getByteCount()
   {
-    if (this.g == 0) {
-      this.g = ((int)(a(a((String)this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options.photoList.get(0))) * this.jdField_a_of_type_Int * 1.1D));
+    if (this.mTotalSize == 0) {
+      this.mTotalSize = ((int)(getFrameSize(getBitmapOptions((String)this.mOptions.photoList.get(0))) * this.mFrameCounts * 1.1D));
     }
-    return this.g;
+    return this.mTotalSize;
   }
   
   public int getIntrinsicHeight()
   {
-    if (this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference != null) {
-      return this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference.getHeight();
+    if (this.mCurBitmapRef != null) {
+      return this.mCurBitmapRef.getHeight();
     }
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
+    if (this.mDefaultFrame != null) {
+      return this.mDefaultFrame.getIntrinsicHeight();
     }
-    return this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options.clipHeight;
+    return this.mOptions.clipHeight;
   }
   
   public int getIntrinsicWidth()
   {
-    if (this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference != null) {
-      return this.jdField_a_of_type_ComTencentComponentMediaImageBitmapReference.getWidth();
+    if (this.mCurBitmapRef != null) {
+      return this.mCurBitmapRef.getWidth();
     }
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
+    if (this.mDefaultFrame != null) {
+      return this.mDefaultFrame.getIntrinsicWidth();
     }
-    return this.jdField_a_of_type_ComTencentComponentMediaImageImageLoader$Options.clipWidth;
+    return this.mOptions.clipWidth;
   }
   
   public int getOpacity()
@@ -330,7 +327,7 @@ public class NewAnimationDrawable
   {
     try
     {
-      boolean bool = this.jdField_a_of_type_Boolean;
+      boolean bool = this.mIsRunning;
       return bool;
     }
     finally
@@ -342,42 +339,42 @@ public class NewAnimationDrawable
   
   protected void onBoundsChange(Rect paramRect)
   {
-    this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect);
+    this.mDstRect.set(paramRect);
   }
   
   public void setAlpha(int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(paramInt);
+    this.mPaint.setAlpha(paramInt);
   }
   
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColorFilter(paramColorFilter);
+    this.mPaint.setColorFilter(paramColorFilter);
   }
   
   public void setDefaultFrame(Drawable paramDrawable)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.mDefaultFrame = paramDrawable;
   }
   
   public void setDelayTime(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.mDelayTime = paramLong;
   }
   
   public void setFrameCounts(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.mFrameCounts = paramInt;
   }
   
   public void setReqHeight(int paramInt)
   {
-    this.f = paramInt;
+    this.mReqHeight = paramInt;
   }
   
   public void setReqWidth(int paramInt)
   {
-    this.e = paramInt;
+    this.mReqWidth = paramInt;
   }
   
   public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
@@ -386,7 +383,7 @@ public class NewAnimationDrawable
     if (paramBoolean1)
     {
       if (paramBoolean2) {
-        b();
+        reset();
       }
       start();
     }
@@ -401,17 +398,17 @@ public class NewAnimationDrawable
   {
     try
     {
-      if (!this.jdField_a_of_type_Boolean)
+      if (!this.mIsRunning)
       {
-        if (this.jdField_a_of_type_ComTencentComponentMediaUtilsLruCache.size() == 0) {
-          d();
+        if (this.mLruCache.size() == 0) {
+          rebuildCache();
         }
-        if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(0)) {
-          this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+        if (this.mInvalidHandler.hasMessages(0)) {
+          this.mInvalidHandler.removeMessages(0);
         }
-        this.jdField_a_of_type_Boolean = true;
-        a();
-        ImageManagerEnv.getLogger().d("NewAnimationDrawable", new Object[] { "--start:" + this.jdField_b_of_type_Int });
+        this.mIsRunning = true;
+        loadNextBitmap();
+        ImageManagerEnv.getLogger().d("NewAnimationDrawable", new Object[] { "--start:" + this.mCurFrameIndex });
       }
       return;
     }
@@ -422,9 +419,9 @@ public class NewAnimationDrawable
   {
     try
     {
-      this.jdField_a_of_type_Boolean = false;
-      c();
-      ImageManagerEnv.getLogger().d("NewAnimationDrawable", new Object[] { "--stop:" + this.jdField_b_of_type_Int });
+      this.mIsRunning = false;
+      clearCache();
+      ImageManagerEnv.getLogger().d("NewAnimationDrawable", new Object[] { "--stop:" + this.mCurFrameIndex });
       return;
     }
     finally

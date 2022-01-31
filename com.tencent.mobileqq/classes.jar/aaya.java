@@ -1,16 +1,47 @@
-import com.tencent.mobileqq.ark.ArkActionAppMgr.IGetAppNameByActionCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import mqq.util.WeakReference;
 
 public class aaya
+  implements DialogInterface.OnDismissListener
 {
-  public ArkActionAppMgr.IGetAppNameByActionCallback a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public String b;
+  WeakReference<GeneralSettingActivity> a;
+  WeakReference<CompoundButton> b;
+  
+  public aaya(GeneralSettingActivity paramGeneralSettingActivity, CompoundButton paramCompoundButton)
+  {
+    this.a = new WeakReference(paramGeneralSettingActivity);
+    this.b = new WeakReference(paramCompoundButton);
+  }
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    CompoundButton localCompoundButton = null;
+    if (this.a == null)
+    {
+      paramDialogInterface = null;
+      if (this.b != null) {
+        break label47;
+      }
+    }
+    for (;;)
+    {
+      if ((paramDialogInterface != null) && (localCompoundButton != null)) {
+        paramDialogInterface.a(localCompoundButton, false);
+      }
+      return;
+      paramDialogInterface = (GeneralSettingActivity)this.a.get();
+      break;
+      label47:
+      localCompoundButton = (CompoundButton)this.b.get();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaya
  * JD-Core Version:    0.7.0.1
  */

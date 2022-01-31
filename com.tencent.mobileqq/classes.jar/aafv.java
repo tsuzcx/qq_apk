@@ -1,59 +1,22 @@
-import com.tencent.mobileqq.ar.ARNativeBridge;
-import com.tencent.mobileqq.ar.ARRecord.worldcup.ARWorldCupStateListener;
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupResourceInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.worldcup.ARWorldCupMediaPlayerWrapper;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aafv
-  implements Runnable
+public final class aafv
+  implements baeq
 {
-  public aafv(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable, int paramInt) {}
+  public aafv(Bundle paramBundle, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString) {}
   
-  public void run()
+  public void a(String paramString, int paramInt)
   {
-    QLog.d("ARWorldCupGlobalSceneRenderable", 2, "switchGameStatus run status " + this.jdField_a_of_type_Int);
-    switch (this.jdField_a_of_type_Int)
-    {
-    }
-    for (;;)
-    {
-      ARWorldCupGlobalSceneRenderable.b(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable);
-      if ((ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable) != null) && (this.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_Int != 3))
-      {
-        if (this.jdField_a_of_type_Int != 9) {
-          break;
-        }
-        ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable).a(this.jdField_a_of_type_Int, Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable.d));
-      }
-      return;
-      if (ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable) != null)
-      {
-        ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable).native_switchGameStatusWithNoParams(this.jdField_a_of_type_Int);
-        continue;
-        if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable.b == 3)
-        {
-          ReportController.b(null, "dc00898", "", "", "0X8009314", "0X8009314", 0, 0, "", "", "", "");
-          if (ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable) != null) {
-            ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable).native_switchGameStatusWithNoParams(this.jdField_a_of_type_Int);
-          }
-        }
-        else
-        {
-          ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable, 4, ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable).a() + "/res/worldcup/360.mp4", false);
-          continue;
-          ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable).c();
-          ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable, 12, ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable).a() + "/res/worldcup/game_end.mp4", false);
-        }
-      }
-    }
-    ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable).a(this.jdField_a_of_type_Int, null);
+    this.jdField_a_of_type_AndroidOsBundle.putInt("MeetingStasks", paramInt);
+    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aafv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,52 @@
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
 public class akww
-  implements Runnable
+  implements TVK_SDKMgr.OnLogListener
 {
-  public akww(SwiftBrowserOfflineHandler paramSwiftBrowserOfflineHandler, String paramString) {}
-  
-  public void run()
+  public int d(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler.b();
-    long l = System.currentTimeMillis();
-    if (SwiftBrowserOfflineHandler.c.get() == 3) {}
-    for (boolean bool = HtmlOffline.a(BaseApplicationImpl.getApplication().getApplicationContext(), this.jdField_a_of_type_JavaLangString, new akwx(this, l));; bool = false)
-    {
-      if (!bool) {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler.a();
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AROnlineVideoLogListener", 2, paramString1 + ":" + paramString2);
     }
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AROnlineVideoLogListener", 2, paramString1 + ":" + paramString2);
+    }
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AROnlineVideoLogListener", 2, paramString1 + ":" + paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AROnlineVideoLogListener", 2, paramString1 + ":" + paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AROnlineVideoLogListener", 2, paramString1 + ":" + paramString2);
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akww
  * JD-Core Version:    0.7.0.1
  */

@@ -8,25 +8,27 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
-import com.tencent.av.AVLog;
+import awqx;
 import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.ui.AVActivity;
 import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.av.utils.TipsManager;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import kkd;
+import krx;
+import kvq;
+import lqb;
+import mkc;
 
 public class ChildLockCircle
   extends View
@@ -37,10 +39,11 @@ public class ChildLockCircle
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private CountDownTimer jdField_a_of_type_AndroidOsCountDownTimer;
   public Handler a;
   private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
+  private ChildLockCircle.AnimatedThread jdField_a_of_type_ComTencentAvWidgetChildLockCircle$AnimatedThread;
   private String jdField_a_of_type_JavaLangString;
-  private kkd jdField_a_of_type_Kkd;
   private boolean jdField_a_of_type_Boolean = true;
   private final int jdField_b_of_type_Int = 100;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
@@ -54,6 +57,7 @@ public class ChildLockCircle
   private String jdField_d_of_type_JavaLangString;
   private int jdField_e_of_type_Int;
   private String jdField_e_of_type_JavaLangString;
+  private int f;
   
   public ChildLockCircle(Context paramContext)
   {
@@ -75,19 +79,19 @@ public class ChildLockCircle
   
   private void a(AttributeSet paramAttributeSet, int paramInt)
   {
-    setId(2131362538);
-    setBackgroundResource(2130840195);
+    setId(2131306528);
+    setBackgroundResource(2130841482);
     paramAttributeSet = getResources();
-    this.jdField_a_of_type_JavaLangString = paramAttributeSet.getString(2131429442);
-    this.jdField_b_of_type_JavaLangString = paramAttributeSet.getString(2131429443);
-    this.jdField_c_of_type_JavaLangString = paramAttributeSet.getString(2131429444);
-    this.jdField_d_of_type_JavaLangString = paramAttributeSet.getString(2131429445);
+    this.jdField_a_of_type_JavaLangString = paramAttributeSet.getString(2131630048);
+    this.jdField_b_of_type_JavaLangString = paramAttributeSet.getString(2131630049);
+    this.jdField_c_of_type_JavaLangString = paramAttributeSet.getString(2131630046);
+    this.jdField_d_of_type_JavaLangString = paramAttributeSet.getString(2131630047);
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130840196);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130840197);
-      this.jdField_a_of_type_AndroidGraphicsRectF.left = 22.0F;
-      this.jdField_a_of_type_AndroidGraphicsRectF.top = 22.0F;
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130841473);
+      this.jdField_b_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(paramAttributeSet, 2130841467);
+      this.jdField_a_of_type_AndroidGraphicsRectF.left = 12.0F;
+      this.jdField_a_of_type_AndroidGraphicsRectF.top = 12.0F;
       this.jdField_a_of_type_AndroidGraphicsPaint.setFlags(1);
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
       this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
@@ -105,17 +109,22 @@ public class ChildLockCircle
   private void c()
   {
     d();
-    this.jdField_a_of_type_Kkd = new kkd(this);
-    this.jdField_a_of_type_Kkd.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_Kkd.start();
+    this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle$AnimatedThread = new ChildLockCircle.AnimatedThread(this);
+    this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle$AnimatedThread.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle$AnimatedThread.start();
   }
   
   private void d()
   {
-    if (this.jdField_a_of_type_Kkd != null)
+    if (this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle$AnimatedThread != null)
     {
-      this.jdField_a_of_type_Kkd.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Kkd = null;
+      this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle$AnimatedThread.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_ComTencentAvWidgetChildLockCircle$AnimatedThread = null;
+    }
+    if (this.jdField_a_of_type_AndroidOsCountDownTimer != null)
+    {
+      this.jdField_a_of_type_AndroidOsCountDownTimer.cancel();
+      this.jdField_a_of_type_AndroidOsCountDownTimer = null;
     }
   }
   
@@ -133,46 +142,70 @@ public class ChildLockCircle
   {
     try
     {
-      if (!((AVActivity)getContext()).a().a().u)
+      if (!((AVActivity)getContext()).a().a().w)
       {
-        ReportController.b(null, "CliOper", "", "", "0X80061F8", "0X80061F8", 0, 0, "", "", "", "");
+        awqx.b(null, "CliOper", "", "", "0X80061F8", "0X80061F8", 0, 0, "", "", "", "");
         return;
       }
-      ReportController.b(null, "CliOper", "", "", "0X80061FA", "0X80061FA", 0, 0, "", "", "", "");
+      awqx.b(null, "CliOper", "", "", "0X80061FA", "0X80061FA", 0, 0, "", "", "", "");
       return;
     }
     catch (Exception localException)
     {
-      AVLog.e("ChildLockCircle", localException.getMessage());
+      krx.e("ChildLockCircle", localException.getMessage());
+    }
+  }
+  
+  public Bitmap a(Resources paramResources, int paramInt)
+  {
+    int j = 2130841473;
+    int i = j;
+    switch (paramInt)
+    {
+    default: 
+      i = j;
+    }
+    for (;;)
+    {
+      return BitmapFactory.decodeResource(paramResources, i);
+      i = 2130841467;
+      continue;
+      i = 2130841474;
+      continue;
+      i = 2130841475;
+      continue;
+      i = 2130841476;
+      continue;
+      i = 2130841477;
+      continue;
+      i = 2130841478;
+      continue;
+      i = 2130841479;
+      continue;
+      i = 2130841480;
+      continue;
+      i = 2130841481;
+      continue;
+      i = 2130841468;
+      continue;
+      i = 2130841469;
+      continue;
+      i = 2130841470;
+      continue;
+      i = 2130841471;
+      continue;
+      i = 2130841472;
     }
   }
   
   public void a()
   {
-    AVActivity localAVActivity = (AVActivity)getContext();
-    TipsManager localTipsManager = localAVActivity.a();
-    if (localTipsManager != null) {
-      localTipsManager.a();
-    }
-    if (!localAVActivity.a().a().u) {
-      setIsLock(true);
-    }
-    for (;;)
+    if (!((AVActivity)getContext()).a().a().w)
     {
-      if (this.jdField_a_of_type_AndroidViewAnimationAnimation == null) {
-        this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(getContext(), 2131034251);
-      }
-      if (this.jdField_a_of_type_AndroidViewAnimationAnimation == null) {
-        break;
-      }
-      this.jdField_d_of_type_Int = 1;
-      this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this);
-      setVisibility(4);
-      startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+      setIsLock(true);
       return;
-      setIsLock(false);
     }
-    onAnimationEnd(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    setIsLock(false);
   }
   
   public void a(int paramInt)
@@ -180,6 +213,47 @@ public class ChildLockCircle
     Message localMessage = new Message();
     localMessage.what = paramInt;
     this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+  }
+  
+  public void a(Context paramContext)
+  {
+    VideoController localVideoController = ((AVActivity)getContext()).a();
+    if (localVideoController != null)
+    {
+      localVideoController.a().s = 1;
+      if (this.jdField_a_of_type_AndroidOsCountDownTimer == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ChildLockCircle", 2, "LockAnimation,CountDownTimer start");
+        }
+        this.jdField_a_of_type_AndroidOsCountDownTimer = new mkc(this, 750L, 50L, paramContext);
+        this.jdField_a_of_type_AndroidOsCountDownTimer.start();
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    lqb.a((VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+    a();
+    if (this.jdField_a_of_type_AndroidViewAnimationAnimation == null) {
+      this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(getContext(), 2130772145);
+    }
+    if (paramBoolean)
+    {
+      this.jdField_d_of_type_Int = 1;
+      this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this);
+      startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+      return;
+    }
+    setVisibility(0);
+    this.jdField_d_of_type_Int = 2;
+    c();
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
   
   public void b()
@@ -198,22 +272,28 @@ public class ChildLockCircle
     switch (paramMessage.what)
     {
     default: 
-      return false;
     case 0: 
-      postInvalidate();
-      return false;
     case 1: 
-      if (this.jdField_b_of_type_AndroidViewAnimationAnimation == null) {
-        this.jdField_b_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(getContext(), 2131034252);
-      }
-      if (this.jdField_b_of_type_AndroidViewAnimationAnimation != null)
+    case 3: 
+      do
       {
-        this.jdField_d_of_type_Int = 3;
-        this.jdField_b_of_type_AndroidViewAnimationAnimation.setAnimationListener(this);
-        startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
         return false;
-      }
-      onAnimationEnd(this.jdField_b_of_type_AndroidViewAnimationAnimation);
+        postInvalidate();
+        return false;
+        if (this.jdField_b_of_type_AndroidViewAnimationAnimation == null) {
+          this.jdField_b_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(getContext(), 2130772146);
+        }
+        if (this.jdField_b_of_type_AndroidViewAnimationAnimation != null)
+        {
+          this.jdField_d_of_type_Int = 3;
+          this.jdField_b_of_type_AndroidViewAnimationAnimation.setAnimationListener(this);
+          startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
+          return false;
+        }
+        onAnimationEnd(this.jdField_b_of_type_AndroidViewAnimationAnimation);
+        return false;
+      } while (!a());
+      a(getContext());
       return false;
     }
     try
@@ -221,22 +301,23 @@ public class ChildLockCircle
       Object localObject = (AVActivity)getContext();
       paramMessage = ((AVActivity)localObject).a();
       localObject = (DoubleVideoCtrlUI)((AVActivity)localObject).a;
-      if (!paramMessage.a().u)
+      if (!paramMessage.a().w)
       {
-        paramMessage.a().v = true;
-        ((DoubleVideoCtrlUI)localObject).h(true);
+        paramMessage.a().x = true;
+        ((DoubleVideoCtrlUI)localObject).d(true);
+        paramMessage.a().s = 2;
         if (QLog.isColorLevel()) {
           QLog.e("ChildLockCircle", 2, "[childLock] action lock");
         }
-        ReportController.b(null, "CliOper", "", "", "0X80061F7", "0X80061F7", 0, 0, "", "", "", "");
+        awqx.b(null, "CliOper", "", "", "0X80061F7", "0X80061F7", 0, 0, "", "", "", "");
         return false;
       }
-      paramMessage.a().v = false;
-      ((DoubleVideoCtrlUI)localObject).A();
+      paramMessage.a().x = false;
+      ((DoubleVideoCtrlUI)localObject).s();
       if (QLog.isColorLevel()) {
         QLog.e("ChildLockCircle", 2, "[childLock] action unlock");
       }
-      ReportController.b(null, "CliOper", "", "", "0X80061F9", "0X80061F9", 0, 0, "", "", "", "");
+      awqx.b(null, "CliOper", "", "", "0X80061F9", "0X80061F9", 0, 0, "", "", "", "");
       return false;
     }
     catch (Exception paramMessage) {}
@@ -248,15 +329,13 @@ public class ChildLockCircle
     if (paramAnimation.equals(this.jdField_b_of_type_AndroidViewAnimationAnimation))
     {
       setVisibility(8);
-      paramAnimation = ((AVActivity)getContext()).a();
-      if (paramAnimation != null) {
-        paramAnimation.b();
+      if (QLog.isDevelopLevel()) {
+        QLog.w("ChildLockCircle", 1, "timtest onAnimationEnd animation.equals(fadeoutAnimation)");
       }
+      paramAnimation = (AVActivity)getContext();
+      lqb.b((VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime());
       this.jdField_d_of_type_Int = 0;
-      paramAnimation = (ViewGroup)getParent();
-      if (paramAnimation != null) {
-        paramAnimation.removeView(this);
-      }
+      new Handler().post(new ChildLockCircle.2(this));
     }
     while (!paramAnimation.equals(this.jdField_a_of_type_AndroidViewAnimationAnimation)) {
       try
@@ -298,25 +377,28 @@ public class ChildLockCircle
     super.onDraw(paramCanvas);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(8.0F);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(50);
-    paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, 360.0F, false, this.jdField_a_of_type_AndroidGraphicsPaint);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(255);
     paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, 360.0F * (this.jdField_c_of_type_Int / 100.0F), false, this.jdField_a_of_type_AndroidGraphicsPaint);
     if ((this.jdField_c_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_c_of_type_AndroidGraphicsBitmap.isRecycled())) {
       paramCanvas.drawBitmap(this.jdField_c_of_type_AndroidGraphicsBitmap, null, this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    paramCanvas.drawText(this.jdField_e_of_type_JavaLangString, (this.jdField_e_of_type_Int - this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_e_of_type_JavaLangString, 0, this.jdField_e_of_type_JavaLangString.length())) / 2.0F, this.jdField_e_of_type_Int * 17 / 24, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawText(this.jdField_e_of_type_JavaLangString, (this.jdField_e_of_type_Int - this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_e_of_type_JavaLangString, 0, this.jdField_e_of_type_JavaLangString.length())) / 2.0F, this.f * 6 / 7, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_e_of_type_Int = Math.min(paramInt1, paramInt2);
-    this.jdField_a_of_type_AndroidGraphicsRectF.right = (this.jdField_e_of_type_Int - this.jdField_a_of_type_AndroidGraphicsRectF.left);
-    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (this.jdField_e_of_type_Int - this.jdField_a_of_type_AndroidGraphicsRectF.left);
-    this.jdField_b_of_type_AndroidGraphicsRectF.set(this.jdField_e_of_type_Int / 3, this.jdField_e_of_type_Int / 4, this.jdField_e_of_type_Int * 2 / 3, this.jdField_e_of_type_Int * 7 / 12);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_e_of_type_Int / 12);
+    this.jdField_e_of_type_Int = paramInt1;
+    this.f = paramInt2;
+    this.jdField_a_of_type_AndroidGraphicsRectF.left = (paramInt1 * 18 / 65);
+    this.jdField_a_of_type_AndroidGraphicsRectF.top = (paramInt2 * 19 / 120);
+    this.jdField_a_of_type_AndroidGraphicsRectF.right = (paramInt1 * 47 / 65);
+    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (paramInt2 * 77 / 120);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("ChildLockCircle", 1, "[childLock] action : w = " + paramInt1 + "  h = " + paramInt2 + " width = " + this.jdField_e_of_type_Int);
+    }
+    this.jdField_b_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, paramInt1, paramInt2);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(paramInt1 / 8);
   }
   
   public void setIsLock(boolean paramBoolean)
@@ -336,7 +418,7 @@ public class ChildLockCircle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.widget.ChildLockCircle
  * JD-Core Version:    0.7.0.1
  */

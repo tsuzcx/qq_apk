@@ -1,34 +1,10 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.util.VersionUtils;
-import com.tencent.widget.PatchedButton;
-
-public class rxb
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class rxb
 {
-  public rxb(BaseChatPie paramBaseChatPie) {}
-  
-  public void onGlobalLayout()
-  {
-    int i = ((View)this.a.a.getParent()).getHeight() - this.a.a.getBottom();
-    this.a.e.setPadding(0, 0, 0, i);
-    if (i > 0)
-    {
-      if (VersionUtils.g()) {
-        this.a.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-      }
-    }
-    else {
-      return;
-    }
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-  }
+  private static final rwz a = new rwz(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rxb
  * JD-Core Version:    0.7.0.1
  */

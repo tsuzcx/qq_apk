@@ -1,23 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import java.util.Collections;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class tjk
-  implements DialogInterface.OnDismissListener
 {
-  public tjk(PayBridgeActivity paramPayBridgeActivity) {}
+  public static ConcurrentHashMap<String, Long> a = new ConcurrentHashMap();
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public static void a(String paramString)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Q.qwallet.payPayBridgeActivity", 4, "finish dialog dismiss...");
-    }
+    if (TextUtils.isEmpty(paramString)) {}
+    long l;
+    Long localLong;
+    do
+    {
+      return;
+      l = System.currentTimeMillis();
+      localLong = (Long)a.get(paramString);
+    } while ((localLong != null) && (Math.abs(l - localLong.longValue()) <= 120000L));
+    a.put(paramString, Long.valueOf(l));
+    sxs.a(Collections.singletonList(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tjk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,149 +1,95 @@
-import android.content.Context;
 import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.ViewParent;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
-import com.tencent.biz.pubaccount.VideoAdInfo;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.ADVideoItemHolder;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.BaseItemHolder;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.BaseVideoItemHolder;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.VideoItemHolder;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView.ListViewEventListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Set;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.redbag.AVRedBag.2.1;
 
 public class mdx
-  extends Handler
+  extends kvw
 {
-  public mdx(VideoFeedsAdapter paramVideoFeedsAdapter, Looper paramLooper)
+  mdx(mdv parammdv) {}
+  
+  protected void a(long paramLong)
   {
-    super(paramLooper);
+    int i = this.a.a.a().a().d;
+    if ((i == 2) || (i == 1))
+    {
+      mey.a(this.a.a.a().c());
+      mey.g();
+      c(3);
+      return;
+    }
+    mey.a(0L);
   }
   
-  public void handleMessage(Message paramMessage)
+  protected void b(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "mUIHandler handleMessage() msg.what = " + paramMessage.what);
+    med localmed = this.a.a();
+    if (localmed != null) {
+      localmed.b("onResumeVideo");
     }
-    switch (paramMessage.what)
+  }
+  
+  protected void b(long paramLong, String paramString, boolean paramBoolean)
+  {
+    paramString = this.a.a();
+    if (paramString != null) {
+      paramString.c(paramBoolean);
+    }
+    mey.h();
+  }
+  
+  protected void c()
+  {
+    med localmed = this.a.a();
+    if (localmed != null) {
+      localmed.b("onPauseVideo");
+    }
+  }
+  
+  public void c(int paramInt)
+  {
+    if (paramInt <= 0) {
+      return;
+    }
+    med localmed = this.a.a();
+    if (localmed != null)
     {
-    default: 
-      super.handleMessage(paramMessage);
+      localmed.a("onConnected:" + paramInt);
+      if (localmed.a != null) {
+        localmed.a(localmed.a.b);
+      }
     }
+    this.a.a.a().postDelayed(new AVRedBag.2.1(this, paramInt), 1100L);
+  }
+  
+  protected void c(String paramString, boolean paramBoolean)
+  {
+    paramString = this.a.a();
+    if (paramString == null) {}
     do
     {
-      for (;;)
+      int i;
+      do
       {
         return;
-        VideoFeedsAdapter.a(this.a).sendEmptyMessageDelayed(0, 3000L);
-        if (VideoFeedsAdapter.a(this.a) != null)
-        {
-          if (VideoFeedsAdapter.a(this.a).a() > VideoFeedsAdapter.a(this.a).b()) {}
-          for (long l = VideoFeedsAdapter.a(this.a).a();; l = VideoFeedsAdapter.a(this.a).b())
-          {
-            l = 3000L - (System.currentTimeMillis() - l);
-            if (l <= 0L) {
-              break;
-            }
-            VideoFeedsAdapter.a(this.a).removeMessages(0);
-            VideoFeedsAdapter.a(this.a).sendEmptyMessageDelayed(0, l);
-            return;
-          }
-          VideoFeedsAdapter.a(this.a);
-          return;
-          VideoFeedsAdapter.a(this.a).a(VideoFeedsAdapter.a(this.a).a, false);
-          if ((VideoFeedsAdapter.a(this.a) != null) && (VideoFeedsAdapter.a(this.a).size() > 1))
-          {
-            VideoFeedsAdapter.a(this.a).a(VideoFeedsAdapter.a(this.a).b, VideoFeedsAdapter.a(this.a));
-            return;
-            if (VideoFeedsAdapter.b(this.a))
-            {
-              VideoFeedsAdapter.a(this.a).sendEmptyMessage(3);
-              VideoFeedsAdapter.a(this.a).sendEmptyMessageDelayed(2, 50L);
-            }
-            VideoFeedsAdapter.a(this.a).a();
-            return;
-            VideoFeedsAdapter.a(this.a).e();
-            return;
-            if ((VideoFeedsAdapter.a(this.a) instanceof VideoFeedsAdapter.VideoItemHolder))
-            {
-              paramMessage = (VideoFeedsAdapter.VideoItemHolder)VideoFeedsAdapter.a(this.a);
-              if ((paramMessage.a != null) && (paramMessage.a.a != null) && (paramMessage.a.a.c) && (paramMessage.a.a.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo != null))
-              {
-                localObject = paramMessage.a.a.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo.h;
-                if (!VideoFeedsAdapter.a(this.a).contains(localObject))
-                {
-                  VideoFeedsAdapter.a(this.a).add(localObject);
-                  localObject = NativeAdUtils.a(paramMessage.a.a.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo);
-                  if (paramMessage.a.a.a(VideoFeedsAdapter.a(this.a)))
-                  {
-                    NativeAdUtils.a(null, VideoFeedsAdapter.a(this.a), NativeAdUtils.b, NativeAdUtils.o, (AdvertisementInfo)localObject, paramMessage.a.a.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo, 0L);
-                    return;
-                  }
-                  NativeAdUtils.a(null, VideoFeedsAdapter.a(this.a), NativeAdUtils.b, NativeAdUtils.m, (AdvertisementInfo)localObject, paramMessage.a.a.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo, 0L);
-                  return;
-                  paramMessage = (String)paramMessage.obj;
-                  if (!TextUtils.isEmpty(paramMessage))
-                  {
-                    int j = VideoFeedsAdapter.a(this.a).getChildCount();
-                    int i = 0;
-                    while (i < j)
-                    {
-                      localObject = VideoFeedsAdapter.a(this.a).getChildAt(i).getTag();
-                      if ((localObject instanceof VideoFeedsAdapter.BaseItemHolder))
-                      {
-                        int k = ((VideoFeedsAdapter.BaseItemHolder)localObject).b;
-                        VideoInfo localVideoInfo = (VideoInfo)this.a.getItem(k);
-                        if ((localVideoInfo != null) && (paramMessage.equals(localVideoInfo.jdField_a_of_type_JavaLangString)))
-                        {
-                          VideoFeedsAdapter.a(this.a).d();
-                          VideoFeedsAdapter.a(this.a).c();
-                          this.a.a.a(localObject);
-                          return;
-                        }
-                      }
-                      i += 1;
-                    }
-                  }
-                }
-              }
-            }
-          }
+        i = this.a.a.a().a().d;
+      } while ((i != 2) && (i != 1));
+      if (paramBoolean)
+      {
+        if (paramString.a != null) {
+          paramString.a.a("onPeerSwitchTerminal");
         }
+        paramString.b("onPeerSwitchTerminal");
+        return;
       }
-    } while ((VideoFeedsAdapter.a(this.a) == null) || (VideoFeedsAdapter.a(this.a) == null) || (!VideoFeedsAdapter.a(this.a).c()) || (!(VideoFeedsAdapter.a(this.a) instanceof VideoFeedsAdapter.ADVideoItemHolder)));
-    paramMessage = (VideoFeedsAdapter.ADVideoItemHolder)VideoFeedsAdapter.a(this.a);
-    paramMessage.d.setVisibility(0);
-    paramMessage.d.getParent().requestDisallowInterceptTouchEvent(true);
-    if ((VideoFeedsAdapter.a(this.a).a != null) && (VideoFeedsAdapter.a(this.a).a.a != null) && (VideoFeedsAdapter.a(this.a) != null))
-    {
-      paramMessage.d.setText(VideoFeedsAdapter.a(this.a, VideoFeedsAdapter.a(this.a).a.a, VideoFeedsAdapter.a(this.a).getResources()));
-      paramMessage.d.setOnClickListener(this.a);
-      paramMessage.d.setTag(VideoFeedsAdapter.a(this.a));
-    }
-    Object localObject = new AlphaAnimation(0.0F, 1.0F);
-    ((Animation)localObject).setDuration(300L);
-    ((Animation)localObject).setFillAfter(false);
-    paramMessage.d.startAnimation((Animation)localObject);
+      paramString.a("onPeerSwitchTerminal");
+    } while (paramString.a == null);
+    paramString.a(paramString.a.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mdx
  * JD-Core Version:    0.7.0.1
  */

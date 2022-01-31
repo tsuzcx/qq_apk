@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class cmd0x7c7$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   public static final int UINT32_NOT_SEE_QZONE_FIELD_NUMBER = 2;
   public static final int UINT32_PREVENT_DYNAMIC_FIELD_NUMBER = 3;
@@ -19,7 +19,7 @@ public final class cmd0x7c7$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x7c7.cmd0x7c7.RspBody
  * JD-Core Version:    0.7.0.1
  */

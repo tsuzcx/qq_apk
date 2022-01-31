@@ -19,33 +19,34 @@ import org.json.JSONObject;
 public class BusinessReport$ReportRunnable
   implements Runnable
 {
-  int jdField_a_of_type_Int = 0;
-  String jdField_a_of_type_JavaLangString;
-  ArrayList jdField_a_of_type_JavaUtilArrayList;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int;
-  String jdField_b_of_type_JavaLangString;
-  boolean jdField_b_of_type_Boolean = false;
-  int c;
+  private static final int MAX_TRY_COUNT = 0;
+  int appid;
+  String body;
+  boolean inited = false;
+  ArrayList<ReportObj> listToSend;
+  int op;
+  boolean successed = false;
+  int tryCount = 0;
+  String url;
   
-  public BusinessReport$ReportRunnable(ArrayList paramArrayList, int paramInt1, int paramInt2)
+  public BusinessReport$ReportRunnable(ArrayList<ReportObj> paramArrayList, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt2;
+    this.listToSend = paramArrayList;
+    this.appid = paramInt1;
+    this.op = paramInt2;
   }
   
-  private void a()
+  private void init()
   {
-    if (this.jdField_a_of_type_Boolean) {
+    if (this.inited) {
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+    if (this.listToSend.isEmpty())
     {
-      QDLog.d("BusinessReport", "listToSend is empty.");
+      QDLog.e("BusinessReport", "listToSend is empty.");
       return;
     }
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject = this.listToSend;
     JSONObject localJSONObject = new JSONObject();
     try
     {
@@ -56,26 +57,26 @@ public class BusinessReport$ReportRunnable
       {
         localJSONArray.put(((ReportObj)((Iterator)localObject).next()).toJSON());
         continue;
-        this.jdField_a_of_type_JavaLangString = ReportObj.getReportUrl(this.jdField_b_of_type_Int, this.c);
+        this.url = ReportObj.getReportUrl(this.appid, this.op);
       }
     }
     catch (JSONException localJSONException)
     {
       localJSONObject = null;
-      QDLog.d("BusinessReport", "JSONException when uploadReport.", localJSONException);
+      QDLog.e("BusinessReport", "JSONException when uploadReport.", localJSONException);
     }
     for (;;)
     {
-      if (QDLog.b()) {
-        QDLog.b("BusinessReport", "url : " + this.jdField_a_of_type_JavaLangString);
+      if (QDLog.isInfoEnable()) {
+        QDLog.i("BusinessReport", "url : " + this.url);
       }
       if (localJSONObject != null) {
-        this.jdField_b_of_type_JavaLangString = localJSONObject.toString();
+        this.body = localJSONObject.toString();
       }
-      if (QDLog.b()) {
-        QDLog.b("BusinessReport", "json : " + this.jdField_b_of_type_JavaLangString);
+      if (QDLog.isInfoEnable()) {
+        QDLog.i("BusinessReport", "json : " + this.body);
       }
-      this.jdField_a_of_type_Boolean = true;
+      this.inited = true;
       return;
       localJSONObject.put("data", localJSONException);
     }
@@ -83,83 +84,83 @@ public class BusinessReport$ReportRunnable
   
   public void run()
   {
-    a();
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {}
+    init();
+    if ((TextUtils.isEmpty(this.url)) || (TextUtils.isEmpty(this.body))) {}
     for (;;)
     {
       return;
-      if (QDLog.b()) {
-        QDLog.b("BusinessReport", "start report thread.");
+      if (QDLog.isInfoEnable()) {
+        QDLog.i("BusinessReport", "start report thread.");
       }
       try
       {
-        HttpResponse localHttpResponse = HttpUtil.a(Global.a(), this.jdField_a_of_type_JavaLangString, new StringEntity(this.jdField_b_of_type_JavaLangString));
+        HttpResponse localHttpResponse = HttpUtil.executeHttpPost(Global.getContext(), this.url, new StringEntity(this.body));
         if (localHttpResponse.getStatusLine() != null)
         {
           if (localHttpResponse.getStatusLine().getStatusCode() != 200) {
-            break label137;
+            break label136;
           }
-          this.jdField_a_of_type_JavaUtilArrayList.clear();
-          this.jdField_b_of_type_Boolean = true;
-          if (QDLog.b()) {
-            QDLog.b("BusinessReport", "report success.");
+          this.listToSend.clear();
+          this.successed = true;
+          if (QDLog.isInfoEnable()) {
+            QDLog.i("BusinessReport", "report success.");
           }
         }
-        while ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Int <= 3))
+        while ((!this.successed) && (this.tryCount <= 0))
         {
-          BusinessReport.a().a(this, 60000L);
+          BusinessReport.access$200().postDelay(this, 60000L);
           return;
-          label137:
-          this.jdField_a_of_type_Int += 1;
-          QDLog.d("BusinessReport", "HttpStatus error when report : " + localHttpResponse.getStatusLine().getStatusCode());
+          label136:
+          this.tryCount += 1;
+          QDLog.e("BusinessReport", "HttpStatus error when report : " + localHttpResponse.getStatusLine().getStatusCode());
         }
       }
       catch (UnsupportedEncodingException localUnsupportedEncodingException)
       {
         for (;;)
         {
-          this.jdField_a_of_type_Int += 1;
-          QDLog.c("BusinessReport", "exception when report", localUnsupportedEncodingException);
+          this.tryCount += 1;
+          QDLog.w("BusinessReport", "exception when report", localUnsupportedEncodingException);
         }
       }
       catch (ClientProtocolException localClientProtocolException)
       {
         for (;;)
         {
-          this.jdField_a_of_type_Int += 1;
-          QDLog.c("BusinessReport", "exception when report", localClientProtocolException);
+          this.tryCount += 1;
+          QDLog.w("BusinessReport", "exception when report", localClientProtocolException);
         }
       }
       catch (IOException localIOException)
       {
         for (;;)
         {
-          this.jdField_a_of_type_Int += 1;
-          QDLog.c("BusinessReport", "exception when report", localIOException);
+          this.tryCount += 1;
+          QDLog.w("BusinessReport", "exception when report", localIOException);
         }
       }
       catch (IllegalArgumentException localIllegalArgumentException)
       {
         for (;;)
         {
-          this.jdField_a_of_type_Int += 1;
-          QDLog.c("BusinessReport", "exception when report", localIllegalArgumentException);
+          this.tryCount += 1;
+          QDLog.w("BusinessReport", "exception when report", localIllegalArgumentException);
         }
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          this.jdField_a_of_type_Int += 1;
-          QDLog.c("BusinessReport", "exception when report", localException);
+          this.tryCount += 1;
+          QDLog.w("BusinessReport", "exception when report", localException);
         }
       }
       catch (Error localError)
       {
         for (;;)
         {
-          this.jdField_a_of_type_Int += 1;
-          QDLog.c("BusinessReport", "error when report", localError);
+          this.tryCount += 1;
+          QDLog.w("BusinessReport", "error when report", localError);
         }
       }
     }

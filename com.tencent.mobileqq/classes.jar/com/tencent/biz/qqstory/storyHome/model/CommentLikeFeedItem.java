@@ -2,13 +2,16 @@ package com.tencent.biz.qqstory.storyHome.model;
 
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.base.SerializationPB.CommentLikeFeed;
-import com.tencent.biz.qqstory.model.item.FeedFeatureItem;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import srj;
+import srk;
+import ukt;
 
-public abstract class CommentLikeFeedItem
-  extends FeedItem
+public abstract class CommentLikeFeedItem<T extends ukt, E extends srk>
+  extends FeedItem<T, E>
 {
   public static final int COMMENT_LIKE_TYPE_FANS = 1;
   public static final int COMMENT_LIKE_TYPE_FRIEND = 0;
@@ -24,18 +27,35 @@ public abstract class CommentLikeFeedItem
   public int mLikeCount = -1;
   public long mViewTotalTime = -1L;
   
-  public void convertFromFeedFeature(FeedFeatureItem paramFeedFeatureItem)
+  public static int getCommentLikeType(QQUserUIItem paramQQUserUIItem)
+  {
+    if (paramQQUserUIItem == null) {}
+    boolean bool1;
+    boolean bool2;
+    do
+    {
+      return 1;
+      bool1 = paramQQUserUIItem.isVipButNoFriend();
+      bool2 = paramQQUserUIItem.isSubscribeButNoFriend();
+      if (paramQQUserUIItem.isMe()) {
+        return 0;
+      }
+    } while ((bool1) || (bool2));
+    return 0;
+  }
+  
+  public void convertFromFeedFeature(srj paramsrj)
   {
     int j = 1;
-    this.feedId = paramFeedFeatureItem.jdField_a_of_type_JavaLangString;
-    this.mLikeCount = paramFeedFeatureItem.jdField_a_of_type_Int;
-    this.mCommentCount = paramFeedFeatureItem.jdField_b_of_type_Int;
-    this.mViewTotalTime = paramFeedFeatureItem.c;
-    if (paramFeedFeatureItem.jdField_a_of_type_Boolean)
+    this.feedId = paramsrj.jdField_a_of_type_JavaLangString;
+    this.mLikeCount = paramsrj.jdField_a_of_type_Int;
+    this.mCommentCount = paramsrj.jdField_b_of_type_Int;
+    this.mViewTotalTime = paramsrj.c;
+    if (paramsrj.jdField_a_of_type_Boolean)
     {
       i = 1;
       this.mDenyComment = i;
-      if (!paramFeedFeatureItem.jdField_b_of_type_Boolean) {
+      if (!paramsrj.jdField_b_of_type_Boolean) {
         break label69;
       }
     }
@@ -145,7 +165,7 @@ public abstract class CommentLikeFeedItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem
  * JD-Core Version:    0.7.0.1
  */

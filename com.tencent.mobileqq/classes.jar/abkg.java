@@ -1,113 +1,62 @@
-import android.content.res.Resources;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.ar.ARDeviceController;
-import com.tencent.mobileqq.ar.IArConfigListener;
-import com.tencent.mobileqq.ar.RemoteArConfigManager;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
-import com.tencent.mobileqq.armap.ShopScanActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.Context;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import android.view.ViewConfiguration;
+import com.tencent.mobileqq.activity.QQBrowserSwipeLayout;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
 public class abkg
-  implements IArConfigListener
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public abkg(ShopScanActivity paramShopScanActivity) {}
+  private float jdField_a_of_type_Float;
   
-  public void a()
+  public abkg(QQBrowserSwipeLayout paramQQBrowserSwipeLayout, Context paramContext)
   {
-    ArConfigInfo localArConfigInfo = ArConfigInfo.parseArConfig(ShopScanActivity.a(this.a));
-    if (QLog.isColorLevel()) {
-      QLog.d("ShopScanActivity", 2, "onArManagerReady config: " + localArConfigInfo);
-    }
-    if (localArConfigInfo != null) {
-      localArConfigInfo.saveConfig = false;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqArRemoteArConfigManager.a(localArConfigInfo);
+    this.jdField_a_of_type_Float = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 2);
   }
   
-  public void a(int paramInt)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShopScanActivity", 2, new Object[] { "onDownloadError error = ", Integer.valueOf(paramInt) });
+    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
-    this.a.e.setVisibility(4);
-    this.a.b.setVisibility(8);
-    this.a.f.setVisibility(8);
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShopScanActivity", 2, "onDownloadProcess");
+    float f1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+    float f2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / f1);
+    boolean bool = false;
+    if (QQBrowserSwipeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout) != null) {
+      bool = QQBrowserSwipeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout, paramMotionEvent1);
     }
-    if (!ShopScanActivity.b(this.a)) {
-      return;
+    if ((!QQBrowserSwipeLayout.c(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout)) || (paramFloat1 < 200.0F)) {
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
-    int i = (int)(100L * paramLong1 / paramLong2);
-    if (this.a.b.getVisibility() != 0)
+    if ((f1 < 0.0F) && (f2 < 0.5F) && (!bool))
     {
-      this.a.b.setVisibility(0);
-      if (this.a.e != null) {
-        this.a.e.setVisibility(8);
+      if (!(QQBrowserSwipeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout) instanceof Activity)) {
+        break label175;
+      }
+      QQBrowserSwipeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout, true);
+      if (QQBrowserSwipeLayout.b(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout) != null)
+      {
+        QQBrowserSwipeLayout.c(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout).G();
+        QQBrowserSwipeLayout.b(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout);
       }
     }
-    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(i);
-    this.a.g.setText(this.a.getResources().getString(2131438517));
-  }
-  
-  public void a(ARCommonConfigInfo paramARCommonConfigInfo) {}
-  
-  public void a(ArConfigInfo paramArConfigInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShopScanActivity", 2, new Object[] { "onArConfigChanged arConfigInfo = ", paramArConfigInfo });
-    }
-    if (paramArConfigInfo != null)
+    for (;;)
     {
-      ShopScanActivity.a(this.a, paramArConfigInfo);
-      ShopScanActivity.a(this.a);
-    }
-  }
-  
-  public void a(ArEffectConfig paramArEffectConfig)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShopScanActivity", 2, new Object[] { "onEffectConfigChanged arEffectConfig = ", paramArEffectConfig });
-    }
-    ShopScanActivity.a(this.a, paramArEffectConfig);
-    ARDeviceController.a().a(ShopScanActivity.a(this.a));
-    boolean bool1 = ARDeviceController.a().a();
-    boolean bool2 = ARDeviceController.a().b();
-    paramArEffectConfig = ARDeviceController.a().a();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShopScanActivity", 2, "isAREnable: " + bool1 + ", isSupportAr: " + bool2 + ", gpu: " + paramArEffectConfig);
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShopScanActivity", 2, "onDownloadSuccess");
-    }
-    if (this.a.d.getVisibility() == 0)
-    {
-      this.a.d.setVisibility(8);
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      ShopScanActivity.b(this.a);
-      ShopScanActivity.a(this.a, true);
-    }
-    while ((ShopScanActivity.a(this.a)) || (this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment == null)) {
-      return;
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+      label175:
+      if (QQBrowserSwipeLayout.d(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout) != null)
+      {
+        QQBrowserSwipeLayout.e(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout).G();
+        QQBrowserSwipeLayout.c(this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserSwipeLayout);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abkg
  * JD-Core Version:    0.7.0.1
  */

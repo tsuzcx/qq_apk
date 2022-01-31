@@ -8,7 +8,7 @@ import java.io.Serializable;
 import org.json.JSONObject;
 
 public class AdData
-  implements Serializable, Comparable
+  implements Serializable, Comparable<AdData>
 {
   public static final int UI_PICTURE = 2;
   public static final int UI_PICTURE_and_TEXT = 3;
@@ -45,18 +45,18 @@ public class AdData
     switch (paramInt)
     {
     default: 
-      paramString = BaseApplicationImpl.getContext().getString(2131430515);
+      paramString = BaseApplicationImpl.getContext().getString(2131630644);
     }
     for (;;)
     {
       return paramString;
-      paramString = BaseApplicationImpl.getContext().getString(2131437555);
+      paramString = BaseApplicationImpl.getContext().getString(2131633072);
       continue;
-      paramString = BaseApplicationImpl.getContext().getString(2131433291);
+      paramString = BaseApplicationImpl.getContext().getString(2131625517);
       continue;
-      paramString = BaseApplicationImpl.getContext().getString(2131437875);
+      paramString = BaseApplicationImpl.getContext().getString(2131633386);
       continue;
-      paramString = BaseApplicationImpl.getContext().getString(2131437325);
+      paramString = BaseApplicationImpl.getContext().getString(2131627647);
     }
   }
   

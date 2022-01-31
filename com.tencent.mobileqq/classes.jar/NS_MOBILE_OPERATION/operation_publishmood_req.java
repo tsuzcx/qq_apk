@@ -10,20 +10,20 @@ import java.util.Map;
 public final class operation_publishmood_req
   extends JceStruct
 {
-  static Map cache_busi_param;
-  static Map cache_extend_info;
+  static Map<Integer, String> cache_busi_param;
+  static Map<String, String> cache_extend_info;
   static LbsInfo cache_hidden_poi;
   static LbsInfo cache_lbsinfo;
   static MediaInfo cache_mediainfo = new MediaInfo();
-  static Map cache_proto_extend_info;
+  static Map<String, byte[]> cache_proto_extend_info;
   static UgcRightInfo cache_right_info;
   static ShootInfo cache_shootInfo;
   static Source cache_source;
-  static Map cache_stored_extend_info;
-  public Map busi_param;
+  static Map<String, String> cache_stored_extend_info;
+  public Map<Integer, String> busi_param;
   public String clientkey = "";
   public String content = "";
-  public Map extend_info;
+  public Map<String, String> extend_info;
   public short frames;
   public LbsInfo hidden_poi;
   public int isWinPhone;
@@ -37,7 +37,7 @@ public final class operation_publishmood_req
   public int mediatype;
   public int modifyflag;
   public String open_appid = "";
-  public Map proto_extend_info;
+  public Map<String, byte[]> proto_extend_info;
   public long publishTime;
   public String richtype = "";
   public String richval = "";
@@ -47,7 +47,7 @@ public final class operation_publishmood_req
   public Source source;
   public String sourceName = "";
   public String srcid = "";
-  public Map stored_extend_info;
+  public Map<String, String> stored_extend_info;
   public long uin;
   public String weibourl = "";
   
@@ -72,7 +72,7 @@ public final class operation_publishmood_req
   
   public operation_publishmood_req() {}
   
-  public operation_publishmood_req(long paramLong1, String paramString1, boolean paramBoolean1, boolean paramBoolean2, String paramString2, int paramInt1, MediaInfo paramMediaInfo, LbsInfo paramLbsInfo1, Source paramSource, int paramInt2, Map paramMap1, String paramString3, String paramString4, UgcRightInfo paramUgcRightInfo, ShootInfo paramShootInfo, long paramLong2, int paramInt3, String paramString5, int paramInt4, Map paramMap2, String paramString6, String paramString7, int paramInt5, String paramString8, LbsInfo paramLbsInfo2, long paramLong3, short paramShort, long paramLong4, Map paramMap3, Map paramMap4)
+  public operation_publishmood_req(long paramLong1, String paramString1, boolean paramBoolean1, boolean paramBoolean2, String paramString2, int paramInt1, MediaInfo paramMediaInfo, LbsInfo paramLbsInfo1, Source paramSource, int paramInt2, Map<Integer, String> paramMap, String paramString3, String paramString4, UgcRightInfo paramUgcRightInfo, ShootInfo paramShootInfo, long paramLong2, int paramInt3, String paramString5, int paramInt4, Map<String, String> paramMap1, String paramString6, String paramString7, int paramInt5, String paramString8, LbsInfo paramLbsInfo2, long paramLong3, short paramShort, long paramLong4, Map<String, String> paramMap2, Map<String, byte[]> paramMap3)
   {
     this.uin = paramLong1;
     this.content = paramString1;
@@ -84,7 +84,7 @@ public final class operation_publishmood_req
     this.lbsinfo = paramLbsInfo1;
     this.source = paramSource;
     this.mediabittype = paramInt2;
-    this.busi_param = paramMap1;
+    this.busi_param = paramMap;
     this.clientkey = paramString3;
     this.open_appid = paramString4;
     this.right_info = paramUgcRightInfo;
@@ -93,7 +93,7 @@ public final class operation_publishmood_req
     this.mediaSubType = paramInt3;
     this.srcid = paramString5;
     this.modifyflag = paramInt4;
-    this.extend_info = paramMap2;
+    this.extend_info = paramMap1;
     this.richtype = paramString6;
     this.richval = paramString7;
     this.isWinPhone = paramInt5;
@@ -102,8 +102,8 @@ public final class operation_publishmood_req
     this.seal_id = paramLong3;
     this.frames = paramShort;
     this.lock_days = paramLong4;
-    this.stored_extend_info = paramMap3;
-    this.proto_extend_info = paramMap4;
+    this.stored_extend_info = paramMap2;
+    this.proto_extend_info = paramMap3;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -212,7 +212,7 @@ public final class operation_publishmood_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     NS_MOBILE_OPERATION.operation_publishmood_req
  * JD-Core Version:    0.7.0.1
  */

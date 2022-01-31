@@ -1,35 +1,75 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.ims.SafeReport.RspBody;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
 
-public final class amdv
-  extends ProtoUtils.TroopProtocolObserver
+public class amdv
+  extends alzl<amdw>
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public int a()
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      paramBundle = new SafeReport.RspBody();
+    return 530;
+  }
+  
+  @NonNull
+  public amdw a(int paramInt)
+  {
+    return new amdw();
+  }
+  
+  @Nullable
+  public amdw a(alzs[] paramArrayOfalzs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PicShareToWXConfigProcessor", 2, "onParsed");
     }
-    try
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
     {
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if ((paramBundle.uint32_result.has()) && (QLog.isColorLevel())) {
-        QLog.d("QSRPT", 2, String.format("report result: %d", new Object[] { Integer.valueOf(paramBundle.uint32_result.get()) }));
+      paramArrayOfalzs = paramArrayOfalzs[0].a;
+      if (QLog.isColorLevel()) {
+        QLog.d("PicShareToWXConfigProcessor", 2, "onParsed, content:" + paramArrayOfalzs);
       }
-      return;
+      return amdw.a(paramArrayOfalzs);
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
+    return new amdw();
+  }
+  
+  public Class a()
+  {
+    return amdw.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PicShareToWXConfigProcessor", 2, "onReqFailed");
     }
+  }
+  
+  public void a(amdw paramamdw)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PicShareToWXConfigProcessor", 2, "onUpdate");
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amdv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,56 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SerialStepExecutor;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStepExector.CompletedHandler;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.Step;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class oed
-  implements Runnable
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  public oed(SerialStepExecutor paramSerialStepExecutor) {}
-  
-  public void run()
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    if (SerialStepExecutor.a(this.a).size() == 0)
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d("VideoDynamicBufferConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    paramString = ocx.a(paramString);
+    Object localObject = paramString.keySet();
+    for (;;)
     {
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStepExector$CompletedHandler != null) {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStepExector$CompletedHandler.a();
+      String str1;
+      String str2;
+      try
+      {
+        localObject = ((Set)localObject).iterator();
+        if (((Iterator)localObject).hasNext())
+        {
+          str1 = (String)((Iterator)localObject).next();
+          str2 = (String)paramString.get(str1);
+          if (TextUtils.equals(str1, "dynamic_buffer_switch")) {
+            bgmq.l(Integer.parseInt(str2));
+          }
+        }
+        else
+        {
+          return true;
+        }
       }
-      SerialStepExecutor.a(this.a, 2);
-      this.a.d();
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep = ((Step)SerialStepExecutor.a(this.a).poll());
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep == null)
-    {
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStepExector$CompletedHandler != null) {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStepExector$CompletedHandler.a();
+      catch (Throwable paramString)
+      {
+        paramString.printStackTrace();
       }
-      SerialStepExecutor.a(this.a, 2);
-      this.a.d();
-      return;
+      if (TextUtils.equals(str1, "dynamic_buffer_config_json")) {
+        bgmq.g(str2);
+      }
     }
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep.b();
-    SLog.b("Q.qqstory.home.SerialStepExecutor", "剩下step:" + SerialStepExecutor.a(this.a).size());
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep.a(this.a);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep.a(this.a);
-    if (this.a.jdField_a_of_type_JavaLangObject == null) {
-      SLog.e("Q.qqstory.home.SerialStepExecutor", "step:" + this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep.a() + ",return null result");
-    }
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep.a(this.a.jdField_a_of_type_JavaLangObject);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep.a();
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    super.onWipeConfig(paramInt);
+    bgmq.l(0);
+    bgmq.g("");
   }
 }
 

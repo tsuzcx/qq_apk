@@ -1,28 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.emogroupstore.PicSelectAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasH5PayUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.support.annotation.Nullable;
+import dov.com.qq.im.AECamera.View.AECameraGLSurfaceView;
 
-public class wuw
-  implements DialogInterface.OnClickListener
+class wuw
+  implements bhwg<String>
 {
-  public wuw(PicSelectAdapter paramPicSelectAdapter) {}
+  wuw(wut paramwut) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(@Nullable String paramString)
   {
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
-    }
-    if (paramInt == 1) {
-      VasH5PayUtil.a(PicSelectAdapter.a(this.a), PicSelectAdapter.a(this.a), "mvip.n.a.bqsc_ql", 3, "1450000516", "CJCLUBT", PicSelectAdapter.a(this.a).getApp().getString(2131436963), "");
-    }
+    wut.a(this.a).setMaterial(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wuw
  * JD-Core Version:    0.7.0.1
  */

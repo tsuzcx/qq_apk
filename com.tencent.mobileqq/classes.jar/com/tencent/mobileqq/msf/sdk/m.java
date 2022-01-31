@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.msf.sdk;
 
-import android.os.RemoteException;
 import com.tencent.mobileqq.msf.sdk.report.c;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.IMsfServiceCallbacker.Stub;
@@ -19,14 +18,12 @@ class m
   }
   
   public void onRecvPushResp(FromServiceMsg paramFromServiceMsg)
-    throws RemoteException
   {
     k.a(this.a, paramFromServiceMsg);
     c.a().onRecvServicePushResp(paramFromServiceMsg);
   }
   
   public void onResponse(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
-    throws RemoteException
   {
     k.a(this.a, paramToServiceMsg, paramFromServiceMsg);
     c.a().onReceiveResp(paramToServiceMsg, paramFromServiceMsg);

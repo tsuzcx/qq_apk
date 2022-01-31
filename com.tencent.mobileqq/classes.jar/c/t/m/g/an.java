@@ -4,12 +4,10 @@ import android.net.SSLCertificateSocketFactory;
 import android.net.SSLSessionCache;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import android.util.Log;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.net.UnknownHostException;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 
@@ -26,42 +24,36 @@ class an
   }
   
   public Socket createSocket()
-    throws IOException
   {
     return null;
   }
   
   public Socket createSocket(String paramString, int paramInt)
-    throws IOException, UnknownHostException
   {
     return null;
   }
   
   public Socket createSocket(String paramString, int paramInt1, InetAddress paramInetAddress, int paramInt2)
-    throws IOException, UnknownHostException
   {
     return null;
   }
   
   public Socket createSocket(InetAddress paramInetAddress, int paramInt)
-    throws IOException
   {
     return null;
   }
   
   public Socket createSocket(InetAddress paramInetAddress1, int paramInt1, InetAddress paramInetAddress2, int paramInt2)
-    throws IOException
   {
     return null;
   }
   
   public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
-    throws IOException
   {
     if (TextUtils.isEmpty(this.c)) {
       throw new IOException("Halley set empty bizHost");
     }
-    Log.i(this.b, "customized createSocket. host: " + this.c);
+    new StringBuilder("customized createSocket. host: ").append(this.c);
     try
     {
       if (Build.VERSION.SDK_INT < 17)
@@ -110,7 +102,7 @@ class an
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     c.t.m.g.an
  * JD-Core Version:    0.7.0.1
  */

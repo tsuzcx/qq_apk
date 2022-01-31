@@ -1,13 +1,24 @@
-import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView;
+import android.text.TextUtils;
 
-public class omk
-  implements Runnable
+class omk
 {
-  public omk(ArtFilterItemView paramArtFilterItemView) {}
+  public String a;
+  public String b;
   
-  public void run()
+  omk(String paramString1, String paramString2)
   {
-    this.a.a();
+    this.a = paramString1;
+    this.b = paramString2;
+  }
+  
+  public boolean a()
+  {
+    return (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.b));
+  }
+  
+  public String toString()
+  {
+    return "[insertArticleInfo] algorithmID = " + this.a + ", rowKey = " + this.b;
   }
 }
 

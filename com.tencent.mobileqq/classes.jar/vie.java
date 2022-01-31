@@ -1,45 +1,151 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VasH5PayUtil;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.takevideo.tag.TagItemEntry;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import javax.annotation.Nonnull;
 
-public final class vie
-  implements DialogInterface.OnClickListener
+public class vie
 {
-  public vie(QQAppInterface paramQQAppInterface, int paramInt1, Activity paramActivity, int paramInt2) {}
+  private final int jdField_a_of_type_Int = 20;
+  private atmp jdField_a_of_type_Atmp;
+  private String jdField_a_of_type_JavaLangString = "";
+  private List<vik> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private uwb jdField_a_of_type_Uwb;
+  private final vih jdField_a_of_type_Vih;
+  private vik jdField_a_of_type_Vik;
+  private int b = 1;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public vie(vih paramvih, atmp paramatmp)
   {
-    if (true == PokeItemHelper.a) {
-      PokeItemHelper.a = false;
+    this.jdField_a_of_type_Vih = paramvih;
+    this.jdField_a_of_type_Atmp = paramatmp;
+  }
+  
+  public static List<vik> a(atmp paramatmp)
+  {
+    Object localObject = a(paramatmp, TagItemEntry.class, TagItemEntry.class.getSimpleName(), null, null);
+    paramatmp = (atmp)localObject;
+    if (localObject == null) {
+      paramatmp = new ArrayList();
     }
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    localObject = new ArrayList();
+    paramatmp = paramatmp.iterator();
+    while (paramatmp.hasNext()) {
+      ((List)localObject).add(new vik((TagItemEntry)paramatmp.next()));
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      QLog.d("vaspoke", 4, "dialogInterfaceOnClick mApp is null.");
-    }
-    while (((2 != this.jdField_a_of_type_Int) && (4 != this.jdField_a_of_type_Int)) || (paramInt != 1)) {
-      return;
-    }
-    if (2 == this.jdField_a_of_type_Int)
+    return localObject;
+  }
+  
+  public static List<? extends atmo> a(atmp paramatmp, Class<? extends atmo> paramClass, String paramString1, String paramString2, String[] paramArrayOfString)
+  {
+    return paramatmp.a(paramClass, paramString1, false, paramString2, paramArrayOfString, null, null, null, null, null);
+  }
+  
+  public static void a(atmp paramatmp, List<vik> paramList)
+  {
+    try
     {
-      VasH5PayUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, "mvip.g.a.poke_" + this.b, 3, "1450000515", "LTMCLUB", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131436760), "");
-      VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTipClick", "", 0, 0, 0, "", String.valueOf(this.b), "vip", "", "", "", "", 0, 0, 0, 0);
+      Object localObject = a(paramatmp, TagItemEntry.class, TagItemEntry.class.getSimpleName(), null, null);
+      if (localObject != null)
+      {
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          TagItemEntry localTagItemEntry = (TagItemEntry)((Iterator)localObject).next();
+          localTagItemEntry.setStatus(1001);
+          paramatmp.b(localTagItemEntry);
+        }
+      }
+    }
+    finally
+    {
+      paramatmp.a().b();
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      paramatmp.b(((vik)paramList.next()).a());
+    }
+    paramatmp.a().c();
+    paramatmp.a().b();
+  }
+  
+  public List<vik> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  @Nullable
+  public vik a()
+  {
+    return this.jdField_a_of_type_Vik;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_Uwb = null;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.b = 1;
+    this.jdField_a_of_type_Vik = null;
+  }
+  
+  public void a(List<vik> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+  }
+  
+  public void a(@Nonnull uwb paramuwb)
+  {
+    urk.a("EditVideoTagPresenter", "%s refresh data, behavior:%s", this, paramuwb);
+    this.jdField_a_of_type_Uwb = paramuwb;
+    if (paramuwb.jdField_a_of_type_Boolean) {}
+    for (paramuwb = new tak(paramuwb.jdField_a_of_type_Int, paramuwb.jdField_a_of_type_Long, "", 20);; paramuwb = new tak("", 20))
+    {
+      slv.a().a(paramuwb, new vif(this));
       return;
     }
-    VasH5PayUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, "mvip.g.a.poke_" + this.b, 3, "1450000516", "CJCLUBT", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131436963), "");
-    VasWebviewUtil.reportCommercialDrainage("", "poke", "vipTipClick", "", 0, 0, 0, "", String.valueOf(this.b), "svip", "", "", "", "", 0, 0, 0, 0);
+  }
+  
+  public void a(vik paramvik)
+  {
+    this.jdField_a_of_type_Vik = paramvik;
+  }
+  
+  public boolean a()
+  {
+    return this.b == 1;
+  }
+  
+  public boolean a(uwb paramuwb)
+  {
+    if (this.jdField_a_of_type_Uwb != null) {
+      if (this.jdField_a_of_type_Uwb.equals(paramuwb)) {}
+    }
+    while (paramuwb != null)
+    {
+      return true;
+      return false;
+    }
+    return false;
+  }
+  
+  public void b(@Nonnull uwb paramuwb)
+  {
+    urk.a("EditVideoTagPresenter", "%s loadMore data, behavior:%s", this, paramuwb);
+    this.jdField_a_of_type_Uwb = paramuwb;
+    if (paramuwb.jdField_a_of_type_Boolean) {}
+    for (paramuwb = new tak(paramuwb.jdField_a_of_type_Int, paramuwb.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, 20);; paramuwb = new tak(this.jdField_a_of_type_JavaLangString, 20))
+    {
+      slv.a().a(paramuwb, new vig(this));
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vie
  * JD-Core Version:    0.7.0.1
  */

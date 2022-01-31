@@ -1,22 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import java.util.ArrayList;
 
-public class ojo
-  implements Animation.AnimationListener
+class ojo
+  implements View.OnClickListener
 {
-  public ojo(EditVideoGuide paramEditVideoGuide) {}
+  ojo(ojn paramojn) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.h();
-    this.a.a.a(0);
+    int i = ((Integer)paramView.getTag()).intValue();
+    this.a.a.a(paramView, i);
+    nzv.a(this.a.a.getActivity(), "0X8009A71", this.a.a.a(), ((ojm)this.a.a.a.get(i)).a.mChannelCoverId);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

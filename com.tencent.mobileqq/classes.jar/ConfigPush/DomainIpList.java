@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class DomainIpList
   extends JceStruct
 {
-  static ArrayList cache_vIplist;
+  static ArrayList<DomainIpInfo> cache_vIplist;
   public int uDomain_type;
-  public ArrayList vIplist;
+  public ArrayList<DomainIpInfo> vIplist;
   
   public DomainIpList() {}
   
-  public DomainIpList(int paramInt, ArrayList paramArrayList)
+  public DomainIpList(int paramInt, ArrayList<DomainIpInfo> paramArrayList)
   {
     this.uDomain_type = paramInt;
     this.vIplist = paramArrayList;

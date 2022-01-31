@@ -1,52 +1,30 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ConfigHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloaderGetCodeServer;
-import eipc.EIPCResult;
-import java.util.Map;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
 public class alpi
-  extends QIPCModule
+  implements View.OnClickListener
 {
-  public alpi(DownloaderGetCodeServer paramDownloaderGetCodeServer, String paramString)
-  {
-    super(paramString);
-  }
+  public alpi(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  public void onClick(View paramView)
   {
-    LogUtility.c("DownloaderWriteCodeIPC", "onCall action|" + paramString + " params|" + paramBundle + " callbackId|" + paramInt);
-    Object localObject = DownloaderGetCodeServer.a(this.a);
-    if (localObject == null) {
-      LogUtility.c("DownloaderWriteCodeIPC", "onCall action but appInterface is null");
-    }
-    String str;
-    int i;
-    do
+    paramView = (alpm)paramView.getTag();
+    if (!((ajjj)this.a.app.getManager(51)).b(paramView.a)) {}
+    for (int i = 35;; i = 1)
     {
-      do
-      {
-        return null;
-      } while ((!"DownloaderWriteCodeIPC_Action__GetCode".equals(paramString)) || (paramBundle == null));
-      str = paramBundle.getString("PackageName");
-      i = paramBundle.getInt("VersionCode");
-      LogUtility.c("DownloaderWriteCodeIPC", "onCall action|" + paramString + " packageName|" + str + " versionCode|" + i);
-    } while (str == null);
-    ((QQAppInterface)localObject).a(DownloaderGetCodeServer.a(this.a));
-    paramString = (ConfigHandler)((QQAppInterface)localObject).a(4);
-    localObject = str + "_" + i;
-    paramBundle.putInt("CallbackId", paramInt);
-    paramBundle = new Bundle(paramBundle);
-    DownloaderGetCodeServer.a(this.a).put(localObject, paramBundle);
-    paramString.a(str, i, (String)localObject);
-    return null;
+      paramView = new ProfileActivity.AllInOne(paramView.a, i);
+      ProfileActivity.a(this.a, paramView, 1016);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     alpi
  * JD-Core Version:    0.7.0.1
  */

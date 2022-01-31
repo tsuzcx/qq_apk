@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.ar.config.SplashPopupWin;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.EditActivity;
 
-class aaqi
-  implements Runnable
+public class aaqi
+  implements View.OnClickListener
 {
-  aaqi(aaqh paramaaqh) {}
+  public aaqi(EditActivity paramEditActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QLog.w("WorldCupMgr", 1, "SplashPopupWin, 提前显示按钮");
-    this.a.a.a(0);
+    if ((EditActivity.a(this.a) != null) && (EditActivity.a(this.a).isShowing()) && (EditActivity.a(this.a).getWindow() != null)) {
+      EditActivity.a(this.a).dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaqi
  * JD-Core Version:    0.7.0.1
  */

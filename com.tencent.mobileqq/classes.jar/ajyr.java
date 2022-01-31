@@ -1,141 +1,82 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageForTroopTopic;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.data.TroopTopicDetailInfo;
-import com.tencent.mobileqq.troop.utils.TroopTopicMgr;
-import com.tencent.mobileqq.troop.utils.TroopTopicObserver;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
 public class ajyr
-  extends ProtoUtils.TroopProtocolObserver
 {
-  public ajyr(TroopTopicMgr paramTroopTopicMgr, TroopTopicDetailInfo paramTroopTopicDetailInfo, MessageRecord paramMessageRecord) {}
+  public static int a;
+  public static long a;
+  public static Integer[] a;
+  public static int b;
+  public static Integer[] b;
+  public static int c;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  static
   {
-    paramBundle = new Bundle();
-    if (paramInt == 0) {
-      if (paramArrayOfByte == null) {}
-    }
+    jdField_a_of_type_Int = 9999;
+    jdField_b_of_type_Int = 2147483647;
+    c = 3000;
+    jdField_a_of_type_Long = 863913600L;
+    jdField_a_of_type_ArrayOfJavaLangInteger = new Integer[] { Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(3000) };
+    jdField_b_of_type_ArrayOfJavaLangInteger = new Integer[] { Integer.valueOf(1), Integer.valueOf(4), Integer.valueOf(2), Integer.valueOf(3) };
+  }
+  
+  public static boolean a(int paramInt)
+  {
+    boolean bool2 = false;
+    Integer[] arrayOfInteger = jdField_a_of_type_ArrayOfJavaLangInteger;
+    int j = arrayOfInteger.length;
+    int i = 0;
     for (;;)
     {
-      boolean bool;
-      try
+      boolean bool1 = bool2;
+      if (i < j)
       {
-        Object localObject = new WebSsoBody.WebSsoResponseBody();
-        ((WebSsoBody.WebSsoResponseBody)localObject).mergeFrom(paramArrayOfByte);
-        paramInt = ((WebSsoBody.WebSsoResponseBody)localObject).ret.get();
-        if (QLog.isColorLevel()) {
-          QLog.i(".troop.troop_topic.TroopTopicMgr", 2, "receive cmd=MQUpdateSvc_com_qq_buluo.web.sbar_post_extinfo, ret=" + paramInt + ", msg=" + ((WebSsoBody.WebSsoResponseBody)localObject).data.get());
-        }
-        paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopTopicDetailInfo;
-        if (paramArrayOfByte != null) {
-          break label495;
-        }
-        if (!(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForTroopTopic)) {
-          continue;
-        }
-        paramArrayOfByte = TroopTopicDetailInfo.copyFrom((MessageForTroopTopic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-        if (paramInt != 0) {
-          continue;
-        }
-        localObject = new JSONObject(((WebSsoBody.WebSsoResponseBody)localObject).data.get());
-        int i = ((JSONObject)localObject).getInt("retcode");
-        paramInt = i;
-        if (i == 0)
-        {
-          localObject = ((JSONObject)localObject).getJSONObject("result");
-          paramArrayOfByte.mLikeNum = ((JSONObject)localObject).optInt("likes", 0);
-          paramArrayOfByte.mCommentNum = ((JSONObject)localObject).optInt("commentnum", 0);
-          paramArrayOfByte.mViewCommentUrl = ((JSONObject)localObject).optString("comment_url");
-          if (((JSONObject)localObject).optInt("is_zan") != 1) {
-            break label498;
-          }
-          bool = true;
-          paramArrayOfByte.mIsZan = bool;
-          paramBundle.putString("data", ((JSONObject)localObject).toString());
-          long l1 = ((JSONObject)localObject).optLong("version");
-          long l2 = ((JSONObject)localObject).optLong("msg_seq");
-          if ((l1 <= 0L) || (l2 <= 0L)) {
-            continue;
-          }
-          paramArrayOfByte.pVersion = l1;
-          paramArrayOfByte.mOldVersion = l1;
-          ThreadManager.post(new ajys(this, paramArrayOfByte), 8, null, false);
-          paramBundle.putParcelable("detailInfo", paramArrayOfByte);
-          paramInt = i;
-          if (QLog.isColorLevel())
-          {
-            QLog.i(".troop.troop_topic.TroopTopicMgr", 2, "receive cmd=MQUpdateSvc_com_qq_buluo.web.sbar_post_extinfo success");
-            paramInt = i;
-          }
+        if (arrayOfInteger[i].intValue() == paramInt) {
+          bool1 = true;
         }
       }
-      catch (Exception paramArrayOfByte)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.w(".troop.troop_topic.TroopTopicMgr", 2, "receive cmd=MQUpdateSvc_com_qq_buluo.web.sbar_aio_content, parse error", paramArrayOfByte);
-        paramInt = 9992;
-        continue;
-        paramArrayOfByte.mLikeNum = 0;
-        paramArrayOfByte.mCommentNum = 0;
-        ThreadManager.post(new ajyt(this, paramArrayOfByte), 8, null, false);
-        continue;
+      else {
+        return bool1;
       }
-      paramBundle.putInt("ret", paramInt);
-      paramArrayOfByte = TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr);
-      if (paramInt == 0)
+      i += 1;
+    }
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser)
+  {
+    if (NetConnInfoCenter.getServerTime() - paramRecentUser.lastmsgtime >= jdField_a_of_type_Long) {}
+    while ((!a(paramRecentUser.getType())) || ((paramRecentUser.getType() == 1) && (!b(paramQQAppInterface.b(paramRecentUser.uin))))) {
+      return false;
+    }
+    return true;
+  }
+  
+  public static boolean b(int paramInt)
+  {
+    boolean bool2 = false;
+    Integer[] arrayOfInteger = jdField_b_of_type_ArrayOfJavaLangInteger;
+    int j = arrayOfInteger.length;
+    int i = 0;
+    for (;;)
+    {
+      boolean bool1 = bool2;
+      if (i < j)
       {
-        bool = true;
-        paramArrayOfByte.notifyObservers(TroopTopicObserver.class, 1, bool, paramBundle);
-        return;
-        paramArrayOfByte = new TroopTopicDetailInfo();
-        paramArrayOfByte.troopUin = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin;
-        paramArrayOfByte.msgSeq = this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.shmsgseq;
-        continue;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i(".troop.troop_topic.TroopTopicMgr", 2, "receive cmd=MQUpdateSvc_com_qq_buluo.web.sbar_post_extinfo. pVersion is zero. return");
-        return;
-        if (QLog.isColorLevel())
-        {
-          QLog.w(".troop.troop_topic.TroopTopicMgr", 2, "receive cmd=MQUpdateSvc_com_qq_buluo.web.sbar_aio_content, no data");
-          break label504;
-          if (QLog.isColorLevel()) {
-            QLog.w(".troop.troop_topic.TroopTopicMgr", 2, "receive cmd=MQUpdateSvc_com_qq_buluo.web.sbar_aio_content, not success");
-          }
-          paramInt = 9992;
-          continue;
+        if (arrayOfInteger[i].intValue() == paramInt) {
+          bool1 = true;
         }
       }
-      else
-      {
-        bool = false;
-        continue;
-        label495:
-        continue;
-        label498:
-        bool = false;
-        continue;
+      else {
+        return bool1;
       }
-      label504:
-      paramInt = 9991;
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajyr
  * JD-Core Version:    0.7.0.1
  */

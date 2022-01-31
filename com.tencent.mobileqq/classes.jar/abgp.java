@@ -1,20 +1,33 @@
-import com.tencent.mobileqq.armap.ItemInfo;
-import com.tencent.mobileqq.armap.POIInfo;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
+import java.lang.ref.WeakReference;
 
-class abgp
-  implements Runnable
+public class abgp
+  extends BroadcastReceiver
 {
-  abgp(abgo paramabgo, ItemInfo paramItemInfo) {}
+  WeakReference<PayBridgeActivity> a;
   
-  public void run()
+  public abgp(PayBridgeActivity paramPayBridgeActivity)
   {
-    ARMapEngine.removePOITask(this.jdField_a_of_type_ComTencentMobileqqArmapItemInfo.a.a);
+    this.a = new WeakReference(paramPayBridgeActivity);
+  }
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ((paramIntent != null) && ("action_launch_completed".equals(paramIntent.getAction())) && ("qwallet_plugin.apk".equals(paramIntent.getStringExtra("plugin_apk"))) && (this.a != null))
+    {
+      paramContext = (PayBridgeActivity)this.a.get();
+      if (paramContext != null) {
+        paramContext.b = true;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abgp
  * JD-Core Version:    0.7.0.1
  */

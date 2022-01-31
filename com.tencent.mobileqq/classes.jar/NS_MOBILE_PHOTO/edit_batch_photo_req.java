@@ -11,15 +11,15 @@ public final class edit_batch_photo_req
   extends JceStruct
 {
   static EditPhoto cache_PhotoInfo;
-  static Map cache_busi_param;
-  static ArrayList cache_picid_list = new ArrayList();
-  static Map cache_picid_time_list;
+  static Map<Integer, String> cache_busi_param;
+  static ArrayList<String> cache_picid_list = new ArrayList();
+  static Map<String, EditPhoto> cache_picid_time_list;
   public EditPhoto PhotoInfo;
   public String albumid = "";
-  public Map busi_param;
+  public Map<Integer, String> busi_param;
   public int operatype;
-  public ArrayList picid_list;
-  public Map picid_time_list;
+  public ArrayList<String> picid_list;
+  public Map<String, EditPhoto> picid_time_list;
   
   static
   {
@@ -34,14 +34,14 @@ public final class edit_batch_photo_req
   
   public edit_batch_photo_req() {}
   
-  public edit_batch_photo_req(String paramString, ArrayList paramArrayList, EditPhoto paramEditPhoto, Map paramMap1, int paramInt, Map paramMap2)
+  public edit_batch_photo_req(String paramString, ArrayList<String> paramArrayList, EditPhoto paramEditPhoto, Map<Integer, String> paramMap, int paramInt, Map<String, EditPhoto> paramMap1)
   {
     this.albumid = paramString;
     this.picid_list = paramArrayList;
     this.PhotoInfo = paramEditPhoto;
-    this.busi_param = paramMap1;
+    this.busi_param = paramMap;
     this.operatype = paramInt;
-    this.picid_time_list = paramMap2;
+    this.picid_time_list = paramMap1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)

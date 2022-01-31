@@ -1,31 +1,83 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import KQQ.ReqItem;
+import KQQ.RespItem;
+import com.qq.jce.wup.UniPacket;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import protocol.KQQConfig.GetResourceReqInfo;
 
-class acny
-  implements AbsListView.OnScrollListener
+public class acny
+  extends ajgd
+  implements awbo
 {
-  acny(acnx paramacnx) {}
+  private ToServiceMsg a;
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public acny(QQAppInterface paramQQAppInterface)
   {
-    if (paramInt == 0)
-    {
-      URLDrawable.resume();
-      if (this.a.jdField_a_of_type_Acnw.jdField_a_of_type_Int == 1) {
-        EmotionPanelViewPagerAdapter.a(this.a.jdField_a_of_type_Acnw.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter, this.a.jdField_a_of_type_JavaUtilList, this.a.jdField_a_of_type_Acnw.jdField_a_of_type_ComTencentWidgetListView);
-      }
-      return;
-    }
-    URLDrawable.pause();
+    super(paramQQAppInterface);
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  public int a()
+  {
+    return 7;
+  }
+  
+  public ReqItem a(int paramInt)
+  {
+    Object localObject2 = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("AioAnimationConfigCheckUpdateItem", 2, "getCheckUpdateItemData:");
+    }
+    a(null, new GetResourceReqInfo[] { a() });
+    Object localObject1 = localObject2;
+    if (this.a != null)
+    {
+      xfp localxfp = this.app.a.a(this.a.getServiceCmd());
+      localObject1 = localObject2;
+      if (localxfp != null)
+      {
+        UniPacket localUniPacket = new UniPacket(true);
+        localUniPacket.setEncodeName("utf-8");
+        localObject1 = localObject2;
+        if (localxfp.a(this.a, localUniPacket))
+        {
+          localObject1 = new ReqItem();
+          ((ReqItem)localObject1).eServiceID = 120;
+          ((ReqItem)localObject1).vecParam = localUniPacket.encode();
+        }
+      }
+    }
+    return localObject1;
+  }
+  
+  public void a(RespItem paramRespItem)
+  {
+    if (paramRespItem != null)
+    {
+      int i = paramRespItem.cResult;
+      Object localObject = paramRespItem.vecUpdate;
+      if (QLog.isColorLevel()) {
+        QLog.d("AioAnimationConfigCheckUpdateItem", 2, "handleCheckUpdateItemData: item.cResult = " + i + ", dataLen = " + localObject.length);
+      }
+      if ((paramRespItem.eServiceID == 120) && (paramRespItem.cResult == 2))
+      {
+        localObject = new FromServiceMsg(this.app.getAccount(), "ResourceConfig.GetResourceReq");
+        ((FromServiceMsg)localObject).setMsgSuccess();
+        ((FromServiceMsg)localObject).putWupBuffer(paramRespItem.vecUpdate);
+        this.app.a(this.a, (FromServiceMsg)localObject);
+      }
+    }
+  }
+  
+  public void send(ToServiceMsg paramToServiceMsg)
+  {
+    this.a = paramToServiceMsg;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acny
  * JD-Core Version:    0.7.0.1
  */

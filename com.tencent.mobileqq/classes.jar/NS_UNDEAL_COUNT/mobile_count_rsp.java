@@ -10,8 +10,8 @@ import java.util.Map;
 public final class mobile_count_rsp
   extends JceStruct
 {
-  static Map cache_mapBuf;
-  static Map cache_mapLastGetTime;
+  static Map<Long, s_comm_data> cache_mapBuf;
+  static Map<Long, Long> cache_mapLastGetTime;
   static master_info cache_masterinfo = new master_info();
   static single_count cache_stActiveCount;
   static single_count cache_stAppCount;
@@ -36,13 +36,13 @@ public final class mobile_count_rsp
   static single_count cache_stVisitorCount;
   static yellow_info cache_stYellowInfo;
   static single_count cache_stZebraAppInfo;
-  static ArrayList cache_vecOperateInfo;
-  static ArrayList cache_vecUpdateFeedFriendsList;
-  static ArrayList cache_vecUpdatePassiveList;
+  static ArrayList<operat_data> cache_vecOperateInfo;
+  static ArrayList<feed_host_info> cache_vecUpdateFeedFriendsList;
+  static ArrayList<feed_host_info> cache_vecUpdatePassiveList;
   public long busiFlag;
   public int iNextTimeout;
-  public Map mapBuf;
-  public Map mapLastGetTime;
+  public Map<Long, s_comm_data> mapBuf;
+  public Map<Long, Long> mapLastGetTime;
   public master_info masterinfo;
   public single_count stActiveCount;
   public single_count stAppCount;
@@ -70,9 +70,9 @@ public final class mobile_count_rsp
   public String strDeviceName = "";
   public String strNick = "";
   public long uRspMask;
-  public ArrayList vecOperateInfo;
-  public ArrayList vecUpdateFeedFriendsList;
-  public ArrayList vecUpdatePassiveList;
+  public ArrayList<operat_data> vecOperateInfo;
+  public ArrayList<feed_host_info> vecUpdateFeedFriendsList;
+  public ArrayList<feed_host_info> vecUpdatePassiveList;
   
   static
   {
@@ -116,7 +116,7 @@ public final class mobile_count_rsp
   
   public mobile_count_rsp() {}
   
-  public mobile_count_rsp(single_count paramsingle_count1, single_count paramsingle_count2, single_count paramsingle_count3, single_count paramsingle_count4, long paramLong1, ban_info paramban_info, birth_info parambirth_info, String paramString1, single_count paramsingle_count5, int paramInt, single_count paramsingle_count6, single_count paramsingle_count7, yellow_info paramyellow_info, ArrayList paramArrayList1, String paramString2, ArrayList paramArrayList2, single_count paramsingle_count8, single_count paramsingle_count9, single_count paramsingle_count10, Map paramMap1, single_count paramsingle_count11, single_count paramsingle_count12, single_count paramsingle_count13, single_count paramsingle_count14, single_count paramsingle_count15, single_count paramsingle_count16, master_info parammaster_info1, ArrayList paramArrayList3, single_count paramsingle_count17, single_count paramsingle_count18, Map paramMap2, medal_info parammedal_info, long paramLong2, master_info parammaster_info2)
+  public mobile_count_rsp(single_count paramsingle_count1, single_count paramsingle_count2, single_count paramsingle_count3, single_count paramsingle_count4, long paramLong1, ban_info paramban_info, birth_info parambirth_info, String paramString1, single_count paramsingle_count5, int paramInt, single_count paramsingle_count6, single_count paramsingle_count7, yellow_info paramyellow_info, ArrayList<feed_host_info> paramArrayList1, String paramString2, ArrayList<feed_host_info> paramArrayList2, single_count paramsingle_count8, single_count paramsingle_count9, single_count paramsingle_count10, Map<Long, s_comm_data> paramMap, single_count paramsingle_count11, single_count paramsingle_count12, single_count paramsingle_count13, single_count paramsingle_count14, single_count paramsingle_count15, single_count paramsingle_count16, master_info parammaster_info1, ArrayList<operat_data> paramArrayList, single_count paramsingle_count17, single_count paramsingle_count18, Map<Long, Long> paramMap1, medal_info parammedal_info, long paramLong2, master_info parammaster_info2)
   {
     this.stPassiveCount = paramsingle_count1;
     this.stActiveCount = paramsingle_count2;
@@ -137,7 +137,7 @@ public final class mobile_count_rsp
     this.stReadSpace = paramsingle_count8;
     this.stFlower = paramsingle_count9;
     this.stSubscribeAlbum = paramsingle_count10;
-    this.mapBuf = paramMap1;
+    this.mapBuf = paramMap;
     this.stGameBarInfo = paramsingle_count11;
     this.stPersionalInfo = paramsingle_count12;
     this.stQzoneVipInfo = paramsingle_count13;
@@ -145,10 +145,10 @@ public final class mobile_count_rsp
     this.stSecretInfo = paramsingle_count15;
     this.stHappyRoom = paramsingle_count16;
     this.stMasterInfo = parammaster_info1;
-    this.vecOperateInfo = paramArrayList3;
+    this.vecOperateInfo = paramArrayList;
     this.stZebraAppInfo = paramsingle_count17;
     this.stSecretPavInfo = paramsingle_count18;
-    this.mapLastGetTime = paramMap2;
+    this.mapLastGetTime = paramMap1;
     this.stMedalInfo = parammedal_info;
     this.busiFlag = paramLong2;
     this.masterinfo = parammaster_info2;

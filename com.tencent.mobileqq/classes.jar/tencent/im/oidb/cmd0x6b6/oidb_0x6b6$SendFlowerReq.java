@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x6b6$SendFlowerReq
-  extends MessageMicro
+  extends MessageMicro<SendFlowerReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_gift_text = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -37,7 +37,7 @@ public final class oidb_0x6b6$SendFlowerReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x6b6.oidb_0x6b6.SendFlowerReq
  * JD-Core Version:    0.7.0.1
  */

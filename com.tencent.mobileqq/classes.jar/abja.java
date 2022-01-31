@@ -1,20 +1,20 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.armap.ARMapOpenRedPackDialog;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class abja
-  implements Runnable
+  extends ajjh
 {
-  public abja(ARMapOpenRedPackDialog paramARMapOpenRedPackDialog) {}
+  public abja(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void run()
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    ARMapOpenRedPackDialog.a(this.a).setVisibility(0);
-    ARMapOpenRedPackDialog.a(this.a).startAnimation(ARMapOpenRedPackDialog.a(this.a));
+    if (paramBoolean) {
+      this.a.c();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abja
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class PubAccountAssistantData
-  extends Entity
+  extends atmo
 {
   public int mDistance;
   public long mLastDraftTime;
   public long mLastMsgTime;
   public int mType;
-  @unique
+  @atoc
   public String mUin;
 }
 

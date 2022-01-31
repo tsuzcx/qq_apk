@@ -1,70 +1,47 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
-import com.tencent.mobileqq.nearby.gameroom.GameQuickWordsPanel;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginInterface;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
-import com.tencent.widget.PatchedButton;
-import com.tencent.widget.XEditTextEx;
-import com.tencent.widget.XPanelContainer;
-import java.util.HashMap;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetCommentListRsp;
+import NS_COMM.COMM.StCommonExt;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.Dispatcher;
+import java.util.ArrayList;
+import java.util.Map;
 
-public class vzn
-  implements View.OnClickListener
+class vzn
+  implements wxx<CertifiedAccountRead.StGetCommentListRsp>
 {
-  public vzn(GameRoomChatPie paramGameRoomChatPie) {}
+  vzn(vzf paramvzf, CertifiedAccountMeta.StFeed paramStFeed) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetCommentListRsp paramStGetCommentListRsp)
   {
-    HashMap localHashMap1 = this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a().b();
-    HashMap localHashMap2 = this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a().a();
-    if (paramView == this.a.n) {
-      if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getVisibility() != 0)
-      {
-        if (localHashMap1 != null) {
-          this.a.n.setImageDrawable((Drawable)localHashMap1.get("audioIcon"));
-        }
-        this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(0);
-        GameRoomChatPie.a(this.a).setVisibility(0);
-        this.a.j.setVisibility(4);
-        GameRoomChatPie.a(this.a).a(25);
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel != null) && (localHashMap2 != null)) {
-          this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameQuickWordsPanel.setBackgroundColor(((Integer)localHashMap2.get("quickWordBgColor")).intValue());
-        }
-      }
-    }
-    while (paramView != this.a.o)
+    vzf.a(this.jdField_a_of_type_Vzf, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get(), true);
+    if (paramStGetCommentListRsp == null)
     {
-      return;
-      if (localHashMap1 != null) {
-        this.a.n.setImageDrawable((Drawable)localHashMap1.get("textIcon"));
-      }
-      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(4);
-      GameRoomChatPie.b(this.a).setVisibility(4);
-      this.a.j.setVisibility(0);
-      this.a.ay();
+      QLog.d(vzf.a(), 1, "getCommentSize: rsp is null");
       return;
     }
-    if (GameRoomChatPie.b(this.a).a() != 3)
+    if (vzf.a(this.jdField_a_of_type_Vzf).get(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get()) != null)
     {
-      this.a.a(Integer.valueOf(3));
-      if (localHashMap1 != null) {
-        this.a.n.setImageDrawable((Drawable)localHashMap1.get("audioIcon"));
-      }
-      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setVisibility(0);
-      GameRoomChatPie.c(this.a).setVisibility(0);
-      this.a.j.setVisibility(4);
+      QLog.d(vzf.a(), 2, "getCommentSize:" + paramStGetCommentListRsp.vecComment.size() + ", attachInfo:" + paramStGetCommentListRsp.extInfo.attachInfo.get() + "isFinish：" + paramStGetCommentListRsp.isFinish.get());
+      ((ArrayList)vzf.a(this.jdField_a_of_type_Vzf).get(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get())).addAll(paramStGetCommentListRsp.vecComment.get());
+    }
+    vzf localvzf = this.jdField_a_of_type_Vzf;
+    String str = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.id.get();
+    COMM.StCommonExt localStCommonExt = paramStGetCommentListRsp.extInfo;
+    if (paramStGetCommentListRsp.isFinish.get() == 0) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      vzf.a(localvzf, str, localStCommonExt, paramBoolean, true);
+      sgi.a().dispatch(this.jdField_a_of_type_Vzf.a(new Object[] { Integer.valueOf(9), Long.valueOf(paramLong), paramString, paramStGetCommentListRsp, Integer.valueOf(this.jdField_a_of_type_Vzf.hashCode()) }));
       return;
     }
-    this.a.ay();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vzn
  * JD-Core Version:    0.7.0.1
  */

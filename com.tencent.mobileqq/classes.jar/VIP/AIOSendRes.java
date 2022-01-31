@@ -9,9 +9,9 @@ import java.util.Map;
 public final class AIOSendRes
   extends JceStruct
 {
-  static Map cache_mHighLightMap = new HashMap();
+  static Map<String, String> cache_mHighLightMap = new HashMap();
   public int iPopGrayStip;
-  public Map mHighLightMap;
+  public Map<String, String> mHighLightMap;
   public String sGrayStipMsg = "";
   
   static
@@ -21,7 +21,7 @@ public final class AIOSendRes
   
   public AIOSendRes() {}
   
-  public AIOSendRes(int paramInt, String paramString, Map paramMap)
+  public AIOSendRes(int paramInt, String paramString, Map<String, String> paramMap)
   {
     this.iPopGrayStip = paramInt;
     this.sGrayStipMsg = paramString;

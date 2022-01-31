@@ -1,34 +1,56 @@
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import com.tencent.device.msg.data.DeviceGroupChatMsgProcessor;
-import com.tencent.device.msg.data.DeviceMsgHandle;
-import com.tencent.mobileqq.activity.aio.item.DevicePicItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForDeviceFile;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
 public class vax
-  implements ActionSheet.OnButtonClickListener
+  implements vbz
 {
-  public vax(DevicePicItemBuilder paramDevicePicItemBuilder, MessageForDeviceFile paramMessageForDeviceFile, ActionSheet paramActionSheet) {}
+  private vax(DoodleLayout paramDoodleLayout) {}
   
-  public void OnClick(View paramView, int paramInt)
+  private void a()
   {
-    if ("device_groupchat".equals(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile.extStr)) {
-      ((DeviceMsgHandle)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDevicePicItemBuilder.a.a(49)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
-    }
-    for (;;)
+    this.a.a(new View[] { this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePanel, this.a.jdField_a_of_type_AndroidWidgetRelativeLayout });
+    this.a.a(false);
+    this.a.b(new View[] { this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView });
+    this.a.setDoodleGLViewVisibility(0);
+    this.a.c(0);
+    this.a.d(0);
+  }
+  
+  public void a(uyv paramuyv, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    urk.a("DoodleLayout", "onNormalFaceSelected, item : %s , x : %s , y : %s , scale : %s ", paramuyv, Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Float.valueOf(paramFloat3));
+    a();
+    uyb localuyb = new uyb(paramFloat1, paramFloat2 + this.a.a(), paramFloat3, 0.0F, 0.0F, 0.0F, paramuyv.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth(), paramuyv.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a == 3))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDevicePicItemBuilder.b();
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDevicePicItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+      LpReportInfo_pf00064.allReport(615, 6);
+      LpReportInfo_pf00064.allReport(615, 4, 2);
     }
+    if (this.a.a().a(paramuyv.jdField_a_of_type_JavaLangString, paramuyv.b, paramuyv.jdField_a_of_type_AndroidGraphicsDrawableDrawable, localuyb))
+    {
+      DoodleLayout.a("clk_oneface");
+      urq.a("0X80076CA");
+      urq.b("0X80075DF");
+    }
+  }
+  
+  public void a(vcb paramvcb)
+  {
+    urk.b("DoodleLayout", "onLocationFaceSelected, pictureUrl:" + paramvcb.d);
+    a();
+    this.a.a(paramvcb);
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a == 3) {
+      LpReportInfo_pf00064.report(615, 6);
+    }
+    urq.b("0X80075E3");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vax
  * JD-Core Version:    0.7.0.1
  */

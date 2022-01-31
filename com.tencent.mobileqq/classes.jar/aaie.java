@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
-import com.tencent.mobileqq.ar.ARRenderModel.MultiFragmentAnimRenderable;
-
-public class aaie
-  implements Runnable
+public abstract interface aaie
 {
-  public aaie(MultiFragmentAnimRenderable paramMultiFragmentAnimRenderable) {}
+  public abstract void a();
   
-  public void run()
-  {
-    this.a.d();
-    if (MultiFragmentAnimRenderable.a(this.a) != null) {
-      MultiFragmentAnimRenderable.a(this.a).a(1, 0);
-    }
-  }
+  public abstract void a(annl paramannl);
+  
+  public abstract boolean a();
+  
+  public abstract void b(annl paramannl);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaie
  * JD-Core Version:    0.7.0.1
  */

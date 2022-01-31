@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.dingdong.widget.DingdongListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09d1" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@android:color/transparent" android:transcriptMode="normal" android:divider="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0204fd" android:dividerHeight="0.5dip" tencent:measureAtMost="true"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tencent="http://schemas.android.com/apk/res-auto" />

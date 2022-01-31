@@ -1,19 +1,10 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.item.CommonHobbyForAIOShowItemBuilder;
-
-public class val
-  implements Runnable
+public abstract interface val
 {
-  public val(CommonHobbyForAIOShowItemBuilder paramCommonHobbyForAIOShowItemBuilder, ImageView paramImageView) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842779);
-  }
+  public abstract void a(vcw paramvcw);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     val
  * JD-Core Version:    0.7.0.1
  */

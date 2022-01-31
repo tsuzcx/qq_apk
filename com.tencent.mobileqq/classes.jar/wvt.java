@@ -1,40 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 
-public class wvt
-  implements Runnable
+public abstract interface wvt<T extends RecyclerView.ViewHolder>
 {
-  public wvt(MainAssistObserver paramMainAssistObserver, QQAppInterface paramQQAppInterface) {}
+  public abstract void a(@Nullable T paramT, int paramInt);
   
-  public void run()
-  {
-    try
-    {
-      BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo = ((RedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(35)).c();
-      if (localRedTypeInfo != null) {
-        localRedTypeInfo.red_type.set(0);
-      }
-      Message localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a.obtainMessage(4);
-      localMessage.obj = localRedTypeInfo;
-      this.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a.sendMessage(localMessage);
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("MainAssistObserver", 2, "WL_DEBUG updateTabCallNotify.run error : " + localException);
-    }
-  }
+  public abstract void a(@Nullable T paramT, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wvt
  * JD-Core Version:    0.7.0.1
  */

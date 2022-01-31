@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public final class GetAppSimpleDetailRequest
   extends JceStruct
 {
-  static ArrayList<AppDetailParam> a;
+  static ArrayList<AppDetailParam> cache_appReqList;
   public ArrayList<AppDetailParam> appReqList = null;
   
   public GetAppSimpleDetailRequest() {}
@@ -20,13 +20,13 @@ public final class GetAppSimpleDetailRequest
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
-    if (a == null)
+    if (cache_appReqList == null)
     {
-      a = new ArrayList();
+      cache_appReqList = new ArrayList();
       AppDetailParam localAppDetailParam = new AppDetailParam();
-      a.add(localAppDetailParam);
+      cache_appReqList.add(localAppDetailParam);
     }
-    this.appReqList = ((ArrayList)paramJceInputStream.read(a, 0, false));
+    this.appReqList = ((ArrayList)paramJceInputStream.read(cache_appReqList, 0, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -38,7 +38,7 @@ public final class GetAppSimpleDetailRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmdatasourcesdk.internal.protocol.jce.GetAppSimpleDetailRequest
  * JD-Core Version:    0.7.0.1
  */

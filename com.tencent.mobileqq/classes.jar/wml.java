@@ -1,29 +1,60 @@
-import android.content.Intent;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity;
-import com.tencent.mobileqq.util.ThreadPriorityManager;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class wml
-  extends AnimateUtils.AnimationAdapter
+public class wml
+  extends moa
 {
-  wml(wmk paramwmk) {}
+  public boolean a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public wml(Context paramContext, String paramString)
   {
-    this.a.a.a = true;
-    paramAnimation = new Intent(this.a.a, SearchContactsActivity.class);
-    paramAnimation.putExtra("from_key", this.a.a.a());
-    paramAnimation.putExtra("fromType", 13);
-    this.a.a.startActivity(paramAnimation);
-    this.a.a.overridePendingTransition(0, 0);
-    ThreadPriorityManager.a(false);
+    super(paramContext, paramString);
+  }
+  
+  public String a()
+  {
+    return "key_for_troop_config_for_all_cfg";
+  }
+  
+  public void a(String paramString)
+  {
+    boolean bool = true;
+    this.a = true;
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        if (new JSONObject(paramString).optInt("isShow3kTroopTips") != 1) {
+          break label56;
+        }
+        this.a = bool;
+        return;
+      }
+      catch (JSONException paramString) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("TroopConfigForAllUser", 2, paramString.getMessage());
+      return;
+      label56:
+      bool = false;
+    }
+  }
+  
+  public String b()
+  {
+    return "key_for_troop_config_for_all_cfg_version";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wml
  * JD-Core Version:    0.7.0.1
  */

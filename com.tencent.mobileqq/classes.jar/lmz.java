@@ -1,58 +1,42 @@
-import android.graphics.drawable.Animatable;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyAtlasAdapter;
-import com.tencent.biz.pubaccount.readinjoy.model.AtlasModelImage;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
+import android.content.Intent;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class lmz
-  implements URLDrawableDownListener
+  implements awgj
 {
-  public lmz(ReadInJoyAtlasAdapter paramReadInJoyAtlasAdapter, ImageView paramImageView, AtlasModelImage paramAtlasModelImage, URLImageView paramURLImageView) {}
+  final WeakReference<QQServiceForAV> a;
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  lmz(QQServiceForAV paramQQServiceForAV)
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() != 0)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      paramView = this.jdField_a_of_type_AndroidWidgetImageView.getDrawable();
-      if ((paramView instanceof Animatable))
-      {
-        paramView = (Animatable)paramView;
-        if (!paramView.isRunning()) {
-          paramView.start();
-        }
-      }
-    }
+    this.a = new WeakReference(paramQQServiceForAV);
   }
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void a(int paramInt, long paramLong1, long paramLong2) {}
+  
+  public void a(int paramInt1, boolean paramBoolean, int paramInt2)
   {
-    int i = paramURLDrawable.getIntrinsicWidth();
-    int j = paramURLDrawable.getIntrinsicHeight();
-    paramView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAtlasModelImage;
-    if (j / i >= 3) {}
-    for (i = 1;; i = 0)
+    if (QLog.isColorLevel()) {
+      QLog.i("QQServiceForAV", 2, "onAEResDownloadResult, package[" + paramInt1 + ", isDownloaded[" + paramBoolean + ", errorType[" + paramInt2 + "]");
+    }
+    Object localObject = (QQServiceForAV)this.a.get();
+    if (localObject != null)
     {
-      paramView.picType = i;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyAtlasAdapter.a(this.jdField_a_of_type_AndroidWidgetImageView);
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramURLDrawable);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAtlasModelImage.modelImageShowTime = System.currentTimeMillis();
-      return;
+      localObject = (QQAppInterface)((QQServiceForAV)localObject).a();
+      Intent localIntent = new Intent("tencent.video.q2v.ptusoDownloadRet");
+      localIntent.putExtra("packageIdx", paramInt1);
+      localIntent.putExtra("isDownloaded", paramBoolean);
+      localIntent.putExtra("errorType", paramInt2);
+      ((QQAppInterface)localObject).getApp().sendBroadcast(localIntent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lmz
  * JD-Core Version:    0.7.0.1
  */

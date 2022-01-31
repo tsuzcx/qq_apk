@@ -1,22 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import android.support.annotation.IntRange;
 
-public class acpx
-  implements DialogInterface.OnClickListener
+public abstract interface acpx
 {
-  public acpx(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
+  @IntRange(from=0L, to=3L)
+  public abstract int a();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    ExtendFriendEditFragment.a(this.a).finish();
-  }
+  public abstract void a();
+  
+  public abstract void a(acpy paramacpy);
+  
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acpx
  * JD-Core Version:    0.7.0.1
  */

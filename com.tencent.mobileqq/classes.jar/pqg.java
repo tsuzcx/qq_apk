@@ -1,19 +1,17 @@
-import com.tencent.component.network.utils.thread.AsyncTask;
+import java.util.List;
 
 public class pqg
+  implements Cloneable
 {
-  final AsyncTask jdField_a_of_type_ComTencentComponentNetworkUtilsThreadAsyncTask;
-  final Object[] jdField_a_of_type_ArrayOfJavaLangObject;
-  
-  public pqg(AsyncTask paramAsyncTask, Object... paramVarArgs)
-  {
-    this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadAsyncTask = paramAsyncTask;
-    this.jdField_a_of_type_ArrayOfJavaLangObject = paramVarArgs;
-  }
+  public int a;
+  public long a;
+  public List<Long> a;
+  public int b;
+  public long b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pqg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,27 @@
-import com.tencent.device.msg.activities.DeviceTipActivity;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
 
 public class qfp
-  implements Runnable
+  extends RecyclerView.OnScrollListener
 {
-  public qfp(DeviceTipActivity paramDeviceTipActivity) {}
+  public qfp(VideoFeedsRecyclerView paramVideoFeedsRecyclerView) {}
   
-  public void run()
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    DeviceTipActivity.a(this.a);
+    if (paramInt == 0)
+    {
+      VideoFeedsRecyclerView.a(this.a, false);
+      return;
+    }
+    VideoFeedsRecyclerView.a(this.a, true);
   }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qfp
  * JD-Core Version:    0.7.0.1
  */

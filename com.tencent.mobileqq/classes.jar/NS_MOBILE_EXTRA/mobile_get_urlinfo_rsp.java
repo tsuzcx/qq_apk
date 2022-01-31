@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class mobile_get_urlinfo_rsp
   extends JceStruct
 {
-  static ArrayList cache_images = new ArrayList();
-  public ArrayList images;
+  static ArrayList<String> cache_images = new ArrayList();
+  public ArrayList<String> images;
   public int ret;
   public String summary = "";
   public String title = "";
@@ -21,7 +21,7 @@ public final class mobile_get_urlinfo_rsp
   
   public mobile_get_urlinfo_rsp() {}
   
-  public mobile_get_urlinfo_rsp(int paramInt, String paramString1, String paramString2, ArrayList paramArrayList)
+  public mobile_get_urlinfo_rsp(int paramInt, String paramString1, String paramString2, ArrayList<String> paramArrayList)
   {
     this.ret = paramInt;
     this.title = paramString1;

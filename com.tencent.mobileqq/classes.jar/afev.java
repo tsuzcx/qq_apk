@@ -1,16 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment;
 
-class afev
-  implements DialogInterface.OnClickListener
+public class afev
+  extends View.AccessibilityDelegate
 {
-  afev(afes paramafes) {}
+  public afev(ContactsBaseFragment paramContactsBaseFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void sendAccessibilityEvent(View paramView, int paramInt)
+  {
+    int i = paramInt;
+    if (paramInt == 8) {
+      i = 32768;
+    }
+    super.sendAccessibilityEvent(paramView, i);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afev
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,39 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyMsgManagerActivity;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import android.graphics.Bitmap;
 
 public class lhg
-  implements View.OnClickListener
+  extends lhl
 {
-  public lhg(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  protected Bitmap a;
   
-  public void onClick(View paramView)
+  public lhg(Bitmap paramBitmap)
   {
-    PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80078A6", "0X80078A6", 0, 0, "", "", "", ReadInJoyUtils.c(), false);
-    paramView = new Intent(this.a, ReadinjoyMsgManagerActivity.class);
-    this.a.startActivity(paramView);
+    if ((paramBitmap != null) && (!paramBitmap.isRecycled())) {}
+    for (boolean bool = true;; bool = false)
+    {
+      beeo.a(bool);
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      return;
+    }
+  }
+  
+  protected Bitmap a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
+  
+  protected void a(Bitmap paramBitmap) {}
+  
+  public int[] a(lgc paramlgc)
+  {
+    if (!c()) {
+      b(paramlgc);
+    }
+    return this.jdField_a_of_type_ArrayOfInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lhg
  * JD-Core Version:    0.7.0.1
  */

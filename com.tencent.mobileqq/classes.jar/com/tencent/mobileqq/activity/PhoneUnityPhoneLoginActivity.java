@@ -1,39 +1,39 @@
 package com.tencent.mobileqq.activity;
 
+import abhu;
+import ajru;
+import ajrv;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
+import badq;
+import bbmy;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SecSvcHandler;
-import com.tencent.mobileqq.app.SecSvcObserver;
-import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import tkv;
 
 public class PhoneUnityPhoneLoginActivity
   extends IphoneTitleBarActivity
   implements CompoundButton.OnCheckedChangeListener
 {
-  private SecSvcObserver jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver = new tkv(this);
+  private ajrv jdField_a_of_type_Ajrv = new abhu(this);
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   private byte[] jdField_a_of_type_ArrayOfByte;
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970530);
-    setTitle(getString(2131436869));
-    setContentBackgroundResource(2130838219);
-    this.leftView.setText(2131436814);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)super.findViewById(2131370971));
+    super.setContentView(2131495366);
+    setTitle(getString(2131629331));
+    setContentBackgroundResource(2130838503);
+    this.leftView.setText(2131633655);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)super.findViewById(2131305734));
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem != null) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
     }
-    addObserver(this.jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver);
+    addObserver(this.jdField_a_of_type_Ajrv);
     paramBundle = super.getIntent();
     if (paramBundle != null)
     {
@@ -45,13 +45,13 @@ public class PhoneUnityPhoneLoginActivity
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver);
+    removeObserver(this.jdField_a_of_type_Ajrv);
     super.doOnDestroy();
   }
   
-  protected boolean onBackEvent()
+  public boolean onBackEvent()
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("phone_num_login_result", this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a());
@@ -73,10 +73,10 @@ public class PhoneUnityPhoneLoginActivity
       bool = false;
       paramCompoundButton.setChecked(bool);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
-      if (NetworkUtil.d(this)) {
+      if (badq.d(this)) {
         break label81;
       }
-      QQToast.a(this, getString(2131433023), 0).b(getTitleBarHeight());
+      bbmy.a(this, getString(2131626719), 0).b(getTitleBarHeight());
     }
     label76:
     label81:
@@ -85,7 +85,7 @@ public class PhoneUnityPhoneLoginActivity
       return;
       bool = true;
       break;
-      paramCompoundButton = (SecSvcHandler)this.app.a(34);
+      paramCompoundButton = (ajru)this.app.a(34);
     } while ((paramCompoundButton == null) || (this.jdField_a_of_type_ArrayOfByte == null));
     if (paramBoolean)
     {

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class msg_svc$PbGetRoamMsgReq
-  extends MessageMicro
+  extends MessageMicro<PbGetRoamMsgReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field begin_msgtime = PBField.initUInt64(0L);

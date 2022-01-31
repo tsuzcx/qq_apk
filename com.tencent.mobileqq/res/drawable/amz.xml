@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="70" android:drawable="@drawable/fke" />
+    <item android:duration="70" android:drawable="@drawable/fkl" />
+    <item android:duration="70" android:drawable="@drawable/fkm" />
+    <item android:duration="70" android:drawable="@drawable/fkn" />
+    <item android:duration="70" android:drawable="@drawable/fko" />
+    <item android:duration="70" android:drawable="@drawable/fkp" />
+    <item android:duration="70" android:drawable="@drawable/fkq" />
+    <item android:duration="70" android:drawable="@drawable/fkr" />
+    <item android:duration="70" android:drawable="@drawable/fks" />
+    <item android:duration="70" android:drawable="@drawable/fkf" />
+    <item android:duration="70" android:drawable="@drawable/fkg" />
+    <item android:duration="70" android:drawable="@drawable/fkh" />
+    <item android:duration="70" android:drawable="@drawable/fki" />
+    <item android:duration="70" android:drawable="@drawable/fkj" />
+    <item android:duration="70" android:drawable="@drawable/fkk" />
+</animation-list>

@@ -1,22 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.data.ChatMessage;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class rtl
-  implements DialogInterface.OnClickListener
+class rtl
+  implements qju
 {
-  public rtl(BaseChatPie paramBaseChatPie, ChatMessage paramChatMessage) {}
+  rtl(rsv paramrsv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.f(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-    paramDialogInterface.dismiss();
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("video_vid", paramString1);
+      localJSONObject.put("retCode", paramInt);
+      this.a.callJs(paramString2, new String[] { localJSONObject.toString() });
+      return;
+    }
+    catch (JSONException paramString1)
+    {
+      for (;;)
+      {
+        paramString1.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rtl
  * JD-Core Version:    0.7.0.1
  */

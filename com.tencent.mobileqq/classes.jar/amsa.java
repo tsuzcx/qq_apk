@@ -1,22 +1,28 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.utils.QQComicRedTouchManager.PluginRedTouchObserver;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.ComicRich;
 
-public class amsa
-  implements Runnable
+public final class amsa
+  implements Parcelable.Creator
 {
-  public amsa(QQComicRedTouchManager.PluginRedTouchObserver paramPluginRedTouchObserver) {}
-  
-  public void run()
+  public IPSiteModel.ComicRich a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PluginRedTouchManager", 2, "onReceiveNewRedTouch()");
-    }
-    this.a.a();
+    IPSiteModel.ComicRich localComicRich = new IPSiteModel.ComicRich();
+    localComicRich.extCover = paramParcel.readString();
+    localComicRich.extName = paramParcel.readString();
+    localComicRich.extTitle = paramParcel.readString();
+    localComicRich.extUrl = paramParcel.readString();
+    return localComicRich;
+  }
+  
+  public IPSiteModel.ComicRich[] a(int paramInt)
+  {
+    return new IPSiteModel.ComicRich[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amsa
  * JD-Core Version:    0.7.0.1
  */

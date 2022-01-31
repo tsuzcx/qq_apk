@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.ar.config.WorldCup;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.6.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public class tgc
-  implements Runnable
+public final class tgc
+  implements slx<szj, tbh>
 {
-  public tgc(MainFragment paramMainFragment) {}
+  tgc(tgj paramtgj) {}
   
-  public void run()
+  public void a(@NonNull szj paramszj, @Nullable tbh paramtbh, @NonNull ErrorMessage paramErrorMessage)
   {
-    String str = MainFragment.a(this.a);
-    WorldCup.a(MainFragment.a(this.a), this.a.getActivity(), this.a.getView(), str);
+    ThreadManager.getUIHandler().post(new PlayModeUtils.6.1(this, paramtbh, paramErrorMessage));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tgc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class mgo
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  mgo(mgn parammgn) {}
+  mgo(mgm parammgm) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    VideoFeedsPlayActivity.a(this.a.a).a(true);
+    paramDialogInterface.dismiss();
+    mgm.a(this.a, this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mgo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.CheckMsgCount;
-import com.tencent.mobileqq.app.message.MultiMsgProxy;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AddAccountActivity;
 
 public class zwn
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public zwn(CheckMsgCount paramCheckMsgCount) {}
+  public zwn(AddAccountActivity paramAddAccountActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    CheckMsgCount.a(this.a).b.a().c();
+    AddAccountActivity.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zwn
  * JD-Core Version:    0.7.0.1
  */

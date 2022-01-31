@@ -1,18 +1,23 @@
-import cooperation.qqdataline.DatalineBridgeActivity;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.dating.DatingFilters;
 
-public class amvu
-  implements Runnable
+public final class amvu
+  implements Parcelable.Creator<DatingFilters>
 {
-  public amvu(DatalineBridgeActivity paramDatalineBridgeActivity) {}
-  
-  public void run()
+  public DatingFilters a(Parcel paramParcel)
   {
-    this.a.a();
+    return new DatingFilters(paramParcel, null);
+  }
+  
+  public DatingFilters[] a(int paramInt)
+  {
+    return new DatingFilters[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amvu
  * JD-Core Version:    0.7.0.1
  */

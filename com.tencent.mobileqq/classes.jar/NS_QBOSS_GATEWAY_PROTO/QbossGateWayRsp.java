@@ -11,9 +11,9 @@ import java.util.Map;
 public final class QbossGateWayRsp
   extends JceStruct
 {
-  static Map cache_mapAdv = new HashMap();
+  static Map<Integer, ArrayList<tAdvDesc>> cache_mapAdv = new HashMap();
   public int iRet;
-  public Map mapAdv;
+  public Map<Integer, ArrayList<tAdvDesc>> mapAdv;
   public String strMsg = "";
   
   static
@@ -25,7 +25,7 @@ public final class QbossGateWayRsp
   
   public QbossGateWayRsp() {}
   
-  public QbossGateWayRsp(int paramInt, String paramString, Map paramMap)
+  public QbossGateWayRsp(int paramInt, String paramString, Map<Integer, ArrayList<tAdvDesc>> paramMap)
   {
     this.iRet = paramInt;
     this.strMsg = paramString;

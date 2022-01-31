@@ -1,19 +1,22 @@
-import com.tencent.biz.common.offline.AsyncCallBack;
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StReply;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class wao
-  implements AsyncCallBack
+class wao
+  implements View.OnClickListener
 {
-  public wao(HotChatPie paramHotChatPie) {}
+  wao(wai paramwai, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    HotChatPie.a(this.a, 0, 10);
+    vzz.a(this.jdField_a_of_type_Wai.a, vzz.a(this.jdField_a_of_type_Wai.a), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StReply);
+    vzz.a(this.jdField_a_of_type_Wai.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wao
  * JD-Core Version:    0.7.0.1
  */

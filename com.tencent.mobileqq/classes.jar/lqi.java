@@ -1,33 +1,27 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.AVActivity.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import mqq.os.MqqHandler;
 
-class lqi
-  implements Runnable
+public class lqi
+  implements MessageQueue.IdleHandler
 {
-  lqi(lqh paramlqh) {}
+  public lqi(AVActivity paramAVActivity) {}
   
-  public void run()
+  public boolean queueIdle()
   {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("channel_id", 70);
-      localJSONObject.put("click_source", "b2t_title_text");
-      PublicAccountReportUtils.a(null, "", "0X8009329", "0X8009329", 0, 0, "", "", "", localJSONObject.toString(), false);
-      QLog.d("IphoneTitleBarFragment", 2, "back_to_top: { channelID : 70 , click_source : b2t_title_text }");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.w(this.a.b, 1, "call IdleHandler mPeerUin:=" + this.a.c);
     }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
-    }
+    ThreadManager.getSubThreadHandler().postDelayed(new AVActivity.1.1(this), 2000L);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lqi
  * JD-Core Version:    0.7.0.1
  */

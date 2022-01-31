@@ -1,20 +1,37 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspAuthKey;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
-class tas
-  implements Runnable
+public class tas
+  extends slz<tcd>
 {
-  tas(tar paramtar, Bitmap paramBitmap) {}
-  
-  public void run()
+  public String a()
   {
-    this.jdField_a_of_type_Tar.a.a.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    return skt.a("StorySvc.video_apply_authkey");
+  }
+  
+  public tcd a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspAuthKey localRspAuthKey = new qqstory_service.RspAuthKey();
+    try
+    {
+      localRspAuthKey.mergeFrom(paramArrayOfByte);
+      return new tcd(localRspAuthKey);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      urk.d("Q.qqstory:RefreshVideoFileKeyRequest", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    return new byte[0];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tas
  * JD-Core Version:    0.7.0.1
  */

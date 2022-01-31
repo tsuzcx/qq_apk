@@ -1,18 +1,58 @@
-import dov.com.tencent.biz.qqstory.takevideo.poilist.PoiListLayout;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController.2;
+import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController.3;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqfav.QfavPluginProxyService;
 
-class aolw
-  implements Runnable
+public class aolw
+  extends aoiy
 {
-  aolw(aolv paramaolv) {}
+  private int jdField_a_of_type_Int = 0;
+  private long jdField_a_of_type_Long;
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  private bfio jdField_a_of_type_Bfio = new aolx(this);
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int = 80;
+  private String jdField_b_of_type_JavaLangString;
+  private String c;
   
-  public void run()
+  public aolw(Bundle paramBundle)
   {
-    PoiListLayout.a(this.a.a, 0);
+    QfavPluginProxyService.a().a(3, this.jdField_a_of_type_Bfio);
+    this.jdField_a_of_type_Int = 2;
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new QfavFilePreviewController.2(this), 300000L);
+  }
+  
+  public int a()
+  {
+    return 4;
+  }
+  
+  public boolean a()
+  {
+    if (3 != this.jdField_a_of_type_Int)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("QfavFilePreviewController", 4, "sendCS: oldState = " + this.jdField_a_of_type_Int + ", newState = STATE_REQUESTING.");
+      }
+      this.jdField_a_of_type_Int = 1;
+      return true;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new QfavFilePreviewController.3(this), 2000L);
+    return true;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    QfavPluginProxyService.a().b(3, this.jdField_a_of_type_Bfio);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aolw
  * JD-Core Version:    0.7.0.1
  */

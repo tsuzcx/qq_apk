@@ -8,15 +8,15 @@ import java.util.ArrayList;
 public final class FriendGroup
   extends JceStruct
 {
-  static ArrayList cache_vNewGroupID;
-  static ArrayList cache_vOldGroupID;
+  static ArrayList<Long> cache_vNewGroupID;
+  static ArrayList<Long> cache_vOldGroupID;
   public long dwFuin;
-  public ArrayList vNewGroupID;
-  public ArrayList vOldGroupID;
+  public ArrayList<Long> vNewGroupID;
+  public ArrayList<Long> vOldGroupID;
   
   public FriendGroup() {}
   
-  public FriendGroup(long paramLong, ArrayList paramArrayList1, ArrayList paramArrayList2)
+  public FriendGroup(long paramLong, ArrayList<Long> paramArrayList1, ArrayList<Long> paramArrayList2)
   {
     this.dwFuin = paramLong;
     this.vOldGroupID = paramArrayList1;

@@ -58,16 +58,16 @@ public class Ticket
       paramArrayOfByte1 = new byte[0];
       this._sig = paramArrayOfByte1;
       if (paramArrayOfByte2 != null) {
-        break label124;
+        break label125;
       }
     }
-    label124:
+    label125:
     for (paramArrayOfByte1 = new byte[0];; paramArrayOfByte1 = (byte[])paramArrayOfByte2.clone())
     {
       this._sig_key = paramArrayOfByte1;
       this._create_time = paramLong;
       this._expire_time = (86400L + paramLong);
-      parsePsBuf(paramArrayOfByte3, this._create_time, this._pskey_map, this._pskey_expire);
+      parsePsBuf(paramArrayOfByte3, this._create_time, this._pskey_map, this._pskey_expire, true);
       return;
       paramArrayOfByte1 = (byte[])paramArrayOfByte1.clone();
       break;
@@ -82,17 +82,17 @@ public class Ticket
       paramArrayOfByte1 = new byte[0];
       this._sig = paramArrayOfByte1;
       if (paramArrayOfByte2 != null) {
-        break label141;
+        break label143;
       }
     }
-    label141:
+    label143:
     for (paramArrayOfByte1 = new byte[0];; paramArrayOfByte1 = (byte[])paramArrayOfByte2.clone())
     {
       this._sig_key = paramArrayOfByte1;
       this._create_time = paramLong;
       this._expire_time = (86400L + paramLong);
-      parsePsBuf(paramArrayOfByte3, this._create_time, this._pskey_map, this._pskey_expire);
-      parsePsBuf(paramArrayOfByte4, this._create_time, this._pt4token_map, this._pt4token_expire);
+      parsePsBuf(paramArrayOfByte3, this._create_time, this._pskey_map, this._pskey_expire, true);
+      parsePsBuf(paramArrayOfByte4, this._create_time, this._pt4token_map, this._pt4token_expire, false);
       return;
       paramArrayOfByte1 = (byte[])paramArrayOfByte1.clone();
       break;
@@ -206,7 +206,7 @@ public class Ticket
     return paramMap;
   }
   
-  protected static void parsePsBuf(byte[] paramArrayOfByte, long paramLong, Map<String, byte[]> paramMap, Map<String, Long> paramMap1)
+  protected static void parsePsBuf(byte[] paramArrayOfByte, long paramLong, Map<String, byte[]> paramMap, Map<String, Long> paramMap1, boolean paramBoolean)
   {
     Object localObject2 = new StringBuilder().append("ps_buf ");
     Object localObject1;
@@ -239,7 +239,7 @@ public class Ticket
           util.LOGI("domainCnt " + k, "");
           j = 0;
           if ((j >= k) || (paramArrayOfByte.length < i + 2)) {
-            break label344;
+            break label362;
           }
           m = util.buf_to_int16(paramArrayOfByte, i);
           i += 2;
@@ -259,20 +259,31 @@ public class Ticket
       i += 2;
       l1 = util.buf_to_int64(paramArrayOfByte, i);
       i += 8;
-    }
-    for (;;)
-    {
+      label261:
       if (l1 > l2)
       {
         paramMap.put(localObject1, localObject2);
         paramMap1.put(localObject1, Long.valueOf(l1));
       }
-      util.LOGI((String)localObject1 + " pskey or pt4token:" + m + " expire: " + l1, "");
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      if (!paramBoolean) {
+        break label374;
+      }
+      ((StringBuilder)localObject2).append(" pskey:");
+    }
+    for (;;)
+    {
+      ((StringBuilder)localObject2).append(m).append(",expire: ").append(l1);
+      util.LOGI(((StringBuilder)localObject2).toString(), "");
       j += 1;
       break label102;
-      label344:
+      label362:
       break;
       l1 = 86400L + paramLong;
+      break label261;
+      label374:
+      ((StringBuilder)localObject2).append(" pt4Token:");
     }
   }
   

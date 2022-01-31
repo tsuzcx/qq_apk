@@ -1,24 +1,17 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.item.FileItemBuilder;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-
 public class vbi
-  implements FMDialogUtil.FMDialogInterface
 {
-  public vbi(FileItemBuilder paramFileItemBuilder, MessageForFile paramMessageForFile, Context paramContext) {}
+  public int a;
   
-  public void a()
+  public vbi(int paramInt)
   {
-    FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileItemBuilder.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
+    this.a = paramInt;
   }
   
-  public void b() {}
+  public void a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vbi
  * JD-Core Version:    0.7.0.1
  */

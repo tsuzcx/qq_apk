@@ -1,44 +1,17 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.pgc.QQStoryDiscoverSearchDialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import com.tencent.widget.SwipListView;
 
-public class nmi
-  implements TextWatcher
+class nmi
+  implements View.OnClickListener
 {
-  public nmi(QQStoryDiscoverSearchDialog paramQQStoryDiscoverSearchDialog) {}
+  nmi(nmh paramnmh, View paramView) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    if (TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) {
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("正在加载…");
-      this.a.b.setVisibility(8);
-      paramEditable = this.a.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130838602);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(paramEditable, null, null, null);
-      ((Animatable)paramEditable).start();
-      this.a.jdField_a_of_type_Int = 0;
-      this.a.a(null);
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-    }
+    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_Nmh.a).a(this.jdField_a_of_type_AndroidViewView);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,61 +1,451 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayoutNew2;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.TMG.opengl.GraphicRendererMgr;
+import com.tencent.TMG.sdk.AVContext;
+import com.tencent.TMG.sdk.AVRoomMulti;
+import com.tencent.TMG.sdk.AVVideoCtrl;
+import com.tencent.TMG.sdk.AVVideoCtrl.EnableCameraCompleteCallback;
+import com.tencent.TMG.sdk.AVView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.1;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.10;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.11;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.12;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.13;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.14;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.2;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.3;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.4;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.5;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.6;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.7;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.8;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler.9;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionGrant;
+import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
 public class aioe
-  extends URLDrawableDownListener.Adapter
+  implements aiiy
 {
-  public aioe(StructMsgItemLayoutNew2 paramStructMsgItemLayoutNew2) {}
+  private int jdField_a_of_type_Int = -1;
+  private long jdField_a_of_type_Long;
+  public aiev a;
+  public bdby a;
+  private AVVideoCtrl.EnableCameraCompleteCallback jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$EnableCameraCompleteCallback = new aioi(this);
+  private ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
+  private boolean c;
+  private boolean d;
+  private boolean e;
+  private boolean f;
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public aioe(int paramInt)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.u, 2, "onLoadCancelled");
-    }
+    this.jdField_a_of_type_Bdby = new aioh(this);
+    this.jdField_b_of_type_Int = paramInt;
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  private void a(String[] paramArrayOfString, String paramString)
   {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.u, 2, "onLoadFailed ,cause = " + paramThrowable);
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.u, 2, "onLoadInterrupted");
-    }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (paramView == null) {}
-    do
+    int j = 0;
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    int i = 0;
+    if (i < paramArrayOfString.length)
     {
-      return;
-      paramView.setBackgroundDrawable(null);
-      if ((paramView instanceof ImageView))
+      if (paramArrayOfString[i].equals(paramString)) {}
+      for (;;)
       {
-        ((URLImageView)paramView).setScaleType(ImageView.ScaleType.CENTER_CROP);
-        ((URLImageView)paramView).setImageDrawable(paramURLDrawable);
-        paramView.requestLayout();
+        i += 1;
+        break;
+        localArrayList1.add(paramArrayOfString[i]);
+        AVView localAVView = new AVView();
+        localAVView.videoSrcType = 1;
+        localAVView.viewSizeType = 1;
+        localArrayList2.add(localAVView);
       }
-    } while (!QLog.isColorLevel());
-    QLog.d(this.a.u, 2, "onLoadSuccessed");
+    }
+    if (QLog.isColorLevel())
+    {
+      i = 0;
+      while (i < localArrayList1.size())
+      {
+        QLog.d("CmGameAvHandler", 2, "requestVideo identifiers=" + ((String)localArrayList1.get(i)).toString());
+        i += 1;
+      }
+    }
+    paramArrayOfString = new aiok(this);
+    if (QLog.isColorLevel())
+    {
+      i = j;
+      while (i < localArrayList1.size())
+      {
+        QLog.d("CmGameAvHandler", 2, "xxxx request iden=" + (String)localArrayList1.get(i));
+        i += 1;
+      }
+    }
+    if ((aixa.a(BaseApplicationImpl.getContext()).a() != null) && (aixa.a(BaseApplicationImpl.getContext()).a().getRoom() != null) && (localArrayList1.size() > 0)) {
+      aixa.a(BaseApplicationImpl.getContext()).a().getRoom().requestViewList((String[])localArrayList1.toArray(new String[localArrayList1.size()]), (AVView[])localArrayList2.toArray(new AVView[localArrayList2.size()]), localArrayList1.size(), paramArrayOfString);
+    }
+  }
+  
+  private void b(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (GraphicRendererMgr.getInstance() != null)) {}
+    this.f = paramBoolean;
+    if ((aing.b(this.jdField_a_of_type_Long) != null) && (aing.b(this.jdField_a_of_type_Long).a != null))
+    {
+      AppActivity localAppActivity = (AppActivity)aing.b(this.jdField_a_of_type_Long).a.get();
+      localAppActivity.requestPermissions(new aioj(this, localAppActivity), 1, new String[] { "android.permission.CAMERA" });
+    }
+  }
+  
+  public int a()
+  {
+    return 0;
+  }
+  
+  public aije a(long paramLong, String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_Long = paramLong;
+    if ((!"cs.audioRoom_enter.local".equals(paramString1)) || (!TextUtils.isEmpty(paramString2))) {}
+    for (;;)
+    {
+      try
+      {
+        paramString1 = new JSONObject(paramString2);
+        i = paramString1.optInt("avRoomId");
+        paramLong = paramString1.optLong("gameRoomId");
+        paramString1 = paramString1.optString("avRoleName", "lmxtest");
+        ThreadManager.getUIHandler().post(new CmGameAvHandler.1(this, paramString1, paramLong, i));
+        return null;
+      }
+      catch (Exception paramString1)
+      {
+        int i;
+        return null;
+      }
+      if ("cs.audioRoom_exit.local".equals(paramString1))
+      {
+        ThreadManager.getUIHandler().post(new CmGameAvHandler.2(this));
+        return null;
+      }
+      if ("cs.audioRoom_camera_enable.local".equals(paramString1)) {}
+      try
+      {
+        bool = new JSONObject(paramString2).optBoolean("switch");
+        this.jdField_a_of_type_Boolean = bool;
+        if (bool)
+        {
+          ThreadManager.getUIHandler().post(new CmGameAvHandler.3(this));
+          return null;
+        }
+        ThreadManager.getUIHandler().post(new CmGameAvHandler.4(this));
+        return null;
+      }
+      catch (Exception paramString1)
+      {
+        boolean bool;
+        return null;
+      }
+      if ("cs.audioRoom_set_mic.local".equals(paramString1))
+      {
+        if (TextUtils.isEmpty(paramString2)) {
+          continue;
+        }
+        try
+        {
+          bool = new JSONObject(paramString2).optBoolean("switch");
+          ThreadManager.getUIHandler().post(new CmGameAvHandler.5(this, bool));
+          return null;
+        }
+        catch (Exception paramString1)
+        {
+          return null;
+        }
+      }
+      if ("cs.audioRoom_set_speaker.local".equals(paramString1))
+      {
+        if (TextUtils.isEmpty(paramString2)) {
+          continue;
+        }
+        try
+        {
+          bool = new JSONObject(paramString2).optBoolean("switch");
+          ThreadManager.getUIHandler().post(new CmGameAvHandler.6(this, bool));
+          return null;
+        }
+        catch (Exception paramString1)
+        {
+          return null;
+        }
+      }
+      if ("cs.audioRoom_init.local".equals(paramString1))
+      {
+        if (TextUtils.isEmpty(paramString2)) {
+          continue;
+        }
+        try
+        {
+          a(paramString2);
+          return null;
+        }
+        catch (Exception paramString1)
+        {
+          return null;
+        }
+      }
+      if ("cs.audioRoom_set_local_video.local".equals(paramString1)) {}
+      try
+      {
+        bool = new JSONObject(paramString2).optBoolean("switch");
+        this.jdField_a_of_type_Boolean = bool;
+        if (bool)
+        {
+          ThreadManager.getUIHandler().post(new CmGameAvHandler.7(this));
+          return null;
+        }
+        ThreadManager.getUIHandler().post(new CmGameAvHandler.8(this));
+        return null;
+      }
+      catch (Exception paramString1)
+      {
+        return null;
+      }
+      if ("cs.audioRoom_camera_switch.local".equals(paramString1)) {}
+      try
+      {
+        i = new JSONObject(paramString2).optInt("cameraPos");
+        if (!this.jdField_a_of_type_Boolean)
+        {
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("CmGameAvHandler", 2, "switch carmera but carma close");
+          return null;
+        }
+        ThreadManager.getUIHandler().post(new CmGameAvHandler.9(this, i, paramLong));
+        return null;
+      }
+      catch (Exception paramString1) {}
+      if ("cs.audioRoom_change_qav_role.local".equals(paramString1)) {
+        try
+        {
+          paramString1 = new JSONObject(paramString2).optString("role", "user");
+          ThreadManager.getUIHandler().post(new CmGameAvHandler.10(this, paramString1, paramLong));
+          return null;
+        }
+        catch (Exception paramString1)
+        {
+          return null;
+        }
+      }
+      if ("cs.audioRoom_set_remote_video.local".equals(paramString1)) {
+        try
+        {
+          paramString1 = Boolean.valueOf(new JSONObject(paramString2).optBoolean("switch"));
+          this.d = paramString1.booleanValue();
+          ThreadManager.getUIHandler().post(new CmGameAvHandler.11(this, paramString1));
+          return null;
+        }
+        catch (Exception paramString1)
+        {
+          return null;
+        }
+      }
+      if ("cs.audioRoom_watch_remote_video.local".equals(paramString1)) {
+        try
+        {
+          paramString1 = new JSONObject(paramString2).optJSONArray("openIdList");
+          if (paramString1 == null) {
+            continue;
+          }
+          ThreadManager.getUIHandler().post(new CmGameAvHandler.12(this, paramString1));
+          return null;
+        }
+        catch (Exception paramString1)
+        {
+          return null;
+        }
+      } else if ("cs.audioRoom_set_beauty.local".equals(paramString1)) {
+        try
+        {
+          float f1 = (float)new JSONObject(paramString2).optDouble("beauty");
+          ThreadManager.getUIHandler().post(new CmGameAvHandler.13(this, f1));
+          return null;
+        }
+        catch (Exception paramString1)
+        {
+          return null;
+        }
+      }
+    }
+    return null;
+  }
+  
+  AVVideoCtrl a()
+  {
+    AVContext localAVContext = aixa.a(BaseApplicationImpl.getContext()).a();
+    if (localAVContext != null) {
+      return localAVContext.getVideoCtrl();
+    }
+    return null;
+  }
+  
+  public void a() {}
+  
+  public void a(String paramString)
+  {
+    int j = 0;
+    for (;;)
+    {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        if (paramString.has("sdkAppId"))
+        {
+          i = paramString.optInt("sdkAppId");
+          if (paramString.has("accountType")) {
+            j = paramString.optInt("accountType");
+          }
+          ThreadManager.getUIHandler().post(new CmGameAvHandler.14(this, i, j));
+          return;
+        }
+      }
+      catch (Exception paramString)
+      {
+        return;
+      }
+      int i = 0;
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      aiws.a().c();
+      if (this.e)
+      {
+        if (!paramBoolean) {
+          break label120;
+        }
+        if (this.jdField_b_of_type_Boolean) {
+          aiws.a().a(paramBoolean);
+        }
+      }
+      label35:
+      if (this.e)
+      {
+        if (!paramBoolean) {
+          break label130;
+        }
+        if (this.c) {
+          aiws.a().b(paramBoolean);
+        }
+      }
+      label60:
+      if (this.d)
+      {
+        if (!paramBoolean) {
+          break label140;
+        }
+        a((String[])this.jdField_a_of_type_JavaUtilArrayList.toArray(new String[this.jdField_a_of_type_JavaUtilArrayList.size()]), "");
+      }
+    }
+    for (;;)
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        b(paramBoolean);
+      }
+      label120:
+      do
+      {
+        return;
+        aiws.a().b();
+        break;
+        aiws.a().a(paramBoolean);
+        break label35;
+        aiws.a().b(paramBoolean);
+        break label60;
+      } while ((aixa.a(BaseApplicationImpl.getContext()).a() == null) || (aixa.a(BaseApplicationImpl.getContext()).a().getRoom() == null));
+      label130:
+      label140:
+      aixa.a(BaseApplicationImpl.getContext()).a().getRoom().cancelAllView(new aiol(this));
+    }
+  }
+  
+  public boolean a(Activity paramActivity)
+  {
+    return false;
+  }
+  
+  public void b()
+  {
+    a(false);
+  }
+  
+  public void c()
+  {
+    a(true);
+  }
+  
+  public void d()
+  {
+    if (this.jdField_a_of_type_Int != -1)
+    {
+      aiws.a().a("" + this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_Aiev != null) {
+        this.jdField_a_of_type_Aiev.b();
+      }
+      b(false);
+      this.jdField_a_of_type_Int = -1;
+    }
+  }
+  
+  @QQPermissionGrant(1)
+  public void grant()
+  {
+    int i = 1;
+    Object localObject = a();
+    if (localObject != null) {
+      i = ((AVVideoCtrl)localObject).enableCamera(0, this.f, this.jdField_a_of_type_ComTencentTMGSdkAVVideoCtrl$EnableCameraCompleteCallback);
+    }
+    if (i == 0) {}
+    for (;;)
+    {
+      try
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("res", 0);
+        aing.a().callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.audioRoom_camera_enable.local", ((JSONObject)localObject).toString());
+        return;
+      }
+      catch (Exception localException2) {}
+      try
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("res", -1);
+        aing.a().callbackFromRequest(this.jdField_a_of_type_Long, i, "cs.audioRoom_camera_enable.local", ((JSONObject)localObject).toString());
+        QLog.e("CmGameAvHandler", 1, "enableCamera error rescode = " + i);
+        return;
+      }
+      catch (Exception localException1) {}
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aioe
  * JD-Core Version:    0.7.0.1
  */

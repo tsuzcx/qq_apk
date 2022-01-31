@@ -1,20 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playmode.child.SelectVideosPlayMode;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyCutImageView;
 
 class npp
-  implements View.OnClickListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  npp(npm paramnpm) {}
+  npp(npo paramnpo, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, ReadInjoyCutImageView paramReadInjoyCutImageView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildSelectVideosPlayMode.a(this.a.jdField_a_of_type_AndroidOsBundle);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildSelectVideosPlayMode.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildSelectVideosPlayMode.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    float f1 = this.jdField_a_of_type_Float;
+    float f2 = paramValueAnimator.floatValue();
+    float f3 = this.b;
+    float f4 = paramValueAnimator.floatValue();
+    float f5 = this.c;
+    float f6 = paramValueAnimator.floatValue();
+    float f7 = this.d;
+    float f8 = paramValueAnimator.floatValue();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyCutImageView.setLeftAreaTranslate(f1 * f2, f3 * f4);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyCutImageView.setRightAreaTranslate(f5 * f6, f8 * f7);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdViewReadInjoyCutImageView.postInvalidate();
   }
 }
 

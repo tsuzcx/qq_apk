@@ -2,7 +2,11 @@ package com.tencent.smtt.sdk;
 
 import android.text.TextUtils;
 import android.util.Log;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import org.json.JSONObject;
 
 class TbsInitPerformanceRecorder
 {
@@ -275,6 +279,27 @@ class TbsInitPerformanceRecorder
     //   153	212	221	finally
   }
   
+  public JSONObject getInitTimeDetail()
+  {
+    localJSONObject = new JSONObject();
+    if (this.mPerformanceMaps != null) {
+      try
+      {
+        Iterator localIterator = this.mPerformanceMaps.entrySet().iterator();
+        while (localIterator.hasNext())
+        {
+          Map.Entry localEntry = (Map.Entry)localIterator.next();
+          localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
+        }
+        return localJSONObject;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+    }
+  }
+  
   public void recordPerformanceEvent(String paramString, byte paramByte)
   {
     for (;;)
@@ -308,7 +333,7 @@ class TbsInitPerformanceRecorder
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_1
-    //   3: invokestatic 258	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   3: invokestatic 298	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   6: istore 4
     //   8: iload 4
     //   10: ifeq +6 -> 16
@@ -319,7 +344,7 @@ class TbsInitPerformanceRecorder
     //   17: getfield 98	com/tencent/smtt/sdk/TbsInitPerformanceRecorder:mPerformanceMaps	Ljava/util/Map;
     //   20: aload_1
     //   21: lload_2
-    //   22: invokestatic 267	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   22: invokestatic 307	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   25: invokeinterface 205 3 0
     //   30: pop
     //   31: goto -18 -> 13
@@ -342,7 +367,7 @@ class TbsInitPerformanceRecorder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsInitPerformanceRecorder
  * JD-Core Version:    0.7.0.1
  */

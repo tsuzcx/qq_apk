@@ -1,53 +1,61 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.biz.webviewplugin.QzoneWebViewOfflinePlugin;
-import org.json.JSONObject;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBig;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class phi
-  extends Handler
+  extends pez
 {
-  public phi(QzoneWebViewOfflinePlugin paramQzoneWebViewOfflinePlugin, Looper paramLooper)
+  public phi(Context paramContext, azwg paramazwg, qoe paramqoe)
   {
-    super(paramLooper);
+    super(paramContext, paramazwg, paramqoe);
   }
   
-  public void handleMessage(Message paramMessage)
+  public pez a()
   {
-    Object localObject;
-    int i;
-    if ((paramMessage.what == 203) && ((paramMessage.obj instanceof Bundle)))
+    this.jdField_a_of_type_Boolean = true;
+    return g().h();
+  }
+  
+  public pez d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
+    }
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof oqh)) && (obz.s(((oqh)this.jdField_a_of_type_JavaLangObject).a()))) {
+      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(aciy.a(250.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
+    }
+    for (;;)
     {
-      paramMessage = (Bundle)paramMessage.obj;
-      localObject = paramMessage.getString("url");
-      if ((paramMessage.getInt("req_state", 0) == 2) && (!TextUtils.isEmpty(QzoneWebViewOfflinePlugin.a(this.a))) && (!TextUtils.isEmpty(QzoneWebViewOfflinePlugin.b(this.a))) && (QzoneWebViewOfflinePlugin.b(this.a).equals(localObject)))
-      {
-        i = paramMessage.getInt("result_code");
-        localObject = new JSONObject();
-        if (i != 0) {
-          break label158;
-        }
+      if ((this.jdField_a_of_type_Pey != null) && ((this.jdField_a_of_type_Pey instanceof ComponentContentBig))) {
+        localLinearLayout.addView((ComponentContentBig)this.jdField_a_of_type_Pey);
       }
-    }
-    try
-    {
-      ((JSONObject)localObject).put("code", 0);
-      for (;;)
-      {
-        label113:
-        this.a.callJs(QzoneWebViewOfflinePlugin.a(this.a) + "(" + ((JSONObject)localObject).toString() + ");");
-        return;
-        label158:
-        ((JSONObject)localObject).put("code", i);
-        ((JSONObject)localObject).put("msg", paramMessage.getString("error_message"));
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
+        localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
       }
+      a(localLinearLayout);
+      return this;
+      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(aciy.a(220.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
     }
-    catch (Exception paramMessage)
-    {
-      break label113;
-    }
+  }
+  
+  public pez e()
+  {
+    return null;
+  }
+  
+  public pez g()
+  {
+    this.jdField_a_of_type_Pey = new ComponentContentBig(this.jdField_a_of_type_AndroidContentContext);
+    return this;
+  }
+  
+  public pez o()
+  {
+    super.o();
+    return this;
   }
 }
 

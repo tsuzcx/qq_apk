@@ -1,21 +1,30 @@
-import android.animation.AnimatorSet;
-import com.tencent.mobileqq.bubble.BubbleNewAIOAnim;
+import android.provider.Settings.System;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class absr
-  implements Runnable
+  implements View.OnClickListener
 {
-  public absr(BubbleNewAIOAnim paramBubbleNewAIOAnim) {}
+  public absr(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.cancel();
+    this.a.b(2);
+    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", SoundAndVibrateActivity.a);
+    if (this.a.a().booleanValue())
+    {
+      paramView = Settings.System.DEFAULT_NOTIFICATION_URI;
+      this.a.b();
+      this.a.a(paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     absr
  * JD-Core Version:    0.7.0.1
  */

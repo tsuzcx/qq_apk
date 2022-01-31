@@ -10,7 +10,7 @@ public class AsyncImageView
   extends ExtendImageView
   implements AsyncImageable
 {
-  private final AsyncImageable.AsyncImageableImpl a = new AsyncImageable.AsyncImageableImpl(this, this);
+  private final AsyncImageable.AsyncImageableImpl mAsyncImageableImpl = new AsyncImageable.AsyncImageableImpl(this, this);
   
   public AsyncImageView(Context paramContext)
   {
@@ -29,12 +29,12 @@ public class AsyncImageView
   
   public String getAsyncImage()
   {
-    return this.a.getAsyncImage();
+    return this.mAsyncImageableImpl.getAsyncImage();
   }
   
   public AsyncImageable.AsyncOptions getAsyncOptions()
   {
-    return this.a.getAsyncOptions();
+    return this.mAsyncImageableImpl.getAsyncOptions();
   }
   
   public void setAsyncAlwaysLoad(boolean paramBoolean)
@@ -69,17 +69,17 @@ public class AsyncImageView
   
   public void setAsyncImage(String paramString)
   {
-    this.a.setAsyncImage(paramString);
+    this.mAsyncImageableImpl.setAsyncImage(paramString);
   }
   
   public void setAsyncImage(String paramString, String... paramVarArgs)
   {
-    this.a.setAsyncImage(paramString, paramVarArgs);
+    this.mAsyncImageableImpl.setAsyncImage(paramString, paramVarArgs);
   }
   
   public void setAsyncImageListener(AsyncImageable.AsyncImageListener paramAsyncImageListener)
   {
-    this.a.setAsyncImageListener(paramAsyncImageListener);
+    this.mAsyncImageableImpl.setAsyncImageListener(paramAsyncImageListener);
   }
   
   public void setAsyncImageProcessor(ImageProcessor paramImageProcessor)
@@ -114,7 +114,7 @@ public class AsyncImageView
   
   public void setInternalAsyncImageListener(AsyncImageable.AsyncImageListener paramAsyncImageListener)
   {
-    this.a.setInternalAsyncImageListener(paramAsyncImageListener);
+    this.mAsyncImageableImpl.setInternalAsyncImageListener(paramAsyncImageListener);
   }
 }
 

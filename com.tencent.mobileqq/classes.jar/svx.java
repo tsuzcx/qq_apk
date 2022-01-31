@@ -1,40 +1,71 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import cooperation.qzone.report.lp.LpReportManager;
-import cooperation.qzone.util.QZLog;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import java.util.List;
 
 public class svx
-  implements Runnable
+  extends svu
 {
-  public svx(FriendProfileCardActivity paramFriendProfileCardActivity) {}
-  
-  public void run()
+  public svx(ViewGroup paramViewGroup)
   {
-    try
+    super(paramViewGroup, 2131495711);
+  }
+  
+  public void a()
+  {
+    this.a.setTag(2131307635, null);
+  }
+  
+  public void a(ssm paramssm)
+  {
+    super.a(paramssm);
+    this.a.setDisplayState(2);
+    c(paramssm.jdField_b_of_type_JavaLangString);
+    StoryMsgNodeFrameLayout localStoryMsgNodeFrameLayout;
+    String str;
+    if (!TextUtils.isEmpty(paramssm.j))
     {
-      if (!TextUtils.isEmpty(this.a.a.a.a))
+      localStoryMsgNodeFrameLayout = this.a;
+      if (TextUtils.isEmpty(paramssm.c))
       {
-        Object localObject = this.a.a.a.a;
-        if (this.a.a.a.a.startsWith("+")) {
-          localObject = this.a.a.a.a.substring(1);
+        str = ajjy.a(2131647474);
+        localStoryMsgNodeFrameLayout.setNodeName(str, paramssm.j);
+        if ((paramssm.jdField_a_of_type_JavaUtilList == null) || (paramssm.jdField_a_of_type_JavaUtilList.isEmpty())) {
+          this.a.a(1, 1 - paramssm.jdField_b_of_type_Int);
         }
-        localObject = new LpReportInfo_pf00064(699, 1, Long.valueOf((String)localObject).longValue());
-        LpReportManager.getInstance().reportToPF00064((LpReportInfo_pf00064)localObject, false, false);
+        str = (String)this.a.getTag(2131307635);
+        if (!TextUtils.equals(paramssm.jdField_a_of_type_JavaLangString, str)) {
+          switch (paramssm.jdField_a_of_type_Int)
+          {
+          default: 
+            str = "unknown";
+          }
+        }
       }
-      return;
     }
-    catch (Exception localException)
+    for (;;)
     {
-      QZLog.e("QzoneReport", "LpReportInfoProfile", localException);
+      urp.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramssm.jdField_a_of_type_JavaLangString, str });
+      this.a.setTag(2131307635, paramssm.jdField_a_of_type_JavaLangString);
+      return;
+      str = paramssm.c;
+      break;
+      localStoryMsgNodeFrameLayout = this.a;
+      if (TextUtils.isEmpty(paramssm.c)) {}
+      for (str = ajjy.a(2131647481);; str = paramssm.c)
+      {
+        localStoryMsgNodeFrameLayout.setNodeName(str, false);
+        break;
+      }
+      str = "2";
+      continue;
+      str = "3";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     svx
  * JD-Core Version:    0.7.0.1
  */

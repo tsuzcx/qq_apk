@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
-import com.tencent.util.InputMethodUtil;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class aiyq
-  implements Runnable
+final class aiyq
+  implements BusinessObserver
 {
-  public aiyq(AbsPublishActivity paramAbsPublishActivity) {}
-  
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    InputMethodUtil.a(this.a.b);
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloConfigDataReport", 2, new Object[] { "interceptReport onReceive isSuccess:", Boolean.valueOf(paramBoolean), ",bundle", paramBundle.toString() });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiyq
  * JD-Core Version:    0.7.0.1
  */

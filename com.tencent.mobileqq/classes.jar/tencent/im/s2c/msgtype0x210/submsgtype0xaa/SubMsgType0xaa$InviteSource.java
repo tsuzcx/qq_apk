@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SubMsgType0xaa$InviteSource
-  extends MessageMicro
+  extends MessageMicro<InviteSource>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "type", "src" }, new Object[] { Integer.valueOf(0), "" }, InviteSource.class);
   public final PBStringField src = PBField.initString("");

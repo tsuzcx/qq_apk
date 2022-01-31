@@ -1,74 +1,23 @@
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import com.tencent.component.network.downloader.impl.ipc.Const;
-import com.tencent.component.network.downloader.impl.ipc.DownloadSerice;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 
-public class pop
-  implements Downloader.DownloadListener
+public final class pop
+  implements Parcelable.Creator<AdvertisementInfo>
 {
-  public pop(DownloadSerice paramDownloadSerice, Messenger paramMessenger) {}
-  
-  public void onDownloadCanceled(String paramString)
+  public AdvertisementInfo a(Parcel paramParcel)
   {
-    paramString = Const.a(paramString);
-    try
-    {
-      this.jdField_a_of_type_AndroidOsMessenger.send(paramString);
-      return;
-    }
-    catch (RemoteException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    return new AdvertisementInfo(paramParcel);
   }
   
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  public AdvertisementInfo[] a(int paramInt)
   {
-    paramString = Const.b(paramString, paramDownloadResult);
-    try
-    {
-      this.jdField_a_of_type_AndroidOsMessenger.send(paramString);
-      return;
-    }
-    catch (RemoteException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
-  {
-    paramString = Const.a(paramString, paramLong, paramFloat);
-    try
-    {
-      this.jdField_a_of_type_AndroidOsMessenger.send(paramString);
-      return;
-    }
-    catch (RemoteException paramString)
-    {
-      paramString.printStackTrace();
-    }
-  }
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    paramString = Const.a(paramString, paramDownloadResult);
-    try
-    {
-      this.jdField_a_of_type_AndroidOsMessenger.send(paramString);
-      return;
-    }
-    catch (RemoteException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    return new AdvertisementInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pop
  * JD-Core Version:    0.7.0.1
  */

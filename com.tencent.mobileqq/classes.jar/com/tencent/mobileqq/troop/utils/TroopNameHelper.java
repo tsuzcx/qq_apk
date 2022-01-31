@@ -1,16 +1,15 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajxo;
-import ajxp;
-import ajxr;
+import ajjj;
+import ajtg;
+import ajuc;
 import android.text.TextUtils;
+import azkj;
+import azkk;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.TroopObserver;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -19,28 +18,24 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class TroopNameHelper
 {
-  ajxr jdField_a_of_type_Ajxr;
-  public FriendsManager a;
-  public QQAppInterface a;
-  public TroopHandler a;
+  ajjj jdField_a_of_type_Ajjj = (ajjj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51);
+  ajtg jdField_a_of_type_Ajtg = (ajtg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+  ajuc jdField_a_of_type_Ajuc = new azkj(this);
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
   public TroopManager a;
-  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new ajxo(this);
-  public ConcurrentHashMap a;
-  public ConcurrentLinkedQueue a;
-  public ConcurrentHashMap b = new ConcurrentHashMap();
+  TroopNameHelper.Task jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopNameHelper$Task;
+  public ConcurrentHashMap<String, Long> a;
+  ConcurrentLinkedQueue<TroopNameHelper.Task> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
+  public ConcurrentHashMap<String, TroopNameHelper.GenTroopNameTask> b = new ConcurrentHashMap();
   
   public TroopNameHelper()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51));
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(50));
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler = ((TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20));
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajuc);
   }
   
-  public static String a(ArrayList paramArrayList)
+  public static String a(ArrayList<String> paramArrayList)
   {
     StringBuffer localStringBuffer = new StringBuffer();
     int i = 0;
@@ -68,10 +63,10 @@ public class TroopNameHelper
     }
   }
   
-  private void a(ajxr paramajxr)
+  private void a(TroopNameHelper.Task paramTask)
   {
-    if ((!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(paramajxr)) && (!paramajxr.a)) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramajxr);
+    if ((!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(paramTask)) && (!paramTask.a)) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramTask);
     }
     b();
   }
@@ -87,9 +82,9 @@ public class TroopNameHelper
       {
         return;
       } while (!(BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface));
-      localObject = (TroopManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(51);
+      localObject = (TroopManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(52);
       localTroopNameHelper = ((TroopManager)localObject).a();
-      localObject = ((TroopManager)localObject).b(paramString);
+      localObject = ((TroopManager)localObject).c(paramString);
     } while ((localObject == null) || (((TroopInfo)localObject).hasSetTroopName()));
     localTroopNameHelper.a(paramString, null);
   }
@@ -98,12 +93,12 @@ public class TroopNameHelper
   {
     if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
     {
-      TroopNameHelper localTroopNameHelper = ((TroopManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(51)).a();
-      ajxp localajxp = (ajxp)localTroopNameHelper.b.get(paramString);
-      if (localajxp == null) {
+      TroopNameHelper localTroopNameHelper = ((TroopManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(52)).a();
+      TroopNameHelper.GenTroopNameTask localGenTroopNameTask = (TroopNameHelper.GenTroopNameTask)localTroopNameHelper.b.get(paramString);
+      if (localGenTroopNameTask == null) {
         break label64;
       }
-      localTroopNameHelper.a(localajxp);
+      localTroopNameHelper.a(localGenTroopNameTask);
       localTroopNameHelper.b.remove(paramString);
     }
     label64:
@@ -117,14 +112,14 @@ public class TroopNameHelper
   {
     try
     {
-      if ((this.jdField_a_of_type_Ajxr == null) || (!this.jdField_a_of_type_Ajxr.a))
+      if ((this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopNameHelper$Task == null) || (!this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopNameHelper$Task.a))
       {
-        this.jdField_a_of_type_Ajxr = null;
-        this.jdField_a_of_type_Ajxr = ((ajxr)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll());
-        if (this.jdField_a_of_type_Ajxr != null)
+        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopNameHelper$Task = null;
+        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopNameHelper$Task = ((TroopNameHelper.Task)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll());
+        if (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopNameHelper$Task != null)
         {
-          this.jdField_a_of_type_Ajxr.a = true;
-          ThreadManager.post(this.jdField_a_of_type_Ajxr, 8, null, false);
+          this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopNameHelper$Task.a = true;
+          ThreadManager.post(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopNameHelper$Task, 8, null, false);
         }
       }
       return;
@@ -139,7 +134,7 @@ public class TroopNameHelper
       if (QLog.isColorLevel()) {
         QLog.d("TroopNameHelper", 2, "onFriendNameChaned uin = " + paramString);
       }
-      TroopNameHelper localTroopNameHelper = ((TroopManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(51)).a();
+      TroopNameHelper localTroopNameHelper = ((TroopManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(52)).a();
       localTroopNameHelper.getClass();
       localTroopNameHelper.a(new TroopNameHelper.FriendNameChanedTask(localTroopNameHelper, paramString));
     }
@@ -147,14 +142,14 @@ public class TroopNameHelper
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajuc);
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
     this.b.clear();
   }
   
-  public void a(String paramString, TroopNameHelper.GenTroopNameCallback paramGenTroopNameCallback)
+  public void a(String paramString, azkk paramazkk)
   {
-    a(new ajxp(this, paramString, paramGenTroopNameCallback));
+    a(new TroopNameHelper.GenTroopNameTask(this, paramString, paramazkk));
   }
   
   public boolean a(String paramString)
@@ -164,7 +159,7 @@ public class TroopNameHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopNameHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,17 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
-import com.tencent.mobileqq.app.MessageObserver;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
 public class vwn
-  extends MessageObserver
+  extends RecyclerView.ViewHolder
 {
-  public vwn(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
-  
-  protected void e(boolean paramBoolean)
+  public vwn(vwm paramvwm, View paramView)
   {
-    super.e(paramBoolean);
-    this.a.a.sendEmptyMessage(0);
+    super(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vwn
  * JD-Core Version:    0.7.0.1
  */

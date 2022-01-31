@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-
 public class rrc
-  implements Runnable
 {
-  public rrc(AssociatedAccountActivity paramAssociatedAccountActivity) {}
+  public int a;
+  public long a;
+  public int b = -1;
   
-  public void run()
+  public rrc()
   {
-    AssociatedAccountActivity.b(this.a);
+    this.jdField_a_of_type_Int = -1;
+  }
+  
+  public String toString()
+  {
+    return "time: " + this.jdField_a_of_type_Long + " starPosition: " + this.jdField_a_of_type_Int + "  endPostition: " + this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rrc
  * JD-Core Version:    0.7.0.1
  */

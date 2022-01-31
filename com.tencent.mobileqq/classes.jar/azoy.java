@@ -1,0 +1,20 @@
+import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
+
+public class azoy
+  implements axcq
+{
+  public azoy(TroopSignVideoView paramTroopSignVideoView) {}
+  
+  public void a()
+  {
+    if (TroopSignVideoView.a(this.a) != null) {
+      TroopSignVideoView.a(this.a).a();
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+ * Qualified Name:     azoy
+ * JD-Core Version:    0.7.0.1
+ */

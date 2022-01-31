@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.armap.SdCardImageAnimView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 public class abkd
-  implements Runnable
+  implements alut
 {
-  public abkd(SdCardImageAnimView paramSdCardImageAnimView) {}
+  public abkd(QQBrowserActivity paramQQBrowserActivity) {}
   
-  public void run()
+  public void onColorNoteAnimFinish()
   {
-    SdCardImageAnimView.b(this.a);
+    QQBrowserActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abkd
  * JD-Core Version:    0.7.0.1
  */

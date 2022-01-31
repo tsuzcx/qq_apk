@@ -1,13 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class mla
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  mla(mks parammks) {}
+  mla(mkz parammkz) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.notifyDataSetChanged();
+    this.a.jdField_a_of_type_Mlc.c();
+    this.a.jdField_a_of_type_Long = 0L;
   }
 }
 

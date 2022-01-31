@@ -3,35 +3,46 @@ package com.tencent.component.media.image;
 import android.graphics.drawable.Drawable;
 import android.os.Looper;
 import com.tencent.component.media.utils.BaseHandler;
-import plz;
-import pmh;
-import pmi;
-import pmj;
-import pmk;
 
 public class UICallbackTask
-  extends plz
+  extends ImageTask
 {
-  private static int jdField_a_of_type_Int;
-  private static UICallbackTask jdField_a_of_type_ComTencentComponentMediaImageUICallbackTask;
-  private static BaseHandler jdField_a_of_type_ComTencentComponentMediaUtilsBaseHandler = new BaseHandler(Looper.getMainLooper());
-  private static final Object jdField_a_of_type_JavaLangObject;
-  private UICallbackTask b = null;
+  private static BaseHandler mMainHandler = new BaseHandler(Looper.getMainLooper());
+  private static int mObjectPoolSize;
+  private static UICallbackTask sPool = null;
+  private static final Object sPoolSync = new Object();
+  private UICallbackTask next = null;
   
   static
   {
-    jdField_a_of_type_ComTencentComponentMediaImageUICallbackTask = null;
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_Int = 0;
+    mObjectPoolSize = 0;
     clearAndInitSize();
   }
   
-  private UICallbackTask(plz paramplz)
+  private UICallbackTask(ImageTask paramImageTask)
   {
-    super(paramplz);
+    super(paramImageTask);
   }
   
-  private String a(ImageKey paramImageKey)
+  public static void clearAndInitSize()
+  {
+    synchronized (sPoolSync)
+    {
+      sPool = null;
+      int i = 0;
+      while (i < mInitAllocatedSize)
+      {
+        UICallbackTask localUICallbackTask = new UICallbackTask(null);
+        localUICallbackTask.next = sPool;
+        sPool = localUICallbackTask;
+        mObjectPoolSize += 1;
+        i += 1;
+      }
+      return;
+    }
+  }
+  
+  private String getCallbackUrl(ImageKey paramImageKey)
   {
     if (paramImageKey == null) {
       return null;
@@ -42,26 +53,84 @@ public class UICallbackTask
     return paramImageKey.url;
   }
   
-  private void a(ImageKey paramImageKey)
+  public static UICallbackTask obtain(ImageTask paramImageTask)
+  {
+    if (needRecycle) {}
+    synchronized (sPoolSync)
+    {
+      if (sPool != null)
+      {
+        UICallbackTask localUICallbackTask = sPool;
+        sPool = sPool.next;
+        localUICallbackTask.next = null;
+        mObjectPoolSize -= 1;
+        localUICallbackTask.setImageTask(paramImageTask);
+        return localUICallbackTask;
+      }
+      return new UICallbackTask(paramImageTask);
+    }
+  }
+  
+  private void onImageCanceled(ImageKey paramImageKey)
+  {
+    if (paramImageKey == null) {}
+    do
+    {
+      return;
+      ProgressTracer.print(1003, getCallbackUrl(paramImageKey));
+      if (paramImageKey.imglistener != null) {
+        paramImageKey.imglistener.onDownloadCanceled(getCallbackUrl(paramImageKey));
+      }
+    } while (paramImageKey.listener == null);
+    if (paramImageKey.options == null) {}
+    for (boolean bool = false; bool; bool = paramImageKey.options.useMainThread)
+    {
+      mMainHandler.post(new UICallbackTask.2(this, paramImageKey));
+      return;
+    }
+    paramImageKey.listener.onImageCanceled(getCallbackUrl(paramImageKey), paramImageKey.options);
+  }
+  
+  private void onImageFailed(ImageKey paramImageKey)
   {
     if (paramImageKey == null) {}
     do
     {
       return;
       if (paramImageKey.imglistener != null) {
-        paramImageKey.imglistener.onDownloadFailed(a(paramImageKey));
+        paramImageKey.imglistener.onDownloadFailed(getCallbackUrl(paramImageKey));
       }
     } while (paramImageKey.listener == null);
     if (paramImageKey.options == null) {}
     for (boolean bool = false; bool; bool = paramImageKey.options.useMainThread)
     {
-      jdField_a_of_type_ComTencentComponentMediaUtilsBaseHandler.post(new pmh(this, paramImageKey));
+      mMainHandler.post(new UICallbackTask.1(this, paramImageKey));
       return;
     }
-    paramImageKey.listener.onImageFailed(a(paramImageKey), paramImageKey.options);
+    paramImageKey.listener.onImageFailed(getCallbackUrl(paramImageKey), paramImageKey.options);
   }
   
-  private void a(ImageKey paramImageKey, long paramLong, float paramFloat)
+  private void onImageLoaded(ImageKey paramImageKey, Drawable paramDrawable)
+  {
+    if (paramImageKey == null) {}
+    do
+    {
+      return;
+      if (paramImageKey.imglistener != null) {
+        paramImageKey.imglistener.onDownloadSucceed(getCallbackUrl(paramImageKey));
+      }
+    } while (paramImageKey.listener == null);
+    if (paramImageKey.options == null) {}
+    for (boolean bool = false; bool; bool = paramImageKey.options.useMainThread)
+    {
+      mMainHandler.post(new UICallbackTask.3(this, paramImageKey, paramDrawable));
+      return;
+    }
+    paramImageKey.listener.onImageLoaded(getCallbackUrl(paramImageKey), paramDrawable, paramImageKey.options);
+    ProgressTracer.printI(new Object[] { Long.valueOf(System.currentTimeMillis()), " : ", Integer.valueOf(6), " : ", getCallbackUrl(paramImageKey), " : ", Integer.valueOf(paramImageKey.listener.hashCode()) });
+  }
+  
+  private void onImageProgress(ImageKey paramImageKey, long paramLong, float paramFloat)
   {
     if (paramImageKey == null) {}
     do
@@ -71,7 +140,7 @@ public class UICallbackTask
         return;
       } while (!paramImageKey.needCallBackProcessPercent);
       if (paramImageKey.imglistener != null) {
-        paramImageKey.imglistener.onDownloadProgress(a(paramImageKey), paramLong, paramFloat);
+        paramImageKey.imglistener.onDownloadProgress(getCallbackUrl(paramImageKey), paramLong, paramFloat);
       }
     } while (paramImageKey.listener == null);
     if (paramImageKey.options != null) {
@@ -80,86 +149,10 @@ public class UICallbackTask
     if (paramImageKey.options == null) {}
     for (boolean bool = false; bool; bool = paramImageKey.options.useMainThread)
     {
-      jdField_a_of_type_ComTencentComponentMediaUtilsBaseHandler.post(new pmk(this, paramImageKey, paramFloat));
+      mMainHandler.post(new UICallbackTask.4(this, paramImageKey, paramFloat));
       return;
     }
-    paramImageKey.listener.onImageProgress(a(paramImageKey), paramFloat, paramImageKey.options);
-  }
-  
-  private void a(ImageKey paramImageKey, Drawable paramDrawable)
-  {
-    if (paramImageKey == null) {}
-    do
-    {
-      return;
-      if (paramImageKey.imglistener != null) {
-        paramImageKey.imglistener.onDownloadSucceed(a(paramImageKey));
-      }
-    } while (paramImageKey.listener == null);
-    if (paramImageKey.options == null) {}
-    for (boolean bool = false; bool; bool = paramImageKey.options.useMainThread)
-    {
-      jdField_a_of_type_ComTencentComponentMediaUtilsBaseHandler.post(new pmj(this, paramImageKey, paramDrawable));
-      return;
-    }
-    paramImageKey.listener.onImageLoaded(a(paramImageKey), paramDrawable, paramImageKey.options);
-    ProgressTracer.printI(new Object[] { Long.valueOf(System.currentTimeMillis()), " : ", Integer.valueOf(6), " : ", a(paramImageKey), " : ", Integer.valueOf(paramImageKey.listener.hashCode()) });
-  }
-  
-  private void b(ImageKey paramImageKey)
-  {
-    if (paramImageKey == null) {}
-    do
-    {
-      return;
-      ProgressTracer.print(1003, a(paramImageKey));
-      if (paramImageKey.imglistener != null) {
-        paramImageKey.imglistener.onDownloadCanceled(a(paramImageKey));
-      }
-    } while (paramImageKey.listener == null);
-    if (paramImageKey.options == null) {}
-    for (boolean bool = false; bool; bool = paramImageKey.options.useMainThread)
-    {
-      jdField_a_of_type_ComTencentComponentMediaUtilsBaseHandler.post(new pmi(this, paramImageKey));
-      return;
-    }
-    paramImageKey.listener.onImageCanceled(a(paramImageKey), paramImageKey.options);
-  }
-  
-  public static void clearAndInitSize()
-  {
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      jdField_a_of_type_ComTencentComponentMediaImageUICallbackTask = null;
-      int i = 0;
-      while (i < mInitAllocatedSize)
-      {
-        UICallbackTask localUICallbackTask = new UICallbackTask(null);
-        localUICallbackTask.b = jdField_a_of_type_ComTencentComponentMediaImageUICallbackTask;
-        jdField_a_of_type_ComTencentComponentMediaImageUICallbackTask = localUICallbackTask;
-        jdField_a_of_type_Int += 1;
-        i += 1;
-      }
-      return;
-    }
-  }
-  
-  public static UICallbackTask obtain(plz paramplz)
-  {
-    if (needRecycle) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_ComTencentComponentMediaImageUICallbackTask != null)
-      {
-        UICallbackTask localUICallbackTask = jdField_a_of_type_ComTencentComponentMediaImageUICallbackTask;
-        jdField_a_of_type_ComTencentComponentMediaImageUICallbackTask = jdField_a_of_type_ComTencentComponentMediaImageUICallbackTask.b;
-        localUICallbackTask.b = null;
-        jdField_a_of_type_Int -= 1;
-        localUICallbackTask.setImageTask(paramplz);
-        return localUICallbackTask;
-      }
-      return new UICallbackTask(paramplz);
-    }
+    paramImageKey.listener.onImageProgress(getCallbackUrl(paramImageKey), paramFloat, paramImageKey.options);
   }
   
   public void excuteTask()
@@ -180,33 +173,33 @@ public class UICallbackTask
         setResult(paramInt, paramVarArgs);
       }
       return;
-      a(this.mImageKey);
+      onImageFailed(this.mImageKey);
       continue;
-      b(this.mImageKey);
+      onImageCanceled(this.mImageKey);
       continue;
       Object localObject = (Drawable)paramVarArgs[0];
-      a(this.mImageKey, (Drawable)localObject);
+      onImageLoaded(this.mImageKey, (Drawable)localObject);
       continue;
       localObject = (String)paramVarArgs[0];
       long l = ((Long)paramVarArgs[1]).longValue();
       float f = ((Float)paramVarArgs[2]).floatValue();
-      a(this.mImageKey, l, f);
+      onImageProgress(this.mImageKey, l, f);
       continue;
-      b(this.mImageKey);
+      onImageCanceled(this.mImageKey);
       continue;
-      b(this.mImageKey);
+      onImageCanceled(this.mImageKey);
       continue;
-      a(this.mImageKey);
+      onImageFailed(this.mImageKey);
       continue;
-      a(this.mImageKey, null);
+      onImageLoaded(this.mImageKey, null);
       continue;
       localObject = (String)paramVarArgs[0];
       l = ((Long)paramVarArgs[1]).longValue();
       f = ((Float)paramVarArgs[2]).floatValue();
-      a(this.mImageKey, l, f);
+      onImageProgress(this.mImageKey, l, f);
       continue;
       localObject = (Drawable)paramVarArgs[0];
-      a(this.mImageKey, (Drawable)localObject);
+      onImageLoaded(this.mImageKey, (Drawable)localObject);
     }
   }
   
@@ -216,13 +209,13 @@ public class UICallbackTask
       return;
     }
     reset();
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (sPoolSync)
     {
-      if (jdField_a_of_type_Int < 50)
+      if (mObjectPoolSize < 50)
       {
-        this.b = jdField_a_of_type_ComTencentComponentMediaImageUICallbackTask;
-        jdField_a_of_type_ComTencentComponentMediaImageUICallbackTask = this;
-        jdField_a_of_type_Int += 1;
+        this.next = sPool;
+        sPool = this;
+        mObjectPoolSize += 1;
       }
       return;
     }

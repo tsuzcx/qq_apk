@@ -31,14 +31,14 @@ public class LongSparseArray<E>
   private void gc()
   {
     int m = this.mSize;
-    int j = 0;
     long[] arrayOfLong = this.mKeys;
     Object[] arrayOfObject = this.mValues;
     int i = 0;
-    while (i < m)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
       Object localObject = arrayOfObject[i];
-      int k = j;
+      k = j;
       if (localObject != DELETED)
       {
         if (i != j)
@@ -50,7 +50,6 @@ public class LongSparseArray<E>
         k = j + 1;
       }
       i += 1;
-      j = k;
     }
     this.mGarbage = false;
     this.mSize = j;
@@ -98,18 +97,23 @@ public class LongSparseArray<E>
   
   public LongSparseArray<E> clone()
   {
-    Object localObject = null;
     try
     {
       LongSparseArray localLongSparseArray = (LongSparseArray)super.clone();
-      localObject = localLongSparseArray;
-      localLongSparseArray.mKeys = ((long[])this.mKeys.clone());
-      localObject = localLongSparseArray;
-      localLongSparseArray.mValues = ((Object[])this.mValues.clone());
-      return localLongSparseArray;
+      return localCloneNotSupportedException1;
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
-    return localObject;
+    catch (CloneNotSupportedException localCloneNotSupportedException1)
+    {
+      try
+      {
+        localLongSparseArray.mKeys = ((long[])this.mKeys.clone());
+        localLongSparseArray.mValues = ((Object[])this.mValues.clone());
+        return localLongSparseArray;
+      }
+      catch (CloneNotSupportedException localCloneNotSupportedException2) {}
+      localCloneNotSupportedException1 = localCloneNotSupportedException1;
+      return null;
+    }
   }
   
   public void delete(long paramLong)

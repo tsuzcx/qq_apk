@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class mobileqq_mp$ABTestControlMsgRequest
-  extends MessageMicro
+  extends MessageMicro<ABTestControlMsgRequest>
 {
   public static final int ABTEST_GUANLIZHONGXIN = 2;
   public static final int ABTEST_SUBSCRIBE = 1;

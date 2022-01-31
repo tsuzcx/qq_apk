@@ -1,29 +1,24 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose;
+import android.opengl.GLES20;
 
-public class akmp
-  implements TextWatcher
+class akmp
+  implements akvt
 {
-  public akmp(QQCustomDialogWtihInputAndChoose paramQQCustomDialogWtihInputAndChoose, int paramInt) {}
+  akmp(akmo paramakmo) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a.getText().length() == this.jdField_a_of_type_Int) && (paramCharSequence.charAt(this.jdField_a_of_type_Int - 1) == '\024'))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a.setText(paramCharSequence.subSequence(0, this.jdField_a_of_type_Int - 1));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a.setSelection(this.jdField_a_of_type_Int - 1);
-    }
+    GLES20.glUniform1i(akmo.a(this.a), akmo.b(this.a));
+  }
+  
+  public void a(int paramInt)
+  {
+    akmo.a(this.a, GLES20.glGetUniformLocation(paramInt, "uDisplayType"));
+    akmz.a("glGetUniformLocation uDisplayType");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akmp
  * JD-Core Version:    0.7.0.1
  */

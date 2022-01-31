@@ -1,5 +1,7 @@
 package com.tencent.ttpic.model;
 
+import com.tencent.ttpic.openapi.model.Rect;
+
 public class CanvasItem
 {
   public int endTime;
@@ -12,7 +14,7 @@ public class CanvasItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.model.CanvasItem
  * JD-Core Version:    0.7.0.1
  */

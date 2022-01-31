@@ -9,19 +9,28 @@ import java.util.Map;
 public final class operation_delugc_req
   extends JceStruct
 {
-  static Map cache_busi_param;
+  static Map<Integer, String> cache_busi_param = new HashMap();
+  static Map<String, String> cache_mapEx;
   public int appid;
-  public Map busi_param;
+  public Map<Integer, String> busi_param;
   public String content = "";
   public int isverified;
+  public Map<String, String> mapEx;
   public long ownuin;
   public String srcId = "";
   public String srcSubid = "";
   public long uin;
   
+  static
+  {
+    cache_busi_param.put(Integer.valueOf(0), "");
+    cache_mapEx = new HashMap();
+    cache_mapEx.put("", "");
+  }
+  
   public operation_delugc_req() {}
   
-  public operation_delugc_req(int paramInt1, long paramLong1, long paramLong2, String paramString1, String paramString2, String paramString3, int paramInt2, Map paramMap)
+  public operation_delugc_req(int paramInt1, long paramLong1, long paramLong2, String paramString1, String paramString2, String paramString3, int paramInt2, Map<Integer, String> paramMap, Map<String, String> paramMap1)
   {
     this.appid = paramInt1;
     this.uin = paramLong1;
@@ -31,6 +40,7 @@ public final class operation_delugc_req
     this.content = paramString3;
     this.isverified = paramInt2;
     this.busi_param = paramMap;
+    this.mapEx = paramMap1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -42,12 +52,8 @@ public final class operation_delugc_req
     this.srcSubid = paramJceInputStream.readString(4, false);
     this.content = paramJceInputStream.readString(5, false);
     this.isverified = paramJceInputStream.read(this.isverified, 6, false);
-    if (cache_busi_param == null)
-    {
-      cache_busi_param = new HashMap();
-      cache_busi_param.put(Integer.valueOf(0), "");
-    }
     this.busi_param = ((Map)paramJceInputStream.read(cache_busi_param, 7, false));
+    this.mapEx = ((Map)paramJceInputStream.read(cache_mapEx, 8, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -68,11 +74,14 @@ public final class operation_delugc_req
     if (this.busi_param != null) {
       paramJceOutputStream.write(this.busi_param, 7);
     }
+    if (this.mapEx != null) {
+      paramJceOutputStream.write(this.mapEx, 8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     NS_MOBILE_OPERATION.operation_delugc_req
  * JD-Core Version:    0.7.0.1
  */

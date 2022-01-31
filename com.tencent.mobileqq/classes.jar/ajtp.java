@@ -1,18 +1,7 @@
-import com.tencent.mobileqq.troop.logic.TroopFeedsCenterLogic;
-
-public class ajtp
-  implements Runnable
-{
-  public ajtp(TroopFeedsCenterLogic paramTroopFeedsCenterLogic) {}
-  
-  public void run()
-  {
-    this.a.c(false);
-  }
-}
+public class ajtp {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajtp
  * JD-Core Version:    0.7.0.1
  */

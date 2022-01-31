@@ -2,12 +2,14 @@ package oicq.wlogin_sdk.request;
 
 import android.content.Context;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.nio.BufferOverflowException;
 import java.security.Key;
 import java.util.ArrayList;
@@ -24,6 +26,7 @@ import javax.crypto.spec.SecretKeySpec;
 import oicq.wlogin_sdk.sharemem.WloginLoginInfo;
 import oicq.wlogin_sdk.sharemem.WloginSigInfo;
 import oicq.wlogin_sdk.sharemem.WloginSimpleInfo;
+import oicq.wlogin_sdk.tools.MD5;
 import oicq.wlogin_sdk.tools.cryptor;
 import oicq.wlogin_sdk.tools.util;
 
@@ -344,6 +347,30 @@ public class c
     //   173	218	486	java/lang/Exception
   }
   
+  public static int a(Context paramContext, TreeMap paramTreeMap, String paramString, byte[] paramArrayOfByte)
+  {
+    util.LOGI("saveTKTreeMap start fileName=" + paramString, "");
+    try
+    {
+      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+      ObjectOutputStream localObjectOutputStream = new ObjectOutputStream(localByteArrayOutputStream);
+      localObjectOutputStream.writeObject(paramTreeMap);
+      localObjectOutputStream.flush();
+      paramTreeMap = localByteArrayOutputStream.toByteArray();
+      int i = a(paramContext, paramString, cryptor.encrypt(paramTreeMap, 0, paramTreeMap.length, paramArrayOfByte));
+      localObjectOutputStream.close();
+      localByteArrayOutputStream.close();
+      util.LOGI("saveTKTreeMap end=" + paramString, "");
+      return i;
+    }
+    catch (Throwable paramContext)
+    {
+      util.LOGI("saveTKTreeMap failed " + paramContext.getStackTrace().toString(), "");
+      util.printThrowable(paramContext, "");
+    }
+    return -1022;
+  }
+  
   public static int a(byte[] paramArrayOfByte1, int paramInt, byte[] paramArrayOfByte2)
   {
     int i = paramInt;
@@ -375,13 +402,12 @@ public class c
   {
     util.LOGI("loadTKTreeMap sigfile start " + paramString, "");
     Object localObject1 = a(paramContext, paramString);
-    util.LOGI("loadTKTreeMap get_from_db end " + paramString, "");
     Object localObject2;
     Object localObject3;
     Object localObject4;
     if (localObject1 != null)
     {
-      util.LOGI("loadTKTreeMap len:" + localObject1.length + " at " + t.l(), "");
+      util.LOGI("loadTKTreeMap len:" + localObject1.length + " at " + t.m(), "");
       try
       {
         localObject2 = cryptor.decrypt((byte[])localObject1, 0, localObject1.length, t.B);
@@ -449,10 +475,65 @@ public class c
         ((ObjectInputStream)localObject2).close();
         localByteArrayInputStream.close();
         return localObject3;
-        util.LOGI("loadTKTreeMap dbdata is null at " + t.l(), "");
+        util.LOGI("loadTKTreeMap dbdata is null at " + t.m(), "");
       }
     }
     return localByteArrayInputStream;
+  }
+  
+  public static void a(Context paramContext, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    Object localObject1 = a(paramContext, "tk_file");
+    Object localObject3;
+    if (localObject1 != null) {
+      try
+      {
+        localObject1 = cryptor.decrypt((byte[])localObject1, 0, localObject1.length, paramArrayOfByte1);
+        if (localObject1 != null)
+        {
+          localObject3 = new ByteArrayInputStream((byte[])localObject1);
+          Object localObject4 = new ObjectInputStream((InputStream)localObject3);
+          localObject1 = (TreeMap)((ObjectInputStream)localObject4).readObject();
+          ((ObjectInputStream)localObject4).close();
+          ((ByteArrayInputStream)localObject3).close();
+          if (localObject1 != null)
+          {
+            localObject3 = ((TreeMap)localObject1).keySet().iterator();
+            while (((Iterator)localObject3).hasNext())
+            {
+              localObject4 = ((Iterator)localObject3).next();
+              WloginAllSigInfo localWloginAllSigInfo = (WloginAllSigInfo)((TreeMap)localObject1).get(localObject4);
+              util.LOGI(localObject4 + " change guid allsig: " + localWloginAllSigInfo._tk_map, "" + localObject4);
+            }
+          }
+        }
+        localObject2 = a(paramContext, "name_file");
+      }
+      catch (Throwable localThrowable) {}
+    }
+    for (;;)
+    {
+      Object localObject2;
+      if (localObject2 != null) {}
+      try
+      {
+        paramArrayOfByte1 = cryptor.decrypt((byte[])localObject2, 0, localObject2.length, paramArrayOfByte1);
+        if (paramArrayOfByte1 != null)
+        {
+          paramArrayOfByte1 = new ByteArrayInputStream(paramArrayOfByte1);
+          localObject2 = new ObjectInputStream(paramArrayOfByte1);
+          localObject3 = (TreeMap)((ObjectInputStream)localObject2).readObject();
+          ((ObjectInputStream)localObject2).close();
+          paramArrayOfByte1.close();
+          if (localObject3 != null) {
+            a(paramContext, (TreeMap)localObject3, "name_file", paramArrayOfByte2);
+          }
+        }
+        return;
+      }
+      catch (Throwable paramContext) {}
+      a(paramContext, (TreeMap)localObject2, "tk_file", paramArrayOfByte2);
+    }
   }
   
   /* Error */
@@ -462,7 +543,7 @@ public class c
     //   0: aconst_null
     //   1: astore 4
     //   3: iconst_0
-    //   4: invokestatic 298	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   4: invokestatic 339	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   7: astore 5
     //   9: aload_1
     //   10: ldc 53
@@ -479,7 +560,7 @@ public class c
     //   32: invokespecial 64	oicq/wlogin_sdk/request/b:<init>	(Landroid/content/Context;Ljava/lang/String;Landroid/database/sqlite/SQLiteDatabase$CursorFactory;I)V
     //   35: putstatic 30	oicq/wlogin_sdk/request/c:g	Loicq/wlogin_sdk/request/b;
     //   38: getstatic 30	oicq/wlogin_sdk/request/c:g	Loicq/wlogin_sdk/request/b;
-    //   41: invokevirtual 301	oicq/wlogin_sdk/request/b:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   41: invokevirtual 342	oicq/wlogin_sdk/request/b:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
     //   44: astore_0
     //   45: aload_0
     //   46: invokevirtual 74	android/database/sqlite/SQLiteDatabase:getPath	()Ljava/lang/String;
@@ -489,29 +570,29 @@ public class c
     //   54: new 79	java/lang/StringBuilder
     //   57: dup
     //   58: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   61: ldc_w 303
+    //   61: ldc_w 344
     //   64: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   67: aload_1
     //   68: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   71: ldc_w 305
+    //   71: ldc_w 346
     //   74: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   77: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   80: aconst_null
-    //   81: invokevirtual 309	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   81: invokevirtual 350	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
     //   84: astore_3
     //   85: aload 5
     //   87: astore 4
     //   89: aload_3
-    //   90: invokeinterface 312 1 0
+    //   90: invokeinterface 353 1 0
     //   95: ifeq +23 -> 118
     //   98: aload 5
     //   100: astore 4
     //   102: aload_3
     //   103: iconst_0
-    //   104: invokeinterface 316 2 0
+    //   104: invokeinterface 357 2 0
     //   109: ifle +9 -> 118
     //   112: iconst_1
-    //   113: invokestatic 298	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   113: invokestatic 339	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   116: astore 4
     //   118: aload_3
     //   119: ifnull +18 -> 137
@@ -521,7 +602,7 @@ public class c
     //   131: aload_3
     //   132: invokeinterface 139 1 0
     //   137: aload 4
-    //   139: invokevirtual 319	java/lang/Boolean:booleanValue	()Z
+    //   139: invokevirtual 360	java/lang/Boolean:booleanValue	()Z
     //   142: istore_2
     //   143: iload_2
     //   144: ifne +66 -> 210
@@ -551,7 +632,7 @@ public class c
     //   194: invokespecial 64	oicq/wlogin_sdk/request/b:<init>	(Landroid/content/Context;Ljava/lang/String;Landroid/database/sqlite/SQLiteDatabase$CursorFactory;I)V
     //   197: putstatic 32	oicq/wlogin_sdk/request/c:h	Loicq/wlogin_sdk/request/b;
     //   200: getstatic 32	oicq/wlogin_sdk/request/c:h	Loicq/wlogin_sdk/request/b;
-    //   203: invokevirtual 301	oicq/wlogin_sdk/request/b:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   203: invokevirtual 342	oicq/wlogin_sdk/request/b:getReadableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
     //   206: astore_0
     //   207: goto -162 -> 45
     //   210: aload_0
@@ -587,11 +668,11 @@ public class c
     //   270: aconst_null
     //   271: areturn
     //   272: aload 4
-    //   274: invokeinterface 322 1 0
+    //   274: invokeinterface 363 1 0
     //   279: ifeq +55 -> 334
     //   282: aload 4
     //   284: iconst_0
-    //   285: invokeinterface 326 2 0
+    //   285: invokeinterface 367 2 0
     //   290: astore_3
     //   291: aload 4
     //   293: invokeinterface 139 1 0
@@ -1177,10 +1258,10 @@ public class c
     //   8: new 79	java/lang/StringBuilder
     //   11: dup
     //   12: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   15: ldc_w 407
+    //   15: ldc_w 447
     //   18: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   21: lload_3
-    //   22: invokevirtual 252	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   22: invokevirtual 292	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   25: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   28: new 79	java/lang/StringBuilder
     //   31: dup
@@ -1188,7 +1269,7 @@ public class c
     //   35: ldc 144
     //   37: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   40: lload_1
-    //   41: invokevirtual 252	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   41: invokevirtual 292	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   44: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   47: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   50: aload_0
@@ -1210,9 +1291,9 @@ public class c
     //   83: ifnull +84 -> 167
     //   86: aload 8
     //   88: lload_1
-    //   89: invokestatic 249	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   92: invokevirtual 234	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   95: checkcast 236	oicq/wlogin_sdk/request/WloginAllSigInfo
+    //   89: invokestatic 289	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   92: invokevirtual 274	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   95: checkcast 276	oicq/wlogin_sdk/request/WloginAllSigInfo
     //   98: astore 9
     //   100: aload 9
     //   102: ifnonnull +14 -> 116
@@ -1224,26 +1305,26 @@ public class c
     //   112: monitorexit
     //   113: iload 5
     //   115: ireturn
-    //   116: ldc_w 409
+    //   116: ldc_w 449
     //   119: new 79	java/lang/StringBuilder
     //   122: dup
     //   123: invokespecial 80	java/lang/StringBuilder:<init>	()V
     //   126: ldc 144
     //   128: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   131: lload_1
-    //   132: invokevirtual 252	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   132: invokevirtual 292	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   135: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   138: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   141: aload 9
     //   143: lload_3
     //   144: iconst_0
     //   145: newarray byte
-    //   147: invokevirtual 413	oicq/wlogin_sdk/request/WloginAllSigInfo:put_da2	(J[B)I
+    //   147: invokevirtual 453	oicq/wlogin_sdk/request/WloginAllSigInfo:put_da2	(J[B)I
     //   150: pop
     //   151: aload_0
     //   152: aload 8
     //   154: ldc 53
-    //   156: invokevirtual 416	oicq/wlogin_sdk/request/c:a	(Ljava/util/TreeMap;Ljava/lang/String;)I
+    //   156: invokevirtual 456	oicq/wlogin_sdk/request/c:a	(Ljava/util/TreeMap;Ljava/lang/String;)I
     //   159: istore 5
     //   161: aload_0
     //   162: aload 8
@@ -1253,10 +1334,10 @@ public class c
     //   170: new 79	java/lang/StringBuilder
     //   173: dup
     //   174: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   177: ldc_w 418
+    //   177: ldc_w 458
     //   180: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   183: iload 5
-    //   185: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   185: invokevirtual 217	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   188: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   191: new 79	java/lang/StringBuilder
     //   194: dup
@@ -1264,7 +1345,7 @@ public class c
     //   198: ldc 144
     //   200: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   203: lload_1
-    //   204: invokevirtual 252	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   204: invokevirtual 292	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   207: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   210: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   213: goto -102 -> 111
@@ -1312,10 +1393,10 @@ public class c
     //   2: new 79	java/lang/StringBuilder
     //   5: dup
     //   6: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   9: ldc_w 421
+    //   9: ldc_w 461
     //   12: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   15: lload_3
-    //   16: invokevirtual 252	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   16: invokevirtual 292	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   19: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   22: new 79	java/lang/StringBuilder
     //   25: dup
@@ -1323,15 +1404,15 @@ public class c
     //   29: ldc 144
     //   31: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   34: lload_1
-    //   35: invokevirtual 252	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   35: invokevirtual 292	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   38: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   41: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   44: aload_0
     //   45: getfield 39	oicq/wlogin_sdk/request/c:b	Ljava/util/TreeMap;
     //   48: lload_1
-    //   49: invokestatic 249	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   52: invokevirtual 234	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   55: checkcast 236	oicq/wlogin_sdk/request/WloginAllSigInfo
+    //   49: invokestatic 289	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   52: invokevirtual 274	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   55: checkcast 276	oicq/wlogin_sdk/request/WloginAllSigInfo
     //   58: astore 13
     //   60: aload 13
     //   62: ifnonnull +11 -> 73
@@ -1347,7 +1428,7 @@ public class c
     //   78: lload 7
     //   80: aload 9
     //   82: aload 10
-    //   84: invokevirtual 425	oicq/wlogin_sdk/request/WloginAllSigInfo:put_siginfo	(JJJ[B[B)I
+    //   84: invokevirtual 465	oicq/wlogin_sdk/request/WloginAllSigInfo:put_siginfo	(JJJ[B[B)I
     //   87: istore 12
     //   89: iload 12
     //   91: istore 11
@@ -1374,15 +1455,15 @@ public class c
     //   136: astore 9
     //   138: aload 9
     //   140: lload_1
-    //   141: invokestatic 249	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   141: invokestatic 289	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   144: aload 13
-    //   146: invokevirtual 429	oicq/wlogin_sdk/request/WloginAllSigInfo:get_clone	()Loicq/wlogin_sdk/request/WloginAllSigInfo;
-    //   149: invokevirtual 433	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   146: invokevirtual 469	oicq/wlogin_sdk/request/WloginAllSigInfo:get_clone	()Loicq/wlogin_sdk/request/WloginAllSigInfo;
+    //   149: invokevirtual 473	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   152: pop
     //   153: aload_0
     //   154: aload 9
     //   156: ldc 53
-    //   158: invokevirtual 416	oicq/wlogin_sdk/request/c:a	(Ljava/util/TreeMap;Ljava/lang/String;)I
+    //   158: invokevirtual 456	oicq/wlogin_sdk/request/c:a	(Ljava/util/TreeMap;Ljava/lang/String;)I
     //   161: pop
     //   162: aload 14
     //   164: monitorexit
@@ -1425,15 +1506,19 @@ public class c
   
   public int a(long paramLong1, long paramLong2, byte[][] arg5, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7, WloginSimpleInfo paramWloginSimpleInfo, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, byte[] paramArrayOfByte7, byte[] paramArrayOfByte8, byte[] paramArrayOfByte9, byte[] paramArrayOfByte10, byte[] paramArrayOfByte11, byte[] paramArrayOfByte12, byte[] paramArrayOfByte13, byte[][] paramArrayOfByte14, long[] paramArrayOfLong, int paramInt)
   {
-    label896:
-    label1160:
-    label1291:
+    label1311:
+    label1314:
+    label1317:
+    label1324:
+    label1348:
     for (;;)
     {
       int i;
       TreeMap localTreeMap;
-      Object localObject2;
+      Object localObject3;
+      Object localObject8;
       byte[] arrayOfByte;
+      Object localObject7;
       Object localObject9;
       HashMap localHashMap1;
       HashMap localHashMap2;
@@ -1443,47 +1528,46 @@ public class c
         util.LOGI("start put_siginfo skey " + util.getMaskBytes(paramArrayOfByte10, 2, 2), "" + paramLong1);
         i = 0;
         if (this.a == null) {
-          break label1160;
+          break label1223;
         }
         synchronized (e)
         {
           util.LOGI("put_siginfo load file", "" + paramLong1);
           localTreeMap = a(this.a, "tk_file", paramLong1);
           if (localTreeMap != null) {
-            break label1291;
+            break label1348;
           }
           localTreeMap = new TreeMap();
           localObject1 = (WloginAllSigInfo)this.b.get(Long.valueOf(paramLong1));
-          localObject2 = localObject1;
+          localObject3 = localObject1;
           if (localObject1 == null)
           {
             localObject1 = (WloginAllSigInfo)localTreeMap.get(Long.valueOf(paramLong1));
-            localObject2 = localObject1;
+            localObject3 = localObject1;
             if (localObject1 == null) {
-              localObject2 = new WloginAllSigInfo();
+              localObject3 = new WloginAllSigInfo();
             }
           }
           util.LOGI("put_siginfo mainSigMap 0x" + Integer.toHexString(this.d), "" + paramLong1);
-          ((WloginAllSigInfo)localObject2).mainSigMap = this.d;
-          localObject7 = new byte[0];
-          localObject6 = new byte[0];
+          ((WloginAllSigInfo)localObject3).mainSigMap = this.d;
+          localObject8 = new byte[0];
+          localObject1 = new byte[0];
           arrayOfByte = new byte[0];
           localObject4 = new byte[0];
           localObject5 = new byte[0];
-          localObject9 = (WloginSigInfo)((WloginAllSigInfo)localObject2)._tk_map.get(Long.valueOf(paramLong2));
+          localObject7 = new byte[0];
+          localObject9 = (WloginSigInfo)((WloginAllSigInfo)localObject3)._tk_map.get(Long.valueOf(paramLong2));
           if (localObject9 == null) {
-            break label1258;
+            break label1324;
           }
-          localObject3 = localObject6;
-          localObject1 = localObject7;
-          if (((WloginSigInfo)localObject9)._en_A1 != null)
-          {
-            localObject1 = (byte[])((WloginSigInfo)localObject9)._en_A1.clone();
-            if (((WloginSigInfo)localObject9)._noPicSig == null) {
-              break label1251;
-            }
-            localObject3 = (byte[])((WloginSigInfo)localObject9)._noPicSig.clone();
+          if (((WloginSigInfo)localObject9)._en_A1 == null) {
+            break label1317;
           }
+          localObject2 = (byte[])((WloginSigInfo)localObject9)._en_A1.clone();
+          if (((WloginSigInfo)localObject9)._noPicSig == null) {
+            break label1314;
+          }
+          localObject1 = (byte[])((WloginSigInfo)localObject9)._noPicSig.clone();
           if (((WloginSigInfo)localObject9)._G != null) {
             arrayOfByte = (byte[])((WloginSigInfo)localObject9)._G.clone();
           }
@@ -1491,28 +1575,27 @@ public class c
             localObject4 = (byte[])((WloginSigInfo)localObject9)._dpwd.clone();
           }
           if (((WloginSigInfo)localObject9)._randseed == null) {
-            break label1248;
+            break label1311;
           }
           localObject5 = (byte[])((WloginSigInfo)localObject9)._randseed.clone();
-          localObject8 = ((WloginSigInfo)localObject9)._psKey;
+          localObject6 = ((WloginSigInfo)localObject9)._psKey;
           localObject9 = ((WloginSigInfo)localObject9)._pt4Token;
-          localObject6 = localObject5;
-          localObject7 = localObject4;
-          localObject5 = localObject1;
-          localObject4 = localObject3;
-          localObject3 = localObject7;
-          localObject1 = localObject6;
-          localObject7 = localObject8;
-          localObject6 = localObject9;
+          localObject7 = localObject5;
+          localObject8 = localObject4;
+          localObject5 = localObject2;
+          localObject4 = localObject1;
+          localObject2 = localObject8;
+          localObject1 = localObject7;
+          localObject7 = localObject9;
           if ((paramArrayOfByte14[6] == null) || (paramArrayOfByte14[6].length <= 2)) {
-            break label896;
+            break label891;
           }
           localObject8 = new HashMap();
           localObject9 = new HashMap();
           localHashMap1 = new HashMap();
           localHashMap2 = new HashMap();
-          Ticket.parsePsBuf((byte[])localObject7, paramLong5, (Map)localObject8, (Map)localObject9);
-          Ticket.parsePsBuf((byte[])localObject6, paramLong5, localHashMap1, localHashMap2);
+          Ticket.parsePsBuf((byte[])localObject6, paramLong5, (Map)localObject8, (Map)localObject9, true);
+          Ticket.parsePsBuf((byte[])localObject7, paramLong5, localHashMap1, localHashMap2, false);
           util.LOGI("put_siginfo current pskey size:" + ((Map)localObject8).size() + ":" + ((Map)localObject9).size(), "");
           localObject6 = ((Map)localObject9).entrySet().iterator();
           if (((Iterator)localObject6).hasNext())
@@ -1547,10 +1630,14 @@ public class c
       {
         paramArrayOfByte14[6] = Ticket.packPsBuf((Map)localObject8, paramLong5, (Map)localObject9);
         paramArrayOfByte14[12] = Ticket.packPsBuf(localHashMap1, paramLong5, localHashMap2);
-        ((WloginAllSigInfo)localObject2).put_simpleinfo(paramWloginSimpleInfo);
-        ((WloginAllSigInfo)localObject2).put_siginfo(paramLong3, paramLong4, paramLong5, paramLong6, paramLong7, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4, paramArrayOfByte5, paramArrayOfByte6, paramArrayOfByte7, paramArrayOfByte8, paramArrayOfByte9, paramArrayOfByte10, paramArrayOfByte11, paramArrayOfByte12, paramArrayOfByte13, paramArrayOfByte14, paramArrayOfLong, paramInt);
-        ((WloginAllSigInfo)localObject2).put_siginfo(paramLong2, ???, paramLong5);
-        localTreeMap.put(Long.valueOf(paramLong1), ((WloginAllSigInfo)localObject2).get_clone());
+        label891:
+        ((WloginAllSigInfo)localObject3).put_simpleinfo(paramWloginSimpleInfo);
+        ((WloginAllSigInfo)localObject3).put_siginfo(paramLong3, paramLong4, paramLong5, paramLong6, paramLong7, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4, paramArrayOfByte5, paramArrayOfByte6, paramArrayOfByte7, paramArrayOfByte8, paramArrayOfByte9, paramArrayOfByte10, paramArrayOfByte11, paramArrayOfByte12, paramArrayOfByte13, paramArrayOfByte14, paramArrayOfLong, paramInt);
+        if ((??? != null) && (???[0] != null) && (???[0].length > 0)) {
+          util.LOGI("A1_INFO: update A1 form ser : " + MD5.getMD5String(???[0]), "" + paramLong1);
+        }
+        ((WloginAllSigInfo)localObject3).put_siginfo(paramLong2, ???, paramLong5);
+        localTreeMap.put(Long.valueOf(paramLong1), ((WloginAllSigInfo)localObject3).get_clone());
       }
       catch (BufferOverflowException ???)
       {
@@ -1560,18 +1647,19 @@ public class c
           util.LOGI("put_siginfo save key result:tk_file:" + i, "");
           if (i != 0)
           {
-            ??? = (WloginSigInfo)((WloginAllSigInfo)localObject2)._tk_map.get(Long.valueOf(paramLong2));
+            ??? = (WloginSigInfo)((WloginAllSigInfo)localObject3)._tk_map.get(Long.valueOf(paramLong2));
             if (??? != null)
             {
               ???._en_A1 = ((byte[])((byte[])localObject5).clone());
               ???._noPicSig = ((byte[])((byte[])localObject4).clone());
               ???._G = ((byte[])arrayOfByte.clone());
-              ???._dpwd = ((byte[])((byte[])localObject3).clone());
+              ???._dpwd = ((byte[])((byte[])localObject2).clone());
               ???._randseed = ((byte[])((byte[])localObject1).clone());
             }
           }
           util.LOGI("put_siginfo sig in memory changed", "" + paramLong1);
-          this.b.put(Long.valueOf(paramLong1), ((WloginAllSigInfo)localObject2).get_clone());
+          this.b.put(Long.valueOf(paramLong1), ((WloginAllSigInfo)localObject3).get_clone());
+          label1223:
           return i;
           ??? = ???;
           util.LOGI("map size " + ((Map)localObject8).size() + "is too large", "" + paramLong1);
@@ -1579,18 +1667,14 @@ public class c
           i = -1023;
         }
       }
-      label1248:
-      label1251:
-      Object localObject3 = localObject6;
       continue;
-      label1258:
-      Object localObject8 = new byte[0];
+      Object localObject2 = localObject8;
+      continue;
+      Object localObject6 = new byte[0];
+      localObject2 = localObject4;
+      Object localObject4 = localObject1;
       Object localObject1 = localObject5;
-      localObject3 = localObject4;
-      Object localObject4 = localObject6;
-      Object localObject5 = localObject7;
-      Object localObject7 = new byte[0];
-      Object localObject6 = localObject8;
+      Object localObject5 = localObject8;
     }
   }
   
@@ -1609,14 +1693,19 @@ public class c
   
   public List<WloginLoginInfo> a(boolean paramBoolean)
   {
-    label321:
+    label338:
     for (;;)
     {
+      ArrayList localArrayList;
+      Long localLong1;
+      Object localObject3;
+      Long localLong2;
+      WloginSigInfo localWloginSigInfo;
       try
       {
-        ArrayList localArrayList = new ArrayList();
+        localArrayList = new ArrayList();
         if (this.a == null) {
-          break label321;
+          break label338;
         }
         TreeMap localTreeMap = a(this.a, "tk_file", 0L);
         if (localTreeMap == null) {
@@ -1624,10 +1713,10 @@ public class c
         }
         Iterator localIterator1 = localTreeMap.keySet().iterator();
         if (!localIterator1.hasNext()) {
-          break label321;
+          break label338;
         }
-        Long localLong1 = (Long)localIterator1.next();
-        Object localObject3 = (WloginAllSigInfo)this.b.get(localLong1);
+        localLong1 = (Long)localIterator1.next();
+        localObject3 = (WloginAllSigInfo)this.b.get(localLong1);
         Object localObject1 = localObject3;
         if (localObject3 == null)
         {
@@ -1640,36 +1729,41 @@ public class c
         Iterator localIterator2 = ((WloginAllSigInfo)localObject1)._tk_map.keySet().iterator();
         if (localIterator2.hasNext())
         {
-          Long localLong2 = (Long)localIterator2.next();
-          WloginSigInfo localWloginSigInfo = (WloginSigInfo)((WloginAllSigInfo)localObject1)._tk_map.get(localLong2);
+          localLong2 = (Long)localIterator2.next();
+          localWloginSigInfo = (WloginSigInfo)((WloginAllSigInfo)localObject1)._tk_map.get(localLong2);
           if (localWloginSigInfo == null) {
             continue;
           }
-          String str = b(localLong1);
+          str = b(localLong1);
           localObject3 = str;
           if (str == null) {
             localObject3 = String.valueOf(localLong1);
           }
-          if (((WloginAllSigInfo)localObject1)._useInfo._img_url == null) {
-            ((WloginAllSigInfo)localObject1)._useInfo._img_url = new byte[0];
-          }
-          long l1 = localLong1.longValue();
-          long l2 = localLong2.longValue();
-          str = new String(((WloginAllSigInfo)localObject1)._useInfo._img_url);
-          long l3 = localWloginSigInfo._create_time;
-          if (paramBoolean)
-          {
-            i = WloginLoginInfo.TYPE_LOACL;
-            localArrayList.add(new WloginLoginInfo((String)localObject3, l1, l2, str, l3, i, localWloginSigInfo._login_bitmap));
+          if (((WloginAllSigInfo)localObject1)._useInfo == null) {
+            util.LOGI("get_all_logined_account useInfo is null");
           }
         }
         else
         {
           continue;
         }
-        int i = WloginLoginInfo.TYPE_REMOTE;
+        if (localObject2._useInfo._img_url != null) {
+          break label253;
+        }
       }
       finally {}
+      localObject2._useInfo._img_url = new byte[0];
+      label253:
+      long l1 = localLong1.longValue();
+      long l2 = localLong2.longValue();
+      String str = new String(localObject2._useInfo._img_url);
+      long l3 = localWloginSigInfo._create_time;
+      if (paramBoolean) {}
+      for (int i = WloginLoginInfo.TYPE_LOACL;; i = WloginLoginInfo.TYPE_REMOTE)
+      {
+        localArrayList.add(new WloginLoginInfo((String)localObject3, l1, l2, str, l3, i, localWloginSigInfo._login_bitmap));
+        break;
+      }
     }
   }
   
@@ -1684,28 +1778,28 @@ public class c
     //   6: aload_0
     //   7: getfield 41	oicq/wlogin_sdk/request/c:c	Ljava/util/TreeMap;
     //   10: aload_1
-    //   11: invokevirtual 234	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   14: checkcast 261	oicq/wlogin_sdk/request/UinInfo
+    //   11: invokevirtual 274	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   14: checkcast 297	oicq/wlogin_sdk/request/UinInfo
     //   17: astore_3
     //   18: aload_3
     //   19: ifnull +60 -> 79
     //   22: new 79	java/lang/StringBuilder
     //   25: dup
     //   26: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   29: ldc_w 607
+    //   29: ldc_w 657
     //   32: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   35: aload_1
     //   36: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   39: ldc_w 609
+    //   39: ldc_w 659
     //   42: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   45: aload_3
-    //   46: getfield 267	oicq/wlogin_sdk/request/UinInfo:_uin	Ljava/lang/Long;
-    //   49: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   52: ldc_w 611
+    //   46: getfield 303	oicq/wlogin_sdk/request/UinInfo:_uin	Ljava/lang/Long;
+    //   49: invokevirtual 279	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   52: ldc_w 661
     //   55: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   58: aload_3
-    //   59: invokevirtual 614	oicq/wlogin_sdk/request/UinInfo:getHasPassword	()Z
-    //   62: invokevirtual 404	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   59: invokevirtual 664	oicq/wlogin_sdk/request/UinInfo:getHasPassword	()Z
+    //   62: invokevirtual 444	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   65: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   68: ldc 144
     //   70: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
@@ -1734,8 +1828,8 @@ public class c
     //   108: goto -33 -> 75
     //   111: aload_3
     //   112: aload_1
-    //   113: invokevirtual 234	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   116: checkcast 261	oicq/wlogin_sdk/request/UinInfo
+    //   113: invokevirtual 274	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   116: checkcast 297	oicq/wlogin_sdk/request/UinInfo
     //   119: astore_3
     //   120: aload_3
     //   121: ifnonnull +8 -> 129
@@ -1746,25 +1840,25 @@ public class c
     //   130: getfield 41	oicq/wlogin_sdk/request/c:c	Ljava/util/TreeMap;
     //   133: aload_1
     //   134: aload_3
-    //   135: invokevirtual 433	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   135: invokevirtual 473	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   138: pop
     //   139: new 79	java/lang/StringBuilder
     //   142: dup
     //   143: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   146: ldc_w 616
+    //   146: ldc_w 666
     //   149: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   152: aload_1
     //   153: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   156: ldc_w 609
+    //   156: ldc_w 659
     //   159: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   162: aload_3
-    //   163: getfield 267	oicq/wlogin_sdk/request/UinInfo:_uin	Ljava/lang/Long;
-    //   166: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   169: ldc_w 611
+    //   163: getfield 303	oicq/wlogin_sdk/request/UinInfo:_uin	Ljava/lang/Long;
+    //   166: invokevirtual 279	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   169: ldc_w 661
     //   172: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   175: aload_3
-    //   176: invokevirtual 614	oicq/wlogin_sdk/request/UinInfo:getHasPassword	()Z
-    //   179: invokevirtual 404	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   176: invokevirtual 664	oicq/wlogin_sdk/request/UinInfo:getHasPassword	()Z
+    //   179: invokevirtual 444	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   182: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   185: ldc 144
     //   187: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
@@ -1801,13 +1895,13 @@ public class c
     //   2: aload_0
     //   3: getfield 39	oicq/wlogin_sdk/request/c:b	Ljava/util/TreeMap;
     //   6: lload_1
-    //   7: invokestatic 249	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   10: invokevirtual 234	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   13: checkcast 236	oicq/wlogin_sdk/request/WloginAllSigInfo
+    //   7: invokestatic 289	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   10: invokevirtual 274	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   13: checkcast 276	oicq/wlogin_sdk/request/WloginAllSigInfo
     //   16: astore_3
     //   17: aload_3
     //   18: ifnull +15 -> 33
-    //   21: ldc_w 619
+    //   21: ldc_w 669
     //   24: ldc 144
     //   26: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   29: aload_0
@@ -1833,24 +1927,24 @@ public class c
     //   62: goto -33 -> 29
     //   65: aload_3
     //   66: lload_1
-    //   67: invokestatic 249	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   70: invokevirtual 234	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   73: checkcast 236	oicq/wlogin_sdk/request/WloginAllSigInfo
+    //   67: invokestatic 289	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   70: invokevirtual 274	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   73: checkcast 276	oicq/wlogin_sdk/request/WloginAllSigInfo
     //   76: astore_3
     //   77: aload_3
     //   78: ifnonnull +8 -> 86
     //   81: aconst_null
     //   82: astore_3
     //   83: goto -54 -> 29
-    //   86: ldc_w 621
+    //   86: ldc_w 671
     //   89: ldc 144
     //   91: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   94: aload_0
     //   95: getfield 39	oicq/wlogin_sdk/request/c:b	Ljava/util/TreeMap;
     //   98: lload_1
-    //   99: invokestatic 249	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   99: invokestatic 289	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   102: aload_3
-    //   103: invokevirtual 433	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   103: invokevirtual 473	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   106: pop
     //   107: goto -78 -> 29
     //   110: astore_3
@@ -1933,20 +2027,20 @@ public class c
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 639
+    //   2: ldc_w 689
     //   5: new 79	java/lang/StringBuilder
     //   8: dup
     //   9: invokespecial 80	java/lang/StringBuilder:<init>	()V
     //   12: ldc 144
     //   14: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   17: aload_1
-    //   18: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   18: invokevirtual 279	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   21: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   24: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   27: aload_0
     //   28: getfield 39	oicq/wlogin_sdk/request/c:b	Ljava/util/TreeMap;
     //   31: aload_1
-    //   32: invokevirtual 640	java/util/TreeMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   32: invokevirtual 690	java/util/TreeMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   35: pop
     //   36: aload_0
     //   37: getfield 43	oicq/wlogin_sdk/request/c:a	Landroid/content/Context;
@@ -1959,7 +2053,7 @@ public class c
     //   50: getfield 43	oicq/wlogin_sdk/request/c:a	Landroid/content/Context;
     //   53: ldc 53
     //   55: aload_1
-    //   56: invokevirtual 513	java/lang/Long:longValue	()J
+    //   56: invokevirtual 553	java/lang/Long:longValue	()J
     //   59: invokestatic 48	oicq/wlogin_sdk/request/c:a	(Landroid/content/Context;Ljava/lang/String;J)Ljava/util/TreeMap;
     //   62: astore_3
     //   63: aload_3
@@ -1971,12 +2065,12 @@ public class c
     //   71: return
     //   72: aload_3
     //   73: aload_1
-    //   74: invokevirtual 640	java/util/TreeMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   74: invokevirtual 690	java/util/TreeMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   77: pop
     //   78: aload_0
     //   79: aload_3
     //   80: ldc 53
-    //   82: invokevirtual 416	oicq/wlogin_sdk/request/c:a	(Ljava/util/TreeMap;Ljava/lang/String;)I
+    //   82: invokevirtual 456	oicq/wlogin_sdk/request/c:a	(Ljava/util/TreeMap;Ljava/lang/String;)I
     //   85: pop
     //   86: aload_2
     //   87: monitorexit
@@ -2046,7 +2140,7 @@ public class c
     //   2: aload_0
     //   3: getfield 41	oicq/wlogin_sdk/request/c:c	Ljava/util/TreeMap;
     //   6: aload_1
-    //   7: invokevirtual 640	java/util/TreeMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   7: invokevirtual 690	java/util/TreeMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   10: pop
     //   11: aload_0
     //   12: getfield 43	oicq/wlogin_sdk/request/c:a	Landroid/content/Context;
@@ -2071,12 +2165,12 @@ public class c
     //   50: astore_2
     //   51: aload_2
     //   52: aload_1
-    //   53: invokevirtual 640	java/util/TreeMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   53: invokevirtual 690	java/util/TreeMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   56: pop
     //   57: aload_0
     //   58: aload_2
     //   59: ldc 45
-    //   61: invokevirtual 416	oicq/wlogin_sdk/request/c:a	(Ljava/util/TreeMap;Ljava/lang/String;)I
+    //   61: invokevirtual 456	oicq/wlogin_sdk/request/c:a	(Ljava/util/TreeMap;Ljava/lang/String;)I
     //   64: pop
     //   65: aload 4
     //   67: monitorexit
@@ -2118,7 +2212,7 @@ public class c
     //   2: new 79	java/lang/StringBuilder
     //   5: dup
     //   6: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   9: ldc_w 648
+    //   9: ldc_w 698
     //   12: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   15: aload_1
     //   16: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -2129,31 +2223,31 @@ public class c
     //   29: ldc 144
     //   31: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   34: aload_2
-    //   35: invokevirtual 239	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   35: invokevirtual 279	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   38: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   41: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   44: aload_0
     //   45: aload_2
-    //   46: invokevirtual 566	oicq/wlogin_sdk/request/c:b	(Ljava/lang/Long;)Ljava/lang/String;
+    //   46: invokevirtual 614	oicq/wlogin_sdk/request/c:b	(Ljava/lang/Long;)Ljava/lang/String;
     //   49: astore 5
     //   51: aload 5
     //   53: ifnull +13 -> 66
     //   56: aload_0
     //   57: getfield 41	oicq/wlogin_sdk/request/c:c	Ljava/util/TreeMap;
     //   60: aload 5
-    //   62: invokevirtual 640	java/util/TreeMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   62: invokevirtual 690	java/util/TreeMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   65: pop
-    //   66: new 261	oicq/wlogin_sdk/request/UinInfo
+    //   66: new 297	oicq/wlogin_sdk/request/UinInfo
     //   69: dup
     //   70: aload_2
     //   71: iload_3
-    //   72: invokespecial 651	oicq/wlogin_sdk/request/UinInfo:<init>	(Ljava/lang/Long;Z)V
+    //   72: invokespecial 701	oicq/wlogin_sdk/request/UinInfo:<init>	(Ljava/lang/Long;Z)V
     //   75: astore 7
     //   77: aload_0
     //   78: getfield 41	oicq/wlogin_sdk/request/c:c	Ljava/util/TreeMap;
     //   81: aload_1
     //   82: aload 7
-    //   84: invokevirtual 433	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   84: invokevirtual 473	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   87: pop
     //   88: aload_0
     //   89: getfield 43	oicq/wlogin_sdk/request/c:a	Landroid/content/Context;
@@ -2180,17 +2274,17 @@ public class c
     //   133: ifnull +10 -> 143
     //   136: aload_2
     //   137: aload 5
-    //   139: invokevirtual 640	java/util/TreeMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   139: invokevirtual 690	java/util/TreeMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   142: pop
     //   143: aload_2
     //   144: aload_1
     //   145: aload 7
-    //   147: invokevirtual 433	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   147: invokevirtual 473	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   150: pop
     //   151: aload_0
     //   152: aload_2
     //   153: ldc 45
-    //   155: invokevirtual 416	oicq/wlogin_sdk/request/c:a	(Ljava/util/TreeMap;Ljava/lang/String;)I
+    //   155: invokevirtual 456	oicq/wlogin_sdk/request/c:a	(Ljava/util/TreeMap;Ljava/lang/String;)I
     //   158: pop
     //   159: aload 6
     //   161: monitorexit
@@ -2229,108 +2323,9 @@ public class c
     //   169	171	171	finally
   }
   
-  /* Error */
   public int b(TreeMap paramTreeMap, String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: new 79	java/lang/StringBuilder
-    //   5: dup
-    //   6: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   9: ldc_w 653
-    //   12: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   15: aload_2
-    //   16: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   19: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   22: ldc 144
-    //   24: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   27: new 655	java/io/ByteArrayOutputStream
-    //   30: dup
-    //   31: invokespecial 656	java/io/ByteArrayOutputStream:<init>	()V
-    //   34: astore 4
-    //   36: new 658	java/io/ObjectOutputStream
-    //   39: dup
-    //   40: aload 4
-    //   42: invokespecial 661	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   45: astore 5
-    //   47: aload 5
-    //   49: aload_1
-    //   50: invokevirtual 665	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
-    //   53: aload 5
-    //   55: invokevirtual 668	java/io/ObjectOutputStream:flush	()V
-    //   58: aload 4
-    //   60: invokevirtual 671	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   63: astore_1
-    //   64: aload_1
-    //   65: iconst_0
-    //   66: aload_1
-    //   67: arraylength
-    //   68: getstatic 185	oicq/wlogin_sdk/request/t:B	[B
-    //   71: invokestatic 674	oicq/wlogin_sdk/tools/cryptor:encrypt	([BII[B)[B
-    //   74: astore_1
-    //   75: aload_0
-    //   76: getfield 43	oicq/wlogin_sdk/request/c:a	Landroid/content/Context;
-    //   79: aload_2
-    //   80: aload_1
-    //   81: invokestatic 676	oicq/wlogin_sdk/request/c:a	(Landroid/content/Context;Ljava/lang/String;[B)I
-    //   84: istore_3
-    //   85: aload 5
-    //   87: invokevirtual 677	java/io/ObjectOutputStream:close	()V
-    //   90: aload 4
-    //   92: invokevirtual 678	java/io/ByteArrayOutputStream:close	()V
-    //   95: new 79	java/lang/StringBuilder
-    //   98: dup
-    //   99: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   102: ldc_w 680
-    //   105: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   108: aload_2
-    //   109: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   112: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   115: ldc 144
-    //   117: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   120: aload_0
-    //   121: monitorexit
-    //   122: iload_3
-    //   123: ireturn
-    //   124: astore_1
-    //   125: new 79	java/lang/StringBuilder
-    //   128: dup
-    //   129: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   132: ldc_w 682
-    //   135: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   138: aload_1
-    //   139: invokevirtual 686	java/lang/Throwable:getStackTrace	()[Ljava/lang/StackTraceElement;
-    //   142: invokevirtual 687	java/lang/Object:toString	()Ljava/lang/String;
-    //   145: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   148: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   151: ldc 144
-    //   153: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   156: aload_1
-    //   157: ldc 144
-    //   159: invokestatic 256	oicq/wlogin_sdk/tools/util:printThrowable	(Ljava/lang/Throwable;Ljava/lang/String;)V
-    //   162: sipush -1022
-    //   165: istore_3
-    //   166: goto -46 -> 120
-    //   169: astore_1
-    //   170: aload_0
-    //   171: monitorexit
-    //   172: aload_1
-    //   173: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	174	0	this	c
-    //   0	174	1	paramTreeMap	TreeMap
-    //   0	174	2	paramString	String
-    //   84	82	3	i	int
-    //   34	57	4	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    //   45	41	5	localObjectOutputStream	java.io.ObjectOutputStream
-    // Exception table:
-    //   from	to	target	type
-    //   27	120	124	java/lang/Throwable
-    //   2	27	169	finally
-    //   27	120	169	finally
-    //   125	162	169	finally
+    return a(this.a, paramTreeMap, paramString, t.B);
   }
   
   /* Error */
@@ -2341,28 +2336,28 @@ public class c
     //   1: monitorenter
     //   2: aload_0
     //   3: getfield 41	oicq/wlogin_sdk/request/c:c	Ljava/util/TreeMap;
-    //   6: invokevirtual 216	java/util/TreeMap:keySet	()Ljava/util/Set;
-    //   9: invokeinterface 222 1 0
+    //   6: invokevirtual 256	java/util/TreeMap:keySet	()Ljava/util/Set;
+    //   9: invokeinterface 262 1 0
     //   14: astore 4
     //   16: aload 4
-    //   18: invokeinterface 227 1 0
+    //   18: invokeinterface 267 1 0
     //   23: ifeq +52 -> 75
     //   26: aload 4
-    //   28: invokeinterface 230 1 0
+    //   28: invokeinterface 270 1 0
     //   33: checkcast 55	java/lang/String
     //   36: astore_3
     //   37: aload_0
     //   38: getfield 41	oicq/wlogin_sdk/request/c:c	Ljava/util/TreeMap;
     //   41: aload_3
-    //   42: invokevirtual 234	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   45: checkcast 261	oicq/wlogin_sdk/request/UinInfo
+    //   42: invokevirtual 274	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   45: checkcast 297	oicq/wlogin_sdk/request/UinInfo
     //   48: astore 5
     //   50: aload 5
     //   52: ifnull -36 -> 16
     //   55: aload 5
-    //   57: getfield 267	oicq/wlogin_sdk/request/UinInfo:_uin	Ljava/lang/Long;
+    //   57: getfield 303	oicq/wlogin_sdk/request/UinInfo:_uin	Ljava/lang/Long;
     //   60: aload_1
-    //   61: invokevirtual 688	java/lang/Long:equals	(Ljava/lang/Object;)Z
+    //   61: invokevirtual 702	java/lang/Long:equals	(Ljava/lang/Object;)Z
     //   64: istore_2
     //   65: iload_2
     //   66: ifeq -50 -> 16
@@ -2401,19 +2396,19 @@ public class c
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 691
+    //   2: ldc_w 705
     //   5: new 79	java/lang/StringBuilder
     //   8: dup
     //   9: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   12: ldc_w 693
+    //   12: ldc_w 707
     //   15: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   18: lload_1
-    //   19: invokevirtual 252	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   19: invokevirtual 292	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   22: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   25: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   28: aload_0
     //   29: lload_1
-    //   30: invokevirtual 695	oicq/wlogin_sdk/request/c:a	(J)Loicq/wlogin_sdk/request/WloginAllSigInfo;
+    //   30: invokevirtual 709	oicq/wlogin_sdk/request/c:a	(J)Loicq/wlogin_sdk/request/WloginAllSigInfo;
     //   33: astore_3
     //   34: aload_3
     //   35: ifnonnull +9 -> 44
@@ -2424,8 +2419,8 @@ public class c
     //   42: aload_3
     //   43: areturn
     //   44: aload_3
-    //   45: getfield 573	oicq/wlogin_sdk/request/WloginAllSigInfo:_useInfo	Loicq/wlogin_sdk/sharemem/WloginSimpleInfo;
-    //   48: invokevirtual 698	oicq/wlogin_sdk/sharemem/WloginSimpleInfo:get_clone	()Loicq/wlogin_sdk/sharemem/WloginSimpleInfo;
+    //   45: getfield 621	oicq/wlogin_sdk/request/WloginAllSigInfo:_useInfo	Loicq/wlogin_sdk/sharemem/WloginSimpleInfo;
+    //   48: invokevirtual 712	oicq/wlogin_sdk/sharemem/WloginSimpleInfo:get_clone	()Loicq/wlogin_sdk/sharemem/WloginSimpleInfo;
     //   51: astore_3
     //   52: goto -12 -> 40
     //   55: astore_3
@@ -2458,10 +2453,10 @@ public class c
     //   8: new 79	java/lang/StringBuilder
     //   11: dup
     //   12: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   15: ldc_w 701
+    //   15: ldc_w 715
     //   18: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   21: lload_3
-    //   22: invokevirtual 252	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   22: invokevirtual 292	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   25: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   28: new 79	java/lang/StringBuilder
     //   31: dup
@@ -2469,7 +2464,7 @@ public class c
     //   35: ldc 144
     //   37: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   40: lload_1
-    //   41: invokevirtual 252	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   41: invokevirtual 292	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   44: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   47: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   50: aload_0
@@ -2491,9 +2486,9 @@ public class c
     //   83: ifnull +81 -> 164
     //   86: aload 8
     //   88: lload_1
-    //   89: invokestatic 249	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   92: invokevirtual 234	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   95: checkcast 236	oicq/wlogin_sdk/request/WloginAllSigInfo
+    //   89: invokestatic 289	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   92: invokevirtual 274	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   95: checkcast 276	oicq/wlogin_sdk/request/WloginAllSigInfo
     //   98: astore 9
     //   100: aload 9
     //   102: ifnonnull +9 -> 111
@@ -2502,14 +2497,14 @@ public class c
     //   108: aload_0
     //   109: monitorexit
     //   110: return
-    //   111: ldc_w 703
+    //   111: ldc_w 717
     //   114: new 79	java/lang/StringBuilder
     //   117: dup
     //   118: invokespecial 80	java/lang/StringBuilder:<init>	()V
     //   121: ldc 144
     //   123: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   126: lload_1
-    //   127: invokevirtual 252	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   127: invokevirtual 292	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   130: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   133: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   136: aload 9
@@ -2518,11 +2513,11 @@ public class c
     //   140: newarray byte
     //   142: iconst_0
     //   143: newarray byte
-    //   145: invokevirtual 707	oicq/wlogin_sdk/request/WloginAllSigInfo:putNewST	(J[B[B)V
+    //   145: invokevirtual 721	oicq/wlogin_sdk/request/WloginAllSigInfo:putNewST	(J[B[B)V
     //   148: aload_0
     //   149: aload 8
     //   151: ldc 53
-    //   153: invokevirtual 416	oicq/wlogin_sdk/request/c:a	(Ljava/util/TreeMap;Ljava/lang/String;)I
+    //   153: invokevirtual 456	oicq/wlogin_sdk/request/c:a	(Ljava/util/TreeMap;Ljava/lang/String;)I
     //   156: istore 5
     //   158: aload_0
     //   159: aload 8
@@ -2532,10 +2527,10 @@ public class c
     //   167: new 79	java/lang/StringBuilder
     //   170: dup
     //   171: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   174: ldc_w 709
+    //   174: ldc_w 723
     //   177: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   180: iload 5
-    //   182: invokevirtual 174	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   182: invokevirtual 217	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   185: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   188: new 79	java/lang/StringBuilder
     //   191: dup
@@ -2543,7 +2538,7 @@ public class c
     //   195: ldc 144
     //   197: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   200: lload_1
-    //   201: invokevirtual 252	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   201: invokevirtual 292	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   204: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   207: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   210: goto -102 -> 108
@@ -2591,12 +2586,12 @@ public class c
     //   2: aload_0
     //   3: getfield 41	oicq/wlogin_sdk/request/c:c	Ljava/util/TreeMap;
     //   6: aload_1
-    //   7: invokevirtual 640	java/util/TreeMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   7: invokevirtual 690	java/util/TreeMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   10: pop
     //   11: new 79	java/lang/StringBuilder
     //   14: dup
     //   15: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   18: ldc_w 711
+    //   18: ldc_w 725
     //   21: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   24: aload_1
     //   25: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -2625,12 +2620,12 @@ public class c
     //   68: return
     //   69: aload_3
     //   70: aload_1
-    //   71: invokevirtual 640	java/util/TreeMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   71: invokevirtual 690	java/util/TreeMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   74: pop
     //   75: aload_0
     //   76: aload_3
     //   77: ldc 45
-    //   79: invokevirtual 416	oicq/wlogin_sdk/request/c:a	(Ljava/util/TreeMap;Ljava/lang/String;)I
+    //   79: invokevirtual 456	oicq/wlogin_sdk/request/c:a	(Ljava/util/TreeMap;Ljava/lang/String;)I
     //   82: pop
     //   83: aload_2
     //   84: monitorexit
@@ -2669,10 +2664,10 @@ public class c
     //   2: new 79	java/lang/StringBuilder
     //   5: dup
     //   6: invokespecial 80	java/lang/StringBuilder:<init>	()V
-    //   9: ldc_w 713
+    //   9: ldc_w 727
     //   12: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   15: lload_3
-    //   16: invokevirtual 252	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   16: invokevirtual 292	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   19: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   22: new 79	java/lang/StringBuilder
     //   25: dup
@@ -2680,15 +2675,15 @@ public class c
     //   29: ldc 144
     //   31: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   34: lload_1
-    //   35: invokevirtual 252	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   35: invokevirtual 292	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   38: invokevirtual 93	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   41: invokestatic 159	oicq/wlogin_sdk/tools/util:LOGI	(Ljava/lang/String;Ljava/lang/String;)V
     //   44: aload_0
     //   45: getfield 39	oicq/wlogin_sdk/request/c:b	Ljava/util/TreeMap;
     //   48: lload_1
-    //   49: invokestatic 249	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   52: invokevirtual 234	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   55: checkcast 236	oicq/wlogin_sdk/request/WloginAllSigInfo
+    //   49: invokestatic 289	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   52: invokevirtual 274	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   55: checkcast 276	oicq/wlogin_sdk/request/WloginAllSigInfo
     //   58: astore 5
     //   60: aload 5
     //   62: ifnonnull +6 -> 68
@@ -2696,34 +2691,34 @@ public class c
     //   66: monitorexit
     //   67: return
     //   68: aload 5
-    //   70: getfield 244	oicq/wlogin_sdk/request/WloginAllSigInfo:_tk_map	Ljava/util/TreeMap;
+    //   70: getfield 284	oicq/wlogin_sdk/request/WloginAllSigInfo:_tk_map	Ljava/util/TreeMap;
     //   73: lload_3
-    //   74: invokestatic 249	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   77: invokevirtual 234	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   80: checkcast 458	oicq/wlogin_sdk/sharemem/WloginSigInfo
+    //   74: invokestatic 289	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   77: invokevirtual 274	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   80: checkcast 498	oicq/wlogin_sdk/sharemem/WloginSigInfo
     //   83: astore 6
     //   85: aload 6
     //   87: ifnull -22 -> 65
     //   90: aload 6
     //   92: iconst_0
     //   93: newarray byte
-    //   95: putfield 483	oicq/wlogin_sdk/sharemem/WloginSigInfo:_pt4Token	[B
+    //   95: putfield 523	oicq/wlogin_sdk/sharemem/WloginSigInfo:_pt4Token	[B
     //   98: aload 6
     //   100: iconst_0
     //   101: newarray byte
-    //   103: putfield 480	oicq/wlogin_sdk/sharemem/WloginSigInfo:_psKey	[B
+    //   103: putfield 520	oicq/wlogin_sdk/sharemem/WloginSigInfo:_psKey	[B
     //   106: aload 6
     //   108: aconst_null
-    //   109: putfield 717	oicq/wlogin_sdk/sharemem/WloginSigInfo:cacheTickets	Ljava/util/List;
+    //   109: putfield 731	oicq/wlogin_sdk/sharemem/WloginSigInfo:cacheTickets	Ljava/util/List;
     //   112: aload 6
     //   114: lconst_0
-    //   115: putfield 720	oicq/wlogin_sdk/sharemem/WloginSigInfo:cacheUpdateStamp	J
+    //   115: putfield 734	oicq/wlogin_sdk/sharemem/WloginSigInfo:cacheUpdateStamp	J
     //   118: aload 5
-    //   120: getfield 244	oicq/wlogin_sdk/request/WloginAllSigInfo:_tk_map	Ljava/util/TreeMap;
+    //   120: getfield 284	oicq/wlogin_sdk/request/WloginAllSigInfo:_tk_map	Ljava/util/TreeMap;
     //   123: lload_1
-    //   124: invokestatic 249	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   124: invokestatic 289	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   127: aload 6
-    //   129: invokevirtual 433	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   129: invokevirtual 473	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   132: pop
     //   133: aload_0
     //   134: getfield 43	oicq/wlogin_sdk/request/c:a	Landroid/content/Context;
@@ -2742,14 +2737,14 @@ public class c
     //   162: ifnull +30 -> 192
     //   165: aload 7
     //   167: lload_1
-    //   168: invokestatic 249	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   168: invokestatic 289	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   171: aload 5
-    //   173: invokevirtual 433	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   173: invokevirtual 473	java/util/TreeMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   176: pop
     //   177: aload_0
     //   178: aload 7
     //   180: ldc 53
-    //   182: invokevirtual 416	oicq/wlogin_sdk/request/c:a	(Ljava/util/TreeMap;Ljava/lang/String;)I
+    //   182: invokevirtual 456	oicq/wlogin_sdk/request/c:a	(Ljava/util/TreeMap;Ljava/lang/String;)I
     //   185: pop
     //   186: aload_0
     //   187: aload 7
@@ -2796,7 +2791,7 @@ public class c
     //   1: monitorenter
     //   2: aload_0
     //   3: lload_1
-    //   4: invokevirtual 695	oicq/wlogin_sdk/request/c:a	(J)Loicq/wlogin_sdk/request/WloginAllSigInfo;
+    //   4: invokevirtual 709	oicq/wlogin_sdk/request/c:a	(J)Loicq/wlogin_sdk/request/WloginAllSigInfo;
     //   7: astore 5
     //   9: aload 5
     //   11: ifnonnull +11 -> 22
@@ -2807,11 +2802,11 @@ public class c
     //   19: aload 5
     //   21: areturn
     //   22: aload 5
-    //   24: getfield 244	oicq/wlogin_sdk/request/WloginAllSigInfo:_tk_map	Ljava/util/TreeMap;
+    //   24: getfield 284	oicq/wlogin_sdk/request/WloginAllSigInfo:_tk_map	Ljava/util/TreeMap;
     //   27: lload_3
-    //   28: invokestatic 249	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   31: invokevirtual 234	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   34: checkcast 458	oicq/wlogin_sdk/sharemem/WloginSigInfo
+    //   28: invokestatic 289	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   31: invokevirtual 274	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   34: checkcast 498	oicq/wlogin_sdk/sharemem/WloginSigInfo
     //   37: astore 6
     //   39: aload 6
     //   41: astore 5

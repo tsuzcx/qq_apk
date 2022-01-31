@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.widget.AvatarClickImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2fc6" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d64" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d077e" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d077e" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="12.0sp" android:textColor="#ff727272" android:ellipsize="end" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2fc7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:singleLine="true" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a2fc6" android:layout_centerHorizontal="true" />
-</RelativeLayout>

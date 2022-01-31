@@ -1,44 +1,34 @@
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.base.download.Downloader;
-import com.tencent.biz.qqstory.model.pendant.FileDownloadTask;
-import com.tencent.biz.qqstory.model.pendant.FileDownloadTask.Output;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.music.BlessVoiceChangeManager;
 
-public class aolj
-  extends FileDownloadTask
+class aolj
+  extends aoko
 {
-  public aolj(BlessVoiceChangeManager paramBlessVoiceChangeManager, Downloader paramDownloader, long paramLong)
+  public aolj(aokk paramaokk)
   {
-    super(paramDownloader);
+    super(paramaokk);
   }
   
-  protected void a(FileDownloadTask.Output paramOutput)
+  protected String a()
   {
-    if (paramOutput.jdField_a_of_type_Int == 0)
+    return "StateSaveToWeiYunByPCWhenPause";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      long l1 = SystemClock.uptimeMillis();
-      long l2 = this.jdField_a_of_type_Long;
-      if (QLog.isColorLevel()) {
-        QLog.d("FileDownloadTask", 2, "startDownloadVCImage success, cost:" + (l1 - l2));
-      }
-      BlessVoiceChangeManager.a().sendMessage(Message.obtain(BlessVoiceChangeManager.a(), 1, null));
-    }
-    for (;;)
-    {
-      BlessVoiceChangeManager.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicBlessVoiceChangeManager);
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("FileDownloadTask", 2, "startDownloadVCImage error:" + paramOutput.jdField_a_of_type_Int + ", errMsg:" + paramOutput.jdField_a_of_type_JavaLangString);
-      }
     }
+    aokk.b(this.jdField_a_of_type_Aokk, 11, 7);
+    aokk.c(this.jdField_a_of_type_Aokk, 11, 7);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aoko.a() + "->StateSaveToWeiYunByPC)");
+    this.jdField_a_of_type_Aoko = new aoli(this.jdField_a_of_type_Aokk);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aolj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,49 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Messenger;
-import com.tencent.mobileqq.emosm.Client;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendView;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendViewItem;
+import com.tencent.mobileqq.data.ActivateFriendItem;
+import java.util.ArrayList;
 
 public class acgy
-  implements ServiceConnection
+  extends ajjh
 {
-  public acgy(Client paramClient) {}
+  public acgy(ActivateFriendView paramActivateFriendView) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    try
+    int i = 0;
+    for (;;)
     {
-      this.a.mIsBound = true;
-      this.a.mService = new Messenger(paramIBinder);
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.emoji.web.Client", 2, "ServiceConnection Attached.");
+      if (i < ActivateFriendView.a(this.a).size())
+      {
+        String str = String.valueOf(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin);
+        if (paramString.equals(str))
+        {
+          paramString = babh.b(ActivateFriendView.a(this.a), str, false);
+          ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setNickName(paramString);
+        }
       }
-      WebIPCOperator.a().a();
-      paramComponentName = Message.obtain(null, 1);
-      paramComponentName.replyTo = this.a.mMessenger;
-      this.a.mService.send(paramComponentName);
-      return;
-    }
-    catch (Exception paramComponentName)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("Q.emoji.web.Client", 2, paramComponentName.getMessage());
+      else
+      {
+        return;
+      }
+      i += 1;
     }
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.a.mService = null;
-    this.a.onDisconnectWithService();
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.emoji.web.Client", 2, "Disconnected.");
+    int i = 0;
+    while (i < ActivateFriendView.a(this.a).size())
+    {
+      String str = babh.j(ActivateFriendView.a(this.a), String.valueOf(((ActivateFriendItem)ActivateFriendView.a(this.a).get(i)).uin));
+      ((ActivateFriendViewItem)ActivateFriendView.b(this.a).get(i)).setNickName(str);
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acgy
  * JD-Core Version:    0.7.0.1
  */

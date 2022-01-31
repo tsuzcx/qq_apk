@@ -1,48 +1,25 @@
-import android.os.Handler;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.TopayManager.5.1;
 
 public class aglq
-  implements TVK_SDKMgr.InstallListener
+  implements DialogInterface.OnClickListener
 {
-  public aglq(ScanTorchActivity paramScanTorchActivity) {}
+  public aglq(TopayManager.5.1 param1) {}
   
-  public void onInstallProgress(float paramFloat)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanTorchActivity", 2, "TVK_SDKMgr.onInstallProgress progress=" + paramFloat);
+    switch (paramInt)
+    {
+    default: 
+      return;
     }
-    ScanTorchActivity.d(this.a, (int)(100.0F * paramFloat));
-    ScanTorchActivity.e(this.a);
-  }
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanTorchActivity", 2, "TVK_SDKMgr.onInstalledFailed error=" + paramInt);
-    }
-    ScanTorchActivity.p(this.a, false);
-    ScanTorchActivity.q(this.a, false);
-    ScanTorchActivity.f(this.a);
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanTorchActivity", 2, "TVK_SDKMgr.onInstalledSuccessed");
-    }
-    ScanTorchActivity.p(this.a, true);
-    ScanTorchActivity.q(this.a, false);
-    ScanTorchActivity.d(this.a, 100);
-    this.a.a.removeMessages(324);
-    this.a.a.sendEmptyMessage(324);
-    ScanTorchActivity.f(this.a);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aglq
  * JD-Core Version:    0.7.0.1
  */

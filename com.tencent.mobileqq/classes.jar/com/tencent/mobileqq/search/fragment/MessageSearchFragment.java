@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.search.fragment;
 
-import ahyc;
-import com.tencent.mobileqq.search.adapter.BaseMvpAdapter;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
-import com.tencent.mobileqq.search.searchengine.MessageSearchEngine;
+import avkj;
+import avlt;
+import avuz;
+import avvb;
 
 public class MessageSearchFragment
   extends BaseSearchFragment
@@ -13,19 +13,19 @@ public class MessageSearchFragment
     return 40;
   }
   
-  protected BaseMvpAdapter a()
+  protected avkj a()
   {
-    return new ahyc(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
+    return new avlt(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Azwg);
   }
   
-  protected ISearchEngine a()
+  protected avuz a()
   {
-    return new MessageSearchEngine(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    return new avvb(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
   protected String a()
   {
-    return getString(2131438167);
+    return getString(2131653250);
   }
   
   public void a(String paramString)
@@ -36,13 +36,13 @@ public class MessageSearchFragment
   public void onPause()
   {
     super.onPause();
-    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine.c();
+    this.jdField_a_of_type_Avuz.c();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchEngine.d();
+    this.jdField_a_of_type_Avuz.d();
   }
 }
 

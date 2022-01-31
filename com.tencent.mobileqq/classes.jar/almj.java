@@ -1,102 +1,167 @@
-import com.tencent.mobileqq.intervideo.now.NowUtil;
-import com.tencent.open.appcommon.now.download.DownloadCenterImpl;
-import com.tencent.open.appcommon.now.download.IDownloadCallback;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadListener;
-import com.tencent.open.downloadnew.DownloadManager;
-import java.util.ArrayList;
+import android.support.v4.util.ArraySet;
+import android.text.TextUtils;
+import android.util.Base64;
+import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
-import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class almj
-  implements DownloadListener
 {
-  public almj(DownloadCenterImpl paramDownloadCenterImpl) {}
+  public int a;
+  public ArraySet<String> a;
+  public boolean a;
+  public int b;
+  private ArraySet<String> b;
+  private ArraySet<String> c = new ArraySet();
   
-  public void installSucceed(String paramString1, String paramString2)
+  public almj()
   {
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).installSucceed(paramString1, paramString2);
-    }
+    this.jdField_a_of_type_Int = 10000;
+    this.jdField_b_of_type_Int = 5000;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidSupportV4UtilArraySet = new ArraySet();
+    this.jdField_b_of_type_AndroidSupportV4UtilArraySet = new ArraySet();
   }
   
-  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
+  private void a(String paramString)
   {
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).onDownloadCancel(paramDownloadInfo);
+    if (QLog.isColorLevel()) {
+      QLog.i("TeleScreenConfig", 2, "telescreen config: " + paramString);
     }
-  }
-  
-  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
-  {
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).onDownloadError(paramDownloadInfo, paramInt1, paramString, paramInt2);
-    }
-  }
-  
-  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
-  {
-    if (NowUtil.a(paramDownloadInfo.k, paramDownloadInfo.b, paramDownloadInfo.d))
+    if (TextUtils.isEmpty(paramString))
     {
-      if (!NowUtil.b().equals(paramDownloadInfo.k))
+      this.jdField_a_of_type_Int = 0;
+      this.jdField_b_of_type_Int = 0;
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_AndroidSupportV4UtilArraySet.clear();
+      this.jdField_b_of_type_AndroidSupportV4UtilArraySet.clear();
+      return;
+    }
+    for (;;)
+    {
+      int i;
+      try
       {
-        NowUtil.a(paramDownloadInfo.k);
-        paramDownloadInfo.k = NowUtil.b();
+        paramString = new JSONObject(paramString);
+        this.jdField_a_of_type_Int = ((int)(paramString.optDouble("download_timeout") * 1000.0D));
+        if (this.jdField_a_of_type_Int <= 0)
+        {
+          i = 10000;
+          this.jdField_a_of_type_Int = i;
+          this.jdField_b_of_type_Int = ((int)(paramString.optDouble("jump_timeout") * 1000.0D));
+          if (this.jdField_b_of_type_Int <= 0)
+          {
+            i = 5000;
+            this.jdField_b_of_type_Int = i;
+            if (paramString.optInt("use_block_mode", 1) != 0) {
+              break label385;
+            }
+            bool = true;
+            this.jdField_a_of_type_Boolean = bool;
+            localJSONArray = paramString.optJSONArray("check_white_list");
+            this.jdField_a_of_type_AndroidSupportV4UtilArraySet.clear();
+            if (localJSONArray == null) {
+              continue;
+            }
+            i = localJSONArray.length() - 1;
+            if (i < 0) {
+              continue;
+            }
+            if (TextUtils.isEmpty(localJSONArray.getString(i))) {
+              break label378;
+            }
+            this.jdField_a_of_type_AndroidSupportV4UtilArraySet.add(localJSONArray.getString(i));
+            break label378;
+          }
+        }
+        else
+        {
+          i = this.jdField_a_of_type_Int;
+          continue;
+        }
+        i = this.jdField_b_of_type_Int;
+        continue;
+        JSONArray localJSONArray = paramString.optJSONArray("scheme_white_list");
+        this.jdField_b_of_type_AndroidSupportV4UtilArraySet.clear();
+        if (localJSONArray != null)
+        {
+          i = localJSONArray.length() - 1;
+          if (i >= 0)
+          {
+            if (TextUtils.isEmpty(localJSONArray.getString(i))) {
+              break label390;
+            }
+            this.jdField_b_of_type_AndroidSupportV4UtilArraySet.add(localJSONArray.getString(i));
+            break label390;
+          }
+        }
+        paramString = paramString.optJSONArray("md5");
+        this.c.clear();
+        if (paramString == null) {
+          break;
+        }
+        i = paramString.length() - 1;
+        if (i < 0) {
+          break;
+        }
+        if (!TextUtils.isEmpty(paramString.getString(i))) {
+          this.c.add(new String(Base64.decode(paramString.getString(i), 0)));
+        }
+        i -= 1;
+        continue;
+        i -= 1;
       }
-      DownloadManager.a().e(paramDownloadInfo);
-    }
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).onDownloadFinish(paramDownloadInfo);
-    }
-  }
-  
-  public void onDownloadPause(DownloadInfo paramDownloadInfo)
-  {
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).onDownloadPause(paramDownloadInfo);
-    }
-  }
-  
-  public void onDownloadUpdate(List paramList)
-  {
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).onDownloadUpdate(paramList);
+      catch (JSONException paramString)
+      {
+        QLog.e("TeleScreenConfig", 1, paramString, new Object[0]);
+        return;
+      }
+      label378:
+      continue;
+      label385:
+      boolean bool = false;
+      continue;
+      label390:
+      i -= 1;
     }
   }
   
-  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  public boolean a(String paramString)
   {
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).onDownloadWait(paramDownloadInfo);
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
     }
+    Iterator localIterator = this.c.iterator();
+    while (localIterator.hasNext()) {
+      if (paramString.startsWith((String)localIterator.next())) {
+        return true;
+      }
+    }
+    return false;
   }
   
-  public void packageReplaced(String paramString1, String paramString2)
+  public boolean a(String paramString1, String paramString2)
   {
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).packageReplaced(paramString1, paramString2);
+    if (this.jdField_a_of_type_AndroidSupportV4UtilArraySet.contains(paramString1)) {
+      return true;
     }
-  }
-  
-  public void uninstallSucceed(String paramString1, String paramString2)
-  {
-    Iterator localIterator = DownloadCenterImpl.a(this.a).iterator();
-    while (localIterator.hasNext()) {
-      ((IDownloadCallback)localIterator.next()).uninstallSucceed(paramString1, paramString2);
+    if (paramString2 != null)
+    {
+      paramString1 = this.jdField_b_of_type_AndroidSupportV4UtilArraySet.iterator();
+      while (paramString1.hasNext()) {
+        if (paramString2.startsWith((String)paramString1.next())) {
+          return true;
+        }
+      }
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     almj
  * JD-Core Version:    0.7.0.1
  */

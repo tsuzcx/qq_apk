@@ -1,114 +1,128 @@
+import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AbsListView.LayoutParams;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import com.tencent.mobileqq.profile.ProfileLabelTypeInfo;
-import com.tencent.mobileqq.profile.view.ProfileLabelPanel.LabelStatusManager;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
 public class tlz
-  extends BaseAdapter
+  extends vpv
+  implements View.OnClickListener
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new tma(this);
-  List jdField_a_of_type_JavaUtilList;
+  public static final String KEY = "PlayerDoubleTabSegment";
+  private int jdField_a_of_type_Int = 1;
+  private tlj jdField_a_of_type_Tlj;
+  private ucw jdField_a_of_type_Ucw;
+  private unw jdField_a_of_type_Unw;
   
-  public tlz(ProfileLabelEditorActivity paramProfileLabelEditorActivity, List paramList)
+  public tlz(Context paramContext)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    super(paramContext);
   }
   
-  private void a(ProfileLabelInfo paramProfileLabelInfo)
+  private void a(TextView paramTextView, boolean paramBoolean)
   {
-    Object localObject = null;
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.a().keySet().iterator();
-    if (localIterator.hasNext())
+    if (paramBoolean)
     {
-      ProfileLabelInfo localProfileLabelInfo = (ProfileLabelInfo)localIterator.next();
-      if (!localProfileLabelInfo.labelId.equals(paramProfileLabelInfo.labelId)) {
-        break label114;
+      if (QQStoryContext.a()) {
+        paramTextView.setBackgroundResource(2130845378);
       }
-      localObject = localProfileLabelInfo;
-    }
-    label114:
-    for (;;)
-    {
-      break;
-      if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.a(localObject)))
+      for (;;)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.c(localObject, this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.a(localObject));
+        paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131100745));
         return;
+        paramTextView.setBackgroundResource(2130845377);
       }
-      a(paramProfileLabelInfo.labelId);
+    }
+    paramTextView.setBackgroundResource(0);
+    if (QQStoryContext.a())
+    {
+      paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131100758));
       return;
     }
+    paramTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131100746));
   }
   
-  private void a(Long paramLong)
+  public int a()
   {
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.b.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.addAll(((ProfileLabelTypeInfo)localIterator.next()).labels);
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Ucw != null) && (this.jdField_a_of_type_Ucw.b())) {
+      return 1;
     }
-    paramLong = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.a(paramLong, localArrayList);
-    if (paramLong != null) {
-      paramLong.toggleStatus();
-    }
+    return 0;
   }
   
-  public int getCount()
+  public View a(int paramInt, unw paramunw, ViewGroup paramViewGroup)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    paramViewGroup = (TextView)paramunw.a(2131310727);
+    TextView localTextView = (TextView)paramunw.a(2131310726);
+    if (QQStoryContext.a())
     {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.getLayoutInflater().inflate(2130971658, null);
-      paramView.setLayoutParams(new AbsListView.LayoutParams(-1, (int)(32.0F * this.jdField_a_of_type_ComTencentMobileqqActivityProfileLabelEditorActivity.jdField_a_of_type_Float)));
-      paramViewGroup = new tly();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131375270));
-      paramView.setTag(paramViewGroup);
+      paramViewGroup.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131100756));
+      localTextView.setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131100756));
+      paramunw.a(2131307521).setBackgroundColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131100758));
+    }
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      a(paramViewGroup, true);
+      a(localTextView, false);
     }
     for (;;)
     {
-      paramViewGroup.jdField_a_of_type_Int = paramInt;
-      int i = paramInt % ProfileActivity.a.length;
-      paramView.setBackgroundResource(ProfileActivity.a[i][0]);
-      paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      i = ProfileActivity.a[i][1];
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(i);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((ProfileLabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labelName);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(((ProfileLabelInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt)).labelName);
-      return paramView;
-      paramViewGroup = (tly)paramView.getTag();
+      return paramunw.a();
+      a(paramViewGroup, false);
+      a(localTextView, true);
     }
+  }
+  
+  public String a()
+  {
+    return "PlayerDoubleTabSegment";
+  }
+  
+  public unw a(int paramInt, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_Unw = new unw(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495623, paramViewGroup, false));
+    paramViewGroup = (TextView)this.jdField_a_of_type_Unw.a(2131310727);
+    TextView localTextView = (TextView)this.jdField_a_of_type_Unw.a(2131310726);
+    paramViewGroup.setOnClickListener(this);
+    localTextView.setOnClickListener(this);
+    return this.jdField_a_of_type_Unw;
+  }
+  
+  public void a(tlj paramtlj)
+  {
+    this.jdField_a_of_type_Tlj = paramtlj;
+  }
+  
+  public void a(ucw paramucw)
+  {
+    this.jdField_a_of_type_Ucw = paramucw;
+    if (this.jdField_a_of_type_Ucw.a()) {
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_Tlj.a();
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131310727: 
+      this.jdField_a_of_type_Tlj.a(1);
+      urp.a("content_flow", "clk_detail_reply", 0, 1, new String[] { "", urp.a(4444), this.jdField_a_of_type_Ucw.a.feedId });
+      return;
+    }
+    this.jdField_a_of_type_Tlj.a(2);
+    urp.a("content_flow", "clk_detail_reply", 0, 2, new String[] { "", urp.a(4444), this.jdField_a_of_type_Ucw.a.feedId });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tlz
  * JD-Core Version:    0.7.0.1
  */

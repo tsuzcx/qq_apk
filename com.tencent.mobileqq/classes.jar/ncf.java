@@ -1,17 +1,18 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
 
-class ncf
-  implements Runnable
+public class ncf
+  implements bbau
 {
-  ncf(nby paramnby) {}
+  public ncf(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment) {}
   
-  public void run()
+  public Object a(int paramInt)
   {
-    if ((PublicAccountImageCollectionMainActivity.a(this.a.a) != null) && (PublicAccountImageCollectionMainActivity.a(this.a.a) != null))
+    switch (paramInt)
     {
-      PublicAccountImageCollectionMainActivity.a(this.a.a).a(true);
-      PublicAccountImageCollectionMainActivity.a(this.a.a).notifyDataSetChanged();
+    default: 
+      return null;
     }
+    return new nci(this.a);
   }
 }
 

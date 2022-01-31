@@ -1,27 +1,52 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import android.support.annotation.IntRange;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.Executor;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class sgg
-  implements DialogInterface.OnClickListener
+class sgg
+  implements Executor
 {
-  public sgg(ChatHistoryImageView paramChatHistoryImageView) {}
+  private int jdField_a_of_type_Int;
+  private final String jdField_a_of_type_JavaLangString;
+  private final Queue<Runnable> jdField_a_of_type_JavaUtilQueue;
+  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+  private int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private sgg(@NonNull String paramString, int paramInt1, @IntRange(from=0L) int paramInt2)
   {
-    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing()))
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaUtilQueue = new ConcurrentLinkedQueue();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  }
+  
+  public void execute(@NonNull Runnable paramRunnable)
+  {
+    this.jdField_a_of_type_JavaUtilQueue.offer(paramRunnable);
+    int i = this.jdField_a_of_type_JavaUtilQueue.size();
+    if (i > Runtime.getRuntime().availableProcessors()) {
+      urk.b(this.jdField_a_of_type_JavaLangString, "too many runnable remained in the queue, size " + i);
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() <= this.jdField_a_of_type_Int)
     {
-      this.a.jdField_a_of_type_AndroidAppDialog.cancel();
-      if (this.a.jdField_a_of_type_Sgi != null) {
-        this.a.jdField_a_of_type_Sgi.a(false);
+      urk.b(this.jdField_a_of_type_JavaLangString, "current number of task threshold is " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      while (!this.jdField_a_of_type_JavaUtilQueue.isEmpty())
+      {
+        paramRunnable = (Runnable)this.jdField_a_of_type_JavaUtilQueue.poll();
+        if (paramRunnable != null) {
+          ThreadManager.excute(paramRunnable, this.b, new sgh(this, paramRunnable), false);
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sgg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,32 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
-import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
+import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
 
 public class vjj
-  implements Runnable
+  implements bekd
 {
-  public vjj(ReplyTextItemBuilder paramReplyTextItemBuilder, vjt paramvjt, MessageForReplyText paramMessageForReplyText, URLDrawable paramURLDrawable) {}
+  public vjj(ScrollFrameSelectBar paramScrollFrameSelectBar) {}
   
-  public void run()
+  public void onScrollStateChanged(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.a(this.jdField_a_of_type_Vjt, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText, this.jdField_a_of_type_ComTencentImageURLDrawable);
+    urk.a("Q.qqstory.frameWidget.ScrollFrameSelectBar", "onScrollStateChanged:%s", Integer.valueOf(paramInt));
+    switch (paramInt)
+    {
+    default: 
+    case 4098: 
+    case 4099: 
+      do
+      {
+        return;
+      } while (!ScrollFrameSelectBar.a(this.a).isPlaying());
+      ScrollFrameSelectBar.a(this.a).c();
+      return;
+    }
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vjj
  * JD-Core Version:    0.7.0.1
  */

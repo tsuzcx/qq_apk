@@ -1,22 +1,20 @@
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.qphone.base.util.QLog;
-
-public class tej
-  implements Runnable
+class tej
+  extends tde
 {
-  public tej(LoginActivity paramLoginActivity, String paramString) {}
-  
-  public void run()
+  tej(tdo paramtdo, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity", 2, "-->login success(finish after ls), go to AgentActivity, account:" + this.jdField_a_of_type_JavaLangString);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityLoginActivity.finish();
+    super(paramString);
+  }
+  
+  public boolean b()
+  {
+    a("WeChatImageJob_in_drawable", a("UrlDrawableDownloadJob_dra"));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tej
  * JD-Core Version:    0.7.0.1
  */

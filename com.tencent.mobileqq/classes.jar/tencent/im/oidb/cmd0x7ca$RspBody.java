@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class cmd0x7ca$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   public static final int BYTES_SIGC2C_FIELD_NUMBER = 1;
   public static final int STR_ERROR_WORDING_FIELD_NUMBER = 3;
@@ -30,7 +30,7 @@ public final class cmd0x7ca$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x7ca.RspBody
  * JD-Core Version:    0.7.0.1
  */

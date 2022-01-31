@@ -1,7 +1,9 @@
 package com.tencent.mobileqq.theme.diy;
 
+import axml;
+
 class ThemeDIYActivity$DataLoading$1
-  implements ScrollLayout.OnScreenChangeListenerDataLoad
+  implements axml
 {
   ThemeDIYActivity$DataLoading$1(ThemeDIYActivity.DataLoading paramDataLoading) {}
   
@@ -9,7 +11,7 @@ class ThemeDIYActivity$DataLoading$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.ThemeDIYActivity.DataLoading.1
  * JD-Core Version:    0.7.0.1
  */

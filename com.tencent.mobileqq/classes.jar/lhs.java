@@ -1,21 +1,10 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
-
-public class lhs
-  implements Runnable
+public abstract interface lhs
 {
-  public lhs(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
-  
-  public void run()
-  {
-    if (ReadInJoyVideoSubChannelActivity.a(this.a) != null) {
-      ReadInJoyVideoSubChannelActivity.a(this.a).setVisibility(8);
-    }
-  }
+  public abstract void a(lhq paramlhq, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lhs
  * JD-Core Version:    0.7.0.1
  */

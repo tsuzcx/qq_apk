@@ -1,21 +1,17 @@
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.ar.arengine.AREngineCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class aanv
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public aanv(AREngine paramAREngine) {}
+  public aanv(Conversation paramConversation) {}
   
-  public void run()
-  {
-    if (AREngine.a(this.a) != null) {
-      AREngine.a(this.a).a();
-    }
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aanv
  * JD-Core Version:    0.7.0.1
  */

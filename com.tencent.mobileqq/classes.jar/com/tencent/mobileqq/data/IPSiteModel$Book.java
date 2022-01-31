@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import acbn;
+import amry;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class IPSiteModel$Book
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new acbn();
+  public static final Parcelable.Creator<Book> CREATOR = new amry();
   public String authorName;
   public String cover;
   public String desc;

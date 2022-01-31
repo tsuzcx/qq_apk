@@ -1,38 +1,20 @@
-import com.tencent.biz.pubaccount.PublicAccountManager.refuseAcceptDone;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment;
 
 public class wdi
-  implements PublicAccountManager.refuseAcceptDone
+  implements View.OnClickListener
 {
-  public wdi(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public wdi(SubscribeVideoDetailFragment paramSubscribeVideoDetailFragment) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.a.aY();
-    if (!paramBoolean)
-    {
-      this.a.w(2131430035);
-      return;
-    }
-    EntityManager localEntityManager = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    AccountDetail localAccountDetail = (AccountDetail)localEntityManager.a(AccountDetail.class, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    if (localAccountDetail != null) {
-      localEntityManager.b(localAccountDetail);
-    }
-    localEntityManager.a();
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1008);
-    this.a.A();
+    this.a.onBackEvent();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wdi
  * JD-Core Version:    0.7.0.1
  */

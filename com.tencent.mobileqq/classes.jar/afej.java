@@ -1,20 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import mqq.os.MqqHandler;
 
-public class afej
-  implements View.OnClickListener
+class afej
+  implements afgb
 {
-  public afej(PlayOperationViewModel paramPlayOperationViewModel) {}
+  afej(afeh paramafeh) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.h(paramView);
+    this.a.a.sendEmptyMessageDelayed(7, 100L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afej
  * JD-Core Version:    0.7.0.1
  */

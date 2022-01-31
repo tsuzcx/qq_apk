@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import msf.msgcomm.msg_comm.Msg;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class aicf
-  implements Runnable
+class aicf
+  implements DialogInterface.OnClickListener
 {
-  public aicf(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg) {}
+  aicf(aice paramaice) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b.a(8)).a(this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg);
+    paramDialogInterface.dismiss();
   }
 }
 

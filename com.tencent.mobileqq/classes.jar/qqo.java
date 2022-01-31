@@ -1,32 +1,21 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.views.canvas.components.form.textbox.GdtCanvasFormItemTextBoxData;
-import com.tencent.gdtad.views.canvas.components.form.textbox.GdtCanvasFormItemTextBoxView;
+import com.tencent.widget.AbsListView;
 
-public class qqo
-  implements TextWatcher
+class qqo
+  extends omr
 {
-  public qqo(GdtCanvasFormItemTextBoxView paramGdtCanvasFormItemTextBoxView) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  qqo(qqm paramqqm, String paramString, AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((this.a.a() == null) || (!this.a.a().isValid()) || (paramEditable == null))
-    {
-      GdtLog.d("GdtCanvasFormItemTextBoxView", "afterTextChanged error");
-      return;
-    }
-    GdtLog.b("GdtCanvasFormItemTextBoxView", "afterTextChanged " + paramEditable.toString());
-    this.a.a().content.text = paramEditable.toString();
+    super(paramString);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void a(oml paramoml)
+  {
+    paramoml.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int, this.b, this.c);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qqo
  * JD-Core Version:    0.7.0.1
  */

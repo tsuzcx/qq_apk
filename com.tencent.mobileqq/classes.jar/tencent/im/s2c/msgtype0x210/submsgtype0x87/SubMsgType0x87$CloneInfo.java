@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0x87$CloneInfo
-  extends MessageMicro
+  extends MessageMicro<CloneInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_origin_nick = PBField.initBytes(ByteStringMicro.EMPTY);

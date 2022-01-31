@@ -1,26 +1,21 @@
-import com.tencent.mobileqq.activity.aio.AIOTipsController;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.troop.EditUniqueTitleActivity;
 
 public class wiq
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public wiq(TipsManager paramTipsManager) {}
+  public wiq(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (TipsManager.a(this.a) != null) {
-      TipsManager.a(this.a).a();
-    }
-    TipsManager.a(this.a, null);
-    if (this.a.a != null) {
-      this.a.a.clear();
-    }
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wiq
  * JD-Core Version:    0.7.0.1
  */

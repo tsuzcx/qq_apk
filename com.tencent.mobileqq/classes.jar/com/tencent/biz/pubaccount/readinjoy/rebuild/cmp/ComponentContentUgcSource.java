@@ -16,25 +16,24 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.PublicAccountBrowser;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.ComponentInheritView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import ndn;
+import obz;
+import opw;
+import pex;
+import pfh;
+import pjg;
+import qoe;
 
 public class ComponentContentUgcSource
   extends LinearLayout
-  implements View.OnClickListener, ComponentInheritView
+  implements View.OnClickListener, pex
 {
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  CmpCtxt jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt;
   private String jdField_a_of_type_JavaLangString;
+  pjg jdField_a_of_type_Pjg;
   
   public ComponentContentUgcSource(Context paramContext)
   {
@@ -53,56 +52,30 @@ public class ComponentContentUgcSource
     if (QLog.isColorLevel()) {
       QLog.d("ComponentContentUgcSource", 2, "business url is " + this.jdField_a_of_type_JavaLangString);
     }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    Object localObject;
+    do
+    {
       return;
-    }
-    Object localObject1 = new Intent(getContext(), PublicAccountBrowser.class);
-    ((Intent)localObject1).putExtra("url", this.jdField_a_of_type_JavaLangString);
-    getContext().startActivity((Intent)localObject1);
-    localArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a();
-    localObject1 = "";
-    try
-    {
-      localObject2 = new JSONObject();
-      ((JSONObject)localObject2).put("folder_status", ReadInJoyUtils.d);
-      ((JSONObject)localObject2).put("feeds_source", ReadInJoyUtils.a(localArticleInfo));
-      ((JSONObject)localObject2).put("rowkey", localArticleInfo.innerUniqueID);
-      ((JSONObject)localObject2).put("feeds_type", "" + ReadInJoyUtils.a(localArticleInfo));
-      ((JSONObject)localObject2).put("kandian_mode", "" + ReadInJoyUtils.e());
-      ((JSONObject)localObject2).put("tab_source", "" + ReadInJoyUtils.d());
-      ((JSONObject)localObject2).put("topic_id", "" + localArticleInfo.businessId);
-      localObject2 = ((JSONObject)localObject2).toString();
-      localObject1 = localObject2;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        Object localObject2;
-        localJSONException.printStackTrace();
-        continue;
-        String str = localArticleInfo.mArticleID + "";
-      }
-    }
-    if ((ReadInJoyBaseAdapter.f(localArticleInfo)) || (ReadInJoyBaseAdapter.g(localArticleInfo)) || (ReadInJoyBaseAdapter.h(localArticleInfo)) || (ReadInJoyBaseAdapter.i(localArticleInfo)))
-    {
-      localObject2 = "0";
-      PublicAccountReportUtils.a(null, ReadInJoyUtils.a(localArticleInfo), "0X8008201", "0X8008201", 0, 0, String.valueOf(localArticleInfo.mFeedId), (String)localObject2, "", (String)localObject1, false);
-      ReadInJoyBaseAdapter.a(localArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.e());
-      return;
-    }
+      localObject = new Intent(getContext(), PublicAccountBrowser.class);
+      ((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString);
+      getContext().startActivity((Intent)localObject);
+      localObject = this.jdField_a_of_type_Pjg.a.a();
+    } while (localObject == null);
+    ndn.a((ArticleInfo)localObject);
+    qoe.a((ArticleInfo)localObject, this.jdField_a_of_type_Pjg.a.e());
   }
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt = new CmpCtxt();
+    this.jdField_a_of_type_Pjg = new pjg();
     a(paramContext);
     a();
   }
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969655, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131494469, this, true);
   }
   
   public void a()
@@ -117,33 +90,28 @@ public class ComponentContentUgcSource
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367356));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131312738));
     this.jdField_a_of_type_AndroidWidgetTextView.getPaint().setFakeBoldText(true);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367355));
-  }
-  
-  public void a(FeedItemCell.CellListener paramCellListener)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a(paramCellListener);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131312739));
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof IReadInJoyModel))
+    if ((paramObject instanceof opw))
     {
-      paramObject = (IReadInJoyModel)paramObject;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a(paramObject);
+      paramObject = (opw)paramObject;
+      this.jdField_a_of_type_Pjg.a(paramObject);
       paramObject = paramObject.a();
       if (paramObject != null) {
-        break label47;
+        break label46;
       }
       if (QLog.isColorLevel()) {
         QLog.d("ComponentContentUgcSource", 2, "article info is null");
       }
     }
     return;
-    label47:
-    if ((ReadInJoyBaseAdapter.f(paramObject)) || ((ReadInJoyBaseAdapter.g(paramObject)) && (!ReadInJoyBaseAdapter.k(paramObject))) || (ReadInJoyUtils.f(paramObject)) || ((ReadInJoyUtils.g(paramObject)) && (!ReadInJoyBaseAdapter.j(paramObject))) || (ReadInJoyBaseAdapter.b(paramObject)))
+    label46:
+    if ((qoe.a(paramObject)) || ((qoe.i(paramObject)) && (!qoe.m(paramObject))) || (obz.g(paramObject)) || ((obz.h(paramObject)) && (!qoe.l(paramObject))) || (qoe.d(paramObject)))
     {
       localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
       ((LinearLayout.LayoutParams)localObject).topMargin = 0;
@@ -169,6 +137,11 @@ public class ComponentContentUgcSource
       this.jdField_a_of_type_AndroidWidgetTextView.setText(localSpannableStringBuilder);
       setVisibility(0);
     }
+  }
+  
+  public void a(pfh parampfh)
+  {
+    this.jdField_a_of_type_Pjg.a(parampfh);
   }
   
   public void onClick(View paramView)

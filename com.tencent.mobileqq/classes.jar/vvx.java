@@ -1,19 +1,32 @@
-import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie;
-import com.tencent.mobileqq.widget.QQToast;
+import org.json.JSONObject;
 
-class vvx
-  implements Runnable
+public class vvx
+  extends JSONObject
 {
-  vvx(vvq paramvvq) {}
-  
-  public void run()
+  public vvx(vvv paramvvv, String paramString)
   {
-    QQToast.a(this.a.a.a, "已经开启监听，可以连接调试...", 0).a();
+    super(paramString);
+  }
+  
+  public int getInt(String paramString)
+  {
+    if (!has(paramString)) {
+      return 0;
+    }
+    return super.getInt(paramString);
+  }
+  
+  public String getString(String paramString)
+  {
+    if (!has(paramString)) {
+      return "";
+    }
+    return super.getString(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vvx
  * JD-Core Version:    0.7.0.1
  */

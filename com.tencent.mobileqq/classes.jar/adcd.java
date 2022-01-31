@@ -1,44 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
-import com.tencent.mobileqq.filemanager.settings.FMSettings;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 
 public class adcd
-  extends BroadcastReceiver
+  extends acju
 {
-  private adcd(FileManagerEngine paramFileManagerEngine) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    QLog.i("FileManagerEngine<FileAssistant>", 1, "!!!extCard changed[" + paramIntent.getAction() + "]!!!");
-    paramContext = paramIntent.getAction();
-    if ((paramContext.equalsIgnoreCase("android.intent.action.MEDIA_UNMOUNTED")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_UNMOUNTABLE")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_EJECT")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_REMOVED"))) {
-      FMSettings.a().a("externalSdCard");
-    }
-    try
-    {
-      this.a.a.a().a(true);
-      label96:
-      if ((paramContext.equalsIgnoreCase("android.intent.action.MEDIA_MOUNTED")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_SCANNER_STARTED"))) {
-        FMSettings.a().a();
-      }
-      this.a.a.a().a(true, 3, null);
-      return;
-    }
-    catch (Exception paramIntent)
-    {
-      break label96;
-    }
-  }
+  public TextView a;
+  public AutoStartProgressBar a;
+  public ArkAppLoadLayout a;
+  public ArkAppView a;
+  public String b;
+  public View c;
+  public View d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adcd
  * JD-Core Version:    0.7.0.1
  */

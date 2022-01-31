@@ -1,52 +1,22 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.biz.now.NowLiveManager;
-import com.tencent.biz.qqstory.base.QQStoryHandler;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.subscript.ReadInJoyArticle;
 
 public class rpu
-  implements CompoundButton.OnCheckedChangeListener
 {
-  public rpu(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public int a;
+  public long a;
+  public ReadInJoyArticle a;
+  public String a;
+  public String b = "";
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public rpu()
   {
-    int j = 1;
-    if (!paramCompoundButton.isPressed()) {
-      return;
-    }
-    if (paramBoolean)
-    {
-      paramCompoundButton = "open_storyset";
-      StoryReportor.a("dynamic_more", paramCompoundButton, 0, 0, new String[0]);
-      paramCompoundButton = new Integer[5];
-      paramCompoundButton[0] = Integer.valueOf(1);
-      if (!paramBoolean) {
-        break label106;
-      }
-    }
-    label106:
-    for (int i = 1;; i = 0)
-    {
-      paramCompoundButton[3] = Integer.valueOf(i);
-      this.a.app.a().a(paramCompoundButton);
-      paramCompoundButton = (QQStoryHandler)this.a.app.a(98);
-      i = j;
-      if (paramBoolean) {
-        i = 2;
-      }
-      paramCompoundButton.a(i);
-      return;
-      paramCompoundButton = "close_storyset";
-      break;
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rpu
  * JD-Core Version:    0.7.0.1
  */

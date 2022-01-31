@@ -1,18 +1,10 @@
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-
-public class anru
-  implements Runnable
+public abstract interface anru
 {
-  public anru(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
-  
-  public void run()
-  {
-    this.a.D();
-  }
+  public abstract void n();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anru
  * JD-Core Version:    0.7.0.1
  */

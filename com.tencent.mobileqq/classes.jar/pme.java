@@ -1,47 +1,24 @@
-import android.graphics.Bitmap;
-import com.tencent.component.media.ImageManagerEnv;
-import com.tencent.component.media.image.ReuseBitmapPool;
-import com.tencent.component.media.utils.BitmapUtils;
-import com.tencent.component.media.utils.LruCache;
-import java.util.LinkedList;
-import java.util.TreeMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
+import com.tencent.mobileqq.pb.PBStringField;
+import tencent.im.oidb.articlesummary.articlesummary.PackJumpInfo;
 
 public class pme
-  extends LruCache
+  implements View.OnClickListener
 {
-  public pme(ReuseBitmapPool paramReuseBitmapPool, int paramInt)
-  {
-    super(paramInt);
-  }
+  public pme(ComponentJump paramComponentJump, articlesummary.PackJumpInfo paramPackJumpInfo) {}
   
-  protected int a(Integer paramInteger, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    return BitmapUtils.getBitmapAllocSize(paramBitmap);
-  }
-  
-  protected void a(boolean paramBoolean, Integer paramInteger, Bitmap paramBitmap1, Bitmap paramBitmap2)
-  {
-    try
-    {
-      super.entryRemoved(paramBoolean, paramInteger, paramBitmap1, paramBitmap2);
-      if (paramBoolean)
-      {
-        int i = BitmapUtils.getBitmapAllocSize(paramBitmap1);
-        paramBitmap1 = (LinkedList)ReuseBitmapPool.a(this.a).get(Integer.valueOf(i));
-        paramBitmap1.remove(paramInteger);
-        if (paramBitmap1.isEmpty()) {
-          ReuseBitmapPool.a(this.a).remove(Integer.valueOf(i));
-        }
-        ImageManagerEnv.getLogger();
-      }
-      return;
-    }
-    finally {}
+    paramView = this.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$PackJumpInfo.str_url.get();
+    obz.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), paramView);
+    orz.a(2, this.jdField_a_of_type_TencentImOidbArticlesummaryArticlesummary$PackJumpInfo.str_wording.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pme
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
-
 public class akth
-  implements Runnable
 {
-  public akth(WebAccelerateHelper paramWebAccelerateHelper) {}
+  public long a;
+  public aksw a;
+  public aktg a;
   
-  public void run()
+  public akth()
   {
-    this.a.getWebViewFeatureParams();
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Aktg = null;
+    this.jdField_a_of_type_Aksw = null;
+  }
+  
+  public String toString()
+  {
+    return "ARLocalRecogResult{frameIdx = " + this.jdField_a_of_type_Long + ", markerResult = " + this.jdField_a_of_type_Aktg + ", faceResult = " + this.jdField_a_of_type_Aksw + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akth
  * JD-Core Version:    0.7.0.1
  */

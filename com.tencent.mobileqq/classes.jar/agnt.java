@@ -1,41 +1,31 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ar.ARScanFragment;
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.ar.config.WorldCupReport;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment.3.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class agnt
-  implements View.OnClickListener
+  implements agka
 {
-  public agnt(ScanTorchActivity paramScanTorchActivity) {}
+  public agnt(ThemeHbFragment paramThemeHbFragment) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    ScanTorchActivity.y(this.a, true);
-    ScanTorchActivity.a(this.a, "operateBtnOnClick", false);
-    ScanTorchActivity.A(this.a);
-    if (!ScanTorchActivity.j(this.a)) {
-      ScanTorchActivity.h(this.a);
+    ThemeHbFragment.a(this.a, null);
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ThemeHbFragment", 2, "setAnimFrameBgProcess download back obj = " + paramObject);
     }
-    do
-    {
-      return;
-      WorldCupReport.b();
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment != null) && (this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment.a() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment.a().a() == 0))
-      {
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(324);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(324);
-        return;
-      }
-    } while (((this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment != null) && (this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment.a() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment.a().a() == 1)) || (this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment == null) || (this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment.a() == null) || (this.a.jdField_a_of_type_ComTencentMobileqqArARScanFragment.a().a() != 2));
-    ScanTorchActivity.a(this.a, "operateBtn");
+    if (((paramObject instanceof String)) && (ThemeHbFragment.a(this.a) != null)) {
+      ThemeHbFragment.a(this.a).post(new ThemeHbFragment.3.1(this, paramObject));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agnt
  * JD-Core Version:    0.7.0.1
  */

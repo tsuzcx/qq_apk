@@ -3,13 +3,8 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb.data;
 public class CommonBottomData
   extends BaseData
 {
-  public boolean a = true;
-  public boolean b = true;
-  
-  public CommonBottomData(int paramInt)
-  {
-    this.d = paramInt;
-  }
+  public boolean a;
+  public boolean b;
 }
 
 

@@ -1,32 +1,28 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.emoticonview.EmotionKeywordHorizonListView.HorizonListViewTouchListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.XEditTextEx;
-import mqq.os.MqqHandler;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.weishi_new.WSRecommendFragment;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 
 public class rwq
-  implements EmotionKeywordHorizonListView.HorizonListViewTouchListener
+  implements View.OnClickListener
 {
-  public rwq(BaseChatPie paramBaseChatPie) {}
+  public rwq(WSRecommendFragment paramWSRecommendFragment) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    case 2: 
-    default: 
-      return;
-    case 0: 
-      this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(67);
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "slide", 0, 0, "", "", "", this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString());
-      return;
-    }
-    this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(67, 5000L);
+    WSPublicAccReport.getInstance().reportPublicAccDetailClick();
+    paramView = new Intent(this.a.getActivity(), AccountDetailActivity.class);
+    paramView.putExtra("uin", String.valueOf(2062433139L));
+    paramView.putExtra("uintype", 1008);
+    paramView.putExtra("source", 119);
+    this.a.startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rwq
  * JD-Core Version:    0.7.0.1
  */

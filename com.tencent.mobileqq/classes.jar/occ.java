@@ -1,21 +1,28 @@
-import com.tencent.biz.qqstory.storyHome.memory.model.StoryQQ2UidConverter;
-import com.tencent.biz.qqstory.storyHome.memory.model.StoryQQ2UidConverter.StoryQQ2UidCallback;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.15.1;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.15.2;
+import com.tencent.mobileqq.app.BaseActivity;
 
-class occ
-  implements Runnable
+public final class occ
+  implements bemm
 {
-  occ(ocb paramocb, String paramString) {}
+  occ(BaseActivity paramBaseActivity) {}
   
-  public void run()
+  public void a(beml parambeml)
   {
-    if (StoryQQ2UidConverter.a(this.jdField_a_of_type_Ocb.a) != null) {
-      StoryQQ2UidConverter.a(this.jdField_a_of_type_Ocb.a).a(this.jdField_a_of_type_JavaLangString, false);
+    switch (parambeml.a)
+    {
+    default: 
+      return;
+    case 0: 
+      qtq.a(this.a, new ReadInJoyUtils.15.1(this));
+      return;
     }
+    qtq.a(this.a, new ReadInJoyUtils.15.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     occ
  * JD-Core Version:    0.7.0.1
  */

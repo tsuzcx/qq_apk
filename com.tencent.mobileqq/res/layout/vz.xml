@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/dor" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bxs" />
+    <include android:id="@id/doy" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bxs" />
+    <include android:id="@id/dp4" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bxs" />
+    <include android:id="@id/dp_" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bxs" />
+    <include android:id="@id/dpa" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bxs" />
+</LinearLayout>

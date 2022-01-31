@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.service.message.MessageCache;
+import android.text.TextUtils;
+import apdh;
+import awao;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,7 +14,7 @@ public class DataLineMsgSet
   private int groupId;
   private int groupType;
   public boolean isReportPause;
-  private ArrayList mComeList = new ArrayList();
+  private ArrayList<DataLineMsgRecord> mComeList = new ArrayList();
   private long mFirstArriveTime;
   private DataLineMsgRecord mFirstCome;
   private boolean mIsNewCome;
@@ -31,7 +33,11 @@ public class DataLineMsgSet
   
   public static boolean isCanReciveOrResend(DataLineMsgRecord paramDataLineMsgRecord)
   {
-    return (!paramDataLineMsgRecord.issuc) || (paramDataLineMsgRecord.fileMsgStatus == 1L) || (paramDataLineMsgRecord.fileMsgStatus == 2L);
+    if ((!paramDataLineMsgRecord.issuc) || (paramDataLineMsgRecord.fileMsgStatus == 1L) || (paramDataLineMsgRecord.fileMsgStatus == 2L)) {}
+    while ((paramDataLineMsgRecord.progress == 1.0F) && (paramDataLineMsgRecord.issuc) && ((TextUtils.isEmpty(paramDataLineMsgRecord.path)) || (!apdh.a(paramDataLineMsgRecord.path)))) {
+      return true;
+    }
+    return false;
   }
   
   public static boolean isCanceled(DataLineMsgRecord paramDataLineMsgRecord)
@@ -460,7 +466,7 @@ public class DataLineMsgSet
   
   public boolean isTimeOut()
   {
-    return MessageCache.a() - this.mLastArriveTime > 90L;
+    return awao.a() - this.mLastArriveTime > 90L;
   }
   
   public void printlog()
@@ -608,13 +614,13 @@ public class DataLineMsgSet
   
   public void setTimeOut()
   {
-    this.mLastArriveTime = (MessageCache.a() - 95L);
+    this.mLastArriveTime = (awao.a() - 95L);
     if (QLog.isColorLevel()) {
       QLog.d(TAG, 2, "设置timeOut, mLastArriveTime[" + this.mLastArriveTime);
     }
   }
   
-  public ArrayList values()
+  public ArrayList<DataLineMsgRecord> values()
   {
     int i = 0;
     for (;;)

@@ -1,0 +1,20 @@
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class apxe
+  implements View.OnClickListener
+{
+  apxe(apxb paramapxb) {}
+  
+  public void onClick(View paramView)
+  {
+    apxb.e(this.a);
+    this.a.a(true);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+ * Qualified Name:     apxe
+ * JD-Core Version:    0.7.0.1
+ */

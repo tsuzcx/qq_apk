@@ -1,29 +1,30 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController.TroopEnterEffectData;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
-import com.tencent.mobileqq.util.FaceDrawable;
-import com.tencent.mobileqq.util.FaceDrawable.OnLoadingStateChangeListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import mqq.os.MqqHandler;
 
-class ajko
-  implements FaceDrawable.OnLoadingStateChangeListener
+public class ajko
 {
-  ajko(ajkn paramajkn, Sprite paramSprite) {}
-  
-  public void onLoadingStateChanged(int paramInt1, int paramInt2)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    if ((paramInt1 == 0) && (paramInt2 == 1) && (this.jdField_a_of_type_Ajkn.jdField_a_of_type_Ajkj.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController.a != null))
-    {
-      Bitmap localBitmap = Bitmap.createScaledBitmap(TroopUtils.a(FaceDrawable.a(this.jdField_a_of_type_Ajkn.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 1, this.jdField_a_of_type_Ajkn.jdField_a_of_type_Ajkj.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController$TroopEnterEffectData.a)), this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.c(), this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.d(), true);
-      this.jdField_a_of_type_Ajkn.jdField_a_of_type_Ajkj.jdField_a_of_type_ComTencentMobileqqTroopEnterEffectTroopEnterEffectController.a.b(new ajkp(this, localBitmap));
+    paramQQAppInterface = paramQQAppInterface.getHandler(Conversation.class);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.sendMessage(paramQQAppInterface.obtainMessage(1009));
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  {
+    paramQQAppInterface = paramQQAppInterface.a().a();
+    paramString = paramQQAppInterface.b(paramString, 1);
+    if (paramString != null) {
+      paramQQAppInterface.b(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajko
  * JD-Core Version:    0.7.0.1
  */

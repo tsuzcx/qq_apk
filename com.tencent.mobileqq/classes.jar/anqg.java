@@ -1,13 +1,22 @@
-import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorFlowCount;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
 
-public final class anqg
-  implements IHttpCommunicatorFlowCount
+public class anqg
+  implements DialogInterface.OnClickListener
 {
-  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
+  public anqg(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+    ExtendFriendEditFragment.a(this.a).finish();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anqg
  * JD-Core Version:    0.7.0.1
  */

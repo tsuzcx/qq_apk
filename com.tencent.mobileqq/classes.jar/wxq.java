@@ -1,96 +1,80 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.activity.pendant.PendantTipsInfo;
-import com.tencent.mobileqq.adapter.AvatarPendantAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vas.AvatarPendantManager;
-import com.tencent.mobileqq.vas.AvatarPendantShopItemInfo;
-import com.tencent.mobileqq.vas.IndividuationUrlHelper;
-import com.tencent.mobileqq.vas.VasExtensionObserver;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.Arrays;
+import java.util.List;
 
 public class wxq
-  extends VasExtensionObserver
 {
-  public wxq(AvatarPendantActivity paramAvatarPendantActivity) {}
+  public String a;
+  private boolean jdField_a_of_type_Boolean;
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
   
-  protected void d(boolean paramBoolean, Object paramObject)
+  public wxq(wxm paramwxm, String paramString1, String paramString2)
   {
-    paramObject = (Bundle)paramObject;
-    long l = paramObject.getLong("pendantId");
-    paramObject.getInt("seriesId");
-    Object localObject = paramObject.getString("uin");
-    int i = paramObject.getInt("result");
-    if ((l == -1L) || (localObject == null)) {}
-    do
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+  }
+  
+  public void a(String paramString)
+  {
+    Object localObject = new File(paramString);
+    if (((File)localObject).exists())
     {
-      return;
-      if (!paramBoolean) {
-        break label455;
-      }
-      if (l != 0L) {
-        break;
-      }
-      this.a.b.setVisibility(4);
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantShopSeriesInfo != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantShopSeriesInfo.c = -1;
-      }
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8005FD4", "0X8005FD4", 0, 0, "", "", "", "");
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter != null)
+      this.jdField_a_of_type_Boolean = true;
+      localObject = Arrays.asList(((File)localObject).list());
+      String str;
+      if (((List)localObject).contains("bg@2x.png"))
       {
-        paramObject = ((AvatarPendantManager)this.a.app.getManager(45)).a();
-        this.a.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.a(paramObject);
+        str = paramString + "/" + "bg@2x.png";
+        if (!new File(str).exists()) {
+          break label195;
+        }
+        this.c = str;
       }
-    } while ((this.a.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantShopItemInfo == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantShopItemInfo.jdField_a_of_type_Boolean));
-    localObject = IndividuationUrlHelper.a("linkPendantSet");
-    paramObject = localObject;
-    if (localObject != null) {
-      paramObject = ((String)localObject).replace("[id]", String.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqVasAvatarPendantShopItemInfo.jdField_a_of_type_Int));
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("IphoneTitleBarActivity", 2, "handlePendantAuth, mPendantInfo.isLink == true, jump to url =" + paramObject);
-    }
-    localObject = new Intent(this.a, QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", paramObject);
-    ((Intent)localObject).putExtra("hide_more_button", true);
-    ((Intent)localObject).putExtra("webStyle", "noBottomBar");
-    this.a.startActivity((Intent)localObject);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8006517", "0X8006517", 0, 0, "", "", "", "");
-    return;
-    this.a.jdField_a_of_type_AndroidWidgetButton.setText(2131434622);
-    this.a.b.setVisibility(0);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    localObject = this.a.app;
-    if (this.a.d) {}
-    for (paramObject = "1";; paramObject = "0")
-    {
-      ReportController.b((QQAppInterface)localObject, "CliOper", "", "", "0X8005FD6", "0X8005FD6", 0, 0, paramObject, "", "", "");
-      if (!this.a.d) {
-        break;
+      if (((List)localObject).contains("camera@2x.png"))
+      {
+        str = paramString + "/" + "camera@2x.png";
+        if (!new File(str).exists()) {
+          break label203;
+        }
+        this.d = str;
       }
-      this.a.d = false;
-      break;
     }
-    label455:
-    paramObject = (PendantTipsInfo)paramObject.getSerializable("tipsInfo");
-    if (paramObject != null)
+    for (;;)
     {
-      this.a.a(paramObject, l, i);
+      if (((List)localObject).contains("point@2x.png"))
+      {
+        paramString = paramString + "/" + "point@2x.png";
+        if (!new File(paramString).exists()) {
+          break label211;
+        }
+        this.e = paramString;
+      }
       return;
+      label195:
+      this.jdField_a_of_type_Boolean = false;
+      break;
+      label203:
+      this.jdField_a_of_type_Boolean = false;
     }
-    QLog.e("IphoneTitleBarActivity", 1, "handlePendantAuth, tipsInfo == null, pendantId = " + l);
+    label211:
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public boolean a()
+  {
+    QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, "isResourceReady:" + this.jdField_a_of_type_Boolean);
+    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wxq
  * JD-Core Version:    0.7.0.1
  */

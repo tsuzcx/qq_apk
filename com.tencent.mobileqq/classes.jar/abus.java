@@ -1,54 +1,43 @@
-import com.tencent.mobileqq.businessCard.BusinessCardManager;
-import com.tencent.mobileqq.businessCard.BusinessCardObserver;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardListActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
+import com.tencent.mobileqq.widget.ParticipleView;
+import java.lang.ref.WeakReference;
 
-public class abus
-  extends BusinessCardObserver
+public final class abus
+  extends FlingGestureHandler
 {
-  public abus(BusinessCardListActivity paramBusinessCardListActivity) {}
+  private WeakReference<TextPreviewActivity> b;
   
-  public void a(boolean paramBoolean)
+  private abus(TextPreviewActivity paramTextPreviewActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessCard_observer", 2, "onGetCardList " + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      ArrayList localArrayList = this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardBusinessCardManager.a();
-      this.a.a(localArrayList, 0L, false);
-    }
+    super(paramTextPreviewActivity);
+    this.b = new WeakReference(paramTextPreviewActivity);
   }
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void flingLToR()
   {
-    if ((paramBoolean) && (paramInt != 3))
-    {
-      paramString = this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardBusinessCardManager.a();
-      if ((paramInt == 1) && (this.a.jdField_a_of_type_Int == 0)) {
-        this.a.a(paramString, 0L, false);
+    TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.b.get();
+    int i;
+    if (localTextPreviewActivity != null) {
+      if ((localTextPreviewActivity.a != null) && (localTextPreviewActivity.a.getVisibility() == 0)) {
+        i = 1;
       }
     }
-    else
+    for (;;)
     {
+      if (i == 0) {
+        super.flingLToR();
+      }
       return;
-    }
-    this.a.a(paramString, 500L, false);
-  }
-  
-  public void b(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean)
-    {
-      paramString = this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardBusinessCardManager.a();
-      this.a.a(paramString, 500L, false);
+      i = 0;
+      continue;
+      i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abus
  * JD-Core Version:    0.7.0.1
  */

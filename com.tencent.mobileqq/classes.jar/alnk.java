@@ -1,20 +1,20 @@
-import android.content.Context;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.smtt.sdk.WebView;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
 
-public final class alnk
-  implements Runnable
+class alnk
+  extends AnimatorListenerAdapter
 {
-  public alnk(Context paramContext, String paramString1, WebView paramWebView, String paramString2, boolean paramBoolean) {}
+  alnk(alni paramalni, ObjectAnimator paramObjectAnimator) {}
   
-  public void run()
+  public void onAnimationStart(Animator paramAnimator)
   {
-    ThreadManager.executeOnNetWorkThread(new alnl(this));
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alnk
  * JD-Core Version:    0.7.0.1
  */

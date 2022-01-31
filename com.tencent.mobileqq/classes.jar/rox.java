@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
 
 public class rox
-  implements Runnable
+  implements bepb
 {
-  public rox(AddRequestActivity paramAddRequestActivity) {}
+  public rox(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  public void run()
+  public void a()
   {
-    this.a.a(ContactUtils.f(this.a.app, this.a.a));
+    if ((!this.a.c) && (this.a.d))
+    {
+      this.a.c = true;
+      ruf.a("SUBSCRIPT_FEEDS_COST", null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rox
  * JD-Core Version:    0.7.0.1
  */

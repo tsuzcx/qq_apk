@@ -1,21 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.activity.pendant.PendantTipsInfo;
-
 public class wxu
-  implements DialogInterface.OnClickListener
+  extends wxv
 {
-  public wxu(AvatarPendantActivity paramAvatarPendantActivity, PendantTipsInfo paramPendantTipsInfo, int paramInt) {}
+  private final String a = wxu.class.getName();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public wxu(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPendantPendantTipsInfo, false, this.jdField_a_of_type_Int);
+    super(paramString1, paramString2);
+  }
+  
+  protected String a()
+  {
+    urk.b(this.a, "Get cache tag[Disk]: cache");
+    return "cache";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wxu
  * JD-Core Version:    0.7.0.1
  */

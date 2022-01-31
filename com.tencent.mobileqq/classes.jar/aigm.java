@@ -1,26 +1,35 @@
-import com.tencent.mobileqq.shortvideo.gesture.GestureKeyInfo;
-import com.tencent.mobileqq.shortvideo.gesture.GestureMgrRecognize;
+import android.view.View;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import org.json.JSONObject;
 
-public class aigm
-  extends GestureKeyInfo
+public final class aigm
+  implements zrt
 {
-  public String b;
-  public int e = 0;
-  public int f = 0;
+  public aigm(View paramView, zrw paramzrw, long paramLong, double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, double paramDouble5, double paramDouble6) {}
   
-  public aigm(GestureMgrRecognize paramGestureMgrRecognize) {}
+  public void onComplete() {}
   
-  public void a(aigm paramaigm)
+  public void onFailure(int paramInt, String paramString)
   {
-    super.a(paramaigm);
-    paramaigm.e = this.e;
-    paramaigm.f = this.f;
-    paramaigm.b = this.b;
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Zrw, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, "", paramInt, "location city failed");
   }
+  
+  public void onPermission(int paramInt)
+  {
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Zrw, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, "", paramInt, "location city failed permission");
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    paramJSONObject = paramJSONObject.optString("city", "");
+    ApolloRender.locationEnd(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Zrw, this.jdField_a_of_type_Long, this.jdField_a_of_type_Double, this.b, this.c, this.d, this.e, this.f, paramJSONObject, 0, "location success");
+  }
+  
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aigm
  * JD-Core Version:    0.7.0.1
  */

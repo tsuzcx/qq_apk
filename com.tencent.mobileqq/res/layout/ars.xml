@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_gravity="center" android:orientation="vertical" android:background="@drawable/trans" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textColor="#ff000000" android:gravity="center" android:id="@id/efs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="240.0dip" android:layout_margin="20.0dip" android:text="@string/qmk" />
+    <RelativeLayout android:id="@id/content" android:background="@drawable/ab2" android:visibility="visible" android:layout_width="283.0dip" android:layout_height="377.0dip" android:layout_marginTop="20.0dip" android:layout_centerHorizontal="true">
+        <ImageView android:id="@id/dir" android:layout_width="70.0dip" android:layout_height="70.0dip" android:layout_marginTop="35.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="18.0dip" android:textColor="#ff8b8b8b" android:id="@id/kf0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="@string/qmf" android:layout_below="@id/dir" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="20.0dip" android:textColor="#ff8d373e" android:id="@id/kfp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:text="@string/qmd" android:layout_below="@id/kf0" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="24.0dip" android:textColor="#ff8d373e" android:id="@id/kf1" android:padding="1.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="京东满600元减200元券" android:layout_below="@id/kfp" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="16.0dip" android:textColor="#ff8d373e" android:id="@id/kfq" android:padding="1.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/qme" android:layout_below="@id/kf1" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="20.0dip" android:textColor="#ff494845" android:gravity="center" android:id="@id/kf_" android:background="@drawable/ab3" android:layout_width="240.0dip" android:layout_height="40.0dip" android:layout_marginTop="40.0dip" android:text="@string/qmj" android:layout_below="@id/kfq" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <ImageView android:id="@id/dii" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="35.0dip" android:src="@drawable/fcl" android:layout_below="@id/content" android:layout_centerHorizontal="true" />
+</RelativeLayout>

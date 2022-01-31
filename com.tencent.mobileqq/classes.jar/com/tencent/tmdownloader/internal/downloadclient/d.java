@@ -1,7 +1,7 @@
 package com.tencent.tmdownloader.internal.downloadclient;
 
 import com.qq.taf.jce.JceStruct;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ac;
 import com.tencent.tmassistantsdk.internal.openSDK.param.jce.BatchSDKDownloadActionResponse;
 import com.tencent.tmassistantsdk.internal.openSDK.param.jce.IPCHead;
 import com.tencent.tmassistantsdk.internal.openSDK.param.jce.IPCResponse;
@@ -14,7 +14,7 @@ class d
   
   public void a()
   {
-    r.c(c.b(), "onDownloadSDKServiceInvalid yybOpenClient......");
+    ac.c(c.b(), "onDownloadSDKServiceInvalid yybOpenClient......");
     synchronized (this.a)
     {
       c.a(this.a, null);
@@ -28,7 +28,7 @@ class d
     {
       paramArrayOfByte = com.tencent.tmassistantsdk.internal.openSDK.param.a.a(paramArrayOfByte);
       JceStruct localJceStruct = com.tencent.tmassistantsdk.internal.openSDK.param.a.a(paramArrayOfByte);
-      r.c(c.b(), "response.head.cmdId = " + paramArrayOfByte.head.cmdId);
+      ac.c(c.b(), "response.head.cmdId = " + paramArrayOfByte.head.cmdId);
       switch (paramArrayOfByte.head.cmdId)
       {
       }
@@ -37,21 +37,21 @@ class d
         do
         {
           return;
-          r.c("jimluo", "_SubScribeSDKDownloadTask......");
+          ac.c("jimluo", "_SubScribeSDKDownloadTask......");
         } while (localJceStruct == null);
         this.a.a((SubScribeSDKDownloadTaskByViaResponse)localJceStruct);
         return;
-        r.c("jimluo", "_BatchDownloadAction......");
+        ac.c("jimluo", "_BatchDownloadAction......");
       } while (localJceStruct == null);
       this.a.a((BatchSDKDownloadActionResponse)localJceStruct);
       return;
     }
-    r.c(c.b(), "onActionResult reponseData = null");
+    ac.c(c.b(), "onActionResult reponseData = null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.downloadclient.d
  * JD-Core Version:    0.7.0.1
  */

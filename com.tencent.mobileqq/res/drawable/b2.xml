@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list android:oneshot="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="27" android:drawable="@drawable/skin_aio_panel_emotion_nor" />
+    <item android:duration="27" android:drawable="@drawable/gph" />
+    <item android:duration="27" android:drawable="@drawable/gpm" />
+    <item android:duration="27" android:drawable="@drawable/gpn" />
+    <item android:duration="27" android:drawable="@drawable/gpo" />
+    <item android:duration="27" android:drawable="@drawable/gpp" />
+    <item android:duration="27" android:drawable="@drawable/gpq" />
+    <item android:duration="27" android:drawable="@drawable/gpr" />
+    <item android:duration="27" android:drawable="@drawable/gps" />
+    <item android:duration="27" android:drawable="@drawable/gpt" />
+    <item android:duration="27" android:drawable="@drawable/gpi" />
+    <item android:duration="27" android:drawable="@drawable/gpj" />
+    <item android:duration="27" android:drawable="@drawable/gpk" />
+    <item android:duration="27" android:drawable="@drawable/gpl" />
+    <item android:duration="27" android:drawable="@drawable/skin_aio_panel_emotion_press" />
+</animation-list>

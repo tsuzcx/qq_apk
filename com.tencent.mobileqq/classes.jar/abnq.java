@@ -1,21 +1,14 @@
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.RecentLoginDevActivity;
 
 public class abnq
-  implements Runnable
+  extends Handler
 {
-  public abnq(ARGridMapViewDialog paramARGridMapViewDialog) {}
-  
-  public void run()
-  {
-    if (!this.a.jdField_a_of_type_Boolean) {
-      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    }
-  }
+  public abnq(RecentLoginDevActivity paramRecentLoginDevActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abnq
  * JD-Core Version:    0.7.0.1
  */

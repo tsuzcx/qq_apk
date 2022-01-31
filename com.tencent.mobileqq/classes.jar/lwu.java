@@ -1,27 +1,32 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeBigSocial;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class lwu
-  implements View.OnTouchListener
+class lwu
+  implements DialogInterface.OnClickListener
 {
-  public lwu(FeedItemCellTypeBigSocial paramFeedItemCellTypeBigSocial, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2) {}
+  lwu(lws paramlws) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
-      this.b.setDuplicateParentStateEnabled(true);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    return false;
+    this.a.a.c();
+    lwq.a(this.a.a, false);
+    if (paramInt == 1)
+    {
+      awqx.b(null, "CliOper", "", "", "0X800A565", "0X800A565", 0, 0, "", "", "", "");
+      lwq.a(this.a.a);
+    }
+    while (paramInt != 0) {
+      return;
+    }
+    lwq.a(this.a.a, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lwu
  * JD-Core Version:    0.7.0.1
  */

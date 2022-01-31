@@ -1,22 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.view.DragSortAdapter;
+import java.io.File;
+import java.io.FileFilter;
 
 class acie
-  implements DialogInterface.OnClickListener
+  implements FileFilter
 {
-  acie(acic paramacic, EmoticonPackage paramEmoticonPackage, View paramView) {}
+  acie(acic paramacic) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean accept(File paramFile)
   {
-    DragSortAdapter.a(this.jdField_a_of_type_Acic.a, this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage, this.jdField_a_of_type_AndroidViewView);
+    return paramFile.getName().startsWith(acic.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acie
  * JD-Core Version:    0.7.0.1
  */

@@ -12,22 +12,22 @@ import java.util.Random;
 public class b
   extends a
 {
-  private static final String g = "HttpEchoTask";
-  private String h;
-  private URL i;
-  private String j;
-  private int k = 10000;
-  private HttpURLConnection l;
-  private int m;
-  private String n;
+  private static final String h = "HttpEchoTask";
+  private String i;
+  private URL j;
+  private String k;
+  private int l = 10000;
+  private HttpURLConnection m;
+  private int n;
+  private String o;
   
   public b(int paramInt1, String paramString1, String paramString2, int paramInt2, a.a parama)
   {
     super(paramInt1, parama);
-    this.h = (paramString1 + b(paramString1));
-    this.h = MsfSdkUtils.insertMtype("netdetect", this.h);
-    this.j = paramString2;
-    this.k = paramInt2;
+    this.i = (paramString1 + b(paramString1));
+    this.i = MsfSdkUtils.insertMtype("netdetect", this.i);
+    this.k = paramString2;
+    this.l = paramInt2;
   }
   
   private String b(String paramString)
@@ -46,7 +46,7 @@ public class b
   
   protected int a(String paramString)
   {
-    if ((this.m == 200) && (this.i.getHost().equals(this.n)) && (!TextUtils.isEmpty(paramString)) && (paramString.equals(this.j)))
+    if ((this.n == 200) && (this.j.getHost().equals(this.o)) && (!TextUtils.isEmpty(paramString)) && (paramString.equals(this.k)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("HttpEchoTask", 2, "WIFI detect, HttpEchoTask " + this.e + " valid succ");
@@ -64,19 +64,19 @@ public class b
     try
     {
       if (QLog.isColorLevel()) {
-        QLog.d("HttpEchoTask", 2, "WIFI detect, HttpEchoTask " + this.e + " try connect " + this.h);
+        QLog.d("HttpEchoTask", 2, "WIFI detect, HttpEchoTask " + this.e + " try connect " + this.i);
       }
-      this.i = new URL(this.h);
-      this.l = ((HttpURLConnection)this.i.openConnection());
-      this.l.setDoOutput(true);
-      this.l.setDoInput(true);
-      this.l.setUseCaches(false);
-      this.l.setRequestMethod("GET");
-      this.l.setConnectTimeout(this.k);
-      this.l.setReadTimeout(10000);
-      this.l.connect();
+      this.j = new URL(this.i);
+      this.m = ((HttpURLConnection)this.j.openConnection());
+      this.m.setDoOutput(true);
+      this.m.setDoInput(true);
+      this.m.setUseCaches(false);
+      this.m.setRequestMethod("GET");
+      this.m.setConnectTimeout(this.l);
+      this.m.setReadTimeout(10000);
+      this.m.connect();
       if (QLog.isColorLevel()) {
-        QLog.d("HttpEchoTask", 2, "WIFI detect, HttpEchoTask " + this.e + " connect " + this.h + " succ.");
+        QLog.d("HttpEchoTask", 2, "WIFI detect, HttpEchoTask " + this.e + " connect " + this.i + " succ.");
       }
       return true;
     }
@@ -84,10 +84,10 @@ public class b
     {
       localThrowable.printStackTrace();
       if (QLog.isColorLevel()) {
-        QLog.d("HttpEchoTask", 2, "WIFI detect, HttpEchoTask " + this.e + " connect " + this.h + " failed.");
+        QLog.d("HttpEchoTask", 2, "WIFI detect, HttpEchoTask " + this.e + " connect " + this.i + " failed.");
       }
-      if (this.l != null) {
-        this.l.disconnect();
+      if (this.m != null) {
+        this.m.disconnect();
       }
     }
     return false;
@@ -96,10 +96,10 @@ public class b
   protected void b()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("HttpEchoTask", 2, "WIFI detect, HttpEchoTask " + this.e + " disconnect " + this.h);
+      QLog.d("HttpEchoTask", 2, "WIFI detect, HttpEchoTask " + this.e + " disconnect " + this.i);
     }
-    if (this.l != null) {
-      this.l.disconnect();
+    if (this.m != null) {
+      this.m.disconnect();
     }
   }
   
@@ -107,9 +107,9 @@ public class b
   {
     try
     {
-      this.m = this.l.getResponseCode();
-      this.n = this.l.getURL().getHost();
-      Object localObject1 = new BufferedReader(new InputStreamReader(this.l.getInputStream()));
+      this.n = this.m.getResponseCode();
+      this.o = this.m.getURL().getHost();
+      Object localObject1 = new BufferedReader(new InputStreamReader(this.m.getInputStream()));
       Object localObject2;
       for (String str = "";; str = str + (String)localObject2)
       {
@@ -145,7 +145,7 @@ public class b
   
   protected Object d()
   {
-    return this.h;
+    return this.i;
   }
 }
 

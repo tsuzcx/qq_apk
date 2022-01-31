@@ -19,10 +19,11 @@ class TbsLinuxToolsJni
   
   private void init(Context paramContext)
   {
-    label37:
-    label167:
+    label63:
+    label220:
     try
     {
+      TbsLog.i("TbsLinuxToolsJni", "TbsLinuxToolsJni init mbIsInited is " + mbIsInited);
       if (mbIsInited) {
         return;
       }
@@ -35,7 +36,7 @@ class TbsLinuxToolsJni
       {
         localObject1 = TbsShareManager.getAvailableCorePath();
         if (localObject1 != null) {
-          break label200;
+          break label292;
         }
         localObject1 = TbsShareManager.getAvailableTbsCorePath(paramContext);
       }
@@ -44,8 +45,9 @@ class TbsLinuxToolsJni
     {
       paramContext.printStackTrace();
       gJniloaded = false;
-      break label167;
-      break label37;
+      TbsLog.i("TbsLinuxToolsJni", "TbsLinuxToolsJni init error !!! " + paramContext.getMessage() + " ## " + paramContext.getCause());
+      break label220;
+      break label63;
     }
     for (Object localObject1 = new File((String)localObject1);; localObject1 = TbsInstaller.getInstance().getTbsCoreShareDir(paramContext))
     {
@@ -67,6 +69,7 @@ class TbsLinuxToolsJni
         }
         if (localObject2 != null)
         {
+          TbsLog.i("TbsLinuxToolsJni", "TbsLinuxToolsJni init tbsSharePath is " + ((File)localObject2).getAbsolutePath());
           System.load(((File)localObject2).getAbsolutePath() + File.separator + "liblinuxtoolsfortbssdk_jni.so");
           gJniloaded = true;
         }
@@ -88,7 +91,7 @@ class TbsLinuxToolsJni
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsLinuxToolsJni
  * JD-Core Version:    0.7.0.1
  */

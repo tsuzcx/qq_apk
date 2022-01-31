@@ -1,24 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.widget.ExpandableListView;
 
-public class anze
-  implements Runnable
+class anze
+  implements View.OnClickListener
 {
-  public anze(CropVideoActivity paramCropVideoActivity) {}
+  anze(anzd paramanzd, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    CropVideoActivity.a(this.a, CropVideoActivity.g(this.a) + 10);
-    Message localMessage = new Message();
-    localMessage.what = 1;
-    localMessage.arg1 = CropVideoActivity.g(this.a);
-    this.a.a.sendMessage(localMessage);
+    if (anzd.a(this.jdField_a_of_type_Anzd).c(this.jdField_a_of_type_Int))
+    {
+      anzd.a(this.jdField_a_of_type_Anzd).b(this.jdField_a_of_type_Int);
+      return;
+    }
+    anzd.a(this.jdField_a_of_type_Anzd).a(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anze
  * JD-Core Version:    0.7.0.1
  */

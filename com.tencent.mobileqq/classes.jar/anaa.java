@@ -1,20 +1,26 @@
-import cooperation.qzone.QzoneGiftFullScreenActionManager;
-import cooperation.qzone.QzoneGiftFullScreenActionManager.MagicfaceCloseListener;
-import cooperation.qzone.QzoneGiftFullScreenViewController;
-
-public class anaa
-  implements QzoneGiftFullScreenActionManager.MagicfaceCloseListener
+class anaa
+  extends ajfh
 {
-  public anaa(QzoneGiftFullScreenViewController paramQzoneGiftFullScreenViewController, QzoneGiftFullScreenActionManager paramQzoneGiftFullScreenActionManager) {}
+  anaa(amzx paramamzx) {}
   
-  public void a()
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager.a();
+    if (this.a.a != null) {
+      this.a.a.e();
+    }
+  }
+  
+  protected void b(int paramInt)
+  {
+    amzx.a(this.a, false);
+    if (this.a.a != null) {
+      this.a.a.e();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anaa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,37 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelPhoto;
+import android.text.TextUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public final class agtf
-  implements Parcelable.Creator
+public class agtf
 {
-  public PersonalityLabelPhoto a(Parcel paramParcel)
+  public JSONArray a = new JSONArray();
+  
+  public static agtf a(String paramString)
   {
-    return new PersonalityLabelPhoto(paramParcel);
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    agtf localagtf = new agtf();
+    localagtf.a = a(new JSONObject(paramString));
+    return localagtf;
   }
   
-  public PersonalityLabelPhoto[] a(int paramInt)
+  private static JSONArray a(JSONObject paramJSONObject)
   {
-    return new PersonalityLabelPhoto[paramInt];
+    JSONArray localJSONArray = new JSONArray();
+    paramJSONObject = paramJSONObject.optJSONArray("module_config");
+    int i = 0;
+    while (i < paramJSONObject.length())
+    {
+      localJSONArray.put(paramJSONObject.optJSONObject(i));
+      i += 1;
+    }
+    return localJSONArray;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agtf
  * JD-Core Version:    0.7.0.1
  */

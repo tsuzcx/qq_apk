@@ -1,20 +1,19 @@
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
-
-public class nxv
-  implements Runnable
+class nxv
+  extends nyf
 {
-  public nxv(QQStoryBaseActivity paramQQStoryBaseActivity) {}
-  
-  public void run()
+  nxv(nxd paramnxd, int paramInt)
   {
-    ((UserManager)SuperManager.a(2)).c();
+    super(paramnxd, null);
+  }
+  
+  void a(nyi paramnyi)
+  {
+    paramnyi.onCommentCreate(false, null, null, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nxv
  * JD-Core Version:    0.7.0.1
  */

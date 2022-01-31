@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.support.annotation.Nullable;
+import android.view.View;
 
 class wtc
-  implements Runnable
+  implements bhwg<Boolean>
 {
-  wtc(wtb paramwtb) {}
+  wtc(wta paramwta) {}
   
-  public void run()
+  public void a(@Nullable Boolean paramBoolean)
   {
-    PhoneContactFragment.a(this.a.a).g();
+    if (paramBoolean == null) {
+      return;
+    }
+    wta.c(this.a).setSelected(paramBoolean.booleanValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wtc
  * JD-Core Version:    0.7.0.1
  */

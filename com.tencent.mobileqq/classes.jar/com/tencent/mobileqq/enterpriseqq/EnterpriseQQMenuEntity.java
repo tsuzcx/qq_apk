@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.enterpriseqq;
 
+import atmo;
+import atoc;
 import com.tencent.crmqq.structmsg.StructMsg.GetCRMMenuResponse;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
 
 public class EnterpriseQQMenuEntity
-  extends Entity
+  extends atmo
 {
   public byte[] data;
   public long savedDateTime;
   public int seqno;
-  @unique
+  @atoc
   public String uin;
   
   public EnterpriseQQMenuEntity() {}

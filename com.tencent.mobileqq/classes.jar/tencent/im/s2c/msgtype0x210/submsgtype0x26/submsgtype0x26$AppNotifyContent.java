@@ -8,11 +8,11 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class submsgtype0x26$AppNotifyContent
-  extends MessageMicro
+  extends MessageMicro<AppNotifyContent>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_text = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField opt_msg_app_notify_user = PBField.initRepeatMessage(submsgtype0x26.AppNotifyUser.class);
+  public final PBRepeatMessageField<submsgtype0x26.AppNotifyUser> opt_msg_app_notify_user = PBField.initRepeatMessage(submsgtype0x26.AppNotifyUser.class);
   
   static
   {

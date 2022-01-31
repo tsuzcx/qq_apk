@@ -1,36 +1,88 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.widget.GridListView;
-import com.tencent.mobileqq.widget.GridListView.GridListAdapter;
-import com.tencent.mobileqq.widget.GridListView.WraperAdapter;
+import com.tencent.open.downloadnew.DownloadInfo;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class albz
-  extends DataSetObserver
+class albz
+  implements bcgn
 {
-  public albz(GridListView paramGridListView) {}
+  albz(albx paramalbx) {}
   
-  public void onChanged()
+  public void installSucceed(String paramString1, String paramString2)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter != null) {
-      GridListView.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.getCount());
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter.notifyDataSetChanged();
+    if (albx.a(this.a) != null) {
+      albx.a(this.a).a(this.a.a(paramString1, 6, paramString2).toString());
     }
   }
   
-  public void onInvalidated()
+  public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter != null) {
-      GridListView.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$GridListAdapter.getCount());
+    if ((paramDownloadInfo != null) && (albx.a(this.a) != null)) {
+      albx.a(this.a).a(this.a.a(paramDownloadInfo).toString());
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetGridListView$WraperAdapter.notifyDataSetInvalidated();
+  }
+  
+  public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
+  {
+    if ((paramDownloadInfo != null) && (albx.a(this.a) != null)) {
+      albx.a(this.a).a(this.a.a(paramDownloadInfo.k, paramDownloadInfo.a(), paramDownloadInfo.f, paramDownloadInfo.e, paramString, paramInt1, paramDownloadInfo.j).toString());
+    }
+  }
+  
+  public void onDownloadFinish(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo != null) && (albx.a(this.a) != null)) {
+      albx.a(this.a).a(this.a.a(paramDownloadInfo).toString());
+    }
+  }
+  
+  public void onDownloadPause(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo != null) && (albx.a(this.a) != null)) {
+      albx.a(this.a).a(this.a.a(paramDownloadInfo).toString());
+    }
+  }
+  
+  public void onDownloadUpdate(List<DownloadInfo> paramList)
+  {
+    if ((paramList != null) && (albx.a(this.a) != null))
+    {
+      JSONArray localJSONArray = new JSONArray();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
+        localJSONArray.put(this.a.a(localDownloadInfo));
+      }
+      albx.a(this.a).a(localJSONArray.toString());
+    }
+  }
+  
+  public void onDownloadWait(DownloadInfo paramDownloadInfo)
+  {
+    if ((paramDownloadInfo != null) && (albx.a(this.a) != null)) {
+      albx.a(this.a).a(this.a.a(paramDownloadInfo).toString());
+    }
+  }
+  
+  public void packageReplaced(String paramString1, String paramString2)
+  {
+    if (albx.a(this.a) != null) {
+      albx.a(this.a).a(this.a.a(paramString1, 13, paramString2).toString());
+    }
+  }
+  
+  public void uninstallSucceed(String paramString1, String paramString2)
+  {
+    if (albx.a(this.a) != null) {
+      albx.a(this.a).a(this.a.a(paramString1, 9, paramString2).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     albz
  * JD-Core Version:    0.7.0.1
  */

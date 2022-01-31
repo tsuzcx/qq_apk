@@ -17,24 +17,23 @@ import android.util.DisplayMetrics;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import kjh;
 
 public class SparkDot
   extends LinearLayout
 {
   float jdField_a_of_type_Float = 0.0F;
-  public int a;
+  int jdField_a_of_type_Int = 400;
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
-  public Handler a;
-  public Runnable a;
+  Handler jdField_a_of_type_AndroidOsHandler = new Handler();
+  Runnable jdField_a_of_type_JavaLangRunnable = new SparkDot.1(this);
   public boolean a;
   ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView = null;
   int jdField_b_of_type_Int = 40;
   Bitmap jdField_b_of_type_AndroidGraphicsBitmap = null;
   private boolean jdField_b_of_type_Boolean;
-  public int c = 0;
+  int c = 0;
   int d = 0;
-  public int e = 6;
+  int e = 6;
   public int f = -849386130;
   public int g = 1281320302;
   
@@ -46,10 +45,7 @@ public class SparkDot
   public SparkDot(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 400;
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    this.jdField_a_of_type_JavaLangRunnable = new kjh(this);
     setOrientation(0);
   }
   
@@ -88,7 +84,7 @@ public class SparkDot
     }
   }
   
-  public void a(int paramInt)
+  void a(int paramInt)
   {
     this.d = paramInt;
     this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[paramInt].setImageBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap);
@@ -157,7 +153,7 @@ public class SparkDot
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.utils.SparkDot
  * JD-Core Version:    0.7.0.1
  */

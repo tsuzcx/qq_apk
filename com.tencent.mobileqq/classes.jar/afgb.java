@@ -1,14 +1,10 @@
-import com.tencent.mobileqq.nearby.now.view.widget.StartLiveTopicLabelListView;
-
-public final class afgb
+public abstract interface afgb
 {
-  String jdField_a_of_type_JavaLangString;
-  
-  private afgb(StartLiveTopicLabelListView paramStartLiveTopicLabelListView) {}
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afgb
  * JD-Core Version:    0.7.0.1
  */

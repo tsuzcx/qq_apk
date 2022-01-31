@@ -1,105 +1,79 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.ProcessStats;
-import com.tencent.mobileqq.app.ProcessStats.Stats;
-import com.tencent.mobileqq.transfile.predownload.schedule.PreDownloadScheduler;
-import com.tencent.mobileqq.util.FPSCalculator.GetFPSListener;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class aixl
-  implements FPSCalculator.GetFPSListener
+class aixl
+  implements axrt
 {
-  public aixl(PreDownloadScheduler paramPreDownloadScheduler) {}
+  aixl(aixk paramaixk, String paramString, aixi paramaixi) {}
   
-  public void a(long paramLong, double paramDouble)
+  public void onResp(axsq paramaxsq)
   {
-    if (!PreDownloadScheduler.a(this.a)) {
-      return;
+    axro localaxro = (axro)paramaxsq.jdField_a_of_type_Axsp;
+    if (this.jdField_a_of_type_Aixk.jdField_a_of_type_Axro == localaxro) {
+      this.jdField_a_of_type_Aixk.jdField_a_of_type_Axro = null;
     }
-    if (!PreDownloadScheduler.b(this.a))
+    if (QLog.isColorLevel()) {
+      QLog.i("TMG_Downloader", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localaxro.jdField_a_of_type_JavaLangString, Integer.valueOf(paramaxsq.jdField_a_of_type_Int), Integer.valueOf(paramaxsq.c), this.jdField_a_of_type_JavaLangString }));
+    }
+    if (paramaxsq.jdField_a_of_type_Int == 0)
     {
-      PreDownloadScheduler.a(this.a, paramLong);
-      PreDownloadScheduler.a(this.a, paramDouble);
-      PreDownloadScheduler.b(this.a, ProcessStats.a.a);
-      if (PreDownloadScheduler.a(this.a) > PreDownloadScheduler.b(this.a))
+      paramaxsq = new File(localaxro.c);
+      if (!paramaxsq.exists()) {}
+    }
+    do
+    {
+      for (;;)
       {
-        if (!PreDownloadScheduler.c(this.a))
+        try
         {
-          PreDownloadScheduler.a(this.a);
-          if (PreDownloadScheduler.b(this.a) >= PreDownloadScheduler.c(this.a))
-          {
-            PreDownloadScheduler.a(this.a, true);
-            PreDownloadScheduler.b(this.a, 0L);
+          paramaxsq = paramaxsq.getParent();
+          bace.a(localaxro.c, paramaxsq, false);
+          aixj.a(this.jdField_a_of_type_Aixi.b);
+          i = 1;
+          if (i == 0) {
+            break;
           }
+          if (this.jdField_a_of_type_Aixk.jdField_a_of_type_Aixm != null)
+          {
+            this.jdField_a_of_type_Aixk.jdField_a_of_type_Aixm.a(100);
+            this.jdField_a_of_type_Aixk.jdField_a_of_type_Aixm.a(0, "Download Complete!!!");
+          }
+          this.jdField_a_of_type_Aixk.jdField_a_of_type_Boolean = false;
+          return;
         }
-        if (PreDownloadScheduler.c(this.a) >= PreDownloadScheduler.d(this.a)) {
-          break label502;
-        }
-        if (!PreDownloadScheduler.d(this.a))
+        catch (Exception paramaxsq)
         {
-          PreDownloadScheduler.d(this.a);
-          if (PreDownloadScheduler.e(this.a) >= PreDownloadScheduler.c(this.a))
-          {
-            PreDownloadScheduler.b(this.a, true);
-            PreDownloadScheduler.c(this.a, 0L);
-          }
+          paramaxsq.printStackTrace();
         }
+        int i = 0;
       }
+    } while (this.jdField_a_of_type_Aixk.jdField_a_of_type_Aixm == null);
+    this.jdField_a_of_type_Aixk.jdField_a_of_type_Aixm.a(2, "");
+  }
+  
+  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2)
+  {
+    int i;
+    if (paramLong2 == 0L) {
+      i = 0;
     }
     for (;;)
     {
-      Object localObject;
-      if (((!PreDownloadScheduler.d(this.a)) || (!PreDownloadScheduler.c(this.a))) && (QLog.isColorLevel()))
-      {
-        localObject = new StringBuilder("[system info]:");
-        ((StringBuilder)localObject).append(",mCurFPSTime=").append(PreDownloadScheduler.f(this.a));
-        ((StringBuilder)localObject).append(",mCurFPS=").append(PreDownloadScheduler.a(this.a));
-        ((StringBuilder)localObject).append(",mCurCPU=").append(PreDownloadScheduler.c(this.a));
-        ((StringBuilder)localObject).append(",mFPSReadyCount=").append(PreDownloadScheduler.b(this.a));
-        ((StringBuilder)localObject).append(",mCPUReadyCount=").append(PreDownloadScheduler.e(this.a));
-        ((StringBuilder)localObject).append(",mFPSReady=").append(PreDownloadScheduler.c(this.a));
-        ((StringBuilder)localObject).append(",mCPUReady=").append(PreDownloadScheduler.d(this.a));
-        QLog.d("PreDownloadScheduler", 2, ((StringBuilder)localObject).toString());
+      if (this.jdField_a_of_type_Aixk.jdField_a_of_type_Aixm != null) {
+        this.jdField_a_of_type_Aixk.jdField_a_of_type_Aixm.a(i);
       }
-      PreDownloadScheduler.a(this.a).sendEmptyMessage(1005);
       return;
-      Bundle localBundle;
-      if ((PreDownloadScheduler.d(this.a)) && (PreDownloadScheduler.c(this.a)))
-      {
-        localObject = new Message();
-        ((Message)localObject).what = 1007;
-        localBundle = new Bundle();
-        localBundle.putDouble("FPS", PreDownloadScheduler.a(this.a));
-        localBundle.putDouble("CPU", PreDownloadScheduler.c(this.a));
-        ((Message)localObject).obj = localBundle;
-        PreDownloadScheduler.a(this.a).sendMessage((Message)localObject);
+      if (paramLong1 >= paramLong2) {
+        i = 99;
+      } else {
+        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
       }
-      PreDownloadScheduler.a(this.a, false);
-      PreDownloadScheduler.b(this.a, 0L);
-      break;
-      label502:
-      if ((PreDownloadScheduler.d(this.a)) && (PreDownloadScheduler.c(this.a)))
-      {
-        localObject = new Message();
-        ((Message)localObject).what = 1007;
-        localBundle = new Bundle();
-        localBundle.putDouble("FPS", PreDownloadScheduler.a(this.a));
-        localBundle.putDouble("CPU", PreDownloadScheduler.c(this.a));
-        ((Message)localObject).obj = localBundle;
-        PreDownloadScheduler.a(this.a).sendMessage((Message)localObject);
-      }
-      PreDownloadScheduler.b(this.a, false);
-      PreDownloadScheduler.c(this.a, 0L);
-      continue;
-      PreDownloadScheduler.b(this.a, true);
-      PreDownloadScheduler.a(this.a, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aixl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,38 @@
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyVideoCompositeManager.OnVideoCompositeListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.ui.funchat.filter.EffectFilterTextPager;
+import java.lang.ref.WeakReference;
 
 public class mbz
-  implements ReadInJoyVideoCompositeManager.OnVideoCompositeListener
+  extends Handler
 {
-  public mbz(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  WeakReference<EffectFilterTextPager> a;
   
-  public void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString)
+  public mbz(EffectFilterTextPager paramEffectFilterTextPager)
   {
-    QLog.d("ReadInJoyDeliverVideoActivity", 2, "onError: code - " + paramInt + " msg - " + paramString);
-    ReadInJoyDeliverVideoActivity.a(this.a).post(new mcb(this));
+    this.a = new WeakReference(paramEffectFilterTextPager);
   }
   
-  public void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
+  public void handleMessage(Message paramMessage)
   {
-    QLog.d("ReadInJoyDeliverVideoActivity", 2, "onSuccess: outputPath - " + paramString);
-    ReadInJoyDeliverVideoActivity.b(this.a, paramString);
-    ReadInJoyDeliverVideoActivity.a(this.a).post(new mca(this));
+    EffectFilterTextPager localEffectFilterTextPager = (EffectFilterTextPager)this.a.get();
+    if (localEffectFilterTextPager == null) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      localEffectFilterTextPager.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mbz
  * JD-Core Version:    0.7.0.1
  */

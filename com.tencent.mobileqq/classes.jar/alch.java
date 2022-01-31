@@ -1,42 +1,43 @@
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout.onSizeChangedListenner;
+import android.annotation.TargetApi;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.data.RecommendCommonMessage.ArkMsgAppInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class alch
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class alch
+  implements ArkViewImplement.LoadCallback
 {
-  public alch(InputMethodRelativeLayout paramInputMethodRelativeLayout) {}
+  alch(alcg paramalcg, alff paramalff, alfb paramalfb, int paramInt, adai paramadai) {}
   
-  public void onGlobalLayout()
+  public void onLoadFailed(int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
-    int i;
-    if (this.a.a != null)
+    onLoadState(paramInt1);
+  }
+  
+  @TargetApi(14)
+  public void onLoadState(int paramInt)
+  {
+    if (paramInt == 1)
     {
-      i = InputMethodRelativeLayout.a(this.a);
-      if (i != InputMethodRelativeLayout.b(this.a))
-      {
-        int j = this.a.getRootView().getHeight();
-        if (j - i <= j / 4) {
-          break label102;
-        }
-        InputMethodRelativeLayout.a(this.a, true);
-      }
+      this.jdField_a_of_type_Alff.a.setVisibility(0);
+      alcg.a(this.jdField_a_of_type_Alcg, this.jdField_a_of_type_Alfb, this.jdField_a_of_type_Alff);
+      this.jdField_a_of_type_Alff.b.setVisibility(0);
+      this.jdField_a_of_type_Alfb.a(this.jdField_a_of_type_Alff, this.jdField_a_of_type_Alcg);
     }
     for (;;)
     {
-      this.a.a.a(InputMethodRelativeLayout.a(this.a), InputMethodRelativeLayout.b(this.a), i);
-      this.a.requestLayout();
-      InputMethodRelativeLayout.a(this.a, i);
+      QLog.d("ArkAdapterItemForTextMsg", 1, new Object[] { "ArkFold.attachArkView.appName:", this.jdField_a_of_type_Alcg.a.appName, ", position=", Integer.valueOf(this.jdField_a_of_type_Int), ",state=", Integer.valueOf(paramInt) });
+      this.jdField_a_of_type_Alfb.a(this.jdField_a_of_type_Adai, this.jdField_a_of_type_Int);
       return;
-      label102:
-      InputMethodRelativeLayout.a(this.a, false);
+      this.jdField_a_of_type_Alff.a.setVisibility(8);
+      this.jdField_a_of_type_Alff.b.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alch
  * JD-Core Version:    0.7.0.1
  */

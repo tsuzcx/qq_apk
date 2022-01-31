@@ -1,0 +1,70 @@
+{
+    "view_type": "UIView",
+    "view_id": "id_rij_media_view",
+    "layout_type":"layout_relative",
+    "event_type": "cmd_comment_media_click",
+    "visible_depend_on_children":"YES",
+    "margin_left":"65",
+    "margin_top":"4",
+     "attributes": {
+          "setAttatchInfo:":"$pic_url"
+    },
+    "height": {
+        "type": "absolutely",
+        "value": "89"
+    },
+    "width": {
+        "type": "absolutely",
+        "value": "89"
+    },
+    "subviews":[
+        {
+            "view_type": "ReadInjoyAsynImageView",
+            "layout_type":"layout_relative",
+            "view_id": "id_rij_comment_media_thumb",
+            "align_parent_top": "YES",
+            "attributes": {
+                "setHeightString:":"$thumHeight",
+                "setWidthString:":"$thumWidth",
+                "setSupportGifEnable:":"1",
+                "setImageWithURLString:lineup:": [
+                    "$media_thumimg_url",
+                    "-1"
+                ]
+            },
+            "height": {
+                "type": "match_parent"
+            },
+            "width": {
+                "type": "match_parent"
+            }
+        },
+        {
+            "view_type": "UILabel",
+            "view_id": "id_media_type_lab",
+            "align_parent_right": "YES",
+            "align_parent_bottom": "YES",
+            "margin_right":"5",
+            "margin_bottom":"5",
+            "padding_left": "4",
+            "padding_right": "4",
+            "height": {
+                "type": "absolutely",
+                "value": "18"
+            },
+            "width": {
+                "type": "wrap_content"
+            },
+            "attributes": {
+                "setLayerMaskBoundsString:":"1",
+                "setTextAlignmentString:":"1",
+                "setText:": "$media_type_str",
+                "setTextColorString:": "#FFFFFF",
+                "setFontSizeString:": "10",
+                "setNumberOfLinesString:": "1",
+                "setCornerRadiusString:": "2.0",
+                "setBackgroundColorString:": "#80000000"
+            }
+        }
+    ]
+}

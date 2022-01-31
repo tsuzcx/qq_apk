@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class video_url$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   public static final int BYTES_ERR_MSG_FIELD_NUMBER = 2;
   public static final int INT32_RESULT_FIELD_NUMBER = 1;
@@ -20,7 +20,7 @@ public final class video_url$RspBody
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_err_msg = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBInt32Field int32_result = PBField.initInt32(0);
-  public final PBRepeatField rpt_bytes_play_urls = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> rpt_bytes_play_urls = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBUInt32Field uint32_defn = PBField.initUInt32(0);
   public final PBUInt32Field uint32_total_time = PBField.initUInt32(0);
   
@@ -33,7 +33,7 @@ public final class video_url$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.video_url.video_url.RspBody
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,25 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.search.FileSearchResultGroupPresenter;
-import com.tencent.mobileqq.filemanager.data.search.GroupSearchModelFileEntity;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.app.QQPermissionCallback;
 
-public class adjf
-  implements View.OnClickListener
+class adjf
+  implements QQPermissionCallback
 {
-  public adjf(FileSearchResultGroupPresenter paramFileSearchResultGroupPresenter, GroupSearchModelFileEntity paramGroupSearchModelFileEntity) {}
+  adjf(adje paramadje, View paramView, BaseActivity paramBaseActivity) {}
   
-  public void onClick(View paramView)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchGroupSearchModelFileEntity.a(paramView);
+    babr.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.jdField_a_of_type_Adje.d(this.jdField_a_of_type_AndroidViewView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adjf
  * JD-Core Version:    0.7.0.1
  */

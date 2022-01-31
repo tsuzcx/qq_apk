@@ -7,58 +7,58 @@ import java.util.List;
 
 public class MappingReader
 {
-  private List a = new ArrayList();
+  private List<Mapping> mMappings = new ArrayList();
   
   public MappingReader()
   {
-    a(new File("/proc/self/maps"));
+    getMapsFromFile(new File("/proc/self/maps"));
   }
   
-  private IllegalArgumentException a(String paramString)
+  private IllegalArgumentException createIAE(String paramString)
   {
     return new IllegalArgumentException("Invalid /proc/self/maps line: '" + paramString + "'");
   }
   
   /* Error */
-  private void a(File paramFile)
+  private void getMapsFromFile(File paramFile)
   {
     // Byte code:
-    //   0: new 47	java/io/FileReader
+    //   0: new 50	java/io/FileReader
     //   3: dup
     //   4: aload_1
-    //   5: invokespecial 49	java/io/FileReader:<init>	(Ljava/io/File;)V
+    //   5: invokespecial 52	java/io/FileReader:<init>	(Ljava/io/File;)V
     //   8: astore_1
-    //   9: new 51	java/io/BufferedReader
+    //   9: new 54	java/io/BufferedReader
     //   12: dup
     //   13: aload_1
-    //   14: invokespecial 54	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   14: invokespecial 57	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   17: astore_2
-    //   18: new 12	java/util/ArrayList
+    //   18: new 13	java/util/ArrayList
     //   21: dup
-    //   22: invokespecial 13	java/util/ArrayList:<init>	()V
+    //   22: invokespecial 14	java/util/ArrayList:<init>	()V
     //   25: astore_3
     //   26: aload_2
-    //   27: invokevirtual 57	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   27: invokevirtual 60	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   30: astore 4
     //   32: aload 4
     //   34: ifnonnull +22 -> 56
     //   37: aload_3
-    //   38: invokeinterface 63 1 0
+    //   38: invokeinterface 66 1 0
     //   43: ifle +8 -> 51
     //   46: aload_0
     //   47: aload_3
-    //   48: invokespecial 66	com/tencent/mobileqq/dalvik/MappingReader:a	(Ljava/util/List;)V
+    //   48: invokespecial 70	com/tencent/mobileqq/dalvik/MappingReader:getMapsFromMapLines	(Ljava/util/List;)V
     //   51: aload_1
-    //   52: invokevirtual 69	java/io/FileReader:close	()V
+    //   52: invokevirtual 73	java/io/FileReader:close	()V
     //   55: return
     //   56: aload_3
     //   57: aload 4
-    //   59: invokeinterface 73 2 0
+    //   59: invokeinterface 77 2 0
     //   64: pop
     //   65: goto -39 -> 26
     //   68: astore_2
     //   69: aload_1
-    //   70: invokevirtual 69	java/io/FileReader:close	()V
+    //   70: invokevirtual 73	java/io/FileReader:close	()V
     //   73: aload_2
     //   74: athrow
     // Local variable table:
@@ -77,7 +77,7 @@ public class MappingReader
     //   56	65	68	finally
   }
   
-  private void a(List paramList)
+  private void getMapsFromMapLines(List<String> paramList)
   {
     paramList = paramList.iterator();
     for (;;)
@@ -85,22 +85,11 @@ public class MappingReader
       if (!paramList.hasNext()) {
         return;
       }
-      this.a.add(b((String)paramList.next()));
+      this.mMappings.add(getRwMap((String)paramList.next()));
     }
   }
   
-  private boolean a(char paramChar1, char paramChar2, String paramString)
-  {
-    if (paramChar1 == paramChar2) {
-      return true;
-    }
-    if (paramChar1 == '-') {
-      return false;
-    }
-    throw a(paramString);
-  }
-  
-  private final long[] a(List paramList)
+  private final long[] getMergedIntervals(List<Mapping> paramList)
   {
     ArrayList localArrayList = new ArrayList();
     paramList = paramList.iterator();
@@ -125,19 +114,19 @@ public class MappingReader
         Mapping localMapping = (Mapping)paramList.next();
         if (l2 == -1L)
         {
-          l2 = localMapping.jdField_a_of_type_Long;
-          l1 = localMapping.b;
+          l2 = localMapping.beginAddr;
+          l1 = localMapping.endAddr;
           break;
         }
-        if (localMapping.jdField_a_of_type_Long == l1)
+        if (localMapping.beginAddr == l1)
         {
-          l1 = localMapping.b;
+          l1 = localMapping.endAddr;
           break;
         }
         localArrayList.add(Long.valueOf(l2));
         localArrayList.add(Long.valueOf(l1));
-        l2 = localMapping.jdField_a_of_type_Long;
-        l1 = localMapping.b;
+        l2 = localMapping.beginAddr;
+        l1 = localMapping.endAddr;
         break;
       }
       paramList[i] = ((Long)localArrayList.get(i)).longValue();
@@ -145,15 +134,15 @@ public class MappingReader
     }
   }
   
-  private Mapping b(String paramString)
+  private Mapping getRwMap(String paramString)
   {
     String[] arrayOfString1 = paramString.split(" +", 6);
     if (arrayOfString1.length != 6) {
-      throw a(paramString);
+      throw createIAE(paramString);
     }
     String[] arrayOfString2 = arrayOfString1[0].split("-");
     if (arrayOfString2.length != 2) {
-      throw a(paramString);
+      throw createIAE(paramString);
     }
     long l1;
     long l2;
@@ -162,22 +151,33 @@ public class MappingReader
       l1 = Long.parseLong(arrayOfString2[0], 16);
       l2 = Long.parseLong(arrayOfString2[1], 16);
       if (arrayOfString1[1].length() != 4) {
-        throw a(paramString);
+        throw createIAE(paramString);
       }
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      throw a(paramString);
+      throw createIAE(paramString);
     }
-    boolean bool1 = a(localNumberFormatException[1].charAt(0), 'r', paramString);
-    boolean bool2 = a(localNumberFormatException[1].charAt(1), 'w', paramString);
+    boolean bool1 = isEquals(localNumberFormatException[1].charAt(0), 'r', paramString);
+    boolean bool2 = isEquals(localNumberFormatException[1].charAt(1), 'w', paramString);
     localNumberFormatException[1].charAt(3);
     return new Mapping(l1, l2, bool1, bool2, true, localNumberFormatException[5]);
   }
   
-  public final Mapping a(String paramString)
+  private boolean isEquals(char paramChar1, char paramChar2, String paramString)
   {
-    Iterator localIterator = this.a.iterator();
+    if (paramChar1 == paramChar2) {
+      return true;
+    }
+    if (paramChar1 == '-') {
+      return false;
+    }
+    throw createIAE(paramString);
+  }
+  
+  public final Mapping findMappingByName(String paramString)
+  {
+    Iterator localIterator = this.mMappings.iterator();
     Mapping localMapping;
     do
     {
@@ -185,21 +185,21 @@ public class MappingReader
         return null;
       }
       localMapping = (Mapping)localIterator.next();
-    } while (!localMapping.jdField_a_of_type_JavaLangString.contains(paramString));
+    } while (!localMapping.pathName.contains(paramString));
     return localMapping;
   }
   
-  public final long[] a()
+  public final long[] getReadableMaps()
   {
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.a.iterator();
+    Iterator localIterator = this.mMappings.iterator();
     for (;;)
     {
       if (!localIterator.hasNext()) {
-        return a(localArrayList);
+        return getMergedIntervals(localArrayList);
       }
       Mapping localMapping = (Mapping)localIterator.next();
-      if (localMapping.jdField_a_of_type_Boolean) {
+      if (localMapping.readable) {
         localArrayList.add(localMapping);
       }
     }

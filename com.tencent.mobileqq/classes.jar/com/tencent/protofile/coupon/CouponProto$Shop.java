@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class CouponProto$Shop
-  extends MessageMicro
+  extends MessageMicro<Shop>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 50, 58, 66, 74, 82, 90, 96, 104, 112, 120, 130, 138, 144 }, new String[] { "shid", "bid", "name", "addr", "detail", "city", "region", "area", "tag", "contact", "tel", "maplng", "maplat", "mt", "couponids", "cname", "qlife_url", "source_id" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), "", "", "", "", "", "", "", "", "", Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), "", "", Integer.valueOf(0) }, Shop.class);
   public final PBStringField addr = PBField.initString("");
@@ -18,7 +18,7 @@ public final class CouponProto$Shop
   public final PBStringField city = PBField.initString("");
   public final PBStringField cname = PBField.initString("");
   public final PBStringField contact = PBField.initString("");
-  public final PBRepeatField couponids = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
+  public final PBRepeatField<Integer> couponids = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
   public final PBStringField detail = PBField.initString("");
   public final PBUInt32Field maplat = PBField.initUInt32(0);
   public final PBUInt32Field maplng = PBField.initUInt32(0);

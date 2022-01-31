@@ -1,40 +1,13 @@
-import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ocr.SearchQuestionCameraFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.widget.CheckBox;
 
-public class aggj
-  implements Runnable
+public abstract interface aggj
 {
-  public aggj(SearchQuestionCameraFragment paramSearchQuestionCameraFragment, int paramInt) {}
-  
-  public void run()
-  {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-    case 101: 
-      FragmentActivity localFragmentActivity;
-      do
-      {
-        return;
-        QQToast.a(BaseApplicationImpl.getApplication(), "录制出现异常，请重试", 1).a();
-        localFragmentActivity = this.jdField_a_of_type_ComTencentMobileqqOcrSearchQuestionCameraFragment.getActivity();
-      } while ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()));
-      localFragmentActivity.finish();
-      return;
-    case 102: 
-      QQToast.a(BaseApplicationImpl.getContext(), "拍摄时间过短，请重新拍摄。", 0).a();
-      this.jdField_a_of_type_ComTencentMobileqqOcrSearchQuestionCameraFragment.d();
-      return;
-    }
-    QQToast.a(BaseApplicationImpl.getContext(), "拍照出现异常，请重试", 0).a();
-  }
+  public abstract void a(View paramView, int paramInt, CheckBox paramCheckBox);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aggj
  * JD-Core Version:    0.7.0.1
  */

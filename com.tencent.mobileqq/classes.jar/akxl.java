@@ -1,37 +1,27 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.mobileqq.ar.view.ARScanEntryView.26;
 
 public class akxl
-  implements TroopMemberApiClient.Callback
+  implements View.OnClickListener
 {
-  public akxl(SwiftBrowserScreenShotHandler paramSwiftBrowserScreenShotHandler) {}
+  public akxl(ARScanEntryView.26 param26) {}
   
-  public void a(Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    int i = paramBundle.getInt("readinjoy_to_wx_config");
-    if (QLog.isColorLevel()) {
-      QLog.d("SwiftBrowserScreenShotHandler", 2, "config = " + i);
+    if (this.a.jdField_a_of_type_Aklt != null) {
+      this.a.jdField_a_of_type_Aklt.a(this.a.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo);
     }
-    if (i == 0) {
-      WxShareHelperFromReadInjoy.a().a(this.a.g, this.a.b, 1, false);
-    }
-    for (;;)
-    {
-      this.a.b.recycle();
-      this.a.b = null;
-      return;
-      WXShareHelper.a().a(this.a.g, this.a.b, 1, false);
-    }
+    ARScanEntryView.g(this.a.this$0);
+    ARScanEntryView.d(this.a.this$0);
+    this.a.this$0.a.setOnClickListener(this.a.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akxl
  * JD-Core Version:    0.7.0.1
  */

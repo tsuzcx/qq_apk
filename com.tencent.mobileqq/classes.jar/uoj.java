@@ -1,24 +1,43 @@
-import com.tencent.mobileqq.activity.aio.AIOOpenWebMonitor;
-import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-public final class uoj
-  implements WebProcessManager.WebProcessStartListener
+class uoj
+  implements INetInfoHandler
 {
-  public void a(boolean paramBoolean)
+  uoj(uoh paramuoh) {}
+  
+  public void onNetMobile2None()
   {
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("WebAccelerator", 2, "preStart QWeb Process");
-      }
-      AIOOpenWebMonitor.a();
-    }
+    uoh.b(this.a, uoh.a(3));
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    uoh.b(this.a, uoh.a(1));
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    uoh.b(this.a, uoh.a(2));
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    uoh.b(this.a, uoh.a(1));
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    uoh.b(this.a, uoh.a(2));
+  }
+  
+  public void onNetWifi2None()
+  {
+    uoh.b(this.a, uoh.a(3));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uoj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/l3_" android:layout_width="60.0dip" android:layout_height="60.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center" android:id="@id/aok" android:layout_width="30.0dip" android:layout_height="27.5dip" />
+    <ImageView android:layout_gravity="center" android:id="@id/l34" android:layout_width="49.0dip" android:layout_height="49.0dip" />
+</FrameLayout>

@@ -1,19 +1,10 @@
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-
-public class ljb
-  implements Runnable
+public abstract interface ljb
 {
-  public ljb(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
-  
-  public void run()
-  {
-    ReadInJoyDeliverBiuActivity.c(this.a).setSelection(0);
-  }
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ljb
  * JD-Core Version:    0.7.0.1
  */

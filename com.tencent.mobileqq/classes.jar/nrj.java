@@ -1,39 +1,35 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.network.handler.ReportEvilToXinanHandler;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class nrj
-  implements ActionSheet.OnButtonClickListener
+public class nrj
+  implements qif
 {
-  public nrj(QQUserUIItem paramQQUserUIItem, ActionSheet paramActionSheet) {}
+  private WeakReference<ReadInJoyArticleBottomVideoView> a;
   
-  public void OnClick(View paramView, int paramInt)
+  public nrj(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView)
   {
-    switch (paramInt)
-    {
-    default: 
-      paramView = "16384";
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq)) {
-        new ReportEvilToXinanHandler().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq, this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isFriend(), paramView);
-      }
-      break;
+    this.a = new WeakReference(paramReadInJoyArticleBottomVideoView);
+  }
+  
+  public List<qig> a(int paramInt, boolean paramBoolean)
+  {
+    ReadInJoyArticleBottomVideoView localReadInJoyArticleBottomVideoView = (ReadInJoyArticleBottomVideoView)this.a.get();
+    ArrayList localArrayList = new ArrayList();
+    if (localReadInJoyArticleBottomVideoView != null) {
+      localArrayList.add(new qig(ReadInJoyArticleBottomVideoView.a(localReadInJoyArticleBottomVideoView).d, "", 5, (int)ReadInJoyArticleBottomVideoView.a(localReadInJoyArticleBottomVideoView).a));
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      paramView = "2";
-      break;
-      paramView = "1";
-      break;
-      paramView = "4";
-      break;
-      SLog.d("Q.qqstory.player.PlayModeUtils", "report user error because evil uin is empty.");
+    return localArrayList;
+  }
+  
+  public boolean a()
+  {
+    ReadInJoyArticleBottomVideoView localReadInJoyArticleBottomVideoView = (ReadInJoyArticleBottomVideoView)this.a.get();
+    if (localReadInJoyArticleBottomVideoView == null) {
+      return false;
     }
+    return badq.h(ReadInJoyArticleBottomVideoView.a(localReadInJoyArticleBottomVideoView));
   }
 }
 

@@ -1,6 +1,5 @@
 package com.tribe.async.reactive;
 
-import android.support.annotation.NonNull;
 import com.tribe.async.utils.AssertUtils;
 
 class OperatorMap<UP, DOWN>
@@ -14,53 +13,16 @@ class OperatorMap<UP, DOWN>
     this.mTransform = paramStreamFunction;
   }
   
-  public Observer<UP> apply(final Observer<DOWN> paramObserver)
+  public Observer<UP> apply(Observer<DOWN> paramObserver)
   {
     AssertUtils.checkNotNull(paramObserver);
-    this.mTransform.observe(new StreamFunction.StreamFunctionListener()
-    {
-      public void onCancel()
-      {
-        paramObserver.onCancel();
-      }
-      
-      public void onError(Error paramAnonymousError)
-      {
-        paramObserver.onError(paramAnonymousError);
-      }
-      
-      public void onResult(DOWN paramAnonymousDOWN)
-      {
-        paramObserver.onNext(paramAnonymousDOWN);
-      }
-    });
-    new SimpleObserver()
-    {
-      public void onCancel()
-      {
-        OperatorMap.this.mTransform.cancel();
-      }
-      
-      public void onComplete()
-      {
-        paramObserver.onComplete();
-      }
-      
-      public void onError(@NonNull Error paramAnonymousError)
-      {
-        OperatorMap.this.mTransform.error(paramAnonymousError);
-      }
-      
-      public void onNext(UP paramAnonymousUP)
-      {
-        OperatorMap.this.mTransform.apply(paramAnonymousUP);
-      }
-    };
+    this.mTransform.observe(new OperatorMap.1(this, paramObserver));
+    return new OperatorMap.2(this, paramObserver);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tribe.async.reactive.OperatorMap
  * JD-Core Version:    0.7.0.1
  */

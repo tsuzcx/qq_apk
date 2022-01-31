@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.ARRecognition;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class aaeg
-  implements Parcelable.Creator
+class aaeg
+  implements DialogInterface.OnClickListener
 {
-  public ARRecognition a(Parcel paramParcel)
-  {
-    return new ARRecognition(paramParcel);
-  }
+  aaeg(aaee paramaaee) {}
   
-  public ARRecognition[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new ARRecognition[paramInt];
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaeg
  * JD-Core Version:    0.7.0.1
  */

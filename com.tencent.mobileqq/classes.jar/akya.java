@@ -1,23 +1,22 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public class akya
-  implements View.OnClickListener
+class akya
+  implements Animator.AnimatorListener
 {
-  public akya(SwiftBrowserTBSHandler paramSwiftBrowserTBSHandler) {}
+  akya(akxy paramakxy) {}
   
-  public void onClick(View paramView)
-  {
-    if (this.a.a != null) {
-      this.a.a.dismiss();
-    }
-  }
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akya
  * JD-Core Version:    0.7.0.1
  */

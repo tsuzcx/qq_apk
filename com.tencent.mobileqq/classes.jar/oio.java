@@ -1,28 +1,29 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import com.tencent.biz.qqstory.takevideo.EditVideoPoiPickerCallback;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import android.view.View;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.view.animation.AlphaAnimation;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyStaticGridView;
 
 public class oio
-  implements EditVideoPoiPickerCallback
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public oio(EditVideoDoodle paramEditVideoDoodle) {}
+  public oio(ReadInJoyChannelPanelFragment paramReadInJoyChannelPanelFragment, ReadInJoyStaticGridView paramReadInJoyStaticGridView, View paramView) {}
   
-  public void a()
+  public void onGlobalLayout()
   {
-    SLog.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocationCancel");
-  }
-  
-  public void a(TroopBarPOI paramTroopBarPOI)
-  {
-    SLog.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocation " + paramTroopBarPOI);
-    if (paramTroopBarPOI != null)
-    {
-      this.a.a.setLocation(paramTroopBarPOI.a());
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetReadInJoyStaticGridView.getHeight() > 0) {
+      if (this.jdField_a_of_type_AndroidViewView.getVisibility() == 8) {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      }
+    }
+    while (this.jdField_a_of_type_AndroidViewView.getVisibility() != 0) {
       return;
     }
-    this.a.a.setLocation("None for test!!");
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 0.0F);
+    localAlphaAnimation.setFillAfter(true);
+    localAlphaAnimation.setDuration(400L);
+    localAlphaAnimation.setAnimationListener(new oip(this));
+    this.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
   }
 }
 

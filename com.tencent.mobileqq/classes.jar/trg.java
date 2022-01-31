@@ -1,23 +1,22 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.vas.VipGrayConfigHelper;
+import com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView;
 import com.tencent.qphone.base.util.QLog;
 
 public class trg
-  implements Runnable
+  implements tsr
 {
-  public trg(QQSettingMe paramQQSettingMe) {}
+  public trg(TrimTextureVideoView paramTrimTextureVideoView) {}
   
-  public void run()
+  public boolean a(tso paramtso, int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, "init parse config json");
+      QLog.e(this.a.a, 2, "TrimTextureVideoView MediaPlayer onError==>what:" + paramInt1 + "|extra:" + paramInt2);
     }
-    VipGrayConfigHelper.a().a(this.a.a);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     trg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,21 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.VideoController.1;
 
-public final class ksv
-  implements Runnable
+public class ksv
+  implements DialogInterface.OnClickListener
 {
-  public void run()
+  public ksv(VideoController.1 param1) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      TVK_SDKMgr.installPlugin(BaseApplicationImpl.getApplication().getApplicationContext(), new ksw(this));
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("AccountDetailVideoManager", 2, "installSDK t==" + localThrowable.toString());
-    }
+    this.a.this$0.h(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ksv
  * JD-Core Version:    0.7.0.1
  */

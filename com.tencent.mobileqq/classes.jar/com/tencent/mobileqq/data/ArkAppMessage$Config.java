@@ -5,66 +5,73 @@ import org.json.JSONObject;
 public class ArkAppMessage$Config
 {
   public Integer autoSize;
+  public Integer fitWidthAndCentered;
   public Integer forward;
   public Integer height;
   public Integer round;
+  public Integer showSender;
   public String type;
   public Integer width;
   
   public boolean fromJson(JSONObject paramJSONObject)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((paramJSONObject == null) || (paramJSONObject.length() == 0))
-    {
-      bool1 = false;
-      return bool1;
+    if ((paramJSONObject == null) || (paramJSONObject.length() == 0)) {
+      return false;
     }
     int i = paramJSONObject.optInt("round", -1);
     if (i != -1)
     {
       this.round = new Integer(i);
-      label43:
       i = paramJSONObject.optInt("forward", -1);
       if (i == -1) {
-        break label182;
+        break label210;
       }
       this.forward = new Integer(i);
-      label68:
+      label63:
       i = paramJSONObject.optInt("autosize", -1);
       if (i == -1) {
-        break label206;
+        break label234;
       }
       this.autoSize = new Integer(i);
+      label88:
+      this.type = paramJSONObject.optString("type", null);
+      if ((paramJSONObject.has("width")) && (paramJSONObject.has("height")))
+      {
+        this.width = Integer.valueOf(paramJSONObject.optInt("width", -1));
+        this.height = Integer.valueOf(paramJSONObject.optInt("height", -1));
+      }
+      i = paramJSONObject.optInt("showSender", -1);
+      if (i == -1) {
+        break label258;
+      }
+      this.showSender = new Integer(i);
     }
     for (;;)
     {
-      this.type = paramJSONObject.optString("type", null);
-      bool1 = bool2;
-      if (!paramJSONObject.has("width")) {
-        break;
-      }
-      bool1 = bool2;
-      if (!paramJSONObject.has("height")) {
-        break;
-      }
-      this.width = Integer.valueOf(paramJSONObject.optInt("width", -1));
-      this.height = Integer.valueOf(paramJSONObject.optInt("height", -1));
+      this.fitWidthAndCentered = Integer.valueOf(paramJSONObject.optInt("fitWidthAndCentered", 0));
       return true;
       if (!paramJSONObject.optBoolean("round")) {
-        break label43;
+        break;
       }
       this.round = new Integer(1);
-      break label43;
-      label182:
+      break;
+      label210:
       if (!paramJSONObject.optBoolean("forward")) {
-        break label68;
+        break label63;
       }
       this.forward = new Integer(1);
-      break label68;
-      label206:
-      if (paramJSONObject.optBoolean("autosize")) {
-        this.autoSize = new Integer(1);
+      break label63;
+      label234:
+      if (!paramJSONObject.optBoolean("autosize")) {
+        break label88;
+      }
+      this.autoSize = new Integer(1);
+      break label88;
+      label258:
+      if (paramJSONObject.optBoolean("showSender", true)) {
+        this.showSender = new Integer(1);
+      } else {
+        this.showSender = new Integer(0);
       }
     }
   }
@@ -105,6 +112,12 @@ public class ArkAppMessage$Config
       }
       if (this.height != null) {
         localJSONObject.put("height", this.height.intValue());
+      }
+      if (this.showSender != null) {
+        localJSONObject.put("showSender", this.showSender.intValue());
+      }
+      if (this.fitWidthAndCentered != null) {
+        localJSONObject.put("fitWidthAndCentered", this.fitWidthAndCentered.intValue());
       }
       return localJSONObject;
     }

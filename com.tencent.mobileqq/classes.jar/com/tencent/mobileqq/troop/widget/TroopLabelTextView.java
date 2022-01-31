@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.troop.widget;
 
+import aciy;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -11,11 +12,13 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.drawable.GradientDrawable;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import beog;
+import beoh;
 import com.tencent.qphone.base.util.QLog;
 
 public class TroopLabelTextView
   extends TextView
+  implements beoh
 {
   protected int a;
   private Context jdField_a_of_type_AndroidContentContext;
@@ -23,6 +26,7 @@ public class TroopLabelTextView
   private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private PorterDuffXfermode jdField_a_of_type_AndroidGraphicsPorterDuffXfermode;
+  public beog a;
   int jdField_b_of_type_Int;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   private int c;
@@ -35,37 +39,51 @@ public class TroopLabelTextView
     setTextColor(paramInt2);
     setMaxLines(1);
     setGravity(17);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, aciy.a(16.0F, getResources()));
     localLayoutParams.rightMargin = 4;
-    paramInt1 = AIOUtils.a(4.0F, getResources());
-    paramInt2 = AIOUtils.a(4.0F, getResources());
-    int i = AIOUtils.a(0.0F, getResources());
-    int j = AIOUtils.a(0.0F, getResources());
-    if (paramInt3 == 2)
-    {
-      setTextSize(9.0F);
-      paramInt1 = AIOUtils.a(10.0F, getResources());
+    paramInt2 = aciy.a(4.0F, getResources());
+    int i = aciy.a(4.0F, getResources());
+    int j = aciy.a(0.0F, getResources());
+    int k = aciy.a(0.0F, getResources());
+    setTextSize(1, 10.0F);
+    if (paramInt3 == 2) {
+      paramInt1 = aciy.a(10.0F, getResources());
     }
     for (;;)
     {
       setLayoutParams(localLayoutParams);
-      setPadding(paramInt1, i, paramInt2, j);
+      setPadding(paramInt1, j, i, k);
       this.jdField_a_of_type_AndroidContentContext = paramContext;
       this.c = paramInt3;
-      this.jdField_b_of_type_Int = AIOUtils.a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      this.d = AIOUtils.a(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      this.jdField_b_of_type_Int = aciy.a(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      this.d = aciy.a(5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      a();
       return;
+      paramInt1 = paramInt2;
       if (paramInt3 == 1)
       {
-        setTextSize(1, 10.0F);
         setIncludeFontPadding(false);
-        localLayoutParams.height = AIOUtils.a(12.0F, getResources());
-      }
-      else
-      {
-        setTextSize(10.0F);
+        localLayoutParams.height = aciy.a(14.0F, getResources());
+        paramInt1 = paramInt2;
       }
     }
+  }
+  
+  private void a()
+  {
+    this.jdField_a_of_type_Beog = new beog();
+    this.jdField_a_of_type_Beog.a(true);
+    this.jdField_a_of_type_Beog.a(beog.c);
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    super.draw(paramCanvas);
+  }
+  
+  public void draw(Canvas paramCanvas)
+  {
+    this.jdField_a_of_type_Beog.a(paramCanvas, this);
   }
   
   public void onDraw(Canvas paramCanvas)
@@ -130,7 +148,7 @@ public class TroopLabelTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopLabelTextView
  * JD-Core Version:    0.7.0.1
  */

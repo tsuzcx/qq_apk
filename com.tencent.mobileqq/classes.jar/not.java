@@ -1,17 +1,53 @@
-import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHolder;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-class not
-  implements Runnable
+public class not
 {
-  not(nos paramnos, String paramString) {}
-  
-  public void run()
+  public static JSONObject a(JSONObject paramJSONObject, AdData paramAdData)
   {
-    PlayModeUtils.a(this.jdField_a_of_type_Nos.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a.a, this.jdField_a_of_type_Nos.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder, this.jdField_a_of_type_Nos.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.jdField_a_of_type_JavaLangString);
-    PlayModeUtils.a(this.jdField_a_of_type_Nos.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a.a, this.jdField_a_of_type_Nos.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder, this.jdField_a_of_type_Nos.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a(this.jdField_a_of_type_Nos.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.c), this.jdField_a_of_type_Nos.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    try
+    {
+      paramJSONObject.put("style_ID", "ReadInjoy_ad_banner_pk_cell");
+      if (paramAdData.U != null) {
+        npj.a(paramJSONObject, paramAdData.a);
+      }
+      if (!TextUtils.isEmpty(paramAdData.j))
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("text", paramAdData.j);
+        paramJSONObject.put("id_tv_title", localObject);
+      }
+      if (!TextUtils.isEmpty(paramAdData.l))
+      {
+        localObject = rsl.a(paramAdData.l, 4);
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("image_url", ((URL)localObject).toString());
+        paramJSONObject.put("id_ad_banner_bottom_imge", localJSONObject);
+      }
+      Object localObject = new JSONObject();
+      if (!TextUtils.isEmpty(paramAdData.L))
+      {
+        ((JSONObject)localObject).put("text", paramAdData.L);
+        paramJSONObject.put("id_ad_dislike_button", localObject);
+      }
+      if (!TextUtils.isEmpty(paramAdData.q))
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("text", paramAdData.q);
+        paramJSONObject.put("id_tv_author", localObject);
+      }
+    }
+    catch (JSONException paramAdData)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("ReadInjoy_ad_banner_pk_cell", 2, "JSONException = " + paramAdData.getMessage());
+    }
+    return paramJSONObject;
+    return paramJSONObject;
   }
 }
 

@@ -1,32 +1,78 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationSet;
-import android.view.animation.ScaleAnimation;
-import android.widget.ImageView;
+import android.content.Context;
+import com.tencent.biz.qrcode.ipc.ScannerParams;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.manager.Manager;
 
-class vuz
-  implements Animation.AnimationListener
+public class vuz
+  implements Manager
 {
-  vuz(vuy paramvuy) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private vvb jdField_a_of_type_Vvb;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public vuz(QQAppInterface paramQQAppInterface)
   {
-    paramAnimation = new AnimationSet(false);
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.7F, 1.0F, 0.7F, 1.0F, this.a.jdField_a_of_type_AndroidWidgetImageView.getWidth() / 2, this.a.jdField_a_of_type_AndroidWidgetImageView.getHeight() / 2);
-    paramAnimation.addAnimation(this.a.b);
-    paramAnimation.addAnimation(localScaleAnimation);
-    paramAnimation.setDuration(200L);
-    this.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(paramAnimation);
-    paramAnimation.setAnimationListener(this.a.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  private void b()
+  {
+    if (this.jdField_a_of_type_Vvb != null) {
+      this.jdField_a_of_type_Vvb.a();
+    }
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  private void c()
+  {
+    if (this.jdField_a_of_type_Vvb != null) {
+      this.jdField_a_of_type_Vvb.b();
+    }
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Vvb != null)
+    {
+      this.jdField_a_of_type_Vvb.c();
+      this.jdField_a_of_type_Vvb = null;
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    case 1: 
+    default: 
+      return;
+    case 2: 
+      b();
+      return;
+    case 3: 
+      c();
+      return;
+    }
+    a();
+  }
+  
+  public void a(Context paramContext, ScannerParams paramScannerParams)
+  {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    if ((paramScannerParams.f) && (!paramScannerParams.d) && (this.jdField_a_of_type_Vvb == null)) {
+      this.jdField_a_of_type_Vvb = new vvb(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    }
+  }
+  
+  public void onDestroy()
+  {
+    a();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
+    this.jdField_a_of_type_AndroidContentContext = null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     vuz
  * JD-Core Version:    0.7.0.1
  */

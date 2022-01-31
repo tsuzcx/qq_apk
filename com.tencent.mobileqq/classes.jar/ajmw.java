@@ -1,20 +1,41 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadMgr;
-import java.util.UUID;
+import java.util.List;
+import tencent.im.nearfield_discuss.nearfield_discuss.BusiRespHead;
+import tencent.im.nearfield_discuss.nearfield_discuss.UserProfile;
 
 public class ajmw
-  implements Runnable
+  implements ajfe
 {
-  public ajmw(TroopFileUploadMgr paramTroopFileUploadMgr, UUID paramUUID, Bundle paramBundle) {}
+  protected void a(boolean paramBoolean, Object paramObject) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, List<nearfield_discuss.UserProfile> paramList, int paramInt1, int paramInt2, nearfield_discuss.BusiRespHead paramBusiRespHead, int paramInt3, int paramInt4, long paramLong) {}
+  
+  protected void b(boolean paramBoolean, Object paramObject) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    TroopFileUploadMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerUploadTroopFileUploadMgr, this.jdField_a_of_type_JavaUtilUUID, this.jdField_a_of_type_AndroidOsBundle);
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+      a(paramBoolean, paramObject);
+      return;
+      if (paramBoolean)
+      {
+        paramObject = (Object[])paramObject;
+        a(paramBoolean, (List)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), (nearfield_discuss.BusiRespHead)paramObject[3], ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), ((Long)paramObject[6]).longValue());
+        return;
+      }
+      a(paramBoolean, null, -1, -1, null, -1, -1, -1L);
+      return;
+    } while (!paramBoolean);
+    b(paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajmw
  * JD-Core Version:    0.7.0.1
  */

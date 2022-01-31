@@ -1,26 +1,19 @@
-import android.opengl.GLSurfaceView.EGLConfigChooser;
-import android.opengl.GLSurfaceView.EGLContextFactory;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.FlowDecodeScreenSurfaceBase.EglHelper.FakeGLSurfaceView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ahsw
-  implements FlowDecodeScreenSurfaceBase.EglHelper.FakeGLSurfaceView
+class ahsw
+  implements View.OnClickListener
 {
-  public ahsw(FlowDecodeScreenSurfaceBase paramFlowDecodeScreenSurfaceBase) {}
+  ahsw(ahsu paramahsu) {}
   
-  public GLSurfaceView.EGLConfigChooser a()
+  public void onClick(View paramView)
   {
-    return new ahta(this.a, true);
-  }
-  
-  public GLSurfaceView.EGLContextFactory a()
-  {
-    return new ahsx(this);
+    ahsu.a(this.a).onClick(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahsw
  * JD-Core Version:    0.7.0.1
  */

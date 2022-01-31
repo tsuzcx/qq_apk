@@ -1,23 +1,27 @@
-import com.tencent.mobileqq.portal.PortalManager.ComboNumber;
-import java.util.Comparator;
+import org.json.JSONArray;
 
 public class agqy
-  implements Comparator
 {
-  public int a(PortalManager.ComboNumber paramComboNumber1, PortalManager.ComboNumber paramComboNumber2)
-  {
-    if (paramComboNumber1.number > paramComboNumber2.number) {
-      return 1;
-    }
-    if (paramComboNumber1.number < paramComboNumber2.number) {
-      return -1;
-    }
-    return 0;
-  }
+  public int a;
+  public String a;
+  public JSONArray a;
+  public int b;
+  public String b;
+  public JSONArray b;
+  public int c;
+  public String c;
+  public JSONArray c;
+  public String d;
+  public JSONArray d;
+  public String e;
+  public JSONArray e;
+  public String f;
+  public String g;
+  public String h;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agqy
  * JD-Core Version:    0.7.0.1
  */

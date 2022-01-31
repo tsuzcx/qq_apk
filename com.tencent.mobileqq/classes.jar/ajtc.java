@@ -1,21 +1,78 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.JobReporter;
+import com.tencent.mobileqq.app.ThreadWrapContext;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class ajtc
-  implements Runnable
+public class ajtc
+  implements ThreadWrapContext
 {
-  ajtc(ajta paramajta) {}
+  private static boolean a;
+  private static volatile boolean b;
   
-  public void run()
+  public static void a(long paramLong)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiReciteHWReciteItem.a.getAdapter().notifyItemChanged(this.a.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.c);
+    if ((!a) && (BaseApplicationImpl.sProcessId == 1))
+    {
+      a = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("ThreadManager.config", 2, "initShotChanceForPublicVersion|chance " + paramLong);
+      }
+      if (paramLong > 0L)
+      {
+        b = JobReporter.ramdomReport((int)paramLong);
+        if (QLog.isColorLevel()) {
+          QLog.d("ThreadManager.config", 2, "initShotChanceForPublicVersion|sShotChanceForPublicVersion " + b);
+        }
+      }
+    }
+  }
+  
+  public void d(String paramString1, int paramInt, String paramString2, Throwable paramThrowable)
+  {
+    QLog.d(paramString1, paramInt, paramString2, paramThrowable);
+  }
+  
+  public long getMainProccessThreadMonitorTime()
+  {
+    return baig.d();
+  }
+  
+  public long getMainProccessThreadPeakCounts()
+  {
+    return baig.c();
+  }
+  
+  public boolean isColorLevel()
+  {
+    return QLog.isColorLevel();
+  }
+  
+  public boolean isShotReportRejectedError()
+  {
+    return b;
+  }
+  
+  public void reportDengTaException(String paramString1, String paramString2, boolean paramBoolean1, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3, boolean paramBoolean2)
+  {
+    awrn.a(BaseApplicationImpl.getApplication()).a(paramString1, paramString2, paramBoolean1, paramLong1, paramLong2, paramHashMap, paramString3, paramBoolean2);
+  }
+  
+  public void reportRDMException(Throwable paramThrowable, String paramString1, String paramString2) {}
+  
+  public void setMainProccessThreadMonitorTime(long paramLong)
+  {
+    baig.b(paramLong);
+  }
+  
+  public void setMainProccessThreadPeakCounts(long paramLong)
+  {
+    baig.a(paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajtc
  * JD-Core Version:    0.7.0.1
  */

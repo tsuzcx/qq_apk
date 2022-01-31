@@ -1,37 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import java.util.ArrayList;
+import android.view.View;
 
-public class aoxy
+class aoxy
+  implements apcz
 {
-  public int a;
-  HttpNetReq jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq;
-  public String a;
-  public ArrayList a;
-  public int b = 0;
+  aoxy(aoxw paramaoxw) {}
   
-  public aoxy(ShortVideoResourceManager paramShortVideoResourceManager, HttpNetReq paramHttpNetReq)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = paramHttpNetReq;
-    this.b = 0;
-  }
-  
-  public void a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoResourceManager", 2, "HttpEngineTask[start]: " + this);
-    }
-    this.b = 1;
-    ShortVideoResourceManager.a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoShortVideoResourceManager).getNetEngine(0).a(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
+    apck.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Aovk.c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoxy
  * JD-Core Version:    0.7.0.1
  */

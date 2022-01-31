@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.app;
 
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
@@ -44,121 +43,79 @@ public class JobReporter
   {
     sMonitorStartTime = 0L;
     sInited = false;
-    weakThreadList = new ArrayList();
+    weakThreadList = new LinkedList();
     sThreadJobReportLastReportTs = new AtomicLong(0L);
     sThreadJobReportTotalCount = new AtomicLong(0L);
     sThreadJobReportCountLevelOne = new AtomicLong(0L);
     sThreadJobReportCountLevelTwo = new AtomicLong(0L);
     sThreadJobReportCountLevelThree = new AtomicLong(0L);
-    mFileHandler = new Handler(ThreadManagerV2.getFileThreadLooper())
-    {
-      public void handleMessage(Message paramAnonymousMessage)
-      {
-        if ((paramAnonymousMessage.what == 1) && (paramAnonymousMessage.obj != null))
-        {
-          paramAnonymousMessage = new WeakReference((Thread)paramAnonymousMessage.obj);
-          JobReporter.weakThreadList.add(paramAnonymousMessage);
-        }
-        do
-        {
-          long l1;
-          do
-          {
-            do
-            {
-              return;
-              if (paramAnonymousMessage.what != 2) {
-                break;
-              }
-            } while (ThreadManagerV2.sThreadWrapContext == null);
-            JobReporter.access$100();
-            long l2 = System.currentTimeMillis();
-            if (ThreadSetting.isPublicVersion) {}
-            for (l1 = 86400000L; (l2 - JobReporter.sMonitorStartTime > l1) && (JobReporter.sThreadPeakCount > 0L) && (JobReporter.access$400()); l1 = 20000L)
-            {
-              if (JobReporter.sThreadPeakCount < 500L)
-              {
-                paramAnonymousMessage = (String)paramAnonymousMessage.obj;
-                ThreadManagerV2.sThreadWrapContext.reportDengTaException(paramAnonymousMessage, "thread_monitor_peak_count", true, JobReporter.sThreadPeakCount, 1L, null, "", false);
-                ThreadLog.printQLog("JobReporter", "reportThreadPeakCount Yes " + JobReporter.sThreadPeakCount);
-                JobReporter.access$202(l2);
-                ThreadManagerV2.sThreadWrapContext.setMainProccessThreadMonitorTime(l2);
-              }
-              JobReporter.access$302(0L);
-              ThreadManagerV2.sThreadWrapContext.setMainProccessThreadPeakCounts(JobReporter.sThreadPeakCount);
-              return;
-            }
-            l1 = JobReporter.access$500();
-            ThreadLog.printQLog("JobReporter", "saveThreadPeakCount count" + l1 + " sThreadPeakCount " + JobReporter.sThreadPeakCount);
-          } while (l1 <= JobReporter.sThreadPeakCount);
-          JobReporter.access$302(l1);
-          ThreadManagerV2.sThreadWrapContext.setMainProccessThreadPeakCounts(JobReporter.sThreadPeakCount);
-          return;
-          if (paramAnonymousMessage.what != 3) {
-            break;
-          }
-        } while ((ThreadSetting.isPublicVersion) || (JobReporter.mThreadCheck == null) || (paramAnonymousMessage.obj == null));
-        paramAnonymousMessage = (JobReporter.CheckParams)paramAnonymousMessage.obj;
-        JobReporter.mThreadCheck.isLegalName(paramAnonymousMessage);
-        return;
-        super.handleMessage(paramAnonymousMessage);
-      }
-    };
+    mFileHandler = new JobReporter.1(ThreadManagerV2.getFileThreadLooper());
     nativePeerGetFailed = false;
   }
   
   private static int getCurrentThreadCount()
   {
+    int k = 0;
     Field localField = getNativePeerField();
-    if (localField == null) {
+    if ((localField == null) || (nativePeerGetFailed))
+    {
+      weakThreadList.clear();
       return 0;
     }
-    int i = 0;
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = weakThreadList.iterator();
-    for (;;)
+    int m = weakThreadList.size();
+    if (m > 1024)
     {
-      int j = i;
-      WeakReference localWeakReference;
-      if (localIterator.hasNext())
-      {
-        localWeakReference = (WeakReference)localIterator.next();
-        if (nativePeerGetFailed) {
-          j = 0;
-        }
+      ThreadLog.printQLog("JobReporter", "getCurrentThreadCount beyond 1024:" + m);
+      if (ThreadManagerV2.sThreadWrapContext != null) {
+        ThreadManagerV2.sThreadWrapContext.reportDengTaException("", "ThreadPeakCountOverLimit", true, m, 0L, null, "", false);
       }
-      else
+      weakThreadList.clear();
+      return 0;
+    }
+    ArrayList localArrayList = new ArrayList();
+    int j = 0;
+    int i = 0;
+    if (j < m)
+    {
+      if (nativePeerGetFailed)
       {
-        if (nativePeerGetFailed) {
-          j = 0;
-        }
-        weakThreadList.removeAll(localArrayList);
-        return j;
+        weakThreadList.clear();
+        return 0;
       }
+      WeakReference localWeakReference = (WeakReference)weakThreadList.get(j);
       Thread localThread = (Thread)localWeakReference.get();
-      if (localThread != null)
+      if (localThread != null) {}
+      for (;;)
       {
         try
         {
-          if (((Long)localField.get(localThread)).longValue() > 0L) {
-            break label140;
+          if (((Long)localField.get(localThread)).longValue() <= 0L)
+          {
+            localArrayList.add(localWeakReference);
+            j += 1;
+            break;
           }
+          i += 1;
+          continue;
           localArrayList.add(localWeakReference);
         }
         catch (Exception localException)
         {
-          localException.printStackTrace();
+          ThreadLog.printQLog("JobReporter", "getCurrentThreadCoun nativePeer err ", localException);
           nativePeerGetFailed = true;
+          weakThreadList.clear();
+          return 0;
         }
-        continue;
-        label140:
-        i += 1;
-      }
-      else
-      {
-        localArrayList.add(localException);
       }
     }
+    m = localArrayList.size();
+    j = k;
+    while (j < m)
+    {
+      weakThreadList.remove(localArrayList.get(j));
+      j += 1;
+    }
+    return i;
   }
   
   private static Field getNativePeerField()
@@ -202,7 +159,7 @@ public class JobReporter
       if (!ThreadSetting.isPublicVersion)
       {
         localObject = (Thread)paramObject;
-        paramObject = new CheckParams();
+        paramObject = new JobReporter.CheckParams();
         paramObject.newThreadName = ((Thread)localObject).getName();
         paramObject.ste = Thread.currentThread().getStackTrace();
         localObject = mFileHandler.obtainMessage(3);
@@ -272,12 +229,6 @@ public class JobReporter
     Message localMessage = mFileHandler.obtainMessage(2);
     localMessage.obj = paramString;
     mFileHandler.sendMessage(localMessage);
-  }
-  
-  public static class CheckParams
-  {
-    public String newThreadName = "";
-    public StackTraceElement[] ste;
   }
 }
 

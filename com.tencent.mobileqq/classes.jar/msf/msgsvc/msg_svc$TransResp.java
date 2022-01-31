@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class msg_svc$TransResp
-  extends MessageMicro
+  extends MessageMicro<TransResp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField errmsg = PBField.initString("");

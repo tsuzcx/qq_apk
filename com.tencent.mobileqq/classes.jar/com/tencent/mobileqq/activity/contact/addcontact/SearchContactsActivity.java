@@ -1,5 +1,9 @@
 package com.tencent.mobileqq.activity.contact.addcontact;
 
+import aevq;
+import aevr;
+import aevs;
+import ajjy;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -12,15 +16,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import com.tencent.biz.pubaccount.util.PublicAccountConfigUtil;
+import bbmy;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.smtt.sdk.WebView;
-import woh;
-import woi;
-import woj;
+import rsp;
 
 public class SearchContactsActivity
   extends SearchBaseActivity
@@ -29,7 +30,7 @@ public class SearchContactsActivity
   
   public SearchContactsActivity()
   {
-    this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new woj(this);
+    this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new aevs(this);
   }
   
   private void a(String paramString)
@@ -52,7 +53,7 @@ public class SearchContactsActivity
         }
       }
       paramString = String.format("tbs_download:%s\ntbs_enable:%s\ntbsCoreVersion:%d\ntbsSdkVersion:%d", new Object[] { paramString, str1, Integer.valueOf(QbSdk.getTbsVersion(this)), Integer.valueOf(WebView.getTbsSDKVersion(this)) });
-      QQToast.a(getActivity().getApplicationContext(), paramString, 0).b(getTitleBarHeight());
+      bbmy.a(getActivity().getApplicationContext(), paramString, 0).b(getTitleBarHeight());
     }
   }
   
@@ -71,7 +72,7 @@ public class SearchContactsActivity
     {
       if (this.i == 12)
       {
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint("搜索" + PublicAccountConfigUtil.a(this.app, getApplicationContext()) + "/文章");
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(ajjy.a(2131647822) + rsp.a(this.app, getApplicationContext()) + ajjy.a(2131647821));
         this.jdField_a_of_type_AndroidWidgetEditText.setText(str1);
         this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
         this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
@@ -79,35 +80,38 @@ public class SearchContactsActivity
     }
     else
     {
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new woh(this, bool));
-      String str2 = getResources().getString(2131433029);
+      if (this.h == 1) {
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(ajjy.a(2131647829));
+      }
+      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new aevq(this, bool));
+      String str2 = getResources().getString(2131625035);
       this.jdField_a_of_type_AndroidWidgetButton.setText(str2);
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new woi(this));
-      if (AppSetting.b)
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new aevr(this));
+      if (AppSetting.c)
       {
         this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(str2);
         if (this.i != 12) {
-          break label218;
+          break label263;
         }
-        this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription("搜索栏、订阅号、文章、正在编辑");
+        this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(ajjy.a(2131647831));
       }
     }
     for (;;)
     {
-      if (TextUtils.isEmpty(str1)) {
-        break label230;
+      if ((TextUtils.isEmpty(str1)) || (getIntent().getBooleanExtra("auto_add_and_prohibit_auto_search", false))) {
+        break label278;
       }
       return;
-      this.jdField_a_of_type_AndroidWidgetEditText.setHint("搜索人/群/公众号/文章");
+      this.jdField_a_of_type_AndroidWidgetEditText.setHint(ajjy.a(2131647828));
       break;
-      label218:
-      this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription("搜索栏、QQ号、手机号、邮箱、群、公共号、正在编辑");
+      label263:
+      this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(ajjy.a(2131647827));
     }
-    label230:
+    label278:
     Looper.myQueue().addIdleHandler(this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler);
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
     Looper.myQueue().removeIdleHandler(this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler);
@@ -124,7 +128,7 @@ public class SearchContactsActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity
  * JD-Core Version:    0.7.0.1
  */

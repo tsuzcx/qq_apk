@@ -1,72 +1,65 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.ScrollReportUtil;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.ScrollStep;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
+import com.tencent.av.so.DownloadInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public final class lpc
-  implements Runnable
+public class lpc
 {
-  public lpc(List paramList) {}
+  private static volatile lpc jdField_a_of_type_Lpc;
+  lpe jdField_a_of_type_Lpe = null;
+  lph jdField_a_of_type_Lph = null;
   
-  public void run()
+  public static lpc a()
   {
-    if (ReadinjoySPEventReport.b(19))
+    if (jdField_a_of_type_Lpc == null) {}
+    try
     {
-      ArrayList localArrayList = new ArrayList();
-      Object localObject1 = new StringBuilder();
-      int j = 0;
-      long l = 0L;
-      int k = 0;
-      int i = 0;
-      if (j < this.a.size())
+      if (jdField_a_of_type_Lpc == null)
       {
-        localObject2 = (ReadinjoySPEventReport.ScrollStep)this.a.get(j);
-        ((StringBuilder)localObject1).append(((ReadinjoySPEventReport.ScrollStep)localObject2).jdField_a_of_type_Int + "-" + ((ReadinjoySPEventReport.ScrollStep)localObject2).jdField_a_of_type_Long + "-" + ((ReadinjoySPEventReport.ScrollStep)localObject2).b + "-" + ((ReadinjoySPEventReport.ScrollStep)localObject2).c);
-        if (j != this.a.size() - 1) {
-          ((StringBuilder)localObject1).append(":");
-        }
-        for (;;)
-        {
-          i += ((ReadinjoySPEventReport.ScrollStep)localObject2).b;
-          l += ((ReadinjoySPEventReport.ScrollStep)localObject2).jdField_a_of_type_Long;
-          j += 1;
-          break;
-          k = ((ReadinjoySPEventReport.ScrollStep)localObject2).d;
-        }
+        lpc locallpc = new lpc();
+        locallpc.b();
+        jdField_a_of_type_Lpc = locallpc;
       }
-      Object localObject2 = new oidb_cmd0x80a.AttributeList();
-      ((oidb_cmd0x80a.AttributeList)localObject2).att_id.set(1);
-      ((oidb_cmd0x80a.AttributeList)localObject2).att_name.set("scrollstep");
-      ((oidb_cmd0x80a.AttributeList)localObject2).att_value.set(((StringBuilder)localObject1).toString());
-      localArrayList.add(localObject2);
-      localObject1 = new oidb_cmd0x80a.AttributeList();
-      ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(2);
-      ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("distancetotal");
-      ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set("" + i);
-      localArrayList.add(localObject1);
-      localObject1 = new oidb_cmd0x80a.AttributeList();
-      ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(3);
-      ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("scrolltimetotal");
-      ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set("" + l);
-      localArrayList.add(localObject1);
-      localObject1 = new oidb_cmd0x80a.AttributeList();
-      ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(4);
-      ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("items");
-      ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set("" + k);
-      localArrayList.add(localObject1);
-      PublicAccountUtil.a(19, "MsgScroll", localArrayList);
+      return jdField_a_of_type_Lpc;
     }
-    ReadinjoySPEventReport.ScrollReportUtil.a();
+    finally {}
+  }
+  
+  public static void a()
+  {
+    lpc locallpc = a();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavSo", 4, String.format("onDownloadRequest, mStatusSo[%s]", new Object[] { Integer.valueOf(locallpc.jdField_a_of_type_Lph.a) }));
+    }
+    lpe.a();
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_Lph = new lph();
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      this.jdField_a_of_type_Lpe = new lpe();
+    }
+  }
+  
+  public DownloadInfo a()
+  {
+    return this.jdField_a_of_type_Lph.a();
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Lph.a();
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Lph.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lpc
  * JD-Core Version:    0.7.0.1
  */

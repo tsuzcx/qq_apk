@@ -11,7 +11,7 @@ import java.util.ListIterator;
 
 @TargetApi(19)
 public class MergePathsContent
-  implements PathContent, GreedyContent
+  implements GreedyContent, PathContent
 {
   private final Path firstPath = new Path();
   private final MergePaths mergePaths;
@@ -42,6 +42,7 @@ public class MergePathsContent
   @TargetApi(19)
   private void opFirstPathWithRest(Path.Op paramOp)
   {
+    int k = 0;
     this.remainderPath.reset();
     this.firstPath.reset();
     int i = this.pathContents.size() - 1;
@@ -69,7 +70,7 @@ public class MergePathsContent
     if ((localPathContent instanceof ContentGroup))
     {
       localList = ((ContentGroup)localPathContent).getPathList();
-      i = 0;
+      i = k;
       while (i < localList.size())
       {
         localPath = ((PathContent)localList.get(i)).getPath();
@@ -104,7 +105,10 @@ public class MergePathsContent
   public Path getPath()
   {
     this.path.reset();
-    switch (1.$SwitchMap$com$tencent$mobileqq$dinifly$model$content$MergePaths$MergePathsMode[this.mergePaths.getMode().ordinal()])
+    if (this.mergePaths.isHidden()) {
+      return this.path;
+    }
+    switch (MergePathsContent.1.$SwitchMap$com$tencent$mobileqq$dinifly$model$content$MergePaths$MergePathsMode[this.mergePaths.getMode().ordinal()])
     {
     }
     for (;;)
@@ -134,7 +138,7 @@ public class MergePathsContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.content.MergePathsContent
  * JD-Core Version:    0.7.0.1
  */

@@ -1,68 +1,133 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.messagesearch.C2CMessageResultAdapter;
-import com.tencent.mobileqq.activity.messagesearch.MessageItem;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatHistorySearchData;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MqqWeakReferenceHandler;
-import java.util.HashMap;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.support.v7.widget.RecyclerView.LayoutParams;
+import android.support.v7.widget.RecyclerView.Recycler;
+import android.support.v7.widget.RecyclerView.SmoothScroller;
+import android.view.View;
+import android.view.ViewGroup.MarginLayoutParams;
 
 public class wwn
-  implements Runnable
 {
-  public wwn(C2CMessageResultAdapter paramC2CMessageResultAdapter, String paramString, long paramLong, List paramList) {}
+  private RecyclerView.LayoutManager a;
   
-  public void run()
+  public wwn(@NonNull RecyclerView.LayoutManager paramLayoutManager)
   {
-    int j = 0;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
-    int i;
-    MessageRecord localMessageRecord;
-    if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData1 != null) && (!((ChatHistorySearchData)localObject).mSearchData1.isEmpty()))
-    {
-      i = 0;
-      while (i < ((ChatHistorySearchData)localObject).mSearchData1.size())
-      {
-        localMessageRecord = (MessageRecord)((ChatHistorySearchData)localObject).mSearchData1.get(i);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.a(localMessageRecord)) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.b.add(new MessageItem(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord));
-        }
-        i += 1;
-      }
-    }
-    if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData2 != null) && (!((ChatHistorySearchData)localObject).mSearchData2.isEmpty()))
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, ((ChatHistorySearchData)localObject).mSearchData2);
-      if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData1 != null))
-      {
-        i = j;
-        while (i < ((ChatHistorySearchData)localObject).mSearchData1.size())
-        {
-          localMessageRecord = (MessageRecord)((ChatHistorySearchData)localObject).mSearchData1.get(i);
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.a(localMessageRecord)) {
-            this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.b.add(new MessageItem(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord));
-          }
-          i += 1;
-        }
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("C2CMessageResultAdapter", 2, "localCacheMsgs size: " + this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.b.size());
-    }
-    localObject = new HashMap();
-    ((HashMap)localObject).put("keyword", this.jdField_a_of_type_JavaLangString);
-    ((HashMap)localObject).put("sequence", Long.valueOf(this.jdField_a_of_type_Long));
-    ((HashMap)localObject).put("data", this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageResultAdapter.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(6, localObject).sendToTarget();
+    this.a = paramLayoutManager;
+  }
+  
+  public int a()
+  {
+    return this.a.getChildCount();
+  }
+  
+  public int a(View paramView)
+  {
+    return this.a.getPosition(paramView);
+  }
+  
+  public View a(int paramInt)
+  {
+    return this.a.getChildAt(paramInt);
+  }
+  
+  public View a(int paramInt, RecyclerView.Recycler paramRecycler)
+  {
+    paramRecycler = paramRecycler.getViewForPosition(paramInt);
+    this.a.addView(paramRecycler);
+    this.a.measureChildWithMargins(paramRecycler, 0, 0);
+    return paramRecycler;
+  }
+  
+  public void a()
+  {
+    this.a.requestLayout();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.a.offsetChildrenHorizontal(paramInt);
+  }
+  
+  public void a(RecyclerView.Recycler paramRecycler)
+  {
+    this.a.detachAndScrapAttachedViews(paramRecycler);
+  }
+  
+  public void a(RecyclerView.SmoothScroller paramSmoothScroller)
+  {
+    this.a.startSmoothScroll(paramSmoothScroller);
+  }
+  
+  public void a(View paramView)
+  {
+    this.a.attachView(paramView);
+  }
+  
+  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
+    this.a.layoutDecorated(paramView, localLayoutParams.leftMargin + paramInt1, localLayoutParams.topMargin + paramInt2, paramInt3 - localLayoutParams.rightMargin, paramInt4 - localLayoutParams.bottomMargin);
+  }
+  
+  public void a(View paramView, RecyclerView.Recycler paramRecycler)
+  {
+    this.a.detachAndScrapView(paramView, paramRecycler);
+  }
+  
+  public int b()
+  {
+    return this.a.getItemCount();
+  }
+  
+  public int b(View paramView)
+  {
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
+    int i = this.a.getDecoratedMeasuredWidth(paramView);
+    int j = localMarginLayoutParams.leftMargin;
+    return localMarginLayoutParams.rightMargin + (i + j);
+  }
+  
+  public void b()
+  {
+    this.a.removeAllViews();
+  }
+  
+  public void b(RecyclerView.Recycler paramRecycler)
+  {
+    this.a.removeAndRecycleAllViews(paramRecycler);
+  }
+  
+  public void b(View paramView)
+  {
+    this.a.detachView(paramView);
+  }
+  
+  public void b(View paramView, RecyclerView.Recycler paramRecycler)
+  {
+    paramRecycler.recycleView(paramView);
+  }
+  
+  public int c()
+  {
+    return this.a.getWidth();
+  }
+  
+  public int c(View paramView)
+  {
+    ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
+    int i = this.a.getDecoratedMeasuredHeight(paramView);
+    int j = localMarginLayoutParams.topMargin;
+    return localMarginLayoutParams.bottomMargin + (i + j);
+  }
+  
+  public int d()
+  {
+    return this.a.getHeight();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wwn
  * JD-Core Version:    0.7.0.1
  */

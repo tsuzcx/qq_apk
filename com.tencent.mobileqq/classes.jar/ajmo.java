@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileScanTask;
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileScaner;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
 
-public class ajmo
-  implements Runnable
+public abstract interface ajmo
 {
-  public ajmo(TroopFileScaner paramTroopFileScaner, long paramLong, boolean paramBoolean, int paramInt, TroopFileScanTask paramTroopFileScanTask) {}
-  
-  public void run()
-  {
-    TroopFileScaner.a(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerUploadTroopFileScaner, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerUploadTroopFileScanTask);
-  }
+  public static final String a = anam.a("VIP_roam_msg_search_cfg", "http://i.gtimg.cn/qqshow/admindata/comdata/searchStrategy/xydata.json");
+  public static final String b = BaseApplication.getContext().getFilesDir() + File.separator + "searchInCloudConfig.json";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajmo
  * JD-Core Version:    0.7.0.1
  */

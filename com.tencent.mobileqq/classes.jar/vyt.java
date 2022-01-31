@@ -1,26 +1,29 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.observer.VipGifObserver;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnItemTouchListener;
+import android.view.MotionEvent;
 
-public class vyt
-  extends VipGifObserver
+class vyt
+  implements RecyclerView.OnItemTouchListener
 {
-  public vyt(FriendChatPie paramFriendChatPie) {}
+  vyt(vyo paramvyo) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public boolean onInterceptTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
-    if ((paramInt == 0) && (paramBoolean == true))
-    {
-      paramBundle.getInt("gif_ui_show_bid");
-      long l = paramBundle.getLong("gif_ui_show_seq");
-      this.a.b(65536);
-      FriendChatPie.a(this.a, Long.valueOf(l).longValue());
+    return vyo.a(this.a, paramMotionEvent);
+  }
+  
+  public void onRequestDisallowInterceptTouchEvent(boolean paramBoolean) {}
+  
+  public void onTouchEvent(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
+  {
+    if (vyo.a(this.a) != null) {
+      vyo.a(this.a).a(paramMotionEvent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vyt
  * JD-Core Version:    0.7.0.1
  */

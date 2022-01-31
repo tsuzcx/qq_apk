@@ -1,24 +1,32 @@
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
-import cooperation.comic.ui.QQComicTitleBarView;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.data.FeedsManager;
+import com.tencent.mobileqq.data.FeedsManager.2.1;
 
 public class amrw
-  implements View.OnClickListener
+  implements ThreadExcutor.IThreadListener
 {
-  public amrw(QQComicTitleBarView paramQQComicTitleBarView) {}
+  public amrw(FeedsManager paramFeedsManager) {}
   
-  public void onClick(View paramView)
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    if ((this.a.a.a != null) && (!this.a.a.a.isFinishing())) {
-      this.a.a.a.finish();
+    FeedsManager.access$102(this.a, true);
+    ThreadManagerV2.getUIHandlerV2().post(new FeedsManager.2.1(this));
+    if (FeedsManager.access$300(this.a))
+    {
+      FeedsManager.access$302(this.a, false);
+      this.a.updateQzoneFeeds();
     }
   }
+  
+  public void onPreRun() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amrw
  * JD-Core Version:    0.7.0.1
  */

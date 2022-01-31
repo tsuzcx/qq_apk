@@ -1,103 +1,162 @@
-import android.os.Handler;
-import android.os.Message;
+import android.annotation.TargetApi;
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class trt
-  implements Runnable
+  implements tqg
 {
-  public trt(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
+  TextureVideoView jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+  private String jdField_a_of_type_JavaLangString = "VideoViewTextureImpl";
+  tqt jdField_a_of_type_Tqt = new tqt();
   
-  public void run()
+  public trt(Context paramContext, String paramString)
   {
-    int i = 0;
-    if (this.a.a == null) {
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView = new TextureVideoView(paramContext.getApplicationContext());
+    this.jdField_a_of_type_JavaLangString += paramString;
+  }
+  
+  public int a()
+  {
+    return 0;
+  }
+  
+  public long a()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.getCurrentPosition();
+  }
+  
+  public View a()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+  }
+  
+  public tqt a()
+  {
+    return this.jdField_a_of_type_Tqt;
+  }
+  
+  public void a()
+  {
+    urk.d(this.jdField_a_of_type_JavaLangString, "stopPlayback");
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.a();
+  }
+  
+  @TargetApi(14)
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.setVisibility(paramInt);
+  }
+  
+  public void a(long paramLong)
+  {
+    urk.d(this.jdField_a_of_type_JavaLangString, "seekTo");
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.seekTo((int)paramLong);
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Tqt.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Tqt.jdField_a_of_type_Boolean = true;
+    paramString1 = paramString3;
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      paramString1 = paramString3;
+      if (shq.a(new File(paramString2))) {
+        paramString1 = paramString2;
+      }
+    }
+    urk.d(this.jdField_a_of_type_JavaLangString, "setVideoPath");
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.setVideoPath(paramString1);
+  }
+  
+  public void a(tqh paramtqh)
+  {
+    TextureVideoView localTextureVideoView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+    if (paramtqh == null) {}
+    for (paramtqh = null;; paramtqh = new tru(this, paramtqh))
+    {
+      localTextureVideoView.setOnCompletionListener(paramtqh);
       return;
     }
-    Message localMessage = this.a.a.obtainMessage();
-    localMessage.what = 2;
-    localMessage.obj = null;
-    Object localObject = new File(QQSettingMsgHistoryActivity.c);
-    if ((((File)localObject).isFile()) && (((File)localObject).exists()))
+  }
+  
+  public void a(tqi paramtqi) {}
+  
+  public void a(tqj paramtqj)
+  {
+    Object localObject = null;
+    TextureVideoView localTextureVideoView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+    if (paramtqj == null) {}
+    for (paramtqj = localObject;; paramtqj = new trv(this, paramtqj, null))
     {
-      localObject = FileUtils.a((File)localObject);
-      if (TextUtils.isEmpty((CharSequence)localObject)) {}
-    }
-    try
-    {
-      localObject = new JSONObject((String)localObject).getJSONObject("data").getJSONArray("chatHistoryEventConfig");
-      if (((JSONArray)localObject).length() <= 0) {
-        break label302;
-      }
-      localJSONObject = ((JSONArray)localObject).getJSONObject(0);
-      if (!localJSONObject.has("EndTime")) {
-        break label316;
-      }
-      localObject = localJSONObject.getString("EndTime");
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break label302;
-      }
-      localObject = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse((String)localObject);
-      long l = NetConnInfoCenter.getServerTimeMillis();
-      if (localJSONObject.has("isShow")) {
-        i = localJSONObject.getInt("isShow");
-      }
-      if ((Long.valueOf(l).longValue() >= ((Date)localObject).getTime()) || (i != 1)) {
-        break label302;
-      }
-      localtsa = new tsa(this.a, null);
-      if (!localJSONObject.has("EventName")) {
-        break label370;
-      }
-      localObject = localJSONObject.getString("EventName");
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        JSONObject localJSONObject;
-        tsa localtsa;
-        label302:
-        label316:
-        if (QLog.isColorLevel())
-        {
-          QLog.d("IphoneTitleBarActivity", 2, "parse EventConfig failed: " + localException.getMessage());
-          continue;
-          String str = "";
-          continue;
-          str = "";
-        }
-      }
-    }
-    localtsa.a = ((String)localObject);
-    if (localJSONObject.has("URL"))
-    {
-      localObject = localJSONObject.getString("URL");
-      localtsa.b = ((String)localObject);
-      if (localJSONObject.has("new_guide")) {}
-      for (localObject = localJSONObject.getString("new_guide");; localObject = "")
-      {
-        localtsa.c = ((String)localObject);
-        localMessage.obj = localtsa;
-        this.a.a.sendMessage(localMessage);
-        return;
-        localObject = "";
-        break;
-      }
+      localTextureVideoView.setOnErrorListener(paramtqj);
+      return;
     }
   }
+  
+  public void a(tqk paramtqk)
+  {
+    TextureVideoView localTextureVideoView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+    if (paramtqk == null) {}
+    for (paramtqk = null;; paramtqk = new trw(this, paramtqk))
+    {
+      localTextureVideoView.setOnInfoListener(paramtqk);
+      return;
+    }
+  }
+  
+  public void a(tql paramtql)
+  {
+    TextureVideoView localTextureVideoView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
+    if (paramtql == null) {}
+    for (paramtql = null;; paramtql = new trx(this, paramtql))
+    {
+      localTextureVideoView.setOnPreparedListener(paramtql);
+      return;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.isPlaying();
+  }
+  
+  public int b()
+  {
+    return 1;
+  }
+  
+  public long b()
+  {
+    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.getDuration();
+  }
+  
+  public void b()
+  {
+    urk.d(this.jdField_a_of_type_JavaLangString, "start");
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.start();
+  }
+  
+  public void c()
+  {
+    urk.d(this.jdField_a_of_type_JavaLangString, "pause");
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.pause();
+  }
+  
+  public void d()
+  {
+    urk.d(this.jdField_a_of_type_JavaLangString, "restart");
+    b();
+  }
+  
+  public void e() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     trt
  * JD-Core Version:    0.7.0.1
  */

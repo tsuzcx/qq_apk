@@ -1,41 +1,61 @@
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.PlayingPttHistoryInfo;
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
-import com.tencent.mobileqq.activity.aio.AudioPlayer.AudioPlayerListener;
+import android.support.annotation.NonNull;
+import java.util.List;
 
-public class sdu
-  implements AudioPlayer.AudioPlayerListener
+public abstract class sdu<Config extends sec>
 {
-  public sdu(ChatHistory paramChatHistory) {}
+  protected sdf a;
+  private Config a;
   
-  public void a(AudioPlayer paramAudioPlayer)
+  protected List<sdg> a()
   {
-    this.a.p();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$PlayingPttHistoryInfo != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$PlayingPttHistoryInfo.d();
+    if (this.jdField_a_of_type_Sdf != null) {
+      return this.jdField_a_of_type_Sdf.a();
     }
-    this.a.setVolumeControlStream(3);
-    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
+    return null;
   }
   
-  public void a(AudioPlayer paramAudioPlayer, int paramInt)
+  protected abstract List<sdf> a(@NonNull List<sdg> paramList);
+  
+  public Config a()
   {
-    this.a.b(2131433899);
-    this.a.setVolumeControlStream(3);
-    this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
+    return this.jdField_a_of_type_Sec;
   }
   
-  public void b(AudioPlayer paramAudioPlayer, int paramInt)
+  public void a(sdf paramsdf)
   {
-    this.a.setVolumeControlStream(paramInt);
+    if (paramsdf.b() > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      vkw.a(bool);
+      this.jdField_a_of_type_Sdf = paramsdf;
+      return;
+    }
   }
   
-  public void c(AudioPlayer paramAudioPlayer, int paramInt) {}
+  public void a(Config paramConfig)
+  {
+    this.jdField_a_of_type_Sec = paramConfig;
+  }
+  
+  public List<sdf> b()
+  {
+    List localList = a();
+    if ((localList == null) || (localList.size() == 0))
+    {
+      urk.d("Q.qqstory.recommendAlbum.logic.AbstractSplitStrategy", "data is null");
+      return null;
+    }
+    if ((a() != null) && (localList.size() < a().b))
+    {
+      urk.d("Q.qqstory.recommendAlbum.logic.AbstractSplitStrategy", "too little data");
+      return null;
+    }
+    return a(a());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sdu
  * JD-Core Version:    0.7.0.1
  */

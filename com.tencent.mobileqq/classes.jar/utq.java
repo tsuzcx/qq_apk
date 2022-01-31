@@ -1,25 +1,66 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipWaveView;
-import com.tencent.mobileqq.surfaceviewaction.action.Action;
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.surfaceviewaction.action.ScaleAction;
-import com.tencent.mobileqq.surfaceviewaction.action.SequenceAction;
-import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
-public class utq
-  implements Action.OnActionEndListener
+class utq
+  extends QQUIEventReceiver<uth, uzk>
 {
-  public utq(FriendShipWaveView paramFriendShipWaveView) {}
-  
-  public void a()
+  public utq(@NonNull uth paramuth)
   {
-    SequenceAction localSequenceAction = new SequenceAction(new Action[] { new ScaleAction(300, 0.1F, 1.1F), new ScaleAction(100, 1.2F, 0.9F), new ScaleAction(100, 0.9F, 1.0F) });
-    this.a.c.a(new Action[] { localSequenceAction });
-    this.a.b.a(new Action[] { new ScaleAction(300, 0.0F, 1.0F) });
+    super(paramuth);
+  }
+  
+  public void a(@NonNull uth paramuth, @NonNull uzk paramuzk)
+  {
+    utr localutr = paramuth.jdField_a_of_type_Utr;
+    int i = paramuzk.jdField_a_of_type_Int;
+    paramuzk = paramuzk.jdField_a_of_type_JavaUtilList;
+    paramuth = paramuth.jdField_a_of_type_Vca;
+    if (localutr != null)
+    {
+      if (i != 0)
+      {
+        urk.b(this.TAG, "DoodleEmojiPoiPostersReceiver, location failed.");
+        paramuth.jdField_a_of_type_Boolean = false;
+        localutr.a(paramuth);
+        urq.a("0X80076CD");
+        urq.b("0X80075E2");
+        return;
+      }
+      urk.b(this.TAG, "DoodleEmojiPoiPostersReceiver, location success.");
+      paramuth.jdField_a_of_type_JavaUtilList.clear();
+      paramuzk = paramuzk.iterator();
+      while (paramuzk.hasNext())
+      {
+        srl localsrl = (srl)paramuzk.next();
+        if ((TextUtils.isEmpty(localsrl.d)) || (TextUtils.isEmpty(localsrl.a)) || (TextUtils.isEmpty(localsrl.b))) {
+          urk.d(this.TAG, "find illegal content : url=%s, name=%s, des=%s", new Object[] { localsrl.d, localsrl.a, localsrl.b });
+        }
+        vcb localvcb = new vcb();
+        localvcb.d = localsrl.d;
+        localvcb.b = localsrl.a;
+        localvcb.c = localsrl.b;
+        localvcb.a = localsrl.c;
+        localvcb.e = localsrl.e;
+        paramuth.jdField_a_of_type_JavaUtilList.add(localvcb);
+      }
+      paramuth.jdField_a_of_type_Boolean = false;
+      localutr.a(paramuth);
+      return;
+    }
+    urk.b(this.TAG, "DoodleEmojiPoiPostersReceiver adapter is null");
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uzk.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     utq
  * JD-Core Version:    0.7.0.1
  */

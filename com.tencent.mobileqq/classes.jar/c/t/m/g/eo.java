@@ -1,116 +1,267 @@
 package c.t.m.g;
 
-import android.os.Bundle;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.location.LocationManager;
+import android.net.wifi.ScanResult;
+import android.net.wifi.WifiManager;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Message;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 
 final class eo
+  extends BroadcastReceiver
 {
-  public static final eo a = new eo();
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  public String j;
-  public String k;
-  public final Bundle l = new Bundle();
+  static Handler e;
+  private static final Comparator<ScanResult> l = new eo.2();
+  volatile boolean a;
+  final dx b;
+  boolean c;
+  volatile boolean d = false;
+  private final WifiManager f;
+  private long g;
+  private HashSet<String> h;
+  private List<ScanResult> i;
+  private final Runnable j;
+  private final Object k = new Object();
   
-  eo() {}
-  
-  private eo(eo parameo)
+  public eo(dx paramdx)
   {
-    if (parameo.l.size() > 0)
-    {
-      this.l.putAll(parameo.l);
-      return;
-    }
-    this.b = parameo.b;
-    this.c = parameo.c;
-    this.d = parameo.d;
-    this.e = parameo.e;
-    this.f = parameo.f;
-    this.g = parameo.g;
-    this.h = parameo.h;
-    this.i = parameo.i;
-    this.j = parameo.j;
-    this.k = parameo.k;
+    this.b = paramdx;
+    this.f = paramdx.g;
+    this.h = new HashSet();
+    this.j = new eo.1(this);
   }
   
-  public eo(JSONObject paramJSONObject)
-    throws JSONException
+  private void a(List<ScanResult> paramList)
   {
-    try
+    if ((paramList == null) || (paramList.size() == 0)) {
+      d();
+    }
+    for (;;)
     {
-      if (paramJSONObject.has("admin_level_1"))
+      paramList = new eu(paramList, this.g, this.f.getWifiState());
+      this.b.b(paramList);
+      return;
+      if (fn.a)
       {
-        String str1 = paramJSONObject.getString("nation");
-        String str2 = paramJSONObject.getString("admin_level_1");
-        String str3 = paramJSONObject.getString("admin_level_2");
-        String str4 = paramJSONObject.getString("admin_level_3");
-        String str5 = paramJSONObject.getString("locality");
-        String str6 = paramJSONObject.getString("sublocality");
-        paramJSONObject = paramJSONObject.getString("route");
-        this.l.putString("nation", str1);
-        this.l.putString("admin_level_1", str2);
-        this.l.putString("admin_level_2", str3);
-        this.l.putString("admin_level_3", str4);
-        this.l.putString("locality", str5);
-        this.l.putString("sublocality", str6);
-        this.l.putString("route", paramJSONObject);
+        fn.a = false;
+        d();
+      }
+    }
+  }
+  
+  private void c()
+  {
+    Thread.currentThread().getName();
+    if (this.h == null) {
+      this.h = new HashSet();
+    }
+    ScanResult localScanResult;
+    if (this.h.size() == 0)
+    {
+      localIterator = this.i.iterator();
+      while (localIterator.hasNext())
+      {
+        localScanResult = (ScanResult)localIterator.next();
+        this.h.add(localScanResult.toString());
+      }
+      this.g = System.currentTimeMillis();
+      a(this.i);
+    }
+    int m;
+    do
+    {
+      return;
+      m = this.h.size();
+      if (m != this.i.size())
+      {
+        this.h.clear();
+        localIterator = this.i.iterator();
+        while (localIterator.hasNext())
+        {
+          localScanResult = (ScanResult)localIterator.next();
+          this.h.add(localScanResult.BSSID + localScanResult.level);
+        }
+        this.g = System.currentTimeMillis();
+        a(this.i);
         return;
       }
-      this.c = paramJSONObject.getString("name");
-      this.d = paramJSONObject.getString("code");
-      this.b = paramJSONObject.getString("nation");
-      this.e = paramJSONObject.getString("province");
-      this.f = paramJSONObject.getString("city");
-      this.g = paramJSONObject.getString("district");
-      this.h = paramJSONObject.getString("town");
-      this.i = paramJSONObject.getString("village");
-      this.j = paramJSONObject.getString("street");
-      this.k = paramJSONObject.getString("street_no");
+      localIterator = this.i.iterator();
+      while (localIterator.hasNext())
+      {
+        localScanResult = (ScanResult)localIterator.next();
+        this.h.add(localScanResult.BSSID + localScanResult.level);
+      }
+    } while (m == this.h.size());
+    this.h.clear();
+    Iterator localIterator = this.i.iterator();
+    while (localIterator.hasNext())
+    {
+      localScanResult = (ScanResult)localIterator.next();
+      this.h.add(localScanResult.BSSID + localScanResult.level);
+    }
+    this.g = System.currentTimeMillis();
+    a(this.i);
+  }
+  
+  private void d()
+  {
+    m = 1;
+    n = this.f.getWifiState();
+    if (n == 3) {
+      a(0L);
+    }
+    for (;;)
+    {
+      n = m;
+      try
+      {
+        if (Build.VERSION.SDK_INT >= 23)
+        {
+          n = m;
+          if (!this.b.h.isProviderEnabled("network"))
+          {
+            boolean bool = this.b.h.isProviderEnabled("gps");
+            n = m;
+            if (!bool) {
+              n = 5;
+            }
+          }
+        }
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          Message localMessage;
+          n = m;
+        }
+      }
+      localMessage = new Message();
+      localMessage.what = 12999;
+      localMessage.arg1 = 12001;
+      localMessage.arg2 = n;
+      this.b.b(localMessage);
+      return;
+      if (n == 1)
+      {
+        m = 0;
+        if (this.i != null) {
+          this.i.clear();
+        }
+        this.b.b(eu.a);
+      }
+      else
+      {
+        m = -1;
+      }
+    }
+  }
+  
+  public final void a()
+  {
+    synchronized (this.k)
+    {
+      if (!this.a) {
+        return;
+      }
+      this.a = false;
+      e.removeCallbacksAndMessages(null);
+    }
+    try
+    {
+      this.b.a.unregisterReceiver(this);
+      new StringBuilder("unregister system wifi provider,thread name:").append(Thread.currentThread().getName());
+      label59:
+      this.g = 0L;
+      this.h = null;
+      if (this.i != null) {
+        this.i.clear();
+      }
+      if (this.h != null) {
+        this.h.clear();
+      }
+      return;
+      localObject2 = finally;
+      throw localObject2;
+    }
+    catch (Exception localException)
+    {
+      break label59;
+    }
+  }
+  
+  final void a(long paramLong)
+  {
+    Handler localHandler = e;
+    Runnable localRunnable = this.j;
+    localHandler.removeCallbacks(localRunnable);
+    localHandler.postDelayed(localRunnable, paramLong);
+  }
+  
+  final boolean b()
+  {
+    if ((!fn.b(this.b)) || (this.c)) {
+      return false;
+    }
+    return fn.a(this.f);
+  }
+  
+  public final void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if (paramIntent == null) {
       return;
     }
-    catch (JSONException paramJSONObject)
+    try
     {
-      ev.a("TencentJson", "json error", paramJSONObject);
-      throw paramJSONObject;
+      synchronized (this.k)
+      {
+        paramContext = paramIntent.getAction();
+        if ("android.net.wifi.WIFI_STATE_CHANGED".equals(paramContext)) {
+          d();
+        }
+        if (("android.net.wifi.WIFI_STATE_CHANGED".equals(paramContext)) || ("android.net.wifi.SCAN_RESULTS".equals(paramContext)))
+        {
+          paramContext = fn.b(this.f);
+          if ((paramContext == null) || (paramContext.size() <= 0)) {
+            break label132;
+          }
+          this.i = new ArrayList(paramContext);
+          ep.a(this.i);
+          if ((this.i != null) && (this.i.size() > 0))
+          {
+            Collections.sort(this.i, l);
+            c();
+          }
+        }
+        return;
+      }
+      paramIntent = new StringBuilder("ScanResult list is ");
     }
-  }
-  
-  public static eo a(eo parameo)
-  {
-    if (parameo == null) {
-      return null;
+    catch (Exception paramContext)
+    {
+      return;
     }
-    return new eo(parameo);
-  }
-  
-  public final String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder("SubnationData{");
-    localStringBuilder.append("name=").append(this.c).append(",");
-    localStringBuilder.append("code=").append(this.d).append(",");
-    localStringBuilder.append("nation=").append(this.b).append(",");
-    localStringBuilder.append("province=").append(this.e).append(",");
-    localStringBuilder.append("city=").append(this.f).append(",");
-    localStringBuilder.append("district=").append(this.g).append(",");
-    localStringBuilder.append("town=").append(this.h).append(",");
-    localStringBuilder.append("village=").append(this.i).append(",");
-    localStringBuilder.append("street=").append(this.j).append(",");
-    localStringBuilder.append("street_no=").append(this.k).append(",");
-    localStringBuilder.append("bundle").append(this.l).append(",");
-    localStringBuilder.append("}");
-    return localStringBuilder.toString();
+    label132:
+    if (paramContext == null) {}
+    for (paramContext = "null";; paramContext = "size=0")
+    {
+      paramIntent.append(paramContext);
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     c.t.m.g.eo
  * JD-Core Version:    0.7.0.1
  */

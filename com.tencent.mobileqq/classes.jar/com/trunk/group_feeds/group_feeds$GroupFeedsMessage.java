@@ -14,7 +14,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class group_feeds$GroupFeedsMessage
-  extends MessageMicro
+  extends MessageMicro<GroupFeedsMessage>
 {
   public static final int MSG_TYPE_ACTIVITY = 23;
   public static final int MSG_TYPE_APP_NOTICES = 17;
@@ -52,15 +52,15 @@ public final class group_feeds$GroupFeedsMessage
   public group_feeds.GroupFeedsMessage.ThemeBrief msg_theme_brief = new group_feeds.GroupFeedsMessage.ThemeBrief();
   public group_feeds.GroupFeedsMessage.Vote msg_vote_content = new group_feeds.GroupFeedsMessage.Vote();
   public final PBUInt32Field opt_uint32_ctl_flag = PBField.initUInt32(0);
-  public final PBRepeatField rpt_concern_uin = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
-  public final PBRepeatMessageField rpt_feeds_content = PBField.initRepeatMessage(group_feeds.GroupFeedsMessage.MessageContent.class);
-  public final PBRepeatField rpt_my_vote_option_id_list = PBField.initRepeat(PBInt32Field.__repeatHelper__);
-  public final PBRepeatField rpt_notify_uin_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
-  public final PBRepeatMessageField rpt_vote_record = PBField.initRepeatMessage(group_feeds.GroupFeedsMessage.VoteRecord.class);
-  public final PBRepeatMessageField rpt_vote_statistic = PBField.initRepeatMessage(group_feeds.GroupFeedsMessage.VoteStatistic.class);
+  public final PBRepeatField<Long> rpt_concern_uin = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatMessageField<group_feeds.GroupFeedsMessage.MessageContent> rpt_feeds_content = PBField.initRepeatMessage(group_feeds.GroupFeedsMessage.MessageContent.class);
+  public final PBRepeatField<Integer> rpt_my_vote_option_id_list = PBField.initRepeat(PBInt32Field.__repeatHelper__);
+  public final PBRepeatField<Long> rpt_notify_uin_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatMessageField<group_feeds.GroupFeedsMessage.VoteRecord> rpt_vote_record = PBField.initRepeatMessage(group_feeds.GroupFeedsMessage.VoteRecord.class);
+  public final PBRepeatMessageField<group_feeds.GroupFeedsMessage.VoteStatistic> rpt_vote_statistic = PBField.initRepeatMessage(group_feeds.GroupFeedsMessage.VoteStatistic.class);
   public final PBUInt32Field uint32_NC_feeds_terinal_ctrl = PBField.initUInt32(0);
   public final PBUInt32Field uint32_edu_organization_id = PBField.initUInt32(0);
-  public final PBRepeatField uint32_reported_id = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
+  public final PBRepeatField<Integer> uint32_reported_id = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
   
   static
   {

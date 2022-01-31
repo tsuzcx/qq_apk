@@ -109,7 +109,6 @@ public final class StreamAllocation
   }
   
   private RealConnection findConnection(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
-    throws IOException, RouteException
   {
     synchronized (this.connectionPool)
     {
@@ -123,33 +122,35 @@ public final class StreamAllocation
     if (this.canceled) {
       throw new IOException("Canceled");
     }
-    RealConnection localRealConnection = this.connection;
-    if ((localRealConnection != null) && (!localRealConnection.noNewStreams)) {
-      return localRealConnection;
+    RealConnection localRealConnection1 = this.connection;
+    if ((localRealConnection1 != null) && (!localRealConnection1.noNewStreams)) {
+      return localRealConnection1;
     }
-    localRealConnection = Internal.instance.get(this.connectionPool, this.address, this);
-    if (localRealConnection != null)
+    localRealConnection1 = Internal.instance.get(this.connectionPool, this.address, this);
+    if (localRealConnection1 != null)
     {
-      this.connection = localRealConnection;
-      return localRealConnection;
+      this.connection = localRealConnection1;
+      return localRealConnection1;
     }
     if (this.routeSelector == null) {
       this.routeSelector = new RouteSelector(this.address, routeDatabase());
     }
-    localRealConnection = new RealConnection(this.routeSelector.next());
-    acquire(localRealConnection);
-    Internal.instance.put(this.connectionPool, localRealConnection);
-    this.connection = localRealConnection;
-    if (this.canceled) {
-      throw new IOException("Canceled");
+    localRealConnection1 = new RealConnection(this.routeSelector.next());
+    acquire(localRealConnection1);
+    synchronized (this.connectionPool)
+    {
+      Internal.instance.put(this.connectionPool, localRealConnection1);
+      this.connection = localRealConnection1;
+      if (this.canceled) {
+        throw new IOException("Canceled");
+      }
     }
-    localRealConnection.connect(paramInt1, paramInt2, paramInt3, this.address.getConnectionSpecs(), paramBoolean);
-    routeDatabase().connected(localRealConnection.getRoute());
-    return localRealConnection;
+    localRealConnection2.connect(paramInt1, paramInt2, paramInt3, this.address.getConnectionSpecs(), paramBoolean);
+    routeDatabase().connected(localRealConnection2.getRoute());
+    return localRealConnection2;
   }
   
   private RealConnection findHealthyConnection(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2)
-    throws IOException, RouteException
   {
     for (;;)
     {
@@ -192,8 +193,8 @@ public final class StreamAllocation
   
   private void release(RealConnection paramRealConnection)
   {
-    int i = 0;
     int j = paramRealConnection.allocations.size();
+    int i = 0;
     while (i < j)
     {
       if (((Reference)paramRealConnection.allocations.get(i)).get() == this)
@@ -257,7 +258,6 @@ public final class StreamAllocation
   
   /* Error */
   public HttpStream newStream(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2)
-    throws RouteException, IOException
   {
     // Byte code:
     //   0: aload_0
@@ -266,17 +266,17 @@ public final class StreamAllocation
     //   3: iload_3
     //   4: iload 4
     //   6: iload 5
-    //   8: invokespecial 235	com/squareup/okhttp/internal/http/StreamAllocation:findHealthyConnection	(IIIZZ)Lcom/squareup/okhttp/internal/io/RealConnection;
+    //   8: invokespecial 234	com/squareup/okhttp/internal/http/StreamAllocation:findHealthyConnection	(IIIZZ)Lcom/squareup/okhttp/internal/io/RealConnection;
     //   11: astore 7
     //   13: aload 7
-    //   15: getfield 239	com/squareup/okhttp/internal/io/RealConnection:framedConnection	Lcom/squareup/okhttp/internal/framed/FramedConnection;
+    //   15: getfield 238	com/squareup/okhttp/internal/io/RealConnection:framedConnection	Lcom/squareup/okhttp/internal/framed/FramedConnection;
     //   18: ifnull +51 -> 69
-    //   21: new 241	com/squareup/okhttp/internal/http/Http2xStream
+    //   21: new 240	com/squareup/okhttp/internal/http/Http2xStream
     //   24: dup
     //   25: aload_0
     //   26: aload 7
-    //   28: getfield 239	com/squareup/okhttp/internal/io/RealConnection:framedConnection	Lcom/squareup/okhttp/internal/framed/FramedConnection;
-    //   31: invokespecial 244	com/squareup/okhttp/internal/http/Http2xStream:<init>	(Lcom/squareup/okhttp/internal/http/StreamAllocation;Lcom/squareup/okhttp/internal/framed/FramedConnection;)V
+    //   28: getfield 238	com/squareup/okhttp/internal/io/RealConnection:framedConnection	Lcom/squareup/okhttp/internal/framed/FramedConnection;
+    //   31: invokespecial 243	com/squareup/okhttp/internal/http/Http2xStream:<init>	(Lcom/squareup/okhttp/internal/http/StreamAllocation;Lcom/squareup/okhttp/internal/framed/FramedConnection;)V
     //   34: astore 6
     //   36: aload_0
     //   37: getfield 24	com/squareup/okhttp/internal/http/StreamAllocation:connectionPool	Lcom/squareup/okhttp/ConnectionPool;
@@ -299,43 +299,43 @@ public final class StreamAllocation
     //   69: aload 7
     //   71: invokevirtual 98	com/squareup/okhttp/internal/io/RealConnection:getSocket	()Ljava/net/Socket;
     //   74: iload_2
-    //   75: invokevirtual 250	java/net/Socket:setSoTimeout	(I)V
+    //   75: invokevirtual 249	java/net/Socket:setSoTimeout	(I)V
     //   78: aload 7
-    //   80: getfield 254	com/squareup/okhttp/internal/io/RealConnection:source	Lokio/BufferedSource;
-    //   83: invokeinterface 260 1 0
+    //   80: getfield 253	com/squareup/okhttp/internal/io/RealConnection:source	Lokio/BufferedSource;
+    //   83: invokeinterface 259 1 0
     //   88: iload_2
     //   89: i2l
-    //   90: getstatic 266	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
-    //   93: invokevirtual 271	okio/Timeout:timeout	(JLjava/util/concurrent/TimeUnit;)Lokio/Timeout;
+    //   90: getstatic 265	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
+    //   93: invokevirtual 270	okio/Timeout:timeout	(JLjava/util/concurrent/TimeUnit;)Lokio/Timeout;
     //   96: pop
     //   97: aload 7
-    //   99: getfield 275	com/squareup/okhttp/internal/io/RealConnection:sink	Lokio/BufferedSink;
-    //   102: invokeinterface 278 1 0
+    //   99: getfield 274	com/squareup/okhttp/internal/io/RealConnection:sink	Lokio/BufferedSink;
+    //   102: invokeinterface 277 1 0
     //   107: iload_3
     //   108: i2l
-    //   109: getstatic 266	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
-    //   112: invokevirtual 271	okio/Timeout:timeout	(JLjava/util/concurrent/TimeUnit;)Lokio/Timeout;
+    //   109: getstatic 265	java/util/concurrent/TimeUnit:MILLISECONDS	Ljava/util/concurrent/TimeUnit;
+    //   112: invokevirtual 270	okio/Timeout:timeout	(JLjava/util/concurrent/TimeUnit;)Lokio/Timeout;
     //   115: pop
-    //   116: new 280	com/squareup/okhttp/internal/http/Http1xStream
+    //   116: new 279	com/squareup/okhttp/internal/http/Http1xStream
     //   119: dup
     //   120: aload_0
     //   121: aload 7
-    //   123: getfield 254	com/squareup/okhttp/internal/io/RealConnection:source	Lokio/BufferedSource;
+    //   123: getfield 253	com/squareup/okhttp/internal/io/RealConnection:source	Lokio/BufferedSource;
     //   126: aload 7
-    //   128: getfield 275	com/squareup/okhttp/internal/io/RealConnection:sink	Lokio/BufferedSink;
-    //   131: invokespecial 283	com/squareup/okhttp/internal/http/Http1xStream:<init>	(Lcom/squareup/okhttp/internal/http/StreamAllocation;Lokio/BufferedSource;Lokio/BufferedSink;)V
+    //   128: getfield 274	com/squareup/okhttp/internal/io/RealConnection:sink	Lokio/BufferedSink;
+    //   131: invokespecial 282	com/squareup/okhttp/internal/http/Http1xStream:<init>	(Lcom/squareup/okhttp/internal/http/StreamAllocation;Lokio/BufferedSource;Lokio/BufferedSink;)V
     //   134: astore 6
     //   136: goto -100 -> 36
     //   139: astore 6
-    //   141: aload 8
-    //   143: monitorexit
-    //   144: aload 6
-    //   146: athrow
-    //   147: astore 6
-    //   149: new 110	com/squareup/okhttp/internal/http/RouteException
-    //   152: dup
-    //   153: aload 6
-    //   155: invokespecial 285	com/squareup/okhttp/internal/http/RouteException:<init>	(Ljava/io/IOException;)V
+    //   141: new 172	com/squareup/okhttp/internal/http/RouteException
+    //   144: dup
+    //   145: aload 6
+    //   147: invokespecial 284	com/squareup/okhttp/internal/http/RouteException:<init>	(Ljava/io/IOException;)V
+    //   150: athrow
+    //   151: astore 6
+    //   153: aload 8
+    //   155: monitorexit
+    //   156: aload 6
     //   158: athrow
     // Local variable table:
     //   start	length	slot	name	signature
@@ -346,17 +346,17 @@ public final class StreamAllocation
     //   0	159	4	paramBoolean1	boolean
     //   0	159	5	paramBoolean2	boolean
     //   34	101	6	localObject1	Object
-    //   139	6	6	localObject2	Object
-    //   147	7	6	localIOException	IOException
+    //   139	7	6	localIOException	IOException
+    //   151	6	6	localObject2	Object
     //   11	116	7	localRealConnection	RealConnection
     // Exception table:
     //   from	to	target	type
-    //   45	66	139	finally
-    //   141	144	139	finally
-    //   0	36	147	java/io/IOException
-    //   36	45	147	java/io/IOException
-    //   69	136	147	java/io/IOException
-    //   144	147	147	java/io/IOException
+    //   0	36	139	java/io/IOException
+    //   36	45	139	java/io/IOException
+    //   69	136	139	java/io/IOException
+    //   156	159	139	java/io/IOException
+    //   45	66	151	finally
+    //   153	156	151	finally
   }
   
   public void noNewStreams()
@@ -420,22 +420,22 @@ public final class StreamAllocation
     //   12: aload_0
     //   13: getfield 55	com/squareup/okhttp/internal/http/StreamAllocation:stream	Lcom/squareup/okhttp/internal/http/HttpStream;
     //   16: if_acmpeq +49 -> 65
-    //   19: new 112	java/lang/IllegalStateException
+    //   19: new 108	java/lang/IllegalStateException
     //   22: dup
-    //   23: new 303	java/lang/StringBuilder
+    //   23: new 302	java/lang/StringBuilder
     //   26: dup
-    //   27: invokespecial 304	java/lang/StringBuilder:<init>	()V
-    //   30: ldc_w 306
-    //   33: invokevirtual 310	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   27: invokespecial 303	java/lang/StringBuilder:<init>	()V
+    //   30: ldc_w 305
+    //   33: invokevirtual 309	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   36: aload_0
     //   37: getfield 55	com/squareup/okhttp/internal/http/StreamAllocation:stream	Lcom/squareup/okhttp/internal/http/HttpStream;
-    //   40: invokevirtual 313	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   43: ldc_w 315
-    //   46: invokevirtual 310	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   40: invokevirtual 312	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   43: ldc_w 314
+    //   46: invokevirtual 309	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   49: aload_1
-    //   50: invokevirtual 313	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   53: invokevirtual 319	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   56: invokespecial 116	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+    //   50: invokevirtual 312	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   53: invokevirtual 318	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   56: invokespecial 112	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
     //   59: athrow
     //   60: astore_1
     //   61: aload_2
@@ -448,7 +448,7 @@ public final class StreamAllocation
     //   68: iconst_0
     //   69: iconst_0
     //   70: iconst_1
-    //   71: invokespecial 231	com/squareup/okhttp/internal/http/StreamAllocation:deallocate	(ZZZ)V
+    //   71: invokespecial 230	com/squareup/okhttp/internal/http/StreamAllocation:deallocate	(ZZZ)V
     //   74: return
     // Local variable table:
     //   start	length	slot	name	signature

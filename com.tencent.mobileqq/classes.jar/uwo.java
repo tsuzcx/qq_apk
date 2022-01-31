@@ -1,58 +1,35 @@
 import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
-import android.graphics.Rect;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleDrawer;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleDrawer.DoodleDrawerListener;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView;
-import com.tencent.qphone.base.util.QLog;
 
 public class uwo
-  implements DoodleDrawer.DoodleDrawerListener
+  extends uwy
 {
-  public uwo(DoodleMsgView paramDoodleMsgView) {}
+  public final long a;
+  public final long b;
+  public final long c;
+  public final long d;
   
-  public void a(String paramString, int paramInt)
+  public uwo(int paramInt, long paramLong1, long paramLong2, long paramLong3, long paramLong4, Bitmap paramBitmap)
   {
-    QLog.d("DoodleMsgView", 2, "onDataState:" + paramInt + " - " + paramString);
-    this.a.a(new uwq(this, paramInt));
+    super(paramInt, paramBitmap);
+    this.a = paramLong1;
+    this.b = paramLong2;
+    this.jdField_c_of_type_Long = paramLong3;
+    this.d = paramLong4;
   }
   
-  public void a(String arg1, long paramLong, Bitmap paramBitmap)
+  public uwo a(Bitmap paramBitmap)
   {
-    if (DoodleMsgView.a(this.a) == null) {}
-    for (;;)
-    {
-      return;
-      if (paramBitmap != null) {
-        if (DoodleMsgView.a(this.a, paramBitmap.getWidth(), paramBitmap.getHeight())) {
-          if (DoodleMsgView.a(this.a) == null)
-          {
-            DoodleMsgView.a(this.a, new Paint());
-            DoodleMsgView.a(this.a).setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
-            DoodleMsgView.a(this.a).setAntiAlias(true);
-          }
-        }
-      }
-      synchronized (this.a)
-      {
-        DoodleMsgView.a(this.a).drawBitmap(paramBitmap, new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight()), new Rect(0, 0, DoodleMsgView.a(this.a).getWidth(), DoodleMsgView.a(this.a).getHeight()), DoodleMsgView.a(this.a));
-        this.a.postInvalidate();
-        if ((!DoodleMsgView.a(this.a)) || (paramLong < DoodleMsgView.a(this.a).a()) || (DoodleMsgView.a(this.a) < DoodleMsgView.a(this.a).a())) {
-          continue;
-        }
-        this.a.d();
-        this.a.a(new uwp(this));
-        return;
-      }
-    }
+    return new uwo(this.jdField_c_of_type_Int, this.a, this.b, this.jdField_c_of_type_Long, this.d, paramBitmap);
+  }
+  
+  public String toString()
+  {
+    return "RecordVideoBlockInfo{index:" + this.jdField_c_of_type_Int + ", vfFrame: " + this.a + " ~ " + this.b + ", afTime: " + this.jdField_c_of_type_Long + " ~ " + this.d + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uwo
  * JD-Core Version:    0.7.0.1
  */

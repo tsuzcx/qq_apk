@@ -1,31 +1,88 @@
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ItemDatasListUtils;
-import java.util.List;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-class mqd
-  implements Runnable
+final class mqd
+  implements BusinessObserver
 {
-  mqd(mqc parammqc, boolean paramBoolean, String paramString, List paramList1, List paramList2) {}
+  mqd(Context paramContext, QQAppInterface paramQQAppInterface, bbms parambbms, EqqDetail paramEqqDetail, SessionInfo paramSessionInfo, String paramString) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_Boolean) && (FastWebActivity.a(this.jdField_a_of_type_Mqc.a) != null) && (FastWebActivity.a(this.jdField_a_of_type_Mqc.a).l.equals(this.jdField_a_of_type_JavaLangString)))
+    if (QLog.isColorLevel()) {
+      QLog.d("CrmUtils", 2, "success:" + String.valueOf(paramBoolean));
+    }
+    mobileqq_mp.FollowResponse localFollowResponse;
+    if (paramBoolean)
     {
-      ItemDatasListUtils.a(FastWebActivity.a(this.jdField_a_of_type_Mqc.a), this.jdField_a_of_type_JavaUtilList, this.b, FastWebActivity.a(this.jdField_a_of_type_Mqc.a), FastWebActivity.a(this.jdField_a_of_type_Mqc.a));
-      FastWebModule localFastWebModule = ReadInJoyLogicEngine.a().a();
-      if (localFastWebModule != null) {
-        localFastWebModule.a(FastWebActivity.a(this.jdField_a_of_type_Mqc.a).j, FastWebActivity.a(this.jdField_a_of_type_Mqc.a));
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null) {
+        localFollowResponse = new mobileqq_mp.FollowResponse();
       }
-      FastWebActivity.g(this.jdField_a_of_type_Mqc.a);
-      ItemDatasListUtils.a(FastWebActivity.a(this.jdField_a_of_type_Mqc.a));
-      FastWebActivity.a(this.jdField_a_of_type_Mqc.a).notifyDataSetChanged();
-      this.jdField_a_of_type_Mqc.a.a(FastWebActivity.a(this.jdField_a_of_type_Mqc.a));
-      FastWebActivity.a(this.jdField_a_of_type_Mqc.a).a(FastWebActivity.a(this.jdField_a_of_type_Mqc.a), 0);
+    }
+    for (;;)
+    {
+      try
+      {
+        localFollowResponse.mergeFrom(paramBundle);
+        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+        if (paramInt == 0)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.followType = 1;
+          mqb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
+          paramBundle = (PublicAccountHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11);
+          if (paramBundle != null) {
+            paramBundle.a(this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
+          }
+          if (QLog.isDevelopLevel()) {
+            QLog.d("IVR_TS_CrmUtils", 4, "<<<end follow, ts=" + System.currentTimeMillis());
+          }
+          mqb.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
+          annt.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.uin, true);
+          mqb.a(this.jdField_a_of_type_Bbms);
+          return;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        mqb.a(this.jdField_a_of_type_AndroidContentContext, 2131629887);
+        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
+        mqb.a(this.jdField_a_of_type_Bbms);
+        return;
+      }
+      if (paramInt == 58)
+      {
+        mqb.a(this.jdField_a_of_type_AndroidContentContext, 2131629884);
+        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "PublicAccount_max_limit_false", 0, 0, "", "", "", "");
+      }
+      else if (paramInt == 65)
+      {
+        mqb.a(this.jdField_a_of_type_AndroidContentContext, 2131629857);
+      }
+      else if (paramInt == 20)
+      {
+        mqb.a(this.jdField_a_of_type_AndroidContentContext, 2131629858);
+      }
+      else
+      {
+        mqb.a(this.jdField_a_of_type_AndroidContentContext, 2131629887);
+        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
+        continue;
+        mqb.a(this.jdField_a_of_type_AndroidContentContext, 2131629887);
+        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
+        continue;
+        mqb.a(this.jdField_a_of_type_AndroidContentContext, 2131629887);
+        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
+      }
     }
   }
 }

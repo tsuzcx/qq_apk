@@ -1,129 +1,126 @@
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloBaseInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public class aikr
 {
-  public long a;
-  public String a;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d;
-  public String d;
-  public long e;
-  public String e;
-  public long f;
-  public String f;
-  public long g;
-  public long h;
-  public long i = 0L;
-  public long j = 4L;
-  public long k = a();
-  public long l = Build.VERSION.SDK_INT;
-  public long m;
-  public long n = 0L;
-  public long o = 0L;
-  public long p = 0L;
-  public long q = 0L;
-  
-  public aikr()
+  public static int a(int paramInt)
   {
-    this.jdField_e_of_type_JavaLangString = "";
-    this.jdField_b_of_type_JavaLangString = "7.6.8";
-    this.jdField_c_of_type_JavaLangString = Build.MODEL;
+    if (a(paramInt)) {
+      return 1;
+    }
+    return 0;
   }
   
-  public int a()
+  public static int a(int paramInt, long paramLong)
   {
-    int i2 = 0;
-    int i1;
-    if (AppNetConnInfo.isWifiConn()) {
-      i1 = 2;
+    int i = paramInt * 400 / 540;
+    if (i <= paramLong * 0.7D)
+    {
+      paramInt = i;
+      if (i > 0) {}
+    }
+    else
+    {
+      paramInt = (int)(paramLong * 0.7D);
+    }
+    return paramInt;
+  }
+  
+  public static aifu a(QQAppInterface paramQQAppInterface, String paramString, ApolloBaseInfo paramApolloBaseInfo, int paramInt)
+  {
+    if ((paramQQAppInterface == null) || (paramApolloBaseInfo == null) || (TextUtils.isEmpty(paramString)))
+    {
+      QLog.e("ApolloDrawerInfoManager", 1, "checkDrawerRoleDressInfo param err");
+      return null;
+    }
+    int i = 0;
+    int[] arrayOfInt = null;
+    int j = 0;
+    aifu localaifu = null;
+    int k = aifg.a(paramQQAppInterface, paramString);
+    int m = paramApolloBaseInfo.apolloStatus;
+    aiju localaiju = paramApolloBaseInfo.getApolloDress();
+    if (localaiju != null)
+    {
+      i = localaiju.jdField_a_of_type_Int;
+      arrayOfInt = localaiju.a();
+    }
+    localaiju = paramApolloBaseInfo.getApolloDress3D();
+    paramApolloBaseInfo = localaifu;
+    if (localaiju != null)
+    {
+      j = localaiju.jdField_a_of_type_Int;
+      paramApolloBaseInfo = localaiju.a();
+    }
+    localaifu = new aifu();
+    localaifu.jdField_a_of_type_Int = i;
+    localaifu.jdField_a_of_type_ArrayOfInt = arrayOfInt;
+    localaifu.jdField_b_of_type_Int = j;
+    localaifu.jdField_b_of_type_ArrayOfInt = paramApolloBaseInfo;
+    localaifu.c = m;
+    localaifu.d = k;
+    localaifu.e = aisl.b(paramInt);
+    boolean bool;
+    if (m != 1)
+    {
+      bool = true;
+      QLog.e("ApolloDrawerInfoManager", 1, new Object[] { "checkDrawerRoleDressInfo apollo not open from:", Integer.valueOf(paramInt), ",apolloFeatureFlag:", Integer.valueOf(m) });
+      aixo.a(localaifu.e, 10, 101, new Object[] { "apollo not open, flag:", Integer.valueOf(m) });
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ScoreReportController", 2, "getNetType: " + i1);
+      localaifu.jdField_a_of_type_Boolean = bool;
+      if ((!bool) && (QLog.isColorLevel())) {
+        QLog.d("ApolloDrawerInfoManager", 2, new Object[] { "checkDrawerRoleDressInfo from:", Integer.valueOf(paramInt), ",result:", localaifu.toString() });
       }
-      return i1;
-      i1 = i2;
-      if (AppNetConnInfo.isMobileConn()) {
-        switch (AppNetConnInfo.getMobileInfo())
+      aixo.a(localaifu.e, 10, new Object[] { localaifu.toString() });
+      return localaifu;
+      if ((k == 1) && ((i <= 0) || (arrayOfInt == null) || (arrayOfInt.length <= 0) || ((i > 0) && (!aiwi.a(paramString, i, arrayOfInt, paramQQAppInterface)))))
+      {
+        bool = true;
+        QLog.e("ApolloDrawerInfoManager", 1, new Object[] { "checkDrawerRoleDressInfo basic not ready, from:", Integer.valueOf(paramInt), ",result:", localaifu.toString() });
+        aixo.a(localaifu.e, 10, 111, new Object[] { "basic not ready:" + localaifu.toString() });
+      }
+      else
+      {
+        if ((k == 2) && ((j <= 0) || (paramApolloBaseInfo == null) || (paramApolloBaseInfo.length <= 0) || ((j > aiys.jdField_a_of_type_Int) && (!aiwi.a(paramString, j, paramApolloBaseInfo, paramQQAppInterface)))))
         {
-        default: 
-          i1 = i2;
-          break;
-        case 1: 
-          i1 = 3;
-          break;
-        case 2: 
-          i1 = 4;
-          break;
-        case 3: 
-          i1 = 5;
+          QLog.d("ApolloDrawerInfoManager", 1, new Object[] { "checkDrawerRoleDressInfo 3D not ready, from:", Integer.valueOf(paramInt), ",result:", localaifu.toString() });
+          aixo.a(localaifu.e, 10, new Object[] { "3D role/dress not ready but show basic" });
+        }
+        if (!ApolloEngine.a())
+        {
+          QLog.d("ApolloDrawerInfoManager", 1, "so is not ready");
+          aixo.a(localaifu.e, 10, 102, new Object[] { "so not ready" });
+          bool = true;
+        }
+        else
+        {
+          bool = false;
         }
       }
     }
   }
   
-  public String a()
+  public static boolean a(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder(256);
-    localStringBuilder.append(this.jdField_a_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_b_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_c_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_d_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_e_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_f_of_type_Long);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.g);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.h);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.i);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.j);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.k);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.l);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.m);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.n);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.o);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.p);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.q);
-    localStringBuilder.append('|');
-    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
-    localStringBuilder.append('|');
-    return localStringBuilder.toString();
+    return paramInt == 6;
+  }
+  
+  public static int b(int paramInt)
+  {
+    if (a(paramInt)) {
+      return 3;
+    }
+    return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aikr
  * JD-Core Version:    0.7.0.1
  */

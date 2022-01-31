@@ -1,27 +1,33 @@
-import com.tencent.mobileqq.troop.utils.TroopNameHelper;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.GetNearbyRecommender;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
-public abstract class ajxr
-  implements Runnable
+public class ajxr
+  extends ajfo
 {
-  public volatile boolean a;
+  public ajxr(GetNearbyRecommender paramGetNearbyRecommender) {}
   
-  public ajxr(TroopNameHelper paramTroopNameHelper) {}
-  
-  public abstract void a();
-  
-  public final void run()
+  protected void onGetDetailInfo(boolean paramBoolean, String paramString, Card paramCard)
   {
-    this.a = true;
-    a();
-    this.a = false;
-    this.b.a.remove(this);
-    TroopNameHelper.a(this.b);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "GetNearbyRecommender onGetDetailInfo|uin=" + paramString);
+    }
+    if (!this.a.a.app.getCurrentAccountUin().equals(paramString)) {
+      return;
+    }
+    if (!paramBoolean)
+    {
+      this.a.a(7);
+      return;
+    }
+    this.a.a(6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajxr
  * JD-Core Version:    0.7.0.1
  */

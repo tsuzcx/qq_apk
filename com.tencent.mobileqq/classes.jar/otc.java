@@ -1,21 +1,20 @@
-import com.tencent.biz.qqstory.utils.PollWidgetUtils.QuestionElement;
-import com.tencent.biz.qqstory.utils.PollWidgetUtils.WidgetWrapper;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import org.json.JSONObject;
 
 public class otc
-  implements Runnable
 {
-  public otc(PollWidgetUtils.WidgetWrapper paramWidgetWrapper) {}
-  
-  public void run()
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    PollWidgetUtils.WidgetWrapper localWidgetWrapper = this.a;
-    if (!PollWidgetUtils.WidgetWrapper.a(this.a)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      PollWidgetUtils.WidgetWrapper.a(localWidgetWrapper, bool);
-      this.a.a.a(PollWidgetUtils.WidgetWrapper.a(this.a));
-      return;
-    }
+    JSONObject localJSONObject = new JSONObject();
+    otl.a(paramBaseArticleInfo, localJSONObject, true);
+    otl.a(paramBaseArticleInfo, localJSONObject);
+    otl.b(paramBaseArticleInfo, localJSONObject);
+    otl.e(paramBaseArticleInfo, localJSONObject);
+    otl.m(paramBaseArticleInfo, localJSONObject);
+    otl.g(paramBaseArticleInfo, localJSONObject);
+    localJSONObject.put("style_ID", "ReadInjoy_none_img_cell");
+    otl.a(localJSONObject, paramBaseArticleInfo);
+    return localJSONObject;
   }
 }
 

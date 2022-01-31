@@ -1,38 +1,22 @@
-import android.view.View;
-import android.view.ViewGroup;
-import java.lang.ref.SoftReference;
-
-public class vnl
+class vnl
+  extends vnh
 {
-  public String a;
-  SoftReference a;
-  SoftReference b;
+  vnl(vni paramvni, vnq paramvnq) {}
   
-  public vnl(String paramString, View paramView, ViewGroup paramViewGroup)
+  public void onFailure(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramView);
-    this.b = new SoftReference(paramViewGroup);
+    urk.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs change ts onFail: " + paramString);
+    this.jdField_a_of_type_Vnq.onFailure(paramString);
   }
   
-  public View a()
+  public void onSuccess(String paramString)
   {
-    return (View)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-  }
-  
-  public ViewGroup a()
-  {
-    return (ViewGroup)this.b.get();
-  }
-  
-  public void a(ViewGroup paramViewGroup)
-  {
-    this.b = new SoftReference(paramViewGroup);
+    urk.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs change ts onSuccess: " + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vnl
  * JD-Core Version:    0.7.0.1
  */

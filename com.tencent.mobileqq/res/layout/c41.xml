@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/b6m" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/js0" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
+        <TextView android:textSize="16.0sp" android:textColor="@android:color/white" android:gravity="center_vertical" android:id="@id/jrz" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="9.0dip" android:text="@string/vma" android:drawableLeft="@drawable/h63" android:drawablePadding="9.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="18.0sp" android:textColor="@android:color/white" android:id="@id/js1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/vm_" android:includeFontPadding="false" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/jri" android:layout_width="fill_parent" android:layout_height="190.0dip" android:layout_below="@id/js0" android:layout_alignParentLeft="true">
+        <TextView android:textSize="16.0sp" android:textColor="@color/ajk" android:id="@id/jqz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="16.0dip" android:text="@string/i2_" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/jqw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:src="@drawable/h5q" android:layout_above="@id/jqz" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/jqy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:src="@drawable/h5w" android:layout_above="@id/jqz" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/jqx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:src="@drawable/h5v" android:layout_above="@id/jqz" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

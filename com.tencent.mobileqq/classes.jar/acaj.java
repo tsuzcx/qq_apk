@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
-import dov.com.qq.im.capture.QIMManager;
-import dov.com.qq.im.capture.paster.QIMPasterConfigManager;
-import dov.com.qq.im.capture.util.ConfigSimplifier.ConfigDownloadCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class acaj
-  implements ConfigSimplifier.ConfigDownloadCallback
+  implements View.OnClickListener
 {
-  public acaj(ConfigServlet paramConfigServlet) {}
+  public acaj(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    ((QIMPasterConfigManager)QIMManager.a(1)).a(paramString);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acaj
  * JD-Core Version:    0.7.0.1
  */

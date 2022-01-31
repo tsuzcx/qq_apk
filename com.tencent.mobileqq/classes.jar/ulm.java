@@ -1,32 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class ulm
-  implements View.OnClickListener
+  extends QQUIEventReceiver<ull, spj>
 {
-  public ulm(VerifyCodeActivity paramVerifyCodeActivity) {}
-  
-  public void onClick(View paramView)
+  public ulm(ull paramull1, @NonNull ull paramull2)
   {
-    paramView = this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
-    if ((paramView == null) || (paramView.length() == 0)) {
-      Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131434648), 0).show();
+    super(paramull2);
+  }
+  
+  public void a(@NonNull ull paramull, @NonNull spj paramspj)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.playernew.StoryPlayerActivity", 2, "GetStoryListReceiver");
     }
-    while (paramView == null) {
-      return;
-    }
-    this.a.a(paramView);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-    VerifyCodeActivity.b(this.a, false);
+    paramull.b(paramspj.a);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return spj.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ulm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,70 +1,43 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import mqq.os.MqqHandler;
+import com.tencent.image.NativeGifImage;
+import java.io.File;
 
 public class rrn
-  extends CardObserver
+  extends NativeGifImage
 {
-  public rrn(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  private int jdField_a_of_type_Int = 3;
+  private rro jdField_a_of_type_Rro;
   
-  protected void b(boolean paramBoolean)
+  public rrn(File paramFile, boolean paramBoolean, int paramInt)
   {
-    boolean bool1 = true;
-    boolean bool2 = AssociatedAccountManageActivity.a(this.a).a();
-    AssociatedAccountManageActivity.a(this.a).removeMessages(8193);
-    AssociatedAccountManageActivity.a(this.a).sendEmptyMessage(8194);
-    Object localObject = AssociatedAccountManageActivity.a(this.a).obtainMessage(8195);
-    int i;
-    if (paramBoolean)
+    super(paramFile, paramBoolean, false, 0, 0, 0.0F);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Rro = null;
+  }
+  
+  public void a(rro paramrro)
+  {
+    this.jdField_a_of_type_Rro = paramrro;
+  }
+  
+  public void executeNewTask()
+  {
+    if (this.mCurrentLoop == this.jdField_a_of_type_Int)
     {
-      i = 2;
-      ((Message)localObject).arg1 = i;
-      if (!paramBoolean) {
-        break label134;
+      if (this.jdField_a_of_type_Rro != null) {
+        this.jdField_a_of_type_Rro.a();
       }
-      if (!bool2) {
-        break label128;
-      }
-      i = 2131436917;
-    }
-    for (;;)
-    {
-      ((Message)localObject).arg2 = i;
-      AssociatedAccountManageActivity.a(this.a).sendMessage((Message)localObject);
-      if (!paramBoolean) {
-        break label151;
-      }
-      AssociatedAccountManageActivity.a(this.a);
-      SubAccountControll.a(this.a.app, bool2);
-      return;
-      i = 1;
-      break;
-      label128:
-      i = 2131436920;
-      continue;
-      label134:
-      if (bool2) {
-        i = 2131436444;
-      } else {
-        i = 2131436445;
-      }
-    }
-    label151:
-    localObject = this.a;
-    if (!bool2) {}
-    for (paramBoolean = bool1;; paramBoolean = false)
-    {
-      AssociatedAccountManageActivity.a((AssociatedAccountManageActivity)localObject, paramBoolean);
       return;
     }
+    super.executeNewTask();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rrn
  * JD-Core Version:    0.7.0.1
  */

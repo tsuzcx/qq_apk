@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/ce1" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/cfb" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+        <View android:layout_gravity="center_vertical" android:id="@id/cdk" android:background="@drawable/aho" android:layout_width="6.0dip" android:layout_height="6.0dip" />
+        <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:id="@id/cfc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="0秒" android:shadowColor="#80000000" android:shadowRadius="2.0" />
+    </LinearLayout>
+    <RelativeLayout android:clickable="false" android:layout_width="fill_parent" android:layout_height="125.0dip">
+        <ImageView android:gravity="center" android:id="@id/cdl" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_centerInParent="true" android:contentDescription="@string/qq5" />
+        <com.tencent.mobileqq.richmedia.capture.view.CaptureCircleProgress android:id="@id/bbg" android:background="@drawable/f6p" android:visibility="visible" android:layout_width="71.0dip" android:layout_height="71.0dip" android:layout_centerInParent="true" />
+        <View android:id="@id/gq9" android:background="@drawable/f69" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/cdm" android:focusable="false" android:focusableInTouchMode="false" android:visibility="gone" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@drawable/ahq" android:layout_centerInParent="true" android:contentDescription="@string/qq3" />
+    </RelativeLayout>
+</LinearLayout>

@@ -1,10 +1,5 @@
 package com.tencent.widget;
 
-import amkr;
-import amks;
-import amkt;
-import amku;
-import amkv;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -21,6 +16,13 @@ import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
+import bemt;
+import bemu;
+import bemv;
+import bemw;
+import bemx;
+import bemy;
+import bemz;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
 import java.util.ArrayList;
@@ -31,16 +33,16 @@ public class RangeButtonView
   extends View
 {
   private int jdField_a_of_type_Int;
-  public amkr a;
-  private amks jdField_a_of_type_Amks;
-  private amkt jdField_a_of_type_Amkt;
-  private amku jdField_a_of_type_Amku;
-  private amkv jdField_a_of_type_Amkv;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private RangeButtonView.OnChangeListener jdField_a_of_type_ComTencentWidgetRangeButtonView$OnChangeListener;
-  private List jdField_a_of_type_JavaUtilList;
-  private List b;
+  private bemt jdField_a_of_type_Bemt;
+  public bemu a;
+  private bemv jdField_a_of_type_Bemv;
+  private bemw jdField_a_of_type_Bemw;
+  private bemy jdField_a_of_type_Bemy;
+  private bemz jdField_a_of_type_Bemz;
+  private List<bemx> jdField_a_of_type_JavaUtilList;
+  private List<String> b;
   
   public RangeButtonView(Context paramContext)
   {
@@ -55,25 +57,25 @@ public class RangeButtonView
   public RangeButtonView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Amkr = new amkr(this);
+    this.jdField_a_of_type_Bemu = new bemu(this);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.RangeButtonView, 0, 0);
-    this.jdField_a_of_type_Amkr.jdField_a_of_type_Float = paramContext.getDimension(1, a(26.0F));
-    this.jdField_a_of_type_Amkr.jdField_b_of_type_Float = paramContext.getDimension(2, a(26.0F));
-    this.jdField_a_of_type_Amkr.f = paramContext.getDimension(3, a(8.0F));
-    this.jdField_a_of_type_Amkr.jdField_a_of_type_Int = paramContext.getColor(0, 17170446);
-    this.jdField_a_of_type_Amkr.jdField_c_of_type_Float = paramContext.getDimension(4, a(24.0F));
-    this.jdField_a_of_type_Amkr.jdField_b_of_type_Int = paramContext.getColor(5, 17170446);
-    this.jdField_a_of_type_Amkr.jdField_d_of_type_Float = paramContext.getDimension(6, a(8.0F));
-    this.jdField_a_of_type_Amkr.e = paramContext.getDimension(7, a(1.0F));
-    this.jdField_a_of_type_Amkr.jdField_d_of_type_Int = paramContext.getResourceId(9, 2130842566);
+    this.jdField_a_of_type_Bemu.jdField_a_of_type_Float = paramContext.getDimension(0, a(26.0F));
+    this.jdField_a_of_type_Bemu.jdField_b_of_type_Float = paramContext.getDimension(1, a(26.0F));
+    this.jdField_a_of_type_Bemu.f = paramContext.getDimension(8, a(8.0F));
+    this.jdField_a_of_type_Bemu.jdField_a_of_type_Int = paramContext.getColor(7, 17170446);
+    this.jdField_a_of_type_Bemu.jdField_c_of_type_Float = paramContext.getDimension(4, a(24.0F));
+    this.jdField_a_of_type_Bemu.jdField_b_of_type_Int = paramContext.getColor(2, 17170446);
+    this.jdField_a_of_type_Bemu.jdField_d_of_type_Float = paramContext.getDimension(3, a(8.0F));
+    this.jdField_a_of_type_Bemu.e = paramContext.getDimension(5, a(1.0F));
+    this.jdField_a_of_type_Bemu.jdField_d_of_type_Int = paramContext.getResourceId(6, 2130844283);
     paramContext.recycle();
     this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
     this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), this.jdField_a_of_type_Amkr.jdField_d_of_type_Int);
-    if (AppSetting.b)
+    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), this.jdField_a_of_type_Bemu.jdField_d_of_type_Int);
+    if (AppSetting.c)
     {
-      this.jdField_a_of_type_Amks = new amks(this, this);
-      ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_Amks);
+      this.jdField_a_of_type_Bemv = new bemv(this, this);
+      ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_Bemv);
       ViewCompat.setImportantForAccessibility(this, 1);
     }
   }
@@ -88,7 +90,7 @@ public class RangeButtonView
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       if (localIterator.hasNext())
       {
-        localTextPaint.setTextSize(((RangeButtonView.Title)localIterator.next()).jdField_a_of_type_Float);
+        localTextPaint.setTextSize(((bemx)localIterator.next()).jdField_a_of_type_Float);
         Paint.FontMetrics localFontMetrics = localTextPaint.getFontMetrics();
         if (i - Math.abs(localFontMetrics.top) >= 0.0F) {
           break label97;
@@ -119,7 +121,7 @@ public class RangeButtonView
   
   private int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
   {
-    ArrayList localArrayList = this.jdField_a_of_type_Amkv.a();
+    ArrayList localArrayList = this.jdField_a_of_type_Bemz.a();
     int i = 0;
     while (i < localArrayList.size())
     {
@@ -139,7 +141,7 @@ public class RangeButtonView
         }
         paramInt1 = i;
       } while (!paramBoolean);
-      this.jdField_a_of_type_Amkt.a(localPoint.x, localPoint.y);
+      this.jdField_a_of_type_Bemw.a(localPoint.x, localPoint.y);
       return i;
       i += 1;
     }
@@ -148,13 +150,19 @@ public class RangeButtonView
   
   private float b()
   {
-    return a() + this.jdField_a_of_type_Amkr.jdField_c_of_type_Float + Math.max(this.jdField_a_of_type_Amkr.jdField_d_of_type_Float, this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+    float f2 = a();
+    float f3 = this.jdField_a_of_type_Bemu.jdField_c_of_type_Float;
+    float f4 = this.jdField_a_of_type_Bemu.jdField_d_of_type_Float;
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {}
+    for (float f1 = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();; f1 = 0.0F) {
+      return Math.max(f4, f1) + (f3 + f2);
+    }
   }
   
   @TargetApi(14)
   protected boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
   {
-    if ((AppSetting.b) && (this.jdField_a_of_type_Amks.dispatchHoverEvent(paramMotionEvent))) {
+    if ((AppSetting.c) && (this.jdField_a_of_type_Bemv.dispatchHoverEvent(paramMotionEvent))) {
       return true;
     }
     return super.dispatchHoverEvent(paramMotionEvent);
@@ -163,25 +171,25 @@ public class RangeButtonView
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_Amku == null)
+    if (this.jdField_a_of_type_Bemy == null)
     {
-      this.jdField_a_of_type_Amkr.jdField_c_of_type_Int = this.jdField_a_of_type_JavaUtilList.size();
-      this.jdField_a_of_type_Amkv = new amkv((int)(getPaddingLeft() + this.jdField_a_of_type_Amkr.jdField_a_of_type_Float), (int)(getWidth() - this.jdField_a_of_type_Amkr.jdField_b_of_type_Float - getPaddingRight()), (int)(this.jdField_a_of_type_Amkr.f + this.jdField_a_of_type_Amkr.jdField_c_of_type_Float + a()), this.jdField_a_of_type_Amkr.jdField_c_of_type_Int);
-      this.jdField_a_of_type_Amkv.a(this.jdField_a_of_type_Amkr.jdField_d_of_type_Float);
-      Object localObject2 = this.jdField_a_of_type_Amkv.a();
+      this.jdField_a_of_type_Bemu.jdField_c_of_type_Int = this.jdField_a_of_type_JavaUtilList.size();
+      this.jdField_a_of_type_Bemz = new bemz((int)(getPaddingLeft() + this.jdField_a_of_type_Bemu.jdField_a_of_type_Float), (int)(getWidth() - this.jdField_a_of_type_Bemu.jdField_b_of_type_Float - getPaddingRight()), (int)(this.jdField_a_of_type_Bemu.f + this.jdField_a_of_type_Bemu.jdField_c_of_type_Float + a()), this.jdField_a_of_type_Bemu.jdField_c_of_type_Int);
+      this.jdField_a_of_type_Bemz.a(this.jdField_a_of_type_Bemu.jdField_d_of_type_Float);
+      Object localObject2 = this.jdField_a_of_type_Bemz.a();
       Object localObject1 = new ArrayList(((ArrayList)localObject2).size());
       localObject2 = ((ArrayList)localObject2).iterator();
       while (((Iterator)localObject2).hasNext()) {
         ((ArrayList)localObject1).add(Integer.valueOf(((Point)((Iterator)localObject2).next()).x));
       }
-      this.jdField_a_of_type_Amku = new amku(this, this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_Amku.a((ArrayList)localObject1, (int)(this.jdField_a_of_type_Amkr.f + a()));
-      localObject1 = (Point)this.jdField_a_of_type_Amkv.a().get(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Amkt = new amkt(((Point)localObject1).x, ((Point)localObject1).y, this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.jdField_a_of_type_Bemy = new bemy(this, this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_Bemy.a((ArrayList)localObject1, (int)(this.jdField_a_of_type_Bemu.f + a()));
+      localObject1 = (Point)this.jdField_a_of_type_Bemz.a().get(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Bemw = new bemw(((Point)localObject1).x, ((Point)localObject1).y, this.jdField_a_of_type_AndroidGraphicsBitmap);
     }
-    this.jdField_a_of_type_Amku.a(paramCanvas, this.jdField_a_of_type_AndroidTextTextPaint);
-    this.jdField_a_of_type_Amkv.a(paramCanvas, this.jdField_a_of_type_AndroidTextTextPaint, this.jdField_a_of_type_Amkr);
-    this.jdField_a_of_type_Amkt.a(paramCanvas, this.jdField_a_of_type_AndroidTextTextPaint);
+    this.jdField_a_of_type_Bemy.a(paramCanvas, this.jdField_a_of_type_AndroidTextTextPaint);
+    this.jdField_a_of_type_Bemz.a(paramCanvas, this.jdField_a_of_type_AndroidTextTextPaint, this.jdField_a_of_type_Bemu);
+    this.jdField_a_of_type_Bemw.a(paramCanvas, this.jdField_a_of_type_AndroidTextTextPaint);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -211,7 +219,7 @@ public class RangeButtonView
       break;
       label76:
       if (k != 1073741824) {
-        paramInt1 = (int)(getPaddingTop() + j + this.jdField_a_of_type_Amkr.f);
+        paramInt1 = (int)(getPaddingTop() + j + this.jdField_a_of_type_Bemu.f);
       }
     }
   }
@@ -227,48 +235,48 @@ public class RangeButtonView
     do
     {
       return true;
-      if ((this.jdField_a_of_type_Amkv == null) || (this.jdField_a_of_type_Amkt == null)) {
+      if ((this.jdField_a_of_type_Bemz == null) || (this.jdField_a_of_type_Bemw == null)) {
         return false;
       }
-      i = a((int)f1, (int)f2, this.jdField_a_of_type_Amkv.a() / 2, this.jdField_a_of_type_Amkt.a() / 2, true);
+      i = a((int)f1, (int)f2, this.jdField_a_of_type_Bemz.a() / 2, this.jdField_a_of_type_Bemw.a() / 2, true);
     } while ((i == this.jdField_a_of_type_Int) || (i == -1));
-    if (this.jdField_a_of_type_ComTencentWidgetRangeButtonView$OnChangeListener != null) {
-      this.jdField_a_of_type_ComTencentWidgetRangeButtonView$OnChangeListener.a(this.jdField_a_of_type_Int, i);
+    if (this.jdField_a_of_type_Bemt != null) {
+      this.jdField_a_of_type_Bemt.a(this.jdField_a_of_type_Int, i);
     }
     this.jdField_a_of_type_Int = i;
     invalidate();
     return true;
   }
   
-  public void setContentDescList(List paramList)
+  public void setContentDescList(List<String> paramList)
   {
     this.b = paramList;
   }
   
-  public void setOnChangerListener(RangeButtonView.OnChangeListener paramOnChangeListener)
+  public void setOnChangerListener(bemt parambemt)
   {
-    this.jdField_a_of_type_ComTencentWidgetRangeButtonView$OnChangeListener = paramOnChangeListener;
+    this.jdField_a_of_type_Bemt = parambemt;
   }
   
   public void setThumbPosition(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Amkv == null) {
+    if (this.jdField_a_of_type_Bemz == null) {
       return;
     }
-    Point localPoint = (Point)this.jdField_a_of_type_Amkv.a().get(paramInt);
-    this.jdField_a_of_type_Amkt.a(localPoint.x, localPoint.y);
+    Point localPoint = (Point)this.jdField_a_of_type_Bemz.a().get(paramInt);
+    this.jdField_a_of_type_Bemw.a(localPoint.x, localPoint.y);
     invalidate();
   }
   
-  public void setTitleData(List paramList)
+  public void setTitleData(List<bemx> paramList)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.widget.RangeButtonView
  * JD-Core Version:    0.7.0.1
  */

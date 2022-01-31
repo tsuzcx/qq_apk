@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class im_msg_body$TipsInfo
-  extends MessageMicro
+  extends MessageMicro<TipsInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "text" }, new Object[] { "" }, TipsInfo.class);
   public final PBStringField text = PBField.initString("");

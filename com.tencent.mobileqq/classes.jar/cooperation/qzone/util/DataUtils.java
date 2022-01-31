@@ -9,7 +9,7 @@ import java.io.Writer;
 
 public class DataUtils
 {
-  public static boolean a(Object paramObject)
+  public static boolean closeDataObject(Object paramObject)
   {
     if (paramObject == null) {}
     for (;;)

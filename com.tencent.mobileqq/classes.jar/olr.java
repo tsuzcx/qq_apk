@@ -1,35 +1,23 @@
-import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView.JustLogPlayProgressListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView.2;
 
 public class olr
-  extends NeoVideoFilterPlayView.JustLogPlayProgressListener
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public olr(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
+  public olr(VideoView.2 param2) {}
   
-  public void a()
+  public void onGlobalLayout()
   {
-    super.a();
-    this.a.l();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    super.a(paramInt1, paramInt2);
-  }
-  
-  public void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DanceMachineQQBrowserActivity", 2, "onPlayFrame");
-    }
-    super.a(paramLong);
-    try
+    if (VideoView.b(this.a.this$0) == VideoView.b)
     {
-      this.a.a(1000L * paramLong);
-      return;
+      if ((this.a.this$0.isShown()) && (this.a.this$0.a() != 7)) {
+        this.a.this$0.a();
+      }
+      if ((!this.a.this$0.isShown()) && (this.a.this$0.a() != 9)) {
+        this.a.this$0.F_();
+      }
     }
-    catch (InterruptedException localInterruptedException) {}
   }
 }
 

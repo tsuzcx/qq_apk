@@ -1,88 +1,37 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.MarkDrawable;
 
-public class aone
-  implements Animator.AnimatorListener
+class aone
+  extends aodp
 {
-  public aone(MarkDrawable paramMarkDrawable) {}
+  aone(aond paramaond) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  protected void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt2, String paramString6)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MarkDrawable", 2, "onAnimationCancel: mState:" + MarkDrawable.c(this.a) + " isrun:" + MarkDrawable.a(this.a));
+    if (QLog.isDevelopLevel()) {
+      QLog.i("PreviewStep_1", 4, "SUCCESS OnFileWeiYunPreview harcode[" + aonj.a + "]");
     }
-    if (this.a.isRunning())
+    if (aonj.a)
     {
-      MarkDrawable.e(this.a, MarkDrawable.c(this.a));
-      if (MarkDrawable.c(this.a) != 2) {
-        break label105;
-      }
-      this.a.a(3);
+      paramString4 = "183.61.37.13";
+      paramString5 = "443";
+      if (this.a.jdField_a_of_type_Anxs != null) {}
     }
-    for (;;)
+    else
     {
-      MarkDrawable.a(this.a, false);
-      return;
-      label105:
-      if (MarkDrawable.c(this.a) == 4) {
-        this.a.a(5);
-      } else if (MarkDrawable.c(this.a) == 5) {
-        this.a.a(1);
-      }
-    }
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MarkDrawable", 2, "onAnimationEnd: mState:" + MarkDrawable.c(this.a) + " isrun:" + MarkDrawable.a(this.a));
-    }
-    if (this.a.isRunning())
-    {
-      MarkDrawable.d(this.a, MarkDrawable.c(this.a));
-      if (MarkDrawable.c(this.a) != 2) {
-        break label105;
-      }
-      this.a.a(3);
-    }
-    for (;;)
-    {
-      MarkDrawable.a(this.a, false);
-      return;
-      label105:
-      if (MarkDrawable.c(this.a) == 4)
+      if ((paramString4 != null) && (paramString4.length() > 0)) {}
+      for (;;)
       {
-        this.a.a(0);
-      }
-      else if (MarkDrawable.c(this.a) == 5)
-      {
-        this.a.a(1);
-        MarkDrawable.a(this.a, 0);
-      }
-      else if (MarkDrawable.c(this.a) == 6)
-      {
-        this.a.a(2);
+        paramString5 = String.valueOf(paramInt2);
+        break;
+        paramString4 = paramString5;
       }
     }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("MarkDrawable", 2, "onAnimationStart: mState:" + MarkDrawable.c(this.a) + " isrun:" + MarkDrawable.a(this.a));
-    }
-    if (this.a.isRunning()) {
-      MarkDrawable.c(this.a, MarkDrawable.c(this.a));
-    }
+    this.a.jdField_a_of_type_Anxs.a(paramBoolean, paramString4, paramString5, paramInt1, paramString1, paramString2, paramString3, this.a.jdField_a_of_type_JavaLangString, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aone
  * JD-Core Version:    0.7.0.1
  */

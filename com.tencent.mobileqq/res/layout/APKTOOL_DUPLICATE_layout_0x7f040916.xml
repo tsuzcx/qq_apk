@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0009" android:textColor="#ffffffff" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2868" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021732" android:visibility="invisible" android:layout_width="87.0dip" android:layout_height="30.0dip" android:layout_marginBottom="13.0dip" android:text="参与话题" />
-</merge>

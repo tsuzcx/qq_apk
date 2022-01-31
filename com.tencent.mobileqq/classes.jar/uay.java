@@ -1,22 +1,36 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
+import com.tribe.async.dispatch.Subscriber;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
-class uay
-  implements Runnable
+public class uay
+  implements Subscriber
 {
-  uay(uax paramuax, int paramInt, String paramString) {}
+  private WeakReference<QQStoryBaseActivity> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void run()
+  public uay(QQStoryBaseActivity paramQQStoryBaseActivity1, QQStoryBaseActivity paramQQStoryBaseActivity2)
   {
-    if ((this.jdField_a_of_type_Int <= 0) && (this.jdField_a_of_type_Uax.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.e)) {
-      this.jdField_a_of_type_Uax.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQStoryBaseActivity2);
+  }
+  
+  public void accept(@NonNull List<Class<? extends Dispatcher.Dispatchable>> paramList)
+  {
+    paramList.add(vle.class);
+  }
+  
+  public void handleDispatch(@NonNull Dispatcher.Dispatchable paramDispatchable)
+  {
+    paramDispatchable = (QQStoryBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramDispatchable != null) {
+      paramDispatchable.c();
     }
-    this.jdField_a_of_type_Uax.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uay
  * JD-Core Version:    0.7.0.1
  */

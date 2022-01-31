@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.widget.ThemeURLImageView android:layout_gravity="center_vertical" android:id="@id/joy" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginRight="2.0dip" android:src="@drawable/bqw" android:scaleType="centerCrop" android:layout_weight="0.0" />
+        <TextView android:textSize="16.0dip" android:textColor="#ff6991b8" android:ellipsize="end" android:id="@id/cbf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="3.0dip" android:maxLines="1" android:singleLine="true" android:layout_weight="1.0" />
+        <TextView android:textSize="14.0dip" android:textColor="#ff737373" android:id="@id/f0q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_weight="0.0" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/f06" android:layout_width="wrap_content" android:layout_height="13.0dip" android:src="@drawable/skin_unite_search_common_right_arrow" android:layout_weight="0.0" />
+    </LinearLayout>
+    <TextView android:textSize="12.0dip" android:textColor="#ff737373" android:ellipsize="end" android:id="@id/il9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:maxLines="1" android:singleLine="true" />
+</LinearLayout>

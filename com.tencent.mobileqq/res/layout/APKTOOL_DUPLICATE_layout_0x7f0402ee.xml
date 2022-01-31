@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <HorizontalScrollView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1071" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1072" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <GridView android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1073" android:scrollbars="none" android:fadingEdge="none" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        </LinearLayout>
-    </HorizontalScrollView>
-</RelativeLayout>

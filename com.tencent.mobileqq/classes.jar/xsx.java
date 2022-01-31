@@ -1,25 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import android.view.View;
+import java.lang.ref.WeakReference;
 
 public class xsx
-  implements DialogInterface.OnClickListener
 {
-  public xsx(LoginView paramLoginView) {}
+  public WeakReference<View> a;
+  public WeakReference<amsl> b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public xsx(xsw paramxsw, View paramView, amsl paramamsl)
   {
-    try
-    {
-      paramDialogInterface.dismiss();
-      return;
-    }
-    catch (Exception paramDialogInterface) {}
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.b = new WeakReference(paramamsl);
+  }
+  
+  public amsl a()
+  {
+    return (amsl)this.b.get();
+  }
+  
+  public View a()
+  {
+    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     xsx
  * JD-Core Version:    0.7.0.1
  */

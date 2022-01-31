@@ -1,20 +1,43 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.observer.GameCenterObserver;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetUserSelfInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserSelfInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
 public class ums
-  extends GameCenterObserver
+  extends slz<umt>
 {
-  public ums(VisitorsActivity paramVisitorsActivity) {}
+  public static final String a = skt.a("StorySvc.get_user_base_info");
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public String a()
   {
-    this.a.e();
+    return a;
+  }
+  
+  public umt a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetUserSelfInfo localRspGetUserSelfInfo = new qqstory_service.RspGetUserSelfInfo();
+    try
+    {
+      localRspGetUserSelfInfo.mergeFrom(paramArrayOfByte);
+      return new umt(localRspGetUserSelfInfo);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+        urk.c("Q.qqstory.home.GetUserSelfInfoStep", "decodeResponse error=%s", paramArrayOfByte);
+      }
+    }
+  }
+  
+  protected byte[] a()
+  {
+    return new qqstory_service.ReqGetUserSelfInfo().toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ums
  * JD-Core Version:    0.7.0.1
  */

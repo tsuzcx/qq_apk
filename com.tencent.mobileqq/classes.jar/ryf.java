@@ -1,18 +1,35 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import UserGrowth.stH5OpInfo;
+import UserGrowth.stSimpleMetaFeed;
+import android.content.Context;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
 
 class ryf
-  implements Runnable
+  implements sar
 {
-  ryf(rye paramrye) {}
+  ryf(rye paramrye, Context paramContext, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed) {}
   
-  public void run()
+  public void a(String paramString, int paramInt)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+    rye.a(this.jdField_a_of_type_Rye, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, paramString, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, 501);
+    rzw.a(114, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.type, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.id);
+    WSPublicAccReport.getInstance().reportOperationCard("gzh_click", 1000003, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.id);
+  }
+  
+  public void b(String paramString, int paramInt)
+  {
+    rye.a(this.jdField_a_of_type_Rye, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+  }
+  
+  public void c(String paramString, int paramInt)
+  {
+    rye.a(this.jdField_a_of_type_Rye, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+    rzw.a(115, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.type, this.jdField_a_of_type_Int, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.id);
+    WSPublicAccReport.getInstance().reportOperationCard("gzh_click", 1000002, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.h5_op_info.id);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ryf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,16 @@
-import android.os.Handler;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.armap.ShopScanActivity;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
 public class ablc
-  implements Runnable
+  extends ablf
 {
-  public ablc(ShopScanActivity paramShopScanActivity) {}
-  
-  public void run()
-  {
-    ShopScanActivity.b(this.a);
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.a.d.setVisibility(0);
-    this.a.f.setVisibility(4);
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(292);
-  }
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  TextView b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ablc
  * JD-Core Version:    0.7.0.1
  */

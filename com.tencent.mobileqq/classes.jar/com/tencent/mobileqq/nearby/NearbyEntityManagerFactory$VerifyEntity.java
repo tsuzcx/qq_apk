@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.nearby;
 
-import com.tencent.mobileqq.persistence.Entity;
+import atmo;
 
 public class NearbyEntityManagerFactory$VerifyEntity
-  extends Entity
+  extends atmo
 {
   public String flags = "nearby_verify_entity";
   public String name = "";

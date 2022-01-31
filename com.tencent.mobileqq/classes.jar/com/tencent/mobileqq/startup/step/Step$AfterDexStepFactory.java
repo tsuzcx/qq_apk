@@ -1,81 +1,94 @@
 package com.tencent.mobileqq.startup.step;
 
-import com.tencent.mobileqq.startup.director.StartupDirector;
+import awoa;
+import awpn;
 
 public class Step$AfterDexStepFactory
-  implements Step.IStepFactory
+  implements awpn
 {
-  public Step a(int paramInt, StartupDirector paramStartupDirector, int[] paramArrayOfInt)
+  public Step a(int paramInt, awoa paramawoa, int[] paramArrayOfInt)
   {
-    paramStartupDirector = null;
+    paramawoa = null;
     switch (paramInt)
     {
-    case 6: 
     case 7: 
     case 8: 
-    case 11: 
-    case 19: 
-    default: 
-      paramStartupDirector = new Step();
-    case 29: 
-      return paramStartupDirector;
-    case 5: 
-    case 17: 
-      return new LoadData();
-    case 4: 
-      return new NewRuntime();
     case 9: 
-      return new InitSkin();
-    case 10: 
-      return new InitUrlDrawable();
     case 12: 
-      return new Rdm();
-    case 13: 
-      return new ManageThread();
-    case 15: 
-      return new LoadUi();
-    case 16: 
-      return new LoadOtherStuff();
-    case 18: 
-      return new InitQzoneTracer();
     case 20: 
-      return new StartServiceLiteCmp();
-    case 21: 
-      return new UpdateBubbleZip();
-    case 22: 
-      return new UpdateAvSo();
-    case 23: 
-      return new UpdateArkSo();
-    case 24: 
-      return new UpdateRMSo();
-    case 25: 
-      return new SetPlugin();
-    case 26: 
-      return new UpdatePluginVersion();
-    case 27: 
-      return new WebP();
+    default: 
+      paramawoa = new Step();
     case 30: 
-      return new PreInitValues();
+      return paramawoa;
+    case 6: 
+    case 18: 
+      return new LoadData();
+    case 5: 
+      return new NewRuntime();
+    case 10: 
+      return new InitSkin();
+    case 11: 
+      return new InitUrlDrawable();
+    case 13: 
+      return new Rdm();
     case 14: 
-      return new InitMagnifierSDK();
+      return new ManageThread();
+    case 16: 
+      return new LoadUi();
+    case 17: 
+      return new LoadOtherStuff();
+    case 19: 
+      return new InitQzoneTracer();
+    case 21: 
+      return new StartServiceLiteCmp();
+    case 22: 
+      return new UpdateBubbleZip();
+    case 23: 
+      return new UpdateAvSo();
+    case 24: 
+      return new UpdateArkSo();
+    case 25: 
+      return new UpdateRMSo();
+    case 26: 
+      return new SetPlugin();
+    case 27: 
+      return new UpdatePluginVersion();
     case 28: 
-      return new InitHook();
+      return new WebP();
     case 31: 
-      return new InjectBitmap();
+      return new PreInitValues();
+    case 15: 
+      return new InitMagnifierSDK();
+    case 29: 
+      return new InitHook();
     case 32: 
-      return new MigrateSubscribeDB();
+      return new InjectBitmap();
     case 33: 
-      return new UpdatePatchConfig();
+      return new MigrateSubscribeDB();
     case 34: 
-      return new InstallPlugins();
+      return new UpdatePatchConfig();
     case 35: 
-      return new HuayangPluginContainer();
+      return new UpdateSecureFileStrategy();
     case 36: 
-      return new ThreadHookStep();
+      return new InstallPlugins();
     case 37: 
+      return new HuayangPluginContainer();
+    case 38: 
+      return new ThreadHookStep();
+    case 39: 
       return new QzoneTracer();
+    case 40: 
+      return new OpenThreadCreateHook();
+    case 41: 
+    case 42: 
+    case 43: 
+      return new HackVm();
+    case 44: 
+      return new BroadcastReportRegister();
+    case 45: 
+      return RecordTracer.a();
     }
-    return new OpenThreadCreateHook();
+    return new NowliveContainer();
   }
 }
 

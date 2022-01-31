@@ -5,7 +5,7 @@ import java.io.File;
 
 public abstract interface FileUtils$AssetFileComparator
 {
-  public abstract boolean a(Context paramContext, String paramString, File paramFile);
+  public abstract boolean equals(Context paramContext, String paramString, File paramFile);
 }
 
 

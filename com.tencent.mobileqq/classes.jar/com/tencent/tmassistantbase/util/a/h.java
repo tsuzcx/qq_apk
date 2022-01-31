@@ -6,7 +6,9 @@ import android.os.Looper;
 import android.util.Log;
 import com.tencent.tmassistant.common.jce.BypassInterceptConfig;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.l;
+import com.tencent.tmdownloader.f;
 import com.tencent.tmdownloader.internal.storage.b;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -58,15 +60,15 @@ public class h
       localStringBuilder.append(",");
     }
     localStringBuilder.append("]");
-    r.c("miles", localStringBuilder.toString());
+    ac.c("miles", localStringBuilder.toString());
     if (localBypassInterceptConfig.status == 1)
     {
-      r.c("miles", "<checkPkg> status == 1, allow all pkg");
+      ac.c("miles", "<checkPkg> status == 1, allow all pkg");
       return true;
     }
     if ((localBypassInterceptConfig.pkgList != null) && (localBypassInterceptConfig.pkgList.contains(paramString)))
     {
-      r.c("miles", "<checkPkg> pkgList contains " + paramString + ",allow install");
+      ac.c("miles", "<checkPkg> pkgList contains " + paramString + ",allow install");
       return true;
     }
     return false;
@@ -76,7 +78,7 @@ public class h
   {
     long l = System.currentTimeMillis();
     BypassInterceptConfig localBypassInterceptConfig = (BypassInterceptConfig)b.a().a("key_bypass_config", BypassInterceptConfig.class);
-    r.c("miles", "读取配置耗时：" + (System.currentTimeMillis() - l) + "ms");
+    ac.c("miles", "读取配置耗时：" + (System.currentTimeMillis() - l) + "ms");
     return (localBypassInterceptConfig != null) && (localBypassInterceptConfig.status != 0);
   }
   
@@ -100,13 +102,13 @@ public class h
     if (GlobalUtil.getInstance().getContext() == null)
     {
       GlobalUtil.getInstance().setContext(paramContext.getApplicationContext());
-      com.tencent.tmdownloader.f.a();
+      f.a();
     }
     StringBuilder localStringBuilder = new StringBuilder().append("Thread.currentThread() == Looper.getMainLooper().getThread() is ");
     if (Thread.currentThread() == Looper.getMainLooper().getThread()) {}
     for (boolean bool = true;; bool = false)
     {
-      r.c("miles", bool);
+      ac.c("miles", bool);
       if (!b()) {
         break;
       }
@@ -124,16 +126,16 @@ public class h
       if ((this.d != null) && (!this.d.c())) {
         this.d.a(true);
       }
-      r.c("miles", "<hookAM4Install> time cost:" + (System.currentTimeMillis() - l));
-      com.tencent.tmassistantbase.util.f.a().post(new i(this));
+      ac.c("miles", "<hookAM4Install> time cost:" + (System.currentTimeMillis() - l));
+      l.a().post(new i(this));
       return;
     }
-    r.c("miles", "<hookAM4Install> hook denied");
+    ac.c("miles", "<hookAM4Install> hook denied");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.a.h
  * JD-Core Version:    0.7.0.1
  */

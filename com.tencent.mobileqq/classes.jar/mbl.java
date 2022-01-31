@@ -1,26 +1,18 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo.Biu0x210Msg;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.view.MotionEvent;
 
-public class mbl
-  implements Runnable
+public abstract interface mbl
 {
-  public mbl(KandianOx210MsgInfo.Biu0x210Msg paramBiu0x210Msg, QQAppInterface paramQQAppInterface) {}
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, long paramLong);
   
-  public void run()
-  {
-    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, false).edit();
-    localEditor.remove("kandian_biu_0x210_seq");
-    localEditor.remove("kandian_biu_0x210_uin");
-    localEditor.remove("kandian_biu_0x210_status");
-    ReadInJoyHelper.a(localEditor, true);
-  }
+  public abstract void a(int paramInt, long paramLong);
+  
+  public abstract void a(MotionEvent paramMotionEvent);
+  
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mbl
  * JD-Core Version:    0.7.0.1
  */

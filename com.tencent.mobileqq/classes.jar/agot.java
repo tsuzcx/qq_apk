@@ -1,35 +1,48 @@
-import android.content.Intent;
+import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.openapi.OpenApiManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import java.io.File;
+import java.util.Map;
 
-public class agot
-  implements Runnable
+class agot
+  extends agpp
 {
-  public agot(OpenApiManager paramOpenApiManager, QQAppInterface paramQQAppInterface, boolean paramBoolean) {}
-  
-  public void run()
+  agot(agos paramagos, batl parambatl)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("OpenApi.Manager", 2, "onRuntimeDisactive, app = " + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface + ", current = " + OpenApiManager.access$000(this.jdField_a_of_type_ComTencentMobileqqOpenapiOpenApiManager) + ", " + this.jdField_a_of_type_Boolean);
-    }
-    if ((OpenApiManager.access$000(this.jdField_a_of_type_ComTencentMobileqqOpenapiOpenApiManager) != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == OpenApiManager.access$000(this.jdField_a_of_type_ComTencentMobileqqOpenapiOpenApiManager)))
+    super(parambatl);
+  }
+  
+  public void onDoneFile(batm parambatm)
+  {
+    long l2 = -1L;
+    super.onDoneFile(parambatm);
+    if ((parambatm != null) && (parambatm.jdField_a_of_type_JavaUtilMap != null) && (!TextUtils.isEmpty(parambatm.jdField_a_of_type_JavaLangString)))
     {
-      OpenApiManager.access$000(this.jdField_a_of_type_ComTencentMobileqqOpenapiOpenApiManager).removeObserver(OpenApiManager.access$100(this.jdField_a_of_type_ComTencentMobileqqOpenapiOpenApiManager));
-      OpenApiManager.access$200(this.jdField_a_of_type_ComTencentMobileqqOpenapiOpenApiManager).clear();
-      OpenApiManager.access$300(this.jdField_a_of_type_ComTencentMobileqqOpenapiOpenApiManager).clear();
-      OpenApiManager.access$402(this.jdField_a_of_type_ComTencentMobileqqOpenapiOpenApiManager, 0);
-      OpenApiManager.access$502(this.jdField_a_of_type_ComTencentMobileqqOpenapiOpenApiManager, 0);
-      OpenApiManager.access$002(this.jdField_a_of_type_ComTencentMobileqqOpenapiOpenApiManager, null);
-      BaseApplicationImpl.sApplication.sendBroadcast(new Intent("com.tencent.mobileqq.openapi.ACTION_LOGOUT"));
+      File localFile = (File)parambatm.jdField_a_of_type_JavaUtilMap.get(parambatm.jdField_a_of_type_JavaLangString);
+      if (localFile != null)
+      {
+        Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        if (localObject != null)
+        {
+          localObject = (axxj)((QQAppInterface)localObject).getManager(193);
+          String str = parambatm.jdField_a_of_type_JavaLangString;
+          long l1 = l2;
+          if (parambatm.jdField_a_of_type_Int == 0)
+          {
+            l1 = l2;
+            if (localFile.exists()) {
+              l1 = localFile.length();
+            }
+          }
+          ((axxj)localObject).a(str, l1);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agot
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class nearfield_group$ReqJoinGroup
-  extends MessageMicro
+  extends MessageMicro<ReqJoinGroup>
 {
   public static final int BYTES_DISTANCE_FIELD_NUMBER = 4;
   public static final int MSG_HEAD_FIELD_NUMBER = 1;
@@ -28,7 +28,7 @@ public final class nearfield_group$ReqJoinGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.nearfield_group.nearfield_group.ReqJoinGroup
  * JD-Core Version:    0.7.0.1
  */

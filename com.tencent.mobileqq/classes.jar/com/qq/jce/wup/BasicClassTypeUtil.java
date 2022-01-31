@@ -31,126 +31,125 @@ public class BasicClassTypeUtil
   
   /* Error */
   public static Object createClassByName(String paramString)
-    throws ObjectCreateException
   {
     // Byte code:
     //   0: aload_0
-    //   1: ldc 54
-    //   3: invokevirtual 58	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   1: ldc 52
+    //   3: invokevirtual 56	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   6: ifeq +10 -> 16
     //   9: iconst_0
-    //   10: invokestatic 64	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   10: invokestatic 62	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   13: astore_1
     //   14: aload_1
     //   15: areturn
     //   16: aload_0
-    //   17: ldc 66
-    //   19: invokevirtual 58	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   17: ldc 64
+    //   19: invokevirtual 56	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   22: ifeq +8 -> 30
     //   25: iconst_0
-    //   26: invokestatic 71	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   26: invokestatic 69	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   29: areturn
     //   30: aload_0
-    //   31: ldc 73
-    //   33: invokevirtual 58	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   31: ldc 71
+    //   33: invokevirtual 56	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   36: ifeq +8 -> 44
     //   39: iconst_0
-    //   40: invokestatic 78	java/lang/Byte:valueOf	(B)Ljava/lang/Byte;
+    //   40: invokestatic 76	java/lang/Byte:valueOf	(B)Ljava/lang/Byte;
     //   43: areturn
     //   44: aload_0
-    //   45: ldc 80
-    //   47: invokevirtual 58	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   45: ldc 78
+    //   47: invokevirtual 56	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   50: ifeq +8 -> 58
     //   53: dconst_0
-    //   54: invokestatic 85	java/lang/Double:valueOf	(D)Ljava/lang/Double;
+    //   54: invokestatic 83	java/lang/Double:valueOf	(D)Ljava/lang/Double;
     //   57: areturn
     //   58: aload_0
-    //   59: ldc 87
-    //   61: invokevirtual 58	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   59: ldc 85
+    //   61: invokevirtual 56	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   64: ifeq +8 -> 72
     //   67: fconst_0
-    //   68: invokestatic 92	java/lang/Float:valueOf	(F)Ljava/lang/Float;
+    //   68: invokestatic 90	java/lang/Float:valueOf	(F)Ljava/lang/Float;
     //   71: areturn
     //   72: aload_0
-    //   73: ldc 94
-    //   75: invokevirtual 58	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   73: ldc 92
+    //   75: invokevirtual 56	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   78: ifeq +8 -> 86
     //   81: lconst_0
-    //   82: invokestatic 99	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   82: invokestatic 97	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   85: areturn
     //   86: aload_0
-    //   87: ldc 101
-    //   89: invokevirtual 58	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   87: ldc 99
+    //   89: invokevirtual 56	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   92: ifeq +8 -> 100
     //   95: iconst_0
-    //   96: invokestatic 106	java/lang/Short:valueOf	(S)Ljava/lang/Short;
+    //   96: invokestatic 104	java/lang/Short:valueOf	(S)Ljava/lang/Short;
     //   99: areturn
     //   100: aload_0
-    //   101: ldc 108
-    //   103: invokevirtual 58	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   101: ldc 106
+    //   103: invokevirtual 56	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   106: ifeq +13 -> 119
-    //   109: new 110	java/lang/IllegalArgumentException
+    //   109: new 108	java/lang/IllegalArgumentException
     //   112: dup
-    //   113: ldc 112
-    //   115: invokespecial 115	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
+    //   113: ldc 110
+    //   115: invokespecial 113	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
     //   118: athrow
     //   119: aload_0
-    //   120: ldc 117
-    //   122: invokevirtual 58	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   120: ldc 115
+    //   122: invokevirtual 56	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   125: ifeq +6 -> 131
-    //   128: ldc 119
+    //   128: ldc 117
     //   130: areturn
     //   131: aload_0
-    //   132: ldc 121
-    //   134: invokevirtual 58	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   132: ldc 119
+    //   134: invokevirtual 56	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   137: ifeq +11 -> 148
     //   140: new 40	java/util/ArrayList
     //   143: dup
-    //   144: invokespecial 122	java/util/ArrayList:<init>	()V
+    //   144: invokespecial 120	java/util/ArrayList:<init>	()V
     //   147: areturn
     //   148: aload_0
-    //   149: ldc 124
-    //   151: invokevirtual 58	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   149: ldc 122
+    //   151: invokevirtual 56	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   154: ifeq +11 -> 165
-    //   157: new 126	java/util/HashMap
+    //   157: new 124	java/util/HashMap
     //   160: dup
-    //   161: invokespecial 127	java/util/HashMap:<init>	()V
+    //   161: invokespecial 125	java/util/HashMap:<init>	()V
     //   164: areturn
     //   165: aload_0
-    //   166: ldc 129
-    //   168: invokevirtual 58	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   166: ldc 127
+    //   168: invokevirtual 56	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   171: ifeq +6 -> 177
-    //   174: ldc 129
+    //   174: ldc 127
     //   176: areturn
     //   177: aload_0
     //   178: astore_1
     //   179: aload_0
-    //   180: ldc 131
-    //   182: invokevirtual 58	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   180: ldc 129
+    //   182: invokevirtual 56	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   185: ifne -171 -> 14
     //   188: getstatic 12	com/qq/jce/wup/BasicClassTypeUtil:classLoader	Ljava/lang/ClassLoader;
     //   191: ifnull +30 -> 221
     //   194: aload_0
     //   195: getstatic 14	com/qq/jce/wup/BasicClassTypeUtil:classLoaderInitialize	Z
     //   198: getstatic 12	com/qq/jce/wup/BasicClassTypeUtil:classLoader	Ljava/lang/ClassLoader;
-    //   201: invokestatic 137	java/lang/Class:forName	(Ljava/lang/String;ZLjava/lang/ClassLoader;)Ljava/lang/Class;
+    //   201: invokestatic 135	java/lang/Class:forName	(Ljava/lang/String;ZLjava/lang/ClassLoader;)Ljava/lang/Class;
     //   204: astore_0
     //   205: aload_0
     //   206: iconst_0
-    //   207: anewarray 133	java/lang/Class
-    //   210: invokevirtual 141	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+    //   207: anewarray 131	java/lang/Class
+    //   210: invokevirtual 139	java/lang/Class:getConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
     //   213: iconst_0
     //   214: anewarray 4	java/lang/Object
-    //   217: invokevirtual 147	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
+    //   217: invokevirtual 145	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
     //   220: areturn
     //   221: aload_0
-    //   222: invokestatic 150	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   222: invokestatic 148	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
     //   225: astore_0
     //   226: goto -21 -> 205
     //   229: astore_0
     //   230: aload_0
-    //   231: invokevirtual 153	java/lang/Exception:printStackTrace	()V
-    //   234: new 50	com/qq/jce/wup/ObjectCreateException
+    //   231: invokevirtual 151	java/lang/Exception:printStackTrace	()V
+    //   234: new 153	com/qq/jce/wup/ObjectCreateException
     //   237: dup
     //   238: aload_0
     //   239: invokespecial 156	com/qq/jce/wup/ObjectCreateException:<init>	(Ljava/lang/Exception;)V
@@ -167,116 +166,111 @@ public class BasicClassTypeUtil
   }
   
   public static Object createClassByUni(String paramString)
-    throws ObjectCreateException
   {
-    paramString = getTypeList(paramString);
-    Object localObject2 = null;
-    Iterator localIterator = paramString.iterator();
+    Iterator localIterator = getTypeList(paramString).iterator();
+    Object localObject3 = null;
     paramString = null;
-    Object localObject1 = null;
-    Object localObject3;
+    Object localObject2 = null;
+    Object localObject1;
     if (localIterator.hasNext())
     {
-      localObject2 = createClassByName((String)localIterator.next());
-      if ((localObject2 instanceof String)) {
-        if ("Array".equals((String)localObject2))
+      localObject1 = createClassByName((String)localIterator.next());
+      if ((localObject1 instanceof String)) {
+        if ("Array".equals((String)localObject1))
         {
-          if (localObject1 != null) {
-            break label308;
+          if (localObject2 != null) {
+            break label310;
           }
-          localObject2 = Array.newInstance(Byte.class, 0);
-          localObject3 = localObject1;
-          localObject1 = paramString;
-          paramString = (String)localObject3;
+          localObject3 = Array.newInstance(Byte.class, 0);
+          localObject1 = localObject2;
         }
       }
     }
     for (;;)
     {
-      localObject3 = localObject1;
-      localObject1 = paramString;
-      paramString = (String)localObject3;
+      localObject2 = localObject1;
       break;
-      if ("?".equals((String)localObject2))
+      if ("?".equals((String)localObject1))
       {
-        localObject3 = paramString;
-        paramString = (String)localObject1;
-        localObject1 = localObject3;
-      }
-      else if (localObject1 == null)
-      {
+        localObject3 = localObject1;
         localObject1 = localObject2;
-        localObject3 = paramString;
-        paramString = (String)localObject1;
-        localObject1 = localObject3;
+      }
+      else if (localObject2 == null)
+      {
+        localObject2 = localObject1;
+        localObject3 = localObject1;
+        localObject1 = localObject2;
       }
       else
       {
-        paramString = (String)localObject2;
+        paramString = localObject2;
+        localObject2 = localObject1;
+        localObject3 = localObject1;
+        localObject1 = localObject2;
         continue;
-        if ((localObject2 instanceof List))
+        if ((localObject1 instanceof List))
         {
-          if ((localObject1 != null) && ((localObject1 instanceof Byte)))
+          if ((localObject2 != null) && ((localObject2 instanceof Byte)))
           {
             localObject3 = Array.newInstance(Byte.class, 1);
-            Array.set(localObject3, 0, localObject1);
-            localObject2 = paramString;
-            paramString = (String)localObject1;
+            Array.set(localObject3, 0, localObject2);
             localObject1 = localObject2;
-            localObject2 = localObject3;
           }
           else
           {
-            if (localObject1 != null) {
-              ((List)localObject2).add(localObject1);
+            if (localObject2 != null) {
+              ((List)localObject1).add(localObject2);
             }
-            localObject3 = null;
-            localObject1 = paramString;
-            paramString = (String)localObject3;
+            localObject2 = null;
+            localObject3 = localObject1;
+            localObject1 = localObject2;
           }
         }
         else
         {
-          if ((localObject2 instanceof Map))
+          if ((localObject1 instanceof Map))
           {
             int i;
-            if (localObject1 != null)
+            if (localObject2 != null)
             {
               i = 1;
-              label239:
+              label226:
               if (paramString == null) {
-                break label276;
+                break label270;
               }
             }
-            label276:
+            label270:
             for (int j = 1;; j = 0)
             {
               if ((j & i) != 0) {
-                ((Map)localObject2).put(localObject1, paramString);
+                ((Map)localObject1).put(localObject2, paramString);
               }
               paramString = null;
-              localObject1 = null;
+              localObject2 = null;
+              localObject3 = localObject1;
+              localObject1 = localObject2;
               break;
               i = 0;
-              break label239;
+              break label226;
             }
           }
-          if (localObject1 == null)
+          if (localObject2 == null)
           {
+            localObject2 = localObject1;
+            localObject3 = localObject1;
             localObject1 = localObject2;
-            localObject3 = paramString;
-            paramString = (String)localObject1;
-            localObject1 = localObject3;
           }
           else
           {
-            paramString = (String)localObject2;
+            paramString = localObject2;
+            localObject2 = localObject1;
+            localObject3 = localObject1;
+            localObject1 = localObject2;
             continue;
-            return localObject2;
-            label308:
-            localObject3 = paramString;
-            paramString = (String)localObject1;
-            localObject1 = localObject3;
+            return localObject3;
+            label310:
+            localObject3 = localObject1;
+            localObject1 = localObject2;
           }
         }
       }
@@ -318,33 +312,30 @@ public class BasicClassTypeUtil
   public static ArrayList<String> getTypeList(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
-    int m = 0;
+    int j = 0;
     int i = paramString.indexOf("<");
-    while (m < i)
+    for (;;)
     {
-      addType(localArrayList, paramString.substring(m, i));
-      int n = i + 1;
-      i = paramString.indexOf("<", n);
-      int k = paramString.indexOf(",", n);
-      int j = i;
-      if (i == -1) {
-        j = k;
-      }
-      m = n;
-      i = j;
-      if (k != -1)
+      if (j < i)
       {
-        m = n;
-        i = j;
-        if (k < j)
-        {
+        addType(localArrayList, paramString.substring(j, i));
+        j = i + 1;
+        int m = paramString.indexOf("<", j);
+        int k = paramString.indexOf(",", j);
+        i = m;
+        if (m == -1) {
           i = k;
-          m = n;
+        }
+        if ((k != -1) && (k < i)) {
+          i = k;
         }
       }
+      else
+      {
+        addType(localArrayList, paramString.substring(j, paramString.length()));
+        return localArrayList;
+      }
     }
-    addType(localArrayList, paramString.substring(m, paramString.length()));
-    return localArrayList;
   }
   
   public static String getVariableInit(String paramString1, String paramString2)

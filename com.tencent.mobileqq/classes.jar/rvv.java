@@ -1,21 +1,25 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
-public class rvv
-  implements Runnable
+final class rvv
+  implements bbsh
 {
-  public rvv(BaseChatPie paramBaseChatPie) {}
-  
-  public void run()
+  public void a(BaseResp paramBaseResp)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, 10);
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      bbmy.a(BaseApplicationImpl.getContext(), 2, 2131653595, 1).a();
+    case -2: 
+      return;
+    }
+    bbmy.a(BaseApplicationImpl.getContext(), 2, 2131653612, 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rvv
  * JD-Core Version:    0.7.0.1
  */

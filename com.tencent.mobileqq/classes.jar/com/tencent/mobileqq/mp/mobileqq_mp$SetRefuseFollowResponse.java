@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class mobileqq_mp$SetRefuseFollowResponse
-  extends MessageMicro
+  extends MessageMicro<SetRefuseFollowResponse>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "ret_info" }, new Object[] { null }, SetRefuseFollowResponse.class);
   public mobileqq_mp.RetInfo ret_info = new mobileqq_mp.RetInfo();

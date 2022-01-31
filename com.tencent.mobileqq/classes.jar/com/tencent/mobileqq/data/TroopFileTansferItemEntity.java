@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.troop.data.TroopFileInfo.FileStatus;
+import atmo;
+import ayor;
 import java.util.UUID;
 
 public class TroopFileTansferItemEntity
-  extends Entity
+  extends atmo
 {
   public int BusId;
   public int ErrorCode;
@@ -28,6 +28,7 @@ public class TroopFileTansferItemEntity
   public int RandomNum;
   public int SafeCheckRes;
   public byte[] Sha;
+  public String Sha3;
   public int Status;
   public long ThumbnailFileTimeMS_Large;
   public long ThumbnailFileTimeMS_Middle;
@@ -45,6 +46,7 @@ public class TroopFileTansferItemEntity
   public String middleThumbnailFile;
   public long origLastModifyTime;
   public String smallThumbFile;
+  public String strQRUrl;
   public long troopuin;
   public int width;
   public int zipBusId;
@@ -52,7 +54,7 @@ public class TroopFileTansferItemEntity
   public String zipInnerPath;
   public int zipType;
   
-  protected Class getClassForTable()
+  public Class<? extends atmo> getClassForTable()
   {
     return TroopFileTansferItemEntity.class;
   }
@@ -62,9 +64,9 @@ public class TroopFileTansferItemEntity
     return "TroopFileTansferItemEntity" + this.troopuin;
   }
   
-  protected void postRead()
+  public void postRead()
   {
-    this.Status = TroopFileInfo.FileStatus.a(this._sStatus);
+    this.Status = ayor.a(this._sStatus);
     this._sStatus = null;
     this.Id = UUID.fromString(this._sId);
     this._sId = null;
@@ -75,9 +77,9 @@ public class TroopFileTansferItemEntity
     prewrite();
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
-    this._sStatus = TroopFileInfo.FileStatus.a(this.Status);
+    this._sStatus = ayor.a(this.Status);
     this._sId = this.Id.toString();
   }
 }

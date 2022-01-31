@@ -1,0 +1,140 @@
+{
+	"ReadInjoy_native_recommend_small_cell": {
+		"view_type": "cell",
+		"view_id": "id_native_recommend_small_container",
+		"layout_type": "layout_relative",
+		"height": {
+			"type": "wrap_content"
+		},
+		"width": {
+			"type": "relative",
+			"value": "375"
+		},
+		"subviews": [{
+			"view_type": "UIView",
+			"view_id": "id_native_recommend_small_container",
+			"event_type": "cmd_native_recommend_small_click",
+			"layout_type": "layout_relative",
+			"height": {
+				"type": "wrap_content"
+			},
+			"width": {
+				"type": "match_parent"
+			},
+			"attributes": {
+				"setAttatchInfo:": "-1"
+			},
+			"subviews": [{
+					"view_type": "UIView",
+					"view_id": "id_label_separator_line_top",
+					"margin_left": "16",
+					"margin_right": "16",
+					"margin_top": "30",
+					"height": {
+						"type": "absolutely",
+						"value": "0.5"
+					},
+					"width": {
+						"type": "match_parent"
+					},
+					"attributes": {
+						"setBackgroundColorString:": "$label_separator_line_top_bg_color"
+					}
+				},
+				{
+					"view_type": "UILabel",
+					"view_id": "id_recommend_title",
+					"margin_top": "32.5",
+					"margin_left": "16",
+					"margin_right": "12",
+					"below_of_view": "id_label_separator_line_top",
+					"left_of_view": "id_recommend_cover_img",
+					"align_parent_left": "YES",
+					"height": {
+						"type": "wrap_content"
+					},
+					"width": {
+						"type": "relative",
+						"value": "220"
+					},
+					"attributes": {
+						"setTextColorString:": "#262626",
+						"setText:": "-1",
+						"setFontSizeString:": "16",
+						"setNumberOfLinesString:": "2"
+					}
+				},
+				{
+					"view_type": "ReadInjoyAsynImageView",
+					"view_id": "id_recommend_cover_img",
+					"margin_right": "16",
+					"margin_bottom": "0",
+					"margin_top": "18",
+					"below_of_view": "id_label_separator_line_top",
+					"align_parent_right": "YES",
+					"height": {
+						"type": "relative",
+						"value": "73"
+					},
+					"width": {
+						"type": "relative",
+						"value": "111"
+					},
+					"attributes": {
+						"setScaleType:": "2",
+						"setImageWithURLString:lineup:": [
+							"-1",
+							"-1"
+						]
+					}
+				},
+				{
+					"view_type": "UILabel",
+					"view_id": "id_recommend_category_txt",
+					"below_of_view": "id_recommend_title",
+					"margin_left": "16",
+					"margin_top": "4",
+					"padding_left": "3",
+					"padding_right": "3",
+					"padding_top": "1.5",
+					"padding_bottom": "1.5",
+					"height": {
+						"type": "wrap_content"
+					},
+					"width": {
+						"type": "wrap_content"
+					},
+					"attributes": {
+						"setFrameString:": "-1",
+						"setText:": "-1",
+						"setTextColorString:": "#FF110D",
+						"setFontSizeString:": "11",
+						"setTextAlignmentString:": "1",
+						"setCornerRadiusString:": "2.0",
+						"setBorderColorString:": "#A6A6A6",
+						"setBackgroundColorString:": "#FFE9E9",
+						"setNumberOfLinesString:": "1"
+					}
+				},
+				{
+					"view_type": "UIView",
+					"view_id": "id_label_article_separator_line_bottom",
+					"below_of_view": "id_recommend_cover_img",
+					"margin_left": "16",
+					"margin_right": "16",
+					"margin_top": "18",
+					"height": {
+						"type": "absolutely",
+						"value": "0.5"
+					},
+					"width": {
+						"type": "match_parent"
+					},
+					"attributes": {
+						"setBackgroundColorString:": "$label_separator_line_bottom_bg_color"
+					}
+				}
+			]
+		}]
+	}
+}

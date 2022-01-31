@@ -1,20 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-
 public class sru
-  implements View.OnClickListener
 {
-  public sru(FontSettingActivity paramFontSettingActivity) {}
+  @vlq(a="pkIconUrl")
+  public String a;
+  @vlq(a="pkWording")
+  public String b;
+  @vlq(a="pkAction")
+  public String c;
+  @vlq(a="pkIconUrlSelf")
+  public String d;
+  @vlq(a="pkWordingSelf")
+  public String e;
+  @vlq(a="pkActionSelf")
+  public String f;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    this.a.c();
+    return "VideoLinkGameInfo {, pkBody='" + this.b + '\'' + ", pkIconUrl='" + this.a + '\'' + ", pkAction='" + this.c + '\'' + ", pkBodySelf='" + this.e + '\'' + ", pkIconUrlSelf='" + this.d + '\'' + ", pkActionSelf='" + this.f + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sru
  * JD-Core Version:    0.7.0.1
  */

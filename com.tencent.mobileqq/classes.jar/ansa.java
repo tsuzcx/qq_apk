@@ -1,19 +1,30 @@
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-import dov.com.tencent.mobileqq.richmedia.capture.view.GuideVideoView.OnCloseListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
 
 public class ansa
-  implements GuideVideoView.OnCloseListener
+  implements View.OnTouchListener
 {
-  public ansa(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public ansa(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QIMEffectCameraCaptureUnit.g(this.a);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ansa
  * JD-Core Version:    0.7.0.1
  */

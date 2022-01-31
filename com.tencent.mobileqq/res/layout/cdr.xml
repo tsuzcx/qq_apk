@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/aaz" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+    <RelativeLayout android:id="@id/eg2" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/close" android:layout_width="35.0dip" android:layout_height="35.0dip" android:layout_marginTop="33.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="5.0dip" android:src="@drawable/qzone_skin_plusmenu_close" android:scaleType="center" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        <ImageView android:id="@id/ea" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:src="@drawable/c14" android:scaleType="center" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="5.0dip" android:layout_below="@id/close">
+            <com.qzone.business.plusunion.plusoperation.OverScrollView android:id="@id/iia" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="40.0dip">
+                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <RelativeLayout android:id="@id/lxf" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+                    <RelativeLayout android:id="@id/m58" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                        <RelativeLayout android:id="@id/m5a" android:background="@drawable/hia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+                            <TextView android:textSize="12.0sp" android:textColor="#ff03081a" android:id="@id/m5_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="3.0dip" android:layout_marginRight="6.0dip" android:layout_marginBottom="3.0dip" android:text="@string/s08" android:layout_centerVertical="true" />
+                            <ImageView android:id="@id/m59" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/hy_" android:layout_toRightOf="@id/m5_" android:layout_centerVertical="true" />
+                        </RelativeLayout>
+                        <View android:id="@id/ehz" android:background="#ffe1e1e1" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_toLeftOf="@id/m5a" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+                        <View android:id="@id/eil" android:background="#ffe1e1e1" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_toRightOf="@id/m5a" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+                    </RelativeLayout>
+                    <com.qzone.business.plusunion.plusoperation.NoScrollGridView android:id="@id/m57" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" />
+                </LinearLayout>
+            </com.qzone.business.plusunion.plusoperation.OverScrollView>
+            <View android:layout_gravity="bottom" android:id="@id/kvr" android:background="@drawable/hib" android:layout_width="fill_parent" android:layout_height="140.0dip" />
+            <View android:layout_gravity="bottom" android:id="@id/laf" android:layout_width="fill_parent" android:layout_height="40.0dip" />
+            <View android:layout_gravity="bottom|center" android:id="@id/egu" android:background="#ffe7e7e7" android:layout_width="30.0dip" android:layout_height="2.0dip" android:layout_marginBottom="20.0dip" />
+            <View android:layout_gravity="bottom|center" android:id="@id/ehd" android:background="#ffe7e7e7" android:layout_width="30.0dip" android:layout_height="2.0dip" android:layout_marginBottom="25.0dip" />
+        </FrameLayout>
+    </RelativeLayout>
+</LinearLayout>

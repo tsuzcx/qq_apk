@@ -1,32 +1,28 @@
-import android.os.Handler;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.content.Context;
+import android.util.Size;
+import java.nio.FloatBuffer;
 
-class akqs
-  implements TVK_SDKMgr.InstallListener
+public abstract interface akqs
 {
-  akqs(akqr paramakqr) {}
+  public abstract Size a();
   
-  public void onInstallProgress(float paramFloat)
-  {
-    this.a.a.c = ((int)(100.0F * paramFloat));
-    this.a.a.b.sendEmptyMessage(2);
-  }
+  public abstract FloatBuffer a(int paramInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2);
   
-  public void onInstalledFailed(int paramInt)
-  {
-    this.a.a.d = paramInt;
-    this.a.a.b.sendEmptyMessage(1);
-  }
+  public abstract void a();
   
-  public void onInstalledSuccessed()
-  {
-    this.a.a.b.sendEmptyMessage(0);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(Context paramContext);
+  
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akqs
  * JD-Core Version:    0.7.0.1
  */

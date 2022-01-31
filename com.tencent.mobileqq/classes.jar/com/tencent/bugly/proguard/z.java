@@ -2405,11 +2405,6 @@ public class z
       x.a("URL(%s) is not start with \"http\".", new Object[] { paramString });
       return false;
     }
-    if (!paramString.toLowerCase().contains("qq.com"))
-    {
-      x.a("URL(%s) does not contain \"qq.com\".", new Object[] { paramString });
-      return false;
-    }
     return true;
   }
   
@@ -2425,29 +2420,6 @@ public class z
       localUnsupportedEncodingException.printStackTrace();
     }
     return null;
-  }
-  
-  public static String d(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null) {
-      return "null";
-    }
-    StringBuffer localStringBuffer = new StringBuffer();
-    int i = 0;
-    while (i < paramArrayOfByte.length)
-    {
-      if (i != 0) {
-        localStringBuffer.append(':');
-      }
-      String str2 = Integer.toHexString(paramArrayOfByte[i] & 0xFF);
-      String str1 = str2;
-      if (str2.length() == 1) {
-        str1 = "0" + str2;
-      }
-      localStringBuffer.append(str1);
-      i += 1;
-    }
-    return localStringBuffer.toString().toUpperCase();
   }
 }
 

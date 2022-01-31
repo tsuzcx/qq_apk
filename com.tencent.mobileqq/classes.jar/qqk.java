@@ -1,18 +1,10 @@
-import com.tencent.gdtad.net.GdtHttp.Params;
-
-class qqk
-  extends GdtHttp.Params
+public abstract interface qqk
 {
-  public int d = -2147483648;
-  
-  public boolean b()
-  {
-    return (super.b()) && (this.b != null);
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qqk
  * JD-Core Version:    0.7.0.1
  */

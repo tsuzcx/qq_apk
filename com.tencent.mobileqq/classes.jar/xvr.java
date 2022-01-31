@@ -1,48 +1,136 @@
-import com.tencent.maxvideo.mediadevice.AVCodec;
-import com.tencent.mobileqq.activity.richmedia.FlowSendTask;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.shortvideo.mediadevice.RecordManager;
+import android.os.Bundle;
+import com.tencent.litetransfersdk.ActionInfo;
+import com.tencent.litetransfersdk.Session;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
-public class xvr
-  implements Runnable
+class xvr
+  extends xsw
 {
-  public xvr(FlowSendTask paramFlowSendTask) {}
+  xvr(xvq paramxvq) {}
   
-  public void run()
+  private List<xsw> a(Session paramSession)
   {
-    try
+    String str2 = "";
+    String str1 = str2;
+    if (paramSession != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_k_of_type_JavaLangString, 2, "FlowSendTask(): isPTV:" + this.a.d + ", mVideoFileDir:" + this.a.jdField_a_of_type_JavaLangString + ",is to call AVideoCodec.recordSubmit()");
+      str1 = str2;
+      if (paramSession.actionInfo != null) {
+        str1 = paramSession.actionInfo.strServiceName;
       }
-      RecordManager.a().a().recordSubmit();
-      return;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    return a(str1);
+  }
+  
+  private List<xsw> a(String paramString)
+  {
+    if (paramString != null) {}
+    for (;;)
     {
-      for (;;)
-      {
-        localUnsatisfiedLinkError.printStackTrace();
-        this.a.jdField_k_of_type_Int = -6;
-        synchronized (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a)
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.set(true);
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.notifyAll();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d(this.a.jdField_k_of_type_JavaLangString, 2, "FlowSendTask(): isPTV:" + this.a.d + ", mVideoFileDir:" + this.a.jdField_a_of_type_JavaLangString + ", call AVideoCodec.recordSubmit() fail, error = " + localUnsatisfiedLinkError.getMessage());
-          return;
-        }
+      if (paramString != null) {
+        return (List)this.a.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      }
+      return null;
+      paramString = "";
+    }
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d(xvq.jdField_a_of_type_JavaLangString, 4, "OnDataPointFileMsgProgress");
+    }
+    Object localObject = a("");
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((xsw)((Iterator)localObject).next()).a(paramBundle);
+      }
+    }
+  }
+  
+  public void a(Session paramSession)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d(xvq.jdField_a_of_type_JavaLangString, 4, "onServiceSessionNew:" + paramSession.uSessionID);
+    }
+    Object localObject = a(paramSession);
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((xsw)((Iterator)localObject).next()).a(paramSession);
+      }
+    }
+  }
+  
+  public void a(Session paramSession, float paramFloat)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d(xvq.jdField_a_of_type_JavaLangString, 4, "onServiceSessionProgress:" + paramSession.uSessionID);
+    }
+    Object localObject = a(paramSession);
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((xsw)((Iterator)localObject).next()).a(paramSession, paramFloat);
+      }
+    }
+  }
+  
+  public void a(Session paramSession, boolean paramBoolean)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d(xvq.jdField_a_of_type_JavaLangString, 4, "onServiceSessionComplete:" + paramSession.uSessionID);
+    }
+    Object localObject = a(paramSession);
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((xsw)((Iterator)localObject).next()).a(paramSession, paramBoolean);
+      }
+    }
+  }
+  
+  public void b(Bundle paramBundle)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d(xvq.jdField_a_of_type_JavaLangString, 4, "OnDataPointFileMsgSendRet");
+    }
+    Object localObject = a("");
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((xsw)((Iterator)localObject).next()).b(paramBundle);
+      }
+    }
+  }
+  
+  public void b(Session paramSession)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d(xvq.jdField_a_of_type_JavaLangString, 4, "onServiceSessionStart:" + paramSession.uSessionID);
+    }
+    Object localObject = a(paramSession);
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((xsw)((Iterator)localObject).next()).b(paramSession);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     xvr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,35 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.tencentmap.mapsdk.map.MapView;
-import com.tencent.tencentmap.mapsdk.map.Projection;
-import com.tencent.tencentmap.mapsdk.map.TencentMap;
-import com.tencent.tencentmap.mapsdk.map.TencentMap.OnMapLoadedListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class abgz
-  implements TencentMap.OnMapLoadedListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public abgz(ARMapActivity paramARMapActivity) {}
+  public abgz(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onMapLoaded()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.a.e = true;
-    if (this.a.a != null)
+    boolean bool = true;
+    if (!badq.g(this.a))
     {
-      Projection localProjection = this.a.a.getProjection();
-      TencentMap localTencentMap = this.a.a.getMap();
-      if ((localProjection != null) && (localTencentMap != null))
+      bbmy.a(BaseApplication.getContext(), 1, 2131629009, 0).b(this.a.getTitleBarHeight());
+      paramCompoundButton = this.a.j;
+      if (!paramBoolean) {}
+      for (paramBoolean = bool;; paramBoolean = false)
       {
-        Point localPoint = localProjection.toScreenLocation(localTencentMap.getMapCenter());
-        localPoint.offset(0, AIOUtils.a(60.0F, this.a.getResources()) * -1);
-        localTencentMap.setCenter(localProjection.fromScreenLocation(localPoint));
+        paramCompoundButton.setChecked(paramBoolean);
+        return;
       }
     }
+    ((ajfi)this.a.app.a(2)).g(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abgz
  * JD-Core Version:    0.7.0.1
  */

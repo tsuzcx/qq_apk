@@ -1,41 +1,54 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadApi;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.DownloadQueryListener;
-import java.util.ArrayList;
-import java.util.List;
+import android.annotation.TargetApi;
 
-public final class alod
-  implements Runnable
+@TargetApi(11)
+public class alod
 {
-  public alod(String paramString, DownloadQueryListener paramDownloadQueryListener) {}
+  public float a;
+  public int a;
+  public float b;
+  public float c;
+  public float d = 1.0F;
+  public float e;
+  public float f;
+  public float g;
+  public float h;
   
-  public void run()
+  public alod(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
-    LogUtility.a(DownloadApi.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia enter");
-    try
-    {
-      new ArrayList();
-      List localList = DownloadManager.a().b(this.jdField_a_of_type_JavaLangString);
-      LogUtility.a(DownloadApi.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia result = " + localList);
-      if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener != null) {
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.a(localList);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      do
-      {
-        LogUtility.c(DownloadApi.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia Exception>>>", localException);
-      } while (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener == null);
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.a(-1, localException.getMessage());
-    }
+    this.e = paramFloat1;
+    this.f = paramFloat2;
+    this.g = paramFloat3;
+    this.h = paramFloat4;
+    this.jdField_a_of_type_Float = paramFloat5;
+    this.b = paramFloat6;
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  public alod(int paramInt, float paramFloat1, float paramFloat2)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.b = paramFloat2;
+  }
+  
+  public static alod a(float paramFloat1, float paramFloat2)
+  {
+    return new alod(1, paramFloat1, paramFloat2);
+  }
+  
+  public static alod a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
+  {
+    return new alod(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramFloat5, paramFloat6);
+  }
+  
+  public static alod b(float paramFloat1, float paramFloat2)
+  {
+    return new alod(0, paramFloat1, paramFloat2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alod
  * JD-Core Version:    0.7.0.1
  */

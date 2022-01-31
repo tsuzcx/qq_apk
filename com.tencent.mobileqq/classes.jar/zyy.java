@@ -1,30 +1,27 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.message.BaseMessageProcessor;
-import com.tencent.mobileqq.app.message.BaseMessageProcessor.RequestBuilder;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class zyy
-  implements BaseMessageProcessor.RequestBuilder
+  implements View.OnClickListener
 {
-  public zyy(BaseMessageProcessor paramBaseMessageProcessor, msg_svc.PbMsgReadedReportReq paramPbMsgReadedReportReq) {}
+  public zyy(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
-  public ToServiceMsg a()
+  public void onClick(View paramView)
   {
-    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageProcessor.a.a("PbMessageSvc.PbMsgReadedReport");
-    byte[] arrayOfByte = this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbMsgReadedReportReq.toByteArray();
-    if (arrayOfByte != null)
-    {
-      localToServiceMsg.putWupBuffer(arrayOfByte);
-      localToServiceMsg.setEnableFastResend(true);
-      return localToServiceMsg;
+    if (ArkFullScreenAppActivity.a(this.a) != null) {
+      alep.a(this.a.app, "FullScreenClickOper", ArkFullScreenAppActivity.a(this.a).a, null, alep.b, 0, 0);
     }
-    return null;
+    if (QLog.isColorLevel()) {
+      QLog.d("ArkFullScreenAppActivity", 2, "click to close");
+    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zyy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,52 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.Advertisement.view.DragFrameLayout;
-import com.tencent.biz.pubaccount.Advertisement.view.DragFrameLayout.OnDraggingListener;
-import com.tencent.mobileqq.util.DisplayUtil;
+import android.content.BroadcastReceiver;
+import android.content.IntentFilter;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class kvi
-  implements DragFrameLayout.OnDraggingListener
 {
-  public kvi(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6) {}
-  
-  public void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  public kvi(VideoAppInterface paramVideoAppInterface)
   {
-    if (paramInt1 - paramInt3 > DisplayUtil.a(this.a, 60.0F))
-    {
-      PublicAccountAdvertisementActivity.a(this.a);
-      PublicAccountAdvertisementActivity.b(this.a);
-      this.a.finish();
-      return;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new kvk(paramVideoAppInterface, null);
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void a()
+  {
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("com.tencent.qav.notify.accept");
+    localIntentFilter.addAction("com.tencent.qav.notify.refuse");
+    localIntentFilter.addAction("tencent.video.q2v.ptusoDownloadRet");
+    localIntentFilter.addAction("tencent.video.q2v.ptuLibpagDownloadRet");
+    localIntentFilter.addAction("tencent.video.q2v.avReceivePushMsg");
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+    this.jdField_a_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.i("QAVNotifyActionMonitor", 2, "register");
     }
-    PublicAccountAdvertisementActivity.a(this.a).a();
   }
   
-  public boolean a()
+  public void b()
   {
-    return (!PublicAccountAdvertisementActivity.a(this.a)) && (!PublicAccountAdvertisementActivity.b(this.a)) && (PublicAccountAdvertisementActivity.c(this.a));
-  }
-  
-  public boolean b()
-  {
-    return false;
-  }
-  
-  public boolean c()
-  {
-    return false;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_Boolean = false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("QAVNotifyActionMonitor", 2, "unRegister");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     kvi
  * JD-Core Version:    0.7.0.1
  */

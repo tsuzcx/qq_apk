@@ -9,11 +9,11 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_0x8f9$GetLiteMailListByUinRsp
-  extends MessageMicro
+  extends MessageMicro<GetLiteMailListByUinRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_err_msg = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_msg_litemail_list = PBField.initRepeatMessage(oidb_0x8f9.LiteMail.class);
+  public final PBRepeatMessageField<oidb_0x8f9.LiteMail> rpt_msg_litemail_list = PBField.initRepeatMessage(oidb_0x8f9.LiteMail.class);
   public final PBUInt32Field uint32_end_time = PBField.initUInt32(0);
   public final PBUInt32Field uint32_result = PBField.initUInt32(0);
   public final PBUInt32Field uint32_start_time = PBField.initUInt32(0);
@@ -26,7 +26,7 @@ public final class oidb_0x8f9$GetLiteMailListByUinRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8f9.oidb_0x8f9.GetLiteMailListByUinRsp
  * JD-Core Version:    0.7.0.1
  */

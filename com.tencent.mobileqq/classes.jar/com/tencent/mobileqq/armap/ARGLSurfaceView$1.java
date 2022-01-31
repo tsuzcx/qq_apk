@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.armap;
 
 import android.opengl.GLSurfaceView.EGLContextFactory;
-import com.tencent.mobileqq.armap.utils.MapLog;
+import com.tencent.qphone.base.util.QLog;
 import javax.microedition.khronos.egl.EGL10;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.egl.EGLContext;
@@ -14,9 +14,7 @@ class ARGLSurfaceView$1
   
   public EGLContext createContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    if (MapLog.isLoggable(1)) {
-      MapLog.d("ARGLSurfaceView", "createContext start", new Object[0]);
-    }
+    QLog.d("ARGLSurfaceView", 2, "createContext start");
     if (paramEGL10.eglGetError() != 12288) {
       throw new RuntimeException("createContext error:" + paramEGL10.eglGetError());
     }
@@ -33,9 +31,7 @@ class ARGLSurfaceView$1
   
   public void destroyContext(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
   {
-    if (MapLog.isLoggable(1)) {
-      MapLog.d("ARGLSurfaceView", "destroyContext", new Object[0]);
-    }
+    QLog.d("ARGLSurfaceView", 2, "destroyContext");
     ARGLSurfaceView.access$002(this.this$0, true);
     if (ARGLSurfaceView.access$100(this.this$0) != null) {
       ARGLSurfaceView.access$100(this.this$0).onEGLContextDestroyed(paramEGL10, paramEGLDisplay, paramEGLContext);

@@ -1,21 +1,40 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.net.patch.PatchSharedPreUtil;
 
 public class yte
-  implements Runnable
 {
-  public yte(ApolloTextureView paramApolloTextureView, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int[] paramArrayOfInt1, int[] paramArrayOfInt2) {}
+  private static int a = 3600;
   
-  public void run()
+  public static void a(int paramInt)
   {
-    ApolloSurfaceView.nativeTouchInput(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRender().getSavaWrapper().a, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt);
+    if ((paramInt >= 0) && (a != paramInt)) {
+      a = paramInt;
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, String paramString2)
+  {
+    if ("doOnReconnect".equals(paramString2))
+    {
+      if (a > 0)
+      {
+        long l1 = PatchSharedPreUtil.getLastTimePullPatchReconnect(BaseApplicationImpl.sApplication);
+        long l2 = System.currentTimeMillis();
+        if (Math.abs(l2 - l1) > a * 1000L)
+        {
+          amnh.a(paramQQAppInterface, paramString1, paramInt, paramString2);
+          PatchSharedPreUtil.updateLastTimePullPatchReconnect(BaseApplicationImpl.sApplication, l2);
+        }
+      }
+      return;
+    }
+    amnh.a(paramQQAppInterface, paramString1, paramInt, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     yte
  * JD-Core Version:    0.7.0.1
  */

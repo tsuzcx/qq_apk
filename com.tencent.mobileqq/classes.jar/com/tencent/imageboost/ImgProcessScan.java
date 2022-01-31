@@ -6,10 +6,33 @@ import com.tencent.mobileqq.utils.SoLoadUtil;
 
 public class ImgProcessScan
 {
+  public static final int NOSUBSAMPLE = 0;
+  public static final int ROTATE_0 = 0;
+  public static final int ROTATE_180 = 180;
+  public static final int ROTATE_270 = 270;
+  public static final int ROTATE_90 = 90;
+  public static final int SUBSAMPLE = 1;
+  
   static
   {
     SoLoadUtil.a(BaseApplicationImpl.getContext(), "stlport_shared", 0, false);
     SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "ImgProcessScan");
+  }
+  
+  public static int ArrayConvert(int paramInt, byte[] paramArrayOfByte, int[] paramArrayOfInt)
+  {
+    if ((paramArrayOfByte == null) || (paramArrayOfInt == null)) {
+      return -1;
+    }
+    return nativeArrayConvert(paramInt, paramArrayOfByte.length, paramArrayOfByte, paramArrayOfInt);
+  }
+  
+  public static int CropGray2(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
+      return -1;
+    }
+    return nativeCropGray2(paramArrayOfByte1, paramArrayOfByte2, paramInt1, paramInt2, paramInt3);
   }
   
   public static native int FocusInit(int paramInt1, int paramInt2, boolean paramBoolean, int paramInt3, int paramInt4);
@@ -20,20 +43,49 @@ public class ImgProcessScan
   
   public static native int QIPUtilYUVCrop(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
   
-  public static int a(byte[] paramArrayOfByte1, int[] paramArrayOfInt, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public static int Release()
   {
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
-      return -1;
-    }
-    return nativeGrayRotateCropSub(paramArrayOfByte2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramArrayOfByte1, paramArrayOfInt, paramInt7, paramInt8);
+    return nativeRelease();
   }
   
-  public static int a(int[] paramArrayOfInt, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public static int TransBytes(int[] paramArrayOfInt, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     if ((paramArrayOfInt == null) || (paramArrayOfByte == null)) {
       return -1;
     }
     return nativeTransBytes(paramArrayOfInt, paramArrayOfByte, paramInt1, paramInt2);
+  }
+  
+  public static int TransPixels(int[] paramArrayOfInt, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if ((paramArrayOfInt == null) || (paramArrayOfByte == null)) {
+      return -1;
+    }
+    return nativeTransPixels(paramArrayOfInt, paramArrayOfByte, paramInt1, paramInt2);
+  }
+  
+  public static int YUVrotate(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2)
+  {
+    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
+      return -1;
+    }
+    return nativeYUVrotate(paramArrayOfByte1, paramArrayOfByte2, paramInt1, paramInt2);
+  }
+  
+  public static int YUVrotateLessMemCost(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if (paramArrayOfByte == null) {
+      return -1;
+    }
+    return nativeYUVrotateLess(paramArrayOfByte, paramInt1, paramInt2);
+  }
+  
+  public static int YuvToCropIntArray(byte[] paramArrayOfByte, int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  {
+    if ((paramArrayOfByte == null) || (paramArrayOfInt == null)) {
+      return -1;
+    }
+    return nativeYuvToCropIntArray(paramArrayOfByte, paramArrayOfInt, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
   }
   
   public static native int focusedEngineForBankcardInit(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean);
@@ -43,6 +95,22 @@ public class ImgProcessScan
   public static native int focusedEngineProcess(byte[] paramArrayOfByte);
   
   public static native int focusedEngineRelease();
+  
+  public static int gray_rotate_crop_sub(byte[] paramArrayOfByte1, int[] paramArrayOfInt, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  {
+    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
+      return -1;
+    }
+    return nativeGrayRotateCropSub(paramArrayOfByte2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramArrayOfByte1, paramArrayOfInt, paramInt7, paramInt8);
+  }
+  
+  public static int gray_rotate_sub(byte[] paramArrayOfByte1, int[] paramArrayOfInt, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
+      return -1;
+    }
+    return nativeGrayRotateCropSub(paramArrayOfByte2, paramInt1, paramInt2, 0, 0, paramInt1, paramInt2, paramArrayOfByte1, paramArrayOfInt, paramInt3, paramInt4);
+  }
   
   private static native int nativeArrayConvert(int paramInt1, int paramInt2, byte[] paramArrayOfByte, int[] paramArrayOfInt);
   

@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class JDSearch$JdSkuItem
-  extends MessageMicro
+  extends MessageMicro<JdSkuItem>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42 }, new String[] { "detail_url", "image_url", "sku_id", "sku_name", "sku_price" }, new Object[] { "", "", "", "", "" }, JdSkuItem.class);
   public final PBStringField detail_url = PBField.initString("");
@@ -17,7 +17,7 @@ public final class JDSearch$JdSkuItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.JDSearch.JdSkuItem
  * JD-Core Version:    0.7.0.1
  */

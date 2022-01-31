@@ -1,34 +1,35 @@
-import android.view.View;
-import android.view.animation.AnimationSet;
-import com.tencent.mobileqq.widget.ScrollerRunnable;
-import com.tencent.mobileqq.widget.ScrollerRunnable.FlushMessageItemAnimation;
+import java.util.HashMap;
 
 public class alej
-  implements Runnable
 {
-  public alej(ScrollerRunnable paramScrollerRunnable, View paramView) {}
+  private static HashMap<String, alek> a = new HashMap();
   
-  public void run()
+  public static Object a(int paramInt, String paramString, Object paramObject1, Object paramObject2)
   {
-    ScrollerRunnable.FlushMessageItemAnimation localFlushMessageItemAnimation1 = new ScrollerRunnable.FlushMessageItemAnimation(this.jdField_a_of_type_AndroidViewView, 1.0F, 0.0F);
-    localFlushMessageItemAnimation1.setFillEnabled(true);
-    localFlushMessageItemAnimation1.setDuration(700L);
-    ScrollerRunnable.FlushMessageItemAnimation localFlushMessageItemAnimation2 = new ScrollerRunnable.FlushMessageItemAnimation(this.jdField_a_of_type_AndroidViewView, 0.0F, 1.0F);
-    localFlushMessageItemAnimation2.setFillEnabled(true);
-    localFlushMessageItemAnimation2.setStartTime(700L);
-    localFlushMessageItemAnimation2.setDuration(700L);
-    AnimationSet localAnimationSet = new AnimationSet(true);
-    localAnimationSet.addAnimation(localFlushMessageItemAnimation1);
-    localAnimationSet.addAnimation(localFlushMessageItemAnimation2);
-    localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(new alek(this));
-    this.jdField_a_of_type_AndroidViewView.startAnimation(localAnimationSet);
-    ScrollerRunnable.a(this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable, -1L);
+    paramString = (alek)a.get(paramString);
+    if (paramString != null) {
+      paramObject2 = paramString.a(paramInt, paramObject1);
+    }
+    return paramObject2;
+  }
+  
+  public static void a(String paramString)
+  {
+    if (paramString != null) {
+      a.remove(paramString);
+    }
+  }
+  
+  public static void a(String paramString, alek paramalek)
+  {
+    if (paramString != null) {
+      a.put(paramString, paramalek);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alej
  * JD-Core Version:    0.7.0.1
  */

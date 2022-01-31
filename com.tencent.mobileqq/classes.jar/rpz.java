@@ -1,63 +1,40 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.readinjoy.ReadInJoyHelper;
 
-public class rpz
-  implements CompoundButton.OnCheckedChangeListener
+class rpz
+  implements View.OnTouchListener
 {
-  public rpz(AssistantSettingActivity paramAssistantSettingActivity) {}
+  rpz(rpw paramrpw, rpv paramrpv, boolean paramBoolean) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i;
-    label83:
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
+    switch (paramMotionEvent.getAction())
     {
-      i = 1;
-      ReadInJoyHelper.a("local_kd_tab_switch", Integer.valueOf(i));
-      ReadInJoyHelper.a(this.a.app, "local_kd_tab_switch", Boolean.valueOf(paramBoolean));
-      ReadInJoyHelper.a(this.a.app, "local_kd_tab_has_set", Boolean.valueOf(true));
-      if (!paramBoolean) {
-        break label138;
+    case 2: 
+    default: 
+      return false;
+    case 0: 
+      this.jdField_a_of_type_Rpw.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Rpw.jdField_a_of_type_Rpv.a.getResources().getColor(2131100389));
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Rpw.c.setBackgroundResource(2130842542);
+        return false;
       }
-      AssistantSettingActivity.a(this.a).setText(2131433568);
-      QQToast.a(this.a.getBaseContext(), 2, 2131439123, 2000).a();
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label173;
-      }
-      paramCompoundButton = "0X8008236";
-      label99:
-      if (!paramBoolean) {
-        break label179;
-      }
+      this.jdField_a_of_type_Rpw.c.setBackgroundResource(2130842543);
+      return false;
     }
-    label138:
-    label173:
-    label179:
-    for (String str = "0X8008236";; str = "0X8008235")
-    {
-      PublicAccountReportUtils.a(localQQAppInterface, "CliOper", "", "", paramCompoundButton, str, 0, 1, "", "", "", "", false);
-      return;
-      i = 0;
-      break;
-      AssistantSettingActivity.a(this.a).setText(2131433567);
-      QQToast.a(this.a.getBaseContext(), 2, 2131439124, 2000).a();
-      break label83;
-      paramCompoundButton = "0X8008235";
-      break label99;
-    }
+    this.jdField_a_of_type_Rpw.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Rpw.jdField_a_of_type_Rpv.a.getResources().getColor(2131100388));
+    this.jdField_a_of_type_Rpw.c.setBackgroundResource(2130842551);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rpz
  * JD-Core Version:    0.7.0.1
  */

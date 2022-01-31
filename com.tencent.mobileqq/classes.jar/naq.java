@@ -1,34 +1,28 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.util.SwipeBackLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ResizeURLImageView;
+import java.net.URL;
 
-public class naq
-  extends Handler
+class naq
+  implements sch
 {
-  public naq(SwipeBackLayout paramSwipeBackLayout) {}
+  naq(nap paramnap, View paramView, ResizeURLImageView paramResizeURLImageView) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(URL paramURL, int paramInt) {}
+  
+  public void a(URL paramURL, Throwable paramThrowable)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      super.handleMessage(paramMessage);
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (SwipeBackLayout.a(this.a));
-      SwipeBackLayout.a(this.a, true);
-    } while (!(SwipeBackLayout.a(this.a) instanceof Activity));
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_SwipeBackLayout", 2, "SwipeBackLayout finish()");
-    }
-    SwipeBackLayout.b(this.a, true);
-    ((Activity)SwipeBackLayout.a(this.a)).finish();
+    this.jdField_a_of_type_Nap.a = 3;
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131303815).setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131300292).setVisibility(0);
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131300292).setOnClickListener(new nar(this));
+  }
+  
+  public void a(URL paramURL, rcs paramrcs)
+  {
+    this.jdField_a_of_type_Nap.a = 2;
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131303815).setVisibility(8);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewResizeURLImageView.setPublicAccountImageDownListener(null);
+    nap.a(this.jdField_a_of_type_Nap, null);
   }
 }
 

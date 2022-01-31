@@ -1,22 +1,24 @@
 package cooperation.qqindividuality;
 
-import amxi;
-import amxj;
-import amxk;
-import amxl;
-import amxm;
+import ajjy;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Window;
+import beez;
+import bfcz;
+import bfju;
+import bfjv;
+import bfjw;
+import bfjx;
+import bfjy;
+import bfka;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
 import com.tencent.mobileqq.qipc.QIPCServerHelper;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MqqWeakReferenceHandler;
-import cooperation.plugin.IPluginManager;
 import cooperation.plugin.PluginInfo;
 
 public class QQIndividualityBridgeActivity
@@ -27,8 +29,8 @@ public class QQIndividualityBridgeActivity
   public static int d = 1;
   public static int e = 2;
   int jdField_a_of_type_Int;
-  public amxl a;
-  public amxm a;
+  public bfjx a;
+  public bfjy a;
   String jdField_a_of_type_JavaLangString = null;
   public boolean a;
   public int b;
@@ -43,10 +45,10 @@ public class QQIndividualityBridgeActivity
   
   public void a()
   {
-    if (this.jdField_a_of_type_CooperationPluginIPluginManager == null) {
+    if (this.jdField_a_of_type_Bfcz == null) {
       return;
     }
-    PluginInfo localPluginInfo = this.jdField_a_of_type_CooperationPluginIPluginManager.a("qqindividuality_plugin.apk");
+    PluginInfo localPluginInfo = this.jdField_a_of_type_Bfcz.a("qqindividuality_plugin.apk");
     if (localPluginInfo != null)
     {
       if (localPluginInfo.mState == 4)
@@ -57,18 +59,18 @@ public class QQIndividualityBridgeActivity
       if ((localPluginInfo.mState == 1) || (localPluginInfo.mState == 3))
       {
         c();
-        this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(1000, 200L);
+        this.jdField_a_of_type_Beez.sendEmptyMessageDelayed(1000, 200L);
         return;
       }
       c();
-      this.jdField_a_of_type_CooperationPluginIPluginManager.installPlugin("qqindividuality_plugin.apk", new amxk(this));
+      this.jdField_a_of_type_Bfcz.installPlugin("qqindividuality_plugin.apk", new bfjw(this));
       return;
     }
     if (QLog.isColorLevel()) {
       QLog.d("QQIndividuality", 2, "initPlugin pluginInfo == null");
     }
     c();
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessageDelayed(1000, 200L);
+    this.jdField_a_of_type_Beez.sendEmptyMessageDelayed(1000, 200L);
   }
   
   public void b()
@@ -83,8 +85,8 @@ public class QQIndividualityBridgeActivity
         this.jdField_a_of_type_Boolean = false;
         if (this.jdField_b_of_type_Int == c)
         {
-          QQIndividualityProxyActivity.a(this, localIntent, this.app.getCurrentAccountUin(), "com.qqindividuality.activity.QQIndividualityActivity", QQIndividualityProxyActivity.class, this.jdField_a_of_type_Amxl, this.jdField_a_of_type_Int);
-          overridePendingTransition(2131034210, 0);
+          QQIndividualityProxyActivity.a(this, localIntent, this.app.getCurrentAccountUin(), "com.qqindividuality.activity.QQIndividualityActivity", QQIndividualityProxyActivity.class, this.jdField_a_of_type_Bfjx, this.jdField_a_of_type_Int);
+          overridePendingTransition(2130772097, 0);
         }
       }
       while (-1 == this.jdField_a_of_type_Int)
@@ -95,13 +97,13 @@ public class QQIndividualityBridgeActivity
         {
           localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
           localIntent.putExtra("is_first_open", true);
-          QQIndividualityProxyActivity.a(this, localIntent, this.app.getCurrentAccountUin(), "com.qqindividuality.activity.QQIndividualitySignatureActivity", QQIndividualityProxyActivity.class, this.jdField_a_of_type_Amxm, this.jdField_a_of_type_Int);
-          overridePendingTransition(2131034210, 0);
+          QQIndividualityProxyActivity.a(this, localIntent, this.app.getCurrentAccountUin(), "com.qqindividuality.activity.QQIndividualitySignatureActivity", QQIndividualityProxyActivity.class, this.jdField_a_of_type_Bfjy, this.jdField_a_of_type_Int);
+          overridePendingTransition(2130772097, 0);
         }
         else if (this.jdField_b_of_type_Int == e)
         {
-          QQIndividualityProxyActivity.a(this, localIntent, this.app.getCurrentAccountUin(), "com.qqindividuality.activity.QQIndividualityStatusHistoryActivity", QQIndividualityProxyActivity.class, this.jdField_a_of_type_Amxm, this.jdField_a_of_type_Int);
-          overridePendingTransition(2131034210, 0);
+          QQIndividualityProxyActivity.a(this, localIntent, this.app.getCurrentAccountUin(), "com.qqindividuality.activity.QQIndividualityStatusHistoryActivity", QQIndividualityProxyActivity.class, this.jdField_a_of_type_Bfjy, this.jdField_a_of_type_Int);
+          overridePendingTransition(2130772097, 0);
           continue;
           if (this.jdField_b_of_type_Int == c)
           {
@@ -115,7 +117,7 @@ public class QQIndividualityBridgeActivity
           else if (this.jdField_b_of_type_Int == e)
           {
             QQIndividualityProxyActivity.a(this, localIntent, this.app.getCurrentAccountUin(), "com.qqindividuality.activity.QQIndividualityStatusHistoryActivity", QQIndividualityProxyActivity.class, null, this.jdField_a_of_type_Int);
-            overridePendingTransition(2131034210, 0);
+            overridePendingTransition(2130772097, 0);
           }
         }
       }
@@ -129,26 +131,26 @@ public class QQIndividualityBridgeActivity
       if (this.jdField_b_of_type_Int != c) {
         break label25;
       }
-      this.jdField_a_of_type_Amxl.show();
+      this.jdField_a_of_type_Bfjx.show();
     }
     label25:
     while ((this.jdField_b_of_type_Int != e) && (this.jdField_b_of_type_Int != d)) {
       return;
     }
-    this.jdField_a_of_type_Amxm.show();
+    this.jdField_a_of_type_Bfjy.show();
   }
   
-  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
     if (this.jdField_b_of_type_Int == c) {
-      if (this.jdField_a_of_type_Amxl != null)
+      if (this.jdField_a_of_type_Bfjx != null)
       {
-        if (this.jdField_a_of_type_Amxl.isShowing()) {
-          this.jdField_a_of_type_Amxl.dismiss();
+        if (this.jdField_a_of_type_Bfjx.isShowing()) {
+          this.jdField_a_of_type_Bfjx.dismiss();
         }
-        this.jdField_a_of_type_Amxl.setOnDismissListener(null);
-        this.jdField_a_of_type_Amxl = null;
+        this.jdField_a_of_type_Bfjx.setOnDismissListener(null);
+        this.jdField_a_of_type_Bfjx = null;
       }
     }
     for (;;)
@@ -156,21 +158,21 @@ public class QQIndividualityBridgeActivity
       setResult(paramInt2, paramIntent);
       super.finish();
       return;
-      if (((this.jdField_b_of_type_Int == d) || (this.jdField_b_of_type_Int == e)) && (this.jdField_a_of_type_Amxm != null))
+      if (((this.jdField_b_of_type_Int == d) || (this.jdField_b_of_type_Int == e)) && (this.jdField_a_of_type_Bfjy != null))
       {
-        if (this.jdField_a_of_type_Amxm.isShowing()) {
-          this.jdField_a_of_type_Amxm.dismiss();
+        if (this.jdField_a_of_type_Bfjy.isShowing()) {
+          this.jdField_a_of_type_Bfjy.dismiss();
         }
-        this.jdField_a_of_type_Amxm.setOnDismissListener(null);
-        this.jdField_a_of_type_Amxm = null;
+        this.jdField_a_of_type_Bfjy.setOnDismissListener(null);
+        this.jdField_a_of_type_Bfjy = null;
       }
     }
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    getWindow().setBackgroundDrawableResource(2131492924);
+    getWindow().setBackgroundDrawableResource(2131101491);
     if (Math.abs(System.currentTimeMillis() - jdField_a_of_type_Long) < 800L)
     {
       setResult(1001);
@@ -187,8 +189,8 @@ public class QQIndividualityBridgeActivity
           this.jdField_b_of_type_Int = paramBundle.getIntExtra("individuality_plugin", -1);
         }
         jdField_a_of_type_Long = System.currentTimeMillis();
-        this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra(QQIndividualityUtils.e);
-        this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra(QQIndividualityUtils.f);
+        this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra(bfka.e);
+        this.jdField_b_of_type_JavaLangString = getIntent().getStringExtra(bfka.f);
         if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)))
         {
           if (QLog.isColorLevel()) {
@@ -197,41 +199,41 @@ public class QQIndividualityBridgeActivity
           setResult(1001);
           super.finish();
         }
-        i = super.getResources().getDimensionPixelSize(2131558448);
-        this.jdField_a_of_type_Int = getIntent().getIntExtra(QQIndividualityUtils.i, -1);
+        i = super.getResources().getDimensionPixelSize(2131167766);
+        this.jdField_a_of_type_Int = getIntent().getIntExtra(bfka.i, -1);
         if ((this.jdField_b_of_type_Int == d) || (this.jdField_b_of_type_Int == e))
         {
-          this.jdField_a_of_type_Amxm = new amxm(this, this);
-          this.jdField_a_of_type_Amxm.setCanceledOnTouchOutside(false);
-          this.jdField_a_of_type_Amxm.setOnDismissListener(new amxi(this));
+          this.jdField_a_of_type_Bfjy = new bfjy(this, this);
+          this.jdField_a_of_type_Bfjy.setCanceledOnTouchOutside(false);
+          this.jdField_a_of_type_Bfjy.setOnDismissListener(new bfju(this));
         }
       } while (this.jdField_b_of_type_Int != c);
-      this.jdField_a_of_type_Amxl = new amxl(this, this, i);
-      this.jdField_a_of_type_Amxl.a("正在加载，请稍候...");
-      this.jdField_a_of_type_Amxl.setCanceledOnTouchOutside(false);
+      this.jdField_a_of_type_Bfjx = new bfjx(this, this, i);
+      this.jdField_a_of_type_Bfjx.a(ajjy.a(2131644603));
+      this.jdField_a_of_type_Bfjx.setCanceledOnTouchOutside(false);
     } while (this.jdField_a_of_type_Int == -1);
-    this.jdField_a_of_type_Amxl.setOnDismissListener(new amxj(this));
+    this.jdField_a_of_type_Bfjx.setOnDismissListener(new bfjv(this));
     return true;
   }
   
   public void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Amxl != null)
+    if (this.jdField_a_of_type_Bfjx != null)
     {
-      if (this.jdField_a_of_type_Amxl.isShowing()) {
-        this.jdField_a_of_type_Amxl.dismiss();
+      if (this.jdField_a_of_type_Bfjx.isShowing()) {
+        this.jdField_a_of_type_Bfjx.dismiss();
       }
-      this.jdField_a_of_type_Amxl.setOnDismissListener(null);
-      this.jdField_a_of_type_Amxl = null;
+      this.jdField_a_of_type_Bfjx.setOnDismissListener(null);
+      this.jdField_a_of_type_Bfjx = null;
     }
-    if (this.jdField_a_of_type_Amxm != null)
+    if (this.jdField_a_of_type_Bfjy != null)
     {
-      if (this.jdField_a_of_type_Amxm.isShowing()) {
-        this.jdField_a_of_type_Amxm.dismiss();
+      if (this.jdField_a_of_type_Bfjy.isShowing()) {
+        this.jdField_a_of_type_Bfjy.dismiss();
       }
-      this.jdField_a_of_type_Amxm.setOnDismissListener(null);
-      this.jdField_a_of_type_Amxm = null;
+      this.jdField_a_of_type_Bfjy.setOnDismissListener(null);
+      this.jdField_a_of_type_Bfjy = null;
     }
     if (QLog.isColorLevel()) {
       QLog.d("QQIndividuality", 2, "destroy.....");
@@ -239,7 +241,7 @@ public class QQIndividualityBridgeActivity
     sTopActivity = null;
   }
   
-  protected void requestWindowFeature(Intent paramIntent)
+  public void requestWindowFeature(Intent paramIntent)
   {
     super.requestWindowFeature(1);
   }

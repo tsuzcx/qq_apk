@@ -1,28 +1,24 @@
-import com.tencent.mobileqq.data.EmoticonTab;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.activity.bless.BlessResultActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeqg
-  implements Runnable
+  extends ajsa
 {
-  public aeqg(EmoticonManager paramEmoticonManager, String paramString) {}
+  public aeqg(BlessResultActivity paramBlessResultActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean, int paramInt)
   {
-    EmoticonTab localEmoticonTab = (EmoticonTab)this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a.a(EmoticonTab.class, this.jdField_a_of_type_JavaLangString);
-    if (localEmoticonTab != null) {}
-    for (localEmoticonTab.aioHave = true;; localEmoticonTab.aioHave = true)
-    {
-      EmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager, localEmoticonTab);
-      return;
-      localEmoticonTab = new EmoticonTab();
-      localEmoticonTab.epId = this.jdField_a_of_type_JavaLangString;
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "VideoRedbag, onCheckRealNameRsp in bless");
+    }
+    if ((paramBoolean) && (paramInt == awkk.a)) {
+      babr.a(this.a.getActivity(), 0, null, this.a.getString(2131653696), 2131653698, 2131653697, new aeqh(this), new aeqi(this)).show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aeqg
  * JD-Core Version:    0.7.0.1
  */

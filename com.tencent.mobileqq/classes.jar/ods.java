@@ -1,33 +1,49 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.support.v4.util.LruCache;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.URLImageLoader;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.URLImageLoader.Config;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.common.InfoPrinter;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class ods
-  extends LruCache
+  implements AladdinConfigHandler
 {
-  public ods(URLImageLoader paramURLImageLoader, int paramInt)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    super(paramInt);
-  }
-  
-  protected int a(URLImageLoader.Config paramConfig, Drawable paramDrawable)
-  {
-    if ((paramDrawable instanceof BitmapDrawable))
+    paramString = ocx.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
-      if (paramDrawable != null)
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      if ((str1.equals("md5")) && (str2 != null))
       {
-        int i = paramDrawable.getRowBytes();
-        i = paramDrawable.getHeight() * i;
-        InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "URLImageLoader cache put:", paramConfig, " size=", Integer.valueOf(i) });
-        return i;
+        nzy.a(obz.a(), "sp_key_latest_app_md5", str2.toLowerCase());
+      }
+      else if (str1.equals("version_name"))
+      {
+        nzy.a(obz.a(), "sp_key_latest_app_version_name", str2);
+      }
+      else if ((str1.equals("download_url")) && (str2 != null))
+      {
+        str1 = obx.a(str2);
+        nzy.a(obz.a(), "sp_key_kb_download_url", str1);
+      }
+      else if (str1.equals("enable_predownload"))
+      {
+        nzy.a(obz.a(), "sp_key_enable_pre_download", TextUtils.equals("1", str2));
       }
     }
-    return 524288;
+    if (!paramString.containsKey("md5")) {
+      nzy.a(obz.a(), "sp_key_latest_app_md5", null);
+    }
+    nzy.a();
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    nzy.a(obz.a(), "sp_key_latest_app_md5", null);
+    nzy.a(obz.a(), "sp_key_latest_app_version_name", null);
   }
 }
 

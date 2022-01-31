@@ -1,26 +1,46 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.adapter.HotChatPostListAdapter;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtAd;
+import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
 public class ynt
-  implements View.OnClickListener
+  implements ynl
 {
-  public ynt(HotChatPostListAdapter paramHotChatPostListAdapter, String paramString1, String paramString2) {}
-  
-  public void onClick(View paramView)
+  public boolean a(ymw paramymw, String paramString, String... paramVarArgs)
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqAdapterHotChatPostListAdapter.a, QQBrowserActivity.class).putExtra("url", String.format("https://buluo.qq.com/mobile/detail.html?bid=%s&pid=%s&_wv=1027&webview=1&from=reliao", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
-    this.jdField_a_of_type_ComTencentMobileqqAdapterHotChatPostListAdapter.a.startActivity(paramView);
-    ReportController.b(null, "dc00899", "grp_lbs", "", "hot_room", "clk_tribe_post", 0, 0, "", "", "", "");
+    try
+    {
+      paramVarArgs = new JSONObject(paramVarArgs[0]);
+      yny.b("GdtPreLoaderJsCallHandler", paramVarArgs.toString());
+      paramVarArgs = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(ynv.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramVarArgs.getJSONObject("adInfo"))));
+      yju.a().a(paramVarArgs);
+      paramymw.callJs(paramString, null);
+      if (paramymw != null)
+      {
+        paramString = paramymw.a();
+        if (paramymw == null) {
+          break label99;
+        }
+      }
+      label99:
+      for (paramymw = paramymw.a();; paramymw = null)
+      {
+        AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, true, "preLoadAfterAdLoaded", paramymw, paramVarArgs);
+        return true;
+        paramString = null;
+        break;
+      }
+      return true;
+    }
+    catch (Throwable paramymw)
+    {
+      paramymw.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ynt
  * JD-Core Version:    0.7.0.1
  */

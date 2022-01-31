@@ -1,23 +1,19 @@
-import android.bluetooth.BluetoothAdapter.LeScanCallback;
-import android.bluetooth.BluetoothDevice;
-import com.tencent.device.qfind.QFindBLEScanMgr;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.animation.Animation;
 
-public class qhh
-  implements BluetoothAdapter.LeScanCallback
+class qhh
+  extends beem
 {
-  public qhh(QFindBLEScanMgr paramQFindBLEScanMgr) {}
+  qhh(qhf paramqhf) {}
   
-  public void onLeScan(BluetoothDevice paramBluetoothDevice, int paramInt, byte[] paramArrayOfByte)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.a != null) {
-      this.a.a.post(new qhi(this, paramBluetoothDevice, paramArrayOfByte));
-    }
+    this.a.a.s.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qhh
  * JD-Core Version:    0.7.0.1
  */

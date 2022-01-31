@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:paddingLeft="2.0dip" android:paddingTop="6.0dip" android:paddingRight="2.0dip" android:paddingBottom="1.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/yu" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.activity.aio.item.ArkAppView android:id="@id/y_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hardwareAccelerated="false" />
+    </RelativeLayout>
+    <com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout android:id="@id/eet" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip">
+        <LinearLayout android:orientation="vertical" android:id="@id/loading" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <ProgressBar android:layout_gravity="center" android:id="@id/g1f" android:layout_width="16.0dip" android:layout_height="16.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/jt" android:indeterminateBehavior="repeat" android:layout_centerInParent="true" />
+        </LinearLayout>
+    </com.tencent.mobileqq.activity.aio.item.ArkAppLoadLayout>
+</RelativeLayout>

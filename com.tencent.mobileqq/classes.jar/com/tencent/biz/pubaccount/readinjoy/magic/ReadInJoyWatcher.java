@@ -6,50 +6,37 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build.VERSION;
 import android.os.PowerManager;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import bgmq;
 import com.tencent.biz.pubaccount.readinjoy.magic.models.AndroidAPs;
-import com.tencent.biz.pubaccount.readinjoy.magic.utils.DebounceCallback;
-import com.tencent.biz.pubaccount.readinjoy.magic.utils.Debouncer;
 import com.tencent.biz.pubaccount.readinjoy.struct.MagicEvent;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
-import lrl;
-import lrn;
+import java.util.Iterator;
+import java.util.Set;
+import ogy;
+import ony;
+import onz;
+import ooa;
+import ool;
 
 public class ReadInJoyWatcher
   extends BroadcastReceiver
-  implements DebounceCallback, lrn
+  implements onz
 {
   private static ReadInJoyWatcher jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicReadInJoyWatcher = new ReadInJoyWatcher();
-  private int jdField_a_of_type_Int;
-  private ReadInJoyWatcherObserver jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicReadInJoyWatcherObserver;
-  private AndroidAPs jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicModelsAndroidAPs;
-  private Debouncer jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicUtilsDebouncer;
+  private ony jdField_a_of_type_Ony;
   
   public static ReadInJoyWatcher a()
   {
     return jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicReadInJoyWatcher;
   }
   
-  private void a(MagicEvent paramMagicEvent)
-  {
-    ReadInJoyLogicEngine.a().a(paramMagicEvent);
-    QLog.d("ReadInJoyWatcher", 2, "addEventRecord: " + paramMagicEvent.toString());
-    this.jdField_a_of_type_Int += 1;
-    if (this.jdField_a_of_type_Int >= 20)
-    {
-      this.jdField_a_of_type_Int = 0;
-      ReadInJoyLogicEngine.a().p();
-    }
-  }
-  
   private static boolean a()
   {
-    return ReadInJoyHelper.i();
+    return bgmq.m();
   }
   
   private void b()
@@ -58,6 +45,7 @@ public class ReadInJoyWatcher
     {
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
+      localIntentFilter.addAction("android.intent.action.SCREEN_ON");
       BaseApplicationImpl.getContext().registerReceiver(this, localIntentFilter);
       return;
     }
@@ -69,14 +57,12 @@ public class ReadInJoyWatcher
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicReadInJoyWatcherObserver != null)
+    QLog.d("ReadInJoyWatcher", 2, "stopWatching: ");
+    if (this.jdField_a_of_type_Ony != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicReadInJoyWatcherObserver.stopWatching();
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicUtilsDebouncer != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicUtilsDebouncer.a();
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicReadInJoyWatcherObserver = null;
-      QLog.d("ReadInJoyWatcher", 2, "stopWatching");
+      this.jdField_a_of_type_Ony.b();
+      this.jdField_a_of_type_Ony = null;
+      QLog.d("ReadInJoyWatcher", 2, "my watch has ended");
     }
   }
   
@@ -87,14 +73,20 @@ public class ReadInJoyWatcher
       QLog.d("ReadInJoyWatcher", 2, "startWatching: won't watch in android N");
       return;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicReadInJoyWatcherObserver != null)
+    if (!a())
+    {
+      QLog.d("ReadInJoyWatcher", 2, "startWatching: shouldn't watch");
+      return;
+    }
+    ool.a();
+    if (this.jdField_a_of_type_Ony != null)
     {
       QLog.d("ReadInJoyWatcher", 2, "startWatching: already watching");
       return;
     }
-    if (!a())
+    if (ooa.a())
     {
-      QLog.d("ReadInJoyWatcher", 2, "startWatching: shouldn't watch");
+      QLog.d("ReadInJoyWatcher", 2, "startWatching: won't watch cz configuration not ready");
       return;
     }
     PowerManager localPowerManager = (PowerManager)paramContext.getSystemService("power");
@@ -104,43 +96,38 @@ public class ReadInJoyWatcher
       return;
     }
     QLog.d("ReadInJoyWatcher", 2, "startWatching");
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicReadInJoyWatcherObserver = new ReadInJoyWatcherObserver(paramContext, this);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicUtilsDebouncer = new Debouncer(this, (int)ReadInJoyHelper.b());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicReadInJoyWatcherObserver.startWatching();
+    this.jdField_a_of_type_Ony = new ony(paramContext, this);
+    this.jdField_a_of_type_Ony.a();
     b();
   }
   
-  public void a(AndroidAPs paramAndroidAPs)
+  public void a(Set<AndroidAPs> paramSet)
   {
     long l = NetConnInfoCenter.getServerTime();
-    if (paramAndroidAPs != null) {
-      if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicModelsAndroidAPs == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicModelsAndroidAPs.b != paramAndroidAPs.b))
+    if ((paramSet != null) && (paramSet.size() > 0))
+    {
+      paramSet = paramSet.iterator();
+      while (paramSet.hasNext())
       {
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicModelsAndroidAPs != null) {
-          a(new MagicEvent(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicModelsAndroidAPs.a(), l));
-        }
-        a(new MagicEvent(true, paramAndroidAPs.a(), l));
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicModelsAndroidAPs = paramAndroidAPs;
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicUtilsDebouncer.a(paramAndroidAPs);
+        AndroidAPs localAndroidAPs = (AndroidAPs)paramSet.next();
+        ogy.a().a(new MagicEvent(true, localAndroidAPs.a(), l));
       }
+      ThreadManager.executeOnSubThread(new ReadInJoyWatcher.1(this));
     }
-    while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicModelsAndroidAPs == null) {
-      return;
-    }
-    a(new MagicEvent(false, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicModelsAndroidAPs.a(), l));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicModelsAndroidAPs = null;
-  }
-  
-  public void b(AndroidAPs paramAndroidAPs)
-  {
-    ReadInJoyLogicEngine.a().p();
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ("android.intent.action.SCREEN_OFF".equals(paramIntent.getAction())) {
-      ThreadManager.executeOnSubThread(new lrl(this));
+    if ("android.intent.action.SCREEN_OFF".equals(paramIntent.getAction()))
+    {
+      QLog.d("ReadInJoyWatcher", 2, "ACTION_SCREEN_OFF STOP WATCHING");
+      a();
     }
+    while (!"android.intent.action.SCREEN_ON".equals(paramIntent.getAction())) {
+      return;
+    }
+    QLog.d("ReadInJoyWatcher", 2, "ACTION_SCREEN_ON");
+    a(paramContext);
   }
 }
 

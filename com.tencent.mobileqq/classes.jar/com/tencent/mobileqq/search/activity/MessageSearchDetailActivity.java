@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.search.activity;
 
+import aciy;
+import ajhh;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -13,14 +15,12 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.DiscussionManager;
+import babh;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.search.fragment.MessageSearchDetailFragment;
-import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class MessageSearchDetailActivity
@@ -47,7 +47,7 @@ public class MessageSearchDetailActivity
       }
       return;
     }
-    int i = ((DiscussionManager)this.app.getManager(52)).a(paramString2);
+    int i = ((ajhh)this.app.getManager(53)).a(paramString2);
     if (i <= 0)
     {
       paramTextView.setText(paramString1);
@@ -55,7 +55,7 @@ public class MessageSearchDetailActivity
     }
     int j = getResources().getDisplayMetrics().widthPixels;
     paramString2 = (RelativeLayout.LayoutParams)((View)paramTextView.getParent()).getLayoutParams();
-    int k = AIOUtils.a(207.0F, getResources());
+    int k = aciy.a(207.0F, getResources());
     TextPaint localTextPaint = paramTextView.getPaint();
     float f2 = j - k - localTextPaint.measureText(String.format("(%d人)", new Object[] { Integer.valueOf(i) })) - 4.0F * getResources().getDisplayMetrics().density;
     String str = paramString1;
@@ -105,7 +105,7 @@ public class MessageSearchDetailActivity
     }
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     this.b = jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem;
@@ -114,30 +114,34 @@ public class MessageSearchDetailActivity
       finish();
       return false;
     }
-    super.setContentView(2130968798);
-    if (this.b.user.type == 3000) {
-      a(ContactUtils.a(this.app, this.b.user.uin, this.b.user.type), this.b.user.uin, this.centerView);
+    super.setContentView(2131493264);
+    if (this.b.user.getType() == 3000) {
+      a(babh.a(this.app, this.b.user.uin, this.b.user.getType()), this.b.user.uin, this.centerView);
     }
     for (;;)
     {
       Object localObject = super.getSupportFragmentManager();
       paramBundle = MessageSearchDetailFragment.a(getIntent().getStringExtra("keyword"), this.b);
       localObject = ((FragmentManager)localObject).beginTransaction();
-      ((FragmentTransaction)localObject).replace(2131362372, paramBundle);
+      ((FragmentTransaction)localObject).replace(2131299146, paramBundle);
       ((FragmentTransaction)localObject).commit();
       this.jdField_a_of_type_ComTencentMobileqqSearchActivityMessageSearchDetailActivity$CancelReceiver = new MessageSearchDetailActivity.CancelReceiver(this);
       paramBundle = new IntentFilter();
       paramBundle.addAction("com.tencent.mobileqq.search.cancel");
       super.registerReceiver(this.jdField_a_of_type_ComTencentMobileqqSearchActivityMessageSearchDetailActivity$CancelReceiver, paramBundle);
       return true;
-      super.setTitle(ContactUtils.a(this.app, this.b.user.uin, this.b.user.type));
+      super.setTitle(babh.a(this.app, this.b.user.uin, this.b.user.getType()));
     }
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
-    super.unregisterReceiver(this.jdField_a_of_type_ComTencentMobileqqSearchActivityMessageSearchDetailActivity$CancelReceiver);
+    if (this.jdField_a_of_type_ComTencentMobileqqSearchActivityMessageSearchDetailActivity$CancelReceiver != null)
+    {
+      super.unregisterReceiver(this.jdField_a_of_type_ComTencentMobileqqSearchActivityMessageSearchDetailActivity$CancelReceiver);
+      this.jdField_a_of_type_ComTencentMobileqqSearchActivityMessageSearchDetailActivity$CancelReceiver = null;
+    }
   }
 }
 

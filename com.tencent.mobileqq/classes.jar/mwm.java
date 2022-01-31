@@ -1,29 +1,29 @@
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class mwm
-  implements View.OnFocusChangeListener
+  implements begw
 {
-  public mwm(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  public mwm(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramBoolean)
+    if (this.a.o) {
+      return;
+    }
+    this.a.o = true;
+    switch (paramInt)
     {
-      paramView.clearFocus();
-      SubscriptFeedsActivity.a(this.a);
-      long l = System.currentTimeMillis();
-      if (l - SubscriptFeedsActivity.a(this.a) > 1500L)
-      {
-        SubscriptFeedsActivity.a(this.a, l);
-        UniteSearchActivity.a(this.a, null, 12);
-        if (QLog.isColorLevel()) {
-          QLog.d("SubscriptFeedsActivity", 2, "Search Subscript Account...");
-        }
-      }
+    }
+    for (;;)
+    {
+      this.a.a.dismiss();
+      return;
+      this.a.q();
+      continue;
+      this.a.E();
+      continue;
+      this.a.G();
     }
   }
 }

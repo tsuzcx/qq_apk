@@ -9,12 +9,12 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_service$RspGetEmoticonPackList
-  extends MessageMicro
+  extends MessageMicro<RspGetEmoticonPackList>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field is_end = PBField.initUInt32(0);
   public final PBBytesField next_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField pack_list = PBField.initRepeatMessage(qqstory_struct.EmoticonPack.class);
+  public final PBRepeatMessageField<qqstory_struct.EmoticonPack> pack_list = PBField.initRepeatMessage(qqstory_struct.EmoticonPack.class);
   public qqstory_struct.ErrorInfo result = new qqstory_struct.ErrorInfo();
   
   static
@@ -25,7 +25,7 @@ public final class qqstory_service$RspGetEmoticonPackList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetEmoticonPackList
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,41 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qzonestatus.QzoneContactsFeedManager;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
 
 public class ahil
-  implements Runnable
+  extends akgd
 {
-  public ahil(QzoneContactsFeedManager paramQzoneContactsFeedManager) {}
-  
-  public void run()
+  public ahil(NewFlowCameraActivity paramNewFlowCameraActivity, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneContactsFeedManager", 2, "updateQzoneFeeds:" + QzoneContactsFeedManager.a(this.a).getCurrentAccountUin());
-    }
-    Object localObject = QzoneContactsFeedManager.a(this.a);
-    long l2 = ((SharedPreferences)localObject).getLong("last_click_time", 0L);
-    long l1 = System.currentTimeMillis();
-    l2 = l1 - l2;
-    if (l2 < QzoneContactsFeedManager.a()) {
-      return;
-    }
-    long l3 = this.a.a();
-    if ((l3 <= 0L) || (l2 >= QzoneContactsFeedManager.b())) {
-      this.a.b();
-    }
-    for (;;)
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
     {
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putLong("last_click_time", l1);
-      if (Build.VERSION.SDK_INT >= 9) {
-        break;
+      this.a.a = paramSosoLbsInfo.a.a;
+      this.a.b = paramSosoLbsInfo.a.b;
+      if (QLog.isColorLevel()) {
+        QLog.d("PTV.NewFlowCameraActivity", 2, "onLocationUpdate() latitude=" + this.a.a + " longitude=" + this.a.b);
       }
-      ((SharedPreferences.Editor)localObject).commit();
-      return;
-      this.a.a(l3, this.a.a());
+      if (NewFlowCameraActivity.a(this.a) != null) {
+        NewFlowCameraActivity.d(this.a);
+      }
     }
-    ((SharedPreferences.Editor)localObject).apply();
+    do
+    {
+      return;
+      this.a.a = 0.0D;
+      this.a.b = 0.0D;
+    } while (!QLog.isColorLevel());
+    QLog.d("PTV.NewFlowCameraActivity", 2, "onLocationUpdate() error");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahil
  * JD-Core Version:    0.7.0.1
  */

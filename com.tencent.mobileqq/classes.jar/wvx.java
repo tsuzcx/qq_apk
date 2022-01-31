@@ -1,32 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import com.tencent.biz.videostory.capture.widgets.AEPlayShowPageView;
 
 public class wvx
-  implements DialogInterface.OnClickListener
+  extends RecyclerView.ItemDecoration
 {
-  public wvx(MainAssistObserver paramMainAssistObserver) {}
+  public wvx(AEPlayShowPageView paramAEPlayShowPageView, wrq paramwrq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    paramDialogInterface = new Intent(this.a.a, LoginActivity.class);
-    paramDialogInterface.putExtra("is_change_account", true);
-    if (this.a.a.getIntent().getExtras() != null) {
-      paramDialogInterface.putExtras(this.a.a.getIntent().getExtras());
+    if (AEPlayShowPageView.a(this.jdField_a_of_type_ComTencentBizVideostoryCaptureWidgetsAEPlayShowPageView) != 1)
+    {
+      paramRect.left = this.jdField_a_of_type_Wrq.c;
+      paramRect.right = this.jdField_a_of_type_Wrq.c;
+      paramRect.top = this.jdField_a_of_type_Wrq.d;
+      paramRect.bottom = this.jdField_a_of_type_Wrq.d;
+      return;
     }
-    paramDialogInterface.addFlags(268435456);
-    paramDialogInterface.addFlags(67108864);
-    this.a.a.startActivity(paramDialogInterface);
-    this.a.b.dismiss();
+    paramRect.bottom = this.jdField_a_of_type_Wrq.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wvx
  * JD-Core Version:    0.7.0.1
  */

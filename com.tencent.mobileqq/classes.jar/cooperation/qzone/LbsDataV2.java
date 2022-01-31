@@ -193,7 +193,7 @@ public class LbsDataV2
     return localCellInfo;
   }
   
-  public static ArrayList fromSosoLocation(SosoInterface.SosoLocation paramSosoLocation)
+  public static ArrayList<LbsDataV2.PoiInfo> fromSosoLocation(SosoInterface.SosoLocation paramSosoLocation)
   {
     ArrayList localArrayList = new ArrayList();
     if ((paramSosoLocation != null) && (paramSosoLocation.jdField_a_of_type_JavaUtilList != null) && (!paramSosoLocation.jdField_a_of_type_JavaUtilList.isEmpty()))

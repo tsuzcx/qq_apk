@@ -1,24 +1,13 @@
 package com.squareup.okhttp.internal;
 
-import android.util.Log;
 import com.squareup.okhttp.Protocol;
-import com.squareup.okhttp.internal.tls.AndroidTrustRootIndex;
 import com.squareup.okhttp.internal.tls.RealTrustRootIndex;
 import com.squareup.okhttp.internal.tls.TrustRootIndex;
-import java.io.IOException;
 import java.io.PrintStream;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 import java.net.InetSocketAddress;
 import java.net.Socket;
-import java.net.SocketException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.X509TrustManager;
@@ -31,8 +20,8 @@ public class Platform
   static byte[] concatLengthPrefixed(List<Protocol> paramList)
   {
     Buffer localBuffer = new Buffer();
-    int i = 0;
     int j = paramList.size();
+    int i = 0;
     if (i < j)
     {
       Protocol localProtocol = (Protocol)paramList.get(i);
@@ -52,321 +41,306 @@ public class Platform
   private static Platform findPlatform()
   {
     // Byte code:
-    //   0: ldc 80
-    //   2: invokestatic 86	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   5: astore 5
-    //   7: new 88	com/squareup/okhttp/internal/OptionalMethod
+    //   0: ldc 68
+    //   2: invokestatic 74	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   5: astore 4
+    //   7: new 76	com/squareup/okhttp/internal/OptionalMethod
     //   10: dup
     //   11: aconst_null
-    //   12: ldc 90
+    //   12: ldc 78
     //   14: iconst_1
-    //   15: anewarray 82	java/lang/Class
+    //   15: anewarray 70	java/lang/Class
     //   18: dup
     //   19: iconst_0
-    //   20: getstatic 96	java/lang/Boolean:TYPE	Ljava/lang/Class;
+    //   20: getstatic 84	java/lang/Boolean:TYPE	Ljava/lang/Class;
     //   23: aastore
-    //   24: invokespecial 99	com/squareup/okhttp/internal/OptionalMethod:<init>	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/Class;)V
-    //   27: astore 10
-    //   29: new 88	com/squareup/okhttp/internal/OptionalMethod
+    //   24: invokespecial 87	com/squareup/okhttp/internal/OptionalMethod:<init>	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/Class;)V
+    //   27: astore 6
+    //   29: new 76	com/squareup/okhttp/internal/OptionalMethod
     //   32: dup
     //   33: aconst_null
-    //   34: ldc 101
+    //   34: ldc 89
     //   36: iconst_1
-    //   37: anewarray 82	java/lang/Class
+    //   37: anewarray 70	java/lang/Class
     //   40: dup
     //   41: iconst_0
-    //   42: ldc 57
+    //   42: ldc 45
     //   44: aastore
-    //   45: invokespecial 99	com/squareup/okhttp/internal/OptionalMethod:<init>	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/Class;)V
-    //   48: astore 11
-    //   50: aconst_null
-    //   51: astore 9
-    //   53: aconst_null
-    //   54: astore_1
-    //   55: aconst_null
-    //   56: astore 8
-    //   58: aconst_null
-    //   59: astore 4
-    //   61: aconst_null
-    //   62: astore 7
-    //   64: aconst_null
-    //   65: astore 6
-    //   67: aload_1
-    //   68: astore_2
-    //   69: aload 9
-    //   71: astore_3
-    //   72: aload 8
-    //   74: astore_0
-    //   75: ldc 103
-    //   77: invokestatic 86	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   80: astore 12
-    //   82: aload_1
-    //   83: astore_2
-    //   84: aload 9
-    //   86: astore_3
-    //   87: aload 8
-    //   89: astore_0
-    //   90: aload 12
-    //   92: ldc 105
-    //   94: iconst_1
-    //   95: anewarray 82	java/lang/Class
-    //   98: dup
-    //   99: iconst_0
+    //   45: invokespecial 87	com/squareup/okhttp/internal/OptionalMethod:<init>	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/Class;)V
+    //   48: astore 7
+    //   50: ldc 91
+    //   52: invokestatic 74	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   55: astore_1
+    //   56: aload_1
+    //   57: ldc 93
+    //   59: iconst_1
+    //   60: anewarray 70	java/lang/Class
+    //   63: dup
+    //   64: iconst_0
+    //   65: ldc 95
+    //   67: aastore
+    //   68: invokevirtual 99	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   71: astore_0
+    //   72: aload_1
+    //   73: ldc 101
+    //   75: iconst_1
+    //   76: anewarray 70	java/lang/Class
+    //   79: dup
+    //   80: iconst_0
+    //   81: ldc 95
+    //   83: aastore
+    //   84: invokevirtual 99	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   87: astore_1
+    //   88: ldc 103
+    //   90: invokestatic 74	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   93: pop
+    //   94: new 76	com/squareup/okhttp/internal/OptionalMethod
+    //   97: dup
+    //   98: ldc 105
     //   100: ldc 107
-    //   102: aastore
-    //   103: invokevirtual 111	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   106: astore_1
-    //   107: aload_1
-    //   108: astore_2
-    //   109: aload_1
-    //   110: astore_3
-    //   111: aload 8
-    //   113: astore_0
-    //   114: aload 12
-    //   116: ldc 113
-    //   118: iconst_1
-    //   119: anewarray 82	java/lang/Class
-    //   122: dup
-    //   123: iconst_0
-    //   124: ldc 107
-    //   126: aastore
-    //   127: invokevirtual 111	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   130: astore 8
-    //   132: aload 8
-    //   134: astore_2
-    //   135: aload_1
-    //   136: astore_3
-    //   137: aload_2
-    //   138: astore_0
-    //   139: ldc 115
-    //   141: invokestatic 86	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   144: pop
-    //   145: aload_1
-    //   146: astore_3
-    //   147: aload_2
-    //   148: astore_0
-    //   149: new 88	com/squareup/okhttp/internal/OptionalMethod
-    //   152: dup
-    //   153: ldc 117
-    //   155: ldc 119
-    //   157: iconst_0
-    //   158: anewarray 82	java/lang/Class
-    //   161: invokespecial 99	com/squareup/okhttp/internal/OptionalMethod:<init>	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/Class;)V
-    //   164: astore 4
-    //   166: new 88	com/squareup/okhttp/internal/OptionalMethod
-    //   169: dup
+    //   102: iconst_0
+    //   103: anewarray 70	java/lang/Class
+    //   106: invokespecial 87	com/squareup/okhttp/internal/OptionalMethod:<init>	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/Class;)V
+    //   109: astore_2
+    //   110: new 76	com/squareup/okhttp/internal/OptionalMethod
+    //   113: dup
+    //   114: aconst_null
+    //   115: ldc 109
+    //   117: iconst_1
+    //   118: anewarray 70	java/lang/Class
+    //   121: dup
+    //   122: iconst_0
+    //   123: ldc 105
+    //   125: aastore
+    //   126: invokespecial 87	com/squareup/okhttp/internal/OptionalMethod:<init>	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/Class;)V
+    //   129: astore 5
+    //   131: aload_2
+    //   132: astore_3
+    //   133: aload 5
+    //   135: astore_2
+    //   136: new 111	com/squareup/okhttp/internal/Platform$Android
+    //   139: dup
+    //   140: aload 4
+    //   142: aload 6
+    //   144: aload 7
+    //   146: aload_0
+    //   147: aload_1
+    //   148: aload_3
+    //   149: aload_2
+    //   150: invokespecial 114	com/squareup/okhttp/internal/Platform$Android:<init>	(Ljava/lang/Class;Lcom/squareup/okhttp/internal/OptionalMethod;Lcom/squareup/okhttp/internal/OptionalMethod;Ljava/lang/reflect/Method;Ljava/lang/reflect/Method;Lcom/squareup/okhttp/internal/OptionalMethod;Lcom/squareup/okhttp/internal/OptionalMethod;)V
+    //   153: areturn
+    //   154: astore_0
+    //   155: ldc 116
+    //   157: invokestatic 74	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   160: astore 4
+    //   162: goto -155 -> 7
+    //   165: astore_2
+    //   166: aconst_null
+    //   167: astore_2
+    //   168: aload_2
+    //   169: astore_3
     //   170: aconst_null
-    //   171: ldc 121
-    //   173: iconst_1
-    //   174: anewarray 82	java/lang/Class
-    //   177: dup
-    //   178: iconst_0
-    //   179: ldc 117
-    //   181: aastore
-    //   182: invokespecial 99	com/squareup/okhttp/internal/OptionalMethod:<init>	(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/Class;)V
-    //   185: astore_3
-    //   186: aload 4
-    //   188: astore_0
-    //   189: new 6	com/squareup/okhttp/internal/Platform$Android
-    //   192: dup
+    //   171: astore_2
+    //   172: goto -36 -> 136
+    //   175: astore_0
+    //   176: aconst_null
+    //   177: astore_0
+    //   178: aconst_null
+    //   179: astore_1
+    //   180: aconst_null
+    //   181: astore_3
+    //   182: aload_0
+    //   183: astore_2
+    //   184: aload_3
+    //   185: astore_0
+    //   186: aconst_null
+    //   187: astore 5
+    //   189: aload_0
+    //   190: astore_3
+    //   191: aload_2
+    //   192: astore_0
     //   193: aload 5
-    //   195: aload 10
-    //   197: aload 11
-    //   199: aload_1
-    //   200: aload_2
-    //   201: aload_0
-    //   202: aload_3
-    //   203: invokespecial 124	com/squareup/okhttp/internal/Platform$Android:<init>	(Ljava/lang/Class;Lcom/squareup/okhttp/internal/OptionalMethod;Lcom/squareup/okhttp/internal/OptionalMethod;Ljava/lang/reflect/Method;Ljava/lang/reflect/Method;Lcom/squareup/okhttp/internal/OptionalMethod;Lcom/squareup/okhttp/internal/OptionalMethod;)V
-    //   206: areturn
-    //   207: astore_0
-    //   208: ldc 126
-    //   210: invokestatic 86	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   213: astore 5
-    //   215: goto -208 -> 7
-    //   218: astore_0
-    //   219: ldc 128
-    //   221: invokestatic 86	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   224: astore_0
-    //   225: ldc 130
-    //   227: invokestatic 86	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   230: astore_1
-    //   231: new 132	java/lang/StringBuilder
-    //   234: dup
-    //   235: invokespecial 133	java/lang/StringBuilder:<init>	()V
-    //   238: ldc 130
-    //   240: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   243: ldc 139
-    //   245: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   248: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   251: invokestatic 86	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   254: astore_2
-    //   255: new 132	java/lang/StringBuilder
-    //   258: dup
-    //   259: invokespecial 133	java/lang/StringBuilder:<init>	()V
-    //   262: ldc 130
-    //   264: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   267: ldc 142
-    //   269: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   272: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   275: invokestatic 86	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   278: astore_3
-    //   279: new 132	java/lang/StringBuilder
-    //   282: dup
-    //   283: invokespecial 133	java/lang/StringBuilder:<init>	()V
-    //   286: ldc 130
-    //   288: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   291: ldc 144
-    //   293: invokevirtual 137	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   296: invokevirtual 140	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   299: invokestatic 86	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   302: astore 4
-    //   304: new 12	com/squareup/okhttp/internal/Platform$JdkWithJettyBootPlatform
-    //   307: dup
-    //   308: aload_0
+    //   195: astore_2
+    //   196: goto -60 -> 136
+    //   199: astore_0
+    //   200: ldc 118
+    //   202: invokestatic 74	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   205: astore_0
+    //   206: ldc 120
+    //   208: invokestatic 74	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   211: astore_1
+    //   212: new 122	java/lang/StringBuilder
+    //   215: dup
+    //   216: invokespecial 123	java/lang/StringBuilder:<init>	()V
+    //   219: ldc 120
+    //   221: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   224: ldc 129
+    //   226: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   229: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   232: invokestatic 74	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   235: astore_2
+    //   236: new 122	java/lang/StringBuilder
+    //   239: dup
+    //   240: invokespecial 123	java/lang/StringBuilder:<init>	()V
+    //   243: ldc 120
+    //   245: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   248: ldc 132
+    //   250: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   253: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   256: invokestatic 74	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   259: astore_3
+    //   260: new 122	java/lang/StringBuilder
+    //   263: dup
+    //   264: invokespecial 123	java/lang/StringBuilder:<init>	()V
+    //   267: ldc 120
+    //   269: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   272: ldc 134
+    //   274: invokevirtual 127	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   277: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   280: invokestatic 74	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   283: astore 4
+    //   285: new 136	com/squareup/okhttp/internal/Platform$JdkWithJettyBootPlatform
+    //   288: dup
+    //   289: aload_0
+    //   290: aload_1
+    //   291: ldc 138
+    //   293: iconst_2
+    //   294: anewarray 70	java/lang/Class
+    //   297: dup
+    //   298: iconst_0
+    //   299: ldc 140
+    //   301: aastore
+    //   302: dup
+    //   303: iconst_1
+    //   304: aload_2
+    //   305: aastore
+    //   306: invokevirtual 99	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
     //   309: aload_1
-    //   310: ldc 146
-    //   312: iconst_2
-    //   313: anewarray 82	java/lang/Class
+    //   310: ldc 141
+    //   312: iconst_1
+    //   313: anewarray 70	java/lang/Class
     //   316: dup
     //   317: iconst_0
-    //   318: ldc 148
+    //   318: ldc 140
     //   320: aastore
-    //   321: dup
-    //   322: iconst_1
-    //   323: aload_2
-    //   324: aastore
-    //   325: invokevirtual 111	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   328: aload_1
-    //   329: ldc 149
-    //   331: iconst_1
-    //   332: anewarray 82	java/lang/Class
-    //   335: dup
-    //   336: iconst_0
-    //   337: ldc 148
-    //   339: aastore
-    //   340: invokevirtual 111	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   343: aload_1
-    //   344: ldc 151
-    //   346: iconst_1
-    //   347: anewarray 82	java/lang/Class
-    //   350: dup
-    //   351: iconst_0
-    //   352: ldc 148
-    //   354: aastore
-    //   355: invokevirtual 111	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   358: aload_3
-    //   359: aload 4
-    //   361: invokespecial 154	com/squareup/okhttp/internal/Platform$JdkWithJettyBootPlatform:<init>	(Ljava/lang/Class;Ljava/lang/reflect/Method;Ljava/lang/reflect/Method;Ljava/lang/reflect/Method;Ljava/lang/Class;Ljava/lang/Class;)V
-    //   364: astore_1
-    //   365: aload_1
-    //   366: areturn
-    //   367: astore_1
-    //   368: new 9	com/squareup/okhttp/internal/Platform$JdkPlatform
-    //   371: dup
-    //   372: aload_0
-    //   373: invokespecial 157	com/squareup/okhttp/internal/Platform$JdkPlatform:<init>	(Ljava/lang/Class;)V
-    //   376: astore_0
-    //   377: aload_0
-    //   378: areturn
+    //   321: invokevirtual 99	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   324: aload_1
+    //   325: ldc 143
+    //   327: iconst_1
+    //   328: anewarray 70	java/lang/Class
+    //   331: dup
+    //   332: iconst_0
+    //   333: ldc 140
+    //   335: aastore
+    //   336: invokevirtual 99	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   339: aload_3
+    //   340: aload 4
+    //   342: invokespecial 146	com/squareup/okhttp/internal/Platform$JdkWithJettyBootPlatform:<init>	(Ljava/lang/Class;Ljava/lang/reflect/Method;Ljava/lang/reflect/Method;Ljava/lang/reflect/Method;Ljava/lang/Class;Ljava/lang/Class;)V
+    //   345: astore_1
+    //   346: aload_1
+    //   347: areturn
+    //   348: astore_1
+    //   349: new 148	com/squareup/okhttp/internal/Platform$JdkPlatform
+    //   352: dup
+    //   353: aload_0
+    //   354: invokespecial 151	com/squareup/okhttp/internal/Platform$JdkPlatform:<init>	(Ljava/lang/Class;)V
+    //   357: astore_0
+    //   358: aload_0
+    //   359: areturn
+    //   360: astore_0
+    //   361: new 2	com/squareup/okhttp/internal/Platform
+    //   364: dup
+    //   365: invokespecial 152	com/squareup/okhttp/internal/Platform:<init>	()V
+    //   368: areturn
+    //   369: astore_1
+    //   370: goto -21 -> 349
+    //   373: astore_1
+    //   374: goto -196 -> 178
+    //   377: astore_0
+    //   378: aconst_null
     //   379: astore_0
-    //   380: new 2	com/squareup/okhttp/internal/Platform
-    //   383: dup
-    //   384: invokespecial 158	com/squareup/okhttp/internal/Platform:<init>	()V
-    //   387: areturn
-    //   388: astore_1
-    //   389: goto -21 -> 368
-    //   392: astore_0
-    //   393: aload_2
-    //   394: astore_1
-    //   395: aload 4
-    //   397: astore_2
-    //   398: aload 7
-    //   400: astore_0
-    //   401: aload 6
-    //   403: astore_3
-    //   404: goto -215 -> 189
-    //   407: astore_1
-    //   408: aload_3
-    //   409: astore_1
+    //   380: aconst_null
+    //   381: astore_1
+    //   382: aconst_null
+    //   383: astore_2
+    //   384: goto -198 -> 186
+    //   387: astore_1
+    //   388: aconst_null
+    //   389: astore_3
+    //   390: aconst_null
+    //   391: astore_1
+    //   392: aload_0
+    //   393: astore_2
+    //   394: aload_3
+    //   395: astore_0
+    //   396: goto -210 -> 186
+    //   399: astore_2
+    //   400: aconst_null
+    //   401: astore_3
+    //   402: aload_0
+    //   403: astore_2
+    //   404: aload_3
+    //   405: astore_0
+    //   406: goto -220 -> 186
+    //   409: astore_3
     //   410: aload_0
-    //   411: astore_2
-    //   412: aload 7
-    //   414: astore_0
-    //   415: aload 6
-    //   417: astore_3
-    //   418: goto -229 -> 189
-    //   421: astore_0
-    //   422: aload 4
-    //   424: astore_0
-    //   425: aload 6
-    //   427: astore_3
-    //   428: goto -239 -> 189
-    //   431: astore_0
-    //   432: aload 7
-    //   434: astore_0
-    //   435: aload 6
-    //   437: astore_3
-    //   438: goto -249 -> 189
-    //   441: astore_0
-    //   442: aload 4
-    //   444: astore_0
-    //   445: aload 6
-    //   447: astore_3
-    //   448: goto -259 -> 189
+    //   411: astore_3
+    //   412: aload_2
+    //   413: astore_0
+    //   414: aload_3
+    //   415: astore_2
+    //   416: goto -230 -> 186
+    //   419: astore_3
+    //   420: goto -252 -> 168
     // Local variable table:
     //   start	length	slot	name	signature
-    //   74	128	0	localObject1	Object
-    //   207	1	0	localClassNotFoundException1	ClassNotFoundException
-    //   218	1	0	localClassNotFoundException2	ClassNotFoundException
-    //   224	154	0	localObject2	Object
-    //   379	1	0	localClassNotFoundException3	ClassNotFoundException
-    //   392	1	0	localClassNotFoundException4	ClassNotFoundException
-    //   400	15	0	localObject3	Object
-    //   421	1	0	localNoSuchMethodException1	java.lang.NoSuchMethodException
-    //   424	1	0	localObject4	Object
-    //   431	1	0	localClassNotFoundException5	ClassNotFoundException
-    //   434	1	0	localObject5	Object
-    //   441	1	0	localClassNotFoundException6	ClassNotFoundException
-    //   444	1	0	localObject6	Object
-    //   54	312	1	localObject7	Object
-    //   367	1	1	localClassNotFoundException7	ClassNotFoundException
-    //   388	1	1	localNoSuchMethodException2	java.lang.NoSuchMethodException
-    //   394	1	1	localObject8	Object
-    //   407	1	1	localNoSuchMethodException3	java.lang.NoSuchMethodException
-    //   409	1	1	localObject9	Object
-    //   68	344	2	localObject10	Object
-    //   71	377	3	localObject11	Object
-    //   59	384	4	localObject12	Object
-    //   5	209	5	localClass1	Class
-    //   65	381	6	localObject13	Object
-    //   62	371	7	localObject14	Object
-    //   56	77	8	localMethod	Method
-    //   51	34	9	localObject15	Object
-    //   27	169	10	localOptionalMethod1	OptionalMethod
-    //   48	150	11	localOptionalMethod2	OptionalMethod
-    //   80	35	12	localClass2	Class
+    //   71	76	0	localMethod	java.lang.reflect.Method
+    //   154	1	0	localClassNotFoundException1	java.lang.ClassNotFoundException
+    //   175	1	0	localClassNotFoundException2	java.lang.ClassNotFoundException
+    //   177	16	0	localObject1	Object
+    //   199	1	0	localClassNotFoundException3	java.lang.ClassNotFoundException
+    //   205	154	0	localObject2	Object
+    //   360	1	0	localClassNotFoundException4	java.lang.ClassNotFoundException
+    //   377	1	0	localNoSuchMethodException1	java.lang.NoSuchMethodException
+    //   379	35	0	localObject3	Object
+    //   55	292	1	localObject4	Object
+    //   348	1	1	localClassNotFoundException5	java.lang.ClassNotFoundException
+    //   369	1	1	localNoSuchMethodException2	java.lang.NoSuchMethodException
+    //   373	1	1	localClassNotFoundException6	java.lang.ClassNotFoundException
+    //   381	1	1	localObject5	Object
+    //   387	1	1	localNoSuchMethodException3	java.lang.NoSuchMethodException
+    //   391	1	1	localObject6	Object
+    //   109	41	2	localObject7	Object
+    //   165	1	2	localClassNotFoundException7	java.lang.ClassNotFoundException
+    //   167	227	2	localObject8	Object
+    //   399	1	2	localNoSuchMethodException4	java.lang.NoSuchMethodException
+    //   403	13	2	localObject9	Object
+    //   132	273	3	localObject10	Object
+    //   409	1	3	localNoSuchMethodException5	java.lang.NoSuchMethodException
+    //   411	4	3	localObject11	Object
+    //   419	1	3	localClassNotFoundException8	java.lang.ClassNotFoundException
+    //   5	336	4	localClass	Class
+    //   129	65	5	localOptionalMethod1	OptionalMethod
+    //   27	116	6	localOptionalMethod2	OptionalMethod
+    //   48	97	7	localOptionalMethod3	OptionalMethod
     // Exception table:
     //   from	to	target	type
-    //   0	7	207	java/lang/ClassNotFoundException
-    //   7	50	218	java/lang/ClassNotFoundException
-    //   189	207	218	java/lang/ClassNotFoundException
-    //   208	215	218	java/lang/ClassNotFoundException
-    //   225	365	367	java/lang/ClassNotFoundException
-    //   219	225	379	java/lang/ClassNotFoundException
-    //   368	377	379	java/lang/ClassNotFoundException
-    //   225	365	388	java/lang/NoSuchMethodException
-    //   75	82	392	java/lang/ClassNotFoundException
-    //   90	107	392	java/lang/ClassNotFoundException
-    //   114	132	392	java/lang/ClassNotFoundException
-    //   75	82	407	java/lang/NoSuchMethodException
-    //   90	107	407	java/lang/NoSuchMethodException
-    //   114	132	407	java/lang/NoSuchMethodException
-    //   139	145	407	java/lang/NoSuchMethodException
-    //   149	166	407	java/lang/NoSuchMethodException
-    //   166	186	421	java/lang/NoSuchMethodException
-    //   139	145	431	java/lang/ClassNotFoundException
-    //   149	166	431	java/lang/ClassNotFoundException
-    //   166	186	441	java/lang/ClassNotFoundException
+    //   0	7	154	java/lang/ClassNotFoundException
+    //   88	110	165	java/lang/ClassNotFoundException
+    //   50	72	175	java/lang/ClassNotFoundException
+    //   7	50	199	java/lang/ClassNotFoundException
+    //   136	154	199	java/lang/ClassNotFoundException
+    //   155	162	199	java/lang/ClassNotFoundException
+    //   206	346	348	java/lang/ClassNotFoundException
+    //   200	206	360	java/lang/ClassNotFoundException
+    //   349	358	360	java/lang/ClassNotFoundException
+    //   206	346	369	java/lang/NoSuchMethodException
+    //   72	88	373	java/lang/ClassNotFoundException
+    //   50	72	377	java/lang/NoSuchMethodException
+    //   72	88	387	java/lang/NoSuchMethodException
+    //   88	110	399	java/lang/NoSuchMethodException
+    //   110	131	409	java/lang/NoSuchMethodException
+    //   110	131	419	java/lang/ClassNotFoundException
   }
   
   public static Platform get()
@@ -376,23 +350,18 @@ public class Platform
   
   static <T> T readFieldOrNull(Object paramObject, Class<T> paramClass, String paramString)
   {
-    Object localObject3 = null;
     Class localClass = paramObject.getClass();
     while (localClass != Object.class) {
       try
       {
-        Object localObject1 = localClass.getDeclaredField(paramString);
-        ((Field)localObject1).setAccessible(true);
-        Object localObject4 = ((Field)localObject1).get(paramObject);
-        localObject1 = localObject3;
-        if (localObject4 == null) {
-          break label123;
+        Object localObject = localClass.getDeclaredField(paramString);
+        ((Field)localObject).setAccessible(true);
+        localObject = ((Field)localObject).get(paramObject);
+        if ((localObject == null) || (!paramClass.isInstance(localObject))) {
+          break label110;
         }
-        if (!paramClass.isInstance(localObject4)) {
-          return null;
-        }
-        localObject1 = paramClass.cast(localObject4);
-        return localObject1;
+        localObject = paramClass.cast(localObject);
+        return localObject;
       }
       catch (IllegalAccessException paramObject)
       {
@@ -403,17 +372,16 @@ public class Platform
         localClass = localClass.getSuperclass();
       }
     }
-    Object localObject2 = localObject3;
     if (!paramString.equals("delegate"))
     {
       paramObject = readFieldOrNull(paramObject, Object.class, "delegate");
-      localObject2 = localObject3;
       if (paramObject != null) {
-        localObject2 = readFieldOrNull(paramObject, paramClass, paramString);
+        return readFieldOrNull(paramObject, paramClass, paramString);
       }
     }
-    label123:
-    return localObject2;
+    return null;
+    label110:
+    return null;
   }
   
   public void afterHandshake(SSLSocket paramSSLSocket) {}
@@ -421,7 +389,6 @@ public class Platform
   public void configureTlsExtensions(SSLSocket paramSSLSocket, String paramString, List<Protocol> paramList) {}
   
   public void connectSocket(Socket paramSocket, InetSocketAddress paramInetSocketAddress, int paramInt)
-    throws IOException
   {
     paramSocket.connect(paramInetSocketAddress, paramInt);
   }
@@ -446,9 +413,7 @@ public class Platform
     System.out.println(paramString);
   }
   
-  public void tagSocket(Socket paramSocket)
-    throws SocketException
-  {}
+  public void tagSocket(Socket paramSocket) {}
   
   public X509TrustManager trustManager(SSLSocketFactory paramSSLSocketFactory)
   {
@@ -460,361 +425,7 @@ public class Platform
     return new RealTrustRootIndex(paramX509TrustManager.getAcceptedIssuers());
   }
   
-  public void untagSocket(Socket paramSocket)
-    throws SocketException
-  {}
-  
-  private static class Android
-    extends Platform
-  {
-    private static final int MAX_LOG_LENGTH = 4000;
-    private final OptionalMethod<Socket> getAlpnSelectedProtocol;
-    private final OptionalMethod<Socket> setAlpnProtocols;
-    private final OptionalMethod<Socket> setHostname;
-    private final OptionalMethod<Socket> setUseSessionTickets;
-    private final Class<?> sslParametersClass;
-    private final Method trafficStatsTagSocket;
-    private final Method trafficStatsUntagSocket;
-    
-    public Android(Class<?> paramClass, OptionalMethod<Socket> paramOptionalMethod1, OptionalMethod<Socket> paramOptionalMethod2, Method paramMethod1, Method paramMethod2, OptionalMethod<Socket> paramOptionalMethod3, OptionalMethod<Socket> paramOptionalMethod4)
-    {
-      this.sslParametersClass = paramClass;
-      this.setUseSessionTickets = paramOptionalMethod1;
-      this.setHostname = paramOptionalMethod2;
-      this.trafficStatsTagSocket = paramMethod1;
-      this.trafficStatsUntagSocket = paramMethod2;
-      this.getAlpnSelectedProtocol = paramOptionalMethod3;
-      this.setAlpnProtocols = paramOptionalMethod4;
-    }
-    
-    public void configureTlsExtensions(SSLSocket paramSSLSocket, String paramString, List<Protocol> paramList)
-    {
-      if (paramString != null)
-      {
-        this.setUseSessionTickets.invokeOptionalWithoutCheckedException(paramSSLSocket, new Object[] { Boolean.valueOf(true) });
-        this.setHostname.invokeOptionalWithoutCheckedException(paramSSLSocket, new Object[] { paramString });
-      }
-      if ((this.setAlpnProtocols != null) && (this.setAlpnProtocols.isSupported(paramSSLSocket)))
-      {
-        paramString = concatLengthPrefixed(paramList);
-        this.setAlpnProtocols.invokeWithoutCheckedException(paramSSLSocket, new Object[] { paramString });
-      }
-    }
-    
-    public void connectSocket(Socket paramSocket, InetSocketAddress paramInetSocketAddress, int paramInt)
-      throws IOException
-    {
-      try
-      {
-        paramSocket.connect(paramInetSocketAddress, paramInt);
-        return;
-      }
-      catch (AssertionError paramSocket)
-      {
-        if (Util.isAndroidGetsocknameError(paramSocket)) {
-          throw new IOException(paramSocket);
-        }
-        throw paramSocket;
-      }
-      catch (SecurityException paramSocket)
-      {
-        paramInetSocketAddress = new IOException("Exception in connect");
-        paramInetSocketAddress.initCause(paramSocket);
-        throw paramInetSocketAddress;
-      }
-    }
-    
-    public String getSelectedProtocol(SSLSocket paramSSLSocket)
-    {
-      if (this.getAlpnSelectedProtocol == null) {}
-      while (!this.getAlpnSelectedProtocol.isSupported(paramSSLSocket)) {
-        return null;
-      }
-      paramSSLSocket = (byte[])this.getAlpnSelectedProtocol.invokeWithoutCheckedException(paramSSLSocket, new Object[0]);
-      if (paramSSLSocket != null) {}
-      for (paramSSLSocket = new String(paramSSLSocket, Util.UTF_8);; paramSSLSocket = null) {
-        return paramSSLSocket;
-      }
-    }
-    
-    public void log(String paramString)
-    {
-      int i = 0;
-      int m = paramString.length();
-      if (i < m)
-      {
-        int j = paramString.indexOf('\n', i);
-        if (j != -1) {}
-        for (;;)
-        {
-          int k = Math.min(j, i + 4000);
-          Log.d("OkHttp", paramString.substring(i, k));
-          i = k;
-          if (k >= j)
-          {
-            i = k + 1;
-            break;
-            j = m;
-          }
-        }
-      }
-    }
-    
-    public void tagSocket(Socket paramSocket)
-      throws SocketException
-    {
-      if (this.trafficStatsTagSocket == null) {
-        return;
-      }
-      try
-      {
-        this.trafficStatsTagSocket.invoke(null, new Object[] { paramSocket });
-        return;
-      }
-      catch (IllegalAccessException paramSocket)
-      {
-        throw new RuntimeException(paramSocket);
-      }
-      catch (InvocationTargetException paramSocket)
-      {
-        throw new RuntimeException(paramSocket.getCause());
-      }
-    }
-    
-    public X509TrustManager trustManager(SSLSocketFactory paramSSLSocketFactory)
-    {
-      Object localObject2 = readFieldOrNull(paramSSLSocketFactory, this.sslParametersClass, "sslParameters");
-      Object localObject1 = localObject2;
-      if (localObject2 == null) {}
-      try
-      {
-        localObject1 = readFieldOrNull(paramSSLSocketFactory, Class.forName("com.google.android.gms.org.conscrypt.SSLParametersImpl", false, paramSSLSocketFactory.getClass().getClassLoader()), "sslParameters");
-        paramSSLSocketFactory = (X509TrustManager)readFieldOrNull(localObject1, X509TrustManager.class, "x509TrustManager");
-        if (paramSSLSocketFactory != null) {
-          return paramSSLSocketFactory;
-        }
-      }
-      catch (ClassNotFoundException paramSSLSocketFactory)
-      {
-        return null;
-      }
-      return (X509TrustManager)readFieldOrNull(localObject1, X509TrustManager.class, "trustManager");
-    }
-    
-    public TrustRootIndex trustRootIndex(X509TrustManager paramX509TrustManager)
-    {
-      TrustRootIndex localTrustRootIndex = AndroidTrustRootIndex.get(paramX509TrustManager);
-      if (localTrustRootIndex != null) {
-        return localTrustRootIndex;
-      }
-      return super.trustRootIndex(paramX509TrustManager);
-    }
-    
-    public void untagSocket(Socket paramSocket)
-      throws SocketException
-    {
-      if (this.trafficStatsUntagSocket == null) {
-        return;
-      }
-      try
-      {
-        this.trafficStatsUntagSocket.invoke(null, new Object[] { paramSocket });
-        return;
-      }
-      catch (IllegalAccessException paramSocket)
-      {
-        throw new RuntimeException(paramSocket);
-      }
-      catch (InvocationTargetException paramSocket)
-      {
-        throw new RuntimeException(paramSocket.getCause());
-      }
-    }
-  }
-  
-  private static class JdkPlatform
-    extends Platform
-  {
-    private final Class<?> sslContextClass;
-    
-    public JdkPlatform(Class<?> paramClass)
-    {
-      this.sslContextClass = paramClass;
-    }
-    
-    public X509TrustManager trustManager(SSLSocketFactory paramSSLSocketFactory)
-    {
-      paramSSLSocketFactory = readFieldOrNull(paramSSLSocketFactory, this.sslContextClass, "context");
-      if (paramSSLSocketFactory == null) {
-        return null;
-      }
-      return (X509TrustManager)readFieldOrNull(paramSSLSocketFactory, X509TrustManager.class, "trustManager");
-    }
-  }
-  
-  private static class JdkWithJettyBootPlatform
-    extends Platform.JdkPlatform
-  {
-    private final Class<?> clientProviderClass;
-    private final Method getMethod;
-    private final Method putMethod;
-    private final Method removeMethod;
-    private final Class<?> serverProviderClass;
-    
-    public JdkWithJettyBootPlatform(Class<?> paramClass1, Method paramMethod1, Method paramMethod2, Method paramMethod3, Class<?> paramClass2, Class<?> paramClass3)
-    {
-      super();
-      this.putMethod = paramMethod1;
-      this.getMethod = paramMethod2;
-      this.removeMethod = paramMethod3;
-      this.clientProviderClass = paramClass2;
-      this.serverProviderClass = paramClass3;
-    }
-    
-    public void afterHandshake(SSLSocket paramSSLSocket)
-    {
-      try
-      {
-        this.removeMethod.invoke(null, new Object[] { paramSSLSocket });
-        return;
-      }
-      catch (IllegalAccessException paramSSLSocket)
-      {
-        throw new AssertionError();
-      }
-      catch (InvocationTargetException paramSSLSocket)
-      {
-        label19:
-        break label19;
-      }
-    }
-    
-    public void configureTlsExtensions(SSLSocket paramSSLSocket, String paramString, List<Protocol> paramList)
-    {
-      paramString = new ArrayList(paramList.size());
-      int i = 0;
-      int j = paramList.size();
-      Object localObject;
-      if (i < j)
-      {
-        localObject = (Protocol)paramList.get(i);
-        if (localObject == Protocol.HTTP_1_0) {}
-        for (;;)
-        {
-          i += 1;
-          break;
-          paramString.add(((Protocol)localObject).toString());
-        }
-      }
-      try
-      {
-        paramList = Platform.class.getClassLoader();
-        localObject = this.clientProviderClass;
-        Class localClass = this.serverProviderClass;
-        paramString = new Platform.JettyNegoProvider(paramString);
-        paramString = Proxy.newProxyInstance(paramList, new Class[] { localObject, localClass }, paramString);
-        this.putMethod.invoke(null, new Object[] { paramSSLSocket, paramString });
-        return;
-      }
-      catch (IllegalAccessException paramSSLSocket)
-      {
-        throw new AssertionError(paramSSLSocket);
-      }
-      catch (InvocationTargetException paramSSLSocket)
-      {
-        label147:
-        break label147;
-      }
-    }
-    
-    public String getSelectedProtocol(SSLSocket paramSSLSocket)
-    {
-      try
-      {
-        paramSSLSocket = (Platform.JettyNegoProvider)Proxy.getInvocationHandler(this.getMethod.invoke(null, new Object[] { paramSSLSocket }));
-        if ((!Platform.JettyNegoProvider.access$000(paramSSLSocket)) && (Platform.JettyNegoProvider.access$100(paramSSLSocket) == null))
-        {
-          Internal.logger.log(Level.INFO, "ALPN callback dropped: SPDY and HTTP/2 are disabled. Is alpn-boot on the boot class path?");
-          return null;
-        }
-        if (!Platform.JettyNegoProvider.access$000(paramSSLSocket))
-        {
-          paramSSLSocket = Platform.JettyNegoProvider.access$100(paramSSLSocket);
-          return paramSSLSocket;
-        }
-      }
-      catch (IllegalAccessException paramSSLSocket)
-      {
-        throw new AssertionError();
-      }
-      catch (InvocationTargetException paramSSLSocket)
-      {
-        label65:
-        break label65;
-      }
-      return null;
-    }
-  }
-  
-  private static class JettyNegoProvider
-    implements InvocationHandler
-  {
-    private final List<String> protocols;
-    private String selected;
-    private boolean unsupported;
-    
-    public JettyNegoProvider(List<String> paramList)
-    {
-      this.protocols = paramList;
-    }
-    
-    public Object invoke(Object paramObject, Method paramMethod, Object[] paramArrayOfObject)
-      throws Throwable
-    {
-      String str = paramMethod.getName();
-      Class localClass = paramMethod.getReturnType();
-      paramObject = paramArrayOfObject;
-      if (paramArrayOfObject == null) {
-        paramObject = Util.EMPTY_STRING_ARRAY;
-      }
-      if ((str.equals("supports")) && (Boolean.TYPE == localClass)) {
-        return Boolean.valueOf(true);
-      }
-      if ((str.equals("unsupported")) && (Void.TYPE == localClass))
-      {
-        this.unsupported = true;
-        return null;
-      }
-      if ((str.equals("protocols")) && (paramObject.length == 0)) {
-        return this.protocols;
-      }
-      if (((str.equals("selectProtocol")) || (str.equals("select"))) && (String.class == localClass) && (paramObject.length == 1) && ((paramObject[0] instanceof List)))
-      {
-        paramObject = (List)paramObject[0];
-        int i = 0;
-        int j = paramObject.size();
-        while (i < j)
-        {
-          if (this.protocols.contains(paramObject.get(i)))
-          {
-            paramObject = (String)paramObject.get(i);
-            this.selected = paramObject;
-            return paramObject;
-          }
-          i += 1;
-        }
-        paramObject = (String)this.protocols.get(0);
-        this.selected = paramObject;
-        return paramObject;
-      }
-      if (((str.equals("protocolSelected")) || (str.equals("selected"))) && (paramObject.length == 1))
-      {
-        this.selected = ((String)paramObject[0]);
-        return null;
-      }
-      return paramMethod.invoke(this, paramObject);
-    }
-  }
+  public void untagSocket(Socket paramSocket) {}
 }
 
 

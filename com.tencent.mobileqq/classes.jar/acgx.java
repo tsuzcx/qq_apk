@@ -1,19 +1,39 @@
-import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
-import com.tencent.mobileqq.earlydownload.handler.PokeResHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendView;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendViewItem;
 
 public class acgx
-  implements Runnable
+  implements View.OnClickListener
 {
-  public acgx(PokeResHandler paramPokeResHandler) {}
+  public acgx(ActivateFriendView paramActivateFriendView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    PokeItemHelper.a(this.a.a, null);
+    paramView = (ActivateFriendViewItem)paramView;
+    if (paramView.a)
+    {
+      ActivateFriendView.a(this.a);
+      if (paramView.a) {
+        break label75;
+      }
+    }
+    label75:
+    for (boolean bool = true;; bool = false)
+    {
+      paramView.setChecked(bool);
+      if (ActivateFriendView.a(this.a) != null) {
+        ActivateFriendView.a(this.a).a(ActivateFriendView.c(this.a));
+      }
+      return;
+      ActivateFriendView.b(this.a);
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acgx
  * JD-Core Version:    0.7.0.1
  */

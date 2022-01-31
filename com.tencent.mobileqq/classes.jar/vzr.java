@@ -1,27 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginInterface;
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
 
 public class vzr
-  implements DialogInterface.OnClickListener
+  implements Dispatcher.Dispatchable
 {
-  public vzr(GameRoomChatPie paramGameRoomChatPie, WerewolvesPluginInterface paramWerewolvesPluginInterface) {}
+  public int a;
+  public Object a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public vzr(int paramInt, Object... paramVarArgs)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.W = true;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.V = true;
-    GameRoomChatPie.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie, false);
-    if ((this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginInterface.a()) && (!this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginInterface.b())) {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.a, "dc00899", "Grp_wolf", "", "ready_time", "ready_kick", 0, 0, "", "", "", "");
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangObject = paramVarArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vzr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,52 +1,30 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.bubble.BubbleConfig;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import com.tencent.mobileqq.bubble.BubbleManager.LruLinkedHashMap;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Context;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class absp
-  implements Runnable
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  BubbleConfig jdField_a_of_type_ComTencentMobileqqBubbleBubbleConfig;
-  boolean jdField_a_of_type_Boolean;
+  public absp(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public absp(BubbleManager paramBubbleManager, int paramInt, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public void run()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(this.jdField_a_of_type_Int).getAbsolutePath() + File.separatorChar + "config.json";
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleConfig = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(this.jdField_a_of_type_Int, (String)localObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("BubbleManager", 2, "getBubbleConfig bubbleId=" + this.jdField_a_of_type_Int + ",filePath=" + (String)localObject + ",bubbleConfig=" + this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleConfig);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleConfig != null) {
-      this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a.put(Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleConfig);
-    }
-    for (;;)
+    this.a.b(0);
+    SettingCloneUtil.writeValueForInt(this.a, this.a.app.getCurrentAccountUin(), "sound_type", "qqsetting_notify_soundtype_key", 2131230720);
+    if (this.a.a().booleanValue())
     {
-      localObject = new absq(this);
-      if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
-        break;
-      }
-      ((Runnable)localObject).run();
-      return;
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager.a(this.jdField_a_of_type_Int, "config.json", "0");
-      }
+      this.a.b();
+      this.a.a(Uri.parse("android.resource://" + this.a.getApplicationContext().getPackageName() + "/" + 2131230720));
     }
-    new Handler(Looper.getMainLooper()).post((Runnable)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     absp
  * JD-Core Version:    0.7.0.1
  */

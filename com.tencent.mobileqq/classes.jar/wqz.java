@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.activity.contact.troop.BaseTroopView;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.RecommendTroopManagerImp;
+import android.support.annotation.Nullable;
+import com.tencent.biz.videostory.capture.AEBottomListPart.5.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class wqz
-  implements Runnable
+  implements bhwg<Boolean>
 {
-  public wqz(TroopActivity paramTroopActivity, BaseTroopView paramBaseTroopView) {}
+  wqz(wqq paramwqq) {}
   
-  public void run()
+  public void a(@Nullable Boolean paramBoolean)
   {
-    boolean bool = ((RecommendTroopManagerImp)this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.app.getManager(21)).b();
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopActivity.runOnUiThread(new wra(this, bool));
+    ThreadManager.getFileThreadHandler().postAtFrontOfQueue(new AEBottomListPart.5.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wqz
  * JD-Core Version:    0.7.0.1
  */

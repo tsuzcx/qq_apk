@@ -1,16 +1,43 @@
 package com.tencent.mobileqq.activity;
 
+import acvj;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 
 public class MultiForwardActivity
   extends ChatActivity
 {
-  protected boolean doOnCreate(Bundle paramBundle)
+  public acvj a = new acvj();
+  
+  public boolean doOnCreate(Bundle paramBundle)
   {
-    return super.doOnCreate(paramBundle);
+    boolean bool = super.doOnCreate(paramBundle);
+    this.a.a(this);
+    return bool;
   }
   
-  protected void doOnWindowFocusChanged(boolean paramBoolean) {}
+  public void doOnDestroy()
+  {
+    Object localObject = (ChatFragment)getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+    if (localObject != null) {}
+    for (localObject = ((ChatFragment)localObject).a();; localObject = null)
+    {
+      if (localObject != null) {
+        ((BaseChatPie)localObject).G();
+      }
+      this.a.c(this);
+      super.doOnDestroy();
+      return;
+    }
+  }
+  
+  public void doOnResume()
+  {
+    super.doOnResume();
+    this.a.b(this);
+  }
+  
+  public void doOnWindowFocusChanged(boolean paramBoolean) {}
 }
 
 

@@ -1,24 +1,106 @@
+import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.ArrayList;
 
 public class acdk
-  implements View.OnClickListener
+  implements begw
 {
-  public acdk(DBFixConfigActivity paramDBFixConfigActivity, String paramString) {}
+  public acdk(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity, acds paramacds, begr parambegr) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    boolean bool = FileUtils.a(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixConfigActivity.getDatabasePath(this.jdField_a_of_type_JavaLangString + ".db"), new File(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixConfigActivity.getExternalCacheDir(), this.jdField_a_of_type_JavaLangString + System.currentTimeMillis() + ".db"));
-    QLog.e(DBFixConfigActivity.jdField_a_of_type_JavaLangString, 2, "copy " + bool + this.jdField_a_of_type_JavaLangString);
+    if ((this.jdField_a_of_type_Acds.a instanceof Friends)) {}
+    for (paramView = ((Friends)this.jdField_a_of_type_Acds.a).uin;; paramView = ((PhoneContact)this.jdField_a_of_type_Acds.a).mobileCode) {
+      switch (paramInt)
+      {
+      default: 
+        this.jdField_a_of_type_Begr.dismiss();
+        do
+        {
+          return;
+        } while (!(this.jdField_a_of_type_Acds.a instanceof PhoneContact));
+      }
+    }
+    Object localObject = aciy.a(new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.getActivity(), SplashActivity.class), null);
+    if ((this.jdField_a_of_type_Acds.a instanceof Friends))
+    {
+      ((Intent)localObject).putExtra("uintype", 0);
+      ((Intent)localObject).putExtra("uin", paramView);
+      ((Intent)localObject).putExtra("uinname", babh.m(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app, paramView));
+      ((Intent)localObject).putExtra("entrance", 2);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.startActivity((Intent)localObject);
+      awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app, "CliOper", "", "", "0X8004C51", "0X8004C51", 0, 0, "", "", "", "");
+      break;
+      if ((this.jdField_a_of_type_Acds.a instanceof PhoneContact))
+      {
+        ((Intent)localObject).putExtra("uintype", 1006);
+        ((Intent)localObject).putExtra("uin", paramView);
+        ((Intent)localObject).putExtra("uinname", ((PhoneContact)this.jdField_a_of_type_Acds.a).name);
+        ((Intent)localObject).putExtra("entrance", 2);
+      }
+    }
+    if ((this.jdField_a_of_type_Acds.a instanceof Friends))
+    {
+      paramView = new ProfileActivity.AllInOne(paramView, 1);
+      paramView.jdField_h_of_type_Int = 59;
+      paramView.j = 2;
+    }
+    for (;;)
+    {
+      ProfileActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.getActivity(), paramView);
+      awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app, "CliOper", "", "", "0X8004C52", "0X8004C52", 0, 0, "", "", "", "");
+      break;
+      if ((this.jdField_a_of_type_Acds.a instanceof PhoneContact))
+      {
+        localObject = (PhoneContact)this.jdField_a_of_type_Acds.a;
+        paramView = new ProfileActivity.AllInOne(((PhoneContact)localObject).mobileCode, 34);
+        paramView.jdField_h_of_type_Int = 59;
+        paramView.jdField_h_of_type_JavaLangString = ((PhoneContact)localObject).name;
+        paramView.j = 2;
+        continue;
+        if (badq.d(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.getActivity())) {
+          if ((this.jdField_a_of_type_Acds.a instanceof Friends))
+          {
+            localObject = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app.a(1);
+            ArrayList localArrayList = new ArrayList();
+            localArrayList.add(paramView);
+            ((FriendListHandler)localObject).a((short)1, localArrayList, false);
+          }
+        }
+        for (;;)
+        {
+          awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app, "CliOper", "", "", "0X8004C53", "0X8004C53", 0, 0, "", "", "", "");
+          break;
+          if ((this.jdField_a_of_type_Acds.a instanceof PhoneContact))
+          {
+            ((PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app.getManager(11)).a(((PhoneContact)this.jdField_a_of_type_Acds.a).mobileCode, false);
+            continue;
+            this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.a(2131629009, 0);
+          }
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.a(paramView);
+        awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app, "CliOper", "", "", "0X8004C54", "0X8004C54", 0, 0, "", "", "", "");
+        break;
+      }
+      paramView = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acdk
  * JD-Core Version:    0.7.0.1
  */

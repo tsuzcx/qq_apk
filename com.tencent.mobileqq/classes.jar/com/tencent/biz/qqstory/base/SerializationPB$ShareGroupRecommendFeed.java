@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SerializationPB$ShareGroupRecommendFeed
-  extends MessageMicro
+  extends MessageMicro<ShareGroupRecommendFeed>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField blurb = PBField.initString("");
@@ -27,7 +27,7 @@ public final class SerializationPB$ShareGroupRecommendFeed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.SerializationPB.ShareGroupRecommendFeed
  * JD-Core Version:    0.7.0.1
  */

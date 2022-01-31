@@ -1,8 +1,5 @@
 package com.tencent.mobileqq.troop.widget;
 
-import akac;
-import akad;
-import akae;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.AnimatorSet.Builder;
@@ -18,6 +15,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import azms;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -31,9 +29,9 @@ public class MessageSubtitleView
   protected static int d = 3;
   int jdField_a_of_type_Int = 0;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private final Runnable jdField_a_of_type_JavaLangRunnable = new akac(this);
-  protected ArrayList a;
-  public Queue a;
+  private final Runnable jdField_a_of_type_JavaLangRunnable = new MessageSubtitleView.1(this);
+  protected ArrayList<TextView> a;
+  public Queue<CharSequence> a;
   private final Runnable b;
   
   static
@@ -46,7 +44,7 @@ public class MessageSubtitleView
     super(paramContext);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(4);
     this.jdField_a_of_type_JavaUtilQueue = new LinkedList();
-    this.jdField_b_of_type_JavaLangRunnable = new akad(this);
+    this.jdField_b_of_type_JavaLangRunnable = new MessageSubtitleView.2(this);
     a(paramContext);
   }
   
@@ -55,7 +53,7 @@ public class MessageSubtitleView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(4);
     this.jdField_a_of_type_JavaUtilQueue = new LinkedList();
-    this.jdField_b_of_type_JavaLangRunnable = new akad(this);
+    this.jdField_b_of_type_JavaLangRunnable = new MessageSubtitleView.2(this);
     a(paramContext);
   }
   
@@ -96,7 +94,7 @@ public class MessageSubtitleView
           break label135;
         }
         ((Animator)localObject).setInterpolator(new AccelerateInterpolator(0.2F));
-        ((Animator)localObject).addListener(new akae(this, bool, paramInt2));
+        ((Animator)localObject).addListener(new azms(this, bool, paramInt2));
         ((Animator)localObject).start();
         return;
         bool = false;
@@ -161,7 +159,7 @@ public class MessageSubtitleView
       Object localObject = getContext();
       CharSequence localCharSequence = (CharSequence)this.jdField_a_of_type_JavaUtilQueue.poll();
       TextView localTextView = new TextView((Context)localObject);
-      localTextView.setShadowLayer(3.0F, 3.0F, 3.0F, 2131492881);
+      localTextView.setShadowLayer(3.0F, 3.0F, 3.0F, 2131099882);
       localTextView.setEllipsize(TextUtils.TruncateAt.END);
       localTextView.setSingleLine(true);
       localTextView.setTextSize(18.0F);
@@ -169,7 +167,7 @@ public class MessageSubtitleView
       localTextView.setTag(Long.valueOf(System.currentTimeMillis()));
       localTextView.setTranslationY(0.0F);
       localTextView.setText(localCharSequence);
-      localObject = new RelativeLayout.LayoutParams(((Context)localObject).getResources().getDimensionPixelSize(2131558874), ((Context)localObject).getResources().getDimensionPixelSize(2131558876));
+      localObject = new RelativeLayout.LayoutParams(((Context)localObject).getResources().getDimensionPixelSize(2131167709), ((Context)localObject).getResources().getDimensionPixelSize(2131167707));
       ((RelativeLayout.LayoutParams)localObject).topMargin = (this.jdField_a_of_type_JavaUtilArrayList.size() * this.jdField_a_of_type_Int);
       addView(localTextView, (ViewGroup.LayoutParams)localObject);
       this.jdField_a_of_type_JavaUtilArrayList.add(localTextView);
@@ -187,7 +185,7 @@ public class MessageSubtitleView
   void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(paramContext.getMainLooper());
-    this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131558876);
+    this.jdField_a_of_type_Int = paramContext.getResources().getDimensionPixelSize(2131167707);
   }
   
   public void b()
@@ -233,7 +231,7 @@ public class MessageSubtitleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.MessageSubtitleView
  * JD-Core Version:    0.7.0.1
  */

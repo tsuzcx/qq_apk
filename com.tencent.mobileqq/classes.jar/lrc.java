@@ -1,82 +1,87 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.AppProtocolObserver;
-import com.tencent.biz.pubaccount.readinjoy.logic.ReadInJoyAtlasManager;
-import com.tencent.biz.pubaccount.readinjoy.logic.ReadInJoyAtlasManager.AtlasCallback;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.cmd0xb40.oidb_0xb40.CheckFavoriteRspBody;
-import tencent.im.oidb.cmd0xb40.oidb_0xb40.CheckFavoriteRspItem;
-import tencent.im.oidb.cmd0xb40.oidb_0xb40.RspBody;
+import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.view.Display;
+import android.view.OrientationEventListener;
+import android.view.WindowManager;
 
-public class lrc
-  extends ProtoUtils.AppProtocolObserver
+public abstract class lrc
+  extends OrientationEventListener
 {
-  public lrc(ReadInJoyAtlasManager paramReadInJoyAtlasManager, ReadInJoyAtlasManager.AtlasCallback paramAtlasCallback) {}
+  int jdField_a_of_type_Int = -25;
+  protected Context a;
+  Configuration jdField_a_of_type_AndroidContentResConfiguration;
+  Display jdField_a_of_type_AndroidViewDisplay;
+  boolean jdField_a_of_type_Boolean = false;
+  public boolean b;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public lrc(Context paramContext, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ReadInJoyAtlasManager.a, 2, "getAtlasFavoriteStatus onResult, errorCode=" + paramInt);
+    super(paramContext, paramInt);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidContentResConfiguration = this.jdField_a_of_type_AndroidContentContext.getResources().getConfiguration();
+    this.jdField_a_of_type_AndroidViewDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
+    this.jdField_a_of_type_Boolean = mhj.f(paramContext);
+  }
+  
+  public abstract void a(int paramInt, boolean paramBoolean);
+  
+  public void onOrientationChanged(int paramInt)
+  {
+    if (paramInt == -1) {
+      this.jdField_a_of_type_Int = paramInt;
     }
-    if ((paramInt != -1) && (paramArrayOfByte != null)) {}
-    for (;;)
+    do
     {
-      ArrayList localArrayList;
-      try
-      {
-        paramBundle = new oidb_0xb40.RspBody();
-        paramBundle.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = ((oidb_0xb40.CheckFavoriteRspBody)paramBundle.msg_check_favorite_rsp.get()).rpt_msg_rsp_items.get().iterator();
-        if (paramArrayOfByte.hasNext())
-        {
-          Object localObject = (oidb_0xb40.CheckFavoriteRspItem)paramArrayOfByte.next();
-          paramBundle = ((oidb_0xb40.CheckFavoriteRspItem)localObject).bytes_rowkey.get().toStringUtf8();
-          if (((oidb_0xb40.CheckFavoriteRspItem)localObject).uint32_result.get() == 1)
-          {
-            bool = true;
-            localArrayList = new ArrayList();
-            if (!bool) {
-              break label242;
-            }
-            localObject = ((oidb_0xb40.CheckFavoriteRspItem)localObject).bytes_cid_list.get().iterator();
-            if (!((Iterator)localObject).hasNext()) {
-              break label242;
-            }
-            localArrayList.add(((ByteStringMicro)((Iterator)localObject).next()).toStringUtf8());
-            continue;
-          }
-        }
-        else
-        {
-          return;
-        }
+      return;
+      if (this.jdField_a_of_type_Int < 0) {
+        this.jdField_a_of_type_Int = 0;
       }
-      catch (Exception paramArrayOfByte)
-      {
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback != null) {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback.a(false, null, false, null);
-        }
-        QLog.e(ReadInJoyAtlasManager.a, 1, "getAtlasFavoriteStatus onResult(), exception=" + paramArrayOfByte.toString());
-      }
-      boolean bool = false;
-      continue;
-      label242:
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback.a(true, paramBundle, bool, localArrayList);
+    } while ((paramInt - this.jdField_a_of_type_Int < 20) && (paramInt - this.jdField_a_of_type_Int > -20) && (!this.b));
+    int i = paramInt;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      paramInt -= 90;
+      i = paramInt;
+      if (paramInt < 0) {
+        i = paramInt + 360;
       }
     }
+    if (this.b) {}
+    for (paramInt = lba.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), false, false, (byte)0, true) * 90;; paramInt = lba.b(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), false, false, (byte)0, true) * 90)
+    {
+      int j = paramInt;
+      if (paramInt > 360) {
+        j = paramInt % 360;
+      }
+      i -= j;
+      paramInt = i;
+      if (i < 0) {
+        paramInt = i + 360;
+      }
+      this.jdField_a_of_type_Int = paramInt;
+      if ((paramInt <= 314) && (paramInt >= 45)) {
+        break;
+      }
+      a(0, this.b);
+      return;
+    }
+    if ((paramInt > 44) && (paramInt < 135))
+    {
+      a(90, this.b);
+      return;
+    }
+    if ((paramInt > 134) && (paramInt < 225))
+    {
+      a(180, this.b);
+      return;
+    }
+    a(270, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lrc
  * JD-Core Version:    0.7.0.1
  */

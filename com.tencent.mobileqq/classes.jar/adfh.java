@@ -1,76 +1,41 @@
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
+import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 import com.tencent.qphone.base.util.QLog;
 
-public class adfh
-  extends FMObserver
+class adfh
+  implements adue
 {
-  public adfh(OnlineFileSessionCenter paramOnlineFileSessionCenter) {}
+  adfh(adfe paramadfe, adfq paramadfq, MessageForPoke paramMessageForPoke) {}
   
-  protected void a(long paramLong)
+  public void a()
   {
-    if (0L == paramLong) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileProgressDirectDone sessionid error.return");
+    if (QLog.isColorLevel()) {
+      QLog.i("placeholder", 2, "HIDE_PLACEHOLDER Unlimited 1");
     }
-    OnlineFileSessionWorker localOnlineFileSessionWorker;
-    do
-    {
-      return;
-      localOnlineFileSessionWorker = this.a.a(paramLong);
-      if (localOnlineFileSessionWorker == null)
-      {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileProgressDirectDone");
-        return;
-      }
-      localOnlineFileSessionWorker.h();
-    } while (!localOnlineFileSessionWorker.c());
-    this.a.c(paramLong);
-  }
-  
-  protected void b(long paramLong)
-  {
-    if (0L == paramLong) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileRecvButSenderReplayTimeOut sessionid error.return");
+    adlh.a().a(20);
+    this.jdField_a_of_type_Adfq.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.clearAnimation();
+    this.jdField_a_of_type_Adfq.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
+    this.jdField_a_of_type_Adfq.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageMatrix(null);
+    this.jdField_a_of_type_Adfq.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    if ((this.jdField_a_of_type_Adfq.b == adfe.a()) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend()) && (!(this.jdField_a_of_type_Adfe.a instanceof ChatHistoryActivity)) && (!adfe.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke))) {
+      this.jdField_a_of_type_Adfq.c.setVisibility(0);
     }
-    OnlineFileSessionWorker localOnlineFileSessionWorker;
-    do
+    for (;;)
     {
+      this.jdField_a_of_type_Adfq.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
+      this.jdField_a_of_type_Adfq.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
       return;
-      localOnlineFileSessionWorker = this.a.a(paramLong);
-      if (localOnlineFileSessionWorker == null)
-      {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileRecvButSenderReplayTimeOut");
-        return;
-      }
-      localOnlineFileSessionWorker.j();
-    } while (!localOnlineFileSessionWorker.c());
-    this.a.c(paramLong);
-  }
-  
-  protected void c(long paramLong)
-  {
-    if (0L == paramLong) {
-      QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "] OnOnlineFileQueryUpProgressTimeOut sessionid error.return");
+      this.jdField_a_of_type_Adfq.c.setVisibility(8);
     }
-    OnlineFileSessionWorker localOnlineFileSessionWorker;
-    do
-    {
-      return;
-      localOnlineFileSessionWorker = this.a.a(paramLong);
-      if (localOnlineFileSessionWorker == null)
-      {
-        QLog.e("OnlineFileSessionCenter<FileAssistant>", 1, "OLfilesession[" + paramLong + "]. not find worker.OnOnlineFileQueryUpProgressTimeOut");
-        return;
-      }
-      localOnlineFileSessionWorker.l();
-    } while (!localOnlineFileSessionWorker.c());
-    this.a.c(paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adfh
  * JD-Core Version:    0.7.0.1
  */

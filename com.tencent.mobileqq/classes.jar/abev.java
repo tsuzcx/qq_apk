@@ -1,30 +1,20 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.ArkPassiveSearchInfo;
-import com.tencent.mobileqq.ark.ArkRecommendLogic.SemanticAnalysisResult;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
-class abev
-  implements Runnable
+public class abev
+  implements DialogInterface.OnClickListener
 {
-  abev(abeu paramabeu, ArkMessageServerLogic.ArkPassiveSearchInfo paramArkPassiveSearchInfo) {}
+  public abev(NotificationActivity paramNotificationActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Abeu.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
-      ArkAppCenter.b("ArkApp.ArkRecommendLogic", String.format("passiveSearchText, this is null, return", new Object[0]));
-    }
-    ArkRecommendLogic.SemanticAnalysisResult localSemanticAnalysisResult;
-    do
-    {
-      return;
-      localSemanticAnalysisResult = (ArkRecommendLogic.SemanticAnalysisResult)this.jdField_a_of_type_Abeu.b.get();
-    } while (localSemanticAnalysisResult == null);
-    localSemanticAnalysisResult.a(this.jdField_a_of_type_Abeu.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage, this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$ArkPassiveSearchInfo);
+    NotificationActivity.a(this.a, NotificationActivity.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abev
  * JD-Core Version:    0.7.0.1
  */

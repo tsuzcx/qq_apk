@@ -1,23 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import com.tencent.biz.qqstory.playvideo.StoryPlayerFragment;
 
 public class thz
-  extends BroadcastReceiver
+  implements View.OnKeyListener
 {
-  public thz(NotificationActivity paramNotificationActivity) {}
+  public thz(StoryPlayerFragment paramStoryPlayerFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramIntent.getAction().equals("com.tencent.mobileqq.closeNotification")) && (NotificationActivity.a(this.a) == 5)) {
-      this.a.finish();
+    if (paramInt == 4)
+    {
+      if (paramKeyEvent.getAction() == 1) {
+        this.a.finish();
+      }
+      return true;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     thz
  * JD-Core Version:    0.7.0.1
  */

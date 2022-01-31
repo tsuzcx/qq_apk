@@ -1,68 +1,28 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.VideoMsgTools;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.app.TroopManager.ITroopMemberInfoCallBack;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.troop.utils.HWTroopUtils;
-import com.tencent.mobileqq.troop.utils.HWTroopUtils.OnHomeworkTroopIdentityCheckListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.VideoBroadcastReceiver;
 
-public final class ajva
-  implements TroopManager.ITroopMemberInfoCallBack
+public class ajva
+  implements DialogInterface.OnClickListener
 {
-  public ajva(String paramString1, String paramString2, boolean paramBoolean, QQAppInterface paramQQAppInterface, HWTroopUtils.OnHomeworkTroopIdentityCheckListener paramOnHomeworkTroopIdentityCheckListener) {}
+  public ajva(VideoBroadcastReceiver paramVideoBroadcastReceiver, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, String paramString4) {}
   
-  public void a(TroopMemberInfo paramTroopMemberInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("checkHomeworkTroopIdentity. troopUin=").append(this.jdField_a_of_type_JavaLangString).append(", memberUin=").append(this.b).append(", level=");
-      if (paramTroopMemberInfo != null) {
-        break label150;
-      }
-      localObject = "";
-      localStringBuilder = localStringBuilder.append(localObject).append(", reqMemberInfo=").append(this.jdField_a_of_type_Boolean).append(", hwIdentity=");
-      if (paramTroopMemberInfo != null) {
-        break label162;
-      }
+    mga.e(false, false);
+    VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, false, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, false, null, true, new Object[0]);
+    VideoBroadcastReceiver.a(this.jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver, 3, this.jdField_a_of_type_JavaLangString, this.c, this.d);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    label150:
-    label162:
-    for (Object localObject = "";; localObject = Integer.valueOf(paramTroopMemberInfo.hwIdentity))
-    {
-      QLog.i("hw_troop", 2, localObject);
-      if (paramTroopMemberInfo != null) {
-        break label216;
-      }
-      if (this.jdField_a_of_type_Boolean) {}
-      try
-      {
-        long l1 = Long.parseLong(this.jdField_a_of_type_JavaLangString);
-        long l2 = Long.parseLong(this.b);
-        ((TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a(l1, l2, true);
-        return;
-      }
-      catch (NumberFormatException paramTroopMemberInfo)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("hw_troop", 2, new Object[] { "checkIdentity NumberFormatException,info.troopuin=", this.jdField_a_of_type_JavaLangString, ", memberuin=", this.b });
-        return;
-      }
-      localObject = Integer.valueOf(paramTroopMemberInfo.level);
-      break;
-    }
-    label216:
-    if (!HWTroopUtils.a(paramTroopMemberInfo.hwIdentity))
-    {
-      ((TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).e(this.jdField_a_of_type_JavaLangString, this.b);
-      return;
-    }
-    HWTroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHWTroopUtils$OnHomeworkTroopIdentityCheckListener, paramTroopMemberInfo.level);
+    mga.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isBackground_Pause);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajva
  * JD-Core Version:    0.7.0.1
  */

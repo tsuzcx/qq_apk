@@ -1,26 +1,36 @@
-import com.tencent.mobileqq.extendfriend.utils.ExtendFriendReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
 
-public class acsc
-  implements Runnable
+class acsc
+  implements wiu
 {
-  public acsc(ExtendFriendReport paramExtendFriendReport, String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap paramHashMap, String paramString3) {}
+  acsc(acsb paramacsb) {}
   
-  public void run()
+  public void a(Bundle paramBundle)
   {
-    try
+    boolean bool;
+    if (paramBundle.getInt("type") == 73)
     {
-      StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, this.c);
+      bool = paramBundle.getBoolean("isSuccess");
+      if ((!this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) || (!this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.i)) {}
+    }
+    else
+    {
       return;
     }
-    catch (Exception localException) {}
+    if (Boolean.valueOf(bool).booleanValue())
+    {
+      bbmy.a(BaseApplicationImpl.getApplication(), 2, 2131654503, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
+      return;
+    }
+    bbmy.a(BaseApplicationImpl.getApplication(), 1, 2131654500, 0).b(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acsc
  * JD-Core Version:    0.7.0.1
  */

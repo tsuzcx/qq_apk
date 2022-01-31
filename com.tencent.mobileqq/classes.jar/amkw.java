@@ -1,22 +1,44 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.widget.ReadInJoyAccountActiveTips;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amkw
-  implements View.OnTouchListener
 {
-  public amkw(ReadInJoyAccountActiveTips paramReadInJoyAccountActiveTips) {}
+  private String a = ajjy.a(2131649047);
+  private String b = "";
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static amkw a(alzs[] paramArrayOfalzs)
   {
-    this.a.dismiss();
-    return false;
+    if ((paramArrayOfalzs == null) || (paramArrayOfalzs.length <= 0)) {
+      return null;
+    }
+    amkw localamkw = new amkw();
+    try
+    {
+      paramArrayOfalzs = new JSONObject(paramArrayOfalzs[0].a);
+      localamkw.a = paramArrayOfalzs.getString("emptyShowWording");
+      localamkw.b = paramArrayOfalzs.getString("linkWord");
+      return localamkw;
+    }
+    catch (JSONException paramArrayOfalzs)
+    {
+      paramArrayOfalzs.printStackTrace();
+    }
+    return localamkw;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public String b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amkw
  * JD-Core Version:    0.7.0.1
  */

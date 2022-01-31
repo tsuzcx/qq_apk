@@ -1,49 +1,63 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRenderDriver;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.locks.ReentrantLock;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.ApngSoLoader;
+import com.tencent.image.ProtocolDownloader;
+import com.tencent.image.URLDrawableParams;
+import java.io.File;
 
 public class ysm
-  implements Runnable
+  extends URLDrawableParams
 {
-  private String jdField_a_of_type_JavaLangString;
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference = null;
-  private ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
+  Context a;
   
-  public ysm(ApolloRenderDriver paramApolloRenderDriver, String paramString, ReentrantLock paramReentrantLock, ApolloEngine paramApolloEngine)
+  public ysm(Context paramContext, File paramFile)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = paramReentrantLock;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramApolloEngine);
+    super(paramContext);
+    this.a = paramContext;
+    axwd.a = paramFile;
+    com.tencent.mobileqq.startup.step.InitUrlDrawable.a = new axpv(paramFile);
   }
   
-  public void run()
+  public ProtocolDownloader doGetDownloader(String paramString, Object paramObject)
   {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    try
+    boolean bool = true;
+    if (("http".equals(paramString)) || ("https".equals(paramString)))
     {
-      ApolloEngine localApolloEngine = (ApolloEngine)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localApolloEngine != null)
+      if (BaseApplicationImpl.sProcessId == 1) {}
+      for (;;)
       {
-        QLog.d("ApolloRenderDriver", 2, "run js =" + this.jdField_a_of_type_JavaLangString);
-        localApolloEngine.a(this.jdField_a_of_type_JavaLangString);
-        if (!this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a.get()) {
-          localApolloEngine.a(0.0D);
-        }
+        return new axrg(bool, paramObject);
+        bool = false;
       }
-      return;
     }
-    finally
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-    }
+    return null;
+  }
+  
+  public String doGetLocalFilePath(String paramString)
+  {
+    return null;
+  }
+  
+  public ApngSoLoader getApngSoLoader()
+  {
+    return baon.a();
+  }
+  
+  public Drawable getDefaultLoadingDrawable()
+  {
+    return this.a.getResources().getDrawable(2130846730);
+  }
+  
+  public Drawable getDefualtFailedDrawable()
+  {
+    return this.a.getResources().getDrawable(2130846730);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ysm
  * JD-Core Version:    0.7.0.1
  */

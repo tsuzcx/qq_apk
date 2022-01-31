@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
+import anad;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import bbac;
 import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONObject;
 
@@ -24,7 +24,7 @@ public class ProfileDiyJsPlugin
     this.mPluginNameSpace = "diycard";
   }
   
-  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     boolean bool2 = true;
     if (QLog.isColorLevel()) {
@@ -80,7 +80,7 @@ public class ProfileDiyJsPlugin
     return true;
   }
   
-  protected void onCreate()
+  public void onCreate()
   {
     this.mReqBundle = new Bundle();
     super.onCreate();
@@ -105,7 +105,7 @@ public class ProfileDiyJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ProfileDiyJsPlugin
  * JD-Core Version:    0.7.0.1
  */

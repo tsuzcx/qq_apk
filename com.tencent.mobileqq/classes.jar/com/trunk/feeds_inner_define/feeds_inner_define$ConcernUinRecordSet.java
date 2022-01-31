@@ -6,10 +6,10 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class feeds_inner_define$ConcernUinRecordSet
-  extends MessageMicro
+  extends MessageMicro<ConcernUinRecordSet>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "rpt_concern_uin_record" }, new Object[] { null }, ConcernUinRecordSet.class);
-  public final PBRepeatMessageField rpt_concern_uin_record = PBField.initRepeatMessage(feeds_inner_define.ConcernUinRecord.class);
+  public final PBRepeatMessageField<feeds_inner_define.ConcernUinRecord> rpt_concern_uin_record = PBField.initRepeatMessage(feeds_inner_define.ConcernUinRecord.class);
 }
 
 

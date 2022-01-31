@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SubMsgType0x90$Head
-  extends MessageMicro
+  extends MessageMicro<Head>
 {
   public static final int UINT32_CMD_FIELD_NUMBER = 1;
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8 }, new String[] { "uint32_cmd" }, new Object[] { Integer.valueOf(0) }, Head.class);

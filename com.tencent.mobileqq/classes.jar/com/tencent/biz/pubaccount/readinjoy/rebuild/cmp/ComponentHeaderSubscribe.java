@@ -1,27 +1,30 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
+import ajjy;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyConstants;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import avwf;
+import baaw;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.search.util.SearchUtils;
-import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.FixSizeImageView;
-import lzj;
+import ndn;
+import obb;
+import obz;
+import opw;
 import org.json.JSONException;
 import org.json.JSONObject;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.SubscribeInfo;
+import pjg;
+import plr;
+import qoe;
+import rvf;
+import tencent.im.oidb.articlesummary.articlesummary.SubscribeInfo;
 
 public class ComponentHeaderSubscribe
   extends ComponentHeaderBase
@@ -47,10 +50,10 @@ public class ComponentHeaderSubscribe
   
   private long a()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.c() == 3) {
+    if (this.jdField_a_of_type_Pjg.a.c() == 3) {
       try
       {
-        long l = Long.parseLong(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a().mSubscribeID);
+        long l = Long.parseLong(this.jdField_a_of_type_Pjg.a.a().mSubscribeID);
         return l;
       }
       catch (NumberFormatException localNumberFormatException)
@@ -63,20 +66,20 @@ public class ComponentHeaderSubscribe
   
   private void d()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a;
-    if (((IReadInJoyModel)localObject).c() == 3)
+    Object localObject = this.jdField_a_of_type_Pjg.a;
+    if (((opw)localObject).c() == 3)
     {
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      if (!((IReadInJoyModel)localObject).a().mSubscribeInfoObj.bytes_test.has()) {}
+      if (!((opw)localObject).a().mSubscribeInfoObj.bytes_test.has()) {}
     }
-    label187:
+    label193:
     for (;;)
     {
       try
       {
-        localObject = ((IReadInJoyModel)localObject).a().mSubscribeInfoObj.bytes_test.get().toStringUtf8();
+        localObject = ((opw)localObject).a().mSubscribeInfoObj.bytes_test.get().toStringUtf8();
         if (((String)localObject).length() <= 4) {
-          break label187;
+          break label193;
         }
         localObject = ((String)localObject).substring(0, 4);
         ((TextView)this.jdField_a_of_type_AndroidViewView).setText((CharSequence)localObject);
@@ -92,11 +95,11 @@ public class ComponentHeaderSubscribe
       {
         QLog.w("ComponentHeaderSubscribe", 1, "read field error", localException);
         this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        ((TextView)this.jdField_a_of_type_AndroidViewView).setText("已订阅");
+        ((TextView)this.jdField_a_of_type_AndroidViewView).setText(ajjy.a(2131636477));
         return;
       }
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      ((TextView)this.jdField_a_of_type_AndroidViewView).setText("已订阅");
+      ((TextView)this.jdField_a_of_type_AndroidViewView).setText(ajjy.a(2131636495));
       return;
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       return;
@@ -105,13 +108,13 @@ public class ComponentHeaderSubscribe
   
   private void e()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(ReadInJoyUtils.e(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a().mSubscribeName));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(obz.d(this.jdField_a_of_type_Pjg.a.a().mSubscribeName));
   }
   
   private void f()
   {
-    String str = ReadInJoyConstants.i + Base64Util.encodeToString(String.valueOf(a()).getBytes(), 2);
-    ReadInJoyUtils.a(getContext(), str);
+    String str = obb.k + baaw.encodeToString(String.valueOf(a()).getBytes(), 2);
+    obz.a(getContext(), str);
     g();
   }
   
@@ -119,10 +122,16 @@ public class ComponentHeaderSubscribe
   {
     try
     {
-      JSONObject localJSONObject = ReadInJoyUtils.a();
-      localJSONObject.put("feeds_source", ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a()));
-      localJSONObject.put("kandian_mode", ReadInJoyUtils.e());
-      PublicAccountReportUtils.a(null, "CliOper", "", "", "0X800744D", "0X800744D", 0, 0, ReadInJoyUtils.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a.a()), "", "", localJSONObject.toString(), false);
+      JSONObject localJSONObject = obz.a();
+      localJSONObject.put("feeds_source", obz.c(this.jdField_a_of_type_Pjg.a.a()));
+      localJSONObject.put("kandian_mode", obz.e());
+      String str2 = obz.d(this.jdField_a_of_type_Pjg.a.a());
+      if (rvf.a(this.jdField_a_of_type_Pjg.a.e())) {}
+      for (String str1 = "0X8009357";; str1 = "0X800744D")
+      {
+        ndn.a(null, "CliOper", "", "", str1, str1, 0, 0, str2, "", "", localJSONObject.toString(), false);
+        return;
+      }
       return;
     }
     catch (JSONException localJSONException)
@@ -133,38 +142,38 @@ public class ComponentHeaderSubscribe
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969591, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131494317, this, true);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)findViewById(2131366859));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366864));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131367056);
+    this.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)findViewById(2131308990));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131309006));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131310885);
   }
   
-  public void a(IReadInJoyModel paramIReadInJoyModel)
+  public void a(Object paramObject)
   {
-    if ((paramIReadInJoyModel.a()) && (paramIReadInJoyModel.c() == 3)) {}
+    super.a(paramObject);
+    if ((paramObject instanceof opw)) {
+      a((opw)paramObject);
+    }
+  }
+  
+  public void a(opw paramopw)
+  {
+    if ((paramopw.a()) && (paramopw.c() == 3)) {}
     for (int i = 0;; i = 8)
     {
       setVisibility(i);
-      if ((paramIReadInJoyModel.a()) && (paramIReadInJoyModel.c() == 3))
+      if ((paramopw.a()) && (paramopw.c() == 3))
       {
         setImage();
         e();
         d();
       }
       return;
-    }
-  }
-  
-  public void a(Object paramObject)
-  {
-    super.a(paramObject);
-    if ((paramObject instanceof IReadInJoyModel)) {
-      a((IReadInJoyModel)paramObject);
     }
   }
   
@@ -179,17 +188,17 @@ public class ComponentHeaderSubscribe
     long l = a();
     if (l != 0L)
     {
-      if (!ReadInJoyUtils.a()) {
+      if (!obz.a()) {
         break label52;
       }
-      this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setImageDrawable(SearchUtils.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, String.valueOf(l), 1));
+      this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setImageDrawable(avwf.a(this.jdField_a_of_type_Azwg, String.valueOf(l), 1));
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setOnClickListener(new lzj(this));
+      this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setOnClickListener(new plr(this));
       return;
       label52:
-      this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setImageBitmap(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a(l));
+      this.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setImageBitmap(this.jdField_a_of_type_Qoe.a(l));
     }
   }
 }

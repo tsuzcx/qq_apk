@@ -1,29 +1,49 @@
-import com.tencent.biz.qqstory.playmode.IPlayVideoStatusChangeListener;
-import com.tencent.biz.qqstory.playmode.child.DiscoverPlayMode;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class nns
-  extends IPlayVideoStatusChangeListener
+class nns
+  implements ViewBase.OnClickListener
 {
-  public nns(DiscoverPlayMode paramDiscoverPlayMode) {}
+  nns(nnr paramnnr) {}
   
-  public void c(int paramInt)
+  public void onClick(ViewBase paramViewBase)
   {
-    if (paramInt < this.a.a.a.size() - 1) {
-      StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { DiscoverPlayMode.a(this.a), "", "", "" });
+    int i;
+    boolean bool;
+    if ((nnq.a(this.a.jdField_a_of_type_Nnq) instanceof ProteusItemData)) {
+      switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
+      {
+      default: 
+        i = -1;
+        bool = true;
+      }
     }
-  }
-  
-  public void d(int paramInt)
-  {
-    StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { DiscoverPlayMode.a(this.a), "", "", "" });
-  }
-  
-  public void e(int paramInt)
-  {
-    StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { DiscoverPlayMode.a(this.a), "", "", "" });
+    while (((i == 4) || (i == 3) || (i == 1000) || (i == 8)) && (npa.f((AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData)))
+    {
+      npa.b(nnp.a(this.a.jdField_a_of_type_Nnq.a), (AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+      return;
+      rav.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
+      return;
+      bool = true;
+      i = 4;
+      continue;
+      bool = true;
+      i = 3;
+      continue;
+      i = 5;
+      bool = false;
+      continue;
+      bool = true;
+      i = 8;
+      continue;
+      bool = true;
+      i = 1000;
+    }
+    nnq.a(this.a.jdField_a_of_type_Nnq, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
+    rab.a(this.a.jdField_a_of_type_AndroidContentContext, (AdData)nnq.a(this.a.jdField_a_of_type_Nnq), bool, i);
   }
 }
 

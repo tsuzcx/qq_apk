@@ -67,13 +67,19 @@ public abstract interface WtloginManager
   
   public abstract int RefreshSMSVerifyLoginCode(String paramString1, String paramString2, WtloginObserver paramWtloginObserver);
   
-  public abstract int RegGetSMSVerifyLoginAccount(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, WtloginObserver paramWtloginObserver);
+  public abstract int RegGetSMSVerifyLoginAccount(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, String paramString1, String paramString2, WtloginObserver paramWtloginObserver);
+  
+  public abstract int RegGetSMSVerifyLoginAccountWithLH(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, String paramString1, String paramString2, WtloginObserver paramWtloginObserver);
   
   public abstract void SetDevlockMobileType(int paramInt);
   
   public abstract int VerifyCode(String paramString, long paramLong, boolean paramBoolean, byte[] paramArrayOfByte, int[] paramArrayOfInt, int paramInt, WtloginObserver paramWtloginObserver);
   
   public abstract int VerifySMSVerifyLoginCode(String paramString1, String paramString2, String paramString3, WtloginObserver paramWtloginObserver);
+  
+  public abstract void cancelCode(String paramString, long paramLong, byte[] paramArrayOfByte);
+  
+  public abstract byte[] getGUID();
   
   public abstract boolean getHasPwd(String paramString);
   

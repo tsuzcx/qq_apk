@@ -1,11 +1,10 @@
-public class ymq
+public abstract interface ymq
 {
-  public String a;
-  public String b;
+  public abstract void a(Object... paramVarArgs);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ymq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,53 +1,100 @@
-import android.content.Context;
-import android.content.res.Resources;
 import android.view.View;
-import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.BaseVideoItemHolder;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDisLikeDialogView.OnUninterestConfirmListener;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.ActionSheet;
-import java.util.ArrayList;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
 
-public class mex
-  implements ReadInJoyDisLikeDialogView.OnUninterestConfirmListener
+class mex
+  extends lru
 {
-  public mex(VideoFeedsAdapter paramVideoFeedsAdapter, VideoInfo paramVideoInfo) {}
+  String jdField_a_of_type_JavaLangString = "AVRedbag_GameMode";
   
-  public void a(View paramView, ArrayList paramArrayList, Object paramObject)
+  mex(mew parammew) {}
+  
+  protected void a(lrw paramlrw)
   {
-    paramView = ReadInJoyUtils.a();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo != null)
+    AVActivity localAVActivity = this.jdField_a_of_type_Mew.a();
+    if ((!this.jdField_a_of_type_Mew.a()) || (localAVActivity == null)) {
+      return;
+    }
+    if (paramlrw.jdField_a_of_type_Int == 1) {
+      lqb.a(this.jdField_a_of_type_Mew.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131630414);
+    }
+    for (;;)
     {
-      if (VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).a.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null) {
-        VideoFeedsHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo);
-      }
-      ReadInJoyLogicEngine.a().a(Long.valueOf(paramView).longValue(), this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.makeDislikeParam(paramArrayList, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.g));
-      paramView = NativeAdUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo);
-      if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
-        break label185;
+      paramlrw.jdField_b_of_type_Boolean = true;
+      paramlrw.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      return;
+      if (paramlrw.jdField_a_of_type_Int == 2) {
+        lqb.a(this.jdField_a_of_type_Mew.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131630413);
       }
     }
-    label185:
-    for (int i = ((DislikeInfo)paramArrayList.get(0)).a;; i = 0)
+  }
+  
+  protected void a(lrx paramlrx)
+  {
+    med localmed = this.jdField_a_of_type_Mew.a();
+    if (localmed == null) {}
+    int i;
+    do
     {
-      NativeAdUtils.a(null, VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter), NativeAdUtils.c, NativeAdUtils.o, paramView, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo, i);
-      QQToast.a(VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter), -1, VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).getString(2131428476), 0).b(VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).getResources().getDimensionPixelSize(2131558448));
-      VideoFeedsAdapter.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).dismiss();
+      do
+      {
+        return;
+      } while (!localmed.a());
+      i = paramlrx.a().getId();
+    } while ((i != 2131629970) && (i != 2131629971));
+    if (i == 2131629970) {
+      this.jdField_a_of_type_Mew.jdField_a_of_type_Int = paramlrx.jdField_a_of_type_Int;
+    }
+    paramlrx.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    paramlrx.jdField_a_of_type_Boolean = false;
+  }
+  
+  protected void c(lry paramlry)
+  {
+    AVActivity localAVActivity = this.jdField_a_of_type_Mew.a();
+    if ((!this.jdField_a_of_type_Mew.a()) || (localAVActivity == null)) {
       return;
+    }
+    lqb.a(this.jdField_a_of_type_Mew.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131630409);
+    paramlry.jdField_b_of_type_Boolean = true;
+    paramlry.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+  }
+  
+  protected void d(lry paramlry)
+  {
+    AVActivity localAVActivity = this.jdField_a_of_type_Mew.a();
+    if ((!this.jdField_a_of_type_Mew.a()) || (localAVActivity == null)) {
+      return;
+    }
+    lqb.a(this.jdField_a_of_type_Mew.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131630411);
+    paramlry.jdField_b_of_type_Boolean = true;
+    paramlry.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+  }
+  
+  protected void e(lry paramlry)
+  {
+    med localmed = this.jdField_a_of_type_Mew.a();
+    if (localmed == null) {}
+    while ((localmed.a == null) || (localmed.a.a == null) || (localmed.a.a.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_Mew.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().j) || (this.jdField_a_of_type_Mew.a() == null) || (!this.jdField_a_of_type_Mew.a())) {
+      return;
+    }
+    lqb.a(this.jdField_a_of_type_Mew.jdField_a_of_type_ComTencentAvAppVideoAppInterface, 1045, 2131630410);
+    paramlry.jdField_b_of_type_Boolean = true;
+    paramlry.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+  }
+  
+  protected void f(lry paramlry)
+  {
+    paramlry = this.jdField_a_of_type_Mew.a();
+    if ((paramlry != null) && (paramlry.a())) {
+      mey.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mex
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,118 @@
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.text.TextUtils;
+import android.support.v4.app.FragmentActivity;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie.MultiMsgDownloadCallback.1;
+import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie.MultiMsgDownloadCallback.2;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgFactory;
-import com.tencent.mobileqq.util.ScreenShotUtil;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import java.io.File;
-import org.json.JSONObject;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
-class aegn
-  implements Runnable
+public class aegn
+  implements atpa
 {
-  aegn(aegm paramaegm, Bitmap paramBitmap) {}
+  long jdField_a_of_type_Long;
+  WeakReference<aege> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void run()
+  public aegn(aege paramaege, long paramLong)
   {
-    String str1 = this.jdField_a_of_type_Aegm.a.jdField_a_of_type_OrgJsonJSONObject.optString("briefMsg");
-    String str2 = this.jdField_a_of_type_Aegm.a.jdField_a_of_type_OrgJsonJSONObject.optString("appName");
-    String str3 = this.jdField_a_of_type_Aegm.a.jdField_a_of_type_OrgJsonJSONObject.optString("iconUrl");
-    String str4 = this.jdField_a_of_type_Aegm.a.jdField_a_of_type_OrgJsonJSONObject.optString("actionUrl");
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaege);
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void a(atpb paramatpb)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
+    aege localaege;
+    do
     {
-      Object localObject1 = new File(BaseApplicationImpl.getApplication().getCacheDir(), "ShareScreenShots");
-      Object localObject2 = "ShareScreenShot_" + System.currentTimeMillis() + ".jpg";
-      localObject1 = ScreenShotUtil.a(this.jdField_a_of_type_AndroidGraphicsBitmap, (File)localObject1, (String)localObject2);
-      localObject2 = new Intent(this.jdField_a_of_type_Aegm.a.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a(), ForwardRecentActivity.class);
-      ((Intent)localObject2).putExtra("key_flag_from_plugin", true);
-      ((Intent)localObject2).putExtra("image_url", (String)localObject1);
-      ((Intent)localObject2).putExtra("forward_type", -3);
-      ((Intent)localObject2).putExtra("pkg_name", "com.tencent.mobileqq");
-      ((Intent)localObject2).putExtra("req_type", 5);
-      ((Intent)localObject2).putExtra("k_back", true);
-      ((Intent)localObject2).putExtra("brief_key", str1);
-      ((Intent)localObject2).putExtra("app_name", str2);
-      if (!TextUtils.isEmpty(str3)) {
-        ((Intent)localObject2).putExtra("struct_share_key_source_icon", str3);
+      HashMap localHashMap;
+      do
+      {
+        do
+        {
+          return;
+          localaege = (aege)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+          if ((localaege != null) && (localaege.b != null))
+          {
+            aege.a(localaege).removeCallbacks(localaege.b);
+            localaege.b = null;
+          }
+          if ((paramatpb.jdField_a_of_type_Int != 0) || (paramatpb.jdField_a_of_type_ArrayOfByte == null)) {
+            break;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("MultiMsg_TAG", 2, "MultiForwardActivity.onDownload success");
+          }
+        } while (localaege == null);
+        localHashMap = new HashMap();
+        MessageRecord localMessageRecord = localaege.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localaege.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, localaege.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localaege.jdField_g_of_type_Long);
+        localObject = localMessageRecord;
+        if (localMessageRecord == null)
+        {
+          localObject = localMessageRecord;
+          if (this.jdField_a_of_type_Long == 0L)
+          {
+            localObject = new awui(StructMsgForGeneralShare.class).c(35).a(ajjy.a(2131641213)).a(3).a("viewMultiMsg", "", null, null, null).c("MultiMsg").b(localaege.jdField_g_of_type_JavaLangString).a();
+            localObject = awbi.a(localaege.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0", "0", "0", 0, 0L, (AbsStructMsg)localObject);
+          }
+        }
+        localObject = localaege.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().a(paramatpb.jdField_a_of_type_ArrayOfByte, localHashMap, (MessageRecord)localObject, null);
+      } while ((localObject == null) || (((HashMap)localObject).size() <= 0));
+      arxu.a().a(localHashMap, localaege.jdField_g_of_type_Long, localaege.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      paramatpb = new ArrayList();
+      Object localObject = ((ArrayList)((HashMap)localObject).get("MultiMsg")).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        paramatpb.add((ChatMessage)((Iterator)localObject).next());
       }
-      ((Intent)localObject2).putExtra("struct_share_key_source_action", "web");
-      ((Intent)localObject2).putExtra("struct_share_key_source_url", str4);
-      ((Intent)localObject2).putExtra("stuctmsg_bytes", StructMsgFactory.a(((Intent)localObject2).getExtras()).getBytes());
-      this.jdField_a_of_type_Aegm.a.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.startActivityForResult((Intent)localObject2, (byte)15);
-    }
+      localaege.b(paramatpb);
+      localObject = ChatActivityUtils.a(aege.a(localaege), localaege.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, localaege.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      localObject = ChatActivityUtils.a(localaege.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext(), localaege.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageRecord)localObject);
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiMsg_TAG", 2, "MultiForwardActivity.onDownload, requestReceiveMultiMsg uses " + (System.currentTimeMillis() - aege.a(localaege)));
+      }
+      arxu.a().a(localaege.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, aege.a(localaege), true);
+      if (this.jdField_a_of_type_Long == 0L)
+      {
+        paramatpb = aael.a(localaege.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, "", paramatpb, localHashMap, true);
+        aege.a(localaege, awbi.a(localaege.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0", "0", "0", 0, 0L, paramatpb));
+        paramatpb = (awul)paramatpb.mStructMsgItemLists.get(0);
+        if ((paramatpb instanceof awum))
+        {
+          paramatpb = (awul)((awum)paramatpb).a.get(0);
+          if ((paramatpb instanceof StructMsgItemTitle)) {
+            ((StructMsgItemTitle)paramatpb).a(localaege.h);
+          }
+        }
+      }
+      localaege.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new MultiForwardChatPie.MultiMsgDownloadCallback.1(this, localaege, (CharSequence)localObject));
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiMsg_TAG", 2, "MultiForwardActivity.onDownload failed");
+      }
+    } while (localaege == null);
+    arxu.a().a(localaege.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, null, false);
+    localaege.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new MultiForwardChatPie.MultiMsgDownloadCallback.2(this, localaege));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aegn
  * JD-Core Version:    0.7.0.1
  */

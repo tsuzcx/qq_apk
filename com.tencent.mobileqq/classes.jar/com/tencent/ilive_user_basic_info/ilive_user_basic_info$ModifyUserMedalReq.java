@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class ilive_user_basic_info$ModifyUserMedalReq
-  extends MessageMicro
+  extends MessageMicro<ModifyUserMedalReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 72 }, new String[] { "uid", "op_type", "level", "point", "medal_id", "medal_level", "medal_point", "start_time", "end_time" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L) }, ModifyUserMedalReq.class);
   public final PBUInt64Field end_time = PBField.initUInt64(0L);

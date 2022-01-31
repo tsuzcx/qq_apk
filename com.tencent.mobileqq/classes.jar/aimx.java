@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare.GeneralClickHandler;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
-public class aimx
-  implements Runnable
+class aimx
 {
-  public aimx(StructMsgForGeneralShare.GeneralClickHandler paramGeneralClickHandler, QQAppInterface paramQQAppInterface) {}
+  public ImageView a;
+  public TextView a;
+  public CornerImageView a;
+  public CornerImageView b;
   
-  public void run()
-  {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009304", "0X8009304", 0, 0, "", "", "", "");
-  }
+  aimx(aimw paramaimw) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aimx
  * JD-Core Version:    0.7.0.1
  */

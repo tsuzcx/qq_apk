@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.support.annotation.NonNull;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 
-public class wsv
-  extends ContactBindObserver
+class wsv
 {
-  private wsv(FriendFragment paramFriendFragment) {}
-  
-  protected void a(boolean paramBoolean)
+  static CharSequence a(@NonNull bgxo parambgxo)
   {
-    FriendFragment.a(this.a);
+    if (parambgxo.a) {
+      return parambgxo.toString();
+    }
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    parambgxo = parambgxo.toString();
+    SpannableString localSpannableString = new SpannableString(parambgxo);
+    localSpannableString.setSpan(new ForegroundColorSpan(-65536), 0, parambgxo.length(), 17);
+    localSpannableStringBuilder.append(localSpannableString);
+    return localSpannableStringBuilder;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wsv
  * JD-Core Version:    0.7.0.1
  */

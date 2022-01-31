@@ -1,118 +1,62 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.os.AsyncTask;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForScribble;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.scribble.ScribbleBaseOperator;
-import com.tencent.mobileqq.scribble.ScribbleMsgUtils;
-import com.tencent.mobileqq.scribble.ScribbleMsgUtils.CombineCallback;
-import com.tencent.mobileqq.scribble.ScribbleUtils;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.io.ByteArrayOutputStream;
 
 public class ahuu
-  extends AsyncTask
+  implements SeekBar.OnSeekBarChangeListener
 {
-  private int jdField_a_of_type_Int;
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private ScribbleMsgUtils.CombineCallback jdField_a_of_type_ComTencentMobileqqScribbleScribbleMsgUtils$CombineCallback;
-  private String jdField_a_of_type_JavaLangString = "";
-  private int jdField_b_of_type_Int;
-  private String jdField_b_of_type_JavaLangString = "";
-  private int jdField_c_of_type_Int;
-  private String jdField_c_of_type_JavaLangString = "";
-  private String d = "";
-  private String e = "SendAfterCombinePicAndDataTask";
+  public ahuu(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public ahuu(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, Bitmap paramBitmap, int paramInt2, ScribbleMsgUtils.CombineCallback paramCombineCallback)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleMsgUtils$CombineCallback = paramCombineCallback;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_b_of_type_Int = paramInt2;
-  }
-  
-  int a()
-  {
-    String str1 = ScribbleMsgUtils.jdField_a_of_type_JavaLangString + "temp/" + System.currentTimeMillis();
-    String str2 = ScribbleMsgUtils.jdField_a_of_type_JavaLangString + "temp/" + System.currentTimeMillis() + "_data";
-    boolean bool = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleMsgUtils$CombineCallback != null) {
-      bool = this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleMsgUtils$CombineCallback.a(str2);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onProgressChanged: progress = " + paramInt + ",fromUser=" + paramBoolean);
     }
-    if (!bool) {
-      return ScribbleMsgUtils.g;
-    }
-    if (!FileUtil.a(str2)) {
-      return ScribbleMsgUtils.h;
-    }
-    Object localObject = a(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_c_of_type_Int = localObject.length;
-    if (!ScribbleUtils.a((byte[])localObject, str2, str1)) {
-      return ScribbleMsgUtils.e;
-    }
-    localObject = ScribbleUtils.a(str1);
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
-      return ScribbleMsgUtils.f;
-    }
-    this.jdField_b_of_type_JavaLangString = ((String)localObject);
-    this.jdField_c_of_type_JavaLangString = ScribbleMsgUtils.a(this.jdField_b_of_type_JavaLangString);
-    this.d = ScribbleMsgUtils.b(this.jdField_b_of_type_JavaLangString);
-    if (!ScribbleUtils.a(str1, this.jdField_c_of_type_JavaLangString).booleanValue()) {
-      return ScribbleMsgUtils.e;
-    }
-    if (!ScribbleUtils.a(str2, this.d).booleanValue()) {
-      return ScribbleMsgUtils.e;
-    }
-    FileUtil.c(str1);
-    FileUtil.c(str2);
-    return ScribbleMsgUtils.d;
-  }
-  
-  protected Integer a(Void... paramVarArgs)
-  {
-    return Integer.valueOf(a());
-  }
-  
-  protected void a(Integer paramInteger)
-  {
-    super.onPostExecute(paramInteger);
-    QLog.i(this.e, 2, "doBeforeSendScribble result = " + paramInteger);
-    if (paramInteger.intValue() == ScribbleMsgUtils.d)
+    this.a.m = true;
+    if (paramBoolean)
     {
-      ScribbleBaseOperator localScribbleBaseOperator = new ScribbleBaseOperator(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      MessageForScribble localMessageForScribble = localScribbleBaseOperator.a(this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      localMessageForScribble.mExistInfo.mCombineFileExist = true;
-      localMessageForScribble.mExistInfo.mDataFileExist = true;
-      localMessageForScribble.mExistInfo.mLocalPathExist = true;
-      localMessageForScribble.mExistInfo.mInit = true;
-      localScribbleBaseOperator.a(localMessageForScribble);
+      paramSeekBar = this.a;
+      paramSeekBar.h += 1;
+      ShortVideoPlayActivity.b(this.a, true);
+      ShortVideoPlayActivity.c(this.a, true);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleMsgUtils$CombineCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleMsgUtils$CombineCallback.a(paramInteger.intValue());
+    this.a.b(paramInt * this.a.b / 10000L);
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
+    ShortVideoPlayActivity.b(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onStartTrackingTouch: progress = " + i);
     }
   }
   
-  public byte[] a(Bitmap paramBitmap)
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream);
-    return localByteArrayOutputStream.toByteArray();
-  }
-  
-  protected void onPreExecute()
-  {
-    super.onPreExecute();
+    this.a.l();
+    paramSeekBar = this.a;
+    paramSeekBar.i += 1;
+    this.a.g = true;
+    int i = this.a.jdField_a_of_type_AndroidWidgetSeekBar.getProgress();
+    int j = (int)(i * this.a.b / 10000L);
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPlayActivity", 2, "onStopTrackingTouch: seekProgress = " + i + ", mCacheProgress= " + ShortVideoPlayActivity.b(this.a) + ", timestamp = " + j);
+    }
+    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null)
+    {
+      if (this.a.jdField_a_of_type_Int == 2) {
+        this.a.a();
+      }
+      this.a.a(j);
+    }
+    ShortVideoPlayActivity.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahuu
  * JD-Core Version:    0.7.0.1
  */

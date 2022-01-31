@@ -1,25 +1,26 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
 
 public class abxn
-  extends Handler
+  implements URLDrawable.URLDrawableListener
 {
-  public abxn(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  public abxn(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if ((paramMessage.what == 1000) && ((this.a.j == 1) || (this.a.j == 2)))
-    {
-      this.a.a();
-      QQToast.a(this.a, 2131437318, 0).b(this.a.getTitleBarHeight());
-    }
+    TroopInfoActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abxn
  * JD-Core Version:    0.7.0.1
  */

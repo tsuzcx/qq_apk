@@ -1,36 +1,23 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.DoodleEmojiUpdateEvent;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyChannelPanelFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyDynamicGridView;
 
-public class oiw
-  extends QQUIEventReceiver
+class oiw
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  public oiw(@NonNull EditVideoDoodle paramEditVideoDoodle)
-  {
-    super(paramEditVideoDoodle);
-  }
+  oiw(oiv paramoiv) {}
   
-  public void a(@NonNull EditVideoDoodle paramEditVideoDoodle, @NonNull DoodleEmojiManager.DoodleEmojiUpdateEvent paramDoodleEmojiUpdateEvent)
+  public boolean onPreDraw()
   {
-    oiy localoiy = paramEditVideoDoodle.a;
-    if (localoiy != null) {
-      localoiy.a(paramEditVideoDoodle.a());
-    }
-    for (;;)
-    {
-      StoryReportor.b("edit_video", "face_list_success", 0, paramDoodleEmojiUpdateEvent.errorInfo.errorCode, new String[0]);
-      return;
-      SLog.b(this.TAG, "DoodleEmojiListEventReceiver adapter is null");
-    }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return DoodleEmojiManager.DoodleEmojiUpdateEvent.class;
+    View localView = ReadInJoyChannelPanelFragment.a(this.a.a).getChildAt(ReadInJoyChannelPanelFragment.a(this.a.a).getChildCount() - 1);
+    Object localObject = new int[2];
+    localView.getLocationOnScreen((int[])localObject);
+    localObject = this.a.a.a(oiv.a(this.a), (int[])localObject);
+    ReadInJoyChannelPanelFragment.a(localObject[0], 0.0F, localObject[1], 0.0F, localView);
+    ReadInJoyChannelPanelFragment.a(this.a.a).getViewTreeObserver().removeOnPreDrawListener(oiv.a(this.a));
+    return false;
   }
 }
 

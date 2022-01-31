@@ -21,6 +21,7 @@ public class Report
   public long fileSize;
   public int flowId;
   public int ipsrctype;
+  public boolean isIPV6 = false;
   public int networkType;
   public int num;
   public String refer;

@@ -1,66 +1,87 @@
-import com.tencent.ims.QSecControlBitsQuery.QSecCbResp;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qqprotect.qsec.QSecCbMgr;
-import com.tencent.qqprotect.qsec.SecSvcHandlerHelper.ISecSvcRespListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class ames
-  implements SecSvcHandlerHelper.ISecSvcRespListener
+  extends alzl<bhny>
 {
-  public ames(QSecCbMgr paramQSecCbMgr) {}
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public int a()
   {
-    if ((!paramFromServiceMsg.isSuccess()) || (paramObject == null)) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        QSecControlBitsQuery.QSecCbResp localQSecCbResp = new QSecControlBitsQuery.QSecCbResp();
-        localQSecCbResp.mergeFrom((byte[])paramObject);
-        int j = -1;
-        int i = j;
-        if (localQSecCbResp.u32_status != null)
-        {
-          i = j;
-          if (localQSecCbResp.u32_status.has()) {
-            i = localQSecCbResp.u32_status.get();
-          }
-        }
-        if (i == 0)
-        {
-          if ((localQSecCbResp.u32_time_interval != null) && (localQSecCbResp.u32_time_interval.has())) {
-            localQSecCbResp.u32_time_interval.get();
-          }
-          paramFromServiceMsg = null;
-          paramToServiceMsg = paramFromServiceMsg;
-          if (localQSecCbResp.str_cbstr != null)
-          {
-            paramToServiceMsg = paramFromServiceMsg;
-            if (localQSecCbResp.str_cbstr.has()) {
-              paramToServiceMsg = localQSecCbResp.str_cbstr.get();
-            }
-          }
-          if ((paramToServiceMsg != null) && (!paramToServiceMsg.equals("")))
-          {
-            QSecCbMgr.a(this.a, paramToServiceMsg);
-            return;
-          }
-        }
-      }
-      catch (Exception paramToServiceMsg)
-      {
-        paramToServiceMsg.printStackTrace();
-      }
+    return 304;
+  }
+  
+  @NonNull
+  public bhny a(int paramInt)
+  {
+    return new bhny();
+  }
+  
+  @Nullable
+  public bhny a(alzs[] paramArrayOfalzs)
+  {
+    if ((paramArrayOfalzs == null) || (paramArrayOfalzs.length == 0)) {
+      return null;
     }
+    paramArrayOfalzs = paramArrayOfalzs[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMStickerConfigProcessor", 2, "handleGetQIMPasterConfig onParsed, content:" + paramArrayOfalzs);
+    }
+    return new bhnv().a(paramArrayOfalzs, bhko.a.getAbsolutePath(), "temp_sticker_zip", new amet(this));
+  }
+  
+  public Class<bhny> a()
+  {
+    return bhny.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMStickerConfigProcessor", 2, "handleGetQIMPasterConfig onReqFailed");
+    }
+  }
+  
+  public void a(bhny parambhny)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMStickerConfigProcessor", 2, "handleGetQIMPasterConfig onUpdate");
+    }
+  }
+  
+  public int b()
+  {
+    if (!bhko.a()) {
+      return 0;
+    }
+    return baig.D(BaseApplicationImpl.getContext());
+  }
+  
+  public int b(int paramInt)
+  {
+    if (!bhko.a())
+    {
+      QLog.i("QIMStickerConfigProcessor", 1, "config file not exist");
+      alzw.a().a(304, 0);
+      return 0;
+    }
+    return super.b(paramInt);
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ames
  * JD-Core Version:    0.7.0.1
  */

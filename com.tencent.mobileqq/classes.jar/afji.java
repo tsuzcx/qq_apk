@@ -1,42 +1,32 @@
-import android.content.res.Resources;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
+import android.app.Activity;
+import android.os.Bundle;
+import mqq.os.MqqHandler;
 
-public class afji
-  implements Animation.AnimationListener
+class afji
+  extends mmn
 {
-  public afji(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  afji(afiu paramafiu) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramAnimation == NearbyProfileDisplayPanel.b(this.a))
-    {
-      NearbyProfileDisplayPanel.a(this.a).setVisibility(8);
-      NearbyProfileDisplayPanel.a(this.a).clearAnimation();
-      NearbyProfileDisplayPanel.a(this.a).setBackgroundResource(2130845349);
-      NearbyProfileDisplayPanel.a(this.a).setTextColor(this.a.a.getResources().getColor(2131494194));
+    if ((afiu.a(this.a).isFinishing()) || (this.a.a)) {
+      return;
     }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (paramAnimation == NearbyProfileDisplayPanel.a(this.a))
-    {
-      NearbyProfileDisplayPanel.a(this.a).setVisibility(0);
-      NearbyProfileDisplayPanel.a(this.a).setBackgroundResource(2130846346);
-      NearbyProfileDisplayPanel.a(this.a).setTextColor(this.a.a.getResources().getColor(2131494216));
+    this.a.c();
+    if (afiu.a(this.a) != null) {
+      afiu.a(this.a).removeCallbacks(afiu.b(this.a));
     }
+    if (paramInt == 16)
+    {
+      this.a.d();
+      return;
+    }
+    afiu.a(this.a, afiu.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afji
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
-
-public class ajpy
-  implements View.OnClickListener
+class ajpy
+  implements lne
 {
-  public ajpy(ReciteFragment paramReciteFragment) {}
+  ajpy(ajpv paramajpv) {}
   
-  public void onClick(View paramView)
+  public void a(lnd paramlnd)
   {
-    ReciteFragment.a(this.a);
+    paramlnd.a(this.a.a);
+    paramlnd.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajpy
  * JD-Core Version:    0.7.0.1
  */

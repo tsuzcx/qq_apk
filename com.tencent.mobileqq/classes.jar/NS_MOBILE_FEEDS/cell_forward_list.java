@@ -10,12 +10,12 @@ import java.util.Map;
 public final class cell_forward_list
   extends JceStruct
 {
-  static Map cache_extendinfo;
-  static ArrayList cache_fwdmans = new ArrayList();
+  static Map<String, String> cache_extendinfo;
+  static ArrayList<s_user> cache_fwdmans = new ArrayList();
   public String actionUrl = "";
-  public Map extendinfo;
+  public Map<String, String> extendinfo;
   public String forwardkey = "";
-  public ArrayList fwdmans;
+  public ArrayList<s_user> fwdmans;
   public int isforward;
   public int num;
   
@@ -29,7 +29,7 @@ public final class cell_forward_list
   
   public cell_forward_list() {}
   
-  public cell_forward_list(int paramInt1, int paramInt2, ArrayList paramArrayList, String paramString1, Map paramMap, String paramString2)
+  public cell_forward_list(int paramInt1, int paramInt2, ArrayList<s_user> paramArrayList, String paramString1, Map<String, String> paramMap, String paramString2)
   {
     this.num = paramInt1;
     this.isforward = paramInt2;
@@ -69,7 +69,7 @@ public final class cell_forward_list
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_forward_list
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,57 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
-public class sjl
-  implements Runnable
+class sjl
+  extends bhim
 {
-  public sjl(ChatSettingForTroop paramChatSettingForTroop, String paramString) {}
+  private long jdField_a_of_type_Long;
   
-  public void run()
+  sjl(sjj paramsjj, PublishVideoEntry paramPublishVideoEntry, sjp paramsjp, String paramString) {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a != null) {
-      if (!this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.show();
-      }
-    }
-    do
+    this.jdField_a_of_type_Sjp.a(-3);
+    this.jdField_a_of_type_Sjp.a("task canceled");
+    sjj.a(this.jdField_a_of_type_Sjj, "needAndStartDownloadMusic");
+  }
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    urk.c(sjj.jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " music onStart download");
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void a(String paramString, boolean paramBoolean, int paramInt)
+  {
+    urk.c(sjj.jdField_a_of_type_JavaLangString, "[vs_publish_flow] | fakeid:" + this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.fakeVid + " music onStart download onFinish ");
+    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.backgroundMusicPath = paramString;
+    long l1 = System.currentTimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    switch (paramInt)
     {
+    default: 
+      this.jdField_a_of_type_Sjp.a(paramInt);
+      this.jdField_a_of_type_Sjp.a("unknown error the music download failed");
+    }
+    for (;;)
+    {
+      wye.a("edit_music_download", wye.a(this.jdField_a_of_type_Sjp.a(), l1 - l2, this.jdField_a_of_type_JavaLangString, vlm.a(paramString)));
+      sjj.a(this.jdField_a_of_type_Sjj, "needAndStartDownloadMusic");
       return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, 230);
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.setMessage(this.jdField_a_of_type_JavaLangString);
-      sjm localsjm = new sjm(this);
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.setPositiveButton(2131432428, localsjm);
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.setNegativeButton(2131433029, localsjm);
-    } while (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.isShowing());
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.show();
+      this.jdField_a_of_type_Sjp.a(0);
+      this.jdField_a_of_type_Sjp.a("music downloadSuccess");
+      continue;
+      this.jdField_a_of_type_Sjp.a(-2);
+      this.jdField_a_of_type_Sjp.a("none network");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sjl
  * JD-Core Version:    0.7.0.1
  */

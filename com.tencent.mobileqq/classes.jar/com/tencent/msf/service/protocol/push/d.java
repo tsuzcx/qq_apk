@@ -10,8 +10,8 @@ public final class d
   extends JceStruct
 {
   static Map d;
-  public long a;
-  public Map b;
+  public long a = 0L;
+  public Map b = null;
   public String c = "";
   
   public d() {}

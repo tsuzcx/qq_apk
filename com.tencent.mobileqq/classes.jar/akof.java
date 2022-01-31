@@ -1,33 +1,29 @@
-import android.content.Context;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class akof
-  implements Runnable
+class akof
+  implements DialogInterface.OnClickListener
 {
-  public akof(Context paramContext, String paramString) {}
+  akof(akoe paramakoe) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_AndroidContentContext != null) && ((this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)))
+    switch (paramInt)
     {
-      FragmentActivity localFragmentActivity = (FragmentActivity)this.jdField_a_of_type_AndroidContentContext;
-      if ((localFragmentActivity.getChatFragment() != null) && (localFragmentActivity.getChatFragment().a() != null))
-      {
-        localFragmentActivity.getChatFragment().a().R();
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, this.jdField_a_of_type_JavaLangString, 0).a();
-        }
-      }
+    default: 
+      return;
+    case 1: 
+      bbmy.a(this.a.a, 2, 2131624630, 0).a();
+      paramDialogInterface.dismiss();
+      awqx.b(null, "dc00898", "", "", "0X8008353", "0X8008353", 0, 0, "", "", "", "");
+      return;
     }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akof
  * JD-Core Version:    0.7.0.1
  */

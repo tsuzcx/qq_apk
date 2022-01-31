@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class cmd0x383$ApplyRenameRspBody
-  extends MessageMicro
+  extends MessageMicro<ApplyRenameRspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 88, 96 }, new String[] { "bool_safe_check_flag", "uint32_safe_check_res" }, new Object[] { Boolean.valueOf(false), Integer.valueOf(0) }, ApplyRenameRspBody.class);
   public final PBBoolField bool_safe_check_flag = PBField.initBool(false);
@@ -15,7 +15,7 @@ public final class cmd0x383$ApplyRenameRspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.cmd0x383.cmd0x383.ApplyRenameRspBody
  * JD-Core Version:    0.7.0.1
  */

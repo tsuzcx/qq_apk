@@ -1,20 +1,13 @@
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.List;
 
-class obq
-  implements Runnable
+public abstract interface obq
 {
-  obq(obp paramobp, MemoriesProfilePresenter paramMemoriesProfilePresenter) {}
-  
-  public void run()
-  {
-    ((UserManager)SuperManager.a(2)).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter.a);
-  }
+  public abstract void a(boolean paramBoolean, List<BaseArticleInfo> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     obq
  * JD-Core Version:    0.7.0.1
  */

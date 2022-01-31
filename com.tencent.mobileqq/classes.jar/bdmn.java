@@ -1,0 +1,33 @@
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qqmini.sdk.launcher.model.BaseLibInfo;
+
+public final class bdmn
+  implements Parcelable.Creator<BaseLibInfo>
+{
+  public BaseLibInfo a(Parcel paramParcel)
+  {
+    BaseLibInfo localBaseLibInfo = new BaseLibInfo();
+    try
+    {
+      paramParcel = new BaseLibInfo(paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt());
+      return paramParcel;
+    }
+    catch (Throwable paramParcel)
+    {
+      bdnw.d("BaseLibInfo", "BaseLibInfo createFromParcel exception!", paramParcel);
+    }
+    return localBaseLibInfo;
+  }
+  
+  public BaseLibInfo[] a(int paramInt)
+  {
+    return new BaseLibInfo[paramInt];
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     bdmn
+ * JD-Core Version:    0.7.0.1
+ */

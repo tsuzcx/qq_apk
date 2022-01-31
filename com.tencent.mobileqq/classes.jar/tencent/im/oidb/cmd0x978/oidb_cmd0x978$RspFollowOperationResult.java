@@ -9,12 +9,12 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class oidb_cmd0x978$RspFollowOperationResult
-  extends MessageMicro
+  extends MessageMicro<RspFollowOperationResult>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBEnumField op_type = PBField.initEnum(1);
-  public final PBRepeatMessageField rpt_follow_operation_result = PBField.initRepeatMessage(oidb_cmd0x978.OneFollowOperationResult.class);
+  public final PBRepeatMessageField<oidb_cmd0x978.OneFollowOperationResult> rpt_follow_operation_result = PBField.initRepeatMessage(oidb_cmd0x978.OneFollowOperationResult.class);
   
   static
   {
@@ -24,7 +24,7 @@ public final class oidb_cmd0x978$RspFollowOperationResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x978.oidb_cmd0x978.RspFollowOperationResult
  * JD-Core Version:    0.7.0.1
  */

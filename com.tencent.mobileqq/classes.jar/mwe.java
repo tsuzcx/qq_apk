@@ -1,24 +1,8 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsAdapter;
+import com.tencent.widget.ListView;
 
-class mwe
-  implements Runnable
+public abstract interface mwe
 {
-  mwe(mwc parammwc) {}
-  
-  public void run()
-  {
-    boolean bool = true;
-    SubscriptFeedsActivity.a(this.a.a).b = true;
-    SubscriptFeedsActivity localSubscriptFeedsActivity = this.a.a;
-    if (SubscriptFeedsActivity.a(this.a.a).g == 1) {}
-    for (;;)
-    {
-      SubscriptFeedsActivity.a(localSubscriptFeedsActivity, false, bool, false);
-      return;
-      bool = false;
-    }
-  }
+  public abstract void a(ListView paramListView);
 }
 
 

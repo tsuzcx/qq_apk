@@ -1,23 +1,21 @@
-import android.view.View;
-import com.tencent.gdtad.views.GdtUIUtils;
-import com.tencent.gdtad.views.GdtViewStatus;
-import java.lang.ref.WeakReference;
+import android.content.Context;
 
 public class qpw
-  implements Runnable
 {
-  public qpw(GdtViewStatus paramGdtViewStatus) {}
-  
-  public void run()
+  public static rhs a(Context paramContext, String paramString1, String paramString2)
   {
-    if (GdtUIUtils.a((View)GdtViewStatus.a(this.a).get()) > GdtViewStatus.a(this.a)) {
-      GdtViewStatus.a(this.a, 1);
-    }
+    paramContext = new rhs(paramContext, 2131690181);
+    paramContext.setContentView(2131496713);
+    paramContext.setTitle(null);
+    paramContext.setMessage(paramString1);
+    paramContext.a(paramString2);
+    paramContext.setCanceledOnTouchOutside(true);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qpw
  * JD-Core Version:    0.7.0.1
  */

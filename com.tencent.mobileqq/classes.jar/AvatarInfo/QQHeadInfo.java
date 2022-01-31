@@ -15,7 +15,7 @@ public final class QQHeadInfo
   extends JceStruct
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator CREATOR = new a();
+  public static final Parcelable.Creator<QQHeadInfo> CREATOR = new a();
   public byte cHeadType;
   public String downLoadUrl = "";
   public byte dstUsrType;

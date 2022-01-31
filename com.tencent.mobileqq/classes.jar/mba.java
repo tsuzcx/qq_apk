@@ -1,230 +1,181 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArkAppFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.ArkAppFeedsInfo;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.SocializeFeedsInfo;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.TopicRecommendFeedsInfo;
+import com.tencent.beacon.event.UserAction;
+import java.util.HashMap;
+import java.util.Map;
 
-public final class mba
-  implements Parcelable.Creator
+public class mba
 {
-  public ArticleInfo a(Parcel paramParcel)
+  static int jdField_a_of_type_Int;
+  static long jdField_a_of_type_Long;
+  public static String a;
+  static boolean jdField_a_of_type_Boolean;
+  static int jdField_b_of_type_Int;
+  static String jdField_b_of_type_JavaLangString = "0";
+  static boolean jdField_b_of_type_Boolean;
+  static int jdField_c_of_type_Int;
+  static String jdField_c_of_type_JavaLangString = "actAVFunChatVoiceChange";
+  static boolean jdField_c_of_type_Boolean;
+  static boolean d;
+  
+  static
   {
-    boolean bool2 = true;
-    ArticleInfo localArticleInfo = new ArticleInfo();
-    localArticleInfo.mArticleID = paramParcel.readLong();
-    localArticleInfo.mTitle = paramParcel.readString();
-    localArticleInfo.mSummary = paramParcel.readString();
-    localArticleInfo.mFirstPagePicUrl = paramParcel.readString();
-    localArticleInfo.mOriginalUrl = paramParcel.readString();
-    localArticleInfo.mArticleContentUrl = paramParcel.readString();
-    localArticleInfo.mTime = paramParcel.readLong();
-    localArticleInfo.mCommentCount = paramParcel.readLong();
-    localArticleInfo.mSubscribeID = paramParcel.readString();
-    localArticleInfo.mSubscribeName = paramParcel.readString();
-    localArticleInfo.mRecommendTime = paramParcel.readLong();
-    localArticleInfo.mChannelID = paramParcel.readLong();
-    localArticleInfo.mRecommendSeq = paramParcel.readLong();
-    if (paramParcel.readByte() == 0) {}
-    for (boolean bool1 = false;; bool1 = true)
+    jdField_a_of_type_JavaLangString = "VoiceChangeDataReport";
+  }
+  
+  public static void a(int paramInt, long paramLong)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("typeid", paramInt + "");
+    localHashMap.put("duration", paramLong + "");
+    UserAction.onUserAction(jdField_c_of_type_JavaLangString, true, -1L, -1L, localHashMap, true);
+    krx.a(jdField_a_of_type_JavaLangString, String.format("reportVoiceChange voiceType = %s, duration = %s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) }));
+  }
+  
+  public static void a(int paramInt, String paramString)
+  {
+    krx.a(jdField_a_of_type_JavaLangString, String.format("onConnected sessionType = %s, roomid = %s", new Object[] { Integer.valueOf(paramInt), paramString }));
+    d = true;
+    jdField_b_of_type_JavaLangString = paramString;
+    if ((paramInt == 1) || (paramInt == 3))
     {
-      localArticleInfo.mShowBigPicture = bool1;
-      localArticleInfo.mStrategyId = paramParcel.readInt();
-      localArticleInfo.articleStyle = paramParcel.readInt();
-      localArticleInfo.interfaceData = paramParcel.readString();
-      localArticleInfo.galleryReprotExdData = paramParcel.readString();
-      localArticleInfo.mAlgorithmID = paramParcel.readLong();
-      localArticleInfo.mArticleFriendLikeText = paramParcel.readString();
-      localArticleInfo.mTopicPicWHRatio = paramParcel.readDouble();
-      localArticleInfo.mTopicPicInfo = paramParcel.readString();
-      int j = paramParcel.readInt();
-      if (j <= 0) {
-        break;
+      if (jdField_a_of_type_Int != 0) {
+        jdField_b_of_type_Int = jdField_a_of_type_Int;
       }
-      localArticleInfo.mPictures = new URL[j];
-      i = 0;
-      while (i < j)
-      {
-        localArticleInfo.mPictures[i] = ReadInJoyUtils.a(paramParcel.readString());
-        i += 1;
-      }
+      jdField_a_of_type_Boolean = true;
     }
-    localArticleInfo.mSinglePicture = ReadInJoyUtils.a(paramParcel.readString());
-    localArticleInfo.mVideoCoverUrl = ReadInJoyUtils.a(paramParcel.readString());
-    localArticleInfo.mVideoVid = paramParcel.readString();
-    localArticleInfo.mVideoDuration = paramParcel.readInt();
-    localArticleInfo.mCommentIconType = paramParcel.readInt();
-    int i = paramParcel.readInt();
-    if (i == -1)
-    {
-      localArticleInfo.mServerContext = null;
-      i = paramParcel.readInt();
-      if (i != -1) {
-        break label660;
+    while ((paramInt != 2) && (paramInt != 4)) {
+      return;
+    }
+    if (jdField_a_of_type_Int != 0) {
+      jdField_c_of_type_Int = jdField_a_of_type_Int;
+    }
+    jdField_b_of_type_Boolean = true;
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    krx.a(jdField_a_of_type_JavaLangString, String.format("reportClickEvent key = %s, type = %s, roomid = %s", new Object[] { paramString1, paramString2, jdField_b_of_type_JavaLangString }));
+    awqx.b(null, "dc00898", "", "", paramString1, paramString1, 0, 0, paramString2, "", jdField_b_of_type_JavaLangString, "");
+  }
+  
+  public static void a(kvq paramkvq)
+  {
+    if ((!jdField_c_of_type_Boolean) || (!d)) {
+      return;
+    }
+    if ((paramkvq.d == 1) || (paramkvq.d == 2)) {
+      if (jdField_a_of_type_Boolean)
+      {
+        if (jdField_b_of_type_Int == 0) {
+          a("0X8007DC3", "");
+        }
       }
-      localArticleInfo.mCommentInfoBytes = null;
-      label353:
-      i = paramParcel.readInt();
-      if (i != -1) {
-        break label684;
+      else if (jdField_b_of_type_Boolean)
+      {
+        if (jdField_c_of_type_Int != 0) {
+          break label115;
+        }
+        a("0X8007DC5", "");
       }
-      localArticleInfo.mPackInfoBytes = null;
-      label369:
-      localArticleInfo.postRead();
-      localArticleInfo.mCircleId = paramParcel.readLong();
-      localArticleInfo.mStrCircleId = paramParcel.readString();
-      if (paramParcel.readByte() == 0) {
-        break label708;
-      }
-      bool1 = bool2;
-      label403:
-      localArticleInfo.mPUinIsActive = bool1;
-      i = paramParcel.readInt();
-      if (i != -1) {
-        break label714;
-      }
-      localArticleInfo.mSubscribeInfoBytes = null;
-      label426:
-      localArticleInfo.mFeedType = paramParcel.readInt();
-      localArticleInfo.mFeedId = paramParcel.readLong();
-      i = paramParcel.readInt();
-      if (i > 0) {
-        break label738;
-      }
-      localArticleInfo.mSocialFeedInfoByte = null;
-      label459:
-      localArticleInfo.innerUniqueID = paramParcel.readString();
-      localArticleInfo.businessId = paramParcel.readLong();
-      localArticleInfo.businessName = paramParcel.readString();
-      localArticleInfo.businessUrl = paramParcel.readString();
-      localArticleInfo.businessNamePrefix = paramParcel.readString();
-      i = paramParcel.readInt();
-      if (i > 0) {
-        break label804;
-      }
-      localArticleInfo.mTopicRecommendFeedsInfoByte = null;
-      label519:
-      i = paramParcel.readInt();
-      if (i > 0) {
-        break label870;
-      }
-      localArticleInfo.mArkAppFeedsInfoBytes = null;
     }
     for (;;)
     {
-      for (;;)
-      {
-        for (;;)
+      a(paramkvq, 0);
+      jdField_c_of_type_Boolean = false;
+      d = false;
+      jdField_b_of_type_JavaLangString = "0";
+      return;
+      a("0X8007DC2", jdField_b_of_type_Int + "");
+      break;
+      label115:
+      a("0X8007DC4", jdField_c_of_type_Int + "");
+      continue;
+      if ((paramkvq.d == 3) || (paramkvq.d == 4)) {
+        if (paramkvq.A == 1)
         {
-          localArticleInfo.publishUin = paramParcel.readLong();
-          localArticleInfo.mMergeVideoId = paramParcel.readLong();
-          localArticleInfo.mVideoCommentCount = paramParcel.readInt();
-          localArticleInfo.proteusItemsData = paramParcel.readString();
-          localArticleInfo.mAccountLess = paramParcel.readInt();
-          localArticleInfo.mVideoArticleSubsText = paramParcel.readString();
-          localArticleInfo.mVideoArticleSubsColor = paramParcel.readString();
-          localArticleInfo.mVideoAdsJumpUrl = paramParcel.readString();
-          localArticleInfo.mVideoAdsJumpType = paramParcel.readInt();
-          localArticleInfo.mVideoAdsSource = paramParcel.readInt();
-          localArticleInfo.videoReportInfo = paramParcel.readString();
-          return localArticleInfo;
-          localArticleInfo.mServerContext = new byte[i];
-          if (i <= 0) {
+          if (jdField_a_of_type_Boolean)
+          {
+            if (jdField_b_of_type_Int != 0) {
+              break label209;
+            }
+            a("0X8007E67", "");
+          }
+          for (;;)
+          {
+            if (!jdField_b_of_type_Boolean) {
+              break label236;
+            }
+            if (jdField_c_of_type_Int != 0) {
+              break label238;
+            }
+            a("0X8007E69", "");
             break;
+            label209:
+            a("0X8007E68", jdField_b_of_type_Int + "");
           }
-          paramParcel.readByteArray(localArticleInfo.mServerContext);
-          break;
-          label660:
-          localArticleInfo.mCommentInfoBytes = new byte[i];
-          if (i <= 0) {
-            break label353;
-          }
-          paramParcel.readByteArray(localArticleInfo.mCommentInfoBytes);
-          break label353;
-          label684:
-          localArticleInfo.mPackInfoBytes = new byte[i];
-          if (i <= 0) {
-            break label369;
-          }
-          paramParcel.readByteArray(localArticleInfo.mPackInfoBytes);
-          break label369;
-          label708:
-          bool1 = false;
-          break label403;
-          label714:
-          localArticleInfo.mSubscribeInfoBytes = new byte[i];
-          if (i <= 0) {
-            break label426;
-          }
-          paramParcel.readByteArray(localArticleInfo.mSubscribeInfoBytes);
-          break label426;
-          label738:
-          localArticleInfo.mSocialFeedInfoByte = new byte[i];
-          paramParcel.readByteArray(localArticleInfo.mSocialFeedInfoByte);
-          oidb_cmd0x68b.SocializeFeedsInfo localSocializeFeedsInfo = new oidb_cmd0x68b.SocializeFeedsInfo();
-          try
-          {
-            localSocializeFeedsInfo.mergeFrom(localArticleInfo.mSocialFeedInfoByte);
-            localArticleInfo.mSocialFeedInfo = SocializeFeedsInfo.a(localSocializeFeedsInfo);
-          }
-          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
-          {
-            localInvalidProtocolBufferMicroException1.printStackTrace();
-            localArticleInfo.mSocialFeedInfo = null;
-          }
+          label236:
+          continue;
+          label238:
+          a("0X8007E6A", jdField_c_of_type_Int + "");
         }
-        break label459;
-        label804:
-        localArticleInfo.mTopicRecommendFeedsInfoByte = new byte[i];
-        paramParcel.readByteArray(localArticleInfo.mTopicRecommendFeedsInfoByte);
-        oidb_cmd0x68b.TopicRecommendFeedsInfo localTopicRecommendFeedsInfo = new oidb_cmd0x68b.TopicRecommendFeedsInfo();
-        try
+        else if (paramkvq.A == 10)
         {
-          localTopicRecommendFeedsInfo.mergeFrom(localArticleInfo.mTopicRecommendFeedsInfoByte);
-          localArticleInfo.mTopicRecommendFeedsInfo = TopicRecommendFeedsInfo.a(localTopicRecommendFeedsInfo);
+          if (jdField_a_of_type_Boolean)
+          {
+            if (jdField_b_of_type_Int != 0) {
+              break label317;
+            }
+            a("0X8007E63", "");
+          }
+          for (;;)
+          {
+            if (!jdField_b_of_type_Boolean) {
+              break label344;
+            }
+            if (jdField_c_of_type_Int != 0) {
+              break label346;
+            }
+            a("0X8007E65", "");
+            break;
+            label317:
+            a("0X8007E64", jdField_b_of_type_Int + "");
+          }
+          label344:
+          continue;
+          label346:
+          a("0X8007E66", jdField_c_of_type_Int + "");
         }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
-        {
-          localInvalidProtocolBufferMicroException2.printStackTrace();
-          localArticleInfo.mSocialFeedInfo = null;
-        }
-      }
-      break label519;
-      label870:
-      localArticleInfo.mArkAppFeedsInfoBytes = new byte[i];
-      paramParcel.readByteArray(localArticleInfo.mArkAppFeedsInfoBytes);
-      oidb_cmd0x68b.ArkAppFeedsInfo localArkAppFeedsInfo = new oidb_cmd0x68b.ArkAppFeedsInfo();
-      try
-      {
-        localArkAppFeedsInfo.mergeFrom(localArticleInfo.mArkAppFeedsInfoBytes);
-        localArticleInfo.mArkAppFeedsInfo = ArkAppFeedsInfo.a(localArkAppFeedsInfo);
-      }
-      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException3)
-      {
-        localInvalidProtocolBufferMicroException3.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.d("ArticleInfo", 2, "convertPBToInfo arkAppFeedsInfo failed.");
-        }
-        localArticleInfo.mArkAppFeedsInfo = null;
       }
     }
   }
   
-  public ArticleInfo[] a(int paramInt)
+  public static void a(kvq paramkvq, int paramInt)
   {
-    return new ArticleInfo[paramInt];
+    krx.a(jdField_a_of_type_JavaLangString, String.format("updateReportData sessionType = %d, voiceType = %d", new Object[] { Integer.valueOf(paramkvq.d), Integer.valueOf(paramInt) }));
+    long l = System.currentTimeMillis();
+    if (jdField_a_of_type_Int != 0) {
+      a(jdField_a_of_type_Int, (l - jdField_a_of_type_Long) / 1000L);
+    }
+    jdField_a_of_type_Int = paramInt;
+    jdField_a_of_type_Long = l;
+    if ((paramkvq.d == 1) || (paramkvq.d == 3))
+    {
+      if (jdField_a_of_type_Int != 0) {
+        jdField_b_of_type_Int = jdField_a_of_type_Int;
+      }
+      jdField_a_of_type_Boolean = true;
+    }
+    while ((paramkvq.d != 2) && (paramkvq.d != 4)) {
+      return;
+    }
+    if (jdField_a_of_type_Int != 0) {
+      jdField_c_of_type_Int = jdField_a_of_type_Int;
+    }
+    jdField_b_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mba
  * JD-Core Version:    0.7.0.1
  */

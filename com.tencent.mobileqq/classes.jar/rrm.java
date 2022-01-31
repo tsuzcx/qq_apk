@@ -1,57 +1,62 @@
-import android.os.Message;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.GifDrawable;
+import com.tencent.image.URLDrawableHandler;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import org.json.JSONObject;
 
 public class rrm
-  extends MqqHandler
+  extends rsl
 {
-  public rrm(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
+  final int a = 3;
   
-  public void handleMessage(Message paramMessage)
+  public rrm(BaseApplicationImpl paramBaseApplicationImpl)
   {
-    switch (paramMessage.what)
-    {
+    super(paramBaseApplicationImpl);
+  }
+  
+  public static URL a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    for (;;)
+    try
     {
-      super.handleMessage(paramMessage);
-      return;
-      if (AssociatedAccountManageActivity.a(this.a) == null) {
-        AssociatedAccountManageActivity.a(this.a, new QQProgressDialog(this.a, this.a.getTitleBarHeight()));
-      }
-      if ((!this.a.isFinishing()) && (!AssociatedAccountManageActivity.a(this.a).isShowing()))
+      paramString = new URL("pubaccountimage_gifplaytime", null, paramString);
+      return paramString;
+    }
+    catch (MalformedURLException paramString)
+    {
+      for (;;)
       {
-        try
-        {
-          AssociatedAccountManageActivity.a(this.a).show();
-        }
-        catch (Exception localException) {}
-        if (QLog.isColorLevel())
-        {
-          QLog.e("AssociatedAccountManage", 2, "QQProgressDialog show exception.", localException);
-          continue;
-          if ((AssociatedAccountManageActivity.a(this.a) != null) && (AssociatedAccountManageActivity.a(this.a).isShowing()))
-          {
-            AssociatedAccountManageActivity.a(this.a).dismiss();
-            AssociatedAccountManageActivity.a(this.a, null);
-            continue;
-            if (AssociatedAccountManageActivity.a(this.a) != null) {
-              AssociatedAccountManageActivity.a(this.a).cancel();
-            }
-            AssociatedAccountManageActivity.a(this.a, QQToast.a(this.a, paramMessage.arg1, paramMessage.arg2, 0).b(this.a.getTitleBarHeight()));
-          }
-        }
+        QLog.e("PubAccountHttpDownloader", 2, "getPubURL urlString", paramString);
+        paramString = null;
       }
+    }
+  }
+  
+  public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    if (GifDrawable.isGifFile(paramFile)) {
+      if (!(paramDownloadParams.mExtraInfo instanceof JSONObject)) {
+        break label52;
+      }
+    }
+    label52:
+    for (int i = ((JSONObject)paramDownloadParams.mExtraInfo).optInt("gifPlayCount", 3);; i = 3)
+    {
+      return new rrn(paramFile, true, i);
+      return super.decodeFile(paramFile, paramDownloadParams, paramURLDrawableHandler);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rrm
  * JD-Core Version:    0.7.0.1
  */

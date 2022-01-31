@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class AudioTransClientInterface$IntC2SFailedRsp
-  extends MessageMicro
+  extends MessageMicro<IntC2SFailedRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "uint32_errcode", "str_errmsg" }, new Object[] { Integer.valueOf(0), "" }, IntC2SFailedRsp.class);
   public final PBStringField str_errmsg = PBField.initString("");

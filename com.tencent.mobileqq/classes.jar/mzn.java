@@ -1,16 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsIPCClient;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsIPCClient.Observer;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
-import com.tencent.mobileqq.widget.QQProgressDialog.Callback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
-public class mzn
-  implements QQProgressDialog.Callback
+class mzn
+  implements DialogInterface.OnClickListener
 {
-  public mzn(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin, VideoFeedsIPCClient.Observer paramObserver) {}
+  mzn(mzd parammzd, JsResult paramJsResult) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.a.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsIPCClient$Observer);
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.confirm();
   }
 }
 

@@ -1,26 +1,16 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
-
-public class one
-  extends onk
+class one
+  extends ohe
 {
-  public one(DoodleEmojiManager paramDoodleEmojiManager, DoodleEmojiItem paramDoodleEmojiItem)
+  one(ond paramond) {}
+  
+  public void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    super(paramDoodleEmojiItem);
+    this.a.a(paramBoolean, paramInt, paramString);
   }
   
-  protected void a(@Nullable DoodleEmojiItem arg1)
+  public void a(boolean paramBoolean, long paramLong, int paramInt, String paramString)
   {
-    super.onResult(???);
-    SLog.b("DoodleEmojiManager", "startDownload again");
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem = null;
-      this.a.c();
-      return;
-    }
+    this.a.a(paramBoolean, paramLong, paramInt, paramString);
   }
 }
 

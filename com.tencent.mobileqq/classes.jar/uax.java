@@ -1,40 +1,30 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 
 public class uax
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public uax(TroopAssistantActivity paramTroopAssistantActivity, QQMessageFacade paramQQMessageFacade, TextView paramTextView) {}
+  public uax(QQStoryBaseActivity paramQQStoryBaseActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b();
-    String str1 = "" + i;
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.e)
+    if (this.a.c != null)
     {
-      str1 = this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.getString(2131433311) + "(" + i + ")";
-      if (i > 99) {
-        str1 = this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.getString(2131433311) + "(99+)";
-      }
-      if (i <= 0) {
-        str1 = this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.getString(2131433311);
-      }
+      this.a.c.clearAnimation();
+      ((ViewGroup)((ViewGroup)this.a.findViewById(16908290)).getChildAt(0)).removeView(this.a.c);
     }
-    String str2 = str1;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.e)
-    {
-      str2 = str1;
-      if (i > 99) {
-        str2 = "99+";
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.runOnUiThread(new uay(this, i, str2));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uax
  * JD-Core Version:    0.7.0.1
  */

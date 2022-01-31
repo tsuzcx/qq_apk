@@ -1,19 +1,33 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
+import com.tencent.biz.subscribe.component.base.ComponentPageView;
 
 public class wbz
-  implements Runnable
+  extends RecyclerView.ItemDecoration
 {
-  public wbz(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public wbz(ComponentPageView paramComponentPageView, wbs paramwbs) {}
   
-  public void run()
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    PublicAccountChatPie.a(this.a).removeView(this.a.o);
+    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
+    int i = paramRecyclerView.getChildLayoutPosition(paramView);
+    if ((this.a.a != null) && (this.a.a.b(i) != null)) {
+      this.a.a.b(i).a(paramRect, paramView, paramRecyclerView, paramState);
+    }
+  }
+  
+  public void onDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    super.onDraw(paramCanvas, paramRecyclerView, paramState);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wbz
  * JD-Core Version:    0.7.0.1
  */

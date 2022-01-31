@@ -1,23 +1,12 @@
-import com.tencent.component.media.image.ImageManager;
-import java.util.concurrent.ConcurrentHashMap;
-
-class pli
-  implements Runnable
+public class pli
 {
-  pli(plh paramplh) {}
-  
-  public void run()
-  {
-    ImageManager.b(false);
-    ImageManager.a(this.a.a, 0L);
-    ImageManager.a(this.a.a).clear();
-    ImageManager.a().clear();
-    ImageManager.b().clear();
-  }
+  public int a;
+  public long a;
+  public int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pli
  * JD-Core Version:    0.7.0.1
  */

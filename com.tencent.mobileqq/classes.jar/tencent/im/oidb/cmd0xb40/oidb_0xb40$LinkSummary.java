@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class oidb_0xb40$LinkSummary
-  extends MessageMicro
+  extends MessageMicro<LinkSummary>
 {
   public static final int Audio = 2;
   public static final int Video = 1;
@@ -20,7 +20,7 @@ public final class oidb_0xb40$LinkSummary
   public final PBBytesField bytes_title = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_type = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_uri = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_msg_pic_info = PBField.initRepeatMessage(oidb_0xb40.PicInfo.class);
+  public final PBRepeatMessageField<oidb_0xb40.PicInfo> rpt_msg_pic_info = PBField.initRepeatMessage(oidb_0xb40.PicInfo.class);
   
   static
   {
@@ -35,7 +35,7 @@ public final class oidb_0xb40$LinkSummary
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0xb40.oidb_0xb40.LinkSummary
  * JD-Core Version:    0.7.0.1
  */

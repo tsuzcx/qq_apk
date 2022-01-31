@@ -16,84 +16,77 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class DownloadGlobalStrategy
 {
-  private static Context jdField_a_of_type_AndroidContentContext;
-  public static final DownloadGlobalStrategy.StrategyInfo a;
-  private static volatile DownloadGlobalStrategy jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy = null;
-  private static ArrayList jdField_a_of_type_JavaUtilArrayList;
-  private static final byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
-  public static final DownloadGlobalStrategy.StrategyInfo b;
-  private static ArrayList jdField_b_of_type_JavaUtilArrayList;
-  public static final DownloadGlobalStrategy.StrategyInfo c;
-  private static ArrayList c;
-  public static final DownloadGlobalStrategy.StrategyInfo d;
-  public static final DownloadGlobalStrategy.StrategyInfo e;
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long = 0L;
-  private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private PortConfigStrategy jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyPortConfigStrategy;
-  private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private boolean jdField_a_of_type_Boolean = true;
-  private volatile int jdField_b_of_type_Int = 0;
+  private static final byte[] INSTANCE_LOCK = new byte[0];
+  private static ArrayList<DownloadGlobalStrategy.StrategyInfo> StrategyLib_NWAP;
+  private static ArrayList<DownloadGlobalStrategy.StrategyInfo> StrategyLib_WAP;
+  private static ArrayList<DownloadGlobalStrategy.StrategyInfo> StrategyLib_WAP1;
+  public static final DownloadGlobalStrategy.StrategyInfo Strategy_BACKUPIP;
+  public static final DownloadGlobalStrategy.StrategyInfo Strategy_DOMAIN_FORCE;
+  public static final DownloadGlobalStrategy.StrategyInfo Strategy_DomainDirect = new DownloadGlobalStrategy.StrategyInfo(1, false, false, false);
+  public static final DownloadGlobalStrategy.StrategyInfo Strategy_DomainProxy_CON;
+  public static final DownloadGlobalStrategy.StrategyInfo Strategy_DomainProxy_SYS = new DownloadGlobalStrategy.StrategyInfo(2, true, false, false);
+  private static final String TAG = "DownloadGlobalStrategy";
+  private static Context mContext;
+  private static volatile DownloadGlobalStrategy mInstance;
+  private boolean httpsSupport = true;
+  private long httpsSupportTimestamp = 0L;
+  private volatile int mCacheModifyCount = 0;
+  private int mHttpsFailCount = 0;
+  private PortConfigStrategy mPortConfig;
+  private SharedPreferences mSetting;
+  private ConcurrentHashMap<String, DownloadGlobalStrategy.StrategyInfo> mapBestDomainStrategyCache = new ConcurrentHashMap();
   
   static
   {
-    jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo = new DownloadGlobalStrategy.StrategyInfo(1, false, false, false);
-    jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo = new DownloadGlobalStrategy.StrategyInfo(2, true, false, false);
-    jdField_c_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo = new DownloadGlobalStrategy.StrategyInfo(3, true, true, false);
-    d = new DownloadGlobalStrategy.StrategyInfo(4, false, false, true);
-    e = new DownloadGlobalStrategy.StrategyInfo(5, false, false, false, true);
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-    jdField_c_of_type_JavaUtilArrayList = new ArrayList();
+    Strategy_DomainProxy_CON = new DownloadGlobalStrategy.StrategyInfo(3, true, true, false);
+    Strategy_BACKUPIP = new DownloadGlobalStrategy.StrategyInfo(4, false, false, true);
+    Strategy_DOMAIN_FORCE = new DownloadGlobalStrategy.StrategyInfo(5, false, false, false, true);
+    StrategyLib_WAP = new ArrayList();
+    StrategyLib_WAP1 = new ArrayList();
+    StrategyLib_NWAP = new ArrayList();
+    mInstance = null;
   }
   
   private DownloadGlobalStrategy(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyPortConfigStrategy = DownloaderFactory.getInstance(paramContext).getPortStrategy();
-    jdField_a_of_type_JavaUtilArrayList.add(jdField_c_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo);
-    jdField_a_of_type_JavaUtilArrayList.add(jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo);
-    jdField_a_of_type_JavaUtilArrayList.add(jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo);
-    jdField_a_of_type_JavaUtilArrayList.add(e);
-    jdField_a_of_type_JavaUtilArrayList.add(e);
-    jdField_a_of_type_JavaUtilArrayList.add(d);
-    jdField_a_of_type_JavaUtilArrayList.add(d);
-    jdField_a_of_type_JavaUtilArrayList.add(jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo);
-    jdField_b_of_type_JavaUtilArrayList.add(jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo);
-    jdField_b_of_type_JavaUtilArrayList.add(jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo);
-    jdField_b_of_type_JavaUtilArrayList.add(jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo);
-    jdField_b_of_type_JavaUtilArrayList.add(e);
-    jdField_b_of_type_JavaUtilArrayList.add(e);
-    jdField_b_of_type_JavaUtilArrayList.add(d);
-    jdField_b_of_type_JavaUtilArrayList.add(d);
-    jdField_b_of_type_JavaUtilArrayList.add(jdField_c_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo);
-    jdField_c_of_type_JavaUtilArrayList.add(jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo);
-    jdField_c_of_type_JavaUtilArrayList.add(jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo);
-    jdField_c_of_type_JavaUtilArrayList.add(e);
-    jdField_c_of_type_JavaUtilArrayList.add(e);
-    jdField_c_of_type_JavaUtilArrayList.add(d);
-    jdField_c_of_type_JavaUtilArrayList.add(d);
-    jdField_c_of_type_JavaUtilArrayList.add(jdField_c_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo);
-    jdField_c_of_type_JavaUtilArrayList.add(jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo);
-    jdField_a_of_type_AndroidContentContext = paramContext;
-    if (jdField_a_of_type_AndroidContentContext != null) {
-      this.jdField_a_of_type_AndroidContentSharedPreferences = jdField_a_of_type_AndroidContentContext.getSharedPreferences("downloa_stragegy", 0);
+    this.mPortConfig = DownloaderFactory.getInstance(paramContext).getPortStrategy();
+    StrategyLib_WAP.add(Strategy_DomainProxy_CON);
+    StrategyLib_WAP.add(Strategy_DomainDirect);
+    StrategyLib_WAP.add(Strategy_DomainDirect);
+    StrategyLib_WAP.add(Strategy_DOMAIN_FORCE);
+    StrategyLib_WAP.add(Strategy_DOMAIN_FORCE);
+    StrategyLib_WAP.add(Strategy_BACKUPIP);
+    StrategyLib_WAP.add(Strategy_BACKUPIP);
+    StrategyLib_WAP.add(Strategy_DomainProxy_SYS);
+    StrategyLib_WAP1.add(Strategy_DomainProxy_SYS);
+    StrategyLib_WAP1.add(Strategy_DomainDirect);
+    StrategyLib_WAP1.add(Strategy_DomainDirect);
+    StrategyLib_WAP1.add(Strategy_DOMAIN_FORCE);
+    StrategyLib_WAP1.add(Strategy_DOMAIN_FORCE);
+    StrategyLib_WAP1.add(Strategy_BACKUPIP);
+    StrategyLib_WAP1.add(Strategy_BACKUPIP);
+    StrategyLib_WAP1.add(Strategy_DomainProxy_CON);
+    StrategyLib_NWAP.add(Strategy_DomainDirect);
+    StrategyLib_NWAP.add(Strategy_DomainDirect);
+    StrategyLib_NWAP.add(Strategy_DOMAIN_FORCE);
+    StrategyLib_NWAP.add(Strategy_DOMAIN_FORCE);
+    StrategyLib_NWAP.add(Strategy_BACKUPIP);
+    StrategyLib_NWAP.add(Strategy_BACKUPIP);
+    StrategyLib_NWAP.add(Strategy_DomainProxy_CON);
+    StrategyLib_NWAP.add(Strategy_DomainProxy_SYS);
+    mContext = paramContext;
+    if (mContext != null) {
+      this.mSetting = mContext.getSharedPreferences("download_stragegy_" + getProcessName(mContext), 0);
     }
-    b();
+    loadStrategy();
   }
   
-  public static DownloadGlobalStrategy a(Context paramContext)
+  private boolean checkStrategyValid(DownloadGlobalStrategy.StrategyInfo paramStrategyInfo, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
-    {
-      if (jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy == null) {
-        jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy = new DownloadGlobalStrategy(paramContext);
-      }
-      return jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy;
-    }
+    return paramStrategyInfo != null;
   }
   
-  private String a(String paramString1, String paramString2)
+  private String getDomainStrategyCacheKey(String paramString1, String paramString2)
   {
     String str = "";
     if ("wifi".equals(paramString2))
@@ -109,137 +102,176 @@ public class DownloadGlobalStrategy
     }
   }
   
-  private boolean a(DownloadGlobalStrategy.StrategyInfo paramStrategyInfo, boolean paramBoolean1, boolean paramBoolean2)
+  public static DownloadGlobalStrategy getInstance(Context paramContext)
   {
-    return paramStrategyInfo != null;
+    if (mInstance == null) {}
+    synchronized (INSTANCE_LOCK)
+    {
+      if (mInstance == null) {
+        mInstance = new DownloadGlobalStrategy(paramContext);
+      }
+      return mInstance;
+    }
+  }
+  
+  private String getProcessName(Context paramContext)
+  {
+    try
+    {
+      String str = Utils.getCurrentProcessName(paramContext);
+      paramContext = str;
+      if (str != null)
+      {
+        paramContext = str;
+        if (str.contains(":"))
+        {
+          int i = str.lastIndexOf(":");
+          paramContext = str;
+          if (i > 0) {
+            paramContext = str.substring(i + 1);
+          }
+        }
+      }
+      if (!TextUtils.isEmpty(paramContext)) {
+        return paramContext;
+      }
+      return "";
+    }
+    catch (Throwable paramContext) {}
+    return "";
+  }
+  
+  public static long getRecentIPValidCacheTime()
+  {
+    return 259200L;
   }
   
   /* Error */
-  private void b()
+  private void loadStrategy()
   {
     // Byte code:
     //   0: iconst_0
     //   1: istore_1
     //   2: aload_0
-    //   3: getfield 99	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:jdField_a_of_type_AndroidContentSharedPreferences	Landroid/content/SharedPreferences;
+    //   3: getfield 133	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:mSetting	Landroid/content/SharedPreferences;
     //   6: ifnonnull +4 -> 10
     //   9: return
     //   10: aload_0
-    //   11: getfield 63	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   14: invokevirtual 146	java/util/concurrent/ConcurrentHashMap:clear	()V
+    //   11: getfield 82	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:mapBestDomainStrategyCache	Ljava/util/concurrent/ConcurrentHashMap;
+    //   14: invokevirtual 198	java/util/concurrent/ConcurrentHashMap:clear	()V
     //   17: aload_0
-    //   18: getfield 99	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:jdField_a_of_type_AndroidContentSharedPreferences	Landroid/content/SharedPreferences;
-    //   21: ldc 148
+    //   18: getfield 133	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:mSetting	Landroid/content/SharedPreferences;
+    //   21: ldc 200
     //   23: iconst_1
-    //   24: invokeinterface 154 3 0
+    //   24: invokeinterface 206 3 0
     //   29: iconst_1
     //   30: if_icmpne +5 -> 35
     //   33: iconst_1
     //   34: istore_1
     //   35: aload_0
     //   36: iload_1
-    //   37: putfield 67	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:jdField_a_of_type_Boolean	Z
+    //   37: putfield 86	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:httpsSupport	Z
     //   40: aload_0
     //   41: aload_0
-    //   42: getfield 99	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:jdField_a_of_type_AndroidContentSharedPreferences	Landroid/content/SharedPreferences;
-    //   45: ldc 156
-    //   47: invokestatic 162	java/lang/System:currentTimeMillis	()J
-    //   50: invokeinterface 166 4 0
-    //   55: putfield 69	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:jdField_a_of_type_Long	J
-    //   58: ldc 168
-    //   60: ldc 170
-    //   62: ldc2_w 171
-    //   65: invokestatic 177	com/tencent/component/network/module/base/Config:a	(Ljava/lang/String;Ljava/lang/String;J)J
+    //   42: getfield 133	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:mSetting	Landroid/content/SharedPreferences;
+    //   45: ldc 208
+    //   47: invokestatic 213	java/lang/System:currentTimeMillis	()J
+    //   50: invokeinterface 217 4 0
+    //   55: putfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:httpsSupportTimestamp	J
+    //   58: ldc 219
+    //   60: ldc 221
+    //   62: ldc2_w 222
+    //   65: invokestatic 229	com/tencent/component/network/module/base/Config:getConfig	(Ljava/lang/String;Ljava/lang/String;J)J
     //   68: lstore_2
-    //   69: invokestatic 162	java/lang/System:currentTimeMillis	()J
+    //   69: invokestatic 213	java/lang/System:currentTimeMillis	()J
     //   72: aload_0
-    //   73: getfield 69	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:jdField_a_of_type_Long	J
+    //   73: getfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:httpsSupportTimestamp	J
     //   76: lsub
     //   77: lload_2
-    //   78: ldc2_w 178
+    //   78: ldc2_w 230
     //   81: lmul
     //   82: lcmp
     //   83: ifle +15 -> 98
     //   86: aload_0
     //   87: iconst_1
-    //   88: putfield 67	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:jdField_a_of_type_Boolean	Z
+    //   88: putfield 86	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:httpsSupport	Z
     //   91: aload_0
-    //   92: invokestatic 162	java/lang/System:currentTimeMillis	()J
-    //   95: putfield 69	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:jdField_a_of_type_Long	J
+    //   92: invokestatic 213	java/lang/System:currentTimeMillis	()J
+    //   95: putfield 88	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:httpsSupportTimestamp	J
     //   98: aload_0
-    //   99: getfield 99	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:jdField_a_of_type_AndroidContentSharedPreferences	Landroid/content/SharedPreferences;
-    //   102: ldc 181
+    //   99: getfield 133	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:mSetting	Landroid/content/SharedPreferences;
+    //   102: ldc 233
     //   104: aconst_null
-    //   105: invokeinterface 184 3 0
+    //   105: invokeinterface 236 3 0
     //   110: astore 4
     //   112: aload 4
     //   114: ifnull -105 -> 9
     //   117: aload 4
     //   119: iconst_0
-    //   120: invokestatic 189	com/tencent/component/network/utils/Base64:a	(Ljava/lang/String;I)[B
-    //   123: invokestatic 195	com/tencent/component/network/downloader/common/Utils:unmarshall	([B)Landroid/os/Parcel;
+    //   120: invokestatic 242	com/tencent/component/network/utils/Base64:decode	(Ljava/lang/String;I)[B
+    //   123: invokestatic 246	com/tencent/component/network/downloader/common/Utils:unmarshall	([B)Landroid/os/Parcel;
     //   126: astore 5
     //   128: aload 5
     //   130: astore 4
     //   132: aload 5
     //   134: aload_0
-    //   135: getfield 63	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   138: getstatic 89	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   141: invokevirtual 199	android/content/Context:getClassLoader	()Ljava/lang/ClassLoader;
-    //   144: invokevirtual 205	android/os/Parcel:readMap	(Ljava/util/Map;Ljava/lang/ClassLoader;)V
+    //   135: getfield 82	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:mapBestDomainStrategyCache	Ljava/util/concurrent/ConcurrentHashMap;
+    //   138: getstatic 108	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:mContext	Landroid/content/Context;
+    //   141: invokevirtual 250	android/content/Context:getClassLoader	()Ljava/lang/ClassLoader;
+    //   144: invokevirtual 256	android/os/Parcel:readMap	(Ljava/util/Map;Ljava/lang/ClassLoader;)V
     //   147: aload 5
     //   149: ifnull -140 -> 9
     //   152: aload 5
-    //   154: invokevirtual 208	android/os/Parcel:recycle	()V
+    //   154: invokevirtual 259	android/os/Parcel:recycle	()V
     //   157: return
     //   158: astore 6
     //   160: aconst_null
     //   161: astore 5
     //   163: aload 5
     //   165: astore 4
-    //   167: ldc 210
-    //   169: ldc 212
-    //   171: aload 6
-    //   173: invokestatic 217	com/tencent/component/network/module/base/QDLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   176: aload 5
-    //   178: ifnull -169 -> 9
-    //   181: aload 5
-    //   183: invokevirtual 208	android/os/Parcel:recycle	()V
-    //   186: return
-    //   187: astore 5
-    //   189: aconst_null
-    //   190: astore 4
-    //   192: aload 4
-    //   194: ifnull +8 -> 202
-    //   197: aload 4
-    //   199: invokevirtual 208	android/os/Parcel:recycle	()V
-    //   202: aload 5
-    //   204: athrow
-    //   205: astore 5
-    //   207: goto -15 -> 192
-    //   210: astore 6
-    //   212: goto -49 -> 163
+    //   167: ldc 21
+    //   169: ldc_w 260
+    //   172: aload 6
+    //   174: invokestatic 266	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   177: aload 5
+    //   179: ifnull -170 -> 9
+    //   182: aload 5
+    //   184: invokevirtual 259	android/os/Parcel:recycle	()V
+    //   187: return
+    //   188: astore 5
+    //   190: aconst_null
+    //   191: astore 4
+    //   193: aload 4
+    //   195: ifnull +8 -> 203
+    //   198: aload 4
+    //   200: invokevirtual 259	android/os/Parcel:recycle	()V
+    //   203: aload 5
+    //   205: athrow
+    //   206: astore 5
+    //   208: goto -15 -> 193
+    //   211: astore 6
+    //   213: goto -50 -> 163
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	215	0	this	DownloadGlobalStrategy
+    //   0	216	0	this	DownloadGlobalStrategy
     //   1	36	1	bool	boolean
     //   68	10	2	l	long
-    //   110	88	4	localObject1	Object
-    //   126	56	5	localParcel	android.os.Parcel
-    //   187	16	5	localObject2	Object
-    //   205	1	5	localObject3	Object
-    //   158	14	6	localThrowable1	java.lang.Throwable
-    //   210	1	6	localThrowable2	java.lang.Throwable
+    //   110	89	4	localObject1	Object
+    //   126	57	5	localParcel	android.os.Parcel
+    //   188	16	5	localObject2	Object
+    //   206	1	5	localObject3	Object
+    //   158	15	6	localThrowable1	Throwable
+    //   211	1	6	localThrowable2	Throwable
     // Exception table:
     //   from	to	target	type
     //   117	128	158	java/lang/Throwable
-    //   117	128	187	finally
-    //   132	147	205	finally
-    //   167	176	205	finally
-    //   132	147	210	java/lang/Throwable
+    //   117	128	188	finally
+    //   132	147	206	finally
+    //   167	177	206	finally
+    //   132	147	211	java/lang/Throwable
   }
   
-  public DownloadGlobalStrategy.StrategyInfo a(String paramString1, String paramString2)
+  public DownloadGlobalStrategy.StrategyInfo getBestStrategyInfo(String paramString1, String paramString2)
   {
     if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
       paramString2 = null;
@@ -249,51 +281,51 @@ public class DownloadGlobalStrategy
     do
     {
       return paramString2;
-      String str = a(paramString2, NetworkManager.getApnValue());
-      DownloadGlobalStrategy.StrategyInfo localStrategyInfo = (DownloadGlobalStrategy.StrategyInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+      String str = getDomainStrategyCacheKey(paramString2, NetworkManager.getApnValue());
+      DownloadGlobalStrategy.StrategyInfo localStrategyInfo = (DownloadGlobalStrategy.StrategyInfo)this.mapBestDomainStrategyCache.get(str);
       paramString1 = localStrategyInfo;
       if (localStrategyInfo != null)
       {
         paramString1 = localStrategyInfo;
-        if (!localStrategyInfo.a())
+        if (!localStrategyInfo.isIPValid())
         {
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(str);
-          this.jdField_b_of_type_Int += 1;
-          a();
-          if (QDLog.b()) {
-            QDLog.b("DownloadGlobalStrategy", "best strategy invalid! domain:" + paramString2 + " threadId:" + Thread.currentThread().getId());
+          this.mapBestDomainStrategyCache.remove(str);
+          this.mCacheModifyCount += 1;
+          saveStrategy();
+          if (QDLog.isInfoEnable()) {
+            QDLog.i("DownloadGlobalStrategy", "best strategy invalid! domain:" + paramString2 + " threadId:" + Thread.currentThread().getId());
           }
           paramString1 = null;
         }
       }
-      bool1 = ProxyStatistics.a().a();
-      bool2 = ProxyStatistics.a().b();
+      bool1 = ProxyStatistics.getInstance().getAllowProxy();
+      bool2 = ProxyStatistics.getInstance().getAPNProxy();
       paramString2 = paramString1;
-    } while (a(paramString1, bool1, bool2));
+    } while (checkStrategyValid(paramString1, bool1, bool2));
     return new DownloadGlobalStrategy.StrategyInfo(bool1, bool2, false);
   }
   
-  public DownloadGlobalStrategy.StrategyLib a(String paramString1, String paramString2, boolean paramBoolean)
+  public DownloadGlobalStrategy.StrategyLib getStrategyLib(String paramString1, String paramString2, boolean paramBoolean)
   {
     int j = 80;
     DownloadGlobalStrategy.StrategyLib localStrategyLib = new DownloadGlobalStrategy.StrategyLib(this);
-    DownloadGlobalStrategy.StrategyLib.a(localStrategyLib, a(paramString1, paramString2));
+    DownloadGlobalStrategy.StrategyLib.access$402(localStrategyLib, getBestStrategyInfo(paramString1, paramString2));
     int i;
     if (!NetworkManager.isWap())
     {
-      DownloadGlobalStrategy.StrategyLib.a(localStrategyLib, jdField_c_of_type_JavaUtilArrayList);
+      DownloadGlobalStrategy.StrategyLib.access$502(localStrategyLib, StrategyLib_NWAP);
       if (!paramBoolean) {
         break label152;
       }
       i = 443;
       label50:
-      localStrategyLib.a(i);
-      if ((DownloadGlobalStrategy.StrategyLib.a(localStrategyLib) != null) && (DownloadGlobalStrategy.StrategyLib.a(localStrategyLib).a() != null) && (DownloadGlobalStrategy.StrategyLib.a(localStrategyLib).a()) && (!TextUtils.isEmpty(DownloadGlobalStrategy.StrategyLib.a(localStrategyLib).a().jdField_a_of_type_JavaLangString)))
+      localStrategyLib.setPort(i);
+      if ((DownloadGlobalStrategy.StrategyLib.access$400(localStrategyLib) != null) && (DownloadGlobalStrategy.StrategyLib.access$400(localStrategyLib).getIPInfo() != null) && (DownloadGlobalStrategy.StrategyLib.access$400(localStrategyLib).isIPValid()) && (!TextUtils.isEmpty(DownloadGlobalStrategy.StrategyLib.access$400(localStrategyLib).getIPInfo().ip)))
       {
-        if (DownloadGlobalStrategy.StrategyLib.a(localStrategyLib).jdField_a_of_type_Int != d.jdField_a_of_type_Int) {
+        if (DownloadGlobalStrategy.StrategyLib.access$400(localStrategyLib).id != Strategy_BACKUPIP.id) {
           break label252;
         }
-        localStrategyLib.c(DownloadGlobalStrategy.StrategyLib.a(localStrategyLib).a().jdField_a_of_type_JavaLangString);
+        localStrategyLib.setBackupIP(DownloadGlobalStrategy.StrategyLib.access$400(localStrategyLib).getIPInfo().ip);
       }
     }
     label152:
@@ -301,175 +333,46 @@ public class DownloadGlobalStrategy
     do
     {
       return localStrategyLib;
-      DownloadGlobalStrategy.StrategyLib.a(localStrategyLib, jdField_a_of_type_JavaUtilArrayList);
+      DownloadGlobalStrategy.StrategyLib.access$502(localStrategyLib, StrategyLib_WAP);
       break;
       i = j;
-      if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyPortConfigStrategy == null) {
+      if (this.mPortConfig == null) {
         break label50;
       }
       i = j;
-      if (!this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyPortConfigStrategy.a(paramString2)) {
+      if (!this.mPortConfig.supportExtraPort(paramString2)) {
         break label50;
       }
       i = j;
-      if (DownloadGlobalStrategy.StrategyLib.a(localStrategyLib) == null) {
+      if (DownloadGlobalStrategy.StrategyLib.access$400(localStrategyLib) == null) {
         break label50;
       }
       i = j;
-      if (DownloadGlobalStrategy.StrategyLib.a(localStrategyLib).a() == null) {
+      if (DownloadGlobalStrategy.StrategyLib.access$400(localStrategyLib).getIPInfo() == null) {
         break label50;
       }
       i = j;
-      if (!DownloadGlobalStrategy.StrategyLib.a(localStrategyLib).a()) {
+      if (!DownloadGlobalStrategy.StrategyLib.access$400(localStrategyLib).isIPValid()) {
         break label50;
       }
-      int k = DownloadGlobalStrategy.StrategyLib.a(localStrategyLib).a().jdField_a_of_type_Int;
+      int k = DownloadGlobalStrategy.StrategyLib.access$400(localStrategyLib).getIPInfo().port;
       i = j;
       if (!Utils.isPortValid(k)) {
         break label50;
       }
       i = k;
       break label50;
-      if (DownloadGlobalStrategy.StrategyLib.a(localStrategyLib).jdField_a_of_type_Int == e.jdField_a_of_type_Int)
+      if (DownloadGlobalStrategy.StrategyLib.access$400(localStrategyLib).id == Strategy_DOMAIN_FORCE.id)
       {
-        localStrategyLib.b(DownloadGlobalStrategy.StrategyLib.a(localStrategyLib).a().jdField_a_of_type_JavaLangString);
+        localStrategyLib.setDnsIP(DownloadGlobalStrategy.StrategyLib.access$400(localStrategyLib).getIPInfo().ip);
         return localStrategyLib;
       }
-    } while (DownloadGlobalStrategy.StrategyLib.a(localStrategyLib).jdField_a_of_type_Int != jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.jdField_a_of_type_Int);
-    localStrategyLib.a(DownloadGlobalStrategy.StrategyLib.a(localStrategyLib).a().jdField_a_of_type_JavaLangString);
+    } while (DownloadGlobalStrategy.StrategyLib.access$400(localStrategyLib).id != Strategy_DomainDirect.id);
+    localStrategyLib.setDirectIP(DownloadGlobalStrategy.StrategyLib.access$400(localStrategyLib).getIPInfo().ip);
     return localStrategyLib;
   }
   
-  /* Error */
-  public void a()
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 99	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:jdField_a_of_type_AndroidContentSharedPreferences	Landroid/content/SharedPreferences;
-    //   6: ifnull +12 -> 18
-    //   9: aload_0
-    //   10: getfield 71	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:jdField_b_of_type_Int	I
-    //   13: istore_1
-    //   14: iload_1
-    //   15: ifne +6 -> 21
-    //   18: aload_0
-    //   19: monitorexit
-    //   20: return
-    //   21: invokestatic 324	com/tencent/component/network/downloader/impl/DownloadTask:a	()I
-    //   24: ifle +11 -> 35
-    //   27: aload_0
-    //   28: getfield 71	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:jdField_b_of_type_Int	I
-    //   31: iconst_5
-    //   32: if_icmplt -14 -> 18
-    //   35: aload_0
-    //   36: iconst_0
-    //   37: putfield 71	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:jdField_b_of_type_Int	I
-    //   40: invokestatic 325	com/tencent/component/network/module/base/QDLog:a	()Z
-    //   43: ifeq +11 -> 54
-    //   46: ldc 210
-    //   48: ldc_w 327
-    //   51: invokestatic 329	com/tencent/component/network/module/base/QDLog:a	(Ljava/lang/String;Ljava/lang/String;)V
-    //   54: aconst_null
-    //   55: astore_3
-    //   56: aconst_null
-    //   57: astore_2
-    //   58: invokestatic 333	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   61: astore 4
-    //   63: aload 4
-    //   65: astore_2
-    //   66: aload 4
-    //   68: astore_3
-    //   69: aload 4
-    //   71: aload_0
-    //   72: getfield 63	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   75: invokevirtual 337	android/os/Parcel:writeMap	(Ljava/util/Map;)V
-    //   78: aload 4
-    //   80: astore_2
-    //   81: aload 4
-    //   83: astore_3
-    //   84: new 112	java/lang/String
-    //   87: dup
-    //   88: aload 4
-    //   90: invokevirtual 341	android/os/Parcel:marshall	()[B
-    //   93: iconst_0
-    //   94: invokestatic 344	com/tencent/component/network/utils/Base64:b	([BI)[B
-    //   97: invokespecial 347	java/lang/String:<init>	([B)V
-    //   100: astore 5
-    //   102: aload 4
-    //   104: astore_2
-    //   105: aload 4
-    //   107: astore_3
-    //   108: aload_0
-    //   109: getfield 99	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:jdField_a_of_type_AndroidContentSharedPreferences	Landroid/content/SharedPreferences;
-    //   112: invokeinterface 351 1 0
-    //   117: ldc 181
-    //   119: aload 5
-    //   121: invokeinterface 357 3 0
-    //   126: invokeinterface 360 1 0
-    //   131: pop
-    //   132: aload 4
-    //   134: ifnull -116 -> 18
-    //   137: aload 4
-    //   139: invokevirtual 208	android/os/Parcel:recycle	()V
-    //   142: goto -124 -> 18
-    //   145: astore_2
-    //   146: aload_0
-    //   147: monitorexit
-    //   148: aload_2
-    //   149: athrow
-    //   150: astore 4
-    //   152: aload_2
-    //   153: astore_3
-    //   154: ldc 210
-    //   156: ldc_w 362
-    //   159: aload 4
-    //   161: invokestatic 217	com/tencent/component/network/module/base/QDLog:c	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   164: aload_2
-    //   165: ifnull -147 -> 18
-    //   168: aload_2
-    //   169: invokevirtual 208	android/os/Parcel:recycle	()V
-    //   172: goto -154 -> 18
-    //   175: astore_2
-    //   176: aload_3
-    //   177: ifnull +7 -> 184
-    //   180: aload_3
-    //   181: invokevirtual 208	android/os/Parcel:recycle	()V
-    //   184: aload_2
-    //   185: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	186	0	this	DownloadGlobalStrategy
-    //   13	2	1	i	int
-    //   57	48	2	localObject1	Object
-    //   145	24	2	localObject2	Object
-    //   175	10	2	localObject3	Object
-    //   55	126	3	localObject4	Object
-    //   61	77	4	localParcel	android.os.Parcel
-    //   150	10	4	localException	java.lang.Exception
-    //   100	20	5	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   2	14	145	finally
-    //   21	35	145	finally
-    //   35	54	145	finally
-    //   137	142	145	finally
-    //   168	172	145	finally
-    //   180	184	145	finally
-    //   184	186	145	finally
-    //   58	63	150	java/lang/Exception
-    //   69	78	150	java/lang/Exception
-    //   84	102	150	java/lang/Exception
-    //   108	132	150	java/lang/Exception
-    //   58	63	175	finally
-    //   69	78	175	finally
-    //   84	102	175	finally
-    //   108	132	175	finally
-    //   154	164	175	finally
-  }
-  
-  public void a(Context paramContext, String paramString1, String paramString2, DownloadGlobalStrategy.StrategyInfo paramStrategyInfo, boolean paramBoolean)
+  public void report(Context paramContext, String paramString1, String paramString2, DownloadGlobalStrategy.StrategyInfo paramStrategyInfo, boolean paramBoolean)
   {
     for (;;)
     {
@@ -482,25 +385,25 @@ public class DownloadGlobalStrategy
         paramString1 = NetworkManager.getApnValue();
         if (paramString2 != null)
         {
-          paramString1 = a(paramString2, paramString1);
-          paramString2 = (DownloadGlobalStrategy.StrategyInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString1);
+          paramString1 = getDomainStrategyCacheKey(paramString2, paramString1);
+          paramString2 = (DownloadGlobalStrategy.StrategyInfo)this.mapBestDomainStrategyCache.get(paramString1);
           if (!paramBoolean) {
             break label165;
           }
-          if ((!paramStrategyInfo.equals(paramString2)) && (DownloadGlobalStrategy.StrategyInfo.a(paramStrategyInfo, paramString2) >= 0))
+          if ((!paramStrategyInfo.equals(paramString2)) && (DownloadGlobalStrategy.StrategyInfo.compare(paramStrategyInfo, paramString2) >= 0))
           {
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString1, paramStrategyInfo);
-            this.jdField_b_of_type_Int += 1;
-            a();
+            this.mapBestDomainStrategyCache.put(paramString1, paramStrategyInfo);
+            this.mCacheModifyCount += 1;
+            saveStrategy();
           }
-          if (this.jdField_b_of_type_Int > 0) {
-            a();
+          if (this.mCacheModifyCount > 0) {
+            saveStrategy();
           }
         }
-        if ((!paramBoolean) || ((paramStrategyInfo.jdField_a_of_type_Int != jdField_c_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.jdField_a_of_type_Int) && (paramStrategyInfo.jdField_a_of_type_Int != jdField_b_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.jdField_a_of_type_Int))) {
+        if ((!paramBoolean) || ((paramStrategyInfo.id != Strategy_DomainProxy_CON.id) && (paramStrategyInfo.id != Strategy_DomainProxy_SYS.id))) {
           continue;
         }
-        ProxyStatistics.a().a(paramContext, paramStrategyInfo.jdField_a_of_type_Boolean, paramStrategyInfo.b);
+        ProxyStatistics.getInstance().report(paramContext, paramStrategyInfo.allowProxy, paramStrategyInfo.useConfigApn);
         continue;
         if (!paramStrategyInfo.equals(paramString2)) {
           continue;
@@ -508,13 +411,13 @@ public class DownloadGlobalStrategy
       }
       finally {}
       label165:
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString1);
-      this.jdField_b_of_type_Int += 1;
-      a();
+      this.mapBestDomainStrategyCache.remove(paramString1);
+      this.mCacheModifyCount += 1;
+      saveStrategy();
     }
   }
   
-  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  public void reportHttps(String paramString, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (!paramBoolean1) {}
     for (;;)
@@ -522,38 +425,167 @@ public class DownloadGlobalStrategy
       return;
       try
       {
-        QDLog.d("DownloadGlobalStrategy", "https download result:" + paramBoolean2 + " failCount:" + this.jdField_a_of_type_Int);
+        QDLog.e("DownloadGlobalStrategy", "https download result:" + paramBoolean2 + " failCount:" + this.mHttpsFailCount);
         if (!paramBoolean2)
         {
-          this.jdField_a_of_type_Int += 1;
-          long l = Config.a("PhotoSvrList", "disable_https_failcount", 6L);
-          if ((this.jdField_a_of_type_Int < l) || (!this.jdField_a_of_type_Boolean)) {
+          this.mHttpsFailCount += 1;
+          long l = Config.getConfig("PhotoSvrList", "disable_https_failcount", 6L);
+          if ((this.mHttpsFailCount < l) || (!this.httpsSupport)) {
             continue;
           }
-          this.jdField_a_of_type_Boolean = false;
-          this.jdField_a_of_type_Long = System.currentTimeMillis();
-          this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("download_support_https", 0);
-          this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("download_support_https_timestamp", this.jdField_a_of_type_Long);
-          this.jdField_a_of_type_AndroidContentSharedPreferences.edit().commit();
+          this.httpsSupport = false;
+          this.httpsSupportTimestamp = System.currentTimeMillis();
+          this.mSetting.edit().putInt("download_support_https", 0);
+          this.mSetting.edit().putLong("download_support_https_timestamp", this.httpsSupportTimestamp);
+          this.mSetting.edit().commit();
           continue;
         }
       }
       finally {}
-      this.jdField_a_of_type_Int = 0;
-      if (!this.jdField_a_of_type_Boolean)
+      this.mHttpsFailCount = 0;
+      if (!this.httpsSupport)
       {
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("download_support_https", 1);
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("download_support_https_timestamp", this.jdField_a_of_type_Long);
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().commit();
+        this.httpsSupport = true;
+        this.httpsSupportTimestamp = System.currentTimeMillis();
+        this.mSetting.edit().putInt("download_support_https", 1);
+        this.mSetting.edit().putLong("download_support_https_timestamp", this.httpsSupportTimestamp);
+        this.mSetting.edit().commit();
       }
     }
   }
   
-  public boolean a()
+  /* Error */
+  public void saveStrategy()
   {
-    return this.jdField_a_of_type_Boolean;
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 133	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:mSetting	Landroid/content/SharedPreferences;
+    //   6: ifnull +12 -> 18
+    //   9: aload_0
+    //   10: getfield 90	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:mCacheModifyCount	I
+    //   13: istore_1
+    //   14: iload_1
+    //   15: ifne +6 -> 21
+    //   18: aload_0
+    //   19: monitorexit
+    //   20: return
+    //   21: invokestatic 451	com/tencent/component/network/downloader/impl/DownloadTask:getCurrTotalTaskCount	()I
+    //   24: ifle +11 -> 35
+    //   27: aload_0
+    //   28: getfield 90	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:mCacheModifyCount	I
+    //   31: iconst_5
+    //   32: if_icmplt -14 -> 18
+    //   35: aload_0
+    //   36: iconst_0
+    //   37: putfield 90	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:mCacheModifyCount	I
+    //   40: invokestatic 454	com/tencent/component/network/module/base/QDLog:isDebugEnable	()Z
+    //   43: ifeq +11 -> 54
+    //   46: ldc 21
+    //   48: ldc_w 456
+    //   51: invokestatic 459	com/tencent/component/network/module/base/QDLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   54: aconst_null
+    //   55: astore_3
+    //   56: aconst_null
+    //   57: astore_2
+    //   58: invokestatic 463	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   61: astore 4
+    //   63: aload 4
+    //   65: astore_2
+    //   66: aload 4
+    //   68: astore_3
+    //   69: aload 4
+    //   71: aload_0
+    //   72: getfield 82	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:mapBestDomainStrategyCache	Ljava/util/concurrent/ConcurrentHashMap;
+    //   75: invokevirtual 467	android/os/Parcel:writeMap	(Ljava/util/Map;)V
+    //   78: aload 4
+    //   80: astore_2
+    //   81: aload 4
+    //   83: astore_3
+    //   84: new 152	java/lang/String
+    //   87: dup
+    //   88: aload 4
+    //   90: invokevirtual 471	android/os/Parcel:marshall	()[B
+    //   93: iconst_0
+    //   94: invokestatic 475	com/tencent/component/network/utils/Base64:encode	([BI)[B
+    //   97: invokespecial 478	java/lang/String:<init>	([B)V
+    //   100: astore 5
+    //   102: aload 4
+    //   104: astore_2
+    //   105: aload 4
+    //   107: astore_3
+    //   108: aload_0
+    //   109: getfield 133	com/tencent/component/network/downloader/strategy/DownloadGlobalStrategy:mSetting	Landroid/content/SharedPreferences;
+    //   112: invokeinterface 432 1 0
+    //   117: ldc 233
+    //   119: aload 5
+    //   121: invokeinterface 482 3 0
+    //   126: invokeinterface 445 1 0
+    //   131: pop
+    //   132: aload 4
+    //   134: ifnull -116 -> 18
+    //   137: aload 4
+    //   139: invokevirtual 259	android/os/Parcel:recycle	()V
+    //   142: goto -124 -> 18
+    //   145: astore_2
+    //   146: aload_0
+    //   147: monitorexit
+    //   148: aload_2
+    //   149: athrow
+    //   150: astore 4
+    //   152: aload_2
+    //   153: astore_3
+    //   154: ldc 21
+    //   156: ldc_w 483
+    //   159: aload 4
+    //   161: invokestatic 266	com/tencent/component/network/module/base/QDLog:w	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   164: aload_2
+    //   165: ifnull -147 -> 18
+    //   168: aload_2
+    //   169: invokevirtual 259	android/os/Parcel:recycle	()V
+    //   172: goto -154 -> 18
+    //   175: astore_2
+    //   176: aload_3
+    //   177: ifnull +7 -> 184
+    //   180: aload_3
+    //   181: invokevirtual 259	android/os/Parcel:recycle	()V
+    //   184: aload_2
+    //   185: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	186	0	this	DownloadGlobalStrategy
+    //   13	2	1	i	int
+    //   57	48	2	localObject1	Object
+    //   145	24	2	localObject2	Object
+    //   175	10	2	localObject3	Object
+    //   55	126	3	localObject4	Object
+    //   61	77	4	localParcel	android.os.Parcel
+    //   150	10	4	localThrowable	Throwable
+    //   100	20	5	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   2	14	145	finally
+    //   21	35	145	finally
+    //   35	54	145	finally
+    //   137	142	145	finally
+    //   168	172	145	finally
+    //   180	184	145	finally
+    //   184	186	145	finally
+    //   58	63	150	java/lang/Throwable
+    //   69	78	150	java/lang/Throwable
+    //   84	102	150	java/lang/Throwable
+    //   108	132	150	java/lang/Throwable
+    //   58	63	175	finally
+    //   69	78	175	finally
+    //   84	102	175	finally
+    //   108	132	175	finally
+    //   154	164	175	finally
+  }
+  
+  public boolean supportHttps()
+  {
+    return this.httpsSupport;
   }
 }
 

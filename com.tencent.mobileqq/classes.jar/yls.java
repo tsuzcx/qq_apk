@@ -1,57 +1,26 @@
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
 
 public class yls
+  extends ylv
 {
   public int a;
-  public String a;
+  public View a;
   public int b;
-  public String b;
+  public View b;
   public int c;
-  public String c;
+  public View c;
   public int d;
-  public String d;
+  public View d;
   public int e;
-  public String e;
-  public String f;
-  public String g;
-  public String h;
-  public String i;
-  
-  public static yls a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {
-      return new yls();
-    }
-    yls localyls = new yls();
-    try
-    {
-      localyls.jdField_a_of_type_Int = paramJSONObject.getInt("id");
-      localyls.jdField_a_of_type_JavaLangString = paramJSONObject.getString("name");
-      localyls.jdField_b_of_type_Int = paramJSONObject.getInt("type");
-      localyls.jdField_b_of_type_JavaLangString = paramJSONObject.optString("soundVersion", "0");
-      localyls.jdField_c_of_type_JavaLangString = paramJSONObject.getString("soundUrl");
-      localyls.jdField_d_of_type_JavaLangString = paramJSONObject.getString("whiteList");
-      localyls.jdField_c_of_type_Int = paramJSONObject.getInt("isShow");
-      localyls.jdField_e_of_type_Int = paramJSONObject.getInt("classify");
-      localyls.g = paramJSONObject.getString("classifyName");
-      localyls.jdField_e_of_type_JavaLangString = paramJSONObject.getString("backgroundUrl");
-      localyls.f = String.valueOf(paramJSONObject.getInt("vip_type"));
-      localyls.jdField_d_of_type_Int = paramJSONObject.getInt("useNum");
-      localyls.h = paramJSONObject.getString("trialstartday");
-      localyls.i = paramJSONObject.getString("trialendday");
-      return localyls;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-    }
-    return localyls;
-  }
+  public View e;
+  public int f;
+  public int g;
+  public int h;
+  public int i;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yls
  * JD-Core Version:    0.7.0.1
  */

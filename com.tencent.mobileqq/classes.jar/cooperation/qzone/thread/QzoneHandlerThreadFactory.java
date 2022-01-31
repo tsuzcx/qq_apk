@@ -12,14 +12,16 @@ public class QzoneHandlerThreadFactory
   public static final String BusinessThread = "Business_HandlerThread";
   public static final String FeedDeleteOnTimeThread = "FeedDeleteOnTime_HandlerThread";
   public static final String FloatItemThread = "FloatItem_HandlerThread";
-  public static final String MachineLearningThread = "QZone_MachineLearningThread";
+  public static final String IpcProxyThread = "QZone_IpcProxyThread";
+  public static final String LocalPhotoThread = "QZone_LocalPhotoThread";
   public static final String NormalThread = "Normal_HandlerThread";
   public static final String PreLoadThread = "Preload_HandlerThread";
   public static final String RealTimeThread = "RealTime_HandlerThread";
   public static final String ReportThread = "Report_HandlerThread";
   public static final String TAG = "QzoneThread";
   public static final String VideoThread = "Video_HandlerThread";
-  static Map mHandlerThreadMap = new HashMap();
+  public static final String YellowVipThread = "YellowVip_HandlerThread";
+  static final Map<String, QzoneBaseThread> mHandlerThreadMap = new HashMap();
   public static Handler mMainHandler;
   public static final Object mMainHandlerLock = new Object();
   
@@ -98,7 +100,10 @@ public class QzoneHandlerThreadFactory
       if ("Preload_HandlerThread".equalsIgnoreCase(paramString)) {
         return 1;
       }
-    } while ("QZone_MachineLearningThread".equalsIgnoreCase(paramString));
+      if ("QZone_LocalPhotoThread".equalsIgnoreCase(paramString)) {
+        return 0;
+      }
+    } while ("QZone_IpcProxyThread".equalsIgnoreCase(paramString));
     return 0;
   }
 }

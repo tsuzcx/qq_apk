@@ -9,13 +9,13 @@ public final class RespGetSwitches
   extends JceStruct
 {
   static RespHeader cache_stHeader;
-  static ArrayList cache_switches;
+  static ArrayList<Switch> cache_switches;
   public RespHeader stHeader;
-  public ArrayList switches;
+  public ArrayList<Switch> switches;
   
   public RespGetSwitches() {}
   
-  public RespGetSwitches(RespHeader paramRespHeader, ArrayList paramArrayList)
+  public RespGetSwitches(RespHeader paramRespHeader, ArrayList<Switch> paramArrayList)
   {
     this.stHeader = paramRespHeader;
     this.switches = paramArrayList;

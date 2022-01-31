@@ -1,21 +1,27 @@
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
 
 public class adhv
-  implements Runnable
+  extends AnimatorListenerAdapter
 {
-  public adhv(UniformDownloadMgr paramUniformDownloadMgr) {}
+  public adhv(HeartCombolEffectView paramHeartCombolEffectView) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] UniformDownloadMgr onQQProcessExit releaseABSdkClient...");
-    UniformDownloaderAppBabySdk.a().a();
+    super.onAnimationCancel(paramAnimator);
+    this.a.setVisibility(8);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    this.a.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adhv
  * JD-Core Version:    0.7.0.1
  */

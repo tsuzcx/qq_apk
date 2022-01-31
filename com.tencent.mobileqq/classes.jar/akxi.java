@@ -1,33 +1,58 @@
-import android.graphics.Bitmap;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.ViewGroup.MarginLayoutParams;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.widget.immersive.ImmersiveUtils;
 
-public class akxi
-  implements Animation.AnimationListener
+public final class akxi
 {
-  public akxi(SwiftBrowserScreenShotHandler paramSwiftBrowserScreenShotHandler) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public static int a(String paramString)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SwiftBrowserScreenShotHandler", 2, "showScreenshotPad->on hideAnimationEnd!");
-    }
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    if ((this.a.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.a.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    return BaseApplicationImpl.getApplication().getSharedPreferences("UniformUtils", 0).getInt(paramString, 0);
+  }
+  
+  public static void a(Context paramContext, View paramView)
+  {
+    if (ImmersiveUtils.isSupporImmersive() == 1)
+    {
+      int i = ImmersiveUtils.getStatusBarHeight(paramContext);
+      paramContext = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
+      paramContext.topMargin = i;
+      paramView.setLayoutParams(paramContext);
     }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public static void a(Context paramContext, View paramView, boolean paramBoolean, int paramInt)
+  {
+    ViewGroup.MarginLayoutParams localMarginLayoutParams;
+    int i;
+    if (awmc.a(paramContext))
+    {
+      localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
+      i = paramInt;
+      if (paramBoolean) {
+        i = paramInt + awmc.d(paramContext);
+      }
+      if (localMarginLayoutParams.bottomMargin != i) {}
+    }
+    else
+    {
+      return;
+    }
+    localMarginLayoutParams.bottomMargin = i;
+    paramView.setLayoutParams(localMarginLayoutParams);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public static void a(String paramString, int paramInt)
+  {
+    BaseApplicationImpl.getApplication().getSharedPreferences("UniformUtils", 0).edit().putInt(paramString, paramInt).commit();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akxi
  * JD-Core Version:    0.7.0.1
  */

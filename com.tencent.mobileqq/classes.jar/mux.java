@@ -1,33 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class mux
-  extends Handler
+class mux
+  implements View.OnClickListener
 {
-  private WeakReference a;
+  mux(mut parammut) {}
   
-  public mux(ReadInJoySkinAnimManager paramReadInJoySkinAnimManager)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramReadInJoySkinAnimManager);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    ReadInJoySkinAnimManager localReadInJoySkinAnimManager = (ReadInJoySkinAnimManager)this.a.get();
-    if (localReadInJoySkinAnimManager == null) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      ReadInJoySkinAnimManager.b(localReadInJoySkinAnimManager);
-      return;
-    }
-    ReadInJoySkinAnimManager.a(localReadInJoySkinAnimManager);
+    this.a.a(this.a.a, this.a.a.d);
   }
 }
 

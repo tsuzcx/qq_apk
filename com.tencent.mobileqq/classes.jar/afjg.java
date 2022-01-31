@@ -1,38 +1,25 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.util.UniformDownloader.IUniformDownloaderListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class afjg
-  implements UniformDownloader.IUniformDownloaderListener
+class afjg
+  implements DialogInterface.OnClickListener
 {
-  public afjg(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  afjg(afiu paramafiu, boolean paramBoolean, String paramString) {}
   
-  public void a(int paramInt, Bundle paramBundle) {}
-  
-  public void a(int paramInt, String paramString, Bundle paramBundle) {}
-  
-  public void a(String paramString, long paramLong, Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.i("NearbyProfileDisplayPanel", 1, "onDownloadSucess() called with: filePath = [" + paramString + "], fileSize = [" + paramLong + "], extData = [" + paramBundle + "]");
-    paramBundle = BaseApplicationImpl.getContext().getSharedPreferences("now_down_apk", 4);
-    paramBundle.edit().putInt("state", 1);
-    paramBundle.edit().putString("filePath", paramString);
+    awqx.b(null, "dc00898", "", "", "0X8009DCA", "0X8009DCA", 0, 0, afiu.a(this.jdField_a_of_type_Afiu), "", "", "");
+    if (this.jdField_a_of_type_Boolean)
+    {
+      afiu.a(this.jdField_a_of_type_Afiu, afiu.a(this.jdField_a_of_type_Afiu), Long.valueOf(afiu.a(this.jdField_a_of_type_Afiu)).longValue(), false);
+      return;
+    }
+    afiu.a(this.jdField_a_of_type_Afiu, afiu.a(this.jdField_a_of_type_Afiu), Long.valueOf(afiu.a(this.jdField_a_of_type_Afiu)).longValue(), false, this.jdField_a_of_type_JavaLangString);
   }
-  
-  public void b(int paramInt, Bundle paramBundle) {}
-  
-  public void c(int paramInt, Bundle paramBundle) {}
-  
-  public void d(int paramInt, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afjg
  * JD-Core Version:    0.7.0.1
  */

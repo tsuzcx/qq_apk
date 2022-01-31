@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserDebugHelper;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArFeatureInfo;
 
-public class akwe
-  implements DialogInterface.OnClickListener
+public final class akwe
+  implements Parcelable.Creator<ArFeatureInfo>
 {
-  public akwe(SwiftBrowserDebugHelper paramSwiftBrowserDebugHelper) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ArFeatureInfo a(Parcel paramParcel)
   {
-    paramDialogInterface.dismiss();
+    return new ArFeatureInfo(paramParcel);
+  }
+  
+  public ArFeatureInfo[] a(int paramInt)
+  {
+    return new ArFeatureInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akwe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter.OnUIClickListener;
 
 class osg
   implements View.OnClickListener
 {
-  osg(osf paramosf, int paramInt) {}
+  osg(orz paramorz, String paramString1, String paramString2) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Osf.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a != null) {
-      this.jdField_a_of_type_Osf.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Osf.jdField_b_of_type_ComTencentImageURLImageView);
-    }
+    orz.a(2, this.jdField_a_of_type_JavaLangString);
+    obz.a(orz.a(this.jdField_a_of_type_Orz), this.b);
   }
 }
 

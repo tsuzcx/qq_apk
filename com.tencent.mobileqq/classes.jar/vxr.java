@@ -1,21 +1,29 @@
-import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
-import com.tencent.widget.PatchedButton;
-import com.tencent.widget.XEditTextEx;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFollowRcmd;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.subscribe.widget.relativevideo.BlankRecommendItemView;
 
-public class vxr
-  implements Runnable
+class vxr
+  extends RecyclerView.ViewHolder
 {
-  public vxr(DiscussChatPie paramDiscussChatPie) {}
-  
-  public void run()
+  public vxr(vxo paramvxo, View paramView)
   {
-    this.a.a.setText("<<消息过滤模式>>");
-    DiscussChatPie.a(this.a).setEnabled(true);
+    super(paramView);
+  }
+  
+  public void a(CertifiedAccountMeta.StFollowRcmd paramStFollowRcmd, int paramInt)
+  {
+    if ((this.itemView instanceof BlankRecommendItemView))
+    {
+      ((BlankRecommendItemView)this.itemView).setData(paramStFollowRcmd);
+      ((BlankRecommendItemView)this.itemView).setExtraTypeInfo(this.a.a());
+      ((BlankRecommendItemView)this.itemView).setPos(paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vxr
  * JD-Core Version:    0.7.0.1
  */

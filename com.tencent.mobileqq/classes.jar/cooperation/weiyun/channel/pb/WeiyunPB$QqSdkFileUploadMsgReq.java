@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class WeiyunPB$QqSdkFileUploadMsgReq
-  extends MessageMicro
+  extends MessageMicro<QqSdkFileUploadMsgReq>
 {
   public static final int AUTO_CREATE_USER_FIELD_NUMBER = 11;
   public static final int EXT_INFO_FIELD_NUMBER = 20;
@@ -52,7 +52,7 @@ public final class WeiyunPB$QqSdkFileUploadMsgReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cooperation.weiyun.channel.pb.WeiyunPB.QqSdkFileUploadMsgReq
  * JD-Core Version:    0.7.0.1
  */

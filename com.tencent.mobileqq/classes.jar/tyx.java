@@ -1,29 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.util.Pair;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.IEventReceiver;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class tyx
-  implements DialogInterface.OnClickListener
+  extends QQUIEventReceiver<IEventReceiver, syb>
 {
-  public tyx(SubAccountUgActivity paramSubAccountUgActivity, SubAccountControll paramSubAccountControll, Pair paramPair) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public tyx(@NonNull IEventReceiver paramIEventReceiver)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSubaccountSubAccountControll.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
-    if (!SubAccountControll.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app))
+    super(paramIEventReceiver);
+  }
+  
+  public void a(@NonNull IEventReceiver paramIEventReceiver, @NonNull syb paramsyb)
+  {
+    if (paramsyb.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.setTitle("");
-      SubAccountAssistantForward.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity, null);
+      bbmy.a(tfy.a(), 2, ajjy.a(2131645244), 0).a();
+      urp.a("play_video", "report_suc", 0, 0, new String[] { String.valueOf(paramsyb.jdField_a_of_type_Int), "5" });
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.finish();
+    bbmy.a(tfy.a(), 1, ajjy.a(2131645239), 0).a();
+    urp.a("play_video", "report_fail", 0, 0, new String[] { "", "5" });
+  }
+  
+  public Class acceptEventClass()
+  {
+    return syb.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tyx
  * JD-Core Version:    0.7.0.1
  */

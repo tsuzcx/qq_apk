@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.data;
 
+import atmo;
+import atoc;
 import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountMenuResponse;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
 
 public class PublicAccountMenuEntity
-  extends Entity
+  extends atmo
 {
   public byte[] data;
   public long savedDateTime;
   public int seqno;
-  @unique
+  @atoc
   public String uin;
   
   public PublicAccountMenuEntity() {}

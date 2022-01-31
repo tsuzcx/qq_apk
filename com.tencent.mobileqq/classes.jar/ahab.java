@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.qipc.QIPCServerModuleFactory;
-import eipc.EIPCModule;
-import eipc.EIPCModuleFactory;
+import android.view.View;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
 
-public final class ahab
-  implements EIPCModuleFactory
+public abstract interface ahab
 {
-  public EIPCModule onCreateModule(String paramString)
-  {
-    return QIPCServerModuleFactory.a(paramString);
-  }
+  public abstract void a(View paramView, RecentBaseData paramRecentBaseData, String paramString, boolean paramBoolean);
+  
+  public abstract void a(View paramView, Object paramObject);
+  
+  public abstract void a(RecentBaseData paramRecentBaseData, String paramString);
+  
+  public abstract void a(String paramString1, RecentBaseData paramRecentBaseData, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahab
  * JD-Core Version:    0.7.0.1
  */

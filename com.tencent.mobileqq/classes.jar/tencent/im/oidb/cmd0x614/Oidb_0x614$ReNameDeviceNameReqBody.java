@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class Oidb_0x614$ReNameDeviceNameReqBody
-  extends MessageMicro
+  extends MessageMicro<ReNameDeviceNameReqBody>
 {
   public static final int BYTES_APPNAME_FIELD_NUMBER = 4;
   public static final int BYTES_DEVICE_DES_FIELD_NUMBER = 5;
@@ -35,7 +35,7 @@ public final class Oidb_0x614$ReNameDeviceNameReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x614.Oidb_0x614.ReNameDeviceNameReqBody
  * JD-Core Version:    0.7.0.1
  */

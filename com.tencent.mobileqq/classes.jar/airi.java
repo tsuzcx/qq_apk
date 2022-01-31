@@ -1,61 +1,79 @@
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.teamwork.ReSendCmd;
-import com.tencent.mobileqq.teamwork.TeamWorkHandler;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
-import mqq.manager.TicketManager;
-import oicq.wlogin_sdk.request.Ticket;
-import oicq.wlogin_sdk.request.WtTicketPromise;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import org.json.JSONObject;
 
 public class airi
-  implements WtTicketPromise
 {
-  public airi(TeamWorkHandler paramTeamWorkHandler, TicketManager paramTicketManager, ReSendCmd paramReSendCmd) {}
+  public static String a;
+  public double a;
+  public int a;
+  public long a;
+  public int b;
+  public long b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
+  public String i;
+  public String j;
   
-  public void Done(Ticket paramTicket)
+  static
   {
-    int i;
-    if (paramTicket == null) {
-      i = 1;
-    }
-    for (;;)
+    jdField_a_of_type_JavaLangString = "cmgame_process.CmGameADInfo";
+  }
+  
+  public airi()
+  {
+    this.jdField_a_of_type_Double = 0.0D;
+  }
+  
+  public static airi a(String paramString)
+  {
+    airi localairi = new airi();
+    try
     {
-      QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey from server : Done, result: " + i);
-      paramTicket = this.jdField_a_of_type_MqqManagerTicketManager.getPskey(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkHandler.a.getCurrentAccountUin(), "docs.qq.com");
-      if ((!TextUtils.isEmpty(paramTicket)) && (paramTicket.length() > 0))
-      {
-        TeamWorkHandler.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkHandler, 0);
-        QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey from server success!");
+      JSONObject localJSONObject2 = new JSONObject(paramString);
+      localairi.jdField_b_of_type_Int = localJSONObject2.optInt("product_type");
+      JSONObject localJSONObject3 = localJSONObject2.optJSONObject("display_info");
+      JSONObject localJSONObject1 = localJSONObject3.optJSONObject("video_info");
+      localairi.jdField_b_of_type_JavaLangString = localJSONObject1.optString("tencent_video_id");
+      localairi.jdField_a_of_type_Int = localJSONObject3.optInt("creative_size");
+      JSONObject localJSONObject4 = localJSONObject3.optJSONObject("basic_info");
+      localairi.h = localJSONObject4.optString("img");
+      localairi.e = localJSONObject4.optString("txt");
+      localJSONObject3 = localJSONObject3.optJSONObject("advertiser_info");
+      localairi.jdField_c_of_type_Int = localJSONObject3.optInt("advertiser_id");
+      localairi.f = localJSONObject3.optString("corporate_logo");
+      localairi.d = localJSONObject3.optString("corporate_image_name");
+      localJSONObject3 = localJSONObject2.optJSONObject("report_info");
+      localairi.g = localJSONObject3.optString("click_url");
+      localairi.jdField_c_of_type_JavaLangString = localJSONObject3.optString("exposure_url");
+      localJSONObject2 = localJSONObject2.optJSONObject("app_info");
+      localairi.jdField_a_of_type_Long = localJSONObject2.optLong("download_num");
+      localairi.j = localJSONObject1.optString("video_url");
+      if ((!TextUtils.isEmpty(localairi.j)) && (localairi.j.startsWith("https://"))) {
+        localairi.j = localairi.j.replaceFirst("https://", "http://");
       }
-      TeamWorkHandler.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkHandler, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
-      return;
-      if ((paramTicket != null) && (paramTicket._pskey_map == null)) {
-        i = 2;
-      } else if ((paramTicket != null) && (paramTicket._pskey_map != null) && (paramTicket._pskey_map.get("docs.qq.com") == null)) {
-        i = 3;
-      } else {
-        i = 0;
+      if (localJSONObject2.has("app_score_num")) {
+        localairi.jdField_a_of_type_Double = localJSONObject2.optDouble("app_score_num");
       }
+      localairi.i = paramString;
+      return localairi;
     }
-  }
-  
-  public void Failed(ErrMsg paramErrMsg)
-  {
-    QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey from server : Failed, " + paramErrMsg);
-    TeamWorkHandler.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkHandler, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
-  }
-  
-  public void Timeout(ErrMsg paramErrMsg)
-  {
-    QLog.i("TeamWorkHandler", 1, "getPskeyFromServerAndRetry get pskey from server : Timeout, " + paramErrMsg);
-    TeamWorkHandler.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkHandler, this.jdField_a_of_type_ComTencentMobileqqTeamworkReSendCmd);
+    catch (Throwable paramString)
+    {
+      QLog.e(jdField_a_of_type_JavaLangString, 1, paramString, new Object[0]);
+    }
+    return localairi;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     airi
  * JD-Core Version:    0.7.0.1
  */

@@ -16,40 +16,36 @@ public final class JpegSoLoad
   
   public static int LoadJpegExtractedSo(String paramString)
   {
-    i = 0;
     if (paramString == null) {
       return -1;
     }
     String str = getJpegSolibPath(null) + getLibActualName(paramString);
+    int i;
     if (!new File(str).exists()) {
       i = -2;
     }
-    for (;;)
+    while (i != 0)
     {
-      j = i;
-      if (i != 0) {}
       try
       {
         System.loadLibrary(paramString);
-        j = 0;
+        return 0;
       }
       catch (UnsatisfiedLinkError paramString)
       {
-        for (;;)
-        {
-          j = i;
-        }
+        return i;
       }
-      return j;
       try
       {
         System.load(str);
+        i = 0;
       }
       catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
       {
         i = -3;
       }
     }
+    return i;
   }
   
   public static String getJpegSolibPath(Context paramContext)

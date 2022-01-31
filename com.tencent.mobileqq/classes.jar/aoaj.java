@@ -1,21 +1,53 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditProviderPart;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
+import com.tencent.qphone.base.util.QLog;
 
-class aoaj
-  implements Runnable
+public class aoaj
+  extends apdj
 {
-  aoaj(aoai paramaoai) {}
+  public aoaj(QfileCloudFileTabView paramQfileCloudFileTabView) {}
   
-  public void run()
+  public void a()
   {
-    if ((this.a.a.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi != null) && (this.a.a.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager != null)) {
-      this.a.a.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
+    this.a.a.a().a();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().g();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().h();
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e(QfileBaseCloudFileTabView.b, 2, "wy saveto wy?" + apck.a());
     }
+  }
+  
+  public void e()
+  {
+    this.a.a.a().i();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().j();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().E();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoaj
  * JD-Core Version:    0.7.0.1
  */

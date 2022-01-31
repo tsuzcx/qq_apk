@@ -3,17 +3,19 @@ package com.tencent.biz.pubaccount;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import lbt;
+import com.tencent.biz.pubaccount.readinjoy.struct.UrlJumpInfo;
+import neq;
 
 public class VideoInfo$TopBarInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new lbt();
+  public static final Parcelable.Creator<TopBarInfo> CREATOR = new neq();
   public int a;
+  public UrlJumpInfo a;
   public String a;
-  public int b;
   public String b;
   public String c;
+  public String d;
   
   public VideoInfo$TopBarInfo() {}
   
@@ -21,9 +23,10 @@ public class VideoInfo$TopBarInfo
   {
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_Int = paramParcel.readInt();
+    this.b = paramParcel.readString();
     this.c = paramParcel.readString();
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo = ((UrlJumpInfo)paramParcel.readParcelable(UrlJumpInfo.class.getClassLoader()));
+    this.d = paramParcel.readString();
   }
   
   public int describeContents()
@@ -31,13 +34,19 @@ public class VideoInfo$TopBarInfo
     return 0;
   }
   
+  public String toString()
+  {
+    return "TopBarInfo{logoId=" + this.jdField_a_of_type_Int + ", iconUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", title='" + this.b + '\'' + ", backgroundUrl='" + this.c + '\'' + ", jumpInfo=" + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo + ", commonData='" + this.d + '\'' + '}';
+  }
+  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramParcel.writeInt(this.jdField_a_of_type_Int);
     paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeInt(this.jdField_b_of_type_Int);
+    paramParcel.writeString(this.b);
     paramParcel.writeString(this.c);
+    paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo, paramInt);
+    paramParcel.writeString(this.d);
   }
 }
 

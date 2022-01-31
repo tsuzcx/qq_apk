@@ -1,37 +1,29 @@
-import android.annotation.SuppressLint;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
+import java.util.concurrent.atomic.AtomicReference;
 
-public class wtz
-  implements ViewTreeObserver.OnGlobalLayoutListener
+class wtz
+  implements wtn
 {
-  public wtz(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
+  wtz(wtw paramwtw, AtomicReference paramAtomicReference) {}
   
-  @SuppressLint({"NewApi"})
-  public void onGlobalLayout()
+  public void a(String paramString)
   {
-    if (Build.VERSION.SDK_INT < 16) {
-      this.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    auur localauur = (auur)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
+    if (localauur != null) {
+      localauur.a(paramString);
     }
-    for (;;)
-    {
-      SimpleSlidingIndicator.a(this.a, SimpleSlidingIndicator.a(this.a));
-      SimpleSlidingIndicator.b(this.a, SimpleSlidingIndicator.a(this.a));
-      View localView = SimpleSlidingIndicator.a(this.a).getChildAt(SimpleSlidingIndicator.a(this.a));
-      SimpleSlidingIndicator.a(this.a, localView.getLeft());
-      this.a.invalidate();
-      return;
-      this.a.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+  }
+  
+  public void a(wtr paramwtr)
+  {
+    auur localauur = (auur)this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
+    if (localauur != null) {
+      localauur.a(paramwtr);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wtz
  * JD-Core Version:    0.7.0.1
  */

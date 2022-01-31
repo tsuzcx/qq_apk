@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity.recent.data;
 
+import ajed;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
+import axam;
+import babh;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
-import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecentItemSubAccount
@@ -18,7 +18,7 @@ public class RecentItemSubAccount
   public RecentItemSubAccount(RecentUser paramRecentUser)
   {
     super(paramRecentUser);
-    this.jdField_b_of_type_Int = 1;
+    this.mUnreadFlag = 1;
   }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
@@ -30,54 +30,54 @@ public class RecentItemSubAccount
       return;
       super.a(paramQQAppInterface, paramContext);
       MsgSummary localMsgSummary = a();
-      if (!AppConstants.w.equals(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin)) {
+      if (!ajed.x.equals(this.mUser.uin)) {
         break;
       }
-      this.jdField_b_of_type_JavaLangString = paramContext.getString(2131436417);
-      this.jdField_c_of_type_Int = 0;
-      SubAccountControll.a(paramQQAppInterface, paramContext, this, localMsgSummary);
-      if (!TextUtils.isEmpty(localMsgSummary.jdField_b_of_type_JavaLangCharSequence)) {
-        localMsgSummary.jdField_b_of_type_Int = 1;
+      this.mTitleName = paramContext.getString(2131653928);
+      this.mUnreadNum = 0;
+      axam.a(paramQQAppInterface, paramContext, this, localMsgSummary);
+      if (!TextUtils.isEmpty(localMsgSummary.strContent)) {
+        localMsgSummary.mEmojiFlag = 1;
       }
       if (QLog.isColorLevel()) {
-        QLog.d("SUB_ACCOUNT", 2, "RecentItemSubAccount.update mUser.uin=" + this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin + " mUser.type=" + this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type + " mUnreadNum=" + this.jdField_c_of_type_Int + " mUnreadFlag=" + this.jdField_b_of_type_Int);
+        QLog.d("SUB_ACCOUNT", 2, "RecentItemSubAccount.update mUser.uin=" + this.mUser.uin + " mUser.type=" + this.mUser.getType() + " mUnreadNum=" + this.mUnreadNum + " mUnreadFlag=" + this.mUnreadFlag);
       }
-      if (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangCharSequence)) {
+      if (TextUtils.isEmpty(this.mMsgExtroInfo)) {
         break label377;
       }
-      this.e = paramContext.getResources().getColor(2131494294);
-      this.jdField_c_of_type_JavaLangString = "";
-      this.jdField_a_of_type_Long = a();
+      this.mExtraInfoColor = paramContext.getResources().getColor(2131101360);
+      this.mShowTime = "";
+      this.mDisplayTime = a();
       a(paramQQAppInterface);
       a(paramQQAppInterface, paramContext, localMsgSummary);
-    } while (!AppSetting.b);
+    } while (!AppSetting.c);
     paramQQAppInterface = new StringBuilder();
-    paramQQAppInterface.append(this.jdField_b_of_type_JavaLangString).append(",");
-    if (this.jdField_c_of_type_Int == 0) {}
+    paramQQAppInterface.append(this.mTitleName).append(",");
+    if (this.mUnreadNum == 0) {}
     for (;;)
     {
-      if (this.jdField_d_of_type_JavaLangCharSequence != null) {
-        paramQQAppInterface.append(this.jdField_d_of_type_JavaLangCharSequence + ",");
+      if (this.mMsgExtroInfo != null) {
+        paramQQAppInterface.append(this.mMsgExtroInfo + ",");
       }
-      paramQQAppInterface.append(this.jdField_c_of_type_JavaLangCharSequence).append(",").append(this.jdField_c_of_type_JavaLangString);
-      this.jdField_d_of_type_JavaLangString = paramQQAppInterface.toString();
+      paramQQAppInterface.append(this.mLastMsg).append(",").append(this.mShowTime);
+      this.mContentDesc = paramQQAppInterface.toString();
       return;
-      this.jdField_b_of_type_JavaLangString = ContactUtils.c(paramQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, true);
-      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin;
+      this.mTitleName = babh.c(paramQQAppInterface, this.mUser.uin, true);
+      if (TextUtils.isEmpty(this.mTitleName)) {
+        this.mTitleName = this.mUser.uin;
       }
-      this.jdField_b_of_type_JavaLangString = (paramContext.getString(2131436328) + "（" + this.jdField_b_of_type_JavaLangString + "）");
+      this.mTitleName = (paramContext.getString(2131653961) + "（" + this.mTitleName + "）");
       break;
       label377:
-      this.jdField_d_of_type_JavaLangCharSequence = "";
-      this.e = 0;
+      this.mMsgExtroInfo = "";
+      this.mExtraInfoColor = 0;
       break label172;
-      if (this.jdField_c_of_type_Int == 1) {
+      if (this.mUnreadNum == 1) {
         paramQQAppInterface.append("有一条未读");
-      } else if (this.jdField_c_of_type_Int == 2) {
+      } else if (this.mUnreadNum == 2) {
         paramQQAppInterface.append("有两条未读");
-      } else if (this.jdField_c_of_type_Int > 0) {
-        paramQQAppInterface.append("有").append(this.jdField_c_of_type_Int).append("条未读,");
+      } else if (this.mUnreadNum > 0) {
+        paramQQAppInterface.append("有").append(this.mUnreadNum).append("条未读,");
       }
     }
   }

@@ -1,16 +1,30 @@
-import cooperation.qzone.plugin.PluginRecord;
-import cooperation.qzone.plugin.QZonePluginDownloader.OnPluginDownloadListner;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.WebIPCOperator.5.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class anfd
+  implements andq
 {
-  private int jdField_a_of_type_Int;
-  private PluginRecord jdField_a_of_type_CooperationQzonePluginPluginRecord;
-  private QZonePluginDownloader.OnPluginDownloadListner jdField_a_of_type_CooperationQzonePluginQZonePluginDownloader$OnPluginDownloadListner;
-  private String jdField_a_of_type_JavaLangString;
+  anfd(anfc paramanfc) {}
+  
+  public void a(int paramInt)
+  {
+    anfe localanfe = this.a.a(paramInt);
+    if (localanfe != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "on req timeout seq: " + paramInt);
+      }
+      Bundle localBundle = new Bundle();
+      this.a.a(localBundle, 1001);
+      localanfe.a.putBundle("response", localBundle);
+      this.a.a(new WebIPCOperator.5.1(this, localanfe));
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anfd
  * JD-Core Version:    0.7.0.1
  */

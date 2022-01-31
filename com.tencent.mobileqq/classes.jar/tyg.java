@@ -1,29 +1,107 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.util.Pair;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
 
 public class tyg
-  implements Runnable
+  extends JobSegment<List<String>, List<String>>
+  implements sxq
 {
-  public tyg(SplashActivity paramSplashActivity) {}
+  private String a = "story.icon.UidListToUrlListSegment";
   
-  public void run()
+  public tyg(String paramString) {}
+  
+  private Pair<List<String>, Boolean> a(List<String> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SplashActivity", 2, "VideoRedbag, SplashActivity doOnResume, sendRealNameCheckReq");
+    ArrayList localArrayList = new ArrayList();
+    sqs localsqs = (sqs)sqg.a(2);
+    paramList = paramList.iterator();
+    boolean bool = true;
+    if (paramList.hasNext())
+    {
+      QQUserUIItem localQQUserUIItem = localsqs.b((String)paramList.next());
+      if ((localQQUserUIItem != null) && (localQQUserUIItem.headUrl != null)) {
+        localArrayList.add(localQQUserUIItem.headUrl);
+      }
+      for (;;)
+      {
+        break;
+        localArrayList.add("stub_url");
+        bool = false;
+      }
     }
-    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      RedBagVideoManager.a((QQAppInterface)localAppRuntime);
+    return new Pair(localArrayList, Boolean.valueOf(bool));
+  }
+  
+  private void b(List<String> paramList)
+  {
+    txq.a(this.a, "fireRefreshUserInfo : %s", new JSONArray(paramList));
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      localArrayList.add(new srn(null, (String)paramList.next()));
     }
+    new sxp(this).a(1, localArrayList);
+  }
+  
+  protected void a(JobContext paramJobContext, List<String> paramList)
+  {
+    if ((paramList == null) || (paramList.isEmpty())) {
+      notifyError(new ErrorMessage(-1, ""));
+    }
+    do
+    {
+      return;
+      paramJobContext = Collections.unmodifiableList(paramList);
+      paramList = a(paramJobContext);
+      txq.a(this.a, "getUnionIdListFromCache ok=%s", paramList.second);
+      a((List)paramList.first);
+    } while (((Boolean)paramList.second).booleanValue());
+    txq.a(this.a, "fireRefreshUserInfo");
+    b(paramJobContext);
+  }
+  
+  protected void a(List<String> paramList)
+  {
+    txq.a(this.a, "notifyResult url list : " + new JSONArray(paramList));
+    if (paramList.size() == 1)
+    {
+      txq.b(this.a, "add one more default item because of product logic");
+      paramList.add("stub_url");
+    }
+    super.notifyResult(paramList);
+  }
+  
+  public void a(sxr paramsxr)
+  {
+    if ((paramsxr == null) || (paramsxr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramsxr.jdField_a_of_type_JavaUtilList == null))
+    {
+      txq.b(this.a, "refresh user info fail %s", paramsxr);
+      if (paramsxr == null) {}
+      for (paramsxr = new ErrorMessage(-1, "event is null");; paramsxr = paramsxr.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage)
+      {
+        notifyError(paramsxr);
+        return;
+      }
+    }
+    txq.a(this.a, "refresh user info success, let's return the new info");
+    ArrayList localArrayList = new ArrayList();
+    paramsxr = paramsxr.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramsxr.hasNext()) {
+      localArrayList.add(((QQUserUIItem)paramsxr.next()).headUrl);
+    }
+    a(localArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tyg
  * JD-Core Version:    0.7.0.1
  */

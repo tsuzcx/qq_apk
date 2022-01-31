@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.MedalNewsItemBuilder;
-import com.tencent.mobileqq.data.MessageForMedalNews;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
 
-class vgw
-  implements Runnable
+public final class vgw
+  implements Parcelable.Creator<SlideItemInfo>
 {
-  vgw(vgv paramvgv) {}
-  
-  public void run()
+  public SlideItemInfo a(Parcel paramParcel)
   {
-    MedalNewsItemBuilder.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMedalNewsItemBuilder, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.frienduin, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemMedalNewsItemBuilder.a.d, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.level, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.id, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.ts, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForMedalNews.seq);
+    return new SlideItemInfo(paramParcel);
+  }
+  
+  public SlideItemInfo[] a(int paramInt)
+  {
+    return new SlideItemInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vgw
  * JD-Core Version:    0.7.0.1
  */

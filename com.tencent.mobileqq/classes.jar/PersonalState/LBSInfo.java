@@ -9,19 +9,19 @@ public final class LBSInfo
   extends JceStruct
 {
   static GPS cache_stGps;
-  static ArrayList cache_vCells;
-  static ArrayList cache_vWifis;
+  static ArrayList<Cell> cache_vCells;
+  static ArrayList<Wifi> cache_vWifis;
   public GPS stGps;
-  public ArrayList vCells;
-  public ArrayList vWifis;
+  public ArrayList<Cell> vCells;
+  public ArrayList<Wifi> vWifis;
   
   public LBSInfo() {}
   
-  public LBSInfo(GPS paramGPS, ArrayList paramArrayList1, ArrayList paramArrayList2)
+  public LBSInfo(GPS paramGPS, ArrayList<Wifi> paramArrayList, ArrayList<Cell> paramArrayList1)
   {
     this.stGps = paramGPS;
-    this.vWifis = paramArrayList1;
-    this.vCells = paramArrayList2;
+    this.vWifis = paramArrayList;
+    this.vCells = paramArrayList1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)

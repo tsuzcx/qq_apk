@@ -1,32 +1,23 @@
-import android.util.Log;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import java.io.ByteArrayOutputStream;
+import com.tencent.qphone.base.util.QLog;
 
-public final class abaz
-  implements INetEngine.INetEngineListener
+class abaz
+  extends anoj
 {
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  abaz(abai paramabai) {}
   
-  public void a(NetResp paramNetResp)
+  protected void a(int paramInt)
   {
-    if (paramNetResp.jdField_a_of_type_Int == 0) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      if (paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a != null)
-      {
-        paramNetResp = new String(((ByteArrayOutputStream)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a).toByteArray());
-        Log.d("ArkApp.DataReport", "report_realtime_monitor, reply=" + paramNetResp);
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.lebatab.leba", 2, "onUpdateRedPoint " + paramInt);
     }
-    Log.d("ArkApp.DataReport", "report_realtime_monitor, fail");
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abaz
  * JD-Core Version:    0.7.0.1
  */

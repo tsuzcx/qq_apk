@@ -1,30 +1,20 @@
-import java.io.File;
-import java.io.FileFilter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
 
-public final class aaow
-  implements FileFilter
+public class aaow
+  implements View.OnClickListener
 {
-  public boolean accept(File paramFile)
+  public aaow(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  
+  public void onClick(View paramView)
   {
-    paramFile = paramFile.getName();
-    if (paramFile.startsWith("cpu"))
-    {
-      int i = 3;
-      while (i < paramFile.length())
-      {
-        if ((paramFile.charAt(i) < '0') || (paramFile.charAt(i) > '9')) {
-          return false;
-        }
-        i += 1;
-      }
-      return true;
-    }
-    return false;
+    DiscussionInfoCardActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaow
  * JD-Core Version:    0.7.0.1
  */

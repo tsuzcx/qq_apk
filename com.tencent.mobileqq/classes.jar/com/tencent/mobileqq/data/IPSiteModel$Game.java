@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import acbq;
+import amsb;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,10 +9,10 @@ import java.util.List;
 public class IPSiteModel$Game
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new acbq();
+  public static final Parcelable.Creator<Game> CREATOR = new amsb();
   public String cover;
   public String desc;
-  public List gameRiches;
+  public List<IPSiteModel.GameRich> gameRiches;
   public String id;
   public String jumpUrl;
   public String name;
@@ -20,7 +20,7 @@ public class IPSiteModel$Game
   
   public IPSiteModel$Game() {}
   
-  public IPSiteModel$Game(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, List paramList)
+  public IPSiteModel$Game(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, List<IPSiteModel.GameRich> paramList)
   {
     this.cover = paramString1;
     this.desc = paramString2;

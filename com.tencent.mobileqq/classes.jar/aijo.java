@@ -1,26 +1,22 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.apollo.data.CmGamePushItem;
+import java.util.Comparator;
 
 class aijo
-  implements Runnable
+  implements Comparator<CmGamePushItem>
 {
-  aijo(aijm paramaijm, String paramString1, boolean paramBoolean, String paramString2) {}
+  aijo(aijn paramaijn) {}
   
-  public void run()
+  public int a(CmGamePushItem paramCmGamePushItem1, CmGamePushItem paramCmGamePushItem2)
   {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append(" dump");
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = "成功，文件路径为" + this.b;; str = "失败")
-    {
-      QQToast.a(localBaseApplicationImpl, str, 2000).a();
-      return;
+    if (paramCmGamePushItem1.start_ts == paramCmGamePushItem2.start_ts) {
+      return paramCmGamePushItem2.send_time - paramCmGamePushItem1.send_time;
     }
+    return paramCmGamePushItem2.start_ts - paramCmGamePushItem1.start_ts;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aijo
  * JD-Core Version:    0.7.0.1
  */

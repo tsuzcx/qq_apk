@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:background="#fff9f9fb" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/mfo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/gf4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+            <ProgressBar android:layout_gravity="center" android:id="@id/gf5" android:layout_width="19.0dip" android:layout_height="19.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" />
+            <TextView android:textSize="16.0dip" android:textColor="@color/skin_gray3" android:gravity="center" android:layout_gravity="center" android:id="@id/hzb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/j2n" />
+        </LinearLayout>
+        <ViewStub android:id="@id/ky_" android:visibility="gone" android:layout="@layout/a8o" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <View android:layout_gravity="center_horizontal" android:id="@id/mfp" android:visibility="gone" android:layout_width="36.0dip" android:layout_height="5.0dip" android:layout_marginTop="6.0dip" android:alpha="0.8" />
+    </FrameLayout>
+    <RelativeLayout android:id="@id/ky9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

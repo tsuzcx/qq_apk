@@ -16,9 +16,9 @@ public final class Headers
 {
   private final String[] namesAndValues;
   
-  private Headers(Builder paramBuilder)
+  private Headers(Headers.Builder paramBuilder)
   {
-    this.namesAndValues = ((String[])paramBuilder.namesAndValues.toArray(new String[paramBuilder.namesAndValues.size()]));
+    this.namesAndValues = ((String[])Headers.Builder.access$000(paramBuilder).toArray(new String[Headers.Builder.access$000(paramBuilder).size()]));
   }
   
   private Headers(String[] paramArrayOfString)
@@ -45,8 +45,8 @@ public final class Headers
       throw new IllegalArgumentException("Expected map with header names and values");
     }
     String[] arrayOfString = new String[paramMap.size() * 2];
-    int i = 0;
     paramMap = paramMap.entrySet().iterator();
+    int i = 0;
     while (paramMap.hasNext())
     {
       Object localObject = (Map.Entry)paramMap.next();
@@ -129,10 +129,10 @@ public final class Headers
     return Collections.unmodifiableSet(localTreeSet);
   }
   
-  public Builder newBuilder()
+  public Headers.Builder newBuilder()
   {
-    Builder localBuilder = new Builder();
-    Collections.addAll(localBuilder.namesAndValues, this.namesAndValues);
+    Headers.Builder localBuilder = new Headers.Builder();
+    Collections.addAll(Headers.Builder.access$000(localBuilder), this.namesAndValues);
     return localBuilder;
   }
   
@@ -144,8 +144,8 @@ public final class Headers
   public Map<String, List<String>> toMultimap()
   {
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
-    int i = 0;
     int j = size();
+    int i = 0;
     while (i < j)
     {
       String str = name(i);
@@ -186,9 +186,9 @@ public final class Headers
   
   public List<String> values(String paramString)
   {
+    int j = size();
     Object localObject1 = null;
     int i = 0;
-    int j = size();
     while (i < j)
     {
       Object localObject2 = localObject1;
@@ -207,121 +207,6 @@ public final class Headers
       return Collections.unmodifiableList(localObject1);
     }
     return Collections.emptyList();
-  }
-  
-  public static final class Builder
-  {
-    private final List<String> namesAndValues = new ArrayList(20);
-    
-    private void checkNameAndValue(String paramString1, String paramString2)
-    {
-      if (paramString1 == null) {
-        throw new IllegalArgumentException("name == null");
-      }
-      if (paramString1.isEmpty()) {
-        throw new IllegalArgumentException("name is empty");
-      }
-      int i = 0;
-      int j = paramString1.length();
-      int k;
-      while (i < j)
-      {
-        k = paramString1.charAt(i);
-        if ((k <= 31) || (k >= 127)) {
-          throw new IllegalArgumentException(String.format("Unexpected char %#04x at %d in header name: %s", new Object[] { Integer.valueOf(k), Integer.valueOf(i), paramString1 }));
-        }
-        i += 1;
-      }
-      if (paramString2 == null) {
-        throw new IllegalArgumentException("value == null");
-      }
-      i = 0;
-      j = paramString2.length();
-      while (i < j)
-      {
-        k = paramString2.charAt(i);
-        if ((k <= 31) || (k >= 127)) {
-          throw new IllegalArgumentException(String.format("Unexpected char %#04x at %d in header value: %s", new Object[] { Integer.valueOf(k), Integer.valueOf(i), paramString2 }));
-        }
-        i += 1;
-      }
-    }
-    
-    public Builder add(String paramString)
-    {
-      int i = paramString.indexOf(":");
-      if (i == -1) {
-        throw new IllegalArgumentException("Unexpected header: " + paramString);
-      }
-      return add(paramString.substring(0, i).trim(), paramString.substring(i + 1));
-    }
-    
-    public Builder add(String paramString1, String paramString2)
-    {
-      checkNameAndValue(paramString1, paramString2);
-      return addLenient(paramString1, paramString2);
-    }
-    
-    Builder addLenient(String paramString)
-    {
-      int i = paramString.indexOf(":", 1);
-      if (i != -1) {
-        return addLenient(paramString.substring(0, i), paramString.substring(i + 1));
-      }
-      if (paramString.startsWith(":")) {
-        return addLenient("", paramString.substring(1));
-      }
-      return addLenient("", paramString);
-    }
-    
-    Builder addLenient(String paramString1, String paramString2)
-    {
-      this.namesAndValues.add(paramString1);
-      this.namesAndValues.add(paramString2.trim());
-      return this;
-    }
-    
-    public Headers build()
-    {
-      return new Headers(this, null);
-    }
-    
-    public String get(String paramString)
-    {
-      int i = this.namesAndValues.size() - 2;
-      while (i >= 0)
-      {
-        if (paramString.equalsIgnoreCase((String)this.namesAndValues.get(i))) {
-          return (String)this.namesAndValues.get(i + 1);
-        }
-        i -= 2;
-      }
-      return null;
-    }
-    
-    public Builder removeAll(String paramString)
-    {
-      int j;
-      for (int i = 0; i < this.namesAndValues.size(); i = j + 2)
-      {
-        j = i;
-        if (paramString.equalsIgnoreCase((String)this.namesAndValues.get(i)))
-        {
-          this.namesAndValues.remove(i);
-          this.namesAndValues.remove(i);
-          j = i - 2;
-        }
-      }
-      return this;
-    }
-    
-    public Builder set(String paramString1, String paramString2)
-    {
-      checkNameAndValue(paramString1, paramString2);
-      removeAll(paramString1);
-      addLenient(paramString1, paramString2);
-      return this;
-    }
   }
 }
 

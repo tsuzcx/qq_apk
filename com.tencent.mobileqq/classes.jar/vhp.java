@@ -1,20 +1,43 @@
-import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
-import com.tencent.mobileqq.transfile.TransFileController.OnCancelListener;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
 
-public class vhp
-  implements TransFileController.OnCancelListener
+class vhp
+  implements auzr
 {
-  public vhp(PicItemBuilder paramPicItemBuilder) {}
+  vhp(vho paramvho) {}
   
-  public void a(ArrayList paramArrayList)
+  public void a() {}
+  
+  public void a(String paramString)
   {
-    this.a.b();
+    synchronized (vho.a(this.a))
+    {
+      vho.a(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.d(vho.a, 2, "onEncodeFinish, filePath= " + paramString);
+      }
+      vho.a(this.a).notifyAll();
+      return;
+    }
   }
+  
+  public void a_(int paramInt, Throwable arg2)
+  {
+    synchronized (vho.a(this.a))
+    {
+      vho.b(this.a, true);
+      if (QLog.isColorLevel()) {
+        QLog.d(vho.a, 2, "onEncodeError, errorCode= " + paramInt);
+      }
+      vho.a(this.a).notifyAll();
+      return;
+    }
+  }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vhp
  * JD-Core Version:    0.7.0.1
  */

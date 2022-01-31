@@ -4,32 +4,32 @@ import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import com.tencent.biz.qqstory.storyHome.RequestDataListener;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailEventCallback;
-import com.tencent.biz.qqstory.storyHome.detail.view.segment.BannerProfileSegment;
-import com.tencent.biz.qqstory.storyHome.detail.view.segment.DetailCommentSegment;
-import com.tencent.biz.qqstory.storyHome.detail.view.segment.DetailDoubleTabSegment;
-import com.tencent.biz.qqstory.storyHome.detail.view.segment.DetailEmptyInteractionSegment;
-import com.tencent.biz.qqstory.storyHome.detail.view.segment.DetailEmptySegment;
-import com.tencent.biz.qqstory.storyHome.detail.view.segment.DetailInteractSegment;
-import com.tencent.biz.qqstory.storyHome.detail.view.segment.DetailLikeListSegment;
-import com.tencent.biz.qqstory.storyHome.detail.view.segment.DetailTagListSegment;
-import com.tencent.biz.qqstory.storyHome.detail.view.segment.GeneralFeedProfileSegment;
-import com.tencent.biz.qqstory.storyHome.detail.view.segment.ShareGroupFeedProfileSegment;
 import com.tencent.biz.qqstory.view.segment.SegmentList;
-import com.tencent.biz.qqstory.view.segment.SegmentView;
 import com.tencent.widget.ListView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import ubs;
+import ucg;
+import ueu;
+import uev;
+import uez;
+import ufa;
+import ufb;
+import ufc;
+import ufg;
+import ufh;
+import ufl;
+import ufn;
+import vpv;
 
 public class StoryDetailListView
   extends SegmentList
 {
   public int a;
   private Activity jdField_a_of_type_AndroidAppActivity;
-  private RequestDataListener jdField_a_of_type_ComTencentBizQqstoryStoryHomeRequestDataListener;
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<vpv> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private ubs jdField_a_of_type_Ubs;
   public int b;
   
   public StoryDetailListView(Context paramContext)
@@ -51,12 +51,12 @@ public class StoryDetailListView
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     int i = 0;
-    SegmentView localSegmentView;
+    vpv localvpv;
     if (localIterator.hasNext())
     {
-      localSegmentView = (SegmentView)localIterator.next();
-      if ((localSegmentView instanceof DetailCommentSegment)) {
-        i = localSegmentView.a() + i;
+      localvpv = (vpv)localIterator.next();
+      if ((localvpv instanceof uev)) {
+        i = localvpv.a() + i;
       }
     }
     for (;;)
@@ -64,34 +64,34 @@ public class StoryDetailListView
       if (i == 0)
       {
         return 0;
-        i = localSegmentView.a() + i;
+        i = localvpv.a() + i;
         break;
       }
       return i;
     }
   }
   
-  protected void a()
+  public void a()
   {
     super.setActTAG("list_qqstory_detail");
-    this.jdField_a_of_type_JavaUtilList.add(new GeneralFeedProfileSegment(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.b));
-    this.jdField_a_of_type_JavaUtilList.add(new ShareGroupFeedProfileSegment(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.b));
-    this.jdField_a_of_type_JavaUtilList.add(new BannerProfileSegment(this.jdField_a_of_type_AndroidAppActivity));
-    this.jdField_a_of_type_JavaUtilList.add(new DetailInteractSegment(this.jdField_a_of_type_AndroidAppActivity));
-    this.jdField_a_of_type_JavaUtilList.add(new DetailTagListSegment(this.jdField_a_of_type_AndroidAppActivity));
-    this.jdField_a_of_type_JavaUtilList.add(new DetailDoubleTabSegment(this.jdField_a_of_type_AndroidAppActivity));
-    this.jdField_a_of_type_JavaUtilList.add(new DetailLikeListSegment(this.jdField_a_of_type_AndroidAppActivity));
-    this.jdField_a_of_type_JavaUtilList.add(new DetailCommentSegment(this.jdField_a_of_type_AndroidAppActivity));
-    this.jdField_a_of_type_JavaUtilList.add(new DetailEmptyInteractionSegment(this.jdField_a_of_type_AndroidAppActivity));
-    this.jdField_a_of_type_JavaUtilList.add(new DetailEmptySegment(this.jdField_a_of_type_AndroidAppActivity));
+    this.jdField_a_of_type_JavaUtilList.add(new ufl(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.b));
+    this.jdField_a_of_type_JavaUtilList.add(new ufn(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.b));
+    this.jdField_a_of_type_JavaUtilList.add(new ueu(this.jdField_a_of_type_AndroidAppActivity));
+    this.jdField_a_of_type_JavaUtilList.add(new ufc(this.jdField_a_of_type_AndroidAppActivity));
+    this.jdField_a_of_type_JavaUtilList.add(new ufh(this.jdField_a_of_type_AndroidAppActivity));
+    this.jdField_a_of_type_JavaUtilList.add(new uez(this.jdField_a_of_type_AndroidAppActivity));
+    this.jdField_a_of_type_JavaUtilList.add(new ufg(this.jdField_a_of_type_AndroidAppActivity));
+    this.jdField_a_of_type_JavaUtilList.add(new uev(this.jdField_a_of_type_AndroidAppActivity));
+    this.jdField_a_of_type_JavaUtilList.add(new ufa(this.jdField_a_of_type_AndroidAppActivity));
+    this.jdField_a_of_type_JavaUtilList.add(new ufb(this.jdField_a_of_type_AndroidAppActivity));
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      a((SegmentView)localIterator.next());
+      a((vpv)localIterator.next());
     }
     super.setDivider(null);
     super.setVerticalScrollBarEnabled(false);
     super.setHorizontalScrollBarEnabled(false);
-    super.setBackgroundColor(-1);
+    super.setBackgroundResource(2130849077);
   }
   
   public void a(Activity paramActivity)
@@ -114,11 +114,11 @@ public class StoryDetailListView
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      SegmentView localSegmentView = (SegmentView)localIterator.next();
-      if ((localSegmentView instanceof DetailInteractSegment)) {
+      vpv localvpv = (vpv)localIterator.next();
+      if ((localvpv instanceof ufc)) {
         return false;
       }
-      if (localSegmentView.a() > 0) {
+      if (localvpv.a() > 0) {
         return true;
       }
     }
@@ -128,8 +128,8 @@ public class StoryDetailListView
   public boolean a(int paramInt, View paramView, ListView paramListView)
   {
     super.a(paramInt, paramView, paramListView);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeRequestDataListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeRequestDataListener.a();
+    if (this.jdField_a_of_type_Ubs != null) {
+      this.jdField_a_of_type_Ubs.a();
     }
     return true;
   }
@@ -137,12 +137,12 @@ public class StoryDetailListView
   public int b()
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    SegmentView localSegmentView;
-    for (int i = 0;; i = localSegmentView.a() + i) {
+    vpv localvpv;
+    for (int i = 0;; i = localvpv.a() + i) {
       if (localIterator.hasNext())
       {
-        localSegmentView = (SegmentView)localIterator.next();
-        if (!(localSegmentView instanceof DetailCommentSegment)) {}
+        localvpv = (vpv)localIterator.next();
+        if (!(localvpv instanceof uev)) {}
       }
       else
       {
@@ -151,22 +151,22 @@ public class StoryDetailListView
     }
   }
   
-  public void setCallback(DetailEventCallback paramDetailEventCallback)
+  public void setCallback(ucg paramucg)
   {
-    GeneralFeedProfileSegment localGeneralFeedProfileSegment = (GeneralFeedProfileSegment)a("GeneralFeedProfileSegment");
-    ShareGroupFeedProfileSegment localShareGroupFeedProfileSegment = (ShareGroupFeedProfileSegment)a("ShareGroupFeedProfileSegment");
-    BannerProfileSegment localBannerProfileSegment = (BannerProfileSegment)a("BannerProfileSegment");
-    DetailInteractSegment localDetailInteractSegment = (DetailInteractSegment)a("DetailInteractSegment");
-    DetailDoubleTabSegment localDetailDoubleTabSegment = (DetailDoubleTabSegment)a("DetailDoubleTabSegment");
-    DetailLikeListSegment localDetailLikeListSegment = (DetailLikeListSegment)a("DetailLikeListSegment");
-    DetailCommentSegment localDetailCommentSegment = (DetailCommentSegment)a("DetailCommentSegment");
-    localGeneralFeedProfileSegment.a(paramDetailEventCallback);
-    localShareGroupFeedProfileSegment.a(paramDetailEventCallback);
-    localBannerProfileSegment.a(paramDetailEventCallback);
-    localDetailInteractSegment.a(paramDetailEventCallback);
-    localDetailDoubleTabSegment.a(paramDetailEventCallback);
-    localDetailLikeListSegment.a(paramDetailEventCallback);
-    localDetailCommentSegment.a(paramDetailEventCallback);
+    ufl localufl = (ufl)a("GeneralFeedProfileSegment");
+    ufn localufn = (ufn)a("ShareGroupFeedProfileSegment");
+    ueu localueu = (ueu)a("BannerProfileSegment");
+    ufc localufc = (ufc)a("DetailInteractSegment");
+    uez localuez = (uez)a("DetailDoubleTabSegment");
+    ufg localufg = (ufg)a("DetailLikeListSegment");
+    uev localuev = (uev)a("DetailCommentSegment");
+    localufl.a(paramucg);
+    localufn.a(paramucg);
+    localueu.a(paramucg);
+    localufc.a(paramucg);
+    localuez.a(paramucg);
+    localufg.a(paramucg);
+    localuev.a(paramucg);
   }
   
   public void setProfileSegmentDisplay(boolean paramBoolean)
@@ -174,28 +174,28 @@ public class StoryDetailListView
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     for (;;)
     {
-      SegmentView localSegmentView;
+      vpv localvpv;
       if (localIterator.hasNext())
       {
-        localSegmentView = (SegmentView)localIterator.next();
-        if (!(localSegmentView instanceof DetailInteractSegment)) {}
+        localvpv = (vpv)localIterator.next();
+        if (!(localvpv instanceof ufc)) {}
       }
       else
       {
         return;
       }
-      localSegmentView.e_(paramBoolean);
+      localvpv.f_(paramBoolean);
     }
   }
   
-  public void setRequestDataListener(RequestDataListener paramRequestDataListener)
+  public void setRequestDataListener(ubs paramubs)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeRequestDataListener = paramRequestDataListener;
+    this.jdField_a_of_type_Ubs = paramubs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailListView
  * JD-Core Version:    0.7.0.1
  */

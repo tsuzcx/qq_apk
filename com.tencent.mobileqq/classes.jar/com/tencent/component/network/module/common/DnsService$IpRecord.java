@@ -4,19 +4,19 @@ import android.text.TextUtils;
 
 public class DnsService$IpRecord
 {
-  public long a;
-  public String a;
+  public long createTime;
+  public String ip;
   
   public DnsService$IpRecord(DnsService paramDnsService, String paramString, long paramLong)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Long = paramLong;
+    this.ip = paramString;
+    this.createTime = paramLong;
   }
   
-  public boolean a()
+  public boolean isValid()
   {
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    return (l >= 0L) && (l <= 3600000L) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
+    long l = System.currentTimeMillis() - this.createTime;
+    return (l >= 0L) && (l <= 3600000L) && (!TextUtils.isEmpty(this.ip));
   }
 }
 

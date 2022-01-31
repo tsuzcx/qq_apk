@@ -1,23 +1,38 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.doutu.DoutuData;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public final class acfy
-  implements Parcelable.Creator
+public class acfy
+  extends ajrp
 {
-  public DoutuData a(Parcel paramParcel)
-  {
-    return new DoutuData(paramParcel);
-  }
+  public acfy(VisitorsActivity paramVisitorsActivity) {}
   
-  public DoutuData[] a(int paramInt)
+  public void a()
   {
-    return new DoutuData[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("VisitorsActivity", 2, "onVipStatusChanged: ");
+    }
+    if ((this.a.app != null) && (bajr.b(this.a.app)))
+    {
+      this.a.a(true);
+      this.a.b(true);
+      if (VisitorsActivity.b(this.a).compareAndSet(true, false))
+      {
+        if (VisitorsActivity.a(this.a).get())
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("VisitorsActivity", 2, "onVipStatusChanged: showDialog");
+          }
+          babr.a(this.a, 232, null, ajjy.a(2131651025), null, ajjy.a(2131651022), new acfz(this), null).show();
+        }
+        this.a.removeObserver(VisitorsActivity.a(this.a));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acfy
  * JD-Core Version:    0.7.0.1
  */

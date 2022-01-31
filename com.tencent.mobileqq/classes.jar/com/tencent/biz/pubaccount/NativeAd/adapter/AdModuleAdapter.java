@@ -4,46 +4,46 @@ import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.NativeAd.data.BannerInfo;
-import com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase;
+import bcgo;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.open.downloadnew.DownloadManager;
 import java.util.ArrayList;
+import nac;
+import nak;
 
 public class AdModuleAdapter
   extends PagerAdapter
 {
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  private BannerInfo jdField_a_of_type_ComTencentBizPubaccountNativeAdDataBannerInfo;
   private String jdField_a_of_type_JavaLangString;
-  private ArrayList jdField_a_of_type_JavaUtilArrayList;
+  private ArrayList<nak> jdField_a_of_type_JavaUtilArrayList;
+  private nac jdField_a_of_type_Nac;
   private String b;
   private String c;
   
-  public AdModuleAdapter(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, BannerInfo paramBannerInfo, ArrayList paramArrayList)
+  public AdModuleAdapter(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, nac paramnac, ArrayList<nak> paramArrayList)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.b = paramString2;
     this.c = paramString3;
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizPubaccountNativeAdDataBannerInfo = paramBannerInfo;
+    this.jdField_a_of_type_Nac = paramnac;
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
   
   public void a()
   {
-    AdModuleBase localAdModuleBase = (AdModuleBase)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-    DownloadManager.a().b(localAdModuleBase);
-    if (localAdModuleBase.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler != null) {
-      AppNetConnInfo.unregisterNetInfoHandler(localAdModuleBase.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
+    nak localnak = (nak)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+    bcgo.a().b(localnak);
+    if (localnak.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler != null) {
+      AppNetConnInfo.unregisterNetInfoHandler(localnak.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
     }
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    paramObject = (AdModuleBase)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    paramObject = (nak)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     paramViewGroup.removeView(paramObject.jdField_a_of_type_AndroidViewView);
     paramObject.c();
   }
@@ -58,19 +58,19 @@ public class AdModuleAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    AdModuleBase localAdModuleBase = (AdModuleBase)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    nak localnak = (nak)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     Context localContext = this.jdField_a_of_type_AndroidContentContext;
     String str1 = this.jdField_a_of_type_JavaLangString;
     String str2 = this.b;
     String str3 = this.c;
     int i = this.jdField_a_of_type_Int;
-    BannerInfo localBannerInfo = this.jdField_a_of_type_ComTencentBizPubaccountNativeAdDataBannerInfo;
+    nac localnac = this.jdField_a_of_type_Nac;
     if (paramInt == getCount() - 1) {}
     for (boolean bool = true;; bool = false)
     {
-      localAdModuleBase.jdField_a_of_type_AndroidViewView = localAdModuleBase.a(localContext, str1, str2, str3, i, localBannerInfo, bool);
-      paramViewGroup.addView(localAdModuleBase.jdField_a_of_type_AndroidViewView);
-      return localAdModuleBase.jdField_a_of_type_AndroidViewView;
+      localnak.jdField_a_of_type_AndroidViewView = localnak.a(localContext, str1, str2, str3, i, localnac, bool);
+      paramViewGroup.addView(localnak.jdField_a_of_type_AndroidViewView);
+      return localnak.jdField_a_of_type_AndroidViewView;
     }
   }
   

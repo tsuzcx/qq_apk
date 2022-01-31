@@ -1,94 +1,28 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import java.lang.ref.WeakReference;
-
-public class aojt
-  implements URLDrawableDownListener
+public abstract interface aojt
 {
-  private final String jdField_a_of_type_JavaLangString;
-  private final WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private final WeakReference b;
+  public abstract int a();
   
-  public aojt(@NonNull String paramString, @NonNull ImageView paramImageView, @NonNull ProgressBar paramProgressBar)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramImageView);
-    this.b = new WeakReference(paramProgressBar);
-  }
+  public abstract long a();
   
-  private boolean a(ImageView paramImageView)
-  {
-    paramImageView = (String)paramImageView.getTag(2131362363);
-    return (!TextUtils.isEmpty(paramImageView)) && (paramImageView.equals(this.jdField_a_of_type_JavaLangString));
-  }
+  public abstract String a();
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
-  {
-    SLog.b("LocationFaceAdapter", "onLoadCanceled,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
-    {
-      paramURLDrawable.setVisibility(4);
-      paramView.setTag(2131362364, Boolean.valueOf(false));
-      return;
-    }
-    SLog.b("LocationFaceAdapter", "onLoadCanceled error.");
-  }
+  public abstract void a();
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    SLog.b("LocationFaceAdapter", "onLoadFialed,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
-    {
-      paramURLDrawable.setVisibility(0);
-      paramView.setTag(2131362364, Boolean.valueOf(false));
-      return;
-    }
-    SLog.b("LocationFaceAdapter", "onLoadFialed error.");
-  }
+  public abstract void a(aojb paramaojb);
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
+  public abstract void a(byte[] paramArrayOfByte);
   
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    SLog.b("LocationFaceAdapter", "onLoadProgressed,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
-    {
-      paramURLDrawable.setVisibility(0);
-      paramView.setTag(2131362364, Boolean.valueOf(false));
-      return;
-    }
-    SLog.b("LocationFaceAdapter", "onLoadProgressed error.");
-  }
+  public abstract boolean a();
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    SLog.b("LocationFaceAdapter", "onLoadSuccessed,url:" + this.jdField_a_of_type_JavaLangString);
-    paramView = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    paramURLDrawable = (ProgressBar)this.b.get();
-    if ((paramView != null) && (paramURLDrawable != null) && (a(paramView)))
-    {
-      paramURLDrawable.setVisibility(4);
-      paramView.setTag(2131362364, Boolean.valueOf(true));
-      return;
-    }
-    SLog.b("LocationFaceAdapter", "onLoadSuccessed error.");
-  }
+  public abstract boolean a(long paramLong);
+  
+  public abstract int b();
+  
+  public abstract long b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aojt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,49 +1,139 @@
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.script.SpriteCommFunc.1;
+import com.tencent.mobileqq.apollo.script.SpriteCommFunc.2;
+import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.TimerTask;
+import java.util.Set;
+import org.json.JSONObject;
 
 public class aisc
-  extends TimerTask
 {
-  public aisc(AIOMessageSpreadManager paramAIOMessageSpreadManager) {}
+  private static final Set<String> a = new SpriteCommFunc.1();
   
-  public void run()
+  public static void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString)
   {
-    synchronized (this.a)
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteCommFunc", 2, new Object[] { "[stopTaskByMsg], msgId", Long.valueOf(paramLong), ",from:", paramString });
+    }
+    if (!aisl.c(paramQQAppInterface)) {}
+    do
     {
-      long l1 = System.currentTimeMillis();
-      long l2 = l1 - this.a.a;
-      if (l2 >= 950L)
+      do
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("AIOMessageSpreadManager", 1, "lastInsertTime[" + this.a.a + "],now[" + l1 + "], dur[" + l2 + "],timeOut start check!");
-        }
-        i = AIOMessageSpreadManager.a(this.a).size() - 1;
-        while (i >= 0)
-        {
-          localMessageRecord = (MessageRecord)AIOMessageSpreadManager.a(this.a).get(i);
-          this.a.a((ChatMessage)localMessageRecord);
-          i -= 1;
-        }
-        this.a.a = 0L;
-        AIOMessageSpreadManager.a(this.a).clear();
-      }
-      while (!QLog.isColorLevel())
+        return;
+        paramQQAppInterface = aisl.a(paramQQAppInterface);
+      } while (paramQQAppInterface == null);
+      paramQQAppInterface = paramQQAppInterface.a();
+    } while (paramQQAppInterface == null);
+    paramString = paramQQAppInterface.a(paramLong);
+    if (paramString == null)
+    {
+      QLog.w("cmshow_scripted_SpriteCommFunc", 2, "task NOT exist, msgId:" + paramLong);
+      return;
+    }
+    ThreadManager.post(new SpriteCommFunc.2(paramQQAppInterface, paramString), 5, null, true);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteCommFunc", 2, new Object[] { "[stopAllTask]", ",from:", paramString });
+    }
+    if (!aisl.c(paramQQAppInterface)) {
+      return;
+    }
+    try
+    {
+      paramString = new JSONObject();
+      paramString.put("type", 0);
+      paramQQAppInterface = aisl.a(paramQQAppInterface);
+      if ((paramQQAppInterface == null) || (paramQQAppInterface.a() == null))
       {
-        int i;
-        MessageRecord localMessageRecord;
+        QLog.e("cmshow_scripted_SpriteCommFunc", 1, "[stopAllTask], spriteContext or getSurfaceView is null.");
         return;
       }
-      QLog.i("AIOMessageSpreadManager", 1, "lastInsertTime[" + this.a.a + "],now[" + l1 + "], dur[" + l2 + "]");
     }
+    catch (Throwable paramQQAppInterface)
+    {
+      QLog.e("cmshow_scripted_SpriteCommFunc", 1, "[stopAllTask],", paramQQAppInterface);
+      return;
+    }
+    ApolloCmdChannel.getChannel(paramQQAppInterface.a()).callbackFromRequest(paramQQAppInterface.a().getLuaState(), 0, "sc.stop_all_task.local", paramString.toString());
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteCommFunc", 2, new Object[] { "[showOrHideSprite]", ",from:", paramString });
+    }
+    if (!aisl.c(paramQQAppInterface)) {}
+    do
+    {
+      aisi localaisi;
+      do
+      {
+        do
+        {
+          return;
+        } while (!a.contains(paramString));
+        localaisi = aisl.a(paramQQAppInterface);
+      } while (localaisi == null);
+      aisd localaisd = aisl.a(paramQQAppInterface);
+      if (localaisd != null) {
+        localaisd.a(paramString, paramBoolean);
+      }
+      if (aisl.a(paramQQAppInterface))
+      {
+        QLog.i("cmshow_scripted_SpriteCommFunc", 1, "showOrHideSprite double should hide");
+        return;
+      }
+      paramQQAppInterface = localaisi.a();
+    } while (paramQQAppInterface == null);
+    paramQQAppInterface.a(paramBoolean, false, paramString);
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool1 = aisl.b(paramQQAppInterface);
+    boolean bool2 = aisl.a(paramQQAppInterface);
+    return (bool1) || (bool2);
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("cmshow_scripted_SpriteCommFunc", 2, new Object[] { "[isSpriteActive]", ",from:", paramString });
+    }
+    if (!aisl.c(paramQQAppInterface)) {}
+    do
+    {
+      do
+      {
+        return false;
+        paramQQAppInterface = aisl.a(paramQQAppInterface);
+      } while (paramQQAppInterface == null);
+      paramQQAppInterface = paramQQAppInterface.a();
+    } while (paramQQAppInterface == null);
+    return paramQQAppInterface.a();
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramQQAppInterface == null)) {}
+    do
+    {
+      return false;
+      paramQQAppInterface = aisl.a(paramQQAppInterface);
+    } while ((paramQQAppInterface == null) || (!paramQQAppInterface.a(paramString)));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aisc
  * JD-Core Version:    0.7.0.1
  */

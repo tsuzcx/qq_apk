@@ -3,11 +3,13 @@ package com.tencent.mobileqq.data;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.List;
 
 public class MarkFaceMessage
   implements Serializable
 {
   public static final long serialVersionUID = 102222L;
+  public String backColor;
   public long beginTime;
   public int cFaceInfo = 1;
   public int cSubType = 3;
@@ -33,6 +35,8 @@ public class MarkFaceMessage
   public boolean shouldDisplay;
   public boolean showIpProduct;
   public EmojiStickerManager.StickerInfo stickerInfo;
+  public List<Integer> voicePrintItems;
+  public String volumeColor;
   public int wSize = 37;
   
   public String toString()

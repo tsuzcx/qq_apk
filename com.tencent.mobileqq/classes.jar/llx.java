@@ -1,31 +1,42 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule;
-import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListAdapter;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.IBinder;
+import android.os.Parcel;
 
-public class llx
-  implements ActionSheet.OnButtonClickListener
+class llx
+  implements llv
 {
-  public llx(ReadInJoyCommentListAdapter paramReadInJoyCommentListAdapter, CommentInfo paramCommentInfo, ActionSheet paramActionSheet) {}
+  private IBinder a;
   
-  public void OnClick(View paramView, int paramInt)
+  llx(IBinder paramIBinder)
   {
-    switch (paramInt)
+    this.a = paramIBinder;
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      localParcel.writeInterfaceToken("com.tencent.av.service.IAVServiceCallback");
+      localParcel.writeInt(paramInt1);
+      localParcel.writeInt(paramInt2);
+      localParcel.writeInt(paramInt3);
+      this.a.transact(1, localParcel, null, 1);
       return;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListAdapter.a.deleteComment(ReadInJoyCommentListAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListAdapter), 1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.commentId, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentCommentInfo.authorUin, null, ReadInJoyCommentListAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListAdapter), new lly(this));
     }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     llx
  * JD-Core Version:    0.7.0.1
  */

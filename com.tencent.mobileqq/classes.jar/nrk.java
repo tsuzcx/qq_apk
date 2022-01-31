@@ -1,43 +1,81 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.database.CommentEntry;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.network.handler.ReportEvilToXinanHandler;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.SurfaceHolder;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView.WeakReferenceRunnable;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
+import java.lang.ref.WeakReference;
 
-public final class nrk
-  implements ActionSheet.OnButtonClickListener
+public class nrk
+  implements TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnVideoPreparedListener, IVideoViewBase.IVideoViewCallBack
 {
-  public nrk(CommentEntry paramCommentEntry, ActionSheet paramActionSheet) {}
+  private WeakReference<ReadInJoyArticleBottomVideoView> a;
   
-  public void OnClick(View paramView, int paramInt)
+  public nrk(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView)
   {
-    switch (paramInt)
-    {
-    default: 
-      paramView = "16384";
-      QQUserUIItem localQQUserUIItem = ((UserManager)SuperManager.a(2)).b(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.authorUnionId);
-      if (!TextUtils.isEmpty(localQQUserUIItem.qq)) {
-        new ReportEvilToXinanHandler().a(localQQUserUIItem.qq, localQQUserUIItem.isFriend(), paramView, this.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry.content);
-      }
-      break;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    this.a = new WeakReference(paramReadInJoyArticleBottomVideoView);
+  }
+  
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    paramTVK_IMediaPlayer = (ReadInJoyArticleBottomVideoView)this.a.get();
+    if (paramTVK_IMediaPlayer == null) {
       return;
-      paramView = "2";
-      break;
-      paramView = "1";
-      break;
-      paramView = "4";
-      break;
-      SLog.d("Q.qqstory.player.PlayModeUtils", "report comment error because evil uin is empty.");
     }
+    ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer, 9);
+    nnt.c = true;
+    paramTVK_IMediaPlayer.j();
+    paramTVK_IMediaPlayer.q();
+    ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer).a = true;
+  }
+  
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  {
+    paramTVK_IMediaPlayer = (ReadInJoyArticleBottomVideoView)this.a.get();
+    if (paramTVK_IMediaPlayer == null) {}
+    do
+    {
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyArticleBottomVideoView", 0, "error msg = " + paramString);
+      }
+      ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer, 8);
+      paramTVK_IMediaPlayer.j();
+    } while (!QLog.isColorLevel());
+    QLog.i("ReadInJoyArticleBottomVideoView", 3, "WebFastProteusViewAdBannerVideoCreator start video error");
+    return false;
+  }
+  
+  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
+  {
+    paramSurfaceHolder = (ReadInJoyArticleBottomVideoView)this.a.get();
+    if (paramSurfaceHolder == null) {
+      return;
+    }
+    paramSurfaceHolder.p();
+  }
+  
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  {
+    paramTVK_IMediaPlayer = (ReadInJoyArticleBottomVideoView)this.a.get();
+    if (paramTVK_IMediaPlayer == null) {
+      return;
+    }
+    if ((Looper.myLooper() != Looper.getMainLooper()) && (ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer) != null))
+    {
+      ReadInJoyArticleBottomVideoView.a(paramTVK_IMediaPlayer).post(new ReadInJoyArticleBottomVideoView.WeakReferenceRunnable(paramTVK_IMediaPlayer, 2));
+      return;
+    }
+    ReadInJoyArticleBottomVideoView.b(paramTVK_IMediaPlayer);
   }
 }
 

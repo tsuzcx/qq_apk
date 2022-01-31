@@ -1,71 +1,61 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.vas.VipGrayConfigHelper;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
 
-public final class akpx
-  implements Runnable
+public abstract class akpx
+  extends Binder
+  implements akpw
 {
-  public void run()
+  public akpx()
   {
-    int i = VipGrayConfigHelper.a().get();
-    if ((i < 0) || (i >= VipGrayConfigHelper.a().size())) {}
-    for (;;)
-    {
-      return;
-      String str = (String)VipGrayConfigHelper.a().get(i);
-      AtomicInteger localAtomicInteger = (AtomicInteger)VipGrayConfigHelper.a().get(str);
-      Object localObject = (AtomicInteger)VipGrayConfigHelper.b().get(str);
-      for (AtomicReference localAtomicReference = (AtomicReference)VipGrayConfigHelper.c().get(str); localAtomicInteger.get() >= ((AtomicInteger)localObject).get(); localAtomicReference = (AtomicReference)VipGrayConfigHelper.c().get(str))
-      {
-        i += 1;
-        j = i;
-        if (i >= VipGrayConfigHelper.a().size()) {
-          break label175;
-        }
-        str = (String)VipGrayConfigHelper.a().get(i);
-        localAtomicInteger = (AtomicInteger)VipGrayConfigHelper.a().get(str);
-        localObject = (AtomicInteger)VipGrayConfigHelper.b().get(str);
-      }
-      int j = i;
-      label175:
-      VipGrayConfigHelper.a().set(j);
-      if (j >= VipGrayConfigHelper.a().size()) {
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("VipGrayConfigHelper", 2, "Entry: " + str + ", Case " + (localAtomicInteger.get() + 1) + " of " + ((AtomicInteger)localObject).get());
-      }
-      try
-      {
-        localObject = (Intent)localAtomicReference.get();
-        ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
-        BaseApplicationImpl.getApplication().startActivity((Intent)localObject);
-        localAtomicInteger.incrementAndGet();
-        BaseApplicationImpl.getApplication().getSharedPreferences("vipGrayConfigSp", 0).edit().putInt(str, localAtomicInteger.get()).apply();
-        label317:
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("VipGrayConfigHelper", 2, "start background webview.");
-        return;
-      }
-      catch (Exception localException)
-      {
-        break label317;
-      }
+    attachInterface(this, "com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
+  }
+  
+  public static akpw a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
     }
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
+    if ((localIInterface != null) && ((localIInterface instanceof akpw))) {
+      return (akpw)localIInterface;
+    }
+    return new akpy(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
+    {
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager");
+    paramParcel1 = a();
+    paramParcel2.writeNoException();
+    if (paramParcel1 != null)
+    {
+      paramParcel2.writeInt(1);
+      paramParcel1.writeToParcel(paramParcel2, 1);
+      return true;
+    }
+    paramParcel2.writeInt(0);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akpx
  * JD-Core Version:    0.7.0.1
  */

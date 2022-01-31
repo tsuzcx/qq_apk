@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.InputMethodLinearLayout android:orientation="vertical" android:id="@id/root_layout" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mobileqq.widget.BounceScrollView android:id="@id/ii_" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="0.0dip" android:cacheColorHint="@null" android:fillViewport="true" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ViewStub android:id="@id/ky4" android:layout="@layout/a2m" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <include layout="@layout/a2j" />
+            <com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout android:id="@id/gjs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="200.0dip" android:layout_marginLeft="16.0dip" android:layout_marginTop="16.0dip" android:layout_marginBottom="8.0dip" app:round_rect_radius="4.0dip">
+                <ImageView android:id="@id/gjr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:contentDescription="@string/psg" />
+                <TextView android:textSize="10.0dip" android:textColor="#ffffffff" android:id="@id/gjq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pso" android:layout_centerInParent="true" />
+            </com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout>
+            <include layout="@layout/a2k" />
+            <TextView android:id="@id/ge5" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        </LinearLayout>
+    </com.tencent.mobileqq.widget.BounceScrollView>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include layout="@layout/a2o" />
+        <FrameLayout android:id="@id/e3e" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <FrameLayout android:id="@id/e3x" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+</com.tencent.mobileqq.widget.InputMethodLinearLayout>

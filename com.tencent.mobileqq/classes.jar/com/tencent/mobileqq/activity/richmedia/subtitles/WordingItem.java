@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.richmedia.subtitles;
 
+import ahmv;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import ydb;
 
 public class WordingItem
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ydb();
+  public static final Parcelable.Creator<WordingItem> CREATOR = new ahmv();
   public long a;
   public String a;
   public byte[] a;
@@ -57,7 +57,7 @@ public class WordingItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.subtitles.WordingItem
  * JD-Core Version:    0.7.0.1
  */

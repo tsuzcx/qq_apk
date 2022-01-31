@@ -1,20 +1,33 @@
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.QQStoryNetReqUtils.RequestCallBack;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.Step.FinishCallBack;
-import java.lang.ref.WeakReference;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
-public final class odx
-  implements Step.FinishCallBack
+public class odx
+  implements AladdinConfigHandler
 {
-  public odx(WeakReference paramWeakReference) {}
-  
-  public void a(String paramString)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    paramString = (QQStoryNetReqUtils.RequestCallBack)this.a.get();
-    if (paramString != null) {
-      paramString.a(Integer.valueOf(((Integer)((StoryConfigManager)SuperManager.a(10)).b("qqstory_i_am_vip", Integer.valueOf(-1))).intValue()));
+    QLog.d("NativeProteusBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = ocx.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("NativeProteusBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "native_article")) {
+        bgmq.a("native_proteus_offline_bid", str2);
+      }
     }
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    bgmq.a("native_proteus_offline_bid", "0");
   }
 }
 

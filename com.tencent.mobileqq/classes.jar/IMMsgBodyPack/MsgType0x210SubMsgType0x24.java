@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class MsgType0x210SubMsgType0x24
   extends JceStruct
 {
-  static ArrayList cache_vPluginNumList;
-  public ArrayList vPluginNumList;
+  static ArrayList<PluginNum> cache_vPluginNumList;
+  public ArrayList<PluginNum> vPluginNumList;
   
   public MsgType0x210SubMsgType0x24() {}
   
-  public MsgType0x210SubMsgType0x24(ArrayList paramArrayList)
+  public MsgType0x210SubMsgType0x24(ArrayList<PluginNum> paramArrayList)
   {
     this.vPluginNumList = paramArrayList;
   }

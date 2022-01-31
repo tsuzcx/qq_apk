@@ -1,63 +1,89 @@
-import android.media.AudioManager;
-import com.tencent.av.AVLog;
-import com.tencent.sharp.jni.TraeAudioManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class amgj
-  extends amgl
+  extends alzl<amgi>
 {
-  public amgj(TraeAudioManager paramTraeAudioManager)
+  @NonNull
+  public static amgi a()
   {
-    super(paramTraeAudioManager);
+    amgi localamgi2 = (amgi)alzw.a().a(550);
+    amgi localamgi1 = localamgi2;
+    if (localamgi2 == null) {
+      localamgi1 = new amgi();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberRecommend.ConfProcessor", 2, "loadConfig(): bean = " + localamgi1.toString());
+    }
+    return localamgi1;
   }
   
-  public String a()
+  public int a()
   {
-    return "DEVICE_WIREDHEADSET";
+    return 550;
   }
   
-  public void a()
+  @NonNull
+  public amgi a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext, false);
-    this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidMediaAudioManager.setWiredHeadsetOn(true);
-    e();
-    int i = 0;
-    for (;;)
+    return new amgi();
+  }
+  
+  @Nullable
+  public amgi a(alzs[] paramArrayOfalzs)
+  {
+    return amgi.a(paramArrayOfalzs);
+  }
+  
+  public Class a()
+  {
+    return amgi.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberRecommend.ConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void a(amgi paramamgi)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
     {
-      if (this.jdField_a_of_type_Boolean == true)
+      localObject = (QQAppInterface)localObject;
+      if (((QQAppInterface)localObject).a(347))
       {
-        if (TraeAudioManager.a(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager)) {
-          this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_AndroidContentContext, false);
-        }
-        long l;
-        if (i < 5) {
-          l = 1000L;
-        }
-        try
-        {
-          for (;;)
-          {
-            Thread.sleep(l);
-            i += 1;
-            break;
-            l = 4000L;
-          }
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          for (;;)
-          {
-            AVLog.e("TraeAudioManager", localInterruptedException.getMessage());
-          }
+        ((arxi)((QQAppInterface)localObject).getManager(347)).a = paramamgi;
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopMemberRecommend.ConfProcessor", 2, "onUpdate bean = " + paramamgi.toString());
         }
       }
     }
   }
   
-  public void b() {}
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amgj
  * JD-Core Version:    0.7.0.1
  */

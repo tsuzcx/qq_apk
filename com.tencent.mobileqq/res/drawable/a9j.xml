@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape android:shape="oval"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/qzone_skin_feed_second_background_color" />
+    <size android:height="21.0dip" android:width="21.0dip" />
+</shape>

@@ -1,65 +1,73 @@
-import com.tencent.mobileqq.activity.specialcare.VipSpecialSoundWebViewPlugin;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import java.util.HashMap;
-import org.json.JSONException;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.gdtad.aditem.GdtBaseAdItem;
 import org.json.JSONObject;
 
-public class ymx
-  extends DownloadListener
+class ymx
+  implements ynl
 {
-  public ymx(VipSpecialSoundWebViewPlugin paramVipSpecialSoundWebViewPlugin, ymz paramymz, String paramString) {}
-  
-  public void onDone(DownloadTask paramDownloadTask)
+  public boolean a(ymw paramymw, String paramString, String... paramVarArgs)
   {
-    int i = 0;
-    super.onDone(paramDownloadTask);
-    for (;;)
+    try
     {
-      try
+      paramString = new JSONObject(paramVarArgs[0]);
+      yny.a("GdtAppJumpJsCallHandler", "handleJsCallRequest " + paramString);
+      paramString.optString("adId");
+      paramString.optString("downloadUrlType");
+      if ("1".equals(paramString.optString("autoDownload"))) {}
+      for (;;)
       {
-        if (this.jdField_a_of_type_Ymz.b) {
-          return;
-        }
-        this.jdField_a_of_type_Ymz.b();
-        JSONObject localJSONObject1 = new JSONObject();
-        JSONObject localJSONObject2 = new JSONObject();
-        if ((paramDownloadTask.a() == 3) && (paramDownloadTask.jdField_a_of_type_Int == 0))
+        new Bundle();
+        GdtBaseAdItem localGdtBaseAdItem = GdtBaseAdItem.a(paramVarArgs[0]);
+        paramVarArgs = paramymw.a();
+        if (paramVarArgs != null)
         {
-          VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, "-->onDone,complete callback:" + this.jdField_a_of_type_JavaLangString + ",status:" + paramDownloadTask.a() + ",errCode:" + paramDownloadTask.jdField_a_of_type_Int + ",download result:" + i);
-          localJSONObject2.put("status", i);
-          localJSONObject1.put("code", 0);
-          localJSONObject1.put("data", localJSONObject2);
-          this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject1.toString() });
-          return;
+          paramString = paramVarArgs.getIntent();
+          if (TextUtils.isEmpty(paramString.getStringExtra("big_brother_ref_source_key")))
+          {
+            paramString = paramString.getStringExtra("big_brother_source_key");
+            localGdtBaseAdItem.a = new Bundle();
+            localGdtBaseAdItem.a.putString("big_brother_ref_source_key", paramString);
+          }
+        }
+        else
+        {
+          yox.a(localGdtBaseAdItem);
+          if (TextUtils.isEmpty(localGdtBaseAdItem.f)) {
+            break label187;
+          }
+          paramString = localGdtBaseAdItem.f;
+          label157:
+          if (paramymw == null) {
+            break label196;
+          }
+        }
+        label187:
+        label196:
+        for (paramymw = paramymw.a();; paramymw = null)
+        {
+          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "doAppJump", paramymw, paramString);
+          return true;
+          paramString = paramString.getStringExtra("big_brother_ref_source_key");
+          break;
+          paramString = localGdtBaseAdItem.b;
+          break label157;
         }
       }
-      catch (JSONException paramDownloadTask)
-      {
-        VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, "-->json execption:" + paramDownloadTask.toString());
-        return;
-      }
-      i = -1;
     }
-  }
-  
-  public void onProgress(DownloadTask paramDownloadTask)
-  {
-    VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, "-->onProgress");
-  }
-  
-  public boolean onStart(DownloadTask paramDownloadTask)
-  {
-    VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, "-->onStart");
-    if (VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin).get(paramDownloadTask.jdField_a_of_type_JavaLangString) == null) {
-      VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin).put(paramDownloadTask.jdField_a_of_type_JavaLangString, paramDownloadTask);
+    catch (Exception paramymw)
+    {
+      yny.d("GdtAppJumpJsCallHandler", "handleJsCallRequest", paramymw);
+      return true;
     }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ymx
  * JD-Core Version:    0.7.0.1
  */

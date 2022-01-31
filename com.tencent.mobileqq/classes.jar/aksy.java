@@ -1,21 +1,10 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.vipav.VipFunCallPreviewActivity;
-
-public class aksy
-  implements View.OnTouchListener
+public abstract interface aksy
 {
-  public aksy(VipFunCallPreviewActivity paramVipFunCallPreviewActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  public abstract void a(aksz paramaksz);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aksy
  * JD-Core Version:    0.7.0.1
  */

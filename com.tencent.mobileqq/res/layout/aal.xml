@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsDanmuLayout android:id="@id/root_layout" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/ff5" android:background="#ff171518" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <LinearLayout android:orientation="vertical" android:id="@id/dmh" android:layout_width="fill_parent" android:layout_height="58.0dip">
+            <RelativeLayout android:gravity="center_vertical" android:layout_gravity="right" android:id="@id/bd_" android:layout_width="28.0dip" android:layout_height="24.0dip">
+                <ImageView android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginLeft="7.0dip" android:layout_marginTop="7.0dip" android:layout_marginRight="7.0dip" android:src="@drawable/ds4" />
+            </RelativeLayout>
+            <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip">
+                <EditText android:textSize="16.0sp" android:textColor="#ffffffff" android:textColorHint="#ff777777" android:id="@id/bda" android:background="@null" android:layout_width="0.0dip" android:layout_height="24.0dip" android:hint="@string/pyn" android:cursorVisible="true" android:singleLine="true" android:maxLength="20" android:layout_weight="1.0" android:imeOptions="actionDone" android:textCursorDrawable="@color/tn" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:id="@id/i1y" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip">
+            <HorizontalScrollView android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="50.0dip">
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/i1z" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+            </HorizontalScrollView>
+        </LinearLayout>
+        <RelativeLayout android:id="@id/jti" android:layout_width="fill_parent" android:layout_height="50.0dip" android:showDividers="beginning">
+            <View android:id="@id/i22" android:background="#10ffffff" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+            <LinearLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toLeftOf="@id/jk5">
+                <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:id="@id/bdb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="12" android:includeFontPadding="false" />
+                <TextView android:textSize="14.0sp" android:textColor="#ff777777" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="/20" android:includeFontPadding="false" />
+            </LinearLayout>
+            <Button android:textSize="14.0dip" android:textColor="#ff777777" android:id="@id/jk5" android:background="@drawable/a1m" android:layout_width="60.0dip" android:layout_height="30.0dip" android:layout_marginLeft="18.0dip" android:layout_marginRight="12.0dip" android:text="@string/q0v" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsDanmuLayout>

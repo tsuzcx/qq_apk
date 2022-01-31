@@ -1,24 +1,29 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import android.support.v4.app.FragmentActivity;
 
-class afml
-  implements Runnable
+public class afml
+  extends aflu
 {
-  afml(afmk paramafmk) {}
+  public static final int[] a = { 2131625174 };
+  public static final int[] b = { 2131298540 };
   
-  public void run()
+  public afml(FragmentActivity paramFragmentActivity)
   {
-    if (NearbyProfileEditPanel.a(this.a.a) != null)
-    {
-      NearbyProfileEditPanel.a(this.a.a).setVisibility(0);
-      NearbyProfileEditPanel.a(this.a.a);
-      NearbyProfileEditPanel.a(this.a.a, null);
-    }
+    super(paramFragmentActivity);
+  }
+  
+  protected int[] a()
+  {
+    return b;
+  }
+  
+  protected int[] b()
+  {
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afml
  * JD-Core Version:    0.7.0.1
  */

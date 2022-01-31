@@ -1,31 +1,68 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.lbs.BasicLocation;
-import com.tencent.biz.qqstory.model.lbs.LbsManager;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.LbsUpdateListener;
-import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase;
-import com.tencent.biz.qqstory.storyHome.model.FeedManager;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class odi
-  implements LbsManager.LbsUpdateListener
+  implements AladdinConfigHandler
 {
-  public odi(HomeFeedPresenter paramHomeFeedPresenter, LbsManager paramLbsManager) {}
+  private static final boolean a;
+  private static boolean b;
   
-  public void a(boolean paramBoolean, @Nullable BasicLocation paramBasicLocation)
+  static
   {
-    SLog.e("Q.qqstory.home.data.HomeFeedPresenter", "lbs update %b %s", new Object[] { Boolean.valueOf(paramBoolean), paramBasicLocation });
-    this.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager.b(this);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a.get())
+    if (((Integer)bgmq.a("readinjoy_channel_mode", Integer.valueOf(-1))).intValue() == 2) {}
+    for (boolean bool = true;; bool = false)
     {
-      SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "is destroy");
+      a = bool;
+      b = true;
       return;
     }
-    HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter).a = paramBasicLocation;
-    HomeFeedPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter).a(null, 0);
-    ((FeedManager)SuperManager.a(11)).a = paramBasicLocation;
+  }
+  
+  public static void a(boolean paramBoolean)
+  {
+    b = paramBoolean;
+  }
+  
+  public static boolean a()
+  {
+    if (((Integer)bgmq.a("readinjoy_channel_mode", Integer.valueOf(-1))).intValue() == 2) {}
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("ChannelModeConfigHandler", 2, "isShow = " + bool);
+      return bool;
+    }
+  }
+  
+  public static boolean b()
+  {
+    return b;
+  }
+  
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  {
+    QLog.d("ChannelModeConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = ocx.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("ChannelModeConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "channel_mode")) {
+        bgmq.a("readinjoy_channel_mode", Integer.valueOf(Integer.valueOf(str2).intValue()));
+      }
+    }
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    QLog.d("ChannelModeConfigHandler", 1, "[onWipeConfig]");
+    bgmq.a("readinjoy_channel_mode", Integer.valueOf(-1));
   }
 }
 

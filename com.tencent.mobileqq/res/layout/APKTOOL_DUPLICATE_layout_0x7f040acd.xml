@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202cb" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.component.banner.NetStateCheckBanner android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3096" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <com.tencent.mobileqq.widget.SlideDetectListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3097" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:cacheColorHint="@null" android:divider="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022347" android:dividerHeight="1.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a3096" />
-    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3098" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</RelativeLayout>

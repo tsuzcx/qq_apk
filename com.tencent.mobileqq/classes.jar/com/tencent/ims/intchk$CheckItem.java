@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class intchk$CheckItem
-  extends MessageMicro
+  extends MessageMicro<CheckItem>
 {
   public static final int BYTES_MATCH_PATTERN_FIELD_NUMBER = 6;
   public static final int BYTES_MODULE_NAME_FIELD_NUMBER = 3;

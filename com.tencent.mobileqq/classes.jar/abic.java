@@ -1,23 +1,14 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import android.content.DialogInterface.OnClickListener;
 
-public class abic
-  implements DialogInterface.OnDismissListener
+public final class abic
+  implements DialogInterface.OnClickListener
 {
-  public abic(ARMapActivity paramARMapActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (ARMapActivity.i(this.a)) {
-      this.a.finish();
-    }
-    ARMapActivity.a(this.a, null);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abic
  * JD-Core Version:    0.7.0.1
  */

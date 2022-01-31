@@ -9,11 +9,11 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class jstoken$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_err_info = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField rpt_bytes_apilist = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> rpt_bytes_apilist = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBUInt32Field uint32_frequency = PBField.initUInt32(0);
   public final PBUInt32Field uint32_result = PBField.initUInt32(0);
   public final PBUInt32Field uint32_token_time_out = PBField.initUInt32(0);
@@ -27,7 +27,7 @@ public final class jstoken$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.opengroup.jstoken.RspBody
  * JD-Core Version:    0.7.0.1
  */

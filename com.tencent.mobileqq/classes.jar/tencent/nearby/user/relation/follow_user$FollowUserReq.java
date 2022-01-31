@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class follow_user$FollowUserReq
-  extends MessageMicro
+  extends MessageMicro<FollowUserReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32 }, new String[] { "uin", "dst_uin", "follow_type", "source" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(1) }, FollowUserReq.class);
   public final PBUInt64Field dst_uin = PBField.initUInt64(0L);

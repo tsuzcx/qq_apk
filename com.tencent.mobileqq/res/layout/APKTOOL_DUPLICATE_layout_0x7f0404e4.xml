@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="21.0sp" android:textStyle="bold" android:textColor="@android:color/black" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a176a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="¥" />
-    <TextView android:textSize="44.0sp" android:textStyle="bold" android:textColor="@android:color/black" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a176b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="25.80" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a176a" />
-    <TextView android:textSize="16.0sp" android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a176c" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="付款说明" android:includeFontPadding="false" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a176b" android:layout_centerHorizontal="true" />
-</RelativeLayout>

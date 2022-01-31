@@ -1,36 +1,53 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import com.tencent.qqconnect.wtlogin.Login;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amdp
-  implements TextWatcher
+  implements alzn<String>
 {
-  public amdp(Login paramLogin) {}
+  public boolean a;
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a(String paramString)
   {
-    if (paramInt3 < 2)
-    {
-      this.a.jdField_b_of_type_Boolean = false;
-      if (paramCharSequence.length() == 0) {
-        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
-      }
+    boolean bool = false;
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("OpenSdkSwitchConfig", 1, "OpenVirtual.config content is empty");
     }
-    else
+    for (;;)
     {
       return;
+      QLog.i("OpenSdkSwitchConfig", 1, "OpenVirtual.switch.config.parse=" + paramString);
+      try
+      {
+        if (new JSONObject(paramString).optInt("enable", 0) == 1) {
+          bool = true;
+        }
+        this.a = bool;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("OpenSdkSwitchConfig", 2, new Object[] { "OpenVirtual.switch.config.parse=", toString() });
+          return;
+        }
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("OpenSdkSwitchConfig", 1, "OpenVirtual.config.getException.", paramString);
+      }
     }
-    this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("OpenSdkSwitchConfig={");
+    localStringBuilder.append("enable:").append(this.a);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amdp
  * JD-Core Version:    0.7.0.1
  */

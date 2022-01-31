@@ -10,9 +10,9 @@ public final class QzoneUserInfo
   extends JceStruct
   implements Cloneable
 {
-  static Map cache_extendInfo = new HashMap();
+  static Map<String, String> cache_extendInfo = new HashMap();
   public int eStarState;
-  public Map extendInfo;
+  public Map<String, String> extendInfo;
   
   static
   {
@@ -21,7 +21,7 @@ public final class QzoneUserInfo
   
   public QzoneUserInfo() {}
   
-  public QzoneUserInfo(int paramInt, Map paramMap)
+  public QzoneUserInfo(int paramInt, Map<String, String> paramMap)
   {
     this.eStarState = paramInt;
     this.extendInfo = paramMap;

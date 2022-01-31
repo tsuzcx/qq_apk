@@ -8,17 +8,17 @@ import java.util.ArrayList;
 public final class SubScribeSDKDownloadTaskByViaRequest
   extends JceStruct
 {
-  static ArrayList<String> a = new ArrayList();
-  static ArrayList<IPCSDKDownloadInfo> b;
+  static ArrayList<IPCSDKDownloadInfo> cache_data;
+  static ArrayList<String> cache_viaList = new ArrayList();
   public ArrayList<IPCSDKDownloadInfo> data = null;
   public ArrayList<String> viaList = null;
   
   static
   {
-    a.add("");
-    b = new ArrayList();
+    cache_viaList.add("");
+    cache_data = new ArrayList();
     IPCSDKDownloadInfo localIPCSDKDownloadInfo = new IPCSDKDownloadInfo();
-    b.add(localIPCSDKDownloadInfo);
+    cache_data.add(localIPCSDKDownloadInfo);
   }
   
   public SubScribeSDKDownloadTaskByViaRequest() {}
@@ -31,8 +31,8 @@ public final class SubScribeSDKDownloadTaskByViaRequest
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
-    this.viaList = ((ArrayList)paramJceInputStream.read(a, 0, true));
-    this.data = ((ArrayList)paramJceInputStream.read(b, 1, false));
+    this.viaList = ((ArrayList)paramJceInputStream.read(cache_viaList, 0, true));
+    this.data = ((ArrayList)paramJceInputStream.read(cache_data, 1, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -45,7 +45,7 @@ public final class SubScribeSDKDownloadTaskByViaRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.param.jce.SubScribeSDKDownloadTaskByViaRequest
  * JD-Core Version:    0.7.0.1
  */

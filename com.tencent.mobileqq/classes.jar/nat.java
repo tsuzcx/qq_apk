@@ -1,16 +1,10 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.util.VideoFeedsWeiShiUtils;
-import com.tencent.open.downloadnew.DownloadManager;
-
-public final class nat
-  implements DialogInterface.OnClickListener
+public class nat
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    DownloadManager.a().a(VideoFeedsWeiShiUtils.a());
-  }
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
 }
 
 

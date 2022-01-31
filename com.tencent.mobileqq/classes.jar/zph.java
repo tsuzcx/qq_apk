@@ -1,36 +1,17 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.model.PhoneContactManager.IPhoneContactListener;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.qphone.base.util.QLog;
 
 public class zph
-  implements Runnable
 {
-  public zph(PhoneContactManagerImp paramPhoneContactManagerImp) {}
-  
-  public void run()
+  public static void a(String paramString1, String paramString2)
   {
-    synchronized (PhoneContactManagerImp.a(this.a))
-    {
-      try
-      {
-        Iterator localIterator = PhoneContactManagerImp.a(this.a).iterator();
-        while (localIterator.hasNext()) {
-          ((PhoneContactManager.IPhoneContactListener)localIterator.next()).a(this.a.a);
-        }
-        localObject = finally;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-    }
+    QLog.d(paramString1, 1, paramString2);
   }
+  
+  public static void b(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zph
  * JD-Core Version:    0.7.0.1
  */

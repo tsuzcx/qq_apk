@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.businessCard.data.CardOCRInfo;
+import android.view.View;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.widget.ExpandableListView;
 
-public final class abvj
-  implements Parcelable.Creator
+public class abvj
+  implements bejj
 {
-  public CardOCRInfo a(Parcel paramParcel)
-  {
-    return new CardOCRInfo(paramParcel);
-  }
+  public abvj(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  public CardOCRInfo[] a(int paramInt)
+  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt, long paramLong)
   {
-    return new CardOCRInfo[paramInt];
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abvj
  * JD-Core Version:    0.7.0.1
  */

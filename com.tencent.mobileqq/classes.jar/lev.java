@@ -1,28 +1,44 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.av.business.manager.pendant.PendantItem;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
 
-public class lev
-  implements Runnable
+public abstract interface lev
 {
-  public lev(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
+  public abstract int a(int paramInt, boolean paramBoolean1, lfl paramlfl, boolean paramBoolean2);
   
-  public void run()
-  {
-    if (this.a.app != null)
-    {
-      QQMessageFacade localQQMessageFacade = this.a.app.a();
-      if (localQQMessageFacade != null)
-      {
-        int i = localQQMessageFacade.b();
-        ReadInJoyChannelActivity.a(this.a, i);
-      }
-    }
-  }
+  public abstract void a();
+  
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(PendantItem paramPendantItem, VideoMaterial paramVideoMaterial);
+  
+  public abstract void a(FilterDesc paramFilterDesc);
+  
+  public abstract void a(lfi paramlfi, lfl paramlfl);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(lfa paramlfa);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract void c(int paramInt1, int paramInt2);
+  
+  public abstract boolean c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lev
  * JD-Core Version:    0.7.0.1
  */

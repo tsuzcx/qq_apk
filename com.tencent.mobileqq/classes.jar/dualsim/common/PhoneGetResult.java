@@ -4,29 +4,60 @@ public class PhoneGetResult
 {
   public static final int SOURCE_CACHE = 1;
   public static final int SOURCE_SERVER = 0;
-  public int customOrderId;
-  public long doneTime;
-  public int errorCode = -20001;
-  public String extraInfo;
-  public int function;
-  public long imei;
-  public long imsi;
-  public String innerPhoneNumber;
-  public int networkCode;
-  public int orderId;
-  public long orderTime;
-  public String phoneNumber;
-  public int province;
-  public int queryType = 2;
-  public int ratType;
-  public int respCode;
-  public String respDesc;
-  public int respType;
-  public int result = -1;
-  public int source = 0;
-  public int subErrCode;
+  private PhoneGetResult.PhoneGetDetail detail = new PhoneGetResult.PhoneGetDetail();
+  private int errorCode = -20001;
+  private String phoneNumber;
   
   public PhoneGetResult(int paramInt)
+  {
+    this.errorCode = paramInt;
+  }
+  
+  public PhoneGetResult(int paramInt, PhoneGetResult.PhoneGetDetail paramPhoneGetDetail)
+  {
+    this.errorCode = paramInt;
+    this.detail = paramPhoneGetDetail;
+  }
+  
+  public PhoneGetResult(int paramInt, String paramString)
+  {
+    this.errorCode = paramInt;
+    this.phoneNumber = paramString;
+  }
+  
+  public PhoneGetResult(int paramInt, String paramString, PhoneGetResult.PhoneGetDetail paramPhoneGetDetail)
+  {
+    this.errorCode = paramInt;
+    this.phoneNumber = paramString;
+    this.detail = paramPhoneGetDetail;
+  }
+  
+  public String getCurrentPhoneNumber()
+  {
+    return this.phoneNumber;
+  }
+  
+  public PhoneGetResult.PhoneGetDetail getDetail()
+  {
+    return this.detail;
+  }
+  
+  public int getErrorCode()
+  {
+    return this.errorCode;
+  }
+  
+  public String getErrorCodeName()
+  {
+    return DualErrCode.printCodeName(this.errorCode);
+  }
+  
+  public void setCurrentPhoneNumber(String paramString)
+  {
+    this.phoneNumber = paramString;
+  }
+  
+  public void setErrorCode(int paramInt)
   {
     this.errorCode = paramInt;
   }

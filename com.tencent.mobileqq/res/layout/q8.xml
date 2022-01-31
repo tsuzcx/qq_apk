@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout android:id="@id/j8z" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/j8x" layout="@layout/ib" />
+    <FrameLayout android:id="@id/j8y" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/e6u" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/bg_texture_theme_version2" android:scaleType="centerCrop" />
+        <com.tencent.mobileqq.fpsreport.FPSXListView android:scrollbarStyle="outsideOverlay" android:id="@id/lebasv" android:paddingBottom="54.0dip" android:fadingEdge="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:foreground="@drawable/skin_header_bar_shadow" android:divider="@null" android:dividerHeight="0.0px" android:foregroundGravity="fill_horizontal|center|top" />
+    </FrameLayout>
+</com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout>

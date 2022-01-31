@@ -1,33 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
-import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar.OnTabChangeListener;
+import com.tencent.av.video.effect.core.qqavimage.QQAVImageFilterGroup;
+import com.tencent.av.video.effect.core.qqavimage.QQAVImageGaussianBlurFilter;
 
 public class mjy
-  implements View.OnClickListener
+  extends QQAVImageFilterGroup
 {
-  long jdField_a_of_type_Long = 0L;
-  
-  public mjy(BaseTabbar paramBaseTabbar, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public mjy()
   {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long < 300L)
+    super(null);
+    int i = 0;
+    while (i < 3)
     {
-      this.jdField_a_of_type_Long = 0L;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.a != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.a.a(this.jdField_a_of_type_Int);
-      }
-      return;
+      addFilter(new QQAVImageGaussianBlurFilter());
+      i += 1;
     }
-    this.jdField_a_of_type_Long = l;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.setSelectedTab(this.jdField_a_of_type_Int, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mjy
  * JD-Core Version:    0.7.0.1
  */

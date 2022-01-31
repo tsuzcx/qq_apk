@@ -1,5 +1,6 @@
 package mqq.app;
 
+import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.qphone.base.remote.SimpleAccount;
@@ -105,7 +106,7 @@ public class AccountManagerImpl
     this.app.startServlet(localNewIntent);
   }
   
-  public void sendRegistByPhoneNumber(String paramString1, byte paramByte, String paramString2, String paramString3, Long paramLong, AccountObserver paramAccountObserver)
+  public void sendRegistByPhoneNumber(String paramString1, byte paramByte, String paramString2, String paramString3, String paramString4, Long paramLong, String paramString5, Bundle paramBundle, AccountObserver paramAccountObserver)
   {
     NewIntent localNewIntent = new NewIntent(this.app.getApplication(), BuiltInServlet.class);
     localNewIntent.putExtra("action", 1003);
@@ -114,6 +115,11 @@ public class AccountManagerImpl
     localNewIntent.putExtra("language", paramByte);
     localNewIntent.putExtra("appid", paramLong);
     localNewIntent.putExtra("verifySig", paramString1);
+    localNewIntent.putExtra("appVersion", paramString5);
+    if (!TextUtils.isEmpty(paramString4)) {
+      localNewIntent.putExtra("inviteCode", paramString4);
+    }
+    localNewIntent.putExtras(paramBundle);
     localNewIntent.withouLogin = true;
     localNewIntent.setObserver(paramAccountObserver);
     this.app.startServlet(localNewIntent);
@@ -138,7 +144,7 @@ public class AccountManagerImpl
     this.app.startServlet(localNewIntent);
   }
   
-  public void sendRegisterBySetPass(String paramString1, String paramString2, String paramString3, boolean paramBoolean, AccountObserver paramAccountObserver)
+  public void sendRegisterBySetPass(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5, AccountObserver paramAccountObserver)
   {
     NewIntent localNewIntent = new NewIntent(this.app.getApplication(), BuiltInServlet.class);
     localNewIntent.putExtra("action", 1005);
@@ -146,6 +152,25 @@ public class AccountManagerImpl
     localNewIntent.putExtra("nick", paramString2);
     localNewIntent.putExtra("code", paramString3);
     localNewIntent.putExtra("bindMobile", paramBoolean);
+    if (!TextUtils.isEmpty(paramString4)) {
+      localNewIntent.putExtra("unBindlhUin", paramString4);
+    }
+    localNewIntent.putExtra("appVersion", paramString5);
+    localNewIntent.setObserver(paramAccountObserver);
+    localNewIntent.withouLogin = true;
+    this.app.startServlet(localNewIntent);
+  }
+  
+  public void sendRegisterBySetPassWithLH(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, String paramString5, AccountObserver paramAccountObserver)
+  {
+    NewIntent localNewIntent = new NewIntent(this.app.getApplication(), BuiltInServlet.class);
+    localNewIntent.putExtra("action", 1005);
+    localNewIntent.putExtra("password", paramString1);
+    localNewIntent.putExtra("nick", paramString2);
+    localNewIntent.putExtra("code", paramString3);
+    localNewIntent.putExtra("bindMobile", paramBoolean);
+    localNewIntent.putExtra("lhuin", paramString4);
+    localNewIntent.putExtra("appVersion", paramString5);
     localNewIntent.setObserver(paramAccountObserver);
     localNewIntent.withouLogin = true;
     this.app.startServlet(localNewIntent);
@@ -173,43 +198,33 @@ public class AccountManagerImpl
   
   public void updateSKey(AccountObserver paramAccountObserver)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
     if (this.app != null)
     {
-      TicketManager localTicketManager = (TicketManager)this.app.getManager(2);
-      localObject1 = localObject2;
-      if (localTicketManager != null)
-      {
-        localObject1 = localObject2;
-        if (!TextUtils.isEmpty(this.app.getAccount())) {
-          localObject1 = localTicketManager.getSkey(this.app.getAccount());
-        }
-      }
+      localObject = (TicketManager)this.app.getManager(2);
+      if ((localObject == null) || (TextUtils.isEmpty(this.app.getAccount()))) {}
     }
-    if (paramAccountObserver != null) {
-      paramAccountObserver.onUpdateSKey((String)localObject1, "");
+    for (Object localObject = ((TicketManager)localObject).getSkey(this.app.getAccount());; localObject = null)
+    {
+      if (paramAccountObserver != null) {
+        paramAccountObserver.onUpdateSKey((String)localObject, "");
+      }
+      return;
     }
   }
   
   public void updateSTwxWeb(AccountObserver paramAccountObserver)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
     if (this.app != null)
     {
-      TicketManager localTicketManager = (TicketManager)this.app.getManager(2);
-      localObject1 = localObject2;
-      if (localTicketManager != null)
-      {
-        localObject1 = localObject2;
-        if (!TextUtils.isEmpty(this.app.getAccount())) {
-          localObject1 = localTicketManager.getStweb(this.app.getAccount());
-        }
-      }
+      localObject = (TicketManager)this.app.getManager(2);
+      if ((localObject == null) || (TextUtils.isEmpty(this.app.getAccount()))) {}
     }
-    if (paramAccountObserver != null) {
-      paramAccountObserver.onUpdateSTwxWeb((String)localObject1);
+    for (Object localObject = ((TicketManager)localObject).getStweb(this.app.getAccount());; localObject = null)
+    {
+      if (paramAccountObserver != null) {
+        paramAccountObserver.onUpdateSTwxWeb((String)localObject);
+      }
+      return;
     }
   }
   

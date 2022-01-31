@@ -1,42 +1,60 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity;
+import android.text.TextUtils;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
 
 public class abpd
-  extends BroadcastReceiver
+  extends AccountObserver
 {
-  public abpd(ARMapLoadingActivity paramARMapLoadingActivity) {}
+  public abpd(RegisterSendUpSms paramRegisterSendUpSms) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onRegisterQuerySmsStatResp(boolean paramBoolean, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    paramContext = paramIntent.getAction();
+    RegisterSendUpSms.c(this.a, paramInt1);
     if (QLog.isColorLevel()) {
-      QLog.d("ARMapLoadingActivity", 2, String.format("onReceive action=%s", new Object[] { paramContext }));
+      QLog.d("RegisterSendUpSms", 2, "onRegisterQuerySmsStatResp isSuccess=" + paramBoolean + ", code=" + paramInt1 + ", uin=" + paramString1 + ", nick=" + paramString2 + ", faceUrl=" + paramString3 + ", errmsg=" + paramString4);
     }
-    if ("com.tencent.mobileqq.armap.ACTION_START_THREAD_COMPLETED".equals(paramContext)) {
-      if (paramIntent.getBooleanExtra("pre_start_thread", false)) {
-        ARMapLoadingActivity.a(this.a, true);
+    if (paramInt1 == 4) {}
+    for (;;)
+    {
+      RegisterSendUpSms.a(this.a, 0);
+      return;
+      RegisterSendUpSms.a(this.a).setEnabled(true);
+      if (paramInt1 == 0)
+      {
+        RegisterSendUpSms.a(this.a).setText(ajjy.a(2131647574));
+        RegisterSendUpSms.a(this.a, paramString1);
+        RegisterSendUpSms.b(this.a, paramString2);
+        RegisterSendUpSms.c(this.a, paramString3);
+        RegisterSendUpSms.a(this.a);
+        continue;
+      }
+      paramString1 = paramString4;
+      if (paramInt1 == -1) {}
+      try
+      {
+        paramString1 = new String(paramArrayOfByte, "utf-8");
+        paramArrayOfByte = paramString1;
+        if (TextUtils.isEmpty(paramString1)) {
+          paramArrayOfByte = this.a.getString(2131651349);
+        }
+        bbmy.a(this.a, paramArrayOfByte.trim(), 0).b(this.a.getTitleBarHeight());
+      }
+      catch (Throwable paramArrayOfByte)
+      {
+        for (;;)
+        {
+          paramArrayOfByte.printStackTrace();
+          paramString1 = paramString4;
+        }
       }
     }
-    while (!"com.tencent.mobileqq.armap.ACTION_START_ARMAP_COMPLETED".equals(paramContext))
-    {
-      return;
-      ARMapLoadingActivity.a(this.a).removeMessages(108);
-      ARMapLoadingActivity.a(this.a).l = System.currentTimeMillis();
-      ARMapLoadingActivity.a(this.a, false);
-      ARMapLoadingActivity.a(this.a);
-      return;
-    }
-    ARMapLoadingActivity.a(this.a).removeMessages(109);
-    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abpd
  * JD-Core Version:    0.7.0.1
  */

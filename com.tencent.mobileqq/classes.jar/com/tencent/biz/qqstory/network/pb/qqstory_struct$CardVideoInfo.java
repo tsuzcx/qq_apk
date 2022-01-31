@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_struct$CardVideoInfo
-  extends MessageMicro
+  extends MessageMicro<CardVideoInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField feed_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -18,7 +18,7 @@ public final class qqstory_struct$CardVideoInfo
   public final PBUInt32Field total_comment_num = PBField.initUInt32(0);
   public final PBUInt32Field total_like_num = PBField.initUInt32(0);
   public final PBBytesField vid = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField vid_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> vid_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBBytesField video_cover = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt64Field view_total_num = PBField.initUInt64(0L);
   
@@ -34,7 +34,7 @@ public final class qqstory_struct$CardVideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.CardVideoInfo
  * JD-Core Version:    0.7.0.1
  */

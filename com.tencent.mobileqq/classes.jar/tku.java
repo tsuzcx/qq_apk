@@ -1,27 +1,35 @@
-import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.playvideo.entrance.SingleFeedPlayInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-class tku
-  extends ContactBindObserver
+public class tku
+  extends tjg<SingleFeedPlayInfo>
 {
-  tku(tkt paramtkt) {}
-  
-  protected void b(boolean paramBoolean)
+  public tku(SingleFeedPlayInfo paramSingleFeedPlayInfo)
   {
-    super.b(paramBoolean);
-    PhoneUnityChangeActivity.a(this.a.a.a);
-    this.a.a.a.app.unRegistObserver(this);
-    if (paramBoolean)
-    {
-      this.a.a.a.setResult(4001);
-      this.a.a.a.finish();
-    }
+    super(paramSingleFeedPlayInfo);
+  }
+  
+  public uiw a(String paramString)
+  {
+    paramString = new uiw(((SingleFeedPlayInfo)this.a).mFeedFeedId, 0, "", "");
+    paramString.b = ((SingleFeedPlayInfo)this.a).mFeedPullType;
+    return paramString;
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, tjy paramtjy)
+  {
+    ArrayList localArrayList = new ArrayList();
+    tjh localtjh = new tjh(((SingleFeedPlayInfo)this.a).mFeedFeedId, new uiw(((SingleFeedPlayInfo)this.a).mFeedFeedId, 0, "", ""));
+    localtjh.a.b = ((SingleFeedPlayInfo)this.a).mFeedPullType;
+    localArrayList.add(localtjh);
+    paramtjy.a(new ErrorMessage(), localArrayList, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tku
  * JD-Core Version:    0.7.0.1
  */

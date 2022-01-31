@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import lbr;
+import nef;
 
 public class VideoInfo$ChannelInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new lbr();
+  public static final Parcelable.Creator<ChannelInfo> CREATOR = new nef();
   public int a;
   public String a;
   public int b;
@@ -31,6 +31,11 @@ public class VideoInfo$ChannelInfo
   public int describeContents()
   {
     return 0;
+  }
+  
+  public String toString()
+  {
+    return "ChannelInfo{channelID=" + this.jdField_a_of_type_Int + ", channelType=" + this.jdField_b_of_type_Int + ", channelName='" + this.jdField_a_of_type_JavaLangString + '\'' + ", channelDisplayName='" + this.jdField_b_of_type_JavaLangString + '\'' + ", channelURL='" + this.jdField_c_of_type_JavaLangString + '\'' + ", isTopic=" + this.jdField_c_of_type_Int + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

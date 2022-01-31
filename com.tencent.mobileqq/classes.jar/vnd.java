@@ -1,404 +1,404 @@
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
+import android.net.Uri;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.util.PAVideoStructMsgUtil;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.structmsg.AbsStructMsgElement;
-import com.tencent.mobileqq.structmsg.AbsStructMsgItem;
-import com.tencent.mobileqq.structmsg.StructMsgFactory;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemCover;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout4;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout5;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemPAAudio;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemPAVideo;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemSummary;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import com.tencent.biz.qqstory.view.PressDarkImageButton;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.tmassistantbase.common.TMAssistantDownloadConst;
+import dov.com.qq.im.QIMCameraCaptureActivity;
+import dov.com.qq.im.capture.data.QIMBeautyItem;
+import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoActivity;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class vnd
-  implements Runnable
 {
-  public vnd(StructingMsgItemBuilder paramStructingMsgItemBuilder, ChatMessage paramChatMessage, Context paramContext) {}
+  public static String a;
   
-  public void run()
+  static
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("StructingMsgItemBuildertime", 4, "zhuanfa struct_public start:" + System.currentTimeMillis());
+    jdField_a_of_type_JavaLangString = "{\"appName\":\"微视\",\"appid\":\"1101083114 \",\"isAutoDownload\":\"1\",\"isAutoInstall\":\"1\",\"isAutoInstallBySDK\":1,\"isShowNotification\":\"1\",\"packageName\":\"com.tencent.weishi\",\"url\":\"https://qzs.qzone.qq.com/qzone/qzact/act/external/weishi/weishi-download/index.html?pkg=3006\",\"via\":\"ANDROIDQQ.FEED\"}";
+  }
+  
+  private static DownloadInfo a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("forward", 2, "structingMsgItem public forward");
-    }
-    MessageForStructing localMessageForStructing;
-    AbsShareMsg localAbsShareMsg;
-    Object localObject1;
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage != null) && ((this.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForStructing)))
+    DownloadInfo localDownloadInfo = new DownloadInfo();
+    try
     {
-      localMessageForStructing = (MessageForStructing)this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-      if ((localMessageForStructing.structingMsg instanceof AbsShareMsg))
-      {
-        localAbsShareMsg = (AbsShareMsg)localMessageForStructing.structingMsg;
-        if ((!(localAbsShareMsg instanceof StructMsgForGeneralShare)) || (!((StructMsgForGeneralShare)localAbsShareMsg).mIsPAVideoStructMsg)) {
-          break label272;
-        }
-        localObject1 = (StructMsgForGeneralShare)StructMsgFactory.a(localAbsShareMsg.getBytes());
-        PAVideoStructMsgUtil.a((StructMsgForGeneralShare)localObject1);
-        ((StructMsgForGeneralShare)localObject1).mSourceAction = "web";
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-        ((StructMsgForGeneralShare)localObject1).mSourceUrl = PAVideoStructMsgUtil.a((String)localObject2);
-        ((StructMsgForGeneralShare)localObject1).mSourceName = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d;
-        ((StructMsgForGeneralShare)localObject1).source_puin = ((String)localObject2);
-        ((StructMsgForGeneralShare)localObject1).mSourceIcon = "https://q.url.cn/s/jBJuV";
-        ((StructMsgForGeneralShare)localObject1).setFlag(0);
-        localObject2 = new Bundle();
-        ((Bundle)localObject2).putInt("forward_type", -3);
-        ((Bundle)localObject2).putInt("structmsg_service_id", ((StructMsgForGeneralShare)localObject1).mMsgServiceID);
-        ((Bundle)localObject2).putByteArray("stuctmsg_bytes", ((StructMsgForGeneralShare)localObject1).getBytes());
-        localObject1 = new Intent();
-        ((Intent)localObject1).putExtras((Bundle)localObject2);
-        ForwardBaseOption.a((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_AndroidContentContext, (Intent)localObject1, 21);
+      JSONObject localJSONObject = new JSONObject(paramString);
+      localDownloadInfo.jdField_c_of_type_JavaLangString = localJSONObject.getString("appid");
+      localDownloadInfo.jdField_d_of_type_JavaLangString = localJSONObject.getString("url");
+      localDownloadInfo.e = localJSONObject.getString("packageName");
+      localDownloadInfo.h = localJSONObject.getString("via");
+      localDownloadInfo.a = true;
+      localDownloadInfo.jdField_d_of_type_Boolean = true;
+      localDownloadInfo.i = TMAssistantDownloadConst.SHOW_NOTIFICATION_TRUE;
+      String str = localJSONObject.getString("isAutoInstall");
+      if (str != null) {
+        localDownloadInfo.a = str.equals("1");
       }
-    }
-    return;
-    label272:
-    Object localObject13 = null;
-    Object localObject12 = null;
-    Object localObject11 = null;
-    Object localObject3 = null;
-    Object localObject10 = null;
-    Object localObject2 = null;
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d;
-    String str1 = localAbsShareMsg.mSourceIcon;
-    Object localObject4 = localAbsShareMsg.mMsgUrl;
-    Object localObject9 = localAbsShareMsg.mMsgAction;
-    Object localObject7 = localAbsShareMsg.mMsgActionData;
-    Object localObject6 = localAbsShareMsg.mMsg_A_ActionData;
-    Object localObject5 = localAbsShareMsg.mMsg_I_ActionData;
-    Object localObject8 = localAbsShareMsg.mMsgBrief;
-    long l = localAbsShareMsg.msgId;
-    String str3 = localAbsShareMsg.uin;
-    int i;
-    if ((localAbsShareMsg instanceof StructMsgForGeneralShare))
-    {
-      localObject1 = (StructMsgForGeneralShare)localAbsShareMsg;
-      StructingMsgItemBuilder.b = StructMsgForGeneralShare.clickedItemIndex;
-      if (StructingMsgItemBuilder.b != 0)
+      str = localJSONObject.getString("isAutoInstallBySDK");
+      if (str != null) {
+        localDownloadInfo.jdField_d_of_type_Boolean = str.equals("1");
+      }
+      str = localJSONObject.getString("isShowNotification");
+      if (str != null) {
+        if (!str.equals("1")) {
+          break label186;
+        }
+      }
+      label186:
+      for (int i = TMAssistantDownloadConst.SHOW_NOTIFICATION_TRUE;; i = TMAssistantDownloadConst.SHOW_NOTIFICATION_FALSE)
       {
-        i = 0;
-        if (i < localAbsShareMsg.getItemCount())
+        localDownloadInfo.i = i;
+        localDownloadInfo.jdField_c_of_type_Boolean = true;
+        localDownloadInfo.m = "biz_src_jc_qzone";
+        localDownloadInfo.f = localJSONObject.getString("appName");
+        return localDownloadInfo;
+      }
+      return null;
+    }
+    catch (JSONException localJSONException)
+    {
+      QLog.e("WeishiGuideUtils", 4, "json err:" + paramString);
+    }
+  }
+  
+  public static vne a(Object paramObject)
+  {
+    int k = 1;
+    String str1 = "1";
+    String str3 = "";
+    String str2 = "5";
+    String str4 = "";
+    int j = 0;
+    vne localvne = null;
+    Object localObject = "";
+    if (paramObject != null) {
+      if ((paramObject instanceof QIMFilterCategoryItem))
+      {
+        localObject = (QIMFilterCategoryItem)paramObject;
+        if (((QIMFilterCategoryItem)localObject).a)
         {
-          localObject1 = localAbsShareMsg.getItemByIndex(i);
-          if ((TextUtils.isEmpty(((AbsStructMsgElement)localObject1).s)) || (Integer.valueOf(((AbsStructMsgElement)localObject1).s).intValue() != StructingMsgItemBuilder.b) || ((!(localObject1 instanceof StructMsgItemLayout4)) && (!(localObject1 instanceof StructMsgItemLayout5)))) {}
+          str3 = ((QIMFilterCategoryItem)localObject).jdField_b_of_type_JavaLangString;
+          paramObject = ((QIMFilterCategoryItem)localObject).h;
+          if (!((QIMFilterCategoryItem)localObject).a()) {
+            break label471;
+          }
         }
       }
+    }
+    label461:
+    label466:
+    label471:
+    for (int i = 2;; i = 1)
+    {
+      str4 = "1";
+      str1 = "2";
+      str2 = "7";
+      localObject = "clk_combo";
+      j = 1;
+      if (baip.a(paramObject))
+      {
+        paramObject = "weishi://camera?logsour=3006";
+        i = k;
+        label105:
+        localvne = new vne();
+        localvne.jdField_a_of_type_JavaLangString = str1;
+        localvne.jdField_b_of_type_JavaLangString = str3;
+        localvne.jdField_c_of_type_JavaLangString = str2;
+        localvne.jdField_a_of_type_Int = i;
+        localvne.e = str4;
+        localvne.f = paramObject;
+        localvne.g = ((String)localObject);
+        localvne.jdField_b_of_type_Int = j;
+        if (i == 2)
+        {
+          localvne.jdField_d_of_type_JavaLangString = "DOV";
+          return localvne;
+          str1 = "11";
+          str3 = ((QIMFilterCategoryItem)localObject).jdField_b_of_type_JavaLangString;
+          paramObject = ((QIMFilterCategoryItem)localObject).h;
+          str2 = "11";
+          if (!((QIMFilterCategoryItem)localObject).a()) {
+            break label466;
+          }
+        }
+      }
+      for (i = 2;; i = 1)
+      {
+        j = 0;
+        str4 = "11";
+        localObject = "clk_filter";
+        break;
+        if ((paramObject instanceof MusicItemInfo))
+        {
+          paramObject = (MusicItemInfo)paramObject;
+          str1 = "4";
+          str3 = paramObject.mMusicName;
+          paramObject = paramObject.jumpWs;
+          str2 = "9";
+          localObject = "clk_music";
+          str4 = "2";
+          i = 1;
+          j = 2;
+          break;
+        }
+        if ((paramObject instanceof PtvTemplateManager.PtvTemplateInfo))
+        {
+          localObject = (PtvTemplateManager.PtvTemplateInfo)paramObject;
+          str1 = "3";
+          str3 = ((PtvTemplateManager.PtvTemplateInfo)localObject).name;
+          paramObject = ((PtvTemplateManager.PtvTemplateInfo)localObject).jump_app;
+          str2 = "8";
+          if (!((PtvTemplateManager.PtvTemplateInfo)localObject).isDovItem()) {
+            break label461;
+          }
+        }
+        for (i = 2;; i = 1)
+        {
+          j = 3;
+          str4 = "3";
+          localObject = "clk_poster";
+          break;
+          if ((paramObject instanceof PressDarkImageButton))
+          {
+            str1 = "5";
+            i = 1;
+            paramObject = localvne;
+            break;
+          }
+          if ((paramObject instanceof String))
+          {
+            str1 = "1";
+            str3 = "";
+            paramObject = (String)paramObject;
+            str2 = "6";
+            i = 1;
+            break;
+          }
+          if ((paramObject instanceof QIMBeautyItem))
+          {
+            localObject = (QIMBeautyItem)paramObject;
+            str1 = "10";
+            str3 = ((QIMBeautyItem)localObject).jdField_b_of_type_JavaLangString;
+            paramObject = ((QIMBeautyItem)localObject).jdField_d_of_type_JavaLangString;
+            str2 = "10";
+            if (((QIMBeautyItem)localObject).a()) {}
+            for (i = 2;; i = 1)
+            {
+              str4 = "10";
+              localObject = "clk_beauty";
+              break;
+              localvne.jdField_d_of_type_JavaLangString = ajjy.a(2131651111);
+              return localvne;
+              break label105;
+            }
+          }
+          i = 1;
+          paramObject = localvne;
+          break;
+        }
+      }
+    }
+  }
+  
+  public static vpg a(Context paramContext, Object paramObject)
+  {
+    vne localvne = a(paramObject);
+    if (localvne == null) {
+      return null;
+    }
+    String str1 = localvne.jdField_a_of_type_JavaLangString;
+    String str2 = localvne.jdField_b_of_type_JavaLangString;
+    String str3 = localvne.f;
+    int j = localvne.jdField_a_of_type_Int;
+    String str4 = localvne.e;
+    int k = localvne.jdField_b_of_type_Int;
+    int i;
+    int m;
+    if (((paramContext instanceof EditPicActivity)) || ((paramContext instanceof EditVideoActivity)))
+    {
+      i = 1;
+      if (!(paramContext instanceof Activity)) {
+        break label558;
+      }
+      paramObject = ((Activity)paramContext).getIntent();
+      if (paramObject == null) {
+        break label552;
+      }
+      m = paramObject.getIntExtra("entrance_type", 0);
+      if (m != 1) {
+        break label174;
+      }
+      paramObject = "biz_src_jc_hyws";
+      label107:
+      if (!(paramContext instanceof QIMCameraCaptureActivity)) {
+        break label195;
+      }
+      paramObject = "biz_src_jc_camera";
     }
     for (;;)
     {
-      if (localObject1 != null)
+      label117:
+      if (j == 2)
       {
-        if (!(localObject1 instanceof AbsStructMsgItem)) {
-          break label1801;
-        }
-        localObject1 = (AbsStructMsgItem)localObject1;
-        localObject9 = ((AbsStructMsgItem)localObject1).a;
-        localObject6 = ((AbsStructMsgItem)localObject1).c;
-        localObject8 = ((AbsStructMsgItem)localObject1).b;
-        localObject11 = ((AbsStructMsgItem)localObject1).d;
-        localObject10 = ((AbsStructMsgItem)localObject1).e;
-        localObject7 = ((AbsStructMsgItem)localObject1).f;
-        localObject5 = ((AbsStructMsgItem)localObject1).g;
-        i = 0;
-        localObject1 = localObject12;
-        label529:
-        if (i < ((ArrayList)localObject9).size())
+        if (bady.a(paramContext, "com.tencent.qim"))
         {
-          localObject4 = (AbsStructMsgElement)((ArrayList)localObject9).get(i);
-          if ((localObject4 instanceof StructMsgItemTitle))
-          {
-            localObject4 = ((StructMsgItemTitle)localObject4).b();
-            localObject1 = localObject3;
-            localObject3 = localObject4;
-            localObject4 = localObject2;
-            localObject2 = localObject1;
-            localObject1 = localObject4;
-          }
-          for (;;)
-          {
-            i += 1;
-            localObject4 = localObject3;
-            localObject3 = localObject2;
-            localObject2 = localObject1;
-            localObject1 = localObject4;
-            break label529;
-            i += 1;
-            break;
-            if ((localObject4 instanceof StructMsgItemSummary))
-            {
-              localObject4 = ((StructMsgItemSummary)localObject4).b();
-              localObject3 = localObject1;
-              localObject1 = localObject2;
-              localObject2 = localObject4;
-            }
-            else
-            {
-              if (!(localObject4 instanceof StructMsgItemCover)) {
-                break label1782;
-              }
-              localObject4 = ((StructMsgItemCover)localObject4).u;
-              localObject2 = localObject3;
-              localObject3 = localObject1;
-              localObject1 = localObject4;
-            }
-          }
-        }
-        localObject4 = localObject7;
-        localObject7 = localObject2;
-        localObject9 = localObject1;
-        localObject2 = localObject11;
-        localObject1 = localObject8;
-        localObject8 = localObject3;
-        localObject3 = localObject10;
-      }
-      for (;;)
-      {
-        localObject10 = localMessageForStructing.senderuin;
-        localObject11 = Long.toString(localAbsShareMsg.msgId);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005455", "0X8005455", 0, 0, (String)localObject10, (String)localObject1, (String)localObject11, "");
-        if ((str1 == null) || ("".equals(str1)))
-        {
-          localObject10 = "http://url.cn/JS8oE7";
-          label785:
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, (String)localObject9, (String)localObject8, (String)localObject7, str2, (String)localObject1, (String)localObject10, (String)localObject6, (String)localObject2, localObject3, (String)localObject4, (String)localObject5, l, str3);
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005455", "0X8005455", 0, 0, str3, "" + l, "" + StructingMsgItemBuilder.b, "android");
-          return;
-          i = 0;
-          localObject1 = localObject13;
-          localObject2 = localObject11;
-          localObject3 = localObject10;
-          label921:
-          if (i >= localAbsShareMsg.getItemCount()) {
-            break label1665;
-          }
-          localObject10 = localAbsShareMsg.getItemByIndex(i);
-          if ((localObject10 instanceof AbsStructMsgItem))
-          {
-            localObject12 = (AbsStructMsgItem)localObject10;
-            localObject11 = ((AbsStructMsgItem)localObject12).a;
-            if ((((AbsStructMsgItem)localObject12).c == null) || ("".equals(((AbsStructMsgItem)localObject12).c)) || ((localObject9 != null) && (!"".equals(localObject9)))) {
-              break label1662;
-            }
-            localObject9 = ((AbsStructMsgItem)localObject12).c;
-            label1005:
-            localObject10 = localObject4;
-            if (((AbsStructMsgItem)localObject12).b != null)
-            {
-              localObject10 = localObject4;
-              if (!"".equals(((AbsStructMsgItem)localObject12).b)) {
-                if (localObject4 != null)
-                {
-                  localObject10 = localObject4;
-                  if (!"".equals(localObject4)) {}
-                }
-                else
-                {
-                  localObject10 = ((AbsStructMsgItem)localObject12).b;
-                }
-              }
-            }
-            if ((((AbsStructMsgItem)localObject12).d == null) || ("".equals(((AbsStructMsgItem)localObject12).d)) || ((localObject7 != null) && (!"".equals(localObject7)))) {
-              break label1655;
-            }
-            localObject4 = ((AbsStructMsgItem)localObject12).d;
-            label1107:
-            if ((((AbsStructMsgItem)localObject12).e == null) || (!"".equals(((AbsStructMsgItem)localObject12).e)) || ((localObject6 != null) && (!"".equals(localObject6)))) {
-              break label1652;
-            }
-            localObject6 = ((AbsStructMsgItem)localObject12).e;
-            label1152:
-            if ((((AbsStructMsgItem)localObject12).f == null) || (!"".equals(((AbsStructMsgItem)localObject12).f)) || ((localObject5 != null) && (!"".equals(localObject5)))) {
-              break label1649;
-            }
-            localObject5 = ((AbsStructMsgItem)localObject12).f;
-            label1197:
-            if ((((AbsStructMsgItem)localObject12).g == null) || (!"".equals(((AbsStructMsgItem)localObject12).g)) || ((localObject8 != null) && (!"".equals(localObject8)))) {
-              break label1642;
-            }
-            localObject7 = ((AbsStructMsgItem)localObject12).g;
-            label1242:
-            int j = 0;
-            if (j >= ((ArrayList)localObject11).size()) {
-              break label1735;
-            }
-            localObject8 = (AbsStructMsgElement)((ArrayList)localObject11).get(j);
-            if (("title".equals(((AbsStructMsgElement)localObject8).a)) && (localObject1 == null))
-            {
-              if (!(localObject8 instanceof StructMsgItemTitle)) {
-                break label1720;
-              }
-              localObject8 = ((StructMsgItemTitle)localObject8).b();
-              localObject1 = localObject3;
-              localObject3 = localObject8;
-            }
-            for (;;)
-            {
-              label1309:
-              j += 1;
-              localObject8 = localObject3;
-              localObject3 = localObject1;
-              localObject1 = localObject8;
-              break;
-              if (("summary".equals(((AbsStructMsgElement)localObject8).a)) && (localObject2 == null))
-              {
-                if (!(localObject8 instanceof StructMsgItemSummary)) {
-                  break label1720;
-                }
-                localObject2 = ((StructMsgItemSummary)localObject8).b();
-                localObject8 = localObject1;
-                localObject1 = localObject3;
-                localObject3 = localObject8;
-              }
-              else if (("picture".equals(((AbsStructMsgElement)localObject8).a)) && (localObject3 == null))
-              {
-                if (!(localObject8 instanceof StructMsgItemCover)) {
-                  break label1720;
-                }
-                localObject8 = ((StructMsgItemCover)localObject8).u;
-                localObject3 = localObject1;
-                localObject1 = localObject8;
-              }
-              else if (("pavideo".equals(((AbsStructMsgElement)localObject8).a)) && (localObject3 == null))
-              {
-                if (!(localObject8 instanceof StructMsgItemPAVideo)) {
-                  break label1720;
-                }
-                localObject8 = ((StructMsgItemPAVideo)localObject8).u;
-                localObject3 = localObject1;
-                localObject1 = localObject8;
-              }
-              else
-              {
-                if ((!"paaudio".equals(((AbsStructMsgElement)localObject8).a)) || (localObject3 != null) || (!(localObject8 instanceof StructMsgItemPAAudio))) {
-                  break label1720;
-                }
-                localObject8 = ((StructMsgItemPAAudio)localObject8).u;
-                localObject3 = localObject1;
-                localObject1 = localObject8;
-              }
-            }
-          }
-          localObject10 = localObject8;
-          localObject8 = localObject9;
-          localObject9 = localObject1;
-          localObject1 = localObject7;
-          localObject7 = localObject3;
-          localObject11 = localObject5;
-          localObject3 = localObject9;
-          localObject5 = localObject2;
-          localObject9 = localObject4;
-          localObject2 = localObject8;
-          localObject4 = localObject1;
-          localObject8 = localObject11;
-          localObject1 = localObject10;
+          awqx.b(null, "dc00899", "grp_story", "", "app_share", "clk_entry", i, 1, str4, "dov", "", "");
+          bady.a(paramContext, "com.tencent.qim", null);
         }
         for (;;)
         {
-          i += 1;
-          localObject10 = localObject9;
-          localObject9 = localObject8;
-          localObject8 = localObject3;
-          localObject11 = localObject2;
-          localObject12 = localObject1;
-          localObject3 = localObject7;
-          localObject2 = localObject5;
-          localObject1 = localObject8;
-          localObject8 = localObject12;
-          localObject5 = localObject9;
-          localObject7 = localObject4;
-          localObject9 = localObject11;
-          localObject4 = localObject10;
-          break label921;
-          localObject10 = str1;
-          break label785;
-          label1642:
-          localObject7 = localObject8;
-          break label1242;
-          label1649:
-          break label1197;
-          label1652:
-          break label1152;
-          label1655:
-          localObject4 = localObject7;
-          break label1107;
-          label1662:
-          break label1005;
-          label1665:
-          localObject12 = localObject6;
-          localObject6 = localObject9;
-          localObject9 = localObject3;
-          localObject10 = localObject2;
-          localObject11 = localObject1;
-          localObject2 = localObject7;
-          localObject1 = localObject4;
-          localObject3 = localObject12;
-          localObject4 = localObject5;
-          localObject5 = localObject8;
-          localObject7 = localObject9;
-          localObject8 = localObject10;
-          localObject9 = localObject11;
+          return null;
+          i = 0;
           break;
-          label1720:
-          localObject8 = localObject1;
-          localObject1 = localObject3;
-          localObject3 = localObject8;
-          break label1309;
-          label1735:
-          localObject8 = localObject7;
-          localObject7 = localObject10;
-          localObject10 = localObject1;
-          localObject11 = localObject2;
-          localObject1 = localObject8;
-          localObject8 = localObject5;
-          localObject2 = localObject9;
-          localObject9 = localObject7;
-          localObject7 = localObject3;
-          localObject5 = localObject11;
-          localObject3 = localObject10;
+          if ((m != 120) && (m != 121)) {
+            break label552;
+          }
+          paramObject = "biz_src_jc_story";
+          break label107;
+          if (!(paramContext instanceof EditVideoActivity)) {
+            break label549;
+          }
+          paramObject = "biz_src_jc_editor";
+          break label117;
+          awqx.b(null, "dc00899", "grp_story", "", "app_share", "clk_entry", i, 0, str4, "dov", "", "");
+          tgp.a(paramContext);
         }
-        label1782:
-        localObject4 = localObject1;
-        localObject1 = localObject2;
-        localObject2 = localObject3;
-        localObject3 = localObject4;
-        break;
-        label1801:
-        localObject3 = localObject6;
-        localObject6 = localObject9;
-        localObject11 = null;
-        localObject10 = null;
-        localObject9 = null;
-        localObject2 = localObject7;
-        localObject1 = localObject4;
-        localObject4 = localObject5;
-        localObject5 = localObject8;
-        localObject7 = localObject11;
-        localObject8 = localObject10;
       }
-      localObject1 = null;
+      label174:
+      label195:
+      if ("biz_src_jc_hyws".equals(paramObject)) {
+        if (!a(paramContext)) {
+          break label441;
+        }
+      }
+      label441:
+      for (Object localObject = "story_clk_ws";; localObject = "story_dl_ws")
+      {
+        awqx.b(null, "dc00898", "", "", "weishi_share_shoot", (String)localObject, k, 0, "", "", "", "");
+        awqx.b(null, "dc00899", "grp_story", "", "weishi_share", localvne.g, 0, 0, str1, str2, "", "");
+        if (!a(paramContext)) {
+          break;
+        }
+        awqx.b(null, "dc00899", "grp_story", "", "app_share", "clk_entry", i, 1, str4, "weishi", "", "");
+        awqx.b(null, "dc00899", "grp_story", "", "weishi_share", "clk_ws", 0, 1, str1, str2, "", "");
+        if (paramContext != null)
+        {
+          localObject = new Intent();
+          ((Intent)localObject).setAction("android.intent.action.VIEW");
+          ((Intent)localObject).setData(Uri.parse(str3));
+          if (!TextUtils.isEmpty(paramObject)) {
+            ((Intent)localObject).putExtra("big_brother_source_key", paramObject);
+          }
+          paramContext.startActivity((Intent)localObject);
+        }
+        return null;
+      }
+      awqx.b(null, "dc00899", "grp_story", "", "app_share", "clk_entry", i, 0, str4, "weishi", "", "");
+      localObject = localvne.jdField_c_of_type_JavaLangString;
+      awqx.b(null, "dc00899", "grp_story", "", "weishi_share", "clk_ws", 0, 2, str1, str2, "", "");
+      paramContext = new vpg(paramContext, 2131690384, paramObject);
+      paramContext.a("https://pub.idqqimg.com/pc/misc/files/20180423/4c3ece054ae044eb85797d31fa487ce7.jpg");
+      paramContext.a("", (String)localObject, "");
+      paramContext.show();
+      return paramContext;
+      label549:
+      continue;
+      label552:
+      paramObject = "";
+      break label107;
+      label558:
+      paramObject = "";
     }
+  }
+  
+  public static void a(Context paramContext, String paramString)
+  {
+    if (!vlt.b(paramContext))
+    {
+      bbmy.a(paramContext, ajjy.a(2131651113), 0).a();
+      return;
+    }
+    bjim.a().a();
+    DownloadInfo localDownloadInfo = a(jdField_a_of_type_JavaLangString);
+    if (localDownloadInfo == null)
+    {
+      urk.d("WeishiGuideUtils", "get null info");
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("gotoWeishiDownload", 2, " gotoWeishiDownload = " + localDownloadInfo.jdField_d_of_type_JavaLangString);
+    }
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("url", localDownloadInfo.jdField_d_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(paramString)) {
+      localIntent.putExtra("big_brother_source_key", paramString);
+    }
+    paramContext.startActivity(localIntent);
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2)
+  {
+    if (paramContext == null) {
+      return;
+    }
+    String str;
+    if ((!TextUtils.isEmpty(paramString2)) && (!paramString2.equals("no")))
+    {
+      str = paramString2;
+      if (!paramString2.equals("default")) {}
+    }
+    else
+    {
+      str = "weishi://main?goto=recommend&logsour=3006";
+    }
+    paramString2 = new Intent();
+    paramString2.setAction("android.intent.action.VIEW");
+    paramString2.setData(Uri.parse(str));
+    if (!TextUtils.isEmpty(paramString1)) {
+      paramString2.putExtra("big_brother_source_key", paramString1);
+    }
+    if (!(paramContext instanceof Activity)) {
+      paramString2.addFlags(268435456);
+    }
+    paramContext.startActivity(paramString2);
+  }
+  
+  public static void a(Object paramObject)
+  {
+    paramObject = a(paramObject);
+    if (paramObject == null) {}
+    int i;
+    int j;
+    do
+    {
+      return;
+      i = paramObject.jdField_a_of_type_Int;
+      j = paramObject.jdField_b_of_type_Int;
+    } while (i != 1);
+    awqx.b(null, "dc00898", "", "", "weishi_share_shoot", "story_entry_exp", j, 0, "", "", "", "");
+  }
+  
+  public static boolean a(Context paramContext)
+  {
+    return bady.a(paramContext, "com.tencent.weishi");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vnd
  * JD-Core Version:    0.7.0.1
  */

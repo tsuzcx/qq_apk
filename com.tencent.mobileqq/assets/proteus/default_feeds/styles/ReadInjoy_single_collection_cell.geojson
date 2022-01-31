@@ -1,0 +1,123 @@
+{
+  "ReadInjoy_single_collection_cell": {
+    "view_type": "cell",
+    "direction": "vertical",
+    "height": {
+      "type": "wrap_content"
+    },
+    "width": {
+      "type": "relative",
+      "value": "342"
+    },
+    "subviews": [
+      {
+          "view_type": "container",
+          "view_id": "id_article_large_imge_container",
+          "layout_type": "layout_relative",
+          "margin_left": "2",
+          "height": {
+              "type": "relative",
+              "value": "174"
+          },
+          "width": {
+              "type": "relative",
+              "value": "340"
+          },
+          "subviews": [
+              {
+                  "view_type": "ReadInjoyAsynImageView",
+                  "view_id": "id_article_large_imge",
+                  "height": {
+                      "type": "relative",
+                      "value": "174"
+                  },
+                  "width": {
+                      "type": "relative",
+                      "value": "340"
+                  },
+                  "attributes": {
+                      "setFrameString:": "-1",
+                      "setImageWithURLString:lineup:": [
+                          "$article_large_imge_url",
+                          "-1"
+                      ]
+                  }
+              },
+              {
+                  "view_type": "UIView",
+                  "view_id": "id_article_large_imge_cover",
+                  "event_type":"cmd_url_click_card_report",
+                  "align_parent_top": "YES",
+                  "align_parent_left": "YES",
+                  "height": {
+                      "type": "relative",
+                      "value": "174"
+                  },
+                  "width": {
+                      "type": "relative",
+                      "value": "340"
+                  },
+                  "attributes": {
+                      "setBackgroundColorString:": "#4C000000",
+                      "setAttatchInfo:":"$url"
+                  },
+                  "data_attributes": {
+                      "setLocalInfo:": {
+                          "click_area":"2"
+                      },
+                      "setRemoteInfo:": {
+                          "rowkey": "$rowkey",
+                          "jump_src": "$jump_src_img",
+                          "jump_page": "$jump_page_img"
+                      }
+                  }
+              },
+              {
+                  "view_type": "UILabel",
+                  "view_id": "id_subcribe_name",
+                  "align_parent_left": "YES",
+                  "align_parent_bottom": "YES",
+                  "margin_left": "8",
+                  "margin_bottom": "9",
+                  "height": {
+                      "type": "relative",
+                      "value": "16"
+                  },
+                  "width": {
+                      "type": "wrap_content"
+                  },
+                  "attributes": {
+                      "setFrameString:": "-1",
+                      "setText:": "$subcribe_name_text",
+                      "setTextColorString:": "#8CFFFFFF",
+                      "setFontSizeString:": "12",
+                      "setNumberOfLinesString:": "1"
+                  }
+              },
+              {
+                  "view_type": "UILabel",
+                  "view_id": "id_artilce_title",
+                  "above_of_view": "id_subcribe_name",
+                  "align_parent_left": "YES",
+                  "margin_left": "8",
+                  "margin_bottom": "4",
+                  "height": {
+                      "type": "wrap_content"
+                  },
+                  "width": {
+                      "type": "relative",
+                      "value": "324"
+                  },
+                  "attributes": {
+                      "setFrameString:": "-1",
+                      "setText:lineSpace:":["$artilce_title_text","2"],
+                      "setTextColorString:": "#FFFFFF",
+                      "setBoldFontSizeString:": "17",
+                      "setNumberOfLinesString:": "2"
+                  }
+              }
+          ]
+      }
+    ]
+  }
+}

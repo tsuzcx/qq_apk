@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/a02"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/b64" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="@dimen/a03" android:layout_marginRight="@dimen/a03" android:layout_marginBottom="8.0dip" android:minHeight="@dimen/aik">
+        <LinearLayout android:orientation="horizontal" android:id="@id/icon" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="40.0dip">
+            <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/skin_black_theme_version2" android:ellipsize="middle" android:id="@id/jj7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="11.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="12.0dip" android:maxWidth="280.0dip" android:text="@string/rih" android:singleLine="true" />
+        </LinearLayout>
+        <ImageView android:id="@id/dcv" android:duplicateParentState="false" android:layout_width="25.0dip" android:layout_height="25.0dip" android:src="@drawable/common_arrow_right_selector" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <com.tencent.mobileqq.vip.diy.template.QZoneLayoutTemplateBase android:orientation="horizontal" android:id="@id/dkt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/a03" android:layout_marginRight="@dimen/a03" />
+</LinearLayout>

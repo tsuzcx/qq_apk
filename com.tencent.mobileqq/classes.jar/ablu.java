@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.armap.config.ARMapConfig;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
-public final class ablu
-  implements Parcelable.Creator
+public class ablu
+  implements View.OnClickListener
 {
-  public ARMapConfig a(Parcel paramParcel)
-  {
-    return new ARMapConfig(paramParcel);
-  }
+  public ablu(QQMapActivity paramQQMapActivity) {}
   
-  public ARMapConfig[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new ARMapConfig[paramInt];
+    this.a.u();
+    awqx.b(null, "P_CliOper", "Pb_account_lifeservice", "", "sdk_locate", "click_send", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ablu
  * JD-Core Version:    0.7.0.1
  */

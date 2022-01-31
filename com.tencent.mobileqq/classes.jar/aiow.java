@@ -1,41 +1,38 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemVideo;
-import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
-import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
+import org.json.JSONObject;
 
-public class aiow
-  extends URLDrawableDecodeHandler
+class aiow
+  implements zrt
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  private int c;
+  aiow(aios paramaios, String paramString, long paramLong, zrw paramzrw, CmGameInitParams paramCmGameInitParams) {}
   
-  public aiow(StructMsgItemVideo paramStructMsgItemVideo, int paramInt1, int paramInt2, int paramInt3)
+  public void onComplete() {}
+  
+  public void onFailure(int paramInt, String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    aios.a(this.jdField_a_of_type_Aios, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramInt);
   }
   
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public void onPermission(int paramInt)
   {
-    if (paramBitmap == null) {
-      return null;
-    }
-    int j = this.c;
-    int k = paramBitmap.getWidth();
-    if (paramBitmap.getHeight() != 0) {}
-    for (int i = paramBitmap.getHeight();; i = this.c)
-    {
-      i = k * j / i;
-      return ImageUtil.b(paramBitmap, this.jdField_a_of_type_Int, i, this.c);
-    }
+    aios.a(this.jdField_a_of_type_Aios, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, paramInt);
   }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    String str = paramJSONObject.optString("openid");
+    paramJSONObject = paramJSONObject.optString("access_token", "");
+    aios.a(this.jdField_a_of_type_Aios, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Zrw);
+    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.openId = str;
+    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.accessToken = paramJSONObject;
+    this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameInitParams.accessTokenRet = 1;
+  }
+  
+  public void onTrigger(JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiow
  * JD-Core Version:    0.7.0.1
  */

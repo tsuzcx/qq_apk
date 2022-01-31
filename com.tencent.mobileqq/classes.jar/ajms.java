@@ -1,32 +1,60 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil;
-import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil.Log;
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadMgr;
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajms
-  implements Runnable
+  extends ajfb
 {
-  public ajms(TroopFileUploadMgr paramTroopFileUploadMgr) {}
+  private static final Object jdField_a_of_type_JavaLangObject = new Object();
+  private akux jdField_a_of_type_Akux;
   
-  public void run()
+  public ajms(AppInterface paramAppInterface)
   {
-    if (this.a.a) {
-      return;
-    }
-    QQAppInterface localQQAppInterface = TroopFileTransferUtil.a();
-    if (localQQAppInterface != null)
-    {
-      AppNetConnInfo.registerConnectionChangeReceiver(localQQAppInterface.getApplication(), this.a);
-      this.a.a = true;
-      return;
-    }
-    TroopFileTransferUtil.Log.a("TroopFileUploadMgr", TroopFileTransferUtil.Log.a, "init registerConnectionChangeReceiver fail");
+    super(paramAppInterface);
   }
+  
+  public void a(Context paramContext)
+  {
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_Akux == null)
+      {
+        this.jdField_a_of_type_Akux = akux.a();
+        this.jdField_a_of_type_Akux.a(paramContext, hashCode(), "MiniCodePeakHandler");
+      }
+      return;
+    }
+  }
+  
+  protected Class<? extends ajfe> observerClass()
+  {
+    return null;
+  }
+  
+  public void onDestroy()
+  {
+    super.onDestroy();
+    if (QLog.isColorLevel()) {
+      QLog.i("MiniCodePeakHandler", 2, "onDestroy");
+    }
+    synchronized (jdField_a_of_type_JavaLangObject)
+    {
+      if (this.jdField_a_of_type_Akux != null)
+      {
+        this.jdField_a_of_type_Akux.a(hashCode(), "MiniCodePeakHandler");
+        this.jdField_a_of_type_Akux = null;
+      }
+      return;
+    }
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajms
  * JD-Core Version:    0.7.0.1
  */

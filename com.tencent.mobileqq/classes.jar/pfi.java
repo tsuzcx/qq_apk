@@ -1,20 +1,18 @@
-import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigGallery;
 
 public class pfi
-  implements Runnable
+  extends pfj
 {
-  public pfi(AbsBaseWebViewActivity paramAbsBaseWebViewActivity, boolean paramBoolean) {}
-  
-  public void run()
+  public pfi(Context paramContext, azwg paramazwg, qoe paramqoe)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewBase", 2, "start request: " + this.jdField_a_of_type_Boolean);
-    }
-    WebProcessManager.a(true);
-    SwiftWebViewUtils.a();
+    super(paramContext, paramazwg, paramqoe);
+  }
+  
+  public pez g()
+  {
+    this.jdField_a_of_type_Pey = new ComponentContentBigGallery(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

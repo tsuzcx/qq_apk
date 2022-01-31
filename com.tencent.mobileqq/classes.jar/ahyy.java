@@ -1,17 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.model.SearchResultModelForEntrance;
-import com.tencent.mobileqq.search.presenter.EntranceResultPresenter;
+import android.widget.ImageView;
 
 public class ahyy
-  implements View.OnClickListener
 {
-  public ahyy(EntranceResultPresenter paramEntranceResultPresenter, SearchResultModelForEntrance paramSearchResultModelForEntrance) {}
-  
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelSearchResultModelForEntrance.a(paramView);
-  }
+  public int a = 1;
+  public ImageView a;
+  public String a;
 }
 
 

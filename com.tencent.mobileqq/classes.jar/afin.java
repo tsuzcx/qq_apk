@@ -1,25 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter;
+import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
 
-public class afin
-  implements DialogInterface.OnClickListener
+class afin
+  implements ViewPager.OnPageChangeListener
 {
-  public afin(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  afin(afim paramafim) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    NearbyUtils.a(this.a.a, 1032);
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.bindphone", 2, "openBindPhonePage");
+    EmoticonFromGroupEntity localEmoticonFromGroupEntity = afim.a(this.a).a(paramInt);
+    if (localEmoticonFromGroupEntity != null)
+    {
+      afim.a(this.a, localEmoticonFromGroupEntity);
+      afim.b(this.a, localEmoticonFromGroupEntity);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afin
  * JD-Core Version:    0.7.0.1
  */

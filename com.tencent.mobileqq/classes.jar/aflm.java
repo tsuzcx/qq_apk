@@ -1,43 +1,58 @@
+import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import android.webkit.URLUtil;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CLinkFragment;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class aflm
+class aflm
   implements View.OnClickListener
 {
-  public aflm(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
+  aflm(afll paramafll, String paramString, aflo paramaflo, MessageRecord paramMessageRecord) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a.getIntExtra("param_mode", 0) == 1)
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null)
+    Object localObject;
+    if (!this.jdField_a_of_type_Afll.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment.c) {
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131437744);
+        paramView = null;
+        int i = this.jdField_a_of_type_JavaLangString.lastIndexOf("#");
+        if (i > 0) {
+          paramView = this.jdField_a_of_type_JavaLangString.substring(i);
+        }
+        localObject = URLUtil.guessUrl(this.jdField_a_of_type_JavaLangString);
+        if (paramView == null) {
+          break label171;
+        }
+      }
+    }
+    label171:
+    for (paramView = (String)localObject + paramView;; paramView = (View)localObject)
+    {
+      localObject = new Intent(this.jdField_a_of_type_Afll.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("url", paramView);
+      this.jdField_a_of_type_Afll.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+      return;
+      boolean bool = aflo.a(this.jdField_a_of_type_Aflo).isChecked();
+      afll.a(this.jdField_a_of_type_Afll).a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      paramView = aflo.a(this.jdField_a_of_type_Aflo);
+      if (!bool) {}
+      for (bool = true;; bool = false)
+      {
+        paramView.setChecked(bool);
         return;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.finish();
-      return;
     }
-    this.a.b();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.i == 0)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131437744);
-      return;
-    }
-    if (this.a.a())
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(2131437745);
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aflm
  * JD-Core Version:    0.7.0.1
  */

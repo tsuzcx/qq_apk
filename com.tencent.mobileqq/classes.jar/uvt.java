@@ -1,34 +1,22 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public class uvt
-  extends Handler
+class uvt
+  implements bbmj
 {
-  public uvt(RecordSoundPanel paramRecordSoundPanel, Looper paramLooper)
+  uvt(uvq paramuvq) {}
+  
+  public void a(bbmh parambbmh)
   {
-    super(paramLooper);
+    if (QLog.isColorLevel()) {
+      QLog.i("EditVideoSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + parambbmh);
+    }
   }
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.a.f(1);
-    this.a.b();
-    QQToast.a(this.a.a.a(), this.a.a.a().getString(2131433399), 1).a();
-  }
+  public void a(bbmh parambbmh, int paramInt1, int paramInt2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uvt
  * JD-Core Version:    0.7.0.1
  */

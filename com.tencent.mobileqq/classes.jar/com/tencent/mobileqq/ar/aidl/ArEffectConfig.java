@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.aidl;
 
-import aalg;
+import akpp;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -18,17 +18,17 @@ import org.json.JSONObject;
 public class ArEffectConfig
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aalg();
+  public static final Parcelable.Creator<ArEffectConfig> CREATOR = new akpp();
   public int a;
-  public ArrayList a;
+  public ArrayList<String> a;
   public int b;
-  public ArrayList b;
+  public ArrayList<String> b;
   public int c;
-  public ArrayList c;
+  public ArrayList<String> c;
   public int d;
-  public ArrayList d;
+  public ArrayList<String> d;
   public int e;
-  public ArrayList e;
+  public ArrayList<ArDefaultSetting> e;
   public int f = 30;
   public int g = 30;
   public int h = 30;
@@ -246,94 +246,94 @@ public class ArEffectConfig
     //   5: ifnonnull +5 -> 10
     //   8: iload_1
     //   9: ireturn
-    //   10: new 217	java/io/File
+    //   10: new 220	java/io/File
     //   13: dup
-    //   14: getstatic 223	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   17: invokevirtual 227	com/tencent/common/app/BaseApplicationImpl:getFilesDir	()Ljava/io/File;
-    //   20: ldc 229
-    //   22: invokespecial 232	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   14: getstatic 226	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   17: invokevirtual 230	com/tencent/common/app/BaseApplicationImpl:getFilesDir	()Ljava/io/File;
+    //   20: ldc 232
+    //   22: invokespecial 235	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   25: astore 5
-    //   27: new 217	java/io/File
+    //   27: new 220	java/io/File
     //   30: dup
-    //   31: getstatic 223	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
-    //   34: invokevirtual 227	com/tencent/common/app/BaseApplicationImpl:getFilesDir	()Ljava/io/File;
-    //   37: ldc 243
-    //   39: invokespecial 232	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   31: getstatic 226	com/tencent/common/app/BaseApplicationImpl:sApplication	Lcom/tencent/common/app/BaseApplicationImpl;
+    //   34: invokevirtual 230	com/tencent/common/app/BaseApplicationImpl:getFilesDir	()Ljava/io/File;
+    //   37: ldc 246
+    //   39: invokespecial 235	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   42: astore 7
-    //   44: invokestatic 157	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   44: invokestatic 160	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   47: ifeq +11 -> 58
-    //   50: ldc 159
+    //   50: ldc 162
     //   52: iconst_2
-    //   53: ldc 245
-    //   55: invokestatic 175	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   58: invokestatic 249	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   53: ldc 248
+    //   55: invokestatic 178	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   58: invokestatic 252	android/os/Parcel:obtain	()Landroid/os/Parcel;
     //   61: astore 6
     //   63: aload 6
     //   65: iconst_0
-    //   66: invokevirtual 253	android/os/Parcel:setDataPosition	(I)V
+    //   66: invokevirtual 256	android/os/Parcel:setDataPosition	(I)V
     //   69: aload_0
     //   70: aload 6
     //   72: iconst_0
-    //   73: invokevirtual 257	com/tencent/mobileqq/ar/aidl/ArEffectConfig:writeToParcel	(Landroid/os/Parcel;I)V
+    //   73: invokevirtual 260	com/tencent/mobileqq/ar/aidl/ArEffectConfig:writeToParcel	(Landroid/os/Parcel;I)V
     //   76: aload 6
-    //   78: invokevirtual 261	android/os/Parcel:marshall	()[B
+    //   78: invokevirtual 264	android/os/Parcel:marshall	()[B
     //   81: astore_0
     //   82: aload 5
-    //   84: invokevirtual 264	java/io/File:getParentFile	()Ljava/io/File;
+    //   84: invokevirtual 267	java/io/File:getParentFile	()Ljava/io/File;
     //   87: astore 4
     //   89: aload 4
-    //   91: invokevirtual 235	java/io/File:exists	()Z
+    //   91: invokevirtual 238	java/io/File:exists	()Z
     //   94: ifne +9 -> 103
     //   97: aload 4
-    //   99: invokevirtual 267	java/io/File:mkdir	()Z
+    //   99: invokevirtual 270	java/io/File:mkdir	()Z
     //   102: pop
     //   103: aload 7
-    //   105: invokevirtual 235	java/io/File:exists	()Z
+    //   105: invokevirtual 238	java/io/File:exists	()Z
     //   108: ifeq +9 -> 117
     //   111: aload 7
-    //   113: invokevirtual 238	java/io/File:delete	()Z
+    //   113: invokevirtual 241	java/io/File:delete	()Z
     //   116: pop
-    //   117: new 269	java/io/FileOutputStream
+    //   117: new 272	java/io/FileOutputStream
     //   120: dup
     //   121: aload 7
-    //   123: invokespecial 272	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   123: invokespecial 275	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   126: astore 4
-    //   128: new 274	java/io/BufferedOutputStream
+    //   128: new 277	java/io/BufferedOutputStream
     //   131: dup
     //   132: aload 4
-    //   134: invokespecial 277	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   134: invokespecial 280	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   137: astore_3
     //   138: aload_3
     //   139: aload_0
-    //   140: invokevirtual 281	java/io/BufferedOutputStream:write	([B)V
+    //   140: invokevirtual 284	java/io/BufferedOutputStream:write	([B)V
     //   143: aload_3
-    //   144: invokevirtual 284	java/io/BufferedOutputStream:flush	()V
+    //   144: invokevirtual 287	java/io/BufferedOutputStream:flush	()V
     //   147: aload 7
     //   149: aload 5
-    //   151: invokestatic 289	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/io/File;Ljava/io/File;)Z
+    //   151: invokestatic 292	bace:b	(Ljava/io/File;Ljava/io/File;)Z
     //   154: istore_2
     //   155: aload 6
-    //   157: invokevirtual 292	android/os/Parcel:recycle	()V
+    //   157: invokevirtual 295	android/os/Parcel:recycle	()V
     //   160: aload_3
     //   161: ifnull +7 -> 168
     //   164: aload_3
-    //   165: invokevirtual 295	java/io/BufferedOutputStream:close	()V
+    //   165: invokevirtual 298	java/io/BufferedOutputStream:close	()V
     //   168: iload_2
     //   169: istore_1
     //   170: aload 4
     //   172: ifnull -164 -> 8
     //   175: aload 4
-    //   177: invokevirtual 296	java/io/FileOutputStream:close	()V
+    //   177: invokevirtual 299	java/io/FileOutputStream:close	()V
     //   180: iload_2
     //   181: ireturn
     //   182: astore_0
     //   183: aload_0
-    //   184: invokevirtual 297	java/io/IOException:printStackTrace	()V
+    //   184: invokevirtual 300	java/io/IOException:printStackTrace	()V
     //   187: iload_2
     //   188: ireturn
     //   189: astore_0
     //   190: aload_0
-    //   191: invokevirtual 297	java/io/IOException:printStackTrace	()V
+    //   191: invokevirtual 300	java/io/IOException:printStackTrace	()V
     //   194: goto -26 -> 168
     //   197: astore 4
     //   199: aconst_null
@@ -343,27 +343,27 @@ public class ArEffectConfig
     //   204: aload 5
     //   206: astore_3
     //   207: aload 4
-    //   209: invokevirtual 297	java/io/IOException:printStackTrace	()V
+    //   209: invokevirtual 300	java/io/IOException:printStackTrace	()V
     //   212: aload 6
-    //   214: invokevirtual 292	android/os/Parcel:recycle	()V
+    //   214: invokevirtual 295	android/os/Parcel:recycle	()V
     //   217: aload_3
     //   218: ifnull +7 -> 225
     //   221: aload_3
-    //   222: invokevirtual 295	java/io/BufferedOutputStream:close	()V
+    //   222: invokevirtual 298	java/io/BufferedOutputStream:close	()V
     //   225: aload_0
     //   226: ifnull -218 -> 8
     //   229: aload_0
-    //   230: invokevirtual 296	java/io/FileOutputStream:close	()V
+    //   230: invokevirtual 299	java/io/FileOutputStream:close	()V
     //   233: iconst_0
     //   234: ireturn
     //   235: astore_0
     //   236: aload_0
-    //   237: invokevirtual 297	java/io/IOException:printStackTrace	()V
+    //   237: invokevirtual 300	java/io/IOException:printStackTrace	()V
     //   240: iconst_0
     //   241: ireturn
     //   242: astore_3
     //   243: aload_3
-    //   244: invokevirtual 297	java/io/IOException:printStackTrace	()V
+    //   244: invokevirtual 300	java/io/IOException:printStackTrace	()V
     //   247: goto -22 -> 225
     //   250: astore_0
     //   251: aconst_null
@@ -371,24 +371,24 @@ public class ArEffectConfig
     //   253: aconst_null
     //   254: astore 4
     //   256: aload 6
-    //   258: invokevirtual 292	android/os/Parcel:recycle	()V
+    //   258: invokevirtual 295	android/os/Parcel:recycle	()V
     //   261: aload_3
     //   262: ifnull +7 -> 269
     //   265: aload_3
-    //   266: invokevirtual 295	java/io/BufferedOutputStream:close	()V
+    //   266: invokevirtual 298	java/io/BufferedOutputStream:close	()V
     //   269: aload 4
     //   271: ifnull +8 -> 279
     //   274: aload 4
-    //   276: invokevirtual 296	java/io/FileOutputStream:close	()V
+    //   276: invokevirtual 299	java/io/FileOutputStream:close	()V
     //   279: aload_0
     //   280: athrow
     //   281: astore_3
     //   282: aload_3
-    //   283: invokevirtual 297	java/io/IOException:printStackTrace	()V
+    //   283: invokevirtual 300	java/io/IOException:printStackTrace	()V
     //   286: goto -17 -> 269
     //   289: astore_3
     //   290: aload_3
-    //   291: invokevirtual 297	java/io/IOException:printStackTrace	()V
+    //   291: invokevirtual 300	java/io/IOException:printStackTrace	()V
     //   294: goto -15 -> 279
     //   297: astore_0
     //   298: aconst_null
@@ -497,7 +497,7 @@ public class ArEffectConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.aidl.ArEffectConfig
  * JD-Core Version:    0.7.0.1
  */

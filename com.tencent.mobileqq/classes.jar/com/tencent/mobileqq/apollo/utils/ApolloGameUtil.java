@@ -1,52 +1,100 @@
 package com.tencent.mobileqq.apollo.utils;
 
+import aciy;
+import acju;
+import acka;
+import aecb;
+import aifa;
+import aifc;
+import aifg;
+import aikz;
+import aila;
+import ailb;
+import ailh;
+import ailn;
+import aind;
+import aing;
+import aipo;
+import aipp;
+import aise;
+import aiwp;
+import aiyr;
+import aiys;
+import aiyu;
+import aizl;
+import aizq;
+import aizr;
+import aizs;
+import aizt;
+import aizv;
+import aizz;
+import ajaa;
+import ajab;
+import ajac;
+import ajdd;
+import ajed;
+import ajjy;
+import ajjz;
+import akbj;
+import akhp;
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.pm.ShortcutInfo.Builder;
+import android.content.pm.ShortcutManager;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Icon;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.util.SparseArray;
 import android.view.View;
 import android.webkit.URLUtil;
+import atmo;
+import atmp;
+import atmq;
+import awbi;
+import awrn;
+import azzz;
+import bacc;
+import bace;
+import bajr;
+import bale;
+import balh;
+import com.tencent.biz.flatbuffers.FlatBuffersParser;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mfsdk.MagnifierSDK;
 import com.tencent.mobileqq.DrawerPushItem;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.ApolloGameArkHandler;
-import com.tencent.mobileqq.apollo.ApolloGameManager;
-import com.tencent.mobileqq.apollo.ApolloManager;
 import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
 import com.tencent.mobileqq.apollo.data.ApolloGameRedDot;
 import com.tencent.mobileqq.apollo.game.ApolloFragment;
-import com.tencent.mobileqq.apollo.game.ApolloFragmentManager;
-import com.tencent.mobileqq.apollo.game.ApolloGameConfig;
-import com.tencent.mobileqq.apollo.game.ApolloGameConst;
-import com.tencent.mobileqq.apollo.game.ApolloGameTool;
-import com.tencent.mobileqq.apollo.game.ApolloGameView;
-import com.tencent.mobileqq.apollo.game.ApolloGameView.Director;
 import com.tencent.mobileqq.apollo.game.ApolloWebViewFragment;
-import com.tencent.mobileqq.apollo.process.CmGameServerQIPCModule;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
-import com.tencent.mobileqq.apollo.process.data.CmGameLifeCycle;
-import com.tencent.mobileqq.apollo.script.SpriteRscBuilder;
-import com.tencent.mobileqq.apollo.task.OnAddOrDeleGameListener;
-import com.tencent.mobileqq.apollo.view.ApolloPanel.GameMsgInfo;
-import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.apollo.game.WebGameFakeView;
+import com.tencent.mobileqq.apollo.game.WebGameFakeView.Director;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.HotChatCenterManager;
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.MsgProxy;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.utils.MessagePkgUtils;
 import com.tencent.mobileqq.data.AioPushData;
 import com.tencent.mobileqq.data.ApolloBaseInfo;
 import com.tencent.mobileqq.data.ApolloGameData;
@@ -56,65 +104,51 @@ import com.tencent.mobileqq.data.ApolloMessage;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForApollo;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.jsp.WebSSOAgentServlet;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
-import com.tencent.mobileqq.service.message.MessageRecordFactory;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
-import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReq;
-import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReqComm;
+import com.tencent.mobileqq.webprocess.WebProcessReceiver;
 import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerRsp;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AbsListView;
+import com.tencent.widget.XListView;
 import java.io.File;
 import java.io.Serializable;
 import java.lang.ref.WeakReference;
 import java.net.URLDecoder;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
-import mqq.app.NewIntent;
+import mqq.manager.TicketManager;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import zde;
-import zdf;
-import zdh;
-import zdi;
-import zdj;
-import zdk;
-import zdl;
+import zrw;
+import zsb;
 
 public class ApolloGameUtil
 {
   public static int a;
-  public static SparseArray a;
+  public static SparseArray<SparseArray<ApolloGameRedDot>> a;
   public static ApolloGameUtil.CmStartTask a;
+  private static boolean a;
   public static int b;
-  public static int c = 1;
+  private static SparseArray<Integer> jdField_b_of_type_AndroidUtilSparseArray;
+  private static boolean jdField_b_of_type_Boolean;
+  public static int c;
+  private static boolean c;
+  public static int d;
   
   static
   {
     jdField_a_of_type_Int = -1;
+    jdField_c_of_type_Int = 1;
   }
   
   public static int a()
@@ -128,7 +162,7 @@ public class ApolloGameUtil
       }
     }
     label27:
-    for (int i = ApolloGameConst.jdField_a_of_type_Int;; i = localSharedPreferences.getInt("sp.score.num", ApolloGameConst.jdField_a_of_type_Int))
+    for (int i = ailb.jdField_a_of_type_Int;; i = localSharedPreferences.getInt("sp.score.num", ailb.jdField_a_of_type_Int))
     {
       jdField_a_of_type_Int = i;
       return jdField_a_of_type_Int;
@@ -138,33 +172,80 @@ public class ApolloGameUtil
   public static int a(int paramInt)
   {
     int i = 1;
-    Object localObject = new File(ApolloConstant.jdField_a_of_type_JavaLangString + "/game/" + String.valueOf(paramInt) + "/gameConfig.json");
-    File localFile = new File(ApolloConstant.jdField_a_of_type_JavaLangString + "/game/" + String.valueOf(paramInt) + "/appConfig.json");
+    Object localObject = new File(aiys.jdField_a_of_type_JavaLangString + "/game/" + String.valueOf(paramInt) + "/gameConfig.json");
+    File localFile = new File(aiys.jdField_a_of_type_JavaLangString + "/game/" + String.valueOf(paramInt) + "/appConfig.json");
     if (((File)localObject).exists())
     {
-      localObject = FileUtils.a((File)localObject);
+      localObject = bace.a((File)localObject);
       paramInt = i;
-      if (TextUtils.isEmpty((CharSequence)localObject)) {}
-    }
-    do
-    {
-      try
-      {
-        boolean bool = TextUtils.isEmpty(new JSONObject((String)localObject).optString("enterUrl"));
-        paramInt = i;
-        if (!bool) {
-          paramInt = 2;
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        try
+        {
+          localObject = new JSONObject((String)localObject).optString("enterUrl");
+          paramInt = i;
+          if (TextUtils.isEmpty((CharSequence)localObject)) {
+            return paramInt;
+          }
+          if (((String)localObject).contains("urlshare.cn")) {
+            return 4;
+          }
+          boolean bool = ((String)localObject).contains("_bkfv=5");
+          if (bool) {
+            return 5;
+          }
+          return 2;
         }
-        return paramInt;
+        catch (Throwable localThrowable)
+        {
+          QLog.e("ApolloGameUtil", 1, localThrowable, new Object[0]);
+          return 1;
+        }
       }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("ApolloGameUtil", 1, localThrowable, new Object[0]);
-        return 1;
-      }
+    }
+    else
+    {
       paramInt = i;
-    } while (!localFile.exists());
-    return 3;
+      if (localFile.exists()) {
+        paramInt = 3;
+      }
+    }
+    return paramInt;
+  }
+  
+  public static int a(int paramInt1, int paramInt2)
+  {
+    if (jdField_b_of_type_AndroidUtilSparseArray == null) {
+      jdField_b_of_type_AndroidUtilSparseArray = new SparseArray();
+    }
+    for (int i = -2;; i = ((Integer)jdField_b_of_type_AndroidUtilSparseArray.get(paramInt1, Integer.valueOf(-2))).intValue())
+    {
+      int j = i;
+      Object localObject;
+      if (i == -2)
+      {
+        localObject = new File(aiys.jdField_a_of_type_JavaLangString + "/game/" + String.valueOf(paramInt1) + "/" + a(paramInt2));
+        if (!((File)localObject).exists()) {}
+      }
+      else
+      {
+        try
+        {
+          localObject = new JSONObject(bace.a((File)localObject));
+          if (!((JSONObject)localObject).has("viewMode")) {
+            break label172;
+          }
+          j = ((JSONObject)localObject).optInt("viewMode") - 1;
+          jdField_b_of_type_AndroidUtilSparseArray.put(paramInt1, Integer.valueOf(j));
+          return j;
+        }
+        catch (Throwable localThrowable)
+        {
+          QLog.e("ApolloGameUtil", 1, localThrowable, new Object[] { "[getGameViewMode]" });
+        }
+      }
+    }
+    label172:
+    return -1;
   }
   
   public static int a(AppInterface paramAppInterface)
@@ -188,38 +269,46 @@ public class ApolloGameUtil
       {
         if ((paramAppInterface != null) && (!TextUtils.isEmpty(paramString)))
         {
-          paramAppInterface = (HotChatManager)paramAppInterface.getManager(59);
+          paramAppInterface = (HotChatManager)paramAppInterface.getManager(60);
           if ((paramAppInterface != null) && (paramAppInterface.b(paramString))) {
             return 6;
           }
         }
         return 4;
       }
+      if (3000 == paramInt) {
+        return 5;
+      }
       i = paramInt;
-    } while (3000 != paramInt);
-    return 5;
+    } while (1036 != paramInt);
+    return 7;
+  }
+  
+  public static int a(QQAppInterface paramQQAppInterface)
+  {
+    return aifg.a(paramQQAppInterface);
   }
   
   public static int a(ChatMessage paramChatMessage, QQAppInterface paramQQAppInterface)
   {
     paramChatMessage = (MessageForApollo)paramChatMessage;
-    paramQQAppInterface = (ApolloDaoManager)paramQQAppInterface.getManager(154);
+    paramQQAppInterface = (aiyu)paramQQAppInterface.getManager(155);
     if (a(paramChatMessage.msgType))
     {
-      paramQQAppInterface = paramQQAppInterface.a(paramChatMessage.gameId);
-      if ((ApolloManager.c("gameSwitch") != 1) || ((paramQQAppInterface != null) && (!ApolloConfigUtils.a("7.6.8", paramQQAppInterface.minVer, paramQQAppInterface.maxVer))))
+      paramQQAppInterface = paramQQAppInterface.b(paramChatMessage.gameId);
+      if ((aifg.c("gameSwitch") != 1) || ((paramQQAppInterface != null) && (!aiyr.a("8.2.6", paramQQAppInterface.minVer, paramQQAppInterface.maxVer))))
       {
         if (QLog.isColorLevel()) {
           QLog.d("ApolloGameUtil", 2, "play apollo game msg but switch is 0 or version is incorrect");
         }
-        return b;
+        return jdField_b_of_type_Int;
       }
       if ((paramChatMessage.gameId == 1) || (paramChatMessage.gameId == 2)) {
-        return b;
+        return jdField_b_of_type_Int;
       }
-      return c;
+      return jdField_c_of_type_Int;
     }
-    return b;
+    return jdField_b_of_type_Int;
   }
   
   public static long a(QQAppInterface paramQQAppInterface)
@@ -270,7 +359,7 @@ public class ApolloGameUtil
     return BaseApplicationImpl.getApplication().getSharedPreferences("sp.game" + str1, 0);
   }
   
-  public static SparseArray a(EntityManager paramEntityManager)
+  public static SparseArray<SparseArray<ApolloGameRedDot>> a(atmp paramatmp)
   {
     int i;
     Object localObject2;
@@ -279,7 +368,7 @@ public class ApolloGameUtil
       if (QLog.isColorLevel()) {
         QLog.d("ApolloGameUtil", 2, "[getGameReddotMap] from cache");
       }
-      paramEntityManager = new SparseArray();
+      paramatmp = new SparseArray();
       try
       {
         int k = jdField_a_of_type_AndroidUtilSparseArray.size();
@@ -301,22 +390,22 @@ public class ApolloGameUtil
                 ((SparseArray)localObject2).put(i1, (ApolloGameRedDot)localSparseArray1.get(i1));
                 j += 1;
               }
-              paramEntityManager.put(m, localObject2);
+              paramatmp.put(m, localObject2);
             }
             i += 1;
           }
         }
-        return paramEntityManager;
+        return paramatmp;
       }
       catch (Throwable localThrowable)
       {
         QLog.e("ApolloGameUtil", 1, localThrowable, new Object[] { "[getGameReddotMap]" });
       }
     }
-    if (paramEntityManager == null) {
+    if (paramatmp == null) {
       return null;
     }
-    Object localObject1 = paramEntityManager.a(ApolloGameRedDot.class);
+    Object localObject1 = paramatmp.a(ApolloGameRedDot.class);
     SparseArray localSparseArray2 = new SparseArray();
     Iterator localIterator;
     if (QLog.isColorLevel())
@@ -331,14 +420,14 @@ public class ApolloGameUtil
     else
     {
       if (localObject1 == null) {
-        break label371;
+        break label372;
       }
       localIterator = ((List)localObject1).iterator();
     }
     for (;;)
     {
       if (!localIterator.hasNext()) {
-        break label371;
+        break label372;
       }
       ApolloGameRedDot localApolloGameRedDot = (ApolloGameRedDot)localIterator.next();
       if (localApolloGameRedDot != null)
@@ -357,10 +446,10 @@ public class ApolloGameUtil
           i = ((List)localObject1).size();
           break;
         }
-        paramEntityManager.b(localApolloGameRedDot);
+        paramatmp.b(localApolloGameRedDot);
       }
     }
-    label371:
+    label372:
     jdField_a_of_type_AndroidUtilSparseArray = localSparseArray2;
     return localSparseArray2;
   }
@@ -403,7 +492,7 @@ public class ApolloGameUtil
     return null;
   }
   
-  public static ApolloGameRedDot a(SparseArray paramSparseArray)
+  public static ApolloGameRedDot a(SparseArray<ApolloGameRedDot> paramSparseArray)
   {
     if ((paramSparseArray == null) || (paramSparseArray.size() == 0)) {}
     ArrayList localArrayList;
@@ -426,7 +515,7 @@ public class ApolloGameUtil
     return (ApolloGameRedDot)localArrayList.get(0);
   }
   
-  private static final ApolloGameRedDot a(AppInterface paramAppInterface, List paramList)
+  private static final ApolloGameRedDot a(AppInterface paramAppInterface, List<ApolloGameRedDot> paramList)
   {
     if (paramAppInterface == null)
     {
@@ -460,6 +549,16 @@ public class ApolloGameUtil
     return null;
   }
   
+  public static String a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return "gameConfig.json";
+    }
+    return "appConfig.json";
+  }
+  
   private static String a(ApolloGameRedDot paramApolloGameRedDot)
   {
     if (paramApolloGameRedDot == null) {
@@ -468,7 +567,7 @@ public class ApolloGameUtil
     return "apollo_game_reddot_hasshow_" + String.valueOf(paramApolloGameRedDot.mGameId) + "_" + String.valueOf(paramApolloGameRedDot.mDotId);
   }
   
-  public static ArrayList a(List paramList, long paramLong)
+  public static ArrayList<MessageForApollo> a(List<MessageRecord> paramList, long paramLong)
   {
     if ((paramList == null) || (paramList.size() == 0))
     {
@@ -494,7 +593,7 @@ public class ApolloGameUtil
     return localArrayList;
   }
   
-  public static List a(QQAppInterface paramQQAppInterface, long paramLong, String paramString, int paramInt)
+  public static List<MessageForApollo> a(QQAppInterface paramQQAppInterface, long paramLong, String paramString, int paramInt)
   {
     if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
       return null;
@@ -516,7 +615,7 @@ public class ApolloGameUtil
     }
   }
   
-  public static List a(QQAppInterface paramQQAppInterface, long paramLong, String paramString, int paramInt1, int paramInt2)
+  public static List<MessageForApollo> a(QQAppInterface paramQQAppInterface, long paramLong, String paramString, int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
       QLog.d("ApolloGameUtil", 2, new Object[] { "[getNeedPullMsg], friendUin:", paramString, ",curType:", Integer.valueOf(paramInt1), ",createTime:", Long.valueOf(paramLong), ",from:", Integer.valueOf(paramInt2) });
@@ -562,7 +661,7 @@ public class ApolloGameUtil
     }
   }
   
-  public static List a(QQAppInterface paramQQAppInterface, WeakReference paramWeakReference, long paramLong)
+  public static List<MessageForApollo> a(QQAppInterface paramQQAppInterface, WeakReference<XListView> paramWeakReference, long paramLong)
   {
     ArrayList localArrayList = new ArrayList();
     long l = System.currentTimeMillis();
@@ -619,12 +718,12 @@ public class ApolloGameUtil
         if (localObject != null)
         {
           localObject = ((View)localObject).getTag();
-          if ((localObject instanceof BaseBubbleBuilder.ViewHolder))
+          if ((localObject instanceof acju))
           {
-            localObject = (BaseBubbleBuilder.ViewHolder)localObject;
-            if ((((BaseBubbleBuilder.ViewHolder)localObject).a instanceof MessageForApollo))
+            localObject = (acju)localObject;
+            if ((((acju)localObject).a instanceof MessageForApollo))
             {
-              localObject = (MessageForApollo)((BaseBubbleBuilder.ViewHolder)localObject).a;
+              localObject = (MessageForApollo)((acju)localObject).a;
               if (a(paramQQAppInterface, (MessageForApollo)localObject, paramLong)) {
                 localArrayList.add(localObject);
               }
@@ -642,52 +741,6 @@ public class ApolloGameUtil
     }
   }
   
-  public static List a(EntityManager paramEntityManager)
-  {
-    if (paramEntityManager == null) {
-      return null;
-    }
-    Object localObject1 = paramEntityManager.a(ApolloGameRedDot.class);
-    ArrayList localArrayList = new ArrayList();
-    Object localObject2;
-    int i;
-    if (QLog.isColorLevel())
-    {
-      localObject2 = new StringBuilder().append("apolloGameReddot getGameReddotList, redDots.size:");
-      if (localObject1 == null)
-      {
-        i = 0;
-        QLog.d("ApolloGameUtil", 2, i);
-      }
-    }
-    else
-    {
-      if (localObject1 == null) {
-        return localArrayList;
-      }
-      localObject1 = ((List)localObject1).iterator();
-    }
-    for (;;)
-    {
-      if (!((Iterator)localObject1).hasNext()) {
-        return localArrayList;
-      }
-      localObject2 = (ApolloGameRedDot)((Iterator)localObject1).next();
-      if (localObject2 != null)
-      {
-        if (((ApolloGameRedDot)localObject2).isTimeValid())
-        {
-          localArrayList.add(localObject2);
-          continue;
-          i = ((List)localObject1).size();
-          break;
-        }
-        paramEntityManager.b((Entity)localObject2);
-      }
-    }
-    return localArrayList;
-  }
-  
   public static JSONObject a(QQAppInterface paramQQAppInterface, String paramString)
   {
     if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {}
@@ -698,7 +751,7 @@ public class ApolloGameUtil
       {
         paramString = new JSONObject(paramString);
         long l = paramString.optLong("taskId");
-        paramQQAppInterface = SpriteRscBuilder.a(paramQQAppInterface, paramString);
+        paramQQAppInterface = aise.a(paramQQAppInterface, paramString);
         if (paramQQAppInterface != null)
         {
           paramString = new JSONObject();
@@ -728,6 +781,11 @@ public class ApolloGameUtil
         jdField_a_of_type_AndroidUtilSparseArray.clear();
         jdField_a_of_type_AndroidUtilSparseArray = null;
       }
+      if (jdField_b_of_type_AndroidUtilSparseArray != null)
+      {
+        jdField_b_of_type_AndroidUtilSparseArray.clear();
+        jdField_b_of_type_AndroidUtilSparseArray = null;
+      }
       return;
     }
     catch (Throwable localThrowable)
@@ -736,12 +794,59 @@ public class ApolloGameUtil
     }
   }
   
+  public static void a(int paramInt)
+  {
+    ThreadManager.getUIHandler().post(new ApolloGameUtil.20(paramInt));
+  }
+  
+  @TargetApi(26)
+  public static void a(int paramInt, String paramString)
+  {
+    a(paramInt, paramString, null);
+  }
+  
+  @TargetApi(26)
+  public static void a(int paramInt, String paramString, ajab paramajab)
+  {
+    ThreadManager.post(new ApolloGameUtil.13(paramInt, paramString, paramajab), 5, null, true);
+  }
+  
   public static void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString)
   {
     if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
       return;
     }
-    ThreadManager.post(new zdi(paramString, paramQQAppInterface, paramLong), 5, null, true);
+    ThreadManager.post(new ApolloGameUtil.4(paramString, paramQQAppInterface, paramLong), 5, null, true);
+  }
+  
+  public static void a(aiwp paramaiwp, long paramLong, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameUtil", 2, "[handleResultForGameEdit], ret:" + paramLong + ",cmd:" + paramString + ",lis:" + paramaiwp);
+    }
+    if (paramaiwp == null) {
+      return;
+    }
+    String str = "";
+    if ("apollo_aio_game.add_games_to_user_gamepanel".equals(paramString)) {
+      if (0L == paramLong) {
+        str = ajjy.a(2131634554);
+      }
+    }
+    for (;;)
+    {
+      paramaiwp.a(paramLong, str);
+      return;
+      str = ajjy.a(2131634581);
+      continue;
+      if ("apollo_aio_game.del_games_from_user_gamepanel".equals(paramString)) {
+        if (0L == paramLong) {
+          str = ajjy.a(2131634561);
+        } else {
+          str = ajjy.a(2131634560);
+        }
+      }
+    }
   }
   
   public static void a(Activity paramActivity, QQAppInterface paramQQAppInterface, String paramString)
@@ -759,7 +864,10 @@ public class ApolloGameUtil
     try
     {
       paramActivity = new JSONObject(URLDecoder.decode(paramActivity.substring(paramActivity.indexOf('=') + 1), "UTF-8"));
-      a(paramQQAppInterface, paramActivity.optInt("gameId"), paramActivity.optLong("roomId"), paramActivity.optInt("gameMode"), paramActivity.optString("extendInfo"), 220);
+      int i = paramActivity.optInt("gameId");
+      long l = paramActivity.optLong("roomId");
+      paramString = paramActivity.optString("gameName");
+      a(paramQQAppInterface, i, l, paramActivity.optInt("gameMode"), paramActivity.optString("extendInfo"), 220, paramString);
       return;
     }
     catch (Exception paramActivity)
@@ -769,9 +877,48 @@ public class ApolloGameUtil
     }
   }
   
-  public static void a(Context paramContext, int paramInt, String paramString1, String paramString2)
+  public static void a(Context paramContext)
   {
-    ThreadManager.post(new zdl(paramContext, paramString1, paramString2, paramInt), 5, null, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameUtil", 2, "send broadcast to finish jump activity");
+    }
+    Intent localIntent = new Intent();
+    localIntent.setAction("BroadcastReceiverFinishActivity");
+    paramContext.sendBroadcast(localIntent);
+  }
+  
+  public static void a(Context paramContext, int paramInt, Intent paramIntent, String paramString, Bitmap paramBitmap, ajab paramajab)
+  {
+    if ((paramContext == null) || (!(paramContext instanceof ApolloGameActivity)))
+    {
+      bajr.a(null, "cmshow", "Apollo", "pressSendToDesktopButton", 0, 1, new String[] { String.valueOf(paramInt) });
+      a(paramIntent, paramString, paramBitmap, new aizr(paramajab));
+      return;
+    }
+    if (paramBitmap == null) {}
+    try
+    {
+      paramBitmap = BitmapFactory.decodeResource(paramContext.getResources(), 2130839762);
+      int i = aciy.a(192.0F, paramContext.getResources());
+      Bitmap localBitmap = paramBitmap;
+      if (i != paramBitmap.getWidth()) {
+        localBitmap = Bitmap.createScaledBitmap(paramBitmap, i, i, false);
+      }
+      ThreadManager.getUIHandler().post(new ApolloGameUtil.15(paramContext, paramInt, paramIntent, paramString, localBitmap, paramajab));
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      for (;;)
+      {
+        QLog.e("ApolloGameUtil", 1, paramContext, new Object[0]);
+        return;
+      }
+    }
+    catch (OutOfMemoryError paramContext)
+    {
+      QLog.e("ApolloGameUtil", 1, paramContext, new Object[0]);
+    }
   }
   
   public static void a(Context paramContext, CmGameStartChecker.StartCheckParam paramStartCheckParam)
@@ -779,223 +926,142 @@ public class ApolloGameUtil
     if (QLog.isColorLevel()) {
       QLog.d("ApolloGameUtil", 2, new Object[] { " [startLightGame] context=", paramContext, ", StartCheckParam=", paramStartCheckParam });
     }
-    if ((paramContext == null) && (BaseActivity.sTopActivity != null)) {
-      paramContext = BaseActivity.sTopActivity;
+    if (a() == null) {
+      if (!jdField_c_of_type_Boolean)
+      {
+        b(paramContext, paramStartCheckParam);
+        jdField_c_of_type_Boolean = true;
+        QLog.e("ApolloGameUtil", 1, "[startLightGame] sTopActivity is null");
+      }
     }
+    label388:
+    label395:
+    label396:
     for (;;)
     {
-      if ((paramContext == null) || (paramStartCheckParam == null)) {}
-      while (!(paramContext instanceof Activity)) {
-        return;
-      }
-      paramStartCheckParam.startT = System.currentTimeMillis();
-      Object localObject = CmGameUtil.a();
-      if (!(localObject instanceof QQAppInterface))
+      return;
+      QLog.e("ApolloGameUtil", 1, "[startLightGame] sTopActivity is still null");
+      return;
+      int i;
+      if ((paramContext != null) && ((paramContext instanceof JumpActivity)))
       {
-        QLog.e("ApolloGameUtil", 1, "not QQAppInterface");
-        return;
-      }
-      localObject = (QQAppInterface)localObject;
-      if ((ApolloConfigUtils.b != null) && (ApolloConfigUtils.b.contains(Integer.valueOf(paramStartCheckParam.gameId)))) {
-        paramStartCheckParam.enableMenu = false;
-      }
-      CmGameLifeCycle localCmGameLifeCycle = CmGameServerQIPCModule.a().a(paramStartCheckParam.gameId);
-      if (localCmGameLifeCycle != null) {
-        localCmGameLifeCycle.a((Activity)paramContext, paramStartCheckParam);
-      }
-      if (jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameUtil$CmStartTask == null) {
-        jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameUtil$CmStartTask = new ApolloGameUtil.CmStartTask((QQAppInterface)localObject, paramStartCheckParam);
+        i = 1;
+        if (a() == null) {
+          break label395;
+        }
+        paramContext = a();
       }
       for (;;)
       {
-        ThreadManager.removeJobFromThreadPool(jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameUtil$CmStartTask, 16);
-        ThreadManager.excute(jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameUtil$CmStartTask, 16, null, true);
-        return;
-        jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameUtil$CmStartTask.a((QQAppInterface)localObject, paramStartCheckParam);
+        if ((paramContext == null) || (paramStartCheckParam == null) || (!(paramContext instanceof Activity))) {
+          break label396;
+        }
+        if ((i != 0) && (!(paramContext instanceof JumpActivity))) {
+          a(paramContext);
+        }
+        if (a())
+        {
+          QLog.e("ApolloGameUtil", 1, "[startLightGame] x86 not support");
+          return;
+          i = 0;
+          break;
+        }
+        paramStartCheckParam.startT = System.currentTimeMillis();
+        AppInterface localAppInterface = aing.a();
+        if (!(localAppInterface instanceof QQAppInterface))
+        {
+          QLog.e("ApolloGameUtil", 1, "not QQAppInterface");
+          return;
+        }
+        QLog.d("CmGameStat", 1, new Object[] { "startLightGame, time=", Long.valueOf(SystemClock.uptimeMillis()) });
+        Object localObject;
+        if (!aifg.jdField_b_of_type_Boolean)
+        {
+          QLog.i("ApolloGameUtil", 1, "startLightGame but apollo init first now");
+          localObject = (aifg)localAppInterface.getManager(153);
+          if (localObject == null)
+          {
+            QLog.e("ApolloGameUtil", 1, "apolloManager is null");
+            return;
+          }
+          ((aifg)localObject).a(new aizq(paramContext, localAppInterface, paramStartCheckParam, SystemClock.uptimeMillis()));
+          localObject = new HashMap();
+          ((HashMap)localObject).put("param_gameId", String.valueOf(paramStartCheckParam.gameId));
+          ((HashMap)localObject).put("param_src", String.valueOf(paramStartCheckParam.src));
+          if (!aifg.jdField_b_of_type_Boolean) {
+            break label388;
+          }
+        }
+        for (paramStartCheckParam = "1";; paramStartCheckParam = "0")
+        {
+          ((HashMap)localObject).put("param_init", paramStartCheckParam);
+          awrn.a(paramContext).a(localAppInterface.getCurrentAccountUin(), "cmgame_data_init_check", true, 0L, 0L, (HashMap)localObject, "", false);
+          QLog.d("CmGameStat", 1, new Object[] { "sInitedDone=", Boolean.valueOf(aifg.jdField_b_of_type_Boolean) });
+          return;
+          b(paramContext, (QQAppInterface)localAppInterface, paramStartCheckParam);
+          break;
+        }
       }
     }
   }
   
-  public static void a(FragmentActivity paramFragmentActivity, int paramInt1, ApolloFragment paramApolloFragment, int paramInt2, ApolloGameView paramApolloGameView)
+  @TargetApi(26)
+  public static void a(Intent paramIntent, String paramString, Bitmap paramBitmap, ajac paramajac)
   {
-    for (;;)
+    ThreadManager.excute(new ApolloGameUtil.17(BaseApplicationImpl.getApplication(), paramString, paramajac, paramIntent, paramBitmap), 32, null, false);
+  }
+  
+  public static void a(atmp paramatmp)
+  {
+    if (paramatmp != null)
     {
-      Object localObject2;
-      Object localObject3;
-      JSONObject localJSONObject;
-      try
-      {
-        localObject2 = new StringBuilder().append(ApolloConstant.jdField_a_of_type_JavaLangString).append("/game/").append(String.valueOf(paramInt1));
-        if (paramInt2 != 2) {
-          break label684;
-        }
-        localObject1 = "/gameConfig.json";
-        localObject2 = (String)localObject1;
-        localObject3 = new File((String)localObject2);
-        if (!((File)localObject3).exists()) {
-          break label683;
-        }
-        if (ApolloGameTool.a())
-        {
-          localObject4 = new ApolloGameRscVerify(paramInt1);
-          if (paramInt2 != 2) {
-            break label691;
-          }
-          localObject1 = "gameConfig.json";
-          ((ApolloGameRscVerify)localObject4).a();
-          if ((!((ApolloGameRscVerify)localObject4).a((String)localObject1)) || (!((ApolloGameRscVerify)localObject4).a((String)localObject2, (String)localObject1)))
-          {
-            QLog.e("ApolloGameUtil", 1, "[launchWebGame] failed for invalid config");
-            CmGameUtil.a(paramInt1);
-            return;
-          }
-        }
-        localObject1 = FileUtils.a((File)localObject3);
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          break label683;
-        }
-        localJSONObject = new JSONObject((String)localObject1);
-        localObject1 = localJSONObject.optString("enterPath");
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          break label675;
-        }
-        localObject3 = ApolloConstant.jdField_a_of_type_JavaLangString + "/game/" + String.valueOf(paramInt1) + "/" + (String)localObject1;
-        localObject1 = "file://" + (String)localObject3;
-        Object localObject4 = localJSONObject.optString("enterUrl");
-        localObject2 = localObject1;
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          localObject2 = localObject4;
-        }
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          break label683;
-        }
-        if (URLUtil.isNetworkUrl((String)localObject2))
-        {
-          localObject1 = "&";
-          if (!((String)localObject2).contains("?")) {
-            localObject1 = "?";
-          }
-          localObject1 = (String)localObject2 + (String)localObject1 + "apollo_bk" + "=1";
-          ApolloFragmentManager.a().a(paramFragmentActivity, 2131362823);
-          paramFragmentActivity = new Intent();
-          paramFragmentActivity.putExtra("url", (String)localObject1);
-          if ((paramApolloFragment == null) || (!paramApolloFragment.isAdded()) || (!(paramApolloFragment instanceof ApolloWebViewFragment))) {
-            break label506;
-          }
-          WebAccelerateHelper.getInstance().preCheckOffline((String)localObject1);
-          WebAccelerateHelper.getInstance().preFetchResource((String)localObject1);
-          ((ApolloWebViewFragment)paramApolloFragment).a((String)localObject1);
-          return;
-        }
-      }
-      catch (Throwable paramFragmentActivity)
-      {
-        QLog.e("ApolloGameUtil", 1, paramFragmentActivity, new Object[0]);
-        return;
-      }
-      if (URLUtil.isFileUrl((String)localObject2))
-      {
-        localObject1 = new File((String)localObject3);
-        if ((((File)localObject1).exists()) && (((File)localObject1).getAbsolutePath().startsWith(AppConstants.aK + ".apollo/game/" + String.valueOf(paramInt1)))) {
-          continue;
-        }
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ApolloGameUtil", 2, (String)localObject3);
-          return;
-          label506:
-          paramApolloFragment = new ApolloGameView.Director();
-          localObject2 = localJSONObject.optJSONObject("ui");
-          if (localObject2 != null)
-          {
-            localObject3 = ((JSONObject)localObject2).optString(ApolloGameView.Director.TITLE);
-            if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-              paramApolloFragment.title = ((String)localObject3);
-            }
-            localObject3 = ((JSONObject)localObject2).optString(ApolloGameView.Director.FOREGROUND_COLOR);
-            if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-              paramApolloFragment.frontColor = ((String)localObject3);
-            }
-            localObject2 = ((JSONObject)localObject2).optString(ApolloGameView.Director.BACKGROUND_COLOR);
-            if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-              paramApolloFragment.bgColor = ((String)localObject2);
-            }
-          }
-          if (paramApolloGameView != null)
-          {
-            paramApolloGameView.a = paramApolloFragment;
-            paramApolloGameView.a();
-          }
-          paramFragmentActivity.putExtra("Director", paramApolloFragment);
-          paramFragmentActivity.putExtra("game_busid", String.valueOf(paramInt1));
-          ApolloFragmentManager.a().a(paramFragmentActivity, ApolloWebViewFragment.class);
-          WebAccelerateHelper.getInstance().preGetKey((String)localObject1, paramFragmentActivity, null);
-          WebAccelerateHelper.getInstance().preCheckOffline((String)localObject1);
-          WebAccelerateHelper.getInstance().preFetchResource((String)localObject1);
-          return;
-          label675:
-          localObject3 = "";
-          continue;
-        }
-      }
-      label683:
+      ThreadManager.post(new ApolloGameUtil.3(paramatmp), 5, null, true);
       return;
-      label684:
-      Object localObject1 = "/appConfig.json";
-      continue;
-      label691:
-      localObject1 = "appConfig.json";
+    }
+    QLog.e("ApolloGameUtil", 1, "[loadCache] em is null out ");
+  }
+  
+  public static void a(atmp paramatmp, int paramInt1, int paramInt2)
+  {
+    if (paramatmp == null) {
+      return;
+    }
+    int i = paramatmp.a(ApolloGameRedDot.class.getSimpleName(), "mGameId=? and mDotId=? ", new String[] { String.valueOf(paramInt1), String.valueOf(paramInt2) });
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameUtil", 2, "apolloGameReddot deleteGameReddot, gameId:" + paramInt1 + ",reddotId:" + paramInt2 + ",ret:" + i);
+    }
+    a(paramatmp);
+  }
+  
+  public static void a(atmp paramatmp, List<ApolloGameRedDot> paramList)
+  {
+    if ((paramatmp != null) && (paramList != null) && (paramList.size() > 0))
+    {
+      Collections.sort(paramList);
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        ApolloGameRedDot localApolloGameRedDot = (ApolloGameRedDot)paramList.next();
+        if (localApolloGameRedDot != null)
+        {
+          localApolloGameRedDot.mIsShow = true;
+          paramatmp.a(localApolloGameRedDot);
+        }
+      }
+      a(paramatmp);
     }
   }
   
-  public static void a(AppInterface paramAppInterface)
+  public static void a(atmp paramatmp, boolean paramBoolean)
   {
-    if (paramAppInterface == null) {}
-    for (;;)
-    {
+    if (paramatmp == null) {
       return;
-      SharedPreferences localSharedPreferences = paramAppInterface.getApp().getSharedPreferences(paramAppInterface.getCurrentAccountUin() + "apollo_game_reddot_sp", 0);
-      long l = localSharedPreferences.getLong("apollo_game_reddot_checkTime", 0L);
-      if (System.currentTimeMillis() - l < 21600000L)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloGameUtil", 2, "checkApolloGameRedDot apolloGameReddot System.currentTimeMillis() - lastCheckTime < APOLLO_GAME_REDDOT_CHECK_INTERVAL");
-        }
-      }
-      else {
-        try
-        {
-          Object localObject = new WebSSOAgent.UniSsoServerReqComm();
-          ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
-          ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-          ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.8");
-          WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
-          localUniSsoServerReq.comm.set((MessageMicro)localObject);
-          localObject = new JSONObject();
-          ((JSONObject)localObject).put("cmd", "apollo_red_dot.get_reddot_info");
-          ((JSONObject)localObject).put("from", "android.aio.panel");
-          ((JSONObject)localObject).put("touin", paramAppInterface.getLongAccountUin());
-          ((JSONObject)localObject).put("busType", 1);
-          ((JSONObject)localObject).put("mask", 16777216);
-          localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-          localObject = new NewIntent(BaseApplicationImpl.getContext(), WebSSOAgentServlet.class);
-          ((NewIntent)localObject).putExtra("extra_cmd", "apollo_red_dot.get_reddot_info");
-          ((NewIntent)localObject).putExtra("extra_data", localUniSsoServerReq.toByteArray());
-          ((NewIntent)localObject).putExtra("extra_callbackid", MagnifierSDK.a);
-          ((NewIntent)localObject).setObserver(new zdf(localSharedPreferences, paramAppInterface));
-          paramAppInterface.startServlet((NewIntent)localObject);
-          if (QLog.isColorLevel())
-          {
-            QLog.d("ApolloGameUtil", 2, "checkApolloGameRedDot apolloGameReddot startServlet");
-            return;
-          }
-        }
-        catch (Exception paramAppInterface)
-        {
-          QLog.e("ApolloGameUtil", 1, "checkApolloGameRedDot apolloGameReddot failed ", paramAppInterface);
-        }
-      }
     }
+    paramBoolean = paramatmp.c("update ApolloGameRedDot set mIsShowForFolder = 1");
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameUtil", 2, new Object[] { "update ApolloGameRedDot set mIsShowForFolder=true", Boolean.valueOf(paramBoolean) });
+    }
+    a(paramatmp);
   }
   
   public static void a(AppInterface paramAppInterface, int paramInt)
@@ -1009,159 +1075,194 @@ public class ApolloGameUtil
     BaseApplicationImpl.getContext().getSharedPreferences("apollo_sp", 4).edit().putInt("sp_key_apollo_game_life" + paramAppInterface.getCurrentAccountUin(), paramInt).commit();
   }
   
-  public static void a(OnAddOrDeleGameListener paramOnAddOrDeleGameListener, long paramLong, String paramString)
+  public static void a(AppInterface paramAppInterface, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloGameUtil", 2, "[handleResultForGameEdit], ret:" + paramLong + ",cmd:" + paramString + ",lis:" + paramOnAddOrDeleGameListener);
-    }
-    if (paramOnAddOrDeleGameListener == null) {
-      return;
-    }
-    String str = "";
-    if ("apollo_aio_game.add_games_to_user_gamepanel".equals(paramString)) {
-      if (0L == paramLong) {
-        str = "添加成功";
+    if (paramAppInterface != null) {
+      if (!paramBoolean) {
+        break label30;
       }
     }
-    for (;;)
+    label30:
+    for (int i = 0;; i = 1)
     {
-      paramOnAddOrDeleGameListener.a(paramLong, str);
+      bajr.a(paramAppInterface, "cmshow", "Apollo", "clk_shortcut", 0, i, new String[0]);
       return;
-      str = "添加失败";
-      continue;
-      if ("apollo_aio_game.del_games_from_user_gamepanel".equals(paramString)) {
-        if (0L == paramLong) {
-          str = "删除成功";
-        } else {
-          str = "删除失败";
-        }
-      }
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface)
+  public static void a(BaseChatPie paramBaseChatPie, int paramInt1, int paramInt2, String paramString, int paramInt3)
   {
-    if (paramQQAppInterface == null) {}
+    if ((paramBaseChatPie == null) || (paramBaseChatPie.a() == null) || (paramBaseChatPie.a() == null) || (paramBaseChatPie.a() == null))
+    {
+      QLog.e("ApolloGameUtil", 1, new Object[] { "aio startLightGame failed gameId:", Integer.valueOf(paramInt1), ",from:", paramString });
+      return;
+    }
+    paramString = new CmGameStartChecker.StartCheckParam(paramInt1, true, paramString, 0L, paramInt3, 0, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, a(paramBaseChatPie.a(), paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString), paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramInt2, null);
+    a(paramBaseChatPie.a(), paramString);
+  }
+  
+  public static void a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    if (paramStartCheckParam == null) {
+      return;
+    }
+    QLog.i("ApolloGameUtil", 2, "startGameAgain");
+    if (aing.a(BaseApplicationImpl.getContext())) {
+      aind.a().a(paramStartCheckParam);
+    }
+    a(paramStartCheckParam, false);
+    Intent localIntent = new Intent();
+    localIntent.setAction("com.tencent.mobileqq.webprocess.launch_cmgame");
+    localIntent.putExtra("extra_startcheckparam", paramStartCheckParam);
+    localIntent.setPackage(MobileQQ.getContext().getPackageName());
+    try
+    {
+      QLog.i("ApolloGameUtil", 2, "startGameAgain Send action launch_cmgame.");
+      BaseApplicationImpl.getContext().sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
+      return;
+    }
+    catch (Throwable paramStartCheckParam)
+    {
+      QLog.e("ApolloGameUtil", 1, paramStartCheckParam, new Object[0]);
+    }
+  }
+  
+  public static void a(CmGameStartChecker.StartCheckParam paramStartCheckParam, FragmentActivity paramFragmentActivity, int paramInt1, ApolloFragment paramApolloFragment, int paramInt2, WebGameFakeView paramWebGameFakeView, String paramString)
+  {
+    if (paramStartCheckParam == null) {}
+    Object localObject1;
+    Object localObject2;
+    Object localObject3;
     do
     {
       for (;;)
       {
         return;
-        b(paramQQAppInterface);
-        Object localObject2 = (RedTouchManager)paramQQAppInterface.getManager(35);
-        Object localObject1 = ((RedTouchManager)localObject2).a(ApolloConstant.af);
-        localObject2 = ((RedTouchManager)localObject2).a(ApolloConstant.ah);
-        if ((localObject1 != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject1).iNewFlag.get() == 1) && (localObject2 != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject2).iNewFlag.get() == 1))
+        try
         {
-          localObject1 = ((BusinessInfoCheckUpdate.AppInfo)localObject1).buffer.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloGameUtil", 2, new Object[] { "[initBubbleRedInfo] game activity red buffer=", localObject1 });
-          }
-          if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-            try
+          localObject1 = aiys.jdField_a_of_type_JavaLangString + "/game/" + String.valueOf(paramInt1) + "/" + a(paramStartCheckParam.mGameType);
+          localObject2 = new File((String)localObject1);
+          if (((File)localObject2).exists()) {
+            if (aizl.a(paramStartCheckParam.isWhiteUsr, paramInt1))
             {
-              Object localObject3 = new JSONObject((String)localObject1);
-              localObject1 = ((JSONObject)localObject3).optString("_show_mission");
-              if (!TextUtils.isEmpty((CharSequence)localObject1))
+              localObject3 = new aizl(paramInt1);
+              paramStartCheckParam = a(paramStartCheckParam.mGameType);
+              ((aizl)localObject3).b();
+              if ((!((aizl)localObject3).a(paramStartCheckParam)) || (!((aizl)localObject3).a((String)localObject1, paramStartCheckParam)))
               {
-                localObject2 = SharedPreferencesProxyManager.getInstance().getProxy("apollo_sp", 0);
-                String str = "game_activity_bubble_red_info_shown_" + paramQQAppInterface.getCurrentAccountUin() + "_" + (String)localObject1;
-                if (!((SharedPreferences)localObject2).getBoolean(str, false))
-                {
-                  localObject3 = ((JSONObject)localObject3).optJSONObject("msg");
-                  if (localObject3 != null)
-                  {
-                    localObject3 = ((JSONObject)localObject3).optJSONObject((String)localObject1);
-                    if (localObject3 != null)
-                    {
-                      int i = ((JSONObject)localObject3).optInt("time");
-                      localObject3 = ((JSONObject)localObject3).optString("content");
-                      if (!TextUtils.isEmpty((CharSequence)localObject3))
-                      {
-                        localObject3 = new JSONObject((String)localObject3);
-                        DrawerPushItem localDrawerPushItem = new DrawerPushItem();
-                        localDrawerPushItem.msg_type = 3;
-                        localDrawerPushItem.is_reddot = 1;
-                        localDrawerPushItem.msg_id = ((String)localObject1);
-                        if (((JSONObject)localObject3).has("mainPriority"))
-                        {
-                          localDrawerPushItem.priority = ((JSONObject)localObject3).optInt("mainPriority");
-                          localDrawerPushItem.sub_priority = ((JSONObject)localObject3).optInt("subPriority");
-                          localDrawerPushItem.start_ts = ((JSONObject)localObject3).optInt("showTime");
-                          localDrawerPushItem.end_ts = ((JSONObject)localObject3).optInt("expireTime");
-                          localDrawerPushItem.send_time = i;
-                          localDrawerPushItem.content = ((JSONObject)localObject3).optString("bubbleText");
-                          localDrawerPushItem.show_counts = ((JSONObject)localObject3).optInt("showCounts");
-                          if (QLog.isColorLevel()) {
-                            QLog.d("ApolloGameUtil", 2, new Object[] { "[initBubbleRedInfo] add game activity item, content=", localDrawerPushItem.content });
-                          }
-                          ((ApolloManager)paramQQAppInterface.getManager(152)).c(localDrawerPushItem);
-                          ((SharedPreferences)localObject2).edit().putBoolean(str, true).commit();
-                          return;
-                        }
-                      }
-                    }
-                  }
-                }
+                QLog.e("ApolloGameUtil", 1, "[launchWebGame] failed for invalid config");
+                aing.a(paramInt1);
+                aing.a(new Object[] { "[launchWebGame], failed for invalid config" });
+                return;
               }
             }
-            catch (Exception paramQQAppInterface) {}
           }
         }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ApolloGameUtil", 2, "[initBubbleRedInfo] exception, ", paramQQAppInterface);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt)
-  {
-    int i = 0;
-    if (paramQQAppInterface == null) {
-      QLog.e("ApolloGameUtil", 1, "[highLightGame] app is null");
-    }
-    ApolloDaoManager localApolloDaoManager;
-    do
-    {
-      return;
-      localApolloDaoManager = (ApolloDaoManager)paramQQAppInterface.getManager(154);
-      localObject1 = localApolloDaoManager.g();
-      if ((localObject1 == null) || (((List)localObject1).size() <= 0)) {
-        break;
-      }
-      localObject2 = (ApolloGameRoamData)((List)localObject1).get(0);
-    } while ((localObject2 != null) && (((ApolloGameRoamData)localObject2).gameId == paramInt));
-    Object localObject1 = new LinkedList((Collection)localObject1);
-    Object localObject2 = ((LinkedList)localObject1).iterator();
-    while (((Iterator)localObject2).hasNext())
-    {
-      localObject3 = (ApolloGameRoamData)((Iterator)localObject2).next();
-      if ((localObject3 != null) && (((ApolloGameRoamData)localObject3).gameId == paramInt))
-      {
-        ((LinkedList)localObject1).remove(localObject3);
-        ((LinkedList)localObject1).addFirst(localObject3);
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloGameUtil", 2, new Object[] { "[highLightGame] ", Integer.valueOf(paramInt) });
+        catch (Throwable paramStartCheckParam)
+        {
+          QLog.e("ApolloGameUtil", 1, paramStartCheckParam, new Object[0]);
+          return;
         }
       }
-    }
-    localObject1 = new ArrayList((Collection)localObject1);
-    localObject2 = new int[((ArrayList)localObject1).size()];
-    Object localObject3 = ((ArrayList)localObject1).iterator();
-    paramInt = i;
-    while (((Iterator)localObject3).hasNext())
+      paramStartCheckParam = bace.a((File)localObject2);
+    } while (TextUtils.isEmpty(paramStartCheckParam));
+    JSONObject localJSONObject = new JSONObject(paramStartCheckParam);
+    paramStartCheckParam = localJSONObject.optString("enterPath");
+    if (!TextUtils.isEmpty(paramStartCheckParam))
     {
-      localObject2[paramInt] = ((ApolloGameRoamData)((Iterator)localObject3).next()).gameId;
-      paramInt += 1;
+      localObject2 = aiys.jdField_a_of_type_JavaLangString + "/game/" + String.valueOf(paramInt1) + "/" + paramStartCheckParam;
+      paramStartCheckParam = "file://" + (String)localObject2;
     }
-    ((VasExtensionHandler)paramQQAppInterface.a(71)).a(paramQQAppInterface, (int[])localObject2);
-    localApolloDaoManager.e();
-    localApolloDaoManager.c((ArrayList)localObject1);
-    a(paramQQAppInterface, System.currentTimeMillis() / 1000L);
-    return;
-    QLog.e("ApolloGameUtil", 1, "[highLightGame] no game in list");
+    for (;;)
+    {
+      localObject3 = localJSONObject.optString("enterUrl");
+      localObject1 = paramStartCheckParam;
+      if (TextUtils.isEmpty(paramStartCheckParam)) {
+        localObject1 = localObject3;
+      }
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        break;
+      }
+      if (URLUtil.isNetworkUrl((String)localObject1)) {}
+      do
+      {
+        paramStartCheckParam = "&";
+        if (!((String)localObject1).contains("?")) {
+          paramStartCheckParam = "?";
+        }
+        localObject1 = (String)localObject1 + paramStartCheckParam + "apollo_bk" + "=1";
+        paramString = ailn.c(paramString);
+        paramStartCheckParam = (CmGameStartChecker.StartCheckParam)localObject1;
+        if (!TextUtils.isEmpty(paramString)) {
+          paramStartCheckParam = (String)localObject1 + "&" + paramString;
+        }
+        aikz.a().a(paramFragmentActivity, 2131301332);
+        paramString = new Intent();
+        paramString.putExtra("url", paramStartCheckParam);
+        if ((paramApolloFragment == null) || (!paramApolloFragment.isAdded()) || (!(paramApolloFragment instanceof ApolloWebViewFragment))) {
+          break label567;
+        }
+        WebAccelerateHelper.getInstance().preCheckOffline(paramStartCheckParam);
+        WebAccelerateHelper.getInstance().preFetchResource(paramStartCheckParam);
+        if (paramFragmentActivity.isFinishing()) {
+          break;
+        }
+        ailh.a().a();
+        paramFragmentActivity.runOnUiThread(new ApolloGameUtil.9(paramApolloFragment, paramStartCheckParam));
+        return;
+        if (!URLUtil.isFileUrl((String)localObject1)) {
+          break;
+        }
+        paramStartCheckParam = new File((String)localObject2);
+      } while ((paramStartCheckParam.exists()) && (paramStartCheckParam.getAbsolutePath().startsWith(ajed.aU + ".apollo/game/" + String.valueOf(paramInt1))));
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("ApolloGameUtil", 2, (String)localObject2);
+      return;
+      label567:
+      paramApolloFragment = new WebGameFakeView.Director();
+      localObject1 = localJSONObject.optJSONObject("ui");
+      if (localObject1 != null)
+      {
+        localObject2 = ((JSONObject)localObject1).optString(WebGameFakeView.Director.TITLE);
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          paramApolloFragment.title = ((String)localObject2);
+        }
+        localObject2 = ((JSONObject)localObject1).optString(WebGameFakeView.Director.FOREGROUND_COLOR);
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          paramApolloFragment.frontColor = ((String)localObject2);
+        }
+        localObject1 = ((JSONObject)localObject1).optString(WebGameFakeView.Director.BACKGROUND_COLOR);
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          paramApolloFragment.bgColor = ((String)localObject1);
+        }
+      }
+      if (paramWebGameFakeView != null)
+      {
+        paramWebGameFakeView.a = paramApolloFragment;
+        paramWebGameFakeView.a();
+      }
+      paramString.putExtra("Director", paramApolloFragment);
+      paramString.putExtra("game_busid", String.valueOf(paramInt1));
+      aikz.a(paramFragmentActivity, paramString);
+      WebAccelerateHelper.getInstance().preGetKey(paramStartCheckParam, paramString, null);
+      WebAccelerateHelper.getInstance().preCheckOffline(paramStartCheckParam);
+      WebAccelerateHelper.getInstance().preFetchResource(paramStartCheckParam);
+      return;
+      localObject2 = "";
+    }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, long paramLong, int paramInt2, String paramString, int paramInt3)
+  public static void a(CmGameStartChecker.StartCheckParam paramStartCheckParam, boolean paramBoolean)
+  {
+    if (paramStartCheckParam == null) {
+      return;
+    }
+    BaseApplicationImpl.getApplication().getSharedPreferences("start_cm_game", 4).edit().putBoolean(String.valueOf(paramStartCheckParam.mCreateTs) + "_start_flag", paramBoolean).commit();
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, long paramLong, int paramInt2, String paramString1, int paramInt3, String paramString2)
   {
     if (paramQQAppInterface == null) {}
     for (;;)
@@ -1179,8 +1280,8 @@ public class ApolloGameUtil
       }
       while (BaseActivity.sTopActivity != null)
       {
-        paramQQAppInterface = new CmGameStartChecker.StartCheckParam(paramInt1, bool, paramQQAppInterface, paramLong, i, paramInt2, 0, 0, "", paramInt3);
-        paramQQAppInterface.extendJson = paramString;
+        paramQQAppInterface = new CmGameStartChecker.StartCheckParam(paramInt1, bool, paramQQAppInterface, paramLong, i, paramInt2, 0, 0, "", paramInt3, paramString2);
+        paramQQAppInterface.extendJson = paramString1;
         a(a(), paramQQAppInterface);
         return;
         if (paramInt3 == 220)
@@ -1191,6 +1292,11 @@ public class ApolloGameUtil
         }
       }
     }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, int paramInt, boolean paramBoolean)
+  {
+    ThreadManagerV2.excute(new ApolloGameUtil.5(paramQQAppInterface, paramInt, paramBoolean), 32, null, true);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, long paramLong)
@@ -1214,26 +1320,49 @@ public class ApolloGameUtil
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface, aizz paramaizz)
   {
-    if ((paramQQAppInterface != null) && (paramSessionInfo != null) && (ApolloGameConfig.a("drawer.game", paramQQAppInterface) == ApolloGameConst.b)) {
-      VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "more_game_enter_exposure", ApolloUtil.a(paramSessionInfo, paramQQAppInterface), 0, new String[] { String.valueOf(paramInt) });
+    if ((paramQQAppInterface == null) || (paramQQAppInterface.getApp() == null))
+    {
+      paramaizz.b(false);
+      return;
     }
+    if (!aifg.jdField_b_of_type_Boolean)
+    {
+      ((aifg)paramQQAppInterface.getManager(153)).a(new aizs(paramaizz, paramQQAppInterface));
+      return;
+    }
+    paramaizz.b(c(paramQQAppInterface));
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, ApolloPanel.GameMsgInfo paramGameMsgInfo, SessionInfo paramSessionInfo)
+  public static void a(QQAppInterface paramQQAppInterface, ajaa paramajaa)
   {
-    if ((paramGameMsgInfo == null) || (paramQQAppInterface == null) || (paramSessionInfo == null))
+    if ((paramQQAppInterface == null) || (paramQQAppInterface.getApp() == null))
+    {
+      paramajaa.a(false);
+      return;
+    }
+    if (!aifg.jdField_b_of_type_Boolean)
+    {
+      ((aifg)paramQQAppInterface.getManager(153)).a(new aizt(paramajaa));
+      return;
+    }
+    paramajaa.a(true);
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, ajdd paramajdd, SessionInfo paramSessionInfo)
+  {
+    if ((paramajdd == null) || (paramQQAppInterface == null) || (paramSessionInfo == null))
     {
       QLog.e("cmgame.sendmsg", 1, "[sendGameMsg], errInfo->param is null.");
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("cmgame.sendmsg", 2, new Object[] { "[sendGameMsg], gameId:", Integer.valueOf(paramGameMsgInfo.jdField_e_of_type_Int), ",roomId:", Long.valueOf(paramGameMsgInfo.b), ",extendInfo:", paramGameMsgInfo.jdField_f_of_type_JavaLangString });
+      QLog.d("cmgame.sendmsg", 2, new Object[] { "[sendGameMsg], gameId:", Integer.valueOf(paramajdd.jdField_a_of_type_Int), ",roomId:", Long.valueOf(paramajdd.jdField_a_of_type_Long), ",extendInfo:", paramajdd.jdField_c_of_type_JavaLangString });
     }
     ApolloMessage localApolloMessage = new ApolloMessage();
-    if (!TextUtils.isEmpty(paramGameMsgInfo.d)) {
-      localApolloMessage.name = paramGameMsgInfo.d.getBytes();
+    if (!TextUtils.isEmpty(paramajdd.jdField_a_of_type_JavaLangString)) {
+      localApolloMessage.name = paramajdd.jdField_a_of_type_JavaLangString.getBytes();
     }
     if (0 == 0) {}
     for (;;)
@@ -1241,47 +1370,47 @@ public class ApolloGameUtil
       try
       {
         localObject = new JSONObject();
-        ((JSONObject)localObject).put("gameId", paramGameMsgInfo.jdField_e_of_type_Int);
-        ((JSONObject)localObject).put("gameMode", paramGameMsgInfo.g);
-        ((JSONObject)localObject).put("roomid", paramGameMsgInfo.b);
-        if (paramGameMsgInfo.jdField_e_of_type_Int == 1)
+        ((JSONObject)localObject).put("gameId", paramajdd.jdField_a_of_type_Int);
+        ((JSONObject)localObject).put("gameMode", paramajdd.jdField_c_of_type_Int);
+        ((JSONObject)localObject).put("roomid", paramajdd.jdField_a_of_type_Long);
+        if (paramajdd.jdField_a_of_type_Int == 1)
         {
           ((JSONObject)localObject).put("msgTyep", 2);
-          ((JSONObject)localObject).put("gameName", paramGameMsgInfo.jdField_e_of_type_JavaLangString);
-          if (!TextUtils.isEmpty(paramGameMsgInfo.jdField_f_of_type_JavaLangString)) {
-            ((JSONObject)localObject).put("gameExtendJson", paramGameMsgInfo.jdField_f_of_type_JavaLangString);
+          ((JSONObject)localObject).put("gameName", paramajdd.jdField_b_of_type_JavaLangString);
+          if (!TextUtils.isEmpty(paramajdd.jdField_c_of_type_JavaLangString)) {
+            ((JSONObject)localObject).put("gameExtendJson", paramajdd.jdField_c_of_type_JavaLangString);
           }
           if (localObject != null) {
             localApolloMessage.extStr = ((JSONObject)localObject).toString();
           }
-          localObject = ((ApolloManager)paramQQAppInterface.getManager(152)).b(paramQQAppInterface.getCurrentAccountUin());
-          localApolloMessage.sender_ts = Utils.a(((ApolloBaseInfo)localObject).apolloServerTS);
+          localObject = ((aifg)paramQQAppInterface.getManager(153)).b(paramQQAppInterface.getCurrentAccountUin());
+          localApolloMessage.sender_ts = azzz.a(((ApolloBaseInfo)localObject).apolloServerTS);
           localApolloMessage.sender_status = ((ApolloBaseInfo)localObject).apolloStatus;
-          localObject = ((ApolloDaoManager)paramQQAppInterface.getManager(154)).a(paramGameMsgInfo.jdField_e_of_type_Int);
+          localObject = ((aiyu)paramQQAppInterface.getManager(155)).a(paramajdd.jdField_a_of_type_Int);
           if ((localObject == null) || (1 != ((ApolloGameData)localObject).hasOwnArk)) {
             break label462;
           }
           i = 297;
           localApolloMessage.flag = (i | 0x200);
-          paramSessionInfo = MessageRecordFactory.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.b, paramSessionInfo.jdField_a_of_type_Int, localApolloMessage);
-          if (paramGameMsgInfo.jdField_e_of_type_Int == 1)
+          paramSessionInfo = awbi.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_b_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, localApolloMessage);
+          if (paramajdd.jdField_a_of_type_Int == 1)
           {
             paramSessionInfo.msgType = 2;
-            paramSessionInfo.gameId = paramGameMsgInfo.jdField_e_of_type_Int;
-            paramSessionInfo.mGameMode = paramGameMsgInfo.g;
-            paramSessionInfo.roomId = paramGameMsgInfo.b;
-            paramSessionInfo.mApolloMessage.id = paramGameMsgInfo.jdField_f_of_type_Int;
-            paramSessionInfo.gameName = paramGameMsgInfo.jdField_e_of_type_JavaLangString;
-            paramSessionInfo.gameExtendJson = paramGameMsgInfo.jdField_f_of_type_JavaLangString;
+            paramSessionInfo.gameId = paramajdd.jdField_a_of_type_Int;
+            paramSessionInfo.mGameMode = paramajdd.jdField_c_of_type_Int;
+            paramSessionInfo.roomId = paramajdd.jdField_a_of_type_Long;
+            paramSessionInfo.mApolloMessage.id = paramajdd.jdField_b_of_type_Int;
+            paramSessionInfo.gameName = paramajdd.jdField_b_of_type_JavaLangString;
+            paramSessionInfo.gameExtendJson = paramajdd.jdField_c_of_type_JavaLangString;
             paramQQAppInterface.a().a(paramSessionInfo, null);
           }
         }
         else
         {
-          ((JSONObject)localObject).put("msgTyep", paramGameMsgInfo.h);
+          ((JSONObject)localObject).put("msgTyep", paramajdd.d);
           continue;
         }
-        paramSessionInfo.msgType = paramGameMsgInfo.h;
+        paramSessionInfo.msgType = paramajdd.d;
       }
       catch (Throwable paramQQAppInterface)
       {
@@ -1296,10 +1425,43 @@ public class ApolloGameUtil
     }
   }
   
+  public static void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, int paramInt)
+  {
+    if ((paramQQAppInterface != null) && (paramSessionInfo != null) && (aila.a("aio.city.game", paramQQAppInterface) == ailb.d)) {
+      bajr.a(paramQQAppInterface, "cmshow", "Apollo", "more_game_enter_exposure", ApolloUtil.a(paramSessionInfo, paramQQAppInterface), 0, new String[] { String.valueOf(paramInt) });
+    }
+    if ((paramQQAppInterface != null) && (paramSessionInfo != null)) {
+      bajr.a(paramQQAppInterface, "cmshow", "Apollo", "game_show", ApolloUtil.b(paramSessionInfo.jdField_a_of_type_Int), 0, new String[] { "0" });
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    if (paramStartCheckParam == null) {}
+    do
+    {
+      return;
+      if (!aing.a(paramStartCheckParam.gameId)) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("ApolloGameUtil", 2, "the game is IsLand");
+    return;
+    Object localObject = aind.a().a();
+    if (localObject != null)
+    {
+      localObject = ((aipp)localObject).a(paramStartCheckParam.gameId);
+      if (localObject != null) {
+        ((aipo)localObject).a(paramStartCheckParam);
+      }
+    }
+    ThreadManager.excute(new ApolloGameUtil.22(paramQQAppInterface, paramStartCheckParam), 32, null, true);
+  }
+  
   public static void a(QQAppInterface paramQQAppInterface, ApolloGameRankData paramApolloGameRankData)
   {
     if ((paramQQAppInterface != null) && (paramApolloGameRankData != null)) {
-      ThreadManager.post(new zdk(paramQQAppInterface, paramApolloGameRankData), 8, null, false);
+      ThreadManager.post(new ApolloGameUtil.8(paramQQAppInterface, paramApolloGameRankData), 8, null, false);
     }
   }
   
@@ -1340,7 +1502,7 @@ public class ApolloGameUtil
     for (;;)
     {
       ((ApolloMessage)localObject).extStr = localJSONObject.toString();
-      localObject = MessagePkgUtils.a((Serializable)localObject);
+      localObject = akhp.a((Serializable)localObject);
       paramQQAppInterface.a().a(paramMessageForApollo.frienduin, paramMessageForApollo.istroop, paramMessageForApollo.uniseq, (byte[])localObject);
       return;
       localJSONObject.put("winUin", paramMessageForApollo.winnerUin);
@@ -1358,16 +1520,16 @@ public class ApolloGameUtil
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, MessageForApollo paramMessageForApollo, WeakReference paramWeakReference1, WeakReference paramWeakReference2, Bundle paramBundle)
+  public static void a(QQAppInterface paramQQAppInterface, MessageForApollo paramMessageForApollo, WeakReference<XListView> paramWeakReference, WeakReference<acka> paramWeakReference1, Bundle paramBundle)
   {
     if (paramQQAppInterface == null) {
       return;
     }
-    paramWeakReference2 = ((ApolloGameManager)paramQQAppInterface.getManager(210)).a();
-    if (paramWeakReference2 != null) {
-      paramWeakReference2.a(paramMessageForApollo);
+    paramWeakReference1 = ((aifc)paramQQAppInterface.getManager(211)).a();
+    if (paramWeakReference1 != null) {
+      paramWeakReference1.a(paramMessageForApollo);
     }
-    ThreadManager.getUIHandler().post(new zde(paramWeakReference1, paramMessageForApollo, paramBundle, paramQQAppInterface));
+    ThreadManager.getUIHandler().post(new ApolloGameUtil.1(paramWeakReference, paramMessageForApollo, paramBundle, paramQQAppInterface));
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
@@ -1377,60 +1539,22 @@ public class ApolloGameUtil
       QLog.e("ApolloGameUtil", 1, "[updateRankInfo] app is null");
       return;
     }
-    ThreadManager.post(new zdj(paramQQAppInterface, paramString), 5, null, false);
+    ThreadManager.post(new ApolloGameUtil.7(paramQQAppInterface, paramString), 5, null, false);
   }
   
-  public static void a(EntityManager paramEntityManager)
+  public static void a(String paramString, int paramInt, Context paramContext)
   {
-    if (paramEntityManager != null)
+    ThreadManager.getUIHandler().post(new ApolloGameUtil.21(paramContext, paramInt, paramString));
+  }
+  
+  public static boolean a()
+  {
+    if (!jdField_a_of_type_Boolean)
     {
-      ThreadManager.post(new zdh(paramEntityManager), 5, null, true);
-      return;
+      jdField_b_of_type_Boolean = FlatBuffersParser.c();
+      jdField_a_of_type_Boolean = true;
     }
-    QLog.e("ApolloGameUtil", 1, "[loadCache] em is null out ");
-  }
-  
-  public static void a(EntityManager paramEntityManager, int paramInt1, int paramInt2)
-  {
-    if (paramEntityManager == null) {
-      return;
-    }
-    int i = paramEntityManager.a(ApolloGameRedDot.class.getSimpleName(), "mGameId=? and mDotId=? ", new String[] { String.valueOf(paramInt1), String.valueOf(paramInt2) });
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloGameUtil", 2, "apolloGameReddot deleteGameReddot, gameId:" + paramInt1 + ",reddotId:" + paramInt2 + ",ret:" + i);
-    }
-    a(paramEntityManager);
-  }
-  
-  public static void a(EntityManager paramEntityManager, List paramList)
-  {
-    if ((paramEntityManager != null) && (paramList != null) && (paramList.size() > 0))
-    {
-      Collections.sort(paramList);
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        ApolloGameRedDot localApolloGameRedDot = (ApolloGameRedDot)paramList.next();
-        if (localApolloGameRedDot != null)
-        {
-          localApolloGameRedDot.mIsShow = true;
-          paramEntityManager.a(localApolloGameRedDot);
-        }
-      }
-      a(paramEntityManager);
-    }
-  }
-  
-  public static void a(EntityManager paramEntityManager, boolean paramBoolean)
-  {
-    if (paramEntityManager == null) {
-      return;
-    }
-    paramBoolean = paramEntityManager.c("update ApolloGameRedDot set mIsShowForFolder = 1");
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloGameUtil", 2, new Object[] { "update ApolloGameRedDot set mIsShowForFolder=true", Boolean.valueOf(paramBoolean) });
-    }
-    a(paramEntityManager);
+    return jdField_b_of_type_Boolean;
   }
   
   public static boolean a(int paramInt)
@@ -1438,16 +1562,29 @@ public class ApolloGameUtil
     return (paramInt == 2) || (paramInt == 3) || (paramInt == 4);
   }
   
+  public static boolean a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    if (paramStartCheckParam == null) {
+      return false;
+    }
+    long l = System.currentTimeMillis();
+    boolean bool = BaseApplicationImpl.getApplication().getSharedPreferences("start_cm_game", 4).getBoolean(String.valueOf(paramStartCheckParam.mCreateTs) + "_start_flag", false);
+    if ((QLog.isColorLevel()) || (bool)) {
+      QLog.e("ApolloGameUtil", 1, new Object[] { "cmgame_isStartGameCancel:", Boolean.valueOf(bool), " use:", Long.valueOf(System.currentTimeMillis() - l) });
+    }
+    return bool;
+  }
+  
   public static boolean a(QQAppInterface paramQQAppInterface)
   {
     if (paramQQAppInterface == null) {
       return false;
     }
-    if (!ApolloManager.a(paramQQAppInterface.getApplication())) {
+    if (!aifg.a(paramQQAppInterface.getApplication())) {
       return false;
     }
-    paramQQAppInterface = ((ApolloManager)paramQQAppInterface.getManager(152)).a(paramQQAppInterface.c());
-    return (paramQQAppInterface == null) || (paramQQAppInterface.apolloStatus == 1);
+    paramQQAppInterface = ((aifg)paramQQAppInterface.getManager(153)).a(paramQQAppInterface.c());
+    return (paramQQAppInterface == null) || (paramQQAppInterface.isApolloStatusOpen());
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, int paramInt)
@@ -1455,7 +1592,7 @@ public class ApolloGameUtil
     if (paramQQAppInterface == null) {
       return false;
     }
-    paramQQAppInterface = ((ApolloDaoManager)paramQQAppInterface.getManager(154)).g();
+    paramQQAppInterface = ((aiyu)paramQQAppInterface.getManager(155)).g();
     if (paramQQAppInterface == null) {
       return false;
     }
@@ -1487,40 +1624,43 @@ public class ApolloGameUtil
     if (paramMessageForApollo.roomId == 0L) {
       return false;
     }
-    paramQQAppInterface = ((ApolloDaoManager)paramQQAppInterface.getManager(154)).a(paramMessageForApollo.gameId);
+    if (paramMessageForApollo.istroop == 1036) {
+      return false;
+    }
+    paramQQAppInterface = ((aiyu)paramQQAppInterface.getManager(155)).a(paramMessageForApollo.gameId);
     if (paramQQAppInterface == null) {
       return false;
     }
-    if (!ApolloConfigUtils.a("7.6.8", paramQQAppInterface.minVer, paramQQAppInterface.maxVer)) {
+    if (!aiyr.a("8.2.6", paramQQAppInterface.minVer, paramQQAppInterface.maxVer)) {
       return false;
     }
     boolean bool1;
     boolean bool2;
-    label191:
+    label203:
     boolean bool3;
     if (paramMessageForApollo.gameStatusStamp < paramLong)
     {
       bool1 = true;
       if ((paramMessageForApollo.gameStatus != 4) && (paramMessageForApollo.gameStatus != 7) && (paramMessageForApollo.gameStatus != 8)) {
-        break label386;
+        break label398;
       }
       bool2 = true;
       if (paramMessageForApollo.gameStatus != 5) {
-        break label392;
+        break label404;
       }
       bool3 = true;
-      label202:
+      label214:
       if (paramMessageForApollo.gameStatus != 6) {
-        break label398;
+        break label410;
       }
     }
-    label386:
-    label392:
     label398:
+    label404:
+    label410:
     for (boolean bool4 = true;; bool4 = false)
     {
       if ((!bool1) || (bool2) || (bool3) || (bool4)) {
-        break label404;
+        break label416;
       }
       if (QLog.isColorLevel()) {
         QLog.d("ApolloGameUtil", 2, new Object[] { "RoomId ", Long.valueOf(paramMessageForApollo.roomId), " needs pulling from srv,isTimeOverdue:", Boolean.valueOf(bool1), ",isOver:", Boolean.valueOf(bool2), ",isCancel:", Boolean.valueOf(bool4), ",isInValidStatus:", Boolean.valueOf(bool3), ",msg.gameStatusStamp:", Long.valueOf(paramMessageForApollo.gameStatusStamp), ",mCreateTime:", Long.valueOf(paramLong), ",msg.gameStatus:", Integer.valueOf(paramMessageForApollo.gameStatus) });
@@ -1529,11 +1669,11 @@ public class ApolloGameUtil
       bool1 = false;
       break;
       bool2 = false;
-      break label191;
+      break label203;
       bool3 = false;
-      break label202;
+      break label214;
     }
-    label404:
+    label416:
     if ((paramMessageForApollo.gameStatus == 1) || (paramMessageForApollo.gameStatus == 3) || (paramMessageForApollo.gameStatus == 2))
     {
       paramLong = NetConnInfoCenter.getServerTimeMillis() - paramMessageForApollo.gameStatusStamp;
@@ -1546,7 +1686,7 @@ public class ApolloGameUtil
     return false;
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, MessageForApollo paramMessageForApollo, WeakReference paramWeakReference1, WeakReference paramWeakReference2)
+  public static boolean a(QQAppInterface paramQQAppInterface, MessageForApollo paramMessageForApollo, WeakReference<XListView> paramWeakReference, WeakReference<acka> paramWeakReference1)
   {
     if ((paramQQAppInterface == null) || (paramMessageForApollo == null))
     {
@@ -1566,7 +1706,7 @@ public class ApolloGameUtil
       if ((localMessageForApollo != null) && (a(paramMessageForApollo, localMessageForApollo)))
       {
         localMessageForApollo.updateGameStatus(paramMessageForApollo);
-        a(paramQQAppInterface, localMessageForApollo, paramWeakReference1, paramWeakReference2, null);
+        a(paramQQAppInterface, localMessageForApollo, paramWeakReference, paramWeakReference1, null);
         a(paramQQAppInterface, localMessageForApollo);
       }
     }
@@ -1596,30 +1736,177 @@ public class ApolloGameUtil
     return true;
   }
   
-  public static void b(AppInterface paramAppInterface)
+  public static void b()
   {
-    if (paramAppInterface == null) {
+    try
+    {
+      Object localObject = BaseActivity.sTopActivity;
+      if ((localObject != null) && (!((Activity)localObject).isFinishing()) && ((localObject instanceof FragmentActivity)))
+      {
+        localObject = ((FragmentActivity)localObject).getChatFragment();
+        if ((localObject != null) && (((ChatFragment)localObject).isAdded()))
+        {
+          localObject = ((ChatFragment)localObject).a();
+          if ((localObject != null) && (!(localObject instanceof aecb)))
+          {
+            localObject = ((BaseChatPie)localObject).jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel;
+            if (localObject != null) {
+              ((ApolloPanel)localObject).m();
+            }
+          }
+        }
+      }
       return;
     }
-    ApolloGameRedDot localApolloGameRedDot = a(paramAppInterface, a(paramAppInterface.getEntityManagerFactory().createEntityManager()));
-    if (localApolloGameRedDot != null)
+    catch (Throwable localThrowable)
     {
-      DrawerPushItem localDrawerPushItem = new DrawerPushItem();
-      localDrawerPushItem.msg_type = 4;
-      localDrawerPushItem.is_reddot = 1;
-      localDrawerPushItem.msg_id = a(localApolloGameRedDot);
-      localDrawerPushItem.priority = 1000;
-      localDrawerPushItem.sub_priority = 1000;
-      localDrawerPushItem.start_ts = localApolloGameRedDot.mStartTime;
-      localDrawerPushItem.end_ts = localApolloGameRedDot.mEndTime;
-      localDrawerPushItem.send_time = ((int)(System.currentTimeMillis() / 1000L));
-      localDrawerPushItem.content = localApolloGameRedDot.mTipsWording;
-      localDrawerPushItem.show_counts = 1;
-      localDrawerPushItem.reddotGameId = localApolloGameRedDot.mGameId;
-      localDrawerPushItem.reddotRedId = localApolloGameRedDot.mDotId;
-      ((ApolloManager)paramAppInterface.getManager(152)).a(localDrawerPushItem, false);
+      QLog.e("ApolloGameUtil", 1, localThrowable, new Object[0]);
     }
-    a(paramAppInterface);
+  }
+  
+  public static void b(int paramInt, String paramString)
+  {
+    ThreadManager.excute(new ApolloGameUtil.16(paramString, paramInt), 64, null, true);
+  }
+  
+  public static void b(Activity paramActivity, QQAppInterface paramQQAppInterface, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGameUtil", 2, new Object[] { "[getOpenIdAndAccessToken], url:", paramString });
+    }
+    if ((TextUtils.isEmpty(paramString)) || (paramQQAppInterface == null)) {}
+    for (;;)
+    {
+      return;
+      TicketManager localTicketManager = (TicketManager)paramQQAppInterface.getManager(2);
+      if (localTicketManager != null)
+      {
+        paramActivity = paramQQAppInterface.getAccount();
+        paramQQAppInterface = localTicketManager.getSkey(paramQQAppInterface.getAccount());
+        if ((paramActivity != null) && (paramQQAppInterface != null) && (paramQQAppInterface.length() != 0))
+        {
+          paramString = paramString.split("\\?");
+          if ((paramString != null) && (paramString.length >= 2))
+          {
+            paramString = paramString[1];
+            try
+            {
+              paramString = new JSONObject(URLDecoder.decode(paramString.substring(paramString.indexOf('=') + 1), "UTF-8"));
+              int i = paramString.optInt("token");
+              int j = paramString.optInt("gameId");
+              long l = paramString.optLong("appId");
+              if (SplashActivity.a != null)
+              {
+                paramString = (Activity)SplashActivity.a.get();
+                zsb.a();
+                paramString = zsb.a(paramString, 5, String.valueOf(l));
+                if (paramString == null) {
+                  continue;
+                }
+                paramString.a("login", null, new aizv(i, j, paramActivity, paramQQAppInterface));
+              }
+            }
+            catch (Exception paramActivity)
+            {
+              QLog.e("ApolloGameUtil", 2, " get openip and accesstoken exeption");
+              return;
+            }
+          }
+        }
+      }
+    }
+    QLog.e("ApolloGameUtil", 2, "get openId and accessToken login failed");
+  }
+  
+  public static void b(Context paramContext, CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    if (paramContext == null)
+    {
+      QLog.e("ApolloGameUtil", 1, "startSplashActivity context is null");
+      return;
+    }
+    Intent localIntent = new Intent(BaseApplication.getContext(), SplashActivity.class);
+    localIntent.putExtra("fragment_id", 1);
+    localIntent.putExtra("tab_index", MainFragment.jdField_b_of_type_Int);
+    localIntent.addFlags(134283264);
+    paramContext.startActivity(localIntent);
+    ((Activity)paramContext).overridePendingTransition(0, 0);
+    ThreadManagerV2.getUIHandlerV2().postDelayed(new ApolloGameUtil.11(paramContext, paramStartCheckParam), 2000L);
+  }
+  
+  private static void b(Context paramContext, QQAppInterface paramQQAppInterface, CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    if ((aiyr.b != null) && (aiyr.b.contains(Integer.valueOf(paramStartCheckParam.gameId)))) {
+      paramStartCheckParam.enableMenu = false;
+    }
+    aipo localaipo = aind.a().a(paramStartCheckParam.gameId);
+    if (localaipo != null) {
+      localaipo.a((Activity)paramContext, paramStartCheckParam);
+    }
+    if (jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameUtil$CmStartTask == null) {
+      jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameUtil$CmStartTask = new ApolloGameUtil.CmStartTask(paramQQAppInterface, paramStartCheckParam);
+    }
+    for (;;)
+    {
+      ThreadManager.removeJobFromThreadPool(jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameUtil$CmStartTask, 16);
+      ThreadManager.excute(jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameUtil$CmStartTask, 16, null, true);
+      d = paramStartCheckParam.gameId;
+      return;
+      jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameUtil$CmStartTask.a(paramQQAppInterface, paramStartCheckParam);
+    }
+  }
+  
+  private static void b(Intent paramIntent, String paramString, Bitmap paramBitmap)
+  {
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    if (paramBitmap == null) {}
+    for (;;)
+    {
+      try
+      {
+        paramBitmap = BitmapFactory.decodeResource(localBaseApplication.getResources(), 2130839762);
+        paramBitmap.setDensity(localBaseApplication.getResources().getDisplayMetrics().densityDpi);
+        int i = bacc.a(localBaseApplication);
+        if (i != paramBitmap.getWidth())
+        {
+          if (!balh.jdField_c_of_type_Boolean)
+          {
+            paramBitmap = bale.a().a(paramBitmap, i);
+            paramIntent.setAction("com.tencent.apollo.SHORT_CUT");
+            if (Build.VERSION.SDK_INT >= 26)
+            {
+              localObject = (ShortcutManager)localBaseApplication.getSystemService("shortcut");
+              if ((localObject != null) && (((ShortcutManager)localObject).isRequestPinShortcutSupported())) {
+                ((ShortcutManager)localObject).requestPinShortcut(new ShortcutInfo.Builder(localBaseApplication, "QQ" + paramString).setIcon(Icon.createWithBitmap(paramBitmap)).setShortLabel(paramString).setIntent(paramIntent).build(), PendingIntent.getBroadcast(localBaseApplication, 0, new Intent(localBaseApplication, WebProcessReceiver.class), 134217728).getIntentSender());
+              }
+            }
+          }
+          else
+          {
+            paramBitmap = Bitmap.createScaledBitmap(paramBitmap, i, i, false);
+            continue;
+          }
+          Object localObject = new Intent();
+          ((Intent)localObject).putExtra("android.intent.extra.shortcut.INTENT", paramIntent);
+          ((Intent)localObject).putExtra("android.intent.extra.shortcut.NAME", paramString);
+          ((Intent)localObject).putExtra("android.intent.extra.shortcut.ICON", paramBitmap);
+          ((Intent)localObject).putExtra("duplicate", false);
+          ((Intent)localObject).setAction("com.android.launcher.action.INSTALL_SHORTCUT");
+          localBaseApplication.sendOrderedBroadcast((Intent)localObject, null);
+          return;
+        }
+      }
+      catch (Exception paramIntent)
+      {
+        QLog.e("ApolloGameUtil", 1, paramIntent, new Object[0]);
+        return;
+      }
+      catch (OutOfMemoryError paramIntent)
+      {
+        QLog.e("ApolloGameUtil", 1, paramIntent, new Object[0]);
+        return;
+      }
+    }
   }
   
   private static void b(AppInterface paramAppInterface, Bundle paramBundle)
@@ -1631,13 +1918,10 @@ public class ApolloGameUtil
     {
       Object localObject1;
       Object localObject2;
-      EntityManager localEntityManager;
+      atmp localatmp;
       int j;
       Object localObject3;
-      int k;
       Object localObject4;
-      int m;
-      Object localObject5;
       try
       {
         paramBundle = paramBundle.getByteArray("extra_data");
@@ -1656,79 +1940,88 @@ public class ApolloGameUtil
         }
         localObject1 = paramBundle.optJSONArray("dotInfoList");
         localObject2 = paramAppInterface.getApp().getSharedPreferences(paramAppInterface.getCurrentAccountUin() + "apollo_game_reddot_sp", 0).edit();
-        localEntityManager = paramAppInterface.getEntityManagerFactory().createEntityManager();
+        localatmp = paramAppInterface.getEntityManagerFactory().createEntityManager();
         paramBundle = new ArrayList();
         i = 0;
         j = 0;
         if ((localObject1 == null) || (j >= ((JSONArray)localObject1).length())) {
-          break label1008;
+          break label908;
         }
         localObject3 = ((JSONArray)localObject1).optJSONObject(j);
         k = i;
         if (localObject3 == null) {
-          break label1226;
+          break label1126;
         }
         int n = ((JSONObject)localObject3).optInt("busId");
-        localEntityManager.a(ApolloGameRedDot.class.getSimpleName(), "mGameId=? ", new String[] { String.valueOf(n) });
+        localatmp.a(ApolloGameRedDot.class.getSimpleName(), "mGameId=? ", new String[] { String.valueOf(n) });
         if (QLog.isColorLevel()) {
           QLog.d("ApolloGameUtil", 2, "apolloGameReddot parseGameReddot, em.delete，mGameId=" + n);
         }
         localObject4 = ((JSONObject)localObject3).getJSONArray("dotList");
         localObject3 = new ArrayList();
         k = 0;
-        if ((localObject4 == null) || (k >= ((JSONArray)localObject4).length())) {
-          break label944;
-        }
-        Object localObject6 = ((JSONArray)localObject4).optJSONObject(k);
-        if (localObject6 == null) {
-          break label1217;
-        }
-        m = ((JSONObject)localObject6).optInt("dotId");
-        if (m == 1003)
+        if ((localObject4 != null) && (k < ((JSONArray)localObject4).length()))
         {
-          localObject5 = new AioPushData();
-          ((AioPushData)localObject5).begTs = ((JSONObject)localObject6).optInt("begTs");
-          ((AioPushData)localObject5).busId = n;
-          ((AioPushData)localObject5).busType = ((JSONObject)localObject6).optInt("busType");
-          ((AioPushData)localObject5).dotId = ((JSONObject)localObject6).optInt("dotId");
-          ((AioPushData)localObject5).endTs = ((JSONObject)localObject6).optInt("endTs");
-          ((AioPushData)localObject5).priority = ((JSONObject)localObject6).optInt("priority");
-          ((AioPushData)localObject5).them = ((JSONObject)localObject6).optString("theme");
-          ((AioPushData)localObject5).wording = ((JSONObject)localObject6).optString("wording");
-          ((AioPushData)localObject5).url = ((JSONObject)localObject6).optString("url");
-          ((AioPushData)localObject5).actId = ((JSONObject)localObject6).optString("actId");
-          ((AioPushData)localObject5).folderIconUrl = ((JSONObject)localObject6).optString("folderIconUrl");
-          ((AioPushData)localObject5).spRegion = ((JSONObject)localObject6).optInt("spRegion");
-          ((List)localObject3).add(localObject5);
-          break label1217;
-        }
-        localObject5 = new ApolloGameRedDot();
-        ((ApolloGameRedDot)localObject5).mDotId = m;
-        ((ApolloGameRedDot)localObject5).mStartTime = ((JSONObject)localObject6).optInt("begTs");
-        ((ApolloGameRedDot)localObject5).mEndTime = ((JSONObject)localObject6).optInt("endTs");
-        ((ApolloGameRedDot)localObject5).mTipsWording = ((JSONObject)localObject6).optString("wording");
-        ((ApolloGameRedDot)localObject5).mGameId = n;
-        ((ApolloGameRedDot)localObject5).mUrl = ((JSONObject)localObject6).optString("url");
-        ((ApolloGameRedDot)localObject5).mActId = ((JSONObject)localObject6).optString("actId");
-        ((ApolloGameRedDot)localObject5).mPriority = ((JSONObject)localObject6).optInt("priority");
-        ((ApolloGameRedDot)localObject5).mSpRegion = ((JSONObject)localObject6).optInt("spRegion");
-        localObject6 = (HotChatCenterManager)paramAppInterface.getManager(254);
-        ApolloGameData localApolloGameData = ((ApolloDaoManager)paramAppInterface.getManager(154)).a(((ApolloGameRedDot)localObject5).mGameId);
-        if ((localObject6 != null) && (localApolloGameData != null) && (!TextUtils.isEmpty(localApolloGameData.hotChatCode)))
-        {
-          ((HotChatCenterManager)localObject6).b(localApolloGameData.hotChatCode, "[新活动]" + localApolloGameData.name + "：" + ((ApolloGameRedDot)localObject5).mTipsWording);
-          VipUtils.a(null, "cmshow", "Apollo", "get_notice", m, 0, new String[] { String.valueOf(n), "", ((ApolloGameRedDot)localObject5).mActId });
-          if (!ApolloGameRedDot.isValidReddotId(m)) {
-            break label1217;
+          Object localObject5 = ((JSONArray)localObject4).optJSONObject(k);
+          if (localObject5 == null) {
+            break label1117;
           }
-        }
-        else
-        {
-          QLog.e("ApolloGameUtil", 1, new Object[] { "[parseGameRedDot] ", Integer.valueOf(((ApolloGameRedDot)localObject5).mGameId) });
-          continue;
-        }
-        if (((ApolloGameRedDot)localObject5).isTimeValid()) {
-          break label869;
+          int m = ((JSONObject)localObject5).optInt("dotId");
+          Object localObject6;
+          if (m == 1003)
+          {
+            localObject6 = new AioPushData();
+            ((AioPushData)localObject6).begTs = ((JSONObject)localObject5).optInt("begTs");
+            ((AioPushData)localObject6).busId = n;
+            ((AioPushData)localObject6).busType = ((JSONObject)localObject5).optInt("busType");
+            ((AioPushData)localObject6).dotId = ((JSONObject)localObject5).optInt("dotId");
+            ((AioPushData)localObject6).endTs = ((JSONObject)localObject5).optInt("endTs");
+            ((AioPushData)localObject6).priority = ((JSONObject)localObject5).optInt("priority");
+            ((AioPushData)localObject6).them = ((JSONObject)localObject5).optString("theme");
+            ((AioPushData)localObject6).wording = ((JSONObject)localObject5).optString("wording");
+            ((AioPushData)localObject6).url = ((JSONObject)localObject5).optString("url");
+            ((AioPushData)localObject6).actId = ((JSONObject)localObject5).optString("actId");
+            ((AioPushData)localObject6).folderIconUrl = ((JSONObject)localObject5).optString("folderIconUrl");
+            ((AioPushData)localObject6).spRegion = ((JSONObject)localObject5).optInt("spRegion");
+            ((List)localObject3).add(localObject6);
+          }
+          else
+          {
+            localObject6 = new ApolloGameRedDot();
+            ((ApolloGameRedDot)localObject6).mDotId = m;
+            ((ApolloGameRedDot)localObject6).mStartTime = ((JSONObject)localObject5).optInt("begTs");
+            ((ApolloGameRedDot)localObject6).mEndTime = ((JSONObject)localObject5).optInt("endTs");
+            ((ApolloGameRedDot)localObject6).mTipsWording = ((JSONObject)localObject5).optString("wording");
+            ((ApolloGameRedDot)localObject6).mGameId = n;
+            ((ApolloGameRedDot)localObject6).mUrl = ((JSONObject)localObject5).optString("url");
+            ((ApolloGameRedDot)localObject6).mActId = ((JSONObject)localObject5).optString("actId");
+            ((ApolloGameRedDot)localObject6).mPriority = ((JSONObject)localObject5).optInt("priority");
+            ((ApolloGameRedDot)localObject6).mSpRegion = ((JSONObject)localObject5).optInt("spRegion");
+            localObject5 = (ajjz)paramAppInterface.getManager(255);
+            ((aiyu)paramAppInterface.getManager(155)).a(((ApolloGameRedDot)localObject6).mGameId);
+            bajr.a(null, "cmshow", "Apollo", "get_notice", m, 0, new String[] { String.valueOf(n), "", ((ApolloGameRedDot)localObject6).mActId });
+            if (ApolloGameRedDot.isValidReddotId(m)) {
+              if (!((ApolloGameRedDot)localObject6).isTimeValid())
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("ApolloGameUtil", 2, "apolloGameReddot parseGameReddot, apolloGameRedDot.isTimeValid():false," + localObject6);
+                }
+              }
+              else
+              {
+                paramBundle.add(localObject6);
+                localatmp.b((atmo)localObject6);
+                ((SharedPreferences.Editor)localObject2).putBoolean(a((ApolloGameRedDot)localObject6), false);
+                m = 1;
+                i = m;
+                if (QLog.isColorLevel())
+                {
+                  QLog.d("ApolloGameUtil", 2, "apolloGameReddot parseGameReddot, saveApolloGameRedDot:" + localObject6);
+                  i = m;
+                }
+              }
+            }
+          }
         }
       }
       catch (Throwable paramAppInterface)
@@ -1736,38 +2029,22 @@ public class ApolloGameUtil
         QLog.e("ApolloGameUtil", 1, "apolloGameReddot checkApolloGameRedDot failed ", paramAppInterface);
         return;
       }
-      if (QLog.isColorLevel())
+      a(localatmp);
+      int k = i;
+      if (((List)localObject3).size() > 0)
       {
-        QLog.d("ApolloGameUtil", 2, "apolloGameReddot parseGameReddot, apolloGameRedDot.isTimeValid():false," + localObject5);
-        break label1217;
-        label869:
-        paramBundle.add(localObject5);
-        localEntityManager.b((Entity)localObject5);
-        ((SharedPreferences.Editor)localObject2).putBoolean(a((ApolloGameRedDot)localObject5), false);
-        m = 1;
-        i = m;
-        if (QLog.isColorLevel())
+        localObject4 = (aiyu)paramAppInterface.getManager(155);
+        if (localObject4 != null)
         {
-          QLog.d("ApolloGameUtil", 2, "apolloGameReddot parseGameReddot, saveApolloGameRedDot:" + localObject5);
-          i = m;
-          break label1217;
-          label944:
-          a(localEntityManager);
+          ((aiyu)localObject4).a((List)localObject3, 1);
           k = i;
-          if (((List)localObject3).size() <= 0) {
-            break label1226;
-          }
-          localObject4 = (ApolloDaoManager)paramAppInterface.getManager(154);
-          if (localObject4 != null)
-          {
-            ((ApolloDaoManager)localObject4).a((List)localObject3, 1);
-            k = i;
-            break label1226;
-          }
+        }
+        else
+        {
           QLog.e("ApolloGameUtil", 1, "[parseGameReddot] do manager is null");
           k = i;
-          break label1226;
-          label1008:
+          break label1126;
+          label908:
           if (i != 0)
           {
             ((SharedPreferences.Editor)localObject2).commit();
@@ -1787,7 +2064,7 @@ public class ApolloGameUtil
               ((DrawerPushItem)localObject2).show_counts = 1;
               ((DrawerPushItem)localObject2).reddotGameId = ((ApolloGameRedDot)localObject1).mGameId;
               ((DrawerPushItem)localObject2).reddotRedId = ((ApolloGameRedDot)localObject1).mDotId;
-              ((ApolloManager)paramAppInterface.getManager(152)).a((DrawerPushItem)localObject2, false);
+              ((aifg)paramAppInterface.getManager(153)).a((DrawerPushItem)localObject2, false);
               if (QLog.isColorLevel()) {
                 QLog.d("ApolloGameUtil", 2, "apolloGameReddot parseGameReddot, apolloManager.addPushItem");
               }
@@ -1798,15 +2075,28 @@ public class ApolloGameUtil
           }
           QLog.d("ApolloGameUtil", 2, "apolloGameReddot parseGameReddot, redDotsList.size:" + paramBundle.size());
           return;
+          label1117:
+          k += 1;
+          continue;
         }
       }
-      label1217:
-      k += 1;
-      continue;
-      label1226:
+      label1126:
       j += 1;
       int i = k;
     }
+  }
+  
+  public static void b(QQAppInterface paramQQAppInterface, CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  {
+    if ((paramQQAppInterface == null) || (paramStartCheckParam == null)) {
+      return;
+    }
+    ThreadManager.post(new ApolloGameUtil.23(paramQQAppInterface, paramStartCheckParam), 5, null, true);
+  }
+  
+  public static boolean b(QQAppInterface paramQQAppInterface)
+  {
+    return a(paramQQAppInterface) == 2;
   }
   
   public static boolean b(QQAppInterface paramQQAppInterface, int paramInt)
@@ -1814,7 +2104,7 @@ public class ApolloGameUtil
     if (paramQQAppInterface == null) {
       return false;
     }
-    paramQQAppInterface = ((ApolloDaoManager)paramQQAppInterface.getManager(154)).g();
+    paramQQAppInterface = ((aiyu)paramQQAppInterface.getManager(155)).g();
     if (paramQQAppInterface == null) {
       return false;
     }
@@ -1828,10 +2118,42 @@ public class ApolloGameUtil
     }
     return false;
   }
+  
+  public static void c()
+  {
+    BaseApplicationImpl.getApplication().getSharedPreferences("start_cm_game", 4).edit().clear().commit();
+  }
+  
+  public static boolean c(QQAppInterface paramQQAppInterface)
+  {
+    if (paramQQAppInterface == null) {
+      return false;
+    }
+    aifg localaifg = (aifg)paramQQAppInterface.getManager(153);
+    if ((a(paramQQAppInterface)) && (localaifg.d)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGameUtil", 2, new Object[] { "isGameCityUser read in cache status:", Boolean.valueOf(bool), ", newStoreUser:", Boolean.valueOf(localaifg.d) });
+      }
+      return bool;
+    }
+  }
+  
+  public static void d()
+  {
+    if ((jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameUtil$CmStartTask != null) && (jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameUtil$CmStartTask.b != null) && (jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameUtil$CmStartTask.b.get() != null) && (((CmGameStartChecker.StartCheckParam)jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameUtil$CmStartTask.b.get()).gameId == d))
+    {
+      QLog.i("ApolloGameUtil", 1, "get game data and restartGameTask, gameId:" + d);
+      ThreadManager.removeJobFromThreadPool(jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameUtil$CmStartTask, 16);
+      ThreadManager.excute(jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameUtil$CmStartTask, 16, null, true);
+      d = 0;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.ApolloGameUtil
  * JD-Core Version:    0.7.0.1
  */

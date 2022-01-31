@@ -1,36 +1,56 @@
-import android.os.SystemClock;
-import android.util.Log;
-import com.tencent.mobileqq.lyric.data.Lyric;
-import com.tencent.mobileqq.lyric.widget.LyricViewController;
-import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
+import android.content.Context;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.net.URL;
 
-public class aelk
-  implements Runnable
+public abstract class aelk
+  implements aelm
 {
-  public aelk(LyricViewController paramLyricViewController, int paramInt) {}
+  private boolean a;
   
-  public void run()
+  public URLDrawable.URLDrawableOptions a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal != null) {
-      this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewInternal.b();
+    return URLDrawable.URLDrawableOptions.obtain();
+  }
+  
+  public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
+  {
+    if (paramURL == null) {
+      return null;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_ComTencentMobileqqLyricDataLyric == null) || (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_ComTencentMobileqqLyricDataLyric.a()))
-    {
-      Log.w("ModuleController", "seek before set lyric");
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_Long = (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Int);
-    if ((this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.b) && (this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_Int > 0))
-    {
-      LyricViewController localLyricViewController = this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController;
-      localLyricViewController.jdField_a_of_type_Long -= this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.jdField_a_of_type_Int;
-    }
-    LyricViewController.a(this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController);
+    return URLDrawable.getDrawable(paramURL, paramURLDrawableOptions);
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  {
+    this.a = true;
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public boolean b()
+  {
+    return this.a;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aelk
  * JD-Core Version:    0.7.0.1
  */

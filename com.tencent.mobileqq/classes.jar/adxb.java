@@ -1,30 +1,21 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import java.io.File;
 
-public final class adxb
-  implements Runnable
+final class adxb
+  implements DialogInterface.OnClickListener
 {
-  public adxb(Context paramContext) {}
+  adxb(Activity paramActivity, File paramFile1, File paramFile2, adxe paramadxe) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Intent localIntent = new Intent();
-    localIntent.setAction("mqq.intent.action.QQ_BACKGROUND");
-    try
-    {
-      this.a.sendBroadcast(localIntent);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.i("GESTUREPWDUTILS", 1, localException.toString(), localException);
-    }
+    adwz.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaIoFile, this.b, this.jdField_a_of_type_Adxe);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adxb
  * JD-Core Version:    0.7.0.1
  */

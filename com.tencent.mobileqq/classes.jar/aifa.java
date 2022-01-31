@@ -1,282 +1,444 @@
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import android.text.TextUtils;
+import com.tencent.commonsdk.cache.QQLruCache;
+import com.tencent.mobileqq.apollo.ApolloGameArkHandler.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.data.ApolloGameData;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.LRULinkedHashMap;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class aifa
 {
-  FileOutputStream jdField_a_of_type_JavaIoFileOutputStream;
-  public boolean a;
-  byte[] jdField_a_of_type_ArrayOfByte = new byte[4];
+  public static final LRULinkedHashMap<String, String> a;
+  private WeakReference<QQAppInterface> a;
   
-  public aifa(String paramString)
+  static
   {
-    this.jdField_a_of_type_Boolean = false;
-    File localFile = new File(paramString);
-    if (localFile.exists()) {
-      localFile.delete();
+    jdField_a_of_type_ComTencentUtilLRULinkedHashMap = new LRULinkedHashMap(50);
+  }
+  
+  public aifa(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+  }
+  
+  private String a(MessageForApollo paramMessageForApollo)
+  {
+    if ((a() == null) || (paramMessageForApollo == null)) {
+      return "com.tencent.cmshow";
     }
-    try
-    {
-      localFile.createNewFile();
-      this.jdField_a_of_type_JavaIoFileOutputStream = new FileOutputStream(paramString);
-      this.jdField_a_of_type_Boolean = true;
-      return;
+    if (paramMessageForApollo.istroop == 1036) {
+      return "com.tencent.cmgame.social";
     }
-    catch (IOException paramString)
+    if (paramMessageForApollo.isHasOwnArk())
     {
-      paramString.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.d("QQ_CmGame_CmGameTemp", 2, new Object[] { "[getArkAppName], msg.gameId:", Integer.valueOf(paramMessageForApollo.gameId), " hasOwnArk." });
+      }
+      return "com.tencent.cmshow." + paramMessageForApollo.gameId;
+    }
+    return "com.tencent.cmshow";
+  }
+  
+  private JSONArray a(List<Long> paramList, int paramInt, String paramString)
+  {
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return null;
+    }
+    for (;;)
+    {
+      JSONArray localJSONArray;
+      int i;
+      String str;
+      JSONObject localJSONObject;
+      try
+      {
+        localJSONArray = new JSONArray();
+        int j = paramList.size();
+        i = 0;
+        if (i >= j) {
+          break label213;
+        }
+        str = String.valueOf(paramList.get(i));
+        if (TextUtils.isEmpty(str))
+        {
+          QLog.w("QQ_CmGame_CmGameTemp", 1, "[getPlayerInfo], uin is null.");
+        }
+        else
+        {
+          localJSONObject = new JSONObject();
+          localJSONObject.put("uin", str);
+          localObject = a();
+          if (localObject == null) {
+            break;
+          }
+          if (str.equals(((QQAppInterface)localObject).getCurrentAccountUin()))
+          {
+            localObject = ((QQAppInterface)localObject).getCurrentNickname();
+            localJSONObject.put("nickname", localObject);
+            localObject = a(str);
+            if (TextUtils.isEmpty((CharSequence)localObject)) {
+              break label200;
+            }
+            localJSONObject.put("avatarUrl", localObject);
+            localJSONArray.put(localJSONObject);
+          }
+        }
+      }
+      catch (Throwable paramList)
+      {
+        QLog.e("QQ_CmGame_CmGameTemp", 1, paramList, new Object[0]);
+        return null;
+      }
+      Object localObject = aisl.a((QQAppInterface)localObject, paramInt, str, paramString, true);
+      continue;
+      label200:
+      localJSONObject.put("avatarUrl", "");
+      continue;
+      label213:
+      return localJSONArray;
+      i += 1;
     }
   }
   
-  private void b(int paramInt)
+  private void a(String paramString)
   {
-    this.jdField_a_of_type_ArrayOfByte[0] = ((byte)(paramInt >> 24 & 0xFF));
-    this.jdField_a_of_type_ArrayOfByte[1] = ((byte)(paramInt >> 16 & 0xFF));
-    this.jdField_a_of_type_ArrayOfByte[2] = ((byte)(paramInt >> 8 & 0xFF));
-    this.jdField_a_of_type_ArrayOfByte[3] = ((byte)(paramInt & 0xFF));
+    ThreadManager.post(new ApolloGameArkHandler.1(this, paramString), 5, null, true);
   }
   
-  public void a()
+  public QQAppInterface a()
   {
-    if ((this.jdField_a_of_type_JavaIoFileOutputStream != null) && (this.jdField_a_of_type_Boolean)) {}
-    try
-    {
-      this.jdField_a_of_type_JavaIoFileOutputStream.flush();
-      return;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
+      return (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    catch (IOException localIOException)
-    {
-      this.jdField_a_of_type_Boolean = false;
-    }
+    return null;
   }
   
-  public void a(int paramInt)
+  public MessageForArkApp a(MessageForApollo paramMessageForApollo, MessageForArkApp paramMessageForArkApp)
   {
-    if ((this.jdField_a_of_type_JavaIoFileOutputStream != null) && (this.jdField_a_of_type_Boolean)) {}
-    try
+    MessageForArkApp localMessageForArkApp = paramMessageForArkApp;
+    if (paramMessageForArkApp == null)
     {
-      b(paramInt);
-      this.jdField_a_of_type_JavaIoFileOutputStream.write(this.jdField_a_of_type_ArrayOfByte, 0, 4);
-      return;
+      QLog.i("QQ_CmGame_CmGameTemp", 1, "create an arkMsg obj.");
+      localMessageForArkApp = new MessageForArkApp();
+      localMessageForArkApp.ark_app_message = new ArkAppMessage();
     }
-    catch (IOException localIOException)
+    paramMessageForArkApp = a();
+    ArkAppMessage localArkAppMessage = localMessageForArkApp.ark_app_message;
+    if ((paramMessageForApollo == null) || (localArkAppMessage == null) || (paramMessageForArkApp == null)) {
+      return localMessageForArkApp;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQ_CmGame_CmGameTemp", 2, new Object[] { "gameStatus:", Integer.valueOf(paramMessageForApollo.gameStatus), ",gameId:", Integer.valueOf(paramMessageForApollo.gameId), ",arkInfo:", paramMessageForApollo.gameArkInfo, ",roomId:", Long.valueOf(paramMessageForApollo.roomId), ",msgId:", Long.valueOf(paramMessageForApollo.uniseq), ",seq:", Long.valueOf(paramMessageForApollo.msgseq), ",msgType:", Integer.valueOf(paramMessageForApollo.msgType) });
+    }
+    int i;
+    JSONObject localJSONObject1;
+    JSONObject localJSONObject2;
+    Object localObject1;
+    label400:
+    Object localObject2;
+    for (;;)
     {
-      this.jdField_a_of_type_Boolean = false;
+      try
+      {
+        i = paramMessageForApollo.gameStatus;
+        localArkAppMessage.reset();
+        localArkAppMessage.appName = a(paramMessageForApollo);
+        localArkAppMessage.appMinVersion = "1.0.0.0";
+        localArkAppMessage.appDesc = ajjy.a(2131634555);
+        localJSONObject1 = new JSONObject();
+        localJSONObject2 = new JSONObject();
+        localJSONObject2.put("gameId", paramMessageForApollo.gameId);
+        localJSONObject2.put("msgId", String.valueOf(paramMessageForApollo.uniseq));
+        if (paramMessageForApollo.istroop == 1036)
+        {
+          localJSONObject2.put("senderUin", paramMessageForApollo.senderuin);
+          if (paramMessageForApollo.isSend())
+          {
+            localJSONObject2.put("receiverUin", paramMessageForApollo.frienduin);
+            localJSONObject2.put("createTime", paramMessageForApollo.time);
+            localJSONObject2.put("roomId", String.valueOf(paramMessageForApollo.roomId));
+            localJSONObject2.put("gameName", paramMessageForApollo.gameName);
+          }
+        }
+        else
+        {
+          if (TextUtils.isEmpty(paramMessageForApollo.gameExtendJson)) {
+            break label1273;
+          }
+          localObject1 = new JSONObject(paramMessageForApollo.gameExtendJson);
+          localJSONObject2.put("extendInfo", ((JSONObject)localObject1).optString("extendInfo"));
+          if (paramMessageForApollo.msgType != 4) {
+            break label577;
+          }
+          localArkAppMessage.appView = "game_share";
+          localJSONObject2.put("gameStatus", 100);
+          i = 100;
+          if (paramMessageForApollo.istroop != 1036) {
+            break label1282;
+          }
+          localObject1 = ((aifg)paramMessageForArkApp.getManager(153)).a();
+          localObject2 = new JSONArray();
+        }
+        switch (i)
+        {
+        case 0: 
+          label496:
+          paramMessageForArkApp = new JSONArray();
+          localObject1 = paramMessageForApollo.winnerList.iterator();
+          if (!((Iterator)localObject1).hasNext()) {
+            break label884;
+          }
+          paramMessageForArkApp.put(String.valueOf((Long)((Iterator)localObject1).next()));
+          continue;
+          localJSONObject2.put("receiverUin", paramMessageForApollo.selfuin);
+        }
+      }
+      catch (Throwable paramMessageForApollo)
+      {
+        QLog.e("QQ_CmGame_CmGameTemp", 1, paramMessageForApollo, new Object[0]);
+        return localMessageForArkApp;
+      }
+      continue;
+      label577:
+      if (paramMessageForApollo.istroop == 1036) {}
+      for (localArkAppMessage.appView = "SocialGame";; localArkAppMessage.appView = "game_aio")
+      {
+        localJSONObject2.put("gameStatus", paramMessageForApollo.gameStatus);
+        localJSONObject2.put("extendJson", paramMessageForApollo.gameArkInfo);
+        localJSONObject2.put("commInfo", paramMessageForApollo.commInfo);
+        break;
+      }
+      paramMessageForArkApp = new JSONObject();
+      paramMessageForArkApp.put("uin", paramMessageForApollo.senderuin);
+      paramMessageForArkApp.put("nickname", ((aimr)localObject1).a.get(paramMessageForApollo.senderuin));
+      paramMessageForArkApp.put("avatarUrl", ((aimr)localObject1).b.get(paramMessageForApollo.senderuin));
+      ((JSONArray)localObject2).put(paramMessageForArkApp);
+      localJSONObject2.put("players", localObject2);
+    }
+    paramMessageForArkApp = new JSONObject();
+    paramMessageForArkApp.put("uin", paramMessageForApollo.senderuin);
+    paramMessageForArkApp.put("nickname", ((aimr)localObject1).a.get(paramMessageForApollo.senderuin));
+    paramMessageForArkApp.put("avatarUrl", ((aimr)localObject1).b.get(paramMessageForApollo.senderuin));
+    ((JSONArray)localObject2).put(paramMessageForArkApp);
+    if (paramMessageForApollo.isSend()) {}
+    for (paramMessageForArkApp = paramMessageForApollo.frienduin;; paramMessageForArkApp = paramMessageForApollo.selfuin)
+    {
+      JSONObject localJSONObject3 = new JSONObject();
+      localJSONObject3.put("uin", paramMessageForArkApp);
+      localJSONObject3.put("nickname", ((aimr)localObject1).a.get(paramMessageForArkApp));
+      localJSONObject3.put("avatarUrl", ((aimr)localObject1).b.get(paramMessageForArkApp));
+      ((JSONArray)localObject2).put(localJSONObject3);
+      localJSONObject2.put("players", localObject2);
+      break;
+    }
+    label884:
+    localJSONObject2.put("winList", paramMessageForArkApp);
+    long l2 = NetConnInfoCenter.getServerTimeMillis() / 1000L;
+    long l1 = l2;
+    if (l2 < paramMessageForApollo.time) {
+      l1 = paramMessageForApollo.time;
+    }
+    localJSONObject2.put("currentTime", l1);
+    for (;;)
+    {
+      localJSONObject1.put("gameArk", localJSONObject2);
+      localArkAppMessage.metaList = localJSONObject1.toString();
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("QQ_CmGame_CmGameTemp", 2, localArkAppMessage.metaList);
+      return localMessageForArkApp;
+      localJSONObject2.put("roomCapacity", paramMessageForApollo.roomVol);
+      paramMessageForApollo = a(paramMessageForApollo.playerList, paramMessageForApollo.istroop, paramMessageForApollo.frienduin);
+      if ((paramMessageForApollo != null) && (paramMessageForApollo.length() > 0))
+      {
+        localJSONObject2.put("players", paramMessageForApollo);
+        continue;
+        paramMessageForArkApp = new JSONArray();
+        localObject1 = paramMessageForApollo.winnerList.iterator();
+        while (((Iterator)localObject1).hasNext()) {
+          paramMessageForArkApp.put(String.valueOf((Long)((Iterator)localObject1).next()));
+        }
+        localJSONObject2.put("winList", paramMessageForArkApp);
+        localJSONObject2.put("overType", paramMessageForApollo.overType);
+        paramMessageForArkApp = a(paramMessageForApollo.playerList, paramMessageForApollo.istroop, paramMessageForApollo.frienduin);
+        if ((paramMessageForArkApp != null) && (paramMessageForArkApp.length() > 0)) {
+          localJSONObject2.put("players", paramMessageForArkApp);
+        }
+        localJSONObject2.put("wording", paramMessageForApollo.winRecord);
+        continue;
+        localObject2 = ((aiyu)paramMessageForArkApp.getManager(155)).a(paramMessageForApollo.gameId);
+        paramMessageForArkApp = ajjy.a(2131634556);
+        if (!TextUtils.isEmpty(paramMessageForApollo.gameName)) {
+          paramMessageForArkApp = paramMessageForApollo.gameName;
+        }
+        if (localObject2 != null) {
+          paramMessageForArkApp = ((ApolloGameData)localObject2).name;
+        }
+        if (localObject1 != null)
+        {
+          localJSONObject2.put("summary", ((JSONObject)localObject1).optString("summary"));
+          localJSONObject2.put("picUrl", ((JSONObject)localObject1).optString("picUrl"));
+        }
+        localJSONObject2.put("title", paramMessageForArkApp);
+        localJSONObject2.put("gameMode", paramMessageForApollo.mGameMode);
+        continue;
+        label1273:
+        localObject1 = null;
+        break label400;
+        break label496;
+        label1282:
+        switch (i)
+        {
+        }
+      }
     }
   }
   
   /* Error */
-  public void a(File paramFile)
+  public String a(String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 6
-    //   3: aload_1
-    //   4: invokevirtual 62	java/io/File:length	()J
-    //   7: l2i
-    //   8: istore_3
-    //   9: new 64	java/io/FileInputStream
-    //   12: dup
-    //   13: aload_1
-    //   14: invokespecial 66	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   17: astore 5
-    //   19: iload_3
-    //   20: sipush 4096
-    //   23: if_icmpge +24 -> 47
-    //   26: iload_3
-    //   27: newarray byte
-    //   29: astore 6
-    //   31: aload 6
-    //   33: ifnonnull +32 -> 65
-    //   36: aload 5
-    //   38: ifnull +8 -> 46
-    //   41: aload 5
-    //   43: invokevirtual 69	java/io/FileInputStream:close	()V
-    //   46: return
-    //   47: sipush 4096
-    //   50: newarray byte
-    //   52: astore 6
-    //   54: goto -23 -> 31
-    //   57: astore 6
-    //   59: aconst_null
-    //   60: astore 6
-    //   62: goto -31 -> 31
-    //   65: aload_0
-    //   66: aload_1
-    //   67: invokevirtual 62	java/io/File:length	()J
-    //   70: l2i
-    //   71: invokevirtual 71	aifa:a	(I)V
-    //   74: iconst_0
-    //   75: istore_2
-    //   76: iload_2
-    //   77: iload_3
-    //   78: if_icmpge +34 -> 112
-    //   81: aload 5
-    //   83: aload 6
-    //   85: invokevirtual 75	java/io/FileInputStream:read	([B)I
-    //   88: istore 4
-    //   90: iload 4
-    //   92: ifle -16 -> 76
-    //   95: aload_0
-    //   96: aload 6
-    //   98: iconst_0
-    //   99: iload 4
-    //   101: invokevirtual 77	aifa:a	([BII)V
-    //   104: iload_2
-    //   105: iload 4
-    //   107: iadd
-    //   108: istore_2
-    //   109: goto -33 -> 76
-    //   112: aload 5
-    //   114: ifnull -68 -> 46
-    //   117: aload 5
-    //   119: invokevirtual 69	java/io/FileInputStream:close	()V
-    //   122: return
-    //   123: astore_1
-    //   124: return
-    //   125: astore_1
-    //   126: aload 6
-    //   128: astore_1
-    //   129: aload_1
-    //   130: ifnull -84 -> 46
-    //   133: aload_1
-    //   134: invokevirtual 69	java/io/FileInputStream:close	()V
-    //   137: return
-    //   138: astore_1
-    //   139: return
-    //   140: astore_1
-    //   141: aconst_null
-    //   142: astore 5
-    //   144: aload 5
-    //   146: ifnull -100 -> 46
-    //   149: aload 5
-    //   151: invokevirtual 69	java/io/FileInputStream:close	()V
-    //   154: return
-    //   155: astore_1
-    //   156: return
-    //   157: astore_1
-    //   158: aconst_null
-    //   159: astore 5
-    //   161: aload 5
-    //   163: ifnull +8 -> 171
-    //   166: aload 5
-    //   168: invokevirtual 69	java/io/FileInputStream:close	()V
-    //   171: aload_1
-    //   172: athrow
-    //   173: astore_1
-    //   174: return
-    //   175: astore 5
-    //   177: goto -6 -> 171
-    //   180: astore_1
-    //   181: goto -20 -> 161
-    //   184: astore_1
-    //   185: goto -41 -> 144
-    //   188: astore_1
-    //   189: aload 5
-    //   191: astore_1
-    //   192: goto -63 -> 129
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: getstatic 19	aifa:jdField_a_of_type_ComTencentUtilLRULinkedHashMap	Lcom/tencent/util/LRULinkedHashMap;
+    //   5: ifnull +12 -> 17
+    //   8: aload_1
+    //   9: invokestatic 115	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   12: istore_2
+    //   13: iload_2
+    //   14: ifeq +9 -> 23
+    //   17: aconst_null
+    //   18: astore_3
+    //   19: aload_0
+    //   20: monitorexit
+    //   21: aload_3
+    //   22: areturn
+    //   23: getstatic 19	aifa:jdField_a_of_type_ComTencentUtilLRULinkedHashMap	Lcom/tencent/util/LRULinkedHashMap;
+    //   26: aload_1
+    //   27: invokevirtual 426	com/tencent/util/LRULinkedHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   30: checkcast 106	java/lang/String
+    //   33: astore 4
+    //   35: aload 4
+    //   37: astore_3
+    //   38: aload 4
+    //   40: invokestatic 115	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   43: ifeq -24 -> 19
+    //   46: aload_0
+    //   47: aload_1
+    //   48: invokespecial 428	aifa:a	(Ljava/lang/String;)V
+    //   51: aconst_null
+    //   52: astore_3
+    //   53: goto -34 -> 19
+    //   56: astore_1
+    //   57: aload_0
+    //   58: monitorexit
+    //   59: aload_1
+    //   60: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	195	0	this	aifa
-    //   0	195	1	paramFile	File
-    //   75	34	2	i	int
-    //   8	71	3	j	int
-    //   88	20	4	k	int
-    //   17	150	5	localFileInputStream	java.io.FileInputStream
-    //   175	15	5	localIOException	IOException
-    //   1	52	6	arrayOfByte1	byte[]
-    //   57	1	6	localOutOfMemoryError	java.lang.OutOfMemoryError
-    //   60	67	6	arrayOfByte2	byte[]
+    //   0	61	0	this	aifa
+    //   0	61	1	paramString	String
+    //   12	2	2	bool	boolean
+    //   18	35	3	localObject	Object
+    //   33	6	4	str	String
     // Exception table:
     //   from	to	target	type
-    //   26	31	57	java/lang/OutOfMemoryError
-    //   47	54	57	java/lang/OutOfMemoryError
-    //   117	122	123	java/io/IOException
-    //   3	19	125	java/lang/Exception
-    //   133	137	138	java/io/IOException
-    //   3	19	140	java/lang/OutOfMemoryError
-    //   149	154	155	java/io/IOException
-    //   3	19	157	finally
-    //   41	46	173	java/io/IOException
-    //   166	171	175	java/io/IOException
-    //   26	31	180	finally
-    //   47	54	180	finally
-    //   65	74	180	finally
-    //   81	90	180	finally
-    //   95	104	180	finally
-    //   65	74	184	java/lang/OutOfMemoryError
-    //   81	90	184	java/lang/OutOfMemoryError
-    //   95	104	184	java/lang/OutOfMemoryError
-    //   26	31	188	java/lang/Exception
-    //   47	54	188	java/lang/Exception
-    //   65	74	188	java/lang/Exception
-    //   81	90	188	java/lang/Exception
-    //   95	104	188	java/lang/Exception
+    //   2	13	56	finally
+    //   23	35	56	finally
+    //   38	51	56	finally
   }
   
-  public void a(String paramString)
+  public void a(MessageForApollo paramMessageForApollo)
   {
-    if ((this.jdField_a_of_type_JavaIoFileOutputStream != null) && (this.jdField_a_of_type_Boolean)) {
-      paramString = paramString.getBytes();
+    MessageForArkApp localMessageForArkApp = a(paramMessageForApollo, paramMessageForApollo.mApolloGameArkMsg);
+    if ((localMessageForArkApp == null) || (localMessageForArkApp.ark_app_message == null)) {
+      return;
     }
+    if (paramMessageForApollo.istroop == 1036)
+    {
+      a(paramMessageForApollo, "UpdateSocialGame", localMessageForArkApp.ark_app_message.metaList);
+      return;
+    }
+    a(paramMessageForApollo, "UpdateGameAioView", localMessageForArkApp.ark_app_message.metaList);
+  }
+  
+  public void a(MessageForApollo paramMessageForApollo, String paramString1, String paramString2)
+  {
+    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (paramMessageForApollo == null)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQ_CmGame_CmGameTemp", 2, new Object[] { "eventName:", paramString1, ",data:", paramString2 });
+    }
+    paramMessageForApollo = a(paramMessageForApollo);
     try
     {
-      this.jdField_a_of_type_JavaIoFileOutputStream.write(paramString);
-      this.jdField_a_of_type_JavaIoFileOutputStream.write(0);
+      ArkAppCenter.a(paramMessageForApollo, paramString1, paramString2, "json");
       return;
     }
-    catch (IOException paramString)
+    catch (Throwable paramMessageForApollo)
     {
-      this.jdField_a_of_type_Boolean = false;
+      QLog.e("QQ_CmGame_CmGameTemp", 1, paramMessageForApollo, new Object[0]);
     }
   }
   
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  /* Error */
+  public void a(String paramString1, String paramString2)
   {
-    if ((this.jdField_a_of_type_JavaIoFileOutputStream != null) && (this.jdField_a_of_type_Boolean)) {}
-    try
-    {
-      this.jdField_a_of_type_JavaIoFileOutputStream.write(paramArrayOfByte, paramInt1, paramInt2);
-      return;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      this.jdField_a_of_type_Boolean = false;
-    }
-  }
-  
-  public void b()
-  {
-    if (this.jdField_a_of_type_JavaIoFileOutputStream != null) {}
-    try
-    {
-      this.jdField_a_of_type_JavaIoFileOutputStream.close();
-      this.jdField_a_of_type_JavaIoFileOutputStream = null;
-      this.jdField_a_of_type_Boolean = false;
-      return;
-    }
-    catch (IOException localIOException) {}
-  }
-  
-  public void b(String paramString)
-  {
-    if (paramString == null)
-    {
-      a(0);
-      return;
-    }
-    paramString = new File(paramString);
-    if (paramString.exists())
-    {
-      a(paramString);
-      return;
-    }
-    a(0);
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: getstatic 19	aifa:jdField_a_of_type_ComTencentUtilLRULinkedHashMap	Lcom/tencent/util/LRULinkedHashMap;
+    //   5: ifnull +19 -> 24
+    //   8: aload_1
+    //   9: invokestatic 115	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   12: ifne +12 -> 24
+    //   15: aload_2
+    //   16: invokestatic 115	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   19: istore_3
+    //   20: iload_3
+    //   21: ifeq +6 -> 27
+    //   24: aload_0
+    //   25: monitorexit
+    //   26: return
+    //   27: getstatic 19	aifa:jdField_a_of_type_ComTencentUtilLRULinkedHashMap	Lcom/tencent/util/LRULinkedHashMap;
+    //   30: aload_1
+    //   31: aload_2
+    //   32: invokevirtual 457	com/tencent/util/LRULinkedHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   35: pop
+    //   36: goto -12 -> 24
+    //   39: astore_1
+    //   40: aload_0
+    //   41: monitorexit
+    //   42: aload_1
+    //   43: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	44	0	this	aifa
+    //   0	44	1	paramString1	String
+    //   0	44	2	paramString2	String
+    //   19	2	3	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   2	20	39	finally
+    //   27	36	39	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aifa
  * JD-Core Version:    0.7.0.1
  */

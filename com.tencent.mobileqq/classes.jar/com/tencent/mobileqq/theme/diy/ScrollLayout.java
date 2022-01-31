@@ -14,6 +14,8 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.Scroller;
+import axmk;
+import axml;
 import com.tencent.qphone.base.util.QLog;
 import java.io.PrintStream;
 
@@ -39,8 +41,8 @@ public class ScrollLayout
   int mTouchSlop;
   int mTouchState = 0;
   VelocityTracker mVelocityTracker;
-  ScrollLayout.OnScreenChangeListener onScreenChangeListener;
-  ScrollLayout.OnScreenChangeListenerDataLoad onScreenChangeListenerDataLoad;
+  axmk onScreenChangeListener;
+  axml onScreenChangeListenerDataLoad;
   
   public ScrollLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -334,14 +336,14 @@ public class ScrollLayout
     }
   }
   
-  public void setOnScreenChangeListener(ScrollLayout.OnScreenChangeListener paramOnScreenChangeListener)
+  public void setOnScreenChangeListener(axmk paramaxmk)
   {
-    this.onScreenChangeListener = paramOnScreenChangeListener;
+    this.onScreenChangeListener = paramaxmk;
   }
   
-  public void setOnScreenChangeListenerDataLoad(ScrollLayout.OnScreenChangeListenerDataLoad paramOnScreenChangeListenerDataLoad)
+  public void setOnScreenChangeListenerDataLoad(axml paramaxml)
   {
-    this.onScreenChangeListenerDataLoad = paramOnScreenChangeListenerDataLoad;
+    this.onScreenChangeListenerDataLoad = paramaxml;
   }
   
   public void setToScreen(int paramInt1, int paramInt2)
@@ -395,7 +397,7 @@ public class ScrollLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.ScrollLayout
  * JD-Core Version:    0.7.0.1
  */

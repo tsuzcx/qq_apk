@@ -9,14 +9,14 @@ public final class GetAlbumAbilityResp
   extends JceStruct
 {
   static int cache_result;
-  static ArrayList cache_vecAlbumAbiUins;
+  static ArrayList<stAlbumAbiInfo> cache_vecAlbumAbiUins;
   public int result;
   public long uin;
-  public ArrayList vecAlbumAbiUins;
+  public ArrayList<stAlbumAbiInfo> vecAlbumAbiUins;
   
   public GetAlbumAbilityResp() {}
   
-  public GetAlbumAbilityResp(long paramLong, int paramInt, ArrayList paramArrayList)
+  public GetAlbumAbilityResp(long paramLong, int paramInt, ArrayList<stAlbumAbiInfo> paramArrayList)
   {
     this.uin = paramLong;
     this.result = paramInt;

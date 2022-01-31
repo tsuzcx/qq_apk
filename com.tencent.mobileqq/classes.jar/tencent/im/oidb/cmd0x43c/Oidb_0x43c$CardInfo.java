@@ -13,7 +13,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Oidb_0x43c$CardInfo
-  extends MessageMicro
+  extends MessageMicro<CardInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField bind_mbl = PBField.initString("");
@@ -21,15 +21,15 @@ public final class Oidb_0x43c$CardInfo
   public final PBBytesField card_id = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBEnumField card_src = PBField.initEnum(1);
   public final PBStringField company = PBField.initString("");
-  public final PBRepeatField descs = PBField.initRepeat(PBStringField.__repeatHelper__);
+  public final PBRepeatField<String> descs = PBField.initRepeat(PBStringField.__repeatHelper__);
   public final PBUInt32Field last_update_time = PBField.initUInt32(0);
-  public final PBRepeatMessageField mobile_info = PBField.initRepeatMessage(Oidb_0x43c.MobileInfo.class);
-  public final PBRepeatField mobiles = PBField.initRepeat(PBStringField.__repeatHelper__);
+  public final PBRepeatMessageField<Oidb_0x43c.MobileInfo> mobile_info = PBField.initRepeatMessage(Oidb_0x43c.MobileInfo.class);
+  public final PBRepeatField<String> mobiles = PBField.initRepeat(PBStringField.__repeatHelper__);
   public final PBStringField name = PBField.initString("");
   public Oidb_0x43c.OCRInfo ocr_info = new Oidb_0x43c.OCRInfo();
   public final PBStringField pic_url = PBField.initString("");
-  public final PBRepeatMessageField uin_info = PBField.initRepeatMessage(Oidb_0x43c.UinInfo.class);
-  public final PBRepeatField uins = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatMessageField<Oidb_0x43c.UinInfo> uin_info = PBField.initRepeatMessage(Oidb_0x43c.UinInfo.class);
+  public final PBRepeatField<Long> uins = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   
   static
   {
@@ -39,7 +39,7 @@ public final class Oidb_0x43c$CardInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x43c.Oidb_0x43c.CardInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x8dd$NearbyPeople
-  extends MessageMicro
+  extends MessageMicro<NearbyPeople>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_nick = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -47,7 +47,7 @@ public final class oidb_0x8dd$NearbyPeople
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8dd.oidb_0x8dd.NearbyPeople
  * JD-Core Version:    0.7.0.1
  */

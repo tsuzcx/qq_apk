@@ -1,18 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.olympic.ShuayishuaConfig;
+import android.app.Dialog;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import mqq.util.WeakReference;
 
-public final class agiu
-  implements Parcelable.Creator
+class agiu
+  implements View.OnClickListener
 {
-  public ShuayishuaConfig a(Parcel paramParcel)
-  {
-    return new ShuayishuaConfig(paramParcel);
-  }
+  agiu(agit paramagit) {}
   
-  public ShuayishuaConfig[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new ShuayishuaConfig[paramInt];
+    if (agit.a(this.a) == null)
+    {
+      agit.a(this.a, babr.a((Context)this.a.a.get(), 0, ((NewPhotoPreviewActivity)this.a.a.get()).getString(2131652585), null, ((NewPhotoPreviewActivity)this.a.a.get()).getString(2131652583), ((NewPhotoPreviewActivity)this.a.a.get()).getString(2131652584), new agiv(this), new agiw(this)));
+      agit.a(this.a).setCanceledOnTouchOutside(false);
+    }
+    agit.a(this.a).show();
   }
 }
 

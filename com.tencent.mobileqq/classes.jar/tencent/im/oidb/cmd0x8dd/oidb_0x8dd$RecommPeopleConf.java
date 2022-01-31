@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_0x8dd$RecommPeopleConf
-  extends MessageMicro
+  extends MessageMicro<RecommPeopleConf>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32 }, new String[] { "str_icon_url", "str_title", "uint32_postion", "uint32_show_num" }, new Object[] { "", "", Integer.valueOf(0), Integer.valueOf(0) }, RecommPeopleConf.class);
   public final PBStringField str_icon_url = PBField.initString("");
@@ -17,7 +17,7 @@ public final class oidb_0x8dd$RecommPeopleConf
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8dd.oidb_0x8dd.RecommPeopleConf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.app.utils.MessagePkgUtils;
+import akhp;
 
 public class MessageForDeviceFile
   extends ChatMessage
@@ -66,7 +66,7 @@ public class MessageForDeviceFile
   {
     try
     {
-      MessageForDeviceFile.DeviceFileMsgSerial localDeviceFileMsgSerial = (MessageForDeviceFile.DeviceFileMsgSerial)MessagePkgUtils.a(this.msgData);
+      MessageForDeviceFile.DeviceFileMsgSerial localDeviceFileMsgSerial = (MessageForDeviceFile.DeviceFileMsgSerial)akhp.a(this.msgData);
       if (localDeviceFileMsgSerial != null)
       {
         this.strServiceName = localDeviceFileMsgSerial.strServiceName;
@@ -131,12 +131,12 @@ public class MessageForDeviceFile
     }
   }
   
-  protected void postRead()
+  public void postRead()
   {
     parse();
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     serial();
   }
@@ -195,7 +195,7 @@ public class MessageForDeviceFile
     localDeviceFileMsgSerial.quality = this.quality;
     try
     {
-      this.msgData = MessagePkgUtils.a(localDeviceFileMsgSerial);
+      this.msgData = akhp.a(localDeviceFileMsgSerial);
       return;
     }
     catch (Exception localException)

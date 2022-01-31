@@ -1,27 +1,35 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.channel.pb.WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp;
 
-public class aomr
-  extends Property
+class aomr
+  implements bgun<WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp>
 {
-  public aomr(GroundDrawable paramGroundDrawable, Class paramClass, String paramString)
+  aomr(aomp paramaomp, aonc paramaonc) {}
+  
+  public void a(int paramInt, String paramString, WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp paramWeiyunShareAddFromMobileQQMsgRsp)
   {
-    super(paramClass, paramString);
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getShareLink onFailed: errorCode[" + paramInt + "], errorMsg[" + paramString + "]");
+    }
+    if (this.jdField_a_of_type_Aonc != null) {
+      this.jdField_a_of_type_Aonc.a(paramInt, paramString);
+    }
   }
   
-  public Float a(GroundDrawable paramGroundDrawable)
+  public void a(WeiyunPB.WeiyunShareAddFromMobileQQMsgRsp paramWeiyunShareAddFromMobileQQMsgRsp)
   {
-    return Float.valueOf(GroundDrawable.c(paramGroundDrawable));
-  }
-  
-  public void a(GroundDrawable paramGroundDrawable, Float paramFloat)
-  {
-    GroundDrawable.b(paramGroundDrawable, paramFloat.floatValue());
+    if (QLog.isColorLevel()) {
+      QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getShareLink succeed");
+    }
+    if (this.jdField_a_of_type_Aonc != null) {
+      this.jdField_a_of_type_Aonc.a(paramWeiyunShareAddFromMobileQQMsgRsp.raw_url.get());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aomr
  * JD-Core Version:    0.7.0.1
  */

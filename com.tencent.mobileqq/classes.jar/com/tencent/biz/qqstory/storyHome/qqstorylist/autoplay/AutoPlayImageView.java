@@ -1,6 +1,9 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay;
 
+import amym;
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
@@ -8,19 +11,22 @@ import android.graphics.Path;
 import android.graphics.Path.Direction;
 import android.graphics.Path.FillType;
 import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
+import android.support.annotation.ColorInt;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.image.QQLiveDrawable;
 import com.tencent.image.QQLiveDrawable.OnStateListener;
 import com.tencent.image.QQLiveDrawable.QQLiveDrawableParams;
+import com.tencent.image.RegionDrawable;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.drawable.EmptyDrawable;
 import com.tencent.mobileqq.widget.PAVideoView;
-import odv;
+import ulk;
+import urk;
 
 public class AutoPlayImageView
   extends ImageView
@@ -29,10 +35,13 @@ public class AutoPlayImageView
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Path jdField_a_of_type_AndroidGraphicsPath;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
   private String jdField_a_of_type_JavaLangString;
   public boolean a;
   private int b;
+  private int c;
+  private int d;
   
   public AutoPlayImageView(Context paramContext)
   {
@@ -79,32 +88,51 @@ public class AutoPlayImageView
     return this.jdField_a_of_type_Int;
   }
   
+  public Drawable a(String paramString, int paramInt1, int paramInt2)
+  {
+    paramString = ((URLDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).getCurrDrawable();
+    if ((paramString != null) && ((paramString instanceof RegionDrawable)))
+    {
+      paramString = ((RegionDrawable)paramString).getBitmap();
+      if ((paramString == null) || (paramString.isRecycled())) {}
+    }
+    for (paramString = new BitmapDrawable(paramString);; paramString = null)
+    {
+      Object localObject = paramString;
+      if (paramString == null) {
+        localObject = new amym(-2631721, paramInt1, paramInt2);
+      }
+      return localObject;
+    }
+  }
+  
   public QQLiveDrawable.QQLiveDrawableParams a(int paramInt1, int paramInt2, long paramLong, String paramString1, String paramString2, QQLiveDrawable.OnStateListener paramOnStateListener)
   {
     paramOnStateListener = new QQLiveDrawable.QQLiveDrawableParams();
-    if (paramInt1 == 0)
+    int i;
+    if (paramInt1 > 0)
     {
-      i = 200;
-      paramOnStateListener.mPreviewWidth = i;
-      if (paramInt2 != 0) {
-        break label104;
-      }
-    }
-    label104:
-    for (int i = 400;; i = paramInt2)
-    {
-      paramOnStateListener.mPreviewHeight = i;
-      paramOnStateListener.mPlayType = 2;
-      paramOnStateListener.mDataSourceType = 3;
-      paramOnStateListener.mDataSource = paramString2;
-      paramOnStateListener.mCoverUrl = paramString1;
-      paramOnStateListener.mCoverLoadingDrawable = new EmptyDrawable(-2631721, paramInt1, paramInt2);
-      paramOnStateListener.mLoopback = true;
-      paramOnStateListener.msgUniseq = paramLong;
-      return paramOnStateListener;
       i = paramInt1;
-      break;
+      paramInt1 = paramInt2;
+      if (paramInt2 > 0) {}
     }
+    else
+    {
+      i = 544;
+      paramInt1 = 968;
+    }
+    paramOnStateListener.mPreviewWidth = i;
+    paramOnStateListener.mPreviewHeight = paramInt1;
+    paramOnStateListener.mCoverWidth = this.b;
+    paramOnStateListener.mCoverHeight = this.c;
+    paramOnStateListener.mPlayType = 2;
+    paramOnStateListener.mDataSourceType = 3;
+    paramOnStateListener.mDataSource = paramString2;
+    paramOnStateListener.mCoverUrl = paramString1;
+    paramOnStateListener.mCoverLoadingDrawable = new amym(-2631721, i, paramInt1);
+    paramOnStateListener.mLoopback = true;
+    paramOnStateListener.msgUniseq = paramLong;
+    return paramOnStateListener;
   }
   
   public String a()
@@ -114,7 +142,7 @@ public class AutoPlayImageView
   
   public void a()
   {
-    SLog.b("AutoPlayImageView", "pausePlay last mState=" + this.jdField_a_of_type_Int);
+    urk.b("AutoPlayImageView", "pausePlay last mState=" + this.jdField_a_of_type_Int);
     if (this.jdField_a_of_type_Int == 3) {}
     do
     {
@@ -126,15 +154,15 @@ public class AutoPlayImageView
   
   public void a(String paramString1, int paramInt1, int paramInt2, long paramLong, String paramString2)
   {
-    SLog.b("AutoPlayImageView", "doPlay last mState=" + this.jdField_a_of_type_Int);
+    urk.a("AutoPlayImageView", "doPlay last mState=%s", Integer.valueOf(this.jdField_a_of_type_Int));
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_Int = 1;
     paramString1 = a(paramInt1, paramInt2, paramLong, paramString1, paramString2, this);
     paramString2 = URLDrawable.URLDrawableOptions.obtain();
     paramString2.mExtraInfo = paramString1;
-    paramString2.mLoadingDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    paramString2.mLoadingDrawable = a(paramString1.mCoverUrl, paramInt1, paramInt2);
     paramString1 = URLDrawable.getDrawable(PAVideoView.a(paramLong), paramString2);
-    paramString1.setURLDrawableListener(new odv(this));
+    paramString1.setURLDrawableListener(new ulk(this));
     setImageDrawable(paramString1);
   }
   
@@ -152,7 +180,7 @@ public class AutoPlayImageView
   
   public void b()
   {
-    SLog.b("AutoPlayImageView", "resumePlay last mState=" + this.jdField_a_of_type_Int);
+    urk.b("AutoPlayImageView", "resumePlay last mState=" + this.jdField_a_of_type_Int);
     if (this.jdField_a_of_type_Int == 3) {}
     do
     {
@@ -160,6 +188,7 @@ public class AutoPlayImageView
       this.jdField_a_of_type_Int = 1;
     } while ((this.jdField_a_of_type_ComTencentImageURLDrawable == null) || (!(this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable() instanceof QQLiveDrawable)));
     ((QQLiveDrawable)this.jdField_a_of_type_ComTencentImageURLDrawable.getCurrDrawable()).resume();
+    super.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
   }
   
   public boolean b()
@@ -172,7 +201,7 @@ public class AutoPlayImageView
   
   public void c()
   {
-    SLog.b("AutoPlayImageView", "pausePlay last mState=" + this.jdField_a_of_type_Int);
+    urk.b("AutoPlayImageView", "pausePlay last mState=" + this.jdField_a_of_type_Int);
     if (this.jdField_a_of_type_Int == 1) {
       this.jdField_a_of_type_Boolean = false;
     }
@@ -201,8 +230,8 @@ public class AutoPlayImageView
     int k = getPaddingTop();
     int m = getPaddingBottom();
     RectF localRectF = new RectF(getPaddingLeft(), getPaddingTop(), getPaddingLeft() + i, j - k - m + getPaddingTop());
-    if (this.b > 0) {
-      i = this.b;
+    if (this.d > 0) {
+      i = this.d;
     }
     for (;;)
     {
@@ -212,6 +241,9 @@ public class AutoPlayImageView
       super.draw(paramCanvas);
       this.jdField_a_of_type_AndroidGraphicsPath.reset();
       this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(localRectF, i, i, Path.Direction.CCW);
+      if (QQStoryContext.a()) {
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getContext().getResources().getColor(2131100761));
+      }
       paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
       return;
       i /= 30;
@@ -238,17 +270,30 @@ public class AutoPlayImageView
     if (paramInt == 2) {}
   }
   
+  public void setBorderColor(@ColorInt int paramInt)
+  {
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt);
+    invalidate();
+  }
+  
   public void setCorner(int paramInt)
   {
     if (paramInt <= 0) {
       throw new IllegalArgumentException("should not be less than 0");
     }
-    this.b = paramInt;
+    this.d = paramInt;
   }
   
-  public void setCoverUrl(String paramString)
+  public void setCoverDrawable(Drawable paramDrawable)
+  {
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+  }
+  
+  public void setCoverUrl(String paramString, int paramInt1, int paramInt2)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt1;
+    this.c = paramInt2;
   }
   
   public void setImageDrawable(Drawable paramDrawable)
@@ -263,7 +308,7 @@ public class AutoPlayImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.AutoPlayImageView
  * JD-Core Version:    0.7.0.1
  */

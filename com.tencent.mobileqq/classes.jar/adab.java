@@ -1,60 +1,57 @@
-import android.content.Context;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileMediaTabView;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import java.io.File;
+import java.io.OutputStream;
 
 public class adab
-  implements Runnable
+  extends axoa
 {
-  public adab(QfileLocalFileMediaTabView paramQfileLocalFileMediaTabView, int paramInt, Context paramContext) {}
-  
-  public void run()
+  public static final String a(int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    Map localMap;
-    Iterator localIterator;
-    String str;
-    if ((this.jdField_a_of_type_Int & 0x1) > 0)
+    return aiys.d + paramInt + "/panelGif.gif";
+  }
+  
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
+  {
+    if (paramURLDrawableHandler != null) {
+      paramURLDrawableHandler.onFileDownloadStarted();
+    }
+    if ((paramDownloadParams.tag != null) && ((paramDownloadParams.tag instanceof Integer)))
     {
-      localMap = FileCategoryUtil.c(this.jdField_a_of_type_AndroidContentContext);
-      if (localMap != null)
+      paramDownloadParams = (Integer)paramDownloadParams.tag;
+      paramOutputStream = new File(a(paramDownloadParams.intValue()));
+      if (paramOutputStream.exists())
       {
-        localIterator = localMap.keySet().iterator();
-        while (localIterator.hasNext())
-        {
-          str = (String)localIterator.next();
-          if (str.equalsIgnoreCase("QQfile_recv") != true) {
-            localArrayList.addAll((List)localMap.get(str));
-          }
+        if (paramURLDrawableHandler != null) {
+          paramURLDrawableHandler.onFileDownloadSucceed(paramOutputStream.length());
         }
+        return paramOutputStream;
+      }
+      paramOutputStream.getParentFile().mkdirs();
+      if ((BaseApplicationImpl.sApplication != null) && (!badq.g(BaseApplicationImpl.sApplication)) && (paramURLDrawableHandler != null)) {
+        paramURLDrawableHandler.onFileDownloadFailed(0);
+      }
+      paramDownloadParams = new batm("https://cmshow.gtimg.cn/qqshow/admindata/comdata/vipApollo_action_" + paramDownloadParams + "/preview.gif", paramOutputStream);
+      paramDownloadParams.b = 1;
+      paramDownloadParams.p = false;
+      if (bato.a(paramDownloadParams, null) == 0)
+      {
+        if (paramURLDrawableHandler != null) {
+          paramURLDrawableHandler.onFileDownloadSucceed(paramOutputStream.length());
+        }
+        return paramOutputStream;
       }
     }
-    if ((this.jdField_a_of_type_Int & 0x2) > 0)
-    {
-      localMap = FileCategoryUtil.b(this.jdField_a_of_type_AndroidContentContext);
-      if (localMap != null)
-      {
-        localIterator = localMap.keySet().iterator();
-        while (localIterator.hasNext())
-        {
-          str = (String)localIterator.next();
-          if (str.equalsIgnoreCase("QQfile_recv") != true) {
-            localArrayList.addAll((List)localMap.get(str));
-          }
-        }
-      }
+    if (paramURLDrawableHandler != null) {
+      paramURLDrawableHandler.onFileDownloadFailed(0);
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView.a.addAll(localArrayList);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView.a();
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adab
  * JD-Core Version:    0.7.0.1
  */

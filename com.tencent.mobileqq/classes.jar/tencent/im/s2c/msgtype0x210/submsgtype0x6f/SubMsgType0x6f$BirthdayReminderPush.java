@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class SubMsgType0x6f$BirthdayReminderPush
-  extends MessageMicro
+  extends MessageMicro<BirthdayReminderPush>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_reminder_wording = PBField.initBytes(ByteStringMicro.EMPTY);

@@ -1,30 +1,63 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.av.chatroom.ChatRoomInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import mqq.util.WeakReference;
 
-public class mbr
-  implements Runnable
+class mbr
+  implements lag
 {
-  public mbr(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  private final WeakReference<mbo> a;
   
-  public void run()
+  mbr(mbo parammbo)
   {
-    if ((!TextUtils.isEmpty(ReadInJoyDeliverUGCActivity.a(this.a))) && (!TextUtils.isEmpty(ReadInJoyDeliverUGCActivity.b(this.a))) && (!ReadInJoyDeliverUGCActivity.a(this.a).equals(ReadInJoyDeliverUGCActivity.b(this.a))))
+    this.a = new WeakReference(parammbo);
+  }
+  
+  public void a(int paramInt, ChatRoomInfo paramChatRoomInfo)
+  {
+    int i;
+    mbo localmbo;
+    if ((paramInt & 0x4) == 4)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyDeliverUGCActivity", 2, "clearTempFile(image), origin:" + ReadInJoyDeliverUGCActivity.a(this.a) + ", compress:" + ReadInJoyDeliverUGCActivity.b(this.a));
+      i = 1;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("VideoChatRoomUIContoller", 4, "onChatRoomMsgUpdate, flag[" + paramInt + "], room[" + paramChatRoomInfo + "]");
       }
-      File localFile = new File(ReadInJoyDeliverUGCActivity.b(this.a));
-      if (localFile.exists()) {
-        localFile.delete();
+      localmbo = (mbo)this.a.get();
+      if (localmbo != null) {
+        break label77;
       }
     }
+    label77:
+    do
+    {
+      return;
+      i = 0;
+      break;
+      if (localmbo.a())
+      {
+        mbo.a(localmbo, paramChatRoomInfo);
+        return;
+      }
+    } while (i == 0);
+    mbo.a(localmbo, 0);
+  }
+  
+  public void a(laf paramlaf)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.i("VideoChatRoomUIContoller", 4, "onChatRoomSendMsgResult, msg[" + paramlaf + "]");
+    }
+    mbo localmbo = (mbo)this.a.get();
+    if ((paramlaf == null) || (localmbo == null)) {}
+    while (!localmbo.a()) {
+      return;
+    }
+    mbo.a(localmbo, paramlaf.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mbr
  * JD-Core Version:    0.7.0.1
  */

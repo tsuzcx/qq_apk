@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.widget.ContainerView;
-import com.tencent.widget.ScrollView;
+import com.tencent.ark.ark.VariantWrapper;
 
-public class alaw
-  implements Runnable
+class alaw
+  implements adbg
 {
-  public alaw(ContainerView paramContainerView, int paramInt) {}
+  alaw(alat paramalat, long paramLong) {}
   
-  public void run()
+  public void a()
   {
-    ContainerView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView).smoothScrollTo(0, this.jdField_a_of_type_Int);
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Alat.a(this.jdField_a_of_type_Long);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
+  }
+  
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  {
+    this.jdField_a_of_type_Alat.a(this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alaw
  * JD-Core Version:    0.7.0.1
  */

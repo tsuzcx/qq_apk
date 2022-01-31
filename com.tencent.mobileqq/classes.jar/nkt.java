@@ -1,16 +1,14 @@
-import com.tencent.biz.qqstory.newshare.job.UploadImageJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareQZoneData;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
+import java.util.List;
 
 public class nkt
-  extends UploadImageJob
+  extends ohe
 {
-  public nkt(ShareModeBase paramShareModeBase, ShareQZoneData paramShareQZoneData) {}
+  public nkt(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity) {}
   
-  public boolean b()
+  public void a_(List<rql> paramList)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareQZoneData.a = ((String)a("UploadImageJob_out_image_url"));
-    return true;
+    this.a.a(paramList);
   }
 }
 

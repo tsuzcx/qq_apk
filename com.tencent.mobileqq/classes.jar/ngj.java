@@ -1,21 +1,18 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qqstory.common.recyclerview.BaseAdapter.OnItemLongClickListener;
-import com.tencent.biz.qqstory.common.recyclerview.BaseViewHolder;
-import com.tencent.biz.qqstory.common.recyclerview.HeaderAndFooterAdapter;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
 
-public class ngj
-  implements View.OnLongClickListener
+public final class ngj
+  implements Parcelable.Creator<RecentShopParcel>
 {
-  public ngj(HeaderAndFooterAdapter paramHeaderAndFooterAdapter, BaseViewHolder paramBaseViewHolder) {}
-  
-  public boolean onLongClick(View paramView)
+  public RecentShopParcel a(Parcel paramParcel)
   {
-    int i = this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewBaseViewHolder.getPosition();
-    if (i >= 0) {
-      this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewHeaderAndFooterAdapter.a.b(this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewBaseViewHolder.itemView, i);
-    }
-    return true;
+    return new RecentShopParcel(paramParcel);
+  }
+  
+  public RecentShopParcel[] a(int paramInt)
+  {
+    return new RecentShopParcel[paramInt];
   }
 }
 

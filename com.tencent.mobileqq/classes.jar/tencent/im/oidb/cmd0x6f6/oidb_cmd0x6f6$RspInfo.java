@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_cmd0x6f6$RspInfo
-  extends MessageMicro
+  extends MessageMicro<RspInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "uint64_group_code", "uint32_result", "stgbarinfo" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), null }, RspInfo.class);
   public oidb_cmd0x6f6.GbarInfo stgbarinfo = new oidb_cmd0x6f6.GbarInfo();
@@ -16,7 +16,7 @@ public final class oidb_cmd0x6f6$RspInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x6f6.oidb_cmd0x6f6.RspInfo
  * JD-Core Version:    0.7.0.1
  */

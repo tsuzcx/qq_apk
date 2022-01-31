@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingTitleBar;
 
-class yry
-  implements Runnable
+public class yry
+  implements View.OnClickListener
 {
-  yry(yrx paramyrx) {}
+  public yry(GdtVideoCeilingTitleBar paramGdtVideoCeilingTitleBar) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ((ApolloSurfaceView)this.a.jdField_a_of_type_AndroidViewView).getRender().getSavaWrapper().a(this.a.jdField_a_of_type_Long, 5);
+    if (GdtVideoCeilingTitleBar.a(this.a) != null) {
+      GdtVideoCeilingTitleBar.a(this.a).a(paramView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yry
  * JD-Core Version:    0.7.0.1
  */

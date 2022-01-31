@@ -1,27 +1,47 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.QQLSActivity;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
-public class tnn
-  implements Animation.AnimationListener
+public abstract class tnn
 {
-  public tnn(QQLSActivity paramQQLSActivity) {}
+  public abstract Activity a();
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QQLSActivity.a(this.a) != null) {
-      QQLSActivity.a(this.a).post(new tno(this));
-    }
-  }
+  public abstract OpenPlayerBuilder.Data a();
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public abstract XViewPager a();
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public abstract String a(String paramString);
+  
+  public abstract tjs a();
+  
+  public abstract tjv a();
+  
+  public abstract tnf a();
+  
+  public abstract tny a();
+  
+  public abstract void a();
+  
+  public abstract void a(Intent paramIntent);
+  
+  public abstract void a(sgc paramsgc);
+  
+  public abstract void a(tmd paramtmd);
+  
+  public abstract void a(tog paramtog);
+  
+  public abstract boolean a();
+  
+  public abstract void b(sgc paramsgc);
+  
+  public abstract void b(tmd paramtmd);
+  
+  public abstract boolean b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tnn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,26 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.shareGroup.icon.ShareGroupIconManager;
-import com.tribe.async.reactive.Stream;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListFragment;
 import java.util.List;
 
 public class nwj
-  implements nwf
+  implements nyh
 {
-  public nwj(ShareGroupIconManager paramShareGroupIconManager, List paramList, String paramString) {}
+  public nwj(ReadInJoySecondCommentListFragment paramReadInJoySecondCommentListFragment) {}
   
-  @NonNull
-  public Stream a(nwb paramnwb)
+  public void onCommentListLoad(int paramInt1, boolean paramBoolean1, List<nwx> paramList, boolean paramBoolean2, int paramInt2, int paramInt3) {}
+  
+  public void onCommentStateError(int paramInt)
   {
-    return ShareGroupIconManager.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupIconManager, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaLangString);
+    if (paramInt == 1002) {
+      ReadInJoySecondCommentListFragment.a(this.a, true);
+    }
+    if (paramInt == 1003) {
+      vvp.a(1, 2131652539);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nwj
  * JD-Core Version:    0.7.0.1
  */

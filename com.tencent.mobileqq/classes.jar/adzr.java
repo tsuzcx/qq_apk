@@ -1,29 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout.OnVidoeControlListener;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class adzr
-  implements View.OnClickListener
+class adzr
+  implements Animation.AnimationListener
 {
-  public adzr(HotVideoMongoliaRelativeLayout paramHotVideoMongoliaRelativeLayout) {}
+  adzr(adzp paramadzp, adzk paramadzk) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    com.tencent.mobileqq.hotpic.HotPicPageView.b = true;
-    if (this.a.a == null) {
-      return;
-    }
-    if (HotVideoMongoliaRelativeLayout.a(this.a) != null) {
-      HotVideoMongoliaRelativeLayout.a(this.a).b(HotVideoMongoliaRelativeLayout.a(this.a));
-    }
-    QLog.d("HotVideoRelativeLayout", 2, "click round rect send view");
+    this.jdField_a_of_type_Adzp.a();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adzr
  * JD-Core Version:    0.7.0.1
  */

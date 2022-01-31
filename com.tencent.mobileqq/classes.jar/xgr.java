@@ -1,24 +1,19 @@
-import com.tencent.mobileqq.activity.qwallet.RedPacketRecordFragment;
-import com.tencent.mobileqq.activity.qwallet.voice.VoiceRecognizer;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class xgr
-  implements Runnable
+class xgr
+  implements View.OnClickListener
 {
-  public xgr(RedPacketRecordFragment paramRedPacketRecordFragment, WeakReference paramWeakReference) {}
+  xgr(xgn paramxgn) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localQQAppInterface != null) {
-      VoiceRecognizer.a().a(localQQAppInterface);
-    }
+    this.a.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     xgr
  * JD-Core Version:    0.7.0.1
  */

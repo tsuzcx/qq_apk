@@ -1,27 +1,43 @@
-import android.view.animation.ScaleAnimation;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.activity.ContactBindedActivity;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.concurrent.atomic.AtomicInteger;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class ska
-  extends ScaleAnimation
+class ska
+  implements atqq
 {
-  public ska(ContactBindedActivity paramContactBindedActivity, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt1, float paramFloat5, int paramInt2, float paramFloat6)
+  ska(sjz paramsjz) {}
+  
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    super(paramFloat1, paramFloat2, paramFloat3, paramFloat4, paramInt1, paramFloat5, paramInt2, paramFloat6);
+    return null;
   }
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void a(atqr paramatqr) {}
+  
+  public void b(atqr paramatqr)
   {
-    if (paramTransformation == null) {
+    if (paramatqr.jdField_b_of_type_Int == 0)
+    {
+      this.a.jdField_b_of_type_JavaLangString = paramatqr.jdField_b_of_type_JavaLangString;
+      this.a.b();
+      sjz.a(this.a, new ErrorMessage());
       return;
     }
-    super.applyTransformation(paramFloat, paramTransformation);
-    paramTransformation.setAlpha(0.0F + 1.0F * paramFloat);
+    if ((paramatqr.jdField_b_of_type_Int == axvg.a(940010)) && (this.a.a.getAndIncrement() < 2))
+    {
+      sjz.a(this.a);
+      urk.d("Q.qqstory.publish.upload:ImageFileObject", "retry load file");
+      return;
+    }
+    paramatqr = new ErrorMessage(paramatqr.jdField_b_of_type_Int, paramatqr.a);
+    paramatqr.extraMsg = "upload";
+    sjz.a(this.a, paramatqr);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ska
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.shortvideo.dancemachine;
 
 public abstract interface BadcaseReportUtils$ReportItemData
 {
-  public abstract void a(BadcaseReportUtils.BadDataFrame paramBadDataFrame);
+  public abstract void itemOK(BadcaseReportUtils.BadDataFrame paramBadDataFrame);
 }
 
 

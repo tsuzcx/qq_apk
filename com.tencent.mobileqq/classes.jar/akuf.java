@@ -1,23 +1,30 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.webview.sonic.SonicPreloadData;
+import java.io.File;
+import java.io.FileFilter;
 
-public final class akuf
-  implements Parcelable.Creator
+final class akuf
+  implements FileFilter
 {
-  public SonicPreloadData a(Parcel paramParcel)
+  public boolean accept(File paramFile)
   {
-    return new SonicPreloadData(paramParcel);
-  }
-  
-  public SonicPreloadData[] a(int paramInt)
-  {
-    return new SonicPreloadData[paramInt];
+    paramFile = paramFile.getName();
+    if (paramFile.startsWith("cpu"))
+    {
+      int i = 3;
+      while (i < paramFile.length())
+      {
+        if ((paramFile.charAt(i) < '0') || (paramFile.charAt(i) > '9')) {
+          return false;
+        }
+        i += 1;
+      }
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akuf
  * JD-Core Version:    0.7.0.1
  */

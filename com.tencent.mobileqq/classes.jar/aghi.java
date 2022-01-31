@@ -1,63 +1,57 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.ar.arcloud.ARCloudFileUpload.ARCloudFileUploadCallback;
-import com.tencent.mobileqq.ar.arengine.ARCloudRecogResult;
-import com.tencent.mobileqq.ar.arengine.ARCloudReqFileInfo;
-import com.tencent.mobileqq.ar.arengine.ARCloudReqInfo;
-import com.tencent.mobileqq.ar.arengine.SearchQuestionResult;
-import com.tencent.mobileqq.ocr.question.SearchQuestionFragment;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
-import java.io.File;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
+import com.tencent.mobileqq.data.QQAlbumInfo;
+import mqq.util.WeakReference;
 
 public class aghi
-  implements ARCloudFileUpload.ARCloudFileUploadCallback
+  extends agfo
 {
-  public aghi(SearchQuestionFragment paramSearchQuestionFragment, ARCloudReqInfo paramARCloudReqInfo) {}
-  
-  public void a(int paramInt, String paramString, ARCloudRecogResult paramARCloudRecogResult)
+  protected aghi(AlbumListFragment paramAlbumListFragment)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchQuestionFragment", 2, "retCode:" + paramInt + "sessionId:" + paramString + ",recogResult:" + paramARCloudRecogResult);
-    }
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqOcrQuestionSearchQuestionFragment.c)) && (this.jdField_a_of_type_ComTencentMobileqqOcrQuestionSearchQuestionFragment.c.equals(paramString)))
+    super(paramAlbumListFragment);
+  }
+  
+  public static agfk b(AlbumListFragment paramAlbumListFragment)
+  {
+    if ((jdField_a_of_type_Agfk == null) || (jdField_a_of_type_Agfk.a.get() != paramAlbumListFragment)) {}
+    try
     {
-      if ((paramInt != 0) || (paramARCloudRecogResult == null)) {
-        break label205;
+      if ((jdField_a_of_type_Agfk == null) || (jdField_a_of_type_Agfk.a.get() != paramAlbumListFragment)) {
+        jdField_a_of_type_Agfk = new aghi(paramAlbumListFragment);
       }
-      paramString = paramARCloudRecogResult.a;
-      if (paramString != null)
-      {
-        paramString = paramString.c;
-        paramARCloudRecogResult = new Message();
-        paramARCloudRecogResult.obj = paramString;
-        paramARCloudRecogResult.what = 5;
-        this.jdField_a_of_type_ComTencentMobileqqOcrQuestionSearchQuestionFragment.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage(paramARCloudRecogResult);
-      }
+      return jdField_a_of_type_Agfk;
+    }
+    finally {}
+  }
+  
+  protected void a(Intent paramIntent)
+  {
+    super.a(paramIntent);
+    this.jdField_a_of_type_Agff.a.a(true);
+  }
+  
+  protected void a(QQAlbumInfo paramQQAlbumInfo, int paramInt, Intent paramIntent)
+  {
+    int i;
+    if (paramQQAlbumInfo._id.equals("$RecentAlbumId")) {
+      i = 1;
     }
     for (;;)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a.jdField_a_of_type_JavaLangString))) {}
-      try
-      {
-        if (new File(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a.jdField_a_of_type_JavaLangString).getParent().equals(SearchQuestionFragment.jdField_a_of_type_JavaLangString)) {
-          FileUtils.d(this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a.jdField_a_of_type_JavaLangString);
-        }
-        return;
+      awqx.b(null, "CliOper", "", this.jdField_a_of_type_Aggf.a, "0X800A917", "0X800A917", i, 0, "", "", "", "");
+      super.a(paramQQAlbumInfo, paramInt, paramIntent);
+      return;
+      if (paramQQAlbumInfo._id.equals("qzone_album")) {
+        i = 2;
+      } else {
+        i = 3;
       }
-      catch (Exception paramString)
-      {
-        label205:
-        paramString.printStackTrace();
-      }
-      this.jdField_a_of_type_ComTencentMobileqqOcrQuestionSearchQuestionFragment.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aghi
  * JD-Core Version:    0.7.0.1
  */

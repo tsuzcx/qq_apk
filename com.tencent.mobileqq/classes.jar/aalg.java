@@ -1,23 +1,44 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.data.OpenID;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aalg
-  implements Parcelable.Creator
+public class aalg
+  extends mps
 {
-  public ArEffectConfig a(Parcel paramParcel)
-  {
-    return new ArEffectConfig(paramParcel);
-  }
+  public aalg(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public ArEffectConfig[] a(int paramInt)
+  protected void a(boolean paramBoolean, OpenID paramOpenID)
   {
-    return new ArEffectConfig[paramInt];
+    if ((this.a.isFinishing()) || (this.a.m)) {}
+    do
+    {
+      do
+      {
+        return;
+        this.a.p();
+        if (this.a.b != null) {
+          this.a.b.removeCallbacksAndMessages(null);
+        }
+        if ((!paramBoolean) || (paramOpenID == null) || (paramOpenID.openID == null)) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.chatopttroop", 2, "openIdObserver success");
+        }
+      } while (paramOpenID.openID.equals(this.a.e));
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.chatopttroop", 2, "-->onGetOpenId--openid doesn't equal current openid");
+      }
+      this.a.s();
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.chatopttroop", 2, "openIdObserver fail");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aalg
  * JD-Core Version:    0.7.0.1
  */

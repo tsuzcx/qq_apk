@@ -1,46 +1,219 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.annotation.NonNull;
+import com.tencent.biz.videostory.capture.PlayDownloadManagerWrap.1;
+import com.tencent.biz.videostory.capture.PlayDownloadManagerWrap.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import mqq.os.MqqHandler;
+import mqq.util.WeakReference;
 
 public class wtt
-  extends BizTroopObserver
 {
-  public wtt(TroopFragment paramTroopFragment) {}
+  private String jdField_a_of_type_JavaLangString = "";
+  private final Map<String, bgxw> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private WeakReference<wus> jdField_a_of_type_MqqUtilWeakReference;
+  private final Map<String, List<wts>> b = new HashMap();
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public static wtt a()
   {
-    if (paramInt2 == 0)
+    return wtv.a;
+  }
+  
+  private void a(String paramString)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilMap)
     {
-      this.a.h();
-      if (this.a.isResumed()) {
-        if (paramInt1 != 0) {
-          break label44;
-        }
-      }
-    }
-    label44:
-    while (!this.a.isResumed())
-    {
-      QQToast.a(this.a.getActivity(), 2, "成功设为置顶群", 0).a();
-      do
-      {
-        return;
-      } while (paramInt1 != 1);
-      QQToast.a(this.a.getActivity(), 2, "成功取消置顶群", 0).a();
+      this.jdField_a_of_type_JavaUtilMap.remove(paramString);
       return;
     }
-    paramString1 = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      paramString1 = this.a.getResources().getString(2131435596);
+  }
+  
+  private void a(String paramString, bgxw parambgxw)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilMap)
+    {
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, parambgxw);
+      return;
     }
-    QQToast.a(this.a.getActivity(), 1, paramString1, 0).a();
+  }
+  
+  private boolean a(String paramString)
+  {
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      {
+        if (this.jdField_a_of_type_JavaUtilMap.get(paramString) != null)
+        {
+          bool = true;
+          return bool;
+        }
+      }
+      boolean bool = false;
+    }
+  }
+  
+  public Map<String, bgxw> a()
+  {
+    return this.jdField_a_of_type_JavaUtilMap;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_MqqUtilWeakReference = null;
+    this.b.clear();
+  }
+  
+  public void a(bgya parambgya, boolean paramBoolean)
+  {
+    if (parambgya == null) {}
+    for (;;)
+    {
+      return;
+      String str;
+      List localList;
+      try
+      {
+        str = parambgya.jdField_a_of_type_JavaLangString;
+        localList = (List)this.b.get(str);
+        if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.equals(str)) && (paramBoolean) && (parambgya.equals(wrn.a))) {
+          ThreadManager.getUIHandler().post(new PlayDownloadManagerWrap.2(this, parambgya));
+        }
+        if (localList == null)
+        {
+          this.b.remove(str);
+          continue;
+        }
+      }
+      finally {}
+      parambgya = localList.iterator();
+      while (parambgya.hasNext()) {
+        ((wts)parambgya.next()).a(str, paramBoolean);
+      }
+      this.b.remove(str);
+    }
+  }
+  
+  /* Error */
+  public void a(String paramString, int paramInt)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 23	wtt:b	Ljava/util/Map;
+    //   6: aload_1
+    //   7: invokeinterface 58 2 0
+    //   12: checkcast 70	java/util/List
+    //   15: astore_3
+    //   16: aload_3
+    //   17: ifnonnull +17 -> 34
+    //   20: aload_0
+    //   21: getfield 23	wtt:b	Ljava/util/Map;
+    //   24: aload_1
+    //   25: invokeinterface 46 2 0
+    //   30: pop
+    //   31: aload_0
+    //   32: monitorexit
+    //   33: return
+    //   34: aload_3
+    //   35: invokeinterface 103 1 0
+    //   40: astore_3
+    //   41: aload_3
+    //   42: invokeinterface 109 1 0
+    //   47: ifeq -16 -> 31
+    //   50: aload_3
+    //   51: invokeinterface 113 1 0
+    //   56: checkcast 115	wts
+    //   59: aload_1
+    //   60: iload_2
+    //   61: invokeinterface 121 3 0
+    //   66: goto -25 -> 41
+    //   69: astore_1
+    //   70: aload_0
+    //   71: monitorexit
+    //   72: aload_1
+    //   73: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	74	0	this	wtt
+    //   0	74	1	paramString	String
+    //   0	74	2	paramInt	int
+    //   15	36	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	16	69	finally
+    //   20	31	69	finally
+    //   34	41	69	finally
+    //   41	66	69	finally
+  }
+  
+  public void a(String paramString, wts paramwts)
+  {
+    if (paramwts != null) {}
+    try
+    {
+      List localList = (List)this.b.get(paramString);
+      Object localObject = localList;
+      if (localList == null) {
+        localObject = new ArrayList();
+      }
+      if (!((List)localObject).contains(paramwts))
+      {
+        ((List)localObject).add(paramwts);
+        this.b.put(paramString, localObject);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void a(wus paramwus, @NonNull bgxx parambgxx, @NonNull bgya parambgya)
+  {
+    if (a(parambgya.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    if ((this.jdField_a_of_type_MqqUtilWeakReference == null) || (this.jdField_a_of_type_MqqUtilWeakReference.get() == null)) {
+      this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramwus);
+    }
+    paramwus = new wtu(null);
+    a(parambgya.jdField_a_of_type_JavaLangString, paramwus);
+    this.jdField_a_of_type_JavaLangString = parambgya.jdField_a_of_type_JavaLangString;
+    ThreadManager.excute(new PlayDownloadManagerWrap.1(this, parambgxx, parambgya, paramwus), 128, null, true);
+  }
+  
+  public void b(String paramString, wts paramwts)
+  {
+    List localList;
+    try
+    {
+      localList = (List)this.b.get(paramString);
+      if ((localList != null) && (localList.size() > 1))
+      {
+        Iterator localIterator = localList.iterator();
+        while (localIterator.hasNext()) {
+          if ((wts)localIterator.next() == paramwts) {
+            localIterator.remove();
+          }
+        }
+      }
+      if (localList == null) {
+        break label91;
+      }
+    }
+    finally {}
+    if (localList.size() < 1) {
+      label91:
+      this.b.remove(paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wtt
  * JD-Core Version:    0.7.0.1
  */

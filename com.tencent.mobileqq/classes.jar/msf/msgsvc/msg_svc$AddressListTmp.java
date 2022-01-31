@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class msg_svc$AddressListTmp
-  extends MessageMicro
+  extends MessageMicro<AddressListTmp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field from_contact_size = PBField.initUInt32(0);

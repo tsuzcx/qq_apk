@@ -1,50 +1,51 @@
 package com.tencent.mobileqq.data;
 
+import ajjy;
+import amvt;
+import amvx;
+import amvy;
 import android.text.TextUtils;
 import appoint.define.appoint_define.AppointInfo;
 import appoint.define.appoint_define.DateComment;
 import appoint.define.appoint_define.DateEvent;
 import appoint.define.appoint_define.StrangerInfo;
-import com.tencent.mobileqq.dating.DatingComment;
-import com.tencent.mobileqq.dating.DatingStranger;
-import com.tencent.mobileqq.dating.DatingUtil;
+import atmo;
+import atnz;
+import atoc;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
-import com.tencent.mobileqq.persistence.unique;
 import org.json.JSONObject;
 
 public class DateEventMsg
-  extends Entity
-  implements Comparable
+  extends atmo
+  implements Comparable<DateEventMsg>
 {
   public int attendIdx;
   public byte bDeleted;
   public byte bReaded;
-  @notColumn
-  public DatingComment date_comment;
-  @notColumn
+  @atnz
+  public amvt date_comment;
+  @atnz
   public appoint_define.AppointInfo date_info;
-  @unique
+  @atoc
   public long event_id;
-  @notColumn
+  @atnz
   boolean isInited = false;
   public String msg_content;
   public byte[] msg_date_info;
   public String msg_user_info;
-  @notColumn
+  @atnz
   public String strReadableTime;
-  @notColumn
+  @atnz
   public String strTime;
-  @notColumn
+  @atnz
   public String str_event_tips;
   public long time;
   public int type;
-  @notColumn
-  public DatingStranger user_info;
+  @atnz
+  public amvx user_info;
   
   public static DateEventMsg convertFrom(appoint_define.DateEvent paramDateEvent)
   {
@@ -60,7 +61,7 @@ public class DateEventMsg
     localDateEventMsg.bReaded = 0;
     if (paramDateEvent.msg_user_info.has())
     {
-      localDateEventMsg.user_info = DatingStranger.a((appoint_define.StrangerInfo)paramDateEvent.msg_user_info.get());
+      localDateEventMsg.user_info = amvx.a((appoint_define.StrangerInfo)paramDateEvent.msg_user_info.get());
       label96:
       if (!paramDateEvent.msg_date_info.has()) {
         break label175;
@@ -78,13 +79,13 @@ public class DateEventMsg
       }
     }
     if (paramDateEvent.msg_comment.has()) {
-      localDateEventMsg.date_comment = DatingComment.a((appoint_define.DateComment)paramDateEvent.msg_comment.get());
+      localDateEventMsg.date_comment = amvt.a((appoint_define.DateComment)paramDateEvent.msg_comment.get());
     }
     for (;;)
     {
-      DatingUtil.a("DateEventMsg.convertFrom", new Object[] { localDateEventMsg.date_comment });
+      amvy.a("DateEventMsg.convertFrom", new Object[] { localDateEventMsg.date_comment });
       break;
-      DatingUtil.b("DateEventMsg.convertFrom", new Object[] { "msg_comment no value" });
+      amvy.b("DateEventMsg.convertFrom", new Object[] { "msg_comment no value" });
     }
     localDateEventMsg.str_event_tips = paramDateEvent.str_event_tips.get();
     if (TextUtils.isEmpty(localDateEventMsg.str_event_tips)) {
@@ -94,13 +95,13 @@ public class DateEventMsg
     }
     for (;;)
     {
-      DatingUtil.a("DateEventMsg.convertFrom", new Object[] { paramDateEvent.str_event_tips.get(), localDateEventMsg.str_event_tips });
+      amvy.a("DateEventMsg.convertFrom", new Object[] { paramDateEvent.str_event_tips.get(), localDateEventMsg.str_event_tips });
       break;
-      localDateEventMsg.str_event_tips = "报名了你的约会";
+      localDateEventMsg.str_event_tips = ajjy.a(2131636989);
       continue;
-      localDateEventMsg.str_event_tips = "选择你为约会对象";
+      localDateEventMsg.str_event_tips = ajjy.a(2131636990);
       continue;
-      localDateEventMsg.str_event_tips = "该约会已经结束";
+      localDateEventMsg.str_event_tips = ajjy.a(2131636991);
     }
   }
   
@@ -146,7 +147,7 @@ public class DateEventMsg
       try
       {
         if (TextUtils.isEmpty(this.msg_user_info)) {}
-        for (this.user_info = null; (this.msg_date_info == null) || (this.msg_date_info.length == 0); this.user_info = DatingStranger.a(new JSONObject(this.msg_user_info)))
+        for (this.user_info = null; (this.msg_date_info == null) || (this.msg_date_info.length == 0); this.user_info = amvx.a(new JSONObject(this.msg_user_info)))
         {
           this.date_info = null;
           if ((this.type != 1) && (this.type != 2)) {
@@ -183,17 +184,17 @@ public class DateEventMsg
             localInvalidProtocolBufferMicroException.printStackTrace();
           }
         }
-        this.date_comment = DatingComment.a(new JSONObject(this.msg_content));
-        DatingUtil.a("DateEventMsg.init", new Object[] { Integer.valueOf(this.type), this.date_comment, this.msg_content });
+        this.date_comment = amvt.a(new JSONObject(this.msg_content));
+        amvy.a("DateEventMsg.init", new Object[] { Integer.valueOf(this.type), this.date_comment, this.msg_content });
         return;
       }
     } while ((this.type != 3) && (this.type != 4) && (this.type != 5));
     this.str_event_tips = this.msg_content;
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
-    Object localObject = DatingStranger.a(this.user_info);
+    Object localObject = amvx.a(this.user_info);
     if (localObject == null)
     {
       localObject = "";
@@ -206,7 +207,7 @@ public class DateEventMsg
       if ((this.type != 1) && (this.type != 2)) {
         break label99;
       }
-      localObject = DatingComment.a(this.date_comment);
+      localObject = amvt.a(this.date_comment);
       if (localObject != null) {
         break label91;
       }

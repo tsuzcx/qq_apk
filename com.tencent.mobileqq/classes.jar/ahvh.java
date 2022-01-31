@@ -1,23 +1,20 @@
-import com.tencent.mobileqq.search.FunctionModuleConfigManager;
-import com.tencent.mobileqq.search.model.GroupBaseNetSearchModelItem;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
 public class ahvh
-  implements Comparator
+  implements bbrx
 {
-  public ahvh(FunctionModuleConfigManager paramFunctionModuleConfigManager) {}
+  public ahvh(ShortVideoPreviewActivity paramShortVideoPreviewActivity, Runnable paramRunnable) {}
   
-  public int a(GroupBaseNetSearchModelItem paramGroupBaseNetSearchModelItem1, GroupBaseNetSearchModelItem paramGroupBaseNetSearchModelItem2)
+  public void a(int paramInt)
   {
-    paramGroupBaseNetSearchModelItem1 = paramGroupBaseNetSearchModelItem1.c;
-    paramGroupBaseNetSearchModelItem2 = paramGroupBaseNetSearchModelItem2.c;
-    return ChnToSpell.a(paramGroupBaseNetSearchModelItem1, 2).compareTo(ChnToSpell.a(paramGroupBaseNetSearchModelItem2, 2));
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahvh
  * JD-Core Version:    0.7.0.1
  */

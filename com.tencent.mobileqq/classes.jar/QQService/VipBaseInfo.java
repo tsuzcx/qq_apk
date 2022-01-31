@@ -12,8 +12,8 @@ public final class VipBaseInfo
   extends JceStruct
   implements Cloneable
 {
-  static Map cache_mOpenInfo;
-  public Map mOpenInfo;
+  static Map<Integer, VipOpenInfo> cache_mOpenInfo;
+  public Map<Integer, VipOpenInfo> mOpenInfo;
   
   static
   {
@@ -27,7 +27,7 @@ public final class VipBaseInfo
   
   public VipBaseInfo() {}
   
-  public VipBaseInfo(Map paramMap)
+  public VipBaseInfo(Map<Integer, VipOpenInfo> paramMap)
   {
     this.mOpenInfo = paramMap;
   }
@@ -77,7 +77,7 @@ public final class VipBaseInfo
     return "QQService.VipBaseInfo";
   }
   
-  public Map getMOpenInfo()
+  public Map<Integer, VipOpenInfo> getMOpenInfo()
   {
     return this.mOpenInfo;
   }
@@ -106,7 +106,7 @@ public final class VipBaseInfo
     this.mOpenInfo = ((Map)paramJceInputStream.read(cache_mOpenInfo, 0, true));
   }
   
-  public void setMOpenInfo(Map paramMap)
+  public void setMOpenInfo(Map<Integer, VipOpenInfo> paramMap)
   {
     this.mOpenInfo = paramMap;
   }

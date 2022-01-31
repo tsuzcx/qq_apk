@@ -1,198 +1,241 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.highway.transaction.TransReport;
-import com.tencent.mobileqq.highway.transaction.Transaction;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.transfile.BaseTransProcessor.StepInfo;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.DrawerPushItem;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import pttcenterservice.PttShortVideo.PttShortVideoUploadResp;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import mqq.app.MobileQQ;
 
 public class aiwm
-  implements ITransactionCallback
+  implements aisp
 {
-  public aiwm(ShortVideoUploadProcessor paramShortVideoUploadProcessor, long paramLong, String paramString) {}
+  public static boolean a;
+  private int jdField_a_of_type_Int = 1;
+  aisd jdField_a_of_type_Aisd;
+  private boolean b;
+  private boolean c;
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap paramHashMap)
+  public aiwm(aisd paramaisd)
   {
-    long l1 = SystemClock.uptimeMillis();
-    long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
-    long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
-    long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
-    long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
-    paramArrayOfByte = (String)paramHashMap.get("tc_p:");
-    String str1 = (String)paramHashMap.get("rep_bdhTrans");
-    String str2 = (String)paramHashMap.get("segspercnt");
-    String str3 = (String)paramHashMap.get("param_conf_segSize");
-    String str4 = (String)paramHashMap.get("param_conf_segNum");
-    String str5 = (String)paramHashMap.get("param_conf_connNum");
-    String str6 = (String)paramHashMap.get("param_fin_lost");
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l1 - this.jdField_a_of_type_Long) + "ms");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("serverip", paramHashMap.get("ip"));
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_bdhSrv", paramHashMap.get("ip"));
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_bdhPort", paramHashMap.get("port"));
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", paramArrayOfByte);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", str1);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", str2);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str3);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str4);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", str5);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_fin_lost", str6);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_retry_seg_count", paramHashMap.get("param_retry_seg_count"));
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_max_retry_times", paramHashMap.get("param_max_retry_times"));
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_total_retry_times", paramHashMap.get("param_total_retry_times"));
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_retry_code", paramHashMap.get("param_retry_code"));
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_heart_resp", paramHashMap.get("param_heart_resp"));
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_ip_index", paramHashMap.get("param_ip_index"));
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_Ip_ConnCost", paramHashMap.get("param_Ip_ConnCost"));
-    if (((String)paramHashMap.get("param_BDH_Cache_Diff")).equals(String.valueOf(true))) {
-      ShortVideoUploadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor, true);
-    }
-    ThreadManager.post(new aiwo(this, l2, l3, l4, l5), 5, null, true);
-    ShortVideoUploadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor, false, 0L, paramArrayOfByte);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_b_of_type_ComTencentMobileqqTransfileBaseTransProcessor$StepInfo);
-    if ((ShortVideoUploadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor) == 3) && (this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.e != null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.e.b();
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.e.jdField_a_of_type_Int = 0;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.d();
+    this.jdField_a_of_type_Aisd = paramaisd;
   }
   
-  public void onSuccess(byte[] paramArrayOfByte, HashMap paramHashMap)
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    long l1 = SystemClock.uptimeMillis();
-    try
+    boolean bool = false;
+    if (paramQQAppInterface != null)
     {
-      paramArrayOfByte = (PttShortVideo.PttShortVideoUploadResp)new PttShortVideo.PttShortVideoUploadResp().mergeFrom(paramArrayOfByte);
-      if (paramArrayOfByte.str_fileid.has())
+      SharedPreferences localSharedPreferences = paramQQAppInterface.getApplication().getSharedPreferences("apollo_sp", 0);
+      if (localSharedPreferences.getInt(paramQQAppInterface.getCurrentAccountUin() + "_aio_bubble_count_" + ApolloUtil.a(), 0) >= localSharedPreferences.getInt("sp_key_aio_bubble_max_count", 3)) {
+        bool = true;
+      }
+      jdField_a_of_type_Boolean = bool;
+    }
+  }
+  
+  private void b()
+  {
+    if (!this.b) {}
+    Object localObject;
+    aifc localaifc;
+    aifg localaifg;
+    do
+    {
+      do
       {
-        paramArrayOfByte = paramArrayOfByte.str_fileid.get();
-        if (paramArrayOfByte.length() > 0)
+        return;
+        this.b = false;
+        localObject = this.jdField_a_of_type_Aisd.a();
+      } while (localObject == null);
+      localaifc = (aifc)((QQAppInterface)localObject).getManager(211);
+      localaifg = (aifg)((QQAppInterface)localObject).getManager(153);
+      localObject = null;
+      if (localaifc.jdField_a_of_type_Aiwk != null) {
+        localObject = localaifc.jdField_a_of_type_Aiwk.a();
+      }
+    } while ((localObject == null) || ((((DrawerPushItem)localObject).msg_type != 7) && (((DrawerPushItem)localObject).msg_type != 9) && (((DrawerPushItem)localObject).msg_type != 2) && (((DrawerPushItem)localObject).msg_type != 10)));
+    QLog.i("ApolloBubbleLogic", 1, "checkIfPanelBubble remove panel bubble");
+    localaifg.a((DrawerPushItem)localObject);
+    localaifc.jdField_a_of_type_Aiwk.a();
+  }
+  
+  private void b(QQAppInterface paramQQAppInterface)
+  {
+    Object localObject2 = paramQQAppInterface.getApp().getSharedPreferences("apollo_sp", 0);
+    Object localObject1 = paramQQAppInterface.getCurrentAccountUin() + "_aio_bubble_count_";
+    String str1 = (String)localObject1 + ApolloUtil.a();
+    SharedPreferences.Editor localEditor = ((SharedPreferences)localObject2).edit();
+    if (((SharedPreferences)localObject2).contains(str1)) {
+      localEditor.putInt(str1, ((SharedPreferences)localObject2).getInt(str1, 0) + 1);
+    }
+    for (;;)
+    {
+      localEditor.commit();
+      a(paramQQAppInterface);
+      return;
+      Object localObject3 = ((SharedPreferences)localObject2).getAll();
+      localObject2 = new ArrayList();
+      if (localObject3 != null)
+      {
+        localObject3 = ((Map)localObject3).entrySet().iterator();
+        while (((Iterator)localObject3).hasNext())
         {
-          this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.f = paramArrayOfByte;
+          Map.Entry localEntry = (Map.Entry)((Iterator)localObject3).next();
+          String str2 = (String)localEntry.getKey();
+          if ((str2 != null) && (str2.startsWith((String)localObject1))) {
+            ((List)localObject2).add(localEntry.getKey());
+          }
+        }
+        localObject1 = ((List)localObject2).iterator();
+        while (((Iterator)localObject1).hasNext()) {
+          localEditor.remove((String)((Iterator)localObject1).next());
+        }
+      }
+      localEditor.putInt(str1, 1);
+    }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Aisd != null)
+    {
+      aifc localaifc = (aifc)this.jdField_a_of_type_Aisd.a().getManager(211);
+      localaifc.jdField_a_of_type_Int = -1;
+      localaifc.a(-1, -1);
+    }
+    this.jdField_a_of_type_Aisd = null;
+    this.c = false;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    switch (paramInt)
+    {
+    }
+    label304:
+    for (;;)
+    {
+      return;
+      b();
+      return;
+      QQAppInterface localQQAppInterface = this.jdField_a_of_type_Aisd.a();
+      if ((localQQAppInterface != null) && (this.jdField_a_of_type_Aisd.a() != null) && (aisl.a(localQQAppInterface) != null))
+      {
+        SharedPreferences localSharedPreferences = localQQAppInterface.getApplication().getSharedPreferences("apollo_sp", 0);
+        int i = localSharedPreferences.getInt(localQQAppInterface.getCurrentAccountUin() + "_aio_bubble_count_" + ApolloUtil.a(), 0);
+        int j = localSharedPreferences.getInt("sp_key_aio_bubble_max_count", 3);
+        if (i >= j)
+        {
           if (QLog.isColorLevel()) {
-            QLog.d("ShortVideoUploadProcessor", 2, "set uuid from BDH ");
+            QLog.d("ApolloBubbleLogic", 2, new Object[] { "AIO Bubble show count limited:", Integer.valueOf(j) });
+          }
+        }
+        else if (this.c)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloBubbleLogic", 2, "current AIO has play bubble, wait for next time");
+          }
+        }
+        else
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloBubbleLogic", 2, "start play bubble");
+          }
+          if (a(localQQAppInterface)) {
+            paramInt = 2;
+          }
+          for (;;)
+          {
+            if (paramInt <= 0) {
+              break label304;
+            }
+            this.b = true;
+            this.c = true;
+            b(localQQAppInterface);
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.d("ApolloBubbleLogic", 2, new Object[] { "AIO bubble play type:", Integer.valueOf(paramInt), ",current count:", Integer.valueOf(i), ",maxCount:", Integer.valueOf(j) });
+            return;
+            if (b(localQQAppInterface)) {
+              paramInt = 3;
+            } else {
+              paramInt = 0;
+            }
           }
         }
       }
-      long l2 = Long.valueOf((String)paramHashMap.get("upFlow_WiFi")).longValue();
-      long l3 = Long.valueOf((String)paramHashMap.get("dwFlow_WiFi")).longValue();
-      long l4 = Long.valueOf((String)paramHashMap.get("upFlow_Xg")).longValue();
-      long l5 = Long.valueOf((String)paramHashMap.get("dwFlow_Xg")).longValue();
-      ShortVideoUploadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor, (String)paramHashMap.get("rep_bdhTrans"));
-      paramArrayOfByte = (String)paramHashMap.get("segspercnt");
-      String str1 = (String)paramHashMap.get("param_conf_segSize");
-      String str2 = (String)paramHashMap.get("param_conf_segNum");
-      String str3 = (String)paramHashMap.get("param_conf_connNum");
-      String str4 = (String)paramHashMap.get("param_fin_lost");
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l1 - this.jdField_a_of_type_Long) + "ms ,fileSize:" + this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.jdField_a_of_type_Long + " transInfo:" + ShortVideoUploadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor));
-      }
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("serverip", paramHashMap.get("ip"));
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_bdhSrv", paramHashMap.get("ip"));
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_bdhPort", paramHashMap.get("port"));
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("X-piccachetime", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction.mTransReport.timeCost_Cache));
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_BdhTrans", ShortVideoUploadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor));
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_segspercnt", paramArrayOfByte);
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segSize", str1);
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_conf_segNum", str2);
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_conf_connNum", str3);
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_fin_lost", str4);
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_retry_seg_count", paramHashMap.get("param_retry_seg_count"));
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_max_retry_times", paramHashMap.get("param_max_retry_times"));
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_total_retry_times", paramHashMap.get("param_total_retry_times"));
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_retry_code", paramHashMap.get("param_retry_code"));
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_heart_resp", paramHashMap.get("param_heart_resp"));
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_ip_index", paramHashMap.get("param_ip_index"));
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_Ip_ConnCost", paramHashMap.get("param_Ip_ConnCost"));
-      if (((String)paramHashMap.get("param_BDH_Cache_Diff")).equals(String.valueOf(true))) {
-        ShortVideoUploadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor, true);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_b_of_type_ComTencentMobileqqTransfileBaseTransProcessor$StepInfo.b();
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_b_of_type_ComTencentMobileqqTransfileBaseTransProcessor$StepInfo.jdField_a_of_type_Int = 1;
-      if ((ShortVideoUploadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor) == 3) && (this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.e != null))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.e.b();
-        this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.e.jdField_a_of_type_Int = 1;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.s = this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.q;
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.b(false);
-      ShortVideoUploadProcessor.a(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor, true, -1L, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_b_of_type_ComTencentMobileqqHighwayTransactionTransaction.mTransReport.timeCost_Cache));
-      ThreadManager.post(new aiwn(this, l2, l3, l4, l5), 5, null, true);
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoUploadProcessor", 2, "<BDH_LOG> Transaction Success,delete combined file");
-      }
-      FileUtils.d(this.jdField_a_of_type_JavaLangString);
-      paramArrayOfByte = (String)paramHashMap.get("ip");
-      paramHashMap = (String)paramHashMap.get("port");
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.a(true, 0, paramArrayOfByte, paramHashMap);
-      return;
     }
-    catch (Exception paramArrayOfByte)
+  }
+  
+  public boolean a(QQAppInterface paramQQAppInterface)
+  {
+    aifc localaifc = (aifc)paramQQAppInterface.getManager(211);
+    if (localaifc.jdField_a_of_type_Aiwk != null) {}
+    for (DrawerPushItem localDrawerPushItem = localaifc.jdField_a_of_type_Aiwk.a();; localDrawerPushItem = null)
     {
-      for (;;)
+      if ((localDrawerPushItem != null) && (localDrawerPushItem.msg_type != 7) && (localaifc.jdField_a_of_type_Aiwk.a(paramQQAppInterface, this.jdField_a_of_type_Aisd.jdField_a_of_type_Int)))
       {
-        paramArrayOfByte.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.e("ShortVideoUploadProcessor", 2, "get uuid from BDH error", paramArrayOfByte);
+        if (localDrawerPushItem.reddotGameId > 0)
+        {
+          localaifc.jdField_a_of_type_Int = localDrawerPushItem.reddotGameId;
+          localaifc.a(localDrawerPushItem.reddotGameId, 3);
+          bajr.a(paramQQAppInterface, "cmshow", "Apollo", "aio_msg_display", ApolloUtil.b(this.jdField_a_of_type_Aisd.jdField_a_of_type_Int), 3, new String[] { String.valueOf(localDrawerPushItem.reddotGameId), String.valueOf(localDrawerPushItem.reddotRedId) });
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloBubbleLogic", 2, new Object[] { "show aio bubble for reddot game, game id=", Integer.valueOf(localDrawerPushItem.reddotGameId) });
+          }
+        }
+        return true;
+      }
+      return false;
+    }
+  }
+  
+  public boolean b(QQAppInterface paramQQAppInterface)
+  {
+    boolean bool2 = false;
+    aifc localaifc = (aifc)paramQQAppInterface.getManager(211);
+    if (localaifc.jdField_a_of_type_Aiwk != null) {}
+    for (Object localObject = localaifc.jdField_a_of_type_Aiwk.a();; localObject = null)
+    {
+      boolean bool1 = bool2;
+      if (localObject != null)
+      {
+        bool1 = bool2;
+        if (((DrawerPushItem)localObject).msg_type == 7)
+        {
+          localObject = (aifg)paramQQAppInterface.getManager(153);
+          bool1 = bool2;
+          if (localaifc.jdField_a_of_type_Aiwk.a(paramQQAppInterface, this.jdField_a_of_type_Aisd.jdField_a_of_type_Int))
+          {
+            if (localObject != null) {
+              ((aifg)localObject).o = true;
+            }
+            bajr.a(null, "cmshow", "Apollo", "peoplebubble", ApolloUtil.b(this.jdField_a_of_type_Aisd.jdField_a_of_type_Int), 0, new String[] { String.valueOf(1) });
+            bool1 = true;
+          }
         }
       }
-    }
-  }
-  
-  public void onSwitch2BackupChannel()
-  {
-    long l = SystemClock.uptimeMillis();
-    switch (this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.v)
-    {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.d("<BDH_LOG> onSwitch2BackupChannel() BUT current status is INIT");
-      return;
-    case 2: 
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.d("<BDH_LOG> onSwitch2BackupChannel() BUT current status is HTTP");
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.d("<BDH_LOG> onSwitch2BackupChannel() switch to HTTP channel");
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.v = 2;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_JavaUtilHashMap.put("param_switchChannel", String.valueOf(l - this.jdField_a_of_type_Long));
-    StatisticCollector.a(BaseApplication.getContext()).a(null, "actSwitchChnl", true, l - this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.q, null, "");
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.ap_();
-  }
-  
-  public void onTransStart()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.d("<BDH_LOG> onTransStart()");
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_b_of_type_ComTencentMobileqqTransfileBaseTransProcessor$StepInfo.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_b_of_type_ComTencentMobileqqTransfileBaseTransProcessor$StepInfo.a();
-  }
-  
-  public void onUpdateProgress(int paramInt)
-  {
-    ShortVideoUploadProcessor localShortVideoUploadProcessor = this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor;
-    FileMsg localFileMsg = this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg;
-    long l = paramInt;
-    localFileMsg.e = l;
-    localShortVideoUploadProcessor.s = l;
-    if ((paramInt < this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.q) && (!this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.o) && (!this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.k)) {
-      this.jdField_a_of_type_ComTencentMobileqqTransfileShortVideoUploadProcessor.g();
+      return bool1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiwm
  * JD-Core Version:    0.7.0.1
  */

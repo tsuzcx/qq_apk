@@ -1,35 +1,27 @@
-import android.os.Handler;
 import android.os.Message;
-import com.tencent.mobileqq.data.CardProfile;
-import com.tencent.mobileqq.profile.vote.VoteHelper;
-import com.tencent.mobileqq.util.VoteUtil;
+import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class agxl
-  implements Runnable
+class agxl
+  extends akif
 {
-  public agxl(VoteHelper paramVoteHelper, long paramLong) {}
+  agxl(agxk paramagxk) {}
   
-  public void run()
+  protected void onGetAppletsDetail(boolean paramBoolean, List<AppletsAccountInfo> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("VisitorsActivity.VoteHelper", 2, "updateCardProfileFromDb uin:" + this.jdField_a_of_type_Long);
-    }
-    CardProfile localCardProfile2 = VoteUtil.a(this.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, 2);
-    CardProfile localCardProfile1 = localCardProfile2;
-    if (localCardProfile2 == null) {
-      localCardProfile1 = VoteUtil.a(this.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, 3);
-    }
-    if (localCardProfile1 != null)
+    if ((paramBoolean) && (paramList != null))
     {
-      localCardProfile1.updateTime(System.currentTimeMillis() / 1000L);
-      this.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.jdField_a_of_type_AndroidOsHandler.obtainMessage(9, localCardProfile1).sendToTarget();
+      if (QLog.isColorLevel()) {
+        QLog.i("AppletsObserver", 2, "onGetAppletsDetail:  isSuccess: " + paramBoolean + ", data.size = " + paramList.size());
+      }
+      agxk.a(this.a).obtainMessage(2, 0, 0, paramList).sendToTarget();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agxl
  * JD-Core Version:    0.7.0.1
  */

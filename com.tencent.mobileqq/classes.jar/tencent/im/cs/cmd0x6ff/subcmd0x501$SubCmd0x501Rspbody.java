@@ -9,12 +9,12 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class subcmd0x501$SubCmd0x501Rspbody
-  extends MessageMicro
+  extends MessageMicro<SubCmd0x501Rspbody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_httpconn_sig_session = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_session_key = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_msg_httpconn_addrs = PBField.initRepeatMessage(subcmd0x501.SubCmd0x501Rspbody.SrvAddrs.class);
+  public final PBRepeatMessageField<subcmd0x501.SubCmd0x501Rspbody.SrvAddrs> rpt_msg_httpconn_addrs = PBField.initRepeatMessage(subcmd0x501.SubCmd0x501Rspbody.SrvAddrs.class);
   public final PBUInt32Field uint32_share_channel = PBField.initUInt32(0);
   public final PBUInt32Field uint32_share_type = PBField.initUInt32(0);
   
@@ -27,7 +27,7 @@ public final class subcmd0x501$SubCmd0x501Rspbody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.cmd0x6ff.subcmd0x501.SubCmd0x501Rspbody
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.FormItemRelativeLayout android:background="@drawable/common_strip_setting_bg" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/j2"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/title" android:paddingBottom="7.0dip" android:layout_marginTop="15.0dip" android:text="@string/es6" style="@style/k6" />
+    <TextView android:textSize="@dimen/j9" android:id="@id/abv" android:layout_width="fill_parent" android:layout_marginRight="1.0dip" android:layout_marginBottom="15.0dip" android:text="XXXXXXXXXXXXX" android:maxLines="3" android:singleLine="false" android:layout_toLeftOf="@id/yw" android:layout_below="@id/title" android:layout_alignLeft="@id/title" android:lineSpacingExtra="5.0dip" style="@style/jx" />
+    <TextView android:textSize="@dimen/j9" android:id="@id/i_f" android:layout_marginRight="9.0dip" android:text="@string/rcv" android:layout_toLeftOf="@id/yw" android:layout_centerVertical="true" style="@style/jx" />
+    <ImageView android:id="@id/yw" android:layout_marginRight="18.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/jp" />
+</com.tencent.mobileqq.widget.FormItemRelativeLayout>

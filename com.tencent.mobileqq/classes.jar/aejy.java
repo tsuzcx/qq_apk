@@ -1,24 +1,30 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.leba.view.LebaTopBarView;
-
-public class aejy
-  implements ValueAnimator.AnimatorUpdateListener
+class aejy
+  implements azna
 {
-  public aejy(LebaTopBarView paramLebaTopBarView, View paramView) {}
+  aejy(aejb paramaejb) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(boolean paramBoolean, String paramString)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    paramValueAnimator = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramValueAnimator.height = i;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
+    if ((paramBoolean) && (this.a.g.equals(paramString)))
+    {
+      aejb.b(this.a, true);
+      paramString = (acyp)this.a.a(23);
+      if (paramString != null) {
+        paramString.a(true);
+      }
+    }
+    do
+    {
+      return;
+      aejb.b(this.a, false);
+      paramString = (acyp)this.a.a(23);
+    } while (paramString == null);
+    paramString.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aejy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,49 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
+import com.tencent.qphone.base.util.Cryptor;
+import org.json.JSONObject;
 
 public class ksa
-  implements Runnable
 {
-  public ksa(AccountDetailBaseAdapter paramAccountDetailBaseAdapter, ksf paramksf, RelativeLayout.LayoutParams paramLayoutParams1, RelativeLayout.LayoutParams paramLayoutParams2, RelativeLayout.LayoutParams paramLayoutParams3) {}
+  public final String a = "uid";
+  public final String b = "ukey";
+  public final String c = "^%QAI$I+j{2HuP0L";
+  public String d;
+  public String e;
   
-  public void run()
+  public static ksa a(String paramString)
   {
-    this.jdField_a_of_type_Ksf.b.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    this.jdField_a_of_type_Ksf.c.setLayoutParams(this.b);
-    this.jdField_a_of_type_Ksf.d.setLayoutParams(this.c);
+    ksa localksa = new ksa();
+    if (localksa.a(paramString)) {
+      return localksa;
+    }
+    return null;
+  }
+  
+  private boolean a(String paramString)
+  {
+    try
+    {
+      paramString = baaw.decode(paramString, 0);
+      paramString = new JSONObject(new String(new Cryptor().decrypt(paramString, "^%QAI$I+j{2HuP0L".getBytes())));
+      if (paramString.has("uid")) {
+        this.d = paramString.getString("uid");
+      }
+      for (int i = 1; (i != 0) && (paramString.has("ukey")); i = 0)
+      {
+        this.e = paramString.getString("ukey");
+        return true;
+      }
+      return false;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ksa
  * JD-Core Version:    0.7.0.1
  */

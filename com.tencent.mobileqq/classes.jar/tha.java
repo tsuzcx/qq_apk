@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
 
-class tha
-  implements Runnable
+public class tha
+  implements View.OnTouchListener
 {
-  tha(tgz paramtgz) {}
+  public tha(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a.a();
+    return this.a.a.onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tha
  * JD-Core Version:    0.7.0.1
  */

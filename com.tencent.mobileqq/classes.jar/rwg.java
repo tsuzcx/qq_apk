@@ -1,30 +1,13 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
-
 public class rwg
-  implements Runnable
 {
-  public rwg(BaseChatPie paramBaseChatPie, boolean paramBoolean) {}
-  
-  public void run()
+  public static String a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.d(true);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.aI();
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.i(0);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.U();
-      return;
-    }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131433801, 1).b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rwg
  * JD-Core Version:    0.7.0.1
  */

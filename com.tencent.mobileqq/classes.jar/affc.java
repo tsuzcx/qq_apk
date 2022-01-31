@@ -1,28 +1,31 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.device.datadef.DeviceInfo;
+import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
+import java.util.ArrayList;
 
 public class affc
-  implements View.OnTouchListener
+  extends xrg
 {
-  public affc(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public affc(DeviceFragment paramDeviceFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void a(ArrayList<DeviceInfo> paramArrayList)
   {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      this.a.a.findViewById(2131370596).setAlpha(0.5F);
-    }
-    for (;;)
+    if (this.a.e)
     {
-      return false;
-      this.a.a.findViewById(2131370596).setAlpha(1.0F);
+      this.a.e = false;
+      if (this.a.jdField_a_of_type_Afex != null) {
+        this.a.jdField_a_of_type_Afex.a(this.a.b(), true, null);
+      }
     }
+    if (this.a.jdField_a_of_type_Afdp == null) {
+      return;
+    }
+    this.a.jdField_a_of_type_Afdp.a = ((ArrayList)paramArrayList.clone());
+    this.a.jdField_a_of_type_Afdp.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     affc
  * JD-Core Version:    0.7.0.1
  */

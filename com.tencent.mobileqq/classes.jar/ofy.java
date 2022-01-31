@@ -1,23 +1,15 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.FeedFeatureItem;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetMyStoryVideoListStep.Result;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStep.SimpleStepResultCallback;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
+import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
+import java.util.List;
 
-class ofy
-  implements SimpleStep.SimpleStepResultCallback
+public class ofy
 {
-  ofy(ofx paramofx, String paramString) {}
+  public void a(int paramInt, List<DynamicChannelDataModel> paramList) {}
   
-  public void a(GetMyStoryVideoListStep.Result paramResult)
-  {
-    if ((paramResult.a != null) && (TextUtils.equals(paramResult.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)))
-    {
-      NewMyStorySegment.a(this.jdField_a_of_type_Ofx.a).a = paramResult.a;
-      NewMyStorySegment.a(this.jdField_a_of_type_Ofx.a).sendMessage(NewMyStorySegment.a(this.jdField_a_of_type_Ofx.a).obtainMessage(0, NewMyStorySegment.a(this.jdField_a_of_type_Ofx.a)));
-    }
-  }
+  public void a(int paramInt1, boolean paramBoolean, List<ogf> paramList, int paramInt2) {}
+  
+  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList) {}
+  
+  public void b(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList) {}
 }
 
 

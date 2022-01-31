@@ -1,16 +1,59 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.webviewplugin.OfflineWebResManager;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentNoteCard;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyLifeCycleLinearLayout;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class pgu
-  implements Runnable
+  extends pez
 {
-  public pgu(OfflineWebResManager paramOfflineWebResManager, SharedPreferences paramSharedPreferences) {}
-  
-  public void run()
+  public pgu(Context paramContext, azwg paramazwg, qoe paramqoe)
   {
-    this.jdField_a_of_type_ComTencentBizWebviewpluginOfflineWebResManager.b();
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("Last_Check_Cache", System.currentTimeMillis()).commit();
+    super(paramContext, paramazwg, paramqoe);
+  }
+  
+  public pez a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return g().l().n();
+  }
+  
+  public void b()
+  {
+    super.b();
+    ((ComponentContentNoteCard)this.jdField_a_of_type_Pey).c();
+  }
+  
+  public pez d()
+  {
+    ReadInJoyLifeCycleLinearLayout localReadInJoyLifeCycleLinearLayout = new ReadInJoyLifeCycleLinearLayout(this.jdField_a_of_type_AndroidContentContext, null);
+    localReadInJoyLifeCycleLinearLayout.setOrientation(1);
+    localReadInJoyLifeCycleLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if ((this.jdField_a_of_type_Pey != null) && ((this.jdField_a_of_type_Pey instanceof ComponentContentNoteCard))) {
+      localReadInJoyLifeCycleLinearLayout.addView((ComponentContentNoteCard)this.jdField_a_of_type_Pey);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localReadInJoyLifeCycleLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localReadInJoyLifeCycleLinearLayout);
+    return this;
+  }
+  
+  public pez e()
+  {
+    return this;
+  }
+  
+  public pez g()
+  {
+    this.jdField_a_of_type_Pey = new ComponentContentNoteCard(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Qoe);
+    return this;
+  }
+  
+  public pez o()
+  {
+    super.o();
+    return this;
   }
 }
 

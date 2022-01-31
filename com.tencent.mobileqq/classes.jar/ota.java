@@ -1,18 +1,42 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.utils.PollWidgetUtils.OnWidgetElementClickListener;
-import com.tencent.biz.qqstory.utils.PollWidgetUtils.WidgetElement;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONObject;
 
 public class ota
-  implements View.OnClickListener
 {
-  public ota(PollWidgetUtils.WidgetElement paramWidgetElement) {}
-  
-  public void onClick(View paramView)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    paramView = this.a.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OnWidgetElementClickListener;
-    if (paramView != null) {
-      paramView.a(this.a.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$WidgetWrapper, this.a);
+    JSONObject localJSONObject1 = new JSONObject();
+    localJSONObject1.put("id_test", new JSONObject());
+    JSONObject localJSONObject2 = new JSONObject();
+    String str;
+    if (paramBaseArticleInfo.mSinglePicture != null)
+    {
+      str = paramBaseArticleInfo.mSinglePicture.getFile();
+      localJSONObject2.put("article_large_imge_url", str);
+      localJSONObject1.put("id_article_large_imge", localJSONObject2);
+      otl.a(paramBaseArticleInfo, localJSONObject1, true);
+      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
+        break label130;
+      }
+      otl.a(paramBaseArticleInfo, localJSONObject1);
+      otl.b(paramBaseArticleInfo, localJSONObject1);
+    }
+    for (;;)
+    {
+      otl.m(paramBaseArticleInfo, localJSONObject1);
+      otl.e(paramBaseArticleInfo, localJSONObject1);
+      otl.g(paramBaseArticleInfo, localJSONObject1);
+      otl.X(paramBaseArticleInfo, localJSONObject1);
+      localJSONObject1.put("style_ID", "ReadInjoy_large_cell");
+      otl.a(localJSONObject1, paramBaseArticleInfo);
+      otl.aa(paramBaseArticleInfo, localJSONObject1);
+      return localJSONObject1;
+      str = null;
+      break;
+      label130:
+      otl.d(paramBaseArticleInfo, localJSONObject1);
     }
   }
 }

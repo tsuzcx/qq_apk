@@ -1,25 +1,21 @@
-import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-
 public class lcf
-  implements Runnable
 {
-  public lcf(EcShopAssistantManager paramEcShopAssistantManager, String paramString) {}
-  
-  public void run()
+  public static int a(String paramString)
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcShopAssistantManager.a.getEntityManagerFactory().createEntityManager();
-    if (EcShopAssistantManager.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcShopAssistantManager, localEntityManager, this.jdField_a_of_type_JavaLangString)) {
-      EcShopAssistantManager.a(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitEcShopAssistantManager, this.jdField_a_of_type_JavaLangString);
-    }
-    localEntityManager.a();
+    if ((paramString == null) || (paramString.equals("both"))) {}
+    do
+    {
+      return 0;
+      if (paramString.equals("top")) {
+        return 1;
+      }
+    } while (!paramString.equals("bottom"));
+    return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lcf
  * JD-Core Version:    0.7.0.1
  */

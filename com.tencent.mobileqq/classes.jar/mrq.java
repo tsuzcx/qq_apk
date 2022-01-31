@@ -1,20 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil.RecommendAndAd;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil.ResponseCallback;
-import java.util.List;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity;
 
-public final class mrq
-  implements FastWebRequestUtil.ResponseCallback
+public class mrq
+  extends Handler
 {
-  public mrq(FastWebRequestUtil.RecommendAndAd paramRecommendAndAd) {}
+  public mrq(LebaSearchMoreInfoActivity paramLebaSearchMoreInfoActivity) {}
   
-  public void a(boolean paramBoolean, List paramList)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a(paramList);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    paramMessage = (Bundle)paramMessage.obj;
+    this.a.jdField_a_of_type_Wis.a(17, paramMessage, this.a.jdField_a_of_type_Ajfe);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     mrq
  * JD-Core Version:    0.7.0.1
  */

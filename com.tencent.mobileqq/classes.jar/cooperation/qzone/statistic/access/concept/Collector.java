@@ -1,5 +1,10 @@
 package cooperation.qzone.statistic.access.concept;
 
+import bgea;
+import bgec;
+import bgee;
+import bgeh;
+import bgej;
 import cooperation.qzone.statistic.access.WnsKeys;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -9,13 +14,13 @@ public class Collector
   implements Runnable
 {
   protected volatile long a;
-  protected Assembler a;
-  protected Condition a;
-  protected Deliverer a;
-  protected Sampler a;
-  protected StatisticFolder a;
+  protected bgea a;
+  protected bgec a;
+  protected bgee a;
+  protected bgeh a;
+  protected bgej a;
   protected Thread a;
-  protected List a;
+  protected List<Statistic> a;
   protected volatile boolean a;
   protected long b;
   protected volatile boolean b;
@@ -23,14 +28,14 @@ public class Collector
   
   public Collector()
   {
-    this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptCondition = Condition.jdField_a_of_type_CooperationQzoneStatisticAccessConceptCondition;
-    this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptSampler = Sampler.jdField_a_of_type_CooperationQzoneStatisticAccessConceptSampler;
-    this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptAssembler = Assembler.jdField_a_of_type_CooperationQzoneStatisticAccessConceptAssembler;
-    this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptDeliverer = Deliverer.jdField_a_of_type_CooperationQzoneStatisticAccessConceptDeliverer;
+    this.jdField_a_of_type_Bgec = bgec.jdField_a_of_type_Bgec;
+    this.jdField_a_of_type_Bgeh = bgeh.jdField_a_of_type_Bgeh;
+    this.jdField_a_of_type_Bgea = bgea.jdField_a_of_type_Bgea;
+    this.jdField_a_of_type_Bgee = bgee.jdField_a_of_type_Bgee;
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_Boolean = true;
     this.jdField_b_of_type_Long = 3000L;
-    this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptStatisticFolder = new StatisticFolder();
+    this.jdField_a_of_type_Bgej = new bgej();
   }
   
   public long a()
@@ -38,24 +43,24 @@ public class Collector
     return this.jdField_a_of_type_Long;
   }
   
-  public Assembler a()
+  public bgea a()
   {
-    return this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptAssembler;
+    return this.jdField_a_of_type_Bgea;
   }
   
-  public Deliverer a()
+  public bgee a()
   {
-    return this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptDeliverer;
+    return this.jdField_a_of_type_Bgee;
   }
   
-  public Sampler a()
+  public bgeh a()
   {
-    return this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptSampler;
+    return this.jdField_a_of_type_Bgeh;
   }
   
-  public StatisticFolder a()
+  public bgej a()
   {
-    return this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptStatisticFolder;
+    return this.jdField_a_of_type_Bgej;
   }
   
   public void a()
@@ -74,29 +79,29 @@ public class Collector
     this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
-  public void a(Assembler paramAssembler)
+  public void a(bgea parambgea)
   {
-    this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptAssembler = paramAssembler;
+    this.jdField_a_of_type_Bgea = parambgea;
   }
   
-  public void a(Condition paramCondition)
+  public void a(bgec parambgec)
   {
-    this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptCondition = paramCondition;
+    this.jdField_a_of_type_Bgec = parambgec;
   }
   
-  public void a(Deliverer paramDeliverer)
+  public void a(bgee parambgee)
   {
-    this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptDeliverer = paramDeliverer;
+    this.jdField_a_of_type_Bgee = parambgee;
   }
   
-  public void a(Sampler paramSampler)
+  public void a(bgeh parambgeh)
   {
-    this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptSampler = paramSampler;
+    this.jdField_a_of_type_Bgeh = parambgeh;
   }
   
   public void a(Statistic paramStatistic)
   {
-    this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptStatisticFolder.a(paramStatistic);
+    this.jdField_a_of_type_Bgej.a(paramStatistic);
   }
   
   public boolean a()
@@ -115,10 +120,10 @@ public class Collector
     e();
     List localList;
     Object localObject1;
-    if ((this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptCondition.a(this)) || (this.c))
+    if ((this.jdField_a_of_type_Bgec.a(this)) || (this.c))
     {
       this.c = false;
-      localList = this.jdField_a_of_type_CooperationQzoneStatisticAccessConceptStatisticFolder.a();
+      localList = this.jdField_a_of_type_Bgej.a();
       if ((localList != null) && (localList.size() > 0))
       {
         if (this.jdField_b_of_type_Boolean) {

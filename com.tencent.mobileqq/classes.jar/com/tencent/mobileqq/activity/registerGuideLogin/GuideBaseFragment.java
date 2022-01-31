@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.activity.registerGuideLogin;
 
+import abcp;
+import ahen;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
@@ -11,7 +13,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class GuideBaseFragment
   extends Fragment
 {
-  protected GuideBaseFragment.GuideCallBack a;
+  protected abcp a;
+  protected ahen a;
   public BaseActivity a;
   public QQAppInterface a;
   public String a;
@@ -22,6 +25,7 @@ public class GuideBaseFragment
   public GuideBaseFragment(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Abcp = new abcp();
   }
   
   public Dialog a(int paramInt)
@@ -36,12 +40,12 @@ public class GuideBaseFragment
   
   public void a(int paramInt, Dialog paramDialog) {}
   
-  public void a(Intent paramIntent) {}
-  
-  public void a(GuideBaseFragment.GuideCallBack paramGuideCallBack)
+  public void a(ahen paramahen)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginGuideBaseFragment$GuideCallBack = paramGuideCallBack;
+    this.jdField_a_of_type_Ahen = paramahen;
   }
+  
+  public void a(Intent paramIntent) {}
   
   public void a(boolean paramBoolean) {}
   

@@ -26,10 +26,10 @@ public class Matrix
     float f3 = 1.0F / (paramFloat5 - paramFloat6);
     paramArrayOfFloat[(paramInt + 0)] = (2.0F * (paramFloat5 * f1));
     paramArrayOfFloat[(paramInt + 5)] = (2.0F * (paramFloat5 * f2));
-    paramArrayOfFloat[(paramInt + 8)] = (2.0F * ((paramFloat2 + paramFloat1) * f1));
-    paramArrayOfFloat[(paramInt + 9)] = ((paramFloat4 + paramFloat3) * f2);
+    paramArrayOfFloat[(paramInt + 8)] = (f1 * (paramFloat2 + paramFloat1) * 2.0F);
+    paramArrayOfFloat[(paramInt + 9)] = (f2 * (paramFloat4 + paramFloat3));
     paramArrayOfFloat[(paramInt + 10)] = ((paramFloat6 + paramFloat5) * f3);
-    paramArrayOfFloat[(paramInt + 14)] = (2.0F * (paramFloat6 * paramFloat5 * f3));
+    paramArrayOfFloat[(paramInt + 14)] = (f3 * (paramFloat6 * paramFloat5) * 2.0F);
     paramArrayOfFloat[(paramInt + 11)] = -1.0F;
     paramArrayOfFloat[(paramInt + 1)] = 0.0F;
     paramArrayOfFloat[(paramInt + 2)] = 0.0F;
@@ -82,12 +82,12 @@ public class Matrix
     float f32 = f10 * f40;
     float f33 = f4 * f37;
     float f34 = f7 * f40;
-    f35 = f1 * f35;
+    f35 *= f1;
     float f36 = f10 * f39;
-    f37 = f1 * f37;
+    f37 *= f1;
     float f38 = f7 * f39;
-    f40 = f1 * f40;
-    f39 = f4 * f39;
+    f40 *= f1;
+    f39 *= f4;
     float f41 = f1 * f25 + f4 * f26 + f7 * f27 + f10 * f28;
     if (f41 == 0.0F) {
       return false;
@@ -103,12 +103,12 @@ public class Matrix
     paramArrayOfFloat1[(paramInt1 + 7)] = ((f17 * f1 + f22 * f4 + f23 * f7 - (f18 * f1 + f21 * f4 + f24 * f7)) * f41);
     paramArrayOfFloat1[(paramInt1 + 8)] = ((f29 * f6 + f32 * f9 + f33 * f12 - (f30 * f6 + f31 * f9 + f34 * f12)) * f41);
     paramArrayOfFloat1[(paramInt1 + 9)] = ((f30 * f3 + f35 * f9 + f38 * f12 - (f29 * f3 + f36 * f9 + f37 * f12)) * f41);
-    paramArrayOfFloat1[(paramInt1 + 10)] = ((f31 * f3 + f36 * f6 + f40 * f12 - (f32 * f3 + f35 * f6 + f39 * f12)) * f41);
-    paramArrayOfFloat1[(paramInt1 + 11)] = ((f34 * f3 + f37 * f6 + f39 * f9 - (f33 * f3 + f38 * f6 + f40 * f9)) * f41);
+    paramArrayOfFloat1[(paramInt1 + 10)] = ((f31 * f3 + f36 * f6 + f40 * f12 - (f12 * f39 + (f32 * f3 + f35 * f6))) * f41);
+    paramArrayOfFloat1[(paramInt1 + 11)] = ((f34 * f3 + f37 * f6 + f39 * f9 - (f3 * f33 + f6 * f38 + f40 * f9)) * f41);
     paramArrayOfFloat1[(paramInt1 + 12)] = ((f31 * f8 + f34 * f11 + f30 * f5 - (f33 * f11 + f29 * f5 + f32 * f8)) * f41);
     paramArrayOfFloat1[(paramInt1 + 13)] = ((f37 * f11 + f29 * f2 + f36 * f8 - (f35 * f8 + f38 * f11 + f30 * f2)) * f41);
-    paramArrayOfFloat1[(paramInt1 + 14)] = ((f35 * f5 + f39 * f11 + f32 * f2 - (f40 * f11 + f31 * f2 + f36 * f5)) * f41);
-    paramArrayOfFloat1[(paramInt1 + 15)] = ((f40 * f8 + f33 * f2 + f38 * f5 - (f37 * f5 + f39 * f8 + f34 * f2)) * f41);
+    paramArrayOfFloat1[(paramInt1 + 14)] = ((f35 * f5 + f39 * f11 + f32 * f2 - (f11 * f40 + f31 * f2 + f36 * f5)) * f41);
+    paramArrayOfFloat1[(paramInt1 + 15)] = (f41 * (f40 * f8 + f33 * f2 + f38 * f5 - (f39 * f8 + f5 * f37 + f2 * f34)));
     return true;
   }
   
@@ -143,18 +143,27 @@ public class Matrix
     paramArrayOfFloat1[1] = (paramArrayOfFloat2[1] * paramArrayOfFloat3[0] + paramArrayOfFloat2[5] * paramArrayOfFloat3[1] + paramArrayOfFloat2[9] * paramArrayOfFloat3[2] + paramArrayOfFloat2[13] * paramArrayOfFloat3[3]);
     paramArrayOfFloat1[2] = (paramArrayOfFloat2[2] * paramArrayOfFloat3[0] + paramArrayOfFloat2[6] * paramArrayOfFloat3[1] + paramArrayOfFloat2[10] * paramArrayOfFloat3[2] + paramArrayOfFloat2[14] * paramArrayOfFloat3[3]);
     paramArrayOfFloat1[3] = (paramArrayOfFloat2[3] * paramArrayOfFloat3[0] + paramArrayOfFloat2[7] * paramArrayOfFloat3[1] + paramArrayOfFloat2[11] * paramArrayOfFloat3[2] + paramArrayOfFloat2[15] * paramArrayOfFloat3[3]);
-    paramArrayOfFloat1[4] = (paramArrayOfFloat2[0] * paramArrayOfFloat3[4] + paramArrayOfFloat2[4] * paramArrayOfFloat3[5] + paramArrayOfFloat2[8] * paramArrayOfFloat3[6] + paramArrayOfFloat2[12] * paramArrayOfFloat3[7]);
-    paramArrayOfFloat1[5] = (paramArrayOfFloat2[1] * paramArrayOfFloat3[4] + paramArrayOfFloat2[5] * paramArrayOfFloat3[5] + paramArrayOfFloat2[9] * paramArrayOfFloat3[6] + paramArrayOfFloat2[13] * paramArrayOfFloat3[7]);
-    paramArrayOfFloat1[6] = (paramArrayOfFloat2[2] * paramArrayOfFloat3[4] + paramArrayOfFloat2[6] * paramArrayOfFloat3[5] + paramArrayOfFloat2[10] * paramArrayOfFloat3[6] + paramArrayOfFloat2[14] * paramArrayOfFloat3[7]);
-    paramArrayOfFloat1[7] = (paramArrayOfFloat2[3] * paramArrayOfFloat3[4] + paramArrayOfFloat2[7] * paramArrayOfFloat3[5] + paramArrayOfFloat2[11] * paramArrayOfFloat3[6] + paramArrayOfFloat2[15] * paramArrayOfFloat3[7]);
-    paramArrayOfFloat1[8] = (paramArrayOfFloat2[0] * paramArrayOfFloat3[8] + paramArrayOfFloat2[4] * paramArrayOfFloat3[9] + paramArrayOfFloat2[8] * paramArrayOfFloat3[10] + paramArrayOfFloat2[12] * paramArrayOfFloat3[11]);
-    paramArrayOfFloat1[9] = (paramArrayOfFloat2[1] * paramArrayOfFloat3[8] + paramArrayOfFloat2[5] * paramArrayOfFloat3[9] + paramArrayOfFloat2[9] * paramArrayOfFloat3[10] + paramArrayOfFloat2[13] * paramArrayOfFloat3[11]);
-    paramArrayOfFloat1[10] = (paramArrayOfFloat2[2] * paramArrayOfFloat3[8] + paramArrayOfFloat2[6] * paramArrayOfFloat3[9] + paramArrayOfFloat2[10] * paramArrayOfFloat3[10] + paramArrayOfFloat2[14] * paramArrayOfFloat3[11]);
-    paramArrayOfFloat1[11] = (paramArrayOfFloat2[3] * paramArrayOfFloat3[8] + paramArrayOfFloat2[7] * paramArrayOfFloat3[9] + paramArrayOfFloat2[11] * paramArrayOfFloat3[10] + paramArrayOfFloat2[15] * paramArrayOfFloat3[11]);
-    paramArrayOfFloat1[12] = (paramArrayOfFloat2[0] * paramArrayOfFloat3[12] + paramArrayOfFloat2[4] * paramArrayOfFloat3[13] + paramArrayOfFloat2[8] * paramArrayOfFloat3[14] + paramArrayOfFloat2[12] * paramArrayOfFloat3[15]);
-    paramArrayOfFloat1[13] = (paramArrayOfFloat2[1] * paramArrayOfFloat3[12] + paramArrayOfFloat2[5] * paramArrayOfFloat3[13] + paramArrayOfFloat2[9] * paramArrayOfFloat3[14] + paramArrayOfFloat2[13] * paramArrayOfFloat3[15]);
-    paramArrayOfFloat1[14] = (paramArrayOfFloat2[2] * paramArrayOfFloat3[12] + paramArrayOfFloat2[6] * paramArrayOfFloat3[13] + paramArrayOfFloat2[10] * paramArrayOfFloat3[14] + paramArrayOfFloat2[14] * paramArrayOfFloat3[15]);
-    paramArrayOfFloat1[15] = (paramArrayOfFloat2[3] * paramArrayOfFloat3[12] + paramArrayOfFloat2[7] * paramArrayOfFloat3[13] + paramArrayOfFloat2[11] * paramArrayOfFloat3[14] + paramArrayOfFloat2[15] * paramArrayOfFloat3[15]);
+    if (paramArrayOfFloat3.length > 4)
+    {
+      paramArrayOfFloat1[4] = (paramArrayOfFloat2[0] * paramArrayOfFloat3[4] + paramArrayOfFloat2[4] * paramArrayOfFloat3[5] + paramArrayOfFloat2[8] * paramArrayOfFloat3[6] + paramArrayOfFloat2[12] * paramArrayOfFloat3[7]);
+      paramArrayOfFloat1[5] = (paramArrayOfFloat2[1] * paramArrayOfFloat3[4] + paramArrayOfFloat2[5] * paramArrayOfFloat3[5] + paramArrayOfFloat2[9] * paramArrayOfFloat3[6] + paramArrayOfFloat2[13] * paramArrayOfFloat3[7]);
+      paramArrayOfFloat1[6] = (paramArrayOfFloat2[2] * paramArrayOfFloat3[4] + paramArrayOfFloat2[6] * paramArrayOfFloat3[5] + paramArrayOfFloat2[10] * paramArrayOfFloat3[6] + paramArrayOfFloat2[14] * paramArrayOfFloat3[7]);
+      paramArrayOfFloat1[7] = (paramArrayOfFloat2[3] * paramArrayOfFloat3[4] + paramArrayOfFloat2[7] * paramArrayOfFloat3[5] + paramArrayOfFloat2[11] * paramArrayOfFloat3[6] + paramArrayOfFloat2[15] * paramArrayOfFloat3[7]);
+      if (paramArrayOfFloat3.length > 8)
+      {
+        paramArrayOfFloat1[8] = (paramArrayOfFloat2[0] * paramArrayOfFloat3[8] + paramArrayOfFloat2[4] * paramArrayOfFloat3[9] + paramArrayOfFloat2[8] * paramArrayOfFloat3[10] + paramArrayOfFloat2[12] * paramArrayOfFloat3[11]);
+        paramArrayOfFloat1[9] = (paramArrayOfFloat2[1] * paramArrayOfFloat3[8] + paramArrayOfFloat2[5] * paramArrayOfFloat3[9] + paramArrayOfFloat2[9] * paramArrayOfFloat3[10] + paramArrayOfFloat2[13] * paramArrayOfFloat3[11]);
+        paramArrayOfFloat1[10] = (paramArrayOfFloat2[2] * paramArrayOfFloat3[8] + paramArrayOfFloat2[6] * paramArrayOfFloat3[9] + paramArrayOfFloat2[10] * paramArrayOfFloat3[10] + paramArrayOfFloat2[14] * paramArrayOfFloat3[11]);
+        paramArrayOfFloat1[11] = (paramArrayOfFloat2[3] * paramArrayOfFloat3[8] + paramArrayOfFloat2[7] * paramArrayOfFloat3[9] + paramArrayOfFloat2[11] * paramArrayOfFloat3[10] + paramArrayOfFloat2[15] * paramArrayOfFloat3[11]);
+      }
+      if (paramArrayOfFloat3.length > 12)
+      {
+        paramArrayOfFloat1[12] = (paramArrayOfFloat2[0] * paramArrayOfFloat3[12] + paramArrayOfFloat2[4] * paramArrayOfFloat3[13] + paramArrayOfFloat2[8] * paramArrayOfFloat3[14] + paramArrayOfFloat2[12] * paramArrayOfFloat3[15]);
+        paramArrayOfFloat1[13] = (paramArrayOfFloat2[1] * paramArrayOfFloat3[12] + paramArrayOfFloat2[5] * paramArrayOfFloat3[13] + paramArrayOfFloat2[9] * paramArrayOfFloat3[14] + paramArrayOfFloat2[13] * paramArrayOfFloat3[15]);
+        paramArrayOfFloat1[14] = (paramArrayOfFloat2[2] * paramArrayOfFloat3[12] + paramArrayOfFloat2[6] * paramArrayOfFloat3[13] + paramArrayOfFloat2[10] * paramArrayOfFloat3[14] + paramArrayOfFloat2[14] * paramArrayOfFloat3[15]);
+        paramArrayOfFloat1[15] = (paramArrayOfFloat2[3] * paramArrayOfFloat3[12] + paramArrayOfFloat2[7] * paramArrayOfFloat3[13] + paramArrayOfFloat2[11] * paramArrayOfFloat3[14] + paramArrayOfFloat2[15] * paramArrayOfFloat3[15]);
+      }
+    }
   }
   
   public static void multiplyMV(float[] paramArrayOfFloat1, int paramInt1, float[] paramArrayOfFloat2, int paramInt2, float[] paramArrayOfFloat3, int paramInt3)
@@ -200,9 +209,9 @@ public class Matrix
     paramArrayOfFloat[(paramInt + 0)] = (2.0F * f1);
     paramArrayOfFloat[(paramInt + 5)] = (2.0F * f2);
     paramArrayOfFloat[(paramInt + 10)] = (-2.0F * f3);
-    paramArrayOfFloat[(paramInt + 12)] = (paramFloat1 * f1);
-    paramArrayOfFloat[(paramInt + 13)] = (paramFloat2 * f2);
-    paramArrayOfFloat[(paramInt + 14)] = (paramFloat3 * f3);
+    paramArrayOfFloat[(paramInt + 12)] = (f1 * paramFloat1);
+    paramArrayOfFloat[(paramInt + 13)] = (f2 * paramFloat2);
+    paramArrayOfFloat[(paramInt + 14)] = (f3 * paramFloat3);
     paramArrayOfFloat[(paramInt + 15)] = 1.0F;
     paramArrayOfFloat[(paramInt + 1)] = 0.0F;
     paramArrayOfFloat[(paramInt + 2)] = 0.0F;
@@ -233,7 +242,7 @@ public class Matrix
     paramArrayOfFloat[(paramInt + 11)] = -1.0F;
     paramArrayOfFloat[(paramInt + 12)] = 0.0F;
     paramArrayOfFloat[(paramInt + 13)] = 0.0F;
-    paramArrayOfFloat[(paramInt + 14)] = (2.0F * paramFloat4 * paramFloat3 * f);
+    paramArrayOfFloat[(paramInt + 14)] = (f * (2.0F * paramFloat4 * paramFloat3));
     paramArrayOfFloat[(paramInt + 15)] = 0.0F;
   }
   
@@ -290,17 +299,22 @@ public class Matrix
   
   public static void setIdentityM(float[] paramArrayOfFloat, int paramInt)
   {
+    int k = 0;
     int i = 0;
-    while (i < 16)
+    int j;
+    for (;;)
     {
+      j = k;
+      if (i >= 16) {
+        break;
+      }
       paramArrayOfFloat[(paramInt + i)] = 0.0F;
       i += 1;
     }
-    i = 0;
-    while (i < 16)
+    while (j < 16)
     {
-      paramArrayOfFloat[(paramInt + i)] = 1.0F;
-      i += 5;
+      paramArrayOfFloat[(paramInt + j)] = 1.0F;
+      j += 5;
     }
   }
   
@@ -343,7 +357,7 @@ public class Matrix
   {
     float f2 = paramFloat1 * 0.01745329F;
     float f1 = paramFloat2 * 0.01745329F;
-    float f3 = paramFloat3 * 0.01745329F;
+    float f3 = 0.01745329F * paramFloat3;
     paramFloat1 = (float)Math.cos(f2);
     paramFloat2 = (float)Math.sin(f2);
     paramFloat3 = (float)Math.cos(f1);
@@ -361,7 +375,7 @@ public class Matrix
     paramArrayOfFloat[(paramInt + 6)] = (-paramFloat2 * paramFloat3);
     paramArrayOfFloat[(paramInt + 7)] = 0.0F;
     paramArrayOfFloat[(paramInt + 8)] = (-f5 * f2 + paramFloat2 * f3);
-    paramArrayOfFloat[(paramInt + 9)] = (f5 * f3 + paramFloat2 * f2);
+    paramArrayOfFloat[(paramInt + 9)] = (paramFloat2 * f2 + f3 * f5);
     paramArrayOfFloat[(paramInt + 10)] = (paramFloat1 * paramFloat3);
     paramArrayOfFloat[(paramInt + 11)] = 0.0F;
     paramArrayOfFloat[(paramInt + 12)] = 0.0F;
@@ -379,7 +393,7 @@ public class Matrix
     paramArrayOfFloat[(paramInt + 13)] = 0.0F;
     paramArrayOfFloat[(paramInt + 14)] = 0.0F;
     paramArrayOfFloat[(paramInt + 15)] = 1.0F;
-    paramFloat1 *= 0.01745329F;
+    paramFloat1 = 0.01745329F * paramFloat1;
     float f3 = (float)Math.sin(paramFloat1);
     float f4 = (float)Math.cos(paramFloat1);
     if ((1.0F == paramFloat2) && (0.0F == paramFloat3) && (0.0F == paramFloat4))
@@ -438,16 +452,16 @@ public class Matrix
     f5 = paramFloat1 * f2;
     float f6 = f2 * f3;
     float f7 = f1 * f3;
-    f3 = paramFloat1 * f3;
+    f3 *= paramFloat1;
     paramArrayOfFloat[(paramInt + 0)] = (f2 * f2 * paramFloat2 + f4);
     paramArrayOfFloat[(paramInt + 4)] = (paramFloat3 * paramFloat2 - f3);
     paramArrayOfFloat[(paramInt + 8)] = (f5 * paramFloat2 + f7);
-    paramArrayOfFloat[(paramInt + 1)] = (paramFloat3 * paramFloat2 + f3);
+    paramArrayOfFloat[(paramInt + 1)] = (f3 + paramFloat3 * paramFloat2);
     paramArrayOfFloat[(paramInt + 5)] = (f1 * f1 * paramFloat2 + f4);
     paramArrayOfFloat[(paramInt + 9)] = (paramFloat4 * paramFloat2 - f6);
     paramArrayOfFloat[(paramInt + 2)] = (f5 * paramFloat2 - f7);
     paramArrayOfFloat[(paramInt + 6)] = (paramFloat4 * paramFloat2 + f6);
-    paramArrayOfFloat[(paramInt + 10)] = (paramFloat1 * paramFloat1 * paramFloat2 + f4);
+    paramArrayOfFloat[(paramInt + 10)] = (f4 + paramFloat2 * (paramFloat1 * paramFloat1));
   }
   
   public static void translateM(float[] paramArrayOfFloat, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
@@ -457,24 +471,35 @@ public class Matrix
     {
       int j = paramInt + i;
       int k = j + 12;
-      paramArrayOfFloat[k] += paramArrayOfFloat[j] * paramFloat1 + paramArrayOfFloat[(j + 4)] * paramFloat2 + paramArrayOfFloat[(j + 8)] * paramFloat3;
+      float f1 = paramArrayOfFloat[k];
+      float f2 = paramArrayOfFloat[j];
+      float f3 = paramArrayOfFloat[(j + 4)];
+      paramArrayOfFloat[k] = (paramArrayOfFloat[(j + 8)] * paramFloat3 + (f2 * paramFloat1 + f3 * paramFloat2) + f1);
       i += 1;
     }
   }
   
   public static void translateM(float[] paramArrayOfFloat1, int paramInt1, float[] paramArrayOfFloat2, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    int i = 0;
-    while (i < 12)
+    int k = 0;
+    int j = 0;
+    int i;
+    for (;;)
     {
-      paramArrayOfFloat1[(paramInt1 + i)] = paramArrayOfFloat2[(paramInt2 + i)];
-      i += 1;
+      i = k;
+      if (j >= 12) {
+        break;
+      }
+      paramArrayOfFloat1[(paramInt1 + j)] = paramArrayOfFloat2[(paramInt2 + j)];
+      j += 1;
     }
-    i = 0;
     while (i < 4)
     {
-      int j = paramInt2 + i;
-      paramArrayOfFloat1[(paramInt1 + i + 12)] = (paramArrayOfFloat2[j] * paramFloat1 + paramArrayOfFloat2[(j + 4)] * paramFloat2 + paramArrayOfFloat2[(j + 8)] * paramFloat3 + paramArrayOfFloat2[(j + 12)]);
+      j = paramInt2 + i;
+      float f1 = paramArrayOfFloat2[j];
+      float f2 = paramArrayOfFloat2[(j + 4)];
+      float f3 = paramArrayOfFloat2[(j + 8)];
+      paramArrayOfFloat1[(paramInt1 + i + 12)] = (paramArrayOfFloat2[(j + 12)] + (f1 * paramFloat1 + f2 * paramFloat2 + f3 * paramFloat3));
       i += 1;
     }
   }
@@ -495,7 +520,7 @@ public class Matrix
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.ar.sensor.representation.Matrix
  * JD-Core Version:    0.7.0.1
  */

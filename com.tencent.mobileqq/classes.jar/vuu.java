@@ -1,47 +1,96 @@
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.armap.wealthgod.ARMapThreadStubReceiver;
+import com.tencent.qphone.base.util.QLog;
 
-class vuu
-  implements Runnable
+public class vuu
+  implements Handler.Callback
 {
-  vuu(vus paramvus, List paramList) {}
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Handler jdField_a_of_type_AndroidOsHandler;
+  private String jdField_a_of_type_JavaLangString;
+  private vuw jdField_a_of_type_Vuw;
   
-  public void run()
+  public vuu(Context paramContext)
   {
-    Iterator localIterator1 = this.jdField_a_of_type_Vus.a.a.iterator();
-    label103:
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
+    b();
+  }
+  
+  private void b()
+  {
+    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
+    {
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new vuv(this);
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("com.tencent.mobileqq.armap.ACTION_START_THREAD_COMPLETED");
+      this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
+    }
+  }
+  
+  private void c()
+  {
+    if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null)
+    {
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
+    }
+  }
+  
+  public void a()
+  {
+    c();
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.jdField_a_of_type_AndroidOsHandler = null;
+    }
+    this.jdField_a_of_type_AndroidContentContext = null;
+    this.jdField_a_of_type_Vuw = null;
+  }
+  
+  public void a(String paramString, long paramLong, vuw paramvuw)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PreCallUpToolProc", 2, String.format("callUpToolProc from=%s", new Object[] { paramString }));
+    }
+    this.jdField_a_of_type_Vuw = paramvuw;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    paramvuw = new Intent(this.jdField_a_of_type_AndroidContentContext, ARMapThreadStubReceiver.class);
+    paramvuw.setAction("com.tencent.mobileqq.armap.ACTION_START_THREAD");
+    paramvuw.putExtra("from", paramString);
+    this.jdField_a_of_type_AndroidContentContext.sendBroadcast(paramvuw);
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(108);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(108, paramLong);
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
     for (;;)
     {
-      if (localIterator1.hasNext())
-      {
-        String str = (String)localIterator1.next();
-        Iterator localIterator2 = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator2.hasNext())
-        {
-          LocalMediaInfo localLocalMediaInfo = (LocalMediaInfo)localIterator2.next();
-          if (str.equals(localLocalMediaInfo.path)) {
-            localLocalMediaInfo.mChecked = true;
-          }
-        }
-      }
-      for (int i = 1;; i = 0)
-      {
-        if (i != 0) {
-          break label103;
-        }
-        localIterator1.remove();
-        break;
-        return;
+      return true;
+      if (this.jdField_a_of_type_Vuw != null) {
+        this.jdField_a_of_type_Vuw.a();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     vuu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/ki6" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:id="@id/kih" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/drp" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        <RelativeLayout android:id="@id/ki0" android:background="@drawable/aic" android:paddingLeft="14.5dip" android:paddingRight="14.5dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/kih">
+            <TextView android:textSize="14.0sp" android:textColor="#ff777777" android:gravity="center" android:id="@id/kie" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/fwt" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/ki2" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginTop="15.0dip" android:layout_below="@id/kie">
+                <Button android:id="@id/ki7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginRight="9.0dip" android:text="@string/pvr" android:layout_weight="1.0" style="@style/kn" />
+                <Button android:id="@id/ki8" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/pw4" android:layout_weight="1.0" style="@style/kn" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:id="@id/ki3" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginTop="9.0dip" android:layout_below="@id/ki2">
+                <Button android:id="@id/ki9" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginRight="9.0dip" android:text="@string/q16" android:layout_weight="1.0" style="@style/kn" />
+                <Button android:id="@id/ki_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/px9" android:layout_weight="1.0" style="@style/kn" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:id="@id/ki4" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginTop="9.0dip" android:layout_below="@id/ki3">
+                <Button android:id="@id/kia" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginRight="9.0dip" android:text="@string/pzh" android:layout_weight="1.0" style="@style/kn" />
+                <Button android:id="@id/kib" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/q0i" android:layout_weight="1.0" style="@style/kn" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:id="@id/ki5" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginTop="9.0dip" android:layout_below="@id/ki4">
+                <Button android:id="@id/kic" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginRight="9.0dip" android:text="@string/pwm" android:layout_weight="1.0" style="@style/kn" />
+                <Button android:id="@id/kid" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/q0x" android:layout_weight="1.0" style="@style/kn" />
+            </LinearLayout>
+            <ImageView android:id="@id/ki1" android:background="#ffededed" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="10.0dip" android:layout_below="@id/ki5" />
+            <Button android:textSize="16.0sp" android:textColor="@color/a23" android:id="@id/khx" android:background="@drawable/a1g" android:layout_width="140.0dip" android:layout_height="30.0dip" android:layout_marginTop="10.0dip" android:text="@string/q02" android:layout_below="@id/ki1" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/khz" android:background="@drawable/a1f" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="46.0dip" android:layout_below="@id/ki0">
+            <TextView android:textSize="12.0sp" android:textColor="#99000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pua" android:drawableLeft="@drawable/drm" android:drawablePadding="2.0dip" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <ImageView android:id="@id/kig" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/drn" android:layout_below="@id/ki0" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <Button android:textSize="14.0sp" android:textColor="@color/a23" android:id="@id/khy" android:background="@drawable/a1d" android:visibility="gone" android:layout_width="@dimen/atl" android:layout_height="30.0dip" android:text="@string/pv0" />
+</FrameLayout>

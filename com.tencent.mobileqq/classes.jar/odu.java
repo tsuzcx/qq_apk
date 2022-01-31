@@ -1,33 +1,33 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.network.response.GetLocationResponse;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.LocalVideoPusher;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.LocalVideoPusher.Response;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.common.AddressHelper.AddressCallBack;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class odu
-  implements AddressHelper.AddressCallBack
+  implements AladdinConfigHandler
 {
-  public odu(LocalVideoPusher paramLocalVideoPusher, ArrayList paramArrayList, LocalMediaInfo paramLocalMediaInfo) {}
-  
-  public void a(ErrorMessage paramErrorMessage)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    paramErrorMessage = new LocalVideoPusher.Response();
-    paramErrorMessage.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    paramErrorMessage = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistLocalVideoPusher.b.obtainMessage(2, paramErrorMessage);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistLocalVideoPusher.b.sendMessage(paramErrorMessage);
+    QLog.d("KandianOpenOptConfigHandler", 2, "[onReceiveConfig] " + paramString);
+    paramString = ocx.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("KandianOpenOptConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "opt_open_cost")) {
+        bgmq.a("preload_controller", Boolean.valueOf("1".equals(str2)));
+      }
+    }
+    return true;
   }
   
-  public void a(GetLocationResponse paramGetLocationResponse)
+  public void onWipeConfig(int paramInt)
   {
-    LocalVideoPusher.Response localResponse = new LocalVideoPusher.Response();
-    localResponse.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    localResponse.b = (paramGetLocationResponse.d + paramGetLocationResponse.e);
-    localResponse.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistLocalVideoPusher.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.addedDate);
-    paramGetLocationResponse = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistLocalVideoPusher.b.obtainMessage(2, localResponse);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistLocalVideoPusher.b.sendMessage(paramGetLocationResponse);
+    bgmq.a("preload_controller", Boolean.valueOf(true));
   }
 }
 

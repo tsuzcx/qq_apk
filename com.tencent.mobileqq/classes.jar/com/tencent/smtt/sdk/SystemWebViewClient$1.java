@@ -1,0 +1,20 @@
+package com.tencent.smtt.sdk;
+
+class SystemWebViewClient$1
+  implements Runnable
+{
+  SystemWebViewClient$1(SystemWebViewClient paramSystemWebViewClient) {}
+  
+  public void run()
+  {
+    if ((!TbsShareManager.forceLoadX5FromTBSDemo(SystemWebViewClient.access$000(this.this$0).getContext())) && (TbsDownloader.needDownload(SystemWebViewClient.access$000(this.this$0).getContext(), false))) {
+      TbsDownloader.startDownload(SystemWebViewClient.access$000(this.this$0).getContext());
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     com.tencent.smtt.sdk.SystemWebViewClient.1
+ * JD-Core Version:    0.7.0.1
+ */

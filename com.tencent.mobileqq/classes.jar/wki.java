@@ -1,44 +1,33 @@
-import com.tencent.mobileqq.activity.bless.BlessManager;
-import com.tencent.mobileqq.activity.bless.BlessTask;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import java.io.File;
 
-public class wki
-  extends DownloadListener
+class wki
+  implements wkc
 {
-  public wki(BlessManager paramBlessManager, String paramString1, String paramString2) {}
+  wki(wkh paramwkh, long paramLong) {}
   
-  public void onCancel(DownloadTask paramDownloadTask)
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager).remove(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void onDone(DownloadTask paramDownloadTask)
-  {
-    BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager).remove(this.jdField_a_of_type_JavaLangString);
-    if (paramDownloadTask.a() == 3)
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BlessManager", 2, "download finished " + this.b);
-      }
-      if ((this.b != null) && (BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager) != null) && (this.b.equals(BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager).starVideo))) {
-        BlessManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager);
-      }
+      QLog.d(".troop.VideoCombineHelper", 2, "combineWording end! isSuccess:" + paramBoolean + " path = " + paramString1);
+      QLog.d(".troop.trace_video_combine", 2, "combineWordingTime:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
     }
-    while (!QLog.isColorLevel())
+    File localFile = new File(paramString1);
+    if ((paramBoolean) && (localFile.exists()))
     {
-      return;
-      BlessManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager);
+      this.jdField_a_of_type_Wkh.a.jdField_a_of_type_Wke.e = paramString1;
+      this.jdField_a_of_type_Wkh.a.jdField_a_of_type_Wkf.a.b(this.jdField_a_of_type_Wkh.a.jdField_a_of_type_Wkf);
+      this.jdField_a_of_type_Wkh.a.jdField_a_of_type_Wkf.b();
       return;
     }
-    QLog.d("BlessManager", 2, "downloadFile failed: " + paramDownloadTask.b + " code=" + paramDownloadTask.a);
+    this.jdField_a_of_type_Wkh.a.jdField_a_of_type_Wkf.d = paramString2;
+    this.jdField_a_of_type_Wkh.a.jdField_a_of_type_Wkf.a.a(this.jdField_a_of_type_Wkh.a.jdField_a_of_type_Wkf);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wki
  * JD-Core Version:    0.7.0.1
  */

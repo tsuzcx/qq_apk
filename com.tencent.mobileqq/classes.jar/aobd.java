@@ -1,19 +1,23 @@
-import android.view.ViewTreeObserver.OnScrollChangedListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.FileAssistantActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aobd
-  implements ViewTreeObserver.OnScrollChangedListener
+  extends atdh
 {
-  public aobd(EditVideoButton paramEditVideoButton) {}
+  public aobd(FileAssistantActivity paramFileAssistantActivity) {}
   
-  public void onScrollChanged()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    EditVideoButton.a(this.a);
+    QLog.i("FileAssistantActivity", 1, " fileRedTouch get push GameCenterObserver ");
+    paramBundle = this.a.a.obtainMessage(1);
+    this.a.a.sendMessage(paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aobd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,15 @@
-import com.tencent.mobileqq.filemanager.core.ThumbHttpDownloader;
-import com.tencent.mobileqq.filemanager.core.ThumbHttpDownloader.DownloadTask;
+import android.widget.TextView;
 
-public class adhj
-  implements Runnable
+class adhj
+  extends acjc
 {
-  public adhj(ThumbHttpDownloader paramThumbHttpDownloader, ThumbHttpDownloader.DownloadTask paramDownloadTask) {}
+  TextView b;
   
-  public void run()
-  {
-    ThumbHttpDownloader.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreThumbHttpDownloader, this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreThumbHttpDownloader$DownloadTask);
-  }
+  adhj(adfw paramadfw) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adhj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,19 @@
-import com.tencent.mobileqq.activity.aio.item.ArkAppView.Callback;
-import com.tencent.mobileqq.flashchat.FlashChatPanel;
-
 public class adsc
-  implements ArkAppView.Callback
 {
-  public adsc(FlashChatPanel paramFlashChatPanel) {}
+  public int a;
+  public String a;
+  public int b;
   
-  public void a() {}
+  public adsc(int paramInt1, String paramString, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramInt2;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adsc
  * JD-Core Version:    0.7.0.1
  */

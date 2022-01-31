@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
 
-class rzm
-  implements Runnable
+public final class rzm
+  implements Parcelable.Creator<WSPushStrategyInfo>
 {
-  rzm(rzl paramrzl) {}
-  
-  public void run()
+  public WSPushStrategyInfo a(Parcel paramParcel)
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
+    return new WSPushStrategyInfo(paramParcel);
+  }
+  
+  public WSPushStrategyInfo[] a(int paramInt)
+  {
+    return new WSPushStrategyInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rzm
  * JD-Core Version:    0.7.0.1
  */

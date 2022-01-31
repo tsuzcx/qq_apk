@@ -1,64 +1,83 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayBasePanel;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditBasePanel;
-import com.tencent.util.ProfilePerformanceReport;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class afhz
-  extends Handler
+class afhz
+  extends BaseAdapter
 {
-  public afhz(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  private afhz(afhx paramafhx) {}
   
-  public void handleMessage(Message paramMessage)
+  public int getCount()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-    case 101: 
-    case 100: 
-      do
-      {
-        do
-        {
-          return;
-          this.a.a();
-          ProfilePerformanceReport localProfilePerformanceReport = ProfilePerformanceReport.b;
-          if ((localProfilePerformanceReport != null) && (localProfilePerformanceReport.a())) {
-            localProfilePerformanceReport.b(5);
-          }
-        } while (paramMessage.obj == null);
-        paramMessage = (NearbyPeopleCard)paramMessage.obj;
-        this.a.b = true;
-        NearbyPeopleProfileActivity.a(this.a, paramMessage, true, false);
-        return;
-      } while (NearbyPeopleProfileActivity.a(this.a) == null);
-      NearbyPeopleProfileActivity.a(this.a).b();
-      return;
-    case 102: 
-      NearbyPeopleProfileActivity.a(this.a).a(paramMessage.arg1, paramMessage.arg2);
-      return;
-    case 202: 
-      NearbyPeopleProfileActivity.a(this.a).a(true);
-      this.a.a.sendEmptyMessageDelayed(203, 1500L);
-      return;
-    case 203: 
-      NearbyPeopleProfileActivity.a(this.a).a(false);
-      return;
-    case 204: 
-      this.a.a(this.a.getString(2131437475));
-      return;
-    case 207: 
-      this.a.a("正在加载...");
-      return;
+    return 6;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = LayoutInflater.from(afhx.a(this.a)).inflate(2131496938, null);
     }
-    this.a.a();
+    int j;
+    int i;
+    switch (paramInt)
+    {
+    case 4: 
+    default: 
+      j = 2130838728;
+      i = 2131653605;
+      paramInt = 2131654157;
+    }
+    for (;;)
+    {
+      paramView = (ImageView)paramViewGroup.findViewById(2131297128);
+      TextView localTextView = (TextView)paramViewGroup.findViewById(2131297140);
+      paramView.setImageResource(j);
+      localTextView.setText(i);
+      if (AppSetting.c) {
+        paramViewGroup.setContentDescription(afhx.a(this.a).getString(paramInt));
+      }
+      return paramViewGroup;
+      i = 2131653620;
+      j = 2130838732;
+      paramInt = 2131654173;
+      continue;
+      i = 2131653622;
+      j = 2130838733;
+      paramInt = 2131654174;
+      continue;
+      i = 2131653628;
+      j = 2130838736;
+      paramInt = 2131654181;
+      continue;
+      i = 2131653617;
+      j = 2130838730;
+      paramInt = 2131654164;
+      continue;
+      paramInt = 2131651399;
+      i = 2131651399;
+      j = 2130841846;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afhz
  * JD-Core Version:    0.7.0.1
  */

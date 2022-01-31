@@ -1,58 +1,55 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.biz.pubaccount.util.GalleryShareHelper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import java.io.IOException;
-import java.util.Map;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
+import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.3.1;
+import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.3.2;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import java.util.ArrayList;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
 
 public class mxz
-  implements Runnable
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  public mxz(GalleryShareHelper paramGalleryShareHelper, String paramString, Map paramMap, int paramInt) {}
+  public mxz(VideoCoverFragment paramVideoCoverFragment) {}
   
-  public void run()
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    label149:
-    try
+    VideoCoverFragment.a(this.a);
+    int i = this.a.a();
+    if ((i > 1) && (VideoCoverFragment.a(this.a) != null))
     {
-      localObject = HttpUtil.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
-      if (localObject == null) {
-        break label120;
+      if (VideoCoverFragment.a(this.a) != i - 1) {
+        break label209;
       }
-      localObject = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
-      if (localObject == null) {
-        break label120;
-      }
-      int i = ((Bitmap)localObject).getWidth();
-      int j = ((Bitmap)localObject).getHeight();
-      if (i * j <= 8000) {
-        break label149;
-      }
-      double d = Math.sqrt(8000.0D / (i * j));
-      Bitmap localBitmap = Bitmap.createScaledBitmap((Bitmap)localObject, (int)(i * d), (int)(j * d), true);
-      ((Bitmap)localObject).recycle();
-      localObject = localBitmap;
+      ThreadManager.getUIHandler().post(new VideoCoverFragment.3.1(this));
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    for (;;)
     {
-      Object localObject;
-      break label120;
+      paramTVK_IMediaPlayer = ((mxv)VideoCoverFragment.a(this.a).jdField_a_of_type_JavaUtilArrayList.get(VideoCoverFragment.a(this.a))).b;
+      awqx.a(null, "dc00898", "", VideoCoverFragment.a(this.a).jdField_a_of_type_Mxw.a, "0X8008F65", "0X8008F65", 0, 0, VideoCoverFragment.a(this.a).jdField_a_of_type_Mxw.c, "", paramTVK_IMediaPlayer, VideoCoverFragment.a(this.a).jdField_a_of_type_Mxw.b);
+      Integer localInteger = (Integer)PublicAccountAdvertisementActivity.a.get(paramTVK_IMediaPlayer);
+      i = (int)(((mxv)VideoCoverFragment.a(this.a).jdField_a_of_type_JavaUtilArrayList.get(VideoCoverFragment.a(this.a))).a.a / 1000L);
+      if (localInteger == null) {
+        break;
+      }
+      PublicAccountAdvertisementActivity.a.put(paramTVK_IMediaPlayer, Integer.valueOf(localInteger.intValue() + i));
+      return;
+      label209:
+      ThreadManager.getUIHandler().post(new VideoCoverFragment.3.2(this));
     }
-    catch (IOException localIOException)
-    {
-      label120:
-      for (;;) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverFragment", 2, "current time = null");
     }
-    this.jdField_a_of_type_JavaUtilMap.put("image", localObject);
-    GalleryShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper).runOnUiThread(new mya(this));
+    PublicAccountAdvertisementActivity.a.put(paramTVK_IMediaPlayer, Integer.valueOf(i));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     mxz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,37 @@
-import com.tencent.mobileqq.ar.arengine.ARWorldCupBaseResDownload;
-import com.tencent.mobileqq.shortvideo.gesture.GestureMgr;
-import com.tencent.mobileqq.shortvideo.gesture.GestureMgr.GestureStatusListener;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.graphics.Color;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import mqq.os.MqqHandler;
 
 public class aapk
-  implements GestureMgr.GestureStatusListener
+  implements bbhz
 {
-  public aapk(ARWorldCupBaseResDownload paramARWorldCupBaseResDownload) {}
+  public aapk(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void a(int paramInt)
+  public void a(Dialog paramDialog, View paramView, boolean paramBoolean)
   {
-    if ((paramInt >= 0) && (paramInt <= 99))
-    {
-      QLog.i("AREngine_ARWorldCupBaseResDownload", 2, "downloadWorldCupBaseRes1. download... progress = " + paramInt);
-      ARWorldCupBaseResDownload.a(this.a, 1, paramInt);
+    this.a.app.a().a(DiscussionInfoCardActivity.a(this.a), 3000);
+    this.a.app.a().e(DiscussionInfoCardActivity.a(this.a), 3000);
+    aisc.a(this.a.app, "chat_history_confirm_del_msg");
+    paramDialog = this.a.app.getHandler(Conversation.class);
+    paramView = paramDialog.obtainMessage(1017);
+    paramView.obj = DiscussionInfoCardActivity.a(this.a);
+    paramView.arg1 = 3000;
+    paramDialog.sendMessage(paramView);
+    bbmy.a(this.a, 2, this.a.getString(2131625258), 0).a();
+    if (this.a.a != null) {
+      ((TextView)this.a.a.findViewById(2131311534)).setTextColor(Color.parseColor("#cccccc"));
     }
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
-  {
-    if (paramBoolean1)
-    {
-      QLog.i("AREngine_ARWorldCupBaseResDownload", 2, "downloadWorldCupBaseRes1. download successfully. bEnableGesture = " + paramBoolean2);
-      GestureMgr.a().a(false, this);
-      ARWorldCupBaseResDownload.a(this.a, 1, 100);
-      return;
-    }
-    QLog.i("AREngine_ARWorldCupBaseResDownload", 2, "downloadWorldCupBaseRes1. download failed. error code = " + paramInt);
-    GestureMgr.a().a(false, this);
-    ARWorldCupBaseResDownload.a(this.a, 1, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aapk
  * JD-Core Version:    0.7.0.1
  */

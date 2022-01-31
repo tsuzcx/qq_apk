@@ -1,38 +1,39 @@
-import QQService.SvcDevLoginInfo;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-
 public class ter
-  implements View.OnClickListener
+  implements teq
 {
-  public ter(LoginInfoActivity paramLoginInfoActivity, Button paramButton, int paramInt) {}
+  private tdo jdField_a_of_type_Tdo;
+  private tet jdField_a_of_type_Tet;
   
-  public void onClick(View paramView)
+  public ter(tdo paramtdo, tet paramtet)
   {
-    if (!NetworkUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity))
-    {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity, this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getString(2131433023), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getTitleBarHeight());
-      return;
+    this.jdField_a_of_type_Tdo = paramtdo;
+    this.jdField_a_of_type_Tet = paramtet;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Tdo != null) {
+      this.jdField_a_of_type_Tdo.c(this.jdField_a_of_type_Tet);
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app, "CliOper", "", "", "My_eq", "Kick_off_PC", 0, 0, "", "", "", "");
-    paramView = (SvcDevLoginInfo)this.jdField_a_of_type_AndroidWidgetButton.getTag();
-    if (paramView != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app.getSubAccountKey(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app.getAccount(), this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.app.getAccount(), new tes(this, paramView));
-      return;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Tdo != null) {
+      this.jdField_a_of_type_Tdo.d(this.jdField_a_of_type_Tet);
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getString(2131436529), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginInfoActivity.getTitleBarHeight());
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Tdo != null) {
+      this.jdField_a_of_type_Tdo.e(this.jdField_a_of_type_Tet);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ter
  * JD-Core Version:    0.7.0.1
  */

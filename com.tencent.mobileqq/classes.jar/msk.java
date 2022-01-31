@@ -1,17 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
-
-public class msk
-  implements View.OnClickListener
+public abstract interface msk
 {
-  public msk(FastWebVideoFeedsListView paramFastWebVideoFeedsListView) {}
-  
-  public void onClick(View paramView) {}
+  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, long paramLong, String paramString3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     msk
  * JD-Core Version:    0.7.0.1
  */

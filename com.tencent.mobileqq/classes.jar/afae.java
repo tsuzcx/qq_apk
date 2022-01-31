@@ -1,26 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorAdapter.ChildItemHolder;
-import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
-import com.tencent.mobileqq.nearpeople.mytab.NearbyMineHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemRequestInfoView;
 
 public class afae
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public afae(NearbyVisitorListActivity paramNearbyVisitorListActivity) {}
+  public afae(SystemRequestInfoView paramSystemRequestInfoView) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramView.getTag() instanceof NearbyVisitorAdapter.ChildItemHolder))
-    {
-      paramView = (NearbyVisitorAdapter.ChildItemHolder)paramView.getTag();
-      NearbyMineHelper.a(this.a.a, this.a, paramView.a);
-    }
+    this.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afae
  * JD-Core Version:    0.7.0.1
  */

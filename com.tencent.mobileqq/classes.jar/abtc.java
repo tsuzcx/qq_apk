@@ -1,57 +1,26 @@
-import android.os.Build.VERSION;
-import java.util.AbstractCollection;
-import java.util.ArrayDeque;
-import java.util.concurrent.ArrayBlockingQueue;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.SplashActivity.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class abtc
+  extends BroadcastReceiver
 {
-  final AbstractCollection a;
+  public abtc(SplashActivity.1 param1) {}
   
-  public abtc(int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (Build.VERSION.SDK_INT >= 9)
-    {
-      this.a = new ArrayDeque();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("SplashActivity", 2, "onReceive:before_account_change");
     }
-    this.a = new ArrayBlockingQueue(30);
-  }
-  
-  public Object a()
-  {
-    if (Build.VERSION.SDK_INT >= 9)
-    {
-      if ((this.a instanceof ArrayDeque)) {
-        return ((ArrayDeque)this.a).poll();
-      }
-    }
-    else if ((this.a instanceof ArrayBlockingQueue)) {
-      return ((ArrayBlockingQueue)this.a).poll();
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.a.clear();
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (Build.VERSION.SDK_INT >= 9) {
-      if ((this.a instanceof ArrayDeque)) {
-        ((ArrayDeque)this.a).offer(paramObject);
-      }
-    }
-    while (!(this.a instanceof ArrayBlockingQueue)) {
-      return;
-    }
-    ((ArrayBlockingQueue)this.a).offer(paramObject);
+    this.a.this$0.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abtc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,14 @@
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
-import com.tencent.mobileqq.utils.httputils.HttpMsg;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLSession;
-
-public class akol
-  implements HostnameVerifier
+public abstract interface akol
 {
-  public akol(HttpCommunicator paramHttpCommunicator, String paramString, HttpMsg paramHttpMsg) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public boolean verify(String paramString, SSLSession paramSSLSession)
-  {
-    boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.jdField_a_of_type_JavaLangString, paramSSLSession);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpCommunicator.a(this.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg, "httpsSSLProcess,HostnameVerifier", "reqhost = " + this.jdField_a_of_type_JavaLangString + ",address = " + paramSSLSession.getPeerHost() + "result:isverify = " + bool);
-    return bool;
-  }
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract void j_(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akol
  * JD-Core Version:    0.7.0.1
  */

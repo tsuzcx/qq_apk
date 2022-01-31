@@ -13,8 +13,8 @@ public class ResizeURLImageView
 {
   private float jdField_a_of_type_Float = 1.0F;
   private Context jdField_a_of_type_AndroidContentContext;
+  private boolean jdField_a_of_type_Boolean;
   private float b = 1.0F;
-  private boolean d;
   
   public ResizeURLImageView(Context paramContext)
   {
@@ -36,8 +36,8 @@ public class ResizeURLImageView
   private void a(AttributeSet paramAttributeSet)
   {
     paramAttributeSet = this.jdField_a_of_type_AndroidContentContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ResizeURLImageView);
-    this.jdField_a_of_type_Float = paramAttributeSet.getFloat(0, 1.0F);
-    this.b = paramAttributeSet.getFloat(1, 1.0F);
+    this.jdField_a_of_type_Float = paramAttributeSet.getFloat(1, 1.0F);
+    this.b = paramAttributeSet.getFloat(0, 1.0F);
     paramAttributeSet.recycle();
   }
   
@@ -57,17 +57,17 @@ public class ResizeURLImageView
   
   public void requestLayout()
   {
-    if (!this.d) {
+    if (!this.jdField_a_of_type_Boolean) {
       super.requestLayout();
     }
   }
   
   public void setImageDrawable(Drawable paramDrawable)
   {
-    this.d = true;
+    this.jdField_a_of_type_Boolean = true;
     super.setImageDrawable(null);
     super.setImageDrawable(paramDrawable);
-    this.d = false;
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 

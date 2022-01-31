@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService.IGetTotalTime;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
 
 public class admo
-  implements FileViewMusicService.IGetTotalTime
+  extends acjc
 {
-  public admo(MusicFilePresenter paramMusicFilePresenter) {}
-  
-  public void a(int paramInt)
-  {
-    this.a.a(paramInt);
-  }
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  CornerImageView jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelCornerImageView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
+  TextView d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     admo
  * JD-Core Version:    0.7.0.1
  */

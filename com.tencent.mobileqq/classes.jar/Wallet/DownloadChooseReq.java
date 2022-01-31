@@ -8,11 +8,11 @@ import java.util.ArrayList;
 public final class DownloadChooseReq
   extends JceStruct
 {
-  static ArrayList cache_vecResInfo = new ArrayList();
+  static ArrayList<ResInfo> cache_vecResInfo = new ArrayList();
   public int iActId = 1001;
   public int iPlatForm = 1;
   public long iUin;
-  public ArrayList vecResInfo;
+  public ArrayList<ResInfo> vecResInfo;
   
   static
   {

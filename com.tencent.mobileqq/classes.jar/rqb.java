@@ -1,25 +1,38 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.activity.TrafficStatActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
 public class rqb
-  implements View.OnClickListener
+  extends ajpe
 {
-  public rqb(AssistantSettingActivity paramAssistantSettingActivity) {}
+  rpw jdField_a_of_type_Rpw = null;
   
-  public void onClick(View paramView)
+  public rqb(rpv paramrpv, rpw paramrpw)
   {
-    paramView = new Intent(this.a, TrafficStatActivity.class);
-    this.a.startActivity(paramView);
-    ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_traffic_statistics", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Rpw = paramrpw;
+  }
+  
+  public void a(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SubscriptRecommendAdapter", 2, "onFollowPublicAccount isSuccess: " + paramBoolean + " | uin: " + paramString + " | mRecommendItem: " + this.jdField_a_of_type_Rpw);
+    }
+    if (this.jdField_a_of_type_Rpw != null)
+    {
+      paramString = this.jdField_a_of_type_Rpw;
+      if (!paramBoolean) {
+        break label76;
+      }
+    }
+    label76:
+    for (int i = 1;; i = 0)
+    {
+      paramString.a(i);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rqb
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class submsgtype0xee$OrdinaryPushInfo
-  extends MessageMicro
+  extends MessageMicro<OrdinaryPushInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "msg_label_control_info" }, new Object[] { null }, OrdinaryPushInfo.class);
   public submsgtype0xee.OrangeControlInfo msg_label_control_info = new submsgtype0xee.OrangeControlInfo();

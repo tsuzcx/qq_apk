@@ -1,35 +1,19 @@
-import com.tencent.mobileqq.activity.RecentLoginDevActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
 
-public class tsz
-  implements Runnable
+class tsz
+  implements MediaPlayer.OnPreparedListener
 {
-  public tsz(RecentLoginDevActivity paramRecentLoginDevActivity) {}
+  tsz(tsy paramtsy, tst paramtst) {}
   
-  public void run()
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    try
-    {
-      if ((RecentLoginDevActivity.a(this.a) != null) && (RecentLoginDevActivity.a(this.a).isShowing()))
-      {
-        RecentLoginDevActivity.a(this.a).dismiss();
-        RecentLoginDevActivity.a(this.a).cancel();
-      }
-      RecentLoginDevActivity.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    this.jdField_a_of_type_Tst.a_(this.jdField_a_of_type_Tsy);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tsz
  * JD-Core Version:    0.7.0.1
  */

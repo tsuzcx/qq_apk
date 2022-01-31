@@ -1,21 +1,24 @@
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.ar.ARLBSPOIDialog;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import mqq.app.QQPermissionCallback;
 
 public class aadx
-  implements Runnable
+  implements QQPermissionCallback
 {
-  public aadx(ARLBSPOIDialog paramARLBSPOIDialog) {}
+  public aadx(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if (!this.a.jdField_a_of_type_Boolean) {
-      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    }
+    babr.b(this.a.a());
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.aM();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aadx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,83 +1,72 @@
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.widget.Toast;
-import com.tencent.biz.widgets.ShareAioResultDialog;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.agent.BindGroupConfirmActivity;
-import com.tencent.open.base.http.HttpCgiAsyncTask.Callback;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.support.v4.util.LruCache;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class aliu
-  implements HttpCgiAsyncTask.Callback
+class aliu
+  extends Handler
 {
-  public aliu(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
-  
-  public void a(Exception paramException)
+  aliu(alis paramalis, Looper paramLooper)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-    }
-    this.a.b(paramException);
+    super(paramLooper);
   }
   
-  public void a(JSONObject paramJSONObject)
+  public void handleMessage(Message paramMessage)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-    }
-    try
-    {
-      if (paramJSONObject.getInt("ret") == 0)
+    if (paramMessage.what == 1000) {
+      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
       {
-        if (this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog == null)
-        {
-          this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog = new ShareAioResultDialog(this.a);
-          this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131428667));
-          this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.a.jdField_a_of_type_AndroidContentResResources.getString(2131428668, new Object[] { this.a.d }), this.a);
-          this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.a(this.a);
-        }
-        if (this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.isShowing()) {
-          return;
-        }
-        this.a.jdField_a_of_type_ComTencentBizWidgetsShareAioResultDialog.show();
-        return;
-      }
-      if ((paramJSONObject.getInt("ret") == 10071) || (paramJSONObject.getInt("ret") == 10000))
-      {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.b(this.a, 230, this.a.jdField_a_of_type_AndroidContentResResources.getString(2131428664), this.a.jdField_a_of_type_AndroidContentResResources.getString(2131428665), 2131434953, 2131433030, this.a, null);
-        }
-        paramJSONObject = paramJSONObject.getString("msg");
-        if (!TextUtils.isEmpty(paramJSONObject)) {
-          this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(paramJSONObject);
-        }
-        if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-          return;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-        return;
+        paramMessage = new ArrayList(this.a.jdField_a_of_type_JavaUtilArrayList.size());
+        paramMessage.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
+        this.a.a(paramMessage);
       }
     }
-    catch (Exception paramJSONObject)
+    Object localObject;
+    String str;
+    do
     {
-      a(paramJSONObject);
+      this.a.jdField_a_of_type_JavaUtilArrayList.removeAll(paramMessage);
+      for (;;)
+      {
+        return;
+        if (paramMessage.what == 1002) {
+          try
+          {
+            localObject = (Bundle)paramMessage.obj;
+            paramMessage = (Bitmap)((Bundle)localObject).getParcelable("bmp");
+            str = ((Bundle)localObject).getString("uin");
+            localObject = ((Bundle)localObject).getString("path");
+            if (paramMessage != null) {
+              this.a.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(str, paramMessage);
+            }
+            Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
+            while (localIterator.hasNext())
+            {
+              aliw localaliw = (aliw)localIterator.next();
+              if (localaliw != null) {
+                localaliw.a(str, (String)localObject, paramMessage);
+              }
+            }
+            if (!QLog.isColorLevel()) {}
+          }
+          catch (Exception paramMessage) {}
+        }
+      }
+      QLog.e("NonMainAppHeadLoader", 2, "refreshImg, exception:" + paramMessage.toString());
       return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("BindGroupConfirmActivity", 2, "The JSONObject has error!");
-    }
-    paramJSONObject = paramJSONObject.getString("msg");
-    QQToast.a(CommonDataAdapter.a().a(), paramJSONObject, 0).a(this.a.getTitleBarHeight()).show();
+    } while (!QLog.isColorLevel());
+    QLog.d("NonMainAppHeadLoader", 2, "refreshImg, uin:" + str + ", path=" + (String)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aliu
  * JD-Core Version:    0.7.0.1
  */

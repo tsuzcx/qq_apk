@@ -1,21 +1,20 @@
 package com.tencent.mobileqq.webview.sonic;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.biz.AuthorizeConfig;
-import com.tencent.biz.common.util.Util;
+import axwx;
+import badq;
+import bbdc;
+import bbee;
+import bbmy;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.transfile.dns.InnerDns;
-import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
-import com.tencent.mobileqq.webview.webso.WebSoUtils;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import com.tencent.smtt.sdk.CookieManager;
@@ -26,18 +25,45 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import mkw;
+import mpw;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
 
 public class SonicRuntimeImpl
   extends SonicRuntime
 {
+  public static final String TAG = "SonicSdkImpl_SonicRuntimeImpl";
+  
   public SonicRuntimeImpl(Context paramContext)
   {
     super(paramContext);
   }
   
-  public Object createWebResourceResponse(String paramString1, String paramString2, InputStream paramInputStream, Map paramMap)
+  public static boolean enableQuicForSonic()
+  {
+    boolean bool2 = false;
+    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
+    boolean bool1 = bool2;
+    int i;
+    if (localObject != null)
+    {
+      i = QbSdk.getTbsVersion(BaseApplicationImpl.sApplication.getApplicationContext());
+      if (i < 44401) {
+        break label98;
+      }
+      localObject = ((AppRuntime)localObject).getAccount();
+    }
+    for (bool1 = BaseApplicationImpl.sApplication.getSharedPreferences("sp_x5_config_" + (String)localObject, 4).getBoolean("key_x5_enable_quic", false);; bool1 = bool2)
+    {
+      QLog.d("SonicSdkImpl_SonicRuntimeImpl", 1, "enableQuicForSonic: " + bool1);
+      return bool1;
+      label98:
+      QLog.w("SonicSdkImpl_SonicRuntimeImpl", 1, "enableQuicForSonic, x5 version is too low " + i);
+    }
+  }
+  
+  public Object createWebResourceResponse(String paramString1, String paramString2, InputStream paramInputStream, Map<String, String> paramMap)
   {
     paramString1 = new WebResourceResponse(paramString1, paramString2, paramInputStream);
     paramString1.setResponseHeaders(paramMap);
@@ -64,7 +90,7 @@ public class SonicRuntimeImpl
       long l = System.currentTimeMillis();
       Object localObject1 = localObject4;
       localObject2 = localObject3;
-      if (InnerDns.b() != null)
+      if (axwx.b() != null)
       {
         localObject2 = localObject3;
         Uri localUri = Uri.parse(paramString);
@@ -99,7 +125,7 @@ public class SonicRuntimeImpl
                 }
               }
               localObject2 = localObject3;
-              localObject1 = InnerDns.a().a(localUri.getHost(), 1013, false);
+              localObject1 = axwx.a().a(localUri.getHost(), 1013, false);
             }
           }
         }
@@ -123,12 +149,12 @@ public class SonicRuntimeImpl
   
   public String getUserAgent()
   {
-    return WebSoUtils.a();
+    return bbee.a();
   }
   
   public boolean isNetworkValid()
   {
-    return NetworkUtil.a(BaseApplicationImpl.getContext()) != 0;
+    return badq.a(BaseApplicationImpl.getContext()) != 0;
   }
   
   public boolean isSonicUrl(String paramString)
@@ -175,7 +201,7 @@ public class SonicRuntimeImpl
         continue;
         label188:
         localObject1 = paramString.trim();
-        Object localObject2 = SwiftWebViewUtils.a((String)localObject1);
+        Object localObject2 = bbdc.a((String)localObject1);
         if ((!"http".equals(localObject2)) && (!"https".equals(localObject2))) {
           break;
         }
@@ -184,26 +210,31 @@ public class SonicRuntimeImpl
           break;
         }
         localObject2 = ((Uri)localObject2).getHost();
-        AuthorizeConfig localAuthorizeConfig = AuthorizeConfig.a();
-        if ((((String)localObject2).endsWith(".vip.qq.com")) || (((String)localObject2).endsWith(".gamecenter.qq.com"))) {
-          break label408;
-        }
-        if ((localAuthorizeConfig.b(paramString)) || (localAuthorizeConfig.c((String)localObject1)))
+        mkw localmkw = mkw.a();
+        if ((((String)localObject2).endsWith(".qq.com")) || (((String)localObject2).endsWith(".tencent.com")))
         {
           if (!QLog.isColorLevel()) {
-            break label410;
+            break label455;
           }
-          QLog.d("SonicSdkImpl_SonicRuntimeImpl", 2, "isSonicUrl return true! " + Util.c((String)localObject1, new String[0]));
-          break label410;
+          QLog.d("SonicSdkImpl_SonicRuntimeImpl", 2, "isSonicUrl return true! " + mpw.c((String)localObject1, new String[0]));
+          break label455;
         }
-        QLog.e("SonicSdkImpl_SonicRuntimeImpl", 1, "isSonicUrl return false! " + Util.c((String)localObject1, new String[0]));
+        if ((localmkw.b(paramString)) || (localmkw.g((String)localObject1)))
+        {
+          if (!QLog.isColorLevel()) {
+            break label457;
+          }
+          QLog.d("SonicSdkImpl_SonicRuntimeImpl", 2, "isSonicUrl from white list, return true! " + mpw.c((String)localObject1, new String[0]));
+          break label457;
+        }
+        QLog.e("SonicSdkImpl_SonicRuntimeImpl", 1, "isSonicUrl return false! " + mpw.c((String)localObject1, new String[0]));
         return false;
       }
       int i = 1;
     }
-    label408:
+    label455:
     return true;
-    label410:
+    label457:
     return true;
   }
   
@@ -229,7 +260,7 @@ public class SonicRuntimeImpl
   
   public void notifyError(SonicSessionClient paramSonicSessionClient, String paramString, int paramInt)
   {
-    int j = NetworkUtil.a(BaseApplicationImpl.getContext());
+    int j = badq.a(BaseApplicationImpl.getContext());
     int i = j;
     if (j == 0) {
       i = -1;
@@ -247,7 +278,7 @@ public class SonicRuntimeImpl
     ThreadManager.getSubThreadHandler().postDelayed(paramRunnable, paramLong);
   }
   
-  public boolean setCookie(String paramString, List paramList)
+  public boolean setCookie(String paramString, List<String> paramList)
   {
     if ((paramList != null) && (!paramList.isEmpty())) {
       try
@@ -279,7 +310,7 @@ public class SonicRuntimeImpl
   {
     try
     {
-      QQToast.a(BaseApplicationImpl.sApplication.getApplicationContext(), 1, paramCharSequence, 0).a();
+      bbmy.a(BaseApplicationImpl.sApplication.getApplicationContext(), 1, paramCharSequence, 0).a();
       return;
     }
     catch (Exception paramCharSequence)
@@ -290,7 +321,7 @@ public class SonicRuntimeImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webview.sonic.SonicRuntimeImpl
  * JD-Core Version:    0.7.0.1
  */

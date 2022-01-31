@@ -1,20 +1,49 @@
-import android.os.Handler;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoMusic;
-import java.util.TimerTask;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentMediaFileTabView;
 
 public class aocv
-  extends TimerTask
+  extends apdj
 {
-  private aocv(EditVideoMusic paramEditVideoMusic) {}
+  public aocv(QfileRecentMediaFileTabView paramQfileRecentMediaFileTabView) {}
   
-  public void run()
+  public void a()
   {
-    this.a.a.sendEmptyMessage(1001);
+    this.a.a.a().b();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().p();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().q();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().s();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().t();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().G();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aocv
  * JD-Core Version:    0.7.0.1
  */

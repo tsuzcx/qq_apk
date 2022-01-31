@@ -1,21 +1,13 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 public class mwr
-  implements Runnable
+  implements mts
 {
-  public mwr(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  public mwr(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void run()
+  public void a()
   {
-    QQMessageFacade localQQMessageFacade = this.a.app.a();
-    if (localQQMessageFacade != null)
-    {
-      int i = localQQMessageFacade.b();
-      this.a.leftView.post(new mws(this, i));
-    }
+    this.a.a(this.a.a);
   }
 }
 

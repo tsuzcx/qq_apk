@@ -1,24 +1,13 @@
-import android.view.View;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelectPositionFragment;
 
 public class okc
-  implements ActionSheet.OnButtonClickListener
+  implements rhy
 {
-  public okc(EditVideoPartManager paramEditVideoPartManager, ActionSheet paramActionSheet) {}
+  public okc(ReadInJoySelectPositionFragment paramReadInJoySelectPositionFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(String paramString)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.c();
-    }
+    ReadInJoySelectPositionFragment.a(this.a, paramString);
   }
 }
 

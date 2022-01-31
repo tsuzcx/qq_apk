@@ -1,14 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
 
-public final class aexp
-  implements DialogInterface.OnClickListener
+public abstract interface aexp
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt);
+  
+  public abstract boolean a(View paramView, RecyclerView.ViewHolder paramViewHolder, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aexp
  * JD-Core Version:    0.7.0.1
  */

@@ -9,11 +9,12 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SdkAuthorize$GetAuthApiListResponse
-  extends MessageMicro
+  extends MessageMicro<GetAuthApiListResponse>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 50, 58, 64, 72, 82 }, new String[] { "ret", "msg", "oauth_host_nick", "oauth_host_uin", "oauth_app_name", "oauth_portrait_url", "authorized_form_list", "key_type", "redirect_time", "auth_response" }, new Object[] { Integer.valueOf(0), "", "", Long.valueOf(0L), "", "", null, Integer.valueOf(0), Integer.valueOf(0), null }, GetAuthApiListResponse.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 50, 58, 64, 72, 82, 90 }, new String[] { "ret", "msg", "oauth_host_nick", "oauth_host_uin", "oauth_app_name", "oauth_portrait_url", "authorized_form_list", "key_type", "redirect_time", "auth_response", "AuthorizedUnionText" }, new Object[] { Integer.valueOf(0), "", "", Long.valueOf(0L), "", "", null, Integer.valueOf(0), Integer.valueOf(0), null, "" }, GetAuthApiListResponse.class);
+  public final PBStringField AuthorizedUnionText = PBField.initString("");
   public SdkAuthorize.AuthorizeResponse auth_response = new SdkAuthorize.AuthorizeResponse();
-  public final PBRepeatMessageField authorized_form_list = PBField.initRepeatMessage(SdkAuthorize.AuthItem.class);
+  public final PBRepeatMessageField<SdkAuthorize.AuthItem> authorized_form_list = PBField.initRepeatMessage(SdkAuthorize.AuthItem.class);
   public final PBUInt32Field key_type = PBField.initUInt32(0);
   public final PBStringField msg = PBField.initString("");
   public final PBStringField oauth_app_name = PBField.initString("");

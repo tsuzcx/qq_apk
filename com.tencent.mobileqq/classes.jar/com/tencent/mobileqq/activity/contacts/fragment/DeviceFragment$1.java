@@ -1,0 +1,27 @@
+package com.tencent.mobileqq.activity.contacts.fragment;
+
+import afdp;
+import com.tencent.widget.XListView;
+
+class DeviceFragment$1
+  implements Runnable
+{
+  DeviceFragment$1(DeviceFragment paramDeviceFragment) {}
+  
+  public void run()
+  {
+    if ((this.this$0.jdField_a_of_type_Afdp != null) && (this.this$0.jdField_a_of_type_Afdp.getCount() > 0))
+    {
+      int i = this.this$0.jdField_a_of_type_Afdp.a();
+      if ((i >= 0) && (i < this.this$0.jdField_a_of_type_Afdp.getCount())) {
+        this.this$0.jdField_a_of_type_ComTencentWidgetXListView.setSelection(i);
+      }
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+ * Qualified Name:     com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment.1
+ * JD-Core Version:    0.7.0.1
+ */

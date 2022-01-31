@@ -1,0 +1,12 @@
+package com.tencent.mobileqq.mini.apkg;
+
+public abstract interface ApkgManager$OnGetApkgInfoListener
+{
+  public abstract void onGetApkgInfo(ApkgInfo paramApkgInfo, int paramInt, String paramString);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     com.tencent.mobileqq.mini.apkg.ApkgManager.OnGetApkgInfoListener
+ * JD-Core Version:    0.7.0.1
+ */

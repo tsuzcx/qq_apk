@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class blessing_helper$msg
-  extends MessageMicro
+  extends MessageMicro<msg>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field number = PBField.initUInt32(0);
@@ -18,7 +18,7 @@ public final class blessing_helper$msg
   public final PBBytesField text = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt64Field time = PBField.initUInt64(0L);
   public final PBUInt32Field touin_count = PBField.initUInt32(0);
-  public final PBRepeatField touin_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> touin_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBUInt64Field uin = PBField.initUInt64(0L);
   public final PBUInt32Field version = PBField.initUInt32(0);
   

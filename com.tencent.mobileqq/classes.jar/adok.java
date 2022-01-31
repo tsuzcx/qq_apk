@@ -1,22 +1,21 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.recreate.FileModel;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
 
-public class adok
-  implements FMDialogUtil.FMDialogInterface
+class adok
+  implements QQPermissionCallback
 {
-  public adok(FileModel paramFileModel, Activity paramActivity) {}
+  adok(adoi paramadoi, AppActivity paramAppActivity) {}
   
-  public void a()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    FileModel.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerRecreateFileModel, this.jdField_a_of_type_AndroidAppActivity);
+    babr.b(this.jdField_a_of_type_MqqAppAppActivity);
   }
   
-  public void b() {}
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adok
  * JD-Core Version:    0.7.0.1
  */

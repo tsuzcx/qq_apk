@@ -1,168 +1,137 @@
-import android.os.Bundle;
-import com.etrump.mixlayout.FontManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.FunnyPicHelper;
-import com.tencent.mobileqq.app.IndividualRedPacketManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.vas.ClubContentJsonTask;
-import com.tencent.mobileqq.vas.ClubContentJsonTask.TaskInfo;
-import com.tencent.mobileqq.vas.URLInterceptManager;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ar.NeonControl.1;
+import com.tencent.mobileqq.ar.NeonControl.2;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MobileQQ;
 
-public final class akoq
-  extends DownloadListener
+public class akoq
 {
-  public void onDone(DownloadTask paramDownloadTask)
+  private static akoq jdField_a_of_type_Akoq;
+  public static boolean a;
+  akor jdField_a_of_type_Akor;
+  public final Object a;
+  private boolean b;
+  
+  static
   {
-    super.onDone(paramDownloadTask);
-    Object localObject2 = paramDownloadTask.a();
-    String str1 = ((Bundle)localObject2).getString("method");
-    if (str1 == null) {
-      str1 = "other";
+    jdField_a_of_type_Boolean = true;
+  }
+  
+  private akoq()
+  {
+    this.jdField_a_of_type_JavaLangObject = new Object();
+    Object localObject1 = BaseApplication.getContext().getSharedPreferences("sp_cpu_neon_support", 4);
+    if (!((SharedPreferences)localObject1).contains("sp_cpu_neon_support")) {
+      ThreadManager.post(new NeonControl.1(this, (SharedPreferences)localObject1, false), 5, null, true);
+    }
+    boolean bool2 = ((SharedPreferences)localObject1).getBoolean("sp_cpu_neon_support", false);
+    boolean bool3 = akpb.a().e;
+    int i;
+    int j;
+    if (QLog.isColorLevel())
+    {
+      if (bool3)
+      {
+        i = 1;
+        if (!bool2) {
+          break label174;
+        }
+        j = 1;
+        label97:
+        QLog.i("NeonControl", 2, String.format("dpcNeonCfgSwitch:%d isNeonSupport:%d forceOpenNeon:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(0) }));
+      }
+    }
+    else
+    {
+      localObject1 = this.jdField_a_of_type_JavaLangObject;
+      if ((!bool3) || (!bool2)) {
+        break label179;
+      }
     }
     for (;;)
     {
-      String str2 = ((Bundle)localObject2).getString("ifromet");
-      if (str2 == null) {
-        str2 = "null";
-      }
-      for (;;)
+      try
       {
-        boolean bool2 = true;
-        if (QLog.isColorLevel()) {
-          QLog.d("ClubContentJsonTask", 2, "Club_jsonDownloadListener key = " + paramDownloadTask.jdField_a_of_type_JavaLangString + ",satatus = " + paramDownloadTask.a() + ",errCode = " + paramDownloadTask.jdField_a_of_type_Int + ",errMsg = " + paramDownloadTask.b);
-        }
-        Object localObject1 = BaseApplicationImpl.sApplication.getRuntime();
-        Object localObject3;
-        boolean bool1;
-        if ((localObject1 instanceof QQAppInterface))
-        {
-          localObject1 = (QQAppInterface)localObject1;
-          if ((paramDownloadTask.a() != 3) || (paramDownloadTask.jdField_a_of_type_Int != 0)) {
-            break label613;
-          }
-          localObject3 = ((Bundle)localObject2).getString("version_key");
-          if (localObject3 != null) {
-            ClubContentJsonTask.a(BaseApplicationImpl.sApplication.getApplicationContext(), (String)localObject3, ((Bundle)localObject2).getInt("version", 0));
-          }
-          if ((paramDownloadTask.jdField_a_of_type_JavaLangString == null) || (localObject1 == null)) {
-            break label540;
-          }
-          if (!ClubContentJsonTask.c.jdField_a_of_type_JavaLangString.equals(paramDownloadTask.jdField_a_of_type_JavaLangString)) {
-            break label384;
-          }
-          ClubContentJsonTask.c.jdField_a_of_type_OrgJsonJSONObject = null;
-          ClubContentJsonTask.c.a(((QQAppInterface)localObject1).getApplication());
-          bool1 = bool2;
-        }
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ClubContentJsonTask", 2, "jsonDownloadListener,ret=" + bool1 + ",file.name:" + paramDownloadTask.jdField_a_of_type_JavaLangString + ",method:" + str1 + ",ifromet:" + str2);
-          }
-          if (localObject1 != null) {}
-          try
-          {
-            localObject2 = new HashMap();
-            ((HashMap)localObject2).put("param_jsonName", paramDownloadTask.jdField_a_of_type_JavaLangString);
-            ((HashMap)localObject2).put("param_method", str1);
-            ((HashMap)localObject2).put("param_from", str2);
-            StatisticCollector.a(((QQAppInterface)localObject1).getApplication().getApplicationContext()).a(((QQAppInterface)localObject1).getAccount(), "ClubContentJsonLoaded", bool1, 1L, 0L, (HashMap)localObject2, "", false);
-            return;
-          }
-          catch (Exception paramDownloadTask)
-          {
-            label384:
-            label540:
-            label561:
-            label608:
-            label613:
-            paramDownloadTask.printStackTrace();
-            return;
-          }
-          localObject1 = null;
-          break;
-          if (paramDownloadTask.jdField_a_of_type_JavaLangString.equals(ClubContentJsonTask.f.jdField_a_of_type_JavaLangString))
-          {
-            FunnyPicHelper.a((QQAppInterface)localObject1);
-            bool1 = bool2;
-          }
-          else
-          {
-            bool1 = bool2;
-            if (!paramDownloadTask.jdField_a_of_type_JavaLangString.equals(ClubContentJsonTask.b.jdField_a_of_type_JavaLangString)) {
-              if (paramDownloadTask.jdField_a_of_type_JavaLangString.equals(ClubContentJsonTask.h.jdField_a_of_type_JavaLangString))
-              {
-                ((URLInterceptManager)((QQAppInterface)localObject1).getManager(149)).a((QQAppInterface)localObject1);
-                bool1 = bool2;
-              }
-              else if (paramDownloadTask.jdField_a_of_type_JavaLangString.equals(ClubContentJsonTask.d.jdField_a_of_type_JavaLangString))
-              {
-                ClubContentJsonTask.d.jdField_a_of_type_OrgJsonJSONObject = null;
-                ClubContentJsonTask.d.a(((QQAppInterface)localObject1).getApplication());
-                bool1 = bool2;
-              }
-              else
-              {
-                bool1 = bool2;
-                if (paramDownloadTask.jdField_a_of_type_JavaLangString.equals(ClubContentJsonTask.i.jdField_a_of_type_JavaLangString))
-                {
-                  localObject2 = (FontManager)((QQAppInterface)localObject1).getManager(41);
-                  bool1 = bool2;
-                  continue;
-                  localObject2 = new StringBuilder().append("jsonDownloadListener, app == null:");
-                  if (localObject1 == null)
-                  {
-                    bool1 = true;
-                    localObject2 = ((StringBuilder)localObject2).append(bool1).append(",key == null:");
-                    if (paramDownloadTask.jdField_a_of_type_JavaLangString != null) {
-                      break label608;
-                    }
-                  }
-                  for (bool1 = true;; bool1 = false)
-                  {
-                    QLog.e("ClubContentJsonTask", 2, bool1);
-                    bool1 = bool2;
-                    break;
-                    bool1 = false;
-                    break label561;
-                  }
-                  QLog.e("ClubContentJsonTask", 1, "ClubContentJsonTask jsondownfail task.key = " + paramDownloadTask.jdField_a_of_type_JavaLangString);
-                  if ((paramDownloadTask.jdField_a_of_type_JavaLangString != null) && (paramDownloadTask.jdField_a_of_type_JavaLangString.equals(ClubContentJsonTask.g.jdField_a_of_type_JavaLangString)) && (localObject1 != null))
-                  {
-                    localObject3 = (IndividualRedPacketManager)((QQAppInterface)localObject1).getManager(130);
-                    localObject2 = "0";
-                    if (((IndividualRedPacketManager)localObject3).a()) {
-                      localObject2 = "1";
-                    }
-                    ReportController.b((QQAppInterface)localObject1, "CliOper", "", "", "0X800612B", "0X800612B", 0, 0, (String)localObject2, "0", "", "");
-                  }
-                  bool1 = false;
-                }
-              }
-            }
-          }
-        }
+        this.b = bool1;
+        return;
       }
+      finally {}
+      i = 0;
+      break;
+      label174:
+      j = 0;
+      break label97;
+      label179:
+      bool1 = false;
     }
   }
   
-  public void onProgress(DownloadTask paramDownloadTask) {}
-  
-  public boolean onStart(DownloadTask paramDownloadTask)
+  public static akoq a()
   {
-    return super.onStart(paramDownloadTask);
+    if (jdField_a_of_type_Akoq == null) {
+      jdField_a_of_type_Akoq = new akoq();
+    }
+    return jdField_a_of_type_Akoq;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Akor == null) {}
+    akor localakor;
+    int i;
+    do
+    {
+      do
+      {
+        return;
+        localakor = new akor(this);
+        localakor.jdField_a_of_type_Long = this.jdField_a_of_type_Akor.jdField_a_of_type_Long;
+        localakor.jdField_a_of_type_Int = this.jdField_a_of_type_Akor.jdField_a_of_type_Int;
+        localakor.b = this.jdField_a_of_type_Akor.b;
+        this.jdField_a_of_type_Akor.b = -2147483648;
+        this.jdField_a_of_type_Akor.jdField_a_of_type_Long = 0L;
+        this.jdField_a_of_type_Akor.jdField_a_of_type_Int = 0;
+      } while ((localakor.jdField_a_of_type_Long <= 0L) || (localakor.jdField_a_of_type_Int <= 0) || (localakor.b == -2147483648));
+      i = (int)(localakor.jdField_a_of_type_Long / localakor.jdField_a_of_type_Int);
+    } while ((i < 0) || (i >= 600000));
+    ThreadManager.post(new NeonControl.2(this, localakor, i), 5, null, false);
+  }
+  
+  public void a(long paramLong, int paramInt)
+  {
+    if (this.jdField_a_of_type_Akor == null)
+    {
+      this.jdField_a_of_type_Akor = new akor(this);
+      this.jdField_a_of_type_Akor.b = paramInt;
+    }
+    if (this.jdField_a_of_type_Akor.b != paramInt)
+    {
+      if ((this.jdField_a_of_type_Akor.jdField_a_of_type_Long > 0L) || (this.jdField_a_of_type_Akor.jdField_a_of_type_Int > 0)) {
+        a();
+      }
+      this.jdField_a_of_type_Akor.b = paramInt;
+      this.jdField_a_of_type_Akor.jdField_a_of_type_Long = 0L;
+      this.jdField_a_of_type_Akor.jdField_a_of_type_Int = 0;
+    }
+    akor localakor = this.jdField_a_of_type_Akor;
+    localakor.jdField_a_of_type_Long += paramLong;
+    localakor = this.jdField_a_of_type_Akor;
+    localakor.jdField_a_of_type_Int += 1;
+  }
+  
+  public boolean a()
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      boolean bool = this.b;
+      return bool;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akoq
  * JD-Core Version:    0.7.0.1
  */

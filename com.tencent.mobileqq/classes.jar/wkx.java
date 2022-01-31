@@ -1,21 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import android.graphics.Rect;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.widget.BounceScrollView;
+import com.tencent.qphone.base.util.QLog;
 
-public class wkx
-  implements DialogInterface.OnClickListener
+class wkx
+  implements bbgn
 {
-  public wkx(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  wkx(wku paramwku) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(float paramFloat1, float paramFloat2) {}
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    paramDialogInterface.dismiss();
-    BlessSelectMemberActivity.a(this.a, null);
+    if ((this.a.jdField_a_of_type_Ayop != null) && (this.a.d))
+    {
+      Rect localRect = new Rect();
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.getHitRect(localRect);
+      if (this.a.jdField_a_of_type_ComTencentImageURLImageView.getLocalVisibleRect(localRect))
+      {
+        this.a.d = false;
+        azho.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, null, this.a.jdField_a_of_type_Ayop.a, 0, null, null);
+        awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_bulletin", "", "bulletin_popUp", "exp_ad", 0, 0, this.a.b, String.valueOf(this.a.jdField_a_of_type_Ayoo.a), "8020205751015455", "");
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopTipsPopWindow", 2, "onScrollChanged 广告图片可见-------------------------");
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wkx
  * JD-Core Version:    0.7.0.1
  */

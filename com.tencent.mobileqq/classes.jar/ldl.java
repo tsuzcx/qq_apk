@@ -1,35 +1,20 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyRainAnimationController;
-import java.lang.ref.WeakReference;
+import com.tencent.av.gaudio.GaInviteDialogActivity;
 
 public class ldl
-  extends Handler
+  implements aagl
 {
-  private WeakReference a;
+  public ldl(GaInviteDialogActivity paramGaInviteDialogActivity) {}
   
-  public ldl(ReadInJoyRainAnimationController paramReadInJoyRainAnimationController)
+  public void a(int paramInt1, int paramInt2)
   {
-    this.a = new WeakReference(paramReadInJoyRainAnimationController);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    ReadInJoyRainAnimationController localReadInJoyRainAnimationController = (ReadInJoyRainAnimationController)this.a.get();
-    if ((localReadInJoyRainAnimationController == null) || (!localReadInJoyRainAnimationController.b())) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    localReadInJoyRainAnimationController.b();
+    this.a.g = paramInt1;
+    this.a.h = paramInt2;
+    GaInviteDialogActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ldl
  * JD-Core Version:    0.7.0.1
  */

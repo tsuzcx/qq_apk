@@ -1,37 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BabyQHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.util.QLog;
-
 public class aktl
-  extends BroadcastReceiver
 {
-  public aktl(WebProcessManager paramWebProcessManager) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public String toString()
   {
-    int i = paramIntent.getIntExtra("user_type", 0);
-    int j = paramIntent.getIntExtra("from_type", 0);
-    paramContext = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramContext instanceof QQAppInterface))
-    {
-      paramContext = (BabyQHandler)((QQAppInterface)paramContext).a(53);
-      if (paramContext != null) {
-        paramContext.a(i, j);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("WebProcessManager", 2, "babyq receiver recv user_type=" + i + ", from_type=" + j);
-      }
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("skuId:").append(this.c).append(",skuName:").append(this.d).append(",skuPrice:").append(this.e).append(",imageUrl:").append(this.b).append(",detailUrl:").append(this.a);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aktl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import java.io.File;
+import java.util.ArrayList;
 
-public class vnk
-  implements View.OnClickListener
+class vnk
+  extends vnh
 {
-  public vnk(StructingMsgItemBuilder paramStructingMsgItemBuilder, BaseChatPie paramBaseChatPie, AbsShareMsg paramAbsShareMsg) {}
+  vnk(vni paramvni, vnq paramvnq, File paramFile) {}
   
-  public void onClick(View paramView)
+  public void onFailure(String paramString)
   {
-    paramView = ((PublicAccountChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg);
-    ((PublicAccountChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(paramView);
+    this.jdField_a_of_type_Vnq.onFailure(paramString);
+  }
+  
+  public void onFinish(boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_JavaIoFile.exists()) {
+      this.jdField_a_of_type_JavaIoFile.delete();
+    }
+    int i = 0;
+    while (i < this.jdField_a_of_type_Vni.b.size())
+    {
+      File localFile = new File((String)this.jdField_a_of_type_Vni.b.get(i));
+      if (localFile.exists()) {
+        localFile.delete();
+      }
+      i += 1;
+    }
+    this.jdField_a_of_type_Vni.b = new ArrayList();
+    this.jdField_a_of_type_Vnq.onFinish(paramBoolean);
+  }
+  
+  public void onProgress(String paramString)
+  {
+    this.jdField_a_of_type_Vnq.onProgress(paramString);
+  }
+  
+  public void onStart()
+  {
+    this.jdField_a_of_type_Vnq.onStart();
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    this.jdField_a_of_type_Vnq.onSuccess(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vnk
  * JD-Core Version:    0.7.0.1
  */

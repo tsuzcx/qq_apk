@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBFloatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class DoodleMsgProto$DoodleHeader
-  extends MessageMicro
+  extends MessageMicro<DoodleHeader>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBFloatField float_comp_factor_max = PBField.initFloat(0.0F);

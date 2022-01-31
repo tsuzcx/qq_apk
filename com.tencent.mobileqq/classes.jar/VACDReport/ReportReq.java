@@ -9,8 +9,8 @@ public final class ReportReq
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList cache_reports;
-  public ArrayList reports;
+  static ArrayList<ReportInfo> cache_reports;
+  public ArrayList<ReportInfo> reports;
   
   public void readFrom(JceInputStream paramJceInputStream)
   {

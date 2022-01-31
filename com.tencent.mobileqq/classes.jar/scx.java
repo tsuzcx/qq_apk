@@ -1,32 +1,22 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
 
-public class scx
-  implements Animation.AnimationListener
+final class scx
+  implements Comparator<sdg>
 {
-  public scx(ChatFragment paramChatFragment) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(sdg paramsdg1, sdg paramsdg2)
   {
-    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationEnd");
-    this.a.b(1);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation)
-  {
-    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationRepeat");
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    QLog.d("Q.aio.ChatFragment", 2, "AIO onAnimationStart");
+    if ((paramsdg1 == paramsdg2) || (paramsdg1.b == paramsdg2.b)) {
+      return 0;
+    }
+    if (paramsdg1.b < paramsdg2.b) {
+      return -1;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     scx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,36 @@
 import android.os.Handler;
-import com.tencent.biz.qqstory.playmode.child.VidListPlayMode;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler.IBatchGetVideoInfoCallback;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler.VideoInfoListEvent;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class nqk
-  implements BatchGetVideoInfoHandler.IBatchGetVideoInfoCallback
+class nqk
+  implements Handler.Callback
 {
-  public nqk(VidListPlayMode paramVidListPlayMode) {}
+  nqk(nqi paramnqi) {}
   
-  public void a(BatchGetVideoInfoHandler.VideoInfoListEvent paramVideoInfoListEvent)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.a.a.post(new nql(this, paramVideoInfoListEvent));
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    case 1: 
+      if (System.currentTimeMillis() - nqi.a(this.a) > 1500L)
+      {
+        nqi.a(this.a, false);
+        QLog.d("KandianAdPandent", 2, "time up do not update volume");
+      }
+      if (nqi.b(this.a))
+      {
+        nqi.a(this.a).sendEmptyMessageDelayed(1, 300L);
+        this.a.d();
+        return false;
+      }
+      nqi.a(this.a).removeMessages(1);
+      return false;
+    }
+    nqi.a(this.a);
+    return false;
   }
 }
 

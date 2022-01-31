@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0x8d$DeleteFeeds
-  extends MessageMicro
+  extends MessageMicro<DeleteFeeds>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "uint64_feeds_owner", "uint64_feeds_id", "uint64_delete_uin" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L) }, DeleteFeeds.class);
   public final PBUInt64Field uint64_delete_uin = PBField.initUInt64(0L);

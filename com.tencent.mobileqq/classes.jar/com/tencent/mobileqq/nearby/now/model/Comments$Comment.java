@@ -1,25 +1,29 @@
 package com.tencent.mobileqq.nearby.now.model;
 
-import afay;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import aslc;
 
 public class Comments$Comment
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new afay();
+  public static final Parcelable.Creator<Comment> CREATOR = new aslc();
   public int a;
   public long a;
   public MedalInfo a;
   public String a;
+  public int b;
   public long b;
   public String b;
+  public int c;
   public long c;
   public String c;
   public long d;
   public String d;
+  public long e;
   public String e;
+  public long f;
   
   public Comments$Comment() {}
   
@@ -33,9 +37,13 @@ public class Comments$Comment
     this.jdField_c_of_type_Long = paramParcel.readLong();
     this.jdField_b_of_type_JavaLangString = paramParcel.readString();
     this.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_b_of_type_Int = paramParcel.readInt();
     this.jdField_d_of_type_Long = paramParcel.readLong();
+    this.jdField_e_of_type_Long = paramParcel.readLong();
     this.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    this.e = paramParcel.readString();
+    this.jdField_e_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_c_of_type_Int = paramParcel.readInt();
+    this.f = paramParcel.readLong();
   }
   
   public int describeContents()
@@ -77,9 +85,13 @@ public class Comments$Comment
     paramParcel.writeLong(this.jdField_c_of_type_Long);
     paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
     paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
+    paramParcel.writeInt(this.jdField_b_of_type_Int);
     paramParcel.writeLong(this.jdField_d_of_type_Long);
+    paramParcel.writeLong(this.jdField_e_of_type_Long);
     paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-    paramParcel.writeString(this.e);
+    paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
+    paramParcel.writeInt(this.jdField_c_of_type_Int);
+    paramParcel.writeLong(this.f);
   }
 }
 

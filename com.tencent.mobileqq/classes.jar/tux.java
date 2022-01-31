@@ -1,37 +1,32 @@
-import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class tux
-  implements Runnable
+  extends QQUIEventReceiver<tun, sxr>
 {
-  public tux(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
-  
-  public void run()
+  public tux(@NonNull tun paramtun)
   {
-    try
+    super(paramtun);
+  }
+  
+  public void a(@NonNull tun paramtun, @NonNull sxr paramsxr)
+  {
+    if (paramsxr.a.isSuccess())
     {
-      if ((RegisterQQNumberActivity.a(this.a) == null) && (!this.a.isFinishing()))
-      {
-        RegisterQQNumberActivity.a(this.a, new QQProgressDialog(this.a.getActivity(), this.a.getTitleBarHeight()));
-        RegisterQQNumberActivity.a(this.a).c(2131435086);
-      }
-      if ((RegisterQQNumberActivity.a(this.a) != null) && (!RegisterQQNumberActivity.a(this.a).isShowing())) {
-        RegisterQQNumberActivity.a(this.a).show();
-      }
-      return;
+      urk.a(paramtun.b, "receive user info event. %s.", paramsxr.toString());
+      paramtun.i();
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return sxr.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tux
  * JD-Core Version:    0.7.0.1
  */

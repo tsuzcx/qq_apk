@@ -2,12 +2,12 @@ package com.tencent.component.network.utils;
 
 public final class NetworkUtils$DNS
 {
-  public String a;
-  public String b;
+  public String primary;
+  public String secondary;
   
   public String toString()
   {
-    return this.a + "," + this.b;
+    return this.primary + "," + this.secondary;
   }
 }
 

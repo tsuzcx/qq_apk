@@ -1,368 +1,259 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.maxvideo.common.MessageStruct;
-import com.tencent.maxvideo.mediadevice.AVCodec;
-import com.tencent.maxvideo.mediadevice.AVCodec.AVCodecCallback;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.CameraPreviewObservable;
-import com.tencent.mobileqq.shortvideo.mediadevice.CodecParam;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadReqInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadSpeedInfo;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferOneSlotComplete;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.video.QzoneVideoBeaconReport;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoState;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
-import dov.com.tencent.mobileqq.shortvideo.common.GloableValue;
-import dov.com.tencent.mobileqq.shortvideo.common.TCTimer;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.RecordManager;
 import java.io.File;
-import java.util.Arrays;
 
 public class aopy
-  extends RMVideoState
+  extends aopw
 {
-  final Runnable jdField_a_of_type_JavaLangRunnable = new aoqb(this);
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
-  boolean c = false;
-  boolean d = false;
-  boolean e = true;
-  public boolean f = true;
-  public volatile boolean g;
+  aopx jdField_a_of_type_Aopx;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private FileManagerEntity jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
   
-  public void a()
+  public aopy(QQAppInterface paramQQAppInterface, FileManagerEntity paramFileManagerEntity)
   {
-    this.d = false;
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (localRMVideoStateMgr != null)
+    super(paramQQAppInterface);
+    QLog.i("C2CFileDownloader<FileAssistant>", 1, "file download for C2CFileDownloader");
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity = paramFileManagerEntity;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_Aopx.a.jdField_a_of_type_JavaLangString = apck.f(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName);
+    this.jdField_a_of_type_Aopx.a.d = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
+    this.jdField_a_of_type_Aopx.a.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType;
+    try
     {
-      ThreadManager.post(new aopz(this, localRMVideoStateMgr), 8, null, false);
-      if (localRMVideoStateMgr.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMViewSTInterface != null) {
-        localRMVideoStateMgr.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMViewSTInterface.n();
-      }
-      if (!localRMVideoStateMgr.d) {
-        this.c = false;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("RMVideoInitState", 2, "[@] initState " + this.c);
-      }
-      try
-      {
-        if ((!this.c) && (!this.g))
-        {
-          this.g = true;
-          d();
-        }
-        for (;;)
-        {
-          return;
-          localRMVideoStateMgr.l();
-          c();
-        }
-        return;
-      }
-      finally {}
+      this.jdField_a_of_type_Aopx.a.c = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin);
+      return;
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.e("C2CFileDownloader<FileAssistant>", 1, paramQQAppInterface.toString());
     }
   }
   
-  public void a(AVCodec.AVCodecCallback paramAVCodecCallback, MessageStruct paramMessageStruct)
+  private int a(int paramInt)
   {
-    paramAVCodecCallback = RMVideoStateMgr.a();
-    switch (paramMessageStruct.mId)
-    {
-    default: 
-      return;
-    }
-    paramAVCodecCallback.jdField_a_of_type_JavaLangString = ((String)paramMessageStruct.mObj0);
-    this.jdField_a_of_type_Boolean = true;
-    paramAVCodecCallback.jdField_a_of_type_Aopv = null;
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoInitState", 2, "[@] onAVCodecEvent[RMFileEventNotify] path=" + paramAVCodecCallback.jdField_a_of_type_JavaLangString + ",files : " + Arrays.toString(new File(paramAVCodecCallback.jdField_a_of_type_JavaLangString).list()));
-    }
-    paramAVCodecCallback.jdField_a_of_type_AndroidOsHandler.post(new aoqd(this));
-    e();
-  }
-  
-  public void a(Object paramObject, int paramInt, Object... paramVarArgs)
-  {
-    if ((paramObject instanceof CameraProxy.CameraPreviewObservable)) {
-      switch (paramInt)
+    int i;
+    if ((paramInt == 300) || (paramInt == 301) || (paramInt == 302) || (paramInt == 303) || (paramInt == 400) || (paramInt == 402) || (paramInt == 403)) {
+      if (AppNetConnInfo.isNetSupport())
       {
+        i = paramInt;
+        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isLogin()) {}
       }
-    }
-    Object localObject;
-    for (;;)
-    {
-      super.a(paramObject, paramInt, paramVarArgs);
-      return;
-      if (paramVarArgs != null) {
-        if ((paramVarArgs[0] instanceof Boolean))
-        {
-          this.b = true;
-          e();
-          if (QLog.isColorLevel()) {
-            QLog.d("RMVideoInitState", 2, "[@] EVENT_CREATE_CAMERA[success] obj= " + paramVarArgs[0]);
-          }
-          localObject = BaseApplicationImpl.sApplication.getProcessName();
-          if ((localObject != null) && (((String)localObject).endsWith(":story"))) {
-            StoryReportor.b("take_video", "camera_initial", 0, 0, new String[0]);
-          }
-          ThreadManager.post(new aoqe(this), 8, null, true);
-        }
-        else if ((paramVarArgs[0] instanceof String))
-        {
-          if (!this.d)
-          {
-            this.d = true;
-            RMVideoStateMgr.a().a(2002, "抱歉，初始化摄像头失败", false);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("RMVideoInitState", 2, "[@] EVENT_CREATE_CAMERA, error = " + paramVarArgs[0]);
-          }
-          if (1 == FlowCameraMqqAction.a) {
-            QzoneVideoBeaconReport.a(GloableValue.a + "", "qzone_video_record", "2", null);
-          }
-          localObject = BaseApplicationImpl.sApplication.getProcessName();
-          if ((localObject != null) && (((String)localObject).endsWith(":story")))
-          {
-            StoryReportor.b("take_video", "camera_initial", 0, -1, new String[0]);
-            continue;
-            if ((paramVarArgs != null) && ((paramVarArgs[0] instanceof String)))
-            {
-              if (!this.d)
-              {
-                this.d = true;
-                RMVideoStateMgr.a().a(2003, "抱歉，初始化摄像头参数失败，请重试", false);
-              }
-              if (QLog.isColorLevel())
-              {
-                QLog.d("RMVideoInitState", 2, "[@] EVENT_SET_CAMERA_PARAM error, error = " + paramVarArgs[0]);
-                continue;
-                if (!this.d)
-                {
-                  this.d = true;
-                  RMVideoStateMgr.a().a(2002, "抱歉，摄像头被禁止了", false);
-                }
-                if (QLog.isColorLevel()) {
-                  QLog.d("RMVideoInitState", 2, "[@] EVENT_CAMERA_DISABLED error");
-                }
-                if (1 == FlowCameraMqqAction.a)
-                {
-                  QzoneVideoBeaconReport.a(GloableValue.a + "", "qzone_video_record", "4", null);
-                  continue;
-                  if ((paramObject instanceof AudioCapture))
-                  {
-                    localObject = RMVideoStateMgr.a();
-                    switch (paramInt)
-                    {
-                    case 4: 
-                    default: 
-                      break;
-                    case 3: 
-                      if ((paramVarArgs != null) && ((paramVarArgs[0] instanceof Boolean)) && (((Boolean)paramVarArgs[0]).booleanValue()))
-                      {
-                        if (QLog.isColorLevel()) {
-                          QLog.d("RMVideoInitState", 2, "[@] EVENT_INIT [OK]");
-                        }
-                      }
-                      else
-                      {
-                        if (QLog.isColorLevel())
-                        {
-                          QLog.d("RMVideoInitState", 2, "[@] EVENT_INIT [error]麦克风初始化参数失败...");
-                          QLog.d("RMVideoInitState", 2, "[@] EVENT_INIT [error]mAudioSampleRate=" + CodecParam.q + " mAudioChannel=" + CodecParam.o + " mAudioFormat=" + CodecParam.p);
-                        }
-                        ((RMVideoStateMgr)localObject).jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture = null;
-                        ((RMVideoStateMgr)localObject).e = false;
-                        ((RMVideoStateMgr)localObject).c(false);
-                        if (((RMVideoStateMgr)localObject).jdField_a_of_type_AndroidOsHandler != null) {
-                          ((RMVideoStateMgr)localObject).jdField_a_of_type_AndroidOsHandler.post(new aoqf(this));
-                        }
-                        while (1 == FlowCameraMqqAction.a)
-                        {
-                          QzoneVideoBeaconReport.a(GloableValue.a + "", "qzone_video_record", "5", null);
-                          break;
-                          if (QLog.isColorLevel()) {
-                            QLog.d("RMVideoInitState", 2, "[@] EVENT_INIT [Error]麦克风参数初始化失败 ,rmStateMgr.mHandler = null");
-                          }
-                        }
-                      }
-                      break;
-                    case 5: 
-                      if (QLog.isColorLevel()) {
-                        QLog.d("RMVideoInitState", 2, "[@] EVENT_OPEN_MIC [error]麦克风打开失败...");
-                      }
-                      ((RMVideoStateMgr)localObject).jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture = null;
-                      ((RMVideoStateMgr)localObject).e = false;
-                      if (RMVideoStateMgr.c)
-                      {
-                        ((RMVideoStateMgr)localObject).c(true);
-                        e();
-                      }
-                      for (;;)
-                      {
-                        if (!((RMVideoStateMgr)localObject).h)
-                        {
-                          RMVideoStateMgr.a().b(0, "麦克风被禁用", false);
-                          ((RMVideoStateMgr)localObject).h = true;
-                        }
-                        if (1 != FlowCameraMqqAction.a) {
-                          break;
-                        }
-                        QzoneVideoBeaconReport.a(GloableValue.a + "", "qzone_video_record", "6", null);
-                        break;
-                        ((RMVideoStateMgr)localObject).c(false);
-                      }
-                    case 6: 
-                      if ((paramVarArgs == null) || (!(paramVarArgs[0] instanceof Boolean)) || (!((Boolean)paramVarArgs[0]).booleanValue())) {
-                        break label881;
-                      }
-                      if (QLog.isColorLevel()) {
-                        QLog.d("RMVideoInitState", 2, "[@] EVENT_START_MIC [OK]");
-                      }
-                      ((RMVideoStateMgr)localObject).c(true);
-                      e();
-                      ((RMVideoStateMgr)localObject).e = true;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    label881:
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoInitState", 2, "[@] EVENT_START_MIC [error]麦克风启动录制失败...");
-    }
-    ((RMVideoStateMgr)localObject).jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture = null;
-    ((RMVideoStateMgr)localObject).e = false;
-    if (RMVideoStateMgr.c)
-    {
-      ((RMVideoStateMgr)localObject).c(true);
-      e();
-    }
-    for (;;)
-    {
-      if (!((RMVideoStateMgr)localObject).h)
+      else
       {
-        RMVideoStateMgr.a().b(0, "麦克风被禁用", false);
-        ((RMVideoStateMgr)localObject).h = true;
+        i = 9004;
       }
-      if (1 != FlowCameraMqqAction.a) {
+    }
+    do
+    {
+      return i;
+      if ((paramInt == 501) || (paramInt == 502) || (paramInt == 503)) {
         break;
       }
-      QzoneVideoBeaconReport.a(GloableValue.a + "", "qzone_video_record", "7", null);
-      break;
-      ((RMVideoStateMgr)localObject).c(false);
+      i = paramInt;
+    } while (paramInt != 505);
+    if (azzu.a()) {}
+    for (long l = azzu.a() * 1024L;; l = azzu.b() * 1024L)
+    {
+      i = paramInt;
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize <= l) {
+        break;
+      }
+      return 506;
     }
   }
   
-  public void a(boolean paramBoolean)
+  public void OnOneSlotComplete(int paramInt, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete)
   {
-    this.e = paramBoolean;
-  }
-  
-  public boolean a()
-  {
-    RMVideoStateMgr.a().a("RMVideoInitState");
-    return false;
-  }
-  
-  public void b()
-  {
-    if (b()) {
-      RMVideoStateMgr.a().a(3);
+    int i = 3;
+    if (paramExcitingTransferOneSlotComplete == null)
+    {
+      QLog.i("C2CFileDownloader<FileAssistant>", 1, "OnOneSlotComplete:" + paramInt + " slotInfo is null");
+      return;
     }
-  }
-  
-  boolean b()
-  {
-    return (RMVideoStateMgr.a().d) && (this.jdField_a_of_type_Boolean) && (this.b);
-  }
-  
-  void c()
-  {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoInitState", 2, "[@] retake called");
-    }
-    if (localRMVideoStateMgr.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture != null) {
-      localRMVideoStateMgr.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture.a();
+    QLog.i("C2CFileDownloader<FileAssistant>", 1, "OnOneSlotComplete:" + paramInt + " slotInfo : " + paramExcitingTransferOneSlotComplete.toString());
+    paramInt = a(paramInt);
+    int j = 4;
+    if (paramInt == 9004) {
+      paramInt = 5;
     }
     for (;;)
     {
-      try
-      {
-        localRMVideoStateMgr.j();
-        if (!this.e) {
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("RMVideoInitState", 2, "[@] retake call AVCodec.get().retake()");
-        }
-        AVCodec.get().retake();
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-      {
-        localUnsatisfiedLinkError.printStackTrace();
-        continue;
-      }
-      if (localRMVideoStateMgr.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadevicePreviewContext != null) {
-        localRMVideoStateMgr.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadevicePreviewContext.reset();
-      }
-      RecordManager.a().a().a(0);
+      this.jdField_a_of_type_Aopx.a(paramInt, i, paramExcitingTransferOneSlotComplete);
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("RMVideoInitState", 2, "[@] retake call AVCodec.get().init()");
+      if (paramInt == 506)
+      {
+        j = 3;
+        i = paramInt;
+        paramInt = j;
       }
-      AVCodec.get().init();
-      this.e = true;
+      else
+      {
+        i = paramInt;
+        paramInt = j;
+      }
     }
   }
   
-  void d()
+  public void OnSpeed(ExcitingTransferDownloadSpeedInfo paramExcitingTransferDownloadSpeedInfo)
   {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoInitState", 2, "[@] delayInit called");
-    }
-    localRMVideoStateMgr.jdField_a_of_type_AndroidOsHandler.postDelayed(new aoqa(this), 50L);
+    paramExcitingTransferDownloadSpeedInfo = apdq.b(paramExcitingTransferDownloadSpeedInfo.mTotalSpeed);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.mExcitingSpeed = paramExcitingTransferDownloadSpeedInfo;
   }
   
-  void e()
+  public long a()
   {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (b())
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
+  }
+  
+  protected aopl a(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_Aopx = new aopx(paramQQAppInterface);
+    return this.jdField_a_of_type_Aopx;
+  }
+  
+  public FileManagerEntity a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunFileId;
+  }
+  
+  protected void a(ExcitingTransferDownloadReqInfo paramExcitingTransferDownloadReqInfo)
+  {
+    this.jdField_a_of_type_Aopx.c();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.bSend, false, new aopz(this, paramExcitingTransferDownloadReqInfo));
+  }
+  
+  public void a(Object paramObject, int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status != 16) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 12, null, 6, null);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status;
+  }
+  
+  public String b()
+  {
+    String str1 = this.jdField_a_of_type_Apbo.c();
+    String str2 = MD5.toMD5(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid);
+    return str1 + str2;
+  }
+  
+  public int c()
+  {
+    return (int)(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress * 100.0F);
+  }
+  
+  public void onRecvComplete(int paramInt, ExcitingTransferDownloadCompletedInfo paramExcitingTransferDownloadCompletedInfo)
+  {
+    QLog.i("C2CFileDownloader<FileAssistant>", 1, "file download result:" + paramInt);
+    if (paramInt != 0)
     {
-      localRMVideoStateMgr.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-      localRMVideoStateMgr.jdField_a_of_type_AndroidOsHandler.post(new aoqc(this));
+      paramInt = a(paramInt);
+      this.jdField_a_of_type_Aopx.a.jdField_b_of_type_Long = paramInt;
+      this.jdField_a_of_type_Aopx.a.jdField_a_of_type_Long = 4L;
+      if (paramInt == 9004)
+      {
+        this.jdField_a_of_type_Aopx.a.jdField_a_of_type_Long = 5L;
+        this.jdField_a_of_type_Aopx.a(3);
+        a(null, paramInt);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+        if (paramExcitingTransferDownloadCompletedInfo != null)
+        {
+          this.jdField_a_of_type_Aopx.a(paramExcitingTransferDownloadCompletedInfo);
+          paramExcitingTransferDownloadCompletedInfo = this.jdField_a_of_type_Aopx;
+          if (paramInt != 0) {
+            break label613;
+          }
+        }
+      }
+    }
+    label613:
+    for (boolean bool = true;; bool = false)
+    {
+      paramExcitingTransferDownloadCompletedInfo.a(bool);
+      return;
+      if (paramInt == 506)
+      {
+        this.jdField_a_of_type_Aopx.a.jdField_a_of_type_Long = 3L;
+        this.jdField_a_of_type_Aopx.a(paramInt);
+        break;
+      }
+      this.jdField_a_of_type_Aopx.a(paramInt);
+      break;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, null);
+      this.jdField_a_of_type_Aopx.a.jdField_b_of_type_Long = paramInt;
+      this.jdField_a_of_type_Aopx.a.jdField_a_of_type_Long = 0L;
+      this.jdField_a_of_type_Aopx.a(0);
+      String str = paramExcitingTransferDownloadCompletedInfo.m_strFileSavePath;
+      apck.a(str);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = apck.a(str);
+      int i = str.length() - this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName.length();
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName.getBytes().length > 250 - i) {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = apck.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName, 250 - i);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setFilePath(str);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = apck.a(str);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType = apck.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName);
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 0)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileSha3 = aopg.a(apck.b(str));
+        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize < 104857600L) {
+          this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileSHA = aopg.a(apck.a(str));
+        }
+      }
+      File localFile = new File(str);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.localModifyTime = localFile.lastModified();
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.lastSuccessTime = awao.a();
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 1;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setCloudType(3);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 11, new Object[] { str, "", Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize), Boolean.valueOf(true), "", "" }, 0, null);
+      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 0)
+      {
+        apdc.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+        apdc.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+        apdc.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      }
+      for (;;)
+      {
+        apck.e(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+        break;
+        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType == 2) {
+          apck.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+        }
+      }
     }
   }
   
-  public void f()
+  public void onRecvProgress(long paramLong1, long paramLong2, long paramLong3)
   {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    localRMVideoStateMgr.m();
-    localRMVideoStateMgr.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.c = false;
+    this.jdField_a_of_type_Aopx.a(paramLong2);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 2;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = ((float)paramLong2 / (float)this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType, 16, null, 0, null);
   }
   
-  public void g()
-  {
-    RMVideoStateMgr.a().m();
-    this.c = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-  }
+  public void onRecvStart() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aopy
  * JD-Core Version:    0.7.0.1
  */

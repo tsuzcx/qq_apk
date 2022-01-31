@@ -6,7 +6,7 @@ import tencent.im.troop_search_popclassifc.popclassifc.RspBody;
 import tencent.im.troop_search_searchtab.searchtab.RspBody;
 
 public final class troopviewInfo$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   public static final int POPRSB_FIELD_NUMBER = 1;
   public static final int SEARCHRSB_FIELD_NUMBER = 2;
@@ -16,7 +16,7 @@ public final class troopviewInfo$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.troop_view.troopviewInfo.RspBody
  * JD-Core Version:    0.7.0.1
  */

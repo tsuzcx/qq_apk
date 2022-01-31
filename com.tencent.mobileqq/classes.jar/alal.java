@@ -1,20 +1,11 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.widget.BounceScrollView;
-
-public class alal
-  extends GestureDetector.SimpleOnGestureListener
+public abstract interface alal
+  extends alak
 {
-  public alal(BounceScrollView paramBounceScrollView) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return Math.abs(paramFloat2) >= Math.abs(paramFloat1);
-  }
+  public abstract void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alal
  * JD-Core Version:    0.7.0.1
  */

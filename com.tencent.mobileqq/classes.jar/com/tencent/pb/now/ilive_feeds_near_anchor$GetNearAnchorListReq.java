@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBFloatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ilive_feeds_near_anchor$GetNearAnchorListReq
-  extends MessageMicro
+  extends MessageMicro<GetNearAnchorListReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 13, 21, 24, 32, 40, 48 }, new String[] { "longitude", "latitude", "start", "num", "source", "gender" }, new Object[] { Float.valueOf(0.0F), Float.valueOf(0.0F), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, GetNearAnchorListReq.class);
   public final PBUInt32Field gender = PBField.initUInt32(0);
@@ -19,7 +19,7 @@ public final class ilive_feeds_near_anchor$GetNearAnchorListReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_near_anchor.GetNearAnchorListReq
  * JD-Core Version:    0.7.0.1
  */

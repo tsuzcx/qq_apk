@@ -1,33 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.InputMethodUtil;
-import org.json.JSONException;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ajor
-  implements View.OnClickListener
+final class ajor
+  implements DialogInterface.OnClickListener
 {
-  public ajor(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  ajor(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    InputMethodUtil.b(paramView);
-    try
-    {
-      PublishHomeWorkFragment.c(this.a);
-      return;
+    ajop.a("1");
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    catch (JSONException paramView)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("PublishHomeWorkFragment", 2, "on publish homework error, parse json error", paramView);
+    if (this.a != null) {
+      this.a.onClick(paramDialogInterface, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajor
  * JD-Core Version:    0.7.0.1
  */

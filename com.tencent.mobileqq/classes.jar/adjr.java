@@ -1,22 +1,19 @@
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.8.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
-class adjr
-  implements FMDialogUtil.FMDialogInterface
+public class adjr
+  implements View.OnClickListener
 {
-  adjr(adjq paramadjq, Intent paramIntent) {}
-  
-  public void a()
+  public void onClick(View paramView)
   {
-    ForwardBaseOption.a(this.jdField_a_of_type_Adjq.a, this.jdField_a_of_type_AndroidContentIntent, 103);
+    ThreadManager.post(new MarketFaceItemBuilder.8.1(this), 5, null, true);
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adjr
  * JD-Core Version:    0.7.0.1
  */

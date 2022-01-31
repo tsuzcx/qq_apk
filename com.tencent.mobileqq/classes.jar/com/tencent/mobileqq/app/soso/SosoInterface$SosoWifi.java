@@ -1,10 +1,24 @@
 package com.tencent.mobileqq.app.soso;
 
+import akgi;
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.os.Parcelable.Creator;
+
 public final class SosoInterface$SosoWifi
+  implements Parcelable
 {
+  public static final Parcelable.Creator<SosoWifi> CREATOR = new akgi();
   public int a;
   public long a;
   public String a;
+  
+  public SosoInterface$SosoWifi(Parcel paramParcel)
+  {
+    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.jdField_a_of_type_Long = paramParcel.readLong();
+    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+  }
   
   public SosoInterface$SosoWifi(String paramString, int paramInt)
   {
@@ -42,6 +56,18 @@ public final class SosoInterface$SosoWifi
       return 0L;
     }
     return 0L;
+  }
+  
+  public int describeContents()
+  {
+    return 0;
+  }
+  
+  public void writeToParcel(Parcel paramParcel, int paramInt)
+  {
+    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeLong(this.jdField_a_of_type_Long);
+    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
   }
 }
 

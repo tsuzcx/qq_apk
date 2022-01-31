@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class RoamSetting
-  extends Entity
+  extends atmo
 {
   public static final String SETTING_REVISION = "setting_revision";
-  @unique
+  @atoc
   public String path;
   public String value;
   

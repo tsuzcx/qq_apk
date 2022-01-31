@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.model;
 
-import aarr;
+import akwh;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ArVideoResourceInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aarr();
+  public static final Parcelable.Creator<ArVideoResourceInfo> CREATOR = new akwh();
   public int a;
   public long a;
   public String a;
@@ -72,7 +72,7 @@ public class ArVideoResourceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.ArVideoResourceInfo
  * JD-Core Version:    0.7.0.1
  */

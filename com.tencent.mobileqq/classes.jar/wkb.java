@@ -1,23 +1,32 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.mobileqq.activity.bless.BlessActivity.AnimationDrawable2;
+import com.tencent.qphone.base.util.QLog;
 
-public class wkb
-  implements Runnable
+class wkb
+  extends wkp
 {
-  public wkb(BlessActivity paramBlessActivity) {}
-  
-  public void run()
+  wkb(wju paramwju, wkc paramwkc, String paramString1, String paramString2)
   {
-    BlessActivity.a(this.a).setBackgroundDrawable(this.a.a);
-    BlessActivity.a(this.a).setVisibility(0);
-    this.a.a.start();
-    BlessActivity.b(this.a);
+    super(paramwju);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d(".troop.VideoCombineHelper", 2, "combineUnit end : isSuccess = " + paramBoolean);
+      QLog.d(".troop.trace_video_combine", 2, "combineAudioAndVideoTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_Wju.a));
+      this.jdField_a_of_type_Wju.a = System.currentTimeMillis();
+    }
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Wkc.a(this.jdField_a_of_type_JavaLangString, true, "cmobine auido video done.");
+      return;
+    }
+    this.jdField_a_of_type_Wkc.a(this.b, false, "cmobine auido video done.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wkb
  * JD-Core Version:    0.7.0.1
  */

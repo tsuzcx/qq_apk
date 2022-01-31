@@ -6,7 +6,6 @@ import com.squareup.okhttp.HttpUrl;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Request.Builder;
 import com.squareup.okhttp.Response;
-import java.io.IOException;
 import java.net.Authenticator.RequestorType;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
@@ -21,7 +20,6 @@ public final class AuthenticatorAdapter
   public static final com.squareup.okhttp.Authenticator INSTANCE = new AuthenticatorAdapter();
   
   private InetAddress getConnectToInetAddress(Proxy paramProxy, HttpUrl paramHttpUrl)
-    throws IOException
   {
     if ((paramProxy != null) && (paramProxy.type() != Proxy.Type.DIRECT)) {
       return ((InetSocketAddress)paramProxy.address()).getAddress();
@@ -30,13 +28,12 @@ public final class AuthenticatorAdapter
   }
   
   public Request authenticate(Proxy paramProxy, Response paramResponse)
-    throws IOException
   {
     List localList = paramResponse.challenges();
     paramResponse = paramResponse.request();
     HttpUrl localHttpUrl = paramResponse.httpUrl();
-    int i = 0;
     int j = localList.size();
+    int i = 0;
     if (i < j)
     {
       Object localObject = (Challenge)localList.get(i);
@@ -54,13 +51,12 @@ public final class AuthenticatorAdapter
   }
   
   public Request authenticateProxy(Proxy paramProxy, Response paramResponse)
-    throws IOException
   {
     List localList = paramResponse.challenges();
     paramResponse = paramResponse.request();
     HttpUrl localHttpUrl = paramResponse.httpUrl();
-    int i = 0;
     int j = localList.size();
+    int i = 0;
     if (i < j)
     {
       Object localObject = (Challenge)localList.get(i);

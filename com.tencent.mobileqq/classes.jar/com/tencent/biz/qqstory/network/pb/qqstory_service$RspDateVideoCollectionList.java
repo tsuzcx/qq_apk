@@ -11,10 +11,10 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_service$RspDateVideoCollectionList
-  extends MessageMicro
+  extends MessageMicro<RspDateVideoCollectionList>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatMessageField collection_list = PBField.initRepeatMessage(qqstory_struct.DateVideoCollection.class);
+  public final PBRepeatMessageField<qqstory_struct.DateVideoCollection> collection_list = PBField.initRepeatMessage(qqstory_struct.DateVideoCollection.class);
   public final PBUInt32Field is_end = PBField.initUInt32(0);
   public final PBInt32Field is_friend = PBField.initInt32(0);
   public final PBBytesField next_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -30,7 +30,7 @@ public final class qqstory_service$RspDateVideoCollectionList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspDateVideoCollectionList
  * JD-Core Version:    0.7.0.1
  */

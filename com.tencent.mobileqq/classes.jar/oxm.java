@@ -1,47 +1,75 @@
-import android.annotation.SuppressLint;
-import android.os.Build.VERSION;
+import android.content.Context;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class oxm
-  implements View.OnLongClickListener
+  implements ViewBase.OnClickListener
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new oxo(this);
-  View jdField_a_of_type_AndroidViewView;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
   
-  public oxm(QRCardActivity paramQRCardActivity) {}
-  
-  @SuppressLint({"ServiceCast", "NewApi"})
-  void a(String paramString)
+  public oxm(ArticleInfo paramArticleInfo, Context paramContext)
   {
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (Build.VERSION.SDK_INT < 11) {
-        ((android.text.ClipboardManager)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getSystemService("clipboard")).setText(paramString);
-      }
-    }
-    else {
-      return;
-    }
-    ((android.content.ClipboardManager)this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getSystemService("clipboard")).setText(paramString);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = paramArticleInfo;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public boolean onLongClick(View paramView)
+  private void a()
   {
-    if (paramView == null) {
-      return false;
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.proteusItemsData))) {}
+    try
+    {
+      Object localObject = new JSONObject(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.proteusItemsData);
+      QLog.d("OnSuperTopicClickListener", 2, new Object[] { "mArticleInfo.proteusItemsData = ", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.proteusItemsData });
+      Iterator localIterator = ((JSONObject)localObject).keys();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        if ("id_super_topic".equals(str))
+        {
+          localObject = ((JSONObject)localObject).getJSONObject(str).getString("super_topic_jump_url");
+          QLog.d("OnSuperTopicClickListener", 2, new Object[] { "jumpToSuperTopic, jumpUrl = ", localObject });
+          if (!TextUtils.isEmpty((CharSequence)localObject)) {
+            obz.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject, null);
+          }
+        }
+      }
+      return;
     }
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    paramView.setSelected(true);
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131375639, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRCardActivity.getString(2131435109), 2130838310);
-    BubbleContextMenu.a(paramView, localQQCustomMenu, this.jdField_a_of_type_AndroidViewView$OnClickListener, new oxn(this, paramView));
-    return true;
+    catch (JSONException localJSONException)
+    {
+      QLog.d("OnSuperTopicClickListener", 2, "jumpToSuperTopic", localJSONException);
+    }
+  }
+  
+  public static void a(ArticleInfo paramArticleInfo, Context paramContext)
+  {
+    paramArticleInfo = paramArticleInfo.mSocialFeedInfo.a;
+    if (paramArticleInfo != null)
+    {
+      paramArticleInfo = paramArticleInfo.d;
+      obz.c(paramContext, paramArticleInfo);
+      QLog.i("OnSuperTopicClickListener", 2, "jumpToWendaRefer jumpUrl +" + paramArticleInfo);
+    }
+  }
+  
+  public void onClick(ViewBase paramViewBase)
+  {
+    if ((obz.l(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) || (obz.m(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)))
+    {
+      a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_AndroidContentContext);
+      ndn.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      return;
+    }
+    a();
+    ndn.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
   }
 }
 

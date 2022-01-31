@@ -1,21 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class aehy
-  implements View.OnClickListener
+class aehy
+  extends ajjh
 {
-  public aehy(LebaWithFeeds paramLebaWithFeeds) {}
+  aehy(aegy paramaegy, ImageView paramImageView) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    this.a.a.a(LebaWithFeeds.a(this.a), paramView, ((Integer)paramView.getTag(-1)).intValue(), 0L);
+    if ((paramBoolean) && (paramString.equals(this.jdField_a_of_type_Aegy.a().a))) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(azwp.a(this.jdField_a_of_type_Aegy.a, paramString, (byte)3));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aehy
  * JD-Core Version:    0.7.0.1
  */

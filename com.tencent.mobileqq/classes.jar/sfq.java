@@ -1,24 +1,99 @@
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import android.support.v4.util.LruCache;
+import java.lang.ref.WeakReference;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-class sfq
-  implements Runnable
+public class sfq<KEY, VALUE extends sfp>
 {
-  sfq(sfp paramsfp, boolean paramBoolean) {}
+  public int a;
+  public LruCache<KEY, VALUE> a;
+  public ConcurrentHashMap<KEY, WeakReference<VALUE>> a;
   
-  public void run()
+  public sfq(int paramInt)
   {
-    this.jdField_a_of_type_Sfp.a.a.d();
-    if (this.jdField_a_of_type_Boolean)
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(50);
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new sfr(this, paramInt);
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache.evictAll();
+  }
+  
+  private void b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      this.jdField_a_of_type_Sfp.a.a.b(false);
-      return;
+      Object localObject = localIterator.next();
+      WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject);
+      if ((localWeakReference != null) && (localWeakReference.get() == null))
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localObject);
+        urk.b("OneObjectCacheList", String.format("key :%s had been remove by jvm", new Object[] { localObject }));
+      }
     }
-    this.jdField_a_of_type_Sfp.a.a.g();
+  }
+  
+  public VALUE a(KEY paramKEY)
+  {
+    sfp localsfp2 = (sfp)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramKEY);
+    sfp localsfp1 = localsfp2;
+    if (localsfp2 == null)
+    {
+      WeakReference localWeakReference = (WeakReference)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramKEY);
+      localsfp1 = localsfp2;
+      if (localWeakReference != null)
+      {
+        localsfp2 = (sfp)localWeakReference.get();
+        localsfp1 = localsfp2;
+        if (localsfp2 != null)
+        {
+          urk.b("OneObjectCacheList", String.format("revert key %s from second cache", new Object[] { paramKEY }));
+          a(paramKEY, localsfp2);
+          localsfp1 = localsfp2;
+        }
+      }
+    }
+    return localsfp1;
+  }
+  
+  public VALUE a(KEY paramKEY, VALUE paramVALUE)
+  {
+    sfp localsfp = a(paramKEY);
+    if (localsfp == null)
+    {
+      this.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(paramKEY, paramVALUE);
+      return paramVALUE;
+    }
+    localsfp.copy(paramVALUE);
+    return localsfp;
+  }
+  
+  public void a()
+  {
+    int i = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size();
+    if (i - this.jdField_a_of_type_Int > 50)
+    {
+      b();
+      this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size();
+      urk.a("OneObjectCacheList", "evict second cache data count:%d", Integer.valueOf(i - this.jdField_a_of_type_Int));
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache.trimToSize(paramInt);
+  }
+  
+  public void a(KEY paramKEY)
+  {
+    sfp localsfp = (sfp)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.remove(paramKEY);
+    if (localsfp != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramKEY, new WeakReference(localsfp));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sfq
  * JD-Core Version:    0.7.0.1
  */

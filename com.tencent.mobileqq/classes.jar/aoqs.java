@@ -1,29 +1,27 @@
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesFetcher;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
 
 public class aoqs
-  implements Comparable
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public int a;
-  public long a;
-  public int b;
+  public aoqs(FileBrowserActivity paramFileBrowserActivity, int paramInt) {}
   
-  public aoqs(VideoFramesFetcher paramVideoFramesFetcher, long paramLong, int paramInt1, int paramInt2)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = Math.min(paramInt2, VideoFramesFetcher.a(paramVideoFramesFetcher));
-    VideoFramesFetcher.a(paramVideoFramesFetcher).put(Integer.valueOf(paramInt1), this);
-  }
-  
-  public int a(aoqs paramaoqs)
-  {
-    return -(int)(this.jdField_a_of_type_Long - paramaoqs.jdField_a_of_type_Long);
+    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {}
+    do
+    {
+      return false;
+      paramFloat1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+      paramFloat2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat1);
+    } while ((paramFloat1 > -this.jdField_a_of_type_Int) || (paramFloat2 >= 0.5F) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity.a == null) || (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity.a.c()));
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity.onBackEvent();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoqs
  * JD-Core Version:    0.7.0.1
  */

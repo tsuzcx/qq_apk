@@ -1,80 +1,64 @@
-import android.content.Context;
-import android.opengl.GLES20;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.mobileqq.surfaceviewaction.util.GLUtil;
-import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
-import java.io.File;
+import android.util.Pair;
+import java.util.HashMap;
+import java.util.Map;
 
 public class akby
-  extends VideoSprite
 {
-  private int k = GLES20.glGetUniformLocation(this.h, "v_isShowCover");
+  private static Object jdField_a_of_type_JavaLangObject = new Object();
+  private static Map<String, Pair<String, Integer>> jdField_a_of_type_JavaUtilMap;
   
-  public akby(TroopSignVideoView paramTroopSignVideoView, SpriteGLView paramSpriteGLView, Context paramContext, boolean paramBoolean)
+  public static int a(String paramString)
   {
-    super(paramSpriteGLView, paramContext, paramBoolean);
+    return ((Integer)((Pair)jdField_a_of_type_JavaUtilMap.get(paramString)).second).intValue();
   }
   
-  protected void a(int paramInt1, int paramInt2)
+  public static String a(String paramString)
   {
-    if (TroopSignVideoView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSignVideoView) == 0) {
-      TroopSignVideoView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSignVideoView, paramInt2);
-    }
-    super.a(paramInt1, TroopSignVideoView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSignVideoView));
+    return (String)((Pair)jdField_a_of_type_JavaUtilMap.get(paramString)).first;
   }
   
-  public String b()
+  public static Map<String, Pair<String, Integer>> a()
   {
-    return GLUtil.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSignVideoView.getContext(), "troop" + File.separator + "shaders" + File.separator + "FragmentShaderVideoForTroopSign.glsl");
-  }
-  
-  protected void b(int paramInt1, int paramInt2)
-  {
-    if (this.jdField_e_of_type_JavaNioFloatBuffer == null) {
-      return;
-    }
-    a(paramInt1, paramInt2);
-    GLES20.glEnableVertexAttribArray(this.jdField_e_of_type_Int);
-    GLES20.glVertexAttribPointer(this.jdField_e_of_type_Int, 2, 5126, false, 0, this.jdField_e_of_type_JavaNioFloatBuffer);
-    GLES20.glBindTexture(3553, this.jdField_a_of_type_ArrayOfInt[0]);
-    GLES20.glUniform1i(this.jdField_a_of_type_Int, 0);
-    GLES20.glEnableVertexAttribArray(this.jdField_c_of_type_Int);
-    GLES20.glVertexAttribPointer(this.jdField_c_of_type_Int, 4, 5126, false, 0, this.jdField_c_of_type_JavaNioFloatBuffer);
-    if (this.jdField_f_of_type_Boolean)
+    if (jdField_a_of_type_JavaUtilMap == null) {}
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      GLES20.glUniform1i(this.g, 1);
-      GLES20.glEnableVertexAttribArray(this.jdField_d_of_type_Int);
-      GLES20.glVertexAttribPointer(this.jdField_d_of_type_Int, 4, 5126, false, 0, this.jdField_d_of_type_JavaNioFloatBuffer);
-      paramInt2 = this.k;
-      if (!TroopSignVideoView.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSignVideoView)) {
-        break label205;
+      if (jdField_a_of_type_JavaUtilMap == null) {
+        a();
       }
-    }
-    label205:
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      GLES20.glUniform1i(paramInt2, paramInt1);
-      GLES20.glUniformMatrix4fv(this.jdField_f_of_type_Int, 1, false, this.jdField_f_of_type_ArrayOfFloat, 0);
-      GLES20.glDrawElements(4, jdField_b_of_type_ArrayOfShort.length, 5123, this.jdField_b_of_type_JavaNioShortBuffer);
-      GLES20.glDisableVertexAttribArray(this.jdField_e_of_type_Int);
-      GLES20.glDisableVertexAttribArray(this.jdField_c_of_type_Int);
-      GLES20.glDisableVertexAttribArray(this.jdField_d_of_type_Int);
-      return;
-      GLES20.glUniform1i(this.g, 0);
-      break;
+      return jdField_a_of_type_JavaUtilMap;
     }
   }
   
-  protected void i()
+  private static void a()
   {
-    super.i();
-    this.k = GLES20.glGetUniformLocation(this.h, "v_isShowCover");
+    jdField_a_of_type_JavaUtilMap = new HashMap();
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.GetMsgV4", Pair.create("accost_processor", Integer.valueOf(5002)));
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.GetMsgV2", Pair.create("accost_processor", Integer.valueOf(5002)));
+    jdField_a_of_type_JavaUtilMap.put("AccostSvc.SvrMsg", Pair.create("accost_processor", Integer.valueOf(5001)));
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew", Pair.create("system_processor", Integer.valueOf(6002)));
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew.Friend", Pair.create("system_processor", Integer.valueOf(6001)));
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew.Group", Pair.create("system_processor", Integer.valueOf(6003)));
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgRead", Pair.create("system_processor", Integer.valueOf(6006)));
+    jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgAction", Pair.create("system_processor", Integer.valueOf(6007)));
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5cf_0", Pair.create("system_processor", Integer.valueOf(6008)));
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5cf_1", Pair.create("system_processor", Integer.valueOf(6009)));
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbGetOneDayRoamMsg", Pair.create("c2c_processor", Integer.valueOf(1003)));
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbGetRoamMsg", Pair.create("c2c_processor", Integer.valueOf(2001)));
+    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbSearchRoamMsgInCloud", Pair.create("c2c_processor", Integer.valueOf(2005)));
+    jdField_a_of_type_JavaUtilMap.put("TransService.ReqOffFilePack", Pair.create("offlinefile_processor", Integer.valueOf(7001)));
+    jdField_a_of_type_JavaUtilMap.put("OnlinePush.ReqPush", Pair.create("businessbase_processor", Integer.valueOf(3001)));
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbBindUinGetMsg", Pair.create("sub_account_processor", Integer.valueOf(4001)));
+    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbBindUinMsgReadedConfirm", Pair.create("sub_account_processor", Integer.valueOf(4002)));
+    jdField_a_of_type_JavaUtilMap.put("OidbSvc.0x5d0_1", Pair.create("sub_account_processor", Integer.valueOf(4003)));
+    jdField_a_of_type_JavaUtilMap.put("MessageSvc.PbMultiMsgSend", Pair.create("uncommon_msg_processor", Integer.valueOf(8001)));
+    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbMsgWithDraw", Pair.create("uncommon_msg_processor", Integer.valueOf(8002)));
+    jdField_a_of_type_JavaUtilMap.put("PbMessageSvc.PbDelOneRoamMsg", Pair.create("uncommon_msg_processor", Integer.valueOf(8003)));
+    jdField_a_of_type_JavaUtilMap.put("SecSvcBlessingHelper.blessing_helper", Pair.create("uncommon_msg_processor", Integer.valueOf(8004)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akby
  * JD-Core Version:    0.7.0.1
  */

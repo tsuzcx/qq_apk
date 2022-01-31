@@ -1,23 +1,36 @@
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.troop.filemanager.download.TroopFileDownloadMgr;
+import com.tencent.mobileqq.data.LebaPluginInfo;
+import java.util.Comparator;
 
 public class ajlk
-  implements Runnable
+  implements Comparator<amnq>
 {
-  public ajlk(TroopFileDownloadMgr paramTroopFileDownloadMgr) {}
-  
-  public void run()
+  private boolean a(amnq paramamnq)
   {
-    if (!this.a.a) {
-      return;
+    return (paramamnq != null) && (paramamnq.a != null);
+  }
+  
+  public int a(amnq paramamnq1, amnq paramamnq2)
+  {
+    if ((a(paramamnq1)) && (a(paramamnq2))) {
+      if (paramamnq1.a.sPriority <= paramamnq2.a.sPriority) {}
     }
-    AppNetConnInfo.unregisterNetInfoHandler(this.a);
-    this.a.a = false;
+    do
+    {
+      return 1;
+      if (paramamnq1.a.sPriority < paramamnq2.a.sPriority) {
+        return -1;
+      }
+      return 0;
+      if (a(paramamnq1)) {
+        return -1;
+      }
+    } while (a(paramamnq2));
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajlk
  * JD-Core Version:    0.7.0.1
  */

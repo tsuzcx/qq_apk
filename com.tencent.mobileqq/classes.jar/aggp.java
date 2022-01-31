@@ -1,18 +1,28 @@
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.qphone.base.util.QLog;
+import mqq.util.WeakReference;
 
-public class aggp
-  implements Runnable
+class aggp
+  implements DialogInterface.OnClickListener
 {
-  public aggp(ScanOcrActivity paramScanOcrActivity) {}
+  aggp(aggm paramaggm) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ScanOcrActivity.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    }
+    if (((NewPhotoListActivity)this.a.a.get()).c != null) {
+      ((NewPhotoListActivity)this.a.a.get()).c.setClickable(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aggp
  * JD-Core Version:    0.7.0.1
  */

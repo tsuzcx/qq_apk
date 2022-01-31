@@ -1,31 +1,23 @@
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.IPluginManager;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteCursorDriver;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteDatabase.CursorFactory;
+import android.database.sqlite.SQLiteQuery;
+import com.tencent.mobileqq.data.QQEntityManagerFactory;
 
-public final class amti
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+public class amti
+  implements SQLiteDatabase.CursorFactory
 {
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  private amti(QQEntityManagerFactory paramQQEntityManagerFactory) {}
+  
+  public Cursor newCursor(SQLiteDatabase paramSQLiteDatabase, SQLiteCursorDriver paramSQLiteCursorDriver, String paramString, SQLiteQuery paramSQLiteQuery)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("plugin_tag", 2, "handleOtherProcess onPluginManagerLoaded");
-    }
-    IPluginManager.a(paramPluginManagerClient);
-    IPluginManager.a(null);
-    while (!IPluginManager.a().isEmpty())
-    {
-      paramPluginManagerClient = (amtn)IPluginManager.a().poll();
-      if (paramPluginManagerClient != null) {
-        IPluginManager.b(paramPluginManagerClient.jdField_a_of_type_AndroidContentContext, paramPluginManagerClient.jdField_a_of_type_CooperationPluginIPluginManager$PluginParams, paramPluginManagerClient.jdField_a_of_type_CooperationPluginIPluginManager$OnPluginReadyListener);
-      }
-    }
+    return new amtj(this, paramSQLiteDatabase, paramSQLiteCursorDriver, paramString, paramSQLiteQuery);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amti
  * JD-Core Version:    0.7.0.1
  */

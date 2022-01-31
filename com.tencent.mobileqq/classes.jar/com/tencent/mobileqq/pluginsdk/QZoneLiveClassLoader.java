@@ -7,17 +7,16 @@ import dalvik.system.DexClassLoader;
 public class QZoneLiveClassLoader
   extends DexClassLoader
 {
-  private ClassLoader a;
-  private final String[] b = { "com.tencent.av", "com.tencent.xplatform", "com.tencent.kapalaiadapter", "NS_QQRADIO_PROTOCOL", "com.qzone.widget", "com.tencent.component.animation.rebound", "com.tencent.component.hdasync", "com.tencent.component.app", "com.qzonex.app.internal", "com.tencent.sharp.jni", "com.microrapid", "com.tencent.algo", "com.tencent.common", "com.tencent.faceBeauty", "com.tencent.filter", "com.tencent.oscarcamera.particlesystem", "com.tencent.ptualgo", "com.tencent.ttpic", "com.tencent.util", "com.tencent.view", "com.tencent.vtool", "com.tencent.youtufacetrack", "com.tencent.ytcommon", "com.tencent.youtu.android.segmenter", "com.tentent.youtu.android.segementer", "me.lake.gleslab" };
+  private ClassLoader mGrandParent;
+  private final String[] mInterceptPackageNames = { "com.tencent.av", "com.tencent.xplatform", "com.tencent.kapalaiadapter", "NS_QQRADIO_PROTOCOL", "com.qzone.widget", "com.tencent.component.animation.rebound", "com.tencent.component.hdasync", "com.tencent.component.app", "com.qzonex.app.internal", "com.tencent.sharp.jni", "com.microrapid", "com.tencent.algo", "com.tencent.common", "com.tencent.faceBeauty", "com.tencent.filter", "com.tencent.oscarcamera.particlesystem", "com.tencent.ptualgo", "com.tencent.ttpic", "com.tencent.util", "com.tencent.view", "com.tencent.vtool", "com.tencent.youtufacetrack", "com.tencent.ytcommon", "com.tencent.youtu.android.segmenter", "com.tentent.youtu.android.segementer", "me.lake.gleslab" };
   
   public QZoneLiveClassLoader(String paramString1, String paramString2, String paramString3, ClassLoader paramClassLoader)
   {
     super(paramString1, paramString2, paramString3, paramClassLoader);
-    this.a = paramClassLoader.getParent().getParent();
+    this.mGrandParent = paramClassLoader.getParent().getParent();
   }
   
-  protected Class loadClass(String paramString, boolean paramBoolean)
-    throws ClassNotFoundException
+  protected Class<?> loadClass(String paramString, boolean paramBoolean)
   {
     int j = 0;
     int i = paramString.lastIndexOf('.');
@@ -25,7 +24,7 @@ public class QZoneLiveClassLoader
     Object localObject2;
     for (Object localObject1 = paramString.substring(0, i);; localObject1 = "")
     {
-      localObject2 = this.b;
+      localObject2 = this.mInterceptPackageNames;
       int k = localObject2.length;
       i = 0;
       while (i < k)
@@ -65,7 +64,7 @@ public class QZoneLiveClassLoader
     } while (localObject2 != null);
     try
     {
-      paramString = this.a.loadClass(paramString);
+      paramString = this.mGrandParent.loadClass(paramString);
       return paramString;
     }
     catch (ClassNotFoundException paramString)

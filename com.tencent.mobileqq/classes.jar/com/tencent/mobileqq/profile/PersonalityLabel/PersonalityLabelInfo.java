@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import agte;
 import android.graphics.Color;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import atwe;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -24,7 +24,7 @@ import tencent.im.label.comm.PersonalityTagComm.PraiseUserInfo;
 public class PersonalityLabelInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new agte();
+  public static final Parcelable.Creator<PersonalityLabelInfo> CREATOR = new atwe();
   public static final String TAG = "PersonalityLabelInfo";
   int addTime = 0;
   public int bgColor = -16777216;
@@ -34,13 +34,13 @@ public class PersonalityLabelInfo
   public int fgColor = -1;
   public long id;
   public long modTime;
-  public List personalityLabelPhotos;
+  public List<PersonalityLabelPhoto> personalityLabelPhotos;
   public int photoCount = 0;
   public long praiseCount = 0L;
   public int praiseFlag;
   public String text = "";
   long unreadPraiseCount = 0L;
-  public ArrayList zanUins;
+  public ArrayList<PersonalityLabelZan> zanUins;
   
   public PersonalityLabelInfo()
   {

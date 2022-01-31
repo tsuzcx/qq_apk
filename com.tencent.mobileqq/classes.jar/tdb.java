@@ -1,56 +1,59 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import com.tencent.mobileqq.config.struct.LebaViewItem;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.manager.TicketManager;
 
-class tdb
-  implements Runnable
+public class tdb
+  extends ten
 {
-  tdb(tda paramtda, List paramList) {}
+  private HashMap<String, String> a;
+  private boolean c;
   
-  public void run()
+  public tdb()
   {
-    if (Leba.a(this.jdField_a_of_type_Tda.a) == null) {
-      Leba.a(this.jdField_a_of_type_Tda.a, new ArrayList());
-    }
-    Iterator localIterator1 = Leba.a(this.jdField_a_of_type_Tda.a).iterator();
-    while (localIterator1.hasNext())
+    this(null, false);
+  }
+  
+  public tdb(HashMap<String, String> paramHashMap, boolean paramBoolean)
+  {
+    a(false, true);
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    this.c = paramBoolean;
+  }
+  
+  public void a()
+  {
+    Object localObject2 = tfy.a();
+    Object localObject1 = ((QQAppInterface)localObject2).getCurrentAccountUin();
+    String str = ((TicketManager)((QQAppInterface)localObject2).getManager(2)).getSkey((String)localObject1);
+    localObject2 = new Bundle();
+    localObject1 = mpl.a(BaseApplication.getContext(), (String)localObject1, str, 1, this.jdField_a_of_type_JavaUtilHashMap, (Bundle)localObject2);
+    if ((!((Bundle)localObject2).getBoolean("isSuccess", false)) && (this.c))
     {
-      LebaViewItem localLebaViewItem1 = (LebaViewItem)localIterator1.next();
-      if ((localLebaViewItem1 != null) && (localLebaViewItem1.b != null) && (localLebaViewItem1.a != null))
-      {
-        Iterator localIterator2 = this.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator2.hasNext())
-        {
-          LebaViewItem localLebaViewItem2 = (LebaViewItem)localIterator2.next();
-          if ((localLebaViewItem2 != null) && (localLebaViewItem2.a != null) && (localLebaViewItem2.a.strPkgName.equals(localLebaViewItem1.a.strPkgName))) {
-            localLebaViewItem2.b = localLebaViewItem1.b;
-          }
-        }
-      }
-    }
-    Leba.a(this.jdField_a_of_type_Tda.a).clear();
-    Leba.a(this.jdField_a_of_type_Tda.a).addAll(this.jdField_a_of_type_JavaUtilList);
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.leba", 2, "refreshLebaConfig. lebaData size=" + Leba.a(this.jdField_a_of_type_Tda.a).size());
-    }
-    if (this.jdField_a_of_type_Tda.a.a != null)
-    {
-      this.jdField_a_of_type_Tda.a.a.notifyDataSetChanged();
       if (QLog.isColorLevel()) {
-        QLog.i("Q.lebatab.leba", 2, "refreshLebaConfig. notifyData.");
+        QLog.w(this.b, 2, "shortenUrl failed size:" + ((HashMap)localObject1).size());
       }
-      Leba.c(this.jdField_a_of_type_Tda.a);
+      b(false);
+      return;
+    }
+    a("ShortenUrlJob_shortenedUrls", localObject1);
+    b(true);
+  }
+  
+  protected void a(Map<String, Object> paramMap)
+  {
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()) && (paramMap.containsKey("ShortenUrlJob_shortenedUrls"))) {
+      this.jdField_a_of_type_JavaUtilHashMap = ((HashMap)tfe.a(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap, "ShortenUrlJob_shortenedUrls", this.jdField_a_of_type_JavaUtilHashMap));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tdb
  * JD-Core Version:    0.7.0.1
  */

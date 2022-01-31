@@ -1,32 +1,65 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.phonelogin.PhoneNumLoginImpl;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.mobileqq.WebSsoBody.WebSsoControlData;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import mqq.observer.BusinessObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class rkx
-  implements View.OnClickListener
+  implements BusinessObserver
 {
-  public rkx(AccountManageActivity paramAccountManageActivity) {}
+  public rkx(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void onClick(View paramView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramView = (View)paramView.getParent().getParent();
-    if ((paramView == null) || (paramView.getTag() == null)) {}
-    int i;
-    do
+    if (paramBoolean) {}
+    try
     {
+      Object localObject = paramBundle.getByteArray("data");
+      if (localObject == null) {
+        return;
+      }
+      paramBundle = new WebSsoBody.WebSsoResponseBody();
+      paramBundle.mergeFrom((byte[])localObject);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("data", paramBundle.data.get());
+      ((JSONObject)localObject).put("retcode", paramBundle.ret.get());
+      ((JSONObject)localObject).put("cret", 0);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, localObject);
+      if (((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).frequency.has()) {
+        BridgeModule.access$102(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, ((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).frequency.get());
+      }
+      if (!((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).packageSize.has()) {
+        return;
+      }
+      BridgeModule.access$202(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, ((WebSsoBody.WebSsoControlData)paramBundle.controlData.get()).packageSize.get());
       return;
-      i = ((Integer)paramView.getTag()).intValue();
-    } while ((i == 0) && (!PhoneNumLoginImpl.a().a(this.a.app, this.a)));
-    this.a.a(i);
-    ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_edit_delete", 0, 0, "", "", "", "");
+    }
+    catch (Exception paramBundle)
+    {
+      paramBundle = new JSONObject();
+      try
+      {
+        paramBundle.put("cret", 2);
+        return;
+      }
+      catch (JSONException paramBundle)
+      {
+        paramBundle.printStackTrace();
+      }
+    }
+    paramBundle = new JSONObject();
+    paramBundle.put("cret", 1);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramBundle);
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rkx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,13 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
+import acts;
+import actu;
+import actz;
+import acud;
+import acue;
+import acuf;
+import acuh;
+import acui;
 import android.graphics.Path;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -7,24 +15,19 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.List<Lactu;>;
 import java.util.Map;
 import java.util.TreeMap;
-import uxi;
-import uya;
-import uyb;
-import uyc;
-import uye;
-import uyf;
 
 public class HalfAlgorithm
-  extends PathAlgorithm
-  implements uyf
+  extends acts
+  implements acui
 {
   private int jdField_a_of_type_Int;
+  private acue jdField_a_of_type_Acue = new acue();
   private Path jdField_a_of_type_AndroidGraphicsPath;
-  private List jdField_a_of_type_JavaUtilList;
-  private Map jdField_a_of_type_JavaUtilMap;
-  private uyb jdField_a_of_type_Uyb = new uyb();
+  private List<actz> jdField_a_of_type_JavaUtilList;
+  private Map<Integer, acuf> jdField_a_of_type_JavaUtilMap;
   
   private void a()
   {
@@ -38,28 +41,28 @@ public class HalfAlgorithm
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
   }
   
-  private void a(List paramList1, List paramList2)
+  private void a(List<actz> paramList1, List<actz> paramList2)
   {
     if ((paramList2 == null) || (paramList1 == null) || (paramList2.size() == 0)) {
       return;
     }
     long l;
     if (paramList1.size() > 0) {
-      l = ((PathDrawer.PathSegment)paramList1.get(paramList1.size() - 1)).a();
+      l = ((actz)paramList1.get(paramList1.size() - 1)).a();
     }
-    for (int i = ((PathDrawer.PathSegment)paramList1.get(paramList1.size() - 1)).a();; i = 0)
+    for (int i = ((actz)paramList1.get(paramList1.size() - 1)).a();; i = 0)
     {
-      if (((PathDrawer.PathSegment)paramList2.get(0)).a() == l)
+      if (((actz)paramList2.get(0)).a() == l)
       {
         QLog.d("DoodleAlgorithm", 2, "addjust time and seg :" + l);
         Iterator localIterator = paramList2.iterator();
         while (localIterator.hasNext())
         {
-          PathDrawer.PathSegment localPathSegment = (PathDrawer.PathSegment)localIterator.next();
-          if (localPathSegment.a() != l) {
+          actz localactz = (actz)localIterator.next();
+          if (localactz.a() != l) {
             break;
           }
-          localPathSegment.a(localPathSegment.a() + i + 1);
+          localactz.a(localactz.a() + i + 1);
         }
       }
       paramList1.addAll(paramList2);
@@ -68,14 +71,14 @@ public class HalfAlgorithm
     }
   }
   
-  private boolean a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong1, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, long paramLong2, Path paramPath, List paramList)
+  private boolean a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong1, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, long paramLong2, Path paramPath, List<actz> paramList)
   {
     paramPath.moveTo(paramFloat1, paramFloat2);
     paramPath.quadTo(paramFloat4, paramFloat5, paramFloat6, paramFloat7);
     return a(paramList, paramPath, paramFloat3, paramFloat8, paramLong1, paramLong2);
   }
   
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong, Path paramPath, List paramList)
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong, Path paramPath, List<actz> paramList)
   {
     if (paramPath == null) {}
     do
@@ -83,13 +86,13 @@ public class HalfAlgorithm
       return;
       paramPath.reset();
       paramPath.moveTo(paramFloat1, paramFloat2);
-      this.jdField_a_of_type_Uyb.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+      this.jdField_a_of_type_Acue.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
     } while (paramList == null);
     paramList.clear();
     a();
   }
   
-  public void a(int paramInt, boolean paramBoolean, Path paramPath, List paramList)
+  public void a(int paramInt, boolean paramBoolean, Path paramPath, List<actz> paramList)
   {
     if (this.jdField_a_of_type_JavaUtilMap == null) {
       return;
@@ -102,12 +105,12 @@ public class HalfAlgorithm
     }
     synchronized (this.jdField_a_of_type_JavaUtilMap)
     {
-      uyc localuyc = new uyc();
-      localuyc.jdField_a_of_type_Int = paramInt;
-      localuyc.jdField_a_of_type_Boolean = paramBoolean;
-      localuyc.jdField_a_of_type_AndroidGraphicsPath = paramPath;
-      localuyc.jdField_a_of_type_JavaUtilList = paramList;
-      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localuyc);
+      acuf localacuf = new acuf();
+      localacuf.jdField_a_of_type_Int = paramInt;
+      localacuf.jdField_a_of_type_Boolean = paramBoolean;
+      localacuf.jdField_a_of_type_AndroidGraphicsPath = paramPath;
+      localacuf.jdField_a_of_type_JavaUtilList = paramList;
+      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localacuf);
       if (this.jdField_a_of_type_JavaUtilMap.size() == this.jdField_a_of_type_Int)
       {
         this.jdField_a_of_type_JavaUtilMap.notifyAll();
@@ -117,17 +120,17 @@ public class HalfAlgorithm
     }
   }
   
-  public void a(Path paramPath, List paramList)
+  public void a(Path paramPath, List<actz> paramList)
   {
     if (paramList == null)
     {
-      this.jdField_a_of_type_Uyb.a();
-      paramPath.quadTo(this.jdField_a_of_type_Uyb.c.jdField_a_of_type_Float, this.jdField_a_of_type_Uyb.c.b, this.jdField_a_of_type_Uyb.b.jdField_a_of_type_Float, this.jdField_a_of_type_Uyb.b.b);
+      this.jdField_a_of_type_Acue.a();
+      paramPath.quadTo(this.jdField_a_of_type_Acue.c.jdField_a_of_type_Float, this.jdField_a_of_type_Acue.c.b, this.jdField_a_of_type_Acue.b.jdField_a_of_type_Float, this.jdField_a_of_type_Acue.b.b);
       return;
     }
     a();
-    this.jdField_a_of_type_Uyb.a();
-    if (a(this.jdField_a_of_type_Uyb.a.jdField_a_of_type_Float, this.jdField_a_of_type_Uyb.a.b, this.jdField_a_of_type_Uyb.a.c, this.jdField_a_of_type_Uyb.a.jdField_a_of_type_Long, this.jdField_a_of_type_Uyb.c.jdField_a_of_type_Float, this.jdField_a_of_type_Uyb.c.b, this.jdField_a_of_type_Uyb.b.jdField_a_of_type_Float, this.jdField_a_of_type_Uyb.b.b, this.jdField_a_of_type_Uyb.b.c, this.jdField_a_of_type_Uyb.b.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_JavaUtilList))
+    this.jdField_a_of_type_Acue.a();
+    if (a(this.jdField_a_of_type_Acue.a.jdField_a_of_type_Float, this.jdField_a_of_type_Acue.a.b, this.jdField_a_of_type_Acue.a.c, this.jdField_a_of_type_Acue.a.jdField_a_of_type_Long, this.jdField_a_of_type_Acue.c.jdField_a_of_type_Float, this.jdField_a_of_type_Acue.c.b, this.jdField_a_of_type_Acue.b.jdField_a_of_type_Float, this.jdField_a_of_type_Acue.b.b, this.jdField_a_of_type_Acue.b.c, this.jdField_a_of_type_Acue.b.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_JavaUtilList))
     {
       if (this.jdField_a_of_type_JavaUtilList.size() > 0)
       {
@@ -143,36 +146,36 @@ public class HalfAlgorithm
     QLog.d("DoodleAlgorithm", 2, "finish failed:" + System.currentTimeMillis());
   }
   
-  public void a(List paramList1, Path paramPath, List paramList2)
+  public void a(List<actu> paramList, Path paramPath, List<actz> paramList1)
   {
-    if ((paramList1 == null) || (paramList1.size() == 0) || (paramPath == null) || (paramList2 == null)) {
+    if ((paramList == null) || (paramList.size() == 0) || (paramPath == null) || (paramList1 == null)) {
       return;
     }
     QLog.d("DoodleAlgorithm", 2, "patchPath begin:");
-    paramList1 = paramList1.iterator();
+    paramList = paramList.iterator();
     int i = 1;
-    if (paramList1.hasNext())
+    if (paramList.hasNext())
     {
-      PathData.PointData localPointData = (PathData.PointData)paramList1.next();
+      actu localactu = (actu)paramList.next();
       if (i != 0)
       {
-        a(localPointData.a(), localPointData.b(), localPointData.c(), localPointData.a(), paramPath, null);
+        a(localactu.a(), localactu.b(), localactu.c(), localactu.a(), paramPath, null);
         i = 0;
       }
       for (;;)
       {
         break;
-        b(localPointData.a(), localPointData.b(), localPointData.c(), localPointData.a(), paramPath, null);
+        b(localactu.a(), localactu.b(), localactu.c(), localactu.a(), paramPath, null);
       }
     }
     a(paramPath, null);
-    a(paramList2, paramPath);
-    QLog.d("DoodleAlgorithm", 2, "patchpath end:" + paramList2.size());
+    a(paramList1, paramPath);
+    QLog.d("DoodleAlgorithm", 2, "patchpath end:" + paramList1.size());
   }
   
-  public void a(List arg1, Path paramPath, List paramList2, int paramInt)
+  public void a(List<actu> arg1, Path paramPath, List<actz> paramList1, int paramInt)
   {
-    if ((??? == null) || (???.size() == 0) || (paramPath == null) || (paramList2 == null)) {}
+    if ((??? == null) || (???.size() == 0) || (paramPath == null) || (paramList1 == null)) {}
     int i;
     label86:
     do
@@ -191,11 +194,11 @@ public class HalfAlgorithm
         if (!???.hasNext()) {
           break label178;
         }
-        localObject1 = (PathData.PointData)???.next();
+        localObject1 = (actu)???.next();
         if (paramInt == 0) {
           break label149;
         }
-        a(((PathData.PointData)localObject1).a(), ((PathData.PointData)localObject1).b(), ((PathData.PointData)localObject1).c(), ((PathData.PointData)localObject1).a(), paramPath, paramList2);
+        a(((actu)localObject1).a(), ((actu)localObject1).b(), ((actu)localObject1).c(), ((actu)localObject1).a(), paramPath, paramList1);
         paramInt = 0;
       }
       for (;;)
@@ -203,20 +206,20 @@ public class HalfAlgorithm
         break label86;
         i = 0;
         break;
-        b(((PathData.PointData)localObject1).a(), ((PathData.PointData)localObject1).b(), ((PathData.PointData)localObject1).c(), ((PathData.PointData)localObject1).a(), paramPath, paramList2);
+        b(((actu)localObject1).a(), ((actu)localObject1).b(), ((actu)localObject1).c(), ((actu)localObject1).a(), paramPath, paramList1);
       }
-      a(paramPath, paramList2);
-      QLog.d("DoodleAlgorithm", 2, "before merge:" + paramList2.size());
-      a(paramList2, 0);
+      a(paramPath, paramList1);
+      QLog.d("DoodleAlgorithm", 2, "before merge:" + paramList1.size());
+      a(paramList1, 0);
     } while (!QLog.isColorLevel());
     label149:
     label178:
-    QLog.d("DoodleAlgorithm", 2, "after merge:" + paramList2.size());
+    QLog.d("DoodleAlgorithm", 2, "after merge:" + paramList1.size());
     return;
     Object localObject1 = null;
     paramPath.reset();
-    if (paramList2 != null) {
-      paramList2.clear();
+    if (paramList1 != null) {
+      paramList1.clear();
     }
     this.jdField_a_of_type_Int = 0;
     if (this.jdField_a_of_type_JavaUtilMap == null) {
@@ -225,29 +228,29 @@ public class HalfAlgorithm
     this.jdField_a_of_type_JavaUtilMap.clear();
     QLog.d("DoodleAlgorithm", 2, "transPath begin multithread begin");
     Object localObject2 = ???.iterator();
-    ??? = (List)localObject1;
+    ??? = (List<actu>)localObject1;
     while (((Iterator)localObject2).hasNext())
     {
-      localObject1 = (PathData.PointData)((Iterator)localObject2).next();
+      localObject1 = (actu)((Iterator)localObject2).next();
       if (??? == null)
       {
-        ??? = new uye();
+        ??? = new acuh();
         ???.a(paramInt);
-        ???.a(((PathData.PointData)localObject1).a(), ((PathData.PointData)localObject1).b(), ((PathData.PointData)localObject1).c(), ((PathData.PointData)localObject1).a());
-        paramPath.moveTo(((PathData.PointData)localObject1).a(), ((PathData.PointData)localObject1).b());
+        ???.a(((actu)localObject1).a(), ((actu)localObject1).b(), ((actu)localObject1).c(), ((actu)localObject1).a());
+        paramPath.moveTo(((actu)localObject1).a(), ((actu)localObject1).b());
       }
-      else if (???.a(((PathData.PointData)localObject1).a(), ((PathData.PointData)localObject1).b(), ((PathData.PointData)localObject1).c(), ((PathData.PointData)localObject1).a()))
+      else if (???.a(((actu)localObject1).a(), ((actu)localObject1).b(), ((actu)localObject1).c(), ((actu)localObject1).a()))
       {
         localObject1 = ???.a();
         i = this.jdField_a_of_type_Int + 1;
         this.jdField_a_of_type_Int = i;
-        ThreadManager.post(new uxi(this, i, (List)localObject1, this), 8, null, true);
+        ThreadManager.post(new HalfAlgorithm.TransPathJob(this, i, (List)localObject1, this), 8, null, true);
       }
     }
     ???.a();
     paramInt = this.jdField_a_of_type_Int + 1;
     this.jdField_a_of_type_Int = paramInt;
-    ThreadManager.post(new uxi(this, paramInt, ???.jdField_a_of_type_JavaUtilList, this), 8, null, true);
+    ThreadManager.post(new HalfAlgorithm.TransPathJob(this, paramInt, ???.jdField_a_of_type_JavaUtilList, this), 8, null, true);
     synchronized (this.jdField_a_of_type_JavaUtilMap)
     {
       QLog.d("DoodleAlgorithm", 2, "tranpath wait:" + this.jdField_a_of_type_Int + " - " + this.jdField_a_of_type_JavaUtilMap.size());
@@ -263,13 +266,13 @@ public class HalfAlgorithm
         localObject1 = this.jdField_a_of_type_JavaUtilMap.values().iterator();
         while (((Iterator)localObject1).hasNext())
         {
-          localObject2 = (uyc)((Iterator)localObject1).next();
-          if (((uyc)localObject2).jdField_a_of_type_AndroidGraphicsPath != null) {
-            paramPath.addPath(((uyc)localObject2).jdField_a_of_type_AndroidGraphicsPath);
+          localObject2 = (acuf)((Iterator)localObject1).next();
+          if (((acuf)localObject2).jdField_a_of_type_AndroidGraphicsPath != null) {
+            paramPath.addPath(((acuf)localObject2).jdField_a_of_type_AndroidGraphicsPath);
           }
-          if (((uyc)localObject2).jdField_a_of_type_JavaUtilList != null)
+          if (((acuf)localObject2).jdField_a_of_type_JavaUtilList != null)
           {
-            a(paramList2, ((uyc)localObject2).jdField_a_of_type_JavaUtilList);
+            a(paramList1, ((acuf)localObject2).jdField_a_of_type_JavaUtilList);
             continue;
             paramPath = finally;
             throw paramPath;
@@ -291,12 +294,12 @@ public class HalfAlgorithm
     {
       this.jdField_a_of_type_JavaUtilMap = null;
       this.jdField_a_of_type_Int = 0;
-      QLog.d("DoodleAlgorithm", 2, "before merge:" + paramList2.size());
-      a(paramList2, 0);
+      QLog.d("DoodleAlgorithm", 2, "before merge:" + paramList1.size());
+      a(paramList1, 0);
       if (!QLog.isColorLevel()) {
         break;
       }
-      QLog.d("DoodleAlgorithm", 2, "transPath end:" + paramList2.size());
+      QLog.d("DoodleAlgorithm", 2, "transPath end:" + paramList1.size());
       return;
       if (QLog.isColorLevel()) {
         QLog.d("DoodleAlgorithm", 2, "transPath end with error:" + this.jdField_a_of_type_JavaUtilMap.size() + " ---" + this.jdField_a_of_type_Int);
@@ -304,20 +307,20 @@ public class HalfAlgorithm
     }
   }
   
-  public void b(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong, Path paramPath, List paramList)
+  public void b(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong, Path paramPath, List<actz> paramList)
   {
     if (paramPath == null) {
       return;
     }
     if (paramList == null)
     {
-      this.jdField_a_of_type_Uyb.a(paramFloat1, paramFloat2, paramFloat3, paramLong, true);
-      paramPath.quadTo(this.jdField_a_of_type_Uyb.c.jdField_a_of_type_Float, this.jdField_a_of_type_Uyb.c.b, this.jdField_a_of_type_Uyb.b.jdField_a_of_type_Float, this.jdField_a_of_type_Uyb.b.b);
+      this.jdField_a_of_type_Acue.a(paramFloat1, paramFloat2, paramFloat3, paramLong, true);
+      paramPath.quadTo(this.jdField_a_of_type_Acue.c.jdField_a_of_type_Float, this.jdField_a_of_type_Acue.c.b, this.jdField_a_of_type_Acue.b.jdField_a_of_type_Float, this.jdField_a_of_type_Acue.b.b);
       return;
     }
     a();
-    boolean bool = a(this.jdField_a_of_type_Uyb.b.jdField_a_of_type_Float, this.jdField_a_of_type_Uyb.b.b, this.jdField_a_of_type_Uyb.b.c, this.jdField_a_of_type_Uyb.b.jdField_a_of_type_Long, this.jdField_a_of_type_Uyb.d.jdField_a_of_type_Float, this.jdField_a_of_type_Uyb.d.b, (this.jdField_a_of_type_Uyb.d.jdField_a_of_type_Float + paramFloat1) / 2.0F, (this.jdField_a_of_type_Uyb.d.b + paramFloat2) / 2.0F, (this.jdField_a_of_type_Uyb.d.c + paramFloat3) / 2.0F, (this.jdField_a_of_type_Uyb.d.jdField_a_of_type_Long + paramLong) / 2L, this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Uyb.a(paramFloat1, paramFloat2, paramFloat3, paramLong, bool);
+    boolean bool = a(this.jdField_a_of_type_Acue.b.jdField_a_of_type_Float, this.jdField_a_of_type_Acue.b.b, this.jdField_a_of_type_Acue.b.c, this.jdField_a_of_type_Acue.b.jdField_a_of_type_Long, this.jdField_a_of_type_Acue.d.jdField_a_of_type_Float, this.jdField_a_of_type_Acue.d.b, (this.jdField_a_of_type_Acue.d.jdField_a_of_type_Float + paramFloat1) / 2.0F, (this.jdField_a_of_type_Acue.d.b + paramFloat2) / 2.0F, (this.jdField_a_of_type_Acue.d.c + paramFloat3) / 2.0F, (this.jdField_a_of_type_Acue.d.jdField_a_of_type_Long + paramLong) / 2L, this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_Acue.a(paramFloat1, paramFloat2, paramFloat3, paramLong, bool);
     if (bool)
     {
       if (this.jdField_a_of_type_JavaUtilList.size() > 0)
@@ -334,7 +337,7 @@ public class HalfAlgorithm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.HalfAlgorithm
  * JD-Core Version:    0.7.0.1
  */

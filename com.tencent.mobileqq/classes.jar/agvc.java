@@ -1,25 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
-import com.tencent.mobileqq.profile.view.BreatheEffectView.BreatheListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbVideoView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
 public class agvc
-  implements Animation.AnimationListener
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  public agvc(BreatheEffectView paramBreatheEffectView, BreatheEffectView.BreatheListener paramBreatheListener) {}
+  public agvc(SpringHbVideoView paramSpringHbVideoView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewBreatheEffectView$BreatheListener.a();
+    QLog.i("springHb_SpringHbVideoView", 1, String.format("TVK_IMediaPlayer.onError model=%s what=%s position=%s detailInfo=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString }));
+    if (SpringHbVideoView.a(this.a) != null) {
+      SpringHbVideoView.a(this.a).a(paramInt2, paramInt3, paramString, paramObject);
+    }
+    return false;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agvc
  * JD-Core Version:    0.7.0.1
  */

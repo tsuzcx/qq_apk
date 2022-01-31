@@ -1,18 +1,35 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import java.nio.ByteBuffer;
 
-class tsd
-  implements Runnable
+public class tsd
 {
-  tsd(tsc paramtsc, String paramString) {}
+  int jdField_a_of_type_Int;
+  public long a;
+  ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
+  public boolean a;
+  public boolean b;
   
-  public void run()
+  public tsd()
   {
-    QQSettingSettingActivity.a(this.jdField_a_of_type_Tsc.a, this.jdField_a_of_type_JavaLangString);
+    a();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaNioByteBuffer = null;
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Boolean = false;
+    this.b = false;
+  }
+  
+  public String toString()
+  {
+    return "FrameInfo{buffer=" + this.jdField_a_of_type_Int + ", data=" + this.jdField_a_of_type_JavaNioByteBuffer + ", presentationTimeUs=" + this.jdField_a_of_type_Long + ", endOfStream=" + this.jdField_a_of_type_Boolean + ", representationChanged=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tsd
  * JD-Core Version:    0.7.0.1
  */

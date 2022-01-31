@@ -1,29 +1,23 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
-
 class xsu
-  implements Animation.AnimationListener
 {
-  xsu(xst paramxst) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  long jdField_b_of_type_Long;
+  String jdField_b_of_type_JavaLangString;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public xsu(xsp paramxsp, String paramString1, long paramLong1, int paramInt, String paramString2, long paramLong2)
   {
-    this.a.a.c.setVisibility(0);
-    this.a.a.c.clearAnimation();
-    this.a.a.c.setAnimation(null);
-    this.a.a.a.invalidate();
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_Long = paramLong2;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     xsu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,55 +1,82 @@
-import com.tencent.mobileqq.javahook.BitmapOOMHooker;
-import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
-import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
-import com.tencent.mobileqq.javahooksdk.MethodHookParam;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class aeea
-  implements HookMethodCallback
+class aeea
+  implements View.OnTouchListener
 {
-  private int a;
+  long jdField_a_of_type_Long = 0L;
   
-  public aeea(int paramInt)
-  {
-    this.a = paramInt;
-  }
+  aeea(aedo paramaedo) {}
   
-  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramMethodHookParam.throwable == null) {
-      return;
+    if ((this.jdField_a_of_type_Aedo.L) || (!(paramView instanceof ImageView))) {
+      return false;
     }
-    Throwable localThrowable;
-    if (paramMethodHookParam.throwable.getCause() != null) {
-      localThrowable = paramMethodHookParam.throwable.getCause();
-    }
-    while ((localThrowable instanceof OutOfMemoryError))
+    Object localObject = (ImageView)paramView;
+    int i = paramMotionEvent.getAction();
+    localObject = null;
+    paramMotionEvent = (MotionEvent)localObject;
+    if (paramView.getTag() != null)
     {
-      BitmapOOMHooker.b();
-      try
-      {
-        paramMethodHookParam.result = JavaHookBridge.invokeOriginMethod(paramMethodHookParam.method, paramMethodHookParam.thisObject, paramMethodHookParam.args);
-        paramMethodHookParam.throwable = null;
-        BitmapOOMHooker.a(true, this.a);
-        return;
+      paramMotionEvent = (MotionEvent)localObject;
+      if ((paramView.getTag() instanceof asbx)) {
+        paramMotionEvent = (asbx)paramView.getTag();
       }
-      catch (Exception paramMethodHookParam)
+    }
+    switch (i)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      if (paramMotionEvent != null)
       {
-        BitmapOOMHooker.a(false, this.a);
-        return;
-        localThrowable = paramMethodHookParam.throwable;
+        paramView.setAlpha(paramMotionEvent.a() * 0.5F);
       }
-      catch (Error paramMethodHookParam)
+      else
       {
-        BitmapOOMHooker.a(false, this.a);
+        paramView.setAlpha(0.5F);
+        continue;
+        if (paramMotionEvent != null) {
+          paramView.setAlpha(paramMotionEvent.a());
+        }
+        while (System.currentTimeMillis() - this.jdField_a_of_type_Long < 800L)
+        {
+          return true;
+          paramView.setAlpha(1.0F);
+        }
+        this.jdField_a_of_type_Long = System.currentTimeMillis();
+        paramView = new Intent(this.jdField_a_of_type_Aedo.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, QQBrowserActivity.class);
+        localObject = amde.a().a(this.jdField_a_of_type_Aedo.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+        asau.a(this.jdField_a_of_type_Aedo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aedo.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramMotionEvent);
+        paramView.putExtra("url", (String)localObject);
+        paramView.putExtra("finish_animation_out_to_right", true);
+        paramView.putExtra("is_wrap_content", true);
+        paramView.putExtra("hide_left_button", false);
+        if (this.jdField_a_of_type_Aedo.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null)
+        {
+          this.jdField_a_of_type_Aedo.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity(paramView);
+          continue;
+          if (paramMotionEvent != null) {
+            paramView.setAlpha(paramMotionEvent.a());
+          } else {
+            paramView.setAlpha(1.0F);
+          }
+        }
       }
     }
   }
-  
-  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeea
  * JD-Core Version:    0.7.0.1
  */

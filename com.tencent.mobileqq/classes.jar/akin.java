@@ -1,44 +1,52 @@
-import android.view.View;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.applets.data.AppletItem;
 
-public final class akin
-  implements URLDrawable.URLDrawableListener
+public class akin
 {
-  public akin(View paramView) {}
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private String jdField_b_of_type_JavaLangString;
+  private String c;
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public akin a(int paramInt)
   {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
-    }
-    if (this.a != null) {
-      this.a.postInvalidate();
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    return this;
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public akin a(long paramLong)
   {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
-    }
-    if (this.a != null) {
-      this.a.postInvalidate();
-    }
+    this.jdField_a_of_type_Long = paramLong;
+    return this;
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public akin a(String paramString)
   {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, UIUtils.a(BaseApplicationImpl.getContext(), 47.0F), UIUtils.a(BaseApplicationImpl.getContext(), 14.0F));
-    }
-    if (this.a != null) {
-      this.a.postInvalidate();
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    return this;
+  }
+  
+  public AppletItem a()
+  {
+    return new AppletItem(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, null);
+  }
+  
+  public void a(String paramString)
+  {
+    this.c = paramString;
+  }
+  
+  public akin b(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+    return this;
+  }
+  
+  public akin b(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+    return this;
   }
 }
 

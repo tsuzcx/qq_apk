@@ -1,15 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.newshare.ui.ActionSheetShareUI;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyUploadAvatarActivity.3;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class nly
-  implements DialogInterface.OnDismissListener
+  implements azgl
 {
-  public nly(ActionSheetShareUI paramActionSheetShareUI) {}
+  public nly(ReadInJoyUploadAvatarActivity.3 param3) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    this.a.e();
+    if (QLog.isColorLevel()) {
+      QLog.d(ReadInJoyUploadAvatarActivity.a, 2, "uploadImage->onResult");
+    }
+    if (paramJSONObject != null)
+    {
+      paramInt = paramJSONObject.optInt("retcode");
+      if (paramJSONObject.optJSONObject("result") != null) {}
+      for (paramJSONObject = paramJSONObject.optJSONObject("result").optString("url");; paramJSONObject = null)
+      {
+        paramBundle = new Message();
+        if ((paramInt == 0) && (!TextUtils.isEmpty(paramJSONObject)))
+        {
+          paramBundle.what = 1003;
+          paramBundle.obj = paramJSONObject;
+        }
+        this.a.a.sendMessage(paramBundle);
+        return;
+      }
+    }
+    this.a.a.sendMessage(new Message());
   }
 }
 

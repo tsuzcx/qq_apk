@@ -1,45 +1,54 @@
-import android.view.View;
-import com.tencent.mobileqq.adapter.BuddyListAdapter;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class yng
-  implements ActionSheet.OnButtonClickListener
+class yng
+  implements ynl
 {
-  public yng(BuddyListAdapter paramBuddyListAdapter, boolean paramBoolean, Friends paramFriends, ActionSheet paramActionSheet) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public boolean a(ymw paramymw, String paramString, String... paramVarArgs)
   {
-    if (!NetworkUtil.g(this.jdField_a_of_type_ComTencentMobileqqAdapterBuddyListAdapter.a)) {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAdapterBuddyListAdapter.a, 1, 2131433023, 0).a();
-    }
-    for (;;)
+    Object localObject = null;
+    if (paramymw != null) {}
+    for (paramVarArgs = paramymw.a(); (paramymw == null) || (paramVarArgs == null); paramVarArgs = null)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
-      return;
-      paramView = (FriendListHandler)BuddyListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterBuddyListAdapter).a(1);
-      if (this.jdField_a_of_type_Boolean)
+      yny.d("GdtDeviceJsCallHandler", "handleJsCallRequest error");
+      return true;
+    }
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("deviceId", ypb.a(paramVarArgs));
+    }
+    catch (JSONException localJSONException)
+    {
+      try
       {
-        paramView.a(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { false });
-        ReportController.b(BuddyListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterBuddyListAdapter), "dc00898", "", "", "0X800808B", "0X800808B", 0, 0, "", "", "", "");
+        for (;;)
+        {
+          paramymw.callJs(paramString, new String[] { localJSONObject.toString() });
+          paramString = localObject;
+          if (paramymw != null) {
+            paramString = paramymw.a();
+          }
+          AdReporterForAnalysis.reportForJSBridgeInvoked(paramVarArgs, false, "getDeviceId", paramString);
+          return true;
+          localJSONException = localJSONException;
+          yny.d("GdtDeviceJsCallHandler", "handleJsCallRequest error", localJSONException);
+        }
       }
-      else
+      catch (Throwable paramString)
       {
-        paramView.a(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { true });
-        ReportController.b(BuddyListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterBuddyListAdapter), "dc00898", "", "", "0X800808A", "0X800808A", 0, 0, "", "", "", "");
+        for (;;)
+        {
+          yny.d("GdtDeviceJsCallHandler", "handleJsCallRequest error", paramString);
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yng
  * JD-Core Version:    0.7.0.1
  */

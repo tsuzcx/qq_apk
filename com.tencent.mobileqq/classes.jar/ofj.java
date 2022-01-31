@@ -1,16 +1,10 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.LocalVideoPusher.Condition;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.LocalVideoPushSegment;
-import com.tencent.biz.qqstory.takevideo2.StoryPublishLauncher;
-
 public class ofj
-  implements LocalVideoPusher.Condition
 {
-  public ofj(LocalVideoPushSegment paramLocalVideoPushSegment) {}
-  
-  public boolean a()
-  {
-    return StoryPublishLauncher.b();
-  }
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
 }
 
 

@@ -1,16 +1,23 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import cooperation.dingdong.DingdongPluginManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IntimateInfo.CommonTroopInfo;
 
-public class amsg
-  extends FriendListObserver
+public final class amsg
+  implements Parcelable.Creator<IntimateInfo.CommonTroopInfo>
 {
-  public amsg(DingdongPluginManager paramDingdongPluginManager) {}
+  public IntimateInfo.CommonTroopInfo a(Parcel paramParcel)
+  {
+    return new IntimateInfo.CommonTroopInfo(paramParcel);
+  }
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean) {}
+  public IntimateInfo.CommonTroopInfo[] a(int paramInt)
+  {
+    return new IntimateInfo.CommonTroopInfo[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amsg
  * JD-Core Version:    0.7.0.1
  */

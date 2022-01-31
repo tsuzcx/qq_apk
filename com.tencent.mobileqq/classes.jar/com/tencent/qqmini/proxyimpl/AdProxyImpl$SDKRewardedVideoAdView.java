@@ -1,0 +1,98 @@
+package com.tencent.qqmini.proxyimpl;
+
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoFragment;
+import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
+import com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.core.proxy.AdProxy.AbsRewardVideoAdView;
+import com.tencent.qqmini.sdk.core.proxy.AdProxy.IRewardVideoAdListener;
+import java.lang.ref.WeakReference;
+
+class AdProxyImpl$SDKRewardedVideoAdView
+  extends AdProxy.AbsRewardVideoAdView
+{
+  public static final String PROFITABLE_FLAG = "profitable_flag";
+  public static final String TIME_DURATION = "duration_time";
+  public static final String TIME_ELAPSED = "elapsed_time";
+  int SHARE_RATE = 53;
+  WeakReference<Activity> mActivity;
+  int mAdType;
+  String mAppid;
+  int mDeviceOrientation;
+  String mEntryPath;
+  String mGdtCookie;
+  GdtMotiveVideoPageData mGdtMotiveVideoPageData;
+  String mPosid;
+  String mRefer;
+  String mReportData;
+  AdProxy.IRewardVideoAdListener mRewardedListener;
+  String mUin;
+  String mVia;
+  
+  public AdProxyImpl$SDKRewardedVideoAdView(AdProxyImpl paramAdProxyImpl, Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, AdProxy.IRewardVideoAdListener paramIRewardVideoAdListener)
+  {
+    super(paramAdProxyImpl);
+    this.mActivity = new WeakReference(paramActivity);
+    this.mRewardedListener = paramIRewardVideoAdListener;
+    this.mAppid = paramString1;
+    this.mPosid = paramString2;
+    this.mUin = paramString3;
+    this.mAdType = paramInt1;
+    this.mDeviceOrientation = paramInt2;
+    this.mGdtCookie = paramString4;
+    this.mEntryPath = paramString5;
+    this.mReportData = paramString6;
+    this.mRefer = paramString7;
+    this.mVia = paramString8;
+  }
+  
+  public void loadAD()
+  {
+    if (this.mActivity != null) {}
+    for (Activity localActivity = (Activity)this.mActivity.get(); localActivity == null; localActivity = null)
+    {
+      if (this.mRewardedListener != null) {
+        this.mRewardedListener.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
+      }
+      return;
+    }
+    this.this$0.requestAdInfo(localActivity, this.mUin, this.mPosid, this.mAppid, this.SHARE_RATE, this.mAdType, this.mDeviceOrientation, this.mGdtCookie, this.mEntryPath, this.mReportData, this.mRefer, this.mVia, new AdProxyImpl.SDKRewardedVideoAdView.1(this));
+  }
+  
+  public void showAD()
+  {
+    Activity localActivity;
+    if (this.mActivity != null)
+    {
+      localActivity = (Activity)this.mActivity.get();
+      if ((localActivity != null) && (this.mGdtMotiveVideoPageData != null)) {
+        break label65;
+      }
+      QLog.d("AdProxyImpl", 1, "data is not GdtMotiveVideoPageData");
+      if (this.mRewardedListener != null) {
+        this.mRewardedListener.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
+      }
+    }
+    label65:
+    do
+    {
+      return;
+      localActivity = null;
+      break;
+      this.mGdtMotiveVideoPageData.refId = "biz_src_miniapp";
+      this.mGdtMotiveVideoPageData.containerType = 1;
+      this.mGdtMotiveVideoPageData.resultReceiver = new AdProxyImpl.SDKRewardedVideoAdView.2(this, new Handler(Looper.getMainLooper()));
+      GdtMotiveVideoFragment.a(localActivity, GdtMotiveVideoFragment.class, this.mGdtMotiveVideoPageData);
+    } while (this.mRewardedListener == null);
+    this.mRewardedListener.onADShow();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.SDKRewardedVideoAdView
+ * JD-Core Version:    0.7.0.1
+ */

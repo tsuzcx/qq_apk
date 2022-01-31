@@ -1,27 +1,31 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.storyHome.detail.view.segment.FeedItemThumbAdapter;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class oah
-  implements ValueAnimator.AnimatorUpdateListener
+final class oah
+  implements ViewFactory.FoundClickableViewListener
 {
-  public oah(FeedItemThumbAdapter paramFeedItemThumbAdapter, StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
+  oah(VafContext paramVafContext, TemplateBean paramTemplateBean) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onFound(ViewBase paramViewBase)
   {
-    try
+    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
     {
-      float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.scrollTo((int)(300.0F - f * 300.0F), 0);
+    default: 
+      paramViewBase.setOnClickListener(new oak(this, paramViewBase));
+      return;
+    case 1122: 
+      paramViewBase.setOnClickListener(new oai(this));
       return;
     }
-    catch (Exception paramValueAnimator) {}
+    paramViewBase.setOnClickListener(new oaj(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oah
  * JD-Core Version:    0.7.0.1
  */

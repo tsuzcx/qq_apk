@@ -5,7 +5,6 @@ import java.io.Closeable;
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 
 class StrictLineReader
@@ -41,7 +40,6 @@ class StrictLineReader
   }
   
   private void fillBuf()
-    throws IOException
   {
     int i = this.in.read(this.buf, 0, this.buf.length);
     if (i == -1) {
@@ -52,7 +50,6 @@ class StrictLineReader
   }
   
   public void close()
-    throws IOException
   {
     synchronized (this.in)
     {
@@ -66,7 +63,6 @@ class StrictLineReader
   }
   
   public String readLine()
-    throws IOException
   {
     synchronized (this.in)
     {
@@ -95,24 +91,7 @@ class StrictLineReader
         Object localObject2 = new String(this.buf, this.pos, j - this.pos, this.charset.name());
         this.pos = (i + 1);
         return localObject2;
-        localObject2 = new ByteArrayOutputStream(this.end - this.pos + 80)
-        {
-          public String toString()
-          {
-            if ((this.count > 0) && (this.buf[(this.count - 1)] == 13)) {}
-            for (int i = this.count - 1;; i = this.count) {
-              try
-              {
-                String str = new String(this.buf, 0, i, StrictLineReader.this.charset.name());
-                return str;
-              }
-              catch (UnsupportedEncodingException localUnsupportedEncodingException)
-              {
-                throw new AssertionError(localUnsupportedEncodingException);
-              }
-            }
-          }
-        };
+        localObject2 = new StrictLineReader.1(this, this.end - this.pos + 80);
         for (;;)
         {
           ((ByteArrayOutputStream)localObject2).write(this.buf, this.pos, this.end - this.pos);

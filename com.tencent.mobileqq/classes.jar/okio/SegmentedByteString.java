@@ -1,6 +1,5 @@
 package okio;
 
-import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Arrays;
 
@@ -14,17 +13,18 @@ final class SegmentedByteString
   {
     super(null);
     Util.checkOffsetAndCount(paramBuffer.size, 0L, paramInt);
-    int j = 0;
-    int i = 0;
     Segment localSegment = paramBuffer.head;
+    int i = 0;
+    int j = 0;
     if (j >= paramInt)
     {
       this.segments = new byte[i][];
       this.directory = new int[i * 2];
-      j = 0;
+      paramBuffer = paramBuffer.head;
       i = 0;
+      j = k;
     }
-    for (paramBuffer = paramBuffer.head;; paramBuffer = paramBuffer.next)
+    for (;;)
     {
       if (j >= paramInt)
       {
@@ -43,6 +43,7 @@ final class SegmentedByteString
       this.directory[(this.segments.length + i)] = paramBuffer.pos;
       paramBuffer.shared = true;
       i += 1;
+      paramBuffer = paramBuffer.next;
     }
   }
   
@@ -101,28 +102,28 @@ final class SegmentedByteString
     if (i != 0) {
       return i;
     }
-    int k = 1;
-    int j = 0;
-    i = 0;
+    i = 1;
     int i2 = this.segments.length;
-    if (i >= i2)
+    int j = 0;
+    int k = 0;
+    if (j >= i2)
     {
-      this.hashCode = k;
-      return k;
+      this.hashCode = i;
+      return i;
     }
-    byte[] arrayOfByte = this.segments[i];
-    int n = this.directory[(i2 + i)];
-    int i1 = this.directory[i];
-    int m = n;
+    byte[] arrayOfByte = this.segments[j];
+    int i1 = this.directory[(i2 + j)];
+    int n = this.directory[j];
+    int m = i1;
     for (;;)
     {
-      if (m >= n + (i1 - j))
+      if (m >= n - k + i1)
       {
-        j = i1;
-        i += 1;
+        j += 1;
+        k = n;
         break;
       }
-      k = k * 31 + arrayOfByte[m];
+      i = i * 31 + arrayOfByte[m];
       m += 1;
     }
   }
@@ -152,7 +153,7 @@ final class SegmentedByteString
     if (paramInt1 == 0) {}
     for (j = 0;; j = this.directory[(paramInt1 - 1)])
     {
-      int k = Math.min(paramInt3, j + (this.directory[paramInt1] - j) - i);
+      int k = Math.min(paramInt3, this.directory[paramInt1] - j + j - i);
       int m = this.directory[(this.segments.length + paramInt1)];
       if (!paramByteString.rangeEquals(paramInt2, this.segments[paramInt1], i - j + m, k)) {
         break;
@@ -180,7 +181,7 @@ final class SegmentedByteString
     if (paramInt1 == 0) {}
     for (j = 0;; j = this.directory[(paramInt1 - 1)])
     {
-      int k = Math.min(paramInt3, j + (this.directory[paramInt1] - j) - i);
+      int k = Math.min(paramInt3, this.directory[paramInt1] - j + j - i);
       int m = this.directory[(this.segments.length + paramInt1)];
       if (!Util.arrayRangeEquals(this.segments[paramInt1], i - j + m, paramArrayOfByte, paramInt2, k)) {
         break;
@@ -225,19 +226,18 @@ final class SegmentedByteString
   
   public byte[] toByteArray()
   {
-    byte[] arrayOfByte = new byte[this.directory[(this.segments.length - 1)]];
-    int j = 0;
     int i = 0;
+    byte[] arrayOfByte = new byte[this.directory[(this.segments.length - 1)]];
     int m = this.segments.length;
-    for (;;)
+    int k;
+    for (int j = 0;; j = k)
     {
       if (i >= m) {
         return arrayOfByte;
       }
       int n = this.directory[(m + i)];
-      int k = this.directory[i];
+      k = this.directory[i];
       System.arraycopy(this.segments[i], n, arrayOfByte, j, k - j);
-      j = k;
       i += 1;
     }
   }
@@ -253,35 +253,34 @@ final class SegmentedByteString
   }
   
   public void write(OutputStream paramOutputStream)
-    throws IOException
   {
+    int i = 0;
     if (paramOutputStream == null) {
       throw new IllegalArgumentException("out == null");
     }
-    int j = 0;
-    int i = 0;
     int m = this.segments.length;
-    for (;;)
+    int k;
+    for (int j = 0;; j = k)
     {
       if (i >= m) {
         return;
       }
       int n = this.directory[(m + i)];
-      int k = this.directory[i];
+      k = this.directory[i];
       paramOutputStream.write(this.segments[i], n, k - j);
-      j = k;
       i += 1;
     }
   }
   
   void write(Buffer paramBuffer)
   {
-    int j = 0;
     int i = 0;
     int m = this.segments.length;
+    int j = 0;
     if (i >= m)
     {
-      paramBuffer.size += j;
+      long l = paramBuffer.size;
+      paramBuffer.size = (j + l);
       return;
     }
     int n = this.directory[(m + i)];
@@ -295,8 +294,8 @@ final class SegmentedByteString
     }
     for (;;)
     {
-      j = k;
       i += 1;
+      j = k;
       break;
       paramBuffer.head.prev.push(localSegment);
     }

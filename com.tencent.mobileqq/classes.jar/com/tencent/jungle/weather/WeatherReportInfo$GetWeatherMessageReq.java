@@ -8,9 +8,11 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class WeatherReportInfo$GetWeatherMessageReq
-  extends MessageMicro
+  extends MessageMicro<GetWeatherMessageReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48, 56, 64, 74 }, new String[] { "pbReqMsgHead", "uin", "lat", "lng", "ip", "area_id", "source", "fore_flag", "extra" }, new Object[] { null, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "" }, GetWeatherMessageReq.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48, 56, 64, 74, 82, 88 }, new String[] { "pbReqMsgHead", "uin", "lat", "lng", "ip", "area_id", "source", "fore_flag", "extra", "adcode", "adcode_from_mapsdk" }, new Object[] { null, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0) }, GetWeatherMessageReq.class);
+  public final PBStringField adcode = PBField.initString("");
+  public final PBUInt32Field adcode_from_mapsdk = PBField.initUInt32(0);
   public final PBUInt32Field area_id = PBField.initUInt32(0);
   public final PBStringField extra = PBField.initString("");
   public final PBUInt32Field fore_flag = PBField.initUInt32(0);

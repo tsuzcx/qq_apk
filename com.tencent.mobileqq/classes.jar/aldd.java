@@ -1,35 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.widget.PagingScrollView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class aldd
-  implements View.OnTouchListener
+class aldd
+  implements aldk
 {
-  public aldd(PagingScrollView paramPagingScrollView) {}
+  aldd(aldc paramaldc) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(boolean paramBoolean)
   {
-    if (this.a.c)
-    {
-      int i = paramMotionEvent.getAction();
-      if ((i == 1) || (i == 3))
-      {
-        this.a.c = false;
-        this.a.getParent().requestDisallowInterceptTouchEvent(false);
-        if (QLog.isDevelopLevel()) {
-          QLog.i("PageScrollView", 4, "C.TE ACT_UP or CANCEL");
-        }
-      }
-    }
-    return false;
+    ArkAppCenter.c("ArkApp.Dict.Update", String.format("updateDict, incremental update fail, full update result, success=%s, name=%s", new Object[] { Boolean.toString(paramBoolean), this.a.jdField_a_of_type_Aldi.a }));
+    if (paramBoolean) {}
+    this.a.jdField_a_of_type_Aldk.a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aldd
  * JD-Core Version:    0.7.0.1
  */

@@ -20,8 +20,8 @@ import android.support.v4.util.ArrayMap;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
+import bbac;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
@@ -86,13 +86,13 @@ public class QWalletBluetoothJsPlugin
   private Activity mActivity;
   private BluetoothAdapter mBluetoothAdapter;
   private BluetoothGattCallback mBluetoothGattCallback;
-  private ArrayMap mBluetoothGatts;
+  private ArrayMap<String, BluetoothGatt> mBluetoothGatts;
   private BroadcastReceiver mBluetoothStateReceiver;
-  private ArrayMap mCallbacks;
-  private Set mConnectedDevices;
-  private Set mConnectingDevices;
+  private ArrayMap<String, String> mCallbacks;
+  private Set<String> mConnectedDevices;
+  private Set<String> mConnectingDevices;
   private Context mContext;
-  private List mDevicesFound;
+  private List<QWalletBluetoothJsPlugin.BluetoothDeviceExtend> mDevicesFound;
   private BluetoothGattCallback mGetServicesCallback;
   private Handler mHandler;
   private QWalletBluetoothJsPlugin.QWLeScanCallback mLeScanCallback;
@@ -435,7 +435,7 @@ public class QWalletBluetoothJsPlugin
     }
   }
   
-  private static List getUuidsFromRecordData(byte[] paramArrayOfByte)
+  private static List<UUID> getUuidsFromRecordData(byte[] paramArrayOfByte)
   {
     ArrayList localArrayList = new ArrayList();
     paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte).order(ByteOrder.LITTLE_ENDIAN);
@@ -790,7 +790,7 @@ public class QWalletBluetoothJsPlugin
     }
   }
   
-  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (this.mContext == null)) {}
     while (!"qw_bluetooth".equals(paramString2)) {
@@ -935,7 +935,7 @@ public class QWalletBluetoothJsPlugin
     }
   }
   
-  protected void onCreate()
+  public void onCreate()
   {
     super.onCreate();
     if (this.mRuntime != null)
@@ -956,7 +956,7 @@ public class QWalletBluetoothJsPlugin
     this.mHandler = new Handler();
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     if (this.mRuntime != null) {
       unregisterReceiver();
@@ -972,7 +972,7 @@ public class QWalletBluetoothJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletBluetoothJsPlugin
  * JD-Core Version:    0.7.0.1
  */

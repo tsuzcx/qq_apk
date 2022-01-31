@@ -1,36 +1,32 @@
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnInfoListener;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
 
 class afdt
-  implements Runnable
+  implements View.OnTouchListener
 {
-  afdt(afds paramafds, int paramInt, Object paramObject) {}
+  afdt(afdq paramafdq, TextView paramTextView) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i;
-    if (this.jdField_a_of_type_Afds.a.a != null)
+    switch (paramMotionEvent.getAction())
     {
-      i = this.jdField_a_of_type_Int;
-      if (this.jdField_a_of_type_Int != 21) {
-        break label58;
-      }
-      i = 2;
     }
     for (;;)
     {
-      this.jdField_a_of_type_Afds.a.a.a(this.jdField_a_of_type_Afds.a, i, this.jdField_a_of_type_JavaLangObject);
-      return;
-      label58:
-      if (this.jdField_a_of_type_Int == 22) {
-        i = 3;
-      }
+      return false;
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
+      continue;
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
+      continue;
+      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afdt
  * JD-Core Version:    0.7.0.1
  */

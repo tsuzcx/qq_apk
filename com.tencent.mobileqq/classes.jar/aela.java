@@ -1,17 +1,26 @@
-import com.tencent.mobileqq.lyric.common.TimerTaskManager;
-import com.tencent.mobileqq.lyric.util.Singleton;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationViewHolder.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-public final class aela
-  extends Singleton
+public class aela
+  implements aekx
 {
-  protected TimerTaskManager a(Void paramVoid)
+  aela(aeky paramaeky) {}
+  
+  public void a()
   {
-    return new TimerTaskManager();
+    aeky.a(this.a, aeky.b(this.a));
+    ThreadManager.getUIHandler().post(new StickerBubbleAnimationViewHolder.2.1(this));
+  }
+  
+  public void b()
+  {
+    aeky.b(this.a, aeky.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aela
  * JD-Core Version:    0.7.0.1
  */

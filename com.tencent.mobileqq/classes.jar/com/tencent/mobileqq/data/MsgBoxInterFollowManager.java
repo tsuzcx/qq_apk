@@ -1,23 +1,21 @@
 package com.tencent.mobileqq.data;
 
-import accs;
-import acct;
+import ajed;
+import akbj;
+import amwj;
+import amwo;
 import android.text.TextUtils;
 import appoint.define.appoint_define.RichText;
-import com.tencent.mobileqq.app.AppConstants;
+import awbi;
+import baig;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.MsgProxy;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.dating.MsgBoxProtocol;
-import com.tencent.mobileqq.dating.MsgBoxUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.service.message.MessageRecordFactory;
-import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -35,7 +33,7 @@ public class MsgBoxInterFollowManager
   public MsgBoxInterFollowManager(QQAppInterface paramQQAppInterface)
   {
     this.app = paramQQAppInterface;
-    this.msgboxUnreadCount = SharedPreUtils.al(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin());
+    this.msgboxUnreadCount = baig.Y(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin());
   }
   
   private void addMessage(MessageForInteractAndFollow paramMessageForInteractAndFollow)
@@ -63,9 +61,9 @@ public class MsgBoxInterFollowManager
     for (;;)
     {
       return;
-      MessageForInteractAndFollow localMessageForInteractAndFollow = (MessageForInteractAndFollow)MessageRecordFactory.a(-2055);
+      MessageForInteractAndFollow localMessageForInteractAndFollow = (MessageForInteractAndFollow)awbi.a(-2055);
       localMessageForInteractAndFollow.rawContext = paramString;
-      localMessageForInteractAndFollow.context = MsgBoxUtil.a(paramString, 14);
+      localMessageForInteractAndFollow.context = amwo.a(paramString, 14);
       localMessageForInteractAndFollow.unReadCount = paramInt2;
       localMessageForInteractAndFollow.msgBoxUnreadCount = paramInt1;
       localMessageForInteractAndFollow.timeStamp = paramLong;
@@ -75,12 +73,12 @@ public class MsgBoxInterFollowManager
       localMessageForInteractAndFollow.shmsgseq = paramLong;
       localMessageForInteractAndFollow.msgUid = paramLong;
       localMessageForInteractAndFollow.selfuin = this.app.getCurrentAccountUin();
-      localMessageForInteractAndFollow.istroop = 1001;
+      localMessageForInteractAndFollow.istroop = 10002;
       if (localMessageForInteractAndFollow.type == 1)
       {
-        paramString = AppConstants.ag;
+        paramString = ajed.ak;
         localMessageForInteractAndFollow.senderuin = paramString;
-        localMessageForInteractAndFollow.frienduin = AppConstants.G;
+        localMessageForInteractAndFollow.frienduin = ajed.H;
         localMessageForInteractAndFollow.getBytes();
         if (QLog.isColorLevel())
         {
@@ -91,10 +89,10 @@ public class MsgBoxInterFollowManager
         if (localMessageForInteractAndFollow.unReadCount <= 0) {
           break label399;
         }
-        if (SharedPreUtils.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin) != 1) {
+        if (baig.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin) != 1) {
           break label434;
         }
-        SharedPreUtils.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin, 0);
+        baig.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin, 0);
         paramInt1 = 1;
       }
       for (;;)
@@ -102,11 +100,11 @@ public class MsgBoxInterFollowManager
         if (paramInt1 == 0) {
           break label437;
         }
-        ThreadManager.post(new acct(this, localMessageForInteractAndFollow), 8, null, true);
+        ThreadManager.post(new MsgBoxInterFollowManager.2(this, localMessageForInteractAndFollow), 8, null, true);
         return;
-        paramString = AppConstants.ah;
+        paramString = ajed.al;
         break;
-        if (SharedPreUtils.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin) == 0)
+        if (baig.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin) == 0)
         {
           paramInt1 = 1;
         }
@@ -123,9 +121,9 @@ public class MsgBoxInterFollowManager
   public void addMomentMessage(String paramString, int paramInt1, int paramInt2, long paramLong)
   {
     int i = 0;
-    MessageForInteractAndFollow localMessageForInteractAndFollow = (MessageForInteractAndFollow)MessageRecordFactory.a(-2055);
+    MessageForInteractAndFollow localMessageForInteractAndFollow = (MessageForInteractAndFollow)awbi.a(-2055);
     localMessageForInteractAndFollow.rawContext = paramString;
-    localMessageForInteractAndFollow.context = MsgBoxUtil.a(paramString, 14);
+    localMessageForInteractAndFollow.context = amwo.a(paramString, 14);
     localMessageForInteractAndFollow.unReadCount = paramInt2;
     localMessageForInteractAndFollow.msgBoxUnreadCount = paramInt1;
     localMessageForInteractAndFollow.timeStamp = paramLong;
@@ -136,8 +134,8 @@ public class MsgBoxInterFollowManager
     localMessageForInteractAndFollow.msgUid = paramLong;
     localMessageForInteractAndFollow.selfuin = this.app.getCurrentAccountUin();
     localMessageForInteractAndFollow.istroop = 1001;
-    localMessageForInteractAndFollow.senderuin = AppConstants.ai;
-    localMessageForInteractAndFollow.frienduin = AppConstants.G;
+    localMessageForInteractAndFollow.senderuin = ajed.am;
+    localMessageForInteractAndFollow.frienduin = ajed.H;
     localMessageForInteractAndFollow.getBytes();
     if (QLog.isColorLevel())
     {
@@ -147,20 +145,20 @@ public class MsgBoxInterFollowManager
     }
     if (localMessageForInteractAndFollow.unReadCount > 0)
     {
-      if (SharedPreUtils.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin) != 1) {
+      if (baig.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin) != 1) {
         break label371;
       }
-      SharedPreUtils.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin, 0);
+      baig.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin, 0);
       paramInt1 = 1;
     }
     for (;;)
     {
       if (paramInt1 != 0) {
-        ThreadManager.post(new accs(this, localMessageForInteractAndFollow), 8, null, true);
+        ThreadManager.post(new MsgBoxInterFollowManager.1(this, localMessageForInteractAndFollow), 8, null, true);
       }
       return;
       paramInt1 = i;
-      if (SharedPreUtils.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin) == 0)
+      if (baig.b(this.app.getApp(), this.app.getCurrentAccountUin(), localMessageForInteractAndFollow.senderuin) == 0)
       {
         paramInt1 = 1;
         continue;
@@ -175,8 +173,8 @@ public class MsgBoxInterFollowManager
     if (this.msgboxUnreadCount > 0)
     {
       this.msgboxUnreadCount = 0;
-      MsgBoxProtocol.a(this.app, 0, null);
-      SharedPreUtils.E(this.app.getApp(), this.app.getCurrentAccountUin(), 0);
+      amwj.a(this.app, 0, null);
+      baig.y(this.app.getApp(), this.app.getCurrentAccountUin(), 0);
     }
   }
   
@@ -192,11 +190,11 @@ public class MsgBoxInterFollowManager
       }
       if (localMsgBody.msg_content.bytes_buluo_word.has())
       {
-        paramArrayOfByte.append(MsgBoxUtil.b(MsgBoxUtil.a(localMsgBody.msg_content.bytes_buluo_word.get().toStringUtf8())));
+        paramArrayOfByte.append(amwo.b(amwo.a(localMsgBody.msg_content.bytes_buluo_word.get().toStringUtf8())));
         if (localMsgBody.uint32_msgbox_unread_count.has())
         {
           this.msgboxUnreadCount = localMsgBody.uint32_msgbox_unread_count.get();
-          SharedPreUtils.E(this.app.getApp(), this.app.getCurrentAccountUin(), localMsgBody.uint32_msgbox_unread_count.get());
+          baig.y(this.app.getApp(), this.app.getCurrentAccountUin(), localMsgBody.uint32_msgbox_unread_count.get());
         }
         addMessage(paramArrayOfByte.toString(), localMsgBody.uint32_msgbox_unread_count.get(), localMsgBody.uint32_unread_count.get(), localMsgBody.uint64_timestamp.get(), localMsgBody.uint32_type.get());
         return;
@@ -211,7 +209,7 @@ public class MsgBoxInterFollowManager
           QLog.e("Q.msg_box.MsgBoxInterFollowManager", 2, "decode0xd7InteractAndFollowMsg decode failed:" + paramArrayOfByte.toString(), paramArrayOfByte);
           continue;
           if (localMsgBody.msg_content.rich_fresh_word.has()) {
-            paramArrayOfByte.append(MsgBoxUtil.a((appoint_define.RichText)localMsgBody.msg_content.rich_fresh_word.get()));
+            paramArrayOfByte.append(amwo.a((appoint_define.RichText)localMsgBody.msg_content.rich_fresh_word.get()));
           } else {
             paramArrayOfByte.append(localMsgBody.msg_content.bytes_plain_text.get().toStringUtf8());
           }
@@ -229,7 +227,7 @@ public class MsgBoxInterFollowManager
       if (localMsgBody.uint32_box_unread_num.has())
       {
         this.msgboxUnreadCount = localMsgBody.uint32_box_unread_num.get();
-        SharedPreUtils.E(this.app.getApp(), this.app.getCurrentAccountUin(), localMsgBody.uint32_box_unread_num.get());
+        baig.y(this.app.getApp(), this.app.getCurrentAccountUin(), localMsgBody.uint32_box_unread_num.get());
       }
       addMomentMessage(localMsgBody.bytes_wording.get().toStringUtf8(), localMsgBody.uint32_box_unread_num.get(), localMsgBody.uint32_inner_unread_num.get(), localMsgBody.uint32_update_time.get());
       return;

@@ -8,16 +8,16 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.view.View;
-import kex;
-import key;
+import mbu;
+import mbv;
 
 @TargetApi(9)
 public class EffectCycleViewPager
   extends ViewPager
 {
-  public SparseArray a;
-  private kex a;
-  public key a;
+  public SparseArray<View> a;
+  private mbu a;
+  public mbv a;
   
   public EffectCycleViewPager(Context paramContext)
   {
@@ -38,20 +38,20 @@ public class EffectCycleViewPager
   
   public void setAdapter(PagerAdapter paramPagerAdapter)
   {
-    this.jdField_a_of_type_Key = new key(this, paramPagerAdapter);
-    super.setAdapter(this.jdField_a_of_type_Key);
+    this.jdField_a_of_type_Mbv = new mbv(this, paramPagerAdapter);
+    super.setAdapter(this.jdField_a_of_type_Mbv);
     setCurrentItem(1);
   }
   
   public void setOnPageChangeListener(ViewPager.OnPageChangeListener paramOnPageChangeListener)
   {
-    this.jdField_a_of_type_Kex = new kex(this, paramOnPageChangeListener, getCurrentItem());
-    super.setOnPageChangeListener(this.jdField_a_of_type_Kex);
+    this.jdField_a_of_type_Mbu = new mbu(this, paramOnPageChangeListener, getCurrentItem());
+    super.setOnPageChangeListener(this.jdField_a_of_type_Mbu);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.ui.funchat.filter.EffectCycleViewPager
  * JD-Core Version:    0.7.0.1
  */

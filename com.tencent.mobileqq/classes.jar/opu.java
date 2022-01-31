@@ -1,11 +1,14 @@
-import com.tencent.biz.qqstory.takevideo.permission.ComplexPart.Friend;
-import com.tencent.biz.qqstory.takevideo.permission.ComplexPart.Group;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.CharacterStyle;
 
-public class opu
+final class opu
+  extends CharacterStyle
 {
-  public int a;
-  public ComplexPart.Friend a;
-  public ComplexPart.Group a;
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.parseColor("#FF3DB8FF"));
+  }
 }
 
 

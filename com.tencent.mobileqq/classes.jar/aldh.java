@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.8;
+import com.tencent.mobileqq.ark.ArkAiDictUpdateMgr.8.1.1;
 
 public class aldh
-  implements Runnable
+  extends aldv
 {
-  public aldh(ProfileCardMoreInfoView paramProfileCardMoreInfoView) {}
+  public aldh(ArkAiDictUpdateMgr.8 param8) {}
   
-  public void run()
+  public void a(boolean paramBoolean, long paramLong, byte[] paramArrayOfByte)
   {
-    this.a.a("map_key_extend_friend_info");
+    ThreadManager.post(new ArkAiDictUpdateMgr.8.1.1(this, paramArrayOfByte, paramBoolean), 5, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aldh
  * JD-Core Version:    0.7.0.1
  */

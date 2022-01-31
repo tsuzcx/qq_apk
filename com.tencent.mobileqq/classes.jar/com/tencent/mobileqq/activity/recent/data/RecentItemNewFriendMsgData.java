@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity.recent.data;
 
+import ahcw;
+import ajnf;
 import android.content.Context;
+import atcu;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.recent.TimeManager;
-import com.tencent.mobileqq.app.NewFriendManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.newfriend.NewFriendMessage;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecentItemNewFriendMsgData
   extends RecentUserBaseData
 {
-  private boolean c;
-  int j = 0;
+  private static final String TAG = "RecentItemNewFriendMsgData";
+  private boolean isFirstShow = true;
+  int mTilteId = 0;
   
   public RecentItemNewFriendMsgData(RecentUser paramRecentUser)
   {
     super(paramRecentUser);
-    this.jdField_c_of_type_Boolean = true;
   }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
@@ -27,55 +27,55 @@ public class RecentItemNewFriendMsgData
       QLog.d("RecentItemNewFriendMsgData", 2, "RecentItemNewFriendMsgData update");
     }
     super.a(paramQQAppInterface, paramContext);
-    NewFriendManager localNewFriendManager = (NewFriendManager)paramQQAppInterface.getManager(33);
-    NewFriendMessage localNewFriendMessage = localNewFriendManager.a();
-    this.b = paramContext.getString(this.j);
-    if (localNewFriendMessage == null)
+    ajnf localajnf = (ajnf)paramQQAppInterface.getManager(34);
+    atcu localatcu = localajnf.a();
+    this.mTitleName = paramContext.getString(this.mTilteId);
+    if (localatcu == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("RecentItemNewFriendMsgData", 2, "isFirstShow = " + this.jdField_c_of_type_Boolean);
+        QLog.d("RecentItemNewFriendMsgData", 2, "isFirstShow = " + this.isFirstShow);
       }
-      this.jdField_c_of_type_JavaLangCharSequence = "";
-      this.jdField_c_of_type_Int = 0;
-      this.jdField_d_of_type_JavaLangCharSequence = "";
-      this.a = 0L;
-      this.jdField_c_of_type_JavaLangString = "";
-      if (AppSetting.b)
+      this.mLastMsg = "";
+      this.mUnreadNum = 0;
+      this.mMsgExtroInfo = "";
+      this.mDisplayTime = 0L;
+      this.mShowTime = "";
+      if (AppSetting.c)
       {
         paramQQAppInterface = new StringBuilder();
-        paramQQAppInterface.append(this.b).append(",");
-        if (this.jdField_c_of_type_Int != 0) {
+        paramQQAppInterface.append(this.mTitleName).append(",");
+        if (this.mUnreadNum != 0) {
           break label300;
         }
       }
     }
     for (;;)
     {
-      if (this.jdField_d_of_type_JavaLangCharSequence != null) {
-        paramQQAppInterface.append(this.jdField_d_of_type_JavaLangCharSequence + ",");
+      if (this.mMsgExtroInfo != null) {
+        paramQQAppInterface.append(this.mMsgExtroInfo + ",");
       }
-      paramQQAppInterface.append(this.jdField_c_of_type_JavaLangCharSequence).append(",").append(this.jdField_c_of_type_JavaLangString);
-      this.jdField_d_of_type_JavaLangString = paramQQAppInterface.toString();
+      paramQQAppInterface.append(this.mLastMsg).append(",").append(this.mShowTime);
+      this.mContentDesc = paramQQAppInterface.toString();
       return;
-      this.jdField_d_of_type_JavaLangCharSequence = "";
-      if (localNewFriendMessage.a(paramQQAppInterface) != null) {}
-      for (paramQQAppInterface = localNewFriendMessage.a(paramQQAppInterface);; paramQQAppInterface = this.jdField_c_of_type_JavaLangCharSequence)
+      this.mMsgExtroInfo = "";
+      if (localatcu.a(paramQQAppInterface) != null) {}
+      for (paramQQAppInterface = localatcu.a(paramQQAppInterface);; paramQQAppInterface = this.mLastMsg)
       {
-        this.jdField_c_of_type_JavaLangCharSequence = paramQQAppInterface;
-        this.jdField_c_of_type_Int = localNewFriendManager.d();
-        if (this.a < localNewFriendMessage.a) {
-          this.a = localNewFriendMessage.a;
+        this.mLastMsg = paramQQAppInterface;
+        this.mUnreadNum = localajnf.d();
+        if (this.mDisplayTime < localatcu.a) {
+          this.mDisplayTime = localatcu.a;
         }
-        this.jdField_c_of_type_JavaLangString = TimeManager.a().a(a(), this.a);
+        this.mShowTime = ahcw.a().a(a(), this.mDisplayTime);
         break;
       }
       label300:
-      if (this.jdField_c_of_type_Int == 1) {
+      if (this.mUnreadNum == 1) {
         paramQQAppInterface.append("有一条未读");
-      } else if (this.jdField_c_of_type_Int == 2) {
+      } else if (this.mUnreadNum == 2) {
         paramQQAppInterface.append("有两条未读");
-      } else if (this.jdField_c_of_type_Int > 0) {
-        paramQQAppInterface.append("有").append(this.jdField_c_of_type_Int).append("条未读,");
+      } else if (this.mUnreadNum > 0) {
+        paramQQAppInterface.append("有").append(this.mUnreadNum).append("条未读,");
       }
     }
   }

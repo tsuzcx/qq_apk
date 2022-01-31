@@ -6,12 +6,12 @@ import java.util.ArrayList;
 
 public class QzoneAnimationDrawable$Builder
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  ImageProcessor jdField_a_of_type_ComTencentComponentMediaImageImageProcessor;
-  ArrayList jdField_a_of_type_JavaUtilArrayList;
-  int b;
-  int c;
+  long delayTimeInMs;
+  ArrayList<String> photos;
+  ImageProcessor processor;
+  int repeatCount;
+  int reqHeight;
+  int reqWidth;
   
   public static Builder create()
   {
@@ -21,22 +21,22 @@ public class QzoneAnimationDrawable$Builder
   public QzoneAnimationDrawable build()
   {
     Object localObject = ImageLoader.Options.obtain();
-    if (this.jdField_a_of_type_Long > 0L) {
-      ((ImageLoader.Options)localObject).photoDelayTimeInMs = this.jdField_a_of_type_Long;
+    if (this.delayTimeInMs > 0L) {
+      ((ImageLoader.Options)localObject).photoDelayTimeInMs = this.delayTimeInMs;
     }
-    if (this.jdField_a_of_type_Int > 0) {
-      ((ImageLoader.Options)localObject).clipWidth = this.jdField_a_of_type_Int;
+    if (this.reqWidth > 0) {
+      ((ImageLoader.Options)localObject).clipWidth = this.reqWidth;
     }
-    if (this.b > 0) {
-      ((ImageLoader.Options)localObject).clipHeight = this.b;
+    if (this.reqHeight > 0) {
+      ((ImageLoader.Options)localObject).clipHeight = this.reqHeight;
     }
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {}
-    for (((ImageLoader.Options)localObject).photoList = this.jdField_a_of_type_JavaUtilArrayList;; ((ImageLoader.Options)localObject).photoList = new ArrayList())
+    if (this.photos != null) {}
+    for (((ImageLoader.Options)localObject).photoList = this.photos;; ((ImageLoader.Options)localObject).photoList = new ArrayList())
     {
-      ((ImageLoader.Options)localObject).extraProcessor = this.jdField_a_of_type_ComTencentComponentMediaImageImageProcessor;
+      ((ImageLoader.Options)localObject).extraProcessor = this.processor;
       localObject = new QzoneAnimationDrawable((ImageLoader.Options)localObject);
-      if (this.c > 0) {
-        ((QzoneAnimationDrawable)localObject).setRepeatCount(this.c);
+      if (this.repeatCount > 0) {
+        ((QzoneAnimationDrawable)localObject).setRepeatCount(this.repeatCount);
       }
       return localObject;
     }
@@ -44,37 +44,37 @@ public class QzoneAnimationDrawable$Builder
   
   public Builder setDelayTime(long paramLong)
   {
-    this.jdField_a_of_type_Long = paramLong;
+    this.delayTimeInMs = paramLong;
     return this;
   }
   
-  public Builder setPhotos(ArrayList paramArrayList)
+  public Builder setPhotos(ArrayList<String> paramArrayList)
   {
-    this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
+    this.photos = paramArrayList;
     return this;
   }
   
   public Builder setProcessor(ImageProcessor paramImageProcessor)
   {
-    this.jdField_a_of_type_ComTencentComponentMediaImageImageProcessor = paramImageProcessor;
+    this.processor = paramImageProcessor;
     return this;
   }
   
   public Builder setRepeatCount(int paramInt)
   {
-    this.c = paramInt;
+    this.repeatCount = paramInt;
     return this;
   }
   
   public Builder setReqHeight(int paramInt)
   {
-    this.b = paramInt;
+    this.reqHeight = paramInt;
     return this;
   }
   
   public Builder setReqWidth(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.reqWidth = paramInt;
     return this;
   }
 }

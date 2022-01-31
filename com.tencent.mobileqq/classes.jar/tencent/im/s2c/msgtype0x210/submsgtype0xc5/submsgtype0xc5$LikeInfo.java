@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class submsgtype0xc5$LikeInfo
-  extends MessageMicro
+  extends MessageMicro<LikeInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_reply_id = PBField.initBytes(ByteStringMicro.EMPTY);

@@ -1,29 +1,12 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.profile.vote.VoteHelper;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class une
-  implements Runnable
+public abstract interface une
 {
-  public une(VisitorsActivity paramVisitorsActivity) {}
-  
-  public void run()
-  {
-    ArrayList localArrayList1 = this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(2, 7);
-    ArrayList localArrayList2 = this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(3, 7);
-    if (!this.a.isFinishing())
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a();
-      this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(5, 0, 0, new Object[] { localArrayList1, localArrayList2 }).sendToTarget();
-    }
-  }
+  public abstract void a(ErrorMessage paramErrorMessage);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     une
  * JD-Core Version:    0.7.0.1
  */

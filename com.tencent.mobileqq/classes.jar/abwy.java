@@ -1,34 +1,26 @@
-import android.os.Message;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.campuscircle.CampusCircleHandler;
-import com.tencent.mobileqq.campuscircle.CampusCircleManager;
-import com.tencent.mobileqq.campuscircle.CampusCircleSelTopicFragment;
-import java.util.List;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class abwy
-  implements Runnable
+  implements View.OnClickListener
 {
-  public abwy(CampusCircleSelTopicFragment paramCampusCircleSelTopicFragment) {}
+  public abwy(TroopInfoActivity paramTroopInfoActivity, Dialog paramDialog, long paramLong1, int paramInt, long paramLong2, long paramLong3, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.app != null))
-    {
-      Object localObject = (CampusCircleManager)this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.app.getManager(215);
-      List localList1 = ((CampusCircleManager)localObject).a(2, "tag_recommend_topic");
-      List localList2 = ((CampusCircleManager)localObject).a(2, "tag_hot_topic");
-      localObject = ((CampusCircleManager)localObject).a(2, "tag_more_topic");
-      Message.obtain(this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler, 1, 0, 0, localList1).sendToTarget();
-      Message.obtain(this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler, 2, 0, 0, localList2).sendToTarget();
-      Message.obtain(this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler, 3, 0, 0, localObject).sendToTarget();
-      ((CampusCircleHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.app.a(108)).a(2);
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.finish();
+    this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_Ajtg.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopName, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTags, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mPoiId, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mRichFingerMemo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abwy
  * JD-Core Version:    0.7.0.1
  */

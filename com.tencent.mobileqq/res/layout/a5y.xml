@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/kwx" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_marginLeft="4.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="2.5dip" android:layout_marginBottom="2.5dip" />
+    <View android:layout_gravity="end|bottom|center" android:id="@id/kw4" android:background="@drawable/a1p" android:visibility="gone" android:layout_width="70.0dip" android:layout_height="70.0dip" android:layout_margin="25.0dip" />
+    <com.tencent.biz.pubaccount.readinjoy.view.KanDianUrlRoundCornerImageView android:layout_gravity="end|bottom|center" android:id="@id/hzg" android:layout_width="62.0dip" android:layout_height="62.0dip" android:layout_margin="29.0dip" android:scaleType="centerCrop" />
+    <com.tencent.image.URLImageView android:layout_gravity="end|bottom|center" android:id="@id/hzf" android:visibility="visible" android:layout_width="58.0dip" android:layout_height="58.0dip" android:layout_margin="29.0dip" android:src="@drawable/dsg" />
+    <ImageView android:id="@id/kwy" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_marginLeft="4.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="2.5dip" android:layout_marginBottom="2.5dip" />
+    <ImageView android:layout_gravity="end|bottom|center" android:id="@id/lod" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="54.0dip" android:layout_marginBottom="56.5dip" android:src="@drawable/hz8" />
+</merge>

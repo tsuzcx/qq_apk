@@ -1,20 +1,28 @@
-import com.tencent.mobileqq.armap.ipc.ArMapIPCProxy;
-import com.tencent.mobileqq.armap.ipc.IAsyncObserver;
-import eipc.EIPCResult;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import java.lang.ref.WeakReference;
 
 public class abnd
-  implements Runnable
+  implements xga
 {
-  public abnd(ArMapIPCProxy paramArMapIPCProxy, IAsyncObserver paramIAsyncObserver, String paramString, EIPCResult paramEIPCResult) {}
+  WeakReference<QQSettingMe> a;
   
-  public void run()
+  public abnd(QQSettingMe paramQQSettingMe)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapIpcIAsyncObserver.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_EipcEIPCResult);
+    this.a = new WeakReference(paramQQSettingMe);
+  }
+  
+  public int a()
+  {
+    QQSettingMe localQQSettingMe = (QQSettingMe)this.a.get();
+    if (localQQSettingMe != null) {
+      return localQQSettingMe.a();
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abnd
  * JD-Core Version:    0.7.0.1
  */

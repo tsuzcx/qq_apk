@@ -1,78 +1,100 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.app.MobileQQ;
+import android.graphics.PorterDuff.Mode;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.VideoCoverImgBorder;
+import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
+import java.util.TimeZone;
 
-public class tiz
-  implements CompoundButton.OnCheckedChangeListener
+class tiz
 {
-  public tiz(NotifyPushSettingActivity paramNotifyPushSettingActivity, CardHandler paramCardHandler) {}
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private VideoCoverImgBorder jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public tiz(tiy paramtiy, View paramView)
   {
-    if (AppSetting.b) {
-      NotifyPushSettingActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity).setContentDescription("PC离线时自动启动QQ手机版");
-    }
-    QQAppInterface localQQAppInterface;
-    int i;
-    if (!NotifyPushSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity))
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder = ((VideoCoverImgBorder)paramView.findViewById(2131297772));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131311450));
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.setOnClickListener(new tja(this, paramtiy));
+  }
+  
+  private void a(String paramString, int paramInt)
+  {
+    if (TextUtils.isEmpty(paramString))
     {
-      if (paramBoolean) {
-        ReportController.b(null, "CliOper", "", "", "0X8004972", "0X8004972", 0, 1, "", "", "", "");
-      }
-    }
-    else
-    {
-      if ((!NetworkUtil.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.getApplicationContext())) || (!NotifyPushSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity))) {
-        break label182;
-      }
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app;
-      if (!paramBoolean) {
-        break label171;
-      }
-      i = 1;
-      label94:
-      if (!paramBoolean) {
-        break label176;
-      }
-    }
-    label171:
-    label176:
-    for (paramCompoundButton = "1";; paramCompoundButton = "0")
-    {
-      ReportController.b(localQQAppInterface, "CliOper", "", "", "Setting_tab", "PC_active", 0, i, paramCompoundButton, "", "", "");
-      if (!NotifyPushSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity)) {
-        this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.b(paramBoolean);
-      }
+      vms.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder, paramString, VideoCoverListBar.a(this.jdField_a_of_type_Tiy.a), VideoCoverListBar.a(this.jdField_a_of_type_Tiy.a), VideoCoverListBar.c(this.jdField_a_of_type_Tiy.a), VideoCoverListBar.d(this.jdField_a_of_type_Tiy.a), "VideoCoverList");
       return;
-      ReportController.b(null, "CliOper", "", "", "0X8004972", "0X8004972", 0, 0, "", "", "", "");
-      break;
-      i = 0;
-      break label94;
     }
-    label182:
-    NotifyPushSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, false);
-    paramCompoundButton = NotifyPushSettingActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity);
-    if (!NotifyPushSettingActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity).a()) {}
-    for (paramBoolean = true;; paramBoolean = false)
+    vms.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder, paramString, VideoCoverListBar.a(this.jdField_a_of_type_Tiy.a), VideoCoverListBar.b(this.jdField_a_of_type_Tiy.a), VideoCoverListBar.c(this.jdField_a_of_type_Tiy.a), VideoCoverListBar.d(this.jdField_a_of_type_Tiy.a), "VideoCoverList");
+  }
+  
+  public void a(int paramInt)
+  {
+    urk.a("Q.qqstory.player:VideoCoverListBar", "bindView, position=%d", Integer.valueOf(paramInt));
+    this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Tiy.a(paramInt);
+    Object localObject = VideoCoverListBar.a(this.jdField_a_of_type_Tiy.a).b(this.jdField_a_of_type_JavaLangString);
+    if (localObject == null)
     {
-      paramCompoundButton.setChecked(paramBoolean);
-      NotifyPushSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, true);
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app.getApplication().getString(2131437550), 0).b(5);
-      return;
+      localObject = new StoryVideoItem();
+      ((StoryVideoItem)localObject).mVid = this.jdField_a_of_type_JavaLangString;
+    }
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(((StoryVideoItem)localObject).getThumbUrl()))
+      {
+        a(vmp.a(((StoryVideoItem)localObject).getThumbUrl()), paramInt);
+        if (!((StoryVideoItem)localObject).isUploadFail()) {
+          break label177;
+        }
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.setState(0);
+      }
+      for (;;)
+      {
+        if ((!VideoCoverListBar.a(this.jdField_a_of_type_Tiy.a).a()) && (!VideoCoverListBar.a(this.jdField_a_of_type_Tiy.a).b())) {
+          break label246;
+        }
+        this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.clearColorFilter();
+        return;
+        a(vmp.a(urh.a(((StoryVideoItem)localObject).mVideoLocalThumbnailPath)), paramInt);
+        break;
+        label177:
+        if (TextUtils.isEmpty(VideoCoverListBar.a(this.jdField_a_of_type_Tiy.a))) {
+          this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.setState(2);
+        } else if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, VideoCoverListBar.a(this.jdField_a_of_type_Tiy.a))) {
+          this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.setState(1);
+        } else {
+          this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.setState(2);
+        }
+      }
+      label246:
+      if ((tfy.b((StoryVideoItem)localObject)) || (((StoryVideoItem)localObject).mErrorCode != 0))
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.setColorFilter(1711276032, PorterDuff.Mode.SRC_ATOP);
+        return;
+      }
+      long l2 = ((StoryVideoItem)localObject).mCreateTime;
+      long l1;
+      if (((StoryVideoItem)localObject).mTimeZoneOffsetMillis != 2147483647L) {
+        l1 = ((StoryVideoItem)localObject).mTimeZoneOffsetMillis;
+      }
+      for (boolean bool = true;; bool = false)
+      {
+        localObject = ulr.a(l2, l1, bool, false, true);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverImgBorder.setColorFilter(1711276032, PorterDuff.Mode.SRC_ATOP);
+        return;
+        l1 = TimeZone.getDefault().getRawOffset();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tiz
  * JD-Core Version:    0.7.0.1
  */

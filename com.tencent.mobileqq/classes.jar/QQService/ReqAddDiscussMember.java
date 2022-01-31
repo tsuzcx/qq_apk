@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class ReqAddDiscussMember
   extends JceStruct
 {
-  static ArrayList cache_Members;
+  static ArrayList<AddDiscussMemberInfo> cache_Members;
   public long DiscussUin;
-  public ArrayList Members;
+  public ArrayList<AddDiscussMemberInfo> Members;
   
   public ReqAddDiscussMember() {}
   
-  public ReqAddDiscussMember(long paramLong, ArrayList paramArrayList)
+  public ReqAddDiscussMember(long paramLong, ArrayList<AddDiscussMemberInfo> paramArrayList)
   {
     this.DiscussUin = paramLong;
     this.Members = paramArrayList;

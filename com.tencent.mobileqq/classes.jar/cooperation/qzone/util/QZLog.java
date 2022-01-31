@@ -1,7 +1,7 @@
 package cooperation.qzone.util;
 
 import android.util.Log;
-import anis;
+import bgfr;
 import com.tencent.qphone.base.util.QLog;
 
 public class QZLog
@@ -45,16 +45,16 @@ public class QZLog
       d(paramString, j, paramVarArgs[0].toString());
       return;
     }
-    anis localanis = anis.a();
+    bgfr localbgfr = bgfr.a();
     int k = paramVarArgs.length;
     paramInt = i;
     while (paramInt < k)
     {
-      localanis.a(paramVarArgs[paramInt]);
+      localbgfr.a(paramVarArgs[paramInt]);
       paramInt += 1;
     }
-    QLog.d(paramString, j, localanis.toString(), paramThrowable);
-    localanis.a();
+    QLog.d(paramString, j, localbgfr.toString(), paramThrowable);
+    localbgfr.a();
   }
   
   public static void d(String paramString, int paramInt, Object... paramVarArgs)
@@ -72,19 +72,19 @@ public class QZLog
     }
     if ((paramVarArgs.length == 1) && (paramVarArgs[0] != null))
     {
-      QLog.e(paramString, j, paramVarArgs[0].toString());
+      QLog.e(paramString, j, paramVarArgs[0].toString(), paramThrowable);
       return;
     }
-    anis localanis = anis.a();
+    bgfr localbgfr = bgfr.a();
     int k = paramVarArgs.length;
     paramInt = i;
     while (paramInt < k)
     {
-      localanis.a(paramVarArgs[paramInt]);
+      localbgfr.a(paramVarArgs[paramInt]);
       paramInt += 1;
     }
-    QLog.e(paramString, j, localanis.toString(), paramThrowable);
-    localanis.a();
+    QLog.e(paramString, j, localbgfr.toString(), paramThrowable);
+    localbgfr.a();
   }
   
   public static void e(String paramString, int paramInt, Object... paramVarArgs)
@@ -138,16 +138,16 @@ public class QZLog
       i(paramString, j, paramVarArgs[0].toString());
       return;
     }
-    anis localanis = anis.a();
+    bgfr localbgfr = bgfr.a();
     int k = paramVarArgs.length;
     paramInt = i;
     while (paramInt < k)
     {
-      localanis.a(paramVarArgs[paramInt]);
+      localbgfr.a(paramVarArgs[paramInt]);
       paramInt += 1;
     }
-    QLog.i(paramString, j, localanis.toString(), paramThrowable);
-    localanis.a();
+    QLog.i(paramString, j, localbgfr.toString(), paramThrowable);
+    localbgfr.a();
   }
   
   public static void i(String paramString, int paramInt, Object... paramVarArgs)
@@ -209,16 +209,16 @@ public class QZLog
       QLog.w(paramString, j, paramVarArgs[0].toString());
       return;
     }
-    anis localanis = anis.a();
+    bgfr localbgfr = bgfr.a();
     int k = paramVarArgs.length;
     paramInt = i;
     while (paramInt < k)
     {
-      localanis.a(paramVarArgs[paramInt]);
+      localbgfr.a(paramVarArgs[paramInt]);
       paramInt += 1;
     }
-    QLog.w(paramString, j, localanis.toString(), paramThrowable);
-    localanis.a();
+    QLog.w(paramString, j, localbgfr.toString(), paramThrowable);
+    localbgfr.a();
   }
   
   public static void w(String paramString, int paramInt, Object... paramVarArgs)
@@ -243,7 +243,7 @@ public class QZLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     cooperation.qzone.util.QZLog
  * JD-Core Version:    0.7.0.1
  */

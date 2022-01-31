@@ -1,33 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.pic.ReportInfo;
+import android.os.Bundle;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.qphone.base.util.QLog;
 
-public final class agqc
-  implements Parcelable.Creator
+class agqc
+  implements agpe
 {
-  public ReportInfo a(Parcel paramParcel)
-  {
-    ReportInfo localReportInfo = new ReportInfo();
-    localReportInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localReportInfo.jdField_b_of_type_Int = paramParcel.readInt();
-    localReportInfo.jdField_c_of_type_Int = paramParcel.readInt();
-    localReportInfo.f = paramParcel.readInt();
-    localReportInfo.d = paramParcel.readInt();
-    localReportInfo.e = paramParcel.readInt();
-    localReportInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localReportInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    localReportInfo.jdField_c_of_type_Long = paramParcel.readLong();
-    return localReportInfo;
-  }
+  agqc(agpt paramagpt, ResultReceiver paramResultReceiver) {}
   
-  public ReportInfo[] a(int paramInt)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    return new ReportInfo[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCModule", 2, "QWalletIPC downloadUrls" + paramPathResult);
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result_code", paramInt);
+    localBundle.putSerializable("path_result", paramPathResult);
+    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agqc
  * JD-Core Version:    0.7.0.1
  */

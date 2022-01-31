@@ -1,34 +1,35 @@
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class aenc
-  implements Runnable
+  implements View.OnClickListener
 {
-  aenc(aena paramaena, ActionGlobalData paramActionGlobalData) {}
+  aenc(aenb paramaenb) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    
-    if (this.jdField_a_of_type_Aena.jdField_a_of_type_Int == 1)
-    {
-      ((View)this.jdField_a_of_type_Aena.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.b).setBackgroundColor(0);
-      this.jdField_a_of_type_Aena.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.g();
+    awqx.b(aenb.a(this.a), "CliOper", "", "", "Free_call", "Clk_free_call_tips", 0, 0, "", "", "", "");
+    aenb.c(aenb.a(this.a), aenb.a(this.a).jdField_a_of_type_JavaLangString);
+    aenb.a(this.a).a();
+    paramView = null;
+    String str = null;
+    if (aenb.a(this.a).jdField_a_of_type_Int == 1006) {
+      str = aenb.a(this.a).jdField_a_of_type_JavaLangString;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData != null) && ("gravity".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.c)) && (PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).getBoolean(BaseApplicationImpl.getContext().getString(2131433595), false))) {
-      this.jdField_a_of_type_Aena.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a.aB();
+    for (;;)
+    {
+      ChatActivityUtils.a(aenb.a(this.a), aenb.a(this.a), aenb.a(this.a).jdField_a_of_type_Int, paramView, aenb.a(this.a).d, str, true, aenb.a(this.a).b, true, true, null, "from_internal");
+      awqx.b(aenb.a(this.a), "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "8", "", "", "");
+      return;
+      paramView = aenb.a(this.a).jdField_a_of_type_JavaLangString;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aenc
  * JD-Core Version:    0.7.0.1
  */

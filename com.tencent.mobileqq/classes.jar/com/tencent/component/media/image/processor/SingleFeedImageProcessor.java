@@ -15,15 +15,17 @@ import com.tencent.component.media.image.drawable.SpecifiedDrawable;
 public class SingleFeedImageProcessor
   extends CropByPivotProcessor
 {
-  private static final Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
-  private float jdField_a_of_type_Float;
-  private final int jdField_a_of_type_Int;
-  private final int b;
+  private static final float DEFAULT_FEED_SCALE = 1.1F;
+  private static final float MAX_WIDTH_SCALE = 2.0F;
+  private static final Paint mPaint = new Paint(6);
+  private final int mMaxHeight;
+  private float mMaxScale;
+  private final int mMaxWidth;
   
   public SingleFeedImageProcessor(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.mMaxWidth = paramInt1;
+    this.mMaxHeight = paramInt2;
   }
   
   public SingleFeedImageProcessor(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3)
@@ -32,10 +34,10 @@ public class SingleFeedImageProcessor
     setPivotRate(paramFloat1, paramFloat2);
     if (paramFloat3 <= 0.0F)
     {
-      this.jdField_a_of_type_Float = 2.0F;
+      this.mMaxScale = 2.0F;
       return;
     }
-    this.jdField_a_of_type_Float = paramFloat3;
+    this.mMaxScale = paramFloat3;
   }
   
   public int getType()
@@ -45,7 +47,7 @@ public class SingleFeedImageProcessor
   
   public Drawable process(Drawable paramDrawable)
   {
-    if ((this.jdField_a_of_type_Int <= 0) || (this.b <= 0)) {
+    if ((this.mMaxWidth <= 0) || (this.mMaxHeight <= 0)) {
       return paramDrawable;
     }
     int j = paramDrawable.getIntrinsicWidth();
@@ -53,11 +55,11 @@ public class SingleFeedImageProcessor
     float f1;
     if (j >= i)
     {
-      if (j <= this.jdField_a_of_type_Int) {
+      if (j <= this.mMaxWidth) {
         break label403;
       }
-      f1 = this.jdField_a_of_type_Int / j;
-      j = this.jdField_a_of_type_Int;
+      f1 = this.mMaxWidth / j;
+      j = this.mMaxWidth;
       i = (int)(i * f1);
     }
     label403:
@@ -70,13 +72,13 @@ public class SingleFeedImageProcessor
         localObject1 = (ImageDrawable)paramDrawable;
         int m = ((ImageDrawable)localObject1).getBitmapWidth();
         k = ((ImageDrawable)localObject1).getBitmapHeight();
-        if ((m > 0) && (k > 0) && (j / m > this.jdField_a_of_type_Float))
+        if ((m > 0) && (k > 0) && (j / m > this.mMaxScale))
         {
           float f2 = 1.1F;
           f1 = f2;
-          if (i >= this.b)
+          if (i >= this.mMaxHeight)
           {
-            f1 = this.b / k;
+            f1 = this.mMaxHeight / k;
             if (1.1F >= f1) {
               f1 = f2;
             }
@@ -107,7 +109,7 @@ public class SingleFeedImageProcessor
             localObject1 = new Canvas(paramDrawable.getBitmap());
             localObject2 = new Matrix();
             ScaleDrawable.getMatrix((Matrix)localObject2, 10, localBitmapReference.getWidth(), localBitmapReference.getHeight(), j, k, this.mPivotXRate, this.mPivotYRate);
-            ((Canvas)localObject1).drawBitmap(localBitmapReference.getBitmap(), (Matrix)localObject2, jdField_a_of_type_AndroidGraphicsPaint);
+            ((Canvas)localObject1).drawBitmap(localBitmapReference.getBitmap(), (Matrix)localObject2, mPaint);
             if (!localBitmapReference.isRecycled()) {
               localBitmapReference.release();
             }
@@ -119,11 +121,11 @@ public class SingleFeedImageProcessor
             paramDrawable.printStackTrace();
             return null;
           }
-          if (i <= this.b) {
+          if (i <= this.mMaxHeight) {
             break label403;
           }
-          f1 = this.b / i;
-          i = this.b;
+          f1 = this.mMaxHeight / i;
+          i = this.mMaxHeight;
           j = (int)(j * f1);
           break;
           break label153;

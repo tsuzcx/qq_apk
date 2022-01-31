@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
+import atmo;
+import atnz;
+import atoc;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
-import com.tencent.mobileqq.persistence.unique;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -23,7 +23,7 @@ import tencent.im.oidb.cmd0xa28.oidb_0xa28.RoleInfo;
 import tencent.im.oidb.cmd0xa28.oidb_0xa28.RspBody;
 
 public class KplCard
-  extends Entity
+  extends atmo
 {
   public String bgUrl;
   public String commonInfo;
@@ -32,13 +32,13 @@ public class KplCard
   public int gender;
   public long mvpLevel;
   public String qqNick;
-  @notColumn
-  public List roleList;
+  @atnz
+  public List<KplRoleInfo> roleList;
   public long round;
   public String sRoleList;
   public String score;
   public long superLevel;
-  @unique
+  @atoc
   public String uin;
   
   public static KplCard parseProto(oidb_0xa28.RspBody paramRspBody, String paramString)

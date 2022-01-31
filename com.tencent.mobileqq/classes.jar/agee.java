@@ -1,35 +1,26 @@
-import android.view.View;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.now.enter.ConversationNowController;
+import android.os.Handler;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
+import com.tencent.mobileqq.activity.photo.SendPhotoActivity.sendPhotoTask;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class agee
-  implements Animator.AnimatorListener
+  implements MessageQueue.IdleHandler
 {
-  public agee(ConversationNowController paramConversationNowController, View paramView) {}
+  public agee(SendPhotoActivity paramSendPhotoActivity) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public boolean queueIdle()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNowEnterConversationNowController.f();
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqNowEnterConversationNowController.f();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqNowEnterConversationNowController.d) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    }
+    atpg.a(SendPhotoActivity.jdField_a_of_type_JavaLangString, "queueIdle", "start");
+    this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoActivity$sendPhotoTask = new SendPhotoActivity.sendPhotoTask(this.a, null);
+    ThreadManager.post(this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendPhotoActivity$sendPhotoTask, 8, null, false);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agee
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,58 @@
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.widget.XPanelContainer;
-import dov.com.qq.im.capture.text.DynamicTextBuilder;
-import dov.com.qq.im.capture.text.DynamicTextItem;
-import dov.com.qq.im.capture.text.EditTextPreView.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
 
-public class aogk
-  implements EditTextPreView.OnClickListener
+class aogk
+  extends aogx
 {
-  public aogk(EditTextDialog paramEditTextDialog) {}
+  protected long a;
+  protected String a;
+  protected String b;
+  protected String c;
+  protected String d;
+  protected String e;
+  protected String f;
+  protected String g;
   
-  public void a(View paramView, DynamicTextItem paramDynamicTextItem, int paramInt)
+  aogk(aofz paramaofz, MessageRecord paramMessageRecord)
   {
-    if ((paramDynamicTextItem != null) && (paramInt > -1))
+    super(paramaofz);
+    this.jdField_a_of_type_JavaLangString = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
+    this.jdField_a_of_type_Long = Long.parseLong(paramMessageRecord.getExtInfoFromExtStr("_m_ForwardSize"));
+    this.b = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardUuid");
+    this.c = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardMd5");
+    this.d = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardReceiverUin");
+    this.e = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgWidth");
+    this.f = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardImgHeight");
+    this.g = paramMessageRecord.getExtInfoFromExtStr("_m_ForwardStatusPaused");
+  }
+  
+  void a(String paramString, int paramInt) {}
+  
+  void a(String paramString, int paramInt, aogv paramaogv)
+  {
+    if ("1".equals(this.g))
     {
-      paramView = paramDynamicTextItem.a(paramInt);
-      if (paramView != null)
-      {
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramView);
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramView.length());
-        if (!paramView.equals(DynamicTextBuilder.a(paramDynamicTextItem.c(), paramInt))) {
-          break label132;
-        }
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(EditTextDialog.a(this.a));
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelectAllOnFocus(true);
-        if (this.a.jdField_a_of_type_AndroidWidgetEditText.hasFocus()) {
-          this.a.jdField_a_of_type_AndroidWidgetEditText.selectAll();
-        }
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start Disc2BuddyTaskExcuter:" + this.jdField_a_of_type_JavaLangString + " faild, file is upload paused");
       }
-      for (;;)
-      {
-        if (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer != null) {
-          this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(1);
-        }
-        return;
-        label132:
-        this.a.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(null);
-      }
+      paramaogv.a(aofz.a(this.jdField_a_of_type_Long, false), false);
+      return;
     }
-    this.a.a(false);
+    if ((this.b == null) || (this.b.length() == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_JavaLangString + " Disc2BuddyTaskExcuter send faild uuid is null");
+      }
+      paramaogv.a(aofz.a(this.jdField_a_of_type_Long, true), false);
+      return;
+    }
+    aofz.a(this.jdField_a_of_type_Aofz).a().a().a(paramString, paramInt, this.d, 3, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.c, new aogl(this, paramString, paramaogv));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aogk
  * JD-Core Version:    0.7.0.1
  */

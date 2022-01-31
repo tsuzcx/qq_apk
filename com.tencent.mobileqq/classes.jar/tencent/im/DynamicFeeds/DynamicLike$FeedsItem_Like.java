@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class DynamicLike$FeedsItem_Like
-  extends MessageMicro
+  extends MessageMicro<FeedsItem_Like>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "ulFeedID", "uiClickTime", "strFeedCookie" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), "" }, FeedsItem_Like.class);
   public final PBStringField strFeedCookie = PBField.initString("");
@@ -17,7 +17,7 @@ public final class DynamicLike$FeedsItem_Like
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.DynamicFeeds.DynamicLike.FeedsItem_Like
  * JD-Core Version:    0.7.0.1
  */

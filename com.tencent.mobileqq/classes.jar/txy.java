@@ -1,23 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.support.annotation.NonNull;
 
-public class txy
-  implements DialogInterface.OnClickListener
+class txy
+  implements txu
 {
-  public txy(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
+  txy(txx paramtxx) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(@NonNull txs paramtxs)
   {
-    ReportController.b(this.a.app, "dc00898", "", "", "0X8007547", "0X8007547", 0, 0, this.a.app.getCurrentAccountUin(), "", "", "");
-    this.a.finish();
+    paramtxs = paramtxs.a();
+    if (paramtxs != null) {
+      txx.a(this.a, paramtxs);
+    }
   }
+  
+  public void b(@NonNull txs paramtxs) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     txy
  * JD-Core Version:    0.7.0.1
  */

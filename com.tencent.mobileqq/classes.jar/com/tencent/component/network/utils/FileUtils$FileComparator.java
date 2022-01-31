@@ -4,7 +4,7 @@ import java.io.File;
 
 public abstract interface FileUtils$FileComparator
 {
-  public abstract boolean a(File paramFile1, File paramFile2);
+  public abstract boolean equals(File paramFile1, File paramFile2);
 }
 
 

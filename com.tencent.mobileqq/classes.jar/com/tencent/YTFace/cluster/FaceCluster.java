@@ -1,13 +1,13 @@
 package com.tencent.YTFace.cluster;
 
+import akod;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
+import bace;
 import com.tencent.YTFace.model.FaceStatus;
 import com.tencent.YTFace.model.FaceTarget;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ar.FaceScanNativeSoLoader;
-import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 
@@ -29,11 +29,10 @@ public class FaceCluster
   {
     try
     {
-      String str = FaceScanNativeSoLoader.a("YTFaceExtFeature");
-      BaseApplicationImpl.sApplication.getSharedPreferences("StatisticCollector", 4).edit().putString("facefeature_ext_so_md5", str).commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("FaceCluster", 2, "FaceCluster faceFeatureExtSoMD5 = " + str);
-      }
+      String str1 = akod.a("YTFaceExtFeature");
+      String str2 = akod.a("YTFaceClusterJNI_V720");
+      BaseApplicationImpl.sApplication.getSharedPreferences("StatisticCollector", 4).edit().putString("facefeature_ext_so_md5", str1).commit();
+      QLog.d("FaceCluster", 1, "FaceCluster faceFeatureExtSoMD5 = " + str1 + " faceJniSoMD5 =  " + str2);
       return;
     }
     catch (Exception localException)
@@ -68,7 +67,7 @@ public class FaceCluster
     //   4: istore 6
     //   6: ldc 2
     //   8: monitorenter
-    //   9: invokestatic 112	com/tencent/mobileqq/ar/FaceScanNativeSoLoader:a	()Z
+    //   9: invokestatic 113	akod:a	()Z
     //   12: istore 8
     //   14: iload 8
     //   16: ifne +9 -> 25
@@ -76,30 +75,30 @@ public class FaceCluster
     //   21: monitorexit
     //   22: iload 6
     //   24: ireturn
-    //   25: getstatic 114	com/tencent/YTFace/cluster/FaceCluster:soLoaded	Z
+    //   25: getstatic 115	com/tencent/YTFace/cluster/FaceCluster:soLoaded	Z
     //   28: ifeq +11 -> 39
-    //   31: getstatic 105	com/tencent/YTFace/cluster/FaceCluster:loadSoSuccess	Z
+    //   31: getstatic 106	com/tencent/YTFace/cluster/FaceCluster:loadSoSuccess	Z
     //   34: istore 6
     //   36: goto -17 -> 19
     //   39: iconst_1
-    //   40: putstatic 114	com/tencent/YTFace/cluster/FaceCluster:soLoaded	Z
-    //   43: ldc 116
-    //   45: invokestatic 120	com/tencent/mobileqq/ar/FaceScanNativeSoLoader:b	(Ljava/lang/String;)B
+    //   40: putstatic 115	com/tencent/YTFace/cluster/FaceCluster:soLoaded	Z
+    //   43: ldc 117
+    //   45: invokestatic 121	akod:b	(Ljava/lang/String;)B
     //   48: istore_0
-    //   49: ldc 122
-    //   51: invokestatic 120	com/tencent/mobileqq/ar/FaceScanNativeSoLoader:b	(Ljava/lang/String;)B
+    //   49: ldc 123
+    //   51: invokestatic 121	akod:b	(Ljava/lang/String;)B
     //   54: istore_1
-    //   55: ldc 124
-    //   57: invokestatic 120	com/tencent/mobileqq/ar/FaceScanNativeSoLoader:b	(Ljava/lang/String;)B
+    //   55: ldc 125
+    //   57: invokestatic 121	akod:b	(Ljava/lang/String;)B
     //   60: istore_2
     //   61: ldc 34
-    //   63: invokestatic 120	com/tencent/mobileqq/ar/FaceScanNativeSoLoader:b	(Ljava/lang/String;)B
+    //   63: invokestatic 121	akod:b	(Ljava/lang/String;)B
     //   66: istore_3
-    //   67: ldc 126
-    //   69: invokestatic 120	com/tencent/mobileqq/ar/FaceScanNativeSoLoader:b	(Ljava/lang/String;)B
+    //   67: ldc 127
+    //   69: invokestatic 121	akod:b	(Ljava/lang/String;)B
     //   72: istore 4
-    //   74: ldc 128
-    //   76: invokestatic 120	com/tencent/mobileqq/ar/FaceScanNativeSoLoader:b	(Ljava/lang/String;)B
+    //   74: ldc 42
+    //   76: invokestatic 121	akod:b	(Ljava/lang/String;)B
     //   79: istore 5
     //   81: iload 7
     //   83: istore 6
@@ -128,19 +127,24 @@ public class FaceCluster
     //   131: iconst_1
     //   132: istore 6
     //   134: iload 6
-    //   136: putstatic 105	com/tencent/YTFace/cluster/FaceCluster:loadSoSuccess	Z
-    //   139: getstatic 105	com/tencent/YTFace/cluster/FaceCluster:loadSoSuccess	Z
+    //   136: putstatic 106	com/tencent/YTFace/cluster/FaceCluster:loadSoSuccess	Z
+    //   139: getstatic 106	com/tencent/YTFace/cluster/FaceCluster:loadSoSuccess	Z
     //   142: istore 6
     //   144: goto -125 -> 19
     //   147: astore 9
-    //   149: iconst_0
-    //   150: putstatic 105	com/tencent/YTFace/cluster/FaceCluster:loadSoSuccess	Z
-    //   153: goto -14 -> 139
-    //   156: astore 9
-    //   158: ldc 2
-    //   160: monitorexit
-    //   161: aload 9
-    //   163: athrow
+    //   149: ldc 17
+    //   151: iconst_1
+    //   152: ldc 129
+    //   154: aload 9
+    //   156: invokestatic 132	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   159: iconst_0
+    //   160: putstatic 106	com/tencent/YTFace/cluster/FaceCluster:loadSoSuccess	Z
+    //   163: goto -24 -> 139
+    //   166: astore 9
+    //   168: ldc 2
+    //   170: monitorexit
+    //   171: aload 9
+    //   173: athrow
     // Local variable table:
     //   start	length	slot	name	signature
     //   48	38	0	i	int
@@ -152,19 +156,19 @@ public class FaceCluster
     //   4	139	6	bool1	boolean
     //   1	122	7	bool2	boolean
     //   12	3	8	bool3	boolean
-    //   147	1	9	localThrowable	java.lang.Throwable
-    //   156	6	9	localObject	Object
+    //   147	8	9	localThrowable	java.lang.Throwable
+    //   166	6	9	localObject	Object
     // Exception table:
     //   from	to	target	type
     //   43	81	147	java/lang/Throwable
     //   134	139	147	java/lang/Throwable
-    //   9	14	156	finally
-    //   25	36	156	finally
-    //   39	43	156	finally
-    //   43	81	156	finally
-    //   134	139	156	finally
-    //   139	144	156	finally
-    //   149	153	156	finally
+    //   9	14	166	finally
+    //   25	36	166	finally
+    //   39	43	166	finally
+    //   43	81	166	finally
+    //   134	139	166	finally
+    //   139	144	166	finally
+    //   149	163	166	finally
   }
   
   public static final void printQLog(int paramInt, String paramString1, String paramString2)
@@ -203,8 +207,8 @@ public class FaceCluster
     }
     try
     {
-      paramString1 = FileUtils.a(paramString1);
-      paramString2 = FileUtils.a(paramString2);
+      paramString1 = bace.a(paramString1);
+      paramString2 = bace.a(paramString2);
       QLog.d("FaceCluster", 1, "init ,ufdmtccArray = " + paramString1 + ",ufatArray = " + paramString2);
       if ((paramString1 != null) && (paramString2 != null))
       {

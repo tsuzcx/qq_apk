@@ -1,19 +1,12 @@
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView;
-
-public class adam
-  implements Runnable
+public abstract interface adam
 {
-  public adam(QfileLocalFilePicTabView paramQfileLocalFilePicTabView) {}
+  public abstract boolean a(adaj paramadaj);
   
-  public void run()
-  {
-    QfileLocalFilePicTabView.a(this.a);
-    this.a.d();
-  }
+  public abstract boolean a(adaj paramadaj, String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adam
  * JD-Core Version:    0.7.0.1
  */

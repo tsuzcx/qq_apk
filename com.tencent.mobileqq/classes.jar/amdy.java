@@ -1,34 +1,89 @@
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.CSProcessorImpl;
-import com.tencent.qqprotect.qsec.QSecFramework.IGoingUpHandler;
 
 public class amdy
-  implements QSecFramework.IGoingUpHandler
+  extends alzl<amdx>
 {
-  public amdy(CSProcessorImpl paramCSProcessorImpl) {}
-  
-  public int a(int paramInt1, int paramInt2, int paramInt3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
+  public int a()
   {
-    if ((paramObject1 != null) && ((paramObject1 instanceof String)) && (paramObject2 != null) && ((paramObject2 instanceof byte[])))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.CSP", 2, String.format("Cookie: %08X, cmd: %s", new Object[] { Integer.valueOf(paramInt1), paramObject1 }));
-      }
-      if (paramInt1 != 0) {
-        this.a.a((String)paramObject1, (byte[])paramObject2, new ameb(this.a, paramInt1));
-      }
+    return 68;
+  }
+  
+  @NonNull
+  public amdx a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadConfProcessor", 2, "[migrateOldOrDefaultContent]");
     }
-    else
-    {
-      return 0;
+    return new amdx();
+  }
+  
+  @Nullable
+  public amdx a(alzs[] paramArrayOfalzs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadConfProcessor", 2, "[onParsed]");
     }
-    this.a.a((String)paramObject1, (byte[])paramObject2, null);
+    amdx localamdx = new amdx();
+    localamdx.a = paramArrayOfalzs;
+    return localamdx;
+  }
+  
+  public Class<amdx> a()
+  {
+    return amdx.class;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadConfProcessor", 2, "onReqNoReceive: type=" + a());
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadConfProcessor", 2, "[onReqNoReceive] failCode=" + paramInt);
+    }
+  }
+  
+  public void a(amdx paramamdx)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadConfProcessor", 2, "[onUpdate]");
+    }
+    PreloadManager localPreloadManager = (PreloadManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(151);
+    localPreloadManager.a(paramamdx);
+    localPreloadManager.b();
+    localPreloadManager.b(true);
+  }
+  
+  public int b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadConfProcessor", 2, "[get migrateOldVersion]");
+    }
     return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amdy
  * JD-Core Version:    0.7.0.1
  */

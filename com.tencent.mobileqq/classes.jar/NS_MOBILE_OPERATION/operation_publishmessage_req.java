@@ -9,9 +9,9 @@ import java.util.Map;
 public final class operation_publishmessage_req
   extends JceStruct
 {
-  static Map cache_busi_param;
+  static Map<Integer, String> cache_busi_param;
   static MediaInfo cache_mediainfo;
-  public Map busi_param;
+  public Map<Integer, String> busi_param;
   public String content = "";
   public int iMsgType;
   public boolean isverified = true;
@@ -22,7 +22,7 @@ public final class operation_publishmessage_req
   
   public operation_publishmessage_req() {}
   
-  public operation_publishmessage_req(long paramLong1, long paramLong2, String paramString, boolean paramBoolean, int paramInt1, MediaInfo paramMediaInfo, Map paramMap, int paramInt2)
+  public operation_publishmessage_req(long paramLong1, long paramLong2, String paramString, boolean paramBoolean, int paramInt1, MediaInfo paramMediaInfo, Map<Integer, String> paramMap, int paramInt2)
   {
     this.uin = paramLong1;
     this.ownuin = paramLong2;
@@ -74,7 +74,7 @@ public final class operation_publishmessage_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     NS_MOBILE_OPERATION.operation_publishmessage_req
  * JD-Core Version:    0.7.0.1
  */

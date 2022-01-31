@@ -1,53 +1,72 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule;
-import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyMSFService;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReportInfo.VideoExtraRepoerData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Random;
 
 public final class lbu
-  implements Runnable
 {
-  public lbu(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, ReportInfo.VideoExtraRepoerData paramVideoExtraRepoerData) {}
+  private static final float jdField_a_of_type_Float;
+  static final int jdField_a_of_type_Int = (int)Math.sqrt(16384.0D);
+  public static Random a;
   
-  public void run()
+  static
   {
-    ArrayList localArrayList = new ArrayList();
-    ReportInfo localReportInfo = new ReportInfo();
-    localReportInfo.mUin = ReadInJoyUtils.a();
-    localReportInfo.mSource = 0;
-    localReportInfo.mOpSource = 5;
-    localReportInfo.mSourceArticleId = -1L;
-    localReportInfo.mInnerId = this.jdField_a_of_type_JavaLangString;
-    localReportInfo.mChannelId = this.jdField_a_of_type_Int;
-    localReportInfo.mAlgorithmId = this.b;
-    localReportInfo.mStrategyId = this.c;
-    localReportInfo.mOperation = this.d;
-    localReportInfo.mPlayTimeLength = this.e;
-    localReportInfo.mVideoExtraRepoerData = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReportInfo$VideoExtraRepoerData;
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("reportVideoUserOperationByOidbOfMutilmUin:").append(localReportInfo.mUin).append("; mSource:").append(localReportInfo.mSource).append("; mOpSource:").append(localReportInfo.mOpSource).append("; mInnerId:").append(localReportInfo.mInnerId).append("; mChannelId:").append(localReportInfo.mChannelId).append("; mAlgorithmId:").append(localReportInfo.mAlgorithmId).append("; mStrategyId:").append(localReportInfo.mStrategyId).append("; mOperation:").append(localReportInfo.mOperation).append("; mPlayTimeLength:").append(localReportInfo.mPlayTimeLength).append("; videoExtraRepoerData:");
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReportInfo$VideoExtraRepoerData == null) {
-        break label280;
-      }
+    jdField_a_of_type_Float = 1.0F / (jdField_a_of_type_Int - 1);
+    jdField_a_of_type_JavaUtilRandom = new Random();
+  }
+  
+  public static final float a()
+  {
+    return jdField_a_of_type_JavaUtilRandom.nextFloat();
+  }
+  
+  public static final float a(float paramFloat)
+  {
+    return lbv.a[((int)(45.511112F * paramFloat) & 0x3FFF)];
+  }
+  
+  public static float a(float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    if (paramFloat1 < paramFloat2) {
+      return paramFloat2;
     }
-    label280:
-    for (String str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReportInfo$VideoExtraRepoerData.toString();; str = "null")
-    {
-      QLog.d("VideoReporter", 2, str);
-      localArrayList.add(localReportInfo);
-      new UserOperationModule(null, null, ReadInJoyMSFService.a(), null).a(localArrayList);
-      return;
+    if (paramFloat1 > paramFloat3) {
+      return paramFloat3;
     }
+    return paramFloat1;
+  }
+  
+  public static final int a(int paramInt)
+  {
+    return jdField_a_of_type_JavaUtilRandom.nextInt(paramInt + 1);
+  }
+  
+  public static int a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramInt1 < paramInt2) {
+      return paramInt2;
+    }
+    if (paramInt1 > paramInt3) {
+      return paramInt3;
+    }
+    return paramInt1;
+  }
+  
+  public static final boolean a()
+  {
+    return jdField_a_of_type_JavaUtilRandom.nextBoolean();
+  }
+  
+  public static final float b(float paramFloat)
+  {
+    return lbv.a[((int)((90.0F + paramFloat) * 45.511112F) & 0x3FFF)];
+  }
+  
+  public static final float c(float paramFloat)
+  {
+    return jdField_a_of_type_JavaUtilRandom.nextFloat() * paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lbu
  * JD-Core Version:    0.7.0.1
  */

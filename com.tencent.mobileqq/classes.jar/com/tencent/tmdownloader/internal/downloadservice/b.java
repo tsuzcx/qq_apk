@@ -6,7 +6,7 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.text.TextUtils;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ac;
 import com.tencent.tmdownloader.internal.storage.d;
 import java.io.File;
 import java.net.URI;
@@ -43,7 +43,7 @@ public class b
     //   38: ldc 30
     //   40: ldc 32
     //   42: aload_0
-    //   43: invokestatic 38	com/tencent/tmassistantbase/util/r:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   43: invokestatic 38	com/tencent/tmassistantbase/util/ac:b	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   46: ldc 20
     //   48: astore_0
     //   49: goto -32 -> 17
@@ -85,7 +85,7 @@ public class b
     //   123: aload_0
     //   124: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   127: invokevirtual 81	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   130: invokestatic 84	com/tencent/tmassistantbase/util/r:a	(Ljava/lang/String;Ljava/lang/String;)V
+    //   130: invokestatic 84	com/tencent/tmassistantbase/util/ac:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   133: goto -116 -> 17
     //   136: astore_0
     //   137: ldc 2
@@ -131,7 +131,7 @@ public class b
     catch (Exception paramString)
     {
       paramString.printStackTrace();
-      r.b("DownloadHelper", "exception: ", paramString);
+      ac.b("DownloadHelper", "exception: ", paramString);
     }
     return str1;
   }
@@ -172,7 +172,7 @@ public class b
   
   public static String b(String paramString)
   {
-    r.c("DownloadHelper", "genExistedAPKFileNameByUrl url = " + paramString);
+    ac.c("DownloadHelper", "genExistedAPKFileNameByUrl url = " + paramString);
     Object localObject2 = null;
     if (paramString.contains(".apk"))
     {
@@ -184,8 +184,9 @@ public class b
       localObject2 = localObject1;
       if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        paramString = d(c((String)localObject1));
-        r.c("DownloadHelper", "genExistedAPKFileNameByUrl url contains apk return fileName = " + paramString);
+        localObject1 = d(c((String)localObject1));
+        paramString = ((String)localObject1).replace(".apk", "") + "_" + GlobalUtil.calcMD5AsString(paramString) + ".apk";
+        ac.c("DownloadHelper", "genExistedAPKFileNameByUrl url contains apk return fileName = " + paramString);
         return paramString;
       }
     }
@@ -193,7 +194,7 @@ public class b
     if (localObject2 == null) {
       localObject1 = a(paramString, "application/vnd.android.package-archive");
     }
-    r.c("DownloadHelper", "genExistedAPKFileNameByUrl fileName == null, return fileName = " + (String)localObject1);
+    ac.c("DownloadHelper", "genExistedAPKFileNameByUrl fileName == null, return fileName = " + (String)localObject1);
     return localObject1;
   }
   
@@ -202,7 +203,7 @@ public class b
     Object localObject = GlobalUtil.getInstance().getContext();
     if (localObject == null)
     {
-      r.d("DownloadHelper", "GlobalUtil.getInstance().getContext() == null.");
+      ac.d("DownloadHelper", "GlobalUtil.getInstance().getContext() == null.");
       return false;
     }
     localObject = (ConnectivityManager)((Context)localObject).getSystemService("connectivity");
@@ -267,7 +268,7 @@ public class b
         }
         paramString1 = paramString1;
         bool1 = false;
-        r.b("DownloadHelper", "halleytest exception: ", paramString1);
+        ac.b("DownloadHelper", "halleytest exception: ", paramString1);
         return bool1;
       }
       finally {}
@@ -296,7 +297,7 @@ public class b
     }
     catch (Throwable paramString)
     {
-      r.b("DownloadHelper", "exception: ", paramString);
+      ac.b("DownloadHelper", "exception: ", paramString);
       paramString.printStackTrace();
     }
     return false;
@@ -319,7 +320,7 @@ public class b
       catch (Exception paramString)
       {
         paramString = paramString;
-        r.b("DownloadHelper", "exception: ", paramString);
+        ac.b("DownloadHelper", "exception: ", paramString);
         paramString.printStackTrace();
         return false;
       }
@@ -329,7 +330,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.downloadservice.b
  * JD-Core Version:    0.7.0.1
  */

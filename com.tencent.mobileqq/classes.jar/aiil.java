@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
-import com.tencent.mobileqq.shortvideo.util.OffScreenGLSurface;
-
-public class aiil
-  implements Runnable
+public abstract interface aiil
 {
-  public aiil(OffScreenGLSurface paramOffScreenGLSurface) {}
+  public abstract void onNotifyLongTouch(String paramString);
   
-  public void run()
-  {
-    OffScreenGLSurface.a(this.a).sendFirstFrameMsg();
-  }
+  public abstract void onNotifyStatusChanged(int paramInt, String paramString);
+  
+  public abstract void onSurfaceReady(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiil
  * JD-Core Version:    0.7.0.1
  */

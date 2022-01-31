@@ -1,36 +1,23 @@
+import android.content.Intent;
 import android.view.View;
-import com.tencent.mobileqq.scribble.ScribbleResMgr;
-import com.tencent.mobileqq.scribble.ScribbleResMgr.ResCallback;
-import java.lang.ref.WeakReference;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class ahvc
+  implements View.OnClickListener
 {
-  int jdField_a_of_type_Int;
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  int b;
-  public WeakReference b;
+  public ahvc(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public ahvc(ScribbleResMgr paramScribbleResMgr, int paramInt1, int paramInt2, View paramView, ScribbleResMgr.ResCallback paramResCallback)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramResCallback);
-    this.jdField_b_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-  }
-  
-  public View a()
-  {
-    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-  }
-  
-  public ScribbleResMgr.ResCallback a()
-  {
-    return (ScribbleResMgr.ResCallback)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    paramView = new Intent(this.a, QQBrowserActivity.class).putExtra("url", ShortVideoPlayActivity.a(this.a));
+    this.a.startActivity(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahvc
  * JD-Core Version:    0.7.0.1
  */

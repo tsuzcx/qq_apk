@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class Crm$SvrCCMsgFlag
-  extends MessageMicro
+  extends MessageMicro<SvrCCMsgFlag>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "uint32_type", "str_text_msg" }, new Object[] { Integer.valueOf(0), "" }, SvrCCMsgFlag.class);
   public final PBStringField str_text_msg = PBField.initString("");

@@ -1,29 +1,64 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qzone.QZoneShareData;
-import cooperation.qzone.share.QZoneShareActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.qphone.base.util.QLog;
 
-public class angt
-  implements DialogInterface.OnClickListener
+class angt
+  extends batl
 {
-  public angt(QZoneShareActivity paramQZoneShareActivity, Activity paramActivity, QZoneShareData paramQZoneShareData) {}
+  angt(angs paramangs) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDone(batm parambatm)
   {
-    switch (paramInt)
+    super.onDone(parambatm);
+    anfj localanfj = this.a.a();
+    Bundle localBundle = parambatm.a();
+    if (parambatm.a() != 3) {}
+    for (boolean bool = true;; bool = false)
     {
-    default: 
+      long l1 = System.currentTimeMillis();
+      long l2 = localBundle.getLong("vas_download_start");
+      localanfj.a(localBundle, parambatm, bool, parambatm.a, parambatm.d, l1 - l2, 0);
       return;
     }
-    QZoneShareActivity.a(this.jdField_a_of_type_CooperationQzoneShareQZoneShareActivity, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_CooperationQzoneQZoneShareData, false);
-    this.jdField_a_of_type_AndroidAppActivity.setResult(0);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
+  }
+  
+  public void onDoneFile(batm parambatm)
+  {
+    Object localObject = parambatm.a();
+    int i = ((Bundle)localObject).getInt(parambatm.c);
+    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
+    if (QLog.isColorLevel()) {
+      QLog.d("VasEmojiManager", 2, "emotionDownloadListener | onDoneFile epId=" + ((EmoticonPackage)localObject).epId + ",task:" + parambatm);
+    }
+    if (parambatm.a != 0)
+    {
+      QLog.e("VasEmojiManager", 1, "onDoneFile : ondone error , reportCode = " + parambatm.a);
+      if (anfj.a(i)) {
+        anfj.a.a((EmoticonPackage)localObject, i, -1, parambatm.a);
+      }
+      bapm.a("emotionType", "emotionActionDownload", "10", ((EmoticonPackage)localObject).epId, "", "", parambatm.a + "", "", "", "");
+    }
+    for (;;)
+    {
+      return;
+      anfj localanfj = this.a.a();
+      if (anfj.a(i)) {
+        anfj.a.a((EmoticonPackage)localObject, i, 0, 0);
+      }
+      while ((((EmoticonPackage)localObject).jobType == 3) || (((EmoticonPackage)localObject).jobType == 5))
+      {
+        localanfj.b(parambatm);
+        return;
+        if (i == 7) {
+          localanfj.a(parambatm);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     angt
  * JD-Core Version:    0.7.0.1
  */

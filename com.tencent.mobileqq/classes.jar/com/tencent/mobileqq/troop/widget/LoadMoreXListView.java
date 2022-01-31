@@ -2,19 +2,19 @@ package com.tencent.mobileqq.troop.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import begh;
 import com.tencent.biz.qqstory.view.widget.LoadMoreLayout;
-import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper;
 import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.XListView;
+import vqi;
 
 public class LoadMoreXListView
   extends XListView
-  implements AbsListView.OnScrollListener
+  implements begh
 {
   private int jdField_a_of_type_Int = -1;
-  public LoadingMoreHelper a;
-  private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
+  private begh jdField_a_of_type_Begh;
+  public vqi a;
   
   public LoadMoreXListView(Context paramContext)
   {
@@ -40,42 +40,42 @@ public class LoadMoreXListView
     super.setOnScrollListener(this);
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  protected void b()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener != null) {
-      this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener.a(paramAbsListView, paramInt);
-    }
+    LoadMoreLayout localLoadMoreLayout = new LoadMoreLayout(getContext());
+    this.jdField_a_of_type_Vqi = new vqi(localLoadMoreLayout, getContext().getApplicationContext());
+    super.addFooterView(localLoadMoreLayout);
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener != null) {
-      this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener.a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+    if (this.jdField_a_of_type_Begh != null) {
+      this.jdField_a_of_type_Begh.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
     if (paramInt1 == this.jdField_a_of_type_Int) {}
     do
     {
       return;
       this.jdField_a_of_type_Int = paramInt1;
-    } while (paramInt3 - (paramInt1 + paramInt2) > this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper.a());
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper.b(true);
+    } while (paramInt3 - (paramInt1 + paramInt2) > this.jdField_a_of_type_Vqi.a());
+    this.jdField_a_of_type_Vqi.b(true);
   }
   
-  protected void b()
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    LoadMoreLayout localLoadMoreLayout = new LoadMoreLayout(getContext());
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper = new LoadingMoreHelper(localLoadMoreLayout, getContext().getApplicationContext());
-    super.addFooterView(localLoadMoreLayout);
+    if (this.jdField_a_of_type_Begh != null) {
+      this.jdField_a_of_type_Begh.onScrollStateChanged(paramAbsListView, paramInt);
+    }
   }
   
-  public void setOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener)
+  public void setOnScrollListener(begh parambegh)
   {
-    this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = paramOnScrollListener;
+    this.jdField_a_of_type_Begh = parambegh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.LoadMoreXListView
  * JD-Core Version:    0.7.0.1
  */

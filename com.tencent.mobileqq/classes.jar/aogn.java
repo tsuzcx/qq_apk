@@ -1,46 +1,59 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import dov.com.qq.im.capture.text.DynamicTextItem;
-import dov.com.qq.im.capture.text.EditTextPreView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class aogn
-  implements TextWatcher
+class aogn
+  implements aodv
 {
-  public aogn(EditTextDialog paramEditTextDialog) {}
+  aogn(aogm paramaogm, String paramString, aogv paramaogv) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void a(int paramInt, String paramString)
   {
-    paramInt1 = 49;
-    if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiEditTextDialog$EditTextDialogEventListener == null) {}
-    do
-    {
-      return;
-      if (this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem != null) {
-        this.a.jdField_a_of_type_DovComQqImCaptureTextEditTextPreView.setText(this.a.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b(), paramCharSequence.toString());
-      }
-    } while (paramCharSequence.toString().length() <= 50);
-    if (Character.isHighSurrogate(paramCharSequence.charAt(49))) {}
+    boolean bool2 = false;
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Disc2DiscTaskExcuter onFaild：");
+    boolean bool1;
+    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
+      bool1 = true;
+    }
     for (;;)
     {
-      paramCharSequence = paramCharSequence.subSequence(0, paramInt1).toString();
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence);
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.length());
-      this.a.jdField_a_of_type_MqqOsMqqHandler.post(new aogo(this));
+      if (QLog.isColorLevel()) {
+        QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aogm.jdField_a_of_type_JavaLangString + " Disc2DiscTaskExcuter send faild:" + paramInt);
+      }
+      this.jdField_a_of_type_Aogv.a(aofz.a(this.jdField_a_of_type_Aogm.jdField_a_of_type_Long, bool2), bool1);
       return;
-      paramInt1 = 50;
+      if ((paramInt == -6101) || (paramInt == -7003))
+      {
+        bool1 = false;
+        bool2 = true;
+      }
+      else
+      {
+        bool1 = false;
+      }
     }
+  }
+  
+  public void a(String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("_m_ForwardFileType", "2");
+    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aogm.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aogm.jdField_a_of_type_Long + "");
+    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aogm.c);
+    localBundle.putString("_m_ForwardDeadTime", "0");
+    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aogm.e);
+    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aogm.f);
+    localBundle.putString("_m_ForwardUuid", paramString);
+    if (QLog.isColorLevel()) {
+      QLog.e("FileMultiMsgManager<FileAssistant>", 1, this.jdField_a_of_type_Aogm.jdField_a_of_type_JavaLangString + " Disc2DiscTaskExcuter send success");
+    }
+    this.jdField_a_of_type_Aogv.a(paramString, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aogn
  * JD-Core Version:    0.7.0.1
  */

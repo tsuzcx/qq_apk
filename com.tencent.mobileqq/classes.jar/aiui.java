@@ -1,52 +1,36 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.transfile.DeviceMsgThumbDownloader;
-import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.os.Message;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
 
-public class aiui
-  implements BitmapDecoder
+class aiui
+  implements aiil
 {
-  public aiui(DeviceMsgThumbDownloader paramDeviceMsgThumbDownloader) {}
+  aiui(aiug paramaiug, DisplayMetrics paramDisplayMetrics, aiuk paramaiuk) {}
   
-  public Bitmap a(URL paramURL)
+  public void onNotifyLongTouch(String paramString) {}
+  
+  public void onNotifyStatusChanged(int paramInt, String paramString) {}
+  
+  public void onSurfaceReady(int paramInt1, int paramInt2)
   {
-    paramURL = this.a.a(paramURL);
-    if (paramURL == null) {
-      paramURL = null;
-    }
-    for (;;)
+    this.jdField_a_of_type_Aiug.jdField_c_of_type_Boolean = true;
+    float f = this.jdField_a_of_type_AndroidUtilDisplayMetrics.density;
+    this.jdField_a_of_type_Aiug.jdField_c_of_type_Float = (paramInt1 / 2 / f);
+    if ((this.jdField_a_of_type_Aiug.b != null) && (this.jdField_a_of_type_Aiug.a != null) && (aiug.a(this.jdField_a_of_type_Aiug) != null))
     {
-      return paramURL;
-      String str = paramURL.path;
-      if (TextUtils.isEmpty(str)) {
-        return null;
+      this.jdField_a_of_type_Aiug.b.onExecDispose();
+      this.jdField_a_of_type_Aiug.a.onExecDispose();
+      Message localMessage = aiug.a(this.jdField_a_of_type_Aiug).obtainMessage(19, this.jdField_a_of_type_Aiuk.c, this.jdField_a_of_type_Aiuk.jdField_b_of_type_Int);
+      if (this.jdField_a_of_type_Aiuk.a) {
+        localMessage.obj = Float.valueOf(this.jdField_a_of_type_Aiuk.jdField_b_of_type_Float);
       }
-      try
-      {
-        Bitmap localBitmap = this.a.a(str);
-        paramURL = localBitmap;
-        if (localBitmap == null)
-        {
-          paramURL = this.a.b(str);
-          return paramURL;
-        }
-      }
-      catch (Throwable paramURL)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("VIdeoThumbDownloader", 2, "getBitmap", paramURL);
-        }
-      }
+      aiug.a(this.jdField_a_of_type_Aiug).sendMessageDelayed(localMessage, 100L);
     }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiui
  * JD-Core Version:    0.7.0.1
  */

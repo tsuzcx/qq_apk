@@ -1,29 +1,38 @@
-import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
-public final class ots
-  extends ExecuteBinResponseCallback
+public class ots
+  implements owa
 {
-  public ots(ExecuteBinResponseCallback paramExecuteBinResponseCallback) {}
-  
-  public void a()
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    super.a();
-    this.a.a();
+    return null;
   }
   
-  public void a(String paramString)
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
   {
-    this.a.a(paramString);
+    return osv.a(paramBaseArticleInfo);
   }
   
-  public void a(boolean paramBoolean)
+  public void a(int paramInt1, Container paramContainer, opw paramopw, int paramInt2)
   {
-    this.a.a(paramBoolean);
+    paramContainer = paramContainer.getVirtualView();
+    if ((paramopw != null) && (paramopw.a() != null) && (AdvertisementInfo.isAdvertisementInfo(paramopw.a())))
+    {
+      paramContainer = paramContainer.findViewBaseByName("id_article_triple_image_interact");
+      if ((paramContainer != null) && ((paramContainer instanceof nru))) {
+        ((nru)paramContainer).a(paramopw);
+      }
+    }
   }
   
-  public void b(String paramString)
+  public boolean a(int paramInt, Container paramContainer, opw paramopw, ViewBase paramViewBase)
   {
-    this.a.b(paramString);
+    return false;
   }
 }
 

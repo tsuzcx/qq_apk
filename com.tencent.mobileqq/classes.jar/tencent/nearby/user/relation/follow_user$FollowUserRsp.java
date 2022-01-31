@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import tencent.nearby.common.nearby_common.ErrorInfo;
 
 public final class follow_user$FollowUserRsp
-  extends MessageMicro
+  extends MessageMicro<FollowUserRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "uin", "dst_uin", "result" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), null }, FollowUserRsp.class);
   public final PBUInt64Field dst_uin = PBField.initUInt64(0L);

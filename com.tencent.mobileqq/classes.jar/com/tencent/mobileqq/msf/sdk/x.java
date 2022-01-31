@@ -9,11 +9,11 @@ public final class x
 {
   static NotifyRegisterInfo f;
   static CommandCallbackerInfo g;
-  public int a;
+  public int a = 0;
   public String b = "";
   public String c = "";
-  public NotifyRegisterInfo d;
-  public CommandCallbackerInfo e;
+  public NotifyRegisterInfo d = null;
+  public CommandCallbackerInfo e = null;
   
   public x() {}
   

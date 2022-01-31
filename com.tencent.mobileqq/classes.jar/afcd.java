@@ -1,29 +1,47 @@
-import android.view.View;
-import android.widget.ListView;
-import com.tencent.av.utils.UITools;
-import com.tencent.mobileqq.nearby.now.model.Comments;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import java.util.List;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
+import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class afcd
-  implements Runnable
+  implements bemm
 {
-  public afcd(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public afcd(TroopActivity paramTroopActivity) {}
   
-  public void run()
+  public void a(beml parambeml)
   {
-    int i = UITools.b(this.a.getContext());
-    if (ShortVideoCommentsView.a() * this.a.a.a.size() + ShortVideoCommentsView.b(this.a).getMeasuredHeight() >= i)
+    switch (parambeml.a)
     {
-      ShortVideoCommentsView.a(this.a).setSelectionFromTop(1, ShortVideoCommentsView.a() + ShortVideoCommentsView.b(this.a).getMeasuredHeight());
+    default: 
+    case 0: 
+      do
+      {
+        return;
+        awqx.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_create", 0, 0, "", "", "", "");
+        awqx.b(this.a.app, "CliOper", "", "", "0X8006622", "0X8006622", 0, 0, "", "", "", "");
+        parambeml = (aynk)this.a.app.getManager(32);
+      } while (parambeml == null);
+      parambeml.a(this.a, 0);
+      return;
+    case 1: 
+      awqx.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_join", 0, 0, "", "", "", "");
+      awqx.b(this.a.app, "CliOper", "", "", "Grp", "grplist_plus_join", 47, 0, "", "", "", "");
+      AddContactsActivity.a(this.a, 1);
+      return;
+    case 2: 
+      awqx.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right_msgset", 0, 0, "", "", "", "");
+      awqx.b(this.a.app, "CliOper", "", "", "Grp", "grplist_plus_setting", 0, 0, "", "", "", "");
+      parambeml = new Intent(this.a, TroopAssisSettingActivity.class);
+      this.a.startActivity(parambeml);
       return;
     }
-    ShortVideoCommentsView.a(this.a).setSelection(this.a.a.a.size() + 1);
+    TroopActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afcd
  * JD-Core Version:    0.7.0.1
  */

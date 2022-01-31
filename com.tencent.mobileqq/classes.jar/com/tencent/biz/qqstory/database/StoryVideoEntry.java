@@ -1,11 +1,11 @@
 package com.tencent.biz.qqstory.database;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.defaultValue;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atnv;
+import atoc;
 
 public class StoryVideoEntry
-  extends Entity
+  extends atmo
 {
   public long addTime;
   public String address;
@@ -16,11 +16,14 @@ public class StoryVideoEntry
   public String attachedFeedId;
   public int banType = -1;
   public int commentCount;
+  public int comparedLevel;
+  public String comparedVid;
   public long createTime;
   public long databaseTime = System.currentTimeMillis();
   public int detailInfoState;
   public String doodleText;
   public String downloadNetType;
+  public String gameInfoJson;
   public String groupId;
   public int hadRead;
   public int hasRelatedVideo;
@@ -32,12 +35,14 @@ public class StoryVideoEntry
   public int lastUploadFailErrorCode;
   public String lastUploadVid;
   public String likeEntryList;
+  public String linkInfoJson;
   public String localCreateLocation;
   public long localCreateTime;
   public String localMaskPicPath;
   public String localSpecialItemId;
   public String localVideoPath;
   public String localVideoThumbnailPath;
+  public byte[] mCompBytes;
   public int mInteractStatus;
   public byte[] mPollUsersBytes;
   public String mPublishDate;
@@ -48,6 +53,9 @@ public class StoryVideoEntry
   public int mVideoSource;
   public String maskPicUrl;
   public String md5;
+  public String oaLinkInfoJson;
+  public String originalAuthorName;
+  public String originalAuthorUnionId;
   public String ownerName;
   public String ownerUnionId;
   public int playerScaleType = -1;
@@ -63,10 +71,11 @@ public class StoryVideoEntry
   public String recommendWording;
   public int retryUploadTimes;
   public String shareGroupId;
+  public int sourceTagType = -1;
   public String sourceVid;
   public int storyType;
   public int strangerViewCount;
-  @defaultValue(a=2147483647)
+  @atnv(a=2147483647)
   public long timeZoneOffsetMillis;
   public int totalLikeNum;
   public int totalRateCount = -1;
@@ -74,7 +83,7 @@ public class StoryVideoEntry
   public int uncheckLikeNum;
   public String unionId;
   public int uploadStatus = -1;
-  @unique
+  @atoc
   public String vid;
   public long videoBytes;
   public long videoDuration;
@@ -82,6 +91,7 @@ public class StoryVideoEntry
   public byte[] videoSpreadGroupList;
   public String videoThumbnailUrl;
   public String videoUrl;
+  public long videoUrlExpireTime = -1L;
   public int videoWidth;
   public int viewCount;
   public long viewTotalTime;
@@ -99,7 +109,7 @@ public class StoryVideoEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.StoryVideoEntry
  * JD-Core Version:    0.7.0.1
  */

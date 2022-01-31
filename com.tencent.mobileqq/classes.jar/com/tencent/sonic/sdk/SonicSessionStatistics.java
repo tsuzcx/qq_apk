@@ -6,6 +6,8 @@ public class SonicSessionStatistics
   public long connectionConnectTime;
   public long connectionFlowFinishTime;
   public long connectionFlowStartTime;
+  public long connectionRecDataEndTime;
+  public long connectionRecDataStartTime;
   public long connectionRespondTime;
   public long diffDataCallbackTime;
   public int finalMode;

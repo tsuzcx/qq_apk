@@ -14,7 +14,7 @@ public class VideoData
   
   public VideoData()
   {
-    this.d = 5;
+    super(5);
   }
 }
 

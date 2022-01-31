@@ -1,53 +1,45 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.open.agent.AuthorityActivity;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
-import com.tencent.open.agent.util.AuthorityUtil;
+import android.os.Environment;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.File;
 
 public class alka
-  extends Handler
 {
-  public alka(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity, Looper paramLooper)
+  public static String a = "";
+  public static String b = "";
+  public static String c = "";
+  
+  static
   {
-    super(paramLooper);
+    int i = 0;
+    try
+    {
+      boolean bool = "mounted".equals(Environment.getExternalStorageState());
+      i = bool;
+    }
+    catch (Throwable localThrowable)
+    {
+      label28:
+      File localFile;
+      break label28;
+    }
+    if (i != 0) {}
+    for (localFile = new File(ajed.aU);; localFile = BaseApplicationImpl.getApplication().getCacheDir())
+    {
+      b = new File(localFile, "AR_MAP").getAbsolutePath();
+      a = new File(localFile, "res_precover").getAbsolutePath();
+      c = new File(b, "preload_map").getAbsolutePath();
+      return;
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public static String a()
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          paramMessage = (Bitmap)paramMessage.obj;
-        } while (paramMessage == null);
-        paramMessage = AuthorityUtil.a(this.a, paramMessage, 50, 50);
-        localMessage = Message.obtain();
-        localMessage.what = 1002;
-        localMessage.obj = paramMessage;
-        this.a.b.sendMessage(localMessage);
-        return;
-        paramMessage = (String)paramMessage.obj;
-      } while (TextUtils.isEmpty(paramMessage));
-      paramMessage = AuthorityActivity.a(paramMessage);
-    } while (paramMessage == null);
-    Message localMessage = Message.obtain();
-    localMessage.what = 1003;
-    localMessage.obj = paramMessage;
-    this.a.b.sendMessage(localMessage);
+    return b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alka
  * JD-Core Version:    0.7.0.1
  */

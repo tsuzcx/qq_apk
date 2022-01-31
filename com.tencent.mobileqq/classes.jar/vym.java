@@ -1,24 +1,26 @@
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.activity.aio.tips.GatherContactsTips;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.biz.subscribe.beans.SubscribeDraftBean;
+import com.tencent.biz.subscribe.widget.relativevideo.SubScribeDraftItemView;
 
-public class vym
-  implements Runnable
+class vym
+  extends RecyclerView.ViewHolder
 {
-  public vym(FriendChatPie paramFriendChatPie) {}
-  
-  public void run()
+  public vym(vyk paramvyk, View paramView)
   {
-    if (FriendChatPie.a(this.a) != null)
-    {
-      FriendChatPie.a(this.a).b(1);
-      FriendChatPie.a(this.a).b(2);
-      FriendChatPie.a(this.a, null);
+    super(paramView);
+  }
+  
+  public void a(SubscribeDraftBean paramSubscribeDraftBean)
+  {
+    if ((this.itemView instanceof SubScribeDraftItemView)) {
+      ((SubScribeDraftItemView)this.itemView).setData(paramSubscribeDraftBean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vym
  * JD-Core Version:    0.7.0.1
  */

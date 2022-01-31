@@ -5,17 +5,17 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.util.ArrayList;
 import java.util.HashMap;
-import qmr;
+import ydg;
 
 public class LightAppSettingInfo
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator CREATOR = new qmr();
+  public static final Parcelable.Creator<LightAppSettingInfo> CREATOR = new ydg();
   public int a;
   public long a;
   public String a;
-  public ArrayList a;
-  public HashMap a;
+  public ArrayList<Integer> a;
+  public HashMap<Integer, String> a;
   public int b;
   public String b;
   public int c;

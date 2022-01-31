@@ -8,11 +8,11 @@ public final class WiFiService
   extends JceStruct
 {
   static d cache_wifi;
-  public int autoConnFlag;
-  public byte fee;
+  public int autoConnFlag = 0;
+  public byte fee = 0;
   public String pkgid = "";
-  public byte type;
-  public d wifi;
+  public byte type = 0;
+  public d wifi = null;
   
   public WiFiService() {}
   

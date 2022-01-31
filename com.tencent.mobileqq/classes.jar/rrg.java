@@ -1,64 +1,44 @@
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.ConversationFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.SubAccountInfo;
+import android.app.Activity;
+import android.content.res.Resources;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashSet;
 
-public class rrg
-  implements Runnable
+class rrg
+  extends ont
 {
-  public rrg(AssociatedAccountActivity paramAssociatedAccountActivity, QQMessageFacade paramQQMessageFacade) {}
+  rrg(rrd paramrrd) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.isFinishing()) {
+    if (QLog.isColorLevel()) {
+      QLog.d("GalleryShareHelper", 2, "handleDoFavoriteResult isSuccess = " + paramBoolean + ", operationType = " + paramInt + ", cid = " + paramString2);
+    }
+    if (TextUtils.isEmpty(paramString1)) {}
+    while (!rrd.a(this.a).contains(paramString1)) {
       return;
     }
-    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.getString(2131433311);
-    int i;
-    Object localObject;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade != null)
+    paramString2 = new bbmy(rrd.a(this.a));
+    paramString2.d(2000);
+    if (paramBoolean)
     {
-      i = this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b();
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app.a();
-      if ((localObject == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.a == null)) {
-        break label231;
-      }
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.addAll(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.a);
-      Iterator localIterator = localArrayList.iterator();
-      while (localIterator.hasNext()) {
-        i -= ((ConversationFacade)localObject).a(((SubAccountInfo)localIterator.next()).subuin, 7000);
-      }
-      localArrayList.clear();
+      paramString2.a(bbmy.a(2));
+      paramString2.c(2131626723);
+      paramString2.b(rrd.a(this.a).getResources().getDimensionPixelSize(2131167766) - (int)bacc.a(rrd.a(this.a), 5.0F));
     }
-    label231:
     for (;;)
     {
-      if (i > 0)
-      {
-        localObject = Integer.toString(i);
-        if (i > 99) {
-          localObject = "99+";
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("AssociatedAccountActivity", 2, "updateUnreadNumOnTitleBar unreadText = " + (String)localObject);
-        }
-      }
-      for (localObject = str + "(" + (String)localObject + ")";; localObject = str)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.runOnUiThread(new rrh(this, (String)localObject));
-        return;
-      }
+      rrd.a(this.a).remove(paramString1);
+      return;
+      paramString2.a(bbmy.a(1));
+      paramString2.c(2131626724);
+      paramString2.b(rrd.a(this.a).getResources().getDimensionPixelSize(2131167766) - (int)bacc.a(rrd.a(this.a), 5.0F));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rrg
  * JD-Core Version:    0.7.0.1
  */

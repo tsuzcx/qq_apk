@@ -1,36 +1,33 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.TMG.utils.QLog;
 
-public class zuz
-  implements Runnable
+class zuz
+  implements DialogInterface.OnKeyListener
 {
-  public zuz(TroopManager paramTroopManager, TroopMemberInfo paramTroopMemberInfo, String paramString) {}
+  zuz(zuv paramzuv, DialogInterface.OnCancelListener paramOnCancelListener) {}
   
-  public void run()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a.getEntityManagerFactory().createEntityManager();
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo.getStatus() == 1000) {
-      ((EntityManager)localObject).b(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
-    }
-    for (;;)
+    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1))
     {
-      ((EntityManager)localObject).a();
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.jdField_a_of_type_JavaLangString);
-      new Handler(Looper.getMainLooper()).post(new zva(this, (ArrayList)localObject));
-      return;
-      ((EntityManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberInfo);
+      if (this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener == null)
+      {
+        QLog.e("SdkAuthDialog", 1, "keyListener is null");
+        return true;
+      }
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnCancelListener.onCancel(paramDialogInterface);
+      this.jdField_a_of_type_Zuv.a();
+      awqx.b(null, "dc00898", "", "", "0X8009F79", "0X8009F79", 0, 0, "1", "", "", "");
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zuz
  * JD-Core Version:    0.7.0.1
  */

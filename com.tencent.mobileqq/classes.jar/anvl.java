@@ -1,23 +1,25 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.paster.PasterParcelData;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
-public final class anvl
-  implements Parcelable.Creator
+public class anvl
+  implements Animation.AnimationListener
 {
-  public PasterParcelData a(Parcel paramParcel)
+  public anvl(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new PasterParcelData(paramParcel);
+    this.a.a.setVisibility(4);
   }
   
-  public PasterParcelData[] a(int paramInt)
-  {
-    return new PasterParcelData[paramInt];
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anvl
  * JD-Core Version:    0.7.0.1
  */

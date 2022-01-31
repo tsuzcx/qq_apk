@@ -1,45 +1,48 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAiDictMgr;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.utils.VasUtils;
-import com.tencent.wordsegment.WordSegment;
-import java.util.Locale;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public final class aayv
-  implements Runnable
+public class aayv
+  implements andk
 {
-  public aayv(QQAppInterface paramQQAppInterface) {}
+  public aayv(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("GroupManagerActivity", 2, "RemoveListener which = " + paramInt);
+    }
+    paramInt -= 1;
+    byte b;
+    if ((paramInt >= 0) && (paramInt < this.a.a.size()))
     {
-      if (ArkAiDictMgr.a(this.a))
+      Object localObject = (Groups)this.a.a.get(paramInt);
+      b = (byte)((Groups)localObject).group_id;
+      if (QLog.isColorLevel())
       {
-        WordSegment.uninit();
-        int i = WordSegment.init(ArkAppCenter.e() + '/');
-        if (i != 0)
-        {
-          ArkAppCenter.b("ArkApp.Dict", String.format(Locale.CHINA, "reloadWordData failed, ret=%d", new Object[] { Integer.valueOf(i) }));
-          return;
-        }
-        ArkAppCenter.b("ArkApp.Dict", String.format(Locale.CHINA, "reloadWordData success", new Object[0]));
-        ArkAiDictMgr.b = true;
-        VasUtils.a(this.a);
-        return;
+        QLog.d("GroupManagerActivity", 2, "RemoveListener remove groupId :" + b);
+        QLog.d("GroupManagerActivity", 2, "RemoveListener remove friend_count :" + ((Groups)localObject).group_friend_count);
+      }
+      if (b == 0)
+      {
+        localObject = new bbmy(this.a);
+        ((bbmy)localObject).d(2000);
+        ((bbmy)localObject).c(2131654435);
+        ((bbmy)localObject).a();
       }
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    else
     {
-      ArkAppCenter.b("ArkApp.Dict", "reloadWordData, UnsatisfiedLinkError, err:" + localUnsatisfiedLinkError.getMessage());
       return;
     }
-    ArkAppCenter.b("ArkApp.Dict", String.format("reloadWordData, dict flag is off", new Object[0]));
+    GroupManagerActivity.a(this.a, b);
+    awqx.b(this.a.app, "CliOper", "", "", "category", "Delete_category", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aayv
  * JD-Core Version:    0.7.0.1
  */

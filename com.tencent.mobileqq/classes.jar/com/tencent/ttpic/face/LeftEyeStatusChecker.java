@@ -1,6 +1,6 @@
 package com.tencent.ttpic.face;
 
-import com.tencent.ttpic.model.StickerItem.FeatureStatValueRange;
+import com.tencent.ttpic.openapi.model.StickerItem.ValueRange;
 
 public class LeftEyeStatusChecker
   implements FaceStatusChecker
@@ -12,15 +12,15 @@ public class LeftEyeStatusChecker
     return instance;
   }
   
-  public float getLevel(FaceRangeStatus paramFaceRangeStatus, StickerItem.FeatureStatValueRange paramFeatureStatValueRange)
+  public float getLevel(FaceRangeStatus paramFaceRangeStatus, StickerItem.ValueRange paramValueRange)
   {
     return paramFaceRangeStatus.leftEye;
   }
   
-  public boolean isInRange(FaceRangeStatus paramFaceRangeStatus, StickerItem.FeatureStatValueRange paramFeatureStatValueRange)
+  public boolean isInRange(FaceRangeStatus paramFaceRangeStatus, StickerItem.ValueRange paramValueRange)
   {
-    if ((paramFaceRangeStatus == null) || (paramFeatureStatValueRange == null)) {}
-    while ((paramFaceRangeStatus.leftEye < paramFeatureStatValueRange.min) || (paramFaceRangeStatus.leftEye > paramFeatureStatValueRange.max)) {
+    if ((paramFaceRangeStatus == null) || (paramValueRange == null)) {}
+    while ((paramFaceRangeStatus.leftEye < paramValueRange.min) || (paramFaceRangeStatus.leftEye > paramValueRange.max)) {
       return false;
     }
     return true;
@@ -28,7 +28,7 @@ public class LeftEyeStatusChecker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.face.LeftEyeStatusChecker
  * JD-Core Version:    0.7.0.1
  */

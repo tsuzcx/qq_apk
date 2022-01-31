@@ -1,17 +1,30 @@
-import com.tencent.mobileqq.troop.utils.TroopTopicMgr.WriteCommentCallback;
-import org.json.JSONObject;
-
-public final class ajyp
-  implements TroopTopicMgr.WriteCommentCallback
+public class ajyp
 {
-  public void a(int paramInt, JSONObject paramJSONObject)
+  public int a;
+  public long a;
+  public int b;
+  public int c;
+  public int d;
+  
+  public String toString()
   {
-    if (paramInt == 0) {}
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("M_size=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",C_size=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",R_size=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(",K_len=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(",time=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajyp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.activity.LikeSettingActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 class teg
-  implements Runnable
+  extends tcs
 {
-  teg(tef paramtef, boolean paramBoolean) {}
-  
-  public void run()
+  teg(tdo paramtdo, StoryVideoItem paramStoryVideoItem, tex paramtex)
   {
-    this.jdField_a_of_type_Tef.a.c.setOnCheckedChangeListener(null);
-    this.jdField_a_of_type_Tef.a.c.setChecked(this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Tef.a.c.setOnCheckedChangeListener(this.jdField_a_of_type_Tef.a.a);
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Tex.e = ((String)a("result"));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     teg
  * JD-Core Version:    0.7.0.1
  */

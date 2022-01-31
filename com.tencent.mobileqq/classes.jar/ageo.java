@@ -1,26 +1,23 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.now.enter.NowFestivalEnterFragment;
-import com.tencent.mobileqq.now.enter.NowFestivalWebViewFragment;
+import mqq.app.QQPermissionCallback;
 
-public class ageo
-  implements Runnable
+class ageo
+  implements QQPermissionCallback
 {
-  public ageo(NowFestivalEnterFragment paramNowFestivalEnterFragment) {}
+  ageo(agen paramagen) {}
   
-  public void run()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("url", NowFestivalEnterFragment.a(this.a));
-    localIntent.setClass(NowFestivalEnterFragment.a(this.a), QQBrowserActivity.class);
-    localIntent.putExtra("fragment_class", NowFestivalWebViewFragment.class.getCanonicalName());
-    NowFestivalEnterFragment.a(this.a).startActivity(localIntent);
+    babr.a(this.a.a.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    agem.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ageo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,50 @@
-import com.tencent.mobileqq.floatscr.ColorScreenConfig;
-import com.tencent.mobileqq.floatscr.ColorScreenManager;
-import com.tencent.mobileqq.vas.VasManager.CompleteListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.MessageForTroopFee;
+import com.tencent.mobileqq.data.TroopInfo;
 
-public class adsf
-  implements Runnable
+class adsf
+  implements View.OnClickListener
 {
-  public adsf(ColorScreenManager paramColorScreenManager, int paramInt, VasManager.CompleteListener paramCompleteListener) {}
+  adsf(adse paramadse) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    String str = "colorScreen.android." + this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_ComTencentMobileqqFloatscrColorScreenManager.b(str, this.jdField_a_of_type_ComTencentMobileqqVasVasManager$CompleteListener, null);
-    ColorScreenConfig localColorScreenConfig = this.jdField_a_of_type_ComTencentMobileqqFloatscrColorScreenManager.a(this.jdField_a_of_type_Int);
-    if (localColorScreenConfig == null)
+    adsg localadsg = (adsg)aciy.a(paramView);
+    MessageForTroopFee localMessageForTroopFee = (MessageForTroopFee)localadsg.a;
+    Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
+    localIntent.putExtra("url", localMessageForTroopFee.actionUrl);
+    paramView.getContext().startActivity(localIntent);
+    paramView = ((TroopManager)this.a.a.getManager(52)).b(localadsg.b);
+    int i;
+    if (paramView != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ColorScreenManager", 1, "getLocalConfig return null, go to download");
+      if (!paramView.isTroopOwner(this.a.a.getCurrentAccountUin())) {
+        break label150;
       }
-      this.jdField_a_of_type_ComTencentMobileqqFloatscrColorScreenManager.a(this.jdField_a_of_type_Int);
-      return;
+      i = 0;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFloatscrColorScreenManager.a(str, localColorScreenConfig);
+    for (;;)
+    {
+      awqx.b(this.a.a, "P_CliOper", "Grp_pay", "", "grp_aio", "Clk_payobj", 0, 0, localadsg.b, i + "", "", "");
+      return;
+      label150:
+      if (paramView.isAdmin()) {
+        i = 1;
+      } else {
+        i = 2;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adsf
  * JD-Core Version:    0.7.0.1
  */

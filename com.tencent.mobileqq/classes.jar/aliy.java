@@ -1,20 +1,60 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.open.agent.BindGroupConfirmActivity;
+import com.tencent.common.app.AppInterface;
 
-class aliy
-  implements Runnable
+public class aliy
 {
-  aliy(alix paramalix, Bitmap paramBitmap) {}
+  public static final String a;
+  public alja[] a;
   
-  public void run()
+  static
   {
-    this.jdField_a_of_type_Alix.a.b.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    jdField_a_of_type_JavaLangString = aljb.class.getSimpleName() + "." + aliy.class.getSimpleName();
+  }
+  
+  public aliy()
+  {
+    this.jdField_a_of_type_ArrayOfAlja = new alja[6];
+  }
+  
+  public alja a(AppInterface paramAppInterface, int paramInt)
+  {
+    int i;
+    if (paramInt >= 0)
+    {
+      i = paramInt;
+      if (paramInt <= 6) {}
+    }
+    else
+    {
+      i = 0;
+    }
+    Object localObject = this.jdField_a_of_type_ArrayOfAlja[i];
+    paramAppInterface = (AppInterface)localObject;
+    if (localObject == null)
+    {
+      paramAppInterface = (AppInterface)localObject;
+      switch (i)
+      {
+      default: 
+        paramAppInterface = (AppInterface)localObject;
+      }
+    }
+    for (;;)
+    {
+      localObject = paramAppInterface;
+      if (paramAppInterface == null) {
+        localObject = new aliz();
+      }
+      this.jdField_a_of_type_ArrayOfAlja[i] = localObject;
+      return localObject;
+      paramAppInterface = new ljx();
+      continue;
+      paramAppInterface = new akjy();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aliy
  * JD-Core Version:    0.7.0.1
  */

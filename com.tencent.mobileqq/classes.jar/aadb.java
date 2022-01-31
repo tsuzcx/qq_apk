@@ -1,71 +1,60 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
-import com.tencent.mobileqq.app.ConfigHandler;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
-import protocol.KQQConfig.UpgradeInfo;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import com.tencent.widget.XPanelContainer;
+import java.util.ArrayList;
 
-public final class aadb
-  implements Parcelable.Creator
+public class aadb
+  implements adzd
 {
-  public UpgradeDetailWrapper a(Parcel paramParcel)
+  public aadb(BaseChatPie paramBaseChatPie) {}
+  
+  public void a(Intent paramIntent)
   {
-    ApkUpdateDetail localApkUpdateDetail = null;
-    UpgradeInfo localUpgradeInfo;
-    if (paramParcel.readInt() == 1)
-    {
-      localUpgradeInfo = new UpgradeInfo();
-      localUpgradeInfo.iAppid = paramParcel.readInt();
-      localUpgradeInfo.bAppType = paramParcel.readByte();
-      localUpgradeInfo.iUpgradeType = paramParcel.readInt();
-      localUpgradeInfo.iUpgradeSdkId = paramParcel.readInt();
-      localUpgradeInfo.strTitle = paramParcel.readString();
-      localUpgradeInfo.strUpgradeDesc = paramParcel.readString();
-      localUpgradeInfo.strUrl = paramParcel.readString();
-      localUpgradeInfo.iActionType = paramParcel.readInt();
-      localUpgradeInfo.bNewSwitch = paramParcel.readByte();
-      localUpgradeInfo.iNewTimeStamp = paramParcel.readInt();
-      localUpgradeInfo.strUpgradePageUrl = paramParcel.readString();
-      localUpgradeInfo.iIncrementUpgrade = paramParcel.readInt();
-      localUpgradeInfo.iTipsType = paramParcel.readInt();
-      localUpgradeInfo.strBannerPicUrl = paramParcel.readString();
-      localUpgradeInfo.strNewUpgradeDescURL = paramParcel.readString();
-      localUpgradeInfo.iDisplayDay = paramParcel.readInt();
-      localUpgradeInfo.iTipsWaitDay = paramParcel.readInt();
-      localUpgradeInfo.strProgressName = paramParcel.readString();
-      localUpgradeInfo.strNewTipsDescURL = paramParcel.readString();
-      localUpgradeInfo.strNewSoftwareURL = paramParcel.readString();
-    }
-    for (;;)
-    {
-      if (paramParcel.readInt() == 1)
-      {
-        localApkUpdateDetail = new ApkUpdateDetail();
-        localApkUpdateDetail.fileMd5 = paramParcel.readString();
-        localApkUpdateDetail.newapksize = paramParcel.readInt();
-        localApkUpdateDetail.packageName = paramParcel.readString();
-        localApkUpdateDetail.patchsize = paramParcel.readInt();
-        localApkUpdateDetail.sigMd5 = paramParcel.readString();
-        localApkUpdateDetail.updatemethod = paramParcel.readInt();
-        localApkUpdateDetail.url = paramParcel.readString();
-        localApkUpdateDetail.versioncode = paramParcel.readInt();
-        localApkUpdateDetail.versionname = paramParcel.readString();
-      }
-      paramParcel = new UpgradeDetailWrapper(localUpgradeInfo, localApkUpdateDetail);
-      paramParcel.a = ConfigHandler.a(localUpgradeInfo);
-      return paramParcel;
-      localUpgradeInfo = null;
-    }
+    ((acxt)this.a.jdField_a_of_type_Acxb.a(7)).a(this.a.hashCode(), paramIntent);
   }
   
-  public UpgradeDetailWrapper[] a(int paramInt)
+  public boolean a(int paramInt)
   {
-    return new UpgradeDetailWrapper[paramInt];
+    Object localObject = ((acxt)this.a.jdField_a_of_type_Acxb.a(7)).a(this.a.hashCode());
+    int i = paramInt;
+    if (localObject != null)
+    {
+      i = paramInt;
+      if (((Intent)localObject).hasExtra("PhotoConst.SELECTED_PATHS"))
+      {
+        localObject = ((Intent)localObject).getStringArrayListExtra("PhotoConst.SELECTED_PATHS");
+        i = paramInt;
+        if (localObject != null) {
+          i = ((ArrayList)localObject).size();
+        }
+      }
+    }
+    PanelIconLinearLayout localPanelIconLinearLayout;
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null) && (!this.a.K))
+    {
+      boolean bool = mnf.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      if ((this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer != null) && (this.a.jdField_a_of_type_ComTencentWidgetXPanelContainer.a() == 4)) {}
+      localPanelIconLinearLayout = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout;
+      if (!bool) {
+        break label179;
+      }
+    }
+    label179:
+    for (localObject = aduw.m;; localObject = aduw.l)
+    {
+      localPanelIconLinearLayout.a((int[])localObject, i);
+      if ((i > 0) && (!this.a.B())) {
+        this.a.a(true);
+      }
+      return false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aadb
  * JD-Core Version:    0.7.0.1
  */

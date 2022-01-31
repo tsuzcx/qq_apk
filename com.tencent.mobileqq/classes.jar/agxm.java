@@ -1,24 +1,18 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.ptt.LSRecordAnimations.LSRecordAnimationCallback;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.recent.AppletsFolderManager.2;
 
 public class agxm
-  extends LSRecordAnimations.LSRecordAnimationCallback
+  implements begy
 {
-  public agxm(LSRecordPanel paramLSRecordPanel) {}
+  public agxm(AppletsFolderManager.2 param2) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDismiss()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS startRecordingBarAnimation onAnimationEnd");
-    }
-    this.a.c = null;
+    agxk.a(this.a.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agxm
  * JD-Core Version:    0.7.0.1
  */

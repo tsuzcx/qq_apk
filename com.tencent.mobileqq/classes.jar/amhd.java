@@ -1,64 +1,75 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.TransitionDrawable;
-import android.view.View;
-import android.view.ViewConfiguration;
-import com.tencent.widget.AbsListView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public final class amhd
-  implements Runnable
+public class amhd
 {
-  public amhd(AbsListView paramAbsListView) {}
+  private ArrayList<amhe> a = new ArrayList(3);
   
-  public void run()
+  public static amhd a(alzs paramalzs)
   {
-    Object localObject;
-    int i;
-    boolean bool;
-    if (this.a.mTouchMode == 0)
+    amhd localamhd = new amhd();
+    if (paramalzs != null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ExtendFriendBannerConfBean", 2, "parse taskid->" + paramalzs.jdField_a_of_type_Int + " content->" + paramalzs.jdField_a_of_type_JavaLangString);
+      }
+    }
+    for (;;)
     {
-      this.a.mTouchMode = 1;
-      localObject = this.a.getChildAt(this.a.mMotionPosition - this.a.mFirstPosition);
-      if ((localObject != null) && (!((View)localObject).hasFocusable()))
+      int i;
+      try
       {
-        this.a.mLayoutMode = 0;
-        if (this.a.mDataChanged) {
-          break label249;
-        }
-        ((View)localObject).setPressed(true);
-        this.a.setPressed(true);
-        this.a.layoutChildren();
-        this.a.positionSelector(this.a.mMotionPosition, (View)localObject);
-        this.a.refreshDrawableState();
-        i = ViewConfiguration.getLongPressTimeout();
-        bool = this.a.isLongClickable();
-        if (this.a.mSelector != null)
+        paramalzs = new JSONObject(paramalzs.jdField_a_of_type_JavaLangString).optJSONArray("appList");
+        if (paramalzs != null)
         {
-          localObject = this.a.mSelector.getCurrent();
-          if ((localObject != null) && ((localObject instanceof TransitionDrawable)))
+          ArrayList localArrayList = new ArrayList(2);
+          i = 0;
+          int j = paramalzs.length();
+          if (i < j)
           {
-            if (!bool) {
-              break label230;
+            JSONObject localJSONObject = paramalzs.optJSONObject(i);
+            if (localJSONObject == null) {
+              break label286;
             }
-            ((TransitionDrawable)localObject).startTransition(i);
+            amhe localamhe = new amhe();
+            localamhe.jdField_a_of_type_Int = localJSONObject.optInt("appID");
+            localamhe.f = localJSONObject.optString("type");
+            localamhe.jdField_a_of_type_JavaLangString = localJSONObject.optString("bgBeginColor");
+            localamhe.b = localJSONObject.optString("bgEndColor");
+            localamhe.c = localJSONObject.optString("title");
+            localamhe.d = localJSONObject.optString("subTitle");
+            localamhe.b = localJSONObject.optString("bgEndColor");
+            localamhe.e = localJSONObject.optString("icon");
+            localamhe.g = localJSONObject.optString("schemeOrUrl");
+            localArrayList.add(localamhe);
+            break label286;
           }
+          localamhd.a(localArrayList);
         }
       }
-    }
-    while (bool)
-    {
-      if (AbsListView.access$700(this.a) == null) {
-        AbsListView.access$702(this.a, new amhc(this.a, null));
+      catch (Exception paramalzs)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("ExtendFriendBannerConfBean", 2, "parse error->" + paramalzs.toString());
+        return localamhd;
       }
-      AbsListView.access$700(this.a).a();
-      this.a.postDelayed(AbsListView.access$700(this.a), i);
-      return;
-      label230:
-      ((TransitionDrawable)localObject).resetTransition();
+      return localamhd;
+      label286:
+      i += 1;
     }
-    this.a.mTouchMode = 2;
-    return;
-    label249:
-    this.a.mTouchMode = 2;
+  }
+  
+  private void a(ArrayList<amhe> paramArrayList)
+  {
+    this.a = paramArrayList;
+  }
+  
+  public ArrayList<amhe> a()
+  {
+    return this.a;
   }
 }
 

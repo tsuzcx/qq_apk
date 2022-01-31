@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ee4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d00e5"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0065" android:background="@drawable/trans" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/skin_aio_public_account_icon" />
-    <ImageButton android:id="@id/emo_btn" android:background="@drawable/trans" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02008c" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b2b91" />
-    <ImageButton android:id="@id/plus_btn" android:background="@drawable/trans" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0200b7" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b2b92" />
-    <ImageView android:layout_gravity="center_horizontal" android:id="@id/audio_btn" android:background="@drawable/trans" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020032" />
-</LinearLayout>

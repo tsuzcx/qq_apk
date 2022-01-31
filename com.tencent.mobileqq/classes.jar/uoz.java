@@ -1,17 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class uoz
-  implements DialogInterface.OnClickListener
+  extends QQUIEventReceiver<uoh, sxr>
 {
-  public uoz(BaseBubbleBuilder paramBaseBubbleBuilder) {}
+  public uoz(@NonNull uoh paramuoh)
+  {
+    super(paramuoh);
+  }
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(@NonNull uoh paramuoh, @NonNull sxr paramsxr)
+  {
+    paramuoh.i();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return sxr.class;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uoz
  * JD-Core Version:    0.7.0.1
  */

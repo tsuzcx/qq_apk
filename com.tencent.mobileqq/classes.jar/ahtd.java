@@ -1,34 +1,28 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.activity.selectmember.TroopListAdapter.1.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.lang.ref.WeakReference;
 
 public class ahtd
-  implements Handler.Callback
+  extends mmn
 {
-  public ahtd(NeoVideoFilterPlayView paramNeoVideoFilterPlayView) {}
+  ahtd(ahtc paramahtc) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return false;
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
+    if ((paramInt != 0) || (paramArrayOfByte == null) || (localQQAppInterface == null)) {
+      return;
     }
-    if (!NeoVideoFilterPlayView.a(this.a))
-    {
-      this.a.requestRender();
-      return true;
-    }
-    NeoVideoFilterPlayView.a(this.a).set(true);
-    SLog.b("FlowEdit_NeoVideoFilterPlayView", "skip request render because of pause play");
-    return true;
+    ThreadManager.post(new TroopListAdapter.1.1(this, localQQAppInterface, paramArrayOfByte, paramBundle, new Handler(Looper.getMainLooper())), 8, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahtd
  * JD-Core Version:    0.7.0.1
  */

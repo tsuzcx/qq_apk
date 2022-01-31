@@ -1,19 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class msi
-  implements Runnable
 {
-  public msi(FastWebVideoFeedsListView paramFastWebVideoFeedsListView, int paramInt) {}
+  public int a;
+  public long a;
+  public String a;
+  public List<String> a;
+  String b;
   
-  public void run()
+  msi(msg parammsg)
   {
-    FastWebVideoFeedsListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView, true);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView.smoothScrollBy(this.jdField_a_of_type_Int, 0);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_Long;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     msi
  * JD-Core Version:    0.7.0.1
  */

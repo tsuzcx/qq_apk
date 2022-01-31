@@ -8,11 +8,11 @@ import java.util.ArrayList;
 public final class ResponeUploadAddressBookV2
   extends JceStruct
 {
-  static ArrayList cache_BindFriendContacts;
-  static ArrayList cache_BindNotFriendContacts;
+  static ArrayList<MobileContactsFriendInfo> cache_BindFriendContacts;
+  static ArrayList<MobileContactsNotFriendInfo> cache_BindNotFriendContacts;
   static byte[] cache_sessionSid;
-  public ArrayList BindFriendContacts;
-  public ArrayList BindNotFriendContacts;
+  public ArrayList<MobileContactsFriendInfo> BindFriendContacts;
+  public ArrayList<MobileContactsNotFriendInfo> BindNotFriendContacts;
   public long MaxsignTimeStamp;
   public long nextFlag;
   public byte[] sessionSid;
@@ -20,12 +20,12 @@ public final class ResponeUploadAddressBookV2
   
   public ResponeUploadAddressBookV2() {}
   
-  public ResponeUploadAddressBookV2(long paramLong1, byte[] paramArrayOfByte, ArrayList paramArrayList1, ArrayList paramArrayList2, long paramLong2, long paramLong3)
+  public ResponeUploadAddressBookV2(long paramLong1, byte[] paramArrayOfByte, ArrayList<MobileContactsFriendInfo> paramArrayList, ArrayList<MobileContactsNotFriendInfo> paramArrayList1, long paramLong2, long paramLong3)
   {
     this.nextFlag = paramLong1;
     this.sessionSid = paramArrayOfByte;
-    this.BindFriendContacts = paramArrayList1;
-    this.BindNotFriendContacts = paramArrayList2;
+    this.BindFriendContacts = paramArrayList;
+    this.BindNotFriendContacts = paramArrayList1;
     this.MaxsignTimeStamp = paramLong2;
     this.timeStamp = paramLong3;
   }

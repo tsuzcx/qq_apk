@@ -1,35 +1,21 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.view.View;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoFragment;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
 
 public class aocf
-  extends AnimatorListenerAdapter
+  implements View.OnClickListener
 {
-  public aocf(EditVideoFragment paramEditVideoFragment, View paramView) {}
+  public aocf(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    SLog.b("Q.qqstory.record.EditVideoFragment", "resetAnimator cancel!");
-    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(false));
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    SLog.c("Q.qqstory.record.EditVideoFragment", "resetAnimator end!");
-    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(false));
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    SLog.c("Q.qqstory.record.EditVideoFragment", "resetAnimator start!");
-    this.jdField_a_of_type_AndroidViewView.setTag(new Boolean(true));
+    this.a.c.setVisibility(8);
+    amlu.a().a("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aocf
  * JD-Core Version:    0.7.0.1
  */

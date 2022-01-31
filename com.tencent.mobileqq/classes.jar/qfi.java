@@ -1,76 +1,126 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.device.msg.activities.DeviceMsgSettingActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.ToastUtil;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAccessibilityHelper;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecyclerView;
+import com.tencent.mobileqq.app.QQAppInterface;
 import java.util.ArrayList;
-import mqq.observer.BusinessObserver;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import mqq.app.MobileQQ;
 
 public class qfi
-  implements BusinessObserver
+  implements qes
 {
-  public qfi(DeviceMsgSettingActivity paramDeviceMsgSettingActivity) {}
+  private qfi(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(qeq paramqeq) {}
+  
+  public void a(qeq paramqeq, int paramInt) {}
+  
+  public void a(qeq paramqeq, int paramInt1, int paramInt2, String paramString) {}
+  
+  public void a(qeq paramqeq, boolean paramBoolean) {}
+  
+  public void b(qeq paramqeq)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-    if (!paramBoolean)
+    if ((badq.h(this.a.getActivity())) && (bgmq.s(VideoFeedsRecommendFragment.a(this.a))))
     {
-      ToastUtil.a().a(this.a.getString(2131427804));
-      DeviceMsgSettingActivity.a(this.a);
-      return;
-    }
-    if (paramBundle.getInt("cgiResultCode", -1) != 0)
-    {
-      ToastUtil.a().a(this.a.getString(2131427804));
-      return;
-    }
-    for (;;)
-    {
-      try
+      int i = VideoFeedsRecommendFragment.a(this.a).c;
+      int j = VideoFeedsRecommendFragment.a(this.a).c();
+      Object localObject = VideoFeedsRecommendFragment.a(this.a).findViewHolderForLayoutPosition(i + j + 1);
+      if ((localObject instanceof qag))
       {
-        paramBundle = new JSONObject(new String(paramBundle.getByteArray("data")));
-        if (paramBundle.optInt("ret", -1) != 0)
-        {
-          ToastUtil.a().a(this.a.getString(2131427804));
-          this.a.jdField_a_of_type_AndroidOsHandler.post(new qfj(this));
-          return;
-        }
-        paramBundle = paramBundle.optJSONArray("data");
-        if (paramBundle == null)
-        {
-          ToastUtil.a().a(this.a.getString(2131427807));
-          DeviceMsgSettingActivity.a(this.a);
-          return;
+        localObject = (qag)localObject;
+        if (((qag)localObject).jdField_a_of_type_Qeq != null) {
+          VideoFeedsRecommendFragment.a(this.a).b(((qag)localObject).jdField_a_of_type_Qeq);
         }
       }
-      catch (JSONException paramBundle)
+    }
+    if ((VideoFeedsRecommendFragment.a(this.a).c == 0) && (paramqeq.a.jdField_a_of_type_Int == 0)) {
+      VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Qhf.a(3);
+    }
+    if (VideoFeedsRecommendFragment.h(this.a))
+    {
+      VideoFeedsRecommendFragment.e(this.a, false);
+      qbq.a().h();
+    }
+  }
+  
+  public void c(qeq paramqeq)
+  {
+    boolean bool;
+    if (VideoFeedsRecommendFragment.a(this.a) != null)
+    {
+      bool = VideoFeedsRecommendFragment.a(this.a).c();
+      VideoFeedsPlayActivity.a("video play completion!, in weishi mode! interrupted weishi ad");
+      if (!bool) {}
+    }
+    do
+    {
+      do
       {
-        LogUtility.e("DeviceMsgSettingActivity", "get msg setting json format faild!");
-        ToastUtil.a().a(this.a.getString(2131427804));
-        continue;
-        paramInt = 0;
-      }
-      while (paramInt < paramBundle.length())
-      {
-        JSONObject localJSONObject = paramBundle.getJSONObject(paramInt);
-        qfl localqfl = new qfl(this.a, null);
-        localqfl.jdField_a_of_type_Int = localJSONObject.getInt("id");
-        localqfl.jdField_a_of_type_JavaLangString = localJSONObject.getString("name");
-        localqfl.b = localJSONObject.getInt("enable");
-        this.a.jdField_a_of_type_JavaUtilArrayList.add(localqfl);
-        paramInt += 1;
-      }
+        return;
+        VideoFeedsPlayActivity.a("video play completion!, move to next position");
+        bool = VideoFeedsRecommendFragment.e(this.a);
+        if (VideoFeedsRecommendFragment.b(this.a))
+        {
+          if (bool)
+          {
+            VideoFeedsRecommendFragment.a(this.a).b();
+            return;
+          }
+          VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Qhf.a(5);
+          return;
+        }
+        if (VideoFeedsRecommendFragment.e(this.a))
+        {
+          if ((VideoFeedsRecommendFragment.a(this.a) != null) && (VideoFeedsRecommendFragment.a(this.a).a() != null))
+          {
+            VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).jdField_a_of_type_Qeq.a));
+            VideoFeedsRecommendFragment.a(this.a).a();
+            return;
+          }
+          VideoFeedsRecommendFragment.a(this.a).b();
+        }
+        if ((paramqeq == null) || (paramqeq.a == null) || (!paramqeq.a.c) || (nbe.a(paramqeq.a.jdField_a_of_type_ComTencentBizPubaccountVideoAdInfo).mShowAdButton)) {
+          break;
+        }
+      } while ((VideoFeedsRecommendFragment.a(this.a) == null) || (VideoFeedsRecommendFragment.a(this.a).a() == null) || (VideoFeedsRecommendFragment.a(this.a) == null));
+      VideoFeedsRecommendFragment.a(this.a).e();
+      VideoFeedsRecommendFragment.a(this.a).a(VideoFeedsRecommendFragment.a(this.a).a());
+      return;
+    } while ((VideoFeedsRecommendFragment.a(this.a).a(paramqeq)) || (VideoFeedsRecommendFragment.a(this.a).c == VideoFeedsRecommendFragment.a(this.a).size() - 1) || ((!VideoFeedsRecommendFragment.g(this.a)) && (badq.b(VideoFeedsRecommendFragment.a(this.a).getApplication().getApplicationContext()))));
+    if (VideoFeedsRecommendFragment.a(this.a).a())
+    {
+      VideoFeedsRecommendFragment.a(this.a, true);
+      return;
+    }
+    if (bool)
+    {
+      VideoFeedsRecommendFragment.a(this.a).addOnLayoutChangeListener(new qfj(this));
+      return;
+    }
+    VideoFeedsRecommendFragment.a(this.a).a();
+  }
+  
+  public void d(qeq paramqeq)
+  {
+    if (VideoFeedsRecommendFragment.a(this.a) != null) {
+      VideoFeedsAccessibilityHelper.a(VideoFeedsRecommendFragment.a(this.a).e, true);
+    }
+  }
+  
+  public void e(qeq paramqeq)
+  {
+    if (VideoFeedsRecommendFragment.a(this.a) != null) {
+      VideoFeedsAccessibilityHelper.a(VideoFeedsRecommendFragment.a(this.a).e, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qfi
  * JD-Core Version:    0.7.0.1
  */

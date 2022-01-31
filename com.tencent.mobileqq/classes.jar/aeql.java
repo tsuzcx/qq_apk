@@ -1,57 +1,97 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.data.RecentEmotion;
-import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class aeql
-  implements Runnable
+  extends ajmm
 {
-  public aeql(EmoticonManager paramEmoticonManager, RecentEmotion paramRecentEmotion) {}
+  public aeql(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion == null) {
-      return;
-    }
+    int i = 1;
     if (QLog.isColorLevel()) {
-      QLog.d("EmoticonManager", 2, "addRecentEmotionToCache key = " + this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion);
+      QLog.d("BlessManager", 2, "onBlessDirtyTextCheck " + paramBoolean + " ,code=" + paramInt);
     }
-    String str = this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion.keyword;
-    if (TextUtils.isEmpty(str))
+    if (paramBoolean) {}
+    while ((i != 0) && (!BlessSelectMemberActivity.b()))
     {
-      QLog.e("EmoticonManager", 1, "addRecentEmotionToCache keyword empty");
+      BlessSelectMemberActivity.a(this.a, BlessSelectMemberActivity.a(this.a));
       return;
-    }
-    RecentEmotion localRecentEmotion = this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion;
-    CopyOnWriteArrayList localCopyOnWriteArrayList = EmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager, str);
-    if (localCopyOnWriteArrayList != null)
-    {
-      int i = localCopyOnWriteArrayList.indexOf(this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion);
-      if (i > -1)
-      {
-        localRecentEmotion = (RecentEmotion)localCopyOnWriteArrayList.get(i);
-        localRecentEmotion.replace(this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion);
+      if (paramInt != 0) {
+        if (paramInt == 1)
+        {
+          BlessSelectMemberActivity.a(this.a, 2131624940, true);
+          i = 0;
+        }
+        else
+        {
+          if (paramInt == 8) {
+            BlessSelectMemberActivity.a(this.a, 2131624975, true);
+          }
+          i = 0;
+        }
       }
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.d.remove(localRecentEmotion);
-      this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.d.add(0, localRecentEmotion);
-      return;
-      localCopyOnWriteArrayList.add(this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion);
-      continue;
-      localCopyOnWriteArrayList = new CopyOnWriteArrayList();
-      localCopyOnWriteArrayList.add(this.jdField_a_of_type_ComTencentMobileqqDataRecentEmotion);
-      this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.e.put(str, localCopyOnWriteArrayList);
+    this.a.e();
+  }
+  
+  public void a(boolean paramBoolean1, int paramInt, long paramLong, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessManager", 2, "onSendBlessMsgResp " + paramBoolean1 + " ,replyCode=" + paramInt + " waitTime=" + paramLong + " ,entrance=" + BlessSelectMemberActivity.a(this.a));
     }
+    if (!this.a.a) {
+      return;
+    }
+    this.a.a = false;
+    if (paramInt == 67L)
+    {
+      BlessSelectMemberActivity.a(System.currentTimeMillis());
+      this.a.a(paramLong);
+      this.a.e();
+      BlessSelectMemberActivity.a(this.a, 2131624960, true);
+      return;
+    }
+    if (BlessSelectMemberActivity.b(this.a) == 15)
+    {
+      this.a.a(paramBoolean1);
+      return;
+    }
+    this.a.a(paramBoolean1, paramBoolean2);
+  }
+  
+  protected void c(boolean paramBoolean, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessSelectMemberActivity", 2, "onUpdateMsgContent, isSuc:" + paramBoolean + " ,type:" + BlessSelectMemberActivity.c(this.a));
+    }
+    if (BlessSelectMemberActivity.c(this.a) == 3) {
+      if (paramBoolean) {
+        BlessSelectMemberActivity.a(this.a);
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        this.a.e();
+        BlessSelectMemberActivity.a(this.a, 2131624959, false);
+        return;
+      } while (BlessSelectMemberActivity.c(this.a) != 2);
+      if ((BlessSelectMemberActivity.a(this.a).a() == null) || (!paramBoolean))
+      {
+        this.a.e();
+        BlessSelectMemberActivity.a(this.a, 2131624976, false);
+        return;
+      }
+    } while (BlessSelectMemberActivity.b());
+    BlessSelectMemberActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aeql
  * JD-Core Version:    0.7.0.1
  */

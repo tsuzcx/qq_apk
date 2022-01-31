@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class appoint_define$RankEvent
-  extends MessageMicro
+  extends MessageMicro<RankEvent>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42 }, new String[] { "uint32_listtype", "uint32_notifytype", "uint32_eventtime", "uint32_seq", "str_notify_tips" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "" }, RankEvent.class);
   public final PBStringField str_notify_tips = PBField.initString("");

@@ -1,5 +1,8 @@
 package com.tencent.mobileqq.activity.photo;
 
+import agee;
+import agef;
+import ajed;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,24 +13,22 @@ import android.os.MessageQueue.IdleHandler;
 import android.os.Messenger;
 import android.os.RemoteException;
 import android.os.SystemClock;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import atpg;
+import atqj;
+import aupw;
+import bace;
+import bech;
+import beep;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pic.Logger;
-import com.tencent.mobileqq.pic.PresendPicMgrService;
-import com.tencent.mobileqq.receipt.ReceiptMsgManager;
-import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.singleupdate.MD5FileUtil;
 import com.tencent.util.BinderWarpper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import xej;
-import xek;
+import ndn;
+import rtr;
 
 public class SendPhotoActivity
   extends BaseActivity
@@ -49,21 +50,21 @@ public class SendPhotoActivity
   public SendPhotoActivity()
   {
     this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new xej(this);
-    this.jdField_a_of_type_AndroidOsHandler = new xek(this);
+    this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new agee(this);
+    this.jdField_a_of_type_AndroidOsHandler = new agef(this);
   }
   
-  public static void a()
+  static void a()
   {
-    String str1 = AppConstants.aK + "photo/" + ".nomedia";
-    String str2 = AppConstants.aK + "thumb/" + ".nomedia";
-    String str3 = AppConstants.aK + "thumb2/" + ".nomedia";
-    FileUtils.c(str1);
-    FileUtils.c(str2);
-    FileUtils.c(str3);
+    String str1 = ajed.aU + "photo/" + ".nomedia";
+    String str2 = ajed.aU + "thumb/" + ".nomedia";
+    String str3 = ajed.aU + "thumb2/" + ".nomedia";
+    bace.c(str1);
+    bace.c(str2);
+    bace.c(str3);
   }
   
-  private static void b(BaseActivity paramBaseActivity, ArrayList paramArrayList)
+  private static void b(BaseActivity paramBaseActivity, ArrayList<String> paramArrayList)
   {
     if (paramBaseActivity == null) {}
     for (;;)
@@ -72,6 +73,7 @@ public class SendPhotoActivity
       Object localObject1 = paramBaseActivity.getIntent();
       int j = ((Intent)localObject1).getIntExtra("uintype", 0);
       ArrayList localArrayList;
+      int i;
       if (j == 1008)
       {
         localArrayList = new ArrayList();
@@ -80,8 +82,8 @@ public class SendPhotoActivity
         i = 0;
         while (i < paramArrayList.size())
         {
-          localArrayList.add(MD5FileUtil.a((String)paramArrayList.get(i)));
-          QLog.d((String)localObject2, 2, "[report] picture " + i + "md5=" + MD5FileUtil.a((String)paramArrayList.get(i)) + ": path=" + (String)paramArrayList.get(i));
+          localArrayList.add(bech.a((String)paramArrayList.get(i)));
+          QLog.d((String)localObject2, 2, "[report] picture " + i + "md5=" + bech.a((String)paramArrayList.get(i)) + ": path=" + (String)paramArrayList.get(i));
           i += 1;
         }
         localObject2 = new Intent("com.tencent.biz.pubaccount.picResultAction");
@@ -89,27 +91,30 @@ public class SendPhotoActivity
         ((Intent)localObject2).putStringArrayListExtra("com.tencent.biz.pubaccount.picResult_md5s", localArrayList);
         paramBaseActivity.sendBroadcast((Intent)localObject2, "com.tencent.msg.permission.pushnotify");
       }
-      int i = ((Intent)localObject1).getIntExtra("PhotoConst.SEND_SIZE_SPEC", -1);
-      if (i != -1)
+      if (paramBaseActivity.app != null)
       {
-        localArrayList = new ArrayList(Arrays.asList(new String[paramArrayList.size()]));
-        Collections.copy(localArrayList, paramArrayList);
-        PhotoUtils.a(paramBaseActivity.app, i, localArrayList);
+        i = ((Intent)localObject1).getIntExtra("PhotoConst.SEND_SIZE_SPEC", -1);
+        if (i != -1)
+        {
+          localArrayList = new ArrayList(Arrays.asList(new String[paramArrayList.size()]));
+          Collections.copy(localArrayList, paramArrayList);
+          PhotoUtils.a(paramBaseActivity.app, i, localArrayList);
+        }
       }
       localObject1 = ((Intent)localObject1).getStringExtra("uin");
-      if ((localObject1 != null) && (j == 1008) && (PublicAccountUtil.a(paramBaseActivity.app, (String)localObject1)))
+      if ((localObject1 != null) && (j == 1008) && (rtr.a(paramBaseActivity.app, (String)localObject1)))
       {
         i = 0;
         while (i < paramArrayList.size())
         {
-          PublicAccountReportUtils.a(paramBaseActivity.app, "P_CliOper", "Pb_account_lifeservice", (String)localObject1, "0X8005C9D", "0X8005C9D", 0, 0, "", "", "", "", false);
+          ndn.a(paramBaseActivity.app, "P_CliOper", "Pb_account_lifeservice", (String)localObject1, "0X8005C9D", "0X8005C9D", 0, 0, "", "", "", "", false);
           i += 1;
         }
       }
     }
   }
   
-  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if ((paramInt2 == -1) && (paramInt1 == 102))
     {
@@ -118,27 +123,28 @@ public class SendPhotoActivity
     }
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = true;
     super.doOnCreate(paramBundle);
-    ThreadManager.executeOnFileThread(FileUtils.a);
+    ThreadManager.executeOnFileThread(bace.a);
     Object localObject1 = getIntent();
     paramBundle = ((Intent)localObject1).getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
     if (paramBundle == null)
     {
-      Logger.b(jdField_a_of_type_JavaLangString, "initPicUploadInfos", "paths is null");
+      atpg.b(jdField_a_of_type_JavaLangString, "initPicUploadInfos", "paths is null");
       finish();
       return true;
     }
+    beep.a(true, paramBundle);
     int i;
     if (((Intent)localObject1).getBooleanExtra("ReceiptMsgManager.EXTRA_KEY_IS_RECEIPT", false))
     {
       localObject2 = (SessionInfo)((Intent)localObject1).getParcelableExtra("session_info");
       i = ((Intent)localObject1).getIntExtra("PhotoConst.SEND_SIZE_SPEC", 0);
       if (localObject2 != null) {
-        ReceiptMsgManager.a().a(this.app, (SessionInfo)localObject2, paramBundle, i);
+        aupw.a().a(this.app, (SessionInfo)localObject2, paramBundle, i);
       }
       setResult(-1, getIntent());
       finish();
@@ -155,9 +161,9 @@ public class SendPhotoActivity
       i = ((Intent)localObject1).getIntExtra("key_is_sync_qzone", 0);
       if (i == 1)
       {
-        PresendPicMgrService localPresendPicMgrService = PresendPicMgrService.a();
-        if (localPresendPicMgrService != null) {
-          localPresendPicMgrService.a(i, ((Intent)localObject1).getLongExtra("key_qzone_batch_id", 0L), ((Intent)localObject1).getStringExtra("key_qzone_album_id"));
+        atqj localatqj = atqj.a();
+        if (localatqj != null) {
+          localatqj.a(i, ((Intent)localObject1).getLongExtra("key_qzone_batch_id", 0L), ((Intent)localObject1).getStringExtra("key_qzone_album_id"));
         }
       }
     }
@@ -169,7 +175,7 @@ public class SendPhotoActivity
       {
         localObject1 = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2, "TimeOut");
         this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject1, i * 10000);
-        Logger.b(jdField_a_of_type_JavaLangString, "doOnCreate", "send delayed Message:MSG_CANCLE_PROGRESS, delayTime = " + i * 5000);
+        atpg.b(jdField_a_of_type_JavaLangString, "doOnCreate", "send delayed Message:MSG_CANCLE_PROGRESS, delayTime = " + i * 5000);
       }
     }
     catch (RemoteException localRemoteException)
@@ -183,12 +189,12 @@ public class SendPhotoActivity
       }
     }
     this.b = System.nanoTime();
-    Logger.a(jdField_a_of_type_JavaLangString, "initPicUploadInfos", "  totalCount:" + paramBundle.size());
+    atpg.a(jdField_a_of_type_JavaLangString, "initPicUploadInfos", "  totalCount:" + paramBundle.size());
     setCanLock(false);
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
     Looper.myQueue().removeIdleHandler(this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler);
@@ -213,7 +219,7 @@ public class SendPhotoActivity
     }
   }
   
-  protected void doOnResume()
+  public void doOnResume()
   {
     super.doOnResume();
     if (QLog.isColorLevel()) {

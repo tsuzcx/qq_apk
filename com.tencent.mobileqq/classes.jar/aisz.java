@@ -1,25 +1,17 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.text.TextUtils;
-import com.tencent.mobileqq.text.TextUtils.LoadSysEmojiCallback;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
-public final class aisz
-  implements Runnable
+public class aisz
+  implements DialogInterface.OnClickListener
 {
-  public aisz(int paramInt, TextUtils.LoadSysEmojiCallback paramLoadSysEmojiCallback) {}
+  public aisz(ApolloGameActivity paramApolloGameActivity) {}
   
-  public void run()
-  {
-    Drawable localDrawable = TextUtils.a(BaseApplicationImpl.getContext().getResources(), this.jdField_a_of_type_Int);
-    if ((localDrawable != null) && (this.jdField_a_of_type_ComTencentMobileqqTextTextUtils$LoadSysEmojiCallback != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqTextTextUtils$LoadSysEmojiCallback.a(localDrawable);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aisz
  * JD-Core Version:    0.7.0.1
  */

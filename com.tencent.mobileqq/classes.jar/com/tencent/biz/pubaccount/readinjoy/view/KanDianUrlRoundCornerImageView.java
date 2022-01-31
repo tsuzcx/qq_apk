@@ -12,7 +12,7 @@ import android.util.AttributeSet;
 public class KanDianUrlRoundCornerImageView
   extends KandianUrlImageView
 {
-  private int b;
+  private int a;
   
   public KanDianUrlRoundCornerImageView(Context paramContext)
   {
@@ -29,12 +29,12 @@ public class KanDianUrlRoundCornerImageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
-    if (this.b > 0)
+    if (this.a > 0)
     {
       Path localPath = new Path();
-      localPath.addRoundRect(new RectF(new Rect(0, 0, getWidth(), getHeight())), this.b, this.b, Path.Direction.CCW);
+      localPath.addRoundRect(new RectF(new Rect(0, 0, getWidth(), getHeight())), this.a, this.a, Path.Direction.CCW);
       paramCanvas.clipPath(localPath, Region.Op.REPLACE);
     }
     super.onDraw(paramCanvas);
@@ -45,7 +45,7 @@ public class KanDianUrlRoundCornerImageView
     if (paramInt < 0) {
       return;
     }
-    this.b = paramInt;
+    this.a = paramInt;
   }
 }
 

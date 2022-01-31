@@ -1,22 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adnp
-  implements TVK_IMediaPlayer.OnCompletionListener
+class adnp
+  implements DialogInterface.OnClickListener
 {
-  public adnp(VideoFilePresenter paramVideoFilePresenter) {}
+  adnp(adni paramadni) {}
   
-  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
-  {
-    new Handler(Looper.getMainLooper()).post(new adnq(this));
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adnp
  * JD-Core Version:    0.7.0.1
  */

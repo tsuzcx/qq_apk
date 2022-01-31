@@ -1,9 +1,6 @@
 package com.qq.android.dexposed.callbacks;
 
-import android.os.Bundle;
 import com.qq.android.dexposed.DexposedBridge;
-import com.qq.android.dexposed.DexposedBridge.CopyOnWriteSortedSet;
-import java.io.Serializable;
 
 public abstract class XCallback
   implements Comparable<XCallback>
@@ -23,7 +20,7 @@ public abstract class XCallback
     this.priority = paramInt;
   }
   
-  public static final void callAll(Param paramParam)
+  public static final void callAll(XCallback.Param paramParam)
   {
     if (paramParam.callbacks == null) {
       throw new IllegalStateException("This object was not created for use with callAll");
@@ -49,9 +46,7 @@ public abstract class XCallback
     }
   }
   
-  protected void call(Param paramParam)
-    throws Throwable
-  {}
+  protected void call(XCallback.Param paramParam) {}
   
   public int compareTo(XCallback paramXCallback)
   {
@@ -65,61 +60,6 @@ public abstract class XCallback
       return -1;
     }
     return 1;
-  }
-  
-  public static class Param
-  {
-    public final Object[] callbacks;
-    private Bundle extra;
-    
-    protected Param()
-    {
-      this.callbacks = null;
-    }
-    
-    protected Param(DexposedBridge.CopyOnWriteSortedSet<? extends XCallback> paramCopyOnWriteSortedSet)
-    {
-      this.callbacks = paramCopyOnWriteSortedSet.getSnapshot();
-    }
-    
-    public Bundle getExtra()
-    {
-      try
-      {
-        if (this.extra == null) {
-          this.extra = new Bundle();
-        }
-        Bundle localBundle = this.extra;
-        return localBundle;
-      }
-      finally {}
-    }
-    
-    public Object getObjectExtra(String paramString)
-    {
-      paramString = getExtra().getSerializable(paramString);
-      if ((paramString instanceof SerializeWrapper)) {
-        return ((SerializeWrapper)paramString).object;
-      }
-      return null;
-    }
-    
-    public void setObjectExtra(String paramString, Object paramObject)
-    {
-      getExtra().putSerializable(paramString, new SerializeWrapper(paramObject));
-    }
-    
-    private static class SerializeWrapper
-      implements Serializable
-    {
-      private static final long serialVersionUID = 1L;
-      private Object object;
-      
-      public SerializeWrapper(Object paramObject)
-      {
-        this.object = paramObject;
-      }
-    }
   }
 }
 

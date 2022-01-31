@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0x27$MQQCampusNotify
-  extends MessageMicro
+  extends MessageMicro<MQQCampusNotify>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42 }, new String[] { "uint64_from_uin", "str_wording", "str_target", "uint32_type", "str_source" }, new Object[] { Long.valueOf(0L), "", "", Integer.valueOf(0), "" }, MQQCampusNotify.class);
   public final PBStringField str_source = PBField.initString("");

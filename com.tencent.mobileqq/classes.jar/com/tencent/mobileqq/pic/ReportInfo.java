@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.pic;
 
-import agqc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import atql;
 
 public class ReportInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new agqc();
+  public static final Parcelable.Creator<ReportInfo> CREATOR = new atql();
   public int a;
   public long a;
   public int b;

@@ -2,8 +2,8 @@ package com.tencent.component.network.module.statistics.common;
 
 import java.util.LinkedList;
 
-public class FixedLinkedList
-  extends LinkedList
+public class FixedLinkedList<V>
+  extends LinkedList<V>
 {
   private final int mCapacity;
   private final boolean mTrimHead;
@@ -19,7 +19,7 @@ public class FixedLinkedList
     this.mTrimHead = paramBoolean;
   }
   
-  private void a()
+  private void ensureCapacity()
   {
     while ((this.mCapacity > 0) && (size() > this.mCapacity)) {
       if (this.mTrimHead) {
@@ -30,22 +30,22 @@ public class FixedLinkedList
     }
   }
   
-  public void add(int paramInt, Object paramObject)
+  public void add(int paramInt, V paramV)
   {
-    if (paramObject == null) {
+    if (paramV == null) {
       return;
     }
-    super.add(paramInt, paramObject);
-    a();
+    super.add(paramInt, paramV);
+    ensureCapacity();
   }
   
-  public boolean add(Object paramObject)
+  public boolean add(V paramV)
   {
-    if (paramObject == null) {
+    if (paramV == null) {
       return false;
     }
-    boolean bool = super.add(paramObject);
-    a();
+    boolean bool = super.add(paramV);
+    ensureCapacity();
     return bool;
   }
 }

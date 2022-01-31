@@ -1,10 +1,8 @@
 package com.tribe.async.async;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,7 +15,6 @@ import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Future;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
@@ -39,71 +36,67 @@ class BossImp
   private Handler mHandler;
   private final JobController mJobController;
   private final LightWeightExecutor mLightWeightExecutor;
+  private Looper mLooper;
   private final ExecutorConfig mNetworkConfig;
   private final MonitorThreadPoolExecutor mNetworkExecutor;
-  private final NetworkBroadcastReceiver mNetworkReceiver;
+  private final BossImp.NetworkBroadcastReceiver mNetworkReceiver;
   private long mReportExceedSize = 0L;
   private long mReportExceedTime = 0L;
   
-  public BossImp(Context paramContext)
+  public BossImp(Context paramContext, Looper paramLooper)
   {
     this.mContext = paramContext;
-    LinkedBlockingQueue localLinkedBlockingQueue = new LinkedBlockingQueue();
-    this.mCpuExecutor = new MonitorThreadPoolExecutor(this.mCpuConfig.getCore(), this.mCpuConfig.getMaximum(), this.mCpuConfig.getAliveTime(), this.mCpuConfig.getTimeUnit(), localLinkedBlockingQueue, new AsyncThreadFactory("cpu"));
+    this.mLooper = paramLooper;
+    paramLooper = new LinkedBlockingQueue();
+    this.mCpuExecutor = new MonitorThreadPoolExecutor(this.mCpuConfig.getCore(), this.mCpuConfig.getMaximum(), this.mCpuConfig.getAliveTime(), this.mCpuConfig.getTimeUnit(), paramLooper, new BossImp.AsyncThreadFactory("cpu"));
     this.mCpuExecutor.setName("cpu");
     this.mCpuExecutor.setMonitorListener(this);
     this.mExecutors[0] = this.mCpuExecutor;
-    localLinkedBlockingQueue = new LinkedBlockingQueue();
-    this.mDiskReadExecutor = new MonitorThreadPoolExecutor(0, 1, 60L, TimeUnit.SECONDS, localLinkedBlockingQueue, new AsyncThreadFactory("disk_read"));
+    paramLooper = new LinkedBlockingQueue();
+    this.mDiskReadExecutor = new MonitorThreadPoolExecutor(0, 1, 60L, TimeUnit.SECONDS, paramLooper, new BossImp.AsyncThreadFactory("disk_read"));
     this.mCpuExecutor.setName("disk_read");
     this.mCpuExecutor.setMonitorListener(this);
     this.mExecutors[1] = this.mDiskReadExecutor;
-    localLinkedBlockingQueue = new LinkedBlockingQueue();
-    this.mDiskWriteExecutor = new MonitorThreadPoolExecutor(0, 1, 60L, TimeUnit.SECONDS, localLinkedBlockingQueue, new AsyncThreadFactory("disk_write"));
+    paramLooper = new LinkedBlockingQueue();
+    this.mDiskWriteExecutor = new MonitorThreadPoolExecutor(0, 1, 60L, TimeUnit.SECONDS, paramLooper, new BossImp.AsyncThreadFactory("disk_write"));
     this.mCpuExecutor.setName("disk_write");
     this.mCpuExecutor.setMonitorListener(this);
     this.mExecutors[2] = this.mDiskWriteExecutor;
     this.mNetworkConfig = new ExecutorConfig.NetworkExecutorConfig(paramContext);
-    localLinkedBlockingQueue = new LinkedBlockingQueue();
-    this.mNetworkExecutor = new MonitorThreadPoolExecutor(this.mNetworkConfig.getCore(), this.mNetworkConfig.getMaximum(), this.mNetworkConfig.getAliveTime(), this.mNetworkConfig.getTimeUnit(), localLinkedBlockingQueue, new AsyncThreadFactory("network"));
+    paramLooper = new LinkedBlockingQueue();
+    this.mNetworkExecutor = new MonitorThreadPoolExecutor(this.mNetworkConfig.getCore(), this.mNetworkConfig.getMaximum(), this.mNetworkConfig.getAliveTime(), this.mNetworkConfig.getTimeUnit(), paramLooper, new BossImp.AsyncThreadFactory("network"));
     this.mCpuExecutor.setName("network");
     this.mCpuExecutor.setMonitorListener(this);
     this.mExecutors[3] = this.mNetworkExecutor;
-    this.mNetworkReceiver = new NetworkBroadcastReceiver(null);
+    this.mNetworkReceiver = new BossImp.NetworkBroadcastReceiver(this, null);
     this.mNetworkReceiver.register(paramContext);
-    this.mLightWeightExecutor = new LightWeightExecutor(100);
+    this.mLightWeightExecutor = new LightWeightExecutor(this.mLooper, 100);
     this.mLightWeightExecutor.setMonitorListener(this);
-    this.mHandler = new Handler(Dispatchers.get().getDefaultLooper());
+    this.mHandler = new Handler(Dispatchers.get(this.mLooper).getDefaultLooper());
     this.mJobController = new JobController(this);
-    Dispatchers.get().registerSubscriber("root_group", this.mJobController);
+    Dispatchers.get(this.mLooper).registerSubscriber("root_group", this.mJobController);
   }
   
   @NonNull
-  private <Params, Progress, Result> Future<Result> scheduleJobDelayedInternal(final Job<Params, Progress, Result> paramJob, int paramInt1, int paramInt2, @Nullable FutureListener<Progress, Result> paramFutureListener, @Nullable Params paramParams)
+  private <Params, Progress, Result> Future<Result> scheduleJobDelayedInternal(Job<Params, Progress, Result> paramJob, int paramInt1, int paramInt2, @Nullable FutureListener<Progress, Result> paramFutureListener, @Nullable Params paramParams)
   {
     paramJob = prepareWorker(paramJob, paramInt2, paramFutureListener, paramParams);
-    paramJob.addFutureListener(new FutureListener.SimpleFutureListener()
-    {
-      public void onFutureDone(@Nullable Result paramAnonymousResult)
-      {
-        Dispatchers.get().dispatch(new JobController.DoneEvent(paramJob));
-      }
-    });
+    paramJob.addFutureListener(new BossImp.1(this, paramJob));
     if (paramInt1 == 0)
     {
-      Dispatchers.get().dispatch(paramJob);
+      Dispatchers.get(this.mLooper).dispatch(paramJob);
       return paramJob;
     }
-    Dispatchers.get().dispatchDelayed(paramJob, paramInt1);
+    Dispatchers.get(this.mLooper).dispatchDelayed(paramJob, paramInt1);
     return paramJob;
   }
   
   public <Result> void cancelJob(Future<Result> paramFuture, boolean paramBoolean)
   {
     if ((paramFuture instanceof Worker)) {
-      Dispatchers.get().cancelDispatch("", (Worker)paramFuture);
+      Dispatchers.get(this.mLooper).cancelDispatch("", (Worker)paramFuture);
     }
-    Dispatchers.get().dispatch(new JobController.CancelCommand(paramFuture, paramBoolean));
+    Dispatchers.get(this.mLooper).dispatch(new JobController.CancelCommand(paramFuture, paramBoolean));
   }
   
   public <Params, Progress, Result> Future<Result> executeJobInternal(Job<Params, Progress, Result> paramJob, @Nullable FutureListener<Progress, Result> paramFutureListener, @Nullable Params paramParams)
@@ -160,17 +153,25 @@ class BossImp
   public void onWorkerExceedTime(String paramString, List<Runnable> paramList, int paramInt)
   {
     Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext())
+    if (localIterator.hasNext())
     {
       Runnable localRunnable = (Runnable)localIterator.next();
       paramList = localRunnable.getClass().getSimpleName();
-      if ((localRunnable instanceof Worker)) {
-        paramList = ((Worker)localRunnable).getJob().getClass().getSimpleName();
+      if (!(localRunnable instanceof Worker)) {
+        break label117;
       }
+      paramList = ((Worker)localRunnable).getJob().getClass().getSimpleName();
+    }
+    label117:
+    for (;;)
+    {
       SLog.e("async.boss.BossImp", paramString + " onWorkerExceedTime, runnable = " + paramList);
-      if (SystemClock.uptimeMillis() - this.mReportExceedTime > 7200000L) {
-        this.mReportExceedTime = SystemClock.uptimeMillis();
+      if (SystemClock.uptimeMillis() - this.mReportExceedTime <= 7200000L) {
+        break;
       }
+      this.mReportExceedTime = SystemClock.uptimeMillis();
+      break;
+      return;
     }
   }
   
@@ -264,59 +265,10 @@ class BossImp
       i += 1;
     }
   }
-  
-  private static class AsyncThreadFactory
-    implements ThreadFactory
-  {
-    private int index;
-    private String type;
-    
-    public AsyncThreadFactory(String paramString)
-    {
-      this.type = paramString;
-    }
-    
-    public Thread newThread(Runnable paramRunnable)
-    {
-      if (paramRunnable == null) {
-        return new Thread("no_name");
-      }
-      StringBuilder localStringBuilder = new StringBuilder().append("type_").append(this.type).append("_index");
-      int i = this.index;
-      this.index = (i + 1);
-      return new Thread(paramRunnable, i);
-    }
-  }
-  
-  private class NetworkBroadcastReceiver
-    extends BroadcastReceiver
-  {
-    private NetworkBroadcastReceiver() {}
-    
-    public void onReceive(Context paramContext, Intent paramIntent)
-    {
-      BossImp.this.mNetworkExecutor.setCorePoolSize(BossImp.this.mNetworkConfig.getCore());
-      BossImp.this.mNetworkExecutor.setMaximumPoolSize(BossImp.this.mNetworkConfig.getMaximum());
-      BossImp.this.mNetworkExecutor.setKeepAliveTime(BossImp.this.mNetworkConfig.getAliveTime(), BossImp.this.mNetworkConfig.getTimeUnit());
-    }
-    
-    public void register(Context paramContext)
-    {
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.AIRPLANE_MODE");
-      localIntentFilter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
-      paramContext.registerReceiver(this, localIntentFilter);
-    }
-    
-    void unregister(Context paramContext)
-    {
-      paramContext.unregisterReceiver(this);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tribe.async.async.BossImp
  * JD-Core Version:    0.7.0.1
  */

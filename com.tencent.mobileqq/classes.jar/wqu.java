@@ -1,95 +1,36 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.troop.BaseTroopView.ITroopContext;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.widget.RedDotTextView;
-import com.tencent.mobileqq.widget.TabBarView;
-import com.tencent.util.MqqWeakReferenceHandler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.videostory.capture.widgets.AEBottomListScrollView;
 
-public class wqu
-  implements BaseTroopView.ITroopContext
+class wqu
+  implements Animation.AnimationListener
 {
-  public wqu(TroopActivity paramTroopActivity) {}
+  wqu(wqq paramwqq) {}
   
-  public Activity a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return this.a;
-  }
-  
-  public View a()
-  {
-    return this.a.findViewById(2131362845);
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.a.app;
-  }
-  
-  public ForwardBaseOption a()
-  {
-    return TroopActivity.a(this.a);
-  }
-  
-  public MqqWeakReferenceHandler a()
-  {
-    return this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler;
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (this.a.b != 2) {
-      return;
-    }
-    switch (paramInt)
+    if ((wqq.a(this.a) != null) && (!wqq.a(this.a)))
     {
-    default: 
-      return;
-    case 0: 
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(0).a(paramBoolean);
-      return;
+      wqq.a(this.a).setAlpha(1.0F);
+      wqq.a(this.a).setVisibility(4);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(1).a(paramBoolean);
-  }
-  
-  public void a(Runnable paramRunnable)
-  {
-    this.a.runOnUiThread(paramRunnable);
-  }
-  
-  public void a(String paramString)
-  {
-    if (this.a.isResume()) {
-      QQToast.a(a(), paramString, 0).b(this.a.getTitleBarHeight());
+    if (this.a.a != null)
+    {
+      this.a.a.a(327683, new Object[0]);
+      this.a.a.a(196612, new Object[0]);
     }
   }
   
-  public boolean a()
-  {
-    return TroopActivity.a(this.a);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public View b()
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return this.a.findViewById(2131362867);
-  }
-  
-  public View c()
-  {
-    return this.a.findViewById(2131366484);
-  }
-  
-  public View d()
-  {
-    return this.a.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView;
+    wqq.a(this.a).a().a(true, 150);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wqu
  * JD-Core Version:    0.7.0.1
  */

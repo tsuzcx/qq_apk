@@ -1,22 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.LeftPopupMenuDialog;
+import android.content.Context;
 
-public class alcj
-  implements View.OnClickListener
+public abstract interface alcj
 {
-  public alcj(LeftPopupMenuDialog paramLeftPopupMenuDialog) {}
+  public abstract void attachArkView(alfb paramalfb, alff paramalff, int paramInt);
   
-  public void onClick(View paramView)
-  {
-    if (this.a.isShowing()) {
-      this.a.dismiss();
-    }
-  }
+  public abstract void clickTail(alff paramalff, adaw paramadaw, Context paramContext);
+  
+  public abstract void destroyContainerByRemove();
+  
+  public abstract alcj extendArkCardByOpen(adaj paramadaj, String paramString1, String paramString2);
+  
+  public abstract String[] getArkAppNameAndPath();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alcj
  * JD-Core Version:    0.7.0.1
  */

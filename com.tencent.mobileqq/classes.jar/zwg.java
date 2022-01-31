@@ -1,32 +1,25 @@
-import com.tencent.mobileqq.app.asyncdb.cache.RoamDateCache;
-import java.util.Comparator;
-import java.util.Map.Entry;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class zwg
-  implements Comparator
+  implements View.OnClickListener
 {
-  public zwg(RoamDateCache paramRoamDateCache) {}
+  public zwg(AccountManageActivity paramAccountManageActivity) {}
   
-  public int a(Map.Entry paramEntry1, Map.Entry paramEntry2)
+  public void onClick(View paramView)
   {
-    paramEntry1 = ((java.lang.String)paramEntry1.getKey()).split("&")[1];
-    int i = Integer.parseInt(paramEntry1.split("-")[0]);
-    int j = Integer.parseInt(paramEntry1.split("-")[1]);
-    paramEntry1 = ((java.lang.String)paramEntry2.getKey()).split("&")[1];
-    int k = Integer.parseInt(paramEntry1.split("-")[0]);
-    int m = Integer.parseInt(paramEntry1.split("-")[1]);
-    if (i > k) {
-      return 1;
+    if (!atok.a().a(this.a.app, this.a)) {}
+    while ((this.a.b != null) && (this.a.b.isShowing())) {
+      return;
     }
-    if (i == k) {
-      return j - m;
-    }
-    return -1;
+    AccountManageActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zwg
  * JD-Core Version:    0.7.0.1
  */

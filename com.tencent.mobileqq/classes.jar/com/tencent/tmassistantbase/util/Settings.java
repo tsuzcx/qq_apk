@@ -14,12 +14,12 @@ public class Settings
   
   public static Settings getInstance()
   {
-    return q.a;
+    return aa.a;
   }
   
   public byte[] getBlob(String paramString)
   {
-    if (!m.a()) {
+    if (!t.a()) {
       return f.a().a(paramString);
     }
     return this.mSetting.e(paramString);
@@ -27,7 +27,7 @@ public class Settings
   
   public boolean getBoolean(String paramString)
   {
-    if (!m.a()) {
+    if (!t.a()) {
       return f.a().e(paramString);
     }
     return this.mSetting.a(paramString);
@@ -35,7 +35,7 @@ public class Settings
   
   public int getInt(String paramString)
   {
-    if (!m.a()) {
+    if (!t.a()) {
       return f.a().d(paramString);
     }
     return this.mSetting.b(paramString);
@@ -43,7 +43,7 @@ public class Settings
   
   public long getLong(String paramString)
   {
-    if (!m.a()) {
+    if (!t.a()) {
       return f.a().c(paramString);
     }
     return this.mSetting.c(paramString);
@@ -51,7 +51,7 @@ public class Settings
   
   public String getString(String paramString)
   {
-    if (!m.a()) {
+    if (!t.a()) {
       return f.a().b(paramString);
     }
     return this.mSetting.d(paramString);
@@ -59,7 +59,7 @@ public class Settings
   
   public void setBlob(String paramString, byte[] paramArrayOfByte)
   {
-    if (!m.a())
+    if (!t.a())
     {
       f.a().a(paramString, paramArrayOfByte);
       return;
@@ -69,7 +69,7 @@ public class Settings
   
   public void setBoolean(String paramString, boolean paramBoolean)
   {
-    if (!m.a())
+    if (!t.a())
     {
       f.a().a(paramString, paramBoolean);
       return;
@@ -79,7 +79,7 @@ public class Settings
   
   public void setInt(String paramString, int paramInt)
   {
-    if (!m.a())
+    if (!t.a())
     {
       f.a().a(paramString, paramInt);
       return;
@@ -89,7 +89,7 @@ public class Settings
   
   public void setLong(String paramString, long paramLong)
   {
-    if (!m.a())
+    if (!t.a())
     {
       f.a().a(paramString, paramLong);
       return;
@@ -99,7 +99,7 @@ public class Settings
   
   public void setString(String paramString1, String paramString2)
   {
-    if (!m.a())
+    if (!t.a())
     {
       f.a().a(paramString1, paramString2);
       return;
@@ -109,7 +109,7 @@ public class Settings
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.Settings
  * JD-Core Version:    0.7.0.1
  */

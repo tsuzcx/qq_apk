@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1331" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1332" android:background="#ffd8dae0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1333" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1334" android:visibility="visible" android:layout_width="62.0dip" android:layout_height="62.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d6c" android:layout_centerInParent="true" />
-    </RelativeLayout>
-</RelativeLayout>

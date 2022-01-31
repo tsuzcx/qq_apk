@@ -1,53 +1,35 @@
+import android.content.res.Resources;
 import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.widget.XListView;
-import java.lang.ref.WeakReference;
+import android.widget.ImageView;
+import android.widget.PopupWindow.OnDismissListener;
+import android.widget.TextView;
+import com.tencent.biz.ui.CustomMenuBar;
 
 public class wou
-  extends Handler
+  implements PopupWindow.OnDismissListener
 {
-  public WeakReference a;
+  public wou(CustomMenuBar paramCustomMenuBar, ImageView paramImageView, TextView paramTextView) {}
   
-  public wou(TroopView paramTroopView)
+  public void onDismiss()
   {
-    this.a = new WeakReference(paramTroopView);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    TroopView localTroopView = (TroopView)this.a.get();
-    if (localTroopView == null) {}
-    do
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842572);
+    if (CustomMenuBar.a()) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131100367));
+    }
+    for (;;)
     {
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b = true;
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable, 50L);
       return;
-      super.handleMessage(paramMessage);
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 0: 
-        TroopView.a(localTroopView).springBackOverScrollHeaderView();
-        return;
-      case 1: 
-        TroopView.a(localTroopView).springBackOverScrollHeaderView();
-        TroopView.a(localTroopView, 1, 2131434365);
-        return;
-      }
-    } while ((!TroopView.a(localTroopView)) || (TroopView.b(localTroopView)));
-    TroopView.f(localTroopView, true);
-    TroopView.a(localTroopView, false);
-    return;
-    TroopView.a(localTroopView, true);
-    return;
-    TroopView.b(localTroopView);
-    return;
-    TroopView.c(localTroopView);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131100366));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wou
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import android.view.View;
 
-public class wup
-  implements Runnable
+class wup
+  implements wpx
 {
-  public wup(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  wup(wuh paramwuh) {}
   
-  public void run()
+  public void a()
   {
-    EmoticonGroupStoreFragment.c(this.a, EmoticonGroupStoreFragment.c(this.a));
+    wuh.a(this.a).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wup
  * JD-Core Version:    0.7.0.1
  */

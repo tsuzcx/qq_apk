@@ -1,17 +1,28 @@
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyCutImageView;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 
-public class nrs
-  implements AbsListView.OnScrollListener
+class nrs
+  implements npr
 {
-  public nrs(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
+  nrs(nrp paramnrp) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a()
   {
-    this.a.b = paramInt1;
+    if (nrp.a(this.a).booleanValue())
+    {
+      if ((nrp.a(this.a).isShown()) && (nrp.a(this.a).getWindowVisibility() == 0))
+      {
+        nrp.a(this.a, nrp.a(this.a));
+        nrp.a(this.a).removeCallbacks(nrp.a(this.a));
+        nrp.a(this.a).postDelayed(nrp.a(this.a), nrp.a(this.a).mAdvertisementExtInfo.n);
+      }
+    }
+    else {
+      return;
+    }
+    nrp.a(this.a, Boolean.valueOf(false));
+    nrp.a(this.a, nrp.a(this.a));
   }
 }
 

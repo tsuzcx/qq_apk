@@ -7,7 +7,7 @@ import android.os.Parcelable.Creator;
 public class PluginBaseInfo
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator CREATOR = new b();
+  public static final Parcelable.Creator<PluginBaseInfo> CREATOR = new PluginBaseInfo.1();
   public static final int INSTALL_TYPE_DEAMON = 0;
   public static final int INSTALL_TYPE_NOTICE = 1;
   public static final int STATE_CANCEL = -1;
@@ -24,9 +24,13 @@ public class PluginBaseInfo
   public static final int TYPE_PLUGIN = 1;
   public static final int UPDATE_TYPE_FORCE = 1;
   public static final int UPDATE_TYPE_OPTIONAL = 0;
+  public long costApk;
+  public long costDex2Oat;
+  public long costDownload;
+  public long costLib;
   public long mCurVersion;
   public float mDownloadProgress;
-  public String mFingerPrint;
+  public String mFingerPrint = "";
   public int mForceUrl;
   public String mID = "";
   public int mInstallType = 0;
@@ -62,6 +66,10 @@ public class PluginBaseInfo
     this.mInstallType = paramParcel.readInt();
     this.mInstalledPath = paramParcel.readString();
     this.mFingerPrint = paramParcel.readString();
+    this.costDex2Oat = paramParcel.readLong();
+    this.costApk = paramParcel.readLong();
+    this.costLib = paramParcel.readLong();
+    this.costDownload = paramParcel.readLong();
   }
   
   public PluginBaseInfo clone()
@@ -103,6 +111,10 @@ public class PluginBaseInfo
     paramParcel.writeInt(this.mInstallType);
     paramParcel.writeString(this.mInstalledPath);
     paramParcel.writeString(this.mFingerPrint);
+    paramParcel.writeLong(this.costDex2Oat);
+    paramParcel.writeLong(this.costApk);
+    paramParcel.writeLong(this.costLib);
+    paramParcel.writeLong(this.costDownload);
   }
 }
 

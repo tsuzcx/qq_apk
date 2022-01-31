@@ -1,26 +1,57 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.readinjoy.ReadInJoyHelper;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.EffectSettingUi;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.av.ui.VoiceChangeToolbar;
 
 public class mbc
-  implements Runnable
+  implements lwk
 {
-  public mbc(KandianOx210MsgInfo paramKandianOx210MsgInfo, QQAppInterface paramQQAppInterface) {}
+  public mbc(VoiceChangeToolbar paramVoiceChangeToolbar) {}
   
-  public void run()
+  public void a(long paramLong)
   {
-    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, false).edit();
-    localEditor.putString("kandian_push_ox210_msg", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo.a());
-    localEditor.putInt("kandian_push_ox210_c5_msg_count", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo.a);
-    localEditor.putLong("kandian_push_0x210_c5_msg_time", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo.d);
-    ReadInJoyHelper.a(localEditor, true);
+    EffectSettingUi.a(this.a.mApp, paramLong);
+  }
+  
+  public void a(long paramLong, lxf paramlxf)
+  {
+    krx.d(VoiceChangeToolbar.TAG, "onEffectClick| voiceType=" + paramlxf.jdField_a_of_type_JavaLangString);
+    kvq localkvq = this.a.mApp.a().a();
+    int i = Integer.parseInt(paramlxf.jdField_a_of_type_JavaLangString);
+    if (i == 0) {
+      lja.a().b(64);
+    }
+    while (i == 0)
+    {
+      localkvq.u = null;
+      localkvq.R = i;
+      localkvq.S = 0;
+      paramlxf = this.a.getAVActivity();
+      if ((paramlxf != null) && (paramlxf.a != null)) {
+        paramlxf.a.f(paramLong, 8);
+      }
+      this.a.mApp.a().A();
+      mba.a(localkvq, i);
+      EffectSettingUi.a(this.a.mApp, paramLong);
+      if (localkvq.d == 4) {
+        awqp.e(String.valueOf(i));
+      }
+      return;
+      lja.a().a(64);
+    }
+    if ((paramlxf.jdField_a_of_type_JavaLangObject instanceof maz)) {}
+    for (localkvq.u = ((maz)paramlxf.jdField_a_of_type_JavaLangObject).b;; localkvq.u = paramlxf.b)
+    {
+      mga.a(paramlxf.jdField_a_of_type_JavaLangString);
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mbc
  * JD-Core Version:    0.7.0.1
  */

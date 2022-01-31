@@ -1,196 +1,388 @@
-import com.tencent.mobileqq.search.model.SearchEntryDataModel;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.LRULinkedHashMap;
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ahyt
-  implements Runnable
+  extends BaseAdapter
 {
-  public ahyt(SearchEntryDataModel paramSearchEntryDataModel) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  List<bals> jdField_a_of_type_JavaUtilList;
+  int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString;
   
-  /* Error */
-  public void run()
+  public ahyt(ahyo paramahyo) {}
+  
+  public void a(balt parambalt)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: aconst_null
-    //   3: astore_1
-    //   4: invokestatic 25	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   7: new 27	java/lang/StringBuilder
-    //   10: dup
-    //   11: invokespecial 28	java/lang/StringBuilder:<init>	()V
-    //   14: ldc 30
-    //   16: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   19: aload_0
-    //   20: getfield 12	ahyt:a	Lcom/tencent/mobileqq/search/model/SearchEntryDataModel;
-    //   23: getfield 39	com/tencent/mobileqq/search/model/SearchEntryDataModel:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   26: invokevirtual 45	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
-    //   29: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   32: ldc 47
-    //   34: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: aload_0
-    //   38: getfield 12	ahyt:a	Lcom/tencent/mobileqq/search/model/SearchEntryDataModel;
-    //   41: getfield 50	com/tencent/mobileqq/search/model/SearchEntryDataModel:jdField_a_of_type_Int	I
-    //   44: invokevirtual 53	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   47: ldc 47
-    //   49: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   52: aload_0
-    //   53: getfield 12	ahyt:a	Lcom/tencent/mobileqq/search/model/SearchEntryDataModel;
-    //   56: getfield 56	com/tencent/mobileqq/search/model/SearchEntryDataModel:b	I
-    //   59: invokevirtual 53	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   62: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   65: iconst_0
-    //   66: invokevirtual 63	com/tencent/qphone/base/util/BaseApplication:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
-    //   69: astore_3
-    //   70: aload_3
-    //   71: astore_1
-    //   72: aload_3
-    //   73: astore_2
-    //   74: aload_0
-    //   75: getfield 12	ahyt:a	Lcom/tencent/mobileqq/search/model/SearchEntryDataModel;
-    //   78: getfield 66	com/tencent/mobileqq/search/model/SearchEntryDataModel:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   81: astore 4
-    //   83: aload_3
-    //   84: astore_1
-    //   85: aload_3
-    //   86: astore_2
-    //   87: aload 4
-    //   89: monitorenter
-    //   90: aload_0
-    //   91: getfield 12	ahyt:a	Lcom/tencent/mobileqq/search/model/SearchEntryDataModel;
-    //   94: getfield 69	com/tencent/mobileqq/search/model/SearchEntryDataModel:jdField_a_of_type_ArrayOfByte	[B
-    //   97: ifnull +18 -> 115
-    //   100: aload_3
-    //   101: aload_0
-    //   102: getfield 12	ahyt:a	Lcom/tencent/mobileqq/search/model/SearchEntryDataModel;
-    //   105: getfield 69	com/tencent/mobileqq/search/model/SearchEntryDataModel:jdField_a_of_type_ArrayOfByte	[B
-    //   108: invokevirtual 75	java/io/FileOutputStream:write	([B)V
-    //   111: aload_3
-    //   112: invokevirtual 78	java/io/FileOutputStream:flush	()V
-    //   115: aload 4
-    //   117: monitorexit
-    //   118: aload_3
-    //   119: ifnull +7 -> 126
-    //   122: aload_3
-    //   123: invokevirtual 81	java/io/FileOutputStream:close	()V
-    //   126: return
-    //   127: astore 5
-    //   129: aload 4
-    //   131: monitorexit
-    //   132: aload_3
-    //   133: astore_1
-    //   134: aload_3
-    //   135: astore_2
-    //   136: aload 5
-    //   138: athrow
-    //   139: astore_3
-    //   140: aload_1
-    //   141: astore_2
-    //   142: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   145: ifeq +33 -> 178
-    //   148: aload_1
-    //   149: astore_2
-    //   150: ldc 89
-    //   152: iconst_2
-    //   153: new 27	java/lang/StringBuilder
-    //   156: dup
-    //   157: invokespecial 28	java/lang/StringBuilder:<init>	()V
-    //   160: ldc 91
-    //   162: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   165: aload_3
-    //   166: invokestatic 95	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   169: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   172: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   175: invokestatic 99	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   178: aload_1
-    //   179: ifnull -53 -> 126
-    //   182: aload_1
-    //   183: invokevirtual 81	java/io/FileOutputStream:close	()V
-    //   186: return
-    //   187: astore_1
-    //   188: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   191: ifeq -65 -> 126
-    //   194: ldc 89
-    //   196: iconst_2
-    //   197: new 27	java/lang/StringBuilder
-    //   200: dup
-    //   201: invokespecial 28	java/lang/StringBuilder:<init>	()V
-    //   204: ldc 91
-    //   206: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   209: aload_1
-    //   210: invokestatic 95	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   213: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   216: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   219: invokestatic 99	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   222: return
-    //   223: astore_1
-    //   224: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   227: ifeq -101 -> 126
-    //   230: ldc 89
-    //   232: iconst_2
-    //   233: new 27	java/lang/StringBuilder
-    //   236: dup
-    //   237: invokespecial 28	java/lang/StringBuilder:<init>	()V
-    //   240: ldc 91
-    //   242: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   245: aload_1
-    //   246: invokestatic 95	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   249: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   252: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   255: invokestatic 99	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   258: return
-    //   259: astore_1
-    //   260: aload_2
-    //   261: ifnull +7 -> 268
-    //   264: aload_2
-    //   265: invokevirtual 81	java/io/FileOutputStream:close	()V
-    //   268: aload_1
-    //   269: athrow
-    //   270: astore_2
-    //   271: invokestatic 87	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   274: ifeq -6 -> 268
-    //   277: ldc 89
-    //   279: iconst_2
-    //   280: new 27	java/lang/StringBuilder
-    //   283: dup
-    //   284: invokespecial 28	java/lang/StringBuilder:<init>	()V
-    //   287: ldc 91
-    //   289: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   292: aload_2
-    //   293: invokestatic 95	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   296: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   299: invokevirtual 59	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   302: invokestatic 99	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   305: goto -37 -> 268
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	308	0	this	ahyt
-    //   3	180	1	localObject1	Object
-    //   187	23	1	localIOException1	java.io.IOException
-    //   223	23	1	localIOException2	java.io.IOException
-    //   259	10	1	localObject2	Object
-    //   1	264	2	localObject3	Object
-    //   270	23	2	localIOException3	java.io.IOException
-    //   69	66	3	localFileOutputStream	java.io.FileOutputStream
-    //   139	27	3	localIOException4	java.io.IOException
-    //   81	49	4	localObject4	Object
-    //   127	10	5	localObject5	Object
-    // Exception table:
-    //   from	to	target	type
-    //   90	115	127	finally
-    //   115	118	127	finally
-    //   129	132	127	finally
-    //   4	70	139	java/io/IOException
-    //   74	83	139	java/io/IOException
-    //   87	90	139	java/io/IOException
-    //   136	139	139	java/io/IOException
-    //   182	186	187	java/io/IOException
-    //   122	126	223	java/io/IOException
-    //   4	70	259	finally
-    //   74	83	259	finally
-    //   87	90	259	finally
-    //   136	139	259	finally
-    //   142	148	259	finally
-    //   150	178	259	finally
-    //   264	268	270	java/io/IOException
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if (parambalt.jdField_a_of_type_JavaUtilList == null) {
+      return;
+    }
+    this.jdField_a_of_type_JavaLangString = parambalt.d;
+    this.jdField_a_of_type_Int = parambalt.jdField_c_of_type_Int;
+    this.jdField_b_of_type_Int = parambalt.jdField_b_of_type_Int;
+    this.jdField_b_of_type_JavaLangString = parambalt.jdField_c_of_type_JavaLangString;
+    if (this.jdField_b_of_type_JavaLangString == null) {
+      this.jdField_b_of_type_JavaLangString = "";
+    }
+    if ((parambalt.e != null) && (parambalt.e.equals("actLiTpl"))) {
+      this.jdField_b_of_type_Int = 3;
+    }
+    if ((!parambalt.jdField_a_of_type_Boolean) && (parambalt.jdField_a_of_type_JavaUtilList.size() > 4) && ((parambalt.e == null) || (parambalt.e.equals("")))) {
+      this.jdField_a_of_type_JavaUtilList.addAll(parambalt.jdField_a_of_type_JavaUtilList.subList(0, 4));
+    }
+    for (;;)
+    {
+      super.notifyDataSetChanged();
+      return;
+      this.jdField_a_of_type_JavaUtilList.addAll(parambalt.jdField_a_of_type_JavaUtilList);
+    }
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject1;
+    if (this.jdField_a_of_type_JavaUtilList == null) {
+      localObject1 = paramView;
+    }
+    Object localObject2;
+    label186:
+    label208:
+    bals localbals;
+    do
+    {
+      return localObject1;
+      if (paramView != null) {
+        break label663;
+      }
+      localObject1 = new ahyu(this);
+      localObject2 = LayoutInflater.from(this.jdField_a_of_type_Ahyo.jdField_a_of_type_AndroidContentContext).inflate(2131495884, paramViewGroup, false);
+      ((ahyu)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject2).findViewById(2131305652));
+      ((ahyu)localObject1).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject2).findViewById(2131305651));
+      ((ahyu)localObject1).b = ((ImageView)((View)localObject2).findViewById(2131305662));
+      ((ahyu)localObject1).c = ((ImageView)((View)localObject2).findViewById(2131305664));
+      ((ahyu)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject2).findViewById(2131305660));
+      ((ahyu)localObject1).d = ((ImageView)((View)localObject2).findViewById(2131305653));
+      ((ahyu)localObject1).e = ((ImageView)((View)localObject2).findViewById(2131305663));
+      paramView = ((ahyu)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      if (paramView == null) {
+        break;
+      }
+      paramView.width = this.jdField_a_of_type_Ahyo.g;
+      paramView.height = this.jdField_a_of_type_Ahyo.h;
+      ((ahyu)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
+      ((View)localObject2).setTag(localObject1);
+      paramViewGroup = (ViewGroup)localObject1;
+      paramView = (View)localObject2;
+      localbals = (bals)getItem(paramInt);
+      localObject1 = paramView;
+    } while (localbals == null);
+    paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setTag(localbals);
+    paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localbals.jdField_a_of_type_JavaLangString);
+    paramView.setContentDescription(localbals.jdField_a_of_type_JavaLangString);
+    switch (localbals.e)
+    {
+    default: 
+      paramViewGroup.d.setVisibility(8);
+      label293:
+      switch (localbals.f)
+      {
+      case 7: 
+      case 8: 
+      default: 
+        paramViewGroup.e.setVisibility(8);
+        label341:
+        localObject1 = localbals.jdField_b_of_type_JavaLangString;
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          localObject1 = this.jdField_a_of_type_JavaLangString;
+        }
+        break;
+      }
+      break;
+    }
+    for (;;)
+    {
+      for (;;)
+      {
+        if ((localObject1 != null) && (!TextUtils.isEmpty((CharSequence)localObject1)))
+        {
+          localObject2 = (URLDrawable)ahyo.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get(localObject1);
+          if (localObject2 == null) {
+            break label1529;
+          }
+          paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
+          if ((((URLDrawable)localObject2).getStatus() != 1) && (((URLDrawable)localObject2).getStatus() != 0)) {
+            ((URLDrawable)localObject2).restartDownload();
+          }
+        }
+        label424:
+        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localbals);
+        if (this.jdField_a_of_type_Int == paramInt)
+        {
+          paramView.setBackgroundDrawable(this.jdField_a_of_type_Ahyo.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846300));
+          label460:
+          if (localbals.jdField_a_of_type_Int == 0) {
+            break label1749;
+          }
+          if (localbals.jdField_a_of_type_Int != this.jdField_a_of_type_Ahyo.jdField_a_of_type_Long) {
+            break label1701;
+          }
+          paramViewGroup.c.setVisibility(0);
+          if (this.jdField_a_of_type_Ahyo.jdField_a_of_type_Boolean) {
+            break label1739;
+          }
+        }
+        try
+        {
+          for (;;)
+          {
+            localObject2 = new URL("protocol_pendant_image", "AIO_STATIC", String.valueOf(localbals.jdField_a_of_type_Int));
+            localObject1 = paramView;
+            if (localObject2 == null) {
+              break;
+            }
+            localObject1 = URLDrawable.URLDrawableOptions.obtain();
+            ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = this.jdField_a_of_type_Ahyo.k;
+            ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = this.jdField_a_of_type_Ahyo.l;
+            ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_Ahyo.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+            ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_Ahyo.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+            localObject2 = URLDrawable.getDrawable((URL)localObject2, (URLDrawable.URLDrawableOptions)localObject1);
+            paramViewGroup.b.setImageDrawable((Drawable)localObject2);
+            localObject1 = paramView;
+            if (((URLDrawable)localObject2).getStatus() != 2) {
+              break;
+            }
+            ((URLDrawable)localObject2).restartDownload();
+            return paramView;
+            if (QLog.isColorLevel()) {
+              QLog.d("AvatarPendantAdapter", 2, "getLayoutParams null, it's sad");
+            }
+            paramView = new ViewGroup.LayoutParams(this.jdField_a_of_type_Ahyo.g, this.jdField_a_of_type_Ahyo.h);
+            break label186;
+            label663:
+            paramViewGroup = (ahyu)paramView.getTag();
+            break label208;
+            Object localObject4 = new File(baau.jdField_c_of_type_JavaLangString + "/new.png");
+            if ((((File)localObject4).exists()) && (!this.jdField_b_of_type_JavaLangString.equals("1")))
+            {
+              paramViewGroup.d.setVisibility(0);
+              localObject2 = (URLDrawable)ahyo.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get("key_new.png");
+              localObject1 = localObject2;
+              if (localObject2 == null)
+              {
+                localObject1 = URLDrawable.URLDrawableOptions.obtain();
+                ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_Ahyo.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+                ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_Ahyo.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+                localObject2 = URLDrawable.getDrawable((File)localObject4, (URLDrawable.URLDrawableOptions)localObject1);
+                localObject1 = localObject2;
+                if (((URLDrawable)localObject2).getStatus() == 1)
+                {
+                  ahyo.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put("key_new.png", localObject2);
+                  localObject1 = localObject2;
+                }
+              }
+              paramViewGroup.d.setImageDrawable((Drawable)localObject1);
+              break label293;
+            }
+            paramViewGroup.d.setVisibility(8);
+            break label293;
+            localObject4 = new File(baau.jdField_c_of_type_JavaLangString + "/hot.png");
+            if ((((File)localObject4).exists()) && (!this.jdField_b_of_type_JavaLangString.equals("3")))
+            {
+              paramViewGroup.d.setVisibility(0);
+              localObject2 = (URLDrawable)ahyo.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get("key_hot.png");
+              localObject1 = localObject2;
+              if (localObject2 == null)
+              {
+                localObject1 = URLDrawable.URLDrawableOptions.obtain();
+                ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_Ahyo.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+                ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_Ahyo.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+                localObject2 = URLDrawable.getDrawable((File)localObject4, (URLDrawable.URLDrawableOptions)localObject1);
+                localObject1 = localObject2;
+                if (((URLDrawable)localObject2).getStatus() == 1)
+                {
+                  ahyo.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put("key_hot.png", localObject2);
+                  localObject1 = localObject2;
+                }
+              }
+              paramViewGroup.d.setImageDrawable((Drawable)localObject1);
+              break label293;
+            }
+            paramViewGroup.d.setVisibility(8);
+            break label293;
+            localObject4 = new File(baau.jdField_c_of_type_JavaLangString + "/activity.png");
+            if ((((File)localObject4).exists()) && (this.jdField_b_of_type_Int != 3) && (this.jdField_b_of_type_Int != 5))
+            {
+              paramViewGroup.e.setVisibility(0);
+              localObject2 = (URLDrawable)ahyo.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get("key_activity.png");
+              localObject1 = localObject2;
+              if (localObject2 == null)
+              {
+                localObject1 = URLDrawable.URLDrawableOptions.obtain();
+                ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_Ahyo.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+                ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_Ahyo.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+                localObject2 = URLDrawable.getDrawable((File)localObject4, (URLDrawable.URLDrawableOptions)localObject1);
+                localObject1 = localObject2;
+                if (((URLDrawable)localObject2).getStatus() == 1)
+                {
+                  ahyo.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put("key_activity.png", localObject2);
+                  localObject1 = localObject2;
+                }
+              }
+              paramViewGroup.e.setImageDrawable((Drawable)localObject1);
+              break label341;
+            }
+            paramViewGroup.e.setVisibility(8);
+            break label341;
+            localObject4 = new File(baau.jdField_c_of_type_JavaLangString + "/limit.png");
+            if (((File)localObject4).exists())
+            {
+              paramViewGroup.e.setVisibility(0);
+              localObject2 = (URLDrawable)ahyo.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get("key_limit.png");
+              localObject1 = localObject2;
+              if (localObject2 == null)
+              {
+                localObject1 = URLDrawable.URLDrawableOptions.obtain();
+                ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_Ahyo.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+                ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_Ahyo.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+                localObject2 = URLDrawable.getDrawable((File)localObject4, (URLDrawable.URLDrawableOptions)localObject1);
+                localObject1 = localObject2;
+                if (((URLDrawable)localObject2).getStatus() == 1)
+                {
+                  ahyo.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put("key_limit.png", localObject2);
+                  localObject1 = localObject2;
+                }
+              }
+              paramViewGroup.e.setImageDrawable((Drawable)localObject1);
+              break label341;
+            }
+            paramViewGroup.e.setVisibility(8);
+            break label341;
+            localObject4 = new File(baau.jdField_c_of_type_JavaLangString + "/rare.png");
+            if ((((File)localObject4).exists()) && (this.jdField_b_of_type_Int != 5))
+            {
+              paramViewGroup.e.setVisibility(0);
+              localObject2 = (URLDrawable)ahyo.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.get("key_rare.png");
+              localObject1 = localObject2;
+              if (localObject2 == null)
+              {
+                localObject1 = URLDrawable.URLDrawableOptions.obtain();
+                ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_Ahyo.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+                ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_Ahyo.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+                localObject2 = URLDrawable.getDrawable((File)localObject4, (URLDrawable.URLDrawableOptions)localObject1);
+                localObject1 = localObject2;
+                if (((URLDrawable)localObject2).getStatus() == 1)
+                {
+                  ahyo.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put("key_rare.png", localObject2);
+                  localObject1 = localObject2;
+                }
+              }
+              paramViewGroup.e.setImageDrawable((Drawable)localObject1);
+              break label341;
+            }
+            paramViewGroup.e.setVisibility(8);
+            break label341;
+            try
+            {
+              label1529:
+              localObject2 = new URL("protocol_pendant_image", "DEFAULT_HEAD", (String)localObject1);
+              if (localObject2 == null) {
+                break label424;
+              }
+              localObject4 = URLDrawable.URLDrawableOptions.obtain();
+              ((URLDrawable.URLDrawableOptions)localObject4).mRequestWidth = this.jdField_a_of_type_Ahyo.k;
+              ((URLDrawable.URLDrawableOptions)localObject4).mRequestHeight = this.jdField_a_of_type_Ahyo.l;
+              ((URLDrawable.URLDrawableOptions)localObject4).mFailedDrawable = this.jdField_a_of_type_Ahyo.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+              ((URLDrawable.URLDrawableOptions)localObject4).mUseMemoryCache = true;
+              ((URLDrawable.URLDrawableOptions)localObject4).mLoadingDrawable = this.jdField_a_of_type_Ahyo.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+              localObject2 = URLDrawable.getDrawable((URL)localObject2, (URLDrawable.URLDrawableOptions)localObject4);
+              paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject2);
+              if (((URLDrawable)localObject2).getStatus() == 2) {
+                ((URLDrawable)localObject2).restartDownload();
+              }
+            }
+            catch (MalformedURLException localMalformedURLException2)
+            {
+              for (;;)
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("AvatarPendantAdapter", 2, localMalformedURLException2.getMessage());
+                }
+                localObject3 = null;
+              }
+            }
+          }
+          if (localObject3.getStatus() != 1) {
+            break label424;
+          }
+          ahyo.jdField_a_of_type_ComTencentUtilLRULinkedHashMap.put(localObject1, localObject3);
+          break label424;
+          paramView.setBackgroundDrawable(null);
+          break label460;
+          label1701:
+          paramViewGroup.c.setVisibility(8);
+        }
+        catch (MalformedURLException localMalformedURLException1)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("AvatarPendantAdapter", 2, localMalformedURLException1.getMessage());
+            }
+            Object localObject3 = null;
+          }
+        }
+      }
+      label1739:
+      paramViewGroup.b.setImageDrawable(null);
+      return paramView;
+      label1749:
+      paramViewGroup.b.setImageDrawable(null);
+      return paramView;
+    }
   }
 }
 

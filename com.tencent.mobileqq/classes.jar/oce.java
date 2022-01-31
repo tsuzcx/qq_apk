@@ -1,23 +1,25 @@
-import com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView;
-import com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView.OnInnerListRefreshListener;
-import com.tencent.biz.qqstory.storyHome.memory.view.adapter.MemoriesInnerListAdapter;
-import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
+import android.content.Context;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 
-public class oce
-  implements HorizontalListView.OnScrollStateChangedListener
+final class oce
+  implements INetEventHandler
 {
-  public oce(MemoriesInnerListView paramMemoriesInnerListView) {}
+  oce(Context paramContext) {}
   
-  public void a(int paramInt)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    if ((paramInt == 4097) && (this.a.a != null)) {
-      this.a.a.a(MemoriesInnerListView.a(this.a).a);
+    if (paramBoolean)
+    {
+      obz.c(this.a);
+      return;
     }
+    obz.j("");
+    obz.k("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oce
  * JD-Core Version:    0.7.0.1
  */

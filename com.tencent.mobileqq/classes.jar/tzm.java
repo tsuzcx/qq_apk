@@ -1,22 +1,13 @@
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.widget.ClearableEditText;
-
-class tzm
-  implements Runnable
+public abstract interface tzm
+  extends uhl
 {
-  tzm(tzk paramtzk) {}
+  public abstract void b();
   
-  public void run()
-  {
-    String str = SubLoginActivity.a(this.a.a).getText().toString();
-    if ((str != null) && (str.equals("!@#ewaGbhkc$!!="))) {
-      SubLoginActivity.a(this.a.a).setText("");
-    }
-  }
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tzm
  * JD-Core Version:    0.7.0.1
  */

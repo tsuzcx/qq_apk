@@ -1,19 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.friendlist.remote.FriendGroupListInfo;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.data.PhoneContactAdd;
+import com.tencent.mobileqq.data.QIMNotifyAddFriend;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-public final class aibv
-  implements Parcelable.Creator
+public class aibv
+  extends bent
 {
-  public FriendGroupListInfo a(Parcel paramParcel)
-  {
-    return new FriendGroupListInfo(paramParcel);
-  }
-  
-  public FriendGroupListInfo[] a(int paramInt)
-  {
-    return new FriendGroupListInfo[paramInt];
-  }
+  public int a;
+  public long a;
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public PhoneContactAdd a;
+  public QIMNotifyAddFriend a;
+  public String a;
+  public structmsg.StructMsg a;
+  public long b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
 }
 
 

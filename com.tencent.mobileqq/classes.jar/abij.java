@@ -1,24 +1,57 @@
-import com.tencent.mobileqq.armap.ARGLSurfaceView;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.ARMapTracer.TraceResultListener;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class abij
-  implements ARMapTracer.TraceResultListener
+public class abij
+  extends MqqHandler
 {
-  abij(abii paramabii) {}
+  public abij(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public boolean a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    ARGLSurfaceView localARGLSurfaceView = this.a.a.a;
-    if (localARGLSurfaceView != null) {
-      localARGLSurfaceView.runOnGlThread(new abik(this, localARGLSurfaceView, paramInt));
+    boolean bool2 = true;
+    switch (paramMessage.what)
+    {
+    default: 
+      QLog.d("IphoneTitleBarActivity", 2, "TEST more info message handler: " + paramMessage.what);
     }
-    return true;
+    do
+    {
+      return;
+    } while (!((String)paramMessage.obj).equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a));
+    label86:
+    FormSwitchItem localFormSwitchItem;
+    if (paramMessage.arg1 == 1)
+    {
+      bool1 = true;
+      if (bool1 == this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a()) {
+        break label154;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
+      localFormSwitchItem = this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+      if (paramMessage.arg1 != 1) {
+        break label156;
+      }
+    }
+    label154:
+    label156:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localFormSwitchItem.setChecked(bool1);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.a);
+      return;
+      bool1 = false;
+      break label86;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abij
  * JD-Core Version:    0.7.0.1
  */

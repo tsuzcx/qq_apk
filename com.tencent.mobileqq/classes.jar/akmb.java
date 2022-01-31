@@ -1,15 +1,18 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
+import com.tencent.mobileqq.ar.ARRenderModel.ARTransferPromotionRenderable.1.1;
 
 public class akmb
+  extends aljj
 {
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  akmb(akma paramakma) {}
   
-  private akmb(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns) {}
+  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat)
+  {
+    akma.a(this.a).a(new ARTransferPromotionRenderable.1.1(this, paramArrayOfFloat));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akmb
  * JD-Core Version:    0.7.0.1
  */

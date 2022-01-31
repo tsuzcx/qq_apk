@@ -1,27 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.KanDianViewController;
-import com.tencent.biz.pubaccount.readinjoy.KanDianViewController.PullRefreshCompleteListener;
-import com.tencent.biz.pubaccount.readinjoy.skin.CommonSkinRes;
-import java.io.File;
+import com.tencent.av.gaudio.AVNotifyCenter;
 
 public class lcz
-  implements Runnable
 {
-  public lcz(KanDianViewController.PullRefreshCompleteListener paramPullRefreshCompleteListener) {}
+  public long a;
+  String jdField_a_of_type_JavaLangString = null;
+  public boolean a;
   
-  public void run()
-  {
-    String str = CommonSkinRes.e();
-    if ((str != null) && (new File(str).exists()))
-    {
-      KanDianViewController.a(this.a.a, str);
-      KanDianViewController.a(this.a.a).removeMessages(3);
-      KanDianViewController.a(this.a.a).sendEmptyMessage(2);
-    }
-  }
+  public lcz(AVNotifyCenter paramAVNotifyCenter) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lcz
  * JD-Core Version:    0.7.0.1
  */

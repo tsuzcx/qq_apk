@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class msg_svc$PbThirdQQUnReadMsgNumResp$ThirdQQRespInfo
-  extends MessageMicro
+  extends MessageMicro<ThirdQQRespInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field last_msg_time = PBField.initUInt32(0);

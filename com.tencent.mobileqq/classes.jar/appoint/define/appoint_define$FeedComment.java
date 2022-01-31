@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class appoint_define$FeedComment
-  extends MessageMicro
+  extends MessageMicro<FeedComment>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 50, 56, 66, 72 }, new String[] { "str_comment_id", "str_feed_id", "msg_publisher_info", "uint32_time", "msg_reply_info", "uint32_flag", "msg_content", "uint32_hot" }, new Object[] { "", "", null, Integer.valueOf(0), null, Integer.valueOf(0), null, Integer.valueOf(0) }, FeedComment.class);
   public appoint_define.RichText msg_content = new appoint_define.RichText();

@@ -1,28 +1,26 @@
-import com.tencent.biz.widgets.ElasticHorScrView;
-import dov.com.tencent.mobileqq.richmedia.capture.view.ShareActionSheet;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.qphone.base.util.QLog;
 
-public class aovs
-  implements Runnable
+class aovs
+  implements INetEventHandler
 {
-  public aovs(ShareActionSheet paramShareActionSheet) {}
+  aovs(aovq paramaovq) {}
   
-  public void run()
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.a.jdField_a_of_type_Int) {
-      this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
-    }
-    while (this.a.b.getWidth() < ShareActionSheet.a(this.a))
+    if (AppNetConnInfo.isWifiConn())
     {
-      this.a.b.setMove(true);
-      return;
-      this.a.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
+      if (QLog.isColorLevel()) {
+        QLog.d("MPcFileModel<FileAssistant>[MPFile]", 2, "网络切换到Wifi网络");
+      }
+      bbmy.a(this.a.a, 2131628684, 0).a();
     }
-    this.a.b.setMove(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aovs
  * JD-Core Version:    0.7.0.1
  */

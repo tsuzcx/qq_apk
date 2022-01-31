@@ -1,62 +1,30 @@
-import android.app.KeyguardManager;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pic.Logger;
-import com.tencent.mobileqq.pic.PicPreDownloader;
+import android.os.Bundle;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.activity.qwallet.preload.QWalletIPCModule.2;
+import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class agpw
-  extends BroadcastReceiver
+  implements agpa
 {
-  String a;
+  public agpw(QWalletIPCModule.2 param2, ResultReceiver paramResultReceiver) {}
   
-  public agpw(String paramString)
+  public void onDownloadResFinished(String paramString1, int paramInt, String paramString2, ResourceInfo paramResourceInfo)
   {
-    this.a = paramString;
-  }
-  
-  public boolean a(Context paramContext)
-  {
-    return ((KeyguardManager)paramContext.getSystemService("keyguard")).inKeyguardRestrictedInputMode();
-  }
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    boolean bool = false;
-    paramIntent = paramIntent.getAction();
-    if ("android.intent.action.SCREEN_ON".equals(paramIntent))
-    {
-      PicPreDownloader.b = PicPreDownloader.a;
-      if (!a(paramContext)) {
-        bool = true;
-      }
-      PicPreDownloader.a = bool;
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletIPCModule", 2, "QWalletIPC downloadModule" + paramString2 + "|" + paramResourceInfo + "|" + System.currentTimeMillis());
     }
-    for (;;)
-    {
-      Logger.a("PIC_TAG_PRELOAD", "onReceive", "isScreenOn:" + PicPreDownloader.a + ",lastScreenOnState:" + PicPreDownloader.b);
-      if ((PicPreDownloader.b != PicPreDownloader.a) || (PicPreDownloader.a)) {
-        break;
-      }
-      return;
-      if ("android.intent.action.SCREEN_OFF".equals(paramIntent))
-      {
-        PicPreDownloader.b = PicPreDownloader.a;
-        PicPreDownloader.a = false;
-      }
-      else if ("android.intent.action.USER_PRESENT".equals(paramIntent))
-      {
-        PicPreDownloader.b = PicPreDownloader.a;
-        PicPreDownloader.a = true;
-      }
-    }
-    ThreadManager.post(new agpx(this), 5, null, true);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("id", paramString1);
+    localBundle.putInt("result", paramInt);
+    localBundle.putString("path", paramString2);
+    localBundle.putSerializable("res_info", paramResourceInfo);
+    this.jdField_a_of_type_AndroidOsResultReceiver.send(0, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agpw
  * JD-Core Version:    0.7.0.1
  */

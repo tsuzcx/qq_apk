@@ -1,27 +1,28 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.DeviceFileItemBuilder;
-import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
+import android.graphics.Bitmap;
 
-public class vav
-  extends BaseBubbleBuilder.ViewHolder
+public abstract interface vav
 {
-  public ImageView a;
-  public ProgressBar a;
-  public RelativeLayout a;
-  public TextView a;
-  public AsyncImageView a;
-  public TextView b;
-  public TextView c;
+  public abstract void a(Bitmap paramBitmap, boolean paramBoolean);
   
-  public vav(DeviceFileItemBuilder paramDeviceFileItemBuilder) {}
+  public abstract void a(String paramString);
+  
+  public abstract void a(vcb paramvcb);
+  
+  public abstract void a(byte[] paramArrayOfByte);
+  
+  public abstract void b(int paramInt1, int paramInt2);
+  
+  public abstract void b(int paramInt, Object paramObject);
+  
+  public abstract void f();
+  
+  public abstract void g();
+  
+  public abstract void i();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vav
  * JD-Core Version:    0.7.0.1
  */

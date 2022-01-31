@@ -1,24 +1,15 @@
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadCompletedInfo;
 
-public class aopq
-  implements Runnable
+class aopq
 {
-  public aopq(VideoFilterViewPager paramVideoFilterViewPager, View paramView) {}
+  int jdField_a_of_type_Int = 201;
+  ExcitingTransferDownloadCompletedInfo jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo;
   
-  public void run()
-  {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setDuration(300L);
-    localAlphaAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
-    localAlphaAnimation.setAnimationListener(new aopr(this));
-  }
+  aopq(aopp paramaopp) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aopq
  * JD-Core Version:    0.7.0.1
  */

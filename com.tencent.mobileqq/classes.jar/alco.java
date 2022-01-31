@@ -1,20 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.MusicPendantView;
+import java.util.ArrayList;
 
-public class alco
-  implements View.OnClickListener
+class alco
+  implements adbt
 {
-  public alco(MusicPendantView paramMusicPendantView) {}
+  alco(alcm paramalcm) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.b();
+    boolean bool = ((adai)alcm.a(this.a).get(alcm.a(this.a))).checkShare();
+    if (bool != alcm.a(this.a))
+    {
+      alcm.a(this.a, bool);
+      alcm.a(this.a, alcm.a(this.a));
+    }
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alco
  * JD-Core Version:    0.7.0.1
  */

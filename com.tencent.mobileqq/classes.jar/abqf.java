@@ -1,61 +1,37 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarInfo;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarInfo.OneUinHeadInfo;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarInfoObserver;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarManager;
-import com.tencent.mobileqq.data.DynamicAvatar;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
 
 public class abqf
-  extends DynamicAvatarInfoObserver
+  implements View.OnKeyListener
 {
-  public abqf(DynamicAvatarManager paramDynamicAvatarManager) {}
+  public abqf(SelectedAndSearchBar paramSelectedAndSearchBar) {}
   
-  protected void a(boolean paramBoolean1, DynamicAvatarInfo paramDynamicAvatarInfo, Long paramLong, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean2)
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    String str4 = DynamicAvatarManager.a(paramInt2, paramInt1, String.valueOf(paramLong), paramInt3);
-    if (!paramBoolean1)
+    if (paramInt == 67)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.dynamicAvatar", 2, "onGetDynamicAvatarInfo not success: " + paramInt1 + " " + paramLong + " " + paramInt2);
+      if (paramKeyEvent.getAction() != 0) {
+        break label36;
       }
-      DynamicAvatarManager.a(this.a, str4, null, null);
-      return;
+      SelectedAndSearchBar.a(this.a, TextUtils.isEmpty(SelectedAndSearchBar.a(this.a).getText()));
     }
-    if ((paramDynamicAvatarInfo != null) && (paramDynamicAvatarInfo.a != null) && (!paramDynamicAvatarInfo.a.isEmpty())) {}
-    for (paramDynamicAvatarInfo = DynamicAvatar.convertFrom((DynamicAvatarInfo.OneUinHeadInfo)paramDynamicAvatarInfo.a.get(0));; paramDynamicAvatarInfo = null)
+    for (;;)
     {
-      if (paramDynamicAvatarInfo == null)
-      {
-        DynamicAvatarManager.a(this.a, str4, null, null);
-        return;
+      return false;
+      label36:
+      if ((paramKeyEvent.getAction() == 1) && (SelectedAndSearchBar.a(this.a))) {
+        SelectedAndSearchBar.a(this.a).a();
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.dynamicAvatar", 2, "onGetDynamicAvatarInfo: " + paramDynamicAvatarInfo);
-      }
-      String str2 = DynamicAvatarManager.a(paramInt2, paramInt3, paramDynamicAvatarInfo);
-      String str3 = DynamicAvatarManager.a(paramInt2, 640, paramDynamicAvatarInfo);
-      String str1 = str3;
-      paramLong = str2;
-      if (TextUtils.isEmpty(str2))
-      {
-        str1 = str3;
-        paramLong = str2;
-        if (paramBoolean2)
-        {
-          paramLong = DynamicAvatarManager.a(17, paramInt3, paramDynamicAvatarInfo);
-          str1 = DynamicAvatarManager.a(17, 640, paramDynamicAvatarInfo);
-        }
-      }
-      DynamicAvatarManager.a(this.a, str4, paramLong, str1);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abqf
  * JD-Core Version:    0.7.0.1
  */

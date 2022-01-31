@@ -1,143 +1,136 @@
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v7.widget.RecyclerView;
-import android.util.SparseIntArray;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.HotTopicInfoItem;
-import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
-import com.tencent.biz.qqstory.storyHome.discover.model.CardItem;
-import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.ActivityCardInfo;
-import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
-import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.NormalCardInfo;
-import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverActivity;
-import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverAdapter;
-import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverAdapter.OnHolderItemClickListener;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import java.util.ArrayList;
-import java.util.List;
+import android.text.TextPaint;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyVideoInfoViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.VideoViewGroup;
+import java.net.URL;
+import java.util.HashSet;
+import java.util.Set;
 
 public class oaz
-  implements StoryDiscoverAdapter.OnHolderItemClickListener
 {
-  public oaz(StoryDiscoverAdapter paramStoryDiscoverAdapter) {}
-  
-  public void a(View paramView, int paramInt)
+  public static qht a(BaseArticleInfo paramBaseArticleInfo)
   {
-    Object localObject2 = (CardItem)StoryDiscoverAdapter.a(this.a).get(paramInt);
-    if (((CardItem)localObject2).cardType == 4) {
-      if (((CardItem)localObject2).gatherCardInfo.b() == 0) {
-        StoryDiscoverActivity.a((Activity)paramView.getContext(), ((CardItem)localObject2).gatherCardInfo.a(), ((CardItem)localObject2).gatherCardInfo.a(), (CardItem)localObject2, "1", StoryDiscoverAdapter.a(this.a));
-      }
-    }
-    label124:
-    Object localObject1;
-    for (;;)
+    qht localqht = new qht();
+    localqht.jdField_c_of_type_JavaLangString = paramBaseArticleInfo.mVideoVid;
+    localqht.jdField_c_of_type_Long = paramBaseArticleInfo.mArticleID;
+    localqht.jdField_b_of_type_Int = paramBaseArticleInfo.mVideoDuration;
+    localqht.jdField_c_of_type_Int = paramBaseArticleInfo.mVideoJsonWidth;
+    localqht.jdField_d_of_type_Int = paramBaseArticleInfo.mVideoJsonHeight;
+    if (paramBaseArticleInfo.mVideoCoverUrl == null) {}
+    for (Object localObject = null;; localObject = paramBaseArticleInfo.mVideoCoverUrl.getFile())
     {
-      if (StoryDiscoverAdapter.b(this.a) == 0)
-      {
-        paramView = null;
-        switch (((CardItem)localObject2).cardType)
-        {
-        default: 
-          StoryReportor.a("content_flow", "clk_card", 0, 0, new String[] { paramView });
-          if (((CardItem)localObject2).cardType == 4)
-          {
-            if (((CardItem)localObject2).gatherCardInfo != null)
-            {
-              paramView = String.valueOf(((CardItem)localObject2).gatherCardInfo.a());
-              label170:
-              if (((CardItem)localObject2).gatherCardInfo == null) {
-                break label376;
-              }
-              localObject1 = ((CardItem)localObject2).gatherCardInfo.a();
-              label188:
-              StoryReportor.a("content_flow", "clk_hot", 0, 0, new String[] { paramView, "", localObject1 });
-            }
-          }
-          else
-          {
-            label215:
-            return;
-            localObject1 = new Intent(paramView.getContext(), QQBrowserActivity.class);
-            ((Intent)localObject1).putExtra("url", ((CardItem)localObject2).gatherCardInfo.d());
-            paramView.getContext().startActivity((Intent)localObject1);
-            continue;
-            paramView = ((CardItem)localObject2).getCardVideoInfo();
-            if (paramView == null) {
-              continue;
-            }
-            paramInt = StoryDiscoverAdapter.a(this.a).get(paramInt, -1);
-            if (paramInt >= 0) {
-              break label525;
-            }
-            paramInt = StoryDiscoverAdapter.a(this.a).indexOf(paramView);
-          }
-          break;
-        }
-      }
-    }
-    label518:
-    label525:
-    for (;;)
-    {
-      if (StoryDiscoverAdapter.b(this.a) == 0) {}
-      for (int i = 63;; i = 64)
-      {
-        StoryPlayVideoActivity.a((Activity)StoryDiscoverAdapter.a(this.a).getContext(), null, StoryDiscoverAdapter.a(this.a), paramInt, i);
-        break;
-      }
-      paramView = "1";
-      break label124;
-      paramView = "2";
-      break label124;
-      paramView = "3";
-      break label124;
-      paramView = "4";
-      break label124;
-      paramView = "";
-      break label170;
-      label376:
-      localObject1 = "";
-      break label188;
-      if (StoryDiscoverAdapter.b(this.a) != 2) {
-        break label215;
-      }
-      if (StoryDiscoverAdapter.a(this.a) != null)
-      {
-        paramView = String.valueOf(StoryDiscoverAdapter.a(this.a).mTopicId);
-        if (StoryDiscoverAdapter.a(this.a) == null) {
-          break label511;
-        }
-        localObject1 = StoryDiscoverAdapter.a(this.a).mSubjectName;
-        label440:
-        if ((((CardItem)localObject2).normalCardInfo == null) || (((CardItem)localObject2).normalCardInfo.a() == null)) {
-          break label518;
-        }
-      }
-      for (localObject2 = ((CardItem)localObject2).normalCardInfo.a().a();; localObject2 = "")
-      {
-        StoryReportor.a("content_flow", "clk_hot_page", 0, 0, new String[] { paramView, "", localObject1, localObject2 });
-        return;
-        paramView = "";
-        break;
-        label511:
-        localObject1 = "";
-        break label440;
-      }
+      localqht.jdField_b_of_type_JavaLangString = ((String)localObject);
+      localqht.k = paramBaseArticleInfo.mSubscribeID;
+      localqht.jdField_g_of_type_Int = paramBaseArticleInfo.mStrategyId;
+      localqht.jdField_g_of_type_Long = paramBaseArticleInfo.mAlgorithmID;
+      localObject = new pqb();
+      ((pqb)localObject).jdField_a_of_type_JavaLangLong = Long.valueOf(paramBaseArticleInfo.mArticleID);
+      ((pqb)localObject).jdField_a_of_type_JavaLangString = paramBaseArticleInfo.innerUniqueID;
+      ((pqb)localObject).jdField_b_of_type_JavaLangString = paramBaseArticleInfo.mVideoVid;
+      ((pqb)localObject).jdField_a_of_type_Int = paramBaseArticleInfo.busiType;
+      localqht.jdField_a_of_type_Pqb = ((pqb)localObject);
+      localqht.jdField_d_of_type_JavaLangString = paramBaseArticleInfo.thirdIcon;
+      localqht.e = paramBaseArticleInfo.thirdName;
+      localqht.jdField_f_of_type_JavaLangString = paramBaseArticleInfo.thirdAction;
+      localqht.jdField_f_of_type_Int = paramBaseArticleInfo.busiType;
+      localqht.j = paramBaseArticleInfo.innerUniqueID;
+      localqht.jdField_b_of_type_Long = paramBaseArticleInfo.mChannelID;
+      return localqht;
     }
   }
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static void a(LinearLayout paramLinearLayout, int paramInt1, int paramInt2, Activity paramActivity, int paramInt3, int paramInt4)
   {
-    return false;
+    paramLinearLayout.setVisibility(0);
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)paramLinearLayout.getLayoutParams();
+    localLayoutParams.leftMargin = paramInt3;
+    localLayoutParams.topMargin = paramInt4;
+    localLayoutParams.width = paramInt1;
+    localLayoutParams.height = (aciy.a(42.0F, paramActivity.getResources()) + paramInt2);
+    paramLinearLayout.setLayoutParams(localLayoutParams);
+  }
+  
+  public static void a(LinearLayout paramLinearLayout, ArticleInfo paramArticleInfo, Activity paramActivity, qod paramqod, int paramInt1, int paramInt2, int paramInt3)
+  {
+    omz localomz = new omz(paramActivity);
+    localomz.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramLinearLayout.findViewById(2131313236));
+    localomz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramLinearLayout.findViewById(2131302158));
+    localomz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramLinearLayout.findViewById(2131302061));
+    localomz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramLinearLayout.findViewById(2131309027));
+    localomz.b = ((TextView)paramLinearLayout.findViewById(2131299841));
+    localomz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoViewGroup = ((VideoViewGroup)paramLinearLayout.findViewById(2131313175));
+    localomz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoInfoViewGroup = ((ReadInJoyVideoInfoViewGroup)paramLinearLayout.findViewById(2131303214));
+    a(localomz, paramArticleInfo, paramLinearLayout, paramActivity, paramqod, paramInt1, paramInt2, paramInt3);
+  }
+  
+  public static void a(KandianUrlImageView paramKandianUrlImageView, URL paramURL, boolean paramBoolean, Activity paramActivity, ArticleInfo paramArticleInfo)
+  {
+    pmu.a(paramActivity, paramKandianUrlImageView);
+    if (qoe.c(paramArticleInfo) == 71) {
+      paramURL = paramArticleInfo.getVideoCoverUrlWithSmartCut(false);
+    }
+    obj.a(paramKandianUrlImageView, paramURL, paramActivity, paramBoolean);
+  }
+  
+  public static void a(ReadInJoyHeadImageView paramReadInJoyHeadImageView)
+  {
+    paramReadInJoyHeadImageView.setImageDrawable(bacm.b());
+  }
+  
+  public static void a(omz paramomz, ArticleInfo paramArticleInfo, LinearLayout paramLinearLayout, Activity paramActivity, qod paramqod, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (paramArticleInfo == null) {
+      return;
+    }
+    a(paramomz, paramArticleInfo);
+    qht localqht = paramomz.jdField_a_of_type_Qht;
+    paramomz.b.setText(obj.a(localqht.jdField_b_of_type_Int));
+    a(paramomz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView);
+    paramomz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setTag(paramArticleInfo);
+    paramomz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setContentDescription(paramArticleInfo.mSubscribeName);
+    Object localObject = paramArticleInfo.mSubscribeName;
+    if (paramArticleInfo.mSubscribeName.length() > 18) {
+      localObject = paramArticleInfo.mSubscribeName.substring(0, 17) + "…";
+    }
+    paramomz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setVisibility(0);
+    paramomz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setText((CharSequence)localObject);
+    paramomz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setContentDescription(paramArticleInfo.mSubscribeName);
+    paramomz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.getPaint().setFakeBoldText(true);
+    localObject = new HashSet();
+    paramomz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyVideoInfoViewGroup.setArticleInfo(paramArticleInfo, paramqod, paramInt1, (Set)localObject);
+    a(paramomz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, paramArticleInfo.getVideoCoverUrlWithSmartCut(false), false, paramActivity, paramArticleInfo);
+    paramomz.b.setVisibility(0);
+    paramomz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVideoViewGroup.setCustomSize(1.0F, obj.a(localqht.jdField_c_of_type_Int, localqht.jdField_d_of_type_Int));
+    float f1 = babp.a(paramActivity);
+    float f2 = f1 * obj.a(localqht.jdField_c_of_type_Int, localqht.jdField_d_of_type_Int);
+    paramArticleInfo = paramomz.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
+    paramArticleInfo.width = ((int)f1);
+    paramArticleInfo.height = ((int)f2);
+    paramomz.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams(paramArticleInfo);
+    a(paramLinearLayout, (int)f1, (int)f2, paramActivity, paramInt2, paramInt3);
+  }
+  
+  public static void a(omz paramomz, BaseArticleInfo paramBaseArticleInfo)
+  {
+    qht localqht = a(paramBaseArticleInfo);
+    localqht.jdField_a_of_type_AndroidViewView = paramomz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
+    localqht.jdField_a_of_type_Int = paramomz.jdField_a_of_type_Int;
+    localqht.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo = paramBaseArticleInfo;
+    paramomz.jdField_a_of_type_Qht = localqht;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oaz
  * JD-Core Version:    0.7.0.1
  */

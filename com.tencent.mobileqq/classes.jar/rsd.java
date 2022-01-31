@@ -1,35 +1,14 @@
-import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-
 public class rsd
-  implements Runnable
 {
-  public rsd(AuthDevActivity paramAuthDevActivity) {}
-  
-  public void run()
-  {
-    try
-    {
-      if ((AuthDevActivity.a(this.a) != null) && (AuthDevActivity.a(this.a).isShowing()))
-      {
-        AuthDevActivity.a(this.a).dismiss();
-        AuthDevActivity.a(this.a).cancel();
-      }
-      AuthDevActivity.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
-  }
+  public String a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rsd
  * JD-Core Version:    0.7.0.1
  */

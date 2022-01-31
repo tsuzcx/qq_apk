@@ -1,20 +1,15 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.widget.QQToast;
-
-public final class vgh
-  implements Runnable
+public class vgh
 {
-  public vgh(Context paramContext) {}
+  public final int a;
   
-  public void run()
+  public vgh(int paramInt)
   {
-    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131434517), 0).b(this.a.getResources().getDimensionPixelSize(2131558448));
+    this.a = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vgh
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,6 @@ public final class ac
   implements ab
 {
   public final byte[] a(byte[] paramArrayOfByte)
-    throws Exception
   {
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
     GZIPOutputStream localGZIPOutputStream = new GZIPOutputStream(localByteArrayOutputStream);
@@ -22,7 +21,6 @@ public final class ac
   }
   
   public final byte[] b(byte[] paramArrayOfByte)
-    throws Exception
   {
     paramArrayOfByte = new ByteArrayInputStream(paramArrayOfByte);
     GZIPInputStream localGZIPInputStream = new GZIPInputStream(paramArrayOfByte);

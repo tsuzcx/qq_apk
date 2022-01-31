@@ -1,22 +1,62 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import com.tencent.widget.XListView;
 
 public class andl
-  implements Runnable
+  implements andh
 {
-  public andl(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, int paramInt1, int paramInt2, int paramInt3) {}
+  private int jdField_a_of_type_Int = -16777216;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private XListView jdField_a_of_type_ComTencentWidgetXListView;
   
-  public void run()
+  public andl(XListView paramXListView)
   {
-    RemoteHandleManager.a().a().a(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.mRuntime.a().getLongAccountUin(), this.jdField_a_of_type_Int, this.b, this.c);
+    this.jdField_a_of_type_ComTencentWidgetXListView = paramXListView;
+  }
+  
+  public View a(int paramInt)
+  {
+    View localView = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(this.jdField_a_of_type_ComTencentWidgetXListView.getHeaderViewsCount() + paramInt - this.jdField_a_of_type_ComTencentWidgetXListView.getFirstVisiblePosition());
+    if (localView == null) {}
+    do
+    {
+      return null;
+      localView.setPressed(false);
+      localView.setDrawingCacheEnabled(true);
+    } while (localView.getDrawingCache() == null);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(localView.getDrawingCache());
+    localView.setDrawingCacheEnabled(false);
+    if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
+      this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_ComTencentWidgetXListView.getContext());
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundColor(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidWidgetImageView.setPadding(0, 0, 0, 0);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(new ViewGroup.LayoutParams(localView.getWidth(), localView.getHeight()));
+    return this.jdField_a_of_type_AndroidWidgetImageView;
+  }
+  
+  public void a(View paramView)
+  {
+    ((ImageView)paramView).setImageDrawable(null);
+    this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+  }
+  
+  public void a(View paramView, Point paramPoint1, Point paramPoint2) {}
+  
+  public void f(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     andl
  * JD-Core Version:    0.7.0.1
  */

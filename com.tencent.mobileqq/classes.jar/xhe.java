@@ -1,20 +1,70 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.os.Handler;
+import android.view.KeyEvent;
+import android.view.ViewGroup;
 
-public class xhe
-  implements DialogInterface.OnClickListener
+public abstract class xhe
 {
-  public xhe(SendHbActivity paramSendHbActivity) {}
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  protected xgz a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ViewGroup a()
   {
-    this.a.finish();
+    return this.jdField_a_of_type_AndroidViewViewGroup;
+  }
+  
+  public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public void a(Configuration paramConfiguration) {}
+  
+  void a(xgz paramxgz)
+  {
+    this.jdField_a_of_type_Xgz = paramxgz;
+  }
+  
+  public void a(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public boolean a(int paramInt, KeyEvent paramKeyEvent)
+  {
+    return false;
+  }
+  
+  public void b(ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
+  }
+  
+  public void b(boolean paramBoolean1, boolean paramBoolean2) {}
+  
+  public boolean e()
+  {
+    return false;
+  }
+  
+  public void f() {}
+  
+  public void h() {}
+  
+  public void k() {}
+  
+  public void l() {}
+  
+  public void p() {}
+  
+  public void s() {}
+  
+  public void t()
+  {
+    if (this.jdField_a_of_type_Xgz != null) {
+      this.jdField_a_of_type_Xgz.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     xhe
  * JD-Core Version:    0.7.0.1
  */

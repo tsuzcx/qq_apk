@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class nearby_troop_post$ReqNearbyPostInfo
-  extends MessageMicro
+  extends MessageMicro<ReqNearbyPostInfo>
 {
   public static final int UINT64_LATITUDE_FIELD_NUMBER = 2;
   public static final int UINT64_LONGTITUDE_FIELD_NUMBER = 1;
@@ -20,7 +20,7 @@ public final class nearby_troop_post$ReqNearbyPostInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.nearby_troop_post.nearby_troop_post.ReqNearbyPostInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vashealth.SportManager;
-import com.tencent.mobileqq.vashealth.StepAlarmReceiver;
-
 public class akrx
-  implements Runnable
 {
-  public akrx(StepAlarmReceiver paramStepAlarmReceiver) {}
+  public String a;
+  public byte[] a;
+  public String b;
   
-  public void run()
+  public akrx(String paramString1, String paramString2, byte[] paramArrayOfByte)
   {
-    if (this.a.a == null) {
-      return;
-    }
-    ((SportManager)this.a.a.getManager(259)).b();
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akrx
  * JD-Core Version:    0.7.0.1
  */

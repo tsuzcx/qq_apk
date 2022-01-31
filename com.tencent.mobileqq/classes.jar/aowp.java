@@ -1,43 +1,90 @@
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUBaseFilter;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.renderer.GpuImagePartsFilterGroup;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.widget.VideoFilterPlayView;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class aowp
-  implements Runnable
+public abstract class aowp
+  extends aowv
 {
-  public aowp(VideoFilterPlayView paramVideoFilterPlayView) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void run()
+  public aowp(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if (VideoFilterPlayView.b(this.a) != null)
-    {
-      VideoFilterPlayView.b(this.a).d();
-      VideoFilterPlayView.a(this.a, null);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  protected abstract int a();
+  
+  protected abstract long a();
+  
+  public SessionInfo a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  }
+  
+  public ChatMessage a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+  }
+  
+  protected abstract String a();
+  
+  public void a(SessionInfo paramSessionInfo)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
+  }
+  
+  public void a(ChatMessage paramChatMessage)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  protected abstract String b();
+  
+  public void b(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    String str = a();
+    long l = a();
+    if (bace.b(b())) {
+      return false;
     }
-    if (VideoFilterPlayView.a(this.a) != null)
-    {
-      VideoFilterPlayView.a(this.a).d();
-      VideoFilterPlayView.b(this.a, null);
+    int i = a();
+    if ((i == 2) || ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1) && (i == 8))) {
+      return false;
     }
-    if (VideoFilterPlayView.a(this.a) != null)
-    {
-      VideoFilterPlayView.a(this.a).d();
-      VideoFilterPlayView.a(this.a, null);
+    if (apck.a(str) != 2) {
+      return false;
     }
-    if (VideoFilterPlayView.a(this.a) != null)
-    {
-      VideoFilterPlayView.a(this.a).q();
-      if (QLog.isColorLevel()) {
-        QLog.w("VideoFilterPlayView", 2, "VideoPlay, surfaceDestroy success=");
-      }
+    if (!apck.a()) {
+      return false;
     }
+    if ((!TextUtils.isEmpty(str)) && (l > 0L) && (l > ((aofy)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(317)).a(azgh.a(str)).b)) {
+      return true;
+    }
+    return l > 1048576L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aowp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package cooperation.qzone.music;
 
-import ancs;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bfwx;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.json.JSONArray;
@@ -12,9 +12,9 @@ import org.json.JSONObject;
 public class BroadcastAudio
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ancs();
+  public static final Parcelable.Creator<BroadcastAudio> CREATOR = new bfwx();
   public BroadcastUrl masterUrl;
-  public ArrayList slaveUrl;
+  public ArrayList<BroadcastUrl> slaveUrl;
   
   public BroadcastAudio() {}
   

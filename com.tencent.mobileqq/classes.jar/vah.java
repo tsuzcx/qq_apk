@@ -1,32 +1,18 @@
-import android.widget.Scroller;
-import com.tencent.mobileqq.activity.aio.item.ClickedWaveView;
+import android.animation.ValueAnimator;
 
-public class vah
-  implements Runnable
+public abstract interface vah
 {
-  public vah(ClickedWaveView paramClickedWaveView) {}
+  public abstract void a(ValueAnimator paramValueAnimator);
   
-  public void run()
-  {
-    if ((this.a.a.computeScrollOffset()) || (this.a.d > 0))
-    {
-      this.a.c = this.a.a.getCurrX();
-      if (this.a.d > 0)
-      {
-        ClickedWaveView localClickedWaveView = this.a;
-        localClickedWaveView.d -= 3;
-      }
-      if (this.a.d < 0) {
-        this.a.d = 0;
-      }
-      this.a.postInvalidate();
-      this.a.postDelayed(this, 20L);
-    }
-  }
+  public abstract void b(ValueAnimator paramValueAnimator);
+  
+  public abstract void c(ValueAnimator paramValueAnimator);
+  
+  public abstract void d(ValueAnimator paramValueAnimator);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vah
  * JD-Core Version:    0.7.0.1
  */

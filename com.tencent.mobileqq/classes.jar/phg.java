@@ -1,15 +1,16 @@
-import com.tencent.biz.webviewplugin.QzonePlugin;
-import com.tencent.smtt.sdk.WebView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class phg
-  implements Runnable
+class phg
+  implements View.OnClickListener
 {
-  public phg(QzonePlugin paramQzonePlugin, byte[] paramArrayOfByte) {}
+  phg(phf paramphf) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QzonePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginQzonePlugin) != null) {
-      QzonePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginQzonePlugin).postUrl(QzonePlugin.a(this.jdField_a_of_type_ComTencentBizWebviewpluginQzonePlugin), this.jdField_a_of_type_ArrayOfByte);
+    paramView = this.a.jdField_a_of_type_Qoe.a();
+    if (paramView != null) {
+      paramView.a(null, ((opw)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
     }
   }
 }

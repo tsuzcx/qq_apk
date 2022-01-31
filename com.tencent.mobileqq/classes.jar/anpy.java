@@ -1,52 +1,61 @@
-import android.text.TextUtils;
-import android.util.Log;
-import cooperation.weiyun.sdk.download.DownloadJobContext.StatusInfo;
-import cooperation.weiyun.sdk.download.WyDownloader;
-import cooperation.weiyun.sdk.download.WyDownloader.IDownloadListener;
-import cooperation.weiyun.sdk.download.WyDownloader.IDownloadStatusListener;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class anpy
-  implements WyDownloader.IDownloadListener
 {
-  public anpy(WyDownloader paramWyDownloader, WyDownloader.IDownloadStatusListener paramIDownloadStatusListener, int paramInt) {}
+  public int a;
+  public long a;
+  public String a;
+  public List<anpv> a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public int c;
   
-  public void a(String paramString, long paramLong, float paramFloat)
+  public anpy()
   {
-    DownloadJobContext.StatusInfo localStatusInfo = new DownloadJobContext.StatusInfo();
-    localStatusInfo.c = paramString;
-    localStatusInfo.jdField_a_of_type_Int = 2;
-    localStatusInfo.jdField_b_of_type_Long = (paramFloat);
-    localStatusInfo.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader$IDownloadStatusListener.a(paramString, this.jdField_a_of_type_Int, localStatusInfo, false);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
+  public boolean equals(Object paramObject)
   {
-    Log.e("WyDownloader", "download finish:" + paramString1 + " successed:" + paramBoolean + "errorCode:" + paramInt);
-    if ((paramBoolean) && (paramString1 != null) && (!TextUtils.isEmpty(paramString2)) && (new File(paramString2).exists())) {}
-    DownloadJobContext.StatusInfo localStatusInfo;
-    for (int i = 1;; i = 0)
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramObject != null)
     {
-      localStatusInfo = new DownloadJobContext.StatusInfo();
-      localStatusInfo.jdField_b_of_type_JavaLangString = paramString2;
-      localStatusInfo.c = paramString1;
-      localStatusInfo.jdField_b_of_type_Int = paramInt;
-      localStatusInfo.jdField_a_of_type_JavaLangString = paramString3;
-      if (i == 0) {
-        break;
+      bool1 = bool2;
+      if ((paramObject instanceof anpy))
+      {
+        paramObject = (anpy)paramObject;
+        bool1 = bool2;
+        if (paramObject.jdField_a_of_type_JavaLangString != null)
+        {
+          bool1 = bool2;
+          if (this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {
+            bool1 = true;
+          }
+        }
       }
-      localStatusInfo.jdField_a_of_type_Int = 4;
-      this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader$IDownloadStatusListener.a(paramString1, this.jdField_a_of_type_Int, localStatusInfo, true);
-      return;
     }
-    localStatusInfo.jdField_a_of_type_Int = 5;
-    this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader$IDownloadStatusListener.a(paramString1, this.jdField_a_of_type_Int, localStatusInfo, true);
+    return bool1;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mUpdateTime").append("=").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" ").append("mUpdateTime").append("=").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" ").append("mSearchKey").append("=").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" ").append("mLoadOver").append("=").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" ").append("mCurPos").append("=").append(this.b);
+    localStringBuilder.append(" ").append("mOffset").append("=").append(this.c);
+    localStringBuilder.append(" ").append("size").append("=").append(this.jdField_a_of_type_JavaUtilList.size());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anpy
  * JD-Core Version:    0.7.0.1
  */

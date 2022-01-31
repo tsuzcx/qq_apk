@@ -5,17 +5,17 @@ public class SystemFaceData
 {
   public String getSharedPreferencesName()
   {
-    return "early_qq.android.system.face.gifv10";
+    return "early_qq.android.system.face.gifv14";
   }
   
   public String getStrResName()
   {
-    return "qq.android.system.face.gifv10";
+    return "qq.android.system.face.gifv14";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.xmldata.SystemFaceData
  * JD-Core Version:    0.7.0.1
  */

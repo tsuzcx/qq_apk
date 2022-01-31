@@ -10,23 +10,23 @@ import java.util.Map;
 public final class feeds_cover
   extends JceStruct
 {
-  static Map cache_MulRelsotionUrl;
+  static Map<String, String> cache_MulRelsotionUrl;
   static GameCoverInfo cache_gameCoverInfo;
-  static Map cache_mapExtInfo;
+  static Map<String, String> cache_mapExtInfo;
   static CoverPackageInfo cache_packageInfo;
-  static ArrayList cache_vecUrls;
-  public Map MulRelsotionUrl;
+  static ArrayList<Map<Integer, String>> cache_vecUrls;
+  public Map<String, String> MulRelsotionUrl;
   public GameCoverInfo gameCoverInfo;
   public String id = "";
-  public Map mapExtInfo;
+  public Map<String, String> mapExtInfo;
   public CoverPackageInfo packageInfo;
   public int photoWallCombinePic;
   public String type = "";
-  public ArrayList vecUrls;
+  public ArrayList<Map<Integer, String>> vecUrls;
   
   public feeds_cover() {}
   
-  public feeds_cover(String paramString1, Map paramMap1, CoverPackageInfo paramCoverPackageInfo, ArrayList paramArrayList, String paramString2, int paramInt, GameCoverInfo paramGameCoverInfo, Map paramMap2)
+  public feeds_cover(String paramString1, Map<String, String> paramMap1, CoverPackageInfo paramCoverPackageInfo, ArrayList<Map<Integer, String>> paramArrayList, String paramString2, int paramInt, GameCoverInfo paramGameCoverInfo, Map<String, String> paramMap2)
   {
     this.type = paramString1;
     this.MulRelsotionUrl = paramMap1;
@@ -101,7 +101,7 @@ public final class feeds_cover
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_COVER_DATE.feeds_cover
  * JD-Core Version:    0.7.0.1
  */

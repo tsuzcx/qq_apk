@@ -1,33 +1,25 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoTag;
-import dov.com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
-import java.util.List;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.concurrent.Executor;
 
-public class aodx
-  implements AbsListView.OnScrollListener
+class aodx
+  implements apcg
 {
-  int jdField_a_of_type_Int = 0;
+  aodx(aodw paramaodw, FileManagerEntity paramFileManagerEntity, Runnable paramRunnable) {}
   
-  public aodx(EditVideoTag paramEditVideoTag) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void a(String paramString)
   {
-    if ((paramInt == 0) && (this.jdField_a_of_type_Int == EditVideoTag.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoTag, EditVideoTag.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoTag)).a().size()) && (!EditVideoTag.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoTag, EditVideoTag.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoTag)).a()))
-    {
-      paramAbsListView = EditVideoTag.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoTag);
-      EditVideoTag.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoTag, EditVideoTag.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoTag)).b(paramAbsListView);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = paramString;
+    apcw.a().execute(this.jdField_a_of_type_JavaLangRunnable);
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void b(String paramString)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strApkPackageName = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aodx
  * JD-Core Version:    0.7.0.1
  */

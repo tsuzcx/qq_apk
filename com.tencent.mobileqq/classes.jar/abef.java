@@ -1,41 +1,24 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.ark.ArkAppDataReport;
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.mobileqq.ark.ArkRecommendLogic;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 
 public class abef
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public abef(ArkRecommendController paramArkRecommendController, ChatMessage paramChatMessage, SessionInfo paramSessionInfo) {}
+  public abef(NotificationActivity paramNotificationActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController) == null) {
-      return;
-    }
-    int i = "@babyQ".length();
-    String str;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.msg.length() > i) {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.msg.charAt(i) != ' ') {
-        str = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.msg.substring(i);
-      }
-    }
-    for (;;)
-    {
-      ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController).a(str, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController);
-      ArkAppDataReport.e(ArkRecommendController.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendController).a);
-      return;
-      str = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.msg.substring(i + 1);
-      continue;
-      str = "";
-    }
+    SettingCloneUtil.writeValue(this.a.app.getApp(), null, "security_scan_key", "qqsetting_security_scan_key", true);
+    this.a.app.x();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abef
  * JD-Core Version:    0.7.0.1
  */

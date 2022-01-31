@@ -1,119 +1,159 @@
-import android.content.Intent;
+import android.app.Activity;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AddAccountActivity;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideo;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideoView;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaLazyFragment;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
+import com.tencent.viola.adapter.VComponentAdapter.OnVideoViewMethodListener;
+import com.tencent.viola.core.ViolaInstance;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class rmf
-  extends AccountObserver
+  implements qjn, qmo, rmg
 {
-  public rmf(AddAccountActivity paramAddAccountActivity) {}
+  private int jdField_a_of_type_Int = -1;
+  private long jdField_a_of_type_Long;
+  protected Activity a;
+  protected VVideoView a;
+  qmp jdField_a_of_type_Qmp;
+  @Nullable
+  private rmi jdField_a_of_type_Rmi;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
   
-  public void onCheckQuickRegisterAccount(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte)
+  public rmf(Activity paramActivity, VVideoView paramVVideoView, int paramInt)
   {
-    super.onCheckQuickRegisterAccount(paramBoolean, paramInt, paramArrayOfByte);
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_AddAccountActivity", 2, "onCheckQuickRegisterAccount|isSuccess= " + paramBoolean + ",code=" + paramInt);
+    this.jdField_a_of_type_Qmp = new qmp(paramInt);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideoView = paramVVideoView;
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    qjm.a().a(paramActivity);
+    qjm.a().a(this);
+    this.jdField_a_of_type_Qmp.a(this);
+    this.jdField_a_of_type_Qmp.a(paramVVideoView);
+  }
+  
+  private int a()
+  {
+    switch (this.jdField_a_of_type_Qmp.a())
+    {
+    case 6: 
+    default: 
+      return 6;
+    case 1: 
+    case 2: 
+      return 1;
+    case 3: 
+      return 2;
+    case 4: 
+      return 3;
+    case 5: 
+      return 4;
     }
-    if (!this.a.isFinishing()) {}
+    return 5;
+  }
+  
+  public static final int a(long paramLong)
+  {
+    int i = 0;
+    if (paramLong >= 500L) {
+      i = (int)(paramLong / 1000L + 0.5D);
+    }
+    return i;
+  }
+  
+  private void a(int paramInt, Object paramObject)
+  {
     try
     {
-      this.a.dismissDialog(1);
-      if ((paramBoolean) && (paramInt == 0))
-      {
-        paramArrayOfByte = new Intent(this.a, RegisterByNicknameAndPwdActivity.class);
-        paramArrayOfByte.putExtra("key_register_binduin", this.a.app.getCurrentAccountUin());
-        paramArrayOfByte.putExtra("key_register_from_quick_register", true);
-        paramArrayOfByte.putExtra("key_register_is_phone_num_registered", true);
-        paramArrayOfByte.putExtra("not_need_verify_sms", true);
-        this.a.startActivity(paramArrayOfByte);
-        return;
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("state", paramInt);
+      if (paramObject != null) {
+        localJSONObject.put("message", paramObject);
       }
+      paramObject = new JSONObject();
+      paramObject.put("width", this.jdField_a_of_type_Qmp.b());
+      paramObject.put("height", this.jdField_a_of_type_Qmp.c());
+      localJSONObject.put("videoSize", paramObject);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideoView.a("stateChange", localJSONObject);
+      return;
     }
-    catch (Exception paramArrayOfByte)
+    catch (Exception paramObject)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-      paramArrayOfByte = new Intent(this.a, RegisterPhoneNumActivity.class);
-      this.a.startActivity(paramArrayOfByte);
+      while (!QLog.isColorLevel()) {}
+      QLog.e("VVideoControlListenerImpl", 2, "callJsStateChange,error = " + paramObject.getMessage());
     }
   }
   
-  protected void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt, byte[] paramArrayOfByte)
+  private void r()
   {
-    QLog.d("AddAccountActivity", 1, "onLoginFailed ret=" + paramInt);
-    if (!this.a.isFinishing()) {}
-    try
-    {
-      this.a.dismissDialog(0);
-      this.a.runOnUiThread(new rmg(this));
-      if (QLog.isColorLevel()) {
-        QLog.d("AddAccountActivity", 2, "onLoginFailed errorMsg = " + paramString2 + " ret=" + paramInt);
-      }
-      if ((paramString2 == null) || (paramString2.equals("")))
+    if (this.jdField_b_of_type_Boolean) {
+      try
       {
-        QQToast.a(this.a, 2131433227, 0).a();
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("hasUI", 0);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideoView.a("didEnterFullScreen", localJSONObject);
+        return;
+      }
+      catch (Exception localException)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.e("VVideoControlListenerImpl", 2, "initChangeFullScreenAnim onAnimationEnd error = : " + localException.getMessage());
         return;
       }
     }
-    catch (Exception localException)
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideoView.a("didExitFullScreen", null);
+  }
+  
+  public void a()
+  {
+    a(1, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (paramInt == 0) {
+      this.jdField_a_of_type_Qmp.e(true);
+    }
+    for (;;)
     {
-      for (;;)
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        if (this.jdField_a_of_type_Int == -1) {
+          this.jdField_a_of_type_Int = qjm.a().a(3);
+        }
+        localJSONObject.put("value", paramInt / this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideoView.a("volumeChange", localJSONObject);
+        return;
+      }
+      catch (Exception localException)
       {
         localException.printStackTrace();
       }
-      if (!TextUtils.isEmpty(paramString3))
-      {
-        Intent localIntent = new Intent(this.a, NotificationActivity.class);
-        localIntent.putExtra("type", 8);
-        if (paramInt == 40) {
-          localIntent.putExtra("msg", paramString2);
-        }
-        for (;;)
-        {
-          localIntent.putExtra("loginalias", paramString1);
-          localIntent.putExtra("loginret", paramInt);
-          localIntent.putExtra("expiredSig", paramArrayOfByte);
-          this.a.startActivity(localIntent);
-          return;
-          localIntent.putExtra("msg", paramString2 + " " + paramString3);
-        }
-      }
-      if (paramInt == 2008)
-      {
-        DialogUtil.a(this.a, 230, "提示", "对不起，你的QQ号码没有获得内测资格", "OK", null, new rmh(this), null).show();
-        QQToast.a(this.a, 2131433232, 0).a();
-        return;
-      }
-      DialogUtil.a(this.a, 230, "登录失败", paramString2, new rmi(this), null).show();
+      this.jdField_a_of_type_Qmp.e(false);
     }
   }
   
-  public void onLoginSuccess(String paramString1, String paramString2)
+  public void a(int paramInt1, int paramInt2, String paramString)
   {
-    QLog.d("AddAccountActivity", 1, "onLoginSuccess");
-  }
-  
-  protected void onLoginTimeout(String paramString)
-  {
-    QLog.d("AddAccountActivity", 1, "onLoginTimeout");
-    if (!this.a.isFinishing()) {}
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONObject localJSONObject2 = new JSONObject();
     try
     {
-      this.a.dismissDialog(0);
-      QQToast.a(this.a, 2131433227, 0).a();
+      localJSONObject1.put("code", 101);
+      localJSONObject2.put("code", paramInt1 + "-" + paramInt2);
+      localJSONObject2.put("msg", paramString);
+      localJSONObject1.put("extra", localJSONObject2);
+      a(6, localJSONObject1);
       return;
     }
-    catch (Exception paramString)
+    catch (JSONException paramString)
     {
       for (;;)
       {
@@ -122,24 +162,363 @@ public class rmf
     }
   }
   
-  protected void onUserCancel(String paramString)
+  public void a(long paramLong)
   {
-    super.onUserCancel(paramString);
-    if (!this.a.isFinishing()) {}
     try
     {
-      this.a.dismissDialog(0);
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("currentTime", a(paramLong));
+      localJSONObject.put("totalTime", this.jdField_a_of_type_Qmp.a() / 1000L);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideoView.a("playTimeChange", localJSONObject);
       return;
     }
-    catch (Exception paramString)
+    catch (Exception localException)
     {
-      paramString.printStackTrace();
+      localException.printStackTrace();
     }
+  }
+  
+  public void a(VideoPreDownloadMgr paramVideoPreDownloadMgr)
+  {
+    this.jdField_a_of_type_Qmp.a.a(paramVideoPreDownloadMgr);
+  }
+  
+  public void a(VVideoView paramVVideoView)
+  {
+    if ((this.jdField_a_of_type_Rmi != null) && (!this.jdField_a_of_type_Qmp.a()))
+    {
+      this.jdField_a_of_type_Qmp.a(this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_Qmp.a(this.jdField_a_of_type_Rmi.jdField_a_of_type_Int, this.jdField_a_of_type_Rmi.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Rmi.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Rmi.jdField_d_of_type_Int);
+    }
+  }
+  
+  public void a(VVideoView paramVVideoView, int paramInt)
+  {
+    this.jdField_a_of_type_Qmp.b(paramInt);
+  }
+  
+  public void a(VVideoView paramVVideoView, String paramString)
+  {
+    if (paramString.equals("contain")) {
+      this.jdField_a_of_type_Qmp.a(0);
+    }
+    while (!paramString.equals("cover")) {
+      return;
+    }
+    this.jdField_a_of_type_Qmp.a(2);
+  }
+  
+  public void a(VVideoView paramVVideoView, String paramString, VComponentAdapter.OnVideoViewMethodListener paramOnVideoViewMethodListener)
+  {
+    try
+    {
+      paramVVideoView = new JSONObject();
+      paramVVideoView.put("state", a());
+      paramVVideoView.put("currentTime", a(this.jdField_a_of_type_Qmp.b()));
+      paramVVideoView.put("totalTime", this.jdField_a_of_type_Qmp.a() / 1000L);
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("width", this.jdField_a_of_type_Qmp.b());
+      localJSONObject.put("height", this.jdField_a_of_type_Qmp.c());
+      paramVVideoView.put("videoSize", localJSONObject);
+      paramOnVideoViewMethodListener.OnMethodSuccess(paramString, paramVVideoView);
+      return;
+    }
+    catch (JSONException paramVVideoView)
+    {
+      paramVVideoView.printStackTrace();
+    }
+  }
+  
+  public void a(VVideoView paramVVideoView, JSONObject paramJSONObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VVideoControlListenerImpl", 2, "open: " + paramJSONObject);
+    }
+    try
+    {
+      boolean bool1 = paramJSONObject.optBoolean("autoplay", true);
+      boolean bool2 = paramJSONObject.optBoolean("autoPreplay", false);
+      a(paramVVideoView, paramJSONObject.optString("resize"));
+      c(paramVVideoView, paramJSONObject.optInt("timeupdateRate"));
+      d_(paramJSONObject.optBoolean("endWithLastFrame"));
+      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("cover_frame", false);
+      this.jdField_a_of_type_Long = (paramJSONObject.optLong("start_position", 0L) * 1000L);
+      this.jdField_a_of_type_Rmi = new rmi(paramJSONObject.getJSONObject("video_info"));
+      this.jdField_a_of_type_Qmp.e(paramJSONObject.optBoolean("muted", false));
+      if (bool1)
+      {
+        this.jdField_a_of_type_Qmp.a(this.jdField_a_of_type_Rmi.jdField_a_of_type_Int, this.jdField_a_of_type_Rmi.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Rmi.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Rmi.jdField_d_of_type_Int);
+        return;
+      }
+      if (bool2)
+      {
+        a(null);
+        return;
+      }
+    }
+    catch (JSONException paramVVideoView)
+    {
+      paramVVideoView.printStackTrace();
+    }
+  }
+  
+  public void a(VVideoView paramVVideoView, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Qmp.e(paramBoolean);
+  }
+  
+  public void a(VVideoView paramVVideoView, boolean paramBoolean, String paramString, VComponentAdapter.OnVideoViewMethodListener paramOnVideoViewMethodListener)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VVideoControlListenerImpl", 2, "deal enterFullScreen: ");
+    }
+    this.jdField_b_of_type_Boolean = true;
+    if (!paramBoolean) {
+      this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(0);
+    }
+    paramVVideoView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideoView;
+    Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
+    this.jdField_b_of_type_Int = localActivity.getWindow().getDecorView().getSystemUiVisibility();
+    qcn.a(localActivity);
+    if ((paramVVideoView.a() != null) && (paramVVideoView.a().getInstance() != null) && (paramVVideoView.a().getInstance().getFragment() != null))
+    {
+      paramVVideoView = (ViolaLazyFragment)paramVVideoView.a().getInstance().getFragment();
+      if (paramVVideoView != null)
+      {
+        paramVVideoView.o();
+        paramVVideoView.m();
+      }
+    }
+    r();
+    try
+    {
+      paramVVideoView = new JSONObject();
+      paramVVideoView.put("hasUI", false);
+      paramOnVideoViewMethodListener.OnMethodSuccess(paramString, paramVVideoView);
+      return;
+    }
+    catch (Exception paramVVideoView)
+    {
+      QLog.e("VVideoControlListenerImpl", 2, "enterFullScreen error = : " + paramVVideoView.getMessage());
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_Qmp.e(false);
+      return;
+    }
+    this.jdField_a_of_type_Qmp.e(true);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public void b()
+  {
+    a(2, null);
+  }
+  
+  public void b(int paramInt)
+  {
+    a(5, null);
+  }
+  
+  public void b(VVideoView paramVVideoView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VVideoControlListenerImpl", 2, "play: status=" + this.jdField_a_of_type_Qmp.a() + ", isPreload=" + this.jdField_a_of_type_Qmp.a() + ", videoinfo=" + this.jdField_a_of_type_Rmi + ", mStartPosition:" + this.jdField_a_of_type_Long);
+    }
+    if ((this.jdField_a_of_type_Rmi != null) && (this.jdField_a_of_type_Qmp.a())) {
+      this.jdField_a_of_type_Qmp.a(this.jdField_a_of_type_Rmi.jdField_a_of_type_Int, this.jdField_a_of_type_Rmi.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Rmi.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Rmi.jdField_d_of_type_Int);
+    }
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Qmp.b())
+      {
+        this.jdField_a_of_type_Qmp.a();
+        return;
+      }
+    } while (this.jdField_a_of_type_Rmi == null);
+    this.jdField_a_of_type_Qmp.a(this.jdField_a_of_type_Rmi.jdField_a_of_type_Int, this.jdField_a_of_type_Rmi.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Rmi.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Rmi.jdField_d_of_type_Int);
+  }
+  
+  public void b(VVideoView paramVVideoView, int paramInt) {}
+  
+  public void b(VVideoView paramVVideoView, String paramString, VComponentAdapter.OnVideoViewMethodListener paramOnVideoViewMethodListener)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VVideoControlListenerImpl", 2, "deal exitFullScreen: ");
+    }
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(1);
+    this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(1);
+    paramVVideoView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaVideonewVVideoView;
+    this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().setSystemUiVisibility(this.jdField_b_of_type_Int);
+    if ((paramVVideoView.a() != null) && (paramVVideoView.a().getInstance() != null) && (paramVVideoView.a().getInstance().getFragment() != null))
+    {
+      paramVVideoView = (ViolaLazyFragment)paramVVideoView.a().getInstance().getFragment();
+      if (paramVVideoView != null)
+      {
+        paramVVideoView.p();
+        paramVVideoView.n();
+      }
+    }
+    r();
+    if ((TextUtils.isEmpty(paramString)) && (paramOnVideoViewMethodListener != null)) {}
+    try
+    {
+      paramVVideoView = new JSONObject();
+      paramVVideoView.put("hasUI", false);
+      paramOnVideoViewMethodListener.OnMethodSuccess(paramString, paramVVideoView);
+      return;
+    }
+    catch (Exception paramVVideoView)
+    {
+      QLog.e("VVideoControlListenerImpl", 2, "exitFullScreen error = : " + paramVVideoView.getMessage());
+    }
+  }
+  
+  public void b(VVideoView paramVVideoView, JSONObject paramJSONObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VVideoControlListenerImpl", 2, "resetSrc: " + paramJSONObject);
+    }
+    this.jdField_a_of_type_Qmp.d();
+    a(paramVVideoView, paramJSONObject);
+  }
+  
+  public void b(VVideoView paramVVideoView, boolean paramBoolean) {}
+  
+  public void c()
+  {
+    a(4, null);
+  }
+  
+  public void c(int paramInt)
+  {
+    this.jdField_a_of_type_Long = (paramInt * 1000);
+  }
+  
+  public void c(VVideoView paramVVideoView)
+  {
+    this.jdField_a_of_type_Qmp.b();
+  }
+  
+  public void c(VVideoView paramVVideoView, int paramInt)
+  {
+    this.jdField_a_of_type_Qmp.c(paramInt);
+  }
+  
+  public void c(VVideoView paramVVideoView, boolean paramBoolean) {}
+  
+  public void c_(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Qmp.d(paramBoolean);
+  }
+  
+  public void d()
+  {
+    a(2, null);
+  }
+  
+  public void d(VVideoView paramVVideoView)
+  {
+    this.jdField_a_of_type_Qmp.d();
+  }
+  
+  public void d_(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Qmp.b(paramBoolean);
+  }
+  
+  public void e()
+  {
+    a(7, null);
+  }
+  
+  public void e(VVideoView paramVVideoView)
+  {
+    this.jdField_a_of_type_Qmp.d();
+    if (this.jdField_a_of_type_Rmi != null) {
+      this.jdField_a_of_type_Qmp.a(this.jdField_a_of_type_Rmi.jdField_a_of_type_Int, this.jdField_a_of_type_Rmi.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Rmi.jdField_d_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Rmi.jdField_d_of_type_Int);
+    }
+  }
+  
+  public void f()
+  {
+    a(3, null);
+  }
+  
+  public void f(VVideoView paramVVideoView)
+  {
+    this.jdField_a_of_type_Qmp.e();
+  }
+  
+  public void g()
+  {
+    this.jdField_a_of_type_Qmp.b();
+  }
+  
+  public void g(VVideoView paramVVideoView)
+  {
+    this.jdField_a_of_type_Qmp.f();
+  }
+  
+  public void h()
+  {
+    if (this.jdField_a_of_type_Qmp.g()) {
+      a(2, null);
+    }
+    while (!this.jdField_a_of_type_Qmp.f()) {
+      return;
+    }
+    a(4, null);
+  }
+  
+  public void i()
+  {
+    a(5, null);
+  }
+  
+  public void j() {}
+  
+  public void k() {}
+  
+  public void l() {}
+  
+  public void m() {}
+  
+  public void n()
+  {
+    this.jdField_a_of_type_Qmp.h();
+    qjm.a().a(true, "viola video");
+  }
+  
+  public void o()
+  {
+    this.jdField_a_of_type_Qmp.g();
+    qjm.a().a(false, "viola video");
+  }
+  
+  public void p() {}
+  
+  public void q()
+  {
+    this.jdField_a_of_type_Qmp.i();
+    qjm.a().b(this.jdField_a_of_type_AndroidAppActivity);
+    qjm.a().b(this);
+    this.jdField_a_of_type_AndroidAppActivity = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rmf
  * JD-Core Version:    0.7.0.1
  */

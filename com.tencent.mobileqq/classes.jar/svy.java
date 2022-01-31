@@ -1,19 +1,82 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.msgTabNode.roundwithdashdemo2018.widgets.StoryMsgNodeFrameLayout;
+import java.util.Iterator;
+import java.util.List;
 
 public class svy
-  implements Runnable
+  extends svq
 {
-  public svy(FriendProfileCardActivity paramFriendProfileCardActivity) {}
-  
-  public void run()
+  public svy(ViewGroup paramViewGroup)
   {
-    ThreadManager.post(new svz(this), 5, null, true);
+    super(paramViewGroup);
+  }
+  
+  protected String a(QQUserUIItem paramQQUserUIItem)
+  {
+    String str = super.a(paramQQUserUIItem);
+    paramQQUserUIItem = str;
+    if (str == null) {
+      paramQQUserUIItem = ajjy.a(2131647465);
+    }
+    return paramQQUserUIItem;
+  }
+  
+  public void a()
+  {
+    this.a.setTag(2131307635, null);
+  }
+  
+  protected void a(String paramString)
+  {
+    c(paramString);
+  }
+  
+  protected void a(String paramString, boolean paramBoolean, ssm paramssm)
+  {
+    if ((!TextUtils.isEmpty(paramssm.j)) && (!paramBoolean))
+    {
+      this.a.setNodeName(paramString, paramssm.j);
+      return;
+    }
+    super.a(paramString, paramBoolean, paramssm);
+  }
+  
+  public void a(ssm paramssm)
+  {
+    super.a(paramssm);
+    this.a.setDisplayState(2);
+    String str;
+    if (!TextUtils.equals((String)this.a.getTag(2131307635), paramssm.jdField_a_of_type_JavaLangString))
+    {
+      if ((paramssm.jdField_a_of_type_JavaUtilList == null) || (paramssm.jdField_a_of_type_JavaUtilList.size() <= 0)) {
+        break label168;
+      }
+      str = ((ste)paramssm.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString;
+      Iterator localIterator = paramssm.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        ste localste = (ste)localIterator.next();
+        if (!localste.jdField_a_of_type_Boolean) {
+          str = localste.jdField_a_of_type_JavaLangString;
+        }
+      }
+    }
+    for (;;)
+    {
+      urp.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramssm.jdField_a_of_type_JavaLangString, "1", "", str });
+      this.a.setTag(2131307635, paramssm.jdField_a_of_type_JavaLangString);
+      return;
+      continue;
+      label168:
+      str = "";
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     svy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
 
 public class afiq
-  implements Runnable
+  extends RecyclerView.ViewHolder
 {
-  public afiq(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  TextView a;
   
-  public void run()
+  afiq(View paramView)
   {
-    EntityManager localEntityManager = this.a.a.app.getEntityManagerFactory().createEntityManager();
-    if (localEntityManager != null)
-    {
-      localEntityManager.a(NearbyProfileDisplayPanel.a(this.a));
-      localEntityManager.a();
-    }
+    super(paramView);
+    this.a = ((TextView)paramView.findViewById(2131312663));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afiq
  * JD-Core Version:    0.7.0.1
  */

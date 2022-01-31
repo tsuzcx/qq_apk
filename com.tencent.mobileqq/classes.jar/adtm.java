@@ -1,23 +1,24 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import android.view.View;
+import com.tencent.mobileqq.troop.widget.TroopSignVideoView;
+import java.io.File;
 
-public class adtm
-  implements DialogInterface.OnClickListener
+class adtm
+  implements adto
 {
-  public adtm(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
+  adtm(adtj paramadtj, String paramString, adtp paramadtp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    this.a.a(false);
-    com.tencent.mobileqq.app.PhoneContactManagerImp.g = false;
-    this.a.a.finish();
+    if (new File(this.jdField_a_of_type_JavaLangString).exists())
+    {
+      this.jdField_a_of_type_Adtp.a.a(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Adtp.f.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adtm
  * JD-Core Version:    0.7.0.1
  */

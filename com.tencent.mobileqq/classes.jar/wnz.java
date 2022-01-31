@@ -1,43 +1,36 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.gdtad.api.GdtAd;
+import com.tencent.qphone.base.util.QLog;
 
 public class wnz
-  implements TextView.OnEditorActionListener
+  implements yka
 {
-  public wnz(SearchBaseActivity paramSearchBaseActivity) {}
+  public wnz(TroopGiftPanel paramTroopGiftPanel) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public void a(GdtAd paramGdtAd)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if (paramInt != 3)
-    {
-      bool1 = bool2;
-      if (paramKeyEvent != null)
-      {
-        bool1 = bool2;
-        if (paramKeyEvent.getKeyCode() != 66) {}
-      }
-    }
-    else
-    {
-      paramTextView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-      if (!TextUtils.isEmpty(paramTextView)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramTextView, false);
-      }
-      bool1 = true;
-    }
-    return bool1;
+    QLog.i("TroopGiftPanel", 1, "onAdLoaded");
+    TroopGiftPanel.a(this.a, paramGdtAd);
+  }
+  
+  public void a(GdtAd paramGdtAd, yjz paramyjz)
+  {
+    QLog.e("TroopGiftPanel", 1, "onAdFailedToLoad: " + paramyjz.a());
+  }
+  
+  public void b(GdtAd paramGdtAd)
+  {
+    QLog.i("TroopGiftPanel", 1, "onAdImpression");
+  }
+  
+  public void c(GdtAd paramGdtAd)
+  {
+    QLog.i("TroopGiftPanel", 1, "onAdClicked");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wnz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.FetchCommentObserver;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListAdapter;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.LBSInfo;
 
-public class lmk
-  implements ArticleCommentModule.FetchCommentObserver
+public final class lmk
+  implements Parcelable.Creator<LBSInfo>
 {
-  public lmk(ReadInJoySecondCommentListAdapter paramReadInJoySecondCommentListAdapter) {}
-  
-  public void a(ArticleInfo paramArticleInfo)
+  public LBSInfo a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyCommentListView", 2, "second comment bottom refresh success");
-    }
-    ReadInJoySecondCommentListAdapter.a(this.a).a(true);
-    this.a.notifyDataSetChanged();
+    return new LBSInfo(paramParcel);
   }
   
-  public void a(ArticleInfo paramArticleInfo, int paramInt, String paramString)
+  public LBSInfo[] a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyCommentListView", 2, "second comment bottom refresh failed,err code =" + paramInt + " errMsg =" + paramString);
-    }
-    ReadInJoySecondCommentListAdapter.a(this.a).a();
+    return new LBSInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lmk
  * JD-Core Version:    0.7.0.1
  */

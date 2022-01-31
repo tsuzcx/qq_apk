@@ -1,53 +1,127 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.emoticonview.FavoriteEmotionAdapter;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.MQLruCache;
+import android.util.DisplayMetrics;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class acod
-  implements URLDrawableDownListener
 {
-  public acod(FavoriteEmotionAdapter paramFavoriteEmotionAdapter, EmoticonInfo paramEmoticonInfo, URLImageView paramURLImageView1, URLImageView paramURLImageView2) {}
+  public static final int a;
+  String a;
+  int b;
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  static
   {
-    QLog.e("FavoriteEmotionAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo.toString());
-    FavoriteEmotionAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmotionAdapter, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
+    jdField_a_of_type_Int = (int)(32.0F * BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density + 0.5F);
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public static int a(String paramString)
   {
-    QLog.e("FavoriteEmotionAdapter", 1, "onLoadFailed: " + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo.toString());
-    FavoriteEmotionAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmotionAdapter, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    QLog.e("FavoriteEmotionAdapter", 1, "onLoadInterrupted: " + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo.toString());
-    FavoriteEmotionAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmotionAdapter, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("FavoriteEmotionAdapter", 2, "onLoadProgressed: " + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo.toString());
+    if (paramString.equalsIgnoreCase("Emoji")) {
+      return 0;
     }
-    FavoriteEmotionAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmotionAdapter, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
+    if (paramString.equalsIgnoreCase("Face")) {
+      return 1;
+    }
+    if (paramString.equalsIgnoreCase("Image")) {
+      return 2;
+    }
+    return -1;
   }
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public static Drawable a(Context paramContext, acod paramacod)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FavoriteEmotionAdapter", 2, "onLoadSuccessed: " + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonInfo.toString());
+    Object localObject = null;
+    switch (paramacod.b)
+    {
+    default: 
+      paramContext = localObject;
+    case 0: 
+    case 1: 
+      do
+      {
+        do
+        {
+          int i;
+          do
+          {
+            return paramContext;
+            i = Integer.valueOf(paramacod.jdField_a_of_type_JavaLangString).intValue();
+            paramContext = localObject;
+          } while (i < 0);
+          paramacod = axku.a(i);
+          paramContext = paramacod;
+        } while (paramacod == null);
+        paramacod.setBounds(new Rect(0, 0, jdField_a_of_type_Int, jdField_a_of_type_Int));
+        return paramacod;
+        paramacod = a(paramacod.jdField_a_of_type_JavaLangString);
+        paramContext = paramacod;
+      } while (paramacod == null);
+      paramacod.setBounds(new Rect(0, 0, jdField_a_of_type_Int, jdField_a_of_type_Int));
+      return paramacod;
     }
-    FavoriteEmotionAdapter.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewFavoriteEmotionAdapter, this.jdField_a_of_type_ComTencentImageURLImageView, this.b);
+    String str2 = acnz.jdField_a_of_type_JavaLangString + paramacod.jdField_a_of_type_JavaLangString;
+    String str1 = "JumpImage:" + str2;
+    Bitmap localBitmap = (Bitmap)BaseApplicationImpl.sImageCache.get(str1);
+    localObject = localBitmap;
+    if (localBitmap == null)
+    {
+      localBitmap = azvq.a(str2);
+      if (localBitmap == null) {
+        break label248;
+      }
+      BaseApplicationImpl.sImageCache.put(str1, localBitmap);
+      localObject = localBitmap;
+    }
+    for (;;)
+    {
+      paramContext = new BitmapDrawable(paramContext.getResources(), localObject);
+      paramContext.setBounds(new Rect(0, 0, jdField_a_of_type_Int, jdField_a_of_type_Int));
+      return paramContext;
+      label248:
+      localObject = localBitmap;
+      if (QLog.isColorLevel())
+      {
+        QLog.e("AioAnimationRule", 2, "decodeFile error, fileName: " + paramacod.jdField_a_of_type_JavaLangString);
+        localObject = localBitmap;
+      }
+    }
+  }
+  
+  public static Drawable a(String paramString)
+  {
+    int j = axjs.a.length;
+    int i = 0;
+    if (i < j) {
+      if (paramString.equals(axjs.a[i]))
+      {
+        j = i;
+        if (QLog.isColorLevel()) {
+          QLog.d("AioAnimationRule", 2, "find str = " + paramString + ", index = " + i);
+        }
+      }
+    }
+    for (j = i;; j = -1)
+    {
+      if (j < 0)
+      {
+        return null;
+        i += 1;
+        break;
+      }
+      return axku.a(j, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acod
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.activity.RecommendTroopAdapter;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.qphone.base.util.QLog;
 
-public class aizy
-  implements View.OnClickListener
+class aizy
+  extends ajad
 {
-  public aizy(RecommendTroopAdapter paramRecommendTroopAdapter, RecommendTroopItem paramRecommendTroopItem) {}
+  aizy(aizv paramaizv) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopActivityRecommendTroopAdapter.b(this.jdField_a_of_type_ComTencentMobileqqTroopDataRecommendTroopItem.uin);
+    QLog.d("ApolloGameUtil", 2, " onFailure  the http retcode = " + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aizy
  * JD-Core Version:    0.7.0.1
  */

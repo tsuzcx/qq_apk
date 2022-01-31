@@ -1,19 +1,32 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
-import com.tencent.mobileqq.transfile.GroupPicUploadProcessor;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class aivg
-  implements ITransCallbackForReport
+class aivg
+  implements aiuf
 {
-  public aivg(GroupPicUploadProcessor paramGroupPicUploadProcessor) {}
+  aivg(aivd paramaivd, File paramFile, String paramString) {}
   
-  public void onFailed(int paramInt, String paramString1, String paramString2)
+  public void a(boolean paramBoolean, int paramInt)
   {
-    this.a.a(false, this.a.j, paramString1, paramString2);
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloPluginRscLoader", 2, "getApolloRsc checkDownloadFaceData onDownLoadFinish: sucess:" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      if (this.jdField_a_of_type_JavaIoFile.exists())
+      {
+        this.jdField_a_of_type_Aivd.a(this.jdField_a_of_type_JavaLangString, 0, ajjy.a(2131634691));
+        return;
+      }
+      this.jdField_a_of_type_Aivd.a(this.jdField_a_of_type_JavaLangString, 2, ajjy.a(2131634720));
+      return;
+    }
+    this.jdField_a_of_type_Aivd.a(this.jdField_a_of_type_JavaLangString, 2, ajjy.a(2131634702));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aivg
  * JD-Core Version:    0.7.0.1
  */

@@ -14,22 +14,11 @@ public class AVCodec
   private static final int MSG_PARAM_PROCESS_ONE_FRAME = 8;
   private static AVCodec instance = new AVCodec();
   public String TAG = getClass().getSimpleName();
-  private List<AVCodecCallback> mCallbackList = new ArrayList();
+  private List<AVCodec.AVCodecCallback> mCallbackList = new ArrayList();
   
   static
   {
-    CommonThread.post(new Runnable()
-    {
-      public void run()
-      {
-        try
-        {
-          AVCodec.getCallbackMethods();
-          return;
-        }
-        catch (UnsatisfiedLinkError localUnsatisfiedLinkError) {}
-      }
-    });
+    CommonThread.post(new AVCodec.1());
   }
   
   private int callFunction(MessageStruct paramMessageStruct)
@@ -52,9 +41,9 @@ public class AVCodec
       int i;
       try
       {
-        AVCodecCallback[] arrayOfAVCodecCallback = new AVCodecCallback[this.mCallbackList.size()];
-        i = 0;
+        AVCodec.AVCodecCallback[] arrayOfAVCodecCallback = new AVCodec.AVCodecCallback[this.mCallbackList.size()];
         int j = arrayOfAVCodecCallback.length;
+        i = 0;
         if (i >= j)
         {
           if (arrayOfAVCodecCallback != null)
@@ -68,7 +57,7 @@ public class AVCodec
         }
         else
         {
-          arrayOfAVCodecCallback[i] = ((AVCodecCallback)this.mCallbackList.get(i));
+          arrayOfAVCodecCallback[i] = ((AVCodec.AVCodecCallback)this.mCallbackList.get(i));
           i += 1;
           continue;
         }
@@ -76,27 +65,27 @@ public class AVCodec
       }
       finally {}
       label75:
-      AVCodecCallback localAVCodecCallback;
+      AVCodec.AVCodecCallback localAVCodecCallback;
       localAVCodecCallback.onAVCodecEvent(localAVCodecCallback, paramMessageStruct);
       i += 1;
     }
   }
   
   /* Error */
-  public boolean addCodecCallback(AVCodecCallback paramAVCodecCallback)
+  public boolean addCodecCallback(AVCodec.AVCodecCallback paramAVCodecCallback)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 54	com/tencent/maxvideo/mediadevice/AVCodec:mCallbackList	Ljava/util/List;
+    //   3: getfield 51	com/tencent/maxvideo/mediadevice/AVCodec:mCallbackList	Ljava/util/List;
     //   6: aload_1
-    //   7: invokeinterface 83 2 0
+    //   7: invokeinterface 82 2 0
     //   12: ifne +20 -> 32
     //   15: aload_0
-    //   16: getfield 54	com/tencent/maxvideo/mediadevice/AVCodec:mCallbackList	Ljava/util/List;
+    //   16: getfield 51	com/tencent/maxvideo/mediadevice/AVCodec:mCallbackList	Ljava/util/List;
     //   19: aload_1
-    //   20: invokeinterface 86 2 0
+    //   20: invokeinterface 85 2 0
     //   25: pop
     //   26: iconst_1
     //   27: istore_2
@@ -115,7 +104,7 @@ public class AVCodec
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	42	0	this	AVCodec
-    //   0	42	1	paramAVCodecCallback	AVCodecCallback
+    //   0	42	1	paramAVCodecCallback	AVCodec.AVCodecCallback
     //   27	7	2	bool	boolean
     // Exception table:
     //   from	to	target	type
@@ -129,7 +118,7 @@ public class AVCodec
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 54	com/tencent/maxvideo/mediadevice/AVCodec:mCallbackList	Ljava/util/List;
+    //   3: getfield 51	com/tencent/maxvideo/mediadevice/AVCodec:mCallbackList	Ljava/util/List;
     //   6: astore_1
     //   7: aload_1
     //   8: ifnonnull +6 -> 14
@@ -137,8 +126,8 @@ public class AVCodec
     //   12: monitorexit
     //   13: return
     //   14: aload_0
-    //   15: getfield 54	com/tencent/maxvideo/mediadevice/AVCodec:mCallbackList	Ljava/util/List;
-    //   18: invokeinterface 89 1 0
+    //   15: getfield 51	com/tencent/maxvideo/mediadevice/AVCodec:mCallbackList	Ljava/util/List;
+    //   18: invokeinterface 88 1 0
     //   23: goto -12 -> 11
     //   26: astore_1
     //   27: aload_0
@@ -269,13 +258,13 @@ public class AVCodec
   }
   
   /* Error */
-  public boolean removeCodecCallback(AVCodecCallback paramAVCodecCallback)
+  public boolean removeCodecCallback(AVCodec.AVCodecCallback paramAVCodecCallback)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 54	com/tencent/maxvideo/mediadevice/AVCodec:mCallbackList	Ljava/util/List;
+    //   3: getfield 51	com/tencent/maxvideo/mediadevice/AVCodec:mCallbackList	Ljava/util/List;
     //   6: astore_3
     //   7: aload_3
     //   8: ifnonnull +9 -> 17
@@ -286,9 +275,9 @@ public class AVCodec
     //   15: iload_2
     //   16: ireturn
     //   17: aload_0
-    //   18: getfield 54	com/tencent/maxvideo/mediadevice/AVCodec:mCallbackList	Ljava/util/List;
+    //   18: getfield 51	com/tencent/maxvideo/mediadevice/AVCodec:mCallbackList	Ljava/util/List;
     //   21: aload_1
-    //   22: invokeinterface 150 2 0
+    //   22: invokeinterface 149 2 0
     //   27: istore_2
     //   28: goto -15 -> 13
     //   31: astore_1
@@ -299,7 +288,7 @@ public class AVCodec
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	36	0	this	AVCodec
-    //   0	36	1	paramAVCodecCallback	AVCodecCallback
+    //   0	36	1	paramAVCodecCallback	AVCodec.AVCodecCallback
     //   12	16	2	bool	boolean
     //   6	2	3	localList	List
     // Exception table:
@@ -341,11 +330,6 @@ public class AVCodec
     MessageStruct localMessageStruct = new MessageStruct(83886081);
     localMessageStruct.mObj0 = WatermarkRecordInfo.getJson(paramList);
     return callFunction(localMessageStruct);
-  }
-  
-  public static abstract interface AVCodecCallback
-  {
-    public abstract void onAVCodecEvent(AVCodecCallback paramAVCodecCallback, MessageStruct paramMessageStruct);
   }
 }
 

@@ -9,13 +9,13 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_service$RspDiscoveryShareGroupList
-  extends MessageMicro
+  extends MessageMicro<RspDiscoveryShareGroupList>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field is_end = PBField.initUInt32(0);
   public final PBBytesField next_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
   public qqstory_struct.ErrorInfo result = new qqstory_struct.ErrorInfo();
-  public final PBRepeatField share_group_unionid_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> share_group_unionid_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
   
   static
   {
@@ -26,7 +26,7 @@ public final class qqstory_service$RspDiscoveryShareGroupList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspDiscoveryShareGroupList
  * JD-Core Version:    0.7.0.1
  */

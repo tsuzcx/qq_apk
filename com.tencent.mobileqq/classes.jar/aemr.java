@@ -1,19 +1,35 @@
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class aemr
-  implements Runnable
+class aemr
+  implements View.OnClickListener
 {
-  public aemr(MagicfaceViewController paramMagicfaceViewController) {}
+  aemr(aemq paramaemq) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.g();
+    if ((BaseActivity.sTopActivity instanceof FragmentActivity))
+    {
+      paramView = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+      if (paramView != null)
+      {
+        paramView = paramView.a();
+        if (paramView != null) {
+          paramView.b(aemq.a(this.a));
+        }
+      }
+      alfo.a().a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aemr
  * JD-Core Version:    0.7.0.1
  */

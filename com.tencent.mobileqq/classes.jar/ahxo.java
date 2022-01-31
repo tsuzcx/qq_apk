@@ -1,25 +1,33 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class ahxo
-  implements Runnable
+  implements MediaPlayer.OnCompletionListener
 {
-  ahxo(ahxn paramahxn) {}
+  ahxo(ahxk paramahxk, int paramInt, String paramString) {}
   
-  public void run()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment.isDetached()) {}
-    do
+    QLog.e("QVipSpecialSoundWebViewPlugin", 1, "play completed, soundId:" + this.jdField_a_of_type_Int);
+    try
     {
+      paramMediaPlayer = new JSONObject();
+      paramMediaPlayer.put("code", 1);
+      this.jdField_a_of_type_Ahxk.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramMediaPlayer.toString() });
       return;
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment.c();
-    } while ((TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment.b)) && (!this.a.jdField_a_of_type_Boolean));
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment.a(this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentBaseSearchFragment.b);
+    }
+    catch (JSONException paramMediaPlayer)
+    {
+      QLog.e("QVipSpecialSoundWebViewPlugin", 1, "onCompletion: " + this.jdField_a_of_type_Int, paramMediaPlayer);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahxo
  * JD-Core Version:    0.7.0.1
  */

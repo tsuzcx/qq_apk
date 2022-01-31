@@ -1,26 +1,24 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v4.app.FragmentActivity;
-import android.widget.ImageView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.armap.NonMainAppHeadLoader.FaceObserver;
-import com.tencent.mobileqq.worldcup.WorldCupShareFragment;
+import android.app.Dialog;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class alga
-  implements NonMainAppHeadLoader.FaceObserver
+class alga
+  implements View.OnClickListener
 {
-  public alga(WorldCupShareFragment paramWorldCupShareFragment) {}
+  alga(alfy paramalfy) {}
   
-  public void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    if (WorldCupShareFragment.a(this.a).getCurrentAccountUin().equals(paramString1)) {
-      ((ImageView)this.a.getActivity().findViewById(2131375546)).setImageDrawable(new BitmapDrawable(this.a.getResources(), paramBitmap));
+    if ((alfy.a(this.a) == 0) && (!TextUtils.isEmpty(alfy.b(this.a)))) {
+      alfy.a(this.a, null);
     }
+    alfy.a(this.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alga
  * JD-Core Version:    0.7.0.1
  */

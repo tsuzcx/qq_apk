@@ -1,29 +1,25 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils.4;
 
-public final class saq
-  implements DialogInterface.OnClickListener
+public class saq
+  implements rcu
 {
-  public saq(QQAppInterface paramQQAppInterface, Context paramContext, ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
+  public saq(WeishiUtils.4 param4) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(rcw paramrcw, int paramInt) {}
+  
+  public void a(rcw paramrcw, Throwable paramThrowable)
   {
-    paramDialogInterface.dismiss();
-    PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, 1, 16);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener.c();
-    }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80067FC", "0X80067FC", 1, 0, "", "", "", "");
+    sai.b("PreloadCoverImgLog", "onFail request = " + paramrcw);
+  }
+  
+  public void a(rcw paramrcw, rcs paramrcs)
+  {
+    sai.b("PreloadCoverImgLog", "onSuccess request = " + paramrcw);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     saq
  * JD-Core Version:    0.7.0.1
  */

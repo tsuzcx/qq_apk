@@ -1,33 +1,41 @@
-import android.os.Bundle;
+import android.content.Context;
 import android.view.View;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.TextView;
 
-public class nwp
-  implements ActionSheet.OnButtonClickListener
+class nwp
+  implements begw
 {
-  public nwp(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, ActionSheet paramActionSheet) {}
+  nwp(nwk paramnwk, begr parambegr, int[] paramArrayOfInt, Context paramContext, nwd paramnwd) {}
   
   public void OnClick(View paramView, int paramInt)
   {
-    if (UIUtils.b()) {}
-    do
-    {
+    this.jdField_a_of_type_Begr.dismiss();
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfInt.length)) {
       return;
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
-    } while (!"查看群资料卡".equals(this.jdField_a_of_type_ComTencentWidgetActionSheet.a(paramInt)));
-    paramView = TroopInfoActivity.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.c, 0);
-    paramView.putInt("extra_last_open_from", this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.a);
-    ChatSettingForTroop.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity, paramView, 2);
+    }
+    paramView = this.jdField_a_of_type_AndroidContentContext.getString(this.jdField_a_of_type_ArrayOfInt[paramInt]);
+    bafb localbafb = new bafb(this.jdField_a_of_type_AndroidContentContext, 2131690181);
+    localbafb.setContentView(2131493323);
+    localbafb.setMessage(String.format(this.jdField_a_of_type_AndroidContentContext.getString(2131652533), new Object[] { paramView }));
+    localbafb.setTitle(2131652534);
+    ViewGroup.LayoutParams localLayoutParams = localbafb.getMessageTextView().getLayoutParams();
+    if ((localLayoutParams instanceof ViewGroup.MarginLayoutParams))
+    {
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).leftMargin = bajq.a(12.0F);
+      ((ViewGroup.MarginLayoutParams)localLayoutParams).rightMargin = bajq.a(12.0F);
+      localbafb.getMessageTextView().setLayoutParams(localLayoutParams);
+    }
+    localbafb.setTag(paramView);
+    localbafb.setPositiveButton(2131652536, new nwq(this, paramView, paramInt + 1));
+    localbafb.setNegativeButton(2131652535, new nwr(this));
+    localbafb.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nwp
  * JD-Core Version:    0.7.0.1
  */

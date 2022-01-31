@@ -1,65 +1,135 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emoticonview.EmoticonUtils;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager;
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager.RandomDrawableParam;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import android.content.Context;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CameraEmotionData;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
-class aelx
-  extends DownloadListener
+public class aelx
+  extends aelk
 {
-  aelx(aelw paramaelw, String paramString) {}
+  private CameraEmotionData jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData;
+  private String jdField_a_of_type_JavaLangString;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public aelx(QQAppInterface paramQQAppInterface, CameraEmotionData paramCameraEmotionData)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PngFrameManager", 2, "func onDone.【pngZip】");
+    this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData = paramCameraEmotionData;
+    this.jdField_a_of_type_JavaLangString = ((anbo)paramQQAppInterface.getManager(333)).a(paramCameraEmotionData);
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.exposeNum;
+  }
+  
+  public URLDrawable.URLDrawableOptions a()
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mExtraInfo = this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.url;
+    return localURLDrawableOptions;
+  }
+  
+  public URLDrawable a(URL paramURL, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
+  {
+    if (paramURL == null) {
+      return null;
     }
-    for (;;)
+    return super.a(paramURL, paramURLDrawableOptions);
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public URL a()
+  {
+    try
     {
-      synchronized (this.jdField_a_of_type_Aelw.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager)
+      URL localURL1 = new URL("protocol_vas_extension_image", "BUSINESS_CAMERA_EMO_PANEL_DYNAMIC", this.jdField_a_of_type_JavaLangString);
+      if (localURL1 == null)
       {
-        if (this.jdField_a_of_type_Aelw.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.a != null)
-        {
-          if (paramDownloadTask.a() != 3) {
-            this.jdField_a_of_type_Aelw.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.a.obtainMessage(226, this.jdField_a_of_type_Aelw.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam).sendToTarget();
-          }
-        }
-        else {
-          return;
-        }
-      }
-      try
-      {
-        FileUtils.a(this.jdField_a_of_type_JavaLangString, EmoticonUtils.z.replace("[epId]", this.jdField_a_of_type_Aelw.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_JavaLangString), false);
-        new File(this.jdField_a_of_type_JavaLangString).delete();
-        this.jdField_a_of_type_Aelw.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.b(this.jdField_a_of_type_Aelw.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.a.epId);
-        this.jdField_a_of_type_Aelw.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.a.obtainMessage(225, this.jdField_a_of_type_Aelw.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam).sendToTarget();
-        continue;
-        paramDownloadTask = finally;
-        throw paramDownloadTask;
-      }
-      catch (IOException paramDownloadTask)
-      {
-        for (;;)
-        {
-          paramDownloadTask.printStackTrace();
-        }
+        QLog.e("StickerRecCameraData", 1, "StickerLocalRecData getURL url = null");
+        return null;
       }
     }
+    catch (MalformedURLException localMalformedURLException)
+    {
+      URL localURL2;
+      for (;;)
+      {
+        QLog.e("StickerRecCameraData", 1, "StickerLocalRecData getURL url exception e = " + localMalformedURLException.getMessage());
+        localURL2 = null;
+      }
+      return localURL2;
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    ((anbh)paramQQAppInterface.getManager(334)).c(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData);
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
+  {
+    if (((paramContext instanceof BaseActivity)) && (ascr.a(paramSessionInfo.jdField_a_of_type_Int, paramSessionInfo.jdField_a_of_type_JavaLangString)))
+    {
+      paramContext = (BaseActivity)paramContext;
+      bbmy.a(paramQQAppInterface.getApp(), ajjy.a(2131648600), 0).b(paramContext.getTitleBarHeight());
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    aael.a(paramQQAppInterface, paramContext, paramSessionInfo, this.jdField_a_of_type_JavaLangString, true, this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.strContext);
+    ((anbh)paramQQAppInterface.getManager(334)).b(this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.clickNum;
+  }
+  
+  public String b()
+  {
+    String str = this.jdField_a_of_type_ComTencentMobileqqDataCameraEmotionData.md5;
+    if (str != null) {
+      return str.toLowerCase();
+    }
+    return null;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public int c()
+  {
+    return 3;
+  }
+  
+  public String c()
+  {
+    return "a-";
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aelx
  * JD-Core Version:    0.7.0.1
  */

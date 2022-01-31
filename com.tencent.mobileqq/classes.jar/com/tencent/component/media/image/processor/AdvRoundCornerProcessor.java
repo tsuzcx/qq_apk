@@ -21,10 +21,11 @@ import com.tencent.component.media.image.drawable.SpecifiedBitmapDrawable;
 public class AdvRoundCornerProcessor
   extends ImageProcessor
 {
-  private float jdField_a_of_type_Float = -1.0F;
-  private int jdField_a_of_type_Int = 0;
-  private float[] jdField_a_of_type_ArrayOfFloat;
-  private int b = 0;
+  private static final String TAG = "AdvRoundCornerProcessor";
+  private float mRadius = -1.0F;
+  private float[] mRadiusArray;
+  private int requestedHeight = 0;
+  private int requestedWidth = 0;
   
   @Public
   public AdvRoundCornerProcessor(float paramFloat)
@@ -42,8 +43,8 @@ public class AdvRoundCornerProcessor
   public AdvRoundCornerProcessor(float[] paramArrayOfFloat, int paramInt1, int paramInt2)
   {
     setRadiusArray(paramArrayOfFloat);
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.requestedWidth = paramInt1;
+    this.requestedHeight = paramInt2;
   }
   
   public static BitmapReference getRoundedCornerBitmap(BitmapReference paramBitmapReference, float[] paramArrayOfFloat, int paramInt1, int paramInt2)
@@ -82,8 +83,8 @@ public class AdvRoundCornerProcessor
   public float getRadius()
   {
     float f = 0.0F;
-    if (this.jdField_a_of_type_Float > 0.0F) {
-      f = this.jdField_a_of_type_Float;
+    if (this.mRadius > 0.0F) {
+      f = this.mRadius;
     }
     return f;
   }
@@ -91,7 +92,7 @@ public class AdvRoundCornerProcessor
   @Public
   public float[] getRadiusArray()
   {
-    return this.jdField_a_of_type_ArrayOfFloat;
+    return this.mRadiusArray;
   }
   
   public int getType()
@@ -101,14 +102,14 @@ public class AdvRoundCornerProcessor
   
   public Drawable process(Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_ArrayOfFloat == null) {}
+    if (this.mRadiusArray == null) {}
     BitmapReference localBitmapReference;
     do
     {
       return paramDrawable;
       localBitmapReference = ImageManagerEnv.g().drawableToBitmap(paramDrawable);
     } while (localBitmapReference == null);
-    paramDrawable = getRoundedCornerBitmap(localBitmapReference, this.jdField_a_of_type_ArrayOfFloat, this.jdField_a_of_type_Int, this.b);
+    paramDrawable = getRoundedCornerBitmap(localBitmapReference, this.mRadiusArray, this.requestedWidth, this.requestedHeight);
     if (paramDrawable == null) {
       return null;
     }
@@ -118,12 +119,12 @@ public class AdvRoundCornerProcessor
   @Public
   public void setRadius(float paramFloat)
   {
-    this.jdField_a_of_type_Float = paramFloat;
-    this.jdField_a_of_type_ArrayOfFloat = new float[8];
+    this.mRadius = paramFloat;
+    this.mRadiusArray = new float[8];
     int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfFloat.length)
+    while (i < this.mRadiusArray.length)
     {
-      this.jdField_a_of_type_ArrayOfFloat[i] = paramFloat;
+      this.mRadiusArray[i] = paramFloat;
       i += 1;
     }
   }
@@ -131,7 +132,7 @@ public class AdvRoundCornerProcessor
   @Public
   public void setRadiusArray(float[] paramArrayOfFloat)
   {
-    this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat;
+    this.mRadiusArray = paramArrayOfFloat;
   }
 }
 

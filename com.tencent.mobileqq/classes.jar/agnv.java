@@ -1,19 +1,29 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
 
 public class agnv
-  implements Runnable
+  extends Handler
 {
-  public agnv(ScanTorchActivity paramScanTorchActivity) {}
+  public agnv(ThemeHbFragment paramThemeHbFragment) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    ScanTorchActivity.c(this.a, true);
-    ScanTorchActivity.k(this.a);
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+    } while (TextUtils.isEmpty(ThemeHbFragment.a(this.a)));
+    ThemeHbFragment.a(this.a).setText(ThemeHbFragment.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agnv
  * JD-Core Version:    0.7.0.1
  */

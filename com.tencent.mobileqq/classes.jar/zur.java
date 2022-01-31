@@ -1,51 +1,35 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.trooponline.data.TroopOnlineMemberManager;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xa2a.oidb_0xa2a.ReqBody;
+import android.widget.EditText;
+import com.tencent.mobileqq.Doraemon.test.TestAppFragment;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class zur
-  implements Runnable
+  extends zuu
 {
-  public zur(TroopHandler paramTroopHandler, String paramString) {}
-  
-  public void run()
+  public zur(TestAppFragment paramTestAppFragment, EditText paramEditText, JSONObject paramJSONObject)
   {
-    Object localObject = (TroopOnlineMemberManager)this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.b.getManager(233);
-    if (NetConnInfoCenter.getServerTime() < ((TroopOnlineMemberManager)localObject).c(this.jdField_a_of_type_JavaLangString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopHandler", 2, "getAllOnlineMemberList, too frequency");
-      }
-      localObject = ((TroopOnlineMemberManager)localObject).b(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a(98, true, new Object[] { this.jdField_a_of_type_JavaLangString, localObject });
-      return;
-    }
+    super(paramEditText);
+  }
+  
+  public void onSuccess(JSONObject paramJSONObject)
+  {
+    super.onSuccess(paramJSONObject);
     try
     {
-      localObject = new oidb_0xa2a.ReqBody();
-      ((oidb_0xa2a.ReqBody)localObject).group_id.set(Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue());
-      ((oidb_0xa2a.ReqBody)localObject).is_private.set(TroopInfo.isQidianPrivateTroop(this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.b, this.jdField_a_of_type_JavaLangString));
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a("OidbSvc.0xa2a_1", 2602, 1, ((oidb_0xa2a.ReqBody)localObject).toByteArray());
-      ((ToServiceMsg)localObject).extraData.putString("troopUin", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.b((ToServiceMsg)localObject);
+      this.jdField_a_of_type_OrgJsonJSONObject.put("rankingID", 11002);
+      this.jdField_a_of_type_OrgJsonJSONObject.put("topCount", 11);
+      this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_Zrw.a("getRankingList", this.jdField_a_of_type_OrgJsonJSONObject, new zuu(this.jdField_a_of_type_ComTencentMobileqqDoraemonTestTestAppFragment.jdField_a_of_type_AndroidWidgetEditText));
       return;
     }
-    catch (Exception localException)
+    catch (JSONException paramJSONObject)
     {
-      QLog.i("TroopHandler", 1, "getAllOnlineMemberList, e=" + localException.toString());
+      paramJSONObject.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zur
  * JD-Core Version:    0.7.0.1
  */

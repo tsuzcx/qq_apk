@@ -8,22 +8,22 @@ import java.util.ArrayList;
 public final class s_red_comm
   extends JceStruct
 {
-  static ArrayList cache_redinfo;
+  static ArrayList<s_red_info> cache_redinfo;
   static int cache_showtype;
-  static ArrayList cache_subid;
-  public ArrayList redinfo;
+  static ArrayList<Integer> cache_subid;
+  public ArrayList<s_red_info> redinfo;
   public int showtype;
-  public ArrayList subid;
+  public ArrayList<Integer> subid;
   public long undealnum;
   
   public s_red_comm() {}
   
-  public s_red_comm(int paramInt, long paramLong, ArrayList paramArrayList1, ArrayList paramArrayList2)
+  public s_red_comm(int paramInt, long paramLong, ArrayList<s_red_info> paramArrayList, ArrayList<Integer> paramArrayList1)
   {
     this.showtype = paramInt;
     this.undealnum = paramLong;
-    this.redinfo = paramArrayList1;
-    this.subid = paramArrayList2;
+    this.redinfo = paramArrayList;
+    this.subid = paramArrayList1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)

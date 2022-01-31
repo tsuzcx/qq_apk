@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.qzone.preview.FaceRelativeLayout android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07d6" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07d7" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.preview.view.PictureImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a12a6" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    <com.qzone.preview.view.PictureImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a12a7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    <com.qzone.feed.panorama.widget.PanoramaLoadingLayout android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a300f" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3010" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021eb9" android:layout_centerInParent="true" android:contentDescription="播放gif" />
-</com.qzone.preview.FaceRelativeLayout>

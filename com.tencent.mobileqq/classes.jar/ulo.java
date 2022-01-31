@@ -1,22 +1,16 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
 
-public class ulo
-  implements View.OnClickListener
+public abstract interface ulo
 {
-  public ulo(VerifyCodeActivity paramVerifyCodeActivity) {}
+  public abstract void a(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt);
   
-  public void onClick(View paramView)
-  {
-    if (!this.a.b) {
-      this.a.a();
-    }
-  }
+  public abstract void b(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ulo
  * JD-Core Version:    0.7.0.1
  */

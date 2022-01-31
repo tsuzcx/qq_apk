@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.businessCard.views;
 
-import abwa;
-import abwb;
-import abwc;
+import alqi;
+import alqj;
 import android.content.Context;
 import android.graphics.Rect;
 import android.text.TextPaint;
@@ -88,8 +87,8 @@ public class ClearEllipsisEditText
   
   private void a()
   {
-    addTextChangedListener(new abwa(this));
-    setOnTouchListener(new abwb(this));
+    addTextChangedListener(new alqi(this));
+    setOnTouchListener(new alqj(this));
   }
   
   public String a()
@@ -97,7 +96,7 @@ public class ClearEllipsisEditText
     return this.jdField_a_of_type_JavaLangString;
   }
   
-  protected void onFocusChanged(boolean paramBoolean, int paramInt, Rect paramRect)
+  public void onFocusChanged(boolean paramBoolean, int paramInt, Rect paramRect)
   {
     super.onFocusChanged(paramBoolean, paramInt, paramRect);
     if (!paramBoolean) {}
@@ -132,7 +131,7 @@ public class ClearEllipsisEditText
       this.jdField_a_of_type_JavaLangString = a(paramString);
       if (this.jdField_b_of_type_Int <= 0)
       {
-        post(new abwc(this, str));
+        post(new ClearEllipsisEditText.3(this, str));
         return;
       }
       this.jdField_c_of_type_Boolean = true;
@@ -154,7 +153,7 @@ public class ClearEllipsisEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText
  * JD-Core Version:    0.7.0.1
  */

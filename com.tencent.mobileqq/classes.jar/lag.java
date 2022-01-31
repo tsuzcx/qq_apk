@@ -1,24 +1,14 @@
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import com.tencent.av.chatroom.ChatRoomInfo;
 
-public class lag
-  implements Runnable
+public abstract interface lag
 {
-  public lag(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface) {}
+  public abstract void a(int paramInt, ChatRoomInfo paramChatRoomInfo);
   
-  public void run()
-  {
-    long l = PublicAccountJavascriptInterface.a();
-    try
-    {
-      PublicAccountJavascriptInterface.a(l);
-      return;
-    }
-    finally {}
-  }
+  public abstract void a(laf paramlaf);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lag
  * JD-Core Version:    0.7.0.1
  */

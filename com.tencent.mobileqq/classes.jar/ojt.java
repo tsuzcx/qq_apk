@@ -1,46 +1,21 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.takevideo.EditVideoLabel;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.label.QQStoryAddVideoLabelViewPart;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.Map;
+import java.util.Set;
 
-public class ojt
-  implements View.OnClickListener
+public abstract interface ojt
+  extends ojc<BaseArticleInfo>
 {
-  public ojt(EditVideoLabel paramEditVideoLabel) {}
+  public abstract void a(Map<Long, pov> paramMap, boolean paramBoolean);
   
-  public void onClick(View paramView)
-  {
-    if (!TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoLabelQQStoryAddVideoLabelViewPart.jdField_a_of_type_JavaLangString))
-    {
-      this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoLabelQQStoryAddVideoLabelViewPart.jdField_a_of_type_JavaLangString;
-      paramView = this.a.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
-      if ((paramView.equals("##")) || (TextUtils.isEmpty(paramView)) || (!paramView.equals("# " + this.a.jdField_a_of_type_JavaLangString)))
-      {
-        EditVideoPartManager localEditVideoPartManager = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager;
-        if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a())
-        {
-          paramView = "2";
-          localEditVideoPartManager.a("use_custom_tag", 0, 0, new String[] { paramView });
-        }
-      }
-      else
-      {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("# " + this.a.jdField_a_of_type_JavaLangString);
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
-      return;
-      paramView = "1";
-      break;
-      this.a.jdField_a_of_type_JavaLangString = "";
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("");
-    }
-  }
+  public abstract void a(Map<Long, pov> paramMap, boolean paramBoolean, Map<Long, rvk> paramMap1, String paramString);
+  
+  public abstract void a(Set<Long> paramSet, Map<Long, pov> paramMap);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(boolean paramBoolean, String paramString);
+  
+  public abstract void b(boolean paramBoolean);
 }
 
 

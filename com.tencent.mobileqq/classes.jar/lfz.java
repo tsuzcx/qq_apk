@@ -1,46 +1,126 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar.Tab;
+import android.content.Context;
+import android.graphics.PointF;
+import android.view.MotionEvent;
 import com.tencent.qphone.base.util.QLog;
 
 public class lfz
-  extends ReadInJoyObserver
+  extends lfy
 {
-  public lfz(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  private static final PointF jdField_a_of_type_AndroidGraphicsPointF = new PointF();
+  private final lga jdField_a_of_type_Lga;
+  private PointF b;
+  private PointF c;
+  private PointF d = new PointF();
+  private PointF e = new PointF();
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  public lfz(Context paramContext, lga paramlga)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "onGetFollowAndFansResultAndForbidden retCode:" + paramInt1 + ", followCnt:" + paramInt2 + ", fansCnt:" + paramInt3 + ", isForbidden" + paramBoolean);
-    }
-    if (paramInt1 == 0)
+    super(paramContext);
+    this.jdField_a_of_type_Lga = paramlga;
+  }
+  
+  private PointF a(MotionEvent paramMotionEvent)
+  {
+    float f1 = 0.0F;
+    int j = paramMotionEvent.getPointerCount();
+    int i = 0;
+    float f2 = 0.0F;
+    while (i < j)
     {
-      ReadInJoyBaseFragment localReadInJoyBaseFragment = ReadInJoyNewFeedsActivity.a(this.a).a(ReadInJoyNewFeedsActivity.a(this.a)).a();
-      if ((localReadInJoyBaseFragment != null) && ((localReadInJoyBaseFragment instanceof ReadInJoySelfFragment))) {
-        ((ReadInJoySelfFragment)localReadInJoyBaseFragment).a(paramInt2, paramInt3, paramBoolean);
+      f2 += paramMotionEvent.getX(i);
+      f1 += paramMotionEvent.getY(i);
+      i += 1;
+    }
+    return new PointF(f2 / j, f1 / j);
+  }
+  
+  public float a()
+  {
+    return this.d.x;
+  }
+  
+  public PointF a()
+  {
+    return this.e;
+  }
+  
+  protected void a(int paramInt, MotionEvent paramMotionEvent)
+  {
+    switch (paramInt)
+    {
+    case 1: 
+    default: 
+      return;
+    case 0: 
+      a();
+      this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+      this.jdField_a_of_type_Long = 0L;
+      a(paramMotionEvent);
+      return;
+    }
+    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_Lga.b(this);
+  }
+  
+  protected void a(MotionEvent paramMotionEvent)
+  {
+    super.a(paramMotionEvent);
+    MotionEvent localMotionEvent = this.jdField_a_of_type_AndroidViewMotionEvent;
+    if ((paramMotionEvent == null) || (localMotionEvent == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseGestureDetector", 2, "updateStateByEvent-->Curr Or Prev is null");
       }
+      return;
+    }
+    this.jdField_b_of_type_AndroidGraphicsPointF = a(paramMotionEvent);
+    this.c = a(localMotionEvent);
+    int i;
+    if (localMotionEvent.getPointerCount() != paramMotionEvent.getPointerCount())
+    {
+      i = 1;
+      if (i == 0) {
+        break label125;
+      }
+    }
+    label125:
+    for (paramMotionEvent = jdField_a_of_type_AndroidGraphicsPointF;; paramMotionEvent = new PointF(this.jdField_b_of_type_AndroidGraphicsPointF.x - this.c.x, this.jdField_b_of_type_AndroidGraphicsPointF.y - this.c.y))
+    {
+      this.e = paramMotionEvent;
+      paramMotionEvent = this.d;
+      paramMotionEvent.x += this.e.x;
+      paramMotionEvent = this.d;
+      paramMotionEvent.y += this.e.y;
+      return;
+      i = 0;
+      break;
     }
   }
   
-  public void a(View paramView)
+  public float b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyNewFeedsActivity", 2, "onComponentLastReadShow");
+    return this.d.y;
+  }
+  
+  protected void b(int paramInt, MotionEvent paramMotionEvent)
+  {
+    switch (paramInt)
+    {
     }
-    this.a.runOnUiThread(new lga(this));
+    do
+    {
+      return;
+      this.jdField_a_of_type_Lga.a(this);
+      a();
+      return;
+      a(paramMotionEvent);
+    } while ((this.jdField_a_of_type_Float / this.jdField_b_of_type_Float <= 0.67F) || (!this.jdField_a_of_type_Lga.a(this)) || (this.jdField_a_of_type_AndroidViewMotionEvent == null));
+    this.jdField_a_of_type_AndroidViewMotionEvent.recycle();
+    this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lfz
  * JD-Core Version:    0.7.0.1
  */

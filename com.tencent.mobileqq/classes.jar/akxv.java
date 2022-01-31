@@ -1,40 +1,59 @@
-import android.text.TextUtils;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.view.ARScanEntryView;
+import com.tencent.mobileqq.ar.view.ARScanEntryView.40.1;
+import com.tencent.mobileqq.ar.view.ARScanEntryView.40.2;
+import com.tencent.mobileqq.ar.view.ARScanEntryView.40.3;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
-import com.tencent.smtt.sdk.WebView;
-import java.util.HashMap;
-import java.util.Map;
 
-public final class akxv
-  implements Runnable
+public class akxv
+  extends alif
 {
-  public akxv(String paramString1, String paramString2, WebView paramWebView, int paramInt1, int paramInt2, String paramString3) {}
+  public akxv(ARScanEntryView paramARScanEntryView) {}
   
-  public void run()
+  public void a(boolean paramBoolean, int paramInt, long paramLong)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("TYPE", "4");
-      localHashMap.put("mimeType", "text/html");
-      localHashMap.put("encoding", "utf-8");
-      localHashMap.put("baseUrl", this.jdField_b_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.getX5WebViewExtension().preLoad(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, localHashMap);
-      if (QLog.isColorLevel()) {
-        QLog.d("SwiftBrowserTBSHandler", 2, "webView.getX5WebViewExtension().preLoad offline data:" + this.jdField_b_of_type_JavaLangString + ", sha1: " + this.c);
-      }
+    SharedPreferences localSharedPreferences = alig.a(this.a.a);
+    long l = localSharedPreferences.getLong("key_ar_act_id", 0L);
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_ARScanEntryView", 2, "onGetARRedDotInfo redSwitch = " + paramInt + ",actID = " + paramLong + ",isSuccess = " + paramBoolean + ",savedActID = " + l);
     }
-    do
+    localSharedPreferences.edit().putLong("key_ar_act_id", paramLong).commit();
+    if (!this.a.m)
     {
+      QLog.d("AREngine_ARScanEntryView", 1, "onGetARRedDotInfo,not deal redhot message when pause");
       return;
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.getX5WebViewExtension().preLoad(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, null);
-    } while (!QLog.isColorLevel());
-    QLog.d("SwiftBrowserTBSHandler", 2, "webView.getX5WebViewExtension().preLoad: " + this.jdField_b_of_type_JavaLangString);
+    }
+    paramBoolean = localSharedPreferences.getBoolean("key_show_reddot", false);
+    if (paramInt == 1) {}
+    for (paramInt = 1;; paramInt = 0)
+    {
+      if (paramInt == 0) {
+        break label274;
+      }
+      if ((paramLong > l) || ((paramBoolean) && (paramLong == l)))
+      {
+        ARScanEntryView.a(this.a).post(new ARScanEntryView.40.1(this));
+        localSharedPreferences.edit().putBoolean("key_show_reddot", true).commit();
+        ARScanEntryView.g(this.a, true);
+      }
+      if (paramLong >= l) {
+        break;
+      }
+      ARScanEntryView.g(this.a, false);
+      ARScanEntryView.a(this.a).post(new ARScanEntryView.40.2(this));
+      localSharedPreferences.edit().putBoolean("key_show_reddot", false).commit();
+      return;
+    }
+    label274:
+    ARScanEntryView.g(this.a, false);
+    ARScanEntryView.a(this.a).post(new ARScanEntryView.40.3(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akxv
  * JD-Core Version:    0.7.0.1
  */

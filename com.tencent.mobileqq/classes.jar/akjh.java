@@ -1,31 +1,23 @@
 import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.utils.AudioUtil;
+import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.qphone.base.util.QLog;
 
-public final class akjh
-  implements MediaPlayer.OnCompletionListener
+class akjh
+  implements MediaPlayer.OnErrorListener
 {
-  public akjh(MediaPlayer.OnCompletionListener paramOnCompletionListener) {}
+  akjh(akje paramakje) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    if (AudioUtil.b() == 0)
-    {
-      if (this.a != null)
-      {
-        this.a.onCompletion(AudioUtil.a);
-        return;
-      }
-      AudioUtil.a();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.e("ARMusicController", 2, "ARMusicController, onError, what=" + paramInt1 + ", extra=" + paramInt2);
     }
-    AudioUtil.c();
-    AudioUtil.a.start();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akjh
  * JD-Core Version:    0.7.0.1
  */

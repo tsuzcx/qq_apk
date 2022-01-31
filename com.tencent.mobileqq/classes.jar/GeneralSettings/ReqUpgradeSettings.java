@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class ReqUpgradeSettings
   extends JceStruct
 {
-  static ArrayList cache_Settings;
-  public ArrayList Settings;
+  static ArrayList<Setting> cache_Settings;
+  public ArrayList<Setting> Settings;
   public int Type;
   
   public ReqUpgradeSettings() {}
   
-  public ReqUpgradeSettings(int paramInt, ArrayList paramArrayList)
+  public ReqUpgradeSettings(int paramInt, ArrayList<Setting> paramArrayList)
   {
     this.Type = paramInt;
     this.Settings = paramArrayList;

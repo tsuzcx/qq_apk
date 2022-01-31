@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class submsgtype0x7a$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   public static final int BYTES_CONTENT_FIELD_NUMBER = 1;
   public static final int STRING_DISCUSS_NICK_FIELD_NUMBER = 5;

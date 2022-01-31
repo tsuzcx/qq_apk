@@ -6,12 +6,12 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class im_msg_head$InstCtrl
-  extends MessageMicro
+  extends MessageMicro<InstCtrl>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26 }, new String[] { "rpt_msg_send_to_inst", "rpt_msg_exclude_inst", "msg_from_inst" }, new Object[] { null, null, null }, InstCtrl.class);
   public im_msg_head.InstInfo msg_from_inst = new im_msg_head.InstInfo();
-  public final PBRepeatMessageField rpt_msg_exclude_inst = PBField.initRepeatMessage(im_msg_head.InstInfo.class);
-  public final PBRepeatMessageField rpt_msg_send_to_inst = PBField.initRepeatMessage(im_msg_head.InstInfo.class);
+  public final PBRepeatMessageField<im_msg_head.InstInfo> rpt_msg_exclude_inst = PBField.initRepeatMessage(im_msg_head.InstInfo.class);
+  public final PBRepeatMessageField<im_msg_head.InstInfo> rpt_msg_send_to_inst = PBField.initRepeatMessage(im_msg_head.InstInfo.class);
 }
 
 

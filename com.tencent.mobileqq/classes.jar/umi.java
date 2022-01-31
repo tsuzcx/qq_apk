@@ -1,30 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserVidList;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.ArrayList;
 
 public class umi
-  implements DialogInterface.OnClickListener
 {
-  public umi(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  public int a;
+  public final PBRepeatMessageField<qqstory_struct.UserVidList> a;
+  public String a;
+  public final ArrayList<String> a;
+  public srj a;
+  public boolean a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public umi()
   {
-    this.a.n();
-    if (!TextUtils.isEmpty(this.a.a())) {}
-    for (paramDialogInterface = "1";; paramDialogInterface = "0")
-    {
-      VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, HttpUtil.a(), paramDialogInterface, "0");
-      this.a.finish();
-      return;
-    }
+    this(0, null);
+  }
+  
+  public umi(int paramInt, PBRepeatMessageField<qqstory_struct.UserVidList> paramPBRepeatMessageField)
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Srj = new srj();
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqPbPBRepeatMessageField = paramPBRepeatMessageField;
+  }
+  
+  public static umi a(String paramString)
+  {
+    umi localumi = new umi();
+    localumi.jdField_a_of_type_JavaLangString = paramString;
+    return localumi;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     umi
  * JD-Core Version:    0.7.0.1
  */

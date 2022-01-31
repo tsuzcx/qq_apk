@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Oidb_0x5cf$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   public static final int FIXED32_SEQUENCE_FIELD_NUMBER = 2;
   public static final int MSG_CLR_MSG_INFO_FIELD_NUMBER = 16;
@@ -47,7 +47,7 @@ public final class Oidb_0x5cf$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x5cf.Oidb_0x5cf.ReqBody
  * JD-Core Version:    0.7.0.1
  */

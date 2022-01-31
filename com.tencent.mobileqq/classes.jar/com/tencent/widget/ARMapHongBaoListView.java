@@ -1,184 +1,288 @@
 package com.tencent.widget;
 
-import amgw;
+import aguo;
+import alih;
+import alij;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.RectF;
-import android.os.Bundle;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.armap.ARMapPendantHolder;
-import com.tencent.mobileqq.armap.ConversationActivePendantHolderBase;
-import com.tencent.mobileqq.armap.ConversationPullDownActiveBase;
+import android.view.View;
+import android.view.accessibility.AccessibilityEvent;
+import befy;
+import befz;
+import bega;
+import begb;
 import com.tencent.qphone.base.util.QLog;
+import urk;
 
 public class ARMapHongBaoListView
   extends HongBaoListView
 {
-  private int jdField_a_of_type_Int;
-  public ConversationActivePendantHolderBase a;
-  public ConversationPullDownActiveBase a;
-  private ARMapHongBaoListView.ConversationActiveListViewListener jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$ConversationActiveListViewListener;
-  private ARMapHongBaoListView.QQStoryListViewListener jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$QQStoryListViewListener;
-  private boolean jdField_a_of_type_Boolean = true;
+  public alih a;
+  public alij a;
+  private befz jdField_a_of_type_Befz;
+  private bega jdField_a_of_type_Bega;
+  private begb jdField_a_of_type_Begb;
+  public boolean a;
+  public volatile alih b;
   private Handler b;
-  public boolean d;
-  public boolean e = true;
+  public boolean b;
+  boolean c = true;
+  boolean d = true;
+  boolean e;
+  private int f;
   public boolean f;
+  private boolean n = true;
   
   public ARMapHongBaoListView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new amgw(this));
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new befy(this));
   }
   
   public ARMapHongBaoListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new amgw(this));
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new befy(this));
   }
   
   private void c(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase != null)
+    if ((this.jdField_a_of_type_Alij != null) && (!this.jdField_a_of_type_Alij.a()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.c(0);
-      this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.a(paramInt);
+      this.jdField_a_of_type_Alij.c(0);
+      this.jdField_a_of_type_Alij.d(paramInt);
+    }
+  }
+  
+  private void r()
+  {
+    if ((this.jdField_a_of_type_Alih == null) || (!(this.jdField_a_of_type_Alih instanceof aguo)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMapHongBaoListView", 2, "initPendantHolder");
+      }
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Alih = new aguo(this);
+      this.jdField_a_of_type_Alih.a();
     }
   }
   
   public void a(int paramInt)
   {
-    setSelection(0);
-    Message localMessage = Message.obtain(this.jdField_b_of_type_AndroidOsHandler, 3, paramInt, 0);
-    this.jdField_b_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 150L);
-  }
-  
-  public boolean a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    boolean bool = isShown();
-    if (QLog.isColorLevel()) {
-      QLog.d("SwipListView", 2, "showListViewPreGuide isShown:" + bool + ", mActive:" + this.g + ", mResume:" + this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.c + ", isListViewSpring:" + paramBoolean1 + ", isActivePendantShowing:" + this.jdField_d_of_type_Boolean + "  isPendantBounce:" + paramBoolean2);
-    }
-    if ((!bool) || (!this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.c) || (!this.g)) {
-      return false;
-    }
-    setSelection(0);
-    Message localMessage = Message.obtain(this.jdField_b_of_type_AndroidOsHandler, 1);
-    localMessage.getData().putBoolean("isFirstCall", true);
-    localMessage.getData().putBoolean("isListViewSpring", paramBoolean1);
-    localMessage.getData().putBoolean("isPendantBounce", paramBoolean2);
-    if (paramBoolean2)
+    boolean bool = true;
+    this.jdField_a_of_type_Boolean = false;
+    this.h = true;
+    this.g = true;
+    if (paramInt == 1) {}
+    for (;;)
     {
-      this.jdField_d_of_type_Boolean = true;
-      localMessage.getData().putInt("pendantBountCnt", 2);
+      this.mForHongBao = bool;
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMapHongBaoListView", 2, "modeSpringHb...mode:" + paramInt + ",mForHongBao:" + this.mForHongBao);
+      }
+      return;
+      bool = false;
     }
-    localMessage.sendToTarget();
-    return true;
   }
   
-  public void c()
+  public void a(alih paramalih)
+  {
+    this.e = true;
+    this.jdField_b_of_type_Alih = paramalih;
+    if (QLog.isColorLevel()) {
+      QLog.i("ARMapHongBaoListView", 2, "showBreathLight:");
+    }
+  }
+  
+  public void a(befz parambefz)
+  {
+    setActiveListViewListener(parambefz);
+    super.setOverScrollListener(null);
+    super.setOverscrollHeader(null);
+    super.setOverScrollHeader(null);
+    super.setOverscrollHeaderShadowEnable(false);
+  }
+  
+  public boolean a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_Alih != null) && ((this.jdField_a_of_type_Alih instanceof aguo))) {
+      return ((aguo)this.jdField_a_of_type_Alih).a(paramInt);
+    }
+    return false;
+  }
+  
+  public void b()
   {
     this.jdField_b_of_type_AndroidOsHandler.removeMessages(1);
     this.jdField_b_of_type_AndroidOsHandler.removeMessages(2);
     setIsShowingPreguide(false);
   }
   
-  public void d()
+  public void b(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
+    if (QLog.isColorLevel()) {
+      QLog.i("ARMapHongBaoListView", 2, "showByUser:" + this.c);
+    }
+  }
+  
+  public void c()
   {
     if (!this.h) {
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("SwipListView", 2, "showActivePendant");
+      QLog.d("ARMapHongBaoListView", 2, "showActivePendant");
     }
-    g();
-    this.jdField_d_of_type_Boolean = true;
+    r();
+    ((aguo)this.jdField_a_of_type_Alih).b();
+    this.jdField_a_of_type_Boolean = true;
+    invalidate();
+  }
+  
+  public void d()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARMapHongBaoListView", 2, "hideActivePendant");
+    }
+    e();
+    this.jdField_a_of_type_Boolean = false;
+    invalidate();
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$QQStoryListViewListener != null) {
-      this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$QQStoryListViewListener.a(this.jdField_a_of_type_Int, getScrollY());
+    if (this.jdField_a_of_type_Bega != null) {
+      this.jdField_a_of_type_Bega.onFlingScrollHeader(this.jdField_f_of_type_Int, getScrollY());
     }
     super.dispatchDraw(paramCanvas);
   }
   
   public void draw(Canvas paramCanvas)
   {
-    int j = 0;
+    int k = 0;
     super.draw(paramCanvas);
-    if ((this.g) && (this.jdField_d_of_type_Boolean) && (this.h))
+    int j;
+    if ((this.g) && (this.jdField_a_of_type_Boolean) && (this.h) && (this.c))
     {
-      int k = a();
-      int i = k;
-      if (k < 0) {
+      j = getListViewScrollY();
+      i = j;
+      if (j < 0) {
         i = 0;
       }
-      this.jdField_a_of_type_ComTencentMobileqqArmapConversationActivePendantHolderBase.c = (-i);
-      i = j;
-      if (this.jdField_a_of_type_ComTencentMobileqqArmapConversationActivePendantHolderBase.a(paramCanvas)) {
-        i = 1;
+      if (this.jdField_a_of_type_Alih == null) {
+        break label174;
       }
+      this.jdField_a_of_type_Alih.c = (-i);
+      if (!this.jdField_a_of_type_Alih.a(paramCanvas)) {
+        break label174;
+      }
+    }
+    label174:
+    for (int i = 1;; i = 0)
+    {
       if (i != 0) {
         invalidate();
       }
+      if ((this.e) && (this.jdField_b_of_type_Alih != null) && (this.d))
+      {
+        j = getListViewScrollY();
+        i = j;
+        if (j < 0) {
+          i = 0;
+        }
+        j = k;
+        if (this.e)
+        {
+          j = k;
+          if (this.jdField_b_of_type_Alih != null)
+          {
+            this.jdField_b_of_type_Alih.c = (-i);
+            j = k;
+            if (this.jdField_b_of_type_Alih.a(paramCanvas)) {
+              j = 1;
+            }
+          }
+        }
+        if (j != 0) {
+          invalidate();
+        }
+      }
+      return;
     }
   }
   
   public void e()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("SwipListView", 2, "hideActivePendant");
+      QLog.d("ARMapHongBaoListView", 2, "stopActiveSanHua");
     }
-    g();
-    this.jdField_d_of_type_Boolean = false;
+    if (this.jdField_a_of_type_Alih != null)
+    {
+      this.jdField_a_of_type_Alih.c();
+      invalidate();
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("ARMapHongBaoListView", 2, "stopActiveSanHua, holder is null");
   }
   
   public void f()
   {
-    g();
+    this.e = false;
+    this.jdField_b_of_type_Alih = null;
     if (QLog.isColorLevel()) {
-      QLog.d("SwipListView", 2, "startActiveSanHua");
+      QLog.i("ARMapHongBaoListView", 2, "dismissBreathLight:");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArmapConversationActivePendantHolderBase != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArmapConversationActivePendantHolderBase.b();
-    }
-    invalidate();
   }
   
   public void g()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SwipListView", 2, "stopActiveSanHua");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqArmapConversationActivePendantHolderBase != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArmapConversationActivePendantHolderBase.c();
+    this.mForHongBao = false;
+    super.setOverScrollListener(this.jdField_a_of_type_Belq);
+    l();
+    setActiveListViewListener(null);
+    super.setOverscrollHeader(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
+    super.setOverScrollHeader(this.jdField_a_of_type_AndroidViewView);
+    super.setContentBackground(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    super.setOverscrollHeaderShadowEnable(true);
+    this.g = false;
+    this.h = false;
+    this.jdField_f_of_type_Boolean = false;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      e();
+      this.jdField_a_of_type_Boolean = false;
     }
   }
   
   protected int getSpringbackOffset()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("SwipListView", 2, "story getSpringbackOffset, scrollY:" + getScrollY());
+      QLog.d("ARMapHongBaoListView", 2, "story getSpringbackOffset, scrollY:" + getScrollY());
     }
-    if (this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$QQStoryListViewListener == null) {
+    if (this.jdField_a_of_type_Bega == null) {
       return super.getSpringbackOffset();
     }
     int i = getScrollY();
     if ((this.mEnableStory) && (this.mOverscrollHeaderViewContainer != null) && (i <= 0))
     {
-      if (this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$QQStoryListViewListener.a() == 2)
+      if (this.jdField_a_of_type_Bega.getMode() == 2)
       {
-        SLog.b("SwipListView", "story node start refresh getSpringbackOffset.");
+        urk.b("ARMapHongBaoListView", "story node start refresh getSpringbackOffset.");
         this.mOverscrollHeadState = 2;
         super.getSpringbackOffset();
       }
-      return this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$QQStoryListViewListener.b(this);
+      return this.jdField_a_of_type_Bega.getSpringbackOffset(this);
     }
     return super.getSpringbackOffset();
   }
@@ -186,102 +290,96 @@ public class ARMapHongBaoListView
   public void h()
   {
     this.mForHongBao = false;
-    super.setOverScrollListener(this.jdField_b_of_type_ComTencentWidgetOverScrollViewListener);
-    k();
+    super.setOverScrollListener(this.jdField_a_of_type_Belq);
+    l();
     setActiveListViewListener(null);
-    super.setOverscrollHeader(this.jdField_d_of_type_AndroidGraphicsDrawableDrawable);
-    super.setOverScrollHeader(this.jdField_b_of_type_AndroidViewView);
-    super.setContentBackground(this.c);
+    super.setOverscrollHeader(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
+    super.setOverScrollHeader(this.jdField_a_of_type_AndroidViewView);
+    super.setContentBackground(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     super.setOverscrollHeaderShadowEnable(true);
-    this.g = false;
-    this.h = false;
-    this.f = false;
-    if (this.jdField_d_of_type_Boolean)
-    {
-      g();
-      this.jdField_d_of_type_Boolean = false;
-    }
+    this.jdField_f_of_type_Boolean = false;
   }
   
   public void i()
   {
-    if (this.g) {
-      return;
+    if ((this.jdField_a_of_type_Alih != null) && ((this.jdField_a_of_type_Alih instanceof aguo))) {
+      ((aguo)this.jdField_a_of_type_Alih).d();
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqArmapConversationActivePendantHolderBase == null) || (!(this.jdField_a_of_type_ComTencentMobileqqArmapConversationActivePendantHolderBase instanceof ARMapPendantHolder)))
-    {
-      this.jdField_d_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentMobileqqArmapConversationActivePendantHolderBase = new ARMapPendantHolder(this);
-      this.jdField_a_of_type_ComTencentMobileqqArmapConversationActivePendantHolderBase.a();
+  }
+  
+  public void j()
+  {
+    if ((this.jdField_a_of_type_Alih != null) && ((this.jdField_a_of_type_Alih instanceof aguo))) {
+      ((aguo)this.jdField_a_of_type_Alih).e();
     }
-    this.h = true;
-    this.f = true;
-    this.mForHongBao = true;
-    this.g = true;
-    super.setOverScrollListener(null);
-    super.setOverscrollHeader(null);
-    super.setOverScrollHeader(null);
-    super.setOverscrollHeaderShadowEnable(false);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool2 = true;
-    boolean bool1;
     if ((!this.g) || (!this.h)) {
-      bool1 = super.onInterceptTouchEvent(paramMotionEvent);
+      return super.onInterceptTouchEvent(paramMotionEvent);
     }
-    do
-    {
-      do
-      {
-        return bool1;
-        if (this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase == null) {
-          break;
-        }
-        bool1 = bool2;
-      } while (!this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.c);
-      bool1 = bool2;
-    } while (!this.jdField_a_of_type_Boolean);
+    if (((this.jdField_a_of_type_Alij != null) && (!this.jdField_a_of_type_Alij.jdField_a_of_type_Boolean)) || (!this.n)) {
+      return true;
+    }
     switch (paramMotionEvent.getAction() & 0xFF)
     {
+    default: 
+      return super.onInterceptTouchEvent(paramMotionEvent);
     }
+    if (this.jdField_a_of_type_Befz != null) {
+      this.jdField_a_of_type_Befz.a(this);
+    }
+    int i;
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Alih != null))
+    {
+      i = getListViewScrollY();
+      int j = getScrollY();
+      if (j >= 0) {
+        break label177;
+      }
+      i = j;
+    }
+    label177:
     for (;;)
     {
-      return super.onInterceptTouchEvent(paramMotionEvent);
-      if (this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$ConversationActiveListViewListener != null) {
-        this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$ConversationActiveListViewListener.a(this);
+      float f1 = paramMotionEvent.getY();
+      if (!this.jdField_a_of_type_Alih.a(i).contains(paramMotionEvent.getX(), f1)) {
+        break;
       }
-      if ((this.jdField_d_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqArmapConversationActivePendantHolderBase != null))
-      {
-        int i = a();
-        float f1 = paramMotionEvent.getY();
-        float f2 = i;
-        if (this.jdField_a_of_type_ComTencentMobileqqArmapConversationActivePendantHolderBase.a(i).contains(paramMotionEvent.getX(), f1 + f2))
-        {
-          if (getScrollY() == 0) {
-            this.j = true;
-          }
-          super.onInterceptTouchEvent(paramMotionEvent);
-          return true;
-        }
-      }
-      else
-      {
-        this.j = false;
-        c();
-      }
+      this.j = true;
+      super.onInterceptTouchEvent(paramMotionEvent);
+      return true;
+      this.j = false;
+      b();
+      break;
     }
   }
   
-  public void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
+  protected void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
     super.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
     if (!this.h) {}
-    while (this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$ConversationActiveListViewListener == null) {
+    while (this.jdField_a_of_type_Befz == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$ConversationActiveListViewListener.a(paramInt1, paramInt2);
+    this.jdField_a_of_type_Befz.a(paramInt1, paramInt2);
+  }
+  
+  public boolean onRequestSendAccessibilityEvent(View paramView, AccessibilityEvent paramAccessibilityEvent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARMapHongBaoListView", 2, "onRequestSendAccessibilityEvent() called with: child = [" + paramView + "], event = [" + paramAccessibilityEvent + "]");
+    }
+    boolean bool = super.onRequestSendAccessibilityEvent(paramView, paramAccessibilityEvent);
+    if (paramAccessibilityEvent.getEventType() == 32768)
+    {
+      int i = paramView.getBottom() - (getHeight() - getListPaddingBottom());
+      if (i > 0) {
+        smoothScrollBy(i, 200);
+      }
+    }
+    return bool;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -289,13 +387,13 @@ public class ARMapHongBaoListView
     boolean bool3 = true;
     boolean bool2 = false;
     boolean bool1;
-    if ((this.mEnableStory) && (this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$QQStoryListViewListener != null))
+    if ((this.mEnableStory) && (this.jdField_a_of_type_Bega != null))
     {
-      ARMapHongBaoListView.QQStoryListViewListener localQQStoryListViewListener = this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$QQStoryListViewListener;
+      bega localbega = this.jdField_a_of_type_Bega;
       if ((this.mTouchMode == 3) || (this.mTouchMode == 5))
       {
         bool1 = true;
-        localQQStoryListViewListener.a(this, bool1, paramMotionEvent);
+        localbega.onTouchMoving(this, bool1, paramMotionEvent);
       }
     }
     else
@@ -314,84 +412,132 @@ public class ARMapHongBaoListView
         return bool1;
         bool1 = false;
         break;
-        if (this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase == null) {
+        if (this.jdField_a_of_type_Alij == null) {
           break label107;
         }
         bool1 = bool3;
-      } while (!this.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.c);
+      } while (!this.jdField_a_of_type_Alij.jdField_a_of_type_Boolean);
       bool1 = bool3;
-    } while (!this.jdField_a_of_type_Boolean);
+    } while (!this.n);
     int i = paramMotionEvent.getAction();
     bool3 = super.onTouchEvent(paramMotionEvent);
     switch (i & 0xFF)
     {
-    }
-    for (;;)
-    {
-      return bool3;
-      if (this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$ConversationActiveListViewListener != null)
+    case 0: 
+    default: 
+    case 2: 
+      for (;;)
       {
-        paramMotionEvent = this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$ConversationActiveListViewListener;
-        if (this.mTouchMode != 3)
+        return bool3;
+        if (this.jdField_a_of_type_Befz != null)
         {
-          bool1 = bool2;
-          if (this.mTouchMode != 5) {}
-        }
-        else
-        {
-          bool1 = true;
-        }
-        paramMotionEvent.a(this, bool1);
-        continue;
-        if ((this.j) && (this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$ConversationActiveListViewListener != null) && (this.jdField_a_of_type_ComTencentMobileqqArmapConversationActivePendantHolderBase != null) && (getScrollY() == 0))
-        {
-          i = a();
-          float f1 = paramMotionEvent.getY();
-          float f2 = i;
-          if (this.jdField_a_of_type_ComTencentMobileqqArmapConversationActivePendantHolderBase.a(i).contains(paramMotionEvent.getX(), f1 + f2)) {
-            this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$ConversationActiveListViewListener.a();
+          paramMotionEvent = this.jdField_a_of_type_Befz;
+          if (this.mTouchMode != 3)
+          {
+            bool1 = bool2;
+            if (this.mTouchMode != 5) {}
           }
-        }
-        this.j = false;
-        if (this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$ConversationActiveListViewListener != null)
-        {
-          this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$ConversationActiveListViewListener.b(this);
-          continue;
-          this.j = false;
+          else
+          {
+            bool1 = true;
+          }
+          paramMotionEvent.a(this, bool1);
         }
       }
+    case 1: 
+      if ((this.j) && ((this.jdField_a_of_type_Befz != null) || (this.jdField_a_of_type_Begb != null)) && (this.jdField_a_of_type_Alih != null))
+      {
+        i = getListViewScrollY();
+        int j = getScrollY();
+        if (j >= 0) {
+          break label357;
+        }
+        i = j;
+      }
+      break;
+    }
+    label357:
+    for (;;)
+    {
+      float f1 = paramMotionEvent.getY();
+      if ((this.jdField_a_of_type_Alih.a(i).contains(paramMotionEvent.getX(), f1)) && (this.c))
+      {
+        if (this.jdField_a_of_type_Befz != null) {
+          this.jdField_a_of_type_Befz.a();
+        }
+        if (this.jdField_a_of_type_Begb != null) {
+          this.jdField_a_of_type_Begb.a();
+        }
+      }
+      if (this.jdField_a_of_type_Befz != null) {
+        this.jdField_a_of_type_Befz.b(this);
+      }
+      this.j = false;
+      break;
+      this.j = false;
+      break;
     }
   }
   
-  public void setActiveListViewListener(ARMapHongBaoListView.ConversationActiveListViewListener paramConversationActiveListViewListener)
+  public void setActiveListViewListener(befz parambefz)
   {
-    this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$ConversationActiveListViewListener = paramConversationActiveListViewListener;
+    this.jdField_a_of_type_Befz = parambefz;
   }
   
   public void setEnableTouch(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("SwipListView", 2, "setEnableTouch, enableTouch:" + paramBoolean);
+      QLog.d("ARMapHongBaoListView", 2, "setEnableTouch, enableTouch:" + paramBoolean);
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.n = paramBoolean;
   }
   
-  public void setQQStoryListViewListener(ARMapHongBaoListView.QQStoryListViewListener paramQQStoryListViewListener)
+  public void setOnPendentClickListener(begb parambegb)
   {
-    this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$QQStoryListViewListener = paramQQStoryListViewListener;
+    this.jdField_a_of_type_Begb = parambegb;
+  }
+  
+  public void setPendantIcon(Drawable paramDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ARMapHongBaoListView", 2, "setPendantIcon");
+    }
+    r();
+    if (this.jdField_a_of_type_Alih != null)
+    {
+      this.jdField_a_of_type_Alih.a_(paramDrawable);
+      invalidate();
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("ARMapHongBaoListView", 2, "setPendantIcon, holder is null");
+  }
+  
+  public void setQQStoryListViewListener(bega parambega)
+  {
+    this.jdField_a_of_type_Bega = parambega;
   }
   
   public void setScrollState(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_f_of_type_Int = paramInt;
+  }
+  
+  public void setShowLightByUser(boolean paramBoolean)
+  {
+    this.d = paramBoolean;
+    if (QLog.isColorLevel()) {
+      QLog.i("ARMapHongBaoListView", 2, "setShowLightByUser:" + this.d);
+    }
   }
   
   public void springBackOverScrollHeaderView()
   {
-    if ((this.mEnableStory) && (this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$QQStoryListViewListener != null))
+    if ((this.mEnableStory) && (this.jdField_a_of_type_Bega != null))
     {
       this.mOverscrollHeadState = 0;
-      super.springBackOverScrollHeaderView(this.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView$QQStoryListViewListener.a(this));
+      super.springBackOverScrollHeaderView(this.jdField_a_of_type_Bega.onViewCompleteAfterRefresh(this));
       return;
     }
     super.springBackOverScrollHeaderView();
@@ -399,7 +545,7 @@ public class ARMapHongBaoListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.widget.ARMapHongBaoListView
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class FrdSysMsg$FriendMiscInfo
-  extends MessageMicro
+  extends MessageMicro<FriendMiscInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "str_fromuin_nick" }, new Object[] { "" }, FriendMiscInfo.class);
   public final PBStringField str_fromuin_nick = PBField.initString("");

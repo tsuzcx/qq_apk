@@ -1,20 +1,37 @@
-import com.tencent.mobileqq.unifiedebug.UnifiedDebugManager;
-import java.io.File;
-import java.io.FilenameFilter;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class akfs
-  implements FilenameFilter
+  extends ohe
+  implements ogq, ogr, ogs
 {
-  public akfs(UnifiedDebugManager paramUnifiedDebugManager, String paramString) {}
+  public void a() {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void a(MessageRecord paramMessageRecord)
   {
-    return (paramString.startsWith(this.jdField_a_of_type_JavaLangString)) && (paramString.endsWith(".localstorage"));
+    c();
   }
+  
+  public void a(MessageRecord paramMessageRecord, int paramInt, Bundle paramBundle)
+  {
+    c();
+  }
+  
+  public void b()
+  {
+    c();
+  }
+  
+  public void b(MessageRecord paramMessageRecord)
+  {
+    c();
+  }
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akfs
  * JD-Core Version:    0.7.0.1
  */

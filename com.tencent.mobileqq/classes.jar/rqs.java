@@ -1,29 +1,92 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.statistics.ReportController;
-
 public class rqs
-  implements CompoundButton.OnCheckedChangeListener
+  implements rrq
 {
-  public rqs(AssistantSettingActivity paramAssistantSettingActivity) {}
+  int jdField_a_of_type_Int = 0;
+  Object jdField_a_of_type_JavaLangObject = null;
+  final rrq jdField_a_of_type_Rrq;
+  int b = -1;
+  int c = -1;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public rqs(rrq paramrrq)
   {
-    paramCompoundButton = this.a.app;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Enter_sendmsg", 0, i, "", "", "", "");
-      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131433640), "qqsetting_enter_sendmsg_key", paramBoolean);
+    this.jdField_a_of_type_Rrq = paramrrq;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Int == 0) {
       return;
     }
+    switch (this.jdField_a_of_type_Int)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_JavaLangObject = null;
+      this.jdField_a_of_type_Int = 0;
+      return;
+      this.jdField_a_of_type_Rrq.a(this.b, this.c);
+      continue;
+      this.jdField_a_of_type_Rrq.b(this.b, this.c);
+      continue;
+      this.jdField_a_of_type_Rrq.a(this.b, this.c, this.jdField_a_of_type_JavaLangObject);
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_Int == 1) && (paramInt1 >= this.b) && (paramInt1 <= this.b + this.c))
+    {
+      this.c += paramInt2;
+      this.b = Math.min(paramInt1, this.b);
+      return;
+    }
+    a();
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.jdField_a_of_type_Int = 1;
+  }
+  
+  public void a(int paramInt1, int paramInt2, Object paramObject)
+  {
+    if ((this.jdField_a_of_type_Int == 3) && (paramInt1 <= this.b + this.c) && (paramInt1 + paramInt2 >= this.b) && (this.jdField_a_of_type_JavaLangObject == paramObject))
+    {
+      int i = this.b;
+      int j = this.c;
+      this.b = Math.min(paramInt1, this.b);
+      this.c = (Math.max(i + j, paramInt1 + paramInt2) - this.b);
+      return;
+    }
+    a();
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_Int = 3;
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_Int == 2) && (this.b >= paramInt1) && (this.b <= paramInt1 + paramInt2))
+    {
+      this.c += paramInt2;
+      this.b = paramInt1;
+      return;
+    }
+    a();
+    this.b = paramInt1;
+    this.c = paramInt2;
+    this.jdField_a_of_type_Int = 2;
+  }
+  
+  public void c(int paramInt1, int paramInt2)
+  {
+    a();
+    this.jdField_a_of_type_Rrq.c(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rqs
  * JD-Core Version:    0.7.0.1
  */

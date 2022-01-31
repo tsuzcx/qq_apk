@@ -1,18 +1,29 @@
-import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 class tvi
-  implements Runnable
+  implements begw
 {
-  tvi(tvh paramtvh) {}
+  tvi(tvd paramtvd, StoryVideoItem paramStoryVideoItem, AtomicBoolean paramAtomicBoolean, begr parambegr) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    RegisterVerifyCodeActivity.a(this.a.a.a, true);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Begr.dismiss();
+      return;
+      tvd.a(this.jdField_a_of_type_Tvd, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tvi
  * JD-Core Version:    0.7.0.1
  */

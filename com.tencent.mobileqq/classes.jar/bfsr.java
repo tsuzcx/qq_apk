@@ -1,0 +1,23 @@
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.upload.common.UploadConfiguration.NetworkStateObserver;
+
+class bfsr
+  implements bgfk
+{
+  bfsr(bfsq parambfsq, UploadConfiguration.NetworkStateObserver paramNetworkStateObserver) {}
+  
+  public void onNetworkConnect(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("UploadEnv", 2, "upload2: onNetworkConnect registerNetworkStateObserver|onNetworkConnect：" + paramBoolean);
+    }
+    bfsq.a(this.jdField_a_of_type_Bfsq, paramBoolean);
+    this.jdField_a_of_type_ComTencentUploadCommonUploadConfiguration$NetworkStateObserver.onStateChanged(paramBoolean);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+ * Qualified Name:     bfsr
+ * JD-Core Version:    0.7.0.1
+ */

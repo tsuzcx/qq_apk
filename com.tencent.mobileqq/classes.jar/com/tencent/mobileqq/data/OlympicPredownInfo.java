@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class OlympicPredownInfo
-  extends Entity
+  extends atmo
 {
   public int dailyRetryCount;
   public long dailyStartTime;
   public int totalRetryCount;
-  @unique
+  @atoc
   public String url;
   
   public String toString()

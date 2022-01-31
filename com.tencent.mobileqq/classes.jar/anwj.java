@@ -1,38 +1,57 @@
 import android.view.View;
-import dov.com.qq.im.capture.text.DynamicTextItem;
-import dov.com.qq.im.capture.text.DynamicTextItem.Pair;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendBubbleView;
 
 public class anwj
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public anwj(DynamicTextItem paramDynamicTextItem, boolean paramBoolean, View paramView, Runnable paramRunnable) {}
+  public anwj(Face2FaceFriendBubbleView paramFace2FaceFriendBubbleView) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    DynamicTextItem.Pair localPair;
-    if (((Boolean)DynamicTextItem.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem).b).booleanValue() != this.jdField_a_of_type_Boolean)
+    Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (Face2FaceFriendBubbleView.a(this.a) == 1)
     {
-      localPair = DynamicTextItem.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem);
-      if (((Boolean)DynamicTextItem.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem).b).booleanValue()) {
-        break label93;
-      }
+      Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+      Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
     }
-    label93:
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
-      localPair.b = Boolean.valueOf(bool);
-      this.jdField_a_of_type_AndroidViewView.invalidate();
-      if (this.jdField_a_of_type_JavaLangRunnable != null) {
-        this.jdField_a_of_type_JavaLangRunnable.run();
-      }
-      DynamicTextItem.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem, false);
+      Face2FaceFriendBubbleView.a(this.a).setVisibility(4);
       return;
+      if (Face2FaceFriendBubbleView.a(this.a) == 2)
+      {
+        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130839529);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+      }
+      else if (Face2FaceFriendBubbleView.a(this.a) == 3)
+      {
+        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130839530);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(8);
+      }
+      else if (Face2FaceFriendBubbleView.a(this.a) == 4)
+      {
+        Face2FaceFriendBubbleView.a(this.a).setImageResource(2130839531);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+        Face2FaceFriendBubbleView.a(this.a).setVisibility(0);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anwj
  * JD-Core Version:    0.7.0.1
  */

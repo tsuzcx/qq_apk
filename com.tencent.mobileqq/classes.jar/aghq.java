@@ -1,24 +1,24 @@
-import android.support.v4.view.ViewPager;
-import com.tencent.biz.lebasearch.widget.ScrolledTabHost.OnTabSelectedListener;
-import com.tencent.mobileqq.ocr.ui.BaseOCRTextSearchFragment.SearchActivityInterface;
-import com.tencent.mobileqq.ocr.ui.SearchResultFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import mqq.util.WeakReference;
 
-public class aghq
-  implements ScrolledTabHost.OnTabSelectedListener
+class aghq
+  implements DialogInterface.OnClickListener
 {
-  public aghq(SearchResultFragment paramSearchResultFragment) {}
+  aghq(aghn paramaghn) {}
   
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(paramInt);
-    this.a.jdField_a_of_type_ComTencentMobileqqOcrUiBaseOCRTextSearchFragment$SearchActivityInterface.a(false);
+    if (((NewPhotoListActivity)this.a.a.get()).c != null) {
+      ((NewPhotoListActivity)this.a.a.get()).c.setClickable(true);
+    }
   }
-  
-  public void b(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aghq
  * JD-Core Version:    0.7.0.1
  */

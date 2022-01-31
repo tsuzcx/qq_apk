@@ -1,24 +1,19 @@
-import com.tencent.mobileqq.ar.arcloud.ARCloudFileUpload.ARCloudFileUploadCallback;
-import com.tencent.mobileqq.ar.arengine.ARCloudReqInfo;
-import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class aalo
+  implements arol<Void, baqz>
 {
-  public ARCloudFileUpload.ARCloudFileUploadCallback a;
-  public ARCloudReqInfo a;
-  public Transaction a;
-  public String a;
+  public aalo(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  public aalo()
+  public baqz a(Void paramVoid)
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = null;
-    this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload$ARCloudFileUploadCallback = null;
+    return bara.a(this.a.app).a(this.a.a.troopUin);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aalo
  * JD-Core Version:    0.7.0.1
  */

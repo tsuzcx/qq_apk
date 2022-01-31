@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/lxu" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/lxr" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <ImageView android:id="@id/lrj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <View android:background="@drawable/hdo" android:layout_width="fill_parent" android:layout_height="42.5dip" android:layout_alignParentBottom="true" />
+    <TextView android:id="@id/lrt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:includeFontPadding="false" />
+    <TextView android:id="@id/m_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:text="" android:includeFontPadding="false" />
+    <ImageView android:id="@id/lpn" android:background="@color/ajr" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="16.0dip" android:layout_marginBottom="12.5dip" android:scaleType="centerCrop" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="12.0dip" android:textColor="@color/alf" android:id="@id/lpo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:layout_marginBottom="13.5dip" android:text="" android:includeFontPadding="false" android:layout_toRightOf="@id/lpn" android:layout_alignParentBottom="true" />
+    <com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentNotIntrest android:id="@id/fao" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="-2.0dip" android:layout_marginBottom="4.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/lxt" android:padding="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_marginRight="2.0dip" android:layout_marginBottom="6.5dip" android:src="@drawable/hzd" android:scaleType="centerCrop" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="12.0dip" android:textColor="@color/ald" android:id="@id/m68" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="13.5dip" android:text="" android:includeFontPadding="false" android:layout_toLeftOf="@id/lxt" android:layout_alignParentBottom="true" />
+</RelativeLayout>

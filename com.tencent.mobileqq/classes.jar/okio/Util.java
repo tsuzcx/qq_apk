@@ -8,15 +8,19 @@ final class Util
   
   public static boolean arrayRangeEquals(byte[] paramArrayOfByte1, int paramInt1, byte[] paramArrayOfByte2, int paramInt2, int paramInt3)
   {
+    boolean bool2 = false;
     int i = 0;
     for (;;)
     {
+      boolean bool1;
       if (i >= paramInt3) {
-        return true;
+        bool1 = true;
       }
-      if (paramArrayOfByte1[(i + paramInt1)] != paramArrayOfByte2[(i + paramInt2)]) {
-        return false;
-      }
+      do
+      {
+        return bool1;
+        bool1 = bool2;
+      } while (paramArrayOfByte1[(i + paramInt1)] != paramArrayOfByte2[(i + paramInt2)]);
       i += 1;
     }
   }
@@ -40,8 +44,8 @@ final class Util
   
   public static short reverseBytesShort(short paramShort)
   {
-    paramShort &= 0xFFFF;
-    return (short)((0xFF00 & paramShort) >>> 8 | (paramShort & 0xFF) << 8);
+    paramShort = 0xFFFF & paramShort;
+    return (short)((paramShort & 0xFF) << 8 | (0xFF00 & paramShort) >>> 8);
   }
   
   public static void sneakyRethrow(Throwable paramThrowable)
@@ -50,7 +54,6 @@ final class Util
   }
   
   private static <T extends Throwable> void sneakyThrow2(Throwable paramThrowable)
-    throws Throwable
   {
     throw paramThrowable;
   }

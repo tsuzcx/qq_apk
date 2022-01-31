@@ -1,41 +1,82 @@
-import com.tencent.mobileqq.profile.upload.task.VipBaseUploadTask;
-import com.tencent.upload.uinterface.AbstractUploadTask;
-import com.tencent.upload.uinterface.IUploadTaskCallback;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbTranslucentBrowserActivity;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class aguw
-  implements IUploadTaskCallback
+  extends BroadcastReceiver
 {
-  public aguw(VipBaseUploadTask paramVipBaseUploadTask) {}
+  public aguw(SpringHbTranslucentBrowserActivity paramSpringHbTranslucentBrowserActivity) {}
   
-  public void onUploadError(AbstractUploadTask paramAbstractUploadTask, int paramInt, String paramString)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.f = 1002;
-    this.a.jdField_a_of_type_Int = paramInt;
-    this.a.c = paramString;
-    this.a.a(1002, new Object[0]);
-  }
-  
-  public void onUploadProgress(AbstractUploadTask paramAbstractUploadTask, long paramLong1, long paramLong2) {}
-  
-  public void onUploadStateChange(AbstractUploadTask paramAbstractUploadTask, int paramInt)
-  {
-    if (this.a.f != paramInt)
+    int j = 0;
+    String str1 = "";
+    for (;;)
     {
-      this.a.f = paramInt;
-      this.a.a(this.a.f, new Object[0]);
+      try
+      {
+        String str2 = paramIntent.getAction();
+        if ("ACTION_LOADING_ANIM_PLAY_FINISH".equals(str2))
+        {
+          QLog.i("springHb_SpringHbTranslucentBrowserActivity", 2, "onReceive out anim play end");
+          SpringHbTranslucentBrowserActivity.c(this.a);
+          i = 0;
+          paramContext = str1;
+          QLog.i("springHb_SpringHbTranslucentBrowserActivity", 2, "onReceive: action:" + str2 + ",businessId：" + i + ",viewId:" + j + ",extstr:" + paramContext);
+          return;
+        }
+        if ("action_notify_view_update".equals(str2))
+        {
+          int k = paramIntent.getIntExtra("businessId", 0);
+          int m = paramIntent.getIntExtra("viewId", 0);
+          paramContext = str1;
+          j = m;
+          i = k;
+          if (k != 23) {
+            continue;
+          }
+          paramContext = str1;
+          j = m;
+          i = k;
+          if (m != 1) {
+            continue;
+          }
+          paramIntent = paramIntent.getStringExtra("extstr");
+          paramContext = paramIntent;
+          j = m;
+          i = k;
+          if (baip.a(paramIntent)) {
+            continue;
+          }
+          paramContext = paramIntent;
+          j = m;
+          i = k;
+          if (new JSONObject(paramIntent).optInt("loadfinished") != 1) {
+            continue;
+          }
+          this.a.c();
+          paramContext = paramIntent;
+          j = m;
+          i = k;
+          continue;
+        }
+        int i = 0;
+      }
+      catch (Exception paramContext)
+      {
+        QLog.e("springHb_SpringHbTranslucentBrowserActivity", 1, "onReceive error", paramContext);
+        return;
+      }
+      paramContext = str1;
     }
-  }
-  
-  public void onUploadSucceed(AbstractUploadTask paramAbstractUploadTask, Object paramObject)
-  {
-    this.a.f = 1001;
-    this.a.jdField_a_of_type_JavaLangObject = paramObject;
-    this.a.a(1001, new Object[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aguw
  * JD-Core Version:    0.7.0.1
  */

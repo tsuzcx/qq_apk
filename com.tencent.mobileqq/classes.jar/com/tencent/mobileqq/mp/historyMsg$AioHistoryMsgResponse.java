@@ -9,10 +9,10 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class historyMsg$AioHistoryMsgResponse
-  extends MessageMicro
+  extends MessageMicro<AioHistoryMsgResponse>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatField msg_infos = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> msg_infos = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBUInt64Field puin = PBField.initUInt64(0L);
   public historyMsg.RetInfo ret_info = new historyMsg.RetInfo();
   

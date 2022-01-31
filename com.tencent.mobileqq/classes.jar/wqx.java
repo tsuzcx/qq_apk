@@ -1,19 +1,44 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import android.support.annotation.Nullable;
+import com.tencent.biz.videostory.capture.widgets.AEBottomListScrollView;
 
-public class wqx
-  implements Runnable
+class wqx
+  implements bhwg<Boolean>
 {
-  public wqx(TroopActivity paramTroopActivity, TextView paramTextView) {}
+  wqx(wqq paramwqq) {}
   
-  public void run()
+  public void a(@Nullable Boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.sendAccessibilityEvent(8);
+    if (paramBoolean == null) {}
+    do
+    {
+      return;
+      if (wqq.a(this.a).a())
+      {
+        wqq.a(this.a).setVisibility(8);
+        return;
+      }
+      if (wqq.a(this.a).b())
+      {
+        if (!wqq.a(this.a))
+        {
+          AEBottomListScrollView localAEBottomListScrollView = wqq.a(this.a);
+          if (paramBoolean.booleanValue()) {}
+          for (int i = 0;; i = 4)
+          {
+            localAEBottomListScrollView.setVisibility(i);
+            return;
+          }
+        }
+        wqq.a(this.a).setVisibility(8);
+        return;
+      }
+    } while (!wqq.a(this.a).c());
+    wqq.a(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wqx
  * JD-Core Version:    0.7.0.1
  */

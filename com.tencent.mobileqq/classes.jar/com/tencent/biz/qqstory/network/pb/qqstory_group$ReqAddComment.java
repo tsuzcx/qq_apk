@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_group$ReqAddComment
-  extends MessageMicro
+  extends MessageMicro<ReqAddComment>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField content = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -25,7 +25,7 @@ public final class qqstory_group$ReqAddComment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_group.ReqAddComment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,18 @@
-import com.tencent.biz.qqstory.model.AddressDataProvider;
-import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
-import com.tencent.biz.qqstory.model.DataProviderManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
-import com.tencent.biz.qqstory.takevideo.music.MusicGridAdapter;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.cmd0x977.oidb_cmd0x977.FollowStatusInfo;
+import tencent.im.oidb.cmd0x977.oidb_cmd0x977.KdUserInfo;
 
 class opr
-  implements Runnable
+  implements psh<oidb_cmd0x977.FollowStatusInfo, ppg>
 {
-  opr(opq paramopq, AddressDataProvider.AddressInfo paramAddressInfo) {}
+  opr(opp paramopp) {}
   
-  public void run()
+  public ppg a(oidb_cmd0x977.FollowStatusInfo paramFollowStatusInfo)
   {
-    SLog.b("Q.qqstory.publish.edit.EditVideoMusicDialog", "address update, refresh ui.");
-    if (((AddressDataProvider)((DataProviderManager)SuperManager.a(20)).a(1)).a(this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo))
-    {
-      QLog.d("zivonchen", 2, "isInternationalUser --------------------2");
-      this.jdField_a_of_type_Opq.a.a.a();
-    }
+    return new ppg(Long.valueOf(paramFollowStatusInfo.uint64_uin.get()), Integer.valueOf(paramFollowStatusInfo.enum_account_type.get()), paramFollowStatusInfo.user_info.bytes_nick.get().toStringUtf8(), paramFollowStatusInfo.user_info.bytes_qq_head_url.get().toStringUtf8());
   }
 }
 

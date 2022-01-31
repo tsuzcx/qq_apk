@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-public class QQRecorder$RecordInitException
+class QQRecorder$RecordInitException
   extends RuntimeException
 {
   public QQRecorder$RecordInitException(String paramString)

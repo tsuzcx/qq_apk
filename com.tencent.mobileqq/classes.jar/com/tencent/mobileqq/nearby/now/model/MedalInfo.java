@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.nearby.now.model;
 
-import afbd;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import aslj;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MedalInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new afbd();
+  public static final Parcelable.Creator<MedalInfo> CREATOR = new aslj();
   public int a;
-  public List a;
+  public List<MedalItem> a;
   public int b;
   public int c;
   

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class TroopTips0x857$FloatedTipsInfo
-  extends MessageMicro
+  extends MessageMicro<FloatedTipsInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField opt_bytes_content = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -20,7 +20,7 @@ public final class TroopTips0x857$FloatedTipsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x857.TroopTips0x857.FloatedTipsInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,9 @@
 package dov.com.tencent.mobileqq.shortvideo.ptvfilter.material;
 
+import bjku;
+
 class Game3DNativeEvent
-  implements GameEvent.GestureEventListener
+  implements bjku
 {
   public native void gestureEventNative(long paramLong, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3);
   

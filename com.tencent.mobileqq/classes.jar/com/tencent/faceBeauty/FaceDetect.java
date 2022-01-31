@@ -3,7 +3,7 @@ package com.tencent.faceBeauty;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.Rect;
-import com.tencent.util.LogUtil;
+import com.tencent.ttpic.baseutils.log.LogUtils;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,62 +20,62 @@ public abstract class FaceDetect
   
   public static Rect boundingRect(int[][] paramArrayOfInt, int paramInt1, int paramInt2)
   {
-    int i1 = paramArrayOfInt[paramInt1][0];
-    int k = i1;
-    int i = paramArrayOfInt[paramInt1][1];
-    int j = i;
-    int m = paramInt1 + 1;
-    paramInt1 = j;
-    j = m;
-    if (j <= paramInt2)
+    int k = paramArrayOfInt[paramInt1][0];
+    int j = paramArrayOfInt[paramInt1][1];
+    paramInt1 += 1;
+    int i = j;
+    int i1 = k;
+    if (paramInt1 <= paramInt2)
     {
       int n;
-      label61:
+      int m;
+      label51:
+      int i3;
       int i2;
-      if (paramArrayOfInt[j][0] < k)
+      if (paramArrayOfInt[paramInt1][0] < k)
       {
-        n = paramArrayOfInt[j][0];
+        n = paramArrayOfInt[paramInt1][0];
         m = i1;
-        if (paramArrayOfInt[j][1] >= paramInt1) {
-          break label139;
+        if (paramArrayOfInt[paramInt1][1] >= i) {
+          break label125;
         }
-        i2 = paramArrayOfInt[j][1];
-        k = i;
+        i3 = paramArrayOfInt[paramInt1][1];
+        i2 = j;
       }
       for (;;)
       {
-        j += 1;
+        paramInt1 += 1;
         i1 = m;
-        i = k;
         k = n;
-        paramInt1 = i2;
+        j = i2;
+        i = i3;
         break;
         m = i1;
         n = k;
-        if (paramArrayOfInt[j][0] <= i1) {
-          break label61;
+        if (paramArrayOfInt[paramInt1][0] <= i1) {
+          break label51;
         }
-        m = paramArrayOfInt[j][0];
+        m = paramArrayOfInt[paramInt1][0];
         n = k;
-        break label61;
-        label139:
-        k = i;
-        i2 = paramInt1;
-        if (paramArrayOfInt[j][1] > i)
+        break label51;
+        label125:
+        i2 = j;
+        i3 = i;
+        if (paramArrayOfInt[paramInt1][1] > j)
         {
-          k = paramArrayOfInt[j][1];
-          i2 = paramInt1;
+          i2 = paramArrayOfInt[paramInt1][1];
+          i3 = i;
         }
       }
     }
-    return new Rect(k, paramInt1, i1, i);
+    return new Rect(k, i, i1, j);
   }
   
   public final void detectFace(Bitmap paramBitmap)
   {
     long l = System.currentTimeMillis();
     doDetectFace(paramBitmap);
-    LogUtil.d("FaceDetect", "detectFace() :" + (System.currentTimeMillis() - l));
+    LogUtils.d("FaceDetect", "detectFace() :" + (System.currentTimeMillis() - l));
   }
   
   public final boolean detectedFace()
@@ -201,7 +201,7 @@ public abstract class FaceDetect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.faceBeauty.FaceDetect
  * JD-Core Version:    0.7.0.1
  */

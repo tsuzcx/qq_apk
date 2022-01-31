@@ -1,21 +1,31 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
-import com.tencent.mobileqq.worldcup.ARWorldCupGameTouchView;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-class aagb
-  implements Runnable
+public final class aagb
+  implements batk
 {
-  aagb(aafz paramaafz, boolean paramBoolean) {}
+  public aagb(DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2) {}
   
-  public void run()
+  public void callback(int paramInt)
   {
-    ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_Aafz.a).setIsShowExtend(this.jdField_a_of_type_Boolean);
-    ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_Aafz.a).setClickable(true);
-    ARWorldCupGlobalSceneRenderable.a(this.jdField_a_of_type_Aafz.a).setVisibility(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("ChatActivityUtils", 2, "showDlgWithCuOpenCheck type = " + paramInt);
+    }
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 1: 
+    case 2: 
+      this.a.onClick(null, 0);
+      return;
+    }
+    this.b.onClick(null, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aagb
  * JD-Core Version:    0.7.0.1
  */

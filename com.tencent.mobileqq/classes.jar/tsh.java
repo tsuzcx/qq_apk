@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.activity.QQSettingSettingActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.data.Card;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer.PlaybackThread;
 
 public class tsh
-  implements Runnable
+  implements tse
 {
-  public tsh(QQSettingSettingActivity paramQQSettingSettingActivity, FriendsManager paramFriendsManager, String paramString) {}
+  public tsh(MediaPlayer paramMediaPlayer) {}
   
-  public void run()
+  public void a(tsc paramtsc)
   {
-    Card localCard = this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQSettingSettingActivity.runOnUiThread(new tsi(this, localCard));
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread != null) && (!this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaPlayer$PlaybackThread.a()) && (!this.a.e) && (this.a.jdField_a_of_type_Tsa.b() < 2000000L) && (!this.a.jdField_a_of_type_Tsa.b()))
+    {
+      this.a.e = true;
+      this.a.jdField_a_of_type_Tsi.sendMessage(this.a.jdField_a_of_type_Tsi.obtainMessage(200, 701, 0));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tsh
  * JD-Core Version:    0.7.0.1
  */

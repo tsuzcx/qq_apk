@@ -1,0 +1,13 @@
+import com.tencent.biz.pubaccount.VideoInfo;
+import java.util.List;
+
+public abstract interface qhn
+{
+  public abstract List<pxn> a(List<VideoInfo> paramList);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     qhn
+ * JD-Core Version:    0.7.0.1
+ */

@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class ProfGroupInfoRes
   extends JceStruct
 {
-  static ArrayList cache_vAdministrator;
-  static ArrayList cache_vsUrl;
+  static ArrayList<GroupMemberFlag> cache_vAdministrator;
+  static ArrayList<String> cache_vsUrl;
   public byte cAlbumResult = -1;
   public byte cInviteSwitchOpen;
   public byte cResult;
@@ -23,13 +23,13 @@ public final class ProfGroupInfoRes
   public long uGroupCode;
   public long uGroupOwnerUin;
   public long uGroupUin;
-  public ArrayList vAdministrator;
-  public ArrayList vsUrl;
+  public ArrayList<GroupMemberFlag> vAdministrator;
+  public ArrayList<String> vsUrl;
   public short wGroupFace;
   
   public ProfGroupInfoRes() {}
   
-  public ProfGroupInfoRes(byte paramByte1, long paramLong1, long paramLong2, long paramLong3, String paramString1, short paramShort, String paramString2, String paramString3, ArrayList paramArrayList1, byte paramByte2, long paramLong4, ArrayList paramArrayList2, String paramString4, byte paramByte3, long paramLong5, String paramString5)
+  public ProfGroupInfoRes(byte paramByte1, long paramLong1, long paramLong2, long paramLong3, String paramString1, short paramShort, String paramString2, String paramString3, ArrayList<GroupMemberFlag> paramArrayList, byte paramByte2, long paramLong4, ArrayList<String> paramArrayList1, String paramString4, byte paramByte3, long paramLong5, String paramString5)
   {
     this.cResult = paramByte1;
     this.uGroupUin = paramLong1;
@@ -39,10 +39,10 @@ public final class ProfGroupInfoRes
     this.wGroupFace = paramShort;
     this.sGroupMemo = paramString2;
     this.sFingerGroupMemo = paramString3;
-    this.vAdministrator = paramArrayList1;
+    this.vAdministrator = paramArrayList;
     this.cAlbumResult = paramByte2;
     this.dwTimeStamp = paramLong4;
-    this.vsUrl = paramArrayList2;
+    this.vsUrl = paramArrayList1;
     this.sGroupLocation = paramString4;
     this.cInviteSwitchOpen = paramByte3;
     this.dwFlagExt = paramLong5;
@@ -110,7 +110,7 @@ public final class ProfGroupInfoRes
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     KQQ.ProfGroupInfoRes
  * JD-Core Version:    0.7.0.1
  */

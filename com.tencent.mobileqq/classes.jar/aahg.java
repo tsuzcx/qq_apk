@@ -1,26 +1,18 @@
-import com.tencent.mobileqq.ar.ARNativeBridge;
-import com.tencent.mobileqq.ar.ARRenderModel.GreetingCardRender;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class aahg
-  implements Runnable
+  extends aket
 {
-  public aahg(GreetingCardRender paramGreetingCardRender, String paramString) {}
+  public aahg(ChatHistory paramChatHistory) {}
   
-  public void run()
+  public void a()
   {
-    if (new File(this.jdField_a_of_type_JavaLangString).exists())
-    {
-      GreetingCardRender.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelGreetingCardRender).native_setARCardVideoCover(this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    QLog.e("GreetingCardRender", 1, String.format("setARCardVideoCover file not exist! videoCoverPath=%s", new Object[] { this.jdField_a_of_type_JavaLangString }));
+    this.a.a(11, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aahg
  * JD-Core Version:    0.7.0.1
  */

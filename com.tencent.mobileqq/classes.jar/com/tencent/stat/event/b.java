@@ -68,7 +68,6 @@ public class b
   }
   
   public boolean a(JSONObject paramJSONObject)
-    throws JSONException
   {
     paramJSONObject.put("ei", this.a.a);
     if (this.p > 0L) {

@@ -1,44 +1,56 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.GestureDetector.OnGestureListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-class ammb
-  extends Handler
+public class ammb
+  extends alzl<amma>
 {
-  ammb(amma paramamma) {}
-  
-  ammb(amma paramamma, Handler paramHandler)
+  public int a()
   {
-    super(paramHandler.getLooper());
+    return 440;
   }
   
-  public void handleMessage(Message paramMessage)
+  @NonNull
+  public amma a(int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      throw new RuntimeException("Unknown message " + paramMessage);
-    case 1: 
-      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener.onShowPress(this.a.jdField_a_of_type_AndroidViewMotionEvent);
+    return new amma();
+  }
+  
+  @Nullable
+  public amma a(alzs[] paramArrayOfalzs)
+  {
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
+      return amma.a(paramArrayOfalzs);
     }
-    do
-    {
-      return;
-      this.a.a();
-      return;
-    } while (this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener == null);
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_AndroidViewGestureDetector$OnDoubleTapListener.onSingleTapConfirmed(this.a.jdField_a_of_type_AndroidViewMotionEvent);
-      return;
-    }
-    this.a.b = true;
+    return null;
+  }
+  
+  public Class<amma> a()
+  {
+    return amma.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amma paramamma) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ammb
  * JD-Core Version:    0.7.0.1
  */

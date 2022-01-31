@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d003f" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c001b" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a087a" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c00b6" android:focusable="true" android:layout_width="fill_parent" android:layout_height="25.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" />

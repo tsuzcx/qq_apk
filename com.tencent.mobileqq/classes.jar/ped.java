@@ -1,18 +1,23 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.biz.troopgift.TroopGiftPanel.GiftNumInputDialog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.pts.nativemodule.IPTSLoadDailyDBArticles;
 
 public class ped
-  implements DialogInterface.OnShowListener
+  implements IPTSLoadDailyDBArticles
 {
-  public ped(TroopGiftPanel.GiftNumInputDialog paramGiftNumInputDialog) {}
+  private final String jdField_a_of_type_JavaLangString = "PTSLoadDailyDBArticlesModule";
+  private pdm jdField_a_of_type_Pdm = new pee(this);
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public ped()
   {
-    ((InputMethodManager)this.a.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.getContext().getSystemService("input_method")).showSoftInput(this.a.jdField_a_of_type_AndroidWidgetEditText, 1);
+    pdl.a().a(this.jdField_a_of_type_Pdm);
+  }
+  
+  public void loadDailyDBArticles(long paramLong1, long paramLong2)
+  {
+    ohd localohd = (ohd)((QQAppInterface)obz.a()).getManager(163);
+    if (localohd != null) {
+      localohd.a().a((int)paramLong1, 9223372036854775807L, true, paramLong2);
+    }
   }
 }
 

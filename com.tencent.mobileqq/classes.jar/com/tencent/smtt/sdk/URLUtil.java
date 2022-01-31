@@ -12,7 +12,6 @@ public final class URLUtil
   }
   
   public static byte[] decode(byte[] paramArrayOfByte)
-    throws IllegalArgumentException
   {
     X5CoreEngine localX5CoreEngine = X5CoreEngine.getInstance();
     if ((localX5CoreEngine != null) && (localX5CoreEngine.isX5Core())) {
@@ -150,7 +149,7 @@ public final class URLUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.smtt.sdk.URLUtil
  * JD-Core Version:    0.7.0.1
  */

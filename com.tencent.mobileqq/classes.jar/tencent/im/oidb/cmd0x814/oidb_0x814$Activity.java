@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class oidb_0x814$Activity
-  extends MessageMicro
+  extends MessageMicro<Activity>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34 }, new String[] { "id", "name", "cover", "url" }, new Object[] { "", "", "", "" }, Activity.class);
   public final PBStringField cover = PBField.initString("");
@@ -16,7 +16,7 @@ public final class oidb_0x814$Activity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x814.oidb_0x814.Activity
  * JD-Core Version:    0.7.0.1
  */

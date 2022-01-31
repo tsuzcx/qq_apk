@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="66.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="@drawable/jj" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="66.0dip" android:minHeight="66.0dip">
+        <TextView android:textSize="16.0dip" android:textColor="@color/skin_gray2" android:gravity="center_horizontal" android:id="@id/k_q" android:layout_width="48.0dip" android:layout_height="wrap_content" android:text="5" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/dxi" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:src="@drawable/ewq" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/du3" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="48.0dip" android:src="@drawable/csy" android:scaleType="fitXY" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/du4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="44.0dip" android:src="@drawable/ewn" android:scaleType="fitXY" android:layout_centerVertical="true" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/skin_gray2" android:id="@id/k99" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qtu" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="28.0dip" android:textColor="#ffff8444" android:id="@id/k98" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="+229" android:layout_toLeftOf="@id/k99" android:layout_centerVertical="true" />
+        <TextView android:textSize="18.0dip" android:textColor="@color/skin_black" android:id="@id/k9t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="12.0dip" android:text="Dark Souls" android:singleLine="true" android:layout_toLeftOf="@id/k98" android:layout_toRightOf="@id/du3" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray2" android:id="@id/kbz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="4.0dip" android:text="共21243个赞" android:singleLine="true" android:layout_toLeftOf="@id/k98" android:layout_toRightOf="@id/du3" android:layout_below="@id/k9t" />
+    </RelativeLayout>
+    <View android:id="@id/bmt" android:background="#ffededed" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="10.0dip" />
+</LinearLayout>

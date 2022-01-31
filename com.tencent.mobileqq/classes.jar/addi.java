@@ -1,23 +1,27 @@
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
 
-public class addi
-  extends FMObserver
+class addi
+  implements begw
 {
-  public addi(FileManagerRSCenter paramFileManagerRSCenter) {}
+  addi(addh paramaddh, MessageForDeviceFile paramMessageForDeviceFile, begr parambegr) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FileManagerRSCenter<FileAssistant>", 2, "recive TransferEnd, rmove task[" + String.valueOf(paramLong2) + "]!");
+    switch (paramInt)
+    {
     }
-    this.a.a(paramLong2);
+    for (;;)
+    {
+      this.jdField_a_of_type_Begr.dismiss();
+      return;
+      this.jdField_a_of_type_Addh.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     addi
  * JD-Core Version:    0.7.0.1
  */

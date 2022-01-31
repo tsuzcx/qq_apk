@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center" android:id="@id/j0r" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/bb7" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textColor="@color/al3" android:gravity="center" android:id="@id/dzp" android:background="@drawable/b4x" android:visibility="gone" android:layout_width="72.0dip" android:layout_height="27.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="20.0dip" android:text="@string/tnc" android:layout_alignParentRight="true" />
+    <ImageView android:layout_gravity="center" android:id="@id/f42" android:visibility="gone" android:layout_width="27.0dip" android:layout_height="27.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/bxw" android:scaleType="centerInside" android:layout_toLeftOf="@id/dzp" />
+    <TextView android:textSize="13.0dip" android:textColor="@color/gj" android:gravity="center" android:id="@id/l3d" android:visibility="gone" android:clickable="false" android:layout_width="93.0dip" android:layout_height="18.0dip" android:layout_marginLeft="20.0dip" android:layout_marginTop="25.0dip" android:text="已Wi-Fi预加载" android:layout_alignParentLeft="true" />
+</merge>

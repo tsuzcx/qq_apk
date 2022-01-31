@@ -1,26 +1,18 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
-
-public class agho
-  implements TextWatcher
+class agho
+  implements bbrx
 {
-  private agho(OCRTextSearchActivity paramOCRTextSearchActivity) {}
+  agho(aghn paramaghn, Runnable paramRunnable) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(int paramInt)
   {
-    paramEditable = this.a.a.getText().toString();
-    this.a.b(paramEditable);
+    if (paramInt == 2) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agho
  * JD-Core Version:    0.7.0.1
  */

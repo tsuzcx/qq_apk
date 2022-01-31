@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.armap.ArMapHandler;
-import com.tencent.mobileqq.armap.ArMapInterface;
-import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterBaseActivity.2;
 
-class aboi
-  implements Runnable
+public class aboi
+  implements DialogInterface.OnClickListener
 {
-  aboi(aboh paramaboh) {}
+  public aboi(RegisterBaseActivity.2 param2) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((ArMapHandler)this.a.a.jdField_a_of_type_ComTencentMobileqqArmapArMapInterface.a(2)).a(this.a.a.jdField_a_of_type_Long, this.a.a.b, 0, 0, this.a.a.c);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aboi
  * JD-Core Version:    0.7.0.1
  */

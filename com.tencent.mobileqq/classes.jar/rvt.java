@@ -1,24 +1,32 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class rvt
-  implements Runnable
+class rvt
+  extends ajgs
 {
-  public rvt(BaseChatPie paramBaseChatPie, long paramLong1, int paramInt1, long paramLong2, int paramInt2, Runnable paramRunnable) {}
+  rvt(rvs paramrvs) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, Long paramLong, String paramString)
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().runOnUiThread(new rvu(this, localMessageRecord));
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(rvs.a(this.a))))
+    {
+      paramLong = BaseApplicationImpl.getApplication().getBaseContext();
+      if (paramBoolean) {
+        bbmy.a(BaseApplicationImpl.getApplication(), 2, 2131653435, 0).b(paramLong.getResources().getDimensionPixelSize(2131167766));
+      }
+    }
+    else
+    {
+      return;
+    }
+    bbmy.a(BaseApplicationImpl.getApplication(), 1, 2131653422, 0).b(paramLong.getResources().getDimensionPixelSize(2131167766));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rvt
  * JD-Core Version:    0.7.0.1
  */

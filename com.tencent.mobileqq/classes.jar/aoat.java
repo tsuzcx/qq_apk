@@ -1,23 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
+import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelFileTabView.1;
+import java.util.Comparator;
 
-public final class aoat
-  implements Parcelable.Creator
+public class aoat
+  implements Comparator<Long>
 {
-  public EditRecordVideoSource a(Parcel paramParcel)
-  {
-    return new EditRecordVideoSource(paramParcel);
-  }
+  public aoat(QfileLocalFileDelFileTabView.1 param1) {}
   
-  public EditRecordVideoSource[] a(int paramInt)
+  public int a(Long paramLong1, Long paramLong2)
   {
-    return new EditRecordVideoSource[paramInt];
+    if (paramLong1.equals(paramLong2)) {
+      return 1;
+    }
+    return (int)(paramLong1.longValue() - paramLong2.longValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoat
  * JD-Core Version:    0.7.0.1
  */

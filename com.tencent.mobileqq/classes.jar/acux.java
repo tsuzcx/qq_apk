@@ -1,23 +1,131 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.teamwork.TeamWorkConvertUtils;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.qphone.base.util.QLog;
 
 public class acux
-  implements View.OnClickListener
 {
-  public acux(FilePreviewActivity paramFilePreviewActivity) {}
+  private static acux jdField_a_of_type_Acux;
+  public static ajgy a;
+  private static final String jdField_a_of_type_JavaLangString = DeviceProfileManager.DpcNames.aio_config.name();
+  public boolean a;
+  private String b;
+  public boolean b;
   
-  public void onClick(View paramView)
+  static
   {
-    ReportController.b(this.a.app, "dc00898", "", "", "0X8008A32", "0X8008A32", 0, 0, "", "", "", "");
-    FilePreviewActivity.a(this.a, TeamWorkConvertUtils.a(this.a.app, FilePreviewActivity.a(this.a), this.a, "<FileAssistant>FilePreviewActivity", this.a.getString(2131439167), false));
+    jdField_a_of_type_Ajgy = new acuy();
+  }
+  
+  private acux()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = true;
+    DeviceProfileManager.a(jdField_a_of_type_Ajgy);
+  }
+  
+  public static acux a()
+  {
+    if (jdField_a_of_type_Acux == null) {
+      b(false);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AIODrawerDpc", 2, "getInstance: " + jdField_a_of_type_Acux);
+    }
+    return jdField_a_of_type_Acux;
+  }
+  
+  public static boolean a()
+  {
+    acux localacux = a();
+    if (localacux != null) {
+      return localacux.jdField_a_of_type_Boolean;
+    }
+    return true;
+  }
+  
+  private static void b(boolean paramBoolean)
+  {
+    for (;;)
+    {
+      try
+      {
+        long l1 = System.currentTimeMillis();
+        if (jdField_a_of_type_Acux == null)
+        {
+          jdField_a_of_type_Acux = new acux();
+          paramBoolean = true;
+        }
+        if (paramBoolean) {}
+        try
+        {
+          Object localObject1 = DeviceProfileManager.b().a(jdField_a_of_type_JavaLangString);
+          jdField_a_of_type_Acux.jdField_b_of_type_JavaLangString = ((String)localObject1);
+          if (!TextUtils.isEmpty((CharSequence)localObject1))
+          {
+            localObject1 = ((String)localObject1).split("\\|");
+            if (localObject1.length < 19) {
+              break label243;
+            }
+            if (Integer.valueOf(localObject1[18]).intValue() != 1) {
+              continue;
+            }
+            jdField_a_of_type_Acux.jdField_a_of_type_Boolean = true;
+            if (localObject1.length < 20) {
+              break label263;
+            }
+            if (Integer.valueOf(localObject1[19]).intValue() != 1) {
+              break label253;
+            }
+            jdField_a_of_type_Acux.jdField_b_of_type_Boolean = true;
+          }
+        }
+        catch (Exception localException)
+        {
+          long l2;
+          QLog.d("AIODrawerDpc", 1, "load exp:" + localException.getMessage());
+          jdField_a_of_type_Acux.jdField_a_of_type_Boolean = true;
+          jdField_a_of_type_Acux.jdField_b_of_type_Boolean = true;
+          continue;
+        }
+        if (QLog.isColorLevel())
+        {
+          l2 = System.currentTimeMillis();
+          QLog.d("AIODrawerDpc", 2, "loadDpc: " + jdField_a_of_type_Acux + ", costMills: " + (l2 - l1));
+        }
+        return;
+      }
+      finally {}
+      jdField_a_of_type_Acux.jdField_a_of_type_Boolean = false;
+      continue;
+      label243:
+      jdField_a_of_type_Acux.jdField_a_of_type_Boolean = true;
+      continue;
+      label253:
+      jdField_a_of_type_Acux.jdField_b_of_type_Boolean = false;
+      continue;
+      label263:
+      jdField_a_of_type_Acux.jdField_b_of_type_Boolean = true;
+    }
+  }
+  
+  public static boolean b()
+  {
+    acux localacux = a();
+    if (localacux != null) {
+      return localacux.jdField_b_of_type_Boolean;
+    }
+    return true;
+  }
+  
+  public String toString()
+  {
+    return "AIODrawerDpc{dpcValue='" + this.jdField_b_of_type_JavaLangString + '\'' + ", isSupport=" + this.jdField_a_of_type_Boolean + ", needPreInflate=" + this.jdField_b_of_type_Boolean + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acux
  * JD-Core Version:    0.7.0.1
  */

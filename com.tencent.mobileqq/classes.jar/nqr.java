@@ -1,23 +1,21 @@
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler;
-import java.util.ArrayList;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.content.Context;
+import android.widget.RelativeLayout.LayoutParams;
 
-public class nqr
-  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
+class nqr
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public nqr(BatchGetVideoInfoHandler paramBatchGetVideoInfoHandler, BatchGetVideoInfo paramBatchGetVideoInfo) {}
+  nqr(nqp paramnqp, RelativeLayout.LayoutParams paramLayoutParams1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat, RelativeLayout.LayoutParams paramLayoutParams2) {}
   
-  public void a()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler.b(0);
-  }
-  
-  public void a(ArrayList paramArrayList)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler.a(0, paramArrayList);
+    float f = paramValueAnimator.getAnimatedFraction();
+    nqp.a(this.jdField_a_of_type_Nqp, this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams, f, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.d, this.e, this.jdField_a_of_type_Float);
+    nqp.a(this.jdField_a_of_type_Nqp, this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams, f, nqp.a(this.jdField_a_of_type_Nqp));
+    nqp.a(this.jdField_a_of_type_Nqp, nqp.a(this.jdField_a_of_type_Nqp), f, 0.2F, 1.7F, aciy.a(34.0F, nqp.a(this.jdField_a_of_type_Nqp).getResources()));
+    nqp.a(this.jdField_a_of_type_Nqp, nqp.b(this.jdField_a_of_type_Nqp), f, 0.2F, 2.0F, aciy.a(34.0F, nqp.a(this.jdField_a_of_type_Nqp).getResources()));
+    nqp.a(this.jdField_a_of_type_Nqp, nqp.c(this.jdField_a_of_type_Nqp), f, 0.2F, 2.0F, aciy.a(34.0F, nqp.a(this.jdField_a_of_type_Nqp).getResources()));
   }
 }
 

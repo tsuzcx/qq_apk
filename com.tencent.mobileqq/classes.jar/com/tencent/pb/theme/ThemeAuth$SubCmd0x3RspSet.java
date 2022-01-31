@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class ThemeAuth$SubCmd0x3RspSet
-  extends MessageMicro
+  extends MessageMicro<SubCmd0x3RspSet>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34 }, new String[] { "int32_result", "uint32_theme_id", "uint32_suit_id", "str_diy_theme_err_msg" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "" }, SubCmd0x3RspSet.class);
   public final PBInt32Field int32_result = PBField.initInt32(0);
@@ -17,7 +17,7 @@ public final class ThemeAuth$SubCmd0x3RspSet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.theme.ThemeAuth.SubCmd0x3RspSet
  * JD-Core Version:    0.7.0.1
  */

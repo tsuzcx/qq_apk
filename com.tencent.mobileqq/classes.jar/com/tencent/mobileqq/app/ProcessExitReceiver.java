@@ -11,14 +11,13 @@ import com.tencent.qphone.base.util.MD5;
 import java.util.ArrayList;
 import java.util.Iterator;
 import mqq.app.MobileQQ;
-import zqt;
 
 public class ProcessExitReceiver
   extends BroadcastReceiver
 {
   private AppInterface a;
   
-  protected String a(ArrayList paramArrayList, boolean paramBoolean)
+  protected String a(ArrayList<String> paramArrayList, boolean paramBoolean)
   {
     Time localTime = new Time();
     localTime.setToNow();
@@ -44,7 +43,7 @@ public class ProcessExitReceiver
     }
   }
   
-  protected boolean a(String paramString, ArrayList paramArrayList)
+  protected boolean a(String paramString, ArrayList<String> paramArrayList)
   {
     if (TextUtils.isEmpty(paramString)) {}
     while ((!paramString.equals(a(paramArrayList, false))) && (!paramString.equals(a(paramArrayList, true)))) {
@@ -53,12 +52,12 @@ public class ProcessExitReceiver
     return true;
   }
   
-  protected boolean a(ArrayList paramArrayList)
+  protected boolean a(ArrayList<String> paramArrayList)
   {
     if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
       return true;
     }
-    String str = MobileQQ.getMobileQQ().getProcessName();
+    String str = MobileQQ.getMobileQQ().getQQProcessName();
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext()) {
       if (str.equals((String)paramArrayList.next())) {
@@ -84,7 +83,7 @@ public class ProcessExitReceiver
       } while (paramContext == null);
       paramIntent = paramContext.getStringArrayList("procNameList");
     } while ((!a(paramContext.getString("verify"), paramIntent)) || (!a(paramIntent)));
-    ThreadManager.post(new zqt(this), 8, null, true);
+    ThreadManager.post(new ProcessExitReceiver.1(this), 8, null, true);
     return;
     this.a.getApplication().otherProcessExit(true);
   }

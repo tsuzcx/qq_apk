@@ -1,28 +1,77 @@
-import com.tencent.mobileqq.data.TroopAssistantData;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import java.util.Comparator;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import org.json.JSONObject;
 
 public class aent
-  implements Comparator
 {
-  public aent(TroopAssistantManager paramTroopAssistantManager) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  String jdField_a_of_type_JavaLangString;
+  JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  int jdField_b_of_type_Int = 0;
+  long jdField_b_of_type_Long;
+  String jdField_b_of_type_JavaLangString;
+  protected int c;
+  long jdField_c_of_type_Long;
+  String jdField_c_of_type_JavaLangString;
+  int jdField_d_of_type_Int = 0;
+  public long d;
+  String jdField_d_of_type_JavaLangString;
+  int e = 0;
   
-  public int a(TroopAssistantData paramTroopAssistantData1, TroopAssistantData paramTroopAssistantData2)
+  public aent(JSONObject paramJSONObject)
   {
-    long l1 = Math.max(paramTroopAssistantData1.lastmsgtime, paramTroopAssistantData1.lastdrafttime);
-    long l2 = Math.max(paramTroopAssistantData2.lastmsgtime, paramTroopAssistantData2.lastdrafttime);
-    if (l1 < l2) {
-      return 1;
+    this.jdField_a_of_type_OrgJsonJSONObject = paramJSONObject;
+    if (paramJSONObject != null)
+    {
+      this.jdField_a_of_type_Long = paramJSONObject.optLong("puin");
+      this.jdField_a_of_type_Int = paramJSONObject.optInt("type");
+      this.jdField_b_of_type_Int = paramJSONObject.optInt("show_tab");
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("content");
+      this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("icon");
+      this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("url");
+      this.jdField_b_of_type_Long = paramJSONObject.optLong("begin");
+      this.jdField_c_of_type_Long = paramJSONObject.optLong("end");
+      this.jdField_d_of_type_JavaLangString = paramJSONObject.optString("shool_id");
+      this.jdField_c_of_type_Int = paramJSONObject.optInt("times");
+      this.jdField_d_of_type_Long = paramJSONObject.optLong("msg_seqno");
+      this.jdField_d_of_type_Long = paramJSONObject.optLong("msg_seqno");
+      this.jdField_d_of_type_Int = paramJSONObject.optInt("tid");
+      this.e = paramJSONObject.optInt("clicked");
     }
-    if (l1 == l2) {
-      return 0;
+  }
+  
+  boolean a()
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_Long > 0L)
+    {
+      bool1 = bool2;
+      if (this.jdField_c_of_type_Int >= 0) {
+        bool1 = true;
+      }
     }
-    return -1;
+    return bool1;
+  }
+  
+  public boolean b()
+  {
+    boolean bool2 = true;
+    long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
+    boolean bool1 = bool2;
+    if (l >= this.jdField_b_of_type_Long)
+    {
+      bool1 = bool2;
+      if (l <= this.jdField_c_of_type_Long) {
+        bool1 = false;
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aent
  * JD-Core Version:    0.7.0.1
  */

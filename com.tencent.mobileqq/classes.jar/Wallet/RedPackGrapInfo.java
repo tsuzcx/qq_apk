@@ -8,7 +8,8 @@ import java.util.ArrayList;
 public final class RedPackGrapInfo
   extends JceStruct
 {
-  static ArrayList cache_vecGrapUin = new ArrayList();
+  static ArrayList<Long> cache_vecGrapUin = new ArrayList();
+  public String hbIdiomLastPY = "";
   public int iConfType;
   public int iEffectsId;
   public int iEnvelopeId;
@@ -17,6 +18,8 @@ public final class RedPackGrapInfo
   public int iRedType;
   public int iResourceType;
   public int iSkinId;
+  public int iSongFlag;
+  public int iSongId;
   public int iSoundRecordDuration;
   public int iSpecialPopId;
   public int iSubjectId;
@@ -27,12 +30,45 @@ public final class RedPackGrapInfo
   public String sContent = "";
   public String sIndex = "";
   public String sName = "";
+  public String sReserve = "";
   public String sTitle = "";
-  public ArrayList vecGrapUin;
+  public int seq;
+  public ArrayList<Long> vecGrapUin;
   
   static
   {
     cache_vecGrapUin.add(Long.valueOf(0L));
+  }
+  
+  public RedPackGrapInfo() {}
+  
+  public RedPackGrapInfo(long paramLong1, String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, int paramInt3, String paramString4, int paramInt4, ArrayList<Long> paramArrayList, String paramString5, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11, long paramLong2, String paramString6, int paramInt12, int paramInt13, String paramString7, int paramInt14, String paramString8)
+  {
+    this.lUin = paramLong1;
+    this.sTitle = paramString1;
+    this.iRedType = paramInt1;
+    this.sBiilNo = paramString2;
+    this.sAuthKey = paramString3;
+    this.iMsgType = paramInt2;
+    this.iEnvelopeId = paramInt3;
+    this.sName = paramString4;
+    this.iRedChannel = paramInt4;
+    this.vecGrapUin = paramArrayList;
+    this.sContent = paramString5;
+    this.iSoundRecordDuration = paramInt5;
+    this.iResourceType = paramInt6;
+    this.iSkinId = paramInt7;
+    this.iEffectsId = paramInt8;
+    this.iSpecialPopId = paramInt9;
+    this.iConfType = paramInt10;
+    this.iSubjectId = paramInt11;
+    this.lCreateTime = paramLong2;
+    this.sIndex = paramString6;
+    this.iSongId = paramInt12;
+    this.iSongFlag = paramInt13;
+    this.sReserve = paramString7;
+    this.seq = paramInt14;
+    this.hbIdiomLastPY = paramString8;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -57,6 +93,11 @@ public final class RedPackGrapInfo
     this.iSubjectId = paramJceInputStream.read(this.iSubjectId, 17, false);
     this.lCreateTime = paramJceInputStream.read(this.lCreateTime, 18, false);
     this.sIndex = paramJceInputStream.readString(19, false);
+    this.iSongId = paramJceInputStream.read(this.iSongId, 20, false);
+    this.iSongFlag = paramJceInputStream.read(this.iSongFlag, 21, false);
+    this.sReserve = paramJceInputStream.readString(22, false);
+    this.seq = paramJceInputStream.read(this.seq, 23, false);
+    this.hbIdiomLastPY = paramJceInputStream.readString(24, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -94,6 +135,15 @@ public final class RedPackGrapInfo
     paramJceOutputStream.write(this.lCreateTime, 18);
     if (this.sIndex != null) {
       paramJceOutputStream.write(this.sIndex, 19);
+    }
+    paramJceOutputStream.write(this.iSongId, 20);
+    paramJceOutputStream.write(this.iSongFlag, 21);
+    if (this.sReserve != null) {
+      paramJceOutputStream.write(this.sReserve, 22);
+    }
+    paramJceOutputStream.write(this.seq, 23);
+    if (this.hbIdiomLastPY != null) {
+      paramJceOutputStream.write(this.hbIdiomLastPY, 24);
     }
   }
 }

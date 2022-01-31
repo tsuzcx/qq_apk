@@ -1,19 +1,34 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.test.MapTestHelper.ToolEnableChangedListener;
+import android.view.ScaleGestureDetector;
+import com.tencent.mobileqq.activity.PortraitImageview;
 
-class abhy
-  implements MapTestHelper.ToolEnableChangedListener
+public class abhy
+  extends abia
 {
-  abhy(abhx paramabhx) {}
+  public abhy(PortraitImageview paramPortraitImageview) {}
   
-  public void a(boolean paramBoolean)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    this.a.a.b(paramBoolean);
+    if ((paramScaleGestureDetector != null) && (paramScaleGestureDetector.isInProgress())) {
+      try
+      {
+        float f1 = this.a.a();
+        float f2 = paramScaleGestureDetector.getScaleFactor();
+        f1 = Math.min(this.a.b(), Math.max(f1 * f2, 0.1F));
+        this.a.a(f1, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
+        this.a.invalidate();
+        return true;
+      }
+      catch (IllegalArgumentException paramScaleGestureDetector)
+      {
+        paramScaleGestureDetector.printStackTrace();
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abhy
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class DeviceProto$MsgFileKey
-  extends MessageMicro
+  extends MessageMicro<MsgFileKey>
 {
   public static final int BYTES_FILE_INDEX_FIELD_NUMBER = 1;
   public static final int BYTES_FILE_MD5_FIELD_NUMBER = 2;

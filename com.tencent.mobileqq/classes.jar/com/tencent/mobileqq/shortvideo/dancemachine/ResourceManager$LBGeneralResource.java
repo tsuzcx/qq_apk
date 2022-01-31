@@ -2,13 +2,10 @@ package com.tencent.mobileqq.shortvideo.dancemachine;
 
 public class ResourceManager$LBGeneralResource
 {
-  public String a;
-  private String b = ResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager);
+  public String bgmV = this.prefix_bgm + "background-music-aac.mp3";
+  private String prefix_bgm = ResourceManager.access$100(this.this$0);
   
-  public ResourceManager$LBGeneralResource(ResourceManager paramResourceManager)
-  {
-    this.jdField_a_of_type_JavaLangString = (this.b + "background-music-aac.mp3");
-  }
+  public ResourceManager$LBGeneralResource(ResourceManager paramResourceManager) {}
 }
 
 

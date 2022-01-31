@@ -1,16 +1,51 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import android.content.Context;
+import android.content.Intent;
+import android.os.IBinder;
+import com.tencent.biz.huanjiplugin.TranslucentActivty;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
 
-public class mrm
-  implements Runnable
+class mrm
+  implements OnPluginInstallListener
 {
-  public mrm(FastWebArticleInfo paramFastWebArticleInfo, ArticleInfo paramArticleInfo) {}
+  mrm(mrl parammrl) {}
   
-  public void run()
+  public IBinder asBinder()
   {
-    ReadInJoyLogicEngine.a().a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mArticleContentUrl, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSubscribeID, 2, new mrn(this));
+    return null;
+  }
+  
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
+  {
+    if (this.a.jdField_a_of_type_Mrn != null)
+    {
+      float f = paramInt1 / paramInt2;
+      this.a.jdField_a_of_type_Mrn.a(0, 1, (int)(f * 100.0F));
+    }
+  }
+  
+  public void onInstallError(String paramString, int paramInt)
+  {
+    if (this.a.jdField_a_of_type_Mrn != null) {
+      this.a.jdField_a_of_type_Mrn.a(paramInt, "Install Error");
+    }
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    if (this.a.jdField_a_of_type_Mrn != null) {
+      this.a.jdField_a_of_type_Mrn.a(3, 4, 100);
+    }
+    if (this.a.jdField_a_of_type_Int == 2)
+    {
+      paramString = new Intent(BaseApplicationImpl.getApplication().getApplicationContext(), TranslucentActivty.class);
+      paramString.addFlags(268435456);
+      paramString.putExtras(paramString);
+      paramString.putExtra("startParam", this.a.jdField_a_of_type_JavaLangString);
+      BaseApplicationImpl.getApplication().getApplicationContext().startActivity(paramString);
+    }
   }
 }
 

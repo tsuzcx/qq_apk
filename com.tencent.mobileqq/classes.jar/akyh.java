@@ -1,19 +1,34 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.view.View;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
 
 public class akyh
-  implements Runnable
+  extends AnimatorListenerAdapter
 {
-  public akyh(SwiftWebAccelerator paramSwiftWebAccelerator, Bundle paramBundle) {}
+  public akyh(QRScanEntryView paramQRScanEntryView, View paramView, boolean paramBoolean) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftUtilsSwiftWebAccelerator.a(this.jdField_a_of_type_AndroidOsBundle);
+    if (this.jdField_a_of_type_AndroidViewView != null)
+    {
+      this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+      if (!this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      }
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Boolean)) {
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akyh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,54 @@
 package com.tencent.mobileqq.activity;
 
+import aazn;
+import ajfi;
+import ajfo;
+import ajjj;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import anoe;
+import awqx;
+import badq;
+import bbma;
+import bbmy;
+import bbne;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.CardObserver;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.music.QQPlayerService;
 import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
-import taf;
+import com.tencent.qphone.base.util.QLog;
 
 public class InterestSwitchEditActivity
   extends IphoneTitleBarActivity
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private CardHandler jdField_a_of_type_ComTencentMobileqqAppCardHandler;
-  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new taf(this);
+  private ajfi jdField_a_of_type_Ajfi;
+  private ajfo jdField_a_of_type_Ajfo = new aazn(this);
+  private View jdField_a_of_type_AndroidViewView;
+  private bbma jdField_a_of_type_Bbma;
   private Card jdField_a_of_type_ComTencentMobileqqDataCard;
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+  private boolean jdField_a_of_type_Boolean;
   private FormSwitchItem b;
   private FormSwitchItem c;
   private FormSwitchItem d;
   private FormSwitchItem e;
   private FormSwitchItem f;
   private FormSwitchItem g;
-  private FormSwitchItem h;
-  private FormSwitchItem i;
-  private FormSwitchItem j;
-  private FormSwitchItem k;
-  private FormSwitchItem l;
+  
+  public static Intent a(Context paramContext)
+  {
+    paramContext = new Intent(paramContext, InterestSwitchEditActivity.class);
+    paramContext.putExtra("param_notfromprofile", false);
+    return paramContext;
+  }
   
   private void a()
   {
@@ -39,60 +56,29 @@ public class InterestSwitchEditActivity
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(true);
     }
     label36:
-    label54:
-    label72:
-    label90:
-    label108:
-    label126:
+    label55:
+    label91:
     do
     {
-      break label216;
+      break label91;
       if (this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_music == 0)
       {
         this.b.setChecked(true);
-        if (this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_recent_activity != 0) {
-          break label261;
+        if (1 != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_present) {
+          break label136;
         }
         this.c.setChecked(true);
-        if (this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_joined_troop != 0) {
-          break label283;
+        if (this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_miniapp != 0) {
+          break label157;
         }
         this.d.setChecked(true);
-        if (this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_now != 0) {
-          break label305;
-        }
-        this.e.setChecked(true);
-        if (this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_ktv != 0) {
-          break label327;
-        }
-        this.f.setChecked(true);
-        if (this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_reader != 0) {
-          break label349;
-        }
-        this.g.setChecked(true);
-        if (this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_radio != 0) {
-          break label371;
-        }
-        this.h.setChecked(true);
-        if (this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_comic != 0) {
-          break label393;
-        }
-        this.i.setChecked(true);
-        if (this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_education != 0) {
-          break label415;
-        }
-        this.j.setChecked(true);
-        if (this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_using_tim != 0) {
-          break label437;
-        }
-        this.k.setChecked(true);
       }
       for (;;)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_weishi != 0) {
-          break label459;
+        if (this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_musicbox != 0) {
+          break label179;
         }
-        this.l.setChecked(true);
+        this.e.setChecked(true);
         return;
         if (1 != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_interest) {
           break;
@@ -104,392 +90,345 @@ public class InterestSwitchEditActivity
         }
         this.b.setChecked(false);
         break label36;
-        if (1 != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_recent_activity) {
-          break label54;
+        if (this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_present != 0) {
+          break label55;
         }
         this.c.setChecked(false);
-        break label54;
-        if (1 != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_joined_troop) {
-          break label72;
-        }
-        this.d.setChecked(false);
-        break label72;
-        if (1 != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_now) {
-          break label90;
-        }
-        this.e.setChecked(false);
-        break label90;
-        if (1 != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_ktv) {
-          break label108;
-        }
-        this.f.setChecked(false);
-        break label108;
-        if (1 != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_reader) {
-          break label126;
-        }
-        this.g.setChecked(false);
-        break label126;
-        if (1 != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_radio) {
-          break label144;
-        }
-        this.h.setChecked(false);
-        break label144;
-        if (1 != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_comic) {
-          break label162;
-        }
-        this.i.setChecked(false);
-        break label162;
-        if (1 != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_education) {
-          break label180;
-        }
-        this.j.setChecked(false);
-        break label180;
-        if (1 == this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_using_tim) {
-          this.k.setChecked(false);
+        break label55;
+        if (1 == this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_miniapp) {
+          this.d.setChecked(false);
         }
       }
-    } while (1 != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_weishi);
-    label144:
-    label162:
-    label180:
-    label216:
-    label349:
-    label371:
-    this.l.setChecked(false);
-    label261:
-    label283:
-    label305:
-    label327:
-    label459:
-    return;
+    } while (1 != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_musicbox);
+    label136:
+    label157:
+    label179:
+    this.e.setChecked(false);
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  private boolean a(Bundle paramBundle, int paramInt1, int paramInt2)
   {
-    super.doOnCreate(paramBundle);
-    super.setContentView(2130970550);
-    this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
-    setTitle("兴趣爱好展示设置");
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131371024));
-    this.b = ((FormSwitchItem)findViewById(2131371025));
-    this.c = ((FormSwitchItem)findViewById(2131371026));
-    this.d = ((FormSwitchItem)findViewById(2131371028));
-    this.f = ((FormSwitchItem)findViewById(2131371029));
-    this.g = ((FormSwitchItem)findViewById(2131371027));
-    this.h = ((FormSwitchItem)findViewById(2131371030));
-    this.e = ((FormSwitchItem)findViewById(2131364001));
-    this.i = ((FormSwitchItem)findViewById(2131371031));
-    this.j = ((FormSwitchItem)findViewById(2131371032));
-    this.k = ((FormSwitchItem)findViewById(2131371033));
-    this.l = ((FormSwitchItem)findViewById(2131371034));
-    int n = getIntent().getIntExtra("param_eat_switch", -1);
-    int i1 = getIntent().getIntExtra("param_interest_switch", -1);
-    int i2 = getIntent().getIntExtra("param_joined_group_switch", -1);
-    int i3 = getIntent().getIntExtra("param_ktv_switch", -1);
-    int i4 = getIntent().getIntExtra("param_music_switch", -1);
-    int i5 = getIntent().getIntExtra("param_recent_activity_switch", -1);
-    int i6 = getIntent().getIntExtra("param_star_switch", -1);
-    int i7 = getIntent().getIntExtra("param_reader_switch", -1);
-    int i8 = getIntent().getIntExtra("param_radio_switch", -1);
-    int i9 = getIntent().getIntExtra("param_now_switch", -1);
-    int i10 = getIntent().getIntExtra("param_comic_switch", -1);
-    int i11 = getIntent().getIntExtra("param_education_switch", -1);
-    int i12 = getIntent().getIntExtra("param_using_tim_switch", -1);
-    int i13 = getIntent().getIntExtra("param_weishi_switch", -1);
-    int m = 0;
-    if ((-1 != n) || (-1 != i1) || (-1 != i2) || (-1 != i3) || (-1 != i4) || (-1 != i5) || (-1 != i6) || (-1 != i7) || (-1 != i8) || (-1 != i9) || (-1 != i10) || (-1 != i11) || (-1 != i12) || (-1 != i13)) {
-      m = 1;
+    if (!badq.d(this)) {
+      a(paramInt1, paramInt2);
     }
-    if (m != 0)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDataCard = new Card();
-      this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_eat = ((short)n);
-      this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_interest = ((short)i1);
-      this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_joined_troop = ((short)i2);
-      this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_ktv = ((short)i3);
-      this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_music = ((short)i4);
-      this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_recent_activity = ((short)i5);
-      this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_star = ((short)i6);
-      this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_reader = ((short)i7);
-      this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_radio = ((short)i8);
-      this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_now = ((short)i9);
-      this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_comic = ((short)i10);
-      this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_education = ((short)i11);
-      this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_using_tim = ((short)i12);
-      this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_weishi = ((short)i13);
-      a();
+    while ((paramBundle == null) || (paramBundle.isEmpty())) {
+      return false;
     }
-    for (;;)
+    ((ajfi)this.app.a(2)).a(paramBundle);
+    return true;
+  }
+  
+  private void b()
+  {
+    Card localCard = ((ajjj)this.app.getManager(51)).b(this.app.getCurrentAccountUin());
+    Object localObject;
+    if (localCard != null)
     {
-      return true;
-      if (!NetworkUtil.d(BaseApplication.getContext()))
+      localObject = (anoe)this.app.getManager(264);
+      if ((localCard.extendFriendEntryAddFriend == 1) && (((anoe)localObject).b()))
       {
-        QQToast.a(BaseApplicationImpl.sApplication, 2131433227, 0).b(getTitleBarHeight());
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        this.g.setChecked(localCard.isShowCard);
       }
-      else
+      if (localCard.switch_disable_personality_label != -1)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppCardHandler = ((CardHandler)this.app.a(2));
-        this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.i();
+        localObject = this.f;
+        if (localCard.switch_disable_personality_label == 1) {
+          break label104;
+        }
+      }
+    }
+    label104:
+    for (boolean bool = true;; bool = false)
+    {
+      ((FormSwitchItem)localObject).setChecked(bool);
+      return;
+    }
+  }
+  
+  void a(int paramInt1, int paramInt2)
+  {
+    new bbne(this).a(paramInt1, getTitleBarHeight(), 0, paramInt2);
+  }
+  
+  public boolean doOnCreate(Bundle paramBundle)
+  {
+    int j = 8;
+    super.doOnCreate(paramBundle);
+    super.setContentView(2131495396);
+    this.app.addObserver(this.jdField_a_of_type_Ajfo);
+    setTitle(getString(2131629727));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131302608));
+    this.b = ((FormSwitchItem)findViewById(2131304897));
+    this.c = ((FormSwitchItem)findViewById(2131306196));
+    this.f = ((FormSwitchItem)findViewById(2131305707));
+    this.f.setOnCheckedChangeListener(this);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131300200);
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.g = ((FormSwitchItem)findViewById(2131300199));
+    this.g.setOnCheckedChangeListener(this);
+    this.d = ((FormSwitchItem)findViewById(2131304639));
+    this.e = ((FormSwitchItem)findViewById(2131300205));
+    this.e.setOnCheckedChangeListener(this);
+    this.jdField_a_of_type_Bbma = new bbma(this.app, null);
+    boolean bool = this.jdField_a_of_type_Bbma.a(3);
+    paramBundle = this.f;
+    int i;
+    label235:
+    int n;
+    label262:
+    label290:
+    int i1;
+    int i2;
+    if (bool)
+    {
+      i = 0;
+      paramBundle.setVisibility(i);
+      bool = this.jdField_a_of_type_Bbma.a(5);
+      paramBundle = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+      if (!bool) {
+        break label562;
+      }
+      i = 0;
+      paramBundle.setVisibility(i);
+      bool = this.jdField_a_of_type_Bbma.a(4);
+      paramBundle = this.b;
+      if (!bool) {
+        break label568;
+      }
+      i = 0;
+      paramBundle.setVisibility(i);
+      bool = this.jdField_a_of_type_Bbma.a(6);
+      paramBundle = this.c;
+      if (!bool) {
+        break label574;
+      }
+      i = 0;
+      paramBundle.setVisibility(i);
+      bool = this.jdField_a_of_type_Bbma.a(7);
+      paramBundle = this.d;
+      i = j;
+      if (bool) {
+        i = 0;
+      }
+      paramBundle.setVisibility(i);
+      i = getIntent().getIntExtra("param_interest_switch", -1);
+      j = getIntent().getIntExtra("param_music_switch", -1);
+      int k = getIntent().getIntExtra("param_extendfriend_switch", -1);
+      int m = getIntent().getIntExtra("param_personlabel_switch_changed", -1);
+      n = getIntent().getIntExtra("param_present_switch", -1);
+      i1 = getIntent().getIntExtra("param_miniapp_switch", -1);
+      i2 = getIntent().getIntExtra("param_musicbox_switch", -1);
+      if ((-1 == i) && (-1 == j) && (-1 == k) && (-1 == m) && (-1 == n) && (-1 == i1) && (-1 == i2)) {
+        break label635;
+      }
+    }
+    label562:
+    label568:
+    label574:
+    label635:
+    for (bool = true;; bool = false)
+    {
+      if (bool)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqDataCard = new Card();
+        this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_interest = ((short)i);
+        this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_music = ((short)j);
+        this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_present = ((short)n);
+        this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_miniapp = ((short)i1);
+        this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_musicbox = ((short)i2);
+        a();
+        b();
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("InterestSwitchEditActivity", 2, "hasSwitchState=" + bool);
+        }
+        return true;
+        i = 8;
+        break;
+        i = 8;
+        break label235;
+        i = 8;
+        break label262;
+        i = 8;
+        break label290;
+        if (!badq.d(BaseApplication.getContext()))
+        {
+          bbmy.a(BaseApplicationImpl.sApplication, 2131628946, 0).b(getTitleBarHeight());
+        }
+        else
+        {
+          this.jdField_a_of_type_Ajfi = ((ajfi)this.app.a(2));
+          this.jdField_a_of_type_Ajfi.g();
+        }
       }
     }
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.app.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppCardObserver);
+    if (this.jdField_a_of_type_Bbma != null)
+    {
+      this.jdField_a_of_type_Bbma.a();
+      this.jdField_a_of_type_Bbma = null;
+    }
+    this.app.removeObserver(this.jdField_a_of_type_Ajfo);
   }
   
   public void finish()
   {
     Intent localIntent = new Intent();
+    Bundle localBundle = new Bundle();
     if (this.jdField_a_of_type_ComTencentMobileqqDataCard != null)
     {
       if (!this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a()) {
-        break label693;
+        break label549;
       }
-      m = 0;
-      localIntent.putExtra("param_interest_switch", m);
-      if (!this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a()) {
-        break label698;
-      }
-      m = 0;
-      label47:
-      if (m != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_interest) {
+      i = 0;
+      localIntent.putExtra("param_interest_switch", i);
+      if ((i != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_interest) && (-1 != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_interest))
+      {
         localIntent.putExtra("param_interest_switch_changed", true);
+        localBundle.putShort("key_interest_switch", (short)i);
       }
       if (!this.b.a()) {
-        break label703;
+        break label554;
       }
-      m = 0;
-      label78:
-      localIntent.putExtra("param_music_switch", m);
-      if (!this.b.a()) {
-        break label708;
-      }
-      m = 0;
-      label98:
-      if (m != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_music) {
+      i = 0;
+      label95:
+      localIntent.putExtra("param_music_switch", i);
+      if ((i != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_music) && (-1 != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_music))
+      {
         localIntent.putExtra("param_music_switch_changed", true);
+        localBundle.putShort("key_music_switch", (short)i);
       }
       if (!this.c.a()) {
-        break label713;
+        break label559;
       }
-      m = 0;
-      label129:
-      localIntent.putExtra("param_recent_activity_switch", m);
-      if (!this.c.a()) {
-        break label718;
-      }
-      m = 0;
-      label149:
-      if (m != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_recent_activity) {
-        localIntent.putExtra("param_recent_activity_switch_changed", true);
+      i = 1;
+      label155:
+      localIntent.putExtra("param_present_switch", i);
+      if ((i != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_present) && (-1 != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_present))
+      {
+        localIntent.putExtra("param_present_switch_changed", true);
+        localBundle.putShort("key_present_switch", (short)i);
       }
       if (!this.d.a()) {
-        break label723;
+        break label564;
       }
-      m = 0;
-      label180:
-      localIntent.putExtra("param_joined_group_switch", m);
-      if (!this.d.a()) {
-        break label728;
-      }
-      m = 0;
-      label200:
-      if (m != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_joined_troop) {
-        localIntent.putExtra("param_joined_group_switch_changed", true);
+      i = 0;
+      label215:
+      localIntent.putExtra("param_miniapp_switch", i);
+      if ((i != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_miniapp) && (-1 != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_miniapp))
+      {
+        localIntent.putExtra("param_personlabel_switch_changed", true);
+        localBundle.putShort("key_miniapp_playing_switch", (short)i);
       }
       if (!this.e.a()) {
-        break label733;
+        break label569;
       }
-      m = 0;
-      label232:
-      localIntent.putExtra("param_now_switch", m);
-      if (!this.e.a()) {
-        break label738;
-      }
-      m = 0;
-      label252:
-      if (m != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_now) {
-        localIntent.putExtra("param_now_switch_changed", true);
-      }
-      if (!this.f.a()) {
-        break label743;
-      }
-      m = 0;
-      label284:
-      localIntent.putExtra("param_ktv_switch", m);
-      if (!this.f.a()) {
-        break label748;
-      }
-      m = 0;
-      label304:
-      if (m != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_ktv) {
-        localIntent.putExtra("param_ktv_switch_changed", true);
-      }
-      if (!this.g.a()) {
-        break label753;
-      }
-      m = 0;
-      label336:
-      localIntent.putExtra("param_reader_switch", m);
-      if (!this.g.a()) {
-        break label758;
-      }
-      m = 0;
-      label356:
-      if (m != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_reader) {
-        localIntent.putExtra("param_reader_switch_changed", true);
-      }
-      if (!this.h.a()) {
-        break label763;
-      }
-      m = 0;
-      label388:
-      localIntent.putExtra("param_radio_switch", m);
-      if (!this.h.a()) {
-        break label768;
-      }
-      m = 0;
-      label408:
-      if (m != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_radio) {
-        localIntent.putExtra("param_radio_switch_changed", true);
-      }
-      if (!this.i.a()) {
-        break label773;
-      }
-      m = 0;
-      label440:
-      localIntent.putExtra("param_comic_switch", m);
-      if (!this.i.a()) {
-        break label778;
-      }
-      m = 0;
-      label460:
-      if (m != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_comic) {
-        localIntent.putExtra("param_comic_switch_changed", true);
-      }
-      if (!this.j.a()) {
-        break label783;
-      }
-      m = 0;
-      label492:
-      localIntent.putExtra("param_education_switch", m);
-      if (!this.j.a()) {
-        break label788;
-      }
-      m = 0;
-      label512:
-      if (m != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_education) {
-        localIntent.putExtra("param_education_switch_changed", true);
-      }
-      if (!this.k.a()) {
-        break label793;
-      }
-      m = 0;
-      label544:
-      localIntent.putExtra("param_using_tim_switch", m);
-      if (!this.k.a()) {
-        break label798;
-      }
-      m = 0;
-      label564:
-      if (m != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_using_tim) {
-        localIntent.putExtra("param_using_tim_switch_changed", true);
-      }
-      if (!this.l.a()) {
-        break label803;
-      }
-      m = 0;
-      label596:
-      localIntent.putExtra("param_weishi_switch", m);
-      if (!this.l.a()) {
-        break label808;
+      i = 0;
+      label274:
+      localIntent.putExtra("param_musicbox_switch", i);
+      if ((i != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_musicbox) && (-1 != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_musicbox))
+      {
+        localIntent.putExtra("param_personlabel_switch_changed", true);
+        localBundle.putShort("key_musicbox_switch", (short)i);
+        if (!this.e.a()) {
+          QQPlayerService.c(BaseApplicationImpl.getContext());
+        }
       }
     }
-    label768:
-    label773:
-    label778:
-    label783:
-    label788:
-    label793:
-    label798:
-    label803:
-    label808:
-    for (int m = 0;; m = 1)
+    Card localCard = ((ajjj)this.app.getManager(51)).b(this.app.getCurrentAccountUin());
+    if (localCard != null)
     {
-      if (m != this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_weishi) {
-        localIntent.putExtra("param_weishi_switch_changed", true);
+      if (!this.g.a()) {
+        break label574;
       }
-      localIntent.putExtra("param_eat_switch", this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_eat);
-      localIntent.putExtra("param_eat_switch_changed", false);
-      localIntent.putExtra("param_star_switch", this.jdField_a_of_type_ComTencentMobileqqDataCard.switch_star);
-      localIntent.putExtra("param_star_switch_changed", false);
+      i = 0;
+      label378:
+      localIntent.putExtra("param_extendfriend_switch", i);
+      if (this.g.a() != localCard.isShowCard)
+      {
+        localIntent.putExtra("param_extendfriend_switch_changed", true);
+        localBundle.putShort("key_extend_friend_switch", (short)i);
+        localCard.isShowCard = this.g.a();
+      }
+      if (!this.f.a()) {
+        break label579;
+      }
+    }
+    label549:
+    label554:
+    label559:
+    label564:
+    label569:
+    label574:
+    label579:
+    for (int i = 0;; i = 1)
+    {
+      localIntent.putExtra("param_personlabel_switch", i);
+      if ((i != localCard.switch_disable_personality_label) && (-1 != localCard.switch_disable_personality_label))
+      {
+        localIntent.putExtra("param_personlabel_switch_changed", true);
+        localBundle.putShort("key_personality_label_switch", (short)i);
+      }
+      QLog.i("InterestSwitchEditActivity", 1, "setDetailUserInfo,hasSyncToServer+" + this.jdField_a_of_type_Boolean);
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        a(localBundle, 2131628948, 0);
+        this.jdField_a_of_type_Boolean = true;
+      }
       setResult(-1, localIntent);
       super.finish();
       return;
-      label693:
-      m = 1;
+      i = 1;
       break;
-      label698:
-      m = 1;
-      break label47;
-      label703:
-      m = 1;
-      break label78;
-      label708:
-      m = 1;
-      break label98;
-      label713:
-      m = 1;
-      break label129;
-      label718:
-      m = 1;
-      break label149;
-      label723:
-      m = 1;
-      break label180;
-      label728:
-      m = 1;
-      break label200;
-      label733:
-      m = 1;
-      break label232;
-      label738:
-      m = 1;
-      break label252;
-      label743:
-      m = 1;
-      break label284;
-      label748:
-      m = 1;
-      break label304;
-      label753:
-      m = 1;
-      break label336;
-      label758:
-      m = 1;
-      break label356;
-      label763:
-      m = 1;
-      break label388;
-      m = 1;
-      break label408;
-      m = 1;
-      break label440;
-      m = 1;
-      break label460;
-      m = 1;
-      break label492;
-      m = 1;
-      break label512;
-      m = 1;
-      break label544;
-      m = 1;
-      break label564;
-      m = 1;
-      break label596;
+      i = 1;
+      break label95;
+      i = 0;
+      break label155;
+      i = 1;
+      break label215;
+      i = 1;
+      break label274;
+      i = 1;
+      break label378;
+    }
+  }
+  
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  {
+    if (paramCompoundButton == this.g.a()) {
+      if (paramBoolean) {
+        awqx.b(this.app, "dc00898", "", "", "0X80092ED", "0X80092ED", 0, 0, "", "", "", "");
+      }
+    }
+    do
+    {
+      return;
+      awqx.b(this.app, "dc00898", "", "", "0X80092EE", "0X80092EE", 0, 0, "", "", "", "");
+      return;
+      if (paramCompoundButton == this.f.a())
+      {
+        paramCompoundButton = this.app;
+        if (paramBoolean) {}
+        for (i = 1;; i = 2)
+        {
+          awqx.b(paramCompoundButton, "dc00898", "", "", "0X8008407", "0X8008407", i, 0, "", "", "", "");
+          return;
+        }
+      }
+    } while (paramCompoundButton != this.e.a());
+    paramCompoundButton = this.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 2)
+    {
+      awqx.b(paramCompoundButton, "dc00898", "", "", "0X800A7DA", "qq_vip", i, 0, "", "", "", "");
+      return;
     }
   }
 }

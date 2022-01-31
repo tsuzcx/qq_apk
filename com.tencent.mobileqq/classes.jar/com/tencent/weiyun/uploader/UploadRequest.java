@@ -1,7 +1,5 @@
 package com.tencent.weiyun.uploader;
 
-import android.text.TextUtils;
-
 public class UploadRequest
 {
   private Object mBusinessData;
@@ -21,24 +19,24 @@ public class UploadRequest
   private final long mUin;
   private final long mUploadedSize;
   
-  private UploadRequest(Builder paramBuilder)
+  private UploadRequest(UploadRequest.Builder paramBuilder)
   {
-    this.mRequestKey = paramBuilder.requestKey;
-    this.mListener = paramBuilder.listener;
-    this.mUin = paramBuilder.uin;
-    this.mPath = paramBuilder.path;
-    this.mSha = paramBuilder.sha;
-    this.mSliceSha = paramBuilder.sliceSha;
-    this.mSize = paramBuilder.size;
-    this.mUploadedSize = paramBuilder.uploadedSize;
-    this.mFileId = paramBuilder.fileId;
-    this.mCheckKey = paramBuilder.checkKey;
-    this.mServerName = paramBuilder.serverName;
-    this.mServerIp = paramBuilder.serverIp;
-    this.mServerPort = paramBuilder.serverPort;
-    this.mChannelCount = paramBuilder.channelCount;
-    this.mBusinessData = paramBuilder.businessData;
-    this.mStatisticTimes = paramBuilder.statisticTimes;
+    this.mRequestKey = UploadRequest.Builder.access$000(paramBuilder);
+    this.mListener = UploadRequest.Builder.access$100(paramBuilder);
+    this.mUin = UploadRequest.Builder.access$200(paramBuilder);
+    this.mPath = UploadRequest.Builder.access$300(paramBuilder);
+    this.mSha = UploadRequest.Builder.access$400(paramBuilder);
+    this.mSliceSha = UploadRequest.Builder.access$500(paramBuilder);
+    this.mSize = UploadRequest.Builder.access$600(paramBuilder);
+    this.mUploadedSize = UploadRequest.Builder.access$700(paramBuilder);
+    this.mFileId = UploadRequest.Builder.access$800(paramBuilder);
+    this.mCheckKey = UploadRequest.Builder.access$900(paramBuilder);
+    this.mServerName = UploadRequest.Builder.access$1000(paramBuilder);
+    this.mServerIp = UploadRequest.Builder.access$1100(paramBuilder);
+    this.mServerPort = UploadRequest.Builder.access$1200(paramBuilder);
+    this.mChannelCount = UploadRequest.Builder.access$1300(paramBuilder);
+    this.mBusinessData = UploadRequest.Builder.access$1400(paramBuilder);
+    this.mStatisticTimes = UploadRequest.Builder.access$1500(paramBuilder);
   }
   
   public Object businessData()
@@ -105,9 +103,9 @@ public class UploadRequest
     return this.mListener;
   }
   
-  public Builder newBuilder()
+  public UploadRequest.Builder newBuilder()
   {
-    return new Builder(this, null);
+    return new UploadRequest.Builder(this, null);
   }
   
   public String path()
@@ -168,161 +166,6 @@ public class UploadRequest
   public long uploadedSize()
   {
     return this.mUploadedSize;
-  }
-  
-  public static class Builder
-  {
-    private Object businessData;
-    private int channelCount;
-    private String checkKey;
-    private String fileId;
-    private IUploader.IUploadListener listener;
-    private String path;
-    private String requestKey;
-    private String serverIp;
-    private String serverName;
-    private int serverPort;
-    private String sha;
-    private long size;
-    private String[] sliceSha;
-    private long[] statisticTimes;
-    private long uin;
-    private long uploadedSize;
-    
-    public Builder() {}
-    
-    private Builder(UploadRequest paramUploadRequest)
-    {
-      this.requestKey = paramUploadRequest.mRequestKey;
-      this.listener = paramUploadRequest.mListener;
-      this.uin = paramUploadRequest.mUin;
-      this.path = paramUploadRequest.mPath;
-      this.sha = paramUploadRequest.mSha;
-      this.sliceSha = paramUploadRequest.mSliceSha;
-      this.size = paramUploadRequest.mSize;
-      this.uploadedSize = paramUploadRequest.mUploadedSize;
-      this.fileId = paramUploadRequest.mFileId;
-      this.checkKey = paramUploadRequest.mCheckKey;
-      this.serverName = paramUploadRequest.mServerName;
-      this.serverIp = paramUploadRequest.mServerIp;
-      this.serverPort = paramUploadRequest.mServerPort;
-      this.channelCount = paramUploadRequest.mChannelCount;
-      this.businessData = paramUploadRequest.mBusinessData;
-      this.statisticTimes = paramUploadRequest.mStatisticTimes;
-    }
-    
-    public UploadRequest build()
-    {
-      if (TextUtils.isEmpty(this.path)) {
-        throw new IllegalStateException("path is empty");
-      }
-      if (TextUtils.isEmpty(this.fileId)) {
-        throw new IllegalStateException("fileId is empty");
-      }
-      if ((this.uin == 0L) || (TextUtils.isEmpty(this.sha)) || (TextUtils.isEmpty(this.checkKey)) || ((TextUtils.isEmpty(this.serverName)) && (TextUtils.isEmpty(this.serverIp)))) {
-        throw new IllegalStateException("uin, sha, checkKey, serverName or serverIp is invalid.");
-      }
-      if (TextUtils.isEmpty(this.requestKey)) {
-        this.requestKey = this.fileId;
-      }
-      return new UploadRequest(this, null);
-    }
-    
-    public Builder businessData(Object paramObject)
-    {
-      this.businessData = paramObject;
-      return this;
-    }
-    
-    public Builder channelCount(int paramInt)
-    {
-      this.channelCount = paramInt;
-      return this;
-    }
-    
-    public Builder checkKey(String paramString)
-    {
-      this.checkKey = paramString;
-      return this;
-    }
-    
-    public Builder fileId(String paramString)
-    {
-      this.fileId = paramString;
-      return this;
-    }
-    
-    public Builder listener(IUploader.IUploadListener paramIUploadListener)
-    {
-      this.listener = paramIUploadListener;
-      return this;
-    }
-    
-    public Builder path(String paramString)
-    {
-      this.path = paramString;
-      return this;
-    }
-    
-    public Builder requestKey(String paramString)
-    {
-      this.requestKey = paramString;
-      return this;
-    }
-    
-    public Builder serverIp(String paramString)
-    {
-      this.serverIp = paramString;
-      return this;
-    }
-    
-    public Builder serverName(String paramString)
-    {
-      this.serverName = paramString;
-      return this;
-    }
-    
-    public Builder serverPort(int paramInt)
-    {
-      this.serverPort = paramInt;
-      return this;
-    }
-    
-    public Builder sha(String paramString)
-    {
-      this.sha = paramString;
-      return this;
-    }
-    
-    public Builder size(long paramLong)
-    {
-      this.size = paramLong;
-      return this;
-    }
-    
-    public Builder sliceSha(String[] paramArrayOfString)
-    {
-      this.sliceSha = paramArrayOfString;
-      return this;
-    }
-    
-    public Builder statisticTime(long paramLong1, long paramLong2, long paramLong3)
-    {
-      this.statisticTimes = new long[] { paramLong1, paramLong2, paramLong3 };
-      return this;
-    }
-    
-    public Builder uin(long paramLong)
-    {
-      this.uin = paramLong;
-      return this;
-    }
-    
-    public Builder uploadedSize(long paramLong)
-    {
-      this.uploadedSize = paramLong;
-      return this;
-    }
   }
 }
 

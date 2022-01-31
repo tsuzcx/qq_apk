@@ -1,22 +1,78 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.nearby.now.view.StoryViewRelayoutListener;
-import com.tencent.mobileqq.nearby.now.view.widget.FitXImageView;
-import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.contacts.fragment.RecommendFriendFragment;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import java.util.List;
 
-class afft
-  implements Runnable
+public class afft
+  extends ajjh
 {
-  afft(affs paramaffs, Bitmap paramBitmap) {}
+  public afft(RecommendFriendFragment paramRecommendFriendFragment) {}
   
-  public void run()
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
   {
-    this.jdField_a_of_type_Affs.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    ImageDisplayView.a(this.jdField_a_of_type_Affs.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView).a(this.jdField_a_of_type_Affs.jdField_a_of_type_Int, this.jdField_a_of_type_Affs.b);
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendFragment", 2, "onCancelMayKnowRecommend isSuccess:" + paramBoolean);
+    }
+    if (paramBoolean) {
+      RecommendFriendFragment.a(this.a);
+    }
+  }
+  
+  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendFragment", 2, "onGetMayKnowRecommend isSuccess=" + paramBoolean);
+    }
+    if (paramBoolean) {
+      RecommendFriendFragment.a(this.a);
+    }
+  }
+  
+  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
+  {
+    super.onMayKnowListPushAdd(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendFragment", 2, "onMayKnowListPushAdd isSuccess:" + paramBoolean);
+    }
+    if (paramBoolean) {
+      RecommendFriendFragment.a(this.a);
+    }
+  }
+  
+  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
+  {
+    super.onMayKnowListPushDel(paramBoolean, paramList);
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendFragment", 2, "onMayKnowListPushDel isSuccess:" + paramBoolean);
+    }
+    if (paramBoolean) {
+      RecommendFriendFragment.a(this.a);
+    }
+  }
+  
+  protected void onMayknowStateChanged(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("RecommendFriendFragment", 2, "onMayknowStateChanged isSuccess:" + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      if (this.a.jdField_a_of_type_Afdy != null) {
+        this.a.jdField_a_of_type_Afdy.notifyDataSetChanged();
+      }
+      if (this.a.jdField_a_of_type_ComTencentWidgetXListView != null)
+      {
+        this.a.jdField_a_of_type_ComTencentWidgetXListView.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+        this.a.jdField_a_of_type_ComTencentWidgetXListView.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 1600L);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afft
  * JD-Core Version:    0.7.0.1
  */

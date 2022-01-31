@@ -8,51 +8,46 @@ import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
 import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebViewCallbackClient;
-import pev;
+import wpk;
 
 public class TouchWebView
   extends CustomWebView
   implements WebViewCallbackClient
 {
-  GestureDetector.OnGestureListener jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener = new pev(this);
-  GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
-  public TouchWebView.OnOverScrollHandler a;
-  TouchWebView.OnScrollChangedListener jdField_a_of_type_ComTencentBizUiTouchWebView$OnScrollChangedListener;
-  public int b;
-  public boolean f;
-  public boolean g = false;
+  protected wpk helper;
+  TouchWebView.OnOverScrollHandler l;
+  GestureDetector mGesture;
+  public float mLastYUp;
+  GestureDetector.OnGestureListener mOnGesture = new TouchWebView.1(this);
+  private TouchWebView.OnScrollChangedListener mScrollListenerForBiz;
+  public int mTotalYoffset;
+  protected boolean overscroll;
+  boolean overscrolling = false;
+  TouchWebView.OnScrollChangedListener t;
   
   public TouchWebView(Context paramContext)
   {
     super(paramContext);
-    e();
+    init();
   }
   
   public TouchWebView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    e();
+    init();
   }
   
   @SuppressLint({"InlinedApi"})
-  private void e()
+  private void init()
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(getContext(), this.jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener);
+    this.mGesture = new GestureDetector(getContext(), this.mOnGesture);
     setWebViewCallbackClient(this);
     setFadingEdgeLength(0);
-  }
-  
-  public void a()
-  {
-    setOnOverScrollHandler(null);
-    setOnScrollChangedListener(null);
-    super.a();
-  }
-  
-  public boolean a()
-  {
-    return this.f;
+    if (getX5WebViewExtension() == null) {
+      getSettings().setMixedContentMode(0);
+    }
   }
   
   public void computeScroll(View paramView)
@@ -62,28 +57,37 @@ public class TouchWebView
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent, View paramView)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    if (((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) && (this.jdField_a_of_type_ComTencentBizUiTouchWebView$OnOverScrollHandler != null) && (this.g))
+    this.mGesture.onTouchEvent(paramMotionEvent);
+    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
     {
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView$OnOverScrollHandler.a();
-      this.g = false;
-      this.f = false;
+      if ((this.l != null) && (this.overscrolling))
+      {
+        this.l.onBack();
+        this.overscrolling = false;
+        this.overscroll = false;
+      }
+      this.mLastYUp = paramMotionEvent.getY();
     }
-    if (this.g)
+    if (this.overscrolling)
     {
       if (paramMotionEvent.getAction() == 0)
       {
-        if (this.jdField_a_of_type_ComTencentBizUiTouchWebView$OnOverScrollHandler != null)
+        if (this.l != null)
         {
-          this.jdField_a_of_type_ComTencentBizUiTouchWebView$OnOverScrollHandler.a();
-          this.g = false;
-          this.f = false;
+          this.l.onBack();
+          this.overscrolling = false;
+          this.overscroll = false;
         }
         return true;
       }
       return false;
     }
     return super.super_dispatchTouchEvent(paramMotionEvent);
+  }
+  
+  public boolean inOverScroll()
+  {
+    return this.overscroll;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent, View paramView)
@@ -94,7 +98,7 @@ public class TouchWebView
   public void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, View paramView)
   {
     if (paramInt2 <= 0) {}
-    for (this.f = true;; this.f = false)
+    for (this.overscroll = true;; this.overscroll = false)
     {
       super.super_onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
       return;
@@ -104,15 +108,22 @@ public class TouchWebView
   public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
     super.super_onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.b += paramInt2 - paramInt4;
-    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView$OnScrollChangedListener != null) {
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView$OnScrollChangedListener.a(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
+    this.mTotalYoffset += paramInt2 - paramInt4;
+    if (this.t != null) {
+      this.t.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
+    }
+    if (this.helper != null) {
+      this.helper.a(paramInt2);
+    }
+    if (this.mScrollListenerForBiz != null) {
+      this.mScrollListenerForBiz.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent, View paramView)
   {
-    if (((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) && (this.g)) {
+    if (((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) && (this.overscrolling)) {}
+    while ((this.helper != null) && (this.helper.a) && (paramMotionEvent.getAction() == 2)) {
       return true;
     }
     return super.super_onTouchEvent(paramMotionEvent);
@@ -123,14 +134,31 @@ public class TouchWebView
     return super.super_overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramBoolean);
   }
   
+  public void resetForReuse()
+  {
+    setOnOverScrollHandler(null);
+    setOnScrollChangedListener(null);
+    super.resetForReuse();
+  }
+  
   public void setOnOverScrollHandler(TouchWebView.OnOverScrollHandler paramOnOverScrollHandler)
   {
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView$OnOverScrollHandler = paramOnOverScrollHandler;
+    this.l = paramOnOverScrollHandler;
   }
   
   public void setOnScrollChangedListener(TouchWebView.OnScrollChangedListener paramOnScrollChangedListener)
   {
-    this.jdField_a_of_type_ComTencentBizUiTouchWebView$OnScrollChangedListener = paramOnScrollChangedListener;
+    this.t = paramOnScrollChangedListener;
+  }
+  
+  public void setOnScrollChangedListenerForBiz(TouchWebView.OnScrollChangedListener paramOnScrollChangedListener)
+  {
+    this.mScrollListenerForBiz = paramOnScrollChangedListener;
+  }
+  
+  public void setWebViewHelper(wpk paramwpk)
+  {
+    this.helper = paramwpk;
   }
 }
 

@@ -1,54 +1,39 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.intervideo.LoginKeyHelper;
-import com.tencent.mobileqq.intervideo.LoginKeyHelper.GetLoginKeyListener;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qconn.protofile.fastauthorize.FastAuthorize.AuthorizeResponse;
-import mqq.observer.BusinessObserver;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import com.tencent.qidian.data.BmqqAccountType;
 
-public class aebr
-  implements BusinessObserver
+class aebr
+  extends ajfo
 {
-  public aebr(LoginKeyHelper paramLoginKeyHelper, LoginKeyHelper.GetLoginKeyListener paramGetLoginKeyListener, String paramString) {}
+  aebr(aebk paramaebk) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  protected void onGetAccountType(boolean paramBoolean, BmqqAccountType paramBmqqAccountType)
   {
-    new Bundle();
-    paramBundle = paramBundle.getByteArray("data");
-    if (paramBundle == null) {}
-    for (;;)
+    super.onGetAccountType(paramBoolean, paramBmqqAccountType);
+    aebk.a(this.a);
+    this.a.bm();
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null) && (this.a.jdField_a_of_type_Bcpn.f(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (!aebk.a(this.a)))
     {
-      return;
-      FastAuthorize.AuthorizeResponse localAuthorizeResponse = new FastAuthorize.AuthorizeResponse();
-      try
-      {
-        localAuthorizeResponse.mergeFrom(paramBundle);
-        if ((localAuthorizeResponse.ret.get().equals("0")) && (localAuthorizeResponse.apk_name.has()))
-        {
-          if (localAuthorizeResponse.access_token.has()) {
-            this.jdField_a_of_type_ComTencentMobileqqIntervideoLoginKeyHelper.a.jdField_a_of_type_JavaLangString = localAuthorizeResponse.access_token.get();
-          }
-          if (localAuthorizeResponse.openid.has()) {
-            this.jdField_a_of_type_ComTencentMobileqqIntervideoLoginKeyHelper.a.b = localAuthorizeResponse.openid.get();
-          }
-          if (localAuthorizeResponse.pay_token.has()) {
-            this.jdField_a_of_type_ComTencentMobileqqIntervideoLoginKeyHelper.a.c = localAuthorizeResponse.pay_token.get();
-          }
-          this.jdField_a_of_type_ComTencentMobileqqIntervideoLoginKeyHelper.a.jdField_a_of_type_Long = System.currentTimeMillis();
-          this.jdField_a_of_type_ComTencentMobileqqIntervideoLoginKeyHelper$GetLoginKeyListener.a(this.jdField_a_of_type_JavaLangString, true, 0);
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        paramBundle.printStackTrace();
-      }
+      aebk.a(this.a, true);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getChatFragment().a);
+    }
+    if ((paramBmqqAccountType != null) && (paramBmqqAccountType.getUin() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (paramBmqqAccountType.getUin().equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (paramBmqqAccountType.getAccountType() == 6)) {
+      aebk.b(this.a);
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1024) && ((TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d)) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = mqb.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      this.a.e.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aebr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.AdvertisementInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View;
 
 public class lry
-  implements Runnable
+  extends lrv
 {
-  public lry(AdvertisementInfoModule paramAdvertisementInfoModule, int paramInt, ArrayList paramArrayList) {}
+  private View a;
+  public String b;
+  public boolean b;
   
-  public void run()
+  public lry(int paramInt, View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAdvertisementInfoModule.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.b("DELETE FROM " + AdvertisementInfo.class.getSimpleName() + " WHERE mChannelID = " + this.jdField_a_of_type_Int);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)localIterator.next();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAdvertisementInfoModule.a(localAdvertisementInfo);
-      if (QLog.isColorLevel()) {
-        QLog.d("adAppModule", 2, "info type = " + localAdvertisementInfo.mAdJumpMode);
-      }
-      if ((localAdvertisementInfo.mAdJumpMode == 4) && (TextUtils.isEmpty(localAdvertisementInfo.mAdAppJson))) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAdvertisementInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAdvertisementInfoModule.jdField_a_of_type_ComTencentCommonAppAppInterface, localAdvertisementInfo);
-      }
-    }
+    super(paramInt);
+    this.a = paramView;
+  }
+  
+  public lry(View paramView)
+  {
+    super(0);
+    this.a = paramView;
+  }
+  
+  public View a()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lry
  * JD-Core Version:    0.7.0.1
  */

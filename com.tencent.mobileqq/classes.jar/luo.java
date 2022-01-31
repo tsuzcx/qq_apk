@@ -1,19 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.InterestLabelInfoModule;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.MultiMembersVideoUI;
 
 public class luo
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public luo(InterestLabelInfoModule paramInterestLabelInfoModule, int paramInt) {}
+  public luo(MultiMembersVideoUI paramMultiMembersVideoUI) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_Int);
+    if (this.a.a != null) {
+      this.a.a.a();
+    }
+    return paramMotionEvent.getAction() == 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     luo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,38 @@
-import com.tencent.component.media.ILog;
-import com.tencent.component.media.ImageManagerEnv;
-import com.tencent.component.media.image.ImageKey;
-import com.tencent.component.media.image.StreamDecodeGifTask;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class pmf
-  implements Runnable
+  implements View.OnClickListener
 {
-  private ImageKey jdField_a_of_type_ComTencentComponentMediaImageImageKey = null;
-  String jdField_a_of_type_JavaLangString = null;
-  String b = null;
+  public pmf(ComponentJump paramComponentJump, ArticleInfo paramArticleInfo) {}
   
-  public pmf(StreamDecodeGifTask paramStreamDecodeGifTask, ImageKey paramImageKey, String paramString1, String paramString2)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentComponentMediaImageImageKey = paramImageKey;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-  }
-  
-  public void run()
-  {
+    int i = 0;
+    nji.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoName, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoType, 1);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.hasChannelInfo()) {
+      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId;
+    }
     try
     {
-      if (!this.jdField_a_of_type_ComTencentComponentMediaImageStreamDecodeGifTask.isCanceled()) {
-        StreamDecodeGifTask.a(this.jdField_a_of_type_ComTencentComponentMediaImageStreamDecodeGifTask, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey, this.jdField_a_of_type_JavaLangString, this.b);
-      }
+      paramView = new JSONObject();
+      paramView.put("feeds_channel_entrance", i);
+      ndn.a(null, "CliOper", "", "", "0X8006DF3", "0X8006DF3", 0, 0, "", "", "", paramView.toString(), false);
       return;
     }
-    catch (Throwable localThrowable)
+    catch (JSONException paramView)
     {
-      ImageManagerEnv.getLogger().e("StreamDecodeGifTask-decoding-thread", new Object[] { "DecodeStreamTask error : " + localThrowable.toString() });
+      paramView.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pmf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.armap;
 
+import alid;
 import android.os.SystemClock;
+import babp;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.armap.test.MapTestHelper;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
 
@@ -12,25 +12,16 @@ public class ARMapTracer
 {
   private static int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long;
-  private ARMapTracer.TraceResultListener jdField_a_of_type_ComTencentMobileqqArmapARMapTracer$TraceResultListener;
+  private alid jdField_a_of_type_Alid;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
-  private final int[] jdField_a_of_type_ArrayOfInt = new int[3];
-  private int jdField_b_of_type_Int = 5;
-  private final int[] jdField_b_of_type_ArrayOfInt = new int[3];
-  private int c = 10;
-  private int d = 1;
+  private final int[] jdField_a_of_type_ArrayOfInt;
+  private int jdField_b_of_type_Int;
+  private final int[] jdField_b_of_type_ArrayOfInt;
+  private int c;
+  private int d;
   private int e;
   private int f;
-  
-  public ARMapTracer(boolean paramBoolean, String paramString, int paramInt, ARMapTracer.TraceResultListener paramTraceResultListener)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.c = paramInt;
-    this.jdField_a_of_type_ComTencentMobileqqArmapARMapTracer$TraceResultListener = paramTraceResultListener;
-    this.d = a();
-  }
   
   public static int a()
   {
@@ -39,9 +30,9 @@ public class ARMapTracer
     float f2;
     if (jdField_a_of_type_Int == 0)
     {
-      f1 = (float)DeviceInfoUtil.e() / 1.073742E+009F;
-      i = DeviceInfoUtil.b();
-      f2 = (float)DeviceInfoUtil.b() / 1000000.0F;
+      f1 = (float)babp.d() / 1.073742E+009F;
+      i = babp.b();
+      f2 = (float)babp.b() / 1000000.0F;
       if ((i < 4) || (f2 < 2.0F) || (f1 < 2.5F)) {
         break label106;
       }
@@ -142,7 +133,6 @@ public class ARMapTracer
   
   public void trace(long paramLong)
   {
-    MapTestHelper.a(paramLong);
     if (this.jdField_a_of_type_Long == 0L) {
       if (this.jdField_a_of_type_Boolean) {
         startTrace();
@@ -163,7 +153,7 @@ public class ARMapTracer
       arrayOfInt1[i] += 1;
       arrayOfInt1 = this.jdField_b_of_type_ArrayOfInt;
       arrayOfInt1[i] += 1;
-    } while ((this.f < 30) || (this.jdField_a_of_type_ComTencentMobileqqArmapARMapTracer$TraceResultListener == null));
+    } while ((this.f < 30) || (this.jdField_a_of_type_Alid == null));
     if (this.jdField_b_of_type_Int > 0) {
       this.jdField_b_of_type_Int -= 1;
     }
@@ -174,7 +164,7 @@ public class ARMapTracer
     }
     for (;;)
     {
-      if ((i != this.c) && (this.d > 2) && (this.jdField_a_of_type_ComTencentMobileqqArmapARMapTracer$TraceResultListener.a(i)))
+      if ((i != this.c) && (this.d > 2) && (this.jdField_a_of_type_Alid.a(i)))
       {
         this.c = i;
         this.jdField_b_of_type_Int = 3;

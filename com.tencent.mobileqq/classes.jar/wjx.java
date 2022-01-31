@@ -1,23 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
+import com.tencent.biz.troop.VideoCombineHelper.4;
+import com.tencent.qphone.base.util.QLog;
 
 public class wjx
-  extends BroadcastReceiver
+  extends wkt
 {
-  public wjx(BlessActivity paramBlessActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public wjx(VideoCombineHelper.4 param4)
   {
-    if ("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) {
-      BlessActivity.a(this.a, true);
-    }
+    super(param4.this$0);
+  }
+  
+  public void b(wks paramwks)
+  {
+    QLog.d(".troop.VideoCombineHelper", 2, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wjx
  * JD-Core Version:    0.7.0.1
  */

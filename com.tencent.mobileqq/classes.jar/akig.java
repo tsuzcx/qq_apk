@@ -1,45 +1,179 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0xc96.oidb_cmd0xc96.RspBody;
 
-class akig
-  implements Runnable
+public class akig
+  extends akif
 {
-  akig(akif paramakif, String paramString) {}
+  private akih a;
+  protected QQAppInterface a;
   
-  public void run()
+  public akig(akih paramakih)
   {
+    this.jdField_a_of_type_Akih = paramakih;
+  }
+  
+  public akig(akih paramakih, QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_Akih = paramakih;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  private void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletsObserver", 2, "removeObserver  " + this);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
+    }
+  }
+  
+  private void a(boolean paramBoolean, Object paramObject)
+  {
+    if (this.jdField_a_of_type_Akih == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletsObserver", 2, "No Set ResponseResultListener, ignore Response!");
+      }
+    }
+    while (4 != this.jdField_a_of_type_Akih.a()) {
+      return;
+    }
+    this.jdField_a_of_type_Akih.a(paramBoolean, paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletsObserver", 2, this + "      Follow isSuccess:" + paramBoolean);
+    }
+    oidb_cmd0xc96.RspBody localRspBody;
+    if (paramBoolean)
+    {
+      localRspBody = new oidb_cmd0xc96.RspBody();
+      if (!(paramObject instanceof byte[])) {}
+    }
     for (;;)
     {
       try
       {
-        Intent localIntent = new Intent(this.jdField_a_of_type_Akif.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
-        localIntent.putExtra("BSafeReportPost", true);
-        if (this.jdField_a_of_type_JavaLangString != null) {
-          continue;
-        }
-        arrayOfByte = null;
-        localIntent.putExtra("SafeReportData", arrayOfByte);
-        localIntent.putExtra("hide_more_button", true);
-        localIntent.putExtra("ishiderefresh", true);
-        localIntent.putExtra("ishidebackforward", true);
-        this.jdField_a_of_type_Akif.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(localIntent.putExtra("url", "https://jubao.qq.com/uniform_impeach/impeach_entry"));
+        localRspBody.mergeFrom((byte[])paramObject);
+        this.jdField_a_of_type_Akih.a(localRspBody);
+        this.jdField_a_of_type_Akih.b(paramBoolean, paramObject);
+        a();
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+      {
+        QLog.w("AppletsObserver", 4, localInvalidProtocolBufferMicroException.getMessage(), localInvalidProtocolBufferMicroException);
+        this.jdField_a_of_type_Akih.b(paramObject);
+        continue;
       }
       catch (Exception localException)
       {
-        byte[] arrayOfByte;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("Q.profilecard.FrdProfileCard", 2, "safetyReport exception" + localException.getMessage());
+        QLog.w("AppletsObserver", 4, localException.getMessage(), localException);
+        this.jdField_a_of_type_Akih.b(paramObject);
         continue;
       }
-      this.jdField_a_of_type_Akif.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      return;
-      arrayOfByte = this.jdField_a_of_type_JavaLangString.getBytes("utf-8");
+      this.jdField_a_of_type_Akih.b(paramObject);
+      continue;
+      this.jdField_a_of_type_Akih.b(paramObject);
     }
+  }
+  
+  private void b(boolean paramBoolean, Object paramObject)
+  {
+    if (this.jdField_a_of_type_Akih == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletsObserver", 2, "No Set ResponseResultListener, ignore Response!");
+      }
+    }
+    while (5 != this.jdField_a_of_type_Akih.a()) {
+      return;
+    }
+    this.jdField_a_of_type_Akih.a(paramBoolean, paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletsObserver", 2, this + "      unFollow isSuccess:" + paramBoolean);
+    }
+    oidb_cmd0xc96.RspBody localRspBody;
+    if (paramBoolean)
+    {
+      localRspBody = new oidb_cmd0xc96.RspBody();
+      if (!(paramObject instanceof byte[])) {}
+    }
+    for (;;)
+    {
+      try
+      {
+        localRspBody.mergeFrom((byte[])paramObject);
+        this.jdField_a_of_type_Akih.a(localRspBody);
+        this.jdField_a_of_type_Akih.b(paramBoolean, paramObject);
+        a();
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+      {
+        QLog.w("AppletsObserver", 4, localInvalidProtocolBufferMicroException.getMessage(), localInvalidProtocolBufferMicroException);
+        this.jdField_a_of_type_Akih.b(paramObject);
+        continue;
+      }
+      catch (Exception localException)
+      {
+        QLog.w("AppletsObserver", 4, localException.getMessage(), localException);
+        this.jdField_a_of_type_Akih.b(paramObject);
+        continue;
+      }
+      this.jdField_a_of_type_Akih.b(paramObject);
+      continue;
+      this.jdField_a_of_type_Akih.b(paramObject);
+    }
+  }
+  
+  private void c(boolean paramBoolean, Object paramObject)
+  {
+    if (this.jdField_a_of_type_Akih == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AppletsObserver", 2, "No Set ResponseResultListener, ignore Response!");
+      }
+    }
+    while (7 != this.jdField_a_of_type_Akih.a()) {
+      return;
+    }
+    this.jdField_a_of_type_Akih.a(paramBoolean, paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletsObserver", 2, "PublicAccountNotifySetting isSuccess:" + paramBoolean);
+    }
+    if (paramBoolean) {
+      this.jdField_a_of_type_Akih.a(paramObject);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Akih.b(paramBoolean, paramObject);
+      a();
+      return;
+      this.jdField_a_of_type_Akih.b(paramObject);
+    }
+  }
+  
+  public void a(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    switch (paramInt)
+    {
+    default: 
+      super.onUpdate(paramInt, paramBoolean, paramObject);
+    case 6: 
+      return;
+    case 4: 
+      a(paramBoolean, paramObject);
+      return;
+    case 5: 
+      b(paramBoolean, paramObject);
+      return;
+    }
+    c(paramBoolean, paramObject);
   }
 }
 

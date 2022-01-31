@@ -1,30 +1,73 @@
-import com.tencent.mobileqq.adapter.DiscussionListAdapter2;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.persistence.Entity;
-import java.util.Comparator;
+import android.app.Activity;
+import android.text.TextUtils;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.gdt.qq_ad_get.QQAdGet;
+import tencent.gdt.qq_ad_get.QQAdGet.PositionInfo;
 
-public class ynm
-  implements Comparator
+class ynm
+  implements ynl
 {
-  public ynm(DiscussionListAdapter2 paramDiscussionListAdapter2, HashMap paramHashMap) {}
+  private WeakReference<ymw> jdField_a_of_type_JavaLangRefWeakReference;
+  private Map<yjm, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private yjn jdField_a_of_type_Yjn = new ynn(this);
   
-  public int a(Entity paramEntity1, Entity paramEntity2)
+  public boolean a(ymw paramymw, String paramString, String... paramVarArgs)
   {
-    long l1 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity1).uin)).longValue();
-    long l2 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity2).uin)).longValue();
-    if (l1 < l2) {
-      return -1;
+    if (paramymw != null) {}
+    for (Activity localActivity = paramymw.a(); (paramymw == null) || (localActivity == null); localActivity = null)
+    {
+      yny.d("GdtLoadAdJsCallHandler", "handleJsCallRequest error");
+      return true;
     }
-    if (l1 > l2) {
-      return 1;
+    try
+    {
+      Object localObject = new JSONObject(paramVarArgs[0]);
+      yny.b("GdtLoadAdJsCallHandler", ((JSONObject)localObject).toString());
+      paramVarArgs = new yjo();
+      paramVarArgs.a = ((qq_ad_get.QQAdGet)qq_ad_get.QQAdGet.class.cast(ynv.a(new qq_ad_get.QQAdGet(), localObject)));
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramymw);
+      localObject = new yjm(paramVarArgs, new WeakReference(this.jdField_a_of_type_Yjn));
+      this.jdField_a_of_type_JavaUtilMap.put(localObject, paramString);
+      ((yjm)localObject).a(new WeakReference(localActivity));
+      paramString = new ArrayList();
+      if ((paramVarArgs.a != null) && (!paramVarArgs.a.position_info.isEmpty()))
+      {
+        int i = 0;
+        while (i < paramVarArgs.a.position_info.size())
+        {
+          localObject = ((qq_ad_get.QQAdGet.PositionInfo)paramVarArgs.a.position_info.get(i)).pos_id.get();
+          if (TextUtils.isEmpty((CharSequence)localObject)) {
+            paramString.add(localObject);
+          }
+          i += 1;
+        }
+      }
+      if (paramymw == null) {}
     }
-    return 0;
+    catch (JSONException paramymw)
+    {
+      yny.d("GdtLoadAdJsCallHandler", "handleJsCallRequest error", paramymw);
+      return true;
+    }
+    for (paramymw = paramymw.a();; paramymw = null)
+    {
+      AdReporterForAnalysis.reportForJSBridgeInvoked(localActivity, false, "loadAd", paramymw);
+      return true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ynm
  * JD-Core Version:    0.7.0.1
  */

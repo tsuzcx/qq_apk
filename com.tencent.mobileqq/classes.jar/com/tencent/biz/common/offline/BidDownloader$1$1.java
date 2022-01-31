@@ -1,0 +1,42 @@
+package com.tencent.biz.common.offline;
+
+import moe;
+
+public class BidDownloader$1$1
+  extends Thread
+{
+  public BidDownloader$1$1(moe parammoe) {}
+  
+  public void run()
+  {
+    if (this.a.a.b == 1) {}
+    for (;;)
+    {
+      try
+      {
+        Thread.sleep(5000L);
+        this.a.a.b();
+        return;
+      }
+      catch (InterruptedException localInterruptedException1)
+      {
+        localInterruptedException1.printStackTrace();
+        continue;
+      }
+      try
+      {
+        Thread.sleep(10000L);
+      }
+      catch (InterruptedException localInterruptedException2)
+      {
+        localInterruptedException2.printStackTrace();
+      }
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+ * Qualified Name:     com.tencent.biz.common.offline.BidDownloader.1.1
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,34 +1,41 @@
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.biz.common.offline.BidDownloader;
+import com.tencent.biz.common.offline.HtmlOffline.6;
 
 public class moi
-  implements Runnable
+  implements moc
 {
-  public moi(ReadinjoyTabFrame paramReadinjoyTabFrame, GuideData paramGuideData, String paramString, int paramInt) {}
+  public moi(HtmlOffline.6 param6) {}
   
-  public void run()
+  public void loaded(String paramString, int paramInt)
   {
-    if (ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame) == null)
-    {
-      FrameLayout localFrameLayout = (FrameLayout)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a().findViewById(2131364961);
-      ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame, new ReadInJoySkinGuideView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.id, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, new moj(this, localFrameLayout), new mok(this, localFrameLayout)));
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame.a() == 0) {
-        localFrameLayout.addView(ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame), -1, -1);
+    long l = System.currentTimeMillis() - this.a.jdField_a_of_type_Long;
+    if (mof.a.a()) {
+      mof.a.a("HtmlCheckUpdate", 2, "js call downloadUpdate callback:" + paramInt + ", time:" + l);
+    }
+    if (paramInt == 0) {
+      if (mof.b(this.a.b)) {
+        this.a.jdField_a_of_type_Moc.loaded(null, 0);
       }
     }
-    else
+    for (;;)
     {
+      BidDownloader.b(this.a.b);
+      mof.a(this.a.b, paramInt, l, mpq.a(this.a.jdField_a_of_type_AndroidContentContext));
       return;
+      this.a.jdField_a_of_type_Moc.loaded(null, 6);
+      continue;
+      this.a.jdField_a_of_type_Moc.loaded(null, 2);
     }
-    ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData);
+  }
+  
+  public void progress(int paramInt)
+  {
+    this.a.jdField_a_of_type_Moc.progress(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     moi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,30 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import com.tencent.mobileqq.redtouch.RedTouchTextView;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import com.tencent.mobileqq.utils.ImageUtil;
-import java.io.File;
+import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class ahkj
-  implements Runnable
+class ahkj
+  implements axrt
 {
-  public ahkj(RedTouchTextView paramRedTouchTextView, String paramString, int paramInt) {}
+  ahkj(ahkg paramahkg) {}
   
-  public void run()
+  public void onResp(axsq paramaxsq)
   {
-    Object localObject = new File(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView.getContext().getFilesDir(), this.jdField_a_of_type_JavaLangString);
-    Bitmap localBitmap;
-    if (((File)localObject).exists())
+    FilterDesc localFilterDesc = (FilterDesc)paramaxsq.jdField_a_of_type_Axsp.a();
+    if (paramaxsq.jdField_a_of_type_Int != 0)
     {
-      localBitmap = this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView.a((File)localObject);
-      localObject = localBitmap;
-      if (this.jdField_a_of_type_Int == 1) {
-        localObject = ImageUtil.a(localBitmap, localBitmap.getWidth(), localBitmap.getWidth(), localBitmap.getHeight());
-      }
-      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView.b = new BitmapDrawable((Bitmap)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView.a();
-    }
-    while (RedTouchTextView.a(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView)) {
+      krx.c("VideoFilterTools", "download IconFile failed. errorCode: " + paramaxsq.b + ", errorMsg: " + paramaxsq.jdField_a_of_type_JavaLangString + ", file: " + localFilterDesc.iconurl);
       return;
     }
-    RedTouchTextView.a(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView, true);
-    if (HttpDownloadUtil.a(null, this.jdField_a_of_type_JavaLangString, (File)localObject))
-    {
-      localBitmap = this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView.a((File)localObject);
-      localObject = localBitmap;
-      if (this.jdField_a_of_type_Int == 1) {
-        localObject = ImageUtil.a(localBitmap, localBitmap.getWidth(), localBitmap.getWidth(), localBitmap.getHeight());
-      }
-      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView.b = new BitmapDrawable((Bitmap)localObject);
-      this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView.a();
+    if ((ahkg.a(this.a).decrementAndGet() == 0) && (ahkg.a(this.a) != null)) {
+      ahkg.a(this.a).a(true);
     }
-    RedTouchTextView.a(this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchTextView, false);
+    krx.c("VideoFilterTools", "download iconFile success. file: " + localFilterDesc.iconurl);
   }
+  
+  public void onUpdateProgeress(axsp paramaxsp, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahkj
  * JD-Core Version:    0.7.0.1
  */

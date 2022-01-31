@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_struct$GroupId
-  extends MessageMicro
+  extends MessageMicro<GroupId>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field err_code = PBField.initUInt32(0);
@@ -24,7 +24,7 @@ public final class qqstory_struct$GroupId
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupId
  * JD-Core Version:    0.7.0.1
  */

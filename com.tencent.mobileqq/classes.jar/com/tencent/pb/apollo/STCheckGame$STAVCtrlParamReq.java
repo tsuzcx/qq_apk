@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class STCheckGame$STAVCtrlParamReq
-  extends MessageMicro
+  extends MessageMicro<STAVCtrlParamReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "sdkAppId", "localVer" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0) }, STAVCtrlParamReq.class);
   public final PBUInt32Field localVer = PBField.initUInt32(0);
@@ -14,7 +14,7 @@ public final class STCheckGame$STAVCtrlParamReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.apollo.STCheckGame.STAVCtrlParamReq
  * JD-Core Version:    0.7.0.1
  */

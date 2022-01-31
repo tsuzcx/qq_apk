@@ -1,22 +1,27 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ulq
-  implements Runnable
 {
-  public ulq(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
-  
-  public void run()
+  public static void a(String paramString, Object... paramVarArgs)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
-      this.a.a.dismiss();
+    urk.e(paramString, uls.a(paramVarArgs));
+  }
+  
+  public static void b(String paramString, Object... paramVarArgs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(paramString, 2, uls.a(paramVarArgs));
     }
-    this.a.a = null;
+  }
+  
+  public static void c(String paramString, Object... paramVarArgs)
+  {
+    urk.d(paramString, uls.a(paramVarArgs));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ulq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,22 @@
-import android.view.ViewGroup;
-import android.widget.ListView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.BaseFaceListAdapter;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 class aoje
-  implements Runnable
+  implements TVK_SDKMgr.InstallListener
 {
-  aoje(aojd paramaojd) {}
+  aoje(aojd paramaojd, aoji paramaoji) {}
   
-  public void run()
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt) {}
+  
+  public void onInstalledSuccessed()
   {
-    FaceListPage.a(this.a.a).setVisibility(4);
-    FaceListPage.b(this.a.a).setVisibility(4);
-    FaceListPage.a(this.a.a).setVisibility(0);
-    FaceListPage.a(this.a.a).notifyDataSetChanged();
+    this.jdField_a_of_type_Aoji.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoje
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,34 @@
-import com.tencent.biz.qqstory.model.item.HotTopicInfoItem;
-import com.tencent.biz.qqstory.storyHome.discover.view.DiscoverPresenter;
-import com.tencent.biz.qqstory.storyHome.discover.view.IDiscoverView;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class oap
-  implements Runnable
+class oap
+  implements ViewBase.OnClickListener
 {
-  public oap(DiscoverPresenter paramDiscoverPresenter, HotTopicInfoItem paramHotTopicInfoItem) {}
+  oap(oal paramoal) {}
   
-  public void run()
+  public void onClick(ViewBase paramViewBase)
   {
-    DiscoverPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewDiscoverPresenter).a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemHotTopicInfoItem);
-    SLog.b("Q.qqstory.discover.DiscoverPresenter", "topic %d info %s", Long.valueOf(DiscoverPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewDiscoverPresenter)), this.jdField_a_of_type_ComTencentBizQqstoryModelItemHotTopicInfoItem);
+    if ((!(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo instanceof ArticleInfo)) || (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo.mProteusTemplateBean == null))
+    {
+      QLog.d("ProteusSupportUtil", 1, "STR_ID_CMD_PARTNER_HEADER_CLICK,click exception, return");
+      return;
+    }
+    TemplateBean localTemplateBean = oag.a(null, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo);
+    if (localTemplateBean != null) {
+      oag.a(localTemplateBean.findViewById(paramViewBase.getName()));
+    }
+    oag.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, localTemplateBean, paramViewBase);
+    obz.e(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext(), paramViewBase.getEventAttachedData());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oap
  * JD-Core Version:    0.7.0.1
  */

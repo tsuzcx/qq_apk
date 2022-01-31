@@ -1,26 +1,42 @@
-import com.tencent.mobileqq.activity.contact.troop.BaseTroopView.ITroopContext;
-import com.tencent.mobileqq.activity.contact.troop.RecommendTroopView;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.util.MqqWeakReferenceHandler;
-import java.util.List;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public class wqc
-  extends TroopObserver
+class wqc
+  implements Animator.AnimatorListener
 {
-  public wqc(RecommendTroopView paramRecommendTroopView) {}
+  wqc(wqa paramwqa) {}
   
-  protected void b(boolean paramBoolean, List paramList)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if ((paramBoolean) && (paramList != null))
+    if (wqa.a(this.a) != null) {
+      wqa.a(this.a).a();
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (wqa.a(this.a) != null) {
+      wqa.a(this.a).a();
+    }
+    if (wqa.a(this.a) != null)
     {
-      this.a.a.a().sendEmptyMessage(105);
-      this.a.j();
+      wqa.a(wqa.a(this.a), null);
+      wqa.a(this.a).a();
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (wqa.a(this.a) != null) {
+      wqa.a(this.a).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wqc
  * JD-Core Version:    0.7.0.1
  */

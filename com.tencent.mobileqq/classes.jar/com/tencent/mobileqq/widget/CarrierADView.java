@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.widget;
 
+import amwd;
 import android.content.Context;
 import android.os.Handler.Callback;
 import android.os.Looper;
@@ -13,11 +14,10 @@ import android.view.ViewParent;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
+import babk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.dating.CarrierHelper;
-import com.tencent.mobileqq.dating.IFlingSwitch;
 import com.tencent.mobileqq.struct.AdData;
-import com.tencent.mobileqq.utils.CustomHandler;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import mqq.os.MqqHandler;
@@ -26,8 +26,8 @@ public class CarrierADView
   extends ADView
   implements Handler.Callback
 {
+  private amwd jdField_a_of_type_Amwd;
   private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
-  private IFlingSwitch jdField_a_of_type_ComTencentMobileqqDatingIFlingSwitch;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   
   public CarrierADView(Context paramContext)
@@ -115,13 +115,13 @@ public class CarrierADView
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     int i;
-    if (this.jdField_a_of_type_ComTencentMobileqqDatingIFlingSwitch != null)
+    if (this.jdField_a_of_type_Amwd != null)
     {
       i = paramMotionEvent.getAction();
       if (i != 0) {
         break label56;
       }
-      this.jdField_a_of_type_ComTencentMobileqqDatingIFlingSwitch.a(false);
+      this.jdField_a_of_type_Amwd.a(false);
       j();
       if (this.jdField_a_of_type_AndroidViewMotionEvent != null) {
         this.jdField_a_of_type_AndroidViewMotionEvent.recycle();
@@ -146,16 +146,16 @@ public class CarrierADView
         return false;
       }
     } while ((i != 1) && (i != 3));
-    this.jdField_a_of_type_ComTencentMobileqqDatingIFlingSwitch.a(true);
+    this.jdField_a_of_type_Amwd.a(true);
     i();
     getParent().requestDisallowInterceptTouchEvent(false);
     return false;
   }
   
-  public void setCarrierData(List paramList, int paramInt, CarrierHelper paramCarrierHelper)
+  public void setCarrierData(List<AdData> paramList, int paramInt, CarrierHelper paramCarrierHelper)
   {
     if (this.jdField_a_of_type_MqqOsMqqHandler == null) {
-      this.jdField_a_of_type_MqqOsMqqHandler = new CustomHandler(Looper.getMainLooper(), this);
+      this.jdField_a_of_type_MqqOsMqqHandler = new babk(Looper.getMainLooper(), this);
     }
     h();
     if ((paramList == null) || (paramList.size() == 0))
@@ -181,7 +181,7 @@ public class CarrierADView
       if (paramInt < paramList.size()) {
         try
         {
-          View localView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2130970435, null);
+          View localView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131495265, null);
           paramCarrierHelper.a(localView, (AdData)paramList.get(paramInt));
           b(localView, paramInt);
           paramInt += 1;
@@ -200,9 +200,9 @@ public class CarrierADView
     i();
   }
   
-  public void setFlingSwitch(IFlingSwitch paramIFlingSwitch)
+  public void setFlingSwitch(amwd paramamwd)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDatingIFlingSwitch = paramIFlingSwitch;
+    this.jdField_a_of_type_Amwd = paramamwd;
   }
   
   public void setVisibility(int paramInt)
@@ -223,7 +223,7 @@ public class CarrierADView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CarrierADView
  * JD-Core Version:    0.7.0.1
  */

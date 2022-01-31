@@ -1,35 +1,16 @@
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-
 public class ulv
-  implements Runnable
+  extends sfo
 {
-  public ulv(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  public int a;
   
-  public void run()
+  public ulv(int paramInt)
   {
-    try
-    {
-      if ((VerifyPhoneNumActivity.a(this.a) != null) && (VerifyPhoneNumActivity.a(this.a).isShowing()))
-      {
-        VerifyPhoneNumActivity.a(this.a).dismiss();
-        VerifyPhoneNumActivity.a(this.a).cancel();
-      }
-      VerifyPhoneNumActivity.a(this.a, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    this.a = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ulv
  * JD-Core Version:    0.7.0.1
  */

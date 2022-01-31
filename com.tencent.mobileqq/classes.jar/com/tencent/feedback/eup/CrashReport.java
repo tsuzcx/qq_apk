@@ -10,7 +10,6 @@ import com.tencent.bugly.crashreport.common.strategy.StrategyBean;
 import com.tencent.bugly.crashreport.crash.c;
 import com.tencent.bugly.crashreport.crash.e;
 import com.tencent.bugly.crashreport.crash.jni.NativeCrashHandler;
-import com.tencent.bugly.proguard.an;
 import com.tencent.bugly.proguard.t;
 import com.tencent.bugly.proguard.u;
 import com.tencent.bugly.proguard.w;
@@ -228,23 +227,7 @@ public class CrashReport
     setCrashHandler(paramCrashHandleListener);
     if (paramUploadHandleListener != null)
     {
-      e = new t()
-      {
-        public final void a(int paramAnonymousInt)
-        {
-          this.a.onUploadStart(paramAnonymousInt);
-        }
-        
-        public final void a(int paramAnonymousInt, an paramAnonymousan, long paramAnonymousLong1, long paramAnonymousLong2, boolean paramAnonymousBoolean, String paramAnonymousString)
-        {
-          if (paramAnonymousan == null) {}
-          for (int i = -1;; i = paramAnonymousan.b)
-          {
-            this.a.onUploadEnd(paramAnonymousInt, i, paramAnonymousLong1, paramAnonymousLong2, paramAnonymousBoolean, paramAnonymousString);
-            return;
-          }
-        }
-      };
+      e = new CrashReport.2(paramUploadHandleListener);
       paramCrashHandleListener = u.a();
       if (paramCrashHandleListener != null) {
         paramCrashHandleListener.a = e;
@@ -366,7 +349,7 @@ public class CrashReport
     } while (paramContext == null);
     paramContext.e();
     paramContext.a(paramLong);
-    paramContext.b(paramLong);
+    paramContext.l();
   }
   
   public static boolean needUploadCrash(Context paramContext)
@@ -518,33 +501,7 @@ public class CrashReport
     {
       return;
       d = paramCrashHandleListener;
-      c = new e()
-      {
-        public final void a(boolean paramAnonymousBoolean)
-        {
-          this.a.onCrashHandleStart(paramAnonymousBoolean);
-        }
-        
-        public final boolean a(boolean paramAnonymousBoolean, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt, long paramAnonymousLong, String paramAnonymousString4, String paramAnonymousString5, String paramAnonymousString6, String paramAnonymousString7)
-        {
-          return this.a.onCrashSaving(paramAnonymousBoolean, paramAnonymousString1, paramAnonymousString2, paramAnonymousString3, paramAnonymousInt, paramAnonymousLong, paramAnonymousString4, paramAnonymousString5, paramAnonymousString6, paramAnonymousString7);
-        }
-        
-        public final byte[] a(boolean paramAnonymousBoolean, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt, long paramAnonymousLong)
-        {
-          return this.a.getCrashExtraData(paramAnonymousBoolean, paramAnonymousString1, paramAnonymousString2, paramAnonymousString3, -1234567890, paramAnonymousLong);
-        }
-        
-        public final String b(boolean paramAnonymousBoolean, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt, long paramAnonymousLong)
-        {
-          return this.a.getCrashExtraMessage(paramAnonymousBoolean, paramAnonymousString1, paramAnonymousString2, paramAnonymousString3, -1234567890, paramAnonymousLong);
-        }
-        
-        public final boolean b(boolean paramAnonymousBoolean)
-        {
-          return this.a.onCrashHandleEnd(paramAnonymousBoolean);
-        }
-      };
+      c = new CrashReport.1(paramCrashHandleListener);
       paramCrashHandleListener = c.a();
     } while (paramCrashHandleListener == null);
     paramCrashHandleListener.a(c);

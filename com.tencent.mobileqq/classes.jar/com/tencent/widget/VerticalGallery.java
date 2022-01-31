@@ -1,9 +1,5 @@
 package com.tencent.widget;
 
-import amho;
-import amll;
-import amlm;
-import amln;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
@@ -23,6 +19,12 @@ import android.view.ViewParent;
 import android.view.animation.Transformation;
 import android.widget.Scroller;
 import android.widget.SpinnerAdapter;
+import bego;
+import behg;
+import behj;
+import beop;
+import beoq;
+import beor;
 import com.tencent.mobileqq.R.styleable;
 
 public class VerticalGallery
@@ -31,18 +33,18 @@ public class VerticalGallery
 {
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  private amln jdField_a_of_type_Amln = new amln(this);
   private GestureDetector jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, this);
-  private AdapterView.AdapterContextMenuInfo jdField_a_of_type_ComTencentWidgetAdapterView$AdapterContextMenuInfo;
-  private VerticalGallery.OnEndFlingListener jdField_a_of_type_ComTencentWidgetVerticalGallery$OnEndFlingListener;
-  private VerticalGallery.OnEndMovementListener jdField_a_of_type_ComTencentWidgetVerticalGallery$OnEndMovementListener;
-  private VerticalGallery.OnSelectViewDataUpdateListener jdField_a_of_type_ComTencentWidgetVerticalGallery$OnSelectViewDataUpdateListener;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new amll(this);
+  private behg jdField_a_of_type_Behg;
+  private beop jdField_a_of_type_Beop;
+  private beoq jdField_a_of_type_Beoq;
+  private beor jdField_a_of_type_Beor;
+  private VerticalGallery.FlingRunnable jdField_a_of_type_ComTencentWidgetVerticalGallery$FlingRunnable = new VerticalGallery.FlingRunnable(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new VerticalGallery.1(this);
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float = 1.0F;
   private View jdField_b_of_type_AndroidViewView;
-  private View jdField_c_of_type_AndroidViewView;
-  private boolean jdField_c_of_type_Boolean = true;
+  private boolean jdField_b_of_type_Boolean = true;
+  private View c;
   private boolean d = true;
   private boolean e;
   private boolean f;
@@ -69,7 +71,7 @@ public class VerticalGallery
   
   public VerticalGallery(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2130772657);
+    this(paramContext, paramAttributeSet, 2130969454);
   }
   
   public VerticalGallery(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -91,7 +93,7 @@ public class VerticalGallery
     setChildrenDrawingOrderEnabled(true);
     setStaticTransformationsEnabled(true);
     this.o = ViewConfiguration.get(paramContext).getScaledScrollBarSize();
-    if (f())
+    if (a())
     {
       this.jdField_k_of_type_Int = 1;
       return;
@@ -132,7 +134,7 @@ public class VerticalGallery
   {
     if (!this.mDataChanged)
     {
-      localView = this.jdField_a_of_type_Amho.a(paramInt1);
+      localView = this.jdField_a_of_type_Bego.a(paramInt1);
       if (localView != null)
       {
         paramInt1 = localView.getLeft();
@@ -230,13 +232,13 @@ public class VerticalGallery
           if (paramBoolean)
           {
             this.mFirstPosition = (i3 + this.mFirstPosition);
-            if (e()) {
+            if (f()) {
               this.mFirstPosition %= this.mItemCount;
             }
           }
           return;
         }
-        this.jdField_a_of_type_Amho.a(i4 + i2, localView);
+        this.jdField_a_of_type_Bego.a(i4 + i2, localView);
         i2 += 1;
         i1 += 1;
       }
@@ -263,11 +265,16 @@ public class VerticalGallery
         i3 = i1;
         break;
       }
-      this.jdField_a_of_type_Amho.a(i4 + i3, localView);
+      this.jdField_a_of_type_Bego.a(i4 + i3, localView);
       i1 += 1;
       i2 = i3;
       i3 -= 1;
     }
+  }
+  
+  private boolean a()
+  {
+    return this.p == 2;
   }
   
   private boolean a(int paramInt)
@@ -277,7 +284,7 @@ public class VerticalGallery
     {
       paramInt = b();
       int i1 = c(localView);
-      this.jdField_a_of_type_Amln.b(paramInt - i1);
+      this.jdField_a_of_type_ComTencentWidgetVerticalGallery$FlingRunnable.b(paramInt - i1);
       return true;
     }
     return false;
@@ -291,7 +298,7 @@ public class VerticalGallery
       boolean bool2 = bool1;
       if (!bool1)
       {
-        this.jdField_a_of_type_ComTencentWidgetAdapterView$AdapterContextMenuInfo = new AdapterView.AdapterContextMenuInfo(paramView, paramInt, paramLong);
+        this.jdField_a_of_type_Behg = new behg(paramView, paramInt, paramLong);
         bool2 = super.showContextMenuForChild(this);
       }
       if (bool2) {
@@ -336,7 +343,7 @@ public class VerticalGallery
   {
     if (!this.mDataChanged)
     {
-      localView = this.jdField_a_of_type_Amho.a(paramInt1);
+      localView = this.jdField_a_of_type_Bego.a(paramInt1);
       if (localView != null)
       {
         paramInt1 = localView.getTop();
@@ -426,13 +433,13 @@ public class VerticalGallery
           if (paramBoolean)
           {
             this.mFirstPosition = (i3 + this.mFirstPosition);
-            if (e()) {
+            if (f()) {
               this.mFirstPosition %= this.mItemCount;
             }
           }
           return;
         }
-        this.jdField_a_of_type_Amho.a(i4 + i2, localView);
+        this.jdField_a_of_type_Bego.a(i4 + i2, localView);
         i2 += 1;
         i1 += 1;
       }
@@ -459,7 +466,7 @@ public class VerticalGallery
         i3 = i1;
         break;
       }
-      this.jdField_a_of_type_Amho.a(i4 + i3, localView);
+      this.jdField_a_of_type_Bego.a(i4 + i3, localView);
       i1 += 1;
       i2 = i3;
       i3 -= 1;
@@ -480,7 +487,7 @@ public class VerticalGallery
   
   private float c()
   {
-    if (f()) {
+    if (a()) {
       return (getHeight() - getPaddingTop() - getPaddingBottom()) * a() + getPaddingTop();
     }
     return (getWidth() - getPaddingLeft() - getPaddingRight()) * a() + getPaddingLeft();
@@ -488,21 +495,16 @@ public class VerticalGallery
   
   private int c(View paramView)
   {
-    if (f()) {
+    if (a()) {
       return paramView.getTop() + paramView.getHeight() / 2;
     }
     return paramView.getLeft() + paramView.getWidth() / 2;
   }
   
-  private boolean f()
-  {
-    return this.p == 2;
-  }
-  
   private void h()
   {
     int i2 = 0;
-    if (c()) {
+    if (d()) {
       if ((getChildCount() != 0) && (this.jdField_c_of_type_AndroidViewView != null)) {}
     }
     int i1;
@@ -513,7 +515,7 @@ public class VerticalGallery
       i1 = b() - i1;
       if (i1 != 0)
       {
-        this.jdField_a_of_type_Amln.b(i1);
+        this.jdField_a_of_type_ComTencentWidgetVerticalGallery$FlingRunnable.b(i1);
         return;
       }
       i();
@@ -529,7 +531,7 @@ public class VerticalGallery
     }
     while (i1 != 0)
     {
-      this.jdField_a_of_type_Amln.b(i1);
+      this.jdField_a_of_type_ComTencentWidgetVerticalGallery$FlingRunnable.b(i1);
       return;
       View localView2 = getChildAt(getChildCount() - 1);
       if (localView2.getBottom() - localView1.getTop() < getBottom() - getPaddingBottom())
@@ -566,8 +568,8 @@ public class VerticalGallery
       super.selectionChanged();
     }
     invalidate();
-    if (this.jdField_a_of_type_ComTencentWidgetVerticalGallery$OnEndMovementListener != null) {
-      this.jdField_a_of_type_ComTencentWidgetVerticalGallery$OnEndMovementListener.a(this);
+    if (this.jdField_a_of_type_Beoq != null) {
+      this.jdField_a_of_type_Beoq.a(this);
     }
   }
   
@@ -593,7 +595,7 @@ public class VerticalGallery
     {
       i2 = this.mFirstPosition + i1;
       i1 = i2;
-      if (e()) {
+      if (f()) {
         i1 = i2 % this.mItemCount;
       }
       if (i1 == this.mSelectedPosition) {
@@ -643,7 +645,7 @@ public class VerticalGallery
     {
       i2 = this.mFirstPosition + i1;
       i1 = i2;
-      if (e()) {
+      if (f()) {
         i1 = i2 % this.mItemCount;
       }
       if (i1 == this.mSelectedPosition) {
@@ -673,7 +675,7 @@ public class VerticalGallery
   
   private void l()
   {
-    if (e()) {
+    if (f()) {
       q();
     }
     for (;;)
@@ -705,7 +707,7 @@ public class VerticalGallery
   
   private void m()
   {
-    if (e()) {
+    if (f()) {
       r();
     }
     for (;;)
@@ -737,7 +739,7 @@ public class VerticalGallery
   
   private void n()
   {
-    if (e()) {
+    if (f()) {
       s();
     }
     for (;;)
@@ -771,7 +773,7 @@ public class VerticalGallery
   
   private void o()
   {
-    if (e()) {
+    if (f()) {
       t();
     }
     for (;;)
@@ -808,7 +810,7 @@ public class VerticalGallery
     View localView1 = this.jdField_c_of_type_AndroidViewView;
     int i2 = this.mSelectedPosition - this.mFirstPosition;
     int i1 = i2;
-    if (e())
+    if (f())
     {
       i1 = i2;
       if (this.mFirstPosition > this.mSelectedPosition) {
@@ -826,8 +828,8 @@ public class VerticalGallery
       if (hasFocus()) {
         localView2.requestFocus();
       }
-      if (this.jdField_a_of_type_ComTencentWidgetVerticalGallery$OnSelectViewDataUpdateListener != null) {
-        this.jdField_a_of_type_ComTencentWidgetVerticalGallery$OnSelectViewDataUpdateListener.a(localView2, i1);
+      if (this.jdField_a_of_type_Beor != null) {
+        this.jdField_a_of_type_Beor.a(localView2, i1);
       }
     } while ((localView1 == null) || (localView1 == this.jdField_c_of_type_AndroidViewView));
     localView1.setSelected(false);
@@ -1010,244 +1012,10 @@ public class VerticalGallery
     }
   }
   
-  public void a(int paramInt)
-  {
-    int i1 = 0;
-    if (getChildCount() == 0) {
-      return;
-    }
-    boolean bool;
-    if (paramInt < 0)
-    {
-      bool = true;
-      if (!c()) {
-        break label109;
-      }
-      if (((!e()) || (getChildCount() >= this.mItemCount)) && (a(bool, paramInt) != paramInt))
-      {
-        amln.a(this.jdField_a_of_type_Amln, false);
-        i();
-      }
-      c(paramInt);
-      a(bool);
-      if (!bool) {
-        break label102;
-      }
-      n();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Amho.a();
-      j();
-      invalidate();
-      return;
-      bool = false;
-      break;
-      label102:
-      l();
-    }
-    label109:
-    View localView;
-    if (bool)
-    {
-      localView = getChildAt(getChildCount() - 1);
-      if ((localView == null) || (localView.getRight() >= c())) {
-        break label263;
-      }
-      paramInt = i1;
-      if (this.jdField_a_of_type_Amln != null)
-      {
-        this.jdField_a_of_type_Amln.a(false);
-        paramInt = i1;
-      }
-    }
-    label263:
-    for (;;)
-    {
-      c(paramInt);
-      a(bool);
-      if (bool) {
-        n();
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_Amho.a();
-        j();
-        awakenScrollBars();
-        invalidate();
-        return;
-        localView = getChildAt(0);
-        if ((localView == null) || (localView.getLeft() <= getWidth() - c())) {
-          break label263;
-        }
-        paramInt = i1;
-        if (this.jdField_a_of_type_Amln == null) {
-          break;
-        }
-        this.jdField_a_of_type_Amln.a(false);
-        paramInt = i1;
-        break;
-        l();
-      }
-    }
-  }
-  
-  boolean a()
-  {
-    return (this.mItemCount > 0) && (this.mSelectedPosition > 0);
-  }
-  
-  public float b()
-  {
-    return this.jdField_b_of_type_Float;
-  }
-  
-  public int b()
-  {
-    if (f()) {
-      return (getHeight() - getPaddingTop() - getPaddingBottom()) / 2 + getPaddingTop();
-    }
-    return (getWidth() - getPaddingLeft() - getPaddingRight()) / 2 + getPaddingLeft();
-  }
-  
-  public void b(int paramInt)
-  {
-    int i1 = 0;
-    if (getChildCount() == 0) {
-      return;
-    }
-    boolean bool;
-    if (paramInt < 0)
-    {
-      bool = true;
-      if (!c()) {
-        break label109;
-      }
-      if (((!e()) || (getChildCount() >= this.mItemCount)) && (a(bool, paramInt) != paramInt))
-      {
-        amln.a(this.jdField_a_of_type_Amln, false);
-        i();
-      }
-      d(paramInt);
-      b(bool);
-      if (!bool) {
-        break label102;
-      }
-      o();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Amho.a();
-      k();
-      invalidate();
-      return;
-      bool = false;
-      break;
-      label102:
-      m();
-    }
-    label109:
-    View localView;
-    if (bool)
-    {
-      localView = getChildAt(getChildCount() - 1);
-      if ((localView == null) || (localView.getRight() >= c())) {
-        break label263;
-      }
-      paramInt = i1;
-      if (this.jdField_a_of_type_Amln != null)
-      {
-        this.jdField_a_of_type_Amln.a(false);
-        paramInt = i1;
-      }
-    }
-    label263:
-    for (;;)
-    {
-      d(paramInt);
-      b(bool);
-      if (bool) {
-        o();
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_Amho.a();
-        j();
-        awakenScrollBars();
-        invalidate();
-        return;
-        localView = getChildAt(0);
-        if ((localView == null) || (localView.getLeft() <= getWidth() - c())) {
-          break label263;
-        }
-        paramInt = i1;
-        if (this.jdField_a_of_type_Amln == null) {
-          break;
-        }
-        this.jdField_a_of_type_Amln.a(false);
-        paramInt = i1;
-        break;
-        m();
-      }
-    }
-  }
-  
-  void b(int paramInt, boolean paramBoolean)
-  {
-    if (f())
-    {
-      c(paramInt, paramBoolean);
-      return;
-    }
-    paramInt = this.jdField_a_of_type_AndroidGraphicsRect.left;
-    int i1 = this.m + paramInt;
-    if (this.mDataChanged) {
-      handleDataChanged();
-    }
-    if (this.mItemCount == 0)
-    {
-      a();
-      return;
-    }
-    if (this.mNextSelectedPosition >= 0) {
-      setSelectedPositionInt(this.mNextSelectedPosition);
-    }
-    b();
-    detachAllViewsFromParent();
-    this.jdField_j_of_type_Int = 0;
-    this.jdField_i_of_type_Int = 0;
-    this.mFirstPosition = this.mSelectedPosition;
-    View localView = a(this.mFirstPosition, 0, 0, true);
-    paramInt = this.jdField_a_of_type_Int + i1;
-    if (c()) {
-      paramInt = (getRight() - getLeft() - this.jdField_a_of_type_AndroidGraphicsRect.left - this.jdField_a_of_type_AndroidGraphicsRect.right) / 2 + i1 - localView.getWidth() / 2;
-    }
-    localView.offsetLeftAndRight(paramInt);
-    n();
-    l();
-    this.jdField_a_of_type_Amho.a();
-    invalidate();
-    this.mDataChanged = false;
-    this.mNeedSync = false;
-    setNextSelectedPositionInt(this.mSelectedPosition);
-    p();
-    if (getChildCount() < this.mItemCount) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      this.jdField_k_of_type_Boolean = paramBoolean;
-      return;
-    }
-  }
-  
-  boolean b()
-  {
-    return (this.mItemCount > 0) && (this.mSelectedPosition < this.mItemCount - 1);
-  }
-  
-  public void c()
+  public void a()
   {
     int i2 = 0;
-    if (f()) {
+    if (a()) {
       h();
     }
     int i1;
@@ -1256,7 +1024,7 @@ public class VerticalGallery
       do
       {
         return;
-        if (!c()) {
+        if (!d()) {
           break;
         }
       } while ((getChildCount() == 0) || (this.jdField_c_of_type_AndroidViewView == null));
@@ -1264,7 +1032,7 @@ public class VerticalGallery
       i1 = b() - i1;
       if (i1 != 0)
       {
-        this.jdField_a_of_type_Amln.b(i1);
+        this.jdField_a_of_type_ComTencentWidgetVerticalGallery$FlingRunnable.b(i1);
         return;
       }
       i();
@@ -1280,7 +1048,7 @@ public class VerticalGallery
     }
     while (i1 != 0)
     {
-      this.jdField_a_of_type_Amln.b(i1);
+      this.jdField_a_of_type_ComTencentWidgetVerticalGallery$FlingRunnable.b(i1);
       return;
       View localView2 = getChildAt(getChildCount() - 1);
       if (localView2.getRight() - localView1.getLeft() < getRight() - getPaddingRight())
@@ -1309,6 +1077,235 @@ public class VerticalGallery
     i();
   }
   
+  void a(int paramInt)
+  {
+    int i1 = 0;
+    if (getChildCount() == 0) {
+      return;
+    }
+    boolean bool;
+    if (paramInt < 0)
+    {
+      bool = true;
+      if (!d()) {
+        break label109;
+      }
+      if (((!f()) || (getChildCount() >= this.mItemCount)) && (a(bool, paramInt) != paramInt))
+      {
+        VerticalGallery.FlingRunnable.a(this.jdField_a_of_type_ComTencentWidgetVerticalGallery$FlingRunnable, false);
+        i();
+      }
+      c(paramInt);
+      a(bool);
+      if (!bool) {
+        break label102;
+      }
+      n();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bego.a();
+      j();
+      invalidate();
+      return;
+      bool = false;
+      break;
+      label102:
+      l();
+    }
+    label109:
+    View localView;
+    if (bool)
+    {
+      localView = getChildAt(getChildCount() - 1);
+      if ((localView == null) || (localView.getRight() >= c())) {
+        break label263;
+      }
+      paramInt = i1;
+      if (this.jdField_a_of_type_ComTencentWidgetVerticalGallery$FlingRunnable != null)
+      {
+        this.jdField_a_of_type_ComTencentWidgetVerticalGallery$FlingRunnable.a(false);
+        paramInt = i1;
+      }
+    }
+    label263:
+    for (;;)
+    {
+      c(paramInt);
+      a(bool);
+      if (bool) {
+        n();
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_Bego.a();
+        j();
+        awakenScrollBars();
+        invalidate();
+        return;
+        localView = getChildAt(0);
+        if ((localView == null) || (localView.getLeft() <= getWidth() - c())) {
+          break label263;
+        }
+        paramInt = i1;
+        if (this.jdField_a_of_type_ComTencentWidgetVerticalGallery$FlingRunnable == null) {
+          break;
+        }
+        this.jdField_a_of_type_ComTencentWidgetVerticalGallery$FlingRunnable.a(false);
+        paramInt = i1;
+        break;
+        l();
+      }
+    }
+  }
+  
+  public float b()
+  {
+    return this.jdField_b_of_type_Float;
+  }
+  
+  protected int b()
+  {
+    if (a()) {
+      return (getHeight() - getPaddingTop() - getPaddingBottom()) / 2 + getPaddingTop();
+    }
+    return (getWidth() - getPaddingLeft() - getPaddingRight()) / 2 + getPaddingLeft();
+  }
+  
+  void b(int paramInt)
+  {
+    int i1 = 0;
+    if (getChildCount() == 0) {
+      return;
+    }
+    boolean bool;
+    if (paramInt < 0)
+    {
+      bool = true;
+      if (!d()) {
+        break label109;
+      }
+      if (((!f()) || (getChildCount() >= this.mItemCount)) && (a(bool, paramInt) != paramInt))
+      {
+        VerticalGallery.FlingRunnable.a(this.jdField_a_of_type_ComTencentWidgetVerticalGallery$FlingRunnable, false);
+        i();
+      }
+      d(paramInt);
+      b(bool);
+      if (!bool) {
+        break label102;
+      }
+      o();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Bego.a();
+      k();
+      invalidate();
+      return;
+      bool = false;
+      break;
+      label102:
+      m();
+    }
+    label109:
+    View localView;
+    if (bool)
+    {
+      localView = getChildAt(getChildCount() - 1);
+      if ((localView == null) || (localView.getRight() >= c())) {
+        break label263;
+      }
+      paramInt = i1;
+      if (this.jdField_a_of_type_ComTencentWidgetVerticalGallery$FlingRunnable != null)
+      {
+        this.jdField_a_of_type_ComTencentWidgetVerticalGallery$FlingRunnable.a(false);
+        paramInt = i1;
+      }
+    }
+    label263:
+    for (;;)
+    {
+      d(paramInt);
+      b(bool);
+      if (bool) {
+        o();
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_Bego.a();
+        j();
+        awakenScrollBars();
+        invalidate();
+        return;
+        localView = getChildAt(0);
+        if ((localView == null) || (localView.getLeft() <= getWidth() - c())) {
+          break label263;
+        }
+        paramInt = i1;
+        if (this.jdField_a_of_type_ComTencentWidgetVerticalGallery$FlingRunnable == null) {
+          break;
+        }
+        this.jdField_a_of_type_ComTencentWidgetVerticalGallery$FlingRunnable.a(false);
+        paramInt = i1;
+        break;
+        m();
+      }
+    }
+  }
+  
+  void b(int paramInt, boolean paramBoolean)
+  {
+    if (a())
+    {
+      c(paramInt, paramBoolean);
+      return;
+    }
+    paramInt = this.jdField_a_of_type_AndroidGraphicsRect.left;
+    int i1 = this.m + paramInt;
+    if (this.mDataChanged) {
+      handleDataChanged();
+    }
+    if (this.mItemCount == 0)
+    {
+      b();
+      return;
+    }
+    if (this.mNextSelectedPosition >= 0) {
+      setSelectedPositionInt(this.mNextSelectedPosition);
+    }
+    c();
+    detachAllViewsFromParent();
+    this.jdField_j_of_type_Int = 0;
+    this.jdField_i_of_type_Int = 0;
+    this.mFirstPosition = this.mSelectedPosition;
+    View localView = a(this.mFirstPosition, 0, 0, true);
+    paramInt = this.jdField_a_of_type_Int + i1;
+    if (d()) {
+      paramInt = (getRight() - getLeft() - this.jdField_a_of_type_AndroidGraphicsRect.left - this.jdField_a_of_type_AndroidGraphicsRect.right) / 2 + i1 - localView.getWidth() / 2;
+    }
+    localView.offsetLeftAndRight(paramInt);
+    n();
+    l();
+    this.jdField_a_of_type_Bego.a();
+    invalidate();
+    this.mDataChanged = false;
+    this.mNeedSync = false;
+    setNextSelectedPositionInt(this.mSelectedPosition);
+    p();
+    if (getChildCount() < this.mItemCount) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      this.jdField_k_of_type_Boolean = paramBoolean;
+      return;
+    }
+  }
+  
+  boolean b()
+  {
+    return (this.mItemCount > 0) && (this.mSelectedPosition > 0);
+  }
+  
   public void c(int paramInt)
   {
     int i1 = getChildCount() - 1;
@@ -1331,26 +1328,26 @@ public class VerticalGallery
     }
     if (this.mItemCount == 0)
     {
-      a();
+      b();
       return;
     }
     if (this.mNextSelectedPosition >= 0) {
       setSelectedPositionInt(this.mNextSelectedPosition);
     }
-    b();
+    c();
     detachAllViewsFromParent();
     this.jdField_j_of_type_Int = 0;
     this.jdField_i_of_type_Int = 0;
     this.mFirstPosition = this.mSelectedPosition;
     View localView = b(this.mFirstPosition, 0, 0, true);
     paramInt = this.jdField_a_of_type_Int + i1;
-    if (c()) {
+    if (d()) {
       paramInt = (getBottom() - getTop() - this.jdField_a_of_type_AndroidGraphicsRect.top - this.jdField_a_of_type_AndroidGraphicsRect.bottom) / 2 + i1 - localView.getHeight() / 2;
     }
     localView.offsetTopAndBottom(paramInt);
     o();
     m();
-    this.jdField_a_of_type_Amho.a();
+    this.jdField_a_of_type_Bego.a();
     invalidate();
     this.mDataChanged = false;
     this.mNeedSync = false;
@@ -1364,9 +1361,9 @@ public class VerticalGallery
     }
   }
   
-  public boolean c()
+  boolean c()
   {
-    return this.jdField_l_of_type_Boolean;
+    return (this.mItemCount > 0) && (this.mSelectedPosition < this.mItemCount - 1);
   }
   
   protected boolean checkLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
@@ -1449,8 +1446,8 @@ public class VerticalGallery
   
   protected void d()
   {
-    if (amln.a(this.jdField_a_of_type_Amln).isFinished()) {
-      c();
+    if (VerticalGallery.FlingRunnable.a(this.jdField_a_of_type_ComTencentWidgetVerticalGallery$FlingRunnable).isFinished()) {
+      a();
     }
     f();
   }
@@ -1468,20 +1465,9 @@ public class VerticalGallery
     }
   }
   
-  protected boolean d()
+  public boolean d()
   {
-    if ((!this.jdField_h_of_type_Boolean) || (getChildCount() < this.mItemCount)) {}
-    View localView;
-    do
-    {
-      do
-      {
-        return false;
-        localView = getChildAt(0);
-      } while ((localView != null) && (localView.getLeft() < getLeft()));
-      localView = getChildAt(getChildCount() - 1);
-    } while ((localView != null) && (localView.getRight() > getRight()));
-    return true;
+    return this.jdField_l_of_type_Boolean;
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
@@ -1503,12 +1489,23 @@ public class VerticalGallery
     d();
   }
   
-  public boolean e()
+  protected boolean e()
   {
-    return (this.jdField_j_of_type_Boolean) && (this.jdField_k_of_type_Boolean);
+    if ((!this.jdField_h_of_type_Boolean) || (getChildCount() < this.mItemCount)) {}
+    View localView;
+    do
+    {
+      do
+      {
+        return false;
+        localView = getChildAt(0);
+      } while ((localView != null) && (localView.getLeft() < getLeft()));
+      localView = getChildAt(getChildCount() - 1);
+    } while ((localView != null) && (localView.getRight() > getRight()));
+    return true;
   }
   
-  public void f()
+  protected void f()
   {
     int i1 = getChildCount() - 1;
     while (i1 >= 0)
@@ -1519,10 +1516,15 @@ public class VerticalGallery
     setPressed(false);
   }
   
-  public void g()
+  public boolean f()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetVerticalGallery$OnEndFlingListener != null) {
-      this.jdField_a_of_type_ComTencentWidgetVerticalGallery$OnEndFlingListener.b(this);
+    return (this.jdField_j_of_type_Boolean) && (this.jdField_k_of_type_Boolean);
+  }
+  
+  protected void g()
+  {
+    if (this.jdField_a_of_type_Beop != null) {
+      this.jdField_a_of_type_Beop.b(this);
     }
   }
   
@@ -1555,7 +1557,7 @@ public class VerticalGallery
     return paramInt2 + 1;
   }
   
-  public boolean getChildStaticTransformation(View paramView, Transformation paramTransformation)
+  protected boolean getChildStaticTransformation(View paramView, Transformation paramTransformation)
   {
     paramTransformation.clear();
     if (paramView == this.jdField_c_of_type_AndroidViewView) {}
@@ -1568,7 +1570,7 @@ public class VerticalGallery
   
   protected ContextMenu.ContextMenuInfo getContextMenuInfo()
   {
-    return this.jdField_a_of_type_ComTencentWidgetAdapterView$AdapterContextMenuInfo;
+    return this.jdField_a_of_type_Behg;
   }
   
   public void invalidate(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -1593,7 +1595,7 @@ public class VerticalGallery
   
   public boolean onDown(MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Amln.a(false);
+    this.jdField_a_of_type_ComTencentWidgetVerticalGallery$FlingRunnable.a(false);
     this.jdField_l_of_type_Int = a((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
     if (this.jdField_l_of_type_Int >= 0)
     {
@@ -1606,24 +1608,24 @@ public class VerticalGallery
   
   public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (d()) {
+    if (e()) {
       return true;
     }
-    if (!this.jdField_c_of_type_Boolean)
+    if (!this.jdField_b_of_type_Boolean)
     {
       removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       if (!this.e) {
         this.e = true;
       }
     }
-    if (f())
+    if (a())
     {
       paramFloat1 = b();
-      this.jdField_a_of_type_Amln.a((int)-(paramFloat1 * paramFloat2));
+      this.jdField_a_of_type_ComTencentWidgetVerticalGallery$FlingRunnable.a((int)-(paramFloat1 * paramFloat2));
       return true;
     }
     paramFloat2 = b();
-    this.jdField_a_of_type_Amln.a((int)-(paramFloat2 * paramFloat1));
+    this.jdField_a_of_type_ComTencentWidgetVerticalGallery$FlingRunnable.a((int)-(paramFloat2 * paramFloat1));
     return true;
   }
   
@@ -1649,10 +1651,10 @@ public class VerticalGallery
         do
         {
           return bool;
-        } while (!a());
+        } while (!b());
         playSoundEffect(1);
         return true;
-      } while (!b());
+      } while (!c());
       playSoundEffect(3);
       return true;
       this.f = true;
@@ -1669,14 +1671,14 @@ public class VerticalGallery
     if ((this.f) && (this.mItemCount > 0))
     {
       a(this.jdField_c_of_type_AndroidViewView);
-      postDelayed(new amlm(this), ViewConfiguration.getPressedStateDuration());
+      postDelayed(new VerticalGallery.2(this), ViewConfiguration.getPressedStateDuration());
       performItemClick(getChildAt(this.mSelectedPosition - this.mFirstPosition), this.mSelectedPosition, this.jdField_a_of_type_AndroidWidgetSpinnerAdapter.getItemId(this.mSelectedPosition));
     }
     this.f = false;
     return true;
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     this.mInLayout = true;
@@ -1696,12 +1698,12 @@ public class VerticalGallery
   
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (d()) {
+    if (e()) {
       return true;
     }
     this.jdField_i_of_type_Boolean = true;
     getParent().requestDisallowInterceptTouchEvent(true);
-    if (!this.jdField_c_of_type_Boolean)
+    if (!this.jdField_b_of_type_Boolean)
     {
       if (this.g)
       {
@@ -1710,7 +1712,7 @@ public class VerticalGallery
         }
         postDelayed(this.jdField_a_of_type_JavaLangRunnable, 250L);
       }
-      if (!f()) {
+      if (!a()) {
         break label100;
       }
       b((int)paramFloat2 * -1);
@@ -1740,10 +1742,10 @@ public class VerticalGallery
   {
     if (this.jdField_l_of_type_Int >= 0)
     {
-      if (e()) {
+      if (f()) {
         this.jdField_l_of_type_Int %= getCount();
       }
-      if (c()) {
+      if (d()) {
         a(this.jdField_l_of_type_Int - this.mFirstPosition);
       }
       b(this.jdField_l_of_type_Int);
@@ -1769,7 +1771,7 @@ public class VerticalGallery
     return bool;
   }
   
-  public void selectionChanged()
+  protected void selectionChanged()
   {
     if (!this.e) {
       super.selectionChanged();
@@ -1783,7 +1785,7 @@ public class VerticalGallery
   
   public void setCallbackDuringFling(boolean paramBoolean)
   {
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
   public void setCallbackOnUnselectedItemClick(boolean paramBoolean)
@@ -1815,19 +1817,19 @@ public class VerticalGallery
     }
   }
   
-  public void setOnEndFlingListener(VerticalGallery.OnEndFlingListener paramOnEndFlingListener)
+  public void setOnEndFlingListener(beop parambeop)
   {
-    this.jdField_a_of_type_ComTencentWidgetVerticalGallery$OnEndFlingListener = paramOnEndFlingListener;
+    this.jdField_a_of_type_Beop = parambeop;
   }
   
-  public void setOnEndMovementListener(VerticalGallery.OnEndMovementListener paramOnEndMovementListener)
+  public void setOnEndMovementListener(beoq parambeoq)
   {
-    this.jdField_a_of_type_ComTencentWidgetVerticalGallery$OnEndMovementListener = paramOnEndMovementListener;
+    this.jdField_a_of_type_Beoq = parambeoq;
   }
   
-  public void setOnSelectViewDataUpdateListener(VerticalGallery.OnSelectViewDataUpdateListener paramOnSelectViewDataUpdateListener)
+  public void setOnSelectViewDataUpdateListener(beor parambeor)
   {
-    this.jdField_a_of_type_ComTencentWidgetVerticalGallery$OnSelectViewDataUpdateListener = paramOnSelectViewDataUpdateListener;
+    this.jdField_a_of_type_Beor = parambeor;
   }
   
   public void setOrientation(int paramInt)
@@ -1902,7 +1904,7 @@ public class VerticalGallery
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.widget.VerticalGallery
  * JD-Core Version:    0.7.0.1
  */

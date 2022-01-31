@@ -1,31 +1,32 @@
 package com.tencent.biz.pubaccount.readinjoy.video;
 
+import ajfb;
+import ajfe;
 import android.os.Bundle;
-import com.tencent.biz.pubaccount.PublicAccountArticleHandler;
-import com.tencent.biz.pubaccount.VideoPlayCountHandler;
-import com.tencent.biz.pubaccount.VideoPlayRecommendHandler;
+import atmq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
+import nbz;
+import nes;
+import neu;
+import qfw;
 
 public class VideoFeedsAppInterface
   extends AppInterface
 {
   public static String a;
-  private VideoFeedsService jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsService;
-  private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap(20);
-  private List jdField_a_of_type_JavaUtilList = new Vector();
-  private List b = new Vector();
-  private List c = new Vector();
+  private HashMap<Integer, ajfb> jdField_a_of_type_JavaUtilHashMap = new HashMap(20);
+  private List<ajfe> jdField_a_of_type_JavaUtilList = new Vector();
+  private qfw jdField_a_of_type_Qfw;
+  private List<ajfe> b = new Vector();
+  private List<ajfe> c = new Vector();
   
   static
   {
@@ -37,29 +38,29 @@ public class VideoFeedsAppInterface
     super(paramBaseApplicationImpl, paramString);
   }
   
-  public BusinessHandler a(int paramInt)
+  public ajfb a(int paramInt)
   {
-    BusinessHandler localBusinessHandler = (BusinessHandler)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    if (localBusinessHandler == null) {}
+    ajfb localajfb = (ajfb)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    if (localajfb == null) {}
     for (;;)
     {
       synchronized (this.jdField_a_of_type_JavaUtilHashMap)
       {
-        localBusinessHandler = (BusinessHandler)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-        if (localBusinessHandler == null) {
+        localajfb = (ajfb)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+        if (localajfb == null) {
           break label113;
         }
-        return localBusinessHandler;
-        if (localBusinessHandler != null) {
-          this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localBusinessHandler);
+        return localajfb;
+        if (localajfb != null) {
+          this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localajfb);
         }
-        return localBusinessHandler;
+        return localajfb;
       }
-      Object localObject2 = new VideoPlayRecommendHandler(this);
+      Object localObject2 = new neu(this);
       continue;
-      localObject2 = new VideoPlayCountHandler(this);
+      localObject2 = new nes(this);
       continue;
-      localObject2 = new PublicAccountArticleHandler(this);
+      localObject2 = new nbz(this);
       continue;
       return localObject2;
       label113:
@@ -71,32 +72,32 @@ public class VideoFeedsAppInterface
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsService.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
+    this.jdField_a_of_type_Qfw.a(paramFromServiceMsg.isSuccess(), paramToServiceMsg, paramFromServiceMsg, null);
   }
   
-  public void addObserver(BusinessObserver paramBusinessObserver)
+  public void addObserver(ajfe paramajfe)
   {
-    addObserver(paramBusinessObserver, false);
+    addObserver(paramajfe, false);
   }
   
-  public void addObserver(BusinessObserver paramBusinessObserver, boolean paramBoolean)
+  public void addObserver(ajfe paramajfe, boolean paramBoolean)
   {
-    if (paramBusinessObserver == null) {
+    if (paramajfe == null) {
       return;
     }
     if (paramBoolean) {
       synchronized (this.b)
       {
-        if (!this.b.contains(paramBusinessObserver)) {
-          this.b.add(paramBusinessObserver);
+        if (!this.b.contains(paramajfe)) {
+          this.b.add(paramajfe);
         }
         return;
       }
     }
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      if (!this.jdField_a_of_type_JavaUtilList.contains(paramBusinessObserver)) {
-        this.jdField_a_of_type_JavaUtilList.add(paramBusinessObserver);
+      if (!this.jdField_a_of_type_JavaUtilList.contains(paramajfe)) {
+        this.jdField_a_of_type_JavaUtilList.add(paramajfe);
       }
       return;
     }
@@ -109,10 +110,10 @@ public class VideoFeedsAppInterface
   
   public int getAppid()
   {
-    return AppSetting.a;
+    return AppSetting.a();
   }
   
-  public List getBusinessObserver(int paramInt)
+  public List<ajfe> getBusinessObserver(int paramInt)
   {
     if (paramInt == 1) {
       return this.jdField_a_of_type_JavaUtilList;
@@ -131,7 +132,7 @@ public class VideoFeedsAppInterface
     return getAccount();
   }
   
-  public EntityManagerFactory getEntityManagerFactory(String paramString)
+  public atmq getEntityManagerFactory(String paramString)
   {
     return null;
   }
@@ -144,33 +145,33 @@ public class VideoFeedsAppInterface
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsService = new VideoFeedsService(this);
+    this.jdField_a_of_type_Qfw = new qfw(this);
   }
   
-  public void removeObserver(BusinessObserver paramBusinessObserver)
+  public void removeObserver(ajfe paramajfe)
   {
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      this.jdField_a_of_type_JavaUtilList.remove(paramBusinessObserver);
+      this.jdField_a_of_type_JavaUtilList.remove(paramajfe);
       synchronized (this.b)
       {
-        this.b.remove(paramBusinessObserver);
+        this.b.remove(paramajfe);
       }
     }
     synchronized (this.c)
     {
-      this.c.remove(paramBusinessObserver);
+      this.c.remove(paramajfe);
       return;
-      paramBusinessObserver = finally;
-      throw paramBusinessObserver;
-      paramBusinessObserver = finally;
-      throw paramBusinessObserver;
+      paramajfe = finally;
+      throw paramajfe;
+      paramajfe = finally;
+      throw paramajfe;
     }
   }
   
   public void sendToService(ToServiceMsg paramToServiceMsg)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsService.a(paramToServiceMsg);
+    this.jdField_a_of_type_Qfw.a(paramToServiceMsg);
   }
 }
 

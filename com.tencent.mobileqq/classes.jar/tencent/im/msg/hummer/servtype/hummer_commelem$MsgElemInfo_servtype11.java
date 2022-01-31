@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class hummer_commelem$MsgElemInfo_servtype11
-  extends MessageMicro
+  extends MessageMicro<MsgElemInfo_servtype11>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_Doodle_md5 = PBField.initBytes(ByteStringMicro.EMPTY);

@@ -16,7 +16,6 @@ public class DynamicPluginLoader
   private static PluginLoader a;
   
   private static void a(Object paramObject)
-    throws AssertionError
   {
     if (paramObject == null) {
       throw new AssertionError();
@@ -25,7 +24,6 @@ public class DynamicPluginLoader
   
   @API
   private void initPluginLoaderIfNeeded(InstalledPlugin paramInstalledPlugin)
-    throws LoadPluginException
   {
     if (a == null)
     {
@@ -46,7 +44,6 @@ public class DynamicPluginLoader
   
   @API
   public ProgressFuture<RunningPlugin> loadPlugin(Context paramContext, InstalledPlugin paramInstalledPlugin)
-    throws LoadPluginException
   {
     if ((paramInstalledPlugin instanceof UseDynamicPluginLoaderInstalledPlugin)) {
       try

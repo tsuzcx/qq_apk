@@ -1,0 +1,144 @@
+{
+    "ReadInJoy_short_video_collection_cell": {
+        "view_type": "cell",
+        "direction": "vertical",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "343"
+        },
+        "subviews": [
+            {
+                "view_type": "container",
+                "view_id": "id_article_large_imge_container",
+                "layout_type": "layout_relative",
+                "margin_left": "3",
+                "height": {
+                    "type": "relative",
+                    "value": "174"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "340"
+                },
+                "subviews": [
+                    {
+                        "view_type": "ReadInjoyAsynImageView",
+                        "view_id": "id_article_large_imge",
+                        "height": {
+                            "type": "relative",
+                            "value": "174"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "340"
+                        },
+                        "attributes": {
+                            "setFrameString:": "-1",
+                            "setImageWithURLString:lineup:": [
+                                "$article_large_imge_url",
+                                "$lineup"
+                            ]
+                        }
+                    },
+                    {
+                        "view_type": "UIView",
+                        "view_id": "id_article_large_imge_cover",
+                        "event_type":"cmd_url_click_card_report",
+                        "align_parent_top": "YES",
+                        "align_parent_left": "YES",
+                        "height": {
+                            "type": "relative",
+                            "value": "174"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "340"
+                        },
+                        "attributes": {
+                            "setBackgroundColorString:": "#4C000000",
+                            "setAttatchInfo:":"$url"
+                        },
+                        "data_attributes": {
+                            "setLocalInfo:": {
+                                "click_area":"2"
+                            },
+                            "setRemoteInfo:": {
+                                "rowkey": "$rowkey",
+                                "jump_src": "$jump_src_img",
+                                "jump_page": "$jump_page_img"
+                            }
+                        }
+                    },
+                    {
+                        "view_type":"UIImageView",
+                        "view_id":"id_play_icon",
+                        "align_parent_left":"YES",
+                        "align_parent_bottom":"YES",
+                        "default_visible":"YES",
+                        "margin_left":"8",
+                        "margin_bottom": "7",
+                        "height":{
+                            "type":"absolutely",
+                            "value":"12"
+                        },
+                        "width":{
+                            "type":"absolutely",
+                            "value":"12"
+                        },
+                        "attributes":{
+                            "setFrameString:":"-1",
+                            "loadImageWithPath:":"small_video_play_icon.png"
+                        }
+                    },
+                    {
+                        "view_type": "UILabel",
+                        "view_id": "id_play_time",
+                        "align_parent_left":"YES",
+                        "align_parent_bottom": "YES",
+                        "margin_bottom": "6",
+                        "margin_left": "23",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "wrap_content"
+                        },
+                        "attributes": {
+                            "setFrameString:": "-1",
+                            "setText:": "$video_play_duration",
+                            "setTextColorString:": "#FFFFFF",
+                            "setFontSizeString:": "12",
+                            "setNumberOfLinesString:": "1"
+                        }
+                    },
+                    {
+                        "view_type": "UILabel",
+                        "view_id": "id_artilce_title",
+                        "align_parent_left":"YES",
+                        "align_parent_bottom": "YES",
+                        "margin_left": "8",
+                        "margin_bottom": "28",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "324"
+                        },
+                        "attributes": {
+                            "setFrameString:": "-1",
+                            "setText:": "$artilce_title_text",
+                            "setTextColorString:": "#FFFFFF",
+                            "setBoldFontSizeString:": "17",
+                            "setNumberOfLinesString:": "2"
+                        }
+                    }
+                ]
+            }
+
+        ]
+    }
+}

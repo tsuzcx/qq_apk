@@ -1,24 +1,23 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-import com.tencent.mobileqq.troop.homework.recite.ui.VolumeVisualizerView;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajqz
-  implements Runnable
+class ajqz
+  extends akfx
 {
-  public ajqz(ReciteRecordLayout paramReciteRecordLayout, int paramInt) {}
-  
-  public void run()
+  ajqz(ajqy paramajqy, String paramString, boolean paramBoolean)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout.jdField_a_of_type_AndroidWidgetTextView.setText(2131431567);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiVolumeVisualizerView.a(AudioPanel.a(this.jdField_a_of_type_Int) / 1180);
+    super(paramString, paramBoolean);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    QLog.d("RedpointHandler", 1, "onLocationFinish errCode:" + paramInt + ",info:" + paramSosoLbsInfo);
+    ajqy.a(this.a, paramInt, paramSosoLbsInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajqz
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Qworkflow$ApproverState
-  extends MessageMicro
+  extends MessageMicro<ApproverState>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_comment = PBField.initBytes(ByteStringMicro.EMPTY);

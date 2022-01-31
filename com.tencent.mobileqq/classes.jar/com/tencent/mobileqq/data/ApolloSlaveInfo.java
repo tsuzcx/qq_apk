@@ -5,7 +5,7 @@ import java.util.List;
 public class ApolloSlaveInfo
 {
   public int isCaptured;
-  public List slaveList;
+  public List<Long> slaveList;
   public int slaveTotal;
   public long uin;
   

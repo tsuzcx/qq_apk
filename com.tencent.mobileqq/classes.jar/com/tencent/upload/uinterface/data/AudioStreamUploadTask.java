@@ -5,11 +5,13 @@ import NS_COMM_UPLOAD_PROTOCOL.CUploadUpstream;
 import SLICE_UPLOAD.UploadTouchuanReq;
 import android.util.Log;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.upload.a.a;
-import com.tencent.upload.common.Const.UploadRetCode;
-import com.tencent.upload.common.FileUtils;
+import com.tencent.upload.network.session.cache.CacheUtil;
 import com.tencent.upload.uinterface.AbstractUploadTask;
 import com.tencent.upload.uinterface.TaskTypeConfig;
+import com.tencent.upload.utils.Const.UploadRetCode;
+import com.tencent.upload.utils.FileUtils;
+import com.tencent.upload.utils.JceEncoder;
+import com.tencent.upload.utils.UploadLog;
 
 public class AudioStreamUploadTask
   extends AbstractUploadTask
@@ -37,14 +39,14 @@ public class AudioStreamUploadTask
     ((CUploadUpstream)localObject).extra = this.mExtra;
     try
     {
-      localObject = com.tencent.upload.e.b.a((JceStruct)localObject);
+      localObject = JceEncoder.encode((JceStruct)localObject);
       return localObject;
     }
     catch (Exception localException)
     {
-      com.tencent.upload.common.b.a("AudioStreamUploadTask", localException);
+      UploadLog.w("AudioStreamUploadTask", localException);
       byte[] arrayOfByte = super.buildExtra();
-      com.tencent.upload.common.b.b("AudioStreamUploadTask", "buildExtra() failed", localException);
+      UploadLog.w("AudioStreamUploadTask", "buildExtra() failed", localException);
       return arrayOfByte;
     }
   }
@@ -54,7 +56,7 @@ public class AudioStreamUploadTask
     UploadTouchuanReq localUploadTouchuanReq = new UploadTouchuanReq();
     localUploadTouchuanReq.iUploadType = getUploadTaskType().uploadType;
     localUploadTouchuanReq.vReqData = getAudioStreamData();
-    return com.tencent.upload.e.b.a(localUploadTouchuanReq);
+    return JceEncoder.encode(localUploadTouchuanReq);
   }
   
   public TaskTypeConfig getUploadTaskType()
@@ -62,20 +64,20 @@ public class AudioStreamUploadTask
     return TaskTypeConfig.AudioStreamUploadTaskType;
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     if (!this.mKeepFileAfterUpload) {
       FileUtils.deleteTempFile(this.mFilePath);
     }
-    a.b(this, this.mSessionId);
+    CacheUtil.deleteSessionId(this, this.mSessionId);
   }
   
-  protected void processFileUploadFinishRsp(byte[] paramArrayOfByte)
+  public void processFileUploadFinishRsp(byte[] paramArrayOfByte)
   {
     Object localObject2 = null;
     try
     {
-      localObject1 = (CUploadDownstream)com.tencent.upload.e.b.a(CUploadDownstream.class, paramArrayOfByte);
+      localObject1 = (CUploadDownstream)JceEncoder.decode(CUploadDownstream.class, paramArrayOfByte);
       localObject2 = localObject1;
       localObject1 = null;
     }
@@ -84,7 +86,7 @@ public class AudioStreamUploadTask
       for (;;)
       {
         Object localObject1 = Log.getStackTraceString(localException);
-        com.tencent.upload.common.b.a("AudioStreamUploadTask", localException);
+        UploadLog.w("AudioStreamUploadTask", localException);
       }
       onUploadSucceed(localObject2);
       super.processFileUploadFinishRsp(paramArrayOfByte);

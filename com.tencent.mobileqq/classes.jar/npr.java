@@ -1,22 +1,6 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.playmode.child.ShareGroupHotSortPlayMode;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import java.util.ArrayList;
-
-class npr
-  implements Runnable
+public abstract interface npr
 {
-  npr(npq paramnpq, ArrayList paramArrayList) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_Npq.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.setVisibility(8);
-    this.jdField_a_of_type_Npq.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Npq.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.notifyDataSetChanged();
-    this.jdField_a_of_type_Npq.a.jdField_a_of_type_AndroidOsHandler.post(new nps(this));
-  }
+  public abstract void a();
 }
 
 

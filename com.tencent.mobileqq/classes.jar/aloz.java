@@ -1,42 +1,52 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.business.base.appreport.AppReport;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import java.io.File;
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
 public class aloz
-  implements Runnable
+  implements begw
 {
-  public aloz(DownloadManager paramDownloadManager) {}
+  public aloz(BusinessCardEditActivity paramBusinessCardEditActivity, String paramString, begr parambegr) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    Context localContext = CommonDataAdapter.a().a();
-    boolean bool = localContext.getSharedPreferences("appcenter_app_report", 0).getBoolean("is_app_last_fullReport_success", false);
-    SimpleAccount localSimpleAccount = BaseApplicationImpl.getApplication().getFirstSimpleAccount();
-    String str = "";
-    if (localSimpleAccount != null) {
-      str = localSimpleAccount.getUin();
-    }
-    if (!bool)
+    switch (paramInt)
     {
-      LogUtility.c(DownloadManager.a, "getUpdateApp will do full report");
-      AppReport.a(localContext, null, null, str, true);
     }
-    while (!new File(localContext.getFilesDir() + File.separator + "appcenter_app_report_storage_file.txt").exists()) {
+    for (;;)
+    {
+      this.jdField_a_of_type_Begr.e();
       return;
+      if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
+      {
+        paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.getActivity().startActivity(paramView);
+        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.app.a().b(this.jdField_a_of_type_JavaLangString);
+      }
+      else
+      {
+        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.a(2131627818, 1);
+        continue;
+        if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
+        {
+          paramView = new Intent();
+          paramView.setAction("android.intent.action.SENDTO");
+          paramView.setData(Uri.parse("smsto:" + this.jdField_a_of_type_JavaLangString));
+          this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.getActivity().startActivity(paramView);
+        }
+        else
+        {
+          this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.a(2131627818, 1);
+        }
+      }
     }
-    LogUtility.c(DownloadManager.a, "getUpdateApp will do incremental report");
-    AppReport.a(localContext, null, 0, null, null, str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     aloz
  * JD-Core Version:    0.7.0.1
  */

@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import com.tencent.TMG.utils.QLog;
 
 public class DuplicateEventLayout
   extends FrameLayout
@@ -40,49 +41,78 @@ public class DuplicateEventLayout
     paramMotionEvent.offsetLocation(-i, -j);
   }
   
+  private void b(MotionEvent paramMotionEvent)
+  {
+    int i = getScrollX() - this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewClipDianDianTouchAreaLayout.getLeft();
+    int j = getScrollY() - this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewClipDianDianTouchAreaLayout.getTop();
+    paramMotionEvent.offsetLocation(i, j);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewClipDianDianTouchAreaLayout.dispatchTouchEvent(paramMotionEvent);
+    paramMotionEvent.offsetLocation(-i, -j);
+  }
+  
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    boolean bool1;
     if ((this.jdField_a_of_type_AndroidViewViewGroup == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewClipDianDianTouchAreaLayout == null)) {
-      return super.dispatchTouchEvent(paramMotionEvent);
+      bool1 = super.dispatchTouchEvent(paramMotionEvent);
     }
-    if (paramMotionEvent.getAction() == 0)
+    int i;
+    boolean bool2;
+    do
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewClipDianDianTouchAreaLayout.getHitRect(this.jdField_a_of_type_AndroidGraphicsRect);
-      int i = (int)paramMotionEvent.getX();
-      int j = (int)paramMotionEvent.getY();
-      if (this.jdField_a_of_type_AndroidGraphicsRect.contains(i, j))
+      do
       {
-        bool = super.dispatchTouchEvent(paramMotionEvent);
-        if (bool) {
-          this.b = true;
+        return bool1;
+        i = paramMotionEvent.getAction();
+        if (i == 0)
+        {
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewClipDianDianTouchAreaLayout.getHitRect(this.jdField_a_of_type_AndroidGraphicsRect);
+          i = (int)paramMotionEvent.getX();
+          int j = (int)paramMotionEvent.getY();
+          if (this.jdField_a_of_type_AndroidGraphicsRect.contains(i, j))
+          {
+            bool1 = super.dispatchTouchEvent(paramMotionEvent);
+            if (bool1) {
+              this.b = true;
+            }
+          }
+          for (;;)
+          {
+            this.jdField_a_of_type_Boolean = false;
+            return bool1;
+            this.b = false;
+            continue;
+            bool1 = super.dispatchTouchEvent(paramMotionEvent);
+            this.b = false;
+          }
         }
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_Boolean = false;
-        return bool;
-        this.b = false;
-        continue;
-        bool = super.dispatchTouchEvent(paramMotionEvent);
-        this.b = false;
-      }
-    }
-    MotionEvent localMotionEvent = MotionEvent.obtain(paramMotionEvent);
-    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    if ((this.b) && ((!bool) || ((bool) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewClipDianDianTouchAreaLayout.jdField_a_of_type_Boolean))))
-    {
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        paramMotionEvent = MotionEvent.obtain(paramMotionEvent);
-        paramMotionEvent.setAction(0);
-        a(paramMotionEvent);
-        this.jdField_a_of_type_Boolean = true;
-        paramMotionEvent.recycle();
-      }
-      a(localMotionEvent);
-    }
-    localMotionEvent.recycle();
-    return bool;
+        MotionEvent localMotionEvent1 = MotionEvent.obtain(paramMotionEvent);
+        bool2 = super.dispatchTouchEvent(paramMotionEvent);
+        if ((this.b) && ((!bool2) || ((bool2) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewClipDianDianTouchAreaLayout.jdField_a_of_type_Boolean))))
+        {
+          if (!this.jdField_a_of_type_Boolean)
+          {
+            MotionEvent localMotionEvent2 = MotionEvent.obtain(paramMotionEvent);
+            localMotionEvent2.setAction(0);
+            a(localMotionEvent2);
+            this.jdField_a_of_type_Boolean = true;
+            localMotionEvent2.recycle();
+            paramMotionEvent = MotionEvent.obtain(paramMotionEvent);
+            paramMotionEvent.setAction(3);
+            b(paramMotionEvent);
+          }
+          a(localMotionEvent1);
+        }
+        localMotionEvent1.recycle();
+        if (i == 1) {
+          break;
+        }
+        bool1 = bool2;
+      } while (i != 3);
+      bool1 = bool2;
+    } while (!QLog.isColorLevel());
+    QLog.d("DuplicateEventLayout", 0, "action = " + i);
+    return bool2;
   }
   
   public void setViews(ViewGroup paramViewGroup, ClipDianDianTouchAreaLayout paramClipDianDianTouchAreaLayout)

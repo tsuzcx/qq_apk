@@ -1,30 +1,118 @@
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import android.app.Activity;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.huawei.hiar.AREnginesSelector;
+import com.huawei.hiar.AREnginesSelector.AREnginesAvaliblity;
+import com.huawei.hiar.AREnginesSelector.AREnginesType;
+import com.huawei.hiar.exceptions.ARUnSupportedConfigurationException;
+import com.huawei.hiar.exceptions.ARUnavailableClientSdkTooOldException;
+import com.huawei.hiar.exceptions.ARUnavailableDeviceNotCompatibleException;
+import com.huawei.hiar.exceptions.ARUnavailableEmuiNotCompatibleException;
+import com.huawei.hiar.exceptions.ARUnavailableServiceApkTooOldException;
+import com.huawei.hiar.exceptions.ARUnavailableServiceNotInstalledException;
+import com.huawei.hiar.exceptions.ARUnavailableUserDeclinedInstallationException;
+import com.tencent.qphone.base.util.QLog;
 
 public class akqu
-  implements Runnable
+  implements akqr
 {
-  public akqu(HealthBusinessPlugin paramHealthBusinessPlugin) {}
-  
-  public void run()
+  public static boolean b(Activity paramActivity)
   {
-    Iterator localIterator = this.a.d.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (String)localIterator.next();
-      localObject = (ImageView)((FrameLayout)this.a.e.get(localObject)).findViewById(2131362358);
-      ((ImageView)localObject).setImageResource(2130845367);
-      ((ImageView)localObject).setVisibility(0);
+    if (paramActivity == null) {
+      return false;
     }
+    for (;;)
+    {
+      try
+      {
+        if ((AREnginesSelector.checkAllAvailableEngines(paramActivity).ordinal() & AREnginesSelector.AREnginesAvaliblity.HWAR_ENGINE_SUPPORTED.ordinal()) == 0) {
+          continue;
+        }
+        AREnginesSelector.setAREngine(AREnginesSelector.AREnginesType.HWAR_ENGINE);
+        int i = akqv.a[com.huawei.hiar.AREnginesApk.requestInstall(paramActivity, false).ordinal()];
+        switch (i)
+        {
+        default: 
+          paramActivity = null;
+        }
+      }
+      catch (ARUnavailableServiceNotInstalledException paramActivity)
+      {
+        Object localObject2;
+        localObject1 = "Please install HuaweiARService.apk";
+        continue;
+        paramActivity = "This device does not support Huawei AR Engine ";
+        continue;
+      }
+      catch (ARUnavailableServiceApkTooOldException paramActivity)
+      {
+        localObject1 = "Please update HuaweiARService.apk";
+        continue;
+      }
+      catch (ARUnavailableClientSdkTooOldException paramActivity)
+      {
+        localObject1 = "Please update this app";
+        continue;
+      }
+      catch (ARUnavailableDeviceNotCompatibleException paramActivity)
+      {
+        localObject1 = "This device does not support Huawei AR Engine ";
+        continue;
+      }
+      catch (ARUnavailableEmuiNotCompatibleException paramActivity)
+      {
+        localObject1 = "Please update EMUI version";
+        continue;
+      }
+      catch (ARUnavailableUserDeclinedInstallationException paramActivity)
+      {
+        localObject1 = "Please agree to install!";
+        continue;
+      }
+      catch (ARUnSupportedConfigurationException paramActivity)
+      {
+        localObject1 = "The configuration is not supported by the device!";
+        continue;
+      }
+      catch (Exception paramActivity)
+      {
+        Object localObject1 = "exception throwed";
+        continue;
+      }
+      localObject2 = null;
+      localObject1 = paramActivity;
+      paramActivity = localObject2;
+      if (localObject1 == null) {
+        break label174;
+      }
+      QLog.e("HuaweiArCoreAbilityManager", 2, "CheckHuaWeiARCoreReady hasException msg = message", paramActivity);
+      return false;
+      QLog.d("HuaweiArCoreAbilityManager", 2, "INSTALL_REQUESTED ");
+      return false;
+      QLog.d("HuaweiArCoreAbilityManager", 2, "INSTALLED ");
+    }
+    label174:
+    return true;
+  }
+  
+  public akqs a()
+  {
+    return new akqw();
+  }
+  
+  public boolean a()
+  {
+    return (("" + Build.MANUFACTURER).equalsIgnoreCase("HUAWEI")) && (akke.a());
+  }
+  
+  public boolean a(Activity paramActivity)
+  {
+    return (Build.VERSION.SDK_INT >= 23) && (b(paramActivity));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akqu
  * JD-Core Version:    0.7.0.1
  */

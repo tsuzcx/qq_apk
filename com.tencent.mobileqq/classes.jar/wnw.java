@@ -1,17 +1,20 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
-import com.tencent.mobileqq.data.PublicRecommendAccountInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.troopgift.TroopGiftPanel;
 
 public class wnw
-  extends FacePreloadBaseAdapter.ViewHolder
+  implements View.OnClickListener
 {
-  public TextView a;
-  public PublicRecommendAccountInfo a;
-  public TextView b;
+  public wnw(TroopGiftPanel paramTroopGiftPanel) {}
+  
+  public void onClick(View paramView)
+  {
+    this.a.e();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wnw
  * JD-Core Version:    0.7.0.1
  */

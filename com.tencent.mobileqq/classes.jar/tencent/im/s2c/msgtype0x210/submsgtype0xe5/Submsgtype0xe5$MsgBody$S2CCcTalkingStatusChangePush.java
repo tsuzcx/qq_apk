@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class Submsgtype0xe5$MsgBody$S2CCcTalkingStatusChangePush
-  extends MessageMicro
+  extends MessageMicro<S2CCcTalkingStatusChangePush>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "uint32_talking_status", "str_callid" }, new Object[] { Integer.valueOf(0), "" }, S2CCcTalkingStatusChangePush.class);
   public final PBStringField str_callid = PBField.initString("");

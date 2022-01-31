@@ -8,12 +8,17 @@ public class GdtCanvasVideoComponentData
 {
   public long duration;
   public int height;
-  public boolean loop;
+  private boolean loop = true;
   public long size;
   public String thumbUrl;
   public String url;
   public String videoId;
   public int width;
+  
+  public boolean isLoop()
+  {
+    return this.loop;
+  }
   
   public boolean isValid()
   {
@@ -22,7 +27,7 @@ public class GdtCanvasVideoComponentData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.components.video.GdtCanvasVideoComponentData
  * JD-Core Version:    0.7.0.1
  */

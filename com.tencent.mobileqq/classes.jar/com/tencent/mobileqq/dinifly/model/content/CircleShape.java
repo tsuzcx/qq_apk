@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.dinifly.model.content;
 
 import android.graphics.PointF;
-import com.tencent.mobileqq.dinifly.LottieComposition;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
 import com.tencent.mobileqq.dinifly.animation.content.Content;
 import com.tencent.mobileqq.dinifly.animation.content.EllipseContent;
-import com.tencent.mobileqq.dinifly.model.animatable.AnimatablePathValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatablePointValue;
-import com.tencent.mobileqq.dinifly.model.animatable.AnimatablePointValue.Factory;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableValue;
 import com.tencent.mobileqq.dinifly.model.layer.BaseLayer;
-import org.json.JSONObject;
 
 public class CircleShape
   implements ContentModel
 {
+  private final boolean hidden;
+  private final boolean isReversed;
   private final String name;
   private final AnimatableValue<PointF, PointF> position;
   private final AnimatablePointValue size;
   
-  private CircleShape(String paramString, AnimatableValue<PointF, PointF> paramAnimatableValue, AnimatablePointValue paramAnimatablePointValue)
+  public CircleShape(String paramString, AnimatableValue<PointF, PointF> paramAnimatableValue, AnimatablePointValue paramAnimatablePointValue, boolean paramBoolean1, boolean paramBoolean2)
   {
     this.name = paramString;
     this.position = paramAnimatableValue;
     this.size = paramAnimatablePointValue;
+    this.isReversed = paramBoolean1;
+    this.hidden = paramBoolean2;
   }
   
   public String getName()
@@ -41,22 +41,24 @@ public class CircleShape
     return this.size;
   }
   
+  public boolean isHidden()
+  {
+    return this.hidden;
+  }
+  
+  public boolean isReversed()
+  {
+    return this.isReversed;
+  }
+  
   public Content toContent(LottieDrawable paramLottieDrawable, BaseLayer paramBaseLayer)
   {
     return new EllipseContent(paramLottieDrawable, paramBaseLayer, this);
   }
-  
-  static class Factory
-  {
-    static CircleShape newInstance(JSONObject paramJSONObject, LottieComposition paramLottieComposition)
-    {
-      return new CircleShape(paramJSONObject.optString("nm"), AnimatablePathValue.createAnimatablePathOrSplitDimensionPath(paramJSONObject.optJSONObject("p"), paramLottieComposition), AnimatablePointValue.Factory.newInstance(paramJSONObject.optJSONObject("s"), paramLottieComposition), null);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.model.content.CircleShape
  * JD-Core Version:    0.7.0.1
  */

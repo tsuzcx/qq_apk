@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class nearby_troop_hot$RetInfo
-  extends MessageMicro
+  extends MessageMicro<RetInfo>
 {
   public static final int ERR_INFO_FIELD_NUMBER = 2;
   public static final int RET_CODE_FIELD_NUMBER = 1;
@@ -17,7 +17,7 @@ public final class nearby_troop_hot$RetInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.nearby_troop_hot.nearby_troop_hot.RetInfo
  * JD-Core Version:    0.7.0.1
  */

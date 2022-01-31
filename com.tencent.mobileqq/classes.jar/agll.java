@@ -1,24 +1,20 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
 
-class agll
-  implements Runnable
+public class agll
+  implements DialogInterface.OnClickListener
 {
-  agll(aglh paramaglh) {}
+  public agll(SendHbActivity paramSendHbActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.a())
-    {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.b();
-      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agll
  * JD-Core Version:    0.7.0.1
  */

@@ -10,11 +10,11 @@ import java.util.Map;
 public final class modify_active_album_req
   extends JceStruct
 {
-  static ArrayList cache_added_photo;
-  static Map cache_map_params = new HashMap();
+  static ArrayList<active_photo> cache_added_photo;
+  static Map<String, String> cache_map_params = new HashMap();
   static shuoshuo_privacy cache_ss_info = new shuoshuo_privacy();
-  public ArrayList added_photo;
-  public Map map_params;
+  public ArrayList<active_photo> added_photo;
+  public Map<String, String> map_params;
   public String mgz_id = "";
   public long pic_total;
   public shuoshuo_privacy ss_info;
@@ -30,7 +30,7 @@ public final class modify_active_album_req
   
   public modify_active_album_req() {}
   
-  public modify_active_album_req(long paramLong1, Map paramMap, ArrayList paramArrayList, shuoshuo_privacy paramshuoshuo_privacy, String paramString, long paramLong2)
+  public modify_active_album_req(long paramLong1, Map<String, String> paramMap, ArrayList<active_photo> paramArrayList, shuoshuo_privacy paramshuoshuo_privacy, String paramString, long paramLong2)
   {
     this.uin = paramLong1;
     this.map_params = paramMap;

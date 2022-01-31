@@ -1,23 +1,50 @@
-import android.widget.Button;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.utils.DisplayUtils;
-import cooperation.qzone.QzoneGiftFullScreenViewController;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
+import com.tencent.mobileqq.emosm.Client;
+import com.tencent.qphone.base.util.QLog;
 
 public class anab
-  implements Runnable
+  implements ServiceConnection
 {
-  public anab(QzoneGiftFullScreenViewController paramQzoneGiftFullScreenViewController) {}
+  public anab(Client paramClient) {}
   
-  public void run()
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
-    localLayoutParams.rightMargin = ((int)DisplayUtils.a(QzoneGiftFullScreenViewController.a(this.a), 10.0F));
-    this.a.a.setLayoutParams(localLayoutParams);
+    try
+    {
+      this.a.mIsBound = true;
+      this.a.mService = new Messenger(paramIBinder);
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.emoji.web.Client", 2, "ServiceConnection Attached.");
+      }
+      anfc.a().a();
+      paramComponentName = Message.obtain(null, 1);
+      paramComponentName.replyTo = this.a.mMessenger;
+      this.a.mService.send(paramComponentName);
+      return;
+    }
+    catch (Exception paramComponentName)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("Q.emoji.web.Client", 2, paramComponentName.getMessage());
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    this.a.mService = null;
+    this.a.onDisconnectWithService();
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.emoji.web.Client", 2, "Disconnected.");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anab
  * JD-Core Version:    0.7.0.1
  */

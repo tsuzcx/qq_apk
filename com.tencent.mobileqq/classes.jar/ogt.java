@@ -1,18 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.tag.TagAdapter;
-import com.tencent.biz.qqstory.storyHome.tag.TagAdapter.OnItemClickListener;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class ogt
-  implements View.OnClickListener
+  extends ajmm
 {
-  public ogt(TagAdapter paramTagAdapter) {}
+  public ogt(KandianSubscribeManager paramKandianSubscribeManager) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean)
   {
-    if (TagAdapter.a(this.a) != null) {
-      TagAdapter.a(this.a).h();
-    }
+    super.a(paramBoolean);
+    ThreadManager.executeOnSubThread(new KandianSubscribeManager.2.1(this));
   }
 }
 

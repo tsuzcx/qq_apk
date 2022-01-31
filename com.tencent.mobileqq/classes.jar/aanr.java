@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.ar.arengine.AREngine;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation.53.1;
+import com.tencent.util.Pair;
 
 public class aanr
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aanr(AREngine paramAREngine) {}
+  public aanr(Conversation.53.1 param1, axam paramaxam, Pair paramPair) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AREngine.b(this.a);
+    this.jdField_a_of_type_Axam.a((String)this.jdField_a_of_type_ComTencentUtilPair.first, ((Integer)this.jdField_a_of_type_ComTencentUtilPair.second).intValue(), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aanr
  * JD-Core Version:    0.7.0.1
  */

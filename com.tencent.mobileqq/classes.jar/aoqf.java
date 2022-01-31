@@ -1,18 +1,21 @@
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import java.util.List;
 
-class aoqf
-  implements Runnable
+public class aoqf
 {
-  aoqf(aopy paramaopy) {}
+  public int a;
+  public String a;
+  public List<String> a;
+  public boolean a;
+  public byte[] a;
+  public byte[] b;
+  public byte[] c;
+  public byte[] d;
   
-  public void run()
-  {
-    RMVideoStateMgr.a().b(0, "麦克风参数初始化失败", false);
-  }
+  public aoqf(aoqe paramaoqe) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoqf
  * JD-Core Version:    0.7.0.1
  */

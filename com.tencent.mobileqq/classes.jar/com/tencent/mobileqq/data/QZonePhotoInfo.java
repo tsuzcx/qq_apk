@@ -7,7 +7,7 @@ public class QZonePhotoInfo
   extends ProfilePhotoWall
 {
   public String photoId;
-  public Map photoUrls;
+  public Map<Integer, String> photoUrls;
   
   public QZonePhotoInfo()
   {

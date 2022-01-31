@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.ocr.OcrControl.OcrCallback;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
+import android.support.annotation.RequiresApi;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class agha
-  implements OcrControl.OcrCallback
+class agha
+  implements View.OnClickListener
 {
-  public agha(ScanOcrActivity paramScanOcrActivity) {}
+  agha(aggx paramaggx) {}
   
-  public void a() {}
-  
-  public void a(int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong)
+  @RequiresApi(api=17)
+  public void onClick(View paramView)
   {
-    this.a.runOnUiThread(new aghb(this, paramString, paramInt, paramOcrRecogResult, paramLong));
+    this.a.a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agha
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
 
 public class agkk
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public agkk(ScanTorchActivity paramScanTorchActivity) {}
+  public agkk(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ScanTorchActivity.i(this.a);
-    ScanTorchActivity.j(this.a);
-    ScanTorchActivity.k(this.a);
+    this.a.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agkk
  * JD-Core Version:    0.7.0.1
  */

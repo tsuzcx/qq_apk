@@ -13,7 +13,7 @@ public class FunnyFaceMessage$Turntable
 {
   public String hitNickName;
   public String hitUin;
-  public List uinList = new ArrayList();
+  public List<String> uinList = new ArrayList();
   
   public FunnyFaceMessage$Turntable() {}
   

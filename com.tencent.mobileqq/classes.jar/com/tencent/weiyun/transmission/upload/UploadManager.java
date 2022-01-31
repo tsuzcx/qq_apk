@@ -1,9 +1,7 @@
 package com.tencent.weiyun.transmission.upload;
 
 import android.content.Context;
-import android.os.Handler;
 import android.os.Handler.Callback;
-import android.os.HandlerThread;
 import android.os.Message;
 import android.text.TextUtils;
 import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
@@ -19,8 +17,7 @@ import com.tencent.weiyun.transmission.upload.processor.UrlFetcher.UrlFetcherCal
 import com.tencent.weiyun.transmission.upload.uploader.UploaderAgent;
 import com.tencent.weiyun.transmission.utils.ThreadPoolWrapper;
 import com.tencent.weiyun.transmission.utils.TsLog;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
+import com.tencent.weiyun.transmission.utils.handler.ReleaseLooperHandler;
 import com.tencent.weiyun.uploader.IUploader;
 import com.tencent.weiyun.uploader.IUploader.IUploadListener;
 import com.tencent.weiyun.uploader.UploadRequest;
@@ -32,7 +29,6 @@ import com.tencent.weiyun.utils.NetworkUtils;
 import com.tencent.weiyun.utils.Singleton;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -44,29 +40,23 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
 public final class UploadManager
-  implements InfoRecorder.InfoRecorderCallback, LocalProcessor.LocalProcessorCallback, UrlFetcher.UrlFetcherCallback, IUploader.IUploadListener, WeiyunTransmissionStatus.StatusChangeListener, Handler.Callback
+  implements Handler.Callback, WeiyunTransmissionStatus.StatusChangeListener, InfoRecorder.InfoRecorderCallback, LocalProcessor.LocalProcessorCallback, UrlFetcher.UrlFetcherCallback, IUploader.IUploadListener
 {
   private static final AtomicInteger FLOW_ID = new AtomicInteger(0);
   private static final int MSG_NOTIFY_JOB_ADDED = 1;
   private static final int MSG_NOTIFY_STATUS_CHANGED = 2;
   private static final String TAG = "UploadManager";
   private static final AtomicLong WORKING_ID = new AtomicLong(-1L);
-  private static Singleton<UploadManager, Void> sInstance = new Singleton()
-  {
-    protected UploadManager create(Void paramAnonymousVoid)
-    {
-      return new UploadManager(null);
-    }
-  };
+  private static Singleton<UploadManager, Void> sInstance = new UploadManager.1();
   private final UploadJobCounter mCounter;
   private UploadJobCounter mCustomCounter;
   private final HashSet<Long> mFailedJobs = new HashSet();
   private final DualHashMap<Long, String> mFlowIds = new DualHashMap();
-  private final HashSet<IUploadStatusListener> mGlobalObservers = new HashSet();
+  private final HashSet<UploadManager.IUploadStatusListener> mGlobalObservers = new HashSet();
   private final InfoRecorder mInfoRecorder;
   private final HashMap<Long, UploadJobContext> mJobs = new HashMap();
   private final LocalProcessor mLocalProcessor;
-  private final Handler mNotifyHandler;
+  private final ReleaseLooperHandler mNotifyHandler;
   private final ThreadPoolWrapper mThreadPool;
   private final UploaderAgent mUploaderAgent;
   private final UrlFetcher mUrlFetcher;
@@ -74,94 +64,157 @@ public final class UploadManager
   
   private UploadManager()
   {
-    Object localObject = WeiyunTransmissionGlobal.getInstance().getContext();
-    this.mInfoRecorder = new InfoRecorder(this);
-    this.mLocalProcessor = new LocalProcessor((Context)localObject, this);
-    this.mUrlFetcher = new UrlFetcher(this);
-    this.mUploaderAgent = new UploaderAgent((Context)localObject);
+    Context localContext = WeiyunTransmissionGlobal.getInstance().getContext();
+    ReleaseLooperHandler localReleaseLooperHandler = new ReleaseLooperHandler("weiyun_upload_work_thread");
+    this.mInfoRecorder = new InfoRecorder(this, localReleaseLooperHandler);
+    this.mLocalProcessor = new LocalProcessor(localContext, this, localReleaseLooperHandler);
+    this.mUrlFetcher = new UrlFetcher(this, localReleaseLooperHandler);
+    this.mUploaderAgent = new UploaderAgent(localContext, localReleaseLooperHandler);
     this.mUploaderAgent.setNetType(NetworkUtils.getNetworkTypeDiff4G(WeiyunTransmissionGlobal.getInstance().getContext()));
     this.mCounter = new UploadJobCounter();
     this.mThreadPool = new ThreadPoolWrapper("UploadManager");
-    localObject = new HandlerThread("upload-notifier");
-    ((HandlerThread)localObject).start();
-    this.mNotifyHandler = new Handler(((HandlerThread)localObject).getLooper(), this);
+    this.mNotifyHandler = new ReleaseLooperHandler("weiyun_upload_notifier");
+    this.mNotifyHandler.addCallback(this);
   }
   
   private void changeStatus(UploadJobContext paramUploadJobContext, int paramInt1, int paramInt2, String paramString)
   {
-    if (paramUploadJobContext == null) {
-      return;
-    }
-    boolean bool1 = true;
-    int i = 0;
-    int j = paramInt1;
-    switch (paramInt1)
+    if (paramUploadJobContext == null) {}
+    boolean bool1;
+    do
     {
-    default: 
-      i = paramInt1;
-    }
-    while (bool1)
-    {
-      paramInt1 = paramUploadJobContext.statusInfo().state;
-      paramUploadJobContext.statusInfo().state = i;
-      paramUploadJobContext.statusInfo().errorCode = paramInt2;
-      paramUploadJobContext.statusInfo().errorMsg = UploadHelper.convertErrorMessage(paramInt2, paramString);
-      this.mInfoRecorder.updateInfo(paramUploadJobContext, true);
-      updateCounter(paramUploadJobContext, paramInt1, i);
-      TsLog.d("UploadManager", "changeStatus: id=" + paramUploadJobContext.dbId() + ", fileName=" + paramUploadJobContext.file().fileName + ", oldState=" + paramInt1 + ", newState=" + i + ", errorCode=" + paramInt2 + ", canceled=" + paramUploadJobContext.isCanceled());
       return;
-      j = 1;
-      i = 1;
-      if ((i != 0) || (paramUploadJobContext.statusInfo().canRestart()))
+      switch (paramInt1)
       {
-        bool2 = true;
-        label232:
-        bool1 = bool2;
-        i = j;
-        if (!bool2) {
-          continue;
-        }
-        synchronized (this.mWaitNetJobs)
-        {
-          this.mWaitNetJobs.remove(Long.valueOf(paramUploadJobContext.dbId()));
-        }
-      }
-      synchronized (this.mFailedJobs)
-      {
-        this.mFailedJobs.remove(Long.valueOf(paramUploadJobContext.dbId()));
-        paramUploadJobContext.setCanceled(false);
-        bool1 = bool2;
-        i = j;
-        continue;
-        bool2 = false;
-        break label232;
-        paramUploadJobContext = finally;
-        throw paramUploadJobContext;
-      }
-      bool1 = paramUploadJobContext.statusInfo().canRunning();
-      i = paramInt1;
-      continue;
-      bool1 = paramUploadJobContext.statusInfo().canRunning();
-      i = paramInt1;
-      continue;
-      boolean bool2 = paramUploadJobContext.statusInfo().canSuspend();
-      bool1 = bool2;
-      i = paramInt1;
-      if (!bool2) {
-        continue;
-      }
-      synchronized (this.mWaitNetJobs)
-      {
-        this.mWaitNetJobs.remove(Long.valueOf(paramUploadJobContext.dbId()));
-        paramUploadJobContext.resetRank();
-        paramUploadJobContext.setIgnoreNetLimit(false);
-        paramUploadJobContext.setCanceled(true);
-        this.mUploaderAgent.cancel(paramUploadJobContext.uploadRequest());
-        bool1 = bool2;
+      default: 
+        bool1 = true;
         i = paramInt1;
       }
-      if (paramInt2 == 1810002)
+    } while (!bool1);
+    paramInt1 = paramUploadJobContext.statusInfo().state;
+    paramUploadJobContext.statusInfo().state = i;
+    paramUploadJobContext.statusInfo().errorCode = paramInt2;
+    paramUploadJobContext.statusInfo().errorMsg = UploadHelper.convertErrorMessage(paramInt2, paramString);
+    this.mInfoRecorder.updateInfo(paramUploadJobContext, true);
+    updateCounter(paramUploadJobContext, paramInt1, i);
+    TsLog.d("UploadManager", "changeStatus: id=" + paramUploadJobContext.dbId() + ", fileName=" + paramUploadJobContext.file().fileName + ", oldState=" + paramInt1 + ", newState=" + i + ", errorCode=" + paramInt2 + ", canceled=" + paramUploadJobContext.isCanceled());
+    return;
+    int i = 1;
+    paramInt1 = 1;
+    for (;;)
+    {
+      for (;;)
       {
+        for (;;)
+        {
+          for (;;)
+          {
+            for (;;)
+            {
+              for (;;)
+              {
+                for (;;)
+                {
+                  if ((i != 0) || (paramUploadJobContext.statusInfo().canRestart()))
+                  {
+                    bool2 = true;
+                    label225:
+                    bool1 = bool2;
+                    i = paramInt1;
+                    if (!bool2) {
+                      break;
+                    }
+                    synchronized (this.mWaitNetJobs)
+                    {
+                      this.mWaitNetJobs.remove(Long.valueOf(paramUploadJobContext.dbId()));
+                    }
+                  }
+                  synchronized (this.mFailedJobs)
+                  {
+                    this.mFailedJobs.remove(Long.valueOf(paramUploadJobContext.dbId()));
+                    paramUploadJobContext.setCanceled(false);
+                    bool1 = bool2;
+                    i = paramInt1;
+                    break;
+                    bool2 = false;
+                    break label225;
+                    paramUploadJobContext = finally;
+                    throw paramUploadJobContext;
+                  }
+                }
+                bool1 = paramUploadJobContext.statusInfo().canRunning();
+                i = paramInt1;
+                break;
+                bool1 = paramUploadJobContext.statusInfo().canRunning();
+                i = paramInt1;
+                break;
+                boolean bool2 = paramUploadJobContext.statusInfo().canSuspend();
+                bool1 = bool2;
+                i = paramInt1;
+                if (!bool2) {
+                  break;
+                }
+                synchronized (this.mWaitNetJobs)
+                {
+                  this.mWaitNetJobs.remove(Long.valueOf(paramUploadJobContext.dbId()));
+                  paramUploadJobContext.resetRank();
+                  paramUploadJobContext.setIgnoreNetLimit(false);
+                  paramUploadJobContext.setCanceled(true);
+                  this.mUploaderAgent.cancel(paramUploadJobContext.uploadRequest());
+                  bool1 = bool2;
+                  i = paramInt1;
+                }
+              }
+              if (paramInt2 == 1810002)
+              {
+                synchronized (this.mJobs)
+                {
+                  this.mJobs.remove(Long.valueOf(paramUploadJobContext.dbId()));
+                  synchronized (this.mFlowIds)
+                  {
+                    this.mFlowIds.removeByKey(Long.valueOf(paramUploadJobContext.dbId()));
+                    synchronized (this.mWaitNetJobs)
+                    {
+                      this.mWaitNetJobs.remove(Long.valueOf(paramUploadJobContext.dbId()));
+                    }
+                  }
+                }
+                synchronized (this.mFailedJobs)
+                {
+                  this.mFailedJobs.remove(Long.valueOf(paramUploadJobContext.dbId()));
+                  paramUploadJobContext.resetRank();
+                  paramUploadJobContext.setCanceled(true);
+                  this.mUploaderAgent.cancel(paramUploadJobContext.uploadRequest());
+                  bool1 = true;
+                  i = 0;
+                  break;
+                  paramUploadJobContext = finally;
+                  throw paramUploadJobContext;
+                  paramUploadJobContext = finally;
+                  throw paramUploadJobContext;
+                  paramUploadJobContext = finally;
+                  throw paramUploadJobContext;
+                }
+              }
+            }
+            if ((paramInt2 == 1810003) || (paramInt2 == 1810004))
+            {
+              paramUploadJobContext.resetRank();
+              synchronized (this.mWaitNetJobs)
+              {
+                this.mWaitNetJobs.add(Long.valueOf(paramUploadJobContext.dbId()));
+                bool1 = true;
+                i = 1;
+              }
+            }
+          }
+          synchronized (this.mFailedJobs)
+          {
+            this.mFailedJobs.add(Long.valueOf(paramUploadJobContext.dbId()));
+            bool1 = true;
+            i = paramInt1;
+          }
+        }
         synchronized (this.mJobs)
         {
           this.mJobs.remove(Long.valueOf(paramUploadJobContext.dbId()));
@@ -177,11 +230,9 @@ public final class UploadManager
         synchronized (this.mFailedJobs)
         {
           this.mFailedJobs.remove(Long.valueOf(paramUploadJobContext.dbId()));
-          paramUploadJobContext.resetRank();
-          paramUploadJobContext.setCanceled(true);
-          i = 0;
-          this.mUploaderAgent.cancel(paramUploadJobContext.uploadRequest());
-          continue;
+          paramUploadJobContext.statusInfo().currSize = paramUploadJobContext.statusInfo().totalSize;
+          paramUploadJobContext.statusInfo().jobContext = paramUploadJobContext;
+          break;
           paramUploadJobContext = finally;
           throw paramUploadJobContext;
           paramUploadJobContext = finally;
@@ -190,46 +241,7 @@ public final class UploadManager
           throw paramUploadJobContext;
         }
       }
-      if ((paramInt2 == 1810003) || (paramInt2 == 1810004))
-      {
-        paramUploadJobContext.resetRank();
-        i = 1;
-        synchronized (this.mWaitNetJobs)
-        {
-          this.mWaitNetJobs.add(Long.valueOf(paramUploadJobContext.dbId()));
-        }
-      }
-      synchronized (this.mFailedJobs)
-      {
-        this.mFailedJobs.add(Long.valueOf(paramUploadJobContext.dbId()));
-        i = paramInt1;
-      }
-      synchronized (this.mJobs)
-      {
-        this.mJobs.remove(Long.valueOf(paramUploadJobContext.dbId()));
-        synchronized (this.mFlowIds)
-        {
-          this.mFlowIds.removeByKey(Long.valueOf(paramUploadJobContext.dbId()));
-          synchronized (this.mWaitNetJobs)
-          {
-            this.mWaitNetJobs.remove(Long.valueOf(paramUploadJobContext.dbId()));
-          }
-        }
-      }
-      synchronized (this.mFailedJobs)
-      {
-        this.mFailedJobs.remove(Long.valueOf(paramUploadJobContext.dbId()));
-        paramUploadJobContext.statusInfo().currSize = paramUploadJobContext.statusInfo().totalSize;
-        paramUploadJobContext.statusInfo().jobContext = paramUploadJobContext;
-        i = paramInt1;
-        continue;
-        paramUploadJobContext = finally;
-        throw paramUploadJobContext;
-        paramUploadJobContext = finally;
-        throw paramUploadJobContext;
-        paramUploadJobContext = finally;
-        throw paramUploadJobContext;
-      }
+      i = 0;
     }
   }
   
@@ -237,29 +249,7 @@ public final class UploadManager
   {
     WORKING_ID.compareAndSet(paramLong, -1L);
     if (paramBoolean) {
-      this.mThreadPool.submit(new ThreadPool.Job()
-      {
-        public Void run(ThreadPool.JobContext arg1)
-        {
-          ArrayList localArrayList;
-          if (UploadManager.WORKING_ID.get() == -1L) {
-            localArrayList = new ArrayList();
-          }
-          synchronized (UploadManager.this.mJobs)
-          {
-            localArrayList.addAll(UploadManager.this.mJobs.values());
-            if (!localArrayList.isEmpty())
-            {
-              Collections.sort(localArrayList);
-              ??? = (UploadJobContext)localArrayList.get(0);
-              if ((???.statusInfo().canRunning()) && (UploadManager.WORKING_ID.compareAndSet(-1L, ???.dbId()))) {
-                UploadManager.this.mLocalProcessor.processor(???);
-              }
-            }
-            return null;
-          }
-        }
-      });
+      this.mThreadPool.submit(new UploadManager.6(this));
     }
   }
   
@@ -292,10 +282,8 @@ public final class UploadManager
     synchronized (this.mFlowIds)
     {
       this.mFlowIds.put(Long.valueOf(paramUploadJobContext.dbId()), Integer.toString(paramInt));
-      ??? = paramUploadJobContext.listeners();
-      String str = Integer.toString(paramInt);
-      long l = paramUploadJobContext.dbId();
-      Message.obtain(this.mNotifyHandler, 1, new Object[] { ???, str, Long.valueOf(l) }).sendToTarget();
+      paramUploadJobContext = Message.obtain(null, 1, new Object[] { paramUploadJobContext.listeners(), Integer.toString(paramInt), Long.valueOf(paramUploadJobContext.dbId()) });
+      this.mNotifyHandler.sendMessage(paramUploadJobContext);
       return;
     }
   }
@@ -310,11 +298,11 @@ public final class UploadManager
     String str = paramUploadJobContext.uid();
     long l = paramUploadJobContext.dbId();
     paramUploadJobContext = paramUploadJobContext.cloneStatusInfo();
-    Handler localHandler = this.mNotifyHandler;
     if (paramBoolean) {}
     for (;;)
     {
-      Message.obtain(localHandler, 2, i, 0, new Object[] { localSet, str, Long.valueOf(l), paramUploadJobContext }).sendToTarget();
+      paramUploadJobContext = Message.obtain(null, 2, i, 0, new Object[] { localSet, str, Long.valueOf(l), paramUploadJobContext });
+      this.mNotifyHandler.sendMessage(paramUploadJobContext);
       return;
       i = 0;
     }
@@ -366,72 +354,72 @@ public final class UploadManager
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 144	com/tencent/weiyun/transmission/upload/UploadManager:mLocalProcessor	Lcom/tencent/weiyun/transmission/upload/processor/LocalProcessor;
-    //   6: invokevirtual 466	com/tencent/weiyun/transmission/upload/processor/LocalProcessor:cancelAll	()V
+    //   3: getfield 136	com/tencent/weiyun/transmission/upload/UploadManager:mLocalProcessor	Lcom/tencent/weiyun/transmission/upload/processor/LocalProcessor;
+    //   6: invokevirtual 448	com/tencent/weiyun/transmission/upload/processor/LocalProcessor:cancelAll	()V
     //   9: aload_0
-    //   10: getfield 151	com/tencent/weiyun/transmission/upload/UploadManager:mUrlFetcher	Lcom/tencent/weiyun/transmission/upload/processor/UrlFetcher;
-    //   13: invokevirtual 467	com/tencent/weiyun/transmission/upload/processor/UrlFetcher:cancelAll	()V
+    //   10: getfield 143	com/tencent/weiyun/transmission/upload/UploadManager:mUrlFetcher	Lcom/tencent/weiyun/transmission/upload/processor/UrlFetcher;
+    //   13: invokevirtual 449	com/tencent/weiyun/transmission/upload/processor/UrlFetcher:cancelAll	()V
     //   16: aload_0
-    //   17: getfield 158	com/tencent/weiyun/transmission/upload/UploadManager:mUploaderAgent	Lcom/tencent/weiyun/transmission/upload/uploader/UploaderAgent;
-    //   20: invokevirtual 468	com/tencent/weiyun/transmission/upload/uploader/UploaderAgent:cancelAll	()V
+    //   17: getfield 150	com/tencent/weiyun/transmission/upload/UploadManager:mUploaderAgent	Lcom/tencent/weiyun/transmission/upload/uploader/UploaderAgent;
+    //   20: invokevirtual 450	com/tencent/weiyun/transmission/upload/uploader/UploaderAgent:cancelAll	()V
     //   23: aload_0
-    //   24: getfield 158	com/tencent/weiyun/transmission/upload/UploadManager:mUploaderAgent	Lcom/tencent/weiyun/transmission/upload/uploader/UploaderAgent;
-    //   27: invokevirtual 471	com/tencent/weiyun/transmission/upload/uploader/UploaderAgent:speedDown	()V
+    //   24: getfield 150	com/tencent/weiyun/transmission/upload/UploadManager:mUploaderAgent	Lcom/tencent/weiyun/transmission/upload/uploader/UploaderAgent;
+    //   27: invokevirtual 453	com/tencent/weiyun/transmission/upload/uploader/UploaderAgent:speedDown	()V
     //   30: aload_0
-    //   31: getfield 111	com/tencent/weiyun/transmission/upload/UploadManager:mJobs	Ljava/util/HashMap;
+    //   31: getfield 96	com/tencent/weiyun/transmission/upload/UploadManager:mJobs	Ljava/util/HashMap;
     //   34: astore_1
     //   35: aload_1
     //   36: monitorenter
     //   37: aload_0
-    //   38: getfield 111	com/tencent/weiyun/transmission/upload/UploadManager:mJobs	Ljava/util/HashMap;
-    //   41: invokevirtual 474	java/util/HashMap:clear	()V
+    //   38: getfield 96	com/tencent/weiyun/transmission/upload/UploadManager:mJobs	Ljava/util/HashMap;
+    //   41: invokevirtual 456	java/util/HashMap:clear	()V
     //   44: aload_1
     //   45: monitorexit
     //   46: aload_0
-    //   47: getfield 116	com/tencent/weiyun/transmission/upload/UploadManager:mFlowIds	Lcom/tencent/weiyun/utils/DualHashMap;
+    //   47: getfield 101	com/tencent/weiyun/transmission/upload/UploadManager:mFlowIds	Lcom/tencent/weiyun/utils/DualHashMap;
     //   50: astore_1
     //   51: aload_1
     //   52: monitorenter
     //   53: aload_0
-    //   54: getfield 116	com/tencent/weiyun/transmission/upload/UploadManager:mFlowIds	Lcom/tencent/weiyun/utils/DualHashMap;
-    //   57: invokevirtual 475	com/tencent/weiyun/utils/DualHashMap:clear	()V
+    //   54: getfield 101	com/tencent/weiyun/transmission/upload/UploadManager:mFlowIds	Lcom/tencent/weiyun/utils/DualHashMap;
+    //   57: invokevirtual 457	com/tencent/weiyun/utils/DualHashMap:clear	()V
     //   60: aload_1
     //   61: monitorexit
     //   62: aload_0
-    //   63: getfield 118	com/tencent/weiyun/transmission/upload/UploadManager:mWaitNetJobs	Ljava/util/HashSet;
+    //   63: getfield 103	com/tencent/weiyun/transmission/upload/UploadManager:mWaitNetJobs	Ljava/util/HashSet;
     //   66: astore_1
     //   67: aload_1
     //   68: monitorenter
     //   69: aload_0
-    //   70: getfield 118	com/tencent/weiyun/transmission/upload/UploadManager:mWaitNetJobs	Ljava/util/HashSet;
-    //   73: invokevirtual 476	java/util/HashSet:clear	()V
+    //   70: getfield 103	com/tencent/weiyun/transmission/upload/UploadManager:mWaitNetJobs	Ljava/util/HashSet;
+    //   73: invokevirtual 458	java/util/HashSet:clear	()V
     //   76: aload_1
     //   77: monitorexit
     //   78: aload_0
-    //   79: getfield 120	com/tencent/weiyun/transmission/upload/UploadManager:mFailedJobs	Ljava/util/HashSet;
+    //   79: getfield 105	com/tencent/weiyun/transmission/upload/UploadManager:mFailedJobs	Ljava/util/HashSet;
     //   82: astore_1
     //   83: aload_1
     //   84: monitorenter
     //   85: aload_0
-    //   86: getfield 120	com/tencent/weiyun/transmission/upload/UploadManager:mFailedJobs	Ljava/util/HashSet;
-    //   89: invokevirtual 476	java/util/HashSet:clear	()V
+    //   86: getfield 105	com/tencent/weiyun/transmission/upload/UploadManager:mFailedJobs	Ljava/util/HashSet;
+    //   89: invokevirtual 458	java/util/HashSet:clear	()V
     //   92: aload_1
     //   93: monitorexit
     //   94: aload_0
-    //   95: getfield 172	com/tencent/weiyun/transmission/upload/UploadManager:mCounter	Lcom/tencent/weiyun/transmission/upload/UploadJobCounter;
-    //   98: invokevirtual 479	com/tencent/weiyun/transmission/upload/UploadJobCounter:reset	()V
+    //   95: getfield 164	com/tencent/weiyun/transmission/upload/UploadManager:mCounter	Lcom/tencent/weiyun/transmission/upload/UploadJobCounter;
+    //   98: invokevirtual 461	com/tencent/weiyun/transmission/upload/UploadJobCounter:reset	()V
     //   101: aload_0
-    //   102: getfield 481	com/tencent/weiyun/transmission/upload/UploadManager:mCustomCounter	Lcom/tencent/weiyun/transmission/upload/UploadJobCounter;
+    //   102: getfield 463	com/tencent/weiyun/transmission/upload/UploadManager:mCustomCounter	Lcom/tencent/weiyun/transmission/upload/UploadJobCounter;
     //   105: ifnull +10 -> 115
     //   108: aload_0
-    //   109: getfield 481	com/tencent/weiyun/transmission/upload/UploadManager:mCustomCounter	Lcom/tencent/weiyun/transmission/upload/UploadJobCounter;
-    //   112: invokevirtual 479	com/tencent/weiyun/transmission/upload/UploadJobCounter:reset	()V
-    //   115: getstatic 86	com/tencent/weiyun/transmission/upload/UploadManager:FLOW_ID	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   109: getfield 463	com/tencent/weiyun/transmission/upload/UploadManager:mCustomCounter	Lcom/tencent/weiyun/transmission/upload/UploadJobCounter;
+    //   112: invokevirtual 461	com/tencent/weiyun/transmission/upload/UploadJobCounter:reset	()V
+    //   115: getstatic 69	com/tencent/weiyun/transmission/upload/UploadManager:FLOW_ID	Ljava/util/concurrent/atomic/AtomicInteger;
     //   118: iconst_0
-    //   119: invokevirtual 484	java/util/concurrent/atomic/AtomicInteger:set	(I)V
-    //   122: getstatic 95	com/tencent/weiyun/transmission/upload/UploadManager:WORKING_ID	Ljava/util/concurrent/atomic/AtomicLong;
-    //   125: ldc2_w 89
-    //   128: invokevirtual 486	java/util/concurrent/atomic/AtomicLong:set	(J)V
+    //   119: invokevirtual 466	java/util/concurrent/atomic/AtomicInteger:set	(I)V
+    //   122: getstatic 78	com/tencent/weiyun/transmission/upload/UploadManager:WORKING_ID	Ljava/util/concurrent/atomic/AtomicLong;
+    //   125: ldc2_w 72
+    //   128: invokevirtual 468	java/util/concurrent/atomic/AtomicLong:set	(J)V
     //   131: aload_0
     //   132: monitorexit
     //   133: return
@@ -507,8 +495,14 @@ public final class UploadManager
   {
     UploadJobCounter localUploadJobCounter1 = this.mCounter.clone();
     UploadJobCounter localUploadJobCounter2 = this.mCounter.update(paramUploadJobContext, paramInt1, paramInt2);
-    int i = localUploadJobCounter1.wait + localUploadJobCounter1.compressing + localUploadJobCounter1.running + localUploadJobCounter1.autoBackup;
-    int j = localUploadJobCounter2.wait + localUploadJobCounter2.compressing + localUploadJobCounter2.running + localUploadJobCounter2.autoBackup;
+    int i = localUploadJobCounter1.wait;
+    int j = localUploadJobCounter1.compressing;
+    int k = localUploadJobCounter1.running;
+    i = localUploadJobCounter1.autoBackup + (i + j + k);
+    j = localUploadJobCounter2.wait;
+    k = localUploadJobCounter2.compressing;
+    int m = localUploadJobCounter2.running;
+    j = localUploadJobCounter2.autoBackup + (j + k + m);
     if ((i <= 0) && (j > 0)) {
       UploadHelper.acquireWakeLockIfNot();
     }
@@ -580,7 +574,7 @@ public final class UploadManager
     }
   }
   
-  public void addGlobalObserver(IUploadStatusListener paramIUploadStatusListener)
+  public void addGlobalObserver(UploadManager.IUploadStatusListener paramIUploadStatusListener)
   {
     if (paramIUploadStatusListener != null) {
       synchronized (this.mGlobalObservers)
@@ -591,7 +585,7 @@ public final class UploadManager
     }
   }
   
-  public boolean addJobListener(long paramLong, IUploadStatusListener paramIUploadStatusListener)
+  public boolean addJobListener(long paramLong, UploadManager.IUploadStatusListener paramIUploadStatusListener)
   {
     UploadJobContext localUploadJobContext;
     synchronized (this.mJobs)
@@ -613,13 +607,16 @@ public final class UploadManager
   public boolean canRestartAll()
   {
     UploadJobCounter localUploadJobCounter = this.mCounter.clone();
-    return localUploadJobCounter.failed + localUploadJobCounter.suspend > 0;
+    int i = localUploadJobCounter.failed;
+    return localUploadJobCounter.suspend + i > 0;
   }
   
   public boolean canSuspendAll()
   {
     UploadJobCounter localUploadJobCounter = this.mCounter.clone();
-    return localUploadJobCounter.wait + localUploadJobCounter.compressing + localUploadJobCounter.running > 0;
+    int i = localUploadJobCounter.wait;
+    int j = localUploadJobCounter.compressing;
+    return localUploadJobCounter.running + (i + j) > 0;
   }
   
   public UploadJobContext getJobContext(long paramLong)
@@ -666,9 +663,9 @@ public final class UploadManager
           if (!((Iterator)???).hasNext()) {
             break;
           }
-          ??? = (IUploadStatusListener)((Iterator)???).next();
+          ??? = (UploadManager.IUploadStatusListener)((Iterator)???).next();
         } while (??? == null);
-        ((IUploadStatusListener)???).onUploadJobAdded((String)paramMessage[1], ((Long)paramMessage[2]).longValue());
+        ((UploadManager.IUploadStatusListener)???).onUploadJobAdded((String)paramMessage[1], ((Long)paramMessage[2]).longValue());
       }
     }
     if (paramMessage.what == 2)
@@ -684,7 +681,7 @@ public final class UploadManager
           if (!((Iterator)???).hasNext()) {
             break;
           }
-          localObject3 = (IUploadStatusListener)((Iterator)???).next();
+          localObject3 = (UploadManager.IUploadStatusListener)((Iterator)???).next();
           if (localObject3 == null) {
             continue;
           }
@@ -694,7 +691,7 @@ public final class UploadManager
           if (paramMessage.arg1 == 1)
           {
             bool = true;
-            ((IUploadStatusListener)localObject3).onUploadStatusChanged(str, l, localStatusInfo, bool);
+            ((UploadManager.IUploadStatusListener)localObject3).onUploadStatusChanged(str, l, localStatusInfo, bool);
           }
         }
         boolean bool = false;
@@ -796,7 +793,6 @@ public final class UploadManager
   
   public void onInfoAdded(int paramInt, UploadJobContext paramUploadJobContext)
   {
-    int i = 0;
     for (;;)
     {
       UploadJobContext localUploadJobContext;
@@ -826,7 +822,7 @@ public final class UploadManager
         else
         {
           if (!localUploadJobContext.statusInfo().canRestart()) {
-            continue;
+            break label200;
           }
           paramUploadJobContext.statusInfo().state = localUploadJobContext.statusInfo().state;
           paramUploadJobContext.statusInfo().errorCode = localUploadJobContext.statusInfo().errorCode;
@@ -835,6 +831,9 @@ public final class UploadManager
         }
       }
       paramUploadJobContext = localUploadJobContext;
+      continue;
+      label200:
+      int i = 0;
     }
   }
   
@@ -977,23 +976,7 @@ public final class UploadManager
       UploadHelper.updateNetworkChange();
       this.mUploaderAgent.setNetType(NetworkUtils.getNetworkTypeDiff4G(WeiyunTransmissionGlobal.getInstance().getContext()));
     }
-    this.mThreadPool.submit(new ThreadPool.Job()
-    {
-      public Void run(ThreadPool.JobContext paramAnonymousJobContext)
-      {
-        try
-        {
-          Thread.sleep(1000L);
-          label6:
-          UploadManager.this.updateWaitNetJobs();
-          return null;
-        }
-        catch (InterruptedException paramAnonymousJobContext)
-        {
-          break label6;
-        }
-      }
-    });
+    this.mThreadPool.submit(new UploadManager.7(this));
   }
   
   public void onUploadCanceled(UploadRequest paramUploadRequest) {}
@@ -1036,34 +1019,31 @@ public final class UploadManager
   
   public void onUploadProgress(UploadRequest arg1, long paramLong1, float paramFloat, long paramLong2, long paramLong3, long paramLong4)
   {
-    long l = Long.parseLong((String)((HashMap)???.businessData()).get("db_id"));
+    long l1 = Long.parseLong((String)((HashMap)???.businessData()).get("db_id"));
     synchronized (this.mJobs)
     {
-      UploadJobContext localUploadJobContext1 = (UploadJobContext)this.mJobs.get(Long.valueOf(l));
+      UploadJobContext localUploadJobContext1 = (UploadJobContext)this.mJobs.get(Long.valueOf(l1));
       if (localUploadJobContext1 == null) {
         return;
       }
     }
     if (!localUploadJobContext2.isCanceled())
     {
-      l = ((float)paramLong1 * paramFloat);
+      long l2 = ((float)paramLong1 * paramFloat);
       localUploadJobContext2.statusInfo().totalSize = paramLong1;
       ??? = localUploadJobContext2.statusInfo();
-      if (l < paramLong1) {
-        paramLong1 = l;
+      l1 = paramLong1;
+      if (l2 < paramLong1) {
+        l1 = l2;
       }
-      for (;;)
-      {
-        ???.currSize = paramLong1;
-        localUploadJobContext2.statusInfo().speed = paramLong2;
-        localUploadJobContext2.statusInfo().exSpeed = paramLong3;
-        localUploadJobContext2.statusInfo().adSpeed = paramLong4;
-        if (localUploadJobContext2.statusInfo().canRunning()) {
-          changeStatus(localUploadJobContext2, 3, 0, null);
-        }
-        notifyProgress(localUploadJobContext2, false);
-        return;
+      ???.currSize = l1;
+      localUploadJobContext2.statusInfo().speed = paramLong2;
+      localUploadJobContext2.statusInfo().exSpeed = paramLong3;
+      localUploadJobContext2.statusInfo().adSpeed = paramLong4;
+      if (localUploadJobContext2.statusInfo().canRunning()) {
+        changeStatus(localUploadJobContext2, 3, 0, null);
       }
+      notifyProgress(localUploadJobContext2, false);
     }
   }
   
@@ -1094,33 +1074,19 @@ public final class UploadManager
   
   public int removeAllFailed()
   {
-    final HashSet localHashSet2 = new HashSet();
+    HashSet localHashSet2 = new HashSet();
     synchronized (this.mFailedJobs)
     {
       int i = this.mFailedJobs.size();
       localHashSet2.addAll(this.mFailedJobs);
       if (!localHashSet2.isEmpty()) {
-        this.mThreadPool.submit(new ThreadPool.Job()
-        {
-          public Void run(ThreadPool.JobContext paramAnonymousJobContext)
-          {
-            paramAnonymousJobContext = localHashSet2.iterator();
-            while (paramAnonymousJobContext.hasNext())
-            {
-              long l = ((Long)paramAnonymousJobContext.next()).longValue();
-              UploadManager.this.removeJobInner(l);
-              UploadManager.this.dispatch(l, false);
-            }
-            UploadManager.this.dispatch(-1L, true);
-            return null;
-          }
-        });
+        this.mThreadPool.submit(new UploadManager.4(this, localHashSet2));
       }
       return i;
     }
   }
   
-  public void removeGlobalObserver(IUploadStatusListener paramIUploadStatusListener)
+  public void removeGlobalObserver(UploadManager.IUploadStatusListener paramIUploadStatusListener)
   {
     if (paramIUploadStatusListener != null) {
       synchronized (this.mGlobalObservers)
@@ -1138,22 +1104,25 @@ public final class UploadManager
   
   public boolean removeJob(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
     for (;;)
     {
-      return false;
       synchronized (this.mFlowIds)
       {
         paramString = (Long)this.mFlowIds.getByValue(paramString);
-        if ((paramString == null) || (!removeJobInner(paramString.longValue()))) {
-          continue;
+        if ((paramString != null) && (removeJobInner(paramString.longValue())))
+        {
+          bool = true;
+          return bool;
         }
-        return true;
       }
+      boolean bool = false;
     }
   }
   
-  public boolean removeJobListener(long paramLong, IUploadStatusListener paramIUploadStatusListener)
+  public boolean removeJobListener(long paramLong, UploadManager.IUploadStatusListener paramIUploadStatusListener)
   {
     UploadJobContext localUploadJobContext;
     synchronized (this.mJobs)
@@ -1167,57 +1136,31 @@ public final class UploadManager
     return true;
   }
   
-  public int restartAll(final boolean paramBoolean)
+  public int restartAll(boolean paramBoolean)
   {
     ??? = this.mCounter.clone();
     int i = ((UploadJobCounter)???).failed;
     int j = ((UploadJobCounter)???).suspend;
-    final ArrayList localArrayList = new ArrayList();
+    ArrayList localArrayList = new ArrayList();
     synchronized (this.mJobs)
     {
       localArrayList.addAll(this.mJobs.keySet());
       if (!localArrayList.isEmpty()) {
-        this.mThreadPool.submit(new ThreadPool.Job()
-        {
-          public Void run(ThreadPool.JobContext paramAnonymousJobContext)
-          {
-            paramAnonymousJobContext = localArrayList.iterator();
-            while (paramAnonymousJobContext.hasNext())
-            {
-              long l = ((Long)paramAnonymousJobContext.next()).longValue();
-              UploadManager.this.restartJobInner(l, false, false, paramBoolean, paramBoolean);
-            }
-            UploadManager.this.dispatch(-1L, true);
-            return null;
-          }
-        });
+        this.mThreadPool.submit(new UploadManager.2(this, localArrayList, paramBoolean));
       }
-      return i + j;
+      return j + i;
     }
   }
   
   public int restartAllFailed()
   {
-    final HashSet localHashSet2 = new HashSet();
+    HashSet localHashSet2 = new HashSet();
     synchronized (this.mFailedJobs)
     {
       int i = this.mFailedJobs.size();
       localHashSet2.addAll(this.mFailedJobs);
       if (!localHashSet2.isEmpty()) {
-        this.mThreadPool.submit(new ThreadPool.Job()
-        {
-          public Void run(ThreadPool.JobContext paramAnonymousJobContext)
-          {
-            paramAnonymousJobContext = localHashSet2.iterator();
-            while (paramAnonymousJobContext.hasNext())
-            {
-              long l = ((Long)paramAnonymousJobContext.next()).longValue();
-              UploadManager.this.restartJobInner(l, false, false, false, false);
-            }
-            UploadManager.this.dispatch(-1L, true);
-            return null;
-          }
-        });
+        this.mThreadPool.submit(new UploadManager.5(this, localHashSet2));
       }
       return i;
     }
@@ -1254,28 +1197,14 @@ public final class UploadManager
     int j = ((UploadJobCounter)???).wait;
     int k = ((UploadJobCounter)???).compressing;
     int m = ((UploadJobCounter)???).running;
-    final ArrayList localArrayList = new ArrayList();
+    ArrayList localArrayList = new ArrayList();
     synchronized (this.mJobs)
     {
       localArrayList.addAll(this.mJobs.keySet());
       if (!localArrayList.isEmpty()) {
-        this.mThreadPool.submit(new ThreadPool.Job()
-        {
-          public Void run(ThreadPool.JobContext paramAnonymousJobContext)
-          {
-            paramAnonymousJobContext = localArrayList.iterator();
-            while (paramAnonymousJobContext.hasNext())
-            {
-              long l = ((Long)paramAnonymousJobContext.next()).longValue();
-              UploadManager.this.suspendJobInner(l);
-              UploadManager.this.dispatch(l, false);
-            }
-            UploadManager.this.dispatch(-1L, true);
-            return null;
-          }
-        });
+        this.mThreadPool.submit(new UploadManager.3(this, localArrayList));
       }
-      return i + j + k + m;
+      return m + (i + j + k);
     }
   }
   
@@ -1301,7 +1230,7 @@ public final class UploadManager
     this.mUploaderAgent.saveDirectIpFromWns(paramMap);
   }
   
-  public String upload(UploadFile paramUploadFile, boolean paramBoolean1, boolean paramBoolean2, IUploadStatusListener paramIUploadStatusListener)
+  public String upload(UploadFile paramUploadFile, boolean paramBoolean1, boolean paramBoolean2, UploadManager.IUploadStatusListener paramIUploadStatusListener)
   {
     if (paramUploadFile == null)
     {
@@ -1325,13 +1254,6 @@ public final class UploadManager
   public void vipSpeedUp()
   {
     this.mUploaderAgent.vipSpeedUp();
-  }
-  
-  public static abstract interface IUploadStatusListener
-  {
-    public abstract void onUploadJobAdded(String paramString, long paramLong);
-    
-    public abstract void onUploadStatusChanged(String paramString, long paramLong, UploadJobContext.StatusInfo paramStatusInfo, boolean paramBoolean);
   }
 }
 

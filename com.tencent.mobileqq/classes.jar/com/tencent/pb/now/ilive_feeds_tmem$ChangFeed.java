@@ -9,10 +9,10 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ilive_feeds_tmem$ChangFeed
-  extends MessageMicro
+  extends MessageMicro<ChangFeed>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatMessageField chang = PBField.initRepeatMessage(ilive_feeds_tmem.Chang.class);
+  public final PBRepeatMessageField<ilive_feeds_tmem.Chang> chang = PBField.initRepeatMessage(ilive_feeds_tmem.Chang.class);
   public final PBBytesField desc = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field hight = PBField.initUInt32(0);
   public final PBBytesField pic_url = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -33,7 +33,7 @@ public final class ilive_feeds_tmem$ChangFeed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_tmem.ChangFeed
  * JD-Core Version:    0.7.0.1
  */

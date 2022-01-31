@@ -1,36 +1,40 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.DBUtils;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class sip
-  implements Runnable
+class sip
+  implements Comparable<sip>
 {
-  public sip(ChatSettingForTroop paramChatSettingForTroop) {}
+  public long a;
+  public final File a;
   
-  public void run()
+  public sip(sio paramsio, File paramFile)
   {
+    this.jdField_a_of_type_JavaIoFile = paramFile;
+    paramsio = paramFile.getName();
     try
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nUnreadMsgNum = DBUtils.a(this.a.app.getCurrentAccountUin(), "troop_photo_message", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.chatopttroop", 2, "从群空间返回，更新群空间未读计数， troopuin = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin + ", unreadmsgnum = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nUnreadMsgNum + ", newphotonum = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nNewPhotoNum);
-      }
+      this.jdField_a_of_type_Long = Long.parseLong(paramsio);
       return;
     }
-    catch (Exception localException)
+    catch (Exception paramFile)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("Q.chatopttroop", 2, localException.toString());
+      urk.d("Q.qqstory.cleaner:MyVideoCleanStep", "Parse %s error , %s", new Object[] { paramsio, paramFile.getMessage() });
     }
+  }
+  
+  public int a(sip paramsip)
+  {
+    if (this.jdField_a_of_type_Long < paramsip.jdField_a_of_type_Long) {
+      return -1;
+    }
+    if (this.jdField_a_of_type_Long == paramsip.jdField_a_of_type_Long) {
+      return 0;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sip
  * JD-Core Version:    0.7.0.1
  */

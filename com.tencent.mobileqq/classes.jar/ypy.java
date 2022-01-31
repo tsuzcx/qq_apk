@@ -1,27 +1,20 @@
-import com.tencent.mobileqq.apollo.ApolloGameManager;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.gdtad.views.canvas.components.button.GdtCanvasButtonComponentView;
 
 public class ypy
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ypy(ApolloGameManager paramApolloGameManager) {}
+  public ypy(GdtCanvasButtonComponentView paramGdtCanvasButtonComponentView, String paramString1, boolean paramBoolean, String paramString2, String paramString3) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (ApolloGameManager.a(this.a) != null)
-    {
-      ((ApolloManager)ApolloGameManager.a(this.a).getManager(152)).e();
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloGameManager", 2, "[onGetGameList] change reload");
-      }
-    }
+    GdtCanvasButtonComponentView.a(this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsButtonGdtCanvasButtonComponentView, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ypy
  * JD-Core Version:    0.7.0.1
  */

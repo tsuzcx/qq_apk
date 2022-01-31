@@ -1,29 +1,10 @@
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer.ArkAppModuleCallback;
-
-public class rpj
-  implements ArkAppContainer.ArkAppModuleCallback
+class rpj
 {
-  public rpj(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
-  
-  public boolean a(ArkAppContainer paramArkAppContainer)
-  {
-    this.a.finish();
-    if (ArkFullScreenAppActivity.a(this.a)) {
-      this.a.overridePendingTransition(2131034134, 2131034135);
-    }
-    return false;
-  }
-  
-  public boolean a(ArkAppContainer paramArkAppContainer, String paramString1, String paramString2)
-  {
-    return false;
-  }
+  private rpj(rpf paramrpf) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rpj
  * JD-Core Version:    0.7.0.1
  */

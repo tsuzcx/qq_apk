@@ -1,24 +1,33 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashBgView;
+import android.view.View;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.ScoreQAVFragment;
+import java.util.ArrayList;
 
 public class abpp
-  implements ValueAnimator.AnimatorUpdateListener
+  implements abpr
 {
-  public abpp(ARMapSplashBgView paramARMapSplashBgView) {}
+  public abpp(ScoreQAVFragment paramScoreQAVFragment) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(View paramView, int paramInt)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    if (ARMapSplashBgView.b(this.a) != null) {
-      ARMapSplashBgView.b(this.a).setTranslationY(paramValueAnimator.floatValue() * ARMapSplashBgView.c(this.a));
+    paramView = (Button)paramView.findViewById(2131307761);
+    if (paramView.isSelected())
+    {
+      paramView.setSelected(false);
+      this.a.a(paramInt);
+      if (this.a.a.size() != 0) {}
     }
+    do
+    {
+      return;
+      paramView.setSelected(true);
+      this.a.a.add(Integer.valueOf(paramInt));
+    } while (this.a.a.size() <= 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abpp
  * JD-Core Version:    0.7.0.1
  */

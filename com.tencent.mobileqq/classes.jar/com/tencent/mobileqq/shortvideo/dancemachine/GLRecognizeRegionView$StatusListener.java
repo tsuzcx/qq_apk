@@ -2,7 +2,7 @@ package com.tencent.mobileqq.shortvideo.dancemachine;
 
 public abstract interface GLRecognizeRegionView$StatusListener
 {
-  public abstract void a(int paramInt);
+  public abstract void onStatusChanged(int paramInt);
 }
 
 

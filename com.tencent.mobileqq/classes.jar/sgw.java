@@ -1,60 +1,48 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.util.LruCache;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.DownloadingUrlEntry;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.List;
+import java.util.concurrent.locks.ReentrantLock;
 
-public class sgw
-  extends CardObserver
+class sgw
+  extends SimpleJob<Void>
 {
-  public sgw(ChatSettingActivity paramChatSettingActivity) {}
-  
-  protected void a(boolean paramBoolean, Object paramObject)
+  sgw(sgs paramsgs, String paramString1, String paramString2, int paramInt)
   {
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
+    super(paramString1);
+  }
+  
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    try
     {
-      if ((paramBoolean) && (paramObject != null))
+      sgs.a(this.jdField_a_of_type_Sgs).lock();
+      paramJobContext = DownloadingUrlEntry.makeKey(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+      sgs.a(this.jdField_a_of_type_Sgs).remove(paramJobContext);
+      paramJobContext = QQStoryContext.a().a().createEntityManager();
+      paramVarArgs = sqd.a(paramJobContext, DownloadingUrlEntry.class, DownloadingUrlEntry.class.getSimpleName(), "key=?", new String[] { DownloadingUrlEntry.makeKey(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int) });
+      if ((paramVarArgs != null) && (paramVarArgs.size() > 0))
       {
-        if ((ChatSettingActivity.a(this.a) == 0) && (ChatSettingActivity.b(this.a).equals(paramObject.uin)))
-        {
-          String str = ContactUtils.a(this.a.app, ChatSettingActivity.b(this.a));
-          if ((!TextUtils.isEmpty(str)) && (!str.equals(ChatSettingActivity.f(this.a)))) {
-            ChatSettingActivity.c(this.a, str);
-          }
-        }
-        if ((this.a.f != null) && (!TextUtils.isEmpty(ChatSettingActivity.b(this.a))) && (ChatSettingActivity.b(this.a).equals(paramObject.uin))) {
-          ChatSettingActivity.a(this.a, ChatSettingActivity.a(this.a, ChatSettingActivity.b(this.a)), this.a.f);
-        }
+        paramVarArgs = (DownloadingUrlEntry)paramVarArgs.get(0);
+        paramVarArgs.setStatus(1000);
+        paramVarArgs.bIsDownloadCompleted = 1;
+        paramJobContext.b(paramVarArgs);
       }
-      return;
+      return null;
     }
-  }
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (this.a.b != null) && (paramBoolean2 != this.a.b.a()))
+    finally
     {
-      this.a.b.setOnCheckedChangeListener(null);
-      this.a.b.setChecked(paramBoolean2);
-      this.a.b.setOnCheckedChangeListener(this.a);
-    }
-  }
-  
-  protected void c(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (this.a.b != null) && (paramBoolean2 != this.a.b.a()))
-    {
-      this.a.b.setOnCheckedChangeListener(null);
-      this.a.b.setChecked(paramBoolean2);
-      this.a.b.setOnCheckedChangeListener(this.a);
+      sgs.a(this.jdField_a_of_type_Sgs).unlock();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sgw
  * JD-Core Version:    0.7.0.1
  */

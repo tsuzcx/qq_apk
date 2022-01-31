@@ -1,5 +1,27 @@
 package com.tencent.mobileqq.activity.shortvideo;
 
+import ahvd;
+import ahve;
+import ahvf;
+import ahvg;
+import ahvh;
+import ahvi;
+import ahvj;
+import ahvk;
+import ahvl;
+import ahvm;
+import ahvn;
+import ahvo;
+import ahvp;
+import ahvq;
+import ahvr;
+import ahvs;
+import ahvt;
+import ahvu;
+import ahvv;
+import ahvw;
+import ahvx;
+import ajjy;
 import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
@@ -25,56 +47,37 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
+import aonj;
+import apbx;
+import aweg;
+import awif;
+import awmi;
+import awmx;
+import awmy;
+import awqx;
+import azzz;
+import babr;
+import bace;
+import badq;
+import bafb;
+import bass;
+import bast;
+import basu;
+import basv;
+import basw;
+import bbmy;
+import bbrm;
+import befo;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FMConfig;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.shortvideo.mediacodec.ShortVideoCodec;
 import com.tencent.mobileqq.shortvideo.util.ShortVideoTrimmer;
-import com.tencent.mobileqq.shortvideo.util.ShortVideoTrimmer.CompressConfig;
-import com.tencent.mobileqq.shortvideo.util.videoconverter.VideoConverter;
-import com.tencent.mobileqq.shortvideo.util.videoconverter.VideoConverter.Processor;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.video.IMediaPlayer;
-import com.tencent.mobileqq.video.IMediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.video.IMediaPlayer.OnPlayStateListener;
-import com.tencent.mobileqq.video.IMediaPlayer.OnPreparedListener;
-import com.tencent.mobileqq.video.LocalVideoMediaPlayer;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.VersionUtils;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import mqq.os.MqqHandler;
-import yko;
-import ykp;
-import ykq;
-import ykr;
-import yks;
-import ykt;
-import yku;
-import ykv;
-import ykw;
-import ykx;
-import yky;
-import ykz;
-import yla;
-import ylb;
-import ylc;
-import yld;
-import yle;
-import ylf;
-import ylg;
-import ylh;
-import yli;
 
 public class ShortVideoPreviewActivity
   extends BaseActivity
@@ -83,22 +86,22 @@ public class ShortVideoPreviewActivity
   public static int i;
   public int a;
   public long a;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new yko(this);
-  public Bitmap a;
-  SurfaceHolder.Callback jdField_a_of_type_AndroidViewSurfaceHolder$Callback = new ylc(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ahvd(this);
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  SurfaceHolder.Callback jdField_a_of_type_AndroidViewSurfaceHolder$Callback = new ahvq(this);
   public SurfaceView a;
   public ImageView a;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  SeekBar.OnSeekBarChangeListener jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new yla(this);
+  SeekBar.OnSeekBarChangeListener jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener = new ahvo(this);
   public SeekBar a;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  private IMediaPlayer.OnCompletionListener jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer$OnCompletionListener = new ylf(this);
-  private IMediaPlayer.OnPlayStateListener jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer$OnPlayStateListener = new ylg(this);
-  private IMediaPlayer.OnPreparedListener jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer$OnPreparedListener = new yle(this);
-  public IMediaPlayer a;
+  public bass a;
+  private bast jdField_a_of_type_Bast = new ahvt(this);
+  private basu jdField_a_of_type_Basu = new ahvu(this);
+  private basv jdField_a_of_type_Basv = new ahvs(this);
   public Runnable a;
   String jdField_a_of_type_JavaLangString;
-  ArrayList jdField_a_of_type_JavaUtilArrayList;
+  ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
   public final MqqHandler a;
   boolean jdField_a_of_type_Boolean;
   int jdField_b_of_type_Int;
@@ -123,9 +126,9 @@ public class ShortVideoPreviewActivity
   public ShortVideoPreviewActivity()
   {
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer = new LocalVideoMediaPlayer();
-    this.jdField_a_of_type_MqqOsMqqHandler = new ykx(this);
-    this.jdField_a_of_type_JavaLangRunnable = new yky(this);
+    this.jdField_a_of_type_Bass = new basw();
+    this.jdField_a_of_type_MqqOsMqqHandler = new ahvn(this);
+    this.jdField_a_of_type_JavaLangRunnable = new ShortVideoPreviewActivity.21(this);
   }
   
   /* Error */
@@ -140,59 +143,59 @@ public class ShortVideoPreviewActivity
     //   6: astore 7
     //   8: aconst_null
     //   9: astore 4
-    //   11: new 106	java/io/File
+    //   11: new 107	java/io/File
     //   14: dup
-    //   15: new 108	java/lang/StringBuilder
+    //   15: new 109	java/lang/StringBuilder
     //   18: dup
-    //   19: invokespecial 109	java/lang/StringBuilder:<init>	()V
-    //   22: getstatic 114	com/tencent/mobileqq/app/AppConstants:aK	Ljava/lang/String;
-    //   25: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   28: ldc 120
-    //   30: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   33: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   36: invokespecial 127	java/io/File:<init>	(Ljava/lang/String;)V
+    //   19: invokespecial 110	java/lang/StringBuilder:<init>	()V
+    //   22: getstatic 115	ajed:aU	Ljava/lang/String;
+    //   25: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   28: ldc 121
+    //   30: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   33: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   36: invokespecial 128	java/io/File:<init>	(Ljava/lang/String;)V
     //   39: astore 5
     //   41: aload 5
-    //   43: invokevirtual 131	java/io/File:exists	()Z
+    //   43: invokevirtual 132	java/io/File:exists	()Z
     //   46: ifne +9 -> 55
     //   49: aload 5
-    //   51: invokevirtual 134	java/io/File:mkdirs	()Z
+    //   51: invokevirtual 135	java/io/File:mkdirs	()Z
     //   54: pop
-    //   55: invokestatic 140	java/lang/System:currentTimeMillis	()J
+    //   55: invokestatic 141	java/lang/System:currentTimeMillis	()J
     //   58: lstore_1
     //   59: aload_0
     //   60: ifnull +92 -> 152
-    //   63: new 106	java/io/File
+    //   63: new 107	java/io/File
     //   66: dup
     //   67: aload 5
-    //   69: new 108	java/lang/StringBuilder
+    //   69: new 109	java/lang/StringBuilder
     //   72: dup
-    //   73: invokespecial 109	java/lang/StringBuilder:<init>	()V
+    //   73: invokespecial 110	java/lang/StringBuilder:<init>	()V
     //   76: lload_1
-    //   77: invokestatic 146	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   80: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   83: ldc 148
-    //   85: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   88: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   91: invokespecial 151	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   77: invokestatic 147	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   80: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   83: ldc 149
+    //   85: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   88: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   91: invokespecial 152	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
     //   94: astore 5
     //   96: aload 5
-    //   98: invokevirtual 154	java/io/File:createNewFile	()Z
+    //   98: invokevirtual 155	java/io/File:createNewFile	()Z
     //   101: ifeq +205 -> 306
     //   104: aload 5
-    //   106: invokevirtual 157	java/io/File:getPath	()Ljava/lang/String;
+    //   106: invokevirtual 158	java/io/File:getPath	()Ljava/lang/String;
     //   109: astore_3
-    //   110: new 159	java/io/FileOutputStream
+    //   110: new 160	java/io/FileOutputStream
     //   113: dup
     //   114: aload 5
-    //   116: invokevirtual 157	java/io/File:getPath	()Ljava/lang/String;
-    //   119: invokespecial 160	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   116: invokevirtual 158	java/io/File:getPath	()Ljava/lang/String;
+    //   119: invokespecial 161	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   122: astore 4
     //   124: aload_0
-    //   125: getstatic 166	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   125: getstatic 167	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
     //   128: bipush 100
     //   130: aload 4
-    //   132: invokevirtual 172	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   132: invokevirtual 173	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   135: pop
     //   136: aload_3
     //   137: astore_0
@@ -201,7 +204,7 @@ public class ShortVideoPreviewActivity
     //   140: aload 4
     //   142: ifnull +10 -> 152
     //   145: aload 4
-    //   147: invokevirtual 175	java/io/FileOutputStream:close	()V
+    //   147: invokevirtual 176	java/io/FileOutputStream:close	()V
     //   150: aload_0
     //   151: astore_3
     //   152: aload_3
@@ -214,13 +217,13 @@ public class ShortVideoPreviewActivity
     //   162: aload 4
     //   164: astore_3
     //   165: aload 5
-    //   167: invokevirtual 178	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   167: invokevirtual 179	java/lang/OutOfMemoryError:printStackTrace	()V
     //   170: aload_0
     //   171: astore_3
     //   172: aload 4
     //   174: ifnull -22 -> 152
     //   177: aload 4
-    //   179: invokevirtual 175	java/io/FileOutputStream:close	()V
+    //   179: invokevirtual 176	java/io/FileOutputStream:close	()V
     //   182: aload_0
     //   183: areturn
     //   184: astore_3
@@ -233,23 +236,23 @@ public class ShortVideoPreviewActivity
     //   194: astore_0
     //   195: aload 4
     //   197: astore_3
-    //   198: ldc 180
+    //   198: ldc 181
     //   200: iconst_1
-    //   201: new 108	java/lang/StringBuilder
+    //   201: new 109	java/lang/StringBuilder
     //   204: dup
-    //   205: invokespecial 109	java/lang/StringBuilder:<init>	()V
-    //   208: ldc 182
-    //   210: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   205: invokespecial 110	java/lang/StringBuilder:<init>	()V
+    //   208: ldc 183
+    //   210: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   213: aload 5
-    //   215: invokevirtual 185	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   218: invokevirtual 124	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   221: invokestatic 190	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   215: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   218: invokevirtual 125	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   221: invokestatic 191	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   224: aload_0
     //   225: astore_3
     //   226: aload 4
     //   228: ifnull -76 -> 152
     //   231: aload 4
-    //   233: invokevirtual 175	java/io/FileOutputStream:close	()V
+    //   233: invokevirtual 176	java/io/FileOutputStream:close	()V
     //   236: aload_0
     //   237: areturn
     //   238: astore_3
@@ -261,7 +264,7 @@ public class ShortVideoPreviewActivity
     //   244: aload_3
     //   245: ifnull +7 -> 252
     //   248: aload_3
-    //   249: invokevirtual 175	java/io/FileOutputStream:close	()V
+    //   249: invokevirtual 176	java/io/FileOutputStream:close	()V
     //   252: aload_0
     //   253: athrow
     //   254: astore_3
@@ -307,19 +310,19 @@ public class ShortVideoPreviewActivity
     //   0	317	0	paramBitmap	Bitmap
     //   58	19	1	l	long
     //   1	171	3	localObject1	Object
-    //   184	1	3	localException1	java.lang.Exception
+    //   184	1	3	localException1	Exception
     //   197	29	3	localObject2	Object
-    //   238	1	3	localException2	java.lang.Exception
+    //   238	1	3	localException2	Exception
     //   243	6	3	localObject3	Object
-    //   254	1	3	localException3	java.lang.Exception
-    //   257	1	3	localException4	java.lang.Exception
+    //   254	1	3	localException3	Exception
+    //   257	1	3	localException4	Exception
     //   264	48	3	localObject4	Object
     //   9	304	4	localObject5	Object
     //   39	76	5	localFile	File
     //   154	12	5	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   187	27	5	localException5	java.lang.Exception
-    //   272	1	5	localException6	java.lang.Exception
-    //   282	1	5	localException7	java.lang.Exception
+    //   187	27	5	localException5	Exception
+    //   272	1	5	localException6	Exception
+    //   282	1	5	localException7	Exception
     //   289	1	5	localOutOfMemoryError2	java.lang.OutOfMemoryError
     //   299	1	5	localOutOfMemoryError3	java.lang.OutOfMemoryError
     //   3	157	6	localObject6	Object
@@ -343,21 +346,23 @@ public class ShortVideoPreviewActivity
     //   124	136	299	java/lang/OutOfMemoryError
   }
   
-  public static HashMap a(String paramString, Context paramContext)
+  public static HashMap<String, String> a(String paramString, Context paramContext)
   {
     HashMap localHashMap = new HashMap();
-    String str = ShortVideoUtils.c(paramString, paramString.substring(paramString.lastIndexOf(".") + 1));
+    String str1 = ShortVideoUtils.c(paramString, paramString.substring(paramString.lastIndexOf(".") + 1));
     Object localObject1 = ShortVideoTrimmer.a(paramString);
     int k;
     boolean bool;
     int m;
-    if ((localObject1 != null) && (((ShortVideoTrimmer.CompressConfig)localObject1).jdField_a_of_type_Boolean)) {
+    if ((localObject1 != null) && (((awmi)localObject1).jdField_a_of_type_Boolean)) {
       if (Build.VERSION.SDK_INT >= 18)
       {
         Object localObject2 = new MediaMetadataRetriever();
         ((MediaMetadataRetriever)localObject2).setDataSource(paramString);
-        long l = Long.parseLong(((MediaMetadataRetriever)localObject2).extractMetadata(9));
-        k = ShortVideoCodec.b(paramContext);
+        String str2 = ((MediaMetadataRetriever)localObject2).extractMetadata(9);
+        ((MediaMetadataRetriever)localObject2).release();
+        long l = Long.parseLong(str2);
+        k = awif.a(paramContext);
         if (((k & 0x1) > 0) && ((k & 0x2) > 0))
         {
           bool = true;
@@ -365,34 +370,34 @@ public class ShortVideoPreviewActivity
             QLog.d("VideoCompressTask", 2, "CompressTask, step: isHWCodecSupported = " + bool);
           }
           if (!bool) {
-            break label334;
+            break label344;
           }
           if (QLog.isColorLevel()) {
             QLog.d("VideoCompressTask", 2, "CompressTask, step: Try to compress using MediaCodec");
           }
           localObject2 = new File(paramString);
-          localObject1 = new ShortVideoPreviewActivity.HWCompressProcessor(str, (int)(((ShortVideoTrimmer.CompressConfig)localObject1).jdField_b_of_type_Long * 1024L), (int)((ShortVideoTrimmer.CompressConfig)localObject1).jdField_a_of_type_Long, 0L, l);
-          if ((!new VideoConverter().a((File)localObject2, (VideoConverter.Processor)localObject1, true)) || (((ShortVideoPreviewActivity.HWCompressProcessor)localObject1).a != null)) {
-            break label319;
+          localObject1 = new ahvw(str1, (int)(((awmi)localObject1).jdField_b_of_type_Long * 1024L), (int)((awmi)localObject1).jdField_a_of_type_Long, 0L, l);
+          if ((!new awmx().a((File)localObject2, (awmy)localObject1, true)) || (((ahvw)localObject1).a != null)) {
+            break label329;
           }
           if (QLog.isColorLevel()) {
             QLog.d("VideoCompressTask", 2, "CompressTask, step: compress completed using MediaCodec");
           }
           m = 0;
-          label235:
+          label245:
           k = m;
-          localObject1 = str;
+          localObject1 = str1;
           if (m != 0)
           {
             k = m;
-            localObject1 = str;
-            if (!TextUtils.isEmpty(str))
+            localObject1 = str1;
+            if (!TextUtils.isEmpty(str1))
             {
               if (QLog.isColorLevel()) {
                 QLog.d("VideoCompressTask", 2, "CompressTask, step: Try to compress using ShortVideoTrimmer.compressVideo");
               }
-              k = ShortVideoTrimmer.a(paramContext, paramString, str);
-              localObject1 = str;
+              k = ShortVideoTrimmer.a(paramContext, paramString, str1);
+              localObject1 = str1;
             }
           }
         }
@@ -405,14 +410,14 @@ public class ShortVideoPreviewActivity
       return localHashMap;
       bool = false;
       break;
-      label319:
+      label329:
       if (QLog.isColorLevel()) {
         QLog.d("VideoCompressTask", 2, "CompressTask, step: compress failed using MediaCodecr");
       }
-      label334:
+      label344:
       m = -1;
-      break label235;
-      if ((localObject1 != null) && (!((ShortVideoTrimmer.CompressConfig)localObject1).jdField_a_of_type_Boolean))
+      break label245;
+      if ((localObject1 != null) && (!((awmi)localObject1).jdField_a_of_type_Boolean))
       {
         k = 0;
         localObject1 = paramString;
@@ -420,22 +425,22 @@ public class ShortVideoPreviewActivity
       else
       {
         k = -1;
-        localObject1 = str;
+        localObject1 = str1;
       }
     }
   }
   
   public static void a(Context paramContext, int paramInt)
   {
-    DialogUtil.a(paramContext, 232, null, paramContext.getString(paramInt), new ykv(), null).show();
+    babr.a(paramContext, 232, null, paramContext.getString(paramInt), new ahvl(), null).show();
   }
   
   private void f()
   {
     this.jdField_a_of_type_Long = new File(this.jdField_c_of_type_JavaLangString).length();
-    if ((NetworkUtil.g(this)) && (!NetworkUtil.h(this)) && (this.jdField_a_of_type_Long > FMConfig.a()))
+    if ((badq.g(this)) && (!badq.h(this)) && (this.jdField_a_of_type_Long > aonj.a()))
     {
-      FMDialogUtil.a(this, 2131428241, 2131428237, new yku(this));
+      apbx.a(this, 2131627035, 2131627040, new ahvk(this));
       return;
     }
     g();
@@ -455,7 +460,7 @@ public class ShortVideoPreviewActivity
       str1 = str2;
       if (str2 == null)
       {
-        QQToast.a(this, "请设置INIT_ACTIVITY_CLASS_NAME ", 0).a();
+        bbmy.a(this, "请设置INIT_ACTIVITY_CLASS_NAME ", 0).a();
         return;
       }
     }
@@ -468,7 +473,7 @@ public class ShortVideoPreviewActivity
     localIntent.putExtra("file_source", this.jdField_b_of_type_JavaLangString);
     localIntent.putExtra("start_init_activity_after_sended", true);
     if (!this.jdField_a_of_type_Boolean) {
-      ReportController.b(null, "CliOper", "", "", "0X8006130", "0X8006130", 0, 0, "", "", "", "");
+      awqx.b(null, "CliOper", "", "", "0X8006130", "0X8006130", 0, 0, "", "", "", "");
     }
     localObject = getIntent();
     if ((localObject != null) && (((Intent)localObject).hasExtra("custom_shortvideopreview_sendbtn_reportActionName")))
@@ -480,7 +485,7 @@ public class ShortVideoPreviewActivity
         localObject = "";
       }
       if (str2 != null) {
-        ReportController.b(null, "CliOper", "", "", str2, str2, 0, 0, (String)localObject, "", "", "");
+        awqx.b(null, "CliOper", "", "", str2, str2, 0, 0, (String)localObject, "", "", "");
       }
     }
     startActivity(localIntent);
@@ -488,12 +493,12 @@ public class ShortVideoPreviewActivity
   
   public int a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.a();
+    return this.jdField_a_of_type_Bass.a();
   }
   
   public String a(int paramInt)
   {
-    return LocalVideoMediaPlayer.a(paramInt);
+    return basw.a(paramInt);
   }
   
   void a()
@@ -502,7 +507,7 @@ public class ShortVideoPreviewActivity
       switch (this.j)
       {
       default: 
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131433030);
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(2131629116);
       }
     }
     for (;;)
@@ -511,40 +516,51 @@ public class ShortVideoPreviewActivity
       {
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
         if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131430155);
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131653579);
         }
       }
       return;
-      StringBuilder localStringBuilder = new StringBuilder("发送");
+      StringBuilder localStringBuilder = new StringBuilder(ajjy.a(2131648295));
       if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)) {
         localStringBuilder.append("(").append(this.jdField_a_of_type_JavaUtilArrayList.size()).append(")");
       }
       this.jdField_b_of_type_AndroidWidgetTextView.setText(localStringBuilder);
       continue;
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131433030);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131629116);
       continue;
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131430497);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131631821);
     }
   }
   
   public void a(int paramInt)
   {
-    if (!FileUtils.b(this.jdField_c_of_type_JavaLangString)) {
-      QQToast.a(this, 2131437376, 0).a();
+    if (!bace.b(this.jdField_c_of_type_JavaLangString)) {
+      bbmy.a(this, 2131653686, 0).a();
     }
     do
     {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.a(this.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer$OnCompletionListener);
-      this.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.a(this.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer$OnPreparedListener);
-      this.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.a(this.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer$OnPlayStateListener);
-      if (!this.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.a(this.jdField_c_of_type_JavaLangString, paramInt)) {
+      this.jdField_a_of_type_Bass.a(this.jdField_a_of_type_Bast);
+      this.jdField_a_of_type_Bass.a(this.jdField_a_of_type_Basv);
+      this.jdField_a_of_type_Bass.a(this.jdField_a_of_type_Basu);
+      if (!this.jdField_a_of_type_Bass.a(this.jdField_c_of_type_JavaLangString, paramInt)) {
         break;
       }
+      if (befo.b()) {
+        ((AudioManager)getSystemService("audio")).requestAudioFocus(null, 3, 2);
+      }
     } while (this.j == 10);
-    this.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.a(this.jdField_a_of_type_AndroidViewSurfaceView.getHolder());
-    return;
-    DialogUtil.a(this, 232, null, getString(2131437386), new yld(this), null).show();
+    try
+    {
+      this.jdField_a_of_type_Bass.a(this.jdField_a_of_type_AndroidViewSurfaceView.getHolder());
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("ShortVideoPreviewActivity", 1, "play exception:", localException);
+      return;
+    }
+    babr.a(this, 232, null, getString(2131653713), new ahvr(this), null).show();
   }
   
   void a(Intent paramIntent)
@@ -574,18 +590,18 @@ public class ShortVideoPreviewActivity
     }
     for (;;)
     {
-      if ((TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) || ((this.j != 2) && (this.j != 6) && (this.j != 10) && (!bool3) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) || (!FileUtils.b(this.jdField_c_of_type_JavaLangString)))
+      if ((TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) || ((this.j != 2) && (this.j != 6) && (this.j != 10) && (!bool3) && (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) || (!bace.b(this.jdField_c_of_type_JavaLangString)))
       {
         if (QLog.isColorLevel()) {
           QLog.e("ShortVideoPreviewActivity", 2, "ShortVideoPreviewActivity initData(),mVideoPath or mUin is empty or mVideoPath not exits, just finish.");
         }
-        QQToast.a(this, 2131437376, 0).a();
+        bbmy.a(this, 2131653686, 0).a();
         super.finish();
       }
       return;
-      if ((paramIntent.contains("QZonePublishMoodTabActivity")) || (paramIntent.contains("QZonePublishMoodActivity"))) {
+      if ((paramIntent.contains("QZonePublishMoodTabActivity")) || (paramIntent.contains("QZonePublishMoodRealActivity"))) {
         this.j = 1;
-      } else if (paramIntent.contains("QZoneUploadPhotoActivity")) {
+      } else if (paramIntent.contains("QZoneUploadPhotoRealActivity")) {
         this.j = 1;
       } else if (bool1) {
         this.j = 2;
@@ -612,27 +628,33 @@ public class ShortVideoPreviewActivity
     if (QLog.isColorLevel()) {
       QLog.d("ShortVideoPreviewActivity", 2, "#resume#");
     }
-    this.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.a();
+    this.jdField_a_of_type_Bass.a();
+    if (befo.b()) {
+      ((AudioManager)getSystemService("audio")).requestAudioFocus(null, 3, 2);
+    }
   }
   
   void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.c();
+    if (this.jdField_a_of_type_Bass != null) {
+      this.jdField_a_of_type_Bass.c();
     }
   }
   
   public void d()
   {
-    this.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.b();
+    if (befo.b()) {
+      ((AudioManager)getSystemService("audio")).abandonAudioFocus(null);
+    }
+    this.jdField_a_of_type_Bass.b();
   }
   
-  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
@@ -645,28 +667,28 @@ public class ShortVideoPreviewActivity
         QLog.d("ShortVideoPreviewActivity", 2, "onCreate(), mSavedCurPosition : " + this.g + ",mSavedPlayState : " + a(this.h));
       }
     }
-    super.setContentView(2130970638);
-    this.jdField_a_of_type_AndroidViewSurfaceView = ((SurfaceView)findViewById(2131364968));
+    super.setContentView(2131495518);
+    this.jdField_a_of_type_AndroidViewSurfaceView = ((SurfaceView)findViewById(2131310911));
     this.jdField_a_of_type_AndroidViewSurfaceView.getHolder().setType(3);
     this.jdField_a_of_type_AndroidViewSurfaceView.getHolder().addCallback(this.jdField_a_of_type_AndroidViewSurfaceHolder$Callback);
-    this.jdField_a_of_type_AndroidViewSurfaceView.getViewTreeObserver().addOnGlobalLayoutListener(new ykz(this));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364504));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371490));
+    this.jdField_a_of_type_AndroidViewSurfaceView.getViewTreeObserver().addOnGlobalLayoutListener(new ahvm(this));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131299236));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131298298));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371492));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131310068));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371481));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131305436));
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131371484));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371487));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371489));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371486));
-    this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130843369);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131305219));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131306306));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131311810));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131305437));
+    this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130845180);
     this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)findViewById(2131371488));
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)findViewById(2131310011));
     this.jdField_a_of_type_AndroidWidgetSeekBar.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(this.jdField_a_of_type_AndroidWidgetSeekBar$OnSeekBarChangeListener);
-    this.jdField_a_of_type_AndroidWidgetImageView.getViewTreeObserver().addOnGlobalLayoutListener(new ylb(this));
+    this.jdField_a_of_type_AndroidWidgetImageView.getViewTreeObserver().addOnGlobalLayoutListener(new ahvp(this));
     a();
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
@@ -687,7 +709,7 @@ public class ShortVideoPreviewActivity
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
     if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
@@ -715,36 +737,51 @@ public class ShortVideoPreviewActivity
     {
       k = 1;
       if ((!Environment.getExternalStorageState().equals("mounted")) || (k == 0)) {
-        break label140;
+        break label256;
       }
       k = 1;
-    }
-    for (;;)
-    {
-      if (k != 0)
-      {
-        if (Utils.b() > 512000L)
-        {
-          if (NetworkUtil.b(this))
-          {
-            this.jdField_a_of_type_Long = new File(this.jdField_c_of_type_JavaLangString).length();
-            localObject = ShortVideoUtils.a(this, this.jdField_a_of_type_Long);
-            DialogUtil.a(this, 232, null, String.format(getResources().getString(2131437396), new Object[] { localObject }), new yks(this), new ykt(this)).show();
-            return;
-            k = 0;
-            break;
-            label140:
-            k = 0;
-            continue;
-          }
-          g();
-          return;
-        }
-        a(this, 2131437392);
-        return;
+      label38:
+      this.jdField_a_of_type_Long = new File(this.jdField_c_of_type_JavaLangString).length();
+      if (k == 0) {
+        break label279;
+      }
+      if (azzz.b() <= 512000L) {
+        break label271;
+      }
+      if ((aweg.jdField_b_of_type_Long == 0L) || (System.currentTimeMillis() - aweg.jdField_b_of_type_Long >= 300000L)) {
+        break label261;
       }
     }
-    QQToast.a(this, 1, 2131434786, 0).b(getTitleBarHeight());
+    label256:
+    label261:
+    for (boolean bool = true;; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoPreviewActivity", 2, "upload video isConfirmed=" + bool + " allowUploadInXGTime=" + aweg.jdField_b_of_type_Long);
+      }
+      if ((!badq.b(this)) || (bool) || (this.jdField_a_of_type_Long < 1048576L)) {
+        break label266;
+      }
+      localObject = ShortVideoUtils.a(this, this.jdField_a_of_type_Long);
+      localObject = String.format(getResources().getString(2131653679), new Object[] { localObject });
+      ShortVideoPreviewActivity.13 local13 = new ShortVideoPreviewActivity.13(this);
+      if (bbrm.a(this, 4, new ahvh(this, local13))) {
+        babr.a(this, 232, null, (String)localObject, new ahvi(this, local13), new ahvj(this)).show();
+      }
+      return;
+      k = 0;
+      break;
+      k = 0;
+      break label38;
+    }
+    label266:
+    g();
+    return;
+    label271:
+    a(this, 2131653704);
+    return;
+    label279:
+    bbmy.a(this, 1, 2131653216, 0).b(getTitleBarHeight());
   }
   
   @TargetApi(11)
@@ -754,10 +791,10 @@ public class ShortVideoPreviewActivity
     {
     default: 
       return;
-    case 2131371490: 
+    case 2131298298: 
       super.finish();
       return;
-    case 2131371481: 
+    case 2131305436: 
       if (QLog.isColorLevel()) {
         QLog.d("ShortVideoPreviewActivity", 2, "handleClick: mPlayState = " + a(a()));
       }
@@ -775,7 +812,7 @@ public class ShortVideoPreviewActivity
       case 0: 
         if (this.app.c())
         {
-          QQToast.a(this, 0, 2131437399, 0).a();
+          bbmy.a(this, 0, 2131653692, 0).a();
           return;
         }
         a(0);
@@ -789,7 +826,7 @@ public class ShortVideoPreviewActivity
       }
       a(0);
       return;
-    case 2131371486: 
+    case 2131305437: 
       if (QLog.isColorLevel()) {
         QLog.d("ShortVideoPreviewActivity", 2, "handleClick: mPlayState = " + a(a()));
       }
@@ -807,17 +844,17 @@ public class ShortVideoPreviewActivity
       case 0: 
         if (this.app.c())
         {
-          QQToast.a(this, 0, 2131437399, 0).a();
+          bbmy.a(this, 0, 2131653692, 0).a();
           return;
         }
         a(0);
         return;
       case 1: 
-        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130843368);
+        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130845179);
         d();
         return;
       case 2: 
-        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130843369);
+        this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130845180);
         b();
         return;
       }
@@ -853,10 +890,10 @@ public class ShortVideoPreviewActivity
       paramView.putExtra("file_send_duration", this.jdField_b_of_type_Long);
       localArrayList = new ArrayList();
       localArrayList.add(this.jdField_c_of_type_JavaLangString);
-      DialogUtil.a(this, 232, null, getString(2131430502, new Object[] { String.format("%.2fMB", new Object[] { Double.valueOf(this.jdField_a_of_type_Long / 1024.0D / 1024.0D) }) }), new ylh(this, paramView, localArrayList), new ykp(this)).show();
+      babr.a(this, 232, null, getString(2131632254, new Object[] { String.format("%.2fMB", new Object[] { Double.valueOf(this.jdField_a_of_type_Long / 1024.0D / 1024.0D) }) }), new ahvv(this, paramView, localArrayList), new ahve(this)).show();
       return;
     case 2: 
-      DialogUtil.a(this, 232, null, getString(2131430502, new Object[] { String.format("%.2fMB", new Object[] { Double.valueOf(this.jdField_a_of_type_Long / 1024.0D / 1024.0D) }) }), new ykq(this), new ykr(this)).show();
+      babr.a(this, 232, null, getString(2131632254, new Object[] { String.format("%.2fMB", new Object[] { Double.valueOf(this.jdField_a_of_type_Long / 1024.0D / 1024.0D) }) }), new ahvf(this), new ahvg(this)).show();
       paramView = new Intent("key_video_select_apply_click");
       paramView.putExtra("className", super.getIntent().getStringExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME"));
       sendBroadcast(paramView);
@@ -866,14 +903,14 @@ public class ShortVideoPreviewActivity
       QLog.d("ShortVideoPreviewActivity", 2, "ldStart Compress");
     }
     i = -1;
-    new yli(this, this).execute(new String[] { this.jdField_c_of_type_JavaLangString });
+    new ahvx(this, this).execute(new String[] { this.jdField_c_of_type_JavaLangString });
   }
   
-  protected void onSaveInstanceState(Bundle paramBundle)
+  public void onSaveInstanceState(Bundle paramBundle)
   {
     super.onSaveInstanceState(paramBundle);
     if ((a() == 1) || (a() == 2)) {
-      this.g = this.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.b();
+      this.g = this.jdField_a_of_type_Bass.b();
     }
     this.h = a();
     paramBundle.putInt("state_play_state", a());
@@ -885,21 +922,18 @@ public class ShortVideoPreviewActivity
   
   public void onStart()
   {
-    if (VersionUtils.b()) {
-      ((AudioManager)getSystemService("audio")).requestAudioFocus(null, 3, 2);
-    }
     super.onStart();
   }
   
-  protected void onStop()
+  public void onStop()
   {
-    if (VersionUtils.b()) {
+    if (befo.b()) {
       ((AudioManager)getSystemService("audio")).abandonAudioFocus(null);
     }
     super.onStop();
   }
   
-  protected void requestWindowFeature(Intent paramIntent)
+  public void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }
@@ -907,7 +941,7 @@ public class ShortVideoPreviewActivity
   public void run()
   {
     this.jdField_a_of_type_AndroidGraphicsBitmap = ShortVideoUtils.a(this, this.jdField_c_of_type_JavaLangString);
-    runOnUiThread(new ykw(this));
+    runOnUiThread(new ShortVideoPreviewActivity.19(this));
   }
 }
 

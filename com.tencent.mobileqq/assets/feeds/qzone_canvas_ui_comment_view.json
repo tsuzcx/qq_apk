@@ -1,5 +1,5 @@
 {
-  "Area": "com.qzone.canvasui.widget.CanvasListArea",
+  "class": "com.tencent.ditto.widget.DittoListArea",
   "shell": {
     "id": "commentList",
     "width": "match_parent",

@@ -1,18 +1,47 @@
-import com.tencent.mobileqq.leba.LebaWithFeeds;
+import android.os.Bundle;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.mp.mobileqq_mp.SendMenuEventResponse;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class aeio
-  implements Runnable
+class aeio
+  implements BusinessObserver
 {
-  public aeio(LebaWithFeeds paramLebaWithFeeds, boolean paramBoolean) {}
+  aeio(aein paramaein) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    LebaWithFeeds.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaWithFeeds, this.jdField_a_of_type_Boolean);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a.a, 2, "requestQidiKefu ... onReceive = " + paramBoolean);
+    }
+    if (paramBoolean) {
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        mobileqq_mp.SendMenuEventResponse localSendMenuEventResponse = new mobileqq_mp.SendMenuEventResponse();
+        localSendMenuEventResponse.mergeFrom(paramBundle);
+        paramInt = localSendMenuEventResponse.ret_info.ret_code.get();
+        if (QLog.isColorLevel()) {
+          QLog.d(this.a.a.a, 2, "requestQidiKefu ... onReceive: retCode = " + paramInt);
+        }
+        if (paramInt == 0)
+        {
+          this.a.a.ap = true;
+          this.a.a.bC();
+          this.a.a.bn();
+          return;
+        }
+      }
+      catch (Exception paramBundle) {}
+    }
+    this.a.a.B(2131629887);
+    this.a.a.bn();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeio
  * JD-Core Version:    0.7.0.1
  */

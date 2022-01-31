@@ -1,240 +1,96 @@
-import ConfigPush.FileStoragePushFSSvcList;
-import ConfigPush.FileStorageServerListInfo;
-import com.tencent.mobileqq.ptt.PttIpSaver;
-import com.tencent.mobileqq.transfile.FMTSrvAddrProvider;
-import com.tencent.mobileqq.transfile.FMTSrvAddrProvider.PttIpList;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.barrage.BarrageView;
+import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
 import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Random;
+import java.lang.ref.WeakReference;
 
-public class aiuj
+class aiuj
+  implements aiij
 {
-  private Random jdField_a_of_type_JavaUtilRandom = new Random(System.currentTimeMillis());
-  private int[][] jdField_a_of_type_Array2dOfInt;
+  private WeakReference<aiug> a;
   
-  public aiuj(FMTSrvAddrProvider paramFMTSrvAddrProvider) {}
-  
-  private int a(int[] paramArrayOfInt)
+  public aiuj(aiug paramaiug)
   {
-    if (paramArrayOfInt != null)
+    this.a = new WeakReference(paramaiug);
+  }
+  
+  public void a(int paramInt1, int paramInt2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloViewController", 2, new Object[] { "mOtherSurfaceView onCompleteRender, roleName=", paramString });
+    }
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
     {
-      int j = 5;
-      ArrayList localArrayList = new ArrayList();
-      int i = 0;
-      if (i < paramArrayOfInt.length)
+      return;
+      if (this.a != null)
       {
-        int k;
-        if (paramArrayOfInt[i] < j)
+        aiug localaiug = (aiug)this.a.get();
+        ApolloWebAvatarParam localApolloWebAvatarParam;
+        if (localaiug != null)
         {
-          k = paramArrayOfInt[i];
-          localArrayList.clear();
-          localArrayList.add(Integer.valueOf(i));
-        }
-        for (;;)
-        {
-          i += 1;
-          j = k;
-          break;
-          k = j;
-          if (paramArrayOfInt[i] == j)
+          localApolloWebAvatarParam = aiug.a(localaiug);
+          if ((localApolloWebAvatarParam != null) && (paramString.equals(localApolloWebAvatarParam.apolloId)) && (localaiug.b != null))
           {
-            localArrayList.add(Integer.valueOf(i));
-            k = j;
+            aiug.b(localaiug);
+            aiug.a(localaiug).removeMessages(24);
+            localaiug.b.stopLoopDelayed(1000L);
+            if (!TextUtils.isEmpty(aiug.a(localaiug)))
+            {
+              if (!aiug.a(localaiug)) {
+                break label173;
+              }
+              if ((aiug.a(localaiug) == 1) && (localaiug.a != null)) {
+                localaiug.a.b();
+              }
+            }
           }
         }
-      }
-      if (localArrayList.size() > 0) {
-        return ((Integer)localArrayList.get(Math.abs(this.jdField_a_of_type_JavaUtilRandom.nextInt()) % localArrayList.size())).intValue();
-      }
-    }
-    return -1;
-  }
-  
-  private int b(int[] paramArrayOfInt)
-  {
-    if (!FMTSrvAddrProvider.a(this.jdField_a_of_type_ComTencentMobileqqTransfileFMTSrvAddrProvider).a()) {}
-    for (int i = 2;; i = 5)
-    {
-      if (paramArrayOfInt != null)
-      {
-        int j = 0;
-        while (j < paramArrayOfInt.length)
+        while ((localaiug != null) && (localaiug.b != null))
         {
-          if (paramArrayOfInt[j] < i) {
-            return j;
+          return;
+          label173:
+          if (aiug.a(localaiug) == 1)
+          {
+            if (localaiug.a != null) {
+              localaiug.a.a(true);
+            }
           }
-          j += 1;
-        }
-      }
-      return -1;
-    }
-  }
-  
-  public FileStorageServerListInfo a()
-  {
-    Object localObject2 = null;
-    ArrayList localArrayList = FMTSrvAddrProvider.c(this.jdField_a_of_type_ComTencentMobileqqTransfileFMTSrvAddrProvider, 16);
-    Object localObject1 = localObject2;
-    if (localArrayList != null)
-    {
-      localObject1 = localObject2;
-      if (localArrayList.size() > 0)
-      {
-        int i = b(FMTSrvAddrProvider.a(this.jdField_a_of_type_ComTencentMobileqqTransfileFMTSrvAddrProvider).a(FMTSrvAddrProvider.a(this.jdField_a_of_type_ComTencentMobileqqTransfileFMTSrvAddrProvider).b()));
-        localObject1 = localObject2;
-        if (i > -1)
-        {
-          localObject1 = localObject2;
-          if (i < localArrayList.size()) {
-            localObject1 = (FileStorageServerListInfo)localArrayList.get(i);
+          else {
+            localaiug.b.getRenderImpl().a(1, localApolloWebAvatarParam.apolloId, "Bubble");
           }
         }
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("FMT_ADDR", 2, "getAddr error,ret=null");
-    }
-    return localObject1;
   }
-  
-  public FileStorageServerListInfo a(int paramInt)
-  {
-    Object localObject2 = null;
-    ArrayList localArrayList = FMTSrvAddrProvider.c(this.jdField_a_of_type_ComTencentMobileqqTransfileFMTSrvAddrProvider, paramInt);
-    Object localObject1 = localObject2;
-    if (localArrayList != null)
-    {
-      localObject1 = localObject2;
-      if (localArrayList.size() > 0)
-      {
-        paramInt = a(a(paramInt));
-        localObject1 = localObject2;
-        if (paramInt > -1)
-        {
-          localObject1 = localObject2;
-          if (paramInt < localArrayList.size()) {
-            localObject1 = (FileStorageServerListInfo)localArrayList.get(paramInt);
-          }
-        }
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("FMT_ADDR", 2, "getAddr error,ret=null");
-    }
-    return localObject1;
-  }
-  
-  public void a() {}
   
   public void a(int paramInt, String paramString)
   {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloViewController", 2, new Object[] { "mOtherSurfaceView onStartRender, roleName=", paramString });
+    }
+    if (TextUtils.isEmpty(paramString)) {}
+    aiug localaiug;
+    ApolloWebAvatarParam localApolloWebAvatarParam;
+    do
     {
-      ArrayList localArrayList = FMTSrvAddrProvider.c(this.jdField_a_of_type_ComTencentMobileqqTransfileFMTSrvAddrProvider, paramInt);
-      int[] arrayOfInt = a(paramInt);
-      if ((localArrayList != null) && (localArrayList.size() > 0) && (arrayOfInt != null) && (arrayOfInt.length > 0))
+      do
       {
-        paramString = new URL(paramString).getHost();
-        if ((paramString != null) && (paramString.length() > 0)) {
-          paramInt = 0;
-        }
-      }
-      for (;;)
-      {
-        if (paramInt < localArrayList.size())
+        do
         {
-          String str = ((FileStorageServerListInfo)localArrayList.get(paramInt)).sIP;
-          if ((str == null) || (!str.equalsIgnoreCase(paramString))) {
-            break label116;
-          }
-          if (arrayOfInt.length > paramInt) {
-            arrayOfInt[paramInt] += 1;
-          }
-        }
-        return;
-        label116:
-        paramInt += 1;
-      }
-      return;
-    }
-    catch (MalformedURLException paramString) {}
-  }
-  
-  public void a(FileStoragePushFSSvcList paramFileStoragePushFSSvcList)
-  {
-    int k = 0;
-    if (paramFileStoragePushFSSvcList != null)
-    {
-      this.jdField_a_of_type_Array2dOfInt = new int[18][];
-      if ((paramFileStoragePushFSSvcList.vUrlEncodeServiceList != null) && (paramFileStoragePushFSSvcList.vUrlEncodeServiceList.size() > 0)) {
-        this.jdField_a_of_type_Array2dOfInt[4] = new int[paramFileStoragePushFSSvcList.vUrlEncodeServiceList.size()];
-      }
-      if ((paramFileStoragePushFSSvcList.vGPicDownLoadList != null) && (paramFileStoragePushFSSvcList.vGPicDownLoadList.size() > 0)) {
-        this.jdField_a_of_type_Array2dOfInt[2] = new int[paramFileStoragePushFSSvcList.vGPicDownLoadList.size()];
-      }
-      if ((paramFileStoragePushFSSvcList.vPicDownLoadList != null) && (paramFileStoragePushFSSvcList.vPicDownLoadList.size() > 0)) {
-        this.jdField_a_of_type_Array2dOfInt[1] = new int[paramFileStoragePushFSSvcList.vPicDownLoadList.size()];
-      }
-      if ((paramFileStoragePushFSSvcList.vQzoneProxyServiceList != null) && (paramFileStoragePushFSSvcList.vQzoneProxyServiceList.size() > 0)) {
-        this.jdField_a_of_type_Array2dOfInt[3] = new int[paramFileStoragePushFSSvcList.vQzoneProxyServiceList.size()];
-      }
-      if ((paramFileStoragePushFSSvcList.vUpLoadList != null) && (paramFileStoragePushFSSvcList.vUpLoadList.size() > 0)) {
-        this.jdField_a_of_type_Array2dOfInt[0] = new int[paramFileStoragePushFSSvcList.vUpLoadList.size()];
-      }
-      if ((paramFileStoragePushFSSvcList.vVipEmotionList != null) && (paramFileStoragePushFSSvcList.vVipEmotionList.size() > 0)) {
-        this.jdField_a_of_type_Array2dOfInt[5] = new int[paramFileStoragePushFSSvcList.vVipEmotionList.size()];
-      }
-      if ((paramFileStoragePushFSSvcList.vC2CPicDownList != null) && (paramFileStoragePushFSSvcList.vC2CPicDownList.size() > 0)) {
-        this.jdField_a_of_type_Array2dOfInt[11] = new int[paramFileStoragePushFSSvcList.vC2CPicDownList.size()];
-      }
-      int i = 6;
-      int j;
-      if (i <= 10)
-      {
-        paramFileStoragePushFSSvcList = FMTSrvAddrProvider.a(this.jdField_a_of_type_ComTencentMobileqqTransfileFMTSrvAddrProvider, FMTSrvAddrProvider.a(this.jdField_a_of_type_ComTencentMobileqqTransfileFMTSrvAddrProvider, i));
-        if (paramFileStoragePushFSSvcList != null) {}
-        for (j = paramFileStoragePushFSSvcList.size();; j = 0)
-        {
-          this.jdField_a_of_type_Array2dOfInt[i] = new int[j];
-          i += 1;
-          break;
-        }
-      }
-      i = 12;
-      if (i <= 15)
-      {
-        paramFileStoragePushFSSvcList = FMTSrvAddrProvider.b(this.jdField_a_of_type_ComTencentMobileqqTransfileFMTSrvAddrProvider, FMTSrvAddrProvider.b(this.jdField_a_of_type_ComTencentMobileqqTransfileFMTSrvAddrProvider, i));
-        if (paramFileStoragePushFSSvcList != null) {}
-        for (j = paramFileStoragePushFSSvcList.size();; j = 0)
-        {
-          this.jdField_a_of_type_Array2dOfInt[i] = new int[j];
-          i += 1;
-          break;
-        }
-      }
-      paramFileStoragePushFSSvcList = FMTSrvAddrProvider.b(this.jdField_a_of_type_ComTencentMobileqqTransfileFMTSrvAddrProvider, FMTSrvAddrProvider.b(this.jdField_a_of_type_ComTencentMobileqqTransfileFMTSrvAddrProvider, 17));
-      i = k;
-      if (paramFileStoragePushFSSvcList != null) {
-        i = paramFileStoragePushFSSvcList.size();
-      }
-      this.jdField_a_of_type_Array2dOfInt[17] = new int[i];
-    }
-    FMTSrvAddrProvider.a(this.jdField_a_of_type_ComTencentMobileqqTransfileFMTSrvAddrProvider).a();
-  }
-  
-  int[] a(int paramInt)
-  {
-    if (this.jdField_a_of_type_Array2dOfInt == null) {
-      return null;
-    }
-    return this.jdField_a_of_type_Array2dOfInt[paramInt];
+          return;
+        } while (this.a == null);
+        localaiug = (aiug)this.a.get();
+      } while (localaiug == null);
+      localApolloWebAvatarParam = aiug.a(localaiug);
+    } while ((localApolloWebAvatarParam == null) || (!paramString.equals(localApolloWebAvatarParam.apolloId)));
+    aiug.a(localaiug);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiuj
  * JD-Core Version:    0.7.0.1
  */

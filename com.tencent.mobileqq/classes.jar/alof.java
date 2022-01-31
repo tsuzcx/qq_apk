@@ -1,18 +1,7 @@
-import com.tencent.open.downloadnew.DownloadManager;
-
-public final class alof
-  implements Runnable
-{
-  public alof(String paramString1, String paramString2, boolean paramBoolean) {}
-  
-  public void run()
-  {
-    DownloadManager.a().b(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Boolean);
-  }
-}
+public class alof {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alof
  * JD-Core Version:    0.7.0.1
  */

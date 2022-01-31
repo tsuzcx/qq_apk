@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class nearby_troop_hot$HotQunMsg
-  extends MessageMicro
+  extends MessageMicro<HotQunMsg>
 {
   public static final int CMD_FIELD_NUMBER = 3;
   public static final int EXT_FIELD_NUMBER = 5;
@@ -27,7 +27,7 @@ public final class nearby_troop_hot$HotQunMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.nearby_troop_hot.nearby_troop_hot.HotQunMsg
  * JD-Core Version:    0.7.0.1
  */

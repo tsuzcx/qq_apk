@@ -1,77 +1,48 @@
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.portal.HongBaoPendantHolder;
-import com.tencent.widget.HongBaoListView;
-import com.tencent.widget.HongBaoListViewListener;
+import android.support.annotation.NonNull;
+import com.tencent.qphone.base.util.QLog;
 
 public class amjh
-  implements Handler.Callback
+  extends amie<amjg>
 {
-  public amjh(HongBaoListView paramHongBaoListView) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public int a()
   {
-    switch (paramMessage.what)
-    {
+    return 580;
+  }
+  
+  @NonNull
+  public amjg a()
+  {
+    return amjg.a();
+  }
+  
+  @NonNull
+  public amjg a(@NonNull alzs[] paramArrayOfalzs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QVIP.PERF.ConfigProcessor", 1, paramArrayOfalzs[0].a);
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return false;
-            this.a.setIsShowingPreguide(true);
-            this.a.jdField_a_of_type_ComTencentMobileqqPortalHongBaoPendantHolder.a(this.a.f / 5, 300L);
-            this.a.springBackTo(-this.a.f);
-            if (this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener != null) {
-              this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener.b(false);
-            }
-            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 2000L);
-            this.a.invalidate();
-            return false;
-            this.a.a(300L);
-            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(7, 300L);
-          } while (this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener == null);
-          this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener.a(false);
-          return false;
-          this.a.setIsShowingPreguide(true);
-          i = this.a.f / 2;
-          this.a.setSpringbackOffset(-this.a.f);
-          if (paramMessage.arg1 != 0) {
-            i = paramMessage.arg1;
-          }
-          this.a.springBackTo(-i);
-          this.a.jdField_a_of_type_ComTencentMobileqqPortalHongBaoPendantHolder.a(this.a.f / 5, 300L);
-          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(6, 2000L);
-        } while (this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener == null);
-        this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener.b(false);
-        return false;
-        this.a.a(300L);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(7, 300L);
-      } while (this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener == null);
-      this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener.a(false);
-      return false;
-      this.a.setIsShowingPreguide(false);
-      this.a.setSpringbackOffset(0);
-      return false;
-      if (!this.a.isStackFromBottom()) {
-        this.a.setStackFromBottom(true);
-      }
-      this.a.setStackFromBottom(false);
-    } while (this.a.k);
-    int i = (int)this.a.getResources().getDimension(2131559588);
-    this.a.springBackTo(-i);
+    return amjg.a(paramArrayOfalzs[0].a);
+  }
+  
+  public Class<amjg> a()
+  {
+    return amjg.class;
+  }
+  
+  public boolean a()
+  {
     return false;
+  }
+  
+  @NonNull
+  public amjg b()
+  {
+    return amjg.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amjh
  * JD-Core Version:    0.7.0.1
  */

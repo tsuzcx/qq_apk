@@ -1,39 +1,39 @@
 package com.tencent.mobileqq.app.automator.step;
 
+import ajmm;
+import ajxv;
 import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.MessageObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import zxo;
 
 public class GetTroopAssisMsg
   extends AsyncStep
 {
-  private MessageObserver a;
+  private ajmm a;
   
-  protected int a()
+  public int a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.a().a(3, true);
+    this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a().a(3, true);
     return 2;
   }
   
   public void a()
   {
     super.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver == null)
+    if (this.jdField_a_of_type_Ajmm == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new zxo(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
+      this.jdField_a_of_type_Ajmm = new ajxv(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(this.jdField_a_of_type_Ajmm);
     }
   }
   
-  public void c()
+  public void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver != null)
+    if (this.jdField_a_of_type_Ajmm != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Ajmm);
+      this.jdField_a_of_type_Ajmm = null;
     }
   }
 }

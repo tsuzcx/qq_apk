@@ -1,32 +1,26 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.device.ble.QFindGattManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class qba
-  extends MqqHandler
+class qba
+  implements Animation.AnimationListener
 {
-  public qba(QFindGattManager paramQFindGattManager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  qba(qaz paramqaz) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramMessage.what == 100)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("DeviceBLE2", 2, "QFindGattManager write data timeout bleSN " + (String)paramMessage.obj);
-      }
-      QFindGattManager.a(this.a, paramMessage.arg1);
-      this.a.a((String)paramMessage.obj);
+    if (qaz.a(this.a) != null) {
+      qaz.a(this.a).setVisibility(8);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qba
  * JD-Core Version:    0.7.0.1
  */

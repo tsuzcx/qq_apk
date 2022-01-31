@@ -1,59 +1,79 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
-import android.text.TextUtils;
-import com.tencent.mobileqq.magicface.drawable.PngGifEngine;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class aema
-  implements Runnable
+  extends alzl<aelz>
 {
-  public aema(PngGifEngine paramPngGifEngine) {}
-  
-  public void run()
+  public int a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PngGifEngine", 2, "func run begins.");
-    }
-    Object localObject1 = this.a.a();
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      return;
-    }
-    long l2 = SystemClock.uptimeMillis();
-    Object localObject2 = PngGifEngine.a((String)localObject1);
-    if (QLog.isColorLevel()) {
-      QLog.d("PngGifEngine", 2, "func run, bitmap:" + localObject2);
-    }
-    localObject1 = this.a;
-    if (localObject2 != null) {}
-    for (;;)
+    return 410;
+  }
+  
+  @NonNull
+  public aelz a(int paramInt)
+  {
+    return new aelz();
+  }
+  
+  @Nullable
+  public aelz a(alzs[] paramArrayOfalzs)
+  {
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
     {
-      long l1;
-      try
-      {
-        if ((!((Bitmap)localObject2).isRecycled()) && (this.a.jdField_a_of_type_AndroidOsHandler != null))
-        {
-          l1 = SystemClock.uptimeMillis();
-          l2 += this.a.jdField_a_of_type_Aemb.b;
-          localObject2 = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, localObject2);
-          if (l1 > l2) {
-            this.a.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
-          }
-        }
-        else
-        {
-          return;
-        }
+      aelz localaelz = aelz.a(paramArrayOfalzs[0].a);
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerRecConfigProcessor", 2, "onParsed " + paramArrayOfalzs[0].a);
       }
-      finally {}
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, l2 - l1);
+      return localaelz;
     }
+    return null;
+  }
+  
+  public Class<aelz> a()
+  {
+    return aelz.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(aelz paramaelz)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof QQAppInterface))
+    {
+      localObject = (QQAppInterface)localObject;
+      String str = ((QQAppInterface)localObject).c();
+      aemi.a(BaseApplicationImpl.getApplication(), str, paramaelz.a());
+      aemi.a((QQAppInterface)localObject, paramaelz.a());
+    }
+  }
+  
+  public boolean a()
+  {
+    return super.a();
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aema
  * JD-Core Version:    0.7.0.1
  */

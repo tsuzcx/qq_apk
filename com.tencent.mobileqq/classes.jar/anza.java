@@ -1,23 +1,39 @@
-import android.view.ScaleGestureDetector;
-import android.view.ScaleGestureDetector.SimpleOnScaleGestureListener;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
-import dov.com.qq.im.cropvideo.RenderFilter;
+import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
 
 public class anza
-  extends ScaleGestureDetector.SimpleOnScaleGestureListener
+  extends aodp
 {
-  public anza(CropVideoActivity paramCropVideoActivity) {}
+  public anza(VerifyPwdView paramVerifyPwdView) {}
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  protected void a(int paramInt, String paramString)
   {
-    float f = paramScaleGestureDetector.getScaleFactor();
-    CropVideoActivity.a(this.a).b(f, f, 1.0F);
-    return true;
+    apcb.a(paramString);
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (!paramBoolean)
+    {
+      VerifyPwdView.a(this.a);
+      return;
+    }
+    VerifyPwdView.b(this.a);
+  }
+  
+  protected void b(int paramInt, String paramString)
+  {
+    apcb.a(paramString);
+    VerifyPwdView.c(this.a);
+  }
+  
+  protected void e()
+  {
+    VerifyPwdView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anza
  * JD-Core Version:    0.7.0.1
  */

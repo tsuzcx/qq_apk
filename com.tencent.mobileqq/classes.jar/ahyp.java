@@ -1,30 +1,31 @@
-import com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine;
-import com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine.FTSSearchResultItem;
-import java.util.Comparator;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-public class ahyp
-  implements Comparator
+class ahyp
+  implements View.OnClickListener
 {
-  public ahyp(FTSMessageSearchEngine paramFTSMessageSearchEngine) {}
+  ahyp(ahyo paramahyo, afwl paramafwl, int paramInt) {}
   
-  public int a(FTSMessageSearchEngine.FTSSearchResultItem paramFTSSearchResultItem1, FTSMessageSearchEngine.FTSSearchResultItem paramFTSSearchResultItem2)
+  public void onClick(View paramView)
   {
-    int j = Long.signum(paramFTSSearchResultItem1.jdField_a_of_type_Int - paramFTSSearchResultItem2.jdField_a_of_type_Int);
-    int i = j;
-    if (j == 0)
-    {
-      j = Long.signum(paramFTSSearchResultItem1.b - paramFTSSearchResultItem2.b);
-      i = j;
-      if (j == 0)
-      {
-        j = Long.signum(paramFTSSearchResultItem1.c - paramFTSSearchResultItem2.c);
-        i = j;
-        if (j == 0) {
-          i = Long.signum(-paramFTSSearchResultItem1.jdField_a_of_type_Long + paramFTSSearchResultItem2.jdField_a_of_type_Long);
-        }
-      }
+    paramView = new Intent(this.jdField_a_of_type_Ahyo.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("url", this.jdField_a_of_type_Afwl.b);
+    paramView.putExtra("isShowAd", false);
+    this.jdField_a_of_type_Ahyo.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    if ((this.jdField_a_of_type_Ahyo.jdField_a_of_type_AndroidContentContext instanceof AvatarPendantActivity)) {
+      ((AvatarPendantActivity)this.jdField_a_of_type_Ahyo.jdField_a_of_type_AndroidContentContext).a = -1L;
     }
-    return i;
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      VasWebviewUtil.reportCommercialDrainage("", "faceaddon", "0X8008486", "", 1, 0, 0, "", "", "");
+      return;
+    }
+    awqx.b(this.jdField_a_of_type_Ahyo.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006334", "0X8006334", 0, 0, "", "", "", "");
   }
 }
 

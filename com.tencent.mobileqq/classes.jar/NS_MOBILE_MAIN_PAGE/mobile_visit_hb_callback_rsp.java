@@ -9,9 +9,9 @@ import java.util.Map;
 public final class mobile_visit_hb_callback_rsp
   extends JceStruct
 {
-  static Map cache_ext_info = new HashMap();
+  static Map<String, String> cache_ext_info = new HashMap();
   public String err_msg = "";
-  public Map ext_info;
+  public Map<String, String> ext_info;
   public int ret;
   
   static
@@ -21,7 +21,7 @@ public final class mobile_visit_hb_callback_rsp
   
   public mobile_visit_hb_callback_rsp() {}
   
-  public mobile_visit_hb_callback_rsp(int paramInt, String paramString, Map paramMap)
+  public mobile_visit_hb_callback_rsp(int paramInt, String paramString, Map<String, String> paramMap)
   {
     this.ret = paramInt;
     this.err_msg = paramString;

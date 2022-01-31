@@ -1,100 +1,53 @@
-import android.graphics.Rect;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
+import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.filemanager.widget.QfileHorizontalListView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import com.tencent.widget.AdapterView.OnItemLongClickListener;
-import com.tencent.widget.AdapterView.OnItemSelectedListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class adri
-  extends GestureDetector.SimpleOnGestureListener
+class adri
+  implements bbgb
 {
-  public adri(QfileHorizontalListView paramQfileHorizontalListView) {}
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<Activity> b;
   
-  private boolean a(MotionEvent paramMotionEvent, View paramView)
+  adri(adra paramadra, QQAppInterface paramQQAppInterface, Activity paramActivity)
   {
-    Rect localRect = new Rect();
-    int[] arrayOfInt = new int[2];
-    paramView.getLocationOnScreen(arrayOfInt);
-    int i = arrayOfInt[0];
-    int j = paramView.getWidth();
-    int k = arrayOfInt[1];
-    localRect.set(i, k, j + i, paramView.getHeight() + k);
-    return localRect.contains((int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY());
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramActivity);
   }
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public void a(View paramView)
   {
-    return this.a.a(paramMotionEvent);
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return this.a.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    int j = this.a.getChildCount();
-    int i = 0;
-    for (;;)
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Activity localActivity = (Activity)this.b.get();
+    if ((localActivity == null) || (localQQAppInterface == null)) {
+      QLog.e("ChatItemBuilder", 1, "TextItemBuilder  onDoubleClick  app null fa null");
+    }
+    do
     {
-      if (i < j)
-      {
-        View localView = this.a.getChildAt(i);
-        if (!a(paramMotionEvent, localView)) {
-          break label99;
-        }
-        if (QfileHorizontalListView.a(this.a) != null) {
-          QfileHorizontalListView.a(this.a).a(this.a, localView, QfileHorizontalListView.a(this.a) + 1 + i, this.a.a.getItemId(i + (QfileHorizontalListView.a(this.a) + 1)));
-        }
-      }
       return;
-      label99:
-      i += 1;
-    }
-  }
-  
-  public boolean onScroll(MotionEvent arg1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    synchronized (this.a)
+      aciy.n = true;
+    } while ((this.jdField_a_of_type_Adra.a()) || (alyc.a(aciy.a(paramView))) || (aqux.a(this.jdField_a_of_type_Adra.a)) || (paramView.getId() == 2131311433) || (paramView.getId() == 2131304792) || (paramView.getId() == 2131298580));
+    Object localObject = (FragmentActivity)paramView.getContext();
+    if (localObject != null) {}
+    for (localObject = ((FragmentActivity)localObject).getChatFragment();; localObject = null)
     {
-      paramMotionEvent2 = this.a;
-      paramMotionEvent2.b += (int)paramFloat1;
-      this.a.requestLayout();
-      return true;
-    }
-  }
-  
-  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
-  {
-    int i = 0;
-    for (;;)
-    {
-      if (i < this.a.getChildCount())
+      if (localObject == null)
       {
-        View localView = this.a.getChildAt(i);
-        if (!a(paramMotionEvent, localView)) {
-          break label155;
-        }
-        if (QfileHorizontalListView.a(this.a) != null) {
-          QfileHorizontalListView.a(this.a).a(this.a, localView, QfileHorizontalListView.a(this.a) + 1 + i, this.a.a.getItemId(QfileHorizontalListView.a(this.a) + 1 + i));
-        }
-        if (QfileHorizontalListView.a(this.a) != null) {
-          QfileHorizontalListView.a(this.a).b(this.a, localView, QfileHorizontalListView.a(this.a) + 1 + i, this.a.a.getItemId(QfileHorizontalListView.a(this.a) + 1 + i));
-        }
+        ChatActivityUtils.a(localQQAppInterface, paramView, localActivity);
+        return;
       }
-      return true;
-      label155:
-      i += 1;
+      ChatActivityUtils.a(localQQAppInterface, paramView, localActivity, this.jdField_a_of_type_Adra.a.a);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adri
  * JD-Core Version:    0.7.0.1
  */

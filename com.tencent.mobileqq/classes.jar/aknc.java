@@ -1,69 +1,92 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.os.Build;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.utils.QQLSSensor;
-import com.tencent.mobileqq.utils.QQLSSensor.ProximitySensorChangeListener;
+import android.os.RemoteCallbackList;
+import android.os.RemoteException;
+import com.tencent.mobileqq.ar.ArConfigService;
 import com.tencent.qphone.base.util.QLog;
 
 public class aknc
-  implements SensorEventListener
+  implements akob
 {
-  public aknc(QQLSSensor paramQQLSSensor) {}
+  public aknc(ArConfigService paramArConfigService) {}
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent arg1)
+  public void a(int paramInt1, int paramInt2)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QQLSSensor", 4, "QQLSSensor onSensorChanged" + ???.values[0]);
+    if (ArConfigService.b(this.a) != null) {
+      try
+      {
+        int j = ArConfigService.b(this.a).beginBroadcast();
+        int i = 0;
+        for (;;)
+        {
+          if (i >= j) {
+            break label106;
+          }
+          try
+          {
+            ((akpt)ArConfigService.b(this.a).getBroadcastItem(i)).a(paramInt1, paramInt2);
+            i += 1;
+          }
+          catch (RemoteException localRemoteException)
+          {
+            for (;;)
+            {
+              localRemoteException.printStackTrace();
+            }
+          }
+        }
+        return;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArConfig_ArConfigService", 2, "FaceScanDownloadManager notify onProgress error:" + localException.getMessage());
+        }
+      }
     }
-    if (QQLSSensor.a(this.a) == null) {
-      return;
-    }
-    if (AIOUtils.b())
-    {
-      this.a.a = false;
-      return;
-    }
-    if (???.values[0] < QQLSSensor.a(this.a)) {
-      QQLSSensor.a(this.a, true);
-    }
+    label106:
+    ArConfigService.b(this.a).finishBroadcast();
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (ArConfigService.b(this.a) != null) {}
     for (;;)
     {
-      ??? = Build.MODEL;
-      if (!AIOUtils.a()) {
-        break;
+      int i;
+      try
+      {
+        int j = ArConfigService.b(this.a).beginBroadcast();
+        i = 0;
+        if (i >= j) {
+          break label129;
+        }
+        if (paramBoolean) {}
+        try
+        {
+          ((akpt)ArConfigService.b(this.a).getBroadcastItem(i)).a(paramInt);
+        }
+        catch (RemoteException localRemoteException)
+        {
+          localRemoteException.printStackTrace();
+        }
+        ((akpt)ArConfigService.b(this.a).getBroadcastItem(i)).b(paramInt, 0);
       }
-      if (QQLSSensor.a(this.a).hasMessages(1)) {
-        QQLSSensor.a(this.a).removeMessages(1);
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ArConfig_ArConfigService", 2, "FaceScanDownloadManager notify onFinish error:" + localException.getMessage());
+        }
       }
-      QQLSSensor.a(this.a).sendMessageDelayed(QQLSSensor.a(this.a).obtainMessage(1), 150L);
       return;
-      QQLSSensor.a(this.a, false);
-    }
-    if ((???.equalsIgnoreCase("mi 3c")) || (???.equalsIgnoreCase("K-Touch W619")) || (???.equalsIgnoreCase("mi 3w")))
-    {
-      if (QQLSSensor.a(this.a).hasMessages(1)) {
-        QQLSSensor.a(this.a).removeMessages(1);
-      }
-      QQLSSensor.a(this.a).sendMessageDelayed(QQLSSensor.a(this.a).obtainMessage(1), 250L);
+      label129:
+      ArConfigService.b(this.a).finishBroadcast();
       return;
-    }
-    synchronized (this.a)
-    {
-      if (QQLSSensor.a(this.a) != null) {
-        QQLSSensor.a(this.a).a(QQLSSensor.a(this.a));
-      }
-      return;
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aknc
  * JD-Core Version:    0.7.0.1
  */

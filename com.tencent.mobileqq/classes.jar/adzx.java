@@ -1,23 +1,30 @@
-import android.os.Handler;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
 
 public class adzx
-  implements Runnable
+  extends adzu
 {
-  public adzx(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
-  
-  public void run()
+  public adzx(QQAppInterface paramQQAppInterface, aeam paramaeam, QQWalletTransferMsgElem paramQQWalletTransferMsgElem, int paramInt, ackq paramackq)
   {
-    if (this.a.b())
-    {
-      this.a.e();
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 100L);
+    super(paramQQAppInterface, paramaeam, paramQQWalletTransferMsgElem, paramInt, paramackq);
+  }
+  
+  public boolean b()
+  {
+    boolean bool = super.b();
+    if (bool) {
+      return bool;
     }
+    this.a.b.setVisibility(0);
+    this.a.b.setTextColor(-8947849);
+    this.a.b.setText("QQ企业红包");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adzx
  * JD-Core Version:    0.7.0.1
  */

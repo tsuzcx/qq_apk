@@ -13,21 +13,18 @@ import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.accessibility.AccessibilityManager;
-import com.tencent.biz.AuthorizeConfig;
-import com.tencent.biz.common.util.Util;
+import awrn;
+import bbbb;
+import bbdc;
+import bbdf;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.mobileqq.webview.sonic.SonicClientImpl;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster.SetCookiesCallback;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils.ProxyConfig;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebSettingsExtension;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
@@ -42,47 +39,53 @@ import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import kyd;
-import kye;
-import kyf;
-import kyg;
-import kyh;
+import mkw;
+import mpw;
+import mzp;
+import mzq;
+import mzr;
+import mzs;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class CustomWebView
   extends SuperWebView
 {
-  protected static SparseArray a;
-  public static String b;
-  static String c;
-  protected CustomWebView.OpenApiTokenInfo a;
-  CustomWebView.ScrollInterface jdField_a_of_type_ComTencentBizPubaccountCustomWebView$ScrollInterface;
-  protected SonicClientImpl a;
-  protected WebViewPluginEngine a;
-  SwiftBrowserCookieMonster.SetCookiesCallback jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster$SetCookiesCallback = null;
-  String jdField_a_of_type_JavaLangString = "";
-  public boolean a;
-  public boolean b;
-  protected boolean c;
-  protected boolean d = true;
-  boolean e = true;
+  static final String CALLBACK_NAME_HOLDER = "((0))";
+  static final String CALLBACK_PARAM_HOLDER = "((1))";
+  static final String CALL_JS_DEFAULT_TPL = "(window.mqq && mqq.version > 20140616001 && mqq.execGlobalCallback || function(cb) {window[cb] && window[cb].apply(window, [].slice.call(arguments, 1));}).apply(window, [((0)), ((1))]);";
+  public static final String TAG = "CustomWebView";
+  public static final String TAG_WEBVIEW_CHECK = "WEBVIEWCHECK";
+  public static final String TAG_WEBVIEW_LOAD = "webviewLoad";
+  protected static SparseArray<String> mMsg4CallbackMap = new SparseArray(8);
+  static String sCallJsTpl;
+  public static String sLastContextLog;
+  protected boolean attachedToWindow;
+  String cookieUrl = "";
+  bbbb cookiesCallback = null;
+  protected boolean isDestroyed;
+  protected boolean isFirstLoad = true;
+  public boolean isPaused = true;
+  protected mzr mOpenApiInfo;
+  protected WebViewPluginEngine mPluginEngine;
+  public boolean mWebIsInitMiniAIO;
+  mzs mt;
+  boolean needSetCookies = true;
+  protected SonicClientImpl sonicSessionClient;
   
   static
   {
-    jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(8);
-    jdField_a_of_type_AndroidUtilSparseArray.put(0, "recode_successed");
-    jdField_a_of_type_AndroidUtilSparseArray.put(1, "recode_failed_permission_denied");
-    jdField_a_of_type_AndroidUtilSparseArray.put(2, "recode_failed_token_verify_time_out");
-    jdField_a_of_type_AndroidUtilSparseArray.put(3, "recode_failed_no_such_method");
-    jdField_a_of_type_AndroidUtilSparseArray.put(4, "recode_failed_params_error");
-    jdField_a_of_type_AndroidUtilSparseArray.put(5, "recode_failed_frequency_limit");
+    mMsg4CallbackMap.put(0, "recode_successed");
+    mMsg4CallbackMap.put(1, "recode_failed_permission_denied");
+    mMsg4CallbackMap.put(2, "recode_failed_token_verify_time_out");
+    mMsg4CallbackMap.put(3, "recode_failed_no_such_method");
+    mMsg4CallbackMap.put(4, "recode_failed_params_error");
+    mMsg4CallbackMap.put(5, "recode_failed_frequency_limit");
   }
   
   public CustomWebView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = true;
     if (Build.VERSION.SDK_INT >= 11) {
       removeJavascriptInterface("searchBoxJavaBridge_");
     }
@@ -91,7 +94,6 @@ public class CustomWebView
   public CustomWebView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Boolean = true;
     if (Build.VERSION.SDK_INT >= 11) {
       removeJavascriptInterface("searchBoxJavaBridge_");
     }
@@ -100,72 +102,18 @@ public class CustomWebView
   public CustomWebView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Boolean = true;
     if (Build.VERSION.SDK_INT >= 11) {
       removeJavascriptInterface("searchBoxJavaBridge_");
     }
   }
   
-  private Intent a()
+  public static void addContextLog(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidContentIntent != null) {
-      return this.jdField_a_of_type_AndroidContentIntent;
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a != null)) {
-      return this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a.getIntent();
-    }
-    return null;
-  }
-  
-  private boolean a()
-  {
-    if (this.e)
-    {
-      Intent localIntent = a();
-      if ((localIntent != null) && (localIntent.getBooleanExtra("ignoreLoginWeb", false)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("CustomWebView", 2, "ignore login state, set key cookie abort.");
-        }
-        this.e = false;
-      }
-    }
-    return this.e;
-  }
-  
-  private boolean a(kyh paramkyh)
-  {
-    if (!this.e) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        return false;
-        localObject = SwiftWebViewUtils.a(paramkyh.jdField_a_of_type_JavaLangString);
-      } while ((!"http".equals(localObject)) && (!"https".equals(localObject)));
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster$SetCookiesCallback = new kyd(this, paramkyh);
-      localObject = SwiftBrowserCookieMonster.a(paramkyh.jdField_a_of_type_JavaLangString);
-    } while (localObject == null);
-    this.e = false;
-    Intent localIntent = a();
-    if ((localIntent != null) && (localIntent.getBooleanExtra("avoidLoginWeb", false)))
-    {
-      ((SwiftBrowserCookieMonster)localObject).f();
-      return false;
-    }
-    this.jdField_a_of_type_JavaLangString = paramkyh.jdField_a_of_type_JavaLangString;
-    ((SwiftBrowserCookieMonster)localObject).a(paramkyh.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster$SetCookiesCallback, null, localIntent);
-    return true;
-  }
-  
-  public static void b(String paramString)
-  {
-    if ((paramString == null) || (paramString.equals(jdField_b_of_type_JavaLangString))) {
+    if ((paramString == null) || (paramString.equals(sLastContextLog))) {
       return;
     }
     long l = System.currentTimeMillis();
-    jdField_b_of_type_JavaLangString = paramString;
+    sLastContextLog = paramString;
     String str = paramString;
     if (paramString.length() > 512) {
       str = paramString.substring(0, 512);
@@ -178,85 +126,123 @@ public class CustomWebView
     if (QLog.isDevelopLevel()) {
       QLog.i("webviewLoad", 4, "cost:" + (System.currentTimeMillis() - l) + " " + paramString);
     }
-    StatisticCollector.a(null).a("webviewLoad", paramString);
+    awrn.a(null).a("webviewLoad", paramString);
   }
   
-  public CustomWebView.OpenApiTokenInfo a()
+  private Intent getIntent()
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo;
-  }
-  
-  public SonicClientImpl a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl;
-  }
-  
-  public WebViewPluginEngine a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine;
-  }
-  
-  public void a()
-  {
-    super.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl = null;
+    if (this.mIntent != null) {
+      return this.mIntent;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster$SetCookiesCallback != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    if ((this.mPluginEngine != null) && (this.mPluginEngine.a != null)) {
+      return this.mPluginEngine.a.getIntent();
+    }
+    return null;
+  }
+  
+  private boolean isNeedSetCookies()
+  {
+    if (this.needSetCookies)
     {
-      SwiftBrowserCookieMonster localSwiftBrowserCookieMonster = SwiftBrowserCookieMonster.a(this.jdField_a_of_type_JavaLangString);
-      if (localSwiftBrowserCookieMonster != null) {
-        localSwiftBrowserCookieMonster.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster$SetCookiesCallback);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster$SetCookiesCallback = null;
-      this.jdField_a_of_type_JavaLangString = "";
-    }
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = false;
-    this.d = true;
-    this.e = true;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo != null)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo.a();
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo = null;
-    }
-    setIntent(null);
-    setWebChromeClient(null);
-    setWebViewClient(null);
-    setDownloadListener(null);
-    setOnLongClickListener(null);
-    if (getX5WebViewExtension() != null) {
-      getX5WebViewExtension().setWebViewClientExtension(null);
-    }
-    getView().setOnTouchListener(null);
-    setMask(false);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine = null;
-  }
-  
-  public void a(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, ArrayList paramArrayList)
-  {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo == null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo = new CustomWebView.OpenApiTokenInfo();
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo.jdField_a_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo.jdField_b_of_type_JavaLangString = (paramInt1 + "_" + paramString1 + "_" + paramString2);
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTime() + paramInt3);
-    if ((paramArrayList != null) && (!paramArrayList.isEmpty()))
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-      paramString1 = paramArrayList.iterator();
-      while (paramString1.hasNext())
+      Intent localIntent = getIntent();
+      if ((localIntent != null) && (localIntent.getBooleanExtra("ignoreLoginWeb", false)))
       {
-        paramString2 = (String)paramString1.next();
-        this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo.jdField_a_of_type_JavaUtilHashMap.put(paramString2, Long.valueOf(0L));
+        if (QLog.isColorLevel()) {
+          QLog.d("CustomWebView", 2, "ignore login state, set key cookie abort.");
+        }
+        this.needSetCookies = false;
       }
     }
+    return this.needSetCookies;
   }
   
-  public void a(JsBridgeListener paramJsBridgeListener, int paramInt, String... paramVarArgs)
+  private boolean setCookiesIfNeeded(mzq parammzq)
+  {
+    if (!this.needSetCookies) {}
+    Object localObject;
+    do
+    {
+      do
+      {
+        return false;
+        localObject = bbdc.a(parammzq.jdField_a_of_type_JavaLangString);
+      } while ((!"http".equals(localObject)) && (!"https".equals(localObject)));
+      this.cookiesCallback = new mzp(this, parammzq);
+      localObject = SwiftBrowserCookieMonster.a(parammzq.jdField_a_of_type_JavaLangString);
+    } while (localObject == null);
+    this.needSetCookies = false;
+    Intent localIntent = getIntent();
+    if ((localIntent != null) && (localIntent.getBooleanExtra("avoidLoginWeb", false)))
+    {
+      ((SwiftBrowserCookieMonster)localObject).f();
+      return false;
+    }
+    this.cookieUrl = parammzq.jdField_a_of_type_JavaLangString;
+    ((SwiftBrowserCookieMonster)localObject).a(parammzq.jdField_a_of_type_JavaLangString, this.cookiesCallback, null, localIntent);
+    return true;
+  }
+  
+  public void callJs(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("CustomWebView", 2, "call js script = javascript:" + paramString);
+    }
+    if (this.isDestroyed) {
+      return;
+    }
+    if (Looper.myLooper() == Looper.getMainLooper()) {
+      try
+      {
+        super.loadUrl("javascript:" + paramString);
+        return;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        return;
+      }
+    }
+    ThreadManagerV2.getUIHandlerV2().post(new CustomWebView.4(this, paramString));
+  }
+  
+  public void callJs(String paramString, String... paramVarArgs)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("CustomWebView", 2, QLog.getStackTraceString(new Throwable("func is empty")));
+      }
+      return;
+    }
+    Object localObject;
+    if (sCallJsTpl == null)
+    {
+      localObject = mkw.a().a("jscallback", null);
+      if ((localObject == null) || (!((String)localObject).contains("((0))")) || (!((String)localObject).contains("((1))"))) {
+        break label152;
+      }
+    }
+    label152:
+    for (sCallJsTpl = (String)localObject;; sCallJsTpl = "(window.mqq && mqq.version > 20140616001 && mqq.execGlobalCallback || function(cb) {window[cb] && window[cb].apply(window, [].slice.call(arguments, 1));}).apply(window, [((0)), ((1))]);")
+    {
+      localObject = new StringBuilder();
+      if ((paramVarArgs == null) || (paramVarArgs.length <= 0) || ("".equals(paramVarArgs[0]))) {
+        break;
+      }
+      ((StringBuilder)localObject).append(paramVarArgs[0]);
+      int i = 1;
+      int j = paramVarArgs.length;
+      while (i < j)
+      {
+        ((StringBuilder)localObject).append(',').append(paramVarArgs[i]);
+        i += 1;
+      }
+    }
+    ((StringBuilder)localObject).append("void(0)");
+    callJs(sCallJsTpl.replace("((0))", mpw.a(paramString)).replace("((1))", (CharSequence)localObject));
+  }
+  
+  public void callJs4OpenApi(JsBridgeListener paramJsBridgeListener, int paramInt, String... paramVarArgs)
   {
     if ((paramJsBridgeListener == null) || (paramJsBridgeListener.jdField_a_of_type_Long == -1L))
     {
@@ -265,7 +251,7 @@ public class CustomWebView
       }
       return;
     }
-    for (Object localObject = (String)jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);; localObject = "")
+    for (Object localObject = (String)mMsg4CallbackMap.get(paramInt);; localObject = "")
     {
       try
       {
@@ -295,7 +281,7 @@ public class CustomWebView
         if (QLog.isColorLevel()) {
           QLog.d("CustomWebView.troop.openapi", 2, "callJs4OpenApi,listener.sn" + paramJsBridgeListener.jdField_a_of_type_Long + " | result:" + paramVarArgs);
         }
-        c("(window.mqq && mqq.version > 20140616001 && mqq.execGlobalCallback || function(cb) {window[cb] && window[cb].apply(window, [].slice.call(arguments, 1));}).apply(window, [((0)), ((1))]);".replace("((0))", Util.a(paramJsBridgeListener.jdField_a_of_type_Long + "")).replace("((1))", paramVarArgs));
+        callJs("(window.mqq && mqq.version > 20140616001 && mqq.execGlobalCallback || function(cb) {window[cb] && window[cb].apply(window, [].slice.call(arguments, 1));}).apply(window, [((0)), ((1))]);".replace("((0))", mpw.a(paramJsBridgeListener.jdField_a_of_type_Long + "")).replace("((1))", paramVarArgs));
         return;
       }
       catch (JSONException paramJsBridgeListener) {}
@@ -307,113 +293,7 @@ public class CustomWebView
     }
   }
   
-  public void a(String paramString)
-  {
-    if (this.jdField_b_of_type_Boolean) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        return;
-        if ("about:blank".equals(paramString))
-        {
-          super.loadUrl(paramString);
-          return;
-        }
-        if (!a()) {
-          break;
-        }
-        localObject = new kyh(this);
-        ((kyh)localObject).jdField_a_of_type_Int = 2;
-        ((kyh)localObject).jdField_a_of_type_JavaLangString = paramString;
-      } while (a((kyh)localObject));
-      if (!this.d) {
-        break;
-      }
-      this.d = false;
-      localObject = new HashMap();
-      ((Map)localObject).put("url", paramString);
-    } while ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a((Map)localObject)));
-    paramString = (String)((Map)localObject).get("url");
-    WebAccelerateHelper.getInstance().checkCookie(paramString);
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("WEBVIEWCHECK", 2, "CustomWebView loadUrlOriginal url:" + Util.b(paramString, new String[0]));
-      }
-      super.loadUrl(paramString);
-      return;
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, HashMap paramHashMap)
-  {
-    if ((getX5WebViewExtension() != null) && (QbSdk.getTbsVersion(BaseApplicationImpl.getContext()) >= 43304))
-    {
-      getX5WebViewExtension().loadDataWithBaseURLWithHeaders(paramString1, paramString2, paramString3, paramString4, paramString5, paramHashMap);
-      QLog.d("CustomWebView", 1, "loadDataWithBaseURLAndHeader");
-      super.d();
-      return;
-    }
-    loadDataWithBaseURL(paramString1, paramString2, paramString3, paramString4, paramString5);
-  }
-  
-  public void a(String paramString, String... paramVarArgs)
-  {
-    if (TextUtils.isEmpty(paramString))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.w("CustomWebView", 2, QLog.getStackTraceString(new Throwable("func is empty")));
-      }
-      return;
-    }
-    Object localObject;
-    if (jdField_c_of_type_JavaLangString == null)
-    {
-      localObject = AuthorizeConfig.a().a("jscallback", null);
-      if ((localObject == null) || (!((String)localObject).contains("((0))")) || (!((String)localObject).contains("((1))"))) {
-        break label154;
-      }
-    }
-    label154:
-    for (jdField_c_of_type_JavaLangString = (String)localObject;; jdField_c_of_type_JavaLangString = "(window.mqq && mqq.version > 20140616001 && mqq.execGlobalCallback || function(cb) {window[cb] && window[cb].apply(window, [].slice.call(arguments, 1));}).apply(window, [((0)), ((1))]);")
-    {
-      localObject = new StringBuilder();
-      if ((paramVarArgs == null) || (paramVarArgs.length <= 0) || ("".equals(paramVarArgs[0]))) {
-        break;
-      }
-      ((StringBuilder)localObject).append(paramVarArgs[0]);
-      int i = 1;
-      int j = paramVarArgs.length;
-      while (i < j)
-      {
-        ((StringBuilder)localObject).append(',').append(paramVarArgs[i]);
-        i += 1;
-      }
-    }
-    ((StringBuilder)localObject).append("void(0)");
-    c(jdField_c_of_type_JavaLangString.replace("((0))", Util.a(paramString)).replace("((1))", (CharSequence)localObject));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    try
-    {
-      IX5WebSettingsExtension localIX5WebSettingsExtension = getSettingsExtension();
-      if (localIX5WebSettingsExtension != null) {
-        localIX5WebSettingsExtension.setRecordRequestEnabled(paramBoolean);
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("CustomWebView", 2, "webkit not support request record!");
-    }
-  }
-  
-  public boolean a(CustomWebView paramCustomWebView, int paramInt, String paramString1, String paramString2, String paramString3, JsBridgeListener paramJsBridgeListener)
+  public boolean checkToken(CustomWebView paramCustomWebView, int paramInt, String paramString1, String paramString2, String paramString3, JsBridgeListener paramJsBridgeListener)
   {
     if (paramCustomWebView == null) {
       return false;
@@ -421,7 +301,7 @@ public class CustomWebView
     if ("auth.init".equals(paramString3)) {
       return true;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo == null)
+    if (this.mOpenApiInfo == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("CustomWebView.troop.openapi", 2, "mOpenApiInfo == null");
@@ -430,7 +310,7 @@ public class CustomWebView
     }
     if ((paramInt == 0) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
     {
-      paramCustomWebView.a(paramJsBridgeListener, 4, new String[] { JsBridgeListener.a(4, null, "params_error") });
+      paramCustomWebView.callJs4OpenApi(paramJsBridgeListener, 4, new String[] { JsBridgeListener.a(4, null, "params_error") });
       if (QLog.isColorLevel()) {
         QLog.e("CustomWebView.troop.openapi", 2, "RECODE_FAILED_PARAMS_ERROR");
       }
@@ -438,11 +318,11 @@ public class CustomWebView
     }
     long l = NetConnInfoCenter.getServerTime();
     if (QLog.isColorLevel()) {
-      QLog.e("CustomWebView.troop.openapi", 2, "serverTime - mOpenApiInfo.expireTime:" + (l - this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo.jdField_a_of_type_Long));
+      QLog.e("CustomWebView.troop.openapi", 2, "serverTime - mOpenApiInfo.expireTime:" + (l - this.mOpenApiInfo.jdField_a_of_type_Long));
     }
-    if (l > this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo.jdField_a_of_type_Long)
+    if (l > this.mOpenApiInfo.jdField_a_of_type_Long)
     {
-      paramCustomWebView.a(paramJsBridgeListener, 2, new String[] { JsBridgeListener.a(2, null, "token_verify_time_out") });
+      paramCustomWebView.callJs4OpenApi(paramJsBridgeListener, 2, new String[] { JsBridgeListener.a(2, null, "token_verify_time_out") });
       if (QLog.isColorLevel()) {
         QLog.e("CustomWebView.troop.openapi", 2, "RECODE_FAILED_TOKEN_VERIFY_TIME_OUT");
       }
@@ -452,13 +332,13 @@ public class CustomWebView
     paramString3 = "mqq." + paramString3;
     paramString1 = null;
     int i;
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo.jdField_b_of_type_JavaLangString)) || (!paramString2.equals(this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo.jdField_b_of_type_JavaLangString)))
+    if ((this.mOpenApiInfo == null) || (TextUtils.isEmpty(this.mOpenApiInfo.jdField_b_of_type_JavaLangString)) || (!paramString2.equals(this.mOpenApiInfo.jdField_b_of_type_JavaLangString)))
     {
       i = 1;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo.jdField_a_of_type_JavaUtilHashMap == null) {
+      if (this.mOpenApiInfo.jdField_a_of_type_JavaUtilHashMap == null) {
         break label573;
       }
-      Iterator localIterator = this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+      Iterator localIterator = this.mOpenApiInfo.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
       paramString1 = null;
       while (localIterator.hasNext())
       {
@@ -475,7 +355,7 @@ public class CustomWebView
     {
       if ((i != 0) || (paramInt == 0))
       {
-        paramCustomWebView.a(paramJsBridgeListener, 1, new String[] { JsBridgeListener.a(1, null, "permission_denied") });
+        paramCustomWebView.callJs4OpenApi(paramJsBridgeListener, 1, new String[] { JsBridgeListener.a(1, null, "permission_denied") });
         if (QLog.isColorLevel()) {
           QLog.e("CustomWebView.troop.openapi", 2, "permission_denied");
         }
@@ -483,19 +363,19 @@ public class CustomWebView
         i = 0;
         break;
       }
-      l = ((Long)this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo.jdField_a_of_type_JavaUtilHashMap.get(paramString1)).longValue() + this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo.jdField_b_of_type_Int;
+      l = ((Long)this.mOpenApiInfo.jdField_a_of_type_JavaUtilHashMap.get(paramString1)).longValue() + this.mOpenApiInfo.jdField_b_of_type_Int;
       if (QLog.isColorLevel()) {
         QLog.e("CustomWebView.troop.openapi", 2, "expectedTime - System.currentTimeMillis():" + (l - System.currentTimeMillis()));
       }
       if (l > System.currentTimeMillis())
       {
-        paramCustomWebView.a(paramJsBridgeListener, 5, new String[] { JsBridgeListener.a(5, null, "frequency_limit") });
+        paramCustomWebView.callJs4OpenApi(paramJsBridgeListener, 5, new String[] { JsBridgeListener.a(5, null, "frequency_limit") });
         if (QLog.isColorLevel()) {
           QLog.e("CustomWebView.troop.openapi", 2, "frequency_limit");
         }
         return false;
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo.jdField_a_of_type_JavaUtilHashMap.put(paramString1, Long.valueOf(System.currentTimeMillis()));
+      this.mOpenApiInfo.jdField_a_of_type_JavaUtilHashMap.put(paramString1, Long.valueOf(System.currentTimeMillis()));
       return true;
       paramInt = 0;
       continue;
@@ -504,17 +384,29 @@ public class CustomWebView
     }
   }
   
-  public boolean a(Map paramMap)
+  public void destroy()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(getUrl(), 8589934601L, paramMap))) {
-      return false;
+    this.isDestroyed = true;
+    if ((this.cookiesCallback != null) && (!TextUtils.isEmpty(this.cookieUrl)))
+    {
+      SwiftBrowserCookieMonster localSwiftBrowserCookieMonster = SwiftBrowserCookieMonster.a(this.cookieUrl);
+      if (localSwiftBrowserCookieMonster != null) {
+        localSwiftBrowserCookieMonster.a(this.cookiesCallback);
+      }
+      this.cookiesCallback = null;
+      this.cookieUrl = "";
     }
-    super.stopLoading();
-    super.goBack();
-    return true;
+    if (!this.attachedToWindow) {
+      ThreadManagerV2.getUIHandlerV2().postDelayed(new CustomWebView.2(this), 1000L);
+    }
+    if (this.mOpenApiInfo != null)
+    {
+      this.mOpenApiInfo.a();
+      this.mOpenApiInfo = null;
+    }
   }
   
-  public void b()
+  public void destroyWebView()
   {
     try
     {
@@ -557,7 +449,6 @@ public class CustomWebView
     {
       for (;;)
       {
-        ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", "destroy_webview", 0, 1, 0, localIllegalArgumentException.toString(), "", "", "");
         localIllegalArgumentException.printStackTrace();
       }
     }
@@ -579,87 +470,81 @@ public class CustomWebView
     {
       for (;;)
       {
-        ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", "destroy_webview", 0, 1, 0, localException.toString(), "", "", "");
         localException.printStackTrace();
       }
     }
-    a(this);
+    access$101(this);
   }
   
-  public void c(String paramString)
+  public String getCookieUrl()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CustomWebView", 2, "call js script = javascript:" + paramString);
-    }
-    if (this.jdField_b_of_type_Boolean) {
-      return;
-    }
-    if (Looper.myLooper() == Looper.getMainLooper()) {
-      try
-      {
-        super.loadUrl("javascript:" + paramString);
-        return;
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        return;
-      }
-    }
-    ThreadManagerV2.getUIHandlerV2().post(new kyg(this, paramString));
+    return this.cookieUrl;
   }
   
-  public void destroy()
+  public mzr getOpenApiTokenInfo()
   {
-    this.jdField_b_of_type_Boolean = true;
-    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster$SetCookiesCallback != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-    {
-      SwiftBrowserCookieMonster localSwiftBrowserCookieMonster = SwiftBrowserCookieMonster.a(this.jdField_a_of_type_JavaLangString);
-      if (localSwiftBrowserCookieMonster != null) {
-        localSwiftBrowserCookieMonster.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster$SetCookiesCallback);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster$SetCookiesCallback = null;
-      this.jdField_a_of_type_JavaLangString = "";
+    return this.mOpenApiInfo;
+  }
+  
+  public WebViewPluginEngine getPluginEngine()
+  {
+    return this.mPluginEngine;
+  }
+  
+  public SonicClientImpl getSonicClient()
+  {
+    return this.sonicSessionClient;
+  }
+  
+  public boolean goBack(Map<String, Object> paramMap)
+  {
+    if ((this.mPluginEngine != null) && (this.mPluginEngine.a(getUrl(), 8589934601L, paramMap))) {
+      return false;
     }
-    if (!this.jdField_c_of_type_Boolean) {
-      ThreadManagerV2.getUIHandlerV2().postDelayed(new kye(this), 1000L);
+    super.stopLoading();
+    super.goBack();
+    return true;
+  }
+  
+  public boolean goForward(Map<String, Object> paramMap)
+  {
+    if ((this.mPluginEngine != null) && (this.mPluginEngine.a(getUrl(), 8589934602L, paramMap))) {
+      return false;
     }
-    if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo != null)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo.a();
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$OpenApiTokenInfo = null;
-    }
+    super.stopLoading();
+    super.goForward();
+    return true;
   }
   
   public void loadData(String paramString1, String paramString2, String paramString3)
   {
-    if (this.jdField_b_of_type_Boolean) {}
+    if (this.isDestroyed) {}
     Object localObject;
     do
     {
       do
       {
         return;
-        if (!a()) {
+        if (!isNeedSetCookies()) {
           break;
         }
-        localObject = new kyh(this);
-        ((kyh)localObject).jdField_a_of_type_Int = 3;
-        ((kyh)localObject).jdField_a_of_type_JavaLangString = paramString1;
-        ((kyh)localObject).jdField_c_of_type_JavaLangString = paramString2;
-        ((kyh)localObject).d = paramString3;
-      } while (a((kyh)localObject));
-      if (!this.d) {
+        localObject = new mzq(this);
+        ((mzq)localObject).jdField_a_of_type_Int = 3;
+        ((mzq)localObject).jdField_a_of_type_JavaLangString = paramString1;
+        ((mzq)localObject).c = paramString2;
+        ((mzq)localObject).d = paramString3;
+      } while (setCookiesIfNeeded((mzq)localObject));
+      if (!this.isFirstLoad) {
         break;
       }
-      this.d = false;
+      this.isFirstLoad = false;
       localObject = new HashMap();
       ((Map)localObject).put("url", paramString1);
-    } while ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a((Map)localObject)));
+    } while ((this.mPluginEngine != null) && (this.mPluginEngine.a((Map)localObject)));
     paramString1 = (String)((Map)localObject).get("url");
     for (;;)
     {
-      b(paramString1);
+      addContextLog(paramString1);
       super.loadData(paramString1, paramString2, paramString3);
       return;
     }
@@ -667,36 +552,36 @@ public class CustomWebView
   
   public void loadDataWithBaseURL(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    if (this.jdField_b_of_type_Boolean) {}
+    if (this.isDestroyed) {}
     Object localObject;
     do
     {
       do
       {
         return;
-        if (!a()) {
+        if (!isNeedSetCookies()) {
           break;
         }
-        localObject = new kyh(this);
-        ((kyh)localObject).jdField_a_of_type_Int = 4;
-        ((kyh)localObject).jdField_a_of_type_JavaLangString = paramString1;
-        ((kyh)localObject).jdField_b_of_type_JavaLangString = paramString2;
-        ((kyh)localObject).jdField_c_of_type_JavaLangString = paramString3;
-        ((kyh)localObject).d = paramString4;
-        ((kyh)localObject).e = paramString5;
-      } while (a((kyh)localObject));
-      if (!this.d) {
+        localObject = new mzq(this);
+        ((mzq)localObject).jdField_a_of_type_Int = 4;
+        ((mzq)localObject).jdField_a_of_type_JavaLangString = paramString1;
+        ((mzq)localObject).jdField_b_of_type_JavaLangString = paramString2;
+        ((mzq)localObject).c = paramString3;
+        ((mzq)localObject).d = paramString4;
+        ((mzq)localObject).e = paramString5;
+      } while (setCookiesIfNeeded((mzq)localObject));
+      if (!this.isFirstLoad) {
         break;
       }
-      this.d = false;
+      this.isFirstLoad = false;
       localObject = new HashMap();
       ((Map)localObject).put("url", paramString1);
-    } while ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a((Map)localObject)));
+    } while ((this.mPluginEngine != null) && (this.mPluginEngine.a((Map)localObject)));
     paramString1 = (String)((Map)localObject).get("url");
     for (;;)
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("[").append(Util.b(paramString1, new String[0])).append("]");
+      localStringBuilder.append("[").append(mpw.b(paramString1, new String[0])).append("]");
       if (!TextUtils.isEmpty(paramString2)) {
         if (paramString2.length() <= 128) {
           break label228;
@@ -706,106 +591,261 @@ public class CustomWebView
       for (localObject = paramString2.substring(0, 128);; localObject = paramString2)
       {
         localStringBuilder.append((String)localObject);
-        b(localStringBuilder.toString());
+        addContextLog(localStringBuilder.toString());
         super.loadDataWithBaseURL(paramString1, paramString2, paramString3, paramString4, paramString5);
         return;
       }
     }
   }
   
+  public void loadDataWithBaseURLAndHeader(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, HashMap<String, String> paramHashMap)
+  {
+    if ((getX5WebViewExtension() != null) && (QbSdk.getTbsVersion(BaseApplicationImpl.getContext()) >= 43304))
+    {
+      getX5WebViewExtension().loadDataWithBaseURLWithHeaders(paramString1, paramString2, paramString3, paramString4, paramString5, paramHashMap);
+      QLog.d("CustomWebView", 1, "loadDataWithBaseURLAndHeader");
+      super.readyForLoadJs();
+      return;
+    }
+    loadDataWithBaseURL(paramString1, paramString2, paramString3, paramString4, paramString5);
+  }
+  
+  public void loadDataWithHeaders(String paramString1, String paramString2, String paramString3, HashMap<String, String> paramHashMap)
+  {
+    if ((getX5WebViewExtension() != null) && (QbSdk.getTbsVersion(BaseApplicationImpl.getContext()) >= 43304))
+    {
+      QLog.d("CustomWebView", 1, "loadDataWithHeaders");
+      getX5WebViewExtension().loaddataWithHeaders(paramString1, paramString2, paramString3, paramHashMap);
+      return;
+    }
+    loadData(paramString1, paramString2, paramString3);
+  }
+  
   public void loadUrl(String paramString)
   {
-    boolean bool = true;
-    if (this.jdField_b_of_type_Boolean) {}
+    boolean bool2 = true;
+    QLog.d("WEBVIEWCHECK", 2, "tendocpreload CustomWebView needLoadUrl000: " + paramString + ", loadUrl url:" + mpw.b(paramString, new String[0]));
+    if (this.isDestroyed) {}
     HashMap localHashMap;
     do
     {
-      kyh localkyh;
+      mzq localmzq;
       do
       {
         return;
         localHashMap = new HashMap();
         localHashMap.put("url", paramString);
-        if (!a()) {
+        if (!isNeedSetCookies()) {
           break;
         }
-        localkyh = new kyh(this);
-        localkyh.jdField_a_of_type_Int = 1;
-        localkyh.jdField_a_of_type_JavaLangString = paramString;
-      } while (a(localkyh));
-      if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl.a().isMatchCurrentUrl(paramString)) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl.a().onClientReady()))
+        localmzq = new mzq(this);
+        localmzq.jdField_a_of_type_Int = 1;
+        localmzq.jdField_a_of_type_JavaLangString = paramString;
+      } while (setCookiesIfNeeded(localmzq));
+      QLog.d("WEBVIEWCHECK", 2, "tendocpreload CustomWebView needLoadUrl111: " + paramString + ", loadUrl url:" + mpw.b(paramString, new String[0]));
+      if ((this.sonicSessionClient != null) && (this.sonicSessionClient.getSession().isMatchCurrentUrl(paramString)) && (this.sonicSessionClient.getSession().onClientReady()))
       {
-        this.d = true;
+        this.isFirstLoad = true;
         QLog.d("CustomWebView", 1, "loadUrl intercept by sonic client.");
         return;
       }
-      if (!this.d) {
+      if (!this.isFirstLoad) {
         break;
       }
-      this.d = false;
-    } while ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(localHashMap)));
+      this.isFirstLoad = false;
+    } while ((this.mPluginEngine != null) && (this.mPluginEngine.a(localHashMap)));
     paramString = (String)localHashMap.get("url");
     WebAccelerateHelper.getInstance().checkCookie(paramString);
     for (;;)
     {
-      if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine != null) && (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine.a(paramString))) {}
-      for (;;)
+      if (!TextUtils.isEmpty(paramString))
       {
-        if ((bool) && ((paramString.startsWith("http")) || (paramString.startsWith("data:"))) && (!paramString.contains("/cgi-bin/httpconn?htcmd=0x6ff0080"))) {
-          b(Util.b(paramString, new String[0]));
+        bool1 = bool2;
+        if (this.mPluginEngine != null) {
+          if (this.mPluginEngine.a(paramString)) {
+            break label409;
+          }
+        }
+      }
+      label409:
+      for (boolean bool1 = bool2;; bool1 = false)
+      {
+        if ((bool1) && ((paramString.startsWith("http")) || (paramString.startsWith("data:"))) && (!paramString.contains("/cgi-bin/httpconn?htcmd=0x6ff0080"))) {
+          addContextLog(mpw.b(paramString, new String[0]));
         }
         if (QLog.isColorLevel())
         {
-          QLog.d("WEBVIEWCHECK", 2, "CustomWebView needLoadUrl: " + bool + ", loadUrl url:" + Util.b(paramString, new String[0]));
-          com.tencent.mobileqq.log.VipWebViewReportLog.jdField_c_of_type_JavaLangString = paramString;
+          QLog.d("WEBVIEWCHECK", 2, "tendocpreload CustomWebView needLoadUrl222: " + bool1 + ", loadUrl url:" + mpw.b(paramString, new String[0]));
+          com.tencent.mobileqq.log.VipWebViewReportLog.d = paramString;
         }
-        if (SwiftWebViewUtils.ProxyConfig.jdField_a_of_type_Boolean)
+        if (bbdf.jdField_a_of_type_Boolean)
         {
-          SwiftWebViewUtils.a(this, SwiftWebViewUtils.ProxyConfig.jdField_a_of_type_JavaLangString);
-          SwiftWebViewUtils.ProxyConfig.jdField_a_of_type_Boolean = false;
+          bbdc.a(this, bbdf.jdField_a_of_type_JavaLangString);
+          bbdf.jdField_a_of_type_Boolean = false;
         }
-        if (!bool) {
+        if (!bool1) {
           break;
         }
         super.loadUrl(paramString);
         return;
-        bool = false;
       }
+    }
+  }
+  
+  public void loadUrlOriginal(String paramString)
+  {
+    QLog.d("WEBVIEWCHECK", 2, "tendocpreload CustomWebView loadUrlOriginal000 url:" + paramString);
+    if (this.isDestroyed) {}
+    Object localObject;
+    do
+    {
+      do
+      {
+        return;
+        if ("about:blank".equals(paramString))
+        {
+          super.loadUrl(paramString);
+          return;
+        }
+        if (!isNeedSetCookies()) {
+          break;
+        }
+        localObject = new mzq(this);
+        ((mzq)localObject).jdField_a_of_type_Int = 2;
+        ((mzq)localObject).jdField_a_of_type_JavaLangString = paramString;
+      } while (setCookiesIfNeeded((mzq)localObject));
+      QLog.d("WEBVIEWCHECK", 2, "tendocpreload CustomWebView loadUrlOriginal111 url:" + paramString);
+      if (!this.isFirstLoad) {
+        break;
+      }
+      this.isFirstLoad = false;
+      localObject = new HashMap();
+      ((Map)localObject).put("url", paramString);
+    } while ((this.mPluginEngine != null) && (this.mPluginEngine.a((Map)localObject)));
+    paramString = (String)((Map)localObject).get("url");
+    WebAccelerateHelper.getInstance().checkCookie(paramString);
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WEBVIEWCHECK", 2, "tendocpreload CustomWebView loadUrlOriginal222 url:" + mpw.b(paramString, new String[0]));
+      }
+      if (((paramString.startsWith("http")) || (paramString.startsWith("data:"))) && (!paramString.contains("/cgi-bin/httpconn?htcmd=0x6ff0080"))) {
+        addContextLog(mpw.b(paramString, new String[0]));
+      }
+      super.loadUrl(paramString);
+      return;
     }
   }
   
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    this.jdField_c_of_type_Boolean = true;
+    this.attachedToWindow = true;
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    this.jdField_c_of_type_Boolean = false;
-    if (this.jdField_b_of_type_Boolean) {
-      ThreadManagerV2.getUIHandlerV2().postDelayed(new kyf(this), 1000L);
+    this.attachedToWindow = false;
+    if (this.isDestroyed) {
+      ThreadManagerV2.getUIHandlerV2().postDelayed(new CustomWebView.3(this), 1000L);
     }
   }
   
   public void onPause()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.isPaused = true;
     super.onPause();
   }
   
   public void onResume()
   {
-    this.jdField_a_of_type_Boolean = false;
+    this.isPaused = false;
     super.onResume();
   }
   
   protected void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$ScrollInterface != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$ScrollInterface.a(paramInt1, paramInt2, paramInt3, paramInt4);
+    if (this.mt != null) {
+      this.mt.a(paramInt1, paramInt2, paramInt3, paramInt4);
+    }
+  }
+  
+  public void recordHttpStream(boolean paramBoolean)
+  {
+    try
+    {
+      IX5WebSettingsExtension localIX5WebSettingsExtension = getSettingsExtension();
+      if (localIX5WebSettingsExtension != null) {
+        localIX5WebSettingsExtension.setRecordRequestEnabled(paramBoolean);
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("CustomWebView", 2, "webkit not support request record!");
+    }
+  }
+  
+  public void resetForReuse()
+  {
+    super.resetForReuse();
+    if (this.sonicSessionClient != null) {
+      this.sonicSessionClient = null;
+    }
+    if ((this.cookiesCallback != null) && (!TextUtils.isEmpty(this.cookieUrl)))
+    {
+      SwiftBrowserCookieMonster localSwiftBrowserCookieMonster = SwiftBrowserCookieMonster.a(this.cookieUrl);
+      if (localSwiftBrowserCookieMonster != null) {
+        localSwiftBrowserCookieMonster.a(this.cookiesCallback);
+      }
+      this.cookiesCallback = null;
+      this.cookieUrl = "";
+    }
+    this.attachedToWindow = false;
+    this.isPaused = true;
+    this.isDestroyed = false;
+    this.isFirstLoad = true;
+    this.needSetCookies = true;
+    if (this.mOpenApiInfo != null)
+    {
+      this.mOpenApiInfo.a();
+      this.mOpenApiInfo = null;
+    }
+    setIntent(null);
+    setWebChromeClient(null);
+    setWebViewClient(null);
+    setDownloadListener(null);
+    setOnLongClickListener(null);
+    if (getX5WebViewExtension() != null) {
+      getX5WebViewExtension().setWebViewClientExtension(null);
+    }
+    getView().setOnTouchListener(null);
+    setMask(false);
+    this.mPluginEngine = null;
+  }
+  
+  public void saveToken(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, ArrayList<String> paramArrayList)
+  {
+    if (this.mOpenApiInfo == null) {
+      this.mOpenApiInfo = new mzr();
+    }
+    this.mOpenApiInfo.jdField_a_of_type_Int = paramInt1;
+    this.mOpenApiInfo.jdField_a_of_type_JavaLangString = paramString2;
+    this.mOpenApiInfo.jdField_b_of_type_JavaLangString = (paramInt1 + "_" + paramString1 + "_" + paramString2);
+    this.mOpenApiInfo.jdField_b_of_type_Int = paramInt2;
+    this.mOpenApiInfo.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTime() + paramInt3);
+    if ((paramArrayList != null) && (!paramArrayList.isEmpty()))
+    {
+      this.mOpenApiInfo.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      paramString1 = paramArrayList.iterator();
+      while (paramString1.hasNext())
+      {
+        paramString2 = (String)paramString1.next();
+        this.mOpenApiInfo.jdField_a_of_type_JavaUtilHashMap.put(paramString2, Long.valueOf(0L));
+      }
     }
   }
   
@@ -820,7 +860,7 @@ public class CustomWebView
     if ((localObject instanceof Activity))
     {
       localObject = (Activity)localObject;
-      localView = ((Activity)localObject).findViewById(2131362374);
+      localView = ((Activity)localObject).findViewById(2131305167);
     }
     for (;;)
     {
@@ -834,7 +874,7 @@ public class CustomWebView
           {
             localView = new View(getContext());
             localView.setBackgroundColor(1996488704);
-            localView.setId(2131362374);
+            localView.setId(2131305167);
             ((Activity)localObject).addContentView(localView, new ViewGroup.LayoutParams(-1, -1));
             return;
           }
@@ -848,16 +888,16 @@ public class CustomWebView
     }
   }
   
-  public void setOnCustomScrollChangeListener(CustomWebView.ScrollInterface paramScrollInterface)
+  public void setOnCustomScrollChangeListener(mzs parammzs)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView$ScrollInterface = paramScrollInterface;
+    this.mt = parammzs;
   }
   
   public void setPluginEngine(WebViewPluginEngine paramWebViewPluginEngine)
   {
-    if (paramWebViewPluginEngine != this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine)
+    if (paramWebViewPluginEngine != this.mPluginEngine)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine = paramWebViewPluginEngine;
+      this.mPluginEngine = paramWebViewPluginEngine;
       if (paramWebViewPluginEngine != null) {
         paramWebViewPluginEngine.a(this);
       }
@@ -866,7 +906,7 @@ public class CustomWebView
   
   public void setSonicClient(SonicClientImpl paramSonicClientImpl)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSonicSonicClientImpl = paramSonicClientImpl;
+    this.sonicSessionClient = paramSonicClientImpl;
   }
 }
 

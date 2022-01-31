@@ -10,9 +10,9 @@ public class HealthUiPlugin
 {
   private static final String TAG = "HealthUiPlugin";
   public boolean mIsJDUpdateConfigInit;
-  public ArrayList mJDUpdateConfig = new ArrayList(4);
+  public ArrayList<String> mJDUpdateConfig = new ArrayList(4);
   
-  protected boolean excuteEvent(String paramString, long paramLong, Map paramMap)
+  protected boolean excuteEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
     if (TextUtils.isEmpty(paramString)) {}
     while (paramLong != 16L) {
@@ -29,7 +29,7 @@ public class HealthUiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.HealthUiPlugin
  * JD-Core Version:    0.7.0.1
  */

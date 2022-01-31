@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
+import atmo;
+import atnz;
+import azzz;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
-import com.tencent.mobileqq.util.Utils;
 import java.io.UnsupportedEncodingException;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="subUin,senderuin,time")
 public class SubAccountMessage
-  extends Entity
-  implements Comparable
+  extends atmo
+  implements Comparable<SubAccountMessage>
 {
   public static final String SUB_EXTR_RED_PACKET = "RED_PACKET";
   public int extInt;
@@ -25,17 +25,17 @@ public class SubAccountMessage
   public int longMsgCount;
   public int longMsgId;
   public int longMsgIndex;
-  @notColumn
+  @atnz
   public CharSequence mEmoRecentMsg;
-  @notColumn
+  @atnz
   public String mTimeString;
-  @notColumn
+  @atnz
   public String msg;
   public byte[] msgData;
   public long msgUid;
   public long msgseq;
   public int msgtype;
-  @notColumn
+  @atnz
   public boolean needNotify;
   public String selfuin;
   public String sendername;
@@ -119,7 +119,7 @@ public class SubAccountMessage
     return super.getTableName();
   }
   
-  protected void postRead()
+  public void postRead()
   {
     try
     {
@@ -132,7 +132,7 @@ public class SubAccountMessage
     }
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     if (this.msg != null) {}
     try
@@ -149,7 +149,7 @@ public class SubAccountMessage
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("SubAccountMessage");
-    localStringBuilder.append(",subUin:").append(this.subUin).append(",selfUin:").append(this.selfuin).append(",friendUin:").append(this.frienduin).append(",senderUin:").append(this.senderuin).append(",senderName:").append(this.sendername).append(",time:").append(this.time).append(",isRead:").append(this.isread).append(",msgType:").append(this.msgtype).append(",subExtr:").append(this.subExtr).append(",msg:").append(Utils.a(this.msg));
+    localStringBuilder.append(",subUin:").append(this.subUin).append(",selfUin:").append(this.selfuin).append(",friendUin:").append(this.frienduin).append(",senderUin:").append(this.senderuin).append(",senderName:").append(this.sendername).append(",time:").append(this.time).append(",isRead:").append(this.isread).append(",msgType:").append(this.msgtype).append(",subExtr:").append(this.subExtr).append(",msg:").append(azzz.a(this.msg));
     return localStringBuilder.toString();
   }
 }

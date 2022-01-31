@@ -1,51 +1,35 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.HashMap;
+import android.support.annotation.Nullable;
+import com.tencent.biz.videostory.capture.widgets.AEBottomListScrollView;
 
-public class wqr
-  implements View.OnClickListener
+class wqr
+  implements bhwg<wsh>
 {
-  public wqr(TroopActivity paramTroopActivity) {}
+  wqr(wqq paramwqq) {}
   
-  public void onClick(View paramView)
+  public void a(@Nullable wsh paramwsh)
   {
-    boolean bool = false;
-    switch (paramView.getId())
+    if (paramwsh == null) {}
+    do
     {
-    default: 
-      this.a.b();
       return;
-    case 2131363262: 
-    case 2131364019: 
-    case 2131364020: 
-      if (this.a.a != null)
+      wqq.a(this.a).o();
+      if (paramwsh == wsh.a)
       {
-        paramView = new Intent();
-        if (!this.a.a.isEmpty()) {
-          bool = true;
-        }
-        paramView.putExtra("isDataChanged", bool);
-        this.a.setResult(-1, paramView);
+        wqq.a(this.a);
+        return;
       }
-      this.a.onBackPressed();
-      return;
-    }
-    ReportController.b(this.a.app, "P_CliOper", "Grp_contacts", "", "Grp_contactlist", "Clk_right", 0, 0, "", "", "", "");
-    if (this.a.a())
-    {
-      this.a.b();
-      return;
-    }
-    ReportController.b(this.a.app, "CliOper", "", "", "Grp", "Clk_grplist_plus", 0, 0, "", "", "", "");
-    this.a.a();
+      if (paramwsh == wsh.c)
+      {
+        wqq.a(this.a).setVisibility(8);
+        return;
+      }
+    } while (paramwsh != wsh.b);
+    wqq.a(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wqr
  * JD-Core Version:    0.7.0.1
  */

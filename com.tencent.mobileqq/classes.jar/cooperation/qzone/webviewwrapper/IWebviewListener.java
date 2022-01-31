@@ -3,6 +3,8 @@ package cooperation.qzone.webviewwrapper;
 public abstract interface IWebviewListener
 {
   public abstract void onPageFinished();
+  
+  public abstract void onReceiveError(int paramInt, String paramString1, String paramString2);
 }
 
 

@@ -18,7 +18,6 @@ import com.tencent.av.video.effect.core.qqavimage.SpecialFilter.QQAVImageTwoSrcF
 import com.tencent.av.video.effect.utils.CommonUtils;
 import com.tencent.av.video.effect.utils.Log;
 import java.io.File;
-import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -42,61 +41,49 @@ public class FilterFactory
   
   public static QQAVImageFilter createFilter(Context paramContext, JSONObject paramJSONObject, String paramString)
   {
-    Object localObject3 = null;
     Object localObject2 = null;
+    Object localObject3 = null;
+    Object localObject1 = null;
     if (paramJSONObject == null) {
-      return null;
+      return localObject1;
     }
-    int i = -1;
-    Object localObject1 = localObject3;
+    localObject1 = localObject3;
     for (;;)
     {
       try
       {
-        if (paramJSONObject.has("filterId"))
-        {
-          localObject1 = localObject3;
-          i = Integer.valueOf(paramJSONObject.getString("filterId")).intValue();
+        if (!paramJSONObject.has("filterId")) {
+          break label375;
         }
-        str = "none";
         localObject1 = localObject3;
-        if (paramJSONObject.has("name"))
-        {
-          localObject1 = localObject3;
-          str = paramJSONObject.getString("name");
-        }
-        j = -1;
+        i = Integer.valueOf(paramJSONObject.getString("filterId")).intValue();
         localObject1 = localObject3;
-        if (paramJSONObject.has("subId"))
-        {
-          localObject1 = localObject3;
-          j = Integer.valueOf(paramJSONObject.getString("subId")).intValue();
+        if (!paramJSONObject.has("name")) {
+          break label368;
         }
-        localJSONArray = null;
+        localObject1 = localObject3;
+        str = paramJSONObject.getString("name");
+        localObject1 = localObject3;
+        if (!paramJSONObject.has("subId")) {
+          break label362;
+        }
+        localObject1 = localObject3;
+        j = Integer.valueOf(paramJSONObject.getString("subId")).intValue();
         localObject1 = localObject3;
         if (!paramJSONObject.has("resourceList")) {
-          continue;
+          break label356;
         }
         localObject1 = localObject3;
         localJSONArray = paramJSONObject.getJSONArray("resourceList");
       }
       catch (Exception paramContext)
       {
-        String str;
-        int j;
-        JSONArray localJSONArray;
         Log.e("FilterFactory", "createFilter:" + paramContext);
-        break label450;
-        paramJSONObject = localObject2;
-        switch (i)
-        {
-        }
-        paramJSONObject = localObject2;
-        continue;
+        return localObject1;
       }
       localObject1 = paramJSONObject;
       if (paramJSONObject == null) {
-        break label450;
+        break;
       }
       localObject1 = paramJSONObject;
       paramJSONObject.setQQAVEffectType(i);
@@ -106,8 +93,7 @@ public class FilterFactory
       paramJSONObject.setQQAVEffectName(str);
       localObject1 = paramJSONObject;
       prepareResource(paramContext, paramJSONObject, paramString, localJSONArray);
-      localObject1 = paramJSONObject;
-      break label450;
+      return paramJSONObject;
       localObject1 = localObject3;
       paramJSONObject = new QQAVImageComicFilter();
       continue;
@@ -137,9 +123,26 @@ public class FilterFactory
       continue;
       localObject1 = localObject3;
       paramJSONObject = new QQAVImageTwoSrcFilter();
+      continue;
+      label356:
+      JSONArray localJSONArray = null;
+      break label380;
+      label362:
+      int j = -1;
+      continue;
+      label368:
+      String str = "none";
+      continue;
+      label375:
+      int i = -1;
+      continue;
+      label380:
+      paramJSONObject = localObject2;
+      switch (i)
+      {
+      }
+      paramJSONObject = localObject2;
     }
-    label450:
-    return localObject1;
   }
   
   private void destroyFilter()
@@ -179,6 +182,7 @@ public class FilterFactory
   
   public QQAVImageFilter getFilter(String paramString)
   {
+    localObject = null;
     if (TextUtils.isEmpty(paramString))
     {
       destroyFilter();
@@ -189,27 +193,27 @@ public class FilterFactory
     }
     destroyFilter();
     this.mFilterPath = paramString;
-    localObject1 = null;
     if ((this.mContextReference != null) && (this.mContextReference.get() != null)) {}
     try
     {
-      Object localObject2 = CommonUtils.getInputStreamFromPath((Context)this.mContextReference.get(), this.mFilterPath + File.separator + "params.json");
-      paramString = localObject1;
-      if (localObject2 != null)
-      {
-        localObject2 = CommonUtils.convertStreamToString((InputStream)localObject2);
-        paramString = localObject1;
-        if (localObject2 != null) {
-          paramString = new JSONObject((String)localObject2);
-        }
+      paramString = CommonUtils.getInputStreamFromPath((Context)this.mContextReference.get(), this.mFilterPath + File.separator + "params.json");
+      if (paramString == null) {
+        break label192;
       }
+      paramString = CommonUtils.convertStreamToString(paramString);
+      if (paramString == null) {
+        break label192;
+      }
+      paramString = new JSONObject(paramString);
     }
     catch (Exception paramString)
     {
       for (;;)
       {
         Log.e("FilterFactory", "parseJson:" + paramString);
-        paramString = localObject1;
+        paramString = localObject;
+        continue;
+        paramString = null;
       }
     }
     this.mFilter = createFilter((Context)this.mContextReference.get(), paramString, this.mFilterPath);
@@ -218,7 +222,7 @@ public class FilterFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.video.effect.filter.FilterFactory
  * JD-Core Version:    0.7.0.1
  */

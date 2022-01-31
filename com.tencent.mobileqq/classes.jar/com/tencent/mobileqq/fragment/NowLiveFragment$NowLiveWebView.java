@@ -8,22 +8,25 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import com.tencent.biz.AuthorizeConfig;
+import apqf;
+import asfc;
+import asfl;
+import baxr;
+import bbey;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.nearby.NearbyUtils;
 import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.webview.AbsWebView;
-import com.tencent.mobileqq.webviewplugin.WebViewJumpPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
 import java.util.ArrayList;
+import mkw;
 
 public final class NowLiveFragment$NowLiveWebView
-  extends AbsWebView
+  extends baxr
   implements TouchWebView.OnScrollChangedListener
 {
   public int a;
@@ -34,7 +37,7 @@ public final class NowLiveFragment$NowLiveWebView
   public NowLiveFragment$NowLiveWebView(NowLiveFragment paramNowLiveFragment, Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
   {
     super(paramContext, paramActivity, paramAppInterface);
-    super.y();
+    super.preInitPluginEngine();
   }
   
   public void a()
@@ -46,29 +49,30 @@ public final class NowLiveFragment$NowLiveWebView
     for (long l = System.currentTimeMillis();; l = 0L)
     {
       this.jdField_a_of_type_Boolean = true;
-      AuthorizeConfig.a();
-      this.h = (NearbyActivity.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_JavaLangString + "&_t=" + System.currentTimeMillis());
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView = new TouchWebView(this.e);
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.getSettings().setMediaPlaybackRequiresUserGesture(false);
-      b(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+      mkw.a();
+      this.mUrl = (NearbyActivity.jdField_a_of_type_JavaLangString + this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_JavaLangString + "&_t=" + System.currentTimeMillis() + asfc.a(asfc.b()));
+      this.mWebview = new TouchWebView(this.mContext);
+      this.mWebview.getSettings().setMediaPlaybackRequiresUserGesture(false);
+      buildBaseWebView(this.mInterface);
       this.c = "1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId"));
       if (this.c) {
-        this.jdField_a_of_type_ComTencentBizUiTouchWebView.setMask(true);
+        this.mWebview.setMask(true);
       }
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.setOnScrollChangedListener(this);
-      a(System.currentTimeMillis());
+      this.mWebview.setBackgroundColor(-1);
+      this.mWebview.setOnScrollChangedListener(this);
+      setmTimeBeforeLoadUrl(System.currentTimeMillis());
       if (QLog.isDevelopLevel()) {
-        NearbyUtils.a("WebSpeedTrace", "AbsWebView mTimeBeforeLoadUrl", new Object[] { Long.valueOf(this.jdField_b_of_type_Long) });
+        asfl.a("WebSpeedTrace", "AbsWebView mTimeBeforeLoadUrl", new Object[] { Long.valueOf(this.mTimeBeforeLoadUrl) });
       }
-      this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl(this.h);
+      this.mWebview.loadUrl(this.mUrl);
       if (QLog.isColorLevel()) {
-        NearbyUtils.a("AbsWebView", new Object[] { "NowLiveWebView.init", this.h });
+        asfl.a("AbsWebView", new Object[] { "NowLiveWebView.init", this.mUrl });
       }
       if ((this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity != null) && (this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.f == 0L))
       {
         this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.f = (System.currentTimeMillis() - l);
         if (QLog.isDevelopLevel()) {
-          NearbyUtils.a("WebSpeedTrace", "AbsWebView mInitWebViewTime", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.f) });
+          asfl.a("WebSpeedTrace", "AbsWebView mInitWebViewTime", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.f) });
         }
       }
       if (NowLiveFragment.b()) {
@@ -79,41 +83,65 @@ public final class NowLiveFragment$NowLiveWebView
     }
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  public void a(Intent paramIntent)
   {
-    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null) {
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getWebScrollY();
+    super.doOnCreate(paramIntent);
+  }
+  
+  public void b()
+  {
+    super.doOnResume();
+  }
+  
+  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
+  {
+    if (paramArrayList != null) {
+      paramArrayList.add(new bbey());
     }
   }
   
-  public void a(Intent paramIntent)
+  public void c()
   {
-    super.b(paramIntent);
+    super.doOnPause();
   }
   
-  public void a(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  public void d()
   {
-    this.jdField_b_of_type_Boolean = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus != null)
+    super.doOnDestroy();
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_Apqf != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.b(true).a(true);
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.a();
+      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_Apqf.b(false).a(true);
+      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_Apqf.a();
+    }
+  }
+  
+  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  {
+    this.b = true;
+    if (this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_Apqf != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_Apqf.b(true).a(true);
+      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_Apqf.a();
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.b != null) && (this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.b.getVisibility() != 8)) {
       this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.b.setVisibility(8);
     }
   }
   
-  public void a(ArrayList paramArrayList)
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    if (paramArrayList != null) {
-      paramArrayList.add(new WebViewJumpPlugin());
+    if (this.mWebview != null) {
+      this.jdField_a_of_type_Int = this.mWebview.getWebScrollY();
     }
   }
   
-  public boolean a(WebView paramWebView, String paramString)
+  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    boolean bool = super.a(paramWebView, paramString);
+    boolean bool = super.shouldOverrideUrlLoading(paramWebView, paramString);
     if ((paramString.startsWith("tmast://")) || (paramString.startsWith("tnow://")))
     {
       paramWebView = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
@@ -121,30 +149,6 @@ public final class NowLiveFragment$NowLiveWebView
       this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.startActivity(paramWebView);
     }
     return bool;
-  }
-  
-  public void b()
-  {
-    super.u();
-  }
-  
-  public void b(WebView paramWebView, String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.b(false).a(true);
-      this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.a();
-    }
-  }
-  
-  public void c()
-  {
-    super.v();
-  }
-  
-  public void d()
-  {
-    super.w();
   }
 }
 

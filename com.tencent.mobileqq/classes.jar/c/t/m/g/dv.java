@@ -1,294 +1,177 @@
 package c.t.m.g;
 
-import android.annotation.SuppressLint;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
-import android.telephony.CellInfo;
-import android.telephony.CellLocation;
-import android.telephony.PhoneStateListener;
-import android.telephony.ServiceState;
-import android.telephony.TelephonyManager;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import android.util.Pair;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
-final class dv
-  extends PhoneStateListener
+public final class dv
+  implements ev
 {
-  volatile boolean a;
-  HandlerThread b;
-  Handler c;
-  Runnable d;
-  Handler e;
-  List<String> f;
-  private final de g;
-  private final TelephonyManager h;
-  private ee i = null;
-  private ServiceState j = null;
-  private CellLocation k;
+  private byte[] a = new byte[512];
   
-  public dv(de paramde)
+  public static SharedPreferences a(String paramString)
   {
-    this.g = paramde;
-    this.h = paramde.f;
-    this.d = new Runnable()
-    {
-      public final void run()
-      {
-        dv.a(dv.this);
-        dv.this.a = true;
-      }
-    };
+    String str = do.a().getPackageName();
+    int i = 0;
+    if ("com.tencent.mobileqq".equals(str)) {
+      i = 4;
+    }
+    return do.a().getSharedPreferences(paramString, i);
   }
   
-  private void a(int paramInt)
+  public static void a(SharedPreferences paramSharedPreferences, String paramString, Object paramObject)
   {
-    try
+    paramSharedPreferences = paramSharedPreferences.edit();
+    if ((paramObject instanceof String)) {
+      paramSharedPreferences.putString(paramString, (String)paramObject);
+    }
+    while (Build.VERSION.SDK_INT >= 9)
     {
-      this.g.f.listen(this, paramInt);
+      paramSharedPreferences.apply();
       return;
+      if ((paramObject instanceof Integer)) {
+        paramSharedPreferences.putInt(paramString, ((Integer)paramObject).intValue());
+      } else if ((paramObject instanceof Boolean)) {
+        paramSharedPreferences.putBoolean(paramString, ((Boolean)paramObject).booleanValue());
+      } else if ((paramObject instanceof Float)) {
+        paramSharedPreferences.putFloat(paramString, ((Float)paramObject).floatValue());
+      } else if ((paramObject instanceof Long)) {
+        paramSharedPreferences.putLong(paramString, ((Long)paramObject).longValue());
+      } else {
+        paramSharedPreferences.putString(paramString, paramObject.toString());
+      }
     }
-    catch (Throwable localThrowable)
-    {
-      ev.b("TxNewCellProvider", "listenCellState: failed! flags=" + paramInt + localThrowable.toString());
-    }
+    paramSharedPreferences.commit();
   }
   
-  private void a(List<ee> paramList)
+  public static void a(String paramString1, String paramString2, Object paramObject)
   {
-    ee localee = null;
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramList.iterator();
-    paramList = localee;
-    if (localIterator.hasNext())
-    {
-      localee = (ee)localIterator.next();
-      localArrayList.add(localee.b());
-      if ((this.f == null) || (this.f.contains(localee.b()))) {
-        break label152;
-      }
-      paramList = localee;
-    }
-    label152:
+    a(a(paramString1), paramString2, paramObject);
+  }
+  
+  private byte[] a(InputStream paramInputStream)
+  {
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream(256);
     for (;;)
     {
-      break;
-      this.f = localArrayList;
-      if (paramList != null)
-      {
-        this.i = paramList;
-        ev.b("TxNewCellProvider", "notify");
-        if ((!this.a) || (this.i == null) || (this.g == null)) {
-          return;
-        }
-        try
-        {
-          this.g.b(this.i);
-          return;
-        }
-        finally {}
+      int i = paramInputStream.read(this.a);
+      if (i == -1) {
+        break;
       }
-      ev.b("TxNewCellProvider", "onTxCellInfoChange: same cell ");
-      return;
+      localByteArrayOutputStream.write(this.a, 0, i);
     }
+    paramInputStream.close();
+    return localByteArrayOutputStream.toByteArray();
   }
   
-  public final void a()
+  public static Object b(SharedPreferences paramSharedPreferences, String paramString, Object paramObject)
   {
-    if (!this.a) {
-      return;
+    if ((paramObject instanceof String)) {
+      return paramSharedPreferences.getString(paramString, (String)paramObject);
     }
-    this.a = false;
-    a(0);
-    try
-    {
-      if (this.c != null)
-      {
-        this.c.removeCallbacksAndMessages(null);
-        this.c = null;
-      }
-      if (this.b != null)
-      {
-        this.b.quit();
-        this.b = null;
-      }
-      this.j = null;
-      if (this.f != null) {
-        this.f = null;
-      }
-      ev.a("TxNewCellProvider", 4, "shutdown: state=[shutdown]");
-      return;
+    if ((paramObject instanceof Integer)) {
+      return Integer.valueOf(paramSharedPreferences.getInt(paramString, ((Integer)paramObject).intValue()));
     }
-    finally {}
+    if ((paramObject instanceof Boolean)) {
+      return Boolean.valueOf(paramSharedPreferences.getBoolean(paramString, ((Boolean)paramObject).booleanValue()));
+    }
+    if ((paramObject instanceof Float)) {
+      return Float.valueOf(paramSharedPreferences.getFloat(paramString, ((Float)paramObject).floatValue()));
+    }
+    if ((paramObject instanceof Long)) {
+      return Long.valueOf(paramSharedPreferences.getLong(paramString, ((Long)paramObject).longValue()));
+    }
+    return null;
   }
   
-  @SuppressLint({"NewApi"})
-  public final void onCellInfoChanged(List<CellInfo> paramList)
+  public static Object b(String paramString1, String paramString2, Object paramObject)
   {
-    ArrayList localArrayList;
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      localArrayList = new ArrayList();
-      paramList = paramList.iterator();
-      label126:
-      while (paramList.hasNext())
-      {
-        Object localObject = (CellInfo)paramList.next();
-        if (((CellInfo)localObject).isRegistered())
-        {
-          localObject = ee.a(this.g, (CellInfo)localObject);
-          if ((((ee)localObject).b < 0) || (((ee)localObject).c < 0) || (((ee)localObject).b == 535) || (((ee)localObject).c == 535)) {}
-          for (int m = 0;; m = 1)
-          {
-            if (m == 0) {
-              break label126;
-            }
-            localArrayList.add(localObject);
-            break;
-          }
-        }
-      }
-      if (localArrayList.size() <= 0) {
-        break label150;
-      }
-      a(localArrayList);
-    }
-    label150:
-    do
-    {
-      return;
-      ev.b("TxNewCellProvider", "cellInfos list is null");
-      ev.b("TxNewCellProvider", "cell info maybe has no rigister");
-      paramList = this.k;
-      if (paramList != null)
-      {
-        localArrayList = new ArrayList();
-        localArrayList.add(ee.a(this.g, paramList, null));
-        a(localArrayList);
-        return;
-      }
-      ev.b("TxNewCellProvider", "cellLocation is still null,so we use the last CellInfo,this happen when restart requestLocationUpdate");
-    } while (this.i == null);
-    paramList = new ArrayList();
-    paramList.add(this.i);
-    a(paramList);
+    return b(a(paramString1), paramString2, paramObject);
   }
   
-  public final void onServiceStateChanged(ServiceState paramServiceState)
+  private static String b(String paramString)
   {
-    int n = 1;
-    int i2 = 0;
-    super.onServiceStateChanged(paramServiceState);
-    if (paramServiceState == null) {}
+    String str2 = "GBK";
+    String str1 = str2;
+    int j;
+    int i;
+    if (paramString != null)
+    {
+      paramString = paramString.split(";");
+      j = paramString.length;
+      i = 0;
+    }
     for (;;)
     {
-      return;
+      str1 = str2;
+      if (i < j)
+      {
+        str1 = paramString[i].trim();
+        int k = str1.indexOf("charset=");
+        if (-1 != k) {
+          str1 = str1.substring(k + 8, str1.length());
+        }
+      }
+      else
+      {
+        return str1;
+      }
+      i += 1;
+    }
+  }
+  
+  public final Pair<byte[], String> a(String paramString, byte[] paramArrayOfByte)
+  {
+    paramString = (HttpURLConnection)new URL(paramString).openConnection();
+    for (;;)
+    {
       try
       {
-        ServiceState localServiceState = this.j;
-        if ((localServiceState != null) && (localServiceState.getState() == paramServiceState.getState())) {
-          continue;
-        }
-        this.j = paramServiceState;
-        if (!this.a) {
-          continue;
-        }
-        int m;
-        boolean bool;
-        if (this.j != null) {
-          if (this.j.getState() == 0)
-          {
-            m = 1;
-            paramServiceState = this.g.f;
-            bool = er.a(this.g.a);
-            if (paramServiceState == null) {
-              break label175;
-            }
-            if (paramServiceState.getSimState() != 5) {
-              break label164;
-            }
-            break label177;
-          }
-        }
-        for (;;)
+        paramString.setRequestProperty("User-Agent", "Dalvik/1.6.0 (Linux; U; Android 4.4; Nexus 5 Build/KRT16M)");
+        paramString.setRequestMethod("POST");
+        paramString.setConnectTimeout(10000);
+        paramString.setDoOutput(true);
+        paramString.setFixedLengthStreamingMode(paramArrayOfByte.length);
+        localObject = paramString.getOutputStream();
+        ((OutputStream)localObject).write(paramArrayOfByte);
+        ((OutputStream)localObject).flush();
+        ((OutputStream)localObject).close();
+        int i = paramString.getResponseCode();
+        switch (i)
         {
-          paramServiceState = new Message();
-          paramServiceState.what = 12999;
-          paramServiceState.arg1 = 12003;
-          paramServiceState.arg2 = i1;
-          this.g.b(paramServiceState);
-          return;
-          m = this.j.getState();
-          if (m == 1)
-          {
-            m = 0;
-            break;
-          }
-          m = -1;
-          break;
-          label164:
-          n = 0;
-          label175:
-          label177:
-          do
-          {
-            i1 = m;
-            break;
-            n = 0;
-            i1 = i2;
-            if (bool) {
-              break;
-            }
-          } while (n != 0);
-          int i1 = i2;
+        case 200: 
+          throw new IOException("net sdk error: ".concat(String.valueOf(i)));
         }
-        return;
       }
-      catch (Throwable paramServiceState) {}
-    }
-  }
-  
-  final class a
-    extends Handler
-  {
-    private a(Looper paramLooper)
-    {
-      super();
-    }
-    
-    @SuppressLint({"NewApi"})
-    public final void handleMessage(Message paramMessage)
-    {
-      if (!dv.this.a) {}
-      do
+      finally
       {
-        return;
-        paramMessage = null;
-        if (dv.b(dv.this) != null) {}
-        try
-        {
-          List localList = dv.b(dv.this).getAllCellInfo();
-          paramMessage = localList;
-        }
-        catch (Throwable localThrowable)
-        {
-          for (;;)
-          {
-            ev.a("TxNewCellProvider", "cannot get cellinfo", localThrowable);
-          }
-        }
-        dv.a(dv.this, er.a(dv.c(dv.this)));
-        dv.this.onCellInfoChanged(paramMessage);
-      } while (dv.d(dv.this) == null);
-      sendEmptyMessageDelayed(0, 30000L);
+        paramString.disconnect();
+      }
+      paramArrayOfByte = b(paramString.getHeaderField("content-type"));
+      Object localObject = a(paramString.getInputStream());
+      if ((localObject == null) || (localObject.length == 0))
+      {
+        paramArrayOfByte = Pair.create("{}".getBytes(), "utf-8");
+        paramString.disconnect();
+        return paramArrayOfByte;
+      }
+      paramArrayOfByte = Pair.create(localObject, paramArrayOfByte);
+      paramString.disconnect();
+      return paramArrayOfByte;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     c.t.m.g.dv
  * JD-Core Version:    0.7.0.1
  */

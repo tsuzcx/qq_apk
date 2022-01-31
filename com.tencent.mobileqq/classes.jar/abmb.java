@@ -1,55 +1,62 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.armap.ResDownloadManager.IResDownloadListener;
-import com.tencent.mobileqq.armap.config.ARMapConfigManager;
-import com.tencent.mobileqq.armap.config.PreloadMapRDHandler.UserData;
-import com.tencent.mobileqq.statistics.StatisticCollector;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Process;
+import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.activity.QQMapActivity.MapRuntime;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
+import mqq.app.MobileQQ;
 
 public class abmb
-  implements ResDownloadManager.IResDownloadListener
+  extends BroadcastReceiver
 {
-  public abmb(ARMapConfigManager paramARMapConfigManager) {}
+  public abmb(QQMapActivity.MapRuntime paramMapRuntime) {}
   
-  public void a(String paramString1, String paramString2, int paramInt) {}
-  
-  public void a(String paramString1, String paramString2, int paramInt, String paramString3, Object paramObject)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    long l;
-    if ((paramObject instanceof PreloadMapRDHandler.UserData))
+    int j = 1;
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    for (;;)
     {
-      paramString2 = (PreloadMapRDHandler.UserData)paramObject;
-      if (paramInt != 0) {
-        break label155;
-      }
-      l = new File(paramString3).length() / 1024L;
-      paramString3 = new HashMap();
-      paramString3.put("failReason", String.valueOf(paramInt));
-      paramString3.put("fileSize", String.valueOf(l));
-      if (!paramString2.jdField_a_of_type_Boolean) {
-        break label161;
-      }
-    }
-    label155:
-    label161:
-    for (paramString1 = "1";; paramString1 = "0")
-    {
-      paramString3.put("isFileExist", paramString1);
-      paramString3.put("areaCode", String.valueOf(paramString2.jdField_a_of_type_Int));
-      StatisticCollector.a(BaseApplicationImpl.getContext()).a("", "ARMAP_OFFLINE_FILESIZE", true, 0L, 0L, paramString3, "", false);
-      if (paramInt != 0) {
-        QLog.d("ARMapConfigManager.preloadMap", 1, "preload armap errCode:" + paramInt);
-      }
       return;
-      l = 0L;
-      break;
+      int i;
+      if (paramContext.equals("com.tencent.process.exit"))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQMapActivity", 2, "receive kill map process broadcast");
+        }
+        paramContext = paramIntent.getExtras().getStringArrayList("procNameList");
+        if ((!QQMapActivity.a(paramIntent.getExtras().getString("verify"), paramContext)) || (!azvt.a(paramContext, MobileQQ.getContext()))) {
+          break label144;
+        }
+        i = j;
+      }
+      while (i != 0)
+      {
+        Process.killProcess(Process.myPid());
+        return;
+        i = j;
+        if (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED"))
+        {
+          i = j;
+          if (!paramContext.equals("mqq.intent.action.LOGOUT"))
+          {
+            i = j;
+            if (!paramContext.equals("mqq.intent.action.EXIT_" + MobileQQ.getMobileQQ().getPackageName())) {
+              label144:
+              i = 0;
+            }
+          }
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abmb
  * JD-Core Version:    0.7.0.1
  */

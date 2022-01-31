@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class cmd0x5fb$ReqInfo
-  extends MessageMicro
+  extends MessageMicro<ReqInfo>
 {
   public static final int BYTES_COOKIE_FIELD_NUMBER = 9;
   public static final int MSG_DESTINATION_FIELD_NUMBER = 10;
@@ -37,7 +37,7 @@ public final class cmd0x5fb$ReqInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x5fb.ReqInfo
  * JD-Core Version:    0.7.0.1
  */

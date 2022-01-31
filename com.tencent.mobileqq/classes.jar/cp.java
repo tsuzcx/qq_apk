@@ -1,21 +1,18 @@
-import com.dataline.activities.PrinterSubOptionActivity;
+import com.dataline.activities.PrinterOptionActivity;
 
 public class cp
+  implements dg
 {
-  public int a;
-  public long a;
-  public String a;
+  public cp(PrinterOptionActivity paramPrinterOptionActivity) {}
   
-  public cp(PrinterSubOptionActivity paramPrinterSubOptionActivity, int paramInt, long paramLong, String paramString)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    PrinterOptionActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     cp
  * JD-Core Version:    0.7.0.1
  */

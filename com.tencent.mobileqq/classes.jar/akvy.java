@@ -1,35 +1,66 @@
-import com.tencent.biz.AuthorizeConfig;
-import com.tencent.mobileqq.webview.swift.component.SwiftPreloadCookieManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import android.opengl.GLES20;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
+import java.nio.ShortBuffer;
 
-public final class akvy
-  implements Runnable
+public class akvy
 {
-  public akvy(List paramList, SwiftPreloadCookieManager paramSwiftPreloadCookieManager) {}
+  public static final float[] a;
+  public static final short[] a;
+  private FloatBuffer jdField_a_of_type_JavaNioFloatBuffer;
+  private ShortBuffer jdField_a_of_type_JavaNioShortBuffer;
+  public float[] b;
+  public short[] b;
   
-  public void run()
+  static
   {
-    Set localSet = AuthorizeConfig.a().a("pskey");
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if (!localSet.contains(str))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("SwiftBrowserCookieMonster", 2, str + " doesn't need pskey any more,so delete! ");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftPreloadCookieManager.b(str, "p_skey");
-      }
-    }
+    jdField_a_of_type_ArrayOfFloat = new float[] { -1.0F, 1.0F, 0.0F, 0.0F, 1.0F, -1.0F, -1.0F, 0.0F, 0.0F, 0.0F, 1.0F, -1.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F };
+    jdField_a_of_type_ArrayOfShort = new short[] { 0, 1, 2, 2, 3, 0 };
+  }
+  
+  public akvy()
+  {
+    this.jdField_b_of_type_ArrayOfFloat = jdField_a_of_type_ArrayOfFloat;
+    this.jdField_b_of_type_ArrayOfShort = jdField_a_of_type_ArrayOfShort;
+    b();
+  }
+  
+  public akvy(float[] paramArrayOfFloat, short[] paramArrayOfShort)
+  {
+    this.jdField_b_of_type_ArrayOfFloat = paramArrayOfFloat;
+    this.jdField_b_of_type_ArrayOfShort = paramArrayOfShort;
+    b();
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_JavaNioFloatBuffer = ByteBuffer.allocateDirect(this.jdField_b_of_type_ArrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    this.jdField_a_of_type_JavaNioFloatBuffer.put(this.jdField_b_of_type_ArrayOfFloat).position(0);
+    this.jdField_a_of_type_JavaNioShortBuffer = ByteBuffer.allocateDirect(this.jdField_b_of_type_ArrayOfShort.length * 2).order(ByteOrder.nativeOrder()).asShortBuffer();
+    this.jdField_a_of_type_JavaNioShortBuffer.put(this.jdField_b_of_type_ArrayOfShort).position(0);
+  }
+  
+  public void a()
+  {
+    GLES20.glDrawElements(4, 6, 5123, this.jdField_a_of_type_JavaNioShortBuffer);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    GLES20.glEnableVertexAttribArray(paramInt1);
+    akvw.a("glEnableVertexAttribArray aPositionHandle");
+    GLES20.glEnableVertexAttribArray(paramInt2);
+    akvw.a("glEnableVertexAttribArray aTextureCoordHandle");
+    this.jdField_a_of_type_JavaNioFloatBuffer.position(0);
+    GLES20.glVertexAttribPointer(paramInt1, 3, 5126, false, 20, this.jdField_a_of_type_JavaNioFloatBuffer);
+    this.jdField_a_of_type_JavaNioFloatBuffer.position(3);
+    GLES20.glVertexAttribPointer(paramInt2, 2, 5126, false, 20, this.jdField_a_of_type_JavaNioFloatBuffer);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akvy
  * JD-Core Version:    0.7.0.1
  */

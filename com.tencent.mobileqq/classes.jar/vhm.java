@@ -1,24 +1,18 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.PLNewsItemBuilder;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
 
-public class vhm
-  extends AbstractChatItemBuilder.ViewHolder
+public abstract interface vhm
 {
-  public long a;
-  public CornerImageView a;
-  public String a;
-  public View b;
-  public TextView b;
-  public TextView c;
+  public abstract void a();
   
-  public vhm(PLNewsItemBuilder paramPLNewsItemBuilder) {}
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(SlideItemInfo paramSlideItemInfo);
+  
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vhm
  * JD-Core Version:    0.7.0.1
  */

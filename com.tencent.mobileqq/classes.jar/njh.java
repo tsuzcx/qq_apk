@@ -1,22 +1,11 @@
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeAdapter;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.app.AutomatorObserver;
+import java.util.List;
 
-public class njh
-  extends AutomatorObserver
+class njh
+  extends ohe
 {
-  public njh(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
+  njh(njg paramnjg) {}
   
-  protected void a(int paramInt)
-  {
-    if (paramInt == 1)
-    {
-      SLog.b(MsgTabStoryNodeListManager.a() + ".VASH", "Friend Cache Inited!");
-      MsgTabStoryNodeListManager.g = true;
-      this.a.a.notifyDataSetChanged();
-    }
-  }
+  public void a_(List<rql> paramList) {}
 }
 
 

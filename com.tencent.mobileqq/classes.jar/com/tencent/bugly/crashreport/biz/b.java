@@ -1,11 +1,9 @@
 package com.tencent.bugly.crashreport.biz;
 
-import android.app.Activity;
 import android.app.Application;
 import android.app.Application.ActivityLifecycleCallbacks;
 import android.content.Context;
 import android.os.Build.VERSION;
-import android.os.Bundle;
 import com.tencent.bugly.BuglyStrategy;
 import com.tencent.bugly.crashreport.common.strategy.StrategyBean;
 import com.tencent.bugly.proguard.w;
@@ -36,7 +34,7 @@ public class b
     }
   }
   
-  public static void a(Context paramContext, final BuglyStrategy paramBuglyStrategy)
+  public static void a(Context paramContext, BuglyStrategy paramBuglyStrategy)
   {
     if (a) {
       return;
@@ -54,13 +52,7 @@ public class b
         c(paramContext, paramBuglyStrategy);
         return;
       }
-      w.a().a(new Runnable()
-      {
-        public final void run()
-        {
-          b.b(this.a, paramBuglyStrategy);
-        }
-      }, l1);
+      w.a().a(new b.1(paramContext, paramBuglyStrategy), l1);
       return;
     }
   }
@@ -189,126 +181,7 @@ public class b
         try
         {
           if (k == null) {
-            k = new Application.ActivityLifecycleCallbacks()
-            {
-              public final void onActivityCreated(Activity paramAnonymousActivity, Bundle paramAnonymousBundle)
-              {
-                paramAnonymousBundle = "unknown";
-                if (paramAnonymousActivity != null) {
-                  paramAnonymousBundle = paramAnonymousActivity.getClass().getName();
-                }
-                if ((b.b() != null) && (!b.b().getName().equals(paramAnonymousBundle))) {}
-                do
-                {
-                  return;
-                  x.c(">>> %s onCreated <<<", new Object[] { paramAnonymousBundle });
-                  paramAnonymousActivity = com.tencent.bugly.crashreport.common.info.a.b();
-                } while (paramAnonymousActivity == null);
-                paramAnonymousActivity.C.add(b.a(paramAnonymousBundle, "onCreated"));
-              }
-              
-              public final void onActivityDestroyed(Activity paramAnonymousActivity)
-              {
-                String str = "unknown";
-                if (paramAnonymousActivity != null) {
-                  str = paramAnonymousActivity.getClass().getName();
-                }
-                if ((b.b() != null) && (!b.b().getName().equals(str))) {}
-                do
-                {
-                  return;
-                  x.c(">>> %s onDestroyed <<<", new Object[] { str });
-                  paramAnonymousActivity = com.tencent.bugly.crashreport.common.info.a.b();
-                } while (paramAnonymousActivity == null);
-                paramAnonymousActivity.C.add(b.a(str, "onDestroyed"));
-              }
-              
-              public final void onActivityPaused(Activity paramAnonymousActivity)
-              {
-                String str = "unknown";
-                if (paramAnonymousActivity != null) {
-                  str = paramAnonymousActivity.getClass().getName();
-                }
-                if ((b.b() != null) && (!b.b().getName().equals(str))) {}
-                com.tencent.bugly.crashreport.common.info.a locala;
-                do
-                {
-                  return;
-                  x.c(">>> %s onPaused <<<", new Object[] { str });
-                  locala = com.tencent.bugly.crashreport.common.info.a.b();
-                } while (locala == null);
-                locala.C.add(b.a(str, "onPaused"));
-                locala.a(false);
-                locala.t = System.currentTimeMillis();
-                locala.u = (locala.t - locala.s);
-                b.b(locala.t);
-                if (locala.u < 0L) {
-                  locala.u = 0L;
-                }
-                if (paramAnonymousActivity != null)
-                {
-                  locala.r = "background";
-                  return;
-                }
-                locala.r = "unknown";
-              }
-              
-              public final void onActivityResumed(Activity paramAnonymousActivity)
-              {
-                String str = "unknown";
-                if (paramAnonymousActivity != null) {
-                  str = paramAnonymousActivity.getClass().getName();
-                }
-                if ((b.b() != null) && (!b.b().getName().equals(str))) {}
-                label209:
-                do
-                {
-                  do
-                  {
-                    for (;;)
-                    {
-                      return;
-                      x.c(">>> %s onResumed <<<", new Object[] { str });
-                      paramAnonymousActivity = com.tencent.bugly.crashreport.common.info.a.b();
-                      if (paramAnonymousActivity != null)
-                      {
-                        paramAnonymousActivity.C.add(b.a(str, "onResumed"));
-                        paramAnonymousActivity.a(true);
-                        paramAnonymousActivity.r = str;
-                        paramAnonymousActivity.s = System.currentTimeMillis();
-                        paramAnonymousActivity.v = (paramAnonymousActivity.s - b.c());
-                        long l2 = paramAnonymousActivity.s - b.d();
-                        if (b.e() > 0L) {}
-                        for (l1 = b.e(); l2 > l1; l1 = b.f())
-                        {
-                          paramAnonymousActivity.c();
-                          b.g();
-                          x.a("[session] launch app one times (app in background %d seconds and over %d seconds)", new Object[] { Long.valueOf(l2 / 1000L), Long.valueOf(b.f() / 1000L) });
-                          if (b.h() % b.i() != 0) {
-                            break label209;
-                          }
-                          b.b.a(4, b.j(), 0L);
-                          return;
-                        }
-                      }
-                    }
-                    b.b.a(4, false, 0L);
-                    l1 = System.currentTimeMillis();
-                  } while (l1 - b.k() <= b.l());
-                  b.a(l1);
-                  x.a("add a timer to upload hot start user info", new Object[0]);
-                } while (!b.j());
-                paramAnonymousActivity = b.b;
-                long l1 = b.l();
-                w.a().a(new a.a(paramAnonymousActivity, null, true), l1);
-              }
-              
-              public final void onActivitySaveInstanceState(Activity paramAnonymousActivity, Bundle paramAnonymousBundle) {}
-              
-              public final void onActivityStarted(Activity paramAnonymousActivity) {}
-              
-              public final void onActivityStopped(Activity paramAnonymousActivity) {}
-            };
+            k = new b.2();
           }
           paramBuglyStrategy.registerActivityLifecycleCallbacks(k);
         }

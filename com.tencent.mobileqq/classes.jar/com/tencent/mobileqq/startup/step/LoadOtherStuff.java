@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.startup.step;
 
+import awrn;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.statistics.StatisticCollector;
 
 public class LoadOtherStuff
   extends Step
 {
-  protected boolean a()
+  protected boolean doStep()
   {
-    StatisticCollector.a(BaseApplicationImpl.getContext());
+    awrn.a(BaseApplicationImpl.getContext());
     BaseApplicationImpl.getApplication().getSharedPreferences("UserGuide", 0);
     return true;
   }

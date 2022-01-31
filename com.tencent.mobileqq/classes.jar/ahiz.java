@@ -1,45 +1,32 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.MultiMsgProxy;
-import com.tencent.mobileqq.pic.DownCallBack;
-import com.tencent.mobileqq.pic.DownCallBack.DownResult;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
-import java.lang.ref.WeakReference;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
 public class ahiz
-  implements DownCallBack
+  implements Animation.AnimationListener
 {
-  private WeakReference a;
+  public ahiz(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public ahiz(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a = new WeakReference(paramReceiptMessageDetailFragment);
+    NewFlowCameraActivity.a(this.a).setVisibility(4);
+    NewFlowCameraActivity.a(this.a).setEnabled(false);
+    this.a.e.setVisibility(4);
+    ahhk.a("", "0X8007C05", this.a.c + "", "", "", "");
   }
   
-  public void a(int paramInt, boolean paramBoolean) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void a(DownCallBack.DownResult paramDownResult)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.a.get();
-    if (localReceiptMessageDetailFragment == null) {
-      return;
-    }
-    switch (paramDownResult.a)
-    {
-    default: 
-      return;
-    case -1: 
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), null);
-      ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(7);
-      return;
-    }
-    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).a().a(ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment), null);
-    ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment).sendEmptyMessage(6);
+    NewFlowCameraActivity.a(this.a).setEnabled(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahiz
  * JD-Core Version:    0.7.0.1
  */

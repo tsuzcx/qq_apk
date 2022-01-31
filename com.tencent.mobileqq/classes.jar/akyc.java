@@ -1,27 +1,27 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler;
-import mqq.os.MqqHandler;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
 
-public class akyc
-  implements URLDrawable.URLDrawableListener
+class akyc
+  implements Animator.AnimatorListener
 {
-  public akyc(SwiftBrowserTBSHandler paramSwiftBrowserTBSHandler) {}
+  akyc(akyb paramakyb) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.a.sendMessage(this.a.a.obtainMessage(103, paramURLDrawable));
+    if (akyb.a(this.a) != null) {
+      akyb.a(this.a).a();
+    }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akyc
  * JD-Core Version:    0.7.0.1
  */

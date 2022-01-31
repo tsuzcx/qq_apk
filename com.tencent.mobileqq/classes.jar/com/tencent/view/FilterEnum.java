@@ -1,5 +1,8 @@
 package com.tencent.view;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class FilterEnum
 {
   public static final int MIC_ABAO = 83;
@@ -71,7 +74,10 @@ public class FilterEnum
   public static final int MIC_PTU_AUTOLEVEL = 235;
   public static final int MIC_PTU_BAIXI = 282;
   public static final int MIC_PTU_BLUR_REAL = 225;
+  public static final int MIC_PTU_CHUNJIE = 317;
+  public static final int MIC_PTU_CHUXIA = 308;
   public static final int MIC_PTU_COLOR_SH = 202;
+  public static final int MIC_PTU_DANNAI = 310;
   public static final int MIC_PTU_DARKCORNER = 274;
   public static final int MIC_PTU_DENHANCE = 231;
   public static final int MIC_PTU_DRAMA = 217;
@@ -84,17 +90,22 @@ public class FilterEnum
   public static final int MIC_PTU_FEN2_REAL_LUT = 290;
   public static final int MIC_PTU_FENGJING = 234;
   public static final int MIC_PTU_FENHONGBAO = 295;
+  public static final int MIC_PTU_FRESH = 318;
   public static final int MIC_PTU_FUGU = 219;
   public static final int MIC_PTU_FUGUHUANG = 205;
   public static final int MIC_PTU_FUGU_SH = 201;
+  public static final int MIC_PTU_GAOBAI = 307;
   public static final int MIC_PTU_GAOLENG = 223;
   public static final int MIC_PTU_GOGUANGLANZI = 206;
+  public static final int MIC_PTU_HANFENG = 313;
   public static final int MIC_PTU_HEIBAI = 207;
   public static final int MIC_PTU_HEIBAI2 = 216;
   public static final int MIC_PTU_HEIBAI3 = 220;
   public static final int MIC_PTU_HEIBAI4 = 226;
+  public static final int MIC_PTU_HONGKONG = 311;
   public static final int MIC_PTU_HUAIJIU = 208;
   public static final int MIC_PTU_JIAOPIAN = 209;
+  public static final int MIC_PTU_JIAZHOU = 312;
   public static final int MIC_PTU_JINGWU = 232;
   public static final int MIC_PTU_KAFEI = 303;
   public static final int MIC_PTU_LAN = 210;
@@ -106,11 +117,14 @@ public class FilterEnum
   public static final int MIC_PTU_MEIWEI = 299;
   public static final int MIC_PTU_MENGHUAN = 227;
   public static final int MIC_PTU_MOLV = 212;
+  public static final int MIC_PTU_MUSE = 309;
   public static final int MIC_PTU_NAICHA = 228;
   public static final int MIC_PTU_NIGHT = 218;
   public static final int MIC_PTU_NUANHUANG = 213;
+  public static final int MIC_PTU_PEACH = 304;
   public static final int MIC_PTU_PORTRAITY_REAL = 224;
   public static final int MIC_PTU_QIANGWEI = 283;
+  public static final int MIC_PTU_QINGCHENG = 305;
   public static final int MIC_PTU_QINGCONG = 241;
   public static final int MIC_PTU_QINGLIANG = 284;
   public static final int MIC_PTU_QINGXI = 298;
@@ -133,10 +147,12 @@ public class FilterEnum
   public static final int MIC_PTU_WU = 294;
   public static final int MIC_PTU_WUXIA = 297;
   public static final int MIC_PTU_XICAN = 300;
+  public static final int MIC_PTU_XINDONG = 306;
   public static final int MIC_PTU_XINXIAN = 301;
   public static final int MIC_PTU_XINYE = 285;
   public static final int MIC_PTU_YINGTAOBUDING = 296;
   public static final int MIC_PTU_YOUJIALI = 288;
+  public static final int MIC_PTU_ZHONGXING = 314;
   public static final int MIC_PTU_ZIPAI_BLACKWHITEZIPAI = 268;
   public static final int MIC_PTU_ZIPAI_COFFEE = 269;
   public static final int MIC_PTU_ZIPAI_FAIRYTALE = 246;
@@ -170,6 +186,8 @@ public class FilterEnum
   public static final int MIC_PTU_ZIPAI_TOKYO = 257;
   public static final int MIC_PTU_ZIPAI_YOUNG = 256;
   public static final int MIC_PTU_ZIRAN = 289;
+  public static final int MIC_PTU_ZIRAN_BACK = 316;
+  public static final int MIC_PTU_ZIRAN_FRONT = 315;
   public static final int MIC_Portait = 2;
   public static final int MIC_Portait_NB = 4;
   public static final int MIC_RESClIP = 123;
@@ -180,10 +198,15 @@ public class FilterEnum
   public static final int MIC_XPRO2 = 9;
   public static final int WEICO_BW = 11;
   public static final int WEICO_FILM = 12;
+  
+  public static boolean isImageFilter(int paramInt)
+  {
+    return Arrays.asList(new Integer[] { Integer.valueOf(218), Integer.valueOf(231), Integer.valueOf(126), Integer.valueOf(203), Integer.valueOf(82), Integer.valueOf(109), Integer.valueOf(99), Integer.valueOf(100), Integer.valueOf(110), Integer.valueOf(119), Integer.valueOf(217) }).indexOf(Integer.valueOf(paramInt)) != -1;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.view.FilterEnum
  * JD-Core Version:    0.7.0.1
  */

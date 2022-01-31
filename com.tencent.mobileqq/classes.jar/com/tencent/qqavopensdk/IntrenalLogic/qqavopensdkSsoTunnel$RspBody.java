@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class qqavopensdkSsoTunnel$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   public static final int BYTES_RSPBODY_FIELD_NUMBER = 2;
   public static final int MSG_CMD_ERROR_CODE_FIELD_NUMBER = 1;

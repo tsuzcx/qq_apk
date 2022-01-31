@@ -11,12 +11,12 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class ilive_feeds_write$DelFeedReq
-  extends MessageMicro
+  extends MessageMicro<DelFeedReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field anchor_del_user = PBField.initUInt32(0);
   public final PBEnumField del_source = PBField.initEnum(1);
-  public final PBRepeatMessageField del_st = PBField.initRepeatMessage(ilive_feeds_write.DelFeedStuct.class);
+  public final PBRepeatMessageField<ilive_feeds_write.DelFeedStuct> del_st = PBField.initRepeatMessage(ilive_feeds_write.DelFeedStuct.class);
   public final PBEnumField del_type = PBField.initEnum(1);
   public final PBUInt32Field select_all = PBField.initUInt32(0);
   public final PBUInt64Field uid = PBField.initUInt64(0L);
@@ -30,7 +30,7 @@ public final class ilive_feeds_write$DelFeedReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_write.DelFeedReq
  * JD-Core Version:    0.7.0.1
  */

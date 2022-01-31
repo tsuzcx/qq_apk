@@ -1,20 +1,114 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.ptt.TouchProxyRelativeLayout;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
-class tno
-  implements Runnable
+public class tno
+  extends tnn
 {
-  tno(tnn paramtnn) {}
+  private tnn a;
   
-  public void run()
+  public Activity a()
   {
-    QQLSActivity.a(this.a.a).removeView(QQLSActivity.a(this.a.a));
-    QQLSActivity.a(this.a.a, null);
+    return this.a.a();
+  }
+  
+  public OpenPlayerBuilder.Data a()
+  {
+    return this.a.a();
+  }
+  
+  public XViewPager a()
+  {
+    return this.a.a();
+  }
+  
+  public String a(String paramString)
+  {
+    return this.a.a(paramString);
+  }
+  
+  public tjs a()
+  {
+    return this.a.a();
+  }
+  
+  public tjv a()
+  {
+    return this.a.a();
+  }
+  
+  public tnf a()
+  {
+    return this.a.a();
+  }
+  
+  public tnn a()
+  {
+    return this.a;
+  }
+  
+  public tny a()
+  {
+    return this.a.a();
+  }
+  
+  public void a()
+  {
+    this.a.a();
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    this.a.a(paramIntent);
+  }
+  
+  public void a(sgc paramsgc)
+  {
+    this.a.a(paramsgc);
+  }
+  
+  public void a(tmd paramtmd)
+  {
+    this.a.a(paramtmd);
+  }
+  
+  public void a(tnn paramtnn)
+  {
+    if (this.a != null) {
+      throw new IllegalStateException("Base context already set");
+    }
+    this.a = paramtnn;
+  }
+  
+  public void a(tog paramtog)
+  {
+    this.a.a(paramtog);
+  }
+  
+  public boolean a()
+  {
+    return this.a.a();
+  }
+  
+  public void b(sgc paramsgc)
+  {
+    this.a.b(paramsgc);
+  }
+  
+  public void b(tmd paramtmd)
+  {
+    this.a.b(paramtmd);
+  }
+  
+  public boolean b()
+  {
+    return this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tno
  * JD-Core Version:    0.7.0.1
  */

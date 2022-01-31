@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.pb;
 
-import java.io.IOException;
-
 public final class PBSFixed32Field
   extends PBPrimitiveField<Integer>
 {
@@ -48,14 +46,12 @@ public final class PBSFixed32Field
   }
   
   public void readFrom(CodedInputStreamMicro paramCodedInputStreamMicro)
-    throws IOException
   {
     this.value = paramCodedInputStreamMicro.readSFixed32();
     setHasFlag(true);
   }
   
   protected Integer readFromDirectly(CodedInputStreamMicro paramCodedInputStreamMicro)
-    throws IOException
   {
     return Integer.valueOf(paramCodedInputStreamMicro.readSFixed32());
   }
@@ -72,7 +68,6 @@ public final class PBSFixed32Field
   }
   
   public void writeTo(CodedOutputStreamMicro paramCodedOutputStreamMicro, int paramInt)
-    throws IOException
   {
     if (has()) {
       paramCodedOutputStreamMicro.writeSFixed32(paramInt, this.value);
@@ -80,7 +75,6 @@ public final class PBSFixed32Field
   }
   
   protected void writeToDirectly(CodedOutputStreamMicro paramCodedOutputStreamMicro, int paramInt, Integer paramInteger)
-    throws IOException
   {
     paramCodedOutputStreamMicro.writeSFixed32(paramInt, paramInteger.intValue());
   }

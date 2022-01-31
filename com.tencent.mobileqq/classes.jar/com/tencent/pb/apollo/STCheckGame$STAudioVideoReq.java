@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class STCheckGame$STAudioVideoReq
-  extends MessageMicro
+  extends MessageMicro<STAudioVideoReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "reqBody", "gameId", "roomId" }, new Object[] { null, Integer.valueOf(0), Long.valueOf(0L) }, STAudioVideoReq.class);
   public final PBUInt32Field gameId = PBField.initUInt32(0);
@@ -16,7 +16,7 @@ public final class STCheckGame$STAudioVideoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.apollo.STCheckGame.STAudioVideoReq
  * JD-Core Version:    0.7.0.1
  */

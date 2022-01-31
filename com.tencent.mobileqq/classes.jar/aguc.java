@@ -1,40 +1,28 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.VipProfileCardBaseActivity;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import java.util.HashMap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringBigInsertPage.4.1;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class aguc
-  implements Runnable
+public class aguc
+  implements agpe
 {
-  aguc(agub paramagub, Card paramCard, HashMap paramHashMap, String paramString) {}
+  aguc(agty paramagty) {}
   
-  public void run()
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    boolean bool = this.jdField_a_of_type_Agub.a.a((int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId, this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundUrl, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.templateRet);
-    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
-    if (bool) {}
-    for (Object localObject = "0";; localObject = "-102")
-    {
-      localHashMap.put("param_FailCode", localObject);
-      if (bool != true) {
-        break;
-      }
-      StatisticCollector.a(this.jdField_a_of_type_Agub.a.app.getApp()).a(this.jdField_a_of_type_JavaLangString, "profileCardSet", true, 0L, 0L, this.jdField_a_of_type_JavaUtilHashMap, "", false);
-      localObject = this.jdField_a_of_type_Agub.a.a.obtainMessage(5);
-      this.jdField_a_of_type_Agub.a.a.sendMessage((Message)localObject);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("SpringBigInsertPage", 2, "onResult: " + paramInt + ", path: " + paramPathResult.filePath);
     }
-    StatisticCollector.a(this.jdField_a_of_type_Agub.a.app.getApp()).a(this.jdField_a_of_type_JavaLangString, "profileCardSet", false, 0L, 0L, this.jdField_a_of_type_JavaUtilHashMap, "", false);
-    localObject = this.jdField_a_of_type_Agub.a.a.obtainMessage(6);
-    this.jdField_a_of_type_Agub.a.a.sendMessage((Message)localObject);
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramPathResult.filePath))) {
+      agty.a(this.a).a().runOnUiThread(new SpringBigInsertPage.4.1(this, paramPathResult));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aguc
  * JD-Core Version:    0.7.0.1
  */

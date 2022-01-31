@@ -1,23 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-
-public class uob
-  implements View.OnClickListener
+public abstract interface uob
 {
-  public uob(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
   
-  public void onClick(View paramView)
-  {
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004E0A", "0X8004E0A", 0, 0, "", "", "", "");
-    this.a.setResult(0);
-    this.a.finish();
-  }
+  public abstract void i();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uob
  * JD-Core Version:    0.7.0.1
  */

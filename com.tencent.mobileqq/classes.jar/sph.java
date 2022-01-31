@@ -1,39 +1,68 @@
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.DiscussionHandler;
-import com.tencent.mobileqq.app.DiscussionHandler.ReqDiscussInfo;
-import com.tencent.mobileqq.app.DiscussionManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-
 public class sph
-  implements Runnable
+  implements spo
 {
-  public sph(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, boolean paramBoolean) {}
+  public final spf[] a = new spf[2];
   
-  public void run()
+  private void a(spf paramspf, int paramInt)
   {
-    ArrayList localArrayList = DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).a(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity));
-    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a(localArrayList);
-    if (this.jdField_a_of_type_Boolean) {}
-    try
+    this.a[paramInt] = paramspf;
+  }
+  
+  public <T extends spf> T a(int paramInt)
+  {
+    spf localspf = this.a[paramInt];
+    if (localspf == null) {}
+    for (;;)
     {
-      DiscussionHandler.ReqDiscussInfo localReqDiscussInfo = new DiscussionHandler.ReqDiscussInfo();
-      localReqDiscussInfo.a = String.valueOf(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity));
-      localReqDiscussInfo.b = localArrayList.size();
-      DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).a(localReqDiscussInfo);
-      return;
+      synchronized (this.a)
+      {
+        localspf = this.a[paramInt];
+        if (localspf == null) {
+          break label80;
+        }
+        return localspf;
+        a(localspf, paramInt);
+        if (localspf != null) {
+          localspf.b();
+        }
+        return localspf;
+      }
+      Object localObject2 = new squ();
+      continue;
+      localObject2 = new soy();
+      continue;
+      return localObject2;
+      label80:
+      switch (paramInt)
+      {
+      }
     }
-    catch (Exception localException)
+  }
+  
+  public void a()
+  {
+    urk.b("DataProviderManager", "onInit");
+  }
+  
+  public void b()
+  {
+    urk.b("DataProviderManager", "onDestroy");
+    spf[] arrayOfspf = this.a;
+    int j = arrayOfspf.length;
+    int i = 0;
+    while (i < j)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("DiscussionInfoCardActivity", 2, "initDiscussionView getDiscussInfo error disUin=" + DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), localException);
+      spf localspf = arrayOfspf[i];
+      if (localspf != null) {
+        localspf.c();
+      }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sph
  * JD-Core Version:    0.7.0.1
  */

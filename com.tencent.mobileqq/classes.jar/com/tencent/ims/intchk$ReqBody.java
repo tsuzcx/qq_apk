@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class intchk$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   public static final int MSG_APP_INFO_FIELD_NUMBER = 2;
   public static final int MSG_CHECK_CONFIG_REQ_FIELD_NUMBER = 3;

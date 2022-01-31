@@ -1,22 +1,31 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
 import android.content.Context;
-import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.ComponentView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.factory.BaseTemplateFactory;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
 import com.tencent.mobileqq.app.ThreadManager;
-import lzw;
-import lzx;
+import odm;
+import opw;
+import pey;
+import pfh;
+import pjg;
+import pmi;
 
 public class ComponentLastRead
   extends LinearLayout
-  implements ComponentView
+  implements pey
 {
-  public CmpCtxt a;
+  private Container a;
+  public pjg a;
   
   public ComponentLastRead(Context paramContext)
   {
@@ -36,9 +45,41 @@ public class ComponentLastRead
     b(paramContext);
   }
   
+  private void a(opw paramopw)
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer != null) {}
+    do
+    {
+      Object localObject;
+      do
+      {
+        do
+        {
+          do
+          {
+            int i;
+            do
+            {
+              return;
+              i = paramopw.e();
+            } while ((i != 0) && (!odm.c(i)));
+            paramopw = paramopw.a();
+          } while (paramopw == null);
+          localObject = paramopw.getTemplateFactory();
+        } while (localObject == null);
+        localObject = ((BaseTemplateFactory)localObject).getTemplate("ReadInjoy_last_read_cell");
+      } while (localObject == null);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer = paramopw.getViewFactory().inflate(paramopw, (TemplateBean)localObject);
+    } while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null);
+    removeAllViews();
+    paramopw = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getVirtualView().getComLayoutParams();
+    paramopw = new RelativeLayout.LayoutParams(paramopw.mLayoutWidth, paramopw.mLayoutHeight);
+    addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer, paramopw);
+  }
+  
   private void b(Context paramContext)
   {
-    this.a = new CmpCtxt();
+    this.jdField_a_of_type_Pjg = new pjg();
     a(paramContext);
     a();
   }
@@ -47,25 +88,22 @@ public class ComponentLastRead
   
   public void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2130969582, this, true);
-    setBackgroundResource(2131493472);
-  }
-  
-  public void a(FeedItemCell.CellListener paramCellListener)
-  {
-    this.a.a(paramCellListener);
+    LayoutInflater.from(paramContext).inflate(2131494308, this, true);
+    setBackgroundResource(2131101149);
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof IReadInJoyModel))
+    if ((paramObject instanceof opw))
     {
-      this.a.a((IReadInJoyModel)paramObject);
+      this.jdField_a_of_type_Pjg.a((opw)paramObject);
       b();
-      if (this.a.a.g())
+      a((opw)paramObject);
+      if (this.jdField_a_of_type_Pjg.a.g())
       {
         setVisibility(0);
-        setOnClickListener(new lzw(this));
+        setOnClickListener(new pmi(this));
+        ThreadManager.executeOnSubThread(new ComponentLastRead.2(this));
       }
     }
     else
@@ -75,13 +113,12 @@ public class ComponentLastRead
     setVisibility(8);
   }
   
-  public void b() {}
-  
-  public void draw(Canvas paramCanvas)
+  public void a(pfh parampfh)
   {
-    super.draw(paramCanvas);
-    ThreadManager.executeOnSubThread(new lzx(this));
+    this.jdField_a_of_type_Pjg.a(parampfh);
   }
+  
+  public void b() {}
 }
 
 

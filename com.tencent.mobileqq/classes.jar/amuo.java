@@ -1,26 +1,23 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import cooperation.qlink.QQProxyForQlink;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.datareportviewer.DataReportSettingFragment;
 
 public class amuo
-  extends BroadcastReceiver
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public amuo(QQProxyForQlink paramQQProxyForQlink) {}
+  public amuo(DataReportSettingFragment paramDataReportSettingFragment) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (("com.tencent.qlink.finishworkingdlg".equalsIgnoreCase(paramIntent.getAction())) && (QQProxyForQlink.a(this.a) != null))
-    {
-      QQProxyForQlink.a(this.a).dismiss();
-      QQProxyForQlink.a(this.a, null);
+    if (!paramBoolean) {
+      amvk.a().a();
     }
+    amvk.a = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amuo
  * JD-Core Version:    0.7.0.1
  */

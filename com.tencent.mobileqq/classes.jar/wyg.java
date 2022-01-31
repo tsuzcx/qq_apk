@@ -1,20 +1,52 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.app.UniPayHandler.UniPayUpdateListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class wyg
-  extends UniPayHandler.UniPayUpdateListener
+class wyg
+  implements vnq
 {
-  public wyg(AvatarPendantActivity paramAvatarPendantActivity) {}
+  wyg(wyf paramwyf, wyh paramwyh, wyi paramwyi) {}
   
-  public void a()
+  public void onFailure(String paramString)
   {
-    this.a.runOnUiThread(new wyh(this));
+    if (this.jdField_a_of_type_Wyh != null)
+    {
+      this.jdField_a_of_type_Wyi.a(943004);
+      this.jdField_a_of_type_Wyi.a(paramString);
+      this.jdField_a_of_type_Wyh.b(this.jdField_a_of_type_Wyi);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.videostory.capture", 2, "picToVideo failure");
+    }
+  }
+  
+  public void onFinish(boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.videostory.capture", 2, "picToVideo finish");
+    }
+  }
+  
+  public void onProgress(String paramString) {}
+  
+  public void onStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.videostory.capture", 2, "picToVideo start");
+    }
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    if (this.jdField_a_of_type_Wyh != null) {
+      this.jdField_a_of_type_Wyh.a(this.jdField_a_of_type_Wyi);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.videostory.capture", 2, "picToVideo sucess");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wyg
  * JD-Core Version:    0.7.0.1
  */

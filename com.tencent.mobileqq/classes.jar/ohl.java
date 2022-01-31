@@ -1,15 +1,38 @@
-import com.tencent.biz.qqstory.takevideo.EditJumpToPtu;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.os.SystemClock;
 
 public class ohl
-  implements Runnable
 {
-  public ohl(EditJumpToPtu paramEditJumpToPtu, String paramString) {}
+  final long a;
+  public final String a;
+  long b;
+  public final String b;
   
-  public void run()
+  ohl(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditJumpToPtu.a(this.jdField_a_of_type_JavaLangString);
-    FileUtils.d(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+  }
+  
+  ohl(String paramString1, String paramString2, long paramLong)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+    this.jdField_b_of_type_Long = paramLong;
+  }
+  
+  boolean a()
+  {
+    if (this.jdField_b_of_type_Long > 0L) {
+      if (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long <= this.jdField_b_of_type_Long) {}
+    }
+    while (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long > 300000L)
+    {
+      return true;
+      return false;
+    }
+    return false;
   }
 }
 

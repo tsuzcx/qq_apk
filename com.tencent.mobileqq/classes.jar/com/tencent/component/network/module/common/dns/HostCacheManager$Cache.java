@@ -4,9 +4,10 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-class HostCacheManager$Cache
-  extends LinkedHashMap
+class HostCacheManager$Cache<K, V>
+  extends LinkedHashMap<K, V>
 {
+  private static final float DEFAULT_LOAD_FACTOR = 0.75F;
   private static final long serialVersionUID = -6940751117906094384L;
   private int capacity = 5;
   private Object lock = new Object();
@@ -37,7 +38,7 @@ class HostCacheManager$Cache
     }
   }
   
-  public Object get(Object paramObject)
+  public V get(Object paramObject)
   {
     synchronized (this.lock)
     {
@@ -46,16 +47,16 @@ class HostCacheManager$Cache
     }
   }
   
-  public Object put(Object paramObject1, Object paramObject2)
+  public V put(K paramK, V paramV)
   {
     synchronized (this.lock)
     {
-      paramObject1 = super.put(paramObject1, paramObject2);
-      return paramObject1;
+      paramK = super.put(paramK, paramV);
+      return paramK;
     }
   }
   
-  public void putAll(Map paramMap)
+  public void putAll(Map<? extends K, ? extends V> paramMap)
   {
     synchronized (this.lock)
     {
@@ -64,7 +65,7 @@ class HostCacheManager$Cache
     }
   }
   
-  public Object remove(Object paramObject)
+  public V remove(Object paramObject)
   {
     synchronized (this.lock)
     {
@@ -73,7 +74,7 @@ class HostCacheManager$Cache
     }
   }
   
-  protected boolean removeEldestEntry(Map.Entry paramEntry)
+  protected boolean removeEldestEntry(Map.Entry<K, V> paramEntry)
   {
     return size() > this.capacity;
   }

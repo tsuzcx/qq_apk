@@ -1,45 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.device.datadef.DeviceInfo;
-
-public final class qbh
-  implements Parcelable.Creator
+class qbh
+  extends ohe
 {
-  public DeviceInfo a(Parcel paramParcel)
+  private qbh(qbe paramqbe) {}
+  
+  public void f(int paramInt)
   {
-    DeviceInfo localDeviceInfo = new DeviceInfo();
-    localDeviceInfo.osPlatform = paramParcel.readString();
-    localDeviceInfo.osVersion = paramParcel.readString();
-    localDeviceInfo.netType = paramParcel.readInt();
-    localDeviceInfo.netDetail = paramParcel.readString();
-    localDeviceInfo.netAddress = paramParcel.readString();
-    localDeviceInfo.netAPN = paramParcel.readString();
-    localDeviceInfo.name = paramParcel.readString();
-    localDeviceInfo.remark = paramParcel.readString();
-    localDeviceInfo.type = paramParcel.readString();
-    localDeviceInfo.serialNum = paramParcel.readString();
-    localDeviceInfo.productId = paramParcel.readInt();
-    localDeviceInfo.appSecret = paramParcel.readString();
-    localDeviceInfo.din = paramParcel.readLong();
-    localDeviceInfo.isAdmin = paramParcel.readInt();
-    localDeviceInfo.status = ((short)paramParcel.readInt());
-    localDeviceInfo.userStatus = ((short)paramParcel.readInt());
-    localDeviceInfo.productType = ((short)paramParcel.readInt());
-    localDeviceInfo.displayName = paramParcel.readString();
-    localDeviceInfo.productVer = paramParcel.readInt();
-    localDeviceInfo.SSOBid_Platform = paramParcel.readInt();
-    localDeviceInfo.SSOBid_Version = paramParcel.readString();
-    return localDeviceInfo;
+    this.a.a(2);
   }
   
-  public DeviceInfo[] a(int paramInt)
+  public void h()
   {
-    return new DeviceInfo[paramInt];
+    qbe.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qbh
  * JD-Core Version:    0.7.0.1
  */

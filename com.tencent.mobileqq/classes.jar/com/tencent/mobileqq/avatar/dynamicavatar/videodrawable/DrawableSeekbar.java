@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.avatar.dynamicavatar.videodrawable;
 
+import ajjy;
+import allb;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -19,8 +21,8 @@ public class DrawableSeekbar
   implements View.OnTouchListener
 {
   int jdField_a_of_type_Int;
+  allb jdField_a_of_type_Allb;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
-  DrawableSeekbar.OnProgressChangedListener jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar$OnProgressChangedListener;
   boolean jdField_a_of_type_Boolean = false;
   int b;
   int c;
@@ -51,7 +53,7 @@ public class DrawableSeekbar
     this.jdField_a_of_type_AndroidWidgetImageView.setClickable(true);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription("滑动选择一张图片，在头像静止时展示。");
+    this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajjy.a(2131637742));
   }
   
   private void b()
@@ -106,8 +108,8 @@ public class DrawableSeekbar
         getParent().requestDisallowInterceptTouchEvent(true);
         this.jdField_a_of_type_Int = ((int)paramMotionEvent.getRawX());
         this.b = ((int)paramMotionEvent.getRawY());
-        if (this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar$OnProgressChangedListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar$OnProgressChangedListener.a();
+        if (this.jdField_a_of_type_Allb != null) {
+          this.jdField_a_of_type_Allb.a();
         }
       }
     case 2: 
@@ -130,24 +132,25 @@ public class DrawableSeekbar
         k = getWidth();
         j = k - paramView.getWidth();
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar$OnProgressChangedListener != null)
+      if (this.jdField_a_of_type_Allb != null)
       {
         i = this.d;
         this.d = ((int)(j / (getWidth() - paramView.getWidth()) * this.c));
         if (i != this.d) {
-          this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar$OnProgressChangedListener.a(this.d);
+          this.jdField_a_of_type_Allb.a(this.d);
         }
       }
       paramView.layout(j, paramView.getTop(), k, paramView.getBottom());
+      paramView.invalidate();
       this.jdField_a_of_type_Int = ((int)paramMotionEvent.getRawX());
       this.b = ((int)paramMotionEvent.getRawY());
       break;
       getParent().requestDisallowInterceptTouchEvent(false);
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar$OnProgressChangedListener == null) {
+      if (this.jdField_a_of_type_Allb == null) {
         break;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar$OnProgressChangedListener.b();
+      this.jdField_a_of_type_Allb.b();
       break;
       j = i;
     }
@@ -158,9 +161,9 @@ public class DrawableSeekbar
     this.c = paramInt;
   }
   
-  public void setOnProgressChangedListener(DrawableSeekbar.OnProgressChangedListener paramOnProgressChangedListener)
+  public void setOnProgressChangedListener(allb paramallb)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarVideodrawableDrawableSeekbar$OnProgressChangedListener = paramOnProgressChangedListener;
+    this.jdField_a_of_type_Allb = paramallb;
   }
   
   public void setProgress(int paramInt)

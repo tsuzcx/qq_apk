@@ -1,22 +1,28 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.eqq.CrmUtils;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
-import com.tencent.mobileqq.data.EqqDetail;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
+import com.tencent.mobileqq.pb.PBStringField;
 
-class vwr
-  implements Runnable
+public class vwr
+  implements wea
 {
-  vwr(vwq paramvwq, EqqDetail paramEqqDetail) {}
+  public vwr(RecommendBannerFeedItemView paramRecommendBannerFeedItemView) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    CrmUtils.b(this.jdField_a_of_type_Vwq.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
-    this.jdField_a_of_type_Vwq.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.runOnUiThread(new vws(this));
+    String str2 = RecommendBannerFeedItemView.a(this.a).poster.id.get();
+    StringBuilder localStringBuilder = new StringBuilder().append("recom_");
+    if (paramBoolean) {}
+    for (String str1 = "cancel";; str1 = "dislike")
+    {
+      wye.a(str2, "auth_page", str1, 0, 0, new String[] { "", RecommendBannerFeedItemView.a(this.a) + "", RecommendBannerFeedItemView.a(this.a).poster.nick.get(), RecommendBannerFeedItemView.a(this.a).title.get() });
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vwr
  * JD-Core Version:    0.7.0.1
  */

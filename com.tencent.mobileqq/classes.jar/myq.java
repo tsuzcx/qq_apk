@@ -1,27 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.util.ProfileParams;
-import com.tencent.biz.pubaccount.util.ProfileParams.Builder;
-import com.tencent.biz.pubaccount.util.ProfileParams.CurLoginUsr;
+import android.view.View;
 
-public final class myq
-  implements Parcelable.Creator
+public abstract interface myq
 {
-  public ProfileParams a(Parcel paramParcel)
-  {
-    ProfileParams.Builder localBuilder = new ProfileParams.Builder();
-    localBuilder.a(paramParcel.readString()).a(paramParcel.readInt()).b(paramParcel.readString()).c(paramParcel.readString()).d(paramParcel.readString()).a((ProfileParams.CurLoginUsr)paramParcel.readParcelable(ProfileParams.CurLoginUsr.CREATOR.getClass().getClassLoader()));
-    return localBuilder.a();
-  }
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
   
-  public ProfileParams[] a(int paramInt)
-  {
-    return new ProfileParams[paramInt];
-  }
+  public abstract void a(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6);
+  
+  public abstract boolean a();
+  
+  public abstract boolean b();
+  
+  public abstract boolean c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     myq
  * JD-Core Version:    0.7.0.1
  */

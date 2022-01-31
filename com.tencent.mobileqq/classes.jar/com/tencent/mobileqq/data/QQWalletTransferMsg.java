@@ -12,7 +12,7 @@ import tencent.im.msg.im_msg_body.QQWalletAioBody;
 
 public class QQWalletTransferMsg
 {
-  public QQWalletAioBodys body;
+  public QQWalletAioBodyReserve body;
   private int channelId;
   public QQWalletTransferMsgElem elem;
   public String listId;
@@ -21,7 +21,7 @@ public class QQWalletTransferMsg
   
   public QQWalletTransferMsg()
   {
-    this.body = new QQWalletAioBodys();
+    this.body = new QQWalletAioBodyReserve();
     this.elem = new QQWalletTransferMsgElem();
   }
   
@@ -29,7 +29,7 @@ public class QQWalletTransferMsg
   {
     if ((paramQQWalletAioBody == null) || (TextUtils.isEmpty(paramString)))
     {
-      this.body = new QQWalletAioBodys();
+      this.body = new QQWalletAioBodyReserve();
       this.elem = new QQWalletTransferMsgElem();
       return;
     }
@@ -44,7 +44,7 @@ public class QQWalletTransferMsg
       if (paramQQWalletAioBody.bytes_billno.has()) {
         this.listId = paramQQWalletAioBody.bytes_billno.get().toStringUtf8();
       }
-      this.body = new QQWalletAioBodys(paramQQWalletAioBody);
+      this.body = new QQWalletAioBodyReserve(paramQQWalletAioBody);
       return;
       long l = paramQQWalletAioBody.uint64_senduin.get();
       if ((l != 0L) && (paramString.compareTo("" + l) == 0)) {

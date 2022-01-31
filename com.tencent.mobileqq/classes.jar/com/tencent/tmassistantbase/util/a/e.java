@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Handler;
 import android.util.Log;
 import com.tencent.tmassistantbase.util.GlobalUtil;
+import com.tencent.tmassistantbase.util.l;
 import java.lang.reflect.Method;
 
 public class e
@@ -78,7 +79,7 @@ public class e
         if (!h.a(((PackageInfo)localObject).packageName))
         {
           Log.i("miles", "<onHook> pkg not allowed!!!");
-          com.tencent.tmassistantbase.util.f.a().post(new f(this, (PackageInfo)localObject));
+          l.a().post(new f(this, (PackageInfo)localObject));
           return paramMethod.invoke(paramObject, paramVarArgs);
         }
         Log.i("miles", "step 3 time cost: " + (System.currentTimeMillis() - l) + "ms");
@@ -91,7 +92,7 @@ public class e
           }
           Log.i("miles", "getFakePackage." + d.d());
         }
-        com.tencent.tmassistantbase.util.f.a().post(new g(this, (PackageInfo)localObject));
+        l.a().post(new g(this, (PackageInfo)localObject));
         Log.i("miles", "step 4 time cost: " + (System.currentTimeMillis() - l) + "ms");
       }
       catch (Exception localException)
@@ -110,7 +111,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.a.e
  * JD-Core Version:    0.7.0.1
  */

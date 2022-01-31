@@ -1,23 +1,36 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.item.TextTranslationItemBuilder;
-import com.tencent.mobileqq.widget.AnimationTextView.OnDoubleClick;
+import com.tencent.qphone.base.util.QLog;
 
-public class vny
-  implements AnimationTextView.OnDoubleClick
+final class vny
+  extends vnh
 {
-  public vny(TextTranslationItemBuilder paramTextTranslationItemBuilder) {}
+  vny(vnh paramvnh) {}
   
-  public void a(View paramView)
+  public void onFailure(String paramString)
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
-    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
+    if (QLog.isColorLevel()) {
+      QLog.e("Q.qqstory.ffmpeg.FFmpegCmd", 2, paramString);
+    }
+    this.a.onFailure(paramString);
+    urp.a("music_composite", "music_clip", 0, 1, new String[0]);
+  }
+  
+  public void onStart()
+  {
+    super.onStart();
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    paramString = String.valueOf(System.currentTimeMillis() - this.b);
+    urp.a("music_composite", "music_clip", 0, 0, new String[] { paramString });
+    if (QLog.isColorLevel()) {
+      QLog.w("Q.qqstory.ffmpeg.FFmpegCmd", 2, "音乐截取成功耗时：" + paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vny
  * JD-Core Version:    0.7.0.1
  */

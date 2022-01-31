@@ -1,0 +1,24 @@
+package com.tencent.mobileqq.activity;
+
+import aaru;
+import ajia;
+import com.tencent.widget.ListView;
+
+public class FontSettingActivity$AioListAdapter$1
+  implements Runnable
+{
+  public FontSettingActivity$AioListAdapter$1(aaru paramaaru) {}
+  
+  public void run()
+  {
+    this.jdField_a_of_type_Aaru.a.jdField_a_of_type_ComTencentWidgetListView.setAdapter(null);
+    this.jdField_a_of_type_Aaru.a.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Aaru.a.jdField_a_of_type_Aaru);
+    ajia.a(this.jdField_a_of_type_Aaru.a);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+ * Qualified Name:     com.tencent.mobileqq.activity.FontSettingActivity.AioListAdapter.1
+ * JD-Core Version:    0.7.0.1
+ */

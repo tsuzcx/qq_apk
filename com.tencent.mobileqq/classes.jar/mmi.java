@@ -1,32 +1,49 @@
-import com.tencent.biz.pubaccount.readinjoy.skin.CommonSkinRes;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoyRefreshManager;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
-import com.tencent.biz.pubaccount.readinjoy.skin.RefreshRes;
-import com.tencent.biz.pubaccount.readinjoy.skin.SkinData;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class mmi
-  implements Runnable
+  extends MSFServlet
 {
-  public mmi(ReadInJoyListViewGroup paramReadInJoyListViewGroup, RefreshData paramRefreshData, ReadInJoyRefreshManager paramReadInJoyRefreshManager, SkinData paramSkinData, ReadInJoySkinManager paramReadInJoySkinManager) {}
-  
-  public void run()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    int i = (int)(System.currentTimeMillis() / 1000L);
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData != null) && (i >= this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.beginTime) && (i <= this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.endTime) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.isShown) && (RefreshRes.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.id)) && (RefreshRes.a() != 0))
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyRefreshManager.a(1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.id);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyRefreshManager.a(true);
-      RefreshRes.a();
-      ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).sendEmptyMessage(1);
+    if (QLog.isColorLevel()) {
+      QLog.i("MSFServlet", 2, "onReceive");
     }
-    while ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinSkinData == null) || (i < this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinSkinData.beginTime) || (i > this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinSkinData.endTime) || (!CommonSkinRes.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinSkinData.id)) || (CommonSkinRes.b() == 0)) {
+    if (paramIntent == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoySkinManager.a(1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinSkinData.id);
-    CommonSkinRes.a();
-    ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).sendEmptyMessage(1);
+    Bundle localBundle = paramIntent.getExtras();
+    if (paramFromServiceMsg.isSuccess()) {}
+    for (byte[] arrayOfByte = bakc.b(paramFromServiceMsg.getWupBuffer());; arrayOfByte = null)
+    {
+      localBundle.putByteArray("data", arrayOfByte);
+      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("MSFServlet", 2, "onReceive exit");
+      return;
+      localBundle.putString("data_error_msg", paramFromServiceMsg.getBusinessFailMsg());
+      localBundle.putInt("data_error_code", paramFromServiceMsg.getBusinessFailCode());
+    }
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MSFServlet", 2, "onSend");
+    }
+    byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
+    paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
+    paramPacket.putSendData(bakc.a(arrayOfByte));
+    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    if (QLog.isColorLevel()) {
+      QLog.i("MSFServlet", 2, "onSend exit");
+    }
   }
 }
 

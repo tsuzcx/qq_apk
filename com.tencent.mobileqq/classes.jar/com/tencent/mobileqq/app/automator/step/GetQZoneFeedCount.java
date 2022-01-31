@@ -1,39 +1,39 @@
 package com.tencent.mobileqq.app.automator.step;
 
+import aroj;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.model.QZoneManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class GetQZoneFeedCount
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
-    QZoneManager localQZoneManager;
-    if ((this.a != null) && (this.a.b != null))
+    aroj localaroj;
+    if ((this.a != null) && (this.a.app != null))
     {
-      localQZoneManager = (QZoneManager)this.a.b.getManager(9);
-      if (localQZoneManager != null)
+      localaroj = (aroj)this.a.app.getManager(10);
+      if (localaroj != null)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("GetQZoneFeedCount", 2, "GetQZoneFeedCount isFirstGetUnread:" + localQZoneManager.a() + ",isBackground_Pause:" + this.a.b.isBackground_Pause);
+          QLog.d("GetQZoneFeedCount", 2, "GetQZoneFeedCount isFirstGetUnread:" + localaroj.a() + ",isBackground_Pause:" + this.a.app.isBackground_Pause);
         }
-        if (!localQZoneManager.a()) {
+        if (!localaroj.a()) {
           break label120;
         }
-        localQZoneManager.a(this.a.b.getAccount(), null);
+        localaroj.a(this.a.app.getAccount(), null);
       }
     }
     for (;;)
     {
       return 7;
       label120:
-      if (this.a.b.isBackground_Pause) {
-        localQZoneManager.b(6);
+      if (this.a.app.isBackground_Pause) {
+        localaroj.b(6);
       } else {
-        localQZoneManager.a(5);
+        localaroj.a(5);
       }
     }
   }

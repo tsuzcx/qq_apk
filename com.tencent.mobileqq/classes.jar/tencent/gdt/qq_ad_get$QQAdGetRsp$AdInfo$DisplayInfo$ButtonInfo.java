@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class qq_ad_get$QQAdGetRsp$AdInfo$DisplayInfo$ButtonInfo
-  extends MessageMicro
+  extends MessageMicro<ButtonInfo>
 {
   public static final int BUTTON_POS_LEFT_BOTTOM_CORNER = 1;
   public static final int BUTTON_POS_RIGHT_BOTTOM_CORNER = 2;

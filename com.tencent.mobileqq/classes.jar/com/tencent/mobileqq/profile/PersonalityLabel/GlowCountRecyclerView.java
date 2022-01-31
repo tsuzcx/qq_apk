@@ -64,7 +64,7 @@ public class GlowCountRecyclerView
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
     this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(14.0F * f1);
     this.f = ((int)(f1 * 3.0F));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130842984);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130844744);
   }
   
   private void c()
@@ -139,7 +139,7 @@ public class GlowCountRecyclerView
     return false;
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);

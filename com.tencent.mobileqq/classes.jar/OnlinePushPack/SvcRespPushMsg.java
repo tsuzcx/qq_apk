@@ -9,11 +9,14 @@ public final class SvcRespPushMsg
   extends JceStruct
 {
   static byte[] cache_bytes_push_token;
-  static ArrayList cache_vDelInfos = new ArrayList();
+  static DeviceInfo cache_deviceInfo = new DeviceInfo();
+  static ArrayList<DelMsgInfo> cache_vDelInfos = new ArrayList();
   public byte[] bytes_push_token;
+  public DeviceInfo deviceInfo;
   public long lUin;
+  public int service_type;
   public int svrip;
-  public ArrayList vDelInfos;
+  public ArrayList<DelMsgInfo> vDelInfos;
   
   static
   {
@@ -25,12 +28,14 @@ public final class SvcRespPushMsg
   
   public SvcRespPushMsg() {}
   
-  public SvcRespPushMsg(long paramLong, ArrayList paramArrayList, int paramInt, byte[] paramArrayOfByte)
+  public SvcRespPushMsg(long paramLong, ArrayList<DelMsgInfo> paramArrayList, int paramInt1, byte[] paramArrayOfByte, int paramInt2, DeviceInfo paramDeviceInfo)
   {
     this.lUin = paramLong;
     this.vDelInfos = paramArrayList;
-    this.svrip = paramInt;
+    this.svrip = paramInt1;
     this.bytes_push_token = paramArrayOfByte;
+    this.service_type = paramInt2;
+    this.deviceInfo = paramDeviceInfo;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -39,6 +44,8 @@ public final class SvcRespPushMsg
     this.vDelInfos = ((ArrayList)paramJceInputStream.read(cache_vDelInfos, 1, true));
     this.svrip = paramJceInputStream.read(this.svrip, 2, true);
     this.bytes_push_token = ((byte[])paramJceInputStream.read(cache_bytes_push_token, 3, false));
+    this.service_type = paramJceInputStream.read(this.service_type, 4, false);
+    this.deviceInfo = ((DeviceInfo)paramJceInputStream.read(cache_deviceInfo, 5, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -48,6 +55,10 @@ public final class SvcRespPushMsg
     paramJceOutputStream.write(this.svrip, 2);
     if (this.bytes_push_token != null) {
       paramJceOutputStream.write(this.bytes_push_token, 3);
+    }
+    paramJceOutputStream.write(this.service_type, 4);
+    if (this.deviceInfo != null) {
+      paramJceOutputStream.write(this.deviceInfo, 5);
     }
   }
 }

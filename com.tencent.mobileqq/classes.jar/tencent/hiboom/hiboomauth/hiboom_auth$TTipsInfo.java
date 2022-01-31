@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class hiboom_auth$TTipsInfo
-  extends MessageMicro
+  extends MessageMicro<TTipsInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 66 }, new String[] { "i32_type", "str_msg", "str_title", "str_button", "str_url", "str_vip_type", "str_month", "str_aid" }, new Object[] { Integer.valueOf(0), "", "", "", "", "", "", "" }, TTipsInfo.class);
   public final PBInt32Field i32_type = PBField.initInt32(0);

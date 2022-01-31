@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class C2CType0x211_SubC2CType0x8$GPS
-  extends MessageMicro
+  extends MessageMicro<GPS>
 {
   public static final int ETYPE_FIELD_NUMBER = 4;
   public static final int INT32_ALT_FIELD_NUMBER = 3;

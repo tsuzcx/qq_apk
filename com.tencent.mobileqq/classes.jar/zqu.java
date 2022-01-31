@@ -1,18 +1,12 @@
-import java.io.File;
-import java.io.FileFilter;
-import java.util.regex.Pattern;
+import com.tencent.mfsdk.collector.ResultObject;
 
-public class zqu
-  implements FileFilter
+public abstract interface zqu
 {
-  public boolean accept(File paramFile)
-  {
-    return Pattern.matches("cpu[0-9]+", paramFile.getName());
-  }
+  public abstract boolean a(ResultObject paramResultObject, zqv paramzqv);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zqu
  * JD-Core Version:    0.7.0.1
  */

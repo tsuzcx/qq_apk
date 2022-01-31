@@ -1,17 +1,16 @@
-import android.app.Activity;
-import com.tencent.biz.webviewplugin.WebSoPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.webview.webso.WebSoUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class pih
-  implements Runnable
+class pih
+  implements View.OnClickListener
 {
-  public pih(WebSoPlugin paramWebSoPlugin, String paramString) {}
+  pih(pig parampig) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((WebSoUtils.c(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_ComTencentBizWebviewpluginWebSoPlugin.mRuntime != null) && (this.jdField_a_of_type_ComTencentBizWebviewpluginWebSoPlugin.mRuntime.a() != null)) {
-      this.jdField_a_of_type_ComTencentBizWebviewpluginWebSoPlugin.mRuntime.a().runOnUiThread(new pii(this));
+    paramView = this.a.jdField_a_of_type_Qoe.a();
+    if (paramView != null) {
+      paramView.a(null, ((opw)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
     }
   }
 }

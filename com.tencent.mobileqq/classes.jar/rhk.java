@@ -1,36 +1,57 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.kingkong.Common.Log;
-import com.tencent.kingkong.PatchInfo;
-import com.tencent.kingkong.UpdateManager;
-import org.json.JSONObject;
+import android.database.DataSetObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat.TabLayoutOnPageChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat;
 
 public class rhk
-  extends Handler
+  extends DataSetObserver
 {
-  public void handleMessage(Message paramMessage)
+  private boolean jdField_a_of_type_Boolean;
+  
+  public rhk(TabLayoutCompat paramTabLayoutCompat) {}
+  
+  void a()
   {
-    paramMessage = paramMessage.getData();
-    try
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a != null) && (TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat) != null))
     {
-      String str = paramMessage.getString("PATCH_JSON_STRING");
-      boolean bool = paramMessage.getBoolean("PATCH_FORCE_UPDATE");
-      paramMessage = PatchInfo.a(new JSONObject(str));
-      if (paramMessage != null) {
-        UpdateManager.a(paramMessage, bool);
+      int i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.a.getCurrentItem();
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.b() == i) {
+        TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat).b(i, 300);
       }
+    }
+    if (TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat) != null) {
+      TabLayoutCompat.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat).a();
+    }
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void onChanged()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.b();
       return;
     }
-    catch (Exception paramMessage)
+    a();
+  }
+  
+  public void onInvalidated()
+  {
+    if (this.jdField_a_of_type_Boolean)
     {
-      Common.Log.a("KingKongUpdateManager", "Update patch exception : " + paramMessage);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewWidgetTabLayoutCompat.b();
+      return;
     }
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rhk
  * JD-Core Version:    0.7.0.1
  */

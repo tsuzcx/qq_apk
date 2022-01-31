@@ -1,16 +1,12 @@
-class uas
-  implements Runnable
+import android.view.View;
+
+public abstract interface uas
 {
-  uas(uaq paramuaq, String paramString) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_Uaq.a(this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void a(String paramString, int paramInt, View paramView, uhj paramuhj);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uas
  * JD-Core Version:    0.7.0.1
  */

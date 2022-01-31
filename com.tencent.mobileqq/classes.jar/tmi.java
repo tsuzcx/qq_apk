@@ -1,59 +1,60 @@
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import com.tencent.mobileqq.utils.ChnToSpell.CharSpelling;
-import java.util.Comparator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
-public class tmi
-  implements Comparator
+final class tmi
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public tmi(PublicAccountListActivity paramPublicAccountListActivity) {}
+  tmi(ViewGroup paramViewGroup, ImageView paramImageView1, ImageView paramImageView2) {}
   
-  public int a(tmr paramtmr1, tmr paramtmr2)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramtmr1 = paramtmr1.a.name;
-    paramtmr2 = paramtmr2.a.name;
-    if ((paramtmr1 == null) && (paramtmr2 == null)) {}
-    int j;
-    int k;
-    do
+    float f1 = ((Float)paramValueAnimator.getAnimatedValue("scaleX")).floatValue();
+    float f2 = ((Float)paramValueAnimator.getAnimatedValue("scaleY")).floatValue();
+    this.jdField_a_of_type_AndroidViewViewGroup.setPivotX(0.5F);
+    this.jdField_a_of_type_AndroidViewViewGroup.setScaleX(f1);
+    this.jdField_a_of_type_AndroidViewViewGroup.setPivotY(0.5F);
+    this.jdField_a_of_type_AndroidViewViewGroup.setScaleY(f2);
+    this.jdField_a_of_type_AndroidViewViewGroup.setTranslationX(((Float)paramValueAnimator.getAnimatedValue("translateX")).floatValue());
+    this.jdField_a_of_type_AndroidViewViewGroup.setTranslationY(((Float)paramValueAnimator.getAnimatedValue("translateY")).floatValue());
+    int i = this.jdField_a_of_type_AndroidViewViewGroup.getWidth();
+    int j = this.jdField_a_of_type_AndroidViewViewGroup.getHeight();
+    float f3;
+    if (f1 < f2)
     {
-      return 0;
-      if ((paramtmr1 == null) && (paramtmr2 != null)) {
-        return -1;
-      }
-      if ((paramtmr1 != null) && (paramtmr2 == null)) {
-        return 1;
-      }
-      j = paramtmr1.length();
-      k = paramtmr2.length();
-      int m = Math.min(j, k);
-      int i = 0;
-      while (i < m)
+      f1 = f2 / f1;
+      f2 = i;
+      f3 = i;
+      this.jdField_a_of_type_AndroidWidgetImageView.setPivotX(0.5F);
+      this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(f1);
+      this.jdField_a_of_type_AndroidWidgetImageView.setTranslationX((f2 - f3 * f1) * 0.5F);
+      this.jdField_a_of_type_AndroidWidgetImageView.setPivotY(0.5F);
+      this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(1.0F);
+      this.jdField_a_of_type_AndroidWidgetImageView.setTranslationY(0.0F);
+    }
+    for (;;)
+    {
+      this.b.setAlpha(((Float)paramValueAnimator.getAnimatedValue("backgroundAlpha")).floatValue());
+      return;
+      if (f2 < f1)
       {
-        char c1 = paramtmr1.charAt(i);
-        char c2 = paramtmr2.charAt(i);
-        if (c1 != c2)
-        {
-          paramtmr1 = ChnToSpell.a(c1, i);
-          paramtmr2 = ChnToSpell.a(c2, i);
-          if (paramtmr1.jdField_a_of_type_Int == paramtmr2.jdField_a_of_type_Int) {
-            return paramtmr1.jdField_a_of_type_JavaLangString.compareTo(paramtmr2.jdField_a_of_type_JavaLangString);
-          }
-          return paramtmr1.jdField_a_of_type_Int - paramtmr2.jdField_a_of_type_Int;
-        }
-        i += 1;
+        this.jdField_a_of_type_AndroidWidgetImageView.setPivotX(0.5F);
+        this.jdField_a_of_type_AndroidWidgetImageView.setScaleX(1.0F);
+        this.jdField_a_of_type_AndroidWidgetImageView.setTranslationX(0.0F);
+        f1 /= f2;
+        f2 = j;
+        f3 = j;
+        this.jdField_a_of_type_AndroidWidgetImageView.setPivotY(0.5F);
+        this.jdField_a_of_type_AndroidWidgetImageView.setScaleY(f1);
+        this.jdField_a_of_type_AndroidWidgetImageView.setTranslationY((f2 - f3 * f1) * 0.5F);
       }
-      if (j < k) {
-        return -1;
-      }
-    } while (j <= k);
-    return 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tmi
  * JD-Core Version:    0.7.0.1
  */

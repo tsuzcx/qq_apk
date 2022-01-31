@@ -1,43 +1,59 @@
-import com.tencent.mobileqq.addon.DiyPendantFetcher;
-import com.tencent.mobileqq.addon.DiyPendantFetcher.Invalidatable;
+import android.os.Bundle;
+import android.os.Looper;
+import android.text.TextUtils;
+import com.tencent.gdtad.util.GdtUserInfoAuthorizationHelper.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import com.tencent.widget.AuthorizationItem;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class yph
-  implements Runnable
+  implements wiu
 {
-  public yph(DiyPendantFetcher paramDiyPendantFetcher) {}
-  
-  public void run()
+  public void a(Bundle paramBundle)
   {
-    HashSet localHashSet = new HashSet();
-    Iterator localIterator = this.a.a.iterator();
-    while (localIterator.hasNext())
+    String str1 = paramBundle.getString("name");
+    String str2 = paramBundle.getString("phone");
+    paramBundle = paramBundle.getString("city");
+    this.jdField_a_of_type_Wis.b();
+    if (QLog.isColorLevel()) {
+      QLog.d("GdtUserInfoAuthorizationHelper", 2, "getUserInfo : name -> " + str1 + ", phone -> " + str2 + ", city -> " + paramBundle);
+    }
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (this.jdField_a_of_type_JavaUtilList.contains(AuthorizationItem.a))
     {
-      DiyPendantFetcher.Invalidatable localInvalidatable = (DiyPendantFetcher.Invalidatable)localIterator.next();
-      if ((localInvalidatable != null) && (localInvalidatable.a() != null))
-      {
-        if (!localHashSet.contains(localInvalidatable))
-        {
-          localHashSet.add(localInvalidatable);
-          localInvalidatable.invalidateSelf();
-          this.a.a.remove(localInvalidatable);
-        }
-      }
-      else {
-        this.a.a.remove(localInvalidatable);
+      bool1 = bool2;
+      if (TextUtils.isEmpty(str1)) {
+        bool1 = false;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("DiyPendantFetcher", 2, "wait for refresh size: " + this.a.a.size());
+    bool2 = bool1;
+    if (this.jdField_a_of_type_JavaUtilList.contains(AuthorizationItem.b))
+    {
+      bool2 = bool1;
+      if (TextUtils.isEmpty(str2)) {
+        bool2 = false;
+      }
+    }
+    if ((this.jdField_a_of_type_JavaUtilList.contains(AuthorizationItem.c)) && (TextUtils.isEmpty(paramBundle))) {}
+    for (bool1 = false;; bool1 = bool2)
+    {
+      paramBundle = ypg.a(this.jdField_a_of_type_Ypg, str1, str2, paramBundle, this.jdField_a_of_type_JavaUtilList);
+      if (Looper.myLooper() == Looper.getMainLooper())
+      {
+        ypg.a(this.jdField_a_of_type_Ypg, this.jdField_a_of_type_AndroidAppActivity, bool1, paramBundle, this.jdField_a_of_type_Ypi, this.jdField_a_of_type_JavaUtilList);
+        return;
+      }
+      ThreadManager.getUIHandler().post(new GdtUserInfoAuthorizationHelper.1.1(this, bool1, paramBundle));
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yph
  * JD-Core Version:    0.7.0.1
  */

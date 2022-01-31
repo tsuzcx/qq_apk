@@ -1,124 +1,49 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import android.graphics.Rect;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView.1;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendVoiceView.1.1.1;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.app.TicketManagerImpl;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import mqq.os.MqqHandler;
 
-public final class anum
-  extends anuo
+public class anum
+  implements OnCompositionLoadedListener
 {
-  String a;
+  public anum(ExtendFriendVoiceView.1 param1) {}
   
-  anum(QIMMusicConfigManager paramQIMMusicConfigManager)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    super(paramQIMMusicConfigManager);
-  }
-  
-  anun a()
-  {
-    return new anun(this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager);
-  }
-  
-  public void a(NetResp paramNetResp)
-  {
-    if (paramNetResp.c == 200)
+    int m = aciy.a(19.0F, this.a.this$0.getResources());
+    int k = aciy.a(19.0F, this.a.this$0.getResources());
+    int j = k;
+    int i = m;
+    if (ExtendFriendVoiceView.a(this.a.this$0) == 2)
     {
-      if (paramNetResp.a != null)
-      {
-        anun localanun = a();
-        localanun.jdField_a_of_type_JavaLangString = new String(paramNetResp.a);
-        localanun.jdField_a_of_type_Boolean = true;
-        localanun.a();
-        this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(1, true, localanun.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      a(false);
-      this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(1, false, "have no data.");
+      i = (int)(m * 0.8F);
+      j = (int)(k * 0.8F);
+    }
+    if (paramLottieComposition == null)
+    {
+      QLog.e("ExtendFriendVoiceView", 1, "onCompositionLoaded lottieComposition is null");
       return;
     }
-    a(false);
-    this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(1, false, "Http Request fail, code=" + paramNetResp.c);
-  }
-  
-  public void run()
-  {
-    for (;;)
-    {
-      int i;
-      try
-      {
-        Object localObject1 = new JSONObject(this.jdField_a_of_type_JavaLangString);
-        if (((JSONObject)localObject1).optInt("ret", -1) != 0) {
-          break label383;
-        }
-        localObject1 = ((JSONObject)localObject1).optJSONArray("data");
-        if (localObject1 == null) {
-          break label383;
-        }
-        i = 0;
-        if (i < ((JSONArray)localObject1).length())
-        {
-          Object localObject2 = ((JSONArray)localObject1).optJSONObject(i);
-          if ((localObject2 == null) || (!"我喜欢".equals(((JSONObject)localObject2).optString("diss_name")))) {
-            break label384;
-          }
-          l1 = ((JSONObject)localObject2).optLong("diss_id", -1L);
-          if (l1 != -1L)
-          {
-            localObject1 = new HttpNetReq();
-            ((HttpNetReq)localObject1).jdField_a_of_type_Int = 0;
-            ((HttpNetReq)localObject1).e = 1;
-            ((HttpNetReq)localObject1).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = this;
-            long l2 = System.currentTimeMillis() / 1000L;
-            localObject2 = ((TicketManagerImpl)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(2)).getSkey(this.c);
-            HashMap localHashMap = new HashMap();
-            localHashMap.put("app_id", "2000000025");
-            localHashMap.put("app_key", "SApgehUTVGxZKBQZTt");
-            localHashMap.put("device_id", DeviceInfoUtil.a());
-            localHashMap.put("timestamp", String.valueOf(l2));
-            localHashMap.put("sign", a(l2));
-            localHashMap.put("dissid", String.valueOf(l1));
-            localHashMap.putAll(a(this.c, (String)localObject2));
-            ((HttpNetReq)localObject1).jdField_a_of_type_JavaLangString = a("https://open.music.qq.com/fcgi-bin/fcg_music_custom_get_songlist_detail.fcg", localHashMap);
-            this.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine.a((NetReq)localObject1);
-            if (!QLog.isColorLevel()) {
-              break label383;
-            }
-            QLog.d("QIMMusicConfigManager", 2, "QQMusicReq GetSongListStepTask req url=" + ((HttpNetReq)localObject1).jdField_a_of_type_JavaLangString);
-            return;
-          }
-          a(true);
-          this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(1, false, "can not find myFav diss.");
-          return;
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        a(false);
-        this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.a(1, false, "parsed json error, json=" + this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      long l1 = -1L;
-      continue;
-      label383:
-      return;
-      label384:
-      i += 1;
-    }
+    Object localObject = paramLottieComposition.getBounds();
+    float f1 = i / ((Rect)localObject).width();
+    float f2 = j / ((Rect)localObject).height();
+    localObject = new LottieDrawable();
+    ((LottieDrawable)localObject).setComposition(paramLottieComposition);
+    ((LottieDrawable)localObject).setScale(f1, f2);
+    ((LottieDrawable)localObject).loop(true);
+    ExtendFriendVoiceView.a(this.a.this$0, (LottieDrawable)localObject);
+    ThreadManager.getUIHandler().post(new ExtendFriendVoiceView.1.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anum
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ConfigurationService$PageRespInfo
-  extends MessageMicro
+  extends MessageMicro<PageRespInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field compress = PBField.initUInt32(0);

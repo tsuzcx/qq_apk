@@ -1,29 +1,67 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.search.activity.MixSearchWebFragment;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
-import com.tencent.qphone.base.util.BaseApplication;
+import java.util.ArrayList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ahwk
-  implements View.OnClickListener
 {
-  public ahwk(MixSearchWebFragment paramMixSearchWebFragment) {}
+  public List<ahwl> a = new ArrayList();
   
-  public void onClick(View paramView)
+  public static ahwk a(JSONObject paramJSONObject)
   {
-    this.a.a.setText("");
-    this.a.a.requestFocus();
-    paramView = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
-    if (paramView != null) {
-      paramView.showSoftInput(this.a.a, 0);
+    if (paramJSONObject == null) {
+      paramJSONObject = new ahwk();
+    }
+    for (;;)
+    {
+      return paramJSONObject;
+      localahwk = new ahwk();
+      try
+      {
+        JSONArray localJSONArray = new JSONArray(paramJSONObject.getString("items"));
+        paramJSONObject = localahwk;
+        if (localJSONArray == null) {
+          continue;
+        }
+        paramJSONObject = localahwk;
+        if (localJSONArray.length() < 0) {
+          continue;
+        }
+        int j = localJSONArray.length();
+        int i = 0;
+        for (;;)
+        {
+          paramJSONObject = localahwk;
+          if (i >= j) {
+            break;
+          }
+          paramJSONObject = ahwl.a(localJSONArray.getJSONObject(i));
+          localahwk.a.add(paramJSONObject);
+          i += 1;
+        }
+        return localahwk;
+      }
+      catch (JSONException paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return localahwk;
+      }
+      catch (OutOfMemoryError paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+        return localahwk;
+      }
+      catch (Exception paramJSONObject)
+      {
+        paramJSONObject.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahwk
  * JD-Core Version:    0.7.0.1
  */

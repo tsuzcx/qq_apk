@@ -1,39 +1,15 @@
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import com.tencent.mobileqq.data.RecentUser;
 
-public final class aiah
-  extends ThreadPoolExecutor
+public class aiah
 {
-  public aiah(int paramInt1, int paramInt2, long paramLong, TimeUnit paramTimeUnit, BlockingQueue paramBlockingQueue, ThreadFactory paramThreadFactory)
-  {
-    super(paramInt1, paramInt2, paramLong, paramTimeUnit, paramBlockingQueue, paramThreadFactory);
-  }
-  
-  protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
-  {
-    if ((paramRunnable instanceof FutureTask)) {}
-    try
-    {
-      ((FutureTask)paramRunnable).get();
-      return;
-    }
-    catch (ExecutionException paramRunnable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("GroupSearchEngine", 2, "Exception happened", paramRunnable);
-      return;
-    }
-    catch (Error paramRunnable) {}catch (Exception paramRunnable) {}
-  }
+  int jdField_a_of_type_Int;
+  public RecentUser a;
+  String jdField_a_of_type_JavaLangString;
+  String b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aiah
  * JD-Core Version:    0.7.0.1
  */

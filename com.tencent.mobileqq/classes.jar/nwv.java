@@ -1,33 +1,42 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.network.handler.VidToSimpleInfoHandler.GetSimpleInfoListEvent;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.AnchorData;
 
-public class nwv
-  extends QQUIEventReceiver
+public final class nwv
+  implements Parcelable.Creator<AnchorData>
 {
-  public nwv(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
+  public AnchorData a(Parcel paramParcel)
   {
-    super(paramQQStoryShareGroupProfileActivity);
-  }
-  
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull VidToSimpleInfoHandler.GetSimpleInfoListEvent paramGetSimpleInfoListEvent)
-  {
-    if (paramGetSimpleInfoListEvent.errorInfo.isSuccess()) {
-      paramQQStoryShareGroupProfileActivity.a.a(paramGetSimpleInfoListEvent);
+    boolean bool2 = true;
+    AnchorData localAnchorData = new AnchorData();
+    localAnchorData.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localAnchorData.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    if (paramParcel.readByte() != 0)
+    {
+      bool1 = true;
+      localAnchorData.jdField_a_of_type_Boolean = bool1;
+      if (paramParcel.readByte() == 0) {
+        break label67;
+      }
+    }
+    label67:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localAnchorData.jdField_b_of_type_Boolean = bool1;
+      return localAnchorData;
+      bool1 = false;
+      break;
     }
   }
   
-  public Class acceptEventClass()
+  public AnchorData[] a(int paramInt)
   {
-    return VidToSimpleInfoHandler.GetSimpleInfoListEvent.class;
+    return new AnchorData[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nwv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,13 @@
-import com.tencent.mobileqq.troop.activity.TroopAdminList;
-import com.tencent.mobileqq.troop.activity.TroopAdminList.AdminListAdapter;
+import android.support.annotation.NonNull;
+import java.util.Map;
 
-public class ajaf
-  implements Runnable
+public abstract interface ajaf
 {
-  public ajaf(TroopAdminList paramTroopAdminList) {}
-  
-  public void run()
-  {
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
-    }
-  }
+  public abstract void a(int paramInt, @NonNull Map<String, String> paramMap, @NonNull byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajaf
  * JD-Core Version:    0.7.0.1
  */

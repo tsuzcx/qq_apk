@@ -1,39 +1,17 @@
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import com.tencent.mobileqq.ark.ArkAiBubbleView;
-import com.tencent.mobileqq.ark.ArkAiScrollBar;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
 
 public class aayq
-  implements Runnable
+  implements andj
 {
-  public aayq(ArkAiBubbleView paramArkAiBubbleView) {}
+  public aayq(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void run()
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArkArkAiScrollBar == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("ark.ai", 2, String.format("ArkAiBubbleView.mScrollBar == null: %h", new Object[] { this.a }));
-      }
-      this.a.c();
-      return;
-    }
-    this.a.b = true;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArkArkAiScrollBar.b())
-    {
-      this.a.c();
-      return;
-    }
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setDuration(500L);
-    localAlphaAnimation.setAnimationListener(this.a);
-    this.a.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
-  }
+  public void a(int paramInt) {}
+  
+  public void b(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aayq
  * JD-Core Version:    0.7.0.1
  */

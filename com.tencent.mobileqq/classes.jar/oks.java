@@ -1,70 +1,50 @@
 import android.os.Handler;
-import android.os.Looper;
-import android.view.View;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.POIListRequestSession;
-import com.tencent.biz.qqstory.takevideo.EditVideoPoi;
-import com.tencent.mobileqq.activity.Contacts.OverScrollViewTag;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
-import com.tencent.widget.OverScrollViewListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment.3.1;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment.3.2;
+import com.tencent.qphone.base.util.QLog;
 
 public class oks
-  implements OverScrollViewListener
+  implements rno
 {
-  public oks(EditVideoPoi paramEditVideoPoi) {}
+  public oks(ReadInJoyViolaChannelFragment paramReadInJoyViolaChannelFragment) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public void a()
   {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
-    {
-      paramView.c(l);
-      return;
+    if (this.a.getActivity() != null) {
+      new Handler(this.a.getActivity().getMainLooper()).postDelayed(new ReadInJoyViolaChannelFragment.3.2(this), 200L);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyViolaChannelFragment", 2, "reloadPage success!");
     }
   }
   
-  public boolean a(int paramInt, View paramView, ListView paramListView)
+  public void a(int paramInt)
   {
-    paramListView = (PullRefreshHeader)paramView;
-    long l;
-    if (this.a.jdField_a_of_type_Long == 0L)
-    {
-      l = System.currentTimeMillis();
-      paramListView.a(l);
-      if (!NetworkUtil.g(this.a.a())) {
-        break label118;
-      }
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession != null) {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession.a();
-      }
-      this.a.e();
-      new Handler(Looper.getMainLooper()).postDelayed(new okt(this), 300L);
+    if (this.a.getActivity() != null) {
+      new Handler(this.a.getActivity().getMainLooper()).postDelayed(new ReadInJoyViolaChannelFragment.3.1(this), 1000L);
     }
-    for (;;)
-    {
-      ((Contacts.OverScrollViewTag)paramView.getTag()).a = true;
-      return true;
-      l = this.a.jdField_a_of_type_Long;
-      break;
-      label118:
-      new Handler(Looper.getMainLooper()).postDelayed(new oku(this), 300L);
+    if (QLog.isColorLevel()) {
+      QLog.e("ReadInJoyViolaChannelFragment", 2, "reloadPage error,error code=" + paramInt);
     }
   }
   
-  public void b(int paramInt, View paramView, ListView paramListView)
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    paramView = (PullRefreshHeader)paramView;
-    if (this.a.jdField_a_of_type_Long == 0L) {}
-    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
-    {
-      paramView.b(l);
-      return;
+    if ((1 == paramInt) && (odi.a())) {
+      ohb.a().n();
     }
   }
   
-  public void c(int paramInt, View paramView, ListView paramListView) {}
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyViolaChannelFragment", 2, "reloadPage process,process code=" + paramInt);
+    }
+  }
 }
 
 

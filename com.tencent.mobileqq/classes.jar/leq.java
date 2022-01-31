@@ -1,63 +1,61 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.util.SparseArray;
+import com.tencent.smtt.utils.ByteUtils;
+import java.nio.ByteBuffer;
 
 public class leq
-  implements INetInfoHandler
 {
-  private leq(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
-  
-  public void onNetMobile2None()
+  public static SparseArray<lep> a(byte[] paramArrayOfByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetMobile2None");
+    ByteBuffer localByteBuffer = ByteBuffer.wrap(paramArrayOfByte);
+    SparseArray localSparseArray = new SparseArray();
+    int j = 0;
+    while (j < paramArrayOfByte.length)
+    {
+      short s = a(localByteBuffer, j);
+      j += 2;
+      int i = b(localByteBuffer, j);
+      j += 2;
+      byte[] arrayOfByte = a(paramArrayOfByte, j, i);
+      j += i;
+      localSparseArray.put(s, new lep(s, i, arrayOfByte));
     }
-    this.a.b(false);
+    return localSparseArray;
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  private static short a(ByteBuffer paramByteBuffer, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetMobile2Wifi");
-    }
-    this.a.d(true);
+    return paramByteBuffer.getShort(paramInt);
   }
   
-  public void onNetNone2Mobile(String paramString)
+  public static byte[] a(lep paramlep)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetNone2Mobile");
+    if (paramlep != null)
+    {
+      short s1 = paramlep.a();
+      short s2 = paramlep.b();
+      paramlep = paramlep.a();
+      ByteBuffer localByteBuffer = ByteBuffer.allocate(s2 + 4);
+      localByteBuffer.putShort(s1);
+      localByteBuffer.putShort(s2);
+      localByteBuffer.put(paramlep);
+      return localByteBuffer.array();
     }
-    this.a.c(false);
+    return null;
   }
   
-  public void onNetNone2Wifi(String paramString)
+  public static byte[] a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetNone2Wifi");
-    }
-    this.a.d(false);
+    return ByteUtils.subByte(paramArrayOfByte, paramInt1, paramInt2);
   }
   
-  public void onNetWifi2Mobile(String paramString)
+  private static short b(ByteBuffer paramByteBuffer, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetWifi2Mobile");
-    }
-    this.a.c(true);
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseDeliverActivity", 2, "onNetWifi2None");
-    }
-    this.a.b(true);
+    return paramByteBuffer.getShort(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     leq
  * JD-Core Version:    0.7.0.1
  */

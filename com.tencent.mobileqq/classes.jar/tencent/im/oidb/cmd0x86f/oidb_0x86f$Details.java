@@ -9,7 +9,7 @@ import nearby_interact_state.interact_value.FreshThing;
 import nearby_interact_state.interact_value.Tribe;
 
 public final class oidb_0x86f$Details
-  extends MessageMicro
+  extends MessageMicro<Details>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_back_color2 = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -27,7 +27,7 @@ public final class oidb_0x86f$Details
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x86f.oidb_0x86f.Details
  * JD-Core Version:    0.7.0.1
  */

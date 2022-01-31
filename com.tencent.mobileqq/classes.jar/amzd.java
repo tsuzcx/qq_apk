@@ -1,22 +1,78 @@
-import android.net.Proxy;
-import cooperation.qzone.QZoneHttpUtil.HttpProxy;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.HotFriendResData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public final class amzd
-  extends QZoneHttpUtil.HttpProxy
+public class amzd
+  extends amza
 {
+  public amzd(QQAppInterface paramQQAppInterface)
+  {
+    super("qq.android.hotfriend.res", paramQQAppInterface);
+  }
+  
   public int a()
   {
-    return Proxy.getDefaultPort();
+    return 10042;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return HotFriendResData.class;
   }
   
   public String a()
   {
-    return Proxy.getDefaultHost();
+    return "HotFriendResHandler";
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess:" + paramString);
+    }
+    if (!new File(paramString).exists())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess sorse not exists");
+      }
+      return;
+    }
+    try
+    {
+      String str = ascd.a();
+      if (QLog.isColorLevel()) {
+        QLog.d("HotFriendResHandler", 2, "doOnDownloadSuccess imagePath=" + str);
+      }
+      if (!TextUtils.isEmpty(str)) {
+        bace.a(paramString, str, false);
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
+    }
+    super.a(paramString);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amzd
  * JD-Core Version:    0.7.0.1
  */

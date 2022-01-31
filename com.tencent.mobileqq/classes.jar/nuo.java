@@ -1,21 +1,56 @@
-import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnErrorListener;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
+import java.util.ArrayList;
+import java.util.List;
 
-class nuo
-  implements Runnable
+public class nuo
 {
-  nuo(nun paramnun) {}
+  private static List<nyi> a;
   
-  public void run()
+  private nuo()
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.a(this.a.a, 102, 201, 0, "", null);
+    a = new ArrayList();
+  }
+  
+  public static nuo a()
+  {
+    return nuq.a();
+  }
+  
+  public List<nyi> a()
+  {
+    if (a == null) {
+      return null;
     }
+    return a;
+  }
+  
+  public void a()
+  {
+    if (a != null) {
+      a.clear();
+    }
+  }
+  
+  public void a(nyi paramnyi)
+  {
+    if ((paramnyi == null) || (a == null)) {}
+    while (a.contains(paramnyi)) {
+      return;
+    }
+    a.add(paramnyi);
+  }
+  
+  public void b(nyi paramnyi)
+  {
+    if ((a == null) || (a.size() == 0)) {}
+    while (!a.contains(paramnyi)) {
+      return;
+    }
+    a.remove(paramnyi);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nuo
  * JD-Core Version:    0.7.0.1
  */

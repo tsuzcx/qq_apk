@@ -1,22 +1,25 @@
-import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgNumAnim;
-import com.tencent.mobileqq.activity.qwallet.widget.NumAnim;
-import com.tencent.mobileqq.activity.qwallet.widget.NumAnim.Ruler;
-import com.tencent.mobileqq.activity.qwallet.widget.NumAnim.SpannableValue;
+import android.os.Handler;
+import com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo.1.1;
 
 public class utz
-  implements NumAnim.Ruler
+  implements spg<sqx>
 {
-  public utz(GoldMsgNumAnim paramGoldMsgNumAnim) {}
+  utz(uty paramuty) {}
   
-  public NumAnim.SpannableValue getNumber(double paramDouble)
+  public void a(boolean paramBoolean, sqx paramsqx)
   {
-    String str = NumAnim.formatNumber(paramDouble, true);
-    return new NumAnim.SpannableValue(str, 0, str.length());
+    urk.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "onWeatherUpdate, isSuccess=" + paramBoolean);
+    if ((paramBoolean) && (paramsqx != null))
+    {
+      urk.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "onWeatherUpdate, temperature=%s", Integer.valueOf(paramsqx.a));
+      int i = paramsqx.a;
+      uty.a(this.a).post(new EditVideoFilterNeo.1.1(this, i));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     utz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,63 +1,29 @@
-import android.annotation.TargetApi;
-import android.app.ProgressDialog;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import java.util.List;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class abhc
-  implements Handler.Callback
+  extends ajjh
 {
-  public abhc(ARMapActivity paramARMapActivity) {}
+  public abhc(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  @TargetApi(11)
-  public boolean handleMessage(Message paramMessage)
+  protected void onGetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
   {
-    switch (paramMessage.what)
-    {
+    if (paramBoolean1) {
+      PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
     }
-    for (;;)
-    {
-      return true;
-      this.a.jdField_c_of_type_Int = paramMessage.arg1;
-      if (this.a.jdField_c_of_type_Int == 4)
-      {
-        int i = paramMessage.arg2;
-        this.a.a(i);
-        continue;
-        float f = ((Float)paramMessage.obj).floatValue();
-        this.a.jdField_c_of_type_AndroidWidgetImageView.setRotation(f - 45.0F);
-        ARMapActivity.a(this.a, -f);
-        continue;
-        ARMapActivity.a(this.a, (List)paramMessage.obj);
-        continue;
-        ARMapActivity.e(this.a);
-        continue;
-        ARMapActivity.g(this.a, false);
-        continue;
-        if (this.a.a == null)
-        {
-          this.a.a = new ProgressDialog(this.a, 2131624516);
-          this.a.a.setCanceledOnTouchOutside(false);
-          this.a.a.show();
-          this.a.a.setContentView(2130969178);
-        }
-        ((TextView)this.a.a.findViewById(2131363418)).setText("正在加载...");
-        if ((!this.a.a.isShowing()) && (!this.a.isFinishing()))
-        {
-          this.a.a.show();
-          continue;
-          ARMapActivity.f(this.a);
-        }
-      }
+  }
+  
+  protected void onSetVisibilityForNetWorkStatus(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!paramBoolean1) {
+      this.a.a(2131653546, 1);
     }
+    PermisionPrivacyActivity.a(this.a, this.a.b.a(), paramBoolean2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abhc
  * JD-Core Version:    0.7.0.1
  */

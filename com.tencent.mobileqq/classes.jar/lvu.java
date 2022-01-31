@@ -1,26 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyConstants;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyHeaderPresenter;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.utils.Base64Util;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
 
 public class lvu
-  implements View.OnClickListener
+  implements aagl
 {
-  public lvu(ReadInJoyHeaderPresenter paramReadInJoyHeaderPresenter, String paramString, ArticleInfo paramArticleInfo) {}
+  public lvu(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2)
   {
-    paramView = ReadInJoyConstants.f + Base64Util.encodeToString(this.jdField_a_of_type_JavaLangString.getBytes(), 2);
-    ReadInJoyUtils.a(ReadInJoyHeaderPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPresenterReadInJoyHeaderPresenter), paramView);
-    ReadInJoyHeaderPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPresenterReadInJoyHeaderPresenter, ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo));
+    this.a.h = paramInt1;
+    this.a.i = paramInt2;
+    this.a.d(10);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lvu
  * JD-Core Version:    0.7.0.1
  */

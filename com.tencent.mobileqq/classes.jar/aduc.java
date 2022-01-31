@@ -1,35 +1,54 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
 public class aduc
-  implements Runnable
+  implements Animator.AnimatorListener
 {
-  public aduc(ForwardSdkShareOption paramForwardSdkShareOption) {}
+  private aduc(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {}
-    do
+    if (UnlimitedBladeWorks.a(this.a).a)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.w("ForwardOption.ForwardSdkShareOption", 2, "-->preForward--fetch openid timeout");
+      if (UnlimitedBladeWorks.a(this.a) != 2.0D) {
+        break label55;
       }
-      this.a.h = true;
-      this.a.t();
-    } while (!ForwardSdkShareOption.a(this.a));
-    this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
-    this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
-    this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", ForwardAbility.ForwardAbilityType.e.intValue());
-    this.a.j();
+      UnlimitedBladeWorks.a(this.a);
+      UnlimitedBladeWorks.a(this.a, 5);
+    }
+    for (;;)
+    {
+      UnlimitedBladeWorks.a(this.a).setImageDrawable(null);
+      return;
+      label55:
+      UnlimitedBladeWorks.b(this.a).setImageDrawable(UnlimitedBladeWorks.a(this.a));
+      UnlimitedBladeWorks.a(this.a).a(UnlimitedBladeWorks.a(this.a));
+      UnlimitedBladeWorks.a(this.a).a(new adud(this));
+      UnlimitedBladeWorks.a(this.a).c();
+      UnlimitedBladeWorks.a(this.a, 1);
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (UnlimitedBladeWorks.a(this.a))
+    {
+      UnlimitedBladeWorks.a(this.a).setImageDrawable(UnlimitedBladeWorks.a(this.a));
+      return;
+    }
+    UnlimitedBladeWorks.a(this.a).setImageBitmap(UnlimitedBladeWorks.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aduc
  * JD-Core Version:    0.7.0.1
  */

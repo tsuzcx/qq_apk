@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class PackServer$PkgReq
-  extends MessageMicro
+  extends MessageMicro<PkgReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField a8 = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -41,7 +41,7 @@ public final class PackServer$PkgReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.new_year_2014.PackServer.PkgReq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class aalb
-  implements Parcelable.Creator
+class aalb
+  implements DialogInterface.OnClickListener
 {
-  public ARCommonConfigInfo.NativeSoRes a(Parcel paramParcel)
-  {
-    return new ARCommonConfigInfo.NativeSoRes(paramParcel);
-  }
+  aalb(aala paramaala) {}
   
-  public ARCommonConfigInfo.NativeSoRes[] a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return new ARCommonConfigInfo.NativeSoRes[paramInt];
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aalb
  * JD-Core Version:    0.7.0.1
  */

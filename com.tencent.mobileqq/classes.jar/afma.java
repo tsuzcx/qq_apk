@@ -1,41 +1,20 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryEmotionBaseFragment;
 
 public class afma
-  implements IphonePickerView.PickerViewAdapter
+  implements DialogInterface.OnClickListener
 {
-  public afma(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
+  public afma(ChatHistoryEmotionBaseFragment paramChatHistoryEmotionBaseFragment, aais paramaais) {}
   
-  public int getColumnCount()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return 1;
-  }
-  
-  public int getRowCount(int paramInt)
-  {
-    return 2;
-  }
-  
-  public String getText(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 >= 0)
-    {
-      paramInt1 = paramInt2;
-      if (paramInt2 <= 1) {}
-    }
-    else
-    {
-      paramInt1 = 0;
-    }
-    if (paramInt1 == 0) {
-      return "男";
-    }
-    return "女";
+    this.jdField_a_of_type_Aais.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afma
  * JD-Core Version:    0.7.0.1
  */

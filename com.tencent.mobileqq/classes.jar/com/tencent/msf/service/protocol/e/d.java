@@ -8,9 +8,9 @@ public final class d
   extends JceStruct
 {
   static byte[] d;
-  public int a;
-  public boolean b;
-  public byte[] c;
+  public int a = 0;
+  public boolean b = false;
+  public byte[] c = null;
   
   public d() {}
   

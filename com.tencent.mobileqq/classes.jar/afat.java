@@ -1,30 +1,27 @@
-import android.app.Activity;
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
-import com.tencent.mobileqq.nearby.now.view.widget.StoryNewGuideDialog;
+import android.support.annotation.NonNull;
 
 public class afat
-  implements Runnable
 {
-  public afat(StoryPlayController paramStoryPlayController) {}
+  public int a;
+  public int b;
+  public int c;
   
-  public void run()
+  public afat(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((StoryPlayController.a(this.a) != null) && (StoryPlayController.a(this.a).isShowing()))
-    {
-      if (((this.a.a instanceof Activity)) && ((StoryPlayController.b(this.a)) || (((Activity)this.a.a).isFinishing()))) {
-        StoryPlayController.a(this.a, null);
-      }
-    }
-    else {
-      return;
-    }
-    StoryPlayController.a(this.a).dismiss();
-    StoryPlayController.a(this.a, null);
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+  }
+  
+  @NonNull
+  public String toString()
+  {
+    return "TabLayoutStatus{, tabId=" + this.a + ", scrollPos=" + this.b + ", scrollTop='" + this.c + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afat
  * JD-Core Version:    0.7.0.1
  */

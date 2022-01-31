@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.emosm;
 
-import acgy;
-import acgz;
+import anab;
+import anac;
+import andr;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
@@ -10,18 +11,17 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.RemoteException;
-import com.tencent.mobileqq.emosm.web.IPCConstants;
+import anfc;
 import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
 import com.tencent.qphone.base.util.QLog;
 
 public class Client
-  implements IPCConstants
+  implements andr
 {
   public static final String tag = "Q.emoji.web.Client";
-  private ServiceConnection mConnection = new acgy(this);
+  private ServiceConnection mConnection = new anab(this);
   public boolean mIsBound;
-  public final Messenger mMessenger = new Messenger(new acgz(this, Looper.getMainLooper()));
+  public final Messenger mMessenger = new Messenger(new anac(this, Looper.getMainLooper()));
   public Messenger mService = null;
   
   public void doBindService(Context paramContext)
@@ -85,12 +85,12 @@ public class Client
   
   public void onDisconnectWithService()
   {
-    WebIPCOperator.a().b();
+    anfc.a().b();
   }
   
   public void onPushMsgFromServer(Bundle paramBundle)
   {
-    WebIPCOperator.a().d(paramBundle);
+    anfc.a().d(paramBundle);
   }
   
   public boolean onReqToServer(Bundle paramBundle)
@@ -133,7 +133,7 @@ public class Client
   {
     try
     {
-      WebIPCOperator.a().c(paramBundle);
+      anfc.a().c(paramBundle);
       return;
     }
     catch (IllegalArgumentException localIllegalArgumentException)

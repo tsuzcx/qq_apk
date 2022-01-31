@@ -1,26 +1,17 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.troopreward.OrientationAdapterImageView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.asyncdb.cache.RecentUserCache;
 
 public class akeu
-  extends Handler
+  extends RecentUserCache
 {
-  public akeu(OrientationAdapterImageView paramOrientationAdapterImageView) {}
-  
-  public void handleMessage(Message paramMessage)
+  public akeu(QQAppInterface paramQQAppInterface, ajwh paramajwh)
   {
-    if (this.a.jdField_a_of_type_AndroidGraphicsBitmap != null) {
-      this.a.invalidate();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("OrientationAdapterImageView", 2, "handleMessage:" + this.a.jdField_a_of_type_Int + "," + this.a.jdField_a_of_type_AndroidGraphicsBitmap);
-    }
+    super(paramQQAppInterface, paramajwh);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akeu
  * JD-Core Version:    0.7.0.1
  */

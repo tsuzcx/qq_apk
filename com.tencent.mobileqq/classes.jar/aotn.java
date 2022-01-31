@@ -1,49 +1,65 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.util.BinderWarpper;
-import dov.com.tencent.mobileqq.richmedia.ICallBack;
-import dov.com.tencent.mobileqq.richmedia.LOG;
-import dov.com.tencent.mobileqq.richmedia.RichmediaClient;
+import android.text.TextUtils;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aotn
-  implements ServiceConnection
+  implements alsd
 {
-  public aotn(RichmediaClient paramRichmediaClient) {}
+  private DataLineMsgRecord a;
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public aotn(DataLineMsgRecord paramDataLineMsgRecord)
   {
-    LOG.a("PTV.RichmediaClient", "onServiceConnected");
-    this.a.b = new Messenger(paramIBinder);
-    paramComponentName = Message.obtain(null, 1);
-    paramComponentName.replyTo = this.a.jdField_a_of_type_AndroidOsMessenger;
-    paramIBinder = new BinderWarpper(this.a.jdField_a_of_type_DovComTencentMobileqqRichmediaICallBack.asBinder());
-    Bundle localBundle = new Bundle();
-    localBundle.putParcelable("ICallBack_BinderWrapper", paramIBinder);
-    paramComponentName.setData(localBundle);
-    try
-    {
-      this.a.b.send(paramComponentName);
-      return;
-    }
-    catch (RemoteException paramComponentName)
-    {
-      LOG.b("PTV.RichmediaClient", "MSG_C2S_REGISTER_CLIENT send failed. e = " + paramComponentName);
-    }
+    this.a = paramDataLineMsgRecord;
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  private String a()
   {
-    this.a.b = null;
+    String str = "";
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      if (this.a != null)
+      {
+        localJSONObject.put("file_color_note_uniSeq", this.a.sessionid);
+        str = localJSONObject.toString();
+      }
+      return str;
+    }
+    catch (JSONException localJSONException) {}
+    return "";
+  }
+  
+  public ColorNote getColorNote()
+  {
+    if (this.a == null)
+    {
+      QLog.i("DatalineFileColorNoteServiceInfo", 1, "getColorNote: offline file info is null.");
+      return null;
+    }
+    alsl localalsl = new alsl();
+    localalsl.a(17039360);
+    String str = apdq.b(6, this.a.sessionid + "");
+    if (QLog.isColorLevel()) {
+      QLog.i("DatalineFileColorNoteServiceInfo", 2, "getColorNote: file colorNote key [" + str + "]");
+    }
+    localalsl.a(str);
+    localalsl.b(this.a.filename);
+    localalsl.c(apdh.a(this.a.filesize));
+    int i = apck.a(apck.a(this.a.filename));
+    localalsl.d("resdrawable://" + i);
+    str = a();
+    if (!TextUtils.isEmpty(str)) {
+      localalsl.a(str.getBytes());
+    }
+    return localalsl.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aotn
  * JD-Core Version:    0.7.0.1
  */

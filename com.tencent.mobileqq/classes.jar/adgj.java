@@ -1,21 +1,13 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
-
-public class adgj
-  extends adgb
+class adgj
+  implements begy
 {
-  public adgj(OnlineFileSessionWorker paramOnlineFileSessionWorker)
-  {
-    super(paramOnlineFileSessionWorker);
-  }
+  adgj(adgi paramadgi) {}
   
-  protected String a()
-  {
-    return "StateRefuseByPC";
-  }
+  public void onDismiss() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adgj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,66 +1,113 @@
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.AbsWebView;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils.ProxyConfig;
-import com.tencent.mobileqq.webviewplugin.WebViewJumpPlugin;
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class akfn
-  extends AbsWebView
+  extends MSFServlet
 {
-  public akfn(Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
+  private ToServiceMsg a;
+  
+  public static Intent a(Intent paramIntent, long paramLong)
   {
-    super(paramContext, paramActivity, paramAppInterface);
-    super.y();
-    this.a = new TouchWebView(this.e);
-    b(paramAppInterface);
+    Intent localIntent = paramIntent;
+    if (paramIntent == null) {
+      localIntent = new Intent();
+    }
+    localIntent.putExtra("hostUin", paramLong);
+    return localIntent;
   }
   
-  public void a()
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    super.u();
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    super.b(paramIntent);
-  }
-  
-  public void a(String paramString)
-  {
-    if (SwiftWebViewUtils.ProxyConfig.jdField_a_of_type_Boolean)
+    if (paramIntent == null)
     {
-      SwiftWebViewUtils.a(this.a, SwiftWebViewUtils.ProxyConfig.jdField_a_of_type_JavaLangString);
-      SwiftWebViewUtils.ProxyConfig.jdField_a_of_type_Boolean = false;
+      if (QLog.isColorLevel()) {
+        QLog.e("QzoneLoverLightingServlet", 2, "onReceive, request is null");
+      }
+      return;
     }
-    this.h = paramString;
-    this.a.loadUrl(this.h);
-  }
-  
-  public void a(ArrayList paramArrayList)
-  {
-    if (paramArrayList != null) {
-      paramArrayList.add(new WebViewJumpPlugin());
+    paramIntent = new Bundle();
+    if (paramFromServiceMsg != null)
+    {
+      paramIntent.putInt("rsp_code", paramFromServiceMsg.getResultCode());
+      paramIntent.putString("rsp_message", paramFromServiceMsg.getBusinessFailMsg());
     }
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("receive QzoneLoverLightingServlet, code: ");
+      if (paramFromServiceMsg == null) {
+        break label165;
+      }
+    }
+    label165:
+    for (int i = paramFromServiceMsg.getResultCode();; i = -1)
+    {
+      QLog.d("QzoneLoverLightingServlet", 2, i);
+      if ((paramFromServiceMsg == null) || (paramFromServiceMsg.getResultCode() != 1000)) {
+        break label197;
+      }
+      paramFromServiceMsg = paramFromServiceMsg.getWupBuffer();
+      localObject = akfm.a();
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        break;
+      }
+      paramIntent.putInt("rsp_code", 0);
+      paramFromServiceMsg = akfm.a(paramFromServiceMsg, (String)localObject);
+      if (paramFromServiceMsg == null) {
+        break label170;
+      }
+      paramIntent.putSerializable("rsp_data", paramFromServiceMsg);
+      notifyObserver(null, 291, true, paramIntent, akfo.class);
+      return;
+    }
+    label170:
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneLoverLightingServlet", 2, "inform QzoneLoverLightingServlet isSuccess false");
+    }
+    notifyObserver(null, 291, false, paramIntent, akfo.class);
+    return;
+    label197:
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneLoverLightingServlet", 2, "inform QzoneLoverLightingServlet resultcode fail.");
+    }
+    notifyObserver(null, 291, false, paramIntent, akfo.class);
   }
   
-  public void b()
+  public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    super.v();
+    if (paramIntent == null) {}
+    long l;
+    do
+    {
+      return;
+      l = paramIntent.getLongExtra("hostUin", 0L);
+      byte[] arrayOfByte = new akfm(l).encode();
+      paramIntent = arrayOfByte;
+      if (arrayOfByte == null) {
+        paramIntent = new byte[4];
+      }
+      paramPacket.setTimeout(60000L);
+      paramPacket.setSSOCommand("SQQzoneSvc." + akfm.a());
+      paramPacket.putSendData(paramIntent);
+    } while (!QLog.isColorLevel());
+    QLog.d("QzoneLoverLightingServlet", 2, "send req QzoneLoverLightingRequest: " + l);
   }
   
-  public void c()
+  public void sendToMSF(Intent paramIntent, ToServiceMsg paramToServiceMsg)
   {
-    super.w();
+    this.a = paramToServiceMsg;
+    super.sendToMSF(paramIntent, paramToServiceMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akfn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import android.support.annotation.NonNull;
 
 public class ujl
-  implements View.OnTouchListener
+  extends sfo
 {
-  public ujl(TroopTransferActivity paramTroopTransferActivity) {}
+  public int a;
+  public String a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ujl(@NonNull String paramString, int paramInt)
   {
-    if (paramMotionEvent.getAction() == 1) {
-      this.a.b();
-    }
-    return true;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ujl
  * JD-Core Version:    0.7.0.1
  */

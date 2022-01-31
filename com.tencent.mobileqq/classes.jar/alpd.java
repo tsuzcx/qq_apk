@@ -1,37 +1,38 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
 public class alpd
-  implements Runnable
+  extends ajjh
 {
-  public alpd(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
+  public alpd(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public void run()
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c) != null) {
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_k_of_type_JavaLangString = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a().getDownloadTaskState(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c).mSavePath;
-    }
-    this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_k_of_type_Int = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
-    if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_k_of_type_Int != 0)
+    if ((paramBoolean) && (paramString != null))
     {
-      LogUtility.a(DownloadManager.a, "onDownloadError ###重新写码失败..........");
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f = -2;
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g = 100;
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_k_of_type_Int, null);
-      return;
+      String str = babh.c(this.a.app, paramString, false);
+      int i = 0;
+      while (i < this.a.c.getChildCount())
+      {
+        Object localObject = this.a.c.getChildAt(i);
+        if (((localObject instanceof ViewGroup)) && ((((View)localObject).getTag() instanceof alpm)) && (paramString.equals(((alpm)((View)localObject).getTag()).a)))
+        {
+          localObject = (TextView)((View)localObject).findViewById(2131305143);
+          if (localObject != null) {
+            ((TextView)localObject).setText(str);
+          }
+        }
+        i += 1;
+      }
     }
-    LogUtility.a(DownloadManager.a, "onDownloadError ###重新写码成功..........");
-    this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.f = 4;
-    this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g = 100;
-    this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.b(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     alpd
  * JD-Core Version:    0.7.0.1
  */

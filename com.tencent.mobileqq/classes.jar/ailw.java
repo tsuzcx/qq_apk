@@ -1,25 +1,24 @@
-import com.tencent.mobileqq.statistics.storage.StorageItem;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.apollo.game.WebGameFakeView;
 
 public class ailw
-  implements Comparator
+  implements View.OnClickListener
 {
-  public int compare(Object paramObject1, Object paramObject2)
+  public ailw(WebGameFakeView paramWebGameFakeView, ImageView paramImageView) {}
+  
+  public void onClick(View paramView)
   {
-    paramObject1 = (StorageItem)paramObject1;
-    paramObject2 = (StorageItem)paramObject2;
-    if (paramObject1.b > paramObject2.b) {
-      return -1;
+    aikz.a().a(null);
+    if (aikz.a().a() <= 1) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
-    if (paramObject1.b < paramObject2.b) {
-      return 1;
-    }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ailw
  * JD-Core Version:    0.7.0.1
  */

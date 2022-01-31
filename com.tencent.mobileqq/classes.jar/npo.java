@@ -1,24 +1,336 @@
-import com.tencent.biz.qqstory.base.preload.PlayingListPreloader;
-import com.tencent.biz.qqstory.playmode.child.SelectVideosPlayMode;
-import com.tencent.biz.qqstory.playvideo.ProgressControler;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
+import android.animation.ValueAnimator;
+import android.graphics.Point;
+import android.view.animation.AccelerateInterpolator;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyCutImageView;
 import java.util.ArrayList;
 
-class npo
-  implements Runnable
+public class npo
 {
-  npo(npn paramnpn) {}
+  private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F });
+  private npr jdField_a_of_type_Npr;
   
-  public void run()
+  public npr a()
   {
-    this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.setCurrentItem(this.a.a.a.b, false);
-    if ((this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a != null) && (this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size() > 0))
-    {
-      this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader.a(this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a);
-      this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.a(1);
+    return this.jdField_a_of_type_Npr;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null) {
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
     }
-    this.a.a.a.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void a(ReadInjoyCutImageView paramReadInjoyCutImageView, nro paramnro1, nro paramnro2, int paramInt1, int paramInt2, long paramLong)
+  {
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    Point localPoint1 = new Point();
+    Point localPoint2 = new Point();
+    Point localPoint3 = new Point();
+    Point localPoint4 = new Point();
+    float f1 = 0.0F;
+    int n = 0;
+    int i1 = 0;
+    int m;
+    int k;
+    int j;
+    int i;
+    if (paramnro1.a == paramnro2.a)
+    {
+      paramnro1.b = Math.abs(paramnro1.b);
+      paramnro2.b = Math.abs(paramnro2.b);
+      if (paramnro1.b > paramnro2.b) {
+        paramnro1.a(paramnro2);
+      }
+      localArrayList1.add(new nro(0.0F, 0.0F));
+      localArrayList1.add(paramnro1);
+      localArrayList1.add(paramnro2);
+      localArrayList1.add(new nro(0.0F, 1.0F));
+      localArrayList1.add(new nro(0.0F, 0.0F));
+      localArrayList2.add(paramnro1);
+      localArrayList2.add(new nro(1.0F, 0.0F));
+      localArrayList2.add(new nro(1.0F, 1.0F));
+      localArrayList2.add(paramnro2);
+      localArrayList2.add(paramnro1);
+      if ((paramInt1 != 5) || (paramInt2 != 5)) {
+        break label2165;
+      }
+      m = 2;
+      k = 1;
+      j = 1;
+      i = i1;
+    }
+    for (;;)
+    {
+      switch (m)
+      {
+      default: 
+        label280:
+        switch (k)
+        {
+        }
+        break;
+      }
+      for (;;)
+      {
+        paramReadInjoyCutImageView.a();
+        paramReadInjoyCutImageView.setClipArea(localArrayList1, localArrayList2);
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(paramLong);
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new AccelerateInterpolator());
+        f1 = localPoint2.x - localPoint1.x;
+        f2 = localPoint2.y - localPoint1.y;
+        f3 = localPoint4.x - localPoint3.x;
+        float f4 = localPoint4.y - localPoint3.y;
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new npp(this, f1, f2, f3, f4, paramReadInjoyCutImageView));
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new npq(this, paramReadInjoyCutImageView));
+        return;
+        if (paramnro1.b == paramnro2.b)
+        {
+          paramnro1.b = Math.abs(paramnro1.b);
+          paramnro2.b = Math.abs(paramnro2.b);
+          if (paramnro1.a > paramnro2.a) {
+            paramnro1.a(paramnro2);
+          }
+          localArrayList1.add(new nro(0.0F, 0.0F));
+          localArrayList1.add(new nro(1.0F, 0.0F));
+          localArrayList1.add(paramnro2);
+          localArrayList1.add(paramnro1);
+          localArrayList1.add(new nro(0.0F, 0.0F));
+          localArrayList2.add(paramnro1);
+          localArrayList2.add(paramnro2);
+          localArrayList2.add(new nro(1.0F, 1.0F));
+          localArrayList2.add(new nro(0.0F, 1.0F));
+          localArrayList2.add(paramnro1);
+          if ((paramInt1 != 5) || (paramInt2 != 5)) {
+            break label2147;
+          }
+          m = 3;
+          k = 4;
+          i = 1;
+          j = n;
+          break;
+        }
+        f2 = (paramnro2.b - paramnro1.b) / (paramnro2.a - paramnro1.a);
+        f3 = (paramnro2.b + paramnro1.b - (paramnro2.a + paramnro1.a) * f2) / 2.0F;
+        paramnro1.b = Math.abs(paramnro1.b);
+        paramnro2.b = Math.abs(paramnro2.b);
+        if (f2 > 0.0F)
+        {
+          if (paramnro1.a < paramnro2.a) {
+            paramnro1.a(paramnro2);
+          }
+          localArrayList1.add(new nro(0.0F, 0.0F));
+          localArrayList2.add(new nro(paramnro1));
+          localnro = new nro(1.0F, 0.0F);
+          if (localnro.b > localnro.a * f2 + f3)
+          {
+            localArrayList1.add(localnro);
+            label795:
+            localArrayList1.add(paramnro1);
+            localArrayList2.add(new nro(1.0F, 1.0F));
+            localArrayList1.add(paramnro2);
+            localnro = new nro(0.0F, 1.0F);
+            if (-localnro.b <= localnro.a * f2 + f3) {
+              break label1133;
+            }
+            localArrayList1.add(localnro);
+          }
+          for (;;)
+          {
+            localArrayList2.add(paramnro2);
+            localArrayList1.add(new nro((nro)localArrayList1.get(0)));
+            localArrayList2.add(new nro((nro)localArrayList2.get(0)));
+            i = i1;
+            j = n;
+            f1 = f2;
+            m = paramInt1;
+            k = paramInt2;
+            if (paramInt1 != 5) {
+              break;
+            }
+            i = i1;
+            j = n;
+            f1 = f2;
+            m = paramInt1;
+            k = paramInt2;
+            if (paramInt2 != 5) {
+              break;
+            }
+            f1 = -1.0F / f2;
+            f4 = f3 / (f1 - f2);
+            localPoint1.x = ((int)(paramReadInjoyCutImageView.getWidth() * f4));
+            localPoint1.y = (-(int)((f4 * f2 + f3) * paramReadInjoyCutImageView.getHeight()));
+            localPoint2.x = 0;
+            localPoint2.y = 0;
+            f1 = (f3 + f1 + 1.0F) / (f1 - f2);
+            localPoint3.x = ((int)(paramReadInjoyCutImageView.getWidth() * f1));
+            localPoint3.y = (-(int)((f1 * f2 + f3) * paramReadInjoyCutImageView.getHeight()));
+            localPoint4.x = paramReadInjoyCutImageView.getWidth();
+            localPoint4.y = paramReadInjoyCutImageView.getHeight();
+            i = i1;
+            j = n;
+            f1 = f2;
+            m = paramInt1;
+            k = paramInt2;
+            break;
+            localArrayList2.add(localnro);
+            break label795;
+            label1133:
+            localArrayList2.add(localnro);
+          }
+        }
+        if (paramnro1.a > paramnro2.a) {
+          paramnro1.a(paramnro2);
+        }
+        localArrayList2.add(paramnro1);
+        nro localnro = new nro(0.0F, 0.0F);
+        if (localnro.b < localnro.a * f2 + f3)
+        {
+          localArrayList1.add(localnro);
+          label1207:
+          localArrayList1.add(paramnro1);
+          localArrayList1.add(paramnro2);
+          localArrayList2.add(new nro(1.0F, 0.0F));
+          localnro = new nro(1.0F, 1.0F);
+          if (-localnro.b >= localnro.a * f2 + f3) {
+            break label1560;
+          }
+          localArrayList1.add(localnro);
+        }
+        for (;;)
+        {
+          localArrayList1.add(new nro(0.0F, 1.0F));
+          localArrayList2.add(paramnro2);
+          localArrayList1.add(new nro((nro)localArrayList1.get(0)));
+          localArrayList2.add(new nro((nro)localArrayList2.get(0)));
+          i = i1;
+          j = n;
+          f1 = f2;
+          m = paramInt1;
+          k = paramInt2;
+          if (paramInt1 != 5) {
+            break;
+          }
+          i = i1;
+          j = n;
+          f1 = f2;
+          m = paramInt1;
+          k = paramInt2;
+          if (paramInt2 != 5) {
+            break;
+          }
+          f1 = -1.0F / f2;
+          f4 = (1.0F + f3) / (f1 - f2);
+          localPoint1.x = ((int)(paramReadInjoyCutImageView.getWidth() * f4));
+          localPoint1.y = (-(int)((f4 * f2 + f3) * paramReadInjoyCutImageView.getHeight()));
+          localPoint2.x = 0;
+          localPoint2.y = paramReadInjoyCutImageView.getHeight();
+          f1 = (f3 + f1) / (f1 - f2);
+          localPoint3.x = ((int)(paramReadInjoyCutImageView.getWidth() * f1));
+          localPoint3.y = (-(int)((f1 * f2 + f3) * paramReadInjoyCutImageView.getHeight()));
+          localPoint4.x = paramReadInjoyCutImageView.getWidth();
+          localPoint4.y = 0;
+          i = i1;
+          j = n;
+          f1 = f2;
+          m = paramInt1;
+          k = paramInt2;
+          break;
+          localArrayList2.add(localnro);
+          break label1207;
+          label1560:
+          localArrayList2.add(localnro);
+        }
+        localPoint1.x = ((int)(Math.max(paramnro1.a, paramnro2.a) * paramReadInjoyCutImageView.getWidth()));
+        localPoint1.y = 0;
+        localPoint2.x = 0;
+        localPoint2.y = 0;
+        break label280;
+        f2 = Math.max(paramnro1.a, paramnro2.a);
+        localPoint1.x = 0;
+        localPoint1.y = 0;
+        localPoint2.x = ((int)(f2 * paramReadInjoyCutImageView.getWidth()));
+        localPoint2.y = 0;
+        break label280;
+        f2 = Math.min(paramnro1.b, paramnro2.b);
+        f3 = Math.max(paramnro1.b, paramnro2.b);
+        if ((i != 0) || (j != 0) || (f1 > 0.0F)) {}
+        for (paramInt1 = 0;; paramInt1 = (int)(f2 * paramReadInjoyCutImageView.getHeight()))
+        {
+          localPoint1.y = paramInt1;
+          localPoint1.x = 0;
+          localPoint2.y = ((int)(paramReadInjoyCutImageView.getHeight() * f3));
+          localPoint2.x = 0;
+          break;
+        }
+        f2 = Math.min(paramnro1.b, paramnro2.b);
+        localPoint1.y = ((int)(Math.max(paramnro1.b, paramnro2.b) * paramReadInjoyCutImageView.getHeight()));
+        localPoint1.x = 0;
+        if ((i != 0) || (j != 0) || (f1 > 0.0F)) {}
+        for (paramInt1 = 0;; paramInt1 = (int)(f2 * paramReadInjoyCutImageView.getHeight()))
+        {
+          localPoint2.y = paramInt1;
+          localPoint2.x = 0;
+          break;
+        }
+        f1 = Math.min(paramnro1.a, paramnro2.a);
+        localPoint3.x = paramReadInjoyCutImageView.getWidth();
+        localPoint3.y = 0;
+        localPoint4.x = ((int)(f1 * paramReadInjoyCutImageView.getWidth()));
+        localPoint4.y = 0;
+        continue;
+        localPoint3.x = ((int)(Math.min(paramnro1.a, paramnro2.a) * paramReadInjoyCutImageView.getWidth()));
+        localPoint3.y = 0;
+        localPoint4.x = paramReadInjoyCutImageView.getWidth();
+        localPoint4.y = 0;
+      }
+      float f2 = Math.min(paramnro1.b, paramnro2.b);
+      float f3 = Math.max(paramnro1.b, paramnro2.b);
+      localPoint3.y = ((int)(f2 * paramReadInjoyCutImageView.getHeight()));
+      localPoint3.x = 0;
+      if ((i != 0) || (j != 0) || (f1 > 0.0F)) {}
+      for (paramInt1 = paramReadInjoyCutImageView.getHeight();; paramInt1 = (int)(paramReadInjoyCutImageView.getHeight() * f3))
+      {
+        localPoint4.y = paramInt1;
+        localPoint4.x = 0;
+        break;
+      }
+      f2 = Math.min(paramnro1.b, paramnro2.b);
+      f3 = Math.max(paramnro1.b, paramnro2.b);
+      if ((i != 0) || (j != 0) || (f1 > 0.0F)) {}
+      for (paramInt1 = paramReadInjoyCutImageView.getHeight();; paramInt1 = (int)(f3 * paramReadInjoyCutImageView.getHeight()))
+      {
+        localPoint3.y = paramInt1;
+        localPoint3.x = 0;
+        localPoint4.y = ((int)(paramReadInjoyCutImageView.getHeight() * f2));
+        localPoint4.x = 0;
+        break;
+      }
+      label2147:
+      i = 1;
+      j = n;
+      m = paramInt1;
+      k = paramInt2;
+      continue;
+      label2165:
+      j = 1;
+      i = i1;
+      m = paramInt1;
+      k = paramInt2;
+    }
+  }
+  
+  public void a(npr paramnpr)
+  {
+    this.jdField_a_of_type_Npr = paramnpr;
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (!this.jdField_a_of_type_AndroidAnimationValueAnimator.isStarted())) {
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+    }
   }
 }
 

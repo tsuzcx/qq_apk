@@ -1,62 +1,64 @@
 package com.tencent.mobileqq.shortvideo.ptvfilter.gesture;
 
 import android.graphics.PointF;
-import com.tencent.filter.Param.IntParam;
+import com.tencent.aekit.openrender.UniformParam.IntParam;
+import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.mobileqq.shortvideo.gesture.GestureKeyInfo;
 import com.tencent.mobileqq.shortvideo.gesture.GestureMgrRecognize;
 import com.tencent.sveffects.SLog;
-import com.tencent.ttpic.filter.VideoFilterBase;
-import com.tencent.ttpic.model.StickerItem;
-import com.tencent.ttpic.util.VideoFilterUtil;
+import com.tencent.ttpic.openapi.PTDetectInfo;
+import com.tencent.ttpic.openapi.model.StickerItem;
+import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
+import com.tencent.ttpic.openapi.shader.ShaderManager;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 public class GestureFilterManager
   extends VideoFilterBase
 {
-  public static int a;
-  public static volatile String a;
-  public static int b;
-  public static volatile String b;
-  public static int c = 1;
-  public static volatile int d = jdField_b_of_type_Int;
-  public long a;
-  private GestureKeyInfo jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureKeyInfo = null;
-  private GestureFilterManager.AnimationWrapper jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureGestureFilterManager$AnimationWrapper = null;
-  public StickerItem a;
-  private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private volatile boolean jdField_a_of_type_Boolean = false;
-  private int[] jdField_a_of_type_ArrayOfInt = new int[1];
-  private long jdField_b_of_type_Long = 0L;
-  private ArrayList jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  private boolean jdField_b_of_type_Boolean = false;
-  public int e = -1;
-  public int f = -1;
-  public int g = -1;
-  private int h = 0;
+  public static int GestureFilterManager_Layout_AV = 1;
+  public static int GestureFilterManager_Layout_None = 0;
+  public static int GestureFilterManager_Layout_ShortVideo = 0;
+  public static final int MAX_GESTURE_NUMS = 3;
+  public static final String TAG = "GestureFilterManager";
+  public static volatile String sGestureTips;
+  public static volatile String sGestureType = "";
+  public static volatile int sLayoutType = GestureFilterManager_Layout_ShortVideo;
+  private ArrayList<GestureFilterManager.AnimationWrapper> deadQueue = new ArrayList();
+  private long lastConsumerTime = 0L;
+  private volatile boolean mAllowedInsertAction = false;
+  private int mCurrentAnimationNums = 0;
+  public int mGestureAnimGapTime = -1;
+  public int mGestureAnimType = -1;
+  public int mGesturePointIndex = -1;
+  private boolean mHasAdd = false;
+  public StickerItem mItem;
+  private GestureKeyInfo mLastGestureInfo = null;
+  private GestureFilterManager.AnimationWrapper mLastRecongnizeAnimation = null;
+  private ArrayList<GestureFilterManager.AnimationWrapper> runQueue = new ArrayList();
+  public long startTimes;
+  private int[] tex = new int[1];
   
   static
   {
-    jdField_a_of_type_JavaLangString = "";
-    jdField_b_of_type_JavaLangString = "";
-    jdField_a_of_type_Int = 0;
-    jdField_b_of_type_Int = 0;
+    sGestureTips = "";
+    GestureFilterManager_Layout_None = 0;
+    GestureFilterManager_Layout_ShortVideo = 0;
   }
   
   public GestureFilterManager(StickerItem paramStickerItem, String paramString)
   {
-    super(VideoFilterUtil.VERTEX_SHADER_COMMON, VideoFilterUtil.FRAGMENT_SHADER_COMMON, null);
-    this.jdField_a_of_type_ComTencentTtpicModelStickerItem = paramStickerItem;
-    this.jdField_a_of_type_Boolean = true;
+    super(ShaderManager.getInstance().getShader(ShaderCreateFactory.PROGRAM_TYPE.STICKER_NORMAL));
+    this.mItem = paramStickerItem;
+    this.mAllowedInsertAction = true;
     this.dataPath = paramString;
   }
   
   public void ApplyGLSLFilter()
   {
     super.ApplyGLSLFilter();
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.startTimes = System.currentTimeMillis();
   }
   
   public void OnDrawFrameGLSL()
@@ -64,102 +66,107 @@ public class GestureFilterManager
     super.OnDrawFrameGLSL();
   }
   
-  public String a()
-  {
-    return "mGestureAnimType:=" + this.e + ";" + this.f + ";" + this.g;
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      ((GestureFilterManager.AnimationWrapper)localIterator.next()).c();
-      this.h -= 1;
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.e = paramInt1;
-    this.f = paramInt2;
-    this.g = paramInt3;
-  }
-  
-  public void a(GestureFilterManager.AnimationWrapper paramAnimationWrapper)
-  {
-    if ((paramAnimationWrapper != null) && (this.jdField_a_of_type_JavaUtilArrayList.contains(paramAnimationWrapper)))
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramAnimationWrapper);
-      this.h -= 1;
-      if (SLog.a()) {
-        SLog.d("GestureFilterManager", "have remove animation here");
-      }
-    }
-  }
-  
-  public void a(StickerItem paramStickerItem, GestureKeyInfo paramGestureKeyInfo, PointF paramPointF)
+  public void addAnimationToList(StickerItem paramStickerItem, GestureKeyInfo paramGestureKeyInfo, PointF paramPointF)
   {
     paramStickerItem = new GestureFilterManager.AnimationWrapper(paramStickerItem, this.dataPath, paramGestureKeyInfo, paramPointF, false);
-    if ((this.h <= 3) && (this.jdField_a_of_type_Boolean))
+    if ((this.mCurrentAnimationNums <= 3) && (this.mAllowedInsertAction))
     {
-      paramStickerItem.a(this.width, this.height, this.mScreenScale);
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramStickerItem);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureGestureFilterManager$AnimationWrapper = paramStickerItem;
-      this.h += 1;
-      if (SLog.a()) {
+      paramStickerItem.updateVideoSize(this.width, this.height, this.mFaceDetScale);
+      this.runQueue.add(paramStickerItem);
+      this.mLastRecongnizeAnimation = paramStickerItem;
+      this.mCurrentAnimationNums += 1;
+      if (SLog.isEnable()) {
         SLog.d("GestureFilterManager", "have add complete ok here");
       }
     }
   }
   
-  public void b()
+  public boolean canUseBlendMode()
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((GestureFilterManager.AnimationWrapper)localIterator.next()).b();
-    }
-    localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((GestureFilterManager.AnimationWrapper)localIterator.next()).b();
-    }
+    return true;
   }
   
   public void clearGLSLSelf()
   {
     super.clearGLSLSelf();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.runQueue.iterator();
     while (localIterator.hasNext()) {
-      ((GestureFilterManager.AnimationWrapper)localIterator.next()).c();
+      ((GestureFilterManager.AnimationWrapper)localIterator.next()).clearGLSLSelf();
     }
-    localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+    localIterator = this.deadQueue.iterator();
     while (localIterator.hasNext()) {
-      ((GestureFilterManager.AnimationWrapper)localIterator.next()).c();
+      ((GestureFilterManager.AnimationWrapper)localIterator.next()).clearGLSLSelf();
     }
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_b_of_type_JavaUtilArrayList.clear();
-    this.h = 0;
-    this.jdField_a_of_type_Boolean = false;
+    this.runQueue.clear();
+    this.deadQueue.clear();
+    this.mCurrentAnimationNums = 0;
+    this.mAllowedInsertAction = false;
+  }
+  
+  public void destroyAudio()
+  {
+    Iterator localIterator = this.runQueue.iterator();
+    while (localIterator.hasNext()) {
+      ((GestureFilterManager.AnimationWrapper)localIterator.next()).destroyAudio();
+    }
+    localIterator = this.deadQueue.iterator();
+    while (localIterator.hasNext()) {
+      ((GestureFilterManager.AnimationWrapper)localIterator.next()).destroyAudio();
+    }
   }
   
   public void initParams()
   {
-    addParam(new Param.IntParam("texNeedTransform", -1));
-    addParam(new Param.IntParam("blendMode", this.item.blendMode));
+    addParam(new UniformParam.IntParam("texNeedTransform", -1));
+    addParam(new UniformParam.IntParam("blendMode", 1));
+  }
+  
+  public String printControllerInfo()
+  {
+    return "mGestureAnimType:=" + this.mGestureAnimType + ";" + this.mGestureAnimGapTime + ";" + this.mGesturePointIndex;
+  }
+  
+  public void removeAnimationFromList()
+  {
+    Iterator localIterator = this.runQueue.iterator();
+    while (localIterator.hasNext())
+    {
+      ((GestureFilterManager.AnimationWrapper)localIterator.next()).clearGLSLSelf();
+      this.mCurrentAnimationNums -= 1;
+    }
+    this.runQueue.clear();
+  }
+  
+  public void removeAnimationFromRunQueue(GestureFilterManager.AnimationWrapper paramAnimationWrapper)
+  {
+    if ((paramAnimationWrapper != null) && (this.runQueue.contains(paramAnimationWrapper)))
+    {
+      this.runQueue.remove(paramAnimationWrapper);
+      this.mCurrentAnimationNums -= 1;
+      if (SLog.isEnable()) {
+        SLog.d("GestureFilterManager", "have remove animation here");
+      }
+    }
   }
   
   public boolean renderTexture(int paramInt1, int paramInt2, int paramInt3)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.runQueue.iterator();
     while (localIterator.hasNext()) {
-      ((GestureFilterManager.AnimationWrapper)localIterator.next()).a(paramInt1, paramInt2, paramInt3);
+      ((GestureFilterManager.AnimationWrapper)localIterator.next()).renderTexture(paramInt1, paramInt2, paramInt3);
     }
-    localIterator = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+    localIterator = this.deadQueue.iterator();
     while (localIterator.hasNext()) {
-      ((GestureFilterManager.AnimationWrapper)localIterator.next()).a(paramInt1, paramInt2, paramInt3);
+      ((GestureFilterManager.AnimationWrapper)localIterator.next()).renderTexture(paramInt1, paramInt2, paramInt3);
     }
     return true;
+  }
+  
+  public void setControllerInfo(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.mGestureAnimType = paramInt1;
+    this.mGestureAnimGapTime = paramInt2;
+    this.mGesturePointIndex = paramInt3;
   }
   
   public boolean setRenderMode(int paramInt)
@@ -167,150 +174,152 @@ public class GestureFilterManager
     return super.setRenderMode(paramInt);
   }
   
-  public void updatePreview(List paramList, float[] paramArrayOfFloat, Map paramMap, float paramFloat, long paramLong)
+  protected void updatePositions(List<PointF> paramList, float[] paramArrayOfFloat, float paramFloat) {}
+  
+  public void updatePreview(Object paramObject)
   {
-    this.jdField_b_of_type_Long = System.currentTimeMillis();
-    Object localObject1 = GestureMgrRecognize.a().a();
     int j = 1;
-    int i = j;
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureKeyInfo != null)
-    {
-      i = j;
-      if (((GestureKeyInfo)localObject1).jdField_a_of_type_Long == this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureKeyInfo.jdField_a_of_type_Long) {
-        i = 0;
-      }
+    if ((paramObject instanceof PTDetectInfo)) {}
+    for (paramObject = (PTDetectInfo)paramObject; paramObject == null; paramObject = null) {
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureKeyInfo = ((GestureKeyInfo)localObject1);
-    if ((localObject1 != null) && (((GestureKeyInfo)localObject1).jdField_a_of_type_Boolean) && (((GestureKeyInfo)localObject1).jdField_a_of_type_JavaLangString.equalsIgnoreCase(jdField_a_of_type_JavaLangString)) && (i != 0))
+    this.lastConsumerTime = System.currentTimeMillis();
+    Object localObject1 = GestureMgrRecognize.getInstance().getGestureInfo();
+    if ((this.mLastGestureInfo != null) && (((GestureKeyInfo)localObject1).timeStamp == this.mLastGestureInfo.timeStamp)) {}
+    for (int i = 0;; i = 1)
     {
-      if (SLog.a()) {
-        SLog.d("GestureFilterManager", "gesture info is x" + localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0].x + ":y =" + localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0].y + "lastAnimation is " + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureGestureFilterManager$AnimationWrapper);
-      }
-      if (this.e == 1)
+      this.mLastGestureInfo = ((GestureKeyInfo)localObject1);
+      if ((localObject1 != null) && (((GestureKeyInfo)localObject1).vaild) && (((GestureKeyInfo)localObject1).type.equalsIgnoreCase(sGestureType)) && (i != 0))
       {
-        i = 0;
-        if (i != 0) {
-          break label565;
+        if (SLog.isEnable()) {
+          SLog.d("GestureFilterManager", "gesture info is x" + localObject1.hotPoints[0].x + ":y =" + localObject1.hotPoints[0].y + "lastAnimation is " + this.mLastRecongnizeAnimation);
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureGestureFilterManager$AnimationWrapper == null) {
-          break label545;
-        }
-        if (!GestureFilterManager.AnimationWrapper.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureGestureFilterManager$AnimationWrapper.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureKeyInfo, (GestureKeyInfo)localObject1, this.width * 0.08F)) {
-          break label453;
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureGestureFilterManager$AnimationWrapper.a(paramLong) != 2) {
-          break label391;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureGestureFilterManager$AnimationWrapper.a();
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureGestureFilterManager$AnimationWrapper.a((GestureKeyInfo)localObject1, localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0]);
-        if (SLog.a()) {
-          SLog.d("GestureFilterManager", "update old point position");
+        if (this.mGestureAnimType == 1)
+        {
+          i = 0;
+          if (i != 0) {
+            break label588;
+          }
+          if (this.mLastRecongnizeAnimation == null) {
+            break label568;
+          }
+          if (!GestureFilterManager.AnimationWrapper.compareGestureInfo(this.mLastRecongnizeAnimation.mGestureInfo, (GestureKeyInfo)localObject1, this.width * 0.08F)) {
+            break label472;
+          }
+          if (this.mLastRecongnizeAnimation.getAnimationStatus(paramObject.timestamp) != 2) {
+            break label408;
+          }
+          this.mLastRecongnizeAnimation.resetAnimationEndStatus();
+          this.mLastRecongnizeAnimation.updateFilterPostion((GestureKeyInfo)localObject1, localObject1.hotPoints[0]);
+          if (SLog.isEnable()) {
+            SLog.d("GestureFilterManager", "update old point position");
+          }
         }
       }
-    }
-    label256:
-    label391:
-    label905:
-    for (;;)
-    {
-      localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      Object localObject2;
+      label270:
+      label918:
       for (;;)
       {
-        if (((Iterator)localObject1).hasNext())
+        localObject1 = this.runQueue.iterator();
+        Object localObject2;
+        for (;;)
         {
-          localObject2 = (GestureFilterManager.AnimationWrapper)((Iterator)localObject1).next();
-          if (((GestureFilterManager.AnimationWrapper)localObject2).a(paramLong) == 2)
+          if (((Iterator)localObject1).hasNext())
           {
-            if (SLog.a()) {
-              SLog.d("GestureFilterManager", "runQueue remove this item " + localObject2 + " animation status is" + ((GestureFilterManager.AnimationWrapper)localObject2).a(paramLong));
-            }
-            if (localObject2 == this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureGestureFilterManager$AnimationWrapper) {
-              this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureGestureFilterManager$AnimationWrapper = null;
-            }
-            ((GestureFilterManager.AnimationWrapper)localObject2).c();
-            ((Iterator)localObject1).remove();
-            this.h -= 1;
-            continue;
-            i = 1;
-            break;
-            if (!SLog.a()) {
-              break label256;
-            }
-            SLog.d("GestureFilterManager", "old animation is play now " + this.jdField_a_of_type_JavaUtilArrayList.contains(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureGestureFilterManager$AnimationWrapper) + " animation status is" + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureGestureFilterManager$AnimationWrapper.a(paramLong));
-            break label256;
-            label453:
-            if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureGestureFilterManager$AnimationWrapper.a(paramLong) == 2)
+            localObject2 = (GestureFilterManager.AnimationWrapper)((Iterator)localObject1).next();
+            if (((GestureFilterManager.AnimationWrapper)localObject2).getAnimationStatus(paramObject.timestamp) == 2)
             {
-              this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureGestureFilterManager$AnimationWrapper.c();
-              a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureGestureFilterManager$AnimationWrapper);
-            }
-            for (;;)
-            {
-              a(this.jdField_a_of_type_ComTencentTtpicModelStickerItem, (GestureKeyInfo)localObject1, localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0]);
-              if (!SLog.a()) {
-                break;
+              if (SLog.isEnable()) {
+                SLog.d("GestureFilterManager", "runQueue remove this item " + localObject2 + " animation status is" + ((GestureFilterManager.AnimationWrapper)localObject2).getAnimationStatus(paramObject.timestamp));
               }
-              SLog.d("GestureFilterManager", "stop old point position");
+              if (localObject2 == this.mLastRecongnizeAnimation) {
+                this.mLastRecongnizeAnimation = null;
+              }
+              ((GestureFilterManager.AnimationWrapper)localObject2).clearGLSLSelf();
+              ((Iterator)localObject1).remove();
+              this.mCurrentAnimationNums -= 1;
+              continue;
+              i = 1;
               break;
-              this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureGestureFilterManager$AnimationWrapper.a(this.f + paramLong);
-              this.jdField_b_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureGestureFilterManager$AnimationWrapper);
-            }
-            label545:
-            a(this.jdField_a_of_type_ComTencentTtpicModelStickerItem, (GestureKeyInfo)localObject1, localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0]);
-            break label256;
-            label565:
-            localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-            while (((Iterator)localObject2).hasNext())
-            {
-              GestureFilterManager.AnimationWrapper localAnimationWrapper = (GestureFilterManager.AnimationWrapper)((Iterator)localObject2).next();
-              if (GestureFilterManager.AnimationWrapper.a(localAnimationWrapper.jdField_a_of_type_ComTencentMobileqqShortvideoGestureGestureKeyInfo, (GestureKeyInfo)localObject1, this.width * 0.08F))
+              label408:
+              if (!SLog.isEnable()) {
+                break label270;
+              }
+              SLog.d("GestureFilterManager", "old animation is play now " + this.runQueue.contains(this.mLastRecongnizeAnimation) + " animation status is" + this.mLastRecongnizeAnimation.getAnimationStatus(paramObject.timestamp));
+              break label270;
+              label472:
+              if (this.mLastRecongnizeAnimation.getAnimationStatus(paramObject.timestamp) == 2)
               {
-                if (localAnimationWrapper.a(paramLong) == 2) {
-                  localAnimationWrapper.a();
+                this.mLastRecongnizeAnimation.clearGLSLSelf();
+                removeAnimationFromRunQueue(this.mLastRecongnizeAnimation);
+              }
+              for (;;)
+              {
+                addAnimationToList(this.mItem, (GestureKeyInfo)localObject1, localObject1.hotPoints[0]);
+                if (!SLog.isEnable()) {
+                  break;
                 }
-                localAnimationWrapper.a((GestureKeyInfo)localObject1, localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0]);
-                this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureGestureFilterManager$AnimationWrapper = localAnimationWrapper;
+                SLog.d("GestureFilterManager", "stop old point position");
+                break;
+                this.mLastRecongnizeAnimation.updateDeadLineTimeStamp(paramObject.timestamp + this.mGestureAnimGapTime);
+                this.deadQueue.add(this.mLastRecongnizeAnimation);
+              }
+              label568:
+              addAnimationToList(this.mItem, (GestureKeyInfo)localObject1, localObject1.hotPoints[0]);
+              break label270;
+              label588:
+              localObject2 = this.runQueue.iterator();
+              while (((Iterator)localObject2).hasNext())
+              {
+                GestureFilterManager.AnimationWrapper localAnimationWrapper = (GestureFilterManager.AnimationWrapper)((Iterator)localObject2).next();
+                if (GestureFilterManager.AnimationWrapper.compareGestureInfo(localAnimationWrapper.mGestureInfo, (GestureKeyInfo)localObject1, this.width * 0.08F))
+                {
+                  if (localAnimationWrapper.getAnimationStatus(paramObject.timestamp) == 2) {
+                    localAnimationWrapper.resetAnimationEndStatus();
+                  }
+                  localAnimationWrapper.updateFilterPostion((GestureKeyInfo)localObject1, localObject1.hotPoints[0]);
+                  this.mLastRecongnizeAnimation = localAnimationWrapper;
+                }
               }
             }
           }
         }
-      }
-      for (i = 1;; i = 0)
-      {
-        if (i != 0) {
-          break label905;
-        }
-        a(this.jdField_a_of_type_ComTencentTtpicModelStickerItem, (GestureKeyInfo)localObject1, localObject1.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0]);
-        break;
-        if ((((GestureKeyInfo)localObject1).jdField_a_of_type_Boolean) && (((GestureKeyInfo)localObject1).jdField_a_of_type_JavaLangString.equalsIgnoreCase(jdField_a_of_type_JavaLangString))) {
+        for (i = j;; i = 0)
+        {
+          if (i != 0) {
+            break label918;
+          }
+          addAnimationToList(this.mItem, (GestureKeyInfo)localObject1, localObject1.hotPoints[0]);
+          break label270;
+          if ((((GestureKeyInfo)localObject1).vaild) && (((GestureKeyInfo)localObject1).type.equalsIgnoreCase(sGestureType))) {
+            break label270;
+          }
+          removeAnimationFromList();
+          this.mLastRecongnizeAnimation = null;
+          break label270;
+          localObject1 = this.deadQueue.iterator();
+          while (((Iterator)localObject1).hasNext())
+          {
+            localObject2 = (GestureFilterManager.AnimationWrapper)((Iterator)localObject1).next();
+            if ((((GestureFilterManager.AnimationWrapper)localObject2).getAnimationStatus(paramObject.timestamp) == 2) || (((GestureFilterManager.AnimationWrapper)localObject2).getDeadLineTimeStamp() >= paramObject.timestamp))
+            {
+              if (SLog.isEnable()) {
+                SLog.d("GestureFilterManager", "deadQueue remove this item " + localObject2);
+              }
+              ((GestureFilterManager.AnimationWrapper)localObject2).clearGLSLSelf();
+              ((Iterator)localObject1).remove();
+            }
+          }
+          localObject1 = this.runQueue.iterator();
+          while (((Iterator)localObject1).hasNext()) {
+            ((GestureFilterManager.AnimationWrapper)((Iterator)localObject1).next()).updatePreview(paramObject);
+          }
+          localObject1 = this.deadQueue.iterator();
+          while (((Iterator)localObject1).hasNext()) {
+            ((GestureFilterManager.AnimationWrapper)((Iterator)localObject1).next()).updatePreview(paramObject);
+          }
           break;
         }
-        a();
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGestureGestureFilterManager$AnimationWrapper = null;
-        break;
-        localObject1 = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (GestureFilterManager.AnimationWrapper)((Iterator)localObject1).next();
-          if ((((GestureFilterManager.AnimationWrapper)localObject2).a(paramLong) == 2) || (((GestureFilterManager.AnimationWrapper)localObject2).a() >= paramLong))
-          {
-            if (SLog.a()) {
-              SLog.d("GestureFilterManager", "deadQueue remove this item " + localObject2);
-            }
-            ((GestureFilterManager.AnimationWrapper)localObject2).c();
-            ((Iterator)localObject1).remove();
-          }
-        }
-        localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (((Iterator)localObject1).hasNext()) {
-          ((GestureFilterManager.AnimationWrapper)((Iterator)localObject1).next()).a(paramList, paramArrayOfFloat, paramMap, paramFloat, paramLong);
-        }
-        localObject1 = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-        while (((Iterator)localObject1).hasNext()) {
-          ((GestureFilterManager.AnimationWrapper)((Iterator)localObject1).next()).a(paramList, paramArrayOfFloat, paramMap, paramFloat, paramLong);
-        }
-        return;
       }
     }
   }
@@ -318,9 +327,9 @@ public class GestureFilterManager
   public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
   {
     super.updateVideoSize(paramInt1, paramInt2, paramDouble);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Iterator localIterator = this.runQueue.iterator();
     while (localIterator.hasNext()) {
-      ((GestureFilterManager.AnimationWrapper)localIterator.next()).a(paramInt1, paramInt2, paramDouble);
+      ((GestureFilterManager.AnimationWrapper)localIterator.next()).updateVideoSize(paramInt1, paramInt2, paramDouble);
     }
   }
 }

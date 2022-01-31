@@ -1,33 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import com.tencent.biz.game.SensorAPIJavaScript;
 
 public class mqr
-  implements Runnable
+  implements wiu
 {
-  private int jdField_a_of_type_Int;
-  private AbsListView jdField_a_of_type_ComTencentWidgetAbsListView;
+  public mqr(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public mqr(ItemShowDispatcher paramItemShowDispatcher, AbsListView paramAbsListView, int paramInt)
+  public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentWidgetAbsListView = paramAbsListView;
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void run()
-  {
-    QLog.d(ItemShowDispatcher.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebEventItemShowDispatcher), 2, "  1秒到了 ");
-    ItemShowDispatcher.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebEventItemShowDispatcher, this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int);
-    if (ItemShowDispatcher.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebEventItemShowDispatcher)) {
-      ThreadManager.getUIHandler().postDelayed(this, 1000L);
+    if (paramBundle != null)
+    {
+      int i = paramBundle.getInt("state");
+      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { i + "" });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     mqr
  * JD-Core Version:    0.7.0.1
  */

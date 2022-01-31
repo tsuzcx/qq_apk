@@ -1,25 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.mobileqq.ark.ArkAppDataReport;
-import com.tencent.mobileqq.utils.QQCustomArkDialog.AppInfo;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
 
 public class rpl
-  implements View.OnClickListener
 {
-  public rpl(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
+  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  DragTextView jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView;
+  String jdField_a_of_type_JavaLangString;
+  Button jdField_b_of_type_AndroidWidgetButton;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
   
-  public void onClick(View paramView)
-  {
-    if (ArkFullScreenAppActivity.a(this.a) != null) {
-      ArkAppDataReport.c(this.a.app, ArkFullScreenAppActivity.a(this.a).a, ArkAppDataReport.c);
-    }
-    this.a.a();
-  }
+  public rpl(rpk paramrpk) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rpl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,21 @@
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditProviderPart;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPoiPickerCallback;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
 
-public class aoal
-  implements EditVideoPoiPickerCallback
+class aoal
+  implements View.OnClickListener
 {
-  public aoal(EditProviderPart paramEditProviderPart) {}
+  aoal(aoak paramaoak) {}
   
-  public void a() {}
-  
-  public void a(TroopBarPOI paramTroopBarPOI)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EditProviderPart", 2, "onSelectLocation " + paramTroopBarPOI);
-    }
-    EditProviderPart.a(this.a).setLocation(paramTroopBarPOI);
+    QfileCloudFileTabView.a(this.a.a, false);
+    this.a.a.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoal
  * JD-Core Version:    0.7.0.1
  */

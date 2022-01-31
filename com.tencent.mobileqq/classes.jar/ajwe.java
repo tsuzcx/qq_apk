@@ -1,57 +1,21 @@
-import com.tencent.mobileqq.app.AppConstants;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-public final class ajwe
-  implements Runnable
+public class ajwe
 {
-  public void run()
+  public int a;
+  ajwj a;
+  public atmo a;
+  public int b;
+  
+  public ajwe(atmo paramatmo, int paramInt1, int paramInt2, ajwj paramajwj)
   {
-    File[] arrayOfFile;
-    do
-    {
-      try
-      {
-        Thread.sleep(3000L);
-        File localFile = new File(AppConstants.bb);
-        if (!localFile.isDirectory()) {
-          return;
-        }
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        localInterruptedException.printStackTrace();
-        return;
-      }
-      arrayOfFile = localInterruptedException.listFiles(new ajwf(this));
-    } while ((arrayOfFile == null) || (arrayOfFile.length < 100));
-    Object localObject = new ArrayList(arrayOfFile.length);
-    int j = arrayOfFile.length;
-    int i = 0;
-    while (i < j)
-    {
-      ((List)localObject).add(Long.valueOf(arrayOfFile[i].lastModified()));
-      i += 1;
-    }
-    Collections.sort((List)localObject);
-    long l = ((Long)((List)localObject).get(((List)localObject).size() - 100)).longValue();
-    j = arrayOfFile.length;
-    i = 0;
-    while (i < j)
-    {
-      localObject = arrayOfFile[i];
-      if (((File)localObject).lastModified() < l) {
-        ((File)localObject).deleteOnExit();
-      }
-      i += 1;
-    }
+    this.jdField_a_of_type_Atmo = paramatmo;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Ajwj = paramajwj;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajwe
  * JD-Core Version:    0.7.0.1
  */

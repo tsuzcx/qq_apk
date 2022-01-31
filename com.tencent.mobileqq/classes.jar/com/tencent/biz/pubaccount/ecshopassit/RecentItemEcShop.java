@@ -6,13 +6,14 @@ import com.tencent.mobileqq.data.PubAccountAssistantData;
 public class RecentItemEcShop
   extends RecentPubAccountAssistantItem
 {
-  public String a;
+  public long bindUin;
+  public String imgInfos;
   
   public RecentItemEcShop(EcShopData paramEcShopData)
   {
     super(a(paramEcShopData));
-    this.b = 1;
-    this.a = paramEcShopData.mImgInfo;
+    this.mUnreadFlag = 1;
+    this.imgInfos = paramEcShopData.mImgInfo;
   }
   
   protected static PubAccountAssistantData a(EcShopData paramEcShopData)

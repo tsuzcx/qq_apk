@@ -1,21 +1,18 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import dov.com.qq.im.QIMCameraCaptureUnit;
-import dov.com.qq.im.capture.view.WeiShiGuideView;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
 
 public class anqw
-  extends AnimatorListenerAdapter
+  extends RecyclerView.ViewHolder
 {
-  public anqw(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public anqw(ExtendFriendGroupFragment paramExtendFriendGroupFragment, View paramView)
   {
-    QIMCameraCaptureUnit.a(this.a).setVisibility(8);
+    super(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anqw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class aiag
-  implements ThreadFactory
+class aiag
+  implements View.OnClickListener
 {
-  private final AtomicInteger a = new AtomicInteger(1);
+  aiag(aiaf paramaiaf) {}
   
-  public Thread newThread(Runnable paramRunnable)
+  public void onClick(View paramView)
   {
-    return new Thread(paramRunnable, "SearchTask #" + this.a.getAndIncrement());
+    aiaf.a(this.a).a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aiag
  * JD-Core Version:    0.7.0.1
  */

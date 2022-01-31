@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atnz;
+import atoc;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -12,7 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class QIMNotifyAddFriend
-  extends Entity
+  extends atmo
 {
   public int age;
   public String coverStory;
@@ -23,11 +23,11 @@ public class QIMNotifyAddFriend
   public long pushTime;
   public long qqUin;
   public long storyTotalNum;
-  @unique
+  @atoc
   public long uin;
   public String videoInfoPacked;
-  @notColumn
-  public List videoInfos = new ArrayList();
+  @atnz
+  public List<QIMNotifyAddFriend.VideoInfo> videoInfos = new ArrayList();
   public String wording;
   
   public boolean equals(Object paramObject)
@@ -49,7 +49,7 @@ public class QIMNotifyAddFriend
     return (int)(this.uin ^ this.uin >>> 32);
   }
   
-  protected void postRead()
+  public void postRead()
   {
     super.postRead();
     if (!TextUtils.isEmpty(this.videoInfoPacked))
@@ -78,7 +78,7 @@ public class QIMNotifyAddFriend
     }
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     super.prewrite();
     if (this.videoInfos.size() > 0)

@@ -1,112 +1,31 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopNotificationUtils;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.jsp.TroopApiPlugin;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class aefj
-  extends TroopObserver
+class aefj
+  implements DialogInterface.OnClickListener
 {
-  public aefj(TroopApiPlugin paramTroopApiPlugin) {}
+  aefj(aefi paramaefi) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_Int == -1) {
-      return;
-    }
-    if (1 == paramInt1) {
-      TroopApiPlugin.a(this.a, 2131434482);
-    }
-    this.a.jdField_a_of_type_Int = -1;
-  }
-  
-  protected void a(int paramInt1, int paramInt2, String paramString)
-  {
-    if (this.a.jdField_a_of_type_Int == -1) {
-      return;
-    }
-    if (1 == paramInt1) {
-      switch (paramInt2)
-      {
-      default: 
-        TroopApiPlugin.a(this.a, 2131434482);
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Int = -1;
-      return;
-      if ((this.a.jdField_a_of_type_Int == 2) || (this.a.jdField_a_of_type_Int == 5))
-      {
-        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":1,\"message\":\"ok\"}" });
-      }
-      else
-      {
-        TroopApiPlugin.a(this.a, 2131434481, 2);
-        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":0,\"message\":\"ok\"}" });
-        continue;
-        TroopApiPlugin.a(this.a, 2131434447);
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
-  {
-    if (this.a.b == 0) {
-      return;
-    }
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopApiPlugin", 2, "AddTroop onOIDB0X88D_1_Ret success.");
-      }
-      paramLong = paramTroopInfo.troopPrivilegeFlag;
-      if ((0x80 & paramLong) != 0L)
-      {
-        paramInt1 = 1;
-        if ((paramLong & 0x200) == 0L) {
-          break label110;
-        }
-        paramInt2 = 1;
-        label61:
-        paramString = TroopApiPlugin.a(this.a);
-        if ((paramInt1 == 0) || (paramInt2 == 0) || (paramString == null)) {
-          break label116;
-        }
-        TroopNotificationUtils.a(paramString, paramTroopInfo.troopuin);
-      }
-    }
-    for (;;)
-    {
-      this.a.b = 0;
-      return;
-      paramInt1 = 0;
-      break;
-      label110:
-      paramInt2 = 0;
-      break label61;
-      label116:
-      if (paramTroopInfo.cGroupOption == 1)
-      {
-        this.a.jdField_a_of_type_Int = paramTroopInfo.cGroupOption;
-        TroopApiPlugin.a(this.a, paramTroopInfo);
-      }
-      else
-      {
-        TroopApiPlugin.b(this.a, paramTroopInfo);
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopApiPlugin", 2, "AddTroop onOIDB0X88D_1_Ret failed.");
-        }
-        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":-1,\"message\":\"request fail\"}" });
-        TroopApiPlugin.a(this.a, 2131434471);
-      }
-    }
+    this.a.jdField_a_of_type_Aefe.h = new Dialog(this.a.jdField_a_of_type_Aefe.a(), 2131690181);
+    this.a.jdField_a_of_type_Aefe.h.setContentView(2131492892);
+    this.a.jdField_a_of_type_Aefe.h.setCancelable(true);
+    ((TextView)this.a.jdField_a_of_type_Aefe.h.findViewById(2131299579)).setText(this.a.jdField_a_of_type_Aefe.a().getString(2131653452));
+    this.a.jdField_a_of_type_Aefe.h.show();
+    ((ajkc)this.a.jdField_a_of_type_Aefe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(35)).b(this.a.jdField_a_of_type_Aefe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Aefe.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin, this.a.jdField_a_of_type_JavaLangString, 1);
+    awqx.b(this.a.jdField_a_of_type_Aefe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005D55", "0X8005D55", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aefj
  * JD-Core Version:    0.7.0.1
  */

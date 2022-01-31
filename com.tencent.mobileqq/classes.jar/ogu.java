@@ -1,31 +1,43 @@
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.tag.TagAdapter;
-import com.tencent.biz.qqstory.storyHome.tag.TagAdapter.OnItemClickListener;
-import com.tencent.biz.qqstory.takevideo.tag.TagItem.TagInfoBase;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianSubscribeManager;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForText;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class ogu
+  implements oqi
 {
-  public TextView a;
+  public ogu(KandianSubscribeManager paramKandianSubscribeManager) {}
   
-  public ogu(View paramView)
+  public void a(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
   {
-    this.a = ((TextView)paramView.findViewById(2131367250));
-  }
-  
-  public void a(TagItem.TagInfoBase paramTagInfoBase, TagAdapter.OnItemClickListener paramOnItemClickListener)
-  {
-    if (TextUtils.isEmpty(paramTagInfoBase.a))
+    QQAppInterface localQQAppInterface = (QQAppInterface)obz.a();
+    if (localQQAppInterface == null) {}
+    QQMessageFacade localQQMessageFacade;
+    MessageRecord localMessageRecord;
+    do
     {
-      this.a.setVisibility(8);
       return;
+      localQQMessageFacade = localQQAppInterface.a();
+      localMessageRecord = localQQMessageFacade.b(ajed.aP, 1008);
+    } while ((localMessageRecord == null) || (!(localMessageRecord instanceof MessageForText)) || (TextUtils.isEmpty(localMessageRecord.msg)) || (!localMessageRecord.msg.contains(ReadInJoyUserInfoModule.a())) || (!TextUtils.equals(localMessageRecord.extStr, paramString)));
+    localMessageRecord.msg = localMessageRecord.msg.replace(ReadInJoyUserInfoModule.a(), paramReadInJoyUserInfo.nick);
+    localMessageRecord.createMessageUniseq();
+    localQQMessageFacade.a(localMessageRecord.frienduin, localMessageRecord.istroop, localMessageRecord.uniseq, "msg", localMessageRecord.msg);
+    paramReadInJoyUserInfo = localQQAppInterface.getHandler(Conversation.class);
+    if (paramReadInJoyUserInfo != null) {
+      paramReadInJoyUserInfo.sendEmptyMessage(1009);
     }
-    this.a.setVisibility(0);
-    this.a.setText(TagAdapter.a(paramTagInfoBase));
-    TagAdapter.a(this.a);
-    this.a.setOnClickListener(new ogv(this, paramOnItemClickListener, paramTagInfoBase));
+    QLog.d(KandianSubscribeManager.a, 2, "update msg bref, uin : " + paramString + ", msg : " + localMessageRecord);
   }
+  
+  public void a(String paramString1, String paramString2) {}
 }
 
 

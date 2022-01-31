@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
-
-class akih
-  implements Runnable
+public abstract class akih
 {
-  akih(akif paramakif, Exception paramException) {}
+  public abstract int a();
   
-  public void run()
-  {
-    this.jdField_a_of_type_Akif.a.dismiss();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "safetyReport exception1" + this.jdField_a_of_type_JavaLangException.getMessage());
-    }
-  }
+  public abstract void a(Object paramObject);
+  
+  public abstract void a(boolean paramBoolean, Object paramObject);
+  
+  public abstract void b(Object paramObject);
+  
+  public abstract void b(boolean paramBoolean, Object paramObject);
 }
 
 

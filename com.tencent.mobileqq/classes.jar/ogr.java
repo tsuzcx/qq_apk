@@ -1,21 +1,6 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.tag.TagAdapter;
-import com.tencent.biz.qqstory.storyHome.tag.TagAdapter.OnItemClickListener;
-
-public class ogr
-  implements View.OnClickListener
+public abstract interface ogr
 {
-  public ogr(TagAdapter paramTagAdapter) {}
-  
-  public void onClick(View paramView)
-  {
-    TagAdapter.a(this.a, false);
-    this.a.notifyDataSetChanged();
-    if (TagAdapter.a(this.a) != null) {
-      TagAdapter.a(this.a).f();
-    }
-  }
+  public abstract void b();
 }
 
 

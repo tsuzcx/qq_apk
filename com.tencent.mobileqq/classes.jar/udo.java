@@ -1,27 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper.3.1;
 
 public class udo
-  implements DialogInterface.OnClickListener
+  implements View.OnFocusChangeListener
 {
-  public udo(TroopInfoActivity paramTroopInfoActivity) {}
+  udo(udl paramudl) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
-    TroopInfoActivity.b(this.a);
-    switch (TroopInfoActivity.a(this.a))
-    {
-    default: 
+    if (!paramBoolean) {
+      this.a.b();
+    }
+    while (udl.a(this.a)) {
       return;
     }
-    this.a.overridePendingTransition(0, 2131034122);
+    new Handler().postDelayed(new DetailCommentHelper.3.1(this), 200L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     udo
  * JD-Core Version:    0.7.0.1
  */

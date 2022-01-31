@@ -6,36 +6,36 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-public class LruCache
+public class LruCache<K, V>
 {
-  private int jdField_a_of_type_Int;
-  private final LinkedHashMap jdField_a_of_type_JavaUtilLinkedHashMap;
-  private int b;
-  private int c;
-  private int d;
-  private int e;
-  private int f;
-  private int g;
+  private int createCount;
+  private int evictionCount;
+  private int hitCount;
+  private final LinkedHashMap<K, V> map;
+  private int maxSize;
+  private int missCount;
+  private int putCount;
+  private int size;
   
   public LruCache(int paramInt)
   {
     if (paramInt <= 0) {
       throw new IllegalArgumentException("maxSize <= 0");
     }
-    this.b = paramInt;
-    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap(0, 0.75F, true);
+    this.maxSize = paramInt;
+    this.map = new LinkedHashMap(0, 0.75F, true);
   }
   
-  private int a(Object paramObject1, Object paramObject2)
+  private int safeSizeOf(K paramK, V paramV)
   {
-    int i = sizeOf(paramObject1, paramObject2);
+    int i = sizeOf(paramK, paramV);
     if (i < 0) {
-      throw new IllegalStateException("Negative size: " + paramObject1 + "=" + paramObject2);
+      throw new IllegalStateException("Negative size: " + paramK + "=" + paramV);
     }
     return i;
   }
   
-  protected Object create(Object paramObject)
+  protected V create(K paramK)
   {
     return null;
   }
@@ -44,7 +44,7 @@ public class LruCache
   {
     try
     {
-      int i = this.d;
+      int i = this.createCount;
       return i;
     }
     finally
@@ -54,7 +54,7 @@ public class LruCache
     }
   }
   
-  public void entryRemoved(boolean paramBoolean, Object paramObject1, Object paramObject2, Object paramObject3) {}
+  protected void entryRemoved(boolean paramBoolean, K paramK, V paramV1, V paramV2) {}
   
   public final void evictAll()
   {
@@ -65,7 +65,7 @@ public class LruCache
   {
     try
     {
-      int i = this.e;
+      int i = this.evictionCount;
       return i;
     }
     finally
@@ -75,22 +75,22 @@ public class LruCache
     }
   }
   
-  public final Object get(Object paramObject)
+  public final V get(K paramK)
   {
-    if (paramObject == null) {
+    if (paramK == null) {
       throw new NullPointerException("key == null");
     }
     Object localObject1;
     try
     {
-      localObject1 = this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramObject);
+      localObject1 = this.map.get(paramK);
       if (localObject1 != null)
       {
-        this.f += 1;
+        this.hitCount += 1;
         return localObject1;
       }
-      this.g += 1;
-      localObject1 = create(paramObject);
+      this.missCount += 1;
+      localObject1 = create(paramK);
       if (localObject1 == null) {
         return null;
       }
@@ -98,21 +98,21 @@ public class LruCache
     finally {}
     try
     {
-      this.d += 1;
-      Object localObject2 = this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramObject, localObject1);
+      this.createCount += 1;
+      Object localObject2 = this.map.put(paramK, localObject1);
       if (localObject2 != null) {
-        this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramObject, localObject2);
+        this.map.put(paramK, localObject2);
       }
       for (;;)
       {
         if (localObject2 == null) {
           break;
         }
-        entryRemoved(false, paramObject, localObject1, localObject2);
+        entryRemoved(false, paramK, localObject1, localObject2);
         return localObject2;
-        this.jdField_a_of_type_Int += a(paramObject, localObject1);
+        this.size += safeSizeOf(paramK, localObject1);
       }
-      trimToSize(this.b);
+      trimToSize(this.maxSize);
     }
     finally {}
     return localObject1;
@@ -122,7 +122,7 @@ public class LruCache
   {
     try
     {
-      int i = this.f;
+      int i = this.hitCount;
       return i;
     }
     finally
@@ -136,7 +136,7 @@ public class LruCache
   {
     try
     {
-      int i = this.b;
+      int i = this.maxSize;
       return i;
     }
     finally
@@ -150,7 +150,7 @@ public class LruCache
   {
     try
     {
-      int i = this.g;
+      int i = this.missCount;
       return i;
     }
     finally
@@ -160,23 +160,23 @@ public class LruCache
     }
   }
   
-  public final Object put(Object paramObject1, Object paramObject2)
+  public final V put(K paramK, V paramV)
   {
-    if ((paramObject1 == null) || (paramObject2 == null)) {
+    if ((paramK == null) || (paramV == null)) {
       throw new NullPointerException("key == null || value == null");
     }
     try
     {
-      this.c += 1;
-      this.jdField_a_of_type_Int += a(paramObject1, paramObject2);
-      Object localObject = this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramObject1, paramObject2);
+      this.putCount += 1;
+      this.size += safeSizeOf(paramK, paramV);
+      Object localObject = this.map.put(paramK, paramV);
       if (localObject != null) {
-        this.jdField_a_of_type_Int -= a(paramObject1, localObject);
+        this.size -= safeSizeOf(paramK, localObject);
       }
       if (localObject != null) {
-        entryRemoved(false, paramObject1, localObject, paramObject2);
+        entryRemoved(false, paramK, localObject, paramV);
       }
-      trimToSize(this.b);
+      trimToSize(this.maxSize);
       return localObject;
     }
     finally {}
@@ -186,7 +186,7 @@ public class LruCache
   {
     try
     {
-      int i = this.c;
+      int i = this.putCount;
       return i;
     }
     finally
@@ -196,21 +196,35 @@ public class LruCache
     }
   }
   
-  public final Object remove(Object paramObject)
+  public final V remove(K paramK)
   {
-    if (paramObject == null) {
+    if (paramK == null) {
       throw new NullPointerException("key == null");
     }
     try
     {
-      Object localObject = this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramObject);
+      Object localObject = this.map.remove(paramK);
       if (localObject != null) {
-        this.jdField_a_of_type_Int -= a(paramObject, localObject);
+        this.size -= safeSizeOf(paramK, localObject);
       }
       if (localObject != null) {
-        entryRemoved(false, paramObject, localObject, null);
+        entryRemoved(false, paramK, localObject, null);
       }
       return localObject;
+    }
+    finally {}
+  }
+  
+  public void resize(int paramInt)
+  {
+    if (paramInt <= 0) {
+      throw new IllegalArgumentException("maxSize <= 0");
+    }
+    try
+    {
+      this.maxSize = paramInt;
+      trimToSize(paramInt);
+      return;
     }
     finally {}
   }
@@ -219,7 +233,7 @@ public class LruCache
   {
     try
     {
-      int i = this.jdField_a_of_type_Int;
+      int i = this.size;
       return i;
     }
     finally
@@ -229,16 +243,16 @@ public class LruCache
     }
   }
   
-  public int sizeOf(Object paramObject1, Object paramObject2)
+  protected int sizeOf(K paramK, V paramV)
   {
     return 1;
   }
   
-  public final Map snapshot()
+  public final Map<K, V> snapshot()
   {
     try
     {
-      LinkedHashMap localLinkedHashMap = new LinkedHashMap(this.jdField_a_of_type_JavaUtilLinkedHashMap);
+      LinkedHashMap localLinkedHashMap = new LinkedHashMap(this.map);
       return localLinkedHashMap;
     }
     finally
@@ -253,11 +267,11 @@ public class LruCache
     int i = 0;
     try
     {
-      int j = this.f + this.g;
+      int j = this.hitCount + this.missCount;
       if (j != 0) {
-        i = this.f * 100 / j;
+        i = this.hitCount * 100 / j;
       }
-      String str = String.format("LruCache[maxSize=%d,hits=%d,misses=%d,hitRate=%d%%]", new Object[] { Integer.valueOf(this.b), Integer.valueOf(this.f), Integer.valueOf(this.g), Integer.valueOf(i) });
+      String str = String.format("LruCache[maxSize=%d,hits=%d,misses=%d,hitRate=%d%%]", new Object[] { Integer.valueOf(this.maxSize), Integer.valueOf(this.hitCount), Integer.valueOf(this.missCount), Integer.valueOf(i) });
       return str;
     }
     finally {}
@@ -269,23 +283,23 @@ public class LruCache
     {
       try
       {
-        if ((this.jdField_a_of_type_Int < 0) || ((this.jdField_a_of_type_JavaUtilLinkedHashMap.isEmpty()) && (this.jdField_a_of_type_Int != 0)))
+        if ((this.size < 0) || ((this.map.isEmpty()) && (this.size != 0)))
         {
-          this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
-          this.jdField_a_of_type_Int = 0;
+          this.map.clear();
+          this.size = 0;
           return;
         }
-        if ((this.jdField_a_of_type_Int <= paramInt) || (this.jdField_a_of_type_JavaUtilLinkedHashMap.isEmpty())) {
+        if ((this.size <= paramInt) || (this.map.isEmpty())) {
           return;
         }
       }
       finally {}
-      Object localObject3 = (Map.Entry)this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet().iterator().next();
+      Object localObject3 = (Map.Entry)this.map.entrySet().iterator().next();
       Object localObject2 = ((Map.Entry)localObject3).getKey();
       localObject3 = ((Map.Entry)localObject3).getValue();
-      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(localObject2);
-      this.jdField_a_of_type_Int -= a(localObject2, localObject3);
-      this.e += 1;
+      this.map.remove(localObject2);
+      this.size -= safeSizeOf(localObject2, localObject3);
+      this.evictionCount += 1;
       entryRemoved(true, localObject2, localObject3, null);
     }
   }

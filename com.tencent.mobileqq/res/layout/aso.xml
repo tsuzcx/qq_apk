@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_margin="2.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.image.URLImageView android:id="@id/icon" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/f6n" />
+        <ImageView android:id="@id/dj0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/f6u" />
+        <RelativeLayout android:id="@id/dpv" android:background="@drawable/f6k" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_centerHorizontal="true">
+            <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/qn9" android:drawableRight="@drawable/f6l" android:drawablePadding="4.0dip" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <TextView android:textSize="15.0dip" android:textColor="@color/al3" android:id="@id/cah" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" android:maxLines="1" android:lines="1" android:shadowColor="#7f000000" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="3.0" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <com.tencent.mobileqq.widget.CircleProgress android:id="@id/j81" android:visibility="gone" android:layout_width="28.0dip" android:layout_height="28.0dip" android:scaleType="fitXY" android:minWidth="28.0dip" android:minHeight="28.0dip" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <ImageView android:id="@id/bab" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/f6q" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <ImageView android:id="@id/l5d" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/f6x" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</RelativeLayout>

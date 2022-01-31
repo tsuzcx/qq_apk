@@ -1,22 +1,22 @@
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.ar.arengine.ARMarkerResourceManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class aamm
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public aamm(AREngine paramAREngine) {}
+  public aamm(Conversation paramConversation) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    QLog.i("AREngine_AREngine", 1, "processCloudMarkerRecogResult. download resource timeout.");
-    AREngine.a(this.a).a();
-    this.a.a(false, null);
+    if (paramDialogInterface == Conversation.a(this.a)) {
+      Conversation.a(this.a, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aamm
  * JD-Core Version:    0.7.0.1
  */

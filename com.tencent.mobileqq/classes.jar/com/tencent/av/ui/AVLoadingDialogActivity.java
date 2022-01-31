@@ -12,28 +12,29 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import jsl;
+import lra;
+import lrb;
 
 public class AVLoadingDialogActivity
   extends BaseActivity
 {
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jsl(this);
-  Handler jdField_a_of_type_AndroidOsHandler = new AVLoadingDialogActivity.MyHandler(this.jdField_a_of_type_JavaLangString);
-  final String jdField_a_of_type_JavaLangString = "AVLoadingDialogActivity_" + AudioHelper.a();
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new lra(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new lrb(this.jdField_a_of_type_JavaLangString);
+  final String jdField_a_of_type_JavaLangString = "AVLoadingDialogActivity_" + AudioHelper.b();
   
   Dialog a()
   {
-    Dialog localDialog = new Dialog(this, 2131624516);
-    localDialog.setContentView(2130969178);
+    Dialog localDialog = new Dialog(this, 2131690181);
+    localDialog.setContentView(2131493818);
     localDialog.setCancelable(false);
-    TextView localTextView = (TextView)localDialog.findViewById(2131363418);
+    TextView localTextView = (TextView)localDialog.findViewById(2131305861);
     if (localTextView != null) {
-      localTextView.setText(2131429519);
+      localTextView.setText(2131630480);
     }
     return localDialog;
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
     paramBundle = new IntentFilter();
@@ -50,7 +51,7 @@ public class AVLoadingDialogActivity
     }
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
     QLog.d(this.jdField_a_of_type_JavaLangString, 1, "doOnDestroy");
@@ -59,7 +60,7 @@ public class AVLoadingDialogActivity
     unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
   }
   
-  protected void doOnResume()
+  public void doOnResume()
   {
     super.doOnResume();
     QLog.d(this.jdField_a_of_type_JavaLangString, 1, "doOnResume");
@@ -85,14 +86,14 @@ public class AVLoadingDialogActivity
     return a();
   }
   
-  protected void requestWindowFeature(Intent paramIntent)
+  public void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.ui.AVLoadingDialogActivity
  * JD-Core Version:    0.7.0.1
  */

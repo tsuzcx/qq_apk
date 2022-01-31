@@ -1,61 +1,29 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.DBUtils;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
 
-public class rlw
-  implements View.OnClickListener
+class rlw
+  implements bbsh
 {
-  public rlw(AccountManageActivity paramAccountManageActivity) {}
+  rlw(rlv paramrlv) {}
   
-  public void onClick(View paramView)
+  public void a(BaseResp paramBaseResp)
   {
-    switch (paramView.getId())
-    {
-    case 2131362763: 
-    case 2131362764: 
-    default: 
-    case 2131362762: 
-      do
-      {
-        return;
-        localObject = null;
-        if ((paramView.getTag() instanceof String)) {
-          localObject = String.valueOf(paramView.getTag());
-        }
-        if ("0X8004001".equals(localObject))
-        {
-          ReportController.b(this.a.app, "CliOper", "", "", "0X8004002", "0X8004002", 0, 0, "", "", "", "");
-          paramView = new Intent(this.a, SubAccountUgActivity.class);
-          paramView.putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
-          this.a.startActivity(paramView);
-          return;
-        }
-      } while (!"0X8004456".equals(localObject));
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8004457", "0X8004457", 0, 0, "", "", "", "");
-      paramView = new Intent(this.a, SubAccountBindActivity.class);
-      paramView.putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
-      this.a.startActivity(paramView);
-      DBUtils.a().a(this.a.app.getCurrentAccountUin(), true);
+    if ((rlv.a(this.a) == null) || (!rlv.a(this.a).equals(paramBaseResp.transaction))) {
       return;
     }
-    Object localObject = new Intent();
-    ((Intent)localObject).setClass(paramView.getContext(), AssociatedAccountActivity.class);
-    ((Intent)localObject).putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
-    paramView.getContext().startActivity((Intent)localObject);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004039", "0X8004039", 0, 0, "", "", "", "");
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      vvp.a(1, 2131653595);
+      return;
+    }
+    vvp.a(2, 2131653612);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rlw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,8 @@
-import com.tencent.biz.pubaccount.PublicAccountArticleHandler;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
-
 public class nct
-  implements Runnable
 {
-  public nct(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager, PublicAccountArticleHandler paramPublicAccountArticleHandler, String paramString) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountArticleHandler.a(this.jdField_a_of_type_JavaLangString, "", 0, 1);
-  }
+  public int a;
+  public String a;
+  public String b;
 }
 
 

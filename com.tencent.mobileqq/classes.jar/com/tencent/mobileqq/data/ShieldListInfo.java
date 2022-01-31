@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.data;
 
+import atmo;
+import atoc;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="uin")
 public class ShieldListInfo
-  extends Entity
+  extends atmo
 {
   public static final int SHIELD_LIST_DEFAULT_SRC_SUB_ID = 0;
   public static final int SHIELD_LIST_INFO_FLAG_IS_SHIELD = 1;
   public static final int SHIELD_LIST_INFO_FLAG_NOT_SHIELD = 0;
-  public static final int SHIELD_LIST_SOURCE_CAMPUS = 151;
   public static final int SHIELD_LIST_SOURCE_CONFESS = 156;
   public static final int SHIELD_LIST_SOURCE_ID_CIRCLE_GROUP = 23;
+  public static final int SHIELD_LIST_SOURCE_ID_CM_GAME_TEMP = 2164;
   public static final int SHIELD_LIST_SOURCE_ID_CONTECT = 8;
   public static final int SHIELD_LIST_SOURCE_ID_CRM_EXT = 25;
   public static final int SHIELD_LIST_SOURCE_ID_CRM_TMP = 26;
@@ -30,11 +30,13 @@ public class ShieldListInfo
   public static final int SHIELD_LIST_SOURCE_ID_VALIDATION = 21;
   public static final int SHIELD_LIST_SOURCE_ID_WPA = 10;
   public static final int SHIELD_LIST_SOURCE_LIGHTALK = 27;
+  public static final int SHIELD_LIST_SOURCE_LIMIT_CHAT = 159;
+  public static final int SHIELD_LIST_SOURCE_MATCH_CHAT = 163;
   public static final int SHIELD_LIST_SOURCE_MOVIE_TICKET = 153;
   public int flags;
   public int source_id;
   public int source_sub_id;
-  @unique
+  @atoc
   public String uin;
   
   public static int AIO_TYPE_2_SOURCE_ID(int paramInt)
@@ -76,10 +78,14 @@ public class ShieldListInfo
     case 24: 
     case 25: 
       return 27;
-    case 1029: 
-      return 151;
+    case 10004: 
+      return 153;
+    case 1037: 
+      return 159;
+    case 1044: 
+      return 163;
     }
-    return 153;
+    return 2164;
   }
   
   public static int SOURCE_ID_2_AIO_TYPE(int paramInt)
@@ -120,8 +126,12 @@ public class ShieldListInfo
       return 1025;
     case 26: 
       return 1024;
+    case 159: 
+      return 1037;
+    case 163: 
+      return 1044;
     }
-    return 1029;
+    return 1036;
   }
   
   private void shieldMsg(boolean paramBoolean)

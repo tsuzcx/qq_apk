@@ -1,26 +1,14 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.DBUtils;
-
-public class sho
-  implements Runnable
+public abstract interface sho
 {
-  public sho(ChatSettingForTroop paramChatSettingForTroop) {}
+  public abstract void a(shp paramshp);
   
-  public void run()
-  {
-    int i = DBUtils.a(this.a.app.getCurrentAccountUin(), "troop_game_feed", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(20);
-    localMessage.arg1 = i;
-    localMessage.sendToTarget();
-  }
+  public abstract boolean a();
+  
+  public abstract void b(shp paramshp);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sho
  * JD-Core Version:    0.7.0.1
  */

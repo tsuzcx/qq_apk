@@ -1,14 +1,12 @@
-import com.tencent.mobileqq.app.ShakeListener;
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
+import java.util.List;
 
-public class aeml
-  extends ShakeListener
+public abstract interface aeml
 {
-  public aeml(MagicfaceActionManager paramMagicfaceActionManager) {}
+  public abstract void a(List<aelm> paramList, String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeml
  * JD-Core Version:    0.7.0.1
  */

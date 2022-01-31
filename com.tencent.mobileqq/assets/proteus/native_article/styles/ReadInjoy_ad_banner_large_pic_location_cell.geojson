@@ -1,0 +1,209 @@
+{
+  "ReadInjoy_ad_banner_large_pic_location_cell": {
+    "view_type": "cell",
+    "direction": "vertical",
+    "height": {
+      "type": "wrap_content"
+    },
+    "width": {
+      "type": "match_parent"
+    },
+    "subviews": [
+      {
+        "view_type": "container",
+        "layout_type": "layout_relative",
+        "direction": "vertical",
+        "margin_left": "15",
+        "margin_top": "25",
+        "margin_bottom": "13",
+        "height": {
+          "type": "wrap_content"
+        },
+        "width": {
+          "type": "relative",
+          "value": "345"
+        },
+        "subviews": [
+          {
+            "view_type": "ReadInjoyAsynImageView",
+            "view_id": "id_ad_banner_bottom_imge",
+            "margin_left": "0",
+            "margin_top": "0",
+            "height": {
+              "type": "relative",
+              "value": "194"
+            },
+            "width": {
+              "type": "relative",
+              "value": "345"
+            },
+            "event_type": "ad_img_click_in_detail",
+            "attributes": {
+              "setBackgroundColorString:": "#FFD8DADA",
+              "setImageWithURLString:lineup:": [
+                "$image_url",
+                "-1"
+              ]
+            }
+          },
+          {
+            "view_type": "ReadInJoyIconText",
+            "view_id": "id_ad_dislike_button",
+            "align_parent_right": "YES",
+            "align_parent_top": "YES",
+            "margin_right": "8",
+            "margin_top": "8",
+            "padding_top": "2",
+            "padding_bottom": "2",
+            "padding_left": "4",
+            "padding_right": "3",
+            "event_type": "cmd_native_detail_ad_negative_click",
+            "height": {
+              "type": "wrap_content"
+            },
+            "width": {
+              "type": "wrap_content"
+            },
+            "attributes": {
+              "setBackgroundColorString:": "#4d000000",
+              "setFrameString:": "-1",
+              "setText:": "$text",
+              "setTextColorString:": "#FFFFFF",
+              "setFontSizeString:": "11",
+              "setBorderWidthString:": "1",
+              "setTextAlignmentString:": "1",
+              "setCornerRadiusString:": "2.0",
+              "setBorderColorString:": "#4dFFFFFF",
+              "setNumberOfLinesString:": "1",
+              "setImage:": "-1",
+              "setRightImage:": "feeds_native_detail_ad_arrow",
+              "setImagePadding:": "2"
+            }
+          },
+          {
+            "view_type": "UIView",
+            "view_id": "id_operate_area",
+            "layout_type": "layout_linear",
+            "direction": "vertical",
+            "below_of_view": "id_ad_banner_bottom_imge",
+            "height": {
+              "type": "wrap_relative"
+            },
+            "width": {
+              "type": "match_parent"
+            },
+            "setBackgroundColorString:": "-1",
+            "event_type": "ad_nothing_click_in_detail",
+            "subviews": [
+              {
+                "view_type": "UILabel",
+                "view_id": "id_tv_title",
+                "margin_bottom": "0",
+                "margin_top": "11",
+                "height": {
+                  "type": "wrap_content"
+                },
+                "width": {
+                  "type": "relative",
+                  "value": "345"
+                },
+                "event_type": "ad_title_click_in_detail",
+                "attributes": {
+                  "setText:lineSpace:": [
+                    "$text",
+                    "5"
+                  ],
+                  "setTextColorString:": "#262626",
+                  "setFontSizeString:": "17",
+                  "setNumberOfLinesString:": "2"
+                }
+              },
+              {
+                "view_type": "container",
+                "layout_type": "layout_linear",
+                "direction": "horizontal",
+                "height": {
+                  "type": "wrap_content"
+                },
+                "width": {
+                  "type": "wrap_content"
+                },
+                "margin_top": "4",
+                "subviews": [
+                  {
+                    "view_type": "UILabel",
+                    "view_id": "id_tv_author",
+                    "align_parent_left": "YES",
+                    "margin_right": "6",
+                    "margin_top": "1",
+                    "height": {
+                      "type": "wrap_content"
+                    },
+                    "width": {
+                      "type": "wrap_content"
+                    },
+                    "event_type": "ad_name_click_in_detail",
+                    "setBackgroundColorString:": "-1",
+                    "attributes": {
+                      "setText:lineSpace:": [
+                        "$text",
+                        "0"
+                      ],
+                      "setTextColorString:": "#A6A6A6",
+                      "setFontSizeString:": "11",
+                      "setNumberOfLinesString:": "1"
+                    }
+                  },
+                  {
+                    "view_type": "UIView",
+                    "view_id": "id_mid_line",
+                    "margin_top": "2.5",
+                    "height": {
+                      "type": "relative",
+                      "value":"9.5"
+                    },
+                    "width": {
+                      "type": "relative",
+                      "value":"1"
+                    },
+                    "setBackgroundColorString:": "#A6A6A6"
+                  },
+                  {
+                    "view_type": "ReadInJoyAdLocationView",
+                    "view_id": "id_view_ad_locationView",
+                    "right_of_view": "id_tv_author",
+                    "margin_top": "1",
+                    "margin_left": "6",
+                    "height": {
+                      "type": "wrap_content"
+                    },
+                    "width": {
+                      "type": "relative",
+                      "value": "275"
+                    },
+                    "attributes": {
+                      "setLocation:": "$ad_Location",
+                      "setBackgroundColorString:": "-1",
+                      "setCornerRadiusString:": "-1",
+                      "setAdLocationStyle:": {
+                        "setLocationTextColorString:": "#A6A6A6",
+                        "setLocationTextSizeString:": "11",
+                        "setDistanceTextColorString:": "#A6A6A6",
+                        "setDistanceTextSizeString:": "11",
+                        "setMidMarginString:": "6",
+                        "setTopPaddingString:": "0",
+                        "setBottomPaddingString:": "0",
+                        "setLeftPaddingString:": "0",
+                        "setRightPaddingString:": "0"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

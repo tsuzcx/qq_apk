@@ -8,9 +8,14 @@ import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
 public class AppNetConnInfo
 {
+  public static final int IPV4 = 1;
+  public static final int IPV4V6 = 3;
+  public static final int IPV6 = 2;
+  public static final int IP_NONE = 0;
   public static final int MOBILE_2G = 1;
   public static final int MOBILE_3G = 2;
   public static final int MOBILE_4G = 3;
+  public static final int MOBILE_5G = 4;
   public static final int MOBILE_NONE = -1;
   public static final int MOBILE_UNKNOWN = 0;
   public static final int NET_MOBILE = 0;

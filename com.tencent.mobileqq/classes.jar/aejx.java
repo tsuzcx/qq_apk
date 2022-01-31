@@ -1,27 +1,18 @@
-import android.content.Context;
-import android.widget.RadioButton;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.leba.view.LebaGridIndicator;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
-public class aejx
-  extends RadioButton
+class aejx
+  implements azla
 {
-  public aejx(LebaGridIndicator paramLebaGridIndicator, Context paramContext)
-  {
-    super(paramContext);
-  }
+  aejx(aejb paramaejb) {}
   
-  public boolean performClick()
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
   {
-    if (AppSetting.b) {
-      return super.performClick();
-    }
-    return true;
+    if (paramInt == 0) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aejx
  * JD-Core Version:    0.7.0.1
  */

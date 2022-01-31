@@ -1,17 +1,31 @@
-import android.view.MotionEvent;
+import android.os.Handler;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.search.presenter.EntranceResultPresenter;
+import android.widget.AbsListView.OnScrollListener;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.adapter.BaseWhatASmoothAdapter.1;
 
-public class ahyz
-  implements View.OnTouchListener
+public abstract class ahyz
+  extends BaseAdapter
+  implements AbsListView.OnScrollListener
 {
-  public ahyz(EntranceResultPresenter paramEntranceResultPresenter) {}
+  protected Handler a;
+  public String a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  private final void a(View paramView, Object paramObject, int paramInt, ahza paramahza)
   {
-    return true;
+    Object localObject = a(paramInt);
+    if (localObject == null) {
+      return;
+    }
+    paramView = new BaseWhatASmoothAdapter.1(this, paramView, localObject, paramObject, paramInt, paramahza);
+    ahza.a(paramahza, true);
+    ahza.a(paramahza, paramView);
+    this.a.post(paramView);
   }
+  
+  protected abstract Object a(int paramInt);
+  
+  public abstract void a(View paramView, Object paramObject);
 }
 
 

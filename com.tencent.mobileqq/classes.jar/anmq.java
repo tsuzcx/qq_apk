@@ -1,28 +1,38 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.smartdevice.ipc.SmartDeviceIPCHost;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class anmq
-  extends Handler
+  implements AdapterView.OnItemClickListener
 {
-  public anmq(SmartDeviceIPCHost paramSmartDeviceIPCHost, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public anmq(AIOEmotionFragment paramAIOEmotionFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramMessage.what == 1)
+    paramAdapterView = paramView.getTag();
+    if (paramAdapterView == null)
     {
-      this.a.jdField_a_of_type_CooperationSmartdeviceIpcISmartDeviceService = null;
-      this.a.jdField_a_of_type_Boolean = false;
+      QLog.e("AIOEmotionFragment", 1, "error, tag is null");
+      return;
+    }
+    try
+    {
+      this.a.a.b();
+      paramInt = ((baia)paramAdapterView).a.c;
+      this.a.c(paramInt);
+      return;
+    }
+    catch (Exception paramAdapterView)
+    {
+      QLog.e("AIOEmotionFragment", 1, "error, ", paramAdapterView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anmq
  * JD-Core Version:    0.7.0.1
  */

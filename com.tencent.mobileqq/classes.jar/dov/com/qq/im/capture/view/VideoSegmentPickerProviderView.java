@@ -2,26 +2,30 @@ package dov.com.qq.im.capture.view;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import anys;
-import anyt;
+import android.widget.RelativeLayout.LayoutParams;
+import bhqu;
+import bhqv;
+import bhqw;
+import birb;
+import bitc;
 import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
 import dov.com.tencent.biz.qqstory.takevideo.multivideo.SegmentPicker;
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.SegmentPicker.SegmentPickerListener;
 import java.lang.ref.WeakReference;
 import java.util.List;
+import vms;
 
 public class VideoSegmentPickerProviderView
   extends ProviderView
-  implements SegmentPicker.SegmentPickerListener
+  implements bitc
 {
   private long jdField_a_of_type_Long;
-  private GestureHelper.ZoomItem jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUtilGestureHelper$ZoomItem;
+  private birb jdField_a_of_type_Birb;
   private SegmentPicker jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker;
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<bhqw> jdField_a_of_type_JavaLangRefWeakReference;
   private long b;
   
   public VideoSegmentPickerProviderView(Context paramContext)
@@ -29,7 +33,7 @@ public class VideoSegmentPickerProviderView
     super(paramContext);
   }
   
-  private void b(List paramList)
+  private void b(List<Pair<Long, Long>> paramList)
   {
     if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker != null) {
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker.setRanges(paramList);
@@ -38,17 +42,29 @@ public class VideoSegmentPickerProviderView
   
   protected int a()
   {
-    return 2130970157;
+    return 2131495002;
+  }
+  
+  public void a()
+  {
+    super.a();
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker != null)
+    {
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker.a();
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker = null;
+    }
+    this.jdField_a_of_type_Birb = null;
   }
   
   public void a(long paramLong)
   {
-    VideoSegmentPickerProviderView.VideoSegmentPickerListener localVideoSegmentPickerListener = null;
+    bhqw localbhqw = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localVideoSegmentPickerListener = (VideoSegmentPickerProviderView.VideoSegmentPickerListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localbhqw = (bhqw)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localVideoSegmentPickerListener != null) {
-      localVideoSegmentPickerListener.a(paramLong);
+    if (localbhqw != null) {
+      localbhqw.a(paramLong);
     }
   }
   
@@ -56,65 +72,60 @@ public class VideoSegmentPickerProviderView
   {
     super.a(paramBundle);
     if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130970157, this, false);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131495002, this, false);
     }
     a(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker = ((SegmentPicker)this.jdField_a_of_type_AndroidViewView.findViewById(2131369213));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131369214).setOnClickListener(new anys(this));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131369215).setOnClickListener(new anyt(this));
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker = ((SegmentPicker)this.jdField_a_of_type_AndroidViewView.findViewById(2131299945));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131298143).setOnClickListener(new bhqu(this));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131298144).setOnClickListener(new bhqv(this));
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      paramBundle = (VideoSegmentPickerProviderView.VideoSegmentPickerListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      paramBundle = (bhqw)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       if (paramBundle != null) {
         paramBundle.a();
       }
     }
   }
   
-  public void a(List paramList)
+  public void a(List<Long> paramList)
   {
-    VideoSegmentPickerProviderView.VideoSegmentPickerListener localVideoSegmentPickerListener = null;
+    bhqw localbhqw = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localVideoSegmentPickerListener = (VideoSegmentPickerProviderView.VideoSegmentPickerListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localbhqw = (bhqw)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localVideoSegmentPickerListener != null) {
-      localVideoSegmentPickerListener.a(paramList);
+    if (localbhqw != null) {
+      localbhqw.a(paramList);
     }
+  }
+  
+  public int b()
+  {
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.findViewById(2131311370).getLayoutParams();
+    int i = vms.a(getContext(), 22.0F);
+    return localLayoutParams.topMargin + i;
+  }
+  
+  public void b()
+  {
+    super.b();
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker != null)
+    {
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker.a();
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker = null;
+    }
+    this.jdField_a_of_type_Birb = null;
   }
   
   public void b(long paramLong)
   {
-    VideoSegmentPickerProviderView.VideoSegmentPickerListener localVideoSegmentPickerListener = null;
+    bhqw localbhqw = null;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      localVideoSegmentPickerListener = (VideoSegmentPickerProviderView.VideoSegmentPickerListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      localbhqw = (bhqw)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     }
-    if (localVideoSegmentPickerListener != null) {
-      localVideoSegmentPickerListener.b(paramLong);
+    if (localbhqw != null) {
+      localbhqw.b(paramLong);
     }
-  }
-  
-  public void c()
-  {
-    super.c();
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker != null)
-    {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker.a();
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker = null;
-    }
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUtilGestureHelper$ZoomItem = null;
-  }
-  
-  public void g()
-  {
-    super.g();
-    this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker != null)
-    {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker.a();
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker = null;
-    }
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUtilGestureHelper$ZoomItem = null;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -122,19 +133,19 @@ public class VideoSegmentPickerProviderView
     return true;
   }
   
-  public void setItems(GestureHelper.ZoomItem paramZoomItem)
+  public void setItems(birb parambirb)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUtilGestureHelper$ZoomItem = paramZoomItem;
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUtilGestureHelper$ZoomItem != null)
+    this.jdField_a_of_type_Birb = parambirb;
+    if (this.jdField_a_of_type_Birb != null)
     {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUtilGestureHelper$ZoomItem.a.a(this.jdField_a_of_type_Long - this.b);
-      b(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUtilGestureHelper$ZoomItem.a.a());
+      this.jdField_a_of_type_Birb.a.changeNormalMode(this.jdField_a_of_type_Long - this.b);
+      b(this.jdField_a_of_type_Birb.a.getSegmentList());
     }
   }
   
-  public void setListener(VideoSegmentPickerProviderView.VideoSegmentPickerListener paramVideoSegmentPickerListener)
+  public void setListener(bhqw parambhqw)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramVideoSegmentPickerListener);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambhqw);
   }
   
   public void setPlayMode(int paramInt)
@@ -154,12 +165,12 @@ public class VideoSegmentPickerProviderView
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker.a(true);
   }
   
-  public void setVideo(String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  public void setVideo(String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2)
   {
     this.jdField_a_of_type_Long = paramLong2;
     this.b = paramLong1;
     if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker != null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker.a(paramString, this.b, this.jdField_a_of_type_Long, paramInt3, paramInt1, paramInt2, paramBoolean, this);
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker.a(paramString, this.b, this.jdField_a_of_type_Long, paramInt3, paramInt1, paramInt2, paramBoolean1, this, paramBoolean2);
     }
   }
 }

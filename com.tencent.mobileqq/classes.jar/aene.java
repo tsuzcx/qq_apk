@@ -1,21 +1,27 @@
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
-import com.tencent.mobileqq.magicface.view.MagicfaceView.SurfaceCreateListener;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aene
-  implements MagicfaceView.SurfaceCreateListener
+class aene
+  implements View.OnClickListener
 {
-  public aene(MagicfaceViewController paramMagicfaceViewController, Emoticon paramEmoticon, int paramInt1, String paramString, int paramInt2) {}
+  aene(aend paramaend) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
+    paramView = new Intent(aend.a(this.a), QQBrowserActivity.class);
+    paramView.putExtra("url", String.format("https://openmobile.qq.com/TeamGame/index.html?_wv=1031&uin=%s&team_id=%s&srcSessionType=%d&srcSessionUin=%s", new Object[] { aend.a(this.a).getAccount(), aend.a(this.a), Integer.valueOf(aqae.a(aend.a(this.a).jdField_a_of_type_Int)), aend.a(this.a).jdField_a_of_type_JavaLangString }));
+    aend.a(this.a).startActivity(paramView);
+    bcad.a().a(aend.a(this.a).getCurrentAccountUin(), "", "", "2000", "2016", "0", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aene
  * JD-Core Version:    0.7.0.1
  */

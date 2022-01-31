@@ -1,28 +1,36 @@
-import android.media.MediaRecorder;
-import android.media.MediaRecorder.OnInfoListener;
-import com.tencent.mobileqq.activity.MakeVideoActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class tgn
-  implements MediaRecorder.OnInfoListener
+  extends QQUIEventReceiver<tgm, tgh>
 {
-  public tgn(MakeVideoActivity paramMakeVideoActivity) {}
-  
-  public void onInfo(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
+  public tgn(@NonNull tgm paramtgm)
   {
-    switch (paramInt1)
+    super(paramtgm);
+  }
+  
+  public void a(@NonNull tgm paramtgm, @NonNull tgh paramtgh)
+  {
+    if (TextUtils.equals("SendVideoToFriendHelper", paramtgh.jdField_a_of_type_JavaLangString)) {}
+    switch (paramtgh.jdField_a_of_type_Int)
     {
     default: 
-      QLog.i(this.a.a, 4, "start|onInfo|what=" + paramInt1 + ",extra=" + paramInt2);
       return;
     }
-    QLog.i(this.a.a, 4, "start|onInfo|max file size reached.extra=" + paramInt2);
-    this.a.b();
+    urk.a(this.TAG, "download video or picture finish. videoLocalPath = %s.", paramtgh.b);
+    tgm.a(paramtgm, false);
+    paramtgm.a(paramtgm.jdField_a_of_type_AndroidOsBundle, paramtgm.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramtgm.jdField_a_of_type_JavaLangString, paramtgh.b);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tgh.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tgn
  * JD-Core Version:    0.7.0.1
  */

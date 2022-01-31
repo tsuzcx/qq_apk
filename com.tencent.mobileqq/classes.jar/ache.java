@@ -1,37 +1,49 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 public class ache
-  implements Handler.Callback
 {
-  public ache(EmoticonFromGroupManager paramEmoticonFromGroupManager) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public static long a(long paramLong)
   {
-    switch (paramMessage.what)
+    Calendar localCalendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+8"));
+    localCalendar.setTimeInMillis(paramLong);
+    localCalendar.set(11, 0);
+    localCalendar.set(12, 0);
+    localCalendar.set(13, 0);
+    localCalendar.set(14, 0);
+    return localCalendar.getTimeInMillis();
+  }
+  
+  public static String a(long paramLong, String paramString)
+  {
+    try
     {
-    default: 
-      return true;
-    case 1: 
-      QQToast.a(EmoticonFromGroupManager.a(this.a), 2131428195, 0).b(2131558448);
-      return true;
+      paramString = new SimpleDateFormat(paramString, Locale.SIMPLIFIED_CHINESE).format(new Date(paramLong));
+      return paramString;
     }
-    if (paramMessage.obj != null)
-    {
-      paramMessage = (EmoticonFromGroupEntity)paramMessage.obj;
-      this.a.a(paramMessage);
-      return true;
-    }
-    QQToast.a(EmoticonFromGroupManager.a(this.a), 1, 2131434517, 0).b(2131558448);
-    return true;
+    catch (Exception paramString) {}
+    return "";
+  }
+  
+  public static boolean a(long paramLong)
+  {
+    return a(paramLong, "yyyy-MM-dd");
+  }
+  
+  private static boolean a(long paramLong, String paramString)
+  {
+    Date localDate = new Date(paramLong);
+    paramString = new SimpleDateFormat(paramString, Locale.SIMPLIFIED_CHINESE);
+    return paramString.format(localDate).equals(paramString.format(new Date(NetConnInfoCenter.getServerTimeMillis())));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ache
  * JD-Core Version:    0.7.0.1
  */

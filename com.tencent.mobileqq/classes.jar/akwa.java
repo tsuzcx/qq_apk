@@ -1,29 +1,23 @@
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ARRelationShip;
 
 public final class akwa
-  implements ThreadExcutor.IThreadListener
+  implements Parcelable.Creator<ARRelationShip>
 {
-  long a = 0L;
-  
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public ARRelationShip a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SwiftBrowserCookieMonster", 2, "Web_qqbrowser_pre_get_key, cost=" + (System.currentTimeMillis() - this.a));
-    }
-    this.a = 0L;
+    return new ARRelationShip(paramParcel);
   }
   
-  public void onPreRun()
+  public ARRelationShip[] a(int paramInt)
   {
-    this.a = System.currentTimeMillis();
+    return new ARRelationShip[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akwa
  * JD-Core Version:    0.7.0.1
  */

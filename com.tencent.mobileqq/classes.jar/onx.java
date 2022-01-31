@@ -1,19 +1,13 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout.OnUndoViewClickListener;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import java.util.Comparator;
 
-public class onx
-  implements HorizontalSelectColorLayout.OnUndoViewClickListener
+class onx
+  implements Comparator<Integer>
 {
-  public onx(DoodleLayout paramDoodleLayout) {}
+  onx(onv paramonv) {}
   
-  public void a()
+  public int a(Integer paramInteger1, Integer paramInteger2)
   {
-    this.a.c();
-    if ((this.a.a != null) && (this.a.a.a == 3)) {
-      LpReportInfo_pf00064.allReport(615, 1, 3);
-    }
+    return paramInteger1.intValue() - paramInteger2.intValue();
   }
 }
 

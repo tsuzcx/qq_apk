@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class QSecCloudAVEngineMsg$QSecCloudQueryEntry
-  extends MessageMicro
+  extends MessageMicro<QSecCloudQueryEntry>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField appName = PBField.initString("");

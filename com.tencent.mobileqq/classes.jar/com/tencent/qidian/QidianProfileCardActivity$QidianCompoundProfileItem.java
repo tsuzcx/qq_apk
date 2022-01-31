@@ -1,14 +1,14 @@
 package com.tencent.qidian;
 
-import alun;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bcqm;
 
 public class QidianProfileCardActivity$QidianCompoundProfileItem
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new alun();
+  public static final Parcelable.Creator<QidianCompoundProfileItem> CREATOR = new bcqm();
   public int a;
   public String a;
   public boolean a;
@@ -52,7 +52,7 @@ public class QidianProfileCardActivity$QidianCompoundProfileItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.QidianCompoundProfileItem
  * JD-Core Version:    0.7.0.1
  */

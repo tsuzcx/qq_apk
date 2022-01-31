@@ -1,91 +1,41 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.graphics.PointF;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearSmoothScroller;
+import android.view.View;
 
-public class wvo
-  extends Handler
+class wvo
+  extends LinearSmoothScroller
 {
-  public wvo(MainAssistObserver paramMainAssistObserver, Looper paramLooper)
+  public wvo(wvn paramwvn, Context paramContext)
   {
-    super(paramLooper);
+    super(paramContext);
   }
   
-  public void handleMessage(Message paramMessage)
+  public int calculateDxToMakeVisible(View paramView, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app.isLogin())) {}
-    do
-    {
-      do
-      {
-        return;
-        switch (paramMessage.what)
-        {
-        default: 
-          return;
-        case 0: 
-          paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
-          this.a.a(35, paramMessage);
-          return;
-        case 28929: 
-          paramMessage = paramMessage.getData();
-        }
-      } while (paramMessage == null);
-      int i = paramMessage.getInt("result");
-      if ((i == -1) || (i == -2))
-      {
-        if (i == -1) {
-          paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131433456);
-        }
-        for (String str = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131433457);; str = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131433459))
-        {
-          try
-          {
-            if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null)
-            {
-              if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
-                this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-              }
-              this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
-            }
-            this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, 230, paramMessage, str, new wvp(this), null);
-            this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnCancelListener(new wvq(this));
-            this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(new wvr(this));
-            this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-            return;
-          }
-          catch (Exception paramMessage) {}
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          paramMessage.printStackTrace();
-          return;
-          paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131433458);
-        }
-      }
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    return;
-    paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
-    this.a.a(34, paramMessage);
-    return;
-    paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
-    this.a.a(33, paramMessage);
-    return;
-    paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
-    this.a.a(36, paramMessage);
+    return wvn.a(this.a).a(-this.a.g);
+  }
+  
+  public int calculateDyToMakeVisible(View paramView, int paramInt)
+  {
+    return wvn.a(this.a).b(-this.a.g);
+  }
+  
+  public int calculateTimeForScrolling(int paramInt)
+  {
+    return (int)(Math.max(0.01F, Math.min(Math.abs(paramInt), this.a.d) / this.a.d) * wvn.a(this.a));
+  }
+  
+  @Nullable
+  public PointF computeScrollVectorForPosition(int paramInt)
+  {
+    return new PointF(wvn.a(this.a).a(this.a.g), wvn.a(this.a).b(this.a.g));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wvo
  * JD-Core Version:    0.7.0.1
  */

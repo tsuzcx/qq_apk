@@ -1,24 +1,27 @@
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
 
-public class xcx
-  implements AbsListView.OnScrollListener
+class xcx
+  implements Animation.AnimationListener
 {
-  public xcx(PhotoListActivity paramPhotoListActivity) {}
+  xcx(xcv paramxcv, URLImageView paramURLImageView, URLDrawable paramURLDrawable, ScaleAnimation paramScaleAnimation) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramInt == 0) && (this.a.jdField_a_of_type_ComTencentWidgetGestureSelectGridView != null) && (this.a.jdField_a_of_type_Xdm != null) && (this.a.c != null)) {
-      PhotoListActivity.a(this.a);
-    }
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xcx
  * JD-Core Version:    0.7.0.1
  */

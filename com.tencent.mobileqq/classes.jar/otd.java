@@ -1,18 +1,29 @@
-import com.tencent.biz.qqstory.utils.PollWidgetUtils.QuestionElement;
-import com.tencent.biz.qqstory.utils.PollWidgetUtils.WidgetWrapper;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import org.json.JSONObject;
 
 public class otd
-  implements Runnable
 {
-  public otd(PollWidgetUtils.WidgetWrapper paramWidgetWrapper) {}
-  
-  public void run()
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    if (PollWidgetUtils.WidgetWrapper.a(this.a))
-    {
-      PollWidgetUtils.WidgetWrapper.a(this.a, false);
-      this.a.a.a(false);
-    }
+    JSONObject localJSONObject1 = new JSONObject();
+    otl.a(paramBaseArticleInfo, localJSONObject1, Utils.toLong(paramBaseArticleInfo.mSubscribeID));
+    otl.r(paramBaseArticleInfo, localJSONObject1);
+    otl.t(paramBaseArticleInfo, localJSONObject1);
+    localJSONObject1.put("id_content_wrapper", new JSONObject());
+    localJSONObject1.put("id_article_wrapper", new JSONObject());
+    localJSONObject1.put("id_multi_image", new JSONObject());
+    JSONObject localJSONObject2 = new JSONObject();
+    localJSONObject2.put("summary_text", ajjy.a(2131647247));
+    localJSONObject1.put("id_summary", localJSONObject2);
+    localJSONObject2 = new JSONObject();
+    localJSONObject2.put("article_small_imge_url", "https://qqpublic.qpic.cn/qq_public_cover/0/0-1512726317-04871A48D592EB571A29D6F16C134B70_open/320");
+    localJSONObject1.put("id_article_small_imge", localJSONObject2);
+    otl.a(paramBaseArticleInfo, localJSONObject1, false);
+    otl.m(paramBaseArticleInfo, localJSONObject1);
+    otl.B(paramBaseArticleInfo, localJSONObject1);
+    localJSONObject1.put("style_ID", "ReadInjoy_pgc_multi_cell");
+    return localJSONObject1;
   }
 }
 

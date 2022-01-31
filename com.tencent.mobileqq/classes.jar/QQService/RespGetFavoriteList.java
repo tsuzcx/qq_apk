@@ -10,17 +10,17 @@ public final class RespGetFavoriteList
 {
   static RespHead cache_stHeader;
   static UserCntlData cache_stUserData;
-  static ArrayList cache_vFavoriteInfos;
+  static ArrayList<UserProfile> cache_vFavoriteInfos;
   static byte[] cache_vNotice;
   public long RespTime;
   public RespHead stHeader;
   public UserCntlData stUserData;
-  public ArrayList vFavoriteInfos;
+  public ArrayList<UserProfile> vFavoriteInfos;
   public byte[] vNotice;
   
   public RespGetFavoriteList() {}
   
-  public RespGetFavoriteList(RespHead paramRespHead, long paramLong, ArrayList paramArrayList, UserCntlData paramUserCntlData, byte[] paramArrayOfByte)
+  public RespGetFavoriteList(RespHead paramRespHead, long paramLong, ArrayList<UserProfile> paramArrayList, UserCntlData paramUserCntlData, byte[] paramArrayOfByte)
   {
     this.stHeader = paramRespHead;
     this.RespTime = paramLong;

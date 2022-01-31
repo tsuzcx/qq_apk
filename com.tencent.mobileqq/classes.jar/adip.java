@@ -1,33 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
-import com.tencent.weiyun.transmission.upload.UploadManager;
-import cooperation.weiyun.TransmissionHelper;
-import cooperation.weiyun.utils.SoHelper.SoListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.BaseAdapter;
+import com.tencent.mobileqq.data.MessageForText;
 
-public class adip
-  implements SoHelper.SoListener
+class adip
+  implements DialogInterface.OnClickListener
 {
-  public adip(WeiYunLogicCenter paramWeiYunLogicCenter) {}
+  adip(adin paramadin, MessageForText paramMessageForText) {}
   
-  public void a(long paramLong, float paramFloat) {}
-  
-  public void a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    WeiYunLogicCenter.b(this.a, false);
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    WeiYunLogicCenter.a(this.a, true);
-    WeiYunLogicCenter.b(this.a, false);
-    TransmissionHelper.a(WeiYunLogicCenter.a(this.a).getApplication(), true);
-    WeiyunTransmissionGlobal.getInstance().getUploadManager().loadLibFromPath(paramString1);
+    aael.a(this.jdField_a_of_type_Adin.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText);
+    aael.b(this.jdField_a_of_type_Adin.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adin.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adin.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg);
+    this.jdField_a_of_type_Adin.jdField_a_of_type_AndroidWidgetBaseAdapter.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adip
  * JD-Core Version:    0.7.0.1
  */

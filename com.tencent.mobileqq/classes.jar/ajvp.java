@@ -1,54 +1,37 @@
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.TableBuilder;
-import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
-import com.tencent.mobileqq.troop.utils.TroopAppMgr;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 public class ajvp
-  implements Runnable
+  implements BusinessObserver
 {
-  public ajvp(TroopAppMgr paramTroopAppMgr, ArrayList paramArrayList, EntityManager paramEntityManager, int paramInt) {}
+  public void a() {}
   
-  public void run()
+  public void a(int paramInt) {}
+  
+  public void b() {}
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    switch (paramInt)
     {
-      Object localObject1 = TableBuilder.b(TroopAIOAppInfo.class);
-      Object localObject2;
-      if (QLog.isColorLevel())
-      {
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(TroopAIOAppInfo.class);
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr.a(".troop.troop_appVASH", "before delete type:" + this.jdField_a_of_type_Int, (List)localObject2);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a((String)localObject1, "groupType=?", new String[] { String.valueOf(this.jdField_a_of_type_Int) });
-      if (QLog.isColorLevel())
-      {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(TroopAIOAppInfo.class);
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr.a(".troop.troop_appVASH", "before update after delete type:" + this.jdField_a_of_type_Int, (List)localObject1);
-      }
-      localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (TroopAIOAppInfo)((Iterator)localObject1).next();
-        ((TroopAIOAppInfo)localObject2).setStatus(1000);
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager, (Entity)localObject2);
-      }
-      if (QLog.isColorLevel())
-      {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(TroopAIOAppInfo.class);
-        this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAppMgr.a(".troop.troop_appVASH", "after update type:" + this.jdField_a_of_type_Int, (List)localObject1);
-      }
+    case 111: 
+    case 112: 
+    case 114: 
+    default: 
+      return;
+    case 113: 
+      a(paramBundle.getInt("key_rt_type"));
+      return;
+    case 115: 
+      a();
+      return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a();
+    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajvp
  * JD-Core Version:    0.7.0.1
  */

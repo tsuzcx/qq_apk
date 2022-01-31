@@ -34,17 +34,22 @@ public class MessageForPokeEmo
     this.msg = String.format("[%s]x%d", new Object[] { this.summary, Integer.valueOf(this.pokeemoPressCount) });
   }
   
+  public boolean isSupportReply()
+  {
+    return true;
+  }
+  
   public boolean needVipBubble()
   {
     return false;
   }
   
-  protected void postRead()
+  public void postRead()
   {
     parse();
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     try
     {

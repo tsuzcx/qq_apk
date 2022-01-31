@@ -1,26 +1,30 @@
-import android.os.Handler;
-import com.tencent.mobileqq.search.fragment.GroupSearchFragment;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.weather.SessionClearFragment;
 
 public class ahxu
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ahxu(GroupSearchFragment paramGroupSearchFragment) {}
+  public ahxu(SessionClearFragment paramSessionClearFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (!this.a.c)
+    if (SessionClearFragment.a(this.a) == 0)
     {
-      this.a.a.a();
-      this.a.c = true;
+      SessionClearFragment.a(this.a).setText(ajjy.a(2131648054));
+      SessionClearFragment.a(this.a, 1);
+      SessionClearFragment.a(this.a).b();
+      return;
     }
-    this.a.b.removeMessages(100);
-    this.a.b.sendEmptyMessage(100);
+    SessionClearFragment.a(this.a).setText(ajjy.a(2131648052));
+    SessionClearFragment.a(this.a, 0);
+    SessionClearFragment.a(this.a).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahxu
  * JD-Core Version:    0.7.0.1
  */

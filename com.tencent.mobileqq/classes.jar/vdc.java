@@ -1,32 +1,42 @@
-import com.tencent.mobileqq.activity.aio.PokePanel.PokeData;
-import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
 
 public class vdc
-  implements Runnable
+  extends vcy
 {
-  public vdc(GivingHeartItemBuilder paramGivingHeartItemBuilder) {}
+  @NonNull
+  public final srb a;
+  @NonNull
+  public final String c;
   
-  public void run()
+  public vdc(int paramInt1, String paramString1, int paramInt2, @NonNull String paramString2, @NonNull srb paramsrb)
   {
-    Object localObject = PokeItemHelper.a(this.a.b, GivingHeartItemBuilder.a(this.a));
-    if (((ArrayList)localObject).size() > 0)
-    {
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        PokePanel.PokeData localPokeData = (PokePanel.PokeData)((Iterator)localObject).next();
-        GivingHeartItemBuilder.a(this.a).put(Integer.valueOf(localPokeData.b), Integer.valueOf(localPokeData.c));
-      }
-    }
+    super(paramInt1, paramString1, paramInt2);
+    this.c = paramString2;
+    this.a = paramsrb;
+  }
+  
+  @NonNull
+  public Class<? extends vcz> a()
+  {
+    return vde.class;
+  }
+  
+  @NonNull
+  public vcz a(@NonNull Context paramContext, ViewGroup paramViewGroup)
+  {
+    return new vde(paramContext, paramViewGroup, null);
+  }
+  
+  public boolean a()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vdc
  * JD-Core Version:    0.7.0.1
  */

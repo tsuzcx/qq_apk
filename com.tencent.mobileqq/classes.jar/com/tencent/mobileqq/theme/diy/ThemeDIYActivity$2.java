@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.theme.diy;
 
 import android.text.TextUtils;
+import awqx;
+import bbom;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 class ThemeDIYActivity$2
-  implements TabBarView.OnTabChangeListener
+  implements bbom
 {
   ThemeDIYActivity$2(ThemeDIYActivity paramThemeDIYActivity) {}
   
@@ -24,7 +24,7 @@ class ThemeDIYActivity$2
       if (3 == paramInt2)
       {
         localObject1 = "diy_clickstyle";
-        ReportController.b((QQAppInterface)localObject2, "CliOper", "", str, "theme_mall", (String)localObject1, 0, 1, "", "", "", "");
+        awqx.b((QQAppInterface)localObject2, "CliOper", "", str, "theme_mall", (String)localObject1, 0, 1, "", "", "", "");
       }
     }
     else
@@ -139,7 +139,7 @@ class ThemeDIYActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.ThemeDIYActivity.2
  * JD-Core Version:    0.7.0.1
  */

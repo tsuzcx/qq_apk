@@ -1,20 +1,30 @@
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import friendlist.GetOnlineInfoResp;
 
-public class ugb
-  implements Runnable
+class ugb
+  extends ajjh
 {
-  public ugb(TroopMemberListActivity paramTroopMemberListActivity, List paramList, int paramInt1, int paramInt2) {}
+  ugb(uga paramuga) {}
   
-  public void run()
+  protected void onGetOnlineInfoByUinOrMobile(boolean paramBoolean, long paramLong, String paramString, GetOnlineInfoResp paramGetOnlineInfoResp)
   {
-    List localList = this.jdField_a_of_type_JavaUtilList.subList(this.jdField_a_of_type_Int, this.b);
-    TroopMemberListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity, localList, this.b);
+    if ((!paramBoolean) || (this.a.a == null) || (paramGetOnlineInfoResp == null) || (!TextUtils.equals(paramString, this.a.a.qq))) {}
+    while (uga.a(this.a) == null) {
+      return;
+    }
+    paramString = uga.a(this.a);
+    if (paramGetOnlineInfoResp.eIconType == 11) {}
+    for (paramBoolean = true;; paramBoolean = false)
+    {
+      paramString.b(paramBoolean);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ugb
  * JD-Core Version:    0.7.0.1
  */

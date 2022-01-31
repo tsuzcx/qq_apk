@@ -1,16 +1,17 @@
-import com.tencent.biz.webviewplugin.PubAccountWebViewHttpBridge;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class phe
-  implements Runnable
+class phe
+  implements View.OnClickListener
 {
-  public phe(PubAccountWebViewHttpBridge paramPubAccountWebViewHttpBridge) {}
+  phe(phd paramphd) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    long l = System.currentTimeMillis();
-    PubAccountWebViewHttpBridge.a(this.a);
-    this.a.a = (System.currentTimeMillis() - l);
-    PubAccountWebViewHttpBridge.b(this.a);
+    paramView = this.a.jdField_a_of_type_Qoe.a();
+    if (paramView != null) {
+      paramView.a(null, ((opw)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
   }
 }
 

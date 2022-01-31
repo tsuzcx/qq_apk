@@ -1,49 +1,34 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
-import com.tencent.mobileqq.activity.ScoreQAVFragment.OnItemClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.List;
-import mqq.app.MobileQQ;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-public class tvt
-  extends RecyclerView.Adapter
+public final class tvt
+  extends QQUIEventReceiver<tvd, ujj>
 {
-  ScoreQAVFragment.OnItemClickListener jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener;
-  
-  public tvt(ScoreQAVFragment paramScoreQAVFragment) {}
-  
-  public tvu a(ViewGroup paramViewGroup, int paramInt)
+  public tvt(@NonNull tvd paramtvd)
   {
-    return new tvu(this, LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()).inflate(2130969349, paramViewGroup, false), this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener);
+    super(paramtvd);
   }
   
-  public void a(ScoreQAVFragment.OnItemClickListener paramOnItemClickListener)
+  public void a(@NonNull tvd paramtvd, @NonNull ujj paramujj)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment$OnItemClickListener = paramOnItemClickListener;
-  }
-  
-  public void a(tvu paramtvu, int paramInt)
-  {
-    paramtvu.a.setText((CharSequence)this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.get(paramInt));
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.a(paramInt))
+    if ((paramujj.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramujj.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem != null) && (paramtvd.a != null) && (TextUtils.equals(paramujj.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedItem.feedId, paramtvd.a.b)))
     {
-      paramtvu.a.setSelected(true);
-      return;
+      urk.a(paramtvd.b, "refresh feed item , feed id :%s", paramtvd.a.b);
+      paramtvd.i();
     }
-    paramtvu.a.setSelected(false);
   }
   
-  public int getItemCount()
+  public Class acceptEventClass()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityScoreQAVFragment.jdField_a_of_type_JavaUtilList.size();
+    return ujj.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tvt
  * JD-Core Version:    0.7.0.1
  */

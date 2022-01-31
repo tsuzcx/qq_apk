@@ -1,5 +1,6 @@
 package com.tencent.biz.pubaccount.readinjoy.rebuild.cmp;
 
+import aciy;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -7,29 +8,30 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDisplayUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.ComponentInheritView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
+import obj;
+import obz;
+import opw;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import pex;
+import pfh;
+import pjg;
+import pmu;
+import qoe;
 
 public class ComponentContentThree
   extends FrameLayout
-  implements ComponentInheritView
+  implements pex
 {
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
-  CmpCtxt jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt;
   KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
-  List jdField_a_of_type_JavaUtilList;
+  List<KandianUrlImageView> jdField_a_of_type_JavaUtilList;
+  pjg jdField_a_of_type_Pjg;
   KandianUrlImageView b;
   KandianUrlImageView c;
   
@@ -53,14 +55,14 @@ public class ComponentContentThree
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt = new CmpCtxt();
+    this.jdField_a_of_type_Pjg = new pjg();
     a(paramContext);
     a();
   }
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969569, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131494293, this, true);
   }
   
   public void a() {}
@@ -72,41 +74,41 @@ public class ComponentContentThree
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131366876));
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131361794));
-    this.b = ((KandianUrlImageView)paramView.findViewById(2131361800));
-    this.c = ((KandianUrlImageView)paramView.findViewById(2131361795));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131309049));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131303424));
+    this.b = ((KandianUrlImageView)paramView.findViewById(2131298432));
+    this.c = ((KandianUrlImageView)paramView.findViewById(2131309499));
     this.jdField_a_of_type_JavaUtilList = Arrays.asList(new KandianUrlImageView[] { this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, this.b, this.c });
     b();
   }
   
-  public void a(FeedItemCell.CellListener paramCellListener)
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a(paramCellListener);
-  }
-  
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof IReadInJoyModel))
+    if ((paramObject instanceof opw))
     {
-      paramObject = (IReadInJoyModel)paramObject;
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpCmpCtxt.a(paramObject);
+      paramObject = (opw)paramObject;
+      this.jdField_a_of_type_Pjg.a(paramObject);
       setContent(paramObject);
     }
   }
   
-  public void b()
+  public void a(pfh parampfh)
   {
-    UtilsForComponent.a(getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, true);
-    UtilsForComponent.a(getContext(), this.b, true);
-    UtilsForComponent.a(getContext(), this.c, true);
-    ((LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams()).setMargins(0, 0, AIOUtils.a(1.5F, getResources()), 0);
-    ((LinearLayout.LayoutParams)this.b.getLayoutParams()).setMargins(0, 0, AIOUtils.a(1.5F, getResources()), 0);
+    this.jdField_a_of_type_Pjg.a(parampfh);
   }
   
-  public void setContent(IReadInJoyModel paramIReadInJoyModel)
+  public void b()
   {
-    Object localObject2 = paramIReadInJoyModel.a();
+    pmu.a(getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, true);
+    pmu.a(getContext(), this.b, true);
+    pmu.a(getContext(), this.c, true);
+    ((LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.getLayoutParams()).setMargins(0, 0, aciy.a(1.5F, getResources()), 0);
+    ((LinearLayout.LayoutParams)this.b.getLayoutParams()).setMargins(0, 0, aciy.a(1.5F, getResources()), 0);
+  }
+  
+  public void setContent(opw paramopw)
+  {
+    Object localObject2 = paramopw.a();
     if (localObject2 == null) {}
     Object localObject3;
     do
@@ -115,13 +117,13 @@ public class ComponentContentThree
       if ((((ArticleInfo)localObject2).mPictures != null) && (((ArticleInfo)localObject2).mPictures.length > 0)) {
         break;
       }
-      localObject3 = ReadInJoyBaseAdapter.a(((ArticleInfo)localObject2).mJsonPictureList, "pictures");
+      localObject3 = qoe.a(((ArticleInfo)localObject2).mJsonPictureList, "pictures");
     } while ((localObject3 == null) || (((JSONArray)localObject3).length() <= 0));
-    paramIReadInJoyModel = ((JSONArray)localObject3).optJSONObject(0);
+    paramopw = ((JSONArray)localObject3).optJSONObject(0);
     Object localObject1;
-    if (paramIReadInJoyModel == null)
+    if (paramopw == null)
     {
-      paramIReadInJoyModel = ((ArticleInfo)localObject2).mFirstPagePicUrl;
+      paramopw = ((ArticleInfo)localObject2).mFirstPagePicUrl;
       localObject1 = ((JSONArray)localObject3).optJSONObject(1);
       if (localObject1 != null) {
         break label151;
@@ -137,16 +139,16 @@ public class ComponentContentThree
     label161:
     for (localObject2 = ((ArticleInfo)localObject2).mFirstPagePicUrl;; localObject2 = ((JSONObject)localObject3).optString("picture"))
     {
-      ReadInJoyDisplayUtils.a(this.jdField_a_of_type_JavaUtilList, Arrays.asList(new URL[] { ReadInJoyUtils.a(paramIReadInJoyModel), ReadInJoyUtils.a((String)localObject1), ReadInJoyUtils.a((String)localObject2) }), getContext());
+      obj.a(this.jdField_a_of_type_JavaUtilList, Arrays.asList(new URL[] { obz.a(paramopw), obz.a((String)localObject1), obz.a((String)localObject2) }), getContext());
       return;
-      paramIReadInJoyModel = paramIReadInJoyModel.optString("picture");
+      paramopw = paramopw.optString("picture");
       break;
       localObject1 = ((JSONObject)localObject1).optString("picture");
       break label83;
     }
     if ((((ArticleInfo)localObject2).mPictures.length < 1) || (localObject2.mPictures[0] == null))
     {
-      paramIReadInJoyModel = ((ArticleInfo)localObject2).mSinglePicture;
+      paramopw = ((ArticleInfo)localObject2).mSinglePicture;
       if ((((ArticleInfo)localObject2).mPictures.length >= 2) && (localObject2.mPictures[1] != null)) {
         break label282;
       }
@@ -160,9 +162,9 @@ public class ComponentContentThree
     label292:
     for (localObject2 = ((ArticleInfo)localObject2).mSinglePicture;; localObject2 = localObject2.mPictures[2])
     {
-      ReadInJoyDisplayUtils.a(this.jdField_a_of_type_JavaUtilList, Arrays.asList(new URL[] { paramIReadInJoyModel, localObject1, localObject2 }), getContext());
+      obj.a(this.jdField_a_of_type_JavaUtilList, Arrays.asList(new URL[] { paramopw, localObject1, localObject2 }), getContext());
       return;
-      paramIReadInJoyModel = localObject2.mPictures[0];
+      paramopw = localObject2.mPictures[0];
       break;
       localObject1 = localObject2.mPictures[1];
       break label218;

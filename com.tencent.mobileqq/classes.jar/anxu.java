@@ -1,20 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.widget.AdapterView;
+import java.util.ArrayList;
 
 public class anxu
-  implements DialogInterface.OnClickListener
+  implements behi
 {
-  public anxu(MusicProviderView paramMusicProviderView) {}
+  public anxu(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramDialogInterface.dismiss();
+    paramAdapterView = (FileInfo)this.a.b.get(paramInt);
+    if (paramAdapterView.c()) {
+      LocalFileBrowserActivity.a(this.a, paramAdapterView.c(), true);
+    }
+    while (!this.a.f()) {
+      return;
+    }
+    if (aonm.a(paramAdapterView)) {
+      aonm.b(paramAdapterView);
+    }
+    for (;;)
+    {
+      this.a.l();
+      LocalFileBrowserActivity.a(this.a);
+      return;
+      if (this.a.f) {
+        aonm.b();
+      }
+      aonm.a(paramAdapterView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anxu
  * JD-Core Version:    0.7.0.1
  */

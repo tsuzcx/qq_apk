@@ -2,10 +2,16 @@ package com.tencent.mobileqq.data;
 
 public class DraftSummaryInfo
 {
+  private String atInfoStr;
   private String summary;
   private long time;
   private int type;
   private String uin;
+  
+  public String getAtInfoStr()
+  {
+    return this.atInfoStr;
+  }
   
   public String getSummary()
   {
@@ -15,6 +21,11 @@ public class DraftSummaryInfo
   public long getTime()
   {
     return this.time / 1000L;
+  }
+  
+  public void setAtInfoStr(String paramString)
+  {
+    this.atInfoStr = paramString;
   }
   
   public void setSummary(String paramString)

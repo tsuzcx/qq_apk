@@ -1,43 +1,21 @@
-import android.os.Bundle;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.ApkGetCodeListener;
-import com.tencent.open.downloadnew.DownloaderGetCodeClient;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
 public class alph
-  implements EIPCResultCallback
+  implements View.OnClickListener
 {
-  public alph(DownloaderGetCodeClient paramDownloaderGetCodeClient) {}
+  public alph(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void onClick(View paramView)
   {
-    LogUtility.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback...");
-    if (paramEIPCResult == null) {
-      return;
-    }
-    paramEIPCResult = paramEIPCResult.data;
-    if (paramEIPCResult == null)
-    {
-      LogUtility.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback data is null...");
-      return;
-    }
-    String str1 = paramEIPCResult.getString("PackageName");
-    int i = paramEIPCResult.getInt("VersionCode");
-    String str2 = paramEIPCResult.getString("Code");
-    boolean bool = paramEIPCResult.getBoolean("IsSuccess");
-    LogUtility.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback pkgName|" + str1 + " versionCode|" + i + " isSuc|" + bool + " code|" + str2);
-    if (DownloaderGetCodeClient.a(this.a) != null)
-    {
-      DownloaderGetCodeClient.a(this.a).a(str1, i, str2, bool, null);
-      return;
-    }
-    LogUtility.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback getCodeListener is null");
+    paramView = (alpm)paramView.getTag();
+    this.a.a(paramView.jdField_a_of_type_JavaLangString, paramView.b, paramView.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     alph
  * JD-Core Version:    0.7.0.1
  */

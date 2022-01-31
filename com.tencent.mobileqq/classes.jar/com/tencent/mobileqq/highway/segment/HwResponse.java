@@ -12,6 +12,7 @@ public class HwResponse
   public long htCost;
   public int hwSeq = -1;
   public boolean isFinish;
+  public boolean isIpv6;
   public int mBuCmdId = -1;
   public byte[] mBuExtendinfo;
   public byte[] mRespData;
@@ -29,7 +30,7 @@ public class HwResponse
   public String dumpRespInfo()
   {
     StringBuilder localStringBuilder = new StringBuilder(" REQTRACE_RSP");
-    localStringBuilder.append(" B_ID:").append(this.mBuCmdId).append(" T_ID:").append(this.mTransId).append(" Seq:").append(this.hwSeq).append(" Cmd:").append(this.cmd).append(" Err_C:").append(this.errCode).append(" Err_B:").append(this.buzRetCode).append(" Err_H:").append(this.retCode).append(" COST_Switch:").append(this.switchCost).append("ms").append(" COST_REQ:").append(this.reqCost).append("ms").append(" COST_HT:").append(this.htCost).append("ms").append(" COST_CACHE:").append(this.cacheCost).append("ms").append(" FIN:").append(this.isFinish).append(" Retry:").append(this.shouldRetry).append(" RespLen:").append(this.respLength);
+    localStringBuilder.append(" B_ID:").append(this.mBuCmdId).append(" T_ID:").append(this.mTransId).append(" Seq:").append(this.hwSeq).append(" Cmd:").append(this.cmd).append(" Err_C:").append(this.errCode).append(" Err_B:").append(this.buzRetCode).append(" Err_H:").append(this.retCode).append(" COST_Switch:").append(this.switchCost).append("ms").append(" COST_REQ:").append(this.reqCost).append("ms").append(" COST_HT:").append(this.htCost).append("ms").append(" COST_CACHE:").append(this.cacheCost).append("ms").append(" FIN:").append(this.isFinish).append(" Retry:").append(this.shouldRetry).append(" RespLen:").append(this.respLength).append(" isIpv6:").append(this.isIpv6);
     return localStringBuilder.toString();
   }
   
@@ -42,7 +43,7 @@ public class HwResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.highway.segment.HwResponse
  * JD-Core Version:    0.7.0.1
  */

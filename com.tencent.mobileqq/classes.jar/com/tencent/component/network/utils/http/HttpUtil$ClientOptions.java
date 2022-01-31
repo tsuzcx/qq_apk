@@ -6,39 +6,27 @@ import java.util.concurrent.TimeUnit;
 
 public final class HttpUtil$ClientOptions
 {
-  public int a;
-  public long a;
-  public Proxy a;
-  public TimeUnit a;
-  public boolean a;
-  public int b = -1;
-  public int c = 20000;
-  public int d = 20000;
-  public int e = 45000;
+  public int connManagerTimeout = 30000;
+  public int connTimeout = 30000;
+  public int maxConnection = -1;
+  public int maxConnectionPerRoute = -1;
+  public boolean multiConnection = false;
+  public Proxy proxy = Proxy.NO_PROXY;
+  public int soTimeout = 55000;
+  public long timeToLive = -1L;
+  public TimeUnit timeToLiveUnit = TimeUnit.SECONDS;
   
-  public HttpUtil$ClientOptions()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaUtilConcurrentTimeUnit = TimeUnit.SECONDS;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaNetProxy = Proxy.NO_PROXY;
-  }
+  public HttpUtil$ClientOptions() {}
   
   public HttpUtil$ClientOptions(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaUtilConcurrentTimeUnit = TimeUnit.SECONDS;
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaNetProxy = Proxy.NO_PROXY;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (this.jdField_a_of_type_Boolean)
+    this.multiConnection = paramBoolean;
+    if (this.multiConnection)
     {
-      this.jdField_a_of_type_Int = DownloaderImpl.MAX_CONNECTION;
-      this.b = DownloaderImpl.MAX_CONNECTION_PER_ROUTE;
-      this.jdField_a_of_type_Long = DownloaderImpl.TIME_TO_LIVE_HTTP;
-      this.jdField_a_of_type_JavaUtilConcurrentTimeUnit = DownloaderImpl.TIME_TO_LIVE_UNIT;
+      this.maxConnection = DownloaderImpl.MAX_CONNECTION;
+      this.maxConnectionPerRoute = DownloaderImpl.MAX_CONNECTION_PER_ROUTE;
+      this.timeToLive = DownloaderImpl.TIME_TO_LIVE_HTTP;
+      this.timeToLiveUnit = DownloaderImpl.TIME_TO_LIVE_UNIT;
     }
   }
 }

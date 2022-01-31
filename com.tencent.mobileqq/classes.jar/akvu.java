@@ -1,56 +1,47 @@
-import com.tencent.biz.common.util.Util;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster.SetCookiesCallback;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.CopyOnWriteArrayList;
-import mqq.app.AppRuntime;
 
-class akvu
-  implements Runnable
+public class akvu
 {
-  akvu(akvt paramakvt) {}
-  
-  public void run()
+  public static akvs a(akvv paramakvv, int paramInt)
   {
-    Iterator localIterator = this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.keySet().iterator();
-    if (localIterator.hasNext())
+    if (paramakvv == null) {
+      throw new RuntimeException("params can not be null!");
+    }
+    Object localObject;
+    switch (paramakvv.jdField_a_of_type_Int)
     {
-      Object localObject3 = (String)localIterator.next();
-      Object localObject2 = (CopyOnWriteArrayList)this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject3);
-      if (this.a.jdField_a_of_type_MqqAppAppRuntime == null) {}
-      for (Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();; localObject1 = this.a.jdField_a_of_type_MqqAppAppRuntime)
-      {
-        localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.a((String)localObject3, (AppRuntime)localObject1);
-        localObject2 = ((CopyOnWriteArrayList)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          localObject3 = (SwiftBrowserCookieMonster.SetCookiesCallback)((Iterator)localObject2).next();
-          if (QLog.isColorLevel()) {
-            QLog.i("SwiftBrowserCookieMonster", 2, "post callback onSetCookiesFinished " + Util.b((String)localObject1, new String[0]) + ", errorCode: " + this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.jdField_a_of_type_Long);
-          }
-          if (this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.b) {
-            QLog.i("SwiftBrowserCookieMonster", 1, "cookie is wrong, need do jump ptlogin! " + Util.b((String)localObject1, new String[0]));
-          }
-          ((SwiftBrowserCookieMonster.SetCookiesCallback)localObject3).a((String)localObject1, null, this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.jdField_a_of_type_Long);
-        }
+    default: 
+      localObject = new akvx(paramInt);
+    }
+    for (;;)
+    {
+      QLog.i("KeyingManager", 1, "getKeying keying: " + localObject + "  params: " + paramakvv.toString());
+      return localObject;
+      localObject = new akvm(paramInt);
+      continue;
+      localObject = new akvz(paramInt);
+      continue;
+      localObject = new akvq(paramInt);
+      continue;
+      localObject = new akvr(paramInt);
+      continue;
+      if (TextUtils.isEmpty(paramakvv.jdField_a_of_type_JavaLangString)) {
         break;
       }
+      localObject = new akvn(paramInt, paramakvv.jdField_a_of_type_JavaLangString);
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.b) || (this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.jdField_a_of_type_Long > 0L))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.b();
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserCookieMonster.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+    throw new RuntimeException("fragmentShader can not be empty!");
+  }
+  
+  public static akvv a(int paramInt)
+  {
+    return new akvv(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akvu
  * JD-Core Version:    0.7.0.1
  */

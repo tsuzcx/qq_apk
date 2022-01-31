@@ -1,53 +1,52 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Drawable.ConstantState;
-import android.graphics.drawable.LayerDrawable;
-import android.graphics.drawable.StateListDrawable;
+import com.tencent.qphone.base.util.QLog;
 
-public class aknq
+class aknq
+  implements akuc
 {
-  private final Drawable a;
-  private final Drawable b;
+  aknq(aknp paramaknp, String paramString, akuc paramakuc) {}
   
-  public aknq(Context paramContext)
+  public void a()
   {
-    paramContext = paramContext.getResources();
-    this.a = paramContext.getDrawable(2130837525);
-    this.b = paramContext.getDrawable(2130837527);
+    if (this.jdField_a_of_type_Akuc != null) {
+      this.jdField_a_of_type_Akuc.a();
+    }
   }
   
-  private Drawable a(Drawable paramDrawable)
+  public void a(long paramLong1, long paramLong2)
   {
-    return new LayerDrawable(new Drawable[] { paramDrawable, this.b });
+    if (this.jdField_a_of_type_Akuc != null) {
+      this.jdField_a_of_type_Akuc.a(paramLong1, paramLong2);
+    }
   }
   
-  private Drawable b(Drawable paramDrawable)
+  public void a(boolean paramBoolean, akud paramakud)
   {
-    paramDrawable = paramDrawable.getConstantState().newDrawable().mutate();
-    paramDrawable.setColorFilter(2147483647, PorterDuff.Mode.MULTIPLY);
-    return paramDrawable;
+    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes onARResourceDownloadComplete. result = " + paramBoolean + ", name = " + paramakud.d + ", filename = " + paramakud.c + ", url = " + paramakud.jdField_a_of_type_JavaLangString);
+    if (paramBoolean) {
+      if (!aknp.a(this.jdField_a_of_type_Aknp, paramakud.c, paramakud.b))
+      {
+        aknp.a(this.jdField_a_of_type_Aknp, paramakud.c);
+        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes failed. checkFileValid failed.");
+      }
+    }
+    while (this.jdField_a_of_type_Akuc == null)
+    {
+      return;
+      if ((!paramakud.d.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) || (this.jdField_a_of_type_Aknp.a(paramakud.d, paramakud.c, paramakud.b) != 0)) {}
+    }
+    this.jdField_a_of_type_Akuc.a(paramBoolean, paramakud);
   }
   
-  public Drawable a(Drawable paramDrawable, int paramInt1, int paramInt2)
+  public void b()
   {
-    paramDrawable = new LayerDrawable(new Drawable[] { this.a, paramDrawable });
-    paramDrawable.setLayerInset(1, paramInt1, paramInt2, paramInt1, paramInt2);
-    return paramDrawable;
-  }
-  
-  public StateListDrawable a(Drawable paramDrawable1, Drawable paramDrawable2)
-  {
-    StateListDrawable localStateListDrawable = new StateListDrawable();
-    localStateListDrawable.addState(new int[] { 16842919 }, paramDrawable2);
-    localStateListDrawable.addState(new int[0], paramDrawable1);
-    return localStateListDrawable;
+    if (this.jdField_a_of_type_Akuc != null) {
+      this.jdField_a_of_type_Akuc.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aknq
  * JD-Core Version:    0.7.0.1
  */

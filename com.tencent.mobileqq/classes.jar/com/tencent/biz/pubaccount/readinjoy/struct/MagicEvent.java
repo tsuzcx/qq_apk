@@ -1,19 +1,21 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
 import android.support.annotation.NonNull;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.utils.Base64Util;
+import atmo;
+import baaw;
+import ool;
 
 public class MagicEvent
-  extends Entity
+  extends atmo
 {
+  private static final String TAG = "MagicEvent";
   public String val;
   
   public MagicEvent() {}
   
   public MagicEvent(boolean paramBoolean, @NonNull String paramString, long paramLong)
   {
-    this.val = obfuscate(paramBoolean, paramString, paramLong);
+    this.val = ool.a(obfuscate(paramBoolean, paramString, paramLong));
   }
   
   public static long bytesToLong(byte[] paramArrayOfByte)
@@ -54,7 +56,12 @@ public class MagicEvent
       arrayOfByte[i] = ((byte)(arrayOfByte[i] ^ 0xB6));
       i += 1;
     }
-    return Base64Util.encodeToString(arrayOfByte, 2);
+    return baaw.encodeToString(arrayOfByte, 2);
+  }
+  
+  public String getDecryptedVal()
+  {
+    return ool.b(this.val);
   }
   
   public String getVal()

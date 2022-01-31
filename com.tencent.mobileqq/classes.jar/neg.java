@@ -1,21 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.ClassInfo;
 
 public final class neg
-  implements DialogInterface.OnClickListener
+  implements Parcelable.Creator<VideoInfo.ClassInfo>
 {
-  public neg(List paramList) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public VideoInfo.ClassInfo a(Parcel paramParcel)
   {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext()) {
-      StoryVideoUploadManager.a((String)localIterator.next());
-    }
-    paramDialogInterface.dismiss();
+    return new VideoInfo.ClassInfo(paramParcel);
+  }
+  
+  public VideoInfo.ClassInfo[] a(int paramInt)
+  {
+    return new VideoInfo.ClassInfo[paramInt];
   }
 }
 

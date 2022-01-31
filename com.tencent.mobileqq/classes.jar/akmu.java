@@ -1,33 +1,128 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose;
+import android.content.Context;
+import android.opengl.Matrix;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class akmu
-  implements View.OnClickListener
 {
-  public akmu(QQCustomDialogWtihInputAndChoose paramQQCustomDialogWtihInputAndChoose, DialogInterface.OnClickListener paramOnClickListener) {}
+  public static boolean a;
+  public static final float[] a;
+  private akmw jdField_a_of_type_Akmw;
+  private aljf jdField_a_of_type_Aljf;
+  private aljj jdField_a_of_type_Aljj = new akmv(this);
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
+  private boolean jdField_b_of_type_Boolean;
+  private float[] jdField_b_of_type_ArrayOfFloat = new float[16];
+  private float[] c;
+  private float[] d = new float[4];
   
-  public void onClick(View paramView)
+  static
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
+    jdField_a_of_type_ArrayOfFloat = new float[16];
+    Matrix.setIdentityM(jdField_a_of_type_ArrayOfFloat, 0);
+    jdField_a_of_type_Boolean = true;
+  }
+  
+  public static boolean a()
+  {
+    String str = DeviceProfileManager.b().a(DeviceProfileManager.DpcNames.ARCfg.name());
+    if (!TextUtils.isEmpty(str))
     {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose, 0);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a();
-    }
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.dismiss();
+      String[] arrayOfString = new String[1];
+      arrayOfString[0] = "";
+      int i = DeviceProfileManager.a(str, arrayOfString, new ajhb());
+      boolean bool;
+      if (i >= 1) {
+        if (Integer.valueOf(arrayOfString[0]).intValue() == 1) {
+          bool = true;
+        }
       }
+      for (;;)
+      {
+        QLog.i("AREngine_SensorTrackManager", 1, "arCfg = " + str + ", size = " + i + ", params[0] = " + arrayOfString[0] + ", isUseGameRotationVector = " + bool);
+        return bool;
+        bool = false;
+        continue;
+        bool = false;
+      }
+    }
+    return false;
+  }
+  
+  public void a()
+  {
+    a(true);
+  }
+  
+  public void a(Context paramContext, akmw paramakmw)
+  {
+    long l = System.currentTimeMillis();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Akmw = paramakmw;
+    b();
+    jdField_a_of_type_Boolean = this.jdField_a_of_type_Aljf.b();
+    akue.a().c(System.currentTimeMillis() - l);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (this.jdField_b_of_type_Boolean != paramBoolean)
+    {
+      this.jdField_b_of_type_Boolean = paramBoolean;
+      QLog.d("SensorTrackManager", 2, "enableSensor enabled: " + paramBoolean);
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Aljf == null) {
+      if (!a()) {
+        break label57;
+      }
+    }
+    label57:
+    for (this.jdField_a_of_type_Aljf = new aljf(this.jdField_a_of_type_AndroidContentContext, 5);; this.jdField_a_of_type_Aljf = new aljf(this.jdField_a_of_type_AndroidContentContext, 4))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SensorTrackManager", 2, "startupSensor");
+      }
+      this.jdField_a_of_type_Aljf.a(this.jdField_a_of_type_Aljj, 1);
       return;
     }
-    catch (Exception paramView) {}
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SensorTrackManager", 2, "stopSensor");
+    }
+    if (this.jdField_a_of_type_Aljf != null)
+    {
+      this.jdField_a_of_type_Aljf.a();
+      this.jdField_a_of_type_Aljf = null;
+    }
+  }
+  
+  public void d()
+  {
+    a(false);
+  }
+  
+  public void e()
+  {
+    c();
+    this.jdField_a_of_type_AndroidContentContext = null;
+    this.jdField_b_of_type_Boolean = false;
+    this.c = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akmu
  * JD-Core Version:    0.7.0.1
  */

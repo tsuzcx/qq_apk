@@ -11,7 +11,7 @@ import java.util.zip.ZipFile;
 public class IOUtil
 {
   public static final long CRC32_VALUE_INVALID = -1L;
-  private static final String a = "IOUtil";
+  private static final String TAG = "IOUtil";
   
   public static void closeStream(Closeable paramCloseable)
   {
@@ -141,13 +141,13 @@ public class IOUtil
     //   0	147	1	paramString	String
     //   49	10	2	bool	boolean
     //   31	20	3	localFileInputStream	java.io.FileInputStream
-    //   60	7	3	localException1	Exception
+    //   60	7	3	localException1	java.lang.Exception
     //   82	62	3	localObject1	Object
     //   1	97	4	localObject2	Object
     //   103	5	4	localObject3	Object
     //   113	7	4	localObject4	Object
-    //   125	7	4	localException2	Exception
-    //   137	5	4	localException3	Exception
+    //   125	7	4	localException2	java.lang.Exception
+    //   137	5	4	localException3	java.lang.Exception
     //   4	60	5	localObject5	Object
     // Exception table:
     //   from	to	target	type
@@ -161,7 +161,6 @@ public class IOUtil
   }
   
   public static boolean contentEquals(InputStream paramInputStream1, InputStream paramInputStream2)
-    throws IOException
   {
     Object localObject = paramInputStream1;
     if (!(paramInputStream1 instanceof BufferedInputStream)) {
@@ -171,17 +170,15 @@ public class IOUtil
     if (!(paramInputStream2 instanceof BufferedInputStream)) {
       paramInputStream1 = new BufferedInputStream(paramInputStream2);
     }
-    int i = ((InputStream)localObject).read();
-    if (-1 != i) {
-      if (i == paramInputStream1.read()) {}
+    for (int i = ((InputStream)localObject).read(); -1 != i; i = ((InputStream)localObject).read()) {
+      if (i != paramInputStream1.read()) {
+        return false;
+      }
     }
-    while (paramInputStream1.read() != -1)
-    {
-      return false;
-      i = ((InputStream)localObject).read();
-      break;
+    if (paramInputStream1.read() == -1) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
     }
-    return true;
   }
   
   /* Error */
@@ -203,7 +200,7 @@ public class IOUtil
     //   24: aload_3
     //   25: astore_0
     //   26: aload_3
-    //   27: invokestatic 83	com/tencent/mobileqq/pluginsdk/IOUtil:getCRC32Value	(Ljava/io/InputStream;)J
+    //   27: invokestatic 82	com/tencent/mobileqq/pluginsdk/IOUtil:getCRC32Value	(Ljava/io/InputStream;)J
     //   30: lstore_1
     //   31: aload_3
     //   32: invokestatic 65	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
@@ -238,8 +235,8 @@ public class IOUtil
     //   23	26	3	localFileInputStream	java.io.FileInputStream
     //   56	8	3	localObject1	Object
     //   65	1	3	localObject2	Object
-    //   37	7	4	localException1	Exception
-    //   69	1	4	localException2	Exception
+    //   37	7	4	localException1	java.lang.Exception
+    //   69	1	4	localException2	java.lang.Exception
     // Exception table:
     //   from	to	target	type
     //   15	24	37	java/lang/Exception
@@ -250,7 +247,6 @@ public class IOUtil
   }
   
   public static long getCRC32Value(InputStream paramInputStream)
-    throws Exception
   {
     long l1 = System.currentTimeMillis();
     int i = paramInputStream.available();
@@ -276,14 +272,14 @@ public class IOUtil
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokestatic 143	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1: invokestatic 142	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   4: ifeq +5 -> 9
     //   7: aconst_null
     //   8: areturn
     //   9: new 40	java/io/File
     //   12: dup
     //   13: aload_0
-    //   14: invokespecial 146	java/io/File:<init>	(Ljava/lang/String;)V
+    //   14: invokespecial 145	java/io/File:<init>	(Ljava/lang/String;)V
     //   17: astore_0
     //   18: aload_0
     //   19: invokevirtual 44	java/io/File:exists	()Z
@@ -296,14 +292,14 @@ public class IOUtil
     //   34: aload_1
     //   35: astore_0
     //   36: aload_1
-    //   37: invokevirtual 92	java/io/InputStream:available	()I
+    //   37: invokevirtual 91	java/io/InputStream:available	()I
     //   40: newarray byte
     //   42: astore_2
     //   43: aload_1
     //   44: astore_0
     //   45: aload_1
     //   46: aload_2
-    //   47: invokevirtual 98	java/io/InputStream:read	([B)I
+    //   47: invokevirtual 97	java/io/InputStream:read	([B)I
     //   50: pop
     //   51: aload_1
     //   52: invokestatic 65	com/tencent/mobileqq/pluginsdk/IOUtil:closeStream	(Ljava/io/Closeable;)V
@@ -341,9 +337,9 @@ public class IOUtil
     //   33	49	1	localObject1	Object
     //   83	1	1	localObject2	Object
     //   42	14	2	arrayOfByte	byte[]
-    //   57	6	2	localException1	Exception
+    //   57	6	2	localException1	java.lang.Exception
     //   74	12	2	localObject3	Object
-    //   89	1	2	localException2	Exception
+    //   89	1	2	localException2	java.lang.Exception
     // Exception table:
     //   from	to	target	type
     //   25	34	57	java/lang/Exception

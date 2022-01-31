@@ -1,20 +1,16 @@
-import com.tencent.mobileqq.data.QCallRecord;
-import com.tencent.mobileqq.qcall.QCallProxy;
-import java.util.Comparator;
+import android.view.animation.Interpolator;
 
 public class agzx
-  implements Comparator
+  implements Interpolator
 {
-  public agzx(QCallProxy paramQCallProxy) {}
-  
-  public int a(QCallRecord paramQCallRecord1, QCallRecord paramQCallRecord2)
+  public float getInterpolation(float paramFloat)
   {
-    return (int)(paramQCallRecord2.time - paramQCallRecord1.time);
+    return (float)(Math.pow(paramFloat - 1.0D, 3.0D) + 1.0D);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agzx
  * JD-Core Version:    0.7.0.1
  */

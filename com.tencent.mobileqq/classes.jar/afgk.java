@@ -1,43 +1,57 @@
-import android.app.Activity;
-import com.tencent.common.galleryactivity.AbstractAnimationManager;
-import com.tencent.common.galleryactivity.AbstractGalleryScene;
-import com.tencent.common.galleryactivity.AbstractImageListModel;
-import com.tencent.common.galleryactivity.AbstractImageListScene;
-import com.tencent.common.galleryactivity.GalleryManager;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserGalleryScene;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserModel;
+import org.json.JSONObject;
 
 public class afgk
-  extends GalleryManager
 {
-  public afgk(PicBrowserActivity paramPicBrowserActivity) {}
+  public int a;
+  public short a;
+  public short b;
   
-  public AbstractAnimationManager a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
+  public JSONObject a()
   {
-    return super.a(paramActivity, paramAbstractImageListModel);
+    try
+    {
+      localJSONObject = new JSONObject();
+      localException1.printStackTrace();
+    }
+    catch (Exception localException1)
+    {
+      try
+      {
+        localJSONObject.put("entryId", this.jdField_a_of_type_Int);
+        localJSONObject.put("flagId", this.jdField_a_of_type_Short);
+        localJSONObject.put("flagValue", this.b);
+        return localJSONObject;
+      }
+      catch (Exception localException2)
+      {
+        JSONObject localJSONObject;
+        break label46;
+      }
+      localException1 = localException1;
+      localJSONObject = null;
+    }
+    label46:
+    return localJSONObject;
   }
   
-  public AbstractGalleryScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
+  public void a(JSONObject paramJSONObject)
   {
-    return new PicBrowserGalleryScene((PicBrowserActivity)paramActivity, paramAbstractImageListModel);
+    if (paramJSONObject != null)
+    {
+      this.jdField_a_of_type_Int = paramJSONObject.optInt("entryId");
+      this.jdField_a_of_type_Short = ((short)paramJSONObject.optInt("flagId"));
+      this.b = ((short)paramJSONObject.optInt("flagValue"));
+    }
   }
   
-  public AbstractImageListModel a(Activity paramActivity)
+  boolean a()
   {
-    paramActivity = new PicBrowserModel(this.a, this.a.jdField_b_of_type_JavaUtilArrayList);
-    paramActivity.a(this.a.jdField_b_of_type_Int);
-    return paramActivity;
-  }
-  
-  public AbstractImageListScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
-  {
-    return null;
+    return (this.jdField_a_of_type_Short != 0) && (this.b == 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afgk
  * JD-Core Version:    0.7.0.1
  */

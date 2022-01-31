@@ -1,20 +1,28 @@
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder.Holder;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-
 public class vli
-  implements Runnable
 {
-  public vli(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, MessageForShortVideo paramMessageForShortVideo, ShortVideoRealItemBuilder.Holder paramHolder) {}
-  
-  public void run()
+  public static String a(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder$Holder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileProgress, true);
+    if (paramString.getBytes().length <= paramInt) {
+      return paramString;
+    }
+    int k = paramString.length();
+    int j = 0;
+    for (int i = 0;; i = j) {
+      if (j < k)
+      {
+        j += Character.charCount(paramString.codePointAt(j));
+        if (paramString.substring(0, j).getBytes().length <= paramInt) {}
+      }
+      else
+      {
+        return paramString.substring(0, i);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vli
  * JD-Core Version:    0.7.0.1
  */

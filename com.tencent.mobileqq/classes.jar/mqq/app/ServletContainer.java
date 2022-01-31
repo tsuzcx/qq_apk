@@ -19,7 +19,7 @@ public class ServletContainer
 {
   private final ConcurrentHashMap<String, Set<String>> actionMap = new ConcurrentHashMap();
   private AppRuntime app;
-  private ExecutorService mService = Executors.newSingleThreadExecutor();
+  private ExecutorService mService = Executors.newSingleThreadExecutor(new ServletContainer.1(this));
   final ConcurrentHashMap<String, Servlet> managedServlet = new ConcurrentHashMap();
   
   public ServletContainer(AppRuntime paramAppRuntime)
@@ -37,28 +37,11 @@ public class ServletContainer
     this.managedServlet.clear();
   }
   
-  public void forward(AppRuntime paramAppRuntime, final Intent paramIntent)
+  public void forward(AppRuntime paramAppRuntime, Intent paramIntent)
   {
     if (!this.mService.isShutdown())
     {
-      paramAppRuntime = new Runnable()
-      {
-        public void run()
-        {
-          try
-          {
-            Servlet localServlet = ServletContainer.this.getServlet(this.val$className);
-            if (localServlet != null) {
-              localServlet.service(paramIntent);
-            }
-            return;
-          }
-          catch (Exception localException)
-          {
-            QLog.e("mqq", 1, "", localException);
-          }
-        }
-      };
+      paramAppRuntime = new ServletContainer.2(this, paramIntent.getComponent().getClassName(), paramIntent);
       boolean bool = false;
       if ((paramIntent instanceof NewIntent)) {
         bool = ((NewIntent)paramIntent).runNow;
@@ -76,13 +59,12 @@ public class ServletContainer
   
   Servlet getServlet(String paramString)
   {
-    Servlet localServlet = (Servlet)this.managedServlet.get(paramString);
-    Object localObject = localServlet;
+    Object localObject = (Servlet)this.managedServlet.get(paramString);
     Class localClass;
-    if (localServlet == null) {
+    if (localObject == null) {
       synchronized (this.managedServlet)
       {
-        localServlet = (Servlet)this.managedServlet.get(paramString);
+        Servlet localServlet = (Servlet)this.managedServlet.get(paramString);
         localObject = localServlet;
         if (localServlet == null) {
           try
@@ -139,6 +121,7 @@ public class ServletContainer
             }
           }
         }
+        return localClass;
       }
     }
     return localClass;
@@ -146,33 +129,34 @@ public class ServletContainer
   
   public void notifyMSFServlet(Class<? extends MSFServlet> paramClass, FromServiceMsg paramFromServiceMsg)
   {
-    Class<? extends MSFServlet> localClass = null;
     if (paramClass != null)
     {
       paramClass = (MSFServlet)getServlet(paramClass.getName());
-      localClass = paramClass;
-      if (paramClass != null)
-      {
+      if (paramClass != null) {
         paramClass.onReceive(paramFromServiceMsg);
-        localClass = paramClass;
       }
     }
-    paramClass = (Set)this.actionMap.get(paramFromServiceMsg.getServiceCmd());
-    if (paramClass != null)
+    for (;;)
     {
-      paramClass = paramClass.iterator();
-      while (paramClass.hasNext())
+      Object localObject = (Set)this.actionMap.get(paramFromServiceMsg.getServiceCmd());
+      if (localObject != null)
       {
-        MSFServlet localMSFServlet = (MSFServlet)getServlet((String)paramClass.next());
-        if ((localMSFServlet != null) && (localMSFServlet != localClass)) {
-          localMSFServlet.onReceive(paramFromServiceMsg);
-        } else if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getServiceCmd() != null) && (paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c"))) {
-          MqqConnRateReport.getInstance().doReport(MqqConnRateReport.EventType.eMSFRecvInviteMsg, paramFromServiceMsg.getWupBuffer(), 20);
+        localObject = ((Set)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          MSFServlet localMSFServlet = (MSFServlet)getServlet((String)((Iterator)localObject).next());
+          if ((localMSFServlet != null) && (localMSFServlet != paramClass)) {
+            localMSFServlet.onReceive(paramFromServiceMsg);
+          } else if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getServiceCmd() != null) && (paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c"))) {
+            MqqConnRateReport.getInstance().doReport(MqqConnRateReport.EventType.eMSFRecvInviteMsg, paramFromServiceMsg.getWupBuffer(), 20);
+          }
         }
       }
-    }
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getServiceCmd() != null) && (paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c"))) {
-      MqqConnRateReport.getInstance().doReport(MqqConnRateReport.EventType.eMSFRecvInviteMsg, paramFromServiceMsg.getWupBuffer(), 19);
+      if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getServiceCmd() != null) && (paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c"))) {
+        MqqConnRateReport.getInstance().doReport(MqqConnRateReport.EventType.eMSFRecvInviteMsg, paramFromServiceMsg.getWupBuffer(), 19);
+      }
+      return;
+      paramClass = null;
     }
   }
 }

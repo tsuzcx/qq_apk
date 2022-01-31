@@ -1,21 +1,32 @@
-import com.tencent.mobileqq.search.OperationSearchEntryModel;
-import com.tencent.mobileqq.search.model.OperationSearchEntryDataModel;
-import com.tencent.util.UiThreadUtil;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahvu
-  implements Runnable
+  implements basu
 {
-  public ahvu(OperationSearchEntryModel paramOperationSearchEntryModel, OperationSearchEntryDataModel paramOperationSearchEntryDataModel) {}
+  public ahvu(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelOperationSearchEntryDataModel.a();
-    UiThreadUtil.a(new ahvv(this));
+    if (paramInt == 1)
+    {
+      this.a.a.setVisibility(8);
+      this.a.b.setImageResource(2130845180);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoPreviewActivity", 2, "changePlayState, playState => " + this.a.a(paramInt));
+      }
+      return;
+      this.a.b.setImageResource(2130845179);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahvu
  * JD-Core Version:    0.7.0.1
  */

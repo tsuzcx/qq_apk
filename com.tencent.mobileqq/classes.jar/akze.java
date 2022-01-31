@@ -1,25 +1,28 @@
-import android.net.Uri;
-import com.tencent.mobileqq.webview.webso.WebSoService;
-import com.tencent.mobileqq.webview.webso.WebSoService.CallBack;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.3;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.3.3.1;
 
 public class akze
-  implements Runnable
+  implements alam
 {
-  public akze(WebSoService paramWebSoService, String paramString1, String paramString2, String paramString3, Uri paramUri, WebSoService.WebSoState paramWebSoState, boolean paramBoolean, WebSoService.CallBack paramCallBack) {}
+  public akze(ArkAppDeviceModule.ObserverMethod.3.3.1 param1) {}
   
-  public void run()
+  public void a(long paramLong)
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState, this.jdField_a_of_type_Boolean);
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$CallBack == null) {
-      return;
+    ark.VariantWrapper localVariantWrapper = this.a.a.a.jdField_a_of_type_Akyy.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
     }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$CallBack.a(str);
+  }
+  
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  {
+    akyv.a(this.a.a.a.jdField_a_of_type_Akyy.a, this.a.a.a.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akze
  * JD-Core Version:    0.7.0.1
  */

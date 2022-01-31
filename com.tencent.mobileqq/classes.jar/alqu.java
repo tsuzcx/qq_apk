@@ -1,35 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.YybHandleUtil;
-import com.tencent.open.downloadnew.common.DownloadDBHelper;
-import java.io.File;
+import android.annotation.TargetApi;
+import android.hardware.Camera;
+import android.hardware.Camera.Parameters;
+import java.io.IOException;
 
-public final class alqu
-  implements Runnable
+@TargetApi(9)
+public class alqu
+  implements alql
 {
-  public void run()
-  {
-    Object localObject = DownloadDBHelper.a().a("com.tencent.android.qqdownloader");
-    String str = "";
-    if (localObject != null) {
-      str = ((DownloadInfo)localObject).k;
-    }
-    if (!TextUtils.isEmpty(str))
-    {
-      localObject = new File(str);
-      LogUtility.c(YybHandleUtil.a, "---localFilePath = " + str);
-      if ((localObject != null) && (((File)localObject).exists()))
-      {
-        LogUtility.c(YybHandleUtil.a, "---delete apk ");
-        ((File)localObject).delete();
-      }
-    }
-  }
+  private Camera.Parameters jdField_a_of_type_AndroidHardwareCamera$Parameters;
+  private Camera jdField_a_of_type_AndroidHardwareCamera;
+  private IOException jdField_a_of_type_JavaIoIOException;
+  private boolean jdField_a_of_type_Boolean;
+  private Camera.Parameters b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alqu
  * JD-Core Version:    0.7.0.1
  */

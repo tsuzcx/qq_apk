@@ -1,23 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import android.graphics.drawable.Drawable;
+import java.net.URL;
 
-public class xhf
-  extends BroadcastReceiver
+public abstract class xhf
+  extends xgy
 {
-  public xhf(SendHbActivity paramSendHbActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public Drawable a()
   {
-    if (("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) && (SendHbActivity.a(this.a)) && ((this.a.a & 0x40) > 0)) {
-      this.a.finish();
-    }
+    return null;
   }
+  
+  public abstract URL a();
+  
+  public abstract Drawable b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     xhf
  * JD-Core Version:    0.7.0.1
  */

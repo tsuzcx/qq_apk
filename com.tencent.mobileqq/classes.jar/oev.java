@@ -1,19 +1,14 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.storyHome.model.FeedManager;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import java.io.File;
+import java.io.FileFilter;
 
 class oev
-  extends SimpleJob
+  implements FileFilter
 {
-  oev(oeu paramoeu, String paramString) {}
+  oev(oet paramoet) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public boolean accept(File paramFile)
   {
-    FeedSegment.a(this.jdField_a_of_type_Oeu.a.a).a(this.jdField_a_of_type_JavaLangString);
-    return null;
+    return !paramFile.getName().endsWith(".json");
   }
 }
 

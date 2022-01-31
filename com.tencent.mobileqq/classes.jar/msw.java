@@ -1,58 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class msw
-  implements INetInfoHandler
+  implements begw
 {
-  public msw(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager) {}
+  public msw(EqqAccountDetailActivity paramEqqAccountDetailActivity, nbu paramnbu, begr parambegr, int paramInt) {}
   
-  public void onNetMobile2None()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "INetInfoHandler onNetMobile2None()");
-    }
-    FastWebVideoFeedsPlayManager.d(this.a);
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "INetInfoHandler onNetMobile2Wifi() ssid=" + paramString);
-    }
-    FastWebVideoFeedsPlayManager.a(this.a, true);
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "INetInfoHandler onNetNone2Mobile() apn=" + paramString);
-    }
-    FastWebVideoFeedsPlayManager.a(this.a, false);
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "INetInfoHandler onNetNone2Wifi() ssid=" + paramString);
-    }
-    FastWebVideoFeedsPlayManager.a(this.a, true);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "INetInfoHandler onNetWifi2Mobile() apn=" + paramString);
-    }
-    FastWebVideoFeedsPlayManager.a(this.a, false);
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "INetInfoHandler onNetWifi2None()");
-    }
-    FastWebVideoFeedsPlayManager.d(this.a);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b) {}
+    do
+    {
+      return;
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b = true;
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b(this.jdField_a_of_type_Nbu, paramInt + 1);
+      this.jdField_a_of_type_Begr.dismiss();
+    } while ((!((nfp)EqqAccountDetailActivity.o(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity).getManager(88)).a(EqqAccountDetailActivity.n(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity))) || (this.jdField_a_of_type_Int == paramInt));
+    ((ngh)EqqAccountDetailActivity.p(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity).a(88)).a(134243867, EqqAccountDetailActivity.o(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), null, null, null, paramInt + 1, false);
   }
 }
 

@@ -1,6 +1,7 @@
 package com.tencent.smtt.export.external.extension.proxy;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.ValueCallback;
@@ -106,6 +107,13 @@ public abstract class ProxyWebViewClientExtension
     }
   }
   
+  public void onFakeLoginRecognised(Bundle paramBundle)
+  {
+    if (this.mWebViewClientExt != null) {
+      this.mWebViewClientExt.onFakeLoginRecognised(paramBundle);
+    }
+  }
+  
   public void onFlingScrollBegin(int paramInt1, int paramInt2, int paramInt3)
   {
     if (this.mWebViewClientExt != null) {
@@ -162,6 +170,7 @@ public abstract class ProxyWebViewClientExtension
       if ((paramString1.getMessage() == null) || (!paramString1.getMessage().contains("onMetricsSavedCountReceived"))) {
         throw paramString1;
       }
+      Log.d("incompatible-oldcore", "IX5WebViewClientExtension.onMetricsSavedCountReceived");
       sCompatibleOnMetricsSavedCountReceived = false;
     }
   }
@@ -406,7 +415,7 @@ public abstract class ProxyWebViewClientExtension
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.smtt.export.external.extension.proxy.ProxyWebViewClientExtension
  * JD-Core Version:    0.7.0.1
  */

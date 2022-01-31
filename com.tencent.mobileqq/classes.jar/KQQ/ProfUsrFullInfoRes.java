@@ -10,17 +10,17 @@ import java.util.Map;
 public final class ProfUsrFullInfoRes
   extends JceStruct
 {
-  static Map cache_sRemarkInfo;
-  static ArrayList cache_sTagInfo;
+  static Map<Long, String> cache_sRemarkInfo;
+  static ArrayList<TagInfo> cache_sTagInfo;
   static ProfSmpInfoRes cache_strPfileSmpInfoRes;
-  public Map sRemarkInfo;
+  public Map<Long, String> sRemarkInfo;
   public String sSigInfo = "";
-  public ArrayList sTagInfo;
+  public ArrayList<TagInfo> sTagInfo;
   public ProfSmpInfoRes strPfileSmpInfoRes;
   
   public ProfUsrFullInfoRes() {}
   
-  public ProfUsrFullInfoRes(ProfSmpInfoRes paramProfSmpInfoRes, String paramString, Map paramMap, ArrayList paramArrayList)
+  public ProfUsrFullInfoRes(ProfSmpInfoRes paramProfSmpInfoRes, String paramString, Map<Long, String> paramMap, ArrayList<TagInfo> paramArrayList)
   {
     this.strPfileSmpInfoRes = paramProfSmpInfoRes;
     this.sSigInfo = paramString;
@@ -62,7 +62,7 @@ public final class ProfUsrFullInfoRes
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     KQQ.ProfUsrFullInfoRes
  * JD-Core Version:    0.7.0.1
  */

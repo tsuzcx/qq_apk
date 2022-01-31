@@ -7,13 +7,24 @@ import java.io.InputStream;
 
 public class PNGReader
 {
-  private byte a;
-  private byte b;
-  private int c = 0;
-  private int d = 0;
+  private static final int IHDR = 1229472850;
+  private static final long SIGNATURE = -8552249625308161526L;
+  private byte bit_depth;
+  private byte color_type;
+  private int height = 0;
+  private int width = 0;
   
-  private int a(byte[] paramArrayOfByte, int paramInt)
-    throws Exception
+  private int readInt(InputStream paramInputStream)
+  {
+    byte[] arrayOfByte = new byte[4];
+    paramInputStream.read(arrayOfByte, 0, 4);
+    int i = arrayOfByte[0];
+    int j = arrayOfByte[1];
+    int k = arrayOfByte[2];
+    return arrayOfByte[3] & 0xFF | (i & 0xFF) << 24 | (j & 0xFF) << 16 | (k & 0xFF) << 8;
+  }
+  
+  private int readInt(byte[] paramArrayOfByte, int paramInt)
   {
     int j = paramInt + 1;
     paramInt = paramArrayOfByte[paramInt];
@@ -23,8 +34,7 @@ public class PNGReader
     return (j & 0xFF) << 16 | (paramInt & 0xFF) << 24 | (paramArrayOfByte[i] & 0xFF) << 8 | paramArrayOfByte[k] & 0xFF;
   }
   
-  private long a(InputStream paramInputStream)
-    throws Exception
+  private long readLong(InputStream paramInputStream)
   {
     byte[] arrayOfByte = new byte[8];
     paramInputStream.read(arrayOfByte, 0, 8);
@@ -38,29 +48,17 @@ public class PNGReader
     return arrayOfByte[7] & 0xFF | (l1 & 0xFF) << 56 | (l2 & 0xFF) << 48 | (l3 & 0xFF) << 40 | (l4 & 0xFF) << 32 | (l5 & 0xFF) << 24 | (l6 & 0xFF) << 16 | (l7 & 0xFF) << 8;
   }
   
-  private int b(InputStream paramInputStream)
-    throws Exception
+  private boolean read_IHDR(InputStream paramInputStream)
   {
-    byte[] arrayOfByte = new byte[4];
-    paramInputStream.read(arrayOfByte, 0, 4);
-    int i = arrayOfByte[0];
-    int j = arrayOfByte[1];
-    int k = arrayOfByte[2];
-    return arrayOfByte[3] & 0xFF | (i & 0xFF) << 24 | (j & 0xFF) << 16 | (k & 0xFF) << 8;
-  }
-  
-  private boolean c(InputStream paramInputStream)
-    throws Exception
-  {
-    if ((b(paramInputStream) != 13) || (b(paramInputStream) != 1229472850)) {
+    if ((readInt(paramInputStream) != 13) || (readInt(paramInputStream) != 1229472850)) {
       return false;
     }
     byte[] arrayOfByte = new byte[13];
     paramInputStream.read(arrayOfByte, 0, 13);
-    this.c = a(arrayOfByte, 0);
-    this.d = a(arrayOfByte, 4);
-    this.a = arrayOfByte[8];
-    this.b = arrayOfByte[9];
+    this.width = readInt(arrayOfByte, 0);
+    this.height = readInt(arrayOfByte, 4);
+    this.bit_depth = arrayOfByte[8];
+    this.color_type = arrayOfByte[9];
     return true;
   }
   
@@ -69,7 +67,7 @@ public class PNGReader
     try
     {
       unpackImage(new FileInputStream(paramString));
-      if (((this.a == 8) || (this.a == 16)) && (this.b == 6)) {
+      if (((this.bit_depth == 8) || (this.bit_depth == 16)) && (this.color_type == 6)) {
         return true;
       }
     }
@@ -84,10 +82,9 @@ public class PNGReader
   }
   
   public void unpackImage(InputStream paramInputStream)
-    throws Exception
   {
-    if (a(paramInputStream) != -8552249625308161526L) {}
-    while (c(paramInputStream)) {
+    if (readLong(paramInputStream) != -8552249625308161526L) {}
+    while (read_IHDR(paramInputStream)) {
       return;
     }
     throw new IOException("Not a valid png image !!!");

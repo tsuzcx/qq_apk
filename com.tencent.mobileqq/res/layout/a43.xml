@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/c9k" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:id="@id/b9s" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <View android:id="@id/j_d" android:background="#ccdedfe0" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+        <View android:id="@id/j_w" android:background="#fffafafa" android:layout_width="fill_parent" android:layout_height="50.0dip" />
+    </LinearLayout>
+    <com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar android:layout_gravity="bottom" android:id="@id/j_x" android:layout_width="fill_parent" android:layout_height="65.0dip" />
+    <ViewStub android:id="@id/hzq" android:layout="@layout/a9t" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

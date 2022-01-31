@@ -1,14 +1,14 @@
 package com.tencent.biz.pubaccount.readinjoy.struct;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class InterestLabelInfo
-  extends Entity
+  extends atmo
   implements Cloneable
 {
   public static final String TABLE_NAME = ArticleInfo.class.getSimpleName();
-  @unique
+  @atoc
   public int mInterestLabelID;
   public String mInterestLabelNme;
   public boolean mIsDefault;

@@ -34,7 +34,7 @@ public final class m
     b = "";
     c = "";
     d = "";
-    l = "3.5.1.13";
+    l = "3.5.1.16";
     m = "";
     n = "";
     p = false;
@@ -66,7 +66,7 @@ public final class m
       paramb = "";
     }
     d = paramb;
-    l = "3.5.1.13";
+    l = "3.5.1.16";
     new Handler(f.getMainLooper());
     try
     {
@@ -145,7 +145,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     c.t.m.g.m
  * JD-Core Version:    0.7.0.1
  */

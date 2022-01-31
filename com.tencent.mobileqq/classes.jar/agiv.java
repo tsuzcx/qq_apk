@@ -1,96 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewConfiguration;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager.ButtonClickListener;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import mqq.util.WeakReference;
 
-public class agiv
-  implements View.OnTouchListener
+class agiv
+  implements DialogInterface.OnClickListener
 {
-  private float jdField_a_of_type_Float;
-  private long jdField_a_of_type_Long;
-  private float b;
+  agiv(agiu paramagiu) {}
   
-  public agiv(ARTipsManager paramARTipsManager) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    agjg localagjg;
-    float f2;
-    float f1;
-    if (ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager) != null)
-    {
-      paramView = (agjf)ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).getTag(2131362443);
-      localagjg = (agjg)ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).getTag();
-      if ((paramView != null) && (localagjg != null))
-      {
-        f2 = paramMotionEvent.getX();
-        f1 = paramMotionEvent.getY();
-      }
-    }
-    switch (paramMotionEvent.getAction())
-    {
-    default: 
-    case 0: 
-    case 2: 
-      do
-      {
-        do
-        {
-          do
-          {
-            return true;
-            this.jdField_a_of_type_Float = f2;
-            this.b = f1;
-            this.jdField_a_of_type_Long = System.currentTimeMillis();
-          } while ((paramView.jdField_a_of_type_Int != 1) || (paramView.b != 2));
-          localagjg.a.setPressed(true);
-          return true;
-        } while ((paramView.jdField_a_of_type_Int != 1) || (paramView.b != 2));
-        f2 -= this.jdField_a_of_type_Float;
-        f1 -= this.b;
-      } while ((float)Math.sqrt(f2 * f2 + f1 * f1) < ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).getScaledTouchSlop());
-      localagjg.a.setPressed(false);
-      return true;
-    case 1: 
-      f2 -= this.jdField_a_of_type_Float;
-      f1 -= this.b;
-      f2 = (float)Math.sqrt(f2 * f2 + f1 * f1);
-      long l1 = System.currentTimeMillis();
-      long l2 = this.jdField_a_of_type_Long;
-      if (f2 < ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).getScaledTouchSlop()) {
-        if (paramView.b == 2)
-        {
-          ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).removeMessages(101);
-          ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).obtainMessage(101).sendToTarget();
-          if (paramView.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$ButtonClickListener != null) {
-            paramView.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager$ButtonClickListener.a();
-          }
-        }
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_Float = 0.0F;
-        this.b = 0.0F;
-        this.jdField_a_of_type_Long = 0L;
-        localagjg.a.setPressed(false);
-        return true;
-        if ((f2 > ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).getScaledTouchSlop()) && (f1 > 50.0F) && ((float)(l1 - l2) < 300.0F) && (paramView.jdField_a_of_type_Int == 1))
-        {
-          ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).removeMessages(101);
-          ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).obtainMessage(101).sendToTarget();
-        }
-      }
-    }
-    this.jdField_a_of_type_Float = 0.0F;
-    this.b = 0.0F;
-    this.jdField_a_of_type_Long = 0L;
-    localagjg.a.setPressed(false);
-    return true;
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("PhotoConst.readinjoy_delete_pic_position", ((NewPhotoPreviewActivity)this.a.a.a.get()).a());
+    ((NewPhotoPreviewActivity)this.a.a.a.get()).setResult(-1, paramDialogInterface);
+    ((NewPhotoPreviewActivity)this.a.a.a.get()).finish();
+    agit.a(this.a.a).dismiss();
   }
 }
 

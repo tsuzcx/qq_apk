@@ -1,19 +1,66 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import NS_QQ_STORY_CLIENT.CLIENT.StGetStoryFeedListReq;
+import NS_QQ_STORY_CLIENT.CLIENT.StGetStoryFeedListRsp;
+import NS_QQ_STORY_CLIENT.CLIENT.StUinTime;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.mini.servlet.ProtoBufRequest;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
 
-class wxy
-  implements Runnable
+public class wxy
+  extends ProtoBufRequest
 {
-  wxy(wxx paramwxx) {}
+  private final CLIENT.StGetStoryFeedListReq a = new CLIENT.StGetStoryFeedListReq();
   
-  public void run()
+  public wxy(int paramInt, CLIENT.StUinTime paramStUinTime)
   {
-    AvatarPendantActivity.a(this.a.a, this.a.a.a.a);
+    this.a.listType.set(paramInt);
+    this.a.uinTime.set(paramStUinTime);
+    this.a.listNum.set(10);
+  }
+  
+  @Nullable
+  public static CLIENT.StGetStoryFeedListRsp a(byte[] paramArrayOfByte)
+  {
+    if (paramArrayOfByte == null)
+    {
+      a("data is null");
+      return null;
+    }
+    paramArrayOfByte = decode(paramArrayOfByte);
+    if (paramArrayOfByte == null)
+    {
+      a("storyData is null");
+      return null;
+    }
+    CLIENT.StGetStoryFeedListRsp localStGetStoryFeedListRsp = new CLIENT.StGetStoryFeedListRsp();
+    try
+    {
+      localStGetStoryFeedListRsp.mergeFrom(paramArrayOfByte);
+      return localStGetStoryFeedListRsp;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      a("onResponse fail." + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  private static void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("GetMineStoryFeedListRequest", 2, paramString);
+    }
+  }
+  
+  public byte[] getBusiBuf()
+  {
+    return this.a.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wxy
  * JD-Core Version:    0.7.0.1
  */

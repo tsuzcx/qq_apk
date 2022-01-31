@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasCommentFragment;
 
-public final class oii
-  implements Parcelable.Creator
+public class oii
+  implements View.OnClickListener
 {
-  public EditTakePhotoSource a(Parcel paramParcel)
-  {
-    return new EditTakePhotoSource(paramParcel);
-  }
+  public oii(ReadInJoyAtlasCommentFragment paramReadInJoyAtlasCommentFragment) {}
   
-  public EditTakePhotoSource[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new EditTakePhotoSource[paramInt];
+    this.a.onBackEvent();
   }
 }
 

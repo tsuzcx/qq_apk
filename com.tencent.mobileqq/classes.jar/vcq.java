@@ -1,30 +1,22 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder.FlashPicAIOThumbView;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
 
 public class vcq
-  implements Runnable
+  extends vai
 {
-  public vcq(FlashPicItemBuilder.FlashPicAIOThumbView paramFlashPicAIOThumbView) {}
+  public vcq(ElasticImageView paramElasticImageView) {}
   
-  public void run()
+  public void a(ValueAnimator paramValueAnimator)
   {
-    try
-    {
-      synchronized (BaseApplicationImpl.sImageCache) {}
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.hotchat", 2, "cache flashpic abumb exception:" + localException);
-      }
-    }
+    this.a.d = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    ElasticImageView.a(this.a, this.a.d);
+    urk.b("ElasticImageView", "updateAnimator:" + this.a.d);
+    ElasticImageView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vcq
  * JD-Core Version:    0.7.0.1
  */

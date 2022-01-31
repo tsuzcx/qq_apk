@@ -10,8 +10,8 @@ import android.graphics.PorterDuffColorFilter;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import befo;
 import com.tencent.image.URLImageView;
-import com.tencent.util.VersionUtils;
 
 public class CornerImageView
   extends URLImageView
@@ -44,7 +44,7 @@ public class CornerImageView
   
   public void a()
   {
-    if (!VersionUtils.h()) {
+    if (!befo.i()) {
       setLayerType(1, null);
     }
   }

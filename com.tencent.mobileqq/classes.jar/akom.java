@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
-
-public class akom
-  implements Runnable
+public abstract interface akom
 {
-  public akom(HttpCommunicator paramHttpCommunicator) {}
+  public abstract void b(int paramInt);
   
-  public void run()
-  {
-    this.a.c();
-  }
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akom
  * JD-Core Version:    0.7.0.1
  */

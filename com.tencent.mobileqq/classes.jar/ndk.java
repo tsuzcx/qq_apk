@@ -1,14 +1,12 @@
-import com.tencent.biz.qqstory.base.QQStoryObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class ndk
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  ndk(ndj paramndj) {}
+  ndk(ncw paramncw) {}
   
-  public void run()
-  {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver.a(this.a.jdField_a_of_type_Boolean, this.a.jdField_a_of_type_JavaLangBoolean.booleanValue(), this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

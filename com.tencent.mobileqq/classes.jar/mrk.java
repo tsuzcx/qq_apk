@@ -1,14 +1,8 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-
-class mrk
-  implements Runnable
+public class mrk
 {
-  mrk(mrj parammrj) {}
-  
-  public void run()
-  {
-    ReadInJoyLogicEngineEventDispatcher.a().b();
-  }
+  public static int a;
+  public static long a;
+  public static String a = "";
 }
 
 

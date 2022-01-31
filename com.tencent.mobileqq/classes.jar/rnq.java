@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaLazyFragment;
 
 public class rnq
-  implements DialogInterface.OnClickListener
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public rnq(AddFriendVerifyActivity paramAddFriendVerifyActivity, boolean paramBoolean) {}
+  public rnq(ViolaLazyFragment paramViolaLazyFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(this.jdField_a_of_type_Boolean);
+    paramInt = this.a.getActivity().getWindow().getDecorView().getSystemUiVisibility();
+    this.a.getActivity().getWindow().getDecorView().setSystemUiVisibility(paramInt | 0x2 | 0x400);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rnq
  * JD-Core Version:    0.7.0.1
  */

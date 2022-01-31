@@ -1,26 +1,30 @@
 package com.tencent.mobileqq.teamwork;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atnz;
+import atoc;
+import com.tencent.pb.teamwork.TimDocSSOMsg.UinRightInfo;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PadInfo
-  extends Entity
+  extends atmo
 {
   public static final int TYPE_DOC = 1;
+  public static final int TYPE_FORM = 3;
   public static final int TYPE_LIST_ALL = 4;
   public static final int TYPE_LIST_BROWSE = 2;
   public static final int TYPE_LIST_CREATE = 1;
   public static final int TYPE_LIST_SHARED = 3;
+  public static final int TYPE_PDF = 5;
   public static final int TYPE_PIN_LIST_IN_LIST_ALL = 5;
+  public static final int TYPE_PPT = 4;
   public static final int TYPE_SHEET = 2;
   public long createTime;
   public String creatorNick;
   public long creatorUin;
   public long currentUserBrowseTime;
-  public int domainId;
+  public long domainId;
   public boolean itemDeleteFlag;
   public long itemLateDeleteTime;
   public long lastEditTime;
@@ -33,10 +37,10 @@ public class PadInfo
   public String lastViewerNick;
   public long lastViewerUin;
   public long lastshardTime;
-  @notColumn
-  private List mUins = new ArrayList();
+  @atnz
+  private List<TimDocSSOMsg.UinRightInfo> mUins = new ArrayList();
   public String padId;
-  @unique
+  @atoc
   public String pad_url;
   public boolean pinInAllList;
   public boolean pinedFlag;
@@ -87,12 +91,12 @@ public class PadInfo
     return super.equals(paramObject);
   }
   
-  public List getRightList()
+  public List<TimDocSSOMsg.UinRightInfo> getRightList()
   {
     return this.mUins;
   }
   
-  public void setRightsList(List paramList)
+  public void setRightsList(List<TimDocSSOMsg.UinRightInfo> paramList)
   {
     this.mUins = paramList;
   }

@@ -1,33 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.smtt.sdk.WebView;
+import java.util.Comparator;
 
-public class laj
-  implements DialogInterface.OnClickListener
+final class laj
+  implements Comparator<lai>
 {
-  public laj(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, String paramString2) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(lai paramlai1, lai paramlai2)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.mRuntime.a();
-    if (paramDialogInterface == null) {}
-    do
-    {
-      return;
-      if (paramInt == 0)
-      {
-        paramDialogInterface.loadUrl("javascript:" + this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-    } while (paramInt != 1);
-    paramDialogInterface.loadUrl("javascript:" + this.b);
+    if (paramlai1 == paramlai2) {
+      return 0;
+    }
+    if (paramlai1 == null) {
+      return -1;
+    }
+    if (paramlai2 == null) {
+      return 1;
+    }
+    return paramlai1.a - paramlai2.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     laj
  * JD-Core Version:    0.7.0.1
  */

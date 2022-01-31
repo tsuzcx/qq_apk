@@ -1,33 +1,10 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import java.lang.ref.WeakReference;
-
-abstract class ahka
-  extends ProtoUtils.TroopProtocolObserver
+public class ahka
 {
-  protected Object a;
-  private WeakReference a;
-  
-  ahka(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramObject);
-  }
-  
-  public final void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    this.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (this.jdField_a_of_type_JavaLangObject == null) {
-      return;
-    }
-    b(paramInt, paramArrayOfByte, paramBundle);
-    this.jdField_a_of_type_JavaLangObject = null;
-  }
-  
-  abstract void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle);
+  public static final String a = ajjy.a(2131646585) + sfm.a + ajjy.a(2131646586);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahka
  * JD-Core Version:    0.7.0.1
  */

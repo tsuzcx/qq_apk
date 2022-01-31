@@ -1,45 +1,81 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.av.utils.TroopMemberUtil;
-import com.tencent.biz.anonymous.AnonymousChatHelper;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.biz.troopgift.TroopGiftPanel.GiftNumInputDialog;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class peb
-  implements TextView.OnEditorActionListener
 {
-  public peb(TroopGiftPanel.GiftNumInputDialog paramGiftNumInputDialog, TroopGiftPanel paramTroopGiftPanel) {}
-  
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  public static String a(boolean paramBoolean, List<BaseArticleInfo> paramList)
   {
-    if (paramInt == 6)
-    {
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$GiftNumInputDialog.c();
-      paramTextView = this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$GiftNumInputDialog.jdField_a_of_type_AndroidWidgetEditText.getEditableText().toString();
-      if (!TextUtils.isEmpty(paramTextView))
-      {
-        this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$GiftNumInputDialog.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(paramTextView);
-        this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$GiftNumInputDialog.b();
-        if (!AnonymousChatHelper.a().a(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$GiftNumInputDialog.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a())) {
-          break label194;
-        }
-      }
-      label194:
-      for (paramInt = 2;; paramInt = 1)
-      {
-        ReportController.b(null, "dc00899", "Grp_flower", "", "aio_mall", "Clk_numok", paramInt, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$GiftNumInputDialog.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$GiftNumInputDialog.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b, "" + TroopMemberUtil.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$GiftNumInputDialog.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$GiftNumInputDialog.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$GiftNumInputDialog.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
-        return true;
-        this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$GiftNumInputDialog.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a("1");
-        break;
-      }
+    JSONObject localJSONObject1 = new JSONObject();
+    Object localObject;
+    if (paramBoolean) {
+      localObject = "1";
     }
-    return false;
+    for (;;)
+    {
+      try
+      {
+        localJSONObject1.put("success", localObject);
+        localObject = new JSONArray();
+        if ((paramList == null) || (paramList.size() <= 0)) {
+          break label355;
+        }
+        paramList = paramList.iterator();
+        if (!paramList.hasNext()) {
+          break label355;
+        }
+        localBaseArticleInfo = (BaseArticleInfo)paramList.next();
+        localJSONObject2 = new JSONObject();
+        localJSONObject2.put("articleID", localBaseArticleInfo.mArticleID);
+        localJSONObject2.put("rowKey", localBaseArticleInfo.innerUniqueID);
+        localJSONObject2.put("title", localBaseArticleInfo.mTitle);
+        localJSONObject2.put("coverImageUrl", localBaseArticleInfo.mFirstPagePicUrl);
+        localJSONObject2.put("jsonImageUrl", localBaseArticleInfo.mJsonPictureList);
+        localJSONObject2.put("articleContentUrl", localBaseArticleInfo.mArticleContentUrl);
+        localJSONObject2.put("subscribeName", localBaseArticleInfo.mSubscribeName);
+        localJSONObject2.put("channelID", localBaseArticleInfo.mChannelID);
+        localJSONObject2.put("recommendSeq", localBaseArticleInfo.mRecommendSeq);
+        localJSONObject2.put("algorithmID", localBaseArticleInfo.mAlgorithmID);
+        localJSONObject2.put("strategyID", localBaseArticleInfo.mStrategyId);
+        localJSONObject2.put("feedsType", localBaseArticleInfo.mFeedType);
+        localJSONObject2.put("proteusItemData", localBaseArticleInfo.proteusItemsData);
+      }
+      catch (JSONException paramList)
+      {
+        BaseArticleInfo localBaseArticleInfo;
+        JSONObject localJSONObject2;
+        QLog.e("PTSDataUtil", 1, "[getResponseJSONString], e " + paramList);
+      }
+      try
+      {
+        if (!ogy.a().a(localBaseArticleInfo.mArticleID)) {
+          break label367;
+        }
+        i = 1;
+        localJSONObject2.put("hasRead", i);
+      }
+      catch (Exception localException)
+      {
+        QLog.e("PTSDataUtil", 1, "[getResponseJSONString], e = " + localException);
+        continue;
+      }
+      ((JSONArray)localObject).put(localJSONObject2);
+      continue;
+      for (;;)
+      {
+        return localJSONObject1.toString();
+        localObject = "0";
+        break;
+        label355:
+        localJSONObject1.put("data", localObject);
+      }
+      label367:
+      int i = 0;
+    }
   }
 }
 

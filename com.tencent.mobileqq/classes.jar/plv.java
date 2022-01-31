@@ -1,31 +1,22 @@
-import com.tencent.component.media.image.ImageManager;
-import com.tencent.component.media.image.ImageTaskTracer;
-import com.tencent.component.media.image.image.Image;
-import com.tencent.component.media.utils.LruCache;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend.4.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class plv
-  extends LruCache
+  implements oqy
 {
-  public plv(ImageManager paramImageManager, int paramInt)
-  {
-    super(paramInt);
-  }
+  public plv(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
   
-  protected int a(Integer paramInteger, Image paramImage)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    return paramImage.size();
-  }
-  
-  protected void a(boolean paramBoolean, Integer paramInteger, Image paramImage1, Image paramImage2)
-  {
-    if (paramInteger != null) {
-      ImageTaskTracer.addImageLruCacheEvictedRecord(paramInteger.intValue());
+    if ((paramBoolean) && (paramInt == 2)) {
+      ThreadManager.post(new ComponentHeaderTopicRecommend.4.1(this), 5, null, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     plv
  * JD-Core Version:    0.7.0.1
  */

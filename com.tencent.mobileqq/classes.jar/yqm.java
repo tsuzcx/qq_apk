@@ -1,32 +1,16 @@
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.data.ApolloPandora;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ScrollView;
 
-public class yqm
-  implements Runnable
+public abstract interface yqm
 {
-  public yqm(ApolloManager paramApolloManager, String paramString) {}
+  public abstract void a();
   
-  public void run()
-  {
-    ApolloPandora localApolloPandora = this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a(this.jdField_a_of_type_JavaLangString, true);
-    if (localApolloPandora != null)
-    {
-      localApolloPandora.hadStolen = 1;
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a(localApolloPandora);
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloManager", 2, "setCapsuleHadStolenAsync uin had Stolen");
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("ApolloManager", 2, "setCapsuleHadStolenAsync local not save apolloPandora");
-  }
+  public abstract void a(ScrollView paramScrollView);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yqm
  * JD-Core Version:    0.7.0.1
  */

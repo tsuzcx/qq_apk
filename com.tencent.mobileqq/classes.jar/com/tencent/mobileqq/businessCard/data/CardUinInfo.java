@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.businessCard.data;
 
-import abvk;
+import alqc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -15,7 +15,7 @@ import org.json.JSONException;
 public class CardUinInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new abvk();
+  public static final Parcelable.Creator<CardUinInfo> CREATOR = new alqc();
   public String a;
   public boolean a;
   public boolean b;
@@ -43,7 +43,7 @@ public class CardUinInfo
     }
   }
   
-  public static String a(List paramList)
+  public static String a(List<CardUinInfo> paramList)
   {
     if ((paramList == null) || (paramList.isEmpty())) {
       return "";
@@ -69,7 +69,7 @@ public class CardUinInfo
     }
   }
   
-  public static List a(String paramString)
+  public static List<CardUinInfo> a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
@@ -135,7 +135,7 @@ public class CardUinInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.data.CardUinInfo
  * JD-Core Version:    0.7.0.1
  */

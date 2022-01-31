@@ -1,44 +1,94 @@
-import com.tencent.mobileqq.app.ThreadRegulator;
-import com.tencent.mobileqq.app.proxy.FTSDBManager;
-import com.tencent.mobileqq.app.proxy.fts.FTSSyncHandler;
-import com.tencent.mobileqq.utils.fts.SQLiteFTSUtils;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.manager.AccountManager;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 public class aabt
-  implements Runnable
+  extends WtloginObserver
 {
-  public aabt(FTSDBManager paramFTSDBManager) {}
+  public aabt(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
   
-  public void run()
+  public void OnAskDevLockSms(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    if (this.a.a()) {}
-    do
+    if (this.a.isFinishing()) {
+      return;
+    }
+    this.a.c();
+    if ((paramInt == 0) && (paramDevlockInfo != null))
     {
-      do
-      {
-        do
-        {
-          return;
-          if (SQLiteFTSUtils.g(FTSDBManager.a(this.a)))
-          {
-            FTSDBManager.a(this.a);
-            return;
-          }
-        } while ((!SQLiteFTSUtils.h(FTSDBManager.a(this.a))) || (this.a.b));
-        FTSDBManager.a(this.a);
-        ThreadRegulator.a().b();
-      } while (FTSDBManager.a(this.a));
-      if ((FTSDBManager.b(this.a) > 10) || (FTSDBManager.c(this.a) == 1))
-      {
-        FTSDBManager.a(this.a);
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnAskDevLockSms DevlockInfo.TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount);
       }
-    } while (FTSDBManager.c(this.a) != -1);
-    this.a.a.postDelayed(this, 5000L);
+      if (paramDevlockInfo.TimeLimit <= 0) {
+        paramDevlockInfo.TimeLimit = 60;
+      }
+      AuthDevVerifyCodeActivity.a(this.a, paramDevlockInfo.TimeLimit);
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnAskDevLockSms ret = " + paramInt);
+      if (paramErrMsg != null) {
+        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnAskDevLockSms  errMsg:" + paramErrMsg.getMessage());
+      }
+    }
+    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
+    {
+      this.a.a(paramErrMsg.getMessage(), 1);
+      return;
+    }
+    paramWUserSigInfo = this.a.getString(2131651340);
+    this.a.a(paramWUserSigInfo, 1);
+  }
+  
+  public void OnCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnCheckDevLockSms ret = " + paramInt);
+      if (paramErrMsg != null) {
+        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnCheckDevLockSms  errMsg:" + paramErrMsg.getMessage());
+      }
+    }
+    if (this.a.isFinishing()) {
+      return;
+    }
+    AuthDevVerifyCodeActivity.a(this.a);
+    if (paramInt == 0)
+    {
+      paramWUserSigInfo = (AccountManager)this.a.app.getManager(0);
+      if (paramWUserSigInfo != null) {
+        paramWUserSigInfo.refreshDA2(this.a.app.getCurrentAccountUin(), null);
+      }
+      anoc.a().a(null, this.a.app.getCurrentAccountUin(), 9);
+      this.a.setResult(-1);
+      this.a.finish();
+      paramErrMsg = (AppInterface)AuthDevVerifyCodeActivity.a(this.a).get();
+      paramWUserSigInfo = "";
+      if (paramErrMsg != null) {
+        paramWUserSigInfo = paramErrMsg.getAccount();
+      }
+      anoc.a().a(paramErrMsg, this.a, paramWUserSigInfo, true);
+      return;
+    }
+    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
+    {
+      this.a.a(paramErrMsg.getMessage(), 1);
+      return;
+    }
+    this.a.a(2131651388, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aabt
  * JD-Core Version:    0.7.0.1
  */

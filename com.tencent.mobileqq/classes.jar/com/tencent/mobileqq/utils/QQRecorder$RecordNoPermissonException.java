@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-public class QQRecorder$RecordNoPermissonException
+class QQRecorder$RecordNoPermissonException
   extends RuntimeException
 {
   public QQRecorder$RecordNoPermissonException(String paramString)

@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailGenTask;
-import java.util.TimerTask;
-
 public class ajmh
-  extends TimerTask
 {
-  public ajmh(TroopFileThumbnailGenTask paramTroopFileThumbnailGenTask) {}
-  
-  public void run()
-  {
-    this.a.a(-6, false);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajmh
  * JD-Core Version:    0.7.0.1
  */

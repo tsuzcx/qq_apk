@@ -1,8 +1,8 @@
 package com.tencent.component.network.utils.http.pool;
 
-public abstract interface ConnFactory
+public abstract interface ConnFactory<T, C>
 {
-  public abstract Object a(Object paramObject);
+  public abstract C create(T paramT);
 }
 
 

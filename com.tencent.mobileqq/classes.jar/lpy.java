@@ -1,68 +1,96 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyAtlasViewPagerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
-import com.tencent.biz.pubaccount.readinjoy.logic.ReadInJoyAtlasManager;
-import com.tencent.biz.pubaccount.readinjoy.logic.ReadInJoyAtlasManager.AtlasCallbackImpl;
-import com.tencent.biz.pubaccount.readinjoy.logic.ReadinjoyAtlasPageLoader;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import tencent.im.oidb.gallery.gallery.GalleryInfo;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+import android.widget.TextView;
 
-public class lpy
-  extends ReadInJoyAtlasManager.AtlasCallbackImpl
+class lpy
 {
-  public lpy(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment) {}
+  int jdField_a_of_type_Int = -1;
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
+  SpannableString jdField_a_of_type_AndroidTextSpannableString = null;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int = -1;
+  boolean jdField_b_of_type_Boolean = false;
+  int jdField_c_of_type_Int = -1;
+  boolean jdField_c_of_type_Boolean = false;
+  int d = -1;
   
-  public void a(boolean paramBoolean, int paramInt, Object paramObject)
+  static lpy a(Resources paramResources, lqd paramlqd, lpv paramlpv)
   {
-    int i = 1;
-    if (paramInt == 1)
-    {
-      if (i == 0) {
-        break label161;
-      }
-      ReadInJoyAtlasFragment.a(this.a, paramBoolean, paramObject);
-      label22:
-      if (!paramBoolean) {
-        break label173;
-      }
-      paramObject = (gallery.GalleryInfo)paramObject;
-      paramBoolean = ReadinjoyAtlasPageLoader.a(paramObject);
-      if (QLog.isColorLevel()) {
-        QLog.d(ReadInJoyAtlasFragment.jdField_a_of_type_JavaLangString, 2, "handleAtlasList succ, pageIndex=" + paramInt + " pageSize=" + paramObject.rpt_msg_pic_info.get().size() + " isEnd:" + paramBoolean + " totalCount:" + paramObject.uint64_pic_count.get() + " gallery size:" + this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyAtlasViewPagerAdapter.a());
-      }
-      if (paramBoolean) {
-        ReadInJoyAtlasManager.a().a(ReadInJoyAtlasFragment.a(this.a), this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback);
-      }
+    lpy locallpy = new lpy();
+    if (!TextUtils.isEmpty(paramlqd.a())) {
+      locallpy.jdField_a_of_type_AndroidTextSpannableString = new SpannableString(paramlqd.a());
     }
-    label161:
-    label173:
-    while (!QLog.isColorLevel())
+    locallpy.jdField_a_of_type_Int = paramlpv.d;
+    locallpy.jdField_b_of_type_Int = paramlpv.jdField_a_of_type_Int;
+    locallpy.jdField_c_of_type_Int = paramlpv.jdField_b_of_type_Int;
+    locallpy.d = paramlpv.jdField_c_of_type_Int;
+    switch (paramlqd.a())
     {
-      return;
-      i = 0;
-      break;
-      ReadInJoyAtlasFragment.b(this.a, paramBoolean, paramObject);
-      break label22;
     }
-    QLog.d(ReadInJoyAtlasFragment.jdField_a_of_type_JavaLangString, 2, "handleAtlasList failed, pageIndex:" + paramInt + " result:" + paramObject.toString());
+    do
+    {
+      return locallpy;
+      paramlqd = (lqf)paramlqd;
+      if ((paramlqd.a() instanceof BitmapDrawable)) {
+        locallpy.jdField_a_of_type_AndroidGraphicsBitmap = ((BitmapDrawable)paramlqd.a()).getBitmap();
+      }
+      for (;;)
+      {
+        switch (paramlqd.k())
+        {
+        default: 
+          return locallpy;
+        case 1: 
+          locallpy.jdField_a_of_type_Boolean = true;
+          return locallpy;
+          paramlpv = paramlqd.b();
+          if (!TextUtils.isEmpty(paramlpv)) {
+            locallpy.jdField_a_of_type_AndroidGraphicsBitmap = mez.a(paramResources, paramlpv);
+          }
+          break;
+        }
+      }
+      locallpy.jdField_b_of_type_Boolean = true;
+      return locallpy;
+      locallpy.jdField_c_of_type_Boolean = ((lqg)paramlqd).b();
+      return locallpy;
+      paramResources = (lqe)paramlqd;
+      if (paramResources.h() != -1) {
+        locallpy.jdField_a_of_type_Int = paramResources.h();
+      }
+      if (paramResources.j() != -1) {
+        locallpy.jdField_c_of_type_Int = paramResources.j();
+      }
+      if (paramResources.i() != -1) {
+        locallpy.d = paramResources.i();
+      }
+    } while (locallpy.jdField_a_of_type_AndroidTextSpannableString == null);
+    int j = paramResources.f();
+    if (paramResources.g() == -1) {}
+    for (int i = paramlqd.a().length() + j;; i = paramResources.g() + j)
+    {
+      locallpy.jdField_a_of_type_AndroidTextSpannableString.setSpan(new lpz(paramResources), j, i, 33);
+      paramResources = new ForegroundColorSpan(locallpy.jdField_c_of_type_Int);
+      locallpy.jdField_a_of_type_AndroidTextSpannableString.setSpan(paramResources, j, i, 17);
+      return locallpy;
+    }
   }
   
-  public void a(boolean paramBoolean, List paramList)
+  static void a(TextView paramTextView, int paramInt1, int paramInt2)
   {
-    if (paramList != null)
-    {
-      paramList = ReadInJoyAtlasManager.a().a(paramList);
-      if (paramList != null) {
-        this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyAtlasViewPagerAdapter.a(paramList, false);
-      }
-    }
+    paramTextView.setTag(2131311054, Integer.valueOf(paramInt2));
+    paramTextView.setTag(2131311055, Integer.valueOf(paramInt1));
+    paramTextView.setMovementMethod((ljs)ljs.a());
+    paramTextView.setHighlightColor(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lpy
  * JD-Core Version:    0.7.0.1
  */

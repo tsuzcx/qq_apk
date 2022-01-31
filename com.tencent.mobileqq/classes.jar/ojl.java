@@ -1,22 +1,27 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.takevideo.VideoFragmentInfo;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.image.URLImageView;
 
 public class ojl
-  extends VideoFragmentInfo
+  extends RecyclerView.ViewHolder
 {
-  public Bitmap a;
-  public Bitmap b;
+  Context jdField_a_of_type_AndroidContentContext;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  BaseArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;
+  URLImageView jdField_b_of_type_ComTencentImageURLImageView;
   
-  public ojl(int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3)
+  ojl(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, View paramView)
   {
-    super(paramInt, paramBitmap1);
-    this.b = paramBitmap2;
-    this.a = paramBitmap3;
+    super(paramView);
   }
   
-  public ojl(VideoFragmentInfo paramVideoFragmentInfo, Bitmap paramBitmap1, Bitmap paramBitmap2)
+  protected int a()
   {
-    this(paramVideoFragmentInfo.jdField_c_of_type_Int, paramVideoFragmentInfo.jdField_c_of_type_AndroidGraphicsBitmap, paramBitmap1, paramBitmap2);
+    return getAdapterPosition() - 1;
   }
 }
 

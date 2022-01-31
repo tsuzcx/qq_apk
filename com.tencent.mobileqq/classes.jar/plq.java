@@ -1,32 +1,45 @@
-import com.tencent.component.media.image.ImageDefaultConfig;
-import com.tencent.component.media.image.ImageManager;
-import com.tencent.component.media.image.PoolParams;
-import com.tencent.component.media.image.PoolParams.BucketParams;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.widget.Button;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderRecommend;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class plq
-  implements PoolParams
+  implements oqy
 {
-  public plq(ImageManager paramImageManager, boolean paramBoolean) {}
+  public plq(ComponentHeaderRecommend paramComponentHeaderRecommend) {}
   
-  public PoolParams.BucketParams getBucketParams(int paramInt)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      return new PoolParams.BucketParams(ImageDefaultConfig.BYTE_ARRAY_LOCAL[paramInt][1], ImageDefaultConfig.BYTE_ARRAY_LOCAL[paramInt][0]);
+    ComponentHeaderRecommend.a(this.a).setText(ajjy.a(2131636507));
+    ComponentHeaderRecommend.a(this.a).setTextColor(Color.parseColor("#BBBBBB"));
+    ComponentHeaderRecommend.a(this.a).setEnabled(false);
+    ComponentHeaderRecommend.a(this.a).getPaint().setFakeBoldText(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("ComponentHeaderRecommend", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
     }
-    return new PoolParams.BucketParams(ImageDefaultConfig.BYTE_ARRAY[paramInt][1], ImageDefaultConfig.BYTE_ARRAY[paramInt][0]);
-  }
-  
-  public int getBucketPoolSize()
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      return ImageDefaultConfig.BYTE_ARRAY_LOCAL.length;
+    ArticleInfo localArticleInfo;
+    String str;
+    if ((this.a.a.a != null) && (this.a.a.a.a() != null))
+    {
+      localArticleInfo = this.a.a.a.a();
+      str = obz.a(localArticleInfo.mAlgorithmID, obz.a(localArticleInfo), this.a.a.a.e(), 0, 0, badq.h(this.a.getContext()), ComponentHeaderRecommend.a(this.a) + "", null, localArticleInfo.innerUniqueID, null, localArticleInfo);
+      if (!rvf.a(this.a.a.a.e())) {
+        break label305;
+      }
     }
-    return ImageDefaultConfig.BYTE_ARRAY.length;
+    label305:
+    for (paramString = "0X800941D";; paramString = "0X80080EC")
+    {
+      ndn.a(null, ComponentHeaderRecommend.a(this.a) + "", paramString, paramString, 0, 0, String.valueOf(localArticleInfo.mFeedId), String.valueOf(localArticleInfo.mArticleID), Integer.toString(localArticleInfo.mStrategyId), str, false);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     plq
  * JD-Core Version:    0.7.0.1
  */

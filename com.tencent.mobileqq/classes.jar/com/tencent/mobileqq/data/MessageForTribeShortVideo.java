@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.data;
 
+import ajjy;
 import android.graphics.Color;
 import android.text.TextUtils;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
@@ -37,7 +38,7 @@ public class MessageForTribeShortVideo
   
   public static String buildCompatibleText()
   {
-    return "收到一条部落短视频[请使用新版手机QQ查看]";
+    return ajjy.a(2131640786) + "QQ" + ajjy.a(2131640814);
   }
   
   public void doParse()
@@ -85,12 +86,12 @@ public class MessageForTribeShortVideo
   public String getSummaryMsg()
   {
     if (!TextUtils.isEmpty(this.themeName)) {
-      return "[分享]#" + this.themeName;
+      return ajjy.a(2131640805) + this.themeName;
     }
     if (!TextUtils.isEmpty(this.brief)) {
-      return "[分享]" + this.brief;
+      return ajjy.a(2131640780) + this.brief;
     }
-    return "[分享]部落短视频";
+    return ajjy.a(2131640822);
   }
   
   public boolean isSupportReply()

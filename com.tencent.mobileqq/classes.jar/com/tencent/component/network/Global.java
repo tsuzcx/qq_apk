@@ -5,18 +5,19 @@ import com.tencent.component.network.module.common.NetworkState;
 
 public class Global
 {
-  private static Context a;
+  public static final String SDK_VERSION = "${env.NumberVersion}";
+  private static Context sContext;
   
-  public static Context a()
+  public static Context getContext()
   {
-    return a;
+    return sContext;
   }
   
-  public static void a(Context paramContext)
+  public static void init(Context paramContext)
   {
-    a = paramContext;
-    NetworkManager.init(a());
-    NetworkState.g().setContext(a());
+    sContext = paramContext;
+    NetworkManager.init(getContext());
+    NetworkState.g().setContext(getContext());
   }
 }
 

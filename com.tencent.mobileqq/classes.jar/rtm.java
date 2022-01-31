@@ -1,20 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import org.json.JSONObject;
 
-public class rtm
-  implements DialogInterface.OnClickListener
+class rtm
+  implements rlp
 {
-  public rtm(BaseChatPie paramBaseChatPie) {}
+  rtm(rsv paramrsv) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString, JSONObject paramJSONObject)
   {
-    paramDialogInterface.dismiss();
+    this.a.callJs(paramString, new String[] { paramJSONObject.toString() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rtm
  * JD-Core Version:    0.7.0.1
  */

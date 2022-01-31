@@ -1,29 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFlowLayout;
-import com.tencent.widget.AdapterView.AdapterDataSetObserver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.biz.PoiMapActivity;
 
 public class mlr
-  extends AdapterView.AdapterDataSetObserver
+  implements View.OnClickListener
 {
-  public mlr(ReadInJoyFlowLayout paramReadInJoyFlowLayout)
-  {
-    super(paramReadInJoyFlowLayout);
-  }
+  public mlr(PoiMapActivity paramPoiMapActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    super.a();
-  }
-  
-  public void onChanged()
-  {
-    super.onChanged();
-    ReadInJoyFlowLayout.a(this.a);
-  }
-  
-  public void onInvalidated()
-  {
-    super.onInvalidated();
-    ReadInJoyFlowLayout.a(this.a);
+    this.a.a.setText("");
   }
 }
 

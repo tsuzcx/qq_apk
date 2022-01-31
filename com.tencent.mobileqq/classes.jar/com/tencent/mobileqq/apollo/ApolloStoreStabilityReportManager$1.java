@@ -1,0 +1,22 @@
+package com.tencent.mobileqq.apollo;
+
+import aigz;
+import aiyo;
+
+public class ApolloStoreStabilityReportManager$1
+  implements Runnable
+{
+  public ApolloStoreStabilityReportManager$1(aigz paramaigz) {}
+  
+  public void run()
+  {
+    aiyo.a(null);
+    aigz.a(this.this$0, System.currentTimeMillis());
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     com.tencent.mobileqq.apollo.ApolloStoreStabilityReportManager.1
+ * JD-Core Version:    0.7.0.1
+ */

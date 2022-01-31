@@ -1,31 +1,17 @@
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.LikeRankingListActivity;
-import com.tencent.widget.PullToZoomListView;
-
-public class tdx
-  implements Runnable
+class tdx
+  extends tdc
 {
-  public tdx(LikeRankingListActivity paramLikeRankingListActivity) {}
+  tdx(tdo paramtdo, tew paramtew) {}
   
-  public void run()
+  public boolean b()
   {
-    if (this.a.c == null) {
-      return;
-    }
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mRequestHeight = this.a.e;
-    localURLDrawableOptions.mRequestWidth = this.a.d;
-    this.a.b.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    this.a.b.setImageDrawable(URLDrawable.getDrawable(this.a.c, localURLDrawableOptions));
-    this.a.a.a(true);
+    this.jdField_a_of_type_Tew.e = ((String)a("UploadImageJob_out_image_url"));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tdx
  * JD-Core Version:    0.7.0.1
  */

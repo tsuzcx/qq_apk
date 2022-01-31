@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
-class adqv
-  implements Runnable
+public class adqv
+  implements Animation.AnimationListener
 {
-  adqv(adqs paramadqs, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3) {}
+  public adqv(StructingMsgItemBuilder paramStructingMsgItemBuilder, adqx paramadqx) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Adqs.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.c);
-    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Adqs.a);
+    this.jdField_a_of_type_Adqx.a.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adqv
  * JD-Core Version:    0.7.0.1
  */

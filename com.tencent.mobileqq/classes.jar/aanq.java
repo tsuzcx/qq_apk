@@ -1,40 +1,72 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderManager;
-import com.tencent.mobileqq.ar.arengine.ARCamera;
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.TargetApi;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aanq
-  implements Runnable
+  implements agzw
 {
-  public aanq(AREngine paramAREngine, boolean paramBoolean) {}
+  public aanq(Conversation paramConversation) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if ((AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) != 3) || (this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.a == null))
+    if (this.a.jdField_a_of_type_Ahai != null) {
+      this.a.jdField_a_of_type_Ahai.e();
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) && (!this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.a())) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.v();
+    }
+    if (this.a.jdField_a_of_type_Svc != null) {
+      this.a.jdField_a_of_type_Svc.f();
+    }
+  }
+  
+  @TargetApi(11)
+  public void a(int paramInt, float paramFloat) {}
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.a.jdField_a_of_type_Atsk.i();
+    if (this.a.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      QLog.i("AREngine_AREngine", 2, "cancel to close camera. next mCurCameraState = " + AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine));
-      return;
+      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        alij localalij = (alij)localIterator.next();
+        if (localalij != null) {
+          localalij.l();
+        }
+      }
     }
-    if ((AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) != null) && (this.jdField_a_of_type_Boolean)) {
-      AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine).c();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.H();
     }
-    if (AREngine.d(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine)) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.a.a();
+    if (this.a.jdField_a_of_type_Svc != null) {
+      this.a.jdField_a_of_type_Svc.g();
     }
-    AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine, false);
-    this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.a.a();
-    if (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) != 3)
-    {
-      QLog.i("AREngine_AREngine", 2, "cancel to close camera. next mCurCameraState = " + AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine));
-      return;
+  }
+  
+  public void a(int paramInt, boolean paramBoolean) {}
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    Conversation.h(this.a);
+    this.a.jdField_a_of_type_Atsk.j();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.G();
     }
-    AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine, 0);
-    QLog.i("AREngine_AREngine", 2, "closeCamera successfully. mCurCameraState = " + AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine));
+    if (this.a.jdField_a_of_type_Svc != null) {
+      this.a.jdField_a_of_type_Svc.k();
+    }
+    if (this.a.jdField_a_of_type_Ahek != null) {
+      this.a.jdField_a_of_type_Ahek.f();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aanq
  * JD-Core Version:    0.7.0.1
  */

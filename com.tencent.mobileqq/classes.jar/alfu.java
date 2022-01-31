@@ -1,34 +1,49 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.ar.config.WorldCup;
-import com.tencent.mobileqq.ar.config.WorldCupConfigInfo;
-import com.tencent.mobileqq.ar.config.WorldCupShareInfo;
-import com.tencent.mobileqq.armap.ArMapObserver;
-import com.tencent.mobileqq.worldcup.WorldCupShareFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.TopGestureDetector;
+import com.tencent.mobileqq.ark.ArkTopGestureLayout;
 
 public class alfu
-  extends ArMapObserver
+  extends TopGestureLayout.TopGestureDetector
 {
-  public alfu(WorldCupShareFragment paramWorldCupShareFragment) {}
-  
-  public void onSetWorldCupInfo(boolean paramBoolean, String paramString, int paramInt)
+  public alfu(ArkTopGestureLayout paramArkTopGestureLayout, Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WorldCupShareFragment", 2, "WL_DEBUG onSetWorldCupInfo isSuccess = " + paramBoolean + ", shareId = " + paramString);
-    }
-    if ((paramBoolean) && (paramInt == 0))
+    super(paramArkTopGestureLayout, paramContext);
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if ((this.a.isGestureIdle()) || (this.a.isGestureEnd())) {}
+    do
     {
-      WorldCupShareInfo localWorldCupShareInfo = WorldCup.a(WorldCupShareFragment.a(this.a)).a();
-      WorldCupShareFragment.a(this.a, localWorldCupShareInfo.AIOMsgJumpUrl + "?_wv=16777217&shareid=" + paramString);
-    }
-    if (this.a.getActivity() != null) {
-      this.a.getActivity().runOnUiThread(new alfv(this, paramBoolean, paramInt));
-    }
+      do
+      {
+        do
+        {
+          do
+          {
+            return false;
+            paramFloat1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+            paramFloat2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat1);
+            if (!this.a.hasGestureFlag(1)) {
+              break;
+            }
+          } while ((paramFloat1 >= 0.0F) || (paramFloat2 >= 0.5F) || (this.a.mOnFlingGesture == null));
+          this.a.setGestureFlag(-1);
+        } while (ArkTopGestureLayout.a(this.a));
+        this.a.mOnFlingGesture.flingLToR();
+        return false;
+      } while ((!this.a.hasGestureFlag(2)) || (paramFloat1 <= 0.0F) || (paramFloat2 >= 0.5F) || (this.a.mOnFlingGesture == null));
+      this.a.setGestureFlag(-1);
+    } while (ArkTopGestureLayout.b(this.a));
+    this.a.mOnFlingGesture.flingRToL();
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alfu
  * JD-Core Version:    0.7.0.1
  */

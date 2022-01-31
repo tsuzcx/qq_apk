@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ARCloudRecogCustomPb$ARGameInfo
-  extends MessageMicro
+  extends MessageMicro<ARGameInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 90, 98 }, new String[] { "uint32_ar_game_cmd", "msg_get_id_req", "msg_recog_id_req" }, new Object[] { Integer.valueOf(0), null, null }, ARGameInfo.class);
   public ARCloudRecogCustomPb.GetIdentityReq msg_get_id_req = new ARCloudRecogCustomPb.GetIdentityReq();
@@ -15,7 +15,7 @@ public final class ARCloudRecogCustomPb$ARGameInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.ARCloudRecogCustomPb.ARGameInfo
  * JD-Core Version:    0.7.0.1
  */

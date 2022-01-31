@@ -1,16 +1,12 @@
 package com.tencent.weiyun.cmd;
 
 import android.content.Context;
-import android.os.Build;
-import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.HandlerThread;
 import android.os.Message;
 import android.text.TextUtils;
 import com.tencent.weiyun.WeiyunLiteGlobal;
-import com.tencent.weiyun.WeiyunLiteGlobal.HostInterface;
-import com.tencent.weiyun.WeiyunLiteGlobal.IResponseHandler;
 import com.tencent.weiyun.callback.CheckShareFileCallback;
 import com.tencent.weiyun.callback.DeleteDirFileCallback;
 import com.tencent.weiyun.callback.FetchFileListCallback;
@@ -21,12 +17,8 @@ import com.tencent.weiyun.callback.ModifyFileCallback;
 import com.tencent.weiyun.data.DirItem;
 import com.tencent.weiyun.data.FileItem;
 import com.tencent.weiyun.data.PoiItem;
-import com.tencent.weiyun.utils.NetworkUtils;
 import com.tencent.weiyun.utils.Singleton;
-import com.tencent.weiyun.utils.UIHelper;
-import com.tencent.weiyun.utils.Utils;
 import com.tencent.weiyun.utils.WyLog;
-import java.io.File;
 import java.lang.reflect.Method;
 import java.util.List;
 
@@ -34,13 +26,7 @@ public class CommandManager
   implements Handler.Callback
 {
   private static final String TAG = "CommandManager";
-  private static Singleton<CommandManager, Void> sInstance = new Singleton()
-  {
-    protected CommandManager create(Void paramAnonymousVoid)
-    {
-      return new CommandManager(null);
-    }
-  };
+  private static Singleton<CommandManager, Void> sInstance = new CommandManager.2();
   private final Context mContext = WeiyunLiteGlobal.getInstance().getContext();
   private final Handler mHandler;
   private final WeiyunSDKContext mSdkContext;
@@ -50,94 +36,7 @@ public class CommandManager
     Object localObject = new HandlerThread("CommandManager");
     ((HandlerThread)localObject).start();
     this.mHandler = new Handler(((HandlerThread)localObject).getLooper(), this);
-    localObject = new WeiyunSDKContext()
-    {
-      public String getAccessToken()
-      {
-        return null;
-      }
-      
-      public String getCachePath()
-      {
-        return CommandManager.this.mContext.getFilesDir().toString();
-      }
-      
-      public String getDeviceId()
-      {
-        return Utils.getDeviceId(CommandManager.this.mContext);
-      }
-      
-      public String getDeviceInfo()
-      {
-        return "";
-      }
-      
-      public String getDeviceName()
-      {
-        return Build.MODEL;
-      }
-      
-      public int getLoginType()
-      {
-        return 0;
-      }
-      
-      public int getNetworkType()
-      {
-        return NetworkUtils.getNetworkTypeDiff4G(CommandManager.this.mContext);
-      }
-      
-      public String getOpenID()
-      {
-        return null;
-      }
-      
-      public String getOpenKey()
-      {
-        return null;
-      }
-      
-      public int getPlatform()
-      {
-        return Build.VERSION.SDK_INT;
-      }
-      
-      public String getRefreshToken()
-      {
-        return null;
-      }
-      
-      public long[] getScreenSize()
-      {
-        return new long[] { UIHelper.getWindowScreenWidth(CommandManager.this.mContext), UIHelper.getWindowScreenHeight(CommandManager.this.mContext) };
-      }
-      
-      public long getUin()
-      {
-        return WeiyunLiteGlobal.getInstance().getHostInterface().getCurrentUin();
-      }
-      
-      public String getWifiBssid()
-      {
-        String str2 = NetworkUtils.getWifiBSSID(CommandManager.this.mContext);
-        String str1 = str2;
-        if (str2 == null) {
-          str1 = "";
-        }
-        return str1;
-      }
-      
-      public void sendRequest(String paramAnonymousString, byte[] paramAnonymousArrayOfByte, final long paramAnonymousLong, int paramAnonymousInt)
-      {
-        WeiyunLiteGlobal.getInstance().getHostInterface().sendRequest(paramAnonymousString, paramAnonymousArrayOfByte, new WeiyunLiteGlobal.IResponseHandler()
-        {
-          public void receiveResponse(int paramAnonymous2Int, String paramAnonymous2String, byte[] paramAnonymous2ArrayOfByte)
-          {
-            CommandManager.1.this.recvResponse(paramAnonymous2Int, paramAnonymous2ArrayOfByte, paramAnonymousLong, this.val$nativeCallback);
-          }
-        });
-      }
-    };
+    localObject = new CommandManager.1(this);
     this.mSdkContext = ((WeiyunSDKContext)localObject);
     WeiyunClient.getInstance().init((WeiyunSDKContext)localObject);
   }
@@ -405,7 +304,7 @@ public class CommandManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.weiyun.cmd.CommandManager
  * JD-Core Version:    0.7.0.1
  */

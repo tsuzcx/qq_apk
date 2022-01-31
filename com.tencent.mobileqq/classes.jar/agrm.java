@@ -1,21 +1,14 @@
-import android.content.Intent;
-import com.tencent.mobileqq.portal.RedPacketServlet;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-
-public class agrm
-  implements Runnable
+public abstract interface agrm
 {
-  public agrm(RedPacketServlet paramRedPacketServlet, Intent paramIntent) {}
+  public abstract void a();
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqPortalRedPacketServlet.getAppRuntime().startServlet((NewIntent)this.jdField_a_of_type_AndroidContentIntent);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agrm
  * JD-Core Version:    0.7.0.1
  */

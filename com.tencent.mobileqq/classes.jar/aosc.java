@@ -1,67 +1,42 @@
-import android.content.Context;
-import android.content.res.Resources;
+import android.os.Handler.Callback;
 import android.os.Message;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.TdsDebugView;
+import java.lang.ref.WeakReference;
 
-public class aosc
-  extends MqqHandler
+public final class aosc
+  implements Handler.Callback
 {
-  public aosc(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  private final WeakReference<TdsDebugView> a;
   
-  public void handleMessage(Message paramMessage)
+  private aosc(TdsDebugView paramTdsDebugView)
   {
+    this.a = new WeakReference(paramTdsDebugView);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    TdsDebugView localTdsDebugView = (TdsDebugView)this.a.get();
+    if (localTdsDebugView == null) {
+      return true;
+    }
     switch (paramMessage.what)
     {
+    default: 
+      return true;
+    case 1: 
+      TdsDebugView.a(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
+      return true;
+    case 2: 
+      TdsDebugView.b(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
+      return true;
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          QQToast.a(this.a, 2131437381, 0).a();
-          return;
-          String str = this.a.getString(2131437382);
-          paramMessage = (String)paramMessage.obj;
-          QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 2, str + paramMessage, 0).a();
-          ImageUtil.a(this.a, paramMessage);
-          return;
-          paramMessage = DialogUtil.b(this.a.jdField_a_of_type_AndroidContentContext, 232, this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131437409), this.a.jdField_a_of_type_AndroidContentContext.getResources().getString(2131437410), 2131437411, 2131434603, new aosd(this), new aose(this));
-          ShortVideoPlayActivity.a(this.a, paramMessage);
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.d("ShortVideoPlayActivity", 2, "...mobile/none => wifi...");
-          }
-        } while (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null);
-        this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setDownloadNetworkChange(1);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoPlayActivity", 2, "...wifi/none => mobile...");
-        }
-        if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-          this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setDownloadNetworkChange(2);
-        }
-        if ((this.a.b != 1) && (this.a.b != 2)) {
-          break;
-        }
-      } while (!this.a.b());
-      this.a.j();
-      this.a.r();
-      return;
-    } while (this.a.b != 0);
-    ShortVideoPlayActivity.a(this.a);
+    TdsDebugView.c(localTdsDebugView, (String)paramMessage.obj, paramMessage.arg1);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aosc
  * JD-Core Version:    0.7.0.1
  */

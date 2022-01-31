@@ -1,28 +1,21 @@
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerCallback;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import com.tencent.mobileqq.data.MessageForFile;
 
-public class adek
-  implements TVK_IMediaPlayer.OnErrorListener
+class adek
+  implements apca
 {
-  public adek(FileVideoManager.VideoControl paramVideoControl) {}
+  adek(adeg paramadeg, MessageForFile paramMessageForFile, Context paramContext) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void a()
   {
-    QLog.e("FileVideoManager<FileAssistant>", 1, "mediaPlayer onError:errorType[" + paramInt1 + "], errorCode[" + paramInt2 + "],extra[" + paramInt3 + "],detailInfo[" + paramString + "]");
-    paramTVK_IMediaPlayer = (FileVideoManager.FileVideoManagerCallback)this.a.a.get();
-    if (paramTVK_IMediaPlayer != null) {
-      paramTVK_IMediaPlayer.a(paramInt2, "视频文件不存在或已损坏");
-    }
-    return false;
+    apck.a(this.jdField_a_of_type_Adeg.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adek
  * JD-Core Version:    0.7.0.1
  */

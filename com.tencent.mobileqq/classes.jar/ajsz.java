@@ -1,20 +1,28 @@
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.HWReciteItem;
-import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
+import android.os.Looper;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class ajsz
-  implements Runnable
+public final class ajsz
+  extends MqqHandler
 {
-  public ajsz(HWReciteItem paramHWReciteItem, HWReciteInfo paramHWReciteInfo) {}
-  
-  public void run()
+  public ajsz(Looper paramLooper)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelHWReciteInfo.a.b();
+    super(paramLooper);
+  }
+  
+  public void removeCallbacksAndMessages(Object paramObject)
+  {
+    if (paramObject == null)
+    {
+      QLog.e("ThreadManager", 1, "global SubHandler cannot excute removeCallbacksAndMessages");
+      return;
+    }
+    super.removeCallbacksAndMessages(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajsz
  * JD-Core Version:    0.7.0.1
  */

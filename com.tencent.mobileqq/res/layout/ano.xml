@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/cg_" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView android:id="@id/aog" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:id="@id/jgy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/ant" />
+    <include android:layout_width="fill_parent" android:layout_height="60.0dip" layout="@layout/aoe" />
+    <com.tencent.biz.qqstory.takevideo.CameraFocusView android:id="@id/aoj" android:paddingLeft="50.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/f7n" android:layout_below="@id/cey" />
+    <com.tencent.biz.qqstory.view.widget.QQStoryLoadingView android:textSize="14.0dip" android:id="@id/gm6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="15.0dip" android:layout_centerInParent="true" />
+    <RelativeLayout android:id="@id/cl9" android:layout_width="fill_parent" android:layout_height="200.0dip" android:layout_alignParentBottom="true">
+        <include android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="200.0dip" android:layout_alignParentBottom="true" layout="@layout/ao_" />
+        <include android:id="@id/apj" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/anr" />
+    </RelativeLayout>
+    <include android:id="@id/apm" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" layout="@layout/ans" />
+</RelativeLayout>

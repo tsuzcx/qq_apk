@@ -1,19 +1,20 @@
 package com.tencent.mobileqq.activity.book;
 
+import aera;
+import aerb;
 import android.content.Context;
 import android.text.InputFilter;
 import android.util.AttributeSet;
 import android.widget.EditText;
 import java.io.UnsupportedEncodingException;
-import wlh;
 
 public class BookEditText
   extends EditText
 {
   private int jdField_a_of_type_Int = 80;
-  private BookEditText.BookEditTextInputListener jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText$BookEditTextInputListener;
+  private aerb jdField_a_of_type_Aerb;
   private boolean jdField_a_of_type_Boolean;
-  private InputFilter[] jdField_a_of_type_ArrayOfAndroidTextInputFilter = { new wlh(this) };
+  private InputFilter[] jdField_a_of_type_ArrayOfAndroidTextInputFilter = { new aera(this) };
   
   public BookEditText(Context paramContext)
   {
@@ -51,9 +52,9 @@ public class BookEditText
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void setInputListener(BookEditText.BookEditTextInputListener paramBookEditTextInputListener)
+  public void setInputListener(aerb paramaerb)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBookBookEditText$BookEditTextInputListener = paramBookEditTextInputListener;
+    this.jdField_a_of_type_Aerb = paramaerb;
   }
   
   public void setTextLengthLimit(int paramInt)

@@ -1,23 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.utils.ContactUtils.OnGetTroopMemberNameCallback;
+import java.io.File;
 
 public final class akjm
-  implements Runnable
 {
-  public akjm(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, ContactUtils.OnGetTroopMemberNameCallback paramOnGetTroopMemberNameCallback) {}
+  public static String a = "_model.zip";
   
-  public void run()
+  public static String a()
   {
-    String str = ContactUtils.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.b);
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsContactUtils$OnGetTroopMemberNameCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsContactUtils$OnGetTroopMemberNameCallback.a(str);
-    }
+    return akug.a() + "ar_cloud_marker_model/" + 8 + File.separator;
+  }
+  
+  public static String b()
+  {
+    return akug.a() + "ar_cloud_transfer/";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akjm
  * JD-Core Version:    0.7.0.1
  */

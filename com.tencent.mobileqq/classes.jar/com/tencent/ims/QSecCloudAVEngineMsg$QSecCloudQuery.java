@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class QSecCloudAVEngineMsg$QSecCloudQuery
-  extends MessageMicro
+  extends MessageMicro<QSecCloudQuery>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "head", "body" }, new Object[] { null, null }, QSecCloudQuery.class);
   public QSecCloudAVEngineMsg.QSecCloudQueryBody body = new QSecCloudAVEngineMsg.QSecCloudQueryBody();

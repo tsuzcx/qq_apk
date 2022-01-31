@@ -1,26 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBaseFragment;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.common.offline.BidDownloader;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class mop
-  implements View.OnClickListener
+  extends axxg
 {
-  public mop(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
+  public BidDownloader a;
   
-  public void onClick(View paramView)
+  public mop(QQAppInterface paramQQAppInterface, String paramString, BidDownloader paramBidDownloader)
   {
-    if (this.a.a() != null)
-    {
-      this.a.a().c();
-      PublicAccountReportUtils.a(this.a.a, "CliOper", "", "", "0X8009160", "0X8009160", 0, 1, null, null, null, null, false);
-    }
+    super(paramQQAppInterface, paramString);
+    this.a = paramBidDownloader;
+  }
+  
+  protected void realCancel()
+  {
+    QLog.i(mom.a, 1, "cancel predown bid=" + this.a.a);
+  }
+  
+  protected void realStart()
+  {
+    QLog.i(mom.a, 1, "start predown bid=" + this.a.a);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     mop
  * JD-Core Version:    0.7.0.1
  */

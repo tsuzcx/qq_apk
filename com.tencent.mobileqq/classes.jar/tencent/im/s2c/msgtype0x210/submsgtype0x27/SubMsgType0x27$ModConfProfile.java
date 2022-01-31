@@ -8,10 +8,10 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0x27$ModConfProfile
-  extends MessageMicro
+  extends MessageMicro<ModConfProfile>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "uint64_uin", "uint32_conf_uin", "rpt_msg_profile_infos" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), null }, ModConfProfile.class);
-  public final PBRepeatMessageField rpt_msg_profile_infos = PBField.initRepeatMessage(SubMsgType0x27.ProfileInfo.class);
+  public final PBRepeatMessageField<SubMsgType0x27.ProfileInfo> rpt_msg_profile_infos = PBField.initRepeatMessage(SubMsgType0x27.ProfileInfo.class);
   public final PBUInt32Field uint32_conf_uin = PBField.initUInt32(0);
   public final PBUInt64Field uint64_uin = PBField.initUInt64(0L);
 }

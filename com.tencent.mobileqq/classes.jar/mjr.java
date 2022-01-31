@@ -1,19 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl;
-import java.util.TimerTask;
-
 public class mjr
-  extends TimerTask
 {
-  public mjr(VideoVolumeControl paramVideoVolumeControl) {}
-  
-  public void run()
-  {
-    VideoVolumeControl.a(this.a, true);
-  }
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mjr
  * JD-Core Version:    0.7.0.1
  */

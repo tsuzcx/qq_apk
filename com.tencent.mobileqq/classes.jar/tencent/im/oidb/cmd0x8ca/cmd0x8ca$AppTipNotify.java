@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class cmd0x8ca$AppTipNotify
-  extends MessageMicro
+  extends MessageMicro<AppTipNotify>
 {
   public static final int BYTES_TEXT_FIELD_NUMBER = 2;
   public static final int UINT32_ACTION_FIELD_NUMBER = 1;
@@ -28,7 +28,7 @@ public final class cmd0x8ca$AppTipNotify
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8ca.cmd0x8ca.AppTipNotify
  * JD-Core Version:    0.7.0.1
  */

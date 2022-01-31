@@ -1,14 +1,25 @@
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.LbsBaseActivity;
+
 public class abah
-  extends abad
+  implements View.OnClickListener
 {
-  private abah()
+  public abah(LbsBaseActivity paramLbsBaseActivity) {}
+  
+  public void onClick(View paramView)
   {
-    super(null);
+    asfc.a(this.a.getAppInterface().getAccount(), true);
+    if ((LbsBaseActivity.a(this.a) != null) && (LbsBaseActivity.a(this.a).isShowing())) {
+      this.a.a(LbsBaseActivity.a(this.a));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abah
  * JD-Core Version:    0.7.0.1
  */

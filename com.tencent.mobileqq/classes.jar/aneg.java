@@ -1,20 +1,47 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import java.util.HashMap;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public final class aneg
-  implements Runnable
+class aneg
+  extends WtloginObserver
 {
-  public aneg(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap paramHashMap, String paramString3) {}
+  aneg(aned paramaned, Bundle paramBundle1, Bundle paramBundle2, MessengerService paramMessengerService) {}
   
-  public void run()
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    StatisticCollector.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_JavaUtilHashMap, this.c);
+    boolean bool2 = true;
+    if ((paramInt == 0) && (paramDevlockInfo != null))
+    {
+      paramWUserSigInfo = this.jdField_a_of_type_AndroidOsBundle;
+      if (paramDevlockInfo.AllowSet != 1) {
+        break label85;
+      }
+      bool1 = true;
+      paramWUserSigInfo.putBoolean("hasSecurityPhoneNumber", bool1);
+      paramWUserSigInfo = this.jdField_a_of_type_AndroidOsBundle;
+      if (paramDevlockInfo.DevSetup != 1) {
+        break label91;
+      }
+    }
+    label85:
+    label91:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      paramWUserSigInfo.putBoolean("devlockIsOpen", bool1);
+      this.b.putBundle("response", this.jdField_a_of_type_AndroidOsBundle);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.b);
+      return;
+      bool1 = false;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aneg
  * JD-Core Version:    0.7.0.1
  */

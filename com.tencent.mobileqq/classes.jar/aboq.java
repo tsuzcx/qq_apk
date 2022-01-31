@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.armap.test.ARWebTestActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
 
 public class aboq
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aboq(ARWebTestActivity paramARWebTestActivity) {}
+  public aboq(RegisterNewBaseActivity paramRegisterNewBaseActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QQToast.a(BaseApplication.getContext(), "onMapLoadFinished", 0).b(this.a.getTitleBarHeight());
+    this.a.onBackEvent();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aboq
  * JD-Core Version:    0.7.0.1
  */

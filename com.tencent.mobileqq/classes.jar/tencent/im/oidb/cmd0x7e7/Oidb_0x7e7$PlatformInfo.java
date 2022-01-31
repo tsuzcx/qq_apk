@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Oidb_0x7e7$PlatformInfo
-  extends MessageMicro
+  extends MessageMicro<PlatformInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field build_no = PBField.initUInt64(0L);
@@ -23,7 +23,7 @@ public final class Oidb_0x7e7$PlatformInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x7e7.Oidb_0x7e7.PlatformInfo
  * JD-Core Version:    0.7.0.1
  */

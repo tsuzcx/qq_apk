@@ -1,37 +1,171 @@
-import com.tencent.biz.anonymous.AnonymousChatHelper;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.panel.AIOPanelUtiles;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.ImageCountChangedListener;
+import UserGrowth.downloadConfig;
+import UserGrowth.stGlobalConfig;
+import UserGrowth.stLinkConfig;
+import android.text.TextUtils;
+import cooperation.qzone.LocalMultiProcConfig;
 
 public class rxf
-  implements PhotoListPanel.ImageCountChangedListener
 {
-  public rxf(BaseChatPie paramBaseChatPie) {}
+  private stGlobalConfig a;
   
-  public boolean a(int paramInt)
+  public static rxf a()
   {
-    PanelIconLinearLayout localPanelIconLinearLayout;
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout != null) && (!this.a.G))
+    return rxh.a();
+  }
+  
+  private boolean f()
+  {
+    return (this.a == null) || (this.a.linkConfig == null);
+  }
+  
+  private boolean g()
+  {
+    return (this.a == null) || (this.a.download == null);
+  }
+  
+  public int a()
+  {
+    if (this.a != null) {
+      return this.a.link_strategy_type;
+    }
+    return 1;
+  }
+  
+  public stGlobalConfig a()
+  {
+    return this.a;
+  }
+  
+  public String a()
+  {
+    if (!g()) {
+      return this.a.download.packageName;
+    }
+    return "";
+  }
+  
+  public void a(stGlobalConfig paramstGlobalConfig)
+  {
+    this.a = paramstGlobalConfig;
+    sai.d("WSGlobalConfigLog", "initGlobalConfig globalConfig:" + paramstGlobalConfig);
+  }
+  
+  public boolean a()
+  {
+    return (this.a == null) || (this.a.open_4g_autodownload != 0);
+  }
+  
+  public int b()
+  {
+    if (!f()) {
+      return this.a.linkConfig.callCount;
+    }
+    return 10000;
+  }
+  
+  public String b()
+  {
+    if (!g()) {
+      return this.a.download.downloadUrl;
+    }
+    return "";
+  }
+  
+  public boolean b()
+  {
+    if (!f()) {
+      return this.a.linkConfig.isOpenVideoPage;
+    }
+    return true;
+  }
+  
+  public int c()
+  {
+    if (!f()) {
+      return this.a.linkConfig.downloadCount;
+    }
+    return 10000;
+  }
+  
+  public String c()
+  {
+    if (!g()) {
+      return this.a.download.preloadDownloadUrl;
+    }
+    return "";
+  }
+  
+  public boolean c()
+  {
+    return (!g()) && (this.a.download.preload);
+  }
+  
+  public int d()
+  {
+    if (!g()) {
+      return this.a.download.vendorId;
+    }
+    return 0;
+  }
+  
+  public String d()
+  {
+    if (!g())
     {
-      boolean bool = AnonymousChatHelper.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      localPanelIconLinearLayout = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout;
-      if (!bool) {
-        break label63;
+      if (TextUtils.isEmpty(this.a.download.qqDownloadUrl))
+      {
+        this.a.download.qqDownloadUrl = (rxu.a() + "&versioncode=" + e());
+        sai.c("WeishiDownloadUtil", "服务器下发QQDownloadUrl失败，使用默认的:" + this.a.download.qqDownloadUrl);
       }
+      sai.d("WeishiDownloadUtil", "服务器下发QQDownloadUrl: " + this.a.download.qqDownloadUrl);
+      return this.a.download.qqDownloadUrl;
     }
-    label63:
-    for (int[] arrayOfInt = AIOPanelUtiles.h;; arrayOfInt = AIOPanelUtiles.g)
+    return rxu.a();
+  }
+  
+  public boolean d()
+  {
+    return (!g()) && (this.a.download.appStoreSwitch);
+  }
+  
+  public int e()
+  {
+    if (!g()) {
+      return this.a.download.versionCode;
+    }
+    return 0;
+  }
+  
+  public String e()
+  {
+    if ((this.a != null) && (!TextUtils.isEmpty(this.a.encrypted_deviceid)))
     {
-      localPanelIconLinearLayout.a(arrayOfInt, paramInt);
-      return false;
+      LocalMultiProcConfig.putString("weishi_usergrowth", "encryptedDeviceId", this.a.encrypted_deviceid);
+      str = this.a.encrypted_deviceid;
+      sai.a("WSGlobalConfigLog", "LocalMultiProcConfig save encrypted_deviceid:" + str);
+      return str;
     }
+    String str = LocalMultiProcConfig.getString("weishi_usergrowth", "encryptedDeviceId", "");
+    sai.a("WSGlobalConfigLog", "LocalMultiProcConfig load encrypted_deviceid:" + str);
+    return str;
+  }
+  
+  public boolean e()
+  {
+    return (!g()) && (this.a.download.enableRock);
+  }
+  
+  public int f()
+  {
+    if (this.a != null) {
+      return this.a.cache_size;
+    }
+    return 14;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rxf
  * JD-Core Version:    0.7.0.1
  */

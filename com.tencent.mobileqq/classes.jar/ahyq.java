@@ -1,59 +1,23 @@
-import com.tencent.mobileqq.app.GlobalSearchObserver;
-import com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine;
-import com.tencent.mobileqq.utils.fts.SQLiteFTSUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.adapter.AvatarPendantAdapter.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class ahyq
-  extends GlobalSearchObserver
+  implements View.OnLayoutChangeListener
 {
-  public ahyq(FTSMessageSearchEngine paramFTSMessageSearchEngine) {}
+  ahyq(ahyo paramahyo) {}
   
-  public void a(boolean paramBoolean, ArrayList paramArrayList1, ArrayList paramArrayList2)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    super.a(paramBoolean, paramArrayList1, paramArrayList2);
-    paramArrayList2 = (String)paramArrayList2.get(0);
-    StringBuilder localStringBuilder = new StringBuilder(64);
-    if ((paramBoolean) && (paramArrayList1 != null) && (paramArrayList1.size() >= 1))
-    {
-      paramArrayList1 = ((ArrayList)paramArrayList1.get(0)).iterator();
-      while (paramArrayList1.hasNext())
-      {
-        Object localObject = (String)paramArrayList1.next();
-        if (((String)localObject).charAt(0) < '')
-        {
-          localObject = SQLiteFTSUtils.b((String)localObject);
-          if ((localObject != null) && (localObject.length > 0))
-          {
-            int j = localObject.length;
-            int i = 0;
-            while (i < j)
-            {
-              localStringBuilder.append(localObject[i]).append(" ");
-              i += 1;
-            }
-          }
-        }
-        else
-        {
-          localStringBuilder.append((String)localObject).append(" ");
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("FTSMessageSearchEngine", 2, "svcSeg result = [" + localStringBuilder.toString().trim() + "]");
-      }
-    }
-    FTSMessageSearchEngine.a(this.a).put(paramArrayList2, localStringBuilder);
-    paramArrayList1 = FTSMessageSearchEngine.b(this.a).get(paramArrayList2);
-    if (paramArrayList1 != null) {
-      try
-      {
-        paramArrayList1.notify();
-        return;
-      }
-      finally {}
+    View localView = paramView.findViewById(2131299722);
+    TextView localTextView = (TextView)paramView.findViewById(2131299721);
+    paramInt1 = ((ImageView)paramView.findViewById(2131310925)).getRight() - localView.getWidth();
+    if (paramInt1 > 0) {
+      ThreadManager.getUIHandler().post(new AvatarPendantAdapter.2.1(this, localTextView, paramInt1));
     }
   }
 }

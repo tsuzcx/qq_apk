@@ -1,18 +1,16 @@
-import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
-
-public class anjv
-  implements Runnable
+class anjv
+  extends anfz
 {
-  public anjv(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, String[] paramArrayOfString) {}
+  anjv(anju paramanju) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    QZoneSharePictureJsPlugin.c(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    this.a.a(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anjv
  * JD-Core Version:    0.7.0.1
  */

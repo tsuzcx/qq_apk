@@ -1,23 +1,22 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.flashchat.FlashChatObserver;
-import com.tencent.mobileqq.flashchat.FlashChatTextEffectView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
 public class adsd
-  extends FlashChatObserver
+  extends acju
 {
-  public adsd(FlashChatTextEffectView paramFlashChatTextEffectView) {}
-  
-  public void b(boolean paramBoolean, Bundle paramBundle)
-  {
-    super.b(paramBoolean, paramBundle);
-    if (paramBoolean) {
-      this.a.a();
-    }
-  }
+  public RelativeLayout a;
+  public TextView a;
+  public URLDrawable a;
+  public URLImageView a;
+  public BubbleImageView a;
+  public TextView b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adsd
  * JD-Core Version:    0.7.0.1
  */

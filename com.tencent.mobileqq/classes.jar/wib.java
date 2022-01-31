@@ -1,38 +1,55 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.FriendHotTipsBar;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.biz.tribe.TribeVideoPlugin;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
 public class wib
-  implements View.OnClickListener
+  implements TVK_SDKMgr.OnLogListener
 {
-  public wib(FriendHotTipsBar paramFriendHotTipsBar) {}
+  public wib(TribeVideoPlugin paramTribeVideoPlugin) {}
   
-  public void onClick(View paramView)
+  public int d(String paramString1, String paramString2)
   {
-    ReportController.b(FriendHotTipsBar.a(this.a), "CliOper", "", "", "Free_call", "Clk_free_call_tips", 0, 0, "", "", "", "");
-    FriendHotTipsBar.c(FriendHotTipsBar.a(this.a), FriendHotTipsBar.a(this.a).jdField_a_of_type_JavaLangString);
-    FriendHotTipsBar.a(this.a).a();
-    paramView = null;
-    String str = null;
-    if (FriendHotTipsBar.a(this.a).jdField_a_of_type_Int == 1006) {
-      str = FriendHotTipsBar.a(this.a).jdField_a_of_type_JavaLangString;
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
     }
-    for (;;)
-    {
-      ChatActivityUtils.a(FriendHotTipsBar.a(this.a), FriendHotTipsBar.a(this.a), FriendHotTipsBar.a(this.a).jdField_a_of_type_Int, paramView, FriendHotTipsBar.a(this.a).d, str, true, FriendHotTipsBar.a(this.a).b, true, true, null, "from_internal");
-      ReportController.b(FriendHotTipsBar.a(this.a), "CliOper", "", "", "Two_call", "Two_call_launch", 0, 0, "8", "", "", "");
-      return;
-      paramView = FriendHotTipsBar.a(this.a).jdField_a_of_type_JavaLangString;
+    return 0;
+  }
+  
+  public int e(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
     }
+    return 0;
+  }
+  
+  public int i(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
+    }
+    return 0;
+  }
+  
+  public int v(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
+    }
+    return 0;
+  }
+  
+  public int w(String paramString1, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wib
  * JD-Core Version:    0.7.0.1
  */

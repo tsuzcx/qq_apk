@@ -1,50 +1,19 @@
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
-import com.tencent.mobileqq.vip.DownloaderInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoOutputFrameListener;
 
-public class trr
-  implements Runnable
+class trr
+  implements TVK_IMediaPlayer.OnVideoOutputFrameListener
 {
-  public trr(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
+  trr(trk paramtrk) {}
   
-  public void run()
+  public void OnVideoOutputFrame(TVK_IMediaPlayer paramTVK_IMediaPlayer, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, "checkChatHistoryEventConfig start...");
-    }
-    DownloaderInterface localDownloaderInterface = ((DownloaderFactory)this.a.app.getManager(46)).a(1);
-    if ((localDownloaderInterface != null) && (localDownloaderInterface.a("http://imgcache.qq.com/qqshow/admindata/comdata/chatHistoryEvent/xydata.json") == null))
-    {
-      Object localObject = new File(QQSettingMsgHistoryActivity.c);
-      DownloadTask localDownloadTask = new DownloadTask("http://imgcache.qq.com/qqshow/admindata/comdata/chatHistoryEvent/xydata.json", (File)localObject);
-      if (((File)localObject).exists())
-      {
-        localObject = Long.valueOf(((File)localObject).lastModified());
-        localDownloadTask.i = this.a.app.getPreferences().getLong("chatHistoryEventJsonLastModified", 0L);
-        if (((Long)localObject).longValue() != localDownloadTask.i)
-        {
-          localDownloadTask.k = true;
-          if (QLog.isColorLevel()) {
-            QLog.d("IphoneTitleBarActivity", 2, "checkChatHistoryEventConfig file modified local time: " + localObject + ", sp time: " + localDownloadTask.i);
-          }
-        }
-      }
-      localDownloadTask.h = true;
-      localDownloadTask.n = false;
-      localObject = new Bundle();
-      localDownloaderInterface.a(localDownloadTask, this.a.a, (Bundle)localObject);
-    }
+    urk.a(this.a.a, "OnVideoOutputFrame width=%d height=%d rotation=%d %d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     trr
  * JD-Core Version:    0.7.0.1
  */

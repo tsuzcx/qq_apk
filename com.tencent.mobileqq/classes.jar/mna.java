@@ -1,97 +1,107 @@
-import android.content.Context;
-import android.content.Intent;
-import android.media.MediaPlayer;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.IButtonHandle;
-import com.tencent.mobileqq.surfaceviewaction.gl.Layer;
-import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
-import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.MessageMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
+import mqq.manager.TicketManager;
+import mqq.observer.BusinessObserver;
+import tencent.im.troop_search_searchtab.searchtab.ReqBody;
+import tencent.im.troop_search_userinfo.userinfo.AppInfo;
+import tencent.im.troop_search_userinfo.userinfo.GPS;
+import tencent.im.troop_search_userinfo.userinfo.UserInfo;
 
-class mna
-  implements SceneBuilder.IButtonHandle
+public class mna
 {
-  mna(mmx parammmx) {}
+  protected QQAppInterface a;
   
-  public void a(Layer paramLayer, Sprite paramSprite, String paramString)
+  public mna(QQAppInterface paramQQAppInterface)
   {
-    if (paramString.equals("close"))
+    this.a = paramQQAppInterface;
+  }
+  
+  private userinfo.UserInfo a(SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    userinfo.UserInfo localUserInfo = new userinfo.UserInfo();
+    Object localObject;
+    if (paramSosoLbsInfo != null)
     {
-      this.a.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView);
-      PublicAccountReportUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8008C82", "0X8008C82", 0, 0, this.a.jdField_b_of_type_JavaLangString, "" + ReadInJoyUtils.e(), "" + ReadInJoySkinGuideView.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView), "", false);
+      localObject = new userinfo.GPS();
+      ((userinfo.GPS)localObject).uint32_lat.set(Double.valueOf(paramSosoLbsInfo.a.a * 1000000.0D).intValue());
+      ((userinfo.GPS)localObject).uint32_lon.set(Double.valueOf(paramSosoLbsInfo.a.b * 1000000.0D).intValue());
+      localUserInfo.gps.set((MessageMicro)localObject);
     }
-    do
+    try
     {
+      if (!TextUtils.isEmpty(this.a.getCurrentAccountUin())) {
+        localUserInfo.uin.set(Long.parseLong(this.a.getCurrentAccountUin()));
+      }
+      paramSosoLbsInfo = new userinfo.AppInfo();
+      paramSosoLbsInfo.plat_type.set(2);
+      paramSosoLbsInfo.str_app_version.set(babp.c());
+      localUserInfo.app_info.set(paramSosoLbsInfo);
+      localUserInfo.bytes_client_version.set(ByteStringMicro.copyFromUtf8("8.2.6"));
+      paramSosoLbsInfo = (TicketManager)this.a.getManager(2);
+      localObject = this.a.getAccount();
+      if (!TextUtils.isEmpty(paramSosoLbsInfo.getSkey((String)localObject))) {
+        localUserInfo.skey.set(paramSosoLbsInfo.getSkey((String)localObject));
+      }
+      return localUserInfo;
+    }
+    catch (Exception paramSosoLbsInfo)
+    {
+      for (;;)
+      {
+        paramSosoLbsInfo.printStackTrace();
+      }
+    }
+  }
+  
+  private void a(String paramString, byte[] paramArrayOfByte, BusinessObserver paramBusinessObserver)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AddContactTroopHandler", 2, "sendRequest:" + paramString);
+    }
+    NewIntent localNewIntent = new NewIntent(this.a.getApplication(), mmi.class);
+    localNewIntent.setWithouLogin(true);
+    localNewIntent.putExtra("cmd", paramString);
+    localNewIntent.putExtra("data", paramArrayOfByte);
+    localNewIntent.setObserver(paramBusinessObserver);
+    this.a.startServlet(localNewIntent);
+  }
+  
+  private void a(userinfo.UserInfo paramUserInfo, mnb parammnb)
+  {
+    searchtab.ReqBody localReqBody = new searchtab.ReqBody();
+    localReqBody.user_info.set(paramUserInfo);
+    localReqBody.uint32_label_style.set(1);
+    a("SearchAsmTab.GetPopClassific", localReqBody.toByteArray(), new mnc(parammnb, this.a, 1));
+  }
+  
+  public void a(mnb parammnb)
+  {
+    try
+    {
+      a(a(null), parammnb);
       return;
-      if (paramString.equals("use_skin"))
-      {
-        this.a.jdField_b_of_type_AndroidViewView$OnClickListener.onClick(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView);
-        SharedPreUtils.r(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true);
-        PublicAccountReportUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8008C83", "0X8008C83", 0, 0, this.a.jdField_b_of_type_JavaLangString, "" + ReadInJoyUtils.e(), "" + ReadInJoySkinGuideView.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView), "", false);
-        return;
-      }
-      if (paramString.equals("open_sound"))
-      {
-        paramLayer = (Sprite)paramLayer.a("声音红点");
-        if (paramLayer != null) {
-          paramLayer.e = 0.0F;
-        }
-        if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a == null) {
-          this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a = new MediaPlayer();
-        }
-        for (;;)
-        {
-          try
-          {
-            this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a.setDataSource(this.a.jdField_a_of_type_JavaLangString + "/audio.mp3");
-            this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a.prepare();
-            this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a.start();
-            PublicAccountReportUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8008C81", "0X8008C81", 0, 0, this.a.jdField_b_of_type_JavaLangString, "" + ReadInJoyUtils.e(), "" + ReadInJoySkinGuideView.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView), "", false);
-            return;
-          }
-          catch (Exception paramLayer)
-          {
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.e("ReadInJoySkinGuideView", 2, QLog.getStackTraceString(paramLayer));
-            continue;
-          }
-          try
-          {
-            if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a.isPlaying()) {
-              continue;
-            }
-            this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a.start();
-          }
-          catch (Exception paramLayer) {}
-          if (QLog.isColorLevel()) {
-            QLog.e("ReadInJoySkinGuideView", 2, QLog.getStackTraceString(paramLayer));
-          }
-        }
-      }
-      paramLayer = JumpParser.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramString);
-      if (paramLayer != null)
-      {
-        paramLayer.b();
-        return;
-      }
-    } while ((!paramString.startsWith("https://")) && (!paramString.startsWith("http://")));
-    paramLayer = new Intent(this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramLayer.putExtra("url", paramString);
-    this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramLayer);
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      parammnb.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     mna
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,17 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class tls
-  implements View.OnClickListener
+public abstract interface tls
 {
-  public tls(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
+  public abstract void a();
   
-  public void onClick(View paramView)
-  {
-    paramView = this.a.getIntent().getStringExtra("uin");
-    if ((paramView != null) && (paramView.equals(this.a.app.getCurrentAccountUin())))
-    {
-      ProfileLabelEditorActivity.a(this.a);
-      ReportController.b(this.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "4", "", "", "");
-    }
-  }
+  public abstract void a(@NonNull ucw paramucw, ErrorMessage paramErrorMessage, boolean paramBoolean);
+  
+  public abstract void a(@NonNull ucw paramucw, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tls
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,14 @@
 package com.tencent.mobileqq.freshnews;
 
-import adwp;
-import adwq;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.text.Editable;
 import android.util.AttributeSet;
 import android.view.ContextMenu;
 import android.widget.EditText;
+import apqh;
+import apqi;
+import apqj;
 import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
 
 public class BlockableEditTextView
@@ -40,9 +41,9 @@ public class BlockableEditTextView
   {
     setEditableFactory(TroopBarPublishUtils.a);
     if (Build.VERSION.SDK_INT >= 11) {
-      setCustomSelectionActionModeCallback(new adwp(this));
+      setCustomSelectionActionModeCallback(new apqh(this));
     }
-    addTextChangedListener(new adwq(this));
+    addTextChangedListener(new apqi(this));
   }
   
   private boolean a()
@@ -52,11 +53,11 @@ public class BlockableEditTextView
     if (getEditableText() == null) {
       return false;
     }
-    BlockableEditTextView.BlockAble[] arrayOfBlockAble = (BlockableEditTextView.BlockAble[])getEditableText().getSpans(i, j, BlockableEditTextView.BlockAble.class);
-    if ((arrayOfBlockAble != null) && (arrayOfBlockAble.length > 0) && ((arrayOfBlockAble[0] instanceof BlockableEditTextView.BlockAble)))
+    apqj[] arrayOfapqj = (apqj[])getEditableText().getSpans(i, j, apqj.class);
+    if ((arrayOfapqj != null) && (arrayOfapqj.length > 0) && ((arrayOfapqj[0] instanceof apqj)))
     {
-      i = getEditableText().getSpanEnd(arrayOfBlockAble[0]);
-      j = getEditableText().getSpanStart(arrayOfBlockAble[0]);
+      i = getEditableText().getSpanEnd(arrayOfapqj[0]);
+      j = getEditableText().getSpanStart(arrayOfapqj[0]);
       if ((j >= 0) && (i > j)) {
         return false;
       }
@@ -83,14 +84,14 @@ public class BlockableEditTextView
       {
         do
         {
-          BlockableEditTextView.BlockAble[] arrayOfBlockAble;
+          apqj[] arrayOfapqj;
           do
           {
             return;
-            arrayOfBlockAble = (BlockableEditTextView.BlockAble[])getEditableText().getSpans(paramInt1, paramInt2, BlockableEditTextView.BlockAble.class);
-          } while ((arrayOfBlockAble == null) || (arrayOfBlockAble.length <= 0));
-          i = getEditableText().getSpanEnd(arrayOfBlockAble[0]);
-          j = getEditableText().getSpanStart(arrayOfBlockAble[0]);
+            arrayOfapqj = (apqj[])getEditableText().getSpans(paramInt1, paramInt2, apqj.class);
+          } while ((arrayOfapqj == null) || (arrayOfapqj.length <= 0));
+          i = getEditableText().getSpanEnd(arrayOfapqj[0]);
+          j = getEditableText().getSpanStart(arrayOfapqj[0]);
         } while ((i <= j) || (j < 0));
         if ((paramInt1 == j) && (paramInt2 == j) && (this.jdField_a_of_type_Boolean))
         {

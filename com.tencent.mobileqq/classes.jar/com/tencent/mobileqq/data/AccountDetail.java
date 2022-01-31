@@ -1,7 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.biz.pubaccount.PaConfigAttr;
-import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
+import ajjy;
+import atmo;
+import atnz;
+import atoc;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigGroupInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.ConfigInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
@@ -11,39 +13,38 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
-import com.tencent.mobileqq.persistence.unique;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
+import nbt;
+import nbu;
 import org.json.JSONObject;
 
 public class AccountDetail
-  extends Entity
+  extends atmo
 {
   public byte[] accountData;
   public int accountFlag;
   public long accountFlag2;
-  @notColumn
+  @atnz
   public int cardStyle = 0;
   public String certifiedDescription = "";
-  @notColumn
+  @atnz
   public String certifiedEnterprise = "";
   public int certifiedGrade;
-  @notColumn
+  @atnz
   public String certifiedWeixin = "";
   public String configBackgroundColor = "3d7fe3";
-  @notColumn
+  @atnz
   public String configBackgroundImg = "";
-  @notColumn
-  public List customConfigAttrs;
+  @atnz
+  public List<nbt> customConfigAttrs;
   public String displayNumber = "";
   public int followType;
-  @notColumn
-  public List fullscreenConfigAttrs;
+  @atnz
+  public List<nbt> fullscreenConfigAttrs;
   public int groupId;
-  public List groupInfoList;
+  public List<mobileqq_mp.ConfigGroupInfo> groupInfoList;
   public boolean isAgreeSyncLbs;
   public boolean isConfirmed;
   public boolean isRecvMsg;
@@ -54,16 +55,16 @@ public class AccountDetail
   public boolean isSyncLbsSelected;
   public String lastHistoryMsg;
   public int mShowMsgFlag = -1;
-  public String name = "公众帐号";
-  public List newGroupInfoList;
-  @notColumn
-  public List paConfigAttrs;
+  public String name = ajjy.a(2131633941);
+  public List<mobileqq_mp.ConfigGroupInfo> newGroupInfoList;
+  @atnz
+  public List<nbt> paConfigAttrs;
   public int seqno;
   public int showFlag;
-  public String summary = "挺好的";
-  @unique
+  public String summary = ajjy.a(2131633944);
+  @atoc
   public String uin;
-  @notColumn
+  @atnz
   public String unifiedDesrpition;
   
   public AccountDetail() {}
@@ -241,29 +242,29 @@ public class AccountDetail
     int j;
     while (localIterator.hasNext())
     {
-      Object localObject = (PaConfigAttr)localIterator.next();
-      if ((((PaConfigAttr)localObject).jdField_a_of_type_Int != 1) && (((PaConfigAttr)localObject).jdField_a_of_type_JavaUtilList != null))
+      Object localObject = (nbt)localIterator.next();
+      if ((((nbt)localObject).jdField_a_of_type_Int != 1) && (((nbt)localObject).jdField_a_of_type_JavaUtilList != null))
       {
-        localObject = ((PaConfigAttr)localObject).jdField_a_of_type_JavaUtilList.iterator();
+        localObject = ((nbt)localObject).jdField_a_of_type_JavaUtilList.iterator();
         j = i;
         for (;;)
         {
           if (((Iterator)localObject).hasNext())
           {
-            PaConfigAttr.PaConfigInfo localPaConfigInfo = (PaConfigAttr.PaConfigInfo)((Iterator)localObject).next();
+            nbu localnbu = (nbu)((Iterator)localObject).next();
             i = j;
-            if (localPaConfigInfo.jdField_a_of_type_Int == 2)
+            if (localnbu.jdField_a_of_type_Int == 2)
             {
               i = j;
-              if (localPaConfigInfo.e == 3) {
+              if (localnbu.e == 3) {
                 this.isSyncLbs = true;
               }
             }
-            switch (localPaConfigInfo.d)
+            switch (localnbu.d)
             {
             default: 
               if (QLog.isColorLevel()) {
-                QLog.e("EqqDetail", 2, "Error Eqq lbs state value: " + localPaConfigInfo.d);
+                QLog.e("EqqDetail", 2, "Error Eqq lbs state value: " + localnbu.d);
               }
               i = 1;
               label191:
@@ -323,17 +324,17 @@ public class AccountDetail
       int i = 0;
       while (localIterator.hasNext())
       {
-        Object localObject = (PaConfigAttr)localIterator.next();
-        if ((((PaConfigAttr)localObject).jdField_a_of_type_Int != 1) && (((PaConfigAttr)localObject).jdField_a_of_type_JavaUtilList != null))
+        Object localObject = (nbt)localIterator.next();
+        if ((((nbt)localObject).jdField_a_of_type_Int != 1) && (((nbt)localObject).jdField_a_of_type_JavaUtilList != null))
         {
-          localObject = ((PaConfigAttr)localObject).jdField_a_of_type_JavaUtilList.iterator();
+          localObject = ((nbt)localObject).jdField_a_of_type_JavaUtilList.iterator();
           for (;;)
           {
             if (((Iterator)localObject).hasNext())
             {
-              PaConfigAttr.PaConfigInfo localPaConfigInfo = (PaConfigAttr.PaConfigInfo)((Iterator)localObject).next();
-              if (localPaConfigInfo.e == 5) {
-                if (localPaConfigInfo.d == 1)
+              nbu localnbu = (nbu)((Iterator)localObject).next();
+              if (localnbu.e == 5) {
+                if (localnbu.d == 1)
                 {
                   i = 1;
                   this.mShowMsgFlag = i;
@@ -369,9 +370,9 @@ public class AccountDetail
       this.configBackgroundColor = localJSONObject.optString("background_color");
       this.certifiedEnterprise = localJSONObject.optString("certified_enterprise");
       this.certifiedWeixin = localJSONObject.optString("certified_weixin");
-      this.paConfigAttrs = PaConfigAttr.a(localJSONObject.optJSONArray("config_arr"));
-      this.customConfigAttrs = PaConfigAttr.a(localJSONObject.optJSONArray("custom_arr"));
-      this.fullscreenConfigAttrs = PaConfigAttr.a(localJSONObject.optJSONArray("fullscreen_arr"));
+      this.paConfigAttrs = nbt.a(localJSONObject.optJSONArray("config_arr"));
+      this.customConfigAttrs = nbt.a(localJSONObject.optJSONArray("custom_arr"));
+      this.fullscreenConfigAttrs = nbt.a(localJSONObject.optJSONArray("fullscreen_arr"));
       this.cardStyle = localJSONObject.optInt("card_style");
       return;
     }
@@ -381,7 +382,7 @@ public class AccountDetail
     }
   }
   
-  void parserMsgFlag(List paramList)
+  void parserMsgFlag(List<mobileqq_mp.ConfigGroupInfo> paramList)
   {
     int i;
     if ((paramList != null) && (paramList.size() > 0))

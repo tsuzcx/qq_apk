@@ -3,16 +3,17 @@ package com.tencent.mobileqq.fpsreport;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import com.tencent.mfsdk.collector.DropFrameMonitor;
-import com.tencent.mfsdk.collector.FPSCalculator;
 import com.tencent.widget.XListView;
+import zqk;
+import zqp;
 
 public class FPSXListView
   extends XListView
 {
   private int jdField_a_of_type_Int;
-  private FPSCalculator jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator;
   private String jdField_a_of_type_JavaLangString;
+  private zqp jdField_a_of_type_Zqp;
+  private boolean jdField_a_of_type_Boolean = true;
   
   public FPSXListView(Context paramContext)
   {
@@ -29,51 +30,56 @@ public class FPSXListView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void a()
+  public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator != null) {
-      this.jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator.a();
+    if (this.jdField_a_of_type_Zqp != null) {
+      this.jdField_a_of_type_Zqp.a();
     }
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if (this.jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator != null) {
-      this.jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator.b();
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Zqp != null)) {
+      this.jdField_a_of_type_Zqp.b();
     }
   }
   
-  protected void reportScrollStateChange(int paramInt)
+  public void reportScrollStateChange(int paramInt)
   {
     super.reportScrollStateChange(paramInt);
-    if (this.jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator != null) {
-      this.jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator.a(paramInt);
+    if (this.jdField_a_of_type_Zqp != null) {
+      this.jdField_a_of_type_Zqp.a(paramInt);
     }
     if (this.jdField_a_of_type_Int == 1) {
       if (paramInt == 0) {
-        DropFrameMonitor.a().a("list_leba_new", false);
+        zqk.a().a("list_leba_new", false);
       }
     }
     while (this.jdField_a_of_type_Int != 2)
     {
       return;
-      DropFrameMonitor.a().a("list_leba_new");
+      zqk.a().a("list_leba_new");
       return;
     }
     if (paramInt == 0)
     {
-      DropFrameMonitor.a().a("list_leba", false);
+      zqk.a().a("list_leba", false);
       return;
     }
-    DropFrameMonitor.a().a("list_leba");
+    zqk.a().a("list_leba");
   }
   
   public void setActTAG(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator = new FPSCalculator();
-    this.jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator.a(paramString);
+    this.jdField_a_of_type_Zqp = new zqp();
+    this.jdField_a_of_type_Zqp.a(paramString);
   }
   
   public void setReportType(int paramInt)

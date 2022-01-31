@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class FestivalGetRsp
   extends JceStruct
 {
-  static ArrayList cache__vec_festivals = new ArrayList();
-  public ArrayList _vec_festivals;
+  static ArrayList<FestivalGetRspItem> cache__vec_festivals = new ArrayList();
+  public ArrayList<FestivalGetRspItem> _vec_festivals;
   
   static
   {
@@ -19,7 +19,7 @@ public final class FestivalGetRsp
   
   public FestivalGetRsp() {}
   
-  public FestivalGetRsp(ArrayList paramArrayList)
+  public FestivalGetRsp(ArrayList<FestivalGetRspItem> paramArrayList)
   {
     this._vec_festivals = paramArrayList;
   }

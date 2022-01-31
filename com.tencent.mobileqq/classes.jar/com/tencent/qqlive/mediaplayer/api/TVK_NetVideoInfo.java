@@ -16,8 +16,8 @@ public class TVK_NetVideoInfo
   public static final int TYPE_JSON = 1;
   public static final int TYPE_XML = 2;
   private static final long serialVersionUID = -1L;
-  private DefnInfo a;
-  private ArrayList<DefnInfo> b;
+  private TVK_NetVideoInfo.DefnInfo a;
+  private ArrayList<TVK_NetVideoInfo.DefnInfo> b;
   private int c = 0;
   private int d = 0;
   private int e = 2;
@@ -43,7 +43,7 @@ public class TVK_NetVideoInfo
   private int y = 0;
   private String z;
   
-  public void addDefinition(DefnInfo paramDefnInfo)
+  public void addDefinition(TVK_NetVideoInfo.DefnInfo paramDefnInfo)
   {
     if (this.b == null) {
       this.b = new ArrayList();
@@ -56,7 +56,7 @@ public class TVK_NetVideoInfo
     return this.d;
   }
   
-  public DefnInfo getCurDefinition()
+  public TVK_NetVideoInfo.DefnInfo getCurDefinition()
   {
     return this.a;
   }
@@ -66,7 +66,7 @@ public class TVK_NetVideoInfo
     return this.c;
   }
   
-  public ArrayList<DefnInfo> getDefinitionList()
+  public ArrayList<TVK_NetVideoInfo.DefnInfo> getDefinitionList()
   {
     return this.b;
   }
@@ -181,7 +181,7 @@ public class TVK_NetVideoInfo
     return this.k;
   }
   
-  public void removeDefinition(DefnInfo paramDefnInfo)
+  public void removeDefinition(TVK_NetVideoInfo.DefnInfo paramDefnInfo)
   {
     if (this.b == null)
     {
@@ -196,7 +196,7 @@ public class TVK_NetVideoInfo
     this.d = paramInt;
   }
   
-  public void setCurDefinition(DefnInfo paramDefnInfo)
+  public void setCurDefinition(TVK_NetVideoInfo.DefnInfo paramDefnInfo)
   {
     this.a = paramDefnInfo;
   }
@@ -315,115 +315,10 @@ public class TVK_NetVideoInfo
   {
     this.t = paramString;
   }
-  
-  public static class DefnInfo
-    implements Serializable
-  {
-    private static final long serialVersionUID = -1L;
-    private String a;
-    private String b;
-    private int c;
-    private int d;
-    
-    public String getmDefn()
-    {
-      return this.a;
-    }
-    
-    public int getmDefnId()
-    {
-      return this.d;
-    }
-    
-    public String getmDefnName()
-    {
-      return this.b;
-    }
-    
-    public boolean isAudioOnly()
-    {
-      return "audio".equalsIgnoreCase(this.a);
-    }
-    
-    public int isVip()
-    {
-      return this.c;
-    }
-    
-    public void setVip(int paramInt)
-    {
-      this.c = paramInt;
-    }
-    
-    public void setmDefn(String paramString)
-    {
-      this.a = paramString;
-    }
-    
-    public void setmDefnId(int paramInt)
-    {
-      this.d = paramInt;
-    }
-    
-    public void setmDefnName(String paramString)
-    {
-      this.b = paramString;
-    }
-  }
-  
-  public static class RecommadInfo
-    implements Serializable
-  {
-    private static final long serialVersionUID = -1L;
-    private String a;
-    private String b;
-    private String c;
-    private boolean d;
-    
-    public String getmCid()
-    {
-      return this.b;
-    }
-    
-    public String getmTargetId()
-    {
-      return this.c;
-    }
-    
-    public String getmVid()
-    {
-      return this.a;
-    }
-    
-    public boolean ismDanmuOpen()
-    {
-      return this.d;
-    }
-    
-    public void setmCid(String paramString)
-    {
-      this.b = paramString;
-    }
-    
-    public void setmDanmuOpen(boolean paramBoolean)
-    {
-      this.d = paramBoolean;
-    }
-    
-    public void setmTargetId(String paramString)
-    {
-      this.c = ("targetid=" + paramString + "&type=2");
-    }
-    
-    public void setmVid(String paramString)
-    {
-      this.a = paramString;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.qqlive.mediaplayer.api.TVK_NetVideoInfo
  * JD-Core Version:    0.7.0.1
  */

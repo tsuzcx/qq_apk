@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.data;
 
-import accu;
+import amtf;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class PrecoverConfig
-  extends Entity
+  extends atmo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new accu();
-  @unique
+  public static final Parcelable.Creator<PrecoverConfig> CREATOR = new amtf();
+  @atoc
   public String businessId;
   public int taskId;
   public String xmlContent;

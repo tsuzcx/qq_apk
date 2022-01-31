@@ -1,23 +1,29 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.armap.SdCardImageAnimView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import mqq.util.WeakReference;
 
-class abkf
-  implements Runnable
+public class abkf
+  implements bbom
 {
-  abkf(abke paramabke, Bitmap paramBitmap) {}
+  final WeakReference<QQBrowserActivity> a;
   
-  public void run()
+  public abkf(QQBrowserActivity paramQQBrowserActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SdCardImageAnimView", 2, "defaultImgRunnable set image bitmap");
+    this.a = new WeakReference(paramQQBrowserActivity);
+  }
+  
+  public void onTabSelected(int paramInt1, int paramInt2)
+  {
+    QQBrowserActivity localQQBrowserActivity = (QQBrowserActivity)this.a.get();
+    if (localQQBrowserActivity == null) {}
+    while (paramInt1 == paramInt2) {
+      return;
     }
-    this.jdField_a_of_type_Abke.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    QQBrowserActivity.a(paramInt2, localQQBrowserActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abkf
  * JD-Core Version:    0.7.0.1
  */

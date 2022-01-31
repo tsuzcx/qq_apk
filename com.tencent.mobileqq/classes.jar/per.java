@@ -1,23 +1,6 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.PopupWindow;
-import com.tencent.biz.ui.PopupWindows;
-
-public class per
-  implements View.OnTouchListener
+class per
 {
-  public per(PopupWindows paramPopupWindows) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    if (paramMotionEvent.getAction() == 4)
-    {
-      this.a.a.dismiss();
-      return true;
-    }
-    return false;
-  }
+  private static final peq a = new peq();
 }
 
 

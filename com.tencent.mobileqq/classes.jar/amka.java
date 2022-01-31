@@ -1,50 +1,70 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.Scroller;
-import com.tencent.widget.MovingView;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amka
-  extends Handler
 {
-  public amka(MovingView paramMovingView, Looper paramLooper)
+  private int jdField_a_of_type_Int = 1;
+  private String jdField_a_of_type_JavaLangString = "";
+  
+  public static amka a()
   {
-    super(paramLooper);
+    return (amka)alzw.a().a(460);
   }
   
-  public void handleMessage(Message paramMessage)
+  public static amka a(alzs paramalzs)
   {
-    if (paramMessage.what == 1) {
-      if ((this.a.jdField_a_of_type_Boolean) && (!this.a.jdField_b_of_type_Boolean)) {}
-    }
-    while (paramMessage.what != 2)
-    {
-      return;
-      if (this.a.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset())
-      {
-        int i = this.a.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
-        int j = this.a.jdField_a_of_type_AndroidWidgetScroller.getCurrY();
-        int k = this.a.c;
-        int m = this.a.d;
-        this.a.c = i;
-        this.a.d = j;
-        paramMessage = this.a;
-        paramMessage.jdField_a_of_type_Int += i - k;
-        paramMessage = this.a;
-        paramMessage.jdField_b_of_type_Int += j - m;
-        this.a.invalidate();
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 40L);
-        return;
+    amka localamka = new amka();
+    if (paramalzs != null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopRobotConfBean", 2, "parse taskid->" + paramalzs.jdField_a_of_type_Int + " content->" + paramalzs.jdField_a_of_type_JavaLangString);
       }
-      this.a.a();
-      return;
     }
-    this.a.a();
+    try
+    {
+      paramalzs = new JSONObject(paramalzs.jdField_a_of_type_JavaLangString);
+      int i = paramalzs.optInt("robotswitch", 0);
+      paramalzs = paramalzs.optString("c2cwarning", "");
+      localamka.a(i);
+      localamka.a(paramalzs);
+      return localamka;
+    }
+    catch (JSONException paramalzs)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("TroopRobotConfBean", 2, "parse error->" + paramalzs.toString());
+    }
+    return localamka;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  public String toString()
+  {
+    return String.format("mTroopRobotSwitch:%d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amka
  * JD-Core Version:    0.7.0.1
  */

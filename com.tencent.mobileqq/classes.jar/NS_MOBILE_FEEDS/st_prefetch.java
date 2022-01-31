@@ -10,11 +10,11 @@ import java.util.Map;
 public final class st_prefetch
   extends JceStruct
 {
-  static Map cache_mapExt;
-  static ArrayList cache_vecPicUrl = new ArrayList();
-  public Map mapExt;
+  static Map<String, String> cache_mapExt;
+  static ArrayList<String> cache_vecPicUrl = new ArrayList();
+  public Map<String, String> mapExt;
   public String sExtendInfo = "";
-  public ArrayList vecPicUrl;
+  public ArrayList<String> vecPicUrl;
   
   static
   {
@@ -25,7 +25,7 @@ public final class st_prefetch
   
   public st_prefetch() {}
   
-  public st_prefetch(ArrayList paramArrayList, String paramString, Map paramMap)
+  public st_prefetch(ArrayList<String> paramArrayList, String paramString, Map<String, String> paramMap)
   {
     this.vecPicUrl = paramArrayList;
     this.sExtendInfo = paramString;
@@ -54,7 +54,7 @@ public final class st_prefetch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.st_prefetch
  * JD-Core Version:    0.7.0.1
  */

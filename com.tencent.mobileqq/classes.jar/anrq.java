@@ -1,57 +1,66 @@
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment.6.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class anrq
-  implements Runnable
+  extends RecyclerView.OnScrollListener
 {
-  public anrq(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit, boolean paramBoolean1, boolean paramBoolean2) {}
+  public anrq(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
   
-  public void run()
+  public void onScrollStateChanged(RecyclerView arg1, int paramInt)
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.a.setAnimationListener(null);
-      this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.b.setAnimationListener(null);
-      this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.b.cancel();
-      this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.a.cancel();
-      QIMEffectCameraCaptureUnit.d(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit).clearAnimation();
-      QIMEffectCameraCaptureUnit.d(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit).setVisibility(8);
-      this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.j = false;
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ExtendFriendSearchFragment", 2, String.format("onScrollStateChanged state=%s", new Object[] { Integer.valueOf(paramInt) }));
     }
-    this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.b.reset();
-    this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.a.reset();
-    this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.j = true;
-    QIMEffectCameraCaptureUnit.d(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit).setVisibility(0);
-    QIMEffectCameraCaptureUnit.d(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit).setText(2131439128);
-    AlphaAnimation localAlphaAnimation = this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.a;
-    Object localObject;
-    if (this.b)
+    if (this.a.jdField_a_of_type_Azwg != null)
     {
-      localObject = QIMEffectCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit);
-      localAlphaAnimation.setAnimationListener((Animation.AnimationListener)localObject);
-      localObject = this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.a;
-      if (!this.b) {
-        break label224;
+      if (paramInt != 0) {
+        break label87;
+      }
+      this.a.c = false;
+      this.a.jdField_a_of_type_Azwg.b();
+      this.a.a();
+    }
+    for (;;)
+    {
+      if (paramInt == 0)
+      {
+        this.a.g();
+        this.a.b(false);
+      }
+      return;
+      label87:
+      this.a.c = true;
+      this.a.jdField_a_of_type_Azwg.c();
+      this.a.jdField_a_of_type_Azwg.a();
+      synchronized (ExtendFriendBaseFragment.a)
+      {
+        if (this.a.jdField_a_of_type_JavaUtilMap != null) {
+          this.a.jdField_a_of_type_JavaUtilMap.clear();
+        }
       }
     }
-    label224:
-    for (long l = 2000L;; l = 3000L)
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    if ((!ExtendFriendSearchFragment.a(this.a)) && (!ExtendFriendSearchFragment.b(this.a)) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager != null) && (this.a.jdField_a_of_type_Ansi != null) && (this.a.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.findViewByPosition(this.a.jdField_a_of_type_Ansi.getItemCount() - 2) != null))
     {
-      ((AlphaAnimation)localObject).setStartOffset(l);
-      QIMEffectCameraCaptureUnit.d(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit).setAnimation(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.a);
-      this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.a.startNow();
-      return;
-      localObject = QIMEffectCameraCaptureUnit.b(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit);
-      break;
+      this.a.a(true);
+      ExtendFriendSearchFragment.a(this.a).post(new ExtendFriendSearchFragment.6.1(this));
+      awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092D5", "0X80092D5", 0, 0, "", "", "", "");
     }
+    this.a.a(false, 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anrq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,55 @@
-import com.tencent.mobileqq.ar.ARRecord.ARRecordUtils;
-import com.tencent.mobileqq.ar.ARRecord.VideoEncoderUtils;
-import com.tencent.mobileqq.arcard.ARCardCameraRecordFragment;
-import com.tencent.mobileqq.arcard.ARCardCamereButtonLayout.CaptureButtonListener;
-import com.tencent.qphone.base.util.QLog;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 
 public class aase
-  implements ARCardCamereButtonLayout.CaptureButtonListener
+  implements abqm
 {
-  public aase(ARCardCameraRecordFragment paramARCardCameraRecordFragment) {}
+  public aase(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public void a()
+  public void a(Editable paramEditable)
   {
-    QLog.d("ARCardCameraRecordFragment", 2, "onCaptureButtonPhoto");
+    paramEditable = paramEditable.toString();
+    if (TextUtils.isEmpty(paramEditable)) {
+      ForwardFriendListActivity.a(this.a).setVisibility(8);
+    }
+    for (;;)
+    {
+      if (ForwardFriendListActivity.a(this.a) != null) {
+        ForwardFriendListActivity.a(this.a).a(paramEditable);
+      }
+      return;
+      ForwardFriendListActivity.a(this.a).setVisibility(0);
+    }
   }
   
-  public void b()
+  public void a(ResultRecord paramResultRecord)
   {
-    QLog.d("ARCardCameraRecordFragment", 2, "onCaptureButtonVideoStart");
-    if (!VideoEncoderUtils.a())
-    {
-      ARRecordUtils.a("该机型不支持录制，无法参与活动", true);
-      return;
+    if (paramResultRecord != null) {
+      ForwardFriendListActivity.a(this.a, paramResultRecord.a, paramResultRecord.a());
     }
-    if (!ARRecordUtils.a(104857600L))
-    {
-      ARRecordUtils.a("无法录制", "sdcard剩余空间不足");
-      return;
-    }
-    if (!this.a.b())
-    {
-      ARCardCameraRecordFragment.a(this.a, false);
-      ARRecordUtils.a("录制间隔太短，请稍候重试", true);
-      return;
-    }
-    ARCardCameraRecordFragment.a(this.a, true);
+    ForwardFriendListActivity.a(this.a).notifyDataSetChanged();
   }
   
-  public void c()
+  public void a(boolean paramBoolean)
   {
-    QLog.d("ARCardCameraRecordFragment", 2, "onCaptureButtonVideoStop");
-    this.a.c();
-    ARCardCameraRecordFragment.a(this.a, false);
+    if ((paramBoolean) && (ForwardFriendListActivity.a(this.a) == null))
+    {
+      ForwardFriendListActivity.a(this.a, ContactSearchFragment.a(6, 1, null, null, ForwardFriendListActivity.a(this.a)));
+      FragmentTransaction localFragmentTransaction = this.a.getSupportFragmentManager().beginTransaction();
+      localFragmentTransaction.add(2131309439, ForwardFriendListActivity.a(this.a));
+      localFragmentTransaction.commitAllowingStateLoss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aase
  * JD-Core Version:    0.7.0.1
  */

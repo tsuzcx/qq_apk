@@ -1,21 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoAutoPlayController;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.av.widget.stageview.StageEffectView.5.1;
+import com.tencent.av.widget.stageview.StageMemberView;
 
-class mkp
-  implements Runnable
+public class mkp
+  implements Animation.AnimationListener
 {
-  mkp(mko parammko, ReadInJoyBaseListView paramReadInJoyBaseListView) {}
-  
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ReadInJoyBaseAdapter.a(this.jdField_a_of_type_Mko.a).a(false);
-    ReadInJoyBaseAdapter.a(this.jdField_a_of_type_Mko.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListView, 0);
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentAvWidgetStageviewStageMemberView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.jdField_a_of_type_AndroidWidgetImageView.post(new StageEffectView.5.1(this));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mkp
  * JD-Core Version:    0.7.0.1
  */

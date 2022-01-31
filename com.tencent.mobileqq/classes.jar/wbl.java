@@ -1,32 +1,10 @@
-import com.tencent.biz.troopgift.TroopGiftPanel.OnShowOrHideListerner;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
-import com.tencent.mobileqq.nearby.gift.NearbyGiftPanelDialog;
-
-public class wbl
-  implements TroopGiftPanel.OnShowOrHideListerner
+public abstract interface wbl
 {
-  public wbl(NearbyChatPie paramNearbyChatPie) {}
-  
-  public void a()
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog.a();
-  }
-  
-  public void b()
-  {
-    NearbyGiftPanelDialog localNearbyGiftPanelDialog = this.a.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 10002) {}
-    for (int i = 8;; i = 6)
-    {
-      localNearbyGiftPanelDialog.a(false, true, i);
-      return;
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wbl
  * JD-Core Version:    0.7.0.1
  */

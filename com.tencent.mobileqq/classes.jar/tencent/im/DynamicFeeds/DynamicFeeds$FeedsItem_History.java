@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class DynamicFeeds$FeedsItem_History
-  extends MessageMicro
+  extends MessageMicro<FeedsItem_History>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "ulFeedID", "uiUpdateTimestamp", "bDislike" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Boolean.valueOf(false) }, FeedsItem_History.class);
   public final PBBoolField bDislike = PBField.initBool(false);
@@ -17,7 +17,7 @@ public final class DynamicFeeds$FeedsItem_History
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.DynamicFeeds.DynamicFeeds.FeedsItem_History
  * JD-Core Version:    0.7.0.1
  */

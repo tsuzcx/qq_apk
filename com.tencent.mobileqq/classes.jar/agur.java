@@ -1,38 +1,44 @@
-import android.os.Handler;
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
-import com.tencent.mobileqq.profile.upload.task.VipBaseUpsImageUploadTask;
-import com.tencent.upload.uinterface.data.UpsImageUploadResult;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public class agur
-  extends VipBaseUpsImageUploadTask
+class agur
+  implements agpe
 {
-  public agur(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity, long paramLong, String paramString1, byte[] paramArrayOfByte, String paramString2, String paramString3)
-  {
-    super(paramLong, paramString1, paramArrayOfByte, paramString2);
-  }
+  agur(aguo paramaguo) {}
   
-  public void a(int paramInt, Object... paramVarArgs)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    switch (paramInt)
-    {
-    default: 
-    case 1001: 
-      do
-      {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.n();
-      } while (a() == null);
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(this.jdField_a_of_type_JavaLangString, (UpsImageUploadResult)a());
-      return;
+    int i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("springHb_SpringHbEntryPendantHolder", 2, "tryLoadLogoRes resCode:" + paramInt + ",pathRes:" + paramPathResult);
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.n();
-    paramVarArgs = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.obtainMessage(24, a());
-    this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.sendMessage(paramVarArgs);
+    if (paramInt == 0)
+    {
+      paramInt = 1;
+      if (paramPathResult == null) {
+        break label154;
+      }
+    }
+    for (;;)
+    {
+      if (((i & paramInt) != 0) && (!baip.a(paramPathResult.folderPath)))
+      {
+        aguo.b(this.a, paramPathResult.folderPath + File.separator + "logo" + File.separator);
+        aguo.e(this.a);
+      }
+      QLog.i("springHb_SpringHbEntryPendantHolder", 2, "tryLoadLogoRes -->mLogoDrawableLoaded：" + aguo.b(this.a));
+      return;
+      paramInt = 0;
+      break;
+      label154:
+      i = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agur
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,50 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobSegment;
+import java.util.List;
 
 public class uju
-  implements View.OnClickListener
+  extends uiy<ujt>
 {
-  public uju(TroopTransferActivity paramTroopTransferActivity) {}
-  
-  public void onClick(View paramView)
+  public uju(@Nullable ujc paramujc)
   {
-    this.a.a.dismiss();
+    super(paramujc);
+  }
+  
+  protected JobSegment<ujb, ujt> a()
+  {
+    return new ujo();
+  }
+  
+  protected JobSegment<Integer, ujb> a(uja paramuja)
+  {
+    return new ujv(paramuja, this.a);
+  }
+  
+  protected ujt a()
+  {
+    uje localuje = (uje)sqg.a(11);
+    List localList = localuje.a();
+    ujt localujt = new ujt(new ErrorMessage());
+    localujt.jdField_b_of_type_JavaUtilList = localuje.b(localList);
+    localujt.jdField_b_of_type_Boolean = true;
+    localujt.a = localujt.jdField_b_of_type_JavaUtilList.isEmpty();
+    return localujt;
+  }
+  
+  protected ujt a(ErrorMessage paramErrorMessage)
+  {
+    return new ujt(paramErrorMessage);
+  }
+  
+  protected void a(List<String> paramList, boolean paramBoolean)
+  {
+    ((uje)sqg.a(11)).a(paramList, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uju
  * JD-Core Version:    0.7.0.1
  */

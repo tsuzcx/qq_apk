@@ -1,8 +1,10 @@
 package com.tencent.mobileqq.fts.entity;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.fts.utils.SQLUtils;
-import com.tencent.mobileqq.fts.utils.SegmentUtils;
+import aprk;
+import aprl;
+import aprw;
+import aprx;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -14,14 +16,14 @@ public abstract class FTSEntity
   public String ext1;
   public String ext2;
   public String ext3;
-  @notIndex
+  @aprl
   public byte[] exts;
-  @notColumn
-  public Map indexContentMap = new HashMap();
+  @aprk
+  public Map<String, String> indexContentMap = new HashMap();
   
-  public void doDeserialize() {}
+  protected void doDeserialize() {}
   
-  public void doSerialize() {}
+  protected void doSerialize() {}
   
   public String getIndexColumnName(String paramString)
   {
@@ -44,7 +46,7 @@ public abstract class FTSEntity
   {
     try
     {
-      Iterator localIterator = SQLUtils.a(getClass()).iterator();
+      Iterator localIterator = aprw.a(getClass()).iterator();
       while (localIterator.hasNext())
       {
         Field localField = (Field)localIterator.next();
@@ -53,7 +55,7 @@ public abstract class FTSEntity
           String str = (String)localField.get(this);
           if (!TextUtils.isEmpty(str))
           {
-            str = SegmentUtils.a(str);
+            str = aprx.a(str);
             this.indexContentMap.put(localField.getName(), str);
           }
         }

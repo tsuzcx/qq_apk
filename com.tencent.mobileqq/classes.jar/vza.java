@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
 
 public class vza
-  implements Runnable
+  implements View.OnClickListener
 {
-  public vza(GameRoomChatPie paramGameRoomChatPie) {}
+  public vza(CommentBottomBar paramCommentBottomBar) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.a();
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vza
  * JD-Core Version:    0.7.0.1
  */

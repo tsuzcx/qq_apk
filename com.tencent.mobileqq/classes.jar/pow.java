@@ -1,22 +1,23 @@
-import com.tencent.component.network.module.cache.file.FileCacheService;
-import com.tencent.component.network.utils.thread.ThreadPool.Job;
-import com.tencent.component.network.utils.thread.ThreadPool.JobContext;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseVideoArticleInfo;
 
-public class pow
-  implements ThreadPool.Job
+public final class pow
+  implements Parcelable.Creator<BaseVideoArticleInfo>
 {
-  public pow(FileCacheService paramFileCacheService) {}
-  
-  public Object run(ThreadPool.JobContext paramJobContext)
+  public BaseVideoArticleInfo a(Parcel paramParcel)
   {
-    FileCacheService.a(this.a, false);
-    FileCacheService.a(this.a, true);
-    return null;
+    return new BaseVideoArticleInfo(paramParcel);
+  }
+  
+  public BaseVideoArticleInfo[] a(int paramInt)
+  {
+    return new BaseVideoArticleInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pow
  * JD-Core Version:    0.7.0.1
  */

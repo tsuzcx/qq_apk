@@ -1,30 +1,31 @@
-import com.tencent.mobileqq.hotpic.VideoBaseItem;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
 public class aeay
-  implements Cloneable
+  extends aeav
 {
-  public int a;
-  public long a;
-  public String a;
-  public String b = "";
+  public String b;
   
-  public aeay(VideoBaseItem paramVideoBaseItem, int paramInt, long paramLong)
+  public aeay(String paramString)
   {
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
+    super(paramString);
   }
   
-  protected aeay a()
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    return (aeay)super.clone();
+    if (paramRedPacketInfo != null) {
+      this.b = paramRedPacketInfo.resPath;
+    }
+  }
+  
+  public boolean a()
+  {
+    return !TextUtils.isEmpty(this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeay
  * JD-Core Version:    0.7.0.1
  */

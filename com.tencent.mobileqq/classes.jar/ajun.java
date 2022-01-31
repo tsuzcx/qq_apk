@@ -1,21 +1,10 @@
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
-
-class ajun
-  implements Runnable
+public abstract class ajun
 {
-  ajun(ajum paramajum) {}
-  
-  public void run()
-  {
-    if (this.a.a.a == 3) {
-      this.a.a.a = 1;
-    }
-    this.a.a.g();
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajun
  * JD-Core Version:    0.7.0.1
  */

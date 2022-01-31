@@ -1,24 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
-
-public class anar
-  implements View.OnClickListener
+class anar
+  implements aryj
 {
-  public anar(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
+  anar(anaq paramanaq) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (!QzoneVerticalVideoDownloadActivity.a(this.a))
-    {
-      QzoneVerticalVideoDownloadActivity.a(this.a, false, false);
-      QzoneVerticalVideoDownloadActivity.a(this.a);
-    }
+    anao.a(this.a.a).a().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anar
  * JD-Core Version:    0.7.0.1
  */

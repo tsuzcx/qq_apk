@@ -9,14 +9,11 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.net.Uri;
-import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Parcelable;
 import android.os.Process;
 import com.qq.jce.wup.UniAttribute;
-import com.tencent.securemodule.service.ICallback;
-import com.tencent.securemodule.service.IControlService;
 import com.tencent.securemodule.ui.SecureEventReceiver;
 import java.io.File;
 import java.io.Serializable;
@@ -26,7 +23,6 @@ import java.util.Iterator;
 import java.util.List;
 import sm.aa;
 import sm.ab;
-import sm.ac;
 import sm.ae;
 import sm.ah;
 import sm.as;
@@ -47,7 +43,7 @@ public class SecureService
   private boolean c = false;
   private boolean d = false;
   private boolean e = false;
-  private a f = new a();
+  private SecureService.a f = new SecureService.a(this);
   
   private int a(String paramString)
   {
@@ -383,36 +379,6 @@ public class SecureService
       c();
     }
     return super.onUnbind(paramIntent);
-  }
-  
-  public class a
-    extends Binder
-    implements IControlService
-  {
-    public a() {}
-    
-    public void doRemoteTask(String paramString, ICallback paramICallback)
-    {
-      if (!az.a(SecureService.this.getApplicationContext(), "sm_mq")) {
-        return;
-      }
-      try
-      {
-        new Thread(new ac(this, paramString, paramICallback)).start();
-        return;
-      }
-      finally {}
-    }
-    
-    public void setIsShowingTips(boolean paramBoolean1, boolean paramBoolean2)
-    {
-      SecureService.a(SecureService.this, paramBoolean1);
-      if (paramBoolean2)
-      {
-        SecureService.this.stopSelf();
-        SecureService.a(SecureService.this);
-      }
-    }
   }
 }
 

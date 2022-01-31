@@ -1,116 +1,62 @@
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.JobSelectionActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.util.NearbyProfileUtil;
-import com.tencent.mobileqq.widget.InterestLabelTextView;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqStoryPlayerTagInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspStoryPlayerTagInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Iterator;
+import java.util.List;
 
 public class tai
-  extends BaseAdapter
+  extends slz<tbw>
 {
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private String[] jdField_a_of_type_ArrayOfJavaLangString;
-  private String[] b;
+  public final List<String> a;
   
-  private tai(JobSelectionActivity paramJobSelectionActivity)
+  public tai(List<String> paramList)
   {
-    if (JobSelectionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity))
+    this.a = paramList;
+  }
+  
+  public String a()
+  {
+    return "StorySvc.get_video_tag_778";
+  }
+  
+  public slu a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspStoryPlayerTagInfo localRspStoryPlayerTagInfo = new qqstory_service.RspStoryPlayerTagInfo();
+    try
     {
-      paramJobSelectionActivity = ConditionSearchManager.d;
-      this.jdField_a_of_type_ArrayOfJavaLangString = paramJobSelectionActivity;
-      if (!JobSelectionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity)) {
-        break label74;
-      }
-      paramJobSelectionActivity = ConditionSearchManager.e;
-      label42:
-      this.b = paramJobSelectionActivity;
-      if (!JobSelectionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity)) {
-        break label81;
-      }
+      localRspStoryPlayerTagInfo.mergeFrom(paramArrayOfByte);
+      return new tbw(localRspStoryPlayerTagInfo);
     }
-    label74:
-    label81:
-    for (paramJobSelectionActivity = ConditionSearchManager.jdField_a_of_type_ArrayOfInt;; paramJobSelectionActivity = NearbyProfileUtil.b)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      this.jdField_a_of_type_ArrayOfInt = paramJobSelectionActivity;
-      return;
-      paramJobSelectionActivity = NearbyProfileUtil.d;
-      break;
-      paramJobSelectionActivity = NearbyProfileUtil.e;
-      break label42;
+      for (;;)
+      {
+        urk.e("Q.qqstory.net:GetStoryPlayerTagInfoRequest", paramArrayOfByte.toString());
+      }
     }
   }
   
-  public int getCount()
+  protected byte[] a()
   {
-    if (JobSelectionActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity)) {
-      return this.jdField_a_of_type_ArrayOfJavaLangString.length;
-    }
-    return this.jdField_a_of_type_ArrayOfJavaLangString.length - 1;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    if (JobSelectionActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity)) {
-      return this.jdField_a_of_type_ArrayOfJavaLangString[paramInt];
-    }
-    return this.jdField_a_of_type_ArrayOfJavaLangString[(paramInt + 1)];
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    View localView = paramView;
-    if (paramView == null)
+    qqstory_service.ReqStoryPlayerTagInfo localReqStoryPlayerTagInfo = new qqstory_service.ReqStoryPlayerTagInfo();
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
     {
-      localView = this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity.getLayoutInflater().inflate(2130970383, paramViewGroup, false);
-      paramView = new taj(null);
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView = ((InterestLabelTextView)localView.findViewById(2131367250));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362759));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131370260));
-      localView.setTag(paramView);
+      String str = (String)localIterator.next();
+      localReqStoryPlayerTagInfo.vid_list.add(ByteStringMicro.copyFromUtf8(str));
     }
-    paramView = (taj)localView.getTag();
-    int i = paramInt;
-    if (!JobSelectionActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity)) {
-      i = paramInt + 1;
-    }
-    paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView.setText(this.b[i]);
-    paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView.setBackgroundResource(this.jdField_a_of_type_ArrayOfInt[i]);
-    paramInt = AIOUtils.a(4.0F, JobSelectionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity).getResources());
-    paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView.setPadding(paramInt, 0, paramInt, 0);
-    if (i < this.jdField_a_of_type_ArrayOfJavaLangString.length - 1) {
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView.setVisibility(0);
-    }
-    for (;;)
-    {
-      if ((JobSelectionActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity)) && (i == 0)) {
-        paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView.setVisibility(4);
-      }
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
-      if (JobSelectionActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJobSelectionActivity) != i) {
-        break;
-      }
-      paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      return localView;
-      paramView.jdField_a_of_type_ComTencentMobileqqWidgetInterestLabelTextView.setVisibility(4);
-    }
-    paramView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    return localView;
+    localReqStoryPlayerTagInfo.client.set(2);
+    localReqStoryPlayerTagInfo.version.set(ByteStringMicro.copyFromUtf8("8.2.6"));
+    return localReqStoryPlayerTagInfo.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tai
  * JD-Core Version:    0.7.0.1
  */

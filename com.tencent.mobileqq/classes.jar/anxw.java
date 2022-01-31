@@ -1,45 +1,59 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.Button;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.widget.BubblePopupWindow;
 
-public final class anxw
-  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
+public class anxw
+  implements bbob
 {
-  final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
-  final View jdField_a_of_type_AndroidViewView;
+  public anxw(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public anxw(View paramView, View.OnClickListener paramOnClickListener)
+  public void a(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
-  }
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(this.jdField_a_of_type_AndroidViewView);
+    if (this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow != null) {
+      this.a.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.b();
     }
+    if (!this.a.b())
+    {
+      this.a.jdField_a_of_type_Aonw.a(null);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
+      paramView.setPressed(false);
+    }
+    do
+    {
+      return;
+      paramSlideDetectListView = paramView.findViewById(2131310229);
+      paramView = (FileInfo)this.a.jdField_a_of_type_Aonw.getItem(paramInt);
+      this.a.jdField_a_of_type_Aonw.a(paramView);
+    } while (paramSlideDetectListView == null);
+    paramView = (Button)paramSlideDetectListView.findViewById(2131299406);
+    paramView.setTag(Integer.valueOf(paramInt));
+    paramView.setOnClickListener(this.a.jdField_a_of_type_AndroidViewView$OnClickListener);
+    ((ShaderAnimLayout)paramSlideDetectListView).a();
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.setDeleteAreaDim(paramSlideDetectListView.getLayoutParams().width, paramSlideDetectListView.getLayoutParams().height);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void b(SlideDetectListView paramSlideDetectListView, View paramView, int paramInt)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_AndroidViewView.setScaleX(f);
-    this.jdField_a_of_type_AndroidViewView.setScaleY(f);
+    paramSlideDetectListView = paramView.findViewById(2131310229);
+    this.a.jdField_a_of_type_Aonw.a(null);
+    if (paramSlideDetectListView != null)
+    {
+      ((ShaderAnimLayout)paramSlideDetectListView).e();
+      paramSlideDetectListView = (Button)paramSlideDetectListView.findViewById(2131299406);
+      paramSlideDetectListView.setTag(null);
+      paramSlideDetectListView.setOnClickListener(null);
+    }
+    LocalFileBrowserActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anxw
  * JD-Core Version:    0.7.0.1
  */

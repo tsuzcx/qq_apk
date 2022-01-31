@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqavopensdkSsoTunnel$STAudioVideoReq
-  extends MessageMicro
+  extends MessageMicro<STAudioVideoReq>
 {
   public static final int GAMEID_FIELD_NUMBER = 2;
   public static final int REQBODY_FIELD_NUMBER = 1;

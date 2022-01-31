@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class hw_submit_homework$ErrorInfo
-  extends MessageMicro
+  extends MessageMicro<ErrorInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field error_code = PBField.initUInt32(0);

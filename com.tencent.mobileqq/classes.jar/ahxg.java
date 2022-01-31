@@ -1,21 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.fragment.ActiveEntitySearchFragment;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
-class ahxg
-  implements View.OnClickListener
+public class ahxg
+  implements avck
 {
-  ahxg(ahxf paramahxf) {}
+  private ahxg(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    this.a.a.b(this.a.a.b);
-    this.a.a.e.setVisibility(0);
+    if ((paramBitmap != null) && (paramInt2 == 200))
+    {
+      if (this.b.d != 0) {
+        this.b.b = true;
+      }
+    }
+    else {
+      return;
+    }
+    this.b.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahxg
  * JD-Core Version:    0.7.0.1
  */

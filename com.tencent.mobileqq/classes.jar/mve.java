@@ -1,24 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.widget.Switch;
 
-public class mve
-  implements DialogInterface.OnClickListener
+class mve
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public mve(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
+  mve(mut parammut, nbu paramnbu, Switch paramSwitch) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    switch (paramInt)
+    if (!this.jdField_a_of_type_Mut.c)
     {
-    default: 
-      return;
-    case 1: 
-      ThreadManager.post(new mvf(this), 10, null, true);
+      this.jdField_a_of_type_Mut.c = true;
       return;
     }
-    paramDialogInterface.dismiss();
+    if (this.jdField_a_of_type_Nbu.f == 1) {
+      this.jdField_a_of_type_Mut.a(this.jdField_a_of_type_Nbu, paramBoolean);
+    }
+    for (;;)
+    {
+      mut.a(this.jdField_a_of_type_Mut, this.jdField_a_of_type_Nbu.a);
+      return;
+      if (this.jdField_a_of_type_Nbu.f == 2)
+      {
+        if (paramBoolean) {
+          this.jdField_a_of_type_Mut.a(this.jdField_a_of_type_Nbu, this.jdField_a_of_type_ComTencentWidgetSwitch, paramBoolean);
+        } else {
+          this.jdField_a_of_type_Mut.a(this.jdField_a_of_type_Nbu, paramBoolean);
+        }
+      }
+      else if (this.jdField_a_of_type_Nbu.f == 3)
+      {
+        if (!paramBoolean) {
+          this.jdField_a_of_type_Mut.a(this.jdField_a_of_type_Nbu, this.jdField_a_of_type_ComTencentWidgetSwitch, paramBoolean);
+        } else {
+          this.jdField_a_of_type_Mut.a(this.jdField_a_of_type_Nbu, paramBoolean);
+        }
+      }
+      else {
+        this.jdField_a_of_type_Mut.a(this.jdField_a_of_type_Nbu, paramBoolean);
+      }
+    }
   }
 }
 

@@ -1,20 +1,13 @@
-import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class ozs
-  implements TouchWebView.OnScrollChangedListener
+  implements ViewBase.IBuilder
 {
-  public ozs(TribeVideoPlugin paramTribeVideoPlugin) {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  public ViewBase build(VafContext paramVafContext)
   {
-    if (TribeVideoPlugin.a(this.a) != null)
-    {
-      TribeVideoPlugin.a(this.a).scrollBy(0, paramInt2 - paramInt4);
-      TribeVideoPlugin.a(this.a);
-    }
+    return new ozq(paramVafContext);
   }
 }
 

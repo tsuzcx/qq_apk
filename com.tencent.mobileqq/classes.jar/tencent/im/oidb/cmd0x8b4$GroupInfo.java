@@ -12,12 +12,12 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import tencent.im.group.group_label.GroupLabel.Label;
 
 public final class cmd0x8b4$GroupInfo
-  extends MessageMicro
+  extends MessageMicro<GroupInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_rich_intro = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_text_intro = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_group_label = PBField.initRepeatMessage(GroupLabel.Label.class);
+  public final PBRepeatMessageField<GroupLabel.Label> rpt_group_label = PBField.initRepeatMessage(GroupLabel.Label.class);
   public final PBStringField str_face_url = PBField.initString("");
   public final PBStringField str_group_name = PBField.initString("");
   public final PBUInt32Field uint32_set_display_time = PBField.initUInt32(0);
@@ -32,7 +32,7 @@ public final class cmd0x8b4$GroupInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8b4.GroupInfo
  * JD-Core Version:    0.7.0.1
  */

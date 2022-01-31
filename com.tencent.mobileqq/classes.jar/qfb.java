@@ -1,73 +1,81 @@
-import android.view.View;
-import com.tencent.device.msg.activities.DevLittleVideoItemBuilder;
-import com.tencent.device.msg.data.MessageForDevLittleVideo;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder.Holder;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsRecommendFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import mqq.app.MobileQQ;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class qfb
-  implements ActionSheet.OnButtonClickListener
+  extends ajjh
 {
-  public qfb(DevLittleVideoItemBuilder paramDevLittleVideoItemBuilder, MessageForDevLittleVideo paramMessageForDevLittleVideo, ShortVideoRealItemBuilder.Holder paramHolder, ActionSheet paramActionSheet) {}
+  private qfb(VideoFeedsRecommendFragment paramVideoFeedsRecommendFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    int i = 1;
-    switch (paramInt)
-    {
+    int j = 0;
+    if (TextUtils.isEmpty(paramString)) {
+      break label10;
     }
-    boolean bool;
-    label64:
-    do
+    label10:
+    label227:
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
-      bool = NetworkUtil.g(this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevLittleVideoItemBuilder.a.getApplication().getApplicationContext());
-      paramView = this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo;
-      if (!bool) {
-        break;
-      }
-      paramInt = 2002;
-      paramView.videoFileStatus = paramInt;
-      this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.videoFileProgress = 0;
-      this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.serial();
-      this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevLittleVideoItemBuilder.a.a().a(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.frienduin, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.istroop, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.uniseq, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.msgData);
-    } while (!bool);
-    if (!FileUtils.b(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.mThumbFilePath)) {
-      this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevLittleVideoItemBuilder.c(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo);
-    }
-    for (paramInt = 1;; paramInt = 0)
-    {
-      if (!FileUtils.b(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.videoFileName))
+      if (paramBoolean)
       {
-        this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevLittleVideoItemBuilder.b(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo);
-        paramInt = i;
-      }
-      for (;;)
-      {
-        if (paramInt == 0) {
-          break label235;
+        Object localObject1 = VideoFeedsRecommendFragment.a(this.a);
+        if (localObject1 != null) {}
+        for (localObject1 = babh.b((QQAppInterface)localObject1, paramString, false);; localObject1 = null)
+        {
+          if (TextUtils.isEmpty((CharSequence)localObject1)) {
+            break label227;
+          }
+          Iterator localIterator = VideoFeedsRecommendFragment.a(this.a).iterator();
+          while (localIterator.hasNext())
+          {
+            Object localObject2 = (VideoInfo)localIterator.next();
+            int i = j;
+            if (paramString.equals(((VideoInfo)localObject2).j))
+            {
+              i = j;
+              if (!((String)localObject1).equals(((VideoInfo)localObject2).k))
+              {
+                ((VideoInfo)localObject2).k = ((String)localObject1);
+                i = 1;
+              }
+            }
+            j = i;
+            if (((VideoInfo)localObject2).d != null)
+            {
+              localObject2 = ((VideoInfo)localObject2).d.iterator();
+              for (;;)
+              {
+                j = i;
+                if (!((Iterator)localObject2).hasNext()) {
+                  break;
+                }
+                VideoInfo localVideoInfo = (VideoInfo)((Iterator)localObject2).next();
+                if ((paramString.equals(localVideoInfo.j)) && (!((String)localObject1).equals(localVideoInfo.k)))
+                {
+                  localVideoInfo.k = ((String)localObject1);
+                  i = 1;
+                }
+              }
+            }
+          }
+          if (j == 0) {
+            break;
+          }
+          VideoFeedsRecommendFragment.a(this.a).a(paramString);
+          return;
         }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder$Holder.a.setFailedIconVisable(false, this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevLittleVideoItemBuilder);
-        DevLittleVideoItemBuilder.b(this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevLittleVideoItemBuilder, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder$Holder, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.videoFileProgress, false);
-        break;
-        paramInt = 2005;
-        break label64;
       }
-      label235:
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qfb
  * JD-Core Version:    0.7.0.1
  */

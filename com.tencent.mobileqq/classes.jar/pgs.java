@@ -1,62 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.common.util.LoadedBack2;
-import com.tencent.biz.webviewplugin.OfflinePlugin;
-import com.tencent.mobileqq.webview.swift.WebUiBaseInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.webviewplugin.WebUiUtils.QQBrowserBaseActivityInterface;
-import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebUiMethodInterface;
-import com.tencent.smtt.sdk.WebView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
-public class pgs
-  implements LoadedBack2
+class pgs
+  implements View.OnTouchListener
 {
-  public pgs(OfflinePlugin paramOfflinePlugin) {}
+  pgs(pgn parampgn, LinearLayout paramLinearLayout, RelativeLayout paramRelativeLayout) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Object localObject = this.a.mRuntime.a();
-    if (localObject == null) {}
-    for (;;)
+    if (paramMotionEvent.getAction() == 0)
     {
-      return;
-      WebUiBaseInterface localWebUiBaseInterface = this.a.mRuntime.a(this.a.mRuntime.a());
-      if ((localWebUiBaseInterface != null) && ((localWebUiBaseInterface instanceof WebUiUtils.QQBrowserBaseActivityInterface)) && (((WebUiUtils.QQBrowserBaseActivityInterface)localWebUiBaseInterface).b() != localObject))
-      {
-        localObject = this.a.mRuntime.a();
-        if (localObject != null) {
-          try
-          {
-            localWebUiBaseInterface = this.a.mRuntime.a(this.a.mRuntime.a());
-            if ((localWebUiBaseInterface instanceof WebUiUtils.WebUiMethodInterface))
-            {
-              ((WebView)localObject).loadUrl(((WebUiUtils.WebUiMethodInterface)localWebUiBaseInterface).b());
-              return;
-            }
-          }
-          catch (Exception localException)
-          {
-            localException.printStackTrace();
-          }
-        }
-      }
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(true);
     }
-  }
-  
-  public void loaded(String paramString, int paramInt)
-  {
-    paramString = this.a.a.obtainMessage();
-    paramString.arg1 = 5;
-    paramString.arg2 = paramInt;
-    this.a.a.sendMessage(paramString);
-  }
-  
-  public void progress(int paramInt)
-  {
-    Message localMessage = this.a.a.obtainMessage();
-    localMessage.arg1 = 4;
-    localMessage.arg2 = paramInt;
-    this.a.a.sendMessage(localMessage);
+    return false;
   }
 }
 

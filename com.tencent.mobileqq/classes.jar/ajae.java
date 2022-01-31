@@ -1,21 +1,10 @@
-import com.tencent.mobileqq.troop.activity.TroopAdminList;
-import com.tencent.mobileqq.troop.activity.TroopAdminList.AdminListAdapter;
-
-class ajae
-  implements Runnable
+public abstract interface ajae
 {
-  ajae(ajad paramajad) {}
-  
-  public void run()
-  {
-    if (this.a.a.a != null) {
-      this.a.a.a.notifyDataSetChanged();
-    }
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajae
  * JD-Core Version:    0.7.0.1
  */

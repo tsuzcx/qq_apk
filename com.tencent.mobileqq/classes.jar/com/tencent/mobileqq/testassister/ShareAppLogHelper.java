@@ -1,15 +1,16 @@
 package com.tencent.mobileqq.testassister;
 
-import aisn;
-import aiso;
-import aisp;
-import aisq;
 import android.content.Context;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.text.format.Time;
+import axjl;
+import axjm;
+import axjn;
+import axjo;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -20,12 +21,12 @@ import java.util.regex.Pattern;
 
 public class ShareAppLogHelper
 {
-  private Handler jdField_a_of_type_AndroidOsHandler = new aisn(this, Looper.getMainLooper());
+  private Handler jdField_a_of_type_AndroidOsHandler = new axjl(this, Looper.getMainLooper());
   private Time jdField_a_of_type_AndroidTextFormatTime;
-  private ShareAppLogHelper.OnGetLocalLogListener jdField_a_of_type_ComTencentMobileqqTestassisterShareAppLogHelper$OnGetLocalLogListener;
+  private axjo jdField_a_of_type_Axjo;
   volatile Object jdField_a_of_type_JavaLangObject = new Object();
-  private String jdField_a_of_type_JavaLangString = Environment.getExternalStorageDirectory().getPath() + "/tencent/msflogs/com/tencent/mobileqq/";
-  private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private String jdField_a_of_type_JavaLangString = BaseApplicationImpl.getLogExternalPath(BaseApplicationImpl.context) + "/tencent/msflogs/com/tencent/mobileqq/";
+  private ArrayList<ShareAppLogHelper.LogFile> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   private Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("\\d{2}.\\d{2}.\\d{2}.\\d{2}");
   private boolean jdField_a_of_type_Boolean;
@@ -47,7 +48,7 @@ public class ShareAppLogHelper
       return i;
     }
     a();
-    localObject = ((File)localObject).listFiles(new aisp(this));
+    localObject = ((File)localObject).listFiles(new axjm(this));
     if ((localObject != null) && (localObject.length > 0))
     {
       int k = localObject.length;
@@ -147,7 +148,7 @@ public class ShareAppLogHelper
     Object localObject = new File(this.jdField_b_of_type_JavaLangString);
     if (((File)localObject).exists())
     {
-      localObject = ((File)localObject).listFiles(new aisq(this));
+      localObject = ((File)localObject).listFiles(new axjn(this));
       if ((localObject != null) && (localObject.length > 0))
       {
         int j = localObject.length;
@@ -190,92 +191,92 @@ public class ShareAppLogHelper
     //   0: aconst_null
     //   1: astore_2
     //   2: aload_0
-    //   3: new 60	java/lang/StringBuilder
+    //   3: new 61	java/lang/StringBuilder
     //   6: dup
-    //   7: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   7: invokespecial 62	java/lang/StringBuilder:<init>	()V
     //   10: aload_0
     //   11: getfield 84	com/tencent/mobileqq/testassister/ShareAppLogHelper:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   14: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   17: aload_0
     //   18: aload_0
-    //   19: getfield 149	com/tencent/mobileqq/testassister/ShareAppLogHelper:jdField_a_of_type_AndroidTextFormatTime	Landroid/text/format/Time;
+    //   19: getfield 160	com/tencent/mobileqq/testassister/ShareAppLogHelper:jdField_a_of_type_AndroidTextFormatTime	Landroid/text/format/Time;
     //   22: aload_0
-    //   23: getfield 273	com/tencent/mobileqq/testassister/ShareAppLogHelper:jdField_b_of_type_AndroidTextFormatTime	Landroid/text/format/Time;
-    //   26: invokespecial 275	com/tencent/mobileqq/testassister/ShareAppLogHelper:a	(Landroid/text/format/Time;Landroid/text/format/Time;)Ljava/lang/String;
-    //   29: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: getfield 284	com/tencent/mobileqq/testassister/ShareAppLogHelper:jdField_b_of_type_AndroidTextFormatTime	Landroid/text/format/Time;
+    //   26: invokespecial 286	com/tencent/mobileqq/testassister/ShareAppLogHelper:a	(Landroid/text/format/Time;Landroid/text/format/Time;)Ljava/lang/String;
+    //   29: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   32: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   35: putfield 229	com/tencent/mobileqq/testassister/ShareAppLogHelper:c	Ljava/lang/String;
-    //   38: new 69	java/io/File
+    //   35: putfield 240	com/tencent/mobileqq/testassister/ShareAppLogHelper:c	Ljava/lang/String;
+    //   38: new 92	java/io/File
     //   41: dup
     //   42: aload_0
-    //   43: getfield 229	com/tencent/mobileqq/testassister/ShareAppLogHelper:c	Ljava/lang/String;
-    //   46: invokespecial 93	java/io/File:<init>	(Ljava/lang/String;)V
+    //   43: getfield 240	com/tencent/mobileqq/testassister/ShareAppLogHelper:c	Ljava/lang/String;
+    //   46: invokespecial 104	java/io/File:<init>	(Ljava/lang/String;)V
     //   49: astore 5
-    //   51: new 277	java/io/BufferedOutputStream
+    //   51: new 288	java/io/BufferedOutputStream
     //   54: dup
-    //   55: new 279	java/io/FileOutputStream
+    //   55: new 290	java/io/FileOutputStream
     //   58: dup
     //   59: aload 5
-    //   61: invokespecial 282	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   64: invokespecial 285	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   61: invokespecial 293	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   64: invokespecial 296	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   67: astore 4
-    //   69: new 287	java/util/zip/ZipOutputStream
+    //   69: new 298	java/util/zip/ZipOutputStream
     //   72: dup
     //   73: aload 4
-    //   75: invokespecial 288	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   75: invokespecial 299	java/util/zip/ZipOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   78: astore_3
     //   79: sipush 8192
     //   82: newarray byte
     //   84: astore_2
     //   85: aload_0
-    //   86: getfield 36	com/tencent/mobileqq/testassister/ShareAppLogHelper:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   89: invokevirtual 292	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   86: getfield 37	com/tencent/mobileqq/testassister/ShareAppLogHelper:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   89: invokevirtual 303	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   92: astore 6
     //   94: aload 6
-    //   96: invokeinterface 297 1 0
+    //   96: invokeinterface 308 1 0
     //   101: ifeq +216 -> 317
     //   104: aload 6
-    //   106: invokeinterface 301 1 0
-    //   111: checkcast 110	com/tencent/mobileqq/testassister/ShareAppLogHelper$LogFile
+    //   106: invokeinterface 312 1 0
+    //   111: checkcast 121	com/tencent/mobileqq/testassister/ShareAppLogHelper$LogFile
     //   114: astore 7
-    //   116: new 303	java/util/zip/ZipEntry
+    //   116: new 314	java/util/zip/ZipEntry
     //   119: dup
-    //   120: new 60	java/lang/StringBuilder
+    //   120: new 61	java/lang/StringBuilder
     //   123: dup
-    //   124: invokespecial 61	java/lang/StringBuilder:<init>	()V
+    //   124: invokespecial 62	java/lang/StringBuilder:<init>	()V
     //   127: aload 7
-    //   129: invokevirtual 306	com/tencent/mobileqq/testassister/ShareAppLogHelper$LogFile:getName	()Ljava/lang/String;
-    //   132: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   129: invokevirtual 317	com/tencent/mobileqq/testassister/ShareAppLogHelper$LogFile:getName	()Ljava/lang/String;
+    //   132: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   135: aload 7
-    //   137: getfield 237	com/tencent/mobileqq/testassister/ShareAppLogHelper$LogFile:stuffix	Ljava/lang/String;
-    //   140: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   137: getfield 248	com/tencent/mobileqq/testassister/ShareAppLogHelper$LogFile:stuffix	Ljava/lang/String;
+    //   140: invokevirtual 76	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   143: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   146: invokespecial 307	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
+    //   146: invokespecial 318	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
     //   149: astore 8
     //   151: aload 8
     //   153: aload 7
-    //   155: invokevirtual 123	com/tencent/mobileqq/testassister/ShareAppLogHelper$LogFile:length	()J
-    //   158: invokevirtual 311	java/util/zip/ZipEntry:setSize	(J)V
+    //   155: invokevirtual 134	com/tencent/mobileqq/testassister/ShareAppLogHelper$LogFile:length	()J
+    //   158: invokevirtual 322	java/util/zip/ZipEntry:setSize	(J)V
     //   161: aload 8
     //   163: aload 7
-    //   165: invokevirtual 314	com/tencent/mobileqq/testassister/ShareAppLogHelper$LogFile:lastModified	()J
-    //   168: invokevirtual 317	java/util/zip/ZipEntry:setTime	(J)V
+    //   165: invokevirtual 325	com/tencent/mobileqq/testassister/ShareAppLogHelper$LogFile:lastModified	()J
+    //   168: invokevirtual 328	java/util/zip/ZipEntry:setTime	(J)V
     //   171: aload_3
     //   172: aload 8
-    //   174: invokevirtual 321	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
-    //   177: new 323	java/io/BufferedInputStream
+    //   174: invokevirtual 332	java/util/zip/ZipOutputStream:putNextEntry	(Ljava/util/zip/ZipEntry;)V
+    //   177: new 334	java/io/BufferedInputStream
     //   180: dup
-    //   181: new 325	java/io/FileInputStream
+    //   181: new 336	java/io/FileInputStream
     //   184: dup
     //   185: aload 7
-    //   187: invokespecial 326	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   190: invokespecial 329	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   187: invokespecial 337	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   190: invokespecial 340	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
     //   193: astore 7
     //   195: aload 7
     //   197: aload_2
     //   198: iconst_0
     //   199: sipush 8192
-    //   202: invokevirtual 335	java/io/InputStream:read	([BII)I
+    //   202: invokevirtual 346	java/io/InputStream:read	([BII)I
     //   205: istore_1
     //   206: iload_1
     //   207: iconst_m1
@@ -284,17 +285,17 @@ public class ShareAppLogHelper
     //   212: aload_2
     //   213: iconst_0
     //   214: iload_1
-    //   215: invokevirtual 339	java/util/zip/ZipOutputStream:write	([BII)V
+    //   215: invokevirtual 350	java/util/zip/ZipOutputStream:write	([BII)V
     //   218: goto -23 -> 195
     //   221: astore_2
     //   222: aload 7
     //   224: ifnull +8 -> 232
     //   227: aload 7
-    //   229: invokevirtual 342	java/io/InputStream:close	()V
+    //   229: invokevirtual 353	java/io/InputStream:close	()V
     //   232: aload_3
-    //   233: invokevirtual 345	java/util/zip/ZipOutputStream:flush	()V
+    //   233: invokevirtual 356	java/util/zip/ZipOutputStream:flush	()V
     //   236: aload_3
-    //   237: invokevirtual 348	java/util/zip/ZipOutputStream:closeEntry	()V
+    //   237: invokevirtual 359	java/util/zip/ZipOutputStream:closeEntry	()V
     //   240: aload_2
     //   241: athrow
     //   242: astore 5
@@ -303,76 +304,76 @@ public class ShareAppLogHelper
     //   247: aload 5
     //   249: astore 4
     //   251: aload 4
-    //   253: invokevirtual 203	java/lang/Exception:printStackTrace	()V
+    //   253: invokevirtual 214	java/lang/Exception:printStackTrace	()V
     //   256: aload_3
     //   257: ifnull +7 -> 264
     //   260: aload_3
-    //   261: invokevirtual 349	java/util/zip/ZipOutputStream:close	()V
+    //   261: invokevirtual 360	java/util/zip/ZipOutputStream:close	()V
     //   264: aload_2
     //   265: ifnull +7 -> 272
     //   268: aload_2
-    //   269: invokevirtual 350	java/io/BufferedOutputStream:close	()V
+    //   269: invokevirtual 361	java/io/BufferedOutputStream:close	()V
     //   272: bipush 253
     //   274: ireturn
     //   275: aload 7
     //   277: ifnull +8 -> 285
     //   280: aload 7
-    //   282: invokevirtual 342	java/io/InputStream:close	()V
+    //   282: invokevirtual 353	java/io/InputStream:close	()V
     //   285: aload_3
-    //   286: invokevirtual 345	java/util/zip/ZipOutputStream:flush	()V
+    //   286: invokevirtual 356	java/util/zip/ZipOutputStream:flush	()V
     //   289: aload_3
-    //   290: invokevirtual 348	java/util/zip/ZipOutputStream:closeEntry	()V
+    //   290: invokevirtual 359	java/util/zip/ZipOutputStream:closeEntry	()V
     //   293: goto -199 -> 94
     //   296: astore_2
     //   297: aload_3
     //   298: ifnull +7 -> 305
     //   301: aload_3
-    //   302: invokevirtual 349	java/util/zip/ZipOutputStream:close	()V
+    //   302: invokevirtual 360	java/util/zip/ZipOutputStream:close	()V
     //   305: aload 4
     //   307: ifnull +8 -> 315
     //   310: aload 4
-    //   312: invokevirtual 350	java/io/BufferedOutputStream:close	()V
+    //   312: invokevirtual 361	java/io/BufferedOutputStream:close	()V
     //   315: aload_2
     //   316: athrow
     //   317: aload_3
     //   318: ifnull +7 -> 325
     //   321: aload_3
-    //   322: invokevirtual 349	java/util/zip/ZipOutputStream:close	()V
+    //   322: invokevirtual 360	java/util/zip/ZipOutputStream:close	()V
     //   325: aload 4
     //   327: ifnull +8 -> 335
     //   330: aload 4
-    //   332: invokevirtual 350	java/io/BufferedOutputStream:close	()V
+    //   332: invokevirtual 361	java/io/BufferedOutputStream:close	()V
     //   335: aload 5
-    //   337: invokevirtual 351	java/io/File:length	()J
-    //   340: ldc2_w 352
+    //   337: invokevirtual 362	java/io/File:length	()J
+    //   340: ldc2_w 363
     //   343: lcmp
     //   344: iflt +53 -> 397
     //   347: iconst_1
     //   348: ireturn
     //   349: astore_2
     //   350: aload_2
-    //   351: invokevirtual 354	java/io/IOException:printStackTrace	()V
+    //   351: invokevirtual 365	java/io/IOException:printStackTrace	()V
     //   354: goto -29 -> 325
     //   357: astore_2
     //   358: aload_2
-    //   359: invokevirtual 354	java/io/IOException:printStackTrace	()V
+    //   359: invokevirtual 365	java/io/IOException:printStackTrace	()V
     //   362: goto -27 -> 335
     //   365: astore_3
     //   366: aload_3
-    //   367: invokevirtual 354	java/io/IOException:printStackTrace	()V
+    //   367: invokevirtual 365	java/io/IOException:printStackTrace	()V
     //   370: goto -106 -> 264
     //   373: astore_2
     //   374: aload_2
-    //   375: invokevirtual 354	java/io/IOException:printStackTrace	()V
+    //   375: invokevirtual 365	java/io/IOException:printStackTrace	()V
     //   378: bipush 253
     //   380: ireturn
     //   381: astore_3
     //   382: aload_3
-    //   383: invokevirtual 354	java/io/IOException:printStackTrace	()V
+    //   383: invokevirtual 365	java/io/IOException:printStackTrace	()V
     //   386: goto -81 -> 305
     //   389: astore_3
     //   390: aload_3
-    //   391: invokevirtual 354	java/io/IOException:printStackTrace	()V
+    //   391: invokevirtual 365	java/io/IOException:printStackTrace	()V
     //   394: goto -79 -> 315
     //   397: iconst_0
     //   398: ireturn
@@ -499,9 +500,9 @@ public class ShareAppLogHelper
     }
   }
   
-  public void a(ShareAppLogHelper.OnGetLocalLogListener paramOnGetLocalLogListener)
+  public void a(axjo paramaxjo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTestassisterShareAppLogHelper$OnGetLocalLogListener = paramOnGetLocalLogListener;
+    this.jdField_a_of_type_Axjo = paramaxjo;
   }
   
   public void a(boolean paramBoolean)
@@ -523,7 +524,7 @@ public class ShareAppLogHelper
     this.jdField_a_of_type_AndroidTextFormatTime = paramTime1;
     this.jdField_b_of_type_AndroidTextFormatTime = paramTime2;
     this.jdField_a_of_type_Boolean = paramBoolean;
-    ThreadManager.post(new aiso(this), 10, null, true);
+    ThreadManager.post(new ShareAppLogHelper.2(this), 10, null, true);
     return true;
   }
 }

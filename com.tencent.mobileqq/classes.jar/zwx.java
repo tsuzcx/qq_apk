@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.app.automator.step.CleanCache;
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 
 public class zwx
-  implements Comparator
+  implements bbmu
 {
-  public zwx(CleanCache paramCleanCache) {}
+  public zwx(AddFriendLogicActivity paramAddFriendLogicActivity) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void a()
   {
-    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
-      return 1;
-    }
-    return 0;
+    this.a.onBackPressed();
+    AddFriendLogicActivity.a(this.a).a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zwx
  * JD-Core Version:    0.7.0.1
  */

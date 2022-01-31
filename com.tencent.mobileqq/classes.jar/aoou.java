@@ -1,33 +1,84 @@
-import android.view.View;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.troop.TroopFileProxyActivity;
 
 public class aoou
-  implements ActionSheet.OnButtonClickListener
+  implements aoos
 {
-  public aoou(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  private long jdField_a_of_type_Long;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void OnClick(View paramView, int paramInt)
+  public aoou(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Long = Long.parseLong(paramString);
+  }
+  
+  private void a()
+  {
+    Intent localIntent = TroopMemberListActivity.a(this.jdField_a_of_type_AndroidContentContext, String.valueOf(this.jdField_a_of_type_Long), 18);
+    localIntent.putExtra("uin", this.jdField_a_of_type_Long);
+    localIntent.putExtra("param_from", 23);
+    localIntent.putExtra("uintype", 1);
+    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+  }
+  
+  private void b(int paramInt)
+  {
+    Intent localIntent = new Intent();
+    localIntent.putExtra("title_type", paramInt);
+    localIntent.putExtra("troop_uin", this.jdField_a_of_type_Long);
+    TroopFileProxyActivity.c((Activity)this.jdField_a_of_type_AndroidContentContext, localIntent, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+  }
+  
+  public void a(int paramInt)
   {
     switch (paramInt)
     {
+    case 4: 
+    case 5: 
+    case 6: 
+    case 7: 
+    case 8: 
+    case 9: 
+    case 10: 
+    case 12: 
     default: 
+      QLog.i("QFileTroopSearchTypeController", 4, "unknown search type.");
+      return;
+    case 3: 
+      b(1);
+      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0C0", "0X800A0C0", 1, 0, "", "", "", "");
+      return;
+    case 2: 
+      b(2);
+      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0C0", "0X800A0C0", 2, 0, "", "", "", "");
+      return;
+    case 0: 
+      b(4);
+      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0C0", "0X800A0C0", 3, 0, "", "", "", "");
+      return;
+    case 1: 
+      b(3);
+      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0C0", "0X800A0C0", 4, 0, "", "", "", "");
+      return;
+    case 11: 
+      b(10000);
+      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0C0", "0X800A0C0", 5, 0, "", "", "", "");
       return;
     }
-    if (this.a.a.b.get() == 4) {
-      this.a.a(false);
-    }
-    this.a.a.a("FlowCameraActivity");
-    this.a.b();
-    FlowCameraMqqAction.b("", "0X800656F", "0");
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoou
  * JD-Core Version:    0.7.0.1
  */

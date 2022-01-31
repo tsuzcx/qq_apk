@@ -1,21 +1,182 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySelfActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import android.util.Log;
+import android.util.Pair;
+import com.tencent.aekit.openrender.internal.Frame;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Vector;
+import org.jetbrains.annotations.NotNull;
 
-public class lgq
-  implements Runnable
+public abstract class lgq
+  extends lgx
 {
-  public lgq(ReadInJoySelfActivity paramReadInJoySelfActivity) {}
+  private String jdField_a_of_type_JavaLangString = getClass().getSimpleName() + "-" + Integer.toHexString(hashCode());
+  private List<Pair<lgq, Integer>> jdField_a_of_type_JavaUtilList = new LinkedList();
+  private Vector<lgu> jdField_a_of_type_JavaUtilVector;
+  private lgs jdField_a_of_type_Lgs;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void run()
+  public lgq(int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.h();
+    this.jdField_a_of_type_JavaUtilVector = new Vector(paramInt);
+    this.jdField_a_of_type_JavaUtilVector.setSize(paramInt);
+  }
+  
+  private void a(lgu paramlgu, int paramInt, long paramLong)
+  {
+    if (a(paramlgu, paramInt))
+    {
+      a(this.jdField_a_of_type_JavaUtilVector, paramLong);
+      this.jdField_a_of_type_JavaUtilVector.clear();
+      this.jdField_a_of_type_JavaUtilVector.setSize(this.jdField_a_of_type_JavaUtilVector.capacity());
     }
+  }
+  
+  private boolean a(lgu paramlgu, int paramInt)
+  {
+    this.jdField_a_of_type_JavaUtilVector.set(paramInt, paramlgu);
+    paramInt = 0;
+    while (paramInt < this.jdField_a_of_type_JavaUtilVector.size())
+    {
+      if (this.jdField_a_of_type_JavaUtilVector.get(paramInt) == null) {
+        return false;
+      }
+      paramInt += 1;
+    }
+    return true;
+  }
+  
+  @NotNull
+  protected abstract Frame a(List<lgu> paramList, long paramLong);
+  
+  public lgq a()
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilVector.clear();
+    this.jdField_a_of_type_JavaUtilVector.setSize(this.jdField_a_of_type_JavaUtilVector.capacity());
+    return this;
+  }
+  
+  public lgq a(lgq paramlgq, int paramInt)
+  {
+    Log.d(this.jdField_a_of_type_JavaLangString, "addTarget: " + paramlgq);
+    if (paramInt >= paramlgq.jdField_a_of_type_JavaUtilVector.size())
+    {
+      Log.e(this.jdField_a_of_type_JavaLangString, "addTarget: targetIndex=" + paramInt + ", target inputCount=" + this.jdField_a_of_type_JavaUtilVector.size() + ", out of bounds");
+      return this;
+    }
+    this.jdField_a_of_type_JavaUtilList.add(new Pair(paramlgq, Integer.valueOf(paramInt)));
+    paramlgq.a(this.jdField_a_of_type_Lgw);
+    return this;
+  }
+  
+  protected abstract void a();
+  
+  public void a(List<lgu> paramList, long paramLong)
+  {
+    int j = 0;
+    Object localObject = a(paramList, paramLong);
+    lgu locallgu = null;
+    int i = 0;
+    if (i < paramList.size())
+    {
+      if (((lgu)paramList.get(i)).jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame == localObject) {
+        locallgu = (lgu)paramList.get(i);
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        ((lgu)paramList.get(i)).a();
+      }
+    }
+    if (this.jdField_a_of_type_JavaUtilList.isEmpty()) {
+      if (this.jdField_a_of_type_Lgw.a.a != null) {
+        this.jdField_a_of_type_Lgw.a.a.a((Frame)localObject, this);
+      }
+    }
+    for (;;)
+    {
+      return;
+      if (locallgu != null)
+      {
+        locallgu.a();
+        return;
+        if (locallgu == null)
+        {
+          locallgu = lgu.a((Frame)localObject);
+          locallgu.a(this.jdField_a_of_type_JavaUtilList.size());
+        }
+        for (;;)
+        {
+          localObject = new ArrayList();
+          i = j;
+          while (i < paramList.size())
+          {
+            if (((lgu)paramList.get(i)).jdField_a_of_type_JavaUtilList != null) {
+              ((List)localObject).addAll(((lgu)paramList.get(i)).jdField_a_of_type_JavaUtilList);
+            }
+            i += 1;
+          }
+          locallgu.a(this.jdField_a_of_type_JavaUtilList.size());
+          locallgu.a();
+        }
+        locallgu.jdField_a_of_type_JavaUtilList = ((List)localObject);
+        paramList = this.jdField_a_of_type_JavaUtilList.iterator();
+        while (paramList.hasNext())
+        {
+          localObject = (Pair)paramList.next();
+          ((lgq)((Pair)localObject).first).a(locallgu, ((Integer)((Pair)localObject).second).intValue(), paramLong);
+        }
+      }
+    }
+  }
+  
+  public void a(lgw paramlgw)
+  {
+    super.a(paramlgw);
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      Log.d(this.jdField_a_of_type_JavaLangString, "init: ");
+      a();
+      if (this.jdField_a_of_type_Lgs != null)
+      {
+        this.jdField_a_of_type_Lgs.a();
+        this.jdField_a_of_type_Lgs = null;
+      }
+      this.jdField_a_of_type_Boolean = true;
+    }
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      ((lgq)((Pair)this.jdField_a_of_type_JavaUtilList.get(i)).first).a(this.jdField_a_of_type_Lgw);
+      i += 1;
+    }
+  }
+  
+  protected abstract void b();
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      Log.d(this.jdField_a_of_type_JavaLangString, "destroy: ");
+      b();
+      this.jdField_a_of_type_Boolean = false;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((lgq)((Pair)localIterator.next()).first).c();
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilVector.clear();
+    this.jdField_a_of_type_JavaUtilVector.setSize(this.jdField_a_of_type_JavaUtilVector.capacity());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lgq
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class QQHeadUrl$ReqUsrInfo
-  extends MessageMicro
+  extends MessageMicro<ReqUsrInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "dstUin", "timestamp", "dstEncid" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), "" }, ReqUsrInfo.class);
   public final PBStringField dstEncid = PBField.initString("");

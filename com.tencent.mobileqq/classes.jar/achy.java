@@ -1,24 +1,14 @@
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-
-class achy
-  implements Runnable
+public abstract interface achy
 {
-  achy(achx paramachx, List paramList) {}
+  public abstract void a();
   
-  public void run()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FavEmoRoamingObserver", 2, "start upload and download fav");
-    }
-    this.jdField_a_of_type_Achx.a.a(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_Achx.a.c();
-  }
+  public abstract void b(int paramInt, String paramString);
+  
+  public abstract void c(int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     achy
  * JD-Core Version:    0.7.0.1
  */

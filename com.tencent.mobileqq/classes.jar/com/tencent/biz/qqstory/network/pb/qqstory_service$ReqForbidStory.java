@@ -10,13 +10,13 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_service$ReqForbidStory
-  extends MessageMicro
+  extends MessageMicro<ReqForbidStory>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field forbid_my_story = PBField.initUInt32(0);
   public final PBUInt32Field forbidden = PBField.initUInt32(0);
-  public final PBRepeatField uid_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
-  public final PBRepeatField union_id_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<Long> uid_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> union_id_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
   
   static
   {
@@ -26,7 +26,7 @@ public final class qqstory_service$ReqForbidStory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqForbidStory
  * JD-Core Version:    0.7.0.1
  */

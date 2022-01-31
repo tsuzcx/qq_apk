@@ -1,15 +1,23 @@
-import com.tencent.biz.qqstory.newshare.callback.OnPrepareShareListener;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareData;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
 public class nlk
-  implements Runnable
+  implements begw
 {
-  public nlk(ShareModeBase paramShareModeBase, ShareData paramShareData) {}
+  public nlk(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModeBaseShareModeBase.a.c(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareData);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      ReadInJoySettingActivity.b(this.a).cancel();
+      return;
+      ReadInJoySettingActivity.d(this.a, false);
+      ReadInJoySettingActivity.c(this.a, ReadInJoySettingActivity.c(this.a));
+    }
   }
 }
 

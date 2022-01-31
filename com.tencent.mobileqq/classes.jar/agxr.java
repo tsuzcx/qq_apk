@@ -1,25 +1,34 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.ptt.LSRecordAnimations.LSRecordAnimationCallback;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class agxr
-  extends LSRecordAnimations.LSRecordAnimationCallback
+class agxr
+  implements aroi
 {
-  public agxr(LSRecordPanel paramLSRecordPanel) {}
+  agxr(agxq paramagxq) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS stopRecordingBarAnimation onAnimationEnd");
+    agxq.a(this.a).removeMessages(11);
+    agxq.a(this.a).sendEmptyMessageDelayed(11, 1000L);
+  }
+  
+  public void a(long paramLong) {}
+  
+  public void a(boolean paramBoolean, int paramInt) {}
+  
+  public void b(int paramInt) {}
+  
+  public void c(int paramInt)
+  {
+    if ((paramInt & 0x1) != 0)
+    {
+      agxq.a(this.a).removeMessages(11);
+      agxq.a(this.a).sendEmptyMessageDelayed(11, 1000L);
     }
-    LSRecordPanel.a(this.a).post(new agxs(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agxr
  * JD-Core Version:    0.7.0.1
  */

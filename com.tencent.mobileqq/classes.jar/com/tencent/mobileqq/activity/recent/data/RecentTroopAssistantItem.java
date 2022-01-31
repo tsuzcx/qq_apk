@@ -1,43 +1,47 @@
 package com.tencent.mobileqq.activity.recent.data;
 
+import akaq;
 import android.content.Context;
 import android.content.res.Resources;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
+import awqx;
+import axjq;
+import axkd;
+import azkm;
+import azlj;
+import azlm;
+import babh;
+import bami;
 import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.activity.recent.RecentBaseData;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.message.ConversationFacade;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
 import com.tencent.mobileqq.data.TroopAssistantData;
 import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.utils.TroopNotificationHelper;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
-import com.tencent.mobileqq.troop.utils.TroopVideoManager;
-import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import mnf;
 
 public class RecentTroopAssistantItem
   extends RecentBaseData
 {
-  private TroopAssistantData a;
-  public long b;
+  private TroopAssistantData mData;
+  public long mTroopCreditLevel = 5L;
   
   public RecentTroopAssistantItem(TroopAssistantData paramTroopAssistantData)
   {
-    this.jdField_b_of_type_Long = 5L;
     if (paramTroopAssistantData == null) {
       throw new NullPointerException("TroopAssistantData is null");
     }
-    this.jdField_a_of_type_ComTencentMobileqqDataTroopAssistantData = paramTroopAssistantData;
-    this.jdField_b_of_type_Int = 3;
+    this.mData = paramTroopAssistantData;
+    this.mUnreadFlag = 3;
   }
   
   public int a()
@@ -47,12 +51,12 @@ public class RecentTroopAssistantItem
   
   public long a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataTroopAssistantData.lastmsgtime;
+    return this.mData.lastmsgtime;
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataTroopAssistantData.troopUin;
+    return this.mData.troopUin;
   }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
@@ -70,25 +74,26 @@ public class RecentTroopAssistantItem
     int j;
     if (localMessage != null)
     {
-      this.jdField_a_of_type_Long = localMessage.time;
+      this.mDisplayTime = localMessage.time;
       localObject1 = paramQQAppInterface.a();
       if (localObject1 != null)
       {
-        this.jdField_c_of_type_Int = ((ConversationFacade)localObject1).a(localMessage.frienduin, localMessage.istroop);
-        if ((TroopNotificationHelper.a(str)) || (TroopNotificationHelper.c(str)))
+        this.mUnreadNum = ((akaq)localObject1).a(localMessage.frienduin, localMessage.istroop);
+        if ((azkm.a(str)) || (azkm.c(str)))
         {
-          this.jdField_d_of_type_JavaLangCharSequence = BaseApplicationImpl.getContext().getString(2131433521);
-          this.e = paramContext.getResources().getColor(2131494294);
+          this.mMsgExtroInfo = BaseApplicationImpl.getContext().getString(2131654379);
+          this.mExtraInfoColor = paramContext.getResources().getColor(2131101360);
         }
-        j = this.f;
-        localObject1 = (TroopManager)paramQQAppInterface.getManager(51);
+        j = this.mMenuFlag;
+        localObject1 = (TroopManager)paramQQAppInterface.getManager(52);
         if (localObject1 == null) {
-          break label908;
+          break label1145;
         }
       }
     }
-    label908:
-    for (TroopInfo localTroopInfo = ((TroopManager)localObject1).a(str);; localTroopInfo = null)
+    label212:
+    label1145:
+    for (TroopInfo localTroopInfo = ((TroopManager)localObject1).b(str);; localTroopInfo = null)
     {
       Object localObject3;
       if (localTroopInfo != null)
@@ -98,25 +103,51 @@ public class RecentTroopAssistantItem
       }
       for (;;)
       {
-        this.f = (j & 0xFFFFF0FF | 0x100);
-        label212:
+        this.mMenuFlag = (j & 0xFFFFF0FF | 0x100);
         MsgSummary localMsgSummary;
+        label378:
         long l1;
         if (TextUtils.isEmpty((CharSequence)localObject3))
         {
-          this.jdField_b_of_type_JavaLangString = ContactUtils.a(paramQQAppInterface, str, true);
+          this.mTitleName = babh.a(paramQQAppInterface, str, true);
           localMsgSummary = a();
           if ((localMessage != null) && (TextUtils.isEmpty(localMessage.nickName))) {
             localMessage.nickName = localMessage.senderuin;
           }
           a(localMessage, i, paramQQAppInterface, paramContext, localMsgSummary);
-          if ((TextUtils.isEmpty(localMsgSummary.b)) && (TextUtils.isEmpty(localMsgSummary.jdField_c_of_type_JavaLangCharSequence)))
+          if ((localMsgSummary.nState == 0) && ((!TextUtils.isEmpty(localMsgSummary.strContent)) || (!TextUtils.isEmpty(localMsgSummary.suffix))))
+          {
+            SpannableString localSpannableString = null;
+            if (TextUtils.isEmpty(localMsgSummary.strContent)) {
+              break label1041;
+            }
+            Object localObject4 = localMsgSummary.strContent.toString();
+            localObject3 = localObject4;
+            if (!TextUtils.isEmpty(localMsgSummary.strPrefix))
+            {
+              localObject3 = localObject4;
+              if (TextUtils.indexOf(localMsgSummary.strContent, localMsgSummary.strPrefix) == 0) {
+                localObject3 = (String)((String)localObject4).subSequence(localMsgSummary.strPrefix.length() + 2, localMsgSummary.strContent.length());
+              }
+            }
+            if (!TextUtils.isEmpty(localMsgSummary.strPrefix)) {
+              localSpannableString = new axjq(localMsgSummary.strPrefix, 16).a();
+            }
+            localObject3 = bami.a((String)localObject3, localMessage, 16, 3);
+            localObject4 = new SpannableStringBuilder();
+            if (localSpannableString != null) {
+              ((SpannableStringBuilder)localObject4).append(localSpannableString).append(": ");
+            }
+            ((SpannableStringBuilder)localObject4).append((CharSequence)localObject3);
+            localMsgSummary.strContent = new axkd((CharSequence)localObject4, 3, 16);
+          }
+          if ((TextUtils.isEmpty(localMsgSummary.strContent)) && (TextUtils.isEmpty(localMsgSummary.suffix)))
           {
             localObject3 = localObject1;
             if (localObject1 == null) {
               localObject3 = "";
             }
-            localMsgSummary.b = ((CharSequence)localObject3);
+            localMsgSummary.strContent = ((CharSequence)localObject3);
           }
           a(paramQQAppInterface);
           a(paramQQAppInterface, localMsgSummary);
@@ -130,84 +161,83 @@ public class RecentTroopAssistantItem
         }
         catch (NumberFormatException localNumberFormatException)
         {
-          label333:
           boolean bool;
-          break label333;
+          break label550;
         }
-        this.jdField_a_of_type_Boolean = paramQQAppInterface.a().c(l1);
-        bool = this.jdField_b_of_type_Boolean;
-        this.jdField_b_of_type_Boolean = paramQQAppInterface.a().b(l1);
-        if (this.jdField_b_of_type_Boolean)
+        this.mIsGroupVideo = paramQQAppInterface.a().c(l1);
+        bool = this.mIsGroupVideoNotify;
+        this.mIsGroupVideoNotify = paramQQAppInterface.a().b(l1);
+        if (this.mIsGroupVideoNotify)
         {
-          localObject1 = (TroopVideoManager)paramQQAppInterface.getManager(163);
-          if ((localObject1 != null) && (((TroopVideoManager)localObject1).a(a()) == 2)) {
-            this.jdField_b_of_type_Boolean = false;
+          localObject1 = (azlm)paramQQAppInterface.getManager(164);
+          if ((localObject1 != null) && (((azlm)localObject1).a(a()) == 2)) {
+            this.mIsGroupVideoNotify = false;
           }
         }
-        if ((this.jdField_b_of_type_Boolean) && (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangCharSequence)))
+        if ((this.mIsGroupVideoNotify) && (TextUtils.isEmpty(this.mMsgExtroInfo)))
         {
-          this.jdField_d_of_type_JavaLangCharSequence = paramQQAppInterface.getApp().getString(2131430830);
-          this.e = paramQQAppInterface.getApp().getResources().getColor(2131494294);
+          this.mMsgExtroInfo = paramQQAppInterface.getApp().getString(2131632316);
+          this.mExtraInfoColor = paramQQAppInterface.getApp().getResources().getColor(2131101360);
         }
-        if ((this.jdField_b_of_type_Boolean) && (!bool))
+        if ((this.mIsGroupVideoNotify) && (!bool))
         {
           localObject1 = String.valueOf(l1);
-          ReportController.b(null, "dc00899", "Grp_video", "", "notice", "exp", 0, 0, (String)localObject1, "" + TroopUtils.a(paramQQAppInterface, (String)localObject1), "", "");
+          awqx.b(null, "dc00899", "Grp_video", "", "notice", "exp", 0, 0, (String)localObject1, "" + azlj.a(paramQQAppInterface, (String)localObject1), "", "");
         }
-        if ((TextUtils.isEmpty(this.jdField_d_of_type_JavaLangCharSequence)) && (localMessage != null) && (localMsgSummary != null) && (AnonymousChatHelper.a(localMessage))) {
-          this.jdField_c_of_type_JavaLangCharSequence = localMsgSummary.a(paramContext, paramContext.getResources().getString(2131430290), -1);
+        if ((TextUtils.isEmpty(this.mMsgExtroInfo)) && (localMessage != null) && (localMsgSummary != null) && (mnf.a(localMessage))) {
+          this.mLastMsg = localMsgSummary.a(paramContext, paramContext.getResources().getString(2131631782), -1);
         }
         if (localTroopInfo != null)
         {
-          this.jdField_b_of_type_Long = localTroopInfo.troopCreditLevel;
-          if (this.jdField_b_of_type_Long == 0L) {
-            this.jdField_b_of_type_Long = 5L;
+          this.mTroopCreditLevel = localTroopInfo.troopCreditLevel;
+          if (this.mTroopCreditLevel == 0L) {
+            this.mTroopCreditLevel = 5L;
           }
           if (QLog.isColorLevel()) {
-            QLog.i("troop.credit.act", 2, "RecentTroopAssistantItem->update," + str + "," + this.jdField_b_of_type_Long);
+            QLog.i("troop.credit.act", 2, "RecentTroopAssistantItem->update," + str + "," + this.mTroopCreditLevel);
           }
         }
-        paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(51);
-        this.f &= 0xFFFFFF0F;
-        j = this.f;
+        paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(52);
+        this.mMenuFlag &= 0xFFFFFF0F;
+        j = this.mMenuFlag;
         if (paramQQAppInterface.b(str))
         {
           i = 32;
-          label684:
-          this.f = (i | j);
-          if (!AppSetting.jdField_b_of_type_Boolean) {
+          this.mMenuFlag = (i | j);
+          if (!AppSetting.c) {
             break;
           }
           paramQQAppInterface = new StringBuilder(24);
-          paramQQAppInterface.append(this.jdField_b_of_type_JavaLangString);
-          if (this.jdField_c_of_type_Int != 0) {
-            break label825;
+          paramQQAppInterface.append(this.mTitleName);
+          if (this.mUnreadNum != 0) {
+            break label1062;
           }
         }
         for (;;)
         {
-          if (this.jdField_d_of_type_JavaLangCharSequence != null) {
-            paramQQAppInterface.append(this.jdField_d_of_type_JavaLangCharSequence + ",");
+          if (this.mMsgExtroInfo != null) {
+            paramQQAppInterface.append(this.mMsgExtroInfo + ",");
           }
-          paramQQAppInterface.append(this.jdField_c_of_type_JavaLangCharSequence).append(' ').append(this.jdField_c_of_type_JavaLangString);
-          this.jdField_d_of_type_JavaLangString = paramQQAppInterface.toString();
+          paramQQAppInterface.append(this.mLastMsg).append(' ').append(this.mShowTime);
+          this.mContentDesc = paramQQAppInterface.toString();
           return;
-          this.jdField_c_of_type_Int = 0;
+          this.mUnreadNum = 0;
           break;
-          this.jdField_a_of_type_Long = 0L;
-          this.jdField_c_of_type_Int = 0;
+          this.mDisplayTime = 0L;
+          this.mUnreadNum = 0;
           break;
-          this.jdField_b_of_type_JavaLangString = ((String)localObject3);
+          this.mTitleName = ((String)localObject3);
           break label212;
+          localObject3 = localMsgSummary.suffix.toString();
+          break label378;
           i = 16;
-          break label684;
-          label825:
-          if (this.jdField_c_of_type_Int == 1) {
+          break label906;
+          if (this.mUnreadNum == 1) {
             paramQQAppInterface.append("有一条未读");
-          } else if (this.jdField_c_of_type_Int == 2) {
+          } else if (this.mUnreadNum == 2) {
             paramQQAppInterface.append("有两条未读");
-          } else if (this.jdField_c_of_type_Int > 0) {
-            paramQQAppInterface.append("有").append(this.jdField_c_of_type_Int).append("条未读");
+          } else if (this.mUnreadNum > 0) {
+            paramQQAppInterface.append("有").append(this.mUnreadNum).append("条未读");
           }
         }
         Object localObject2 = null;
@@ -223,12 +253,12 @@ public class RecentTroopAssistantItem
   
   public long b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataTroopAssistantData.lastdrafttime;
+    return this.mData.lastdrafttime;
   }
   
   public long c()
   {
-    return this.jdField_b_of_type_Long;
+    return this.mTroopCreditLevel;
   }
 }
 

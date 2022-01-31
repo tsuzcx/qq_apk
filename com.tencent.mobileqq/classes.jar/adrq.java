@@ -1,73 +1,39 @@
-import android.os.AsyncTask;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.fileassistant.IBaseTabViewEvent;
-import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import com.tencent.mobileqq.statistics.storage.StorageReport;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 class adrq
-  extends AsyncTask
+  implements View.OnClickListener
 {
-  adrq(adrp paramadrp) {}
+  adrq(adro paramadro, int paramInt) {}
   
-  protected Integer a(Object... paramVarArgs)
+  public void onClick(View paramView)
   {
-    paramVarArgs = FMDataCache.b().iterator();
-    int i = 0;
-    File localFile;
-    for (;;)
-    {
-      if (!paramVarArgs.hasNext()) {
-        break label150;
-      }
-      FileInfo localFileInfo = (FileInfo)paramVarArgs.next();
-      if (!SendBottomBar.a(this.a.a).a().a(localFileInfo.c())) {
-        try
-        {
-          localFile = new File(localFileInfo.c());
-          if (!localFile.exists()) {
-            QLog.e("delDownloadFiles<FileAssistant>", 1, "local file can scan, is not existed? file:" + localFileInfo.c());
-          }
-        }
-        catch (Exception localException)
-        {
-          QLog.e("delDownloadFiles<FileAssistant>", 1, "del file error:" + localException.toString());
-        }
-      }
+    paramView = new Intent(this.jdField_a_of_type_Adro.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+    paramView.putExtra("individuation_url_type", 40303);
+    String str = bant.a(this.jdField_a_of_type_Adro.jdField_a_of_type_AndroidContentContext, "call", "mvip.gongneng.anroid.individuation.web");
+    str = str + "&funcallId=" + this.jdField_a_of_type_Int;
+    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_Adro.jdField_a_of_type_AndroidContentContext, str, 524288L, paramView, true, -1);
+    int i = ((ajrm)this.jdField_a_of_type_Adro.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).g();
+    if (i == 2) {
+      i = 0;
     }
     for (;;)
     {
-      break;
-      localFile.delete();
-      i += 1;
+      awqx.b(this.jdField_a_of_type_Adro.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004A25", "0X8004A25", 0, 0, "" + i, "", "", "");
+      return;
+      if (i == 3) {
+        i = 2;
+      }
     }
-    label150:
-    StorageReport.a().a(true);
-    return Integer.valueOf(i);
-  }
-  
-  protected void a(Integer paramInteger)
-  {
-    super.onPostExecute(paramInteger);
-    this.a.a.d();
-    if (paramInteger.intValue() != FMDataCache.a()) {
-      FMToastUtil.a(2131428145);
-    }
-    FMDataCache.b();
-    this.a.a.a();
-    SendBottomBar.a(this.a.a).n();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adrq
  * JD-Core Version:    0.7.0.1
  */

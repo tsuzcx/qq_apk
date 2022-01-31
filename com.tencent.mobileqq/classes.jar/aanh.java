@@ -1,47 +1,21 @@
-import com.tencent.mobileqq.ar.ARTarget;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.ar.arengine.AREngineCallback;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.Conversation.44.1;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 
 public class aanh
-  implements Runnable
+  extends abnn
 {
-  public aanh(AREngine paramAREngine, int paramInt) {}
+  public aanh(Conversation paramConversation) {}
   
-  public void run()
+  protected void a()
   {
-    if (!AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine).d())
-    {
-      if (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine).j()) {
-        AREngine.d(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine);
-      }
-      if (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) != 1L) {
-        break label132;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.b(1L);
-      AREngine.c(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.j();
-      if ((AREngine.e(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine)) && (AREngine.e(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) == 2) && (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) != null))
-      {
-        ARTarget localARTarget = new ARTarget(AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine));
-        AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine).a(3, localARTarget, this.jdField_a_of_type_Int);
-      }
-      return;
-      label132:
-      if (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) == 2L) {
-        this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.l();
-      } else if (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) == 2048L) {
-        this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.n();
-      }
-    }
+    ThreadManagerV2.getUIHandlerV2().post(new Conversation.44.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aanh
  * JD-Core Version:    0.7.0.1
  */

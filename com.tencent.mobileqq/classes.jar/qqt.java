@@ -1,45 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import java.util.Map;
 
 public class qqt
-  implements View.OnTouchListener
+  extends omr
 {
-  private static final int jdField_a_of_type_Int = ViewUtils.b(3.0F);
-  private Runnable jdField_a_of_type_JavaLangRunnable;
-  private int b;
-  private int c;
-  
-  public qqt(Runnable paramRunnable)
+  public qqt(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, Map paramMap, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
+    super(paramString);
   }
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(oml paramoml)
   {
-    int j = (int)paramMotionEvent.getX();
-    int i = (int)paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      this.b = j;
-      this.c = i;
-      return true;
-      j = Math.abs(j - this.b);
-      i = Math.abs(i - this.c);
-      if ((j < jdField_a_of_type_Int) && (i < jdField_a_of_type_Int) && (this.jdField_a_of_type_JavaLangRunnable != null)) {
-        this.jdField_a_of_type_JavaLangRunnable.run();
-      }
-    }
+    paramoml.a(this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qqt
  * JD-Core Version:    0.7.0.1
  */

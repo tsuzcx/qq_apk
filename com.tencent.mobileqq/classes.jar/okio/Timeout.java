@@ -1,27 +1,11 @@
 package okio;
 
-import java.io.IOException;
 import java.io.InterruptedIOException;
 import java.util.concurrent.TimeUnit;
 
 public class Timeout
 {
-  public static final Timeout NONE = new Timeout()
-  {
-    public Timeout deadlineNanoTime(long paramAnonymousLong)
-    {
-      return this;
-    }
-    
-    public void throwIfReached()
-      throws IOException
-    {}
-    
-    public Timeout timeout(long paramAnonymousLong, TimeUnit paramAnonymousTimeUnit)
-    {
-      return this;
-    }
-  };
+  public static final Timeout NONE = new Timeout.1();
   private long deadlineNanoTime;
   private boolean hasDeadline;
   private long timeoutNanos;
@@ -70,7 +54,6 @@ public class Timeout
   }
   
   public void throwIfReached()
-    throws IOException
   {
     if (Thread.interrupted()) {
       throw new InterruptedIOException("thread interrupted");

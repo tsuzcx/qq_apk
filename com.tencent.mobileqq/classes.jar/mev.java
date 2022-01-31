@@ -1,29 +1,61 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.qphone.base.util.QLog;
 
-public class mev
-  implements Runnable
+class mev
+  implements kwc
 {
-  public mev(VideoFeedsAdapter paramVideoFeedsAdapter, boolean paramBoolean) {}
+  mev(meu parammeu) {}
   
-  public void run()
+  public boolean a(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter.notifyDataSetChanged();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter.a(Boolean.valueOf(this.jdField_a_of_type_Boolean));
-    if (!this.jdField_a_of_type_Boolean)
+    boolean bool2 = true;
+    if (11 != paramInt1) {}
+    do
     {
-      VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).c();
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter.k();
+      return false;
+      QLog.w(this.a.i, 1, "onC2CDataCome, subType[" + paramInt2 + "], mPeerSupportRedBag[" + this.a.jdField_a_of_type_Int + "], mPeerSendMode[" + this.a.jdField_a_of_type_Boolean + "]");
+      paramArrayOfByte = this.a.a();
+    } while (paramArrayOfByte == null);
+    boolean bool1;
+    switch (paramInt2)
+    {
+    default: 
+      bool1 = false;
     }
-    while (VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).c()) {
-      return;
+    for (;;)
+    {
+      return bool1;
+      this.a.jdField_a_of_type_Int = 2;
+      paramArrayOfByte.b("AbilityResDownloading");
+      bool1 = bool2;
+      continue;
+      this.a.jdField_a_of_type_Int = 1;
+      paramArrayOfByte.b("AbilityEnable");
+      bool1 = bool2;
+      continue;
+      this.a.jdField_a_of_type_Int = 0;
+      paramArrayOfByte.b("AbilityDisable");
+      bool1 = bool2;
+      continue;
+      this.a.jdField_a_of_type_Boolean = true;
+      bool1 = bool2;
+      if (this.a.jdField_a_of_type_Int != 1)
+      {
+        this.a.jdField_a_of_type_Int = 1;
+        paramArrayOfByte.b("Enter_SendMode");
+        bool1 = bool2;
+        continue;
+        this.a.jdField_a_of_type_Boolean = false;
+        bool1 = bool2;
+        continue;
+        paramArrayOfByte.a(this.a.b);
+        bool1 = bool2;
+      }
     }
-    VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mev
  * JD-Core Version:    0.7.0.1
  */

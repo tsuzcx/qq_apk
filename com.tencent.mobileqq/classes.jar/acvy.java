@@ -1,38 +1,20 @@
-import android.graphics.Color;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.activity.MPFileVerifyPwdView;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
 
-public class acvy
-  implements TextWatcher
+public final class acvy
+  implements begw
 {
-  public acvy(MPFileVerifyPwdView paramMPFileVerifyPwdView) {}
+  public acvy(Activity paramActivity, begr parambegr, String paramString, acwd paramacwd) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramEditable = MPFileVerifyPwdView.a(this.a).getText().toString();
-    if ((!TextUtils.isEmpty(paramEditable)) && (paramEditable.length() >= 16)) {
-      FMToastUtil.a(BaseApplicationImpl.getContext().getString(2131427655));
-    }
-    while (TextUtils.isEmpty(paramEditable)) {
-      return;
-    }
-    MPFileVerifyPwdView.b(this.a).setEnabled(true);
-    MPFileVerifyPwdView.b(this.a).setTextColor(Color.parseColor("#00a5e0"));
+    AIOLongShotHelper.a(this.jdField_a_of_type_AndroidAppActivity, paramView, paramInt, this.jdField_a_of_type_Begr, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Acwd);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acvy
  * JD-Core Version:    0.7.0.1
  */

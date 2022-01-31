@@ -1,101 +1,75 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
+import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.PlayerState;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
-import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
 
 public class aewg
-  implements WerewolvesHandler.Callback
+  extends ajuc
 {
-  public aewg(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public aewg(TroopView paramTroopView) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  protected void d(boolean paramBoolean, ArrayList<aeso> paramArrayList)
   {
-    boolean bool2 = false;
-    if (this.a.isFinishing()) {}
-    label192:
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("addContacts.TroopView", 2, "onGetAddContactFindTroopClassify isSuccess = " + paramBoolean + ",dataList = " + paramArrayList);
+    }
+    Object localObject;
+    int i;
+    if ((TroopView.a(this.a) != null) && (TroopView.a(this.a).b()))
     {
-      return;
-      if ((paramInt == 0) || (paramInt == 1008) || (paramInt == 1009) || (paramInt == 1010))
+      localObject = TroopView.a(this.a);
+      if (paramBoolean)
       {
-        if ((paramInt == 1009) && (this.a.jdField_b_of_type_JavaLangString != null) && (this.a.jdField_b_of_type_JavaLangString.equals(GameRoomInviteActivity.jdField_a_of_type_JavaLangString)))
-        {
-          paramRspBody = paramRspBody.poi_info;
-          localObject = paramRspBody.bytes_uid.get().toStringUtf8();
-          this.a.a(HotChatInfo.createHotChat(paramRspBody, false, 0), paramRspBody.uint32_group_code.get(), (String)localObject, paramRspBody.bytes_name.get().toStringUtf8());
-          return;
-        }
-        Object localObject = this.a;
-        if (paramRspBody.uint32_refresh_interval.has())
-        {
-          paramInt = paramRspBody.uint32_refresh_interval.get() * 1000;
-          ((GameRoomInviteActivity)localObject).c = paramInt;
-          this.a.c = Math.max(1000, this.a.c);
-          this.a.jdField_a_of_type_JavaUtilList = new ArrayList();
-          paramInt = 0;
-          if (paramInt >= paramRspBody.rpt_msg_player_state.size()) {
-            break label314;
-          }
-          localObject = new aexc(this.a);
-          oidb_0x8e4.PlayerState localPlayerState = (oidb_0x8e4.PlayerState)paramRspBody.rpt_msg_player_state.get(paramInt);
-          ((aexc)localObject).jdField_a_of_type_JavaLangString = (localPlayerState.uint64_uin.get() + "");
-          if (localPlayerState.uint32_state.get() != 1) {
-            break label309;
-          }
-        }
-        for (boolean bool1 = true;; bool1 = false)
-        {
-          ((aexc)localObject).jdField_a_of_type_Boolean = bool1;
-          this.a.jdField_a_of_type_JavaUtilList.add(localObject);
-          paramInt += 1;
-          break label192;
-          paramInt = 1000;
-          break;
-        }
-        if (paramRspBody.uint32_max_member_num.has()) {
-          this.a.jdField_a_of_type_Int = paramRspBody.uint32_max_member_num.get();
-        }
-        if (paramRspBody.uint32_zone_id.has()) {
-          this.a.jdField_b_of_type_Int = paramRspBody.uint32_zone_id.get();
-        }
-        this.a.jdField_b_of_type_Long = paramRspBody.uint64_leader_uin.get();
-        localObject = this.a;
-        if ((paramRspBody.uint64_leader_uin.has()) && (this.a.jdField_b_of_type_Long != this.a.app.getLongAccountUin()))
-        {
-          bool1 = bool2;
-          if (!this.a.jdField_a_of_type_JavaUtilList.isEmpty()) {}
-        }
-        else
-        {
-          bool1 = true;
-        }
-        ((GameRoomInviteActivity)localObject).jdField_a_of_type_Boolean = bool1;
-        this.a.jdField_a_of_type_Aexd.notifyDataSetChanged();
-        this.a.a();
-        this.a.g();
-        this.a.j();
-        return;
+        i = 1;
+        localObject = ((aewp)localObject).obtainMessage(14, 0, i);
+        TroopView.a(this.a).sendMessage((Message)localObject);
       }
-    } while (!this.a.e);
-    label309:
-    label314:
-    this.a.a(paramInt, paramRspBody, (String)GameRoomInviteActivity.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt));
+    }
+    else
+    {
+      if (!paramBoolean) {
+        break label223;
+      }
+      TroopView.a(this.a).sendEmptyMessage(4);
+    }
+    label223:
+    for (;;)
+    {
+      label118:
+      if ((paramArrayList != null) && (paramArrayList.size() > 0))
+      {
+        this.a.a.clear();
+        this.a.a.addAll(paramArrayList);
+        TroopView.a(this.a).notifyDataSetChanged();
+        localObject = new ArrayList();
+        i = 0;
+        for (;;)
+        {
+          if (i < paramArrayList.size())
+          {
+            aeso localaeso = (aeso)paramArrayList.get(i);
+            localaeso.c = (i + 100);
+            ((ArrayList)localObject).add(localaeso);
+            i += 1;
+            continue;
+            i = 0;
+            break;
+            TroopView.a(this.a).sendEmptyMessage(5);
+            break label118;
+          }
+        }
+        TroopView.a(this.a).a((ArrayList)localObject);
+        TroopView.a(this.a, 0);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aewg
  * JD-Core Version:    0.7.0.1
  */

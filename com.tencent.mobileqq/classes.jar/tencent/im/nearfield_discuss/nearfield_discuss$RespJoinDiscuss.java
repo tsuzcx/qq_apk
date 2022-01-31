@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class nearfield_discuss$RespJoinDiscuss
-  extends MessageMicro
+  extends MessageMicro<RespJoinDiscuss>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48 }, new String[] { "msg_head", "str_number", "uint32_session_id", "uint32_discuss_id", "bool_is_creater", "uint32_join_type" }, new Object[] { null, "", Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false), Integer.valueOf(0) }, RespJoinDiscuss.class);
   public final PBBoolField bool_is_creater = PBField.initBool(false);
@@ -20,7 +20,7 @@ public final class nearfield_discuss$RespJoinDiscuss
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.nearfield_discuss.nearfield_discuss.RespJoinDiscuss
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,12 @@
 package com.tencent.mobileqq.activity.aio.doodle;
 
+import acsf;
+import actc;
+import acti;
+import actn;
+import actt;
+import actw;
+import acug;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
@@ -18,31 +25,26 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import uxj;
-import uxk;
-import uxm;
-import uxt;
-import uyd;
 
 public class LineLayer
-  extends BaseLayer
-  implements uxt, uyd
+  extends acsf
+  implements actn, acug
 {
   public static final int a;
   private long jdField_a_of_type_Long;
+  private actc jdField_a_of_type_Actc = new actc();
+  private acti jdField_a_of_type_Acti;
+  private actw jdField_a_of_type_Actw;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private Canvas jdField_a_of_type_AndroidGraphicsCanvas;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private DoodleParam jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleParam = new DoodleParam();
-  private LineLayer.LineLayerListener jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LineLayerListener;
-  private PathDesc jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc;
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
-  private Map jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
-  private uxk jdField_a_of_type_Uxk;
+  private LineLayer.LoadTempFileJob jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LoadTempFileJob;
+  private List<actw> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private Map<Integer, String> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   private int jdField_b_of_type_Int = jdField_a_of_type_Int;
-  private Map jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private Map<Integer, Integer> jdField_b_of_type_JavaUtilMap = new ConcurrentHashMap();
   private int jdField_c_of_type_Int;
-  private Map jdField_c_of_type_JavaUtilMap = new ConcurrentHashMap();
+  private Map<Integer, Integer> jdField_c_of_type_JavaUtilMap = new ConcurrentHashMap();
   private int d;
   private int e;
   private int f;
@@ -60,9 +62,9 @@ public class LineLayer
     super(paramDoodleView);
   }
   
-  private void a(Canvas paramCanvas, PathDesc paramPathDesc, boolean paramBoolean)
+  private void a(Canvas paramCanvas, actw paramactw, boolean paramBoolean)
   {
-    paramPathDesc.a(paramCanvas, paramBoolean);
+    paramactw.a(paramCanvas, paramBoolean);
   }
   
   private int[] a()
@@ -79,7 +81,7 @@ public class LineLayer
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      PathDesc localPathDesc = (PathDesc)localIterator.next();
+      actw localactw = (actw)localIterator.next();
       arrayOfInt[0] += 1;
     }
     return arrayOfInt;
@@ -89,13 +91,13 @@ public class LineLayer
   {
     this.i += 1;
     this.jdField_c_of_type_JavaUtilMap.put(Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()), Integer.valueOf(this.i));
-    if (this.jdField_a_of_type_Uxk != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LoadTempFileJob != null)
     {
-      ThreadManager.remove(this.jdField_a_of_type_Uxk);
-      this.jdField_a_of_type_Uxk = null;
+      ThreadManager.remove(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LoadTempFileJob);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LoadTempFileJob = null;
     }
-    this.jdField_a_of_type_Uxk = new uxk(this, this.jdField_a_of_type_JavaUtilList.size(), this.jdField_a_of_type_JavaUtilMap, this.i, this);
-    ThreadManager.post(this.jdField_a_of_type_Uxk, 5, null, false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LoadTempFileJob = new LineLayer.LoadTempFileJob(this, this.jdField_a_of_type_JavaUtilList.size(), this.jdField_a_of_type_JavaUtilMap, this.i, this);
+    ThreadManager.post(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LoadTempFileJob, 5, null, false);
   }
   
   private void f()
@@ -114,7 +116,7 @@ public class LineLayer
       j = this.e;
       while (j < this.jdField_a_of_type_JavaUtilList.size() - 1)
       {
-        a(this.jdField_a_of_type_AndroidGraphicsCanvas, (PathDesc)this.jdField_a_of_type_JavaUtilList.get(j), false);
+        a(this.jdField_a_of_type_AndroidGraphicsCanvas, (actw)this.jdField_a_of_type_JavaUtilList.get(j), false);
         j += 1;
       }
       this.f = 0;
@@ -122,12 +124,12 @@ public class LineLayer
     }
     for (;;)
     {
-      PathDesc localPathDesc = (PathDesc)this.jdField_a_of_type_JavaUtilList.get(this.e);
-      j = localPathDesc.a();
+      actw localactw = (actw)this.jdField_a_of_type_JavaUtilList.get(this.e);
+      j = localactw.a();
       if (j <= this.f) {
         break;
       }
-      localPathDesc.a(this.jdField_a_of_type_AndroidGraphicsCanvas, this.f, j);
+      localactw.a(this.jdField_a_of_type_AndroidGraphicsCanvas, this.f, j);
       this.f = j;
       if (this.f != 1) {
         break;
@@ -154,12 +156,12 @@ public class LineLayer
     return this.jdField_b_of_type_Int;
   }
   
-  public final DoodleParam a()
+  public final actc a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleParam;
+    return this.jdField_a_of_type_Actc;
   }
   
-  public List a()
+  public List<actt> a()
   {
     if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
       return null;
@@ -168,10 +170,10 @@ public class LineLayer
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      PathDesc localPathDesc = (PathDesc)localIterator.next();
-      PathData localPathData = new PathData();
-      localPathData.a(localPathDesc.a());
-      localArrayList.add(localPathData);
+      actw localactw = (actw)localIterator.next();
+      actt localactt = new actt();
+      localactt.a(localactw.a());
+      localArrayList.add(localactt);
     }
     return localArrayList;
   }
@@ -185,13 +187,13 @@ public class LineLayer
   public void a(int paramInt1, int paramInt2)
   {
     super.a(paramInt1, paramInt2);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleParam.a(paramInt1, paramInt2);
+    this.jdField_a_of_type_Actc.a(paramInt1, paramInt2);
     d();
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_Uxk = null;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LoadTempFileJob = null;
     Object localObject = (Integer)this.jdField_c_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt1));
     if (localObject == null) {
       if (QLog.isColorLevel()) {
@@ -233,7 +235,7 @@ public class LineLayer
     ((Paint)localObject).setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
     this.jdField_a_of_type_AndroidGraphicsCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, (Paint)localObject);
     this.e = (paramInt2 - 1);
-    paramBitmap = (PathDesc)this.jdField_a_of_type_JavaUtilList.get(this.e);
+    paramBitmap = (actw)this.jdField_a_of_type_JavaUtilList.get(this.e);
     if (paramBitmap != null)
     {
       this.f = paramBitmap.a();
@@ -247,9 +249,9 @@ public class LineLayer
     super.b();
   }
   
-  public void a(LineLayer.LineLayerListener paramLineLayerListener)
+  public void a(acti paramacti)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LineLayerListener = paramLineLayerListener;
+    this.jdField_a_of_type_Acti = paramacti;
   }
   
   public void a(boolean paramBoolean)
@@ -257,9 +259,9 @@ public class LineLayer
     this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_b_of_type_JavaUtilMap.clear();
     this.jdField_a_of_type_JavaUtilMap.clear();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc = null;
+    this.jdField_a_of_type_Actw = null;
     this.h = 0;
-    ThreadManager.post(new uxj(this), 5, null, true);
+    ThreadManager.post(new LineLayer.ClearTempFileJob(this), 5, null, true);
     if (paramBoolean)
     {
       this.jdField_a_of_type_AndroidGraphicsCanvas = null;
@@ -304,7 +306,7 @@ public class LineLayer
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext())
     {
-      a(paramCanvas, new PathDesc((PathDesc)localIterator.next()), true);
+      a(paramCanvas, new actw((actw)localIterator.next()), true);
       bool = true;
     }
     return bool;
@@ -326,7 +328,7 @@ public class LineLayer
     this.g = paramInt;
   }
   
-  protected void b(Canvas paramCanvas)
+  public void b(Canvas paramCanvas)
   {
     f();
     c(paramCanvas);
@@ -344,12 +346,12 @@ public class LineLayer
     int m = 0;
     if (this.h > 10000)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LineLayerListener != null)
+      if (this.jdField_a_of_type_Acti != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LineLayerListener.a(2, 10000);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LineLayerListener.a();
+        this.jdField_a_of_type_Acti.a(2, 10000);
+        this.jdField_a_of_type_Acti.a();
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc = null;
+      this.jdField_a_of_type_Actw = null;
       return false;
     }
     float f1 = paramMotionEvent.getX();
@@ -362,36 +364,36 @@ public class LineLayer
       for (;;)
       {
         return true;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc = new PathDesc(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleParam, a(), null, this.g);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc.a();
+        this.jdField_a_of_type_Actw = new actw(this.jdField_a_of_type_Actc, a(), null, this.g);
+        this.jdField_a_of_type_Actw.a();
         this.jdField_a_of_type_Long = System.currentTimeMillis();
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc.a(f1, f2);
-        this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc);
+        this.jdField_a_of_type_Actw.a(f1, f2);
+        this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_Actw);
         this.h = c();
         continue;
         long l1 = System.currentTimeMillis();
         long l2 = this.jdField_a_of_type_Long;
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc != null)
+        if (this.jdField_a_of_type_Actw != null)
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc.a(f1, f2, l1 - l2);
+          this.jdField_a_of_type_Actw.a(f1, f2, l1 - l2);
           this.h += 1;
         }
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LineLayerListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LineLayerListener.a();
+    if (this.jdField_a_of_type_Acti != null) {
+      this.jdField_a_of_type_Acti.a();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc != null)
+    if (this.jdField_a_of_type_Actw != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc.a(false);
+      this.jdField_a_of_type_Actw.a(false);
       f();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc.a(true);
-      this.f = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc.a();
+      this.jdField_a_of_type_Actw.a(true);
+      this.f = this.jdField_a_of_type_Actw.a();
       if (this.f == 1) {
         this.f = 0;
       }
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc = null;
+    this.jdField_a_of_type_Actw = null;
     this.h = c();
     paramMotionEvent = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
     int j = 0;
@@ -420,7 +422,7 @@ public class LineLayer
       int n;
       for (k = 0; m < j; k = n + k)
       {
-        n = ((PathDesc)this.jdField_a_of_type_JavaUtilList.get(m)).b();
+        n = ((actw)this.jdField_a_of_type_JavaUtilList.get(m)).b();
         m += 1;
       }
       if (k + 100 >= this.h) {
@@ -429,7 +431,7 @@ public class LineLayer
       f();
       this.i += 1;
       this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()), Integer.valueOf(this.i));
-      ThreadManager.post(new uxm(this, this.jdField_a_of_type_JavaUtilList.size(), this.i, this.jdField_a_of_type_AndroidGraphicsBitmap, this), 5, null, true);
+      ThreadManager.post(new LineLayer.SaveTempFileJob(this, this.jdField_a_of_type_JavaUtilList.size(), this.i, this.jdField_a_of_type_AndroidGraphicsBitmap, this), 5, null, true);
       break;
     }
   }
@@ -440,7 +442,7 @@ public class LineLayer
       return 0;
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    for (int j = 0; localIterator.hasNext(); j = ((PathDesc)localIterator.next()).b() + j) {}
+    for (int j = 0; localIterator.hasNext(); j = ((actw)localIterator.next()).b() + j) {}
     return j;
   }
   
@@ -451,15 +453,15 @@ public class LineLayer
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext()) {
-        ((PathDesc)localIterator.next()).a();
+        ((actw)localIterator.next()).a();
       }
       this.jdField_a_of_type_JavaUtilList.clear();
     }
     this.jdField_a_of_type_JavaUtilMap.clear();
     this.jdField_b_of_type_JavaUtilMap.clear();
     this.jdField_c_of_type_JavaUtilMap.clear();
-    this.jdField_a_of_type_Uxk = null;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePathDesc = null;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LoadTempFileJob = null;
+    this.jdField_a_of_type_Actw = null;
     this.jdField_a_of_type_AndroidGraphicsCanvas = null;
     if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
@@ -469,8 +471,8 @@ public class LineLayer
     this.d = 0;
     this.jdField_c_of_type_Int = 0;
     this.g = -1;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer$LineLayerListener = null;
-    ThreadManager.post(new uxj(this), 5, null, true);
+    this.jdField_a_of_type_Acti = null;
+    ThreadManager.post(new LineLayer.ClearTempFileJob(this), 5, null, true);
   }
   
   public void c(Canvas paramCanvas)
@@ -499,7 +501,7 @@ public class LineLayer
       if (this.jdField_a_of_type_JavaUtilList.size() == 0)
       {
         this.h = 0;
-        ThreadManager.post(new uxj(this), 5, null, true);
+        ThreadManager.post(new LineLayer.ClearTempFileJob(this), 5, null, true);
         this.jdField_b_of_type_JavaUtilMap.clear();
         this.jdField_c_of_type_JavaUtilMap.clear();
         this.jdField_a_of_type_JavaUtilMap.clear();
@@ -596,7 +598,7 @@ public class LineLayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.LineLayer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,11 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.AntiphingToast;
-import java.util.TimerTask;
-
-public class alai
-  extends TimerTask
+public abstract interface alai
+  extends alak
 {
-  public alai(AntiphingToast paramAntiphingToast) {}
-  
-  public void run()
-  {
-    Message localMessage = new Message();
-    localMessage.what = 1;
-    this.a.a.sendMessage(localMessage);
-  }
+  public abstract void a(boolean paramBoolean, double paramDouble1, double paramDouble2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alai
  * JD-Core Version:    0.7.0.1
  */

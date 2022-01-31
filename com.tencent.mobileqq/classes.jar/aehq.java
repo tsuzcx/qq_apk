@@ -1,31 +1,25 @@
-import com.tencent.mobileqq.leba.LebaGridManager;
-import com.tencent.mobileqq.leba.model.PluginInfo;
-import java.util.Comparator;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.26.1;
 
 public class aehq
-  implements Comparator
+  implements Animation.AnimationListener
 {
-  public aehq(LebaGridManager paramLebaGridManager) {}
+  aehq(aegy paramaegy) {}
   
-  public int a(PluginInfo paramPluginInfo1, PluginInfo paramPluginInfo2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramPluginInfo1.type < paramPluginInfo2.type) {}
-    do
-    {
-      return 1;
-      if (paramPluginInfo1.type > paramPluginInfo2.type) {
-        return -1;
-      }
-    } while (paramPluginInfo1.weight < paramPluginInfo2.weight);
-    if (paramPluginInfo1.weight > paramPluginInfo2.weight) {
-      return -1;
-    }
-    return 0;
+    aegy.e(this.a).post(new PublicAccountChatPie.26.1(this));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aehq
  * JD-Core Version:    0.7.0.1
  */

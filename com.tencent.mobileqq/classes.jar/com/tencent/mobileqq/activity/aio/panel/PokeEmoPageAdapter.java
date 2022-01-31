@@ -10,9 +10,9 @@ public class PokeEmoPageAdapter
   extends PagerAdapter
 {
   private Context jdField_a_of_type_AndroidContentContext;
-  private List jdField_a_of_type_JavaUtilList;
+  private List<View> jdField_a_of_type_JavaUtilList;
   
-  public PokeEmoPageAdapter(Context paramContext, List paramList)
+  public PokeEmoPageAdapter(Context paramContext, List<View> paramList)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_JavaUtilList = paramList;
@@ -59,7 +59,7 @@ public class PokeEmoPageAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.PokeEmoPageAdapter
  * JD-Core Version:    0.7.0.1
  */

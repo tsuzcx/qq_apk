@@ -1,45 +1,22 @@
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploader;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.wstt.SSCM.SSCM;
-import com.tencent.wstt.SSCM.Utils;
+import com.tencent.mobileqq.data.SysSuspiciousMsg;
+import java.util.Comparator;
 
-public class ajnh
+class ajnh
+  implements Comparator<SysSuspiciousMsg>
 {
-  private SSCM jdField_a_of_type_ComTencentWsttSSCMSSCM = new SSCM();
+  ajnh(ajnf paramajnf) {}
   
-  public ajnh(TroopFileUploader paramTroopFileUploader)
+  public int a(SysSuspiciousMsg paramSysSuspiciousMsg1, SysSuspiciousMsg paramSysSuspiciousMsg2)
   {
-    this.jdField_a_of_type_ComTencentWsttSSCMSSCM.a();
-  }
-  
-  public int a(long paramLong1, long paramLong2)
-  {
-    int j = this.jdField_a_of_type_ComTencentWsttSSCMSSCM.a(BaseApplication.getContext(), paramLong2, paramLong1, 1048576);
-    int k = Utils.a(BaseApplication.getContext());
-    int i;
-    if (k != 1)
-    {
-      i = j;
-      if (k != 2) {}
+    if ((paramSysSuspiciousMsg1 != null) && (paramSysSuspiciousMsg2 != null)) {
+      return (int)(paramSysSuspiciousMsg2.time - paramSysSuspiciousMsg1.time);
     }
-    else
-    {
-      i = j;
-      if (j > 16384) {
-        i = 16384;
-      }
-    }
-    return i;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentWsttSSCMSSCM.b();
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajnh
  * JD-Core Version:    0.7.0.1
  */

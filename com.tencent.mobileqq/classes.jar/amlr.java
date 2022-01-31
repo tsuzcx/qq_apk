@@ -1,32 +1,48 @@
-import android.view.View.OnSystemUiVisibilityChangeListener;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XPanelContainer;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amlr
-  implements View.OnSystemUiVisibilityChangeListener
 {
-  public amlr(XPanelContainer paramXPanelContainer) {}
+  private int a = -1;
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public static amlr a(alzs[] paramArrayOfalzs)
   {
-    if (paramInt == 0) {}
-    for (boolean bool = false;; bool = true)
-    {
-      if (XPanelContainer.b != bool)
-      {
-        XPanelContainer.a(this.a, true);
-        XPanelContainer.b = bool;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("XPanelContainer", 2, "onSystemUiVisibilityChange..visibility =  " + paramInt + " context = " + this.a.getContext().getClass().getName());
-      }
-      return;
+    if ((paramArrayOfalzs == null) || (paramArrayOfalzs.length <= 0)) {
+      paramArrayOfalzs = null;
     }
+    amlr localamlr;
+    do
+    {
+      return paramArrayOfalzs;
+      localamlr = new amlr();
+      try
+      {
+        localamlr.a = new JSONObject(paramArrayOfalzs[0].a).getInt("show_limit");
+        return localamlr;
+      }
+      catch (JSONException localJSONException)
+      {
+        paramArrayOfalzs = localamlr;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("TencentDocHistoryTabToastBean", 1, "exception = " + localJSONException.toString());
+    return localamlr;
+  }
+  
+  public int a()
+  {
+    return this.a;
+  }
+  
+  public boolean a()
+  {
+    return this.a == 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amlr
  * JD-Core Version:    0.7.0.1
  */

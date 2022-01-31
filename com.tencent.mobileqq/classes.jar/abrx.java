@@ -1,24 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.BubbleDiyFetcher;
-import mqq.app.AppRuntime;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SigCommentListActivity;
 
 public class abrx
-  implements Runnable
+  implements View.OnClickListener
 {
-  public abrx(BubbleDiyFetcher paramBubbleDiyFetcher) {}
+  public abrx(SigCommentListActivity paramSigCommentListActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      this.a.b((QQAppInterface)localAppRuntime);
-    }
+    this.a.a(true, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abrx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class mvf
-  implements Runnable
+  implements View.OnClickListener
 {
-  mvf(mve parammve) {}
+  mvf(mut parammut, String paramString, nbu paramnbu) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    EntityManager localEntityManager = this.a.a.app.getEntityManagerFactory().createEntityManager();
-    List localList = localEntityManager.a(ReadInJoySearchHistoryEntity.class);
-    if (localList == null) {
-      return;
-    }
-    Object localObject = localList.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      localEntityManager.b((ReadInJoySearchHistoryEntity)((Iterator)localObject).next());
-    }
-    localList.clear();
-    localObject = this.a.a.a.obtainMessage(1);
-    ((Message)localObject).obj = localList;
-    this.a.a.a.sendMessage((Message)localObject);
-    localEntityManager.a();
+    mut.c(this.jdField_a_of_type_Mut, this.jdField_a_of_type_JavaLangString);
+    mut.a(this.jdField_a_of_type_Mut, this.jdField_a_of_type_Nbu.jdField_a_of_type_JavaLangString);
   }
 }
 

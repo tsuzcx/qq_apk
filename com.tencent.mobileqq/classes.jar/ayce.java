@@ -1,0 +1,10 @@
+public abstract interface ayce
+{
+  public abstract void a(aycg paramaycg);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+ * Qualified Name:     ayce
+ * JD-Core Version:    0.7.0.1
+ */

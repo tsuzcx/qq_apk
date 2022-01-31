@@ -1,23 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.Conversation;
-
 public class sku
-  implements DialogInterface.OnDismissListener
 {
-  public sku(Conversation paramConversation) {}
+  public static int a;
+  public static boolean a;
+  public static boolean b;
+  public static boolean c;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  static
   {
-    if (paramDialogInterface == Conversation.a(this.a)) {
-      Conversation.a(this.a, null);
-    }
-    this.a.a(1134057, 50L, true);
+    jdField_a_of_type_Boolean = false;
+    b = false;
+    c = false;
+    jdField_a_of_type_Int = 725;
+  }
+  
+  public static boolean a()
+  {
+    return false;
+  }
+  
+  public static boolean b()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sku
  * JD-Core Version:    0.7.0.1
  */

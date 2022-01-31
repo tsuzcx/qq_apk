@@ -1,22 +1,25 @@
-import android.text.TextPaint;
-import android.text.style.CharacterStyle;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcOriginalHeader;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.VideoControlUI;
 
 public class lyv
-  extends CharacterStyle
+  implements View.OnTouchListener
 {
-  public lyv(ComponentContentUgcOriginalHeader paramComponentContentUgcOriginalHeader) {}
+  public lyv(VideoControlUI paramVideoControlUI) {}
   
-  public void updateDrawState(TextPaint paramTextPaint)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramTextPaint.setColor(-14132075);
-    paramTextPaint.setTextSize(AIOUtils.a(2, 14, this.a.getResources()));
+    if (this.a.a != null) {
+      return this.a.a.onTouchEvent(paramMotionEvent);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lyv
  * JD-Core Version:    0.7.0.1
  */

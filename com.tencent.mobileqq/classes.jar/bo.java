@@ -1,18 +1,17 @@
-import com.dataline.activities.LiteActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class bo
-  implements Runnable
+public final class bo
+  implements DialogInterface.OnClickListener
 {
-  public bo(LiteActivity paramLiteActivity) {}
-  
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.f = true;
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     bo
  * JD-Core Version:    0.7.0.1
  */

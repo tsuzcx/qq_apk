@@ -1,0 +1,56 @@
+ {
+        "view_type": "cell",
+        "layout_type":"layout_relative",
+        "view_id":"id_comment_body",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "subviews":
+        [
+
+           {
+                "view_type": "ReadInJoyExposeReplyCommentView",
+                "view_id": "id_expose_comments_view",
+                "below_of_view": "id_comment_cell_header",
+                "event_type":"cmd_expose_comment_click",
+                "margin_left": "50",
+                "margin_top": "8",
+                "attributes": {
+                    "setCornerRadiusString:":"3.0",
+                    "setBackgroundColorString:":"#F7F7F7",
+                    "setCommentModel:": "$comment_model"
+                },
+                "height": {
+                    "type": "wrap_content"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "307"
+                }
+            },
+            {
+                 "view_type": "UIImageView",
+                 "view_id": "id_awsome_postmark",
+                 "align_parent_right": "YES",
+                 "below_of_view": "id_comment_cell_header",
+                 "margin_right": "56",
+                 "margin_top":"-47",
+                 "height": {
+                     "type": "absolutely",
+                     "value":"55"
+                 },
+                 "width": {
+                    "type": "absolutely",
+                     "value":"55"
+                },
+                "attributes":{
+                     "loadImageWithPath:": "$awsome_postmark_img"
+                 }
+            }
+        ]
+    }
+

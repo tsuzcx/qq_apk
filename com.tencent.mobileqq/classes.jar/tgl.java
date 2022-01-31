@@ -1,106 +1,100 @@
-import android.hardware.Camera;
-import android.hardware.Camera.CameraInfo;
-import android.hardware.Camera.Parameters;
-import android.hardware.Camera.Size;
-import android.util.Log;
-import android.view.Display;
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import android.view.SurfaceView;
-import android.view.WindowManager;
-import com.tencent.mobileqq.activity.MakeVideoActivity;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.VideoUrlEntry;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoFullInfoList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoFullInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoUrl;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-public class tgl
-  implements SurfaceHolder.Callback
+public abstract class tgl
+  extends mml
 {
-  public tgl(MakeVideoActivity paramMakeVideoActivity) {}
-  
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
+    long l = paramBundle.getLong("key_for_start_time");
+    l = System.currentTimeMillis() - l;
+    Object localObject1 = new qqstory_service.RspBatchGetVideoFullInfoList();
+    if ((paramInt != 0) || (paramArrayOfByte == null))
+    {
+      a(paramInt, null, null);
+      urp.b("story_net", tan.a, 0, paramInt, new String[] { "", l + "", urp.a(BaseApplication.getContext()) });
+      return null;
+    }
     for (;;)
     {
-      int i;
       try
       {
-        if (this.a.jdField_a_of_type_AndroidHardwareCamera != null) {
-          this.a.jdField_a_of_type_AndroidHardwareCamera.release();
-        }
-        paramSurfaceHolder = ((WindowManager)this.a.getSystemService("window")).getDefaultDisplay();
-        if (MakeVideoActivity.a(this.a, this.a))
+        ((qqstory_service.RspBatchGetVideoFullInfoList)localObject1).mergeFrom(paramArrayOfByte);
+        paramArrayOfByte = (qqstory_struct.ErrorInfo)((qqstory_service.RspBatchGetVideoFullInfoList)localObject1).result.get();
+        Object localObject2 = (qqstory_struct.StoryVideoFullInfo)((qqstory_service.RspBatchGetVideoFullInfoList)localObject1).video_list.get(0);
+        paramBundle = paramArrayOfByte.error_desc.get().toStringUtf8();
+        paramInt = paramArrayOfByte.error_code.get();
+        if (paramInt == 0)
         {
-          int j = Camera.getNumberOfCameras();
-          if (j < 1) {
-            return;
+          paramBundle = new StoryVideoItem();
+          paramBundle.convertFrom((qqstory_struct.StoryVideoFullInfo)localObject2);
+          paramBundle.mInteractStatus = ((qqstory_service.RspBatchGetVideoFullInfoList)localObject1).interact_status.get();
+          if (paramBundle.mErrorCode == 0) {
+            ((sqd)sqg.a(5)).a(paramBundle.mVid, paramBundle);
           }
-          Camera.CameraInfo localCameraInfo = new Camera.CameraInfo();
-          i = 0;
-          if (i < j)
+          localObject2 = ((qqstory_struct.StoryVideoFullInfo)localObject2).compressed_video.get();
+          if (localObject2 != null)
           {
-            Camera.getCameraInfo(i, localCameraInfo);
-            if (localCameraInfo.facing != 1) {
-              break label339;
-            }
-            this.a.jdField_a_of_type_AndroidHardwareCamera = Camera.open(1);
-            Object localObject1 = this.a.jdField_a_of_type_AndroidHardwareCamera.getParameters();
-            this.a.jdField_a_of_type_AndroidHardwareCamera.setPreviewDisplay(MakeVideoActivity.a(this.a).getHolder());
-            Object localObject2 = ((Camera.Parameters)localObject1).getSupportedFocusModes();
-            if (((List)localObject2).contains("continuous-video"))
+            localObject1 = new ArrayList(((List)localObject2).size());
+            localObject2 = ((List)localObject2).iterator();
+            if (((Iterator)localObject2).hasNext())
             {
-              ((Camera.Parameters)localObject1).setFocusMode("continuous-video");
-              localObject2 = ((Camera.Parameters)localObject1).getSupportedPreviewSizes();
-              localObject2 = MakeVideoActivity.a(this.a, (List)localObject2, paramSurfaceHolder.getWidth(), paramSurfaceHolder.getHeight());
-              if (localObject2 != null) {
-                ((Camera.Parameters)localObject1).setPreviewSize(((Camera.Size)localObject2).width, ((Camera.Size)localObject2).height);
-              }
-              this.a.jdField_a_of_type_AndroidHardwareCamera.setParameters((Camera.Parameters)localObject1);
-              this.a.jdField_a_of_type_AndroidHardwareCamera.setDisplayOrientation(90);
-              this.a.jdField_a_of_type_AndroidHardwareCamera.startPreview();
-              localObject1 = ((Camera.Parameters)localObject1).getSupportedVideoSizes();
-              localObject1 = MakeVideoActivity.a(this.a, (List)localObject1, paramSurfaceHolder.getWidth(), paramSurfaceHolder.getHeight());
-              if (localObject1 == null) {
-                break label339;
-              }
-              this.a.f = ((Camera.Size)localObject1).width;
-              this.a.g = ((Camera.Size)localObject1).height;
-              break label339;
-            }
-            if (!((List)localObject2).contains("auto")) {
+              qqstory_struct.VideoUrl localVideoUrl = (qqstory_struct.VideoUrl)((Iterator)localObject2).next();
+              VideoUrlEntry localVideoUrlEntry = new VideoUrlEntry();
+              localVideoUrlEntry.vid = paramBundle.mVid;
+              localVideoUrlEntry.videoUrlLevel = localVideoUrl.video_level.get();
+              localVideoUrlEntry.videoUrl = localVideoUrl.video_url.get();
+              ((List)localObject1).add(localVideoUrlEntry);
               continue;
             }
-            ((Camera.Parameters)localObject1).setFocusMode("auto");
-            continue;
           }
         }
-        return;
+        a(paramInt, paramBundle, null);
       }
-      catch (Throwable paramSurfaceHolder)
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
-        Log.e(this.a.jdField_a_of_type_JavaLangString, paramSurfaceHolder.toString());
+        if (QLog.isColorLevel()) {
+          QLog.w("Q.qqstory.player.PlayModeUtils", 2, "getVideoInfo - onResult, InvalidProtocolBufferMicroException, e:" + paramArrayOfByte.getMessage());
+        }
+        a(-1, null, null);
+        return null;
+        ((sgs)sqg.a(28)).b((List)localObject1);
+        a(paramInt, null, paramBundle);
+        urp.b("story_net", tan.a, 0, paramInt, new String[] { "", l + "", urp.a(BaseApplication.getContext()) });
+        return paramArrayOfByte;
       }
-      label339:
-      i += 1;
+      catch (Exception paramArrayOfByte)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.w("Q.qqstory.player.PlayModeUtils", 2, "getVideoInfo - onResult, other exception, e:" + paramArrayOfByte.getMessage());
+        }
+        a(-1, null, null);
+        return null;
+      }
     }
   }
   
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
-  {
-    if (this.a.jdField_a_of_type_AndroidHardwareCamera != null)
-    {
-      paramSurfaceHolder.removeCallback(this);
-      this.a.jdField_a_of_type_AndroidHardwareCamera.setPreviewCallback(null);
-      this.a.jdField_a_of_type_AndroidHardwareCamera.stopPreview();
-      this.a.jdField_a_of_type_AndroidHardwareCamera.lock();
-      this.a.jdField_a_of_type_AndroidHardwareCamera.release();
-      this.a.jdField_a_of_type_AndroidHardwareCamera = null;
-    }
-  }
+  public abstract void a(int paramInt, String paramString, StoryVideoItem paramStoryVideoItem);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tgl
  * JD-Core Version:    0.7.0.1
  */

@@ -21,98 +21,90 @@ public class ErrorCodeUtil
 {
   public static int getErrorCode4IOException(IOException paramIOException)
   {
-    int j = 1830015;
-    String str1;
+    if (paramIOException == null) {}
     String str2;
-    int i;
-    if (paramIOException == null)
+    for (String str1 = null;; str1 = paramIOException.getMessage())
     {
-      str1 = null;
       str2 = str1;
       if (str1 != null) {
         str2 = str1.toLowerCase();
       }
       if (!(paramIOException instanceof ConnectException)) {
-        break label66;
+        break label57;
       }
       if ((str2 == null) || (!Pattern.compile(".*network.*is.*unreachable.*").matcher(str2).matches())) {
-        break label63;
-      }
-      i = 1810003;
-    }
-    label63:
-    label66:
-    do
-    {
-      do
-      {
-        return i;
-        str1 = paramIOException.getMessage();
         break;
-        return 1830010;
-        if ((paramIOException instanceof MalformedURLException)) {
-          return 1830026;
-        }
-        if ((paramIOException instanceof SocketTimeoutException))
-        {
-          if ((str2 != null) && (Pattern.compile(".*failed.*to.*connect.*").matcher(str2).matches())) {
-            return 1830028;
-          }
-          return 1830002;
-        }
-        if ((paramIOException instanceof UnknownHostException)) {
-          return 1830012;
-        }
-        if ((paramIOException instanceof ProtocolException)) {
-          return 1830013;
-        }
-        if ((paramIOException instanceof PortUnreachableException)) {
-          return 1830014;
-        }
-        i = j;
-      } while ((paramIOException instanceof NoRouteToHostException));
-      if ((paramIOException instanceof EOFException)) {
-        return 1830016;
       }
-      if ((paramIOException instanceof BindException)) {
-        return 1830008;
+      return 1810003;
+    }
+    return 1830010;
+    label57:
+    if ((paramIOException instanceof MalformedURLException)) {
+      return 1830026;
+    }
+    if ((paramIOException instanceof SocketTimeoutException))
+    {
+      if ((str2 != null) && (Pattern.compile(".*failed.*to.*connect.*").matcher(str2).matches())) {
+        return 1830028;
       }
-      if (!(paramIOException instanceof SocketException)) {
-        break label373;
-      }
+      return 1830002;
+    }
+    if ((paramIOException instanceof UnknownHostException)) {
+      return 1830012;
+    }
+    if ((paramIOException instanceof ProtocolException)) {
+      return 1830013;
+    }
+    if ((paramIOException instanceof PortUnreachableException)) {
+      return 1830014;
+    }
+    if ((paramIOException instanceof NoRouteToHostException)) {
+      return 1830015;
+    }
+    if ((paramIOException instanceof EOFException)) {
+      return 1830016;
+    }
+    if ((paramIOException instanceof BindException)) {
+      return 1830008;
+    }
+    if ((paramIOException instanceof SocketException))
+    {
       if (str2 == null) {
         return 1830018;
       }
-      i = j;
-    } while (Pattern.compile(".*no.*route.*to.*").matcher(str2).matches());
-    if (Pattern.compile(".*etimedout.*").matcher(str2).matches()) {
-      return 1830001;
+      if (Pattern.compile(".*no.*route.*to.*").matcher(str2).matches()) {
+        return 1830015;
+      }
+      if (Pattern.compile(".*etimedout.*").matcher(str2).matches()) {
+        return 1830001;
+      }
+      if (Pattern.compile(".*socket.*is.*closed.*").matcher(str2).matches()) {
+        return 1830003;
+      }
+      if (Pattern.compile(".*connect.*reset.*by.*peer.*").matcher(str2).matches()) {
+        return 1830005;
+      }
+      if (Pattern.compile(".*connect.*reset.*").matcher(str2).matches()) {
+        return 1830004;
+      }
+      if (Pattern.compile(".*broken.*pipe.*").matcher(str2).matches()) {
+        return 1830006;
+      }
+      if (Pattern.compile(".*connection.*refused.*").matcher(str2).matches()) {
+        return 1830011;
+      }
+      if (Pattern.compile(".*too.*many.*open.*files.*").matcher(str2).matches()) {
+        return 1830007;
+      }
+      if (Pattern.compile(".*address.*family.*").matcher(str2).matches()) {
+        return 1830009;
+      }
+      if (Pattern.compile(".*jvm_bind.*").matcher(str2).matches()) {
+        return 1830008;
+      }
     }
-    if (Pattern.compile(".*socket.*is.*closed.*").matcher(str2).matches()) {
-      return 1830003;
-    }
-    if (Pattern.compile(".*connect.*reset.*by.*peer.*").matcher(str2).matches()) {
-      return 1830005;
-    }
-    if (Pattern.compile(".*connect.*reset.*").matcher(str2).matches()) {
-      return 1830004;
-    }
-    if (Pattern.compile(".*broken.*pipe.*").matcher(str2).matches()) {
-      return 1830006;
-    }
-    if (Pattern.compile(".*connection.*refused.*").matcher(str2).matches()) {
-      return 1830011;
-    }
-    if (Pattern.compile(".*too.*many.*open.*files.*").matcher(str2).matches()) {
-      return 1830007;
-    }
-    if (Pattern.compile(".*address.*family.*").matcher(str2).matches()) {
-      return 1830009;
-    }
-    if (Pattern.compile(".*jvm_bind.*").matcher(str2).matches())
+    else
     {
-      return 1830008;
-      label373:
       if ((paramIOException instanceof ClosedByInterruptException)) {
         return 1830020;
       }

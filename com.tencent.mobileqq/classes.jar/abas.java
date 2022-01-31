@@ -1,17 +1,16 @@
-import java.io.File;
-import java.io.FileFilter;
-
-public final class abas
-  implements FileFilter
+class abas
+  extends atdi
 {
-  public boolean accept(File paramFile)
+  abas(abai paramabai) {}
+  
+  protected void a(Object paramObject)
   {
-    return paramFile.getName().startsWith("hc_");
+    abai.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abas
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aoxh
-  implements Runnable
+class aoxh
+  implements View.OnClickListener
 {
-  public aoxh(QIMPtvTemplateManager paramQIMPtvTemplateManager) {}
+  aoxh(aoxe paramaoxe) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    int i = 1;
-    boolean bool1 = PtvFilterSoLoad.b();
-    boolean bool2 = NetworkUtil.d(BaseApplication.getContext());
-    if (BaseApplicationImpl.sProcessId == 1) {
-      i = 0;
-    }
-    if ((bool1) && (bool2) && (i != 0)) {
-      this.a.a(this.a.a);
-    }
+    apck.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Aovk.c());
+    this.a.b = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoxh
  * JD-Core Version:    0.7.0.1
  */

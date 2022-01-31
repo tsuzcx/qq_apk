@@ -1,135 +1,127 @@
 package com.tencent.mobileqq.dinifly;
 
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
-import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.annotation.RestrictTo;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import org.json.JSONObject;
 
 public class LottieImageAsset
 {
-  public static MQLruCache<String, Object> sImageCache;
+  @Nullable
+  private Bitmap bitmap;
+  private final String dirName;
   private final String fileName;
-  private String filePath;
   private final int height;
   private final String id;
   private String key;
+  public MQLruCache<String, Object> sImageCache;
   public long size;
   private final int width;
   
-  private LottieImageAsset(int paramInt1, int paramInt2, String paramString1, String paramString2, Resources paramResources, Bundle paramBundle)
+  @RestrictTo({android.support.annotation.RestrictTo.Scope.LIBRARY})
+  public LottieImageAsset(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3)
   {
     this.width = paramInt1;
     this.height = paramInt2;
     this.id = paramString1;
     this.fileName = paramString2;
-    this.key = "";
-    this.filePath = "";
-    if (paramBundle != null)
-    {
-      String str = paramBundle.getString("key");
-      paramBundle = paramBundle.getString("path");
-      this.key = (str + paramString1);
-      this.filePath = (paramBundle + paramString2);
-      decodeBitmapIntoCache(paramResources, this.key, this.filePath);
-      paramString1 = sImageCache.get(this.key);
-      if ((paramString1 instanceof Bitmap)) {
-        this.size = ((Bitmap)paramString1).getByteCount();
-      }
-    }
+    this.dirName = paramString3;
   }
   
-  public static void decodeBitmapIntoCache(Resources paramResources, String paramString1, String paramString2)
+  public static void decodeBitmapIntoCache(MQLruCache<String, Object> paramMQLruCache, String paramString1, String paramString2)
   {
-    if (sImageCache == null)
+    if (paramMQLruCache == null)
     {
       Log.e("LottieImageAsset", "image cache is null" + paramString1);
       return;
     }
-    if (sImageCache.get(paramString1) != null)
+    if (paramMQLruCache.get(paramString1) != null)
     {
       Log.d("LottieImageAsset", "cache has this bitmap: " + paramString1);
       return;
     }
-    paramResources = decodeStream(paramResources, paramString2);
-    sImageCache.put(paramString1, paramResources);
+    paramMQLruCache.put(paramString1, decodeStream(paramString2));
   }
   
-  public static Bitmap decodeStream(Resources paramResources, String paramString)
+  public static Bitmap decodeStream(String paramString)
   {
+    Object localObject3 = null;
+    Object localObject1 = null;
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    Object localObject3 = new BitmapFactory.Options();
-    if (paramResources.getDisplayMetrics().density < 320.0F) {}
-    for (((BitmapFactory.Options)localObject3).inDensity = 160;; ((BitmapFactory.Options)localObject3).inDensity = 320)
+    Object localObject4 = new BitmapFactory.Options();
+    ((BitmapFactory.Options)localObject4).inDensity = DiniFlyAnimationView.inDensity;
+    ((BitmapFactory.Options)localObject4).inDensity = DiniFlyAnimationView.inTargetDensity;
+    localObject2 = localObject3;
+    try
     {
-      ((BitmapFactory.Options)localObject3).inTargetDensity = paramResources.getDisplayMetrics().densityDpi;
-      if (((BitmapFactory.Options)localObject3).inDensity < ((BitmapFactory.Options)localObject3).inTargetDensity) {
-        ((BitmapFactory.Options)localObject3).inDensity = ((BitmapFactory.Options)localObject3).inTargetDensity;
-      }
-      Object localObject2 = null;
-      paramResources = null;
-      localObject1 = localObject2;
-      try
-      {
-        localFileInputStream = new FileInputStream(paramString);
-        localObject1 = localObject2;
-      }
-      catch (FileNotFoundException paramResources)
-      {
-        FileInputStream localFileInputStream;
-        label112:
-        Log.e("LottieImageAsset", "lottie, file not found -> " + paramString);
-        paramResources.printStackTrace();
-        return localObject1;
-      }
-      try
-      {
-        localObject3 = BitmapFactory.decodeStream(new BufferedInputStream(localFileInputStream), null, (BitmapFactory.Options)localObject3);
-        paramResources = (Resources)localObject3;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        localObject1 = localIOException;
-        Log.e("LottieImageAsset", "lottie, oom " + localOutOfMemoryError.getMessage());
-        break label112;
-      }
-      catch (Exception localException)
-      {
-        localObject1 = localIOException;
-        Log.e("LottieImageAsset", "lottie, IllegalArgumentException= " + localException.getMessage());
-        if (0 == 0) {
-          break label112;
-        }
-        localObject1 = localIOException;
-        new StringBuilder().append("lottie, bitmap width=");
-        localObject1 = localIOException;
-        throw new NullPointerException();
-      }
-      localObject1 = paramResources;
-      try
-      {
-        localFileInputStream.close();
-        return paramResources;
-      }
-      catch (IOException localIOException)
-      {
-        localObject1 = paramResources;
-        localIOException.printStackTrace();
-        return paramResources;
-      }
+      localFileInputStream = new FileInputStream(paramString);
+      localObject2 = localObject3;
     }
+    catch (FileNotFoundException localFileNotFoundException)
+    {
+      FileInputStream localFileInputStream;
+      label72:
+      Log.e("LottieImageAsset", "lottie, file not found -> " + paramString);
+      localFileNotFoundException.printStackTrace();
+      return localObject2;
+    }
+    try
+    {
+      localObject4 = BitmapFactory.decodeStream(new BufferedInputStream(localFileInputStream), null, (BitmapFactory.Options)localObject4);
+      localObject1 = localObject4;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      localObject2 = localIOException;
+      Log.e("LottieImageAsset", "lottie, oom " + localOutOfMemoryError.getMessage());
+      break label72;
+    }
+    catch (Exception localException)
+    {
+      localObject2 = localIOException;
+      Log.e("LottieImageAsset", "lottie, IllegalArgumentException= " + localException.getMessage());
+      if (0 == 0) {
+        break label72;
+      }
+      localObject2 = localIOException;
+      new StringBuilder().append("lottie, bitmap width=");
+      localObject2 = localIOException;
+      throw new NullPointerException();
+    }
+    localObject2 = localObject1;
+    try
+    {
+      localFileInputStream.close();
+      return localObject1;
+    }
+    catch (IOException localIOException)
+    {
+      localObject2 = localObject1;
+      localIOException.printStackTrace();
+      return localObject1;
+    }
+  }
+  
+  @Nullable
+  public Bitmap getBitmap()
+  {
+    return this.bitmap;
+  }
+  
+  public String getDirName()
+  {
+    return this.dirName;
   }
   
   public String getFileName()
@@ -159,20 +151,22 @@ public class LottieImageAsset
   
   public boolean hasCache()
   {
-    return !TextUtils.isEmpty(this.key);
+    return !TextUtils.isEmpty(this.id);
   }
   
-  static class Factory
+  public void setBitmap(@Nullable Bitmap paramBitmap)
   {
-    static LottieImageAsset newInstance(Resources paramResources, JSONObject paramJSONObject, Bundle paramBundle)
-    {
-      return new LottieImageAsset(paramJSONObject.optInt("w"), paramJSONObject.optInt("h"), paramJSONObject.optString("id"), paramJSONObject.optString("p"), paramResources, paramBundle, null);
-    }
+    this.bitmap = paramBitmap;
+  }
+  
+  public void setKey(String paramString)
+  {
+    this.key = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.LottieImageAsset
  * JD-Core Version:    0.7.0.1
  */

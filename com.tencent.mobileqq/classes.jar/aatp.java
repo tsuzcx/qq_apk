@@ -1,50 +1,28 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.arcard.ARCardShareHelper;
-import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
-import com.tencent.widget.ActionSheet;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabel;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 
 public class aatp
-  implements Runnable
+  extends atwf
 {
-  public aatp(ARGreetingCardListManager paramARGreetingCardListManager) {}
+  public aatp(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString, PersonalityLabel paramPersonalityLabel, byte[] paramArrayOfByte, int paramInt)
   {
-    if (ARGreetingCardListManager.a(this.a) != null)
-    {
-      ARGreetingCardListManager.a(this.a).removeAllViews();
-      ARGreetingCardListManager.a(this.a).setVisibility(8);
-      ARGreetingCardListManager.a(this.a).setOnTouchListener(null);
+    if ((!TextUtils.equals(paramString, this.a.jdField_a_of_type_Atwx.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a)) || (this.a.jdField_a_of_type_Atwx.jdField_a_of_type_ComTencentMobileqqDataCard == null)) {}
+    while (paramInt != 0) {
+      return;
     }
-    if (ARGreetingCardListManager.b(this.a) != null)
-    {
-      ARGreetingCardListManager.b(this.a).setVisibility(0);
-      ARGreetingCardListManager.a(this.a, null);
-    }
-    if (ARGreetingCardListManager.a(this.a) != null)
-    {
-      ARGreetingCardListManager.a(this.a).dismiss();
-      ARGreetingCardListManager.a(this.a, null);
-    }
-    if (ARGreetingCardListManager.a(this.a) != null)
-    {
-      ARGreetingCardListManager.a(this.a).a();
-      ARGreetingCardListManager.a(this.a, null);
-    }
-    ARGreetingCardListManager.a(this.a, null);
-    ARGreetingCardListManager.a(this.a, null);
-    ARGreetingCardListManager.b(this.a, null);
-    ARGreetingCardListManager.a(this.a, null);
-    ARGreetingCardListManager.a(this.a, null);
-    ARGreetingCardListManager.b(this.a, null);
-    ARGreetingCardListManager.c(this.a, null);
-    ARGreetingCardListManager.a(this.a, null);
-    ARGreetingCardListManager.a(this.a, null);
+    this.a.jdField_a_of_type_Atwx.jdField_a_of_type_ComTencentMobileqqDataCard.personalityLabel = paramPersonalityLabel;
+    this.a.jdField_a_of_type_Atwx.jdField_a_of_type_ComTencentMobileqqDataCard.vPersonalityLabelV2 = paramArrayOfByte;
+    this.a.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a(this.a.jdField_a_of_type_Atwx, true, new String[] { "map_key_personality_label_board" });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aatp
  * JD-Core Version:    0.7.0.1
  */

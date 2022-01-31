@@ -1,58 +1,180 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.widget.TextView;
-import com.tencent.av.utils.TroopMemberUtil;
-import com.tencent.biz.troopgift.TroopGiftAioPanelData;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.biz.troopgift.TroopGiftPanel.OnGetGiveGiftCallback;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSItemViewBuilder.1;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSItemViewBuilder.2;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.pts.core.itemview.PTSItemData;
+import com.tencent.pts.core.itemview.PTSItemData.Builder;
+import com.tencent.pts.core.itemview.PTSItemView;
+import com.tencent.pts.core.itemview.PTSItemViewManager;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class pdr
-  extends TroopGiftCallback
 {
-  public pdr(TroopGiftPanel paramTroopGiftPanel, TroopGiftPanel.OnGetGiveGiftCallback paramOnGetGiveGiftCallback) {}
+  private PTSItemViewManager a;
   
-  public void a(int paramInt1, int paramInt2, String paramString, List paramList)
+  public pdr(Activity paramActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopGiftPanel", 2, "onGetStockResult count = " + paramInt1);
-    }
-    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c = (paramInt1 + paramInt2);
-    if (Looper.getMainLooper().getThread() == Thread.currentThread())
-    {
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_b_of_type_AndroidWidgetTextView.setText(paramInt1 + "");
-      if (paramInt2 > 0)
-      {
-        this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.d.setText("+" + paramInt2);
-        this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.d.setVisibility(0);
-      }
-    }
-    while (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$OnGetGiveGiftCallback != null)
-    {
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$OnGetGiveGiftCallback.a(paramList);
-      return;
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.d.setText("");
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.d.setVisibility(8);
-      continue;
-      new Handler(Looper.getMainLooper()).post(new pds(this, paramInt1));
-    }
-    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData.a(paramList);
+    this.a = new PTSItemViewManager(paramActivity);
   }
   
-  public void a(int paramInt, String paramString)
+  private PTSItemData a(ArticleInfo paramArticleInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopGiftPanel", 2, "onGetStockResult() onError errorCode = " + paramInt + ", errorMsg = " + paramString);
+    if (paramArticleInfo == null) {
+      return null;
     }
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$OnGetGiveGiftCallback != null) {
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$OnGetGiveGiftCallback.a(paramInt);
+    Object localObject = new JSONObject();
+    for (;;)
+    {
+      try
+      {
+        ((JSONObject)localObject).put("articleID", paramArticleInfo.mArticleID);
+        ((JSONObject)localObject).put("rowKey", paramArticleInfo.innerUniqueID);
+        ((JSONObject)localObject).put("title", paramArticleInfo.mTitle);
+        ((JSONObject)localObject).put("coverImageUrl", paramArticleInfo.mFirstPagePicUrl);
+        ((JSONObject)localObject).put("jsonImageUrl", paramArticleInfo.mJsonPictureList);
+        ((JSONObject)localObject).put("articleContentUrl", paramArticleInfo.mArticleContentUrl);
+        ((JSONObject)localObject).put("subscribeName", paramArticleInfo.mSubscribeName);
+        ((JSONObject)localObject).put("channelID", paramArticleInfo.mChannelID);
+        ((JSONObject)localObject).put("recommendSeq", paramArticleInfo.mRecommendSeq);
+        ((JSONObject)localObject).put("algorithmID", paramArticleInfo.mAlgorithmID);
+        ((JSONObject)localObject).put("strategyID", paramArticleInfo.mStrategyId);
+        ((JSONObject)localObject).put("feedsType", paramArticleInfo.mFeedType);
+        ((JSONObject)localObject).put("proteusItemData", paramArticleInfo.proteusItemsData);
+      }
+      catch (JSONException localJSONException)
+      {
+        int i;
+        String str;
+        QLog.e("PTSItemViewBuilder", 1, "[getItemData], articleInfo = " + paramArticleInfo);
+        continue;
+      }
+      try
+      {
+        if (!ogy.a().a(paramArticleInfo.mArticleID)) {
+          continue;
+        }
+        i = 1;
+        ((JSONObject)localObject).put("hasRead", i);
+      }
+      catch (Exception localException)
+      {
+        QLog.e("PTSItemViewBuilder", 1, "[getItemData], e = " + localException);
+        continue;
+      }
+      localObject = ((JSONObject)localObject).toString();
+      str = pds.a().a("3978");
+      pdu.a().getClass();
+      return new PTSItemData.Builder().withItemID(paramArticleInfo.innerUniqueID).withAppName(a(paramArticleInfo)).withAppPath(str).withJsonData((String)localObject).build();
+      i = 0;
     }
-    ReportController.b(null, "dc00899", "Grp_flower", "", "video_mall", "fail_expbean", 0, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_b_of_type_JavaLangString, "" + TroopMemberUtil.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
+  }
+  
+  private static String a(ArticleInfo paramArticleInfo)
+  {
+    if (paramArticleInfo == null) {
+      return "";
+    }
+    if (qoe.c(paramArticleInfo) == 3) {
+      return "triple_img_card";
+    }
+    return "";
+  }
+  
+  private void a(PTSItemData paramPTSItemData)
+  {
+    if (paramPTSItemData == null)
+    {
+      QLog.i("PTSItemViewBuilder", 1, "[reportItemViewExpose], itemData is null.");
+      return;
+    }
+    bcod.a(new PTSItemViewBuilder.1(this, paramPTSItemData));
+  }
+  
+  private void a(PTSItemData paramPTSItemData, long paramLong)
+  {
+    if (paramPTSItemData == null)
+    {
+      QLog.i("PTSItemViewBuilder", 1, "[reportItemViewExpose], itemData is null.");
+      return;
+    }
+    bcod.a(new PTSItemViewBuilder.2(this, paramPTSItemData, paramLong));
+  }
+  
+  public static boolean a(long paramLong)
+  {
+    return paramLong == 1L;
+  }
+  
+  public static boolean a(ArticleInfo paramArticleInfo)
+  {
+    if (paramArticleInfo == null)
+    {
+      QLog.i("PTSItemViewBuilder", 1, "[isAbleToUseItemView], res = false, articleInfo is null.");
+      return false;
+    }
+    if (!pep.a.b())
+    {
+      QLog.i("PTSItemViewBuilder", 1, "[isAbleToUseItemView], res = false, isViewEnabled = false.");
+      return false;
+    }
+    if (!b(paramArticleInfo))
+    {
+      QLog.i("PTSItemViewBuilder", 1, "[isAbleToUseItemView], res = false, isArticleAvailable = false.");
+      return false;
+    }
+    paramArticleInfo = a(paramArticleInfo);
+    if (!pds.a().a(paramArticleInfo))
+    {
+      QLog.i("PTSItemViewBuilder", 1, "[isAbleToUseItemView], res = false, appName = " + paramArticleInfo + ", isAppExists = false");
+      return false;
+    }
+    QLog.i("PTSItemViewBuilder", 1, "[isAbleToUseItemView], res = true");
+    return true;
+  }
+  
+  private static boolean b(ArticleInfo paramArticleInfo)
+  {
+    boolean bool2 = true;
+    if (paramArticleInfo == null) {
+      return false;
+    }
+    boolean bool3 = a(paramArticleInfo.mChannelID);
+    if (qoe.c(paramArticleInfo) == 3)
+    {
+      bool1 = true;
+      if (QLog.isColorLevel()) {
+        QLog.i("PTSItemViewBuilder", 1, "[isArticleAvailable], isChannelIDValid = " + bool3 + ", isViewTypeValid = " + bool1);
+      }
+      if ((!bool3) || (!bool1)) {
+        break label83;
+      }
+    }
+    label83:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      return bool1;
+      bool1 = false;
+      break;
+    }
+  }
+  
+  public PTSItemView a(View paramView, ArticleInfo paramArticleInfo)
+  {
+    long l1 = System.currentTimeMillis();
+    paramArticleInfo = a(paramArticleInfo);
+    paramView = this.a.getView(paramView, paramArticleInfo);
+    long l2 = System.currentTimeMillis();
+    a(paramArticleInfo);
+    a(paramArticleInfo, l2 - l1);
+    return paramView;
+  }
+  
+  public void a()
+  {
+    this.a.destroy();
   }
 }
 

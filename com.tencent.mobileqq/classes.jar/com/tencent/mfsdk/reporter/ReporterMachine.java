@@ -8,42 +8,46 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.HandlerThread;
 import android.text.TextUtils;
+import awrn;
+import axsr;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mfsdk.Config;
 import com.tencent.mfsdk.MagnifierSDK;
-import com.tencent.mfsdk.ReportedStatus;
 import com.tencent.mfsdk.collector.ResultObject;
-import com.tencent.mfsdk.tools.PhoneUtil;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.transfile.NetworkCenter;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
-import rin;
-import rio;
-import rip;
-import riq;
-import rir;
+import zpy;
+import zqg;
+import zqj;
+import zqu;
+import zqw;
+import zqx;
+import zqy;
+import zrb;
+import zrm;
 
 public class ReporterMachine
 {
   public static int a;
-  private static IReporter jdField_a_of_type_ComTencentMfsdkReporterIReporter;
   private static ReporterMachine jdField_a_of_type_ComTencentMfsdkReporterReporterMachine;
   private static String jdField_a_of_type_JavaLangString = "";
-  private static List jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
-  private static Queue jdField_a_of_type_JavaUtilQueue;
+  private static List<ResultObject> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
+  private static Queue<String> jdField_a_of_type_JavaUtilQueue;
   private static MqqHandler jdField_a_of_type_MqqOsMqqHandler;
+  private static zqu jdField_a_of_type_Zqu;
   private static boolean jdField_a_of_type_Boolean;
-  private static IReporter b;
+  private static zqu b;
   
   static
   {
-    jdField_a_of_type_Int = 1;
+    jdField_a_of_type_Int = 2;
     jdField_a_of_type_JavaUtilQueue = new ConcurrentLinkedQueue();
   }
   
@@ -54,8 +58,8 @@ public class ReporterMachine
       HandlerThread localHandlerThread = ThreadManager.newFreeHandlerThread("ReporterMachine", 0);
       localHandlerThread.start();
       jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(localHandlerThread.getLooper());
-      jdField_a_of_type_ComTencentMfsdkReporterIReporter = new YunYingReporter(localHandlerThread);
-      b = new QCloudReporter(localHandlerThread);
+      jdField_a_of_type_Zqu = new zrb(localHandlerThread);
+      b = new zqw(localHandlerThread);
     }
     jdField_a_of_type_JavaLangString = a();
   }
@@ -71,29 +75,16 @@ public class ReporterMachine
     finally {}
   }
   
-  private String a()
+  public static void a(int paramInt)
   {
-    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
-      return jdField_a_of_type_JavaLangString;
-    }
-    try
-    {
-      jdField_a_of_type_JavaLangString = BaseApplicationImpl.sApplication.getPackageManager().getApplicationInfo(BaseApplicationImpl.sApplication.getPackageName(), 128).metaData.get("com.tencent.rdm.uuid").toString();
-      if ("1234567890".equals(jdField_a_of_type_JavaLangString)) {
-        jdField_a_of_type_JavaLangString = "0";
-      }
-      label61:
-      return jdField_a_of_type_JavaLangString;
-    }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException)
-    {
-      break label61;
-    }
+    QLog.i("Magnifier_ReporterMachine", 1, "setReportType t=" + paramInt + "");
+    jdField_a_of_type_Int = paramInt;
   }
   
   public static void a(ResultObject paramResultObject)
   {
-    if ((true == paramResultObject.isRealTime) && (1 == NetworkCenter.a().a())) {
+    zqj.a(paramResultObject.params);
+    if ((true == paramResultObject.isRealTime) && (1 == axsr.a().a())) {
       try
       {
         c(paramResultObject);
@@ -107,7 +98,7 @@ public class ReporterMachine
     }
     if (jdField_a_of_type_MqqOsMqqHandler != null)
     {
-      paramResultObject = new rip(paramResultObject);
+      paramResultObject = new ReporterMachine.InsertRunnable(paramResultObject);
       jdField_a_of_type_MqqOsMqqHandler.post(paramResultObject);
       return;
     }
@@ -116,33 +107,73 @@ public class ReporterMachine
   
   private static void c(ResultObject paramResultObject)
   {
-    if (ReportedStatus.jdField_a_of_type_Int > Config.jdField_a_of_type_Int) {}
-    do
+    if (zqg.jdField_a_of_type_Int > zpy.jdField_a_of_type_Int) {}
+    for (;;)
     {
       return;
-      JSONObject localJSONObject = paramResultObject.params.getJSONObject("clientinfo");
-      localJSONObject.put("versionname", MagnifierSDK.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("uin", String.valueOf(paramResultObject.uin));
-      localJSONObject.put("manu", Build.MANUFACTURER);
-      localJSONObject.put("model", Build.MODEL);
-      localJSONObject.put("os", Build.VERSION.RELEASE);
-      localJSONObject.put("rdmuuid", jdField_a_of_type_JavaLangString);
-      localJSONObject.put("deviceid", PhoneUtil.a(BaseApplicationImpl.sApplication));
-      if ((jdField_a_of_type_Int & 0x1) > 0) {
-        jdField_a_of_type_ComTencentMfsdkReporterIReporter.a(paramResultObject, new rin());
+      Object localObject = paramResultObject.params.getJSONObject("clientinfo");
+      ((JSONObject)localObject).put("versionname", MagnifierSDK.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("uin", String.valueOf(paramResultObject.uin));
+      ((JSONObject)localObject).put("manu", Build.MANUFACTURER);
+      ((JSONObject)localObject).put("model", Build.MODEL);
+      ((JSONObject)localObject).put("os", Build.VERSION.RELEASE);
+      ((JSONObject)localObject).put("rdmuuid", jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("deviceid", zrm.a(BaseApplicationImpl.sApplication));
+      if (BaseApplicationImpl.sProcessId == 1) {}
+      try
+      {
+        if (TextUtils.equals(String.valueOf(paramResultObject.params.get("newplugin")), String.valueOf(102)))
+        {
+          localObject = new HashMap();
+          awrn.a(BaseApplicationImpl.getApplication().getApplicationContext()).a(null, "actAPMReportMainLooper", true, 0L, 0L, (HashMap)localObject, null);
+        }
+        if ((jdField_a_of_type_Int & 0x1) > 0) {
+          jdField_a_of_type_Zqu.a(paramResultObject, new zqx());
+        }
+        if ((jdField_a_of_type_Int & 0x2) <= 0) {
+          continue;
+        }
+        b.a(paramResultObject, new zqy());
+        return;
       }
-    } while ((jdField_a_of_type_Int & 0x2) <= 0);
-    b.a(paramResultObject, new rio());
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          QLog.d("Magnifier_ReporterMachine", 1, "reportAtOnce", localException);
+        }
+      }
+    }
+  }
+  
+  public String a()
+  {
+    if (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) {
+      return jdField_a_of_type_JavaLangString;
+    }
+    try
+    {
+      jdField_a_of_type_JavaLangString = BaseApplicationImpl.sApplication.getPackageManager().getApplicationInfo(BaseApplicationImpl.sApplication.getPackageName(), 128).metaData.get("com.tencent.rdm.uuid").toString();
+      if ("1234567890".equals(jdField_a_of_type_JavaLangString)) {
+        jdField_a_of_type_JavaLangString = "0";
+      }
+      label64:
+      return jdField_a_of_type_JavaLangString;
+    }
+    catch (PackageManager.NameNotFoundException localNameNotFoundException)
+    {
+      break label64;
+    }
   }
   
   public void a()
   {
     if (!jdField_a_of_type_Boolean)
     {
-      riq localriq = new riq(this, null);
-      rir localrir = new rir();
-      jdField_a_of_type_MqqOsMqqHandler.postDelayed(localrir, 120000L);
-      jdField_a_of_type_MqqOsMqqHandler.postDelayed(localriq, 300000L);
+      ReporterMachine.ReportRunnable localReportRunnable = new ReporterMachine.ReportRunnable(this, null);
+      ReporterMachine.getFileRunnable localgetFileRunnable = new ReporterMachine.getFileRunnable();
+      jdField_a_of_type_MqqOsMqqHandler.postDelayed(localgetFileRunnable, 120000L);
+      jdField_a_of_type_MqqOsMqqHandler.postDelayed(localReportRunnable, 300000L);
       jdField_a_of_type_Boolean = true;
     }
   }

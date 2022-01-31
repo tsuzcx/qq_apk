@@ -1,28 +1,23 @@
-import com.tencent.mobileqq.activity.photo.MediaFileFilter;
-import com.tencent.mobileqq.activity.photo.MimeHelper;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin.PhoneInfo;
 
 public final class xcc
-  extends MediaFileFilter
+  implements Parcelable.Creator<NewerGuidePlugin.PhoneInfo>
 {
-  public boolean a()
+  public NewerGuidePlugin.PhoneInfo a(Parcel paramParcel)
   {
-    return true;
+    return new NewerGuidePlugin.PhoneInfo(paramParcel);
   }
   
-  public boolean a(String paramString)
+  public NewerGuidePlugin.PhoneInfo[] a(int paramInt)
   {
-    paramString = MimeHelper.a(paramString);
-    return (paramString == null) || (!"image".equals(paramString[0])) || (!MimeHelper.a(paramString[1])) || (paramString[1].equals("gif"));
-  }
-  
-  public boolean b()
-  {
-    return false;
+    return new NewerGuidePlugin.PhoneInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xcc
  * JD-Core Version:    0.7.0.1
  */

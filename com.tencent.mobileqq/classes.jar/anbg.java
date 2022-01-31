@@ -1,28 +1,10 @@
-import cooperation.qzone.cache.CacheManager;
-import cooperation.qzone.cache.FileStorageHandler.Collector;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-
-public final class anbg
-  implements FileStorageHandler.Collector
+class anbg
 {
-  public Collection a()
-  {
-    synchronized ()
-    {
-      if (CacheManager.a().size() <= 0)
-      {
-        localObject1 = null;
-        return localObject1;
-      }
-      Object localObject1 = new ArrayList(CacheManager.a().values());
-    }
-  }
+  private static anbf a = new anbf();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anbg
  * JD-Core Version:    0.7.0.1
  */

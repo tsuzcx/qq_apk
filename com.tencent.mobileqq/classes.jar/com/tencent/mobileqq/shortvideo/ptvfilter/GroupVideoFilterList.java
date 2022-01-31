@@ -1,10 +1,14 @@
 package com.tencent.mobileqq.shortvideo.ptvfilter;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.shortvideo.ptvfilter.material.QQVideoMaterial;
-import com.tencent.mobileqq.shortvideo.ptvfilter.material.QQVideoMaterial.ChildPendant;
-import com.tencent.mobileqq.shortvideo.ptvfilter.material.TemplateParser;
-import com.tencent.mobileqq.shortvideo.ptvfilter.utils.VideoFilterUtil;
+import com.tencent.aekit.api.standard.filter.AESticker;
+import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
+import com.tencent.mobileqq.shortvideo.ptvfilter.material.QQTemplateParser;
+import com.tencent.ttpic.openapi.filter.GLGestureListener;
+import com.tencent.ttpic.openapi.filter.GLGestureProxy;
+import com.tencent.ttpic.openapi.model.VideoMaterial;
+import com.tencent.ttpic.openapi.model.VideoMaterial.ChildPendant;
+import com.tencent.ttpic.openapi.util.youtu.VideoPreviewFaceOutlineDetector;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,54 +22,65 @@ import java.util.Set;
 
 public class GroupVideoFilterList
 {
-  private long jdField_a_of_type_Long;
-  private GroupVideoFilterList.RandomHistory jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGroupVideoFilterList$RandomHistory;
-  private QQVideoMaterial.ChildPendant jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial$ChildPendant;
-  private QQVideoMaterial jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial;
-  private Date jdField_a_of_type_JavaUtilDate;
-  private List jdField_a_of_type_JavaUtilList;
-  private Map jdField_a_of_type_JavaUtilMap;
-  private Set jdField_a_of_type_JavaUtilSet;
-  private List jdField_b_of_type_JavaUtilList;
-  private Map jdField_b_of_type_JavaUtilMap;
-  private Map c;
+  public static final int CLICK_EVENT = 3;
+  public static final int HEAD_NOD = 5;
+  public static final int OPEN_MOUTH = 4;
+  public static final int SHAKE_HEAD = 6;
+  private Map<String, VideoMaterial> activeChildrenMaterialMap;
+  private Set<String> activeChildrenSet;
+  private List<AESticker> activeList;
+  private Map<String, VideoMaterial.ChildPendant> childrenPendantMap;
+  private VideoMaterial.ChildPendant currentChild;
+  private long currentChildStartTime;
+  private Map<String, AESticker> filterListMap;
+  private GLGestureListener gestureListener = new GroupVideoFilterList.1(this);
+  private boolean mHasClicked;
+  private boolean mHasHeadNodEvent;
+  private boolean mHasOpenMouthEvent;
+  private boolean mHasPointDownEvent;
+  private boolean mHasShakeHeadEvent;
+  private QQFilterRenderManager mManager = null;
+  private VideoMaterial material;
+  private GroupVideoFilterList.RandomHistory randomHistory;
+  private List<AESticker> renderList;
+  private Date today;
   
-  public GroupVideoFilterList(QQVideoMaterial paramQQVideoMaterial)
+  public GroupVideoFilterList(VideoMaterial paramVideoMaterial, VideoPreviewFaceOutlineDetector paramVideoPreviewFaceOutlineDetector)
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial = paramQQVideoMaterial;
-    this.c = new HashMap();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_b_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    if (!new File(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial.getDataPath() + File.separator + ".randomhistory").exists()) {
-      b();
+    this.material = paramVideoMaterial;
+    this.childrenPendantMap = new HashMap();
+    this.activeList = new ArrayList();
+    this.filterListMap = new HashMap();
+    this.activeChildrenMaterialMap = new HashMap();
+    this.activeChildrenSet = new HashSet();
+    if (!new File(this.material.getDataPath() + File.separator + ".randomhistory").exists()) {
+      recreateRandomHistoryFile();
     }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGroupVideoFilterList$RandomHistory = a();
-    if (paramQQVideoMaterial != null)
+    this.randomHistory = readRandomHistory();
+    if (paramVideoMaterial != null)
     {
-      Object localObject2 = paramQQVideoMaterial.b();
+      Object localObject2 = paramVideoMaterial.getChildrenPendants();
       if (localObject2 != null)
       {
         Object localObject1 = ((List)localObject2).iterator();
         Object localObject3;
         while (((Iterator)localObject1).hasNext())
         {
-          localObject3 = (QQVideoMaterial.ChildPendant)((Iterator)localObject1).next();
-          this.c.put(((QQVideoMaterial.ChildPendant)localObject3).jdField_a_of_type_JavaLangString, localObject3);
+          localObject3 = (VideoMaterial.ChildPendant)((Iterator)localObject1).next();
+          this.childrenPendantMap.put(((VideoMaterial.ChildPendant)localObject3).name, localObject3);
         }
         if (((List)localObject2).size() > 0) {
-          for (localObject1 = ((QQVideoMaterial.ChildPendant)((List)localObject2).get(0)).jdField_a_of_type_JavaLangString; !TextUtils.isEmpty((CharSequence)localObject1); localObject1 = a((QQVideoMaterial.ChildPendant)localObject1))
+          for (localObject1 = ((VideoMaterial.ChildPendant)((List)localObject2).get(0)).name; !TextUtils.isEmpty((CharSequence)localObject1); localObject1 = getRandomNext((VideoMaterial.ChildPendant)localObject1))
           {
-            this.jdField_a_of_type_JavaUtilSet.add(localObject1);
-            localObject1 = (QQVideoMaterial.ChildPendant)this.c.get(localObject1);
-            if (((QQVideoMaterial.ChildPendant)localObject1).jdField_a_of_type_JavaUtilList != null)
+            this.activeChildrenSet.add(localObject1);
+            localObject1 = (VideoMaterial.ChildPendant)this.childrenPendantMap.get(localObject1);
+            if (((VideoMaterial.ChildPendant)localObject1).depends != null)
             {
-              localObject3 = ((QQVideoMaterial.ChildPendant)localObject1).jdField_a_of_type_JavaUtilList.iterator();
+              localObject3 = ((VideoMaterial.ChildPendant)localObject1).depends.iterator();
               while (((Iterator)localObject3).hasNext())
               {
                 String str = (String)((Iterator)localObject3).next();
-                this.jdField_a_of_type_JavaUtilSet.add(str);
+                this.activeChildrenSet.add(str);
               }
             }
           }
@@ -73,77 +88,116 @@ public class GroupVideoFilterList
         localObject1 = ((List)localObject2).iterator();
         while (((Iterator)localObject1).hasNext())
         {
-          localObject2 = (QQVideoMaterial.ChildPendant)((Iterator)localObject1).next();
-          if (this.jdField_a_of_type_JavaUtilSet.contains(((QQVideoMaterial.ChildPendant)localObject2).jdField_a_of_type_JavaLangString))
+          localObject2 = (VideoMaterial.ChildPendant)((Iterator)localObject1).next();
+          if (this.activeChildrenSet.contains(((VideoMaterial.ChildPendant)localObject2).name))
           {
-            localObject3 = TemplateParser.a(paramQQVideoMaterial.getDataPath() + File.separator + ((QQVideoMaterial.ChildPendant)localObject2).jdField_a_of_type_JavaLangString, "params");
-            this.jdField_b_of_type_JavaUtilMap.put(((QQVideoMaterial.ChildPendant)localObject2).jdField_a_of_type_JavaLangString, localObject3);
-            localObject3 = VideoFilterUtil.a((QQVideoMaterial)localObject3);
+            localObject3 = QQTemplateParser.parseVideoMaterial(paramVideoMaterial.getDataPath() + File.separator + ((VideoMaterial.ChildPendant)localObject2).name, "params");
+            this.activeChildrenMaterialMap.put(((VideoMaterial.ChildPendant)localObject2).name, localObject3);
+            localObject3 = new AESticker((VideoMaterial)localObject3, paramVideoPreviewFaceOutlineDetector);
             if (localObject3 != null)
             {
-              this.jdField_a_of_type_JavaUtilMap.put(((QQVideoMaterial.ChildPendant)localObject2).jdField_a_of_type_JavaLangString, localObject3);
-              this.jdField_a_of_type_JavaUtilList.add(localObject3);
+              this.filterListMap.put(((VideoMaterial.ChildPendant)localObject2).name, localObject3);
+              this.activeList.add(localObject3);
             }
-            if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial$ChildPendant == null)
+            if (this.currentChild == null)
             {
-              this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial$ChildPendant = ((QQVideoMaterial.ChildPendant)localObject2);
-              this.jdField_a_of_type_Long = -1L;
+              this.currentChild = ((VideoMaterial.ChildPendant)localObject2);
+              this.currentChildStartTime = -1L;
             }
           }
         }
       }
     }
-    a();
+    updateFilterList();
+    GLGestureProxy.getInstance().setListener(this.gestureListener);
+  }
+  
+  private String getRandomNext(VideoMaterial.ChildPendant paramChildPendant)
+  {
+    if ((paramChildPendant.next != null) && (paramChildPendant.next.size() > 0))
+    {
+      int i = 0;
+      switch (paramChildPendant.randomType)
+      {
+      default: 
+        i = new Random().nextInt(paramChildPendant.next.size());
+        return (String)paramChildPendant.next.get(i);
+      }
+      Long localLong = (Long)this.randomHistory.createTime.get(paramChildPendant.name);
+      if (this.today == null) {
+        this.today = new Date();
+      }
+      long l = this.today.getTime();
+      if (l - localLong.longValue() < 0L) {
+        recreateRandomHistoryFile();
+      }
+      for (;;)
+      {
+        paramChildPendant = (List)this.randomHistory.randomOrder.get(paramChildPendant.name);
+        if ((paramChildPendant == null) || (i >= paramChildPendant.size())) {
+          break;
+        }
+        return (String)paramChildPendant.get(i);
+        l = (l - localLong.longValue()) / 86400000L;
+        if (l >= paramChildPendant.next.size()) {
+          recreateRandomHistoryFile();
+        } else {
+          i = (int)l;
+        }
+      }
+      return null;
+    }
+    return null;
   }
   
   /* Error */
-  private GroupVideoFilterList.RandomHistory a()
+  private GroupVideoFilterList.RandomHistory readRandomHistory()
   {
     // Byte code:
     //   0: aconst_null
     //   1: astore_1
-    //   2: new 43	java/io/File
+    //   2: new 84	java/io/File
     //   5: dup
-    //   6: new 45	java/lang/StringBuilder
+    //   6: new 86	java/lang/StringBuilder
     //   9: dup
-    //   10: invokespecial 46	java/lang/StringBuilder:<init>	()V
+    //   10: invokespecial 87	java/lang/StringBuilder:<init>	()V
     //   13: aload_0
-    //   14: getfield 22	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList:jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial	Lcom/tencent/mobileqq/shortvideo/ptvfilter/material/QQVideoMaterial;
-    //   17: invokevirtual 52	com/tencent/mobileqq/shortvideo/ptvfilter/material/QQVideoMaterial:getDataPath	()Ljava/lang/String;
-    //   20: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   23: getstatic 60	java/io/File:separator	Ljava/lang/String;
-    //   26: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   29: ldc 62
-    //   31: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   34: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   37: invokespecial 68	java/io/File:<init>	(Ljava/lang/String;)V
+    //   14: getfield 63	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList:material	Lcom/tencent/ttpic/openapi/model/VideoMaterial;
+    //   17: invokevirtual 93	com/tencent/ttpic/openapi/model/VideoMaterial:getDataPath	()Ljava/lang/String;
+    //   20: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: getstatic 101	java/io/File:separator	Ljava/lang/String;
+    //   26: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   29: ldc 103
+    //   31: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   34: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   37: invokespecial 109	java/io/File:<init>	(Ljava/lang/String;)V
     //   40: astore_2
-    //   41: new 169	java/io/ObjectInputStream
+    //   41: new 275	java/io/ObjectInputStream
     //   44: dup
-    //   45: new 171	java/io/BufferedInputStream
+    //   45: new 277	java/io/BufferedInputStream
     //   48: dup
-    //   49: new 173	java/io/FileInputStream
+    //   49: new 279	java/io/FileInputStream
     //   52: dup
     //   53: aload_2
-    //   54: invokespecial 176	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   57: invokespecial 179	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   60: invokespecial 180	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   54: invokespecial 282	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   57: invokespecial 285	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   60: invokespecial 286	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   63: astore_2
     //   64: aload_2
     //   65: astore_1
     //   66: aload_2
-    //   67: invokevirtual 183	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   70: checkcast 185	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList$RandomHistory
+    //   67: invokevirtual 289	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   70: checkcast 243	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList$RandomHistory
     //   73: astore_3
     //   74: aload_2
     //   75: ifnull +7 -> 82
     //   78: aload_2
-    //   79: invokevirtual 188	java/io/ObjectInputStream:close	()V
+    //   79: invokevirtual 292	java/io/ObjectInputStream:close	()V
     //   82: aload_3
     //   83: areturn
     //   84: astore_1
     //   85: aload_1
-    //   86: invokevirtual 191	java/io/IOException:printStackTrace	()V
+    //   86: invokevirtual 295	java/io/IOException:printStackTrace	()V
     //   89: aload_3
     //   90: areturn
     //   91: astore_3
@@ -152,16 +206,16 @@ public class GroupVideoFilterList
     //   94: aload_2
     //   95: astore_1
     //   96: aload_3
-    //   97: invokevirtual 192	java/io/FileNotFoundException:printStackTrace	()V
+    //   97: invokevirtual 296	java/io/FileNotFoundException:printStackTrace	()V
     //   100: aload_2
     //   101: ifnull +111 -> 212
     //   104: aload_2
-    //   105: invokevirtual 188	java/io/ObjectInputStream:close	()V
+    //   105: invokevirtual 292	java/io/ObjectInputStream:close	()V
     //   108: aconst_null
     //   109: areturn
     //   110: astore_1
     //   111: aload_1
-    //   112: invokevirtual 191	java/io/IOException:printStackTrace	()V
+    //   112: invokevirtual 295	java/io/IOException:printStackTrace	()V
     //   115: aconst_null
     //   116: areturn
     //   117: astore_3
@@ -170,16 +224,16 @@ public class GroupVideoFilterList
     //   120: aload_2
     //   121: astore_1
     //   122: aload_3
-    //   123: invokevirtual 191	java/io/IOException:printStackTrace	()V
+    //   123: invokevirtual 295	java/io/IOException:printStackTrace	()V
     //   126: aload_2
     //   127: ifnull +85 -> 212
     //   130: aload_2
-    //   131: invokevirtual 188	java/io/ObjectInputStream:close	()V
+    //   131: invokevirtual 292	java/io/ObjectInputStream:close	()V
     //   134: aconst_null
     //   135: areturn
     //   136: astore_1
     //   137: aload_1
-    //   138: invokevirtual 191	java/io/IOException:printStackTrace	()V
+    //   138: invokevirtual 295	java/io/IOException:printStackTrace	()V
     //   141: aconst_null
     //   142: areturn
     //   143: astore_3
@@ -188,16 +242,16 @@ public class GroupVideoFilterList
     //   146: aload_2
     //   147: astore_1
     //   148: aload_3
-    //   149: invokevirtual 193	java/lang/ClassNotFoundException:printStackTrace	()V
+    //   149: invokevirtual 297	java/lang/ClassNotFoundException:printStackTrace	()V
     //   152: aload_2
     //   153: ifnull +59 -> 212
     //   156: aload_2
-    //   157: invokevirtual 188	java/io/ObjectInputStream:close	()V
+    //   157: invokevirtual 292	java/io/ObjectInputStream:close	()V
     //   160: aconst_null
     //   161: areturn
     //   162: astore_1
     //   163: aload_1
-    //   164: invokevirtual 191	java/io/IOException:printStackTrace	()V
+    //   164: invokevirtual 295	java/io/IOException:printStackTrace	()V
     //   167: aconst_null
     //   168: areturn
     //   169: astore_3
@@ -208,12 +262,12 @@ public class GroupVideoFilterList
     //   174: aload_2
     //   175: ifnull +7 -> 182
     //   178: aload_2
-    //   179: invokevirtual 188	java/io/ObjectInputStream:close	()V
+    //   179: invokevirtual 292	java/io/ObjectInputStream:close	()V
     //   182: aload_1
     //   183: athrow
     //   184: astore_2
     //   185: aload_2
-    //   186: invokevirtual 191	java/io/IOException:printStackTrace	()V
+    //   186: invokevirtual 295	java/io/IOException:printStackTrace	()V
     //   189: goto -7 -> 182
     //   192: astore_3
     //   193: aload_1
@@ -273,237 +327,156 @@ public class GroupVideoFilterList
     //   66	74	208	java/io/FileNotFoundException
   }
   
-  private String a(QQVideoMaterial.ChildPendant paramChildPendant)
-  {
-    if ((paramChildPendant.jdField_b_of_type_JavaUtilList != null) && (paramChildPendant.jdField_b_of_type_JavaUtilList.size() > 0))
-    {
-      int i = 0;
-      switch (paramChildPendant.jdField_b_of_type_Int)
-      {
-      default: 
-        i = new Random().nextInt(paramChildPendant.jdField_b_of_type_JavaUtilList.size());
-        return (String)paramChildPendant.jdField_b_of_type_JavaUtilList.get(i);
-      }
-      Long localLong = (Long)this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGroupVideoFilterList$RandomHistory.createTime.get(paramChildPendant.jdField_a_of_type_JavaLangString);
-      if (this.jdField_a_of_type_JavaUtilDate == null) {
-        this.jdField_a_of_type_JavaUtilDate = new Date();
-      }
-      long l = this.jdField_a_of_type_JavaUtilDate.getTime();
-      if (l - localLong.longValue() < 0L) {
-        b();
-      }
-      for (;;)
-      {
-        paramChildPendant = (List)this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGroupVideoFilterList$RandomHistory.randomOrder.get(paramChildPendant.jdField_a_of_type_JavaLangString);
-        if ((paramChildPendant == null) || (i >= paramChildPendant.size())) {
-          break;
-        }
-        return (String)paramChildPendant.get(i);
-        l = (l - localLong.longValue()) / 86400000L;
-        if (l >= paramChildPendant.jdField_b_of_type_JavaUtilList.size()) {
-          b();
-        } else {
-          i = (int)l;
-        }
-      }
-      return null;
-    }
-    return null;
-  }
-  
-  private void a()
-  {
-    ArrayList localArrayList = new ArrayList();
-    HashSet localHashSet = new HashSet();
-    Object localObject2;
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial$ChildPendant != null)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial$ChildPendant.jdField_a_of_type_JavaUtilList != null)
-      {
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial$ChildPendant.jdField_a_of_type_JavaUtilList.iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (String)((Iterator)localObject1).next();
-          localObject2 = (VideoFilterList)this.jdField_a_of_type_JavaUtilMap.get(localObject2);
-          if (localObject2 != null) {
-            localArrayList.add(localObject2);
-          }
-        }
-      }
-      localObject1 = (VideoFilterList)this.jdField_a_of_type_JavaUtilMap.get(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial$ChildPendant.jdField_a_of_type_JavaLangString);
-      if (localObject1 != null) {
-        localArrayList.add(localObject1);
-      }
-    }
-    Object localObject1 = localArrayList.iterator();
-    while (((Iterator)localObject1).hasNext()) {
-      localHashSet.add((VideoFilterList)((Iterator)localObject1).next());
-    }
-    if (this.jdField_b_of_type_JavaUtilList != null)
-    {
-      localObject1 = this.jdField_b_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (VideoFilterList)((Iterator)localObject1).next();
-        if (!localHashSet.contains(localObject2)) {
-          ((VideoFilterList)localObject2).c();
-        }
-      }
-    }
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_b_of_type_JavaUtilList.addAll(localArrayList);
-  }
-  
   /* Error */
-  private void b()
+  private void recreateRandomHistoryFile()
   {
     // Byte code:
-    //   0: new 43	java/io/File
+    //   0: new 84	java/io/File
     //   3: dup
-    //   4: new 45	java/lang/StringBuilder
+    //   4: new 86	java/lang/StringBuilder
     //   7: dup
-    //   8: invokespecial 46	java/lang/StringBuilder:<init>	()V
+    //   8: invokespecial 87	java/lang/StringBuilder:<init>	()V
     //   11: aload_0
-    //   12: getfield 22	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList:jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial	Lcom/tencent/mobileqq/shortvideo/ptvfilter/material/QQVideoMaterial;
-    //   15: invokevirtual 52	com/tencent/mobileqq/shortvideo/ptvfilter/material/QQVideoMaterial:getDataPath	()Ljava/lang/String;
-    //   18: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   21: getstatic 60	java/io/File:separator	Ljava/lang/String;
-    //   24: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   27: ldc 62
-    //   29: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   32: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   35: invokespecial 68	java/io/File:<init>	(Ljava/lang/String;)V
+    //   12: getfield 63	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList:material	Lcom/tencent/ttpic/openapi/model/VideoMaterial;
+    //   15: invokevirtual 93	com/tencent/ttpic/openapi/model/VideoMaterial:getDataPath	()Ljava/lang/String;
+    //   18: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: getstatic 101	java/io/File:separator	Ljava/lang/String;
+    //   24: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   27: ldc 103
+    //   29: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   32: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   35: invokespecial 109	java/io/File:<init>	(Ljava/lang/String;)V
     //   38: astore_1
     //   39: aload_1
-    //   40: invokevirtual 243	java/io/File:deleteOnExit	()V
+    //   40: invokevirtual 300	java/io/File:deleteOnExit	()V
     //   43: aload_1
-    //   44: invokevirtual 246	java/io/File:createNewFile	()Z
+    //   44: invokevirtual 303	java/io/File:createNewFile	()Z
     //   47: pop
     //   48: aload_0
-    //   49: new 185	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList$RandomHistory
+    //   49: new 243	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList$RandomHistory
     //   52: dup
-    //   53: invokespecial 247	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList$RandomHistory:<init>	()V
-    //   56: putfield 79	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList:jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGroupVideoFilterList$RandomHistory	Lcom/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList$RandomHistory;
+    //   53: invokespecial 304	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList$RandomHistory:<init>	()V
+    //   56: putfield 122	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList:randomHistory	Lcom/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList$RandomHistory;
     //   59: aload_0
-    //   60: getfield 79	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList:jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGroupVideoFilterList$RandomHistory	Lcom/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList$RandomHistory;
-    //   63: new 24	java/util/HashMap
+    //   60: getfield 122	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList:randomHistory	Lcom/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList$RandomHistory;
+    //   63: new 65	java/util/HashMap
     //   66: dup
-    //   67: invokespecial 25	java/util/HashMap:<init>	()V
-    //   70: putfield 227	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList$RandomHistory:randomOrder	Ljava/util/HashMap;
+    //   67: invokespecial 66	java/util/HashMap:<init>	()V
+    //   70: putfield 265	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList$RandomHistory:randomOrder	Ljava/util/HashMap;
     //   73: aload_0
-    //   74: getfield 79	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList:jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGroupVideoFilterList$RandomHistory	Lcom/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList$RandomHistory;
-    //   77: new 24	java/util/HashMap
+    //   74: getfield 122	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList:randomHistory	Lcom/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList$RandomHistory;
+    //   77: new 65	java/util/HashMap
     //   80: dup
-    //   81: invokespecial 25	java/util/HashMap:<init>	()V
-    //   84: putfield 209	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList$RandomHistory:createTime	Ljava/util/HashMap;
+    //   81: invokespecial 66	java/util/HashMap:<init>	()V
+    //   84: putfield 247	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList$RandomHistory:createTime	Ljava/util/HashMap;
     //   87: aload_0
-    //   88: getfield 22	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList:jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial	Lcom/tencent/mobileqq/shortvideo/ptvfilter/material/QQVideoMaterial;
+    //   88: getfield 63	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList:material	Lcom/tencent/ttpic/openapi/model/VideoMaterial;
     //   91: ifnull +104 -> 195
     //   94: aload_0
-    //   95: getfield 22	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList:jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial	Lcom/tencent/mobileqq/shortvideo/ptvfilter/material/QQVideoMaterial;
-    //   98: invokevirtual 82	com/tencent/mobileqq/shortvideo/ptvfilter/material/QQVideoMaterial:b	()Ljava/util/List;
+    //   95: getfield 63	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList:material	Lcom/tencent/ttpic/openapi/model/VideoMaterial;
+    //   98: invokevirtual 126	com/tencent/ttpic/openapi/model/VideoMaterial:getChildrenPendants	()Ljava/util/List;
     //   101: astore_2
     //   102: aload_2
     //   103: ifnull +92 -> 195
     //   106: aload_2
-    //   107: invokeinterface 88 1 0
+    //   107: invokeinterface 132 1 0
     //   112: astore_2
     //   113: aload_2
-    //   114: invokeinterface 93 1 0
+    //   114: invokeinterface 137 1 0
     //   119: ifeq +158 -> 277
     //   122: aload_2
-    //   123: invokeinterface 97 1 0
-    //   128: checkcast 99	com/tencent/mobileqq/shortvideo/ptvfilter/material/QQVideoMaterial$ChildPendant
+    //   123: invokeinterface 141 1 0
+    //   128: checkcast 143	com/tencent/ttpic/openapi/model/VideoMaterial$ChildPendant
     //   131: astore_3
-    //   132: new 29	java/util/ArrayList
+    //   132: new 70	java/util/ArrayList
     //   135: dup
-    //   136: invokespecial 30	java/util/ArrayList:<init>	()V
+    //   136: invokespecial 71	java/util/ArrayList:<init>	()V
     //   139: astore 4
     //   141: aload_3
-    //   142: getfield 195	com/tencent/mobileqq/shortvideo/ptvfilter/material/QQVideoMaterial$ChildPendant:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   142: getfield 231	com/tencent/ttpic/openapi/model/VideoMaterial$ChildPendant:next	Ljava/util/List;
     //   145: ifnull +51 -> 196
     //   148: aload_3
-    //   149: getfield 195	com/tencent/mobileqq/shortvideo/ptvfilter/material/QQVideoMaterial$ChildPendant:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   152: invokeinterface 88 1 0
+    //   149: getfield 231	com/tencent/ttpic/openapi/model/VideoMaterial$ChildPendant:next	Ljava/util/List;
+    //   152: invokeinterface 132 1 0
     //   157: astore 5
     //   159: aload 5
-    //   161: invokeinterface 93 1 0
+    //   161: invokeinterface 137 1 0
     //   166: ifeq +30 -> 196
     //   169: aload 4
     //   171: aload 5
-    //   173: invokeinterface 97 1 0
-    //   178: checkcast 133	java/lang/String
-    //   181: invokeinterface 152 2 0
+    //   173: invokeinterface 141 1 0
+    //   178: checkcast 180	java/lang/String
+    //   181: invokeinterface 200 2 0
     //   186: pop
     //   187: goto -28 -> 159
     //   190: astore_1
     //   191: aload_1
-    //   192: invokevirtual 191	java/io/IOException:printStackTrace	()V
+    //   192: invokevirtual 295	java/io/IOException:printStackTrace	()V
     //   195: return
     //   196: aload 4
-    //   198: invokestatic 253	java/util/Collections:shuffle	(Ljava/util/List;)V
+    //   198: invokestatic 310	java/util/Collections:shuffle	(Ljava/util/List;)V
     //   201: aload_0
-    //   202: getfield 79	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList:jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGroupVideoFilterList$RandomHistory	Lcom/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList$RandomHistory;
-    //   205: getfield 227	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList$RandomHistory:randomOrder	Ljava/util/HashMap;
+    //   202: getfield 122	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList:randomHistory	Lcom/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList$RandomHistory;
+    //   205: getfield 265	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList$RandomHistory:randomOrder	Ljava/util/HashMap;
     //   208: aload_3
-    //   209: getfield 101	com/tencent/mobileqq/shortvideo/ptvfilter/material/QQVideoMaterial$ChildPendant:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   209: getfield 146	com/tencent/ttpic/openapi/model/VideoMaterial$ChildPendant:name	Ljava/lang/String;
     //   212: aload 4
-    //   214: invokevirtual 254	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   214: invokevirtual 311	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   217: pop
-    //   218: new 216	java/util/Date
+    //   218: new 254	java/util/Date
     //   221: dup
-    //   222: invokespecial 217	java/util/Date:<init>	()V
+    //   222: invokespecial 255	java/util/Date:<init>	()V
     //   225: astore 4
-    //   227: new 216	java/util/Date
+    //   227: new 254	java/util/Date
     //   230: dup
     //   231: aload 4
-    //   233: invokevirtual 257	java/util/Date:getYear	()I
+    //   233: invokevirtual 314	java/util/Date:getYear	()I
     //   236: aload 4
-    //   238: invokevirtual 260	java/util/Date:getMonth	()I
+    //   238: invokevirtual 317	java/util/Date:getMonth	()I
     //   241: aload 4
-    //   243: invokevirtual 263	java/util/Date:getDate	()I
-    //   246: invokespecial 266	java/util/Date:<init>	(III)V
+    //   243: invokevirtual 320	java/util/Date:getDate	()I
+    //   246: invokespecial 323	java/util/Date:<init>	(III)V
     //   249: astore 4
     //   251: aload_0
-    //   252: getfield 79	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList:jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGroupVideoFilterList$RandomHistory	Lcom/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList$RandomHistory;
-    //   255: getfield 209	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList$RandomHistory:createTime	Ljava/util/HashMap;
+    //   252: getfield 122	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList:randomHistory	Lcom/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList$RandomHistory;
+    //   255: getfield 247	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList$RandomHistory:createTime	Ljava/util/HashMap;
     //   258: aload_3
-    //   259: getfield 101	com/tencent/mobileqq/shortvideo/ptvfilter/material/QQVideoMaterial$ChildPendant:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   259: getfield 146	com/tencent/ttpic/openapi/model/VideoMaterial$ChildPendant:name	Ljava/lang/String;
     //   262: aload 4
-    //   264: invokevirtual 221	java/util/Date:getTime	()J
-    //   267: invokestatic 270	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   270: invokevirtual 254	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   264: invokevirtual 259	java/util/Date:getTime	()J
+    //   267: invokestatic 327	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   270: invokevirtual 311	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   273: pop
     //   274: goto -161 -> 113
     //   277: aconst_null
     //   278: astore_2
     //   279: aconst_null
     //   280: astore_3
-    //   281: new 272	java/io/ObjectOutputStream
+    //   281: new 329	java/io/ObjectOutputStream
     //   284: dup
-    //   285: new 274	java/io/BufferedOutputStream
+    //   285: new 331	java/io/BufferedOutputStream
     //   288: dup
-    //   289: new 276	java/io/FileOutputStream
+    //   289: new 333	java/io/FileOutputStream
     //   292: dup
     //   293: aload_1
-    //   294: invokespecial 277	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   297: invokespecial 280	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   300: invokespecial 281	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   294: invokespecial 334	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   297: invokespecial 337	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   300: invokespecial 338	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   303: astore_1
     //   304: aload_1
     //   305: astore_2
     //   306: aload_1
     //   307: aload_0
-    //   308: getfield 79	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList:jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterGroupVideoFilterList$RandomHistory	Lcom/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList$RandomHistory;
-    //   311: invokevirtual 285	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   308: getfield 122	com/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList:randomHistory	Lcom/tencent/mobileqq/shortvideo/ptvfilter/GroupVideoFilterList$RandomHistory;
+    //   311: invokevirtual 342	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
     //   314: aload_1
     //   315: ifnull -120 -> 195
     //   318: aload_1
-    //   319: invokevirtual 286	java/io/ObjectOutputStream:close	()V
+    //   319: invokevirtual 343	java/io/ObjectOutputStream:close	()V
     //   322: return
     //   323: astore_1
     //   324: aload_1
-    //   325: invokevirtual 191	java/io/IOException:printStackTrace	()V
+    //   325: invokevirtual 295	java/io/IOException:printStackTrace	()V
     //   328: return
     //   329: astore_3
     //   330: aconst_null
@@ -511,15 +484,15 @@ public class GroupVideoFilterList
     //   332: aload_1
     //   333: astore_2
     //   334: aload_3
-    //   335: invokevirtual 192	java/io/FileNotFoundException:printStackTrace	()V
+    //   335: invokevirtual 296	java/io/FileNotFoundException:printStackTrace	()V
     //   338: aload_1
     //   339: ifnull -144 -> 195
     //   342: aload_1
-    //   343: invokevirtual 286	java/io/ObjectOutputStream:close	()V
+    //   343: invokevirtual 343	java/io/ObjectOutputStream:close	()V
     //   346: return
     //   347: astore_1
     //   348: aload_1
-    //   349: invokevirtual 191	java/io/IOException:printStackTrace	()V
+    //   349: invokevirtual 295	java/io/IOException:printStackTrace	()V
     //   352: return
     //   353: astore_2
     //   354: aload_3
@@ -529,26 +502,26 @@ public class GroupVideoFilterList
     //   358: aload_1
     //   359: astore_2
     //   360: aload_3
-    //   361: invokevirtual 191	java/io/IOException:printStackTrace	()V
+    //   361: invokevirtual 295	java/io/IOException:printStackTrace	()V
     //   364: aload_1
     //   365: ifnull -170 -> 195
     //   368: aload_1
-    //   369: invokevirtual 286	java/io/ObjectOutputStream:close	()V
+    //   369: invokevirtual 343	java/io/ObjectOutputStream:close	()V
     //   372: return
     //   373: astore_1
     //   374: aload_1
-    //   375: invokevirtual 191	java/io/IOException:printStackTrace	()V
+    //   375: invokevirtual 295	java/io/IOException:printStackTrace	()V
     //   378: return
     //   379: astore_1
     //   380: aload_2
     //   381: ifnull +7 -> 388
     //   384: aload_2
-    //   385: invokevirtual 286	java/io/ObjectOutputStream:close	()V
+    //   385: invokevirtual 343	java/io/ObjectOutputStream:close	()V
     //   388: aload_1
     //   389: athrow
     //   390: astore_2
     //   391: aload_2
-    //   392: invokevirtual 191	java/io/IOException:printStackTrace	()V
+    //   392: invokevirtual 295	java/io/IOException:printStackTrace	()V
     //   395: goto -7 -> 388
     //   398: astore_1
     //   399: goto -19 -> 380
@@ -573,7 +546,7 @@ public class GroupVideoFilterList
     //   353	4	2	localIOException5	java.io.IOException
     //   359	26	2	localObject6	Object
     //   390	2	2	localIOException6	java.io.IOException
-    //   131	150	3	localChildPendant	QQVideoMaterial.ChildPendant
+    //   131	150	3	localChildPendant	VideoMaterial.ChildPendant
     //   329	26	3	localFileNotFoundException1	java.io.FileNotFoundException
     //   357	4	3	localIOException7	java.io.IOException
     //   402	1	3	localIOException8	java.io.IOException
@@ -597,65 +570,180 @@ public class GroupVideoFilterList
     //   306	314	406	java/io/FileNotFoundException
   }
   
-  public String a()
+  private void updateFilterList()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial$ChildPendant != null)
+    ArrayList localArrayList = new ArrayList();
+    HashSet localHashSet = new HashSet();
+    Object localObject2;
+    if (this.currentChild != null)
     {
-      QQVideoMaterial localQQVideoMaterial = (QQVideoMaterial)this.jdField_b_of_type_JavaUtilMap.get(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial$ChildPendant.jdField_a_of_type_JavaLangString);
-      if (localQQVideoMaterial != null) {
-        return localQQVideoMaterial.getTipsText();
+      localObject1 = (AESticker)this.filterListMap.get(this.currentChild.name);
+      if (localObject1 != null) {
+        localArrayList.add(localObject1);
+      }
+      if (this.currentChild.depends != null)
+      {
+        localObject1 = this.currentChild.depends.iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (String)((Iterator)localObject1).next();
+          localObject2 = (AESticker)this.filterListMap.get(localObject2);
+          if (localObject2 != null) {
+            localArrayList.add(localObject2);
+          }
+        }
+      }
+    }
+    Object localObject1 = localArrayList.iterator();
+    while (((Iterator)localObject1).hasNext()) {
+      localHashSet.add((AESticker)((Iterator)localObject1).next());
+    }
+    if (this.renderList != null)
+    {
+      localObject1 = this.renderList.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (AESticker)((Iterator)localObject1).next();
+        if (!localHashSet.contains(localObject2)) {
+          ((AESticker)localObject2).destroyAudio();
+        }
+      }
+    }
+    this.renderList = new ArrayList();
+    this.renderList.addAll(localArrayList);
+  }
+  
+  public void checkAutoJump(long paramLong)
+  {
+    if ((this.currentChild != null) && (this.currentChild.jumpType == 2))
+    {
+      if ((this.currentChildStartTime != -1L) && (this.currentChild.maxPlayTime > 0L) && (paramLong - this.currentChildStartTime > this.currentChild.maxPlayTime)) {
+        next(2);
+      }
+      if (this.currentChildStartTime == -1L) {
+        this.currentChildStartTime = paramLong;
+      }
+    }
+    for (;;)
+    {
+      this.mHasHeadNodEvent = false;
+      this.mHasOpenMouthEvent = false;
+      this.mHasShakeHeadEvent = false;
+      return;
+      if ((this.currentChild != null) && (this.currentChild.jumpType == 3))
+      {
+        if (this.mHasClicked)
+        {
+          next(3);
+          this.mHasClicked = false;
+        }
+      }
+      else if ((this.currentChild != null) && (this.currentChild.jumpType == 6))
+      {
+        if (this.mHasShakeHeadEvent)
+        {
+          next(6);
+          this.mHasShakeHeadEvent = false;
+        }
+      }
+      else if ((this.currentChild != null) && (this.currentChild.jumpType == 4))
+      {
+        if (this.mHasOpenMouthEvent)
+        {
+          next(4);
+          this.mHasOpenMouthEvent = false;
+        }
+      }
+      else if ((this.currentChild != null) && (this.currentChild.jumpType == 5) && (this.mHasHeadNodEvent))
+      {
+        next(5);
+        this.mHasHeadNodEvent = false;
+      }
+    }
+  }
+  
+  public void detectFaceEvent(QQFilterRenderManager paramQQFilterRenderManager)
+  {
+    if ((paramQQFilterRenderManager != null) && (isFaceEventDetectedNeed())) {}
+    try
+    {
+      this.mHasOpenMouthEvent = paramQQFilterRenderManager.detectedOpenMouth();
+      this.mHasShakeHeadEvent = paramQQFilterRenderManager.detectedShakeHead();
+      this.mHasHeadNodEvent = paramQQFilterRenderManager.detectedHeadNod();
+      this.mManager = paramQQFilterRenderManager;
+      return;
+    }
+    catch (Exception paramQQFilterRenderManager) {}
+  }
+  
+  protected void finalize()
+  {
+    super.finalize();
+    try
+    {
+      GLGestureProxy.getInstance().removeListener(this.gestureListener);
+      return;
+    }
+    catch (Throwable localThrowable) {}
+  }
+  
+  public List<AESticker> getActiveList()
+  {
+    return this.activeList;
+  }
+  
+  public List<AESticker> getRenderList()
+  {
+    return this.renderList;
+  }
+  
+  public String getTriggerTips()
+  {
+    if (this.currentChild != null) {
+      if (TextUtils.isEmpty(this.currentChild.tips))
+      {
+        VideoMaterial localVideoMaterial = (VideoMaterial)this.activeChildrenMaterialMap.get(this.currentChild.name);
+        if (localVideoMaterial != null) {
+          return localVideoMaterial.getTipsText();
+        }
+      }
+      else
+      {
+        return this.currentChild.tips;
       }
     }
     return "";
   }
   
-  public List a()
+  public boolean isFaceEventDetectedNeed()
   {
-    return this.jdField_a_of_type_JavaUtilList;
+    return (this.currentChild != null) && ((this.currentChild.jumpType == 6) || (this.currentChild.jumpType == 4) || (this.currentChild.jumpType == 5));
   }
   
-  public void a(int paramInt)
+  public void next(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial != null) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial$ChildPendant != null) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial$ChildPendant.jdField_a_of_type_Int == paramInt))
+    if ((this.material != null) && (this.currentChild != null) && (this.currentChild.jumpType == paramInt))
     {
-      String str = a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial$ChildPendant);
+      String str = getRandomNext(this.currentChild);
       if (str != null)
       {
-        Object localObject = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial.b();
+        Object localObject = this.material.getChildrenPendants();
         if (localObject != null)
         {
           localObject = ((List)localObject).iterator();
           while (((Iterator)localObject).hasNext())
           {
-            QQVideoMaterial.ChildPendant localChildPendant = (QQVideoMaterial.ChildPendant)((Iterator)localObject).next();
-            if (str.equals(localChildPendant.jdField_a_of_type_JavaLangString))
+            VideoMaterial.ChildPendant localChildPendant = (VideoMaterial.ChildPendant)((Iterator)localObject).next();
+            if (str.equals(localChildPendant.name))
             {
-              this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial$ChildPendant = localChildPendant;
-              this.jdField_a_of_type_Long = -1L;
+              this.currentChild = localChildPendant;
+              this.currentChildStartTime = -1L;
             }
           }
-          a();
+          updateFilterList();
         }
       }
     }
-  }
-  
-  public void a(long paramLong)
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial$ChildPendant != null) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial$ChildPendant.jdField_a_of_type_Int == 2))
-    {
-      if ((this.jdField_a_of_type_Long != -1L) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial$ChildPendant.jdField_a_of_type_Long > 0L) && (paramLong - this.jdField_a_of_type_Long > this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterMaterialQQVideoMaterial$ChildPendant.jdField_a_of_type_Long)) {
-        a(2);
-      }
-      if (this.jdField_a_of_type_Long == -1L) {
-        this.jdField_a_of_type_Long = paramLong;
-      }
-    }
-  }
-  
-  public List b()
-  {
-    return this.jdField_b_of_type_JavaUtilList;
   }
 }
 

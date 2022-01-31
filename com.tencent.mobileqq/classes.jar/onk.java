@@ -1,116 +1,61 @@
-import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.common.util.ZipUtils;
-import com.tencent.biz.qqstory.base.download.DownloadProgressListener;
-import com.tencent.biz.qqstory.base.download.Downloader;
-import com.tencent.biz.qqstory.base.download.DownloaderImp;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
-import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.DoodleEmojiDownloadEvent;
-import com.tencent.biz.qqstory.utils.FileUtils;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
-import java.io.File;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import tencent.im.oidb.oidb_0xb7e.RspBody;
 
-public class onk
-  extends SimpleJob
-  implements DownloadProgressListener
+class onk
+  extends mmk
 {
-  protected long a;
-  private final Downloader jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloader;
-  private final DoodleEmojiItem jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem;
-  private long b;
+  onk(onj paramonj, boolean paramBoolean) {}
   
-  public onk(DoodleEmojiItem paramDoodleEmojiItem)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (paramDoodleEmojiItem == null) {
-      throw new IllegalArgumentException("doodleEmojiItem should not be null");
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloader = new DownloaderImp();
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloader.a(this);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem = paramDoodleEmojiItem;
-  }
-  
-  protected DoodleEmojiItem a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloader.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem.e, DoodleEmojiManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem.a), 0L);
-    return this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem;
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    DoodleEmojiItem localDoodleEmojiItem1 = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem;
     if (paramInt == 0)
     {
-      paramString = DoodleEmojiManager.a(localDoodleEmojiItem1.a);
-      String str = DoodleEmojiManager.b(localDoodleEmojiItem1.a);
-      SLog.b("DoodleEmojiManager", "DownloadListener onDownloadFinish zip = " + paramString);
-      SLog.b("DoodleEmojiManager", "DownloadListener onDownloadFinish folder = " + str);
-      for (;;)
+      try
       {
-        int i;
-        try
+        paramBundle = new oidb_0xb7e.RspBody();
+        paramBundle.mergeFrom(paramArrayOfByte);
+        if (!paramBundle.rpt_top_item.has()) {
+          break label129;
+        }
+        List localList = paramBundle.rpt_top_item.get();
+        if ((localList == null) || (localList.size() <= 0))
         {
-          FileUtils.d(str);
-          i = ZipUtils.a(paramString, str);
-          if (i == 0)
-          {
-            long l1 = SystemClock.uptimeMillis();
-            long l2 = this.jdField_a_of_type_Long;
-            StoryReportor.b("edit_video", "face_download_timecost", 0, 0, new String[] { localDoodleEmojiItem1.a, l1 - l2 + "" });
-            StoryReportor.b("edit_video", "face_download_success", 0, 0, new String[] { localDoodleEmojiItem1.a });
-            SLog.c("DoodleEmojiManager", "DownloadListener onDownloadFinish success, unZip success");
-            localDoodleEmojiItem1.a(str);
-            new File(str).setLastModified(System.currentTimeMillis());
-            Dispatchers.get().dispatch(new DoodleEmojiManager.DoodleEmojiDownloadEvent(localDoodleEmojiItem1, paramInt, true, 0L, 0L));
-            return;
+          if (QLog.isColorLevel()) {
+            QLog.d(onj.a, 2, "requestDiandianTopConfig rpt_top_item is empty");
           }
+          ohb.a().a(true, null);
+          onj.a(this.a, paramArrayOfByte, 0L);
+          return;
         }
-        catch (Exception localException)
-        {
-          SLog.d("DoodleEmojiManager", "DownloadListener remove folderPath : %s ,error : %s ", new Object[] { str, localException });
-          continue;
+        onj.a(this.a, paramArrayOfByte, System.currentTimeMillis());
+        if (!this.b) {
+          return;
         }
-        finally
-        {
-          new File(paramString).delete();
-        }
-        SLog.d("DoodleEmojiManager", "DownloadListener onDownloadFinish unZip failed, treat it as download failed");
-        Dispatchers.get().dispatch(new DoodleEmojiManager.DoodleEmojiDownloadEvent(localDoodleEmojiItem2, i, false, 0L, 0L));
-        StoryReportor.b("edit_video", "face_download_success", 0, i, new String[] { localDoodleEmojiItem2.a });
+        onj.a(this.a, paramBundle);
+        return;
       }
-    }
-    SLog.e("DoodleEmojiManager", "DownloadListener onDownloadFinish error = " + paramInt + ", url = " + paramString);
-    Dispatchers.get().dispatch(new DoodleEmojiManager.DoodleEmojiDownloadEvent(localDoodleEmojiItem2, paramInt, true, 0L, 0L));
-    StoryReportor.b("edit_video", "face_download_success", 0, paramInt, new String[] { localDoodleEmojiItem2.a });
-  }
-  
-  public void a(String paramString, long paramLong1, long paramLong2)
-  {
-    DoodleEmojiItem localDoodleEmojiItem = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem;
-    if (!TextUtils.equals(localDoodleEmojiItem.e, paramString))
-    {
-      SLog.d("DoodleEmojiManager", "DownloadListener onProgress error : " + localDoodleEmojiItem);
-      SLog.d("DoodleEmojiManager", "DownloadListener onProgress error : call back url = " + paramString);
-    }
-    while (paramLong1 <= paramLong2 / 10L + this.b) {
+      catch (Exception paramArrayOfByte)
+      {
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+      }
+      QLog.e(onj.a, 2, "requestDiandianTopConfig parser failed");
+      return;
+      label129:
+      if (QLog.isColorLevel()) {
+        QLog.d(onj.a, 2, "requestDiandianTopConfig rpt_top_item is empty");
+      }
+      onj.a(this.a, paramArrayOfByte, 0L);
+      ohb.a().a(true, null);
       return;
     }
-    SLog.a("DoodleEmojiManager", "DownloadListener onProgress " + paramLong1 + " / " + paramLong2);
-    Dispatchers.get().dispatch(new DoodleEmojiManager.DoodleEmojiDownloadEvent(localDoodleEmojiItem, 0, false, paramLong2, paramLong1));
-    this.b = paramLong1;
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    SLog.b("DoodleEmojiManager", "onDownloadStart : url = " + paramString1 + ", path = " + paramString2);
-    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.e(onj.a, 2, "requestDiandianTopConfig failed errorCode = " + paramInt);
+    }
   }
 }
 

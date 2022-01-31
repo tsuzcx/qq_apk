@@ -12,7 +12,7 @@ import com.tencent.smtt.sdk.QbSdk;
 public class InitDPC
   extends Step
 {
-  protected boolean a()
+  protected boolean doStep()
   {
     if (QLog.isColorLevel()) {
       QLog.i("InitDPC", 2, "InitDPC.doStep()");

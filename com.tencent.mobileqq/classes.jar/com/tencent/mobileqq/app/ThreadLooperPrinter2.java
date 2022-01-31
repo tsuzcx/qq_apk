@@ -30,44 +30,44 @@ class ThreadLooperPrinter2
   
   private static String format(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0) || (!paramString.startsWith(">>>"))) {}
-    int i;
-    String str1;
-    String str2;
-    do
+    if ((paramString == null) || (paramString.length() == 0) || (!paramString.startsWith(">>>"))) {
+      return null;
+    }
+    int i = paramString.indexOf('(');
+    if (i == -1) {
+      return null;
+    }
+    int j = paramString.indexOf(')', i);
+    if (j == -1) {
+      return null;
+    }
+    String str1 = paramString.substring(i + 1, j);
+    int k = paramString.indexOf("} ", j);
+    if (k == -1) {
+      return null;
+    }
+    j = paramString.indexOf('@', k + 2);
+    i = j;
+    if (j == -1)
     {
-      int k;
-      do
+      j = paramString.indexOf(':', k + 2);
+      i = j;
+      if (j == -1)
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              return null;
-              i = paramString.indexOf('(');
-            } while (i == -1);
-            j = paramString.indexOf(')', i);
-          } while (j == -1);
-          str1 = paramString.substring(i + 1, j);
-          k = paramString.indexOf("} ", j);
-        } while (k == -1);
-        int j = paramString.indexOf('@', k + 2);
-        i = j;
-        if (j != -1) {
-          break;
-        }
-        j = paramString.indexOf(':', k + 2);
-        i = j;
-        if (j != -1) {
-          break;
-        }
         i = paramString.indexOf(' ', k + 2);
-      } while (i == -1);
-      str2 = paramString.substring(k + 2, i);
-      i = paramString.indexOf(": ", i);
-    } while (i == -1);
+        if (i == -1) {
+          break label150;
+        }
+      }
+    }
+    String str2 = paramString.substring(k + 2, i);
+    i = paramString.indexOf(": ", i);
+    if (i == -1)
+    {
+      return null;
+      label150:
+      return null;
+    }
     return String.format("%s|%s|%s", new Object[] { str1, str2, paramString.substring(i + 2) });
   }
   

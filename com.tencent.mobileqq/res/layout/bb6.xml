@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/ib3" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="40.0px"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/ib2" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" formItem:bgType="abp" formItem:leftText="" formItem:rightText="" formItem:showArrow="true"
+      xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq" />
+    <TextView android:ellipsize="end" android:id="@id/iaw" android:paddingLeft="@dimen/al3" android:paddingRight="@dimen/al3" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/al0" android:text="" android:includeFontPadding="false" style="@style/w4" />
+</LinearLayout>

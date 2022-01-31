@@ -1,25 +1,22 @@
-import com.tencent.mobileqq.filemanager.recreate.FileModel;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.vip.CUKingCardHelper.CUKingDialogListener;
+import android.text.TextUtils;
+import com.tencent.mobileqq.customviews.VideoProgressView;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class adoj
-  implements CUKingCardHelper.CUKingDialogListener
+class adoj
+  implements bbjy
 {
-  public adoj(FileModel paramFileModel, FMDialogUtil.FMDialogInterface paramFMDialogInterface) {}
+  adoj(adoi paramadoi, ados paramados) {}
   
-  public void callback(int paramInt)
+  public void a(String paramString)
   {
-    if ((paramInt == 1) || (paramInt == 2))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFMDialogUtil$FMDialogInterface.a();
-      return;
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_Ados.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_Ados.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+      this.jdField_a_of_type_Ados.jdField_a_of_type_ComTencentMobileqqCustomviewsVideoProgressView.setDrawStatus(2);
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFMDialogUtil$FMDialogInterface.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adoj
  * JD-Core Version:    0.7.0.1
  */

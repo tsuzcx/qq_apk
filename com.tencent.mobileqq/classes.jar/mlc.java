@@ -1,14 +1,10 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-
-class mlc
-  implements Runnable
+public abstract interface mlc
 {
-  mlc(mks parammks) {}
+  public abstract void a();
   
-  public void run()
-  {
-    this.a.a.notifyDataSetChanged();
-  }
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 

@@ -1,27 +1,21 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCommentManager.CommentEventListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class mgn
-  implements VideoFeedsCommentManager.CommentEventListener
+class mgn
+  implements DialogInterface.OnClickListener
 {
-  public mgn(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  mgn(mgm parammgm) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((!paramBoolean) && (VideoFeedsPlayActivity.i(this.a)))
-    {
-      VideoFeedsPlayActivity.a(this.a).postDelayed(new mgo(this), 1000L);
-      VideoFeedsPlayActivity.d(this.a, false);
-    }
-    if (!paramBoolean) {
-      this.a.d();
-    }
+    paramDialogInterface.dismiss();
+    ((aqkz)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(236)).a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_JavaLangString, "4", "openRoom");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mgn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.biz.pubaccount.readinjoy.capture;
 
+import ahhl;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.activity.richmedia.FlowComponentInterface;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
 
 public class ReadInJoyFlowComponentInterface
-  implements FlowComponentInterface
+  implements ahhl
 {
   public static final String a = ReadInJoyFlowComponentInterface.class.getName();
   
@@ -18,7 +18,8 @@ public class ReadInJoyFlowComponentInterface
   
   public void a(Activity paramActivity)
   {
-    Intent localIntent = new Intent(paramActivity, PhotoListActivity.class);
+    Intent localIntent = new Intent(paramActivity, NewPhotoListActivity.class);
+    localIntent.putExtra("enter_from", 25);
     localIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 2);
     localIntent.putExtra("video_refer", a());
     localIntent.putExtra("PhotoConst.IS_PREVIEW_VIDEO", false);
@@ -41,7 +42,7 @@ public class ReadInJoyFlowComponentInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyFlowComponentInterface
  * JD-Core Version:    0.7.0.1
  */

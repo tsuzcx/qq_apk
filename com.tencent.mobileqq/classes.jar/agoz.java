@@ -1,24 +1,34 @@
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.pic.BasePicOprerator;
-import com.tencent.mobileqq.pic.Logger;
-import com.tencent.mobileqq.pic.PicResult;
-import com.tencent.mobileqq.pic.UiCallBack;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.8.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.lang.ref.WeakReference;
+import java.util.LinkedList;
 
 public class agoz
   extends Handler
 {
-  public agoz(BasePicOprerator paramBasePicOprerator, Looper paramLooper)
+  private LinkedList<agpb> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private boolean jdField_a_of_type_Boolean;
+  
+  public agoz(PreloadManager paramPreloadManager, Looper paramLooper)
   {
     super(paramLooper);
   }
   
+  private void a()
+  {
+    WeakReference localWeakReference = new WeakReference(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager);
+    agpb localagpb = (agpb)this.jdField_a_of_type_JavaUtilLinkedList.getFirst();
+    this.jdField_a_of_type_JavaUtilLinkedList.removeFirst();
+    ThreadManager.excute(new PreloadManager.8.1(this, localWeakReference, localagpb), 64, null, false);
+  }
+  
   public void handleMessage(Message paramMessage)
   {
-    Logger.a(this.a.b, this.a.jdField_a_of_type_JavaLangString, "dispatchMessage", "what:" + paramMessage.what + ",result:" + paramMessage.arg1 + ",obj:" + paramMessage.obj);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack == null) {}
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager.jdField_a_of_type_Boolean) {}
     do
     {
       return;
@@ -26,53 +36,24 @@ public class agoz
       {
       default: 
         return;
-      case 0: 
-        i = paramMessage.arg1;
-        paramMessage = (PicResult)paramMessage.obj;
-        this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.a(i, paramMessage);
-        return;
       case 1: 
-        paramMessage = (PicResult)paramMessage.obj;
+        this.jdField_a_of_type_JavaUtilLinkedList.addLast((agpb)paramMessage.obj);
       }
-    } while (!(paramMessage.a instanceof Integer));
-    this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.a(((Integer)paramMessage.a).intValue(), paramMessage.c);
+    } while (this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_Boolean = true;
+    sendEmptyMessage(2);
     return;
-    int i = paramMessage.arg1;
-    paramMessage = (PicResult)paramMessage.obj;
-    this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.d(i, paramMessage);
-    return;
-    i = paramMessage.arg1;
-    paramMessage = (PicResult)paramMessage.obj;
-    this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.b(i, paramMessage);
-    return;
-    i = paramMessage.arg1;
-    paramMessage = (PicResult)paramMessage.obj;
-    this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.c(i, paramMessage);
-    return;
-    if (paramMessage.obj != null) {}
-    for (;;)
+    if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)
     {
-      try
-      {
-        ArrayList localArrayList = (ArrayList)paramMessage.obj;
-        this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.a(paramMessage.arg1, localArrayList);
-        return;
-      }
-      catch (ClassCastException localClassCastException)
-      {
-        localObject = null;
-        continue;
-      }
-      paramMessage = (PicResult)paramMessage.obj;
-      this.a.jdField_a_of_type_ComTencentMobileqqPicUiCallBack.a(((Integer)paramMessage.a).intValue());
+      a();
       return;
-      Object localObject = null;
     }
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agoz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo;
 
-public class akkh
-  implements DialogInterface.OnDismissListener
+public abstract interface akkh
 {
-  public akkh(JumpAction paramJumpAction) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if ((this.a.a instanceof LoginActivity)) {
-      ((LoginActivity)this.a.a).finish();
-    }
-  }
+  public abstract void a(PromotionConfigInfo paramPromotionConfigInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akkh
  * JD-Core Version:    0.7.0.1
  */

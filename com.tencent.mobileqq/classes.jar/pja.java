@@ -1,32 +1,15 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.biz.widgets.ScannerView;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class pja
-  implements SensorEventListener
+class pja
+  implements View.OnClickListener
 {
-  private WeakReference a;
+  pja(piy parampiy) {}
   
-  public pja(ScannerView paramScannerView)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramScannerView);
-  }
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    ScannerView localScannerView = (ScannerView)this.a.get();
-    if (localScannerView != null) {
-      localScannerView.a(paramSensorEvent);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("ScannerView", 2, "onSensorChanged but mRef got null");
+    obz.a(this.a.jdField_a_of_type_AndroidContentContext, ((opw)this.a.jdField_a_of_type_JavaLangObject).a(), 2, false, 2, false);
+    qoe.a(((opw)this.a.jdField_a_of_type_JavaLangObject).a(), ((opw)this.a.jdField_a_of_type_JavaLangObject).e());
   }
 }
 

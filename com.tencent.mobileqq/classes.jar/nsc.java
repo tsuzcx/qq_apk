@@ -1,23 +1,8 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.qqstory.playvideo.ProgressControler;
-
 public class nsc
-  extends Handler
 {
-  public nsc(ProgressControler paramProgressControler, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public static final nsc a = new nsc();
   
-  public void handleMessage(Message paramMessage)
-  {
-    if (this.a.jdField_a_of_type_Boolean) {
-      return;
-    }
-    this.a.a(this.a.jdField_a_of_type_Int, this.a.c);
-  }
+  public void a() {}
 }
 
 

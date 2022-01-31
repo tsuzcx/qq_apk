@@ -1,29 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.CloseableBitmap;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageRequest;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.Utils;
-import com.tencent.commonsdk.cache.QQLruCache;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class muc
-  extends QQLruCache
+  implements View.OnClickListener
 {
-  muc(mub parammub, int paramInt1, int paramInt2)
-  {
-    super(paramInt1, paramInt2);
-  }
+  muc(mua parammua, String paramString) {}
   
-  protected int a(ImageRequest paramImageRequest, CloseableBitmap paramCloseableBitmap)
+  public void onClick(View paramView)
   {
-    return Utils.a(paramCloseableBitmap.a());
-  }
-  
-  protected void a(boolean paramBoolean, ImageRequest paramImageRequest, CloseableBitmap paramCloseableBitmap1, CloseableBitmap paramCloseableBitmap2)
-  {
-    super.entryRemoved(paramBoolean, paramImageRequest, paramCloseableBitmap1, paramCloseableBitmap2);
-    if (QLog.isColorLevel()) {
-      Utils.a(mub.a, "entryRemoved cache " + paramCloseableBitmap1 + " state:" + this.a.toString());
-    }
-    paramCloseableBitmap1.a();
+    paramView = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    mua.a(this.jdField_a_of_type_Mua).startActivity(paramView);
   }
 }
 

@@ -1,68 +1,91 @@
-import com.tencent.tmdownloader.ITMAssistantDownloadClientListener;
-import com.tencent.tmdownloader.TMAssistantDownloadClient;
-import cooperation.troop_homework.jsp.TroopHWFileDownloadManager;
-import cooperation.troop_homework.jsp.TroopHWFileDownloadManager.OnDownloadStateListener;
-import java.io.File;
+import android.text.TextUtils;
+import com.tencent.crmqq.structmsg.StructMsg.ButtonInfo;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class anns
-  implements ITMAssistantDownloadClientListener
 {
-  public anns(TroopHWFileDownloadManager paramTroopHWFileDownloadManager) {}
+  private Map<String, Long> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private byte[] jdField_a_of_type_ArrayOfByte = new byte[1];
+  private Map<String, Integer> b = new HashMap();
+  private Map<String, List<StructMsg.ButtonInfo>> c = new HashMap();
   
-  public void onDownloadSDKTaskProgressChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString, long paramLong1, long paramLong2)
+  public int a(String paramString)
   {
-    paramTMAssistantDownloadClient = (TroopHWFileDownloadManager.OnDownloadStateListener)TroopHWFileDownloadManager.a(this.a).get(paramString);
-    if (paramTMAssistantDownloadClient != null) {
-      paramTMAssistantDownloadClient.a(paramString, paramLong1, paramLong2);
-    }
-  }
-  
-  public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    int i = 4;
-    paramTMAssistantDownloadClient = "";
-    if (paramInt1 == 4)
+    synchronized (this.jdField_a_of_type_ArrayOfByte)
     {
-      paramTMAssistantDownloadClient = (String)TroopHWFileDownloadManager.b(this.a).get(paramString1);
-      localObject = paramTMAssistantDownloadClient.substring(paramTMAssistantDownloadClient.lastIndexOf("/") + 1);
-      localObject = new File(TroopHWFileDownloadManager.a(this.a) + (String)localObject);
-      if (((File)localObject).exists()) {
-        ((File)localObject).renameTo(new File(paramTMAssistantDownloadClient));
-      }
-      TroopHWFileDownloadManager.b(this.a).remove(paramString1);
-    }
-    Object localObject = (TroopHWFileDownloadManager.OnDownloadStateListener)TroopHWFileDownloadManager.a(this.a).get(paramString1);
-    if (localObject != null) {
-      switch (paramInt1)
+      if ((!TextUtils.isEmpty(paramString)) && (this.b.containsKey(paramString)))
       {
-      default: 
-        i = 0;
+        int i = ((Integer)this.b.get(paramString)).intValue();
+        return i;
       }
-    }
-    for (;;)
-    {
-      ((TroopHWFileDownloadManager.OnDownloadStateListener)localObject).a(paramString1, i, paramInt2, paramString2, paramTMAssistantDownloadClient);
-      return;
-      i = 2;
-      continue;
-      i = 6;
-      continue;
-      i = 3;
-      TroopHWFileDownloadManager.a(this.a).remove(paramString1);
-      continue;
-      i = 1;
-      continue;
-      i = 5;
-      TroopHWFileDownloadManager.a(this.a).remove(paramString1);
+      return -1;
     }
   }
   
-  public void onDwonloadSDKServiceInvalid(TMAssistantDownloadClient paramTMAssistantDownloadClient) {}
+  public long a(String paramString)
+  {
+    long l2 = -1L;
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    long l1 = l2;
+    try
+    {
+      if (!TextUtils.isEmpty(paramString))
+      {
+        l1 = l2;
+        if (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString)) {
+          l1 = ((Long)this.jdField_a_of_type_JavaUtilMap.get(paramString)).longValue();
+        }
+      }
+      return l1;
+    }
+    finally {}
+  }
+  
+  public List<StructMsg.ButtonInfo> a(String paramString)
+  {
+    synchronized (this.jdField_a_of_type_ArrayOfByte)
+    {
+      if (this.c.containsKey(paramString))
+      {
+        paramString = (List)this.c.get(paramString);
+        return paramString;
+      }
+      return null;
+    }
+  }
+  
+  public void a(String paramString, long paramLong)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      synchronized (this.jdField_a_of_type_ArrayOfByte)
+      {
+        this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(paramLong));
+        return;
+      }
+    }
+  }
+  
+  public void a(String paramString, List<StructMsg.ButtonInfo> paramList, int paramInt, long paramLong)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      synchronized (this.jdField_a_of_type_ArrayOfByte)
+      {
+        if (this.c.containsKey(paramString)) {
+          this.c.remove(paramString);
+        }
+        this.c.put(paramString, paramList);
+        this.b.put(paramString, Integer.valueOf(paramInt));
+        this.jdField_a_of_type_JavaUtilMap.put(paramString, Long.valueOf(paramLong));
+        return;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anns
  * JD-Core Version:    0.7.0.1
  */

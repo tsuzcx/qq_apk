@@ -1,18 +1,29 @@
-import com.tencent.mobileqq.musicpendant.MusicPendantManager;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
 
 public class aetm
-  implements Runnable
+  extends Handler
 {
-  public aetm(MusicPendantManager paramMusicPendantManager) {}
+  public aetm(AddContactsActivity paramAddContactsActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.g();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.jdField_a_of_type_Aeuo.b();
+      this.a.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    rrv.a().a(300);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aetm
  * JD-Core Version:    0.7.0.1
  */

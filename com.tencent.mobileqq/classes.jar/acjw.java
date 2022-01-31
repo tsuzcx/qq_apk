@@ -1,171 +1,92 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.drawer.CardDrawerStatus;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
-import mqq.os.MqqHandler;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForFile;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-class acjw
-  implements Runnable
+public final class acjw
+  implements CompoundButton.OnCheckedChangeListener
 {
-  acjw(acjg paramacjg, QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, MessengerService paramMessengerService) {}
-  
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    boolean bool = false;
-    Object localObject1;
-    Object localObject2;
-    label278:
-    int i;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      do
-      {
-        for (;;)
-        {
-          try
-          {
-            localObject1 = new JSONObject(this.jdField_a_of_type_JavaLangString);
-            JSONObject localJSONObject = new JSONObject();
-            localObject2 = ((JSONObject)localObject1).optString("optType");
-            if (!"flower".equals(localObject2)) {
-              break label278;
-            }
-            localObject1 = ((JSONObject)localObject1).optJSONObject("data");
-            if (localObject1 != null)
-            {
-              localObject1 = ((JSONObject)localObject1).optString("toUin");
-              localObject2 = BaseApplicationImpl.getApplication().getSharedPreferences("cmshow_zan", 0);
-              Calendar localCalendar = Calendar.getInstance();
-              ((SharedPreferences)localObject2).edit().putBoolean(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "apollo_today_has_vote" + (String)localObject1 + localCalendar.get(1) + localCalendar.get(2) + localCalendar.get(5), true).commit();
-              localJSONObject.put("result", 0);
-              localObject1 = new Bundle();
-              ((Bundle)localObject1).putString("writeRet", localJSONObject.toString());
-              this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject1);
-              this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-              return;
-            }
-            localJSONObject.put("result", 1);
-            localJSONObject.put("msg", "数据缺失");
-            continue;
-            QLog.e("Q.emoji.web.MessengerService", 2, "delFavAction json error + " + localJSONException.toString());
-          }
-          catch (JSONException localJSONException)
-          {
-            if (!QLog.isColorLevel()) {
-              break label781;
-            }
-          }
-          return;
-          if ("gameIntro".equals(localObject2))
-          {
-            localObject1 = ((JSONObject)localObject1).optJSONObject("data");
-            if (localObject1 != null)
-            {
-              i = ((JSONObject)localObject1).optInt("gameId");
-              BaseApplicationImpl.getContext().getSharedPreferences("apollo_sp", 0).edit().putBoolean("apollo_game_first_clk_" + i, false).commit();
-              localJSONException.put("result", 0);
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.emoji.web.MessengerService", 2, "gameIntro from web write, gameId:" + i);
-              }
-            }
-          }
-          else if ("lifeChange".equals(localObject2))
-          {
-            localObject1 = ((JSONObject)localObject1).optJSONObject("data");
-            if ((localObject1 != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
-            {
-              i = ((JSONObject)localObject1).optInt("gameId");
-              int j = ((JSONObject)localObject1).optInt("life");
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.emoji.web.MessengerService", 2, new Object[] { "lifeChange, gameId", Integer.valueOf(i), ", game coin count=" + j });
-              }
-              ApolloGameUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, j);
-              localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
-              if (localObject1 != null) {
-                ((MqqHandler)localObject1).obtainMessage(76).sendToTarget();
-              }
-              localJSONException.put("result", 0);
-            }
-            else
-            {
-              localJSONException.put("result", 1);
-              localJSONException.put("msg", "数据缺失");
-            }
-          }
-          else
-          {
-            if (!"danUpgrade".equals(localObject2)) {
-              break;
-            }
-            ((VasExtensionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71)).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c(), 128, "refreshAction");
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.emoji.web.MessengerService", 2, "ipc call danUpgrade,maybe have new slave action");
-            }
-            localJSONException.put("result", 0);
-          }
-        }
-        if (!"drawerAudio".equals(localObject2)) {
-          break;
-        }
-        localObject1 = ((JSONObject)localObject1).optJSONObject("data");
-      } while (localObject1 == null);
-      if (((JSONObject)localObject1).has("audio"))
-      {
-        i = ((JSONObject)localObject1).optInt("audio");
-        break label782;
-      }
-    }
+    Object localObject1 = (ChatMessage)paramCompoundButton.getTag();
+    if (localObject1 == null) {}
     for (;;)
     {
-      CardDrawerStatus.a(bool);
-      break;
-      QLog.e("ApolloJsApi", 1, "drawerVoice has no val");
-      i = 0;
-      break label782;
-      if (!"lastShopScheme".equals(localObject2)) {
-        break;
-      }
-      localObject1 = ((JSONObject)localObject1).optJSONObject("data");
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.emoji.web.MessengerService", 2, new Object[] { "lastShopScheme, data=", localObject1 });
-      }
-      if (localObject1 == null) {
-        break;
-      }
-      localObject1 = ((JSONObject)localObject1).optString("lastShopScheme");
-      ((ApolloManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(152)).c((String)localObject1);
-      break;
-      label781:
-      label782:
-      do
+      return;
+      if ((localObject1 instanceof MessageForPtt))
       {
-        bool = true;
-        break;
-        return;
-        if (i == 0) {
-          break;
+        localObject2 = MediaPlayerManager.a(BaseActivity.sTopActivity.app).a();
+        if ((localObject2 == localObject1) || (((localObject2 instanceof MessageForPtt)) && (((ChatMessage)localObject2).uniseq == ((ChatMessage)localObject1).uniseq))) {
+          MediaPlayerManager.a(BaseActivity.sTopActivity.app).c(false);
         }
-      } while (i != 1);
-      bool = true;
+      }
+      Object localObject2 = AIOLongShotHelper.a();
+      if ((localObject2 != null) && (((AIOLongShotHelper)localObject2).a()))
+      {
+        if ((paramBoolean != ((AIOLongShotHelper)localObject2).a((ChatMessage)localObject1)) && (BaseChatItemLayout.a != null)) {
+          BaseChatItemLayout.a.a((ChatMessage)localObject1, paramCompoundButton, paramBoolean);
+        }
+      }
+      else if (paramBoolean != arxu.a().a((ChatMessage)localObject1))
+      {
+        if (!paramBoolean) {
+          arxu.a().a((ChatMessage)localObject1, paramBoolean);
+        }
+        while (BaseChatItemLayout.a != null)
+        {
+          BaseChatItemLayout.a.a((ChatMessage)localObject1, paramCompoundButton, paramBoolean);
+          return;
+          if ((localObject1 instanceof MessageForFile))
+          {
+            localObject2 = apck.a(BaseActivity.sTopActivity.app, (MessageForFile)localObject1);
+            if ((((FileManagerEntity)localObject2).getCloudType() == 1) && (((FileManagerEntity)localObject2).status == 2))
+            {
+              localObject1 = paramCompoundButton.getContext().getString(2131627044);
+              bbmy.a(paramCompoundButton.getContext(), (CharSequence)localObject1, 0).b(((BaseActivity)paramCompoundButton.getContext()).getTitleBarHeight());
+              paramCompoundButton.setChecked(false);
+              return;
+            }
+          }
+          if ((localObject1 instanceof MessageForTroopFile))
+          {
+            localObject2 = (MessageForTroopFile)localObject1;
+            localObject2 = azjg.a(BaseActivity.sTopActivity.app, (MessageForTroopFile)localObject2);
+            if ((localObject2 != null) && ((((ayqd)localObject2).b == 0) || (((ayqd)localObject2).b == 1) || (((ayqd)localObject2).b == 2) || (((ayqd)localObject2).b == 3) || (((ayqd)localObject2).b == 4)))
+            {
+              localObject1 = paramCompoundButton.getContext().getString(2131627044);
+              bbmy.a(paramCompoundButton.getContext(), (CharSequence)localObject1, 0).b(((BaseActivity)paramCompoundButton.getContext()).getTitleBarHeight());
+              paramCompoundButton.setChecked(false);
+              return;
+            }
+          }
+          int i = arxu.a().a();
+          if (arxu.a().a((ChatMessage)localObject1, i))
+          {
+            if (arxu.a().a == 7) {}
+            for (localObject1 = paramCompoundButton.getContext().getString(2131632736, new Object[] { Integer.valueOf(i) });; localObject1 = paramCompoundButton.getContext().getString(2131632735, new Object[] { Integer.valueOf(i) }))
+            {
+              bbmy.a(paramCompoundButton.getContext(), (CharSequence)localObject1, 0).b(((BaseActivity)paramCompoundButton.getContext()).getTitleBarHeight());
+              paramCompoundButton.setChecked(false);
+              return;
+            }
+          }
+          arxu.a().a((ChatMessage)localObject1, paramBoolean);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acjw
  * JD-Core Version:    0.7.0.1
  */

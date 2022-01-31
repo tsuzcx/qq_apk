@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
+import aciy;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
@@ -9,7 +11,8 @@ import android.graphics.Paint.Style;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 
 public class MoveDistIndicateView
@@ -23,6 +26,8 @@ public class MoveDistIndicateView
   public int b;
   private Bitmap b;
   private int c;
+  private int d;
+  private int e;
   
   public MoveDistIndicateView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -35,11 +40,12 @@ public class MoveDistIndicateView
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     paramContext = getResources();
-    this.jdField_a_of_type_Int = AIOUtils.a(20.0F, paramContext);
-    this.jdField_b_of_type_Int = AIOUtils.a(34.0F, paramContext);
+    this.jdField_a_of_type_Int = aciy.a(29.0F, paramContext);
+    this.jdField_b_of_type_Int = aciy.a(42.0F, paramContext);
+    this.e = aciy.a(8.0F, paramContext);
     this.c = this.jdField_a_of_type_Int;
     if (QLog.isDevelopLevel()) {
-      QLog.d("AIOAudioPanel", 4, "init(), mRaidusMin:" + this.jdField_a_of_type_Int + ",mRaidusMax:" + this.jdField_b_of_type_Int);
+      QLog.d("MoveDistIndicateView", 4, "init(), mRaidusMin:" + this.jdField_a_of_type_Int + ",mRaidusMax:" + this.jdField_b_of_type_Int);
     }
   }
   
@@ -52,7 +58,7 @@ public class MoveDistIndicateView
     int k = paramCanvas.getSaveCount();
     paramCanvas.save();
     float f1;
-    if (this.c == this.jdField_b_of_type_Int) {
+    if (this.c > this.jdField_a_of_type_Int + this.e) {
       if (this.jdField_b_of_type_AndroidGraphicsBitmap != null)
       {
         f1 = this.jdField_b_of_type_Int / this.jdField_a_of_type_Int;
@@ -71,13 +77,29 @@ public class MoveDistIndicateView
       paramCanvas.restoreToCount(k);
       super.onDraw(paramCanvas);
       return;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-6710887);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
-      paramCanvas.drawCircle(m, n, this.c, this.jdField_a_of_type_AndroidGraphicsPaint);
-      continue;
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+      if (this.d == 1) {
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131101363));
+      }
+      for (;;)
       {
+        this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
+        paramCanvas.drawCircle(m, n, this.c, this.jdField_a_of_type_AndroidGraphicsPaint);
+        break;
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131101364));
+      }
+      if (this.c > this.jdField_a_of_type_Int)
+      {
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131101259));
+        this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
+        paramCanvas.drawCircle(m, n, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+      }
+      else
+      {
+        if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+          break;
+        }
         f1 = this.c / this.jdField_a_of_type_Int;
         this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
         m = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
@@ -93,17 +115,17 @@ public class MoveDistIndicateView
         paramCanvas.concat(this.jdField_a_of_type_AndroidGraphicsMatrix);
         paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, null);
       }
-      else
-      {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
-        paramCanvas.drawCircle(m, n, this.c, this.jdField_a_of_type_AndroidGraphicsPaint);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-2763307);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(2.0F);
-        paramCanvas.drawCircle(m, n, this.c, this.jdField_a_of_type_AndroidGraphicsPaint);
-      }
+    }
+    if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16711423);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
+      paramCanvas.drawCircle(m, n, this.c, this.jdField_a_of_type_AndroidGraphicsPaint);
+      break;
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
     }
   }
   
@@ -115,6 +137,9 @@ public class MoveDistIndicateView
   public void setLevel(int paramInt)
   {
     this.c = (this.jdField_a_of_type_Int + (this.jdField_b_of_type_Int - this.jdField_a_of_type_Int) * paramInt / 100);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("MoveDistIndicateView", 4, "setLevel(), max=" + this.jdField_b_of_type_Int + " min=" + this.jdField_a_of_type_Int + " mRadius=" + this.c + " type =" + this.d + " level=" + paramInt);
+    }
     if (paramInt == 100) {
       setPressed(true);
     }
@@ -130,10 +155,15 @@ public class MoveDistIndicateView
   {
     this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
   }
+  
+  public void setType(int paramInt)
+  {
+    this.d = paramInt;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.MoveDistIndicateView
  * JD-Core Version:    0.7.0.1
  */

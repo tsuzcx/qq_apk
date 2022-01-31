@@ -11,7 +11,7 @@ public class LeakInspector$InspectUUID
   public String digest = "";
   String toString = "";
   char[] uuid = null;
-  public WeakReference weakObj;
+  public WeakReference<Object> weakObj;
   
   public void recycle()
   {

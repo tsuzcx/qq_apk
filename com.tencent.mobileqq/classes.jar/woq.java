@@ -1,38 +1,82 @@
+import android.animation.ValueAnimator;
 import android.view.View;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
-import com.tencent.widget.OverScrollViewListener;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import com.tencent.biz.pubaccount.readinjoy.proteus.item.ProteusItemView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import java.util.HashSet;
 
 public class woq
-  implements OverScrollViewListener
+  extends beot
 {
-  public woq(TroopView paramTroopView) {}
+  private HashSet<Integer> a = new HashSet();
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  private void a(View paramView)
   {
-    TroopView.a(this.a).c(0L);
+    if ((paramView instanceof ProteusItemView))
+    {
+      paramView = ((ProteusItemView)paramView).a();
+      localValueAnimator = ValueAnimator.ofInt(new int[] { -paramView.getHeight(), 0 });
+      localValueAnimator.setDuration(300L);
+      localValueAnimator.addUpdateListener(new wos(this, paramView));
+      localValueAnimator.start();
+    }
+    do
+    {
+      return;
+      paramView = paramView.findViewById(2131309736);
+    } while (paramView == null);
+    ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { -paramView.getHeight(), 0 });
+    localValueAnimator.setDuration(500L);
+    localValueAnimator.addUpdateListener(new wot(this, paramView));
+    localValueAnimator.start();
   }
   
-  public boolean a(int paramInt, View paramView, ListView paramListView)
+  protected View a(View paramView, int paramInt)
   {
-    TroopView.a(this.a).a(0L);
-    TroopView.a(this.a, false);
-    TroopView.a(this.a);
-    TroopView.a(this.a, true);
-    return true;
+    View localView;
+    if (paramView == null) {
+      localView = null;
+    }
+    do
+    {
+      return localView;
+      localView = paramView;
+    } while (!this.a.contains(Integer.valueOf(paramInt)));
+    this.a.remove(Integer.valueOf(paramInt));
+    paramView.getViewTreeObserver().addOnPreDrawListener(new wor(this, paramView));
+    return paramView;
   }
   
-  public void b(int paramInt, View paramView, ListView paramListView)
+  public void c(int paramInt)
   {
-    TroopView.a(this.a).b(0L);
+    this.a.add(Integer.valueOf(paramInt));
+    notifyDataSetChanged();
   }
   
-  public void c(int paramInt, View paramView, ListView paramListView) {}
+  public int getCount()
+  {
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     woq
  * JD-Core Version:    0.7.0.1
  */

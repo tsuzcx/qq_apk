@@ -1,0 +1,116 @@
+{
+  "ReadInJoyDailyDynamicWeatherHeaderError": {
+    "view_type": "UIView",
+    "view_id": "id_daily_dynamic_header",
+    "layout_type": "layout_relative",
+    "direction": "vertical",
+    "default_visible": "YES",
+    "padding_right": "14",
+    "height": {
+      "type": "relative",
+      "value": "175"
+    },
+    "width": {
+      "type": "relative",
+      "value": "375"
+    },
+    "subviews": [
+      {
+        "view_type": "UIView",
+        "view_id": "id_temperature_container",
+        "layout_type": "layout_relative",
+        "default_visible": "YES",
+        "align_parent_bottom": "YES",
+        "margin_bottom": "10",
+        "height": {
+          "type": "relative",
+          "value": "62.5"
+        },
+        "width": {
+          "type": "match_parent"
+        },
+        "subviews": [
+          {
+            "view_type": "ProteusTickerView",
+            "view_id": "id_temperature",
+            "align_parent_center_vertical": "YES",
+            "default_visible": "YES",
+            "margin_left": "14",
+            "height": {
+              "type": "wrap_content"
+            },
+            "width": {
+              "type": "wrap_content"
+            },
+            "attributes": {
+              "setText:": "--°",
+              "setTextColorString:": "#FFFFFF",
+              "setBoldFontSizeString:": "54",
+              "setNumberOfLinesString:": "1"
+            }
+          },
+          {
+            "view_type": "UILabel",
+            "view_id": "id_error_reason",
+            "right_of_view": "id_temperature",
+            "margin_top": "9.5",
+            "margin_left": "8",
+            "height": {
+              "type": "wrap_content"
+            },
+            "width": {
+              "type": "wrap_content"
+            },
+            "attributes": {
+              "setText:": "$error_reason",
+              "setTextColorString:": "#FFFFFF",
+              "setFontSizeString:": "15",
+              "setNumberOfLinesString:": "1"
+            }
+          },
+          {
+            "view_type": "UILabel",
+            "view_id": "id_operation_text",
+            "right_of_view": "id_temperature",
+            "below_of_view": "id_error_reason",
+            "margin_left": "8",
+            "margin_top": "6.5",
+            "height": {
+              "type": "wrap_content"
+            },
+            "width": {
+              "type": "wrap_content"
+            },
+            "attributes": {
+              "setText:": "$operation_text",
+              "setTextColorString:": "#FFFFFF",
+              "setFontSizeString:": "15",
+              "setNumberOfLinesString:": "1"
+            }
+          },
+          {
+            "view_type": "UIImageView",
+            "view_id": "id_refresh_icon",
+            "margin_left": "7.3",
+            "margin_top": "6.5",
+            "below_of_view": "id_error_reason",
+            "right_of_view": "id_operation_text",
+            "default_visible": "YES",
+            "height": {
+              "type": "relative",
+              "value": "20"
+            },
+            "width": {
+              "type": "relative",
+              "value": "20"
+            },
+            "attributes": {
+              "loadImageWithPath:": "weather_refresh_white"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+

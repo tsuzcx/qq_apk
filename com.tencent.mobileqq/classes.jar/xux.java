@@ -1,58 +1,67 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.device.msg.data.MessageForDevLittleVideo;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import mqq.app.MobileQQ;
 
-public class xux
-  implements View.OnTouchListener
+class xux
+  implements begw
 {
-  public xux(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  xux(xuu paramxuu, MessageForDevLittleVideo paramMessageForDevLittleVideo, adpi paramadpi, begr parambegr) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void OnClick(View paramView, int paramInt)
   {
-    int i = paramMotionEvent.getAction();
-    paramMotionEvent.getX();
-    float f = paramMotionEvent.getY();
-    if (i == 0) {
-      this.a.b.setText(null);
+    int i = 1;
+    switch (paramInt)
+    {
     }
+    boolean bool;
+    label64:
     do
     {
-      return false;
-      if (i == 2)
-      {
-        if (f < this.a.a * -1)
-        {
-          this.a.a(false, false);
-          return true;
-        }
-        this.a.a(true, false);
-        return true;
+      this.jdField_a_of_type_Begr.dismiss();
+      return;
+      bool = badq.g(this.jdField_a_of_type_Xuu.a.getApplication().getApplicationContext());
+      paramView = this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo;
+      if (!bool) {
+        break;
       }
-      if (i == 3)
-      {
-        this.a.a(false, true);
-        return false;
-      }
-    } while (i != 1);
-    if (f < this.a.a * -1)
-    {
-      this.a.l = false;
-      this.a.a(false, true);
+      paramInt = 2002;
+      paramView.videoFileStatus = paramInt;
+      this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.videoFileProgress = 0;
+      this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.serial();
+      this.jdField_a_of_type_Xuu.a.a().a(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.frienduin, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.istroop, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.uniseq, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.msgData);
+    } while (!bool);
+    if (!bace.b(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.mThumbFilePath)) {
+      this.jdField_a_of_type_Xuu.c(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo);
     }
-    for (;;)
+    for (paramInt = 1;; paramInt = 0)
     {
-      this.a.b.setText(2131438183);
-      return false;
-      this.a.l = true;
-      this.a.a(true, true);
+      if (!bace.b(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.videoFileName))
+      {
+        this.jdField_a_of_type_Xuu.b(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo);
+        paramInt = i;
+      }
+      for (;;)
+      {
+        if (paramInt == 0) {
+          break label235;
+        }
+        this.jdField_a_of_type_Adpi.a.setFailedIconVisable(false, this.jdField_a_of_type_Xuu);
+        xuu.b(this.jdField_a_of_type_Xuu, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo, this.jdField_a_of_type_Adpi, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.videoFileProgress, false);
+        break;
+        paramInt = 2005;
+        break label64;
+      }
+      label235:
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     xux
  * JD-Core Version:    0.7.0.1
  */

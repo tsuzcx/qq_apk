@@ -1,19 +1,45 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.channel.NetworkRequest;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
 
 public class nfm
-  extends SimpleJob
+  extends BroadcastReceiver
 {
-  public nfm(QQStoryCmdHandler paramQQStoryCmdHandler, NetworkRequest paramNetworkRequest) {}
+  public nfm(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest);
-    return null;
+    paramContext = paramIntent.getAction();
+    if ("action_decode_finish".equals(paramContext))
+    {
+      paramContext = paramIntent.getStringExtra("uin");
+      paramIntent = (Bitmap)paramIntent.getParcelableExtra("bitmap");
+      if ((this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(paramContext)) && (paramIntent != null)) {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramIntent);
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while ((!"action_follow_status_finish".equals(paramContext)) || (!String.valueOf(paramIntent.getStringExtra("uin")).equals(this.a.jdField_a_of_type_JavaLangString)));
+      this.a.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("isFollow", false);
+    } while (this.a.jdField_a_of_type_AndroidWidgetTextView == null);
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(ajjy.a(2131635462));
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(ajjy.a(2131635474));
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130845999);
   }
 }
 

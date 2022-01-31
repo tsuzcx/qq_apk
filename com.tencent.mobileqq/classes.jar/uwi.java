@@ -1,29 +1,41 @@
-import android.graphics.Bitmap;
-import android.graphics.Rect;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
-import com.tencent.mobileqq.widget.PhotoProgressDrawable;
+import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.NeoVideoFilterPlayView;
+import com.tencent.qphone.base.util.QLog;
 
-class uwi
-  implements Runnable
+public class uwi
+  extends auyu
 {
-  uwi(uwh paramuwh, Bitmap paramBitmap) {}
+  public uwi(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
   
-  public void run()
+  public void a()
   {
-    if (DoodleMsgLayout.a(this.jdField_a_of_type_Uwh.a) != null)
-    {
-      PhotoProgressDrawable localPhotoProgressDrawable = new PhotoProgressDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap, 0, false);
-      localPhotoProgressDrawable.setBounds(new Rect(0, 0, AIOUtils.a(19.0F, this.jdField_a_of_type_Uwh.a.getResources()), AIOUtils.a(19.0F, this.jdField_a_of_type_Uwh.a.getResources())));
-      DoodleMsgLayout.a(this.jdField_a_of_type_Uwh.a).setImageDrawable(localPhotoProgressDrawable);
+    super.a();
+    this.a.a.n();
+    this.a.l();
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    super.a(paramInt1, paramInt2);
+  }
+  
+  public void a(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("DanceMachineQQBrowserActivity", 2, "onPlayFrame");
     }
-    DoodleMsgLayout.b(this.jdField_a_of_type_Uwh.a, false);
+    super.a(paramLong);
+    try
+    {
+      this.a.a(1000L * paramLong);
+      return;
+    }
+    catch (InterruptedException localInterruptedException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uwi
  * JD-Core Version:    0.7.0.1
  */

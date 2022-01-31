@@ -1,16 +1,8 @@
-import com.tencent.biz.qqstory.playmode.child.TroopStoryForAIOPlayMode;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.GiftServiceBean;
 
-public class nqd
-  implements Runnable
+public abstract interface nqd
 {
-  public nqd(TroopStoryForAIOPlayMode paramTroopStoryForAIOPlayMode) {}
-  
-  public void run()
-  {
-    this.a.h = false;
-    this.a.a.setCurrentItem(this.a.b, false);
-  }
+  public abstract void a(GiftServiceBean paramGiftServiceBean);
 }
 
 

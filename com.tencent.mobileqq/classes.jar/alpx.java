@@ -1,41 +1,114 @@
-import android.app.Activity;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.ControlPolicyUtil;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.open.downloadnew.MyAppApi.InstallParams;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import java.util.ArrayList;
 
 public class alpx
-  implements Runnable
+  extends BaseAdapter
 {
-  public alpx(MyAppApi paramMyAppApi, boolean paramBoolean, Activity paramActivity, String paramString) {}
+  public alpx(CardPicGalleryActivity paramCardPicGalleryActivity) {}
   
-  public void run()
+  public String a(int paramInt)
   {
-    LogUtility.c("MyAppApi", "---isAutoInstall:" + ControlPolicyUtil.c() + " url:" + ControlPolicyUtil.a() + " interval:" + ControlPolicyUtil.a());
-    boolean bool = ControlPolicyUtil.b();
-    if ((!this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.b()) && (bool))
+    if ((this.a.jdField_a_of_type_JavaUtilArrayList != null) && (paramInt < this.a.jdField_a_of_type_JavaUtilArrayList.size()) && (paramInt >= 0)) {
+      return (String)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public int getCount()
+  {
+    if (this.a.jdField_a_of_type_JavaUtilArrayList != null) {
+      return this.a.jdField_a_of_type_JavaUtilArrayList.size();
+    }
+    return 0;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if (paramView == null)
     {
-      LogUtility.c("MyAppApi", "---startDownloadYYB---");
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a = new MyAppApi.InstallParams(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi);
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.b = false;
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_AndroidOsBundle = null;
-      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_Int = -1;
-      if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, 0);
+      paramView = this.a.getLayoutInflater().inflate(2131495099, null);
+      paramViewGroup = new alpy();
+      paramViewGroup.a = ((URLImageView)paramView.findViewById(2131298386));
+      paramView.setTag(paramViewGroup);
+      localObject = a(paramInt);
+      if ((this.a.jdField_a_of_type_Int != 0) && (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
+        this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.a.getResources().getDrawable(this.a.jdField_a_of_type_Int);
       }
+      if (localObject == null) {}
     }
     else
     {
-      return;
+      for (;;)
+      {
+        try
+        {
+          localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+          if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
+            continue;
+          }
+          localObject = URLDrawable.getDrawable((String)localObject, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+          paramViewGroup.a.setImageDrawable((Drawable)localObject);
+        }
+        catch (Exception paramViewGroup)
+        {
+          URLDrawable.URLDrawableOptions localURLDrawableOptions;
+          paramViewGroup.printStackTrace();
+          continue;
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          return paramView;
+        }
+        if ((this.a.d != 1) || (this.a.jdField_a_of_type_Boolean)) {
+          continue;
+        }
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        return paramView;
+        paramViewGroup = (alpy)paramView.getTag();
+        break;
+        localObject = URLDrawable.getDrawable((String)localObject, localURLDrawableOptions);
+      }
     }
-    this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, 1);
+    try
+    {
+      if (this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+      {
+        localObject = URLDrawable.getDrawable("http://aaa", this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        paramViewGroup.a.setImageDrawable((Drawable)localObject);
+      }
+      for (;;)
+      {
+        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        return paramView;
+        paramViewGroup.a.setImageDrawable(null);
+      }
+    }
+    catch (Exception paramViewGroup)
+    {
+      for (;;)
+      {
+        paramViewGroup.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     alpx
  * JD-Core Version:    0.7.0.1
  */

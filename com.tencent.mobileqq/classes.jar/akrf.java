@@ -1,97 +1,145 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import com.tencent.mobileqq.vashealth.HealthStepCounterPlugin;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class akrf
-  implements SensorEventListener
+class akrf
+  implements akql
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private float b;
-  private float c;
-  private float d;
+  akrf(akrc paramakrc, long paramLong, aksh paramaksh) {}
   
-  private void a(long paramLong)
+  public void a(int paramInt, String paramString, aksc paramaksc)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Float = 0.0F;
-    this.b = 0.0F;
-    this.c = 0.0F;
-    this.d = 0.0F;
-    this.jdField_a_of_type_Int = 0;
-  }
-  
-  public void a()
-  {
-    HealthStepCounterPlugin.b = 1;
-    HealthStepCounterPlugin.a = true;
-  }
-  
-  public void b()
-  {
-    HealthStepCounterPlugin.b = 3;
-    QLog.d("HealthStepCounterPlugin", 1, "shaking end");
-  }
-  
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
-  {
-    float f1 = 0.0F;
-    float f2;
-    float f3;
-    float f4;
-    long l1;
-    long l2;
-    if (paramSensorEvent.sensor.getType() == 1)
-    {
-      f2 = paramSensorEvent.values[0];
-      f3 = paramSensorEvent.values[1];
-      f4 = paramSensorEvent.values[2];
-      l1 = System.currentTimeMillis();
-      l2 = l1 - this.jdField_a_of_type_Long;
-      if (l2 <= 5000L) {
-        break label66;
-      }
-      a(l1);
+    akrc.c(this.jdField_a_of_type_Akrc, false);
+    if (akrc.a(this.jdField_a_of_type_Akrc)) {
+      return;
     }
-    label66:
-    do
+    for (;;)
     {
-      do
+      try
       {
-        return;
-      } while (l2 <= 80L);
-      if ((this.jdField_a_of_type_Float != 0.0F) || (this.b != 0.0F) || (this.c != 0.0F)) {
-        f1 = Math.abs(f2 - this.jdField_a_of_type_Float) + Math.abs(f3 - this.b) + Math.abs(f4 - this.c);
+        localObject = this.jdField_a_of_type_Akrc;
+        if ((paramaksc == null) || (paramaksc.jdField_a_of_type_Akrn == null)) {
+          continue;
+        }
+        i = paramaksc.jdField_a_of_type_Akrn.c;
+        ((akrc)localObject).i = i;
+        akrc localakrc = this.jdField_a_of_type_Akrc;
+        if ((paramaksc == null) || (paramaksc.jdField_a_of_type_Akrn == null) || (paramaksc.jdField_a_of_type_Akrn.a == null) || (paramaksc.jdField_a_of_type_Akrn.a.length <= 0)) {
+          continue;
+        }
+        localObject = paramaksc.jdField_a_of_type_Akrn.a[0].jdField_a_of_type_JavaLangString;
+        localakrc.jdField_a_of_type_JavaLangString = ((String)localObject);
       }
-      this.d = (f1 + this.d);
-      if ((this.d > 180.0F) && (this.jdField_a_of_type_Int >= 3))
+      catch (Exception localException)
       {
-        a();
-        a(l1);
+        Object localObject;
+        long l1;
+        long l2;
+        boolean bool2;
+        boolean bool1;
+        QLog.i("AREngine_ARCloudControl", 1, "  mCloudTime  mImageId " + localException.getMessage());
+        continue;
+        int i = 0;
+        continue;
+        QLog.i("AREngine_ARCloudControl", 1, "MIGObjectClaasify not need  run requestToCheckLBSLocation.");
+        akrc.a(this.jdField_a_of_type_Akrc).a(paramInt, paramaksc);
         return;
       }
-      if (this.jdField_a_of_type_Int < 10)
+      if (this.jdField_a_of_type_Akrc.c != 0L) {
+        this.jdField_a_of_type_Akrc.jdField_j_of_type_Long = (System.currentTimeMillis() - this.jdField_a_of_type_Akrc.c);
+      }
+      if (this.jdField_a_of_type_Akrc.d != 0L)
       {
-        this.jdField_a_of_type_Int += 1;
-        this.jdField_a_of_type_Float = f2;
-        this.b = f3;
-        this.c = f4;
-        this.jdField_a_of_type_Long = l1;
-        return;
+        localObject = this.jdField_a_of_type_Akrc;
+        ((akrc)localObject).g += System.currentTimeMillis() - this.jdField_a_of_type_Akrc.d;
       }
-      a(l1);
-    } while (HealthStepCounterPlugin.b >= 3);
-    b();
+      if (akrc.a(this.jdField_a_of_type_Akrc) != null) {
+        akrc.a(this.jdField_a_of_type_Akrc).removeMessages(1);
+      }
+      l1 = System.currentTimeMillis();
+      l2 = this.jdField_a_of_type_Long;
+      QLog.i("AREngine_ARCloudControl", 1, "[DEBUG_SCAN_yt_face] onARCloudUploadImgComplete  retCode = " + paramInt + ", rspInfo = , sessionId = " + paramString + ",uploadCost = " + (l1 - l2));
+      QLog.i("AREngine_ARCloudControl", 1, String.format("selectImage total time cost:start Time is %s", new Object[] { "requestToUpload" }));
+      if (akrc.a(this.jdField_a_of_type_Akrc) == null) {
+        break;
+      }
+      if ((paramInt == 0) && (paramaksc != null) && ((akrn.a(paramaksc.jdField_a_of_type_Akrn)) || (akrs.a(paramaksc.jdField_a_of_type_Akrs)) || (aktj.a(paramaksc.jdField_a_of_type_Aktj)) || (akse.a(paramaksc.jdField_a_of_type_Akse)) || (aksk.a(paramaksc.jdField_a_of_type_Aksk))))
+      {
+        QLog.d("AREngine_ARCloudControl", 2, "mResult set:" + this.jdField_a_of_type_Akrc.jdField_j_of_type_Int);
+        this.jdField_a_of_type_Akrc.jdField_j_of_type_Int = 0;
+      }
+      if ((paramaksc != null) && (akrn.a(paramaksc.jdField_a_of_type_Akrn))) {
+        paramaksc.jdField_a_of_type_Akrn.b = this.jdField_a_of_type_Aksh.a.jdField_a_of_type_JavaLangString;
+      }
+      if ((paramaksc != null) && (akrs.a(paramaksc.jdField_a_of_type_Akrs))) {
+        paramaksc.jdField_a_of_type_Akrs.b = this.jdField_a_of_type_Aksh.a.jdField_a_of_type_JavaLangString;
+      }
+      if ((paramaksc != null) && (aksk.a(paramaksc.jdField_a_of_type_Aksk))) {
+        paramaksc.jdField_a_of_type_Aksk.b = this.jdField_a_of_type_Aksh.a.jdField_a_of_type_JavaLangString;
+      }
+      if (!akrc.c(this.jdField_a_of_type_Akrc))
+      {
+        bool2 = false;
+        bool1 = bool2;
+        if (paramInt == 0)
+        {
+          bool1 = bool2;
+          if (paramaksc != null) {
+            if ((!akrn.a(paramaksc.jdField_a_of_type_Akrn)) && (!akrs.a(paramaksc.jdField_a_of_type_Akrs)) && (!akse.a(paramaksc.jdField_a_of_type_Akse)) && (!akru.a(paramaksc.jdField_a_of_type_Akru)))
+            {
+              bool1 = bool2;
+              if (!aksk.a(paramaksc.jdField_a_of_type_Aksk)) {}
+            }
+            else
+            {
+              bool1 = true;
+            }
+          }
+        }
+        l1 = akrc.a(this.jdField_a_of_type_Akrc).b();
+        akpc.a().a(bool1, l1);
+        akrc.d(this.jdField_a_of_type_Akrc, true);
+      }
+      if ((!akrc.d(this.jdField_a_of_type_Akrc)) && (paramInt == 0) && (paramaksc != null) && ((akrn.a(paramaksc.jdField_a_of_type_Akrn)) || (akrs.a(paramaksc.jdField_a_of_type_Akrs)) || (akse.a(paramaksc.jdField_a_of_type_Akse)) || (akru.a(paramaksc.jdField_a_of_type_Akru)) || (aksk.a(paramaksc.jdField_a_of_type_Aksk))))
+      {
+        l1 = akrc.a(this.jdField_a_of_type_Akrc).b();
+        akpc.a().a(l1, this.jdField_a_of_type_Akrc.jdField_a_of_type_Akrj.c);
+        akrc.e(this.jdField_a_of_type_Akrc, true);
+      }
+      if (akrc.a(this.jdField_a_of_type_Akrc) != null) {
+        akrc.a(this.jdField_a_of_type_Akrc).add(paramString);
+      }
+      if ((this.jdField_a_of_type_Akrc.jdField_j_of_type_Int != 0) || (!aksc.a(this.jdField_a_of_type_Akrc.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.recognitions, paramaksc))) {
+        break label932;
+      }
+      if (this.jdField_a_of_type_Akrc.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo.switchLBSLocation != 1) {
+        break label917;
+      }
+      if ((paramaksc.jdField_a_of_type_Long == 128L) && ((paramaksc.jdField_a_of_type_Long != 128L) || (!akrc.a(this.jdField_a_of_type_Akrc).a(paramaksc.jdField_a_of_type_Aktj)))) {
+        continue;
+      }
+      i = 1;
+      if (i == 0) {
+        continue;
+      }
+      QLog.i("AREngine_ARCloudControl", 1, "normal process run requestToCheckLBSLocation.");
+      akrc.a(this.jdField_a_of_type_Akrc, paramInt, paramaksc);
+      return;
+      i = 0;
+      continue;
+      localObject = "";
+    }
+    label917:
+    akrc.a(this.jdField_a_of_type_Akrc).a(2, null);
+    return;
+    label932:
+    akrc.a(this.jdField_a_of_type_Akrc).a(paramInt, paramaksc);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akrf
  * JD-Core Version:    0.7.0.1
  */

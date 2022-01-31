@@ -1,40 +1,56 @@
-import android.text.TextUtils;
+import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ImageButton;
-import com.tencent.mobileqq.search.activity.ActiveEntitySearchActivity;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahwd
   implements View.OnClickListener
 {
-  public ahwd(ActiveEntitySearchActivity paramActiveEntitySearchActivity) {}
+  public ahwd(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.c();
-    this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setCursorVisible(false);
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.removeTextChangedListener(this.a);
-    if ((ActiveEntitySearchActivity.a(this.a) == 1) && (!TextUtils.isEmpty(this.a.b)))
+    if (bbmy.a() == 0)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setText(this.a.b);
-      ActiveEntitySearchActivity.a(this.a, ActiveEntitySearchActivity.a(this.a));
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.addTextChangedListener(this.a);
+      paramView = new akdz(this.a, this.a.app, QQSpecialFriendSettingActivity.a(this.a));
+      paramView.setOnDismissListener(new ahwe(this, paramView));
+      paramView.show();
+      awqx.b(null, "dc00898", "", "", "0X8009ACB", "0X8009ACB", 0, 0, "", "", "", "");
       return;
-      this.a.jdField_a_of_type_ComTencentMobileqqSearchViewQuickPinyinEditText.setText("");
-      ActiveEntitySearchActivity.a(this.a, 2);
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialFriendSettingActivity", 2, "finish all setings");
+    }
+    if (badq.g(this.a))
+    {
+      boolean bool1 = QQSpecialFriendSettingActivity.a(this.a).a();
+      boolean bool2 = QQSpecialFriendSettingActivity.b(this.a).a();
+      paramView = QQSpecialFriendSettingActivity.a(this.a);
+      String str = QQSpecialFriendSettingActivity.a(this.a);
+      int i = QQSpecialFriendSettingActivity.a(this.a);
+      paramView.a(str, new int[] { 2, 3 }, new boolean[] { bool1, bool2 }, new String[] { String.valueOf(i), null });
+      paramView = this.a.a.obtainMessage(8193);
+      paramView.obj = this.a.getString(2131633715);
+      this.a.a.sendMessage(paramView);
+      if ((bool1) && (bool2)) {}
+      for (paramView = "0";; paramView = "1")
+      {
+        awqx.b(null, "CliOper", "", "", "0X80050E2", "0X80050E2", 0, 0, paramView, "", "", "");
+        return;
+      }
+    }
+    paramView = this.a.a.obtainMessage(8195);
+    paramView.arg1 = 0;
+    paramView.arg2 = 2131626719;
+    this.a.a.sendMessage(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahwd
  * JD-Core Version:    0.7.0.1
  */

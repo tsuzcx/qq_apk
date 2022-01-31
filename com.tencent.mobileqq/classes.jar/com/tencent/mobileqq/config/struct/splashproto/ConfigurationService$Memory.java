@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class ConfigurationService$Memory
-  extends MessageMicro
+  extends MessageMicro<Memory>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "total", "process" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L) }, Memory.class);
   public final PBUInt64Field process = PBField.initUInt64(0L);

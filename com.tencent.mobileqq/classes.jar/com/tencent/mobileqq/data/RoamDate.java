@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
+import atmo;
+import atnz;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.util.Arrays;
 
 @uniqueConstraints(clause=ConflictClause.FAIL, columnNames="uin, date")
 public class RoamDate
-  extends Entity
+  extends atmo
 {
   public static final int LOCAL_INDEX_00 = 0;
   public static final int LOCAL_INDEX_01 = 1;
@@ -20,11 +20,11 @@ public class RoamDate
   public static final int SERVER_INDEX_11 = 3;
   private static final String TABLE_NAME = "MessageRoamDate";
   public String date;
-  @notColumn
+  @atnz
   public long[] lastMsgTime = new long[31];
   public byte[] lastMsgTimeData;
   public long locindex;
-  @notColumn
+  @atnz
   public long[] random;
   public byte[] randomData;
   public long serindex;
@@ -284,7 +284,7 @@ public class RoamDate
     }
   }
   
-  protected void postRead()
+  public void postRead()
   {
     int k = 0;
     int i = 0;
@@ -305,7 +305,7 @@ public class RoamDate
     }
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     int k = 0;
     int i = 0;

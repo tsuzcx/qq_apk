@@ -1,33 +1,26 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsTroopAdapter;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class wrm
-  implements View.OnTouchListener
+class wrm
+  implements Animation.AnimationListener
 {
-  public wrm(ContactsTroopAdapter paramContactsTroopAdapter, TextView paramTextView) {}
+  wrm(wrj paramwrj) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(0.5F);
-      continue;
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-      continue;
-      this.jdField_a_of_type_AndroidWidgetTextView.setAlpha(1.0F);
-    }
+    wrj.a(this.a).setVisibility(8);
+    wrj.a(this.a).setAlpha(1.0F);
+    wrj.a(this.a, false);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wrm
  * JD-Core Version:    0.7.0.1
  */

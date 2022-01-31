@@ -11,14 +11,14 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_cmd0x69f$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_refresh_backgroud_url = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField bytes_search_word = PBField.initRepeat(PBBytesField.__repeatHelper__);
-  public final PBRepeatMessageField rpt_channel_list = PBField.initRepeatMessage(oidb_cmd0x69f.ChannelInfo.class);
-  public final PBRepeatMessageField rpt_recomm_channel_list = PBField.initRepeatMessage(oidb_cmd0x69f.ChannelInfo.class);
-  public final PBRepeatField rpt_uint32_my_channel_id_list = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> bytes_search_word = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatMessageField<oidb_cmd0x69f.ChannelInfo> rpt_channel_list = PBField.initRepeatMessage(oidb_cmd0x69f.ChannelInfo.class);
+  public final PBRepeatMessageField<oidb_cmd0x69f.ChannelInfo> rpt_recomm_channel_list = PBField.initRepeatMessage(oidb_cmd0x69f.ChannelInfo.class);
+  public final PBRepeatField<Integer> rpt_uint32_my_channel_id_list = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
   public final PBUInt32Field uint32_channel_seq = PBField.initUInt32(0);
   public final PBUInt32Field uint32_req_channel_id = PBField.initUInt32(0);
   public final PBUInt64Field uint64_uin = PBField.initUInt64(0L);
@@ -32,7 +32,7 @@ public final class oidb_cmd0x69f$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x69f.oidb_cmd0x69f.RspBody
  * JD-Core Version:    0.7.0.1
  */

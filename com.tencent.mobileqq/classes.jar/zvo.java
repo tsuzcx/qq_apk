@@ -1,47 +1,42 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.HandlerThread;
-import android.os.IBinder;
-import android.os.Messenger;
-import android.util.SparseArray;
-import com.tencent.mobileqq.app.TroopQZoneUploadAlbumHandler;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.AddAccountActivity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class zvo
-  implements ServiceConnection
+  implements View.OnClickListener
 {
-  public zvo(TroopQZoneUploadAlbumHandler paramTroopQZoneUploadAlbumHandler) {}
+  public zvo(AccountManageActivity paramAccountManageActivity) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
-  {
-    TroopQZoneUploadAlbumHandler.a(this.a, 2);
-    TroopQZoneUploadAlbumHandler.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("UploadPhoto", 2, "onServiceConnected()...");
-    }
-    this.a.jdField_a_of_type_AndroidOsMessenger = new Messenger(paramIBinder);
-    this.a.b = new Messenger(this.a.jdField_a_of_type_AndroidOsHandler);
-    TroopQZoneUploadAlbumHandler.b(this.a);
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void onClick(View paramView)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("UploadPhoto", 2, "onServiceDisconnected()...");
+      QLog.d("Switch_Account", 2, "add account");
     }
-    this.a.jdField_a_of_type_AndroidOsMessenger = null;
-    TroopQZoneUploadAlbumHandler.a(this.a, 4);
-    this.a.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    this.a.b = null;
-    TroopQZoneUploadAlbumHandler.a(this.a, true);
-    if (TroopQZoneUploadAlbumHandler.a(this.a) != null) {
-      TroopQZoneUploadAlbumHandler.a(this.a).interrupt();
+    if (!atok.a().a(this.a.app, this.a)) {
+      return;
     }
+    if ((this.a.a != null) && (this.a.a.size() - 1 >= 8))
+    {
+      bbmy.a(this.a, 2131628389, 0).a();
+      return;
+    }
+    AccountManageActivity.a(this.a, axam.a(this.a.app));
+    paramView = new Intent();
+    paramView.setPackage(this.a.getPackageName());
+    paramView.setClass(this.a, AddAccountActivity.class);
+    this.a.startActivityForResult(paramView, 1000);
+    this.a.overridePendingTransition(2130771997, 2130771990);
+    axal.c(this.a.app, this.a);
+    awqx.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_add", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zvo
  * JD-Core Version:    0.7.0.1
  */

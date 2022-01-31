@@ -1,27 +1,18 @@
-import com.tencent.biz.qqstory.channel.CmdTaskManger;
-import com.tencent.biz.qqstory.network.request.GetFeedFeatureRequest;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.parallel.ParallelJobSegment;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class nzd
-  extends ParallelJobSegment
+  implements ViewBase.IBuilder
 {
-  public nzd(DetailFeedAllInfoPullSegment paramDetailFeedAllInfoPullSegment) {}
-  
-  protected void a(JobContext paramJobContext, String paramString)
+  public ViewBase build(VafContext paramVafContext)
   {
-    GetFeedFeatureRequest localGetFeedFeatureRequest = new GetFeedFeatureRequest();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramString);
-    localGetFeedFeatureRequest.a = localArrayList;
-    CmdTaskManger.a().a(localGetFeedFeatureRequest, new nze(this, paramJobContext, paramString));
+    return new nzc(paramVafContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nzd
  * JD-Core Version:    0.7.0.1
  */

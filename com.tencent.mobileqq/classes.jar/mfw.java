@@ -1,18 +1,19 @@
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class mfw
-  implements Runnable
+class mfw
+  implements View.OnClickListener
 {
-  public mfw(TextView paramTextView, StringBuilder paramStringBuilder) {}
+  mfw(mfu parammfu) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangStringBuilder);
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mfw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/gk" android:layout_width="fill_parent" android:layout_height="95.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ProgressBar android:id="@id/g1f" android:layout_width="fill_parent" android:layout_height="2.0dip" android:progressDrawable="@drawable/anq" style="?android:progressBarStyleHorizontal" />
+    <TextView android:textSize="12.0dip" android:textColor="#ff808080" android:id="@id/isr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/a4i" android:layout_below="@id/g1f" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="8.0dip" android:layout_below="@id/isr">
+        <ImageView android:id="@id/bat" android:visibility="visible" android:layout_width="50.0dip" android:layout_height="50.0dip" android:src="@drawable/fn1" />
+        <ImageView android:id="@id/g1u" android:visibility="invisible" android:layout_width="50.0dip" android:layout_height="50.0dip" />
+        <ImageView android:id="@id/baz" android:visibility="gone" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="5.0dip" android:layout_marginTop="5.0dip" />
+        <LinearLayout android:orientation="vertical" android:id="@id/bgz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_toRightOf="@id/bat">
+            <TextView android:textSize="17.0dip" android:textColor="#ff000000" android:id="@id/b2c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-5.0dip" android:text="" />
+            <TextView android:textSize="12.0dip" android:textColor="#ff000000" android:id="@id/b2d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+            <TextView android:textSize="12.0dip" android:textColor="#ffa6a6a6" android:id="@id/b2_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="" />
+        </LinearLayout>
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true">
+            <ProgressBar android:layout_gravity="center_vertical" android:id="@id/iqe" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="4.0dip" android:indeterminateDrawable="@drawable/jt" />
+            <Button android:id="@id/c5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a4g" style="@style/i0" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class appoint_define$HotTopic
-  extends MessageMicro
+  extends MessageMicro<HotTopic>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 48, 58, 66, 74 }, new String[] { "uint64_id", "str_title", "uint64_topic_type", "uint64_total", "uint64_times", "uint64_history_times", "str_bg_url", "str_url", "str_extra_info" }, new Object[] { Long.valueOf(0L), "", Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), "", "", "" }, HotTopic.class);
   public final PBStringField str_bg_url = PBField.initString("");

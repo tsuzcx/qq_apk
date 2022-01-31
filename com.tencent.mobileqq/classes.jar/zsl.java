@@ -1,21 +1,27 @@
-import com.tencent.mobileqq.app.QQGAudioMsgHandler;
-import cooperation.groupvideo.GroupVideoWrapper;
-import cooperation.groupvideo.GroupVideoWrapper.OnGVideoReadyListener;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
+import com.tribe.async.async.JobSegment;
 
 class zsl
-  implements GroupVideoWrapper.OnGVideoReadyListener
+  extends armu<JobSegment>
 {
-  zsl(zsk paramzsk) {}
-  
-  public void a(GroupVideoWrapper paramGroupVideoWrapper)
+  zsl(zsk paramzsk, JobSegment paramJobSegment)
   {
-    paramGroupVideoWrapper.a(this.a.a.a);
-    paramGroupVideoWrapper.a();
+    super(paramJobSegment);
+  }
+  
+  public void a(JobSegment paramJobSegment, boolean paramBoolean, armr paramarmr)
+  {
+    if (paramBoolean)
+    {
+      zsk.a(this.a, paramarmr);
+      return;
+    }
+    zsk.a(this.a, new AppInfoError(5, "appInfo error"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zsl
  * JD-Core Version:    0.7.0.1
  */

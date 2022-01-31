@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x5d2$FriendInfo
-  extends MessageMicro
+  extends MessageMicro<FriendInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field age = PBField.initUInt32(0);
@@ -27,7 +27,7 @@ public final class oidb_0x5d2$FriendInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x5d2.oidb_0x5d2.FriendInfo
  * JD-Core Version:    0.7.0.1
  */

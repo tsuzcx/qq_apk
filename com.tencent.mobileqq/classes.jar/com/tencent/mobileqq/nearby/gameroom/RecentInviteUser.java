@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class RecentInviteUser
-  extends Entity
-  implements Comparable
+  extends atmo
+  implements Comparable<RecentInviteUser>
 {
   public String lastInviteId;
   public long lastInviteTime;
   public String uin;
   public int uinType;
-  @unique
+  @atoc
   public String uniKey;
   
   public static String getKey(int paramInt, String paramString)

@@ -1,37 +1,74 @@
-import android.app.Activity;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.model.QueryCallback;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.PokePanel;
+import com.tencent.mobileqq.activity.aio.PokePanel.3.1;
+import com.tencent.mobileqq.activity.aio.PokePanel.3.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
+import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
-public final class acnm
-  implements QueryCallback
+public class acnm
+  extends VasQuickUpdateManager.CallBacker
 {
-  public acnm(SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface, int paramInt, Activity paramActivity) {}
+  public acnm(PokePanel paramPokePanel) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    if ((paramEmoticonPackage != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1008) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1000) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1001) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 10002) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 10004) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1002) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1003) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1004) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1005) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1006))
+    boolean bool3 = true;
+    boolean bool1 = true;
+    boolean bool2 = false;
+    if (paramLong == 21L)
     {
-      paramEmoticonPackage = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
-      if (paramEmoticonPackage != null) {
-        paramEmoticonPackage.obtainMessage(22, String.valueOf(this.jdField_a_of_type_Int)).sendToTarget();
+      if ((!paramString1.equals("poke.effectList")) || (paramInt1 != 0)) {
+        break label107;
       }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8006FFE", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Int), "", "");
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.aio.PokePanel", 2, "download vas poke list, refresh now.");
+      }
+      paramString1 = paramVasQuickUpdateManager.app;
+      ThreadManager.getUIHandler().post(new PokePanel.3.1(this, paramString1));
+      paramString1 = "";
+      paramString2 = "";
+      bool1 = bool2;
     }
-    EmojiHomeUiPlugin.openEmojiDetailPage(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 8, String.valueOf(this.jdField_a_of_type_Int), false, true);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8006FFF", 0, 0, String.valueOf(this.jdField_a_of_type_Int), String.valueOf(this.jdField_a_of_type_Int), "", "");
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(paramString2)) {
+        ThreadManager.getUIHandler().post(new PokePanel.3.2(this, paramString2, paramString1, bool1));
+      }
+      return;
+      label107:
+      if (paramString1.startsWith("poke.item.effect."))
+      {
+        paramString1 = paramString1.substring("poke.item.effect.".length(), paramString1.length());
+        if (paramInt1 != 0) {}
+        for (;;)
+        {
+          paramString2 = "poke.item.effect.";
+          break;
+          bool1 = false;
+        }
+      }
+      if (paramString1.startsWith("poke.item.res."))
+      {
+        paramString1 = paramString1.substring("poke.item.res.".length(), paramString1.length());
+        if (paramInt1 != 0) {}
+        for (bool1 = bool3;; bool1 = false)
+        {
+          paramString2 = "poke.item.res.";
+          break;
+        }
+      }
+      paramString1 = "";
+      paramString2 = "";
+      bool1 = bool2;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acnm
  * JD-Core Version:    0.7.0.1
  */

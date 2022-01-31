@@ -1,26 +1,28 @@
 package com.tencent.biz.pubaccount.readinjoy.view;
 
 import android.content.Context;
-import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.view.View;
 import android.view.ViewConfiguration;
-import android.view.ViewParent;
 import com.tencent.widget.Gallery;
+import qqk;
+import qql;
 
 public class ReadInJoyGallery
   extends Gallery
 {
   public static final String a;
+  float jdField_a_of_type_Float;
+  int jdField_a_of_type_Int;
   ViewConfiguration jdField_a_of_type_AndroidViewViewConfiguration = ViewConfiguration.get(getContext());
+  protected qqk a;
+  private qql jdField_a_of_type_Qql;
   boolean jdField_a_of_type_Boolean = false;
-  private long b;
-  private float jdField_g_of_type_Float;
-  private boolean jdField_g_of_type_Boolean;
-  private float jdField_h_of_type_Float;
-  private boolean jdField_h_of_type_Boolean;
-  private boolean i;
+  float jdField_b_of_type_Float;
+  boolean jdField_b_of_type_Boolean = false;
+  private boolean j;
+  private boolean k;
+  private int l = 1;
   
   static
   {
@@ -30,184 +32,168 @@ public class ReadInJoyGallery
   public ReadInJoyGallery(Context paramContext)
   {
     super(paramContext);
+    K_();
   }
   
   public ReadInJoyGallery(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    K_();
   }
   
   public ReadInJoyGallery(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+    K_();
   }
   
-  public boolean a()
+  protected void K_()
   {
-    return System.currentTimeMillis() - this.b < 350L;
+    setMaxScale(2.147484E+009F);
+    this.jdField_a_of_type_Int = (ViewConfiguration.get(getContext()).getScaledTouchSlop() / 3);
+  }
+  
+  public void a(int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    super.a(paramInt1, paramInt2, paramBoolean);
+    if (this.jdField_a_of_type_Qql != null) {
+      this.jdField_a_of_type_Qql.a(paramInt1, paramInt2);
+    }
   }
   
   public boolean b()
-  {
-    if (this.jdField_a_of_type_AndroidViewView == null) {}
-    label121:
-    label124:
-    for (;;)
-    {
-      return false;
-      if ((this.jdField_a_of_type_AndroidViewView.getTag(2131296392) == null) || (this.jdField_a_of_type_AndroidViewView.getTag(2131296385) == null)) {
-        break;
-      }
-      float f = ((Float)this.jdField_a_of_type_AndroidViewView.getTag(2131296385)).floatValue();
-      int j;
-      if (Math.abs(a(this.jdField_a_of_type_AndroidViewView) - f) >= 1.0E-005F)
-      {
-        j = 1;
-        Rect localRect = new Rect();
-        this.jdField_a_of_type_AndroidViewView.getLocalVisibleRect(localRect);
-        if (Math.abs(localRect.top) > 1.0E-005F) {
-          break label121;
-        }
-      }
-      for (int k = 1;; k = 0)
-      {
-        if ((j == 0) && (k != 0)) {
-          break label124;
-        }
-        return true;
-        j = 0;
-        break;
-      }
-    }
-    return super.b();
-  }
-  
-  public boolean c()
   {
     return true;
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    int j = paramMotionEvent.getAction();
-    if (j == 0)
+    boolean bool = true;
+    switch (paramMotionEvent.getAction())
     {
-      this.jdField_g_of_type_Float = paramMotionEvent.getRawX();
-      this.jdField_h_of_type_Float = paramMotionEvent.getRawY();
-      this.jdField_h_of_type_Boolean = false;
-      this.jdField_g_of_type_Boolean = false;
-      this.i = false;
-      getParent().requestDisallowInterceptTouchEvent(true);
+    case 1: 
+    case 3: 
+    default: 
+      bool = super.dispatchTouchEvent(paramMotionEvent);
     }
-    for (;;)
-    {
-      return super.dispatchTouchEvent(paramMotionEvent);
-      if (j == 2)
-      {
-        float f1 = paramMotionEvent.getRawX() - this.jdField_g_of_type_Float;
-        float f2 = paramMotionEvent.getRawY() - this.jdField_h_of_type_Float;
-        if ((Math.max(Math.abs(f1), Math.abs(f2)) > this.jdField_a_of_type_AndroidViewViewConfiguration.getScaledTouchSlop()) && (!this.jdField_h_of_type_Boolean) && (!this.jdField_g_of_type_Boolean) && ((f1 != 0.0F) || (f2 != 0.0F))) {
-          if (Math.abs(f1) >= Math.abs(f2))
-          {
-            this.jdField_h_of_type_Boolean = true;
-            if (f1 < 0.0F) {
-              this.i = true;
-            }
-          }
-          else
-          {
-            this.jdField_g_of_type_Boolean = true;
-          }
-        }
-      }
-    }
-  }
-  
-  public boolean onTouchEvent(MotionEvent paramMotionEvent)
-  {
-    boolean bool2 = true;
-    int j = paramMotionEvent.getAction();
     float f1;
     float f2;
-    ViewParent localViewParent;
-    boolean bool1;
-    if (j == 2)
+    do
     {
-      f1 = paramMotionEvent.getRawX() - this.jdField_g_of_type_Float;
-      f2 = paramMotionEvent.getRawY() - this.jdField_h_of_type_Float;
-      j = getSelectedItemPosition();
-      getCount();
-      if (paramMotionEvent.getPointerCount() == 1) {
-        if ((Math.abs(f1) >= Math.abs(f2)) || (this.jdField_h_of_type_Boolean)) {
-          if ((j == 0) && (f1 > 0.0F) && (!b()))
+      return bool;
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Float = paramMotionEvent.getX();
+      this.jdField_b_of_type_Float = paramMotionEvent.getY();
+      this.j = false;
+      break;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        if (this.jdField_b_of_type_Boolean)
+        {
+          super.dispatchTouchEvent(paramMotionEvent);
+          return true;
+        }
+        return super.dispatchTouchEvent(paramMotionEvent);
+      }
+      f1 = paramMotionEvent.getX() - this.jdField_a_of_type_Float;
+      f2 = paramMotionEvent.getY() - this.jdField_b_of_type_Float;
+    } while ((Math.abs(f1) <= this.jdField_a_of_type_Int) && (Math.abs(f2) <= this.jdField_a_of_type_Int));
+    this.jdField_a_of_type_Boolean = true;
+    if (Math.abs(f1) > Math.abs(f2))
+    {
+      this.jdField_b_of_type_Boolean = true;
+      this.j = true;
+      if (f1 < 0.0F) {}
+      for (int i = 1;; i = 2)
+      {
+        this.l = i;
+        super.dispatchTouchEvent(paramMotionEvent);
+        return true;
+      }
+    }
+    if (this.d)
+    {
+      this.jdField_b_of_type_Boolean = true;
+      return super.dispatchTouchEvent(paramMotionEvent);
+    }
+    this.jdField_b_of_type_Boolean = false;
+    return super.dispatchTouchEvent(paramMotionEvent);
+  }
+  
+  public void forceLayout()
+  {
+    super.forceLayout();
+  }
+  
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  {
+    if (this.jdField_a_of_type_Qqk != null) {
+      this.jdField_a_of_type_Qqk.a();
+    }
+    return super.onDoubleTap(paramMotionEvent);
+  }
+  
+  public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
+  {
+    if (this.k)
+    {
+      if (paramMotionEvent.getPointerCount() >= 2) {}
+      do
+      {
+        do
+        {
+          return false;
+          switch (paramMotionEvent.getAction())
           {
-            if ((a()) || (this.i)) {
-              break label354;
-            }
-            localViewParent = getParent();
-            localViewParent.requestDisallowInterceptTouchEvent(false);
-            localViewParent = localViewParent.getParent();
-            bool1 = bool2;
-            if (localViewParent != null)
+          case 3: 
+          default: 
+            return super.onInterceptTouchEvent(paramMotionEvent);
+          case 0: 
+            onTouchEvent(paramMotionEvent);
+            return false;
+          case 1: 
+            if (this.jdField_a_of_type_Boolean)
             {
-              localViewParent.requestDisallowInterceptTouchEvent(true);
-              bool1 = bool2;
+              if (this.j) {
+                return super.onInterceptTouchEvent(paramMotionEvent);
+              }
+              onTouchEvent(paramMotionEvent);
+              return false;
             }
+            paramMotionEvent = MotionEvent.obtain(paramMotionEvent);
+            paramMotionEvent.setAction(3);
+            onTouchEvent(paramMotionEvent);
+            return false;
           }
+        } while (!this.jdField_a_of_type_Boolean);
+        if (!this.k) {
+          break;
         }
-      }
+      } while ((!this.j) || (this.l != 2));
+      return super.onInterceptTouchEvent(paramMotionEvent);
+      return super.onInterceptTouchEvent(paramMotionEvent);
     }
-    for (;;)
-    {
-      bool2 = bool1;
-      if (!bool1) {
-        bool2 = bool1 | super.onTouchEvent(paramMotionEvent);
-      }
-      return bool2;
-      if ((j == getCount() - 1) && (f1 < 0.0F))
-      {
-        localViewParent = getParent();
-        localViewParent.requestDisallowInterceptTouchEvent(false);
-        localViewParent = localViewParent.getParent();
-        bool1 = bool2;
-        if (localViewParent != null)
-        {
-          localViewParent.requestDisallowInterceptTouchEvent(true);
-          bool1 = bool2;
-        }
-      }
-      else
-      {
-        getParent().requestDisallowInterceptTouchEvent(true);
-        bool1 = false;
-        continue;
-        if ((!b()) && (f2 > 0.0F))
-        {
-          getParent().requestDisallowInterceptTouchEvent(false);
-          localViewParent = getParent().getParent();
-          bool1 = bool2;
-          if (localViewParent != null)
-          {
-            localViewParent.requestDisallowInterceptTouchEvent(true);
-            bool1 = bool2;
-          }
-        }
-        else
-        {
-          getParent().requestDisallowInterceptTouchEvent(true);
-          bool1 = false;
-          continue;
-          getParent().requestDisallowInterceptTouchEvent(true);
-          bool1 = false;
-          continue;
-          if (j == 1) {
-            this.b = System.currentTimeMillis();
-          }
-          label354:
-          bool1 = false;
-        }
-      }
-    }
+    return super.onInterceptTouchEvent(paramMotionEvent);
+  }
+  
+  public void requestLayout()
+  {
+    super.requestLayout();
+  }
+  
+  public void setIsListPage(boolean paramBoolean)
+  {
+    this.k = paramBoolean;
+  }
+  
+  public void setOnDoubleTapListener(qqk paramqqk)
+  {
+    this.jdField_a_of_type_Qqk = paramqqk;
+  }
+  
+  public void setOnScrollChangeListener(qql paramqql)
+  {
+    this.jdField_a_of_type_Qql = paramqql;
   }
 }
 

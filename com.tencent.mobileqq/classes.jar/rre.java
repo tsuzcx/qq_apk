@@ -1,21 +1,24 @@
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class rre
-  implements Runnable
+class rre
+  implements DialogInterface.OnCancelListener
 {
-  public rre(AssociatedAccountActivity paramAssociatedAccountActivity) {}
+  rre(rrd paramrrd) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.a.a != null) {
-      this.a.a.springBackOverScrollHeaderView();
+    if (QLog.isColorLevel()) {
+      QLog.d("GalleryShareHelper", 2, "mShareActionSheet cancle button OnClick");
     }
+    rrd.a(this.a, -1, -1, true);
+    rrd.b(this.a, -1, -1, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rre
  * JD-Core Version:    0.7.0.1
  */

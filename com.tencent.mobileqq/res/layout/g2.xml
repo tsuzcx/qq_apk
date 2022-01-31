@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.widget.FitSystemWindowsRelativeLayout android:id="@id/ir" android:background="@drawable/b4p" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.XPanelContainer android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true">
+        <RelativeLayout android:id="@id/aua" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mobileqq.bubble.ChatXListView android:id="@id/listView1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="#00000000" android:transcriptMode="normal" android:divider="@null" android:layout_above="@id/dme" />
+            <com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/fi5" android:paddingLeft="7.0dip" android:paddingRight="7.0dip" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
+            <RelativeLayout android:id="@id/dme" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/fi5">
+                <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:id="@id/inputBar" android:background="@drawable/b4q" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="52.0dip">
+                    <LinearLayout android:layout_gravity="bottom" android:background="@drawable/gya" android:paddingLeft="12.0dip" android:paddingRight="32.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_weight="1.0">
+                        <com.tencent.widget.XEditTextEx android:textSize="16.0dip" android:textColor="@color/nm" android:id="@id/input" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="36.0dip" android:maxLines="6" android:maxLength="@integer/o" android:shadowColor="@color/dn" android:shadowDx="0.0" android:shadowDy="1.0" android:shadowRadius="1.0" android:layout_weight="1.0" android:inputType="textMultiLine" android:contentDescription="@string/kg8" android:textSelectHandle="@drawable/h57" android:textCursorDrawable="@drawable/bc" />
+                    </LinearLayout>
+                    <LinearLayout android:layout_gravity="bottom" android:id="@id/cq8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="14.0dip" android:layout_marginBottom="2.0dip">
+                        <com.tencent.widget.PatchedButton android:enabled="false" android:textSize="14.0dip" android:textColor="@color/nl" android:layout_gravity="bottom" android:id="@id/fun_btn" android:background="@drawable/dk" android:layout_width="60.0dip" android:layout_height="@dimen/ad9" android:text="@string/a1p" />
+                    </LinearLayout>
+                </LinearLayout>
+                <ImageButton android:id="@id/kc" android:background="@drawable/trans" android:visibility="gone" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginRight="82.0dip" android:layout_marginBottom="12.0dip" android:src="@drawable/forward_dialog_new_edit_emoji" android:scaleType="centerInside" android:layout_alignBottom="@id/inputBar" android:layout_alignParentRight="true" android:contentDescription="@string/kg9" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </com.tencent.widget.XPanelContainer>
+    <RelativeLayout android:orientation="horizontal" android:id="@id/rlCommenTitle" android:background="@drawable/skin_header_bar_bg_mini" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height">
+        <RelativeLayout android:id="@id/ivTitleBtnLeft" android:layout_width="40.0dip" android:layout_height="fill_parent">
+            <com.tencent.widget.FadeIconImageView android:id="@id/df9" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/mv" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <RelativeLayout android:gravity="center_vertical" android:id="@id/jp8" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="40.0dip" android:layout_toLeftOf="@id/ibj">
+            <TextView android:textSize="19.0dip" android:textColor="@color/bp" android:ellipsize="end" android:gravity="center" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@null" android:singleLine="true" android:layout_centerHorizontal="true" />
+            <com.tencent.mobileqq.widget.CommonTextView android:textSize="10.0dip" android:textColor="@color/bp" android:ellipsize="end" android:gravity="center" android:id="@id/title_sub" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/kg7" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/title" android:layout_centerHorizontal="true" android:alpha="0.8" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/ibj" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+            <com.tencent.widget.FadeIconImageView android:id="@id/ivTitleBtnRightCall" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:scaleType="center" android:layout_centerVertical="true" />
+            <com.tencent.widget.FadeIconImageView android:id="@id/ivTitleBtnRightImage" android:background="@drawable/gvo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="center" android:layout_toRightOf="@id/ivTitleBtnRightCall" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <View android:id="@id/bmt" android:background="#ffdbdde4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.70000005dip" android:layout_below="@id/rlCommenTitle" />
+    <RelativeLayout android:id="@id/cy5" android:background="@drawable/mt" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/bmt" />
+</com.tencent.widget.FitSystemWindowsRelativeLayout>

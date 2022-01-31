@@ -1,28 +1,21 @@
-import android.graphics.PointF;
-import com.tencent.mobileqq.worldcup.TouchSliceView;
-import java.util.Deque;
+import android.graphics.Bitmap;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
-public class alfs
-  implements Runnable
+class alfs
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public alfs(TouchSliceView paramTouchSliceView) {}
+  alfs(alfr paramalfr) {}
   
-  public void run()
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    if ((PointF)TouchSliceView.a(this.a).pollFirst() != null)
-    {
-      this.a.postInvalidate();
-      this.a.postDelayed(this.a.a, 50);
+    if (paramBitmap != null) {
+      alfo.a(this.a.jdField_a_of_type_Alfo, paramBitmap, this.a.jdField_a_of_type_AndroidContentContext);
     }
-    while (!TouchSliceView.a(this.a)) {
-      return;
-    }
-    this.a.postDelayed(this.a.a, 50);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alfs
  * JD-Core Version:    0.7.0.1
  */

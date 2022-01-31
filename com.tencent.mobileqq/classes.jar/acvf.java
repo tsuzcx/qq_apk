@@ -1,36 +1,23 @@
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class acvf
-  implements Runnable
+  extends arvh
 {
-  acvf(acvc paramacvc) {}
-  
-  public void run()
+  acvf(acve paramacve, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, String paramString)
   {
-    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    try
-    {
-      String str = (String)this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.a.getText();
-      if ((str == null) || (str.length() == 0)) {
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Object localObject = null;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.a.clearAnimation();
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFilePreviewActivity.a.setVisibility(0);
-    }
+    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.a.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acvf
  * JD-Core Version:    0.7.0.1
  */

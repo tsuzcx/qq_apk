@@ -3,10 +3,7 @@ package cooperation.qzone.report.lp;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import ange;
-import angf;
-import angg;
-import angh;
+import bgck;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -28,13 +25,13 @@ public class LpReportManager
   private static final String TAG = "LpReport.LpReportManager";
   private static LpReportManager lpReportManager;
   private static long startTime = ;
-  ConcurrentLinkedQueue mReportRunners = new ConcurrentLinkedQueue();
-  public volatile int mRunningTaskNum = 0;
+  ConcurrentLinkedQueue<LpReportManager.ReportRunner> mReportRunners = new ConcurrentLinkedQueue();
+  volatile int mRunningTaskNum = 0;
   private LpReportInfos storedClicks = new LpReportInfos();
   
-  private void addReportTask(angh paramangh)
+  private void addReportTask(LpReportManager.ReportRunner paramReportRunner)
   {
-    this.mReportRunners.offer(paramangh);
+    this.mReportRunners.offer(paramReportRunner);
     runNext();
   }
   
@@ -130,10 +127,10 @@ public class LpReportManager
     {
       if (BaseApplicationImpl.sProcessId == 1)
       {
-        addReportTask(new angh(this, paramInt, paramLpReportInfo, paramBoolean1, paramBoolean2));
+        addReportTask(new LpReportManager.ReportRunner(this, paramInt, paramLpReportInfo, paramBoolean1, paramBoolean2));
         return;
       }
-      QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new ange(this, paramInt, paramLpReportInfo, paramBoolean1, paramBoolean2));
+      QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new LpReportManager.1(this, paramInt, paramLpReportInfo, paramBoolean1, paramBoolean2));
       return;
     }
     report(paramInt, paramLpReportInfo, paramBoolean1, paramBoolean2);
@@ -143,11 +140,11 @@ public class LpReportManager
   {
     if (this.mRunningTaskNum < 2)
     {
-      angh localangh = (angh)this.mReportRunners.poll();
-      if (localangh != null)
+      LpReportManager.ReportRunner localReportRunner = (LpReportManager.ReportRunner)this.mReportRunners.poll();
+      if (localReportRunner != null)
       {
         this.mRunningTaskNum += 1;
-        ThreadManager.excute(localangh, 64, null, true);
+        ThreadManager.excute(localReportRunner, 64, null, true);
       }
     }
   }
@@ -155,6 +152,11 @@ public class LpReportManager
   public void reportToDC001831(LpReportInfo_dc01831 paramLpReportInfo_dc01831, boolean paramBoolean1, boolean paramBoolean2)
   {
     reportAsync(13, paramLpReportInfo_dc01831, paramBoolean1, paramBoolean2);
+  }
+  
+  public void reportToDC00307(LpReportInfo_dc00307 paramLpReportInfo_dc00307, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    reportAsync(57, paramLpReportInfo_dc00307, paramBoolean1, paramBoolean2);
   }
   
   public void reportToDC00321(LpReportInfo_dc00321 paramLpReportInfo_dc00321, boolean paramBoolean1, boolean paramBoolean2)
@@ -247,6 +249,31 @@ public class LpReportManager
     reportAsync(47, paramLpReport_Retention_dc03208, paramBoolean1, paramBoolean2);
   }
   
+  public void reportToDC03701(LpReportInfo_dc03701 paramLpReportInfo_dc03701, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    reportAsync(50, paramLpReportInfo_dc03701, paramBoolean1, paramBoolean2);
+  }
+  
+  public void reportToDC03950(LpReportInfo_dc03950 paramLpReportInfo_dc03950, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    reportAsync(56, paramLpReportInfo_dc03950, paramBoolean1, paramBoolean2);
+  }
+  
+  public void reportToDC04021(LpReportInfo_dc04021 paramLpReportInfo_dc04021, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    reportAsync(51, paramLpReportInfo_dc04021, paramBoolean1, paramBoolean2);
+  }
+  
+  public void reportToDC04171(LpReportInfo_dc04171 paramLpReportInfo_dc04171, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    reportAsync(52, paramLpReportInfo_dc04171, paramBoolean1, paramBoolean2);
+  }
+  
+  public void reportToDC04233(LpReportInfo_dc04233 paramLpReportInfo_dc04233, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    reportAsync(53, paramLpReportInfo_dc04233, paramBoolean1, paramBoolean2);
+  }
+  
   public void reportToPF00034(LpReportInfo_pf00034 paramLpReportInfo_pf00034)
   {
     reportToPF00034(paramLpReportInfo_pf00034, false, false);
@@ -272,17 +299,19 @@ public class LpReportManager
   
   public void startReportImediately(int paramInt)
   {
-    if ((Looper.myLooper() != null) && (Looper.myLooper() == Looper.getMainLooper()))
-    {
-      if (BaseApplicationImpl.sProcessId == 1)
-      {
-        ThreadManager.excute(new angf(this, paramInt), 64, null, true);
-        return;
+    if ((Looper.myLooper() != null) && (Looper.myLooper() == Looper.getMainLooper())) {
+      if (BaseApplicationImpl.sProcessId == 1) {
+        ThreadManager.excute(new LpReportManager.2(this, paramInt), 64, null, true);
       }
-      QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new angg(this, paramInt));
-      return;
     }
-    report(paramInt);
+    for (;;)
+    {
+      bgck.a().a();
+      return;
+      QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new LpReportManager.3(this, paramInt));
+      continue;
+      report(paramInt);
+    }
   }
 }
 

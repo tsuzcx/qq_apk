@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/iop" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/m6n" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height">
+        <ImageView android:id="@id/lo1" android:paddingLeft="@dimen/b8b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/hly" android:scaleType="fitCenter" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <RadioGroup android:gravity="center" android:orientation="horizontal" android:id="@id/m62" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerInParent="true">
+            <RadioButton android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/v" android:gravity="center" android:id="@id/m4w" android:background="@drawable/hbc" android:layout_width="61.0dip" android:layout_height="30.0dip" android:checked="true" android:button="@null" android:text="@string/vsb" />
+            <RadioButton android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/v" android:gravity="center" android:id="@id/m4x" android:background="@drawable/hbc" android:layout_width="64.0dip" android:layout_height="30.0dip" android:layout_marginLeft="-1.0dip" android:button="@null" android:text="@string/vse" />
+        </RadioGroup>
+        <ImageView android:id="@id/mb5" android:visibility="gone" android:layout_width="7.0dip" android:layout_height="7.0dip" android:layout_marginLeft="50.0dip" android:layout_marginTop="13.0dip" android:src="@drawable/skin_tips_dot" android:layout_alignLeft="@id/m62" android:layout_alignTop="@id/m62" />
+        <ImageView android:id="@id/lrn" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="@dimen/b8c" android:layout_marginRight="@dimen/b8d" android:src="@drawable/hll" android:scaleType="fitCenter" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <com.tencent.mobileqq.widget.SquareImageView android:id="@id/lro" android:visibility="gone" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginRight="@dimen/b8d" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:round_radius="28.0dip" />
+    </RelativeLayout>
+    <android.support.v4.view.ViewPager android:id="@id/mft" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/title_bar_height" />
+    <ImageView android:layout_gravity="bottom|center|right" android:id="@id/bb_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gxv" />
+</FrameLayout>

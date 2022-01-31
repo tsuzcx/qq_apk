@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class SougouSearch$DeviceV2
-  extends MessageMicro
+  extends MessageMicro<DeviceV2>
 {
   public static final int Android = 1;
   public static final int IOS = 0;
@@ -15,7 +15,7 @@ public final class SougouSearch$DeviceV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.SougouSearch.DeviceV2
  * JD-Core Version:    0.7.0.1
  */

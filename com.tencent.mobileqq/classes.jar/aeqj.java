@@ -1,52 +1,61 @@
-import com.tencent.mobileqq.data.EmoticonTab;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.activity.bless.BlessResultActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeqj
-  implements Runnable
+  implements ayne
 {
-  public aeqj(EmoticonManager paramEmoticonManager) {}
+  public aeqj(BlessResultActivity paramBlessResultActivity) {}
   
-  public void run()
+  public void a()
   {
-    String str;
-    synchronized (this.a)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(EmoticonTab.class.getSimpleName());
-      EntityTransaction localEntityTransaction = this.a.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a();
-      try
-      {
-        localEntityTransaction.a();
-        Iterator localIterator1 = this.a.jdField_a_of_type_JavaUtilList.iterator();
-        while (localIterator1.hasNext())
-        {
-          str = (String)localIterator1.next();
-          EmoticonManager.a(this.a, str, true, false);
-          continue;
-          localObject1 = finally;
-        }
-      }
-      finally
-      {
-        localEntityTransaction.b();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadSuccess!");
     }
-    Iterator localIterator2 = this.a.b.iterator();
-    while (localIterator2.hasNext())
-    {
-      str = (String)localIterator2.next();
-      EmoticonManager.a(this.a, str, false, true);
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.g = this.a.b(this.a.d);
+    if (this.a.jdField_a_of_type_Beez.hasMessages(1003)) {
+      this.a.jdField_a_of_type_Beez.removeMessages(1003);
     }
-    localObject1.c();
-    localObject1.b();
+    this.a.jdField_a_of_type_Beez.sendEmptyMessage(1001);
+  }
+  
+  public void a(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadFail!");
+    }
+    if (this.a.jdField_a_of_type_Beez.hasMessages(1003)) {
+      this.a.jdField_a_of_type_Beez.removeMessages(1003);
+    }
+    this.a.jdField_a_of_type_Beez.sendEmptyMessage(1003);
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadStart!");
+    }
+  }
+  
+  public void b(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadStop!");
+    }
+  }
+  
+  public void c(long paramLong)
+  {
+    long l = bace.a(this.a.jdField_a_of_type_Aeqk.a);
+    int i = (int)(100L * paramLong / l);
+    if (QLog.isColorLevel()) {
+      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadProcess! rawLen = " + l + ",offset = " + paramLong + ",process = " + i);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aeqj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,26 @@
+import java.math.BigDecimal;
+
+public class argr
+{
+  public String a;
+  public String b;
+  public String c;
+  
+  public String a(int paramInt, float paramFloat)
+  {
+    String str = null;
+    if (this.c != null)
+    {
+      str = this.c.replaceFirst("%param%", "" + paramInt);
+      paramFloat = new BigDecimal(paramFloat).setScale(1, 4).floatValue();
+      str = str.replaceFirst("%param%", "" + paramFloat);
+    }
+    return str;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+ * Qualified Name:     argr
+ * JD-Core Version:    0.7.0.1
+ */

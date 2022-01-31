@@ -1,20 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.remind.widget.IosTimepicker;
-import com.tencent.widget.VerticalGallery.OnSelectViewDataUpdateListener;
-
 public class ahkw
-  implements VerticalGallery.OnSelectViewDataUpdateListener
 {
-  public ahkw(IosTimepicker paramIosTimepicker) {}
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
   
-  public void a(View paramView, int paramInt)
+  public String toString()
   {
-    IosTimepicker.a(this.a, paramView, 1);
+    return "RMVideoClipSpec: " + this.a + "," + this.b + "," + this.c + "," + this.d + "," + this.e + "," + this.f;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahkw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,63 +1,75 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.magicface.view.MagicfaceContainerView;
-import com.tencent.mobileqq.magicface.view.MagicfaceContainerView.MagicfaceGestureListener;
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class aemq
-  extends GestureDetector.SimpleOnGestureListener
+  implements aenz
 {
-  public aemq(MagicfaceContainerView paramMagicfaceContainerView) {}
+  private long jdField_a_of_type_Long = -1L;
+  private aeob jdField_a_of_type_Aeob;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public boolean onDoubleTap(MotionEvent paramMotionEvent)
+  public aemq(aeob paramaeob, Context paramContext)
   {
-    if (this.a.a != null) {
-      this.a.a.a(5);
-    }
-    return false;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Aeob = paramaeob;
   }
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public int a()
   {
-    if (paramMotionEvent1.getX() - paramMotionEvent2.getX() > 150.0F) {
-      if (this.a.a != null) {
-        this.a.a.a(0);
+    return 55;
+  }
+  
+  public View a(Object... paramVarArgs)
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null)
+    {
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131492976, null);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131296835));
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new aemr(this));
+    }
+    if ((paramVarArgs != null) && (paramVarArgs.length > 1) && ((paramVarArgs[0] instanceof CharSequence)) && ((paramVarArgs[1] instanceof Long)))
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)paramVarArgs[0]);
+      this.jdField_a_of_type_Long = ((Long)paramVarArgs[1]).longValue();
+    }
+    return this.jdField_a_of_type_AndroidViewView;
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs)
+  {
+    if (paramInt != 1000) {}
+  }
+  
+  public void a(Drawable paramDrawable)
+  {
+    if (this.jdField_a_of_type_AndroidViewView != null)
+    {
+      ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131296833);
+      if (localImageView != null) {
+        localImageView.setImageDrawable(paramDrawable);
       }
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-          if (paramMotionEvent1.getX() - paramMotionEvent2.getX() >= -150.0F) {
-            break;
-          }
-        } while (this.a.a == null);
-        this.a.a.a(1);
-        return false;
-        if (paramMotionEvent1.getY() - paramMotionEvent2.getY() <= 150.0F) {
-          break;
-        }
-      } while (this.a.a == null);
-      this.a.a.a(2);
-      return false;
-    } while ((paramMotionEvent1.getY() - paramMotionEvent2.getY() >= -150.0F) || (this.a.a == null));
-    this.a.a.a(3);
-    return false;
   }
   
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  public int[] a()
   {
-    if (this.a.a != null) {
-      this.a.a.a(4);
-    }
-    return false;
+    return null;
+  }
+  
+  public int b()
+  {
+    return 16;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aemq
  * JD-Core Version:    0.7.0.1
  */

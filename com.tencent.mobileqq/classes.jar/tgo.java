@@ -1,22 +1,22 @@
-import android.media.MediaRecorder;
-import android.media.MediaRecorder.OnErrorListener;
-import com.tencent.mobileqq.activity.MakeVideoActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 public class tgo
-  implements MediaRecorder.OnErrorListener
+  extends sfo
 {
-  public tgo(MakeVideoActivity paramMakeVideoActivity) {}
+  public StoryVideoItem a;
+  public String a;
+  public String b;
   
-  public void onError(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
+  public tgo(ErrorMessage paramErrorMessage, String paramString)
   {
-    paramMediaRecorder = "(code = " + paramInt1 + ", extra = " + paramInt2 + ")";
-    QLog.w(this.a.a, 1, "MakeVideoActivity error " + paramMediaRecorder);
+    this.a = paramErrorMessage;
+    this.b = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tgo
  * JD-Core Version:    0.7.0.1
  */

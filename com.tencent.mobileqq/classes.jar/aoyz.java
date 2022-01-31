@@ -1,85 +1,34 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.util.QIMFlowCameraJsApiPlugin;
-import dov.com.tencent.mobileqq.shortvideo.util.videoconverter.ShortVideoTravellerManager.TravellerVideoItem;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer.3;
 
 public class aoyz
-  extends Client.onRemoteRespObserver
+  implements apee
 {
-  public aoyz(QIMFlowCameraJsApiPlugin paramQIMFlowCameraJsApiPlugin) {}
+  public aoyz(SimpleFileViewer.3 param3, QQAppInterface paramQQAppInterface) {}
   
-  public void onBindedToClient() {}
-  
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle)
+  public void a(int paramInt)
   {
-    int i = 0;
-    if ((paramBundle != null) && (paramBundle.getInt("respkey") == QIMFlowCameraJsApiPlugin.a(this.a).key))
+    switch (paramInt)
     {
-      str = paramBundle.getString("cmd");
-      if (!"get_traveller_video_list".equals(str)) {
-        break label185;
-      }
-      str = paramBundle.getString("callbackid");
-      paramBundle = paramBundle.getBundle("response");
-      paramBundle.setClassLoader(ShortVideoTravellerManager.TravellerVideoItem.class.getClassLoader());
-      paramBundle = paramBundle.getParcelableArrayList("getDemoVideoList");
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder().append("IPC_CMD_GET_TRAVELLER_VIDEO_LIST size=");
-        if (paramBundle != null) {
-          i = paramBundle.size();
-        }
-        QLog.d("QIMFlowCameraJsApiPlugin", 2, i);
-      }
-      paramBundle = this.a.a(paramBundle);
-      if ((!TextUtils.isEmpty(str)) && (paramBundle != null)) {
-        localObject = new JSONObject();
-      }
-    }
-    label185:
-    while (!"download_video_from_web".equals(str)) {
-      try
-      {
-        Object localObject;
-        ((JSONObject)localObject).put("list", paramBundle);
-        this.a.callJs(str, new String[] { ((JSONObject)localObject).toString() });
-        return;
-      }
-      catch (JSONException paramBundle)
-      {
-        paramBundle.printStackTrace();
-        return;
-      }
-    }
-    String str = paramBundle.getString("callbackid");
-    i = paramBundle.getInt("download_res_code");
-    int j = paramBundle.getInt("videoId");
-    paramBundle = new JSONObject();
-    try
-    {
-      paramBundle.put("result", i);
-      paramBundle.put("videoId", String.valueOf(j));
-      this.a.callJs(str, new String[] { paramBundle.toString() });
+    default: 
+      return;
+    case 1: 
+      axea.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.this$0.a, "FileBrowserViewBase", this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.a, new aoza(this));
       return;
     }
-    catch (Exception paramBundle)
-    {
-      paramBundle.printStackTrace();
-    }
+    SimpleFileViewer.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.this$0, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.a);
+  }
+  
+  public void a(ImageView paramImageView)
+  {
+    SimpleFileViewer.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer$3.this$0, paramImageView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoyz
  * JD-Core Version:    0.7.0.1
  */

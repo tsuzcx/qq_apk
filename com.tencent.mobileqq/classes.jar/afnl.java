@@ -1,34 +1,36 @@
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.mobileqq.widget.BounceScrollView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import java.util.ArrayList;
+import java.util.List;
 
 public class afnl
-  implements Runnable
+  implements View.OnClickListener
 {
-  public afnl(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel, View paramView1, View paramView2) {}
+  public afnl(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_AndroidViewView.getMeasuredHeight();
-    int j = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.a.getScrollY();
-    if ((this.b instanceof ViewGroup)) {}
-    for (Object localObject = this.b;; localObject = this.b.getParent())
+    vkw.a(this.a.a);
+    vkw.a(this.a.a.a);
+    paramView = new ArrayList();
+    int i = 0;
+    while (i < this.a.a.a.size())
     {
-      localObject = (View)localObject;
-      if (localObject != null)
-      {
-        int k = ((View)localObject).getBottom();
-        int m = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.a.getMeasuredHeight();
-        this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.a.smoothScrollBy(0, k + i - m - j);
-      }
-      return;
+      paramView.add(((afou)this.a.a.a.get(i)).a);
+      i += 1;
     }
+    Intent localIntent = new Intent();
+    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
+    this.a.getActivity().setResult(-1, localIntent);
+    this.a.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afnl
  * JD-Core Version:    0.7.0.1
  */

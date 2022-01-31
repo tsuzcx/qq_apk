@@ -6,7 +6,7 @@ import com.tencent.qphone.base.util.QLog;
 public class GetSecMsgNewSeq
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "GetSecMsgNewSeq start in QQInitHandler...");

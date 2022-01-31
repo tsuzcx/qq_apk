@@ -1,45 +1,81 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.armap.ArMapInterface;
-import com.tencent.mobileqq.armap.ArMapObserver;
-import com.tencent.mobileqq.armap.POIInfo;
-import com.tencent.mobileqq.armap.config.ShopScanCheckHandler;
-import com.tencent.mobileqq.armap.config.ShopScanCheckHandler.Info;
-import com.tencent.qphone.base.util.MD5;
+import MQQ.PrivExtV2Rsp;
+import MQQ.VipUserInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.QQSettingMe.28.1;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import mqq.app.MobileQQ;
 
 public class abmq
-  extends ArMapObserver
+  extends ajvf
 {
-  public abmq(ShopScanCheckHandler paramShopScanCheckHandler) {}
+  public abmq(QQSettingMe paramQQSettingMe) {}
   
-  public void onQueryPOI(boolean paramBoolean, POIInfo paramPOIInfo, List paramList, int paramInt1, int paramInt2, long paramLong)
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShopScanCheckHandler", 2, "onQueryPOI, success=" + paramBoolean + ", poiInfo=" + paramPOIInfo + ", itemInfos=" + paramList + ", taskStatus=" + paramInt1 + ", loadMapFlag=" + paramInt2 + ", poiId=" + paramLong);
-    }
-    if ((ShopScanCheckHandler.a(this.a) != null) && (paramLong == ShopScanCheckHandler.a(this.a).a))
+    if ((paramBoolean) && (paramInt >= 0) && (this.a.a != null))
     {
-      ShopScanCheckHandler.a(this.a).removeObserver(ShopScanCheckHandler.a(this.a));
-      if ((paramBoolean) && (paramPOIInfo != null) && (paramList != null) && (paramList.size() > 0))
+      Object localObject = this.a.a.getPreferences();
+      if (localObject != null) {
+        ((SharedPreferences)localObject).edit().putInt("key_selfvip_growthvalue", paramInt).commit();
+      }
+      localObject = this.a.a.getCurrentAccountUin();
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSettingRedesign", 2, "updateLevelAndVip from mVipInfoObserver");
+      }
+      this.a.c((String)localObject);
+    }
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt == 1) {
+      if (paramBoolean)
       {
-        ShopScanCheckHandler.a(this.a).j = paramPOIInfo.a;
-        ShopScanCheckHandler.a(this.a).k = paramPOIInfo.b;
-        ShopScanCheckHandler.a(this.a).f = paramPOIInfo.c;
-        ShopScanCheckHandler.a(this.a).g = MD5.toMD5(paramPOIInfo.c);
-        ThreadManager.postImmediately(new abmr(this, ShopScanCheckHandler.a(this.a)), null, false);
+        paramObject = ((PrivExtV2Rsp)paramObject).vipInfo;
+        if ((paramObject != null) && (paramObject.bUpdate == 1))
+        {
+          paramObject = paramObject.sUri;
+          if (paramObject != null)
+          {
+            QQSettingMe.b(this.a, paramObject);
+            if (QLog.isColorLevel()) {
+              QLog.d("QQSettingRedesign", 2, "vip url = " + paramObject);
+            }
+            paramObject = this.a.a.getApplication().getSharedPreferences(this.a.a.getCurrentAccountUin(), 4).edit().putString("VIPCenter_url_key", paramObject);
+            if (Build.VERSION.SDK_INT >= 9) {
+              break label170;
+            }
+            paramObject.commit();
+          }
+        }
+        paramObject = this.a.a.getCurrentAccountUin();
+        this.a.c(paramObject);
+        this.a.b.post(new QQSettingMe.28.1(this));
       }
     }
-    else
+    label170:
+    do
     {
       return;
-    }
-    ShopScanCheckHandler.a(this.a, ShopScanCheckHandler.a(this.a), 5, 0);
+      paramObject.apply();
+      break;
+      if (paramInt == 4)
+      {
+        this.a.b.sendEmptyMessage(2);
+        return;
+      }
+    } while (paramInt != 5);
+    this.a.b.sendMessage(this.a.b.obtainMessage(3, paramObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abmq
  * JD-Core Version:    0.7.0.1
  */

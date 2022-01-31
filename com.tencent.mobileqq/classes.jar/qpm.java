@@ -1,48 +1,38 @@
-import com.tencent.gdtad.aditem.GdtAdLoader;
-import com.tencent.gdtad.aditem.GdtAdLoader.Listener;
-import com.tencent.gdtad.aditem.GdtAdLoader.Session;
-import com.tencent.gdtad.jsbridge.GdtAdWebPlugin;
-import com.tencent.gdtad.jsbridge.GdtLoadAdJsCallHandler;
-import com.tencent.gdtad.json.GdtJsonPbUtil;
-import java.lang.ref.WeakReference;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
+import com.tencent.qphone.base.util.QLog;
 
 public class qpm
-  implements GdtAdLoader.Listener
+  implements qpk
 {
-  public qpm(GdtLoadAdJsCallHandler paramGdtLoadAdJsCallHandler) {}
+  public qpm(ReadInJoyBaseListView paramReadInJoyBaseListView) {}
   
-  public void a(GdtAdLoader paramGdtAdLoader)
+  public void a()
   {
-    if ((paramGdtAdLoader == null) || (paramGdtAdLoader.a() == null) || (GdtLoadAdJsCallHandler.a(this.a) == null) || (GdtLoadAdJsCallHandler.a(this.a).get() == null)) {
-      return;
-    }
-    String str = (String)GdtLoadAdJsCallHandler.a(this.a).get(paramGdtAdLoader);
-    GdtLoadAdJsCallHandler.a(this.a).remove(paramGdtAdLoader);
-    Object localObject1 = GdtJsonPbUtil.a(paramGdtAdLoader.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet);
-    Object localObject2 = GdtJsonPbUtil.a(paramGdtAdLoader.a().jdField_a_of_type_TencentGdtQq_ad_get$QQAdGetRsp);
-    paramGdtAdLoader = new JSONObject();
-    try
+    if (obr.a(obr.a()))
     {
-      paramGdtAdLoader.put("request", localObject1);
-      paramGdtAdLoader.put("response", localObject2);
-      ((GdtAdWebPlugin)GdtLoadAdJsCallHandler.a(this.a).get()).callJs(str, new String[] { paramGdtAdLoader.toString() });
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyBaseListView", 2, new Object[] { "preloadOptimize switch ON, mCurrentStatus = ", Integer.valueOf(this.a.c) });
+      }
+      if ((this.a.c == 0) && ((!rvf.a(this.a.d)) || (!this.a.b)))
       {
-        localJSONException.printStackTrace();
+        this.a.a(4);
+        QLog.d("ReadInJoyBaseListView", 2, "preloadOptimize switch ON, loadingMore()");
       }
     }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyBaseListView", 2, new Object[] { "preloadOptimize switch OFF, mCurrentStatus = ", Integer.valueOf(this.a.c) });
+      }
+    } while ((rvf.a(this.a.d)) && ((this.a.c != 0) || (this.a.b)));
+    this.a.a(4);
+    QLog.d("ReadInJoyBaseListView", 2, "preloadOptimize switch OFF, loadingMore()");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qpm
  * JD-Core Version:    0.7.0.1
  */

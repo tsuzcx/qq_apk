@@ -1,19 +1,24 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.TroopLineTipsChatItemBuilder;
+import android.view.View;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
 
 public class vpo
-  extends AbstractChatItemBuilder.ViewHolder
+  implements benm
 {
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  public vpo(SegmentList paramSegmentList) {}
   
-  public vpo(TroopLineTipsChatItemBuilder paramTroopLineTipsChatItemBuilder) {}
+  public void a(View paramView)
+  {
+    this.a.a.b(paramView);
+  }
+  
+  public void b(View paramView)
+  {
+    this.a.a.c(paramView);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vpo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 import com.tencent.qphone.base.util.QLog;
 
 public class ApolloActionPush
-  extends Entity
+  extends atmo
 {
   public int mActionId;
   public int mActionType;
   public int mAioType;
   public String mContent;
-  @unique
+  @atoc
   public long mId;
   public long mRcvUin;
   public long mSendUin;

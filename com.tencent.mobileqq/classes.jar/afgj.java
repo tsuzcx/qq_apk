@@ -1,44 +1,59 @@
-import android.app.Activity;
-import com.tencent.common.galleryactivity.AbstractAnimationManager;
-import com.tencent.common.galleryactivity.AbstractGalleryScene;
-import com.tencent.common.galleryactivity.AbstractImageListModel;
-import com.tencent.common.galleryactivity.AbstractImageListScene;
-import com.tencent.common.galleryactivity.GalleryManager;
-import com.tencent.mobileqq.nearby.picbrowser.NearbyProfilePicBrowserActivity;
-import com.tencent.mobileqq.nearby.picbrowser.NearbyProfilePicBrowserGalleryScene;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserModel;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class afgj
-  extends GalleryManager
 {
-  public afgj(NearbyProfilePicBrowserActivity paramNearbyProfilePicBrowserActivity) {}
+  public int a;
+  public long a;
+  public boolean a;
+  public int b;
+  public boolean b;
   
-  public AbstractAnimationManager a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
+  public JSONObject a()
   {
-    return super.a(paramActivity, paramAbstractImageListModel);
+    try
+    {
+      localJSONObject = new JSONObject();
+      localJSONException1.printStackTrace();
+    }
+    catch (JSONException localJSONException1)
+    {
+      try
+      {
+        localJSONObject.put("entryID", this.jdField_a_of_type_Int);
+        localJSONObject.put("redDotVersion", this.jdField_b_of_type_Int);
+        localJSONObject.put("showRedDot", this.jdField_a_of_type_Boolean);
+        localJSONObject.put("userCanceled", this.jdField_b_of_type_Boolean);
+        localJSONObject.put("lastCancelTime", this.jdField_a_of_type_Long);
+        return localJSONObject;
+      }
+      catch (JSONException localJSONException2)
+      {
+        JSONObject localJSONObject;
+        break label68;
+      }
+      localJSONException1 = localJSONException1;
+      localJSONObject = null;
+    }
+    label68:
+    return localJSONObject;
   }
   
-  public AbstractGalleryScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
+  public void a(JSONObject paramJSONObject)
   {
-    return new NearbyProfilePicBrowserGalleryScene((PicBrowserActivity)paramActivity, paramAbstractImageListModel);
-  }
-  
-  public AbstractImageListModel a(Activity paramActivity)
-  {
-    paramActivity = new PicBrowserModel(this.a, this.a.jdField_b_of_type_JavaUtilArrayList);
-    paramActivity.a(this.a.jdField_b_of_type_Int);
-    return paramActivity;
-  }
-  
-  public AbstractImageListScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
-  {
-    return null;
+    if (paramJSONObject != null)
+    {
+      this.jdField_a_of_type_Int = paramJSONObject.optInt("entryID");
+      this.jdField_b_of_type_Int = paramJSONObject.optInt("redDotVersion");
+      this.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("showRedDot");
+      this.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("userCanceled");
+      this.jdField_a_of_type_Long = paramJSONObject.optLong("lastCancelTime");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afgj
  * JD-Core Version:    0.7.0.1
  */

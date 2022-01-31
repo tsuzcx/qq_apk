@@ -1,7 +1,11 @@
 package com.tencent.mobileqq.ark;
 
-import abba;
-import abbb;
+import alep;
+import ales;
+import alet;
+import alfi;
+import alfk;
+import alfm;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -14,6 +18,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import bacn;
+import bade;
 import com.tencent.ark.ArkDispatchTask;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.BaseChatPie;
@@ -21,8 +27,6 @@ import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.emoticonview.EmoticonPagerRadioGroup;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
 import com.tencent.mobileqq.widget.QQViewPager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinnableBitmapDrawable;
@@ -30,7 +34,7 @@ import java.util.ArrayList;
 
 public class ArkAppManagerPanel
   extends RelativeLayout
-  implements ViewPager.OnPageChangeListener, View.OnClickListener, ArkMessageServerLogic.IRequestArkAppListHandler
+  implements alfk, ViewPager.OnPageChangeListener, View.OnClickListener
 {
   private int jdField_a_of_type_Int = 0;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
@@ -81,18 +85,18 @@ public class ArkAppManagerPanel
   public void a(BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.a();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131363040));
-    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)findViewById(2131363041));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131302100));
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup = ((EmoticonPagerRadioGroup)findViewById(2131302079));
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.setViewPager(this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager);
     this.jdField_a_of_type_ComTencentMobileqqArkArkPanelPagerAdapter = new ArkPanelPagerAdapter(BaseApplicationImpl.getContext());
     this.jdField_a_of_type_ComTencentMobileqqArkArkPanelPagerAdapter.a(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setAdapter(this.jdField_a_of_type_ComTencentMobileqqArkArkPanelPagerAdapter);
     setPagerChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131362732));
-    this.b = ((LinearLayout)findViewById(2131363317));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131303812));
+    this.b = ((LinearLayout)findViewById(2131309300));
     this.b.setOnClickListener(this);
     a(0);
-    paramBaseChatPie = getResources().getDrawable(2130846029);
+    paramBaseChatPie = getResources().getDrawable(2130848939);
     if ((paramBaseChatPie instanceof BitmapDrawable)) {
       paramBaseChatPie = ((BitmapDrawable)paramBaseChatPie).getBitmap();
     }
@@ -107,7 +111,7 @@ public class ArkAppManagerPanel
       }
       for (;;)
       {
-        ArkMessageServerLogic.a(this);
+        alfi.a(this);
         return;
         if (!(paramBaseChatPie instanceof SkinnableBitmapDrawable)) {
           break label220;
@@ -123,7 +127,7 @@ public class ArkAppManagerPanel
     }
   }
   
-  public void a(ArrayList paramArrayList)
+  public void a(ArrayList<alet> paramArrayList)
   {
     this.jdField_a_of_type_ComTencentMobileqqArkArkPanelPagerAdapter.a(paramArrayList);
     a(1);
@@ -132,10 +136,10 @@ public class ArkAppManagerPanel
     {
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqArkArkPanelPagerAdapter.getCount(), false);
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.a(this.jdField_a_of_type_ComTencentMobileqqArkArkPanelPagerAdapter.getCount());
         this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPagerRadioGroup.setVisibility(0);
         this.jdField_a_of_type_ComTencentMobileqqArkArkPanelPagerAdapter.notifyDataSetChanged();
-        post(new abba(this));
+        post(new ArkAppManagerPanel.1(this));
         return;
       }
       catch (Exception paramArrayList)
@@ -147,7 +151,7 @@ public class ArkAppManagerPanel
     }
   }
   
-  public void b(ArrayList paramArrayList)
+  public void b(ArrayList<alet> paramArrayList)
   {
     if ((paramArrayList == null) || (paramArrayList.size() <= 0))
     {
@@ -164,25 +168,25 @@ public class ArkAppManagerPanel
         i += 1;
       }
     }
-    ArkAppManagerPanel.ArkAppPanelData localArkAppPanelData = new ArkAppManagerPanel.ArkAppPanelData();
-    localArkAppPanelData.jdField_a_of_type_Boolean = true;
-    localArkAppPanelData.jdField_a_of_type_JavaLangString = null;
-    localArkAppPanelData.b = getResources().getString(2131433942);
-    paramArrayList.add(localArkAppPanelData);
-    ArkAppCenter.a().postToMainThread(new abbb(this, paramArrayList));
+    alet localalet = new alet();
+    localalet.jdField_a_of_type_Boolean = true;
+    localalet.jdField_a_of_type_JavaLangString = null;
+    localalet.b = getResources().getString(2131628111);
+    paramArrayList.add(localalet);
+    ArkAppCenter.a().postToMainThread(new ArkAppManagerPanel.2(this, paramArrayList));
   }
   
   public void onClick(View paramView)
   {
     if (this.jdField_a_of_type_Int == 1)
     {
-      paramView = (ArkPanelPagerAdapter.ViewHolder)paramView.getTag();
+      paramView = (alfm)paramView.getTag();
       if (!TextUtils.isEmpty(paramView.jdField_a_of_type_JavaLangString))
       {
         str = "mqqapi://lightapp/open?app=" + paramView.jdField_a_of_type_JavaLangString;
-        JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getContext(), str).b();
-        ((ArkAppHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(95)).b(paramView.jdField_a_of_type_JavaLangString);
-        ArkAppDataReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.jdField_a_of_type_JavaLangString, "ArkPanelAppIconClick", 1, 0, 0L, 0L, 0L, null, null);
+        bade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, getContext(), str).c();
+        ((ales)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(95)).a(paramView.jdField_a_of_type_JavaLangString);
+        alep.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.jdField_a_of_type_JavaLangString, "ArkPanelAppIconClick", 1, 0, 0L, 0L, 0L, null, null);
       }
     }
     while (this.jdField_a_of_type_Int != 2)
@@ -192,11 +196,11 @@ public class ArkAppManagerPanel
       paramView = new Intent(getContext(), QQBrowserActivity.class);
       paramView.putExtra("url", "http://ti.qq.com/ark/aioplus/index.html");
       getContext().startActivity(paramView);
-      ArkAppDataReport.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "com.tencent.ark.panel.more", "ArkPanelMoreIconClick", 1, 0, 0L, 0L, 0L, null, null);
+      alep.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "com.tencent.ark.panel.more", "ArkPanelMoreIconClick", 1, 0, 0L, 0L, 0L, null, null);
       return;
     }
     a(0);
-    ArkMessageServerLogic.a(this);
+    alfi.a(this);
   }
   
   public void onPageScrollStateChanged(int paramInt) {}

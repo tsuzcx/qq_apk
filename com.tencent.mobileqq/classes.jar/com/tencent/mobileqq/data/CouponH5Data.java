@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
+import atmo;
 
 public class CouponH5Data
-  extends Entity
+  extends atmo
 {
   public String mData;
   public String mHost;

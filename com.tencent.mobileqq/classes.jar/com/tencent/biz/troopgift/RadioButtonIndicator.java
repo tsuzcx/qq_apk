@@ -11,15 +11,15 @@ import android.view.View.OnClickListener;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import com.tencent.common.config.AppSetting;
-import pdp;
-import pee;
+import wmw;
+import woj;
 
 public class RadioButtonIndicator
   extends RadioGroup
-  implements ViewPager.OnPageChangeListener, View.OnClickListener, pee
+  implements ViewPager.OnPageChangeListener, View.OnClickListener, woj
 {
-  public int a;
-  public ViewPager a;
+  protected int a;
+  protected ViewPager a;
   public int b;
   
   public RadioButtonIndicator(Context paramContext)
@@ -30,19 +30,19 @@ public class RadioButtonIndicator
   public RadioButtonIndicator(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 2130838910;
+    this.jdField_a_of_type_Int = 2130839348;
   }
   
   public RadioButton a(int paramInt)
   {
-    pdp localpdp = new pdp(this, getContext());
-    localpdp.setButtonDrawable(this.jdField_a_of_type_Int);
-    localpdp.setPadding(10, 0, 10, 0);
-    localpdp.setClickable(true);
-    if ((AppSetting.b) && (Build.VERSION.SDK_INT > 16)) {
-      ViewCompat.setImportantForAccessibility(localpdp, 2);
+    wmw localwmw = new wmw(this, getContext());
+    localwmw.setButtonDrawable(this.jdField_a_of_type_Int);
+    localwmw.setPadding(10, 0, 10, 0);
+    localwmw.setClickable(true);
+    if ((AppSetting.c) && (Build.VERSION.SDK_INT > 16)) {
+      ViewCompat.setImportantForAccessibility(localwmw, 2);
     }
-    return localpdp;
+    return localwmw;
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
@@ -101,7 +101,7 @@ public class RadioButtonIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.biz.troopgift.RadioButtonIndicator
  * JD-Core Version:    0.7.0.1
  */

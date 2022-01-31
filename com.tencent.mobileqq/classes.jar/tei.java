@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.graphics.Bitmap;
 
-public class tei
-  implements Runnable
+class tei
+  extends tdg
 {
-  public tei(LoginActivity paramLoginActivity) {}
-  
-  public void run()
+  tei(tdo paramtdo, boolean paramBoolean1, boolean paramBoolean2, tex paramtex)
   {
-    LoginActivity.a(this.a.app, this.a.app.getAccount());
+    super(paramBoolean1, paramBoolean2);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Tex.a = ((Bitmap)a("WeChatImageJob_out_bitmap"));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tei
  * JD-Core Version:    0.7.0.1
  */

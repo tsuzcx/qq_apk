@@ -1,22 +1,37 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.content.Intent;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MSFServlet;
+import mqq.app.Packet;
 
 public class mql
-  implements Runnable
+  extends MSFServlet
 {
-  public mql(FastWebActivity paramFastWebActivity) {}
+  private String[] a = { "OnlinePush.ReqPush.GameStatusPush" };
   
-  public void run()
+  public String[] getPreferSSOCommands()
   {
-    FastWebActivity.a(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d(FastWebActivity.a(this.a), 2, "reset mIsWaitingForFavoriteResult = false, not to block request too long.");
-    }
+    return this.a;
   }
+  
+  public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
+  {
+    mqm localmqm = SensorAPIJavaScript.getMsfToWebViewConnector();
+    if (localmqm != null) {
+      localmqm.a(paramIntent, paramFromServiceMsg);
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("GamePushServlet", 2, "WebView not connect to msf");
+  }
+  
+  public void onSend(Intent paramIntent, Packet paramPacket) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     mql
  * JD-Core Version:    0.7.0.1
  */

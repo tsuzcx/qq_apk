@@ -12,13 +12,13 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class ArticleComment$ReportReadPhotoCollectionRequest
-  extends MessageMicro
+  extends MessageMicro<ReportReadPhotoCollectionRequest>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField article_id = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt64Field cuin = PBField.initUInt64(0L);
-  public final PBRepeatMessageField item = PBField.initRepeatMessage(ArticleComment.ReadPhotoItemInfo.class);
-  public final PBRepeatField recommend_article_id = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatMessageField<ArticleComment.ReadPhotoItemInfo> item = PBField.initRepeatMessage(ArticleComment.ReadPhotoItemInfo.class);
+  public final PBRepeatField<ByteStringMicro> recommend_article_id = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBUInt32Field report_timing_type = PBField.initUInt32(0);
   public final PBUInt32Field total_remain_time = PBField.initUInt32(0);
   public final PBStringField versionInfo = PBField.initString("");

@@ -1,37 +1,29 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import java.lang.ref.WeakReference;
 
-public class woe
-  extends Handler
+class woe
+  implements View.OnClickListener
 {
-  public woe(SearchBaseFragment paramSearchBaseFragment) {}
+  woe(wob paramwob, TroopGiftPanel paramTroopGiftPanel) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    if (SearchBaseFragment.a(this.a) != null) {
-      SearchBaseFragment.a(this.a).sendMessage(Message.obtain(paramMessage));
-    }
-    switch (paramMessage.what)
+    this.jdField_a_of_type_Wob.c();
+    this.jdField_a_of_type_Wob.b();
+    if (this.jdField_a_of_type_Wob.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c)
     {
-    default: 
-      return;
-    case 0: 
-      this.a.a();
-      return;
-    case 1: 
-      this.a.a((String)paramMessage.obj);
-      return;
-    case 2: 
-      this.a.g();
+      this.jdField_a_of_type_Wob.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.b();
       return;
     }
-    this.a.c();
+    ((BaseChatPie)this.jdField_a_of_type_Wob.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.b.get()).aS();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     woe
  * JD-Core Version:    0.7.0.1
  */

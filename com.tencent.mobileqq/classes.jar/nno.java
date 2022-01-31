@@ -1,84 +1,70 @@
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.IPlayVideoStatusChangeListener;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
-import com.tencent.biz.qqstory.playvideo.ProgressControler;
-import com.tencent.biz.qqstory.playvideo.player.IVideoView;
-import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnInfoListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ProteusItemData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class nno
-  implements IVideoView.OnInfoListener
+class nno
+  implements ViewBase.OnClickListener
 {
-  private final int jdField_a_of_type_Int;
-  protected final ImageView a;
-  protected final StoryVideoItem a;
-  private IVideoView jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView;
-  protected final QQStoryLoadingView a;
+  nno(nnn paramnnn) {}
   
-  public nno(VideoPlayModeBase paramVideoPlayModeBase, int paramInt, IVideoView paramIVideoView, ImageView paramImageView, QQStoryLoadingView paramQQStoryLoadingView)
+  public void onClick(ViewBase paramViewBase)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView = paramIVideoView;
-    this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView = paramQQStoryLoadingView;
-    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((StoryVideoItem)paramVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.get(paramInt));
-  }
-  
-  public boolean a(IVideoView paramIVideoView, int paramInt, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoPlayModeBase", 2, "StoryVideoOnInfoListener onInfo time:" + System.currentTimeMillis() + ", what:" + paramInt + ",index:" + this.jdField_a_of_type_Int);
-    }
-    if (paramInt == 1)
+    int j = 101;
+    boolean bool2 = false;
+    boolean bool1;
+    int i;
+    if ((nnm.a(this.a.jdField_a_of_type_Nnm) instanceof ProteusItemData))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.qqstory.player.StoryPlayVideoActivity", 2, "onInfo隐藏cover");
-      }
-      if (this.jdField_a_of_type_AndroidWidgetImageView.getVisibility() == 0)
+      bool1 = bool2;
+      i = j;
+      switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryPlaymodeIPlayVideoStatusChangeListener.m(this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        SLog.d("Q.qqstory.player.YPlayModeUtils", "[8] onInfo hide video cover");
+      default: 
+        bool1 = true;
+        i = -1;
       }
-      if (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.getVisibility() == 0)
-      {
-        SLog.b("Q.qqstory.player.YPlayModeUtils", "MEDIA_INFO_VIDEO_RENDERING_START set progress bar GONE");
-        this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
-      }
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_b_of_type_Long = System.currentTimeMillis();
     }
-    for (;;)
+    while (((i == 4) || (i == 3) || (i == 1000) || (i == 8)) && (npa.f((AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData)))
     {
-      if (this.jdField_a_of_type_Int != this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_b_of_type_Int)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView.c();
-        this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryPlaymodeIPlayVideoStatusChangeListener.k(this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mIsPlaying = 0;
-      }
-      return false;
-      if (paramInt == 2)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.b();
-        this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-        paramIVideoView = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase;
-        paramIVideoView.jdField_g_of_type_Int += 1;
-        this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_g_of_type_Long = System.currentTimeMillis();
-      }
-      else if (paramInt == 3)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.c();
-        SLog.b("Q.qqstory.player.YPlayModeUtils", "MEDIA_INFO_BUFFERING_END set progress bar GONE");
-        this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
-        paramIVideoView = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase;
-        paramIVideoView.f += System.currentTimeMillis() - this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_g_of_type_Long;
-      }
+      npa.b(nnl.a(this.a.jdField_a_of_type_Nnm.a), (AdData)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData);
+      return;
+      rav.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData, paramViewBase.getNativeView(), this.a.jdField_a_of_type_AndroidContentContext);
+      return;
+      bool1 = true;
+      i = 4;
+      continue;
+      bool1 = true;
+      i = 3;
+      continue;
+      i = 5;
+      bool1 = bool2;
+      continue;
+      bool1 = true;
+      i = 8;
+      continue;
+      i = 1000;
+      bool1 = true;
+      continue;
+      i = 102;
+      bool1 = bool2;
+      continue;
+      i = 4;
+      bool1 = bool2;
+      continue;
+      i = 3;
+      bool1 = bool2;
+      continue;
+      bool1 = true;
+      i = j;
+      continue;
+      i = 102;
+      bool1 = true;
     }
+    nnm.a(this.a.jdField_a_of_type_Nnm, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
+    nnl.a(this.a.jdField_a_of_type_Nnm.a);
+    rab.a(this.a.jdField_a_of_type_AndroidContentContext, (AdData)nnm.a(this.a.jdField_a_of_type_Nnm), bool1, i);
   }
 }
 

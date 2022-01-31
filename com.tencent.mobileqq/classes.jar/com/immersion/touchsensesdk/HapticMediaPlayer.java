@@ -213,35 +213,37 @@ public class HapticMediaPlayer
   
   public static HapticMediaPlayer create(Context paramContext, String paramString1, String paramString2, String paramString3, AsyncConnectionProxy paramAsyncConnectionProxy)
   {
-    Object localObject = null;
-    try
+    for (;;)
     {
-      if (!sSDKHealthState)
+      try
       {
-        Log.e(TAG, "TouchSense SDK has previously encountered a fatal error is now inoperative! Haptics will not be played.");
-        paramContext = localObject;
-      }
-      do
-      {
-        ConnectionProxy localConnectionProxy;
-        long l;
-        do
+        if (!sSDKHealthState)
         {
+          Log.e(TAG, "TouchSense SDK has previously encountered a fatal error is now inoperative! Haptics will not be played.");
+          paramContext = null;
           return paramContext;
-          localConnectionProxy = null;
-          if (paramAsyncConnectionProxy != null) {
-            localConnectionProxy = (ConnectionProxy)paramAsyncConnectionProxy.getConnectionProxy();
+        }
+        if (paramAsyncConnectionProxy != null)
+        {
+          paramAsyncConnectionProxy = (ConnectionProxy)paramAsyncConnectionProxy.getConnectionProxy();
+          long l = _nCreate(paramContext, paramString1, paramString2, paramString3, paramAsyncConnectionProxy);
+          if (l == 0L)
+          {
+            paramContext = null;
+            continue;
           }
-          l = _nCreate(paramContext, paramString1, paramString2, paramString3, localConnectionProxy);
-          paramContext = localObject;
-        } while (l == 0L);
-        paramString1 = new HapticMediaPlayer(l);
-        paramString1.mConnectionProxy = localConnectionProxy;
-        paramContext = paramString1;
-      } while (paramString1.versionCheck());
-      throw new IllegalStateException("HapticMediaPlayer could not be initialized. Version mismatch between TouchSenseSDK.jar and libTouchSenseSDK.so. Make sure the two libraries are compatible.");
+          paramString1 = new HapticMediaPlayer(l);
+          paramString1.mConnectionProxy = paramAsyncConnectionProxy;
+          paramContext = paramString1;
+          if (paramString1.versionCheck()) {
+            continue;
+          }
+          throw new IllegalStateException("HapticMediaPlayer could not be initialized. Version mismatch between TouchSenseSDK.jar and libTouchSenseSDK.so. Make sure the two libraries are compatible.");
+        }
+      }
+      finally {}
+      paramAsyncConnectionProxy = null;
     }
-    finally {}
   }
   
   private native int nAddResource(long paramLong, String paramString, int paramInt);
@@ -306,8 +308,8 @@ public class HapticMediaPlayer
       else
       {
         localObject = localStringBuilder.toString().replaceAll("(\\.0)+$", "");
-        Log.i(TAG, "Native version: " + (String)localObject + ", Jar version: " + "v2.1.14.18");
-        return "v2.1.14.18".contains((CharSequence)localObject);
+        Log.i(TAG, "Native version: " + (String)localObject + ", Jar version: " + "v2.1.14.22");
+        return "v2.1.14.22".contains((CharSequence)localObject);
       }
       if (i != 0) {
         localStringBuilder.append(".");
@@ -430,108 +432,10 @@ public class HapticMediaPlayer
     }
     return -15;
   }
-  
-  public static class EffectInfo
-  {
-    public static final int EFFECT_MUTED_STATE = 52;
-    public static final int EFFECT_STATE = 51;
-    public static final int RESOURCE_DURATION = 55;
-    public static final int RESOURCE_LOCATION = 54;
-    public static final int RESOURCE_STATE = 50;
-    public static final int RESOURCE_TYPE = 53;
-  }
-  
-  public static class EffectPriority
-  {
-    public static final int HIGH = 3;
-    public static final int HIGHEST = 4;
-    public static final int LOW = 1;
-    public static final int LOWEST = 0;
-    public static final int NORMAL = 2;
-    public static final int NUM_OF_PRIORITIES = 5;
-  }
-  
-  public static class EffectState
-  {
-    public static final int BUFFERING = 23;
-    public static final int IDLE = 20;
-    public static final int PAUSED = 22;
-    public static final int PLAYING = 21;
-    public static final int TIMEOUT = 24;
-  }
-  
-  public static class HapticEffectLocation
-  {
-    public static final int LOCAL_HAPTIC_EFFECT = 1;
-    public static final int REMOTE_HAPTIC_EFFECT = 2;
-  }
-  
-  public static class HapticEffectMutedState
-  {
-    public static final int MUTED = 30;
-    public static final int UNMUTED = 31;
-  }
-  
-  public static class HapticEffectType
-  {
-    public static final int ASYNC_HAPTIC_EFFECT = 1;
-    public static final int SYNC_HAPTIC_EFFECT = 2;
-  }
-  
-  public static class PlaybackType
-  {
-    public static final int ANDROID_VIBRATE_API_PLAYBACK = 1;
-    public static final int NO_PLAYBACK = 0;
-    public static final int TOUCHSENSE_PLAYBACK = 2;
-  }
-  
-  public static class PlayerInfo
-  {
-    public static final int PLAYER_PLAYBACK_TYPE = 46;
-    public static final int PLAYER_STATE = 40;
-    public static final int PLAYER_VERSION_BUILD = 43;
-    public static final int PLAYER_VERSION_MAINTENANCE = 44;
-    public static final int PLAYER_VERSION_MAJOR = 41;
-    public static final int PLAYER_VERSION_MINOR = 42;
-    public static final int PLAYER_VERSION_PATCH = 45;
-  }
-  
-  public static class PlayerState
-  {
-    public static final int BAD_PARAMETER = 1;
-    public static final int INITIALIZED = 0;
-    public static final int INVALID_CREDENTIALS = 3;
-    public static final int MISSING_PERMISSIONS = 2;
-  }
-  
-  public static class ResourceState
-  {
-    public static final int DOWNLOAD_ERROR = 13;
-    public static final int INVALID = 11;
-    public static final int NOT_READY = 10;
-    public static final int READY = 12;
-  }
-  
-  public static class TouchSenseSDKError
-  {
-    public static final int HAPT_NOT_READY = -9;
-    public static final int INVALID_EFFECT = -3;
-    public static final int INVALID_PARAMETER = -1;
-    public static final int INVALID_STATE = -13;
-    public static final int INVALID_URI = -2;
-    public static final int IO_ERROR = -7;
-    public static final int LIB_VERSION_NOT_FOUND = -14;
-    public static final int OUT_OF_MEMORY = -5;
-    public static final int PLAYER_NOT_INITIALIZED = -11;
-    public static final int SDK_INOPERATIVE = -15;
-    public static final int SUCCESS = 0;
-    public static final int TOO_MANY_CONCURRENT_EFFECTS = -12;
-    public static final int TOO_MANY_EFFECTS = -10;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.immersion.touchsensesdk.HapticMediaPlayer
  * JD-Core Version:    0.7.0.1
  */

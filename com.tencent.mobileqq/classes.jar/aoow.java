@@ -1,54 +1,155 @@
-import android.content.Context;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.ViewConfiguration;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import tencent.im.cs.cmd0x383.cmd0x383.ApplyFileSearchRspBody;
+import tencent.im.cs.cmd0x383.cmd0x383.ApplyFileSearchRspBody.Item;
+import tencent.im.cs.cmd0x383.cmd0x383.RspBody;
 
-public class aoow
-  extends GestureDetector.SimpleOnGestureListener
+class aoow
+  extends ajey
 {
-  float jdField_a_of_type_Float;
+  aoow(aoov paramaoov) {}
   
-  public aoow(FlowCameraActivity2 paramFlowCameraActivity2, Context paramContext)
+  protected void j(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_Float = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 2);
-  }
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    return super.onDown(paramMotionEvent);
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
-      return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    if ((this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.i) || (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.j)) {
-      return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    float f = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-    if (Math.abs(f) > this.jdField_a_of_type_Float)
+    ArrayList localArrayList = new ArrayList();
+    aoov.a(this.a, true);
+    if ((paramObject == null) || (!paramBoolean)) {}
+    Object localObject;
+    int i;
+    for (;;)
     {
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.a(f);
-      return true;
+      try
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("TroopFileSearchEngine<QFile>", 4, "data = " + paramObject + ", isSuccess = " + paramBoolean);
+        }
+        QLog.i("TroopFileSearchEngine<QFile>", 1, "error, can not handle search response, return a empty list.");
+        aoov.a(this.a, false, localArrayList);
+        return;
+        paramObject = (byte[])paramObject;
+        localObject = new cmd0x383.RspBody();
+        try
+        {
+          paramObject = (cmd0x383.RspBody)((cmd0x383.RspBody)localObject).mergeFrom(paramObject);
+          if (paramObject != null) {
+            continue;
+          }
+          if (!QLog.isDevelopLevel()) {
+            continue;
+          }
+          QLog.d("TroopFileSearchEngine<QFile>", 4, "bigRsp is null !!!");
+        }
+        catch (InvalidProtocolBufferMicroException paramObject) {}
+        if (!QLog.isDevelopLevel()) {
+          continue;
+        }
+        QLog.d("TroopFileSearchEngine<QFile>", 4, QLog.getStackTraceString(paramObject));
+        continue;
+      }
+      catch (Exception paramObject)
+      {
+        if (!QLog.isDevelopLevel()) {
+          continue;
+        }
+        QLog.d("TroopFileSearchEngine<QFile>", 4, QLog.getStackTraceString(paramObject));
+        continue;
+        i = paramObject.int32_ret_code.get();
+        if (i < 0)
+        {
+          if (!QLog.isDevelopLevel()) {
+            continue;
+          }
+          QLog.d("TroopFileSearchEngine<QFile>", 4, String.format("onRspTroopFileSearch - retCode: %d", new Object[] { Integer.valueOf(i) }));
+          continue;
+        }
+        paramObject = (cmd0x383.ApplyFileSearchRspBody)paramObject.msg_file_search_rsp_body.get();
+        if (paramObject == null)
+        {
+          if (!QLog.isDevelopLevel()) {
+            continue;
+          }
+          QLog.d("TroopFileSearchEngine<QFile>", 4, "rsp = " + paramObject);
+          continue;
+        }
+        localObject = paramObject.bytes_key_word.get().toStringUtf8();
+        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).equals(aoov.a(this.a))))
+        {
+          QLog.i("TroopFileSearchEngine<QFile>", 1, "keyword is update, current result is old");
+          return;
+        }
+        aoov.b(this.a, paramObject.bytes_sync_cookie.get().toStringUtf8());
+        localObject = this.a;
+        if (paramObject.uint32_is_end.get() != 1) {
+          break;
+        }
+      }
+      paramBoolean = true;
+      aoov.b((aoov)localObject, paramBoolean);
+      if (QLog.isDevelopLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onRspTroopFileSearch cookie = " + aoov.b(this.a));
+        ((StringBuilder)localObject).append(", isEnd = " + aoov.c(this.a));
+        ((StringBuilder)localObject).append(", keyWord = " + paramObject.bytes_key_word.get().toStringUtf8());
+        ((StringBuilder)localObject).append(", totalCount = " + paramObject.uint32_total_match_count.get());
+        QLog.d("TroopFileSearchEngine<QFile>", 4, ((StringBuilder)localObject).toString());
+      }
+      paramObject = paramObject.item_list.get();
+      if ((paramObject != null) && (paramObject.size() != 0)) {
+        break label747;
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.d("TroopFileSearchEngine<QFile>", 4, "filelist is empty--------");
+      }
     }
-    return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-  }
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return super.onSingleTapUp(paramMotionEvent);
+    for (;;)
+    {
+      if (i < paramObject.size())
+      {
+        localObject = new aysk(aoov.a(this.a), (cmd0x383.ApplyFileSearchRspBody.Item)paramObject.get(i));
+        azih localazih;
+        ayoq localayoq;
+        if (((aysk)localObject).jdField_a_of_type_Ayoq != null)
+        {
+          localazih = azih.a(aoov.a(this.a), ((aysk)localObject).jdField_a_of_type_Long);
+          localayoq = localazih.a(((aysk)localObject).jdField_a_of_type_Ayoq.b);
+          if (localayoq == null) {
+            break label717;
+          }
+        }
+        label717:
+        for (((aysk)localObject).jdField_a_of_type_Ayoq.a = localayoq.a;; ((aysk)localObject).jdField_a_of_type_Ayoq.a = UUID.randomUUID())
+        {
+          localazih.a(((aysk)localObject).jdField_a_of_type_Ayoq.b, ((aysk)localObject).jdField_a_of_type_Ayoq);
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopFileSearchEngine<QFile>", 4, "fileList[" + i + "]: " + ((aysk)localObject).toString());
+          }
+          localArrayList.add(localObject);
+          i += 1;
+          break;
+        }
+      }
+      aoov.a(this.a, true, localArrayList);
+      return;
+      paramBoolean = false;
+      break;
+      label747:
+      i = 0;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoow
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand;
-import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
-import cooperation.qlink.QQProxyForQlink;
-import cooperation.qlink.QlinkServiceManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import com.tencent.mobileqq.datareportviewer.DataReportViewer;
 
-public class amvc
-  extends RemoteCommand
+class amvc
+  implements View.OnClickListener
 {
-  public amvc(QlinkServiceManager paramQlinkServiceManager, String paramString)
-  {
-    super(paramString);
-  }
+  amvc(amuz paramamuz, WindowManager paramWindowManager) {}
   
-  public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
+  public void onClick(View paramView)
   {
-    QlinkServiceManager.a(this.a).a().c(paramBundle);
-    return null;
+    this.jdField_a_of_type_AndroidViewWindowManager.removeViewImmediate(this.jdField_a_of_type_Amuz.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amvc
  * JD-Core Version:    0.7.0.1
  */

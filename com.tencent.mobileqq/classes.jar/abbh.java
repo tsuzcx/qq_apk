@@ -1,23 +1,28 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.mobileqq.activity.LebaListMgrActivity.3.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class abbh
-  implements ArkAppCenter.OnGetAppIcon
+public class abbh
+  extends atdh
 {
-  abbh(abbg paramabbg) {}
+  public abbh(LebaListMgrActivity paramLebaListMgrActivity) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    if (paramBitmap != null) {
-      this.a.a.a.setImageBitmap(paramBitmap);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.lebatab.mgr", 2, "onGameCenterMsgReceive. notifyData.");
+    }
+    if ((this.a.isResume()) && (paramBoolean1) && (paramInt != 2) && (LebaListMgrActivity.a(this.a) != null))
+    {
+      List localList = afqa.a().a();
+      this.a.runOnUiThread(new LebaListMgrActivity.3.1(this, localList));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abbh
  * JD-Core Version:    0.7.0.1
  */

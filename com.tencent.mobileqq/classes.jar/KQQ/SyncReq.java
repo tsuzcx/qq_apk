@@ -9,13 +9,13 @@ public final class SyncReq
   extends JceStruct
 {
   static UserData cache_userData;
-  static ArrayList cache_vecReqPkg;
+  static ArrayList<InfoItem> cache_vecReqPkg;
   public UserData userData;
-  public ArrayList vecReqPkg;
+  public ArrayList<InfoItem> vecReqPkg;
   
   public SyncReq() {}
   
-  public SyncReq(ArrayList paramArrayList, UserData paramUserData)
+  public SyncReq(ArrayList<InfoItem> paramArrayList, UserData paramUserData)
   {
     this.vecReqPkg = paramArrayList;
     this.userData = paramUserData;
@@ -46,7 +46,7 @@ public final class SyncReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     KQQ.SyncReq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,27 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.component.media.image.ImageManager;
-import com.tencent.component.media.image.ImageTaskTracer;
-import com.tencent.component.media.utils.LruCache;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
 
 public class plu
-  extends LruCache
+  implements begw
 {
-  public plu(ImageManager paramImageManager, int paramInt)
-  {
-    super(paramInt);
-  }
+  public plu(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
   
-  protected int a(Integer paramInteger, Drawable paramDrawable)
+  public void OnClick(View paramView, int paramInt)
   {
-    return ImageManager.a(paramDrawable);
-  }
-  
-  protected void a(boolean paramBoolean, Integer paramInteger, Drawable paramDrawable1, Drawable paramDrawable2)
-  {
-    if (paramInteger != null) {
-      ImageTaskTracer.addImageLruCacheEvictedRecord(paramInteger.intValue());
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      ComponentHeaderTopicRecommend.a(this.a).dismiss();
+      return;
+      ComponentHeaderTopicRecommend.a(this.a, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     plu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,19 @@
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager.LoadMusicStepListener;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendHorizontalTagsView;
 
 public class anuj
-  implements Runnable
 {
-  public anuj(QIMMusicConfigManager paramQIMMusicConfigManager, int paramInt, boolean paramBoolean, Object paramObject) {}
+  public int a;
+  public String a;
   
-  public void run()
+  public anuj(ExtendFriendHorizontalTagsView paramExtendFriendHorizontalTagsView, int paramInt, String paramString)
   {
-    Iterator localIterator = QIMMusicConfigManager.a(this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager).iterator();
-    while (localIterator.hasNext()) {
-      ((QIMMusicConfigManager.LoadMusicStepListener)localIterator.next()).a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangObject);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anuj
  * JD-Core Version:    0.7.0.1
  */

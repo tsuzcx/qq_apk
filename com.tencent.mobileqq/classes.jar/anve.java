@@ -1,40 +1,25 @@
-import com.tencent.open.base.ToastUtil;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.music.humrecognition.humming.IRecognizer;
-import dov.com.qq.im.capture.music.humrecognition.view.BgmRecognitionProviderView;
-import dov.com.tencent.biz.qqstory.takevideo.EditRecognitionPart;
-import java.io.File;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.MoveToGroupActivity;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 public class anve
-  implements Runnable
+  implements View.OnClickListener
 {
-  public anve(BgmRecognitionProviderView paramBgmRecognitionProviderView) {}
+  public anve(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (BgmRecognitionProviderView.a(this.a) == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("BgmRecognitionProviderView", 2, "run: invoked. info: mRecognitionPart = " + BgmRecognitionProviderView.a(this.a));
-      }
-      return;
-    }
-    File localFile = BgmRecognitionProviderView.a(this.a).a();
-    if ((localFile != null) && (localFile.exists()))
-    {
-      BgmRecognitionProviderView.a(this.a).a(localFile);
-      BgmRecognitionProviderView.a(this.a).a();
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.e("BgmRecognitionProviderView", 2, "run: invoked. info: Failed to get audioFile. audioFile = " + localFile);
-    }
-    ToastUtil.a().a(2131439285);
+    paramView = new Intent(this.a, MoveToGroupActivity.class).putExtra("friendUin", this.a.f).putExtra("mgid", (byte)this.a.l);
+    paramView.putExtra("PARAM_EXECUTE_IMMEDIATELY", false);
+    this.a.startActivityForResult(paramView, 100);
+    awqx.b(null, "CliOper", "", "", "0X80050F1", "0X80050F1", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anve
  * JD-Core Version:    0.7.0.1
  */

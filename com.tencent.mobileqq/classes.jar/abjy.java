@@ -1,74 +1,21 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.util.LruCache;
-import com.tencent.mobileqq.armap.NonMainAppHeadLoader;
-import com.tencent.mobileqq.armap.NonMainAppHeadLoader.FaceObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
 
-public class abjy
-  extends Handler
+class abjy
+  implements View.OnLongClickListener
 {
-  public abjy(NonMainAppHeadLoader paramNonMainAppHeadLoader, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  abjy(abjx paramabjx, long paramLong) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onLongClick(View paramView)
   {
-    if (paramMessage.what == 1000) {
-      if (this.a.jdField_a_of_type_JavaUtilArrayList.size() > 0)
-      {
-        paramMessage = new ArrayList(this.a.jdField_a_of_type_JavaUtilArrayList.size());
-        paramMessage.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
-        this.a.a(paramMessage);
-      }
-    }
-    Object localObject;
-    String str;
-    do
-    {
-      this.a.jdField_a_of_type_JavaUtilArrayList.removeAll(paramMessage);
-      for (;;)
-      {
-        return;
-        if (paramMessage.what == 1002) {
-          try
-          {
-            localObject = (Bundle)paramMessage.obj;
-            paramMessage = (Bitmap)((Bundle)localObject).getParcelable("bmp");
-            str = ((Bundle)localObject).getString("uin");
-            localObject = ((Bundle)localObject).getString("path");
-            if (paramMessage != null) {
-              this.a.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(str, paramMessage);
-            }
-            Iterator localIterator = this.a.jdField_a_of_type_JavaUtilList.iterator();
-            while (localIterator.hasNext())
-            {
-              NonMainAppHeadLoader.FaceObserver localFaceObserver = (NonMainAppHeadLoader.FaceObserver)localIterator.next();
-              if (localFaceObserver != null) {
-                localFaceObserver.onFaceUpdate(str, (String)localObject, paramMessage);
-              }
-            }
-            if (!QLog.isColorLevel()) {}
-          }
-          catch (Exception paramMessage) {}
-        }
-      }
-      QLog.e("NonMainAppHeadLoader", 2, "refreshImg, exception:" + paramMessage.toString());
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.d("NonMainAppHeadLoader", 2, "refreshImg, uin:" + str + ", path=" + (String)localObject);
+    babr.a(this.jdField_a_of_type_Abjx.a, 230).setTitle(this.jdField_a_of_type_Abjx.a.getString(2131654084)).setItems(2130903075, new abjz(this)).show();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abjy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,7 @@
 package com.tencent.TMG.opengl.texture;
 
 import android.content.Context;
-import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
 import com.tencent.TMG.opengl.GlStringParser;
 import com.tencent.TMG.opengl.glrenderer.GLCanvas;
 import com.tencent.TMG.opengl.glrenderer.GLId;
@@ -22,8 +20,8 @@ public final class YUVTexture
   static boolean soloaded = false;
   public float mBrightness = 1.2F;
   public float mContrast = 1.93F;
-  private EventHandler mEventHandler;
-  private GLRenderListener mListener;
+  private YUVTexture.EventHandler mEventHandler;
+  private YUVTexture.GLRenderListener mListener;
   private int mNativeContext = 0;
   public float mSaturation = 1.05F;
   private GlStringParser mStringParser = null;
@@ -36,7 +34,7 @@ public final class YUVTexture
     super(null, 0, 0);
     Looper localLooper = Looper.myLooper();
     if (localLooper != null) {
-      this.mEventHandler = new EventHandler(localLooper);
+      this.mEventHandler = new YUVTexture.EventHandler(this, localLooper);
     }
     for (;;)
     {
@@ -44,7 +42,7 @@ public final class YUVTexture
       return;
       localLooper = Looper.getMainLooper();
       if (localLooper != null) {
-        this.mEventHandler = new EventHandler(localLooper);
+        this.mEventHandler = new YUVTexture.EventHandler(this, localLooper);
       } else {
         this.mEventHandler = null;
       }
@@ -171,7 +169,7 @@ public final class YUVTexture
     this.mSaturation = paramFloat3;
   }
   
-  public void setGLRenderListener(GLRenderListener paramGLRenderListener)
+  public void setGLRenderListener(YUVTexture.GLRenderListener paramGLRenderListener)
   {
     this.mListener = paramGLRenderListener;
   }
@@ -179,65 +177,10 @@ public final class YUVTexture
   native void uninit();
   
   native void uploadContent(int[] paramArrayOfInt);
-  
-  class EventHandler
-    extends Handler
-  {
-    public EventHandler(Looper paramLooper)
-    {
-      super();
-    }
-    
-    public void handleMessage(Message paramMessage)
-    {
-      switch (paramMessage.what)
-      {
-      }
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-            } while (YUVTexture.this.mListener == null);
-            YUVTexture.this.mListener.onRenderFrame();
-            return;
-          } while (YUVTexture.this.mListener == null);
-          YUVTexture.this.mListener.onRenderReset();
-          return;
-        } while (YUVTexture.this.mListener == null);
-        YUVTexture.this.mListener.onRenderFlush();
-        return;
-      } while (YUVTexture.this.mListener == null);
-      if (YUVTexture.this.mStringParser == null) {
-        YUVTexture.access$102(YUVTexture.this, new GlStringParser('=', ';'));
-      }
-      paramMessage = (String)paramMessage.obj;
-      YUVTexture.this.mStringParser.unflatten(paramMessage);
-      int i = YUVTexture.this.mStringParser.getInt("width");
-      int j = YUVTexture.this.mStringParser.getInt("height");
-      int k = YUVTexture.this.mStringParser.getInt("angle");
-      YUVTexture.this.mListener.onRenderInfoNotify(i, j, k);
-    }
-  }
-  
-  public static abstract interface GLRenderListener
-  {
-    public abstract void onRenderFlush();
-    
-    public abstract void onRenderFrame();
-    
-    public abstract void onRenderInfoNotify(int paramInt1, int paramInt2, int paramInt3);
-    
-    public abstract void onRenderReset();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.TMG.opengl.texture.YUVTexture
  * JD-Core Version:    0.7.0.1
  */

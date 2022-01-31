@@ -1,59 +1,20 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.POIListRequestCallback;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.POIListRequestSession;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import dov.com.qq.im.capture.poi.FacePoiSearchUI;
-import dov.com.tencent.biz.qqstory.takevideo.poilist.QQStoryPoiListAdapter;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
-public class anvu
-  implements LbsManager.POIListRequestCallback
+class anvu
+  implements DialogInterface.OnClickListener
 {
-  public anvu(FacePoiSearchUI paramFacePoiSearchUI, String paramString) {}
+  anvu(anvt paramanvt) {}
   
-  public void a(int paramInt, LbsManager.POIListRequestSession paramPOIListRequestSession, List paramList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession = paramPOIListRequestSession;
-    if (paramInt == 0) {
-      if (paramPOIListRequestSession.a()) {
-        break label199;
-      }
-    }
-    label199:
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.d.setVisibility(0);
-      this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.a(bool);
-      if (this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.jdField_a_of_type_JavaUtilArrayList == null) {
-        this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      if (this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession.b()) {
-        this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.jdField_a_of_type_JavaUtilArrayList.clear();
-      }
-      this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-      if (this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistQQStoryPoiListAdapter != null)
-      {
-        this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistQQStoryPoiListAdapter.a(this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.jdField_a_of_type_JavaUtilArrayList, null);
-        this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPoilistQQStoryPoiListAdapter.notifyDataSetChanged();
-        if (this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.jdField_a_of_type_JavaUtilArrayList.isEmpty())
-        {
-          this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.a(this.jdField_a_of_type_JavaLangString);
-          this.jdField_a_of_type_DovComQqImCapturePoiFacePoiSearchUI.d.setVisibility(4);
-        }
-      }
-      int i = paramInt;
-      if (paramInt == 0) {
-        i = 0;
-      }
-      StoryReportor.b("edit_video", "poi_list_success", 0, i, new String[0]);
-      return;
-    }
+    Face2FaceAddFriendActivity.e(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anvu
  * JD-Core Version:    0.7.0.1
  */

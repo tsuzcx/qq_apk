@@ -1,34 +1,33 @@
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONObject;
+
 public class otj
-  implements Cloneable
 {
-  public double a;
-  public int a;
-  public String a;
-  public int b = -1;
-  public String b;
-  public int c = -1;
-  public String c;
-  public int d;
-  public String d;
-  public int e = -1;
-  public String e;
-  public int f;
-  public String f;
-  public int g = 1;
-  
-  public otj(String paramString)
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_d_of_type_Int = -1;
-    this.jdField_f_of_type_Int = -1;
-    this.jdField_a_of_type_Double = -1.0D;
-    this.jdField_f_of_type_JavaLangString = "0";
-    this.jdField_d_of_type_JavaLangString = paramString;
-  }
-  
-  public otj a()
-  {
-    return (otj)super.clone();
+    JSONObject localJSONObject1 = new JSONObject();
+    otl.v(paramBaseArticleInfo, localJSONObject1);
+    localJSONObject1.put("id_content_wrapper", new JSONObject());
+    localJSONObject1.put("id_article_wrapper", new JSONObject());
+    localJSONObject1.put("id_summary_wrapper", new JSONObject());
+    localJSONObject1.put("id_info_wrapper", new JSONObject());
+    otl.b(paramBaseArticleInfo, localJSONObject1);
+    JSONObject localJSONObject2 = new JSONObject();
+    localJSONObject2.put("summary_text", ajjy.a(2131647098));
+    localJSONObject1.put("id_summary", localJSONObject2);
+    localJSONObject1.put("id_image_content", new JSONObject());
+    localJSONObject2 = new JSONObject();
+    localJSONObject2.put("article_small_imge_url", paramBaseArticleInfo.mSinglePicture.getFile());
+    localJSONObject1.put("id_article_small_imge", localJSONObject2);
+    otl.a(paramBaseArticleInfo, localJSONObject1, true);
+    otl.e(paramBaseArticleInfo, localJSONObject1);
+    otl.m(paramBaseArticleInfo, localJSONObject1);
+    otl.B(paramBaseArticleInfo, localJSONObject1);
+    otl.C(paramBaseArticleInfo, localJSONObject1);
+    otl.b(localJSONObject1);
+    localJSONObject1.put("style_ID", "ReadInjoy_topic_recommend_pgc_small_cell");
+    return localJSONObject1;
   }
 }
 

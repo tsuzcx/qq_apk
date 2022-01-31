@@ -1,24 +1,35 @@
-import com.tencent.biz.pubaccount.Advertisement.view.AdProgressButton;
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import com.tencent.av.app.VideoAppInterface;
 
 public class kyq
-  implements Runnable
+  extends kyp
 {
-  public kyq(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
-  
-  public void run()
+  public kyq(VideoAppInterface paramVideoAppInterface)
   {
-    ReadInJoyNativeAdFragment.a(this.a).setBackgroundResource(2130838514);
-    ReadInJoyNativeAdFragment.a(this.a).setText(this.a.getText(2131438717));
-    ReadInJoyNativeAdFragment.a(this.a).setTextColor(-1);
-    ReadInJoyNativeAdFragment.a(this.a).setProgress(0);
-    ReadInJoyNativeAdFragment.a(this.a).setClickable(true);
-    ReadInJoyNativeAdFragment.c(this.a, 2);
+    super(paramVideoAppInterface);
   }
+  
+  public int a(String paramString)
+  {
+    return 1;
+  }
+  
+  public boolean a(int paramInt, String paramString)
+  {
+    return false;
+  }
+  
+  public boolean a(String paramString)
+  {
+    return true;
+  }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     kyq
  * JD-Core Version:    0.7.0.1
  */

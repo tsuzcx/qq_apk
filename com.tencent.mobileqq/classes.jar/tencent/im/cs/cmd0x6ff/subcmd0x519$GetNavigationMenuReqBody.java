@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class subcmd0x519$GetNavigationMenuReqBody
-  extends MessageMicro
+  extends MessageMicro<GetNavigationMenuReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "uint64_puin", "uint64_uin", "uint32_ver_no" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0) }, GetNavigationMenuReqBody.class);
   public final PBUInt32Field uint32_ver_no = PBField.initUInt32(0);
@@ -16,7 +16,7 @@ public final class subcmd0x519$GetNavigationMenuReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.cmd0x6ff.subcmd0x519.GetNavigationMenuReqBody
  * JD-Core Version:    0.7.0.1
  */

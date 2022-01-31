@@ -9,23 +9,25 @@ import java.util.Map;
 public final class mobile_count_req
   extends JceStruct
 {
-  static Map cache_extendinfo;
-  static Map cache_mapBuf = new HashMap();
-  static Map cache_mapLastGetTime;
-  static Map cache_mapSqDyncFeedsInfo;
-  static Map cache_mapTimeStamp;
-  static Map cache_stMapCountInfo;
-  public Map extendinfo;
+  static Map<Integer, String> cache_extendinfo;
+  static Map<Long, s_comm_data> cache_mapBuf = new HashMap();
+  static Map<Long, Long> cache_mapDyncShowTime;
+  static Map<Long, Long> cache_mapLastGetTime;
+  static Map<String, String> cache_mapSqDyncFeedsInfo;
+  static Map<Integer, Long> cache_mapTimeStamp;
+  static Map<Integer, count_info> cache_stMapCountInfo;
+  public Map<Integer, String> extendinfo;
   public int iRelationType;
   public int iVisitQZoneType;
   public long lastSqDynamicFeedsTime;
   public String lastUndealCountTime = "";
-  public Map mapBuf;
-  public Map mapLastGetTime;
-  public Map mapSqDyncFeedsInfo;
-  public Map mapTimeStamp;
+  public Map<Long, s_comm_data> mapBuf;
+  public Map<Long, Long> mapDyncShowTime;
+  public Map<Long, Long> mapLastGetTime;
+  public Map<String, String> mapSqDyncFeedsInfo;
+  public Map<Integer, Long> mapTimeStamp;
   public String sTransParam = "";
-  public Map stMapCountInfo;
+  public Map<Integer, count_info> stMapCountInfo;
   public long uMask;
   
   static
@@ -43,24 +45,27 @@ public final class mobile_count_req
     cache_extendinfo.put(Integer.valueOf(0), "");
     cache_mapSqDyncFeedsInfo = new HashMap();
     cache_mapSqDyncFeedsInfo.put("", "");
+    cache_mapDyncShowTime = new HashMap();
+    cache_mapDyncShowTime.put(Long.valueOf(0L), Long.valueOf(0L));
   }
   
   public mobile_count_req() {}
   
-  public mobile_count_req(long paramLong1, int paramInt1, int paramInt2, Map paramMap1, Map paramMap2, Map paramMap3, String paramString1, Map paramMap4, Map paramMap5, String paramString2, long paramLong2, Map paramMap6)
+  public mobile_count_req(long paramLong1, int paramInt1, int paramInt2, Map<Long, s_comm_data> paramMap, Map<Integer, Long> paramMap1, Map<Long, Long> paramMap2, String paramString1, Map<Integer, count_info> paramMap3, Map<Integer, String> paramMap4, String paramString2, long paramLong2, Map<String, String> paramMap5, Map<Long, Long> paramMap6)
   {
     this.uMask = paramLong1;
     this.iRelationType = paramInt1;
     this.iVisitQZoneType = paramInt2;
-    this.mapBuf = paramMap1;
-    this.mapTimeStamp = paramMap2;
-    this.mapLastGetTime = paramMap3;
+    this.mapBuf = paramMap;
+    this.mapTimeStamp = paramMap1;
+    this.mapLastGetTime = paramMap2;
     this.sTransParam = paramString1;
-    this.stMapCountInfo = paramMap4;
-    this.extendinfo = paramMap5;
+    this.stMapCountInfo = paramMap3;
+    this.extendinfo = paramMap4;
     this.lastUndealCountTime = paramString2;
     this.lastSqDynamicFeedsTime = paramLong2;
-    this.mapSqDyncFeedsInfo = paramMap6;
+    this.mapSqDyncFeedsInfo = paramMap5;
+    this.mapDyncShowTime = paramMap6;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -77,6 +82,7 @@ public final class mobile_count_req
     this.lastUndealCountTime = paramJceInputStream.readString(9, false);
     this.lastSqDynamicFeedsTime = paramJceInputStream.read(this.lastSqDynamicFeedsTime, 10, false);
     this.mapSqDyncFeedsInfo = ((Map)paramJceInputStream.read(cache_mapSqDyncFeedsInfo, 11, false));
+    this.mapDyncShowTime = ((Map)paramJceInputStream.read(cache_mapDyncShowTime, 12, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -108,6 +114,9 @@ public final class mobile_count_req
     paramJceOutputStream.write(this.lastSqDynamicFeedsTime, 10);
     if (this.mapSqDyncFeedsInfo != null) {
       paramJceOutputStream.write(this.mapSqDyncFeedsInfo, 11);
+    }
+    if (this.mapDyncShowTime != null) {
+      paramJceOutputStream.write(this.mapDyncShowTime, 12);
     }
   }
 }

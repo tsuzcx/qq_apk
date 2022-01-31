@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/dt" android:background="@drawable/ak8" android:layout_width="fill_parent" android:layout_height="120.0dip">
+        <ImageView android:id="@id/gx6" android:clickable="true" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginRight="15.0dip" android:src="@drawable/fcn" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:layout_marginEnd="15.0dip" android:layout_alignParentEnd="true" />
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:layout_toLeftOf="@id/gx6" android:layout_toRightOf="@id/gx4" android:layout_centerVertical="true" android:layout_marginStart="13.0dip" android:layout_toEndOf="@id/gx4">
+            <TextView android:textSize="16.0dip" android:textColor="@color/skin_black" android:ellipsize="end" android:id="@id/gx_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/r7_" android:maxLines="1" android:singleLine="true" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/skin_gray6" android:ellipsize="end" android:id="@id/gx9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:text="@string/r7c" android:maxLines="1" android:singleLine="true" />
+            <Button android:textColor="#ff12b7f5" android:gravity="center" android:id="@id/gxa" android:background="@drawable/akz" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="30.0dip" android:layout_marginTop="11.0dip" android:layout_marginBottom="2.0dip" android:text="@string/r78" />
+        </LinearLayout>
+        <FrameLayout android:id="@id/gx4" android:layout_width="74.0dip" android:layout_height="100.0dip" android:layout_marginLeft="15.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:layout_alignParentStart="true">
+            <com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.ThumbSlideShowView android:id="@id/gx7" android:layout_width="74.0dip" android:layout_height="100.0dip" />
+            <ImageView android:id="@id/gx8" android:layout_width="74.0dip" android:layout_height="100.0dip" />
+        </FrameLayout>
+        <TextView android:textSize="20.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/gx5" android:visibility="gone" android:layout_width="55.0dip" android:layout_height="78.0dip" android:layout_marginRight="12.0dip" android:text="0" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+    <ImageView android:background="@drawable/skin_group_list_sub_entry_theme_version2" android:layout_width="fill_parent" android:layout_height="12.0dip" />
+</LinearLayout>

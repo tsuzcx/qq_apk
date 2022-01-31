@@ -1,19 +1,40 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySubscribeFragement;
-import java.util.List;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.guide.GuideHelper;
+import com.tencent.mobileqq.utils.AudioHelper;
 
 public class lqq
-  implements Runnable
+  extends kur
 {
-  public lqq(ReadInJoySubscribeFragement paramReadInJoySubscribeFragement, List paramList) {}
+  public lqq(AVActivity paramAVActivity) {}
   
-  public void run()
+  protected void a(long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyFragmentReadInJoySubscribeFragement.a(this.jdField_a_of_type_JavaUtilList);
+    if (this.a.isDestroyed()) {
+      return;
+    }
+    this.a.a.a(paramLong1, this.a, 4, 0);
+  }
+  
+  protected void b(long paramLong, int paramInt1, int paramInt2)
+  {
+    if (this.a.isDestroyed()) {
+      return;
+    }
+    paramLong = AudioHelper.b();
+    this.a.a.a(paramLong, this.a, 3, 2);
+  }
+  
+  protected void b(long paramLong1, long paramLong2)
+  {
+    if (this.a.isDestroyed()) {
+      return;
+    }
+    this.a.a.a(paramLong1, this.a, 4, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lqq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenPermissionDialogFragment;
 
 public class alue
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public alue(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public alue(ColorNoteSmallScreenPermissionDialogFragment paramColorNoteSmallScreenPermissionDialogFragment) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool = true;
-    paramView = QidianProfileCardActivity.a(this.a);
-    int i;
-    if (QidianProfileCardActivity.a(this.a))
+    alui.d(BaseApplicationImpl.getContext());
+    if (this.a.getActivity() != null)
     {
-      i = 1;
-      paramView.setMaxLines(i);
-      paramView = this.a;
-      if (QidianProfileCardActivity.a(this.a)) {
-        break label54;
-      }
-    }
-    for (;;)
-    {
-      QidianProfileCardActivity.a(paramView, bool);
-      return;
-      i = 3;
-      break;
-      label54:
-      bool = false;
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alue
  * JD-Core Version:    0.7.0.1
  */

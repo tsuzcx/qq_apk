@@ -5,13 +5,13 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import opw;
 
 public class ComponentContentBigGallery
   extends ComponentContentBig
 {
-  TextView a;
+  TextView b;
   
   public ComponentContentBigGallery(Context paramContext)
   {
@@ -30,22 +30,22 @@ public class ComponentContentBigGallery
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969562, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131494279, this, true);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    this.a = ((TextView)paramView.findViewById(2131367008));
+    this.b = ((TextView)paramView.findViewById(2131301289));
   }
   
   public void a(Object paramObject)
   {
     super.a(paramObject);
-    if ((paramObject instanceof IReadInJoyModel))
+    if ((paramObject instanceof opw))
     {
-      paramObject = ((IReadInJoyModel)paramObject).a();
-      this.a.setText(String.valueOf(paramObject.mGalleryPicNumber));
+      paramObject = ((opw)paramObject).a();
+      this.b.setText(String.valueOf(paramObject.mGalleryPicNumber));
     }
   }
   

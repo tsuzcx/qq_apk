@@ -1,19 +1,27 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class oke
-  extends SimpleJob
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public oke(EditVideoPartManager paramEditVideoPartManager, String paramString, int paramInt1, int paramInt2, String[] paramArrayOfString) {}
+  public oke(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    StoryReportor.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
-    return null;
+    ReadInJoySelfFragment.a(this.a).b(paramBoolean);
+    if (paramBoolean)
+    {
+      bbmy.a(this.a.a.getContext(), this.a.a.getContext().getResources().getString(2131633866), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131167766));
+      ndn.a(null, "CliOper", "", "", "0X80067D6", "0X80067D6", 0, 0, "", "", "", obz.c(), false);
+      return;
+    }
+    ndn.a(null, "CliOper", "", "", "0X800705C", "0X800705C", 0, 0, "", "", "", obz.c(), false);
   }
 }
 

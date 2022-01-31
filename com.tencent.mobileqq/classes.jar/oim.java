@@ -1,12 +1,6 @@
-import android.view.View;
-import android.widget.ImageView;
-
-class oim
+public abstract interface oim
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  
-  oim(oil paramoil) {}
+  public abstract void a(boolean paramBoolean);
 }
 
 

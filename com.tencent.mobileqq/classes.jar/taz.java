@@ -1,19 +1,37 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPromoteTaskList;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 
 public class taz
-  implements Runnable
+  extends szf<qqstory_service.ReqGetPromoteTaskList>
 {
-  public taz(JumpActivity paramJumpActivity, Intent paramIntent) {}
+  public static final String b = skt.a("StorySvc.get_promote_tasklist");
   
-  public void run()
+  public taz(String paramString)
   {
-    JumpActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, this.jdField_a_of_type_AndroidContentIntent.getExtras());
+    super(b, new qqstory_service.ReqGetPromoteTaskList(), null);
+    ((qqstory_service.ReqGetPromoteTaskList)this.a).bytes_cookie.set(ByteStringMicro.copyFromUtf8(paramString));
+  }
+  
+  public slu a(byte[] paramArrayOfByte)
+  {
+    return new tba(paramArrayOfByte);
+  }
+  
+  protected byte[] a()
+  {
+    urk.a("GetPromoteTaskRequest", "encode: %s", this);
+    return super.a();
+  }
+  
+  public String toString()
+  {
+    return vlw.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     taz
  * JD-Core Version:    0.7.0.1
  */

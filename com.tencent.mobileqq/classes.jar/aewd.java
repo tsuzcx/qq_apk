@@ -1,20 +1,26 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import com.tencent.mobileqq.activity.contacts.view.ContactsViewPager;
+import com.tencent.qphone.base.util.QLog;
 
 public class aewd
-  implements View.OnClickListener
+  implements aesx
 {
-  public aewd(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public aewd(TroopView paramTroopView) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView, int paramInt)
   {
-    this.a.finish();
+    if (QLog.isColorLevel()) {
+      QLog.i("addContacts.TroopView", 2, "AddContactTroopClassifyAdapter.onItemClickListener onItemClick. position:" + paramInt);
+    }
+    TroopView.a(this.a, TroopView.a(this.a).getCurrentItem());
+    TroopView.b(this.a, paramInt);
+    TroopView.a(this.a).setCurrentItem(paramInt, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aewd
  * JD-Core Version:    0.7.0.1
  */

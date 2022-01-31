@@ -10,8 +10,6 @@ import com.squareup.okhttp.HttpUrl;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.internal.http.StreamAllocation;
 import com.squareup.okhttp.internal.io.RealConnection;
-import java.net.MalformedURLException;
-import java.net.UnknownHostException;
 import java.util.logging.Logger;
 import javax.net.ssl.SSLSocket;
 
@@ -39,8 +37,7 @@ public abstract class Internal
   
   public abstract RealConnection get(ConnectionPool paramConnectionPool, Address paramAddress, StreamAllocation paramStreamAllocation);
   
-  public abstract HttpUrl getHttpUrlChecked(String paramString)
-    throws MalformedURLException, UnknownHostException;
+  public abstract HttpUrl getHttpUrlChecked(String paramString);
   
   public abstract InternalCache internalCache(OkHttpClient paramOkHttpClient);
   

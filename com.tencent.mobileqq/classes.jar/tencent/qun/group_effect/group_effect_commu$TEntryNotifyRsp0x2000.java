@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class group_effect_commu$TEntryNotifyRsp0x2000
-  extends MessageMicro
+  extends MessageMicro<TEntryNotifyRsp0x2000>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "ret", "st_userconfig", "notify_interval" }, new Object[] { Integer.valueOf(0), null, Integer.valueOf(0) }, TEntryNotifyRsp0x2000.class);
   public final PBUInt32Field notify_interval = PBField.initUInt32(0);

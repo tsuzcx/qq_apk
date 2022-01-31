@@ -1,22 +1,23 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.filemanager.fileviewer.ImageGalleryAdapter;
-
-public class adkl
+class adkl
+  extends acjc
 {
-  public ProgressBar a;
-  public TextView a;
-  public URLImageView a;
+  public long a;
+  public Object a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
   
-  private adkl(ImageGalleryAdapter paramImageGalleryAdapter)
-  {
-    this.jdField_a_of_type_AndroidWidgetProgressBar = null;
-  }
+  adkl(adkj paramadkj) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adkl
  * JD-Core Version:    0.7.0.1
  */

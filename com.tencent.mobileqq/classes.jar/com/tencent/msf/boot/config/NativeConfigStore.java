@@ -5,10 +5,15 @@ import android.content.pm.ApplicationInfo;
 import android.os.Build;
 import android.os.SystemClock;
 import android.telephony.TelephonyManager;
+import com.tencent.feedback.eup.CrashReport;
+import com.tencent.mobileqq.msf.core.MsfCore;
+import com.tencent.mobileqq.msf.core.c.k;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qphone.base.util.StringUtils;
 import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Random;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class NativeConfigStore
@@ -21,6 +26,8 @@ public class NativeConfigStore
   
   static
   {
+    isLoaded = false;
+    soLoadResultCode = 0;
     loadSo();
   }
   
@@ -91,7 +98,7 @@ public class NativeConfigStore
   
   public synchronized native String[] getConfigList(String paramString);
   
-  public synchronized native void loadConfig(Context paramContext, boolean paramBoolean);
+  public synchronized native int loadConfig(Context paramContext, boolean paramBoolean);
   
   /* Error */
   public String[] n_getConfigList(String paramString)
@@ -100,7 +107,7 @@ public class NativeConfigStore
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 35	com/tencent/msf/boot/config/NativeConfigStore:loadSaveRootSucc	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   3: getfield 39	com/tencent/msf/boot/config/NativeConfigStore:loadSaveRootSucc	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   6: invokevirtual 197	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   9: ifne +21 -> 30
     //   12: getstatic 20	com/tencent/msf/boot/config/NativeConfigStore:tag	Ljava/lang/String;
@@ -141,7 +148,7 @@ public class NativeConfigStore
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 35	com/tencent/msf/boot/config/NativeConfigStore:loadSaveRootSucc	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   3: getfield 39	com/tencent/msf/boot/config/NativeConfigStore:loadSaveRootSucc	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   6: invokevirtual 197	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   9: ifne +15 -> 24
     //   12: getstatic 20	com/tencent/msf/boot/config/NativeConfigStore:tag	Ljava/lang/String;
@@ -153,21 +160,22 @@ public class NativeConfigStore
     //   23: return
     //   24: aload_0
     //   25: aload_1
-    //   26: invokevirtual 207	com/tencent/msf/boot/config/NativeConfigStore:removeConfig	(Ljava/lang/String;)V
-    //   29: goto -8 -> 21
-    //   32: astore_1
-    //   33: aload_0
-    //   34: monitorexit
-    //   35: aload_1
-    //   36: athrow
+    //   26: invokevirtual 208	com/tencent/msf/boot/config/NativeConfigStore:removeConfig	(Ljava/lang/String;)I
+    //   29: pop
+    //   30: goto -9 -> 21
+    //   33: astore_1
+    //   34: aload_0
+    //   35: monitorexit
+    //   36: aload_1
+    //   37: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	37	0	this	NativeConfigStore
-    //   0	37	1	paramString	String
+    //   0	38	0	this	NativeConfigStore
+    //   0	38	1	paramString	String
     // Exception table:
     //   from	to	target	type
-    //   2	21	32	finally
-    //   24	29	32	finally
+    //   2	21	33	finally
+    //   24	30	33	finally
   }
   
   /* Error */
@@ -177,7 +185,7 @@ public class NativeConfigStore
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 35	com/tencent/msf/boot/config/NativeConfigStore:loadSaveRootSucc	Ljava/util/concurrent/atomic/AtomicBoolean;
+    //   3: getfield 39	com/tencent/msf/boot/config/NativeConfigStore:loadSaveRootSucc	Ljava/util/concurrent/atomic/AtomicBoolean;
     //   6: invokevirtual 197	java/util/concurrent/atomic/AtomicBoolean:get	()Z
     //   9: ifne +15 -> 24
     //   12: getstatic 20	com/tencent/msf/boot/config/NativeConfigStore:tag	Ljava/lang/String;
@@ -190,36 +198,82 @@ public class NativeConfigStore
     //   24: aload_0
     //   25: aload_1
     //   26: aload_2
-    //   27: invokevirtual 214	com/tencent/msf/boot/config/NativeConfigStore:setConfig	(Ljava/lang/String;Ljava/lang/String;)V
-    //   30: goto -9 -> 21
-    //   33: astore_1
-    //   34: getstatic 20	com/tencent/msf/boot/config/NativeConfigStore:tag	Ljava/lang/String;
-    //   37: iconst_1
-    //   38: ldc 216
-    //   40: aload_1
-    //   41: invokestatic 66	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   44: goto -23 -> 21
-    //   47: astore_1
-    //   48: aload_0
-    //   49: monitorexit
-    //   50: aload_1
-    //   51: athrow
+    //   27: invokevirtual 213	com/tencent/msf/boot/config/NativeConfigStore:setConfig	(Ljava/lang/String;Ljava/lang/String;)I
+    //   30: pop
+    //   31: goto -10 -> 21
+    //   34: astore_1
+    //   35: aload_0
+    //   36: monitorexit
+    //   37: aload_1
+    //   38: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	52	0	this	NativeConfigStore
-    //   0	52	1	paramString1	String
-    //   0	52	2	paramString2	String
+    //   0	39	0	this	NativeConfigStore
+    //   0	39	1	paramString1	String
+    //   0	39	2	paramString2	String
     // Exception table:
     //   from	to	target	type
-    //   24	30	33	java/lang/UnsatisfiedLinkError
-    //   2	21	47	finally
-    //   24	30	47	finally
-    //   34	44	47	finally
+    //   2	21	34	finally
+    //   24	31	34	finally
   }
   
-  public synchronized native void removeConfig(String paramString);
+  public int removeConfig(String paramString)
+  {
+    try
+    {
+      i = removeConfigNative(paramString);
+      if (i != 0)
+      {
+        paramString = new HashMap(8);
+        paramString.put("ret", i + "");
+        MsfCore.sCore.statReporter.a("EvtRemoveCfgRenameReport", true, 0L, 0L, paramString, false, false);
+      }
+      return i;
+    }
+    catch (UnsatisfiedLinkError paramString)
+    {
+      for (;;)
+      {
+        QLog.e(tag, 2, "removeConfig fail ", paramString);
+        int i = -10000;
+      }
+    }
+    finally {}
+  }
   
-  public synchronized native void setConfig(String paramString1, String paramString2);
+  public native int removeConfigNative(String paramString);
+  
+  public int setConfig(String paramString1, String paramString2)
+  {
+    int j = -1;
+    try
+    {
+      i = setConfigNative(paramString1, paramString2);
+      if ((i != 0) && (MsfCore.sCore != null) && (MsfCore.sCore.statReporter != null))
+      {
+        paramString1 = new HashMap(8);
+        paramString1.put("ret", i + "");
+        MsfCore.sCore.statReporter.a("EvtSetCfgRenameReport", true, 0L, 0L, paramString1, false, false);
+      }
+      return i;
+    }
+    catch (UnsatisfiedLinkError paramString1)
+    {
+      for (;;)
+      {
+        QLog.e(tag, 1, "setConfig error:", paramString1);
+        int i = j;
+        if (new Random().nextInt(100) < 1)
+        {
+          CrashReport.handleCatchException(Thread.currentThread(), paramString1, "NativeConfigStoreCatchedException", null);
+          i = j;
+        }
+      }
+    }
+    finally {}
+  }
+  
+  public native int setConfigNative(String paramString1, String paramString2);
   
   public synchronized native void setSaveRootPath(String paramString);
 }

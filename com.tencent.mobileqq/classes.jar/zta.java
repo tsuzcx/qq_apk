@@ -1,38 +1,62 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.RegisterProxySvcPackHandler;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class zta
-  extends Handler
+class zta
+  extends zsy
 {
-  public zta(RegisterProxySvcPackHandler paramRegisterProxySvcPackHandler, Looper paramLooper)
+  public zta(zrt paramzrt, long paramLong)
   {
-    super(paramLooper);
+    super(paramzrt, 0, paramLong);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    switch (paramMessage.what)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("DoraemonOpenAPI.sensor.location", 2, "onLocationFinish: errCode=" + paramInt + ", info=" + paramSosoLbsInfo + ", isActive=" + this.jdField_a_of_type_Boolean);
     }
-    do
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    if (paramInt == 0)
     {
-      return;
-      this.a.c();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("RegisterProxySvcPack", 2, "real notify|iState:" + RegisterProxySvcPackHandler.a(this.a) + ", clientType:" + RegisterProxySvcPackHandler.a(this.a) + ", appId:" + RegisterProxySvcPackHandler.b(this.a));
+      double d1 = paramSosoLbsInfo.a.jdField_a_of_type_Double;
+      double d2 = paramSosoLbsInfo.a.jdField_b_of_type_Double;
+      double d3 = paramSosoLbsInfo.a.jdField_b_of_type_Float;
+      double d4 = paramSosoLbsInfo.a.jdField_a_of_type_Float;
+      double d5 = paramSosoLbsInfo.a.e;
+      paramSosoLbsInfo = new JSONObject();
+      try
+      {
+        paramSosoLbsInfo.put("latitude", d1);
+        paramSosoLbsInfo.put("longitude", d2);
+        paramSosoLbsInfo.put("speed", d3);
+        paramSosoLbsInfo.put("accuracy", d4);
+        paramSosoLbsInfo.put("altitude", d5);
+        paramSosoLbsInfo.put("verticalAccuracy", 0.0D);
+        paramSosoLbsInfo.put("horizontalAccuracy", d4);
+        zva.a(this.jdField_a_of_type_Zrt, paramSosoLbsInfo);
+        return;
       }
-      this.a.a(2, true, new Object[] { Integer.valueOf(RegisterProxySvcPackHandler.a(this.a)), Long.valueOf(RegisterProxySvcPackHandler.a(this.a)), Long.valueOf(RegisterProxySvcPackHandler.b(this.a)) });
-    } while ((RegisterProxySvcPackHandler.a(this.a) != 0) || (this.a.a.hasMessages(101)));
-    this.a.a.sendEmptyMessageDelayed(101, 3000L);
+      catch (JSONException localJSONException)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("DoraemonOpenAPI.sensor", 2, localJSONException.getMessage(), localJSONException);
+          }
+        }
+      }
+    }
+    zva.a(this.jdField_a_of_type_Zrt, paramInt, "error " + paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zta
  * JD-Core Version:    0.7.0.1
  */

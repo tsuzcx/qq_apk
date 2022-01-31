@@ -9,7 +9,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.utils.DisplayUtils;
+import bacc;
+import biti;
 import com.tencent.qphone.base.util.QLog;
 
 public class MusicHorizontalSeekView
@@ -24,7 +25,7 @@ public class MusicHorizontalSeekView
   float a;
   protected Paint a;
   protected Rect a;
-  protected MusicHorizontalSeekView.SeekListener a;
+  protected biti a;
   protected boolean a;
   protected Paint b;
   protected Paint c;
@@ -51,34 +52,28 @@ public class MusicHorizontalSeekView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Float = 0.0F;
-    this.m = ((int)DisplayUtils.a(paramContext, 2.0F));
-    this.n = ((int)DisplayUtils.a(paramContext, 1.0F));
-    jdField_b_of_type_Int = (int)DisplayUtils.a(paramContext, 10.0F);
-    jdField_c_of_type_Int = (int)DisplayUtils.a(paramContext, 21.0F);
+    this.m = ((int)bacc.a(paramContext, 2.0F));
+    this.n = ((int)bacc.a(paramContext, 1.0F));
+    jdField_b_of_type_Int = (int)bacc.a(paramContext, 10.0F);
+    jdField_c_of_type_Int = (int)bacc.a(paramContext, 21.0F);
     int i1 = 0;
     while (i1 < jdField_a_of_type_Int)
     {
-      jdField_b_of_type_ArrayOfInt[i1] = ((int)DisplayUtils.a(paramContext, jdField_a_of_type_ArrayOfInt[i1]));
+      jdField_b_of_type_ArrayOfInt[i1] = ((int)bacc.a(paramContext, jdField_a_of_type_ArrayOfInt[i1]));
       i1 += 1;
     }
     paramContext = paramContext.getResources();
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131493235));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131099888));
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131493773));
+    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131100752));
     this.jdField_c_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131493774));
+    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131100754));
     this.jdField_c_of_type_AndroidGraphicsPaint.setStrokeWidth(this.n);
     super.setOnTouchListener(this);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.h = (jdField_b_of_type_Int * paramInt / 1000);
-    setPlayedPosition(-1);
   }
   
   protected void a(Canvas paramCanvas, int paramInt1, int paramInt2, int paramInt3, Paint paramPaint)
@@ -173,11 +168,8 @@ public class MusicHorizontalSeekView
     this.j = ((this.k - this.f) / 2);
     paramInt1 = (this.l - jdField_c_of_type_Int) / 2;
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect(this.j, paramInt1, this.j + this.d * jdField_b_of_type_Int, jdField_c_of_type_Int + paramInt1);
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener != null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener.a(this.j, this.f);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "onMeasure() mViewWidth: " + this.k + ", mViewHeight = " + this.l + ", mVideoViewOffsetX = " + this.j + ", mMusicMaxWidth = " + this.g);
+    if (this.jdField_a_of_type_Biti != null) {
+      this.jdField_a_of_type_Biti.a(this.j, this.f);
     }
   }
   
@@ -196,10 +188,10 @@ public class MusicHorizontalSeekView
         return bool;
         this.jdField_a_of_type_Boolean = false;
         this.jdField_a_of_type_Float = paramMotionEvent.getX();
-        if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener == null) {
+        if (this.jdField_a_of_type_Biti == null) {
           break;
         }
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener.a(this.g, this.f, this.h);
+        this.jdField_a_of_type_Biti.a(this.g, this.f, this.h);
         break;
         f1 = paramMotionEvent.getX();
       } while (Math.abs(f1 - this.jdField_a_of_type_Float) < 2.0F);
@@ -211,8 +203,8 @@ public class MusicHorizontalSeekView
         {
           this.h = 0;
           super.invalidate();
-          if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener != null) {
-            this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener.b(this.g, this.f, this.h);
+          if (this.jdField_a_of_type_Biti != null) {
+            this.jdField_a_of_type_Biti.b(this.g, this.f, this.h);
           }
           this.jdField_a_of_type_Float = f1;
           return false;
@@ -222,22 +214,22 @@ public class MusicHorizontalSeekView
       {
         this.h = (this.g - this.f);
         super.invalidate();
-        if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener != null) {
-          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener.b(this.g, this.f, this.h);
+        if (this.jdField_a_of_type_Biti != null) {
+          this.jdField_a_of_type_Biti.b(this.g, this.f, this.h);
         }
         this.jdField_a_of_type_Float = f1;
         return false;
       }
       super.invalidate();
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener != null) {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener.b(this.g, this.f, this.h);
+      if (this.jdField_a_of_type_Biti != null) {
+        this.jdField_a_of_type_Biti.b(this.g, this.f, this.h);
       }
       this.jdField_a_of_type_Float = f1;
       continue;
       this.jdField_a_of_type_Boolean = false;
       super.invalidate();
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener != null) {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener.c(this.g, this.f, this.h);
+      if (this.jdField_a_of_type_Biti != null) {
+        this.jdField_a_of_type_Biti.c(this.g, this.f, this.h);
       }
     }
   }
@@ -250,9 +242,9 @@ public class MusicHorizontalSeekView
     this.g = (jdField_b_of_type_Int * this.e);
   }
   
-  public void setOnSeekListener(MusicHorizontalSeekView.SeekListener paramSeekListener)
+  public void setOnSeekListener(biti parambiti)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener = paramSeekListener;
+    this.jdField_a_of_type_Biti = parambiti;
   }
   
   public void setPlayedPosition(int paramInt)

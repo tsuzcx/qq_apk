@@ -1,15 +1,15 @@
 package cooperation.qzone.music;
 
-import ancu;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bfwz;
 import org.json.JSONObject;
 
 public class BroadcastOneShow
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ancu();
+  public static final Parcelable.Creator<BroadcastOneShow> CREATOR = new bfwz();
   public String bcShowId = "";
   public String bcShowName = "";
   public long endTime;

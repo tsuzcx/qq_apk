@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.v4.view.ViewPager android:id="@id/aph" android:paddingLeft="153.5dip" android:paddingRight="153.5dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="-2.0dip" />
+    <ImageView android:id="@id/api" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ebs" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

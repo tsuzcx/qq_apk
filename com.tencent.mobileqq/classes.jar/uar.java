@@ -1,22 +1,12 @@
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.widget.XListView;
+import android.view.View;
 
-class uar
-  implements Runnable
+public abstract interface uar
 {
-  uar(uaq paramuaq) {}
-  
-  public void run()
-  {
-    if ((this.a.a.a.getAdapter() instanceof BaseAdapter)) {
-      ((BaseAdapter)this.a.a.a.getAdapter()).notifyDataSetChanged();
-    }
-  }
+  public abstract void a(View paramView, uhj paramuhj);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uar
  * JD-Core Version:    0.7.0.1
  */

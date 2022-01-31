@@ -1,24 +1,12 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.item.FilePicItemBuilder;
-import com.tencent.mobileqq.data.MessageForFile;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-
-public class vbz
-  implements FMDialogUtil.FMDialogInterface
+public abstract interface vbz
 {
-  public vbz(FilePicItemBuilder paramFilePicItemBuilder, MessageForFile paramMessageForFile, Context paramContext) {}
+  public abstract void a(uyv paramuyv, float paramFloat1, float paramFloat2, float paramFloat3);
   
-  public void a()
-  {
-    FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemFilePicItemBuilder.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile, this.jdField_a_of_type_AndroidContentContext);
-  }
-  
-  public void b() {}
+  public abstract void a(vcb paramvcb);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vbz
  * JD-Core Version:    0.7.0.1
  */

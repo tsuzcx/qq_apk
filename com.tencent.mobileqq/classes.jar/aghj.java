@@ -1,23 +1,30 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.ocr.ui.BaseOCRTextSearchFragment;
-import com.tencent.mobileqq.ocr.ui.BaseOCRTextSearchFragment.SearchActivityInterface;
+import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
+import mqq.util.WeakReference;
 
 public class aghj
-  implements View.OnTouchListener
+  extends agfo
 {
-  public aghj(BaseOCRTextSearchFragment paramBaseOCRTextSearchFragment) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected aghj(AlbumListFragment paramAlbumListFragment)
   {
-    this.a.a.a(paramView);
-    return false;
+    super(paramAlbumListFragment);
+  }
+  
+  public static agfk b(AlbumListFragment paramAlbumListFragment)
+  {
+    if ((a == null) || (a.a.get() != paramAlbumListFragment)) {}
+    try
+    {
+      if ((a == null) || (a.a.get() != paramAlbumListFragment)) {
+        a = new aghj(paramAlbumListFragment);
+      }
+      return a;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aghj
  * JD-Core Version:    0.7.0.1
  */

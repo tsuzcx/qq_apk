@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.troop.data.TroopBarShortVideoUploadUtil.ApplyUploadRsp;
+import ajjy;
+import aynd;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
@@ -18,7 +19,7 @@ public class MessageForTroopReward
   public int expiredTimeStamp;
   public String md5;
   public String mediaPath = "";
-  public TroopBarShortVideoUploadUtil.ApplyUploadRsp resq;
+  public aynd resq;
   public String rewardContent = "";
   public int rewardCreateTime;
   public String rewardId = "";
@@ -180,7 +181,7 @@ public class MessageForTroopReward
   
   public String getSummaryMsg()
   {
-    return "[赞赏照片]" + this.rewardContent;
+    return ajjy.a(2131640800) + this.rewardContent;
   }
   
   public boolean isSupportReply()
@@ -188,7 +189,7 @@ public class MessageForTroopReward
     return true;
   }
   
-  protected void postRead()
+  public void postRead()
   {
     parse();
     if (this.rewardStatus == 10001) {
@@ -200,54 +201,54 @@ public class MessageForTroopReward
   public void prewrite()
   {
     // Byte code:
-    //   0: new 180	java/io/ByteArrayOutputStream
+    //   0: new 185	java/io/ByteArrayOutputStream
     //   3: dup
-    //   4: invokespecial 181	java/io/ByteArrayOutputStream:<init>	()V
+    //   4: invokespecial 186	java/io/ByteArrayOutputStream:<init>	()V
     //   7: astore 4
-    //   9: new 183	java/io/ObjectOutputStream
+    //   9: new 188	java/io/ObjectOutputStream
     //   12: dup
     //   13: aload 4
-    //   15: invokespecial 186	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   15: invokespecial 191	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   18: astore_2
     //   19: aload_2
     //   20: astore_1
     //   21: aload_0
     //   22: aload_2
-    //   23: invokespecial 188	com/tencent/mobileqq/data/MessageForTroopReward:writeExternal	(Ljava/io/ObjectOutput;)V
+    //   23: invokespecial 193	com/tencent/mobileqq/data/MessageForTroopReward:writeExternal	(Ljava/io/ObjectOutput;)V
     //   26: aload_2
     //   27: astore_1
     //   28: aload_2
-    //   29: invokevirtual 189	java/io/ObjectOutputStream:close	()V
+    //   29: invokevirtual 194	java/io/ObjectOutputStream:close	()V
     //   32: aload_2
     //   33: astore_1
     //   34: aload_0
     //   35: aload 4
-    //   37: invokevirtual 193	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   37: invokevirtual 198	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   40: putfield 126	com/tencent/mobileqq/data/MessageForTroopReward:msgData	[B
     //   43: aload_2
     //   44: ifnull +7 -> 51
     //   47: aload_2
-    //   48: invokevirtual 189	java/io/ObjectOutputStream:close	()V
+    //   48: invokevirtual 194	java/io/ObjectOutputStream:close	()V
     //   51: aload 4
     //   53: ifnull +8 -> 61
     //   56: aload 4
-    //   58: invokevirtual 194	java/io/ByteArrayOutputStream:close	()V
+    //   58: invokevirtual 199	java/io/ByteArrayOutputStream:close	()V
     //   61: return
     //   62: astore_1
     //   63: invokestatic 152	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   66: ifeq -15 -> 51
-    //   69: ldc 196
+    //   69: ldc 201
     //   71: iconst_2
-    //   72: ldc 198
+    //   72: ldc 203
     //   74: aload_1
     //   75: invokestatic 160	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   78: goto -27 -> 51
     //   81: astore_1
     //   82: invokestatic 152	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   85: ifeq -24 -> 61
-    //   88: ldc 196
+    //   88: ldc 201
     //   90: iconst_2
-    //   91: ldc 198
+    //   91: ldc 203
     //   93: aload_1
     //   94: invokestatic 160	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   97: return
@@ -260,35 +261,35 @@ public class MessageForTroopReward
     //   106: ifeq +14 -> 120
     //   109: aload_2
     //   110: astore_1
-    //   111: ldc 196
+    //   111: ldc 201
     //   113: iconst_2
-    //   114: ldc 198
+    //   114: ldc 203
     //   116: aload_3
     //   117: invokestatic 160	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   120: aload_2
     //   121: ifnull +7 -> 128
     //   124: aload_2
-    //   125: invokevirtual 189	java/io/ObjectOutputStream:close	()V
+    //   125: invokevirtual 194	java/io/ObjectOutputStream:close	()V
     //   128: aload 4
     //   130: ifnull -69 -> 61
     //   133: aload 4
-    //   135: invokevirtual 194	java/io/ByteArrayOutputStream:close	()V
+    //   135: invokevirtual 199	java/io/ByteArrayOutputStream:close	()V
     //   138: return
     //   139: astore_1
     //   140: invokestatic 152	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   143: ifeq -82 -> 61
-    //   146: ldc 196
+    //   146: ldc 201
     //   148: iconst_2
-    //   149: ldc 198
+    //   149: ldc 203
     //   151: aload_1
     //   152: invokestatic 160	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   155: return
     //   156: astore_1
     //   157: invokestatic 152	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   160: ifeq -32 -> 128
-    //   163: ldc 196
+    //   163: ldc 201
     //   165: iconst_2
-    //   166: ldc 198
+    //   166: ldc 203
     //   168: aload_1
     //   169: invokestatic 160	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   172: goto -44 -> 128
@@ -298,28 +299,28 @@ public class MessageForTroopReward
     //   178: aload_1
     //   179: ifnull +7 -> 186
     //   182: aload_1
-    //   183: invokevirtual 189	java/io/ObjectOutputStream:close	()V
+    //   183: invokevirtual 194	java/io/ObjectOutputStream:close	()V
     //   186: aload 4
     //   188: ifnull +8 -> 196
     //   191: aload 4
-    //   193: invokevirtual 194	java/io/ByteArrayOutputStream:close	()V
+    //   193: invokevirtual 199	java/io/ByteArrayOutputStream:close	()V
     //   196: aload_2
     //   197: athrow
     //   198: astore_1
     //   199: invokestatic 152	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   202: ifeq -16 -> 186
-    //   205: ldc 196
+    //   205: ldc 201
     //   207: iconst_2
-    //   208: ldc 198
+    //   208: ldc 203
     //   210: aload_1
     //   211: invokestatic 160	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   214: goto -28 -> 186
     //   217: astore_1
     //   218: invokestatic 152	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   221: ifeq -25 -> 196
-    //   224: ldc 196
+    //   224: ldc 201
     //   226: iconst_2
-    //   227: ldc 198
+    //   227: ldc 203
     //   229: aload_1
     //   230: invokestatic 160	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   233: goto -37 -> 196

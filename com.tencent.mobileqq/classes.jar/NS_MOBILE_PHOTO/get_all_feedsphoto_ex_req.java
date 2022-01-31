@@ -9,16 +9,17 @@ import java.util.Map;
 public final class get_all_feedsphoto_ex_req
   extends JceStruct
 {
-  static Map cache_mapEx = new HashMap();
+  static Map<String, String> cache_mapEx = new HashMap();
   static int cache_req_type = 0;
   public int album_show_type;
   public int appid;
   public String attach_info = "";
   public int count;
   public int extrance_type;
-  public Map mapEx;
+  public Map<String, String> mapEx;
   public int refresh_type;
   public int req_type = 1;
+  public boolean timeline_on;
   public long uin;
   
   static
@@ -28,7 +29,7 @@ public final class get_all_feedsphoto_ex_req
   
   public get_all_feedsphoto_ex_req() {}
   
-  public get_all_feedsphoto_ex_req(long paramLong, int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4, int paramInt5, Map paramMap, int paramInt6)
+  public get_all_feedsphoto_ex_req(long paramLong, int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4, int paramInt5, Map<String, String> paramMap, int paramInt6, boolean paramBoolean)
   {
     this.uin = paramLong;
     this.appid = paramInt1;
@@ -39,6 +40,7 @@ public final class get_all_feedsphoto_ex_req
     this.extrance_type = paramInt5;
     this.mapEx = paramMap;
     this.req_type = paramInt6;
+    this.timeline_on = paramBoolean;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -52,6 +54,7 @@ public final class get_all_feedsphoto_ex_req
     this.extrance_type = paramJceInputStream.read(this.extrance_type, 6, false);
     this.mapEx = ((Map)paramJceInputStream.read(cache_mapEx, 7, false));
     this.req_type = paramJceInputStream.read(this.req_type, 8, false);
+    this.timeline_on = paramJceInputStream.read(this.timeline_on, 9, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -69,6 +72,7 @@ public final class get_all_feedsphoto_ex_req
       paramJceOutputStream.write(this.mapEx, 7);
     }
     paramJceOutputStream.write(this.req_type, 8);
+    paramJceOutputStream.write(this.timeline_on, 9);
   }
 }
 

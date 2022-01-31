@@ -1,18 +1,39 @@
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import android.content.Context;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
+import tencent.gdt.qq_ad_get.QQAdGet;
 
-class krg
-  implements Runnable
+public class krg
 {
-  krg(krf paramkrf) {}
+  private static krg a;
   
-  public void run()
+  public static krg a()
   {
-    this.a.a.f();
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new krg();
+      }
+      return a;
+    }
+    finally {}
+  }
+  
+  public void a(Context paramContext, AppRuntime paramAppRuntime, qq_ad_get.QQAdGet paramQQAdGet, BusinessObserver paramBusinessObserver)
+  {
+    paramContext = new NewIntent(BaseApplicationImpl.getApplication(), krh.class);
+    paramContext.setObserver(paramBusinessObserver);
+    paramContext.putExtra("GdtLoadAdServletCMD", "QqAd.getAd");
+    paramContext.putExtra("sso_GdtLoadAd_rquest_bytes", paramQQAdGet.toByteArray());
+    paramAppRuntime.startServlet(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     krg
  * JD-Core Version:    0.7.0.1
  */

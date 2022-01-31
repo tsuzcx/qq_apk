@@ -1,25 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
 
 public class wcs
-  implements Animation.AnimationListener
+  implements alut
 {
-  public wcs(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public wcs(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onColorNoteAnimFinish()
   {
-    PublicAccountChatPie.e(this.a).post(new wct(this));
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wcs
  * JD-Core Version:    0.7.0.1
  */

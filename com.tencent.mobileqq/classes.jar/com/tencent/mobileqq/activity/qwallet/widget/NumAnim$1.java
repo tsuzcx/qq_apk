@@ -10,29 +10,25 @@ class NumAnim$1
     String str;
     if ((paramDouble >= 1000.0D) && (paramDouble < 10000.0D))
     {
-      str = " ";
-      str = str + "¥" + NumAnim.formatNumber(paramDouble, true);
+      str = NumAnim.formatNumber(paramDouble, true);
       if (paramDouble < 10000.0D) {
-        break label114;
+        break label72;
       }
     }
-    label114:
-    for (int i = str.indexOf("万");; i = str.indexOf("."))
+    label72:
+    for (int i = str.indexOf(NumAnim.WAN);; i = str.indexOf("."))
     {
-      return new NumAnim.SpannableValue(str, str.indexOf("¥") + 1, i);
-      if ((paramDouble >= 0.0D) && (paramDouble < 1000.0D))
-      {
-        str = "  ";
+      return new NumAnim.SpannableValue(str, 0, i);
+      if ((paramDouble >= 0.0D) && (paramDouble < 1000.0D)) {
         break;
       }
-      str = "";
       break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.NumAnim.1
  * JD-Core Version:    0.7.0.1
  */

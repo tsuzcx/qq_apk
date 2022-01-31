@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class FlyTicket$DiscussGetUrlResponse
-  extends MessageMicro
+  extends MessageMicro<DiscussGetUrlResponse>
 {
   public static final int RET_INFO_FIELD_NUMBER = 1;
   public static final int SHORT_URL_FIELD_NUMBER = 5;

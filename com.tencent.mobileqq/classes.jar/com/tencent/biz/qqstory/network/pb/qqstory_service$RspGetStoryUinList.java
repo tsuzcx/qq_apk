@@ -11,15 +11,15 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_service$RspGetStoryUinList
-  extends MessageMicro
+  extends MessageMicro<RspGetStoryUinList>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field is_end = PBField.initUInt32(0);
   public final PBBytesField next_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
   public qqstory_struct.ErrorInfo result = new qqstory_struct.ErrorInfo();
-  public final PBRepeatField uin_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
-  public final PBRepeatField union_id_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
-  public final PBRepeatMessageField user_info_list = PBField.initRepeatMessage(qqstory_struct.UserInfo.class);
+  public final PBRepeatField<Long> uin_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> union_id_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatMessageField<qqstory_struct.UserInfo> user_info_list = PBField.initRepeatMessage(qqstory_struct.UserInfo.class);
   
   static
   {
@@ -30,7 +30,7 @@ public final class qqstory_service$RspGetStoryUinList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetStoryUinList
  * JD-Core Version:    0.7.0.1
  */

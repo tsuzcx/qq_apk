@@ -1,25 +1,21 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
+import android.graphics.Bitmap;
 
-public class aicn
-  extends ContentObserver
+class aicn
+  extends ajuc
 {
-  public aicn(QZoneManagerImp paramQZoneManagerImp, Handler paramHandler)
-  {
-    super(paramHandler);
-  }
+  aicn(aicm paramaicm) {}
   
-  public void onChange(boolean paramBoolean)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    super.onChange(paramBoolean);
-    ThreadManager.post(new aico(this), 8, null, true);
+    Bitmap localBitmap = this.a.a.a(113, paramString);
+    if (localBitmap != null) {
+      this.a.a(paramString, localBitmap);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aicn
  * JD-Core Version:    0.7.0.1
  */

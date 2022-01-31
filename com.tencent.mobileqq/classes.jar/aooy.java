@@ -1,42 +1,24 @@
-import android.graphics.drawable.Drawable;
-import android.widget.TextView;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchFragment;
 
 public class aooy
-  implements Runnable
+  extends avkj<avon, avww>
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
-  final int[] jdField_a_of_type_ArrayOfInt = { 255, 191, 127, 63, 0, 63, 127, 191 };
+  public aooy(TroopFileSearchFragment paramTroopFileSearchFragment) {}
   
-  public aooy(FlowCameraActivity2 paramFlowCameraActivity2, boolean paramBoolean)
+  protected avri<avon, avww> a(int paramInt)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Int = paramFlowCameraActivity2.a.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int %= 32;
+    return new aopa();
   }
   
-  public void run()
+  protected avwx a(int paramInt, ViewGroup paramViewGroup)
   {
-    Drawable[] arrayOfDrawable = this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.b.getCompoundDrawables();
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.v();
-    }
-    if (arrayOfDrawable[0] != null) {
-      arrayOfDrawable[0].setAlpha(this.jdField_a_of_type_ArrayOfInt[(this.jdField_a_of_type_Int / 4)]);
-    }
-    if ((this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.a.b.get() == 2) && (arrayOfDrawable[0] != null))
-    {
-      arrayOfDrawable[0].setAlpha(255);
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowCameraActivity2.a(arrayOfDrawable[0], -1);
-    }
+    return new aopc(paramViewGroup);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aooy
  * JD-Core Version:    0.7.0.1
  */

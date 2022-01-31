@@ -1,23 +1,63 @@
-import android.media.SoundPool;
-import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.TimerTask;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetLocation;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetLocation;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class szu
-  extends TimerTask
+  extends slz<tbo>
 {
-  public szu(H5MagicPlayerActivity paramH5MagicPlayerActivity, String paramString) {}
+  private static final String a = skt.a("StorySvc.get_location");
+  public final int c;
+  public final int d;
+  public final int e;
   
-  public void run()
+  public szu(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityH5MagicPlayerActivity.jdField_a_of_type_AndroidMediaSoundPool != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityH5MagicPlayerActivity.jdField_a_of_type_AndroidMediaSoundPool.play(this.jdField_a_of_type_ComTencentMobileqqActivityH5MagicPlayerActivity.b, 1.0F, 1.0F, 0, this.jdField_a_of_type_ComTencentMobileqqActivityH5MagicPlayerActivity.jdField_a_of_type_Int - 1, 1.0F) == 0) && (QLog.isColorLevel())) {
-      QLog.d("SoundPoolUtil", 2, "play failure filepath=" + this.jdField_a_of_type_JavaLangString);
+    this.c = paramInt1;
+    this.d = paramInt2;
+    this.e = paramInt3;
+  }
+  
+  public String a()
+  {
+    return a;
+  }
+  
+  public slu a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetLocation localRspGetLocation = new qqstory_service.RspGetLocation();
+    try
+    {
+      localRspGetLocation.mergeFrom(paramArrayOfByte);
+      return new tbo(localRspGetLocation);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetLocation localReqGetLocation = new qqstory_service.ReqGetLocation();
+    localReqGetLocation.coordinate.set(this.c);
+    localReqGetLocation.gps.lng.set(this.d);
+    localReqGetLocation.gps.lat.set(this.e);
+    localReqGetLocation.gps.setHasFlag(true);
+    return localReqGetLocation.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetLocationRequest{mCoordinate=" + this.c + ", mLng=" + this.d + ", mLat=" + this.e + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     szu
  * JD-Core Version:    0.7.0.1
  */

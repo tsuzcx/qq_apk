@@ -1,65 +1,25 @@
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.util.TroopReportor;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class shv
-  implements View.OnClickListener
+class shv
+  extends SimpleJob
 {
-  public shv(ChatSettingForTroop paramChatSettingForTroop) {}
-  
-  @SuppressLint({"ServiceCast"})
-  @TargetApi(11)
-  public void onClick(View paramView)
+  shv(shu paramshu, String paramString, boolean paramBoolean)
   {
-    String str;
-    try
-    {
-      paramView = String.format(this.a.getString(2131435247), new Object[] { this.a.a.newTroopName, this.a.a.troopUin });
-      if (Build.VERSION.SDK_INT < 11)
-      {
-        ((android.text.ClipboardManager)this.a.getSystemService("clipboard")).setText(paramView);
-        if ((this.a.d != 1) && (!this.a.a.isMember)) {
-          break label178;
-        }
-        str = this.a.a.troopUin;
-        if (!this.a.a.isMember) {
-          break label172;
-        }
-        paramView = "1";
-        TroopReportor.a("Grp_set_new", "grpData_admin", "copy_grpuin", 0, 0, new String[] { str, paramView });
-      }
-    }
-    catch (Exception paramView)
-    {
-      for (;;)
-      {
-        paramView.printStackTrace();
-        paramView = "";
-        continue;
-        ((android.content.ClipboardManager)this.a.getSystemService("clipboard")).setText(paramView);
-        continue;
-        label172:
-        paramView = "0";
-      }
-      label178:
-      str = this.a.a.troopUin;
-      if (!this.a.a.isMember) {}
-    }
-    for (paramView = "1";; paramView = "0")
-    {
-      TroopReportor.a("Grp_set_new", "grpData_visitor", "copy_grpuin", 0, 0, new String[] { str, paramView });
-      return;
-    }
+    super(paramString);
+  }
+  
+  public Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  {
+    this.jdField_a_of_type_Shu.b(this.jdField_a_of_type_Boolean);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     shv
  * JD-Core Version:    0.7.0.1
  */

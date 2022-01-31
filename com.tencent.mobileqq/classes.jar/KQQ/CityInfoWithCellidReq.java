@@ -12,16 +12,16 @@ public final class CityInfoWithCellidReq
   static ClientInfo cache_clientInfo;
   static GPSPoint cache_coords;
   static int cache_type;
-  static ArrayList cache_vMacs;
+  static ArrayList<Long> cache_vMacs;
   public GSMCell cell;
   public ClientInfo clientInfo;
   public GPSPoint coords;
   public int type = QUERYTYPE.GPS_CELL_V1.value();
-  public ArrayList vMacs;
+  public ArrayList<Long> vMacs;
   
   public CityInfoWithCellidReq() {}
   
-  public CityInfoWithCellidReq(GSMCell paramGSMCell, GPSPoint paramGPSPoint, int paramInt, ClientInfo paramClientInfo, ArrayList paramArrayList)
+  public CityInfoWithCellidReq(GSMCell paramGSMCell, GPSPoint paramGPSPoint, int paramInt, ClientInfo paramClientInfo, ArrayList<Long> paramArrayList)
   {
     this.cell = paramGSMCell;
     this.coords = paramGPSPoint;
@@ -68,7 +68,7 @@ public final class CityInfoWithCellidReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     KQQ.CityInfoWithCellidReq
  * JD-Core Version:    0.7.0.1
  */

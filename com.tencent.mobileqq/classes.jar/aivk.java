@@ -1,36 +1,48 @@
-import java.net.URI;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import org.apache.http.HttpResponse;
-import org.apache.http.impl.client.DefaultRedirectHandler;
-import org.apache.http.protocol.HttpContext;
+import org.json.JSONArray;
 
-public final class aivk
-  extends DefaultRedirectHandler
+class aivk
+  implements aihm
 {
-  public URI getLocationURI(HttpResponse paramHttpResponse, HttpContext paramHttpContext)
+  aivk(aivd paramaivd, int[] paramArrayOfInt, JSONArray paramJSONArray, String paramString) {}
+  
+  public void a(boolean paramBoolean, String paramString1, List<aihj> paramList, String paramString2)
   {
-    URI localURI = super.getLocationURI(paramHttpResponse, paramHttpContext);
-    paramHttpResponse = paramHttpContext.getAttribute("mobileqq_report_flag");
-    if ((paramHttpResponse != null) && ((paramHttpResponse instanceof Integer)) && (((Integer)paramHttpResponse).intValue() > 0))
+    QLog.i("ApolloPluginRscLoader", 1, "checkRoomRsc downloadApolloRes onDownLoadFinish success:" + paramBoolean);
+    int i = 0;
+    if (i < this.jdField_a_of_type_ArrayOfInt.length)
     {
-      Object localObject = paramHttpContext.getAttribute("mobileqq_direct_uri");
-      paramHttpResponse = localObject;
-      if (localObject == null)
+      paramString1 = aihi.a().a(8, this.jdField_a_of_type_ArrayOfInt[i]);
+      int j;
+      if (paramString1 != null)
       {
-        paramHttpResponse = new ArrayList();
-        paramHttpContext.setAttribute("mobileqq_direct_uri", paramHttpResponse);
+        paramList = this.jdField_a_of_type_Aivd;
+        int k = paramString1.b;
+        if (paramString1.a())
+        {
+          j = 0;
+          label79:
+          paramString1 = aivd.a(paramList, 8, String.valueOf(k), j);
+          this.jdField_a_of_type_OrgJsonJSONArray.put(paramString1);
+        }
       }
-      if ((paramHttpResponse != null) && ((paramHttpResponse instanceof List))) {
-        ((List)paramHttpResponse).add(localURI);
+      for (;;)
+      {
+        i += 1;
+        break;
+        j = 2;
+        break label79;
+        paramString1 = aivd.a(this.jdField_a_of_type_Aivd, 8, String.valueOf(this.jdField_a_of_type_ArrayOfInt[i]), 2);
+        this.jdField_a_of_type_OrgJsonJSONArray.put(paramString1);
       }
     }
-    return localURI;
+    this.jdField_a_of_type_Aivd.a(this.jdField_a_of_type_JavaLangString, ajjy.a(2131634717), this.jdField_a_of_type_OrgJsonJSONArray);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aivk
  * JD-Core Version:    0.7.0.1
  */

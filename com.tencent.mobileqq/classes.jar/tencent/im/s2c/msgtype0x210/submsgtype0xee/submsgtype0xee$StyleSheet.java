@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class submsgtype0xee$StyleSheet
-  extends MessageMicro
+  extends MessageMicro<StyleSheet>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 88, 96 }, new String[] { "enum_style_type", "uint32_ark_enable", "uint64_scene", "uint32_duration", "uint64_end_time" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L) }, StyleSheet.class);
   public final PBEnumField enum_style_type = PBField.initEnum(0);

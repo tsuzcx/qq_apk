@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0x27$AppointmentNotify
-  extends MessageMicro
+  extends MessageMicro<AppointmentNotify>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_event_info = PBField.initBytes(ByteStringMicro.EMPTY);

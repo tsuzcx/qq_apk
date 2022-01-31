@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:orientation="vertical" android:id="@id/fre" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.album.business.photolist.ui.listitem.NoShootTimeTitleLayout android:id="@id/hcd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.5dip" android:layout_marginTop="30.0dip" android:layout_marginRight="@dimen/yv" android:layout_marginBottom="15.0dip" />
+    <FrameLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/dan" android:paddingLeft="@dimen/yv" android:paddingRight="@dimen/yv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip">
+        <ImageView android:background="@drawable/hx0" android:layout_width="74.0dip" android:layout_height="74.0dip" />
+        <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="#ff000000" android:gravity="center_horizontal" android:layout_gravity="bottom|center" android:id="@id/dao" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-10.0dip" android:text="1岁" />
+    </FrameLayout>
+    <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/dak" android:paddingLeft="@dimen/yv" android:paddingRight="@dimen/yv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="12.0dip" android:layout_marginBottom="11.0dip">
+        <com.qzone.proxy.feedcomponent.widget.FeedDate android:textSize="17.0sp" android:textStyle="bold" android:textColor="#ff000000" android:id="@id/dal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="3月" android:drawableLeft="@drawable/fvj" />
+        <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="14.0sp" android:textStyle="normal" android:textColor="@color/a_j" android:id="@id/daj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="2.0dip" android:text="333天" android:layout_toRightOf="@id/dal" android:layout_alignBottom="@id/dal" />
+        <com.qzone.album.business.photolist.ui.SharingOwnersListBar android:id="@id/m3h" android:layout_width="wrap_content" android:layout_height="@dimen/ap0" android:layout_marginLeft="11.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <Button android:textSize="14.0dip" android:textColor="@color/a8t" android:id="@id/dai" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="选择" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ll8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/yv" android:layout_marginBottom="12.0dip">
+        <View android:background="@drawable/hx8" android:layout_width="14.0dip" android:layout_height="14.0dip" />
+        <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="12.0dip" android:textStyle="bold" android:textColor="#ffb0b3bf" android:id="@id/dah" android:paddingRight="@dimen/yv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="大事件大事件" />
+    </LinearLayout>
+    <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="14.0sp" android:textColor="@color/a_j" android:id="@id/dam" android:paddingLeft="@dimen/yv" android:paddingRight="@dimen/yv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip" android:text="" />
+</merge>

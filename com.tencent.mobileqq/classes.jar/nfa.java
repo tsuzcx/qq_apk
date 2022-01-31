@@ -1,19 +1,53 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.meta.ImageFileObject;
-import com.tencent.biz.qqstory.base.videoupload.meta.UploadObject;
-import com.tencent.biz.qqstory.base.videoupload.meta.UploadObject.UploadFinishListener;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoTaskInfo;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class nfa
-  implements UploadObject.UploadFinishListener
 {
-  public nfa(StoryVideoUploadTask paramStoryVideoUploadTask, StoryVideoTaskInfo paramStoryVideoTaskInfo) {}
+  private static nfa a;
   
-  public void a(UploadObject paramUploadObject)
+  private nfa()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoTaskInfo.l = ((ImageFileObject)paramUploadObject).b;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoUploadTask.a(1, new ErrorMessage());
+    a = this;
+  }
+  
+  public static nfa a()
+  {
+    if (a == null) {
+      a = new nfa();
+    }
+    return a;
+  }
+  
+  public Drawable a(Resources paramResources, int paramInt)
+  {
+    Object localObject = BaseApplicationImpl.sImageCache.get(String.valueOf(paramInt));
+    if ((localObject != null) && ((localObject instanceof Drawable))) {
+      localObject = (Drawable)localObject;
+    }
+    for (;;)
+    {
+      return localObject;
+      localObject = null;
+      try
+      {
+        paramResources = paramResources.getDrawable(paramInt);
+        localObject = paramResources;
+        if (paramResources == null) {
+          continue;
+        }
+        BaseApplicationImpl.sImageCache.put(String.valueOf(paramInt), paramResources);
+        return paramResources;
+      }
+      catch (OutOfMemoryError paramResources)
+      {
+        for (;;)
+        {
+          paramResources = (Resources)localObject;
+        }
+      }
+    }
   }
 }
 

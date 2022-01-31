@@ -1,26 +1,19 @@
-import android.app.Activity;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.biz.webviewplugin.Share;
-import java.util.HashMap;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
 
-public class phw
-  extends Thread
+class phw
+  implements View.OnTouchListener
 {
-  public phw(Share paramShare, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6) {}
+  phw(pht parampht, RelativeLayout paramRelativeLayout) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Object localObject = new HashMap();
-    if (this.jdField_a_of_type_Boolean) {
-      ((HashMap)localObject).put("url", this.jdField_a_of_type_JavaLangString);
+    if (paramMotionEvent.getAction() == 0) {
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(true);
     }
-    localObject = HttpUtil.a((HashMap)localObject);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (localObject = (String)((HashMap)localObject).get("url");; localObject = this.jdField_a_of_type_JavaLangString)
-    {
-      this.jdField_a_of_type_ComTencentBizWebviewpluginShare.a.runOnUiThread(new phx(this, (String)localObject));
-      return;
-    }
+    return false;
   }
 }
 

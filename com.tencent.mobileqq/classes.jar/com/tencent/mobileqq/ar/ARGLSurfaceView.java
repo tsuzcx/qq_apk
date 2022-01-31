@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.ar;
 
-import aads;
+import akir;
+import akis;
+import akit;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.opengl.GLSurfaceView;
@@ -14,17 +16,20 @@ import com.tencent.qphone.base.util.QLog;
 public class ARGLSurfaceView
   extends GLSurfaceView
 {
-  private ARGLSurfaceView.ARGLSurfaceViewCallback a;
+  private akis jdField_a_of_type_Akis;
+  private akit jdField_a_of_type_Akit;
   
-  public ARGLSurfaceView(Context paramContext, SurfaceHolder.Callback paramCallback, ARGLSurfaceView.ARGLSurfaceViewCallback paramARGLSurfaceViewCallback)
+  public ARGLSurfaceView(Context paramContext, SurfaceHolder.Callback paramCallback, akis paramakis)
   {
     super(paramContext);
-    QLog.i("AREngine_ARGLSurfaceView", 1, "create ARGLSurfaceView. context = " + paramContext + ", holderCallback = " + paramCallback + ", surfaceViewCallback = " + paramARGLSurfaceViewCallback);
-    setEGLContextFactory(new aads(this));
+    QLog.i("AREngine_ARGLSurfaceView", 1, "create ARGLSurfaceView. context = " + paramContext + ", holderCallback = " + paramCallback + ", surfaceViewCallback = " + paramakis);
+    setEGLContextFactory(new akir(this));
     setEGLContextClientVersion(2);
     setEGLConfigChooser(8, 8, 8, 8, 16, 0);
-    getHolder().addCallback(paramCallback);
-    this.a = paramARGLSurfaceViewCallback;
+    if (paramCallback != null) {
+      getHolder().addCallback(paramCallback);
+    }
+    this.jdField_a_of_type_Akis = paramakis;
   }
   
   public void onPause()
@@ -39,11 +44,16 @@ public class ARGLSurfaceView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.a != null) {
-      this.a.a(paramMotionEvent, paramMotionEvent.getRawX(), paramMotionEvent.getRawY(), getWidth(), getHeight());
+    if (this.jdField_a_of_type_Akis != null) {
+      this.jdField_a_of_type_Akis.a(paramMotionEvent, paramMotionEvent.getRawX(), paramMotionEvent.getRawY(), getWidth(), getHeight());
     }
     super.onTouchEvent(paramMotionEvent);
-    return true;
+    return false;
+  }
+  
+  public void setOnEglContextDestoryListener(akit paramakit)
+  {
+    this.jdField_a_of_type_Akit = paramakit;
   }
   
   @Deprecated
@@ -54,7 +64,7 @@ public class ARGLSurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARGLSurfaceView
  * JD-Core Version:    0.7.0.1
  */

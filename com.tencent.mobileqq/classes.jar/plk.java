@@ -1,41 +1,34 @@
-import com.tencent.component.media.image.ImageManager;
-import java.io.File;
-import java.util.Comparator;
-import java.util.concurrent.ConcurrentHashMap;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPolymeric;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public final class plk
-  implements Comparator
+public class plk
+  implements oqy
 {
-  public int a(File paramFile1, File paramFile2)
+  public plk(ComponentHeaderPolymeric paramComponentHeaderPolymeric, ArticleInfo paramArticleInfo) {}
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    String str = paramFile1.getName();
-    Integer localInteger2 = (Integer)ImageManager.b().get(str);
-    Integer localInteger1 = localInteger2;
-    if (localInteger2 == null)
+    if (QLog.isColorLevel()) {
+      QLog.d("ComponentHeaderPolymeric", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean + " followStatus = " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mPolymericInfo.e);
+    }
+    if (!paramString.equals(ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric).getTag())) {
+      return;
+    }
+    ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, true);
+    if (paramBoolean)
     {
-      localInteger1 = Integer.valueOf((int)(paramFile1.lastModified() / 1000L));
-      ImageManager.b().put(str, localInteger1);
+      ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, true);
+      ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 2);
+      return;
     }
-    str = paramFile2.getName();
-    localInteger2 = (Integer)ImageManager.b().get(str);
-    paramFile1 = localInteger2;
-    if (localInteger2 == null)
-    {
-      paramFile1 = Integer.valueOf((int)(paramFile2.lastModified() / 1000L));
-      ImageManager.b().put(str, paramFile1);
-    }
-    if (localInteger1.intValue() > paramFile1.intValue()) {
-      return -1;
-    }
-    if (localInteger1.intValue() < paramFile1.intValue()) {
-      return 1;
-    }
-    return 0;
+    ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     plk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,61 +1,112 @@
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.device.devicemgr.SmartDeviceProxyMgr;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextPaint;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.qphone.base.util.QLog;
 
 public class qbo
-  extends TransProcessorHandler
 {
-  public qbo(SmartDeviceProxyMgr paramSmartDeviceProxyMgr, Looper paramLooper)
+  private static final String jdField_a_of_type_JavaLangString = ajjy.a(2131650353);
+  private int jdField_a_of_type_Int;
+  private Handler jdField_a_of_type_AndroidOsHandler = new qbp(this);
+  private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+  private View jdField_a_of_type_AndroidViewView;
+  private qko jdField_a_of_type_Qko;
+  private View b;
+  
+  public qbo(FragmentActivity paramFragmentActivity)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = paramFragmentActivity;
   }
   
-  public void handleMessage(Message paramMessage)
+  private void a(View paramView1, View paramView2, int paramInt1, int paramInt2, int paramInt3)
   {
-    Object localObject = (FileMsg)paramMessage.obj;
-    if ((localObject == null) || (((FileMsg)localObject).jdField_b_of_type_Int != 24)) {}
-    while (((FileMsg)localObject).c != 7) {
-      return;
+    if ((this.jdField_a_of_type_Qko != null) && (this.jdField_a_of_type_Qko.isShowing())) {
+      this.jdField_a_of_type_Qko.dismiss();
     }
-    switch (paramMessage.what)
+    if ((paramView1 != null) && ((paramView1.getParent() instanceof ViewGroup))) {
+      ((ViewGroup)paramView1.getParent()).removeView(paramView1);
+    }
+    int i = azvv.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 7.0F);
+    int j = azvv.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 12.0F);
+    int k = azvv.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 80.0F);
+    int m = -(paramInt1 - paramView2.getWidth() + paramView2.getWidth() / 2 - j / 2 - (paramInt1 / 2 - k - j / 2));
+    int n = azvv.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, -8.0F);
+    this.jdField_a_of_type_Qko = new qko(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+    this.jdField_a_of_type_Qko.setAnimationStyle(2131690202);
+    this.jdField_a_of_type_Qko.setContentView(paramView1);
+    this.jdField_a_of_type_Qko.setWidth(paramInt1);
+    this.jdField_a_of_type_Qko.a(k, 0, 0, 0);
+    this.jdField_a_of_type_Qko.a(j, i);
+    this.jdField_a_of_type_Qko.a(j / 2);
+    this.jdField_a_of_type_Qko.b(paramInt2);
+    this.jdField_a_of_type_Qko.c(paramInt3);
+    try
     {
-    case 1001: 
-    case 1002: 
-    case 1004: 
-    default: 
-      return;
-    case 1003: 
-      paramMessage = new Intent();
-      paramMessage.setAction("onFaceTransferComplete");
-      localBundle = new Bundle();
-      localBundle.putLong("uniseq", ((FileMsg)localObject).jdField_b_of_type_Long);
-      localBundle.putString("fileUrl", ((FileMsg)localObject).i);
-      localObject = ((FileMsg)localObject).i;
-      if (localObject != null)
-      {
-        localObject = ((String)localObject).split("/");
-        localBundle.putString("uuId", localObject[(localObject.length - 2)]);
-      }
-      paramMessage.putExtras(localBundle);
-      BaseApplicationImpl.getApplication().sendBroadcast(paramMessage, "com.tencent.smartdevice.permission.broadcast");
+      this.jdField_a_of_type_Qko.showAsDropDown(paramView2, m, n);
       return;
     }
-    paramMessage = new Intent();
-    paramMessage.setAction("onFaceTransferError");
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("uniseq", ((FileMsg)localObject).jdField_b_of_type_Long);
-    paramMessage.putExtras(localBundle);
-    BaseApplicationImpl.getApplication().sendBroadcast(paramMessage, "com.tencent.smartdevice.permission.broadcast");
+    catch (Exception paramView1)
+    {
+      QLog.e("VideoFeedsFloatWindowGuideController", 1, "showAtLocation", paramView1);
+    }
+  }
+  
+  private void b(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFeedsFloatWindowGuideController", 2, "showPrompt: showGuidePrompt");
+    }
+    if (this.b == null)
+    {
+      i = azvv.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 8.0F);
+      int j = azvv.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 10.0F);
+      TextView localTextView = new TextView(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+      localTextView.setId(2131311220);
+      localTextView.setGravity(17);
+      localTextView.setTextSize(2, 16.0F);
+      localTextView.setText(jdField_a_of_type_JavaLangString);
+      localTextView.setTextColor(-1);
+      localTextView.setPadding(j, i, j, i);
+      this.jdField_a_of_type_Int = ((int)localTextView.getPaint().measureText(jdField_a_of_type_JavaLangString) + j * 2);
+      this.b = localTextView;
+    }
+    int i = azvv.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, 3.0F);
+    a(this.b, paramView, this.jdField_a_of_type_Int, -16777216, i);
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_Qko != null) && (this.jdField_a_of_type_Qko.isShowing())) {
+      this.jdField_a_of_type_Qko.dismiss();
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+  }
+  
+  public void a(View paramView)
+  {
+    if (paramView == null) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFeedsFloatWindowGuideController", 2, "showPrompt: count=" + 0);
+    }
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
+  }
+  
+  public void b()
+  {
+    a();
+    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qbo
  * JD-Core Version:    0.7.0.1
  */

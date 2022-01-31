@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
+import ajjy;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
@@ -15,18 +16,18 @@ import android.os.Messenger;
 import android.os.RemoteException;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
-import com.tencent.biz.AuthorizeConfig;
+import bbac;
+import befq;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
 import cooperation.buscard.BuscardHelper;
 import cooperation.buscard.BuscardProxyService;
+import mkw;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -53,7 +54,7 @@ public class BuscardJsPlugin
   public static final int MSG_UNINIT = 4;
   public static final String NAME_SPACE = "nfc";
   private static final String TAG = "BuscardJsPlugin";
-  private Handler mHandler = new WeakReferenceHandler(this);
+  private Handler mHandler = new befq(this);
   private Messenger mMessenger = new Messenger(this.mHandler);
   private Messenger mService;
   ResultReceiver resultReceiver = new BuscardJsPlugin.1(this, this.mHandler);
@@ -63,7 +64,7 @@ public class BuscardJsPlugin
     this.mPluginNameSpace = "nfc";
   }
   
-  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if (QLog.isColorLevel()) {
       QLog.d("BuscardJsPlugin", 2, "handleJsRequest:" + paramString1);
@@ -198,7 +199,7 @@ public class BuscardJsPlugin
                 }
                 localObject = new JSONObject();
                 ((JSONObject)localObject).put("retcode", -8);
-                ((JSONObject)localObject).put("retmsg", "插件安装失败");
+                ((JSONObject)localObject).put("retmsg", ajjy.a(2131635445));
                 callJs(paramBundle, new String[] { ((JSONObject)localObject).toString() });
                 return;
               }
@@ -215,7 +216,7 @@ public class BuscardJsPlugin
               for (paramBundle = (Intent)paramBundle.get("nfcIntent");; paramBundle = new Intent())
               {
                 paramBundle.putExtra("result", this.resultReceiver);
-                BuscardHelper.a(this.mRuntime.a(), paramBundle, null, false);
+                BuscardHelper.a(this.mRuntime.a(), paramBundle, null);
                 return;
               }
             }
@@ -224,7 +225,7 @@ public class BuscardJsPlugin
             break;
           }
         } while (this.mService != null);
-        BuscardHelper.a(this.mRuntime.a(), new Intent(), this, false);
+        BuscardHelper.a(this.mRuntime.a(), new Intent(), this);
       } while (!QLog.isColorLevel());
       QLog.i("BuscardJsPlugin", 2, "bindService");
       return;
@@ -272,7 +273,7 @@ public class BuscardJsPlugin
       if (TextUtils.isEmpty((CharSequence)localObject2)) {
         break label282;
       }
-      bool = AuthorizeConfig.a().a((String)localObject2, "nfc.nfcInit");
+      bool = mkw.a().a((String)localObject2, "nfc.nfcInit");
       localObject2 = Uri.parse((String)localObject2);
       if (!((Uri)localObject2).isHierarchical()) {
         break label276;
@@ -316,7 +317,7 @@ public class BuscardJsPlugin
     }
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     super.onDestroy();
     BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
@@ -408,7 +409,7 @@ public class BuscardJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.BuscardJsPlugin
  * JD-Core Version:    0.7.0.1
  */

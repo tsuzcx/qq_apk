@@ -1,32 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.widgets.InputDialog;
-import com.tencent.mobileqq.activity.ForwardFriendListActivity;
-
-public class ssh
-  implements DialogInterface.OnClickListener
+class ssh
+  implements sgr
 {
-  public ssh(ForwardFriendListActivity paramForwardFriendListActivity) {}
+  ssh(ssg paramssg, ssi paramssi) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString, long paramLong1, long paramLong2)
   {
-    paramDialogInterface = ForwardFriendListActivity.a(this.a).getInputValue();
-    if (!TextUtils.isEmpty(paramDialogInterface))
-    {
-      ForwardFriendListActivity.a(this.a, ForwardFriendListActivity.a(this.a).getEditText());
-      Intent localIntent = new Intent();
-      localIntent.putExtras(this.a.getIntent().getExtras());
-      localIntent.putExtra("extra_choose_friend_name", paramDialogInterface);
-      this.a.setResult(-1, localIntent);
-      this.a.finish();
-    }
+    ssg.a(this.jdField_a_of_type_Ssg, new ssk[] { new ssk(this.jdField_a_of_type_Ssi, paramLong1, paramLong2) });
   }
+  
+  public void a(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ssh
  * JD-Core Version:    0.7.0.1
  */

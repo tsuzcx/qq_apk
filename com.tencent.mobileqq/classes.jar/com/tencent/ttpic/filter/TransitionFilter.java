@@ -1,6 +1,8 @@
 package com.tencent.ttpic.filter;
 
-import com.tencent.filter.Frame;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.ttpic.openapi.filter.FabbyMvPart;
+import com.tencent.ttpic.openapi.model.StickerItem;
 
 public class TransitionFilter
   implements ITransitionFilter
@@ -10,11 +12,12 @@ public class TransitionFilter
   private ITransitionFilter mCurrFilter;
   private TransitionMoveFilter mMoveFilter = new TransitionMoveFilter();
   
-  public void ApplyGLSLFilter()
+  public void ApplyGLSLFilter(String paramString)
   {
-    this.mBlendFilter.ApplyGLSLFilter();
-    this.mAlphaFilter.ApplyGLSLFilter();
-    this.mMoveFilter.ApplyGLSLFilter();
+    this.mBlendFilter.apply();
+    this.mAlphaFilter.apply();
+    this.mMoveFilter.apply();
+    setDataPath(paramString);
   }
   
   public void ClearGLSL()
@@ -31,18 +34,23 @@ public class TransitionFilter
     }
   }
   
+  public boolean needRender()
+  {
+    return this.mCurrFilter != null;
+  }
+  
   public void reset()
   {
-    if (this.mCurrFilter != null) {
-      this.mCurrFilter.reset();
-    }
+    this.mBlendFilter.reset();
+    this.mAlphaFilter.reset();
+    this.mMoveFilter.reset();
   }
   
   public void setDataPath(String paramString)
   {
-    if (this.mCurrFilter != null) {
-      this.mCurrFilter.setDataPath(paramString);
-    }
+    this.mBlendFilter.setDataPath(paramString);
+    this.mMoveFilter.setDataPath(paramString);
+    this.mAlphaFilter.setDataPath(paramString);
   }
   
   public void setLastTex(int paramInt)
@@ -57,11 +65,19 @@ public class TransitionFilter
     switch (paramFabbyMvPart.transitionFunction)
     {
     default: 
-      this.mBlendFilter.setItem(paramFabbyMvPart.transitionItem);
-      this.mBlendFilter.setDuration(paramFabbyMvPart.transitionDuration);
-      this.mBlendFilter.setEaseCurve(paramFabbyMvPart.transitionEase);
-      this.mBlendFilter.setMaskType(paramFabbyMvPart.transitionMaskType);
-      this.mCurrFilter = this.mBlendFilter;
+      this.mCurrFilter = null;
+      return;
+    case 0: 
+      if ((paramFabbyMvPart.transitionItem != null) && (!paramFabbyMvPart.transitionItem.id.isEmpty()))
+      {
+        this.mBlendFilter.setItem(paramFabbyMvPart.transitionItem);
+        this.mBlendFilter.setDuration(paramFabbyMvPart.transitionDuration);
+        this.mBlendFilter.setEaseCurve(paramFabbyMvPart.transitionEase);
+        this.mBlendFilter.setMaskType(paramFabbyMvPart.transitionMaskType);
+        this.mCurrFilter = this.mBlendFilter;
+        return;
+      }
+      this.mCurrFilter = null;
       return;
     case 1: 
     case 2: 
@@ -94,7 +110,7 @@ public class TransitionFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.filter.TransitionFilter
  * JD-Core Version:    0.7.0.1
  */

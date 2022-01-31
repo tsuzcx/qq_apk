@@ -1,49 +1,31 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.ContactBinded;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.intervideo.nowproxy.proxyinner.channel.ToService;
 
-public class zpg
-  implements Runnable
+public final class zpg
+  implements Parcelable.Creator<ToService>
 {
-  public zpg(PhoneContactManagerImp paramPhoneContactManagerImp) {}
-  
-  public void run()
+  public ToService a(Parcel paramParcel)
   {
-    Object localObject1 = PhoneContactManagerImp.a(this.a).a();
-    ((EntityTransaction)localObject1).a();
-    try
-    {
-      Iterator localIterator = PhoneContactManagerImp.a(this.a).values().iterator();
-      while (localIterator.hasNext())
-      {
-        PhoneContact localPhoneContact = (PhoneContact)localIterator.next();
-        if (localPhoneContact.isNewRecommend)
-        {
-          localPhoneContact.isNewRecommend = false;
-          PhoneContactManagerImp.a(this.a).a(localPhoneContact);
-        }
-      }
-    }
-    finally
-    {
-      ((EntityTransaction)localObject1).b();
-    }
-    ((EntityTransaction)localObject1).b();
-    localObject1 = PhoneContactManagerImp.a(this.a);
-    if (localObject1 != null) {
-      ((ContactBinded)localObject1).isReaded = true;
-    }
-    PhoneContactManagerImp.c(this.a, false);
+    ToService localToService = new ToService();
+    localToService.jdField_a_of_type_Int = paramParcel.readInt();
+    localToService.b = paramParcel.readInt();
+    localToService.c = paramParcel.readInt();
+    localToService.d = paramParcel.readInt();
+    localToService.jdField_a_of_type_Long = paramParcel.readLong();
+    localToService.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localToService.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle();
+    return localToService;
+  }
+  
+  public ToService[] a(int paramInt)
+  {
+    return new ToService[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zpg
  * JD-Core Version:    0.7.0.1
  */

@@ -5,9 +5,9 @@ import java.io.Serializable;
 public final class EnumHttpMethod
   implements Serializable
 {
+  private static EnumHttpMethod[] __values;
   public static final int _eGET = 0;
   public static final int _ePOST = 1;
-  private static EnumHttpMethod[] a;
   public static final EnumHttpMethod eGET;
   public static final EnumHttpMethod ePOST;
   private String __T = new String();
@@ -19,7 +19,7 @@ public final class EnumHttpMethod
     for (boolean bool = true;; bool = false)
     {
       $assertionsDisabled = bool;
-      a = new EnumHttpMethod[2];
+      __values = new EnumHttpMethod[2];
       eGET = new EnumHttpMethod(0, 0, "eGET");
       ePOST = new EnumHttpMethod(1, 1, "ePOST");
       return;
@@ -30,16 +30,16 @@ public final class EnumHttpMethod
   {
     this.__T = paramString;
     this.__value = paramInt2;
-    a[paramInt1] = this;
+    __values[paramInt1] = this;
   }
   
   public static EnumHttpMethod convert(int paramInt)
   {
     int i = 0;
-    while (i < a.length)
+    while (i < __values.length)
     {
-      if (a[i].value() == paramInt) {
-        return a[i];
+      if (__values[i].value() == paramInt) {
+        return __values[i];
       }
       i += 1;
     }
@@ -52,10 +52,10 @@ public final class EnumHttpMethod
   public static EnumHttpMethod convert(String paramString)
   {
     int i = 0;
-    while (i < a.length)
+    while (i < __values.length)
     {
-      if (a[i].toString().equals(paramString)) {
-        return a[i];
+      if (__values[i].toString().equals(paramString)) {
+        return __values[i];
       }
       i += 1;
     }

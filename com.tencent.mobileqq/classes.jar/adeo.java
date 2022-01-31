@@ -1,31 +1,78 @@
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IDownloadMgr;
+import android.content.Context;
+import android.text.method.LinkMovementMethod;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.FileTimDocGrayTipsItemBuilder.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class adeo
-  implements Runnable
+public class adeo
+  extends adfw
+  implements apcz
 {
-  adeo(adem paramadem) {}
+  private String b;
   
-  public void run()
+  public adeo(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileVideoManager<FileAssistant>.FVBlock", 1, "[" + this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] chang thread[" + this.a.a.d + "]");
-    }
-    if (this.a.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr != null)
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
+  }
+  
+  protected acjc a()
+  {
+    return new adep(this);
+  }
+  
+  protected View a(MessageRecord paramMessageRecord, acjc paramacjc, View paramView, LinearLayout paramLinearLayout, acmv paramacmv)
+  {
+    paramacjc = (adep)paramacjc;
+    paramMessageRecord = paramView;
+    if (paramView == null)
     {
-      this.a.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.stopPreLoad(this.a.a.d);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("FileVideoManager<FileAssistant>.FVBlock", 1, "[" + this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] block is full stop downloadId[" + this.a.a.d + "]");
-      }
-      this.a.a.d = -1;
+      paramMessageRecord = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131494940, null);
+      paramacjc.b = ((TextView)paramMessageRecord.findViewById(2131301543));
     }
+    paramView = paramacjc.a.getExtInfoFromExtStr("tim_aio_show");
+    this.b = paramacjc.a.getExtInfoFromExtStr("tim_aio_tips_type");
+    if (!paramView.equalsIgnoreCase("showed"))
+    {
+      if (!this.b.equalsIgnoreCase("keyword")) {
+        break label184;
+      }
+      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009077", "0X8009077", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      paramacjc.a.saveExtInfoToExtStr("tim_aio_show", "showed");
+      ThreadManager.executeOnSubThread(new FileTimDocGrayTipsItemBuilder.1(this, paramacjc));
+      paramView = apck.a(paramacjc.a.getExtInfoFromExtStr("tim_aio_file_tips"), paramacjc.a.getExtInfoFromExtStr("tim_aio_file_link"), this);
+      paramacjc.b.setText(paramView);
+      paramacjc.b.setMovementMethod(LinkMovementMethod.getInstance());
+      paramacjc.b.setHighlightColor(17170445);
+      return paramMessageRecord;
+      label184:
+      if (this.b.equalsIgnoreCase("precent")) {
+        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800907A", "0X800907A", 0, 0, "", "", "", "");
+      } else if (this.b.equalsIgnoreCase("text_keyword")) {
+        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009071", "0X800907A", 0, 0, "", "", "", "");
+      }
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    ChatMessage localChatMessage = aciy.a(paramView);
+    ((axgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(272)).a(localChatMessage, paramView.getContext(), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adeo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import cooperation.troop_homework.TroopHomeworkHelper;
-import cooperation.troop_homework.jsp.TroopHWVoiceController;
-
-public class anog
-  implements Runnable
+class anog
+  extends anoj
 {
-  public anog(TroopHWVoiceController paramTroopHWVoiceController) {}
+  anog(anoe paramanoe) {}
   
-  public void run()
+  protected void a(boolean paramBoolean)
   {
-    String str = TroopHomeworkHelper.a(TroopHWVoiceController.a(this.a));
-    if (!TextUtils.isEmpty(str))
-    {
-      Message localMessage = TroopHWVoiceController.a(this.a).obtainMessage();
-      localMessage.what = 0;
-      localMessage.obj = str;
-      localMessage.sendToTarget();
+    if (paramBoolean) {
+      anoe.a(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anog
  * JD-Core Version:    0.7.0.1
  */

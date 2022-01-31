@@ -1,13 +1,42 @@
-import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq;
+import java.util.List;
 
-class oqk
-  implements Runnable
+public class oqk
 {
-  oqk(oqj paramoqj) {}
+  private int jdField_a_of_type_Int = 1;
+  private List<ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq> jdField_a_of_type_JavaUtilList;
+  private int b;
+  private int c;
+  private int d;
   
-  public void run()
+  public ReadInJoyUserInfoModule.Request0xb81Params a()
   {
-    EditVideoTagPresenter.a(EditVideoTagPresenter.a(this.a.a), EditVideoTagPresenter.a(this.a.a));
+    return new ReadInJoyUserInfoModule.Request0xb81Params(this, null);
+  }
+  
+  public oqk a(int paramInt)
+  {
+    this.b = paramInt;
+    return this;
+  }
+  
+  public oqk a(List<ReadInJoyUserInfoModule.Request0xb81Params.AccountInfoReq> paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    return this;
+  }
+  
+  public oqk b(int paramInt)
+  {
+    this.c = paramInt;
+    return this;
+  }
+  
+  public oqk c(int paramInt)
+  {
+    this.d = paramInt;
+    return this;
   }
 }
 

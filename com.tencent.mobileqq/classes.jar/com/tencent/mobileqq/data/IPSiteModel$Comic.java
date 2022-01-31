@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import acbo;
+import amrz;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,8 +9,8 @@ import java.util.List;
 public class IPSiteModel$Comic
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new acbo();
-  public List comicRiches;
+  public static final Parcelable.Creator<Comic> CREATOR = new amrz();
+  public List<IPSiteModel.ComicRich> comicRiches;
   public int comicType;
   public String cover;
   public String desc;
@@ -22,7 +22,7 @@ public class IPSiteModel$Comic
   
   public IPSiteModel$Comic() {}
   
-  public IPSiteModel$Comic(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, List paramList)
+  public IPSiteModel$Comic(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, List<IPSiteModel.ComicRich> paramList)
   {
     this.comicType = paramInt;
     this.cover = paramString1;

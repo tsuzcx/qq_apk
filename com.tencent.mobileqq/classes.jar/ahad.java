@@ -1,42 +1,30 @@
-import NS_MOBILE_PHOTO.operation_red_touch_req;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.qzonealbumreddot.QzoneAlbumRedTouchManager;
-import com.tencent.mobileqq.qzonealbumreddot.QzoneAlbumRedTouchServlet;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.QZoneClickReport;
-import mqq.app.NewIntent;
+import android.text.TextUtils;
+import cooperation.qzone.util.QZLog;
 
 public class ahad
-  implements Runnable
 {
-  public ahad(QzoneAlbumRedTouchManager paramQzoneAlbumRedTouchManager) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    if (this.a.a == null) {
-      return;
+    if (QZLog.isColorLevel()) {
+      QZLog.i("QbossADBannerConfigInfo", 2, " qboss resources down response resUrl = " + this.a + " isSuccess = " + paramBoolean);
     }
-    Object localObject = (RedTouchManager)this.a.a.getManager(35);
-    String str = String.valueOf(100180);
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = ((RedTouchManager)localObject).a(str);
-    if ((localAppInfo != null) && (localAppInfo.iNewFlag.get() == 1))
-    {
-      ((RedTouchManager)localObject).c(str);
-      LocalMultiProcConfig.putBool("key_photo_guide_is_red", false);
-      QZoneClickReport.startReportImediately(this.a.a.getCurrentAccountUin(), "443", "2");
-      return;
+  }
+  
+  public boolean a()
+  {
+    if (TextUtils.isEmpty(this.c)) {
+      return false;
     }
-    localObject = new NewIntent(this.a.a.getApplication(), QzoneAlbumRedTouchServlet.class);
-    ((NewIntent)localObject).putExtra("req", new operation_red_touch_req(2L));
-    this.a.a.startServlet((NewIntent)localObject);
+    return apdh.a(this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahad
  * JD-Core Version:    0.7.0.1
  */

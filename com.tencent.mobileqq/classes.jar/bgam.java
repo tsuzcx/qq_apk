@@ -1,0 +1,20 @@
+import cooperation.qzone.plugin.PluginRecord;
+
+public abstract interface bgam
+{
+  public abstract void a(PluginRecord paramPluginRecord);
+  
+  public abstract void a(PluginRecord paramPluginRecord, int paramInt);
+  
+  public abstract void b(PluginRecord paramPluginRecord);
+  
+  public abstract void b(PluginRecord paramPluginRecord, int paramInt);
+  
+  public abstract void c(PluginRecord paramPluginRecord);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+ * Qualified Name:     bgam
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,47 +1,47 @@
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.vashealth.SSOHttpUtils;
-import com.tencent.mobileqq.vashealth.SportManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class akrt
-  implements SensorEventListener
 {
-  public akrt(SportManager paramSportManager, long paramLong, int paramInt1, int paramInt2) {}
+  public float a;
+  public int a;
+  public String a;
+  public byte[] a;
+  public int b;
+  public String b;
+  public int c = -1;
   
-  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-  
-  public void onSensorChanged(SensorEvent paramSensorEvent)
+  public akrt()
   {
-    if ((paramSensorEvent.values[0] > 1.0E+008F) || (NetConnInfoCenter.getServerTimeMillis() > this.jdField_a_of_type_Long))
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_ArrayOfByte = null;
+  }
+  
+  public String toString()
+  {
+    try
     {
-      QLog.e("SportManager", 1, "unregister listener:" + paramSensorEvent.values[0]);
-      if (SportManager.a != null) {
-        SportManager.a.unregisterListener(this);
+      String str1 = new String(this.jdField_a_of_type_ArrayOfByte, "utf-8");
+      return "ImageTag{imageId = " + this.jdField_a_of_type_JavaLangString + ", tagName = " + this.jdField_b_of_type_JavaLangString + ", tagConfidence = " + this.jdField_a_of_type_Int + ", tagConfidence_f = " + this.jdField_a_of_type_Float + ", need_check_lbs = " + this.jdField_b_of_type_Int + ", cdbRetCode = " + this.c + ", cdbRes = " + str1 + '}';
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ARCloudObjectClassifyResult", 2, "toString error, msg:" + localException.getMessage());
+        }
+        String str2 = "";
       }
     }
-    long l1;
-    long l2;
-    int i;
-    do
-    {
-      do
-      {
-        return;
-      } while ((SSOHttpUtils.jdField_a_of_type_Long == 0L) || (SSOHttpUtils.jdField_a_of_type_Int == 0));
-      l1 = NetConnInfoCenter.getServerTimeMillis();
-      l2 = SSOHttpUtils.jdField_a_of_type_Long;
-      i = (int)(paramSensorEvent.values[0] - SSOHttpUtils.jdField_a_of_type_Int);
-    } while ((l1 - l2 <= this.jdField_a_of_type_Int) || (i <= this.b));
-    this.jdField_a_of_type_ComTencentMobileqqVashealthSportManager.a("timer1 report");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akrt
  * JD-Core Version:    0.7.0.1
  */

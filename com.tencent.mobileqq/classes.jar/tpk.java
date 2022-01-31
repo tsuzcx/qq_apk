@@ -1,45 +1,28 @@
-import android.graphics.Bitmap;
-import com.tencent.common.cache.MemoryClearManagerNew.IClearMemoryListener;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.widget.UpSideDownDrawable;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class tpk
-  implements MemoryClearManagerNew.IClearMemoryListener
+class tpk
+  implements tqh
 {
-  public tpk(QQSettingMe paramQQSettingMe) {}
+  tpk(tpg paramtpg, StoryVideoItem paramStoryVideoItem) {}
   
-  public int a()
+  public void a(tqg paramtqg)
   {
-    if (QQSettingMe.a(this.a).size() > 0)
+    if (this.jdField_a_of_type_Tpg.isCanceled()) {}
+    do
     {
-      Iterator localIterator = QQSettingMe.a(this.a).values().iterator();
-      int i = 0;
-      if (localIterator.hasNext())
-      {
-        Bitmap localBitmap = ((UpSideDownDrawable)localIterator.next()).a();
-        if (localBitmap == null) {
-          break label79;
-        }
-        i = Utils.a(localBitmap) + i;
-      }
-      label79:
-      for (;;)
-      {
-        break;
-        QQSettingMe.a(this.a).clear();
-        return i;
-      }
-    }
-    return 0;
+      return;
+      urk.a(this.jdField_a_of_type_Tpg.a.jdField_a_of_type_JavaLangString, "onCompletion, [videoView], current state = %s", VideoViewVideoHolder.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Tpg.a.c]);
+    } while (!VideoViewVideoHolder.b(this.jdField_a_of_type_Tpg.a, 12));
+    VideoViewVideoHolder.a(this.jdField_a_of_type_Tpg.a, 12);
+    this.jdField_a_of_type_Tpg.a.d = 1;
+    VideoViewVideoHolder.a(this.jdField_a_of_type_Tpg.a).a(this.jdField_a_of_type_Tpg.a, paramtqg, VideoViewVideoHolder.b(this.jdField_a_of_type_Tpg.a));
+    urp.c("video_ope", "play_finish", 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid, "", "", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tpk
  * JD-Core Version:    0.7.0.1
  */

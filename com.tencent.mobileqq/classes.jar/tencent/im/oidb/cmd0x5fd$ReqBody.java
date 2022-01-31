@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class cmd0x5fd$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   public static final int MSG_COMMENT_FIELD_NUMBER = 1;
   public static final int STR_LAST_COMMENT_ID_FIELD_NUMBER = 3;
@@ -20,7 +20,7 @@ public final class cmd0x5fd$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x5fd.ReqBody
  * JD-Core Version:    0.7.0.1
  */

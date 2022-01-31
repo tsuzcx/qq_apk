@@ -10,7 +10,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public abstract class TroopDiscussionBaseV
   extends FrameLayout
 {
-  public Context a;
+  protected Context a;
   public LayoutInflater a;
   public InnerFrameManager a;
   public SelectMemberActivity a;

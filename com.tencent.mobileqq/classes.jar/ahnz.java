@@ -1,42 +1,26 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-
 public class ahnz
-  implements View.OnTouchListener
 {
-  public ahnz(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public int a;
+  public boolean a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static int a(int paramInt)
   {
-    switch (paramView.getId())
+    switch (paramInt)
     {
+    case 90: 
+    default: 
+      return 0;
+    case 0: 
+      return 270;
+    case 180: 
+      return 90;
     }
-    for (;;)
-    {
-      return false;
-      if (paramMotionEvent.getAction() == 0)
-      {
-        EffectsCameraCaptureFragment.a(this.a).setAlpha(0.5F);
-        EffectsCameraCaptureFragment.a(this.a).setAlpha(0.5F);
-        EffectsCameraCaptureFragment.f(this.a).setAlpha(0.5F);
-      }
-      else if (paramMotionEvent.getAction() == 1)
-      {
-        EffectsCameraCaptureFragment.a(this.a).setAlpha(1.0F);
-        EffectsCameraCaptureFragment.a(this.a).setAlpha(1.0F);
-        EffectsCameraCaptureFragment.f(this.a).setAlpha(1.0F);
-      }
-    }
+    return 180;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahnz
  * JD-Core Version:    0.7.0.1
  */

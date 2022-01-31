@@ -1,16 +1,34 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
-import com.tencent.mobileqq.search.presenter.SearchResultGroupMorePresenter;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
 
-public class ahzc
-  implements View.OnClickListener
+class ahzc
+  implements begw
 {
-  public ahzc(SearchResultGroupMorePresenter paramSearchResultGroupMorePresenter, ISearchResultGroupModel paramISearchResultGroupModel) {}
+  ahzc(ahzb paramahzb, boolean paramBoolean, Friends paramFriends, begr parambegr) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultGroupModel.a(paramView);
+    if (!badq.g(this.jdField_a_of_type_Ahzb.a)) {
+      bbmy.a(this.jdField_a_of_type_Ahzb.a, 1, 2131626719, 0).a();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Begr.e();
+      return;
+      paramView = (FriendListHandler)ahzb.a(this.jdField_a_of_type_Ahzb).a(1);
+      if (this.jdField_a_of_type_Boolean)
+      {
+        paramView.b(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { false });
+        awqx.b(ahzb.a(this.jdField_a_of_type_Ahzb), "dc00898", "", "", "0X800808B", "0X800808B", 0, 0, "", "", "", "");
+      }
+      else
+      {
+        paramView.b(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { true });
+        awqx.b(ahzb.a(this.jdField_a_of_type_Ahzb), "dc00898", "", "", "0X800808A", "0X800808A", 0, 0, "", "", "", "");
+      }
+    }
   }
 }
 

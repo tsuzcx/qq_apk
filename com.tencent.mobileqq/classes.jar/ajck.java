@@ -1,46 +1,45 @@
-import android.graphics.Color;
-import android.os.Build.VERSION;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.view.widget.TipsView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.tribe.view.TEditText;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
-import com.tencent.mobileqq.util.DisplayUtil;
-import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ajck
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ajck(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public ajck(ApolloPanel paramApolloPanel, String paramString1, String paramString2, String paramString3) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    TroopBarPublishActivity localTroopBarPublishActivity = this.a;
-    TEditText localTEditText = this.a.jdField_b_of_type_ComTencentMobileqqTribeViewTEditText;
-    int j = DisplayUtil.a(this.a, 71.0F);
-    if (Build.VERSION.SDK_INT < 19)
+    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.n();
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a != null))
     {
-      i = DisplayUtil.a(this.a, 20.0F);
-      TipsView.a(localTroopBarPublishActivity, localTEditText, "添加话题，更快上热门", 1, 1, j, i, DisplayUtil.a(this.a, 20.0F), 5000, Color.argb(204, 0, 0, 0));
-      SharedPreUtils.a(this.a, this.a.app.getCurrentAccountUin(), "tribe_video_post_has_show_tips", true);
-      if ((this.a.jdField_b_of_type_AndroidWidgetTextView == null) || (this.a.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 0)) {
-        break label150;
-      }
+      paramDialogInterface = (baot)this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.a(71);
+      if (!this.jdField_a_of_type_JavaLangString.equals(String.valueOf(2))) {}
     }
-    label150:
-    for (int i = 2;; i = 1)
+    try
     {
-      ReportController.b(null, "dc00899", "Grp_tribe", "", "post", "Clk_guide", i, 0, "", "", "", "");
+      if (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
+        bajr.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a, "cmshow", "Apollo", "icon_alert_clickbuy", ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a), 0, new String[] { "" + this.b });
+      }
+      String str = new JSONObject(this.c).getString("packageId");
+      paramDialogInterface.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.getCurrentAccountUin(), Integer.parseInt(this.b), Integer.parseInt(str));
       return;
-      i = 0;
-      break;
+    }
+    catch (JSONException paramDialogInterface)
+    {
+      QLog.e("ApolloPanel", 1, "[showAioDialog] Exception:", paramDialogInterface);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajck
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class historyMsg$AioHistoryMsgRequest
-  extends MessageMicro
+  extends MessageMicro<AioHistoryMsgRequest>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "puin", "msg_id", "msg_cnt" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0) }, AioHistoryMsgRequest.class);
   public final PBUInt32Field msg_cnt = PBField.initUInt32(0);

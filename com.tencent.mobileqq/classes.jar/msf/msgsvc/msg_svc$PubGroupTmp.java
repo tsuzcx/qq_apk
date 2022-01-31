@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class msg_svc$PubGroupTmp
-  extends MessageMicro
+  extends MessageMicro<PubGroupTmp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field group_uin = PBField.initUInt64(0L);

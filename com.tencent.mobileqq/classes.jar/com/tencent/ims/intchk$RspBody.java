@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class intchk$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   public static final int MSG_CHECK_CONFIG_RSP_FIELD_NUMBER = 3;
   public static final int MSG_REPORT_CHECK_RESULT_RSP_FIELD_NUMBER = 4;

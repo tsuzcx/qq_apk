@@ -1,35 +1,65 @@
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.troopgift.AIOGiftPanelContainer.2;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class wmn
-  implements TabBarView.OnTabChangeListener
+  extends azjp
 {
-  public wmn(AddContactsActivity paramAddContactsActivity) {}
+  public wmn(AIOGiftPanelContainer.2 param2, azjq paramazjq, long paramLong, azfo paramazfo) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void a(int paramInt, String paramString)
   {
-    switch (paramInt2)
-    {
-    default: 
-      return;
-    case 0: 
-      AddContactsActivity.a(this.a);
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8004BE9", "0X8004BE9", 0, 0, "", "", "", "");
-      return;
-    case 1: 
-      AddContactsActivity.b(this.a);
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8004BEA", "0X8004BEA", 0, 0, "", "", "", "");
-      ReportController.b(this.a.app, "P_CliOper", "Grp_find", "", "grptab", "exp", 0, 0, "", "", "", "");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOGiftPanelContainer", 2, "onError() time =  " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ", errorCode = " + paramInt + ", errorMsg = " + paramString);
     }
-    AddContactsActivity.c(this.a);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004BEB", "0X8004BEB", 0, 0, "", "", "", "");
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    long l = System.currentTimeMillis();
+    int i = this.jdField_a_of_type_Azjq.a(this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int == 5) {
+      wnc.a(paramString2);
+    }
+    do
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AIOGiftPanelContainer", 2, "onGetExtraData() , configURL = " + paramString1 + ", serverVer=" + paramInt + ", localVer=" + i + ", exIds=" + paramString2);
+        }
+        QLog.d("TroopGiftPanel.time", 1, "onGetExtraData, time=" + (l - this.jdField_a_of_type_Long) + ", total=" + (l - this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Long));
+        this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_Wnc = wnc.a(this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
+        if ((paramInt > i) || (this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_Wnc == null)) {
+          break;
+        }
+        wmm.a(this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0, true);
+        this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.a(0);
+        return;
+        if ((this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int == 6) || (this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.jdField_a_of_type_Int == 4)) {
+          wnc.a(paramString2, this.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer$2.this$0.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
+        }
+      }
+    } while (TextUtils.isEmpty(paramString1));
+    Object localObject = new File(ajed.bm);
+    if (!((File)localObject).exists()) {
+      ((File)localObject).mkdirs();
+    }
+    localObject = ajed.bm + "troopGiftConfig.tmp";
+    paramString1 = new batm(paramString1, new File((String)localObject));
+    paramString1.b = 3;
+    Bundle localBundle = new Bundle();
+    localBundle.putString("filePath", (String)localObject);
+    this.jdField_a_of_type_Azfo.a().a(paramString1, new wmo(this, l, paramString2, paramInt), localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wmn
  * JD-Core Version:    0.7.0.1
  */

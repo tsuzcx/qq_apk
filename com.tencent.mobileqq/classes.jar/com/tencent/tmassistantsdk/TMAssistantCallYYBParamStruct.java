@@ -1,14 +1,18 @@
 package com.tencent.tmassistantsdk;
 
+import com.tencent.tmassistantbase.common.TMAssistantDownloadConst;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class TMAssistantCallYYBParamStruct
 {
+  public static final String SOURCE_KEY = TMAssistantDownloadConst.PARAM_QQ_SOURCE_ID;
   public String SNGAppId = "";
   public String actionFlag = "0";
   public String channelId = "";
   public String outerCallReportData;
+  public String recommendId;
+  public String source;
   public String taskApkId = "";
   public String taskAppId = "";
   public String taskPackageName = "";
@@ -43,7 +47,7 @@ public class TMAssistantCallYYBParamStruct
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct
  * JD-Core Version:    0.7.0.1
  */

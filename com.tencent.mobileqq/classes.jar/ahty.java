@@ -1,47 +1,12 @@
-import android.graphics.Bitmap;
-import android.view.View;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.jsbridge.JsBridge;
-import com.tencent.mobileqq.richstatus.ActionUrlActivity;
-import com.tencent.smtt.sdk.WebView;
-import com.tencent.smtt.sdk.WebViewClient;
-import com.tencent.widget.ProtectedWebView;
-
-public class ahty
-  extends WebViewClient
+public abstract interface ahty
 {
-  private ahty(ActionUrlActivity paramActionUrlActivity) {}
+  public abstract void a(int paramInt);
   
-  public void onPageFinished(WebView paramWebView, String paramString)
-  {
-    ActionUrlActivity.a(this.a).setVisibility(8);
-    super.onPageFinished(paramWebView, paramString);
-    this.a.a();
-  }
-  
-  public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    ActionUrlActivity.a(this.a).setVisibility(0);
-    ActionUrlActivity.a(this.a).setVisibility(8);
-    super.onPageStarted(paramWebView, paramString, paramBitmap);
-  }
-  
-  public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
-  {
-    ActionUrlActivity.a(this.a).clearView();
-    ActionUrlActivity.a(this.a).setVisibility(8);
-    ActionUrlActivity.a(this.a).setVisibility(0);
-    super.onReceivedError(paramWebView, paramInt, paramString1, paramString2);
-  }
-  
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
-  {
-    return ActionUrlActivity.a(this.a).a(paramWebView, paramString);
-  }
+  public abstract void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahty
  * JD-Core Version:    0.7.0.1
  */

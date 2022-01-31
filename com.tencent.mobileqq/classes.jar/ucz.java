@@ -1,86 +1,41 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.data.TroopMemberCardInfo;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.utils.DBUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class ucz
-  implements Runnable
+class ucz
+  implements slx<udb, udc>
 {
-  public ucz(TroopInfoActivity paramTroopInfoActivity) {}
+  ucz(ucy paramucy, boolean paramBoolean) {}
   
-  public void run()
+  public void a(@NonNull udb paramudb, @Nullable udc arg2, @NonNull ErrorMessage paramErrorMessage)
   {
-    Object localObject1 = ContactUtils.l(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
-    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin)))
+    paramudb = new uda(paramErrorMessage, ucy.a(this.jdField_a_of_type_Ucy));
+    paramudb.jdField_b_of_type_Boolean = false;
+    paramudb.jdField_a_of_type_Boolean = ucy.a(this.jdField_a_of_type_Ucy);
+    paramudb.jdField_a_of_type_Int = ucy.a(this.jdField_a_of_type_Ucy);
+    if ((??? == null) || (paramErrorMessage.isFail()))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopOwnerNick = ((String)localObject1);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.troopinfo", 2, "mTroopInfoData.troopOwnerNick = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopOwnerNick);
-      }
+      sgi.a().dispatch(paramudb);
       return;
-      Object localObject2 = null;
-      Object localObject3 = DBUtils.a().a(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
-      if (localObject3 == null)
-      {
-        localObject3 = DBUtils.a().a(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
-        localObject1 = localObject2;
-        if (localObject3 != null)
-        {
-          if (TextUtils.isEmpty(((TroopMemberInfo)localObject3).friendnick)) {
-            break label237;
-          }
-          localObject1 = ((TroopMemberInfo)localObject3).friendnick;
-        }
-      }
-      for (;;)
-      {
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          break label295;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopOwnerNick = ((String)localObject1);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-        break;
-        label237:
-        localObject1 = localObject2;
-        if (!TextUtils.isEmpty(((TroopMemberInfo)localObject3).troopnick))
-        {
-          localObject1 = ((TroopMemberInfo)localObject3).troopnick;
-          continue;
-          if (!TextUtils.isEmpty(((TroopMemberCardInfo)localObject3).nick))
-          {
-            localObject1 = ((TroopMemberCardInfo)localObject3).nick;
-          }
-          else
-          {
-            localObject1 = localObject2;
-            if (!TextUtils.isEmpty(((TroopMemberCardInfo)localObject3).name)) {
-              localObject1 = ((TroopMemberCardInfo)localObject3).name;
-            }
-          }
-        }
-      }
-      label295:
-      if ((!this.a.b) && (this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler != null))
-      {
-        this.a.b = true;
-        this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.b(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
-      }
+    }
+    paramudb.jdField_c_of_type_Int = ???.jdField_c_of_type_Int;
+    paramudb.jdField_b_of_type_Int = ???.jdField_b_of_type_Int;
+    paramudb.jdField_a_of_type_JavaUtilList = ???.jdField_a_of_type_JavaUtilList;
+    paramudb.jdField_c_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    ((sps)sqg.a(15)).a(paramudb.jdField_a_of_type_JavaUtilList, ucy.a(this.jdField_a_of_type_Ucy), ucy.c(this.jdField_a_of_type_Ucy), true);
+    synchronized (this.jdField_a_of_type_Ucy)
+    {
+      ucy.a(this.jdField_a_of_type_Ucy, true);
+      sgi.a().dispatch(paramudb);
+      urk.a("Q.qqstory.detail:DetailLikeListLoader", "dispatch like list return from network: %s", paramudb);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ucz
  * JD-Core Version:    0.7.0.1
  */

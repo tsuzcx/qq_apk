@@ -6,128 +6,127 @@ import com.tencent.mobileqq.shortvideo.dancemachine.utils.DanceLog;
 public class GLLittleBoy
   extends GLFrameImage
 {
-  int jdField_a_of_type_Int;
-  private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  BoyDataReport.BoyItem jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBoyDataReport$BoyItem = new BoyDataReport.BoyItem();
-  private ResourceManager.DancePosture jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$DancePosture;
-  public int b;
-  boolean b;
-  public int c;
-  boolean c;
-  int jdField_d_of_type_Int = 0;
-  boolean jdField_d_of_type_Boolean;
-  int jdField_e_of_type_Int = 1;
-  boolean jdField_e_of_type_Boolean;
-  boolean f;
-  public boolean g = false;
-  private boolean o = true;
+  public boolean isReadyMatch = false;
+  int mCurrMatchTimes = 0;
+  private RectF mCurrentCacheRegion = new RectF();
+  int mCurrentCenterY;
+  BoyDataReport.BoyItem mDataReport = new BoyDataReport.BoyItem();
+  private boolean mEnableFrameAnimation = true;
+  public int mIndex;
+  boolean mIsValidBoy;
+  boolean mMatched;
+  int mMatchedStatus;
+  int mMaxMatchTimes = 1;
+  boolean mMissed;
+  boolean mNeedContinuousMatch = true;
+  boolean mNeedMatch;
+  private ResourceManager.DancePosture mPrivateDanceData;
   
   public GLLittleBoy(GLViewContext paramGLViewContext, String paramString)
   {
     super(paramGLViewContext, paramString);
-    this.jdField_f_of_type_Boolean = true;
-    i();
-    this.jdField_e_of_type_Boolean = true;
-    this.o = true;
-    this.jdField_a_of_type_Boolean = true;
+    resetValidBoyStatus();
+    this.mIsValidBoy = true;
+    this.mEnableFrameAnimation = true;
+    this.mIsBoyFilterPrivateRes = true;
   }
   
-  public ResourceManager.DancePosture a()
+  public void clearStatus()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$DancePosture;
+    super.clearStatus();
+    resetValidBoyStatus();
   }
   
-  public void a()
+  public void draw()
   {
-    if ((this.j) && (this.o))
+    if ((this.mVisible) && (this.mEnableFrameAnimation))
     {
-      c();
-      c(a());
+      startFrameAnimation();
+      setCurrentImage(getAnimationCurrentIndex());
     }
-    super.a();
+    super.draw();
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  public ResourceManager.DancePosture getDanceData()
   {
-    if (paramInt < 1) {}
-    for (this.jdField_e_of_type_Int = 1;; this.jdField_e_of_type_Int = paramInt)
-    {
-      this.jdField_f_of_type_Boolean = paramBoolean;
-      return;
-    }
+    return this.mPrivateDanceData;
   }
   
-  public void a(ResourceManager.DancePosture paramDancePosture)
+  public RectF getSaveMatchedPointRegion()
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$DancePosture = paramDancePosture;
+    return this.mCurrentCacheRegion;
   }
   
-  public void a(String paramString)
+  public boolean isMatched()
   {
-    a(paramString, false, false);
+    return this.mMatched;
   }
   
-  public void a(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  public boolean needDoMatch()
   {
-    paramString = GLFrameImage.a(paramString, paramBoolean1, paramBoolean2);
-    DanceLog.b("GLFrameImage", "GLLittleBoy:getImageByPath");
-    this.jdField_f_of_type_Int = paramString.a();
-    this.o = false;
+    return this.mNeedMatch;
   }
   
-  public void b(boolean paramBoolean)
+  public void resetValidBoyStatus()
+  {
+    this.mNeedMatch = true;
+    this.mMissed = false;
+    this.mMatched = false;
+    this.mMatchedStatus = -1;
+  }
+  
+  public void saveMatchedPointRegion()
+  {
+    RectF localRectF = getCurrentDrawRegionSize();
+    this.mCurrentCacheRegion.set(localRectF);
+  }
+  
+  public void setFilterPrivateImage(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    paramString = GLFrameImage.getImageByPath(paramString, paramBoolean1, paramBoolean2);
+    DanceLog.printFrameQueue("GLFrameImage", "GLLittleBoy:getImageByPath");
+    this.mCurrentTexture = paramString.getTexture();
+    this.mEnableFrameAnimation = false;
+  }
+  
+  public void setFrameAnimationParams(ResourceManager.DancePosture paramDancePosture)
+  {
+    this.mPrivateDanceData = paramDancePosture;
+  }
+  
+  public void setImageRes(String paramString)
+  {
+    setFilterPrivateImage(paramString, false, false);
+  }
+  
+  public void setMatch(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      int i = this.jdField_d_of_type_Int + 1;
-      this.jdField_d_of_type_Int = i;
-      if (i >= this.jdField_e_of_type_Int)
+      int i = this.mCurrMatchTimes + 1;
+      this.mCurrMatchTimes = i;
+      if (i >= this.mMaxMatchTimes)
       {
-        this.c = paramBoolean;
-        this.jdField_d_of_type_Int = 0;
+        this.mMatched = paramBoolean;
+        this.mCurrMatchTimes = 0;
       }
     }
     do
     {
       return;
-      this.c = paramBoolean;
-    } while (!this.jdField_f_of_type_Boolean);
-    this.jdField_d_of_type_Int = 0;
+      this.mMatched = paramBoolean;
+    } while (!this.mNeedContinuousMatch);
+    this.mCurrMatchTimes = 0;
   }
   
-  public boolean b()
+  public void setMaxMatchTimes(int paramInt, boolean paramBoolean)
   {
-    return this.b;
-  }
-  
-  public RectF c()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsRectF;
-  }
-  
-  public boolean c()
-  {
-    return this.c;
-  }
-  
-  public void d()
-  {
-    super.d();
-    i();
-  }
-  
-  public void i()
-  {
-    this.b = true;
-    this.jdField_d_of_type_Boolean = false;
-    this.c = false;
-    this.jdField_a_of_type_Int = -1;
-  }
-  
-  public void j()
-  {
-    RectF localRectF = b();
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(localRectF);
+    if (paramInt < 1) {}
+    for (this.mMaxMatchTimes = 1;; this.mMaxMatchTimes = paramInt)
+    {
+      this.mNeedContinuousMatch = paramBoolean;
+      return;
+    }
   }
 }
 

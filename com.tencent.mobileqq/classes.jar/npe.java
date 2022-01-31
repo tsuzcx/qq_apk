@@ -1,15 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
+import android.content.DialogInterface.OnClickListener;
 
-public class npe
-  implements DialogInterface.OnDismissListener
+final class npe
+  implements DialogInterface.OnClickListener
 {
-  public npe(NewFriendsPlayMode paramNewFriendsPlayMode) {}
+  npe(DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.s();
+    paramDialogInterface.dismiss();
+    this.a.onClick(paramDialogInterface, paramInt);
   }
 }
 

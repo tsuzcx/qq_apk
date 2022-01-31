@@ -1,40 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.ImageView;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.DropdownView;
+import android.text.TextUtils;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler.1;
+import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler.2;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import org.json.JSONObject;
 
 public class albu
-  implements View.OnClickListener
+  implements albq
 {
-  public albu(DropdownView paramDropdownView) {}
-  
-  public void onClick(View paramView)
+  public void a(String paramString)
   {
-    this.a.jdField_a_of_type_Albx.clearFocus();
-    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_Albx.getWindowToken(), 0);
-    if ((this.a.jdField_a_of_type_Albx.getAdapter() != null) && (this.a.jdField_a_of_type_Albx.getAdapter().getCount() > 0))
-    {
-      if ((((ImageView)paramView).getDrawable() != this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) || (this.a.jdField_a_of_type_Boolean)) {
-        break label160;
-      }
-      DropdownView.a(this.a).postDelayed(new albv(this, paramView), 250L);
-      paramView = paramView.getContext();
-      if ((paramView != null) && ((paramView instanceof LoginActivity))) {
-        ReportController.a(((LoginActivity)paramView).app, "dc00898", "", "", "0X8007367", "0X8007367", 0, 0, "", "", "", "");
-      }
+    if (TextUtils.isEmpty(paramString)) {
+      return;
     }
-    return;
-    label160:
-    this.a.jdField_a_of_type_Albx.dismissDropDown();
+    ArkAppCenter.a().postToMainThread(new ArkAppSchemeCenter.TelSchemeHandler.1(this, paramString));
+  }
+  
+  public boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
+  {
+    ArkAppCenter.a().send(paramString3, new ArkAppSchemeCenter.TelSchemeHandler.2(this, paramString3, paramString1, paramLong, paramString2));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     albu
  * JD-Core Version:    0.7.0.1
  */

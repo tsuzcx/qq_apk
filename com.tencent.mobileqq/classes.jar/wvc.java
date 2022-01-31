@@ -1,50 +1,76 @@
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.Animator;
+import android.animation.ObjectAnimator;
+import android.app.Activity;
+import android.view.View;
+import android.view.ViewStub;
+import android.widget.RelativeLayout;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
 
 public class wvc
-  implements Runnable
 {
-  public wvc(LebaShowListManager paramLebaShowListManager, RedTouchManager paramRedTouchManager, long paramLong1, boolean paramBoolean, long paramLong2, long paramLong3) {}
+  private Animator jdField_a_of_type_AndroidAnimationAnimator;
+  private Activity jdField_a_of_type_AndroidAppActivity;
+  protected bhqy a;
+  private QIMMusicConfigManager jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager = (QIMMusicConfigManager)bhfm.a(2);
+  private wvg jdField_a_of_type_Wvg;
+  private Animator b;
   
-  public void run()
+  public wvc(Activity paramActivity, View paramView)
   {
-    for (;;)
+    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    ((ViewStub)paramView.findViewById(2131313583)).inflate();
+    this.jdField_a_of_type_Bhqy = new bhqy(paramView, "biz_src_jc_story");
+    this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.g();
+    this.jdField_a_of_type_Bhqy.a(new wvd(this));
+    this.jdField_a_of_type_Bhqy.a(this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.b);
+    this.jdField_a_of_type_Bhqy.a().setOnTouchListener(new wve(this));
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_AndroidAnimationAnimator == null) {
+      this.jdField_a_of_type_AndroidAnimationAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_Bhqy.a(), "alpha", new float[] { 0.0F, 1.0F }).setDuration(600L);
+    }
+    if ((this.b != null) && (this.b.isRunning())) {
+      this.b.cancel();
+    }
+    this.jdField_a_of_type_Bhqy.a().setVisibility(0);
+    this.jdField_a_of_type_AndroidAnimationAnimator.start();
+    boolean bool = vnd.a(this.jdField_a_of_type_AndroidAppActivity);
+    this.jdField_a_of_type_Bhqy.a(bool);
+  }
+  
+  public void a(wvg paramwvg)
+  {
+    this.jdField_a_of_type_Wvg = paramwvg;
+  }
+  
+  public void b()
+  {
+    if (this.b == null)
     {
-      try
-      {
-        RedTouchManager localRedTouchManager = this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchManager;
-        i = (int)this.jdField_a_of_type_Long;
-        boolean bool = this.jdField_a_of_type_Boolean;
-        if (this.b != -9223372036854775808L) {
-          continue;
-        }
-        l = this.c;
-        i = localRedTouchManager.a(i, bool, l);
-      }
-      catch (Exception localException)
-      {
-        long l;
-        int j = -2;
-        int i = j;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.i("Q.lebatab.mgr", 2, localException.toString());
-        i = j;
-        continue;
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.i("Q.lebatab.mgr", 4, "updateAppSetting, result = " + i);
-      }
+      this.b = ObjectAnimator.ofFloat(this.jdField_a_of_type_Bhqy.a(), "alpha", new float[] { 1.0F, 0.0F }).setDuration(600L);
+      this.b.addListener(new wvf(this));
+    }
+    if ((this.jdField_a_of_type_AndroidAnimationAnimator != null) && (this.jdField_a_of_type_AndroidAnimationAnimator.isRunning())) {}
+    while (this.jdField_a_of_type_Bhqy.a().getVisibility() == 8) {
       return;
-      l = this.b;
+    }
+    this.b.start();
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Bhqy != null)
+    {
+      boolean bool = vnd.a(this.jdField_a_of_type_AndroidAppActivity);
+      this.jdField_a_of_type_Bhqy.a(bool);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wvc
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SubMsgType0xc1$NotOnlineImage
-  extends MessageMicro
+  extends MessageMicro<NotOnlineImage>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField download_path = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -40,7 +40,7 @@ public final class SubMsgType0xc1$NotOnlineImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.c2c.msgtype0xa6.submsgtype0xc1.SubMsgType0xc1.NotOnlineImage
  * JD-Core Version:    0.7.0.1
  */

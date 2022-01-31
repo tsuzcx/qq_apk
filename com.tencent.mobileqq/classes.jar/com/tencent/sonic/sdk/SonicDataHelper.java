@@ -30,21 +30,31 @@ class SonicDataHelper
       SonicDBHelper.getInstance().getWritableDatabase().delete("SessionData", null, null);
       return;
     }
-    finally
+    catch (Throwable localThrowable)
     {
-      localObject = finally;
-      throw localObject;
+      for (;;)
+      {
+        SonicUtils.log("SonicSdk_SonicDataHelper", 6, "getWritableDatabase encounter error." + localThrowable.getMessage());
+      }
     }
+    finally {}
   }
   
-  static List<SessionData> getAllSessionByHitCount()
+  static List<SonicDataHelper.SessionData> getAllSessionByHitCount()
   {
-    ArrayList localArrayList = new ArrayList();
-    Cursor localCursor = SonicDBHelper.getInstance().getWritableDatabase().query("SessionData", getAllSessionDataColumn(), null, null, null, null, "cacheHitCount ASC");
-    while ((localCursor != null) && (localCursor.moveToNext())) {
-      localArrayList.add(querySessionData(localCursor));
+    localArrayList = new ArrayList();
+    try
+    {
+      Cursor localCursor = SonicDBHelper.getInstance().getWritableDatabase().query("SessionData", getAllSessionDataColumn(), null, null, null, null, "cacheHitCount ASC");
+      while ((localCursor != null) && (localCursor.moveToNext())) {
+        localArrayList.add(querySessionData(localCursor));
+      }
+      return localArrayList;
     }
-    return localArrayList;
+    catch (Throwable localThrowable)
+    {
+      SonicUtils.log("SonicSdk_SonicDataHelper", 6, "getWritableDatabase encounter error." + localThrowable.getMessage());
+    }
   }
   
   static String[] getAllSessionDataColumn()
@@ -53,7 +63,7 @@ class SonicDataHelper
   }
   
   @NonNull
-  private static ContentValues getContentValues(String paramString, SessionData paramSessionData)
+  private static ContentValues getContentValues(String paramString, SonicDataHelper.SessionData paramSessionData)
   {
     ContentValues localContentValues = new ContentValues();
     localContentValues.put("sessionID", paramString);
@@ -74,33 +84,44 @@ class SonicDataHelper
     return getSessionData(paramString).unAvailableTime;
   }
   
-  private static SessionData getSessionData(SQLiteDatabase paramSQLiteDatabase, String paramString)
+  private static SonicDataHelper.SessionData getSessionData(SQLiteDatabase paramSQLiteDatabase, String paramString)
   {
-    Cursor localCursor = paramSQLiteDatabase.query("SessionData", getAllSessionDataColumn(), "sessionID=?", new String[] { paramString }, null, null, null);
-    paramString = null;
-    paramSQLiteDatabase = paramString;
-    if (localCursor != null)
+    Object localObject = null;
+    paramString = paramSQLiteDatabase.query("SessionData", getAllSessionDataColumn(), "sessionID=?", new String[] { paramString }, null, null, null);
+    paramSQLiteDatabase = localObject;
+    if (paramString != null)
     {
-      paramSQLiteDatabase = paramString;
-      if (localCursor.moveToFirst()) {
-        paramSQLiteDatabase = querySessionData(localCursor);
+      paramSQLiteDatabase = localObject;
+      if (paramString.moveToFirst()) {
+        paramSQLiteDatabase = querySessionData(paramString);
       }
     }
-    if (localCursor != null) {
-      localCursor.close();
+    if (paramString != null) {
+      paramString.close();
     }
     return paramSQLiteDatabase;
   }
   
   @NonNull
-  static SessionData getSessionData(String paramString)
+  static SonicDataHelper.SessionData getSessionData(String paramString)
   {
-    SessionData localSessionData = getSessionData(SonicDBHelper.getInstance().getWritableDatabase(), paramString);
-    paramString = localSessionData;
-    if (localSessionData == null) {
-      paramString = new SessionData();
+    try
+    {
+      paramString = getSessionData(SonicDBHelper.getInstance().getWritableDatabase(), paramString);
+      Object localObject = paramString;
+      if (paramString == null) {
+        localObject = new SonicDataHelper.SessionData();
+      }
+      return localObject;
     }
-    return paramString;
+    catch (Throwable paramString)
+    {
+      for (;;)
+      {
+        SonicUtils.log("SonicSdk_SonicDataHelper", 6, "getWritableDatabase encounter error." + paramString.getMessage());
+        paramString = null;
+      }
+    }
   }
   
   static long getTemplateUpdateTime(String paramString)
@@ -108,14 +129,14 @@ class SonicDataHelper
     return getSessionData(paramString).templateUpdateTime;
   }
   
-  private static void insertSessionData(SQLiteDatabase paramSQLiteDatabase, String paramString, SessionData paramSessionData)
+  private static void insertSessionData(SQLiteDatabase paramSQLiteDatabase, String paramString, SonicDataHelper.SessionData paramSessionData)
   {
     paramSQLiteDatabase.insert("SessionData", null, getContentValues(paramString, paramSessionData));
   }
   
-  private static SessionData querySessionData(Cursor paramCursor)
+  private static SonicDataHelper.SessionData querySessionData(Cursor paramCursor)
   {
-    SessionData localSessionData = new SessionData();
+    SonicDataHelper.SessionData localSessionData = new SonicDataHelper.SessionData();
     localSessionData.sessionId = paramCursor.getString(paramCursor.getColumnIndex("sessionID"));
     localSessionData.eTag = paramCursor.getString(paramCursor.getColumnIndex("eTag"));
     localSessionData.htmlSha1 = paramCursor.getString(paramCursor.getColumnIndex("htmlSha1"));
@@ -131,13 +152,21 @@ class SonicDataHelper
   
   static void removeSessionData(String paramString)
   {
-    SonicDBHelper.getInstance().getWritableDatabase().delete("SessionData", "sessionID=?", new String[] { paramString });
+    try
+    {
+      SonicDBHelper.getInstance().getWritableDatabase().delete("SessionData", "sessionID=?", new String[] { paramString });
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      SonicUtils.log("SonicSdk_SonicDataHelper", 6, "removeSessionData encounter error." + paramString.getMessage());
+    }
   }
   
-  private static void saveSessionData(SQLiteDatabase paramSQLiteDatabase, String paramString, SessionData paramSessionData)
+  private static void saveSessionData(SQLiteDatabase paramSQLiteDatabase, String paramString, SonicDataHelper.SessionData paramSessionData)
   {
     paramSessionData.sessionId = paramString;
-    SessionData localSessionData = getSessionData(paramSQLiteDatabase, paramString);
+    SonicDataHelper.SessionData localSessionData = getSessionData(paramSQLiteDatabase, paramString);
     if (localSessionData != null)
     {
       paramSessionData.cacheHitCount = localSessionData.cacheHitCount;
@@ -147,38 +176,75 @@ class SonicDataHelper
     insertSessionData(paramSQLiteDatabase, paramString, paramSessionData);
   }
   
-  static void saveSessionData(String paramString, SessionData paramSessionData)
+  static void saveSessionData(String paramString, SonicDataHelper.SessionData paramSessionData)
   {
-    saveSessionData(SonicDBHelper.getInstance().getWritableDatabase(), paramString, paramSessionData);
+    try
+    {
+      saveSessionData(SonicDBHelper.getInstance().getWritableDatabase(), paramString, paramSessionData);
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      SonicUtils.log("SonicSdk_SonicDataHelper", 6, "getWritableDatabase encounter error." + paramString.getMessage());
+    }
   }
   
   static boolean setSonicUnavailableTime(String paramString, long paramLong)
   {
-    SQLiteDatabase localSQLiteDatabase = SonicDBHelper.getInstance().getWritableDatabase();
-    SessionData localSessionData = getSessionData(localSQLiteDatabase, paramString);
-    if (localSessionData != null)
+    Object localObject2 = null;
+    for (;;)
     {
-      localSessionData.unAvailableTime = paramLong;
-      updateSessionData(localSQLiteDatabase, paramString, localSessionData);
+      try
+      {
+        localSQLiteDatabase = SonicDBHelper.getInstance().getWritableDatabase();
+        SonicDataHelper.SessionData localSessionData;
+        SonicUtils.log("SonicSdk_SonicDataHelper", 6, "getWritableDatabase encounter error." + localThrowable1.getMessage());
+      }
+      catch (Throwable localThrowable1)
+      {
+        try
+        {
+          localSessionData = getSessionData(localSQLiteDatabase, paramString);
+          if (localSQLiteDatabase != null) {
+            break;
+          }
+          return false;
+        }
+        catch (Throwable localThrowable2)
+        {
+          SQLiteDatabase localSQLiteDatabase;
+          Object localObject1;
+          break label27;
+        }
+        localThrowable1 = localThrowable1;
+        localSQLiteDatabase = null;
+      }
+      label27:
+      localObject1 = localObject2;
+    }
+    if (localObject1 != null)
+    {
+      ((SonicDataHelper.SessionData)localObject1).unAvailableTime = paramLong;
+      updateSessionData(localSQLiteDatabase, paramString, (SonicDataHelper.SessionData)localObject1);
       return true;
     }
-    localSessionData = new SessionData();
-    localSessionData.sessionId = paramString;
-    localSessionData.eTag = "Unknown";
-    localSessionData.htmlSha1 = "Unknown";
-    localSessionData.unAvailableTime = paramLong;
-    insertSessionData(localSQLiteDatabase, paramString, localSessionData);
+    localObject1 = new SonicDataHelper.SessionData();
+    ((SonicDataHelper.SessionData)localObject1).sessionId = paramString;
+    ((SonicDataHelper.SessionData)localObject1).eTag = "Unknown";
+    ((SonicDataHelper.SessionData)localObject1).htmlSha1 = "Unknown";
+    ((SonicDataHelper.SessionData)localObject1).unAvailableTime = paramLong;
+    insertSessionData(localSQLiteDatabase, paramString, (SonicDataHelper.SessionData)localObject1);
     return true;
   }
   
-  private static void updateSessionData(SQLiteDatabase paramSQLiteDatabase, String paramString, SessionData paramSessionData)
+  private static void updateSessionData(SQLiteDatabase paramSQLiteDatabase, String paramString, SonicDataHelper.SessionData paramSessionData)
   {
     paramSQLiteDatabase.update("SessionData", getContentValues(paramString, paramSessionData), "sessionID=?", new String[] { paramString });
   }
   
   private static void updateSonicCacheHitCount(SQLiteDatabase paramSQLiteDatabase, String paramString)
   {
-    SessionData localSessionData = getSessionData(paramSQLiteDatabase, paramString);
+    SonicDataHelper.SessionData localSessionData = getSessionData(paramSQLiteDatabase, paramString);
     if (localSessionData != null)
     {
       localSessionData.cacheHitCount += 1;
@@ -188,33 +254,14 @@ class SonicDataHelper
   
   static void updateSonicCacheHitCount(String paramString)
   {
-    updateSonicCacheHitCount(SonicDBHelper.getInstance().getWritableDatabase(), paramString);
-  }
-  
-  static class SessionData
-  {
-    int cacheHitCount;
-    String eTag;
-    long expiredTime;
-    String htmlSha1;
-    long htmlSize;
-    int isRedPointPreload;
-    String sessionId;
-    String templateTag;
-    long templateUpdateTime;
-    long unAvailableTime;
-    
-    public void reset()
+    try
     {
-      this.eTag = "";
-      this.templateTag = "";
-      this.htmlSha1 = "";
-      this.htmlSize = 0L;
-      this.templateUpdateTime = 0L;
-      this.expiredTime = 0L;
-      this.cacheHitCount = 0;
-      this.unAvailableTime = 0L;
-      this.isRedPointPreload = 0;
+      updateSonicCacheHitCount(SonicDBHelper.getInstance().getWritableDatabase(), paramString);
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      SonicUtils.log("SonicSdk_SonicDataHelper", 6, "getWritableDatabase encounter error." + paramString.getMessage());
     }
   }
 }

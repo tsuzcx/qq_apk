@@ -1,48 +1,125 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.nearby.NearbyJsInterface;
-import com.tencent.mobileqq.pb.PBStringField;
+import android.os.SystemClock;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
 
 public class aeup
-  implements BusinessObserver
 {
-  public aeup(NearbyJsInterface paramNearbyJsInterface, String paramString) {}
+  public static final String a;
+  private static int[] jdField_a_of_type_ArrayOfInt = { 80000000 };
+  private static int[] jdField_b_of_type_ArrayOfInt = { 80000001 };
+  private static int[] jdField_c_of_type_ArrayOfInt = { 80000002 };
+  private static int[] d = { 80000003 };
+  private static int[] e = { 80000000, 80000001, 80000002, 80000004, 80000003 };
+  private static int[] f = { 80000002, 80000003 };
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private aeur jdField_a_of_type_Aeur;
+  ajjh jdField_a_of_type_Ajjh = new aeuq(this);
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private int jdField_b_of_type_Int;
+  String jdField_b_of_type_JavaLangString = null;
+  private String jdField_c_of_type_JavaLangString;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  static
   {
-    if (paramBoolean) {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-          localWebSsoResponseBody.mergeFrom(paramBundle);
-          paramBundle = new JSONObject(localWebSsoResponseBody.data.get());
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.callJs(new JSONObject(this.jdField_a_of_type_JavaLangString).getString("callback"), new String[] { paramBundle.toString() });
-          return;
-        }
-        if (QLog.isColorLevel())
-        {
-          QLog.w("followUser js api", 2, " no data!");
-          return;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("followUser js api", 2, " no data! error");
-        }
-      }
+    jdField_a_of_type_JavaLangString = aeup.class.getName();
+  }
+  
+  public aeup(QQAppInterface paramQQAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    this.jdField_c_of_type_JavaLangString = baee.a(paramQQAppInterface.getApplication());
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  final void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajjh, true);
     }
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(aeur paramaeur)
+  {
+    this.jdField_a_of_type_Aeur = paramaeur;
+  }
+  
+  public void a(String paramString, int[] paramArrayOfInt, double paramDouble1, double paramDouble2, boolean paramBoolean, int paramInt)
+  {
+    ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(paramString, this.jdField_c_of_type_JavaLangString, 3, this.jdField_a_of_type_Int, paramArrayOfInt, paramDouble1, paramDouble2, paramBoolean, paramInt, this.jdField_a_of_type_Long);
+  }
+  
+  public boolean a(String paramString, int paramInt1, double paramDouble1, double paramDouble2, int paramInt2)
+  {
+    a();
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Int = paramInt1;
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    switch (paramInt1)
+    {
+    default: 
+      localObject1 = localObject2;
+    }
+    while (localObject1 == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, "warning! wrong request type = " + paramInt1);
+      }
+      return false;
+      localObject1 = jdField_a_of_type_ArrayOfInt;
+      continue;
+      localObject1 = jdField_b_of_type_ArrayOfInt;
+      continue;
+      localObject1 = jdField_c_of_type_ArrayOfInt;
+      continue;
+      localObject1 = d;
+      continue;
+      localObject1 = e;
+      continue;
+      localObject1 = f;
+    }
+    ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a(paramString, this.jdField_c_of_type_JavaLangString, 3, this.jdField_a_of_type_Int, (int[])localObject1, paramDouble1, paramDouble2, true, paramInt2, this.jdField_a_of_type_Long);
+    if (QLog.isColorLevel()) {
+      QLog.d(jdField_a_of_type_JavaLangString, 2, "searchFriend nextPage = " + this.jdField_a_of_type_Int);
+    }
+    return true;
+  }
+  
+  final void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Ajjh);
+    }
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_Aeur = null;
+    this.jdField_a_of_type_Int = 0;
+    b();
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeup
  * JD-Core Version:    0.7.0.1
  */

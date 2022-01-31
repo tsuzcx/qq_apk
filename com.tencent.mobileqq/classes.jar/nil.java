@@ -1,70 +1,67 @@
-import com.tencent.biz.qqstory.base.QQStoryObserver;
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryNodeConfigManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopBannerInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import java.util.List;
 
-public class nil
-  extends QQStoryObserver
+class nil
+  extends ohe
 {
-  public nil(MsgTabStoryNodeConfigManager paramMsgTabStoryNodeConfigManager) {}
+  nil(nik paramnik) {}
   
-  public void a(byte paramByte)
+  public void a(int paramInt)
   {
-    boolean bool = true;
-    this.a.a = paramByte;
-    MsgTabStoryNodeConfigManager.c(this.a, true);
-    MsgTabStoryNodeConfigManager localMsgTabStoryNodeConfigManager;
-    if (paramByte != -1)
-    {
-      if (paramByte == 0) {
-        MsgTabStoryNodeConfigManager.b(this.a);
-      }
-      localMsgTabStoryNodeConfigManager = this.a;
-      if (paramByte != 2) {
-        break label88;
-      }
-    }
-    for (;;)
-    {
-      localMsgTabStoryNodeConfigManager.a(bool);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "onMsgTabStoryOIDBReceived:" + this.a.c);
-      }
-      return;
-      label88:
-      bool = false;
+    if ((nik.a(this.a) != null) && ((nik.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nik.a(this.a)).a(paramInt);
     }
   }
   
-  public void b()
+  public void a(int paramInt, List<Long> paramList)
   {
-    StoryConfigManager localStoryConfigManager = (StoryConfigManager)SuperManager.a(10);
-    this.a.b = ((Boolean)localStoryConfigManager.b("key_story_msg_tab_show", Boolean.valueOf(false))).booleanValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "commonConfigReceived:" + this.a.b);
+    if ((nik.a(this.a) != null) && ((nik.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nik.a(this.a)).a(paramInt, paramList);
     }
-    MsgTabStoryNodeConfigManager.a(this.a);
-    MsgTabStoryNodeConfigManager.a(this.a, true);
-    MsgTabStoryNodeConfigManager.a(this.a, true);
-    MsgTabStoryNodeConfigManager.b(this.a);
   }
   
-  public void f(boolean paramBoolean)
+  public void a(TopBannerInfo paramTopBannerInfo)
   {
-    if (!MsgTabStoryNodeConfigManager.a(this.a))
-    {
-      if (paramBoolean)
-      {
-        this.a.c = this.a.a();
-        MsgTabStoryNodeConfigManager.a(this.a);
-        MsgTabStoryNodeConfigManager.a(this.a, true);
-      }
-      MsgTabStoryNodeConfigManager.b(this.a, true);
-      MsgTabStoryNodeConfigManager.b(this.a);
+    if ((nik.a(this.a) != null) && ((nik.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nik.a(this.a)).a(paramTopBannerInfo);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "onMsgTabStoryDPCCfgHasContentReceived:" + this.a.c);
+  }
+  
+  public void a(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if ((nik.a(this.a) != null) && ((nik.a(this.a) instanceof ReadInJoyListViewGroup)) && (paramInt == nik.a(this.a)))
+    {
+      ((ReadInJoyListViewGroup)nik.a(this.a)).a(paramBoolean1, paramInt, paramList, paramBoolean2);
+      nik.a(this.a);
+    }
+  }
+  
+  public void as_()
+  {
+    if ((nik.a(this.a) != null) && ((nik.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nik.a(this.a)).q();
+    }
+  }
+  
+  public void b(int paramInt, List<Long> paramList)
+  {
+    if ((nik.a(this.a) != null) && ((nik.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nik.a(this.a)).c(paramInt, paramList);
+    }
+  }
+  
+  public void b(boolean paramBoolean1, int paramInt, List<Long> paramList, boolean paramBoolean2)
+  {
+    if ((nik.a(this.a) != null) && ((nik.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nik.a(this.a)).b(paramBoolean1, paramInt, paramList, paramBoolean2);
+    }
+  }
+  
+  public void c(int paramInt, List<Long> paramList)
+  {
+    if ((nik.a(this.a) != null) && ((nik.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)nik.a(this.a)).b(paramInt, paramList);
     }
   }
 }

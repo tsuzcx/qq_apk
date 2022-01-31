@@ -1,50 +1,55 @@
 package com.tencent.component.network.module.base.inter;
 
 import java.util.HashMap;
+import java.util.Properties;
 
 public abstract interface IDownloadConfig
 {
-  public abstract int a();
+  public abstract boolean canRetCodeRetry(int paramInt);
   
-  public abstract long a();
+  public abstract boolean enableDns114();
   
-  public abstract long a(String paramString1, String paramString2, long paramLong);
+  public abstract long getConfig(String paramString1, String paramString2, long paramLong);
   
-  public abstract String a();
+  public abstract long getCurrentUin();
   
-  public abstract void a(int paramInt1, boolean paramBoolean, String paramString1, int paramInt2, String paramString2);
+  public abstract long getDefaultHttp2LiveTime();
   
-  public abstract void a(String paramString, boolean paramBoolean, HashMap paramHashMap, long paramLong);
+  public abstract int getDefaultHttp2ThreadPoolSize();
   
-  public abstract boolean a();
+  public abstract long getDefaultHttpLiveTime();
   
-  public abstract boolean a(int paramInt);
+  public abstract int getDefaultThreadPoolSize();
   
-  public abstract boolean a(String paramString);
+  public abstract int getNetworkStackType();
   
-  public abstract int b();
+  public abstract int getOperator();
   
-  public abstract long b();
+  public abstract String getQUA();
   
-  public abstract String b();
+  public abstract String getRefer();
   
-  public abstract boolean b(String paramString);
+  public abstract int getReportPercent();
   
-  public abstract int c();
+  public abstract String getTerminal();
   
-  public abstract long c();
+  public abstract String getUserAgent();
   
-  public abstract String c();
+  public abstract String getVersion();
   
-  public abstract int d();
+  public abstract boolean isFromQzoneAlbum(String paramString);
   
-  public abstract String d();
+  public abstract int photoDownloadKeepAliveConfig();
   
-  public abstract int e();
+  public abstract int photoDownloadKeepAliveProxyConfig();
   
-  public abstract String e();
+  public abstract void reportToBeacon(String paramString, boolean paramBoolean, HashMap<String, String> paramHashMap, long paramLong);
   
-  public abstract int f();
+  public abstract void reportToLp(int paramInt1, boolean paramBoolean, String paramString1, int paramInt2, String paramString2);
+  
+  public abstract void reportToMta(String paramString, Properties paramProperties);
+  
+  public abstract boolean shouldUseHttp2(String paramString);
 }
 
 

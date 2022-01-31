@@ -1,6 +1,5 @@
 package com.tencent.mqp.app.sec;
 
-import algy;
 import com.tencent.mobileqq.app.ThreadManager;
 
 public class SecClientInfoTaskEx
@@ -26,7 +25,7 @@ public class SecClientInfoTaskEx
   
   public void run()
   {
-    ThreadManager.post(new algy(this), 5, null, true);
+    ThreadManager.post(new SecClientInfoTaskEx.1(this), 5, null, true);
   }
 }
 

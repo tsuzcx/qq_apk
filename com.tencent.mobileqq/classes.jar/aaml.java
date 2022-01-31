@@ -1,54 +1,23 @@
-import com.tencent.mobileqq.ar.arengine.ARCloudRecogResult;
-import com.tencent.mobileqq.ar.arengine.AREngine;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class aaml
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public aaml(AREngine paramAREngine, boolean paramBoolean) {}
+  public aaml(Conversation paramConversation) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    int j = 0;
-    if (AREngine.f(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine)) {
-      if (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) != null) {
-        AREngine.b(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine, false);
-      }
+    if (paramDialogInterface == Conversation.a(this.a)) {
+      Conversation.a(this.a, null);
     }
-    int i;
-    do
-    {
-      return;
-      i = j;
-      if (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) != null)
-      {
-        i = j;
-        if (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine).a != null)
-        {
-          i = j;
-          if (AREngine.e(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine))
-          {
-            i = j;
-            if (AREngine.e(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) == 2) {
-              i = 1;
-            }
-          }
-        }
-      }
-      if ((this.jdField_a_of_type_Boolean) && (i != 0))
-      {
-        AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine, AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine).a);
-        return;
-      }
-    } while (i == 0);
-    if (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) != null) {
-      AREngine.b(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine, true);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.m();
+    this.a.a(1134057, 50L, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaml
  * JD-Core Version:    0.7.0.1
  */

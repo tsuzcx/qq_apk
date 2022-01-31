@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_group$ReqGroupVideoDelete
-  extends MessageMicro
+  extends MessageMicro<ReqGroupVideoDelete>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field remove_author = PBField.initUInt32(0);
@@ -23,7 +23,7 @@ public final class qqstory_group$ReqGroupVideoDelete
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_group.ReqGroupVideoDelete
  * JD-Core Version:    0.7.0.1
  */

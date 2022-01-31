@@ -1,22 +1,22 @@
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.widget.CustomSafeEditText;
+import android.os.Looper;
+import android.os.Message;
 
 class xsq
-  implements Runnable
+  extends axvs
 {
-  xsq(xsp paramxsp) {}
-  
-  public void run()
+  xsq(xsp paramxsp, Looper paramLooper)
   {
-    String str = this.a.a.a.getText().toString();
-    if ((str != null) && (str.equals("!@#ewaGbhkc$!!="))) {
-      this.a.a.a.setText("");
-    }
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.a(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     xsq
  * JD-Core Version:    0.7.0.1
  */

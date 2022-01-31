@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler;
-import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler.SkinListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class xgq
-  implements Runnable
+class xgq
+  implements View.OnClickListener
 {
-  public xgq(QWalletSkinHandler paramQWalletSkinHandler, QWalletSkinHandler.SkinListener paramSkinListener, boolean paramBoolean) {}
+  xgq(xgn paramxgn) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener.onResult(this.jdField_a_of_type_Boolean);
+    this.a.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     xgq
  * JD-Core Version:    0.7.0.1
  */

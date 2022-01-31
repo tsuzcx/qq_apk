@@ -1,53 +1,38 @@
-import android.graphics.Rect;
-import android.view.View;
-import com.tencent.biz.now.NowVideoController;
-import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.PAVideoView;
-import com.tencent.widget.AbsListView;
+import org.apache.http.Header;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class kqh
-  implements Runnable
+final class kqh
+  extends kqa
 {
-  public kqh(NowVideoController paramNowVideoController, int paramInt1, int paramInt2) {}
+  kqh(kpy paramkpy) {}
   
-  public void run()
+  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
   {
-    if (NowVideoController.a(this.jdField_a_of_type_ComTencentBizNowNowVideoController) == null) {
+    super.a(paramInt, paramArrayOfHeader, paramJSONObject);
+    try
+    {
+      paramJSONObject = paramJSONObject.getString("id");
+      this.a.a(paramInt, paramArrayOfHeader, paramJSONObject);
       return;
     }
-    int i = this.jdField_a_of_type_Int;
-    label16:
-    Object localObject;
-    if (i <= this.b)
+    catch (JSONException paramArrayOfHeader)
     {
-      localObject = NowVideoController.a(this.jdField_a_of_type_ComTencentBizNowNowVideoController).getChildAt(i - this.jdField_a_of_type_Int);
-      if (localObject != null) {
-        break label52;
-      }
+      paramArrayOfHeader.printStackTrace();
     }
-    for (;;)
-    {
-      i += 1;
-      break label16;
-      break;
-      label52:
-      localObject = (PAVideoView)((View)localObject).findViewById(2131362177);
-      if ((localObject != null) && (((PAVideoView)localObject).j == 4))
-      {
-        ((PAVideoView)localObject).getGlobalVisibleRect(NowVideoController.a());
-        if ((((PAVideoView)localObject).getHeight() == NowVideoController.a().height()) && (NetworkUtil.h(((PAVideoView)localObject).getContext())) && (EcShopAssistantManager.a) && (NowVideoController.a().top > 0)) {
-          ((PAVideoView)localObject).e();
-        } else {
-          ((PAVideoView)localObject).d();
-        }
-      }
+  }
+  
+  public void a(Throwable paramThrowable, JSONObject paramJSONObject)
+  {
+    super.a(paramThrowable, paramJSONObject);
+    if ((paramThrowable != null) && (paramThrowable.getMessage() != null)) {
+      this.a.a(paramThrowable, paramThrowable.getMessage());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     kqh
  * JD-Core Version:    0.7.0.1
  */

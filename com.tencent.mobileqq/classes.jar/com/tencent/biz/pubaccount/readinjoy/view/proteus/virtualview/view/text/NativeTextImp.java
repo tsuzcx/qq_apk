@@ -4,8 +4,10 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
+import android.graphics.Rect;
 import android.text.TextPaint;
 import android.text.TextUtils;
+import android.text.TextUtils.TruncateAt;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.IView;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.VirtualViewUtils;
@@ -14,16 +16,17 @@ public class NativeTextImp
   extends TextView
   implements IView
 {
-  private int jdField_a_of_type_Int = 0;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private int jdField_b_of_type_Int;
-  private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private int c;
-  private int d;
-  private int e;
-  private int f;
-  private int g = -16777216;
-  private int h = 1;
+  protected int mBackgroundColor = 0;
+  protected Paint mBackgroundPaint;
+  protected int mBorderBottomLeftRadius = 0;
+  protected int mBorderBottomRightRadius = 0;
+  protected int mBorderColor = -16777216;
+  protected Paint mBorderPaint;
+  protected int mBorderTopLeftRadius = 0;
+  protected int mBorderTopRightRadius = 0;
+  protected int mBorderWidth = 0;
+  protected Boolean mEnableMarquee;
+  protected int mFlags = 1;
   
   public NativeTextImp(Context paramContext)
   {
@@ -31,101 +34,142 @@ public class NativeTextImp
     getPaint().setAntiAlias(true);
   }
   
-  public int a()
+  public void comLayout(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return getMeasuredWidth();
+    onComLayout(true, paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
-  public void a(int paramInt1, int paramInt2)
-  {
-    measure(paramInt1, paramInt2);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    a(true, paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    layout(paramInt1, paramInt2, paramInt3, paramInt4);
-  }
-  
-  public int b()
+  public int getComMeasuredHeight()
   {
     return getMeasuredHeight();
   }
   
-  public void b(int paramInt1, int paramInt2)
+  public int getComMeasuredWidth()
   {
-    a(paramInt1, paramInt2);
+    return getMeasuredWidth();
+  }
+  
+  public boolean isFocused()
+  {
+    if (this.mEnableMarquee != null) {
+      return this.mEnableMarquee.booleanValue();
+    }
+    return super.isFocused();
+  }
+  
+  public void measureComponent(int paramInt1, int paramInt2)
+  {
+    onComMeasure(paramInt1, paramInt2);
+  }
+  
+  public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    layout(paramInt1, paramInt2, paramInt3, paramInt4);
+  }
+  
+  public void onComMeasure(int paramInt1, int paramInt2)
+  {
+    measure(paramInt1, paramInt2);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Int != 0)
+    if (this.mBackgroundColor != 0)
     {
-      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+      if (this.mBackgroundPaint == null)
       {
-        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+        this.mBackgroundPaint = new Paint();
+        this.mBackgroundPaint.setAntiAlias(true);
       }
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-      VirtualViewUtils.b(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint, getWidth(), getHeight(), this.f, this.jdField_b_of_type_Int, this.c, this.d, this.e);
+      this.mBackgroundPaint.setColor(this.mBackgroundColor);
+      VirtualViewUtils.drawBackground(paramCanvas, this.mBackgroundPaint, getWidth(), getHeight(), this.mBorderWidth, this.mBorderTopLeftRadius, this.mBorderTopRightRadius, this.mBorderBottomLeftRadius, this.mBorderBottomRightRadius);
     }
     super.onDraw(paramCanvas);
-    if ((this.f > 0) && (!TextUtils.isEmpty(getText())))
+    if ((this.mBorderWidth > 0) && (!TextUtils.isEmpty(getText())))
     {
-      if (this.jdField_b_of_type_AndroidGraphicsPaint == null)
+      if (this.mBorderPaint == null)
       {
-        this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-        this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+        this.mBorderPaint = new Paint();
+        this.mBorderPaint.setStyle(Paint.Style.STROKE);
+        this.mBorderPaint.setAntiAlias(true);
       }
-      this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.f);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.g);
-      VirtualViewUtils.a(paramCanvas, this.jdField_b_of_type_AndroidGraphicsPaint, getWidth(), getHeight(), this.f, this.jdField_b_of_type_Int, this.c, this.d, this.e);
+      this.mBorderPaint.setStrokeWidth(this.mBorderWidth);
+      this.mBorderPaint.setColor(this.mBorderColor);
+      VirtualViewUtils.drawBorder(paramCanvas, this.mBorderPaint, getWidth(), getHeight(), this.mBorderWidth, this.mBorderTopLeftRadius, this.mBorderTopRightRadius, this.mBorderBottomLeftRadius, this.mBorderBottomRightRadius);
     }
+  }
+  
+  protected void onFocusChanged(boolean paramBoolean, int paramInt, Rect paramRect)
+  {
+    if (this.mEnableMarquee != null)
+    {
+      super.onFocusChanged(this.mEnableMarquee.booleanValue(), paramInt, paramRect);
+      return;
+    }
+    super.onFocusChanged(paramBoolean, paramInt, paramRect);
+  }
+  
+  public void onWindowFocusChanged(boolean paramBoolean)
+  {
+    if (this.mEnableMarquee != null)
+    {
+      super.onWindowFocusChanged(this.mEnableMarquee.booleanValue());
+      return;
+    }
+    super.onWindowFocusChanged(paramBoolean);
   }
   
   public void setBackgroundColor(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    this.mBackgroundColor = paramInt;
   }
   
   public void setBorderBottomLeftRadius(int paramInt)
   {
-    this.d = paramInt;
+    this.mBorderBottomLeftRadius = paramInt;
   }
   
   public void setBorderBottomRightRadius(int paramInt)
   {
-    this.e = paramInt;
+    this.mBorderBottomRightRadius = paramInt;
   }
   
   public void setBorderColor(int paramInt)
   {
-    this.g = paramInt;
+    this.mBorderColor = paramInt;
   }
   
   public void setBorderTopLeftRadius(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.mBorderTopLeftRadius = paramInt;
   }
   
   public void setBorderTopRightRadius(int paramInt)
   {
-    this.c = paramInt;
+    this.mBorderTopRightRadius = paramInt;
   }
   
   public void setBorderWidth(int paramInt)
   {
-    this.f = paramInt;
+    this.mBorderWidth = paramInt;
+  }
+  
+  public void setEnableMarquee(boolean paramBoolean)
+  {
+    this.mEnableMarquee = Boolean.valueOf(paramBoolean);
+    if (this.mEnableMarquee.booleanValue())
+    {
+      setSingleLine();
+      setMarqueeRepeatLimit(-1);
+      setFocusable(true);
+      setHorizontallyScrolling(true);
+      setEllipsize(TextUtils.TruncateAt.MARQUEE);
+    }
   }
   
   public void setPaintFlags(int paramInt)
   {
-    if (this.h == paramInt) {
+    if (this.mFlags == paramInt) {
       return;
     }
     super.setPaintFlags(paramInt);
@@ -133,7 +177,7 @@ public class NativeTextImp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.NativeTextImp
  * JD-Core Version:    0.7.0.1
  */

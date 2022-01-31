@@ -3,7 +3,10 @@ package com.tencent.qphone.base;
 public class BaseConstants
 {
   public static final String ACTION_MSF_IPC_EXCEPTION = "com.tencent.mobileqq.msf.ACTION_MSF_IPC_EXCEPTION";
+  public static final String ACTION_PROCESS_EXIT = "com.tencent.process.exit";
+  public static final String ACTION_REQ_TIMEOUT_REPORT = "actReqTimeoutReport";
   public static final String ATTRIBUTE_ALARM_ELAPSED_TIEM = "_attr_alarm_elapsed_time";
+  public static final String ATTRIBUTE_DISABLE_MERGE = "_attr_disable_merge";
   public static final String ATTRIBUTE_MSG_HAS_RESEND_BY_10008 = "_attr_msg_has_resend_by_10008";
   public static final String ATTRIBUTE_NEED_REMIND_SLOW_NETWORK = "remind_slown_network";
   public static final String ATTRIBUTE_REGPRXY_RANDOM_CODE = "_attr_regprxy_random_code";
@@ -13,6 +16,13 @@ public class BaseConstants
   public static final String ATTRIBUTE_RESP_LOGIN_URL = "resp_login_url";
   public static final String ATTRIBUTE_SAMEDEVICE = "_attr_sameDevice";
   public static final String ATTRIBUTE_SEND_BY_QUICKHTTP = "_attr_send_by_quickHttp";
+  public static final String ATTRIBUT_REQUEST_ISCONN = "_attr_req_isconn";
+  public static final String ATTRIBUT_REQUEST_NETSTATE = "_attr_req_netstate";
+  public static final String ATTRIBUT_REQUEST_SENDTIME = "_attr_req_send_time";
+  public static final String ATTRIBUT_REQUEST_SOCKET_CONN_TIME = "_attr_req_socket_conn_time";
+  public static final String ATTRIBUT_TIMEOUT_ISCONN = "_attr_timeout_isconn";
+  public static final String ATTRIBUT_TIMEOUT_NETSTATE = "_attr_timeout_netstate";
+  public static final String ATTRIBUT_TIMEOUT_SOCKET_CONN_TIME = "_attr_timeout_socket_conn_time";
   public static final String Attribute_DEVICEGUID = "_attr_deviceGUID";
   public static final String Attribute_RESP_APP_TIMEOUT = "_attr_app_timeout";
   public static final String Attribute_SERVERTIME = "_attr_server";
@@ -63,7 +73,8 @@ public class BaseConstants
   public static final String CMD_DELLOGINEDACCOUNT = "cmd_DelLoginedAccount";
   public static final String CMD_FORCEOFFLINERESP = "StatSvc.RspMSFForceOffline";
   public static final String CMD_FORCE_LOGOUT = "MessageSvc.PushForceOffline";
-  public static final String CMD_GETCONFIG = "ConfigService.ClientReq";
+  public static final String CMD_GETCONFIG_NEW = "ResourceConfig.ClientReq";
+  public static final String CMD_GETCONFIG_OLD = "ConfigService.ClientReq";
   public static final String CMD_GETGATEWAYIP = "cmd_getGatewayIp";
   public static final String CMD_GETKEY = "MSF.getKey";
   public static final String CMD_GETPICSERLIST = "ConfigService.GetPictureServerReq";
@@ -75,6 +86,7 @@ public class BaseConstants
   public static final String CMD_HEARTBEATALIVE = "Heartbeat.Alive";
   public static final String CMD_HEARTBEATPING = "Heartbeat.Ping";
   public static final String CMD_INVALIDSIGN = "cmd_InvalidSign";
+  public static final String CMD_KEEP_PROCESS_ALIVE = "cmd_keep_process_alive";
   public static final String CMD_LOGIN_AUTH = "login.auth";
   public static final String CMD_LOGIN_CHANGEUIN_AUTH = "login.chguin";
   public static final String CMD_LOGIN_REGISTR_COMMITMOBILE = "login.register.CommitMobile";
@@ -121,6 +133,7 @@ public class BaseConstants
   public static final String CMD_REGPRXYSVC_NOTICE_END = "RegPrxySvc.NoticeEnd";
   public static final String CMD_REPORTRDM = "App_reportRDM";
   public static final String CMD_REPORTSTAT = "CliLogSvc.UploadReq";
+  public static final String CMD_REQUEST_CONFIG = "ConfigurationService.ReqGetConfig";
   public static final String CMD_REQ_CHECKSIGNATURE = "PhSigLcId.Check";
   public static final String CMD_RESET_CMDCALLBACKER = "push.resetCmds";
   public static final String CMD_RESPPUSH = "OnlinePush.RespPush";
@@ -157,6 +170,7 @@ public class BaseConstants
   public static final String CMD_WT_LOGIN_REQUESTREBINDMBL = "account.RequestReBindMblWTLogin_emp";
   public static final int CODE_APPTIMEOUT = 1013;
   public static final int CODE_BASESERVICENOTFOUND = 1006;
+  public static final int CODE_BLACK_IPV6_CMD = -10112;
   public static final int CODE_CHANGEUINFAILED = 2010;
   public static final int CODE_CLIENTTIMEERROR = 1012;
   public static final int CODE_EXCEPITON = 1005;
@@ -166,6 +180,8 @@ public class BaseConstants
   public static final int CODE_INVALIDSIGN = 2014;
   public static final int CODE_LOAD_SERVICE_FAIL = 1004;
   public static final int CODE_NEED_IMAGE_VERIFY = 2020;
+  public static final int CODE_NOT_WHITE_IPV6_CMD = -10111;
+  public static final int CODE_NOT_WHITE_IPV6_UIN = -10110;
   public static final int CODE_NO_LOGIN = 2001;
   public static final int CODE_NO_SERVICE_FOUND = 1003;
   public static final int CODE_OK = 1000;
@@ -224,6 +240,7 @@ public class BaseConstants
   public static final int NETINFO_WIFIANDMOBILE = 3;
   public static String RDM_NoChangeFailCode;
   public static final int REGUIN_CAPTCHA = 4;
+  public static final int REGUIN_GUARANTEE = 8;
   public static final int REGUIN_JUMPURL = 3;
   public static final int REGUIN_QUERYSMS = 4;
   public static final int REGUIN_REJECT = 7;
@@ -232,7 +249,8 @@ public class BaseConstants
   public static final int REGUIN_UPSMS = 2;
   public static final int REGUIN_WAITSMS = 1;
   public static int REPORTLOGMAXPACKAGECOUNT = 0;
-  public static long REPORTLOGONCEMAXSIZE = 10485760L;
+  public static long REPORTLOGONCEMAXSIZE = 20971520L;
+  public static int REPORTLOG_WIFI_MAXPACKAGECOUNT = 0;
   public static final int RET_USER_CANCEL = -20160326;
   public static final int SERVERPUSH_TYPE_MEDIASERVERLIST = 1;
   public static final int SERVERPUSH_TYPE_USERLOGLEVEL = 2;
@@ -253,6 +271,8 @@ public class BaseConstants
   public static final String TIMESTAMP_NET2MSF = "__timestamp_net2msf";
   public static final String TIMESTAMP_NET2MSF_BOOT = "__timestamp_net2msf_boot";
   public static final String TIME_MSF2NET_BOOT_SHARP_C2S = "__timestamp_msf2net_boot_sharp_c2s";
+  public static final int TYPE_BOOT_ACTION_KEEP_ALIVE = 1;
+  public static final int TYPE_BOOT_ACTION_NORMAL = 0;
   public static final byte UINTYPE_QQ = 0;
   public static final String UIN_NOUIN = "0";
   public static int USEWAKELOCK_MINFAILEDCOUNT = 0;
@@ -264,16 +284,20 @@ public class BaseConstants
   public static final boolean isReleaseVersion = true;
   public static boolean isUseDebugSso = false;
   public static long reSendIntrevTime = 0L;
-  public static final String revision = "355371";
+  public static final String revision = "cc9d1343";
   public static String testServerAddress;
   
   static
   {
     REPORTLOGMAXPACKAGECOUNT = 1;
+    REPORTLOG_WIFI_MAXPACKAGECOUNT = 5;
     checkExpiresLogScreenOffCount = 2;
     reSendIntrevTime = 5000L;
     RDM_NoChangeFailCode = "rdm_NCF";
+    isUseDebugSso = false;
     testServerAddress = "";
+    XGloginMergeTSAddress = null;
+    WiFiloginMergeTSAddress = null;
     MAXSENDCOUNT_INMINUTE = 150;
     USEWAKELOCK_MINFAILEDCOUNT = 5;
   }

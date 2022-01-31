@@ -17,10 +17,13 @@ import android.view.MotionEvent;
 import android.view.ViewConfiguration;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
-import com.tencent.av.AVLog;
-import com.tencent.mobileqq.statistics.ReportController;
+import awqx;
+import baig;
 import com.tencent.qphone.base.util.QLog;
-import jqp;
+import krx;
+import lom;
+import lon;
+import lor;
 
 public class SmallScreenRelativeLayout
   extends RelativeLayout
@@ -29,8 +32,8 @@ public class SmallScreenRelativeLayout
   final int jdField_a_of_type_Int;
   ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   Display jdField_a_of_type_AndroidViewDisplay;
-  SmallScreenRelativeLayout.FloatListener jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener;
-  jqp jdField_a_of_type_Jqp = null;
+  lom jdField_a_of_type_Lom;
+  lon jdField_a_of_type_Lon = null;
   boolean jdField_a_of_type_Boolean = false;
   final int jdField_b_of_type_Int;
   ValueAnimator jdField_b_of_type_AndroidAnimationValueAnimator;
@@ -72,11 +75,11 @@ public class SmallScreenRelativeLayout
       QLog.d("SmallScreenRelativeLayout", 2, "SmallScreenRelativeLayout");
     }
     this.jdField_b_of_type_Int = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-    this.e = getResources().getDimensionPixelSize(2131559941);
-    this.f = getResources().getDimensionPixelSize(2131559942);
-    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131559916);
-    this.g = getResources().getDimensionPixelSize(2131558448);
-    this.h = getResources().getDimensionPixelSize(2131559948);
+    this.e = getResources().getDimensionPixelSize(2131166647);
+    this.f = getResources().getDimensionPixelSize(2131166648);
+    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131166655);
+    this.g = getResources().getDimensionPixelSize(2131167766);
+    this.h = getResources().getDimensionPixelSize(2131166645);
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(200L);
     this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(this);
@@ -87,7 +90,7 @@ public class SmallScreenRelativeLayout
     this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(this);
     this.jdField_a_of_type_AndroidViewDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
     this.p = b();
-    this.jdField_a_of_type_Jqp = new jqp(this, getContext(), 2);
+    this.jdField_a_of_type_Lon = new lon(this, getContext(), 2);
   }
   
   private int b()
@@ -99,7 +102,7 @@ public class SmallScreenRelativeLayout
     }
     catch (Exception localException)
     {
-      AVLog.e("SmallScreenRelativeLayout", localException.getMessage());
+      krx.e("SmallScreenRelativeLayout", localException.getMessage());
     }
     return 0;
   }
@@ -109,12 +112,12 @@ public class SmallScreenRelativeLayout
     int i2;
     if ((this.q != 0) && (this.r != 0))
     {
-      if (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener == null) {
+      if (this.jdField_a_of_type_Lom == null) {
         break label60;
       }
-      i2 = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener.a(this);
+      i2 = this.jdField_a_of_type_Lom.a(this);
     }
-    for (int i1 = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener.b(this);; i1 = getTop())
+    for (int i1 = this.jdField_a_of_type_Lom.b(this);; i1 = getTop())
     {
       this.s = a(i2, i1, i2, i1);
       return this.s;
@@ -154,48 +157,46 @@ public class SmallScreenRelativeLayout
   {
     int i2 = 1;
     int i1;
-    label28:
+    label31:
     SharedPreferences.Editor localEditor;
     if ((paramInt1 < paramInt2) && (paramInt3 > paramInt4))
     {
       i1 = 1;
       if ((paramInt1 <= paramInt2) || (paramInt3 >= paramInt4)) {
-        break label178;
+        break label94;
       }
-      if ((i1 == 0) && (i2 == 0)) {
-        break label215;
+      paramInt2 = i2;
+      if (i1 == 0)
+      {
+        paramInt1 = paramInt5;
+        if (paramInt2 == 0) {}
       }
-      SharedPreferences localSharedPreferences = getContext().getSharedPreferences("qav_SP", 0);
-      localEditor = localSharedPreferences.edit();
-      if (i1 == 0) {
-        break label184;
+      else
+      {
+        SharedPreferences localSharedPreferences = baig.a(getContext());
+        localEditor = localSharedPreferences.edit();
+        if (i1 == 0) {
+          break label99;
+        }
+        paramInt1 = localSharedPreferences.getInt("small_window_position_land", 12);
       }
-      i1 = localSharedPreferences.getInt("small_window_position_land", 12);
-      label77:
-      localEditor.commit();
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SmallScreenRelativeLayout", 2, "changePositionIfNeed oldWidth: " + paramInt1 + ", oldHeight: " + paramInt2 + ", newWidth: " + paramInt3 + ", newHeight: " + paramInt4 + ", position: " + paramInt5 + ", newPosition: " + i1);
-      }
-      return i1;
+      localEditor.commit();
+      return paramInt1;
       i1 = 0;
       break;
-      label178:
-      i2 = 0;
-      break label28;
-      label184:
-      if (i2 != 0)
+      label94:
+      paramInt2 = 0;
+      break label31;
+      label99:
+      paramInt1 = paramInt5;
+      if (paramInt2 != 0)
       {
-        i1 = 7;
         localEditor.putInt("small_window_position_land", paramInt5);
-        break label77;
+        paramInt1 = 7;
       }
-      i1 = paramInt5;
-      break label77;
-      label215:
-      i1 = paramInt5;
     }
   }
   
@@ -335,25 +336,19 @@ public class SmallScreenRelativeLayout
     try
     {
       getWindowVisibleDisplayFrame(localRect);
-      boolean bool = SmallScreenUtils.e();
+      boolean bool = lor.i();
       int i4 = localRect.width();
       int i2 = localRect.height();
       i1 = i2;
       if (bool) {
         i1 = i2 - this.jdField_a_of_type_Int;
       }
+      i2 = this.p;
       this.s = a(this.q, this.r, i4, i1, this.s);
       if ((this.p != i3) || (i4 != this.q) || ((i3 == 0) && (this.r < i1)) || ((i3 != 0) && (this.r != i1)))
       {
-        if (QLog.isColorLevel())
-        {
-          QLog.d("SmallScreenRelativeLayout", 2, "onOrientationChangedInner mIsInit = " + this.jdField_d_of_type_Boolean);
-          QLog.d("SmallScreenRelativeLayout", 2, "onOrientationChangedInner mRotation = " + this.p);
-          QLog.d("SmallScreenRelativeLayout", 2, "onOrientationChangedInner mScreenWidth = " + this.q);
-          QLog.d("SmallScreenRelativeLayout", 2, "onOrientationChangedInner mScreenHeight = " + this.r);
-          QLog.d("SmallScreenRelativeLayout", 2, "onOrientationChangedInner rotation = " + i3);
-          QLog.d("SmallScreenRelativeLayout", 2, "onOrientationChangedInner width = " + i4);
-          QLog.d("SmallScreenRelativeLayout", 2, "onOrientationChangedInner height = " + i1);
+        if (QLog.isColorLevel()) {
+          QLog.w("SmallScreenRelativeLayout", 1, "onOrientationChangedInner, mPosition[" + i2 + "->" + this.s + "], mRotation[" + this.p + "->" + i3 + "], mScreenWidth[" + this.q + "->" + i4 + "], mScreenHeight[" + this.r + "->" + i1 + "], mIsInit[" + this.jdField_d_of_type_Boolean + "]");
         }
         if ((this.jdField_d_of_type_Boolean) && (i3 != 0)) {
           this.jdField_d_of_type_Boolean = false;
@@ -363,13 +358,13 @@ public class SmallScreenRelativeLayout
         this.q = i4;
         this.r = i1;
         setCurPosition(this.s);
-        if (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener == null) {
-          break label448;
+        if (this.jdField_a_of_type_Lom == null) {
+          break label386;
         }
-        i1 = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener.a(this);
+        i1 = this.jdField_a_of_type_Lom.a(this);
         this.m = i1;
         this.i = i1;
-        i1 = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener.b(this);
+        i1 = this.jdField_a_of_type_Lom.b(this);
         this.n = i1;
         this.j = i1;
         if (!this.jdField_d_of_type_Boolean) {
@@ -387,7 +382,7 @@ public class SmallScreenRelativeLayout
         {
           QLog.e("SmallScreenRelativeLayout", 2, "Can not getWindowVisibleDisplayFrame");
           continue;
-          label448:
+          label386:
           i1 = getLeft();
           this.m = i1;
           this.i = i1;
@@ -431,9 +426,9 @@ public class SmallScreenRelativeLayout
           }
           for (;;)
           {
-            if (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener != null)
+            if (this.jdField_a_of_type_Lom != null)
             {
-              this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener.a(this, i2, paramInt1, i1 + i2, paramInt1 + paramInt2);
+              this.jdField_a_of_type_Lom.a(this, i2, paramInt1, i1 + i2, paramInt1 + paramInt2);
               return;
               i1 = this.jdField_d_of_type_Int;
               paramInt2 = this.jdField_c_of_type_Int;
@@ -460,8 +455,8 @@ public class SmallScreenRelativeLayout
     for (int i1 = 0;; i1 = 8)
     {
       setVisibility(i1);
-      if ((!paramBoolean) && (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener != null)) {
-        this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener.a(this);
+      if ((!paramBoolean) && (this.jdField_a_of_type_Lom != null)) {
+        this.jdField_a_of_type_Lom.a(this);
       }
       return;
     }
@@ -478,7 +473,7 @@ public class SmallScreenRelativeLayout
       QLog.d("SmallScreenRelativeLayout", 2, "onCreate");
     }
     this.jdField_d_of_type_Boolean = true;
-    this.jdField_a_of_type_Jqp.enable();
+    this.jdField_a_of_type_Lon.enable();
   }
   
   public void c()
@@ -486,8 +481,8 @@ public class SmallScreenRelativeLayout
     if (QLog.isColorLevel()) {
       QLog.d("SmallScreenRelativeLayout", 2, "onDestroy");
     }
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener = null;
-    this.jdField_a_of_type_Jqp.disable();
+    this.jdField_a_of_type_Lom = null;
+    this.jdField_a_of_type_Lon.disable();
   }
   
   public void d()
@@ -511,10 +506,10 @@ public class SmallScreenRelativeLayout
         this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
         this.k = i1;
         this.l = i2;
-        if (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener != null) {
-          this.i = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener.a(this);
+        if (this.jdField_a_of_type_Lom != null) {
+          this.i = this.jdField_a_of_type_Lom.a(this);
         }
-        for (this.j = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener.b(this);; this.j = getTop())
+        for (this.j = this.jdField_a_of_type_Lom.b(this);; this.j = getTop())
         {
           this.jdField_c_of_type_Boolean = false;
           return true;
@@ -533,19 +528,19 @@ public class SmallScreenRelativeLayout
       {
         a(i1, i2);
         label195:
-        if (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener == null) {
+        if (this.jdField_a_of_type_Lom == null) {
           break label266;
         }
-        this.m = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener.a(this);
+        this.m = this.jdField_a_of_type_Lom.a(this);
       }
-      for (this.n = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener.b(this); !bool; this.n = getTop())
+      for (this.n = this.jdField_a_of_type_Lom.b(this); !bool; this.n = getTop())
       {
         this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
         return true;
-        if (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener == null) {
+        if (this.jdField_a_of_type_Lom == null) {
           break label195;
         }
-        bool = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener.a(this);
+        bool = this.jdField_a_of_type_Lom.a(this);
         break label195;
         label266:
         this.m = getLeft();
@@ -554,10 +549,10 @@ public class SmallScreenRelativeLayout
     if (this.jdField_c_of_type_Boolean) {
       a(i1, i2);
     }
-    if (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener != null) {
-      this.m = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener.a(this);
+    if (this.jdField_a_of_type_Lom != null) {
+      this.m = this.jdField_a_of_type_Lom.a(this);
     }
-    for (this.n = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener.b(this);; this.n = getTop())
+    for (this.n = this.jdField_a_of_type_Lom.b(this);; this.n = getTop())
     {
       this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
       return true;
@@ -582,9 +577,9 @@ public class SmallScreenRelativeLayout
       }
       i1 = this.jdField_c_of_type_Int;
     }
-    for (int i2 = this.jdField_d_of_type_Int; this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener != null; i2 = this.jdField_c_of_type_Int)
+    for (int i2 = this.jdField_d_of_type_Int; this.jdField_a_of_type_Lom != null; i2 = this.jdField_c_of_type_Int)
     {
-      this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener.a(this, localPoint.x, localPoint.y, i1 + localPoint.x, localPoint.y + i2);
+      this.jdField_a_of_type_Lom.a(this, localPoint.x, localPoint.y, i1 + localPoint.x, localPoint.y + i2);
       return;
       label87:
       i1 = this.jdField_d_of_type_Int;
@@ -611,15 +606,15 @@ public class SmallScreenRelativeLayout
           i1 = this.jdField_c_of_type_Int;
           i2 = this.jdField_d_of_type_Int;
           label92:
-          if (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener == null) {
+          if (this.jdField_a_of_type_Lom == null) {
             break label221;
           }
-          this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener.a(this, localPoint.x, localPoint.y, i1 + localPoint.x, localPoint.y + i2);
+          this.jdField_a_of_type_Lom.a(this, localPoint.x, localPoint.y, i1 + localPoint.x, localPoint.y + i2);
           label133:
           this.jdField_d_of_type_Boolean = false;
           this.s = this.o;
           if (paramAnimator != null) {
-            ReportController.b(null, "CliOper", "", "", paramAnimator, paramAnimator, 0, 0, "", "", "", "");
+            awqx.b(null, "CliOper", "", "", paramAnimator, paramAnimator, 0, 0, "", "", "", "");
           }
         }
         break;
@@ -649,8 +644,8 @@ public class SmallScreenRelativeLayout
       if (QLog.isColorLevel()) {
         QLog.d("SmallScreenRelativeLayout", 2, "onAnimationEnd setVisibility(GONE)");
       }
-    } while (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener == null);
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener.a(this);
+    } while (this.jdField_a_of_type_Lom == null);
+    this.jdField_a_of_type_Lom.a(this);
   }
   
   public void onAnimationRepeat(Animator paramAnimator) {}
@@ -684,10 +679,10 @@ public class SmallScreenRelativeLayout
       {
         i1 = this.jdField_c_of_type_Int;
         i2 = this.jdField_d_of_type_Int;
-        if (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener == null) {
+        if (this.jdField_a_of_type_Lom == null) {
           break label147;
         }
-        this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener.a(this, i3, i4, i1 + i3, i4 + i2);
+        this.jdField_a_of_type_Lom.a(this, i3, i4, i1 + i3, i4 + i2);
       }
     }
     label147:
@@ -747,9 +742,9 @@ public class SmallScreenRelativeLayout
       }
       paramInt = this.jdField_c_of_type_Int;
     }
-    for (int i1 = this.jdField_d_of_type_Int; this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener != null; i1 = this.jdField_c_of_type_Int)
+    for (int i1 = this.jdField_d_of_type_Int; this.jdField_a_of_type_Lom != null; i1 = this.jdField_c_of_type_Int)
     {
-      this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener.a(this, localPoint.x, localPoint.y, paramInt + localPoint.x, localPoint.y + i1);
+      this.jdField_a_of_type_Lom.a(this, localPoint.x, localPoint.y, paramInt + localPoint.x, localPoint.y + i1);
       return;
       label179:
       paramInt = this.jdField_d_of_type_Int;
@@ -757,9 +752,9 @@ public class SmallScreenRelativeLayout
     layout(localPoint.x, localPoint.y, localPoint.x + paramInt, i1 + localPoint.y);
   }
   
-  public void setFloatListener(SmallScreenRelativeLayout.FloatListener paramFloatListener)
+  public void setFloatListener(lom paramlom)
   {
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout$FloatListener = paramFloatListener;
+    this.jdField_a_of_type_Lom = paramlom;
   }
   
   public void setIsRotateSize(boolean paramBoolean)
@@ -780,7 +775,7 @@ public class SmallScreenRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

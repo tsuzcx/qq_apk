@@ -1,43 +1,34 @@
-import com.qq.taf.jce.HexUtil;
-import com.tencent.util.MqqWeakReferenceHandler;
-import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
-import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoPartManager;
-import dov.com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class aoeb
-  implements EncodeVideoTask.ResultListener
+final class aoeb
+  extends wmb
 {
-  public aoeb(EditWebVideoActivity paramEditWebVideoActivity) {}
+  aoeb(String paramString, aoex paramaoex, long paramLong) {}
   
-  public void a(int paramInt)
+  public void a(boolean paramBoolean, int paramInt1, String paramString, int paramInt2, int paramInt3, Bundle paramBundle)
   {
-    this.a.runOnUiThread(new aoec(this));
-  }
-  
-  public void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3, boolean paramBoolean)
-  {
-    int i = ((EditWebVideoPartManager)this.a.a).a;
-    EditWebVideoActivity.a(this.a, paramString1);
-    EditWebVideoActivity.a(this.a, paramArrayOfByte1);
-    EditWebVideoActivity.b(this.a, HexUtil.bytes2HexStr(EditWebVideoActivity.a(this.a)));
-    paramString1 = this.a;
-    if (i <= 0) {}
-    for (;;)
+    if (!paramBoolean)
     {
-      EditWebVideoActivity.a(paramString1, paramInt3);
-      EditWebVideoActivity.c(this.a, paramString2);
-      EditWebVideoActivity.b(this.a, paramArrayOfByte2);
-      EditWebVideoActivity.b(this.a, paramInt1);
-      EditWebVideoActivity.c(this.a, paramInt2);
-      EditWebVideoActivity.a(this.a).sendEmptyMessage(1002);
+      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult return failed fileid " + this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Aoex.a(aoea.a(this.jdField_a_of_type_Long, false), true);
       return;
-      paramInt3 = i;
     }
+    paramBundle.putString("_m_ForwardBusType", String.valueOf(paramInt2));
+    paramBundle.putString("_m_ForwardDeadTime", String.valueOf(paramInt3));
+    if (paramInt1 == 0)
+    {
+      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult success fileid " + this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Aoex.a(this.jdField_a_of_type_JavaLangString, paramBundle);
+      return;
+    }
+    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult return[" + paramInt1 + "] fileid " + this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Aoex.a(aoea.a(this.jdField_a_of_type_Long, false), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoeb
  * JD-Core Version:    0.7.0.1
  */

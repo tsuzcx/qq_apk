@@ -1,21 +1,36 @@
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
-class aboj
-  implements Runnable
+public class aboj
+  implements View.OnFocusChangeListener
 {
-  aboj(aboh paramaboh) {}
+  public aboj(RegisterByNicknameAndPwdActivity paramRegisterByNicknameAndPwdActivity) {}
   
-  public void run()
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (!this.a.a.jdField_b_of_type_Boolean) {
-      this.a.a.jdField_b_of_type_AndroidWidgetProgressBar.setVisibility(0);
+    if (paramView == RegisterByNicknameAndPwdActivity.a(this.a))
+    {
+      if (paramBoolean)
+      {
+        RegisterByNicknameAndPwdActivity.a(this.a).setSelection(RegisterByNicknameAndPwdActivity.a(this.a).getText().length());
+        RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(0);
+        RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(0);
+        RegisterByNicknameAndPwdActivity.b(this.a).setVisibility(0);
+      }
     }
+    else {
+      return;
+    }
+    RegisterByNicknameAndPwdActivity.a(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aboj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,32 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.HongbaoKeywordGrayTips;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.view.SurfaceHolder;
+import com.tencent.biz.tribe.TribeVideoPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.qqlive.mediaplayer.view.IVideoViewBase.IVideoViewCallBack;
 
 public class wig
-  implements Runnable
+  implements IVideoViewBase.IVideoViewCallBack
 {
-  public wig(HongbaoKeywordGrayTips paramHongbaoKeywordGrayTips) {}
+  public wig(TribeVideoPlugin paramTribeVideoPlugin) {}
   
-  public void run()
+  public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder) {}
+  
+  public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    Object localObject = HongbaoKeywordGrayTips.a(this.a).a().a(HongbaoKeywordGrayTips.a(this.a).jdField_a_of_type_JavaLangString, HongbaoKeywordGrayTips.a(this.a).jdField_a_of_type_Int);
-    int i = ((List)localObject).size();
-    if (i > 0)
-    {
-      localObject = (ChatMessage)((List)localObject).get(i - 1);
-      if (HongbaoKeywordGrayTips.a(this.a).jdField_a_of_type_Int != 0) {
-        break label130;
-      }
-      HongbaoKeywordGrayTips.a(this.a, ((ChatMessage)localObject).time);
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceCreated");
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("HongbaoKeywordGrayTips", 2, "size : " + i + ", mLastMsgIdOrTime:" + HongbaoKeywordGrayTips.a(this.a));
-      }
-      return;
-      label130:
-      if ((HongbaoKeywordGrayTips.a(this.a).jdField_a_of_type_Int == 3000) || (HongbaoKeywordGrayTips.a(this.a).jdField_a_of_type_Int == 1)) {
-        HongbaoKeywordGrayTips.a(this.a, ((ChatMessage)localObject).shmsgseq);
-      }
+  }
+  
+  public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TribeVideoPlugin", 2, "IVideoViewBase.IVideoViewCallBack onSurfaceDestory");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wig
  * JD-Core Version:    0.7.0.1
  */

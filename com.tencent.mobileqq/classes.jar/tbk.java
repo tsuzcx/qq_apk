@@ -1,52 +1,72 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.UniteSearchObserver;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
-import com.tencent.mobileqq.search.model.SearchEntryDataModel;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetEmoticonPackList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.EmoticonPack;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 public class tbk
-  extends UniteSearchObserver
+  extends slu
 {
-  public tbk(Leba paramLeba) {}
+  public final long a;
+  public final String a;
+  public final List<tbl> a;
+  public final boolean a;
+  public final byte[] a;
   
-  public void b(int paramInt1, String paramString, int paramInt2)
+  public tbk(qqstory_service.RspGetEmoticonPackList paramRspGetEmoticonPackList, byte[] paramArrayOfByte, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.leba", 2, "handleSearchDiscoveryError error, resultCode = " + paramInt1 + ",  errorMsg = " + paramString + ", fromType = " + paramInt2);
+    super(paramRspGetEmoticonPackList.result);
+    boolean bool;
+    ArrayList localArrayList;
+    if (paramRspGetEmoticonPackList.is_end.get() != 0)
+    {
+      bool = true;
+      this.jdField_a_of_type_Boolean = bool;
+      this.jdField_a_of_type_JavaLangString = paramRspGetEmoticonPackList.next_cookie.get().toStringUtf8();
+      localArrayList = new ArrayList();
+      paramRspGetEmoticonPackList = paramRspGetEmoticonPackList.pack_list.get();
+      if (paramRspGetEmoticonPackList != null) {
+        paramRspGetEmoticonPackList = paramRspGetEmoticonPackList.iterator();
+      }
     }
+    else
+    {
+      for (;;)
+      {
+        if (!paramRspGetEmoticonPackList.hasNext()) {
+          break label151;
+        }
+        tbl localtbl = new tbl((qqstory_struct.EmoticonPack)paramRspGetEmoticonPackList.next());
+        if (localtbl.a())
+        {
+          localArrayList.add(localtbl);
+          continue;
+          bool = false;
+          break;
+        }
+        urk.d("GetEmojiPackInfoListResponse", "found invalid data we ignore it : " + localtbl);
+      }
+    }
+    label151:
+    this.jdField_a_of_type_JavaUtilList = Collections.unmodifiableList(localArrayList);
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_ArrayOfByte = new byte[paramArrayOfByte.length];
+    System.arraycopy(paramArrayOfByte, 0, this.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte.length);
   }
   
-  public void b(List paramList, int paramInt)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.leba", 2, "handleSearchDiscoveryResult() result = " + paramList + ", fromType = " + paramInt);
-    }
-    if (paramInt != 4) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.lebatab.leba", 2, "handleSearchDiscoveryResult(), fromType is wrong, return");
-      }
-    }
-    for (;;)
-    {
-      return;
-      paramInt = 0;
-      while (paramInt < paramList.size())
-      {
-        SearchEntryDataModel localSearchEntryDataModel = (SearchEntryDataModel)paramList.get(paramInt);
-        if ((localSearchEntryDataModel instanceof HotWordSearchEntryDataModel))
-        {
-          Leba.a(this.a, ((HotWordSearchEntryDataModel)localSearchEntryDataModel).a);
-          return;
-        }
-        paramInt += 1;
-      }
-    }
+    return "GetEmojiPackInfoListResponse{mEmojiPackList.size=" + this.jdField_a_of_type_JavaUtilList.size() + ", mIsEnd=" + this.jdField_a_of_type_Boolean + ", mNextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tbk
  * JD-Core Version:    0.7.0.1
  */

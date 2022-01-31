@@ -1,22 +1,17 @@
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.wordsegment.WordSegment.ILogCallback;
 
-public class alcw
-  implements Runnable
+final class alcw
+  implements WordSegment.ILogCallback
 {
-  public alcw(NewStyleDropdownView paramNewStyleDropdownView) {}
-  
-  public void run()
+  public void OnLog(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewStyleDropdownView", 2, "onDismiss arrow postDelayed 500 run and set isLastDropDown false");
-    }
-    this.a.a = false;
+    ArkAppCenter.c("ArkApp.Dict.WordSegment." + paramString1, String.format("%s", new Object[] { paramString2 }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alcw
  * JD-Core Version:    0.7.0.1
  */

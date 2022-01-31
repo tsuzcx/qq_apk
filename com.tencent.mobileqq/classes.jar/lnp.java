@@ -1,25 +1,31 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.common.ThirdVideoManager;
-import com.tencent.biz.pubaccount.readinjoy.common.ThirdVideoManager.UUIDToUrlCallback;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
+import com.tencent.av.share.AVSchema;
+import com.tencent.qphone.base.util.QLog;
 
 public class lnp
-  implements BusinessObserver
+  implements aagm
 {
-  public lnp(ThirdVideoManager paramThirdVideoManager, NewIntent paramNewIntent, long paramLong, ThirdVideoManager.UUIDToUrlCallback paramUUIDToUrlCallback, String paramString1, String paramString2, AppRuntime paramAppRuntime) {}
+  public lnp(AVSchema paramAVSchema, long paramLong) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a()
   {
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-    ThreadManager.post(new lnq(this, paramBoolean, paramBundle), 8, null, false);
+    QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.a, 1, "joinVideoChat.onCancel, isDetached[" + this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached() + "], seq[" + this.jdField_a_of_type_Long + "]");
+    this.jdField_a_of_type_ComTencentAvShareAVSchema.b();
+  }
+  
+  public void b()
+  {
+    QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.a, 1, "joinVideoChat.onBeforeStartActivity, isDetached[" + this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached() + "], seq[" + this.jdField_a_of_type_Long + "]");
+  }
+  
+  public void c()
+  {
+    QLog.w(this.jdField_a_of_type_ComTencentAvShareAVSchema.a, 1, "joinVideoChat.onAfterStartActivity, isDetached[" + this.jdField_a_of_type_ComTencentAvShareAVSchema.isDetached() + "], seq[" + this.jdField_a_of_type_Long + "]");
+    this.jdField_a_of_type_ComTencentAvShareAVSchema.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lnp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,40 @@
-import dov.com.tencent.mobileqq.activity.richmedia.view.ExtendEditText.LengthConvertor;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity.FileColorNoteCallback.1;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity.FileColorNoteCallback.2;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity.FileColorNoteCallback.3;
+import mqq.os.MqqHandler;
 
-public final class aoqw
-  implements ExtendEditText.LengthConvertor
+public class aoqw
+  extends alry
 {
-  public int a(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  private aoqw(FileBrowserActivity paramFileBrowserActivity) {}
+  
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    paramInt1 = paramInt2 - paramInt1;
-    if (paramInt1 >= 0) {
-      return paramInt1;
+    if (paramBundle.getInt("color_note_curd_from_type") == 1) {
+      awqx.b(null, "dc00898", "", "", "0X800A744", "0X800A744", apdq.c(FileBrowserActivity.a(this.a)), 0, "", "", "", "");
     }
-    return -paramInt1;
+    super.onAddColorNote(paramBundle, paramBoolean);
+    ThreadManager.getUIHandler().post(new FileBrowserActivity.FileColorNoteCallback.1(this));
   }
   
-  public int b(CharSequence paramCharSequence, int paramInt1, int paramInt2)
+  public void onDeleteColorNote(int paramInt, String paramString, boolean paramBoolean)
   {
-    paramInt1 = paramInt2 - paramInt1;
-    if (paramInt1 >= 0) {
-      return paramInt1;
-    }
-    return -paramInt1;
+    super.onDeleteColorNote(paramInt, paramString, paramBoolean);
+    ThreadManager.getUIHandler().post(new FileBrowserActivity.FileColorNoteCallback.2(this));
+  }
+  
+  public void onUpdateColorNoteState(int paramInt, String paramString, Bundle paramBundle)
+  {
+    super.onUpdateColorNoteState(paramInt, paramString, paramBundle);
+    ThreadManager.getUIHandler().post(new FileBrowserActivity.FileColorNoteCallback.3(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoqw
  * JD-Core Version:    0.7.0.1
  */

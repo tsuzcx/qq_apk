@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.search.activity;
 
+import ajjy;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.biz.pubaccount.util.PublicAccountConfigUtil;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.mobileqq.search.fragment.PublicAcntSearchFragment;
+import rsp;
 
 public class PublicAcntSearchActivity
   extends BaseSearchActivity
@@ -27,9 +28,9 @@ public class PublicAcntSearchActivity
   protected String a()
   {
     if (d == 12) {
-      return "搜索" + PublicAccountConfigUtil.a(this.app, getApplicationContext());
+      return ajjy.a(2131642955) + rsp.a(this.app, getApplicationContext());
     }
-    return "搜索公众号";
+    return ajjy.a(2131643013);
   }
 }
 

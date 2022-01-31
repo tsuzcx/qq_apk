@@ -1,134 +1,61 @@
-import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
-import com.tencent.component.media.image.ImageKey;
-import com.tencent.component.media.image.ImageTracer;
-import com.tencent.component.media.image.MessageQueueDownloadMultiplexTask;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextPaint;
+import android.widget.Button;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderUgc;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class pmc
-  extends Handler
+  extends ohe
 {
-  public pmc(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public pmc(ComponentHeaderUgc paramComponentHeaderUgc) {}
   
-  public void handleMessage(Message paramMessage)
+  public void b(long paramLong, boolean paramBoolean)
   {
-    Object localObject2;
-    plz localplz;
-    switch (paramMessage.what)
+    int i;
+    if (Looper.getMainLooper() == Looper.myLooper())
     {
-    default: 
-    case 1000: 
-    case 0: 
-    case 1: 
-    case 2: 
-      do
-      {
-        do
-        {
-          return;
-          paramMessage = (MessageQueueDownloadMultiplexTask)paramMessage.obj;
-        } while (MessageQueueDownloadMultiplexTask.a(paramMessage));
-        if (paramMessage.getNextTask() != null)
-        {
-          if (!paramMessage.getImageKey().needDecode()) {
-            ImageTracer.start(paramMessage.getImageKey().url);
-          }
-          paramMessage.getNextTask().excuteTask();
-          return;
-        }
-        paramMessage.setResult(1, new Object[] { paramMessage.getImageKey().url });
-        return;
-        paramMessage = (Object[])paramMessage.obj;
-        localObject1 = (MessageQueueDownloadMultiplexTask)paramMessage[0];
-        localObject2 = MessageQueueDownloadMultiplexTask.a(((MessageQueueDownloadMultiplexTask)localObject1).getImageKey().urlKey);
-        if (localObject2 != null)
-        {
-          localObject2 = ((List)localObject2).iterator();
-          while (((Iterator)localObject2).hasNext())
-          {
-            localplz = (plz)((Iterator)localObject2).next();
-            if (localplz != null) {
-              localplz.setResult(0, new Object[] { paramMessage[1] });
-            }
-          }
-        }
-        ((MessageQueueDownloadMultiplexTask)localObject1).setResult(0, new Object[] { paramMessage[1] });
-        return;
-        paramMessage = (Object[])paramMessage.obj;
-        localObject1 = (MessageQueueDownloadMultiplexTask)paramMessage[0];
-        localObject2 = MessageQueueDownloadMultiplexTask.a(((MessageQueueDownloadMultiplexTask)localObject1).getImageKey().urlKey);
-        if (localObject2 != null)
-        {
-          localObject2 = ((List)localObject2).iterator();
-          while (((Iterator)localObject2).hasNext())
-          {
-            localplz = (plz)((Iterator)localObject2).next();
-            if (localplz != null) {
-              localplz.setResult(1, new Object[] { paramMessage[1] });
-            }
-          }
-        }
-        ((MessageQueueDownloadMultiplexTask)localObject1).setResult(1, new Object[] { paramMessage[1] });
-        return;
-        paramMessage = (Object[])paramMessage.obj;
-        localObject1 = (MessageQueueDownloadMultiplexTask)paramMessage[0];
-      } while ((localObject1 == null) || (((MessageQueueDownloadMultiplexTask)localObject1).getImageKey() == null));
-      localObject2 = MessageQueueDownloadMultiplexTask.a(((MessageQueueDownloadMultiplexTask)localObject1).getImageKey().urlKey);
-      if (localObject2 != null)
-      {
-        localObject2 = ((List)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          localplz = (plz)((Iterator)localObject2).next();
-          if (localplz != null) {
-            localplz.setResult(2, new Object[] { paramMessage[1], paramMessage[2], paramMessage[3] });
-          }
-        }
+      i = 1;
+      if (i != 0) {
+        break label32;
       }
-      ((MessageQueueDownloadMultiplexTask)localObject1).setResult(2, new Object[] { paramMessage[1], paramMessage[2], paramMessage[3] });
-      return;
-    case 11: 
-      paramMessage = (Object[])paramMessage.obj;
-      localObject1 = (MessageQueueDownloadMultiplexTask)paramMessage[0];
-      localObject2 = MessageQueueDownloadMultiplexTask.a(((MessageQueueDownloadMultiplexTask)localObject1).getImageKey().urlKey);
-      if (localObject2 != null)
-      {
-        localObject2 = ((List)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          localplz = (plz)((Iterator)localObject2).next();
-          if (localplz != null) {
-            localplz.setResult(11, new Object[] { paramMessage[1] });
-          }
-        }
-      }
-      ((MessageQueueDownloadMultiplexTask)localObject1).setResult(11, new Object[] { paramMessage[1] });
-      return;
+      QLog.e("ComponentHeaderUgc", 2, "Please call this method in main thread!!!");
     }
-    paramMessage = (MessageQueueDownloadMultiplexTask)((Object[])(Object[])paramMessage.obj)[0];
-    Object localObject1 = MessageQueueDownloadMultiplexTask.a(paramMessage.getImageKey().urlKey);
-    if (localObject1 != null)
+    label32:
+    ArticleInfo localArticleInfo;
+    do
     {
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (plz)((Iterator)localObject1).next();
-        if (localObject2 != null) {
-          ((plz)localObject2).setResult(12, new Object[0]);
-        }
+      return;
+      i = 0;
+      break;
+      if (QLog.isColorLevel()) {
+        QLog.d("ComponentHeaderUgc", 2, "onUpdateAfterAccountFollow uin = " + paramLong + " isFollow = " + paramBoolean);
       }
+      localArticleInfo = this.a.jdField_a_of_type_Pjg.a.a();
+    } while (paramLong != localArticleInfo.mSocialFeedInfo.a.a);
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+      this.a.jdField_a_of_type_AndroidWidgetButton.setText(ajjy.a(2131636500));
+      this.a.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(false);
+      localArticleInfo.mSocialFeedInfo.h = 2;
+      localArticleInfo.isNeedShowBtnWhenFollowed = true;
     }
-    paramMessage.setResult(12, new Object[0]);
+    for (;;)
+    {
+      ohb.a().b();
+      return;
+      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
+      this.a.jdField_a_of_type_AndroidWidgetButton.setText(ajjy.a(2131636505));
+      this.a.jdField_a_of_type_AndroidWidgetButton.getPaint().setFakeBoldText(true);
+      localArticleInfo.mSocialFeedInfo.h = 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pmc
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import java.util.Map;
 public class StrategyBean
   implements Parcelable
 {
-  public static final Parcelable.Creator<StrategyBean> CREATOR = new Parcelable.Creator() {};
+  public static final Parcelable.Creator<StrategyBean> CREATOR = new StrategyBean.1();
   public static String a = "http://rqd.uu.qq.com/rqd/sync";
   public static String b = "http://android.bugly.qq.com/rqd/async";
   public static String c = "http://android.bugly.qq.com/rqd/async";

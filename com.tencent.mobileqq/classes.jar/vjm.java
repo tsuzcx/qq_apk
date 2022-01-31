@@ -1,74 +1,46 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import android.view.LayoutInflater;
+import android.view.LayoutInflater.Factory;
+import java.lang.reflect.Field;
 
 public class vjm
-  implements Runnable
 {
-  public vjm(ReplyTextItemBuilder paramReplyTextItemBuilder, MessageForReplyText paramMessageForReplyText, int paramInt, vjt paramvjt) {}
-  
-  public void run()
+  public static void a(@NonNull LayoutInflater paramLayoutInflater, @NonNull LayoutInflater.Factory paramFactory)
   {
-    int i = 0;
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.a.a().c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.mSourceMsgInfo.mSourceMsgSeq);
-    ArrayList localArrayList;
-    if ((localMessageRecord == null) && (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.mHasPullHistorySourceMsg))
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.mHasPullHistorySourceMsg = true;
-      Bundle localBundle = new Bundle();
-      QQMessageFacade localQQMessageFacade = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.a.a();
-      localArrayList = new ArrayList();
-      int j = localQQMessageFacade.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
-      localBundle.putInt("counter", j);
-      localBundle.putBoolean("success", false);
-      localQQMessageFacade.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(j), localArrayList);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemReplyTextItemBuilder.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.mSourceMsgInfo.mSourceMsgSeq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.mSourceMsgInfo.mSourceMsgSeq, true, localBundle, 0);
-      localQQMessageFacade.b.put(MsgProxyUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.istroop), Boolean.valueOf(false));
-      if (!NetworkUtil.g(BaseApplication.getContext())) {}
+      paramLayoutInflater.setFactory(paramFactory);
+      return;
     }
-    label332:
-    for (;;)
+    catch (IllegalStateException localIllegalStateException)
     {
+      vjo.c("LayoutModifier", "LayoutInflater.setFactory IllegalStateException " + localIllegalStateException);
       try
       {
-        localArrayList.wait(35000L);
-        if ((localArrayList.size() <= 0) || (i >= localArrayList.size())) {
-          break label332;
-        }
-        if (((MessageRecord)localArrayList.get(i)).shmsgseq == this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.mSourceMsgInfo.mSourceMsgSeq)
+        Field localField1 = LayoutInflater.class.getDeclaredField("mFactory");
+        localField1.setAccessible(true);
+        Field localField2 = LayoutInflater.class.getDeclaredField("mFactory2");
+        localField2.setAccessible(true);
+        localField1.set(paramLayoutInflater, paramFactory);
+        localField2.set(paramLayoutInflater, paramFactory);
+        if ((paramLayoutInflater.getFactory() == paramFactory) && (paramLayoutInflater.getFactory2() == paramFactory))
         {
-          localMessageRecord = (MessageRecord)localArrayList.get(i);
-          ThreadManager.getUIHandler().post(new vjn(this, localMessageRecord));
+          vjo.b("LayoutModifier", "hookLayoutInflaterFactory success");
           return;
         }
       }
-      catch (InterruptedException localInterruptedException)
+      catch (Exception paramLayoutInflater)
       {
-        localInterruptedException.printStackTrace();
-        continue;
+        vjo.d("LayoutModifier", "hook setFactory " + paramLayoutInflater);
+        return;
       }
-      finally {}
-      i += 1;
+      vjo.b("LayoutModifier", "hookLayoutInflaterFactory failed");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vjm
  * JD-Core Version:    0.7.0.1
  */

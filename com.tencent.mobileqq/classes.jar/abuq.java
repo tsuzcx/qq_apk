@@ -1,69 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardListActivity;
-import com.tencent.mobileqq.businessCard.views.BusinessCardView;
-import com.tencent.mobileqq.widget.IndexView;
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
 
 public class abuq
-  extends Handler
+  implements alot
 {
-  public abuq(BusinessCardListActivity paramBusinessCardListActivity) {}
+  public abuq(TextPreviewActivity paramTextPreviewActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(alou paramalou)
   {
-    ??? = (Object[])paramMessage.obj;
-    HashMap localHashMap;
-    Long localLong;
-    boolean bool2;
-    if ((??? != null) && (???.length == 4))
-    {
-      paramMessage = (ArrayList)???[0];
-      localHashMap = (HashMap)???[1];
-      localLong = (Long)???[2];
-      bool2 = ((Boolean)???[3]).booleanValue();
+    this.a.jdField_a_of_type_Alou = paramalou;
+    if (this.a.i != 0) {
+      paramalou.a(this.a.i);
     }
-    label200:
-    label213:
-    for (;;)
-    {
-      boolean bool1;
-      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
-      {
-        this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-        this.a.jdField_a_of_type_JavaUtilArrayList.addAll(paramMessage);
-        this.a.jdField_a_of_type_JavaUtilHashMap = localHashMap;
-        this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsBusinessCardView.invalidate();
-        if (localLong.longValue() == 0L)
-        {
-          bool1 = true;
-          break label200;
-          this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsBusinessCardView.a(bool1);
-          if ((this.a.jdField_a_of_type_Int == 1) && (this.a.jdField_a_of_type_JavaUtilArrayList.size() != 0))
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setVisibility(0);
-            return;
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setVisibility(8);
-        }
-      }
-      for (;;)
-      {
-        if (!bool2) {
-          break label213;
-        }
-        bool1 = true;
-        break;
-        return;
-        bool1 = false;
-      }
-    }
+    this.a.i = paramalou.a(1, this.a.e, 3, this.a.jdField_a_of_type_Alor);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abuq
  * JD-Core Version:    0.7.0.1
  */

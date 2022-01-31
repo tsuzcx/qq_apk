@@ -13,8 +13,8 @@ import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.View.MeasureSpec;
+import bacc;
 import com.tencent.mobileqq.R.styleable;
-import com.tencent.mobileqq.utils.DisplayUtils;
 
 public class SimpleTextView
   extends View
@@ -41,7 +41,7 @@ public class SimpleTextView
     if (paramAttributeSet != null)
     {
       paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.SimpleTextView);
-      paramInt = paramAttributeSet.getDimensionPixelSize(0, (int)DisplayUtils.a(paramContext, 12.0F));
+      paramInt = paramAttributeSet.getDimensionPixelSize(0, (int)bacc.a(paramContext, 12.0F));
       localObject = paramAttributeSet.getColorStateList(1);
       paramContext = paramAttributeSet.getString(2);
       this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramInt);
@@ -173,7 +173,7 @@ public class SimpleTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.SimpleTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,31 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
 
 public class ancz
-  implements Runnable
+  extends DataSetObserver
 {
-  public ancz(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
+  public ancz(DragSortListView paramDragSortListView) {}
   
-  public void run()
+  private void a()
   {
-    RemoteHandleManager.a().a().b();
+    if (this.a.g == 4) {
+      this.a.a();
+    }
+  }
+  
+  public void onChanged()
+  {
+    a();
+  }
+  
+  public void onInvalidated()
+  {
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ancz
  * JD-Core Version:    0.7.0.1
  */

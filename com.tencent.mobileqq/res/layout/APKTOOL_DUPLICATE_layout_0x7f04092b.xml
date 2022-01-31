@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2895" android:layout_width="320.0dip" android:layout_height="390.0dip" android:layout_centerInParent="true">
-        <TextView android:textColor="#ff808080" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2893" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="加载中..." android:layout_centerInParent="true" />
-        <Button android:textSize="18.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2894" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0218e8" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="16.0dip" android:text="下载微视" android:layout_alignParentBottom="true" />
-    </RelativeLayout>
-    <TextView android:textSize="17.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0498" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2896" android:padding="2.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginTop="20.0dip" android:text="@string/cancel" android:shadowColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0032" android:shadowRadius="3.0" android:layout_alignParentLeft="true" />
-</merge>

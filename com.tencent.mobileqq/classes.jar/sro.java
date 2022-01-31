@@ -1,74 +1,56 @@
-import com.tencent.mobileqq.activity.FavEmosmManageActivity;
-import com.tencent.mobileqq.emosm.favroaming.FavEmoConstant;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager.FavEmotionDataInPanelCallback;
-import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.QimVideoInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 
 public class sro
-  implements FavroamingDBManager.FavEmotionDataInPanelCallback
 {
-  public sro(FavEmosmManageActivity paramFavEmosmManageActivity) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void a(List paramList)
+  public sro(qqstory_struct.QimVideoInfo paramQimVideoInfo)
   {
-    List localList2 = paramList;
-    if (paramList != null) {
-      localList1 = paramList;
+    this.a = paramQimVideoInfo.qim_unionid.get().toStringUtf8();
+    this.b = paramQimVideoInfo.qim_feedID.get().toStringUtf8();
+    this.c = paramQimVideoInfo.qim_vid.get().toStringUtf8();
+  }
+  
+  public static sro a(byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
+      return null;
     }
+    qqstory_struct.QimVideoInfo localQimVideoInfo = new qqstory_struct.QimVideoInfo();
     try
     {
-      Collections.reverse(paramList);
-      localList2 = paramList;
-      localList1 = paramList;
-      if (paramList.size() > FavEmoConstant.b)
-      {
-        localList1 = paramList;
-        int i = paramList.size() - FavEmoConstant.b;
-        localList1 = paramList;
-        paramList = paramList.subList(i, paramList.size());
-        localList2 = paramList;
-        localList1 = paramList;
-        if (QLog.isColorLevel())
-        {
-          localList1 = paramList;
-          QLog.d("FavEmoRoamingHandler", 2, "fav emoticon overflow size" + i);
-          localList2 = paramList;
-        }
-      }
-      paramList = localList2;
+      localQimVideoInfo.mergeFrom(paramArrayOfByte);
+      return new sro(localQimVideoInfo);
     }
-    catch (UnsupportedOperationException paramList)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("FavEmoRoamingHandler", 2, paramList.getMessage());
-        }
-        paramList = localList1;
-      }
+      urk.c("QimVideoInfoItem", "Error: parse db bytes error.", paramArrayOfByte);
     }
-    if (paramList == null)
-    {
-      paramList = new ArrayList();
-      if (paramList.size() >= FavEmoConstant.a) {
-        ReportController.b(this.a.app, "CliOper", "", "", "0X8005CFA", "0X8005CFA", 0, 0, "", "", "", "");
-      }
-      if (paramList.size() >= FavEmoConstant.b) {
-        ReportController.b(this.a.app, "CliOper", "", "", "0X8005CFB", "0X8005CFB", 0, 0, "", "", "", "");
-      }
-      paramList.add(0, new EmoticonInfo());
-      this.a.a(paramList);
-      return;
-    }
+    return null;
+  }
+  
+  public byte[] a()
+  {
+    qqstory_struct.QimVideoInfo localQimVideoInfo = new qqstory_struct.QimVideoInfo();
+    localQimVideoInfo.qim_vid.set(ByteStringMicro.copyFromUtf8(this.c));
+    localQimVideoInfo.qim_unionid.set(ByteStringMicro.copyFromUtf8(this.a));
+    localQimVideoInfo.qim_feedID.set(ByteStringMicro.copyFromUtf8(this.b));
+    return localQimVideoInfo.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "QimVideoInfoItem{mOwnerUnionId='" + this.a + '\'' + ", mFeedId='" + this.b + '\'' + ", mVid='" + this.c + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sro
  * JD-Core Version:    0.7.0.1
  */

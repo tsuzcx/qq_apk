@@ -1,32 +1,24 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.ContainerDrawable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.MobileQQ;
 
-public class aomi
-  extends Property
+class aomi
+  implements apem
 {
-  public aomi(ContainerDrawable paramContainerDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  aomi(aome paramaome) {}
   
-  public Integer a(ContainerDrawable paramContainerDrawable)
+  public void a(String paramString, long paramLong)
   {
-    if (paramContainerDrawable != null) {
-      return Integer.valueOf(ContainerDrawable.a(paramContainerDrawable));
+    if (apei.a(paramString))
+    {
+      awrm.a(this.a.a.getApplication().getApplicationContext(), this.a.a.getCurrentAccountUin(), "Stop_download_2-2_3-0");
+      return;
     }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(ContainerDrawable paramContainerDrawable, Integer paramInteger)
-  {
-    if (paramContainerDrawable != null) {
-      ContainerDrawable.a(paramContainerDrawable, paramInteger.intValue());
-    }
+    awrm.a(this.a.a.getApplication().getApplicationContext(), this.a.a.getCurrentAccountUin(), "Stop_download_2-2_3-1");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aomi
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,12 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_service$ReqJoinShareGroup
-  extends MessageMicro
+  extends MessageMicro<ReqJoinShareGroup>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field exit_src = PBField.initUInt32(0);
   public final PBBytesField group_id = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField member_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> member_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBUInt32Field oper_type = PBField.initUInt32(0);
   public final PBUInt32Field source = PBField.initUInt32(0);
   
@@ -27,7 +27,7 @@ public final class qqstory_service$ReqJoinShareGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqJoinShareGroup
  * JD-Core Version:    0.7.0.1
  */

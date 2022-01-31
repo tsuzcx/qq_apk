@@ -1,20 +1,41 @@
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
 
 public class uqo
-  implements Runnable
+  extends vpv
 {
-  public uqo(MediaPlayerManager paramMediaPlayerManager, boolean paramBoolean) {}
+  private final String a;
   
-  public void run()
+  public uqo(Context paramContext, String paramString)
   {
-    if (MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager, this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager.d();
-    }
+    super(paramContext);
+    this.a = paramString;
+  }
+  
+  public int a()
+  {
+    return 0;
+  }
+  
+  public View a(int paramInt, unw paramunw, ViewGroup paramViewGroup)
+  {
+    return null;
+  }
+  
+  public String a()
+  {
+    return this.a;
+  }
+  
+  public unw a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uqo
  * JD-Core Version:    0.7.0.1
  */

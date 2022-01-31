@@ -1,27 +1,41 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.InputMethodUtil;
+import com.tencent.mobileqq.app.CoreService;
+import com.tencent.mobileqq.app.GuardManager;
 
 public class ajoi
-  implements Runnable
+  extends ajjx
 {
-  public ajoi(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
-  
-  public void run()
+  protected void a()
   {
-    EditText localEditText = PublishHomeWorkFragment.a(this.a, PublishHomeWorkFragment.a(this.a));
-    if (QLog.isColorLevel()) {
-      QLog.d("PublishHomeWorkFragment", 2, "弹起键盘");
+    super.a();
+    if (this.d >= ajjv.a().a / 12000L)
+    {
+      CoreService.stopTempService();
+      this.a.c();
+      this.d = 0L;
     }
-    if (localEditText != null) {
-      InputMethodUtil.a(localEditText);
+  }
+  
+  protected void a(String paramString)
+  {
+    GuardManager localGuardManager = this.a;
+    if ("com.tencent.mobileqq".equals(paramString)) {}
+    for (int i = 2;; i = 3)
+    {
+      localGuardManager.a(i, paramString);
+      return;
     }
+  }
+  
+  protected void b(String paramString)
+  {
+    super.b(paramString);
+    this.a.b();
+    CoreService.startTempService();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajoi
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Roam$RoamReqHead
-  extends MessageMicro
+  extends MessageMicro<RoamReqHead>
 {
   public static final int CLIENT_PLAT_ID_FIELD_NUMBER = 2;
   public static final int CLIENT_VER_FIELD_NUMBER = 3;

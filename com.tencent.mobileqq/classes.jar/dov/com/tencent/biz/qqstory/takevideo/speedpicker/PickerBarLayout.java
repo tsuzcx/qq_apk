@@ -8,28 +8,30 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import aomv;
-import aonf;
-import aong;
-import aonh;
+import biwc;
+import biwn;
+import biwt;
+import biwz;
+import bixb;
 import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PickerBarLayout
   extends RelativeLayout
-  implements aomv, aonf
+  implements biwn, biwz
 {
   private float jdField_a_of_type_Float = 38.0F;
   private int jdField_a_of_type_Int = -1;
   private View jdField_a_of_type_AndroidViewView;
-  private aong jdField_a_of_type_Aong;
-  private GroundDrawable jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable;
-  private MarkDrawable jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable;
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
-  public boolean a;
+  private biwc jdField_a_of_type_Biwc;
+  private biwt jdField_a_of_type_Biwt;
+  private PickerBarLayout.CheckForLongPress jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout$CheckForLongPress;
+  private WeakReference<bixb> jdField_a_of_type_JavaLangRefWeakReference;
+  private List<String> jdField_a_of_type_JavaUtilList = new ArrayList();
+  boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float = 50.0F;
   private int jdField_b_of_type_Int;
   private View jdField_b_of_type_AndroidViewView;
@@ -88,9 +90,9 @@ public class PickerBarLayout
   {
     if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size()) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
     {
-      aonh localaonh = (aonh)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localaonh != null) {
-        localaonh.a(paramInt, (String)this.jdField_a_of_type_JavaUtilList.get(paramInt), paramBoolean1, paramBoolean2);
+      bixb localbixb = (bixb)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbixb != null) {
+        localbixb.a(paramInt, (String)this.jdField_a_of_type_JavaUtilList.get(paramInt), paramBoolean1, paramBoolean2);
       }
     }
   }
@@ -115,8 +117,8 @@ public class PickerBarLayout
   
   private int b(float paramFloat)
   {
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable != null) {
-      return this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.a(paramFloat);
+    if (this.jdField_a_of_type_Biwc != null) {
+      return this.jdField_a_of_type_Biwc.a(paramFloat);
     }
     return -1;
   }
@@ -124,9 +126,9 @@ public class PickerBarLayout
   private void b()
   {
     this.jdField_a_of_type_AndroidViewView = new View(getContext());
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable = new MarkDrawable();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.a(getContext(), 2130838864, 2130838862, 2130838878, this);
-    this.jdField_a_of_type_AndroidViewView.setBackground(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable);
+    this.jdField_a_of_type_Biwt = new biwt();
+    this.jdField_a_of_type_Biwt.a(getContext(), 2130839315, 2130839314, 2130839316, this);
+    this.jdField_a_of_type_AndroidViewView.setBackground(this.jdField_a_of_type_Biwt);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(Math.round(this.d), Math.round(this.e));
     localLayoutParams.addRule(11);
     localLayoutParams.setMargins(0, 0, Math.round(this.h), 0);
@@ -135,11 +137,11 @@ public class PickerBarLayout
   
   private void b(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    aonh localaonh;
+    bixb localbixb;
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      localaonh = (aonh)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localaonh != null)
+      localbixb = (bixb)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localbixb != null)
       {
         if (!paramBoolean1) {
           break label50;
@@ -147,29 +149,29 @@ public class PickerBarLayout
         if (!paramBoolean2) {
           break label41;
         }
-        localaonh.a(paramInt);
+        localbixb.a(paramInt);
       }
     }
     return;
     label41:
-    localaonh.b(paramInt);
+    localbixb.b(paramInt);
     return;
     label50:
     if (paramBoolean2)
     {
-      localaonh.c(paramInt);
+      localbixb.c(paramInt);
       return;
     }
-    localaonh.d(paramInt);
+    localbixb.d(paramInt);
   }
   
   private void c()
   {
     this.jdField_b_of_type_AndroidViewView = new View(getContext());
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable = new GroundDrawable();
+    this.jdField_a_of_type_Biwc = new biwc();
     float f1 = a();
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.a(getContext(), this.jdField_a_of_type_JavaUtilList.size(), (Math.round(this.jdField_b_of_type_Float) - this.jdField_a_of_type_Float) / 2.0F + f1, (Math.round(this.jdField_b_of_type_Float) - this.jdField_a_of_type_Float) / 2.0F - f1, this);
-    this.jdField_b_of_type_AndroidViewView.setBackground(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable);
+    this.jdField_a_of_type_Biwc.a(getContext(), this.jdField_a_of_type_JavaUtilList.size(), (Math.round(this.jdField_b_of_type_Float) - this.jdField_a_of_type_Float) / 2.0F + f1, (Math.round(this.jdField_b_of_type_Float) - this.jdField_a_of_type_Float) / 2.0F - f1, this);
+    this.jdField_b_of_type_AndroidViewView.setBackground(this.jdField_a_of_type_Biwc);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(Math.round(this.jdField_b_of_type_Float), -1);
     localLayoutParams.addRule(11);
     localLayoutParams.setMargins(0, 0, Math.round(this.c), 0);
@@ -205,27 +207,32 @@ public class PickerBarLayout
     }
   }
   
+  public int a()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
   public void a()
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable != null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.stop();
+    if (this.jdField_a_of_type_Biwc != null) {
+      this.jdField_a_of_type_Biwc.stop();
     }
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable != null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.stop();
+    if (this.jdField_a_of_type_Biwt != null) {
+      this.jdField_a_of_type_Biwt.stop();
     }
     this.jdField_a_of_type_JavaUtilList.clear();
     this.jdField_a_of_type_AndroidViewView = null;
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable != null)
+    if (this.jdField_a_of_type_Biwt != null)
     {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.a();
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable = null;
+      this.jdField_a_of_type_Biwt.a();
+      this.jdField_a_of_type_Biwt = null;
     }
     this.jdField_b_of_type_AndroidViewView = null;
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable != null)
+    if (this.jdField_a_of_type_Biwc != null)
     {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.a();
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable = null;
+      this.jdField_a_of_type_Biwc.a();
+      this.jdField_a_of_type_Biwc = null;
     }
     this.jdField_a_of_type_Int = -1;
   }
@@ -240,24 +247,24 @@ public class PickerBarLayout
     a(this.jdField_b_of_type_Int, true, false);
     int k;
     int m;
-    if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable != null) && (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable != null))
+    if ((this.jdField_a_of_type_Biwt != null) && (this.jdField_a_of_type_Biwc != null))
     {
-      k = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.a();
-      boolean bool1 = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.isRunning();
-      m = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.a();
-      boolean bool2 = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.isRunning();
+      k = this.jdField_a_of_type_Biwt.a();
+      boolean bool1 = this.jdField_a_of_type_Biwt.isRunning();
+      m = this.jdField_a_of_type_Biwc.a();
+      boolean bool2 = this.jdField_a_of_type_Biwc.isRunning();
       if (QLog.isColorLevel()) {
         QLog.d("PickerBarLayout", 2, "drawable state, markdrawble:" + k + " isrun:" + bool1 + "  groundrawable:" + m + " isrun:" + bool2);
       }
       if ((k != 1) || (m != 0)) {
         break label223;
       }
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.stop();
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.a(6);
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.start();
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.stop();
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.a(1);
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.start();
+      this.jdField_a_of_type_Biwt.stop();
+      this.jdField_a_of_type_Biwt.a(6);
+      this.jdField_a_of_type_Biwt.start();
+      this.jdField_a_of_type_Biwc.stop();
+      this.jdField_a_of_type_Biwc.a(1);
+      this.jdField_a_of_type_Biwc.start();
     }
     label223:
     do
@@ -265,33 +272,33 @@ public class PickerBarLayout
       return;
       if (k == 4)
       {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.stop();
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.a(2);
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.start();
+        this.jdField_a_of_type_Biwt.stop();
+        this.jdField_a_of_type_Biwt.a(2);
+        this.jdField_a_of_type_Biwt.start();
         return;
       }
       if (m == 3)
       {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.stop();
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.a(1);
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.start();
+        this.jdField_a_of_type_Biwc.stop();
+        this.jdField_a_of_type_Biwc.a(1);
+        this.jdField_a_of_type_Biwc.start();
         return;
       }
       if (k == 5)
       {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.stop();
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.a(6);
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.start();
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.stop();
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.a(1);
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.start();
+        this.jdField_a_of_type_Biwt.stop();
+        this.jdField_a_of_type_Biwt.a(6);
+        this.jdField_a_of_type_Biwt.start();
+        this.jdField_a_of_type_Biwc.stop();
+        this.jdField_a_of_type_Biwc.a(1);
+        this.jdField_a_of_type_Biwc.start();
         return;
       }
       if (m == 4)
       {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.stop();
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.a(1);
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.start();
+        this.jdField_a_of_type_Biwc.stop();
+        this.jdField_a_of_type_Biwc.a(1);
+        this.jdField_a_of_type_Biwc.start();
         return;
       }
     } while (!QLog.isColorLevel());
@@ -305,27 +312,27 @@ public class PickerBarLayout
     {
       b(paramInt, true, true);
       return;
-      if ((paramInt != 4) && (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable != null)) {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.stop();
+      if ((paramInt != 4) && (this.jdField_a_of_type_Biwt != null)) {
+        this.jdField_a_of_type_Biwt.stop();
       }
     }
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt1 != 4) || (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable == null) || (paramInt3 == 0)) {}
+    if ((paramInt1 != 4) || (this.jdField_a_of_type_Biwc == null) || (paramInt3 == 0)) {}
     RectF localRectF;
     do
     {
       return;
-      localRectF = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.a(this.j);
+      localRectF = this.jdField_a_of_type_Biwc.a(this.j);
     } while (localRectF == null);
     c((localRectF.centerY() - this.j + this.i) * (paramInt2 + 1) / paramInt3 + (this.j - this.i));
   }
   
   public void a(int paramInt1, int paramInt2, RectF paramRectF)
   {
-    if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable != null) && (paramRectF != null)) {
+    if ((this.jdField_a_of_type_Biwc != null) && (paramRectF != null)) {
       c(paramRectF.centerY());
     }
   }
@@ -341,22 +348,27 @@ public class PickerBarLayout
   {
     this.jdField_b_of_type_Int = paramInt;
     setMarkText(this.jdField_b_of_type_Int);
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable != null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.a(this.jdField_b_of_type_Int, true, paramBoolean);
+    if (this.jdField_a_of_type_Biwc != null) {
+      this.jdField_a_of_type_Biwc.a(this.jdField_b_of_type_Int, true, paramBoolean);
     }
     invalidate();
   }
   
-  public boolean a(Context paramContext, aonh paramaonh)
+  public boolean a(EditVideoParams paramEditVideoParams, Context paramContext, bixb parambixb)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaonh);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(parambixb);
     a(paramContext);
     this.jdField_a_of_type_JavaUtilList.add("4x");
     this.jdField_a_of_type_JavaUtilList.add("2x");
     this.jdField_a_of_type_JavaUtilList.add("1x");
-    this.jdField_a_of_type_JavaUtilList.add("1/2");
-    this.jdField_a_of_type_JavaUtilList.add("1/4");
-    this.jdField_a_of_type_JavaUtilList.add("倒播");
+    if (paramEditVideoParams.h())
+    {
+      this.jdField_a_of_type_JavaUtilList.add("1/2");
+      this.jdField_a_of_type_JavaUtilList.add("1/4");
+    }
+    if (paramEditVideoParams.g()) {
+      this.jdField_a_of_type_JavaUtilList.add(PickerContainer.a);
+    }
     c();
     b();
     return true;
@@ -374,22 +386,22 @@ public class PickerBarLayout
     }
     a(this.jdField_b_of_type_Int, false, true);
     int m;
-    if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable != null) && (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable != null))
+    if ((this.jdField_a_of_type_Biwt != null) && (this.jdField_a_of_type_Biwc != null))
     {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.a(this.jdField_b_of_type_Int, false, false);
-      k = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.a();
-      boolean bool1 = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.isRunning();
-      m = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.a();
-      boolean bool2 = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.isRunning();
+      this.jdField_a_of_type_Biwc.a(this.jdField_b_of_type_Int, false, false);
+      k = this.jdField_a_of_type_Biwt.a();
+      boolean bool1 = this.jdField_a_of_type_Biwt.isRunning();
+      m = this.jdField_a_of_type_Biwc.a();
+      boolean bool2 = this.jdField_a_of_type_Biwc.isRunning();
       if (QLog.isColorLevel()) {
         QLog.d("PickerBarLayout", 2, "drawable state, markdrawble:" + k + " isrun:" + bool1 + "  groundrawable:" + m + " isrun:" + bool2);
       }
       if ((k != 3) || (m != 2)) {
         break label228;
       }
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.stop();
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.a(4);
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.start();
+      this.jdField_a_of_type_Biwt.stop();
+      this.jdField_a_of_type_Biwt.a(4);
+      this.jdField_a_of_type_Biwt.start();
     }
     label228:
     do
@@ -397,16 +409,16 @@ public class PickerBarLayout
       return;
       if (m == 1)
       {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.stop();
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.a(3);
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.start();
+        this.jdField_a_of_type_Biwc.stop();
+        this.jdField_a_of_type_Biwc.a(3);
+        this.jdField_a_of_type_Biwc.start();
         return;
       }
       if (k == 2)
       {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.stop();
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.a(4);
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.start();
+        this.jdField_a_of_type_Biwt.stop();
+        this.jdField_a_of_type_Biwt.a(4);
+        this.jdField_a_of_type_Biwt.start();
         return;
       }
     } while (!QLog.isColorLevel());
@@ -420,15 +432,15 @@ public class PickerBarLayout
       if (this.jdField_a_of_type_AndroidViewView != null) {
         this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       }
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.a(this.j) != null) {
+      if (this.jdField_a_of_type_Biwc.a(this.j) != null) {
         c(this.j - this.i);
       }
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable != null)
+      if (this.jdField_a_of_type_Biwt != null)
       {
         setMarkText(this.jdField_b_of_type_Int);
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.stop();
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.a(2);
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.start();
+        this.jdField_a_of_type_Biwt.stop();
+        this.jdField_a_of_type_Biwt.a(2);
+        this.jdField_a_of_type_Biwt.start();
       }
     }
     for (;;)
@@ -437,9 +449,9 @@ public class PickerBarLayout
       return;
       if (paramInt == 3)
       {
-        if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable != null)
+        if (this.jdField_a_of_type_Biwc != null)
         {
-          RectF localRectF = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.a();
+          RectF localRectF = this.jdField_a_of_type_Biwc.a();
           if (localRectF != null) {
             c(localRectF.centerY());
           }
@@ -447,26 +459,26 @@ public class PickerBarLayout
         if (this.jdField_a_of_type_AndroidViewView != null) {
           this.jdField_a_of_type_AndroidViewView.setVisibility(0);
         }
-        if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable != null)
+        if (this.jdField_a_of_type_Biwt != null)
         {
-          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.stop();
-          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.a(5);
-          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.start();
+          this.jdField_a_of_type_Biwt.stop();
+          this.jdField_a_of_type_Biwt.a(5);
+          this.jdField_a_of_type_Biwt.start();
         }
       }
-      else if ((paramInt != 4) && (paramInt == 0) && (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable != null))
+      else if ((paramInt != 4) && (paramInt == 0) && (this.jdField_a_of_type_Biwt != null))
       {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.stop();
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.a(1);
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.start();
+        this.jdField_a_of_type_Biwt.stop();
+        this.jdField_a_of_type_Biwt.a(1);
+        this.jdField_a_of_type_Biwt.start();
       }
     }
   }
   
   public void c(int paramInt)
   {
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable != null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.stop();
+    if (this.jdField_a_of_type_Biwt != null) {
+      this.jdField_a_of_type_Biwt.stop();
     }
   }
   
@@ -484,11 +496,11 @@ public class PickerBarLayout
       return;
       if (paramInt == 4)
       {
-        if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable != null)
+        if (this.jdField_a_of_type_Biwc != null)
         {
-          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.stop();
-          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.a(3);
-          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.start();
+          this.jdField_a_of_type_Biwc.stop();
+          this.jdField_a_of_type_Biwc.a(3);
+          this.jdField_a_of_type_Biwc.start();
         }
       }
       else if (paramInt == 6) {
@@ -513,11 +525,11 @@ public class PickerBarLayout
       }
       this.j = paramMotionEvent.getY();
       this.jdField_a_of_type_Boolean = false;
-      if (this.jdField_a_of_type_Aong == null) {
-        this.jdField_a_of_type_Aong = new aong(this);
+      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout$CheckForLongPress == null) {
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout$CheckForLongPress = new PickerBarLayout.CheckForLongPress(this);
       }
-      this.jdField_a_of_type_Aong.a();
-      postDelayed(this.jdField_a_of_type_Aong, ViewConfiguration.getLongPressTimeout());
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout$CheckForLongPress.a();
+      postDelayed(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout$CheckForLongPress, ViewConfiguration.getLongPressTimeout());
       continue;
       int k = paramMotionEvent.findPointerIndex(this.jdField_a_of_type_Int);
       if (k != -1)
@@ -538,13 +550,13 @@ public class PickerBarLayout
             if (this.jdField_a_of_type_Boolean) {
               break label270;
             }
-            if (this.jdField_a_of_type_Aong != null) {
-              removeCallbacks(this.jdField_a_of_type_Aong);
+            if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout$CheckForLongPress != null) {
+              removeCallbacks(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBarLayout$CheckForLongPress);
             }
-            if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable == null) {
+            if (this.jdField_a_of_type_Biwc == null) {
               break;
             }
-            paramMotionEvent = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerGroundDrawable.a(f1);
+            paramMotionEvent = this.jdField_a_of_type_Biwc.a(f1);
             if (paramMotionEvent == null) {
               break;
             }
@@ -573,10 +585,10 @@ public class PickerBarLayout
   public void setMarkText(int paramInt)
   {
     if ((paramInt < 0) || (paramInt > this.jdField_a_of_type_JavaUtilList.size())) {}
-    while (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable == null) {
+    while (this.jdField_a_of_type_Biwt == null) {
       return;
     }
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerMarkDrawable.a((String)this.jdField_a_of_type_JavaUtilList.get(paramInt));
+    this.jdField_a_of_type_Biwt.a((String)this.jdField_a_of_type_JavaUtilList.get(paramInt));
   }
 }
 

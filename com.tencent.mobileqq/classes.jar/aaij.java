@@ -1,26 +1,17 @@
-import android.opengl.GLES20;
-import com.tencent.mobileqq.ar.ARVideoUtil;
-import com.tencent.mobileqq.ar.keying.KeyingBase.UserInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
 
-class aaij
-  implements KeyingBase.UserInterface
+public class aaij
+  implements DialogInterface.OnClickListener
 {
-  aaij(aaii paramaaii) {}
+  public aaij(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
   
-  public void a()
-  {
-    GLES20.glUniform1i(aaii.a(this.a), aaii.b(this.a));
-  }
-  
-  public void a(int paramInt)
-  {
-    aaii.a(this.a, GLES20.glGetUniformLocation(paramInt, "uDisplayType"));
-    ARVideoUtil.a("glGetUniformLocation uDisplayType");
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaij
  * JD-Core Version:    0.7.0.1
  */

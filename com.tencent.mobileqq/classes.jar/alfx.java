@@ -1,34 +1,23 @@
-import android.graphics.Bitmap;
-import com.tencent.image.SafeBitmapFactory;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.ark.browser.ArkBrowserFragment;
 
-class alfx
-  implements ImageAssetDelegate
+public class alfx
+  implements bbbz
 {
-  alfx(alfw paramalfw) {}
+  public alfx(ArkBrowserFragment paramArkBrowserFragment) {}
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public void a(String paramString)
   {
-    paramLottieImageAsset = this.a.a + paramLottieImageAsset.getFileName();
-    QLog.i("WorldCupShareFragment", 1, "initLoadingAnimation. fetchBitmap. imageFileName = " + paramLottieImageAsset);
-    try
-    {
-      paramLottieImageAsset = SafeBitmapFactory.decodeFile(paramLottieImageAsset);
-      if (paramLottieImageAsset != null) {}
-      return paramLottieImageAsset;
+    this.a.a = paramString;
+    paramString = this.a.getWebView();
+    if (paramString != null) {
+      paramString.callJs("NativeApi.lightappGetShareData();");
     }
-    catch (Exception paramLottieImageAsset)
-    {
-      QLog.i("WorldCupShareFragment", 2, "initLoadingAnimation failed. err = " + paramLottieImageAsset.getMessage());
-    }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alfx
  * JD-Core Version:    0.7.0.1
  */

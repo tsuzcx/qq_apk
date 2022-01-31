@@ -1,64 +1,146 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
+import android.text.TextUtils;
+import com.tencent.util.Pair;
 
 public class mgc
-  extends OrientationEventListener
 {
-  public mgc(VideoFeedsListView paramVideoFeedsListView, Context paramContext, int paramInt)
+  public static Pair<Integer, Integer> a(int paramInt1, int paramInt2)
   {
-    super(paramContext, paramInt);
+    int j = 1;
+    switch (paramInt2)
+    {
+    default: 
+      return null;
+    }
+    for (int i = 1;; i = 2)
+    {
+      paramInt2 = j;
+      switch (paramInt1)
+      {
+      default: 
+        return null;
+      }
+    }
+    paramInt2 = 2;
+    for (;;)
+    {
+      return new Pair(Integer.valueOf(paramInt2), Integer.valueOf(i));
+      paramInt2 = 3;
+      continue;
+      paramInt2 = 4;
+      continue;
+      paramInt2 = 5;
+      continue;
+      paramInt2 = 7;
+    }
   }
   
-  public void onOrientationChanged(int paramInt)
+  public static void a()
   {
-    if (VideoFeedsListView.a(this.a)) {}
-    label10:
-    do
+    mga.b("0X800A2B9");
+  }
+  
+  public static void a(int paramInt)
+  {
+    String str;
+    switch (paramInt)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                break label10;
-                break label10;
-                break label10;
-                break label10;
-                do
-                {
-                  return;
-                } while ((!VideoFeedsListView.b(this.a)) || (!VideoFeedsListView.c(this.a)) || (VideoFeedsListView.a(this.a) == 1) || (!VideoFeedsListView.a(this.a, paramInt)) || (!VideoFeedsListView.d(this.a)));
-                if ((paramInt < 0) || ((paramInt > 30) && (paramInt < 330))) {
-                  break;
-                }
-              } while ((VideoFeedsListView.b(this.a) != -1) && (VideoFeedsListView.b(this.a) != 0));
-              VideoFeedsListView.a(this.a, -1);
-            } while (VideoFeedsListView.c(this.a) == 0);
-            this.a.c(true);
-            return;
-            if ((paramInt < 70) || (paramInt > 110)) {
-              break;
-            }
-          } while ((VideoFeedsListView.b(this.a) != -1) && (VideoFeedsListView.b(this.a) != 2));
-          VideoFeedsListView.a(this.a, -1);
-        } while (VideoFeedsListView.c(this.a) == 2);
-        VideoFeedsListView.a(this.a, 2, true);
-        return;
-      } while ((paramInt < 250) || (paramInt > 290) || ((VideoFeedsListView.b(this.a) != -1) && (VideoFeedsListView.b(this.a) != 1)));
-      VideoFeedsListView.a(this.a, -1);
-    } while (VideoFeedsListView.c(this.a) == 1);
-    VideoFeedsListView.a(this.a, 1, true);
+    case 1: 
+    case 2: 
+    default: 
+      return;
+    case 4: 
+      str = "0X800A2BF";
+    }
+    for (;;)
+    {
+      mga.b(str);
+      return;
+      str = "0X800A2C1";
+      continue;
+      str = "0X800A2BE";
+      continue;
+      str = "0X800A2C3";
+    }
+  }
+  
+  public static void a(int paramInt1, int paramInt2)
+  {
+    Pair localPair = a(paramInt1, paramInt2);
+    if (localPair == null) {
+      return;
+    }
+    awqx.b(null, "dc00898", "", "", "0X800A2BB", "0X800A2BB", ((Integer)localPair.first).intValue(), 0, String.valueOf(((Integer)localPair.second).intValue()), "", "", "");
+  }
+  
+  public static void a(int paramInt1, int paramInt2, int paramInt3, String paramString)
+  {
+    String str;
+    switch (paramInt3)
+    {
+    default: 
+      return;
+    case 1: 
+      str = "0X800A3E3";
+    }
+    for (;;)
+    {
+      Object localObject = a(paramInt1, paramInt2);
+      if (localObject == null) {
+        break;
+      }
+      paramInt1 = ((Integer)((Pair)localObject).first).intValue();
+      localObject = String.valueOf(((Pair)localObject).second);
+      if (!TextUtils.isEmpty(paramString)) {
+        localObject = paramString;
+      }
+      awqx.b(null, "dc00898", "", "", str, str, paramInt1, 0, (String)localObject, "", "", "");
+      return;
+      str = "0X800A3E1";
+      continue;
+      str = "0X800A2BC";
+    }
+  }
+  
+  public static void a(int paramInt, String paramString)
+  {
+    if (paramInt == 1) {
+      awqx.b(null, "dc00898", "", "", "0X800A3E2", "0X800A3E2", 0, 0, "", paramString, "", "");
+    }
+  }
+  
+  public static void b()
+  {
+    mga.b("0X800A2BA");
+  }
+  
+  public static void c()
+  {
+    mga.b("0X800A2BD");
+  }
+  
+  public static void d()
+  {
+    mga.b("0X800A2C0");
+  }
+  
+  public static void e()
+  {
+    mga.b("0X800A2C2");
+  }
+  
+  public static void f()
+  {
+    mga.b("0X800A3DB");
+  }
+  
+  public static void g()
+  {
+    mga.b("0X800A3DC");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mgc
  * JD-Core Version:    0.7.0.1
  */

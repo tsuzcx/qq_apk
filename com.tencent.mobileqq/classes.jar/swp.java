@@ -1,29 +1,31 @@
-import android.content.res.Resources;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.database.MemoryInfoEntry;
 
 public class swp
-  implements Runnable
 {
-  public swp(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  public int a;
+  public long a;
+  public String a;
   
-  public void run()
+  public swp(swm paramswm, String paramString)
   {
-    this.a.f = false;
-    if (!this.a.jdField_c_of_type_Boolean) {
-      this.a.b.setVisibility(0);
+    this.jdField_a_of_type_JavaLangString = "";
+    paramswm = ((spt)sqg.a(19)).a(paramString);
+    if (paramswm != null) {
+      a(paramswm);
     }
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, this.a.getResources().getDimension(2131558775), 0.0F);
-    localTranslateAnimation.setDuration(300L);
-    localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.a.jdField_c_of_type_AndroidWidgetRelativeLayout.startAnimation(localTranslateAnimation);
+  }
+  
+  public void a(@NonNull MemoryInfoEntry paramMemoryInfoEntry)
+  {
+    this.jdField_a_of_type_Long = paramMemoryInfoEntry.seq;
+    this.jdField_a_of_type_JavaLangString = paramMemoryInfoEntry.cookie;
+    this.jdField_a_of_type_Int = paramMemoryInfoEntry.timeZone;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     swp
  * JD-Core Version:    0.7.0.1
  */

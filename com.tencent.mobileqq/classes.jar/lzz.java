@@ -1,95 +1,108 @@
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.SystemClock;
+import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyModelImpl;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.CellFactory;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.CmpCtxt;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentPolymericView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.PolymericInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import java.util.List;
+import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
 
-public class lzz
-  extends BaseAdapter
+public abstract class lzz
 {
-  private lzz(ComponentPolymericView paramComponentPolymericView) {}
+  protected int a;
+  protected long a;
+  public final VideoInviteActivity a;
+  protected int b;
+  protected long b;
+  protected int c;
+  protected long c;
   
-  public int getCount()
+  public lzz(VideoInviteActivity paramVideoInviteActivity)
   {
-    return ComponentPolymericView.a(this.a).size();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity = paramVideoInviteActivity;
+    this.jdField_a_of_type_Long = AudioHelper.b();
+    this.jdField_b_of_type_Int = mjg.a(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity);
+    this.jdField_b_of_type_Int = mjg.b(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity);
   }
   
-  public Object getItem(int paramInt)
+  public void BtnOnClick(View paramView) {}
+  
+  public int a()
   {
-    return ComponentPolymericView.a(this.a).get(paramInt);
+    return this.jdField_a_of_type_Int;
   }
   
-  public long getItemId(int paramInt)
+  public Resources a()
   {
-    return ((BaseArticleInfo)ComponentPolymericView.a(this.a).get(paramInt)).mRecommendSeq;
+    return this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.getResources();
   }
   
-  public int getItemViewType(int paramInt)
+  public <T extends View> T a(int paramInt)
   {
-    BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)ComponentPolymericView.a(this.a).get(paramInt);
-    if (localBaseArticleInfo.mPolymericInfo != null) {}
-    switch (localBaseArticleInfo.mPolymericInfo.a)
+    return this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.findViewById(paramInt);
+  }
+  
+  public String a(int paramInt)
+  {
+    return this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.getString(paramInt);
+  }
+  
+  public void a() {}
+  
+  public void a(Context paramContext, String paramString, Intent paramIntent) {}
+  
+  protected void a(String paramString)
+  {
+    awqx.b(null, "CliOper", "", "", paramString, paramString, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.d), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.i), "");
+  }
+  
+  public void a(lzz paramlzz)
+  {
+    if (paramlzz != null)
     {
-    default: 
-      if (ReadInJoyUtils.a(localBaseArticleInfo)) {
-        return 51;
-      }
-      break;
-    case 9: 
-      return 67;
-    case 11: 
-      return 69;
-    case 10: 
-      return 68;
+      this.jdField_b_of_type_Long = paramlzz.jdField_b_of_type_Long;
+      this.c = paramlzz.c;
     }
-    if (ReadInJoyUtils.b(localBaseArticleInfo)) {
-      return 52;
-    }
-    if (localBaseArticleInfo.mSinglePicture != null) {
-      return 50;
-    }
-    return 50;
   }
   
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public void a(boolean paramBoolean)
   {
-    paramViewGroup = (BaseArticleInfo)ComponentPolymericView.a(this.a).get(paramInt);
-    Object localObject = ComponentPolymericView.a(this.a);
-    ArticleInfo localArticleInfo = (ArticleInfo)paramViewGroup;
-    int j = getItemViewType(paramInt);
-    int k = (int)paramViewGroup.mChannelID;
-    if (paramViewGroup.mChannelID == 3L) {}
-    for (int i = 1;; i = 0)
+    if (paramBoolean)
     {
-      localObject = new ReadInJoyModelImpl((Context)localObject, localArticleInfo, j, k, i, paramInt, false, getCount(), null, ComponentPolymericView.a(this.a).a.a());
-      paramView = CellFactory.a(paramInt, localObject, getItemViewType(paramInt), paramView, ComponentPolymericView.a(this.a), ComponentPolymericView.a(this.a).a.a(), ComponentPolymericView.a(this.a).a.a().a());
-      if (paramView != null)
-      {
-        paramView.setTag(2131362079, localObject);
-        ComponentPolymericView.a(this.a).a.a().a(paramViewGroup, (IReadInJoyModel)localObject, System.currentTimeMillis(), paramInt);
-      }
-      return paramView;
+      this.jdField_b_of_type_Long = SystemClock.elapsedRealtime();
+      return;
     }
+    this.c = SystemClock.elapsedRealtime();
   }
   
-  public int getViewTypeCount()
+  public boolean a(int paramInt, KeyEvent paramKeyEvent)
   {
-    return 6;
+    return false;
   }
+  
+  public void b() {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void e() {}
+  
+  public void f() {}
+  
+  public void g() {}
+  
+  public void h() {}
+  
+  public void i() {}
+  
+  public void j() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lzz
  * JD-Core Version:    0.7.0.1
  */

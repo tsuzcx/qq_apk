@@ -1,24 +1,20 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class sgp
-  implements DialogInterface.OnClickListener
+class sgp
+  implements INetEventHandler
 {
-  public sgp(ChatSettingActivity paramChatSettingActivity) {}
+  private sgp(sgm paramsgm) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    this.a.finish();
-    if ((ChatSettingActivity.a(this.a) != null) && (ChatSettingActivity.a(this.a).isShowing())) {
-      ChatSettingActivity.a(this.a).dismiss();
-    }
+    urk.d("Q.qqstory.publish:VideoServerInfoManager", "network change");
+    this.a.b.set(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sgp
  * JD-Core Version:    0.7.0.1
  */

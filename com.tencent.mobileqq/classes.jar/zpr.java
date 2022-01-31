@@ -1,39 +1,94 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
-import java.util.Comparator;
+import android.content.Context;
+import java.io.File;
+import java.util.ArrayList;
 
-public class zpr
-  implements Comparator
+public abstract class zpr
 {
-  public zpr(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public static String a;
+  public zps a;
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  static
   {
-    Object localObject2 = paramPhoneContact1.pinyinFirst;
-    String str = paramPhoneContact2.pinyinFirst;
-    Object localObject1 = localObject2;
-    if (((String)localObject2).endsWith("#")) {
-      localObject1 = "Za";
-    }
-    localObject2 = str;
-    if (str.endsWith("#")) {
-      localObject2 = "Za";
-    }
-    int j = ((String)localObject1).compareTo((String)localObject2);
-    int i = j;
-    if (j == 0) {
-      i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
-    }
-    j = i;
-    if (i == 0) {
-      j = paramPhoneContact1.contactID - paramPhoneContact2.contactID;
-    }
-    return j;
+    jdField_a_of_type_JavaLangString = File.separator;
   }
+  
+  public static ArrayList<String> a(String paramString1, String paramString2)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramString2.equals("Native"))
+    {
+      localArrayList.add(paramString1 + ".cfg");
+      localArrayList.add("lib" + paramString1 + ".so");
+      localArrayList.add(paramString1 + ".subpatch");
+      return localArrayList;
+    }
+    if (paramString2.equals("DVM"))
+    {
+      localArrayList.add(paramString1 + ".cfg");
+      localArrayList.add(paramString1 + ".jar");
+      return localArrayList;
+    }
+    return null;
+  }
+  
+  public static ArrayList<String> b(String paramString1, String paramString2)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if (paramString2.equals("Native"))
+    {
+      localArrayList.add(paramString1 + ".cfg");
+      localArrayList.add("lib" + paramString1 + ".so");
+      localArrayList.add(paramString1 + ".subpatch");
+    }
+    while (!paramString2.equals("DVM")) {
+      return localArrayList;
+    }
+    localArrayList.add(paramString1 + ".cfg");
+    localArrayList.add(paramString1 + ".jar");
+    localArrayList.add(paramString1 + ".dex");
+    return localArrayList;
+  }
+  
+  public static zpr b(String paramString, zps paramzps)
+  {
+    String str = paramzps.f;
+    if (str.equals("Native"))
+    {
+      paramString = zpm.a(paramString, paramzps);
+      if (paramString == null) {
+        return null;
+      }
+    }
+    else
+    {
+      zph.a("KingKongPatchInfo", "Unsupported patch type : " + str);
+      return null;
+    }
+    if ((!paramString.c.equals(paramzps.jdField_a_of_type_JavaLangString)) || (!paramString.d.equals(paramzps.b)) || (!paramString.e.equals(paramzps.f)) || (!paramString.e.equals("Native")))
+    {
+      zph.a("KingKongPatchInfo", "Patch name, version or type mismatch : " + paramString.c + ", " + paramString.d + ", " + paramString.e);
+      return null;
+    }
+    paramString.jdField_a_of_type_Zps = paramzps;
+    return paramString;
+  }
+  
+  public abstract int a(Context paramContext);
+  
+  public String a()
+  {
+    return this.b + jdField_a_of_type_JavaLangString + this.c + ".cfg";
+  }
+  
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zpr
  * JD-Core Version:    0.7.0.1
  */

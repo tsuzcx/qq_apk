@@ -1,47 +1,25 @@
-import android.content.DialogInterface.OnClickListener;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose;
-import java.util.ArrayList;
-
-public class akmv
-  implements View.OnClickListener
+class akmv
+  extends aljj
 {
-  public akmv(QQCustomDialogWtihInputAndChoose paramQQCustomDialogWtihInputAndChoose, DialogInterface.OnClickListener paramOnClickListener) {}
+  akmv(akmu paramakmu) {}
   
-  public void onClick(View paramView)
+  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat)
   {
-    paramView = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.getInputValue();
-    if (TextUtils.isEmpty(paramView)) {}
-    for (;;)
-    {
-      if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
-      {
-        this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose, 1);
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a();
-      }
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.isShowing()) {
-          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.dismiss();
-        }
-        return;
-      }
-      catch (Exception paramView) {}
-      if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a.size() > 0))
-      {
-        int i = 0;
-        while ((i < this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a.size()) && (!paramView.equals(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a.get(i)))) {
-          i += 1;
-        }
-      }
+    if (akmu.a(this.a) != null) {
+      akmu.a(this.a).a(paramArrayOfFloat);
+    }
+  }
+  
+  public void updateAccelerometer(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  {
+    if (akmu.a(this.a) != null) {
+      akmu.a(this.a).a(paramFloat1, paramFloat2, paramFloat3, paramLong);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akmv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.widget;
 
-import alcf;
-import alcg;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -15,6 +13,8 @@ import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import bbjr;
+import bbnn;
 
 public abstract class ImageViewTouchBase
   extends ImageView
@@ -22,14 +22,14 @@ public abstract class ImageViewTouchBase
   static final float SCALE_RATE = 1.15F;
   private boolean bShadow;
   protected Matrix mBaseMatrix = new Matrix();
-  protected final RotateBitmap mBitmapDisplayed = new RotateBitmap(null);
+  protected final bbnn mBitmapDisplayed = new bbnn(null);
   private final Matrix mDisplayMatrix = new Matrix();
-  public Handler mHandler = new Handler();
+  protected Handler mHandler = new Handler();
   private final float[] mMatrixValues = new float[9];
   float mMaxZoom = 3.0F;
   float mMinZoom = 0.5F;
   private Runnable mOnLayoutRunnable;
-  private ImageViewTouchBase.Recycler mRecycler;
+  private bbjr mRecycler;
   protected Matrix mSuppMatrix = new Matrix();
   int mThisHeight = -1;
   int mThisWidth = -1;
@@ -47,15 +47,15 @@ public abstract class ImageViewTouchBase
     init();
   }
   
-  private void getProperBaseMatrix(RotateBitmap paramRotateBitmap, Matrix paramMatrix)
+  private void getProperBaseMatrix(bbnn parambbnn, Matrix paramMatrix)
   {
     float f1 = getWidth();
     float f2 = getHeight();
-    float f3 = paramRotateBitmap.c();
-    float f4 = paramRotateBitmap.b();
+    float f3 = parambbnn.c();
+    float f4 = parambbnn.b();
     paramMatrix.reset();
     float f5 = Math.min(Math.min(f1 / f3, 3.0F), Math.min(f2 / f4, 3.0F));
-    paramMatrix.postConcat(paramRotateBitmap.a());
+    paramMatrix.postConcat(parambbnn.a());
     paramMatrix.postScale(f5, f5);
     paramMatrix.postTranslate((f1 - f3 * f5) / 2.0F, (f2 - f4 * f5) / 2.0F);
   }
@@ -186,7 +186,7 @@ public abstract class ImageViewTouchBase
     return this.mMaxZoom;
   }
   
-  public RotateBitmap getRotateBitmap()
+  public bbnn getRotateBitmap()
   {
     return this.mBitmapDisplayed;
   }
@@ -326,20 +326,20 @@ public abstract class ImageViewTouchBase
   
   public void setImageBitmapResetBase(Bitmap paramBitmap, boolean paramBoolean)
   {
-    setImageRotateBitmapResetBase(new RotateBitmap(paramBitmap), paramBoolean);
+    setImageRotateBitmapResetBase(new bbnn(paramBitmap), paramBoolean);
   }
   
-  public void setImageRotateBitmapResetBase(RotateBitmap paramRotateBitmap, boolean paramBoolean)
+  public void setImageRotateBitmapResetBase(bbnn parambbnn, boolean paramBoolean)
   {
     if (getWidth() <= 0)
     {
-      this.mOnLayoutRunnable = new alcf(this, paramRotateBitmap, paramBoolean);
+      this.mOnLayoutRunnable = new ImageViewTouchBase.1(this, parambbnn, paramBoolean);
       return;
     }
-    if (paramRotateBitmap.a() != null)
+    if (parambbnn.a() != null)
     {
-      getProperBaseMatrix(paramRotateBitmap, this.mBaseMatrix);
-      setImageBitmap(paramRotateBitmap.a(), paramRotateBitmap.a());
+      getProperBaseMatrix(parambbnn, this.mBaseMatrix);
+      setImageBitmap(parambbnn.a(), parambbnn.a());
     }
     for (;;)
     {
@@ -354,9 +354,9 @@ public abstract class ImageViewTouchBase
     }
   }
   
-  public void setRecycler(ImageViewTouchBase.Recycler paramRecycler)
+  public void setRecycler(bbjr parambbjr)
   {
-    this.mRecycler = paramRecycler;
+    this.mRecycler = parambbjr;
   }
   
   public void setShadow(boolean paramBoolean)
@@ -422,7 +422,7 @@ public abstract class ImageViewTouchBase
     return zoomTo(paramFloat, getWidth() / 2.0F, getHeight() / 2.0F);
   }
   
-  public float zoomTo(float paramFloat1, float paramFloat2, float paramFloat3)
+  protected float zoomTo(float paramFloat1, float paramFloat2, float paramFloat3)
   {
     float f;
     if (paramFloat1 > this.mMaxZoom) {
@@ -447,7 +447,7 @@ public abstract class ImageViewTouchBase
     paramFloat1 = (paramFloat1 - getScale()) / paramFloat4;
     float f = getScale();
     long l = System.currentTimeMillis();
-    this.mHandler.post(new alcg(this, paramFloat4, l, f, paramFloat1, paramFloat2, paramFloat3));
+    this.mHandler.post(new ImageViewTouchBase.2(this, paramFloat4, l, f, paramFloat1, paramFloat2, paramFloat3));
   }
   
   public void zoomToPoint(float paramFloat1, float paramFloat2, float paramFloat3)
@@ -460,7 +460,7 @@ public abstract class ImageViewTouchBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ImageViewTouchBase
  * JD-Core Version:    0.7.0.1
  */

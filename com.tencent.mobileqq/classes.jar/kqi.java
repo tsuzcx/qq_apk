@@ -1,34 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.now.NowLiveManager;
-import com.tencent.biz.now.NowVideoView;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.qphone.base.util.Cryptor;
 
 public class kqi
-  extends Handler
 {
-  public kqi(NowVideoView paramNowVideoView) {}
+  private final String a = "ZaDA32%dkn_vs4dAjg";
   
-  public void handleMessage(Message paramMessage)
+  protected String a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while ((this.a.jdField_a_of_type_ComTencentBizNowNowLiveManager == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null));
-      this.a.jdField_a_of_type_ComTencentBizNowNowLiveManager.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq, true);
-      return;
-    } while ((this.a.jdField_a_of_type_ComTencentBizNowNowLiveManager == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) || (this.a.jdField_a_of_type_Boolean) || (this.a.d != 2));
-    this.a.jdField_a_of_type_ComTencentBizNowNowLiveManager.a(this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.msgseq, false);
+    return new String(new Cryptor().decrypt(paramArrayOfByte1, paramArrayOfByte2));
+  }
+  
+  protected byte[] a()
+  {
+    return "ZaDA32%dkn_vs4dAjg".getBytes();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     kqi
  * JD-Core Version:    0.7.0.1
  */

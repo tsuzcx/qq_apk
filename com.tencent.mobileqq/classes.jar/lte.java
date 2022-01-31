@@ -1,19 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
+import com.tencent.av.ui.GAudioMembersCtrlActivity.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class lte
-  implements Runnable
+  extends kvf
 {
-  public lte(ArticleInfoModule paramArticleInfoModule, ArticleInfo paramArticleInfo) {}
+  public lte(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity) {}
   
-  public void run()
+  protected void a(long paramLong1, long paramLong2, ArrayList<kth> paramArrayList)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    ThreadManager.getUIHandler().post(new GAudioMembersCtrlActivity.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lte
  * JD-Core Version:    0.7.0.1
  */

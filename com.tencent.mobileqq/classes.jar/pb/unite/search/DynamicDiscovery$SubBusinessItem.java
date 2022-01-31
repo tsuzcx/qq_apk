@@ -10,11 +10,11 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class DynamicDiscovery$SubBusinessItem
-  extends MessageMicro
+  extends MessageMicro<SubBusinessItem>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field bzid = PBField.initUInt32(0);
-  public final PBRepeatField group_masks = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> group_masks = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBUInt32Field has_red_dot = PBField.initUInt32(0);
   public final PBBytesField icon_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field is_hot_words_list = PBField.initUInt32(0);

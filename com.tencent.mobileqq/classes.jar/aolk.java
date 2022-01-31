@@ -1,51 +1,34 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.voicechange.IVoiceChangeListener;
-import dov.com.tencent.biz.qqstory.takevideo.music.BlessVoiceChangeManager;
-import dov.com.tencent.biz.qqstory.takevideo.music.QQStoryMusicInfo;
-import java.io.File;
+import com.tencent.qphone.base.util.QLog;
 
-public class aolk
-  implements IVoiceChangeListener
+class aolk
+  extends aoko
 {
-  private QQStoryMusicInfo jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo;
-  private String jdField_a_of_type_JavaLangString;
-  
-  public aolk(QQStoryMusicInfo paramQQStoryMusicInfo, String paramString)
+  public aolk(aokk paramaokk)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo = paramQQStoryMusicInfo;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    super(paramaokk);
   }
   
-  public void a() {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void b()
+  protected String a()
   {
-    Object localObject = new File(this.jdField_a_of_type_JavaLangString.substring(0, this.jdField_a_of_type_JavaLangString.lastIndexOf(".af")).concat("_").concat(String.valueOf(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo.c)).concat(".pcm"));
-    if (((File)localObject).exists())
+    return "StateSaveToWeiYunByPCWhenToOffFailed";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      File localFile = new File(this.jdField_a_of_type_JavaLangString);
-      if (localFile.exists()) {
-        localFile.delete();
-      }
-      FileUtils.a((File)localObject, new File(this.jdField_a_of_type_JavaLangString));
-      if (BlessVoiceChangeManager.a() != null)
-      {
-        localObject = BlessVoiceChangeManager.a().obtainMessage(10);
-        ((Message)localObject).obj = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo;
-        BlessVoiceChangeManager.a().sendMessage((Message)localObject);
-      }
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
     }
+    aokk.b(this.jdField_a_of_type_Aokk, 11, 7);
+    aokk.c(this.jdField_a_of_type_Aokk, 11, 7);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aoko.a() + "->StateSaveToWeiYunByPC)");
+    this.jdField_a_of_type_Aoko = new aoli(this.jdField_a_of_type_Aokk);
   }
-  
-  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aolk
  * JD-Core Version:    0.7.0.1
  */

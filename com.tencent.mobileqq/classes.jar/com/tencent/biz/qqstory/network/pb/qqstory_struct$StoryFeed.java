@@ -8,11 +8,13 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_struct$StoryFeed
-  extends MessageMicro
+  extends MessageMicro<StoryFeed>
 {
   static final MessageMicro.FieldMap __fieldMap__;
+  public final PBUInt32Field additional_feed = PBField.initUInt32(0);
   public qqstory_struct.BannerFeed banner_feed = new qqstory_struct.BannerFeed();
   public final PBBytesField feed_id = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBUInt32Field feed_source_tag_type = PBField.initUInt32(0);
   public qqstory_struct.GeneralFeed general_feed = new qqstory_struct.GeneralFeed();
   public qqstory_struct.GeneralRecommendFeed general_recommend_feed = new qqstory_struct.GeneralRecommendFeed();
   public qqstory_struct.MultiRecommend multi_recommend_feed = new qqstory_struct.MultiRecommend();
@@ -24,12 +26,12 @@ public final class qqstory_struct$StoryFeed
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 66, 74 }, new String[] { "type", "feed_id", "general_feed", "share_group_feed", "general_recommend_feed", "share_group_recommend_feed", "banner_feed", "tag_feed", "multi_recommend_feed" }, new Object[] { Integer.valueOf(0), localByteStringMicro, null, null, null, null, null, null, null }, StoryFeed.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 66, 74, 80, 88 }, new String[] { "type", "feed_id", "general_feed", "share_group_feed", "general_recommend_feed", "share_group_recommend_feed", "banner_feed", "tag_feed", "multi_recommend_feed", "additional_feed", "feed_source_tag_type" }, new Object[] { Integer.valueOf(0), localByteStringMicro, null, null, null, null, null, null, null, Integer.valueOf(0), Integer.valueOf(0) }, StoryFeed.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed
  * JD-Core Version:    0.7.0.1
  */

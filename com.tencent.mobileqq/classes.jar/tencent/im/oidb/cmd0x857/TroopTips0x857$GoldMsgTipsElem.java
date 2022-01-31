@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class TroopTips0x857$GoldMsgTipsElem
-  extends MessageMicro
+  extends MessageMicro<GoldMsgTipsElem>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 48, 56, 64, 72 }, new String[] { "type", "billno", "result", "amount", "total", "interval", "finish", "uin", "action" }, new Object[] { Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0) }, GoldMsgTipsElem.class);
   public final PBUInt32Field action = PBField.initUInt32(0);
@@ -20,11 +20,11 @@ public final class TroopTips0x857$GoldMsgTipsElem
   public final PBUInt32Field result = PBField.initUInt32(0);
   public final PBUInt32Field total = PBField.initUInt32(0);
   public final PBUInt32Field type = PBField.initUInt32(0);
-  public final PBRepeatField uin = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> uin = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x857.TroopTips0x857.GoldMsgTipsElem
  * JD-Core Version:    0.7.0.1
  */

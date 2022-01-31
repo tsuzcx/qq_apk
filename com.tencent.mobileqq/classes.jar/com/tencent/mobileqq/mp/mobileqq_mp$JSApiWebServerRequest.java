@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class mobileqq_mp$JSApiWebServerRequest
-  extends MessageMicro
+  extends MessageMicro<JSApiWebServerRequest>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26 }, new String[] { "versionInfo", "cmd", "body" }, new Object[] { "", Integer.valueOf(0), "" }, JSApiWebServerRequest.class);
   public final PBStringField body = PBField.initString("");

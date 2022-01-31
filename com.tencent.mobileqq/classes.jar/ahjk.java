@@ -1,31 +1,30 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.widget.QQViewPager;
-import com.tencent.mobileqq.widget.TabBarView;
+import android.os.Handler.Callback;
+import android.os.Message;
 
-public class ahjk
-  implements ViewPager.OnPageChangeListener
+class ahjk
+  implements Handler.Callback
 {
-  public ahjk(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  ahjk(ahjj paramahjj) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    ReceiptMessageReadMemberListContainerFragment.a(this.a).setSelectedTab(paramInt, true);
-    if (paramInt == 0)
+    switch (paramMessage.what)
     {
-      ReceiptMessageReadMemberListContainerFragment.a(this.a).a(false);
-      return;
     }
-    ReceiptMessageReadMemberListContainerFragment.a(this.a).a(true);
+    for (;;)
+    {
+      return false;
+      this.a.a(null);
+      continue;
+      if (ahjj.a(this.a) != null) {
+        ahjj.a(this.a).k();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahjk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,5 @@
 package com.tencent.mobileqq.shortvideo.dancemachine.filter;
 
-import aifj;
-import aifk;
-import aifl;
-import aifm;
-import aifn;
-import aifo;
-import aifp;
-import aifq;
-import aifr;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.SystemClock;
@@ -41,48 +32,103 @@ import java.util.TreeSet;
 public class DanceReadyFilter
   extends DanceBaseFilter
 {
-  private long jdField_a_of_type_Long = 0L;
-  private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
-  private GLImageView jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView;
-  private GLLittleBoy jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLittleBoy;
-  private GLMaskImageView jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLMaskImageView;
-  private GLProgressBar jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar;
-  private ResourceManager jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager;
-  TreeSet jdField_a_of_type_JavaUtilTreeSet = new TreeSet(new aifr(this));
-  private boolean jdField_a_of_type_Boolean = false;
-  private long jdField_b_of_type_Long = 0L;
-  private Animation jdField_b_of_type_AndroidViewAnimationAnimation;
-  private GLImageView jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView;
-  private boolean jdField_b_of_type_Boolean = false;
-  private long jdField_c_of_type_Long = 0L;
-  private Animation jdField_c_of_type_AndroidViewAnimationAnimation;
-  private GLImageView jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView;
-  private boolean jdField_c_of_type_Boolean = false;
-  private Animation jdField_d_of_type_AndroidViewAnimationAnimation;
-  private GLImageView jdField_d_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView;
-  private int jdField_e_of_type_Int = 3;
-  private Animation jdField_e_of_type_AndroidViewAnimationAnimation;
-  private GLImageView jdField_e_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView;
-  private int jdField_f_of_type_Int = 3;
-  private Animation jdField_f_of_type_AndroidViewAnimationAnimation;
-  private GLImageView jdField_f_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView;
-  private final int jdField_g_of_type_Int = 2000;
-  private Animation jdField_g_of_type_AndroidViewAnimationAnimation;
-  private GLImageView jdField_g_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView;
-  private int h;
-  private int i;
+  private Animation bgAnim;
+  private GLImageView bgImgView;
+  private GLImageView bottomTextView;
+  private boolean hasStartedProgress = false;
+  private int height;
+  private boolean isEnterReady = false;
+  TreeSet<GLLittleBoy> littleTs = new TreeSet(new DanceReadyFilter.9(this));
+  private GLLittleBoy mGlLittleBoy;
+  private ResourceManager mResourceManager;
+  private GLProgressBar mScanProgress;
+  private final int mTotalProgress = 2000;
+  private Animation numAnim;
+  private int numP1Index = 3;
+  private int numP2Index = 3;
+  private long numProgTime = 0L;
+  private GLImageView numberImgView;
+  private GLImageView readyImgView;
+  private Animation readyInAnim;
+  private Animation readyOutAnim;
+  private Animation recogAnim;
+  private GLImageView recogImgView;
+  private long recognizeComsume = 0L;
+  private long recognizeStartTime = 0L;
+  private Animation scanAnim;
+  private int scanHeight;
+  private GLMaskImageView scanImgView;
+  private Animation startAnim;
+  private GLImageView startImgView;
+  private boolean startProgressAnim = false;
+  private GLImageView topTextView;
   
   public DanceReadyFilter(int paramInt, QQFilterRenderManager paramQQFilterRenderManager)
   {
     super(paramInt, paramQQFilterRenderManager);
   }
   
-  private Animation a()
+  private void clearRecognizeData()
+  {
+    this.recognizeComsume = 0L;
+    this.recognizeStartTime = 0L;
+  }
+  
+  private void drawProgressAnim(int paramInt)
+  {
+    long l = SystemClock.elapsedRealtime();
+    if ((this.numProgTime > 0L) && (this.numProgTime < l) && (paramInt > 0))
+    {
+      l -= this.numProgTime;
+      if (l <= paramInt) {
+        break label57;
+      }
+      this.mScanProgress.setProgress(paramInt);
+    }
+    for (;;)
+    {
+      this.mScanProgress.draw();
+      return;
+      label57:
+      this.mScanProgress.setProgress(l);
+    }
+  }
+  
+  private void setReadyBoy()
+  {
+    ResourceManager.DancePosture localDancePosture = new ResourceManager.DancePosture();
+    if (QmcfManager.getInstance().getCurrQmcfMode() == 2) {
+      localDancePosture.id = "C";
+    }
+    for (;;)
+    {
+      this.mGlLittleBoy.setFrameAnimationParams(localDancePosture);
+      this.mGlLittleBoy.resetValidBoyStatus();
+      this.mGlLittleBoy.setMaxMatchTimes(2, true);
+      return;
+      if (QQFaceDanceMechineFilter.isEnableFaceDance)
+      {
+        localDancePosture.id = "F";
+        this.mGlLittleBoy.isReadyMatch = true;
+      }
+    }
+  }
+  
+  private Animation setupBgAnim()
+  {
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
+    localAlphaAnimation.setDuration(200L);
+    localAlphaAnimation.setFillEnabled(true);
+    localAlphaAnimation.setFillAfter(true);
+    return localAlphaAnimation;
+  }
+  
+  private Animation setupNumAnim()
   {
     AnimationSet localAnimationSet = new AnimationSet(false);
     Object localObject = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 1, 0.5F, 1, 0.5F);
     ((Animation)localObject).setDuration(100L);
-    ((Animation)localObject).setAnimationListener(new aifk(this));
+    ((Animation)localObject).setAnimationListener(new DanceReadyFilter.2(this));
     localAnimationSet.addAnimation((Animation)localObject);
     localObject = new ScaleAnimation(1.0F, 1.1F, 1.0F, 1.1F, 1, 0.5F, 1, 0.5F);
     ((Animation)localObject).setDuration(600L);
@@ -91,22 +137,13 @@ public class DanceReadyFilter
     localObject = new AlphaAnimation(1.0F, 0.0F);
     ((Animation)localObject).setDuration(600L);
     ((Animation)localObject).setStartOffset(100L);
-    ((Animation)localObject).setAnimationListener(new aifl(this));
+    ((Animation)localObject).setAnimationListener(new DanceReadyFilter.3(this));
     localAnimationSet.addAnimation((Animation)localObject);
     localAnimationSet.setStartOffset(700L);
     return localAnimationSet;
   }
   
-  private Animation a(int paramInt1, int paramInt2)
-  {
-    float f1 = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a().a();
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, -paramInt1 * f1, f1 * paramInt2);
-    localTranslateAnimation.setDuration(2000L);
-    localTranslateAnimation.setRepeatCount(-1);
-    return localTranslateAnimation;
-  }
-  
-  private Animation a(boolean paramBoolean)
+  private Animation setupReadyAnim(boolean paramBoolean)
   {
     if (paramBoolean)
     {
@@ -115,63 +152,43 @@ public class DanceReadyFilter
       localScaleAnimation.setStartOffset(300L);
       localScaleAnimation.setFillEnabled(true);
       localScaleAnimation.setFillAfter(true);
-      localScaleAnimation.setAnimationListener(new aifo(this));
+      localScaleAnimation.setAnimationListener(new DanceReadyFilter.6(this));
       return localScaleAnimation;
     }
     ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 1, 0.5F, 1, 0.5F);
     localScaleAnimation.setDuration(200L);
     localScaleAnimation.setFillEnabled(true);
     localScaleAnimation.setFillAfter(true);
-    localScaleAnimation.setAnimationListener(new aifp(this));
+    localScaleAnimation.setAnimationListener(new DanceReadyFilter.7(this));
     return localScaleAnimation;
   }
   
-  private void a()
+  private Animation setupRecogAnim()
   {
-    ResourceManager.DancePosture localDancePosture = new ResourceManager.DancePosture();
-    if (QmcfManager.a().a() == 2) {
-      localDancePosture.jdField_a_of_type_JavaLangString = "C";
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLittleBoy.a(localDancePosture);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLittleBoy.i();
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLittleBoy.a(2, true);
-      return;
-      if (QQFaceDanceMechineFilter.jdField_a_of_type_Boolean)
-      {
-        localDancePosture.jdField_a_of_type_JavaLangString = "F";
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLittleBoy.g = true;
-      }
-    }
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
+    localAlphaAnimation.setDuration(200L);
+    localAlphaAnimation.setFillEnabled(true);
+    localAlphaAnimation.setFillAfter(true);
+    localAlphaAnimation.setAnimationListener(new DanceReadyFilter.8(this));
+    localAlphaAnimation.setStartOffset(100L);
+    return localAlphaAnimation;
   }
   
-  private void a(int paramInt)
+  private Animation setupScanAnim(int paramInt1, int paramInt2)
   {
-    long l = SystemClock.elapsedRealtime();
-    if ((this.jdField_a_of_type_Long > 0L) && (this.jdField_a_of_type_Long < l) && (paramInt > 0))
-    {
-      l -= this.jdField_a_of_type_Long;
-      if (l <= paramInt) {
-        break label57;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.a(paramInt);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.a();
-      return;
-      label57:
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.a(l);
-    }
+    float f = this.mDanceManager.getContext().getViewPortRatio();
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, -paramInt1 * f, f * paramInt2);
+    localTranslateAnimation.setDuration(2000L);
+    localTranslateAnimation.setRepeatCount(-1);
+    return localTranslateAnimation;
   }
   
-  private Animation b()
+  private Animation setupStartAnim()
   {
     AnimationSet localAnimationSet = new AnimationSet(false);
     Object localObject = new AlphaAnimation(1.0F, 1.0F);
     ((Animation)localObject).setDuration(300L);
-    ((Animation)localObject).setAnimationListener(new aifm(this));
+    ((Animation)localObject).setAnimationListener(new DanceReadyFilter.4(this));
     localAnimationSet.addAnimation((Animation)localObject);
     localObject = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 1, 0.5F, 1, 0.5F);
     ((Animation)localObject).setDuration(200L);
@@ -224,289 +241,263 @@ public class DanceReadyFilter
     localAnimationSet.setStartOffset(300L);
     localAnimationSet.setFillEnabled(true);
     localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(new aifn(this));
+    localAnimationSet.setAnimationListener(new DanceReadyFilter.5(this));
     localAnimationSet.setStartOffset(300L);
     return localAnimationSet;
   }
   
-  private Animation c()
+  private void startProgressAnim()
   {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-    localAlphaAnimation.setDuration(200L);
-    localAlphaAnimation.setFillEnabled(true);
-    localAlphaAnimation.setFillAfter(true);
-    return localAlphaAnimation;
+    this.numProgTime = SystemClock.elapsedRealtime();
+    this.startProgressAnim = true;
   }
   
-  private Animation d()
+  public TreeSet<GLLittleBoy> getCurrentVisible()
   {
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setDuration(200L);
-    localAlphaAnimation.setFillEnabled(true);
-    localAlphaAnimation.setFillAfter(true);
-    localAlphaAnimation.setAnimationListener(new aifq(this));
-    localAlphaAnimation.setStartOffset(100L);
-    return localAlphaAnimation;
-  }
-  
-  private void i()
-  {
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  private void j()
-  {
-    this.jdField_b_of_type_Long = 0L;
-    this.jdField_c_of_type_Long = 0L;
-  }
-  
-  public TreeSet a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLittleBoy == null) {
-      return super.a();
+    if (this.mGlLittleBoy == null) {
+      return super.getCurrentVisible();
     }
-    this.jdField_a_of_type_JavaUtilTreeSet.clear();
-    this.jdField_a_of_type_JavaUtilTreeSet.add(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLittleBoy);
-    return this.jdField_a_of_type_JavaUtilTreeSet;
+    this.littleTs.clear();
+    this.littleTs.add(this.mGlLittleBoy);
+    return this.littleTs;
   }
   
-  public boolean a()
+  public boolean getFilterParam()
   {
-    return this.jdField_c_of_type_Boolean;
+    return this.isEnterReady;
   }
   
-  public void b()
+  public void onCloseClicked()
   {
-    DanceLog.a("DanceReadyFilter", "onCloseClicked begin...");
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a().c();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a(0);
-    DanceLog.a("DanceReadyFilter", "onCloseClicked end...");
+    DanceLog.print("DanceReadyFilter", "onCloseClicked begin...");
+    this.mDanceManager.getContext().stopAllSound();
+    this.mDanceManager.selectToFilter(0);
+    DanceLog.print("DanceReadyFilter", "onCloseClicked end...");
   }
   
-  public void b(int paramInt1, int paramInt2)
+  public void onDrawFrame()
   {
-    super.b(paramInt1, paramInt2);
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a().b();
+    super.onDrawFrame();
+    if ((this.mGlLittleBoy.isMatched()) && (!this.hasStartedProgress))
+    {
+      this.recognizeComsume = (System.currentTimeMillis() - this.recognizeStartTime);
+      startProgressAnim();
+      this.hasStartedProgress = true;
+    }
+    this.scanImgView.draw();
+    this.recogImgView.draw();
+    this.topTextView.draw();
+    this.bottomTextView.draw();
+    if (this.startProgressAnim) {
+      drawProgressAnim(2000);
+    }
+    this.bgImgView.draw();
+    this.readyImgView.draw();
+    this.numberImgView.draw();
+    this.startImgView.draw();
+    TrAsyncTextureLoad.getInstance().updateGLFrameImageCache();
+  }
+  
+  public void onSurfaceChange(int paramInt1, int paramInt2)
+  {
+    super.onSurfaceChange(paramInt1, paramInt2);
+    Object localObject1 = this.mDanceManager.getContext().getSurfaceViewSize();
     paramInt1 = ((Rect)localObject1).width();
     paramInt2 = ((Rect)localObject1).height();
     Object localObject2 = new RectF(0.0F, 0.0F, paramInt1, paramInt2);
     label108:
+    int i;
     int j;
-    int k;
     double d1;
     label473:
     label504:
+    int k;
     int m;
-    int n;
-    if (QQFaceDanceMechineFilter.jdField_a_of_type_Boolean)
+    if (QQFaceDanceMechineFilter.isEnableFaceDance)
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$ScanResource.d;
-      this.jdField_e_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.a((String)localObject1);
-      this.jdField_e_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.b((RectF)localObject2);
-      this.jdField_e_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.d((RectF)localObject2);
-      if (!QQFaceDanceMechineFilter.jdField_a_of_type_Boolean) {
+      localObject1 = this.mResourceManager.mScanResource.facerecognizePic;
+      this.recogImgView.setImageRes((String)localObject1);
+      this.recogImgView.setImageRegion((RectF)localObject2);
+      this.recogImgView.setImageClipDrawRegion((RectF)localObject2);
+      if (!QQFaceDanceMechineFilter.isEnableFaceDance) {
         break label1141;
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$ScanResource.e;
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLMaskImageView.b((String)localObject1);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLMaskImageView.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$ScanResource.b);
-      if (this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLMaskImageView.b().c() != 0)
+      localObject1 = this.mResourceManager.mScanResource.facemaskPic;
+      this.scanImgView.setMaskImage((String)localObject1);
+      this.scanImgView.setImageRes(this.mResourceManager.mScanResource.scanPic);
+      if (this.scanImgView.getCurrentBackGround().getHeight() != 0)
       {
-        j = (int)(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLMaskImageView.b().c() / this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLMaskImageView.b().b() * paramInt1);
-        localObject1 = new RectF(0.0F, -j, paramInt1, 0.0F);
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLMaskImageView.b((RectF)localObject1);
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLMaskImageView.d((RectF)localObject1);
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLMaskImageView.f_(true);
-        this.h = j;
-        this.i = paramInt2;
+        i = (int)(this.scanImgView.getCurrentBackGround().getHeight() / this.scanImgView.getCurrentBackGround().getWidth() * paramInt1);
+        localObject1 = new RectF(0.0F, -i, paramInt1, 0.0F);
+        this.scanImgView.setImageRegion((RectF)localObject1);
+        this.scanImgView.setImageClipDrawRegion((RectF)localObject1);
+        this.scanImgView.setVisibility(true);
+        this.scanHeight = i;
+        this.height = paramInt2;
       }
-      j = paramInt1 - DisplayUtils.a(215.0F) * 2;
-      k = (paramInt2 - j) / 2;
-      localObject1 = new RectF(DisplayUtils.a(215.0F), k, paramInt1 - DisplayUtils.a(215.0F), j + k);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.a((String)this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$ReadyResource.jdField_a_of_type_JavaUtilList.get(2));
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.b((RectF)localObject1);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.d((RectF)localObject1);
+      i = paramInt1 - DisplayUtils.pixelToRealPixel(215.0F) * 2;
+      j = (paramInt2 - i) / 2;
+      localObject1 = new RectF(DisplayUtils.pixelToRealPixel(215.0F), j, paramInt1 - DisplayUtils.pixelToRealPixel(215.0F), i + j);
+      this.numberImgView.setImageRes((String)this.mResourceManager.mReadyResource.readyNums.get(2));
+      this.numberImgView.setImageRegion((RectF)localObject1);
+      this.numberImgView.setImageClipDrawRegion((RectF)localObject1);
       localObject1 = new RectF(0.0F, 0.0F, paramInt1, paramInt2);
-      this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$GeneralResource.jdField_a_of_type_JavaLangString);
-      this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.b((RectF)localObject1);
-      this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.d((RectF)localObject1);
-      localObject1 = new RectF(DisplayUtils.a(92.0F), DisplayUtils.a(0.0F), paramInt1 - DisplayUtils.a(92.0F), DisplayUtils.a(300.0F));
-      this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$ReadyResource.jdField_a_of_type_JavaLangString);
-      this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.b((RectF)localObject1);
-      this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.d((RectF)localObject1);
-      j = (int)(paramInt2 * 0.1D);
+      this.bgImgView.setImageRes(this.mResourceManager.mGeneralResource.bgPic);
+      this.bgImgView.setImageRegion((RectF)localObject1);
+      this.bgImgView.setImageClipDrawRegion((RectF)localObject1);
+      localObject1 = new RectF(DisplayUtils.pixelToRealPixel(92.0F), DisplayUtils.pixelToRealPixel(0.0F), paramInt1 - DisplayUtils.pixelToRealPixel(92.0F), DisplayUtils.pixelToRealPixel(300.0F));
+      this.readyImgView.setImageRes(this.mResourceManager.mReadyResource.ready);
+      this.readyImgView.setImageRegion((RectF)localObject1);
+      this.readyImgView.setImageClipDrawRegion((RectF)localObject1);
+      i = (int)(paramInt2 * 0.1D);
       double d2 = paramInt2;
-      if (!QQFaceDanceMechineFilter.jdField_a_of_type_Boolean) {
+      if (!QQFaceDanceMechineFilter.isEnableFaceDance) {
         break label1156;
       }
       d1 = 0.04D;
-      k = (int)(d1 * d2);
-      localObject2 = this.jdField_f_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView;
-      if (!QQFaceDanceMechineFilter.jdField_a_of_type_Boolean) {
+      j = (int)(d1 * d2);
+      localObject2 = this.topTextView;
+      if (!QQFaceDanceMechineFilter.isEnableFaceDance) {
         break label1163;
       }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$ScanResource.k;
-      ((GLImageView)localObject2).a((String)localObject1);
-      m = this.jdField_f_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.b().c();
-      n = this.jdField_f_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.b().b();
-      d1 = m / n;
+      localObject1 = this.mResourceManager.mScanResource.facetopText;
+      ((GLImageView)localObject2).setImageRes((String)localObject1);
+      k = this.topTextView.getCurrentBackGround().getHeight();
+      m = this.topTextView.getCurrentBackGround().getWidth();
+      d1 = k / m;
       if (!Double.isNaN(d1))
       {
-        m = (int)(k / d1);
-        n = (paramInt1 - m) / 2;
-        localObject1 = new RectF(n, j, m + n, k + j);
-        this.jdField_f_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.b((RectF)localObject1);
-        this.jdField_f_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.d((RectF)localObject1);
+        k = (int)(j / d1);
+        m = (paramInt1 - k) / 2;
+        localObject1 = new RectF(m, i, k + m, j + i);
+        this.topTextView.setImageRegion((RectF)localObject1);
+        this.topTextView.setImageClipDrawRegion((RectF)localObject1);
       }
-      j = (int)(paramInt2 * 0.9D);
-      k = (int)(paramInt2 * 0.03D);
-      localObject2 = this.jdField_g_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView;
-      if (!QQFaceDanceMechineFilter.jdField_a_of_type_Boolean) {
+      i = (int)(paramInt2 * 0.9D);
+      j = (int)(paramInt2 * 0.03D);
+      localObject2 = this.bottomTextView;
+      if (!QQFaceDanceMechineFilter.isEnableFaceDance) {
         break label1178;
       }
     }
     label1156:
     label1163:
     label1178:
-    for (localObject1 = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$ScanResource.j;; localObject1 = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$ScanResource.h)
+    for (localObject1 = this.mResourceManager.mScanResource.facebottomText;; localObject1 = this.mResourceManager.mScanResource.bottomText)
     {
-      ((GLImageView)localObject2).a((String)localObject1);
-      m = this.jdField_g_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.b().c();
-      n = this.jdField_g_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.b().b();
-      d1 = m / n;
+      ((GLImageView)localObject2).setImageRes((String)localObject1);
+      k = this.bottomTextView.getCurrentBackGround().getHeight();
+      m = this.bottomTextView.getCurrentBackGround().getWidth();
+      d1 = k / m;
       if (!Double.isNaN(d1))
       {
-        m = (int)(k / d1);
-        n = (paramInt1 - m) / 2;
-        localObject1 = new RectF(n, j, m + n, j + k);
-        this.jdField_g_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.b((RectF)localObject1);
-        this.jdField_g_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.d((RectF)localObject1);
+        k = (int)(j / d1);
+        m = (paramInt1 - k) / 2;
+        localObject1 = new RectF(m, i, k + m, i + j);
+        this.bottomTextView.setImageRegion((RectF)localObject1);
+        this.bottomTextView.setImageClipDrawRegion((RectF)localObject1);
       }
-      j = paramInt1 - DisplayUtils.a(7.0F) * 2;
-      this.jdField_d_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$StartResource.jdField_a_of_type_JavaLangString);
-      k = this.jdField_d_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.b().c();
-      m = this.jdField_d_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.b().b();
-      k = (int)(k / m * j);
-      m = (paramInt2 - k) / 2;
-      localObject1 = new RectF(DisplayUtils.a(7.0F), m, j + DisplayUtils.a(7.0F), k + m);
-      this.jdField_d_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.b((RectF)localObject1);
-      this.jdField_d_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.d((RectF)localObject1);
+      i = paramInt1 - DisplayUtils.pixelToRealPixel(7.0F) * 2;
+      this.startImgView.setImageRes(this.mResourceManager.mStartResource.startPic);
+      j = this.startImgView.getCurrentBackGround().getHeight();
+      k = this.startImgView.getCurrentBackGround().getWidth();
+      j = (int)(j / k * i);
+      k = (paramInt2 - j) / 2;
+      localObject1 = new RectF(DisplayUtils.pixelToRealPixel(7.0F), k, i + DisplayUtils.pixelToRealPixel(7.0F), j + k);
+      this.startImgView.setImageRegion((RectF)localObject1);
+      this.startImgView.setImageClipDrawRegion((RectF)localObject1);
       paramInt2 = (int)(paramInt2 * 0.85D);
-      float f1 = DisplayUtils.a(14.0F);
-      localObject1 = new RectF(DisplayUtils.a(128.0F), paramInt2, paramInt1 - DisplayUtils.a(128.0F), paramInt2 + f1);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.a((RectF)localObject1);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.b((RectF)localObject1);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$ScanResource.f);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.b(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$ScanResource.g);
-      paramInt1 = DisplayUtils.a(8.0F);
-      j = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.a().b();
-      float f2 = 14.0F / this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.a().c();
-      j = DisplayUtils.a((int)(j * f2));
-      localObject1 = new RectF(DisplayUtils.a(128.0F), paramInt2, DisplayUtils.a(128.0F) + j, paramInt2 + f1);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.c((RectF)localObject1);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.a(paramInt1, j - paramInt1);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.a(2000);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.a(0L);
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.a(new aifj(this));
+      float f1 = DisplayUtils.pixelToRealPixel(14.0F);
+      localObject1 = new RectF(DisplayUtils.pixelToRealPixel(128.0F), paramInt2, paramInt1 - DisplayUtils.pixelToRealPixel(128.0F), paramInt2 + f1);
+      this.mScanProgress.setBackgroundRegion((RectF)localObject1);
+      this.mScanProgress.setBackgroundClipRegion((RectF)localObject1);
+      this.mScanProgress.setBackgroundImageRes(this.mResourceManager.mScanResource.scanBg);
+      this.mScanProgress.setProgressImageRes(this.mResourceManager.mScanResource.scanContent);
+      paramInt1 = DisplayUtils.pixelToRealPixel(8.0F);
+      i = this.mScanProgress.getProgressImage().getWidth();
+      float f2 = 14.0F / this.mScanProgress.getProgressImage().getHeight();
+      i = DisplayUtils.pixelToRealPixel((int)(i * f2));
+      localObject1 = new RectF(DisplayUtils.pixelToRealPixel(128.0F), paramInt2, DisplayUtils.pixelToRealPixel(128.0F) + i, paramInt2 + f1);
+      this.mScanProgress.setProgressRegion((RectF)localObject1);
+      this.mScanProgress.setProgressStretchRelativeRegion(paramInt1, i - paramInt1);
+      this.mScanProgress.setMaxProgress(2000);
+      this.mScanProgress.setProgress(0L);
+      this.mScanProgress.setProgressBarListener(new DanceReadyFilter.1(this));
       return;
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$ScanResource.jdField_a_of_type_JavaLangString;
+      localObject1 = this.mResourceManager.mScanResource.recognizePic;
       break;
       label1141:
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$ScanResource.c;
+      localObject1 = this.mResourceManager.mScanResource.maskPic;
       break label108;
       d1 = 0.08D;
       break label473;
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$ScanResource.i;
+      localObject1 = this.mResourceManager.mScanResource.topText;
       break label504;
     }
   }
   
-  public void c()
+  public void onSurfaceCreate()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLittleBoy != null) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLittleBoy.i();
-    }
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.d();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.a(0L);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.e();
-    this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.e();
-    this.jdField_e_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.e();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.e();
-    this.jdField_d_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.e();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLMaskImageView.e();
-    this.jdField_e_of_type_Int = 3;
-    this.jdField_f_of_type_Int = 3;
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.f_(false);
-    this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.f_(false);
-    this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.f_(false);
-    this.jdField_d_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.f_(false);
-    this.jdField_e_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.f_(true);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLMaskImageView.f_(true);
-    this.jdField_f_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.f_(true);
-    this.jdField_g_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.f_(true);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar.f_(true);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation = a();
-    this.jdField_b_of_type_AndroidViewAnimationAnimation = b();
-    this.jdField_c_of_type_AndroidViewAnimationAnimation = a(false);
-    this.jdField_d_of_type_AndroidViewAnimationAnimation = a(true);
-    this.jdField_e_of_type_AndroidViewAnimationAnimation = c();
-    this.jdField_f_of_type_AndroidViewAnimationAnimation = d();
-    this.jdField_g_of_type_AndroidViewAnimationAnimation = a(this.h, this.i);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLMaskImageView.a(this.jdField_g_of_type_AndroidViewAnimationAnimation);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.a((String)this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager$ReadyResource.jdField_a_of_type_JavaUtilList.get(2));
-    this.jdField_c_of_type_Long = System.currentTimeMillis();
-    DanceLog.a("DanceReadyFilter", "rollbackStatusCallOnInitFilter end...");
+    super.onSurfaceCreate();
+    this.mResourceManager = ResourceManager.getInstance();
+    this.recogImgView = new GLImageView(this.mDanceManager.getContext(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
+    this.bgImgView = new GLImageView(this.mDanceManager.getContext(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
+    this.readyImgView = new GLImageView(this.mDanceManager.getContext(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
+    this.startImgView = new GLImageView(this.mDanceManager.getContext(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
+    this.numberImgView = new GLImageView(this.mDanceManager.getContext(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
+    this.scanImgView = new GLMaskImageView(this.mDanceManager.getContext(), "GL_VIEW_VERTEX_MASK_GL_VIEW_FRAGMENT_MASK");
+    this.mGlLittleBoy = new GLLittleBoy(this.mDanceManager.getContext(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
+    this.mScanProgress = new GLProgressBar(this.mDanceManager.getContext(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
+    this.topTextView = new GLImageView(this.mDanceManager.getContext(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
+    this.bottomTextView = new GLImageView(this.mDanceManager.getContext(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
+    setReadyBoy();
   }
   
-  public void d()
+  public void onSurfaceDestroy()
   {
-    super.d();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineResourceManager = ResourceManager.a();
-    this.jdField_e_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView = new GLImageView(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
-    this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView = new GLImageView(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
-    this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView = new GLImageView(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
-    this.jdField_d_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView = new GLImageView(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView = new GLImageView(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLMaskImageView = new GLMaskImageView(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a(), "GL_VIEW_VERTEX_MASK_GL_VIEW_FRAGMENT_MASK");
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLittleBoy = new GLLittleBoy(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLProgressBar = new GLProgressBar(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
-    this.jdField_f_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView = new GLImageView(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
-    this.jdField_g_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView = new GLImageView(this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a(), "GL_VIEW_VERTEX_GL_VIEW_FRAGMENT");
-    a();
+    super.onSurfaceDestroy();
+    clearRecognizeData();
   }
   
-  public void e()
+  public void rollbackStatusCallOnInitFilter()
   {
-    super.e();
-    j();
-  }
-  
-  public void h()
-  {
-    super.h();
-    if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLLittleBoy.c()) && (!this.jdField_b_of_type_Boolean))
-    {
-      this.jdField_b_of_type_Long = (System.currentTimeMillis() - this.jdField_c_of_type_Long);
-      i();
-      this.jdField_b_of_type_Boolean = true;
+    if (this.mGlLittleBoy != null) {
+      this.mGlLittleBoy.resetValidBoyStatus();
     }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLMaskImageView.a();
-    this.jdField_e_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.a();
-    this.jdField_f_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.a();
-    this.jdField_g_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.a();
-    if (this.jdField_a_of_type_Boolean) {
-      a(2000);
-    }
-    this.jdField_c_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.a();
-    this.jdField_b_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.a();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.a();
-    this.jdField_d_of_type_ComTencentMobileqqShortvideoDancemachineGLImageView.a();
-    TrAsyncTextureLoad.a().d();
+    this.isEnterReady = false;
+    this.hasStartedProgress = false;
+    this.mScanProgress.clearStatus();
+    this.mScanProgress.setProgress(0L);
+    this.startProgressAnim = false;
+    this.readyImgView.clearAnimation();
+    this.bgImgView.clearAnimation();
+    this.recogImgView.clearAnimation();
+    this.numberImgView.clearAnimation();
+    this.startImgView.clearAnimation();
+    this.scanImgView.clearAnimation();
+    this.numP1Index = 3;
+    this.numP2Index = 3;
+    this.numProgTime = 0L;
+    this.numberImgView.setVisibility(false);
+    this.readyImgView.setVisibility(false);
+    this.bgImgView.setVisibility(false);
+    this.startImgView.setVisibility(false);
+    this.recogImgView.setVisibility(true);
+    this.scanImgView.setVisibility(true);
+    this.topTextView.setVisibility(true);
+    this.bottomTextView.setVisibility(true);
+    this.mScanProgress.setVisibility(true);
+    this.numAnim = setupNumAnim();
+    this.startAnim = setupStartAnim();
+    this.readyInAnim = setupReadyAnim(false);
+    this.readyOutAnim = setupReadyAnim(true);
+    this.bgAnim = setupBgAnim();
+    this.recogAnim = setupRecogAnim();
+    this.scanAnim = setupScanAnim(this.scanHeight, this.height);
+    this.scanImgView.startAnimation(this.scanAnim);
+    this.numberImgView.setImageRes((String)this.mResourceManager.mReadyResource.readyNums.get(2));
+    this.recognizeStartTime = System.currentTimeMillis();
+    DanceLog.print("DanceReadyFilter", "rollbackStatusCallOnInitFilter end...");
   }
 }
 

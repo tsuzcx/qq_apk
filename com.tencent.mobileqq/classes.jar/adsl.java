@@ -1,33 +1,25 @@
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.mobileqq.pic.PicResult;
-import com.tencent.mobileqq.pic.UiCallBack.DownAdapter;
-import com.tencent.mobileqq.transfile.AbsDownloader;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.mobileqq.filemanager.widget.AsyncImageView;
 
-class adsl
-  extends UiCallBack.DownAdapter
+public class adsl
+  extends acju
 {
-  adsl(adsk paramadsk, MessageForPic paramMessageForPic) {}
+  public ProgressBar a;
+  public TextView a;
+  public AsyncImageView a;
+  public TextView b;
+  public View c;
+  public TextView c;
+  public View d;
+  public TextView d;
   
-  public void a(int paramInt, PicResult paramPicResult)
-  {
-    this.jdField_a_of_type_Adsk.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.a.setProgressBarVisibility(8);
-    paramPicResult = AbsDownloader.d(URLDrawableHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, 1, null).toString().toString());
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardBaseOption", 2, "DownloadBigPic finish");
-    }
-    ForwardBaseOption.a(this.jdField_a_of_type_Adsk.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption, paramPicResult, this.jdField_a_of_type_Adsk.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void a(int paramInt, boolean paramBoolean) {}
+  public adsl(adsh paramadsh) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adsl
  * JD-Core Version:    0.7.0.1
  */

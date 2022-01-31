@@ -50,14 +50,21 @@ public final class Dispatcher
   
   private int runningCallsForHost(Call.AsyncCall paramAsyncCall)
   {
-    int i = 0;
     Iterator localIterator = this.runningCalls.iterator();
-    while (localIterator.hasNext()) {
-      if (((Call.AsyncCall)localIterator.next()).host().equals(paramAsyncCall.host())) {
-        i += 1;
+    int i = 0;
+    if (localIterator.hasNext())
+    {
+      if (!((Call.AsyncCall)localIterator.next()).host().equals(paramAsyncCall.host())) {
+        break label52;
       }
+      i += 1;
     }
-    return i;
+    label52:
+    for (;;)
+    {
+      break;
+      return i;
+    }
   }
   
   public void cancel(Object paramObject)

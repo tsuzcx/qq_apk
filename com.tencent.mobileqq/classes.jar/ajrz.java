@@ -1,19 +1,29 @@
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ArithmeticViewHolder.ArithmeticImageView;
-import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.ShieldOperationItem;
 
-public class ajrz
-  implements Runnable
+public final class ajrz
+  implements Parcelable.Creator<ShieldOperationItem>
 {
-  public ajrz(ArithmeticViewHolder.ArithmeticImageView paramArithmeticImageView, TroopHomeworkHelper.UploadFileTask paramUploadFileTask) {}
-  
-  public void run()
+  public ShieldOperationItem a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask.a();
+    ShieldOperationItem localShieldOperationItem = new ShieldOperationItem();
+    localShieldOperationItem.jdField_a_of_type_Int = paramParcel.readInt();
+    localShieldOperationItem.b = paramParcel.readInt();
+    localShieldOperationItem.c = paramParcel.readInt();
+    localShieldOperationItem.jdField_a_of_type_ArrayOfLong = paramParcel.createLongArray();
+    localShieldOperationItem.d = paramParcel.readInt();
+    return localShieldOperationItem;
+  }
+  
+  public ShieldOperationItem[] a(int paramInt)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajrz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import java.util.List;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import tencent.im.oidb.cmd0xcd1.Oidb_0xcd1.EmptyPackagePage;
 
 public class wne
-  extends Handler
 {
-  public wne(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public int a;
+  public String a;
+  public String b;
+  public String c;
   
-  public void handleMessage(Message paramMessage)
+  public wne(Oidb_0xcd1.EmptyPackagePage paramEmptyPackagePage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      paramMessage = (List)paramMessage.obj;
-      this.a.a(paramMessage, true);
-      return;
-    }
-    paramMessage = (List)paramMessage.obj;
-    this.a.a(paramMessage, false);
+    this.jdField_a_of_type_Int = paramEmptyPackagePage.enable.get();
+    this.jdField_a_of_type_JavaLangString = paramEmptyPackagePage.wording.get();
+    this.b = paramEmptyPackagePage.jump_wording.get();
+    this.c = paramEmptyPackagePage.jump_url.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wne
  * JD-Core Version:    0.7.0.1
  */

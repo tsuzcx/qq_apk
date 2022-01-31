@@ -1,30 +1,16 @@
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer.ArkAppModuleCallback;
-import com.tencent.mobileqq.utils.QQCustomArkDialog;
-
-public class akli
-  implements ArkAppContainer.ArkAppModuleCallback
+public abstract interface akli
 {
-  public akli(QQCustomArkDialog paramQQCustomArkDialog) {}
+  public abstract void a();
   
-  public boolean a(ArkAppContainer paramArkAppContainer)
-  {
-    if (this.a.isShowing())
-    {
-      this.a.dismiss();
-      return true;
-    }
-    return false;
-  }
+  public abstract void a(int paramInt);
   
-  public boolean a(ArkAppContainer paramArkAppContainer, String paramString1, String paramString2)
-  {
-    return false;
-  }
+  public abstract void b();
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akli
  * JD-Core Version:    0.7.0.1
  */

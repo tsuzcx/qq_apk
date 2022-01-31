@@ -1,21 +1,39 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.OnAdapterNotify;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.biz.qqstory.view.xrecyclerview.XRecyclerView;
 
 public class vrj
-  implements Runnable
+  extends RecyclerView.OnScrollListener
 {
-  public vrj(AIOGalleryAdapter paramAIOGalleryAdapter) {}
+  public vrj(XRecyclerView paramXRecyclerView) {}
   
-  public void run()
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.a(2);
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+    paramInt = paramRecyclerView.getChildCount();
+    if ((paramRecyclerView.getLayoutManager() instanceof StaggeredGridLayoutManager))
+    {
+      paramRecyclerView = (StaggeredGridLayoutManager)paramRecyclerView.getLayoutManager();
+      int i = paramRecyclerView.getItemCount();
+      int[] arrayOfInt = paramRecyclerView.findFirstVisibleItemPositions(null);
+      if (i - paramInt > paramRecyclerView.getSpanCount() * 3 + arrayOfInt[0]) {
+        break label76;
+      }
+    }
+    label76:
+    for (paramInt = 1;; paramInt = 0)
+    {
+      if (paramInt != 0) {
+        XRecyclerView.a(this.a).b(false);
+      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vrj
  * JD-Core Version:    0.7.0.1
  */

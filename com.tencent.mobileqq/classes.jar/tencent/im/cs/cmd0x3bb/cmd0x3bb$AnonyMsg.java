@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class cmd0x3bb$AnonyMsg
-  extends MessageMicro
+  extends MessageMicro<AnonyMsg>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 82, 90 }, new String[] { "uint32_cmd", "msg_anony_req", "msg_anony_rsp" }, new Object[] { Integer.valueOf(0), null, null }, AnonyMsg.class);
   public cmd0x3bb.ReqBody msg_anony_req = new cmd0x3bb.ReqBody();
@@ -15,7 +15,7 @@ public final class cmd0x3bb$AnonyMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.cmd0x3bb.cmd0x3bb.AnonyMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.ttpic.filter;
 
+import com.tencent.aekit.openrender.UniformParam.FloatParam;
 import com.tencent.filter.BaseFilter;
-import com.tencent.filter.Param.FloatParam;
 
 public class ScaleFilter
   extends BaseFilter
@@ -16,17 +16,17 @@ public class ScaleFilter
   
   private void initParams()
   {
-    addParam(new Param.FloatParam("scale", 0.0F));
+    addParam(new UniformParam.FloatParam("scale", 0.0F));
   }
   
   public void setScale(float paramFloat)
   {
-    addParam(new Param.FloatParam("scale", paramFloat));
+    addParam(new UniformParam.FloatParam("scale", paramFloat));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.filter.ScaleFilter
  * JD-Core Version:    0.7.0.1
  */

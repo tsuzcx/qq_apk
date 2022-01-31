@@ -1,10 +1,10 @@
 package cooperation.qqfav.globalsearch;
 
+import avhs;
+import avnl;
+import avva;
+import avvn;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.FunctionModuleConfigManager;
-import com.tencent.mobileqq.search.model.GroupBaseNetSearchModelItem;
-import com.tencent.mobileqq.search.searchengine.ISearchListener;
-import com.tencent.mobileqq.search.searchengine.SearchRequest;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,14 +12,14 @@ import java.util.List;
 public class FunctionSearchEngine$SearchRunnable
   implements Runnable
 {
-  public ISearchListener a;
-  public SearchRequest a;
+  public avva<avnl> a;
+  public avvn a;
   
-  public FunctionSearchEngine$SearchRunnable(FunctionSearchEngine paramFunctionSearchEngine) {}
+  protected FunctionSearchEngine$SearchRunnable(FunctionSearchEngine paramFunctionSearchEngine) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest == null) || (this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener == null)) {
+    if ((this.jdField_a_of_type_Avvn == null) || (this.jdField_a_of_type_Avva == null)) {
       if (QLog.isColorLevel()) {
         QLog.e(FunctionSearchEngine.jdField_a_of_type_JavaLangString, 2, "mSearchRunnable.run, innerSearchRequest == null or innerListener == null");
       }
@@ -31,28 +31,28 @@ public class FunctionSearchEngine$SearchRunnable
       do
       {
         return;
-        if (this.b.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
+        if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
         {
           QLog.e(FunctionSearchEngine.jdField_a_of_type_JavaLangString, 1, "mSearchRunnable.run, app is null.");
-          this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(null, 6);
+          this.jdField_a_of_type_Avva.a(null, 6);
           return;
         }
-        localList = ((FunctionModuleConfigManager)this.b.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(221)).a("" + this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest.jdField_a_of_type_JavaLangString, FunctionSearchEngine.a(this.b));
+        localList = ((avhs)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(222)).a("" + this.jdField_a_of_type_Avvn.jdField_a_of_type_JavaLangString, FunctionSearchEngine.a(this.this$0));
         if ((localList != null) && (localList.size() != 0)) {
           break;
         }
-      } while (this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener == null);
-      this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(null, 1);
+      } while (this.jdField_a_of_type_Avva == null);
+      this.jdField_a_of_type_Avva.a(null, 1);
       return;
       localArrayList = new ArrayList(localList.size());
       int i = 0;
       while (i < localList.size())
       {
-        localArrayList.add((GroupBaseNetSearchModelItem)localList.get(i));
+        localArrayList.add((avnl)localList.get(i));
         i += 1;
       }
-    } while (this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener == null);
-    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(localArrayList, 1);
+    } while (this.jdField_a_of_type_Avva == null);
+    this.jdField_a_of_type_Avva.a(localArrayList, 1);
   }
 }
 

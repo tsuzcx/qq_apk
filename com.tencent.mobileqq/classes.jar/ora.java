@@ -1,24 +1,20 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.view.View;
-import android.widget.ImageButton;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo2.StoryLocalPublishPart;
+import com.tencent.biz.pubaccount.readinjoy.struct.WeiShiVideoArticleInfo;
+import java.util.Comparator;
 
 class ora
-  implements Runnable
+  implements Comparator<WeiShiVideoArticleInfo>
 {
-  ora(oqz paramoqz, Bitmap paramBitmap) {}
+  ora(oqz paramoqz) {}
   
-  public void run()
+  public int a(WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo1, WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo2)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
-    {
-      StoryLocalPublishPart.a(this.jdField_a_of_type_Oqz.jdField_a_of_type_ComTencentBizQqstoryTakevideo2StoryLocalPublishPart).setImageDrawable(new BitmapDrawable(this.jdField_a_of_type_Oqz.jdField_a_of_type_AndroidViewView.getResources(), this.jdField_a_of_type_AndroidGraphicsBitmap));
-      StoryLocalPublishPart.a(this.jdField_a_of_type_Oqz.jdField_a_of_type_ComTencentBizQqstoryTakevideo2StoryLocalPublishPart).setOnClickListener(StoryLocalPublishPart.a(this.jdField_a_of_type_Oqz.jdField_a_of_type_ComTencentBizQqstoryTakevideo2StoryLocalPublishPart));
-      return;
+    if (paramWeiShiVideoArticleInfo1.recommendSeq == paramWeiShiVideoArticleInfo2.recommendSeq) {
+      return 0;
     }
-    SLog.d("story.publish.StoryLocalPublishPart", "queryFirstMediaThumbnail return null");
+    if (paramWeiShiVideoArticleInfo1.recommendSeq > paramWeiShiVideoArticleInfo2.recommendSeq) {
+      return -1;
+    }
+    return 1;
   }
 }
 

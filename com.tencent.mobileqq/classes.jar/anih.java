@@ -1,59 +1,48 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.thread.QzoneHandlerThreadFactory;
-import cooperation.qzone.thread.QzoneThreadMonitor;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.util.QZoneExceptionReport;
-import cooperation.qzone.util.exception.QZoneStartupFailException;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.qphone.base.util.QLog;
 
 public class anih
-  extends Handler
+  extends ancp<CustomEmotionData>
 {
-  public anih(QzoneThreadMonitor paramQzoneThreadMonitor, Looper paramLooper)
+  public anih(EmoticonMainPanel paramEmoticonMainPanel) {}
+  
+  public void a()
   {
-    super(paramLooper);
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonMainPanel", 2, "upload_finish");
+    }
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a(int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonMainPanel", 2, "download_finish");
     }
-    anij localanij = (anij)paramMessage.obj;
-    if (!QzoneThreadMonitor.access$000(this.a).containsKey(localanij.jdField_a_of_type_JavaLangString))
-    {
-      QZLog.w("QzoneThreadMonitor", 1, new Object[] { "massage has been canceled. id=", localanij.jdField_a_of_type_JavaLangString });
-      return;
+    this.a.p();
+    awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005CEE", "0X8005CEE", 0, 0, paramInt + "", "", "", "");
+  }
+  
+  public void a(CustomEmotionData paramCustomEmotionData, int paramInt1, int paramInt2)
+  {
+    this.a.p();
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonMainPanel", 2, "roaming_finish");
     }
-    if (paramMessage.arg1 >= 10)
-    {
-      QZLog.w("QzoneThreadMonitor", 1, new Object[] { "stack check for too many times. id=", localanij.jdField_a_of_type_JavaLangString });
-      return;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      ((anch)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(103)).b(this.a.jdField_a_of_type_Ancp);
     }
-    Object localObject = QzoneThreadMonitor.access$100(QzoneHandlerThreadFactory.getHandlerThreadLooper(localanij.jdField_b_of_type_JavaLangString).getThread().getStackTrace(), localanij.jdField_b_of_type_JavaLangString + " id=" + localanij.jdField_a_of_type_JavaLangString + ": ");
-    QZLog.w("QzoneThreadMonitor", 1, new Object[] { "[stack] ", localanij.jdField_b_of_type_JavaLangString, " id=", localanij.jdField_a_of_type_JavaLangString, " what=", Integer.valueOf(localanij.jdField_a_of_type_Int), " msg.target=", localanij.c, " msg.callback=", localanij.d });
-    QZLog.w("QzoneThreadMonitor", 1, new Object[] { localObject });
-    if (QzoneConfig.getInstance().getConfig("QZoneSetting", "report_backgroudmonitor", "0").equals("1")) {
-      QZoneExceptionReport.a(new QZoneStartupFailException(new Throwable((String)localObject)), ((String)localObject).toString());
-    }
-    paramMessage = Message.obtain(QzoneThreadMonitor.access$200(this.a), 1, paramMessage.arg1 + 1, 0, localanij);
-    localObject = QzoneThreadMonitor.access$200(this.a);
-    if (localanij.jdField_b_of_type_Int == 1) {}
-    for (long l = 500L;; l = 250L)
-    {
-      ((Handler)localObject).sendMessageDelayed(paramMessage, l);
-      return;
-    }
+    this.a.p();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anih
  * JD-Core Version:    0.7.0.1
  */

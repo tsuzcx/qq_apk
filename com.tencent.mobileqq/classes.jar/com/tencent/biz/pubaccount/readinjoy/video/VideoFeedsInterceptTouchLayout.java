@@ -3,10 +3,10 @@ package com.tencent.biz.pubaccount.readinjoy.video;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.widget.RelativeLayout;
+import android.widget.FrameLayout;
 
 public class VideoFeedsInterceptTouchLayout
-  extends RelativeLayout
+  extends FrameLayout
 {
   public VideoFeedsInterceptTouchLayout(Context paramContext)
   {

@@ -1,23 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.FileInfo;
+import android.widget.TextView;
 
-public final class adit
-  implements Parcelable.Creator
+class adit
+  extends acju
 {
-  public FileInfo a(Parcel paramParcel)
-  {
-    return new FileInfo(paramParcel, null);
-  }
+  TextView jdField_a_of_type_AndroidWidgetTextView;
   
-  public FileInfo[] a(int paramInt)
-  {
-    return new FileInfo[paramInt];
-  }
+  adit(adis paramadis) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adit
  * JD-Core Version:    0.7.0.1
  */

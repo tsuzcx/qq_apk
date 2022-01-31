@@ -10,15 +10,15 @@ import java.util.Map;
 public final class newest_feeds_req
   extends JceStruct
 {
-  static Map cache_mapUinTimes;
-  static ArrayList cache_vec_uinlist = new ArrayList();
+  static Map<Long, Long> cache_mapUinTimes;
+  static ArrayList<Long> cache_vec_uinlist = new ArrayList();
   public int cmd;
   public long last_feed_time;
   public long login_uin;
-  public Map mapUinTimes;
+  public Map<Long, Long> mapUinTimes;
   public String strQua = "";
   public String str_attach = "";
-  public ArrayList vec_uinlist;
+  public ArrayList<Long> vec_uinlist;
   
   static
   {
@@ -29,7 +29,7 @@ public final class newest_feeds_req
   
   public newest_feeds_req() {}
   
-  public newest_feeds_req(int paramInt, long paramLong1, ArrayList paramArrayList, long paramLong2, String paramString1, String paramString2, Map paramMap)
+  public newest_feeds_req(int paramInt, long paramLong1, ArrayList<Long> paramArrayList, long paramLong2, String paramString1, String paramString2, Map<Long, Long> paramMap)
   {
     this.cmd = paramInt;
     this.login_uin = paramLong1;

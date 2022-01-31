@@ -1,32 +1,30 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.VideoController;
+import com.tencent.av.gaudio.GaInviteLockActivity;
 
 public class ldq
-  implements TroopMemberApiClient.Callback
+  implements lxu
 {
-  public ldq(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
+  public ldq(GaInviteLockActivity paramGaInviteLockActivity) {}
   
-  public void a(Bundle paramBundle)
+  public void a(boolean paramBoolean)
   {
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      ReadInJoyArticleDetailActivity.a(this.a, paramBundle.getByteArray("decryptResult"));
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyArticleDetail", 2, "请求返回时间" + System.currentTimeMillis());
-      }
-      if (ReadInJoyArticleDetailActivity.a(this.a) == null) {
-        this.a.jdField_a_of_type_JavaLangString = null;
-      }
-      this.a.jdField_a_of_type_JavaLangObject.notifyAll();
+    if ((!paramBoolean) || (GaInviteLockActivity.b(this.a))) {
       return;
+    }
+    if ((this.a.a.e) || (this.a.a.l())) {
+      this.a.e();
+    }
+    for (;;)
+    {
+      awqx.b(null, "CliOper", "", "", "0X800420E", "0X800420E", 0, 0, "", "", "", "");
+      return;
+      this.a.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ldq
  * JD-Core Version:    0.7.0.1
  */

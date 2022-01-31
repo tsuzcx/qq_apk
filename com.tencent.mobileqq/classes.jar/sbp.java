@@ -1,17 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
-public final class sbp
-  implements DialogInterface.OnClickListener
+public class sbp
+  extends Handler
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public sbp(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    paramDialogInterface.dismiss();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    PublicAccountImageCollectionMainActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     sbp
  * JD-Core Version:    0.7.0.1
  */

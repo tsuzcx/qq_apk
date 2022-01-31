@@ -1,26 +1,51 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.image.URLDrawable;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.data.PublicAccountItem;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.URLDrawableHandler;
+import java.io.File;
+import java.io.OutputStream;
+import java.net.URL;
+import mqq.app.AppRuntime;
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.json.JSONObject;
 
 public class altw
-  implements View.OnLongClickListener
+  extends axrg
 {
-  public altw(QidianProfileCardActivity paramQidianProfileCardActivity, Drawable paramDrawable, PublicAccountItem paramPublicAccountItem) {}
-  
-  public boolean onLongClick(View paramView)
+  public File a(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof URLDrawable)) {
-      QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, (URLDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_ComTencentQidianDataPublicAccountItem.b);
+    String str;
+    for (Object localObject = paramDownloadParams.url.getHost();; str = "")
+    {
+      try
+      {
+        localObject = String.format("https://cgi.connect.qq.com/qqconnectopen/get_urlinfoForQQV2?url=%2$s&uin=%1$s", new Object[] { BaseApplicationImpl.getApplication().getRuntime().getAccount(), localObject });
+        localObject = mpl.a(BaseApplicationImpl.getApplication(), (String)localObject, null, "GET", null, null, 5000, 5000);
+        if ((localObject == null) || (((HttpResponse)localObject).getStatusLine().getStatusCode() != 200)) {
+          continue;
+        }
+        localObject = mpl.a((HttpResponse)localObject);
+        localObject = new JSONObject((String)localObject);
+        if (Integer.parseInt(((JSONObject)localObject).getString("ret")) == 0)
+        {
+          localObject = ((JSONObject)localObject).getString("thumbUrl");
+          paramDownloadParams.url = new URL((String)localObject);
+          paramDownloadParams.urlStr = ((String)localObject);
+          localObject = super.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
+          return localObject;
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      return super.a(paramOutputStream, paramDownloadParams, paramURLDrawableHandler);
     }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     altw
  * JD-Core Version:    0.7.0.1
  */

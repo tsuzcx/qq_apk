@@ -3,7 +3,7 @@ package com.tencent.mobileqq.ark;
 import java.util.HashMap;
 
 public class ArkAppCenterEvent$DictObservers
-  extends HashMap
+  extends HashMap<String, ArkAppCenterEvent.Observers>
 {}
 
 

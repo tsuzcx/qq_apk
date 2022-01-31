@@ -6,11 +6,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
+import awrn;
+import com.tencent.mobileqq.activity.EmosmActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
@@ -38,6 +39,7 @@ public class EmojiHomeUiPlugin
   public static final int HOMEPAGE_RDM_EVENT_UNKNOWN = 11213;
   public static final int HOMEPAGE_RDM_EVENT_UNSUP_AUTH = 11214;
   public static final int HOMEPAGE_RDM_EVENT_UNSUP_SCHEME = 11215;
+  public static final String TAG = "Q.emoji.web.EmojiUiPlugin.EmojiHomeUiPlugin";
   
   public static void openEmojiAuthorPage(Activity paramActivity, String paramString1, int paramInt, String paramString2)
   {
@@ -56,10 +58,10 @@ public class EmojiHomeUiPlugin
     VasWebviewUtil.openQQBrowserWithoutAD(paramActivity, null, 4L, localIntent, false, -1);
     if (paramInt == 3)
     {
-      paramActivity.overridePendingTransition(2131034132, 0);
+      paramActivity.overridePendingTransition(2130771992, 0);
       return;
     }
-    paramActivity.overridePendingTransition(2131034123, 0);
+    paramActivity.overridePendingTransition(2130771979, 0);
   }
   
   public static void openEmojiDetailPage(Activity paramActivity, String paramString1, int paramInt, String paramString2)
@@ -227,6 +229,22 @@ public class EmojiHomeUiPlugin
     VasWebviewUtil.openQQBrowserWithoutAD(paramActivity, null, 2L, localIntent, false, -1);
   }
   
+  public static void openEmosmActivity(Activity paramActivity, String paramString1, int paramInt, boolean paramBoolean, String paramString2)
+  {
+    if ((paramActivity == null) || (TextUtils.isEmpty(paramString1)))
+    {
+      QLog.e("Q.emoji.web.EmojiUiPlugin.EmojiHomeUiPlugin", 1, "open EmosmActivity failed because selfUin is empty.srcFromType=" + paramInt + " ,hasRedDot=" + paramBoolean + " ,currentId=" + paramString2);
+      return;
+    }
+    int i = ((BaseActivity)paramActivity).app.a().a();
+    paramString1 = ((BaseActivity)paramActivity).app.a().a();
+    paramString2 = new Intent(paramActivity, EmosmActivity.class);
+    paramString2.putExtra("key_emojimall_detail_chat_type", i);
+    paramString2.putExtra("key_emojimall_detail_chat_uin", paramString1);
+    paramString2.putExtra("emojimall_src", paramInt);
+    paramActivity.startActivity(paramString2);
+  }
+  
   public static void openSmallEmojiListPage(Activity paramActivity, String paramString1, int paramInt, String paramString2)
   {
     if ((paramActivity == null) || (TextUtils.isEmpty(paramString1))) {
@@ -325,7 +343,7 @@ public class EmojiHomeUiPlugin
         localHashMap.put("errorUrl", localObject1);
         bool1 = false;
         if (j != -4) {
-          break label489;
+          break label498;
         }
         i = 11201;
       }
@@ -338,9 +356,9 @@ public class EmojiHomeUiPlugin
       if (QLog.isColorLevel()) {
         QLog.i("Q.emoji.web.EmojiUiPlugin", 2, "statistic:openToOncreateGap:" + l1 + "openTogetKeyTimeGap:" + l2 + "bNeedGetKey:" + bool2 + "openToFinishOrErrorGap:" + l3 + "processStep:" + k + "isSuccess:" + bool1 + "errordescription:" + (String)localObject2 + "errorUrl:" + (String)localObject1 + "resultCode:" + j);
       }
-      StatisticCollector.a(paramContext).a(paramString, "actOpenHomePage", bool1, 0L, 0L, localHashMap, "");
+      awrn.a(paramContext).a(paramString, "actOpenHomePage", bool1, 0L, 0L, localHashMap, "");
       return;
-      label489:
+      label498:
       if (j == -12) {
         i = 11202;
       } else if (j == -6) {
@@ -386,10 +404,10 @@ public class EmojiHomeUiPlugin
   {
     if (this.mSrcFromType == 3)
     {
-      this.activity.overridePendingTransition(0, 2131034130);
+      this.activity.overridePendingTransition(0, 2130771989);
       return;
     }
-    this.activity.overridePendingTransition(0, 2131034122);
+    this.activity.overridePendingTransition(0, 2130771978);
   }
   
   public void doBeforeFinish()
@@ -416,7 +434,7 @@ public class EmojiHomeUiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin
  * JD-Core Version:    0.7.0.1
  */

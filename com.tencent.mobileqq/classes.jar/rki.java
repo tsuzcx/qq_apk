@@ -1,70 +1,59 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper.NewApkInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.SPSettings;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.qphone.base.util.BaseApplication;
-import protocol.KQQConfig.UpgradeInfo;
+import android.view.ViewGroup;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
 
-public class rki
-  implements View.OnClickListener
+class rki
+  implements rjq
 {
-  public rki(AboutActivity paramAboutActivity) {}
+  rki(rkg paramrkg, ViewGroup paramViewGroup, FrameLayout paramFrameLayout) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    int i = 2;
-    if (MyAppApi.a().b())
-    {
-      if (SPSettings.a()) {
-        i = 1;
-      }
-      ReportController.b(null, "dc00898", "", "", "0X8008FFB", "0X8008FFB", i, 0, "", "", "", "");
-      paramView = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
-      paramView.putExtra("StrTitle", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
-      paramView.putExtra("StrUpgradeDesc", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
-      paramView.putExtra("iUpgradeType", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
-      paramView.putExtra("activity_type", 4096);
-      if (BaseActivity.sTopActivity != null) {
-        BaseActivity.sTopActivity.startActivity(paramView);
-      }
+    if (rkg.a(this.jdField_a_of_type_Rkg) != null) {
+      rkg.a(this.jdField_a_of_type_Rkg).a(paramInt);
     }
-    do
+  }
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    if (paramBoolean)
     {
-      do
-      {
-        return;
-        if ((AboutActivity.a(this.a).jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper$NewApkInfo == null) || (!SPSettings.a(AboutActivity.a(this.a).jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeDetailWrapper$NewApkInfo.a))) {
-          break;
-        }
-        if (SPSettings.a()) {
-          i = 1;
-        }
-        ReportController.b(null, "dc00898", "", "", "0X8008FFB", "0X8008FFB", i, 0, "", "", "", "");
-        paramView = new Intent(BaseApplication.getContext(), UpgradeActivity.class);
-        paramView.putExtra("StrTitle", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strTitle);
-        paramView.putExtra("StrUpgradeDesc", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strUpgradeDesc);
-        paramView.putExtra("iUpgradeType", AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iUpgradeType);
-        paramView.putExtra("activity_type", 4096);
-      } while (BaseActivity.sTopActivity == null);
-      BaseActivity.sTopActivity.startActivity(paramView);
+      if (rkg.a(this.jdField_a_of_type_Rkg) == null) {
+        rkg.a(this.jdField_a_of_type_Rkg, (TranslateAnimation)AnimationUtils.loadAnimation(rkg.a(this.jdField_a_of_type_Rkg).getActivity(), 2130772001));
+      }
+      rkg.a(this.jdField_a_of_type_Rkg).setAnimationListener(new rkj(this));
+      rkg.a(this.jdField_a_of_type_Rkg).setDuration(200L);
+      rkg.a(this.jdField_a_of_type_Rkg).setInterpolator(new AccelerateInterpolator());
+      this.jdField_a_of_type_AndroidViewViewGroup.startAnimation(rkg.a(this.jdField_a_of_type_Rkg));
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Rkg.a(false);
       return;
-    } while ((AboutActivity.a(this.a) == null) || (AboutActivity.a(this.a).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null));
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004DB2", "0X8004DB2", 0, 0, "", "", UpgradeController.a(), "");
-    UpgradeDetailActivity.a(this.a, UpgradeController.a().a(), false, false, true);
+      if (rkg.b(this.jdField_a_of_type_Rkg) == null) {
+        rkg.b(this.jdField_a_of_type_Rkg, (TranslateAnimation)AnimationUtils.loadAnimation(rkg.a(this.jdField_a_of_type_Rkg).getActivity(), 2130772134));
+      }
+      rkg.b(this.jdField_a_of_type_Rkg).setAnimationListener(new rkk(this));
+      rkg.b(this.jdField_a_of_type_Rkg).setDuration(200L);
+      rkg.b(this.jdField_a_of_type_Rkg).setInterpolator(new AccelerateInterpolator());
+      this.jdField_a_of_type_AndroidViewViewGroup.startAnimation(rkg.b(this.jdField_a_of_type_Rkg));
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if ((paramInt == 2) && (rkg.a(this.jdField_a_of_type_Rkg).b()) && (this.jdField_a_of_type_AndroidWidgetFrameLayout.getVisibility() != 8)) {
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rki
  * JD-Core Version:    0.7.0.1
  */

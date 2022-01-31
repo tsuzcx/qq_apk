@@ -1,48 +1,34 @@
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader;
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader.VideoFrameLoaderListener;
-import java.lang.ref.WeakReference;
-import java.util.List;
 
-public class aolg
-  implements Runnable
+class aolg
+  extends aoko
 {
-  public aolg(VideoFrameLoader paramVideoFrameLoader) {}
-  
-  public void run()
+  public aolg(aokk paramaokk)
   {
-    if (VideoFrameLoader.a(this.a) != VideoFrameLoader.a(this.a).size())
+    super(paramaokk);
+  }
+  
+  protected String a()
+  {
+    return "StateRefuseByPCWhenToOffFailed";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_Aokk.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFrameLoader", 2, "onLoadEnd , framecount error!" + VideoFrameLoader.a(this.a) + "-" + VideoFrameLoader.a(this.a).size());
-      }
-      if ((!VideoFrameLoader.a(this.a)) && (VideoFrameLoader.a(this.a).size() == 0))
-      {
-        VideoFrameLoader.a(this.a, true);
-        this.a.b();
-        VideoFrameLoader.a(this.a, new aolb(VideoFrameLoader.a(this.a), VideoFrameLoader.b(this.a), VideoFrameLoader.c(this.a), VideoFrameLoader.a(this.a), VideoFrameLoader.d(this.a), VideoFrameLoader.a(this.a), VideoFrameLoader.b(this.a), this.a));
-        ThreadManager.post(VideoFrameLoader.a(this.a), 10, null, true);
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoFrameLoader", 2, "onLoadEnd , retry with retriever!");
-        }
-      }
-    }
-    for (;;)
-    {
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
       return;
-      if (VideoFrameLoader.a(this.a) != null) {}
-      for (VideoFrameLoader.VideoFrameLoaderListener localVideoFrameLoaderListener = (VideoFrameLoader.VideoFrameLoaderListener)VideoFrameLoader.a(this.a).get(); localVideoFrameLoaderListener != null; localVideoFrameLoaderListener = null)
-      {
-        localVideoFrameLoaderListener.c();
-        return;
-      }
     }
+    aokk.b(this.jdField_a_of_type_Aokk, 11, 6);
+    aokk.c(this.jdField_a_of_type_Aokk, 11, 6);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Aokk.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Aoko.a() + "->StateRefuseByPC)");
+    this.jdField_a_of_type_Aoko = new aole(this.jdField_a_of_type_Aokk);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aolg
  * JD-Core Version:    0.7.0.1
  */

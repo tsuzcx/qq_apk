@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SubMsgType0x90$NotifyItem
-  extends MessageMicro
+  extends MessageMicro<NotifyItem>
 {
   public static final int UINT32_PROPERTYID_FIELD_NUMBER = 1;
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8 }, new String[] { "uint32_propertyid" }, new Object[] { Integer.valueOf(0) }, NotifyItem.class);

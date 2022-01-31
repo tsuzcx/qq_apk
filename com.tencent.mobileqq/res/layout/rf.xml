@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/evr" android:paddingBottom="0.0dip" style="@style/p0">
+        <include android:id="@id/evu" layout="@layout/rm" />
+        <com.tencent.smtt.sdk.WebView android:id="@id/evv" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+</RelativeLayout>

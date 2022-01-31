@@ -1,22 +1,23 @@
-import android.content.Context;
-import android.os.AsyncTask;
-import com.dataline.core.DirectForwarder;
-import com.dataline.core.DirectForwarder.CallBack;
+import com.tencent.mobileqq.app.automator.step.CleanCache.1;
+import java.io.File;
+import java.util.Comparator;
 
-public final class ajxb
-  extends DirectForwarder.CallBack
+public class ajxb
+  implements Comparator<File>
 {
-  public ajxb(Context paramContext) {}
+  public ajxb(CleanCache.1 param1) {}
   
-  protected void a(AsyncTask paramAsyncTask, int paramInt)
+  public int a(File paramFile1, File paramFile2)
   {
-    super.a(paramAsyncTask, paramInt);
-    DirectForwarder.a(this.a, paramAsyncTask, paramInt, new ajxc(this));
+    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajxb
  * JD-Core Version:    0.7.0.1
  */

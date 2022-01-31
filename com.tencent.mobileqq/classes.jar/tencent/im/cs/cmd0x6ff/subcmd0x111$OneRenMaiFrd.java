@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class subcmd0x111$OneRenMaiFrd
-  extends MessageMicro
+  extends MessageMicro<OneRenMaiFrd>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_nick = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -28,7 +28,7 @@ public final class subcmd0x111$OneRenMaiFrd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.cmd0x6ff.subcmd0x111.OneRenMaiFrd
  * JD-Core Version:    0.7.0.1
  */

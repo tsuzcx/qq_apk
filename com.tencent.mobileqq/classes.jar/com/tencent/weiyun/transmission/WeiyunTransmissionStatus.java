@@ -36,14 +36,8 @@ public final class WeiyunTransmissionStatus
   public static final int VALUE_UPLOAD_SERVER_IP_RELEASE = 0;
   public static final int VALUE_UPLOAD_SERVER_IP_TEST = 5;
   public static final int VALUE_YES = 0;
-  private static Singleton<WeiyunTransmissionStatus, Void> sInstance = new Singleton()
-  {
-    protected WeiyunTransmissionStatus create(Void paramAnonymousVoid)
-    {
-      return new WeiyunTransmissionStatus(null);
-    }
-  };
-  private final SparseArray<HashSet<StatusChangeListener>> mListeners = new SparseArray();
+  private static Singleton<WeiyunTransmissionStatus, Void> sInstance = new WeiyunTransmissionStatus.1();
+  private final SparseArray<HashSet<WeiyunTransmissionStatus.StatusChangeListener>> mListeners = new SparseArray();
   private final SparseIntArray mValues = new SparseIntArray();
   
   static
@@ -68,12 +62,12 @@ public final class WeiyunTransmissionStatus
   
   private static int getInt4All(String paramString, int paramInt)
   {
-    return WeiyunTransmissionGlobal.getInstance().getContext().getSharedPreferences("com.tencent.weiyun.pref.transmission_status", 0).getInt(paramString, paramInt);
+    return WeiyunTransmissionGlobal.getInstance().getHostInterface().getSharedPreferences("com.tencent.weiyun.pref.transmission_status", 4).getInt(paramString, paramInt);
   }
   
   private static int getInt4Single(String paramString1, String paramString2, int paramInt)
   {
-    return WeiyunTransmissionGlobal.getInstance().getContext().getSharedPreferences("com.tencent.weiyun.pref.transmission_status", 0).getInt(paramString2 + paramString1, paramInt);
+    return WeiyunTransmissionGlobal.getInstance().getHostInterface().getSharedPreferences("com.tencent.weiyun.pref.transmission_status", 4).getInt(paramString2 + paramString1, paramInt);
   }
   
   private int getValue(int paramInt)
@@ -108,19 +102,46 @@ public final class WeiyunTransmissionStatus
   
   private boolean isValueValid(int paramInt1, int paramInt2)
   {
+    boolean bool2 = false;
+    boolean bool3 = false;
+    boolean bool1 = false;
     switch (paramInt1)
     {
     case 5: 
     default: 
-      return true;
     case 1: 
-      return (paramInt2 >= 1) && (paramInt2 <= 4);
+      do
+      {
+        return true;
+      } while ((paramInt2 >= 1) && (paramInt2 <= 4));
+      return false;
     case 2: 
-      return (paramInt2 == 0) || (paramInt2 == 5);
+      if ((paramInt2 == 0) || (paramInt2 == 5)) {
+        bool1 = true;
+      }
+      return bool1;
     case 4: 
-      return (paramInt2 == 0) || (paramInt2 == 1);
+      if (paramInt2 != 0)
+      {
+        bool1 = bool2;
+        if (paramInt2 != 1) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+      return bool1;
     }
-    return (paramInt2 == 0) || (paramInt2 == 1);
+    if (paramInt2 != 0)
+    {
+      bool1 = bool3;
+      if (paramInt2 != 1) {}
+    }
+    else
+    {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   private void notifyObservers(int paramInt1, int paramInt2, int paramInt3)
@@ -134,19 +155,19 @@ public final class WeiyunTransmissionStatus
       }
       ??? = localArrayList.iterator();
       if (((Iterator)???).hasNext()) {
-        ((StatusChangeListener)((Iterator)???).next()).onStatusChanged(paramInt1, paramInt2, paramInt3);
+        ((WeiyunTransmissionStatus.StatusChangeListener)((Iterator)???).next()).onStatusChanged(paramInt1, paramInt2, paramInt3);
       }
     }
   }
   
   private static void saveInt4All(String paramString, int paramInt)
   {
-    WeiyunTransmissionGlobal.getInstance().getContext().getSharedPreferences("com.tencent.weiyun.pref.transmission_status", 0).edit().putInt(paramString, paramInt).commit();
+    WeiyunTransmissionGlobal.getInstance().getHostInterface().getSharedPreferences("com.tencent.weiyun.pref.transmission_status", 4).edit().putInt(paramString, paramInt).commit();
   }
   
   private static void saveInt4Single(String paramString1, String paramString2, int paramInt)
   {
-    WeiyunTransmissionGlobal.getInstance().getContext().getSharedPreferences("com.tencent.weiyun.pref.transmission_status", 0).edit().putInt(paramString2 + paramString1, paramInt).commit();
+    WeiyunTransmissionGlobal.getInstance().getHostInterface().getSharedPreferences("com.tencent.weiyun.pref.transmission_status", 4).edit().putInt(paramString2 + paramString1, paramInt).commit();
   }
   
   private boolean setValue(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString)
@@ -191,7 +212,7 @@ public final class WeiyunTransmissionStatus
     }
   }
   
-  public void addListener(int paramInt, StatusChangeListener paramStatusChangeListener)
+  public void addListener(int paramInt, WeiyunTransmissionStatus.StatusChangeListener paramStatusChangeListener)
   {
     if ((paramStatusChangeListener != null) && (paramInt > 0)) {
       synchronized (this.mListeners)
@@ -265,7 +286,7 @@ public final class WeiyunTransmissionStatus
     setValue(5, NetworkUtils.getNetworkType(WeiyunTransmissionGlobal.getInstance().getContext()), false, false, null);
   }
   
-  public void removeListener(int paramInt, StatusChangeListener paramStatusChangeListener)
+  public void removeListener(int paramInt, WeiyunTransmissionStatus.StatusChangeListener paramStatusChangeListener)
   {
     if ((paramStatusChangeListener != null) && (paramInt > 0)) {
       synchronized (this.mListeners)
@@ -323,11 +344,6 @@ public final class WeiyunTransmissionStatus
   public boolean setUploadServerIp(int paramInt, boolean paramBoolean)
   {
     return setValue(2, paramInt, paramBoolean, true, null);
-  }
-  
-  public static abstract interface StatusChangeListener
-  {
-    public abstract void onStatusChanged(int paramInt1, int paramInt2, int paramInt3);
   }
 }
 

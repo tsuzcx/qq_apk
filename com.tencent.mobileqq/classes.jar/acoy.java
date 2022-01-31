@@ -1,19 +1,15 @@
-import com.tencent.mobileqq.activity.fling.TopGestureLayout;
-import com.tencent.mobileqq.emoticonview.StickerGestureDetector;
-
-public class acoy
-  implements Runnable
+class acoy
 {
-  public acoy(StickerGestureDetector paramStickerGestureDetector) {}
+  String jdField_a_of_type_JavaLangString;
   
-  public void run()
+  public acoy(acow paramacow, String paramString)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerFrameLayout);
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acoy
  * JD-Core Version:    0.7.0.1
  */

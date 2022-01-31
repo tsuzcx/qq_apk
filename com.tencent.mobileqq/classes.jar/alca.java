@@ -1,22 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.GridListView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.ark.API.ArkAppYYBDownloadModule.6;
+import com.tencent.open.downloadnew.DownloadInfo;
 
 public class alca
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public alca(GridListView paramGridListView) {}
+  public alca(ArkAppYYBDownloadModule.6 param6) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = ((Integer)paramView.getTag(2131369179)).intValue();
-    this.a.a.a(this.a, paramView, i, 0L);
+    if (this.a.a != null) {
+      albx.a(this.a.this$0, this.a.a, this.a.a.g);
+    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alca
  * JD-Core Version:    0.7.0.1
  */

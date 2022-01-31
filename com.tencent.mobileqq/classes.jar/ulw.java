@@ -1,31 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.lang.ref.WeakReference;
 
 public class ulw
-  extends VasQuickUpdateManager.CallBacker
 {
-  public ulw(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
+  private static final String jdField_a_of_type_JavaLangString = ajed.aT + "/Tencent/com/tencent/mobileqq/";
+  private static final boolean jdField_a_of_type_Boolean = new File(jdField_a_of_type_JavaLangString + "testserver").exists();
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public static void a(ulz<Integer> paramulz)
   {
-    if ((paramLong == 15L) && (paramString1.startsWith("card.")))
-    {
-      if ((paramInt1 == 0) && (!TextUtils.isEmpty(this.a.f))) {
-        this.a.c(this.a.f);
-      }
-    }
-    else {
-      return;
-    }
-    QLog.e("VipProfileCardDiyActivity", 1, "download card background failed. errorCode=" + paramInt1 + ", url=" + this.a.a);
+    paramulz = new WeakReference(paramulz);
+    umr localumr = new umr(null);
+    localumr.a(new ulx(paramulz));
+    localumr.a(new uly(paramulz));
+    localumr.a();
+  }
+  
+  public static boolean a()
+  {
+    if (jdField_a_of_type_Boolean) {}
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ulw
  * JD-Core Version:    0.7.0.1
  */

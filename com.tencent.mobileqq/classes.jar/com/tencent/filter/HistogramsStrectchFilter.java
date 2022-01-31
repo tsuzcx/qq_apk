@@ -1,30 +1,31 @@
 package com.tencent.filter;
 
+import com.tencent.aekit.openrender.UniformParam.FloatParam;
 import com.tencent.view.RendererUtils;
 
 public class HistogramsStrectchFilter
   extends BaseFilter
 {
-  float max_ratio = 0.999F;
-  float min_ratio = 0.001F;
+  private float maxRatio = 0.999F;
+  private float minRatio = 0.001F;
   
   public HistogramsStrectchFilter()
   {
-    super(GLSLRender.FILTER_HISTOGRAMS_STRCTCH);
+    super(BaseFilter.getFragmentShader(32));
   }
   
   public HistogramsStrectchFilter(float paramFloat1, float paramFloat2)
   {
-    super(GLSLRender.FILTER_HISTOGRAMS_STRCTCH);
-    this.min_ratio = paramFloat1;
-    this.max_ratio = paramFloat2;
+    super(BaseFilter.getFragmentShader(32));
+    this.minRatio = paramFloat1;
+    this.maxRatio = paramFloat2;
   }
   
-  public void ApplyGLSLFilter(boolean paramBoolean, float paramFloat1, float paramFloat2)
+  public void applyFilterChain(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
-    addParam(new Param.FloatParam("l_threshold", 0.1F));
-    addParam(new Param.FloatParam("h_threshold", 0.1F));
-    super.ApplyGLSLFilter(paramBoolean, paramFloat1, paramFloat2);
+    addParam(new UniformParam.FloatParam("l_threshold", 0.1F));
+    addParam(new UniformParam.FloatParam("h_threshold", 0.1F));
+    super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
   }
   
   public void beforeRender(int paramInt1, int paramInt2, int paramInt3)
@@ -39,47 +40,42 @@ public class HistogramsStrectchFilter
       paramInt1 += arrayOfInt[paramInt2];
       paramInt2 += 1;
     }
-    float f1 = this.min_ratio;
-    float f2 = this.max_ratio;
-    int i1 = (int)(paramInt1 * f1);
-    int n = (int)(paramInt1 * f2);
-    int i = 0;
-    int m = 0;
-    int k = 0;
+    float f1 = this.minRatio;
+    float f2 = this.maxRatio;
+    paramInt3 = (int)(f1 * paramInt1);
+    int j = (int)(paramInt1 * f2);
+    paramInt2 = 0;
     paramInt1 = 0;
-    paramInt2 = paramInt1;
-    int j = m;
-    paramInt3 = i;
     if (paramInt1 < 256)
     {
-      paramInt3 = i + arrayOfInt[paramInt1];
-      if (paramInt3 < i1) {
-        break label190;
+      paramInt2 += arrayOfInt[paramInt1];
+      if (paramInt2 >= paramInt3)
+      {
+        int i = paramInt1 + 1;
+        paramInt3 = paramInt1;
+        paramInt1 = i;
       }
-      j = paramInt1;
-      paramInt2 = paramInt1 + 1;
     }
     for (;;)
     {
-      paramInt1 = k;
-      if (paramInt2 < 256)
+      label105:
+      if (paramInt1 < 256)
       {
-        paramInt3 += arrayOfInt[paramInt2];
-        if (paramInt3 >= n) {
-          paramInt1 = paramInt2;
-        }
+        paramInt2 += arrayOfInt[paramInt1];
+        if (paramInt2 < j) {}
       }
-      else
+      for (;;)
       {
-        addParam(new Param.FloatParam("l_threshold", (float)(j / 255.0D)));
-        addParam(new Param.FloatParam("h_threshold", (float)(paramInt1 / 255.0D)));
+        addParam(new UniformParam.FloatParam("l_threshold", (float)(paramInt3 / 255.0D)));
+        addParam(new UniformParam.FloatParam("h_threshold", (float)(paramInt1 / 255.0D)));
         return;
-        label190:
         paramInt1 += 1;
-        i = paramInt3;
         break;
+        paramInt1 += 1;
+        break label105;
+        paramInt1 = 0;
       }
-      paramInt2 += 1;
+      paramInt3 = 0;
     }
   }
   
@@ -90,7 +86,7 @@ public class HistogramsStrectchFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.filter.HistogramsStrectchFilter
  * JD-Core Version:    0.7.0.1
  */

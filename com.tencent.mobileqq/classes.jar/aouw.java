@@ -1,21 +1,57 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
 
-public class aouw
-  implements ValueAnimator.AnimatorUpdateListener
+class aouw
+  implements aott
 {
-  public aouw(CameraCaptureButtonLayout paramCameraCaptureButtonLayout) {}
+  aouw(aous paramaous) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a(aovl paramaovl)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    CameraCaptureButtonLayout.a(this.a, f);
+    aotf localaotf = ((aotw)paramaovl).a();
+    if (localaotf != null)
+    {
+      if (1 != localaotf.c()) {
+        break label147;
+      }
+      if (!localaotf.a().isZipInnerFile) {
+        break label91;
+      }
+      paramaovl = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localaotf.a());
+      if ((paramaovl != null) && (this.a.jdField_a_of_type_Aovn != null)) {
+        this.a.jdField_a_of_type_Aovn.a(String.valueOf(localaotf.a()), paramaovl);
+      }
+    }
+    label91:
+    while (2 != localaotf.c())
+    {
+      do
+      {
+        return;
+        paramaovl = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localaotf.a(), 7);
+      } while ((paramaovl == null) || (this.a.jdField_a_of_type_Aovn == null));
+      this.a.jdField_a_of_type_Aovn.a(localaotf.c(), paramaovl);
+      return;
+    }
+    label147:
+    aodw localaodw = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    String str = localaotf.e();
+    if (localaotf.a() == null) {}
+    for (paramaovl = null;; paramaovl = localaotf.a().e)
+    {
+      paramaovl = localaodw.a(str, paramaovl, 7, localaotf);
+      if ((paramaovl == null) || (this.a.jdField_a_of_type_Aovn == null)) {
+        break;
+      }
+      this.a.jdField_a_of_type_Aovn.a(localaotf.e(), paramaovl);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aouw
  * JD-Core Version:    0.7.0.1
  */

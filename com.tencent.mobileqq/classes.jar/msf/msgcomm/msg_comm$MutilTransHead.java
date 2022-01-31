@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class msg_comm$MutilTransHead
-  extends MessageMicro
+  extends MessageMicro<MutilTransHead>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "status", "msgId" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0) }, MutilTransHead.class);
   public final PBUInt32Field msgId = PBField.initUInt32(0);

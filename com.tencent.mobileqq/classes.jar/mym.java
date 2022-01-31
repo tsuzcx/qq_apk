@@ -1,58 +1,42 @@
-import android.support.v4.util.MQLruCache;
-import com.tencent.biz.pubaccount.util.PreloadManager;
-import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.biz.pubaccount.persistence.entity.PAAdPreloadTask;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCompleteCallback;
 import java.io.File;
+import java.lang.ref.WeakReference;
 
-public class mym
-  extends Thread
+class mym
+  implements TVK_ICacheMgr.IPreloadCompleteCallback
 {
-  public mym(PreloadManager paramPreloadManager) {}
+  private mym(myh parammyh) {}
   
-  public void run()
+  public void onComplete(String paramString1, String paramString2)
   {
-    int j = 0;
-    if (PreloadManager.a(this.a) != null) {
-      PreloadManager.a(this.a).releaseLargeCache();
-    }
-    long l = System.currentTimeMillis();
-    Object localObject1 = new File(AppConstants.co);
-    int k;
-    int i;
-    Object localObject2;
-    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
+    for (;;)
     {
-      localObject1 = ((File)localObject1).listFiles();
-      k = localObject1.length;
-      i = 0;
-      while (i < k)
+      synchronized (myh.a(this.a))
       {
-        localObject2 = localObject1[i];
-        if (l - localObject2.lastModified() > 172800000L) {
-          localObject2.delete();
+        myh.c("onPreloadComplete vid:" + paramString1 + ", detail:" + paramString2);
+        paramString2 = new File(myh.b(paramString1));
+        if (paramString2.exists()) {
+          paramString2.renameTo(new File(myh.a(paramString1)));
         }
-        i += 1;
-      }
-    }
-    localObject1 = new File(AppConstants.cp);
-    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
-    {
-      localObject1 = ((File)localObject1).listFiles();
-      k = localObject1.length;
-      i = j;
-      while (i < k)
-      {
-        localObject2 = localObject1[i];
-        if (l - localObject2.lastModified() > 172800000L) {
-          localObject2.delete();
+        awqx.a(null, "dc00898", "", "", "0X8008F77", "0X8008F77", 0, 0, "", "", myh.a(this.a).mVideoVid, String.valueOf(myh.a(this.a).mSource));
+        paramString2 = (QQAppInterface)myh.a(this.a).get();
+        if (paramString2 != null)
+        {
+          paramString2 = paramString2.getCurrentAccountUin();
+          mye.b(paramString2, paramString1);
+          myh.a(this.a, myh.a(this.a));
+          return;
         }
-        i += 1;
       }
+      paramString2 = "";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     mym
  * JD-Core Version:    0.7.0.1
  */

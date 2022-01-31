@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/h0l" android:background="@color/mi" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/h0s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" layout="@layout/bwi" />
+    <TextView android:textSize="@dimen/ays" android:textColor="#ff777777" android:id="@id/kes" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="27.5dip" android:layout_marginTop="43.0dip" android:text="@string/g09" android:layout_below="@id/h0s" />
+    <TextView android:textSize="@dimen/az1" android:textColor="#ff000000" android:id="@id/keg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="27.5dip" android:layout_marginTop="7.0dip" android:layout_below="@id/kes" />
+    <TextView android:textSize="@dimen/aym" android:textColor="@color/bm" android:id="@id/fng" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="12.0dip" android:layout_below="@id/keg" />
+    <Button android:id="@id/ai1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="27.5dip" android:layout_marginTop="38.0dip" android:layout_marginRight="27.5dip" android:text="@string/coz" android:layout_below="@id/fng" android:layout_centerHorizontal="true" style="@style/hs" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_below="@id/ai1">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/dof" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ng">
+            <TextView android:textSize="@dimen/aym" android:textColor="#ff777777" android:layout_gravity="center_vertical" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fz_" android:contentDescription="@string/fz_" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/aym" android:textColor="#ff777777" android:gravity="center_horizontal" android:id="@id/faq" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/fzs" android:contentDescription="@string/fzs" />
+    </LinearLayout>
+</RelativeLayout>

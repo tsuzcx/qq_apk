@@ -1,25 +1,22 @@
-import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckBlackList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GpsMsg;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.List;
 
 public class sdo
-  implements Runnable
+  extends slu
 {
-  public sdo(ChatHistory paramChatHistory, boolean paramBoolean) {}
+  public List<qqstory_struct.GpsMsg> a;
   
-  public void run()
+  public sdo(qqstory_service.RspCheckBlackList paramRspCheckBlackList)
   {
-    ChatHistory localChatHistory1 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory;
-    ChatHistory localChatHistory2 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory;
-    if (this.jdField_a_of_type_Boolean == true) {}
-    for (int i = 2131433720;; i = 2131433721)
-    {
-      localChatHistory1.b(localChatHistory2.getString(i));
-      return;
-    }
+    super(paramRspCheckBlackList.result);
+    this.a = paramRspCheckBlackList.black_gps_list.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sdo
  * JD-Core Version:    0.7.0.1
  */

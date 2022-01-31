@@ -1,33 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.qphone.base.util.QLog;
-
 public class mhc
-  extends Handler
 {
-  public mhc(VideoFeedsPlayActivity paramVideoFeedsPlayActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public byte a;
+  public int a;
+  public String a;
+  public int b;
+  public String b;
   
-  public void handleMessage(Message paramMessage)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayActivity", 2, "mUIHandler handleMessage() msg.what = " + paramMessage.what);
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    VideoFeedsPlayActivity.b(this.a);
-  }
+  public mhc(mgz parammgz) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mhc
  * JD-Core Version:    0.7.0.1
  */

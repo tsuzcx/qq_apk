@@ -1,33 +1,21 @@
-import android.content.Intent;
+import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.widget.ImageView;
 
-public class afjs
-  implements View.OnClickListener
+class afjs
+  extends RecyclerView.ViewHolder
 {
-  public afjs(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
   
-  public void onClick(View paramView)
+  afjs(afjr paramafjr, View paramView)
   {
-    paramView = new Intent(this.a.a, NearbyVisitorListActivity.class);
-    paramView.putExtra("charmlevel", NearbyProfileDisplayTribePanel.a(this.a).charmLevel);
-    paramView.putExtra("download_tribe_app_url", NearbyProfileDisplayTribePanel.a(this.a).tribeAppDownloadPageUrl);
-    paramView.putExtra("is_show_tribeapp_download_layout", NearbyProfileDisplayTribePanel.a(this.a).isAddPicBtnDownloadAppOpen());
-    this.a.a.startActivity(paramView);
-    NearbyProfileDisplayTribePanel.a(this.a, null);
-    ThreadManager.post(new afjt(this), 5, null, false);
-    ReportController.b(this.a.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_visit", 0, 0, "", "", "", "");
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131310624));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afjs
  * JD-Core Version:    0.7.0.1
  */

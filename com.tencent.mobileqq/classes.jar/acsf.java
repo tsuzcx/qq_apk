@@ -1,27 +1,75 @@
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Rect;
 import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleView;
 
-public final class acsf
-  implements View.OnTouchListener
+public abstract class acsf
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected Context a;
+  protected Rect a;
+  protected DoodleView a;
+  
+  public acsf(DoodleView paramDoodleView)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    if (paramDoodleView == null) {
+      throw new IllegalStateException("DoodleView can not be null.");
     }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+    this.jdField_a_of_type_AndroidContentContext = paramDoodleView.getContext();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView = paramDoodleView;
+  }
+  
+  public void a()
+  {
+    c();
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, paramInt1, paramInt2);
+  }
+  
+  public final void a(Canvas paramCanvas)
+  {
+    b(paramCanvas);
+  }
+  
+  public boolean a()
+  {
+    return b();
+  }
+  
+  public final boolean a(MotionEvent paramMotionEvent)
+  {
+    b();
+    return b(paramMotionEvent);
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleView.invalidate();
     }
   }
+  
+  protected abstract void b(Canvas paramCanvas);
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  protected abstract boolean b(MotionEvent paramMotionEvent);
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acsf
  * JD-Core Version:    0.7.0.1
  */

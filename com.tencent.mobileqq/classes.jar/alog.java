@@ -1,59 +1,49 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.downloadnew.DownloadInfo;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable;
+import com.tencent.qphone.base.util.QLog;
 
-public final class alog
-  implements Parcelable.Creator
+public class alog
+  extends Handler
 {
-  public DownloadInfo a(Parcel paramParcel)
+  private QQAnimationDrawable b;
+  
+  public alog(QQAnimationDrawable paramQQAnimationDrawable1, QQAnimationDrawable paramQQAnimationDrawable2)
   {
-    boolean bool2 = true;
-    DownloadInfo localDownloadInfo = new DownloadInfo();
-    localDownloadInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localDownloadInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localDownloadInfo.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    localDownloadInfo.e = paramParcel.readString();
-    localDownloadInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
-    localDownloadInfo.jdField_a_of_type_Long = paramParcel.readInt();
-    localDownloadInfo.jdField_g_of_type_JavaLangString = paramParcel.readString();
-    localDownloadInfo.h = paramParcel.readString();
-    localDownloadInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localDownloadInfo.jdField_k_of_type_JavaLangString = paramParcel.readString();
-    localDownloadInfo.jdField_f_of_type_Int = paramParcel.readInt();
-    localDownloadInfo.jdField_g_of_type_Int = paramParcel.readInt();
-    localDownloadInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    if (paramParcel.readByte() != 0)
-    {
-      bool1 = true;
-      localDownloadInfo.jdField_c_of_type_Boolean = bool1;
-      localDownloadInfo.l = paramParcel.readString();
-      localDownloadInfo.j = paramParcel.readInt();
-      localDownloadInfo.jdField_k_of_type_Int = paramParcel.readInt();
-      localDownloadInfo.m = paramParcel.readString();
-      if (paramParcel.readByte() == 0) {
-        break label221;
-      }
-    }
-    label221:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localDownloadInfo.jdField_d_of_type_Boolean = bool1;
-      localDownloadInfo.n = paramParcel.readString();
-      localDownloadInfo.jdField_d_of_type_Long = paramParcel.readLong();
-      return localDownloadInfo;
-      bool1 = false;
-      break;
-    }
+    this.b = paramQQAnimationDrawable2;
   }
   
-  public DownloadInfo[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new DownloadInfo[paramInt];
+    StringBuilder localStringBuilder = new StringBuilder().append("InternalHandler handleMessage msg.what:").append(paramMessage.what).append(" main:");
+    if (Looper.myLooper() == Looper.getMainLooper()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d("QQAnimationDrawable", 2, bool);
+      if (!(paramMessage.obj instanceof Long)) {
+        break label170;
+      }
+      QLog.d("QQAnimationDrawable", 2, "InternalHandler handleMessage msg.obj:" + paramMessage.obj + " android.os.SystemClock.uptimeMillis():" + SystemClock.uptimeMillis());
+      paramMessage = (Long)paramMessage.obj;
+      if (paramMessage.longValue() >= SystemClock.uptimeMillis()) {
+        break;
+      }
+      QLog.d("QQAnimationDrawable", 2, "time < android.os.SystemClock.uptimeMillis()");
+      this.a.scheduleSelf(this.b, SystemClock.uptimeMillis());
+      return;
+    }
+    QLog.d("QQAnimationDrawable", 2, "time > android.os.SystemClock.uptimeMillis()");
+    this.a.scheduleSelf(this.b, paramMessage.longValue());
+    return;
+    label170:
+    QLog.d("QQAnimationDrawable", 2, "InternalHandler handleMessage msg.obj:" + paramMessage.obj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alog
  * JD-Core Version:    0.7.0.1
  */

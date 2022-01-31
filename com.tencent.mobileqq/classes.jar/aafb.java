@@ -1,47 +1,24 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.ar.ARRecord.ARRecordUtils;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewPresenter.onMonitorUserOperationListener;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewProxy;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aafb
-  implements View.OnTouchListener
+public final class aafb
+  implements DialogInterface.OnClickListener
 {
-  public aafb(ARVideoRecordViewProxy paramARVideoRecordViewProxy) {}
+  public aafb(aagm paramaagm) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    if (this.a != null) {
+      this.a.a();
     }
-    do
-    {
-      do
-      {
-        return true;
-        ARVideoRecordViewProxy.a(this.a).setAlpha(0.5F);
-        return true;
-        ARVideoRecordViewProxy.a(this.a).setAlpha(1.0F);
-        if (!ARVideoRecordViewProxy.a(this.a))
-        {
-          ARRecordUtils.a(true);
-          ARVideoRecordViewProxy.a(this.a, true);
-          ARVideoRecordViewProxy.a(this.a).setVisibility(8);
-          ARVideoRecordViewProxy.a(this.a).clearAnimation();
-        }
-      } while (ARVideoRecordViewProxy.a(this.a) == null);
-      ARVideoRecordViewProxy.a(this.a).h();
-    } while (!QLog.isColorLevel());
-    QLog.i("ARVideoRecordViewProxy", 2, "onMonitorUserOperation");
-    return true;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aafb
  * JD-Core Version:    0.7.0.1
  */

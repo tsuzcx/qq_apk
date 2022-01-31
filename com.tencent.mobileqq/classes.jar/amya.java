@@ -1,37 +1,17 @@
-import android.os.Bundle;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimDefineList;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
-import cooperation.qqpim.QQPimGetTipsInfoIPC.IGetQQPimTipsCallBack;
-import cooperation.qqpim.QQPimTipsInfo;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
-
 class amya
-  implements EIPCResultCallback
 {
-  amya(amxz paramamxz) {}
+  long jdField_a_of_type_Long;
+  long b;
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public amya(amxv paramamxv, long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(QQPimDefineList.a, 2, "QQPimGetTipsInfoIPC.onCallback() " + QQPimGetTipsInfoIPC.a(this.a.a).hashCode());
-    }
-    if ((paramEIPCResult != null) && (paramEIPCResult.data != null))
-    {
-      paramEIPCResult = paramEIPCResult.data.getParcelable(QQPimDefineList.n);
-      if (paramEIPCResult != null)
-      {
-        paramEIPCResult = (QQPimTipsInfo)paramEIPCResult;
-        this.a.a.a = paramEIPCResult;
-        QQPimGetTipsInfoIPC.a(this.a.a).a(paramEIPCResult);
-      }
-    }
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amya
  * JD-Core Version:    0.7.0.1
  */

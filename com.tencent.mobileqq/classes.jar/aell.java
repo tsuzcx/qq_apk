@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.lyric.widget.LyricViewController;
-import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
-
-public class aell
-  implements Runnable
+public abstract interface aell
 {
-  public aell(LyricViewController paramLyricViewController, int paramInt1, int paramInt2) {}
+  public abstract int a();
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqLyricWidgetLyricViewController.a.a(this.jdField_a_of_type_Int, this.b);
-  }
+  public abstract int b();
+  
+  public abstract int c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aell
  * JD-Core Version:    0.7.0.1
  */

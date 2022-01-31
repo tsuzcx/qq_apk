@@ -1,0 +1,112 @@
+{
+  "Readinjoy_article_compact_interaction_cell": {
+    "view_type": "cell",
+    "direction": "vertical",
+    "height": {
+      "type": "relative",
+      "value": "33"
+    },
+    "width": {
+      "type": "relative",
+      "value": "375"
+    },
+    "subviews": [
+      {
+        "view_type":"container",
+        "default_visible":"YES",
+        "layout_type":"layout_relative",
+        "height":{
+          "type":"match_parent"
+        },
+        "width":{
+          "type":"match_parent"
+        },
+        "subviews":[
+          {
+            "view_type": "ReadInJoyLikeButton",
+            "view_id": "id_interaction_like",
+            "default_visible": "YES",
+            "event_type":"cmd_like_click",
+            "align_parent_left": "YES",
+            "align_parent_top": "YES",
+            "margin_left": "32",
+            "margin_top": "14",
+            "margin_bottom": "14",
+            "height": {
+              "type": "relative",
+              "value": "22"
+            },
+            "width": {
+              "type": "relative",
+              "value": "90"
+            },
+            "attributes": {
+              "setFrameString:": "-1",
+              "setTitle:":"$interaction_like_count",
+              "setScaleType:":"3",
+              "setInnerMargin:": "4",
+              "setImages:colors:direction:forStates:":[["$like_normalstate_image","NativeArticleLikeEnable"],["#737373","#737373"],["0","0"],["0","1"]],
+              "setTitleEdgeInsets:imageEdgeInsets:":["{0,0,0,-6}","{0,0,0,0}"],
+              "setFontSizeString:":"12"
+            }
+          },
+          {
+            "view_type": "UIButton",
+            "view_id": "id_interaction_dislike",
+            "default_visible": "YES",
+            "event_type":"cmd_dislike_click",
+            "align_parent_center_horizontal": "YES",
+            "align_parent_top": "YES",
+            "margin_top": "14",
+            "margin_bottom": "14",
+            "height": {
+              "type": "relative",
+              "value": "22"
+            },
+            "width": {
+              "type": "relative",
+              "value": "90"
+            },
+            "attributes": {
+              "setFrameString:": "-1",
+              "setTitle:":"不喜欢",
+              "setScaleType:":"3",
+              "setInnerMargin:": "4",
+              "setImages:colors:direction:forStates:":[["NativeArticleDislike_gray"],["#737373"],["0"],["0"]],
+              "setTitleEdgeInsets:imageEdgeInsets:":["{0,0,0,-6}","{0,0,0,0}"],
+              "setFontSizeString:":"12"
+            }
+          },
+          {
+            "view_type": "UIButton",
+            "view_id": "id_interaction_share",
+            "default_visible": "YES",
+            "event_type":"cmd_share_click",
+            "align_parent_right": "YES",
+            "align_parent_top": "YES",
+            "margin_right": "32",
+            "margin_top": "14",
+            "margin_bottom": "14",
+            "height": {
+              "type": "relative",
+              "value": "22"
+            },
+            "width": {
+              "type": "relative",
+              "value": "90"
+            },
+            "attributes": {
+              "setFrameString:": "-1",
+              "setInnerMargin:": "4",
+              "setTitle:":"分享",
+              "setScaleType:":"3",
+              "setImages:colors:direction:forStates:":[["NativeArticleShare_gray"],["#737373"],["0"],["0"]],
+              "setTitleEdgeInsets:imageEdgeInsets:":["{0,0,0,-6}","{0,0,0,0}"],
+              "setFontSizeString:":"12"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

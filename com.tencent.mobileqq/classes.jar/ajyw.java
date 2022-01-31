@@ -1,23 +1,26 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment;
 
-public final class ajyw
-  implements Runnable
+class ajyw
+  implements DialogInterface.OnClickListener
 {
-  public ajyw(WeakReference paramWeakReference, String paramString, FrameSprite.OnFrameEndListener paramOnFrameEndListener) {}
+  ajyw(ajyv paramajyv, Activity paramActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SpriteVideoView localSpriteVideoView = (SpriteVideoView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localSpriteVideoView != null) {
-      localSpriteVideoView.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener);
-    }
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("back_for_hidden_chat", true);
+    paramDialogInterface.setFlags(603979776);
+    HiddenChatFragment.a(this.jdField_a_of_type_AndroidAppActivity, 3, 0, paramDialogInterface);
+    awqx.b(this.jdField_a_of_type_Ajyv.a, "dc00898", "", "", "0X800A34A", "0X800A34A", 0, 0, "0", "0", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajyw
  * JD-Core Version:    0.7.0.1
  */

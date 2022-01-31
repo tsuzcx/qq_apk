@@ -1,0 +1,111 @@
+{
+  "ReadInjoy_single_topic_cell": {
+    "view_type": "cell",
+    "layout_type": "layout_relative",
+    "height": {
+      "type": "relative",
+      "value": "155"
+    },
+    "width": {
+      "type": "relative",
+      "value": "375"
+    },
+    "subviews": [
+      {
+        "view_type": "ReadInjoyAsynImageView",
+        "view_id": "id_participant_imge",
+        "height": {
+          "type": "relative",
+          "value": "150"
+        },
+        "width": {
+          "type": "match_parent"
+        },
+        "attributes": {
+          "setFrameString:": "-1",
+          "setImageWithURLString:lineup:": [
+            "-1",
+            "-1"
+          ]
+        }
+      },
+      {
+        "view_type": "UIView",
+        "view_id": "id_view_cover",
+        "align_parent_top": "YES",
+        "height": {
+          "type": "relative",
+          "value": "150"
+        },
+        "width": {
+          "type": "match_parent"
+        },
+        "attributes": {
+          "setFrameString:": "-1",
+          "setBackgroundColorString:": "#66000000"
+        }
+      },
+      {
+        "view_type": "UILabel",
+        "view_id": "id_artilce_title",
+        "align_parent_center": "YES",
+        "align_parent_top": "YES",
+        "margin_top": "54",
+        "height": {
+          "type": "wrap_content"
+        },
+        "width": {
+          "type": "wrap_content"
+        },
+        "attributes": {
+          "setFrameString:": "-1",
+          "setText:lineSpace:": [
+            "",
+            "2"
+          ],
+          "setTextColorString:": "#FFFFFF",
+          "setBoldFontSizeString:": "22",
+          "setNumberOfLinesString:": "1"
+        }
+      },
+      {
+        "view_type": "UILabel",
+        "view_id": "id_participant_title",
+        "align_parent_center": "YES",
+        "align_parent_top": "YES",
+        "margin_top": "85",
+        "height": {
+          "type": "relative",
+          "value": "32"
+        },
+        "width": {
+          "type": "wrap_content"
+        },
+        "attributes": {
+          "setFrameString:": "-1",
+          "setText:": "-1",
+          "setTextColorString:": "#FFFFFF",
+          "setFontSizeString:": "12",
+          "setNumberOfLinesString:": "1"
+        }
+      },
+      {
+        "view_type": "UIView",
+        "view_id": "id_separator",
+        "below_of_view": "id_participant_imge",
+        "height": {
+          "type": "absolutely",
+          "value": "5"
+        },
+        "width": {
+          "type": "match_parent"
+        },
+        "attributes": {
+          "setFrameString:": "-1",
+          "setBackgroundColorString:": "#eaeaea"
+        }
+      }
+    ]
+  }
+}
+

@@ -1,29 +1,17 @@
-import com.tencent.biz.common.util.Util;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.webviewplugin.OfflinePlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler.CheckOfflineCallback;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class pgo
-  implements SwiftBrowserOfflineHandler.CheckOfflineCallback
+class pgo
+  implements View.OnClickListener
 {
-  public pgo(OfflinePlugin paramOfflinePlugin, long paramLong, String paramString) {}
+  pgo(pgn parampgn) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.c = ((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    if (QLog.isColorLevel()) {
-      QLog.i("OfflinePluginQQ", 2, "onCheckOfflineFinish, cost: " + this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.c + ", url: " + Util.b(this.jdField_a_of_type_JavaLangString, new String[0]));
+    paramView = this.a.jdField_a_of_type_Qoe.a();
+    if (paramView != null) {
+      paramView.a(null, ((opw)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
     }
-    this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.a(this.jdField_a_of_type_JavaLangString, paramInt);
-    CustomWebView localCustomWebView = this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.mRuntime.a();
-    if (localCustomWebView != null)
-    {
-      localCustomWebView.a(this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    QLog.e("OfflinePluginQQ", 1, "error!!!! webview is null, now can not loadUrl " + this.jdField_a_of_type_JavaLangString);
   }
 }
 

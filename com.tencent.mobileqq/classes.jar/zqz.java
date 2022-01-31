@@ -1,35 +1,41 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import mqq.os.MqqHandler;
+import java.util.HashMap;
+import java.util.Observable;
 
 public class zqz
-  extends SosoInterface.OnLocationListener
+  extends Observable
 {
-  public zqz(PublicAccountHandler paramPublicAccountHandler, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, int paramInt2, SharedPreferences paramSharedPreferences)
+  private static zqz a;
+  public int a;
+  public HashMap<String, String> a;
+  
+  public static zqz a()
   {
-    super(paramInt1, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    if (jdField_a_of_type_Zqz == null) {}
+    try
+    {
+      if (jdField_a_of_type_Zqz == null) {
+        jdField_a_of_type_Zqz = new zqz();
+      }
+      return jdField_a_of_type_Zqz;
+    }
+    finally {}
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(HashMap<String, String> paramHashMap)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
-    {
-      paramInt = (int)(paramSosoLbsInfo.a.a * 1000000.0D);
-      int i = (int)(paramSosoLbsInfo.a.b * 1000000.0D);
-      this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.a(this.jdField_a_of_type_Int, paramInt, i, 0);
-      paramSosoLbsInfo = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      paramSosoLbsInfo.putInt("loc_lat", paramInt);
-      paramSosoLbsInfo.putInt("loc_lng", i);
-      paramSosoLbsInfo.putLong("location_time", System.currentTimeMillis());
-      paramSosoLbsInfo.commit();
-      return;
-    }
-    ThreadManager.getSubThreadHandler().post(new zra(this));
+    paramHashMap.put("key_type", "t_held_thread");
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    setChanged();
+    notifyObservers();
+  }
+  
+  public void a(HashMap<String, String> paramHashMap, int paramInt)
+  {
+    paramHashMap.put("key_type", "t_drop_frame");
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    this.jdField_a_of_type_Int = paramInt;
+    setChanged();
+    notifyObservers();
   }
 }
 

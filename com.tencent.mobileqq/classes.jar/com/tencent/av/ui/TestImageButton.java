@@ -3,8 +3,8 @@ package com.tencent.av.ui;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.ImageButton;
-import com.tencent.av.smallscreen.SmallScreenUtils;
 import com.tencent.qphone.base.util.QLog;
+import lor;
 
 public class TestImageButton
   extends ImageButton
@@ -30,12 +30,12 @@ public class TestImageButton
     if (QLog.isDevelopLevel()) {
       QLog.d("TestImageButton", 4, "WL_DEBUG setVisibility visibility = " + paramInt);
     }
-    SmallScreenUtils.a();
+    lor.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.ui.TestImageButton
  * JD-Core Version:    0.7.0.1
  */

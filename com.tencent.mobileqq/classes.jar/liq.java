@@ -1,80 +1,82 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkViewController;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
-import java.util.HashMap;
+import com.tencent.av.random.RandomWebProtocol;
+import java.util.Random;
+import org.json.JSONObject;
 
 public class liq
-  implements Runnable
+  extends lip
 {
-  public liq(ReadInJoyArkViewController paramReadInJoyArkViewController, String paramString1, String paramString2, String paramString3, int paramInt) {}
+  int c;
+  int d;
+  int e;
+  String f;
   
-  public void run()
+  public liq(RandomWebProtocol paramRandomWebProtocol, lip paramlip, String paramString, int paramInt1, int paramInt2, int paramInt3, String... paramVarArgs)
   {
-    try
-    {
-      Object localObject = new HashMap();
-      ((HashMap)localObject).put("action", this.jdField_a_of_type_JavaLangString);
-      if (this.b == null)
-      {
-        str = "";
-        ((HashMap)localObject).put("appname", str);
-        if (this.c != null) {
-          break label240;
-        }
-        str = "";
-        label47:
-        ((HashMap)localObject).put("appver", str);
-        if (this.jdField_a_of_type_JavaLangString.equals("download")) {
-          ((HashMap)localObject).put("result", "" + this.jdField_a_of_type_Int);
-        }
-        StatisticCollector.a(BaseApplication.getContext()).a(null, "actionReadInJoyArkConfig", TextUtils.equals(this.jdField_a_of_type_JavaLangString, "show"), 0L, 0L, (HashMap)localObject, null);
-        if (QLog.isColorLevel())
-        {
-          localObject = new StringBuilder().append("report actionReadInJoyArkConfig name:");
-          if (this.b != null) {
-            break label248;
-          }
-          str = "";
-          label150:
-          localObject = ((StringBuilder)localObject).append(str).append(", ver:");
-          if (this.c != null) {
-            break label256;
-          }
-        }
-      }
-      label256:
-      for (String str = "";; str = this.c)
-      {
-        QLog.d("ReadInJoyArkViewController", 2, str + ", action:" + this.jdField_a_of_type_JavaLangString);
-        if ((TextUtils.equals(this.jdField_a_of_type_JavaLangString, "except")) && (TextUtils.equals(this.jdField_a_of_type_JavaLangString, "download"))) {
-          return;
-        }
-        ReadInJoyHelper.b(ReadInJoyUtils.a(), this.c);
-        return;
-        str = this.b;
-        break;
-        label240:
-        str = this.c;
-        break label47;
-        label248:
-        str = this.b;
-        break label150;
-      }
-      return;
+    super(paramRandomWebProtocol, paramlip);
+    this.a = 1;
+    this.c = paramString;
+    this.d = paramInt1;
+    this.c = paramInt2;
+    this.e = paramInt3;
+    if ((this.e == 2) && (paramVarArgs != null) && (paramVarArgs.length == 1)) {
+      this.f = paramVarArgs[0];
     }
-    catch (Exception localException)
+    this.d = "[d] RequestDouble";
+  }
+  
+  String a()
+  {
+    JSONObject localJSONObject1 = new JSONObject();
+    Object localObject = localJSONObject1;
+    for (;;)
     {
-      QLog.d("ReadInJoyArkViewController", 1, "report ark error", localException);
+      try
+      {
+        this.a = new JSONObject().put("peer_gender", this.c).put("session_type", this.d).put("reqtype", this.e);
+        localObject = localJSONObject1;
+        if (this.e == 2)
+        {
+          localObject = localJSONObject1;
+          if (this.f != null)
+          {
+            localObject = localJSONObject1;
+            this.a.put("uniqkey", this.f);
+            localObject = localJSONObject1;
+            JSONObject localJSONObject2 = new JSONObject(super.a());
+            localObject = localJSONObject1;
+            if (this.e != 1) {
+              break label178;
+            }
+            localObject = localJSONObject1;
+            i = this.b.a;
+            localObject = localJSONObject1;
+            localJSONObject1 = localJSONObject2.put("rand", i);
+            localObject = localJSONObject1;
+            return localJSONObject1.toString();
+          }
+        }
+        localObject = localJSONObject1;
+        if (this.e != 1) {
+          continue;
+        }
+        localObject = localJSONObject1;
+        this.b.a = new Random().nextInt();
+        continue;
+        localObject = localException;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return ((JSONObject)localObject).toString();
+      }
+      label178:
+      int i = new Random().nextInt();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     liq
  * JD-Core Version:    0.7.0.1
  */

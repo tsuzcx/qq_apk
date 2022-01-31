@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import java.util.List;
 
-class ugk
-  implements Runnable
+public abstract interface ugk
 {
-  ugk(ugj paramugj, boolean paramBoolean1, String paramString1, boolean paramBoolean2, String paramString2, String paramString3) {}
+  public abstract void a(String paramString, List<uhj> paramList);
   
-  public void run()
-  {
-    TroopMemberListActivity.a(this.jdField_a_of_type_Ugj.a, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Boolean, 0, 0, this.jdField_b_of_type_JavaLangString, this.c);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ugk
  * JD-Core Version:    0.7.0.1
  */

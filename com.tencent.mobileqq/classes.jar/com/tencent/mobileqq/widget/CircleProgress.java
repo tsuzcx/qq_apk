@@ -16,8 +16,11 @@ public class CircleProgress
   float jdField_a_of_type_Float;
   int jdField_a_of_type_Int;
   Paint jdField_a_of_type_AndroidGraphicsPaint;
+  RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  boolean jdField_a_of_type_Boolean = true;
   float jdField_b_of_type_Float;
   int jdField_b_of_type_Int;
+  boolean jdField_b_of_type_Boolean = true;
   int c;
   int d;
   int e;
@@ -40,11 +43,11 @@ public class CircleProgress
   private void a()
   {
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
-    this.jdField_b_of_type_Int = getResources().getColor(2131492982);
-    this.e = getResources().getColor(2131493062);
+    this.jdField_b_of_type_Int = getResources().getColor(2131099993);
+    this.e = getResources().getColor(2131099950);
     this.d = 51;
     this.f = 255;
-    this.c = getResources().getColor(2131492985);
+    this.c = getResources().getColor(2131099982);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
@@ -56,13 +59,19 @@ public class CircleProgress
     this.g = getWidth();
     this.h = getHeight();
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(this.d * 255 / 100);
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(this.d * 255 / 100);
+    }
     this.jdField_a_of_type_AndroidGraphicsPaint.setShadowLayer(9.0F, 0.0F, 0.0F, this.c);
-    paramCanvas.drawArc(new RectF(this.jdField_a_of_type_Int / 2, this.jdField_a_of_type_Int / 2, this.g - this.jdField_a_of_type_Int / 2, this.h - this.jdField_a_of_type_Int / 2), -90.0F, 360.0F, false, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, this.g - this.jdField_a_of_type_Int, this.h - this.jdField_a_of_type_Int);
+    paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, 360.0F, false, this.jdField_a_of_type_AndroidGraphicsPaint);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.e);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(this.f * 255 / 100);
+    if (this.jdField_b_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(this.f * 255 / 100);
+    }
     this.jdField_a_of_type_AndroidGraphicsPaint.setShadowLayer(9.0F, 0.0F, 0.0F, this.c);
-    paramCanvas.drawArc(new RectF(this.jdField_a_of_type_Int / 2, this.jdField_a_of_type_Int / 2, this.g - this.jdField_a_of_type_Int / 2, this.h - this.jdField_a_of_type_Int / 2), -90.0F, (float)(3.6D * this.jdField_b_of_type_Float), false, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, this.g - this.jdField_a_of_type_Int, this.h - this.jdField_a_of_type_Int);
+    paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, (float)(3.6D * this.jdField_b_of_type_Float), false, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
   public void setBgAndProgressColor(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -71,6 +80,12 @@ public class CircleProgress
     this.d = paramInt1;
     this.e = paramInt4;
     this.f = paramInt3;
+  }
+  
+  public void setBgAndProgressUseAlpha(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
   }
   
   public void setProgress(float paramFloat)
@@ -96,10 +111,15 @@ public class CircleProgress
     this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Float * paramFloat + 0.5D));
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Int);
   }
+  
+  public void setmShadowColor(int paramInt)
+  {
+    this.c = paramInt;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CircleProgress
  * JD-Core Version:    0.7.0.1
  */

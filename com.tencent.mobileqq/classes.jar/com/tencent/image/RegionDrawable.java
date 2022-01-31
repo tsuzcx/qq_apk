@@ -13,13 +13,10 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.ConstantState;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.Message;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
-import java.io.IOException;
 import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserException;
 
 public class RegionDrawable
   extends Drawable
@@ -33,17 +30,11 @@ public class RegionDrawable
   private int mBitmapHeight;
   private int mBitmapWidth;
   private final Rect mDstRect = new Rect();
-  private Handler mMainHandler = new Handler(Looper.getMainLooper())
-  {
-    public void handleMessage(Message paramAnonymousMessage)
-    {
-      RegionDrawable.this.invalidateSelf();
-    }
-  };
+  private Handler mMainHandler = new RegionDrawable.1(this, Looper.getMainLooper());
   private boolean mMutated;
   private RegionBitmap mRegionBitmap;
   private int mRegionDrawableState;
-  private RegionState mRegionState;
+  private RegionDrawable.RegionState mRegionState;
   private int mScrollDirection;
   private boolean mShowRegion;
   private int mTargetDensity;
@@ -52,29 +43,29 @@ public class RegionDrawable
   @Deprecated
   public RegionDrawable()
   {
-    this.mRegionState = new RegionState((Bitmap)null);
+    this.mRegionState = new RegionDrawable.RegionState((Bitmap)null);
   }
   
   @Deprecated
   public RegionDrawable(Resources paramResources)
   {
-    this.mRegionState = new RegionState((Bitmap)null);
+    this.mRegionState = new RegionDrawable.RegionState((Bitmap)null);
     this.mRegionState.mTargetDensity = this.mTargetDensity;
   }
   
   public RegionDrawable(Resources paramResources, Bitmap paramBitmap, String paramString)
   {
-    this(new RegionState(paramBitmap), paramResources, paramString);
+    this(new RegionDrawable.RegionState(paramBitmap), paramResources, paramString);
     this.mRegionState.mTargetDensity = this.mTargetDensity;
   }
   
   @Deprecated
   public RegionDrawable(Bitmap paramBitmap)
   {
-    this(new RegionState(paramBitmap), null, null);
+    this(new RegionDrawable.RegionState(paramBitmap), null, null);
   }
   
-  private RegionDrawable(RegionState paramRegionState, Resources paramResources, String paramString)
+  private RegionDrawable(RegionDrawable.RegionState paramRegionState, Resources paramResources, String paramString)
   {
     this.mRegionState = paramRegionState;
     if (paramString != paramRegionState.mPath) {
@@ -102,11 +93,9 @@ public class RegionDrawable
   
   private Rect calcCachedArea(Rect paramRect1, Rect paramRect2)
   {
-    int i = paramRect2.width() / 2;
-    int j = paramRect2.height() / 2;
-    paramRect2 = new Rect(paramRect2.left - i, paramRect2.top - j, paramRect2.right + i, paramRect2.bottom + j);
-    paramRect2.intersect(paramRect1);
-    return paramRect2;
+    paramRect1 = new Rect(paramRect1);
+    paramRect1.intersect(paramRect2);
+    return paramRect1;
   }
   
   private void computeBitmapSize()
@@ -138,7 +127,7 @@ public class RegionDrawable
   public void draw(Canvas paramCanvas)
   {
     Bitmap localBitmap = this.mBitmap;
-    RegionState localRegionState;
+    RegionDrawable.RegionState localRegionState;
     Object localObject2;
     Shader.TileMode localTileMode;
     if (localBitmap != null)
@@ -261,9 +250,7 @@ public class RegionDrawable
     return this.mRegionState.mPaint.isAntiAlias();
   }
   
-  public void inflate(Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet)
-    throws XmlPullParserException, IOException
-  {}
+  public void inflate(Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet) {}
   
   public final boolean isAutoMirrored()
   {
@@ -274,7 +261,7 @@ public class RegionDrawable
   {
     if ((!this.mMutated) && (super.mutate() == this))
     {
-      this.mRegionState = new RegionState(this.mRegionState);
+      this.mRegionState = new RegionDrawable.RegionState(this.mRegionState);
       this.mMutated = true;
     }
     return this;
@@ -381,7 +368,7 @@ public class RegionDrawable
   
   public void setTileModeXY(Shader.TileMode paramTileMode1, Shader.TileMode paramTileMode2)
   {
-    RegionState localRegionState = this.mRegionState;
+    RegionDrawable.RegionState localRegionState = this.mRegionState;
     if ((localRegionState.mTileModeX != paramTileMode1) || (localRegionState.mTileModeY != paramTileMode2))
     {
       localRegionState.mTileModeX = paramTileMode1;
@@ -425,59 +412,6 @@ public class RegionDrawable
     paramRegionDrawableData.mSourceDensity = getBitmap().getDensity();
     this.mRegionDrawableState = paramRegionDrawableData.mState;
     this.mRegionBitmap.updateRegionBitmap(paramRegionDrawableData);
-  }
-  
-  static final class RegionState
-    extends Drawable.ConstantState
-  {
-    boolean mAutoMirrored;
-    Bitmap mBitmap;
-    int mChangingConfigurations;
-    int mGravity = 119;
-    Paint mPaint = new Paint(6);
-    String mPath;
-    boolean mRebuildShader;
-    int mTargetDensity = 160;
-    Shader.TileMode mTileModeX = null;
-    Shader.TileMode mTileModeY = null;
-    
-    RegionState(Bitmap paramBitmap)
-    {
-      this.mBitmap = paramBitmap;
-    }
-    
-    RegionState(RegionState paramRegionState)
-    {
-      this(paramRegionState.mBitmap);
-      this.mChangingConfigurations = paramRegionState.mChangingConfigurations;
-      this.mGravity = paramRegionState.mGravity;
-      this.mTileModeX = paramRegionState.mTileModeX;
-      this.mTileModeY = paramRegionState.mTileModeY;
-      this.mTargetDensity = paramRegionState.mTargetDensity;
-      this.mPaint = new Paint(paramRegionState.mPaint);
-      this.mRebuildShader = paramRegionState.mRebuildShader;
-      this.mAutoMirrored = paramRegionState.mAutoMirrored;
-    }
-    
-    public Bitmap getBitmap()
-    {
-      return this.mBitmap;
-    }
-    
-    public int getChangingConfigurations()
-    {
-      return this.mChangingConfigurations;
-    }
-    
-    public Drawable newDrawable()
-    {
-      return new RegionDrawable(this, null, this.mPath, null);
-    }
-    
-    public Drawable newDrawable(Resources paramResources)
-    {
-      return new RegionDrawable(this, paramResources, this.mPath, null);
-    }
   }
 }
 

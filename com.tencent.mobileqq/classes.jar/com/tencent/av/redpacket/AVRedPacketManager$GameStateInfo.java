@@ -8,7 +8,7 @@ public class AVRedPacketManager$GameStateInfo
   implements Serializable
 {
   String authKey;
-  public List configEmojiInfos;
+  public List<AVRedPacketManager.LocalEmojiInfo> configEmojiInfos;
   public int count_OnFrameDataSend = 0;
   int curCommCnt;
   int curScore;
@@ -26,7 +26,7 @@ public class AVRedPacketManager$GameStateInfo
   String money;
   String receiveRedPacketUin;
   String sendRedPacketUin;
-  HashSet syncSuccEmojiId = new HashSet();
+  HashSet<Integer> syncSuccEmojiId = new HashSet();
   
   AVRedPacketManager$GameStateInfo(GameStateInfo paramGameStateInfo)
   {
@@ -67,7 +67,7 @@ public class AVRedPacketManager$GameStateInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.redpacket.AVRedPacketManager.GameStateInfo
  * JD-Core Version:    0.7.0.1
  */

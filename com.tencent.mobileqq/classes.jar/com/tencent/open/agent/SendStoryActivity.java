@@ -1,6 +1,5 @@
 package com.tencent.open.agent;
 
-import alkf;
 import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -19,20 +18,23 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import bbtm;
+import bbzd;
+import bbze;
+import bcds;
+import bcdy;
+import bcen;
+import bceo;
+import bcep;
+import bceq;
+import bcew;
+import bcfb;
+import bcjm;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.open.agent.datamodel.Friend;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.StringAddition;
 import com.tencent.open.base.http.HttpBaseUtil.HttpStatusException;
 import com.tencent.open.base.http.HttpBaseUtil.NetworkUnavailableException;
-import com.tencent.open.base.http.HttpCgiAsyncTask;
-import com.tencent.open.base.http.HttpCgiAsyncTask.Callback;
-import com.tencent.open.base.http.HttpImageDownloadAsyncTask;
-import com.tencent.open.base.http.HttpImageDownloadAsyncTask.TaskCompleteCallback;
-import com.tencent.open.business.base.StaticAnalyz;
-import com.tencent.open.settings.ServerSetting;
 import com.tencent.open.widget.CursorEditText;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
@@ -49,7 +51,7 @@ import org.json.JSONObject;
 
 public class SendStoryActivity
   extends BaseActivity
-  implements TextWatcher, View.OnClickListener, HttpCgiAsyncTask.Callback, HttpImageDownloadAsyncTask.TaskCompleteCallback
+  implements TextWatcher, View.OnClickListener, bceo, bceq
 {
   protected ProgressDialog a;
   protected Bundle a;
@@ -82,7 +84,7 @@ public class SendStoryActivity
     for (paramFriend = paramFriend.jdField_b_of_type_JavaLangString;; paramFriend = paramFriend.jdField_c_of_type_JavaLangString)
     {
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append("@").append(StringAddition.a(paramFriend, 12, false, false));
+      localStringBuilder.append("@").append(bcdy.a(paramFriend, 12, false, false));
       localStringBuilder.append(" ");
       return localStringBuilder.toString();
     }
@@ -91,42 +93,42 @@ public class SendStoryActivity
   @TargetApi(14)
   protected void a()
   {
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131365818));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131303767));
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       this.jdField_b_of_type_AndroidWidgetLinearLayout.setFitsSystemWindows(true);
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setPadding(0, ImmersiveUtils.a(this), 0, 0);
+      this.jdField_b_of_type_AndroidWidgetLinearLayout.setPadding(0, ImmersiveUtils.getStatusBarHeight(this), 0, 0);
     }
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131362599);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363400));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363262));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363492));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363447));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131311553);
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131302847));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131302804));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131302806));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131302832));
     this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_f_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentOpenWidgetCursorEditText = ((CursorEditText)super.findViewById(2131365823));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365821));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131365824));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131365819));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365825));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365826));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365827));
+    this.jdField_a_of_type_ComTencentOpenWidgetCursorEditText = ((CursorEditText)super.findViewById(2131300168));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131297911));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131303778));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131309646));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131312531));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131312530));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131303068));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_a_of_type_ArrayOfAndroidTextInputFilter = new InputFilter[] { new SendStoryActivity.CustomLengthInputFilter(this, this.jdField_a_of_type_ComTencentOpenWidgetCursorEditText, 80) };
+    this.jdField_a_of_type_ArrayOfAndroidTextInputFilter = new InputFilter[] { new bbze(this, this.jdField_a_of_type_ComTencentOpenWidgetCursorEditText, 80) };
     this.jdField_a_of_type_ComTencentOpenWidgetCursorEditText.setFilters(this.jdField_a_of_type_ArrayOfAndroidTextInputFilter);
     this.jdField_a_of_type_ComTencentOpenWidgetCursorEditText.addTextChangedListener(this);
     this.jdField_a_of_type_ComTencentOpenWidgetCursorEditText.setSpannedClassToSkip(Friend.class);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(StringAddition.a(this.jdField_c_of_type_JavaLangString, 28, true, false));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(bcdy.a(this.jdField_c_of_type_JavaLangString, 28, true, false));
     if ((this.jdField_e_of_type_JavaLangString != null) && (this.jdField_e_of_type_JavaLangString.length() > 0))
     {
       this.jdField_a_of_type_ComTencentOpenWidgetCursorEditText.setText(this.jdField_e_of_type_JavaLangString);
       this.jdField_a_of_type_ComTencentOpenWidgetCursorEditText.setTextColor(-16777216);
     }
     if ((this.jdField_d_of_type_JavaLangString != null) && (this.jdField_d_of_type_JavaLangString.length() > 0)) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(StringAddition.a(this.jdField_d_of_type_JavaLangString, 80, true, false));
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(bcdy.a(this.jdField_d_of_type_JavaLangString, 80, true, false));
     }
-    new HttpImageDownloadAsyncTask(null, MsfSdkUtils.insertMtype("yingyongbao", this.jdField_f_of_type_JavaLangString), null, "GET", this).execute(new Void[0]);
+    new bcep(null, MsfSdkUtils.insertMtype("yingyongbao", this.jdField_f_of_type_JavaLangString), null, "GET", this).execute(new Void[0]);
     this.jdField_a_of_type_ComTencentOpenWidgetCursorEditText.setSelection(this.jdField_a_of_type_ComTencentOpenWidgetCursorEditText.getText().toString().length());
   }
   
@@ -136,7 +138,7 @@ public class SendStoryActivity
     if (i != 0)
     {
       Toast.makeText(getApplicationContext(), paramIntent.getStringExtra("key_error_msg"), 0).show();
-      LogUtility.e("SendStoryActivity", "onSendStoryComplete error:{KEY_ERROR_CODE:" + i + "; KEY_ERROR_MSG:" + paramIntent.getStringExtra("key_error_msg") + "}");
+      bcds.e("SendStoryActivity", "onSendStoryComplete error:{KEY_ERROR_CODE:" + i + "; KEY_ERROR_MSG:" + paramIntent.getStringExtra("key_error_msg") + "}");
     }
     super.setResult(-1, paramIntent);
     super.finish();
@@ -145,12 +147,12 @@ public class SendStoryActivity
   public void a(Exception paramException)
   {
     c();
-    LogUtility.c("SendStoryActivity", "SendStory exception. " + paramException.getMessage(), paramException);
+    bcds.c("SendStoryActivity", "SendStory exception. " + paramException.getMessage(), paramException);
     Intent localIntent = new Intent();
     if ((paramException instanceof ConnectTimeoutException))
     {
       localIntent.putExtra("key_error_code", -7);
-      localIntent.putExtra("key_error_msg", "网络连接超时!");
+      localIntent.putExtra("key_error_msg", bcew.jdField_e_of_type_JavaLangString);
     }
     for (;;)
     {
@@ -159,7 +161,7 @@ public class SendStoryActivity
       if ((paramException instanceof SocketTimeoutException))
       {
         localIntent.putExtra("key_error_code", -8);
-        localIntent.putExtra("key_error_msg", "网络连接超时!");
+        localIntent.putExtra("key_error_msg", bcew.jdField_f_of_type_JavaLangString);
       }
       else if ((paramException instanceof MalformedURLException))
       {
@@ -174,17 +176,17 @@ public class SendStoryActivity
       else if ((paramException instanceof HttpBaseUtil.NetworkUnavailableException))
       {
         localIntent.putExtra("key_error_code", -9);
-        localIntent.putExtra("key_error_msg", "网络连接异常，请检查后重试!");
+        localIntent.putExtra("key_error_msg", bcew.g);
       }
       else if ((paramException instanceof IOException))
       {
         localIntent.putExtra("key_error_code", -2);
-        localIntent.putExtra("key_error_msg", "网络连接异常，请检查后重试!");
+        localIntent.putExtra("key_error_msg", bcew.jdField_a_of_type_JavaLangString);
       }
       else
       {
         localIntent.putExtra("key_error_code", -6);
-        localIntent.putExtra("key_error_msg", "未知错误!");
+        localIntent.putExtra("key_error_msg", bcew.jdField_d_of_type_JavaLangString);
       }
     }
   }
@@ -200,12 +202,12 @@ public class SendStoryActivity
   {
     try
     {
-      StaticAnalyz.a("400", "ANDROIDQQ.SENDSTORY.FEED1", this.jdField_a_of_type_JavaLangString);
+      bcfb.a("400", "ANDROIDQQ.SENDSTORY.FEED1", this.jdField_a_of_type_JavaLangString);
       c();
       int i = paramJSONObject.getInt("ret");
       String str = paramJSONObject.getString("msg");
       if (i == 0) {
-        Toast.makeText(getApplicationContext(), 2131428660, 0).show();
+        Toast.makeText(getApplicationContext(), 2131625369, 0).show();
       }
       Intent localIntent = new Intent();
       localIntent.putExtra("key_error_code", i);
@@ -216,10 +218,10 @@ public class SendStoryActivity
     }
     catch (JSONException paramJSONObject)
     {
-      LogUtility.c("SendStoryActivity", "SendStory exception. " + paramJSONObject.getMessage(), paramJSONObject);
+      bcds.c("SendStoryActivity", "SendStory exception. " + paramJSONObject.getMessage(), paramJSONObject);
       paramJSONObject = new Intent();
       paramJSONObject.putExtra("key_error_code", -4);
-      paramJSONObject.putExtra("key_error_msg", "服务器返回数据格式有误!");
+      paramJSONObject.putExtra("key_error_msg", bcew.jdField_b_of_type_JavaLangString);
       a(paramJSONObject);
       return;
     }
@@ -239,7 +241,7 @@ public class SendStoryActivity
         this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("appid");
         this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("keystr");
         this.jdField_f_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("pics");
-        this.jdField_c_of_type_JavaLangString = StringAddition.a(this.jdField_a_of_type_AndroidOsBundle.getString("title"), 72, true, false);
+        this.jdField_c_of_type_JavaLangString = bcdy.a(this.jdField_a_of_type_AndroidOsBundle.getString("title"), 72, true, false);
         String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("hopenid");
         String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("keytype");
         String str3 = this.jdField_a_of_type_AndroidOsBundle.getString("platform");
@@ -256,18 +258,18 @@ public class SendStoryActivity
         return false;
       }
       if (this.jdField_a_of_type_AndroidOsBundle.containsKey("description")) {
-        this.jdField_e_of_type_JavaLangString = StringAddition.a(this.jdField_a_of_type_AndroidOsBundle.getString("description"), 80, false, false);
+        this.jdField_e_of_type_JavaLangString = bcdy.a(this.jdField_a_of_type_AndroidOsBundle.getString("description"), 80, false, false);
       }
       if (this.jdField_a_of_type_AndroidOsBundle.containsKey("summary")) {
-        this.jdField_d_of_type_JavaLangString = StringAddition.a(this.jdField_a_of_type_AndroidOsBundle.getString("summary"), 160, true, false);
+        this.jdField_d_of_type_JavaLangString = bcdy.a(this.jdField_a_of_type_AndroidOsBundle.getString("summary"), 160, true, false);
       }
-      this.g = ServerSetting.a().a("http://fusion.qq.com/cgi-bin/qzapps/mapp_getuserinfo.cgi");
-      this.h = ServerSetting.a().a("http://fusion.qq.com/cgi-bin/appstage/mapp_sendstory.cgi");
+      this.g = bcjm.a().a("http://fusion.qq.com/cgi-bin/qzapps/mapp_getuserinfo.cgi");
+      this.h = bcjm.a().a("http://fusion.qq.com/cgi-bin/appstage/mapp_sendstory.cgi");
       return true;
     }
     catch (Exception localException)
     {
-      LogUtility.c("SendStoryActivity", "initParams exception. " + localException.getMessage(), localException);
+      bcds.c("SendStoryActivity", "initParams exception. " + localException.getMessage(), localException);
       b();
     }
     return false;
@@ -297,8 +299,8 @@ public class SendStoryActivity
   {
     Intent localIntent = new Intent();
     localIntent.putExtra("key_error_code", -5);
-    localIntent.putExtra("key_error_msg", "传入参数有误!");
-    LogUtility.e("SendStoryActivity", "initParams:error code:-5; error msg:传入参数有误!");
+    localIntent.putExtra("key_error_msg", bcew.jdField_c_of_type_JavaLangString);
+    bcds.e("SendStoryActivity", "initParams:error code:-5; error msg:" + bcew.jdField_c_of_type_JavaLangString);
     if (this.jdField_a_of_type_AndroidOsBundle != null)
     {
       StringBuilder localStringBuilder = new StringBuilder();
@@ -308,7 +310,7 @@ public class SendStoryActivity
         String str = (String)localIterator.next();
         localStringBuilder.append(str + ": " + this.jdField_a_of_type_AndroidOsBundle.get(str).toString() + " ");
       }
-      LogUtility.e("SendStoryActivity", "params=" + localStringBuilder.toString());
+      bcds.e("SendStoryActivity", "params=" + localStringBuilder.toString());
     }
     super.setResult(-1, localIntent);
     super.finish();
@@ -405,7 +407,7 @@ public class SendStoryActivity
       }
       catch (Exception paramIntent)
       {
-        LogUtility.c("SendStoryActivity", "onActivityResult error:" + paramIntent.getMessage(), paramIntent);
+        bcds.c("SendStoryActivity", "onActivityResult error:" + paramIntent.getMessage(), paramIntent);
         super.setResult(0);
         super.finish();
         return;
@@ -433,7 +435,7 @@ public class SendStoryActivity
     }
   }
   
-  protected boolean onBackEvent()
+  public boolean onBackEvent()
   {
     super.setResult(0);
     super.finish();
@@ -495,7 +497,7 @@ public class SendStoryActivity
     Object localObject1 = new StringBuilder();
     Object localObject2 = this.jdField_a_of_type_ComTencentOpenWidgetCursorEditText.getEditableText();
     Object localObject3 = (Friend[])((Editable)localObject2).getSpans(0, ((Editable)localObject2).length(), Friend.class);
-    Arrays.sort((Object[])localObject3, new alkf(this, (Editable)localObject2));
+    Arrays.sort((Object[])localObject3, new bbzd(this, (Editable)localObject2));
     HashSet localHashSet = new HashSet();
     int m = localObject3.length;
     int i = 0;
@@ -509,7 +511,7 @@ public class SendStoryActivity
       if (localObject4.jdField_b_of_type_JavaLangString == null) {}
       for (paramView = localObject4.jdField_c_of_type_JavaLangString;; paramView = localObject4.jdField_b_of_type_JavaLangString)
       {
-        paramView = StringAddition.b(paramView);
+        paramView = bcdy.b(paramView);
         ((StringBuilder)localObject1).append(String.format("@{openid:%s,nick:%s}", new Object[] { localObject4.jdField_a_of_type_JavaLangString, paramView }));
         localHashSet.add(localObject4.jdField_a_of_type_JavaLangString);
         j += 1;
@@ -522,7 +524,7 @@ public class SendStoryActivity
     }
     if (localHashSet.size() > 10)
     {
-      Toast.makeText(getApplicationContext(), super.getString(2131428661, new Object[] { Integer.valueOf(10) }), 0).show();
+      Toast.makeText(getApplicationContext(), super.getString(2131625368, new Object[] { Integer.valueOf(10) }), 0).show();
       return;
     }
     paramView = new Bundle(this.jdField_a_of_type_AndroidOsBundle);
@@ -530,32 +532,32 @@ public class SendStoryActivity
     paramView.putString("title", this.jdField_c_of_type_JavaLangString);
     paramView.putString("description", ((StringBuilder)localObject1).toString());
     paramView.putString("appid_for_getting_config", this.jdField_a_of_type_JavaLangString);
-    paramView.putString("agentversion", CommonDataAdapter.a().e());
-    this.jdField_a_of_type_AndroidAppProgressDialog = ProgressDialog.show(this, "", super.getString(2131428657), true);
+    paramView.putString("agentversion", bbtm.a().e());
+    this.jdField_a_of_type_AndroidAppProgressDialog = ProgressDialog.show(this, "", super.getString(2131625374), true);
     this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
-    new HttpCgiAsyncTask(this.h, "POST", this).a(paramView);
+    new bcen(this.h, "POST", this).a(paramView);
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.requestWindowFeature(1);
     super.onCreate(paramBundle);
-    super.setTheme(2131624739);
-    super.setContentView(2130969261);
+    super.setTheme(2131689611);
+    super.setContentView(2131493925);
     a();
     a();
-    StaticAnalyz.a("100", "ANDROIDQQ.SENDSTORY.FS", this.jdField_a_of_type_JavaLangString);
+    bcfb.a("100", "ANDROIDQQ.SENDSTORY.FS", this.jdField_a_of_type_JavaLangString);
   }
   
-  protected void onStart()
+  public void onStart()
   {
     super.onStart();
     this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(4);
     this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_e_of_type_AndroidWidgetTextView.setText(2131433029);
+    this.jdField_e_of_type_AndroidWidgetTextView.setText(2131625035);
     this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_f_of_type_AndroidWidgetTextView.setText(2131428654);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(2131428652);
+    this.jdField_f_of_type_AndroidWidgetTextView.setText(2131625376);
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(2131625370);
     this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_f_of_type_AndroidWidgetTextView.setOnClickListener(this);
   }
@@ -564,7 +566,7 @@ public class SendStoryActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.SendStoryActivity
  * JD-Core Version:    0.7.0.1
  */

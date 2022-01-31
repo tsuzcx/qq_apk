@@ -1,26 +1,21 @@
-import android.text.TextUtils.EllipsizeCallback;
-import android.widget.TextView;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout13;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class ainr
-  implements TextUtils.EllipsizeCallback
+class ainr
+  implements MediaPlayer.OnErrorListener
 {
-  public ainr(StructMsgItemLayout13 paramStructMsgItemLayout13, TextView paramTextView, String paramString) {}
+  ainr(ainq paramainq) {}
   
-  public void ellipsized(int paramInt1, int paramInt2)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    if (paramInt1 == paramInt2)
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    String str = this.jdField_a_of_type_JavaLangString.substring(0, paramInt1);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(str + "...");
+    QLog.e("CmGameAudioPlayer", 1, "what " + paramInt1 + " ext " + paramInt2);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ainr
  * JD-Core Version:    0.7.0.1
  */

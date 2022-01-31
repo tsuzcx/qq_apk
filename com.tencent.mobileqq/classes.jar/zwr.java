@@ -1,22 +1,19 @@
-import java.io.File;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class zwr
-  implements Comparator
+  implements DialogInterface.OnClickListener
 {
-  zwr(zwq paramzwq) {}
+  zwr(zwp paramzwp) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
-      return 1;
-    }
-    return 0;
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zwr
  * JD-Core Version:    0.7.0.1
  */

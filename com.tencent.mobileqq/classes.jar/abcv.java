@@ -1,18 +1,75 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppViewByIntentCallback;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class abcv
+  extends ajss
 {
-  public ArkLocalAppMgr.IGetAppViewByIntentCallback a;
-  public String a;
-  public boolean a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  public abcv(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
+  
+  protected void b(boolean paramBoolean, axau paramaxau)
+  {
+    if (QLog.isColorLevel())
+    {
+      QLog.d("SUB_ACCOUNT", 2, "LoginVerifyCodeActivity.onBindSubAccount() isSucc=" + paramBoolean);
+      if (paramaxau != null) {
+        QLog.d("SUB_ACCOUNT", 2, "LoginVerifyCodeActivity.onBindSubAccount() mainAccount=" + paramaxau.b + " subAccount=" + paramaxau.c + " errType=" + paramaxau.jdField_a_of_type_Int + " errMsg=" + paramaxau.jdField_a_of_type_JavaLangString);
+      }
+    }
+    this.a.c();
+    Object localObject;
+    if (paramBoolean)
+    {
+      this.a.a(2131653962, 2);
+      if (QLog.isColorLevel()) {
+        QLog.d("LoginVerifyCodeActivity", 2, "onBindSubAccount:....SubloginActivity......bindSub success............");
+      }
+      axal.b(this.a.app);
+      axal.a(this.a.app);
+      axal.c(this.a.app);
+      axal.d(this.a.app);
+      localObject = new Intent(this.a, SplashActivity.class);
+      ((Intent)localObject).putExtra("tab_index", MainFragment.b);
+      ((Intent)localObject).setFlags(67108864);
+      this.a.startActivity((Intent)localObject);
+      this.a.finish();
+    }
+    for (;;)
+    {
+      if ((paramaxau != null) && (QLog.isColorLevel())) {
+        QLog.d("LoginVerifyCodeActivity", 2, "onBindSubAccount:....SubloginActivity......bindSub failed............ ...errorMsg = " + paramaxau.jdField_a_of_type_JavaLangString + "...errorType = " + paramaxau.jdField_a_of_type_Int);
+      }
+      return;
+      if (paramaxau != null) {
+        switch (paramaxau.jdField_a_of_type_Int)
+        {
+        default: 
+          this.a.a(2131653951, 0);
+          break;
+        case 1002: 
+          axam.a(this.a.app, this.a);
+          break;
+        case 1003: 
+          this.a.a(2131653952, 0);
+          break;
+        case 1004: 
+          String str = paramaxau.jdField_a_of_type_JavaLangString;
+          localObject = str;
+          if (TextUtils.isEmpty(str)) {
+            localObject = this.a.getString(2131653953);
+          }
+          this.a.a((String)localObject, 0);
+        }
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abcv
  * JD-Core Version:    0.7.0.1
  */

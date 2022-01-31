@@ -1,30 +1,29 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.jsp.QQComicDownloadObserverProxy;
-import cooperation.comic.ui.QQComicTabBarView;
-import cooperation.comic.utils.QQComicPluginBridge;
-import cooperation.comic.utils.QQComicRedTouchManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ArkBabyqCardInfo;
+import com.tencent.mobileqq.data.MessageForArkBabyqReply;
+import java.lang.ref.WeakReference;
 
 public class amrs
-  implements Runnable
+  implements adbl
 {
-  public amrs(QQComicTabBarView paramQQComicTabBarView) {}
+  public amrs(ArkBabyqCardInfo paramArkBabyqCardInfo) {}
   
-  public void run()
+  public void a()
   {
-    if (this.a.jdField_a_of_type_CooperationComicUtilsQQComicRedTouchManager != null) {
-      this.a.jdField_a_of_type_CooperationComicUtilsQQComicRedTouchManager.deleteObserver(this.a.jdField_a_of_type_CooperationComicUtilsQQComicRedTouchManager$PluginRedTouchObserver);
-    }
-    if (QQComicPluginBridge.a != null) {
-      QQComicPluginBridge.a.b(this.a.jdField_a_of_type_CooperationComicJspQQComicDownloadCountObserver);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("WebViewTabBarView", 2, "unregister observers");
+    if ((this.a.mBabyQReplyMsg != null) && (this.a.mBabyQReplyMsg.get() != null))
+    {
+      Object localObject = (MessageForArkBabyqReply)this.a.mBabyQReplyMsg.get();
+      localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+      if (localObject != null) {
+        localObject = (ales)((QQAppInterface)localObject).a(95);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amrs
  * JD-Core Version:    0.7.0.1
  */

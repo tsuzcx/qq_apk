@@ -1,13 +1,14 @@
 package com.tencent.biz.qqstory.storyHome.model;
 
+import ajjy;
 import com.tencent.biz.qqstory.model.BaseUIItem;
-import com.tencent.biz.qqstory.model.item.IFeedOwner;
+import srk;
 
 public class HotRecommendOwner
   extends BaseUIItem
-  implements IFeedOwner
+  implements srk
 {
-  public String mName = "热门推荐";
+  public String mName = ajjy.a(2131639824);
   public long mRecommendId;
   
   public String getName()
@@ -57,7 +58,7 @@ public class HotRecommendOwner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.HotRecommendOwner
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarManager;
-import java.util.concurrent.Executor;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
 
 public class abqh
-  implements Runnable
+  implements View.OnFocusChangeListener
 {
-  public abqh(DynamicAvatarManager paramDynamicAvatarManager, Runnable paramRunnable) {}
+  public abqh(SelectedAndSearchBar paramSelectedAndSearchBar) {}
   
-  public void run()
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.a.execute(this.jdField_a_of_type_JavaLangRunnable);
+    if (SelectedAndSearchBar.a(this.a) != null) {
+      SelectedAndSearchBar.a(this.a).a(paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abqh
  * JD-Core Version:    0.7.0.1
  */

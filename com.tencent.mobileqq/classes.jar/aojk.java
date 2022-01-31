@@ -1,21 +1,27 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vas.VasApngUtil.ApngSoLoadCallBack;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.BaseFaceListAdapter;
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import java.lang.ref.WeakReference;
 
 class aojk
-  implements VasApngUtil.ApngSoLoadCallBack
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  aojk(aojj paramaojj, BaseFaceListAdapter paramBaseFaceListAdapter) {}
+  aojk(aojj paramaojj) {}
   
-  public void a()
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    ThreadManager.getUIHandler().post(new aojl(this));
+    QLog.e("FileVideoManager<FileAssistant>", 1, "mediaPlayer onError:errorType[" + paramInt1 + "], errorCode[" + paramInt2 + "],extra[" + paramInt3 + "],detailInfo[" + paramString + "]");
+    paramTVK_IMediaPlayer = ajjy.a(2131638801);
+    paramString = (aojh)this.a.a.get();
+    if (paramString != null) {
+      paramString.a(paramInt2, paramTVK_IMediaPlayer);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aojk
  * JD-Core Version:    0.7.0.1
  */

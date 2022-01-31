@@ -10,16 +10,16 @@ import java.util.Map;
 public final class MaterialCate
   extends JceStruct
 {
-  static Map cache_mapExtInfo;
+  static Map<String, String> cache_mapExtInfo;
   static MaterialFile cache_stBanner;
   static MaterialFile cache_stThumb;
   static byte[] cache_strExtFields;
-  static ArrayList cache_vecBanner;
-  static ArrayList cache_vecItem = new ArrayList();
+  static ArrayList<OperBanner> cache_vecBanner;
+  static ArrayList<MaterialItem> cache_vecItem = new ArrayList();
   public int iCateId;
   public int iQZInitShowCount;
   public int iSQInitShowCount;
-  public Map mapExtInfo;
+  public Map<String, String> mapExtInfo;
   public MaterialFile stBanner;
   public MaterialFile stThumb;
   public String strCateKey = "";
@@ -29,8 +29,8 @@ public final class MaterialCate
   public String strTraceInfo = "";
   public long uiSettleTime;
   public long uiTotalItems;
-  public ArrayList vecBanner;
-  public ArrayList vecItem;
+  public ArrayList<OperBanner> vecBanner;
+  public ArrayList<MaterialItem> vecItem;
   
   static
   {
@@ -49,16 +49,16 @@ public final class MaterialCate
   
   public MaterialCate() {}
   
-  public MaterialCate(int paramInt1, String paramString1, String paramString2, ArrayList paramArrayList1, int paramInt2, int paramInt3, long paramLong1, ArrayList paramArrayList2, String paramString3, MaterialFile paramMaterialFile1, MaterialFile paramMaterialFile2, long paramLong2, String paramString4, byte[] paramArrayOfByte, Map paramMap)
+  public MaterialCate(int paramInt1, String paramString1, String paramString2, ArrayList<MaterialItem> paramArrayList, int paramInt2, int paramInt3, long paramLong1, ArrayList<OperBanner> paramArrayList1, String paramString3, MaterialFile paramMaterialFile1, MaterialFile paramMaterialFile2, long paramLong2, String paramString4, byte[] paramArrayOfByte, Map<String, String> paramMap)
   {
     this.iCateId = paramInt1;
     this.strCateKey = paramString1;
     this.strCateName = paramString2;
-    this.vecItem = paramArrayList1;
+    this.vecItem = paramArrayList;
     this.iSQInitShowCount = paramInt2;
     this.iQZInitShowCount = paramInt3;
     this.uiTotalItems = paramLong1;
-    this.vecBanner = paramArrayList2;
+    this.vecBanner = paramArrayList1;
     this.strDescription = paramString3;
     this.stThumb = paramMaterialFile1;
     this.stBanner = paramMaterialFile2;

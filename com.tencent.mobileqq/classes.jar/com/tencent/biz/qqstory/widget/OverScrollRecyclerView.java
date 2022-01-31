@@ -5,11 +5,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.util.AttributeSet;
+import vrs;
 
 public class OverScrollRecyclerView
   extends RecyclerView
 {
-  protected final OverScrollRecyclerView.OverScrollStateManager a = new OverScrollRecyclerView.OverScrollStateManager(this);
+  protected final vrs a = new vrs(this);
   
   public OverScrollRecyclerView(Context paramContext)
   {
@@ -34,7 +35,7 @@ public class OverScrollRecyclerView
     this.a.a();
   }
   
-  protected void onDetachedFromWindow()
+  public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.a.c();
@@ -48,7 +49,7 @@ public class OverScrollRecyclerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.widget.OverScrollRecyclerView
  * JD-Core Version:    0.7.0.1
  */

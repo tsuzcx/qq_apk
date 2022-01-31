@@ -3,12 +3,15 @@ package com.tencent.map.geolocation;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
-import c.t.m.g.de;
-import c.t.m.g.dp;
-import c.t.m.g.ds;
-import c.t.m.g.dt;
-import c.t.m.g.el;
-import c.t.m.g.ev;
+import c.t.m.g.co;
+import c.t.m.g.do;
+import c.t.m.g.dr;
+import c.t.m.g.dx;
+import c.t.m.g.ee;
+import c.t.m.g.eh;
+import c.t.m.g.ei;
+import c.t.m.g.ez;
+import c.t.m.g.fm;
 
 public final class TencentLocationManager
 {
@@ -16,17 +19,17 @@ public final class TencentLocationManager
   public static final int COORDINATE_TYPE_WGS84 = 0;
   private static TencentLocationManager d;
   private final byte[] a = new byte[0];
-  private final de b;
-  private final ds c;
+  private final dx b;
+  private final eh c;
   
   private TencentLocationManager(Context paramContext)
   {
-    this.b = de.a(paramContext);
-    this.c = new ds(this.b);
+    do.a(paramContext);
+    this.b = dx.a(paramContext);
+    this.c = new eh(this.b);
   }
   
   public static TencentLocationManager getInstance(Context paramContext)
-    throws NullPointerException, IllegalArgumentException
   {
     try
     {
@@ -57,9 +60,9 @@ public final class TencentLocationManager
   
   public final String getBuild()
   {
-    ev localev = this.b.e();
-    if (localev != null) {
-      return localev.e();
+    dr localdr = this.b.e();
+    if (localdr != null) {
+      return localdr.e();
     }
     return "None";
   }
@@ -71,25 +74,25 @@ public final class TencentLocationManager
   
   public final String getKey()
   {
-    return ev.c(this.b.b.g);
+    return co.d(this.b.b.g);
   }
   
   public final TencentLocation getLastKnownLocation()
   {
-    ds localds = this.c;
-    if (localds.m == 0)
+    eh localeh = this.c;
+    if (localeh.m == 0)
     {
-      localds.a(localds.l);
-      return localds.l;
+      localeh.a(localeh.l);
+      return localeh.l;
     }
     return null;
   }
   
   public final int getPedometerData()
   {
-    ds localds = this.c;
-    if (localds.c != null) {
-      return localds.c.h;
+    eh localeh = this.c;
+    if (localeh.c != null) {
+      return localeh.c.h;
     }
     return -1;
   }
@@ -101,9 +104,9 @@ public final class TencentLocationManager
   
   public final String getVersion()
   {
-    ev localev = this.b.e();
-    if (localev != null) {
-      return localev.d();
+    dr localdr = this.b.e();
+    if (localdr != null) {
+      return localdr.d();
     }
     return "None";
   }
@@ -115,6 +118,7 @@ public final class TencentLocationManager
   
   public final void removeUpdates(TencentLocationListener arg1)
   {
+    new StringBuilder("remove location update,thread name:").append(Thread.currentThread().getName());
     synchronized (this.a)
     {
       this.c.d();
@@ -124,11 +128,13 @@ public final class TencentLocationManager
   
   public final int requestLocationUpdates(TencentLocationRequest paramTencentLocationRequest, TencentLocationListener paramTencentLocationListener)
   {
+    new StringBuilder("request location with no looper,thread name:").append(Thread.currentThread().getName());
     return requestLocationUpdates(paramTencentLocationRequest, paramTencentLocationListener, Looper.myLooper());
   }
   
   public final int requestLocationUpdates(TencentLocationRequest paramTencentLocationRequest, TencentLocationListener paramTencentLocationListener, Looper paramLooper)
   {
+    new StringBuilder("request location with looper,thread name:").append(Thread.currentThread().getName());
     if (paramTencentLocationRequest == null) {
       throw new NullPointerException("request is null");
     }
@@ -150,9 +156,9 @@ public final class TencentLocationManager
     if ((paramInt == 1) || (paramInt == 0)) {
       synchronized (this.a)
       {
-        ds localds = this.c;
-        if (localds.a != paramInt) {
-          localds.a = paramInt;
+        eh localeh = this.c;
+        if (localeh.a != paramInt) {
+          localeh.a = paramInt;
         }
         return;
       }
@@ -176,7 +182,7 @@ public final class TencentLocationManager
     if (paramLooper == null) {
       throw new NullPointerException("looper is null");
     }
-    ds localds = this.c;
+    eh localeh = this.c;
     int i;
     if ((paramTencentDirectionListener == null) || (paramLooper == null)) {
       i = -1;
@@ -185,15 +191,15 @@ public final class TencentLocationManager
     do
     {
       return i;
-      if (localds.b == null) {
+      if (localeh.b == null) {
         return -2;
       }
-      localds.b.a();
+      localeh.b.a();
       paramLooper = new Handler(paramLooper);
-      j = localds.b.a(paramLooper, paramTencentDirectionListener);
+      j = localeh.b.a(paramLooper, paramTencentDirectionListener);
       i = j;
     } while (j != 0);
-    localds.b.a = true;
+    localeh.b.a = true;
     return j;
   }
   
@@ -205,27 +211,27 @@ public final class TencentLocationManager
     }
     synchronized (this.a)
     {
-      ds localds = this.c;
-      if (localds.d == null) {}
+      eh localeh = this.c;
+      if (localeh.d == null) {}
       for (;;)
       {
         return i;
-        if (!localds.e) {
+        if (!localeh.e) {
           break;
         }
         i = 2;
       }
-      localds.e = true;
-      localds.k = paramTencentDistanceListener;
+      localeh.e = true;
+      localeh.k = paramTencentDistanceListener;
       i = 0;
     }
   }
   
   public final void stopDirectionUpdate()
   {
-    ds localds = this.c;
-    if (localds.b != null) {
-      localds.b.a();
+    eh localeh = this.c;
+    if (localeh.b != null) {
+      localeh.b.a();
     }
   }
   
@@ -233,25 +239,25 @@ public final class TencentLocationManager
   {
     synchronized (this.a)
     {
-      ds localds = this.c;
-      localds.k = null;
-      localds.f = 0.0D;
-      localds.e = false;
-      localds.j = null;
-      el localel = new el();
-      localel.a = (ev.a((localds.g + 1) / (localds.i + 1), 4) * 100.0D);
-      localel.b = localds.g;
-      localel.c = localds.h;
-      localds.g = 0;
-      localds.h = 0;
-      localds.i = 0;
-      return localel;
+      eh localeh = this.c;
+      localeh.k = null;
+      localeh.f = 0.0D;
+      localeh.e = false;
+      localeh.j = null;
+      ez localez = new ez();
+      localez.a = (fm.a((localeh.g + 1) / (localeh.i + 1), 4) * 100.0D);
+      localez.b = localeh.g;
+      localez.c = localeh.h;
+      localeh.g = 0;
+      localeh.h = 0;
+      localeh.i = 0;
+      return localez;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.map.geolocation.TencentLocationManager
  * JD-Core Version:    0.7.0.1
  */

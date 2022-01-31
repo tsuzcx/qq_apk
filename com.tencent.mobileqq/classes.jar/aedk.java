@@ -1,48 +1,35 @@
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.now.NowPlugin;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
-import com.tencent.mobileqq.transfile.dns.InnerDns;
-import com.tencent.txproxy.HostInterface;
-import mqq.app.AppRuntime;
 
-public class aedk
-  implements HostInterface
+class aedk
+  extends aqal
 {
-  public aedk(NowPlugin paramNowPlugin) {}
+  aedk(aede paramaede) {}
   
-  public boolean isMobileNet()
+  protected void a()
   {
-    return AppNetConnInfo.isMobileConn();
-  }
-  
-  public void reportBadIp(String paramString1, String paramString2)
-  {
-    InnerDns.a().a(paramString1, paramString2, 1017);
-  }
-  
-  public String reqDns(String paramString)
-  {
-    return InnerDns.a().a(paramString, 1017);
-  }
-  
-  public boolean useIpDirectConnect()
-  {
-    QQAppInterface localQQAppInterface = NowPlugin.a(this.a);
-    Object localObject = localQQAppInterface;
-    if (localQQAppInterface == null) {
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (((aqae)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      aede.a(this.a).a(this.a.jdField_a_of_type_Aend, new Object[0]);
     }
-    if (localObject != null) {
-      return ((Integer)NearbySPUtil.a(((AppRuntime)localObject).getAccount(), "now_ip_conn_switch", Integer.valueOf(0))).intValue() == 1;
+  }
+  
+  protected void b()
+  {
+    if (((aqae)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
+      this.a.jdField_a_of_type_Aend.a();
     }
-    return false;
+  }
+  
+  protected void c()
+  {
+    if ((((aqae)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(156)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (aede.b(this.a).a() == 14)) {
+      aede.c(this.a).a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aedk
  * JD-Core Version:    0.7.0.1
  */

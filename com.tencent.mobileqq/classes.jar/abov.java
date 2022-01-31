@@ -1,28 +1,35 @@
-import com.tencent.mobileqq.armap.ARGLSurfaceView;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
-import com.tencent.mobileqq.armap.test.MapTestHelper;
-import com.tencent.mobileqq.armap.test.MapTestHelper.TestConfig;
+import android.view.ActionMode;
+import android.view.ActionMode.Callback;
+import android.view.Menu;
+import android.view.MenuItem;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
 public class abov
-  implements Runnable
+  implements ActionMode.Callback
 {
-  public abov(MapTestHelper paramMapTestHelper) {}
+  public abov(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void run()
+  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
   {
-    long l = MapTestHelper.a(this.a).getEngineHandler();
-    boolean bool2 = MapTestHelper.a.jdField_a_of_type_Boolean;
-    if (!MapTestHelper.a.jdField_b_of_type_Boolean) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      ARMapEngine.updateTestSetting(l, bool2, bool1, MapTestHelper.a.jdField_d_of_type_Boolean, MapTestHelper.a.e, MapTestHelper.a.jdField_a_of_type_Int, MapTestHelper.a.jdField_a_of_type_Double, MapTestHelper.a.jdField_b_of_type_Double, MapTestHelper.a.c, MapTestHelper.a.jdField_d_of_type_Double);
-      return;
-    }
+    return false;
+  }
+  
+  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    paramMenu.clear();
+    return false;
+  }
+  
+  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  
+  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abov
  * JD-Core Version:    0.7.0.1
  */

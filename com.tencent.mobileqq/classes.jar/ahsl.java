@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.richmedia.dc.DataAdapter;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
-public abstract class ahsl
-  extends DataAdapter
+public class ahsl
+  extends aiac
 {
-  public int b = -1;
-  public int c;
-  public int d = -1;
-  public int e = -1;
-  public int f = -1;
-  public int g = -1;
-  public int h = -1;
+  public CheckBox a;
+  public Object a;
+  public TextView d;
+  public TextView e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahsl
  * JD-Core Version:    0.7.0.1
  */

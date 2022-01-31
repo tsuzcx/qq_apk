@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.leba.LebaTitleBar;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class aehs
-  implements Runnable
+class aehs
+  implements woy
 {
-  public aehs(LebaTitleBar paramLebaTitleBar, HotWordSearchEntryDataModel paramHotWordSearchEntryDataModel) {}
+  aehs(aegy paramaegy) {}
   
-  public void run()
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a();
-    LebaTitleBar.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaTitleBar).runOnUiThread(new aeht(this));
+    aciy.n = true;
+    this.a.jdField_a_of_type_Ncw.a(paramString, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), paramInt1, aegy.a(this.a), aegy.b(this.a), paramInt2, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    akij.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, aegy.e(this.a), paramInt1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aehs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,59 +1,43 @@
-import android.content.res.Resources;
-import android.os.Build;
-import android.util.DisplayMetrics;
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.util.MD5Coding;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import com.tencent.widget.AbsListView;
 
 public class aavn
-  implements aaup
+  implements begh
 {
-  private aavn(ArkAppDeviceModule paramArkAppDeviceModule) {}
+  public aavn(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (!ArkAppModuleReg.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, "permission.DEVICE_INFORMATION")) {}
-    do
-    {
-      return false;
-      if ("GetModelName".equals(paramString))
-      {
-        paramVariantWrapper.SetString(Build.MODEL);
-        return true;
-      }
-      if ("GetScreenWidth".equals(paramString))
-      {
-        paramString = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics();
-        paramVariantWrapper.SetInt((int)(paramString.widthPixels / paramString.density));
-        return true;
-      }
-      if ("GetScreenHeight".equals(paramString))
-      {
-        paramString = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics();
-        paramVariantWrapper.SetInt((int)(paramString.heightPixels / paramString.density));
-        return true;
-      }
-      if ("GetPixelRatio".equals(paramString))
-      {
-        paramVariantWrapper.SetDouble(BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().density);
-        return true;
-      }
-    } while (!"GetIdentifier".equals(paramString));
-    paramArrayOfVariantWrapper = DeviceInfoUtil.a();
-    paramString = paramArrayOfVariantWrapper;
-    if (this.a.jdField_a_of_type_Long != 0L) {
-      paramString = MD5Coding.encodeHexStr(paramArrayOfVariantWrapper);
+    FriendProfileCardActivity.a(this.a, paramInt1);
+    if ((this.a.a != null) && (this.a.a.a("map_key_extend_friend_info"))) {
+      this.a.a.d();
     }
-    paramVariantWrapper.SetString(paramString);
-    return true;
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (this.a.b != paramInt) {
+      this.a.b = paramInt;
+    }
+    switch (paramInt)
+    {
+    default: 
+      zqk.a().a("vas_profilecard_list");
+    }
+    for (;;)
+    {
+      if (FriendProfileCardActivity.a(this.a) != null) {
+        FriendProfileCardActivity.a(this.a).a(paramInt);
+      }
+      return;
+      zqk.a().a("vas_profilecard_list", false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aavn
  * JD-Core Version:    0.7.0.1
  */

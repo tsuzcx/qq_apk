@@ -53,7 +53,7 @@ public class MessageForFoldMsg
     return false;
   }
   
-  protected void postRead()
+  public void postRead()
   {
     boolean bool = true;
     if (this.istroop != 1)
@@ -92,7 +92,7 @@ public class MessageForFoldMsg
     }
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     int i = 1;
     if (this.istroop != 1)

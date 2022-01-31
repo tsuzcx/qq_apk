@@ -2,10 +2,13 @@ package com.tencent.mobileqq.shortvideo.dancemachine;
 
 public class ResourceManager$LyricItem
 {
-  public int a;
-  public String a;
-  public int b;
-  public int c;
+  public static final int STATUS_INIT = 0;
+  public static final int STATUS_INVALID = 2;
+  public static final int STATUS_WORK = 1;
+  public int endTime;
+  public int startTime;
+  public int status;
+  public String text;
 }
 
 

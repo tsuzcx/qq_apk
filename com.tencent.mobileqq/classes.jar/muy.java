@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.widget.ReadInJoyNotifyDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class muy
-  implements View.OnClickListener
+class muy
+  implements DialogInterface.OnDismissListener
 {
-  public muy(ReadInJoyNotifyDialog paramReadInJoyNotifyDialog) {}
+  muy(mut parammut) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.dismiss();
+    this.a.f = false;
   }
 }
 

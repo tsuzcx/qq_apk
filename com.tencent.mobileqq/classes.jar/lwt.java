@@ -1,25 +1,38 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeBigSocial;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.VideoController;
 
-public class lwt
-  implements View.OnTouchListener
+class lwt
+  implements DialogInterface.OnClickListener
 {
-  public lwt(FeedItemCellTypeBigSocial paramFeedItemCellTypeBigSocial, LinearLayout paramLinearLayout) {}
+  lwt(lws paramlws) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    return false;
+    lwq.a(this.a.a, false);
+    if (paramInt == 1)
+    {
+      awqx.b(null, "CliOper", "", "", "0X800A563", "0X800A563", 0, 0, "", "", "", "");
+      this.a.a.c();
+      if (!mjg.a(lwq.a(this.a.a))) {
+        lwq.a(this.a.a).a(lwq.a(this.a.a));
+      }
+    }
+    while (paramInt != 0)
+    {
+      return;
+      lwq.a(this.a.a).b(lwq.a(this.a.a));
+      return;
+    }
+    lwq.a(this.a.a, lwq.a(this.a.a).a().v);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lwt
  * JD-Core Version:    0.7.0.1
  */

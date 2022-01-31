@@ -1,29 +1,26 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSearchFragment;
 
 public class anrr
-  implements Animation.AnimationListener
+  extends RecyclerView.AdapterDataObserver
 {
-  public anrr(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public anrr(ExtendFriendSearchFragment paramExtendFriendSearchFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onChanged()
   {
-    if (QIMEffectCameraCaptureUnit.e(this.a) != null)
+    if (this.a.jdField_a_of_type_Ansi.a() == 0)
     {
-      QIMEffectCameraCaptureUnit.e(this.a).clearAnimation();
-      QIMEffectCameraCaptureUnit.e(this.a).setVisibility(8);
+      this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeItemDecoration(this.a.jdField_a_of_type_Ansj);
+      return;
     }
+    this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeItemDecoration(this.a.jdField_a_of_type_Ansj);
+    this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(this.a.jdField_a_of_type_Ansj);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anrr
  * JD-Core Version:    0.7.0.1
  */

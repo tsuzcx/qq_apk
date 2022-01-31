@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.widget.FitSystemWindowsRelativeLayout android:id="@id/ir" android:background="@drawable/mz" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/idy" android:background="@color/nr" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_marginLeft="6.0dip" android:layout_marginRight="10.0dip">
+        <RelativeLayout android:id="@id/did" android:clickable="true" android:layout_width="40.0dip" android:layout_height="fill_parent">
+            <ImageView android:id="@id/df9" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="10.0dip" android:src="@drawable/mv" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <TextView android:textSize="19.0dip" android:textColor="@color/ja" android:gravity="center_vertical" android:id="@id/jj7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:maxLines="1" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <View android:id="@id/biw" android:background="#ffdbdde4" android:layout_width="fill_parent" android:layout_height="0.70000005dip" android:layout_below="@id/idy" />
+    <com.tencent.mobileqq.bubble.ChatXListView android:id="@id/ewc" android:background="@color/nr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="6.0dip" android:listSelector="#00000000" android:transcriptMode="normal" android:divider="@null" android:layout_below="@id/biw" />
+</com.tencent.widget.FitSystemWindowsRelativeLayout>

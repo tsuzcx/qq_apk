@@ -22,9 +22,9 @@ public class DataReport
     do
     {
       return;
-      int j = 0;
       int k = paramLinkedList.size();
       i = 0;
+      int j = 0;
       while (i < k)
       {
         j += ((Integer)paramLinkedList.get(i)).intValue();

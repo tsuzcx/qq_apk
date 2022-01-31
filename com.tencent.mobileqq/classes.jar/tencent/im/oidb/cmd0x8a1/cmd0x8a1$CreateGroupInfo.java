@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class cmd0x8a1$CreateGroupInfo
-  extends MessageMicro
+  extends MessageMicro<CreateGroupInfo>
 {
   public static final int MSG_CLIENT_INFO_FIELD_NUMBER = 19;
   public static final int MSG_GROUP_GEO_INFO_FIELD_NUMBER = 20;
@@ -71,7 +71,7 @@ public final class cmd0x8a1$CreateGroupInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8a1.cmd0x8a1.CreateGroupInfo
  * JD-Core Version:    0.7.0.1
  */

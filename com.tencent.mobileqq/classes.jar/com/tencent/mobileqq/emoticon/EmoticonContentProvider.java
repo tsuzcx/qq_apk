@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import angi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.SQLiteDatabase;
 import com.tencent.qphone.base.util.QLog;
@@ -56,7 +57,7 @@ public class EmoticonContentProvider
     {
       localObject = (QQAppInterface)localObject;
       if ("vip_type".equals(paramString1)) {
-        return SVIPHandlerWrapper.a((QQAppInterface)localObject, paramString1);
+        return angi.a((QQAppInterface)localObject, paramString1);
       }
     }
     return super.call(paramString1, paramString2, paramBundle);

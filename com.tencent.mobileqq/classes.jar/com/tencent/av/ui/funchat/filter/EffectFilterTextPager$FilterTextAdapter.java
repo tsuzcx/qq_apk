@@ -13,21 +13,21 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
-import com.tencent.av.AVLog;
-import com.tencent.av.business.manager.filter.EffectFilterTools;
+import azvq;
 import com.tencent.av.business.manager.filter.FilterItem;
-import com.tencent.mobileqq.util.BitmapManager;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import krx;
+import kxf;
 
 public class EffectFilterTextPager$FilterTextAdapter
   extends PagerAdapter
 {
-  private EffectFilterTools jdField_a_of_type_ComTencentAvBusinessManagerFilterEffectFilterTools;
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  ArrayList jdField_a_of_type_JavaUtilArrayList;
+  WeakReference<Context> jdField_a_of_type_JavaLangRefWeakReference;
+  ArrayList<FilterItem> jdField_a_of_type_JavaUtilArrayList;
+  private kxf jdField_a_of_type_Kxf;
   private boolean jdField_a_of_type_Boolean;
   
   public EffectFilterTextPager$FilterTextAdapter(Context paramContext)
@@ -60,15 +60,15 @@ public class EffectFilterTextPager$FilterTextAdapter
     return null;
   }
   
-  void a(EffectFilterTools paramEffectFilterTools)
-  {
-    this.jdField_a_of_type_ComTencentAvBusinessManagerFilterEffectFilterTools = paramEffectFilterTools;
-  }
-  
-  public void a(List paramList)
+  public void a(List<FilterItem> paramList)
   {
     this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
     notifyDataSetChanged();
+  }
+  
+  void a(kxf paramkxf)
+  {
+    this.jdField_a_of_type_Kxf = paramkxf;
   }
   
   public void a(boolean paramBoolean)
@@ -93,15 +93,15 @@ public class EffectFilterTextPager$FilterTextAdapter
     Context localContext = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (localContext != null)
     {
-      ViewGroup localViewGroup = (ViewGroup)((LayoutInflater)localContext.getSystemService("layout_inflater")).inflate(2130969364, null);
-      ImageView localImageView = (ImageView)localViewGroup.findViewById(2131366296);
-      if (this.jdField_a_of_type_ComTencentAvBusinessManagerFilterEffectFilterTools != null)
+      ViewGroup localViewGroup = (ViewGroup)((LayoutInflater)localContext.getSystemService("layout_inflater")).inflate(2131494024, null);
+      ImageView localImageView = (ImageView)localViewGroup.findViewById(2131306550);
+      if (this.jdField_a_of_type_Kxf != null)
       {
-        localObject2 = this.jdField_a_of_type_ComTencentAvBusinessManagerFilterEffectFilterTools.a((FilterItem)localObject1);
+        localObject2 = this.jdField_a_of_type_Kxf.a((FilterItem)localObject1);
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
           break label205;
         }
-        localObject1 = BitmapManager.a((String)localObject2);
+        localObject1 = azvq.a((String)localObject2);
         if (localObject1 == null) {
           break label195;
         }
@@ -112,7 +112,7 @@ public class EffectFilterTextPager$FilterTextAdapter
         if (this.jdField_a_of_type_Boolean)
         {
           localObject1 = (LinearLayout.LayoutParams)localImageView.getLayoutParams();
-          float f = localContext.getResources().getDimension(2131560070);
+          float f = localContext.getResources().getDimension(2131166449);
           ((LinearLayout.LayoutParams)localObject1).setMargins(((LinearLayout.LayoutParams)localObject1).leftMargin, (int)f, ((LinearLayout.LayoutParams)localObject1).rightMargin, ((LinearLayout.LayoutParams)localObject1).bottomMargin);
           localImageView.setLayoutParams((ViewGroup.LayoutParams)localObject1);
           localImageView.setScaleX(0.6F);
@@ -121,14 +121,14 @@ public class EffectFilterTextPager$FilterTextAdapter
         paramViewGroup.addView(localViewGroup);
         return localViewGroup;
         label195:
-        AVLog.c("EffectFilterTextPager", "decodeFile error");
+        krx.c("EffectFilterTextPager", "decodeFile error");
       }
       label205:
       Object localObject2 = new StringBuilder().append("iconpath error ");
       if (localObject1 != null) {}
       for (localObject1 = ((FilterItem)localObject1).getId();; localObject1 = "")
       {
-        AVLog.c("EffectFilterTextPager", (String)localObject1);
+        krx.c("EffectFilterTextPager", (String)localObject1);
         break;
       }
     }
@@ -142,7 +142,7 @@ public class EffectFilterTextPager$FilterTextAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.ui.funchat.filter.EffectFilterTextPager.FilterTextAdapter
  * JD-Core Version:    0.7.0.1
  */

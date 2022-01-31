@@ -1,28 +1,84 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.opengl.GLES20;
+import com.tencent.av.opengl.program.TextureProgram;
+import com.tencent.av.opengl.program.YUVTextureAliasingProgram;
+import com.tencent.av.opengl.program.YUVTextureProgram;
+import java.util.HashMap;
+import java.util.Map;
 
 public class lhb
-  implements ActionSheet.OnButtonClickListener
 {
-  public lhb(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
+  static Map<String, TextureProgram> a = new HashMap();
   
-  public void OnClick(View paramView, int paramInt)
+  public static TextureProgram a(int paramInt)
   {
-    ReadInJoySettingActivity.c(this.a).d(paramInt);
-    ((TextView)this.a.findViewById(2131367304)).setText(ReadInJoySettingActivity.a(this.a)[paramInt]);
-    ReadInJoyUtils.a(Integer.toString(paramInt));
-    PublicAccountReportUtils.a(null, "", "0X8007416", "0X8007416", 0, 0, Integer.toString(paramInt), "", "", "", false);
-    ReadInJoySettingActivity.c(this.a).cancel();
+    int j = 1;
+    for (;;)
+    {
+      int i;
+      try
+      {
+        String str = paramInt + "_" + Thread.currentThread().getId();
+        localObject1 = (TextureProgram)a.get(str);
+        if (localObject1 == null)
+        {
+          i = 1;
+          if (i != 0) {
+            break label173;
+          }
+          GLES20.glUseProgram(((TextureProgram)localObject1).a());
+          if (lie.a() != 0)
+          {
+            i = j;
+            break label173;
+            localObject1 = new TextureProgram();
+            a.put(str, localObject1);
+            return localObject1;
+          }
+        }
+        else
+        {
+          i = 0;
+          continue;
+        }
+        i = 0;
+      }
+      finally {}
+      Object localObject1 = new YUVTextureProgram();
+      continue;
+      Object localObject3 = new YUVTextureAliasingProgram();
+      continue;
+      localObject3 = new lha();
+      continue;
+      localObject3 = new lgz();
+      continue;
+      localObject3 = new lgy();
+      continue;
+      label173:
+      if (i != 0) {
+        switch (paramInt)
+        {
+        }
+      }
+    }
+  }
+  
+  public static void a()
+  {
+    try
+    {
+      a.clear();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lhb
  * JD-Core Version:    0.7.0.1
  */

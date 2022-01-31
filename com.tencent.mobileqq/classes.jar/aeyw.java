@@ -1,92 +1,112 @@
-import android.content.Intent;
 import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.nearby.interestTag.InterestTag;
-import com.tencent.util.InputMethodUtil;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import android.util.Base64;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBEnumField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+import java.util.concurrent.atomic.AtomicInteger;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
+import tencent.im.pushsvr.pushsvrExt.ExtData;
+import tencent.im.s2c.msgtype0x210.submsgtype0x101.SubMsgType0x27.ClientReport;
+import tencent.im.s2c.msgtype0x210.submsgtype0x101.SubMsgType0x27.MsgBody;
+import tencent.im.s2c.msgtype0x210.submsgtype0x101.SubMsgType0x27.PushPlatform;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
 public class aeyw
-  implements View.OnClickListener
 {
-  public aeyw(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  private static final AtomicInteger a = new AtomicInteger(1);
   
-  public void onClick(View paramView)
+  public static int a(MessageRecord paramMessageRecord)
   {
-    if (paramView == ChooseInterestTagActivity.b(this.a)) {
-      if (TextUtils.isEmpty(ChooseInterestTagActivity.a(this.a)))
+    paramMessageRecord = MessageForSystemMsg.parseStructMsg(paramMessageRecord.msgData);
+    if (paramMessageRecord.msg_type.get() == 1) {
+      return paramMessageRecord.msg.sub_type.get();
+    }
+    return -1;
+  }
+  
+  public static final void a(QQAppInterface paramQQAppInterface, long paramLong1, long paramLong2, short paramShort, msg_comm.Msg paramMsg, int paramInt)
+  {
+    if ((paramShort != 188) && (paramShort != 189)) {
+      return;
+    }
+    Object localObject2 = (msg_comm.MsgHead)paramMsg.msg_head.get();
+    Object localObject1;
+    boolean bool1;
+    boolean bool2;
+    if (localObject2 != null)
+    {
+      paramMsg = "" + ((msg_comm.MsgHead)localObject2).auth_uin.get();
+      localObject1 = ((msg_comm.MsgHead)localObject2).auth_nick.get();
+      localObject2 = ((msg_comm.MsgHead)localObject2).auth_remark.get();
+      bool1 = TextUtils.isEmpty(paramMsg);
+      bool2 = TextUtils.isEmpty((CharSequence)localObject1);
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
-        ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.b(this.a), 30, 0, 0);
-        ChooseInterestTagActivity.a(this.a, true, true);
+        paramMsg = (msg_comm.Msg)localObject2;
+        label109:
+        if (TextUtils.isEmpty(paramMsg)) {
+          break label434;
+        }
       }
     }
-    label365:
-    do
+    for (;;)
     {
-      do
-      {
-        return;
-        ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.a(this.a), ChooseInterestTagActivity.c(this.a), 30, 0, 0);
-        break;
-        if (paramView == this.a.leftView)
-        {
-          InputMethodUtil.b(ChooseInterestTagActivity.a(this.a));
-          if (ChooseInterestTagActivity.a(this.a))
-          {
-            this.a.finish();
-            return;
-          }
-          localObject = this.a.getIntent();
-          paramView = (View)localObject;
-          if (localObject == null) {
-            paramView = new Intent();
-          }
-          Collections.reverse(ChooseInterestTagActivity.a(this.a));
-          paramView.putParcelableArrayListExtra("choosed_interest_tags", ChooseInterestTagActivity.a(this.a));
-          paramView.putExtra("interest_tag_type", ChooseInterestTagActivity.a(this.a));
-          this.a.setResult(-1, paramView);
-          this.a.finish();
-          return;
-        }
-        if (paramView != this.a.rightViewText) {
-          break label365;
-        }
-        InputMethodUtil.b(ChooseInterestTagActivity.a(this.a));
-      } while (!ChooseInterestTagActivity.a(this.a));
-      if (ChooseInterestTagActivity.a(this.a).isEmpty())
-      {
-        ChooseInterestTagActivity.a(this.a, "你还没有选择标签");
-        return;
+      if (QLog.isColorLevel()) {
+        QLog.i("NewFriendPushUtil", 2, String.format(Locale.getDefault(), "handleNewFrdSystemPush [0x%x,%d,%s,%d]", new Object[] { Short.valueOf(paramShort), Long.valueOf(paramLong2), paramMsg, Integer.valueOf(paramInt) }));
       }
-      ChooseInterestTagActivity.a(this.a, 0, "设置标签中...", 0);
-      Collections.reverse(ChooseInterestTagActivity.a(this.a));
-      paramView = new InterestTag(ChooseInterestTagActivity.a(this.a));
-      paramView.a.addAll(ChooseInterestTagActivity.a(this.a));
-      Object localObject = new ArrayList(1);
-      ((List)localObject).add(paramView);
-      ChooseInterestTagActivity.a(this.a).a((List)localObject, 0, 1);
-      return;
-    } while (paramView != ChooseInterestTagActivity.a(this.a));
-    ChooseInterestTagActivity.a(this.a).setText("正在加载...");
-    paramView = ChooseInterestTagActivity.a(this.a);
-    int j = ChooseInterestTagActivity.a(this.a);
-    int k = ChooseInterestTagActivity.b(this.a);
-    if (ChooseInterestTagActivity.a(this.a)) {}
-    for (int i = 1;; i = 0)
-    {
-      paramView.a("", j, k, 30, 0, i);
-      return;
+      localObject2 = new SubMsgType0x27.MsgBody();
+      SubMsgType0x27.PushPlatform localPushPlatform = new SubMsgType0x27.PushPlatform();
+      SubMsgType0x27.ClientReport localClientReport = new SubMsgType0x27.ClientReport();
+      localClientReport.uint32_service_id.set(1005);
+      PBStringField localPBStringField = localClientReport.str_content_id;
+      if (paramShort == 188) {}
+      for (localObject1 = "0xbc";; localObject1 = "0xbd")
+      {
+        localPBStringField.set((String)localObject1);
+        ((SubMsgType0x27.MsgBody)localObject2).msg_client_report.set(localClientReport);
+        localPushPlatform.uint32_forward_type.set(1);
+        localPushPlatform.uint64_from_uin.set(paramLong2);
+        localObject1 = String.format(ajjy.a(2131641708), new Object[] { paramMsg });
+        localPushPlatform.str_desc.set((String)localObject1);
+        localPushPlatform.str_target_url.set(Base64.encodeToString("newfrd_add".getBytes(), 0));
+        localPushPlatform.str_title.set(ajjy.a(2131641710));
+        localObject1 = new pushsvrExt.ExtData();
+        ((pushsvrExt.ExtData)localObject1).uint64_to_uin.set(paramLong2);
+        ((pushsvrExt.ExtData)localObject1).str_remark.set(ByteStringMicro.copyFromUtf8(paramMsg));
+        localPushPlatform.bytes_ext_data.set(ByteStringMicro.copyFrom(((pushsvrExt.ExtData)localObject1).toByteArray()));
+        ((SubMsgType0x27.MsgBody)localObject2).msg_push_platform.set(localPushPlatform);
+        ((arim)paramQQAppInterface.getManager(284)).a((SubMsgType0x27.MsgBody)localObject2, (short)(a.getAndIncrement() % 32767), paramInt);
+        return;
+        if (!bool2)
+        {
+          paramMsg = (msg_comm.Msg)localObject1;
+          break label109;
+        }
+        if (!bool1) {
+          break label109;
+        }
+        paramMsg = String.valueOf(paramLong2);
+        break label109;
+        label434:
+        break;
+      }
+      paramMsg = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeyw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/f3l" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/f3w" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_alignParentTop="true" />
+    <ImageView android:id="@id/f3n" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignTop="@id/f3w" android:layout_alignBottom="@id/f3w" />
+    <ImageView android:id="@id/f3m" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="14.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="14.0dip" android:layout_marginBottom="6.0dip" android:src="@drawable/clt" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:contentDescription="@string/button_back" />
+    <ImageView android:id="@id/f3u" android:paddingLeft="16.0dip" android:paddingTop="10.0dip" android:paddingRight="16.0dip" android:paddingBottom="10.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:contentDescription="@string/bbp" />
+    <RelativeLayout android:id="@id/d35" android:visibility="gone" android:layout_width="36.0dip" android:layout_height="42.0dip" android:layout_marginTop="26.0dip" android:layout_marginRight="16.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
+        <com.tencent.mobileqq.vas.avatar.AvatarLayout android:id="@id/head" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
+            <com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView android:id="@id/a6e" android:focusable="false" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/com" android:scaleType="centerCrop" />
+        </com.tencent.mobileqq.vas.avatar.AvatarLayout>
+        <com.tencent.mobileqq.troop.widget.RedDotImageView android:id="@id/d3q" android:visibility="gone" android:layout_width="9.0dip" android:layout_height="9.0dip" android:layout_marginTop="-4.0dip" android:layout_marginRight="-4.0dip" android:src="@drawable/skin_tips_dot" android:layout_alignTop="@id/head" android:layout_alignRight="@id/head" />
+    </RelativeLayout>
+</RelativeLayout>

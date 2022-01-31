@@ -1,18 +1,32 @@
-import com.tencent.mobileqq.emoticonview.HorizontalListViewEx;
+import android.view.View;
 
 public class acof
-  implements Runnable
 {
-  public acof(HorizontalListViewEx paramHorizontalListViewEx) {}
+  public float a;
+  public int a;
+  public long a;
+  public acoe a;
+  public View a;
+  public boolean a;
+  public float b;
+  public int b;
+  public boolean b;
+  public float c = 0.0F;
+  public float d = 1.0F;
+  public float e = 1.0F;
+  public float f = 1.0F;
   
-  public void run()
+  public acof()
   {
-    this.a.requestLayout();
+    this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Float = 0.0F;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acof
  * JD-Core Version:    0.7.0.1
  */

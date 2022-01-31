@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class TimDocSSOMsg$GetPadRightInfoReqBody
-  extends MessageMicro
+  extends MessageMicro<GetPadRightInfoReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_localpadid = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -26,7 +26,7 @@ public final class TimDocSSOMsg$GetPadRightInfoReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.teamwork.TimDocSSOMsg.GetPadRightInfoReqBody
  * JD-Core Version:    0.7.0.1
  */

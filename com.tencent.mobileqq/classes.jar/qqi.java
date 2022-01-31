@@ -1,201 +1,74 @@
-import android.text.TextUtils;
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.net.GdtHttp;
-import com.tencent.gdtad.views.canvas.components.form.GdtCanvasFormComponentData;
-import com.tencent.gdtad.views.canvas.components.form.GdtCanvasFormItemData;
-import com.tencent.gdtad.views.canvas.components.form.GdtCanvasFormTableData;
-import com.tencent.gdtad.views.canvas.components.form.textbox.GdtCanvasFormItemTextBoxData;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.lang.ref.WeakReference;
-import java.nio.charset.Charset;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class qqi
+  extends ont
 {
-  private static Map a(qqk paramqqk, JSONObject paramJSONObject)
-  {
-    localHashMap = new HashMap();
-    if ((paramqqk != null) && (paramJSONObject != null)) {}
-    label34:
-    do
-    {
-      do
-      {
-        do
-        {
-          try
-          {
-            localObject = JSONObject.NULL;
-            if (paramJSONObject != localObject) {
-              break label34;
-            }
-          }
-          catch (JSONException paramqqk)
-          {
-            for (;;)
-            {
-              Object localObject;
-              GdtLog.d("GdtCanvasFormUpdateRegexUtil", "parseRegex", paramqqk);
-            }
-            return localHashMap;
-          }
-          catch (Throwable paramqqk)
-          {
-            for (;;)
-            {
-              GdtLog.d("GdtCanvasFormUpdateRegexUtil", "parseRegex", paramqqk);
-            }
-          }
-          GdtLog.d("GdtCanvasFormUpdateRegexUtil", "parseRegex error");
-          return null;
-          paramqqk.d = paramJSONObject.getInt("code");
-          localObject = paramJSONObject.optString("message");
-          GdtLog.b("GdtCanvasFormUpdateRegexUtil", "onResponse code:" + paramqqk.d + " message:" + (String)localObject);
-        } while (paramqqk.d != 0);
-        paramqqk = paramJSONObject.getJSONObject("data");
-      } while ((paramqqk == null) || (paramqqk == JSONObject.NULL));
-      paramqqk = paramqqk.getJSONObject("regexMap");
-    } while ((paramqqk == null) || (paramqqk == JSONObject.NULL));
-    paramJSONObject = paramqqk.keys();
-    while (paramJSONObject.hasNext())
-    {
-      String str = (String)paramJSONObject.next();
-      if (!TextUtils.isEmpty(str))
-      {
-        localObject = Integer.valueOf(str);
-        str = paramqqk.getString(str);
-        if (!TextUtils.isEmpty(str)) {
-          localHashMap.put(localObject, str);
-        }
-      }
-    }
-  }
+  public qqi(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew) {}
   
-  private static qqk a()
+  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
   {
-    qqk localqqk = new qqk(null);
-    localqqk.a("https://h5.gdt.qq.com/pageviewer/api/form/getRegexp");
-    localqqk.jdField_a_of_type_JavaLangString = "GET";
-    localqqk.jdField_b_of_type_JavaLangString = "application/json";
-    localqqk.jdField_a_of_type_Int = 5000;
-    localqqk.jdField_b_of_type_Int = 5000;
-    return localqqk;
-  }
-  
-  public static void a(WeakReference paramWeakReference)
-  {
-    ThreadManager.post(new qqj(paramWeakReference), 5, null, true);
-  }
-  
-  private static void a(WeakReference paramWeakReference, qqk paramqqk)
-  {
-    if ((paramqqk == null) || (!paramqqk.b()) || (paramqqk.jdField_b_of_type_ArrayOfByte == null) || (paramWeakReference == null) || (paramWeakReference.get() == null) || (!((GdtCanvasFormComponentData)paramWeakReference.get()).isValid()))
+    QLog.d("ReadInJoyFastWebBottomSocialViewNew", 1, new Object[] { "handleDoFavoriteResult, isSuccess = ", Boolean.valueOf(paramBoolean), ", rowKey = ", paramString1, ", operationType = ", Integer.valueOf(paramInt), ", cid = ", paramString2 });
+    if ((ReadInJoyFastWebBottomSocialViewNew.a(this.a) == null) || (ReadInJoyFastWebBottomSocialViewNew.a(this.a) == null))
     {
-      GdtLog.d("GdtCanvasFormUpdateRegexUtil", "parseResponse error");
+      QLog.d("ReadInJoyFastWebBottomSocialViewNew", 1, "handleDoFavoriteResult but articleInfo is null.");
       return;
     }
+    bbmy localbbmy;
+    if ((paramBoolean) && (ReadInJoyFastWebBottomSocialViewNew.a(this.a).innerUniqueID.equals(paramString1)))
+    {
+      localbbmy = new bbmy(ReadInJoyFastWebBottomSocialViewNew.a(this.a));
+      localbbmy.d(2000);
+      localbbmy.b(2);
+      localbbmy.a(bbmy.a(2));
+      QLog.d("ReadInJoyFastWebBottomSocialViewNew", 1, "handleDoFavoriteResult,operationType=" + paramInt + ",button status:" + ReadInJoyFastWebBottomSocialViewNew.a(this.a));
+      if (paramInt != 1) {
+        break label294;
+      }
+      ArrayList localArrayList = (ArrayList)ReadInJoyFastWebBottomSocialViewNew.a(this.a).get(ReadInJoyFastWebBottomSocialViewNew.a(this.a).innerUniqueID);
+      paramString1 = localArrayList;
+      if (localArrayList == null) {
+        paramString1 = new ArrayList();
+      }
+      paramString1.add(paramString2);
+      ReadInJoyFastWebBottomSocialViewNew.a(this.a).put(ReadInJoyFastWebBottomSocialViewNew.a(this.a).innerUniqueID, paramString1);
+      if (ReadInJoyFastWebBottomSocialViewNew.a(this.a))
+      {
+        localbbmy.a(ReadInJoyFastWebBottomSocialViewNew.a);
+        localbbmy.a();
+      }
+    }
     for (;;)
     {
-      Object localObject;
-      int i;
-      try
+      ReadInJoyFastWebBottomSocialViewNew.a(this.a, false);
+      return;
+      label294:
+      if (paramInt == 2)
       {
-        localObject = Charset.forName("UTF-8");
-        if (localObject == null) {
-          break;
-        }
-        localObject = new String(paramqqk.jdField_b_of_type_ArrayOfByte, (Charset)localObject);
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break;
-        }
-        paramqqk = a(paramqqk, new JSONObject((String)localObject));
-        if (paramqqk == null) {
-          break;
-        }
-        i = 0;
-        if (i >= ((GdtCanvasFormComponentData)paramWeakReference.get()).table.getSize()) {
-          break;
-        }
-        localObject = ((GdtCanvasFormComponentData)paramWeakReference.get()).table.getItem(i);
-        if ((localObject == null) || (!((GdtCanvasFormItemData)localObject).isValid()))
+        ReadInJoyFastWebBottomSocialViewNew.a(this.a).remove(ReadInJoyFastWebBottomSocialViewNew.a(this.a).innerUniqueID);
+        if (!ReadInJoyFastWebBottomSocialViewNew.a(this.a))
         {
-          GdtLog.d("GdtCanvasFormUpdateRegexUtil", "parseResponse error");
-        }
-        else if ((localObject instanceof GdtCanvasFormItemTextBoxData))
-        {
-          localObject = (GdtCanvasFormItemTextBoxData)GdtCanvasFormItemTextBoxData.class.cast(localObject);
-          if (localObject == null) {
-            GdtLog.d("GdtCanvasFormUpdateRegexUtil", "parseResponse error");
-          }
+          localbbmy.a(ReadInJoyFastWebBottomSocialViewNew.b);
+          localbbmy.a();
         }
       }
-      catch (JSONException paramWeakReference)
-      {
-        GdtLog.d("GdtCanvasFormUpdateRegexUtil", "parseResponse", paramWeakReference);
-        break;
-        if (((GdtCanvasFormItemTextBoxData)localObject).regexType == -2147483648) {
-          break label262;
-        }
-        if (paramqqk.containsKey(Integer.valueOf(((GdtCanvasFormItemTextBoxData)localObject).regexType))) {
-          break label242;
-        }
-        GdtLog.d("GdtCanvasFormUpdateRegexUtil", "parseResponse error");
-      }
-      catch (Throwable paramWeakReference)
-      {
-        GdtLog.d("GdtCanvasFormUpdateRegexUtil", "parseResponse", paramWeakReference);
-      }
-      break;
-      label242:
-      ((GdtCanvasFormItemTextBoxData)localObject).regex = ((String)paramqqk.get(Integer.valueOf(((GdtCanvasFormItemTextBoxData)localObject).regexType)));
-      label262:
-      i += 1;
     }
   }
   
-  private static void c(WeakReference paramWeakReference)
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, ArrayList<String> paramArrayList)
   {
-    int i = 0;
-    for (;;)
-    {
-      qqk localqqk;
-      if (i < 3)
-      {
-        localqqk = a();
-        if (localqqk != null) {}
-      }
-      else
-      {
-        GdtLog.d("GdtCanvasFormUpdateRegexUtil", "update error");
-      }
-      do
-      {
-        return;
-        GdtHttp.a(localqqk);
-        a(paramWeakReference, localqqk);
-      } while ((localqqk.b()) && (localqqk.d == 0));
-      try
-      {
-        Thread.sleep(1000L);
-        i += 1;
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        for (;;)
-        {
-          GdtLog.d("GdtCanvasFormUpdateRegexUtil", "update", localInterruptedException);
-        }
-      }
+    QLog.d("ReadInJoyFastWebBottomSocialViewNew", 1, "handleFavoriteStatus, isSuccess = " + paramBoolean1 + ", rowKey =  " + paramString + ", isFavorite = " + paramBoolean2 + ", cidList = " + paramArrayList);
+    if ((paramBoolean1) && (ReadInJoyFastWebBottomSocialViewNew.a(this.a).innerUniqueID.equals(paramString))) {
+      ReadInJoyFastWebBottomSocialViewNew.a(this.a).put(paramString, paramArrayList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qqi
  * JD-Core Version:    0.7.0.1
  */

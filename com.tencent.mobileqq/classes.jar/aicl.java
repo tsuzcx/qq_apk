@@ -1,61 +1,58 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.servlet.CliNotifyPush;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.report.ReportModelDC02528;
+import com.tencent.mobileqq.widget.presseffect.PressEffectImageView;
+import java.net.URLEncoder;
 
-public class aicl
-  extends BroadcastReceiver
+class aicl
+  implements View.OnClickListener
 {
-  public aicl(CliNotifyPush paramCliNotifyPush) {}
+  public int a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public PressEffectImageView a;
+  public View b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  aicl(aick paramaick) {}
+  
+  public void onClick(View paramView)
   {
-    if (CliNotifyPush.jdField_a_of_type_Boolean != true)
+    String str2 = this.jdField_a_of_type_Aick.a(this.jdField_a_of_type_Int);
+    if (paramView == this.jdField_a_of_type_ComTencentMobileqqWidgetPresseffectPressEffectImageView)
     {
-      QLog.e("CliNotifyPush", 1, "receiver broadcast late");
-      CliNotifyPush.a(this.a, 2013);
+      if (this.jdField_a_of_type_Aick.jdField_a_of_type_Ajrt != null) {
+        this.jdField_a_of_type_Aick.jdField_a_of_type_Ajrt.a(this.jdField_a_of_type_Int);
+      }
+      this.jdField_a_of_type_Aick.a();
+    }
+    while (paramView != this.jdField_a_of_type_AndroidViewView) {
       return;
     }
-    CliNotifyPush.jdField_a_of_type_Boolean = false;
-    if (paramIntent != null)
-    {
-      CliNotifyPush.a(this.a, paramIntent.getIntExtra("param_ret", 0));
-      long l = paramIntent.getLongExtra("param_uin", 10000L);
-      QLog.e("CliNotifyPush", 1, "receive broadcast from qzone, uin=" + l + " param_ret=" + CliNotifyPush.a(this.a));
-      if ((CliNotifyPush.a(this.a) != 0) && (CliNotifyPush.a(this.a) != 10000)) {
-        break label216;
-      }
-      if (l != this.a.getAppRuntime().getLongAccountUin()) {
-        break label194;
-      }
-      CliNotifyPush.jdField_a_of_type_Int = 0;
-      CliNotifyPush.b = 0;
+    String str1 = amfg.a().c;
+    paramView = str1;
+    if (TextUtils.isEmpty(str1)) {
+      paramView = "https://sou.qq.com/kandian/kd.html?_bid=3216&_wv=3&_wwv=1293&_wvSb=0&keyword=$KEYWORD$&from=$FROM$";
     }
-    for (;;)
+    paramView = paramView.replace("$KEYWORD$", str2);
+    if ((this.jdField_a_of_type_Aick.jdField_a_of_type_Int == 25) || (this.jdField_a_of_type_Aick.jdField_a_of_type_Int == 10)) {}
+    for (paramView = paramView.replace("$FROM$", "kandian_history");; paramView = paramView.replace("$FROM$", avsv.a(this.jdField_a_of_type_Aick.jdField_a_of_type_Int)))
     {
-      paramContext = (QQAppInterface)this.a.getAppRuntime();
-      if (paramContext == null) {
-        break;
-      }
-      paramContext.getHandler(CliNotifyPush.class).removeCallbacks(CliNotifyPush.a(this.a));
-      paramContext.getHandler(CliNotifyPush.class).post(CliNotifyPush.a(this.a));
+      paramView = paramView.replace("$SEARCHID$", "" + URLEncoder.encode(UniteSearchActivity.c));
+      avwf.a(this.jdField_a_of_type_Aick.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Aick.jdField_a_of_type_AndroidContentContext, paramView);
+      this.jdField_a_of_type_Aick.jdField_a_of_type_Ajrt.a(str2);
+      avsv.a(null, new ReportModelDC02528().module("all_result").action("clk_search_his").ver2(avsv.a(this.jdField_a_of_type_Aick.jdField_a_of_type_Int)).ver4(str2).ver7("{experiment_id:" + avsv.b + "}"));
       return;
-      label194:
-      CliNotifyPush.a(this.a, 3001);
-      CliNotifyPush.jdField_a_of_type_Int += 1;
-      continue;
-      label216:
-      CliNotifyPush.jdField_a_of_type_Int += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aicl
  * JD-Core Version:    0.7.0.1
  */

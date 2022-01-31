@@ -1,23 +1,23 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.component.network.downloader.strategy.DownloadGlobalStrategy.StrategyInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
 public final class pos
-  implements Parcelable.Creator
+  implements Parcelable.Creator<ArticleInfo>
 {
-  public DownloadGlobalStrategy.StrategyInfo a(Parcel paramParcel)
+  public ArticleInfo a(Parcel paramParcel)
   {
-    return new DownloadGlobalStrategy.StrategyInfo(paramParcel);
+    return new ArticleInfo(paramParcel);
   }
   
-  public DownloadGlobalStrategy.StrategyInfo[] a(int paramInt)
+  public ArticleInfo[] a(int paramInt)
   {
-    return new DownloadGlobalStrategy.StrategyInfo[paramInt];
+    return new ArticleInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pos
  * JD-Core Version:    0.7.0.1
  */

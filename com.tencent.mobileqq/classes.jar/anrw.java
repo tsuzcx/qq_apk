@@ -1,23 +1,27 @@
-import android.widget.ImageView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
 
 public class anrw
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public anrw(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public anrw(ExtendFriendSquareFragment paramExtendFriendSquareFragment, FrameLayout.LayoutParams paramLayoutParams, View paramView) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.e = false;
-    this.a.t();
-    QIMEffectCameraCaptureUnit.f(this.a, true);
-    QIMEffectCameraCaptureUnit.b(this.a).setVisibility(0);
-    QIMEffectCameraCaptureUnit.b(this.a).setEnabled(true);
+    if (paramValueAnimator.getAnimatedValue() == null) {
+      return;
+    }
+    int i = (int)((1.0F - ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F) * -this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment.j);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams.topMargin = i;
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetFrameLayout$LayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anrw
  * JD-Core Version:    0.7.0.1
  */

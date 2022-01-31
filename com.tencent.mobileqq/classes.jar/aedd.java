@@ -1,18 +1,56 @@
-import com.tencent.mobileqq.intervideo.now.NowDataReporter;
+import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
+import java.lang.ref.WeakReference;
 
-public class aedd
-  implements Runnable
+class aedd
+  extends adyl
 {
-  public aedd(NowDataReporter paramNowDataReporter, long paramLong) {}
+  final String jdField_a_of_type_JavaLangString = aecw.class.getSimpleName();
+  WeakReference<aecw> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void run()
+  public aedd(aecw paramaecw)
   {
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowDataReporter.a(this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaecw);
+  }
+  
+  public void a(CompressInfo paramCompressInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress success, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void b(CompressInfo paramCompressInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress fail, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void c(CompressInfo paramCompressInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "DeviceMsgChatPie, compress complete, localUUID:" + paramCompressInfo.jdField_a_of_type_JavaLangString);
+    }
+    aecw localaecw = (aecw)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localaecw == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e(this.jdField_a_of_type_JavaLangString, 2, "onCompressComplete, error: activity is null");
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e(this.jdField_a_of_type_JavaLangString, 2, "onCompressComplete, new path:" + paramCompressInfo.e);
+    }
+    localaecw.f(paramCompressInfo.e);
+    aecw.a(localaecw).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aedd
  * JD-Core Version:    0.7.0.1
  */

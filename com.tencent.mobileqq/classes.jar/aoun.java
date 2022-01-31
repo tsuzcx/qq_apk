@@ -1,33 +1,92 @@
-import com.tencent.mobileqq.widget.CircleProgress;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragmentAllWaite;
 
-public class aoun
-  implements Runnable
+class aoun
+  extends ajgs
 {
-  public aoun(CaptureQmcfSoDownloadFragmentAllWaite paramCaptureQmcfSoDownloadFragmentAllWaite, String paramString) {}
+  aoun(aoum paramaoum) {}
   
-  public void run()
+  protected void a(long paramLong, float paramFloat)
   {
-    if (CaptureQmcfSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite))
-    {
-      CaptureQmcfSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite).setProgress((CaptureQmcfSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite) + CaptureQmcfSoDownloadFragmentAllWaite.b(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite)) / 2);
-      if (QLog.isColorLevel()) {
-        QLog.d("CaptureSoDownloadFragmentAllWaite", 2, "" + this.jdField_a_of_type_JavaLangString + " setProgress=" + (CaptureQmcfSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite) + CaptureQmcfSoDownloadFragmentAllWaite.b(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite)) / 2);
-      }
-      CaptureQmcfSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite);
-    }
+    Object localObject = this.a.jdField_a_of_type_Aotf.a();
+    if (localObject == null) {}
     do
     {
       return;
-      CaptureQmcfSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite).setProgress(CaptureQmcfSoDownloadFragmentAllWaite.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite));
-    } while (!QLog.isColorLevel());
-    QLog.d("CaptureSoDownloadFragmentAllWaite", 2, "" + this.jdField_a_of_type_JavaLangString + " setProgress=" + CaptureQmcfSoDownloadFragmentAllWaite.c(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragmentAllWaite));
+      if (QLog.isColorLevel()) {
+        QLog.d("DatalineFileModel<FileAssistant>", 2, "DataLine onProgress : opType[" + this.a.jdField_a_of_type_Aotf.e() + "], uniseq[" + ((FileManagerEntity)localObject).uniseq + "], nSessionId[" + ((FileManagerEntity)localObject).nSessionId + "], peerType[" + this.a.jdField_a_of_type_Aotf.b() + "]");
+      }
+      int i = DataLineMsgRecord.getDevTypeBySeId(((FileManagerEntity)localObject).uniseq);
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(i).a(((FileManagerEntity)localObject).uniseq);
+    } while ((localObject == null) || (paramLong != ((DataLineMsgRecord)localObject).sessionid) || (this.a.jdField_a_of_type_Aovo == null));
+    this.a.jdField_a_of_type_Aovo.a(paramFloat);
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  {
+    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_Aotf.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("DatalineFileModel<FileAssistant>", 2, "DataLine onRecvFile : isSuccess[" + paramBoolean + "], uniseq[" + localFileManagerEntity.uniseq + "], nSessionId[" + localFileManagerEntity.nSessionId + "], peerType[" + this.a.jdField_a_of_type_Aotf.b() + "]");
+    }
+    int i = DataLineMsgRecord.getDevTypeBySeId(localFileManagerEntity.uniseq);
+    DataLineMsgRecord localDataLineMsgRecord = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(i).a(localFileManagerEntity.uniseq);
+    if (localDataLineMsgRecord == null) {}
+    do
+    {
+      do
+      {
+        return;
+        String str = localFileManagerEntity.getFilePath();
+        if ((paramLong == localDataLineMsgRecord.sessionid) || (str == null) || (str.equals(paramString))) {
+          break;
+        }
+      } while (!QLog.isDevelopLevel());
+      QLog.i("DatalineFileModel<FileAssistant>", 1, "this recv file done is not current visit file");
+      return;
+    } while (this.a.jdField_a_of_type_Aovo == null);
+    if (paramBoolean)
+    {
+      localFileManagerEntity.status = 1;
+      this.a.jdField_a_of_type_Aovo.f();
+      return;
+    }
+    localFileManagerEntity.status = 3;
+    this.a.jdField_a_of_type_Aovo.g();
+  }
+  
+  protected void b(boolean paramBoolean, long paramLong, String paramString)
+  {
+    paramString = this.a.jdField_a_of_type_Aotf.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("DatalineFileModel<FileAssistant>", 2, "DataLine onSendFile : isSuccess[" + paramBoolean + "], uniseq[" + paramString.uniseq + "], nSessionId[" + paramString.nSessionId + "], peerType[" + this.a.jdField_a_of_type_Aotf.b() + "]");
+    }
+    int i = DataLineMsgRecord.getDevTypeBySeId(paramString.uniseq);
+    DataLineMsgRecord localDataLineMsgRecord = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(i).a(paramString.uniseq);
+    if (localDataLineMsgRecord == null) {}
+    do
+    {
+      return;
+      if (paramLong != localDataLineMsgRecord.sessionid)
+      {
+        QLog.i("DatalineFileModel<FileAssistant>", 1, "this send file done is not current visit file");
+        return;
+      }
+    } while (this.a.jdField_a_of_type_Aovo == null);
+    if (paramBoolean)
+    {
+      paramString.status = 1;
+      this.a.jdField_a_of_type_Aovo.f();
+      return;
+    }
+    this.a.jdField_a_of_type_Aovo.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoun
  * JD-Core Version:    0.7.0.1
  */

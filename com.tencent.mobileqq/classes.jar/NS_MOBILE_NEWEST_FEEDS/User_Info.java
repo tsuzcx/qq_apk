@@ -9,9 +9,9 @@ import java.util.Map;
 public final class User_Info
   extends JceStruct
 {
-  static Map cache_extendInfo = new HashMap();
+  static Map<String, String> cache_extendInfo = new HashMap();
   public int eStarState;
-  public Map extendInfo;
+  public Map<String, String> extendInfo;
   
   static
   {
@@ -20,7 +20,7 @@ public final class User_Info
   
   public User_Info() {}
   
-  public User_Info(int paramInt, Map paramMap)
+  public User_Info(int paramInt, Map<String, String> paramMap)
   {
     this.eStarState = paramInt;
     this.extendInfo = paramMap;

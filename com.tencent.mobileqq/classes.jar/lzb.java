@@ -1,38 +1,37 @@
-import android.content.res.Resources;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderPolymeric;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.PolymericInfo;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.VideoControlUI;
 
 public class lzb
-  extends PublicAccountObserver
+  extends lru
 {
-  public lzb(ComponentHeaderPolymeric paramComponentHeaderPolymeric, ArticleInfo paramArticleInfo) {}
+  public lzb(VideoControlUI paramVideoControlUI) {}
   
-  public void b(boolean paramBoolean, String paramString)
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ComponentHeaderPolymeric", 2, "followPubAccount() unfollowUin uin=" + paramString + ", isSuccess=" + paramBoolean + " followStatus = " + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mPolymericInfo.e);
-    }
-    if (!paramString.equals(ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric).getTag())) {
-      return;
-    }
-    ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, true);
-    if (paramBoolean)
+    if (this.a.g()) {}
+    do
     {
-      ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric).setText("关注");
-      ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric).setTextColor(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric.getResources().getColor(2131493399));
-      ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, 1);
+      return;
+      if (this.a.h()) {
+        break;
+      }
+    } while (!paramBoolean);
+    this.a.b.update(null, new Object[] { Integer.valueOf(110), Long.valueOf(paramLong) });
+    this.a.a.a(paramLong, paramInt);
+  }
+  
+  protected void f(long paramLong)
+  {
+    if (this.a.g()) {}
+    while ((!this.a.h()) || (!this.a.a.b(0))) {
       return;
     }
-    ComponentHeaderPolymeric.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentHeaderPolymeric, 2);
+    this.a.a.a(paramLong, 0, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lzb
  * JD-Core Version:    0.7.0.1
  */

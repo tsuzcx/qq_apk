@@ -1,49 +1,88 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.widget.ProgressPieView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class amkn
-  extends Handler
+  extends alzl<amkl>
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
-  
-  public amkn(ProgressPieView paramProgressPieView) {}
-  
-  public void handleMessage(Message paramMessage)
+  public int a()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetProgressPieView.b > this.jdField_a_of_type_Int)
-    {
-      this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_ComTencentWidgetProgressPieView.b - 1);
-      sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentWidgetProgressPieView.e);
+    return 456;
+  }
+  
+  @NonNull
+  public amkl a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("VerticalSearchConfProcessor", 2, "migrateOldOrDefaultContent ");
     }
-    do
+    return new amkl();
+  }
+  
+  @Nullable
+  public amkl a(alzs[] paramArrayOfalzs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VerticalSearchConfProcessor", 2, "onParsed start");
+    }
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
     {
-      return;
-      if (this.jdField_a_of_type_ComTencentWidgetProgressPieView.b < this.jdField_a_of_type_Int)
-      {
-        int i = this.jdField_a_of_type_ComTencentWidgetProgressPieView.b + this.jdField_a_of_type_ComTencentWidgetProgressPieView.jdField_f_of_type_Int;
-        if (i <= this.jdField_a_of_type_Int) {
-          this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(i);
-        }
-        for (;;)
-        {
-          sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentWidgetProgressPieView.e);
-          return;
-          this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_Int);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("VerticalSearchConfProcessor", 2, "onParsed " + paramArrayOfalzs.length);
       }
-      removeMessages(0);
-    } while (!this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setVisibility(4);
-    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setShowImage(false);
-    this.jdField_a_of_type_ComTencentWidgetProgressPieView.jdField_f_of_type_Boolean = true;
-    this.jdField_a_of_type_Boolean = false;
+      return amkl.a(paramArrayOfalzs[0]);
+    }
+    return null;
+  }
+  
+  public Class a()
+  {
+    return amkl.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("VerticalSearchConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void a(amkl paramamkl)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramamkl == null) {
+        break label43;
+      }
+    }
+    label43:
+    for (paramamkl = paramamkl.toString();; paramamkl = " empty")
+    {
+      QLog.d("VerticalSearchConfProcessor", 2, paramamkl);
+      return;
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amkn
  * JD-Core Version:    0.7.0.1
  */

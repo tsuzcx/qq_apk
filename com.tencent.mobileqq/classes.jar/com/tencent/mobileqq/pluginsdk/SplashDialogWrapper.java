@@ -3,43 +3,41 @@ package com.tencent.mobileqq.pluginsdk;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Handler;
-import android.os.Message;
 
 public final class SplashDialogWrapper
 {
-  private Dialog a;
-  private Context b;
-  private Handler c = new a(this);
-  private BroadcastReceiver d;
-  private int e;
-  private String f;
-  private String g;
-  private boolean h;
+  private Dialog mBase;
+  private Context mContext;
+  private Handler mHandler = new SplashDialogWrapper.InternalHandler(this);
+  private boolean mOnlyCheckID;
+  private String mPluginApk;
+  private String mPluginName;
+  private BroadcastReceiver mReceiver;
+  private int mTimeOut;
   
   public SplashDialogWrapper(Context paramContext, Dialog paramDialog, String paramString1, String paramString2, boolean paramBoolean, int paramInt)
   {
-    this.b = paramContext;
-    this.a = paramDialog;
-    this.g = paramString2;
-    this.f = paramString1;
-    this.h = paramBoolean;
-    this.e = paramInt;
+    this.mContext = paramContext;
+    this.mBase = paramDialog;
+    this.mPluginApk = paramString2;
+    this.mPluginName = paramString1;
+    this.mOnlyCheckID = paramBoolean;
+    this.mTimeOut = paramInt;
   }
   
   public void dismiss()
   {
-    if (this.d != null) {}
+    if (this.mReceiver != null) {}
     try
     {
-      this.b.unregisterReceiver(this.d);
+      this.mContext.unregisterReceiver(this.mReceiver);
       if (DebugHelper.sDebug) {
         DebugHelper.log("plugin_tag", "SplashDialogWrapper.dismiss unregisterReceiver");
       }
-      this.d = null;
-      this.c.removeMessages(0);
+      this.mReceiver = null;
+      this.mHandler.removeMessages(0);
     }
     catch (IllegalArgumentException localIllegalArgumentException)
     {
@@ -47,7 +45,7 @@ public final class SplashDialogWrapper
       {
         try
         {
-          this.a.dismiss();
+          this.mBase.dismiss();
           return;
         }
         catch (Exception localException) {}
@@ -59,75 +57,20 @@ public final class SplashDialogWrapper
   
   public void show()
   {
-    this.c.sendEmptyMessageDelayed(0, this.e);
+    this.mHandler.sendEmptyMessageDelayed(0, this.mTimeOut);
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("action_launch_completed");
-    this.d = new b(this.f, this.g);
+    this.mReceiver = new SplashDialogWrapper.LaunchCompletedObserver(this, this.mPluginName, this.mPluginApk);
     if (DebugHelper.sDebug) {
       DebugHelper.log("plugin_tag", "SplashDialogWrapper.show registerReceiver");
     }
     try
     {
-      this.b.registerReceiver(this.d, localIntentFilter);
-      this.a.show();
+      this.mContext.registerReceiver(this.mReceiver, localIntentFilter);
+      this.mBase.show();
       return;
     }
     catch (Exception localException) {}
-  }
-  
-  public static class LaunchCompletedIntent
-    extends Intent
-  {
-    public static final String ACTION_LAUNCH_COMPLETED = "action_launch_completed";
-    public static final String PARAM_PLUGIN_APK = "plugin_apk";
-    public static final String PARAM_PLUGIN_NAME = "plugin_name";
-  }
-  
-  private static class a
-    extends Handler
-  {
-    public static final int a = 0;
-    private SplashDialogWrapper b;
-    
-    public a(SplashDialogWrapper paramSplashDialogWrapper)
-    {
-      this.b = paramSplashDialogWrapper;
-    }
-    
-    public void handleMessage(Message paramMessage)
-    {
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      }
-      this.b.dismiss();
-    }
-  }
-  
-  private class b
-    extends BroadcastReceiver
-  {
-    private String b;
-    private String c;
-    
-    public b(String paramString1, String paramString2)
-    {
-      this.b = paramString1;
-      this.c = paramString2;
-    }
-    
-    public void onReceive(Context paramContext, Intent paramIntent)
-    {
-      paramContext = paramIntent.getStringExtra("plugin_apk");
-      paramIntent = paramIntent.getStringExtra("plugin_name");
-      if (DebugHelper.sDebug) {
-        DebugHelper.log("plugin_tag", "LaunchCompletedObserver.onReceive: " + paramContext + ", " + paramIntent + ", " + SplashDialogWrapper.a(SplashDialogWrapper.this));
-      }
-      if ((this.c.equalsIgnoreCase(paramContext)) && ((SplashDialogWrapper.a(SplashDialogWrapper.this)) || (paramIntent != null))) {
-        SplashDialogWrapper.this.dismiss();
-      }
-    }
   }
 }
 

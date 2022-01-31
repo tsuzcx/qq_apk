@@ -1,13 +1,43 @@
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.MotionEvent;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import org.json.JSONObject;
 
-public abstract interface osp
+public class osp
 {
-  public abstract void a(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener);
-  
-  public abstract boolean a();
-  
-  public abstract boolean a(MotionEvent paramMotionEvent);
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    JSONObject localJSONObject1 = new JSONObject();
+    if (TextUtils.isEmpty(paramBaseArticleInfo.avatar)) {
+      localJSONObject1.put("avator_url", "default_comment_avatar");
+    }
+    for (;;)
+    {
+      otl.r(paramBaseArticleInfo, localJSONObject1);
+      otl.a(paramBaseArticleInfo, localJSONObject1, true);
+      npj.b(paramBaseArticleInfo, localJSONObject1);
+      npj.a(paramBaseArticleInfo, localJSONObject1);
+      otl.m(paramBaseArticleInfo, localJSONObject1);
+      otl.e(paramBaseArticleInfo, localJSONObject1);
+      otl.g(paramBaseArticleInfo, localJSONObject1);
+      localJSONObject1.put("style_ID", "ReadInjoy_ad_brand_optimization_cell");
+      otl.a(localJSONObject1, paramBaseArticleInfo);
+      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo))
+      {
+        otl.d(paramBaseArticleInfo, localJSONObject1);
+        localJSONObject2 = new JSONObject();
+        localJSONObject2.put("article_model", paramBaseArticleInfo);
+        localJSONObject1.put("id_view_AdBanner", localJSONObject2);
+      }
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("article_model", paramBaseArticleInfo);
+      localJSONObject1.put("id_article_brand_optimization", localJSONObject2);
+      localJSONObject1.put("id_info_operate_parent", new JSONObject());
+      localJSONObject1.put("id_ad_brand_container", new JSONObject());
+      return localJSONObject1;
+      localJSONObject1.put("avator_url", paramBaseArticleInfo.avatar);
+    }
+  }
 }
 
 

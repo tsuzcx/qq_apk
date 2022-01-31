@@ -1,30 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class wkw
-  implements DialogInterface.OnClickListener
+class wkw
+  extends Handler
 {
-  public wkw(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  wkw(wku paramwku) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (!NetworkUtil.g(this.a.getApplicationContext())) {
-      QQToast.a(this.a, 2131437550, 1).a();
-    }
-    for (;;)
+    switch (paramMessage.what)
     {
-      paramDialogInterface.dismiss();
+    default: 
       return;
-      this.a.Y_();
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopTipsPopWindow", 2, "MSG_SHOW_WINDOW mTroopNotify = " + this.a.jdField_a_of_type_Ayoo + ", mTroopNotifyAd = " + this.a.jdField_a_of_type_Ayop);
+    }
+    if (this.a.jdField_a_of_type_Ayop != null) {
+      this.a.a(this.a.jdField_a_of_type_Ayop);
+    }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wkw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,55 +1,23 @@
-import android.content.ContentResolver;
-import android.database.Cursor;
-import android.net.Uri;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qqfav.globalsearch.FavoriteSearchEngine;
-import mqq.app.MobileQQ;
+import android.os.Message;
+import mqq.os.MqqHandler;
 
-public class amwr
-  implements Runnable
+class amwr
+  implements atyw
 {
-  public int a;
-  public long a;
-  public Cursor a;
-  public String a;
-  public boolean a;
+  amwr(amwq paramamwq, int paramInt) {}
   
-  private amwr(FavoriteSearchEngine paramFavoriteSearchEngine) {}
-  
-  public void run()
+  public void a(int paramInt1, atyv paramatyv, int paramInt2, String paramString)
   {
-    Object localObject1 = FavoriteSearchEngine.a(this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine).getApplication().getContentResolver();
-    ??? = Uri.parse("content://qq.favorites/global_search/" + FavoriteSearchEngine.a(this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine).getAccount());
-    try
+    if (this.jdField_a_of_type_Amwq.a.hasMessages(0))
     {
-      localObject1 = ((ContentResolver)localObject1).query((Uri)???, null, null, new String[] { this.jdField_a_of_type_JavaLangString, "" + this.jdField_a_of_type_Int, "" + this.jdField_a_of_type_Long, "" + this.jdField_a_of_type_Boolean }, null);
-    }
-    catch (Exception localException)
-    {
-      synchronized (FavoriteSearchEngine.a(this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine))
-      {
-        if (FavoriteSearchEngine.a(this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine) == Thread.currentThread())
-        {
-          this.jdField_a_of_type_AndroidDatabaseCursor = ((Cursor)localObject1);
-          FavoriteSearchEngine.a(this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine).notify();
-        }
-        Object localObject2;
-        while (localObject2 == null)
-        {
-          return;
-          localException = localException;
-          localException.printStackTrace();
-          localObject2 = null;
-          break;
-        }
-        localObject2.close();
-      }
+      this.jdField_a_of_type_Amwq.a.removeMessages(0);
+      this.jdField_a_of_type_Amwq.a.obtainMessage(0, this.jdField_a_of_type_Int, 0).sendToTarget();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amwr
  * JD-Core Version:    0.7.0.1
  */

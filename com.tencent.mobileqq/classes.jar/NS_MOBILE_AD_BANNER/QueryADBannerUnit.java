@@ -11,22 +11,22 @@ public final class QueryADBannerUnit
   extends JceStruct
 {
   static int cache_eAdType = 0;
-  static Map cache_extendinfo;
-  static ArrayList cache_multibanner;
+  static Map<String, String> cache_extendinfo;
+  static ArrayList<MultiBanner> cache_multibanner;
   static TimeRange cache_sShowTimeRange = new TimeRange();
-  static ArrayList cache_videobanners;
+  static ArrayList<VideoBanner> cache_videobanners;
   public String DynBannerJsonData = "";
   public String btnText = "";
   public String description = "";
   public int detail_info;
   public int duration;
   public int eAdType;
-  public Map extendinfo;
+  public Map<String, String> extendinfo;
   public long iAdID;
   public long iStoreID;
   public long iTraceID;
   public long iUin;
-  public ArrayList multibanner;
+  public ArrayList<MultiBanner> multibanner;
   public String nick = "";
   public int noCloseButton;
   public int pattern_id;
@@ -43,7 +43,7 @@ public final class QueryADBannerUnit
   public String strTraceInfo = "";
   public int type;
   public String videoUrl = "";
-  public ArrayList videobanners;
+  public ArrayList<VideoBanner> videobanners;
   
   static
   {
@@ -59,7 +59,7 @@ public final class QueryADBannerUnit
   
   public QueryADBannerUnit() {}
   
-  public QueryADBannerUnit(String paramString1, String paramString2, long paramLong1, long paramLong2, int paramInt1, TimeRange paramTimeRange, String paramString3, long paramLong3, String paramString4, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString5, String paramString6, int paramInt7, String paramString7, String paramString8, String paramString9, long paramLong4, String paramString10, String paramString11, ArrayList paramArrayList1, ArrayList paramArrayList2, Map paramMap, String paramString12, String paramString13, int paramInt8)
+  public QueryADBannerUnit(String paramString1, String paramString2, long paramLong1, long paramLong2, int paramInt1, TimeRange paramTimeRange, String paramString3, long paramLong3, String paramString4, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, String paramString5, String paramString6, int paramInt7, String paramString7, String paramString8, String paramString9, long paramLong4, String paramString10, String paramString11, ArrayList<MultiBanner> paramArrayList, ArrayList<VideoBanner> paramArrayList1, Map<String, String> paramMap, String paramString12, String paramString13, int paramInt8)
   {
     this.strPicUrl = paramString1;
     this.strJmpUrl = paramString2;
@@ -84,8 +84,8 @@ public final class QueryADBannerUnit
     this.iUin = paramLong4;
     this.roomId = paramString10;
     this.nick = paramString11;
-    this.multibanner = paramArrayList1;
-    this.videobanners = paramArrayList2;
+    this.multibanner = paramArrayList;
+    this.videobanners = paramArrayList1;
     this.extendinfo = paramMap;
     this.DynBannerJsonData = paramString12;
     this.videoUrl = paramString13;
@@ -190,7 +190,7 @@ public final class QueryADBannerUnit
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_AD_BANNER.QueryADBannerUnit
  * JD-Core Version:    0.7.0.1
  */

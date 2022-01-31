@@ -9,11 +9,11 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class EmosmPb$SubCmd0x3ReqFetchBq
-  extends MessageMicro
+  extends MessageMicro<SubCmd0x3ReqFetchBq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatField rpt_bytes_bqid = PBField.initRepeat(PBBytesField.__repeatHelper__);
-  public final PBRepeatField rpt_new_itemid = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> rpt_bytes_bqid = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> rpt_new_itemid = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBUInt32Field uint32_tab_id = PBField.initUInt32(0);
   
   static
@@ -25,7 +25,7 @@ public final class EmosmPb$SubCmd0x3ReqFetchBq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.emosm.EmosmPb.SubCmd0x3ReqFetchBq
  * JD-Core Version:    0.7.0.1
  */

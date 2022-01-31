@@ -1,26 +1,22 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qcall.PstnManager;
-import com.tencent.mobileqq.qcall.PstnObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-public class sna
-  extends PstnObserver
+class sna
+  extends smy
 {
-  public sna(Conversation paramConversation) {}
+  sna(smz paramsmz) {}
   
-  public void a(Boolean paramBoolean, int paramInt)
+  public void a(boolean paramBoolean, Bundle paramBundle, CommentEntry paramCommentEntry)
   {
-    super.a(paramBoolean, paramInt);
-    PstnManager localPstnManager = (PstnManager)this.a.a.getManager(142);
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.recent", 2, "onPstnGrayFlag|isSuccess:" + paramBoolean + " lastPstnGrayFlag:" + this.a.f + " grayFlag:" + paramInt + " mIsChatList:" + this.a.g);
+    this.a.e();
+    if (paramBoolean) {
+      this.a.a(true, paramCommentEntry);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sna
  * JD-Core Version:    0.7.0.1
  */

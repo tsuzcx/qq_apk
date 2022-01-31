@@ -1,29 +1,24 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
 
-public final class aiki
-  implements Runnable
+public class aiki
+  implements aikc
 {
-  public void run()
+  public aiki(CmGameDebugView paramCmGameDebugView) {}
+  
+  public void a(int paramInt)
   {
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    localCalendar.set(14, 0);
-    long l = localCalendar.getTimeInMillis();
-    BaseApplicationImpl.getApplication().getSharedPreferences("banner_and_splash", 0).edit().putLong("splashshowtime", l).commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("SetSplash", 2, "显示了一个非默认闪屏时间是" + localCalendar.toString());
+    if (CmGameDebugView.a(this.a).getVisibility() != 0)
+    {
+      CmGameDebugView.b(this.a, true);
+      return;
     }
+    CmGameDebugView.b(this.a, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiki
  * JD-Core Version:    0.7.0.1
  */

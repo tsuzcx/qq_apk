@@ -1,5 +1,6 @@
 package com.tencent.biz.troopgift;
 
+import aciy;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -9,9 +10,9 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.GridView;
 import android.widget.ListAdapter;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import java.util.ArrayList;
-import pdo;
+import wmt;
+import wmv;
 
 public class GridListViewPager
   extends absMultiViewPager
@@ -51,28 +52,28 @@ public class GridListViewPager
     return a(paramInt, a(paramInt));
   }
   
-  public View a(int paramInt, ArrayList paramArrayList)
+  public View a(int paramInt, ArrayList<Object> paramArrayList)
   {
-    pdo localpdo = new pdo(this, getContext());
-    localpdo.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-    localpdo.setVerticalSpacing(0);
-    localpdo.setHorizontalSpacing(10);
-    localpdo.setColumnWidth(this.jdField_a_of_type_Int / this.b - 40);
-    localpdo.setNumColumns(this.b);
+    wmv localwmv = new wmv(this, getContext());
+    localwmv.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
+    localwmv.setVerticalSpacing(0);
+    localwmv.setHorizontalSpacing(10);
+    localwmv.setColumnWidth(this.jdField_a_of_type_Int / this.b - 40);
+    localwmv.setNumColumns(this.b);
     Object localObject = getContext().getResources();
-    localpdo.setPadding(AIOUtils.a(5.0F, (Resources)localObject), AIOUtils.a(1.0F, (Resources)localObject), AIOUtils.a(5.0F, (Resources)localObject), AIOUtils.a(1.0F, (Resources)localObject));
-    localpdo.setGravity(1);
-    localpdo.setSelector(new ColorDrawable(0));
-    localObject = new GridListAdapter(getContext(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel);
-    ((GridListAdapter)localObject).a(paramArrayList);
-    ((GridListAdapter)localObject).a(this.jdField_a_of_type_JavaLangString);
-    localpdo.setAdapter((ListAdapter)localObject);
-    localpdo.setOnItemClickListener(this);
-    ((GridListAdapter)localObject).notifyDataSetChanged();
-    return localpdo;
+    localwmv.setPadding(aciy.a(5.0F, (Resources)localObject), aciy.a(1.0F, (Resources)localObject), aciy.a(5.0F, (Resources)localObject), aciy.a(1.0F, (Resources)localObject));
+    localwmv.setGravity(1);
+    localwmv.setSelector(new ColorDrawable(0));
+    localObject = new wmt(getContext(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel);
+    ((wmt)localObject).a(paramArrayList);
+    ((wmt)localObject).a(this.jdField_a_of_type_JavaLangString);
+    localwmv.setAdapter((ListAdapter)localObject);
+    localwmv.setOnItemClickListener(this);
+    ((wmt)localObject).notifyDataSetChanged();
+    return localwmv;
   }
   
-  public ArrayList a(int paramInt)
+  public ArrayList<Object> a(int paramInt)
   {
     if (paramInt == this.d - 1) {
       return a(this.jdField_a_of_type_JavaUtilArrayList, this.b * this.c * paramInt, this.jdField_a_of_type_JavaUtilArrayList.size());
@@ -86,7 +87,7 @@ public class GridListViewPager
     int i = 0;
     while (i < localArrayList.size())
     {
-      ((GridListAdapter)((GridView)localArrayList.get(i)).getAdapter()).notifyDataSetChanged();
+      ((wmt)((GridView)localArrayList.get(i)).getAdapter()).notifyDataSetChanged();
       i += 1;
     }
   }
@@ -119,7 +120,7 @@ public class GridListViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.biz.troopgift.GridListViewPager
  * JD-Core Version:    0.7.0.1
  */

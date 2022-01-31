@@ -1,21 +1,31 @@
-import android.util.Pair;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.model.QueryTask.Query;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.bless.BlessResultActivity;
+import mqq.app.AppRuntime;
 
-public class aeqh
-  implements QueryTask.Query
+class aeqh
+  implements DialogInterface.OnClickListener
 {
-  public aeqh(EmoticonManager paramEmoticonManager) {}
+  aeqh(aeqg paramaeqg) {}
   
-  public EmoticonPackage a(Pair paramPair)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return this.a.c((String)paramPair.first, ((Integer)paramPair.second).intValue());
+    if (this.a.a.getActivity() != null)
+    {
+      Intent localIntent = new Intent(BaseApplicationImpl.sApplication.getRuntime().getApplication(), QQBrowserActivity.class);
+      localIntent.putExtra("url", "https://h5.qianbao.qq.com/auth?_wv=1027&_wvx=10&_wwv=4");
+      this.a.a.getActivity().startActivity(localIntent);
+    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aeqh
  * JD-Core Version:    0.7.0.1
  */

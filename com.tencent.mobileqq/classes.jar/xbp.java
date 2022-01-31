@@ -1,40 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
-import com.tencent.mobileqq.activity.photo.PhotoUtils;
-import com.tencent.mobileqq.activity.photo.StatisticConstants;
-import com.tencent.mobileqq.statistics.ReportController;
-
-public class xbp
-  implements View.OnClickListener
+class xbp
+  implements azgd
 {
-  public xbp(CameraPreviewActivity paramCameraPreviewActivity) {}
+  xbp(xbo paramxbo, String paramString) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString1, String paramString2)
   {
-    if (!CameraPreviewActivity.a(this.a))
-    {
-      if (this.a.b) {
-        ReportController.b(this.a.app, "CliOper", "", "", "0X8004D93", "0X8004D93", 0, 0, "", "", "", "");
-      }
-      if (!this.a.b) {
-        break label92;
-      }
-      StatisticConstants.d();
-    }
-    for (;;)
-    {
-      PhotoUtils.a(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 0, true);
-      paramView.setClickable(false);
-      return;
-      label92:
-      StatisticConstants.b();
+    if (azfo.jdField_a_of_type_JavaLangString.equals(paramString2)) {
+      this.jdField_a_of_type_Xbo.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":1,\"id\":" + paramString2 + "}" });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xbp
  * JD-Core Version:    0.7.0.1
  */

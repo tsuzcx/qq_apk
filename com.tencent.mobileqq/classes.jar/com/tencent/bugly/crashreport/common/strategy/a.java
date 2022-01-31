@@ -85,45 +85,7 @@ public final class a
   
   public final void a(long paramLong)
   {
-    this.e.a(new Thread()
-    {
-      public final void run()
-      {
-        try
-        {
-          Object localObject2 = p.a().a(a.a, null, true);
-          if (localObject2 != null)
-          {
-            localObject1 = (byte[])((Map)localObject2).get("key_imei");
-            localObject2 = (byte[])((Map)localObject2).get("key_ip");
-            if (localObject1 != null) {
-              com.tencent.bugly.crashreport.common.info.a.a(a.a(a.this)).e(new String((byte[])localObject1));
-            }
-            if (localObject2 != null) {
-              com.tencent.bugly.crashreport.common.info.a.a(a.a(a.this)).d(new String((byte[])localObject2));
-            }
-          }
-          Object localObject1 = a.this;
-          localObject2 = a.this;
-          a.a((a)localObject1, a.d());
-          if ((a.b(a.this) != null) && (!z.a(a.e())) && (z.c(a.e())))
-          {
-            a.b(a.this).q = a.e();
-            a.b(a.this).r = a.e();
-          }
-        }
-        catch (Throwable localThrowable)
-        {
-          for (;;)
-          {
-            if (!x.a(localThrowable)) {
-              localThrowable.printStackTrace();
-            }
-          }
-        }
-        a.this.a(a.b(a.this), false);
-      }
-    }, paramLong);
+    this.e.a(new a.1(this), paramLong);
   }
   
   protected final void a(StrategyBean paramStrategyBean, boolean paramBoolean)
@@ -240,7 +202,7 @@ public final class a
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 39	com/tencent/bugly/crashreport/common/strategy/a:g	Lcom/tencent/bugly/crashreport/common/strategy/StrategyBean;
+    //   3: getfield 37	com/tencent/bugly/crashreport/common/strategy/a:g	Lcom/tencent/bugly/crashreport/common/strategy/StrategyBean;
     //   6: astore_2
     //   7: aload_2
     //   8: ifnull +9 -> 17

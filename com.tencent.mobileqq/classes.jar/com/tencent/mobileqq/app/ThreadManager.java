@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app;
 
+import ajsz;
+import ajta;
 import android.os.Looper;
 import mqq.os.MqqHandler;
-import zui;
-import zuj;
 
 public class ThreadManager
   extends ThreadManagerV2
@@ -18,7 +18,7 @@ public class ThreadManager
     try
     {
       if (FILE_Mqq_HANDLER == null) {
-        FILE_Mqq_HANDLER = new zuj(getFileThreadLooper());
+        FILE_Mqq_HANDLER = new ajta(getFileThreadLooper());
       }
       return FILE_Mqq_HANDLER;
     }
@@ -31,7 +31,7 @@ public class ThreadManager
     try
     {
       if (SUB_Mqq_HANDLER == null) {
-        SUB_Mqq_HANDLER = new zui(getSubThreadLooper());
+        SUB_Mqq_HANDLER = new ajsz(getSubThreadLooper());
       }
       return SUB_Mqq_HANDLER;
     }

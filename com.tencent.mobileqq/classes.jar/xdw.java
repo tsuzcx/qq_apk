@@ -1,17 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import android.os.Bundle;
+import com.tencent.biz.webviewplugin.Share.6.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class xdw
-  implements DialogInterface.OnClickListener
+  implements BusinessObserver
 {
-  public xdw(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  xdw(xdt paramxdt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    if (!paramBoolean) {}
+    byte[] arrayOfByte;
+    do
+    {
+      return;
+      arrayOfByte = paramBundle.getByteArray("data");
+    } while (arrayOfByte == null);
+    paramBundle = new GetAppInfoProto.GetAppinfoResponse();
+    try
+    {
+      paramBundle.mergeFrom(arrayOfByte);
+      ThreadManager.post(new Share.6.1(this, paramBundle), 5, null, true);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(xdt.a, 2, localInvalidProtocolBufferMicroException.getMessage());
+        }
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xdw
  * JD-Core Version:    0.7.0.1
  */

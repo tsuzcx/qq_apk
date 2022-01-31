@@ -6,10 +6,10 @@ import android.view.MotionEvent;
 public class RotateGestureDetector
   extends TwoFingerGestureDetector
 {
-  private final OnRotateGestureListener mListener;
+  private final RotateGestureDetector.OnRotateGestureListener mListener;
   private boolean mSloppyGesture;
   
-  public RotateGestureDetector(Context paramContext, OnRotateGestureListener paramOnRotateGestureListener)
+  public RotateGestureDetector(Context paramContext, RotateGestureDetector.OnRotateGestureListener paramOnRotateGestureListener)
   {
     super(paramContext);
     this.mListener = paramOnRotateGestureListener;
@@ -80,35 +80,10 @@ public class RotateGestureDetector
     super.resetState();
     this.mSloppyGesture = false;
   }
-  
-  public static abstract interface OnRotateGestureListener
-  {
-    public abstract boolean onRotate(RotateGestureDetector paramRotateGestureDetector);
-    
-    public abstract boolean onRotateBegin(RotateGestureDetector paramRotateGestureDetector);
-    
-    public abstract void onRotateEnd(RotateGestureDetector paramRotateGestureDetector);
-  }
-  
-  public static class SimpleOnRotateGestureListener
-    implements RotateGestureDetector.OnRotateGestureListener
-  {
-    public boolean onRotate(RotateGestureDetector paramRotateGestureDetector)
-    {
-      return false;
-    }
-    
-    public boolean onRotateBegin(RotateGestureDetector paramRotateGestureDetector)
-    {
-      return true;
-    }
-    
-    public void onRotateEnd(RotateGestureDetector paramRotateGestureDetector) {}
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.TMG.opengl.gesturedetectors.RotateGestureDetector
  * JD-Core Version:    0.7.0.1
  */

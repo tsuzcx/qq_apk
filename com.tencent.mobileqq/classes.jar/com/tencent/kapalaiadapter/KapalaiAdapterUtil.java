@@ -26,7 +26,7 @@ public class KapalaiAdapterUtil
   
   public static KapalaiAdapterUtil getKAUInstance()
   {
-    return KAUHolder.kauInstance;
+    return KapalaiAdapterUtil.KAUHolder.kauInstance;
   }
   
   private Camera tryCoolpadFrontCamera()
@@ -365,15 +365,10 @@ public class KapalaiAdapterUtil
     } while (!Build.MANUFACTURER.equalsIgnoreCase("LENOVO"));
     return tryLenovoFrontCamera();
   }
-  
-  private static class KAUHolder
-  {
-    public static final KapalaiAdapterUtil kauInstance = new KapalaiAdapterUtil(null);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.kapalaiadapter.KapalaiAdapterUtil
  * JD-Core Version:    0.7.0.1
  */

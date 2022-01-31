@@ -2,13 +2,12 @@ package Wallet;
 
 import LBS.LBSInfo;
 import android.text.TextUtils;
+import babp;
+import badq;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,11 +15,12 @@ public final class ReqWalletConfig
   extends JceStruct
 {
   static LBSInfo cache_lbsInfo = new LBSInfo();
-  static Map cache_mParameter = new HashMap();
+  static Map<String, String> cache_mParameter = new HashMap();
+  public String adcode = "";
   public String commonMsg = "";
   public int iNetType;
   public LBSInfo lbsInfo;
-  public Map mParameter;
+  public Map<String, String> mParameter;
   public String platform = "";
   public long reqType;
   public long seriesNo;
@@ -32,30 +32,14 @@ public final class ReqWalletConfig
     cache_mParameter.put("", "");
   }
   
-  public ReqWalletConfig() {}
-  
-  public ReqWalletConfig(long paramLong1, long paramLong2, String paramString1, String paramString2, int paramInt, LBSInfo paramLBSInfo, long paramLong3, String paramString3, Map paramMap)
-  {
-    this.reqType = paramLong1;
-    this.uin = paramLong2;
-    this.platform = paramString1;
-    this.version = paramString2;
-    this.iNetType = paramInt;
-    this.lbsInfo = paramLBSInfo;
-    this.seriesNo = paramLong3;
-    this.commonMsg = paramString3;
-    this.mParameter = paramMap;
-  }
-  
-  public static ReqWalletConfig createReq(long paramLong1, long paramLong2, long paramLong3, String paramString, Map paramMap)
+  public static ReqWalletConfig createReq(long paramLong1, long paramLong2, long paramLong3, String paramString, Map<String, String> paramMap)
   {
     ReqWalletConfig localReqWalletConfig = new ReqWalletConfig();
     localReqWalletConfig.reqType = paramLong1;
     localReqWalletConfig.uin = paramLong2;
-    localReqWalletConfig.platform = ("Android|" + DeviceInfoUtil.f() + "|" + DeviceInfoUtil.j());
-    localReqWalletConfig.version = DeviceInfoUtil.d();
-    localReqWalletConfig.iNetType = NetworkUtil.a(BaseApplicationImpl.getContext());
-    localReqWalletConfig.lbsInfo = QWalletTools.a();
+    localReqWalletConfig.platform = ("Android|" + babp.e() + "|" + babp.i());
+    localReqWalletConfig.version = babp.c();
+    localReqWalletConfig.iNetType = badq.a(BaseApplicationImpl.getContext());
     localReqWalletConfig.seriesNo = paramLong3;
     if (!TextUtils.isEmpty(paramString)) {
       localReqWalletConfig.commonMsg = paramString;
@@ -77,11 +61,12 @@ public final class ReqWalletConfig
     this.seriesNo = paramJceInputStream.read(this.seriesNo, 6, false);
     this.commonMsg = paramJceInputStream.readString(7, false);
     this.mParameter = ((Map)paramJceInputStream.read(cache_mParameter, 8, false));
+    this.adcode = paramJceInputStream.readString(9, false);
   }
   
   public String toString()
   {
-    return "ReqWalletConfig{reqType=" + this.reqType + ", uin=" + this.uin + ", platform='" + this.platform + '\'' + ", version='" + this.version + '\'' + ", iNetType=" + this.iNetType + ", seriesNo=" + this.seriesNo + ", commonMsg='" + this.commonMsg + '\'' + ", mParameter=" + this.mParameter + '}';
+    return "ReqWalletConfig{reqType=" + this.reqType + ", uin=" + this.uin + ", platform='" + this.platform + '\'' + ", version='" + this.version + '\'' + ", iNetType=" + this.iNetType + ", seriesNo=" + this.seriesNo + ", commonMsg='" + this.commonMsg + '\'' + ", mParameter=" + this.mParameter + ", adcode='" + this.adcode + '\'' + '}';
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -104,6 +89,9 @@ public final class ReqWalletConfig
     }
     if (this.mParameter != null) {
       paramJceOutputStream.write(this.mParameter, 8);
+    }
+    if (this.adcode != null) {
+      paramJceOutputStream.write(this.adcode, 9);
     }
   }
 }

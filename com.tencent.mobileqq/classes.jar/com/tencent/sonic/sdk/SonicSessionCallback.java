@@ -23,32 +23,6 @@ abstract interface SonicSessionCallback
   public abstract void onSonicSessionRefresh();
   
   public abstract void onSonicSessionStart();
-  
-  public static class SimpleCallbackImpl
-    implements SonicSessionCallback
-  {
-    public void onSessionDataUpdated(String paramString) {}
-    
-    public void onSessionDestroy() {}
-    
-    public void onSessionFirstLoad(String paramString) {}
-    
-    public void onSessionHitCache() {}
-    
-    public void onSessionHttpError(int paramInt) {}
-    
-    public void onSessionLoadLocalCache(String paramString) {}
-    
-    public void onSessionSaveCache(String paramString1, String paramString2, String paramString3) {}
-    
-    public void onSessionTemplateChanged(String paramString) {}
-    
-    public void onSessionUnAvailable() {}
-    
-    public void onSonicSessionRefresh() {}
-    
-    public void onSonicSessionStart() {}
-  }
 }
 
 

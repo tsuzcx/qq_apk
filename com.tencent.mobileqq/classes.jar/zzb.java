@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.C2CMessageManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
 
 public class zzb
-  implements Runnable
+  implements View.OnClickListener
 {
-  public zzb(C2CMessageManager paramC2CMessageManager) {}
+  public zzb(ArkFullScreenAppActivity paramArkFullScreenAppActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.x();
+    this.a.finish();
+    this.a.overridePendingTransition(2130771997, 2130772001);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zzb
  * JD-Core Version:    0.7.0.1
  */

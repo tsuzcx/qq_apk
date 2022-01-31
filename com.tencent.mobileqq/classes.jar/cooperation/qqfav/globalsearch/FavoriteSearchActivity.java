@@ -1,7 +1,9 @@
 package cooperation.qqfav.globalsearch;
 
+import ajjy;
 import android.content.Context;
 import android.content.Intent;
+import bfik;
 import com.tencent.mobileqq.search.activity.BaseSearchActivity;
 import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
@@ -16,21 +18,21 @@ public class FavoriteSearchActivity
     paramContext.startActivity(localIntent);
   }
   
-  protected BaseSearchFragment a()
+  public BaseSearchFragment<bfik> a()
   {
     return new FavoriteSearchFragment();
   }
   
-  protected String a()
+  public String a()
   {
-    return "搜索收藏";
+    return ajjy.a(2131638596);
   }
   
-  protected void doOnResume()
+  public void doOnResume()
   {
     super.doOnResume();
     if ((getIntent() != null) && (UniteSearchActivity.class.getSimpleName().equals(getIntent().getStringExtra("preAct")))) {
-      overridePendingTransition(2131034132, 2131034133);
+      overridePendingTransition(2130771992, 2130771993);
     }
   }
 }

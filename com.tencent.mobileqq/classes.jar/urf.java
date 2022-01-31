@@ -1,23 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.database.DataSetObserver;
+import com.tencent.biz.qqstory.storyHome.tag.TagFlowLayout;
 
-public final class urf
-  implements ActionSheet.OnDismissListener
+public class urf
+  extends DataSetObserver
 {
-  public urf(QQAppInterface paramQQAppInterface, int[] paramArrayOfInt) {}
+  public urf(TagFlowLayout paramTagFlowLayout) {}
   
-  public void onDismiss()
+  public void onChanged()
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004862", "0X8004862", 0, 0, "", "", "", "");
-    if (this.jdField_a_of_type_ArrayOfInt[3] == 3) {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005B05", "0X8005B05", 0, 0, "", "", "", "");
-    }
+    super.onChanged();
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     urf
  * JD-Core Version:    0.7.0.1
  */

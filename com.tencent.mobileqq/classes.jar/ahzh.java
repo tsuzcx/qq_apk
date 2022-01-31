@@ -1,53 +1,59 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.SearchUtil;
-import com.tencent.mobileqq.search.SearchUtil.ObjectItemInfo;
-import com.tencent.mobileqq.search.model.NetSearchTemplateUniversalItem;
-import com.tencent.mobileqq.search.model.NetSearchTemplateUniversalItem.ActionInfo;
-import com.tencent.mobileqq.search.presenter.SearchTemplatePresenter;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.mobileqq.search.report.UniteSearchReportController;
-import com.tencent.mobileqq.search.util.SearchUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import QQService.EVIPSPEC;
+import com.tencent.mobileqq.data.Friends;
+import java.util.Comparator;
 
-public class ahzh
-  implements View.OnClickListener
+class ahzh
+  implements Comparator<aidv>
 {
-  public ahzh(SearchTemplatePresenter paramSearchTemplatePresenter, Context paramContext, NetSearchTemplateUniversalItem paramNetSearchTemplateUniversalItem) {}
-  
-  public void onClick(View paramView)
+  public int a(aidv paramaidv1, aidv paramaidv2)
   {
-    paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    SearchUtils.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateUniversalItem.a.jdField_a_of_type_JavaLangString);
-    SearchUtil.ObjectItemInfo localObjectItemInfo;
-    JSONObject localJSONObject;
-    if (SearchUtil.c.containsKey(this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateUniversalItem))
-    {
-      localObjectItemInfo = (SearchUtil.ObjectItemInfo)SearchUtil.c.get(this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateUniversalItem);
-      localJSONObject = new JSONObject();
+    paramaidv1 = (Friends)paramaidv1.a;
+    paramaidv2 = (Friends)paramaidv2.a;
+    int i = a(paramaidv1);
+    int j = a(paramaidv2);
+    if (i == j) {
+      return ajgh.a(paramaidv1.mComparePartInt, paramaidv1.mCompareSpell, paramaidv2.mComparePartInt, paramaidv2.mCompareSpell);
     }
-    try
+    return i - j;
+  }
+  
+  public int a(Friends paramFriends)
+  {
+    int i = 16384;
+    int k = babh.a(paramFriends.detalStatusFlag, paramFriends.iTermType);
+    int j;
+    if ((k != 6) && (k != 0))
     {
-      localJSONObject.put("project", UniteSearchReportController.a());
-      localJSONObject.put("event_src", "client");
-      localJSONObject.put("obj_lct", localObjectItemInfo.jdField_a_of_type_Int);
-      localJSONObject.put("get_src", "web");
-      UniteSearchReportController.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(localObjectItemInfo.jdField_a_of_type_Long + "").obj2(localObjectItemInfo.b).ver1(localObjectItemInfo.jdField_a_of_type_JavaLangString).ver2(UniteSearchReportController.a(this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateUniversalItem.b)).ver7(localJSONObject.toString()).session_id(paramView.getCurrentAccountUin() + SearchUtil.jdField_a_of_type_Long));
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        QLog.e("Q.uniteSearch.SearchTemplatePresenter", 2, "e = " + localJSONException);
+      j = 65536;
+      label32:
+      if (!awnu.b()) {
+        break label100;
       }
     }
+    for (;;)
+    {
+      switch (k)
+      {
+      case 5: 
+      case 6: 
+      default: 
+        return j | i | (int)paramFriends.getLastLoginType();
+        j = 131072;
+        break label32;
+        label100:
+        if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
+          i = 4096;
+        } else if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP)) {
+          i = 8192;
+        } else if (paramFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ)) {
+          i = 12288;
+        }
+        break;
+      }
+    }
+    return j | i | 0x1;
+    return j | i | 0x2;
+    return j | i | 0x3;
   }
 }
 

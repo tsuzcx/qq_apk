@@ -1,13 +1,11 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-
-public class onw
-  implements Runnable
+class onw
+  implements opn
 {
-  public onw(DoodleEditView paramDoodleEditView) {}
+  onw(onv paramonv) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    this.a.setVisibility(0);
+    onu.a(this.a.a, paramInt);
   }
 }
 

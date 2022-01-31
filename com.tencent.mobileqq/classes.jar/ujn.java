@@ -1,107 +1,56 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedVideoInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GeneralFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GeneralRecommendFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
+import com.tencent.biz.qqstory.storyHome.model.GeneralRecommendFeedItem;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class ujn
-  extends TroopObserver
+  extends ukv<GeneralRecommendFeedItem>
 {
-  public ujn(TroopTransferActivity paramTroopTransferActivity) {}
-  
-  protected void a(boolean paramBoolean, long paramLong, String paramString1, String paramString2, int paramInt, String paramString3)
+  public ujn(@NonNull GeneralRecommendFeedItem paramGeneralRecommendFeedItem)
   {
-    if ((!Utils.a(String.valueOf(paramLong), this.a.jdField_a_of_type_JavaLangString)) || (!Utils.a(paramString1, this.a.app.getCurrentAccountUin()))) {
-      return;
-    }
-    this.a.jdField_a_of_type_Boolean = false;
-    if (paramBoolean)
+    super(paramGeneralRecommendFeedItem);
+  }
+  
+  public GeneralRecommendFeedItem a()
+  {
+    return (GeneralRecommendFeedItem)super.a();
+  }
+  
+  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
+  {
+    Object localObject = (qqstory_struct.GeneralFeed)paramStoryFeed.general_recommend_feed.recommend_feed.get();
+    ((GeneralRecommendFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), (qqstory_struct.GeneralFeed)localObject);
+    ((GeneralRecommendFeedItem)this.a).blurb = paramStoryFeed.general_recommend_feed.blurb.get().toStringUtf8();
+    ((GeneralRecommendFeedItem)this.a).recommendId = paramStoryFeed.general_recommend_feed.recommend_id.get();
+    ((GeneralRecommendFeedItem)this.a).recommendTitle = paramStoryFeed.general_recommend_feed.title_wording.get().toStringUtf8();
+    ((GeneralRecommendFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
+    paramStoryFeed = new ArrayList();
+    localObject = ((qqstory_struct.GeneralFeed)localObject).feed_video_info_list.get().iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a();
-      }
-      paramString1 = (TroopManager)this.a.app.getManager(51);
-      paramString3 = paramString1.a(paramLong + "");
-      if (paramString3 != null)
-      {
-        paramString3.dwAdditionalFlag = 0L;
-        paramString1.b(paramString3);
-      }
-      paramString1 = new Intent();
-      paramString1.putExtra("isNeedFinish", true);
-      paramString1.putExtra("fin_tip_msg", this.a.getString(2131435236));
-      paramString1.putExtra("uin", paramString2);
-      this.a.setResult(-1, paramString1);
-      this.a.finish();
-      return;
+      qqstory_struct.FeedVideoInfo localFeedVideoInfo = (qqstory_struct.FeedVideoInfo)((Iterator)localObject).next();
+      StoryVideoItem localStoryVideoItem = new StoryVideoItem();
+      localStoryVideoItem.convertFrom("Q.qqstory.home.data.GeneralRecommendHomeFeed", localFeedVideoInfo);
+      paramStoryFeed.add(localStoryVideoItem);
     }
-    if ((paramInt == 1) || (paramInt == 2) || (paramInt == 6) || (paramInt == 8) || (paramInt == 9) || (paramInt == 10) || (paramInt == 11)) {
-      paramString1 = this.a.getString(2131435237);
-    }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier == null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this.a);
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(2, paramString1, 1500);
-      return;
-      if ((paramInt == 3) || (paramInt == 4) || (paramInt == 7) || (paramInt == 16) || (paramInt == 19))
-      {
-        paramString1 = this.a.getString(2131435239);
-      }
-      else if ((paramInt == 5) || (paramInt == 17) || (paramInt == 18))
-      {
-        paramString1 = this.a.getString(2131435238);
-      }
-      else
-      {
-        if (paramInt == 12)
-        {
-          if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier != null) {
-            this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a();
-          }
-          paramString1 = DialogUtil.a(this.a, 230);
-          paramString1.setTitle(this.a.getString(2131430384));
-          paramString1.setMessage(this.a.getString(2131430387));
-          paramString1.setNegativeButton(this.a.getString(2131430383), new ujo(this, paramString1));
-          paramString1.setPositiveButton(this.a.getString(2131435285), new ujp(this, paramString1));
-          paramString1.show();
-          return;
-        }
-        paramString1 = this.a.getString(2131435238);
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, ArrayList paramArrayList)
-  {
-    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
-      this.a.b(paramArrayList);
-    }
-  }
-  
-  protected void c(boolean paramBoolean, ArrayList paramArrayList)
-  {
-    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
-      this.a.b(paramArrayList);
-    }
-  }
-  
-  protected void d(boolean paramBoolean, ArrayList paramArrayList)
-  {
-    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
-      this.a.b(paramArrayList);
-    }
+    c(paramStoryFeed, true);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ujn
  * JD-Core Version:    0.7.0.1
  */

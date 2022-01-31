@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import java.util.Comparator;
 
-public class agob
-  implements Runnable
+final class agob
+  implements Comparator<agoa>
 {
-  public agob(ScanTorchActivity paramScanTorchActivity) {}
-  
-  public void run()
+  public int a(agoa paramagoa1, agoa paramagoa2)
   {
-    QQToast localQQToast = QQToast.a(this.a, "本机型无法支持穿越，请换其它手机穿越。", 1);
-    localQQToast.a();
-    localQQToast.a();
-    this.a.finish();
+    return paramagoa1.a - paramagoa2.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agob
  * JD-Core Version:    0.7.0.1
  */

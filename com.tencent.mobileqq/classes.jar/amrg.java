@@ -1,19 +1,32 @@
-import cooperation.comic.jsp.QQComicJsPlugin;
-import org.json.JSONObject;
-
 public class amrg
-  implements Runnable
 {
-  public amrg(QQComicJsPlugin paramQQComicJsPlugin, String paramString1, JSONObject paramJSONObject, String paramString2) {}
+  private long a;
+  private long b;
   
-  public void run()
+  public amrg(long paramLong)
   {
-    this.jdField_a_of_type_CooperationComicJspQQComicJsPlugin.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject, this.b);
+    this.b = paramLong;
+    this.a = this.b;
+  }
+  
+  public long a()
+  {
+    return this.b;
+  }
+  
+  public amrg a()
+  {
+    return new amrg(this.b);
+  }
+  
+  public void a(float paramFloat)
+  {
+    this.b = (((float)this.b * paramFloat));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amrg
  * JD-Core Version:    0.7.0.1
  */

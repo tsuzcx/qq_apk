@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import acdg;
+import ajjy;
+import amtq;
 import android.content.Context;
 import android.text.SpannableString;
 import android.text.TextUtils;
@@ -15,7 +16,7 @@ public class ShareHotChatGrayTips
   private static final String JUMP_URL = "jump_url";
   private static final String MSG_CONTENT = "msg_content";
   private static final String MSG_CONTENT_HIGHLIGHT = "msg_content_highlight";
-  public static final String SHARE_GRAY_TIP_CONTENT = "你的热聊房间会被推荐给附近的人和好友，感兴趣的会加入进来哦。你也可以邀请好友加入。分享热聊房间";
+  public static final String SHARE_GRAY_TIP_CONTENT = ajjy.a(2131648155);
   private static final String TROOP_NAME = "troop_name";
   private static final String TROOP_UIN = "troop_uin";
   public String mHotnamecode;
@@ -119,7 +120,7 @@ public class ShareHotChatGrayTips
       }
       SpannableString localSpannableString = new SpannableString(this.mMsgContent);
       if ((i >= 0) && (j > i)) {
-        localSpannableString.setSpan(new acdg(paramQQAppInterface, paramContext, this, this.mHotnamecode), i, j, 33);
+        localSpannableString.setSpan(new amtq(paramQQAppInterface, paramContext, this, this.mHotnamecode), i, j, 33);
       }
       return localSpannableString;
     }

@@ -1,20 +1,25 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class acej
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public acej(BaseMsgBoxActivity paramBaseMsgBoxActivity, String paramString, int paramInt) {}
+  public acej(UpgradeActivity paramUpgradeActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((MessageHandler)this.jdField_a_of_type_ComTencentMobileqqDatingBaseMsgBoxActivity.app.a(0)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
+    awqx.b(this.a.app, "CliOper", "", "", "0X800417E", "0X800417E", 0, 0, "", "", "", "");
+    if (UpgradeActivity.a(this.a)) {
+      awqx.b(this.a.app, "CliOper", "", "", "0X800714C", "0X800714C", 0, 0, "", "", "", "");
+    }
+    UpgradeActivity.a(this.a, false);
+    awqx.b(this.a.app, "CliOper", "", "", "0X8004DA1", "0X8004DA1", 0, 0, akgn.b(), String.valueOf(2), akgo.a(), "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acej
  * JD-Core Version:    0.7.0.1
  */

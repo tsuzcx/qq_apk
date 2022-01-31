@@ -1,25 +1,14 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.biz.troop.TroopMemberApiPlugin;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 
 public class pan
-  implements TroopMemberApiClient.Callback
+  extends pap
 {
-  public pan(TroopMemberApiPlugin paramTroopMemberApiPlugin, String paramString) {}
-  
-  public void a(Bundle paramBundle)
+  public pan(VafContext paramVafContext)
   {
-    boolean bool = paramBundle.getBoolean("isSuccess", false);
-    if (bool)
-    {
-      paramBundle = paramBundle.getString("data");
-      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d(this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiPlugin.TAG, 2, "getTroopBarPublishInfo() in callback isSuccess=" + bool);
+    super(paramVafContext);
+    this.a.setIsCacheIcon(true);
+    this.a.setIsClosedoAlphaAniamation(true);
   }
 }
 

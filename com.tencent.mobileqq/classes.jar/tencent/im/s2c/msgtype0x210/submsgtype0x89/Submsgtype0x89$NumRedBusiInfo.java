@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Submsgtype0x89$NumRedBusiInfo
-  extends MessageMicro
+  extends MessageMicro<NumRedBusiInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 58, 66, 74, 82, 88, 96, 104, 112 }, new String[] { "str_client_ver_begin", "str_client_ver_end", "uint32_plat_id", "uint32_app_id", "uint32_android_app_id", "uint32_ios_app_id", "str_path", "str_android_path", "str_ios_path", "str_missionid", "uint64_msgid", "uint32_status", "uint32_expire_time", "int32_appset" }, new Object[] { "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", "", "", Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, NumRedBusiInfo.class);
   public final PBInt32Field int32_appset = PBField.initInt32(0);

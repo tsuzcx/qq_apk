@@ -10,15 +10,15 @@ public final class i
 {
   static ArrayList k;
   public String a = "";
-  public byte b;
+  public byte b = 0;
   public String c = "";
   public String d = "";
   public String e = "";
-  public byte f;
-  public byte g;
-  public byte h;
+  public byte f = 0;
+  public byte g = 0;
+  public byte h = 0;
   public String i = "";
-  public ArrayList j;
+  public ArrayList j = null;
   
   public i() {}
   

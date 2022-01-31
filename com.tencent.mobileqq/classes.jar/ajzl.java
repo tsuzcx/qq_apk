@@ -1,62 +1,108 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.os.Handler;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter.AvatarInfo;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
-import com.tencent.mobileqq.utils.ImageUtil;
+import android.text.TextUtils;
+import android.util.Pair;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopMemberCard;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class ajzl
-  implements Runnable
+class ajzl
+  extends ajuc
 {
-  public ajzl(AvatarWallViewPagerAdapter paramAvatarWallViewPagerAdapter, String paramString, AvatarWallAdapter.AvatarInfo paramAvatarInfo, URLImageView paramURLImageView) {}
+  ajzl(ajzj paramajzj) {}
   
-  public void run()
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    BitmapFactory.Options localOptions = ImageUtil.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.jdField_a_of_type_Int);
-    if (localOptions.outHeight > localOptions.outWidth) {}
-    Bitmap localBitmap;
-    for (int i = localOptions.outWidth;; i = localOptions.outHeight) {
-      try
-      {
-        localBitmap = ImageUtil.b(BitmapFactory.decodeFile(this.jdField_a_of_type_JavaLangString, localOptions), this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.b);
-        if (localBitmap != null) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("AvatarWallViewPagerAdapter", 2, "bmp == null");
-        }
-        return;
-      }
-      catch (Exception localException)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.e("AvatarWallViewPagerAdapter", 2, "BitmapFactory.decodeFile throw exception, msg = " + localException.getMessage());
-        return;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.e("AvatarWallViewPagerAdapter", 2, "BitmapFactory.decodeFile throw oom error, msg = " + localOutOfMemoryError.getMessage());
-        return;
+    if ((paramInt2 == 0) && ((paramInt1 == 9) || (paramInt1 == 2))) {
+      this.a.f(paramString);
+    }
+  }
+  
+  protected void a(String paramString, List<Pair<String, String>> paramList)
+  {
+    Object localObject = new StringBuilder().append("onGetTroopMemberListBy0x787 uin: ").append(paramString).append(" memberList size: ");
+    if (paramList == null)
+    {
+      i = 0;
+      QLog.i("IceBreak.HotPic", 2, i);
+      if ((paramString != null) && (paramList != null) && (paramList.size() > 1)) {
+        break label76;
       }
     }
-    int j = TroopUtils.a(this.jdField_a_of_type_JavaLangString);
-    Object localObject = localBitmap;
-    if (j != 0) {
-      localObject = ImageUtil.b(localBitmap, j);
+    label76:
+    while (!paramString.equals(ajzj.a(this.a)))
+    {
+      return;
+      i = paramList.size();
+      break;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter$AvatarInfo.b = i;
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter$AvatarInfo.a = ((Bitmap)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.jdField_a_of_type_AndroidOsHandler.post(new ajzm(this));
+    localObject = (ajjj)this.a.a.getManager(51);
+    String str1 = this.a.a.getCurrentAccountUin();
+    int k = paramList.size();
+    int j = 0;
+    int i = 0;
+    label133:
+    if (j < k)
+    {
+      String str2 = (String)((Pair)paramList.get(j)).first;
+      if ((TextUtils.isEmpty(str2)) || (str2.equals(str1)) || (((ajjj)localObject).b(str2))) {
+        break label283;
+      }
+      i += 1;
+    }
+    label283:
+    for (;;)
+    {
+      j += 1;
+      break label133;
+      float f = ajzj.a(this.a) / 100.0F;
+      QLog.i("IceBreak.HotPic", 1, "friendCount: " + i + " total count: " + paramList.size());
+      if (1.0F * i / (paramList.size() - 1) <= f) {
+        break;
+      }
+      this.a.e(paramString);
+      return;
+    }
+  }
+  
+  protected void b(String paramString, int paramInt)
+  {
+    this.a.f(paramString);
+  }
+  
+  protected void b(boolean paramBoolean, Object paramObject)
+  {
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("IceBreak.HotPic", 2, "onGetTroopMemberCard: isSuccess " + paramBoolean);
+      }
+      if (paramBoolean)
+      {
+        paramObject = (Object[])paramObject;
+        long l = ((Long)paramObject[0]).longValue();
+        paramObject = (TroopMemberCard)paramObject[2];
+        if (String.valueOf(l).equals(ajzj.a(this.a)))
+        {
+          QLog.i("IceBreak.HotPic", 1, " onGetTroopMemberCard last_active_time: " + paramObject.lastSpeak + " join_time: " + paramObject.joinTime);
+          if (paramObject.lastSpeak > paramObject.joinTime) {
+            return;
+          }
+          ajzj.a(this.a, String.valueOf(l));
+          return;
+        }
+      }
+    }
+    catch (Exception paramObject)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("IceBreak.HotPic", 2, "onGetTroopMemberCard:" + paramObject.toString());
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajzl
  * JD-Core Version:    0.7.0.1
  */

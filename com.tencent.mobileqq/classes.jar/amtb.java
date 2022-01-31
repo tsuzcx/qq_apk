@@ -1,28 +1,43 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.jtcode.JtcodePluginInstallActivity;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.MessageForQQWalletTips;
+import java.lang.ref.SoftReference;
 
 public class amtb
-  extends BroadcastReceiver
+  extends ClickableSpan
 {
-  private amtb(JtcodePluginInstallActivity paramJtcodePluginInstallActivity) {}
+  public amtb(MessageForQQWalletTips paramMessageForQQWalletTips, String paramString, SoftReference paramSoftReference, int paramInt) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("JtcodePluginInstallActivity", 4, "JtcodePluginOnResumeReceiver->onReceive, intent:" + paramIntent);
-    }
-    if ((paramIntent == null) || (!"bridge.plugin.onresume.broadcast".equals(paramIntent.getAction()))) {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
+    do
+    {
       return;
-    }
-    this.a.finish();
+      paramView = (Context)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+    } while (paramView == null);
+    Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
+    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
+    paramView.startActivity(localIntent);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(this.jdField_a_of_type_Int);
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.clearShadowLayer();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amtb
  * JD-Core Version:    0.7.0.1
  */

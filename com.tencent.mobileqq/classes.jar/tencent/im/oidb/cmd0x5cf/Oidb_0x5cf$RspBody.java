@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class Oidb_0x5cf$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   public static final int MSG_FAILEDSYS_FIELD_NUMBER = 4;
   public static final int MSG_SUCCESSREAD_FIELD_NUMBER = 3;
@@ -23,7 +23,7 @@ public final class Oidb_0x5cf$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x5cf.Oidb_0x5cf.RspBody
  * JD-Core Version:    0.7.0.1
  */

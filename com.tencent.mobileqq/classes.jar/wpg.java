@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.activity.contact.newfriend.QIMNotifyAddFriendBuilder;
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.ui.RefreshView;
 
-class wpg
-  implements Runnable
+public class wpg
+  extends Handler
 {
-  wpg(wpf paramwpf) {}
+  public wpg(RefreshView paramRefreshView) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.a.c();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wpg
  * JD-Core Version:    0.7.0.1
  */

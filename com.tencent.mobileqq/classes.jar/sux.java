@@ -1,18 +1,27 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class sux
-  implements Runnable
+  extends QQUIEventReceiver<suo, sjc>
 {
-  public sux(FriendProfileCardActivity paramFriendProfileCardActivity) {}
-  
-  public void run()
+  public sux(@NonNull suo paramsuo)
   {
-    this.a.y();
+    super(paramsuo);
+  }
+  
+  public void a(@NonNull suo paramsuo, @NonNull sjc paramsjc)
+  {
+    paramsuo.a.b(paramsjc);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return sjc.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sux
  * JD-Core Version:    0.7.0.1
  */

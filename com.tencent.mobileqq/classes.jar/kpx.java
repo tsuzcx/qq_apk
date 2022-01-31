@@ -1,137 +1,80 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.biz.lebasearch.SearchProtocol;
-import com.tencent.biz.lebasearch.SearchProtocol.WordItem;
-import com.tencent.mobileqq.dynamic_search.mobileqq_dynamic_search.ResponseBody;
-import com.tencent.mobileqq.dynamic_search.mobileqq_dynamic_search.ResultItem;
-import com.tencent.mobileqq.dynamic_search.mobileqq_dynamic_search.ResultItemGroup;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.observer.BusinessObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.security.KeyStore;
+import java.security.cert.X509Certificate;
+import javax.net.ssl.TrustManagerFactory;
+import javax.net.ssl.X509TrustManager;
 
-public final class kpx
-  implements BusinessObserver
+public class kpx
+  implements X509TrustManager
 {
-  public kpx(Handler paramHandler) {}
+  X509TrustManager a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  kpx()
   {
-    if (paramBoolean)
+    try
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
+      Object localObject1 = KeyStore.getInstance("JKS");
+      if (localObject1 != null)
       {
-        Object localObject = new mobileqq_dynamic_search.ResponseBody();
-        for (;;)
-        {
-          try
-          {
-            ((mobileqq_dynamic_search.ResponseBody)localObject).mergeFrom(paramBundle);
-            paramInt = ((mobileqq_dynamic_search.ResponseBody)localObject).retcode.get();
-            if (paramInt != 0)
-            {
-              if (!QLog.isColorLevel()) {
-                break label472;
-              }
-              QLog.d("lebasearch.SearchProtocol", 2, "retcode:" + paramInt);
-              return;
-            }
-            if ((!((mobileqq_dynamic_search.ResponseBody)localObject).item_groups.has()) || (!((mobileqq_dynamic_search.ResultItemGroup)((mobileqq_dynamic_search.ResponseBody)localObject).item_groups.get(0)).result_items.has())) {
-              break label472;
-            }
-            paramBundle = ((mobileqq_dynamic_search.ResultItemGroup)((mobileqq_dynamic_search.ResponseBody)localObject).item_groups.get(0)).result_items.get();
-            localArrayList = new ArrayList();
-            Iterator localIterator = paramBundle.iterator();
-            if (!localIterator.hasNext()) {
-              continue;
-            }
-            localResultItem = (mobileqq_dynamic_search.ResultItem)localIterator.next();
-            localWordItem = new SearchProtocol.WordItem();
-            if (!localResultItem.word.has()) {
-              continue;
-            }
-            localWordItem.word = localResultItem.word.get().toStringUtf8();
-            localWordItem.id = localResultItem.result_id.get().toStringUtf8();
-            if (localResultItem.extension.has())
-            {
-              localObject = localResultItem.extension.get().toStringUtf8();
-              if (QLog.isColorLevel()) {
-                QLog.d("lebasearch.SearchProtocol", 2, "extension info:" + (String)localObject);
-              }
-              paramBoolean = TextUtils.isEmpty((CharSequence)localObject);
-              if (!paramBoolean) {
-                paramBundle = null;
-              }
-            }
-          }
-          catch (InvalidProtocolBufferMicroException paramBundle)
-          {
-            ArrayList localArrayList;
-            mobileqq_dynamic_search.ResultItem localResultItem;
-            SearchProtocol.WordItem localWordItem;
-            if (!QLog.isColorLevel()) {
-              break label472;
-            }
-            QLog.d("lebasearch.SearchProtocol", 2, paramBundle.getMessage());
-            return;
-            paramBundle = this.a.obtainMessage();
-            paramBundle.arg1 = 0;
-            paramBundle.obj = localArrayList;
-            this.a.sendMessage(paramBundle);
-          }
-          try
-          {
-            localObject = new JSONObject((String)localObject);
-            paramBundle = (Bundle)localObject;
-          }
-          catch (JSONException localJSONException)
-          {
-            localJSONException.printStackTrace();
-            continue;
-            paramInt = paramBundle.optInt("type");
-          }
+        localObject4 = new FileInputStream("trustedCerts");
+        ((KeyStore)localObject1).load((InputStream)localObject4, "passphrase".toCharArray());
+        localObject3 = TrustManagerFactory.getInstance("SunX509", "SunJSSE");
+        ((TrustManagerFactory)localObject3).init((KeyStore)localObject1);
+        localObject3 = ((TrustManagerFactory)localObject3).getTrustManagers();
+        localObject1 = localObject4;
+        if (localObject1 != null) {
+          ((FileInputStream)localObject1).close();
         }
-        if (paramBundle == null)
-        {
-          paramInt = 0;
-          if ((paramInt == 2) && (localResultItem.jmp_url.has()) && (!TextUtils.isEmpty(localResultItem.jmp_url.get().toStringUtf8())))
-          {
-            localWordItem.type = paramInt;
-            localWordItem.jumpUrl = localResultItem.jmp_url.get().toStringUtf8();
-            paramInt = SearchProtocol.a(paramBundle.optString("color"));
-            if (paramInt == 0) {
-              break label473;
-            }
-          }
+        i = 0;
+        if (i >= localObject3.length) {
+          break label137;
         }
+        if (!(localObject3[i] instanceof X509TrustManager)) {
+          break label130;
+        }
+        this.a = ((X509TrustManager)localObject3[i]);
       }
     }
-    for (;;)
+    catch (Exception localException)
     {
-      localWordItem.textColor = paramInt;
-      localWordItem.frameColor = SearchProtocol.a(paramBundle.optString("framecolor"));
-      localArrayList.add(localWordItem);
-      break;
-      label472:
-      return;
-      label473:
-      paramInt = -16734752;
+      for (;;)
+      {
+        int i;
+        Object localObject2 = null;
+        continue;
+        localObject2 = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+        ((TrustManagerFactory)localObject2).init((KeyStore)null);
+        Object localObject4 = ((TrustManagerFactory)localObject2).getTrustManagers();
+        localObject2 = localObject3;
+        localObject3 = localObject4;
+        continue;
+        label130:
+        i += 1;
+      }
+      label137:
+      throw new Exception("Couldn't initialize");
     }
+  }
+  
+  public void checkClientTrusted(X509Certificate[] paramArrayOfX509Certificate, String paramString)
+  {
+    this.a.checkClientTrusted(paramArrayOfX509Certificate, paramString);
+  }
+  
+  public void checkServerTrusted(X509Certificate[] paramArrayOfX509Certificate, String paramString)
+  {
+    this.a.checkServerTrusted(paramArrayOfX509Certificate, paramString);
+  }
+  
+  public X509Certificate[] getAcceptedIssuers()
+  {
+    return this.a.getAcceptedIssuers();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     kpx
  * JD-Core Version:    0.7.0.1
  */

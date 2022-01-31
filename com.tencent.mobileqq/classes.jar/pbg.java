@@ -1,21 +1,22 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.troop.utils.TroopTopicMgr.WriteCommentCallback;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
 
-class pbg
-  implements TroopTopicMgr.WriteCommentCallback
+public class pbg
+  implements View.OnClickListener
 {
-  pbg(paz parampaz, int paramInt1, int paramInt2) {}
+  public pbg(NativeAwesomeCommentView paramNativeAwesomeCommentView, pot parampot) {}
   
-  public void a(int paramInt, JSONObject paramJSONObject)
+  public void onClick(View paramView)
   {
-    if (paramInt == 0) {}
-    paramJSONObject = new Bundle();
-    paramJSONObject.putInt("reqType", this.jdField_a_of_type_Int);
-    paramJSONObject.putInt("seq", this.b);
-    paramJSONObject.putInt("errorCode", paramInt);
-    this.jdField_a_of_type_Paz.a.a(60, paramJSONObject);
+    if (NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView)) {
+      NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView, false);
+    }
+    while (this.jdField_a_of_type_Pot == null) {
+      return;
+    }
+    obz.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView.getContext(), this.jdField_a_of_type_Pot.a, this.jdField_a_of_type_Pot.c);
+    pot.a(NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView).a, "0X8009B77");
   }
 }
 

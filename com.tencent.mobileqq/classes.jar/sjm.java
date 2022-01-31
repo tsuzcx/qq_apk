@@ -1,41 +1,98 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class sjm
-  implements DialogInterface.OnClickListener
+  implements vnq
 {
-  sjm(sjl paramsjl) {}
+  private final int jdField_a_of_type_Int;
+  private final Object jdField_a_of_type_JavaLangObject;
+  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public sjm(Object paramObject, AtomicInteger paramAtomicInteger, int paramInt)
   {
-    if (paramInt == 1)
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = paramAtomicInteger;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void onFailure(String paramString)
+  {
+    urk.d(sjj.a, "FFMPEGResponseCallback onFailure() mTaskType = " + this.jdField_a_of_type_Int + " message = " + paramString);
+  }
+  
+  public void onFinish(boolean paramBoolean)
+  {
+    int j = 0;
+    int k = 0;
+    int m = 0;
+    int i = 0;
+    urk.d(sjj.a, "FFMPEGResponseCallback onFinish() mTaskType = " + this.jdField_a_of_type_Int + " isSuccess = " + paramBoolean);
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.cancel();
-      return;
-    }
-    try
-    {
-      ForwardSdkShareOption.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, true, "action_game_join_group", Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.c).longValue(), -1, this.a.jdField_a_of_type_JavaLangString);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.cancel();
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.finish();
-      return;
-    }
-    catch (Exception paramDialogInterface)
-    {
-      for (;;)
+      this.jdField_a_of_type_JavaLangObject.notify();
+      switch (this.jdField_a_of_type_Int)
       {
-        QLog.e("Q.chatopttroop", 1, "showAlertDlg error = " + paramDialogInterface);
+      case 1: 
+        urk.e(sjj.a, "Undefined task type mTaskType = " + this.jdField_a_of_type_Int);
+        throw new RuntimeException("Undefined task in FFMPEGResponseCallback");
       }
     }
+    AtomicInteger localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+    if (paramBoolean)
+    {
+      label152:
+      localAtomicInteger.set(i);
+      for (;;)
+      {
+        label158:
+        return;
+        localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+        if (!paramBoolean) {
+          break;
+        }
+        i = j;
+        label174:
+        localAtomicInteger.set(i);
+      }
+      localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+      if (!paramBoolean) {
+        break label248;
+      }
+    }
+    label248:
+    for (i = k;; i = 945001)
+    {
+      localAtomicInteger.set(i);
+      break label158;
+      localAtomicInteger = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+      if (paramBoolean) {}
+      for (i = m;; i = 944004)
+      {
+        localAtomicInteger.set(i);
+        break;
+      }
+      break;
+      i = 943004;
+      break label152;
+      i = 942004;
+      break label174;
+    }
+  }
+  
+  public void onProgress(String paramString) {}
+  
+  public void onStart()
+  {
+    urk.c(sjj.a, "onStart() mTaskType = " + this.jdField_a_of_type_Int);
+  }
+  
+  public void onSuccess(String paramString)
+  {
+    urk.c(sjj.a, "FFMPEGResponseCallback onSuccess() mTaskType = " + this.jdField_a_of_type_Int + " message = " + paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sjm
  * JD-Core Version:    0.7.0.1
  */

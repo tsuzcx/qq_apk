@@ -7,14 +7,14 @@ import com.tencent.component.media.image.drawable.SpecifiedDrawable;
 public class SpecifiedSizeCropByPivotProcessor
   extends CropByPivotProcessor
 {
-  private final int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean = false;
-  private final int b;
+  private boolean hasPivot = false;
+  private final int mHeight;
+  private final int mWidth;
   
   public SpecifiedSizeCropByPivotProcessor(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.mWidth = paramInt1;
+    this.mHeight = paramInt2;
   }
   
   public SpecifiedSizeCropByPivotProcessor(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
@@ -22,13 +22,13 @@ public class SpecifiedSizeCropByPivotProcessor
     this(paramInt1, paramInt2);
     setPivotRate(paramFloat1, paramFloat2);
     if ((paramFloat1 != 0.0F) || (paramFloat2 != 0.0F)) {
-      this.jdField_a_of_type_Boolean = true;
+      this.hasPivot = true;
     }
   }
   
   public int getHeight()
   {
-    return this.b;
+    return this.mHeight;
   }
   
   public int getType()
@@ -38,12 +38,12 @@ public class SpecifiedSizeCropByPivotProcessor
   
   public int getWidth()
   {
-    return this.jdField_a_of_type_Int;
+    return this.mWidth;
   }
   
   public Drawable process(Drawable paramDrawable)
   {
-    if ((this.jdField_a_of_type_Int <= 0) || (this.b <= 0)) {}
+    if ((this.mWidth <= 0) || (this.mHeight <= 0)) {}
     int i;
     int j;
     do
@@ -51,12 +51,12 @@ public class SpecifiedSizeCropByPivotProcessor
       return paramDrawable;
       i = paramDrawable.getIntrinsicWidth();
       j = paramDrawable.getIntrinsicHeight();
-    } while ((i == this.jdField_a_of_type_Int) && (j == this.b));
-    if ((i >= j * 2) || (this.jdField_a_of_type_Boolean)) {}
+    } while ((i == this.mWidth) && (j == this.mHeight));
+    if ((i >= j * 2) || (this.hasPivot)) {}
     for (paramDrawable = new ScaleDrawable(paramDrawable, 10);; paramDrawable = new ScaleDrawable(paramDrawable, 0))
     {
       paramDrawable.setPivot(this.mPivotXRate, this.mPivotYRate);
-      return new SpecifiedDrawable(paramDrawable, this.jdField_a_of_type_Int, this.b);
+      return new SpecifiedDrawable(paramDrawable, this.mWidth, this.mHeight);
     }
   }
 }

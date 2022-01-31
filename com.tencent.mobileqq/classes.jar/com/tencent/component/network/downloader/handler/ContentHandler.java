@@ -6,7 +6,7 @@ import org.apache.http.HttpResponse;
 
 public abstract interface ContentHandler
 {
-  public abstract boolean a(DownloadResult paramDownloadResult, HttpResponse paramHttpResponse, Response paramResponse);
+  public abstract boolean handleContentType(DownloadResult paramDownloadResult, HttpResponse paramHttpResponse, Response paramResponse);
 }
 
 

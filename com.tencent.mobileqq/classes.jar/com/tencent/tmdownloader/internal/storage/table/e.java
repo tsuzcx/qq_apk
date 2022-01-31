@@ -7,8 +7,9 @@ import android.os.Handler;
 import android.text.TextUtils;
 import com.tencent.tmassistant.common.a.c;
 import com.tencent.tmassistant.common.a.d;
-import com.tencent.tmassistantbase.util.m;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.l;
+import com.tencent.tmassistantbase.util.t;
 import com.tencent.tmdownloader.internal.storage.a.a;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -29,22 +30,25 @@ public class e
       {
         if (TextUtils.isEmpty(paramString1))
         {
-          r.e("SettingTable", "key should not be empty!!");
+          ac.e("SettingTable", "key should not be empty!!");
           return;
         }
         l1 = System.currentTimeMillis();
         this.a.put(paramString1, paramString2);
+        if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {
+          this.b.put(paramString1, paramArrayOfByte);
+        }
         localObject = a.c();
         if (localObject == null)
         {
-          r.e("SettingTable", "<commonInsert> sqliteHelper is null");
+          ac.e("SettingTable", "<commonInsert> sqliteHelper is null");
           continue;
         }
         localObject = ((d)localObject).getWritableDatabase();
       }
       finally {}
       if (localObject == null) {
-        r.e("SettingTable", "<commonInsert> db is null");
+        ac.e("SettingTable", "<commonInsert> db is null");
       } else {
         for (;;)
         {
@@ -57,13 +61,13 @@ public class e
             localContentValues.put("data", paramArrayOfByte);
             int i = ((SQLiteDatabase)localObject).delete("setting_table", "key=?", new String[] { paramString1 });
             long l2 = ((SQLiteDatabase)localObject).insert("setting_table", null, localContentValues);
-            r.c("SettingTable", "<commonInsert> deleteResult =  " + i + ", insertResult = " + l2);
+            ac.c("SettingTable", "<commonInsert> deleteResult =  " + i + ", insertResult = " + l2);
             localContentValues.clear();
             ((SQLiteDatabase)localObject).setTransactionSuccessful();
           }
           catch (Exception paramString1)
           {
-            r.c("SettingTable", "<commonInsert> error " + paramString1.getMessage());
+            ac.c("SettingTable", "<commonInsert> error " + paramString1.getMessage());
             if (!((SQLiteDatabase)localObject).isOpen()) {
               continue;
             }
@@ -77,28 +81,28 @@ public class e
             }
             catch (Exception paramString1)
             {
-              r.e("SettingTable", "<commonInsert> end transaction error");
+              ac.e("SettingTable", "<commonInsert> end transaction error");
             }
             continue;
           }
           finally
           {
             if (!((SQLiteDatabase)localObject).isOpen()) {
-              break label363;
+              break label384;
             }
             boolean bool = ((SQLiteDatabase)localObject).inTransaction();
             if (!bool) {
-              break label363;
+              break label384;
             }
           }
           try
           {
             ((SQLiteDatabase)localObject).endTransaction();
-            r.c("SettingTable", "<commonInsert> time cost : " + (System.currentTimeMillis() - l1) + "ms");
+            ac.c("SettingTable", "<commonInsert> time cost : " + (System.currentTimeMillis() - l1) + "ms");
           }
           catch (Exception paramString1)
           {
-            r.e("SettingTable", "<commonInsert> end transaction error");
+            ac.e("SettingTable", "<commonInsert> end transaction error");
           }
         }
       }
@@ -106,14 +110,14 @@ public class e
     try
     {
       ((SQLiteDatabase)localObject).endTransaction();
-      label363:
+      label384:
       throw paramString1;
     }
     catch (Exception paramString2)
     {
       for (;;)
       {
-        r.e("SettingTable", "<commonInsert> end transaction error");
+        ac.e("SettingTable", "<commonInsert> end transaction error");
       }
     }
   }
@@ -124,10 +128,10 @@ public class e
     Object localObject1 = null;
     try
     {
-      r.c("SettingTable", "<initCache> begin");
+      ac.c("SettingTable", "<initCache> begin");
       Object localObject6 = a.c();
       if (localObject6 == null) {
-        r.e("SettingTable", "<initCache> sqliteHelper is null");
+        ac.e("SettingTable", "<initCache> sqliteHelper is null");
       }
       for (;;)
       {
@@ -135,7 +139,7 @@ public class e
         localObject6 = ((d)localObject6).getWritableDatabase();
         if (localObject6 == null)
         {
-          r.e("SettingTable", "<initCache> db is null");
+          ac.e("SettingTable", "<initCache> db is null");
           continue;
         }
         try
@@ -164,7 +168,7 @@ public class e
           }
           try
           {
-            r.c("SettingTable", "loading cache key = " + str1 + ",value = " + str2 + ",data = " + arrayOfByte.length);
+            ac.c("SettingTable", "loading cache key = " + str1 + ",value = " + str2 + ",data = " + arrayOfByte.length);
             localObject3 = localObject6;
             localObject5 = localObject6;
             if (!TextUtils.isEmpty(str2))
@@ -209,7 +213,7 @@ public class e
         {
           Object localObject3;
           localObject5 = localObject3;
-          r.c("SettingTable", "initCache exception: ", localException1);
+          ac.c("SettingTable", "initCache exception: ", localException1);
           localObject5 = localObject3;
           localException1.printStackTrace();
           if (localObject3 == null) {
@@ -228,259 +232,149 @@ public class e
     finally {}
   }
   
-  /* Error */
   private String f(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc 212
-    //   4: astore 5
-    //   6: aload_0
-    //   7: getfield 20	com/tencent/tmdownloader/internal/storage/table/e:a	Ljava/util/Map;
-    //   10: aload_1
-    //   11: invokeinterface 216 2 0
-    //   16: ifeq +62 -> 78
-    //   19: aload_0
-    //   20: getfield 20	com/tencent/tmdownloader/internal/storage/table/e:a	Ljava/util/Map;
-    //   23: aload_1
-    //   24: invokeinterface 220 2 0
-    //   29: checkcast 101	java/lang/String
-    //   32: astore 4
-    //   34: ldc 40
-    //   36: new 111	java/lang/StringBuilder
-    //   39: dup
-    //   40: invokespecial 112	java/lang/StringBuilder:<init>	()V
-    //   43: ldc 222
-    //   45: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   48: aload_1
-    //   49: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   52: ldc 224
-    //   54: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   57: aload 4
-    //   59: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   62: ldc 226
-    //   64: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   70: invokestatic 132	com/tencent/tmassistantbase/util/r:c	(Ljava/lang/String;Ljava/lang/String;)V
-    //   73: aload_0
-    //   74: monitorexit
-    //   75: aload 4
-    //   77: areturn
-    //   78: invokestatic 54	java/lang/System:currentTimeMillis	()J
-    //   81: lstore_2
-    //   82: aload 5
-    //   84: astore 4
-    //   86: aload_1
-    //   87: invokestatic 38	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   90: ifne +189 -> 279
-    //   93: invokestatic 66	com/tencent/tmdownloader/internal/storage/a/a:c	()Lcom/tencent/tmassistant/common/a/d;
-    //   96: astore 4
-    //   98: aload 4
-    //   100: ifnonnull +17 -> 117
-    //   103: ldc 40
-    //   105: ldc 228
-    //   107: invokestatic 48	com/tencent/tmassistantbase/util/r:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   110: ldc 212
-    //   112: astore 4
-    //   114: goto -41 -> 73
-    //   117: aload 4
-    //   119: invokevirtual 74	com/tencent/tmassistant/common/a/d:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   122: astore 4
-    //   124: aload 4
-    //   126: ifnonnull +22 -> 148
-    //   129: ldc 40
-    //   131: ldc 230
-    //   133: invokestatic 48	com/tencent/tmassistantbase/util/r:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   136: aload 5
-    //   138: astore 4
-    //   140: goto -67 -> 73
-    //   143: astore_1
-    //   144: aload_0
-    //   145: monitorexit
-    //   146: aload_1
-    //   147: athrow
-    //   148: aconst_null
-    //   149: astore 8
-    //   151: aload 4
-    //   153: ldc 232
-    //   155: iconst_1
-    //   156: anewarray 101	java/lang/String
-    //   159: dup
-    //   160: iconst_0
-    //   161: aload_1
-    //   162: aastore
-    //   163: invokevirtual 171	android/database/sqlite/SQLiteDatabase:rawQuery	(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
-    //   166: astore 6
-    //   168: aload 5
-    //   170: astore 7
-    //   172: aload 6
-    //   174: ifnull +85 -> 259
-    //   177: aload 5
-    //   179: astore 7
-    //   181: aload 6
-    //   183: astore 8
-    //   185: aload 5
-    //   187: astore 4
-    //   189: aload 6
-    //   191: invokeinterface 176 1 0
-    //   196: ifeq +63 -> 259
-    //   199: aload 6
-    //   201: astore 8
-    //   203: aload 5
-    //   205: astore 4
-    //   207: aload 6
-    //   209: aload 6
-    //   211: ldc 90
-    //   213: invokeinterface 180 2 0
-    //   218: invokeinterface 184 2 0
-    //   223: astore 5
-    //   225: aload 5
-    //   227: astore 7
-    //   229: aload 5
-    //   231: ifnull +28 -> 259
-    //   234: aload 6
-    //   236: astore 8
-    //   238: aload 5
-    //   240: astore 4
-    //   242: aload_0
-    //   243: getfield 20	com/tencent/tmdownloader/internal/storage/table/e:a	Ljava/util/Map;
-    //   246: aload_1
-    //   247: aload 5
-    //   249: invokeinterface 60 3 0
-    //   254: pop
-    //   255: aload 5
-    //   257: astore 7
-    //   259: aload 7
-    //   261: astore 4
-    //   263: aload 6
-    //   265: ifnull +14 -> 279
-    //   268: aload 6
-    //   270: invokeinterface 200 1 0
-    //   275: aload 7
-    //   277: astore 4
-    //   279: ldc 40
-    //   281: new 111	java/lang/StringBuilder
-    //   284: dup
-    //   285: invokespecial 112	java/lang/StringBuilder:<init>	()V
-    //   288: ldc 234
-    //   290: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   293: invokestatic 54	java/lang/System:currentTimeMillis	()J
-    //   296: lload_2
-    //   297: lsub
-    //   298: invokevirtual 126	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   301: ldc 152
-    //   303: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   306: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   309: invokestatic 132	com/tencent/tmassistantbase/util/r:c	(Ljava/lang/String;Ljava/lang/String;)V
-    //   312: goto -239 -> 73
-    //   315: aload 4
-    //   317: ifnull +42 -> 359
-    //   320: aload 4
-    //   322: invokeinterface 200 1 0
-    //   327: aload_1
-    //   328: astore 4
-    //   330: goto -51 -> 279
-    //   333: astore_1
-    //   334: aload 8
-    //   336: ifnull +10 -> 346
-    //   339: aload 8
-    //   341: invokeinterface 200 1 0
-    //   346: aload_1
-    //   347: athrow
-    //   348: astore_1
-    //   349: aload 4
-    //   351: astore_1
-    //   352: aload 6
-    //   354: astore 4
-    //   356: goto -41 -> 315
-    //   359: aload_1
-    //   360: astore 4
-    //   362: goto -83 -> 279
-    //   365: astore_1
-    //   366: ldc 212
-    //   368: astore_1
-    //   369: aconst_null
-    //   370: astore 4
-    //   372: goto -57 -> 315
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	375	0	this	e
-    //   0	375	1	paramString	String
-    //   81	216	2	l	long
-    //   32	339	4	localObject1	Object
-    //   4	252	5	str1	String
-    //   166	187	6	localCursor	Cursor
-    //   170	106	7	str2	String
-    //   149	191	8	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   6	73	143	finally
-    //   78	82	143	finally
-    //   86	98	143	finally
-    //   103	110	143	finally
-    //   117	124	143	finally
-    //   129	136	143	finally
-    //   268	275	143	finally
-    //   279	312	143	finally
-    //   320	327	143	finally
-    //   339	346	143	finally
-    //   346	348	143	finally
-    //   151	168	333	finally
-    //   189	199	333	finally
-    //   207	225	333	finally
-    //   242	255	333	finally
-    //   189	199	348	java/lang/Exception
-    //   207	225	348	java/lang/Exception
-    //   242	255	348	java/lang/Exception
-    //   151	168	365	java/lang/Exception
+    String str1 = "";
+    if (this.a.containsKey(paramString))
+    {
+      localObject1 = (String)this.a.get(paramString);
+      ac.c("SettingTable", "getting key=" + paramString + ",value=" + (String)localObject1 + ",using cache");
+      return localObject1;
+    }
+    long l = System.currentTimeMillis();
+    localObject1 = str1;
+    try
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        break label273;
+      }
+      localObject1 = a.c();
+      if (localObject1 == null)
+      {
+        ac.e("SettingTable", "<get> sqliteHelper is null");
+        return "";
+      }
+    }
+    finally {}
+    localObject1 = ((d)localObject1).getWritableDatabase();
+    if (localObject1 == null)
+    {
+      ac.e("SettingTable", "<get> db is null");
+      return "";
+    }
+    localObject2 = null;
+    try
+    {
+      localCursor = ((SQLiteDatabase)localObject1).rawQuery("select * from setting_table where key = ?", new String[] { paramString });
+      str2 = str1;
+      if (localCursor != null)
+      {
+        str2 = str1;
+        localObject2 = localCursor;
+        localObject1 = str1;
+      }
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        String str2;
+        label273:
+        paramString = "";
+        localObject1 = null;
+        if (localObject1 == null) {
+          break;
+        }
+        ((Cursor)localObject1).close();
+        localObject1 = paramString;
+      }
+    }
+    finally
+    {
+      if (localObject2 != null) {
+        localObject2.close();
+      }
+    }
+    try
+    {
+      if (localCursor.moveToFirst())
+      {
+        localObject2 = localCursor;
+        localObject1 = str1;
+        str1 = localCursor.getString(localCursor.getColumnIndexOrThrow("value"));
+        str2 = str1;
+        if (str1 != null)
+        {
+          localObject2 = localCursor;
+          localObject1 = str1;
+          this.a.put(paramString, str1);
+          str2 = str1;
+        }
+      }
+      localObject1 = str2;
+      if (localCursor != null)
+      {
+        localCursor.close();
+        localObject1 = str2;
+      }
+    }
+    catch (Exception paramString)
+    {
+      paramString = (String)localObject1;
+      localObject1 = localCursor;
+      break label318;
+      localObject1 = paramString;
+      break label273;
+    }
+    ac.c("SettingTable", "<get> time cost : " + (System.currentTimeMillis() - l) + "ms");
+    return localObject1;
   }
   
   public void a()
   {
-    if (m.a())
+    if (t.a())
     {
-      r.c("SettingTable", "<SettingTable> init begin, process " + m.e());
-      com.tencent.tmassistantbase.util.f.a().postDelayed(new f(this), 1000L);
+      ac.c("SettingTable", "<SettingTable> init begin, process " + t.e());
+      l.a().postDelayed(new f(this), 1000L);
     }
   }
   
   public void a(String paramString, int paramInt)
   {
-    r.c("SettingTable", "<setInt>key=" + paramString + ", value=" + String.valueOf(paramInt) + ", process:" + m.e());
-    com.tencent.tmassistantbase.util.f.a().post(new g(this, paramString, paramInt));
-    r.c("SettingTable", "<setInt> exit");
+    ac.c("SettingTable", "<setInt>key=" + paramString + ", value=" + String.valueOf(paramInt) + ", process:" + t.e());
+    l.a().post(new g(this, paramString, paramInt));
+    ac.c("SettingTable", "<setInt> exit");
   }
   
   public void a(String paramString, long paramLong)
   {
-    r.c("SettingTable", "<setLong>key=" + paramString + ", value=" + String.valueOf(paramLong) + ", process:" + m.e());
-    com.tencent.tmassistantbase.util.f.a().post(new h(this, paramString, paramLong));
-    r.c("SettingTable", "<setLong> exit");
+    ac.c("SettingTable", "<setLong>key=" + paramString + ", value=" + String.valueOf(paramLong) + ", process:" + t.e());
+    l.a().post(new h(this, paramString, paramLong));
+    ac.c("SettingTable", "<setLong> exit");
   }
   
   public void a(String paramString1, String paramString2)
   {
-    r.c("SettingTable", "<setString>key=" + paramString1 + ", value=" + String.valueOf(paramString2) + ", process:" + m.e());
-    com.tencent.tmassistantbase.util.f.a().post(new i(this, paramString1, paramString2));
-    r.c("SettingTable", "<setString> exit");
+    ac.c("SettingTable", "<setString>key=" + paramString1 + ", value=" + String.valueOf(paramString2) + ", process:" + t.e());
+    l.a().post(new i(this, paramString1, paramString2));
+    ac.c("SettingTable", "<setString> exit");
   }
   
   public void a(String paramString, boolean paramBoolean)
   {
-    r.c("SettingTable", "<setBoolean>key=" + paramString + ", value=" + String.valueOf(paramBoolean) + ",process:" + m.e());
-    com.tencent.tmassistantbase.util.f.a().post(new k(this, paramString, paramBoolean));
+    ac.c("SettingTable", "<setBoolean>key=" + paramString + ", value=" + String.valueOf(paramBoolean) + ",process:" + t.e());
+    l.a().post(new k(this, paramString, paramBoolean));
   }
   
   public void a(String paramString, byte[] paramArrayOfByte)
   {
-    r.c("SettingTable", "<setBlob>key=" + paramString + ", value.length=" + paramArrayOfByte.length + ",process:" + m.e());
-    com.tencent.tmassistantbase.util.f.a().post(new j(this, paramString, paramArrayOfByte));
+    ac.c("SettingTable", "<setBlob>key=" + paramString + ", value.length=" + paramArrayOfByte.length + ",process:" + t.e());
+    l.a().post(new j(this, paramString, paramArrayOfByte));
   }
   
   public boolean a(String paramString)
   {
-    r.c("SettingTable", "<getBoolean> key=" + paramString + ",process:" + m.e());
+    ac.c("SettingTable", "<getBoolean> key=" + paramString + ",process:" + t.e());
     try
     {
       boolean bool = Boolean.valueOf(f(paramString)).booleanValue();
@@ -488,14 +382,14 @@ public class e
     }
     catch (Exception paramString)
     {
-      r.e("SettingTable", "<getBoolean> error, e = " + paramString.getMessage() + ",process:" + m.e());
+      ac.e("SettingTable", "<getBoolean> error, e = " + paramString.getMessage() + ",process:" + t.e());
     }
     return false;
   }
   
   public int b(String paramString)
   {
-    r.c("SettingTable", "<getInt> key=" + paramString + ",process:" + m.e());
+    ac.c("SettingTable", "<getInt> key=" + paramString + ",process:" + t.e());
     try
     {
       int i = Integer.valueOf(f(paramString)).intValue();
@@ -503,14 +397,14 @@ public class e
     }
     catch (Exception paramString)
     {
-      r.e("SettingTable", "<getInt> error, e = " + paramString.getMessage() + ",process:" + m.e());
+      ac.e("SettingTable", "<getInt> error, e = " + paramString.getMessage() + ",process:" + t.e());
     }
     return 0;
   }
   
   public long c(String paramString)
   {
-    r.c("SettingTable", "<getLong> key=" + paramString + ",process:" + m.e());
+    ac.c("SettingTable", "<getLong> key=" + paramString + ",process:" + t.e());
     try
     {
       long l = Long.valueOf(f(paramString)).longValue();
@@ -518,7 +412,7 @@ public class e
     }
     catch (Exception paramString)
     {
-      r.e("SettingTable", "<getLong> error, e = " + paramString.getMessage() + ",process:" + m.e());
+      ac.e("SettingTable", "<getLong> error, e = " + paramString.getMessage() + ",process:" + t.e());
     }
     return 0L;
   }
@@ -530,7 +424,7 @@ public class e
   
   public String d(String paramString)
   {
-    r.c("SettingTable", "<getString> key=" + paramString + ",process:" + m.e());
+    ac.c("SettingTable", "<getString> key=" + paramString + ",process:" + t.e());
     try
     {
       paramString = f(paramString);
@@ -538,7 +432,7 @@ public class e
     }
     catch (Exception paramString)
     {
-      r.e("SettingTable", "<getString> error, e = " + paramString.getMessage() + ",process:" + m.e());
+      ac.e("SettingTable", "<getString> error, e = " + paramString.getMessage() + ",process:" + t.e());
     }
     return "";
   }
@@ -563,10 +457,10 @@ public class e
     //   24: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   27: ldc_w 313
     //   30: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   33: invokestatic 242	com/tencent/tmassistantbase/util/m:e	()Ljava/lang/String;
+    //   33: invokestatic 242	com/tencent/tmassistantbase/util/t:e	()Ljava/lang/String;
     //   36: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   39: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   42: invokestatic 132	com/tencent/tmassistantbase/util/r:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   42: invokestatic 132	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   45: iconst_0
     //   46: newarray byte
     //   48: astore 4
@@ -596,7 +490,7 @@ public class e
     //   105: ldc 226
     //   107: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   110: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   113: invokestatic 132	com/tencent/tmassistantbase/util/r:c	(Ljava/lang/String;Ljava/lang/String;)V
+    //   113: invokestatic 132	com/tencent/tmassistantbase/util/ac:c	(Ljava/lang/String;Ljava/lang/String;)V
     //   116: aload_0
     //   117: monitorexit
     //   118: aload_2
@@ -612,7 +506,7 @@ public class e
     //   135: ifnonnull +16 -> 151
     //   138: ldc 40
     //   140: ldc_w 388
-    //   143: invokestatic 48	com/tencent/tmassistantbase/util/r:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   143: invokestatic 48	com/tencent/tmassistantbase/util/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   146: aconst_null
     //   147: astore_2
     //   148: goto -32 -> 116
@@ -623,7 +517,7 @@ public class e
     //   159: ifnonnull +16 -> 175
     //   162: ldc 40
     //   164: ldc_w 390
-    //   167: invokestatic 48	com/tencent/tmassistantbase/util/r:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   167: invokestatic 48	com/tencent/tmassistantbase/util/ac:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   170: aconst_null
     //   171: astore_2
     //   172: goto -56 -> 116
@@ -773,7 +667,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.storage.table.e
  * JD-Core Version:    0.7.0.1
  */

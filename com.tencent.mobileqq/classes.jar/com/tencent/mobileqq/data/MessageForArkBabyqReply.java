@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
 import android.text.TextUtils;
+import awav;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.service.message.MessageConstants;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
@@ -22,9 +22,10 @@ public class MessageForArkBabyqReply
   public int arkSearchType;
   public String babyqReplyText;
   public String compatibleMsg;
+  public int forwardID;
   public boolean isFailed;
   public boolean isSingleApp = true;
-  public ArrayList mArkBabyqReplyCardList;
+  public ArrayList<ArkBabyqCardInfo> mArkBabyqReplyCardList;
   public boolean mHasReportRecv;
   public String resIDForLongMsg;
   public boolean showAsBabyq = true;
@@ -50,7 +51,7 @@ public class MessageForArkBabyqReply
       this.mArkBabyqReplyCardList = new ArrayList();
     }
     fromBytes(this.msgData);
-    this.mHasReportRecv = "1".equals(getExtInfoFromExtStr(MessageConstants.g));
+    this.mHasReportRecv = "1".equals(getExtInfoFromExtStr(awav.g));
   }
   
   public boolean fromAppXml(String paramString)
@@ -210,15 +211,15 @@ public class MessageForArkBabyqReply
     if (!TextUtils.isEmpty(this.babyqReplyText)) {
       return this.babyqReplyText;
     }
-    return BaseApplicationImpl.sApplication.getString(2131438263);
+    return BaseApplicationImpl.sApplication.getString(2131624686);
   }
   
-  protected void postRead()
+  public void postRead()
   {
     parse();
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     this.msgData = toBytes();
     this.msg = this.babyqReplyText;

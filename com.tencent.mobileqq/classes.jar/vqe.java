@@ -1,22 +1,36 @@
-import android.animation.ValueAnimator;
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable.FrameListener;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import java.util.List;
 
-public class vqe
-  implements CustomFrameAnimationDrawable.FrameListener
+public abstract class vqe<T>
 {
-  public vqe(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  private int jdField_a_of_type_Int;
+  private List<T> jdField_a_of_type_JavaUtilList;
   
-  public void a(int paramInt)
+  public vqe(int paramInt, List<T> paramList)
   {
-    if (paramInt == 23) {
-      UnlimitedBladeWorks.a(this.a).start();
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public List<T> a()
+  {
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public abstract void a(int paramInt, T paramT, unw paramunw);
+  
+  public void a(int paramInt, unw paramunw)
+  {
+    a(paramInt, this.jdField_a_of_type_JavaUtilList.get(paramInt), paramunw);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vqe
  * JD-Core Version:    0.7.0.1
  */

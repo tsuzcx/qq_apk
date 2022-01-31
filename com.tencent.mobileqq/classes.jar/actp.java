@@ -1,26 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendAnim;
-
 public class actp
-  implements Animation.AnimationListener
 {
-  public actp(Face2FaceAddFriendAnim paramFace2FaceAddFriendAnim) {}
+  public int a;
+  public byte[] a;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  actp(acto paramacto)
   {
-    ((Face2FaceAddFriendActivity)this.a.jdField_a_of_type_AndroidContentContext).i();
-    this.a.jdField_a_of_type_AndroidViewAnimationRotateAnimation = null;
+    this.jdField_a_of_type_Int = 0;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     actp
  * JD-Core Version:    0.7.0.1
  */

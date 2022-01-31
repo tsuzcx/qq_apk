@@ -1,15 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.GuideInfoDialog;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class ogh
-  implements View.OnClickListener
+  extends atdh
 {
-  public ogh(GuideInfoDialog paramGuideInfoDialog) {}
+  public ogh(KandianMergeManager paramKandianMergeManager) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    this.a.dismiss();
+    QLog.d("KandianMergeManager", 1, "onGameCenterMsgReceive | redTouchObserver received a notification ");
+    KandianMergeManager.a(this.a);
   }
 }
 

@@ -1,27 +1,10 @@
-import com.tencent.mqp.app.sec.d;
-
-public final class algz
-  implements Runnable
+public abstract interface algz
 {
-  public algz(int paramInt, Object[] paramArrayOfObject, byte[] paramArrayOfByte) {}
-  
-  public void run()
-  {
-    if ((this.jdField_a_of_type_Int != -1) && (this.jdField_a_of_type_ArrayOfJavaLangObject != null) && (this.jdField_a_of_type_ArrayOfByte != null)) {}
-    try
-    {
-      d.e(this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfJavaLangObject, this.jdField_a_of_type_ArrayOfByte);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     algz
  * JD-Core Version:    0.7.0.1
  */

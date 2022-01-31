@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.app;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.NearbyCardManager;
+import ascz;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -12,29 +12,29 @@ public class NearbyGrayTipsManager$GrayTipsConfig
   implements Serializable
 {
   private static final long serialVersionUID = 1L;
-  public ArrayList aioTypes;
+  public ArrayList<Integer> aioTypes;
   public long createTime;
-  public ArrayList favoriteGrayTipWordings1;
-  public ArrayList favoriteGrayTipWordings2;
+  public ArrayList<NearbyGrayTipsManager.Wording> favoriteGrayTipWordings1;
+  public ArrayList<NearbyGrayTipsManager.Wording> favoriteGrayTipWordings2;
   public int global_MaxTipsCountPerDay;
-  public ArrayList grayTipWordings;
+  public ArrayList<NearbyGrayTipsManager.Wording> grayTipWordings;
   public boolean grayTipsEnable;
   public int id;
   public int maxTipsCount;
   public int messageCount;
   public int priority;
-  public ArrayList randomWordings;
+  public ArrayList<String> randomWordings;
   public NearbyGrayTipsManager.SceneFive sceneFive;
   public NearbyGrayTipsManager.SceneFour sceneFour;
   public int sceneId;
   public NearbyGrayTipsManager.SceneOne sceneOne;
   public NearbyGrayTipsManager.SceneThree sceneThree;
   public NearbyGrayTipsManager.SceneTwo sceneTwo;
-  public ArrayList sexTypes;
+  public ArrayList<Integer> sexTypes;
   public boolean showKeyboard;
   public int singleTask_MaxTipsCountPerDay;
   public int singleTask_maxTipsCount;
-  public ArrayList timeRange;
+  public ArrayList<NearbyGrayTipsManager.TimeRangeInOneDay> timeRange;
   public boolean timeRangeControl;
   public String url;
   
@@ -266,7 +266,7 @@ public class NearbyGrayTipsManager$GrayTipsConfig
     }
     if (this.sexTypes != null)
     {
-      paramInt1 = ((NearbyCardManager)paramQQAppInterface.getManager(105)).a(paramInt2);
+      paramInt1 = ((ascz)paramQQAppInterface.getManager(106)).a(paramInt2);
       if (!this.sexTypes.contains(Integer.valueOf(paramInt1))) {
         return false;
       }

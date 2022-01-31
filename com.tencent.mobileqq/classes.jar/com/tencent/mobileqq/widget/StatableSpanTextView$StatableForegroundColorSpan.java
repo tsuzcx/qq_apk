@@ -11,8 +11,8 @@ public class StatableSpanTextView$StatableForegroundColorSpan
 {
   public static final int[] a;
   private int jdField_a_of_type_Int;
-  ArrayList jdField_a_of_type_JavaUtilArrayList;
-  ArrayList jdField_b_of_type_JavaUtilArrayList;
+  ArrayList<int[]> jdField_a_of_type_JavaUtilArrayList;
+  ArrayList<Integer> jdField_b_of_type_JavaUtilArrayList;
   private int[] jdField_b_of_type_ArrayOfInt;
   
   static
@@ -83,7 +83,7 @@ public class StatableSpanTextView$StatableForegroundColorSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan
  * JD-Core Version:    0.7.0.1
  */

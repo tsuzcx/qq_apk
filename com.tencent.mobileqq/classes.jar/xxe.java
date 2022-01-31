@@ -1,22 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import java.util.List;
 
 public class xxe
-  implements DialogInterface.OnClickListener
 {
-  public xxe(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  private static int d;
+  public int a;
+  public long a;
+  public String a;
+  public List<String> a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public long b;
+  public String b;
+  public boolean b;
+  public int c;
+  public boolean c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public xxe()
   {
-    StoryReportor.a("video_shoot", "cancel_now", 0, 0, new String[0]);
-    paramDialogInterface.dismiss();
+    d += 1;
+    this.jdField_a_of_type_Int = d;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_b_of_type_Long = 0L;
+    this.c = 0;
+  }
+  
+  public String a()
+  {
+    return this.jdField_b_of_type_JavaLangString.replaceAll(":", "") + "0000";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     xxe
  * JD-Core Version:    0.7.0.1
  */

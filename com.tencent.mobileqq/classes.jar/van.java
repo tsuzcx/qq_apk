@@ -1,22 +1,12 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.confess.ConfessNewsBgView;
-
-public class van
-  extends AbstractChatItemBuilder.ViewHolder
+public abstract interface van
 {
-  public long a;
-  public ConfessNewsBgView a;
-  public String a;
-  public View b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  public abstract void a();
+  
+  public abstract void a(Runnable paramRunnable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     van
  * JD-Core Version:    0.7.0.1
  */

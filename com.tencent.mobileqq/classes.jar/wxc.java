@@ -1,50 +1,32 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.ClipboardManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.messagesearch.MessageItem;
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
 
 public class wxc
-  implements View.OnClickListener
 {
-  public wxc(MessageSearchDialog paramMessageSearchDialog) {}
+  String a = "";
   
-  public void onClick(View paramView)
+  public static wxc a(String paramString)
   {
-    int i = paramView.getId();
-    if (QLog.isColorLevel()) {
-      QLog.i(MessageSearchDialog.jdField_a_of_type_JavaLangString, 2, "onClick, id = " + i);
-    }
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem == null) {
-      return;
-    }
-    switch (i)
+    if (TextUtils.isEmpty(paramString))
     {
-    default: 
-      return;
-    case 2131363536: 
-      paramView = new Bundle();
-      paramView.putInt("forward_type", -1);
-      paramView.putString("forward_text", ((MessageItem)localObject).a.msg);
-      localObject = new Intent();
-      ((Intent)localObject).putExtras(paramView);
-      ForwardBaseOption.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, (Intent)localObject, 21);
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.videostory.capture", 2, "config TextUtils.isEmpty(config) return");
+      }
+      return null;
     }
-    ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(((MessageItem)localObject).a.msg);
+    wxc localwxc = new wxc();
+    localwxc.a(paramString);
+    return localwxc;
+  }
+  
+  public void a(String paramString)
+  {
+    this.a = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wxc
  * JD-Core Version:    0.7.0.1
  */

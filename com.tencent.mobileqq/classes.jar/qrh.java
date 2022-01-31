@@ -1,27 +1,22 @@
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.views.GdtViewStatus.Listener;
-import com.tencent.gdtad.views.freeflip.GdtFreeFlipView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class qrh
-  implements GdtViewStatus.Listener
+  extends omr
 {
-  public qrh(GdtFreeFlipView paramGdtFreeFlipView) {}
-  
-  public void a()
+  public qrh(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, ReadInJoyBaseListView paramReadInJoyBaseListView, int paramInt)
   {
-    GdtLog.b("GdtFreeFlipView", "onViewResume");
-    GdtFreeFlipView.a(this.a);
+    super(paramString);
   }
   
-  public void b()
+  public void a(oml paramoml)
   {
-    GdtLog.b("GdtFreeFlipView", "onViewPause");
-    GdtFreeFlipView.b(this.a);
+    paramoml.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListView, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qrh
  * JD-Core Version:    0.7.0.1
  */

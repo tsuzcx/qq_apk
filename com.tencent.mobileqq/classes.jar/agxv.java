@@ -1,24 +1,28 @@
-import android.view.animation.Animation;
-import com.tencent.mobileqq.ptt.LSRecordAnimations.LSRecordAnimationCallback;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.qphone.base.util.QLog;
 
-public class agxv
-  extends LSRecordAnimations.LSRecordAnimationCallback
+class agxv
+  implements View.OnClickListener
 {
-  public agxv(LSRecordPanel paramLSRecordPanel) {}
+  agxv(agxq paramagxq) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS startSideAnimation onAnimationEnd");
+    try
+    {
+      babr.a(agxq.a(this.a), 0, null, ajjy.a(2131635123), 2131625035, 2131629116, new agxw(this), new agxx(this)).show();
+      return;
     }
-    this.a.b = null;
+    catch (Throwable paramView)
+    {
+      QLog.e("Q.recent.banner", 1, "show dialog err, errInfo->" + paramView.getMessage());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agxv
  * JD-Core Version:    0.7.0.1
  */

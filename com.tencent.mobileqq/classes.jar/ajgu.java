@@ -1,23 +1,33 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.troop.createNewTroop.AbsNewTroopBaseView;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCreateActivity;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.app.DataMigrationService;
 
 public class ajgu
-  extends AnimatorListenerAdapter
+  extends Handler
 {
-  public ajgu(NewTroopCreateActivity paramNewTroopCreateActivity) {}
+  public ajgu(DataMigrationService paramDataMigrationService) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopAbsNewTroopBaseView != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopAbsNewTroopBaseView.a(this.a.jdField_a_of_type_Boolean);
+    int i = paramMessage.arg1;
+    paramMessage = (Intent)paramMessage.obj;
+    if (paramMessage == null)
+    {
+      this.a.stopSelf(i);
+      return;
     }
+    if ("com.tencent.mobileqq.action.MIGRATION_DATA".equals(paramMessage.getAction()))
+    {
+      DataMigrationService.a(this.a, paramMessage, i);
+      return;
+    }
+    this.a.stopSelf(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajgu
  * JD-Core Version:    0.7.0.1
  */

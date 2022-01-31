@@ -1,22 +1,13 @@
-import android.animation.ValueAnimator;
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable.FrameListener;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import android.view.View;
+import com.tencent.biz.qqstory.view.widget.InnerListView;
 
-public class vqc
-  implements CustomFrameAnimationDrawable.FrameListener
+public abstract interface vqc
 {
-  public vqc(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
-  
-  public void a(int paramInt)
-  {
-    if (paramInt == 23) {
-      UnlimitedBladeWorks.a(this.a).start();
-    }
-  }
+  public abstract void a(InnerListView paramInnerListView, View paramView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vqc
  * JD-Core Version:    0.7.0.1
  */

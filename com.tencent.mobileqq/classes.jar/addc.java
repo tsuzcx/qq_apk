@@ -1,33 +1,51 @@
-import android.content.IntentFilter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.settings.FMSettings;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
 
-public class addc
-  implements Runnable
+abstract class addc
 {
-  public addc(FileManagerDataCenter paramFileManagerDataCenter) {}
+  protected int a;
+  protected adid a;
+  protected String a;
+  protected int b;
+  protected String b;
   
-  public void run()
+  public int a()
   {
-    if ((this.a.a != null) && (this.a.a.getApp() != null))
-    {
-      if (FileManagerDataCenter.a(this.a) != null) {
-        this.a.a.getApp().unregisterReceiver(FileManagerDataCenter.a(this.a));
-      }
-      if (FileManagerDataCenter.a(this.a) == null) {
-        FileManagerDataCenter.a(this.a, new addd(this));
-      }
-      IntentFilter localIntentFilter = new IntentFilter("com.opensdk.downloadmanager.renameFilename");
-      this.a.a.getApp().registerReceiver(FileManagerDataCenter.a(this.a), localIntentFilter);
-      FMSettings.a();
-    }
+    return this.jdField_b_of_type_Int;
   }
+  
+  public String a()
+  {
+    return this.jdField_b_of_type_JavaLangString;
+  }
+  
+  public abstract void a();
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(adid paramadid)
+  {
+    this.jdField_a_of_type_Adid = paramadid;
+  }
+  
+  public boolean a(String paramString)
+  {
+    a();
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Int = -1;
+    return true;
+  }
+  
+  public abstract boolean b(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     addc
  * JD-Core Version:    0.7.0.1
  */

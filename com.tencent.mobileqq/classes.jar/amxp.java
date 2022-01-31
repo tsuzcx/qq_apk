@@ -1,25 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ConfigObserver;
-import cooperation.qqindividuality.ipc.IndividualityRemoteCommandHandler;
-import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
-import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.doutu.DoutuData;
 
-public class amxp
-  extends ConfigObserver
+public final class amxp
+  implements Parcelable.Creator<DoutuData>
 {
-  public amxp(IndividualityRemoteCommandHandler paramIndividualityRemoteCommandHandler) {}
-  
-  protected void a(boolean paramBoolean, int paramInt)
+  public DoutuData a(Parcel paramParcel)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("isSuccess", paramBoolean);
-    localBundle.putInt("result", paramInt);
-    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 3, localBundle);
+    return new DoutuData(paramParcel);
+  }
+  
+  public DoutuData[] a(int paramInt)
+  {
+    return new DoutuData[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amxp
  * JD-Core Version:    0.7.0.1
  */

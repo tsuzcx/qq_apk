@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class im_msg_body$CustomElem
-  extends MessageMicro
+  extends MessageMicro<CustomElem>
 {
   public static final int DataType_Bin = 2;
   public static final int DataType_Text = 1;

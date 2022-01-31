@@ -1,24 +1,27 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.BusinessCardManager;
-import com.tencent.mobileqq.businessCard.activity.FlowCameraPhotoActivity;
+import android.view.MotionEvent;
+import java.lang.ref.WeakReference;
 
-public class abvb
-  implements View.OnClickListener
+public final class abvb
+  implements afpy
 {
-  public abvb(FlowCameraPhotoActivity paramFlowCameraPhotoActivity) {}
+  private WeakReference<ahpw> a;
   
-  public void onClick(View paramView)
+  public abvb(ahpw paramahpw)
   {
-    paramView.setVisibility(8);
-    if (this.a.a != null) {
-      this.a.a.a(2, false);
+    this.a = new WeakReference(paramahpw);
+  }
+  
+  public void a(MotionEvent paramMotionEvent)
+  {
+    ahpw localahpw = (ahpw)this.a.get();
+    if (localahpw != null) {
+      localahpw.a(paramMotionEvent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abvb
  * JD-Core Version:    0.7.0.1
  */

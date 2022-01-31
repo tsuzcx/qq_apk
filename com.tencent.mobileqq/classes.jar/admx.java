@@ -1,34 +1,23 @@
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.data.FMConfig;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.SimpleFilePresenter;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
-public class admx
+class admx
   implements View.OnClickListener
 {
-  public admx(SimpleFilePresenter paramSimpleFilePresenter) {}
+  admx(admw paramadmw) {}
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131368830: 
-      paramView = FMConfig.b();
-      FileManagerUtil.a(this.a.jdField_a_of_type_AndroidAppActivity, paramView);
-      FileManagerReporter.a("0X8008469");
-      return;
+    paramView = (String)paramView.getTag();
+    if (!TextUtils.isEmpty(paramView)) {
+      agwi.b(this.a.a, paramView);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     admx
  * JD-Core Version:    0.7.0.1
  */

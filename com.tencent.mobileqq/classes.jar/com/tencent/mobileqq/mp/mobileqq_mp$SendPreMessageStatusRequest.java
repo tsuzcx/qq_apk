@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class mobileqq_mp$SendPreMessageStatusRequest
-  extends MessageMicro
+  extends MessageMicro<SendPreMessageStatusRequest>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "luin", "uint64_unique_id" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L) }, SendPreMessageStatusRequest.class);
   public final PBUInt64Field luin = PBField.initUInt64(0L);

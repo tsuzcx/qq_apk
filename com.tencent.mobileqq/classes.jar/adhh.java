@@ -1,34 +1,40 @@
-import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager;
-import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager.ThumbTask;
-import java.util.LinkedHashMap;
-import java.util.List;
+import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
 
-public class adhh
-  implements Runnable
+class adhh
+  extends ClickableSpan
 {
-  public adhh(ThumbDownloadManager paramThumbDownloadManager) {}
+  adhh(adfw paramadfw, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (ThumbDownloadManager.a(this.a).size() >= 8) {}
-    while (ThumbDownloadManager.a(this.a).size() == 0) {
-      return;
-    }
-    ThumbDownloadManager.ThumbTask localThumbTask = (ThumbDownloadManager.ThumbTask)ThumbDownloadManager.a(this.a).get(0);
-    if (localThumbTask == null)
+    if ((this.jdField_a_of_type_Adfw.a instanceof Activity))
     {
-      ThumbDownloadManager.a(this.a).remove(0);
-      ThumbDownloadManager.a(this.a);
-      return;
+      paramView = begr.a(this.jdField_a_of_type_Adfw.a);
+      paramView.b(2131626362);
+      paramView.c(2131625035);
+      paramView.a(new adhi(this, paramView));
+      paramView.show();
+      BaseChatPie localBaseChatPie = ((FragmentActivity)this.jdField_a_of_type_Adfw.a).getChatFragment().a();
+      if ((localBaseChatPie instanceof aede)) {
+        ((aede)localBaseChatPie).a = paramView;
+      }
     }
-    ThumbDownloadManager.a(this.a).remove(localThumbTask);
-    ThumbDownloadManager.a(this.a, localThumbTask);
-    ThumbDownloadManager.b(this.a, localThumbTask);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adhh
  * JD-Core Version:    0.7.0.1
  */

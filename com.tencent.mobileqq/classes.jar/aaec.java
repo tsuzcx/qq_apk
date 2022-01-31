@@ -1,38 +1,71 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.mobileqq.ar.ARMusicController;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
 public class aaec
-  implements MediaPlayer.OnPreparedListener
+  implements View.OnKeyListener, TextView.OnEditorActionListener
 {
-  public aaec(ARMusicController paramARMusicController) {}
+  private aaec(BaseChatPie paramBaseChatPie) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    try
+    if (paramInt == 4)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("ARMusicController", 2, "load bg music success. : " + ARMusicController.b(this.a));
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "IME_ACTION_SEND");
       }
-      this.a.a.seekTo(0);
-      ARMusicController.b(this.a, true);
-      if (ARMusicController.b(this.a))
-      {
-        this.a.a.start();
-        ARMusicController.c(this.a, false);
-      }
-      return;
+      this.a.aq();
+      return true;
     }
-    catch (Exception paramMediaPlayer)
+    return false;
+  }
+  
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  {
+    if (paramKeyEvent.getKeyCode() == 66)
     {
-      paramMediaPlayer.printStackTrace();
+      if (paramKeyEvent.getAction() == 1)
+      {
+        paramView = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().toString();
+        if (QLog.isColorLevel()) {
+          QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, " sendOnEnterEnabled = " + this.a.m);
+        }
+        if ((this.a.m) && (paramView.length() > 0)) {
+          this.a.c();
+        }
+      }
+      if (this.a.m) {
+        return true;
+      }
     }
+    else if ((paramKeyEvent.getKeyCode() == 67) && (paramKeyEvent.getAction() == 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "on delete, start: " + this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart() + ", end: " + this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionEnd() + ", span: " + this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131307025));
+      }
+      if ((this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart() == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionEnd() == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131307025) != null))
+      {
+        paramView = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getCompoundDrawables();
+        this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setCompoundDrawables(paramView[0], null, paramView[2], paramView[3]);
+        this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(2131307025, null);
+        this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(0);
+        this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo = null;
+        this.a.b(2);
+        awqx.b(null, "dc00898", "", "", "0X800A9AC", "0X800A9AC", 0, 1, "", "", "", "");
+        return true;
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaec
  * JD-Core Version:    0.7.0.1
  */

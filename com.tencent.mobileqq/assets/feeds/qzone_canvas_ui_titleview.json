@@ -1,5 +1,5 @@
 {
-  "Area": "com.qzone.canvasui.widget.RelativeAreaLayout",
+  "class": "com.tencent.ditto.widget.RelativeAreaLayout",
   "shell": {
     "id":"feed_title_root",
     "width": "match_parent",
@@ -9,7 +9,7 @@
   },
   "children": [
     {
-      "Area": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
+      "class": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
       "shell": {
         "id":"feed_skin",
         "width": "match_parent",
@@ -18,7 +18,7 @@
       }
     },
     {
-      "Area": "com.qzone.canvasui.widget.RelativeAreaLayout",
+      "class": "com.tencent.ditto.widget.RelativeAreaLayout",
       "shell": {
         "id":"title_content_root",
         "width": "match_parent",
@@ -27,7 +27,7 @@
       },
       "children": [
         {
-          "Area": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
+          "class": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
           "shell": {
             "id":"avatar",
             "width": "37 dp",
@@ -38,7 +38,7 @@
           }
         },
         {
-          "Area": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
+          "class": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
           "shell": {
             "id":"avatar_decoration",
             "width": "49 dp",
@@ -49,7 +49,7 @@
           }
         },
         {
-          "Area": "com.qzone.canvasui.widget.RelativeAreaLayout",
+          "class": "com.tencent.ditto.widget.RelativeAreaLayout",
           "shell": {
             "id": "container",
             "width": "match_parent",
@@ -61,7 +61,7 @@
           },
           "children": [
             {
-              "Area": "com.qzone.canvasui.widget.RelativeAreaLayout",
+              "class": "com.tencent.ditto.widget.RelativeAreaLayout",
               "shell": {
                 "id": "line_1",
                 "width": "match_parent",
@@ -71,7 +71,7 @@
               },
               "children": [
                 {
-                  "Area": "com.qzone.canvasui.widget.FlexLinearAreaLayout",
+                  "class": "com.tencent.ditto.widget.FlexLinearAreaLayout",
                   "shell": {
                     "id": "line_1_1",
                     "width": "match_parent",
@@ -85,7 +85,7 @@
                   },
                   "children": [
                     {
-                      "Area": "com.qzone.canvasui.widget.CanvasNicknameArea",
+                      "class": "com.qzone.canvasui.widget.CanvasNicknameArea",
                       "shell": {
                         "id": "nickname",
                         "width": "wrap_content",
@@ -99,7 +99,7 @@
                       }
                     },
                     {
-                      "Area": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
+                      "class": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
                       "shell": {
                         "id": "icon_famous",
                         "width": "14 dp",
@@ -109,7 +109,7 @@
                       }
                     },
                     {
-                      "Area": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
+                      "class": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
                       "shell": {
                         "id": "icon_starvip",
                         "width": "21 dp",
@@ -119,7 +119,7 @@
                       }
                     },
                     {
-                      "Area": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
+                      "class": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
                       "shell": {
                         "id": "icon_YellowVip",
                         "width": "wrap_content",
@@ -129,7 +129,7 @@
                       }
                     },
                     {
-                      "Area": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
+                      "class": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
                       "shell": {
                         "id": "icon_LiveMedal",
                         "width": "wrap_content",
@@ -139,7 +139,7 @@
                       }
                     },
                     {
-                      "Area": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
+                      "class": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
                       "shell": {
                         "id": "icon_LoverZone",
                         "width": "17 dp",
@@ -149,7 +149,7 @@
                       }
                     },
                     {
-                      "Area": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
+                      "class": "com.qzone.canvasui.widget.AsyncCanvasImageArea",
                       "shell": {
                         "id": "icon_Standalone",
                         "width": "wrap_content",
@@ -159,7 +159,7 @@
                       }
                     },
                     {
-                      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+                      "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
                       "shell": {
                         "id": "action_area",
                         "width": "wrap_content",
@@ -174,7 +174,7 @@
                   ]
                 },
                 {
-                  "Area": "com.qzone.canvasui.widget.LinearAreaLayout",
+                  "class": "com.tencent.ditto.widget.LinearAreaLayout",
                   "shell": {
                     "id": "line_1_2",
                     "width": "wrap_content",
@@ -186,7 +186,7 @@
                   },
                   "children": [
                     {
-                      "Area": "com.qzone.canvasui.widget.CanvasButtonArea",
+                      "class": "com.tencent.ditto.widget.DittoButtonArea",
                       "shell": {
                         "id": "follow_button",
                         "width": "60 dp",
@@ -203,7 +203,7 @@
                       }
                     },
                     {
-                      "Area": "com.qzone.canvasui.widget.CanvasButtonArea",
+                      "class": "com.tencent.ditto.widget.DittoButtonArea",
                       "shell": {
                         "id": "add_friend_button",
                         "width": "60 dp",
@@ -220,7 +220,7 @@
                       }
                     },
                     {
-                      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+                      "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
                       "shell": {
                         "id": "btn_menu_area",
                         "width": "wrap_content",
@@ -233,7 +233,7 @@
                       }
                     },
                     {
-                      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+                      "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
                       "shell": {
                         "id": "count_area",
                         "width": "wrap_content",
@@ -244,7 +244,7 @@
                       }
                     },
                     {
-                      "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+                      "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
                       "shell": {
                         "id": "friendlike_play_count_area",
                         "width": "wrap_content",
@@ -256,7 +256,7 @@
                       }
                     },
                     {
-                      "Area": "com.qzone.canvasui.widget.CanvasAttachArea",
+                      "class": "com.qzone.canvasui.widget.CanvasAttachArea",
                       "shell": {
                         "id": "attach_area",
                         "width": "wrap_content",
@@ -270,7 +270,7 @@
             },
 
             {
-              "Area": "com.qzone.canvasui.widget.LinearAreaLayout",
+              "class": "com.tencent.ditto.widget.LinearAreaLayout",
               "shell": {
                 "id":"line_2",
                 "width": "match_parent",
@@ -281,7 +281,7 @@
               },
               "children": [
                 {
-                  "Area": "com.qzone.canvasui.widget.CanvasTextArea",
+                  "class": "com.tencent.ditto.widget.DittoTextArea",
                   "shell": {
                     "id":"original_flag",
                     "width": "wrap_content",
@@ -297,7 +297,7 @@
                   }
                 },
                 {
-                  "Area": "com.qzone.canvasui.widget.TimeCountDownArea",
+                  "class": "com.qzone.canvasui.widget.TimeCountDownArea",
                   "shell": {
                     "id":"del_time_area",
                     "width": "wrap_content",
@@ -309,7 +309,7 @@
                   }
                 },
                 {
-                  "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+                  "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
                   "shell": {
                     "id":"time_area",
                     "width": "wrap_content",
@@ -322,7 +322,7 @@
                   }
                 },
                 {
-                  "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+                  "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
                   "shell": {
                     "id":"refer_area",
                     "width": "wrap_content",
@@ -336,7 +336,7 @@
                   }
                 },
                 {
-                  "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+                  "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
                   "shell": {
                     "id":"permission_area",
                     "width": "wrap_content",
@@ -350,7 +350,7 @@
                   }
                 },
                 {
-                  "Area": "com.qzone.canvasui.widget.RichCanvasTextArea",
+                  "class": "com.qzone.canvasui.widget.RichCanvasTextArea",
                   "shell": {
                     "id":"qzonedesc_area",
                     "width": "wrap_content",

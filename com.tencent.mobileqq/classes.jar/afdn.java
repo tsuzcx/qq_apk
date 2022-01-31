@@ -1,21 +1,29 @@
-import com.tencent.mobileqq.nearby.now.view.logic.VideoInfoListenerImpl;
-import com.tencent.mobileqq.nearby.now.view.widget.HorizontalBallLoadingView;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import java.lang.ref.WeakReference;
 
-public class afdn
-  implements Runnable
+class afdn
+  implements View.OnLongClickListener
 {
-  public afdn(VideoInfoListenerImpl paramVideoInfoListenerImpl) {}
+  private WeakReference<afdi> a;
   
-  public void run()
+  public afdn(afdi paramafdi)
   {
-    if (VideoInfoListenerImpl.a(this.a) != null) {
-      VideoInfoListenerImpl.a(this.a).setVisibility(0);
+    this.a = new WeakReference(paramafdi);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    afdi localafdi = (afdi)this.a.get();
+    if (localafdi != null) {
+      return localafdi.onLongClick(paramView);
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afdn
  * JD-Core Version:    0.7.0.1
  */

@@ -9,11 +9,11 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class ilive_feeds_tmem$UserActList
-  extends MessageMicro
+  extends MessageMicro<UserActList>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field act_uin = PBField.initUInt64(0L);
-  public final PBRepeatField feeds_id = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> feeds_id = PBField.initRepeat(PBBytesField.__repeatHelper__);
   
   static
   {
@@ -23,7 +23,7 @@ public final class ilive_feeds_tmem$UserActList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_tmem.UserActList
  * JD-Core Version:    0.7.0.1
  */

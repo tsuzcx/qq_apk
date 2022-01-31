@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class cmd0x388$TryUpInfo4Busi
-  extends MessageMicro
+  extends MessageMicro<TryUpInfo4Busi>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_big_down_url = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -28,7 +28,7 @@ public final class cmd0x388$TryUpInfo4Busi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.cmd0x388.cmd0x388.TryUpInfo4Busi
  * JD-Core Version:    0.7.0.1
  */

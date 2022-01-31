@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.hotpic;
 
-import adzi;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.support.v7.widget.StaggeredGridLayoutManager;
@@ -8,16 +7,21 @@ import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import aqfv;
+import aqfw;
+import aqfx;
+import aqhj;
+import aqhk;
 import com.tencent.qphone.base.util.QLog;
 
 public class HotPicRecyclerView
   extends FooterRecyclerView
-  implements ScrollVelometer.SpeedListener
+  implements aqhk
 {
   public int a;
-  public HotPicRecyclerView.PullAndFastScrollListener a;
-  HotPicRecyclerView.ScrollStatusChengedListener jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$ScrollStatusChengedListener;
-  public ScrollVelometer a;
+  public aqfw a;
+  aqfx jdField_a_of_type_Aqfx;
+  public aqhj a;
   boolean jdField_a_of_type_Boolean = false;
   public int[] a;
   boolean b = false;
@@ -32,8 +36,8 @@ public class HotPicRecyclerView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_ArrayOfInt = new int[3];
-    this.jdField_a_of_type_ComTencentMobileqqHotpicScrollVelometer = new ScrollVelometer(200, this);
-    setOnScrollListener(new adzi(this));
+    this.jdField_a_of_type_Aqhj = new aqhj(200, this);
+    setOnScrollListener(new aqfv(this));
   }
   
   public static void a(String paramString)
@@ -204,10 +208,10 @@ public class HotPicRecyclerView
   
   public void a(boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$PullAndFastScrollListener != null) && (HotPicPageView.b)) {
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$PullAndFastScrollListener.c();
+    if ((paramBoolean) && (this.jdField_a_of_type_Aqfw != null) && (HotPicPageView.b)) {
+      this.jdField_a_of_type_Aqfw.c();
     }
-    this.jdField_a_of_type_ComTencentMobileqqHotpicScrollVelometer.a(false);
+    this.jdField_a_of_type_Aqhj.a(false);
   }
   
   public boolean a(int paramInt)
@@ -246,8 +250,8 @@ public class HotPicRecyclerView
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$ScrollStatusChengedListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$ScrollStatusChengedListener.g();
+    if (this.jdField_a_of_type_Aqfx != null) {
+      this.jdField_a_of_type_Aqfx.g();
     }
     this.b = false;
   }
@@ -259,8 +263,8 @@ public class HotPicRecyclerView
     {
       return;
       this.b = true;
-    } while (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$ScrollStatusChengedListener == null);
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$ScrollStatusChengedListener.f();
+    } while (this.jdField_a_of_type_Aqfx == null);
+    this.jdField_a_of_type_Aqfx.f();
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -284,8 +288,8 @@ public class HotPicRecyclerView
     if (paramMotionEvent.getAction() == 1)
     {
       ((StaggeredGridLayoutManager)getLayoutManager()).findFirstCompletelyVisibleItemPositions(this.jdField_a_of_type_ArrayOfInt);
-      if ((this.jdField_a_of_type_ArrayOfInt[0] == 0) && (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$PullAndFastScrollListener != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$PullAndFastScrollListener.d();
+      if ((this.jdField_a_of_type_ArrayOfInt[0] == 0) && (this.jdField_a_of_type_Aqfw != null)) {
+        this.jdField_a_of_type_Aqfw.d();
       }
     }
     try
@@ -297,14 +301,14 @@ public class HotPicRecyclerView
     return true;
   }
   
-  public void setScrollStatusChengedListener(HotPicRecyclerView.ScrollStatusChengedListener paramScrollStatusChengedListener)
+  public void setScrollStatusChengedListener(aqfx paramaqfx)
   {
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView$ScrollStatusChengedListener = paramScrollStatusChengedListener;
+    this.jdField_a_of_type_Aqfx = paramaqfx;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicRecyclerView
  * JD-Core Version:    0.7.0.1
  */

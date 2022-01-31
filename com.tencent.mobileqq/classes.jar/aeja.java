@@ -1,36 +1,73 @@
-import com.tencent.mobileqq.leba.QZoneEntryController;
-import com.tencent.mobileqq.observer.QZoneObserver;
+import android.support.v4.app.FragmentActivity;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qidian.data.QidianExternalInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class aeja
-  extends QZoneObserver
+class aeja
+  extends bcqu
 {
-  public aeja(QZoneEntryController paramQZoneEntryController) {}
+  aeja(aeiv paramaeiv) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
+  protected void d(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UndealCount.QZoneObserver", 2, "on Get QZone Count:" + paramBoolean1 + ",HasNew:" + paramBoolean2);
-    }
-    if (QLog.isColorLevel())
+    if (paramBoolean)
     {
-      if ((paramLong >>> 17 & 1L) != 0L) {
-        QLog.d("UndealCount.QZoneObserver", 2, "Leba onGetQZoneFeedCountFin Zebra album and then call Leba freshEntryItemUI");
-      }
-      QLog.d("UndealCount.QZoneObserver", 2, "Leba onGetQZoneFeedCountFin type: " + paramLong + " and then call Leba freshEntryItemUI");
+      this.a.jdField_a_of_type_Acka.notifyDataSetChanged();
+      bbmy.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a().getString(2131632503), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+      return;
     }
-    if (paramBoolean1)
+    bbmy.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a().getString(2131632502), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+  }
+  
+  protected void e(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  {
+    if (((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1025) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1024)) && (paramBoolean) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
     {
-      this.a.a();
-      if (QLog.isColorLevel()) {
-        QLog.i("UndealCount.QZoneObserver", 2, "onGetQZoneFeedCountFin. notifyData.");
+      paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramHashMap.uin)))
+      {
+        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1024) {
+          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = 1025;
+        }
+        paramHashMap = this.a.jdField_a_of_type_Bcpn.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        if (paramHashMap != null)
+        {
+          aeiv.a(this.a, true);
+          this.a.f.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+          aeiv.a(this.a).setOnClickListener(null);
+          aeiv.b(this.a).setOnClickListener(null);
+          this.a.f.setText(paramHashMap);
+          if (aaek.S) {
+            this.a.f.setContentDescription(paramHashMap);
+          }
+          aeiv.a(this.a, true);
+          this.a.m();
+        }
       }
     }
+    while (!QLog.isColorLevel())
+    {
+      do
+      {
+        for (;;)
+        {
+          return;
+          aeiv.b(this.a, false);
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onGetQidianUserDetailInfo not current curFriendUin");
+      return;
+    }
+    QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onGetQidianUserDetailInfo fail");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeja
  * JD-Core Version:    0.7.0.1
  */

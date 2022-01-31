@@ -4,16 +4,16 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.os.SystemClock;
 import android.util.AttributeSet;
-import com.tencent.mfsdk.collector.FPSCalculator;
-import com.tencent.mobileqq.utils.PerformanceReportUtils;
+import baec;
 import com.tencent.mobileqq.widget.SlideDetectListView;
+import zqp;
 
 public class FPSSlideDetectListView
   extends SlideDetectListView
 {
   private long jdField_a_of_type_Long;
-  private FPSCalculator jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator;
   private String jdField_a_of_type_JavaLangString;
+  private zqp jdField_a_of_type_Zqp;
   private boolean f;
   
   public FPSSlideDetectListView(Context paramContext, AttributeSet paramAttributeSet)
@@ -24,8 +24,8 @@ public class FPSSlideDetectListView
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if (this.jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator != null) {
-      this.jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator.b();
+    if (this.jdField_a_of_type_Zqp != null) {
+      this.jdField_a_of_type_Zqp.b();
     }
   }
   
@@ -35,23 +35,23 @@ public class FPSSlideDetectListView
     if (this.f)
     {
       this.f = false;
-      PerformanceReportUtils.a(this.jdField_a_of_type_JavaLangString, SystemClock.uptimeMillis());
+      baec.a(this.jdField_a_of_type_JavaLangString, SystemClock.uptimeMillis());
     }
   }
   
-  protected void reportScrollStateChange(int paramInt)
+  public void reportScrollStateChange(int paramInt)
   {
     super.reportScrollStateChange(paramInt);
-    if (this.jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator != null) {
-      this.jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator.a(paramInt);
+    if (this.jdField_a_of_type_Zqp != null) {
+      this.jdField_a_of_type_Zqp.a(paramInt);
     }
   }
   
   public void setActTAG(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator = new FPSCalculator();
-    this.jdField_a_of_type_ComTencentMfsdkCollectorFPSCalculator.a(paramString);
+    this.jdField_a_of_type_Zqp = new zqp();
+    this.jdField_a_of_type_Zqp.a(paramString);
     setStartTime(SystemClock.uptimeMillis());
   }
   

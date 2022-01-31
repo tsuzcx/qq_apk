@@ -1,5 +1,6 @@
 package SecurityAccountServer;
 
+import ajjy;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
@@ -90,7 +91,7 @@ public final class RecommendedContactInfo
       localJSONObject.put("sex", this.sex);
       localJSONObject.put("signature", this.personalSign);
       if (this.eNetworkType != 0) {}
-      for (String str = "在线";; str = "离线")
+      for (String str = ajjy.a(2131653881);; str = ajjy.a(2131653880))
       {
         localJSONObject.put("online", str);
         localJSONObject.put("url", this.url);

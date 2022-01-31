@@ -1,77 +1,33 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.preload.PlayingListPreloader.OnVideoDownloadListener;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import org.json.JSONObject;
 
 public class nms
-  implements PlayingListPreloader.OnVideoDownloadListener
 {
-  private Set jdField_a_of_type_JavaUtilSet = new HashSet();
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public nms(VideoPlayModeBase paramVideoPlayModeBase) {}
-  
-  public void a(String paramString)
+  public nms(JSONObject paramJSONObject)
   {
-    int i = 0;
-    for (;;)
+    if (paramJSONObject != null)
     {
-      if (i < this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.size())
-      {
-        StoryVideoItem localStoryVideoItem = (StoryVideoItem)this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a.get(i);
-        if (!paramString.equals(localStoryVideoItem.mVid)) {
-          break label93;
-        }
-        if (StoryVideoItem.isPlayable(localStoryVideoItem.mVid, true)) {
-          break label72;
-        }
-        this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.a(paramString, localStoryVideoItem.getVideoUrl());
-      }
-      label72:
-      while (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.b != i) {
-        return;
-      }
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.a(i);
-      return;
-      label93:
-      i += 1;
+      this.a = paramJSONObject.optString("dest_url");
+      this.b = paramJSONObject.optString("rl");
+      this.c = paramJSONObject.optString("button_txt");
+      this.d = paramJSONObject.optString("button_bg");
     }
   }
   
-  public void a(String paramString1, String paramString2, int paramInt)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoPlayModeBase", 2, "get video download finish,vid=" + paramString1);
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_AndroidOsHandler.post(new nmt(this, paramString1));
+    StringBuilder localStringBuilder = new StringBuilder("AdPKImageData{");
+    localStringBuilder.append("destUrl=").append(this.a);
+    localStringBuilder.append(",rl=").append(this.b);
+    localStringBuilder.append(",buttonTxt=").append(this.c);
+    localStringBuilder.append(",buttonBg=").append(this.d);
+    localStringBuilder.append("}");
+    return super.toString();
   }
-  
-  public void a(String paramString1, String paramString2, ErrorMessage paramErrorMessage, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("VideoPlayModeBase", 2, "Download video failed,vid=" + paramString1);
-    }
-    if (this.jdField_a_of_type_JavaUtilSet.add(paramString1)) {
-      if (paramInt != 1) {
-        break label111;
-      }
-    }
-    label111:
-    for (paramInt = 107;; paramInt = 108)
-    {
-      StoryReportor.b("play_video", "play_done", 0, 0, new String[] { "1", String.valueOf(paramInt), "", paramString1 });
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_AndroidOsHandler.post(new nmu(this, paramString1, paramString2));
-      return;
-    }
-  }
-  
-  public void b(String paramString1, String paramString2, int paramInt) {}
 }
 
 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/l90" android:background="#ff1f1f20" android:paddingTop="56.0dip" android:paddingBottom="55.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/e1n" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.biz.videostory.capture.AEPlayShowTabView android:id="@id/c3c" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="51.0dip" app:tabIndicatorColor="#ff797979" app:tabIndicatorHeight="0.0dip" app:tabIndicatorPadding="8.0dip" app:tabPadding="16.0dip" app:tabStartEndMargin="4.0dip" app:tabTextCheckedColor="@color/ye" app:tabTextNormalColor="@color/yd" app:tabTextSize="14.0dip" app:tabUnderlineColor="#00ffffff" app:tabUnderlineHeight="0.0dip" />
+    </FrameLayout>
+    <android.support.v4.view.ViewPager android:id="@id/eim" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/e1n" />
+    <View android:layout_gravity="bottom" android:id="@id/gf" android:background="@drawable/gwt" android:layout_width="fill_parent" android:layout_height="33.0dip" android:layout_alignParentBottom="true" />
+    <ViewStub android:id="@id/eit" android:layout="@layout/jb" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

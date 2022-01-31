@@ -1,20 +1,18 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
+import java.nio.ByteBuffer;
 
-class trz
-  implements Runnable
+public class trz
 {
-  trz(try paramtry) {}
+  public long a;
+  public ByteBuffer a;
   
-  public void run()
+  trz(int paramInt)
   {
-    this.a.a.a();
-    this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
+    this.a = ByteBuffer.allocate(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     trz
  * JD-Core Version:    0.7.0.1
  */

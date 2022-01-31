@@ -1,20 +1,12 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import UserGrowth.stSimpleMetaFeed;
 
-public class rwn
-  implements Runnable
+public abstract interface rwn
 {
-  public rwn(BaseChatPie paramBaseChatPie) {}
-  
-  public void run()
-  {
-    QQToast.a(this.a.a.getApp(), 2131433800, 1).b(this.a.a());
-  }
+  public abstract void a(bequ<stSimpleMetaFeed> parambequ);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rwn
  * JD-Core Version:    0.7.0.1
  */

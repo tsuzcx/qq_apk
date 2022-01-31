@@ -28,82 +28,82 @@ public final class ba
     //   0: aconst_null
     //   1: astore 5
     //   3: aload_0
-    //   4: invokevirtual 37	c/t/m/g/ba:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   4: invokevirtual 35	c/t/m/g/ba:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
     //   7: astore 4
     //   9: iload_1
     //   10: ifeq +61 -> 71
     //   13: iload_2
     //   14: ifeq +57 -> 71
     //   17: aload 4
-    //   19: ldc 39
+    //   19: ldc 37
     //   21: iconst_1
-    //   22: anewarray 41	java/lang/String
+    //   22: anewarray 39	java/lang/String
     //   25: dup
     //   26: iconst_0
-    //   27: ldc 43
+    //   27: ldc 41
     //   29: aastore
     //   30: aconst_null
     //   31: aconst_null
     //   32: aconst_null
     //   33: aconst_null
     //   34: aconst_null
-    //   35: invokevirtual 49	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   35: invokevirtual 47	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   38: astore 4
     //   40: aload 4
     //   42: ifnull +160 -> 202
     //   45: aload 4
     //   47: astore 5
     //   49: aload 4
-    //   51: invokeinterface 55 1 0
+    //   51: invokeinterface 53 1 0
     //   56: istore_3
     //   57: aload 4
     //   59: ifnull +10 -> 69
     //   62: aload 4
-    //   64: invokeinterface 58 1 0
+    //   64: invokeinterface 56 1 0
     //   69: iload_3
     //   70: ireturn
     //   71: iload_1
     //   72: ifeq +38 -> 110
     //   75: aload 4
-    //   77: ldc 39
+    //   77: ldc 37
     //   79: iconst_1
-    //   80: anewarray 41	java/lang/String
+    //   80: anewarray 39	java/lang/String
     //   83: dup
     //   84: iconst_0
-    //   85: ldc 43
+    //   85: ldc 41
     //   87: aastore
-    //   88: ldc 60
+    //   88: ldc 58
     //   90: iconst_1
-    //   91: anewarray 41	java/lang/String
+    //   91: anewarray 39	java/lang/String
     //   94: dup
     //   95: iconst_0
-    //   96: ldc 62
+    //   96: ldc 60
     //   98: aastore
     //   99: aconst_null
     //   100: aconst_null
     //   101: aconst_null
-    //   102: invokevirtual 49	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   102: invokevirtual 47	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   105: astore 4
     //   107: goto -67 -> 40
     //   110: aload 4
-    //   112: ldc 39
+    //   112: ldc 37
     //   114: iconst_1
-    //   115: anewarray 41	java/lang/String
+    //   115: anewarray 39	java/lang/String
     //   118: dup
     //   119: iconst_0
-    //   120: ldc 43
+    //   120: ldc 41
     //   122: aastore
-    //   123: ldc 60
+    //   123: ldc 58
     //   125: iconst_1
-    //   126: anewarray 41	java/lang/String
+    //   126: anewarray 39	java/lang/String
     //   129: dup
     //   130: iconst_0
-    //   131: ldc 64
+    //   131: ldc 62
     //   133: aastore
     //   134: aconst_null
     //   135: aconst_null
     //   136: aconst_null
-    //   137: invokevirtual 49	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   137: invokevirtual 47	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   140: astore 4
     //   142: goto -102 -> 40
     //   145: astore 6
@@ -112,18 +112,18 @@ public final class ba
     //   150: aload 4
     //   152: astore 5
     //   154: aload 6
-    //   156: invokevirtual 67	java/lang/Throwable:printStackTrace	()V
+    //   156: invokevirtual 65	java/lang/Throwable:printStackTrace	()V
     //   159: aload 4
     //   161: ifnull +39 -> 200
     //   164: aload 4
-    //   166: invokeinterface 58 1 0
+    //   166: invokeinterface 56 1 0
     //   171: iconst_0
     //   172: ireturn
     //   173: astore 4
     //   175: aload 5
     //   177: ifnull +10 -> 187
     //   180: aload 5
-    //   182: invokeinterface 58 1 0
+    //   182: invokeinterface 56 1 0
     //   187: aload 4
     //   189: athrow
     //   190: astore 4
@@ -236,15 +236,15 @@ public final class ba
     //   0: aload_0
     //   1: iconst_1
     //   2: iconst_1
-    //   3: invokespecial 169	c/t/m/g/ba:a	(ZZ)I
+    //   3: invokespecial 167	c/t/m/g/ba:a	(ZZ)I
     //   6: iload_1
     //   7: if_icmple +45 -> 52
     //   10: aload_0
-    //   11: invokevirtual 37	c/t/m/g/ba:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   14: ldc 39
+    //   11: invokevirtual 35	c/t/m/g/ba:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   14: ldc 37
     //   16: aconst_null
     //   17: aconst_null
-    //   18: invokevirtual 167	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    //   18: invokevirtual 165	android/database/sqlite/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
     //   21: pop
     //   22: iconst_1
     //   23: ireturn
@@ -252,18 +252,18 @@ public final class ba
     //   25: aload_0
     //   26: iconst_1
     //   27: iconst_1
-    //   28: invokespecial 169	c/t/m/g/ba:a	(ZZ)I
+    //   28: invokespecial 167	c/t/m/g/ba:a	(ZZ)I
     //   31: iload_1
     //   32: if_icmple +20 -> 52
     //   35: aload_0
-    //   36: invokevirtual 37	c/t/m/g/ba:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   36: invokevirtual 35	c/t/m/g/ba:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
     //   39: astore_2
     //   40: aload_2
-    //   41: ldc 171
-    //   43: invokevirtual 174	android/database/sqlite/SQLiteDatabase:execSQL	(Ljava/lang/String;)V
+    //   41: ldc 169
+    //   43: invokevirtual 172	android/database/sqlite/SQLiteDatabase:execSQL	(Ljava/lang/String;)V
     //   46: aload_2
-    //   47: ldc 176
-    //   49: invokevirtual 174	android/database/sqlite/SQLiteDatabase:execSQL	(Ljava/lang/String;)V
+    //   47: ldc 174
+    //   49: invokevirtual 172	android/database/sqlite/SQLiteDatabase:execSQL	(Ljava/lang/String;)V
     //   52: iconst_0
     //   53: ireturn
     //   54: astore_2
@@ -298,30 +298,30 @@ public final class ba
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokestatic 186	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   1: invokestatic 184	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   4: ifeq +7 -> 11
-    //   7: ldc2_w 187
+    //   7: ldc2_w 185
     //   10: lreturn
     //   11: aload_0
-    //   12: invokevirtual 37	c/t/m/g/ba:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   12: invokevirtual 35	c/t/m/g/ba:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
     //   15: astore 4
-    //   17: new 128	android/content/ContentValues
+    //   17: new 126	android/content/ContentValues
     //   20: dup
-    //   21: invokespecial 129	android/content/ContentValues:<init>	()V
+    //   21: invokespecial 127	android/content/ContentValues:<init>	()V
     //   24: astore 5
     //   26: aload 5
-    //   28: ldc 190
+    //   28: ldc 188
     //   30: aload_1
-    //   31: invokevirtual 134	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   31: invokevirtual 132	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   34: aload 5
-    //   36: ldc 131
-    //   38: ldc 62
-    //   40: invokevirtual 134	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
+    //   36: ldc 129
+    //   38: ldc 60
+    //   40: invokevirtual 132	android/content/ContentValues:put	(Ljava/lang/String;Ljava/lang/String;)V
     //   43: aload 4
-    //   45: ldc 39
+    //   45: ldc 37
     //   47: aconst_null
     //   48: aload 5
-    //   50: invokevirtual 194	android/database/sqlite/SQLiteDatabase:insert	(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    //   50: invokevirtual 192	android/database/sqlite/SQLiteDatabase:insert	(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
     //   53: lstore_2
     //   54: lload_2
     //   55: lreturn
@@ -329,7 +329,7 @@ public final class ba
     //   57: aload_1
     //   58: athrow
     //   59: astore_1
-    //   60: ldc2_w 187
+    //   60: ldc2_w 185
     //   63: lreturn
     // Local variable table:
     //   start	length	slot	name	signature
@@ -345,42 +345,42 @@ public final class ba
   }
   
   /* Error */
-  public final List<a> b(int paramInt)
+  public final List<ba.a> b(int paramInt)
   {
     // Byte code:
-    //   0: new 197	java/util/ArrayList
+    //   0: new 195	java/util/ArrayList
     //   3: dup
-    //   4: invokespecial 198	java/util/ArrayList:<init>	()V
+    //   4: invokespecial 196	java/util/ArrayList:<init>	()V
     //   7: astore 9
     //   9: aload_0
-    //   10: invokevirtual 37	c/t/m/g/ba:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
-    //   13: ldc 39
+    //   10: invokevirtual 35	c/t/m/g/ba:getWritableDatabase	()Landroid/database/sqlite/SQLiteDatabase;
+    //   13: ldc 37
     //   15: aconst_null
-    //   16: ldc 60
+    //   16: ldc 58
     //   18: iconst_1
-    //   19: anewarray 41	java/lang/String
+    //   19: anewarray 39	java/lang/String
     //   22: dup
     //   23: iconst_0
-    //   24: ldc 62
+    //   24: ldc 60
     //   26: aastore
     //   27: aconst_null
     //   28: aconst_null
     //   29: aconst_null
-    //   30: invokevirtual 49	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   30: invokevirtual 47	android/database/sqlite/SQLiteDatabase:query	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   33: astore 7
     //   35: aload 7
     //   37: ifnull +149 -> 186
     //   40: aload 7
     //   42: astore 6
     //   44: aload 7
-    //   46: invokeinterface 55 1 0
+    //   46: invokeinterface 53 1 0
     //   51: iload_1
-    //   52: invokestatic 204	java/lang/Math:min	(II)I
+    //   52: invokestatic 202	java/lang/Math:min	(II)I
     //   55: istore_2
     //   56: aload 7
     //   58: astore 6
     //   60: aload 7
-    //   62: invokeinterface 207 1 0
+    //   62: invokeinterface 205 1 0
     //   67: ifeq +119 -> 186
     //   70: iconst_0
     //   71: istore_1
@@ -388,30 +388,30 @@ public final class ba
     //   74: astore 6
     //   76: aload 7
     //   78: aload 7
-    //   80: ldc 43
-    //   82: invokeinterface 211 2 0
-    //   87: invokeinterface 215 2 0
+    //   80: ldc 41
+    //   82: invokeinterface 209 2 0
+    //   87: invokeinterface 213 2 0
     //   92: lstore_3
     //   93: aload 7
     //   95: astore 6
     //   97: aload 7
     //   99: aload 7
-    //   101: ldc 190
-    //   103: invokeinterface 211 2 0
-    //   108: invokeinterface 219 2 0
+    //   101: ldc 188
+    //   103: invokeinterface 209 2 0
+    //   108: invokeinterface 217 2 0
     //   113: astore 8
     //   115: aload 7
     //   117: astore 6
     //   119: aload 7
     //   121: aload 7
-    //   123: ldc 131
-    //   125: invokeinterface 211 2 0
-    //   130: invokeinterface 219 2 0
+    //   123: ldc 129
+    //   125: invokeinterface 209 2 0
+    //   130: invokeinterface 217 2 0
     //   135: pop
     //   136: aload 7
     //   138: astore 6
     //   140: aload 9
-    //   142: new 6	c/t/m/g/ba$a
+    //   142: new 219	c/t/m/g/ba$a
     //   145: dup
     //   146: lload_3
     //   147: aload 8
@@ -436,7 +436,7 @@ public final class ba
     //   186: aload 7
     //   188: ifnull +10 -> 198
     //   191: aload 7
-    //   193: invokeinterface 58 1 0
+    //   193: invokeinterface 56 1 0
     //   198: aload 9
     //   200: areturn
     //   201: astore 8
@@ -445,11 +445,11 @@ public final class ba
     //   206: aload 7
     //   208: astore 6
     //   210: aload 8
-    //   212: invokevirtual 67	java/lang/Throwable:printStackTrace	()V
+    //   212: invokevirtual 65	java/lang/Throwable:printStackTrace	()V
     //   215: aload 7
     //   217: ifnull -19 -> 198
     //   220: aload 7
-    //   222: invokeinterface 58 1 0
+    //   222: invokeinterface 56 1 0
     //   227: aload 9
     //   229: areturn
     //   230: astore 7
@@ -458,7 +458,7 @@ public final class ba
     //   235: aload 6
     //   237: ifnull +10 -> 247
     //   240: aload 6
-    //   242: invokeinterface 58 1 0
+    //   242: invokeinterface 56 1 0
     //   247: aload 7
     //   249: athrow
     //   250: astore 7
@@ -580,27 +580,10 @@ public final class ba
       break label6;
     }
   }
-  
-  public static final class a
-  {
-    public long a;
-    public String b;
-    
-    public a(long paramLong, String paramString)
-    {
-      this.a = paramLong;
-      this.b = paramString;
-    }
-    
-    public a(long paramLong, String paramString, byte paramByte)
-    {
-      this(paramLong, paramString);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     c.t.m.g.ba
  * JD-Core Version:    0.7.0.1
  */

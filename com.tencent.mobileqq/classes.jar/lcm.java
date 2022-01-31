@@ -1,44 +1,77 @@
-import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
-import com.tencent.biz.pubaccount.ecshopassit.EcshopReportHandler;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Iterator;
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class lcm
-  extends MessageObserver
 {
-  public lcm(EcshopReportHandler paramEcshopReportHandler) {}
+  int jdField_a_of_type_Int = 0;
+  ArrayList<lcl> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  lcj jdField_a_of_type_Lcj = null;
   
-  public void a(List paramList)
+  lcm()
   {
-    super.a(paramList);
-    EcshopReportHandler localEcshopReportHandler = (EcshopReportHandler)this.a.a.getBusinessHandler(88);
-    paramList = paramList.iterator();
-    label131:
-    while (paramList.hasNext())
+    a(BaseApplicationImpl.getApplication());
+    this.jdField_a_of_type_Lcj = lcj.a();
+    this.jdField_a_of_type_Int = lcr.a(this.jdField_a_of_type_Lcj);
+    QLog.d("QavGPDownloadManager", 1, String.format("QavGPDownloadObserver, mStatusGameplay[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+  }
+  
+  boolean a()
+  {
+    this.jdField_a_of_type_Lcj = lcj.a();
+    this.jdField_a_of_type_Int = lcr.a(this.jdField_a_of_type_Lcj);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavGPDownloadManager", 4, String.format("checkResReady, mStatusGameplay[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+    }
+    return 11 != this.jdField_a_of_type_Int;
+  }
+  
+  boolean a(BaseApplicationImpl paramBaseApplicationImpl)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavGPDownloadManager", 4, String.format("registReceiver[%s]", new Object[] { paramBaseApplicationImpl.getQQProcessName() }));
+    }
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("tencent.video.qavgameplaysomgr.notify");
+    return paramBaseApplicationImpl.registerReceiver(new lcn(this), localIntentFilter) != null;
+  }
+  
+  boolean b()
+  {
+    return this.jdField_a_of_type_Int == 1;
+  }
+  
+  boolean c()
+  {
+    this.jdField_a_of_type_Lcj = lcj.a();
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = lcr.a(this.jdField_a_of_type_Lcj);
+    if (this.jdField_a_of_type_Int == 11)
     {
-      MessageRecord localMessageRecord = (MessageRecord)paramList.next();
-      if (("2".equals(localMessageRecord.getExtInfoFromExtStr("inter_num"))) || (ServiceAccountFolderManager.d(this.a.b, localMessageRecord.senderuin))) {}
-      for (int i = 1;; i = 0)
-      {
-        if ((i == 0) && ((EcShopAssistantManager.b == null) || (!EcShopAssistantManager.b.contains(localMessageRecord.senderuin)))) {
-          break label131;
-        }
-        if (i != 0) {
-          localEcshopReportHandler.a(localMessageRecord);
-        }
-        localEcshopReportHandler.b(localMessageRecord);
-        break;
+      this.jdField_a_of_type_Int = 12;
+      BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+      Intent localIntent = new Intent();
+      localIntent.setAction("from_qavgpsomgr_download");
+      localIntent.setClass(localBaseApplicationImpl.getApplicationContext(), JumpActivity.class);
+      localIntent.addFlags(268435456);
+      localBaseApplicationImpl.getBaseContext().startActivity(localIntent);
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QavGPDownloadManager", 2, String.format("nodifyDownloadRes, lastStatus[%s], mStatusGameplay[%s]", new Object[] { Integer.valueOf(i), Integer.valueOf(this.jdField_a_of_type_Int) }));
       }
+      return bool;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lcm
  * JD-Core Version:    0.7.0.1
  */

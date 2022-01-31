@@ -1,40 +1,23 @@
-import android.view.View;
-import android.widget.RelativeLayout;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-import dov.com.qq.im.capture.QIMCaptureController;
-import dov.com.qq.im.capture.QIMManager;
-import dov.com.qq.im.capture.banner.QIMCaptureBannerManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment.ExtendFriendInfo;
 
-public class anrk
-  implements Runnable
+public final class anrk
+  implements Parcelable.Creator<ExtendFriendProfileEditFragment.ExtendFriendInfo>
 {
-  public anrk(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
-  
-  public void run()
+  public ExtendFriendProfileEditFragment.ExtendFriendInfo a(Parcel paramParcel)
   {
-    this.a.jdField_a_of_type_DovComQqImCaptureQIMCaptureController.c();
-    if (this.a.k) {}
-    QIMCaptureBannerManager localQIMCaptureBannerManager;
-    View localView;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (this.a.jdField_a_of_type_DovComQqImCaptureQIMCaptureController == null);
-        localQIMCaptureBannerManager = (QIMCaptureBannerManager)QIMManager.a(9);
-      } while ((!localQIMCaptureBannerManager.a()) || (localQIMCaptureBannerManager.b()));
-      localView = this.a.jdField_a_of_type_AndroidViewView.findViewById(2131369016);
-    } while ((localView == null) || (localView.getVisibility() != 0));
-    localQIMCaptureBannerManager.b(true);
-    this.a.jdField_a_of_type_DovComQqImCaptureQIMCaptureController.a((RelativeLayout)this.a.jdField_a_of_type_AndroidViewView.findViewById(2131365916), this.a.jdField_a_of_type_AndroidViewView.getContext());
+    return new ExtendFriendProfileEditFragment.ExtendFriendInfo(paramParcel);
+  }
+  
+  public ExtendFriendProfileEditFragment.ExtendFriendInfo[] a(int paramInt)
+  {
+    return new ExtendFriendProfileEditFragment.ExtendFriendInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anrk
  * JD-Core Version:    0.7.0.1
  */

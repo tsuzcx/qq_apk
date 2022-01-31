@@ -1,121 +1,43 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.EqqDetail;
-import com.tencent.mobileqq.jsp.EventApiPlugin;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.Context;
+import com.rookery.translate.type.Language;
+import com.rookery.translate.type.TranslateError;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.observer.BusinessObserver;
+import java.util.List;
+import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class kqs
-  implements BusinessObserver
+class kqs
+  extends kqa
 {
-  public kqs(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
+  kqs(kqr paramkqr, Long paramLong, Context paramContext, List paramList, Language paramLanguage, krd paramkrd) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "follow isSuccess:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean) {
-      this.a.d(2131430035);
-    }
-    for (;;)
+    try
     {
-      EqqAccountDetailActivity.e(this.a);
-      if (EqqAccountDetailActivity.f(this.a) == 0) {
-        EqqAccountDetailActivity.d(this.a);
-      }
-      EqqAccountDetailActivity.b(this.a).postDelayed(new kqt(this), 1000L);
+      kqr.a(this.jdField_a_of_type_Kqr).jdField_a_of_type_JavaLangString = paramJSONObject.getString("access_token");
+      kqr.a(this.jdField_a_of_type_Kqr).jdField_a_of_type_Long = (paramJSONObject.getLong("expires_in") * 1000L + this.jdField_a_of_type_JavaLangLong.longValue());
+      kqr.a(this.jdField_a_of_type_Kqr, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, kqr.a(this.jdField_a_of_type_Kqr).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangLong, this.jdField_a_of_type_Krd);
       return;
-      Object localObject = new JSONObject();
-      ((FriendListHandler)EqqAccountDetailActivity.j(this.a).a(1)).a(true, false);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail != null) {}
-      try
-      {
-        ((JSONObject)localObject).put("uin", this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.uin);
-        ((JSONObject)localObject).put("name", this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.name);
-        ((JSONObject)localObject).put("summary", this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.summary);
-        ((JSONObject)localObject).put("certified", this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.certifiedGrade);
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.add("find.mp.qq.com");
-        localArrayList.add("post.mp.qq.com");
-        localArrayList.add("article.mp.qq.com");
-        EventApiPlugin.a("follow", (JSONObject)localObject, localArrayList, null);
-        if (!paramBoolean) {
-          break label555;
-        }
-        try
-        {
-          paramBundle = paramBundle.getByteArray("data");
-          if (paramBundle == null) {
-            continue;
-          }
-          localObject = new mobileqq_mp.FollowResponse();
-          ((mobileqq_mp.FollowResponse)localObject).mergeFrom(paramBundle);
-          paramInt = ((mobileqq_mp.RetInfo)((mobileqq_mp.FollowResponse)localObject).ret_info.get()).ret_code.get();
-          if (paramInt == 0)
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.followType = 1;
-            EqqAccountDetailActivity.a(this.a).setEnabled(false);
-            EqqAccountDetailActivity.b(this.a);
-            this.a.i();
-            EqqAccountDetailActivity.c(this.a);
-            AccountDetailActivity.a(EqqAccountDetailActivity.k(this.a), EqqAccountDetailActivity.k(this.a), EqqAccountDetailActivity.a(this.a));
-            if ((TextUtils.isEmpty(this.a.b)) || (TextUtils.isEmpty(this.a.c))) {
-              continue;
-            }
-            ReportController.b(EqqAccountDetailActivity.l(this.a), "CliOper", "", "", this.a.b, this.a.c, 0, 0, "", "", EqqAccountDetailActivity.m(this.a).getCurrentAccountUin(), EqqAccountDetailActivity.l(this.a));
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "----[follow report done]----");
-          }
-        }
-        catch (Exception paramBundle) {}
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
-        if (paramInt == 58)
-        {
-          this.a.d(2131430043);
-          continue;
-        }
-        if (paramInt == 65)
-        {
-          this.a.d(2131430044);
-          continue;
-        }
-        if (paramInt == 20)
-        {
-          this.a.d(2131430045);
-          continue;
-        }
-        this.a.d(2131430035);
-      }
-      continue;
-      label555:
-      this.a.d(2131430035);
+    }
+    catch (JSONException paramArrayOfHeader)
+    {
+      this.jdField_a_of_type_Krd.a(new TranslateError(paramArrayOfHeader), this.jdField_a_of_type_JavaLangLong);
+    }
+  }
+  
+  public void a(Throwable paramThrowable, String paramString)
+  {
+    this.jdField_a_of_type_Krd.a(new TranslateError(paramThrowable), this.jdField_a_of_type_JavaLangLong);
+    if (QLog.isColorLevel()) {
+      QLog.e("Translator", 2, "error:" + paramThrowable + "\trequest_time:" + this.jdField_a_of_type_JavaLangLong);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     kqs
  * JD-Core Version:    0.7.0.1
  */

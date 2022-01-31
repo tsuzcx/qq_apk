@@ -1,25 +1,180 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.newshare.callback.OnPlayModeShareListener;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import android.graphics.Color;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.common.app.BaseApplicationImpl;
 
-class npd
-  extends OnPlayModeShareListener
+public class npd
 {
-  npd(npc paramnpc, VideoPlayModeBase paramVideoPlayModeBase)
+  private static String a(String paramString)
   {
-    super(paramVideoPlayModeBase);
+    String str = "0";
+    try
+    {
+      if (!TextUtils.isEmpty(paramString)) {
+        str = String.format("%.3f", new Object[] { Float.valueOf((float)Long.parseLong(paramString) * 1.0F / 1048576.0F) });
+      }
+      return str;
+    }
+    catch (Exception paramString) {}
+    return "0";
   }
   
-  public void a(int paramInt)
+  public static void a(Context paramContext, DialogInterface.OnClickListener paramOnClickListener, SpannableStringBuilder paramSpannableStringBuilder, String paramString1, String paramString2, String paramString3)
   {
-    super.a(paramInt);
-    if (this.a.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 2)
-    {
-      StoryReportor.a("play_video", "guest_share_suc", i, paramInt, new String[] { "", String.valueOf(StoryReportor.a(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelVideoListFeedItem)), this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+    bafb localbafb = new bafb(paramContext, 2131690181);
+    localbafb.setContentView(2131493323);
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localbafb.getMessageTextView().getLayoutParams();
+    localLayoutParams.leftMargin = aciy.a(30.0F, paramContext.getResources());
+    localLayoutParams.rightMargin = aciy.a(30.0F, paramContext.getResources());
+    localLayoutParams.width = -1;
+    localbafb.getMessageTextView().setLayoutParams(localLayoutParams);
+    localbafb.setMessage(paramSpannableStringBuilder);
+    localbafb.setTitle(paramString1);
+    localbafb.setPositiveButton(paramString2, new npf(paramOnClickListener));
+    localbafb.setNegativeButton(paramString3, new npg());
+    localbafb.show();
+  }
+  
+  public static void a(Context paramContext, AdData paramAdData, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if ((paramAdData == null) || (paramAdData.a == null)) {
       return;
     }
+    bafb localbafb = new bafb(paramContext, 2131690181);
+    localbafb.setContentView(2131493323);
+    paramContext = ajjy.a(2131647064);
+    if (!TextUtils.isEmpty(paramAdData.a.t)) {
+      paramContext = paramAdData.a.t;
+    }
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(paramContext);
+    String str3 = ajjy.a(2131647060);
+    String str4 = "#E06F00";
+    String str2 = str4;
+    String str1 = str3;
+    if (!TextUtils.isEmpty(paramAdData.a.u))
+    {
+      str2 = str4;
+      str1 = str3;
+      if (!TextUtils.isEmpty(paramAdData.a.v))
+      {
+        str1 = paramAdData.a.u;
+        str2 = paramAdData.a.v;
+      }
+    }
+    if (paramContext.contains(str1))
+    {
+      int i = paramContext.indexOf(str1);
+      int j = str1.length();
+      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor(str2)), i, j + i, 33);
+    }
+    localbafb.setMessage(localSpannableStringBuilder);
+    paramContext = ajjy.a(2131647138);
+    if (!TextUtils.isEmpty(paramAdData.a.w)) {
+      paramContext = paramAdData.a.w;
+    }
+    localbafb.setTitle(paramContext);
+    localbafb.setPositiveButton(ajjy.a(2131647279), new npe(paramOnClickListener));
+    localbafb.show();
+  }
+  
+  public static void a(Context paramContext, AdData paramAdData, boolean paramBoolean1, boolean paramBoolean2, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    if ((paramAdData == null) || (paramAdData.a == null)) {
+      return;
+    }
+    String str1;
+    SpannableStringBuilder localSpannableStringBuilder;
+    String str2;
+    if (!paramBoolean1)
+    {
+      str1 = ajjy.a(2131647154);
+      if (!a(paramAdData.a.q).equals("0")) {
+        str1 = String.format(ajjy.a(2131647023), new Object[] { a(paramAdData.a.q) });
+      }
+      if (!TextUtils.isEmpty(paramAdData.a.s)) {
+        str1 = paramAdData.a.s;
+      }
+      localSpannableStringBuilder = new SpannableStringBuilder(str1);
+      if (!paramBoolean2)
+      {
+        String str4 = ajjy.a(2131647281);
+        String str5 = "#E06F00";
+        String str3 = str5;
+        str2 = str4;
+        if (!TextUtils.isEmpty(paramAdData.a.u))
+        {
+          str3 = str5;
+          str2 = str4;
+          if (!TextUtils.isEmpty(paramAdData.a.v))
+          {
+            str2 = paramAdData.a.u;
+            str3 = paramAdData.a.v;
+          }
+        }
+        if (str1.contains(str2))
+        {
+          int i = str1.indexOf(str2);
+          int j = str2.length();
+          localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor(str3)), i, j + i, 33);
+        }
+      }
+      str1 = ajjy.a(2131647278);
+      if (paramBoolean2) {
+        str1 = ajjy.a(2131647249);
+      }
+      if (TextUtils.isEmpty(paramAdData.a.w)) {
+        break label363;
+      }
+      str1 = paramAdData.a.w;
+    }
+    label363:
+    for (;;)
+    {
+      str2 = ajjy.a(2131646940);
+      if (bady.a(BaseApplicationImpl.getContext(), paramAdData.a.b)) {
+        str2 = ajjy.a(2131647085);
+      }
+      if (paramBoolean2) {}
+      for (paramAdData = ajjy.a(2131647209);; paramAdData = ajjy.a(2131646914))
+      {
+        a(paramContext, paramOnClickListener, localSpannableStringBuilder, str1, str2, paramAdData);
+        return;
+        str1 = ajjy.a(2131647132);
+        if (TextUtils.isEmpty(paramAdData.a.t)) {
+          break;
+        }
+        str1 = paramAdData.a.t;
+        break;
+      }
+    }
+  }
+  
+  public static void a(Context paramContext, String paramString, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(ajjy.a(2131647024));
+    String str2 = ajjy.a(2131647182);
+    String str1 = ajjy.a(2131646939);
+    if (bady.a(BaseApplicationImpl.getContext(), paramString)) {
+      str1 = ajjy.a(2131647218);
+    }
+    a(paramContext, paramOnClickListener, localSpannableStringBuilder, str2, str1, ajjy.a(2131647332));
+  }
+  
+  public static void a(Context paramContext, String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder(String.format(ajjy.a(2131647196), new Object[] { a(paramString1) }));
+    String str = ajjy.a(2131647101);
+    paramString1 = ajjy.a(2131647345);
+    if (bady.a(BaseApplicationImpl.getContext(), paramString2)) {
+      paramString1 = ajjy.a(2131647313);
+    }
+    a(paramContext, paramOnClickListener, localSpannableStringBuilder, str, paramString1, ajjy.a(2131647071));
   }
 }
 

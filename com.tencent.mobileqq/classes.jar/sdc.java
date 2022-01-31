@@ -1,22 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.statistics.ReportController;
+import java.util.List;
 
 public class sdc
-  implements View.OnClickListener
+  extends scz
 {
-  public sdc(ChatHistory paramChatHistory) {}
-  
-  public void onClick(View paramView)
+  public sdc(sed paramsed)
   {
-    this.a.k();
-    ReportController.b(this.a.app, "CliOper", "", "", "0X800568E", "0X800568E", this.a.k, 0, "", "", "", "");
+    super(paramsed.a);
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = ("Q.qqstory.recommendAlbum.logic_OneDayAlbumFilter " + paramsed.c);
+    sef localsef = new sef();
+    localsef.a(paramsed);
+    a(localsef);
   }
+  
+  protected void c(List<sdf> paramList) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sdc
  * JD-Core Version:    0.7.0.1
  */

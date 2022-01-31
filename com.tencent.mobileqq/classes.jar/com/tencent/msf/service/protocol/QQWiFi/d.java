@@ -9,7 +9,7 @@ public final class d
 {
   public String a = "";
   public String b = "";
-  public short c;
+  public short c = 0;
   
   public d() {}
   

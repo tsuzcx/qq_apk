@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
 
-class acdr
-  implements Runnable
+public class acdr
+  extends aiac
 {
-  acdr(acdo paramacdo) {}
+  public int a;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  int jdField_b_of_type_Int;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView c;
+  TextView d;
   
-  public void run()
-  {
-    QQToast.a(this.a.a.getApplicationContext(), "损坏数据库构造完成", 1).a();
-  }
+  private acdr(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acdr
  * JD-Core Version:    0.7.0.1
  */

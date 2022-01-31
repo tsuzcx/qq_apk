@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.app.fms.FullMessageSearchManager;
-import com.tencent.mobileqq.search.searchengine.MessageSearchEngine;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class aias
-  implements Runnable
+class aias
+  implements View.OnClickListener
 {
-  public aias(MessageSearchEngine paramMessageSearchEngine) {}
+  aias(aiaq paramaiaq, String paramString1, String paramString2) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.a();
+    paramView = new Intent(this.jdField_a_of_type_Aiaq.a, QQBrowserActivity.class).putExtra("url", String.format("https://buluo.qq.com/mobile/detail.html?bid=%s&pid=%s&_wv=1027&webview=1&from=reliao", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
+    this.jdField_a_of_type_Aiaq.a.startActivity(paramView);
+    awqx.b(null, "dc00899", "grp_lbs", "", "hot_room", "clk_tribe_post", 0, 0, "", "", "", "");
   }
 }
 

@@ -1,70 +1,62 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.now.enter.ConversationNowController;
-import com.tencent.mobileqq.now.enter.NowHongbaoPushManager.Callback;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
 
 public class snu
-  implements NowHongbaoPushManager.Callback
+  extends smt
 {
-  private snu(Conversation paramConversation) {}
+  ShareGroupItem jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem;
+  boolean jdField_a_of_type_Boolean = false;
+  boolean b = false;
   
-  public void a()
+  public snu(smz paramsmz, ShareGroupItem paramShareGroupItem)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("now_enter.pendant", 2, "onHideTopView");
-    }
-    if (Conversation.a(this.a) != null) {
-      Conversation.a(this.a).b();
-    }
-    Conversation.a(this.a, false);
+    super(paramsmz);
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem = paramShareGroupItem;
+    this.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isOwner();
+    this.b = this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isPublic();
   }
   
-  public boolean a(String paramString)
+  protected void a(View paramView, CommentEntry paramCommentEntry, int paramInt)
   {
-    QLog.d("Q.recent", 2, "checkCurrentUI onActiveEnable,url:" + paramString + ",but this feature is offline");
-    return true;
-  }
-  
-  public boolean a(String paramString1, String paramString2)
-  {
-    boolean bool = false;
-    if (Conversation.a(this.a) != null)
+    if (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem == null) {
+      super.a(paramView, paramCommentEntry, paramInt);
+    }
+    paramView = QQStoryContext.a().b();
+    begr localbegr = begr.a(this.jdField_a_of_type_Smz.a);
+    if (paramCommentEntry.authorUnionId.equals(paramView)) {
+      if (paramCommentEntry.status == 2)
+      {
+        localbegr.c(ajjy.a(2131648144));
+        localbegr.a(ajjy.a(2131648138), 3);
+      }
+    }
+    for (;;)
     {
-      Conversation.a(this.a).a(false, paramString2);
-      bool = true;
+      localbegr.d(ajjy.a(2131648120));
+      localbegr.a(new smw(this, localbegr, paramCommentEntry, paramInt));
+      localbegr.show();
+      return;
+      localbegr.c(ajjy.a(2131648121));
+      break;
+      if ((this.b) && (this.jdField_a_of_type_Boolean))
+      {
+        localbegr.c(ajjy.a(2131648132));
+        localbegr.a(ajjy.a(2131648141), 3);
+        localbegr.c(ajjy.a(2131648148));
+      }
+      else
+      {
+        localbegr.c(ajjy.a(2131648131));
+        localbegr.c(ajjy.a(2131648139));
+      }
     }
-    Conversation.a(this.a, true);
-    return bool;
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("NowHongbaoPushManager", 2, "onHideFloatView");
-    }
-    this.a.a(false, null, null);
-  }
-  
-  public boolean b(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("NowHongbaoPushManager", 2, "onShowFloatView : imageUrl=" + paramString1 + ",jumpUrl=" + paramString2);
-    }
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return false;
-    }
-    return this.a.a(true, paramString1, paramString2);
-  }
-  
-  public void c()
-  {
-    QLog.d("Q.recent", 2, "checkCurrentUI onActiveDisable,but this feature is offline");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     snu
  * JD-Core Version:    0.7.0.1
  */

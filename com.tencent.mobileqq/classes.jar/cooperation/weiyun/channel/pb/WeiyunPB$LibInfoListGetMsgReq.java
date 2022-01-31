@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class WeiyunPB$LibInfoListGetMsgReq
-  extends MessageMicro
+  extends MessageMicro<LibInfoListGetMsgReq>
 {
   public static final int COUNT_FIELD_NUMBER = 40;
   public static final int GROUP_ID_FIELD_NUMBER = 50;
@@ -25,7 +25,7 @@ public final class WeiyunPB$LibInfoListGetMsgReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cooperation.weiyun.channel.pb.WeiyunPB.LibInfoListGetMsgReq
  * JD-Core Version:    0.7.0.1
  */

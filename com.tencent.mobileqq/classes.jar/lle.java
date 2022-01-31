@@ -1,43 +1,46 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule;
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.FetchCommentObserver;
-import com.tencent.biz.pubaccount.readinjoy.comment.NativeCommentServlet.CommentObserver;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONObject;
+import android.graphics.Typeface;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ViewSwitcher.ViewFactory;
+import com.tencent.av.redpacket.ui.RedPacketRollTextView;
+import com.tencent.mobileqq.portal.StrokeTextView;
 
 public class lle
-  implements NativeCommentServlet.CommentObserver
+  implements ViewSwitcher.ViewFactory
 {
-  public lle(ArticleCommentModule paramArticleCommentModule) {}
+  public lle(RedPacketRollTextView paramRedPacketRollTextView, boolean paramBoolean) {}
   
-  public void a(ArticleInfo paramArticleInfo, int paramInt, String paramString)
+  public View makeView()
   {
-    if (ArticleCommentModule.access$000(this.a) != null) {
-      ArticleCommentModule.access$000(this.a).a(paramArticleInfo, paramInt, paramString);
-    }
-  }
-  
-  public void a(ArticleInfo paramArticleInfo, JSONObject paramJSONObject, String paramString)
-  {
-    if (this.a.dealwithRawComment(paramJSONObject)) {
-      if (ArticleCommentModule.access$000(this.a) != null)
+    localStrokeTextView = new StrokeTextView(RedPacketRollTextView.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView));
+    try
+    {
+      localStrokeTextView.setLayoutParams(new FrameLayout.LayoutParams(aciy.a(42.0F, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView.getResources()), -1));
+      localStrokeTextView.setTextSize(0, RedPacketRollTextView.a(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView));
+      localStrokeTextView.setIncludeFontPadding(false);
+      if (this.jdField_a_of_type_Boolean) {}
+      for (String str = "0";; str = "")
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("TRACE_COMMENT_LIST", 2, "element size=" + ArticleCommentModule.access$100(this.a).size());
-        }
-        ArticleCommentModule.access$000(this.a).a(paramArticleInfo);
+        localStrokeTextView.setText(str);
+        localStrokeTextView.setStrokeEnable(true);
+        localStrokeTextView.setStrokeColor(-1);
+        localStrokeTextView.setStrokeSize(aciy.a(6.0F, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketRollTextView.getResources()));
+        localStrokeTextView.setInnerTextColor(-2094274);
+        localStrokeTextView.setTypeface(Typeface.defaultFromStyle(1));
+        localStrokeTextView.setGravity(17);
+        return localStrokeTextView;
       }
+      return localStrokeTextView;
     }
-    while (ArticleCommentModule.access$000(this.a) == null) {
-      return;
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
-    ArticleCommentModule.access$000(this.a).a(paramArticleInfo, -1, " json formate error");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lle
  * JD-Core Version:    0.7.0.1
  */

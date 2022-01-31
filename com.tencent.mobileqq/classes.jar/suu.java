@@ -1,57 +1,29 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.util.WeakReferenceHandler;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class suu
-  implements Runnable
+  extends QQUIEventReceiver<suo, tna>
 {
-  public suu(FriendProfileCardActivity paramFriendProfileCardActivity) {}
-  
-  public void run()
+  public suu(@NonNull suo paramsuo)
   {
-    int j = 0;
-    Object localObject = (FriendsManager)this.a.app.getManager(50);
-    if (localObject == null)
-    {
-      localObject = null;
-      if (localObject != null) {
-        break label164;
-      }
-      localObject = new Card();
+    super(paramsuo);
+  }
+  
+  public void a(@NonNull suo paramsuo, @NonNull tna paramtna)
+  {
+    if ((paramsuo.a.a().equals(paramtna.jdField_a_of_type_JavaLangString)) && ((paramtna.jdField_a_of_type_Tjs instanceof tkg))) {
+      paramsuo.a(((tkg)paramtna.jdField_a_of_type_Tjs).a(), paramtna.b);
     }
-    label164:
-    for (int i = 1;; i = 0)
-    {
-      ((Card)localObject).feedPreviewTime = System.currentTimeMillis();
-      ((Card)localObject).strQzoneFeedsDesc = "";
-      Message localMessage = Message.obtain();
-      localMessage.obj = localObject;
-      if (i != 0) {}
-      for (localMessage.what = 6;; localMessage.what = 5)
-      {
-        if (this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler != null) {
-          this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage(localMessage);
-        }
-        i = j;
-        if (this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a != null) {
-          i = this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.h;
-        }
-        this.a.e(i);
-        return;
-        localObject = ((FriendsManager)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a);
-        break;
-      }
-    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tna.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     suu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView android:id="@id/d3g" android:paddingLeft="@dimen/ms" android:paddingTop="@dimen/ms" android:layout_width="42.0dip" android:layout_height="42.0dip" android:src="@drawable/ic_launcher" />
+    <LinearLayout android:orientation="vertical" android:id="@id/aal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/d3g">
+        <TextView android:textSize="@dimen/aym" android:textColor="@color/es" android:id="@id/f9d" android:paddingLeft="@dimen/mp" android:paddingTop="@dimen/mv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+        <TextView android:textSize="@dimen/ayo" android:textColor="@color/ev" android:id="@id/b2y" android:paddingLeft="@dimen/mp" android:paddingTop="@dimen/na" android:paddingBottom="@dimen/na" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ms" />
+        <TextView android:textSize="@dimen/ayk" android:textColor="@color/er" android:id="@id/aap" android:paddingLeft="@dimen/mp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+    </LinearLayout>
+    <View android:background="@color/eo" android:paddingLeft="@dimen/mp" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="@dimen/ms" android:layout_below="@id/aal" android:layout_alignLeft="@id/aal" />
+</RelativeLayout>

@@ -1,30 +1,28 @@
-import com.tencent.mobileqq.activity.contacts.adapter.PhoneContactAdapter;
-import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
-import com.tencent.widget.XListView;
+import android.support.annotation.Nullable;
+import android.view.View;
 
 class wte
-  implements Runnable
+  implements bhwg<Boolean>
 {
-  wte(wtd paramwtd, boolean paramBoolean) {}
+  wte(wta paramwta) {}
   
-  public void run()
+  public void a(@Nullable Boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Wtd.a.jdField_a_of_type_ComTencentWidgetXListView != null)
+    if (paramBoolean == null) {
+      return;
+    }
+    View localView = wta.e(this.a);
+    if (paramBoolean.booleanValue()) {}
+    for (int i = 0;; i = 4)
     {
-      PhoneContactFragment.a(this.jdField_a_of_type_Wtd.a, this.jdField_a_of_type_Boolean);
-      if (this.jdField_a_of_type_Wtd.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterPhoneContactAdapter == null)
-      {
-        this.jdField_a_of_type_Wtd.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterPhoneContactAdapter = new PhoneContactAdapter(this.jdField_a_of_type_Wtd.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_Wtd.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Wtd.a.jdField_a_of_type_ComTencentWidgetXListView, 1, true, this.jdField_a_of_type_Wtd.a);
-        this.jdField_a_of_type_Wtd.a.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Wtd.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterPhoneContactAdapter);
-      }
-      this.jdField_a_of_type_Wtd.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterPhoneContactAdapter.a(this.jdField_a_of_type_Wtd.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.jdField_a_of_type_Wtd.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterPhoneContactAdapter.notifyDataSetChanged();
+      localView.setVisibility(i);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wte
  * JD-Core Version:    0.7.0.1
  */

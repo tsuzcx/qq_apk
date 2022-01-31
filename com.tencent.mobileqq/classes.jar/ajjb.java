@@ -1,58 +1,41 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.troop.data.TroopFeedsDataManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 
-public class ajjb
-  extends Handler
+public final class ajjb
+  implements atka
 {
-  public ajjb(TroopFeedsDataManager paramTroopFeedsDataManager, Looper paramLooper)
+  private WeakReference<FrameHelperActivity> a;
+  
+  public ajjb(FrameHelperActivity paramFrameHelperActivity)
   {
-    super(paramLooper);
+    this.a = new WeakReference(paramFrameHelperActivity);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    switch (paramMessage.what)
+    FrameHelperActivity localFrameHelperActivity = (FrameHelperActivity)this.a.get();
+    if (localFrameHelperActivity == null) {}
+    FragmentActivity localFragmentActivity;
+    QQAppInterface localQQAppInterface;
+    do
     {
-    default: 
-    case 2: 
-    case 3: 
-    case 4: 
       do
       {
-        do
-        {
-          return;
-          this.a.a = ((List)paramMessage.obj);
-          this.a.a(1000);
-          return;
-          this.a.a = ((List)paramMessage.obj);
-          TroopFeedsDataManager.a(this.a);
-          this.a.notifyObservers(Integer.valueOf(101));
-        } while (!QLog.isColorLevel());
-        QLog.d("TroopFeedsDataManager", 2, "end load feed: " + System.currentTimeMillis());
         return;
-        this.a.a = ((List)paramMessage.obj);
-        TroopFeedsDataManager.b(this.a);
-        this.a.notifyObservers(Integer.valueOf(105));
-      } while (!QLog.isColorLevel());
-      QLog.d("TroopFeedsDataManager.troop.notification_center.auto_pull_down", 2, "end auto pull down feed");
-      return;
-    case 5: 
-      TroopFeedsDataManager.c(this.a);
-      this.a.notifyObservers(Integer.valueOf(1010));
-      return;
-    }
-    TroopFeedsDataManager.d(this.a);
-    this.a.notifyObservers(Integer.valueOf(103));
+        localFragmentActivity = localFrameHelperActivity.getActivity();
+      } while ((localFragmentActivity == null) || (localFragmentActivity.getAppInterface() == null));
+      localQQAppInterface = localFragmentActivity.app;
+    } while ((!atok.a().a(localQQAppInterface, localFragmentActivity)) || ((FrameHelperActivity.a(localFrameHelperActivity) != null) && (FrameHelperActivity.a(localFrameHelperActivity).isShowing())));
+    FrameHelperActivity.a(localFrameHelperActivity, localQQAppInterface, localFragmentActivity);
+    awqx.b(localQQAppInterface, "dc00898", "", "", "0X800A00D", "0X800A00D", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajjb
  * JD-Core Version:    0.7.0.1
  */

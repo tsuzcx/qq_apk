@@ -1,29 +1,44 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.VideoItemHolder;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureLayout;
+import com.tencent.av.app.VideoAppInterface;
 
 public class mdz
-  extends AnimatorListenerAdapter
+  extends mfk
 {
-  public mdz(VideoFeedsAdapter paramVideoFeedsAdapter, VideoFeedsAdapter.VideoItemHolder paramVideoItemHolder, ImageView paramImageView) {}
+  public lls a;
+  public mec a;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  mdz(med parammed)
   {
-    super.onAnimationEnd(paramAnimator);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter$VideoItemHolder.a.removeView(this.jdField_a_of_type_AndroidWidgetImageView);
+    super(parammed);
+    this.jdField_a_of_type_Lls = new mea(this);
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  void a()
   {
-    super.onAnimationStart(paramAnimator);
+    meb localmeb = new meb(this);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(localmeb);
+  }
+  
+  public void a(mec parammec)
+  {
+    med localmed = a();
+    if (localmed == null) {
+      return;
+    }
+    localmed.a(parammec);
+  }
+  
+  public void b(mec parammec)
+  {
+    med localmed = a();
+    if (localmed == null) {
+      return;
+    }
+    localmed.b(parammec);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mdz
  * JD-Core Version:    0.7.0.1
  */

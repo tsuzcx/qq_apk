@@ -1,25 +1,29 @@
-import com.tencent.biz.troopgift.TroopGiftPanel.OnShowOrHideListerner;
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.nearby.gift.NearbyGiftPanelDialog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StComment;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.pb.PBStringField;
 
-public class waj
-  implements TroopGiftPanel.OnShowOrHideListerner
+class waj
+  implements View.OnClickListener
 {
-  public waj(HotChatPie paramHotChatPie) {}
+  waj(wai paramwai, CertifiedAccountMeta.StComment paramStComment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.a.a();
-  }
-  
-  public void b()
-  {
-    this.a.a.a(false, false, 4);
+    paramView = (ClipboardManager)vzz.c(this.jdField_a_of_type_Wai.a).getSystemService("clipboard");
+    if (paramView != null)
+    {
+      paramView.setPrimaryClip(ClipData.newPlainText("", this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment.content.get()));
+      vzz.a(this.jdField_a_of_type_Wai.a).dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     waj
  * JD-Core Version:    0.7.0.1
  */

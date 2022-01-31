@@ -5,30 +5,35 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import anue;
+import bhfm;
+import bhgn;
+import bhgp;
+import bhgs;
+import bhgz;
+import bhha;
+import bhho;
+import bjac;
 import com.tencent.av.opengl.filter.qqavimage.QQAVImageFilterConstants;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.QIMManager;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterListDownloader;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
-import dov.com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class QIMFilterCategoryItem
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator CREATOR = new anue();
+  public static final Parcelable.Creator<QIMFilterCategoryItem> CREATOR = new bhho();
   public int a;
   public String a;
-  public ArrayList a;
+  public ArrayList<String> a;
   public JSONArray a;
   public boolean a;
   public int b;
   public String b;
   public JSONArray b;
+  public int c;
   public String c;
   public JSONArray c;
   public String d;
@@ -36,30 +41,35 @@ public class QIMFilterCategoryItem
   public String e;
   public String f;
   public String g;
+  public String h;
+  public String i = "";
   
   public QIMFilterCategoryItem()
   {
+    this.jdField_c_of_type_JavaLangString = "";
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
   }
   
   public QIMFilterCategoryItem(Parcel paramParcel)
   {
+    this.jdField_c_of_type_JavaLangString = "";
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_b_of_type_Int = 0;
+    this.jdField_c_of_type_Int = 0;
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    this.f = paramParcel.readString();
-    this.c = paramParcel.readString();
-    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.b = paramParcel.readString();
+    this.g = paramParcel.readString();
     this.d = paramParcel.readString();
+    this.jdField_a_of_type_Int = paramParcel.readInt();
+    this.e = paramParcel.readString();
     this.jdField_a_of_type_JavaUtilArrayList = paramParcel.createStringArrayList();
     paramParcel.readInt();
     if (paramParcel.readByte() != 0) {
       bool = true;
     }
     this.jdField_a_of_type_Boolean = bool;
-    this.g = paramParcel.readString();
+    this.h = paramParcel.readString();
+    this.i = paramParcel.readString();
   }
   
   public static boolean a(QIMFilterCategoryItem paramQIMFilterCategoryItem)
@@ -68,8 +78,8 @@ public class QIMFilterCategoryItem
     while (paramQIMFilterCategoryItem.hasNext())
     {
       Object localObject = (String)paramQIMFilterCategoryItem.next();
-      localObject = VideoFilterTools.a().a((String)localObject);
-      if ((localObject != null) && (((FilterDesc)localObject).jdField_b_of_type_Int == 9)) {
+      localObject = bjac.a().a((String)localObject);
+      if ((localObject != null) && (((FilterDesc)localObject).id == 9)) {
         return true;
       }
     }
@@ -84,8 +94,8 @@ public class QIMFilterCategoryItem
       while (paramQIMFilterCategoryItem.hasNext())
       {
         Object localObject = (String)paramQIMFilterCategoryItem.next();
-        localObject = VideoFilterTools.a().a((String)localObject);
-        if ((localObject != null) && (((FilterDesc)localObject).jdField_b_of_type_Int == 1011)) {
+        localObject = bjac.a().a((String)localObject);
+        if ((localObject != null) && (((FilterDesc)localObject).id == 1011)) {
           return true;
         }
       }
@@ -95,24 +105,24 @@ public class QIMFilterCategoryItem
   
   public int a()
   {
-    int i = -1;
-    Iterator localIterator = ((CaptureComboManager)QIMManager.a(5)).a(this).b.iterator();
+    int j = -1;
+    Iterator localIterator = ((bhgs)bhfm.a(5)).a(this).b.iterator();
     if (localIterator.hasNext())
     {
-      CaptureComboBase localCaptureComboBase = (CaptureComboBase)localIterator.next();
-      if (!(localCaptureComboBase instanceof CaptureComboFilter)) {
+      bhgn localbhgn = (bhgn)localIterator.next();
+      if (!(localbhgn instanceof bhgp)) {
         break label93;
       }
-      i = ((CaptureComboFilter)localCaptureComboBase).a.jdField_b_of_type_Int;
+      j = ((bhgp)localbhgn).a.id;
     }
     label93:
     for (;;)
     {
       break;
       if (QLog.isColorLevel()) {
-        QLog.d("FilterCategoryItem", 2, "getFilterId=" + i);
+        QLog.d("FilterCategoryItem", 2, "getFilterId=" + j);
       }
-      return i;
+      return j;
     }
   }
   
@@ -133,36 +143,63 @@ public class QIMFilterCategoryItem
   public String a()
   {
     String str = "";
-    Iterator localIterator = ((CaptureComboManager)QIMManager.a(5)).a(this).b.iterator();
-    CaptureComboBase localCaptureComboBase;
+    Iterator localIterator = ((bhgs)bhfm.a(5)).a(this).b.iterator();
+    bhgn localbhgn;
     if (localIterator.hasNext())
     {
-      localCaptureComboBase = (CaptureComboBase)localIterator.next();
-      if (!(localCaptureComboBase instanceof CaptureComboFilter)) {
+      localbhgn = (bhgn)localIterator.next();
+      if (!(localbhgn instanceof bhgp)) {
         break label106;
       }
       if (TextUtils.isEmpty(str)) {
-        str = ((CaptureComboFilter)localCaptureComboBase).a.f;
+        str = ((bhgp)localbhgn).a.display;
       }
     }
     label106:
     for (;;)
     {
       break;
-      str = str + " " + ((CaptureComboFilter)localCaptureComboBase).a.f;
+      str = str + " " + ((bhgp)localbhgn).a.display;
       continue;
       return str;
     }
+  }
+  
+  public JSONObject a()
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("id", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("name", this.b);
+      localJSONObject.put("camera", this.g);
+      localJSONObject.put("iconUrl", this.d);
+      localJSONObject.put("categoryId", this.jdField_a_of_type_Int);
+      localJSONObject.put("categoryName", this.e);
+      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty()))
+      {
+        JSONArray localJSONArray = new JSONArray();
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        while (localIterator.hasNext()) {
+          localJSONArray.put((String)localIterator.next());
+        }
+        localJSONObject.put("filterIds", localJSONArray);
+      }
+      localJSONObject.put("isCombo", this.jdField_a_of_type_Boolean);
+      return localJSONObject;
+    }
+    catch (Exception localException) {}
+    return null;
   }
   
   public boolean a()
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(this.g))
+    if (!TextUtils.isEmpty(this.h))
     {
       bool1 = bool2;
-      if (this.g.startsWith("qim")) {
+      if (this.h.startsWith("qim")) {
         bool1 = true;
       }
     }
@@ -175,15 +212,15 @@ public class QIMFilterCategoryItem
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      String[] arrayOfString = CaptureConst.a;
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
+      String[] arrayOfString = bhgz.a;
+      int k = arrayOfString.length;
+      int j = 0;
+      while (j < k)
       {
-        if (arrayOfString[i].equals(str)) {
+        if (arrayOfString[j].equals(str)) {
           return false;
         }
-        i += 1;
+        j += 1;
       }
     }
     return true;
@@ -196,14 +233,7 @@ public class QIMFilterCategoryItem
   
   public boolean d()
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    while ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() != 1)) {
-      return false;
-    }
-    if (QQAVImageFilterConstants.a(VideoFilterTools.a().a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0)).jdField_b_of_type_Int) == 0) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    return (this.jdField_a_of_type_JavaUtilArrayList != null) && ((this.jdField_a_of_type_JavaUtilArrayList.contains("EMPTY")) || (this.jdField_a_of_type_JavaUtilArrayList.contains("EMPTY2")));
   }
   
   public int describeContents()
@@ -213,7 +243,14 @@ public class QIMFilterCategoryItem
   
   public boolean e()
   {
-    return "2".equals(this.e);
+    if (this.jdField_a_of_type_Boolean) {}
+    while ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() != 1)) {
+      return false;
+    }
+    if (QQAVImageFilterConstants.getFilterType(bjac.a().a((String)this.jdField_a_of_type_JavaUtilArrayList.get(0)).id) == 0) {}
+    for (boolean bool = true;; bool = false) {
+      return bool;
+    }
   }
   
   public boolean equals(Object paramObject)
@@ -227,27 +264,7 @@ public class QIMFilterCategoryItem
   
   public boolean f()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FilterCategoryItem", 2, "needPredownload");
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      String str1 = (String)localIterator.next();
-      FilterDesc localFilterDesc = VideoFilterTools.a().a(str1);
-      if (localFilterDesc != null)
-      {
-        String str2 = localFilterDesc.b(CaptureVideoFilterManager.jdField_b_of_type_JavaLangString);
-        if ((!TextUtils.isEmpty(localFilterDesc.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(str2)) && (VideoFilterListDownloader.a(localFilterDesc)))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("FilterCategoryItem", 2, "needPredownload " + str1);
-          }
-          return true;
-        }
-      }
-    }
-    return false;
+    return ("2".equals(this.f)) || ("3".equals(this.f));
   }
   
   public int hashCode()
@@ -257,25 +274,26 @@ public class QIMFilterCategoryItem
   
   public String toString()
   {
-    return "FilterCategoryItem{id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", name='" + this.jdField_b_of_type_JavaLangString + '\'' + ", isCombo=" + this.jdField_a_of_type_Boolean + '}';
+    return "FilterCategoryItem{id='" + this.jdField_a_of_type_JavaLangString + '\'' + ", name='" + this.b + '\'' + ", isCombo=" + this.jdField_a_of_type_Boolean + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramInt = 0;
     paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-    paramParcel.writeString(this.f);
-    paramParcel.writeString(this.c);
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeString(this.b);
+    paramParcel.writeString(this.g);
     paramParcel.writeString(this.d);
+    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeString(this.e);
     paramParcel.writeStringList(this.jdField_a_of_type_JavaUtilArrayList);
     paramParcel.writeInt(0);
     if (this.jdField_a_of_type_Boolean) {
       paramInt = 1;
     }
     paramParcel.writeByte((byte)paramInt);
-    paramParcel.writeString(this.g);
+    paramParcel.writeString(this.h);
+    paramParcel.writeString(this.i);
   }
 }
 

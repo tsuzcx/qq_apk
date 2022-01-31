@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.app.utils.MessagePkgUtils;
-import com.tencent.mobileqq.statistics.ReportController;
+import akhp;
+import awqx;
 import com.tencent.qphone.base.util.QLog;
 import java.io.StringReader;
 import org.xmlpull.v1.XmlPullParser;
@@ -24,7 +24,7 @@ public class MessageForIncompatibleGrayTips
   {
     try
     {
-      IncompatibleGrayTipsMessage localIncompatibleGrayTipsMessage = (IncompatibleGrayTipsMessage)MessagePkgUtils.a(this.msgData);
+      IncompatibleGrayTipsMessage localIncompatibleGrayTipsMessage = (IncompatibleGrayTipsMessage)akhp.a(this.msgData);
       if (localIncompatibleGrayTipsMessage != null)
       {
         this.linkStart = localIncompatibleGrayTipsMessage.linkStart;
@@ -144,15 +144,15 @@ public class MessageForIncompatibleGrayTips
     }
   }
   
-  protected void postRead()
+  public void postRead()
   {
     parse();
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     serial();
-    ReportController.b(null, "CliOper", "", String.valueOf(this.frienduin), "0X800491A", "0X800491A", 0, 0, "", "", "", "");
+    awqx.b(null, "CliOper", "", String.valueOf(this.frienduin), "0X800491A", "0X800491A", 0, 0, "", "", "", "");
   }
   
   public void serial()
@@ -164,7 +164,7 @@ public class MessageForIncompatibleGrayTips
     localIncompatibleGrayTipsMessage.url = this.url;
     try
     {
-      this.msgData = MessagePkgUtils.a(localIncompatibleGrayTipsMessage);
+      this.msgData = akhp.a(localIncompatibleGrayTipsMessage);
       return;
     }
     catch (Exception localException)

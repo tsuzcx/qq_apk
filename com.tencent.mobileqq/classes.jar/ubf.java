@@ -1,62 +1,48 @@
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public class ubf
-  implements ActionSheet.OnButtonClickListener
+public final class ubf
+  implements View.OnClickListener
 {
-  public ubf(TroopAssistantActivity paramTroopAssistantActivity, int paramInt, String paramString, ActionSheet paramActionSheet) {}
+  public ubf(ubd paramubd, Activity paramActivity, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (!NetworkUtil.d(BaseApplication.getContext()))
+    urk.d("QQStoryMainController", "top right button on click:" + this.jdField_a_of_type_Ubd);
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_Ubd.c)) && (mpl.a(this.jdField_a_of_type_Ubd.c)))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a == null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a = new QQProgressNotifier(this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity);
+      paramView = this.jdField_a_of_type_Ubd.c;
+      if (this.jdField_a_of_type_Ubd.a != 1) {
+        break label172;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.a.a(2, 2131434827, 1500);
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+      localIntent.putExtra("url", paramView);
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
     }
-    try
+    for (;;)
     {
-      if (this.jdField_a_of_type_ComTencentWidgetActionSheet != null) {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      urp.a("hall", "exp", 0, 0, new String[] { "" });
+      if (!"troopStoryHallConfig".equals(this.jdField_a_of_type_JavaLangString)) {
+        break label197;
       }
+      urp.a("story_grp", "clk_find_left", 0, 0, new String[] { "", "", "", "" });
       return;
-      int i = -1;
-      switch (paramInt)
-      {
-      default: 
-        paramInt = i;
-      }
-      while (paramInt != this.jdField_a_of_type_Int)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopAssistantActivity.app.a(this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt));
-        break;
-        paramInt = 1;
-        continue;
-        paramInt = 4;
-        continue;
-        paramInt = 2;
-        continue;
-        paramInt = 3;
-      }
+      paramView = "https://story.now.qq.com/mobile/find.html?_wv=3&_bid=2542";
+      break;
+      label172:
+      if ((this.jdField_a_of_type_Ubd.a == 2) || (this.jdField_a_of_type_Ubd.a != 3)) {}
     }
-    catch (Exception paramView)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("TroopAssistantActivity", 2, paramView.toString());
-    }
+    label197:
+    urp.a("home_page", "clk_find_entry", 0, 0, new String[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ubf
  * JD-Core Version:    0.7.0.1
  */

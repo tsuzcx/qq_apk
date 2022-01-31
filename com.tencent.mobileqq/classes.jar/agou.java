@@ -1,53 +1,25 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.openapi.OpenApiManager;
-import com.tencent.mobileqq.openapi.entity.ThirdPartyApp;
-import com.tencent.mobileqq.utils.SendMessageHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class agou
-  extends MessageObserver
+class agou
+  extends axxg
 {
-  public agou(OpenApiManager paramOpenApiManager) {}
-  
-  protected void a(String paramString1, int paramInt1, int paramInt2, SendMessageHandler paramSendMessageHandler, long paramLong1, long paramLong2, String paramString2)
+  agou(agos paramagos, QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, batl parambatl, DownloadParam paramDownloadParam)
   {
-    a(false, paramString1, paramLong2);
+    super(paramQQAppInterface, paramString);
   }
   
-  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  protected void realCancel() {}
+  
+  protected void realStart()
   {
-    Intent localIntent;
-    if (OpenApiManager.access$300(this.a).containsKey(Long.valueOf(paramLong)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("OpenApi.Manager", 2, "onSendResult, isSuccess = " + paramBoolean + ", uniseq = " + paramLong);
-      }
-      paramString = (String)OpenApiManager.access$300(this.a).remove(Long.valueOf(paramLong));
-      paramString = (ThirdPartyApp)OpenApiManager.access$200(this.a).get(paramString);
-      if (paramString != null)
-      {
-        localIntent = new Intent("com.tencent.mobileqq.openapi.ACTION_MSG_SENDED." + paramString.b);
-        localIntent.putExtra("msgid", paramString.a(String.valueOf(paramLong)));
-        if (!paramBoolean) {
-          break label171;
-        }
-      }
-    }
-    label171:
-    for (int i = 0;; i = -9)
-    {
-      localIntent.putExtra("rs_code", i);
-      BaseApplicationImpl.sApplication.sendBroadcast(localIntent, paramString.c);
-      return;
-    }
+    agos.a(this.jdField_a_of_type_Agos, this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Batl, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadDownloadParam);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agou
  * JD-Core Version:    0.7.0.1
  */

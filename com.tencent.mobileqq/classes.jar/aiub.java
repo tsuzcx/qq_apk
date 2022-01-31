@@ -1,19 +1,35 @@
-import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
-import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
+import com.tencent.qphone.base.util.QLog;
 
-public class aiub
-  implements ITransCallbackForReport
+final class aiub
+  extends batl
 {
-  public aiub(C2CPicUploadProcessor paramC2CPicUploadProcessor) {}
+  aiub(int paramInt, aiue paramaiue) {}
   
-  public void onFailed(int paramInt, String paramString1, String paramString2)
+  public void onDone(batm parambatm)
   {
-    this.a.a(false, this.a.j, paramString1, paramString2);
+    super.onDone(parambatm);
+    if (3 == parambatm.a())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloResDownloader", 2, "downloadApolloAudio ok id" + this.jdField_a_of_type_Int);
+      }
+      if (this.jdField_a_of_type_Aiue != null) {
+        this.jdField_a_of_type_Aiue.a(true, this.jdField_a_of_type_Int);
+      }
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloResDownloader", 2, "downloadApolloAudio error id->" + this.jdField_a_of_type_Int + " task.getStatus()->" + parambatm.a());
+      }
+    } while (this.jdField_a_of_type_Aiue == null);
+    this.jdField_a_of_type_Aiue.a(false, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiub
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,56 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.playvideo.ProgressControler;
-import java.util.Timer;
-import java.util.TimerTask;
+import com.tencent.common.app.BaseApplicationImpl;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class nse
-  extends TimerTask
 {
-  public nse(ProgressControler paramProgressControler) {}
+  private JSONObject a = new JSONObject();
   
-  public void run()
+  public String a()
   {
-    ProgressControler localProgressControler = this.a;
-    localProgressControler.c += 50L;
-    if (this.a.c >= this.a.b)
+    return this.a.toString();
+  }
+  
+  public nse a()
+  {
+    try
     {
-      this.a.c = this.a.b;
-      if (this.a.jdField_a_of_type_JavaUtilTimer != null) {
-        this.a.jdField_a_of_type_JavaUtilTimer.cancel();
+      this.a.put("network", nzv.a(BaseApplicationImpl.getApplication().getApplicationContext()));
+      this.a.put("version", new.a);
+      this.a.put("os", "1");
+      this.a.put("uin", obz.a());
+      this.a.put("city", nzv.b());
+      return this;
+    }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return this;
+  }
+  
+  public nse a(int paramInt)
+  {
+    int i = 0;
+    if (paramInt == 41516) {
+      i = 3;
+    }
+    for (;;)
+    {
+      try
+      {
+        this.a.put("source", i);
+        return this;
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
+      }
+      if (paramInt == 41522) {
+        i = 16;
       }
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+    return this;
   }
 }
 

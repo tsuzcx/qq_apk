@@ -1,36 +1,37 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
-public class mvd
-  implements Runnable
+class mvd
+  extends akih
 {
-  public mvd(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity) {}
+  mvd(mvc parammvc) {}
   
-  public void run()
+  public int a()
   {
-    EntityManager localEntityManager = this.a.app.getEntityManagerFactory().createEntityManager();
-    List localList = localEntityManager.a(ReadInJoySearchHistoryEntity.class, true, null, null, null, null, " timestamp DESC ", null);
-    Message localMessage = this.a.a.obtainMessage(1);
-    localMessage.obj = localList;
-    this.a.a.sendMessage(localMessage);
-    localEntityManager.a();
-    if (localList != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyNewSearchActivity", 2, "lookupHistory size: " + localList.size());
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("ReadInJoyNewSearchActivity", 2, "history is null");
+    return 7;
   }
+  
+  public void a(Object paramObject)
+  {
+    mut.b(this.a.a, this.a.a.jdField_a_of_type_Int);
+    if (this.a.a.jdField_a_of_type_AndroidContentSharedPreferences != null) {
+      this.a.a.jdField_a_of_type_AndroidContentSharedPreferences.edit().putInt("setting_status_" + this.a.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin + "_" + this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.a.jdField_a_of_type_Int).apply();
+    }
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailGroupListContainer", 2, "New 0xc76 onGetRecvMsgState isSuccess = " + paramBoolean);
+    }
+  }
+  
+  public void b(Object paramObject) {}
+  
+  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 

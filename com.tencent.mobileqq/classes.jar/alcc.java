@@ -1,23 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.widget.GuideViewBuilder;
-
-public class alcc
-  implements View.OnClickListener
+abstract interface alcc
 {
-  public alcc(GuideViewBuilder paramGuideViewBuilder, boolean paramBoolean) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetGuideViewBuilder.a.dismiss();
-    }
-  }
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alcc
  * JD-Core Version:    0.7.0.1
  */

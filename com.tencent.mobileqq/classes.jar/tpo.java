@@ -1,31 +1,16 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
 
-public class tpo
-  implements Runnable
+public final class tpo
+  implements Comparator<tpt>
 {
-  public tpo(QQSettingMe paramQQSettingMe) {}
-  
-  public void run()
+  public int a(tpt paramtpt1, tpt paramtpt2)
   {
-    boolean bool = ApolloGameUtil.a(this.a.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, new Object[] { "[updateCmshowStatus] isApolloUser=", Boolean.valueOf(bool) });
-    }
-    if (bool) {
-      this.a.m();
-    }
-    this.a.c();
-    if (bool) {
-      this.a.d();
-    }
-    this.a.e();
+    return paramtpt1.a - paramtpt2.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tpo
  * JD-Core Version:    0.7.0.1
  */

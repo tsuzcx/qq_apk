@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.extendfriend.wiget;
 
+import aciy;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -24,9 +25,8 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
+import bajq;
 import com.tencent.mobileqq.R.styleable;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.utils.ViewUtils;
 import java.util.HashMap;
 
 public class ExtendFriendGradientTextView
@@ -37,7 +37,7 @@ public class ExtendFriendGradientTextView
   private StaticLayout jdField_a_of_type_AndroidTextStaticLayout;
   private TextPaint jdField_a_of_type_AndroidTextTextPaint;
   private String jdField_a_of_type_JavaLangString = "";
-  private HashMap jdField_a_of_type_JavaUtilHashMap;
+  private HashMap<String, Bitmap> jdField_a_of_type_JavaUtilHashMap;
   public boolean a;
   private int b = 50;
   private int c;
@@ -65,7 +65,7 @@ public class ExtendFriendGradientTextView
   private Bitmap a(StaticLayout paramStaticLayout)
   {
     Bitmap localBitmap = Bitmap.createBitmap(paramStaticLayout.getWidth(), paramStaticLayout.getHeight(), Bitmap.Config.ARGB_8888);
-    localBitmap.setDensity((int)ViewUtils.c());
+    localBitmap.setDensity((int)bajq.c());
     paramStaticLayout.draw(new Canvas(localBitmap));
     return localBitmap;
   }
@@ -80,16 +80,13 @@ public class ExtendFriendGradientTextView
   
   public int a()
   {
-    if (this.jdField_a_of_type_AndroidTextStaticLayout != null) {
-      return this.jdField_a_of_type_AndroidTextStaticLayout.getLineCount();
-    }
-    return 0;
+    return this.c;
   }
   
   public Bitmap a(Bitmap paramBitmap)
   {
     Bitmap localBitmap = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), paramBitmap.getConfig());
-    localBitmap.setDensity((int)ViewUtils.c());
+    localBitmap.setDensity((int)bajq.c());
     Object localObject = new Shader[2];
     localObject[0] = new BitmapShader(paramBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
     localObject[1] = new LinearGradient(0.0F, 0.0F, 0.0F, paramBitmap.getHeight(), -16777216, 0, Shader.TileMode.CLAMP);
@@ -102,13 +99,18 @@ public class ExtendFriendGradientTextView
     return localBitmap;
   }
   
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
   public void a()
   {
     if (Build.VERSION.SDK_INT >= 11) {
       setLayerType(1, null);
     }
     this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
-    this.c = (getResources().getDisplayMetrics().widthPixels - AIOUtils.a(26.0F, getResources()) * 2);
+    this.c = (getResources().getDisplayMetrics().widthPixels - aciy.a(26.0F, getResources()) * 2);
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap(12);
   }
   
@@ -125,12 +127,21 @@ public class ExtendFriendGradientTextView
     this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramFloat);
     this.jdField_a_of_type_AndroidTextTextPaint.setColor(paramInt1);
     this.jdField_a_of_type_AndroidTextTextPaint.setStyle(Paint.Style.FILL);
+    this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
     this.jdField_a_of_type_AndroidTextStaticLayout = new StaticLayout(paramString, this.jdField_a_of_type_AndroidTextTextPaint, this.c, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false);
     if ((this.jdField_a_of_type_AndroidTextStaticLayout.getLineCount() > paramInt2) && (paramBoolean)) {
       this.jdField_a_of_type_AndroidTextStaticLayout = new StaticLayout(paramString.substring(0, this.jdField_a_of_type_AndroidTextStaticLayout.getLineStart(paramInt2) - 1), this.jdField_a_of_type_AndroidTextTextPaint, this.c, Layout.Alignment.ALIGN_NORMAL, 1.0F, 0.0F, false);
     }
     postInvalidate();
+  }
+  
+  public int b()
+  {
+    if (this.jdField_a_of_type_AndroidTextStaticLayout != null) {
+      return this.jdField_a_of_type_AndroidTextStaticLayout.getLineCount();
+    }
+    return 0;
   }
   
   protected void onDraw(Canvas paramCanvas)
@@ -159,7 +170,7 @@ public class ExtendFriendGradientTextView
     if (this.jdField_a_of_type_AndroidTextStaticLayout != null)
     {
       paramInt1 = getResources().getDisplayMetrics().widthPixels;
-      AIOUtils.a(26.0F, getResources());
+      aciy.a(26.0F, getResources());
       setMeasuredDimension(this.jdField_a_of_type_AndroidTextStaticLayout.getWidth(), this.jdField_a_of_type_AndroidTextStaticLayout.getHeight());
     }
   }
@@ -187,6 +198,15 @@ public class ExtendFriendGradientTextView
   public void setTextSize(float paramFloat)
   {
     a(paramFloat, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Boolean);
+  }
+  
+  public void setViewWidth(int paramInt)
+  {
+    if (this.c == paramInt) {
+      return;
+    }
+    this.c = paramInt;
+    a(this.jdField_a_of_type_Float, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Boolean);
   }
 }
 

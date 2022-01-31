@@ -1,97 +1,90 @@
-import android.app.Activity;
-import android.text.TextUtils;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.item.QzoneFeedItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForQzoneFeed;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.util.URLUtil;
-import cooperation.qzone.QZoneClickReport;
-import cooperation.qzone.QZoneClickReport.ReportInfo;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.QZoneHelper.UserInfo;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 
 public class vjd
-  implements View.OnClickListener
+  extends BaseAdapter
 {
-  public vjd(QzoneFeedItemBuilder paramQzoneFeedItemBuilder, MessageForQzoneFeed paramMessageForQzoneFeed) {}
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private vjf jdField_a_of_type_Vjf;
+  private int b;
+  private int c;
   
-  public void onClick(View paramView)
+  public vjd(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl = QzoneFeedItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl)) {
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
+  }
+  
+  public Bitmap a(int paramInt)
+  {
+    return null;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Vjf = null;
+    this.jdField_a_of_type_AndroidContentContext = null;
+  }
+  
+  public void a(LocalMediaInfo paramLocalMediaInfo)
+  {
+    if (this.jdField_a_of_type_Vjf == null) {
       return;
     }
-    Map localMap = URLUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl);
-    Object localObject = null;
-    if (localMap != null) {
-      localObject = (String)localMap.get("g");
-    }
-    if (("110".equals(localObject)) || ("279".equals(localObject)) || ("318".equals(localObject)))
+    this.jdField_a_of_type_Vjf.a(paramLocalMediaInfo);
+  }
+  
+  public void a(vjf paramvjf)
+  {
+    this.jdField_a_of_type_Vjf = paramvjf;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
     {
-      paramView = paramView.getContext();
-      localObject = QZoneHelper.UserInfo.a();
-      ((QZoneHelper.UserInfo)localObject).a = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder.a.getCurrentAccountUin();
-      ((QZoneHelper.UserInfo)localObject).b = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder.a.getCurrentNickname();
-      QZoneHelper.a((Activity)paramView, (QZoneHelper.UserInfo)localObject, this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl, "mqqChat.QzoneCard", this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.appId, -1);
-      paramView = new QZoneClickReport.ReportInfo();
-      paramView.c = "1";
-      paramView.d = "0";
-      paramView.b = 4;
-      paramView.k = "3";
-      paramView.l = "AIO";
-      paramView.m = "detailPage";
-      QZoneClickReport.startReportImediately(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder.a.getAccount(), paramView);
-      paramView = new HashMap();
-      paramView.put("source_type", "3");
-      paramView.put("source_from", "AIO");
-      paramView.put("source_to", "detailPage");
-      StatisticCollector.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder.a.getAccount(), "actQZSourceDataReport", true, 0L, 0L, paramView, null);
-      paramView = null;
-      if (localMap != null) {
-        paramView = (String)localMap.get("a");
-      }
-      if (paramView != null)
-      {
-        if (!paramView.equals("4")) {
-          break label415;
-        }
-        paramView = "1";
-      }
+      paramView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+      int i = (int)(uwv.a(this.jdField_a_of_type_AndroidContentContext.getResources()) * this.b);
+      paramViewGroup = new ViewGroup.LayoutParams(this.b, i);
+      paramView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      paramView.setLayoutParams(paramViewGroup);
+      paramViewGroup = new vje();
+      paramViewGroup.a = paramView;
+      paramViewGroup.a.setImageDrawable(new ColorDrawable(-12303292));
+      paramView.setTag(paramViewGroup);
     }
     for (;;)
     {
-      localObject = new QZoneClickReport.ReportInfo();
-      ((QZoneClickReport.ReportInfo)localObject).c = "330";
-      ((QZoneClickReport.ReportInfo)localObject).d = "2";
-      ((QZoneClickReport.ReportInfo)localObject).e = paramView;
-      ((QZoneClickReport.ReportInfo)localObject).a = new ArrayList();
-      ((QZoneClickReport.ReportInfo)localObject).a.add(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl);
-      QZoneClickReport.startReportImediately(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder.a.getAccount(), (QZoneClickReport.ReportInfo)localObject);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder.a, "CliOper", "", "", "0X8006000", "0X8006000", 0, 0, "", "", "", "");
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQzoneFeedItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQzoneFeed.actionUrl);
-      break;
-      label415:
-      if (paramView.equals("311")) {
-        paramView = "2";
-      } else if (paramView.equals("2")) {
-        paramView = "3";
-      } else {
-        paramView = "4";
-      }
+      this.jdField_a_of_type_Vjf.a(paramViewGroup.a, Integer.valueOf(paramInt));
+      return paramView;
+      paramViewGroup = (vje)paramView.getTag();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vjd
  * JD-Core Version:    0.7.0.1
  */

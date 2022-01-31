@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBInt64Field;
 
 public final class oidb_0x802$JoinRoomAuthBufReq
-  extends MessageMicro
+  extends MessageMicro<JoinRoomAuthBufReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_identifier = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -24,7 +24,7 @@ public final class oidb_0x802$JoinRoomAuthBufReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x802.oidb_0x802.JoinRoomAuthBufReq
  * JD-Core Version:    0.7.0.1
  */

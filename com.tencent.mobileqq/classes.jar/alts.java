@@ -1,131 +1,259 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.controller.QidianBusinessObserver;
-import com.tencent.qidian.data.QidianCorpInfo;
-import com.tencent.qidian.data.QidianExternalInfo;
-import com.tencent.qidian.data.QidianProfileUiInfo;
+import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class alts
-  extends QidianBusinessObserver
+  implements altt
 {
-  public alts(QidianProfileCardActivity paramQidianProfileCardActivity) {}
-  
-  protected void b(boolean paramBoolean, HashMap paramHashMap)
+  protected int a(ColorNote paramColorNote)
   {
-    super.b(paramBoolean, paramHashMap);
-    this.a.a();
-    if ((paramBoolean) && (paramHashMap != null))
+    switch (alsr.a(paramColorNote.getServiceType()) & 0xFFFF0000)
     {
-      j = 0;
-      i = j;
-      if (paramHashMap.containsKey("external"))
-      {
-        i = j;
-        if (paramHashMap.get("external") != null)
-        {
-          localQidianExternalInfo = (QidianExternalInfo)paramHashMap.get("external");
-          if (!this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a.equals(localQidianExternalInfo.uin)) {
-            if (QLog.isColorLevel()) {
-              QLog.d("QidianProfileCardActivity", 2, "onGetQidianMasterInfo not current uin");
-            }
-          }
-        }
-      }
+    default: 
+      return 2130843465;
+    case 16973824: 
+      return 2130843410;
+    case 17039360: 
+      return 2130838943;
+    case 16842752: 
+      return 2130838944;
+    case 16908288: 
+      return 2130838945;
     }
-    while (!QLog.isColorLevel())
-    {
-      do
-      {
-        QidianExternalInfo localQidianExternalInfo;
-        return;
-        int i = j;
-        if (!localQidianExternalInfo.equals(this.a.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo))
-        {
-          this.a.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo = localQidianExternalInfo;
-          i = 1;
-        }
-        int j = i;
-        if (paramHashMap.containsKey("ConfigGroupInfo"))
-        {
-          j = i;
-          if (paramHashMap.get("ConfigGroupInfo") != null)
-          {
-            paramHashMap = (QidianProfileUiInfo)paramHashMap.get("ConfigGroupInfo");
-            j = i;
-            if (!paramHashMap.equals(QidianProfileCardActivity.a(this.a)))
-            {
-              QidianProfileCardActivity.a(this.a, paramHashMap);
-              j = 1;
-            }
-          }
-        }
-        if (j != 0)
-        {
-          this.a.c(6);
-          this.a.b();
-          return;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("QidianProfileCardActivity", 2, "onGetQidianMasterInfo not change");
-      return;
-    }
-    QLog.d("QidianProfileCardActivity", 2, "onGetQidianMasterInfo fail");
+    return 2130843256;
   }
   
-  protected void e(boolean paramBoolean, HashMap paramHashMap)
+  public int a(ColorNote paramColorNote, boolean paramBoolean)
   {
-    super.e(paramBoolean, paramHashMap);
-    this.a.a();
-    if ((paramBoolean) && (paramHashMap != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null) && (paramHashMap.containsKey("corp")) && (paramHashMap.get("corp") != null) && (paramHashMap.containsKey("ConfigGroupInfo")) && (paramHashMap.get("ConfigGroupInfo") != null))
+    int i;
+    switch (paramColorNote.getServiceType() & 0xFFFF0000)
     {
-      localQidianExternalInfo = (QidianExternalInfo)paramHashMap.get("external");
-      localQidianCorpInfo = (QidianCorpInfo)paramHashMap.get("corp");
-      paramHashMap = (QidianProfileUiInfo)paramHashMap.get("ConfigGroupInfo");
-      if (this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a.equals(localQidianExternalInfo.uin)) {
-        if ((!localQidianExternalInfo.equals(this.a.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo)) || (!localQidianCorpInfo.equals(QidianProfileCardActivity.a(this.a))) || (!paramHashMap.equals(QidianProfileCardActivity.a(this.a))))
+    default: 
+      i = 0;
+    }
+    for (;;)
+    {
+      if (alsr.b(paramColorNote))
+      {
+        if (!paramBoolean) {
+          break;
+        }
+        i = 2130838960;
+      }
+      return i;
+      if (paramBoolean)
+      {
+        i = 2130838955;
+      }
+      else
+      {
+        i = 2130838956;
+        continue;
+        if (paramBoolean)
         {
-          i = 1;
-          if (i == 0) {
-            break label230;
+          i = 2130838949;
+        }
+        else
+        {
+          i = 2130838950;
+          continue;
+          if (paramBoolean)
+          {
+            i = 2130838952;
           }
-          this.a.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo = localQidianExternalInfo;
-          QidianProfileCardActivity.a(this.a, localQidianCorpInfo);
-          QidianProfileCardActivity.a(this.a, paramHashMap);
-          this.a.c(1);
-          this.a.b();
+          else
+          {
+            i = 2130838953;
+            continue;
+            if (paramBoolean) {
+              i = 2130838958;
+            } else {
+              i = 2130838959;
+            }
+          }
         }
       }
     }
-    label230:
-    while (!QLog.isColorLevel())
+    return 2130838961;
+  }
+  
+  public void a(alti paramalti, int paramInt, boolean paramBoolean)
+  {
+    ColorNote localColorNote = paramalti.a(paramInt);
+    localResources = paramalti.jdField_a_of_type_AndroidWidgetImageView.getContext().getResources();
+    paramInt = a(localColorNote);
+    for (;;)
     {
-      do
+      try
       {
-        do
+        localObject1 = new URL(localColorNote.getPicUrl());
+        bool = "resdrawable".equals(((URL)localObject1).getProtocol());
+        if (!bool) {
+          continue;
+        }
+      }
+      catch (MalformedURLException localMalformedURLException)
+      {
+        Object localObject1;
+        boolean bool;
+        URLDrawable.URLDrawableOptions localURLDrawableOptions;
+        localObject2 = localResources.getDrawable(paramInt);
+        QLog.e("DefaultItemBuilder", 1, localMalformedURLException, new Object[0]);
+        continue;
+      }
+      catch (NullPointerException localNullPointerException)
+      {
+        Object localObject2 = localResources.getDrawable(paramInt);
+        QLog.e("DefaultItemBuilder", 1, localNullPointerException, new Object[0]);
+        continue;
+        paramalti.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, paramalti.jdField_a_of_type_Alsg, null);
+        paramalti.jdField_a_of_type_Alsg.a(300);
+        localObject2 = paramalti.jdField_a_of_type_AndroidViewView;
+        if (!paramBoolean) {
+          continue;
+        }
+        paramInt = 2130838955;
+        ((View)localObject2).setBackgroundResource(paramInt);
+        paramalti.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130838964);
+        continue;
+        paramInt = 2130838956;
+        continue;
+        paramalti.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+        localObject2 = paramalti.jdField_a_of_type_AndroidViewView;
+        if (!paramBoolean) {
+          continue;
+        }
+        paramInt = 2130838949;
+        ((View)localObject2).setBackgroundResource(paramInt);
+        paramalti.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130838962);
+        continue;
+        paramInt = 2130838950;
+        continue;
+        paramalti.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+        localObject2 = paramalti.jdField_a_of_type_AndroidViewView;
+        if (!paramBoolean) {
+          continue;
+        }
+        paramInt = 2130838952;
+        ((View)localObject2).setBackgroundResource(paramInt);
+        paramalti.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130838963);
+        continue;
+        paramInt = 2130838953;
+        continue;
+        paramalti.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+        localObject2 = paramalti.jdField_a_of_type_AndroidViewView;
+        if (!paramBoolean) {
+          continue;
+        }
+        paramInt = 2130838958;
+        ((View)localObject2).setBackgroundResource(paramInt);
+        paramalti.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130838965);
+        continue;
+        paramInt = 2130838959;
+        continue;
+        paramInt = 2130838961;
+        continue;
+      }
+      try
+      {
+        localObject1 = localResources.getDrawable(Integer.parseInt(((URL)localObject1).getHost()));
+        paramalti.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
+        bool = alsr.b(localColorNote);
+        switch (alsr.a(localColorNote.getServiceType() & 0xFFFF0000))
         {
-          for (;;)
+        default: 
+          paramalti.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+          if (bool)
           {
-            QidianExternalInfo localQidianExternalInfo;
-            QidianCorpInfo localQidianCorpInfo;
-            return;
-            int i = 0;
+            localObject1 = paramalti.jdField_a_of_type_AndroidViewView;
+            if (!paramBoolean) {
+              continue;
+            }
+            paramInt = 2130838960;
+            ((View)localObject1).setBackgroundResource(paramInt);
           }
-        } while (!QLog.isColorLevel());
-        QLog.d("QidianProfileCardActivity", 2, "onGetQidianUserDetailInfo not change");
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("QidianProfileCardActivity", 2, "onGetQidianUserDetailInfo not current uin");
-      return;
+          paramalti.jdField_a_of_type_AndroidWidgetTextView.setText(localColorNote.getMainTitle());
+          paramalti.jdField_b_of_type_AndroidWidgetTextView.setText(localColorNote.getSubTitle());
+          return;
+        }
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        localObject2 = localResources.getDrawable(paramInt);
+        continue;
+      }
+      localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mRequestWidth = aciy.a(40.0F, localResources);
+      localURLDrawableOptions.mRequestHeight = aciy.a(40.0F, localResources);
+      localURLDrawableOptions.mLoadingDrawable = localResources.getDrawable(paramInt);
+      localURLDrawableOptions.mFailedDrawable = localURLDrawableOptions.mLoadingDrawable;
+      localObject2 = URLDrawable.getDrawable((URL)localObject2, localURLDrawableOptions);
     }
-    QLog.d("QidianProfileCardActivity", 2, "onGetQidianUserDetailInfo fail");
+  }
+  
+  public void a(ColorNote paramColorNote, View paramView, ImageView paramImageView, boolean paramBoolean)
+  {
+    i = a(paramColorNote, paramBoolean);
+    if (i != 0) {
+      paramView.setBackgroundResource(i);
+    }
+    paramView = paramView.getContext().getResources();
+    i = a(paramColorNote);
+    for (;;)
+    {
+      try
+      {
+        paramColorNote = new URL(paramColorNote.getPicUrl());
+        paramBoolean = "resdrawable".equals(paramColorNote.getProtocol());
+        if (!paramBoolean) {
+          continue;
+        }
+      }
+      catch (MalformedURLException localMalformedURLException)
+      {
+        URLDrawable.URLDrawableOptions localURLDrawableOptions;
+        paramColorNote = paramView.getDrawable(i);
+        QLog.e("DefaultItemBuilder", 1, localMalformedURLException, new Object[0]);
+        continue;
+      }
+      catch (NullPointerException localNullPointerException)
+      {
+        paramColorNote = paramView.getDrawable(i);
+        QLog.e("DefaultItemBuilder", 1, localNullPointerException, new Object[0]);
+        continue;
+      }
+      try
+      {
+        paramColorNote = paramView.getDrawable(Integer.parseInt(paramColorNote.getHost()));
+        paramImageView.setImageDrawable(paramColorNote);
+        return;
+      }
+      catch (NumberFormatException paramColorNote)
+      {
+        paramColorNote = paramView.getDrawable(i);
+        continue;
+      }
+      localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mRequestWidth = aciy.a(40.0F, paramView);
+      localURLDrawableOptions.mRequestHeight = aciy.a(40.0F, paramView);
+      localURLDrawableOptions.mLoadingDrawable = paramView.getDrawable(i);
+      localURLDrawableOptions.mFailedDrawable = localURLDrawableOptions.mLoadingDrawable;
+      paramColorNote = URLDrawable.getDrawable(paramColorNote, localURLDrawableOptions);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alts
  * JD-Core Version:    0.7.0.1
  */

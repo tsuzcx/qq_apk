@@ -1,65 +1,143 @@
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.support.v4.widget.ExploreByTouchHelper;
-import android.view.View;
-import android.view.accessibility.AccessibilityEvent;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.text.TextUtils;
+import com.tencent.ark.ark.Application;
+import com.tencent.ark.ark.ModuleCallbackWrapper;
+import com.tencent.ark.ark.VariantWrapper;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
-public class alar
-  extends ExploreByTouchHelper
+public abstract class alar
+  implements ark.ModuleCallbackWrapper
 {
-  public alar(ClearableEditText paramClearableEditText, View paramView)
+  public static boolean a;
+  protected long a;
+  protected ark.Application a;
+  public String a;
+  HashMap<Long, ark.VariantWrapper> a;
+  protected Map<String, Set<alas>> a;
+  protected long b;
+  public String b;
+  public String c;
+  
+  static
   {
-    super(paramView);
+    jdField_a_of_type_Boolean = true;
   }
   
-  protected int getVirtualViewAt(float paramFloat1, float paramFloat2)
+  protected alar(ark.Application paramApplication, long paramLong)
   {
-    if ((ClearableEditText.c(this.a)) && (paramFloat1 > this.a.getWidth() - this.a.getPaddingRight() - this.a.a.getIntrinsicWidth())) {
-      return 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_Long = 1L;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_ComTencentArkArk$Application = paramApplication;
+    this.jdField_a_of_type_JavaLangString = paramApplication.GetSpecific("appName");
+    this.c = paramApplication.GetSpecific("appPath");
+    this.jdField_b_of_type_JavaLangString = paramApplication.GetID();
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public void Destruct()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+    while (localIterator.hasNext()) {
+      ((ark.VariantWrapper)((Map.Entry)localIterator.next()).getValue()).Reset();
     }
-    return -1;
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
   }
   
-  protected void getVisibleVirtualViews(List paramList)
+  long a(ark.VariantWrapper paramVariantWrapper)
   {
-    if (ClearableEditText.c(this.a)) {
-      paramList.add(Integer.valueOf(0));
+    if ((paramVariantWrapper == null) || (!paramVariantWrapper.IsFunction())) {
+      return 0L;
+    }
+    this.jdField_b_of_type_Long += 1L;
+    if (this.jdField_b_of_type_Long == 0L) {
+      this.jdField_b_of_type_Long = 1L;
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(this.jdField_b_of_type_Long), paramVariantWrapper);
+    return this.jdField_b_of_type_Long;
+  }
+  
+  public ark.VariantWrapper a(long paramLong)
+  {
+    ark.VariantWrapper localVariantWrapper = (ark.VariantWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+    this.jdField_a_of_type_JavaUtilHashMap.remove(Long.valueOf(paramLong));
+    return localVariantWrapper;
+  }
+  
+  protected void a(String paramString, long paramLong1, long paramLong2)
+  {
+    Object localObject;
+    if ((!TextUtils.isEmpty(paramString)) && (paramLong2 > 0L))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("ArkApp", 2, String.format("ModuleBase.addTokenBucket.api:%s,times:%d,period:%d", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
+      }
+      localObject = (Set)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      if (localObject != null) {
+        break label118;
+      }
+      localObject = new HashSet();
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
+    }
+    label118:
+    for (paramString = (String)localObject;; paramString = (String)localObject)
+    {
+      paramString.add(new alas(this, paramLong1, paramLong2));
+      return;
     }
   }
   
-  protected boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
+  public void a(List<alcl> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ClearableEditTextHelper", 2, "onPerformActionForVirtualView virtualViewId:" + paramInt1);
+    if (paramList != null)
+    {
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        alcl localalcl = (alcl)paramList.next();
+        a(localalcl.jdField_a_of_type_JavaLangString, localalcl.jdField_a_of_type_Long, localalcl.jdField_b_of_type_Long);
+      }
+    }
+  }
+  
+  protected boolean a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      Object localObject = (Set)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+      if (localObject == null) {
+        return true;
+      }
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        alas localalas = (alas)((Iterator)localObject).next();
+        if (!localalas.a())
+        {
+          QLog.i("ArkApp", 2, String.format("ModuleBase.checkFrequency.Refuse:%s,%s ", new Object[] { paramString, localalas.toString() }));
+          return false;
+        }
+      }
+      return true;
     }
     return false;
   }
   
-  protected void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
+  public ark.VariantWrapper b(long paramLong)
   {
-    if (paramInt == 0) {
-      paramAccessibilityEvent.setContentDescription("删除 按钮");
-    }
-  }
-  
-  protected void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
-  {
-    if (paramInt == 0)
-    {
-      paramAccessibilityNodeInfoCompat.setContentDescription("删除 按钮");
-      paramAccessibilityNodeInfoCompat.addAction(16);
-      paramAccessibilityNodeInfoCompat.setBoundsInParent(new Rect(this.a.getWidth() - this.a.getPaddingRight() - this.a.a.getIntrinsicWidth(), this.a.getPaddingTop(), this.a.getWidth() - this.a.getPaddingRight(), this.a.getHeight() - this.a.getPaddingBottom()));
-    }
+    return (ark.VariantWrapper)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alar
  * JD-Core Version:    0.7.0.1
  */

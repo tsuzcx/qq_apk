@@ -1,77 +1,40 @@
-import android.app.Activity;
-import android.content.Intent;
+import android.content.Context;
 import android.content.res.Resources;
-import com.tencent.biz.troop.file.MoveFileActivity;
-import com.tencent.biz.troop.file.TroopFileProtocol.MoveFileObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.data.TroopFileInfo;
-import com.tencent.mobileqq.widget.QQToast;
+import android.util.DisplayMetrics;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.DrawableUtil;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.LogUtil;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
 
 public class pcw
-  extends TroopFileProtocol.MoveFileObserver
+  extends VafContext
 {
-  public pcw(MoveFileActivity paramMoveFileActivity, TroopFileInfo paramTroopFileInfo) {}
-  
-  protected void a(boolean paramBoolean, int paramInt, String paramString)
+  private static void a()
   {
-    this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.b();
-    Intent localIntent = new Intent();
-    localIntent.putExtra("fileId", MoveFileActivity.b(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity));
-    localIntent.putExtra("folderId", this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.b);
-    int i = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity().getResources().getDimensionPixelSize(2131558448);
-    if (paramBoolean)
-    {
-      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app;
-      String str = Long.toString(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a);
-      if (MoveFileActivity.c(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity).equals("/"))
-      {
-        paramString = "0";
-        ReportController.b(localQQAppInterface, "P_CliOper", "Grp_files", "", "file", "move_suc", 0, 0, str, paramString, "", "");
-        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 2, "移动成功", 0).b(i);
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(-1, localIntent);
-      }
+    DrawableUtil.setDrawableHelper(new pcx());
+  }
+  
+  private void b()
+  {
+    LogUtil.setProteusLog(new oyb());
+  }
+  
+  private void c() {}
+  
+  public void setContext(Context paramContext)
+  {
+    super.setContext(paramContext);
+    paramContext = paramContext.getResources().getDisplayMetrics();
+    float f2 = ajia.a() / 16.0F;
+    float f1 = f2;
+    if (f2 == 0.0F) {
+      f1 = 1.0F;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.finish();
-      this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.overridePendingTransition(0, 2131034135);
-      return;
-      paramString = "1";
-      break;
-      switch (paramInt)
-      {
-      default: 
-        paramString = this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getString(2131430232);
-        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, paramString, 0).b(i);
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
-        break;
-      case -302: 
-      case -301: 
-      case -103: 
-        ReportController.b(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app, "P_CliOper", "Grp_files", "", "file", "fail_move_nofile", 0, 0, Long.toString(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a), "", "", "");
-        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, "移动失败， 文件不存在", 0).b(i);
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
-        break;
-      case -136: 
-        ReportController.b(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.app, "P_CliOper", "Grp_files", "", "file", "fail_move", 0, 0, Long.toString(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.a), "", "", "");
-        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, "移动失败， 目标文件夹不存在", 0).b(i);
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
-        break;
-      case -107: 
-      case -102: 
-        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, "操作失败，你不是该群管理员", 0).b(i);
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
-        break;
-      case -406: 
-        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, "移动失败， 原文件夹不存在", 0).b(i);
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
-        break;
-      case -407: 
-        QQToast.a(this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.getActivity(), 1, "移动失败， 目标文件夹不存在", 0).b(i);
-        this.jdField_a_of_type_ComTencentBizTroopFileMoveFileActivity.setResult(0, localIntent);
-      }
-    }
+    Utils.init(paramContext.density / f1, paramContext.widthPixels);
+    a();
+    b();
+    c();
+    rdz.a();
   }
 }
 

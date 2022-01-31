@@ -1,16 +1,18 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo;
-import com.tencent.biz.qqstory.takevideo.filter.WeatherFilterData;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyPicWaterFallFragment;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyXRecyclerView;
 
-class oje
-  implements Runnable
+public class oje
+  extends StaggeredGridLayoutManager
 {
-  oje(ojd paramojd, int paramInt) {}
-  
-  public void run()
+  public oje(ReadInJoyPicWaterFallFragment paramReadInJoyPicWaterFallFragment, int paramInt1, int paramInt2)
   {
-    if (EditVideoFilterNeo.a(this.jdField_a_of_type_Ojd.a) != null) {
-      EditVideoFilterNeo.a(this.jdField_a_of_type_Ojd.a).a(this.jdField_a_of_type_Int);
-    }
+    super(paramInt1, paramInt2);
+  }
+  
+  public boolean canScrollVertically()
+  {
+    return (this.a.a.e) && (super.canScrollVertically());
   }
 }
 

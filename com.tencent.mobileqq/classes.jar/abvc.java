@@ -1,29 +1,41 @@
-import android.widget.Button;
-import com.tencent.mobileqq.businessCard.activity.FlowCameraPhotoActivity;
-import com.tencent.mobileqq.businessCard.helpers.CameraHelper.CameraHelperCallback;
-import java.io.File;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.activity.ThemeNoviceGuideActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class abvc
-  implements CameraHelper.CameraHelperCallback
+  extends Handler
 {
-  public abvc(FlowCameraPhotoActivity paramFlowCameraPhotoActivity) {}
-  
-  public void a(String paramString)
+  public abvc(ThemeNoviceGuideActivity paramThemeNoviceGuideActivity, Looper paramLooper)
   {
-    this.a.jdField_a_of_type_JavaLangString = paramString;
-    if (this.a.jdField_a_of_type_JavaLangString != null)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    paramMessage = this.a.findViewById(2131311419);
+    if (paramMessage != null) {}
+    try
     {
-      paramString = new File(this.a.jdField_a_of_type_JavaLangString);
-      this.a.d = false;
-      this.a.a(paramString, true);
+      paramMessage.setBackgroundResource(2130849220);
+      awqx.b(this.a.app, "CliOper", "", this.a.app.getCurrentAccountUin(), "theme_mall", "theme_popup", 0, 0, "", "", "", "");
       return;
     }
-    this.a.jdField_a_of_type_AndroidWidgetButton.setClickable(true);
+    catch (OutOfMemoryError paramMessage)
+    {
+      for (;;)
+      {
+        QLog.e("ThemeNoviceGuideActivity", 1, "handleMessage oom e = " + paramMessage);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abvc
  * JD-Core Version:    0.7.0.1
  */

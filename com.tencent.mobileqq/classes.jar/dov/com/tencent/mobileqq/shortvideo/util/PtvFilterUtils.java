@@ -3,8 +3,8 @@ package dov.com.tencent.mobileqq.shortvideo.util;
 import android.opengl.GLES20;
 import android.os.Build.VERSION;
 import android.os.HandlerThread;
+import bace;
 import com.tencent.maxvideo.common.AVIOStruct;
-import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.lang.reflect.Method;
@@ -37,16 +37,6 @@ public class PtvFilterUtils
     return System.nanoTime();
   }
   
-  public static void a(int paramInt)
-  {
-    try
-    {
-      setBeautyKind(paramInt);
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError) {}
-  }
-  
   public static void a(String paramString1, String paramString2)
   {
     paramString1 = paramString1 + File.separator + "configure.txt";
@@ -55,7 +45,7 @@ public class PtvFilterUtils
     if (QLog.isColorLevel()) {
       QLog.d("PtvFilterUtils", 2, "configure file content:" + localStringBuilder.toString());
     }
-    FileUtils.a(paramString1, localStringBuilder.toString());
+    bace.a(paramString1, localStringBuilder.toString());
   }
   
   public static void a(boolean paramBoolean)
@@ -68,7 +58,7 @@ public class PtvFilterUtils
     GLES20.glFlush();
   }
   
-  private static boolean a(String paramString1, String paramString2, Class... paramVarArgs)
+  private static boolean a(String paramString1, String paramString2, Class<?>... paramVarArgs)
   {
     try
     {
@@ -82,26 +72,6 @@ public class PtvFilterUtils
   private static native ByteBuffer allocate();
   
   public static native ByteBuffer allocateSharedMem(long paramLong);
-  
-  public static void b(int paramInt)
-  {
-    try
-    {
-      setVideoClipThreadNum(paramInt);
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError) {}
-  }
-  
-  public static void b(boolean paramBoolean)
-  {
-    try
-    {
-      setSupportBeauty(paramBoolean);
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError) {}
-  }
   
   public static native void copyMapData(ByteBuffer paramByteBuffer1, ByteBuffer paramByteBuffer2, int paramInt);
   

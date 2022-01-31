@@ -1,27 +1,20 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.intervideo.now.ShareToQQActivity;
+import android.os.Bundle;
 
-public class aedq
-  extends FriendListObserver
+class aedq
+  extends awdj
 {
-  public aedq(ShareToQQActivity paramShareToQQActivity) {}
+  aedq(aedo paramaedo) {}
   
-  protected void onUpdateFriendShieldFlag(long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if ((paramLong != 0L) && (this.a.a != null) && (this.a.a.equals(paramLong + "")))
-    {
-      paramString = new Intent();
-      paramString.putExtra("isSuccess", paramBoolean2);
-      paramString.putExtra("isCancelShield", false);
-      this.a.setResult(-1, paramString);
+    if ((paramBoolean) && (this.a.a != null)) {
+      this.a.a.a();
     }
-    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aedq
  * JD-Core Version:    0.7.0.1
  */

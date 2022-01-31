@@ -1,5 +1,8 @@
 package com.tencent.mobileqq.activity.aio.panel;
 
+import aciy;
+import adll;
+import ajjy;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.StateListDrawable;
@@ -16,10 +19,8 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.PokePanel;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
 import com.tencent.mobileqq.widget.QQViewPager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class PokeAndEmoPanel
   public ImageView a(int paramInt1, int paramInt2, String paramString)
   {
     ImageButton localImageButton = new ImageButton(getContext());
-    localImageButton.setLayoutParams(new LinearLayout.LayoutParams(AIOUtils.a(50.0F, getResources()), -1));
+    localImageButton.setLayoutParams(new LinearLayout.LayoutParams(aciy.a(50.0F, getResources()), -1));
     localImageButton.setId(paramInt1);
     localImageButton.setImageResource(paramInt2);
     StateListDrawable localStateListDrawable = new StateListDrawable();
@@ -72,36 +73,41 @@ public class PokeAndEmoPanel
     return localImageButton;
   }
   
-  public void a() {}
+  public void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel.d();
+    }
+  }
   
   public void a(BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131363037));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)findViewById(2131305643));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setOnPageChangeListener(this);
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131363036));
-    this.jdField_b_of_type_AndroidViewView = a(2131362482, 2130837685, getContext().getString(2131438159));
-    this.jdField_a_of_type_AndroidViewView = a(2131362483, 2130837686, getContext().getString(2131438157));
-    if (AppSetting.b)
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)findViewById(2131311023));
+    this.jdField_b_of_type_AndroidViewView = a(2131311007, 2130838006, getContext().getString(2131632759));
+    this.jdField_a_of_type_AndroidViewView = a(2131311006, 2130838007, getContext().getString(2131632758));
+    if (AppSetting.c)
     {
-      this.jdField_b_of_type_AndroidViewView.setContentDescription("表情泡泡");
-      this.jdField_a_of_type_AndroidViewView.setContentDescription("戳一戳");
+      this.jdField_b_of_type_AndroidViewView.setContentDescription(ajjy.a(2131642533));
+      this.jdField_a_of_type_AndroidViewView.setContentDescription(ajjy.a(2131642534));
     }
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel = ((PokePanel)View.inflate(getContext(), 2130968655, null));
-    String str = PokeItemHelper.a(paramBaseChatPie.a());
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel = ((PokePanel)View.inflate(getContext(), 2131493017, null));
+    String str = adll.a(paramBaseChatPie.a());
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel.a(paramBaseChatPie, paramSessionInfo, str);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel.a(str);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel = new PEPanel(getContext());
-    str = PokeItemHelper.a(paramBaseChatPie.a(), 8);
+    str = adll.a(paramBaseChatPie.a(), 8);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel.a(paramBaseChatPie, paramSessionInfo);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel.a(str);
     paramSessionInfo = new ArrayList();
-    int i = PokeItemHelper.b(paramBaseChatPie.a(), 4);
-    int j = PokeItemHelper.b(paramBaseChatPie.a(), 11);
-    if ((i == 1) && (PokeItemHelper.b))
+    int i = adll.b(paramBaseChatPie.a(), 4);
+    int j = adll.b(paramBaseChatPie.a(), 11);
+    if ((i == 1) && (adll.b))
     {
       this.jdField_a_of_type_Int = 1;
       this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_b_of_type_AndroidViewView);
@@ -119,14 +125,14 @@ public class PokeAndEmoPanel
       paramBaseChatPie = new PokeEmoPageAdapter(getContext(), paramSessionInfo);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setAdapter(paramBaseChatPie);
       if (paramSessionInfo.size() <= 1) {
-        break label581;
+        break label587;
       }
-      this.jdField_b_of_type_Int = PokeItemHelper.jdField_a_of_type_Int;
+      this.jdField_b_of_type_Int = adll.jdField_a_of_type_Int;
       if (this.jdField_b_of_type_Int == -1) {
         this.jdField_b_of_type_Int = ((this.jdField_a_of_type_Int + 1) % 2);
       }
       if ((this.jdField_a_of_type_Int != 1) || (this.jdField_b_of_type_Int != 0)) {
-        break label567;
+        break label573;
       }
       this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel.a();
     }
@@ -143,16 +149,16 @@ public class PokeAndEmoPanel
       paramSessionInfo.add(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel);
       this.jdField_a_of_type_AndroidViewView.setSelected(true);
       this.jdField_b_of_type_AndroidViewView.setSelected(false);
-      if ((j != 1) && (PokeItemHelper.b)) {
+      if ((j != 1) && (adll.b)) {
         break;
       }
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
       paramSessionInfo.remove(this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel);
       break;
-      label567:
+      label573:
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(this.jdField_b_of_type_Int);
       continue;
-      label581:
+      label587:
       if (this.jdField_a_of_type_Int == 1) {
         this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel.a();
       }
@@ -163,13 +169,13 @@ public class PokeAndEmoPanel
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel.b();
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel.b();
-    PokeItemHelper.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+    adll.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
   }
   
   public void c()
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPEPanel.c();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel.d();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel.e();
   }
   
   public void d()
@@ -184,7 +190,7 @@ public class PokeAndEmoPanel
     {
     default: 
       return;
-    case 2131362483: 
+    case 2131311006: 
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setCurrentItem(this.jdField_a_of_type_Int, true);
       paramView.setSelected(true);
       this.jdField_b_of_type_AndroidViewView.setSelected(false);
@@ -216,7 +222,7 @@ public class PokeAndEmoPanel
     for (;;)
     {
       this.jdField_b_of_type_Int = paramInt;
-      PokeItemHelper.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+      adll.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
       return;
       this.jdField_b_of_type_AndroidViewView.setSelected(true);
       this.jdField_a_of_type_AndroidViewView.setSelected(false);
@@ -229,7 +235,7 @@ public class PokeAndEmoPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.panel.PokeAndEmoPanel
  * JD-Core Version:    0.7.0.1
  */

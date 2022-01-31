@@ -1,28 +1,33 @@
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.webviewplugin.GamePartyPlugin;
 
-class xba
-  extends ContactBindObserver
+public class xba
+  extends anad
 {
-  xba(xaz paramxaz) {}
+  public xba(GamePartyPlugin paramGamePartyPlugin) {}
   
-  protected void c(boolean paramBoolean)
+  public void onBindedToClient() {}
+  
+  public void onDisconnectWithService() {}
+  
+  public void onPushMsg(Bundle paramBundle) {}
+  
+  public void onResponse(Bundle paramBundle)
   {
-    this.a.a.a.b();
-    this.a.a.a.app.unRegistObserver(this);
-    if (paramBoolean)
+    if ((paramBundle != null) && (paramBundle.getInt("respkey") == GamePartyPlugin.a(this.a).key) && ("batchGetUserInfo".equals(paramBundle.getString("cmd"))))
     {
-      this.a.a.a.a.a(true, true);
-      this.a.a.a.setResult(4002);
-      this.a.a.a.finish();
+      String str = paramBundle.getString("callbackid");
+      paramBundle = paramBundle.getBundle("response").getString("result");
+      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramBundle))) {
+        this.a.callJs(str, new String[] { paramBundle });
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xba
  * JD-Core Version:    0.7.0.1
  */

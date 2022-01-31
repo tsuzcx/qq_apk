@@ -20,22 +20,22 @@ public class QZoneHttp2Client
   {
     if (paramClientOptions != null)
     {
-      setConnectTimeout(paramClientOptions.c, TimeUnit.MILLISECONDS);
-      setReadTimeout(paramClientOptions.e, TimeUnit.MILLISECONDS);
-      setWriteTimeout(paramClientOptions.e, TimeUnit.MILLISECONDS);
+      setConnectTimeout(paramClientOptions.connTimeout, TimeUnit.MILLISECONDS);
+      setReadTimeout(paramClientOptions.soTimeout, TimeUnit.MILLISECONDS);
+      setWriteTimeout(paramClientOptions.soTimeout, TimeUnit.MILLISECONDS);
     }
-    long l = paramClientOptions.jdField_a_of_type_Long;
-    setConnectionPool(new ConnectionPool(paramClientOptions.jdField_a_of_type_Int, l * 1000L));
+    long l = paramClientOptions.timeToLive;
+    setConnectionPool(new ConnectionPool(paramClientOptions.maxConnection, l * 1000L));
     setHostnameVerifier(SSLSocketFactory.BROWSER_COMPATIBLE_HOSTNAME_VERIFIER);
     setProtocols(Util.immutableList(new Protocol[] { Protocol.HTTP_2, Protocol.HTTP_1_1 }));
   }
   
-  public Call a(Request paramRequest, HttpUtil.RequestOptions paramRequestOptions)
+  public Call newCall(Request paramRequest, HttpUtil.RequestOptions paramRequestOptions)
   {
     if (paramRequest == null) {
       return null;
     }
-    paramRequestOptions = HttpUtil.a(paramRequestOptions);
+    paramRequestOptions = HttpUtil.prepareRequest(paramRequestOptions);
     if ((paramRequestOptions != null) && (paramRequestOptions != Proxy.NO_PROXY)) {
       return newCall(paramRequest, paramRequestOptions);
     }

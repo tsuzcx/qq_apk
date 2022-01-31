@@ -9,14 +9,14 @@ public final class ReqAddFace
   extends JceStruct
 {
   static ReqHead cache_stHeader;
-  static ArrayList cache_vFaceInfo;
+  static ArrayList<FaceInfo> cache_vFaceInfo;
   public ReqHead stHeader;
   public int uFaceTimeStamp;
-  public ArrayList vFaceInfo;
+  public ArrayList<FaceInfo> vFaceInfo;
   
   public ReqAddFace() {}
   
-  public ReqAddFace(ReqHead paramReqHead, int paramInt, ArrayList paramArrayList)
+  public ReqAddFace(ReqHead paramReqHead, int paramInt, ArrayList<FaceInfo> paramArrayList)
   {
     this.stHeader = paramReqHead;
     this.uFaceTimeStamp = paramInt;

@@ -1,34 +1,47 @@
 package com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils;
 
 import android.content.res.ColorStateList;
+import android.util.Pair;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ColorUtil
 {
-  public static ColorStateList a(String paramString1, String paramString2, String paramString3)
+  public static ColorStateList getColorStateList(String paramString1, String paramString2, String paramString3)
   {
-    int[] arrayOfInt = new int[3];
-    int[] tmp5_4 = arrayOfInt;
-    tmp5_4[0] = -16777216;
-    int[] tmp10_5 = tmp5_4;
-    tmp10_5[1] = -16777216;
-    int[] tmp15_10 = tmp10_5;
-    tmp15_10[2] = -16777216;
-    tmp15_10;
+    ArrayList localArrayList = new ArrayList();
     if (paramString3 != null) {
-      arrayOfInt[0] = Utils.a(paramString3);
+      localArrayList.add(new Pair(Integer.valueOf(16842913), Integer.valueOf(Utils.parseColor(paramString3))));
     }
     if (paramString2 != null) {
-      arrayOfInt[1] = Utils.a(paramString2);
+      localArrayList.add(new Pair(Integer.valueOf(16842919), Integer.valueOf(Utils.parseColor(paramString2))));
     }
     if (paramString1 != null) {
-      arrayOfInt[2] = Utils.a(paramString1);
+      localArrayList.add(new Pair(Integer.valueOf(-2147483648), Integer.valueOf(Utils.parseColor(paramString1))));
     }
-    return new ColorStateList(new int[][] { { 16842913 }, { 16842919 }, new int[0] }, arrayOfInt);
+    paramString1 = new int[localArrayList.size()];
+    paramString2 = new int[localArrayList.size()][];
+    int i = 0;
+    if (i < localArrayList.size())
+    {
+      paramString3 = (Pair)localArrayList.get(i);
+      paramString1[i] = ((Integer)paramString3.second).intValue();
+      if (((Integer)paramString3.first).intValue() != -2147483648) {
+        paramString2[i] = { ((Integer)paramString3.first).intValue() };
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        paramString2[i] = new int[0];
+      }
+    }
+    return new ColorStateList(paramString2, paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ColorUtil
  * JD-Core Version:    0.7.0.1
  */

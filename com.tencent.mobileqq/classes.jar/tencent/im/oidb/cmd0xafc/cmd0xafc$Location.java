@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class cmd0xafc$Location
-  extends MessageMicro
+  extends MessageMicro<Location>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "int32_lat", "int32_lon", "int32_coo" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, Location.class);
   public final PBInt32Field int32_coo = PBField.initInt32(0);
@@ -15,7 +15,7 @@ public final class cmd0xafc$Location
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0xafc.cmd0xafc.Location
  * JD-Core Version:    0.7.0.1
  */

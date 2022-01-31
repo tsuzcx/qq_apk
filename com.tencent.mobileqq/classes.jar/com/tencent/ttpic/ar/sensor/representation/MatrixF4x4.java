@@ -1,6 +1,6 @@
 package com.tencent.ttpic.ar.sensor.representation;
 
-import android.util.Log;
+import com.tencent.ttpic.baseutils.log.LogUtils;
 
 public class MatrixF4x4
 {
@@ -51,7 +51,8 @@ public class MatrixF4x4
         m = paramInt2 + 8 + j;
         paramArrayOfFloat2[m] += this.matrix[(k + j)] * paramArrayOfFloat1[(paramInt1 + 8 + i)];
         m = paramInt2 + 12 + j;
-        paramArrayOfFloat2[m] += this.matrix[(k + j)] * paramArrayOfFloat1[(paramInt1 + 12 + i)];
+        float f = paramArrayOfFloat2[m];
+        paramArrayOfFloat2[m] = (this.matrix[(k + j)] * paramArrayOfFloat1[(paramInt1 + 12 + i)] + f);
         j += 1;
       }
       i += 1;
@@ -100,18 +101,21 @@ public class MatrixF4x4
   
   public void multiplyVector3fByMatrix(Vector3f paramVector3f)
   {
+    float f4 = 0.0F;
+    float f2 = 0.0F;
     if (this.matrix.length == 9)
     {
-      float f4 = 0.0F;
-      float f3 = 0.0F;
-      float f5 = 0.0F;
-      float f2 = 0.0F;
-      float f6 = 0.0F;
-      float f1 = 0.0F;
       float[] arrayOfFloat = paramVector3f.toArray();
+      float f5;
+      float f6;
+      float f7;
+      float f8;
+      float f9;
       if (!this.colMaj)
       {
         i = 0;
+        f1 = 0.0F;
+        f3 = 0.0F;
         for (;;)
         {
           f4 = f3;
@@ -121,16 +125,22 @@ public class MatrixF4x4
             break;
           }
           int j = i * 3;
-          f3 += this.matrix[(j + 0)] * arrayOfFloat[i];
-          f2 += this.matrix[(j + 1)] * arrayOfFloat[i];
-          f1 += this.matrix[(j + 2)] * arrayOfFloat[i];
+          f4 = this.matrix[(j + 0)];
+          f5 = arrayOfFloat[i];
+          f6 = this.matrix[(j + 1)];
+          f7 = arrayOfFloat[i];
+          f8 = this.matrix[(j + 2)];
+          f9 = arrayOfFloat[i];
           i += 1;
+          f3 = f8 * f9 + f3;
+          f2 = f6 * f7 + f2;
+          f1 = f4 * f5 + f1;
         }
       }
       int i = 0;
-      f1 = f6;
-      f2 = f5;
-      f3 = f4;
+      float f1 = 0.0F;
+      float f3 = 0.0F;
+      f2 = f4;
       for (;;)
       {
         f4 = f3;
@@ -139,79 +149,105 @@ public class MatrixF4x4
         if (i >= 3) {
           break;
         }
-        f3 += this.matrix[(i + 0)] * arrayOfFloat[i];
-        f2 += this.matrix[(i + 3)] * arrayOfFloat[i];
-        f1 += this.matrix[(i + 6)] * arrayOfFloat[i];
+        f4 = this.matrix[(i + 0)];
+        f5 = arrayOfFloat[i];
+        f6 = this.matrix[(i + 3)];
+        f7 = arrayOfFloat[i];
+        f8 = this.matrix[(i + 6)];
+        f9 = arrayOfFloat[i];
         i += 1;
+        f3 = f8 * f9 + f3;
+        f2 = f6 * f7 + f2;
+        f1 = f4 * f5 + f1;
       }
-      paramVector3f.setX(f4);
+      paramVector3f.setX(f6);
       paramVector3f.setY(f5);
-      paramVector3f.setZ(f6);
+      paramVector3f.setZ(f4);
       return;
     }
-    Log.e("matrix", "Matrix is invalid, is " + this.matrix.length + " long, this function expects the internal matrix to be of size 9");
+    LogUtils.e("matrix", "Matrix is invalid, is " + this.matrix.length + " long, this function expects the internal matrix to be of size 9");
   }
   
   public void multiplyVector4fByMatrix(Vector4f paramVector4f)
   {
+    float f5 = 0.0F;
+    float f3 = 0.0F;
     if (this.matrix.length == 16)
     {
-      float f6 = 0.0F;
-      float f4 = 0.0F;
-      float f7 = 0.0F;
-      float f2 = 0.0F;
-      float f8 = 0.0F;
-      float f1 = 0.0F;
-      float f5 = 0.0F;
-      float f3 = 0.0F;
       float[] arrayOfFloat = paramVector4f.array();
+      float f6;
+      float f7;
+      float f8;
+      float f9;
+      float f10;
+      float f11;
+      float f12;
       if (this.colMaj)
       {
         i = 0;
+        f2 = 0.0F;
+        f1 = 0.0F;
+        f4 = 0.0F;
         for (;;)
         {
-          f5 = f3;
-          f6 = f4;
+          f5 = f4;
+          f6 = f3;
           f7 = f2;
           f8 = f1;
           if (i >= 4) {
             break;
           }
           int j = i * 4;
-          f4 += this.matrix[(j + 0)] * arrayOfFloat[i];
-          f2 += this.matrix[(j + 1)] * arrayOfFloat[i];
-          f1 += this.matrix[(j + 2)] * arrayOfFloat[i];
-          f3 += this.matrix[(j + 3)] * arrayOfFloat[i];
+          f5 = this.matrix[(j + 0)];
+          f6 = arrayOfFloat[i];
+          f7 = this.matrix[(j + 1)];
+          f8 = arrayOfFloat[i];
+          f9 = this.matrix[(j + 2)];
+          f10 = arrayOfFloat[i];
+          f11 = this.matrix[(j + 3)];
+          f12 = arrayOfFloat[i];
           i += 1;
+          f4 = f11 * f12 + f4;
+          f3 = f9 * f10 + f3;
+          f2 = f7 * f8 + f2;
+          f1 = f5 * f6 + f1;
         }
       }
       int i = 0;
-      f1 = f8;
-      f2 = f7;
-      f4 = f6;
+      float f2 = 0.0F;
+      float f1 = 0.0F;
+      float f4 = 0.0F;
       f3 = f5;
       for (;;)
       {
-        f5 = f3;
-        f6 = f4;
+        f5 = f4;
+        f6 = f3;
         f7 = f2;
         f8 = f1;
         if (i >= 4) {
           break;
         }
-        f4 += this.matrix[(i + 0)] * arrayOfFloat[i];
-        f2 += this.matrix[(i + 4)] * arrayOfFloat[i];
-        f1 += this.matrix[(i + 8)] * arrayOfFloat[i];
-        f3 += this.matrix[(i + 12)] * arrayOfFloat[i];
+        f5 = this.matrix[(i + 0)];
+        f6 = arrayOfFloat[i];
+        f7 = this.matrix[(i + 4)];
+        f8 = arrayOfFloat[i];
+        f9 = this.matrix[(i + 8)];
+        f10 = arrayOfFloat[i];
+        f11 = this.matrix[(i + 12)];
+        f12 = arrayOfFloat[i];
         i += 1;
+        f4 = f11 * f12 + f4;
+        f3 = f9 * f10 + f3;
+        f2 = f7 * f8 + f2;
+        f1 = f5 * f6 + f1;
       }
-      paramVector4f.setX(f6);
+      paramVector4f.setX(f8);
       paramVector4f.setY(f7);
-      paramVector4f.setZ(f8);
+      paramVector4f.setZ(f6);
       paramVector4f.setW(f5);
       return;
     }
-    Log.e("matrix", "Matrix is invalid, is " + this.matrix.length + " long, this equation expects a 16 value matrix");
+    LogUtils.e("matrix", "Matrix is invalid, is " + this.matrix.length + " long, this equation expects a 16 value matrix");
   }
   
   public void set(MatrixF4x4 paramMatrixF4x4)
@@ -526,11 +562,11 @@ public class MatrixF4x4
   
   public void transpose()
   {
-    int j;
+    int j = 0;
+    int i = 0;
     if (this.matrix.length == 16)
     {
       arrayOfFloat = new float[16];
-      i = 0;
       while (i < 4)
       {
         j = i * 4;
@@ -544,7 +580,7 @@ public class MatrixF4x4
       return;
     }
     float[] arrayOfFloat = new float[9];
-    int i = 0;
+    i = j;
     while (i < 3)
     {
       j = i * 3;
@@ -558,7 +594,7 @@ public class MatrixF4x4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.ar.sensor.representation.MatrixF4x4
  * JD-Core Version:    0.7.0.1
  */

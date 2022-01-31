@@ -1,24 +1,27 @@
-import com.tencent.mobileqq.olympic.view.ScannerAnimView;
+import android.os.Bundle;
+import android.text.TextUtils;
+import mqq.observer.BusinessObserver;
 
 public class agor
-  implements Runnable
+  implements BusinessObserver
 {
-  public agor(ScannerAnimView paramScannerAnimView) {}
+  public void a(int paramInt, String paramString, Bundle paramBundle) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    ScannerAnimView localScannerAnimView = this.a;
-    if (!this.a.a) {}
-    for (boolean bool = true;; bool = false)
+    if ((paramInt == 1) && (paramBundle != null))
     {
-      localScannerAnimView.a(bool);
-      return;
+      paramInt = paramBundle.getInt("btype");
+      String str = paramBundle.getString("bid");
+      if ((agop.a(paramInt)) && (!TextUtils.isEmpty(str))) {
+        a(paramInt, str, paramBundle);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agor
  * JD-Core Version:    0.7.0.1
  */

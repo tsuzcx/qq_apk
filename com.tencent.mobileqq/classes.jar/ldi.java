@@ -1,18 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.gaudio.GaInviteActivity;
 
-public class ldi
-  implements Runnable
+class ldi
+  implements DialogInterface.OnClickListener
 {
-  public ldi(ReadInJoyNaviController paramReadInJoyNaviController) {}
+  ldi(ldh paramldh) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReadInJoyNaviController.a(this.a, true);
+    this.a.a.a(-1040L, 11);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ldi
  * JD-Core Version:    0.7.0.1
  */

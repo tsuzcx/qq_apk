@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.activity.qwallet.preload;
 
 import Wallet.ResInfo;
+import agpg;
+import agwj;
+import alzw;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.InvalidClassException;
 import java.io.Serializable;
@@ -16,19 +17,18 @@ import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import xlf;
 
 public class PreloadConfig
   implements Serializable
 {
   private static final long serialVersionUID = 2L;
-  public transient List mLastModules;
-  private CopyOnWriteArrayList mPreloadModules = new CopyOnWriteArrayList();
+  public transient List<PreloadModule> mLastModules;
+  private CopyOnWriteArrayList<PreloadModule> mPreloadModules = new CopyOnWriteArrayList();
   public transient byte[] mSaveLock;
   public transient String mSavePath;
   public long moggyConfigVersion;
   
-  public static ArrayList modulesToResInfos(List paramList)
+  public static ArrayList<ResInfo> modulesToResInfos(List<PreloadModule> paramList)
   {
     ArrayList localArrayList = new ArrayList();
     if (paramList == null) {
@@ -53,7 +53,7 @@ public class PreloadConfig
     return localArrayList;
   }
   
-  public static List parseConfig(JSONArray paramJSONArray, boolean paramBoolean, int paramInt)
+  public static List<PreloadModule> parseConfig(JSONArray paramJSONArray, boolean paramBoolean, int paramInt)
   {
     localArrayList = new ArrayList();
     int i = 0;
@@ -74,14 +74,14 @@ public class PreloadConfig
   
   public static PreloadConfig readConfig(String paramString, AppRuntime paramAppRuntime)
   {
-    String str = PreloadManagerAbs.a(paramAppRuntime, paramString);
+    paramAppRuntime = agpg.a(paramAppRuntime, paramString);
     try
     {
-      paramString = (PreloadConfig)QWalletTools.a(str);
+      paramString = (PreloadConfig)agwj.a(paramAppRuntime);
       if (paramString == null)
       {
         paramString = new PreloadConfig();
-        paramString.mSavePath = str;
+        paramString.mSavePath = paramAppRuntime;
         paramString.mSaveLock = new byte[0];
         paramString.mLastModules = paramString.getCloneModules();
         if (QLog.isColorLevel()) {
@@ -97,7 +97,7 @@ public class PreloadConfig
         if (QLog.isColorLevel()) {
           QLog.d("PreloadManager", 2, "preload config update should delete local config");
         }
-        SharedPreUtils.z(paramAppRuntime.getApplication(), paramAppRuntime.getLongAccountUin() + "", 0);
+        alzw.a().a(68, 0);
         paramString = null;
       }
     }
@@ -106,7 +106,7 @@ public class PreloadConfig
       for (;;)
       {
         if (QLog.isColorLevel()) {
-          QLog.w("PreloadManager", 2, "readPreloadConfig exception:" + str + "|" + paramString.toString());
+          QLog.w("PreloadManager", 2, "readPreloadConfig exception:" + paramAppRuntime + "|" + paramString.toString());
         }
         paramString = null;
         continue;
@@ -115,7 +115,7 @@ public class PreloadConfig
     }
   }
   
-  public static void splitModulesByBackControl(List paramList1, List paramList2, List paramList3)
+  public static void splitModulesByBackControl(List<PreloadModule> paramList1, List<PreloadModule> paramList2, List<PreloadModule> paramList3)
   {
     paramList1 = paramList1.iterator();
     while (paramList1.hasNext())
@@ -129,7 +129,7 @@ public class PreloadConfig
     }
   }
   
-  public static void splitModulesBySize(int paramInt, List paramList1, List paramList2, List paramList3)
+  public static void splitModulesBySize(int paramInt, List<PreloadModule> paramList1, List<PreloadModule> paramList2, List<PreloadModule> paramList3)
   {
     if ((paramList1 == null) || (paramList2 == null) || (paramList3 == null)) {}
     for (;;)
@@ -169,9 +169,7 @@ public class PreloadConfig
     while (localIterator1.hasNext())
     {
       PreloadModule localPreloadModule = (PreloadModule)localIterator1.next();
-      if (TextUtils.isEmpty(localPreloadModule.mid)) {
-        localPreloadModule.mid = localPreloadModule.name;
-      }
+      localPreloadModule.check();
       Iterator localIterator2 = localPreloadModule.getResList().iterator();
       while (localIterator2.hasNext())
       {
@@ -196,7 +194,7 @@ public class PreloadConfig
     }
   }
   
-  public List getCloneModules()
+  public List<PreloadModule> getCloneModules()
   {
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = this.mPreloadModules.iterator();
@@ -240,7 +238,7 @@ public class PreloadConfig
     return this.mPreloadModules.size();
   }
   
-  public List getModules()
+  public List<PreloadModule> getModules()
   {
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = this.mPreloadModules.iterator();
@@ -250,7 +248,7 @@ public class PreloadConfig
     return localArrayList;
   }
   
-  public ResourceInfo getResInfoByResId(String paramString, PreloadManager paramPreloadManager)
+  public ResourceInfo getResInfoByResId(String paramString)
   {
     PreloadModule localPreloadModule;
     PreloadResource localPreloadResource;
@@ -267,8 +265,8 @@ public class PreloadConfig
         localIterator2 = localPreloadModule.getResList().iterator();
       }
       localPreloadResource = (PreloadResource)localIterator2.next();
-    } while (!QWalletTools.c(localPreloadResource.mResId, paramString));
-    return localPreloadResource.getResInfo(localPreloadModule, paramPreloadManager);
+    } while (!agwj.c(localPreloadResource.mResId, paramString));
+    return localPreloadResource.getResInfo(localPreloadModule);
     return null;
   }
   
@@ -295,7 +293,7 @@ public class PreloadConfig
     this.mPreloadModules = new CopyOnWriteArrayList(paramJSONArray);
   }
   
-  public boolean isModulesChange(List paramList)
+  public boolean isModulesChange(List<PreloadModule> paramList)
   {
     boolean bool2 = false;
     List localList = getModules();
@@ -332,7 +330,7 @@ public class PreloadConfig
         }
         localIterator2 = ((PreloadModule)localIterator1.next()).getResList().iterator();
       }
-    } while (!QWalletTools.c(((PreloadResource)localIterator2.next()).mResId, paramPreloadResource.mResId));
+    } while (!agwj.c(((PreloadResource)localIterator2.next()).mResId, paramPreloadResource.mResId));
     return true;
     return false;
   }
@@ -389,12 +387,7 @@ public class PreloadConfig
     this.mPreloadModules.remove(paramPreloadModule);
   }
   
-  public void replaceConfig(JSONArray paramJSONArray, PreloadManager paramPreloadManager)
-  {
-    innerReplaceConfig(paramJSONArray, paramPreloadManager, 0);
-  }
-  
-  public List resInfosToModules(ArrayList paramArrayList)
+  public List<PreloadModule> resInfosToModules(ArrayList<ResInfo> paramArrayList)
   {
     ArrayList localArrayList = new ArrayList();
     if (paramArrayList == null) {
@@ -413,7 +406,7 @@ public class PreloadConfig
   
   public void savePreloadConfig()
   {
-    ThreadManager.getFileThreadHandler().post(new xlf(this));
+    ThreadManager.getFileThreadHandler().post(new PreloadConfig.1(this));
   }
   
   public String toString()
@@ -423,7 +416,7 @@ public class PreloadConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.preload.PreloadConfig
  * JD-Core Version:    0.7.0.1
  */

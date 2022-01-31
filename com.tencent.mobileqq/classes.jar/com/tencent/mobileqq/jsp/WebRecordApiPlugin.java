@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.jsp;
 
-import aegp;
+import aqud;
+import bbac;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,7 +12,7 @@ import org.json.JSONObject;
 public class WebRecordApiPlugin
   extends WebViewPlugin
 {
-  private aegp jdField_a_of_type_Aegp;
+  private aqud jdField_a_of_type_Aqud;
   private String jdField_a_of_type_JavaLangString;
   private String b;
   private String c;
@@ -22,13 +22,13 @@ public class WebRecordApiPlugin
     this.mPluginNameSpace = "webRecord";
   }
   
-  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if (!"webRecord".equals(paramString2)) {
       return false;
     }
-    if (this.jdField_a_of_type_Aegp == null) {
-      this.jdField_a_of_type_Aegp = new aegp(this, this.mRuntime.a(), (BaseActivity)this.mRuntime.a());
+    if (this.jdField_a_of_type_Aqud == null) {
+      this.jdField_a_of_type_Aqud = new aqud(this, this.mRuntime.a(), (BaseActivity)this.mRuntime.a());
     }
     if ("startRecord".equals(paramString3)) {
       try
@@ -37,7 +37,7 @@ public class WebRecordApiPlugin
         this.jdField_a_of_type_JavaLangString = paramJsBridgeListener.optString("callback", "");
         int i = paramJsBridgeListener.optInt("format", 0);
         int j = paramJsBridgeListener.optInt("maxTime", 0);
-        this.jdField_a_of_type_Aegp.a(i, j);
+        this.jdField_a_of_type_Aqud.a(i, j);
         return true;
       }
       catch (JSONException paramJsBridgeListener)
@@ -52,7 +52,7 @@ public class WebRecordApiPlugin
     }
     if ("stopRecord".equals(paramString3))
     {
-      this.jdField_a_of_type_Aegp.b(0);
+      this.jdField_a_of_type_Aqud.b(0);
       return true;
     }
     if ("play".equals(paramString3)) {
@@ -61,7 +61,7 @@ public class WebRecordApiPlugin
         paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
         this.b = paramJsBridgeListener.optString("callback", "");
         paramJsBridgeListener = paramJsBridgeListener.optString("recordID", "");
-        this.jdField_a_of_type_Aegp.b(paramJsBridgeListener);
+        this.jdField_a_of_type_Aqud.b(paramJsBridgeListener);
         return true;
       }
       catch (JSONException paramJsBridgeListener)
@@ -78,7 +78,7 @@ public class WebRecordApiPlugin
       try
       {
         paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("recordID", "");
-        this.jdField_a_of_type_Aegp.d(paramJsBridgeListener);
+        this.jdField_a_of_type_Aqud.d(paramJsBridgeListener);
         return true;
       }
       catch (JSONException paramJsBridgeListener)
@@ -95,7 +95,7 @@ public class WebRecordApiPlugin
       try
       {
         paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("recordID", "");
-        this.jdField_a_of_type_Aegp.c(paramJsBridgeListener);
+        this.jdField_a_of_type_Aqud.c(paramJsBridgeListener);
         return true;
       }
       catch (JSONException paramJsBridgeListener)
@@ -116,7 +116,7 @@ public class WebRecordApiPlugin
         paramJsBridgeListener = paramString2.optJSONArray("recordIDs");
         paramString1 = paramString2.optString("cgi", "");
         paramString2 = paramString2.optString("cookie", "");
-        this.jdField_a_of_type_Aegp.a(paramJsBridgeListener, paramString1, paramString2);
+        this.jdField_a_of_type_Aqud.a(paramJsBridgeListener, paramString1, paramString2);
         return true;
       }
       catch (JSONException paramJsBridgeListener)
@@ -134,12 +134,12 @@ public class WebRecordApiPlugin
   
   public void onDestroy()
   {
-    boolean bool = this.jdField_a_of_type_Aegp.a();
+    boolean bool = this.jdField_a_of_type_Aqud.a();
     if (QLog.isColorLevel()) {
       QLog.d("AIOAudioPanel", 2, "RecordSoundPanel.onDestroy() is called,isRecording is:" + bool);
     }
     if (bool) {
-      this.jdField_a_of_type_Aegp.b(1);
+      this.jdField_a_of_type_Aqud.b(1);
     }
   }
 }

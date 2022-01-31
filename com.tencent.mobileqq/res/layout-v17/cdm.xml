@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/ley" android:background="@drawable/hi0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="0.0dip" android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="20.0sp" android:textColor="@color/bp" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="18.0dip" android:layout_marginTop="25.0dip" android:text="@string/rxz" android:fontFamily="PingFangSC-Semibold" android:layout_marginStart="18.0dip" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="11.0dip">
+        <TextView android:textSize="17.0sp" android:textColor="@color/bp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="18.0dip" android:text="@string/rxy" android:fontFamily="PingFangSC-Regular" />
+        <ImageView android:id="@id/m5w" android:layout_width="11.0dip" android:layout_height="11.0dip" android:src="@drawable/hi5" android:layout_toLeftOf="@id/m5v" android:layout_centerVertical="true" android:layout_toStartOf="@id/m5v" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff19baff" android:id="@id/m5v" android:paddingLeft="7.0dip" android:paddingRight="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ry1" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:fontFamily="PingFangSC-Regular" android:paddingEnd="15.0dip" android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="17.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="15.0dip">
+        <EditText android:textSize="17.0sp" android:id="@id/lq4" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/ry0" android:maxLines="1" android:singleLine="true" android:selectAllOnFocus="true" android:windowSoftInputMode="adjustNothing" android:textCursorDrawable="@drawable/bc" android:fontFamily="PingFangSC-Regular" />
+        <View android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    </LinearLayout>
+    <Button android:textSize="17.0sp" android:textColor="@color/al3" android:layout_gravity="center" android:id="@id/lq3" android:background="@drawable/hi1" android:layout_width="168.0dip" android:layout_height="40.0dip" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" android:text="@string/ry_" android:fontFamily="PingFangSC-Medium" />
+</LinearLayout>

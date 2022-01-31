@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:paddingLeft="12.0dip" android:paddingTop="15.0dip" android:paddingRight="12.0dip" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/ayo" android:textColor="#ffa6a6a6" android:ellipsize="end" android:id="@id/k7j" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" />
+            <com.tencent.biz.pubaccount.readinjoy.view.MiddleBracketsTitleTextView android:textSize="@dimen/ayo" android:textColor="#ff262626" android:ellipsize="end" android:id="@id/k7h" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:maxLines="2" />
+            <TextView android:textSize="12.0sp" android:textColor="#ffa6a6a6" android:id="@id/k7i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" />
+        </LinearLayout>
+        <ImageView android:id="@id/dv5" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="3.0dip" android:scaleType="center" />
+    </LinearLayout>
+    <TextView android:textSize="16.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/k72" android:background="#ffff3a30" android:layout_width="66.0dip" android:layout_height="fill_parent" android:text="@string/pzb" />
+</LinearLayout>

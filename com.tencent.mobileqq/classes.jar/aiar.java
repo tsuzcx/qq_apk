@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult;
-import com.tencent.mobileqq.search.searchengine.ISearchListener;
-import com.tencent.mobileqq.search.searchengine.MessageSearchEngine;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.Comparator;
+import org.json.JSONObject;
 
 class aiar
-  implements Observer
+  implements Comparator<JSONObject>
 {
   aiar(aiaq paramaiaq) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public int a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(MessageSearchEngine.a(this.a.jdField_a_of_type_ComTencentMobileqqSearchSearchengineMessageSearchEngine, this.a.jdField_a_of_type_ComTencentMobileqqSearchSearchengineMessageSearchEngine.a, (FullMessageSearchResult)paramObject));
+    return Long.valueOf(paramJSONObject2.optLong("time")).compareTo(Long.valueOf(paramJSONObject1.optLong("time")));
   }
 }
 

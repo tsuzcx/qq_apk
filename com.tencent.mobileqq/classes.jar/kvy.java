@@ -1,82 +1,166 @@
-import com.tencent.biz.pubaccount.Advertisement.adapter.VideoCoverAdapter;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.MSFServlet;
+import mqq.app.NewIntent;
 
 public class kvy
-  implements INetInfoHandler
 {
-  private kvy(VideoCoverAdapter paramVideoCoverAdapter) {}
+  private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
+  private Map<String, int[]> jdField_a_of_type_JavaUtilMap;
   
-  public void onNetMobile2None()
+  public kvy(AppInterface paramAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverAdapter", 2, "net from mobile to none");
-    }
-    VideoCoverAdapter.a(this.a);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   }
   
-  public void onNetMobile2Wifi(String paramString)
+  public AppInterface a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverAdapter", 2, "net from mobile to wifi");
-    }
-    VideoCoverAdapter.a(this.a, false);
+    return this.jdField_a_of_type_ComTencentCommonAppAppInterface;
   }
   
-  public void onNetNone2Mobile(String paramString)
+  public void a(ToServiceMsg paramToServiceMsg, alwg paramalwg, Class<? extends MSFServlet> paramClass)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverAdapter", 2, "net from none to mobile");
-    }
-    if (!VideoCoverAdapter.a(this.a))
+    if (paramToServiceMsg.getWupBuffer() != null)
     {
-      paramString = this.a.a();
-      if ((paramString != null) && (paramString.isPlaying()))
-      {
-        this.a.c();
-        this.a.d();
+      long l = paramToServiceMsg.getWupBuffer().length;
+      byte[] arrayOfByte = new byte[(int)l + 4];
+      bakz.a(arrayOfByte, 0, 4L + l);
+      bakz.a(arrayOfByte, 4, paramToServiceMsg.getWupBuffer(), (int)l);
+      paramToServiceMsg.putWupBuffer(arrayOfByte);
+      if (QLog.isColorLevel()) {
+        QLog.d("MsfServletProxy", 2, "PB cmd: req cmd: " + paramToServiceMsg.getServiceCmd());
       }
-      VideoCoverAdapter.a(this.a, true);
+      paramToServiceMsg.actionListener = paramalwg;
+      paramalwg = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), paramClass);
+      paramalwg.putExtra(ToServiceMsg.class.getSimpleName(), paramToServiceMsg);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(paramalwg);
+      l = System.currentTimeMillis();
+      paramToServiceMsg.extraData.putLong("sendtimekey", l);
     }
   }
   
-  public void onNetNone2Wifi(String paramString)
+  public void a(boolean paramBoolean, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Exception paramException)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverAdapter", 2, "net from none to wifi");
-    }
-    VideoCoverAdapter.a(this.a, false);
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverAdapter", 2, "net from wifi to mobile");
-    }
-    if (!VideoCoverAdapter.a(this.a))
+    if ((paramToServiceMsg == null) || (paramToServiceMsg.extraData == null))
     {
-      paramString = this.a.a();
-      if ((paramString != null) && (paramString.isPlaying()))
+      paramException = new StringBuilder().append("handleResponse error req:").append(paramToServiceMsg).append("|");
+      if (paramFromServiceMsg == null)
       {
-        this.a.c();
-        this.a.d();
+        paramToServiceMsg = "null";
+        krx.d("MsfServletProxy", paramToServiceMsg);
       }
-      VideoCoverAdapter.a(this.a, true);
+    }
+    AppInterface localAppInterface;
+    float f;
+    label149:
+    boolean bool;
+    do
+    {
+      return;
+      paramToServiceMsg = paramFromServiceMsg.getServiceCmd();
+      break;
+      localAppInterface = a();
+      f = (float)(System.currentTimeMillis() - paramToServiceMsg.extraData.getLong("sendtimekey")) / 1000.0F;
+      if (!paramBoolean) {
+        break label335;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("MsfServletProxy", 2, "[RES]cmd=" + paramFromServiceMsg.getServiceCmd() + " app seq:" + paramFromServiceMsg.getAppSeq() + "sec." + f);
+      }
+      bool = paramToServiceMsg.extraData.getBoolean("req_pb_protocol_flag", false);
+    } while ((!paramBoolean) || (!bool));
+    Object localObject = paramFromServiceMsg.getServiceCmd();
+    if (QLog.isColorLevel()) {
+      QLog.d("MsfServletProxy", 2, "PB cmd: recv cmd: " + (String)localObject);
+    }
+    int i;
+    if (paramFromServiceMsg.getWupBuffer() != null)
+    {
+      i = paramFromServiceMsg.getWupBuffer().length - 4;
+      paramException = new byte[i];
+      bakz.a(paramException, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+      paramFromServiceMsg.putWupBuffer(paramException);
+    }
+    for (paramException = paramFromServiceMsg.getWupBuffer();; paramException = null)
+    {
+      for (;;)
+      {
+        int[] arrayOfInt = (int[])this.jdField_a_of_type_JavaUtilMap.get(localObject);
+        if ((arrayOfInt != null) && (arrayOfInt.length > 0))
+        {
+          int j = arrayOfInt.length;
+          i = 0;
+          label290:
+          if (i >= j) {
+            break;
+          }
+          localObject = (ajfb)localAppInterface.getBusinessHandler(arrayOfInt[i]);
+          if (localObject != null) {}
+          try
+          {
+            ((ajfb)localObject).onReceive(paramToServiceMsg, paramFromServiceMsg, paramException);
+            i += 1;
+            break label290;
+            label335:
+            if (paramException != null)
+            {
+              localObject = new ByteArrayOutputStream();
+              paramException.printStackTrace(new PrintStream((OutputStream)localObject));
+              paramException = new String(((ByteArrayOutputStream)localObject).toByteArray());
+              if (!QLog.isColorLevel()) {
+                break label149;
+              }
+              QLog.d("MsfServletProxy", 2, "[NOT SEND]cmd=" + paramFromServiceMsg.getServiceCmd() + ", " + paramException);
+              break label149;
+            }
+            if (!QLog.isColorLevel()) {
+              break label149;
+            }
+            QLog.w("MsfServletProxy", 2, "[RES]cmd=" + paramFromServiceMsg.getServiceCmd() + ",CODE=" + paramFromServiceMsg.getResultCode() + "sec." + f);
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              localException.printStackTrace();
+              if (QLog.isColorLevel()) {
+                QLog.w("MsfServletProxy", 2, localObject.getClass().getSimpleName() + " onReceive error,", localException);
+              }
+            }
+          }
+        }
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.w("MsfServletProxy", 2, " handlerIds no map " + (String)localObject);
+      return;
     }
   }
   
-  public void onNetWifi2None()
+  public boolean a(String paramString, int[] paramArrayOfInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverAdapter", 2, "net from wifi to none");
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, paramArrayOfInt);
+      return true;
     }
-    VideoCoverAdapter.a(this.a);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     kvy
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class structmsg$ReqSystemMsg
-  extends MessageMicro
+  extends MessageMicro<ReqSystemMsg>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40 }, new String[] { "msg_num", "latest_friend_seq", "latest_group_seq", "version", "language" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0) }, ReqSystemMsg.class);
   public final PBUInt32Field language = PBField.initUInt32(0);

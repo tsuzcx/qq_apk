@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/dgy" android:background="@drawable/a6c" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.troop.widget.EllipsizingTextView android:textSize="16.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/dhg" android:paddingLeft="7.0dip" android:paddingTop="4.0dip" android:paddingBottom="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" android:layout_alignParentLeft="true" />
+    <TextView android:textSize="12.0dip" android:textColor="#ffffffff" android:id="@id/dhq" android:paddingRight="7.0dip" android:paddingBottom="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="18.6M" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

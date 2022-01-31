@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.search.searchengine.ApproximateSearchEngine;
-import com.tencent.mobileqq.search.searchengine.ISearchListener;
-import com.tencent.mobileqq.search.searchengine.SearchRequest;
-import java.util.List;
+import java.util.Comparator;
 
-public class ahzp
-  implements Runnable
+final class ahzp
+  implements Comparator<String>
 {
-  public ahzp(ApproximateSearchEngine paramApproximateSearchEngine, SearchRequest paramSearchRequest) {}
-  
-  public void run()
+  public int a(String paramString1, String paramString2)
   {
-    List localList = ApproximateSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineApproximateSearchEngine, this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest);
-    ISearchListener localISearchListener = ApproximateSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineApproximateSearchEngine);
-    if ((localISearchListener != null) && (localList != null)) {
-      localISearchListener.a(localList, 1);
-    }
+    if ("★".equals(paramString2)) {}
+    do
+    {
+      return 1;
+      if ("★".equals(paramString1)) {
+        return -1;
+      }
+      if ("#".equals(paramString2)) {
+        return -1;
+      }
+    } while ("#".equals(paramString1));
+    return paramString1.compareTo(paramString2);
   }
 }
 

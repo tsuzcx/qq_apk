@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.app.message.C2CMessageProcessor;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.TroopManager;
 
 public class zzf
-  implements Comparator
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public zzf(C2CMessageProcessor paramC2CMessageProcessor) {}
+  public zzf(AssistantSettingActivity paramAssistantSettingActivity, TroopManager paramTroopManager) {}
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.c(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zzf
  * JD-Core Version:    0.7.0.1
  */

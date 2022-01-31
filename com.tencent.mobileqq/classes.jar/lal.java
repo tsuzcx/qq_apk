@@ -1,19 +1,37 @@
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
-import org.json.JSONObject;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import mqq.app.BaseActivity;
 
 public class lal
-  implements Runnable
 {
-  public lal(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, String paramString2, JSONObject paramJSONObject) {}
+  private Runnable a;
   
-  public void run()
+  public void a(VideoAppInterface paramVideoAppInterface, VideoController paramVideoController)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_OrgJsonJSONObject);
+    if ((paramVideoAppInterface == null) || (paramVideoController == null)) {}
+    do
+    {
+      return;
+      paramVideoController = paramVideoController.a();
+    } while ((this.a == null) || (paramVideoController == null));
+    paramVideoController.a(this.a, paramVideoAppInterface);
+    this.a = null;
+  }
+  
+  public void a(BaseActivity paramBaseActivity, VideoAppInterface paramVideoAppInterface, VideoController paramVideoController)
+  {
+    if ((paramBaseActivity == null) || (paramVideoAppInterface == null) || (paramVideoController == null)) {}
+    do
+    {
+      return;
+      paramVideoController = paramVideoController.a();
+    } while (paramVideoController == null);
+    this.a = paramVideoController.a(paramBaseActivity, paramVideoAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lal
  * JD-Core Version:    0.7.0.1
  */

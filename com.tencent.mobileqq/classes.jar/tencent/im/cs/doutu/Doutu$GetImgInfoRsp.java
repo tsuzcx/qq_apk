@@ -10,12 +10,12 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class Doutu$GetImgInfoRsp
-  extends MessageMicro
+  extends MessageMicro<GetImgInfoRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_fail_msg = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBInt32Field int32_result = PBField.initInt32(0);
-  public final PBRepeatMessageField rpt_msg_img_info = PBField.initRepeatMessage(Doutu.ImgInfo.class);
+  public final PBRepeatMessageField<Doutu.ImgInfo> rpt_msg_img_info = PBField.initRepeatMessage(Doutu.ImgInfo.class);
   public final PBUInt32Field uint32_rsp_type = PBField.initUInt32(0);
   
   static
@@ -26,7 +26,7 @@ public final class Doutu$GetImgInfoRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.doutu.Doutu.GetImgInfoRsp
  * JD-Core Version:    0.7.0.1
  */

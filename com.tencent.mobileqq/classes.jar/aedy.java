@@ -1,34 +1,68 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
+import android.support.v4.app.FragmentActivity;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.qidian.data.QidianExternalInfo;
+import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 
-public final class aedy
-  implements Runnable
+class aedy
+  extends bcqu
 {
-  public aedy(String paramString1, String paramString2, int paramInt) {}
+  aedy(aedo paramaedo) {}
   
-  public void run()
+  protected void d(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    String str = null;
-    Object localObject = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    if (localObject != null) {
-      str = ((QQAppInterface)localObject).getCurrentAccountUin();
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_Acka.notifyDataSetChanged();
+      bbmy.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a().getString(2131632503), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+      return;
     }
-    localObject = new HashMap();
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      ((HashMap)localObject).put("activity", this.jdField_a_of_type_JavaLangString);
+    bbmy.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a().getString(2131632502), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
+  }
+  
+  protected void e(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  {
+    if ((paramBoolean) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
+    {
+      paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramHashMap.uin)))
+      {
+        paramHashMap = this.a.b.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        if (paramHashMap != null)
+        {
+          aedo.a(this.a, true);
+          this.a.f.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+          aedo.a(this.a).setOnClickListener(null);
+          aedo.b(this.a).setOnClickListener(null);
+          this.a.h = paramHashMap;
+          this.a.a(paramHashMap);
+          if (aaek.S) {
+            this.a.f.setContentDescription(paramHashMap);
+          }
+          aedo.a(this.a, true);
+        }
+      }
     }
-    if (this.b != null) {
-      ((HashMap)localObject).put("detail", this.b);
+    while (!QLog.isColorLevel())
+    {
+      do
+      {
+        return;
+        aedo.b(this.a, false);
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onGetQidianUserDetailInfo not current curFriendUin");
+      return;
     }
-    ((HashMap)localObject).put("type", String.valueOf(this.jdField_a_of_type_Int));
-    StatisticCollector.a(BaseApplicationImpl.getApplication()).a(str, "BadTokenHooker", false, 0L, 0L, (HashMap)localObject, "", true);
+    QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onGetQidianUserDetailInfo fail");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aedy
  * JD-Core Version:    0.7.0.1
  */

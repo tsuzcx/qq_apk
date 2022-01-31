@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.extendfriend.pulltorefresh.extras.PullToRefreshRecyclerView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2076" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:layout_width="fill_parent" android:layout_height="fill_parent" ptf:ptfHeaderBackground="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" ptf:ptfHeaderTextColor="#ffffffff" ptf:ptfHeaderSubTextColor="#ffffffff" ptf:ptfMode="APKTOOL_DUPLICATE_id_0x7f0a02df" ptf:ptfDrawableStart="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020461" ptf:ptfAnimationStyle="APKTOOL_DUPLICATE_id_0x7f0a02e5" xmlns:ptf="http://schemas.android.com/apk/res-auto" />
-</FrameLayout>

@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class RspGetAreaList
   extends JceStruct
 {
-  static ArrayList cache_vGroupArea;
-  public ArrayList vGroupArea;
+  static ArrayList<GroupArea> cache_vGroupArea;
+  public ArrayList<GroupArea> vGroupArea;
   
   public RspGetAreaList() {}
   
-  public RspGetAreaList(ArrayList paramArrayList)
+  public RspGetAreaList(ArrayList<GroupArea> paramArrayList)
   {
     this.vGroupArea = paramArrayList;
   }

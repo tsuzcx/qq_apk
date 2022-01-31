@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageForText;
 
-public class adre
-  implements FMDialogUtil.FMDialogInterface
+class adre
+  implements DialogInterface.OnClickListener
 {
-  public adre(QfileEditBottomBar paramQfileEditBottomBar) {}
+  adre(adra paramadra, MessageForText paramMessageForText) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QfileEditBottomBar.a(this.a);
+    aael.a(this.jdField_a_of_type_Adra.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Adra.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adra.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.msg, this.jdField_a_of_type_ComTencentMobileqqDataMessageForText.uniseq);
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adre
  * JD-Core Version:    0.7.0.1
  */

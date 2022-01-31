@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class PersonInfoChange
   extends JceStruct
 {
-  static ArrayList cache_vChgField;
+  static ArrayList<PersonInfoField> cache_vChgField;
   public byte cType;
-  public ArrayList vChgField;
+  public ArrayList<PersonInfoField> vChgField;
   
   public PersonInfoChange() {}
   
-  public PersonInfoChange(byte paramByte, ArrayList paramArrayList)
+  public PersonInfoChange(byte paramByte, ArrayList<PersonInfoField> paramArrayList)
   {
     this.cType = paramByte;
     this.vChgField = paramArrayList;

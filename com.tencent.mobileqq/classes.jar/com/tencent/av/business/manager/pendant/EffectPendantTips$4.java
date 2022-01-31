@@ -1,0 +1,29 @@
+package com.tencent.av.business.manager.pendant;
+
+import kyc;
+import lqb;
+
+public class EffectPendantTips$4
+  implements Runnable
+{
+  public EffectPendantTips$4(kyc paramkyc) {}
+  
+  public void run()
+  {
+    try
+    {
+      lqb.a(kyc.a(this.this$0), 1016);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     com.tencent.av.business.manager.pendant.EffectPendantTips.4
+ * JD-Core Version:    0.7.0.1
+ */

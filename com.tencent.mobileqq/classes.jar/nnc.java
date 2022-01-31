@@ -1,15 +1,19 @@
-import com.tencent.biz.qqstory.base.preload.FileCacheUtils;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class nnc
-  implements Runnable
+  implements red
 {
-  nnc(nnb paramnnb, String paramString) {}
+  nnc(nnb paramnnb, qoe paramqoe) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2)
   {
-    FileCacheUtils.a(this.jdField_a_of_type_Nnb.a, this.jdField_a_of_type_JavaLangString, 0, StoryReportor.a(BaseApplicationImpl.getContext()));
+    if (qoe.a() != null)
+    {
+      nny localnny = (nny)qoe.a().getManager(307);
+      if (localnny != null) {
+        localnny.a(this.jdField_a_of_type_Qoe, this.jdField_a_of_type_Qoe.a(), true, paramInt1);
+      }
+    }
   }
 }
 

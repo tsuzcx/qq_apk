@@ -1,22 +1,20 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.now.NowSmallVideoObserver;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsViewPagerAdapter;
 
-public class afen
-  extends NowSmallVideoObserver
+class afen
+  implements afhb
 {
-  public afen(PlayOperationViewModel paramPlayOperationViewModel) {}
+  afen(afeh paramafeh) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void a(int paramInt1, int paramInt2)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(PlayOperationViewModel.b(this.a) + ""))) {
-      this.a.h(paramBoolean);
+    if (afeh.a(this.a) != null) {
+      afeh.a(this.a).a(paramInt1, paramInt2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afen
  * JD-Core Version:    0.7.0.1
  */

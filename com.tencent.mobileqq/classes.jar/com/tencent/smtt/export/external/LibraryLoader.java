@@ -40,7 +40,6 @@ public class LibraryLoader
   }
   
   public static void loadLibrary(Context paramContext, String paramString)
-    throws UnsatisfiedLinkError
   {
     paramContext = getLibrarySearchPaths(paramContext);
     String str1 = System.mapLibraryName(paramString);
@@ -78,7 +77,7 @@ public class LibraryLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.smtt.export.external.LibraryLoader
  * JD-Core Version:    0.7.0.1
  */

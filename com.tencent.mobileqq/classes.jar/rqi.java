@@ -1,21 +1,24 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.now.enter.NowEnterManager;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class rqi
-  implements CompoundButton.OnCheckedChangeListener
+class rqi
+  implements Animation.AnimationListener
 {
-  public rqi(AssistantSettingActivity paramAssistantSettingActivity, NowEnterManager paramNowEnterManager) {}
+  rqi(rqc paramrqc) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNowEnterNowEnterManager.a(paramBoolean);
+    this.a.a(rqc.a(this.a));
+    this.a.c();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rqi
  * JD-Core Version:    0.7.0.1
  */

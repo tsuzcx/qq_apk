@@ -1,22 +1,31 @@
-import com.tencent.mobileqq.arcard.ARRelationShipFileUpload.ARRelationShipFileUploadCallBack;
-import com.tencent.mobileqq.arcard.ARRelationShipFileUpload.ARRelationShipReqInfo;
-import com.tencent.mobileqq.highway.transaction.Transaction;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class aatv
+  extends atog
 {
-  public ARRelationShipFileUpload.ARRelationShipFileUploadCallBack a;
-  public ARRelationShipFileUpload.ARRelationShipReqInfo a;
-  public Transaction a;
+  public aatv(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public aatv()
+  protected void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = null;
-    this.jdField_a_of_type_ComTencentMobileqqArcardARRelationShipFileUpload$ARRelationShipFileUploadCallBack = null;
+    this.a.B();
+    if (paramBoolean) {
+      return;
+    }
+    bbmy.a(this.a, 1, ajjy.a(2131639134), 1000).a();
+  }
+  
+  protected void b(boolean paramBoolean, int paramInt)
+  {
+    super.b(paramBoolean, paramInt);
+    if ((this.a.n) && (paramBoolean)) {
+      this.a.a(0L, null, null, false);
+    }
+    this.a.n = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aatv
  * JD-Core Version:    0.7.0.1
  */

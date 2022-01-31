@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.search.activity;
 
-import ahwj;
+import ajed;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import com.tencent.mobileqq.app.AppConstants;
+import avjw;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 import com.tencent.qphone.base.util.QLog;
@@ -18,6 +18,11 @@ public class ContactSearchComponentActivity
   private static long a;
   
   public static void a(Activity paramActivity, String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    a(paramActivity, paramString, paramInt1, paramInt2, paramInt3, -1L);
+  }
+  
+  public static void a(Activity paramActivity, String paramString, int paramInt1, int paramInt2, int paramInt3, long paramLong)
   {
     long l = System.currentTimeMillis();
     if (l - jdField_a_of_type_Long < 1500L)
@@ -32,11 +37,14 @@ public class ContactSearchComponentActivity
     localIntent.putExtra("keyword", paramString);
     localIntent.putExtra("fromType", paramInt1);
     localIntent.putExtra("contactSearchSource", paramInt2);
+    if (paramLong > 0L) {
+      localIntent.putExtra("contactSearchResultFilterType", paramLong);
+    }
     paramActivity.startActivityForResult(localIntent, paramInt3);
     paramActivity.overridePendingTransition(0, 0);
   }
   
-  public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3)
+  public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, Bundle paramBundle)
   {
     long l = System.currentTimeMillis();
     if (l - jdField_a_of_type_Long < 1500L)
@@ -52,6 +60,9 @@ public class ContactSearchComponentActivity
     localIntent.putExtra("fromType", paramInt1);
     localIntent.putExtra("contactSearchSource", paramInt2);
     localIntent.putExtra("specifiedTroopUin", paramString2);
+    if (paramBundle != null) {
+      localIntent.putExtras(paramBundle);
+    }
     paramActivity.startActivityForResult(localIntent, paramInt3);
     paramActivity.overridePendingTransition(0, 0);
   }
@@ -64,17 +75,17 @@ public class ContactSearchComponentActivity
     ArrayList localArrayList = new ArrayList();
     if ((i == 7) || (i == 6) || (i == 23))
     {
-      localArrayList.add(AppConstants.av);
-      return ContactSearchFragment.a(i, j, str, localArrayList, null);
+      localArrayList.add(ajed.aB);
+      return ContactSearchFragment.a(i, j, str, localArrayList, null, false, 0, getIntent().getLongExtra("contactSearchResultFilterType", -1L));
     }
     return super.a();
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    findViewById(2131371264).setOnTouchListener(new ahwj(this));
+    findViewById(2131309941).setOnTouchListener(new avjw(this));
     return true;
   }
   

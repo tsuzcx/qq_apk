@@ -24,24 +24,9 @@ public class VerifyCodeManagerImpl
   public static final int MANAGER_VERIFYCODE_CLOSE = 1;
   public static final int MANAGER_VERIFYCODE_RECEIVE = 0;
   private final AppRuntime app;
-  ConcurrentHashMap<String, HttpVerifyCodeWrapper> httpVerifyCodeWrapperMap = new ConcurrentHashMap();
-  private final Handler mHandler = new Handler(Looper.getMainLooper())
-  {
-    public void handleMessage(Message paramAnonymousMessage)
-    {
-      switch (paramAnonymousMessage.what)
-      {
-      default: 
-        return;
-      case 0: 
-        paramAnonymousMessage = (Object[])paramAnonymousMessage.obj;
-        ((ServerNotifyObserver)paramAnonymousMessage[0]).onReceiveVerifyCode((String)paramAnonymousMessage[1], ((Integer)paramAnonymousMessage[2]).intValue(), (String)paramAnonymousMessage[3], (byte[])paramAnonymousMessage[4]);
-        return;
-      }
-      ((ServerNotifyObserver)((Object[])(Object[])paramAnonymousMessage.obj)[0]).onVerifyClose();
-    }
-  };
-  ConcurrentHashMap<Integer, VerifyCodeWrapper> verifyCodeWrapperMap = new ConcurrentHashMap();
+  ConcurrentHashMap<String, VerifyCodeManagerImpl.HttpVerifyCodeWrapper> httpVerifyCodeWrapperMap = new ConcurrentHashMap();
+  private final Handler mHandler = new VerifyCodeManagerImpl.1(this, Looper.getMainLooper());
+  ConcurrentHashMap<Integer, VerifyCodeManagerImpl.VerifyCodeWrapper> verifyCodeWrapperMap = new ConcurrentHashMap();
   
   public VerifyCodeManagerImpl(AppRuntime paramAppRuntime)
   {
@@ -63,11 +48,11 @@ public class VerifyCodeManagerImpl
   
   private void notifyHttpVerifyCodeActivity(String paramString1, String paramString2, byte[] paramArrayOfByte)
   {
-    Object localObject = (HttpVerifyCodeWrapper)this.httpVerifyCodeWrapperMap.get(paramString1);
-    if ((localObject != null) && (((HttpVerifyCodeWrapper)localObject).serverNotifyObserver != null))
+    Object localObject = (VerifyCodeManagerImpl.HttpVerifyCodeWrapper)this.httpVerifyCodeWrapperMap.get(paramString1);
+    if ((localObject != null) && (((VerifyCodeManagerImpl.HttpVerifyCodeWrapper)localObject).serverNotifyObserver != null))
     {
       Message localMessage = this.mHandler.obtainMessage();
-      localMessage.obj = new Object[] { ((HttpVerifyCodeWrapper)localObject).serverNotifyObserver, paramString1, Integer.valueOf(0), paramString2, paramArrayOfByte };
+      localMessage.obj = new Object[] { ((VerifyCodeManagerImpl.HttpVerifyCodeWrapper)localObject).serverNotifyObserver, paramString1, Integer.valueOf(0), paramString2, paramArrayOfByte };
       localMessage.what = 0;
       localMessage.sendToTarget();
       return;
@@ -86,19 +71,19 @@ public class VerifyCodeManagerImpl
   {
     int i = paramToServiceMsg.getRequestSsoSeq();
     String str = String.valueOf(paramToServiceMsg.getAttribute("process"));
-    paramToServiceMsg = (VerifyCodeWrapper)this.verifyCodeWrapperMap.get(Integer.valueOf(i));
+    paramToServiceMsg = (VerifyCodeManagerImpl.VerifyCodeWrapper)this.verifyCodeWrapperMap.get(Integer.valueOf(i));
     if (paramToServiceMsg.serverNotifyObserver != null)
     {
-      localObject = this.mHandler.obtainMessage();
-      ((Message)localObject).obj = new Object[] { paramToServiceMsg.serverNotifyObserver, "", Integer.valueOf(i), paramString1, paramArrayOfByte, paramString2 };
-      ((Message)localObject).what = 0;
-      ((Message)localObject).sendToTarget();
+      localMessage = this.mHandler.obtainMessage();
+      localMessage.obj = new Object[] { paramToServiceMsg.serverNotifyObserver, "", Integer.valueOf(i), paramString1, paramArrayOfByte, paramString2 };
+      localMessage.what = 0;
+      localMessage.sendToTarget();
       return;
     }
     Intent localIntent = new Intent();
     localIntent.setFlags(268435456);
     paramToServiceMsg = "android.intent.action.VIEW";
-    Object localObject = null;
+    Message localMessage = null;
     if (!TextUtils.isEmpty(paramString2))
     {
       paramString1 = "PUZZLEVERIFYCODE";
@@ -109,13 +94,13 @@ public class VerifyCodeManagerImpl
       localIntent.putExtra("hide_more_button", true);
       localIntent.putExtra("isSubaccount", true);
       localIntent.putExtra("isShowAd", false);
-      paramString2 = paramToServiceMsg;
-      localIntent.setAction(paramString2);
-      if (!TextUtils.isEmpty(paramString1))
+      paramString2 = paramString1;
+      localIntent.setAction(paramToServiceMsg);
+      if (!TextUtils.isEmpty(paramString2))
       {
         paramToServiceMsg = new StringBuilder();
         paramToServiceMsg.append("mqqverifycode://puzzle_verify_code/");
-        paramToServiceMsg.append(paramString1);
+        paramToServiceMsg.append(paramString2);
         paramToServiceMsg.append("?");
         localIntent.setData(Uri.parse(paramToServiceMsg.toString()));
       }
@@ -123,17 +108,14 @@ public class VerifyCodeManagerImpl
       return;
     }
     if ("com.tencent.mobileqq:openSdk".equals(str)) {
-      paramString2 = "mqq.opensdk.intent.action.VERIFYCODE";
+      paramToServiceMsg = "mqq.opensdk.intent.action.VERIFYCODE";
     }
-    for (paramToServiceMsg = (ToServiceMsg)localObject;; paramToServiceMsg = (ToServiceMsg)localObject)
+    for (paramString2 = localMessage;; paramString2 = "VERIFYCODE")
     {
       localIntent.putExtra("seq", i);
       localIntent.putExtra("note", paramString1);
       localIntent.putExtra("image", paramArrayOfByte);
-      paramString1 = paramToServiceMsg;
       break;
-      localObject = "VERIFYCODE";
-      paramString2 = paramToServiceMsg;
     }
   }
   
@@ -149,17 +131,17 @@ public class VerifyCodeManagerImpl
   {
     if (paramServerNotifyObserver.getSeq() == 0)
     {
-      localObject = (HttpVerifyCodeWrapper)this.httpVerifyCodeWrapperMap.remove(paramServerNotifyObserver.getKey());
+      localObject = (VerifyCodeManagerImpl.HttpVerifyCodeWrapper)this.httpVerifyCodeWrapperMap.remove(paramServerNotifyObserver.getKey());
       if ((localObject != null) && (localObject != null))
       {
-        HashMap localHashMap = ((HttpVerifyCodeWrapper)localObject).attr;
-        ((HttpVerifyCodeWrapper)localObject).httpVerifyHandler.cancelVerifyCode(paramServerNotifyObserver.getKey(), localHashMap);
+        HashMap localHashMap = ((VerifyCodeManagerImpl.HttpVerifyCodeWrapper)localObject).attr;
+        ((VerifyCodeManagerImpl.HttpVerifyCodeWrapper)localObject).httpVerifyHandler.cancelVerifyCode(paramServerNotifyObserver.getKey(), localHashMap);
       }
     }
     do
     {
       return;
-      paramServerNotifyObserver = (VerifyCodeWrapper)this.verifyCodeWrapperMap.remove(Integer.valueOf(paramServerNotifyObserver.getSeq()));
+      paramServerNotifyObserver = (VerifyCodeManagerImpl.VerifyCodeWrapper)this.verifyCodeWrapperMap.remove(Integer.valueOf(paramServerNotifyObserver.getSeq()));
     } while (paramServerNotifyObserver == null);
     Object localObject = createVerifyCodeCancelResp(paramServerNotifyObserver.srcTo);
     notifyApp(paramServerNotifyObserver.srcTo, (FromServiceMsg)localObject);
@@ -167,32 +149,21 @@ public class VerifyCodeManagerImpl
   
   public boolean checkVerifyCodeResp(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    boolean bool2 = true;
-    boolean bool1;
     if (paramFromServiceMsg.getBusinessFailCode() == 2002)
     {
       if (!this.verifyCodeWrapperMap.containsKey(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq())))
       {
-        this.verifyCodeWrapperMap.putIfAbsent(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()), new VerifyCodeWrapper(paramToServiceMsg.getRequestSsoSeq()));
-        ((VerifyCodeWrapper)this.verifyCodeWrapperMap.get(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()))).srcTo = paramToServiceMsg;
+        this.verifyCodeWrapperMap.putIfAbsent(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()), new VerifyCodeManagerImpl.VerifyCodeWrapper(this, paramToServiceMsg.getRequestSsoSeq()));
+        ((VerifyCodeManagerImpl.VerifyCodeWrapper)this.verifyCodeWrapperMap.get(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()))).srcTo = paramToServiceMsg;
       }
       paramFromServiceMsg = VerifyCodeInfo.getVerifyCodeInfo(paramFromServiceMsg);
-      ((VerifyCodeWrapper)this.verifyCodeWrapperMap.get(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()))).verifyCodeInfo = paramFromServiceMsg;
+      ((VerifyCodeManagerImpl.VerifyCodeWrapper)this.verifyCodeWrapperMap.get(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()))).verifyCodeInfo = paramFromServiceMsg;
       notifyVerifyCodeActivity(paramToServiceMsg, paramFromServiceMsg.verifyNote, paramFromServiceMsg.verifyimage, paramFromServiceMsg.verifyurl);
-      bool1 = false;
+      return false;
     }
-    VerifyCodeWrapper localVerifyCodeWrapper;
-    do
+    if ((paramFromServiceMsg.getBusinessFailCode() == 2003) || (this.verifyCodeWrapperMap.containsKey(Integer.valueOf(paramFromServiceMsg.getRequestSsoSeq()))))
     {
-      do
-      {
-        return bool1;
-        if (paramFromServiceMsg.getBusinessFailCode() == 2003) {
-          break;
-        }
-        bool1 = bool2;
-      } while (!this.verifyCodeWrapperMap.containsKey(Integer.valueOf(paramFromServiceMsg.getRequestSsoSeq())));
-      localVerifyCodeWrapper = (VerifyCodeWrapper)this.verifyCodeWrapperMap.remove(Integer.valueOf(paramFromServiceMsg.getRequestSsoSeq()));
+      VerifyCodeManagerImpl.VerifyCodeWrapper localVerifyCodeWrapper = (VerifyCodeManagerImpl.VerifyCodeWrapper)this.verifyCodeWrapperMap.remove(Integer.valueOf(paramFromServiceMsg.getRequestSsoSeq()));
       paramToServiceMsg = "";
       if (!paramFromServiceMsg.isSuccess()) {
         paramToServiceMsg = paramFromServiceMsg.getBusinessFailMsg();
@@ -200,18 +171,21 @@ public class VerifyCodeManagerImpl
       if (localVerifyCodeWrapper.serverNotifyObserver != null) {
         notifyVerifyCodeActivityClose(localVerifyCodeWrapper.serverNotifyObserver, paramToServiceMsg);
       }
-      bool1 = bool2;
-    } while (paramFromServiceMsg.getBusinessFailCode() == 2016);
-    paramFromServiceMsg.setMsfCommand(localVerifyCodeWrapper.srcTo.getMsfCommand());
-    notifyApp(localVerifyCodeWrapper.srcTo, paramFromServiceMsg);
-    return false;
+      if (paramFromServiceMsg.getBusinessFailCode() == 2016) {
+        return true;
+      }
+      paramFromServiceMsg.setMsfCommand(localVerifyCodeWrapper.srcTo.getMsfCommand());
+      notifyApp(localVerifyCodeWrapper.srcTo, paramFromServiceMsg);
+      return false;
+    }
+    return true;
   }
   
   public void onDestroy() {}
   
   public void onHttpVerifyCodeFail(String paramString1, String paramString2)
   {
-    paramString1 = (HttpVerifyCodeWrapper)this.httpVerifyCodeWrapperMap.remove(paramString1);
+    paramString1 = (VerifyCodeManagerImpl.HttpVerifyCodeWrapper)this.httpVerifyCodeWrapperMap.remove(paramString1);
     if (paramString1 != null) {
       notifyVerifyCodeActivityClose(paramString1.serverNotifyObserver, paramString2);
     }
@@ -219,7 +193,7 @@ public class VerifyCodeManagerImpl
   
   public void onHttpVerifyCodeSucc(String paramString)
   {
-    paramString = (HttpVerifyCodeWrapper)this.httpVerifyCodeWrapperMap.remove(paramString);
+    paramString = (VerifyCodeManagerImpl.HttpVerifyCodeWrapper)this.httpVerifyCodeWrapperMap.remove(paramString);
     if (paramString != null) {
       notifyVerifyCodeActivityClose(paramString.serverNotifyObserver, "");
     }
@@ -229,9 +203,9 @@ public class VerifyCodeManagerImpl
   {
     String str = (String)paramHashMap.get("key");
     if (!this.httpVerifyCodeWrapperMap.containsKey(str)) {
-      this.httpVerifyCodeWrapperMap.putIfAbsent(str, new HttpVerifyCodeWrapper(str));
+      this.httpVerifyCodeWrapperMap.putIfAbsent(str, new VerifyCodeManagerImpl.HttpVerifyCodeWrapper(this, str));
     }
-    HttpVerifyCodeWrapper localHttpVerifyCodeWrapper = (HttpVerifyCodeWrapper)this.httpVerifyCodeWrapperMap.get(str);
+    VerifyCodeManagerImpl.HttpVerifyCodeWrapper localHttpVerifyCodeWrapper = (VerifyCodeManagerImpl.HttpVerifyCodeWrapper)this.httpVerifyCodeWrapperMap.get(str);
     if (localHttpVerifyCodeWrapper != null)
     {
       localHttpVerifyCodeWrapper.httpVerifyHandler = paramHttpVerifyHandler;
@@ -245,24 +219,24 @@ public class VerifyCodeManagerImpl
     Object localObject;
     if (paramServerNotifyObserver.getSeq() == 0)
     {
-      localObject = (HttpVerifyCodeWrapper)this.httpVerifyCodeWrapperMap.get(paramServerNotifyObserver.getKey());
+      localObject = (VerifyCodeManagerImpl.HttpVerifyCodeWrapper)this.httpVerifyCodeWrapperMap.get(paramServerNotifyObserver.getKey());
       if (localObject != null)
       {
-        ((HttpVerifyCodeWrapper)localObject).serverNotifyObserver = paramServerNotifyObserver;
-        HashMap localHashMap = ((HttpVerifyCodeWrapper)localObject).attr;
-        ((HttpVerifyCodeWrapper)localObject).httpVerifyHandler.refreVerifyCode(paramServerNotifyObserver.getKey(), localHashMap);
+        ((VerifyCodeManagerImpl.HttpVerifyCodeWrapper)localObject).serverNotifyObserver = paramServerNotifyObserver;
+        HashMap localHashMap = ((VerifyCodeManagerImpl.HttpVerifyCodeWrapper)localObject).attr;
+        ((VerifyCodeManagerImpl.HttpVerifyCodeWrapper)localObject).httpVerifyHandler.refreVerifyCode(paramServerNotifyObserver.getKey(), localHashMap);
       }
     }
     do
     {
       return;
       int i = paramServerNotifyObserver.getSeq();
-      localObject = (VerifyCodeWrapper)this.verifyCodeWrapperMap.get(Integer.valueOf(i));
+      localObject = (VerifyCodeManagerImpl.VerifyCodeWrapper)this.verifyCodeWrapperMap.get(Integer.valueOf(i));
       if (localObject != null)
       {
-        ((VerifyCodeWrapper)localObject).serverNotifyObserver = paramServerNotifyObserver;
-        paramServerNotifyObserver = this.app.getService().msfSub.getRefreVerifyCodeMsg(((VerifyCodeWrapper)localObject).verifyCodeInfo);
-        paramServerNotifyObserver.setAppSeq(((VerifyCodeWrapper)localObject).verifyCodeInfo.appSeq);
+        ((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject).serverNotifyObserver = paramServerNotifyObserver;
+        paramServerNotifyObserver = this.app.getService().msfSub.getRefreVerifyCodeMsg(((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject).verifyCodeInfo);
+        paramServerNotifyObserver.setAppSeq(((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject).verifyCodeInfo.appSeq);
         this.app.getService().msfSub.sendMsg(paramServerNotifyObserver);
         return;
       }
@@ -272,12 +246,12 @@ public class VerifyCodeManagerImpl
   
   public void submitPuzzleVerifyCodeTicket(int paramInt, String paramString)
   {
-    Object localObject2 = (VerifyCodeWrapper)this.verifyCodeWrapperMap.get(Integer.valueOf(paramInt));
+    Object localObject2 = (VerifyCodeManagerImpl.VerifyCodeWrapper)this.verifyCodeWrapperMap.get(Integer.valueOf(paramInt));
     if (localObject2 != null)
     {
-      Object localObject1 = ((VerifyCodeWrapper)localObject2).srcTo;
-      paramString = this.app.getService().msfSub.getSubmitPuzzleVerifyCodeTicketMsg(paramString, ((VerifyCodeWrapper)localObject2).verifyCodeInfo);
-      paramString.setAppSeq(((VerifyCodeWrapper)localObject2).verifyCodeInfo.appSeq);
+      Object localObject1 = ((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject2).srcTo;
+      paramString = this.app.getService().msfSub.getSubmitPuzzleVerifyCodeTicketMsg(paramString, ((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject2).verifyCodeInfo);
+      paramString.setAppSeq(((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject2).verifyCodeInfo.appSeq);
       if (((ToServiceMsg)localObject1).getAttribute("from_where") != null)
       {
         localObject2 = (String)((ToServiceMsg)localObject1).getAttribute("from_where");
@@ -294,23 +268,23 @@ public class VerifyCodeManagerImpl
     Object localObject;
     if (paramServerNotifyObserver.getSeq() == 0)
     {
-      localObject = (HttpVerifyCodeWrapper)this.httpVerifyCodeWrapperMap.get(paramServerNotifyObserver.getKey());
+      localObject = (VerifyCodeManagerImpl.HttpVerifyCodeWrapper)this.httpVerifyCodeWrapperMap.get(paramServerNotifyObserver.getKey());
       if (localObject != null)
       {
-        HashMap localHashMap = ((HttpVerifyCodeWrapper)localObject).attr;
-        ((HttpVerifyCodeWrapper)localObject).serverNotifyObserver = paramServerNotifyObserver;
-        ((HttpVerifyCodeWrapper)localObject).httpVerifyHandler.submitVerifyCode(paramServerNotifyObserver.getKey(), localHashMap, paramString);
+        HashMap localHashMap = ((VerifyCodeManagerImpl.HttpVerifyCodeWrapper)localObject).attr;
+        ((VerifyCodeManagerImpl.HttpVerifyCodeWrapper)localObject).serverNotifyObserver = paramServerNotifyObserver;
+        ((VerifyCodeManagerImpl.HttpVerifyCodeWrapper)localObject).httpVerifyHandler.submitVerifyCode(paramServerNotifyObserver.getKey(), localHashMap, paramString);
       }
     }
     do
     {
       return;
-      localObject = (VerifyCodeWrapper)this.verifyCodeWrapperMap.get(Integer.valueOf(paramServerNotifyObserver.getSeq()));
+      localObject = (VerifyCodeManagerImpl.VerifyCodeWrapper)this.verifyCodeWrapperMap.get(Integer.valueOf(paramServerNotifyObserver.getSeq()));
     } while (localObject == null);
-    ((VerifyCodeWrapper)localObject).serverNotifyObserver = paramServerNotifyObserver;
-    paramServerNotifyObserver = ((VerifyCodeWrapper)localObject).srcTo;
-    paramString = this.app.getService().msfSub.getSubmitVerifyCodeMsg(paramString, ((VerifyCodeWrapper)localObject).verifyCodeInfo);
-    paramString.setAppSeq(((VerifyCodeWrapper)localObject).verifyCodeInfo.appSeq);
+    ((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject).serverNotifyObserver = paramServerNotifyObserver;
+    paramServerNotifyObserver = ((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject).srcTo;
+    paramString = this.app.getService().msfSub.getSubmitVerifyCodeMsg(paramString, ((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject).verifyCodeInfo);
+    paramString.setAppSeq(((VerifyCodeManagerImpl.VerifyCodeWrapper)localObject).verifyCodeInfo.appSeq);
     if (paramServerNotifyObserver.getAttribute("from_where") != null)
     {
       localObject = (String)paramServerNotifyObserver.getAttribute("from_where");
@@ -319,33 +293,6 @@ public class VerifyCodeManagerImpl
       paramString.addAttribute("mainaccount", paramServerNotifyObserver);
     }
     this.app.getService().msfSub.sendMsg(paramString);
-  }
-  
-  class HttpVerifyCodeWrapper
-  {
-    HashMap attr;
-    HttpVerifyHandler httpVerifyHandler;
-    String key;
-    ServerNotifyObserver serverNotifyObserver;
-    
-    public HttpVerifyCodeWrapper(String paramString)
-    {
-      this.key = paramString;
-    }
-  }
-  
-  class VerifyCodeWrapper
-  {
-    HashMap attr;
-    int seq;
-    ServerNotifyObserver serverNotifyObserver;
-    ToServiceMsg srcTo;
-    VerifyCodeInfo verifyCodeInfo;
-    
-    public VerifyCodeWrapper(int paramInt)
-    {
-      this.seq = paramInt;
-    }
   }
 }
 

@@ -1,15 +1,15 @@
 package com.tencent.upload.common;
 
 import android.content.Context;
-import com.tencent.upload.network.route.RecentRouteSet;
-import com.tencent.upload.network.route.RouteFactory.ServerCategory;
+import com.tencent.upload.network.route.IUploadRouteStrategy.RouteCategoryType;
+import com.tencent.upload.network.route.RecentRouteRecord;
+import com.tencent.upload.network.route.RecentRouteRecordStorage;
+import com.tencent.upload.network.route.ServerRouteTable;
 import com.tencent.upload.network.route.UploadRoute;
-import com.tencent.upload.network.route.c.a;
-import com.tencent.upload.network.route.d;
 import com.tencent.upload.uinterface.IUploadConfig;
 import com.tencent.upload.uinterface.IUploadEnv;
 import com.tencent.upload.uinterface.Utility;
-import java.util.ArrayList;
+import com.tencent.upload.utils.UploadLog;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -17,10 +17,16 @@ import java.util.regex.PatternSyntaxException;
 
 public final class UploadConfiguration
 {
+  private static final int CONNECTION_TIMEOUT_MS = 20000;
+  private static final int DATA_TIMEOUT_MS = 60000;
+  private static final int[] DEFAULT_MAS_SEGMENT_SIZE_ARRAY = { 1440, 1200, 700 };
+  public static final List DEF_PORTS = Arrays.asList(new Integer[] { Integer.valueOf(80), Integer.valueOf(443), Integer.valueOf(8080), Integer.valueOf(14000) });
+  private static final int DOMAIN_NAME_PARSE_TIMEOUT_MS = 20000;
+  private static final int MAX_SESSION_PACKET_SIZE_BYTE = 2097152;
+  private static final String TAG = "Configuration";
+  @Deprecated
   public static final HashMap<String, Integer> UPLOAD_IP_TIMEOUT_MAP = new HashMap();
-  private static final int[] a = { 1440, 1200, 700 };
-  private static final List b = Arrays.asList(new Integer[] { Integer.valueOf(80), Integer.valueOf(443), Integer.valueOf(8080), Integer.valueOf(14000) });
-  private static volatile long[] c;
+  private static volatile long[] sServerTimePair;
   
   public static final void checkVaildConnection(Context paramContext, Long paramLong, String paramString)
   {
@@ -29,7 +35,7 @@ public final class UploadConfiguration
   
   public static final String getChangeRouteRetCode()
   {
-    IUploadConfig localIUploadConfig = a.b();
+    IUploadConfig localIUploadConfig = UploadGlobalConfig.getConfig();
     if (localIUploadConfig != null) {
       return localIUploadConfig.getChangeRouteRetCodes();
     }
@@ -38,7 +44,7 @@ public final class UploadConfiguration
   
   public static final int getConnectionTimeout()
   {
-    IUploadConfig localIUploadConfig = a.b();
+    IUploadConfig localIUploadConfig = UploadGlobalConfig.getConfig();
     if (localIUploadConfig != null) {
       return localIUploadConfig.getConnectTimeout() * 1000;
     }
@@ -47,17 +53,17 @@ public final class UploadConfiguration
   
   public static final String getCurrentApn()
   {
-    return a.e().getApnName();
+    return UploadGlobalConfig.getUploadEnv().getApnName();
   }
   
   public static int getCurrentNetworkCategory()
   {
-    return a.e().getCurrentNetworkCategory();
+    return UploadGlobalConfig.getUploadEnv().getCurrentNetworkCategory();
   }
   
   public static final int getCurrentOperatorCategory()
   {
-    IUploadEnv localIUploadEnv = a.e();
+    IUploadEnv localIUploadEnv = UploadGlobalConfig.getUploadEnv();
     if (localIUploadEnv == null) {}
     do
     {
@@ -71,7 +77,7 @@ public final class UploadConfiguration
   
   public static final int getDataTimeout()
   {
-    IUploadConfig localIUploadConfig = a.b();
+    IUploadConfig localIUploadConfig = UploadGlobalConfig.getConfig();
     if (localIUploadConfig != null) {
       return localIUploadConfig.getDataTimeout() * 1000;
     }
@@ -80,7 +86,7 @@ public final class UploadConfiguration
   
   public static final int getDoNotFragment()
   {
-    IUploadConfig localIUploadConfig = a.b();
+    IUploadConfig localIUploadConfig = UploadGlobalConfig.getConfig();
     if (localIUploadConfig == null) {
       return 1;
     }
@@ -94,7 +100,7 @@ public final class UploadConfiguration
   
   public static final String getExifTagCode(String paramString)
   {
-    IUploadConfig localIUploadConfig = a.b();
+    IUploadConfig localIUploadConfig = UploadGlobalConfig.getConfig();
     if (localIUploadConfig == null) {
       return null;
     }
@@ -103,7 +109,7 @@ public final class UploadConfiguration
   
   public static int getGifUploadLimit(int paramInt)
   {
-    IUploadConfig localIUploadConfig = a.b();
+    IUploadConfig localIUploadConfig = UploadGlobalConfig.getConfig();
     if (localIUploadConfig == null) {
       return 5242880;
     }
@@ -112,65 +118,57 @@ public final class UploadConfiguration
   
   public static final int getMaxSegmentSize(String paramString)
   {
-    int i;
     if (!isWifiSetting()) {
-      i = -1;
+      return -1;
     }
-    for (;;)
+    Object localObject;
+    synchronized (UPLOAD_IP_TIMEOUT_MAP)
     {
-      return i;
-      Object localObject;
-      synchronized (UPLOAD_IP_TIMEOUT_MAP)
+      localObject = (Integer)UPLOAD_IP_TIMEOUT_MAP.get(paramString);
+      paramString = (String)localObject;
+      if (localObject == null) {
+        paramString = Integer.valueOf(0);
+      }
+      localObject = UploadGlobalConfig.getConfig();
+      if (localObject == null) {
+        return DEFAULT_MAS_SEGMENT_SIZE_ARRAY[(paramString.intValue() % DEFAULT_MAS_SEGMENT_SIZE_ARRAY.length)];
+      }
+    }
+    ??? = null;
+    try
+    {
+      String str = ((IUploadConfig)localObject).getMaxSegmentSizeArray();
+      localObject = ???;
+      if (str != null)
       {
-        localObject = (Integer)UPLOAD_IP_TIMEOUT_MAP.get(paramString);
-        paramString = (String)localObject;
-        if (localObject == null) {
-          paramString = Integer.valueOf(0);
-        }
-        localObject = a.b();
-        if (localObject == null) {
-          return a[(paramString.intValue() % a.length)];
+        localObject = ???;
+        if (str.length() > 0) {
+          localObject = str.split("\\|");
         }
       }
-      ??? = null;
+    }
+    catch (PatternSyntaxException localPatternSyntaxException)
+    {
+      for (;;)
+      {
+        UploadLog.w("Configuration", localPatternSyntaxException.toString());
+        localHashMap1 = ???;
+      }
+      HashMap localHashMap1 = localHashMap1[(paramString.intValue() % localHashMap1.length)];
       try
       {
-        String str = ((IUploadConfig)localObject).getMaxSegmentSizeArray();
-        localObject = ???;
-        if (str != null)
-        {
-          localObject = ???;
-          if (str.length() > 0) {
-            localObject = str.split("\\|");
-          }
-        }
-        if ((localObject == null) || (localObject.length == 0)) {
-          return a[(paramString.intValue() % a.length)];
-        }
+        int i = Math.max(Integer.parseInt(localHashMap1), 64);
+        return i;
       }
-      catch (PatternSyntaxException localPatternSyntaxException)
+      catch (NumberFormatException localNumberFormatException)
       {
-        for (;;)
-        {
-          b.d("Configuration", localPatternSyntaxException.toString());
-          localHashMap1 = ???;
-        }
-        HashMap localHashMap1 = localHashMap1[(paramString.intValue() % localHashMap1.length)];
-        try
-        {
-          int j = Integer.parseInt(localHashMap1);
-          i = j;
-          if (j < 64) {
-            return 64;
-          }
-        }
-        catch (NumberFormatException localNumberFormatException)
-        {
-          b.d("Configuration", localNumberFormatException.toString());
-        }
+        UploadLog.w("Configuration", localNumberFormatException.toString());
       }
     }
-    return a[(paramString.intValue() % a.length)];
+    if ((localObject == null) || (localObject.length == 0)) {
+      return DEFAULT_MAS_SEGMENT_SIZE_ARRAY[(paramString.intValue() % DEFAULT_MAS_SEGMENT_SIZE_ARRAY.length)];
+    }
+    return DEFAULT_MAS_SEGMENT_SIZE_ARRAY[(paramString.intValue() % DEFAULT_MAS_SEGMENT_SIZE_ARRAY.length)];
   }
   
   public static final int getMaxSessionPacketSize()
@@ -180,7 +178,7 @@ public final class UploadConfiguration
   
   public static final String getNetworkUnavailableRetCode()
   {
-    IUploadConfig localIUploadConfig = a.b();
+    IUploadConfig localIUploadConfig = UploadGlobalConfig.getConfig();
     if (localIUploadConfig != null) {
       return localIUploadConfig.getNetworkUnavailableRetCodes();
     }
@@ -189,7 +187,7 @@ public final class UploadConfiguration
   
   public static final int getPictureQuality(String paramString)
   {
-    IUploadConfig localIUploadConfig = a.b();
+    IUploadConfig localIUploadConfig = UploadGlobalConfig.getConfig();
     if (localIUploadConfig == null) {
       return 0;
     }
@@ -198,12 +196,12 @@ public final class UploadConfiguration
   
   public static final String getProviderName()
   {
-    return a.e().getProviderName();
+    return UploadGlobalConfig.getUploadEnv().getProviderName();
   }
   
   public static final String getRecentRouteApnKey()
   {
-    IUploadEnv localIUploadEnv = a.e();
+    IUploadEnv localIUploadEnv = UploadGlobalConfig.getUploadEnv();
     if (localIUploadEnv == null) {}
     do
     {
@@ -217,69 +215,21 @@ public final class UploadConfiguration
   
   public static final long getRecentRouteExpire()
   {
-    IUploadConfig localIUploadConfig = a.b();
+    IUploadConfig localIUploadConfig = UploadGlobalConfig.getConfig();
     if (localIUploadConfig == null) {
       return 604800000L;
     }
     return localIUploadConfig.getRecentRouteExpire();
   }
   
-  public static final List<Integer> getUploadRoutePorts()
-  {
-    Object localObject1 = a.b();
-    Object localObject3 = ((IUploadConfig)localObject1).getUploadPort();
-    if ((localObject1 == null) || (localObject3 == null)) {
-      localObject1 = b;
-    }
-    for (;;)
-    {
-      return localObject1;
-      try
-      {
-        localObject3 = ((String)localObject3).split(",");
-        if (localObject3 == null) {
-          return b;
-        }
-      }
-      catch (Exception localException1)
-      {
-        for (;;)
-        {
-          b.d("Configuration", localException1.toString());
-          localObject3 = null;
-        }
-        ArrayList localArrayList = new ArrayList(localObject3.length);
-        try
-        {
-          int j = localObject3.length;
-          int i = 0;
-          for (;;)
-          {
-            Object localObject2 = localArrayList;
-            if (i >= j) {
-              break;
-            }
-            localArrayList.add(Integer.valueOf(Integer.parseInt(localObject3[i])));
-            i += 1;
-          }
-          return b;
-        }
-        catch (Exception localException2)
-        {
-          b.d("Configuration", localException2.toString());
-        }
-      }
-    }
-  }
-  
   public static final long[] getUploadServerTimePair()
   {
-    return c;
+    return sServerTimePair;
   }
   
   public static final int getWifiOperatorCategory()
   {
-    IUploadConfig localIUploadConfig = a.b();
+    IUploadConfig localIUploadConfig = UploadGlobalConfig.getConfig();
     if (localIUploadConfig == null) {
       return 0;
     }
@@ -301,17 +251,17 @@ public final class UploadConfiguration
   
   public static final boolean isMobileSetting()
   {
-    return a.e().isMobile();
+    return UploadGlobalConfig.getUploadEnv().isMobile();
   }
   
   public static final boolean isNetworkAvailable()
   {
-    return a.e().isAvailable();
+    return UploadGlobalConfig.getUploadEnv().isAvailable();
   }
   
   public static boolean isPictureNeedToCompress(String paramString)
   {
-    IUploadConfig localIUploadConfig = a.b();
+    IUploadConfig localIUploadConfig = UploadGlobalConfig.getConfig();
     if (localIUploadConfig == null) {
       return true;
     }
@@ -320,61 +270,40 @@ public final class UploadConfiguration
   
   public static final boolean isWapSetting()
   {
-    return a.e().isWap();
+    return UploadGlobalConfig.getUploadEnv().isWap();
   }
   
   public static final boolean isWifiSetting()
   {
-    return a.e().isWifi();
+    return UploadGlobalConfig.getUploadEnv().isWifi();
   }
   
-  public static final void registerNetworkStateObserver(NetworkStateObserver paramNetworkStateObserver)
+  public static final void registerNetworkStateObserver(UploadConfiguration.NetworkStateObserver paramNetworkStateObserver)
   {
-    IUploadEnv localIUploadEnv = a.e();
-    if ((paramNetworkStateObserver == null) || (localIUploadEnv == null)) {
+    IUploadEnv localIUploadEnv = UploadGlobalConfig.getUploadEnv();
+    if ((paramNetworkStateObserver == null) || (localIUploadEnv == null))
+    {
+      UploadLog.d("Configuration", "observer:" + paramNetworkStateObserver + " env:" + localIUploadEnv);
       return;
     }
     localIUploadEnv.registerNetworkStateObserver(paramNetworkStateObserver);
   }
   
-  public static final RecentRouteSet saveAsRecentIp(RouteFactory.ServerCategory paramServerCategory, String paramString, UploadRoute paramUploadRoute)
+  public static final RecentRouteRecord saveAsRecentIp(ServerRouteTable paramServerRouteTable, String paramString, UploadRoute paramUploadRoute)
   {
-    d locald = new d(paramServerCategory);
-    RecentRouteSet localRecentRouteSet = locald.a(paramString);
-    paramServerCategory = localRecentRouteSet;
-    if (localRecentRouteSet == null)
+    RecentRouteRecordStorage localRecentRouteRecordStorage = new RecentRouteRecordStorage(paramServerRouteTable);
+    RecentRouteRecord localRecentRouteRecord = localRecentRouteRecordStorage.getData(paramString);
+    paramServerRouteTable = localRecentRouteRecord;
+    if (localRecentRouteRecord == null)
     {
-      paramServerCategory = new RecentRouteSet();
-      paramServerCategory.setTimeStamp(System.currentTimeMillis());
+      paramServerRouteTable = new RecentRouteRecord();
+      paramServerRouteTable.setTimeStamp(System.currentTimeMillis());
     }
     paramUploadRoute = paramUploadRoute.clone();
-    paramUploadRoute.setRouteCategory(c.a.c);
-    paramServerCategory.setRecentRoute(paramUploadRoute);
-    locald.a(paramString, paramServerCategory);
-    return paramServerCategory;
-  }
-  
-  public static final class NetworkCategory
-  {
-    public static final int MOBILE_2G = 3;
-    public static final int MOBILE_3G = 2;
-    public static final int MOBILE_4G = 6;
-    public static final int UNKNOWN = 0;
-    public static final int WIFI = 1;
-  }
-  
-  public static abstract interface NetworkStateObserver
-  {
-    public abstract void onStateChanged(boolean paramBoolean);
-  }
-  
-  public static final class OperatorCategory
-  {
-    public static final int CMCC = 1;
-    public static final int CMCT = 3;
-    public static final int UNICOM = 2;
-    public static final int UNKNOW = 0;
-    public static final int WIFI = 4;
+    paramUploadRoute.setRouteCategory(IUploadRouteStrategy.RouteCategoryType.RECENT);
+    paramServerRouteTable.setRecentRoute(paramUploadRoute);
+    localRecentRouteRecordStorage.setData(paramString, paramServerRouteTable);
+    return paramServerRouteTable;
   }
 }
 

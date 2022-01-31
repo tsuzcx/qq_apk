@@ -16,36 +16,34 @@ public class UploadJobCounter
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: aconst_null
-    //   3: astore_1
-    //   4: aload_0
-    //   5: invokespecial 37	java/lang/Object:clone	()Ljava/lang/Object;
-    //   8: checkcast 2	com/tencent/weiyun/transmission/upload/UploadJobCounter
-    //   11: astore_2
-    //   12: aload_2
-    //   13: astore_1
-    //   14: aload_0
-    //   15: monitorexit
-    //   16: aload_1
-    //   17: areturn
-    //   18: astore_1
-    //   19: aload_0
-    //   20: monitorexit
-    //   21: aload_1
-    //   22: athrow
-    //   23: astore_2
-    //   24: goto -10 -> 14
+    //   2: aload_0
+    //   3: invokespecial 37	java/lang/Object:clone	()Ljava/lang/Object;
+    //   6: checkcast 2	com/tencent/weiyun/transmission/upload/UploadJobCounter
+    //   9: astore_1
+    //   10: aload_0
+    //   11: monitorexit
+    //   12: aload_1
+    //   13: areturn
+    //   14: astore_1
+    //   15: aconst_null
+    //   16: astore_1
+    //   17: goto -7 -> 10
+    //   20: astore_1
+    //   21: aload_0
+    //   22: monitorexit
+    //   23: aload_1
+    //   24: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	27	0	this	UploadJobCounter
-    //   3	14	1	localObject1	Object
-    //   18	4	1	localObject2	Object
-    //   11	2	2	localUploadJobCounter	UploadJobCounter
-    //   23	1	2	localCloneNotSupportedException	java.lang.CloneNotSupportedException
+    //   0	25	0	this	UploadJobCounter
+    //   9	4	1	localUploadJobCounter	UploadJobCounter
+    //   14	1	1	localCloneNotSupportedException	java.lang.CloneNotSupportedException
+    //   16	1	1	localObject1	Object
+    //   20	4	1	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   4	12	18	finally
-    //   4	12	23	java/lang/CloneNotSupportedException
+    //   2	10	14	java/lang/CloneNotSupportedException
+    //   2	10	20	finally
   }
   
   public void reset()

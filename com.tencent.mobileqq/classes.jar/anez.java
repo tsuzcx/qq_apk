@@ -1,58 +1,37 @@
-import com.tencent.component.network.downloader.strategy.PortConfigStrategy;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import common.config.service.QzoneConfig.QzoneConfigChangeListener;
-import cooperation.qzone.thread.QzoneBaseThread;
-import cooperation.qzone.thread.QzoneHandlerThreadFactory;
 
-public class anez
-  extends PortConfigStrategy
-  implements QzoneConfig.QzoneConfigChangeListener
+class anez
+  extends BroadcastReceiver
 {
-  public anez()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginDownloadPortConfig", 2, "defaultPortStrategy={'a[0-9].qpic.cn':[{'port': '80'},{'port': '14000'}],'m.qpic.cn':[{'port': '80'},{'port': '14000'}]}");
-    }
-    QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new anfa(this));
-    QzoneConfig.getInstance().addListener(this);
-  }
+  anez(aned paramaned, MessengerService paramMessengerService, Bundle paramBundle) {}
   
-  private void b()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    String str = QzoneConfig.getInstance().getConfig("PhotoSvrList", "DownloadAccessPortList");
-    if (str != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QZonePluginDownloadPortConfig", 2, "initPort, ports=" + str);
-      }
-      a(str);
-    }
-  }
-  
-  private void c()
-  {
-    String str = QzoneConfig.getInstance().getConfig("PhotoSvrList", "DownloadAccessPortList");
-    if (str != null) {}
-    for (;;)
-    {
-      a(str);
+    paramContext = paramIntent.getAction();
+    if ((TextUtils.isEmpty(paramContext)) || (!TextUtils.equals(paramContext, "mqq.intent.action.DEVLOCK_ROAM"))) {
       return;
-      str = "{'a[0-9].qpic.cn':[{'port': '80'},{'port': '14000'}],'m.qpic.cn':[{'port': '80'},{'port': '14000'}]}";
     }
-  }
-  
-  public void a()
-  {
+    paramContext = this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.getApplicationContext();
+    if (paramContext != null) {
+      paramContext.unregisterReceiver(this);
+    }
     if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginDownloadPortConfig", 2, "QzoneDownloadPortConfig receive change");
+      QLog.d("Q.emoji.web.MessengerService", 2, "openDevLock unregisterReceiver context: " + paramContext);
     }
-    b();
+    paramContext = new Bundle(paramIntent.getExtras());
+    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anez
  * JD-Core Version:    0.7.0.1
  */

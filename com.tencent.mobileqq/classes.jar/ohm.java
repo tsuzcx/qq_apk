@@ -1,18 +1,51 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 
-public final class ohm
-  implements Parcelable.Creator
+public class ohm
+  implements Handler.Callback
 {
-  public EditLocalGifSource a(Parcel paramParcel)
+  private final Handler jdField_a_of_type_AndroidOsHandler;
+  private final ohn jdField_a_of_type_Ohn;
+  private boolean jdField_a_of_type_Boolean = true;
+  private boolean b;
+  
+  public ohm(ohn paramohn)
   {
-    return new EditLocalGifSource(paramParcel);
+    this.jdField_a_of_type_Ohn = paramohn;
+    this.jdField_a_of_type_AndroidOsHandler = new befq(Looper.getMainLooper(), this);
   }
   
-  public EditLocalGifSource[] a(int paramInt)
+  public void a(Bundle paramBundle)
   {
-    return new EditLocalGifSource[paramInt];
+    this.b = false;
+    do
+    {
+      while (!this.b) {
+        switch (this.jdField_a_of_type_Ohn.a(paramBundle))
+        {
+        }
+      }
+      return;
+    } while (!this.jdField_a_of_type_Boolean);
+    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+    localMessage.setData(paramBundle);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    }
+    if (!this.b) {
+      a(paramMessage.getData());
+    }
+    return true;
   }
 }
 

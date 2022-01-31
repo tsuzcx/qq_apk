@@ -1,31 +1,52 @@
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.data.TroopEntranceBar;
+import android.os.Vibrator;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.activity.recent.DrawerFrame;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class ajiw
-  implements Runnable
+  implements View.OnLongClickListener
 {
-  public ajiw(TroopEntranceBar paramTroopEntranceBar) {}
+  public ajiw(FrameHelperActivity paramFrameHelperActivity) {}
   
-  public void run()
+  public boolean onLongClick(View paramView)
   {
-    String str1 = "";
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)
-    {
-      String str2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
-      AccountDetail localAccountDetail = PublicAccountUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str2);
-      if (localAccountDetail != null) {
-        str1 = localAccountDetail.uin;
-      }
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_tribe", "", "interest_data", "exp_tribechat_aio", 0, 0, str2, str1, "", "");
+    if ((this.a.getActivity() == null) || (this.a.getActivity().isFinishing())) {
+      return true;
     }
+    if (!axam.c(this.a.getActivity().app, false)) {
+      return true;
+    }
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame.b())) {
+      return true;
+    }
+    if ((paramView == this.a.b) && (this.a.jdField_a_of_type_Atjj != null) && (!this.a.jdField_a_of_type_Atjj.isShowing()))
+    {
+      if ((this.a.getActivity().app != null) && (this.a.getActivity().app.getApp() != null))
+      {
+        paramView = (Vibrator)this.a.getActivity().app.getApp().getSystemService("vibrator");
+        if (paramView != null) {
+          paramView.vibrate(new long[] { 0L, 1L, 20L, 21L }, -1);
+        }
+      }
+      this.a.jdField_a_of_type_Atjj.show();
+      awqx.b(this.a.getActivity().app, "dc00898", "", "", "0X800A999", "0X800A999", 1, 0, "", "", "", "");
+      awqx.b(this.a.getActivity().app, "dc00898", "", "", "0X8009E84", "0X8009E84", 0, 0, "", "", "", "");
+    }
+    if (this.a.jdField_a_of_type_Ajja != null) {
+      this.a.jdField_a_of_type_Ajja.a();
+    }
+    this.a.o();
+    awqx.b(this.a.getActivity().app, "CliOper", "", "", "0X80072D1", "0X80072D1", 0, 0, "", "", "", "");
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajiw
  * JD-Core Version:    0.7.0.1
  */

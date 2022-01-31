@@ -1,20 +1,68 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.widget.QQToast;
-
-class afhr
-  implements Runnable
+public final class afhr
 {
-  afhr(afhq paramafhq) {}
-  
-  public void run()
+  private static boolean m(int paramInt)
   {
-    this.a.a.a();
-    QQToast.a(this.a.a, 1, "当前网络不可用，请检查网络设置", 0).a();
+    return paramInt == -3;
+  }
+  
+  private static boolean n(int paramInt)
+  {
+    return paramInt == -2;
+  }
+  
+  private static boolean o(int paramInt)
+  {
+    return paramInt == -1;
+  }
+  
+  private static boolean p(int paramInt)
+  {
+    return paramInt < 0;
+  }
+  
+  private static boolean q(int paramInt)
+  {
+    return paramInt == 0;
+  }
+  
+  private static boolean r(int paramInt)
+  {
+    return paramInt == 1;
+  }
+  
+  private static boolean s(int paramInt)
+  {
+    return paramInt == 2;
+  }
+  
+  private static boolean t(int paramInt)
+  {
+    return paramInt == 3;
+  }
+  
+  private static boolean u(int paramInt)
+  {
+    return paramInt == 4;
+  }
+  
+  private static boolean v(int paramInt)
+  {
+    return paramInt == 5;
+  }
+  
+  private static boolean w(int paramInt)
+  {
+    return paramInt > 2;
+  }
+  
+  private static boolean x(int paramInt)
+  {
+    return paramInt >= 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afhr
  * JD-Core Version:    0.7.0.1
  */

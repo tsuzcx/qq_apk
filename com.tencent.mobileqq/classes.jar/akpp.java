@@ -1,26 +1,23 @@
-import com.tencent.mobileqq.vas.VasManager.CompleteListener;
-import java.lang.ref.WeakReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
-public class akpp
-  extends WeakReference
-  implements VasManager.CompleteListener
+public final class akpp
+  implements Parcelable.Creator<ArEffectConfig>
 {
-  public akpp(VasManager.CompleteListener paramCompleteListener)
+  public ArEffectConfig a(Parcel paramParcel)
   {
-    super(paramCompleteListener);
+    return new ArEffectConfig(paramParcel);
   }
   
-  public void a(Object paramObject1, Object paramObject2)
+  public ArEffectConfig[] a(int paramInt)
   {
-    VasManager.CompleteListener localCompleteListener = (VasManager.CompleteListener)get();
-    if (localCompleteListener != null) {
-      localCompleteListener.a(paramObject1, paramObject2);
-    }
+    return new ArEffectConfig[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akpp
  * JD-Core Version:    0.7.0.1
  */

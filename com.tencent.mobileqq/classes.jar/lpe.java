@@ -1,88 +1,130 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.ForeBackGround;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.av.so.DownloadInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.confighandler.ConfigInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-public final class lpe
-  implements Runnable
+public class lpe
 {
-  public lpe(boolean paramBoolean) {}
+  DownloadInfo jdField_a_of_type_ComTencentAvSoDownloadInfo = null;
+  lpf jdField_a_of_type_Lpf = null;
   
-  public void run()
+  lpe()
   {
-    int i = 1;
-    if (this.a) {
-      ReadinjoySPEventReport.c(System.currentTimeMillis());
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QavSo", 4, "SoMgrAppDownload in QQAppInterface");
     }
-    Object localObject;
-    if (ReadinjoySPEventReport.b(9))
+    this.jdField_a_of_type_Lpf = new lpf();
+  }
+  
+  static void a(int paramInt)
+  {
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    Intent localIntent = new Intent("tencent.video.somgr.notify");
+    localIntent.setPackage(localBaseApplicationImpl.getPackageName());
+    localIntent.putExtra("Event_Progress", paramInt);
+    localBaseApplicationImpl.sendBroadcast(localIntent);
+  }
+  
+  public static void a(DownloadInfo paramDownloadInfo, int paramInt)
+  {
+    SharedPreferences localSharedPreferences = DownloadInfo.getSP();
+    if ((paramInt & 0x1) == 1)
     {
-      ArrayList localArrayList = new ArrayList();
-      oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
-      localAttributeList.att_id.set(1);
-      localAttributeList.att_name.set("isOn");
-      PBStringField localPBStringField = localAttributeList.att_value;
-      if (!this.a) {
-        break label272;
-      }
-      localObject = String.valueOf(1);
-      localPBStringField.set((String)localObject);
-      localArrayList.add(localAttributeList);
-      if (!this.a)
+      String str = paramDownloadInfo.MD5_zip_so;
+      localSharedPreferences.edit().putString("so_zip_md5", str).commit();
+    }
+    if ((paramInt & 0x2) == 2)
+    {
+      paramDownloadInfo = paramDownloadInfo.MD5_zip_model;
+      localSharedPreferences.edit().putString("model_zip_md5", paramDownloadInfo).commit();
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, ConfigInfo paramConfigInfo)
+  {
+    lpc.a().a.b(paramQQAppInterface, paramString, paramConfigInfo);
+  }
+  
+  public static boolean a()
+  {
+    return lpc.a().a.b();
+  }
+  
+  private static boolean b(String paramString1, String paramString2)
+  {
+    if (new File(paramString1).exists())
+    {
+      if (!paramString2.equalsIgnoreCase(attn.a(paramString1)))
       {
-        long l = ReadinjoySPEventReport.d();
-        if (ReadinjoySPEventReport.d() == 0L)
-        {
-          l = ReadinjoySPEventReport.e();
-          i = 0;
-        }
-        l = (System.currentTimeMillis() - l) / 1000L;
-        localObject = new oidb_cmd0x80a.AttributeList();
-        ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(2);
-        ((oidb_cmd0x80a.AttributeList)localObject).att_name.set("time");
-        ((oidb_cmd0x80a.AttributeList)localObject).att_value.set(String.valueOf(l));
-        localArrayList.add(localObject);
-        localAttributeList = new oidb_cmd0x80a.AttributeList();
-        localAttributeList.att_id.set(3);
-        localAttributeList.att_name.set("isScreenTime");
-        localPBStringField = localAttributeList.att_value;
-        if (i == 0) {
-          break label281;
-        }
-        localObject = "1";
-        label226:
-        localPBStringField.set((String)localObject);
-        localArrayList.add(localAttributeList);
+        QLog.i("QavSo", 1, "checkFileValid failed. check md5 failed. filename = " + paramString1 + ", md5FromConfig = " + paramString2);
+        return false;
       }
-      PublicAccountUtil.a(9, "ScreenSwitch", localArrayList);
-      if (!this.a) {
-        break label288;
-      }
-      ReadinjoySPEventReport.d(System.currentTimeMillis());
-      ReadinjoySPEventReport.c(0);
+      return true;
     }
-    label272:
-    label281:
-    label288:
-    do
+    QLog.i("QavSo", 1, "checkFileValid failed. file is not exist. filename = " + paramString1 + ", md5FromConfig = " + paramString2);
+    return false;
+  }
+  
+  void b(QQAppInterface paramQQAppInterface, String paramString, ConfigInfo paramConfigInfo)
+  {
+    this.jdField_a_of_type_ComTencentAvSoDownloadInfo = ((DownloadInfo)paramConfigInfo);
+    if (this.jdField_a_of_type_ComTencentAvSoDownloadInfo == null) {
+      this.jdField_a_of_type_ComTencentAvSoDownloadInfo = DownloadInfo.get();
+    }
+    QLog.w("QavSo", 1, "handle_QAV_So_Config, configInfo[" + paramConfigInfo + "], mDownloadInfo[" + this.jdField_a_of_type_ComTencentAvSoDownloadInfo + "]");
+    if (this.jdField_a_of_type_ComTencentAvSoDownloadInfo.is_auto_download) {
+      a();
+    }
+  }
+  
+  boolean b()
+  {
+    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
+    boolean bool2;
+    if ((localObject instanceof QQAppInterface))
     {
-      return;
-      localObject = String.valueOf(0);
-      break;
-      localObject = "0";
-      break label226;
-      ReadinjoySPEventReport.a();
-    } while (ReadinjoySPEventReport.ForeBackGround.a == 2);
-    ReadinjoySPEventReport.d(false);
+      if (((QQAppInterface)localObject).getManager(21) == null)
+      {
+        if (QLog.isDevelopLevel()) {
+          QLog.d("QavSo", 4, "innerDownload, getNetEngine 为空");
+        }
+        bool2 = false;
+        return bool2;
+      }
+    }
+    else
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("QavSo", 4, "appRuntime 不是 QQAppInterface");
+      }
+      return false;
+    }
+    if (this.jdField_a_of_type_ComTencentAvSoDownloadInfo == null) {
+      this.jdField_a_of_type_ComTencentAvSoDownloadInfo = DownloadInfo.get();
+    }
+    localObject = this.jdField_a_of_type_ComTencentAvSoDownloadInfo;
+    if (localObject == null) {
+      return false;
+    }
+    if (11 == lpj.a((DownloadInfo)localObject)) {}
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      bool2 = bool1;
+      if (!bool1) {
+        break;
+      }
+      return this.jdField_a_of_type_Lpf.a((DownloadInfo)localObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lpe
  * JD-Core Version:    0.7.0.1
  */

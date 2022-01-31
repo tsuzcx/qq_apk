@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.io.File;
-import lrs;
+import oof;
 
 public class PFile
   extends File
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new lrs();
+  public static final Parcelable.Creator<PFile> CREATOR = new oof();
   public final String content;
   
   public PFile(Parcel paramParcel)
@@ -29,44 +29,44 @@ public class PFile
   static String readFile(String paramString)
   {
     // Byte code:
-    //   0: new 40	java/lang/StringBuilder
+    //   0: new 41	java/lang/StringBuilder
     //   3: dup
-    //   4: invokespecial 41	java/lang/StringBuilder:<init>	()V
+    //   4: invokespecial 42	java/lang/StringBuilder:<init>	()V
     //   7: astore_3
-    //   8: new 43	java/io/BufferedReader
+    //   8: new 44	java/io/BufferedReader
     //   11: dup
-    //   12: new 45	java/io/FileReader
+    //   12: new 46	java/io/FileReader
     //   15: dup
     //   16: aload_0
-    //   17: invokespecial 46	java/io/FileReader:<init>	(Ljava/lang/String;)V
-    //   20: invokespecial 49	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   17: invokespecial 47	java/io/FileReader:<init>	(Ljava/lang/String;)V
+    //   20: invokespecial 50	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   23: astore_2
     //   24: aload_2
-    //   25: invokevirtual 52	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   25: invokevirtual 53	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   28: astore_1
-    //   29: ldc 54
+    //   29: ldc 55
     //   31: astore_0
     //   32: aload_1
     //   33: ifnull +24 -> 57
     //   36: aload_3
     //   37: aload_0
-    //   38: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   41: aload_1
-    //   42: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: invokevirtual 59	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   45: pop
-    //   46: ldc 60
+    //   46: ldc 61
     //   48: astore_0
     //   49: aload_2
-    //   50: invokevirtual 52	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   50: invokevirtual 53	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   53: astore_1
     //   54: goto -22 -> 32
     //   57: aload_3
-    //   58: invokevirtual 63	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   58: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   61: astore_0
     //   62: aload_2
     //   63: ifnull +7 -> 70
     //   66: aload_2
-    //   67: invokevirtual 66	java/io/BufferedReader:close	()V
+    //   67: invokevirtual 67	java/io/BufferedReader:close	()V
     //   70: aload_0
     //   71: areturn
     //   72: astore_0
@@ -75,7 +75,7 @@ public class PFile
     //   75: aload_1
     //   76: ifnull +7 -> 83
     //   79: aload_1
-    //   80: invokevirtual 66	java/io/BufferedReader:close	()V
+    //   80: invokevirtual 67	java/io/BufferedReader:close	()V
     //   83: aload_0
     //   84: athrow
     //   85: astore_1

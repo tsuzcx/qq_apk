@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-
-class wwf
-  implements Runnable
+public class wwf
+  extends wwe
 {
-  wwf(wwd paramwwd, int paramInt, Object paramObject) {}
-  
-  public void run()
+  public int a(int paramInt)
   {
-    this.jdField_a_of_type_Wwd.a.a(39, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangObject);
+    return paramInt;
+  }
+  
+  public boolean a(int paramInt)
+  {
+    return paramInt > 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wwf
  * JD-Core Version:    0.7.0.1
  */

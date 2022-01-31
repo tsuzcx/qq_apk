@@ -1,40 +1,41 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsAdapter.VideoItemHolder;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoInfo;
-import java.util.List;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.lebasearch.Utils;
 
-public class msb
-  implements Runnable
+public final class msb
+  implements DialogInterface.OnClickListener
 {
-  public msb(FastWebVideoFeedsAdapter paramFastWebVideoFeedsAdapter) {}
+  public msb(int paramInt, ajfe paramajfe, Context paramContext, wis paramwis, long paramLong) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FastWebVideoInfo localFastWebVideoInfo = (FastWebVideoInfo)FastWebVideoFeedsAdapter.a(this.a).get(0);
-    Object localObject;
-    if (FastWebVideoFeedsAdapter.a(this.a).getFirstVisiblePosition() == 0)
+    switch (paramInt)
     {
-      localObject = FastWebVideoFeedsAdapter.a(this.a).getChildAt(FastWebVideoFeedsAdapter.a(this.a).getHeaderViewsCount());
-      if ((localObject != null) && ((((View)localObject).getTag() instanceof FastWebVideoFeedsAdapter.VideoItemHolder)))
+    default: 
+      return;
+    case 1: 
+      if (this.jdField_a_of_type_Int == 1)
       {
-        localObject = (FastWebVideoFeedsAdapter.VideoItemHolder)((View)localObject).getTag();
-        if (!localFastWebVideoInfo.a(FastWebVideoFeedsAdapter.a(this.a), FastWebVideoFeedsAdapter.a(this.a))) {
-          break label106;
-        }
-        ((FastWebVideoFeedsAdapter.VideoItemHolder)localObject).k.setText(localFastWebVideoInfo.j);
+        this.jdField_a_of_type_Ajfe.onUpdate(17, false, null);
+        paramDialogInterface.dismiss();
+        return;
       }
+      Utils.sendPluginSetMessage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Wis, this.jdField_a_of_type_Ajfe, this.jdField_a_of_type_Long, false);
+      return;
     }
-    return;
-    label106:
-    ((FastWebVideoFeedsAdapter.VideoItemHolder)localObject).a.setText(localFastWebVideoInfo.j);
+    if (this.jdField_a_of_type_Int == 1)
+    {
+      Utils.sendPluginSetMessage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Wis, this.jdField_a_of_type_Ajfe, this.jdField_a_of_type_Long, true);
+      return;
+    }
+    this.jdField_a_of_type_Ajfe.onUpdate(17, false, null);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     msb
  * JD-Core Version:    0.7.0.1
  */

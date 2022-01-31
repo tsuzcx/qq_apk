@@ -1,89 +1,92 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.biz.ProtoUtils.StoryProtocolObserver;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_message.ErrorInfo;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_message.RspStoryMessageList;
-import com.tencent.biz.qqstory.network.pb.qqstory_710_message.StoryMessage;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.ErrorInfo;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
-import com.tencent.biz.qqstory.storyHome.messagenotify.MessageData;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.MessageNotifySegment;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.util.FaceDrawable;
-import com.tencent.mobileqq.utils.DisplayUtils;
-import com.tencent.mobileqq.utils.ImageUtil;
+import android.content.res.Resources;
+import com.tencent.biz.pubaccount.readinjoy.dynamicfeeds.cgi.ReadInJoyCGIDynamicChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.widget.pull2refresh.XRecyclerView;
 import java.util.List;
 
 public class ofo
-  extends ProtoUtils.StoryProtocolObserver
+  extends ofy
 {
-  WeakReference b;
-  WeakReference c;
+  public ofo(ReadInJoyCGIDynamicChannelFragment paramReadInJoyCGIDynamicChannelFragment) {}
   
-  public ofo(MessageNotifySegment paramMessageNotifySegment, ImageView paramImageView)
+  public void a(int paramInt, List<DynamicChannelDataModel> paramList)
   {
-    this.b = new WeakReference(paramMessageNotifySegment);
-    this.c = new WeakReference(paramImageView);
+    if (paramInt != ReadInJoyCGIDynamicChannelFragment.a(this.a)) {
+      return;
+    }
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      ReadInJoyCGIDynamicChannelFragment.a(this.a).a(paramList);
+      ReadInJoyCGIDynamicChannelFragment.a(this.a).a(true, true);
+      return;
+    }
+    ReadInJoyCGIDynamicChannelFragment.b(this.a).b();
   }
   
-  public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void a(int paramInt1, boolean paramBoolean, List<ogf> paramList, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "fetch message list result, code=" + paramInt);
+    int i = 0;
+    if (paramInt1 != ReadInJoyCGIDynamicChannelFragment.d(this.a)) {
+      return;
     }
-    MessageNotifySegment localMessageNotifySegment = (MessageNotifySegment)this.b.get();
-    paramBundle = (ImageView)this.c.get();
-    if ((localMessageNotifySegment == null) || (paramBundle == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "weak reference null.");
-      }
+    if ((paramBoolean) && (paramList != null) && (paramList.size() > 0)) {
+      ReadInJoyCGIDynamicChannelFragment.a(this.a, paramInt1, paramList);
     }
-    do
+    if (paramList != null) {
+      i = paramList.size();
+    }
+    QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "onHeaderRefreshed, channelID = ", Integer.valueOf(paramInt1), ", success = ", Boolean.valueOf(paramBoolean), ", size = ", Integer.valueOf(i), ", insertIndex = ", Integer.valueOf(paramInt2) });
+  }
+  
+  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList)
+  {
+    if (paramInt != ReadInJoyCGIDynamicChannelFragment.b(this.a)) {
+      return;
+    }
+    int i;
+    if (paramList != null)
     {
-      for (;;)
-      {
-        return null;
-        if ((paramInt == 0) && (paramArrayOfByte != null)) {
-          try
-          {
-            qqstory_710_message.RspStoryMessageList localRspStoryMessageList = new qqstory_710_message.RspStoryMessageList();
-            localRspStoryMessageList.mergeFrom(paramArrayOfByte);
-            if ((localRspStoryMessageList.errinfo.error_code.has()) && (localRspStoryMessageList.errinfo.error_code.get() == 0) && (localRspStoryMessageList.message_num.get() > 0) && (!localRspStoryMessageList.message_list.get().isEmpty()))
-            {
-              paramArrayOfByte = new MessageData((qqstory_710_message.StoryMessage)localRspStoryMessageList.message_list.get().get(0)).a;
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "set bigV avatar from MessageData. unionId=" + paramArrayOfByte);
-              }
-              if (TextUtils.isEmpty(paramArrayOfByte)) {
-                continue;
-              }
-              PlayModeUtils.a(paramBundle, PlayModeUtils.b(paramArrayOfByte), true, (int)DisplayUtils.a(MessageNotifySegment.b(localMessageNotifySegment), 33.0F));
-              return null;
-            }
-          }
-          catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "parse RspStoryMessageList error", paramArrayOfByte);
-            }
-          }
-        }
+      i = paramList.size();
+      if ((!paramBoolean1) || (i <= 0)) {
+        break label175;
       }
-      paramArrayOfByte = ImageUtil.b();
-      QQStoryContext.a();
-      paramArrayOfByte = FaceDrawable.a(QQStoryContext.a(), 1, Long.toString(MessageNotifySegment.a(localMessageNotifySegment)), 3, paramArrayOfByte, paramArrayOfByte);
-      if (paramArrayOfByte != null) {
-        paramBundle.setImageDrawable(paramArrayOfByte);
+    }
+    label175:
+    for (String str = String.format(this.a.getResources().getString(2131652508), new Object[] { Integer.valueOf(i) });; str = this.a.getResources().getString(2131652507))
+    {
+      ReadInJoyCGIDynamicChannelFragment.c(this.a).a(paramBoolean1, str);
+      if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0)) {
+        ReadInJoyCGIDynamicChannelFragment.a(this.a).a(paramList);
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.qqstory.home.MessageNotifySegment", 2, "fetch message list failed");
-    return null;
+      QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "onDataRefreshed, channelID = ", Integer.valueOf(paramInt), ", success = ", Boolean.valueOf(paramBoolean1), ", refreshSize = ", Integer.valueOf(i) });
+      ReadInJoyCGIDynamicChannelFragment.d(this.a).a(true, true);
+      return;
+      i = 0;
+      break;
+    }
+  }
+  
+  public void b(int paramInt, boolean paramBoolean1, boolean paramBoolean2, List<DynamicChannelDataModel> paramList)
+  {
+    int i = 0;
+    if (paramInt != ReadInJoyCGIDynamicChannelFragment.c(this.a)) {
+      return;
+    }
+    if ((paramBoolean1) && (paramList != null) && (paramList.size() > 0))
+    {
+      ReadInJoyCGIDynamicChannelFragment.a(this.a).b(paramList);
+      ReadInJoyCGIDynamicChannelFragment.e(this.a).a(true, paramBoolean2);
+    }
+    for (;;)
+    {
+      if (paramList != null) {
+        i = paramList.size();
+      }
+      QLog.d("ReadInJoyDynamicChannelBaseFragment", 2, new Object[] { "onLoadMoreData, channelID = ", Integer.valueOf(paramInt), ", success = ", Boolean.valueOf(paramBoolean1), ", size = ", Integer.valueOf(i), ", hasMore = ", Boolean.valueOf(paramBoolean2) });
+      return;
+      ReadInJoyCGIDynamicChannelFragment.f(this.a).a(false, true);
+    }
   }
 }
 

@@ -1,38 +1,44 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.utils.QAVGroupConfig.GroupInviteFlag;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
 import com.tencent.qphone.base.util.QLog;
 
-public final class aklf
-  extends TroopObserver
+class aklf
+  implements View.OnTouchListener
 {
-  public aklf(long paramLong, String paramString1, QQAppInterface paramQQAppInterface, String paramString2) {}
+  aklf(akle paramakle) {}
   
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString, Object[] paramArrayOfObject)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_Long != paramLong) {
-      return;
-    }
-    paramTroopInfo = new StringBuilder().append("onOIDB0X88D_0_Ret[").append(this.jdField_a_of_type_JavaLangString).append("], troopuin[").append(paramLong).append("], nFlag[").append(paramInt1).append("], isMyFlag[");
-    if ((paramInt1 & 0x1) != 0) {}
-    for (boolean bool = true;; bool = false)
+    switch (paramMotionEvent.getAction())
     {
-      QLog.w("QAVGroupConfig", 1, bool + "], isSuccess[" + paramBoolean + "], result[" + paramInt2 + "], strErrorMsg[" + paramString + "]");
-      if (paramInt1 != 480) {
-        break;
-      }
-      if (paramBoolean) {
-        QAVGroupConfig.GroupInviteFlag.a(this.jdField_a_of_type_JavaLangString + ".onOIDB0X88D_0_Ret", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
-      return;
     }
+    do
+    {
+      do
+      {
+        return true;
+        akle.a(this.a).setAlpha(0.5F);
+        return true;
+        akle.a(this.a).setAlpha(1.0F);
+        if (!akle.a(this.a))
+        {
+          akkv.a(true);
+          akle.a(this.a, true);
+        }
+        akle.a(this.a).setVisibility(8);
+        akle.a(this.a).clearAnimation();
+      } while (akle.a(this.a) == null);
+      akle.a(this.a).g();
+    } while (!QLog.isColorLevel());
+    QLog.i("ARVideoRecordViewProxy", 2, "onMonitorUserOperation");
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aklf
  * JD-Core Version:    0.7.0.1
  */

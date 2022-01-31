@@ -1,38 +1,25 @@
-import android.support.v4.view.PagerAdapter;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibilityDialog;
-import java.util.List;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInjoyCutImageView;
 
-public class nrr
-  extends PagerAdapter
+class nrr
+  implements View.OnTouchListener
 {
-  private List jdField_a_of_type_JavaUtilList;
+  nrr(nrp paramnrp) {}
   
-  public nrr(MyVideoVisibilityDialog paramMyVideoVisibilityDialog, List paramList)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    paramViewGroup.addView((View)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-    return this.jdField_a_of_type_JavaUtilList.get(paramInt);
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
+    if (paramMotionEvent.getAction() == 1) {
+      nrp.a(this.a).performClick();
+    }
+    if (nrp.a(this.a, paramMotionEvent.getX(), paramMotionEvent.getY()).booleanValue()) {}
+    for (int i = 101;; i = 102)
+    {
+      int j = nrp.a(this.a, nrp.a(this.a));
+      nrp.a(this.a, i, j + 1);
+      return false;
+    }
   }
 }
 

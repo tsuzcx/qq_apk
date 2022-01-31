@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@drawable/b46" android:layout_width="fill_parent" android:layout_height="@dimen/i0" />
+    <Button android:textColor="@color/qzone_skin_feed_content_text_color" android:id="@id/action_sheet_btnCancel" android:background="@drawable/afg" android:layout_width="fill_parent" android:layout_height="@dimen/hz" android:layout_marginTop="@dimen/i0" style="@style/action_sheet_btn_style" />
+</RelativeLayout>

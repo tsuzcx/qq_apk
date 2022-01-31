@@ -1,37 +1,45 @@
 package com.tencent.ttpic.util;
 
-import com.tencent.ttpic.model.VideoMaterialMetaData;
+import com.tencent.ttpic.openapi.model.VideoMaterialMetaData;
 import java.util.ArrayList;
 import java.util.List;
 
 public class VideoLocalDataInitializer
 {
-  public static String[] ONLINE_MATERIAL_IDS = { "video_particle_cherryblossom", "video_happyfarmer", "video_mitaoyuehui1", "video_jinmao", "video_fenlu", "video_leipen", "video_nethot", "video_fox", "video_water_ghost", "video_lamb", "video_xiaohuzi", "video_zhinv", "video_gentleman", "video_jiaban_dog", "video_little_mouse", "video_520", "video_zhipai", "video_cangshu", "video_huaduo", "video_wawalian", "video_aliens", "video_fangle2", "video_monalisa", "video_kangxi", "video_angrybird", "video_baby_milk", "video_dayuhaitang", "video_fawn", "video_guiguan", "video_heart_cheek", "video_heart_eye", "video_heart_lips", "video_huangguan", "video_laughday", "video_cat", "video_raccoon", "video_liaomei", "video_limao", "video_lovely_cat", "video_lovely_eye", "video_molihuaxian", "video_mothersday", "video_ogle", "video_ruhua", "video_snake_face", "video_zhenzi", "video_xiaoxuesheng", "video_xinqing", "video_yellow_dog" };
+  private static String[] LOCAL_MATERIAL_IDS = { "video_fireburning_db", "video_fengkuangdacall_audio", "video_dangdangdang", "video_jmskull2", "video_mv_gun", "video_yinxingchibang", "video_expression_level1", "video_voice_text_mouth", "video_pikachu", "video_money_1", "video_bubble", "video_mv_comic3", "video_egaoshuangwanzi", "video_newyearlucky_suiji", "video_filters_chazi", "video_filters_hanfeng", "video_filters_hongkong", "video_filters_jiazhou", "video_animalword" };
+  public static String[] ONLINE_MATERIAL_IDS = { "video_3DFace_santaglass", "video_bluecat", "video_huzi_white", "video_nihongshu", "video_Qmaozi", "video_wawaji", "video_nonono", "video_rainbow", "video_mv_fenbimao", "video_baby_agetest", "video_mjdance", "video_astronaut", "video_mv_wing", "video_liuhai", "video_mv_dongwuyuan", "video_handsomeGuy", "video_qixi", "video_guifeiface", "video_huaxianzi", "video_particle_cherryblossom", "video_heart_lips", "video_yinjiuzui", "video_huzi_black", "video_xinniang", "video_xiaobian", "video_mojing_yangyang" };
   
   public static List<VideoMaterialMetaData> buildVideoMaterials()
   {
+    int j = 0;
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new VideoMaterialMetaData("video_expression_level1", "assets://camera/camera_video/CameraVideoAnimal/video_expression_level1", "", "assets://camera/camera_video/CameraVideoAnimal/video_expression_level1/video_expression_level1.png"));
-    localArrayList.add(new VideoMaterialMetaData("video_doodle", "assets://camera/camera_video/CameraVideoAnimal/video_doodle", "", "assets://camera/camera_video/CameraVideoAnimal/video_doodle/video_doodle.png"));
-    localArrayList.add(new VideoMaterialMetaData("video_rabbit", "assets://camera/camera_video/CameraVideoAnimal/video_rabbit", "", "assets://camera/camera_video/CameraVideoAnimal/video_rabbit/video_rabbit.png"));
-    localArrayList.add(new VideoMaterialMetaData("video_snow_white", "assets://camera/camera_video/CameraVideoAnimal/video_snow_white", "", "assets://camera/camera_video/CameraVideoAnimal/video_snow_white/video_snow_white.png"));
-    localArrayList.add(new VideoMaterialMetaData("video_mv_xiaoruibi", "assets://camera/camera_video/CameraVideoAnimal/video_mv_xiaoruibi", "", "assets://camera/camera_video/CameraVideoAnimal/video_mv_xiaoruibi/video_mv_xiaoruibi.png"));
-    localArrayList.add(new VideoMaterialMetaData("video_mv_palette", "assets://camera/camera_video/CameraVideoAnimal/video_mv_palette", "", "assets://camera/camera_video/CameraVideoAnimal/video_mv_palette/video_mv_palette.png"));
-    String[] arrayOfString = ONLINE_MATERIAL_IDS;
-    int j = arrayOfString.length;
+    localArrayList.add(new VideoMaterialMetaData(null, "None", null, "assets://none.png"));
+    String[] arrayOfString = LOCAL_MATERIAL_IDS;
+    int k = arrayOfString.length;
     int i = 0;
-    while (i < j)
+    String str;
+    while (i < k)
     {
-      String str = arrayOfString[i];
-      localArrayList.add(new VideoMaterialMetaData(str, "", "http://st1.xiangji.qq.com/yunmaterials/" + str + "Android.zip", "http://st1.xiangji.qq.com/yunmaterials/" + str + ".png"));
+      str = arrayOfString[i];
+      localArrayList.add(new VideoMaterialMetaData(str, "assets://camera/camera_video/CameraVideoAnimal/" + str, "", "assets://camera/camera_video/CameraVideoAnimal/" + str + "/" + str + ".png"));
       i += 1;
     }
+    arrayOfString = ONLINE_MATERIAL_IDS;
+    k = arrayOfString.length;
+    i = j;
+    while (i < k)
+    {
+      str = arrayOfString[i];
+      localArrayList.add(new VideoMaterialMetaData(str, "", "http://res.tu.qq.com/materials/" + str + "Android.zip", "http://res.tu.qq.com/materials/" + str + ".png"));
+      i += 1;
+    }
+    localArrayList.add(new VideoMaterialMetaData("video_3DFace_fashionglass1", "", "http://st1.xiangji.qq.com/pitu/materials/video_3DFace_fashionglass1Android.zip", "http://st1.xiangji.qq.com/pitu/materials/video_3DFace_fashionglass1.png"));
     return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.util.VideoLocalDataInitializer
  * JD-Core Version:    0.7.0.1
  */

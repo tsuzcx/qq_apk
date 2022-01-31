@@ -1,41 +1,48 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.anim.FriendProfileCardBgDrawable;
-import com.tencent.mobileqq.utils.StackBlur;
+import android.view.ViewGroup;
+import com.tencent.qphone.base.util.QLog;
 
 public class swa
-  implements Runnable
 {
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  Handler jdField_a_of_type_AndroidOsHandler;
+  private static String a = swa.class.getSimpleName();
   
-  public swa(Handler paramHandler, Drawable paramDrawable)
+  public static son a(ViewGroup paramViewGroup, int paramInt)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_a_of_type_AndroidOsHandler = paramHandler;
-  }
-  
-  public void run()
-  {
-    Bitmap localBitmap = ((FriendProfileCardBgDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).a();
-    Object localObject = localBitmap;
-    if (localBitmap == null) {
-      localObject = ((FriendProfileCardBgDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).b();
-    }
-    if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
+    urk.a(a, "create type=%d", Integer.valueOf(paramInt));
+    switch (paramInt)
     {
-      localObject = Bitmap.createScaledBitmap((Bitmap)localObject, (int)(((Bitmap)localObject).getWidth() * 0.125F), (int)(((Bitmap)localObject).getHeight() * 0.125F), true);
-      StackBlur.a((Bitmap)localObject, 2);
-      localObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(12, localObject);
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
+    default: 
+      if (QLog.isDevelopLevel()) {
+        QLog.e(a, 2, "发现一个野生的类型: " + paramInt);
+      }
+      return new son(paramViewGroup, 2131495712);
+    case 6: 
+      return new svr(paramViewGroup);
+    case 5: 
+      return new svz(paramViewGroup);
+    case 7: 
+      return new svq(paramViewGroup);
+    case 8: 
+      return new swg(paramViewGroup, 2131495712);
+    case 9: 
+      return new svy(paramViewGroup);
+    case 3: 
+      return new svs(paramViewGroup);
+    case 4: 
+      return new svw(paramViewGroup, 4);
+    case 2: 
+      return new swe(paramViewGroup, 2131495714);
+    case 10: 
+    case 11: 
+      return new svx(paramViewGroup);
+    case 12: 
+      return new swb(paramViewGroup);
     }
+    return new svt(paramViewGroup);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     swa
  * JD-Core Version:    0.7.0.1
  */

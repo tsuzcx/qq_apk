@@ -1,81 +1,24 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Handler;
+import android.support.v4.view.ViewPager.PageTransformer;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.Config;
-import com.tencent.mobileqq.config.struct.ADMsg;
-import com.tencent.mobileqq.utils.ContactUtils;
 
-class tmz
-  implements View.OnClickListener
+public class tmz
+  implements tpz
 {
-  tmz(tmv paramtmv, ADMsg paramADMsg, SharedPreferences paramSharedPreferences, String paramString) {}
+  public final ViewPager.PageTransformer a;
   
-  public void onClick(View paramView)
+  public tmz(ViewPager.PageTransformer paramPageTransformer)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqConfigStructADMsg.e;
-    paramView = this.jdField_a_of_type_ComTencentMobileqqConfigStructADMsg.f;
-    if ((((String)localObject).equals("TMTWAPI")) || (((String)localObject).equals("WAPI")))
-    {
-      paramView = Config.a(paramView, 0, null);
-      localObject = new Intent(this.jdField_a_of_type_Tmv.a, QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("uin", this.jdField_a_of_type_Tmv.a.app.getCurrentAccountUin());
-      this.jdField_a_of_type_Tmv.a.startActivity(((Intent)localObject).putExtra("url", paramView));
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
-      this.jdField_a_of_type_Tmv.a.a.sendEmptyMessageDelayed(1010, 1000L);
-      return;
-      if ((((String)localObject).equals("TMTWAP")) || (((String)localObject).equals("WAP")))
-      {
-        localObject = new Intent(this.jdField_a_of_type_Tmv.a, QQBrowserActivity.class);
-        ((Intent)localObject).putExtra("uin", this.jdField_a_of_type_Tmv.a.app.getCurrentAccountUin());
-        this.jdField_a_of_type_Tmv.a.startActivity(((Intent)localObject).putExtra("url", paramView));
-      }
-      else if (((String)localObject).equals("LOCAL"))
-      {
-        if ("CARD".equalsIgnoreCase(paramView))
-        {
-          paramView = this.jdField_a_of_type_ComTencentMobileqqConfigStructADMsg.g.split(",")[0];
-          if (("".equals(paramView)) || (this.jdField_a_of_type_Tmv.a.app.getCurrentAccountUin().equals(paramView))) {}
-          for (paramView = new ProfileActivity.AllInOne(this.jdField_a_of_type_Tmv.a.app.getCurrentAccountUin(), 0);; paramView = new ProfileActivity.AllInOne(paramView, 19))
-          {
-            ProfileActivity.b(this.jdField_a_of_type_Tmv.a, paramView);
-            break;
-          }
-        }
-        if ("CHAT".equalsIgnoreCase(paramView))
-        {
-          paramView = this.jdField_a_of_type_ComTencentMobileqqConfigStructADMsg.g.split(",")[0];
-          if (!"".equals(paramView)) {
-            if (((FriendsManager)this.jdField_a_of_type_Tmv.a.app.getManager(50)).b(paramView)) {
-              this.jdField_a_of_type_Tmv.a(paramView, 0, ContactUtils.k(this.jdField_a_of_type_Tmv.a.app, paramView));
-            } else {
-              this.jdField_a_of_type_Tmv.a(paramView, 1001, ContactUtils.k(this.jdField_a_of_type_Tmv.a.app, paramView));
-            }
-          }
-        }
-        else if ("NEARBY".equalsIgnoreCase(paramView))
-        {
-          this.jdField_a_of_type_Tmv.a.startActivity(new Intent(this.jdField_a_of_type_Tmv.a, NearbyActivity.class));
-        }
-      }
-    }
+    this.a = paramPageTransformer;
+  }
+  
+  public void a(View paramView, float paramFloat)
+  {
+    this.a.transformPage(paramView, paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tmz
  * JD-Core Version:    0.7.0.1
  */

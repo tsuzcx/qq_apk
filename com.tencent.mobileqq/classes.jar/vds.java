@@ -1,24 +1,32 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
+import android.annotation.TargetApi;
+import android.media.MediaExtractor;
+import android.media.MediaFormat;
+import android.util.Log;
 
 public class vds
-  extends ClickableSpan
 {
-  public vds(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
-  
-  public void onClick(View paramView) {}
-  
-  public void updateDrawState(TextPaint paramTextPaint)
+  @TargetApi(16)
+  public static int a(MediaExtractor paramMediaExtractor)
   {
-    paramTextPaint.setColor(Color.rgb(26, 144, 240));
+    int j = paramMediaExtractor.getTrackCount();
+    int i = 0;
+    while (i < j)
+    {
+      MediaFormat localMediaFormat = paramMediaExtractor.getTrackFormat(i);
+      String str = localMediaFormat.getString("mime");
+      if (str.startsWith("video/"))
+      {
+        Log.d("VideoUtils", "Extractor selected track " + i + " (" + str + "): " + localMediaFormat);
+        return i;
+      }
+      i += 1;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vds
  * JD-Core Version:    0.7.0.1
  */

@@ -6,10 +6,10 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class SubMsgType0x28$RspTypeList
-  extends MessageMicro
+  extends MessageMicro<RspTypeList>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "rpt_msg_typelist" }, new Object[] { null }, RspTypeList.class);
-  public final PBRepeatMessageField rpt_msg_typelist = PBField.initRepeatMessage(SubMsgType0x28.TypeList.class);
+  public final PBRepeatMessageField<SubMsgType0x28.TypeList> rpt_msg_typelist = PBField.initRepeatMessage(SubMsgType0x28.TypeList.class);
 }
 
 

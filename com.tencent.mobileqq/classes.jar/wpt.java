@@ -1,36 +1,19 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.troop.NotificationAdapter;
-import com.tencent.mobileqq.activity.contact.troop.NotificationView;
-import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
-import mqq.os.MqqHandler;
+import android.view.View;
 
-public class wpt
-  extends MqqHandler
+class wpt
+  implements wpz
 {
-  public wpt(NotificationView paramNotificationView) {}
+  wpt(wpq paramwpq) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(View paramView, float paramFloat)
   {
-    switch (paramMessage.what)
-    {
-    case 1013: 
-    default: 
-    case 1012: 
-      do
-      {
-        return;
-      } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationAdapter == null);
-      this.a.i();
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationAdapter.a = GroupSystemMsgController.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityContactTroopNotificationAdapter.notifyDataSetChanged();
-      return;
-    }
-    this.a.j();
+    paramView.getLayoutParams().width = ((int)paramFloat);
+    paramView.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wpt
  * JD-Core Version:    0.7.0.1
  */

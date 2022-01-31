@@ -1,18 +1,24 @@
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.doutu.DoutuData;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class acga
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public ProgressBar a;
-  public RelativeLayout a;
-  public URLImageView a;
-  public DoutuData a;
+  public acga(VisitorsActivity paramVisitorsActivity) {}
+  
+  public void onGlobalLayout()
+  {
+    this.a.b.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    int[] arrayOfInt = new int[2];
+    this.a.b.getLocationInWindow(arrayOfInt);
+    this.a.i = arrayOfInt[1];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acga
  * JD-Core Version:    0.7.0.1
  */

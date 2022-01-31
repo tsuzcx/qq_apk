@@ -1,32 +1,20 @@
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.NewFriendManager;
-import com.tencent.mobileqq.app.NewFriendManager.INewFriendListener;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.RelativeLayout;
 
-public class wvf
-  implements NewFriendManager.INewFriendListener
+class wvf
+  extends AnimatorListenerAdapter
 {
-  public wvf(MainAssistObserver paramMainAssistObserver) {}
+  wvf(wvc paramwvc) {}
   
-  public void R_() {}
-  
-  public void a(int paramInt)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.f();
-  }
-  
-  public void b()
-  {
-    if ((this.a.a == null) || (this.a.a.app == null)) {
-      return;
-    }
-    ((NewFriendManager)this.a.a.app.getManager(33)).b();
+    this.a.a.a().setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wvf
  * JD-Core Version:    0.7.0.1
  */

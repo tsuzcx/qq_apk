@@ -1,19 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.view.RainView;
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.widget.RatingBar;
 
 public class mkd
-  implements Action.OnActionEndListener
+  implements View.OnClickListener
 {
-  public mkd(RainView paramRainView) {}
+  public mkd(RatingBar paramRatingBar) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.b(this.a);
+    if (RatingBar.a(this.a))
+    {
+      RatingBar.a(this.a, this.a.indexOfChild(paramView) + 1);
+      this.a.setStar(RatingBar.a(this.a), true);
+      if (RatingBar.a(this.a) != null) {
+        RatingBar.a(this.a).a(RatingBar.a(this.a), RatingBar.a(this.a));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mkd
  * JD-Core Version:    0.7.0.1
  */

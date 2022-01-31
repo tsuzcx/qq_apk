@@ -1,21 +1,16 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.GetMomentListCallback;
+import android.support.annotation.NonNull;
+import com.tencent.mobileqq.activity.history.link.TroopLinkElement;
 import java.util.List;
 
-class afpo
-  implements Runnable
+public abstract interface afpo
 {
-  afpo(afpn paramafpn, List paramList) {}
+  public abstract void a(boolean paramBoolean, @NonNull List<TroopLinkElement> paramList);
   
-  public void run()
-  {
-    if (this.jdField_a_of_type_Afpn.jdField_a_of_type_Afpm.a != null) {
-      this.jdField_a_of_type_Afpn.jdField_a_of_type_Afpm.a.a(this.jdField_a_of_type_Afpn.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Afpn.b, this.jdField_a_of_type_Afpn.jdField_a_of_type_Int);
-    }
-  }
+  public abstract void q();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afpo
  * JD-Core Version:    0.7.0.1
  */

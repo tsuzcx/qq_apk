@@ -1,18 +1,30 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
+import com.tencent.widget.AbsListView;
+import java.util.List;
 
-public class uwa
-  implements Runnable
+class uwa
+  implements begh
 {
-  public uwa(RecordSoundPanel paramRecordSoundPanel) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void run()
+  uwa(uvy paramuvy) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.b();
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((paramInt == 0) && (this.jdField_a_of_type_Int == uvy.a(this.jdField_a_of_type_Uvy, uvy.a(this.jdField_a_of_type_Uvy)).a().size()) && (!uvy.a(this.jdField_a_of_type_Uvy, uvy.a(this.jdField_a_of_type_Uvy)).a()))
+    {
+      paramAbsListView = uvy.a(this.jdField_a_of_type_Uvy);
+      uvy.a(this.jdField_a_of_type_Uvy, uvy.a(this.jdField_a_of_type_Uvy)).b(paramAbsListView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uwa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,20 @@
-import android.graphics.drawable.Drawable;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.profile.view.BreatheEffectView;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbTranslucentBrowserActivity.9;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.ValueCallback;
 
 public class aguz
-  implements ValueAnimation.AnimationUpdateListener
+  implements ValueCallback<String>
 {
-  public aguz(BreatheEffectView paramBreatheEffectView, Drawable paramDrawable) {}
+  public aguz(SpringHbTranslucentBrowserActivity.9 param9) {}
   
-  public void a(ValueAnimation paramValueAnimation, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(paramInteger.intValue());
+    QLog.d("springHb_SpringHbTranslucentBrowserActivity", 2, "evaluateJavascript done");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aguz
  * JD-Core Version:    0.7.0.1
  */

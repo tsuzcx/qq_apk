@@ -1,12 +1,12 @@
 package com.tencent.component.network.utils.http.pool;
 
-public abstract interface FutureCallback
+public abstract interface FutureCallback<T>
 {
-  public abstract void a();
+  public abstract void cancelled();
   
-  public abstract void a(Exception paramException);
+  public abstract void completed(T paramT);
   
-  public abstract void a(Object paramObject);
+  public abstract void failed(Exception paramException);
 }
 
 

@@ -1,25 +1,20 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.troop.utils.TroopFileUtils;
-import dov.com.qq.im.capture.text.SupernaturalTextItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
 
 public class anwx
-  implements anwk
+  implements View.OnClickListener
 {
-  public anwx(SupernaturalTextItem paramSupernaturalTextItem) {}
+  public anwx(FMActivity paramFMActivity) {}
   
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  public void onClick(View paramView)
   {
-    String str = paramString;
-    if (paramInt != 0) {
-      str = TroopFileUtils.b(paramString);
-    }
-    return str;
+    FMActivity.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anwx
  * JD-Core Version:    0.7.0.1
  */

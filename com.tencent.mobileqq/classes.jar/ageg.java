@@ -1,41 +1,68 @@
-import android.view.View;
-import com.tencent.mobileqq.now.enter.ConversationNowController;
-import com.tencent.mobileqq.now.enter.widget.HongBao2018ListView;
+import android.os.Message;
+import com.tencent.mobileqq.activity.photo.SendWebPicActivity;
+import com.tencent.mobileqq.highway.protocol.Bdh_extinfo.UploadPicExtInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.qphone.base.util.QLog;
 
 public class ageg
-  implements Runnable
+  extends axvs
 {
-  public ageg(ConversationNowController paramConversationNowController) {}
+  public ageg(SendWebPicActivity paramSendWebPicActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConversationNowController", 2, "mRestoreConversationRunnable run");
-    }
-    this.a.b(true);
-    if (ConversationNowController.a(this.a) != null)
+    axqf localaxqf = (axqf)paramMessage.obj;
+    if ((localaxqf == null) || (localaxqf.b != 24) || (localaxqf.c != 51)) {}
+    do
     {
-      ConversationNowController.a(this.a).setVisibility(0);
-      if ((ConversationNowController.a(this.a).getScrollY() != 0) && ((!ConversationNowController.a(this.a).mEnableStory) || (!ConversationNowController.a(this.a).mForStory))) {
-        break label115;
+      do
+      {
+        return;
+      } while (localaxqf.f.equals(SendWebPicActivity.a(this.a)));
+      switch (paramMessage.what)
+      {
+      case 1004: 
+      default: 
+        return;
+      case 1003: 
+        if (QLog.isColorLevel()) {
+          QLog.d("SendWebPicActivity", 2, "mPicTransProcessorHandler send finished!" + SendWebPicActivity.a(this.a));
+        }
+        break;
       }
-    }
-    for (;;)
+    } while (SendWebPicActivity.a(this.a));
+    paramMessage = new Bdh_extinfo.UploadPicExtInfo();
+    try
     {
-      ConversationNowController.a(this.a).a(true);
-      if (ConversationNowController.a(this.a) != null) {
-        ConversationNowController.a(this.a).setVisibility(0);
+      paramMessage.mergeFrom(localaxqf.a, 0, localaxqf.a.length);
+      SendWebPicActivity.a(this.a, true);
+      SendWebPicActivity.a(this.a, localaxqf.f);
+      SendWebPicActivity.b(this.a, paramMessage.bytes_file_resid.get().toStringUtf8());
+      SendWebPicActivity.c(this.a, paramMessage.bytes_download_url.get().toStringUtf8());
+      if (QLog.isColorLevel()) {
+        QLog.d("SendWebPicActivity", 2, "mPicTransProcessorHandler mUuid=" + SendWebPicActivity.b(this.a) + ", mImageMd5=" + SendWebPicActivity.a(this.a) + ", mImageUrl=" + SendWebPicActivity.c(this.a));
       }
+      SendWebPicActivity.a(this.a).sendEmptyMessage(1001);
       return;
-      label115:
-      this.a.a(0);
     }
+    catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+    {
+      for (;;)
+      {
+        localInvalidProtocolBufferMicroException.printStackTrace();
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("SendWebPicActivity", 2, "mPicTransProcessorHandler send error:" + localaxqf.g);
+    }
+    SendWebPicActivity.a(this.a).sendEmptyMessage(1003);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ageg
  * JD-Core Version:    0.7.0.1
  */

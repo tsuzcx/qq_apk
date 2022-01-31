@@ -1,25 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.subscribe.component.base.ComponentPageView;
 
-class wbx
-  implements DialogInterface.OnClickListener
+public class wbx
+  extends RecyclerView.OnScrollListener
 {
-  wbx(wbv paramwbv, SharedPreferences paramSharedPreferences) {}
+  public wbx(ComponentPageView paramComponentPageView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    paramDialogInterface = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    paramDialogInterface.putLong("switch_city" + this.jdField_a_of_type_Wbv.a.a.getCurrentAccountUin(), System.currentTimeMillis());
-    paramDialogInterface.commit();
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+    if (paramInt2 > 0) {
+      this.a.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wbx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,84 @@
-import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.QavGAudioSoundData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
-import cooperation.qzone.plugin.OnQZonePluginInstallListner.Stub;
 
 public class amzm
-  extends OnQZonePluginInstallListner.Stub
+  extends amza
 {
-  public amzm(QZoneLiveVideoDownLoadActivtyV2 paramQZoneLiveVideoDownLoadActivtyV2) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, float paramFloat, long paramLong) {}
-  
-  public void a(String paramString, int paramInt)
+  public amzm(QQAppInterface paramQQAppInterface)
   {
-    QLog.w("QZoneLiveVideoDownLoadActivtyV2", 1, "[onInstallError] pluginId=" + paramString + ", errorCode=" + paramInt);
-    paramString = this.a.a.obtainMessage();
-    paramString.what = 1010;
-    if (8 == paramInt) {}
-    for (paramString.obj = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ToastPluginDownloadErrorNoSpace", "内部存储空间不足，下载失败");; paramString.obj = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ToastPluginDownloadError", "插件下载失败"))
+    super("qq.android.qav.muteaudio", paramQQAppInterface);
+  }
+  
+  public int a()
+  {
+    return 10046;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return QavGAudioSoundData.class;
+  }
+  
+  public String a()
+  {
+    return "qavDownloadGAudioSoundDuration";
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QavGAudioSoundHandler", 2, "download success: " + paramString);
+    }
+    try
     {
-      this.a.a.sendMessage(paramString);
+      bace.a(paramString, mgi.a(), false);
+      super.a(paramString);
       return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
     }
   }
   
-  public void b(String paramString) {}
+  public void a(boolean paramBoolean)
+  {
+    QavGAudioSoundData localQavGAudioSoundData = (QavGAudioSoundData)a();
+    if ((localQavGAudioSoundData != null) && (!localQavGAudioSoundData.autoDownload))
+    {
+      localQavGAudioSoundData.autoDownload = true;
+      amyo.a(localQavGAudioSoundData, new String[] { "autoDownload" });
+    }
+    super.a(paramBoolean);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public boolean h()
+  {
+    QavGAudioSoundData localQavGAudioSoundData = (QavGAudioSoundData)a();
+    if (localQavGAudioSoundData == null) {
+      return super.h();
+    }
+    return localQavGAudioSoundData.autoDownload;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amzm
  * JD-Core Version:    0.7.0.1
  */

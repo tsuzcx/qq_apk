@@ -2,9 +2,9 @@ package com.tencent.ttpic.filter;
 
 import android.annotation.TargetApi;
 import android.opengl.GLES30;
-import android.util.Log;
-import com.tencent.ttpic.gles.GlUtil;
-import com.tencent.ttpic.gles.ProgramTools;
+import com.tencent.aekit.openrender.util.GlUtil;
+import com.tencent.aekit.openrender.util.ProgramTools;
+import com.tencent.ttpic.baseutils.log.LogUtils;
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -13,7 +13,7 @@ import java.nio.FloatBuffer;
 @TargetApi(18)
 public class TransformFeedback
 {
-  private final String TAG = "TransformFeedback";
+  private static final String TAG = "TransformFeedback";
   private final String fragmentShaderCode = "#version 300 es \nprecision mediump float;\nout vec4 fragColor;\nvoid main() {\n  fragColor = vec4(1.0,1.0,1.0,1.0);\n}";
   private final int mProgram;
   private final String vertexShaderSrc = "#version 300 es \nin float inValue;\nout float outValue;\nvoid main() {\n    outValue = sqrt(inValue);\n}";
@@ -31,7 +31,7 @@ public class TransformFeedback
     int[] arrayOfInt = new int[1];
     GLES30.glGetProgramiv(this.mProgram, 35714, arrayOfInt, 0);
     if (arrayOfInt[0] != 1) {
-      Log.d("TransformFeedback", "glLinkProgram failed");
+      LogUtils.d("TransformFeedback", "glLinkProgram failed");
     }
     GlUtil.checkGlError("TransformFeedback glLinkProgram");
     GLES30.glUseProgram(this.mProgram);
@@ -68,7 +68,7 @@ public class TransformFeedback
       localObject2 = (ByteBuffer)localObject2;
       ((ByteBuffer)localObject2).order(ByteOrder.nativeOrder());
       localObject2 = ((ByteBuffer)localObject2).asFloatBuffer();
-      Log.d("TransformFeedback", String.format("output values = %f %f %f %f %f\n", new Object[] { Float.valueOf(((FloatBuffer)localObject2).get()), Float.valueOf(((FloatBuffer)localObject2).get()), Float.valueOf(((FloatBuffer)localObject2).get()), Float.valueOf(((FloatBuffer)localObject2).get()), Float.valueOf(((FloatBuffer)localObject2).get()) }));
+      LogUtils.d("TransformFeedback", String.format("output values = %f %f %f %f %f\n", new Object[] { Float.valueOf(((FloatBuffer)localObject2).get()), Float.valueOf(((FloatBuffer)localObject2).get()), Float.valueOf(((FloatBuffer)localObject2).get()), Float.valueOf(((FloatBuffer)localObject2).get()), Float.valueOf(((FloatBuffer)localObject2).get()) }));
     }
     GLES30.glUnmapBuffer(35982);
     GLES30.glDeleteProgram(this.mProgram);
@@ -80,7 +80,7 @@ public class TransformFeedback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.filter.TransformFeedback
  * JD-Core Version:    0.7.0.1
  */

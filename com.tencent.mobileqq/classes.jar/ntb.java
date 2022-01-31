@@ -1,26 +1,52 @@
-import com.tencent.biz.qqstory.playvideo.TVKPreloader;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadItem;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadListener;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArraySet;
+import android.support.annotation.NonNull;
+import android.util.SparseArray;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class ntb
-  implements Runnable
+public class ntb
+  extends bidq
 {
-  ntb(nsz paramnsz, TVKPreloader.PreloadItem paramPreloadItem, String paramString1, int paramInt, String paramString2) {}
-  
-  public void run()
+  public ntb(@NonNull bigb parambigb, long paramLong)
   {
-    Iterator localIterator = TVKPreloader.a().iterator();
-    while (localIterator.hasNext()) {
-      ((TVKPreloader.PreloadListener)localIterator.next()).a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem, new Throwable(this.jdField_a_of_type_JavaLangString + "|" + String.valueOf(this.jdField_a_of_type_Int) + "|" + this.b));
+    super(parambigb, paramLong);
+  }
+  
+  private void j()
+  {
+    ((ImageView)a(2131311766)).setVisibility(8);
+    ((TextView)a(2131299188)).setText(ajjy.a(2131647069));
+  }
+  
+  public void a()
+  {
+    super.a();
+    j();
+  }
+  
+  public void onClick(View paramView)
+  {
+    super.onClick(paramView);
+    int i = paramView.getId();
+    paramView = (Long)this.a.get(i);
+    if (paramView != null) {}
+    switch ((int)paramView.longValue())
+    {
+    default: 
+      return;
+    case 4: 
+      ndn.a(null, "", "0X80092F5", "0X80092F5", 0, 0, "3", "", "", "", false);
+      return;
+    case 8: 
+      ndn.a(null, "", "0X80092F5", "0X80092F5", 0, 0, "1", "", "", "", false);
+      return;
     }
-    TVKPreloader.a(true);
+    ndn.a(null, "", "0X80092F5", "0X80092F5", 0, 0, "2", "", "", "", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ntb
  * JD-Core Version:    0.7.0.1
  */

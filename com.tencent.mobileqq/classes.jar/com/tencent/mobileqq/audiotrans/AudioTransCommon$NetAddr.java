@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBFixed32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class AudioTransCommon$NetAddr
-  extends MessageMicro
+  extends MessageMicro<NetAddr>
 {
   public static final int PT_TCP = 1;
   public static final int PT_UDP = 2;

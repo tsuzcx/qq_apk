@@ -9,12 +9,12 @@ import java.util.Map;
 public final class SUserLable
   extends JceStruct
 {
-  static Map cache_lable;
-  public Map lable;
+  static Map<Long, SLableInfo> cache_lable;
+  public Map<Long, SLableInfo> lable;
   
   public SUserLable() {}
   
-  public SUserLable(Map paramMap)
+  public SUserLable(Map<Long, SLableInfo> paramMap)
   {
     this.lable = paramMap;
   }

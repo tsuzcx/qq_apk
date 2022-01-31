@@ -1,20 +1,26 @@
-import com.tencent.mobileqq.app.PrinterStatusHandler;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.os.AsyncTask;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public class zqq
-  implements Runnable
+class zqq
+  extends AsyncTask<Void, Void, Void>
 {
-  public zqq(PrinterStatusHandler paramPrinterStatusHandler, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
+  zqq(zqp paramzqp) {}
   
-  public void run()
+  protected Void a(Void... paramVarArgs)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppPrinterStatusHandler.b(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg, this.jdField_a_of_type_JavaLangObject);
+    paramVarArgs = zqp.a(this.a).iterator();
+    while (paramVarArgs.hasNext()) {
+      QLog.d("Q.PerfTrace", 2, (String)paramVarArgs.next());
+    }
+    zqp.a(this.a).clear();
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zqq
  * JD-Core Version:    0.7.0.1
  */

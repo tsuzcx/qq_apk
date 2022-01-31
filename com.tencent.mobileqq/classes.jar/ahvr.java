@@ -1,21 +1,17 @@
-import com.tencent.mobileqq.search.HotWordSearchEntryModel;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
-import com.tencent.util.UiThreadUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
 public class ahvr
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ahvr(HotWordSearchEntryModel paramHotWordSearchEntryModel, HotWordSearchEntryDataModel paramHotWordSearchEntryDataModel) {}
+  public ahvr(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a();
-    UiThreadUtil.a(new ahvs(this));
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahvr
  * JD-Core Version:    0.7.0.1
  */

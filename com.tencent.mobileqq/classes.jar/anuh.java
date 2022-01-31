@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.activity.aio.AudioPlayer;
-import dov.com.qq.im.capture.music.MusicPlayerScene;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class anuh
-  implements Runnable
+final class anuh
+  implements View.OnClickListener
 {
-  public anuh(MusicPlayerScene paramMusicPlayerScene, String paramString, int paramInt) {}
+  anuh(Dialog paramDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_DovComQqImCaptureMusicMusicPlayerScene.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    awqx.b(null, "dc00898", "", "", "kuolie", "0X80097DF", 0, 0, "", "", "", "");
+    if ((this.a != null) && (this.a.isShowing())) {
+      this.a.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anuh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,95 +1,178 @@
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
+import android.os.Bundle;
+import com.tencent.mobileqq.mp.mobileqq_mp.JSApiWebServerResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import mqq.manager.AccountManager;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import mqq.observer.BusinessObserver;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class rsy
-  extends WtloginObserver
+class rsy
+  implements BusinessObserver
 {
-  public rsy(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
+  rsy(rsv paramrsv, String paramString1, int paramInt, boolean paramBoolean, String paramString2) {}
   
-  public void OnAskDevLockSms(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.a.isFinishing()) {
-      return;
-    }
-    this.a.c();
-    if ((paramInt == 0) && (paramDevlockInfo != null))
+    if (paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnAskDevLockSms DevlockInfo.TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount);
+      Object localObject = paramBundle.getByteArray("data");
+      if (localObject != null)
+      {
+        paramBundle = new mobileqq_mp.JSApiWebServerResponse();
+        label650:
+        label807:
+        for (;;)
+        {
+          try
+          {
+            paramBundle.mergeFrom((byte[])localObject);
+            localObject = (mobileqq_mp.RetInfo)paramBundle.ret_info.get();
+            paramBundle = paramBundle.body.get();
+            int i = ((mobileqq_mp.RetInfo)localObject).ret_code.get();
+            localObject = ((mobileqq_mp.RetInfo)localObject).err_info.get();
+            new JSONObject();
+            if (i != 0) {
+              break label650;
+            }
+            localObject = new JSONObject(paramBundle);
+            int j = ((JSONObject)localObject).optInt("ret");
+            paramBundle = ((JSONObject)localObject).optString("msg");
+            i = ((JSONObject)localObject).optInt("subcmd");
+            if (j != 0) {
+              break label494;
+            }
+            j = ((JSONObject)localObject).optInt("type");
+            paramBundle = "";
+            if (j == 2)
+            {
+              paramBundle = ((JSONObject)localObject).optString("url");
+              localObject = ((JSONObject)localObject).optString("mediaid");
+              if (paramBundle.equals(""))
+              {
+                JSONObject localJSONObject = new JSONObject();
+                try
+                {
+                  localJSONObject.put("retCode", -1);
+                  localJSONObject.put("msg", "mediaId for serverId error");
+                  this.jdField_a_of_type_Rsv.callJs(this.jdField_a_of_type_JavaLangString, new String[] { localJSONObject.toString() });
+                  this.jdField_a_of_type_Rsv.c((String)localObject);
+                  awqx.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
+                  break label807;
+                  if (!QLog.isColorLevel()) {
+                    break;
+                  }
+                  QLog.i("PublicAccountH5AbilityPlugin", 2, "sendMediaIdForUuidRequest serverId = " + paramBundle + "  type = " + paramInt + " subCom=" + i);
+                  return;
+                }
+                catch (JSONException localJSONException4)
+                {
+                  localJSONException4.printStackTrace();
+                  continue;
+                }
+              }
+            }
+            if (j != 4) {
+              continue;
+            }
+          }
+          catch (InvalidProtocolBufferMicroException paramBundle)
+          {
+            paramBundle.printStackTrace();
+            return;
+            this.jdField_a_of_type_Rsv.a(this.jdField_a_of_type_Int, paramBundle, (String)localObject, true, this.jdField_a_of_type_JavaLangString);
+          }
+          catch (JSONException paramBundle)
+          {
+            paramBundle.printStackTrace();
+            return;
+          }
+          paramBundle = ((JSONObject)localObject).optString("file_uuid");
+          if (paramBundle.equals(""))
+          {
+            localObject = new JSONObject();
+            try
+            {
+              ((JSONObject)localObject).put("retCode", -1);
+              ((JSONObject)localObject).put("msg", "mediaId for serverId error");
+              this.jdField_a_of_type_Rsv.callJs(this.jdField_a_of_type_JavaLangString, new String[] { ((JSONObject)localObject).toString() });
+              awqx.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, -1, "1", "", "", "");
+            }
+            catch (JSONException localJSONException3)
+            {
+              for (;;)
+              {
+                localJSONException3.printStackTrace();
+              }
+            }
+          }
+          else
+          {
+            localObject = ((JSONObject)localObject).optString("mediaid");
+            this.jdField_a_of_type_Rsv.a(this.jdField_a_of_type_Int, paramBundle, (String)localObject, false, this.jdField_a_of_type_JavaLangString);
+            continue;
+            label494:
+            if (QLog.isColorLevel()) {
+              QLog.i("PublicAccountH5AbilityPlugin", 2, "sendMediaIdForUuidRequest errorMsg = " + paramBundle);
+            }
+            paramBundle = new JSONObject();
+            try
+            {
+              paramBundle.put("retCode", -1);
+              paramBundle.put("msg", "mediaId for serverId error");
+              this.jdField_a_of_type_Rsv.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+              if (this.jdField_a_of_type_Boolean)
+              {
+                this.jdField_a_of_type_Rsv.c(this.b);
+                awqx.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
+                return;
+              }
+            }
+            catch (JSONException localJSONException1)
+            {
+              for (;;)
+              {
+                localJSONException1.printStackTrace();
+              }
+              awqx.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, -1, "1", "", "", "");
+              return;
+            }
+            if (QLog.isColorLevel()) {
+              QLog.i("PublicAccountH5AbilityPlugin", 2, "sendMediaIdForUuidRequest errorMsg = " + localJSONException1);
+            }
+            paramBundle = new JSONObject();
+            try
+            {
+              paramBundle.put("retCode", -1);
+              paramBundle.put("msg", "mediaId for serverId error");
+              this.jdField_a_of_type_Rsv.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle.toString() });
+              if (this.jdField_a_of_type_Boolean)
+              {
+                this.jdField_a_of_type_Rsv.c(this.b);
+                awqx.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D28", "0X8005D28", 0, -1, "1", "", "", "");
+                return;
+              }
+            }
+            catch (JSONException localJSONException2)
+            {
+              for (;;)
+              {
+                localJSONException2.printStackTrace();
+              }
+              awqx.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D31", "0X8005D31", 0, -1, "1", "", "", "");
+              return;
+            }
+          }
+        }
       }
-      if (paramDevlockInfo.TimeLimit <= 0) {
-        paramDevlockInfo.TimeLimit = 60;
-      }
-      AuthDevVerifyCodeActivity.a(this.a, paramDevlockInfo.TimeLimit);
-      return;
     }
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnAskDevLockSms ret = " + paramInt);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnAskDevLockSms  errMsg:" + paramErrMsg.getMessage());
-      }
-    }
-    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
-    {
-      this.a.a(paramErrMsg.getMessage(), 1);
-      return;
-    }
-    paramWUserSigInfo = this.a.getString(2131434231);
-    this.a.a(paramWUserSigInfo, 1);
-  }
-  
-  public void OnCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnCheckDevLockSms ret = " + paramInt);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.AuthDevVerifyCodeActivity", 2, "OnCheckDevLockSms  errMsg:" + paramErrMsg.getMessage());
-      }
-    }
-    if (this.a.isFinishing()) {
-      return;
-    }
-    AuthDevVerifyCodeActivity.a(this.a);
-    if (paramInt == 0)
-    {
-      paramWUserSigInfo = (AccountManager)this.a.app.getManager(0);
-      if (paramWUserSigInfo != null) {
-        paramWUserSigInfo.refreshDA2(this.a.app.getCurrentAccountUin(), null);
-      }
-      EquipmentLockImpl.a().a(null, this.a.app.getCurrentAccountUin(), 9);
-      this.a.setResult(-1);
-      this.a.finish();
-      paramErrMsg = (AppInterface)AuthDevVerifyCodeActivity.a(this.a).get();
-      paramWUserSigInfo = "";
-      if (paramErrMsg != null) {
-        paramWUserSigInfo = paramErrMsg.getAccount();
-      }
-      EquipmentLockImpl.a().a(paramErrMsg, this.a, paramWUserSigInfo, true);
-      return;
-    }
-    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
-    {
-      this.a.a(paramErrMsg.getMessage(), 1);
-      return;
-    }
-    this.a.a(2131434266, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rsy
  * JD-Core Version:    0.7.0.1
  */

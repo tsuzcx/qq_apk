@@ -1,8 +1,8 @@
 package android.support.v4.content;
 
-public abstract interface Loader$OnLoadCompleteListener
+public abstract interface Loader$OnLoadCompleteListener<D>
 {
-  public abstract void onLoadComplete(Loader paramLoader, Object paramObject);
+  public abstract void onLoadComplete(Loader<D> paramLoader, D paramD);
 }
 
 

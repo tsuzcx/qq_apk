@@ -1,23 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.teamwork.ReSendCmd;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
 
-public final class aiqy
-  implements Parcelable.Creator
+class aiqy
+  implements DialogInterface.OnKeyListener
 {
-  public ReSendCmd a(Parcel paramParcel)
-  {
-    return new ReSendCmd(paramParcel);
-  }
+  aiqy(aiqu paramaiqu, airc paramairc) {}
   
-  public ReSendCmd[] a(int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    return new ReSendCmd[paramInt];
+    if ((paramInt == 4) && (this.jdField_a_of_type_Airc != null)) {
+      this.jdField_a_of_type_Airc.a(this.jdField_a_of_type_Aiqu.a(), "sc.xy_alert_show_success.local", "{\"cancel\":1}");
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiqy
  * JD-Core Version:    0.7.0.1
  */

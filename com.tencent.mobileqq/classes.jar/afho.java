@@ -1,27 +1,64 @@
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditBasePanel;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
 
 public class afho
-  implements ConditionSearchManager.IConfigListener
+  extends afhq
 {
-  public afho(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
-  
-  public void a(int paramInt, boolean paramBoolean)
+  public afho(CommonRefreshLayout paramCommonRefreshLayout)
   {
-    this.a.a();
-    if (!paramBoolean) {
-      this.a.b(this.a.getString(2131437318));
+    super(paramCommonRefreshLayout);
+  }
+  
+  public void a()
+  {
+    if ((CommonRefreshLayout.a(this.a) != null) && ((CommonRefreshLayout.a(this.a) instanceof afhv)) && ((afhr.a(CommonRefreshLayout.a(this.a))) || (afhr.h(CommonRefreshLayout.a(this.a)))))
+    {
+      CommonRefreshLayout.a(this.a).setVisibility(0);
+      ((afhv)CommonRefreshLayout.a(this.a)).a();
     }
-    while ((this.a.e != 1) || (paramInt != 2)) {
-      return;
+  }
+  
+  public void a(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((CommonRefreshLayout.a(this.a) != null) && ((CommonRefreshLayout.a(this.a) instanceof afhv)) && (afhr.c(CommonRefreshLayout.a(this.a))))
+    {
+      if (CommonRefreshLayout.a(this.a).getVisibility() != 0) {
+        CommonRefreshLayout.a(this.a).setVisibility(0);
+      }
+      ((afhv)CommonRefreshLayout.a(this.a)).a(paramInt, paramBoolean1, paramBoolean2);
     }
-    NearbyPeopleProfileActivity.a(this.a).c();
+  }
+  
+  public void b()
+  {
+    if ((CommonRefreshLayout.a(this.a) != null) && ((CommonRefreshLayout.a(this.a) instanceof afhv)) && (afhr.e(CommonRefreshLayout.a(this.a)))) {
+      ((afhv)CommonRefreshLayout.a(this.a)).b();
+    }
+  }
+  
+  public void c()
+  {
+    if ((CommonRefreshLayout.a(this.a) != null) && (afhr.b(CommonRefreshLayout.a(this.a))))
+    {
+      if ((CommonRefreshLayout.a(this.a) instanceof afhu)) {
+        ((afhu)CommonRefreshLayout.a(this.a)).c();
+      }
+      if (CommonRefreshLayout.a(this.a) != null) {
+        CommonRefreshLayout.a(this.a).a();
+      }
+    }
+  }
+  
+  public void d()
+  {
+    if ((CommonRefreshLayout.a(this.a) != null) && ((CommonRefreshLayout.a(this.a) instanceof afhv)) && ((afhr.a(CommonRefreshLayout.a(this.a))) || (afhr.h(CommonRefreshLayout.a(this.a))))) {
+      ((afhv)CommonRefreshLayout.a(this.a)).d();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afho
  * JD-Core Version:    0.7.0.1
  */

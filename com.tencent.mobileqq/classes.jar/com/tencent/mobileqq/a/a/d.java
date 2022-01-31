@@ -3,7 +3,7 @@ package com.tencent.mobileqq.a.a;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.c.k;
 import com.tencent.mobileqq.msf.service.MsfService;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -26,16 +26,16 @@ public class d
     {
       Object localObject = (Map.Entry)localIterator.next();
       String str = (String)((Map.Entry)localObject).getKey();
-      localObject = (a)((Map.Entry)localObject).getValue();
-      if (l - ((a)localObject).c > 480000L)
+      localObject = (d.a)((Map.Entry)localObject).getValue();
+      if (l - ((d.a)localObject).c > 480000L)
       {
         a.remove(str);
-        a((a)localObject, false);
+        a((d.a)localObject, false);
       }
     }
   }
   
-  private static void a(a parama, boolean paramBoolean)
+  private static void a(d.a parama, boolean paramBoolean)
   {
     if ((parama != null) && (parama.g > 0L) && (parama.h > 0L) && (parama.g < parama.h) && (MsfService.core.getStatReporter() != null))
     {
@@ -109,7 +109,7 @@ public class d
         }
         for (localObject2 = (String)localObject2; (i == -1000) && (!bool1) && (j <= 0) && (!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject2)); localObject2 = null)
         {
-          a locala = new a(null);
+          d.a locala = new d.a(null);
           locala.a = paramToServiceMsg.getUin();
           locala.b = paramToServiceMsg.getRequestSsoSeq();
           locala.c = SystemClock.elapsedRealtime();
@@ -188,7 +188,7 @@ public class d
           break;
         }
         paramToServiceMsg = paramToServiceMsg + paramFromServiceMsg + l1;
-        paramFromServiceMsg = (a)a.get(paramToServiceMsg);
+        paramFromServiceMsg = (d.a)a.get(paramToServiceMsg);
         if (paramFromServiceMsg == null) {
           break;
         }
@@ -267,7 +267,7 @@ public class d
           break;
         }
         paramToServiceMsg = paramToServiceMsg + paramFromServiceMsg + l1;
-        paramFromServiceMsg = (a)a.get(paramToServiceMsg);
+        paramFromServiceMsg = (d.a)a.get(paramToServiceMsg);
         if (paramFromServiceMsg == null) {
           break;
         }
@@ -292,18 +292,6 @@ public class d
         return;
       }
     }
-  }
-  
-  private static class a
-  {
-    public String a;
-    public int b;
-    public long c;
-    public long d;
-    public String e;
-    public String f;
-    public long g = -1L;
-    public long h = -1L;
   }
 }
 

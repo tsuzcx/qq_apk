@@ -10,7 +10,6 @@ public abstract class PluginBroadcastReceiver
   extends BroadcastReceiver
   implements IPluginBroadcastReceiver
 {
-  private int a;
   protected String mApkFilePath;
   protected ClassLoader mDexClassLoader;
   protected boolean mIsRunInPlugin;
@@ -18,11 +17,12 @@ public abstract class PluginBroadcastReceiver
   protected PackageInfo mPackageInfo;
   protected String mPluginID;
   protected String mPluginName;
+  private int mPluginResourcesType;
   
   public void IInit(String paramString1, String paramString2, String paramString3, BroadcastReceiver paramBroadcastReceiver, ClassLoader paramClassLoader, PackageInfo paramPackageInfo, int paramInt)
   {
     if (DebugHelper.sDebug) {
-      DebugHelper.log("plugin_tag", "PluginBroadcastReceiver.Init:" + paramString2 + ", " + this.a);
+      DebugHelper.log("plugin_tag", "PluginBroadcastReceiver.Init:" + paramString2 + ", " + this.mPluginResourcesType);
     }
     this.mIsRunInPlugin = true;
     this.mPluginName = paramString1;
@@ -31,7 +31,7 @@ public abstract class PluginBroadcastReceiver
     this.mOutReceiver = paramBroadcastReceiver;
     this.mDexClassLoader = paramClassLoader;
     this.mPackageInfo = paramPackageInfo;
-    this.a = paramInt;
+    this.mPluginResourcesType = paramInt;
   }
   
   public void IOnReceive(Context paramContext, Intent paramIntent)
@@ -39,7 +39,7 @@ public abstract class PluginBroadcastReceiver
     if (DebugHelper.sDebug) {
       DebugHelper.log("plugin_tag", "PluginBroadcastReceiver.IOnReceive");
     }
-    onReceive(new c(paramContext, 0, this.mApkFilePath, this.mDexClassLoader, paramContext.getResources(), this.a), paramIntent);
+    onReceive(new PluginContext(paramContext, 0, this.mApkFilePath, this.mDexClassLoader, paramContext.getResources(), this.mPluginResourcesType), paramIntent);
   }
   
   public void openActivity(Intent paramIntent, String paramString1, String paramString2, boolean paramBoolean)
@@ -50,7 +50,7 @@ public abstract class PluginBroadcastReceiver
     localStartActivityParams.mPluginID = this.mPluginID;
     localStartActivityParams.mPluginApkFilePath = this.mApkFilePath;
     localStartActivityParams.proxyActivity = paramString1;
-    localStartActivityParams.mPluginResoucesType = this.a;
+    localStartActivityParams.mPluginResoucesType = this.mPluginResourcesType;
     localStartActivityParams.mUseSkinEngine = paramBoolean;
     localStartActivityParams.loader = this.mDexClassLoader;
     localStartActivityParams.launchActivity = paramString2;

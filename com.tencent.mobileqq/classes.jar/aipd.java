@@ -1,132 +1,221 @@
+import android.app.Activity;
+import android.content.Context;
+import android.os.Handler.Callback;
+import android.os.Looper;
+import android.os.Message;
 import android.text.TextUtils;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.mobileqq.subaccount.AssociatedAccountOptPopBar;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.util.FaceDrawable;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.widget.LeftPopupMenuDialog.MenuItem;
-import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.process.chanel.GeneralEventHandler.1;
+import com.tencent.mobileqq.apollo.process.chanel.GeneralEventHandler.2;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.FixSizeImageView;
+import java.lang.ref.WeakReference;
 
 public class aipd
-  extends FriendListObserver
+  implements aioo, Handler.Callback
 {
-  public aipd(AssociatedAccountOptPopBar paramAssociatedAccountOptPopBar) {}
+  private static long jdField_a_of_type_Long;
+  private int jdField_a_of_type_Int;
+  protected befq a;
+  public WeakReference<Activity> a;
+  private WeakReference<QQAppInterface> b;
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public aipd(Activity paramActivity, QQAppInterface paramQQAppInterface, int paramInt)
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (this.a.a == null) || (this.a.a.isFinishing()) || (this.a.a.app == null)) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("AssociatedAccountOptPopBar", 2, "onUpdateCustomHead uin = " + paramString);
-        }
-        localObject = AssociatedAccountOptPopBar.a(this.a, paramString);
-      } while (localObject == null);
-      localObject = (FixSizeImageView)((View)localObject).findViewById(2131362724);
-    } while (localObject == null);
-    FaceDrawable localFaceDrawable = FaceDrawable.a(this.a.a.app, 1, paramString);
-    ((FixSizeImageView)localObject).setTag(paramString);
-    ((FixSizeImageView)localObject).setImageDrawable(localFaceDrawable);
+    this.jdField_a_of_type_Befq = new befq(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramActivity);
+    this.b = new WeakReference(paramQQAppInterface);
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  private void b(String paramString)
   {
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
-    View localView;
-    TextView localTextView;
-    LeftPopupMenuDialog.MenuItem localMenuItem;
+    if (QLog.isColorLevel()) {
+      QLog.d("apollochannel_GeneralEventHandler", 2, "startNewGame reqData:" + paramString);
+    }
+    long l = System.currentTimeMillis();
+    if (l - jdField_a_of_type_Long < 1000L) {
+      QLog.e("apollochannel_GeneralEventHandler", 1, "[startNewGame] current - sLastLaunchGameTime < 1000");
+    }
     do
     {
-      do
-      {
-        do
-        {
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.d("AssociatedAccountOptPopBar", 2, "onUpdateFriendInfo  uin = " + paramString + " isSuccess = " + paramBoolean);
-          }
-        } while ((this.a.a == null) || (this.a.a.isFinishing()) || (this.a.a.app == null));
-        localView = AssociatedAccountOptPopBar.a(this.a, paramString);
-      } while (localView == null);
-      localTextView = (TextView)localView.findViewById(2131363397);
-      localMenuItem = (LeftPopupMenuDialog.MenuItem)localView.getTag();
-    } while ((localTextView == null) || (localMenuItem == null));
-    Object localObject;
-    if ((localMenuItem.jdField_a_of_type_JavaLangObject instanceof SubAccountInfo))
+      return;
+      jdField_a_of_type_Long = l;
+    } while (TextUtils.isEmpty(paramString));
+    ThreadManagerV2.excute(new GeneralEventHandler.2(this, paramString), 16, null, false);
+  }
+  
+  public int a()
+  {
+    return 100;
+  }
+  
+  public aije a(String paramString)
+  {
+    aije localaije = new aije();
+    String str = ApolloUtil.a(paramString, "tips");
+    int i = ApolloUtil.a(paramString, "length");
+    if (TextUtils.isEmpty(str)) {
+      return localaije;
+    }
+    paramString = this.jdField_a_of_type_Befq.obtainMessage(255);
+    paramString.obj = str;
+    paramString.arg1 = i;
+    paramString.sendToTarget();
+    return localaije;
+  }
+  
+  public aije a(String paramString1, String paramString2, int paramInt1, int paramInt2)
+  {
+    if (this.b == null) {
+      return null;
+    }
+    if (this.jdField_a_of_type_Int != paramInt2)
     {
-      if (!TextUtils.equals(paramString, ((SubAccountInfo)localMenuItem.jdField_a_of_type_JavaLangObject).subuin)) {
-        break label474;
+      if (QLog.isColorLevel()) {
+        QLog.d("apollochannel_GeneralEventHandler", 2, new Object[] { "not the same gameId, self:", Integer.valueOf(this.jdField_a_of_type_Int), "cmd gameId:", Integer.valueOf(paramInt2), ",cmd:", paramString1 });
       }
-      localObject = ContactUtils.b(this.a.a.app, paramString, false);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        break label479;
+      return new aije();
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
+    if (localQQAppInterface == null) {
+      return null;
+    }
+    if ("general_cmd_ui_show_toast".equals(paramString1)) {
+      return a(paramString2);
+    }
+    if ("cs.get_dress_path.local".equals(paramString1))
+    {
+      aizc.a(localQQAppInterface, paramString1, paramString2, paramInt1);
+      return new aije();
+    }
+    if ("cs.report_data_2_backstage.local".equals(paramString1))
+    {
+      aizc.b(localQQAppInterface, paramString2);
+      return new aije();
+    }
+    if ("cs.report_flow_data.local".equals(paramString1))
+    {
+      aizc.c(localQQAppInterface, paramString2);
+      return new aije();
+    }
+    if ("cs.save_recommend_ip.local".equals(paramString1))
+    {
+      aizc.a(localQQAppInterface, paramString2);
+      return new aije();
+    }
+    if ("cs.openFloatTransparentView.local".equals(paramString1))
+    {
+      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
+      {
+        aizc.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString2);
+        return new aije();
       }
     }
-    for (;;)
+    else if ("cs.openWebView.local".equals(paramString1))
     {
-      if (!paramString.equals(localMenuItem.jdField_a_of_type_JavaLangString))
+      if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
       {
-        localMenuItem.jdField_a_of_type_JavaLangString = paramString;
-        paramBoolean = true;
+        aizc.b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString2);
+        return new aije();
       }
-      for (;;)
+    }
+    else
+    {
+      if ("cs.script_get_nickname.local".equals(paramString1))
       {
-        label207:
-        if (paramBoolean)
+        QQMessageFacade localQQMessageFacade = localQQAppInterface.a();
+        paramInt2 = -1;
+        String str = "";
+        paramString1 = str;
+        paramInt1 = paramInt2;
+        if (localQQMessageFacade != null)
         {
-          localTextView.setText(localMenuItem.jdField_a_of_type_JavaLangString);
-          if (AppSetting.b) {
-            if (localMenuItem.c != 0) {
-              break label409;
+          paramString1 = str;
+          paramInt1 = paramInt2;
+          if (localQQMessageFacade.a())
+          {
+            paramString1 = str;
+            paramInt1 = paramInt2;
+            if (!TextUtils.isEmpty(localQQMessageFacade.a()))
+            {
+              paramString1 = localQQMessageFacade.a();
+              paramInt1 = localQQMessageFacade.a();
             }
           }
         }
-        label409:
-        for (localMenuItem.b = (this.a.a.getString(2131436436, new Object[] { localMenuItem.jdField_a_of_type_JavaLangString }) + " " + this.a.a.getString(2131437146));; localMenuItem.b = (this.a.a.getString(2131436437, new Object[] { localMenuItem.jdField_a_of_type_JavaLangString }) + " " + this.a.a.getString(2131437146)))
-        {
-          AssociatedAccountOptPopBar.a(this.a, localView, localMenuItem);
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("AssociatedAccountOptPopBar", 2, "onUpdateFriendInfo needUpdate = " + paramBoolean);
-          return;
-          if (!(localMenuItem.jdField_a_of_type_JavaLangObject instanceof SimpleAccount)) {
-            break label474;
-          }
-          localObject = (SimpleAccount)localMenuItem.jdField_a_of_type_JavaLangObject;
-          if (!TextUtils.equals(paramString, ((SimpleAccount)localObject).getUin())) {
-            break label474;
-          }
-          paramString = SubAccountControll.a(this.a.a.app, (SimpleAccount)localObject);
-          if (paramString.equals(localMenuItem.jdField_a_of_type_JavaLangString)) {
-            break label474;
-          }
-          localMenuItem.jdField_a_of_type_JavaLangString = paramString;
-          paramBoolean = true;
-          break label207;
-        }
-        label474:
-        paramBoolean = false;
+        return aisl.a(paramString2, localQQAppInterface, paramInt1, paramString1);
       }
-      label479:
-      paramString = (String)localObject;
+      if (!"cs.send_game_msg.local".equals(paramString1)) {
+        break label403;
+      }
+      aizc.a(localQQAppInterface, paramString2, (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+    }
+    for (;;)
+    {
+      return null;
+      label403:
+      if ("cs.create_xy.local".equals(paramString1))
+      {
+        b(paramString2);
+      }
+      else if ("cs.open_cm_aio.local".equals(paramString1))
+      {
+        a(paramString2);
+      }
+      else if ("cs.show_one_more_page.local".equals(paramString1))
+      {
+        paramString1 = (aifg)localQQAppInterface.getManager(153);
+        if (paramString1 != null) {
+          paramString1.a().h(paramString2);
+        }
+      }
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Befq.removeCallbacksAndMessages(null);
+  }
+  
+  void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("apollochannel_GeneralEventHandler", 2, "openCmAIO reqData:" + paramString);
+    }
+    if (!TextUtils.isEmpty(paramString)) {
+      ThreadManagerV2.excute(new GeneralEventHandler.1(this, paramString), 16, null, false);
+    }
+  }
+  
+  public boolean handleMessage(Message paramMessage)
+  {
+    int i = 1;
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return false;
+    } while (!(paramMessage.obj instanceof String));
+    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
+    CharSequence localCharSequence = (CharSequence)paramMessage.obj;
+    if (paramMessage.arg1 == 1) {}
+    for (;;)
+    {
+      bbmy.a(localBaseApplication, localCharSequence, i).a();
+      return false;
+      i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aipd
  * JD-Core Version:    0.7.0.1
  */

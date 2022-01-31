@@ -1,33 +1,36 @@
-import android.graphics.Color;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.ui.RoundProgressBar;
-import com.tencent.mobileqq.intervideo.now.NowLoadingActivity;
-import com.tencent.mobileqq.utils.ViewUtils;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class aedi
-  implements Runnable
+class aedi
+  extends ajey
 {
-  public aedi(NowLoadingActivity paramNowLoadingActivity, int paramInt) {}
+  aedi(aede paramaede) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, Boolean paramBoolean1)
   {
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.jdField_a_of_type_ComTencentBizUiRoundProgressBar.setCircleColor(-12829636);
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.jdField_a_of_type_ComTencentBizUiRoundProgressBar.setRoundWidth(ViewUtils.b(10.0F));
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.jdField_a_of_type_ComTencentBizUiRoundProgressBar.setTextSize(ViewUtils.b(43.0F));
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.jdField_a_of_type_ComTencentBizUiRoundProgressBar.setTextColor(-1);
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.jdField_a_of_type_ComTencentBizUiRoundProgressBar.setPercentMarkTextSize(ViewUtils.b(43.0F));
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.jdField_a_of_type_ComTencentBizUiRoundProgressBar.setCircleProgressColor(Color.parseColor("#50ffcd"));
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.jdField_a_of_type_ComTencentBizUiRoundProgressBar.setProgress(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.jdField_a_of_type_ComTencentBizUiRoundProgressBar.setNeedShowProgreeText(false);
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.b.setText(this.jdField_a_of_type_Int + "%");
-    NowLoadingActivity.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity, this.jdField_a_of_type_ComTencentMobileqqIntervideoNowNowLoadingActivity.getString(2131430835), true);
+    if (paramBoolean)
+    {
+      if ((this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != null) && (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isResume())) {
+        aede.a(this.a);
+      }
+      do
+      {
+        do
+        {
+          return;
+        } while (paramBoolean1.booleanValue());
+        paramString1 = BaseActivity.sTopActivity;
+      } while (paramString1 == null);
+      babr.a(paramString1, 230, paramString1.getString(2131624407), null, null, paramString1.getString(2131653656), new aedj(this, paramString1), null).show();
+      return;
+    }
+    bbmy.a(this.a.jdField_a_of_type_AndroidContentContext, paramInt, 0).b(this.a.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aedi
  * JD-Core Version:    0.7.0.1
  */

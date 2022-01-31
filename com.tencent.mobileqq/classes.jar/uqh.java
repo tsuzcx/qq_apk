@@ -1,37 +1,23 @@
-import android.content.Context;
-import android.net.Uri;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.forward.ForwardFileBaseOption;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.Handler;
+import android.text.TextUtils;
 
-public final class uqh
-  implements FMDialogUtil.FMDialogInterface
+class uqh
+  implements unb<umi>
 {
-  public uqh(ArrayList paramArrayList, Context paramContext, int paramInt, QQAppInterface paramQQAppInterface, String paramString1, String paramString2) {}
+  uqh(uqg paramuqg, String paramString) {}
   
-  public void a()
+  public void a(umi paramumi)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
+    if ((paramumi.a != null) && (TextUtils.equals(paramumi.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)))
     {
-      Object localObject = (Uri)localIterator.next();
-      localObject = ForwardFileBaseOption.a(this.jdField_a_of_type_AndroidContentContext, (Uri)localObject);
-      if (this.jdField_a_of_type_Int == 1) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject, this.jdField_a_of_type_JavaLangString);
-      } else {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
-      }
+      upw.a(this.jdField_a_of_type_Uqg.a).a = paramumi.a;
+      upw.a(this.jdField_a_of_type_Uqg.a).sendMessage(upw.a(this.jdField_a_of_type_Uqg.a).obtainMessage(0, upw.a(this.jdField_a_of_type_Uqg.a)));
     }
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uqh
  * JD-Core Version:    0.7.0.1
  */

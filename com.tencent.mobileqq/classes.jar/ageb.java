@@ -1,35 +1,26 @@
-import com.tencent.mobileqq.app.NowHandler;
-import com.tencent.mobileqq.now.ChannelResponse;
-import com.tencent.mobileqq.now.NowAppHelper;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class ageb
-  extends DownloadListener
+final class ageb
+  implements DialogInterface.OnClickListener
 {
-  ageb(agea paramagea) {}
+  ageb(Activity paramActivity, String paramString1, String paramString2) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onDone(paramDownloadTask);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppNowHandler.a("downloadApk", "", "", "", "", paramDownloadTask.a());
-    if (QLog.isColorLevel()) {
-      QLog.d(NowAppHelper.a, 2, "doShortCutAction download onDone,task=" + paramDownloadTask);
+    switch (paramInt)
+    {
+    default: 
+      return;
     }
-  }
-  
-  public boolean onStart(DownloadTask paramDownloadTask)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(NowAppHelper.a, 2, "doShortCutAction download onStart,apkUrl=" + this.a.jdField_a_of_type_ComTencentMobileqqNowChannelResponse.downloadLink);
-    }
-    return super.onStart(paramDownloadTask);
+    agdx.a(this.jdField_a_of_type_AndroidAppActivity, false, this.jdField_a_of_type_JavaLangString, this.b, false);
+    this.jdField_a_of_type_AndroidAppActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ageb
  * JD-Core Version:    0.7.0.1
  */

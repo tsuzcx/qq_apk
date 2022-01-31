@@ -1,13 +1,6 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationAdapter;
-
-public class mmp
+public abstract interface mmp
 {
-  public View a;
-  public TextView a;
-  
-  private mmp(ReadInJoyNavigationAdapter paramReadInJoyNavigationAdapter) {}
+  public abstract void a(boolean paramBoolean, int paramInt1, int paramInt2);
 }
 
 

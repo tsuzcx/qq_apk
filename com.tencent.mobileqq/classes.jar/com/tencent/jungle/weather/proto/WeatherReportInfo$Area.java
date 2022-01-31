@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class WeatherReportInfo$Area
-  extends MessageMicro
+  extends MessageMicro<Area>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50 }, new String[] { "area_id", "area_name", "en_name", "city", "province", "country" }, new Object[] { Integer.valueOf(0), "", "", "", "", "" }, Area.class);
   public final PBUInt32Field area_id = PBField.initUInt32(0);

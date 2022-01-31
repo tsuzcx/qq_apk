@@ -1,36 +1,58 @@
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.app.DiscussionObserver;
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
+import android.view.ViewGroup;
+import android.widget.FrameLayout.LayoutParams;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment;
+import com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment.FolderRecommendHeadItemView;
+import com.tencent.biz.subscribe.account_folder.top_pannel.TopPanelViewNew;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
 
 public class rot
-  extends DiscussionObserver
+  extends wci
 {
-  public rot(AddRequestActivity paramAddRequestActivity) {}
+  private FolderRecommendTabFragment.FolderRecommendHeadItemView jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView;
+  private TopPanelViewNew jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelViewNew;
+  private vxe jdField_a_of_type_Vxe;
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList paramArrayList)
+  public rot(FolderRecommendTabFragment paramFolderRecommendTabFragment, Bundle paramBundle)
   {
-    if ((paramBoolean) && (paramLong == this.a.b) && (this.a.b != 0L)) {
-      this.a.runOnUiThread(new row(this));
+    super(paramBundle);
+  }
+  
+  protected BaseWidgetView a(ViewGroup paramViewGroup, wbp paramwbp)
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView;
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelViewNew = new TopPanelViewNew(a());
+    paramBundle = new FrameLayout.LayoutParams(-1, -2);
+    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelViewNew.setLayoutParams(paramBundle);
+    this.jdField_a_of_type_Vxe = new vxe(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelViewNew);
+    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView = new FolderRecommendTabFragment.FolderRecommendHeadItemView(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment, a());
+    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderFragmentFolderRecommendTabFragment$FolderRecommendHeadItemView.a(this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelViewNew);
+    this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelViewNew.setOnHideBtnClickListener(new rou(this));
+  }
+  
+  public void a(wca paramwca)
+  {
+    if ((paramwca.c()) && (rsp.b()) && (this.jdField_a_of_type_Vxe != null)) {
+      this.jdField_a_of_type_Vxe.b();
     }
   }
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onDetachedFromRecyclerView(RecyclerView paramRecyclerView)
   {
-    if ((this.a.b != 0L) && (paramBoolean) && ((paramObject instanceof ArrayList)) && (((ArrayList)paramObject).contains(Long.valueOf(this.a.b)))) {
-      this.a.runOnUiThread(new rov(this));
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (this.a.b != 0L) && (String.valueOf(this.a.b).equals(paramString))) {
-      this.a.runOnUiThread(new rou(this));
+    super.onDetachedFromRecyclerView(paramRecyclerView);
+    if (this.jdField_a_of_type_Vxe != null) {
+      this.jdField_a_of_type_Vxe.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rot
  * JD-Core Version:    0.7.0.1
  */

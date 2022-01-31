@@ -1,23 +1,63 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.mobileqq.widget.BounceScrollView;
+import android.view.View;
+import com.tencent.mobileqq.activity.history.ChatHistoryC2CFileFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class aflf
-  implements Runnable
+  extends apfd
 {
-  public aflf(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
+  public aflf(ChatHistoryC2CFileFragment paramChatHistoryC2CFileFragment) {}
   
-  public void run()
+  public void a(View paramView)
   {
-    int i = this.a.h.getTop();
-    int j = (int)(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a * 20.0F);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.smoothScrollTo(0, i - j);
+    paramView = (ahzk)paramView.getTag();
+    FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramView.jdField_a_of_type_JavaLangObject;
+    if (5 != localFileManagerEntity.cloudType) {
+      apck.c(localFileManagerEntity);
+    }
+    switch (paramView.jdField_a_of_type_Int)
+    {
+    }
+    for (;;)
+    {
+      ChatHistoryC2CFileFragment.a(this.a).notifyDataSetChanged();
+      return;
+      if (!badq.d(BaseApplication.getContext()))
+      {
+        apcb.a(2131627028);
+        return;
+      }
+      apbf.a(localFileManagerEntity).a(false, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, new aflg(this, localFileManagerEntity));
+      continue;
+      this.a.a(localFileManagerEntity);
+      continue;
+      if (localFileManagerEntity.getCloudType() == 0)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.nSessionId);
+      }
+      else if (localFileManagerEntity.getCloudType() == 6)
+      {
+        ((ajgm)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).a(0, localFileManagerEntity.uniseq, false);
+      }
+      else
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.nSessionId);
+        continue;
+        if (!badq.d(BaseApplication.getContext()))
+        {
+          apcb.a(2131627028);
+          return;
+        }
+        boolean bool = localFileManagerEntity.isSend();
+        apbf.a(localFileManagerEntity).a(bool, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, new aflh(this, localFileManagerEntity));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aflf
  * JD-Core Version:    0.7.0.1
  */

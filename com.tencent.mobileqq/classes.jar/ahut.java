@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForScribble;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
-public final class ahut
-  implements Runnable
+public class ahut
+  implements DialogInterface.OnClickListener
 {
-  public ahut(QQAppInterface paramQQAppInterface, MessageForScribble paramMessageForScribble) {}
+  public ahut(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.uniseq);
+    this.a.s();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahut
  * JD-Core Version:    0.7.0.1
  */

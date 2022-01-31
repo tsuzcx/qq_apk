@@ -1,22 +1,24 @@
-import android.util.Printer;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.thread.QzoneThreadMonitor;
+import android.text.TextUtils;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 
 public class anii
-  implements Printer
+  implements arol<String, Integer>
 {
-  public anii(QzoneThreadMonitor paramQzoneThreadMonitor) {}
+  public anii(EmoticonMainPanel paramEmoticonMainPanel, int paramInt) {}
   
-  public void println(String paramString)
+  public Integer a(String paramString)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QzoneThreadMonitor", 4, paramString);
+    EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a);
+    int i = this.jdField_a_of_type_Int;
+    if (!TextUtils.isEmpty(paramString)) {
+      i = EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel, paramString);
     }
+    return Integer.valueOf(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anii
  * JD-Core Version:    0.7.0.1
  */

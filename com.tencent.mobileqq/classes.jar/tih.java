@@ -1,22 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
+import java.util.Iterator;
+import java.util.Set;
 
-public class tih
-  implements DialogInterface.OnClickListener
+class tih
+  extends sgc
 {
-  public tih(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
+  tih(tig paramtig) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    BaseApplicationImpl.getApplication().setPCActiveNotice(null, null, null, null);
-    this.a.finish();
+    urk.a("Q.qqstory.playernew.StoryPlayerImpl", "QQStoryObserver, onUpdate, type=%d, isSuccess=%s, data=%s", Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean), paramObject);
+    Iterator localIterator = tig.a(this.a).iterator();
+    while (localIterator.hasNext()) {
+      ((sgc)localIterator.next()).onUpdate(paramInt, paramBoolean, paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tih
  * JD-Core Version:    0.7.0.1
  */

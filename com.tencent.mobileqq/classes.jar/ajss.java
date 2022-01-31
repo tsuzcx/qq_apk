@@ -1,54 +1,31 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.view.KeyEvent;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.TextView.OnEditorActionListener;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem.TextViewHolder;
-
 public class ajss
-  implements TextView.OnEditorActionListener
+  implements ajfe
 {
-  public ajss(TextItem paramTextItem, TextItem.TextViewHolder paramTextViewHolder) {}
+  protected void a(boolean paramBoolean, axau paramaxau) {}
   
-  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
+  protected void b(boolean paramBoolean, axau paramaxau) {}
+  
+  protected void c(boolean paramBoolean, axau paramaxau) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((paramInt != 4) && (paramInt != 6))
+    switch (paramInt)
     {
-      bool1 = bool2;
-      if (paramKeyEvent != null)
-      {
-        bool1 = bool2;
-        if (66 == paramKeyEvent.getKeyCode())
-        {
-          bool1 = bool2;
-          if (paramKeyEvent.getAction() != 0) {}
-        }
-      }
+    default: 
+      return;
+    case 0: 
+      b(paramBoolean, (axau)paramObject);
+      return;
+    case 1: 
+      c(paramBoolean, (axau)paramObject);
+      return;
     }
-    else
-    {
-      paramTextView = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.getEditableText().toString();
-      paramInt = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.getSelectionStart();
-      paramTextView = paramTextView.substring(0, paramInt);
-      paramTextView = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem.a(paramTextView);
-      bool1 = bool2;
-      if (!TextUtils.isEmpty(paramTextView))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.getEditableText().replace(paramInt, paramInt, "\n" + paramTextView);
-        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.setSelection(paramTextView.length() + paramInt + 1);
-        bool1 = true;
-      }
-    }
-    return bool1;
+    a(paramBoolean, (axau)paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajss
  * JD-Core Version:    0.7.0.1
  */

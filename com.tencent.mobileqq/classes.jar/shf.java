@@ -1,65 +1,36 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.troopshare.TroopShareUtility;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.util.TroopReportor;
-import com.tencent.widget.ActionMenuItem;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.annotation.TargetApi;
+import java.net.URL;
 
+@TargetApi(14)
 public class shf
-  implements ActionSheet.OnButtonClickListener
 {
-  public shf(ChatSettingForTroop paramChatSettingForTroop, ActionSheet paramActionSheet) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public static URL a(URL paramURL)
   {
-    switch (this.jdField_a_of_type_ComTencentWidgetActionSheet.a(paramInt).c)
+    String str = paramURL.getHost();
+    int k = str.indexOf(':');
+    Object localObject = paramURL;
+    if (k != -1)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      ChatSettingForTroop.e(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop);
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.d == 1) || (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isMember))
-      {
-        TroopReportor.a("Grp_set_new", "grpData_admin", "clk_quitgrp", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, TroopReportor.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData) });
-        continue;
-        if ((!this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.isFinishing()) && (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app != null)) {
-          if ((this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.d == 1) || (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isMember))
-          {
-            TroopReportor.a("Grp_set_new", "grpData_admin", "clk_report", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, TroopReportor.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData) });
-            ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, null, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.getAccount(), 10022, null);
-          }
-          else
-          {
-            String str = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin;
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isMember) {}
-            for (paramView = "1";; paramView = "0")
-            {
-              TroopReportor.a("Grp_set_new", "grpData_visitor", "clk_report", 0, 0, new String[] { str, paramView });
-              break;
-            }
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopshareTroopShareUtility == null) {
-              this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopshareTroopShareUtility = new TroopShareUtility(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData, new shg(this));
-            }
-            this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopshareTroopShareUtility.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData);
-            this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a("Grp_Admin_data", "Clk_share", "");
-            if ((this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.d == 1) || (this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isMember)) {
-              TroopReportor.a("Grp_set_new", "grpData_admin", "clk_share", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, TroopReportor.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData) });
-            }
-          }
-        }
+      localObject = str.substring(0, k);
+      int j = paramURL.getPort();
+      int i = j;
+      if (j == -1) {
+        i = Integer.valueOf(str.substring(k + 1)).intValue();
       }
+      urk.b("URLChecker", "url is not initilized correctly, so re-create it");
+      localObject = new URL(paramURL.getProtocol(), (String)localObject, i, paramURL.getFile());
     }
+    return localObject;
+  }
+  
+  public static boolean a(URL paramURL)
+  {
+    return paramURL.getHost().indexOf(':') == -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     shf
  * JD-Core Version:    0.7.0.1
  */

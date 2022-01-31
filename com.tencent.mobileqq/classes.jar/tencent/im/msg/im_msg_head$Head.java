@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class im_msg_head$Head
-  extends MessageMicro
+  extends MessageMicro<Head>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 50, 58, 66, 74, 82 }, new String[] { "uint32_head_type", "msg_cs_head", "msg_s2c_head", "msg_httpconn_head", "uint32_paint_flag", "msg_login_sig", "msg_delta_head", "msg_c2c_head", "msg_sconn_head", "msg_inst_ctrl" }, new Object[] { Integer.valueOf(0), null, null, null, Integer.valueOf(0), null, null, null, null, null }, Head.class);
   public im_msg_head.C2CHead msg_c2c_head = new im_msg_head.C2CHead();

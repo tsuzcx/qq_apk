@@ -20,7 +20,7 @@ public abstract class AbsHomeWorkFragment
 {
   public int a = -2147483648;
   
-  private static void a(Activity paramActivity, Class paramClass, Intent paramIntent, int paramInt1, int paramInt2, String paramString)
+  private static void a(Activity paramActivity, Class<? extends AbsHomeWorkFragment> paramClass, Intent paramIntent, int paramInt1, int paramInt2, String paramString)
   {
     Intent localIntent = paramIntent;
     if (paramIntent == null) {
@@ -32,7 +32,7 @@ public abstract class AbsHomeWorkFragment
     PublicFragmentActivity.a(paramActivity, localIntent, paramClass, paramInt1);
   }
   
-  public static void a(Activity paramActivity, Class paramClass, Intent paramIntent, int paramInt, String paramString)
+  public static void a(Activity paramActivity, Class<? extends AbsHomeWorkFragment> paramClass, Intent paramIntent, int paramInt, String paramString)
   {
     a(paramActivity, paramClass, paramIntent, 258, paramInt, paramString);
   }
@@ -58,12 +58,12 @@ public abstract class AbsHomeWorkFragment
     a("{}");
   }
   
-  public final View a(int paramInt)
+  protected final <T extends View> T a(int paramInt)
   {
     return this.mContentView.findViewById(paramInt);
   }
   
-  public final QQAppInterface a()
+  protected final QQAppInterface a()
   {
     FragmentActivity localFragmentActivity = getActivity();
     if ((localFragmentActivity != null) && ((localFragmentActivity.getAppInterface() instanceof QQAppInterface))) {
@@ -80,9 +80,9 @@ public abstract class AbsHomeWorkFragment
     }
   }
   
-  public abstract void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle);
+  protected abstract void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle);
   
-  public abstract void a(@Nullable String paramString);
+  protected abstract void a(@Nullable String paramString);
   
   public final void a(@NonNull JSONObject paramJSONObject)
   {
@@ -94,7 +94,7 @@ public abstract class AbsHomeWorkFragment
     getActivity().setResult(257, localIntent);
   }
   
-  protected final void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
+  public final void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     a(paramLayoutInflater, paramViewGroup, paramBundle);
@@ -103,7 +103,7 @@ public abstract class AbsHomeWorkFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.api.AbsHomeWorkFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.widget.RectMaskView;
+import com.tencent.ark.ArkEnvironmentManager.LibraryLoader;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class aleh
-  implements Runnable
+public final class aleh
+  implements ArkEnvironmentManager.LibraryLoader
 {
-  public aleh(RectMaskView paramRectMaskView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
-  
-  public void run()
+  public boolean Load()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRectMaskView.invalidate(this.jdField_a_of_type_Int, this.b, this.c, this.d);
+    ArkAppCenter.f();
+    return ArkAppCenter.b;
+  }
+  
+  public boolean isLibraryLoad()
+  {
+    return ArkAppCenter.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aleh
  * JD-Core Version:    0.7.0.1
  */

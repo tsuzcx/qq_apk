@@ -1,56 +1,33 @@
-import Wallet.PfaFriendRsp;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.qwallet.TopayManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.device.JNICallCenter.DataPoint;
 
 public final class xhj
-  extends Handler
+  implements Parcelable.Creator<DataPoint>
 {
-  public xhj(Looper paramLooper)
+  public DataPoint a(Parcel paramParcel)
   {
-    super(paramLooper);
+    DataPoint localDataPoint = new DataPoint();
+    localDataPoint.mDin = paramParcel.readLong();
+    localDataPoint.mSendUinType = paramParcel.readInt();
+    localDataPoint.mApiName = paramParcel.readString();
+    localDataPoint.mProperityId = paramParcel.readInt();
+    localDataPoint.mValueType = paramParcel.readString();
+    localDataPoint.mValue = paramParcel.readString();
+    localDataPoint.mRetCode = paramParcel.readInt();
+    localDataPoint.mErrMsg = paramParcel.readString();
+    localDataPoint.mSeq = paramParcel.readString();
+    return localDataPoint;
   }
   
-  public void handleMessage(Message paramMessage)
+  public DataPoint[] a(int paramInt)
   {
-    boolean bool2 = true;
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramMessage.obj != null)
-    {
-      localObject1 = localObject2;
-      if ((paramMessage.obj instanceof PfaFriendRsp)) {
-        localObject1 = (PfaFriendRsp)paramMessage.obj;
-      }
-    }
-    boolean bool1;
-    if (paramMessage.arg1 == 1)
-    {
-      bool1 = true;
-      if (paramMessage.arg2 != 1) {
-        break label93;
-      }
-    }
-    for (;;)
-    {
-      TopayManager.a(bool1, (PfaFriendRsp)localObject1, bool2);
-      return;
-      bool1 = false;
-      break;
-      label93:
-      bool2 = false;
-    }
+    return new DataPoint[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     xhj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,28 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class wqt
-  implements Runnable
+class wqt
+  implements Animator.AnimatorListener
 {
-  public wqt(TroopActivity paramTroopActivity) {}
+  wqt(wqq paramwqq) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.a.e)
-    {
-      int i = this.a.app.a().b();
-      TextView localTextView = (TextView)this.a.findViewById(2131364020);
-      ImageView localImageView = (ImageView)this.a.findViewById(2131364019);
-      localTextView.setVisibility(0);
-      localImageView.setVisibility(0);
-      localTextView.setText("" + i);
-      if (i <= 0) {
-        localTextView.setVisibility(4);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("AEWaterMarkListPart", 2, "Watermark panel down");
     }
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wqt
  * JD-Core Version:    0.7.0.1
  */

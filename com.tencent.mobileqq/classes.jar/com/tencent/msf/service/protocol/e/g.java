@@ -8,10 +8,10 @@ public final class g
   extends JceStruct
 {
   public String a = "";
-  public int b;
-  public byte c;
-  public byte d;
-  public byte e;
+  public int b = 0;
+  public byte c = 0;
+  public byte d = 0;
+  public byte e = 0;
   public int f = 10;
   public String g = "";
   public String h = "";

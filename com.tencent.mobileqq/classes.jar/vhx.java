@@ -1,38 +1,49 @@
-import android.os.SystemClock;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.item.PokeEmoItemBuilder;
-import com.tencent.mobileqq.data.MessageForPokeEmo;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.media.MediaFormat;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class vhx
-  implements ActionSheet.OnButtonClickListener
+public abstract class vhx
 {
-  public vhx(PokeEmoItemBuilder paramPokeEmoItemBuilder, MessageForPokeEmo paramMessageForPokeEmo, ActionSheet paramActionSheet) {}
+  protected int a;
+  protected auzt a;
+  protected String a;
+  protected String b;
   
-  public void OnClick(View paramView, int paramInt)
+  protected void a(int paramInt, String paramString1, String paramString2, MediaFormat paramMediaFormat, SlideItemInfo paramSlideItemInfo, vhw paramvhw)
   {
-    switch (paramInt)
+    if (paramvhw != null)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      long l;
-      do
+      vgv localvgv = new vgv();
+      localvgv.jdField_a_of_type_Long = paramvhw.b;
+      localvgv.jdField_a_of_type_Int = paramInt;
+      localvgv.jdField_b_of_type_JavaLangString = paramString2;
+      localvgv.jdField_a_of_type_JavaLangString = paramString1;
+      localvgv.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
+      localvgv.c = this.jdField_b_of_type_JavaLangString;
+      localvgv.jdField_a_of_type_Boolean = false;
+      localvgv.jdField_b_of_type_Int = 1;
+      if (paramSlideItemInfo != null)
       {
-        return;
-        l = SystemClock.uptimeMillis();
-      } while (l - this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPokeEmoItemBuilder.c < 500L);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPokeEmoItemBuilder.c = l;
-      ChatActivityFacade.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPokeEmoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPokeEmoItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPokeEmoItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPokeEmo.uniseq);
+        localvgv.jdField_a_of_type_Boolean = paramSlideItemInfo.jdField_a_of_type_Boolean;
+        localvgv.jdField_b_of_type_Int = paramSlideItemInfo.c;
+      }
+      if (paramvhw.a != null) {
+        paramvhw.a.a(localvgv);
+      }
     }
+  }
+  
+  protected boolean a(vhw paramvhw)
+  {
+    if ((!paramvhw.d) && (QLog.isColorLevel())) {
+      QLog.d("ToVideoConverter", 2, "run exit:" + paramvhw.b + " currContext.isRun:" + paramvhw.d);
+    }
+    return !paramvhw.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vhx
  * JD-Core Version:    0.7.0.1
  */

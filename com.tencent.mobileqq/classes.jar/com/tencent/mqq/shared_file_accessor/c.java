@@ -1,72 +1,36 @@
 package com.tencent.mqq.shared_file_accessor;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-final class c
-  extends Handler
+public final class c
 {
-  public c(a parama, Looper paramLooper)
+  public int a = 0;
+  private String b = null;
+  
+  private c(int paramInt, String paramString)
   {
-    super(paramLooper);
+    this.a = paramInt;
+    this.b = paramString;
   }
   
-  public final void handleMessage(Message paramMessage)
+  public final boolean equals(Object paramObject)
   {
-    switch (paramMessage.what)
+    if (paramObject == null) {}
+    do
     {
-    default: 
-      return;
-    }
-    paramMessage = LogUtil.timeLogBegin();
-    List localList;
-    if (this.a.b) {
-      synchronized (this.a)
-      {
-        localList = a.a(this.a);
-        a.a(this.a, a.b(this.a));
-        a.a(this.a, a.c(this.a));
-        a.b(this.a, false);
-        this.a.a = true;
-        a.a(this.a, new ArrayList());
-        a.b(this.a, new HashMap());
+      return false;
+      if (!(paramObject instanceof Integer)) {
+        break;
       }
+    } while (this.a != ((Integer)paramObject).intValue());
+    return true;
+    if ((paramObject instanceof String)) {
+      return this.b.equals(paramObject);
     }
-    try
-    {
-      this.a.a(localList);
-      for (;;)
-      {
-        label141:
-        synchronized (this.a)
-        {
-          a.a(this.a, false);
-          this.a.a = false;
-          a.d(this.a).clear();
-          a.a(this.a, null);
-          this.a.notifyAll();
-          LogUtil.timeLogEnd(SharedPreferencesProxyManager.getInstance().a(), null, this.a.c, null, null, "save-file", d.c, true, paramMessage);
-          LogUtil.timeLogEnd("save file " + this.a.c, paramMessage);
-          return;
-          paramMessage = finally;
-          throw paramMessage;
-        }
-        try
-        {
-          this.a.a(null);
-        }
-        catch (Throwable localThrowable1) {}
-      }
-    }
-    catch (Throwable localThrowable2)
-    {
-      break label141;
-    }
+    return super.equals(paramObject);
+  }
+  
+  public final String toString()
+  {
+    return this.b;
   }
 }
 

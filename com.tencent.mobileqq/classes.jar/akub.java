@@ -1,23 +1,32 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.webview.WebViewTitleStyle;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public final class akub
-  implements Parcelable.Creator
+final class akub
+  implements axrs
 {
-  public WebViewTitleStyle a(Parcel paramParcel)
+  public void a(axsp paramaxsp, axsq paramaxsq)
   {
-    return new WebViewTitleStyle(paramParcel);
-  }
-  
-  public WebViewTitleStyle[] a(int paramInt)
-  {
-    return new WebViewTitleStyle[paramInt];
+    if ((paramaxsp == null) || (paramaxsq == null)) {}
+    while (!(paramaxsp instanceof axro)) {
+      return;
+    }
+    axro localaxro = (axro)paramaxsp;
+    localaxro.jdField_a_of_type_Long += paramaxsq.c;
+    paramaxsq.c = 0L;
+    paramaxsq = "bytes=" + localaxro.jdField_a_of_type_Long + "-";
+    localaxro.jdField_a_of_type_JavaUtilHashMap.put("Range", paramaxsq);
+    paramaxsq = localaxro.jdField_a_of_type_JavaLangString;
+    if (paramaxsq.contains("range="))
+    {
+      paramaxsq = paramaxsq.substring(0, paramaxsq.lastIndexOf("range="));
+      localaxro.jdField_a_of_type_JavaLangString = (paramaxsq + "range=" + localaxro.jdField_a_of_type_Long);
+    }
+    QLog.i("AREngine_ARPreSoResourceDownload", 1, "IBreakDownFix. url = " + ((axro)paramaxsp).jdField_a_of_type_JavaLangString + ", offset=" + localaxro.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akub
  * JD-Core Version:    0.7.0.1
  */

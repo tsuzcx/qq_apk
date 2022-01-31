@@ -1,16 +1,10 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
-
-class ncb
-  implements Runnable
+public class ncb
 {
-  ncb(nby paramnby) {}
-  
-  public void run()
-  {
-    if (PublicAccountImageCollectionMainActivity.a(this.a.a) != null) {
-      PublicAccountImageCollectionMainActivity.a(this.a.a).a(PublicAccountImageCollectionMainActivity.d(this.a.a));
-    }
-  }
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
 }
 
 

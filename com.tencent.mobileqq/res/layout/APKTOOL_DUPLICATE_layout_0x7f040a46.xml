@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e27" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e28" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-    <TextView android:textSize="10.0sp" android:textColor="#eeffff00" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e29" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="13.0sp" android:textColor="#eeffff00" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e2a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.0dip" android:singleLine="true" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a2e29" android:layout_alignParentTop="true" android:layout_alignParentRight="true" android:layout_centerHorizontal="true" />
-    <com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2e2b" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="25.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021bf4" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-</RelativeLayout>

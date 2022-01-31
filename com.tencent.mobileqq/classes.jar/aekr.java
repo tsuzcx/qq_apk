@@ -1,92 +1,290 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.log.VipWebViewReportLog;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.content.Context;
+import android.graphics.Point;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.app.AppRuntime;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class aekr
-  implements Runnable
 {
-  public void run()
+  private static int jdField_a_of_type_Int;
+  private static Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private static Animation jdField_a_of_type_AndroidViewAnimationAnimation;
+  private static String jdField_a_of_type_JavaLangString;
+  private static Random jdField_a_of_type_JavaUtilRandom = new Random();
+  private static Set<Object> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private static int[] jdField_a_of_type_ArrayOfInt;
+  private static int b;
+  
+  public static int a(@NonNull String paramString)
   {
-    long l = System.currentTimeMillis();
-    QLog.d("WebCoreDump", 1, "-->start load config at " + l);
-    Object localObject1;
-    if (VipWebViewReportLog.a() == null)
+    try
     {
-      localObject1 = "";
-      localObject1 = new File(VipWebViewReportLog.jdField_b_of_type_JavaLangString + (String)localObject1 + "config.json");
-      if (!((File)localObject1).exists()) {
-        break label391;
+      if (!paramString.equals(jdField_a_of_type_JavaLangString))
+      {
+        jdField_a_of_type_Int = baig.b(paramString);
+        jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+        jdField_a_of_type_JavaLangString = paramString;
       }
-      QLog.d("WebCoreDump", 1, "-->config file exist");
-      VipWebViewReportLog.jdField_a_of_type_Int = 0;
-      VipWebViewReportLog.a(VipWebViewReportLog.a());
+      int i = jdField_a_of_type_Int;
+      return i;
     }
+    finally {}
+  }
+  
+  @Nullable
+  public static aekt a(String paramString)
+  {
+    return (aekt)babe.a("StickerBubbleGifCache_" + paramString);
+  }
+  
+  public static aekw a(int paramInt1, String paramString, int paramInt2, int[] paramArrayOfInt)
+  {
+    boolean bool = a(paramInt2, paramArrayOfInt);
+    paramArrayOfInt = new Point(paramInt1 / 2, 0);
+    double d1;
+    if (bool)
+    {
+      d1 = -jdField_a_of_type_JavaUtilRandom.nextInt(2000) + 1000;
+      if (!bool) {
+        break label114;
+      }
+    }
+    label114:
+    for (double d2 = jdField_a_of_type_JavaUtilRandom.nextInt(500);; d2 = jdField_a_of_type_JavaUtilRandom.nextInt(2000))
+    {
+      return new aekw(paramArrayOfInt, paramString, bool, new aekn(d1, d2), new aekm(0.0D, 200.0D), 49);
+      d1 = -jdField_a_of_type_JavaUtilRandom.nextInt(8000) + 4000;
+      break;
+    }
+  }
+  
+  public static aekw a(@NonNull Point paramPoint, @NonNull String paramString, int paramInt)
+  {
+    boolean bool = a(paramInt);
+    double d1;
+    if (bool)
+    {
+      d1 = -jdField_a_of_type_JavaUtilRandom.nextInt(1500) + 750;
+      if (!bool) {
+        break label102;
+      }
+    }
+    label102:
+    for (double d2 = -1000 - jdField_a_of_type_JavaUtilRandom.nextInt(500);; d2 = -2000 - jdField_a_of_type_JavaUtilRandom.nextInt(1000))
+    {
+      return new aekw(paramPoint, paramString, bool, new aekn(d1, d2), new aekm(0.0D, 200.0D), 85);
+      d1 = -jdField_a_of_type_JavaUtilRandom.nextInt(6000) + 3000;
+      break;
+    }
+  }
+  
+  @Nullable
+  public static Drawable a(@NonNull String paramString)
+  {
+    try
+    {
+      if (((!paramString.equals(jdField_a_of_type_JavaLangString)) || (jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) && (a(paramString) > 0)) {
+        jdField_a_of_type_AndroidGraphicsDrawableDrawable = aekq.a(a(paramString));
+      }
+      paramString = jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      return paramString;
+    }
+    finally {}
+  }
+  
+  private static Animation a(Context paramContext)
+  {
+    int i = aciy.a(8.0F, paramContext.getResources());
+    paramContext = new TranslateAnimation(-i, i, 0.0F, 0.0F);
+    paramContext.setDuration(100L);
+    paramContext.setInterpolator(new AccelerateInterpolator());
+    paramContext.setRepeatCount(-1);
+    paramContext.setRepeatMode(2);
+    return paramContext;
+  }
+  
+  public static void a()
+  {
+    b += 1;
+  }
+  
+  public static void a(@NonNull aekp paramaekp, @NonNull String paramString)
+  {
+    try
+    {
+      jdField_a_of_type_Int = paramaekp.jdField_a_of_type_Int;
+      jdField_a_of_type_AndroidGraphicsDrawableDrawable = aekq.a(jdField_a_of_type_Int);
+      baig.b(paramaekp.jdField_a_of_type_Int, paramString);
+      jdField_a_of_type_JavaLangString = paramString;
+      return;
+    }
+    finally
+    {
+      paramaekp = finally;
+      throw paramaekp;
+    }
+  }
+  
+  public static void a(View paramView)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerBubbleHelper", 2, "stopAndClean");
+    }
+    aeky.a().a();
+  }
+  
+  public static void a(Object paramObject, View paramView)
+  {
+    jdField_a_of_type_JavaUtilSet.remove(paramObject);
+    if ((jdField_a_of_type_JavaUtilSet.isEmpty()) && (jdField_a_of_type_AndroidViewAnimationAnimation != null) && (jdField_a_of_type_AndroidViewAnimationAnimation.hasStarted()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerBubbleHelper", 2, "cancelShakeWindowAnim");
+      }
+      jdField_a_of_type_AndroidViewAnimationAnimation.cancel();
+      jdField_a_of_type_AndroidViewAnimationAnimation.reset();
+      paramView.clearAnimation();
+    }
+  }
+  
+  public static void a(String paramString, BitmapDrawable[] paramArrayOfBitmapDrawable, int paramInt)
+  {
+    if (a())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StickerBubbleHelper", 2, "putFramesToCache: " + paramString + " / " + paramArrayOfBitmapDrawable);
+      }
+      String str = "StickerBubbleGifCache_" + paramString;
+      if (babe.a(str) == null) {
+        babe.a(str, new aekt(paramString, paramArrayOfBitmapDrawable, paramInt));
+      }
+    }
+  }
+  
+  private static boolean a()
+  {
+    return b > 3;
+  }
+  
+  private static boolean a(int paramInt)
+  {
+    int[] arrayOfInt = a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+    int j = arrayOfInt.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (arrayOfInt[i] == paramInt) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
+  }
+  
+  private static boolean a(int paramInt, int[] paramArrayOfInt)
+  {
+    boolean bool2 = false;
+    int j = paramArrayOfInt.length;
+    int i = 0;
     for (;;)
     {
-      try
+      boolean bool1 = bool2;
+      if (i < j)
       {
-        localObject1 = FileUtils.a((File)localObject1);
-        if (!TextUtils.isEmpty((CharSequence)localObject1))
-        {
-          localObject1 = new JSONObject((String)localObject1);
-          VipWebViewReportLog.jdField_a_of_type_Boolean = ((JSONObject)localObject1).optBoolean("js_report", true);
-          VipWebViewReportLog.jdField_b_of_type_Boolean = ((JSONObject)localObject1).optBoolean("url_check", true);
-          if (!((JSONObject)localObject1).has("url_list")) {
-            continue;
-          }
-          JSONArray localJSONArray = ((JSONObject)localObject1).getJSONArray("url_list");
-          int j = localJSONArray.length();
-          int i = 0;
-          if (i < j)
-          {
-            VipWebViewReportLog.jdField_a_of_type_JavaUtilSet.add(localJSONArray.getString(i));
-            i += 1;
-            continue;
-            localObject1 = VipWebViewReportLog.a().getAccount();
-            break;
-          }
-          QLog.d("WebCoreDump", 1, "-->url white list:" + VipWebViewReportLog.jdField_a_of_type_JavaUtilSet);
-          if ((VipWebViewReportLog.jdField_b_of_type_Boolean) && (!((JSONObject)localObject1).has("url_list"))) {
-            continue;
-          }
-          VipWebViewReportLog.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
+        if (paramArrayOfInt[i] == paramInt) {
+          bool1 = true;
         }
       }
-      catch (Exception localException)
-      {
-        VipWebViewReportLog.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-        QLog.d("WebCoreDump", 1, "-->read config file err:" + localException.toString());
-        VipWebViewReportLog.b();
-        continue;
-        VipWebViewReportLog.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-        continue;
+      else {
+        return bool1;
       }
-      finally
-      {
-        VipWebViewReportLog.b();
+      i += 1;
+    }
+  }
+  
+  public static int[] a(QQAppInterface paramQQAppInterface)
+  {
+    if (jdField_a_of_type_ArrayOfInt == null)
+    {
+      paramQQAppInterface = adll.a(paramQQAppInterface, 7);
+      if (paramQQAppInterface != null) {
+        paramQQAppInterface = paramQQAppInterface.split(",");
       }
-      QLog.d("WebCoreDump", 1, "parse config cost=" + (System.currentTimeMillis() - l));
-      return;
-      QLog.d("WebCoreDump", 1, "-->No url white list in config!" + ((JSONObject)localObject1).toString());
-      continue;
-      label391:
-      VipWebViewReportLog.a(VipWebViewReportLog.a());
-      VipWebViewReportLog.b();
-      QLog.d("WebCoreDump", 1, "-->config file not exist: " + localObject2.getPath());
-      VipWebViewReportLog.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+    }
+    try
+    {
+      int[] arrayOfInt = new int[paramQQAppInterface.length];
+      int i = 0;
+      while (i < arrayOfInt.length)
+      {
+        arrayOfInt[i] = Integer.parseInt(paramQQAppInterface[i]);
+        i += 1;
+      }
+      jdField_a_of_type_ArrayOfInt = arrayOfInt;
+    }
+    catch (NumberFormatException paramQQAppInterface)
+    {
+      for (;;)
+      {
+        QLog.e("StickerBubbleHelper", 1, "PE_SWITCH_TYPE_SURPRISE_INDEXS is illegal to parse, " + paramQQAppInterface);
+      }
+    }
+    if (jdField_a_of_type_ArrayOfInt == null) {
+      return new int[] { 10, 20, 30 };
+    }
+    return jdField_a_of_type_ArrayOfInt;
+  }
+  
+  public static aekw b(@NonNull Point paramPoint, @NonNull String paramString, int paramInt)
+  {
+    boolean bool = a(paramInt);
+    double d1;
+    if (bool)
+    {
+      d1 = -jdField_a_of_type_JavaUtilRandom.nextInt(1500) + 750;
+      if (!bool) {
+        break label102;
+      }
+    }
+    label102:
+    for (double d2 = -1000 - jdField_a_of_type_JavaUtilRandom.nextInt(500);; d2 = -2000 - jdField_a_of_type_JavaUtilRandom.nextInt(1000))
+    {
+      return new aekw(paramPoint, paramString, bool, new aekn(d1, d2), new aekm(0.0D, 200.0D), 81);
+      d1 = -jdField_a_of_type_JavaUtilRandom.nextInt(6000) + 3000;
+      break;
+    }
+  }
+  
+  public static void b(Object paramObject, View paramView)
+  {
+    jdField_a_of_type_JavaUtilSet.add(paramObject);
+    if (jdField_a_of_type_AndroidViewAnimationAnimation == null)
+    {
+      jdField_a_of_type_AndroidViewAnimationAnimation = a(paramView.getContext());
+      jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(new aeks());
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerBubbleHelper", 2, "start to shake");
+    }
+    if (paramView != null) {
+      paramView.startAnimation(jdField_a_of_type_AndroidViewAnimationAnimation);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aekr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,34 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.UndealCount.QZoneCountUserInfo;
+import com.tencent.mobileqq.data.CustomEmotionData;
 
-public final class anba
-  implements Parcelable.Creator
+class anba
+  extends ancp<CustomEmotionData>
 {
-  public QZoneCountUserInfo a(Parcel paramParcel)
+  anba(anaw paramanaw) {}
+  
+  public void a()
   {
-    return new QZoneCountUserInfo(paramParcel);
+    if (this.a.a != null) {
+      this.a.a.e();
+    }
   }
   
-  public QZoneCountUserInfo[] a(int paramInt)
+  public void a(int paramInt)
   {
-    return new QZoneCountUserInfo[paramInt];
+    if (this.a.a != null) {
+      this.a.a.e();
+    }
+  }
+  
+  public void a(CustomEmotionData paramCustomEmotionData, int paramInt1, int paramInt2)
+  {
+    if (((paramInt1 <= 28) || (paramInt2 % 28 == 0)) && (this.a.a != null)) {
+      this.a.a.e();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anba
  * JD-Core Version:    0.7.0.1
  */

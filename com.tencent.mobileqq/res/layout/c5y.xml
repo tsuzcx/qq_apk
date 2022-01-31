@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/cg_" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/aau" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="30.0dip" />
+    <RelativeLayout android:id="@id/cga" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/aas" android:layout_below="@id/aau">
+        <dov.com.qq.im.AECamera.View.AECameraGLSurfaceView android:id="@id/aog" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true" />
+        <View android:id="@id/lbu" android:background="@color/bp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/l8g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/hkk" android:layout_alignLeft="@id/aog" android:layout_alignTop="@id/aog" android:layout_alignRight="@id/aog" android:layout_alignBottom="@id/aog" />
+        <View android:id="@id/lbr" android:background="@color/al3" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_alignParentLeft="true" />
+        <View android:id="@id/lbs" android:background="@color/al3" android:clickable="true" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_alignParentRight="true" />
+        <View android:id="@id/lbt" android:background="@color/al3" android:clickable="true" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_alignParentTop="true" />
+        <View android:id="@id/lbq" android:background="@color/al3" android:clickable="true" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_alignParentBottom="true" />
+        <ImageView android:id="@id/l9v" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/ifg" android:background="@drawable/ebi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="8.0dip" />
+        <ImageView android:id="@id/ife" android:background="@drawable/ebj" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="8.0dip" android:layout_alignParentBottom="true" />
+        <dov.com.qq.im.AECamera.panel.material.AEMaterialPanel android:id="@id/g3k" android:background="#99000000" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+        <ViewStub android:id="@id/l8h" android:layout="@layout/c5p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignLeft="@id/aog" android:layout_alignTop="@id/aog" android:layout_alignRight="@id/aog" android:layout_alignBottom="@id/aog" />
+        <ViewStub android:id="@id/l92" android:layout="@layout/iz" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <include android:layout_width="fill_parent" android:layout_height="60.0dip" layout="@layout/c64" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/ab3" android:id="@id/bef" android:background="@color/c5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/cfi" />
+        <ViewStub android:id="@id/bor" android:layout="@layout/mb" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <android.support.v7.widget.RecyclerView android:id="@id/l8y" android:paddingLeft="44.0dip" android:paddingRight="44.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="75.0dip" android:layout_marginTop="40.0dip" android:layout_below="@id/aog" />
+        <RelativeLayout android:id="@id/cl9" android:layout_width="fill_parent" android:layout_height="200.0dip" android:layout_above="@id/gmc" android:layout_alignWithParentIfMissing="true">
+            <include android:layout_width="fill_parent" android:layout_height="200.0dip" android:layout_marginBottom="-10.0dip" layout="@layout/c5n" />
+        </RelativeLayout>
+        <com.tencent.biz.qqstory.takevideo.CameraFocusView android:id="@id/aoj" android:paddingLeft="50.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/f7n" android:layout_below="@id/cey" />
+        <ViewStub android:layout_gravity="center" android:id="@id/m9v" android:layout="@layout/c60" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <TextView android:textSize="16.0sp" android:textColor="#ffffffff" android:gravity="center_vertical" android:id="@id/cg5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fto" android:includeFontPadding="false" android:layout_centerHorizontal="true" android:layout_centerVertical="true" android:contentDescription="@string/fto" />
+        <ViewStub android:id="@id/m9y" android:layout="@layout/c63" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignLeft="@id/aog" android:layout_alignTop="@id/aog" android:layout_alignRight="@id/aog" android:layout_alignBottom="@id/aog" android:layout_centerInParent="true" />
+        <ViewStub android:id="@id/m9x" android:layout="@layout/c62" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignLeft="@id/aog" android:layout_alignTop="@id/aog" android:layout_alignRight="@id/aog" android:layout_alignBottom="@id/aog" />
+        <ImageView android:id="@id/jh" android:visibility="gone" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginBottom="261.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="15.0sp" android:textColor="@color/al3" android:id="@id/ji" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="246.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="@dimen/ayn" android:textColor="#ccb58989" android:gravity="center" android:id="@id/jj" android:background="@drawable/b7j" android:visibility="gone" android:layout_width="110.0dip" android:layout_height="@dimen/n3" android:layout_marginBottom="269.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/l99" android:visibility="invisible" android:layout_width="128.0dip" android:layout_height="128.0dip" android:scaleType="fitCenter" android:layout_centerInParent="true" />
+        <TextView android:textSize="15.0sp" android:textColor="@color/al3" android:id="@id/l9_" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ihu" android:layout_alignBottom="@id/l99" android:layout_centerHorizontal="true" />
+        <ViewStub android:id="@id/gyv" android:layout="@layout/b8j" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ViewStub android:id="@id/gyu" android:layout="@layout/b8h" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ViewStub android:id="@id/glj" android:layout="@layout/ao8" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ViewStub android:id="@id/l2l" android:layout="@layout/bai" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+        <ViewStub android:id="@id/ixo" android:visibility="gone" android:layout="@layout/apl" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true" />
+        <ViewStub android:id="@id/apb" android:visibility="gone" android:layout="@layout/b52" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true" />
+        <com.tencent.biz.videostory.capture.widgets.AEBottomListScrollView android:id="@id/gmc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_marginBottom="16.0dip" android:layout_above="@id/m6i" android:layout_alignWithParentIfMissing="true" />
+        <RelativeLayout android:id="@id/m6i" android:paddingBottom="8.0dip" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="53.0dip" android:layout_alignParentBottom="true">
+            <com.tencent.biz.videostory.capture.widgets.AECaptureModeSelectPager android:id="@id/mfs" android:paddingLeft="153.5dip" android:paddingRight="153.5dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="13.0dip" android:layout_alignParentBottom="true" />
+            <ImageView android:id="@id/lnb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip" android:src="@drawable/hjt" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <ViewStub android:id="@id/m9u" android:layout="@layout/c5z" android:layout_width="fill_parent" android:layout_height="195.0dip" android:layout_alignParentBottom="true" />
+        <ViewStub android:id="@id/l8j" android:layout="@layout/c65" android:layout_width="170.0dip" android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <ViewStub android:layout_gravity="center_horizontal" android:id="@id/m9w" android:layout="@layout/c61" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="209.0dip" />
+    <RelativeLayout android:id="@id/aas" android:background="@color/bp" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_alignParentBottom="true" />
+    <ViewStub android:id="@id/lc4" android:layout="@layout/c5u" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</RelativeLayout>

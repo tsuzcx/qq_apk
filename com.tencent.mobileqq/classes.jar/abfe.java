@@ -1,24 +1,43 @@
-import com.tencent.mobileqq.ark.ArkTipsManager;
-import java.lang.ref.WeakReference;
+import android.content.Intent;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import mqq.util.WeakReference;
 
 public class abfe
-  implements Runnable
+  extends ClickableSpan
 {
-  public abfe(ArkTipsManager paramArkTipsManager, long paramLong) {}
+  public String a;
+  public WeakReference<NotificationActivity> a;
   
-  public void run()
+  public abfe(String paramString, WeakReference<NotificationActivity> paramWeakReference)
   {
-    if ((ArkTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqArkArkTipsManager) != null) && (this.jdField_a_of_type_Long == ArkTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqArkArkTipsManager).b))
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_MqqUtilWeakReference = paramWeakReference;
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (this.jdField_a_of_type_MqqUtilWeakReference.get() != null)
     {
-      ArkTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqArkArkTipsManager, this.jdField_a_of_type_Long);
-      ArkTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqArkArkTipsManager, new WeakReference(ArkTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqArkArkTipsManager).a));
-      this.jdField_a_of_type_ComTencentMobileqqArkArkTipsManager.b();
+      paramView = (NotificationActivity)this.jdField_a_of_type_MqqUtilWeakReference.get();
+      Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
+      localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
+      paramView.startActivity(localIntent);
     }
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abfe
  * JD-Core Version:    0.7.0.1
  */

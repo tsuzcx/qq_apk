@@ -3,6 +3,7 @@ package com.tencent.mobileqq.search.util;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
+import avwb;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -50,16 +51,17 @@ public class SearchConfigManager
   public static long indexStart;
   public static volatile boolean isConfigLoaded;
   public static int mStructMsgPicSwitch;
+  public static boolean needSeparate;
   public static long recentTrue;
   public static int sReduceDiscussionWeight;
-  public static Map searchEngineOrder;
+  public static Map<String, Integer> searchEngineOrder;
   public static long stringOrigin;
   public static long stringPinyin;
   public static int troopDurationUnderNotWifi;
   public static int troopDurationUnderWifi;
   public static int troopMemberLimit;
   public static String troopMemberUpdateConfigStr;
-  public static ArrayList troopMemberUpdateConfigs;
+  public static ArrayList<avwb> troopMemberUpdateConfigs;
   public static long typeCircleContact;
   public static long typeDiscussion;
   public static long typeDiscussionConversation;
@@ -156,7 +158,7 @@ public class SearchConfigManager
     troopMemberUpdateConfigs = a("0|100|1|3,101|500|7|15");
   }
   
-  private static ArrayList a(String paramString)
+  private static ArrayList<avwb> a(String paramString)
   {
     int i = 0;
     if (QLog.isColorLevel()) {
@@ -189,12 +191,12 @@ public class SearchConfigManager
               localObject1 = arrayOfString[i].trim().split("\\|");
               if ((localObject1 != null) && (localObject1.length == 4))
               {
-                SearchConfigManager.TroopMemberSetting localTroopMemberSetting = new SearchConfigManager.TroopMemberSetting();
-                localTroopMemberSetting.a = Integer.valueOf(localObject1[0]).intValue();
-                localTroopMemberSetting.b = Integer.valueOf(localObject1[1]).intValue();
-                localTroopMemberSetting.c = (Integer.valueOf(localObject1[2]).intValue() * 24);
-                localTroopMemberSetting.d = (Integer.valueOf(localObject1[3]).intValue() * 24);
-                localArrayList.add(localTroopMemberSetting);
+                avwb localavwb = new avwb();
+                localavwb.a = Integer.valueOf(localObject1[0]).intValue();
+                localavwb.b = Integer.valueOf(localObject1[1]).intValue();
+                localavwb.c = (Integer.valueOf(localObject1[2]).intValue() * 24);
+                localavwb.d = (Integer.valueOf(localObject1[3]).intValue() * 24);
+                localArrayList.add(localavwb);
               }
               i += 1;
             }
@@ -283,6 +285,7 @@ public class SearchConfigManager
     troopMemberUpdateConfigs = a("0|100|1|3,101|500|7|15");
     searchEngineOrder = new HashMap();
     voiceSearchSwitch = 0;
+    needSeparate = false;
   }
   
   /* Error */
@@ -291,99 +294,99 @@ public class SearchConfigManager
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: invokestatic 272	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: invokestatic 275	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   6: ifeq +13 -> 19
-    //   9: ldc_w 274
+    //   9: ldc_w 277
     //   12: iconst_2
-    //   13: ldc_w 364
-    //   16: invokestatic 367	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   13: ldc_w 371
+    //   16: invokestatic 374	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   19: aload_0
-    //   20: invokevirtual 371	com/tencent/mobileqq/app/QQAppInterface:c	()Ljava/lang/String;
+    //   20: invokevirtual 378	com/tencent/mobileqq/app/QQAppInterface:c	()Ljava/lang/String;
     //   23: astore_0
     //   24: aload_0
-    //   25: invokestatic 297	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   28: ifne +92 -> 120
+    //   25: invokestatic 300	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   28: ifne +726 -> 754
     //   31: aload_0
-    //   32: getstatic 262	com/tencent/mobileqq/search/util/SearchConfigManager:curUin	Ljava/lang/String;
-    //   35: invokevirtual 351	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   38: ifne +82 -> 120
+    //   32: getstatic 265	com/tencent/mobileqq/search/util/SearchConfigManager:curUin	Ljava/lang/String;
+    //   35: invokevirtual 354	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   38: ifne +716 -> 754
     //   41: aload_0
-    //   42: putstatic 262	com/tencent/mobileqq/search/util/SearchConfigManager:curUin	Ljava/lang/String;
+    //   42: putstatic 265	com/tencent/mobileqq/search/util/SearchConfigManager:curUin	Ljava/lang/String;
     //   45: iconst_1
-    //   46: putstatic 373	com/tencent/mobileqq/search/util/SearchConfigManager:isConfigLoaded	Z
+    //   46: putstatic 380	com/tencent/mobileqq/search/util/SearchConfigManager:isConfigLoaded	Z
     //   49: iconst_0
-    //   50: putstatic 353	com/tencent/mobileqq/search/util/SearchConfigManager:voiceSearchSwitch	I
-    //   53: invokestatic 379	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   56: new 276	java/lang/StringBuilder
+    //   50: putstatic 358	com/tencent/mobileqq/search/util/SearchConfigManager:voiceSearchSwitch	I
+    //   53: invokestatic 386	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   56: new 279	java/lang/StringBuilder
     //   59: dup
-    //   60: invokespecial 277	java/lang/StringBuilder:<init>	()V
+    //   60: invokespecial 280	java/lang/StringBuilder:<init>	()V
     //   63: aload_0
-    //   64: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: ldc_w 381
-    //   70: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   73: ldc_w 383
-    //   76: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   79: invokevirtual 287	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   64: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   67: ldc_w 388
+    //   70: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   73: ldc_w 390
+    //   76: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   79: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   82: iconst_0
-    //   83: invokevirtual 387	com/tencent/common/app/BaseApplicationImpl:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   83: invokevirtual 394	com/tencent/common/app/BaseApplicationImpl:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
     //   86: astore_0
     //   87: aload_0
-    //   88: ldc_w 388
-    //   91: ldc_w 260
-    //   94: invokeinterface 394 3 0
-    //   99: putstatic 396	com/tencent/mobileqq/search/util/SearchConfigManager:configSwitch	Ljava/lang/String;
-    //   102: ldc_w 398
-    //   105: getstatic 396	com/tencent/mobileqq/search/util/SearchConfigManager:configSwitch	Ljava/lang/String;
-    //   108: invokevirtual 351	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   88: ldc_w 395
+    //   91: ldc_w 263
+    //   94: invokeinterface 401 3 0
+    //   99: putstatic 403	com/tencent/mobileqq/search/util/SearchConfigManager:configSwitch	Ljava/lang/String;
+    //   102: ldc_w 405
+    //   105: getstatic 403	com/tencent/mobileqq/search/util/SearchConfigManager:configSwitch	Ljava/lang/String;
+    //   108: invokevirtual 354	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   111: ifne +13 -> 124
-    //   114: invokestatic 400	com/tencent/mobileqq/search/util/SearchConfigManager:a	()V
-    //   117: invokestatic 403	com/tencent/mobileqq/search/IContactSearchable:a	()V
+    //   114: invokestatic 407	com/tencent/mobileqq/search/util/SearchConfigManager:a	()V
+    //   117: invokestatic 410	avin:a	()V
     //   120: ldc 2
     //   122: monitorexit
     //   123: return
     //   124: aload_0
-    //   125: invokeinterface 407 1 0
+    //   125: invokeinterface 414 1 0
     //   130: astore_0
     //   131: aload_0
     //   132: ifnull +283 -> 415
     //   135: aload_0
-    //   136: invokeinterface 413 1 0
-    //   141: invokeinterface 419 1 0
+    //   136: invokeinterface 420 1 0
+    //   141: invokeinterface 426 1 0
     //   146: astore 5
     //   148: aload 5
-    //   150: invokeinterface 424 1 0
+    //   150: invokeinterface 431 1 0
     //   155: ifeq +260 -> 415
     //   158: aload 5
-    //   160: invokeinterface 428 1 0
-    //   165: checkcast 304	java/lang/String
+    //   160: invokeinterface 435 1 0
+    //   165: checkcast 307	java/lang/String
     //   168: astore 6
     //   170: ldc 2
     //   172: aload 6
-    //   174: invokevirtual 434	java/lang/Class:getField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   174: invokevirtual 441	java/lang/Class:getField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
     //   177: astore 7
     //   179: aload_0
     //   180: aload 6
-    //   182: invokeinterface 438 2 0
-    //   187: checkcast 304	java/lang/String
+    //   182: invokeinterface 445 2 0
+    //   187: checkcast 307	java/lang/String
     //   190: astore 8
     //   192: aload 8
     //   194: ifnull -46 -> 148
     //   197: aload 7
-    //   199: invokevirtual 444	java/lang/reflect/Field:getType	()Ljava/lang/Class;
-    //   202: ldc_w 304
+    //   199: invokevirtual 451	java/lang/reflect/Field:getType	()Ljava/lang/Class;
+    //   202: ldc_w 307
     //   205: if_acmpne +38 -> 243
     //   208: aload 7
     //   210: aconst_null
     //   211: aload 8
-    //   213: invokevirtual 448	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   213: invokevirtual 455	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   216: goto -68 -> 148
     //   219: astore 6
     //   221: aload 6
-    //   223: invokevirtual 449	java/lang/NoSuchFieldException:printStackTrace	()V
+    //   223: invokevirtual 456	java/lang/NoSuchFieldException:printStackTrace	()V
     //   226: goto -78 -> 148
     //   229: astore_0
     //   230: aload_0
-    //   231: invokevirtual 343	java/lang/Exception:printStackTrace	()V
+    //   231: invokevirtual 346	java/lang/Exception:printStackTrace	()V
     //   234: goto -114 -> 120
     //   237: astore_0
     //   238: ldc 2
@@ -391,157 +394,157 @@ public class SearchConfigManager
     //   241: aload_0
     //   242: athrow
     //   243: aload 7
-    //   245: invokevirtual 444	java/lang/reflect/Field:getType	()Ljava/lang/Class;
-    //   248: getstatic 453	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   245: invokevirtual 451	java/lang/reflect/Field:getType	()Ljava/lang/Class;
+    //   248: getstatic 460	java/lang/Integer:TYPE	Ljava/lang/Class;
     //   251: if_acmpne +38 -> 289
     //   254: aload 7
     //   256: aconst_null
     //   257: aload 8
-    //   259: invokestatic 457	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   262: invokestatic 460	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   265: invokevirtual 448	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   259: invokestatic 464	java/lang/Integer:parseInt	(Ljava/lang/String;)I
+    //   262: invokestatic 467	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   265: invokevirtual 455	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   268: goto -120 -> 148
     //   271: astore 6
     //   273: aload 6
-    //   275: invokevirtual 461	java/lang/IllegalAccessException:printStackTrace	()V
+    //   275: invokevirtual 468	java/lang/IllegalAccessException:printStackTrace	()V
     //   278: goto -130 -> 148
     //   281: astore_0
     //   282: aload_0
-    //   283: invokevirtual 462	java/lang/Error:printStackTrace	()V
+    //   283: invokevirtual 469	java/lang/Error:printStackTrace	()V
     //   286: goto -166 -> 120
     //   289: aload 7
-    //   291: invokevirtual 444	java/lang/reflect/Field:getType	()Ljava/lang/Class;
-    //   294: getstatic 465	java/lang/Long:TYPE	Ljava/lang/Class;
+    //   291: invokevirtual 451	java/lang/reflect/Field:getType	()Ljava/lang/Class;
+    //   294: getstatic 472	java/lang/Long:TYPE	Ljava/lang/Class;
     //   297: if_acmpne -149 -> 148
     //   300: aload 8
-    //   302: invokestatic 469	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   302: invokestatic 476	java/lang/Long:parseLong	(Ljava/lang/String;)J
     //   305: lstore_3
     //   306: lload_3
     //   307: lconst_0
     //   308: lcmp
     //   309: ifle +38 -> 347
     //   312: lload_3
-    //   313: ldc2_w 470
+    //   313: ldc2_w 477
     //   316: lcmp
     //   317: ifge +30 -> 347
     //   320: aload 7
     //   322: aconst_null
     //   323: aload 8
-    //   325: invokestatic 469	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   328: invokestatic 474	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   331: invokevirtual 448	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   325: invokestatic 476	java/lang/Long:parseLong	(Ljava/lang/String;)J
+    //   328: invokestatic 481	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   331: invokevirtual 455	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   334: goto -186 -> 148
     //   337: astore 6
     //   339: aload 6
-    //   341: invokevirtual 475	java/lang/NumberFormatException:printStackTrace	()V
+    //   341: invokevirtual 482	java/lang/NumberFormatException:printStackTrace	()V
     //   344: goto -196 -> 148
-    //   347: invokestatic 272	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   347: invokestatic 275	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   350: ifeq -202 -> 148
-    //   353: ldc_w 274
+    //   353: ldc_w 277
     //   356: iconst_2
-    //   357: new 276	java/lang/StringBuilder
+    //   357: new 279	java/lang/StringBuilder
     //   360: dup
-    //   361: invokespecial 277	java/lang/StringBuilder:<init>	()V
-    //   364: ldc_w 477
-    //   367: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   361: invokespecial 280	java/lang/StringBuilder:<init>	()V
+    //   364: ldc_w 484
+    //   367: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   370: aload 6
-    //   372: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   375: ldc_w 479
-    //   378: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   372: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   375: ldc_w 486
+    //   378: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   381: aload 8
-    //   383: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   386: invokevirtual 287	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   389: invokestatic 348	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   383: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   386: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   389: invokestatic 351	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   392: goto -244 -> 148
     //   395: astore 6
     //   397: aload 6
-    //   399: invokevirtual 343	java/lang/Exception:printStackTrace	()V
+    //   399: invokevirtual 346	java/lang/Exception:printStackTrace	()V
     //   402: goto -254 -> 148
     //   405: astore 6
     //   407: aload 6
-    //   409: invokevirtual 462	java/lang/Error:printStackTrace	()V
+    //   409: invokevirtual 469	java/lang/Error:printStackTrace	()V
     //   412: goto -264 -> 148
-    //   415: invokestatic 481	com/tencent/mobileqq/search/util/SearchConfigManager:b	()V
-    //   418: getstatic 246	com/tencent/mobileqq/search/util/SearchConfigManager:searchEngineOrder	Ljava/util/Map;
-    //   421: ldc_w 483
-    //   424: getstatic 89	com/tencent/mobileqq/search/util/SearchConfigManager:engineOrderPeople	I
-    //   427: invokestatic 460	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   430: invokeinterface 487 3 0
+    //   415: invokestatic 488	com/tencent/mobileqq/search/util/SearchConfigManager:b	()V
+    //   418: getstatic 249	com/tencent/mobileqq/search/util/SearchConfigManager:searchEngineOrder	Ljava/util/Map;
+    //   421: ldc_w 490
+    //   424: getstatic 92	com/tencent/mobileqq/search/util/SearchConfigManager:engineOrderPeople	I
+    //   427: invokestatic 467	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   430: invokeinterface 494 3 0
     //   435: pop
-    //   436: getstatic 246	com/tencent/mobileqq/search/util/SearchConfigManager:searchEngineOrder	Ljava/util/Map;
-    //   439: ldc_w 489
-    //   442: getstatic 91	com/tencent/mobileqq/search/util/SearchConfigManager:engineOrderMessage	I
-    //   445: invokestatic 460	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   448: invokeinterface 487 3 0
+    //   436: getstatic 249	com/tencent/mobileqq/search/util/SearchConfigManager:searchEngineOrder	Ljava/util/Map;
+    //   439: ldc_w 496
+    //   442: getstatic 94	com/tencent/mobileqq/search/util/SearchConfigManager:engineOrderMessage	I
+    //   445: invokestatic 467	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   448: invokeinterface 494 3 0
     //   453: pop
-    //   454: getstatic 246	com/tencent/mobileqq/search/util/SearchConfigManager:searchEngineOrder	Ljava/util/Map;
-    //   457: ldc_w 491
-    //   460: getstatic 91	com/tencent/mobileqq/search/util/SearchConfigManager:engineOrderMessage	I
-    //   463: invokestatic 460	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   466: invokeinterface 487 3 0
+    //   454: getstatic 249	com/tencent/mobileqq/search/util/SearchConfigManager:searchEngineOrder	Ljava/util/Map;
+    //   457: ldc_w 498
+    //   460: getstatic 94	com/tencent/mobileqq/search/util/SearchConfigManager:engineOrderMessage	I
+    //   463: invokestatic 467	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   466: invokeinterface 494 3 0
     //   471: pop
-    //   472: getstatic 246	com/tencent/mobileqq/search/util/SearchConfigManager:searchEngineOrder	Ljava/util/Map;
-    //   475: ldc_w 493
-    //   478: getstatic 93	com/tencent/mobileqq/search/util/SearchConfigManager:engineOrderPublicAccount	I
-    //   481: invokestatic 460	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   484: invokeinterface 487 3 0
+    //   472: getstatic 249	com/tencent/mobileqq/search/util/SearchConfigManager:searchEngineOrder	Ljava/util/Map;
+    //   475: ldc_w 500
+    //   478: getstatic 96	com/tencent/mobileqq/search/util/SearchConfigManager:engineOrderPublicAccount	I
+    //   481: invokestatic 467	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   484: invokeinterface 494 3 0
     //   489: pop
-    //   490: getstatic 246	com/tencent/mobileqq/search/util/SearchConfigManager:searchEngineOrder	Ljava/util/Map;
-    //   493: ldc_w 495
-    //   496: getstatic 95	com/tencent/mobileqq/search/util/SearchConfigManager:engineOrderFavorite	I
-    //   499: invokestatic 460	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   502: invokeinterface 487 3 0
+    //   490: getstatic 249	com/tencent/mobileqq/search/util/SearchConfigManager:searchEngineOrder	Ljava/util/Map;
+    //   493: ldc_w 502
+    //   496: getstatic 98	com/tencent/mobileqq/search/util/SearchConfigManager:engineOrderFavorite	I
+    //   499: invokestatic 467	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   502: invokeinterface 494 3 0
     //   507: pop
-    //   508: getstatic 246	com/tencent/mobileqq/search/util/SearchConfigManager:searchEngineOrder	Ljava/util/Map;
-    //   511: ldc_w 497
-    //   514: getstatic 97	com/tencent/mobileqq/search/util/SearchConfigManager:engineOrderFile	I
-    //   517: invokestatic 460	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   520: invokeinterface 487 3 0
+    //   508: getstatic 249	com/tencent/mobileqq/search/util/SearchConfigManager:searchEngineOrder	Ljava/util/Map;
+    //   511: ldc_w 504
+    //   514: getstatic 100	com/tencent/mobileqq/search/util/SearchConfigManager:engineOrderFile	I
+    //   517: invokestatic 467	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   520: invokeinterface 494 3 0
     //   525: pop
-    //   526: getstatic 246	com/tencent/mobileqq/search/util/SearchConfigManager:searchEngineOrder	Ljava/util/Map;
-    //   529: ldc_w 499
-    //   532: getstatic 99	com/tencent/mobileqq/search/util/SearchConfigManager:engineOrderNetSearch	I
-    //   535: invokestatic 460	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   538: invokeinterface 487 3 0
+    //   526: getstatic 249	com/tencent/mobileqq/search/util/SearchConfigManager:searchEngineOrder	Ljava/util/Map;
+    //   529: ldc_w 506
+    //   532: getstatic 102	com/tencent/mobileqq/search/util/SearchConfigManager:engineOrderNetSearch	I
+    //   535: invokestatic 467	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   538: invokeinterface 494 3 0
     //   543: pop
-    //   544: getstatic 246	com/tencent/mobileqq/search/util/SearchConfigManager:searchEngineOrder	Ljava/util/Map;
-    //   547: ldc_w 501
-    //   550: getstatic 87	com/tencent/mobileqq/search/util/SearchConfigManager:engineOrderFeature	I
-    //   553: invokestatic 460	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   556: invokeinterface 487 3 0
+    //   544: getstatic 249	com/tencent/mobileqq/search/util/SearchConfigManager:searchEngineOrder	Ljava/util/Map;
+    //   547: ldc_w 508
+    //   550: getstatic 90	com/tencent/mobileqq/search/util/SearchConfigManager:engineOrderFeature	I
+    //   553: invokestatic 467	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   556: invokeinterface 494 3 0
     //   561: pop
-    //   562: getstatic 246	com/tencent/mobileqq/search/util/SearchConfigManager:searchEngineOrder	Ljava/util/Map;
-    //   565: ldc_w 503
-    //   568: getstatic 505	com/tencent/mobileqq/search/util/SearchConfigManager:engineOrderFunction	I
-    //   571: invokestatic 460	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   574: invokeinterface 487 3 0
+    //   562: getstatic 249	com/tencent/mobileqq/search/util/SearchConfigManager:searchEngineOrder	Ljava/util/Map;
+    //   565: ldc_w 510
+    //   568: getstatic 512	com/tencent/mobileqq/search/util/SearchConfigManager:engineOrderFunction	I
+    //   571: invokestatic 467	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   574: invokeinterface 494 3 0
     //   579: pop
-    //   580: invokestatic 403	com/tencent/mobileqq/search/IContactSearchable:a	()V
-    //   583: getstatic 252	com/tencent/mobileqq/search/util/SearchConfigManager:troopMemberUpdateConfigStr	Ljava/lang/String;
-    //   586: invokestatic 256	com/tencent/mobileqq/search/util/SearchConfigManager:a	(Ljava/lang/String;)Ljava/util/ArrayList;
-    //   589: putstatic 258	com/tencent/mobileqq/search/util/SearchConfigManager:troopMemberUpdateConfigs	Ljava/util/ArrayList;
-    //   592: invokestatic 272	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   580: invokestatic 410	avin:a	()V
+    //   583: getstatic 255	com/tencent/mobileqq/search/util/SearchConfigManager:troopMemberUpdateConfigStr	Ljava/lang/String;
+    //   586: invokestatic 259	com/tencent/mobileqq/search/util/SearchConfigManager:a	(Ljava/lang/String;)Ljava/util/ArrayList;
+    //   589: putstatic 261	com/tencent/mobileqq/search/util/SearchConfigManager:troopMemberUpdateConfigs	Ljava/util/ArrayList;
+    //   592: invokestatic 275	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   595: ifeq +13 -> 608
-    //   598: ldc_w 274
+    //   598: ldc_w 277
     //   601: iconst_2
-    //   602: ldc_w 507
-    //   605: invokestatic 367	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   608: invokestatic 272	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   611: ifeq -491 -> 120
-    //   614: new 276	java/lang/StringBuilder
+    //   602: ldc_w 514
+    //   605: invokestatic 374	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   608: invokestatic 275	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   611: ifeq +143 -> 754
+    //   614: new 279	java/lang/StringBuilder
     //   617: dup
-    //   618: invokespecial 277	java/lang/StringBuilder:<init>	()V
+    //   618: invokespecial 280	java/lang/StringBuilder:<init>	()V
     //   621: astore_0
     //   622: aload_0
-    //   623: ldc_w 274
-    //   626: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   623: ldc_w 277
+    //   626: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   629: pop
     //   630: aload_0
-    //   631: ldc_w 509
-    //   634: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   631: ldc_w 516
+    //   634: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   637: pop
     //   638: ldc 2
-    //   640: invokevirtual 513	java/lang/Class:getFields	()[Ljava/lang/reflect/Field;
+    //   640: invokevirtual 520	java/lang/Class:getFields	()[Ljava/lang/reflect/Field;
     //   643: astore 5
     //   645: aload 5
     //   647: arraylength
@@ -557,22 +560,22 @@ public class SearchConfigManager
     //   660: astore 6
     //   662: aload_0
     //   663: aload 6
-    //   665: invokevirtual 516	java/lang/reflect/Field:getName	()Ljava/lang/String;
-    //   668: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   665: invokevirtual 523	java/lang/reflect/Field:getName	()Ljava/lang/String;
+    //   668: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   671: pop
     //   672: aload_0
-    //   673: ldc_w 479
-    //   676: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   673: ldc_w 486
+    //   676: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   679: pop
     //   680: aload_0
     //   681: aload 6
     //   683: aconst_null
-    //   684: invokevirtual 517	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   687: invokevirtual 520	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   684: invokevirtual 524	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   687: invokevirtual 527	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   690: pop
     //   691: aload_0
-    //   692: ldc_w 522
-    //   695: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   692: ldc_w 529
+    //   695: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   698: pop
     //   699: iload_1
     //   700: iconst_1
@@ -581,28 +584,51 @@ public class SearchConfigManager
     //   703: goto -52 -> 651
     //   706: astore 6
     //   708: aload 6
-    //   710: invokevirtual 461	java/lang/IllegalAccessException:printStackTrace	()V
+    //   710: invokevirtual 468	java/lang/IllegalAccessException:printStackTrace	()V
     //   713: goto -22 -> 691
     //   716: aload_0
-    //   717: ldc_w 524
-    //   720: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   717: ldc_w 531
+    //   720: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   723: pop
-    //   724: ldc_w 274
+    //   724: ldc_w 277
     //   727: iconst_2
-    //   728: new 276	java/lang/StringBuilder
+    //   728: new 279	java/lang/StringBuilder
     //   731: dup
-    //   732: invokespecial 277	java/lang/StringBuilder:<init>	()V
-    //   735: ldc_w 526
-    //   738: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   732: invokespecial 280	java/lang/StringBuilder:<init>	()V
+    //   735: ldc_w 533
+    //   738: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   741: aload_0
-    //   742: invokevirtual 287	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   745: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   748: invokevirtual 287	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   751: invokestatic 367	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   754: goto -634 -> 120
+    //   742: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   745: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   748: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   751: invokestatic 374	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   754: invokestatic 538	alzw:a	()Lalzw;
+    //   757: sipush 414
+    //   760: invokevirtual 541	alzw:a	(I)Ljava/lang/Object;
+    //   763: checkcast 543	amcn
+    //   766: astore_0
+    //   767: aload_0
+    //   768: ifnull -648 -> 120
+    //   771: aload_0
+    //   772: invokevirtual 545	amcn:a	()Z
+    //   775: putstatic 360	com/tencent/mobileqq/search/util/SearchConfigManager:needSeparate	Z
+    //   778: invokestatic 275	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   781: ifeq -661 -> 120
+    //   784: ldc_w 277
+    //   787: iconst_2
+    //   788: new 279	java/lang/StringBuilder
+    //   791: dup
+    //   792: invokespecial 280	java/lang/StringBuilder:<init>	()V
+    //   795: ldc_w 547
+    //   798: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   801: getstatic 360	com/tencent/mobileqq/search/util/SearchConfigManager:needSeparate	Z
+    //   804: invokevirtual 550	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   807: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   810: invokestatic 374	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   813: goto -693 -> 120
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	757	0	paramQQAppInterface	QQAppInterface
+    //   0	816	0	paramQQAppInterface	QQAppInterface
     //   650	53	1	i	int
     //   648	6	2	j	int
     //   305	8	3	l	long
@@ -642,6 +668,8 @@ public class SearchConfigManager
     //   691	699	229	java/lang/Exception
     //   708	713	229	java/lang/Exception
     //   716	754	229	java/lang/Exception
+    //   754	767	229	java/lang/Exception
+    //   771	813	229	java/lang/Exception
     //   3	19	237	finally
     //   19	120	237	finally
     //   124	131	237	finally
@@ -667,6 +695,8 @@ public class SearchConfigManager
     //   691	699	237	finally
     //   708	713	237	finally
     //   716	754	237	finally
+    //   754	767	237	finally
+    //   771	813	237	finally
     //   170	192	271	java/lang/IllegalAccessException
     //   197	216	271	java/lang/IllegalAccessException
     //   243	268	271	java/lang/IllegalAccessException
@@ -690,6 +720,8 @@ public class SearchConfigManager
     //   691	699	281	java/lang/Error
     //   708	713	281	java/lang/Error
     //   716	754	281	java/lang/Error
+    //   754	767	281	java/lang/Error
+    //   771	813	281	java/lang/Error
     //   170	192	337	java/lang/NumberFormatException
     //   197	216	337	java/lang/NumberFormatException
     //   243	268	337	java/lang/NumberFormatException
@@ -722,131 +754,131 @@ public class SearchConfigManager
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: invokestatic 272	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   0: invokestatic 275	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   3: ifeq +30 -> 33
-    //   6: ldc_w 274
+    //   6: ldc_w 277
     //   9: iconst_2
-    //   10: new 276	java/lang/StringBuilder
+    //   10: new 279	java/lang/StringBuilder
     //   13: dup
-    //   14: invokespecial 277	java/lang/StringBuilder:<init>	()V
-    //   17: ldc_w 544
-    //   20: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   14: invokespecial 280	java/lang/StringBuilder:<init>	()V
+    //   17: ldc_w 568
+    //   20: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   23: aload_2
-    //   24: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   27: invokevirtual 287	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   30: invokestatic 291	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   24: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   27: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   30: invokestatic 294	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   33: aload_2
-    //   34: invokestatic 297	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   34: invokestatic 300	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   37: ifeq +4 -> 41
     //   40: return
-    //   41: invokestatic 379	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   44: new 276	java/lang/StringBuilder
+    //   41: invokestatic 386	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   44: new 279	java/lang/StringBuilder
     //   47: dup
-    //   48: invokespecial 277	java/lang/StringBuilder:<init>	()V
+    //   48: invokespecial 280	java/lang/StringBuilder:<init>	()V
     //   51: aload_1
-    //   52: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   55: ldc_w 381
-    //   58: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   61: ldc_w 383
-    //   64: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: invokevirtual 287	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   52: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: ldc_w 388
+    //   58: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   61: ldc_w 390
+    //   64: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   67: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   70: iconst_0
-    //   71: invokevirtual 387	com/tencent/common/app/BaseApplicationImpl:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   74: invokeinterface 531 1 0
+    //   71: invokevirtual 394	com/tencent/common/app/BaseApplicationImpl:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   74: invokeinterface 555 1 0
     //   79: astore_0
-    //   80: new 546	org/json/JSONObject
+    //   80: new 570	org/json/JSONObject
     //   83: dup
     //   84: aload_2
-    //   85: invokespecial 549	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   85: invokespecial 573	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   88: astore_1
     //   89: aload_1
-    //   90: ldc_w 388
-    //   93: invokevirtual 552	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   96: putstatic 396	com/tencent/mobileqq/search/util/SearchConfigManager:configSwitch	Ljava/lang/String;
-    //   99: ldc_w 398
-    //   102: getstatic 396	com/tencent/mobileqq/search/util/SearchConfigManager:configSwitch	Ljava/lang/String;
-    //   105: invokevirtual 351	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   90: ldc_w 395
+    //   93: invokevirtual 576	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   96: putstatic 403	com/tencent/mobileqq/search/util/SearchConfigManager:configSwitch	Ljava/lang/String;
+    //   99: ldc_w 405
+    //   102: getstatic 403	com/tencent/mobileqq/search/util/SearchConfigManager:configSwitch	Ljava/lang/String;
+    //   105: invokevirtual 354	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   108: ifne +30 -> 138
     //   111: aload_0
-    //   112: ldc_w 388
-    //   115: ldc_w 554
-    //   118: invokeinterface 558 3 0
+    //   112: ldc_w 395
+    //   115: ldc_w 578
+    //   118: invokeinterface 582 3 0
     //   123: pop
     //   124: aload_0
-    //   125: invokeinterface 539 1 0
+    //   125: invokeinterface 563 1 0
     //   130: pop
     //   131: return
     //   132: astore_0
     //   133: aload_0
-    //   134: invokevirtual 559	org/json/JSONException:printStackTrace	()V
+    //   134: invokevirtual 583	org/json/JSONException:printStackTrace	()V
     //   137: return
     //   138: aload_1
-    //   139: ldc_w 560
-    //   142: invokevirtual 564	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   139: ldc_w 584
+    //   142: invokevirtual 588	org/json/JSONObject:has	(Ljava/lang/String;)Z
     //   145: ifeq +48 -> 193
     //   148: aload_1
-    //   149: ldc_w 560
-    //   152: invokevirtual 567	org/json/JSONObject:getInt	(Ljava/lang/String;)I
+    //   149: ldc_w 584
+    //   152: invokevirtual 591	org/json/JSONObject:getInt	(Ljava/lang/String;)I
     //   155: istore_3
-    //   156: invokestatic 272	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   156: invokestatic 275	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   159: ifeq +30 -> 189
-    //   162: ldc_w 274
+    //   162: ldc_w 277
     //   165: iconst_2
-    //   166: new 276	java/lang/StringBuilder
+    //   166: new 279	java/lang/StringBuilder
     //   169: dup
-    //   170: invokespecial 277	java/lang/StringBuilder:<init>	()V
-    //   173: ldc_w 569
-    //   176: invokevirtual 283	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   170: invokespecial 280	java/lang/StringBuilder:<init>	()V
+    //   173: ldc_w 593
+    //   176: invokevirtual 286	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   179: iload_3
-    //   180: invokevirtual 572	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   183: invokevirtual 287	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   186: invokestatic 367	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   180: invokevirtual 596	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   183: invokevirtual 290	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   186: invokestatic 374	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   189: iload_3
-    //   190: invokestatic 577	com/tencent/mobileqq/pic/StructMsgPicPreDelegate:a	(I)V
+    //   190: invokestatic 601	atqm:a	(I)V
     //   193: aload_1
-    //   194: invokevirtual 580	org/json/JSONObject:keys	()Ljava/util/Iterator;
+    //   194: invokevirtual 604	org/json/JSONObject:keys	()Ljava/util/Iterator;
     //   197: astore_2
     //   198: aload_2
-    //   199: invokeinterface 424 1 0
+    //   199: invokeinterface 431 1 0
     //   204: ifeq +77 -> 281
     //   207: aload_2
-    //   208: invokeinterface 428 1 0
-    //   213: checkcast 304	java/lang/String
+    //   208: invokeinterface 435 1 0
+    //   213: checkcast 307	java/lang/String
     //   216: astore 4
     //   218: aload_0
     //   219: aload 4
     //   221: aload_1
     //   222: aload 4
-    //   224: invokevirtual 583	org/json/JSONObject:get	(Ljava/lang/String;)Ljava/lang/Object;
-    //   227: checkcast 304	java/lang/String
-    //   230: invokeinterface 558 3 0
+    //   224: invokevirtual 607	org/json/JSONObject:get	(Ljava/lang/String;)Ljava/lang/Object;
+    //   227: checkcast 307	java/lang/String
+    //   230: invokeinterface 582 3 0
     //   235: pop
     //   236: goto -38 -> 198
     //   239: astore 4
     //   241: aload 4
-    //   243: invokevirtual 559	org/json/JSONException:printStackTrace	()V
+    //   243: invokevirtual 583	org/json/JSONException:printStackTrace	()V
     //   246: goto -48 -> 198
     //   249: astore_0
     //   250: aload_0
-    //   251: invokevirtual 343	java/lang/Exception:printStackTrace	()V
+    //   251: invokevirtual 346	java/lang/Exception:printStackTrace	()V
     //   254: return
     //   255: astore 4
     //   257: aload 4
-    //   259: invokevirtual 343	java/lang/Exception:printStackTrace	()V
+    //   259: invokevirtual 346	java/lang/Exception:printStackTrace	()V
     //   262: goto -64 -> 198
     //   265: astore_0
     //   266: aload_0
-    //   267: invokevirtual 462	java/lang/Error:printStackTrace	()V
+    //   267: invokevirtual 469	java/lang/Error:printStackTrace	()V
     //   270: return
     //   271: astore 4
     //   273: aload 4
-    //   275: invokevirtual 462	java/lang/Error:printStackTrace	()V
+    //   275: invokevirtual 469	java/lang/Error:printStackTrace	()V
     //   278: goto -80 -> 198
     //   281: aload_0
-    //   282: invokeinterface 539 1 0
+    //   282: invokeinterface 563 1 0
     //   287: pop
-    //   288: ldc_w 260
-    //   291: putstatic 262	com/tencent/mobileqq/search/util/SearchConfigManager:curUin	Ljava/lang/String;
+    //   288: ldc_w 263
+    //   291: putstatic 265	com/tencent/mobileqq/search/util/SearchConfigManager:curUin	Ljava/lang/String;
     //   294: return
     // Local variable table:
     //   start	length	slot	name	signature
@@ -890,11 +922,6 @@ public class SearchConfigManager
     //   273	278	265	java/lang/Error
     //   281	294	265	java/lang/Error
     //   218	236	271	java/lang/Error
-  }
-  
-  public static boolean a()
-  {
-    return voiceSearchSwitch == 1;
   }
   
   private static void b()

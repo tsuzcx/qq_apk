@@ -2,11 +2,11 @@ package cooperation.qzone.report.lp;
 
 import android.os.Build.VERSION;
 import android.text.TextUtils;
+import bfpj;
+import bfpk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
 import com.tencent.component.network.module.common.NetworkState;
-import com.tencent.open.business.base.MobileInfoUtil;
-import cooperation.qzone.QUA;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -30,7 +30,7 @@ public class LpReportInfo_dc01831
   public String extraInfo;
   public String gateway_ip;
   public String imei;
-  public Map infos;
+  public Map<String, String> infos;
   public int network_type;
   public String os_version;
   public String qua;
@@ -56,7 +56,7 @@ public class LpReportInfo_dc01831
     this.touin = paramLong;
   }
   
-  public LpReportInfo_dc01831(int paramInt1, int paramInt2, int paramInt3, Map paramMap)
+  public LpReportInfo_dc01831(int paramInt1, int paramInt2, int paramInt3, Map<String, String> paramMap)
   {
     this.actiontype = paramInt1;
     this.subactiontype = paramInt2;
@@ -88,7 +88,7 @@ public class LpReportInfo_dc01831
     LpReportManager.getInstance().reportToDC001831(localLpReportInfo_dc01831, false, true);
   }
   
-  public static void report(int paramInt1, int paramInt2, int paramInt3, Map paramMap)
+  public static void report(int paramInt1, int paramInt2, int paramInt3, Map<String, String> paramMap)
   {
     paramMap = new LpReportInfo_dc01831(paramInt1, paramInt2, paramInt3, paramMap);
     LpReportManager.getInstance().reportToDC001831(paramMap, false, true);
@@ -105,7 +105,7 @@ public class LpReportInfo_dc01831
     return "dc01831:" + this.actiontype + "," + this.subactiontype + "," + this.reserves;
   }
   
-  public Map toMap()
+  public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
     Object localObject1;
@@ -143,11 +143,11 @@ public class LpReportInfo_dc01831
         {
           i = Integer.parseInt((String)localHashMap.get("network_type"));
           localHashMap.put("network_type", String.valueOf(convertNetworkTypeToFitInDc01831(i)));
-          localHashMap.put("app_id", String.valueOf(AppSetting.a));
-          localHashMap.put("qua", QUA.a());
+          localHashMap.put("app_id", String.valueOf(AppSetting.a()));
+          localHashMap.put("qua", bfpk.a());
           localHashMap.put("device", "1");
           localHashMap.put("os_version", "android_" + Build.VERSION.RELEASE);
-          localHashMap.put("imei", MobileInfoUtil.c());
+          localHashMap.put("imei", bfpj.a().a());
           return localHashMap;
           localJSONObject = new JSONObject();
         }

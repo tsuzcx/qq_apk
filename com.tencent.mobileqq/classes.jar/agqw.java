@@ -1,39 +1,12 @@
-import android.view.View;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.portal.FormalView;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
 
 public class agqw
-  implements Animator.AnimatorListener
 {
-  public agqw(FormalView paramFormalView) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
-  {
-    this.a.f();
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.f();
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    FormalView.a(this.a).setVisibility(0);
-    if (this.a.a == 1)
-    {
-      FormalView.b(this.a).setVisibility(0);
-      return;
-    }
-    FormalView.b(this.a).setVisibility(8);
-  }
+  public static final IRedPacket a = new agqx();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agqw
  * JD-Core Version:    0.7.0.1
  */

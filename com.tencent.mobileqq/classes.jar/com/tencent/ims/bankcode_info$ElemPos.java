@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class bankcode_info$ElemPos
-  extends MessageMicro
+  extends MessageMicro<ElemPos>
 {
   public static final int END_OFFSET_FIELD_NUMBER = 2;
   public static final int START_OFFSET_FIELD_NUMBER = 1;

@@ -1,0 +1,20 @@
+package com.tencent.gdtad.views.canvas.components.appbutton;
+
+import ypp;
+
+public class GdtAppBtnUIPresenter$4
+  implements Runnable
+{
+  public GdtAppBtnUIPresenter$4(ypp paramypp, GdtAppBtnData paramGdtAppBtnData) {}
+  
+  public void run()
+  {
+    this.this$0.b(this.a);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     com.tencent.gdtad.views.canvas.components.appbutton.GdtAppBtnUIPresenter.4
+ * JD-Core Version:    0.7.0.1
+ */

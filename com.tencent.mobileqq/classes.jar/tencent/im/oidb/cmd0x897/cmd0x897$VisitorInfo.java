@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class cmd0x897$VisitorInfo
-  extends MessageMicro
+  extends MessageMicro<VisitorInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField string_visitor_nick = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -26,7 +26,7 @@ public final class cmd0x897$VisitorInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x897.cmd0x897.VisitorInfo
  * JD-Core Version:    0.7.0.1
  */

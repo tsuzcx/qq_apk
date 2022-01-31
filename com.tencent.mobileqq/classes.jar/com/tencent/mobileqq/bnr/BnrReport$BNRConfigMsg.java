@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class BnrReport$BNRConfigMsg
-  extends MessageMicro
+  extends MessageMicro<BNRConfigMsg>
 {
   public static final int CMD_FIELD_NUMBER = 2;
   public static final int EXT_INFO_FIELD_NUMBER = 4;

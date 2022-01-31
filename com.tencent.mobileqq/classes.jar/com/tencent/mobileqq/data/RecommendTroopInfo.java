@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecommendTroopInfo
-  extends Entity
+  extends atmo
   implements Cloneable
 {
   public int authType;
@@ -29,7 +29,7 @@ public class RecommendTroopInfo
   public short option;
   public String ownerUin;
   public String tag;
-  @unique
+  @atoc
   public String uin;
   
   public Object clone()

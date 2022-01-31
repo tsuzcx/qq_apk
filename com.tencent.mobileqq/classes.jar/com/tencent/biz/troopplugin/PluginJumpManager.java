@@ -13,13 +13,10 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.biz.common.offline.OfflineEnvHelper;
-import com.tencent.biz.common.util.Util;
+import awqx;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
 import com.tencent.mobileqq.pluginsdk.PluginManagerHelper;
-import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -27,13 +24,18 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
+import mof;
+import mol;
+import mpw;
 import mqq.app.AppRuntime;
 import mqq.manager.TicketManager;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pef;
-import peh;
+import wok;
+import wom;
+import won;
+import woo;
 
 public class PluginJumpManager
 {
@@ -47,12 +49,12 @@ public class PluginJumpManager
   public static final String WEB_PLUGIN_CONFIG = "web_plugin_config";
   public static PluginJumpManager sInstance;
   public boolean isLoadedPlugin;
-  public HashMap mBidInfos;
+  public HashMap<String, won> mBidInfos;
   public int mConfigVersion;
   public Context mContext;
   public PluginManagerClient mPluginManager;
   public SharedPreferences mPref;
-  public HashMap mUrlmappingInfos;
+  public HashMap<String, woo> mUrlmappingInfos;
   
   public PluginJumpManager(Context paramContext)
   {
@@ -72,10 +74,10 @@ public class PluginJumpManager
   
   public static void report(String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5, String paramString6, String paramString7)
   {
-    ReportController.b(null, "P_CliOper", paramString1, "", paramString2, paramString3, 0, paramInt, paramString4, paramString5, paramString6, paramString7);
+    awqx.b(null, "P_CliOper", paramString1, "", paramString2, paramString3, 0, paramInt, paramString4, paramString5, paramString6, paramString7);
   }
   
-  public boolean checkQVerAndModel(PluginJumpManager.UrlMappingInfo paramUrlMappingInfo)
+  public boolean checkQVerAndModel(woo paramwoo)
   {
     boolean bool2 = true;
     int i;
@@ -84,28 +86,28 @@ public class PluginJumpManager
     try
     {
       i = this.mContext.getPackageManager().getPackageInfo(this.mContext.getPackageName(), 0).versionCode;
-      if (TextUtils.isEmpty(paramUrlMappingInfo.e)) {
-        if (TextUtils.isEmpty(paramUrlMappingInfo.d))
+      if (TextUtils.isEmpty(paramwoo.e)) {
+        if (TextUtils.isEmpty(paramwoo.d))
         {
           bool1 = bool2;
           bool2 = bool1;
-          if (!TextUtils.isEmpty(paramUrlMappingInfo.f))
+          if (!TextUtils.isEmpty(paramwoo.f))
           {
             Object localObject = Build.BRAND;
             String str2 = Build.MODEL;
             String str1 = Build.VERSION.RELEASE;
-            paramUrlMappingInfo = paramUrlMappingInfo.f.split(",");
+            paramwoo = paramwoo.f.split(",");
             localObject = new StringBuffer((String)localObject);
             ((StringBuffer)localObject).append(" ").append(str2);
             str2 = ((StringBuffer)localObject).toString().toLowerCase();
             str1 = (" " + str1).toLowerCase();
-            j = paramUrlMappingInfo.length;
+            j = paramwoo.length;
             i = 0;
             label147:
             bool2 = bool1;
             if (i < j)
             {
-              localObject = paramUrlMappingInfo[i].toLowerCase();
+              localObject = paramwoo[i].toLowerCase();
               if ((!((String)localObject).contains(str2)) || (!str1.startsWith((String)localObject))) {
                 break label281;
               }
@@ -128,7 +130,7 @@ public class PluginJumpManager
     {
       try
       {
-        j = Integer.valueOf(paramUrlMappingInfo.d).intValue();
+        j = Integer.valueOf(paramwoo.d).intValue();
         if (i < j) {
           break label294;
         }
@@ -139,7 +141,7 @@ public class PluginJumpManager
         bool1 = false;
         continue;
       }
-      String[] arrayOfString = paramUrlMappingInfo.e.split(",");
+      String[] arrayOfString = paramwoo.e.split(",");
       int k = arrayOfString.length;
       j = 0;
       for (;;)
@@ -199,12 +201,12 @@ public class PluginJumpManager
           Object localObject3;
           while (i < k)
           {
-            localObject3 = new PluginJumpManager.BidInfo(this);
+            localObject3 = new won(this);
             JSONObject localJSONObject = ((JSONArray)localObject2).getJSONObject(i);
-            ((PluginJumpManager.BidInfo)localObject3).jdField_a_of_type_JavaLangString = localJSONObject.optString("bid");
-            ((PluginJumpManager.BidInfo)localObject3).b = localJSONObject.optString("pluginid");
-            ((PluginJumpManager.BidInfo)localObject3).c = localJSONObject.optString("pluginname");
-            this.mBidInfos.put(((PluginJumpManager.BidInfo)localObject3).jdField_a_of_type_JavaLangString, localObject3);
+            ((won)localObject3).jdField_a_of_type_JavaLangString = localJSONObject.optString("bid");
+            ((won)localObject3).b = localJSONObject.optString("pluginid");
+            ((won)localObject3).c = localJSONObject.optString("pluginname");
+            this.mBidInfos.put(((won)localObject3).jdField_a_of_type_JavaLangString, localObject3);
             i += 1;
           }
           localObject1 = new JSONArray((String)localObject1);
@@ -212,17 +214,17 @@ public class PluginJumpManager
           i = j;
           while (i < k)
           {
-            localObject2 = new PluginJumpManager.UrlMappingInfo(this);
+            localObject2 = new woo(this);
             localObject3 = ((JSONArray)localObject1).getJSONObject(i);
-            ((PluginJumpManager.UrlMappingInfo)localObject2).jdField_a_of_type_JavaLangString = ((JSONObject)localObject3).optString("url");
-            ((PluginJumpManager.UrlMappingInfo)localObject2).b = ((JSONObject)localObject3).optString("activity");
-            ((PluginJumpManager.UrlMappingInfo)localObject2).c = ((JSONObject)localObject3).optString("bid");
-            ((PluginJumpManager.UrlMappingInfo)localObject2).f = ((JSONObject)localObject3).optString("a_black_ver");
-            ((PluginJumpManager.UrlMappingInfo)localObject2).d = ((JSONObject)localObject3).optString("q_min_ver");
-            ((PluginJumpManager.UrlMappingInfo)localObject2).e = ((JSONObject)localObject3).optString("q_white_ver");
-            ((PluginJumpManager.UrlMappingInfo)localObject2).jdField_a_of_type_Boolean = ((JSONObject)localObject3).optBoolean("useiphonetitlebar");
-            ((PluginJumpManager.UrlMappingInfo)localObject2).g = ((JSONObject)localObject3).optString("extra");
-            this.mUrlmappingInfos.put(((PluginJumpManager.UrlMappingInfo)localObject2).jdField_a_of_type_JavaLangString, localObject2);
+            ((woo)localObject2).jdField_a_of_type_JavaLangString = ((JSONObject)localObject3).optString("url");
+            ((woo)localObject2).b = ((JSONObject)localObject3).optString("activity");
+            ((woo)localObject2).c = ((JSONObject)localObject3).optString("bid");
+            ((woo)localObject2).f = ((JSONObject)localObject3).optString("a_black_ver");
+            ((woo)localObject2).d = ((JSONObject)localObject3).optString("q_min_ver");
+            ((woo)localObject2).e = ((JSONObject)localObject3).optString("q_white_ver");
+            ((woo)localObject2).jdField_a_of_type_Boolean = ((JSONObject)localObject3).optBoolean("useiphonetitlebar");
+            ((woo)localObject2).g = ((JSONObject)localObject3).optString("extra");
+            this.mUrlmappingInfos.put(((woo)localObject2).jdField_a_of_type_JavaLangString, localObject2);
             i += 1;
           }
           if (!QLog.isColorLevel()) {}
@@ -238,7 +240,7 @@ public class PluginJumpManager
   
   public void loadConfigFromFile()
   {
-    Object localObject1 = new File(OfflineEnvHelper.a("1007") + "1007" + "/urlplugin.cfg");
+    Object localObject1 = new File(mol.a("1007") + "1007" + "/urlplugin.cfg");
     InputStream localInputStream;
     if (((File)localObject1).exists())
     {
@@ -266,12 +268,12 @@ public class PluginJumpManager
       return;
     }
     label103:
-    Object localObject2 = Util.a(localInputStream);
+    Object localObject2 = mpw.a(localInputStream);
     try
     {
       localObject2 = new JSONObject((String)localObject2);
       SharedPreferences.Editor localEditor = this.mPref.edit();
-      localEditor.putString("config_file_version", HtmlOffline.a("1007"));
+      localEditor.putString("config_file_version", mof.a("1007"));
       localEditor.putString("version", ((JSONObject)localObject2).optString("version"));
       localEditor.putString("bidinfo", ((JSONObject)localObject2).optString("bidinfo"));
       localEditor.putString("urlmaping", ((JSONObject)localObject2).optString("urlmaping")).commit();
@@ -392,21 +394,21 @@ public class PluginJumpManager
     for (Object localObject1 = paramString1.substring(0, i); !this.mUrlmappingInfos.containsKey(localObject1); localObject1 = paramString1) {
       return false;
     }
-    localObject1 = (PluginJumpManager.UrlMappingInfo)this.mUrlmappingInfos.get(localObject1);
-    Object localObject2 = ((PluginJumpManager.UrlMappingInfo)localObject1).c;
+    localObject1 = (woo)this.mUrlmappingInfos.get(localObject1);
+    Object localObject2 = ((woo)localObject1).c;
     if ((TextUtils.isEmpty((CharSequence)localObject2)) || (!this.mBidInfos.containsKey(localObject2))) {
       return false;
     }
-    if (!checkQVerAndModel((PluginJumpManager.UrlMappingInfo)localObject1)) {
+    if (!checkQVerAndModel((woo)localObject1)) {
       return false;
     }
-    if (!TextUtils.isEmpty(((PluginJumpManager.UrlMappingInfo)localObject1).g))
+    if (!TextUtils.isEmpty(((woo)localObject1).g))
     {
       String[] arrayOfString;
       int j;
-      if (((PluginJumpManager.UrlMappingInfo)localObject1).g.contains(","))
+      if (((woo)localObject1).g.contains(","))
       {
-        arrayOfString = ((PluginJumpManager.UrlMappingInfo)localObject1).g.split(",");
+        arrayOfString = ((woo)localObject1).g.split(",");
         int k = arrayOfString.length;
         j = 0;
         i = 0;
@@ -423,9 +425,9 @@ public class PluginJumpManager
       }
       else
       {
-        if (((PluginJumpManager.UrlMappingInfo)localObject1).g.contains(";"))
+        if (((woo)localObject1).g.contains(";"))
         {
-          arrayOfString = ((PluginJumpManager.UrlMappingInfo)localObject1).g.split(";");
+          arrayOfString = ((woo)localObject1).g.split(";");
           i = 0;
           j = arrayOfString.length;
           while (i < j)
@@ -436,13 +438,13 @@ public class PluginJumpManager
             i += 1;
           }
         }
-        if (!paramString1.contains(((PluginJumpManager.UrlMappingInfo)localObject1).g)) {
+        if (!paramString1.contains(((woo)localObject1).g)) {
           return false;
         }
       }
     }
-    localObject2 = (PluginJumpManager.BidInfo)this.mBidInfos.get(localObject2);
-    PluginManagerHelper.getPluginInterface(paramActivity.getApplicationContext(), new peh(this, (PluginJumpManager.BidInfo)localObject2, paramActivity, paramString3, paramString1, paramString4, l, (PluginJumpManager.UrlMappingInfo)localObject1, paramString2));
+    localObject2 = (won)this.mBidInfos.get(localObject2);
+    PluginManagerHelper.getPluginInterface(paramActivity.getApplicationContext(), new wom(this, (won)localObject2, paramActivity, paramString3, paramString1, paramString4, l, (woo)localObject1, paramString2));
     return true;
   }
   
@@ -451,12 +453,12 @@ public class PluginJumpManager
     if (paramAppRuntime == null) {
       return;
     }
-    HtmlOffline.a();
+    mof.a();
     if (paramAppRuntime.getLongAccountUin() % 10L == 6L) {}
     for (boolean bool = true;; bool = false)
     {
-      HtmlOffline.jdField_a_of_type_Boolean = bool;
-      HtmlOffline.b("1007", paramAppRuntime, true, new pef(this));
+      mof.jdField_a_of_type_Boolean = bool;
+      mof.b("1007", paramAppRuntime, true, new wok(this));
       return;
     }
   }

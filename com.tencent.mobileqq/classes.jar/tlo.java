@@ -1,50 +1,38 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.reactive.SimpleObserver;
 
 public class tlo
-  extends CardObserver
+  extends SimpleObserver<ucw>
 {
-  public tlo(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  public tlo(tlj paramtlj) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void a(ucw paramucw)
   {
-    if (!this.a.a.a.equals(paramString)) {
-      return;
-    }
-    this.a.e();
-    if (paramBoolean)
-    {
-      this.a.a(2131433484, 2);
-      return;
-    }
-    this.a.a(2131433483, 1);
+    super.onNext(paramucw);
+    tlj.a(this.a, paramucw, new ErrorMessage(), true);
   }
   
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  public void onCancel()
   {
-    if ((paramBoolean1) && (paramBoolean2 != this.a.c.a()))
-    {
-      this.a.c.setOnCheckedChangeListener(null);
-      this.a.c.setChecked(paramBoolean2);
-      this.a.c.setOnCheckedChangeListener(this.a);
-    }
+    super.onCancel();
+    urk.d("Q.qqstory.player.CommentFloatDialogController", "refresh data cancel");
   }
   
-  protected void c(boolean paramBoolean1, boolean paramBoolean2)
+  public void onError(@NonNull Error paramError)
   {
-    if ((paramBoolean1) && (paramBoolean2 != this.a.c.a()))
+    super.onError(paramError);
+    if (((ErrorMessage)paramError).errorCode == 2223)
     {
-      this.a.c.setOnCheckedChangeListener(null);
-      this.a.c.setChecked(paramBoolean2);
-      this.a.c.setOnCheckedChangeListener(this.a);
+      tlj.a(this.a, tlj.a(this.a), new ErrorMessage(), false);
+      return;
     }
+    tlj.a(this.a, tlj.a(this.a), (ErrorMessage)paramError, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tlo
  * JD-Core Version:    0.7.0.1
  */

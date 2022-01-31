@@ -13,6 +13,7 @@ public final class EPushRspFlag
   public static final int _PUSHRSP_FLAG_QQ_FORGROUND = 32;
   public static final int _PUSHRSP_FLAG_RISE_QZONE_SUCC = 2;
   public static final int _PUSHRSP_FLAG_SHOW = 4;
+  public static final int _PUSHRSP_FLAG_SYSTEM_NOT_ENABLED = 512;
   public static final int _PUSHRSP_FLAG_TRY_RISE_QZONE = 1;
 }
 

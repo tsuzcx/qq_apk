@@ -1,20 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import android.os.Bundle;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspIconPostfix;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.async.Boss;
+import com.tribe.async.async.Bosses;
 
 public class sxm
-  implements DialogInterface.OnDismissListener
+  extends soi
 {
-  public sxm(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  qqstory_service.RspIconPostfix a;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public sxm() {}
+  
+  public sxm(qqstory_service.RspIconPostfix paramRspIconPostfix)
   {
-    this.a.a(FriendProfileMoreInfoActivity.a(this.a), false);
+    super(paramRspIconPostfix.result);
+    this.a = paramRspIconPostfix;
+  }
+  
+  public void a()
+  {
+    if ((this.a.icon_info.has()) && (this.a.icon_info.size() > 0)) {
+      Bosses.get().postJob(new sxn(this, "GetUserIconHandler"));
+    }
+  }
+  
+  public void a(int paramInt, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("GetUserIconHandler", 2, "GetUserIconListResponse onNetError errorCode " + paramInt);
+    }
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("GetUserIconHandler", 2, "GetUserIconListResponse errorCode:" + paramInt + " errorMsg:" + paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sxm
  * JD-Core Version:    0.7.0.1
  */

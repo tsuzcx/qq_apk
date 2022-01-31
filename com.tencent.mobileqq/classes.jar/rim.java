@@ -1,33 +1,25 @@
-import com.tencent.mfsdk.MagnifierSDK;
-import com.tencent.mfsdk.collector.DropResultObject;
-import com.tencent.mfsdk.persist.DBHandler;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ReadInJoyColorBandEntranceButton;
 
 public class rim
-  implements Runnable
+  extends AnimatorListenerAdapter
 {
-  private long jdField_a_of_type_Long;
-  private DropResultObject jdField_a_of_type_ComTencentMfsdkCollectorDropResultObject;
-  private String jdField_a_of_type_JavaLangString;
+  public rim(ReadInJoyColorBandEntranceButton paramReadInJoyColorBandEntranceButton) {}
   
-  public rim(long paramLong, String paramString, DropResultObject paramDropResultObject)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentMfsdkCollectorDropResultObject = paramDropResultObject;
+    this.a.setClickable(true);
   }
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if (MagnifierSDK.a != null)
-    {
-      MagnifierSDK.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMfsdkCollectorDropResultObject);
-      this.jdField_a_of_type_ComTencentMfsdkCollectorDropResultObject.a();
-    }
+    this.a.setClickable(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rim
  * JD-Core Version:    0.7.0.1
  */

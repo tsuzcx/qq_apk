@@ -1,47 +1,85 @@
-import android.content.Context;
-import android.view.animation.Interpolator;
-import android.widget.Scroller;
-import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager;
-import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager.RollViewPager;
-import java.lang.reflect.Field;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class afqn
-  extends Scroller
+class afqn
+  extends Handler
 {
-  public afqn(AvatarWallViewPager paramAvatarWallViewPager, Context paramContext, Interpolator paramInterpolator)
+  afqn(afqi paramafqi, Looper paramLooper)
   {
-    super(paramContext, paramInterpolator);
+    super(paramLooper);
   }
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    try
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.app.isLogin())) {}
+    do
     {
-      Field localField = AvatarWallViewPager.RollViewPager.class.getDeclaredField("mScroller");
-      localField.setAccessible(true);
-      localField.set(this.a.a, this);
-      localField.setAccessible(false);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a.d);
-  }
-  
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a.d);
+      do
+      {
+        return;
+        switch (paramMessage.what)
+        {
+        default: 
+          return;
+        case 0: 
+          paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
+          this.a.a(35, paramMessage);
+          return;
+        case 28929: 
+          paramMessage = paramMessage.getData();
+        }
+      } while (paramMessage == null);
+      int i = paramMessage.getInt("result");
+      if ((i == -1) || (i == -2))
+      {
+        if (i == -1) {
+          paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131653225);
+        }
+        for (String str = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131653224);; str = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131653227))
+        {
+          try
+          {
+            if (this.a.jdField_a_of_type_Bafb != null)
+            {
+              if (this.a.jdField_a_of_type_Bafb.isShowing()) {
+                this.a.jdField_a_of_type_Bafb.dismiss();
+              }
+              this.a.jdField_a_of_type_Bafb = null;
+            }
+            this.a.jdField_a_of_type_Bafb = babr.a(this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity, 230, paramMessage, str, new afqo(this), null);
+            this.a.jdField_a_of_type_Bafb.setOnCancelListener(new afqp(this));
+            this.a.jdField_a_of_type_Bafb.setOnDismissListener(new afqq(this));
+            this.a.jdField_a_of_type_Bafb.show();
+            return;
+          }
+          catch (Exception paramMessage) {}
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          paramMessage.printStackTrace();
+          return;
+          paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqActivitySplashActivity.getString(2131653228);
+        }
+      }
+    } while (this.a.jdField_a_of_type_Bafb == null);
+    this.a.jdField_a_of_type_Bafb.dismiss();
+    return;
+    paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
+    this.a.a(34, paramMessage);
+    return;
+    paramMessage = (BusinessInfoCheckUpdate.RedTypeInfo)paramMessage.obj;
+    this.a.a(33, paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afqn
  * JD-Core Version:    0.7.0.1
  */

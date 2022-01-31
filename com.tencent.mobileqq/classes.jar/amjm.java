@@ -1,61 +1,63 @@
-import android.view.View;
-import android.view.ViewConfiguration;
-import com.tencent.widget.HorizontalListView;
+import android.support.annotation.NonNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class amjm
-  implements Runnable
+public class amjm
+  extends amie<amjl>
 {
-  public amjm(HorizontalListView paramHorizontalListView) {}
-  
-  public void run()
+  public static amjl a()
   {
-    View localView;
-    int i;
-    if (this.a.p == 0)
+    return (amjl)alzw.a().a(563);
+  }
+  
+  public int a()
+  {
+    return 563;
+  }
+  
+  @NonNull
+  public amjl a(@NonNull alzs[] paramArrayOfalzs)
+  {
+    amjl localamjl = new amjl();
+    paramArrayOfalzs = paramArrayOfalzs[0].a;
+    if (paramArrayOfalzs != null) {}
+    try
     {
-      this.a.p = 1;
-      if (!this.a.c()) {
-        break label169;
-      }
-      localView = (View)this.a.getParent();
-      if ((this.a.c()) || ((localView != null) && (!localView.hasFocusable())))
+      if (!"".equals(paramArrayOfalzs))
       {
-        if ((this.a.b) && (!this.a.c())) {
-          break label215;
-        }
-        HorizontalListView.a(this.a, localView);
-        i = ViewConfiguration.getLongPressTimeout();
-        if (!this.a.c()) {
-          break label195;
-        }
+        paramArrayOfalzs = new JSONObject(paramArrayOfalzs);
+        localamjl.a = paramArrayOfalzs.getString("musicBoxUrl");
+        localamjl.b = paramArrayOfalzs.getString("playerUrl");
       }
+      return localamjl;
     }
-    label169:
-    label195:
-    for (boolean bool = localView.isLongClickable();; bool = this.a.isLongClickable())
+    catch (JSONException paramArrayOfalzs)
     {
-      if (!bool) {
-        break label206;
-      }
-      if (HorizontalListView.a(this.a) == null) {
-        HorizontalListView.a(this.a, new amjl(this.a, null));
-      }
-      HorizontalListView.a(this.a).a();
-      this.a.postDelayed(HorizontalListView.a(this.a), i);
-      return;
-      localView = this.a.getChildAt(HorizontalListView.b(this.a) - this.a.getFirstVisiblePosition());
-      break;
+      paramArrayOfalzs.printStackTrace();
     }
-    label206:
-    this.a.p = 2;
-    return;
-    label215:
-    this.a.p = 2;
+    return localamjl;
+  }
+  
+  public Class<amjl> a()
+  {
+    return amjl.class;
+  }
+  
+  @NonNull
+  public amjl b()
+  {
+    return new amjl();
+  }
+  
+  @NonNull
+  public amjl c()
+  {
+    return new amjl();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amjm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRenderDriver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
 
 public class ysg
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ysg(ApolloRenderDriver paramApolloRenderDriver) {}
+  public ysg(GdtVideoImaxFragment paramGdtVideoImaxFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    String str = String.format("mainTicker.interval = %f;mainTicker.paused = false;renderTicker.paused = false;renderTicker.interval = %f;BK.Director.tickerResume();", new Object[] { Double.valueOf(60.0D / this.a.jdField_a_of_type_Int), Double.valueOf(60.0D / this.a.jdField_a_of_type_Int) });
-    this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloEngine.a(str);
+    GdtVideoImaxFragment.a(this.a);
+    GdtVideoImaxFragment.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ysg
  * JD-Core Version:    0.7.0.1
  */

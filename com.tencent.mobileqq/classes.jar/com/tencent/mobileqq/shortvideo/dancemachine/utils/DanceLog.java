@@ -5,29 +5,31 @@ import com.tencent.sveffects.SLog;
 
 public class DanceLog
 {
-  private static String a()
+  private static final String TAG = "DanceLog";
+  
+  private static String getThreadLogSignature()
   {
     return " TName=" + Thread.currentThread().getName() + " ,pid=" + Process.myPid() + ",tid=" + Process.myTid();
   }
   
-  public static void a(String paramString1, String paramString2)
+  public static void print(String paramString1, String paramString2)
   {
-    if (SLog.a()) {
+    if (SLog.isEnable()) {
       SLog.d("DanceLog", paramString1 + ": " + paramString2);
     }
   }
   
-  public static void a(String paramString1, String paramString2, Throwable paramThrowable)
+  public static void print(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if (SLog.a()) {
-      SLog.a("DanceLog", paramString1 + ": " + paramString2, paramThrowable);
+    if (SLog.isEnable()) {
+      SLog.e("DanceLog", paramString1 + ": " + paramString2, paramThrowable);
     }
   }
   
-  public static void b(String paramString1, String paramString2)
+  public static void printFrameQueue(String paramString1, String paramString2)
   {
-    if (SLog.a()) {
-      SLog.a("DanceLog", a() + " [" + paramString1 + "]: " + paramString2);
+    if (SLog.isEnable()) {
+      SLog.e("DanceLog", getThreadLogSignature() + " [" + paramString1 + "]: " + paramString2);
     }
   }
 }

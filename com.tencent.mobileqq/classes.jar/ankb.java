@@ -1,35 +1,48 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.QUA;
-import cooperation.qzone.webviewplugin.QZoneWebViewJsHandleLogic;
+import com.tencent.mobileqq.data.EmoticonPackage;
 
-public final class ankb
-  implements DialogInterface.OnClickListener
+public class ankb
 {
-  public ankb(Context paramContext) {}
+  public int a;
+  public EmoticonPackage a;
+  public int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ankb(int paramInt1, int paramInt2, EmoticonPackage paramEmoticonPackage)
   {
-    try
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage = paramEmoticonPackage;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (this == paramObject) {}
+    do
     {
-      if (QUA.a().indexOf("GM") < 0) {
-        QZoneWebViewJsHandleLogic.a(QzoneConfig.getInstance().getConfig("H5Url", "DownloadQzoneClient", "https://m.qzone.com/client/fwd?bid=update&_wv=7"), this.a);
+      return true;
+      if (!(paramObject instanceof ankb)) {
+        return false;
       }
-      return;
+      paramObject = (ankb)paramObject;
+      if ((this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.b != paramObject.b)) {
+        break;
+      }
+    } while (((this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage == null) && (paramObject.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage == null)) || ((this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) && (paramObject.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId != null) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId.equals(paramObject.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId))));
+    return false;
+    return false;
+  }
+  
+  public String toString()
+  {
+    String str = "";
+    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage != null) {
+      str = this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage.epId;
     }
-    catch (Exception paramDialogInterface)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("showQzoneAppDownloadDialog", 2, "simpleBrowserJump exception", paramDialogInterface);
-    }
+    return "EmotionPanelInfo [type=" + this.jdField_a_of_type_Int + ", columnNum=" + this.b + ", epid=" + str + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ankb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,58 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.VideoInfoObserver;
-import com.tencent.biz.qqstory.playvideo.QQStoryWarningActivity;
-import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import java.lang.ref.WeakReference;
 
-public final class nri
-  extends PlayModeUtils.VideoInfoObserver
+public class nri
+  implements INetInfoHandler
 {
-  public nri(Activity paramActivity, String paramString1, int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3, String paramString2, int paramInt4) {}
+  protected WeakReference<nng> a;
   
-  public void a(int paramInt, String paramString, StoryVideoItem paramStoryVideoItem)
+  public nri(nng paramnng)
   {
-    if ((paramInt == 0) && (paramStoryVideoItem != null))
-    {
-      StoryPlayVideoActivity.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, paramStoryVideoItem.mOwnerUid, "", this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_Int, this.c, this.jdField_b_of_type_JavaLangString, this.d);
-      return;
+    this.a = new WeakReference(paramnng);
+  }
+  
+  public void onNetMobile2None()
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((nng)this.a.get()).c();
     }
-    if (paramInt == 10100)
-    {
-      paramString = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQStoryWarningActivity.class);
-      paramString.putExtra("tipsResource", "该视频已被删除");
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(paramString);
-      return;
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((nng)this.a.get()).i();
     }
-    if (!TextUtils.isEmpty(paramString))
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    if ((this.a != null) && (this.a.get() != null))
     {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 1, paramString, 0).a();
-      return;
+      ((nng)this.a.get()).g();
+      ((nng)this.a.get()).i();
     }
-    QQToast.a(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 1, "拉取视频出错：" + paramInt, 0).a();
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((nng)this.a.get()).i();
+    }
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((nng)this.a.get()).h();
+    }
+  }
+  
+  public void onNetWifi2None()
+  {
+    if ((this.a != null) && (this.a.get() != null)) {
+      ((nng)this.a.get()).f();
+    }
   }
 }
 

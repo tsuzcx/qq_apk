@@ -1,19 +1,14 @@
-import android.util.SparseArray;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHolder;
-
-class nmr
-  implements Runnable
+public class nmr
 {
-  nmr(nmq paramnmq) {}
+  public boolean a;
+  public boolean b;
+  public boolean c;
   
-  public void run()
+  public nmr() {}
+  
+  public nmr(boolean paramBoolean)
   {
-    VideoPlayerPagerAdapter.VideoViewHolder localVideoViewHolder = (VideoPlayerPagerAdapter.VideoViewHolder)this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.a.a.get(this.a.jdField_a_of_type_Int);
-    if ((localVideoViewHolder != null) && (localVideoViewHolder.c == this.a.jdField_a_of_type_Int)) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.d();
-    }
+    this.a = paramBoolean;
   }
 }
 

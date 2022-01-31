@@ -1,19 +1,47 @@
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagDBManager;
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
+import android.content.Context;
+import java.lang.reflect.Method;
+import mqq.app.IActivityDispatchCallback;
 
-public class xfq
-  implements Runnable
+public abstract class xfq
+  implements IActivityDispatchCallback
 {
-  public xfq(PasswdRedBagManager paramPasswdRedBagManager, String paramString) {}
+  public static xfq a;
   
-  public void run()
+  public static void a()
   {
-    PasswdRedBagManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPasswdRedBagManager).c(this.jdField_a_of_type_JavaLangString, true);
+    try
+    {
+      Method localMethod = Class.forName("com.tencent.mobileqq.screendetect.ScreenShotDetector").getMethod("getInstance", new Class[0]);
+      localMethod.setAccessible(true);
+      a = (xfq)localMethod.invoke(null, new Object[0]);
+      return;
+    }
+    catch (Throwable localThrowable) {}
   }
+  
+  public static void a(Context paramContext)
+  {
+    xfq localxfq = a;
+    if (localxfq != null) {
+      localxfq.c(paramContext);
+    }
+  }
+  
+  public static void b(Context paramContext)
+  {
+    xfq localxfq = a;
+    if (localxfq != null) {
+      localxfq.d(paramContext);
+    }
+  }
+  
+  public abstract void c(Context paramContext);
+  
+  public abstract void d(Context paramContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     xfq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,10 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
+import java.util.HashMap;
 
 public class ofc
-  implements Runnable
 {
-  public ofc(FeedSegment paramFeedSegment, StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
-  
-  public void run()
-  {
-    if (FeedSegment.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentFeedSegment)) {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.c(1, 0);
-    }
-  }
+  public String a;
+  public HashMap<String, String> a;
+  public String b;
 }
 
 

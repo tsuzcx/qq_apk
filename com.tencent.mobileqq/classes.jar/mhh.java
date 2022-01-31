@@ -1,21 +1,34 @@
-import android.view.animation.Interpolator;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.utils.PhoneStatusMonitor.PhoneStatusReceiver.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class mhh
-  implements Interpolator
+  extends BroadcastReceiver
 {
-  private float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    return -paramFloat3 * (float)Math.cos(paramFloat1 / paramFloat4 * 1.570796326794897D) + paramFloat3 + paramFloat2;
-  }
+  mhh(mhf parammhf) {}
   
-  public float getInterpolation(float paramFloat)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return a(paramFloat, 0.0F, 1.0F, 1.0F);
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("android.intent.action.NEW_OUTGOING_CALL"))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PhoneStatusMonitor", 2, "onReceive NEW_OUTGOING_CALL");
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("PhoneStatusMonitor", 2, String.format("PhoneStatusReceiver, isCallingRunnable begin,  action[%s]", new Object[] { paramContext }));
+    }
+    ThreadManager.post(new PhoneStatusMonitor.PhoneStatusReceiver.1(this, paramContext), 5, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     mhh
  * JD-Core Version:    0.7.0.1
  */

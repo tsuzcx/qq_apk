@@ -12,13 +12,18 @@ import org.json.JSONObject;
 public class MessageForQzoneFeed
   extends ChatMessage
 {
+  public static final int GENDER_FEMALE = 2;
+  public static final int GENDER_MALE = 1;
+  public static final int GENDER_UNKNOWN = 0;
   public static final String MSG_QZONE_FEED_KEY_ACTION_URL = "actionUrl";
   public static final String MSG_QZONE_FEED_KEY_APPID = "appid";
   public static final String MSG_QZONE_FEED_KEY_COMMENT_NUMS = "commentNums";
   public static final String MSG_QZONE_FEED_KEY_CONTENT = "content";
   public static final String MSG_QZONE_FEED_KEY_COVER_URL = "coverImageUrl";
   public static final String MSG_QZONE_FEED_KEY_FROM_UIN = "fromuin";
+  public static final String MSG_QZONE_FEED_KEY_GENDER = "iGender";
   public static final String MSG_QZONE_FEED_KEY_IMAGE_COUNT = "imageCount";
+  public static final String MSG_QZONE_FEED_KEY_IS_FIRST_MSG_WITH_NEWFRIEND = "isFirstMsgWithNewFriend";
   public static final String MSG_QZONE_FEED_KEY_LBS_INFO = "lbsinfo";
   public static final String MSG_QZONE_FEED_KEY_LIKE_NUMS = "likeNums";
   public static final String MSG_QZONE_FEED_KEY_MEDIA_DATAS = "mediaDatas";
@@ -27,7 +32,7 @@ public class MessageForQzoneFeed
   public static final String MSG_QZONE_FEED_KEY_TITLE = "title";
   public static final String MSG_QZONE_FEED_LEY_EXTEND_INFO = "mapExt";
   public static final String MSG_QZONE_STRUCT_VERSION = "version";
-  public static final int MSG_QZONE_VERSION = 1;
+  public static final int MSG_QZONE_VERSION = 2;
   public String actionUrl;
   public int appId;
   public String content;
@@ -35,12 +40,14 @@ public class MessageForQzoneFeed
   public JSONObject feedMsg;
   public long feedTime;
   public long fromUin;
+  public int gender = 0;
   public boolean hasExposed;
   public int imageCount;
+  public boolean isFirstMsgWithNewFriend;
   public boolean isOldStructMsg;
   public String lbsInfo;
-  public HashMap mapExt;
-  public ArrayList mediaDatas;
+  public HashMap<String, String> mapExt;
+  public ArrayList<MessageForQzoneFeed.MediaData> mediaDatas;
   public String summery;
   public String title;
   public int uCommentNum;
@@ -102,8 +109,10 @@ public class MessageForQzoneFeed
       this.actionUrl = this.feedMsg.optString("actionUrl");
       this.ulikeNum = this.feedMsg.optInt("likeNums");
       this.uCommentNum = this.feedMsg.optInt("commentNums");
+      this.isFirstMsgWithNewFriend = this.feedMsg.optBoolean("isFirstMsgWithNewFriend");
+      this.gender = this.feedMsg.optInt("iGender");
       this.version = this.feedMsg.optInt("version");
-      if (this.version < 1) {
+      if (this.version < 2) {
         this.isOldStructMsg = true;
       }
       Object localObject1 = this.feedMsg.optString("mediaDatas");

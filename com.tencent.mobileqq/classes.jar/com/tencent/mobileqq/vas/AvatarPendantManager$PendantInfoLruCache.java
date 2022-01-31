@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 
 class AvatarPendantManager$PendantInfoLruCache
-  extends AvatarPendantManager.LruLinkedHashMap
+  extends AvatarPendantManager.LruLinkedHashMap<Long, PendantInfo>
 {
   private static final long serialVersionUID = 1L;
   
@@ -24,7 +24,7 @@ class AvatarPendantManager$PendantInfoLruCache
     super.clear();
   }
   
-  protected boolean removeEldestEntry(Map.Entry paramEntry)
+  protected boolean removeEldestEntry(Map.Entry<Long, PendantInfo> paramEntry)
   {
     if (size() > this.maxCapacity)
     {
@@ -39,7 +39,7 @@ class AvatarPendantManager$PendantInfoLruCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.vas.AvatarPendantManager.PendantInfoLruCache
  * JD-Core Version:    0.7.0.1
  */

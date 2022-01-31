@@ -1,49 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.image.JpegExifReader.JpegExifReaderInterface;
-import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.nio.channels.SocketChannel;
 
 public class aijw
-  implements JpegExifReader.JpegExifReaderInterface
 {
-  public void doReport(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap paramHashMap, String paramString3) {}
+  public int a;
+  public long a;
+  public String a;
+  public SocketChannel a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
   
-  public boolean readEnableFromDPC()
+  public aijw(long paramLong, String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3, SocketChannel paramSocketChannel)
   {
-    try
-    {
-      Object localObject = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.aio_gifplay.name(), null);
-      if (QLog.isColorLevel()) {
-        QLog.d("JpegExifReader", 2, "isAllowDPC(): parseConfig, aio_gifplay =" + (String)localObject);
-      }
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = ((String)localObject).split("\\|");
-        if (localObject.length >= 9)
-        {
-          int i = Integer.parseInt(localObject[8]);
-          if (i != 1) {
-            break label81;
-          }
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      label81:
-      while (!QLog.isColorLevel()) {}
-      QLog.e("JpegExifReader", 2, "read dpc", localException);
-    }
-    return true;
-    return false;
-    return true;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.jdField_a_of_type_JavaNioChannelsSocketChannel = paramSocketChannel;
+    this.jdField_c_of_type_Int = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aijw
  * JD-Core Version:    0.7.0.1
  */

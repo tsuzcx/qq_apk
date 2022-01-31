@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class Oidb_0x6de$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42 }, new String[] { "uint32_src", "uint32_phone_type", "str_country_code", "str_phone", "dev_info" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), "", "", null }, ReqBody.class);
   public Oidb_0x6de.DevInfo dev_info = new Oidb_0x6de.DevInfo();
@@ -18,7 +18,7 @@ public final class Oidb_0x6de$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x6de.Oidb_0x6de.ReqBody
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,29 @@
-import java.io.File;
-import java.util.Comparator;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil.19;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class rtw
-  implements Comparator
+public class rtw
+  implements azgl
 {
-  rtw(rtu paramrtu) {}
+  public rtw(PublicAccountUtil.19 param19) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    long l = paramFile1.lastModified() - paramFile2.lastModified();
-    if (l > 0L) {
-      return -1;
+    if (paramJSONObject != null) {
+      if (QLog.isColorLevel()) {
+        QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:return result :" + paramJSONObject);
+      }
     }
-    if (l < 0L) {
-      return 1;
+    while (!QLog.isColorLevel()) {
+      return;
     }
-    return 0;
+    QLog.w("PublicAccountUtil", 2, "videoPlayRealtimeReport:return result null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rtw
  * JD-Core Version:    0.7.0.1
  */

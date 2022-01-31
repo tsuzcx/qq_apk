@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.receipt;
 
+import acjt;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.MotionEvent;
 import android.view.View;
 import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.TouchDelegate;
 import com.tencent.widget.LayerImageView;
 
 public class ReceiptBubbleLayerImageView
   extends LayerImageView
-  implements BaseBubbleBuilder.TouchDelegate
+  implements acjt
 {
   public ReceiptBubbleLayerImageView(Context paramContext)
   {

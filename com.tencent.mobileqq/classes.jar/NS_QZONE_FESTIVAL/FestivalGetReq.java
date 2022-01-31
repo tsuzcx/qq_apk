@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class FestivalGetReq
   extends JceStruct
 {
-  static ArrayList cache__vec_festivals = new ArrayList();
-  public ArrayList _vec_festivals;
+  static ArrayList<FestivalGetReqItem> cache__vec_festivals = new ArrayList();
+  public ArrayList<FestivalGetReqItem> _vec_festivals;
   
   static
   {
@@ -19,7 +19,7 @@ public final class FestivalGetReq
   
   public FestivalGetReq() {}
   
-  public FestivalGetReq(ArrayList paramArrayList)
+  public FestivalGetReq(ArrayList<FestivalGetReqItem> paramArrayList)
   {
     this._vec_festivals = paramArrayList;
   }

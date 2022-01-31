@@ -1,24 +1,21 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
-class afnv
-  implements Runnable
+public class afnv
+  implements View.OnClickListener
 {
-  afnv(afnu paramafnu) {}
+  public afnv(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (NearbyProfileEditTribePanel.a(this.a.a) != null)
-    {
-      NearbyProfileEditTribePanel.a(this.a.a).setVisibility(0);
-      NearbyProfileEditTribePanel.a(this.a.a);
-      NearbyProfileEditTribePanel.a(this.a.a, null);
-    }
+    this.a.d.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afnv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,41 @@
-import android.view.animation.DecelerateInterpolator;
-import com.nineoldandroids.animation.ObjectAnimator;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajdd
-  implements Runnable
 {
-  public ajdd(TroopBarPublishActivity paramTroopBarPublishActivity, int paramInt1, int paramInt2, boolean paramBoolean) {}
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d = 3;
+  public int e;
   
-  public void run()
+  public void a()
   {
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofInt(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.a, "scrollY", new int[] { this.jdField_a_of_type_Int }).setDuration(this.b);
-    localObjectAnimator.setInterpolator(new DecelerateInterpolator());
-    localObjectAnimator.addListener(new ajde(this));
-    localObjectAnimator.start();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("gameId:").append(this.jdField_a_of_type_Int).append(",roomId:").append(this.jdField_a_of_type_Long).append(",actionId:").append(this.jdField_b_of_type_Int).append(",gameName:").append(this.jdField_b_of_type_JavaLangString).append(",wording:").append(",imgType:");
+      QLog.d("ApolloPanel", 2, localStringBuilder.toString());
+    }
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
+    this.d = 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajdd
  * JD-Core Version:    0.7.0.1
  */

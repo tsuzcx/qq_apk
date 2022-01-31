@@ -1,8 +1,11 @@
 package com.tencent.mobileqq.activity;
 
+import aboo;
+import aboq;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,50 +13,48 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import bbne;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQToastNotifier;
-import tud;
-import tue;
-import tug;
-import tuh;
-import tui;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.os.MqqHandler;
 
 public class RegisterNewBaseActivity
   extends BaseActivity
   implements DialogInterface.OnClickListener
 {
-  public Dialog a;
+  protected Dialog a;
   public Handler a;
   protected View.OnClickListener a;
   public String a;
-  public String b = "86";
+  public int b;
+  public String b;
   public boolean b;
-  public boolean c = true;
+  public String c;
+  public boolean c;
   
   public RegisterNewBaseActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new tud(this);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new tui(this);
+    this.jdField_b_of_type_JavaLangString = "86";
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_b_of_type_Int = -1;
+    this.jdField_a_of_type_AndroidOsHandler = new aboo(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aboq(this);
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
   
   protected void a(int paramInt)
   {
-    ((ProgressBar)findViewById(2131372226)).setProgress(paramInt);
+    ((ProgressBar)findViewById(2131309343)).setProgress(paramInt);
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    new QQToastNotifier(this).a(paramInt1, getTitleBarHeight(), 1, paramInt2);
-  }
-  
-  protected void a(String paramString)
-  {
-    TextView localTextView = (TextView)findViewById(2131372228);
-    localTextView.setText(paramString);
-    if (AppSetting.b) {
-      localTextView.setContentDescription(paramString);
-    }
+    new bbne(this).a(paramInt1, getTitleBarHeight(), 1, paramInt2);
   }
   
   public void a(String paramString, int paramInt)
@@ -65,14 +66,14 @@ public class RegisterNewBaseActivity
     if (paramString.endsWith("\n")) {
       str = paramString.substring(0, paramString.length() - 1);
     }
-    new QQToastNotifier(this).a(str, getTitleBarHeight(), 0, paramInt);
+    new bbne(this).a(str, getTitleBarHeight(), 0, paramInt);
   }
   
   public void a(String paramString1, String paramString2)
   {
     try
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new tue(this, paramString1, paramString2));
+      this.jdField_a_of_type_AndroidOsHandler.post(new RegisterNewBaseActivity.2(this, paramString1, paramString2));
       return;
     }
     catch (Exception paramString1)
@@ -81,9 +82,9 @@ public class RegisterNewBaseActivity
     }
   }
   
-  public void a(boolean paramBoolean)
+  protected void a(boolean paramBoolean)
   {
-    ProgressBar localProgressBar = (ProgressBar)findViewById(2131372226);
+    ProgressBar localProgressBar = (ProgressBar)findViewById(2131309343);
     if (paramBoolean) {}
     for (int i = 0;; i = 4)
     {
@@ -92,20 +93,25 @@ public class RegisterNewBaseActivity
     }
   }
   
-  public void b()
+  public String b()
   {
-    TextView localTextView = (TextView)findViewById(2131372227);
+    return this.jdField_c_of_type_JavaLangString;
+  }
+  
+  protected void b()
+  {
+    TextView localTextView = (TextView)findViewById(2131298221);
     localTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    if (AppSetting.b) {
-      localTextView.setContentDescription(getResources().getString(2131433712));
+    if (AppSetting.jdField_c_of_type_Boolean) {
+      localTextView.setContentDescription(getResources().getString(2131625011));
     }
   }
   
-  protected void b(int paramInt)
+  public void b(int paramInt)
   {
     try
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new tuh(this, paramInt));
+      this.jdField_a_of_type_AndroidOsHandler.post(new RegisterNewBaseActivity.4(this, paramInt));
       return;
     }
     catch (Exception localException)
@@ -114,17 +120,57 @@ public class RegisterNewBaseActivity
     }
   }
   
-  public void c()
+  protected void b(String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new tug(this));
+    TextView localTextView = (TextView)findViewById(2131312655);
+    localTextView.setText(paramString);
+    if (AppSetting.jdField_c_of_type_Boolean) {
+      localTextView.setContentDescription(paramString);
+    }
   }
   
-  public void c(int paramInt)
+  public void b(boolean paramBoolean)
   {
-    TextView localTextView = (TextView)findViewById(2131372228);
+    MqqHandler localMqqHandler = this.app.getHandler(RegisterChooseLoginActivity.class);
+    if (localMqqHandler != null) {
+      localMqqHandler.sendEmptyMessage(105);
+    }
+    localMqqHandler = this.app.getHandler(RegisterSendUpSms.class);
+    if (localMqqHandler != null) {
+      localMqqHandler.sendEmptyMessage(107);
+    }
+    localMqqHandler = this.app.getHandler(RegisterVerifyCodeActivity.class);
+    if (localMqqHandler != null) {
+      localMqqHandler.sendEmptyMessage(106);
+    }
+    localMqqHandler = this.app.getHandler(RegisterPhoneNumActivity.class);
+    if (localMqqHandler != null) {
+      localMqqHandler.sendEmptyMessage(103);
+    }
+    if (paramBoolean)
+    {
+      localMqqHandler = this.app.getHandler(RegisterPersonalInfoActivity.class);
+      if (localMqqHandler != null) {
+        localMqqHandler.sendEmptyMessage(109);
+      }
+      localMqqHandler = this.app.getHandler(RegisterByNicknameAndPwdActivity.class);
+      if (localMqqHandler != null) {
+        localMqqHandler.sendEmptyMessage(109);
+      }
+    }
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_AndroidOsHandler.post(new RegisterNewBaseActivity.3(this));
+  }
+  
+  protected void c(int paramInt)
+  {
+    TextView localTextView = (TextView)findViewById(2131312655);
     String str = getResources().getString(paramInt);
     localTextView.setText(str);
-    if (AppSetting.b) {
+    if (AppSetting.jdField_c_of_type_Boolean) {
       localTextView.setContentDescription(str);
     }
   }
@@ -135,6 +181,7 @@ public class RegisterNewBaseActivity
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
     getWindow().addFlags(1024);
+    this.jdField_b_of_type_Int = getIntent().getIntExtra("key_register_from", -1);
     return true;
   }
   

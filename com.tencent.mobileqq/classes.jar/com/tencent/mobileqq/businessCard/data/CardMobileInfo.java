@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.businessCard.data;
 
-import abvi;
+import alqa;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -15,7 +15,7 @@ import org.json.JSONException;
 public class CardMobileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new abvi();
+  public static final Parcelable.Creator<CardMobileInfo> CREATOR = new alqa();
   public String a;
   public boolean a;
   public String b;
@@ -38,7 +38,7 @@ public class CardMobileInfo
     }
   }
   
-  public static String a(List paramList)
+  public static String a(List<CardMobileInfo> paramList)
   {
     if ((paramList == null) || (paramList.isEmpty())) {
       return "";
@@ -66,7 +66,7 @@ public class CardMobileInfo
     }
   }
   
-  public static List a(String paramString)
+  public static List<CardMobileInfo> a(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
@@ -126,7 +126,7 @@ public class CardMobileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.data.CardMobileInfo
  * JD-Core Version:    0.7.0.1
  */

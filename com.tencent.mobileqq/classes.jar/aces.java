@@ -1,22 +1,32 @@
-import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
 public class aces
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aces(HotChatFlashPicActivity paramHotChatFlashPicActivity) {}
+  public aces(VerifyCodeActivity paramVerifyCodeActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (HotChatFlashPicActivity.a(this.a)) {
-      HotChatFlashPicActivity.c(this.a, HotChatFlashPicActivity.d(this.a));
+    paramView = this.a.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getText().toString();
+    if ((paramView == null) || (paramView.length() == 0)) {
+      Toast.makeText(this.a.getApplicationContext(), this.a.getString(2131626497), 0).show();
     }
-    HotChatFlashPicActivity.a(this.a).set(false);
+    while (paramView == null) {
+      return;
+    }
+    this.a.a(paramView);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
+    VerifyCodeActivity.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aces
  * JD-Core Version:    0.7.0.1
  */

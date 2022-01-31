@@ -1,47 +1,92 @@
-import com.tencent.qqprotect.qsec.ICloudAVEngine.DetectBundle;
-import com.tencent.qqprotect.qsec.ICloudAVEngine.IAVEngineEventListener;
-import com.tencent.qqprotect.qsec.ICloudAVEngine.ResultBundle;
-import com.tencent.qqprotect.qsec.QSecFramework;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager;
 
-public final class amel
-  implements ICloudAVEngine.IAVEngineEventListener
+public class amel
+  extends alzl<Object>
 {
-  private int a;
-  
-  public amel(int paramInt)
+  public int a()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return 310;
   }
   
-  public void a(int paramInt, ICloudAVEngine.DetectBundle paramDetectBundle, ICloudAVEngine.ResultBundle paramResultBundle)
+  public Class<Object> a()
   {
-    int i = 0;
-    if (this.jdField_a_of_type_Int != 0)
+    return Object.class;
+  }
+  
+  @NonNull
+  public Object a(int paramInt)
+  {
+    return new Object();
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMDoodleConfigProcessor", 2, "handleQIMDoodleConfig onReqFailed");
+    }
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMDoodleConfigProcessor", 2, "handleQIMDoodleConfig onUpdate");
+    }
+  }
+  
+  public int b()
+  {
+    PtvTemplateManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+    if (!PtvTemplateManager.a()) {
+      return 0;
+    }
+    return baig.l(BaseApplicationImpl.getContext());
+  }
+  
+  public int b(int paramInt)
+  {
+    PtvTemplateManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
+    if (!PtvTemplateManager.a())
     {
-      if ((paramInt != 1) && (paramInt != 2) && (paramInt != 4)) {
-        break label41;
-      }
-      QSecFramework.a(5, this.jdField_a_of_type_Int, paramInt, 0, null, null, null, null);
+      QLog.i("QIMDoodleConfigProcessor", 1, "config file not exist");
+      alzw.a().a(310, 0);
+      return 0;
     }
-    label41:
-    while (paramInt != 3) {
-      return;
+    return super.b(paramInt);
+  }
+  
+  @Nullable
+  public Object b(alzs[] paramArrayOfalzs)
+  {
+    if ((paramArrayOfalzs == null) || (paramArrayOfalzs.length == 0)) {
+      return null;
     }
-    int j = paramResultBundle.jdField_a_of_type_Int;
-    int k = paramResultBundle.b;
-    int m = paramResultBundle.c;
-    int n = paramResultBundle.d;
-    paramDetectBundle = paramResultBundle.jdField_a_of_type_ArrayOfByte;
-    int i1 = this.jdField_a_of_type_Int;
-    if (paramResultBundle.jdField_a_of_type_Boolean) {
-      i = 1;
+    paramArrayOfalzs = paramArrayOfalzs[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMDoodleConfigProcessor", 2, "handleQIMDoodleConfig onParsed, content:" + paramArrayOfalzs);
     }
-    QSecFramework.a(5, i1, paramInt, i, null, null, new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), paramDetectBundle }, null);
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    PtvTemplateManager.a(localQQAppInterface).a(paramArrayOfalzs, localQQAppInterface);
+    return new Object();
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amel
  * JD-Core Version:    0.7.0.1
  */

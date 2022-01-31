@@ -1,59 +1,88 @@
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.FilterFactory;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUDrawPartFilter;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.GpuImagePartsFilterGroup;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.CheckBox;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.selectmember.TroopMemberListInnerFrame;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class ahtl
-  implements Runnable
+  extends Handler
 {
-  public ahtl(GpuImagePartsFilterGroup paramGpuImagePartsFilterGroup, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat) {}
+  public ahtl(TroopMemberListInnerFrame paramTroopMemberListInnerFrame) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    GPUDrawPartFilter localGPUDrawPartFilter2 = null;
-    GPUDrawPartFilter localGPUDrawPartFilter1;
-    if ((GpuImagePartsFilterGroup.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup) == null) || (GpuImagePartsFilterGroup.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup).b() != this.jdField_a_of_type_Int))
+    switch (paramMessage.what)
     {
-      localGPUDrawPartFilter1 = GpuImagePartsFilterGroup.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup);
-      GpuImagePartsFilterGroup.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup, (GPUDrawPartFilter)FilterFactory.a(this.jdField_a_of_type_Int));
-      GpuImagePartsFilterGroup.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup).a();
-      GpuImagePartsFilterGroup.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup).a(this.b, this.c);
     }
-    for (;;)
+    label366:
+    do
     {
-      if ((GpuImagePartsFilterGroup.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup) == null) || (GpuImagePartsFilterGroup.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup).b() != this.d))
+      Object[] arrayOfObject;
+      String str;
+      do
       {
-        localGPUDrawPartFilter2 = GpuImagePartsFilterGroup.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup);
-        GpuImagePartsFilterGroup.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup, (GPUDrawPartFilter)FilterFactory.a(this.d));
-        GpuImagePartsFilterGroup.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup).a();
-        GpuImagePartsFilterGroup.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup).a(this.b, this.c);
-      }
-      if ((this.e == 90) || (this.e == 270))
-      {
-        GpuImagePartsFilterGroup.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup).a(false);
-        GpuImagePartsFilterGroup.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup).a(false);
-      }
-      for (;;)
-      {
-        GpuImagePartsFilterGroup.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup, this.jdField_a_of_type_Float);
-        GpuImagePartsFilterGroup.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup).a(true, 0.1F * 2.0F + this.jdField_a_of_type_Float);
-        GpuImagePartsFilterGroup.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup).a(false, this.jdField_a_of_type_Float);
-        if (localGPUDrawPartFilter1 != null) {
-          localGPUDrawPartFilter1.d();
+        do
+        {
+          return;
+          TroopMemberListInnerFrame.a(this.a, paramMessage);
+          return;
+          paramMessage = this.a;
+          paramMessage.jdField_a_of_type_Double += TroopMemberListInnerFrame.jdField_b_of_type_Double;
+        } while ((this.a.jdField_a_of_type_Double >= 90.0D) || (this.a.jdField_a_of_type_Int <= 0));
+        if (this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.getVisibility() == 8) {
+          this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
         }
-        if (localGPUDrawPartFilter2 != null) {
-          localGPUDrawPartFilter2.d();
-        }
+        this.a.jdField_a_of_type_AndroidWidgetProgressBar.setProgress((int)this.a.jdField_a_of_type_Double);
+        this.a.d.setText(String.format(ajjy.a(2131649821), new Object[] { Integer.valueOf(Math.min((int)(this.a.jdField_a_of_type_Int * this.a.jdField_a_of_type_Double / 100.0D), this.a.jdField_a_of_type_Int)), Integer.valueOf(this.a.jdField_a_of_type_Int) }));
+        this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(4), 800L);
         return;
-        GpuImagePartsFilterGroup.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup).a(true);
-        GpuImagePartsFilterGroup.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGpuImagePartsFilterGroup).a(true);
+        TroopMemberListInnerFrame.a(this.a, paramMessage.arg1);
+        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(4);
+        if (!(paramMessage.obj instanceof Object[])) {
+          break label366;
+        }
+        arrayOfObject = (Object[])paramMessage.obj;
+        if (arrayOfObject.length <= 0) {
+          break label366;
+        }
+        str = (String)arrayOfObject[1];
+        if (str.equals(this.a.jdField_b_of_type_JavaLangString)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("TroopMemberListInnerFrame.thread", 2, "handleMessage, troopUin != mTroopUin, break:" + str + "," + this.a.jdField_b_of_type_JavaLangString);
+      return;
+      this.a.jdField_a_of_type_JavaUtilMap = ((Map)arrayOfObject[0]);
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopMemberListInnerFrame.thread", 2, "handleMessage, mIndexedFriends.size=" + this.a.jdField_a_of_type_JavaUtilMap.size());
       }
-      localGPUDrawPartFilter1 = null;
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b == 1) || (this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b == 0) || (this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b == 5))
+      {
+        int i = TroopMemberListInnerFrame.a(this.a, this.a.jdField_a_of_type_JavaUtilMap);
+        this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.b(i);
+      }
+      paramMessage.obj = TroopMemberListInnerFrame.a(this.a);
+      TroopMemberListInnerFrame.a(this.a, paramMessage);
+    } while ((this.a.jdField_a_of_type_Boolean) || (!this.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.q));
+    this.a.jdField_a_of_type_Boolean = true;
+    paramMessage = this.a.jdField_a_of_type_AndroidWidgetCheckBox;
+    if (!this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramMessage.setChecked(bool);
+      this.a.onCheckedChanged(this.a.jdField_a_of_type_AndroidWidgetCheckBox, this.a.jdField_a_of_type_AndroidWidgetCheckBox.isChecked());
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahtl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SplashActivity;
+import android.graphics.Bitmap;
 
-public class tyi
-  implements DialogInterface.OnClickListener
+public abstract interface tyi
 {
-  public tyi(SplashActivity paramSplashActivity) {}
+  public abstract void a(String paramString, Bitmap paramBitmap);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(String paramString, Throwable paramThrowable);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tyi
  * JD-Core Version:    0.7.0.1
  */

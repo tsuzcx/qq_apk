@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.activity.LikeRankingListActivity;
-import com.tencent.mobileqq.data.Card;
-
 class tds
-  implements Runnable
+  extends tdc
 {
-  tds(tdr paramtdr, Card paramCard) {}
+  tds(tdo paramtdo, tev paramtev) {}
   
-  public void run()
+  public boolean b()
   {
-    this.jdField_a_of_type_Tdr.a.a(this.jdField_a_of_type_ComTencentMobileqqDataCard);
+    this.jdField_a_of_type_Tev.a = ((String)a("UploadImageJob_out_image_url"));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tds
  * JD-Core Version:    0.7.0.1
  */

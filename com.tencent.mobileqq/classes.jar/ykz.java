@@ -1,27 +1,28 @@
-import android.view.SurfaceView;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
 
-public class ykz
-  implements ViewTreeObserver.OnGlobalLayoutListener
+final class ykz
 {
-  public ykz(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public int a = -2147483648;
+  public int b = -2147483648;
+  public int c = -2147483648;
+  public int d = -2147483648;
   
-  public void onGlobalLayout()
+  public ykz(Context paramContext, int paramInt1, int paramInt2)
   {
-    this.a.e = this.a.a.getWidth();
-    this.a.f = this.a.a.getHeight();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onGlobalLayout,mSurfaceViewWidth:" + this.a.e + ",mSurfaceViewHeight:" + this.a.f);
+    if ((paramInt1 <= 0) || (paramInt2 <= 0))
+    {
+      yny.d("GdtBannerViewWithLetterStyle", "constructor");
+      return;
     }
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.a = Double.valueOf(0.02892561983471075D * paramInt1).intValue();
+    this.b = Double.valueOf(0.02666666666666667D * paramInt2).intValue();
+    this.c = Double.valueOf(0.06666666666666667D * paramInt2).intValue();
+    this.d = Double.valueOf(0.16D * paramInt2).intValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ykz
  * JD-Core Version:    0.7.0.1
  */

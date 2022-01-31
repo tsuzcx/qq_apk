@@ -1,18 +1,21 @@
-import android.view.View;
-
-class yfm
-  implements Runnable
+public class yfm
 {
-  yfm(yfl paramyfl, View paramView) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_AndroidViewView.sendAccessibilityEvent(8);
-  }
+  public int a;
+  public String a = "";
+  public int b;
+  public String b = "-1";
+  public int c;
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "0";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yfm
  * JD-Core Version:    0.7.0.1
  */

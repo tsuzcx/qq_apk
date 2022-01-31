@@ -1,16 +1,23 @@
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.LbsBaseActivity;
+
 public class abag
-  extends abad
+  implements View.OnClickListener
 {
-  public byte[] b;
+  public abag(LbsBaseActivity paramLbsBaseActivity) {}
   
-  private abag()
+  public void onClick(View paramView)
   {
-    super(null);
+    if ((LbsBaseActivity.a(this.a) != null) && (LbsBaseActivity.a(this.a).isShowing())) {
+      this.a.a(LbsBaseActivity.a(this.a));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abag
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,23 @@
-import android.app.Activity;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.webviewplugin.WebViewJumpPlugin;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule.ObserverMethod.6;
 
 public class akzh
-  implements Runnable
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public akzh(WebViewJumpPlugin paramWebViewJumpPlugin) {}
+  public akzh(ArkAppDeviceModule.ObserverMethod.6 param6, bafb parambafb) {}
   
-  public void run()
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    Activity localActivity = this.a.mRuntime.a();
-    if ((localActivity != null) && (!localActivity.isFinishing())) {
-      localActivity.finish();
+    if (paramBitmap != null) {
+      ((ImageView)this.jdField_a_of_type_Bafb.findViewById(2131299538)).setImageBitmap(paramBitmap);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akzh
  * JD-Core Version:    0.7.0.1
  */

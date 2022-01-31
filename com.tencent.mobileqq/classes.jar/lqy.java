@@ -1,28 +1,45 @@
-import com.tencent.biz.pubaccount.readinjoy.logic.DiandianTopConfigManager;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.util.UiThreadUtil;
+import android.content.Context;
+import android.view.Display;
+import android.view.WindowManager;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class lqy
-  implements Runnable
+  extends lrc
 {
-  public lqy(DiandianTopConfigManager paramDiandianTopConfigManager) {}
-  
-  public void run()
+  public lqy(AVActivity paramAVActivity, Context paramContext, int paramInt)
   {
-    synchronized (this.a.a)
+    super(paramContext, paramInt);
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    long l = AudioHelper.b();
+    if (this.jdField_a_of_type_ComTencentAvUiAVActivity.h != paramInt)
     {
-      AppInterface localAppInterface = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      UiThreadUtil.a(new lqz(this, FileUtils.a(BaseApplication.getContext().getFileStreamPath("file_readinjoy_diandian_top_config" + localAppInterface.getCurrentAccountUin()))));
+      QLog.d(this.jdField_a_of_type_ComTencentAvUiAVActivity.b, 1, "onVideoOrientationChanged, mRotationAngle[" + this.jdField_a_of_type_ComTencentAvUiAVActivity.h + "->" + paramInt + "], seq[" + l + "], isFinishing[" + this.jdField_a_of_type_ComTencentAvUiAVActivity.isFinishing() + "]");
+      if (AudioHelper.d())
+      {
+        Display localDisplay = ((WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window")).getDefaultDisplay();
+        QLog.w(this.jdField_a_of_type_ComTencentAvUiAVActivity.b, 1, "onVideoOrientationChanged, Display.getRotation[" + localDisplay.getRotation() + "], seq[" + l + "]");
+      }
+    }
+    if (this.jdField_a_of_type_ComTencentAvUiAVActivity.isFinishing()) {
       return;
     }
+    switch (paramInt)
+    {
+    default: 
+      this.jdField_a_of_type_ComTencentAvUiAVActivity.a(l, 270, paramBoolean);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentAvUiAVActivity.a(l, paramInt, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lqy
  * JD-Core Version:    0.7.0.1
  */

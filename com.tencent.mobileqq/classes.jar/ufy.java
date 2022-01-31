@@ -1,25 +1,37 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.List;
 
-public class ufy
-  implements View.OnClickListener
+class ufy
+  extends JobSegment<Integer, ujb>
 {
-  public ufy(TroopMemberListActivity paramTroopMemberListActivity) {}
+  private uja a;
   
-  public void onClick(View paramView)
+  public ufy(@NonNull uja paramuja)
   {
-    if (this.a.d == 11) {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8006216", "0X8006216", 0, 0, "", "", "", "");
+    this.a = paramuja;
+  }
+  
+  protected void a(JobContext paramJobContext, Integer paramInteger)
+  {
+    Object localObject = this.a.a(paramInteger.intValue(), 5);
+    if ((((ujb)localObject).a.size() > 0) || (((ujb)localObject).b))
+    {
+      urk.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
+      notifyResult(localObject);
+      return;
     }
-    this.a.b.cancel();
+    localObject = new szx();
+    ((szx)localObject).a = this.a.a();
+    ((szx)localObject).b = QQStoryContext.a().b();
+    slv.a().a((slz)localObject, new ufz(this, paramJobContext, paramInteger));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ufy
  * JD-Core Version:    0.7.0.1
  */

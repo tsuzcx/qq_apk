@@ -1,19 +1,33 @@
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyVideoDownloadManager;
-import com.tencent.biz.pubaccount.readinjoy.common.ThirdVideoManager.UUIDToUrlCallback;
+import com.tencent.av.redpacket.AVRedPacketManager;
 
 public class lku
-  implements ThirdVideoManager.UUIDToUrlCallback
+  extends lko
 {
-  public lku(ReadInJoyVideoDownloadManager paramReadInJoyVideoDownloadManager) {}
-  
-  public void a(String paramString1, String paramString2, int paramInt, boolean paramBoolean, String paramString3)
+  public lku()
   {
-    ReadInJoyVideoDownloadManager.a(this.a, paramString1);
+    this.c = new lla[6];
+    this.b = 1000L;
+    a(255);
+  }
+  
+  public void a(AVRedPacketManager paramAVRedPacketManager)
+  {
+    int i = 0;
+    while (i < this.c.length)
+    {
+      this.c[i] = new lla(paramAVRedPacketManager.a("qav_redpacket_lightning_" + (i + 1) + ".png"));
+      i += 1;
+    }
+  }
+  
+  public void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    a(0, paramInt2 - paramInt1 * 120 / 750, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lku
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x88d$TagRecord
-  extends MessageMicro
+  extends MessageMicro<TagRecord>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_tag_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -30,7 +30,7 @@ public final class oidb_0x88d$TagRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x88d.oidb_0x88d.TagRecord
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,16 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.newshare.job.WeChatImageJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareWeChatData;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
 public class nlp
-  extends WeChatImageJob
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public nlp(ShareModeBase paramShareModeBase, boolean paramBoolean1, boolean paramBoolean2, ShareWeChatData paramShareWeChatData)
-  {
-    super(paramBoolean1, paramBoolean2);
-  }
+  public nlp(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public boolean b()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData.a = ((Bitmap)a("WeChatImageJob_out_bitmap"));
-    return true;
+    ReadInJoySettingActivity.b(this.a, paramBoolean);
+    ReadInJoySettingActivity.a(this.a, ReadInJoySettingActivity.b(this.a));
   }
 }
 

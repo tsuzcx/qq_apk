@@ -1,71 +1,116 @@
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
-import android.widget.LinearLayout;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.lightReply.LightReplyMenuManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.app.AppRuntime;
+import java.util.ArrayList;
 
-class aeki
-  implements Runnable
+public class aeki
 {
-  aeki(aekh paramaekh, int paramInt) {}
-  
-  public void run()
+  public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, SessionInfo paramSessionInfo, boolean paramBoolean)
   {
-    QQAppInterface localQQAppInterface = null;
-    if (((this.jdField_a_of_type_Int > 0) && (this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyMenuManager.jdField_a_of_type_JavaUtilList.size() == 0)) || ((this.jdField_a_of_type_Int <= 0) && (this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyMenuManager.b.size() == 0)))
+    paramActivity = paramActivity.getIntent();
+    if (paramActivity == null) {}
+    do
     {
-      QQToast.a(this.jdField_a_of_type_Aekh.jdField_a_of_type_AndroidContentContext, -1, "出错了，请稍后重试！", 0).b(this.jdField_a_of_type_Aekh.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
-      this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyMenuManager.e();
+      do
+      {
+        do
+        {
+          return;
+        } while ((!paramActivity.getBooleanExtra("showFirstStructMsg", false)) || (!paramBoolean));
+        if (QLog.isColorLevel()) {
+          QLog.d("send3rdAppStructMsg", 2, "send first struct msg");
+        }
+        paramActivity = paramActivity.getByteArrayExtra("stuctmsg_bytes");
+      } while (paramActivity == null);
+      paramActivity = awuw.a(paramActivity);
+    } while (paramActivity == null);
+    baic.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramActivity, null);
+    awqx.b(paramQQAppInterface, "CliOper", "", paramSessionInfo.jdField_a_of_type_JavaLangString, "0X8004B51", "0X8004B51", 0, 0, "", "", "", "");
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, SessionInfo paramSessionInfo, AbsShareMsg paramAbsShareMsg, String paramString)
+  {
+    if (0 != 0) {
+      throw new NullPointerException();
+    }
+    xez localxez = new xez(paramFragmentActivity);
+    String str = paramFragmentActivity.getString(2131653579);
+    if (paramString != null) {}
+    for (paramString = str + paramString;; paramString = str)
+    {
+      paramAbsShareMsg = new aekj(paramAbsShareMsg, paramFragmentActivity, paramFragmentActivity, paramQQAppInterface, paramSessionInfo);
+      localxez.a(paramString, paramAbsShareMsg);
+      localxez.a(paramFragmentActivity.getResources().getString(2131653586));
+      localxez.a(paramAbsShareMsg);
+      localxez.a(false);
+      localxez.show();
+      awqx.b(paramQQAppInterface, "CliOper", "", paramSessionInfo.jdField_a_of_type_JavaLangString, "0X8004B54", "0X8004B54", 0, 0, "", "", "", "");
       return;
     }
-    Object localObject;
-    boolean bool;
-    if (this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyMenuManager.jdField_a_of_type_AndroidWidgetLinearLayout != null)
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, SessionInfo paramSessionInfo)
+  {
+    boolean bool = false;
+    awqx.b(paramQQAppInterface, "CliOper", "", paramSessionInfo.jdField_a_of_type_JavaLangString, "0X8004B53", "0X8004B53", 0, 0, "", "", "", "");
+    Object localObject = paramFragmentActivity.getIntent().getByteArrayExtra("stuctmsg_bytes");
+    String str = paramFragmentActivity.getIntent().getStringExtra("thirdAppDisplayName");
+    localObject = awuw.a((byte[])localObject);
+    if ((localObject != null) && ((localObject instanceof AbsShareMsg))) {}
+    for (localObject = (AbsShareMsg)localObject;; localObject = null)
     {
-      localObject = this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyMenuManager;
-      if (this.jdField_a_of_type_Int <= 0) {
-        break label293;
+      if ("webview".equals(paramFragmentActivity.getIntent().getStringExtra("from")))
+      {
+        bacn.jdField_a_of_type_Int -= 1;
+        if (!(paramFragmentActivity instanceof SplashActivity))
+        {
+          paramFragmentActivity.finish();
+          bool = true;
+        }
+        return bool;
       }
-      bool = true;
-      label126:
-      LightReplyMenuManager.a((LightReplyMenuManager)localObject, bool);
-      this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyMenuManager.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      LightReplyMenuManager.a(this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyMenuManager, true);
-      localObject = this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyMenuManager.a(this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyMenuManager.c);
-      if (!this.jdField_a_of_type_Aekh.jdField_a_of_type_Boolean) {
-        break label298;
-      }
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime instanceof QQAppInterface)) {
-        localQQAppInterface = (QQAppInterface)localAppRuntime;
-      }
-      ReportController.b(localQQAppInterface, "dc00899", "Grp_replyPic", "", "Emoji_box", "exp", 0, 0, this.jdField_a_of_type_Aekh.jdField_a_of_type_JavaLangString, (String)localObject, "0", "");
+      a(paramQQAppInterface, paramFragmentActivity, paramSessionInfo, (AbsShareMsg)localObject, str);
+      return true;
     }
-    for (;;)
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Intent paramIntent)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramIntent.getBooleanExtra("from3rdApp", false))
     {
-      LightReplyMenuManager.a(this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyMenuManager, this.jdField_a_of_type_Aekh.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyMenuManager.jdField_a_of_type_AndroidWidgetLinearLayout);
-      if (!QLog.isColorLevel()) {
-        break;
+      bool1 = bool2;
+      if (paramIntent.getBooleanExtra("showFirstStructMsg", false))
+      {
+        paramIntent = paramIntent.getByteArrayExtra("stuctmsg_bytes");
+        bool1 = bool2;
+        if (paramIntent != null)
+        {
+          paramIntent = awuw.a(paramIntent);
+          long l = avys.jdField_a_of_type_Int;
+          paramSessionInfo = awbi.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, l, paramIntent);
+          paramIntent = new ArrayList();
+          paramIntent.add(paramSessionInfo);
+          paramQQAppInterface.a().c(paramIntent, paramQQAppInterface.getCurrentAccountUin());
+          bool1 = true;
+        }
       }
-      QLog.d("LightReplyMenuManager", 2, "faceDetector finished and count is" + this.jdField_a_of_type_Int);
-      return;
-      label293:
-      bool = false;
-      break label126;
-      label298:
-      ReportController.b(null, "dc00899", "Grp_replyPic", "", "Emoji_box", "exp", 0, 0, this.jdField_a_of_type_Aekh.jdField_a_of_type_JavaLangString, (String)localObject, "1", "");
     }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeki
  * JD-Core Version:    0.7.0.1
  */

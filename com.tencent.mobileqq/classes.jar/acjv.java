@@ -1,96 +1,36 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloFavActionData;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.os.MqqHandler;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.NamePlateCfgInfo;
 
-class acjv
-  implements Runnable
+public class acjv
+  implements View.OnClickListener
 {
-  acjv(acjg paramacjg, QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public acjv(BaseChatItemLayout paramBaseChatItemLayout) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    int i = 0;
-    Object localObject2;
-    Object localObject1;
-    ArrayList localArrayList;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof NamePlateCfgInfo)))
     {
-      localObject2 = (ApolloDaoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(154);
-      JSONObject localJSONObject = new JSONObject();
-      localObject1 = new JSONArray();
-      localArrayList = new ArrayList();
+      paramView = (NamePlateCfgInfo)paramView.getTag();
+      if ((paramView.mVipType != 3) && (paramView.mVipType != 259)) {
+        break label99;
+      }
+      bajr.a(BaseActivity.sTopActivity.app, this.a.getContext(), paramView.mVipType, paramView.mNamePlateId, "mios.p.cl.cztx_qlncmp");
     }
     for (;;)
     {
-      try
-      {
-        JSONArray localJSONArray = new JSONArray(this.jdField_a_of_type_JavaLangString);
-        if (i >= localJSONArray.length()) {
-          break label180;
-        }
-        Object localObject3 = localJSONArray.getJSONObject(i);
-        long l = ((JSONObject)localObject3).optLong("seq");
-        int j = ((JSONObject)localObject3).optInt("actionId");
-        localObject3 = ((ApolloDaoManager)localObject2).a(l);
-        if ((localObject3 == null) || (j != ((ApolloFavActionData)localObject3).acitonId)) {
-          ((JSONArray)localObject1).put(l);
-        } else {
-          localArrayList.add(localObject3);
-        }
-      }
-      catch (JSONException localJSONException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.emoji.web.MessengerService", 2, "delFavAction json error + " + localJSONException.toString());
-        }
-      }
+      awqx.b(BaseActivity.sTopActivity.app, "dc00898", "", "", "qq_vip", "0X8009CAB", 0, 0, "", "", "", "");
       return;
-      label180:
-      if (localArrayList.size() > 0)
-      {
-        ((ApolloDaoManager)localObject2).g(localArrayList);
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatActivity.class);
-        if (localObject2 != null)
-        {
-          localObject2 = ((MqqHandler)localObject2).obtainMessage(66);
-          ((Message)localObject2).arg1 = 1;
-          ((Message)localObject2).sendToTarget();
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.emoji.web.MessengerService", 2, "del fav action success +" + localJSONException.toString());
-          }
-        }
-      }
-      if (((JSONArray)localObject1).length() > 0) {
-        localJSONException.put("delHasError", true);
-      }
-      for (;;)
-      {
-        localJSONException.put("errorList", ((JSONArray)localObject1).toString());
-        localObject1 = new Bundle();
-        ((Bundle)localObject1).putString("delFavListAction", localJSONException.toString());
-        this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject1);
-        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-        return;
-        localJSONException.put("delHasError", false);
-      }
-      i += 1;
+      label99:
+      bajr.b(BaseActivity.sTopActivity.app, this.a.getContext(), "mios.p.cl.cztx_qlncmp");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acjv
  * JD-Core Version:    0.7.0.1
  */

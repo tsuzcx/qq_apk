@@ -2,10 +2,10 @@ package com.tencent.mobileqq.util;
 
 import java.util.HashSet;
 
-final class Utils$1
-  extends HashSet
+public final class Utils$1
+  extends HashSet<Long>
 {
-  Utils$1(int paramInt)
+  public Utils$1(int paramInt)
   {
     super(paramInt);
     add(Long.valueOf(542245351L));
@@ -91,11 +91,12 @@ final class Utils$1
     add(Long.valueOf(306392284L));
     add(Long.valueOf(328659992L));
     add(Long.valueOf(445288149L));
+    add(Long.valueOf(365916703L));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.util.Utils.1
  * JD-Core Version:    0.7.0.1
  */

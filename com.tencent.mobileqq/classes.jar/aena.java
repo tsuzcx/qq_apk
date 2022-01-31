@@ -1,45 +1,49 @@
-import android.os.Handler;
-import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager.MagicfaceActionListener;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aena
-  implements MagicfaceActionManager.MagicfaceActionListener
+class aena
+  implements View.OnClickListener
 {
-  public aena(MagicfaceViewController paramMagicfaceViewController, long paramLong, int paramInt) {}
+  aena(aemz paramaemz, int paramInt) {}
   
-  public void a(ActionGlobalData paramActionGlobalData)
+  public void onClick(View paramView)
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    if (QLog.isColorLevel()) {
-      QLog.d("MagicfaceViewController", 2, "【magicface】 cost =" + (l1 - l2) + "ms");
-    }
-    boolean bool;
-    if (this.jdField_a_of_type_Int == 0)
+    aemz.a(this.jdField_a_of_type_Aemz, 2);
+    aemz.a(this.jdField_a_of_type_Aemz).a();
+    awqx.b(aemz.a(this.jdField_a_of_type_Aemz), "P_CliOper", "Safe_AntiFraud", aemz.a(this.jdField_a_of_type_Aemz).a, "banner", "userclick", this.jdField_a_of_type_Int, 0, "", "", "", "");
+    paramView = (Bundle)baah.a().a("SecWarningCfg", "BannerURL", 146, this.jdField_a_of_type_Int);
+    if (paramView != null) {}
+    for (paramView = paramView.getString("BannerURL");; paramView = null)
     {
-      bool = this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.b();
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.c(bool);
+      Object localObject = paramView;
+      if (TextUtils.isEmpty(paramView)) {
+        localObject = "https://jubao.qq.com/cn/jubao?appname=KQQ&subapp=$SUBAPP$&jubaotype=uin&system=$SYSTEM$&eviluin=$EVILUIN$&impeachuin=$USERUIN$";
+      }
+      if (this.jdField_a_of_type_Int == 1) {}
+      for (paramView = ((String)localObject).replace("$SUBAPP$", "notice");; paramView = ((String)localObject).replace("$SUBAPP$", "tips"))
+      {
+        paramView = paramView.replace("$SYSTEM$", "android").replace("$EVILUIN$", aemz.a(this.jdField_a_of_type_Aemz).a).replace("$USERUIN$", aemz.a(this.jdField_a_of_type_Aemz).getAccount());
+        localObject = BaseActivity.sTopActivity;
+        Intent localIntent = new Intent((Context)localObject, QQBrowserDelegationActivity.class);
+        localIntent.putExtra("injectrecommend", true);
+        localIntent.putExtra("url", paramView);
+        ((Context)localObject).startActivity(localIntent);
+        return;
+      }
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_a_of_type_AndroidOsHandler.post(new aenb(this, paramActionGlobalData));
-      return;
-      bool = this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.c();
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.c(bool);
-    }
-  }
-  
-  public void b(ActionGlobalData paramActionGlobalData)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_a_of_type_AndroidOsHandler.post(new aenc(this, paramActionGlobalData));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aena
  * JD-Core Version:    0.7.0.1
  */

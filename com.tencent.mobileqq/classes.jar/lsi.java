@@ -1,26 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import java.util.Comparator;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
 
 public class lsi
-  implements Comparator
+  implements lxc
 {
-  public lsi(ArticleInfoModule paramArticleInfoModule) {}
+  public lsi(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI, long paramLong) {}
   
-  public int a(ArticleInfo paramArticleInfo1, ArticleInfo paramArticleInfo2)
+  public void a()
   {
-    if (paramArticleInfo1.mRecommendSeq == paramArticleInfo2.mRecommendSeq) {
-      return 0;
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.j = true;
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.L();
+  }
+  
+  public void b()
+  {
+    miu.a().b(this.jdField_a_of_type_Long);
+    if (!this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a().Q) {
+      DoubleVideoMeetingCtrlUI.a(this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI, this.jdField_a_of_type_Long);
     }
-    if (paramArticleInfo1.mRecommendSeq > paramArticleInfo2.mRecommendSeq) {
-      return -1;
-    }
-    return 1;
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.jdField_a_of_type_Long, true, 0);
+    DoubleVideoMeetingCtrlUI.b(this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI, this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.b(true);
+    awqx.b(null, "CliOper", "", "", "0X8005206", "0X8005206", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentAvUiDoubleVideoMeetingCtrlUI.j = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lsi
  * JD-Core Version:    0.7.0.1
  */

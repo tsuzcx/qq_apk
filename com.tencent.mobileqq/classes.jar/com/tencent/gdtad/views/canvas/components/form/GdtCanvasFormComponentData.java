@@ -1,41 +1,34 @@
 package com.tencent.gdtad.views.canvas.components.form;
 
-import android.text.TextUtils;
-import com.tencent.gdtad.log.GdtLog;
 import com.tencent.gdtad.views.canvas.components.GdtCanvasComponentData;
-import com.tencent.gdtad.views.canvas.framework.GdtCanvasButtonData;
-import com.tencent.gdtad.views.canvas.framework.GdtCanvasTextData;
+import com.tencent.gdtad.views.form.GdtFormData;
+import yny;
+import yqq;
 
 public class GdtCanvasFormComponentData
   extends GdtCanvasComponentData
 {
-  public int backgroundColor = 0;
-  public GdtCanvasButtonData button = new GdtCanvasButtonData();
-  public int buttonHeight;
-  public long formId = -2147483648L;
-  public int padding;
-  public GdtCanvasFormTableData table = new GdtCanvasFormTableData();
-  public GdtCanvasTextData title;
-  public String tokenForUpload;
+  public GdtFormData data = new GdtFormData();
+  public int index = -2147483648;
   
   public boolean isValid()
   {
-    return (super.isValid()) && (this.formId != -2147483648L) && (this.padding >= 0) && ((this.title == null) || ((this.title.isValid()) && (!TextUtils.isEmpty(this.title.text)))) && (this.table != null) && (this.table.isValid()) && (this.button != null) && (this.button.isValid()) && (this.buttonHeight > 0);
+    return (super.isValid()) && (this.data != null) && (this.index != -2147483648);
   }
   
-  public GdtCanvasFormError validate()
+  public yqq validate()
   {
     if (!isValid())
     {
-      GdtLog.d("GdtCanvasFormComponentData", "validate error");
-      return new GdtCanvasFormError(3, -1, null);
+      yny.d("GdtCanvasFormComponentData", "validate error");
+      return new yqq(3, -1, null);
     }
-    return this.table.validate();
+    return this.data.validate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.components.form.GdtCanvasFormComponentData
  * JD-Core Version:    0.7.0.1
  */

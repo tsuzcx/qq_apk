@@ -17,17 +17,17 @@ public final class ae
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 16	c/t/m/g/ae:a	Lorg/json/JSONObject;
+    //   3: getfield 14	c/t/m/g/ae:a	Lorg/json/JSONObject;
     //   6: ifnonnull +10 -> 16
-    //   9: ldc 18
+    //   9: ldc 16
     //   11: astore_1
     //   12: aload_0
     //   13: monitorexit
     //   14: aload_1
     //   15: areturn
     //   16: aload_0
-    //   17: getfield 16	c/t/m/g/ae:a	Lorg/json/JSONObject;
-    //   20: invokevirtual 23	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   17: getfield 14	c/t/m/g/ae:a	Lorg/json/JSONObject;
+    //   20: invokevirtual 21	org/json/JSONObject:toString	()Ljava/lang/String;
     //   23: astore_1
     //   24: goto -12 -> 12
     //   27: astore_1
@@ -86,8 +86,8 @@ public final class ae
             paramString1 = localJSONObject.optString("deviceid");
             continue;
           }
-          localObject = new a((String)localObject, paramInt, paramString2, paramString3, paramString4, paramString5);
-          if (!((a)localObject).b) {
+          localObject = new ae.a((String)localObject, paramInt, paramString2, paramString3, paramString4, paramString5);
+          if (!((ae.a)localObject).b) {
             continue;
           }
           localArrayList.add(localObject);
@@ -102,15 +102,15 @@ public final class ae
       continue;
       if (localArrayList.size() == 1)
       {
-        paramString1 = localJSONObject.optString(((a)localArrayList.get(0)).a);
+        paramString1 = localJSONObject.optString(((ae.a)localArrayList.get(0)).a);
       }
       else
       {
-        paramString1 = (a)localArrayList.get(0);
+        paramString1 = (ae.a)localArrayList.get(0);
         paramInt = 1;
         if (paramInt < localArrayList.size())
         {
-          paramString2 = (a)localArrayList.get(paramInt);
+          paramString2 = (ae.a)localArrayList.get(paramInt);
           if (!paramString1.b) {
             break label397;
           }
@@ -167,53 +167,53 @@ public final class ae
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_1
-    //   3: invokestatic 30	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   3: invokestatic 28	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   6: istore_2
     //   7: iload_2
     //   8: ifeq +6 -> 14
     //   11: aload_0
     //   12: monitorexit
     //   13: return
-    //   14: new 20	org/json/JSONObject
+    //   14: new 18	org/json/JSONObject
     //   17: dup
     //   18: aload_1
     //   19: invokespecial 108	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   22: astore_3
     //   23: aload_0
-    //   24: getfield 16	c/t/m/g/ae:a	Lorg/json/JSONObject;
+    //   24: getfield 14	c/t/m/g/ae:a	Lorg/json/JSONObject;
     //   27: ifnonnull +11 -> 38
     //   30: aload_0
     //   31: aload_3
-    //   32: putfield 16	c/t/m/g/ae:a	Lorg/json/JSONObject;
+    //   32: putfield 14	c/t/m/g/ae:a	Lorg/json/JSONObject;
     //   35: goto -24 -> 11
     //   38: aload_3
-    //   39: ldc 32
-    //   41: invokevirtual 36	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   39: ldc 30
+    //   41: invokevirtual 34	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   44: astore_1
     //   45: aload_3
     //   46: ldc 110
-    //   48: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   48: invokevirtual 63	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   51: astore_3
     //   52: aload_1
     //   53: ifnull -42 -> 11
     //   56: aload_3
-    //   57: invokestatic 30	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   57: invokestatic 28	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   60: ifne -49 -> 11
     //   63: aload_0
-    //   64: getfield 16	c/t/m/g/ae:a	Lorg/json/JSONObject;
-    //   67: ldc 32
-    //   69: invokevirtual 36	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   64: getfield 14	c/t/m/g/ae:a	Lorg/json/JSONObject;
+    //   67: ldc 30
+    //   69: invokevirtual 34	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   72: astore 4
     //   74: aload 4
     //   76: ifnonnull +33 -> 109
     //   79: aload_0
-    //   80: getfield 16	c/t/m/g/ae:a	Lorg/json/JSONObject;
-    //   83: ldc 32
+    //   80: getfield 14	c/t/m/g/ae:a	Lorg/json/JSONObject;
+    //   83: ldc 30
     //   85: aload_1
     //   86: invokevirtual 114	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   89: pop
     //   90: aload_0
-    //   91: getfield 16	c/t/m/g/ae:a	Lorg/json/JSONObject;
+    //   91: getfield 14	c/t/m/g/ae:a	Lorg/json/JSONObject;
     //   94: ldc 110
     //   96: aload_3
     //   97: invokevirtual 114	org/json/JSONObject:putOpt	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
@@ -225,21 +225,21 @@ public final class ae
     //   107: aload_1
     //   108: athrow
     //   109: aload_1
-    //   110: invokevirtual 43	org/json/JSONObject:keys	()Ljava/util/Iterator;
+    //   110: invokevirtual 41	org/json/JSONObject:keys	()Ljava/util/Iterator;
     //   113: astore 5
     //   115: aload 5
-    //   117: invokeinterface 49 1 0
+    //   117: invokeinterface 47 1 0
     //   122: ifeq -32 -> 90
     //   125: aload 5
-    //   127: invokeinterface 53 1 0
-    //   132: checkcast 55	java/lang/String
+    //   127: invokeinterface 51 1 0
+    //   132: checkcast 53	java/lang/String
     //   135: astore 6
     //   137: aload 6
-    //   139: invokestatic 30	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   139: invokestatic 28	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   142: ifne -27 -> 115
     //   145: aload_1
     //   146: aload 6
-    //   148: invokevirtual 36	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
+    //   148: invokevirtual 34	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
     //   151: astore 7
     //   153: aload 7
     //   155: ifnull -40 -> 115
@@ -303,18 +303,18 @@ public final class ae
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 16	c/t/m/g/ae:a	Lorg/json/JSONObject;
+    //   3: getfield 14	c/t/m/g/ae:a	Lorg/json/JSONObject;
     //   6: ifnull +17 -> 23
     //   9: aload_0
-    //   10: getfield 16	c/t/m/g/ae:a	Lorg/json/JSONObject;
+    //   10: getfield 14	c/t/m/g/ae:a	Lorg/json/JSONObject;
     //   13: ldc 110
-    //   15: invokevirtual 65	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   15: invokevirtual 63	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
     //   18: astore_1
     //   19: aload_0
     //   20: monitorexit
     //   21: aload_1
     //   22: areturn
-    //   23: ldc 18
+    //   23: ldc 16
     //   25: astore_1
     //   26: goto -7 -> 19
     //   29: astore_1
@@ -331,56 +331,10 @@ public final class ae
     //   from	to	target	type
     //   2	19	29	finally
   }
-  
-  final class a
-  {
-    public boolean b = true;
-    public boolean c = false;
-    public boolean d = false;
-    public boolean e = false;
-    public boolean f = false;
-    public boolean g = false;
-    private String[] h;
-    
-    public a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
-    {
-      this$1 = ae.this.split("-");
-      if (ae.this.length < 5)
-      {
-        this.h = new String[] { "all", "all", "all", "all", "all" };
-        int i = 0;
-        while (i < ae.this.length)
-        {
-          this.h[i] = ae.this[i];
-          i += 1;
-        }
-      }
-      this.h = ae.this;
-      this.c = a(0, String.valueOf(paramInt));
-      this.d = a(1, paramString1);
-      this.e = a(2, paramString2);
-      this.f = a(3, paramString3);
-      this.g = a(4, paramString4);
-      this.h = null;
-    }
-    
-    private boolean a(int paramInt, String paramString)
-    {
-      if (this.h.length >= paramInt + 1)
-      {
-        boolean bool = this.h[paramInt].equals(paramString);
-        if ((!bool) && (!this.h[paramInt].equals("all"))) {
-          this.b = false;
-        }
-        return bool;
-      }
-      return false;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     c.t.m.g.ae
  * JD-Core Version:    0.7.0.1
  */

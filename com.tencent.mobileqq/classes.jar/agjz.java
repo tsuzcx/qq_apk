@@ -1,20 +1,33 @@
-import com.tencent.mobileqq.ar.ObjectSurfaceView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
-public class agjz
-  implements Runnable
+class agjz
+  implements ThreadExcutor.IThreadListener
 {
-  public agjz(ScanTorchActivity paramScanTorchActivity) {}
+  agjz(agjw paramagjw, List paramList, Map paramMap, Bundle paramBundle) {}
   
-  public void run()
+  public void onAdded() {}
+  
+  public void onPostRun()
   {
-    this.a.a.setVisibility(8);
-    this.a.a.b();
+    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
+    {
+      batm localbatm = new batm(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilMap, UUID.randomUUID().toString());
+      localbatm.a(this.jdField_a_of_type_AndroidOsBundle);
+      if (this.jdField_a_of_type_Agjw.a != null) {
+        this.jdField_a_of_type_Agjw.a.a(localbatm, agjw.a(this.jdField_a_of_type_Agjw), null);
+      }
+    }
   }
+  
+  public void onPreRun() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agjz
  * JD-Core Version:    0.7.0.1
  */

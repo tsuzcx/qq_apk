@@ -1,20 +1,34 @@
-import android.app.Activity;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import dov.com.qq.im.capture.view.share.FilterComboSharePlugin;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
 public class anyx
-  implements Runnable
+  implements View.OnClickListener
 {
-  public anyx(FilterComboSharePlugin paramFilterComboSharePlugin) {}
+  public anyx(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.mRuntime.a().finish();
+    if (this.a.a != null)
+    {
+      this.a.a.dismiss();
+      this.a.a = null;
+    }
+    if (UniformDownloadActivity.a(this.a)) {
+      bcfn.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3009", false);
+    }
+    for (;;)
+    {
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+      return;
+      bcfn.a().a(UniformDownloadActivity.a(this.a), "1", "ANDROIDQQ.POPUP.YYBDOWNAPP", "3006", false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anyx
  * JD-Core Version:    0.7.0.1
  */

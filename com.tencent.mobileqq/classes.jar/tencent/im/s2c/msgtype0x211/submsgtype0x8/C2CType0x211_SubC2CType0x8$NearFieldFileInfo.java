@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class C2CType0x211_SubC2CType0x8$NearFieldFileInfo
-  extends MessageMicro
+  extends MessageMicro<NearFieldFileInfo>
 {
   public static final int INT32_TIMEOUT_FIELD_NUMBER = 8;
   public static final int STR_FILE_MD5_FIELD_NUMBER = 3;

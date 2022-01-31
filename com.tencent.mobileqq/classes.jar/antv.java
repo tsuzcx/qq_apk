@@ -1,31 +1,23 @@
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import dov.com.qq.im.capture.data.CaptureComboManager;
+import android.annotation.TargetApi;
+import android.graphics.drawable.Drawable;
+import android.view.View;
 
-public class antv
-  implements Handler.Callback
+@TargetApi(16)
+class antv
 {
-  public antv(CaptureComboManager paramCaptureComboManager) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public static void a(View paramView, Drawable paramDrawable)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      this.a.a.removeMessages(1);
-      if (this.a.a()) {
-        this.a.a.sendEmptyMessageDelayed(1, 50L);
-      }
-    }
+    paramView.setBackground(paramDrawable);
+  }
+  
+  public static void a(View paramView, Runnable paramRunnable)
+  {
+    paramView.postOnAnimation(paramRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     antv
  * JD-Core Version:    0.7.0.1
  */

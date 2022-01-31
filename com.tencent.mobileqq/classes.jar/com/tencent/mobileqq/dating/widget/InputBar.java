@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dating.widget;
 
-import acfx;
+import amwy;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Handler;
@@ -14,8 +14,8 @@ public class InputBar
   extends LinearLayout
 {
   private int jdField_a_of_type_Int;
+  private amwy jdField_a_of_type_Amwy;
   private View jdField_a_of_type_AndroidViewView;
-  private InputBar.IIputBarCallback jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar$IIputBarCallback;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
   private boolean jdField_a_of_type_Boolean;
   private int b;
@@ -36,13 +36,6 @@ public class InputBar
     super(paramContext, paramAttributeSet);
   }
   
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_ComTencentWidgetListView.removeFooterView(this.jdField_a_of_type_AndroidViewView);
-    }
-  }
-  
   @TargetApi(11)
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
@@ -57,8 +50,8 @@ public class InputBar
         while (!this.jdField_a_of_type_Boolean)
         {
           return;
-          if ((paramInt4 == this.h) && (this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar$IIputBarCallback != null)) {
-            this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar$IIputBarCallback.a();
+          if ((paramInt4 == this.h) && (this.jdField_a_of_type_Amwy != null)) {
+            this.jdField_a_of_type_Amwy.a();
           }
         }
         if (QLog.isDevelopLevel()) {
@@ -80,18 +73,18 @@ public class InputBar
         return;
       }
     } while ((paramInt2 == this.d) || (paramInt2 == this.g));
-    getHandler().post(new acfx(this, paramInt2));
+    getHandler().post(new InputBar.1(this, paramInt2));
     this.d = paramInt2;
   }
   
-  public void setmCallback(InputBar.IIputBarCallback paramIIputBarCallback)
+  public void setmCallback(amwy paramamwy)
   {
-    this.jdField_a_of_type_ComTencentMobileqqDatingWidgetInputBar$IIputBarCallback = paramIIputBarCallback;
+    this.jdField_a_of_type_Amwy = paramamwy;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.dating.widget.InputBar
  * JD-Core Version:    0.7.0.1
  */

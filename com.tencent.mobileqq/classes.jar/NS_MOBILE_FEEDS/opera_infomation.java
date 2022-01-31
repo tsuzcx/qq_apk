@@ -9,8 +9,8 @@ import java.util.Map;
 public final class opera_infomation
   extends JceStruct
 {
-  static Map cache_busi_param = new HashMap();
-  public Map busi_param;
+  static Map<Integer, String> cache_busi_param = new HashMap();
+  public Map<Integer, String> busi_param;
   public String strFeedsKey = "";
   public String strOperaData = "";
   public String strSummary = "";
@@ -22,7 +22,7 @@ public final class opera_infomation
   
   public opera_infomation() {}
   
-  public opera_infomation(Map paramMap, String paramString1, String paramString2, String paramString3)
+  public opera_infomation(Map<Integer, String> paramMap, String paramString1, String paramString2, String paramString3)
   {
     this.busi_param = paramMap;
     this.strFeedsKey = paramString1;
@@ -56,7 +56,7 @@ public final class opera_infomation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.opera_infomation
  * JD-Core Version:    0.7.0.1
  */

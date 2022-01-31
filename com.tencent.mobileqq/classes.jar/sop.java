@@ -1,24 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DialogActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.teamwork.TeamWorkUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class sop
-  implements DialogInterface.OnClickListener
+class sop
+  implements View.OnClickListener
 {
-  public sop(DialogActivity paramDialogActivity) {}
+  sop(soo paramsoo, son paramson) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    TeamWorkUtils.a(this.a.app, this.a);
-    this.a.finish();
-    ReportController.b(this.a.app, "dc00898", "", "", "0X800906A", "0X800906A", 0, 0, "", "", "", "");
+    int i = this.jdField_a_of_type_Son.getPosition();
+    if (i >= 0) {
+      this.jdField_a_of_type_Soo.a.a(this.jdField_a_of_type_Son.itemView, i);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sop
  * JD-Core Version:    0.7.0.1
  */

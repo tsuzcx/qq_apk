@@ -2,9 +2,9 @@ package com.tencent.biz.ui;
 
 public abstract interface TouchWebView$OnOverScrollHandler
 {
-  public abstract void a();
+  public abstract void onBack();
   
-  public abstract void a(int paramInt);
+  public abstract void onOverScroll(int paramInt);
 }
 
 

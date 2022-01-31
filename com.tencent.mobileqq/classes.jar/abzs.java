@@ -1,28 +1,22 @@
-import android.graphics.Rect;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.SearchDialogDismissRunnable;
 
-public final class abzs
-  implements Comparator
+public class abzs
+  implements DialogInterface.OnDismissListener
 {
-  public int a(Rect paramRect1, Rect paramRect2)
+  public abzs(TroopMemberListActivity paramTroopMemberListActivity) {}
+  
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {}
-    do
-    {
-      return -1;
-      if (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width()) {
-        return 1;
-      }
-    } while (paramRect1.width() > paramRect2.width());
-    if (paramRect1.width() < paramRect2.width()) {
-      return 1;
-    }
-    return 0;
+    this.a.a.postDelayed(new TroopMemberListActivity.SearchDialogDismissRunnable(this.a), 150L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abzs
  * JD-Core Version:    0.7.0.1
  */

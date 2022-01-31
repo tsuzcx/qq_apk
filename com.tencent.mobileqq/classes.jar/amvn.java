@@ -1,37 +1,57 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.biz.qrcode.activity.ScannerActivity;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import cooperation.qlink.QlinkStandardDialogActivity;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amvn
-  implements DialogInterface.OnClickListener
+  extends amum
 {
-  public amvn(QlinkStandardDialogActivity paramQlinkStandardDialogActivity, boolean paramBoolean1, boolean paramBoolean2) {}
+  public amvo a;
+  public String b;
+  public boolean b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static amvn a(JSONObject paramJSONObject)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      if (this.b) {
-        FileManagerUtil.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, null, 777, false, 0);
-      }
-    }
-    for (;;)
+    amvn localamvn = new amvn();
+    localamvn.jdField_a_of_type_JavaLangString = paramJSONObject.optString("name");
+    localamvn.jdField_b_of_type_JavaLangString = paramJSONObject.optString("action");
+    localamvn.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("isChecked", true);
+    localamvn.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("isAddByUser");
+    return localamvn;
+  }
+  
+  public JSONObject a()
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.finish();
-      return;
-      FileManagerUtil.a(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, null, 888, false, 0);
-      continue;
-      paramDialogInterface = new Intent(this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity, ScannerActivity.class);
-      paramDialogInterface.putExtra("from", "qlink");
-      this.jdField_a_of_type_CooperationQlinkQlinkStandardDialogActivity.startActivity(paramDialogInterface);
+      localJSONObject.put("name", this.jdField_a_of_type_JavaLangString);
+      localJSONObject.put("action", this.jdField_b_of_type_JavaLangString);
+      localJSONObject.put("isChecked", this.jdField_a_of_type_Boolean);
+      localJSONObject.put("isAddByUser", this.jdField_b_of_type_Boolean);
+      return localJSONObject;
     }
+    catch (JSONException localJSONException)
+    {
+      localJSONException.printStackTrace();
+    }
+    return localJSONObject;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_b_of_type_Boolean;
+  }
+  
+  public boolean b()
+  {
+    if (this.jdField_a_of_type_Amvo == null) {
+      return this.jdField_a_of_type_Boolean;
+    }
+    return this.jdField_a_of_type_Amvo.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amvn
  * JD-Core Version:    0.7.0.1
  */

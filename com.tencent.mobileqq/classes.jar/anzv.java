@@ -1,26 +1,18 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditDoodleExport;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfoLoadObserver;
+import android.view.View;
 
-public class anzv
-  extends PtvTemplateManager.DoodleInfoLoadObserver
+class anzv
+  implements behy
 {
-  public anzv(EditPicActivity paramEditPicActivity) {}
+  anzv(anzt paramanzt, View paramView) {}
   
   public void a()
   {
-    SLog.c("EditPicActivity", "DoodleInfoLoadObserver, onLoadSucc");
-    EditDoodleExport localEditDoodleExport = (EditDoodleExport)EditPicActivity.a(this.a).a(EditDoodleExport.class);
-    if (localEditDoodleExport != null) {
-      localEditDoodleExport.b();
-    }
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anzv
  * JD-Core Version:    0.7.0.1
  */

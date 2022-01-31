@@ -1,0 +1,12 @@
+public abstract interface bcjv
+{
+  public abstract void a();
+  
+  public abstract void a(bciz parambciz);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+ * Qualified Name:     bcjv
+ * JD-Core Version:    0.7.0.1
+ */

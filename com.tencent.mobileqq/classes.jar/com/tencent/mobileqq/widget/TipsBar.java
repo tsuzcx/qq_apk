@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.widget;
 
-import alex;
+import ajjy;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
@@ -13,6 +14,7 @@ import android.text.TextUtils;
 import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -21,8 +23,10 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import bbos;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.theme.SkinnableBitmapDrawable;
 
 public class TipsBar
@@ -32,6 +36,7 @@ public class TipsBar
   private int jdField_a_of_type_Int;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  private View jdField_a_of_type_AndroidViewView;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -58,107 +63,49 @@ public class TipsBar
     super(paramContext, paramAttributeSet);
     Resources localResources = getResources();
     this.jdField_a_of_type_Float = localResources.getDisplayMetrics().density;
-    this.jdField_b_of_type_Int = localResources.getDimensionPixelSize(2131558988);
-    this.e = localResources.getDimensionPixelSize(2131558989);
-    this.f = localResources.getDimensionPixelSize(2131558990);
-    this.jdField_c_of_type_Int = localResources.getDimensionPixelSize(2131558991);
-    this.d = localResources.getDimensionPixelSize(2131558991);
+    this.jdField_b_of_type_Int = localResources.getDimensionPixelSize(2131167169);
+    this.e = localResources.getDimensionPixelSize(2131167171);
+    this.f = localResources.getDimensionPixelSize(2131167173);
+    this.jdField_c_of_type_Int = localResources.getDimensionPixelSize(2131167172);
+    this.d = localResources.getDimensionPixelSize(2131167172);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.TipsBar);
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(1);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(2);
-    this.jdField_b_of_type_JavaLangString = paramContext.getString(5);
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(6);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(5);
+    this.jdField_b_of_type_JavaLangString = paramContext.getString(1);
     this.jdField_a_of_type_Int = paramContext.getInt(0, 2);
-    this.jdField_a_of_type_Boolean = paramContext.getBoolean(6, false);
+    this.jdField_a_of_type_Boolean = paramContext.getBoolean(4, false);
     this.g = paramContext.getDimensionPixelSize(3, this.jdField_c_of_type_Int);
-    this.h = paramContext.getDimensionPixelSize(4, this.d);
+    this.h = paramContext.getDimensionPixelSize(2, this.d);
     paramContext.recycle();
-    a();
+    b();
   }
   
-  public static ColorStateList a(Resources paramResources, int paramInt)
+  protected static ColorStateList a(Resources paramResources, int paramInt)
   {
     switch (paramInt)
     {
+    case 5: 
     default: 
-      return paramResources.getColorStateList(2131494244);
+      return paramResources.getColorStateList(2131101292);
     }
-    return paramResources.getColorStateList(2131494244);
+    return paramResources.getColorStateList(2131101292);
   }
   
   public static Drawable a(Resources paramResources, int paramInt)
   {
-    return paramResources.getDrawable(2130838526);
+    return paramResources.getDrawable(2130839032);
   }
   
-  private void a()
-  {
-    setFocusable(true);
-    setClickable(true);
-    Resources localResources = getResources();
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    this.jdField_a_of_type_AndroidWidgetImageView.setId(2131362048);
-    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(this.g, this.h);
-    localLayoutParams.leftMargin = this.e;
-    localLayoutParams.addRule(9);
-    localLayoutParams.addRule(15);
-    addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131362049);
-    this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
-    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(19);
-    this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(b(localResources, this.jdField_a_of_type_Int));
-    this.jdField_a_of_type_AndroidWidgetTextView.setDuplicateParentStateEnabled(true);
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_JavaLangString);
-    }
-    localLayoutParams = new RelativeLayout.LayoutParams(-2, -1);
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-    {
-      localLayoutParams.leftMargin = this.f;
-      localLayoutParams.addRule(15);
-      localLayoutParams.addRule(1, 2131362048);
-      localLayoutParams.addRule(0, 2131362050);
-      addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-        setTipsIcon(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.g, this.h);
-      }
-      this.jdField_a_of_type_AndroidWidgetButton = b();
-      this.jdField_c_of_type_AndroidWidgetImageView = b();
-      this.jdField_b_of_type_AndroidWidgetImageView = c();
-      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
-        break label360;
-      }
-      d();
-    }
-    for (;;)
-    {
-      setBackgroundDrawable(b(localResources, this.jdField_a_of_type_Int));
-      return;
-      localLayoutParams.leftMargin = this.e;
-      break;
-      label360:
-      if (this.jdField_a_of_type_Boolean) {
-        b();
-      } else {
-        c();
-      }
-    }
-  }
-  
-  public static ColorStateList b(Resources paramResources, int paramInt)
+  protected static ColorStateList b(Resources paramResources, int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      return paramResources.getColorStateList(2131494315);
+      return paramResources.getColorStateList(2131101267);
+    case 4: 
+      return paramResources.getColorStateList(2131101403);
     }
-    return paramResources.getColorStateList(2131494316);
+    return paramResources.getColorStateList(2131101267);
   }
   
   private Button b()
@@ -189,24 +136,72 @@ public class TipsBar
     localObject = d((Resources)localObject, this.jdField_a_of_type_Int);
     localImageView.setPadding(15, 15, 15, 15);
     localImageView.setImageDrawable((Drawable)localObject);
-    localImageView.setOnClickListener(new alex(this));
-    if (AppSetting.b) {
-      localImageView.setContentDescription("关闭");
+    localImageView.setOnClickListener(new bbos(this));
+    if (AppSetting.c) {
+      localImageView.setContentDescription(ajjy.a(2131649197));
     }
     return localImageView;
   }
   
   private void b()
   {
-    if (this.jdField_c_of_type_AndroidWidgetImageView != null)
+    setFocusable(true);
+    setClickable(true);
+    Resources localResources = getResources();
+    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
+    this.jdField_a_of_type_AndroidWidgetImageView.setId(2131311526);
+    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(this.g, this.h);
+    localLayoutParams.leftMargin = this.e;
+    localLayoutParams.addRule(9);
+    localLayoutParams.addRule(15);
+    addView(this.jdField_a_of_type_AndroidWidgetImageView, localLayoutParams);
+    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131311527);
+    this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
+    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(19);
+    this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(b(localResources, this.jdField_a_of_type_Int));
+    this.jdField_a_of_type_AndroidWidgetTextView.setDuplicateParentStateEnabled(true);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      this.jdField_c_of_type_AndroidWidgetImageView.setId(2131362050);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.rightMargin = this.e;
-      localLayoutParams.leftMargin = this.e;
-      localLayoutParams.addRule(11);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_JavaLangString);
+    }
+    localLayoutParams = new RelativeLayout.LayoutParams(-2, -1);
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    {
+      localLayoutParams.leftMargin = this.f;
       localLayoutParams.addRule(15);
-      addView(this.jdField_c_of_type_AndroidWidgetImageView, localLayoutParams);
+      localLayoutParams.addRule(1, 2131311526);
+      localLayoutParams.addRule(0, 2131311528);
+      addView(this.jdField_a_of_type_AndroidWidgetTextView, localLayoutParams);
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
+        setTipsIcon(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.g, this.h);
+      }
+      this.jdField_a_of_type_AndroidWidgetButton = b();
+      this.jdField_c_of_type_AndroidWidgetImageView = b();
+      this.jdField_b_of_type_AndroidWidgetImageView = c();
+      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+        break label366;
+      }
+      e();
+    }
+    for (;;)
+    {
+      setBackgroundDrawable(b(localResources, this.jdField_a_of_type_Int));
+      a();
+      return;
+      localLayoutParams.leftMargin = this.e;
+      break;
+      label366:
+      if (this.jdField_a_of_type_Boolean) {
+        c();
+      } else {
+        d();
+      }
     }
   }
   
@@ -221,7 +216,31 @@ public class TipsBar
   
   private void c()
   {
-    this.jdField_b_of_type_AndroidWidgetImageView.setId(2131362050);
+    if (this.jdField_c_of_type_AndroidWidgetImageView != null)
+    {
+      this.jdField_c_of_type_AndroidWidgetImageView.setId(2131311528);
+      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+      localLayoutParams.rightMargin = this.e;
+      localLayoutParams.leftMargin = this.e;
+      localLayoutParams.addRule(11);
+      localLayoutParams.addRule(15);
+      addView(this.jdField_c_of_type_AndroidWidgetImageView, localLayoutParams);
+    }
+  }
+  
+  private Drawable d(Resources paramResources, int paramInt)
+  {
+    switch (paramInt)
+    {
+    }
+    for (paramResources = paramResources.getDrawable(2130839176);; paramResources = paramResources.getDrawable(2130839176)) {
+      return a(paramResources);
+    }
+  }
+  
+  private void d()
+  {
+    this.jdField_b_of_type_AndroidWidgetImageView.setId(2131311528);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.rightMargin = this.e;
     localLayoutParams.leftMargin = this.e;
@@ -230,28 +249,23 @@ public class TipsBar
     addView(this.jdField_b_of_type_AndroidWidgetImageView, localLayoutParams);
   }
   
-  private Drawable d(Resources paramResources, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (paramResources = paramResources.getDrawable(2130838655);; paramResources = paramResources.getDrawable(2130838655)) {
-      return a(paramResources);
-    }
-  }
-  
-  private void d()
+  private void e()
   {
     if (this.jdField_a_of_type_AndroidWidgetButton != null)
     {
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.rightMargin = this.e;
       localLayoutParams.leftMargin = this.e;
-      this.jdField_a_of_type_AndroidWidgetButton.setId(2131362050);
+      this.jdField_a_of_type_AndroidWidgetButton.setId(2131311528);
       localLayoutParams.addRule(11);
       localLayoutParams.addRule(15);
       addView(this.jdField_a_of_type_AndroidWidgetButton, localLayoutParams);
     }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
   }
   
   Drawable a(Drawable paramDrawable)
@@ -324,6 +338,26 @@ public class TipsBar
     return this.jdField_a_of_type_AndroidWidgetTextView;
   }
   
+  public void a()
+  {
+    if (ThemeUtil.isNowThemeIsNight(null, true, null)) {
+      if (this.jdField_a_of_type_AndroidViewView == null)
+      {
+        localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
+        this.jdField_a_of_type_AndroidViewView = new View(getContext());
+        this.jdField_a_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#7f000000"));
+        addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
+      }
+    }
+    while (this.jdField_a_of_type_AndroidViewView == null)
+    {
+      RelativeLayout.LayoutParams localLayoutParams;
+      return;
+    }
+    removeView(this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_AndroidViewView = null;
+  }
+  
   public void a(boolean paramBoolean)
   {
     if (this.jdField_b_of_type_AndroidWidgetImageView == null) {
@@ -333,25 +367,27 @@ public class TipsBar
     removeView(this.jdField_a_of_type_AndroidWidgetButton);
     removeView(this.jdField_c_of_type_AndroidWidgetImageView);
     if (paramBoolean) {
-      c();
+      d();
     }
   }
   
-  public Drawable b(Resources paramResources, int paramInt)
+  protected Drawable b(Resources paramResources, int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      paramResources = paramResources.getDrawable(2130838653);
+      paramResources = paramResources.getDrawable(2130839104);
     }
     for (;;)
     {
       return a(paramResources);
-      paramResources = paramResources.getDrawable(2130838653);
+      paramResources = paramResources.getDrawable(2130839104);
       continue;
-      paramResources = paramResources.getDrawable(2130838651);
+      paramResources = paramResources.getDrawable(2130839172);
       continue;
-      paramResources = paramResources.getDrawable(2130838648);
+      paramResources = paramResources.getDrawable(2130839168);
+      continue;
+      paramResources = paramResources.getDrawable(2130839105);
     }
   }
   
@@ -364,16 +400,16 @@ public class TipsBar
     removeView(this.jdField_a_of_type_AndroidWidgetButton);
     removeView(this.jdField_b_of_type_AndroidWidgetImageView);
     if (paramBoolean) {
-      b();
+      c();
     }
   }
   
-  public Drawable c(Resources paramResources, int paramInt)
+  protected Drawable c(Resources paramResources, int paramInt)
   {
     switch (paramInt)
     {
     }
-    for (paramResources = paramResources.getDrawable(2130838645);; paramResources = paramResources.getDrawable(2130838647)) {
+    for (paramResources = paramResources.getDrawable(2130848851);; paramResources = paramResources.getDrawable(2130839167)) {
       return a(paramResources);
     }
   }
@@ -386,7 +422,7 @@ public class TipsBar
   
   public void setBarType(int paramInt)
   {
-    if ((paramInt != 1) && (paramInt != 2) && (paramInt != 3) && (paramInt != 4) && (paramInt != 5)) {
+    if ((paramInt != 1) && (paramInt != 2) && (paramInt != 3) && (paramInt != 4) && (paramInt != 5) && (paramInt != 6)) {
       throw new RuntimeException("Parameter bgType is illegal!");
     }
     if (paramInt == this.jdField_a_of_type_Int) {}
@@ -428,7 +464,7 @@ public class TipsBar
       removeView(this.jdField_c_of_type_AndroidWidgetImageView);
       this.jdField_b_of_type_JavaLangString = paramCharSequence.toString();
       this.jdField_a_of_type_AndroidWidgetButton.setText(this.jdField_b_of_type_JavaLangString);
-      d();
+      e();
     }
   }
   
@@ -448,6 +484,11 @@ public class TipsBar
       return;
     }
     super.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+  }
+  
+  public void setOriginalOnClickListener(View.OnClickListener paramOnClickListener)
+  {
+    super.setOnClickListener(paramOnClickListener);
   }
   
   public void setTipsIcon(Drawable paramDrawable)
@@ -499,7 +540,7 @@ public class TipsBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TipsBar
  * JD-Core Version:    0.7.0.1
  */

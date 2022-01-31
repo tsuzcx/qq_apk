@@ -1,58 +1,59 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.jsp.MediaApiPlugin;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.hardware.display.DisplayManager;
+import android.hardware.display.DisplayManager.DisplayListener;
+import android.os.Handler;
+import android.view.Display;
+import android.view.WindowManager;
 
+@TargetApi(17)
 public class akqq
-  implements Runnable
+  implements DisplayManager.DisplayListener
 {
-  public akqq(HealthBusinessPlugin paramHealthBusinessPlugin, List paramList) {}
+  private int jdField_a_of_type_Int;
+  private final Context jdField_a_of_type_AndroidContentContext;
+  private final Display jdField_a_of_type_AndroidViewDisplay;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  public void run()
+  @TargetApi(23)
+  public akqq(Context paramContext)
   {
-    for (;;)
-    {
-      String str1;
-      String str2;
-      JSONObject localJSONObject;
-      synchronized (HealthBusinessPlugin.a)
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        if (localIterator.hasNext())
-        {
-          str1 = (String)localIterator.next();
-          if ((TextUtils.isEmpty(str1)) || (HealthBusinessPlugin.a.containsKey(str1))) {
-            continue;
-          }
-          str2 = MediaApiPlugin.a(str1, 0);
-          localJSONObject = new JSONObject();
-        }
-      }
-      try
-      {
-        localJSONObject.put("imageID", str1);
-        localJSONObject.put("data", str2);
-        label87:
-        HealthBusinessPlugin.a.put(str1, localJSONObject);
-        continue;
-        localObject = finally;
-        throw localObject;
-        return;
-      }
-      catch (JSONException localJSONException)
-      {
-        break label87;
-      }
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidViewDisplay = ((WindowManager)paramContext.getSystemService(WindowManager.class)).getDefaultDisplay();
   }
+  
+  @TargetApi(23)
+  public void a()
+  {
+    ((DisplayManager)this.jdField_a_of_type_AndroidContentContext.getSystemService(DisplayManager.class)).registerDisplayListener(this, new Handler());
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  @TargetApi(23)
+  public void b()
+  {
+    ((DisplayManager)this.jdField_a_of_type_AndroidContentContext.getSystemService(DisplayManager.class)).unregisterDisplayListener(this);
+  }
+  
+  public void onDisplayAdded(int paramInt) {}
+  
+  public void onDisplayChanged(int paramInt)
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void onDisplayRemoved(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akqq
  * JD-Core Version:    0.7.0.1
  */

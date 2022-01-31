@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.nearby.smooth;
 
-import afqh;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View.OnTouchListener;
 import android.widget.ListAdapter;
+import atbi;
+import atbj;
+import begh;
+import behk;
 import com.tencent.mobileqq.fpsreport.FPSXListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import com.tencent.widget.AdapterView.OnItemSelectedListener;
 
 public class AsyncListView
   extends FPSXListView
-  implements AsyncAbsListView
 {
-  final afqh a = new afqh(this);
+  final atbi a = new atbi(this);
   
   public AsyncListView(Context paramContext)
   {
@@ -42,24 +42,24 @@ public class AsyncListView
     this.a.b();
   }
   
-  public void setItemManager(ItemManager paramItemManager)
+  public void setItemManager(atbj paramatbj)
   {
-    this.a.a(paramItemManager);
+    this.a.a(paramatbj);
   }
   
-  public void setOnItemSelectedListener(AdapterView.OnItemSelectedListener paramOnItemSelectedListener)
+  public void setOnItemSelectedListener(behk parambehk)
   {
-    this.a.a(paramOnItemSelectedListener);
+    this.a.a(parambehk);
     if (!this.a.a()) {
-      super.setOnItemSelectedListener(paramOnItemSelectedListener);
+      super.setOnItemSelectedListener(parambehk);
     }
   }
   
-  public void setOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener)
+  public void setOnScrollListener(begh parambegh)
   {
-    this.a.a(paramOnScrollListener);
+    this.a.a(parambegh);
     if (!this.a.a()) {
-      super.setOnScrollListener(paramOnScrollListener);
+      super.setOnScrollListener(parambegh);
     }
   }
   

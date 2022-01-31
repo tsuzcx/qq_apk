@@ -1,26 +1,35 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.VideoUrl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingManager.2.1;
+import java.util.List;
 
-public final class ancj
-  implements Parcelable.Creator
+public class ancj
+  extends ajhy
 {
-  public VideoUrl a(Parcel paramParcel)
+  ancj(anch paramanch) {}
+  
+  public void a(List<CustomEmotionData> paramList)
   {
-    VideoUrl localVideoUrl = new VideoUrl();
-    localVideoUrl.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localVideoUrl.jdField_a_of_type_Int = paramParcel.readInt();
-    return localVideoUrl;
+    if (anch.f(this.a) == null) {
+      return;
+    }
+    anch.g(this.a).removeObserver(anch.a(this.a));
+    ThreadManager.excute(new FavroamingManager.2.1(this, paramList), 128, null, true);
   }
   
-  public VideoUrl[] a(int paramInt)
+  public void a(boolean paramBoolean)
   {
-    return new VideoUrl[paramInt];
+    if (anch.e(this.a) == null) {}
+    while (!paramBoolean) {
+      return;
+    }
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ancj
  * JD-Core Version:    0.7.0.1
  */

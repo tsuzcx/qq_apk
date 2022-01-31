@@ -1,32 +1,36 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.playvideo.ProgressControler;
-import com.tencent.biz.qqstory.playvideo.player.IVideoView;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.mobileqq.data.ArkAppMessage;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class nsd
-  implements Runnable
 {
-  public nsd(ProgressControler paramProgressControler) {}
+  public static AtomicBoolean a;
   
-  public void run()
+  public static ArkAppMessage a(por parampor)
   {
-    if (this.a.jdField_a_of_type_Boolean) {}
-    IVideoView localIVideoView;
-    do
-    {
-      do
-      {
-        return;
-      } while (this.a.jdField_a_of_type_JavaLangRefWeakReference == null);
-      localIVideoView = (IVideoView)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localIVideoView == null);
-    if (localIVideoView.b() > 0L)
-    {
-      this.a.a(this.a.jdField_a_of_type_Int, localIVideoView.a(), localIVideoView.b(), localIVideoView);
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 50L);
+    return null;
   }
+  
+  public static void a() {}
+  
+  public static void a(int paramInt) {}
+  
+  public static void a(View paramView) {}
+  
+  public static void a(ArkAppMessage paramArkAppMessage, int paramInt) {}
+  
+  public static void a(nsb paramnsb, int paramInt) {}
+  
+  public static boolean a(ArkAppMessage paramArkAppMessage)
+  {
+    return false;
+  }
+  
+  public static void b() {}
+  
+  public static void b(int paramInt) {}
+  
+  public static void b(View paramView) {}
 }
 
 

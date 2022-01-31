@@ -6,12 +6,12 @@ import android.media.MediaPlayer.OnCompletionListener;
 class j
   implements MediaPlayer.OnCompletionListener
 {
-  j(f paramf) {}
+  j(g paramg) {}
   
   public void onCompletion(MediaPlayer paramMediaPlayer)
   {
     paramMediaPlayer.release();
-    this.a.X = null;
+    this.a.ac = null;
   }
 }
 

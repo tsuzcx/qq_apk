@@ -1,110 +1,66 @@
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil.ResponseCallback;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.util.SpellTool;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import mqq.manager.TicketManager;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity;
 
-public final class mrr
-  implements Runnable
+public class mrr
+  implements ajfe
 {
-  public mrr(String paramString1, String paramString2, String paramString3, FastWebRequestUtil.ResponseCallback paramResponseCallback) {}
+  public mrr(LebaSearchMoreInfoActivity paramLebaSearchMoreInfoActivity) {}
   
-  public void run()
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject1 = (QQAppInterface)ReadInJoyUtils.a();
-    Object localObject3 = ((QQAppInterface)localObject1).getAccount();
-    Object localObject4 = ((TicketManager)((QQAppInterface)localObject1).getManager(2)).getSkey((String)localObject3);
-    label120:
-    boolean bool;
-    try
-    {
-      localObject3 = new HashMap();
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        localObject1 = "0";
-        ((Map)localObject3).put("p", localObject1);
-        ((Map)localObject3).put("id", this.b);
-        ((Map)localObject3).put("rowkey", this.c);
-        ((Map)localObject3).put("mqv", "7.6.8");
-        if (localObject4 != null) {
-          break label370;
-        }
-        localObject1 = "";
-        ((Map)localObject3).put("token", localObject1);
-        ((Map)localObject3).put("net_type", HttpUtil.a() + "");
-        localObject1 = new JSONObject();
-        ((JSONObject)localObject1).put("c_version", "7.6.8".replace(".", ""));
-        ((Map)localObject3).put("extInfo", URLEncoder.encode(((JSONObject)localObject1).toString()));
-        localObject1 = new StringBuilder(FastWebRequestUtil.b);
-        localObject3 = ((Map)localObject3).entrySet().iterator();
-        for (;;)
-        {
-          if (((Iterator)localObject3).hasNext())
-          {
-            localObject4 = (Map.Entry)((Iterator)localObject3).next();
-            ((StringBuilder)localObject1).append("&" + (String)((Map.Entry)localObject4).getKey() + "=" + (String)((Map.Entry)localObject4).getValue());
-            continue;
-            if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebRequestUtil$ResponseCallback == null) {
-              break;
-            }
-          }
-        }
-      }
-    }
-    catch (Exception localException)
-    {
-      QLog.e("Q.readinjoy.fast_web", 2, localException, new Object[] { "" + SpellTool.a });
-      bool = false;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebRequestUtil$ResponseCallback.a(bool, localArrayList);
+    if (paramObject == null) {
       return;
-      Object localObject2 = this.jdField_a_of_type_JavaLangString;
-      break;
-      label370:
-      localObject2 = ReadInJoyWebDataManager.a((String)localObject4);
-      break label120;
-      QLog.d("Q.readinjoy.fast_web", 2, "" + localObject2);
-      localObject3 = new Bundle();
-      HttpUtil.a((Bundle)localObject3);
-      localObject2 = new String(HttpUtil.a(BaseApplicationImpl.getContext(), ((StringBuilder)localObject2).toString(), "GET", null, (Bundle)localObject3));
-      QLog.d("Q.readinjoy.fast_web", 2, "" + (String)localObject2);
-      localObject2 = new JSONObject((String)localObject2).getJSONObject("data").getJSONArray("recommend_other");
-      int i = 0;
-      while (i < ((JSONArray)localObject2).length())
+    }
+    paramObject = (Bundle)paramObject;
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 17: 
+      paramBoolean = paramObject.getBoolean("result");
+      StringBuilder localStringBuilder = new StringBuilder();
+      if (paramBoolean)
       {
-        localObject3 = FastWebRequestUtil.a(((JSONArray)localObject2).getJSONObject(i));
-        if (localObject3 != null) {
-          localArrayList.add(localObject3);
+        paramObject = this.a.getString(2131630582);
+        localStringBuilder.append(paramObject);
+        localStringBuilder.append(this.a.getString(2131630580));
+        localStringBuilder.append(this.a.c);
+        if (!paramBoolean) {
+          break label233;
         }
-        i += 1;
+        paramInt = 2;
+        label104:
+        bbmy.a(this.a, paramInt, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
+        paramObject = this.a;
+        if (!paramBoolean) {
+          break label238;
+        }
       }
-      bool = true;
+      break;
+    }
+    label233:
+    label238:
+    for (paramInt = -1;; paramInt = 0)
+    {
+      paramObject.setResult(paramInt);
+      return;
+      this.a.a = paramObject.getBoolean("isOpen");
+      this.a.c = paramObject.getString("name");
+      if (this.a.c != null) {
+        this.a.b = this.a.getString(2131630642, new Object[] { this.a.c });
+      }
+      LebaSearchMoreInfoActivity.a(this.a);
+      return;
+      paramObject = this.a.getString(2131630581);
+      break;
+      paramInt = 1;
+      break label104;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     mrr
  * JD-Core Version:    0.7.0.1
  */

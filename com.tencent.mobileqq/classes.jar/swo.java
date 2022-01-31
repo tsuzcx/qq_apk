@@ -1,34 +1,29 @@
-import android.os.AsyncTask;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class swo
-  implements Animation.AnimationListener
+class swo
+  extends SimpleJob<Object>
 {
-  public swo(FriendProfileImageActivity paramFriendProfileImageActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  swo(swm paramswm, String paramString)
   {
-    this.a.a.execute(new Void[0]);
-    this.a.f = false;
-    if (this.a.d) {
-      this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-    }
-    while (this.a.jdField_c_of_type_Boolean) {
-      return;
-    }
-    this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+    super(paramString);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    if (this.a.jdField_a_of_type_Swp == null) {
+      this.a.jdField_a_of_type_Swp = new swp(this.a, this.a.d);
+    }
+    this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_Swp.jdField_a_of_type_JavaLangString;
+    swm.a(this.a);
+    return null;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     swo
  * JD-Core Version:    0.7.0.1
  */

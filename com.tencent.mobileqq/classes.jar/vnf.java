@@ -1,26 +1,34 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.StructingMsgViewHolder;
-
-public class vnf
-  implements Animation.AnimationListener
+class vnf
+  implements Cloneable
 {
-  public vnf(StructingMsgItemBuilder paramStructingMsgItemBuilder, StructingMsgItemBuilder.StructingMsgViewHolder paramStructingMsgViewHolder) {}
+  public double a;
+  public int a;
+  public String a;
+  public int b = -1;
+  public String b;
+  public int c = -1;
+  public String c;
+  public int d;
+  public String d;
+  public String e;
+  public String f = "0";
   
-  public void onAnimationEnd(Animation paramAnimation) {}
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public vnf(String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$StructingMsgViewHolder.a.setVisibility(0);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_d_of_type_Int = -1;
+    this.jdField_a_of_type_Double = -1.0D;
+    this.jdField_d_of_type_JavaLangString = paramString;
+  }
+  
+  public vnf a()
+  {
+    return (vnf)super.clone();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vnf
  * JD-Core Version:    0.7.0.1
  */

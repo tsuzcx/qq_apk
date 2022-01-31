@@ -1,86 +1,48 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
-import com.tencent.mobileqq.video.VipVideoApiPlugin;
-import com.tencent.mobileqq.video.VipVideoManager;
+import com.tencent.YTFace.model.FaceStatus;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.util.ArrayList;
 
 public class akse
-  extends Client.onRemoteRespObserver
 {
-  public akse(VipVideoApiPlugin paramVipVideoApiPlugin) {}
+  public int a;
+  public String a;
+  public ArrayList<aksf> a;
+  public FaceStatus[] a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
   
-  public void onBindedToClient() {}
-  
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle)
+  public static boolean a(akse paramakse)
   {
-    Object localObject;
-    String str;
-    if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == this.a.a.key))
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramakse != null)
     {
-      localObject = paramBundle.getString("cmd");
-      str = paramBundle.getString("callbackid");
-      paramBundle = paramBundle.getBundle("response");
-    }
-    for (;;)
-    {
-      try
+      bool1 = bool2;
+      if (paramakse.jdField_a_of_type_Int == 0)
       {
-        if (TextUtils.equals((CharSequence)localObject, "ipc_video_isinstalled"))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("VideoApiPlugin", 2, "video remote response cmd=" + (String)localObject);
-          }
-          boolean bool = paramBundle.getBoolean("isInstalled");
-          this.a.callJs(str, new String[] { String.valueOf(bool) });
-          return;
-        }
-        if (!TextUtils.equals((CharSequence)localObject, "ipc_video_install_plugin")) {
-          break label347;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoApiPlugin", 2, "video remote response cmd=" + (String)localObject);
-        }
-        int i = paramBundle.getInt("status");
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("status", i);
-        switch (i)
-        {
-        case 3: 
-          this.a.callJs(str, new String[] { ((JSONObject)localObject).toString() });
-          return;
+        bool1 = bool2;
+        if (paramakse.jdField_b_of_type_Int == 0) {
+          bool1 = true;
         }
       }
-      catch (Exception paramBundle)
-      {
-        paramBundle.printStackTrace();
-        return;
-      }
-      ((JSONObject)localObject).put("result", 0);
-      ((JSONObject)localObject).put("progress", 100);
-      ((JSONObject)localObject).put("msg", "install finished");
-      continue;
-      ((JSONObject)localObject).put("result", 1);
-      ((JSONObject)localObject).put("progress", paramBundle.getFloat("progress"));
-      ((JSONObject)localObject).put("msg", "install progress");
-      continue;
-      ((JSONObject)localObject).put("result", paramBundle.getInt("errCode"));
-      ((JSONObject)localObject).put("progress", VipVideoManager.a);
-      ((JSONObject)localObject).put("msg", "install failed");
-      continue;
-      label347:
-      return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("ARRspFaceResult", 2, "[ScanStarFace]isRecogSuccess result = " + bool1);
+    }
+    return bool1;
+  }
+  
+  public String toString()
+  {
+    return "ARCloudRecogRspFaceResult{errCode_MQ=" + this.jdField_a_of_type_Int + ", errMsg_MQ='" + this.jdField_a_of_type_JavaLangString + '\'' + ", errCode_YT=" + this.jdField_b_of_type_Int + ", errMsg_YT=" + this.jdField_b_of_type_JavaLangString + ", time_ms_YT=" + this.jdField_c_of_type_Int + ", group_size_YT=" + this.d + ", sessionID='" + this.jdField_c_of_type_JavaLangString + '\'' + ", starInfoList=" + this.jdField_a_of_type_JavaUtilArrayList + ", faceStatus[]=" + this.jdField_a_of_type_ArrayOfComTencentYTFaceModelFaceStatus + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akse
  * JD-Core Version:    0.7.0.1
  */

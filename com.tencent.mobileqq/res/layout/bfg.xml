@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/b2n" android:id="@id/ii8" android:background="@drawable/bg_texture" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="false"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/izs" android:background="@drawable/common_strip_setting_bg" android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_marginLeft="0.0dip" android:layout_marginTop="35.0dip" android:layout_marginRight="0.0dip">
+                <ImageView android:id="@id/c0o" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="10.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+                <TextView android:gravity="center_vertical" android:id="@id/f5e" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:maxWidth="160.0dip" android:singleLine="true" android:layout_toRightOf="@id/c0o" android:layout_centerVertical="true" style="@style/w0" />
+                <com.tencent.widget.Switch android:id="@id/izr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            </RelativeLayout>
+            <TextView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="10.0dip" android:text="@string/g94" style="@style/w4" />
+            <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/j09" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" formItem:bgType="iwf" formItem:leftText="@string/g97" formItem:rightText="@string/g93" formItem:showArrow="true" />
+            <RelativeLayout android:id="@id/coo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+                <TextView android:textSize="14.0sp" android:textColor="#ff808080" android:id="@id/coj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/bd5" android:maxLines="1" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+                <Button android:id="@id/cob" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/g46" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/i0" />
+            </RelativeLayout>
+        </LinearLayout>
+        <RelativeLayout android:id="@id/izv" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </RelativeLayout>
+</com.tencent.mobileqq.widget.BounceScrollView>

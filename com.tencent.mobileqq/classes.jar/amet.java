@@ -1,18 +1,16 @@
-import com.tencent.qqprotect.qsec.QSecCbMgr;
-
-public class amet
-  implements Runnable
+class amet
+  implements bhnx
 {
-  public amet(QSecCbMgr paramQSecCbMgr) {}
+  amet(ames paramames) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    this.a.a(false);
+    ((bhko)bhfm.a(1)).a(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amet
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,24 @@
-import android.content.SharedPreferences;
-import android.text.TextUtils;
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.biz.troopplugin.PluginJumpManager;
+import com.tencent.pts.nativemodule.PTSNativeModuleRegistry.IPTSMarkArticleRead;
+import com.tencent.qphone.base.util.QLog;
 
 public class pef
-  implements AsyncBack
+  implements PTSNativeModuleRegistry.IPTSMarkArticleRead
 {
-  public pef(PluginJumpManager paramPluginJumpManager) {}
+  public final String a = "PTSMarkArticleReadModule";
   
-  public void loaded(String paramString, int paramInt)
+  public void markArticleRead(long paramLong1, long paramLong2)
   {
-    if (paramInt == 0) {
-      HtmlOffline.a("urlplugin.cfg", this.a.mContext, "1007", new peg(this));
-    }
-    while (!TextUtils.isEmpty(this.a.mPref.getString("config_file_version", ""))) {
+    QLog.i("PTSMarkArticleReadModule", 1, "[markArticleRead], articleID = " + paramLong1 + ", channelID = " + paramLong2);
+    try
+    {
+      ogy.a().a(paramLong1, System.currentTimeMillis());
       return;
     }
-    this.a.loadConfigFromFile();
+    catch (Exception localException)
+    {
+      QLog.e("PTSMarkArticleReadModule", 1, "[markArticleRead], e = " + localException);
+    }
   }
-  
-  public void progress(int paramInt) {}
 }
 
 

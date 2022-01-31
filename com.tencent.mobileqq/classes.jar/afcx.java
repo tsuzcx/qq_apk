@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import java.util.List;
+import com.tencent.mobileqq.activity.contact.troop.TroopSuspiciousFragment;
 
 public class afcx
+  implements aexq
 {
-  public String a;
-  public List a;
+  public afcx(TroopSuspiciousFragment paramTroopSuspiciousFragment) {}
   
-  private afcx(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public void a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afcx
  * JD-Core Version:    0.7.0.1
  */

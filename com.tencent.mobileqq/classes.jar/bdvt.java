@@ -1,0 +1,21 @@
+import io.flutter.plugin.common.MethodCall;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodChannel.Result;
+
+class bdvt
+  implements MethodChannel.MethodCallHandler
+{
+  bdvt(bdvs parambdvs) {}
+  
+  public void onMethodCall(MethodCall paramMethodCall, MethodChannel.Result paramResult)
+  {
+    paramResult.success(null);
+    bdnw.a("miniapp-start-TISSUE-flutter_method_channel", paramMethodCall.method);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     bdvt
+ * JD-Core Version:    0.7.0.1
+ */

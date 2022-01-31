@@ -1,22 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification;
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.BubbleAppInPushNotification;
+import android.annotation.TargetApi;
+import android.content.ClipData;
+import android.content.Context;
+import android.os.Build.VERSION;
 
-public class mpb
-  implements View.OnClickListener
+public final class mpb
 {
-  public mpb(BubbleAppInPushNotification paramBubbleAppInPushNotification) {}
-  
-  public void onClick(View paramView)
+  @TargetApi(11)
+  public static void a(Context paramContext, String paramString)
   {
-    AppInPushNotification.a(1);
-    this.a.a(true, false);
+    if (Build.VERSION.SDK_INT >= 11)
+    {
+      ((android.content.ClipboardManager)paramContext.getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(null, paramString));
+      return;
+    }
+    ((android.text.ClipboardManager)paramContext.getSystemService("clipboard")).setText(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     mpb
  * JD-Core Version:    0.7.0.1
  */

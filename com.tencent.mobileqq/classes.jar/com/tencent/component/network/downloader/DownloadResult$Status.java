@@ -4,12 +4,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.component.network.module.report.ImageDownloadReporter;
-import pob;
 
 public final class DownloadResult$Status
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new pob();
+  public static final Parcelable.Creator<Status> CREATOR = new DownloadResult.Status.1();
   public static final int REASON_FAIL_CONTENT = 5;
   public static final int REASON_FAIL_EXCEPTION = 4;
   public static final int REASON_FAIL_META = 7;

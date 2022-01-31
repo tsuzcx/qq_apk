@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class cmd0x58b$ConfBaseInfo
-  extends MessageMicro
+  extends MessageMicro<ConfBaseInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_conf_name = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -38,7 +38,7 @@ public final class cmd0x58b$ConfBaseInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x58b.cmd0x58b.ConfBaseInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -9,8 +9,8 @@ import java.util.Map;
 public final class UgcDecoQualReq
   extends JceStruct
 {
-  static Map cache_mapItemId = new HashMap();
-  public Map mapItemId;
+  static Map<Integer, Integer> cache_mapItemId = new HashMap();
+  public Map<Integer, Integer> mapItemId;
   
   static
   {
@@ -19,7 +19,7 @@ public final class UgcDecoQualReq
   
   public UgcDecoQualReq() {}
   
-  public UgcDecoQualReq(Map paramMap)
+  public UgcDecoQualReq(Map<Integer, Integer> paramMap)
   {
     this.mapItemId = paramMap;
   }

@@ -1,33 +1,59 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
-import com.tencent.widget.ActionSheet;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqIconPostfix;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspIconPostfix;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class sxl
-  implements IphonePickerView.IphonePickListener
+  extends soh
 {
-  public sxl(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  private ArrayList<String> a;
   
-  public void onConfirmBtClicked()
+  public sxl(ArrayList<String> paramArrayList)
   {
-    if ((this.a.a != null) && (this.a.a.isShowing())) {
-      this.a.a.dismiss();
-    }
+    this.a = paramArrayList;
   }
   
-  public void onItemSelected(int paramInt1, int paramInt2)
+  public String a()
   {
-    if (paramInt2 == 0) {}
-    for (paramInt1 = 0;; paramInt1 = 1)
+    return skt.a("StorySvc.batch_get_user_icon_info");
+  }
+  
+  public soi a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspIconPostfix localRspIconPostfix = new qqstory_service.RspIconPostfix();
+    try
     {
-      this.a.c = true;
-      this.a.a(paramInt1, true);
-      return;
+      localRspIconPostfix.mergeFrom(paramArrayOfByte);
+      return new sxm(localRspIconPostfix);
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      urk.d("GetUserIconHandler", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqIconPostfix localReqIconPostfix = new qqstory_service.ReqIconPostfix();
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      if (!TextUtils.isEmpty(str)) {
+        localReqIconPostfix.union_id_list.add(ByteStringMicro.copyFromUtf8(str));
+      }
+    }
+    return localReqIconPostfix.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sxl
  * JD-Core Version:    0.7.0.1
  */

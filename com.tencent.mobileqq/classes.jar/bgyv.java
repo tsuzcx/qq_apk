@@ -1,0 +1,20 @@
+import android.graphics.SurfaceTexture;
+
+public abstract interface bgyv
+{
+  public abstract void a(int paramInt1, int paramInt2);
+  
+  public abstract void a(SurfaceTexture paramSurfaceTexture);
+  
+  public abstract void a(boolean paramBoolean, String paramString);
+  
+  public abstract void g();
+  
+  public abstract void h();
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+ * Qualified Name:     bgyv
+ * JD-Core Version:    0.7.0.1
+ */

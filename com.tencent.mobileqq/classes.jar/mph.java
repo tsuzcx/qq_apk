@@ -1,19 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.DropDownAppInPushNotification;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
 class mph
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
-  mph(mpg parammpg) {}
+  mph(mpf parammpf) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    this.a.a.a.a();
+    mpf.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     mph
  * JD-Core Version:    0.7.0.1
  */

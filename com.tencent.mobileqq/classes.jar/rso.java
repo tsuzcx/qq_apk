@@ -1,69 +1,58 @@
-import android.content.Intent;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AuthDevOpenUgActivity;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.manager.AccountManager;
-import mqq.observer.WtloginObserver;
-import mqq.os.MqqHandler;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.image.URLDrawableHandler;
 
 public class rso
-  extends WtloginObserver
+  implements URLDrawableHandler
 {
-  public rso(AuthDevOpenUgActivity paramAuthDevOpenUgActivity) {}
+  private URLDrawableHandler jdField_a_of_type_ComTencentImageURLDrawableHandler;
+  private rsn jdField_a_of_type_Rsn;
   
-  public void OnCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
+  public rso(URLDrawableHandler paramURLDrawableHandler, rsn paramrsn)
   {
-    if (paramInt == 0)
-    {
-      paramWUserSigInfo = (AccountManager)this.a.app.getManager(0);
-      if (paramWUserSigInfo != null) {
-        paramWUserSigInfo.refreshDA2(this.a.app.getCurrentAccountUin(), null);
-      }
-      EquipmentLockImpl.a().a(this.a.app, this.a, this.a.app.getCurrentAccountUin(), true);
-      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131436578), 0).b(this.a.getTitleBarHeight());
-      paramWUserSigInfo = this.a.app.getHandler(LoginInfoActivity.class);
-      if (paramWUserSigInfo != null) {
-        paramWUserSigInfo.obtainMessage(20140331, 1, 0).sendToTarget();
-      }
-      AuthDevOpenUgActivity.a(this.a, true, 0);
-      paramErrMsg = new Intent();
-      paramErrMsg.putExtra("auth_dev_open", true);
-      if (AuthDevOpenUgActivity.a(this.a) != null) {}
-      for (paramWUserSigInfo = AuthDevOpenUgActivity.a(this.a).Mobile;; paramWUserSigInfo = "")
-      {
-        paramErrMsg.putExtra("phone_num", paramWUserSigInfo);
-        this.a.a(-1, paramErrMsg);
-        return;
-      }
-    }
-    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
-    {
-      QQToast.a(this.a.getApplicationContext(), 1, paramErrMsg.getMessage(), 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131436609), 0).b(this.a.getTitleBarHeight());
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler = paramURLDrawableHandler;
+    this.jdField_a_of_type_Rsn = paramrsn;
   }
   
-  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public rsn a()
   {
-    if ((paramInt != 0) || (paramDevlockInfo == null))
-    {
-      QQToast.a(this.a, this.a.getString(2131436611), 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    AuthDevOpenUgActivity.a(this.a, paramDevlockInfo);
+    return this.jdField_a_of_type_Rsn;
+  }
+  
+  public void doCancel()
+  {
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.doCancel();
+  }
+  
+  public boolean isCancelled()
+  {
+    return this.jdField_a_of_type_ComTencentImageURLDrawableHandler.isCancelled();
+  }
+  
+  public void onFileDownloadFailed(int paramInt)
+  {
+    this.jdField_a_of_type_Rsn.a(false, paramInt);
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadFailed(paramInt);
+  }
+  
+  public void onFileDownloadStarted()
+  {
+    this.jdField_a_of_type_Rsn.b();
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadStarted();
+  }
+  
+  public void onFileDownloadSucceed(long paramLong)
+  {
+    this.jdField_a_of_type_Rsn.a(true, 0);
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.onFileDownloadSucceed(paramLong);
+  }
+  
+  public void publishProgress(int paramInt)
+  {
+    this.jdField_a_of_type_ComTencentImageURLDrawableHandler.publishProgress(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rso
  * JD-Core Version:    0.7.0.1
  */

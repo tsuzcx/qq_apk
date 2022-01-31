@@ -1,31 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.contacts.fragment.AlphabetFriendFragment;
 
-class afet
-  implements DialogInterface.OnClickListener
+public class afet
+  extends ajmm
 {
-  afet(afes paramafes) {}
+  private afet(AlphabetFriendFragment paramAlphabetFriendFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void f()
   {
-    if (!NetworkUtil.g(this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))
-    {
-      QQToast.a(this.a.a.jdField_a_of_type_AndroidViewView.getContext(), 1, "网络异常，无法操作", 0).a();
-      return;
+    if (AlphabetFriendFragment.b(this.a)) {
+      AlphabetFriendFragment.a(this.a, 1400L, true);
     }
-    ((NearbyMomentManager)this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(262)).a(this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a, this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.c, this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.g, new afeu(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afet
  * JD-Core Version:    0.7.0.1
  */

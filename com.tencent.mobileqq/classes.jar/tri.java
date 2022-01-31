@@ -1,104 +1,56 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.ApolloManager.CheckApolloInfoResult;
-import com.tencent.mobileqq.apollo.data.ApolloDress;
-import com.tencent.mobileqq.apollo.task.ApolloActionHelper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloBaseInfo;
-import com.tencent.mobileqq.vas.VasExtensionHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
 
 public class tri
-  implements Runnable
 {
-  private WeakReference a;
-  public boolean a;
+  static volatile tri jdField_a_of_type_Tri;
+  Context jdField_a_of_type_AndroidContentContext;
+  trj jdField_a_of_type_Trj;
   
-  public tri(QQSettingMe paramQQSettingMe)
+  private tri(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQSettingMe);
+    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
   }
   
-  public void run()
+  public static tri a(Context paramContext)
   {
-    boolean bool = false;
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {}
-    QQSettingMe localQQSettingMe;
-    do
+    if (jdField_a_of_type_Tri == null) {}
+    try
     {
-      return;
-      localQQSettingMe = (QQSettingMe)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while ((localQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) || (localQQSettingMe.jdField_a_of_type_AndroidOsHandler == null));
-    Object localObject2 = null;
-    Object localObject1 = null;
-    Object localObject3 = ((ApolloManager)localQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(152)).b(localQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    int i;
-    if (localObject3 != null)
-    {
-      localQQSettingMe.d = ((ApolloBaseInfo)localObject3).apolloStatus;
-      localObject2 = ((ApolloBaseInfo)localObject3).getApolloDress();
-      if (localObject2 == null) {
-        break label344;
+      if (jdField_a_of_type_Tri == null) {
+        jdField_a_of_type_Tri = new tri(paramContext);
       }
-      i = ((ApolloDress)localObject2).jdField_a_of_type_Int;
-      localObject1 = ((ApolloDress)localObject2).a();
+      return jdField_a_of_type_Tri;
     }
-    for (;;)
-    {
-      localObject2 = localObject1;
-      int j = i;
-      if (((ApolloBaseInfo)localObject3).apolloLocalTS != ((ApolloBaseInfo)localObject3).apolloServerTS)
-      {
-        ((VasExtensionHandler)localQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(71)).a("qqSettingMe");
-        j = i;
-        localObject2 = localObject1;
-      }
-      label165:
-      if ((j <= 0) || (localObject2 == null) || (localObject2.length <= 0) || (localQQSettingMe.d != 1) || ((j > 0) && (localObject2 != null) && (!ApolloActionHelper.a(localQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), j, (int[])localObject2, localQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)))) {
-        bool = true;
-      }
-      for (;;)
-      {
-        if (ApolloActionHelper.a(localQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 11)) {
-          break label272;
-        }
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.w("QQSettingRedesign", 2, "checkDrawerBasicApolloAction up and down not ready");
-        return;
-        localQQSettingMe.d = 0;
-        j = 0;
-        break label165;
-        if (!ApolloEngine.a()) {
-          bool = true;
-        }
-      }
-      label272:
-      if (bool) {
-        break;
-      }
-      localObject1 = new ApolloManager.CheckApolloInfoResult();
-      localObject3 = localQQSettingMe.jdField_a_of_type_AndroidOsHandler.obtainMessage(65536);
-      ((Message)localObject3).obj = localObject1;
-      ((ApolloManager.CheckApolloInfoResult)localObject1).jdField_a_of_type_Int = j;
-      ((ApolloManager.CheckApolloInfoResult)localObject1).jdField_a_of_type_Boolean = bool;
-      ((ApolloManager.CheckApolloInfoResult)localObject1).jdField_a_of_type_ArrayOfInt = ((int[])localObject2);
-      ((ApolloManager.CheckApolloInfoResult)localObject1).b = this.jdField_a_of_type_Boolean;
-      localQQSettingMe.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject3);
-      return;
-      label344:
-      i = 0;
+    finally {}
+  }
+  
+  public trj a()
+  {
+    if (this.jdField_a_of_type_Trj == null) {
+      this.jdField_a_of_type_Trj = new trj();
     }
+    return this.jdField_a_of_type_Trj;
+  }
+  
+  public void a()
+  {
+    TVK_SDKMgr.setOnLogListener(a());
+  }
+  
+  public void a(Context paramContext)
+  {
+    TVK_SDKMgr.initSdk(paramContext.getApplicationContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
+  }
+  
+  public boolean a()
+  {
+    return TVK_SDKMgr.isInstalled(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tri
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.biz.pubaccount.persistence.entity;
 
 import android.text.TextUtils;
+import atmo;
+import badq;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class PAAdPreloadTask
-  extends Entity
+  extends atmo
 {
   public static final int NETWORK_TYPE_4G = 2;
   public static final int NETWORK_TYPE_NONE = 0;
@@ -41,7 +41,7 @@ public class PAAdPreloadTask
     return 1;
   }
   
-  public static ArrayList parserConfigTask(String paramString1, String paramString2)
+  public static ArrayList<PAAdPreloadTask> parserConfigTask(String paramString1, String paramString2)
   {
     localArrayList = new ArrayList();
     try
@@ -119,8 +119,8 @@ public class PAAdPreloadTask
   
   public boolean isNetworkValid()
   {
-    if (((this.mNetworkType & 0x1) != 0) && (NetworkUtil.h(null))) {}
-    while (((this.mNetworkType & 0x2) != 0) && (NetworkUtil.a(BaseApplication.getContext()) == 4)) {
+    if (((this.mNetworkType & 0x1) != 0) && (badq.h(null))) {}
+    while (((this.mNetworkType & 0x2) != 0) && (badq.a(BaseApplication.getContext()) == 4)) {
       return true;
     }
     return false;

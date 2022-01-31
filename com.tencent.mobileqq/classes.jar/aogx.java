@@ -1,20 +1,14 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.EditTextDialogEventListener;
-
-class aogx
-  implements Runnable
+abstract class aogx
 {
-  aogx(aogv paramaogv) {}
+  aogx(aofz paramaofz) {}
   
-  public void run()
-  {
-    this.a.a.a.a(this.a.a.a(), this.a.a.b());
-    this.a.a.a.a(true);
-  }
+  abstract void a(String paramString, int paramInt);
+  
+  abstract void a(String paramString, int paramInt, aogv paramaogv);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aogx
  * JD-Core Version:    0.7.0.1
  */

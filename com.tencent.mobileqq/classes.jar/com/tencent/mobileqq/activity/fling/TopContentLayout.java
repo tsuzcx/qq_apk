@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.fling;
 
+import afjy;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.widget.RelativeLayout;
 import android.widget.Scroller;
-import wvb;
 
 public class TopContentLayout
   extends RelativeLayout
@@ -36,7 +36,7 @@ public class TopContentLayout
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new wvb(this, paramContext));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new afjy(this, paramContext));
     this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext);
   }
   

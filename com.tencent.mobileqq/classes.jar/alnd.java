@@ -1,31 +1,20 @@
-import android.view.View;
-import android.widget.Toast;
-import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.base.ToastUtil;
+import android.animation.TypeEvaluator;
+import android.annotation.TargetApi;
 
+@TargetApi(11)
 public class alnd
-  implements Runnable
+  implements TypeEvaluator<alnb>
 {
-  public alnd(ToastUtil paramToastUtil, View paramView, int paramInt) {}
+  public alnd(almv paramalmv) {}
   
-  public void run()
+  public alnb a(float paramFloat, alnb paramalnb1, alnb paramalnb2)
   {
-    if (this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b == null)
-    {
-      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b = new Toast(CommonDataAdapter.a().a());
-      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b.setView(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b.setDuration(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b.show();
-      return;
-    }
-    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b.setView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b.setDuration(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentOpenBaseToastUtil.b.show();
+    return paramalnb2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alnd
  * JD-Core Version:    0.7.0.1
  */

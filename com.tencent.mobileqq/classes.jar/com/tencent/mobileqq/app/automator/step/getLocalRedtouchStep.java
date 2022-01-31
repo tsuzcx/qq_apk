@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.app.automator.step;
 
+import atax;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class getLocalRedtouchStep
   extends AsyncStep
 {
-  protected int a()
+  public int a()
   {
     if (QLog.isColorLevel()) {
       QLog.i("LocalRedTouchManager", 2, "reconnect pullRedTouchs");
     }
-    ((LocalRedTouchManager)this.a.b.getManager(159)).b();
+    ((atax)this.a.app.getManager(160)).b();
     return 7;
   }
 }

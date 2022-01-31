@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity.bless;
 
+import aeqd;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -12,10 +13,10 @@ import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import awqx;
+import bbmy;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.widget.immersive.ImmersiveTitleBar2;
 import java.util.ArrayList;
 
@@ -24,11 +25,11 @@ public class BlessSendTextActivity
   implements TextWatcher, View.OnClickListener
 {
   int jdField_a_of_type_Int = 0;
+  private aeqd jdField_a_of_type_Aeqd;
   View jdField_a_of_type_AndroidViewView;
   EditText jdField_a_of_type_AndroidWidgetEditText;
   protected RelativeLayout a;
-  private BlessManager jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager;
-  ArrayList jdField_a_of_type_JavaUtilArrayList;
+  ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
   private boolean jdField_a_of_type_Boolean;
   
   private void a(IBinder paramIBinder)
@@ -40,20 +41,20 @@ public class BlessSendTextActivity
   
   private void b()
   {
-    ((ImmersiveTitleBar2)findViewById(2131363398)).setVisibility(4);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131363397);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131493304));
-    findViewById(2131363447).setOnClickListener(this);
-    findViewById(2131363458).setOnClickListener(this);
-    findViewById(2131363429).setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131363457));
+    ((ImmersiveTitleBar2)findViewById(2131311626)).setVisibility(4);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131311534);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundColor(getResources().getColor(2131099769));
+    findViewById(2131302832).setOnClickListener(this);
+    findViewById(2131298480).setOnClickListener(this);
+    findViewById(2131298099).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131299936));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
     if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
     {
       this.jdField_a_of_type_AndroidWidgetEditText.setText((CharSequence)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int));
       this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363455));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131297442));
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
   }
   
@@ -63,15 +64,15 @@ public class BlessSendTextActivity
     {
       String str = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
       this.jdField_a_of_type_JavaUtilArrayList.set(this.jdField_a_of_type_Int, str);
-      this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager.a(this.jdField_a_of_type_Int, str, this.jdField_a_of_type_JavaUtilArrayList.size());
+      this.jdField_a_of_type_Aeqd.a(this.jdField_a_of_type_Int, str, this.jdField_a_of_type_JavaUtilArrayList.size());
     }
   }
   
   public void a()
   {
-    ReportController.b(this.app, "CliOper", "", "", "0X8006195", "0X8006195", 0, 0, String.valueOf(1), "", "", "");
+    awqx.b(this.app, "CliOper", "", "", "0X8006195", "0X8006195", 0, 0, String.valueOf(1), "", "", "");
     finish();
-    overridePendingTransition(2131034134, 2131034135);
+    overridePendingTransition(2130771997, 2130772001);
   }
   
   public void afterTextChanged(Editable paramEditable)
@@ -81,19 +82,19 @@ public class BlessSendTextActivity
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2130968725);
-    this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager = ((BlessManager)this.app.getManager(137));
-    this.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager.b();
+    super.setContentView(2131493094);
+    this.jdField_a_of_type_Aeqd = ((aeqd)this.app.getManager(138));
+    this.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_Aeqd.b();
     b();
     this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("fromoutweb", false);
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
   }
@@ -104,7 +105,7 @@ public class BlessSendTextActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131363458: 
+    case 2131298480: 
       do
       {
         return;
@@ -116,11 +117,11 @@ public class BlessSendTextActivity
         this.jdField_a_of_type_AndroidWidgetEditText.setText((CharSequence)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int));
         return;
       }
-    case 2131363429: 
+    case 2131298099: 
       paramView = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
       if (paramView.equals(""))
       {
-        QQToast.a(this, 2131438304, 1).a();
+        bbmy.a(this, 2131624936, 1).a();
         return;
       }
       c();
@@ -129,23 +130,22 @@ public class BlessSendTextActivity
       localIntent.putExtra("param_entrance", 15);
       localIntent.putExtra("param_only_friends", true);
       localIntent.putExtra("param_donot_need_contacts", true);
-      localIntent.putExtra("param_title", getString(2131438273));
-      localIntent.putExtra("param_done_button_wording", getString(2131432428));
+      localIntent.putExtra("param_title", getString(2131624953));
+      localIntent.putExtra("param_done_button_wording", getString(2131625463));
       localIntent.putExtra("param_exit_animation", 1);
       localIntent.putExtra("param_blesstype", 1);
       localIntent.putExtra("param_blessword_content", paramView);
-      localIntent.putExtra("param_blessword_index", this.jdField_a_of_type_Int);
       startActivity(localIntent);
-      overridePendingTransition(2131034132, 2131034133);
+      overridePendingTransition(2130771992, 2130771993);
       paramView = this.app;
       if (this.jdField_a_of_type_Boolean) {}
       for (;;)
       {
-        ReportController.b(paramView, "CliOper", "", "", "0X800618C", "0X800618C", i, 0, "", "", "", "");
+        awqx.b(paramView, "CliOper", "", "", "0X800618C", "0X800618C", i, 0, "", "", "", "");
         return;
         i = 0;
       }
-    case 2131363455: 
+    case 2131297442: 
       a(this.jdField_a_of_type_AndroidWidgetEditText.getWindowToken());
       return;
     }

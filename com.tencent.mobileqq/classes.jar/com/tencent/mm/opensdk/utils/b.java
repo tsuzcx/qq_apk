@@ -4,7 +4,7 @@ import java.security.MessageDigest;
 
 public final class b
 {
-  public static final String e(byte[] paramArrayOfByte)
+  public static final String c(byte[] paramArrayOfByte)
   {
     int i = 0;
     char[] arrayOfChar = new char[16];
@@ -75,7 +75,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mm.opensdk.utils.b
  * JD-Core Version:    0.7.0.1
  */

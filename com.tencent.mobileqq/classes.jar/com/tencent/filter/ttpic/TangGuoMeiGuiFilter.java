@@ -1,8 +1,7 @@
 package com.tencent.filter.ttpic;
 
 import com.tencent.filter.BaseFilter;
-import com.tencent.filter.GLSLRender;
-import com.tencent.filter.Param.TextureResParam;
+import com.tencent.filter.TextureResParam;
 
 public class TangGuoMeiGuiFilter
   extends BaseFilter
@@ -11,20 +10,20 @@ public class TangGuoMeiGuiFilter
   
   public TangGuoMeiGuiFilter()
   {
-    super(GLSLRender.FILTER_SHADER_NONE);
+    super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
   }
   
-  public void ApplyGLSLFilter(boolean paramBoolean, float paramFloat1, float paramFloat2)
+  public void applyFilterChain(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
     this.nextFilter = new GPUImageLookupFilter();
-    this.nextFilter.addParam(new Param.TextureResParam("inputImageTexture2", "sh/tangguomeigui_lf.png", 33986));
+    this.nextFilter.addParam(new TextureResParam("inputImageTexture2", "sh/tangguomeigui_lf.png", 33986));
     setNextFilter(this.nextFilter, null);
-    super.ApplyGLSLFilter(paramBoolean, paramFloat1, paramFloat2);
+    super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.filter.ttpic.TangGuoMeiGuiFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,63 @@
 package cooperation.qzone.model;
 
-import ancl;
+import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bfwp;
+import java.util.HashMap;
 
 public class WeishiBottomButton
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ancl();
+  public static final Parcelable.Creator<WeishiBottomButton> CREATOR = new bfwp();
   public int a;
   public String a;
-  public String b = "";
-  public String c = "";
+  public HashMap<Integer, Integer> a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
   public String d = "";
   public String e = "";
   
   public WeishiBottomButton()
   {
     this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
   }
   
   public WeishiBottomButton(Parcel paramParcel)
   {
     this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.b = paramParcel.readString();
-    this.c = paramParcel.readString();
+    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    this.jdField_c_of_type_JavaLangString = paramParcel.readString();
     this.d = paramParcel.readString();
     this.e = paramParcel.readString();
+    this.jdField_b_of_type_Int = paramParcel.readInt();
+    this.jdField_c_of_type_Int = paramParcel.readInt();
+    this.jdField_a_of_type_JavaUtilHashMap = ((HashMap)paramParcel.readBundle().getSerializable("stMapABTest"));
   }
   
-  public WeishiBottomButton(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
+  public WeishiBottomButton(String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, String paramString5, HashMap<Integer, Integer> paramHashMap, int paramInt2, int paramInt3)
   {
     this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_b_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaLangString = "";
     this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString2;
-    this.c = paramString3;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString3;
     this.d = paramString4;
     this.e = paramString5;
+    this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_c_of_type_Int = paramInt3;
   }
   
   public int describeContents()
@@ -52,10 +69,15 @@ public class WeishiBottomButton
   {
     paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
     paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.b);
-    paramParcel.writeString(this.c);
+    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
+    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
     paramParcel.writeString(this.d);
     paramParcel.writeString(this.e);
+    paramParcel.writeInt(this.jdField_b_of_type_Int);
+    paramParcel.writeInt(this.jdField_c_of_type_Int);
+    Bundle localBundle = new Bundle();
+    localBundle.putSerializable("stMapABTest", this.jdField_a_of_type_JavaUtilHashMap);
+    paramParcel.writeBundle(localBundle);
   }
 }
 

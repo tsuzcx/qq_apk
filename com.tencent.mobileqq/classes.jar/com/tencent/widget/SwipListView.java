@@ -12,6 +12,9 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.ListAdapter;
 import android.widget.Scroller;
+import benm;
+import benn;
+import beno;
 
 public class SwipListView
   extends XListView
@@ -23,8 +26,8 @@ public class SwipListView
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private View jdField_a_of_type_AndroidViewView;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private SwipListView.RightIconMenuListener jdField_a_of_type_ComTencentWidgetSwipListView$RightIconMenuListener;
-  private SwipListView.SwipListListener jdField_a_of_type_ComTencentWidgetSwipListView$SwipListListener;
+  private benm jdField_a_of_type_Benm;
+  private beno jdField_a_of_type_Beno;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private View jdField_b_of_type_AndroidViewView;
@@ -49,7 +52,7 @@ public class SwipListView
   public SwipListView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new SwipListView.SmoothInterpolator());
+    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext, new benn());
     paramContext = ViewConfiguration.get(getContext());
     this.g = paramContext.getScaledTouchSlop();
     this.e = (paramContext.getScaledMinimumFlingVelocity() * 4);
@@ -183,8 +186,8 @@ public class SwipListView
     if (paramView != null) {}
     for (int i = paramView.getScrollX();; i = 0)
     {
-      if (this.jdField_a_of_type_ComTencentWidgetSwipListView$SwipListListener != null) {
-        this.jdField_a_of_type_ComTencentWidgetSwipListView$SwipListListener.a(null);
+      if (this.jdField_a_of_type_Beno != null) {
+        this.jdField_a_of_type_Beno.a_(null);
       }
       if (i != 0) {
         if (!(paramView.getTag(-3) instanceof Integer)) {
@@ -205,8 +208,8 @@ public class SwipListView
         do
         {
           return;
-        } while (this.jdField_a_of_type_ComTencentWidgetSwipListView$RightIconMenuListener == null);
-        this.jdField_a_of_type_ComTencentWidgetSwipListView$RightIconMenuListener.b(paramView);
+        } while (this.jdField_a_of_type_Benm == null);
+        this.jdField_a_of_type_Benm.b(paramView);
         return;
       }
     }
@@ -219,8 +222,8 @@ public class SwipListView
     {
       j = paramView.getScrollX();
       i = j;
-      if (this.jdField_a_of_type_ComTencentWidgetSwipListView$SwipListListener != null) {
-        this.jdField_a_of_type_ComTencentWidgetSwipListView$SwipListListener.a(paramView);
+      if (this.jdField_a_of_type_Beno != null) {
+        this.jdField_a_of_type_Beno.a_(paramView);
       }
     }
     for (int i = j;; i = 0)
@@ -242,12 +245,12 @@ public class SwipListView
           this.jdField_a_of_type_AndroidWidgetScroller.startScroll(i, 0, k, 0, a(j, k));
           this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
         }
-        while (this.jdField_a_of_type_ComTencentWidgetSwipListView$RightIconMenuListener == null)
+        while (this.jdField_a_of_type_Benm == null)
         {
           int k;
           return;
         }
-        this.jdField_a_of_type_ComTencentWidgetSwipListView$RightIconMenuListener.a(paramView);
+        this.jdField_a_of_type_Benm.a(paramView);
         return;
       }
     }
@@ -255,7 +258,7 @@ public class SwipListView
   
   public void a(View paramView)
   {
-    u();
+    t();
     d(paramView);
   }
   
@@ -282,8 +285,8 @@ public class SwipListView
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
         return true;
       }
-      if (this.jdField_a_of_type_ComTencentWidgetSwipListView$RightIconMenuListener != null) {
-        this.jdField_a_of_type_ComTencentWidgetSwipListView$RightIconMenuListener.a(this.jdField_c_of_type_AndroidViewView);
+      if (this.jdField_a_of_type_Benm != null) {
+        this.jdField_a_of_type_Benm.a(this.jdField_c_of_type_AndroidViewView);
       }
       this.jdField_c_of_type_AndroidViewView = null;
       return true;
@@ -299,13 +302,13 @@ public class SwipListView
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
         return true;
       }
-      if (this.jdField_a_of_type_ComTencentWidgetSwipListView$RightIconMenuListener != null) {
-        this.jdField_a_of_type_ComTencentWidgetSwipListView$RightIconMenuListener.b(this.jdField_c_of_type_AndroidViewView);
+      if (this.jdField_a_of_type_Benm != null) {
+        this.jdField_a_of_type_Benm.b(this.jdField_c_of_type_AndroidViewView);
       }
       this.jdField_c_of_type_AndroidViewView = null;
       return true;
-    } while (this.jdField_a_of_type_ComTencentWidgetSwipListView$SwipListListener == null);
-    this.jdField_a_of_type_ComTencentWidgetSwipListView$SwipListListener.d();
+    } while (this.jdField_a_of_type_Beno == null);
+    this.jdField_a_of_type_Beno.e();
     return true;
   }
   
@@ -329,8 +332,8 @@ public class SwipListView
       label75:
       if ((k == 0) && (this.jdField_b_of_type_Boolean))
       {
-        if (this.jdField_a_of_type_ComTencentWidgetSwipListView$SwipListListener != null) {
-          this.jdField_a_of_type_ComTencentWidgetSwipListView$SwipListListener.e(true);
+        if (this.jdField_a_of_type_Beno != null) {
+          this.jdField_a_of_type_Beno.e(true);
         }
         b();
       }
@@ -344,8 +347,8 @@ public class SwipListView
       }
       return super.onInterceptTouchEvent(paramMotionEvent);
       this.jdField_a_of_type_Byte = 0;
-      if (this.jdField_a_of_type_ComTencentWidgetSwipListView$SwipListListener != null) {
-        this.jdField_a_of_type_ComTencentWidgetSwipListView$SwipListListener.a(null);
+      if (this.jdField_a_of_type_Beno != null) {
+        this.jdField_a_of_type_Beno.a_(null);
       }
       this.jdField_a_of_type_Int = j;
       this.jdField_c_of_type_Int = j;
@@ -426,8 +429,8 @@ public class SwipListView
       this.jdField_b_of_type_Int = -1;
       this.d = -1;
       break label72;
-      if (((k == 1) || (k == 3)) && (this.jdField_a_of_type_ComTencentWidgetSwipListView$SwipListListener != null)) {
-        this.jdField_a_of_type_ComTencentWidgetSwipListView$SwipListListener.e(false);
+      if (((k == 1) || (k == 3)) && (this.jdField_a_of_type_Beno != null)) {
+        this.jdField_a_of_type_Beno.e(false);
       }
     }
   }
@@ -455,8 +458,8 @@ public class SwipListView
       {
         if ((k == 0) && (this.jdField_b_of_type_Boolean))
         {
-          if (this.jdField_a_of_type_ComTencentWidgetSwipListView$SwipListListener != null) {
-            this.jdField_a_of_type_ComTencentWidgetSwipListView$SwipListListener.e(true);
+          if (this.jdField_a_of_type_Beno != null) {
+            this.jdField_a_of_type_Beno.e(true);
           }
           label112:
           bool2 = bool1;
@@ -570,10 +573,10 @@ public class SwipListView
                 a();
                 bool1 = true;
                 continue;
-                if (((k != 1) && (k != 3)) || (this.jdField_a_of_type_ComTencentWidgetSwipListView$SwipListListener == null)) {
+                if (((k != 1) && (k != 3)) || (this.jdField_a_of_type_Beno == null)) {
                   break label112;
                 }
-                this.jdField_a_of_type_ComTencentWidgetSwipListView$SwipListListener.e(false);
+                this.jdField_a_of_type_Beno.e(false);
                 break label112;
               }
               bool1 = false;
@@ -591,8 +594,8 @@ public class SwipListView
   public void setAdapter(ListAdapter paramListAdapter)
   {
     super.setAdapter(paramListAdapter);
-    if ((paramListAdapter instanceof SwipListView.SwipListListener)) {
-      this.jdField_a_of_type_ComTencentWidgetSwipListView$SwipListListener = ((SwipListView.SwipListListener)paramListAdapter);
+    if ((paramListAdapter instanceof beno)) {
+      this.jdField_a_of_type_Beno = ((beno)paramListAdapter);
     }
   }
   
@@ -600,21 +603,21 @@ public class SwipListView
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (!this.jdField_a_of_type_Boolean) {
-      u();
+      t();
     }
   }
   
-  public void setRightIconMenuListener(SwipListView.RightIconMenuListener paramRightIconMenuListener)
+  public void setRightIconMenuListener(benm parambenm)
   {
-    this.jdField_a_of_type_ComTencentWidgetSwipListView$RightIconMenuListener = paramRightIconMenuListener;
+    this.jdField_a_of_type_Benm = parambenm;
   }
   
-  public void setSwipListListener(SwipListView.SwipListListener paramSwipListListener)
+  public void setSwipListListener(beno parambeno)
   {
-    this.jdField_a_of_type_ComTencentWidgetSwipListView$SwipListListener = paramSwipListListener;
+    this.jdField_a_of_type_Beno = parambeno;
   }
   
-  public void u()
+  public void t()
   {
     int i;
     int j;
@@ -643,7 +646,7 @@ public class SwipListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.widget.SwipListView
  * JD-Core Version:    0.7.0.1
  */

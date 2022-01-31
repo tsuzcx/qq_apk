@@ -10,14 +10,14 @@ public final class RespGetSameStateList
 {
   static BusiRespHead cache_oHead;
   static byte[] cache_vCookie;
-  static ArrayList cache_vUserInfos;
+  static ArrayList<UserProfile> cache_vUserInfos;
   public BusiRespHead oHead;
   public byte[] vCookie;
-  public ArrayList vUserInfos;
+  public ArrayList<UserProfile> vUserInfos;
   
   public RespGetSameStateList() {}
   
-  public RespGetSameStateList(BusiRespHead paramBusiRespHead, byte[] paramArrayOfByte, ArrayList paramArrayList)
+  public RespGetSameStateList(BusiRespHead paramBusiRespHead, byte[] paramArrayOfByte, ArrayList<UserProfile> paramArrayList)
   {
     this.oHead = paramBusiRespHead;
     this.vCookie = paramArrayOfByte;

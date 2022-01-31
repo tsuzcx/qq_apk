@@ -9,7 +9,7 @@ public final class AccessibilityEventCompat
   public static final int CONTENT_CHANGE_TYPE_SUBTREE = 1;
   public static final int CONTENT_CHANGE_TYPE_TEXT = 2;
   public static final int CONTENT_CHANGE_TYPE_UNDEFINED = 0;
-  private static final AccessibilityEventVersionImpl IMPL = new AccessibilityEventStubImpl();
+  private static final AccessibilityEventCompat.AccessibilityEventVersionImpl IMPL = new AccessibilityEventCompat.AccessibilityEventStubImpl();
   public static final int TYPES_ALL_MASK = -1;
   public static final int TYPE_ANNOUNCEMENT = 16384;
   public static final int TYPE_GESTURE_DETECTION_END = 524288;
@@ -31,12 +31,12 @@ public final class AccessibilityEventCompat
   {
     if (Build.VERSION.SDK_INT >= 19)
     {
-      IMPL = new AccessibilityEventKitKatImpl();
+      IMPL = new AccessibilityEventCompat.AccessibilityEventKitKatImpl();
       return;
     }
     if (Build.VERSION.SDK_INT >= 14)
     {
-      IMPL = new AccessibilityEventIcsImpl();
+      IMPL = new AccessibilityEventCompat.AccessibilityEventIcsImpl();
       return;
     }
   }
@@ -69,75 +69,6 @@ public final class AccessibilityEventCompat
   public static void setContentChangeTypes(AccessibilityEvent paramAccessibilityEvent, int paramInt)
   {
     IMPL.setContentChangeTypes(paramAccessibilityEvent, paramInt);
-  }
-  
-  static class AccessibilityEventIcsImpl
-    extends AccessibilityEventCompat.AccessibilityEventStubImpl
-  {
-    public void appendRecord(AccessibilityEvent paramAccessibilityEvent, Object paramObject)
-    {
-      AccessibilityEventCompatIcs.appendRecord(paramAccessibilityEvent, paramObject);
-    }
-    
-    public Object getRecord(AccessibilityEvent paramAccessibilityEvent, int paramInt)
-    {
-      return AccessibilityEventCompatIcs.getRecord(paramAccessibilityEvent, paramInt);
-    }
-    
-    public int getRecordCount(AccessibilityEvent paramAccessibilityEvent)
-    {
-      return AccessibilityEventCompatIcs.getRecordCount(paramAccessibilityEvent);
-    }
-  }
-  
-  static class AccessibilityEventKitKatImpl
-    extends AccessibilityEventCompat.AccessibilityEventIcsImpl
-  {
-    public int getContentChangeTypes(AccessibilityEvent paramAccessibilityEvent)
-    {
-      return AccessibilityEventCompatKitKat.getContentChangeTypes(paramAccessibilityEvent);
-    }
-    
-    public void setContentChangeTypes(AccessibilityEvent paramAccessibilityEvent, int paramInt)
-    {
-      AccessibilityEventCompatKitKat.setContentChangeTypes(paramAccessibilityEvent, paramInt);
-    }
-  }
-  
-  static class AccessibilityEventStubImpl
-    implements AccessibilityEventCompat.AccessibilityEventVersionImpl
-  {
-    public void appendRecord(AccessibilityEvent paramAccessibilityEvent, Object paramObject) {}
-    
-    public int getContentChangeTypes(AccessibilityEvent paramAccessibilityEvent)
-    {
-      return 0;
-    }
-    
-    public Object getRecord(AccessibilityEvent paramAccessibilityEvent, int paramInt)
-    {
-      return null;
-    }
-    
-    public int getRecordCount(AccessibilityEvent paramAccessibilityEvent)
-    {
-      return 0;
-    }
-    
-    public void setContentChangeTypes(AccessibilityEvent paramAccessibilityEvent, int paramInt) {}
-  }
-  
-  static abstract interface AccessibilityEventVersionImpl
-  {
-    public abstract void appendRecord(AccessibilityEvent paramAccessibilityEvent, Object paramObject);
-    
-    public abstract int getContentChangeTypes(AccessibilityEvent paramAccessibilityEvent);
-    
-    public abstract Object getRecord(AccessibilityEvent paramAccessibilityEvent, int paramInt);
-    
-    public abstract int getRecordCount(AccessibilityEvent paramAccessibilityEvent);
-    
-    public abstract void setContentChangeTypes(AccessibilityEvent paramAccessibilityEvent, int paramInt);
   }
 }
 

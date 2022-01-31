@@ -1,73 +1,60 @@
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.PointF;
+import android.support.annotation.NonNull;
 
 public class uyb
 {
-  public uya a = new uya();
-  public uya b = new uya();
-  public uya c = new uya();
-  public uya d = new uya();
+  public final float a;
+  public final int a;
+  public final PointF a;
+  public final String a;
+  public final float b;
+  public final int b;
+  public final float c;
+  public final int c;
+  public final float d;
+  public final int d;
   
-  public void a()
+  public uyb(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, int paramInt1, int paramInt2)
   {
-    this.a.a(this.b);
-    this.c.a(this.d);
-    this.b.a(this.d);
+    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(paramFloat1, paramFloat2);
+    this.jdField_a_of_type_Float = paramFloat3;
+    this.jdField_b_of_type_Float = paramFloat4;
+    this.jdField_c_of_type_Float = paramFloat5;
+    this.jdField_d_of_type_Float = paramFloat6;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_c_of_type_Int = -1;
+    this.jdField_d_of_type_Int = 0;
   }
   
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  public uyb(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
   {
-    this.a.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    this.b.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    this.c.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(paramFloat1, paramFloat2);
+    this.jdField_a_of_type_Float = paramFloat3;
+    this.jdField_b_of_type_Float = paramFloat4;
+    this.jdField_c_of_type_Float = paramFloat5;
+    this.jdField_d_of_type_Float = paramFloat6;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_c_of_type_Int = paramInt3;
+    this.jdField_d_of_type_Int = paramInt4;
   }
   
-  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong, boolean paramBoolean)
+  public static uyb a(@NonNull uyb paramuyb)
   {
-    if (paramBoolean)
-    {
-      this.a.a(this.b);
-      this.c.a(this.d);
-      this.b.a((this.c.jdField_a_of_type_Float + paramFloat1) / 2.0F, (this.c.b + paramFloat2) / 2.0F, (this.c.c + paramFloat3) / 2.0F, (this.c.jdField_a_of_type_Long + paramLong) / 2L);
-      this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-      return;
-    }
-    this.b.a((this.c.jdField_a_of_type_Float + paramFloat1) / 2.0F, (this.c.b + paramFloat2) / 2.0F, (this.c.c + paramFloat3) / 2.0F, (this.c.jdField_a_of_type_Long + paramLong) / 2L);
-    this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    return new uyb(paramuyb.jdField_a_of_type_AndroidGraphicsPointF.x, paramuyb.jdField_a_of_type_AndroidGraphicsPointF.y, paramuyb.jdField_a_of_type_Float, paramuyb.jdField_b_of_type_Float, paramuyb.jdField_c_of_type_Float, paramuyb.jdField_d_of_type_Float, paramuyb.jdField_a_of_type_Int, paramuyb.jdField_b_of_type_Int, paramuyb.jdField_a_of_type_JavaLangString, paramuyb.jdField_c_of_type_Int, paramuyb.jdField_d_of_type_Int);
   }
   
-  public void a(uyb paramuyb)
+  public String toString()
   {
-    this.a.a(paramuyb.a);
-    this.b.a(paramuyb.b);
-    this.c.a(paramuyb.c);
-    this.d.a(paramuyb.d);
-  }
-  
-  public void b(uyb paramuyb)
-  {
-    if (paramuyb.d == this.c)
-    {
-      this.a = paramuyb.a;
-      this.c = paramuyb.c;
-      this.b.a((this.d.jdField_a_of_type_Float + this.c.jdField_a_of_type_Float) / 2.0F, (this.d.b + this.c.b) / 2.0F, (this.d.c + this.c.c) / 2.0F, (this.d.jdField_a_of_type_Long + this.c.jdField_a_of_type_Long) / 2L);
-    }
-    do
-    {
-      return;
-      if (this.d == paramuyb.c)
-      {
-        this.d.a(paramuyb.d);
-        this.b.a((this.d.jdField_a_of_type_Float + this.c.jdField_a_of_type_Float) / 2.0F, (this.d.b + this.c.b) / 2.0F, (this.d.c + this.c.c) / 2.0F, (this.d.jdField_a_of_type_Long + this.c.jdField_a_of_type_Long) / 2L);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("TransPathJob", 2, "TransPathJob merge point error");
+    return "LayerParams{centerP=" + this.jdField_a_of_type_AndroidGraphicsPointF + ", scale=" + this.jdField_a_of_type_Float + ", rotate=" + this.jdField_b_of_type_Float + ", translateXValue=" + this.jdField_c_of_type_Float + ", translateYValue=" + this.jdField_d_of_type_Float + ", width=" + this.jdField_a_of_type_Int + ", height=" + this.jdField_b_of_type_Int + ", text='" + this.jdField_a_of_type_JavaLangString + '\'' + ", textColor=" + this.jdField_c_of_type_Int + ", textSize=" + this.jdField_d_of_type_Int + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uyb
  * JD-Core Version:    0.7.0.1
  */

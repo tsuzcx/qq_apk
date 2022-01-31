@@ -1,24 +1,48 @@
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
-import com.tencent.mobileqq.app.NewFriendManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
+import android.os.SystemClock;
 
 public class yon
-  implements Runnable
 {
-  public yon(SystemMsgListAdapter paramSystemMsgListAdapter) {}
+  private long a = -1L;
+  private long b = -1L;
+  private long c = -1L;
   
-  public void run()
+  private void c()
   {
-    SystemMsgListAdapter.a(this.a).a(true);
-    ArrayList localArrayList = SystemMsgListAdapter.a(this.a).b();
-    this.a.a(localArrayList);
-    SystemMsgListAdapter.a(this.a).runOnUiThread(new yoo(this, localArrayList));
+    if ((this.b >= this.a) && (this.a != -1L) && (this.b != -1L)) {}
+    for (long l = this.b - this.a;; l = -1L)
+    {
+      if (l != -1L)
+      {
+        if (this.c == -1L) {
+          this.c = 0L;
+        }
+        this.c = (l + this.c);
+      }
+      this.a = -1L;
+      this.b = -1L;
+      return;
+    }
+  }
+  
+  public long a()
+  {
+    return this.c;
+  }
+  
+  public void a()
+  {
+    this.a = SystemClock.elapsedRealtime();
+  }
+  
+  public void b()
+  {
+    this.b = SystemClock.elapsedRealtime();
+    c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yon
  * JD-Core Version:    0.7.0.1
  */

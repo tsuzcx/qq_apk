@@ -12,7 +12,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class mobileqq_mp$SendMenuEventRequest
-  extends MessageMicro
+  extends MessageMicro<SendMenuEventRequest>
 {
   public static final int CLICK = 1;
   public static final int CUSTOM_MENU = 1;
@@ -34,7 +34,7 @@ public final class mobileqq_mp$SendMenuEventRequest
   public final PBUInt32Field menu_type = PBField.initUInt32(0);
   public final PBUInt64Field msg_id = PBField.initUInt64(0L);
   public final PBUInt32Field pictureCount = PBField.initUInt32(0);
-  public final PBRepeatField picture_Md5s = PBField.initRepeat(PBStringField.__repeatHelper__);
+  public final PBRepeatField<String> picture_Md5s = PBField.initRepeat(PBStringField.__repeatHelper__);
   public final PBEnumField s_type = PBField.initEnum(0);
   public final PBUInt32Field scanType = PBField.initUInt32(0);
   public final PBStringField scan_result = PBField.initString("");

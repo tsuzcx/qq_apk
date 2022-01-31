@@ -1,13 +1,18 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoPoi;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment;
 
-class oku
-  implements Runnable
+public class oku
+  implements View.OnTouchListener
 {
-  oku(oks paramoks) {}
+  public oku(ReadInjoyIMAXAdFragment paramReadInjoyIMAXAdFragment, GestureDetector paramGestureDetector) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    EditVideoPoi.a(this.a.a, 1);
+    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    return true;
   }
 }
 

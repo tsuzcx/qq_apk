@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_struct$StoryReqInfo
-  extends MessageMicro
+  extends MessageMicro<StoryReqInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field ret_user_info = PBField.initUInt32(0);
@@ -24,7 +24,7 @@ public final class qqstory_struct$StoryReqInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryReqInfo
  * JD-Core Version:    0.7.0.1
  */

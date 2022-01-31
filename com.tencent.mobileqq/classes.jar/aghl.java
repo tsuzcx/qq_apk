@@ -1,46 +1,121 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.ocr.OCRObserver;
-import com.tencent.mobileqq.ocr.OCRTextSearchInfo.SearchResult;
-import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
-import com.tencent.mobileqq.ocr.ui.SearchResultFragment;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.photo.album.AlbumListFragment;
+import com.tencent.mobileqq.data.QQAlbumInfo;
+import java.util.ArrayList;
 import java.util.List;
+import mqq.util.WeakReference;
 
 public class aghl
-  extends OCRObserver
+  extends agfo
 {
-  public aghl(OCRTextSearchActivity paramOCRTextSearchActivity) {}
+  private List<String> a;
   
-  public void a(int paramInt, String paramString, OCRTextSearchInfo.SearchResult paramSearchResult)
+  private aghl(AlbumListFragment paramAlbumListFragment)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.ocr.OCRTextSearchActivity", 2, "onGetTextSearchResult, errorCode=" + paramInt + ", sessionID=" + paramString + ", mSessionId=" + this.a.c);
-    }
-    if ((paramString == null) || (this.a.c == null) || (!this.a.c.equals(paramString)))
+    super(paramAlbumListFragment);
+  }
+  
+  public static agfk b(AlbumListFragment paramAlbumListFragment)
+  {
+    if ((jdField_a_of_type_Agfk == null) || (jdField_a_of_type_Agfk.jdField_a_of_type_MqqUtilWeakReference.get() != paramAlbumListFragment)) {}
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.ocr.OCRTextSearchActivity", 2, "onGetTextSearchResult, session error");
+      if ((jdField_a_of_type_Agfk == null) || (jdField_a_of_type_Agfk.jdField_a_of_type_MqqUtilWeakReference.get() != paramAlbumListFragment)) {
+        jdField_a_of_type_Agfk = new aghl(paramAlbumListFragment);
+      }
+      return jdField_a_of_type_Agfk;
+    }
+    finally {}
+  }
+  
+  public View a(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramView = super.a(paramInt, paramView, paramViewGroup);
+    paramViewGroup = (AlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if ((paramViewGroup != null) && (paramViewGroup.isAdded()) && (!paramViewGroup.isDetached()) && (!paramViewGroup.isRemoving()))
+    {
+      paramViewGroup = paramViewGroup.a;
+      if (paramViewGroup != null)
+      {
+        paramViewGroup = paramViewGroup.a(paramInt);
+        if ((paramViewGroup != null) && ((paramView instanceof TextView))) {
+          ((TextView)paramView).setText(paramViewGroup.name);
+        }
+      }
+    }
+    return paramView;
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(-1);
+  }
+  
+  protected void a(Intent paramIntent)
+  {
+    if (paramIntent.getIntExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 0) == 5) {
+      paramIntent.putExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 6);
+    }
+    super.a(paramIntent);
+    this.jdField_a_of_type_Aggf.b = paramIntent.getStringExtra("ALBUM_NAME");
+    paramIntent = (AlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if ((paramIntent != null) && (paramIntent.isAdded()) && (!paramIntent.isDetached()) && (!paramIntent.isRemoving()))
+    {
+      paramIntent = bgwg.a(paramIntent.getActivity().getApplicationContext(), this.jdField_a_of_type_Aggf.a, "pref_select_album");
+      if (!TextUtils.isEmpty(paramIntent)) {
+        break label176;
+      }
+    }
+    label176:
+    for (paramIntent = new ArrayList();; paramIntent = bgwg.a(paramIntent))
+    {
+      this.jdField_a_of_type_JavaUtilList = paramIntent;
+      if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty())) {
+        this.jdField_a_of_type_Aggf.c = ((String)this.jdField_a_of_type_JavaUtilList.get(0));
+      }
+      if (TextUtils.isEmpty(this.jdField_a_of_type_Aggf.c)) {
+        this.jdField_a_of_type_Aggf.c = "$RecentAlbumId";
       }
       return;
     }
-    this.a.a(false);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment == null) {
-      this.a.b(1);
+  }
+  
+  protected void a(QQAlbumInfo paramQQAlbumInfo, int paramInt, Intent paramIntent)
+  {
+    super.a(paramQQAlbumInfo, paramInt, paramIntent);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Aggf.b)) {
+      paramIntent.putExtra("ALBUM_NAME", this.jdField_a_of_type_Aggf.b);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqOcrUiSearchResultFragment.a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), paramInt, paramSearchResult);
-    this.a.a(1);
-    if ((paramInt == 0) && (paramSearchResult.a != null) && (paramSearchResult.a.size() > 0))
+    paramIntent = (AlbumListFragment)this.jdField_a_of_type_MqqUtilWeakReference.get();
+    if ((paramIntent != null) && (paramIntent.isAdded()) && (!paramIntent.isDetached()) && (!paramIntent.isRemoving()) && (this.jdField_a_of_type_JavaUtilList != null)) {
+      if (!TextUtils.isEmpty(paramQQAlbumInfo._id))
+      {
+        if ((this.jdField_a_of_type_JavaUtilList.contains(paramQQAlbumInfo._id)) && (!TextUtils.equals(paramQQAlbumInfo._id, (CharSequence)this.jdField_a_of_type_JavaUtilList.get(0)))) {
+          this.jdField_a_of_type_JavaUtilList.remove(paramQQAlbumInfo._id);
+        }
+        if (!this.jdField_a_of_type_JavaUtilList.isEmpty()) {
+          break label198;
+        }
+        this.jdField_a_of_type_JavaUtilList.add(paramQQAlbumInfo._id);
+      }
+    }
+    for (;;)
     {
-      ReportController.b(null, "dc00898", "", "", "0X80082E8", "0X80082E8", 0, 0, "", "", "", "");
+      bgwg.a(paramIntent.getActivity().getApplicationContext(), this.jdField_a_of_type_Aggf.a, "pref_select_album", bgwg.a(this.jdField_a_of_type_JavaUtilList.iterator()));
       return;
+      label198:
+      this.jdField_a_of_type_JavaUtilList.set(0, paramQQAlbumInfo._id);
     }
-    ReportController.b(null, "dc00898", "", "", "0X80082E7", "0X80082E7", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aghl
  * JD-Core Version:    0.7.0.1
  */

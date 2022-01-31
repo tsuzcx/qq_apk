@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center" android:id="@id/jkd" android:background="#b2000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/jke" android:background="@drawable/a47" android:clickable="true" android:layout_width="308.0dip" android:layout_height="450.0dip" android:layout_centerInParent="true">
+        <View android:background="@drawable/a4_" android:layout_width="fill_parent" android:layout_height="35.0dip" />
+        <ImageView android:background="@drawable/a4s" android:layout_width="fill_parent" android:layout_height="146.0dip" android:layout_marginTop="35.0dip" />
+        <TextView android:textSize="20.0sp" android:textColor="#fffbd39c" android:gravity="center" android:id="@id/d1e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="50.0dip" android:text="@string/rg0" />
+        <ImageView android:id="@id/d20" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="240.0dip" android:src="@drawable/dx7" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/az9" android:padding="12.0dip" android:layout_width="40.0dip" android:layout_height="40.0dip" android:src="@drawable/dws" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="370.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true">
+            <ImageView android:id="@id/d1c" android:background="@drawable/dx0" android:layout_width="104.0dip" android:layout_height="104.0dip" android:layout_marginTop="10.0dip" android:layout_alignParentTop="true" android:layout_centerInParent="true" />
+            <ImageView android:background="@drawable/dwh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="195.0dip" android:layout_marginTop="0.0dip" android:layout_alignParentTop="true" />
+            <TextView android:textSize="20.0sp" android:textColor="#fffff0c6" android:ellipsize="end" android:gravity="center" android:id="@id/d1o" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="22.5dip" android:text="@string/rg1" android:singleLine="true" android:includeFontPadding="false" android:layout_below="@id/d1c" android:layout_centerHorizontal="true" />
+            <LinearLayout android:orientation="vertical" android:id="@id/ghj" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="35.0dip">
+                    <com.tencent.mobileqq.activity.qwallet.widget.RollNumberView android:layout_gravity="bottom" android:id="@id/jkc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" app:rollTextColor="@color/uo" app:rollTextSize="60.0sp" />
+                    <TextView android:textSize="16.0sp" android:textColor="#fffbd39c" android:layout_gravity="bottom" android:id="@id/jfs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="@string/rfy" android:includeFontPadding="false" />
+                </LinearLayout>
+                <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/d22" android:visibility="visible" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
+                    <ImageView android:id="@id/d21" android:background="@drawable/dxi" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                    <TextView android:textSize="14.0sp" android:textColor="@drawable/a3o" android:gravity="top" android:id="@id/d23" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/rg2" android:includeFontPadding="false" />
+                </LinearLayout>
+            </LinearLayout>
+            <Button android:textSize="18.0sp" android:textStyle="bold" android:textColor="@color/ui" android:id="@id/inj" android:background="@drawable/a3z" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="16.0dip" android:text="@string/rfz" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <include layout="@layout/cd2" />
+</RelativeLayout>

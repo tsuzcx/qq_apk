@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
 
 public class akxb
-  implements Runnable
+  extends akxc
 {
-  public akxb(SwiftBrowserScreenShotHandler paramSwiftBrowserScreenShotHandler) {}
+  public String a = "10001";
   
-  public void run()
+  public void a(AppInterface paramAppInterface, Bundle paramBundle)
   {
-    this.a.g();
+    this.a = paramBundle.getString("PromotionDescription");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akxb
  * JD-Core Version:    0.7.0.1
  */

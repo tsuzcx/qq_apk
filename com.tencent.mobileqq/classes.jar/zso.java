@@ -1,21 +1,27 @@
-import com.tencent.av.service.QavWrapper;
-import com.tencent.av.service.QavWrapper.OnReadyListener;
-import com.tencent.mobileqq.app.QQGAudioMsgHandler;
+import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
+import com.tribe.async.async.JobSegment;
 
-public class zso
-  implements QavWrapper.OnReadyListener
+class zso
+  extends armu<JobSegment>
 {
-  public zso(QQGAudioMsgHandler paramQQGAudioMsgHandler, byte[] paramArrayOfByte) {}
-  
-  public void a(QavWrapper paramQavWrapper)
+  zso(zsn paramzsn, JobSegment paramJobSegment)
   {
-    paramQavWrapper.a(this.jdField_a_of_type_ArrayOfByte);
-    paramQavWrapper.a();
+    super(paramJobSegment);
+  }
+  
+  public void a(JobSegment paramJobSegment, boolean paramBoolean, armr paramarmr)
+  {
+    if (paramBoolean)
+    {
+      zsn.a(this.a, paramarmr);
+      return;
+    }
+    zsn.a(this.a, new AppInfoError(5, "appInfo error"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zso
  * JD-Core Version:    0.7.0.1
  */

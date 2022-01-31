@@ -1,31 +1,57 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import com.tencent.mobileqq.activity.HotChatAnnounceActivity;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqBatchGetVideoInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspBatchGetVideoInfo;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import java.util.Iterator;
+import java.util.List;
 
 public class tae
-  implements TextWatcher
+  extends slz<tbu>
 {
-  public tae(HotChatAnnounceActivity paramHotChatAnnounceActivity) {}
+  private final String a;
+  public List<String> a;
   
-  public void afterTextChanged(Editable paramEditable)
+  public tae()
   {
-    paramEditable = paramEditable.toString();
-    if ((paramEditable != null) && (paramEditable.trim().length() > 0))
-    {
-      this.a.b.setEnabled(true);
-      return;
-    }
-    this.a.b.setEnabled(false);
+    this.jdField_a_of_type_JavaLangString = skt.a("StoryGroupSvc.datacard_batch_get_video_info");
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public slu a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspBatchGetVideoInfo localRspBatchGetVideoInfo = new qqstory_service.RspBatchGetVideoInfo();
+    try
+    {
+      localRspBatchGetVideoInfo.mergeFrom(paramArrayOfByte);
+      return new tbu(localRspBatchGetVideoInfo);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      urk.b("Q.qqstory.shareGroup:GetShareGroupVideoInfoRequest", a(), paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqBatchGetVideoInfo localReqBatchGetVideoInfo = new qqstory_service.ReqBatchGetVideoInfo();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      localReqBatchGetVideoInfo.story_id_list.add(ByteStringMicro.copyFromUtf8(str));
+    }
+    return localReqBatchGetVideoInfo.toByteArray();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tae
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.pb;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
@@ -63,7 +62,6 @@ public final class CodedInputStreamMicro
   }
   
   static int readRawVarint32(InputStream paramInputStream)
-    throws IOException
   {
     int j = 0;
     int i = 0;
@@ -113,7 +111,6 @@ public final class CodedInputStreamMicro
   }
   
   private boolean refillBuffer(boolean paramBoolean)
-    throws IOException
   {
     if (this.bufferPos < this.bufferSize) {
       throw new IllegalStateException("refillBuffer() called when buffer wasn't empty.");
@@ -153,7 +150,6 @@ public final class CodedInputStreamMicro
   }
   
   public void checkLastTagWas(int paramInt)
-    throws InvalidProtocolBufferMicroException
   {
     if (this.lastTag != paramInt) {
       throw InvalidProtocolBufferMicroException.invalidEndTag();
@@ -171,7 +167,6 @@ public final class CodedInputStreamMicro
   }
   
   public boolean isAtEnd()
-    throws IOException
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
@@ -192,7 +187,6 @@ public final class CodedInputStreamMicro
   }
   
   public int pushLimit(int paramInt)
-    throws InvalidProtocolBufferMicroException
   {
     if (paramInt < 0) {
       throw InvalidProtocolBufferMicroException.negativeSize();
@@ -208,13 +202,11 @@ public final class CodedInputStreamMicro
   }
   
   public boolean readBool()
-    throws IOException
   {
     return readRawVarint32() != 0;
   }
   
   public ByteStringMicro readBytes()
-    throws IOException
   {
     int i = readRawVarint32();
     if ((i <= this.bufferSize - this.bufferPos) && (i > 0))
@@ -227,37 +219,31 @@ public final class CodedInputStreamMicro
   }
   
   public double readDouble()
-    throws IOException
   {
     return Double.longBitsToDouble(readRawLittleEndian64());
   }
   
   public int readEnum()
-    throws IOException
   {
     return readRawVarint32();
   }
   
   public int readFixed32()
-    throws IOException
   {
     return readRawLittleEndian32();
   }
   
   public long readFixed64()
-    throws IOException
   {
     return readRawLittleEndian64();
   }
   
   public float readFloat()
-    throws IOException
   {
     return Float.intBitsToFloat(readRawLittleEndian32());
   }
   
   public void readGroup(MessageMicro<?> paramMessageMicro, int paramInt)
-    throws IOException
   {
     if (this.recursionDepth >= this.recursionLimit) {
       throw InvalidProtocolBufferMicroException.recursionLimitExceeded();
@@ -269,19 +255,16 @@ public final class CodedInputStreamMicro
   }
   
   public int readInt32()
-    throws IOException
   {
     return readRawVarint32();
   }
   
   public long readInt64()
-    throws IOException
   {
     return readRawVarint64();
   }
   
   public void readMessage(MessageMicro<?> paramMessageMicro)
-    throws IOException
   {
     int i = readRawVarint32();
     if (this.recursionDepth >= this.recursionLimit) {
@@ -296,7 +279,6 @@ public final class CodedInputStreamMicro
   }
   
   public byte readRawByte()
-    throws IOException
   {
     if (this.bufferPos == this.bufferSize) {
       refillBuffer(true);
@@ -308,7 +290,6 @@ public final class CodedInputStreamMicro
   }
   
   public byte[] readRawBytes(int paramInt)
-    throws IOException
   {
     if (paramInt < 0) {
       throw InvalidProtocolBufferMicroException.negativeSize();
@@ -393,13 +374,11 @@ public final class CodedInputStreamMicro
   }
   
   public int readRawLittleEndian32()
-    throws IOException
   {
     return readRawByte() & 0xFF | (readRawByte() & 0xFF) << 8 | (readRawByte() & 0xFF) << 16 | (readRawByte() & 0xFF) << 24;
   }
   
   public long readRawLittleEndian64()
-    throws IOException
   {
     int i = readRawByte();
     int j = readRawByte();
@@ -414,7 +393,6 @@ public final class CodedInputStreamMicro
   }
   
   public int readRawVarint32()
-    throws IOException
   {
     int i = readRawByte();
     if (i >= 0) {}
@@ -456,7 +434,6 @@ public final class CodedInputStreamMicro
   }
   
   public long readRawVarint64()
-    throws IOException
   {
     int i = 0;
     long l = 0L;
@@ -475,31 +452,26 @@ public final class CodedInputStreamMicro
   }
   
   public int readSFixed32()
-    throws IOException
   {
     return readRawLittleEndian32();
   }
   
   public long readSFixed64()
-    throws IOException
   {
     return readRawLittleEndian64();
   }
   
   public int readSInt32()
-    throws IOException
   {
     return decodeZigZag32(readRawVarint32());
   }
   
   public long readSInt64()
-    throws IOException
   {
     return decodeZigZag64(readRawVarint64());
   }
   
   public String readString()
-    throws IOException
   {
     int i = readRawVarint32();
     if ((i <= this.bufferSize - this.bufferPos) && (i > 0))
@@ -512,7 +484,6 @@ public final class CodedInputStreamMicro
   }
   
   public int readTag()
-    throws IOException
   {
     if (isAtEnd())
     {
@@ -527,13 +498,11 @@ public final class CodedInputStreamMicro
   }
   
   public int readUInt32()
-    throws IOException
   {
     return readRawVarint32();
   }
   
   public long readUInt64()
-    throws IOException
   {
     return readRawVarint64();
   }
@@ -564,7 +533,6 @@ public final class CodedInputStreamMicro
   }
   
   public boolean skipField(int paramInt)
-    throws IOException
   {
     switch (WireFormatMicro.getTagWireType(paramInt))
     {
@@ -591,7 +559,6 @@ public final class CodedInputStreamMicro
   }
   
   public void skipMessage()
-    throws IOException
   {
     int i;
     do
@@ -601,7 +568,6 @@ public final class CodedInputStreamMicro
   }
   
   public void skipRawBytes(int paramInt)
-    throws IOException
   {
     if (paramInt < 0) {
       throw InvalidProtocolBufferMicroException.negativeSize();

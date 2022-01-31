@@ -1,26 +1,68 @@
-import com.tencent.open.base.ImageUtil;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.img.ImageCache;
-import com.tencent.open.base.img.ImageDownCallback;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable;
+import com.tencent.mobileqq.bubble.QQAnimationDrawable.SerialExecutor.1;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 
 public class aloi
-  implements ImageDownCallback
+  implements Executor
 {
-  public aloi(DownloadManager paramDownloadManager, DownloadInfo paramDownloadInfo) {}
+  final aloj<Runnable> jdField_a_of_type_Aloj = new aloj(30);
+  Runnable jdField_a_of_type_JavaLangRunnable;
   
-  public void a(String paramString1, String paramString2, String paramString3) {}
-  
-  public void b(String paramString1, String paramString2, String paramString3)
+  public void a()
   {
-    LogUtility.d(DownloadManager.a, ">>download apk icon err,should load another size icon");
-    ImageCache.a("app", ImageUtil.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.b, 75), null);
+    try
+    {
+      Runnable localRunnable = (Runnable)this.jdField_a_of_type_Aloj.a();
+      this.jdField_a_of_type_JavaLangRunnable = localRunnable;
+      if (localRunnable != null)
+      {
+        QLog.d("QQAnimationDrawable", 2, "scheduleNext start");
+        QQAnimationDrawable.a.execute(this.jdField_a_of_type_JavaLangRunnable);
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  public void b()
+  {
+    try
+    {
+      this.jdField_a_of_type_Aloj.a();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void execute(Runnable paramRunnable)
+  {
+    try
+    {
+      QLog.d("QQAnimationDrawable", 2, "SerialExecutor excute");
+      this.jdField_a_of_type_Aloj.a(new QQAnimationDrawable.SerialExecutor.1(this, paramRunnable));
+      if (this.jdField_a_of_type_JavaLangRunnable == null)
+      {
+        QLog.d("QQAnimationDrawable", 2, "SerialExecutor mActive == null scheduleNext");
+        a();
+      }
+      return;
+    }
+    finally
+    {
+      paramRunnable = finally;
+      throw paramRunnable;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aloi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,125 @@
-import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
-import com.tencent.widget.ExpandableListView.OnGroupCollapseListener;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.widget.PatchedButton;
 
 public class acyc
-  implements ExpandableListView.OnGroupCollapseListener
+  extends acyf
 {
-  public acyc(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
+  private boolean c;
   
-  public void a(int paramInt)
+  public acyc(BaseChatPie paramBaseChatPie)
   {
-    if ((paramInt == this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getGroupCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
+    super(paramBaseChatPie);
+  }
+  
+  public int a()
+  {
+    return 2130845234;
+  }
+  
+  protected void a()
+  {
+    this.b = true;
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.c = true;
+      this.jdField_a_of_type_Boolean = true;
+      return;
     }
+    this.c = false;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (!this.c) {
+      return;
+    }
+    super.a(paramInt1, paramInt2);
+  }
+  
+  public void a(TextView paramTextView)
+  {
+    if (!this.c) {
+      return;
+    }
+    super.a(paramTextView);
+  }
+  
+  public void a(Boolean paramBoolean)
+  {
+    if (!this.c) {
+      return;
+    }
+    super.a(paramBoolean);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (!this.c) {}
+    boolean bool;
+    do
+    {
+      return;
+      super.a(paramBoolean);
+      bool = c();
+      if (!paramBoolean) {
+        break;
+      }
+    } while (bool);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.setBackgroundResource(2130838012);
+    return;
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.setBackgroundResource(2130838012);
+  }
+  
+  public boolean a()
+  {
+    return this.c;
+  }
+  
+  protected void b()
+  {
+    if (!this.c) {
+      return;
+    }
+    super.b();
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (!this.c) {
+      return;
+    }
+    super.b(paramBoolean);
+  }
+  
+  public boolean b()
+  {
+    return true;
+  }
+  
+  public void c()
+  {
+    if (!this.c) {
+      return;
+    }
+    super.c();
+  }
+  
+  public void onClick(View paramView)
+  {
+    super.onClick(paramView);
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    awqx.b(null, "dc00898", "", "", "0X800A48A", "0X800A48A", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acyc
  * JD-Core Version:    0.7.0.1
  */

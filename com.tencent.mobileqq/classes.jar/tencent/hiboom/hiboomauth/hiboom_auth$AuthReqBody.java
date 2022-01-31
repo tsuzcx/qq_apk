@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import tencent.im.msg.im_msg_body.CommonElem;
 
 public final class hiboom_auth$AuthReqBody
-  extends MessageMicro
+  extends MessageMicro<AuthReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field i32_implat = PBField.initInt32(0);

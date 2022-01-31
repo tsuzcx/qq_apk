@@ -4,6 +4,7 @@ import android.content.ComponentName;
 import android.content.ServiceConnection;
 import android.os.IBinder;
 import com.tencent.qphone.base.remote.IBaseService.Stub;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 class aa
@@ -16,6 +17,7 @@ class aa
     QLog.d("MSF.D.RemoteServiceProxy", 1, "onServiceConnected service:" + paramComponentName);
     this.a.c = IBaseService.Stub.asInterface(paramIBinder);
     this.a.d();
+    this.a.onProcessViewableChanged(z.a(this.a), z.b(this.a), BaseApplication.processName);
   }
   
   public void onServiceDisconnected(ComponentName paramComponentName)

@@ -1,19 +1,18 @@
-import dov.com.qq.im.QIMCameraCaptureUnit;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
 
 public class anqm
-  implements Runnable
+  implements anqp
 {
-  public anqm(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
+  public anqm(ExtendFriendFragment paramExtendFriendFragment) {}
   
-  public void run()
+  public void a()
   {
-    this.a.a.setVisibility(8);
+    ExtendFriendFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anqm
  * JD-Core Version:    0.7.0.1
  */

@@ -27,53 +27,7 @@ public class ArrayMap<K, V>
   private MapCollections<K, V> getCollection()
   {
     if (this.mCollections == null) {
-      this.mCollections = new MapCollections()
-      {
-        protected void colClear()
-        {
-          ArrayMap.this.clear();
-        }
-        
-        protected Object colGetEntry(int paramAnonymousInt1, int paramAnonymousInt2)
-        {
-          return ArrayMap.this.mArray[((paramAnonymousInt1 << 1) + paramAnonymousInt2)];
-        }
-        
-        protected Map<K, V> colGetMap()
-        {
-          return ArrayMap.this;
-        }
-        
-        protected int colGetSize()
-        {
-          return ArrayMap.this.mSize;
-        }
-        
-        protected int colIndexOfKey(Object paramAnonymousObject)
-        {
-          return ArrayMap.this.indexOfKey(paramAnonymousObject);
-        }
-        
-        protected int colIndexOfValue(Object paramAnonymousObject)
-        {
-          return ArrayMap.this.indexOfValue(paramAnonymousObject);
-        }
-        
-        protected void colPut(K paramAnonymousK, V paramAnonymousV)
-        {
-          ArrayMap.this.put(paramAnonymousK, paramAnonymousV);
-        }
-        
-        protected void colRemoveAt(int paramAnonymousInt)
-        {
-          ArrayMap.this.removeAt(paramAnonymousInt);
-        }
-        
-        protected V colSetValue(int paramAnonymousInt, V paramAnonymousV)
-        {
-          return ArrayMap.this.setValueAt(paramAnonymousInt, paramAnonymousV);
-        }
-      };
+      this.mCollections = new ArrayMap.1(this);
     }
     return this.mCollections;
   }

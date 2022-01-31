@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.data;
 
+import atmo;
+import atoc;
 import com.tencent.mobileqq.mp.publicaccount_recommend.BusinessRecommend;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class PublicRecommendAccountInfo
-  extends Entity
+  extends atmo
 {
   private static final String TAG = "PublicRecommendAccountInfo";
   public int accountflag = -1;
@@ -23,7 +23,7 @@ public class PublicRecommendAccountInfo
   public int mFilter;
   public String mIconLinkAddr;
   public String mIsVerified;
-  @unique
+  @atoc
   public int mListid;
   public String mPublicaccount;
   public String mPublicdesc;
@@ -82,7 +82,7 @@ public class PublicRecommendAccountInfo
     return localPublicRecommendAccountInfo;
   }
   
-  public static List createPublicRecommendAccountInfoList(List paramList)
+  public static List<PublicRecommendAccountInfo> createPublicRecommendAccountInfoList(List<publicaccount_recommend.BusinessRecommend> paramList)
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;

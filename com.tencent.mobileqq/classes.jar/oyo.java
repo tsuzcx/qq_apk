@@ -1,43 +1,13 @@
-import android.view.View;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class oyo
-  implements Runnable
+  implements ViewBase.IBuilder
 {
-  public oyo(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  public void run()
+  public ViewBase build(VafContext paramVafContext)
   {
-    int i = this.a.jdField_c_of_type_AndroidViewView.getHeight();
-    int j = this.a.b.getHeight();
-    View localView;
-    LinearLayout.LayoutParams localLayoutParams;
-    if (j < i)
-    {
-      localView = this.a.findViewById(2131367550);
-      localLayoutParams = (LinearLayout.LayoutParams)localView.getLayoutParams();
-      if (this.a.jdField_c_of_type_Int != 2) {
-        break label79;
-      }
-      localLayoutParams.topMargin = 0;
-      localLayoutParams.bottomMargin = 0;
-    }
-    for (;;)
-    {
-      localView.setLayoutParams(localLayoutParams);
-      return;
-      label79:
-      if (this.a.jdField_c_of_type_Int == 5)
-      {
-        int k = localLayoutParams.topMargin;
-        localLayoutParams.topMargin = ((i - j) / 2 + k);
-      }
-      else
-      {
-        localLayoutParams.topMargin = 50;
-      }
-    }
+    return new oyl(paramVafContext);
   }
 }
 

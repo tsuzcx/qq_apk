@@ -1,41 +1,36 @@
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.widget.Button;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.CmpCtxt;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderRecommend;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageButton;
+import com.tencent.av.ui.VideoInviteActivity;
 
 public class lzi
-  extends PublicAccountObserver
+  implements begy
 {
-  public lzi(ComponentHeaderRecommend paramComponentHeaderRecommend) {}
+  public lzi(VideoInviteActivity paramVideoInviteActivity, boolean paramBoolean) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onDismiss()
   {
-    ComponentHeaderRecommend.a(this.a).setText("已关注");
-    ComponentHeaderRecommend.a(this.a).setTextColor(Color.parseColor("#BBBBBB"));
-    ComponentHeaderRecommend.a(this.a).setEnabled(false);
-    ComponentHeaderRecommend.a(this.a).getPaint().setFakeBoldText(false);
-    if (QLog.isColorLevel()) {
-      QLog.d("ComponentHeaderRecommend", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
-    }
-    if ((this.a.a.a != null) && (this.a.a.a.a() != null))
+    if (this.jdField_a_of_type_Boolean)
     {
-      paramString = this.a.a.a.a();
-      String str = ReadInJoyUtils.a(paramString.mAlgorithmID, ReadInJoyUtils.a(paramString), this.a.a.a.e(), 0, 0, NetworkUtil.h(this.a.getContext()), ComponentHeaderRecommend.a(this.a) + "", null, paramString.innerUniqueID, null, paramString);
-      PublicAccountReportUtils.a(null, ComponentHeaderRecommend.a(this.a) + "", "0X80080EC", "0X80080EC", 0, 0, String.valueOf(paramString.mFeedId), String.valueOf(paramString.mArticleID), Integer.toString(paramString.mStrategyId), str, false);
+      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
+      for (str = "0X80043A4";; str = "0X80043B6")
+      {
+        awqx.b(null, "CliOper", "", "", str, str, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.d), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), "", "");
+        if ((this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a != null) && (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetImageButton != null))
+        {
+          this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setEnabled(true);
+          this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetImageButton.setEnabled(true);
+        }
+        return;
+      }
+    }
+    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
+    for (String str = "0X80043AA";; str = "0X80043B0") {
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lzi
  * JD-Core Version:    0.7.0.1
  */

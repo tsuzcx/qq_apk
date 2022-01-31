@@ -1,39 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.util.Iterator;
-import java.util.List;
+import org.json.JSONObject;
 
-class wnd
-  implements Runnable
+public class wnd
 {
-  wnd(wnc paramwnc) {}
+  public String a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void run()
+  public wnd(JSONObject paramJSONObject)
   {
-    EntityManager localEntityManager = this.a.a.app.getEntityManagerFactory().createEntityManager();
-    List localList = localEntityManager.a(ReadInJoySearchHistoryEntity.class);
-    if (localList == null) {
-      return;
-    }
-    Object localObject = localList.iterator();
-    while (((Iterator)localObject).hasNext()) {
-      localEntityManager.b((ReadInJoySearchHistoryEntity)((Iterator)localObject).next());
-    }
-    localList.clear();
-    localObject = this.a.a.a.obtainMessage(1);
-    ((Message)localObject).obj = localList;
-    this.a.a.a.sendMessage((Message)localObject);
-    localEntityManager.a();
+    this.a = paramJSONObject.optString("icon");
+    this.b = paramJSONObject.optString("iconGrid");
+    this.c = paramJSONObject.optString("jumpUrl");
+    this.d = paramJSONObject.optString("iconLoveGrid");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wnd
  * JD-Core Version:    0.7.0.1
  */

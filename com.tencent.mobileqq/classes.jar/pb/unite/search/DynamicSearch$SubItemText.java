@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class DynamicSearch$SubItemText
-  extends MessageMicro
+  extends MessageMicro<SubItemText>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField color = PBField.initBytes(ByteStringMicro.EMPTY);

@@ -1,12 +1,13 @@
 package com.tencent.av.business.manager.filter;
 
-import com.tencent.av.business.manager.EffectConfigBase.ItemBase;
+import kxb;
 
 public class FilterItem
-  extends EffectConfigBase.ItemBase
+  extends kxb
 {
   private String desc;
   private String filterid;
+  private int filtertype;
   private String iconmd5;
   private String iconurl;
   private String md5;
@@ -23,6 +24,11 @@ public class FilterItem
   public String getFilterId()
   {
     return this.filterid;
+  }
+  
+  public int getFiltertype()
+  {
+    return this.filtertype;
   }
   
   public String getIconMd5()
@@ -87,10 +93,15 @@ public class FilterItem
   {
     this.usable = paramBoolean;
   }
+  
+  public String toString()
+  {
+    return "filterid[" + this.filterid + "], desc[" + this.desc + "], name[" + this.name + "], isDownloading[" + this.isDownloading + "], filtertype[" + this.filtertype + "]";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.business.manager.filter.FilterItem
  * JD-Core Version:    0.7.0.1
  */

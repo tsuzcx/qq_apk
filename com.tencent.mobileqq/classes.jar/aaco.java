@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-public final class aaco
-  extends SosoInterface.OnLocationListener
+public class aaco
+  implements bepk
 {
-  public aaco(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public aaco(BaseChatPie paramBaseChatPie) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      BaseChatPie.a(this.a);
+      BaseChatPie.b(this.a);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaco
  * JD-Core Version:    0.7.0.1
  */

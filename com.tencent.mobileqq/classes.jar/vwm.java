@@ -1,44 +1,148 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
-import com.tencent.mobileqq.app.EnterpriseQQHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StEntry;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.LayoutParams;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerEntryItemView;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerItemView;
+import com.tencent.mobileqq.pb.PBStringField;
+import java.util.List;
 
 public class vwm
-  extends SosoInterface.OnLocationListener
+  extends RecyclerView.Adapter<vwn>
 {
-  public vwm(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  protected CertifiedAccountMeta.StEntry a;
+  protected List<vxm> a;
+  private vwl jdField_a_of_type_Vwl;
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
+  private boolean c;
+  
+  protected int a()
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry != null) {
+      return 1;
+    }
+    return 0;
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public List<vxm> a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessChatPie", 2, "onLocationFinish(): BEGIN errCode=" + paramInt);
-    }
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null)) {
-      if (paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString == null) {
-        break label169;
-      }
-    }
-    label169:
-    for (String str = paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString;; str = "")
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public vwn a(ViewGroup paramViewGroup, int paramInt)
+  {
+    Object localObject = paramViewGroup.getContext();
+    paramViewGroup = new RecyclerView.LayoutParams(azvv.a((Context)localObject, 144.0F), azvv.a((Context)localObject, 213.0F));
+    if (paramInt == 3)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BusinessChatPie", 2, "onLocationFinish() latitude=" + paramSosoLbsInfo.a.a + ", longitude=" + paramSosoLbsInfo.a.a + ", address=" + str);
-      }
-      ((EnterpriseQQHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(21)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramSosoLbsInfo.a.a, paramSosoLbsInfo.a.jdField_b_of_type_Double, str);
-      return;
+      localObject = new RecommendBannerEntryItemView((Context)localObject);
+      ((RecommendBannerEntryItemView)localObject).setLayoutParams(paramViewGroup);
+      ((RecommendBannerEntryItemView)localObject).setIsCloseShadow(this.jdField_a_of_type_Boolean);
+      ((RecommendBannerEntryItemView)localObject).setInNightMode(this.b);
+      return new vwn(this, (View)localObject);
     }
+    if (paramInt == 1)
+    {
+      localObject = new RecommendBannerItemView((Context)localObject);
+      ((RecommendBannerItemView)localObject).setLayoutParams(paramViewGroup);
+      ((RecommendBannerItemView)localObject).setIsCloseShadow(this.jdField_a_of_type_Boolean);
+      ((RecommendBannerItemView)localObject).setInNightMode(this.b);
+      ((RecommendBannerItemView)localObject).setInNewFolderPage(this.c);
+      return new vwn(this, (View)localObject);
+    }
+    if (paramInt == 2)
+    {
+      localObject = new RecommendBannerFeedItemView((Context)localObject);
+      ((RecommendBannerFeedItemView)localObject).setLayoutParams(paramViewGroup);
+      ((RecommendBannerFeedItemView)localObject).setIsCloseShadow(this.jdField_a_of_type_Boolean);
+      ((RecommendBannerFeedItemView)localObject).setInNightMode(this.b);
+      return new vwn(this, (View)localObject);
+    }
+    return null;
+  }
+  
+  public void a(CertifiedAccountMeta.StEntry paramStEntry, List<vxm> paramList)
+  {
+    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry = paramStEntry;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+  }
+  
+  public void a(vwl paramvwl)
+  {
+    this.jdField_a_of_type_Vwl = paramvwl;
+  }
+  
+  public void a(vwn paramvwn)
+  {
+    super.onViewAttachedToWindow(paramvwn);
+    int i = paramvwn.getAdapterPosition() - a();
+    if ((!been.a(i, a())) && (a().get(i) != null)) {
+      wye.a(((vxm)a().get(i)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.get(), "auth_page", "recom_exp", 0, 0, new String[] { "", "", String.valueOf(i), ((vxm)a().get(i)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.nick.get() });
+    }
+  }
+  
+  public void a(vwn paramvwn, int paramInt)
+  {
+    if (paramvwn == null) {}
+    do
+    {
+      return;
+      if ((paramvwn.itemView instanceof RecommendBannerEntryItemView))
+      {
+        ((RecommendBannerEntryItemView)paramvwn.itemView).setEntry(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry);
+        return;
+      }
+      paramInt -= a();
+      if ((paramvwn.itemView instanceof RecommendBannerItemView))
+      {
+        paramvwn = (RecommendBannerItemView)paramvwn.itemView;
+        paramvwn.setData(((vxm)a().get(paramInt)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser, paramInt);
+        paramvwn.setRecommendBannerFolwListener(this.jdField_a_of_type_Vwl);
+        return;
+      }
+    } while (!(paramvwn.itemView instanceof RecommendBannerFeedItemView));
+    ((RecommendBannerFeedItemView)paramvwn.itemView).setData(((vxm)a().get(paramInt)).jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed, paramInt);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.b = paramBoolean;
+  }
+  
+  public void c(boolean paramBoolean)
+  {
+    this.c = paramBoolean;
+  }
+  
+  public int getItemCount()
+  {
+    if (a() == null) {
+      return a();
+    }
+    return a().size() + a();
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if ((paramInt == 0) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry != null)) {
+      return 3;
+    }
+    return ((vxm)a().get(paramInt - a())).jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vwm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,25 @@
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.content.Intent;
+import android.os.Bundle;
 
-public class tmd
-  extends FriendListObserver
+public abstract interface tmd
 {
-  public tmd(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public abstract void a(int paramInt1, int paramInt2, Intent paramIntent);
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    if (paramBoolean) {
-      this.a.c();
-    }
-  }
+  public abstract void a(Bundle paramBundle1, Bundle paramBundle2);
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tmd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,43 @@
 package com.tencent.mobileqq.startup.step;
 
-import aijv;
-import aijw;
-import aijx;
+import ajed;
 import android.os.Build.VERSION;
 import android.os.Environment;
+import android.text.TextUtils;
+import awon;
+import awoo;
+import awop;
+import awoq;
+import awos;
+import axmp;
+import axpv;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.JpegExifReader;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.Utils;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.transfile.DiskCache;
+import com.tencent.mobileqq.dinifly.DiniFlyLog;
+import com.tencent.mobileqq.dinifly.IDiniFlyQLog;
+import com.tencent.mobileqq.theme.effect.QEffectApngImageView;
+import com.tencent.mobileqq.theme.effect.QEffectGifImageView;
+import com.tencent.mobileqq.theme.effect.QEffectLottieImageView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qq.effect.engine.QEffectEngine;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class InitUrlDrawable
   extends Step
 {
-  public static DiskCache a;
+  public static axpv a;
+  private static IDiniFlyQLog jdField_a_of_type_ComTencentMobileqqDiniflyIDiniFlyQLog = new awon();
+  private static List<String> jdField_a_of_type_JavaUtilList = new CopyOnWriteArrayList();
+  public static volatile boolean a;
   
-  private static String b(Exception paramException)
+  private static String b(Exception paramException, boolean paramBoolean)
   {
-    int j = 0;
+    int k = 0;
     if (paramException == null) {
       return "";
     }
@@ -33,27 +47,27 @@ public class InitUrlDrawable
     int m = paramException.length;
     int i = 0;
     Object localObject;
-    int k;
+    int j;
     if (i < m)
     {
       localObject = paramException[i];
       String str = localObject.getClassName();
-      k = j;
+      j = k;
       if (!str.contains("URLDrawable"))
       {
-        k = j;
+        j = k;
         if (!str.startsWith("android."))
         {
-          k = j;
+          j = k;
           if (!str.startsWith("java."))
           {
-            k = j;
+            j = k;
             if (!str.startsWith("com.android."))
             {
               if (!str.startsWith("dalvik.")) {
-                break label127;
+                break label134;
               }
-              k = j;
+              j = k;
             }
           }
         }
@@ -62,48 +76,84 @@ public class InitUrlDrawable
     for (;;)
     {
       i += 1;
-      j = k;
+      k = j;
       break;
-      label127:
-      k = j + 1;
-      if (k >= 8)
-      {
-        i = localArrayList.size() - 1;
-        while (i >= 0)
-        {
-          localStringBuffer.append((String)localArrayList.get(i)).append(",");
-          i -= 1;
-        }
+      label134:
+      k += 1;
+      if (k >= 8) {
+        return localStringBuffer.toString();
       }
       localArrayList.add(localObject.toString());
+      localStringBuffer.append(localObject.toString()).append(",");
+      j = k;
+      if (paramBoolean)
+      {
+        localStringBuffer.append("\n");
+        j = k;
+      }
     }
-    return localStringBuffer.toString();
   }
   
-  protected boolean a()
+  private static String b(String paramString, int paramInt)
   {
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
+    }
+    paramString = paramString.split(",");
+    StringBuilder localStringBuilder = new StringBuilder(128);
+    int i = 0;
+    if ((i < paramString.length) && (i < paramInt))
+    {
+      int j = paramString[i].indexOf("(");
+      if (j > 0) {
+        localStringBuilder.append(paramString[i].substring(0, j)).append("()").append(",");
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        localStringBuilder.append(paramString[i]).append(",");
+      }
+    }
+    return localStringBuilder.toString();
+  }
+  
+  private static void b(Exception paramException, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, long paramLong) {}
+  
+  protected boolean doStep()
+  {
+    if (jdField_a_of_type_Boolean) {
+      return true;
+    }
+    jdField_a_of_type_Boolean = true;
+    DiniFlyLog.setLog(jdField_a_of_type_ComTencentMobileqqDiniflyIDiniFlyQLog);
+    QEffectEngine.getInstance().setJsonConvert(new awoq());
+    QEffectEngine.getInstance().registerLoad(new axmp());
+    QEffectEngine.getInstance().registerEffect(2, "a.png", QEffectApngImageView.class);
+    QEffectEngine.getInstance().registerEffect(3, "lottie", QEffectLottieImageView.class);
+    QEffectEngine.getInstance().registerEffect(8, "gif", QEffectGifImageView.class);
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
     URLDrawable.DEBUG = false;
     File localFile;
     if ("mounted".equals(Environment.getExternalStorageState())) {
-      localFile = new File(AppConstants.aK);
+      localFile = new File(ajed.aU);
     }
     try
     {
       for (;;)
       {
-        URLDrawable.init(localBaseApplicationImpl, new aijx(localBaseApplicationImpl));
+        URLDrawable.init(localBaseApplicationImpl, new awos(localBaseApplicationImpl));
         if (Build.VERSION.SDK_INT >= 11) {
-          URLDrawable.setDebuggableCallback(new aijv());
+          URLDrawable.setDebuggableCallback(new awoo());
         }
         localFile = new File(localFile, "diskcache");
         if (localFile != null) {
           break;
         }
         localFile = Utils.getExternalCacheDir(localBaseApplicationImpl);
-        a = new DiskCache(localFile);
-        com.tencent.mobileqq.transfile.URLDrawableHelper.a = localFile;
-        JpegExifReader.initJpegExifReader(new aijw());
+        jdField_a_of_type_Axpv = new axpv(localFile);
+        axwd.a = localFile;
+        JpegExifReader.initJpegExifReader(new awop());
         return true;
         localFile = localBaseApplicationImpl.getCacheDir();
       }

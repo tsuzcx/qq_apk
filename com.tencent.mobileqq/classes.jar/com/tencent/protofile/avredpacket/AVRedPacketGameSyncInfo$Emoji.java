@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class AVRedPacketGameSyncInfo$Emoji
-  extends MessageMicro
+  extends MessageMicro<Emoji>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56 }, new String[] { "emojiTypeId", "startTime", "eventType", "trackNum", "id", "isBigEmoji", "fallDownDuration" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false), Integer.valueOf(0) }, Emoji.class);
   public final PBUInt32Field emojiTypeId = PBField.initUInt32(0);

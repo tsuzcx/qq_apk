@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.search.fragment;
 
-import ahyb;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -8,9 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import avkl;
+import avls;
+import azwg;
 import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
-import com.tencent.mobileqq.search.adapter.BaseMvpMessageAdapter;
-import com.tencent.mobileqq.util.FaceDecoder;
 import com.tencent.widget.ListView;
 import java.util.List;
 
@@ -19,8 +19,8 @@ public class MessageSearchDetailFragment
 {
   private static FullMessageSearchResult.SearchResultItem jdField_a_of_type_ComTencentMobileqqAppFmsFullMessageSearchResult$SearchResultItem;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private BaseMvpMessageAdapter jdField_a_of_type_ComTencentMobileqqSearchAdapterBaseMvpMessageAdapter;
-  private FaceDecoder jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder;
+  private avkl jdField_a_of_type_Avkl;
+  private azwg jdField_a_of_type_Azwg;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
   private String jdField_a_of_type_JavaLangString;
   private FullMessageSearchResult.SearchResultItem b;
@@ -45,28 +45,33 @@ public class MessageSearchDetailFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2130969071, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131365002));
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131364070));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131493641, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131301817));
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131303596));
     return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.d();
+    if (this.jdField_a_of_type_Azwg != null) {
+      this.jdField_a_of_type_Azwg.d();
     }
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131438166, new Object[] { Integer.valueOf(this.b.secondPageMessageUniseq.size()), this.jdField_a_of_type_JavaLangString }));
-    this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(getActivity(), getActivity().app);
-    this.jdField_a_of_type_ComTencentMobileqqSearchAdapterBaseMvpMessageAdapter = new ahyb(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, this.b, this.jdField_a_of_type_JavaLangString, getActivity().app);
-    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqSearchAdapterBaseMvpMessageAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqSearchAdapterBaseMvpMessageAdapter.a();
+    if ((this.b == null) || (this.b.secondPageMessageUniseq == null)) {}
+    for (int i = 0;; i = this.b.secondPageMessageUniseq.size())
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131653249, new Object[] { Integer.valueOf(i), this.jdField_a_of_type_JavaLangString }));
+      this.jdField_a_of_type_Azwg = new azwg(getActivity(), getActivity().app);
+      this.jdField_a_of_type_Avkl = new avls(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Azwg, this.b, this.jdField_a_of_type_JavaLangString, getActivity().app);
+      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Avkl);
+      this.jdField_a_of_type_Avkl.a();
+      return;
+    }
   }
 }
 

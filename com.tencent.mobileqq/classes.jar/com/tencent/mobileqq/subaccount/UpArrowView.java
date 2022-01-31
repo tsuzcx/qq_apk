@@ -7,7 +7,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
 import android.view.View;
 
 public class UpArrowView
@@ -16,7 +15,6 @@ public class UpArrowView
   int jdField_a_of_type_Int;
   Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   int b;
-  int c;
   
   public UpArrowView(Context paramContext)
   {
@@ -38,13 +36,12 @@ public class UpArrowView
   
   public void a()
   {
-    this.b = Color.argb(255, 255, 255, 255);
-    this.c = Color.argb(255, 229, 230, 231);
-    this.jdField_a_of_type_Int = Color.argb(255, 222, 222, 222);
+    this.jdField_a_of_type_Int = Color.argb(255, 255, 255, 255);
+    this.b = Color.argb(255, 241, 242, 249);
     setDuplicateParentStateEnabled(true);
-    int i = getResources().getColor(2131494261);
-    if (this.b != i) {
-      this.b = i;
+    int i = getResources().getColor(2131101317);
+    if (this.jdField_a_of_type_Int != i) {
+      this.jdField_a_of_type_Int = i;
     }
   }
   
@@ -52,7 +49,7 @@ public class UpArrowView
   {
     super.onDraw(paramCanvas);
     if ((isSelected()) || (isPressed())) {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.c);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.b);
     }
     for (;;)
     {
@@ -65,12 +62,8 @@ public class UpArrowView
       localPath.lineTo(i, j);
       localPath.close();
       paramCanvas.drawPath(localPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(getResources().getDisplayMetrics().density * 0.67F);
-      paramCanvas.drawLine(0.0F, j, i / 2, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawLine(i / 2, 0.0F, i, j, this.jdField_a_of_type_AndroidGraphicsPaint);
       return;
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.b);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
     }
   }
   
@@ -90,9 +83,8 @@ public class UpArrowView
   {
     if (paramBoolean)
     {
-      this.b = Color.argb(255, 24, 50, 87);
-      this.c = Color.argb(255, 14, 35, 65);
-      this.jdField_a_of_type_Int = Color.argb(255, 13, 33, 62);
+      this.jdField_a_of_type_Int = Color.argb(255, 0, 0, 0);
+      this.b = Color.argb(255, 31, 31, 31);
     }
   }
 }

@@ -5,17 +5,17 @@ public class ApolloJscLibData
 {
   public String getSharedPreferencesName()
   {
-    return "preload_android.qq.apollo.jsc";
+    return "preload_android.qq.apollo.jsc800";
   }
   
   public String getStrResName()
   {
-    return "android.qq.apollo.jsc";
+    return "android.qq.apollo.jsc800";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.xmldata.ApolloJscLibData
  * JD-Core Version:    0.7.0.1
  */

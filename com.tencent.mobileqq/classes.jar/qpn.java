@@ -1,50 +1,68 @@
-import android.app.Activity;
-import com.tencent.gdtad.jsbridge.GdtAdWebPlugin;
-import com.tencent.gdtad.jsbridge.GdtJsCallHandler;
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.util.GdtDeviceUtil;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AbsListView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class qpn
-  implements GdtJsCallHandler
+  implements begh
 {
-  public boolean a(GdtAdWebPlugin paramGdtAdWebPlugin, String paramString, String... paramVarArgs)
+  List<begh> a = new ArrayList();
+  
+  public void a()
   {
-    if ((paramGdtAdWebPlugin == null) || (paramGdtAdWebPlugin.mRuntime == null) || (paramGdtAdWebPlugin.mRuntime.a() == null))
-    {
-      GdtLog.d("GdtMacJsCallHandler", "handleJsCallRequest error");
-      return true;
+    this.a.clear();
+  }
+  
+  public void a(begh parambegh)
+  {
+    if (!this.a.contains(parambegh)) {
+      this.a.add(parambegh);
     }
-    Activity localActivity = paramGdtAdWebPlugin.mRuntime.a();
-    paramVarArgs = new JSONObject();
-    try
+  }
+  
+  public void b(begh parambegh)
+  {
+    this.a.remove(parambegh);
+  }
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
     {
-      paramVarArgs.put("macAddress", GdtDeviceUtil.b(localActivity));
+      begh localbegh = (begh)localIterator.next();
       try
       {
-        paramGdtAdWebPlugin.callJs(paramString, new String[] { paramVarArgs.toString() });
-        return true;
+        localbegh.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
       }
-      catch (Throwable paramGdtAdWebPlugin)
-      {
-        GdtLog.d("GdtMacJsCallHandler", "handleJsCallRequest error", paramGdtAdWebPlugin);
-        return true;
+      catch (Throwable localThrowable) {}
+      if (QLog.isColorLevel()) {
+        QLog.e("ReadInJoyBaseListView", 2, "onScroll exp", localThrowable);
       }
     }
-    catch (JSONException localJSONException)
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    Iterator localIterator = this.a.iterator();
+    while (localIterator.hasNext())
     {
-      for (;;)
+      begh localbegh = (begh)localIterator.next();
+      try
       {
-        GdtLog.d("GdtMacJsCallHandler", "handleJsCallRequest error", localJSONException);
+        localbegh.onScrollStateChanged(paramAbsListView, paramInt);
+      }
+      catch (Throwable localThrowable) {}
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyBaseListView", 2, "onScrollStateChanged exp", localThrowable);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qpn
  * JD-Core Version:    0.7.0.1
  */

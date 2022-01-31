@@ -1,18 +1,10 @@
-import com.tencent.mobileqq.troop.data.TroopAioNotificationBar;
-
-public class ajie
-  implements Runnable
+class ajie
 {
-  public ajie(TroopAioNotificationBar paramTroopAioNotificationBar) {}
-  
-  public void run()
-  {
-    TroopAioNotificationBar.a(this.a, -1);
-  }
+  private static final ajib a = new ajib(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajie
  * JD-Core Version:    0.7.0.1
  */

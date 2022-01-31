@@ -5,7 +5,7 @@ import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
 import mqq.app.TicketManagerListener;
 
-public class WebAccelerateHelper$TicketInfoListener
+class WebAccelerateHelper$TicketInfoListener
   implements TicketManagerListener
 {
   private WebAccelerateHelper$TicketInfoListener(WebAccelerateHelper paramWebAccelerateHelper) {}
@@ -21,7 +21,7 @@ public class WebAccelerateHelper$TicketInfoListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.WebAccelerateHelper.TicketInfoListener
  * JD-Core Version:    0.7.0.1
  */

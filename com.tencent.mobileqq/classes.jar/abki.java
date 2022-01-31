@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.armap.ShopScanActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQIdentiferActivity;
 
-public class abki
-  implements Runnable
+class abki
+  implements DialogInterface.OnClickListener
 {
-  public abki(ShopScanActivity paramShopScanActivity) {}
+  abki(abkh paramabkh) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ShopScanActivity.d(this.a);
-    ShopScanActivity.a(this.a, null);
+    paramDialogInterface.dismiss();
+    QQIdentiferActivity.a(this.a.a, 205, ajjy.a(2131644575));
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abki
  * JD-Core Version:    0.7.0.1
  */

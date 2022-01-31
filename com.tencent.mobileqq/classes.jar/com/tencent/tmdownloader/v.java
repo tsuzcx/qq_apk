@@ -1,7 +1,14 @@
 package com.tencent.tmdownloader;
 
-import android.os.Handler;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistant.common.PackageInstallReceiver;
+import com.tencent.tmassistant.st.b;
+import com.tencent.tmassistantbase.util.GlobalUtil;
+import com.tencent.tmassistantbase.util.ab;
+import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmdownloader.internal.downloadservice.ApkDownloadManager;
+import com.tencent.tmdownloader.internal.downloadservice.a.c;
+import com.tencent.tmdownloader.internal.storage.a;
+import java.util.ArrayList;
 
 class v
   implements Runnable
@@ -10,22 +17,41 @@ class v
   
   public void run()
   {
+    long l = System.currentTimeMillis();
+    ArrayList localArrayList = a.a().c();
+    this.a.mServiceDownloadTaskManager = new c(localArrayList);
     try
     {
-      Thread.sleep(10000L);
-      TMAssistantDownloadService.access$000(this.a).sendEmptyMessage(0);
-      return;
+      this.a.mServiceDownloadTaskManager.a(this.a);
+      this.a.mServiceDownloadTaskManager.a();
+      label50:
+      if (GlobalUtil.getInstance().getContext() == null) {
+        GlobalUtil.getInstance().setContext(this.a);
+      }
+      try
+      {
+        ApkDownloadManager.getInstance().init();
+        PackageInstallReceiver.a().a(this.a);
+        b.a();
+        label89:
+        ab.a("Load downloadInfo end, timeCost = " + (System.currentTimeMillis() - l));
+        ac.c("TMADownloadSDKService", "<onCreate>exit");
+        return;
+      }
+      catch (Throwable localThrowable1)
+      {
+        break label89;
+      }
     }
-    catch (InterruptedException localInterruptedException)
+    catch (Throwable localThrowable2)
     {
-      r.b("TMADownloadSDKService", "exception:", localInterruptedException);
-      localInterruptedException.printStackTrace();
+      break label50;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmdownloader.v
  * JD-Core Version:    0.7.0.1
  */

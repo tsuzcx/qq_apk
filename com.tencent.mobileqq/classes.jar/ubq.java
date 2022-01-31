@@ -1,39 +1,24 @@
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
-public class ubq
-  implements Runnable
+class ubq
+  implements ulz<Integer>
 {
-  public ubq(TroopDisbandActivity paramTroopDisbandActivity) {}
+  ubq(ubn paramubn, spz paramspz) {}
   
-  public void run()
+  public void a(ErrorMessage paramErrorMessage)
   {
-    try
-    {
-      TroopHandler localTroopHandler = (TroopHandler)this.a.app.a(20);
-      if (localTroopHandler != null)
-      {
-        long l = Long.parseLong(this.a.a);
-        localTroopHandler.a(l, 0L, 5, 6, 1);
-        ArrayList localArrayList = new ArrayList();
-        localArrayList.add(Long.valueOf(l));
-        localTroopHandler.a(localArrayList);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("Q.troopdisband.disband", 2, localException.toString());
-    }
+    urk.e("QQStoryTakeVideoHelper", "get vip error.");
+  }
+  
+  public void a(Integer paramInteger)
+  {
+    urk.b("QQStoryTakeVideoHelper", "get vip competed, vip:" + paramInteger);
+    this.jdField_a_of_type_Spz.b("qqstory_i_am_vip", paramInteger);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ubq
  * JD-Core Version:    0.7.0.1
  */

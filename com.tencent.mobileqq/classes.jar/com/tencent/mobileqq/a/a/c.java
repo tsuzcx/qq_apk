@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.a.a;
 
-import com.tencent.mobileqq.msf.core.net.v;
+import com.tencent.mobileqq.msf.core.net.x;
 import com.tencent.qphone.base.a;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -9,7 +9,7 @@ public class c
 {
   public void a(int paramInt1, int paramInt2) {}
   
-  public void a(int paramInt, long paramLong, v paramv) {}
+  public void a(int paramInt, long paramLong, x paramx) {}
   
   public void a(long paramLong1, long paramLong2) {}
   

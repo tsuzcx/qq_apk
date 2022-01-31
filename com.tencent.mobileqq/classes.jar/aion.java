@@ -1,25 +1,19 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemTextButton;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameCmdChannel;
+import java.util.Comparator;
 
 public class aion
+  implements Comparator<aioo>
 {
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public ImageView b = null;
+  public aion(CmGameCmdChannel paramCmGameCmdChannel) {}
   
-  public aion(StructMsgItemTextButton paramStructMsgItemTextButton)
+  public int a(aioo paramaioo1, aioo paramaioo2)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = null;
-    this.jdField_a_of_type_AndroidWidgetImageView = null;
-    this.jdField_a_of_type_AndroidWidgetTextView = null;
+    return paramaioo1.a() - paramaioo2.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aion
  * JD-Core Version:    0.7.0.1
  */

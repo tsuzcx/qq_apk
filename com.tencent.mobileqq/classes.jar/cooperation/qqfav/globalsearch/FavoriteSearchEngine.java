@@ -1,31 +1,30 @@
 package cooperation.qqfav.globalsearch;
 
-import amwr;
-import amws;
 import android.database.Cursor;
 import android.os.Bundle;
+import avuz;
+import avva;
+import avvn;
+import bfhn;
+import bfik;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
-import com.tencent.mobileqq.search.searchengine.ISearchListener;
-import com.tencent.mobileqq.search.searchengine.SearchRequest;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.QfavHelper;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FavoriteSearchEngine
-  implements ISearchEngine
+  implements avuz<bfik>
 {
   private static boolean jdField_a_of_type_Boolean;
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private final amwr jdField_a_of_type_Amwr = new amwr(this, null);
-  private final amws jdField_a_of_type_Amws = new amws(this, null);
   private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private final FavoriteSearchEngine.QueryRunnable jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$QueryRunnable = new FavoriteSearchEngine.QueryRunnable(this, null);
+  private final FavoriteSearchEngine.SearchRunnable jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$SearchRunnable = new FavoriteSearchEngine.SearchRunnable(this, null);
   private String jdField_a_of_type_JavaLangString;
   private Thread jdField_a_of_type_JavaLangThread;
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<bfik> jdField_a_of_type_JavaUtilList = new ArrayList();
   private Thread b;
   
   public FavoriteSearchEngine(QQAppInterface paramQQAppInterface)
@@ -33,37 +32,43 @@ public class FavoriteSearchEngine
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public List a(SearchRequest paramSearchRequest)
+  public List<bfik> a(avvn paramavvn)
   {
+    if (paramavvn != null) {}
     int i;
     long l;
     boolean bool2;
     boolean bool1;
-    label115:
+    label111:
     Object localObject1;
     for (;;)
     {
       try
       {
-        if ((!jdField_a_of_type_Boolean) || (paramSearchRequest == null) || (paramSearchRequest.jdField_a_of_type_JavaLangString == null) || (paramSearchRequest.jdField_a_of_type_JavaLangString.trim().length() == 0))
+        if (paramavvn.jdField_a_of_type_JavaLangString != null)
         {
-          if (!jdField_a_of_type_Boolean) {
-            jdField_a_of_type_Boolean = QfavHelper.a(false);
-          }
-          paramSearchRequest = null;
-          return paramSearchRequest;
+          i = paramavvn.jdField_a_of_type_JavaLangString.trim().length();
+          if (i != 0) {}
         }
-        this.jdField_a_of_type_Amws.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest = paramSearchRequest;
-        if (paramSearchRequest.jdField_a_of_type_AndroidOsBundle == null) {
-          break label1094;
-        }
-        i = paramSearchRequest.jdField_a_of_type_AndroidOsBundle.getInt("iNumber", 1);
-        l = paramSearchRequest.jdField_a_of_type_AndroidOsBundle.getLong("lModifyTime", 9223372036854775807L);
-        bool2 = paramSearchRequest.jdField_a_of_type_AndroidOsBundle.getBoolean("bMore", false);
-        bool1 = paramSearchRequest.jdField_a_of_type_AndroidOsBundle.getBoolean("bSearchNet", false);
-        if ((!paramSearchRequest.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) || ((bool1) && (this.jdField_a_of_type_Int == 1)))
+        else
         {
-          this.jdField_a_of_type_JavaLangString = paramSearchRequest.jdField_a_of_type_JavaLangString;
+          paramavvn = null;
+          return paramavvn;
+        }
+        if (!jdField_a_of_type_Boolean) {
+          jdField_a_of_type_Boolean = bfhn.a(false);
+        }
+        this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$SearchRunnable.jdField_a_of_type_Avvn = paramavvn;
+        if (paramavvn.jdField_a_of_type_AndroidOsBundle == null) {
+          break label1090;
+        }
+        i = paramavvn.jdField_a_of_type_AndroidOsBundle.getInt("iNumber", 1);
+        l = paramavvn.jdField_a_of_type_AndroidOsBundle.getLong("lModifyTime", 9223372036854775807L);
+        bool2 = paramavvn.jdField_a_of_type_AndroidOsBundle.getBoolean("bMore", false);
+        bool1 = paramavvn.jdField_a_of_type_AndroidOsBundle.getBoolean("bSearchNet", false);
+        if ((!paramavvn.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) || ((bool1) && (this.jdField_a_of_type_Int == 1)))
+        {
+          this.jdField_a_of_type_JavaLangString = paramavvn.jdField_a_of_type_JavaLangString;
           this.jdField_a_of_type_Long = 9223372036854775807L;
           this.jdField_a_of_type_JavaUtilList.clear();
           this.jdField_a_of_type_Int = 0;
@@ -72,103 +77,103 @@ public class FavoriteSearchEngine
           break;
         }
         localObject1 = new ArrayList(this.jdField_a_of_type_JavaUtilList);
-        paramSearchRequest = (SearchRequest)localObject1;
+        paramavvn = (avvn)localObject1;
         if (!bool2) {
           if (this.jdField_a_of_type_JavaUtilList.size() > 1)
           {
             ((ArrayList)localObject1).remove(((ArrayList)localObject1).size() - 1);
-            paramSearchRequest = (SearchRequest)localObject1;
+            paramavvn = (avvn)localObject1;
           }
           else
           {
-            paramSearchRequest = null;
+            paramavvn = null;
           }
         }
       }
       finally {}
     }
-    label283:
-    label431:
+    label279:
+    label427:
     boolean bool3;
-    label631:
+    label627:
     int j;
-    label768:
+    label764:
     int m;
-    label799:
+    label795:
     int k;
     if ((bool2) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
     {
       l = Math.min(l, this.jdField_a_of_type_Long);
       this.jdField_a_of_type_Int = 0;
       this.jdField_a_of_type_JavaLangThread = Thread.currentThread();
-      this.jdField_a_of_type_Amwr.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_Amwr.jdField_a_of_type_Int = i;
-      this.jdField_a_of_type_Amwr.jdField_a_of_type_Long = l;
-      this.jdField_a_of_type_Amwr.jdField_a_of_type_Boolean = bool1;
-      this.jdField_a_of_type_Amwr.jdField_a_of_type_AndroidDatabaseCursor = null;
+      this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$QueryRunnable.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$QueryRunnable.jdField_a_of_type_Int = i;
+      this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$QueryRunnable.jdField_a_of_type_Long = l;
+      this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$QueryRunnable.jdField_a_of_type_Boolean = bool1;
+      this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$QueryRunnable.jdField_a_of_type_AndroidDatabaseCursor = null;
       for (;;)
       {
-        synchronized (this.jdField_a_of_type_Amwr)
+        synchronized (this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$QueryRunnable)
         {
-          this.b = new Thread(this.jdField_a_of_type_Amwr);
+          this.b = new Thread(this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$QueryRunnable);
           this.b.start();
           try
           {
-            this.jdField_a_of_type_Amwr.wait();
-            localObject1 = this.jdField_a_of_type_Amwr.jdField_a_of_type_AndroidDatabaseCursor;
+            this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$QueryRunnable.wait();
+            localObject1 = this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$QueryRunnable.jdField_a_of_type_AndroidDatabaseCursor;
             if (localObject1 == null) {
-              break label1078;
+              break label1074;
             }
             if (!((Cursor)localObject1).moveToFirst()) {
               break;
             }
             if ((this.jdField_a_of_type_JavaUtilList.size() >= 5) || (((Cursor)localObject1).getCount() <= 1)) {
-              break label1138;
+              break label1134;
             }
             i = 1;
             if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
               this.jdField_a_of_type_JavaUtilList.remove(this.jdField_a_of_type_JavaUtilList.size() - 1);
             }
-            ??? = new FavoriteSearchResultModel();
-            ((FavoriteSearchResultModel)???).jdField_a_of_type_JavaLangString = paramSearchRequest.jdField_a_of_type_JavaLangString;
-            ((FavoriteSearchResultModel)???).jdField_a_of_type_Long = ((Cursor)localObject1).getLong(0);
-            ((FavoriteSearchResultModel)???).jdField_b_of_type_Long = ((Cursor)localObject1).getLong(4);
-            ((FavoriteSearchResultModel)???).jdField_c_of_type_Long = ((Cursor)localObject1).getLong(5);
-            ((FavoriteSearchResultModel)???).jdField_b_of_type_JavaLangString = ((Cursor)localObject1).getString(1);
-            ((FavoriteSearchResultModel)???).jdField_c_of_type_JavaLangString = ((Cursor)localObject1).getString(2);
-            ((FavoriteSearchResultModel)???).jdField_d_of_type_JavaLangString = ((Cursor)localObject1).getString(3);
-            ((FavoriteSearchResultModel)???).e = ((Cursor)localObject1).getInt(6);
-            ((FavoriteSearchResultModel)???).jdField_d_of_type_Int = ((Cursor)localObject1).getInt(8);
-            ((FavoriteSearchResultModel)???).jdField_a_of_type_ArrayOfByte = ((Cursor)localObject1).getBlob(7);
-            ((FavoriteSearchResultModel)???).f = ((Cursor)localObject1).getInt(9);
+            ??? = new bfik();
+            ((bfik)???).jdField_a_of_type_JavaLangString = paramavvn.jdField_a_of_type_JavaLangString;
+            ((bfik)???).jdField_a_of_type_Long = ((Cursor)localObject1).getLong(0);
+            ((bfik)???).jdField_b_of_type_Long = ((Cursor)localObject1).getLong(4);
+            ((bfik)???).jdField_c_of_type_Long = ((Cursor)localObject1).getLong(5);
+            ((bfik)???).jdField_b_of_type_JavaLangString = ((Cursor)localObject1).getString(1);
+            ((bfik)???).jdField_c_of_type_JavaLangString = ((Cursor)localObject1).getString(2);
+            ((bfik)???).jdField_d_of_type_JavaLangString = ((Cursor)localObject1).getString(3);
+            ((bfik)???).e = ((Cursor)localObject1).getInt(6);
+            ((bfik)???).jdField_d_of_type_Int = ((Cursor)localObject1).getInt(8);
+            ((bfik)???).jdField_a_of_type_ArrayOfByte = ((Cursor)localObject1).getBlob(7);
+            ((bfik)???).f = ((Cursor)localObject1).getInt(9);
             if (((Cursor)localObject1).getInt(10) <= 0) {
-              break label1143;
+              break label1139;
             }
             bool3 = true;
-            ((FavoriteSearchResultModel)???).jdField_a_of_type_Boolean = bool3;
-            ((FavoriteSearchResultModel)???).jdField_b_of_type_Int = ((Cursor)localObject1).getInt(11);
-            ((FavoriteSearchResultModel)???).jdField_c_of_type_Int = ((Cursor)localObject1).getInt(12);
-            ((FavoriteSearchResultModel)???).jdField_a_of_type_Int = ((Cursor)localObject1).getInt(13);
-            ((FavoriteSearchResultModel)???).g = ((Cursor)localObject1).getInt(14);
-            ((FavoriteSearchResultModel)???).h = this.jdField_a_of_type_JavaUtilList.size();
+            ((bfik)???).jdField_a_of_type_Boolean = bool3;
+            ((bfik)???).jdField_b_of_type_Int = ((Cursor)localObject1).getInt(11);
+            ((bfik)???).jdField_c_of_type_Int = ((Cursor)localObject1).getInt(12);
+            ((bfik)???).jdField_a_of_type_Int = ((Cursor)localObject1).getInt(13);
+            ((bfik)???).g = ((Cursor)localObject1).getInt(14);
+            ((bfik)???).h = this.jdField_a_of_type_JavaUtilList.size();
             this.jdField_a_of_type_JavaUtilList.add(???);
             if (((Cursor)localObject1).moveToNext()) {
               continue;
             }
-            if (((FavoriteSearchResultModel)???).jdField_a_of_type_Long < 0L)
+            if (((bfik)???).jdField_a_of_type_Long < 0L)
             {
-              if (((FavoriteSearchResultModel)???).jdField_a_of_type_Long != -2L) {
-                break label922;
+              if (((bfik)???).jdField_a_of_type_Long != -2L) {
+                break label918;
               }
-              this.jdField_a_of_type_Long = ((FavoriteSearchResultModel)???).jdField_b_of_type_Long;
+              this.jdField_a_of_type_Long = ((bfik)???).jdField_b_of_type_Long;
               if (!bool1) {
-                break label1149;
+                break label1145;
               }
               j = 2;
               this.jdField_a_of_type_Int = j;
             }
             if (i == 0) {
-              break label969;
+              break label965;
             }
             m = Math.min(4, this.jdField_a_of_type_JavaUtilList.size() - 1);
             i = 0;
@@ -177,88 +182,88 @@ public class FavoriteSearchEngine
           {
             int n;
             if (!QLog.isColorLevel()) {
-              break label1132;
+              break label1128;
             }
           }
           if (j <= 0) {
-            break label1154;
+            break label1150;
           }
           n = k - j;
-          paramSearchRequest = (FavoriteSearchResultModel)this.jdField_a_of_type_JavaUtilList.get(n);
-          if (paramSearchRequest.g > ((FavoriteSearchResultModel)this.jdField_a_of_type_JavaUtilList.get(n + 1)).g)
+          paramavvn = (bfik)this.jdField_a_of_type_JavaUtilList.get(n);
+          if (paramavvn.g > ((bfik)this.jdField_a_of_type_JavaUtilList.get(n + 1)).g)
           {
             this.jdField_a_of_type_JavaUtilList.set(n, this.jdField_a_of_type_JavaUtilList.get(n + 1));
-            this.jdField_a_of_type_JavaUtilList.set(n + 1, paramSearchRequest);
+            this.jdField_a_of_type_JavaUtilList.set(n + 1, paramavvn);
           }
           j -= 1;
           continue;
           QLog.d("qqfav", 2, "InterruptedException, search cancel.");
         }
-        label922:
-        if ((localInterruptedException.getCount() > 1) || (l > ((FavoriteSearchResultModel)???).jdField_b_of_type_Long)) {
-          this.jdField_a_of_type_Long = ((FavoriteSearchResultModel)???).jdField_b_of_type_Long;
+        label918:
+        if ((localInterruptedException.getCount() > 1) || (l > ((bfik)???).jdField_b_of_type_Long)) {
+          this.jdField_a_of_type_Long = ((bfik)???).jdField_b_of_type_Long;
         } else {
           this.jdField_a_of_type_Int = -1;
         }
       }
       this.jdField_a_of_type_Int = -1;
     }
-    label1154:
-    label1159:
+    label1155:
     for (;;)
     {
-      label969:
+      label965:
       localInterruptedException.close();
       ArrayList localArrayList;
       for (;;)
       {
         if ((this.jdField_a_of_type_Int == -1) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {
-          ((FavoriteSearchResultModel)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1)).jdField_a_of_type_Long = -3L;
+          ((bfik)this.jdField_a_of_type_JavaUtilList.get(this.jdField_a_of_type_JavaUtilList.size() - 1)).jdField_a_of_type_Long = -3L;
         }
         localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList);
-        paramSearchRequest = localArrayList;
+        paramavvn = localArrayList;
         if (bool2) {
           break;
         }
         if (this.jdField_a_of_type_JavaUtilList.size() <= 1) {
-          break label1086;
+          break label1082;
         }
         localArrayList.remove(localArrayList.size() - 1);
-        paramSearchRequest = localArrayList;
+        paramavvn = localArrayList;
         break;
-        label1078:
+        label1074:
         this.jdField_a_of_type_Int = -1;
       }
-      label1086:
-      paramSearchRequest = null;
+      label1082:
+      paramavvn = null;
       break;
-      break label283;
-      label1094:
+      break label279;
+      label1090:
       bool2 = false;
       i = 1;
       bool1 = false;
       l = 9223372036854775807L;
-      break label115;
+      break label111;
       for (;;)
       {
         if (i >= m - 1) {
-          break label1159;
+          break label1155;
         }
         k = m - i - 1;
         j = k;
-        break label799;
-        label1132:
+        break label795;
+        label1128:
         localArrayList = null;
         break;
-        label1138:
+        label1134:
         i = 0;
-        break label431;
-        label1143:
+        break label427;
+        label1139:
         bool3 = false;
-        break label631;
-        label1149:
+        break label627;
+        label1145:
         j = 1;
-        break label768;
+        break label764;
+        label1150:
         i += 1;
       }
     }
@@ -267,32 +272,32 @@ public class FavoriteSearchEngine
   public void a()
   {
     if (!jdField_a_of_type_Boolean) {
-      jdField_a_of_type_Boolean = QfavHelper.a(false);
+      jdField_a_of_type_Boolean = bfhn.a(false);
     }
   }
   
-  public void a(SearchRequest paramSearchRequest, ISearchListener paramISearchListener)
+  public void a(avvn paramavvn, avva<bfik> paramavva)
   {
-    if ((paramSearchRequest == null) || (paramSearchRequest.jdField_a_of_type_JavaLangString == null) || (paramSearchRequest.jdField_a_of_type_JavaLangString.trim().length() == 0)) {
+    if ((paramavvn == null) || (paramavvn.jdField_a_of_type_JavaLangString == null) || (paramavvn.jdField_a_of_type_JavaLangString.trim().length() == 0)) {
       return;
     }
-    synchronized (this.jdField_a_of_type_Amws)
+    synchronized (this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$SearchRunnable)
     {
-      this.jdField_a_of_type_Amws.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest = paramSearchRequest;
-      this.jdField_a_of_type_Amws.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener = paramISearchListener;
-      ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_Amws, 32);
-      ThreadManager.excute(this.jdField_a_of_type_Amws, 32, null, false);
+      this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$SearchRunnable.jdField_a_of_type_Avvn = paramavvn;
+      this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$SearchRunnable.jdField_a_of_type_Avva = paramavva;
+      ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$SearchRunnable, 32);
+      ThreadManager.excute(this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$SearchRunnable, 32, null, false);
       return;
     }
   }
   
   public void b()
   {
-    synchronized (this.jdField_a_of_type_Amws)
+    synchronized (this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$SearchRunnable)
     {
-      this.jdField_a_of_type_Amws.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest = null;
-      this.jdField_a_of_type_Amws.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener = null;
-      ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_Amws, 32);
+      this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$SearchRunnable.jdField_a_of_type_Avvn = null;
+      this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$SearchRunnable.jdField_a_of_type_Avva = null;
+      ThreadManager.removeJobFromThreadPool(this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine$SearchRunnable, 32);
       if (this.jdField_a_of_type_JavaLangThread != null) {
         this.jdField_a_of_type_JavaLangThread.interrupt();
       }

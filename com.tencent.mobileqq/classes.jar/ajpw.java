@@ -1,28 +1,23 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteVideoView;
-import java.lang.ref.WeakReference;
+import com.tencent.av.gaudio.AVNotifyCenter;
 
-public class ajpw
-  implements FrameSprite.OnFrameEndListener
+class ajpw
+  implements mgp
 {
-  final WeakReference a;
+  ajpw(ajpv paramajpv, long paramLong, int paramInt) {}
   
-  private ajpw(SpriteVideoView paramSpriteVideoView)
+  public void a(int paramInt1, mgr parammgr, int paramInt2)
   {
-    this.a = new WeakReference(paramSpriteVideoView);
-  }
-  
-  public void a()
-  {
-    SpriteVideoView localSpriteVideoView = (SpriteVideoView)this.a.get();
-    if (localSpriteVideoView != null) {
-      localSpriteVideoView.setVisibility(8);
+    if (paramInt1 == 0)
+    {
+      this.jdField_a_of_type_Ajpv.a.a(10, 1, this.jdField_a_of_type_Long, null, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Ajpv.a.a(7, this.jdField_a_of_type_Long, 2, 21, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Ajpv.a.a(21, 1, this.jdField_a_of_type_Long, 0L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajpw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,42 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
-import com.tencent.biz.pubaccount.ecshopassit.EcshopReportHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.Build;
+import android.os.Build.VERSION;
+import com.tencent.av.app.DeviceCapabilityExamination;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class kuh
-  implements ActionSheet.OnButtonClickListener
+  implements mjz
 {
-  public kuh(AccountDetailActivity paramAccountDetailActivity) {}
+  public kuh(DeviceCapabilityExamination paramDeviceCapabilityExamination) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt, long paramLong, String paramString1, String paramString2)
   {
-    if (this.a.r) {
-      return;
+    if (AudioHelper.e()) {
+      QLog.d("DeviceCapabilityExamination", 1, "testVideoEffectIfNeed onFinish result: " + paramInt + ", timeConsuming: " + paramLong + ", gpuVendor: " + paramString1 + ", gpuModel: " + paramString2);
     }
-    this.a.r = true;
-    switch (paramInt)
-    {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("cpu", Build.HARDWARE);
+    localHashMap.put("sdk", String.valueOf(Build.VERSION.SDK_INT));
+    localHashMap.put("manufacturer", Build.MANUFACTURER);
+    localHashMap.put("model", Build.MODEL);
+    localHashMap.put("product", Build.PRODUCT);
+    localHashMap.put("fingerprint", Build.FINGERPRINT);
+    localHashMap.put("gpu_vendor", paramString1);
+    localHashMap.put("gpu_model", paramString2);
+    localHashMap.put("result", String.valueOf(paramInt));
+    localHashMap.put("time_consuming", String.valueOf(paramLong));
+    if (AudioHelper.e()) {
+      QLog.d("DeviceCapabilityExamination", 1, "testVideoEffectIfNeed reportByRoomId " + localHashMap);
     }
-    for (;;)
-    {
-      this.a.b.dismiss();
-      return;
-      this.a.l = false;
-      this.a.x();
-      if (((EcShopAssistantManager)this.a.a.getManager(87)).a(this.a.d)) {
-        ((EcshopReportHandler)this.a.a.a(88)).a(134243868, this.a.d, null, null, null, 2L, false);
-      }
-      com.tencent.mobileqq.activity.aio.AIOUtils.m = false;
-      if ("2290230341".equals(this.a.d)) {
-        ReportController.b(this.a.a, "CliOper", "", "", "0X80090E7", "0X80090E7", 0, 0, "", "", "", "");
-      } else if (TextUtils.equals(String.valueOf(2062433139L), this.a.d)) {
-        PublicAccountReportUtils.a(null, null, "0X800932F", "0X800932F", 0, 0, "", "", "", VideoReporter.a(null), false);
-      }
-    }
+    awrn.a(BaseApplication.getContext()).a(this.a.a.getCurrentAccountUin(), "QAV_REPORT_VIDEO_EFFECT_TEST", true, 0L, 0L, localHashMap, "", true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     kuh
  * JD-Core Version:    0.7.0.1
  */

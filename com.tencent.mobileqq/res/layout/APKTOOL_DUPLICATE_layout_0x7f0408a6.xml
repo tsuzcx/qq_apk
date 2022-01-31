@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a275f" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="5.0dip" android:layout_marginBottom="10.0dip">
-        <ImageView android:background="#ffe5e5e5" android:layout_width="30.0dip" android:layout_height="1.0dip" />
-        <TextView android:textSize="14.0dip" android:textColor="#ffbbbbbb" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2760" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="非好友只可查看近期小视频" />
-        <ImageView android:background="#ffe5e5e5" android:layout_width="30.0dip" android:layout_height="1.0dip" />
-    </LinearLayout>
-</RelativeLayout>

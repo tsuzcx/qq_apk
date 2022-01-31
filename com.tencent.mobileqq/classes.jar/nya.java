@@ -1,20 +1,29 @@
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseFragment;
-
-public class nya
-  implements Runnable
+class nya
+  extends nyf
 {
-  public nya(QQStoryBaseFragment paramQQStoryBaseFragment) {}
-  
-  public void run()
+  nya(nxd paramnxd, int paramInt)
   {
-    ((UserManager)SuperManager.a(2)).c();
+    super(paramnxd, null);
+  }
+  
+  void a(nyi paramnyi)
+  {
+    if (paramnyi == null) {}
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        paramnyi.onCommentListLoad(1, false, null, false, 2, 2);
+        return;
+      }
+    } while (this.jdField_a_of_type_Int != 2);
+    paramnyi.onCommentLoadMore(1, false, null, false, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nya
  * JD-Core Version:    0.7.0.1
  */

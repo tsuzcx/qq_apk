@@ -1,42 +1,73 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
-import com.tencent.mobileqq.vip.DownloadListener;
+import android.os.CountDownTimer;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
-public class agum
-  implements Runnable
+class agum
+  extends CountDownTimer
 {
-  public agum(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity, int paramInt, String paramString) {}
-  
-  public void run()
+  agum(aguj paramaguj, long paramLong1, long paramLong2)
   {
-    Object localObject = new agun(this);
-    int i = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(this.jdField_a_of_type_JavaLangString, (DownloadListener)localObject);
-    if ((i == 19) || (i == 0))
+    super(paramLong1, paramLong2);
+  }
+  
+  public void onFinish()
+  {
+    try
     {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.obtainMessage(20);
-      ((Message)localObject).arg1 = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.sendMessage((Message)localObject);
       if (QLog.isColorLevel()) {
-        QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("style download success , url : %s, position : %d ", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int) }));
+        QLog.i("SpringHbCountDownDialog", 2, "startCountDown-->onFinish mCurrentTime:" + NetConnInfoCenter.getServerTimeMillis());
       }
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.b.remove(this.jdField_a_of_type_JavaLangString);
-    }
-    do
-    {
+      if ((BaseActivity.sTopActivity != null) && (BaseActivity.sTopActivity.app != null)) {
+        ((agtk)BaseActivity.sTopActivity.app.getManager(342)).a((ViewGroup)BaseActivity.sTopActivity.getWindow().getDecorView(), true);
+      }
+      this.a.dismiss();
       return;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.obtainMessage(21);
-      ((Message)localObject).arg1 = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.sendMessage((Message)localObject);
-    } while (!QLog.isColorLevel());
-    QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("styles download fail , url : %s, position : %d ", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int) }));
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("SpringHbCountDownDialog", 1, localThrowable, new Object[0]);
+    }
+  }
+  
+  public void onTick(long paramLong)
+  {
+    try
+    {
+      long l1 = paramLong / 3600000L;
+      long l2 = (paramLong - 3600000L * l1) / 60000L;
+      paramLong = (paramLong - 3600000L * l1 - 60000L * l2) / 1000L;
+      String str1;
+      if (l2 > 9L)
+      {
+        str1 = "" + l2;
+        if (paramLong <= 9L) {
+          break label160;
+        }
+      }
+      label160:
+      for (String str2 = "" + paramLong;; str2 = "0" + paramLong)
+      {
+        aguj.a(this.a).setText(String.format("%s:%s:%s", new Object[] { Long.valueOf(l1), str1, str2 }));
+        return;
+        str1 = "0" + l2;
+        break;
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("SpringHbCountDownDialog", 1, localThrowable, new Object[0]);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agum
  * JD-Core Version:    0.7.0.1
  */

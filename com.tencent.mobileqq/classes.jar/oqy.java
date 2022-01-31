@@ -1,22 +1,7 @@
-import android.view.View;
-import android.widget.ImageButton;
-import com.tencent.biz.qqstory.takevideo2.StoryLocalPublishPart;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.ContainerViewListener;
-
-public class oqy
-  implements ProviderContainerView.ContainerViewListener
+public abstract interface oqy
+  extends oqw
 {
-  public oqy(StoryLocalPublishPart paramStoryLocalPublishPart) {}
-  
-  public void a(View paramView, int paramInt)
-  {
-    StoryLocalPublishPart.a(this.a).setVisibility(8);
-  }
-  
-  public void y_()
-  {
-    StoryLocalPublishPart.a(this.a).setVisibility(0);
-  }
+  public abstract void a(boolean paramBoolean, String paramString, int paramInt);
 }
 
 

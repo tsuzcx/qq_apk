@@ -1,22 +1,26 @@
-import com.tencent.mobileqq.data.MessageForScribble;
-import com.tencent.mobileqq.scribble.ScribbleBaseOperator;
-import com.tencent.mobileqq.scribble.ScribbleDownloadInfo;
-import com.tencent.mobileqq.scribble.ScribbleDownloader;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
+import java.lang.ref.WeakReference;
+import mqq.os.MqqHandler;
 
-public class ahur
-  implements Runnable
+class ahur
+  implements DialogInterface.OnClickListener
 {
-  public ahur(ScribbleDownloader paramScribbleDownloader, ScribbleDownloadInfo paramScribbleDownloadInfo) {}
+  ahur(ahuq paramahuq) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ScribbleDownloader.a(this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleDownloader, "dowmthreak", "start download ,uniseq:" + this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleDownloadInfo.a.uniseq);
-    new ScribbleBaseOperator(this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleDownloader.a).a(this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleDownloadInfo.a, null);
+    if (this.a.a.jdField_b_of_type_JavaLangRefWeakReference.get() != null) {
+      ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.a.a.jdField_b_of_type_JavaLangString, (MqqHandler)this.a.a.jdField_b_of_type_JavaLangRefWeakReference.get(), this.a.a.g + ".mp4", true));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahur
  * JD-Core Version:    0.7.0.1
  */

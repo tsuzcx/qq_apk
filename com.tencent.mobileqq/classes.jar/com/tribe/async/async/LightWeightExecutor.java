@@ -1,13 +1,9 @@
 package com.tribe.async.async;
 
-import android.os.SystemClock;
+import android.os.Looper;
 import android.support.annotation.NonNull;
 import com.tribe.async.dispatch.AbsEventBatcher;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
 import com.tribe.async.log.SLog;
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -23,72 +19,58 @@ public class LightWeightExecutor
   private MonitorThreadPoolExecutor.ThreadPoolMonitorListener mMonitorListener;
   private int mQueueSizeLimit = 200;
   private long mRunTimeLimit = 120000L;
-  private RunnableHolder mRunnableHolder;
+  private LightWeightExecutor.RunnableHolder mRunnableHolder;
   
-  public LightWeightExecutor(int paramInt)
+  public LightWeightExecutor(Looper paramLooper, int paramInt)
   {
-    super(Dispatchers.get().getDefaultLooper(), new RunnableQueue(), paramInt);
+    super(paramLooper, new RunnableQueue(), paramInt);
   }
   
   private void checkRunning()
   {
-    if (this.mMonitorListener == null) {}
-    for (;;)
-    {
+    if (this.mMonitorListener == null) {
       return;
-      int i = getEnqueueSize();
-      if (i > this.mQueueSizeLimit)
-      {
-        this.mMonitorListener.onQueueExceedLimit("async.boss.LightWeightExecutor", i);
-        SLog.d("async.boss.LightWeightExecutor", "cur state = " + getCurState());
-      }
-      Runnable localRunnable1;
-      byte[] arrayOfByte;
+    }
+    int i = getEnqueueSize();
+    if (i > this.mQueueSizeLimit)
+    {
+      this.mMonitorListener.onQueueExceedLimit("async.boss.LightWeightExecutor", i);
+      SLog.d("async.boss.LightWeightExecutor", "cur state = " + getCurState());
       synchronized (this.holderLock)
       {
         if (this.mRunnableHolder != null)
         {
-          localRunnable1 = (Runnable)this.mRunnableHolder.get();
-          if (localRunnable1 != null) {
-            SLog.d("async.boss.LightWeightExecutor", "cur runnable = " + localRunnable1);
+          ??? = (Runnable)this.mRunnableHolder.get();
+          if (??? != null) {
+            SLog.d("async.boss.LightWeightExecutor", "cur runnable = " + ???);
           }
         }
         dumpAllEvent();
-        localRunnable1 = null;
-        arrayOfByte = this.holderLock;
-        ??? = localRunnable1;
       }
-      Runnable localRunnable2;
-      try
+    }
+    for (;;)
+    {
+      synchronized (this.holderLock)
       {
         if (this.mRunnableHolder != null)
         {
-          localRunnable2 = (Runnable)this.mRunnableHolder.get();
-          ??? = localRunnable1;
-          if (localRunnable2 != null)
+          Runnable localRunnable = (Runnable)this.mRunnableHolder.get();
+          if ((localRunnable != null) && (this.mRunnableHolder.getItemRunTimes() > this.mRunTimeLimit))
           {
-            ??? = localRunnable1;
-            if (this.mRunnableHolder.getItemRunTimes() > this.mRunTimeLimit) {
-              ??? = new ArrayList();
+            ??? = new ArrayList();
+            ((List)???).add(localRunnable);
+            if ((??? == null) || (((List)???).size() <= 0)) {
+              break;
             }
+            this.mMonitorListener.onWorkerExceedTime("async.boss.LightWeightExecutor", (List)???, 1);
+            return;
+            localObject5 = finally;
+            throw localObject5;
           }
         }
       }
-      finally {}
-      try
-      {
-        ((List)???).add(localRunnable2);
-        if ((??? != null) && (((List)???).size() > 0))
-        {
-          this.mMonitorListener.onWorkerExceedTime("async.boss.LightWeightExecutor", (List)???, 1);
-          return;
-        }
-      }
-      finally {}
+      Object localObject3 = null;
     }
-    localObject4 = finally;
-    throw localObject4;
-    throw localObject2;
   }
   
   public void execute(@NonNull Runnable paramRunnable)
@@ -101,7 +83,7 @@ public class LightWeightExecutor
   {
     synchronized (this.holderLock)
     {
-      this.mRunnableHolder = new RunnableHolder(???);
+      this.mRunnableHolder = new LightWeightExecutor.RunnableHolder(???);
       ???.run();
     }
     synchronized (this.holderLock)
@@ -127,31 +109,10 @@ public class LightWeightExecutor
   {
     this.mRunTimeLimit = paramLong;
   }
-  
-  private static class RunnableHolder
-    extends WeakReference<Runnable>
-  {
-    private long mRunStartTime = SystemClock.elapsedRealtime();
-    
-    public RunnableHolder(Runnable paramRunnable)
-    {
-      super();
-    }
-    
-    public RunnableHolder(Runnable paramRunnable, ReferenceQueue<? super Runnable> paramReferenceQueue)
-    {
-      super(paramReferenceQueue);
-    }
-    
-    public long getItemRunTimes()
-    {
-      return SystemClock.elapsedRealtime() - this.mRunStartTime;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tribe.async.async.LightWeightExecutor
  * JD-Core Version:    0.7.0.1
  */

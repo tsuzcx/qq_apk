@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity;
 
+import abpn;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import tvo;
 
 public class RiskInfoItem
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new tvo();
+  public static final Parcelable.Creator<RiskInfoItem> CREATOR = new abpn();
   public int a;
   public String a;
   public int b;

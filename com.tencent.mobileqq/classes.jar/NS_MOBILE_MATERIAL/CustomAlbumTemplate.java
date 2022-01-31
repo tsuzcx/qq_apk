@@ -11,13 +11,13 @@ public final class CustomAlbumTemplate
   static MaterialFile cache_stTmpBgImageLarge = new MaterialFile();
   static MaterialFile cache_stTmpBgImageMiddle = new MaterialFile();
   static MaterialFile cache_stTmpBgImageSmall = new MaterialFile();
-  static ArrayList cache_vecItems = new ArrayList();
-  static ArrayList cache_vecPhotoFrameView;
+  static ArrayList<CustomAlbumItem> cache_vecItems = new ArrayList();
+  static ArrayList<PhotoFrameView> cache_vecPhotoFrameView;
   public MaterialFile stTmpBgImageLarge;
   public MaterialFile stTmpBgImageMiddle;
   public MaterialFile stTmpBgImageSmall;
-  public ArrayList vecItems;
-  public ArrayList vecPhotoFrameView;
+  public ArrayList<CustomAlbumItem> vecItems;
+  public ArrayList<PhotoFrameView> vecPhotoFrameView;
   
   static
   {
@@ -30,13 +30,13 @@ public final class CustomAlbumTemplate
   
   public CustomAlbumTemplate() {}
   
-  public CustomAlbumTemplate(MaterialFile paramMaterialFile1, MaterialFile paramMaterialFile2, MaterialFile paramMaterialFile3, ArrayList paramArrayList1, ArrayList paramArrayList2)
+  public CustomAlbumTemplate(MaterialFile paramMaterialFile1, MaterialFile paramMaterialFile2, MaterialFile paramMaterialFile3, ArrayList<CustomAlbumItem> paramArrayList, ArrayList<PhotoFrameView> paramArrayList1)
   {
     this.stTmpBgImageLarge = paramMaterialFile1;
     this.stTmpBgImageMiddle = paramMaterialFile2;
     this.stTmpBgImageSmall = paramMaterialFile3;
-    this.vecItems = paramArrayList1;
-    this.vecPhotoFrameView = paramArrayList2;
+    this.vecItems = paramArrayList;
+    this.vecPhotoFrameView = paramArrayList1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)

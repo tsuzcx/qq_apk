@@ -16,7 +16,7 @@ public class AccountDetailTopGestureLayout
   extends TopGestureLayout
 {
   private int jdField_a_of_type_Int;
-  private HashMap jdField_a_of_type_JavaUtilHashMap;
+  private HashMap<Integer, WeakReference<View>> jdField_a_of_type_JavaUtilHashMap;
   
   public AccountDetailTopGestureLayout(Context paramContext)
   {

@@ -1,20 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.fpsreport.FPSSwipListView;
+import android.graphics.drawable.Drawable;
+import java.util.List;
 
 public class slb
-  implements Runnable
 {
-  public slb(Conversation paramConversation) {}
-  
-  public void run()
+  public static Drawable a(List<String> paramList)
   {
-    ReadInJoyUtils.a(this.a.a.getMeasuredHeight(), this.a.a.getResources());
+    return ((txz)sqg.a(24)).a(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     slb
  * JD-Core Version:    0.7.0.1
  */

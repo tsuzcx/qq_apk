@@ -8,16 +8,16 @@ import java.util.ArrayList;
 public final class ProfRecentRes
   extends JceStruct
 {
-  static ArrayList cache_vFriendInfo;
+  static ArrayList<FriendUinInfo> cache_vFriendInfo;
   public byte cMask;
   public byte cResult;
   public long uServerTime;
-  public ArrayList vFriendInfo;
+  public ArrayList<FriendUinInfo> vFriendInfo;
   public short wFriendNum;
   
   public ProfRecentRes() {}
   
-  public ProfRecentRes(byte paramByte1, long paramLong, byte paramByte2, short paramShort, ArrayList paramArrayList)
+  public ProfRecentRes(byte paramByte1, long paramLong, byte paramByte2, short paramShort, ArrayList<FriendUinInfo> paramArrayList)
   {
     this.cResult = paramByte1;
     this.uServerTime = paramLong;
@@ -52,7 +52,7 @@ public final class ProfRecentRes
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     KQQ.ProfRecentRes
  * JD-Core Version:    0.7.0.1
  */

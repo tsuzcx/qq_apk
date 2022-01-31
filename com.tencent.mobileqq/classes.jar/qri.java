@@ -1,12 +1,23 @@
-public abstract interface qri
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.widget.AdapterView;
+
+public class qri
+  extends omr
 {
-  public abstract void a(int paramInt);
+  public qri(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    super(paramString);
+  }
   
-  public abstract void b(int paramInt);
+  public void a(oml paramoml)
+  {
+    paramoml.a(this.jdField_a_of_type_ComTencentWidgetAdapterView, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qri
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,66 @@
+import android.app.Activity;
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.OnGetUserInfoCallback;
-import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.OnFetchUserInfoCallback;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.ad.data.ProteusBannerVideoItemData;
+import com.tencent.biz.pubaccount.readinjoy.ad.view.ReadInJoyArticleBottomVideoView;
+import java.lang.ref.WeakReference;
 
-public final class nrf
-  implements GetUserInfoHandler.OnGetUserInfoCallback
+public class nrf
+  implements nre
 {
-  public nrf(PlayModeUtils.OnFetchUserInfoCallback paramOnFetchUserInfoCallback, String paramString1, String paramString2) {}
+  public nrf(ReadInJoyArticleBottomVideoView paramReadInJoyArticleBottomVideoView) {}
   
-  public void a(GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
+  public void a(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilPlayModeUtils$OnFetchUserInfoCallback != null)
+    if ((paramInt == nbe.av) && (npa.f(ReadInJoyArticleBottomVideoView.a(this.a))))
     {
-      boolean bool = paramUpdateUserInfoEvent.errorInfo.isSuccess();
-      paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.a;
-      if ((bool) && (paramUpdateUserInfoEvent != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!this.jdField_a_of_type_JavaLangString.equals(paramUpdateUserInfoEvent.uid)))
+      npa.a((Context)ReadInJoyArticleBottomVideoView.a(this.a).get(), ReadInJoyArticleBottomVideoView.a(this.a), paramInt);
+      return;
+    }
+    nbe.a(new nmv().a(ReadInJoyArticleBottomVideoView.a(this.a)).a(ReadInJoyArticleBottomVideoView.a(this.a)).a(nbe.a).b(nbe.K).a(ReadInJoyArticleBottomVideoView.a(this.a)).d(paramInt).a());
+    if (paramInt == nbe.aw)
+    {
+      ReadInJoyArticleBottomVideoView.a(this.a);
+      return;
+    }
+    Object localObject;
+    boolean bool1;
+    boolean bool2;
+    if (ReadInJoyArticleBottomVideoView.a(this.a) != null) {
+      if (ReadInJoyArticleBottomVideoView.a(this.a).D != null)
       {
-        if (QLog.isDevelopLevel()) {
-          QLog.w("Q.qqstory.player.PlayModeUtils", 2, "[az]PlayModeUtils.fetchUserInfo: ohhh! bad guy!!! require " + this.jdField_a_of_type_JavaLangString + " and the return uid is " + paramUpdateUserInfoEvent.uid);
+        localObject = ReadInJoyArticleBottomVideoView.a(this.a).D;
+        bool1 = bady.a((Context)ReadInJoyArticleBottomVideoView.a(this.a).get(), (String)localObject);
+        long l = ReadInJoyArticleBottomVideoView.a(this.a).c;
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          bool2 = naw.a((Context)ReadInJoyArticleBottomVideoView.a(this.a).get(), (String)localObject);
         }
-        paramUpdateUserInfoEvent.uid = this.jdField_a_of_type_JavaLangString;
-        if (!TextUtils.isEmpty(this.b)) {
-          paramUpdateUserInfoEvent.qq = this.b;
-        }
-        ((UserManager)SuperManager.a(2)).a(paramUpdateUserInfoEvent);
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilPlayModeUtils$OnFetchUserInfoCallback.a(bool, paramUpdateUserInfoEvent, true);
+    }
+    for (;;)
+    {
+      if ((bool1) || (bool2)) {
+        if (bool1) {
+          break label284;
+        }
+      }
+      label284:
+      for (localObject = new nmr(false);; localObject = null)
+      {
+        rvb.c((Activity)paramView.getContext(), npk.a(ReadInJoyArticleBottomVideoView.a(this.a)), null, 2, true, (nmr)localObject);
+        npk.a(ReadInJoyArticleBottomVideoView.a(this.a));
+        return;
+        ReadInJoyArticleBottomVideoView.a(this.a, paramView, true, paramInt);
+        return;
+      }
+      bool2 = false;
+      continue;
+      bool1 = false;
+      localObject = "";
+      break;
+      bool2 = false;
+      bool1 = false;
     }
   }
 }

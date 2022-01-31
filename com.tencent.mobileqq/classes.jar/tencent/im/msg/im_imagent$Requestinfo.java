@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBFixed32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class im_imagent$Requestinfo
-  extends MessageMicro
+  extends MessageMicro<Requestinfo>
 {
   public static final int REQ_FLAG_FIELD_NUMBER = 3;
   public static final int REQ_IP_FIELD_NUMBER = 1;

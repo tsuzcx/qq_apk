@@ -1,29 +1,20 @@
-import android.app.Activity;
-import com.tencent.biz.common.util.Util;
-import com.tencent.mobileqq.jsp.DataApiPlugin;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aeek
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  aeek(aeej paramaeej, Activity paramActivity, String paramString, int paramInt) {}
+  aeek(aeeh paramaeeh, boolean paramBoolean) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing())
-    {
-      if (this.jdField_a_of_type_JavaLangString == null) {
-        this.jdField_a_of_type_Aeej.a.callJs(this.jdField_a_of_type_Aeej.c, new String[] { "null", Integer.toString(this.jdField_a_of_type_Int) });
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_Aeej.a.callJs(this.jdField_a_of_type_Aeej.c, new String[] { Util.a(this.jdField_a_of_type_JavaLangString), Integer.toString(this.jdField_a_of_type_Int) });
+    this.jdField_a_of_type_Aeeh.aa = true;
+    aeeh.c(this.jdField_a_of_type_Aeeh, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeek
  * JD-Core Version:    0.7.0.1
  */

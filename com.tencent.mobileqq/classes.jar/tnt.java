@@ -1,23 +1,28 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupAdapter;
 
-class tnt
-  implements Runnable
+public class tnt
+  implements tmy
 {
-  tnt(tns paramtns) {}
+  public tnt(StoryPlayerGroupAdapter paramStoryPlayerGroupAdapter) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQLSActivity", 2, "do SmoothFinish at run");
-    }
-    QQLSActivity.g(this.a.a);
-    this.a.a.finish();
+    StoryPlayerGroupAdapter.a(this.a).a(paramInt1, paramInt2);
+  }
+  
+  public void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3)
+  {
+    StoryPlayerGroupAdapter.a(this.a).a(paramInt1, paramInt2, paramFloat, paramInt3);
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    StoryPlayerGroupAdapter.a(this.a).a(paramInt1, paramInt2, paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tnt
  * JD-Core Version:    0.7.0.1
  */

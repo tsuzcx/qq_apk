@@ -1,20 +1,17 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
 public class vtc
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public vtc(AIOImageListScene paramAIOImageListScene) {}
+  public vtc(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    AIOImageListScene.a(this.a, null);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     vtc
  * JD-Core Version:    0.7.0.1
  */

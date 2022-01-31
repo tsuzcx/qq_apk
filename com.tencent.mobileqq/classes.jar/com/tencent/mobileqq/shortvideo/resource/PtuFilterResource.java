@@ -2,9 +2,11 @@ package com.tencent.mobileqq.shortvideo.resource;
 
 public abstract interface PtuFilterResource
 {
-  public abstract String a();
+  public abstract boolean checkPendantVersionOK();
   
-  public abstract String b();
+  public abstract String getPortraitPathDir();
+  
+  public abstract String getSoPathDir();
 }
 
 

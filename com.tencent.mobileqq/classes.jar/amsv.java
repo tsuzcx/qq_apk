@@ -1,22 +1,20 @@
-import cooperation.groupvideo.GVideoPluginInstallerActivity;
-import cooperation.plugin.IPluginManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
 
 public class amsv
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public amsv(GVideoPluginInstallerActivity paramGVideoPluginInstallerActivity) {}
+  public amsv(MessageForGrayTips.HightlightClickableSpan paramHightlightClickableSpan) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a == null) {
-      return;
-    }
-    this.a.a.a("group_video_plugin.apk", false, GVideoPluginInstallerActivity.a(this.a));
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amsv
  * JD-Core Version:    0.7.0.1
  */

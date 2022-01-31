@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
-
 public class wth
-  implements Runnable
+  extends bhwk
 {
-  public wth(PublicAccountFragment paramPublicAccountFragment) {}
+  private bhwf<Boolean> a = new bhwf();
+  private bhwf<Boolean> b = new bhwf();
   
-  public void run()
+  public bhwf<Boolean> a()
   {
-    this.a.i();
+    return this.a;
+  }
+  
+  public bhwf<Boolean> b()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wth
  * JD-Core Version:    0.7.0.1
  */

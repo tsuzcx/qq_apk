@@ -1,18 +1,10 @@
-import dov.com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView;
-
-public class aofo
-  implements Runnable
+public abstract interface aofo
 {
-  public aofo(ArtFilterItemView paramArtFilterItemView) {}
-  
-  public void run()
-  {
-    this.a.a();
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aofo
  * JD-Core Version:    0.7.0.1
  */

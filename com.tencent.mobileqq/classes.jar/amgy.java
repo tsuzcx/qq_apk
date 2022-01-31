@@ -1,25 +1,56 @@
-import com.tencent.widget.AbsListView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class amgy
-  implements Runnable
+  extends alzl<amhb>
 {
-  public amgy(AbsListView paramAbsListView) {}
-  
-  public void run()
+  public static amhb a()
   {
-    if (this.a.mCachingStarted)
-    {
-      AbsListView localAbsListView = this.a;
-      this.a.mCachingActive = false;
-      localAbsListView.mCachingStarted = false;
-      AbsListView.access$3000(this.a, false);
-      if ((AbsListView.access$3100(this.a) & 0x2) == 0) {
-        AbsListView.access$3200(this.a, false);
-      }
-      if (!this.a.isAlwaysDrawnWithCacheEnabled()) {
-        this.a.invalidate();
-      }
+    return (amhb)alzw.a().a(497);
+  }
+  
+  public int a()
+  {
+    return 497;
+  }
+  
+  @NonNull
+  public amhb a(int paramInt)
+  {
+    return new amhb();
+  }
+  
+  @Nullable
+  public amhb a(alzs[] paramArrayOfalzs)
+  {
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
+      return amhb.a(paramArrayOfalzs);
     }
+    return null;
+  }
+  
+  public Class<amhb> a()
+  {
+    return amhb.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amhb paramamhb) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 

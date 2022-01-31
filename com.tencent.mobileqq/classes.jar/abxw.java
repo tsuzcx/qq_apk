@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.conditionsearch.LocationSelectActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
 
-public class abxw
-  implements Runnable
+class abxw
+  implements DialogInterface.OnClickListener
 {
-  public abxw(LocationSelectActivity paramLocationSelectActivity) {}
+  abxw(abxv paramabxv) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    LocationSelectActivity.a(this.a);
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abxw
  * JD-Core Version:    0.7.0.1
  */

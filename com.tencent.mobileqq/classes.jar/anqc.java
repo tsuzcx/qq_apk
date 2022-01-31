@@ -1,28 +1,59 @@
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
-import cooperation.weiyun.sdk.download.WyDownloader;
-import java.util.Iterator;
-import java.util.List;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
 
 public class anqc
-  implements ThreadPool.Job
+  implements GestureDetector.OnGestureListener
 {
-  public anqc(WyDownloader paramWyDownloader, List paramList) {}
+  public anqc(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
   
-  public Void a(ThreadPool.JobContext paramJobContext)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramJobContext.hasNext())
-    {
-      long l = ((Long)paramJobContext.next()).longValue();
-      this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader.a(l, true, false, false);
+    return false;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    int j = 1;
+    if ((paramMotionEvent1 != null) && (paramMotionEvent2 != null)) {
+      if (paramMotionEvent1.getY() - paramMotionEvent2.getY() <= 50.0F) {
+        break label78;
+      }
     }
-    return null;
+    label78:
+    for (int i = 1;; i = 0)
+    {
+      if (paramMotionEvent2.getY() - paramMotionEvent1.getY() > 50.0F) {
+        i = j;
+      }
+      for (;;)
+      {
+        if ((i != 0) && (this.a.a != null)) {
+          this.a.a.a();
+        }
+        return false;
+      }
+    }
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anqc
  * JD-Core Version:    0.7.0.1
  */

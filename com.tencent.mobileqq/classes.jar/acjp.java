@@ -1,43 +1,25 @@
-import android.os.IBinder;
-import android.os.IBinder.DeathRecipient;
-import android.os.Messenger;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
 
-class acjp
-  implements IBinder.DeathRecipient
+public class acjp
+  implements ajub
 {
-  acjp(acjg paramacjg) {}
+  public acjp(BaseBubbleBuilder paramBaseBubbleBuilder, Intent paramIntent) {}
   
-  public void binderDied()
+  public void a(Object paramObject)
   {
-    if (QLog.isColorLevel())
+    if ((paramObject instanceof String))
     {
-      QLog.d("MessengerService$IncomingHandler", 2, "-->binder died");
-      MessengerService.a((MessengerService)this.a.a.get());
-      MessengerService.b((MessengerService)this.a.a.get());
-    }
-    MessengerService localMessengerService;
-    if (this.a.a != null)
-    {
-      localMessengerService = (MessengerService)this.a.a.get();
-      if ((localMessengerService == null) || (localMessengerService.a == null)) {}
-    }
-    try
-    {
-      localMessengerService.a.getBinder().unlinkToDeath(acjg.a(this.a), 0);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("MessengerService$IncomingHandler", 1, "-->binder died unlink to death error=" + localException.toString());
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("troop_uin", (String)paramObject);
+      this.jdField_a_of_type_AndroidContentIntent.putExtra("cSpecialFlag", 0);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.a.startActivity(this.jdField_a_of_type_AndroidContentIntent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acjp
  * JD-Core Version:    0.7.0.1
  */

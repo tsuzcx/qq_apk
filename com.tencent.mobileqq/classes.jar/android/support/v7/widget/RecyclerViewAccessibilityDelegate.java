@@ -9,27 +9,7 @@ import android.view.accessibility.AccessibilityEvent;
 public class RecyclerViewAccessibilityDelegate
   extends AccessibilityDelegateCompat
 {
-  final AccessibilityDelegateCompat mItemDelegate = new AccessibilityDelegateCompat()
-  {
-    public void onInitializeAccessibilityNodeInfo(View paramAnonymousView, AccessibilityNodeInfoCompat paramAnonymousAccessibilityNodeInfoCompat)
-    {
-      super.onInitializeAccessibilityNodeInfo(paramAnonymousView, paramAnonymousAccessibilityNodeInfoCompat);
-      if ((!RecyclerViewAccessibilityDelegate.this.shouldIgnore()) && (RecyclerViewAccessibilityDelegate.this.mRecyclerView.getLayoutManager() != null)) {
-        RecyclerViewAccessibilityDelegate.this.mRecyclerView.getLayoutManager().onInitializeAccessibilityNodeInfoForItem(paramAnonymousView, paramAnonymousAccessibilityNodeInfoCompat);
-      }
-    }
-    
-    public boolean performAccessibilityAction(View paramAnonymousView, int paramAnonymousInt, Bundle paramAnonymousBundle)
-    {
-      if (super.performAccessibilityAction(paramAnonymousView, paramAnonymousInt, paramAnonymousBundle)) {
-        return true;
-      }
-      if ((!RecyclerViewAccessibilityDelegate.this.shouldIgnore()) && (RecyclerViewAccessibilityDelegate.this.mRecyclerView.getLayoutManager() != null)) {
-        return RecyclerViewAccessibilityDelegate.this.mRecyclerView.getLayoutManager().performAccessibilityActionForItem(paramAnonymousView, paramAnonymousInt, paramAnonymousBundle);
-      }
-      return false;
-    }
-  };
+  final AccessibilityDelegateCompat mItemDelegate = new RecyclerViewAccessibilityDelegate.1(this);
   final RecyclerView mRecyclerView;
   
   public RecyclerViewAccessibilityDelegate(RecyclerView paramRecyclerView)

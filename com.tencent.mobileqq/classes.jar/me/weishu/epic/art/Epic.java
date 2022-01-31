@@ -22,17 +22,13 @@ public final class Epic
   private static ShellCode ShellCode;
   private static final String TAG = "Epic";
   private static final Map<String, ArtMethod> backupMethodsMapping = new ConcurrentHashMap();
-  private static final Map<Long, MethodInfo> originSigs = new ConcurrentHashMap();
+  private static final Map<Long, Epic.MethodInfo> originSigs = new ConcurrentHashMap();
   private static final Map<Long, Trampoline> scripts = new HashMap();
   
   static
   {
     int i = Build.VERSION.SDK_INT;
-    if (1 != 0)
-    {
-      if (!Runtime.is64Bit()) {
-        break label136;
-      }
+    if (Runtime.is64Bit()) {
       switch (i)
       {
       }
@@ -44,7 +40,6 @@ public final class Epic
       continue;
       ShellCode = new Arm64_2();
       continue;
-      label136:
       if (Runtime.isThumb2()) {
         ShellCode = new Thumb2();
       } else {
@@ -69,9 +64,9 @@ public final class Epic
     }
   }
   
-  public static MethodInfo getMethodInfo(long paramLong)
+  public static Epic.MethodInfo getMethodInfo(long paramLong)
   {
-    return (MethodInfo)originSigs.get(Long.valueOf(paramLong));
+    return (Epic.MethodInfo)originSigs.get(Long.valueOf(paramLong));
   }
   
   public static int getQuickCompiledCodeSize(ArtMethod paramArtMethod)
@@ -93,18 +88,18 @@ public final class Epic
   
   private static boolean hookMethod(ArtMethod paramArtMethod)
   {
-    ??? = new MethodInfo();
-    ((MethodInfo)???).isStatic = Modifier.isStatic(paramArtMethod.getModifiers());
+    ??? = new Epic.MethodInfo();
+    ((Epic.MethodInfo)???).isStatic = Modifier.isStatic(paramArtMethod.getModifiers());
     Class[] arrayOfClass = paramArtMethod.getParameterTypes();
     if (arrayOfClass != null)
     {
-      ((MethodInfo)???).paramNumber = arrayOfClass.length;
-      ((MethodInfo)???).paramTypes = arrayOfClass;
+      ((Epic.MethodInfo)???).paramNumber = arrayOfClass.length;
+      ((Epic.MethodInfo)???).paramTypes = arrayOfClass;
     }
     for (;;)
     {
-      ((MethodInfo)???).returnType = paramArtMethod.getReturnType();
-      ((MethodInfo)???).method = paramArtMethod;
+      ((Epic.MethodInfo)???).returnType = paramArtMethod.getReturnType();
+      ((Epic.MethodInfo)???).method = paramArtMethod;
       originSigs.put(Long.valueOf(paramArtMethod.getAddress()), ???);
       if (!paramArtMethod.isAccessible()) {
         paramArtMethod.setAccessible(true);
@@ -130,15 +125,15 @@ public final class Epic
           setBackMethod(paramArtMethod, (ArtMethod)???);
         }
       }
-      synchronized (EntryLock.obtain(l1))
+      synchronized (Epic.EntryLock.obtain(l1))
       {
         if (!scripts.containsKey(Long.valueOf(l1))) {
           scripts.put(Long.valueOf(l1), new Trampoline(ShellCode, l1));
         }
         boolean bool = ((Trampoline)scripts.get(Long.valueOf(l1))).install(paramArtMethod);
         return bool;
-        ((MethodInfo)???).paramNumber = 0;
-        ((MethodInfo)???).paramTypes = new Class[0];
+        ((Epic.MethodInfo)???).paramNumber = 0;
+        ((Epic.MethodInfo)???).paramTypes = new Class[0];
         continue;
         Logger.e("Epic", "compile method failed...");
         return false;
@@ -158,73 +153,6 @@ public final class Epic
     {
       paramArtMethod1 = finally;
       throw paramArtMethod1;
-    }
-  }
-  
-  private static class EntryLock
-  {
-    static Map<Long, EntryLock> sLockPool = new HashMap();
-    
-    /* Error */
-    static EntryLock obtain(long paramLong)
-    {
-      // Byte code:
-      //   0: ldc 2
-      //   2: monitorenter
-      //   3: getstatic 19	me/weishu/epic/art/Epic$EntryLock:sLockPool	Ljava/util/Map;
-      //   6: lload_0
-      //   7: invokestatic 29	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-      //   10: invokeinterface 35 2 0
-      //   15: ifeq +24 -> 39
-      //   18: getstatic 19	me/weishu/epic/art/Epic$EntryLock:sLockPool	Ljava/util/Map;
-      //   21: lload_0
-      //   22: invokestatic 29	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-      //   25: invokeinterface 39 2 0
-      //   30: checkcast 2	me/weishu/epic/art/Epic$EntryLock
-      //   33: astore_2
-      //   34: ldc 2
-      //   36: monitorexit
-      //   37: aload_2
-      //   38: areturn
-      //   39: new 2	me/weishu/epic/art/Epic$EntryLock
-      //   42: dup
-      //   43: invokespecial 40	me/weishu/epic/art/Epic$EntryLock:<init>	()V
-      //   46: astore_2
-      //   47: getstatic 19	me/weishu/epic/art/Epic$EntryLock:sLockPool	Ljava/util/Map;
-      //   50: lload_0
-      //   51: invokestatic 29	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-      //   54: aload_2
-      //   55: invokeinterface 44 3 0
-      //   60: pop
-      //   61: goto -27 -> 34
-      //   64: astore_2
-      //   65: ldc 2
-      //   67: monitorexit
-      //   68: aload_2
-      //   69: athrow
-      // Local variable table:
-      //   start	length	slot	name	signature
-      //   0	70	0	paramLong	long
-      //   33	22	2	localEntryLock	EntryLock
-      //   64	5	2	localObject	Object
-      // Exception table:
-      //   from	to	target	type
-      //   3	34	64	finally
-      //   39	61	64	finally
-    }
-  }
-  
-  public static class MethodInfo
-  {
-    public boolean isStatic;
-    public ArtMethod method;
-    public int paramNumber;
-    public Class<?>[] paramTypes;
-    public Class<?> returnType;
-    
-    public String toString()
-    {
-      return this.method.toGenericString();
     }
   }
 }

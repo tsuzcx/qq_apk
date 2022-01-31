@@ -1,35 +1,21 @@
-import com.tencent.mobileqq.activity.aio.PokePanel;
-import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMonitorValue;
 
 public class uro
-  implements Runnable
+  extends slu
 {
-  public uro(PokePanel paramPokePanel, String paramString, ArrayList paramArrayList) {}
-  
-  public void run()
+  public uro(qqstory_service.RspMonitorValue paramRspMonitorValue)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.PokePanel", 2, "[pokepanel]start parsing config");
-    }
-    PokePanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel, this.jdField_a_of_type_JavaLangString);
-    PokePanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel, this.jdField_a_of_type_JavaUtilArrayList);
-    ArrayList localArrayList = PokeItemHelper.a(PokePanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel), this.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel.a);
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(localArrayList);
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-      ThreadManager.getUIHandler().post(new urp(this));
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.PokePanel", 2, "[pokepanel] parsing config end");
-    }
+    super(paramRspMonitorValue.result);
+  }
+  
+  public String toString()
+  {
+    return "MonitorValueResponse{errorCode=" + this.a + ", errorMsg='" + this.b + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uro
  * JD-Core Version:    0.7.0.1
  */

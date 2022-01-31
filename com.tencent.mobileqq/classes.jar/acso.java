@@ -1,21 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
 
-class acso
-  implements DialogInterface.OnClickListener
+public class acso
 {
-  acso(acsm paramacsm) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public boolean b = false;
+  public boolean c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public acso(DoodleMsgLayout paramDoodleMsgLayout)
   {
-    this.a.a.a = false;
-    this.a.a.doOnBackPressed();
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acso
  * JD-Core Version:    0.7.0.1
  */

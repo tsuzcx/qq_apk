@@ -1,20 +1,24 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
-import com.tencent.mobileqq.armap.sensor.SimpleSensorChangeListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aafp
-  extends SimpleSensorChangeListener
+public final class aafp
+  implements DialogInterface.OnClickListener
 {
-  public aafp(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
+  public aafp(aagm paramaagm) {}
   
-  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ARWorldCupGlobalSceneRenderable.a(this.a).a(new aafq(this, paramArrayOfFloat));
+    if (this.a != null) {
+      this.a.a();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aafp
  * JD-Core Version:    0.7.0.1
  */

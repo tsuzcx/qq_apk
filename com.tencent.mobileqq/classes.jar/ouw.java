@@ -1,20 +1,38 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.qqstory.view.StoryNewGuideDialog;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
 public class ouw
-  implements Animation.AnimationListener
+  implements owa
 {
-  public ouw(StoryNewGuideDialog paramStoryNewGuideDialog) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    this.a.dismiss();
+    return null;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    paramBaseArticleInfo = new osn().L(paramBaseArticleInfo).B(paramBaseArticleInfo);
+    switch (paramInt)
+    {
+    default: 
+      paramBaseArticleInfo.a("ReadInjoy_small_cell");
+    }
+    for (;;)
+    {
+      return paramBaseArticleInfo.a();
+      paramBaseArticleInfo.a("ReadInjoy_large_cell");
+    }
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(int paramInt1, Container paramContainer, opw paramopw, int paramInt2) {}
+  
+  public boolean a(int paramInt, Container paramContainer, opw paramopw, ViewBase paramViewBase)
+  {
+    return false;
+  }
 }
 
 

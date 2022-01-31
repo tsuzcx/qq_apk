@@ -1,36 +1,89 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.PhotoSendParams;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 
-class aggg
-  implements Runnable
+public class aggg
 {
-  aggg(aggd paramaggd, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
+  public static int a;
+  public static Map<String, LocalMediaInfo> a;
+  public long a;
+  public afzz a;
+  public SessionInfo a;
+  public LocalMediaInfo a;
+  public String a;
+  public HashMap<String, PhotoSendParams> a;
+  public HashSet<String> a;
+  public vhk a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public HashMap<String, byte[]> b;
+  public HashSet<String> b = new HashSet();
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public HashMap<LocalMediaInfo, LocalMediaInfo> c;
+  public boolean c;
+  public int d;
+  public long d;
+  public String d;
+  public boolean d;
+  public int e;
+  public long e;
+  public String e;
+  public boolean e = true;
+  public int f;
+  public String f;
+  public boolean f;
+  public int g;
+  public String g;
+  public boolean g;
+  public int h;
+  public boolean h;
+  public int i;
+  public boolean i;
+  public boolean j;
+  public boolean k;
+  public boolean l;
+  public boolean m;
+  public boolean n;
+  public boolean o;
+  public boolean p;
+  public boolean q;
+  public boolean r;
+  public boolean s;
+  public boolean t;
+  public boolean u = true;
+  public boolean v;
+  public boolean w;
+  public boolean x;
+  public boolean y;
   
-  public void run()
+  static
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("jd_sso_code", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("jd_code", String.valueOf(this.b));
-    localHashMap.put("ocr_sso_code", String.valueOf(this.c));
-    localHashMap.put("ocr_code", String.valueOf(this.d));
-    localHashMap.put("ret_code", String.valueOf(this.e));
-    try
-    {
-      StatisticCollector.a(BaseApplicationImpl.getContext()).a("", "ocr_server_fail", true, 0L, 0L, localHashMap, "", false);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      QLog.d("Q.ocr.control", 1, "collectPerformance exception: " + localException.getMessage());
-    }
+    jdField_a_of_type_Int = -1;
+    jdField_a_of_type_JavaUtilMap = new HashMap();
+  }
+  
+  public aggg()
+  {
+    this.jdField_d_of_type_Boolean = true;
+    this.jdField_c_of_type_Int = 1;
+    this.jdField_g_of_type_Boolean = true;
+    this.jdField_d_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
+    this.jdField_g_of_type_JavaLangString = "";
+    this.jdField_c_of_type_JavaUtilHashMap = new HashMap();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aggg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data.fts;
 
 import android.text.TextUtils;
+import aprk;
+import aprx;
 import com.tencent.mobileqq.fts.entity.FTSEntity;
-import com.tencent.mobileqq.fts.entity.notColumn;
-import com.tencent.mobileqq.fts.utils.SegmentUtils;
 
 public class TroopIndex
   extends FTSEntity
@@ -16,15 +16,15 @@ public class TroopIndex
   public String ext7;
   public String ext8;
   public String ext9;
-  @notColumn
+  @aprk
   public String mMemberCard;
-  @notColumn
+  @aprk
   public String mMemberName;
-  @notColumn
+  @aprk
   public String mMemberNick;
-  @notColumn
+  @aprk
   public String mMemberUin;
-  @notColumn
+  @aprk
   public String mTroopUin;
   public long oId = -1L;
   public int type = -1;
@@ -41,7 +41,7 @@ public class TroopIndex
     this.mMemberNick = paramString5;
   }
   
-  protected void doDeserialize()
+  public void doDeserialize()
   {
     this.mTroopUin = this.ext1;
     this.mMemberName = this.ext2;
@@ -50,7 +50,7 @@ public class TroopIndex
     this.mMemberNick = this.ext7;
   }
   
-  protected void doSerialize()
+  public void doSerialize()
   {
     this.type = 2;
     this.ext1 = this.mTroopUin;
@@ -79,7 +79,7 @@ public class TroopIndex
     label139:
     label154:
     label168:
-    for (this.ext5 = "";; this.ext5 = SegmentUtils.a(this.ext4))
+    for (this.ext5 = "";; this.ext5 = aprx.a(this.ext4))
     {
       this.ext6 = this.mMemberUin;
       this.ext7 = this.mMemberNick;
@@ -92,11 +92,11 @@ public class TroopIndex
       break;
       str = this.mMemberCard.replace("'", "''");
       break label38;
-      this.ext3 = SegmentUtils.a(this.ext2);
+      this.ext3 = aprx.a(this.ext2);
       break label67;
     }
     label182:
-    this.ext8 = SegmentUtils.a(this.ext7);
+    this.ext8 = aprx.a(this.ext7);
   }
   
   public boolean needCompress()

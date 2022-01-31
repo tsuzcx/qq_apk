@@ -4,7 +4,7 @@ import android.os.Build.VERSION;
 
 public class PlatformUtil
 {
-  public static int a()
+  public static int version()
   {
     return Build.VERSION.SDK_INT;
   }

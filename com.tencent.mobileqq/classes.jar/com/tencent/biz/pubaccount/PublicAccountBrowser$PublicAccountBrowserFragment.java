@@ -1,5 +1,8 @@
 package com.tencent.biz.pubaccount;
 
+import agju;
+import ajjy;
+import ajsi;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,34 +16,32 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.biz.AuthorizeConfig;
-import com.tencent.biz.common.util.Util;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.biz.qrcode.util.QRUtils;
+import awqx;
+import babr;
+import bacc;
+import badq;
+import bafb;
+import bazb;
+import bbaq;
+import bbbt;
+import bbcj;
+import bbcm;
+import bbmy;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.qwallet.PayInterceptHelper;
-import com.tencent.mobileqq.app.StartAppCheckHandler;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.DisplayUtils;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserShareMenuHandler;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import kzz;
-import lab;
-import lac;
-import lad;
-import lae;
+import mkw;
+import mpw;
+import nce;
+import ncf;
+import ncg;
+import nch;
+import ndn;
+import rtr;
+import vvp;
 
 public class PublicAccountBrowser$PublicAccountBrowserFragment
   extends WebViewFragment
@@ -122,55 +123,55 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
       } while (paramString.startsWith("https://"));
       localObject1 = localObject2;
     } while (paramString.indexOf("://") == -1);
-    return "即将离开\"QQ\"\r\n打开" + "其他应用";
+    return "即将离开\"QQ\"\r\n打开" + ajjy.a(2131642997);
   }
   
   private void a(Bundle paramBundle)
   {
-    if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (!NetworkUtil.d(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication()))) {
-      QQToast.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), 2131433227, 0).b(super.b());
+    if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (!badq.d(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication()))) {
+      bbmy.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication(), 2131628946, 0).b(super.b());
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_a_of_type_Boolean)
+    if (!this.jdField_a_of_type_Bbcj.jdField_a_of_type_Bbcm.jdField_a_of_type_Boolean)
     {
       paramBundle = this.jdField_a_of_type_AndroidOsBundle.getString("assignBackText");
       if (!TextUtils.isEmpty(paramBundle)) {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setText(paramBundle);
+        this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetTextView.setText(paramBundle);
       }
       if (this.c) {
-        break label198;
+        break label201;
       }
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setText("");
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839166);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(super.getText(2131434753));
+      this.jdField_a_of_type_Bazb.c.setText("");
+      this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839708);
+      this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(super.getText(2131627103));
     }
     for (;;)
     {
       if (this.jdField_a_of_type_Int == 1001)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setText("跳过");
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setOnClickListener(this);
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setVisibility(0);
+        this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        this.jdField_a_of_type_Bazb.c.setText(ajjy.a(2131642953));
+        this.jdField_a_of_type_Bazb.c.setOnClickListener(this);
+        this.jdField_a_of_type_Bazb.c.setVisibility(0);
       }
       return;
-      label198:
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      int i = (int)DisplayUtils.a(BaseApplicationImpl.getApplication(), 8.0F);
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-        ((RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams()).setMargins(i, 0, i, 0);
+      label201:
+      this.jdField_a_of_type_Bazb.c.setVisibility(8);
+      this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      int i = (int)bacc.a(BaseApplicationImpl.getApplication(), 8.0F);
+      if (this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+        ((RelativeLayout.LayoutParams)this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams()).setMargins(i, 0, i, 0);
       }
     }
   }
   
-  private void h()
+  private void i()
   {
     boolean bool2 = false;
     this.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_AndroidContentIntent.getExtras();
-    this.jdField_e_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("uin");
+    this.f = this.jdField_a_of_type_AndroidOsBundle.getString("uin");
     this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidOsBundle.getString("uin_name");
-    this.h = this.jdField_a_of_type_AndroidOsBundle.getInt("uin_type");
+    this.jdField_h_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("uin_type");
     String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("openid");
     String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("token");
     Object localObject2 = this.jdField_a_of_type_AndroidOsBundle.getString("url");
@@ -183,7 +184,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
       localObject1 = "";
     }
     if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "get a url:" + Util.b((String)localObject1, new String[0]));
+      QLog.d("WebLog_WebViewFragment", 2, "get a url:" + mpw.b((String)localObject1, new String[0]));
     }
     localObject2 = localObject1;
     if (((String)localObject1).startsWith("http://browserApp.p.qq.com/"))
@@ -203,14 +204,14 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
     }
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_a_of_type_Long = Long.parseLong(((String)localObject1).trim());
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_a_of_type_Long;
+      this.jdField_a_of_type_Bbcm.jdField_a_of_type_Long = Long.parseLong(((String)localObject1).trim());
+      this.jdField_a_of_type_Bbcj.jdField_a_of_type_Bbcm.jdField_a_of_type_Long = this.jdField_a_of_type_Bbcm.jdField_a_of_type_Long;
       this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidOsBundle.getInt("call_from");
       this.jdField_a_of_type_AndroidContentIntent.removeExtra("call_from");
-      this.i = this.jdField_a_of_type_AndroidOsBundle.getString("puin");
-      this.j = this.jdField_a_of_type_AndroidOsBundle.getString("msg_id");
-      if (this.j == null) {
-        this.j = "";
+      this.j = this.jdField_a_of_type_AndroidOsBundle.getString("puin");
+      this.k = this.jdField_a_of_type_AndroidOsBundle.getString("msg_id");
+      if (this.k == null) {
+        this.k = "";
       }
       if (!this.jdField_a_of_type_AndroidOsBundle.getBoolean("hide_operation_bar"))
       {
@@ -254,13 +255,13 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
           bool1 = true;
         }
         this.c = bool1;
-        localObject1 = (SwiftBrowserShareMenuHandler)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider.a(4);
-        if ((!this.c) && ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_a_of_type_Long & 0x2378) == 9080L) && (!((SwiftBrowserShareMenuHandler)localObject1).a())) {
+        localObject1 = (bbbt)this.jdField_a_of_type_Bbaq.a(4);
+        if ((!this.c) && ((this.jdField_a_of_type_Bbcm.jdField_a_of_type_Long & 0x2378) == 9080L) && (!((bbbt)localObject1).a())) {
           this.c = true;
         }
         localObject1 = localObject2;
-        if (PublicAccountUtil.e((String)localObject2)) {
-          localObject1 = PublicAccountUtil.a((String)localObject2);
+        if (rtr.e((String)localObject2)) {
+          localObject1 = rtr.a((String)localObject2);
         }
         if (QLog.isColorLevel()) {
           QLog.d("WebLog_WebViewFragment", 1, "initParams url = " + (String)localObject1);
@@ -292,23 +293,23 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
     }
   }
   
-  protected int a(Bundle paramBundle)
+  public int a(Bundle paramBundle)
   {
     int i = super.a(paramBundle);
-    if ((this.jdField_a_of_type_AndroidContentIntent.getIntExtra("reqType", -1) == 5) && (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_a_of_type_Boolean))
+    if ((this.jdField_a_of_type_AndroidContentIntent.getIntExtra("reqType", -1) == 5) && (!this.jdField_a_of_type_Bbcj.jdField_a_of_type_Bbcm.jdField_a_of_type_Boolean))
     {
-      kzz localkzz = new kzz(this);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(localkzz);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setText(2131433152);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setOnClickListener(localkzz);
+      nce localnce = new nce(this);
+      this.jdField_a_of_type_Bazb.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(localnce);
+      this.jdField_a_of_type_Bazb.c.setText(2131626400);
+      this.jdField_a_of_type_Bazb.c.setOnClickListener(localnce);
     }
     a(paramBundle);
     return i;
   }
   
-  public SwiftBrowserComponentsProvider a()
+  public bbaq a()
   {
-    return new SwiftBrowserComponentsProvider(this, 127, new lab(this));
+    return new bbaq(this, 127, new ncf(this));
   }
   
   public String a()
@@ -316,14 +317,21 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
     return "PA";
   }
   
+  public void a()
+  {
+    if ((this.jdField_h_of_type_JavaLangString != null) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (this.jdField_a_of_type_Mkw != null) && (!TextUtils.isEmpty(this.j)) && (!TextUtils.isEmpty(this.jdField_a_of_type_Mkw.a(this.jdField_h_of_type_JavaLangString)))) {
+      this.jdField_h_of_type_JavaLangString = Uri.parse(this.jdField_h_of_type_JavaLangString).buildUpon().appendQueryParameter("puin", this.j).appendQueryParameter("uin", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount()).toString();
+    }
+  }
+  
   public void a(int paramInt)
   {
     Object localObject1 = e();
     Object localObject2 = localObject1;
     if (localObject1 == null) {
-      localObject2 = this.g;
+      localObject2 = this.jdField_h_of_type_JavaLangString;
     }
-    if (TextUtils.isEmpty(this.i)) {
+    if (TextUtils.isEmpty(this.j)) {
       return;
     }
     localObject1 = "";
@@ -339,7 +347,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
       {
         localException.printStackTrace();
       }
-      ReportController.b(null, "dc01160", "Pb_account_lifeservice", "", "0X8007C04", "0X8007C04", 0, 1, 0, localException, (String)localObject2, "1009", "");
+      awqx.b(null, "dc01160", "Pb_account_lifeservice", "", "0X8007C04", "0X8007C04", 0, 1, 0, localException, (String)localObject2, "1009", "");
     }
     localObject3 = localObject1;
     if (localObject1 == null) {
@@ -349,7 +357,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
     {
     default: 
     case 7: 
-      PublicAccountReportUtils.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X800572A", "0X800572A", 1010, 0, this.i, (String)localObject2, this.j, (String)localObject3, false);
+      ndn.a(null, "P_CliOper", "Pb_account_lifeservice", "", "0X800572A", "0X800572A", 1010, 0, this.j, (String)localObject2, this.k, (String)localObject3, false);
       return;
     }
   }
@@ -365,7 +373,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
       if (localActivityInfo != null) {
         paramUri = localActivityInfo.packageName;
       }
-      StartAppCheckHandler.a("scheme", paramString, paramUri, "1", "web", getActivity().getClass().getName());
+      ajsi.a("scheme", paramString, paramUri, "1", "web", getActivity().getClass().getName());
       paramContext.startActivity(localIntent);
       return;
     }
@@ -379,7 +387,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
   {
     try
     {
-      paramContext = DialogUtil.b(paramContext, 230, null, paramString3, "取消", "打开", new lac(this, paramContext, paramUri, paramString1, paramString4), new lad(this, paramString4));
+      paramContext = babr.a(paramContext, 230, null, paramString3, ajjy.a(2131642995), ajjy.a(2131642974), new ncg(this, paramContext, paramUri, paramString1, paramString4), new nch(this, paramString4));
       paramContext.show();
       paramContext.setCancelable(false);
       return;
@@ -395,19 +403,19 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
     paramDialogInterface.dismiss();
     if (!paramBoolean) {
       if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-        ReportController.b(null, "dc01160", "Pb_account_lifeservice", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "0X80090F3", "0X80090F3", 0, 0, "", "", "", paramString);
+        awqx.b(null, "dc01160", "Pb_account_lifeservice", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "0X80090F3", "0X80090F3", 0, 0, "", "", "", paramString);
       }
     }
     while (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
       return;
     }
-    ReportController.b(null, "dc01160", "Pb_account_lifeservice", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "0X80090F4", "0X80090F4", 0, 0, "", "", "", paramString);
+    awqx.b(null, "dc01160", "Pb_account_lifeservice", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), "0X80090F4", "0X80090F4", 0, 0, "", "", "", paramString);
   }
   
   public void a(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
     if (paramInt == -8) {
-      QRUtils.a(1, 2131430037);
+      vvp.a(1, 2131629882);
     }
     super.a(paramWebView, paramInt, paramString1, paramString2);
   }
@@ -416,7 +424,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
   {
     String str = paramString;
     if (paramString == null) {
-      str = this.i;
+      str = this.j;
     }
     if (str != null)
     {
@@ -427,9 +435,9 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
     }
   }
   
-  protected boolean a(Bundle paramBundle)
+  public boolean a(Bundle paramBundle)
   {
-    h();
+    i();
     return super.a(paramBundle);
   }
   
@@ -437,10 +445,10 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
   {
     Uri localUri = Uri.parse(paramString);
     String str = localUri.getScheme();
-    if ((super.getActivity().isResume()) && ((System.currentTimeMillis() - this.jdField_e_of_type_Long < 1000L) || (this.jdField_a_of_type_ComTencentBizAuthorizeConfig.a(paramWebView.getUrl(), str).booleanValue())))
+    if ((super.getActivity().isResume()) && ((System.currentTimeMillis() - this.jdField_e_of_type_Long < 1000L) || (this.jdField_a_of_type_Mkw.a(paramWebView.getUrl(), str).booleanValue())))
     {
       long l = System.currentTimeMillis();
-      boolean bool = PayInterceptHelper.a().a(paramString, this);
+      boolean bool = agju.a().a(paramString, this);
       QLog.i("WebLog_WebViewFragment", 1, "TryPayIntercept result:" + bool + " cost:" + (System.currentTimeMillis() - l) + " ms.");
       if (!bool) {}
     }
@@ -448,13 +456,13 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
     {
       return true;
     }
-    if ("2909288299".equalsIgnoreCase(this.i))
+    if ("2909288299".equalsIgnoreCase(this.j))
     {
       paramString = a(paramString);
       if (!TextUtils.isEmpty(paramString))
       {
         paramWebView = paramWebView.getUrl();
-        a(getActivity(), paramWebView, localUri, "QQ", paramString, this.i);
+        a(getActivity(), paramWebView, localUri, "QQ", paramString, this.j);
         return true;
       }
     }
@@ -468,7 +476,7 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
       return super.b(paramWebView, paramString);
     }
     if (QLog.isColorLevel()) {
-      QLog.d("WebLog_WebViewFragment", 2, "shouldOverride: " + Util.b(paramString, new String[0]));
+      QLog.d("WebLog_WebViewFragment", 2, "shouldOverride: " + mpw.b(paramString, new String[0]));
     }
     String str = paramWebView.getUrl();
     if ((TextUtils.isEmpty(str)) || (str.startsWith("http://s.p.qq.com/pub/jump"))) {}
@@ -490,18 +498,11 @@ public class PublicAccountBrowser$PublicAccountBrowserFragment
     return super.b(paramWebView, paramString);
   }
   
-  protected void c()
-  {
-    if ((this.g != null) && (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && (this.jdField_a_of_type_ComTencentBizAuthorizeConfig != null) && (!TextUtils.isEmpty(this.i)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizAuthorizeConfig.a(this.g)))) {
-      this.g = Uri.parse(this.g).buildUpon().appendQueryParameter("puin", this.i).appendQueryParameter("uin", this.jdField_a_of_type_ComTencentCommonAppAppInterface.getAccount()).toString();
-    }
-  }
-  
   public void d()
   {
     super.d();
     if (this.jdField_a_of_type_Int == 1001) {
-      ThreadManager.executeOnSubThread(new lae(this));
+      ThreadManager.executeOnSubThread(new PublicAccountBrowser.PublicAccountBrowserFragment.5(this));
     }
   }
 }

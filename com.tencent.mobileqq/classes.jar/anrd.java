@@ -1,29 +1,28 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.widget.Button;
-import dov.com.qq.im.QIMCameraCaptureUnit;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
+import com.tencent.widget.RoundBGTextView;
 
-class anrd
-  implements Runnable
+public class anrd
+  extends RecyclerView.ViewHolder
+  implements View.OnClickListener
 {
-  anrd(anrc paramanrc) {}
+  public RoundBGTextView a;
   
-  public void run()
+  public anrd(ExtendFriendGroupFragment paramExtendFriendGroupFragment, ViewGroup paramViewGroup)
   {
-    if ((QIMCameraCaptureUnit.a(this.a.a) != null) && (this.a.a.e != null))
-    {
-      BitmapDrawable localBitmapDrawable = new BitmapDrawable(QIMCameraCaptureUnit.a(this.a.a));
-      this.a.a.e.setBackgroundDrawable(localBitmapDrawable);
-      this.a.a.e.setVisibility(0);
-      this.a.a.e.setEnabled(true);
-      return;
-    }
-    this.a.a.e.setVisibility(8);
-    this.a.a.e.setEnabled(false);
+    super(paramViewGroup);
+    this.jdField_a_of_type_ComTencentWidgetRoundBGTextView = ((RoundBGTextView)paramViewGroup.findViewById(2131303206));
+    this.jdField_a_of_type_ComTencentWidgetRoundBGTextView.setRoundCornerSize(2);
   }
+  
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anrd
  * JD-Core Version:    0.7.0.1
  */

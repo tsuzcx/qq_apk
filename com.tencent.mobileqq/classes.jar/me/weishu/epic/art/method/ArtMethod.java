@@ -9,7 +9,6 @@ import com.qq.android.dexposed.utility.Unsafe;
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.nio.ByteBuffer;
@@ -77,7 +76,6 @@ public class ArtMethod
   }
   
   private Object invokeInternal(Object paramObject, Object... paramVarArgs)
-    throws IllegalAccessException, InvocationTargetException, InstantiationException
   {
     if (this.constructor != null) {
       return this.constructor.newInstance(paramVarArgs);
@@ -108,7 +106,7 @@ public class ArtMethod
   public static long searchOffset(long paramLong1, long paramLong2, int paramInt)
   {
     long l2 = paramLong2 / 4L;
-    for (paramLong2 = 0L;; paramLong2 += 1L)
+    for (paramLong2 = 0L;; paramLong2 = 1L + paramLong2)
     {
       long l1;
       if (paramLong2 >= l2) {
@@ -119,7 +117,7 @@ public class ArtMethod
       {
         return l1;
         l1 = paramLong2 * 4L;
-        arrayOfByte = EpicNative.memget(4L * paramLong2 + paramLong1, 4);
+        arrayOfByte = EpicNative.memget(paramLong2 * 4L + paramLong1, 4);
       } while (ByteBuffer.allocate(4).put(arrayOfByte).getInt() == paramInt);
     }
   }
@@ -127,7 +125,7 @@ public class ArtMethod
   public static long searchOffset(long paramLong1, long paramLong2, long paramLong3)
   {
     long l2 = paramLong2 / 4L;
-    for (paramLong2 = 0L;; paramLong2 += 1L)
+    for (paramLong2 = 0L;; paramLong2 = 1L + paramLong2)
     {
       long l1;
       if (paramLong2 >= l2) {
@@ -137,7 +135,7 @@ public class ArtMethod
       do
       {
         return l1;
-        l1 = paramLong2 * 4L;
+        l1 = 4L * paramLong2;
         arrayOfByte = EpicNative.memget(4L * paramLong2 + paramLong1, 4);
       } while (ByteBuffer.allocate(8).put(arrayOfByte).getLong() == paramLong3);
     }
@@ -145,6 +143,8 @@ public class ArtMethod
   
   public ArtMethod backup()
   {
+    int j = 0;
+    int i = 0;
     for (;;)
     {
       try
@@ -152,8 +152,6 @@ public class ArtMethod
         Object localObject3 = Method.class.getSuperclass();
         Object localObject2 = getExecutable();
         Object localObject1;
-        int j;
-        int i;
         Object localObject5;
         if (Build.VERSION.SDK_INT < 23)
         {
@@ -168,7 +166,6 @@ public class ArtMethod
           localObject3 = ((Constructor)localObject3).newInstance(new Object[0]);
           localObject4 = ((Class)localObject1).getDeclaredFields();
           j = localObject4.length;
-          i = 0;
           if (i >= j)
           {
             localObject1 = (Method)Method.class.getConstructor(new Class[] { localObject1 }).newInstance(new Object[] { localObject3 });
@@ -199,9 +196,9 @@ public class ArtMethod
           localObject1 = (Method)((Constructor)localObject4).newInstance(new Object[0]);
           ((Method)localObject1).setAccessible(true);
           localObject4 = ((Class)localObject3).getDeclaredFields();
-          j = localObject4.length;
-          i = 0;
-          if (i >= j)
+          int k = localObject4.length;
+          i = j;
+          if (i >= k)
           {
             localObject2 = ((Class)localObject3).getDeclaredField("artMethod");
             ((Field)localObject2).setAccessible(true);
@@ -343,7 +340,6 @@ public class ArtMethod
   }
   
   public Object invoke(Object paramObject, Object... paramVarArgs)
-    throws IllegalAccessException, InvocationTargetException, InstantiationException
   {
     if ((Build.VERSION.SDK_INT >= 24) && (this.origin != null))
     {

@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.extendfriend.ExtendFriendManager;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
 
-public class acpm
-  extends CardObserver
+class acpm
+  implements OnCompositionLoadedListener
 {
-  public acpm(ExtendFriendManager paramExtendFriendManager) {}
+  acpm(acpj paramacpj) {}
   
-  protected void a(boolean paramBoolean, int paramInt, Card paramCard)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    if ((paramBoolean) && (paramInt == 0)) {
-      ExtendFriendManager.a(this.a);
-    }
+    acpj.a(this.a, paramLottieComposition);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acpm
  * JD-Core Version:    0.7.0.1
  */

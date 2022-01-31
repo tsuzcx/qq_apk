@@ -1,14 +1,27 @@
-import com.tencent.biz.common.offline.AsyncCallBack;
-import com.tencent.biz.troopplugin.PluginJumpManager;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.pts.nativemodule.IPTSNavigateTo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.regex.Pattern;
 
-class peg
-  implements AsyncCallBack
+public class peg
+  implements IPTSNavigateTo
 {
-  peg(pef parampef) {}
+  private final String a = "PTSNavigateToModule";
   
-  public void a(int paramInt, String paramString)
+  public void navigateTo(String paramString)
   {
-    this.a.a.loadConfigFromFile();
+    QLog.i("PTSNavigateToModule", 1, "[navigateTo], url = " + paramString);
+    paramString = Pattern.compile("\\/").split(paramString);
+    if ((paramString != null) && (paramString.length > 0))
+    {
+      paramString = paramString[(paramString.length - 1)];
+      Intent localIntent = new Intent();
+      localIntent.putExtra("com.tencent.biz.pubaccount.readinjoy.pts.AppName", paramString);
+      PublicFragmentActivity.a(BaseActivity.sTopActivity, localIntent, PTSFragment.class);
+    }
   }
 }
 

@@ -1,50 +1,78 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import com.tencent.mobileqq.utils.SecUtil;
-import java.io.File;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.RemoteException;
+import com.tencent.mobileqq.ar.ARGlobalConfigService;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class akiw
-  implements Runnable
+public final class akiw
 {
-  public akiw(AntiFraudConfigFileUtil paramAntiFraudConfigFileUtil, String paramString1, String paramString2, String paramString3) {}
+  private static volatile akiw jdField_a_of_type_Akiw;
+  private volatile akpw jdField_a_of_type_Akpw;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new akix(this);
   
-  public void run()
+  private akiw(Context paramContext)
   {
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil.a(this.jdField_a_of_type_JavaLangString);
-    File localFile = new File(str1);
-    Object localObject = localFile.getParent();
-    localObject = new File((String)localObject + "/download" + this.jdField_a_of_type_JavaLangString + ".xml");
-    if (((File)localObject).exists()) {
-      ((File)localObject).delete();
-    }
-    if (HttpDownloadUtil.a(null, MsfSdkUtils.insertMtype("QPSingle", this.b), (File)localObject))
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public static akiw a(Context paramContext)
+  {
+    if (jdField_a_of_type_Akiw == null) {}
+    try
     {
-      String str2 = SecUtil.getFileMd5(((File)localObject).getAbsolutePath());
-      if (!this.c.equalsIgnoreCase(str2)) {
-        AntiFraudConfigFileUtil.b(this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil).putInt(this.c, 2);
+      if (jdField_a_of_type_Akiw == null) {
+        jdField_a_of_type_Akiw = new akiw(paramContext.getApplicationContext());
+      }
+      return jdField_a_of_type_Akiw;
+    }
+    finally {}
+  }
+  
+  public ARScanStarFaceConfigInfo a()
+  {
+    Object localObject3 = null;
+    Object localObject1 = localObject3;
+    if (this.jdField_a_of_type_Akpw != null) {}
+    try
+    {
+      localObject1 = this.jdField_a_of_type_Akpw.a();
+      QLog.d("ARGlobalRemoteManager", 2, String.format("getScanStarFaceConfigInfo IService=%s configInfo=%s", new Object[] { this.jdField_a_of_type_Akpw, localObject1 }));
+      return localObject1;
+    }
+    catch (RemoteException localRemoteException)
+    {
+      for (;;)
+      {
+        QLog.e("ARGlobalRemoteManager", 1, "getScanStarFaceConfigInfo fail!", localRemoteException);
+        Object localObject2 = localObject3;
       }
     }
-    else
+  }
+  
+  public void a()
+  {
+    try
     {
+      if (this.jdField_a_of_type_Akpw == null)
+      {
+        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, ARGlobalConfigService.class);
+        this.jdField_a_of_type_AndroidContentContext.bindService(localIntent, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
+      }
       return;
     }
-    if (((File)localObject).renameTo(localFile))
+    finally
     {
-      AntiFraudConfigFileUtil.b(this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil).putInt(this.c, 3);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil.a(this.jdField_a_of_type_JavaLangString, System.currentTimeMillis());
-      this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil.a(this.jdField_a_of_type_JavaLangString, this.c);
-      AntiFraudConfigFileUtil.b(this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil, str1);
-      return;
+      localObject = finally;
+      throw localObject;
     }
-    AntiFraudConfigFileUtil.b(this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil).putInt(this.c, 2);
-    ((File)localObject).delete();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akiw
  * JD-Core Version:    0.7.0.1
  */

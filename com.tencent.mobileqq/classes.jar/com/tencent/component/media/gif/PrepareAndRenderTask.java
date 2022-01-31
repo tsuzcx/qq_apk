@@ -8,24 +8,22 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
-import pks;
-import pkt;
 
 public class PrepareAndRenderTask
-  extends pkt
+  extends RenderTask
 {
-  private long jdField_a_of_type_Long = 0L;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new pks(this);
-  ScheduledFuture jdField_a_of_type_JavaUtilConcurrentScheduledFuture;
-  private ScheduledThreadPoolExecutor jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor;
-  private Semaphore jdField_a_of_type_JavaUtilConcurrentSemaphore = new Semaphore(0);
-  private Semaphore b;
+  private static final String TAG = "PrepareAndRenderTask";
+  private Semaphore canPrepareCounts = new Semaphore(1);
+  private Semaphore canRenderCounts = new Semaphore(0);
+  private long invalidationDelay = 0L;
+  private ScheduledThreadPoolExecutor mExecutor;
+  private Runnable mRenderTask = new PrepareAndRenderTask.1(this);
+  ScheduledFuture<?> mSchedule;
   
   PrepareAndRenderTask(NewGifDrawable paramNewGifDrawable)
   {
     super(paramNewGifDrawable);
-    this.jdField_b_of_type_JavaUtilConcurrentSemaphore = new Semaphore(1);
-    this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor = paramNewGifDrawable.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor;
+    this.mExecutor = paramNewGifDrawable.mExecutor;
   }
   
   public void doWork()
@@ -34,20 +32,20 @@ public class PrepareAndRenderTask
     {
       try
       {
-        if (!this.jdField_b_of_type_JavaUtilConcurrentSemaphore.tryAcquire())
+        if (!this.canPrepareCounts.tryAcquire())
         {
           ImageManagerEnv.getLogger().w("PrepareAndRenderTask", new Object[] { "unRender true,doRender" });
           return;
         }
         long l1 = System.currentTimeMillis();
-        this.jdField_b_of_type_ComTencentComponentMediaGifNewGifDrawable.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.prepareData();
+        this.mGifDrawable.mGifDecoder.prepareData();
         long l2 = System.currentTimeMillis();
-        l1 = this.jdField_a_of_type_Long - (l2 - l1);
-        this.jdField_a_of_type_JavaUtilConcurrentSemaphore.release();
-        ScheduledThreadPoolExecutor localScheduledThreadPoolExecutor = this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor;
-        Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
+        l1 = this.invalidationDelay - (l2 - l1);
+        this.canRenderCounts.release();
+        ScheduledThreadPoolExecutor localScheduledThreadPoolExecutor = this.mExecutor;
+        Runnable localRunnable = this.mRenderTask;
         if (l1 > 0L) {
-          this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture = localScheduledThreadPoolExecutor.schedule(localRunnable, l1, TimeUnit.MILLISECONDS);
+          this.mSchedule = localScheduledThreadPoolExecutor.schedule(localRunnable, l1, TimeUnit.MILLISECONDS);
         } else {
           l1 = 0L;
         }
@@ -58,7 +56,7 @@ public class PrepareAndRenderTask
   
   public long getFrameDelay()
   {
-    return this.jdField_a_of_type_Long;
+    return this.invalidationDelay;
   }
   
   public void waitFinish()
@@ -66,8 +64,8 @@ public class PrepareAndRenderTask
     try
     {
       ImageManagerEnv.getLogger().w("PrepareAndRenderTask", new Object[] { "wait finish " + hashCode() });
-      if (this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture != null) {
-        this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture.get();
+      if (this.mSchedule != null) {
+        this.mSchedule.get();
       }
       return;
     }

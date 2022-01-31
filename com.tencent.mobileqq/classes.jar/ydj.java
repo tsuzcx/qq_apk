@@ -1,18 +1,10 @@
-import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
-
-public class ydj
-  implements Runnable
+public abstract interface ydj
 {
-  public ydj(CameraFilterGLView paramCameraFilterGLView) {}
-  
-  public void run()
-  {
-    CameraFilterGLView.a(this.a);
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ydj
  * JD-Core Version:    0.7.0.1
  */

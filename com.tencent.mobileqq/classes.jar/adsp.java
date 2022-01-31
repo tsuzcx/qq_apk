@@ -1,31 +1,21 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.dataline.core.DirectForwarder;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class adsp
-  implements FMDialogUtil.FMDialogInterface
+  implements View.OnTouchListener
 {
-  adsp(adso paramadso) {}
+  adsp(adsm paramadsm, acmv paramacmv) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    DirectForwarder.b(this.a.a.jdField_a_of_type_AndroidAppActivity, 0);
-    this.a.a.jdField_a_of_type_AndroidContentIntent.putExtra("NOCANCEL4DATALIN", true);
-    this.a.a.jdField_a_of_type_AndroidAppActivity.setResult(0, this.a.a.jdField_a_of_type_AndroidContentIntent);
-    this.a.a.jdField_a_of_type_AndroidAppActivity.finish();
-  }
-  
-  public void b()
-  {
-    this.a.a.jdField_a_of_type_AndroidAppActivity.setResult(0, this.a.a.jdField_a_of_type_AndroidContentIntent);
-    this.a.a.jdField_a_of_type_AndroidAppActivity.finish();
+    this.jdField_a_of_type_Acmv.onTouch(paramView, paramMotionEvent);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adsp
  * JD-Core Version:    0.7.0.1
  */

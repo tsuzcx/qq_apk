@@ -1,43 +1,35 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
 
-public class vkt
-  implements Runnable
+class vkt
+  implements slx<tal, tam>
 {
-  public vkt(ShortVideoItemBuilder paramShortVideoItemBuilder) {}
+  vkt(vks paramvks, JobContext paramJobContext, Integer paramInteger) {}
   
-  public void run()
+  public void a(@NonNull tal paramtal, @Nullable tam paramtam, @NonNull ErrorMessage paramErrorMessage)
   {
-    boolean bool = false;
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    localCalendar.set(14, 0);
-    SharedPreferences localSharedPreferences = this.a.a.getPreferences();
-    long l1 = localSharedPreferences.getLong("key_check_temp", 0L);
-    long l2 = localCalendar.getTimeInMillis();
-    if (l1 < l2) {
-      bool = true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoItemBuilder", 2, "TempCleanTask, lastCheck=" + l1 + ", today:" + l2 + ", needClean : " + bool);
-    }
-    if (bool)
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
     {
-      localSharedPreferences.edit().putLong("key_check_temp", l2).commit();
-      ShortVideoUtils.a("", true);
+      urk.d("Q.qqstory.home.data.FeedListPageLoaderBase", "feedId pull segment cancel on net respond");
+      return;
     }
+    if ((paramErrorMessage.isFail()) || (paramtam == null))
+    {
+      urk.a("Q.qqstory.home.data.FeedListPageLoaderBase", "pull feedId list fail %s", paramErrorMessage.toString());
+      vks.a(this.jdField_a_of_type_Vks, paramErrorMessage);
+      return;
+    }
+    vks.a(this.jdField_a_of_type_Vks).a(paramtam.jdField_a_of_type_JavaUtilList, paramtam.jdField_a_of_type_JavaLangString, paramtam.jdField_a_of_type_Boolean);
+    ((uje)sqg.a(11)).a(paramtam.jdField_a_of_type_JavaUtilList);
+    paramtal = vks.a(this.jdField_a_of_type_Vks).a(this.jdField_a_of_type_JavaLangInteger.intValue(), 5);
+    vks.a(this.jdField_a_of_type_Vks, paramtal);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vkt
  * JD-Core Version:    0.7.0.1
  */

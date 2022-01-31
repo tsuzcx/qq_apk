@@ -1,6 +1,11 @@
 package com.tencent.component.network.utils.http;
 
-public abstract interface DnsResolver {}
+import java.net.InetAddress;
+
+public abstract interface DnsResolver
+{
+  public abstract InetAddress[] resolve(String paramString);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

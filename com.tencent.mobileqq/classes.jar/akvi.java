@@ -1,33 +1,141 @@
 import android.content.Context;
-import android.media.AudioManager;
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.util.Xml;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayInputStream;
+import java.util.HashMap;
+import org.xmlpull.v1.XmlPullParser;
 
 public class akvi
-  extends AudioManager
+  extends akuu
 {
-  public akvi(Context paramContext)
+  private static final Object a;
+  public static boolean a;
+  
+  static
   {
-    super(paramContext);
+    jdField_a_of_type_JavaLangObject = new Object();
   }
   
-  public int requestAudioFocus(AudioManager.OnAudioFocusChangeListener paramOnAudioFocusChangeListener, int paramInt1, int paramInt2)
+  public static byte a(String paramString)
   {
-    try
+    return akuu.a(1, paramString);
+  }
+  
+  public static Object a()
+  {
+    return jdField_a_of_type_JavaLangObject;
+  }
+  
+  public static String a()
+  {
+    Object localObject = BaseApplicationImpl.sApplication.getFilesDir();
+    if (localObject == null)
     {
-      paramInt1 = super.requestAudioFocus(paramOnAudioFocusChangeListener, paramInt1, paramInt2);
-      return paramInt1;
+      if (QLog.isColorLevel()) {
+        QLog.i("MiniRecog.MiniScanDetectSoLoader", 2, "getFilesDir is null");
+      }
+      localObject = "";
     }
-    catch (NullPointerException paramOnAudioFocusChangeListener)
+    String str;
+    do
     {
-      ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", "audio_manager_npe", 0, 1, 0, "", "", "", "");
+      return localObject;
+      str = localObject + "/pddata/prd/" + "qq.android.minidetect.so_v8.0.7";
+      localObject = str;
+    } while (!QLog.isColorLevel());
+    QLog.i("MiniRecog.MiniScanDetectSoLoader", 2, "getLibDir ,path = " + str);
+    return str;
+  }
+  
+  public static String a(String paramString)
+  {
+    return "lib" + paramString + ".so";
+  }
+  
+  protected static void a(boolean paramBoolean)
+  {
+    jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public static boolean a()
+  {
+    boolean bool = true;
+    if ((!akuu.a(1, jdField_a_of_type_Boolean, "QMCF_qr")) || (!akuu.a(1, jdField_a_of_type_Boolean, "yuvutil")))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MiniRecog.MiniScanDetectSoLoader", 2, "native so is not exist!");
+      }
+      bool = false;
     }
-    return 0;
+    return bool;
+  }
+  
+  public static boolean a(String paramString, HashMap<String, String> paramHashMap)
+  {
+    boolean bool = true;
+    XmlPullParser localXmlPullParser = Xml.newPullParser();
+    paramHashMap.clear();
+    int i;
+    for (;;)
+    {
+      try
+      {
+        localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
+        i = localXmlPullParser.getEventType();
+      }
+      catch (Exception paramHashMap)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.e("MiniRecog.MiniScanDetectSoLoader", 2, paramString, paramHashMap);
+        bool = false;
+        return bool;
+      }
+      i = localXmlPullParser.next();
+      break label168;
+      String str = localXmlPullParser.getName();
+      if (str.equalsIgnoreCase("QMCF_qr"))
+      {
+        paramHashMap.put("QMCF_qr", localXmlPullParser.nextText());
+        continue;
+      }
+      else
+      {
+        if (!str.equalsIgnoreCase("yuvutil")) {
+          continue;
+        }
+        paramHashMap.put("yuvutil", localXmlPullParser.nextText());
+        continue;
+      }
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.d("MiniRecog.MiniScanDetectSoLoader", 2, "parseConfig success|config=" + paramHashMap);
+      return true;
+      label168:
+      if (i != 1) {
+        switch (i)
+        {
+        }
+      }
+    }
+  }
+  
+  public static byte b(String paramString)
+  {
+    return akuu.a(1, jdField_a_of_type_Boolean, paramString);
+  }
+  
+  public static String b(String paramString)
+  {
+    return akuu.a(1, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akvi
  * JD-Core Version:    0.7.0.1
  */

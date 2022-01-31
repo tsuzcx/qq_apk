@@ -1,25 +1,21 @@
-import android.widget.ImageView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
-import com.tencent.mobileqq.freshnews.QQInputView;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adwt
-  implements Runnable
+class adwt
+  implements DialogInterface.OnClickListener
 {
-  public adwt(QQInputView paramQQInputView) {}
+  adwt(adwr paramadwr) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQInputView.a(this.a).setVisibility(0);
-    QQInputView.a(this.a).setImageResource(2130844610);
-    if (AppSetting.b) {
-      QQInputView.a(this.a).setContentDescription("表情");
-    }
+    paramDialogInterface.dismiss();
+    advv.u(this.a.a).setResult(8001);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adwt
  * JD-Core Version:    0.7.0.1
  */

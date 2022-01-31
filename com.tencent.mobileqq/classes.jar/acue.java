@@ -1,86 +1,73 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
-import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
-import mqq.app.MobileQQ;
+import com.tencent.qphone.base.util.QLog;
 
 public class acue
-  implements RadioGroup.OnCheckedChangeListener
 {
-  public acue(FMActivity paramFMActivity) {}
+  public acud a = new acud();
+  public acud b = new acud();
+  public acud c = new acud();
+  public acud d = new acud();
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public void a()
   {
-    int i = -1;
-    if (this.a.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    }
-    this.a.g();
-    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetSendBottomBar.setVisibility(0);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView != null)
+    this.a.a(this.b);
+    this.c.a(this.d);
+    this.b.a(this.d);
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  {
+    this.a.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    this.b.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    this.c.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong, boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-      this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.removeAllViews();
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView.setVisibility(8);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView.a();
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityVerifyPwdView = null;
-      this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileTabBarView);
-    }
-    if (paramInt == 2131368783)
-    {
-      this.a.a().f();
-      ((RadioButton)this.a.findViewById(2131368784)).setChecked(false);
-      ((RadioButton)this.a.findViewById(2131368785)).setChecked(false);
-      FMActivity.d(this.a);
-      i = 0;
-    }
-    for (;;)
-    {
-      paramRadioGroup = this.a.app.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
-      paramRadioGroup.putInt("last_select_tab_type", i);
-      paramRadioGroup.commit();
+      this.a.a(this.b);
+      this.c.a(this.d);
+      this.b.a((this.c.jdField_a_of_type_Float + paramFloat1) / 2.0F, (this.c.b + paramFloat2) / 2.0F, (this.c.c + paramFloat3) / 2.0F, (this.c.jdField_a_of_type_Long + paramLong) / 2L);
+      this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
       return;
-      if (paramInt == 2131368784)
-      {
-        this.a.a().e();
-        FMActivity.e(this.a);
-        ((RadioButton)this.a.findViewById(2131368783)).setChecked(false);
-        ((RadioButton)this.a.findViewById(2131368785)).setChecked(false);
-        paramInt = 1;
-        i = paramInt;
-        if (this.a.g == 0)
-        {
-          i = paramInt;
-          if (this.a.j)
-          {
-            this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-            i = paramInt;
-          }
-        }
-      }
-      else if (paramInt == 2131368785)
-      {
-        this.a.a().d();
-        ((RadioButton)this.a.findViewById(2131368784)).setChecked(false);
-        ((RadioButton)this.a.findViewById(2131368783)).setChecked(false);
-        FMActivity.a(this.a, 2);
-        i = 2;
-      }
     }
+    this.b.a((this.c.jdField_a_of_type_Float + paramFloat1) / 2.0F, (this.c.b + paramFloat2) / 2.0F, (this.c.c + paramFloat3) / 2.0F, (this.c.jdField_a_of_type_Long + paramLong) / 2L);
+    this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+  }
+  
+  public void a(acue paramacue)
+  {
+    this.a.a(paramacue.a);
+    this.b.a(paramacue.b);
+    this.c.a(paramacue.c);
+    this.d.a(paramacue.d);
+  }
+  
+  public void b(acue paramacue)
+  {
+    if (paramacue.d == this.c)
+    {
+      this.a = paramacue.a;
+      this.c = paramacue.c;
+      this.b.a((this.d.jdField_a_of_type_Float + this.c.jdField_a_of_type_Float) / 2.0F, (this.d.b + this.c.b) / 2.0F, (this.d.c + this.c.c) / 2.0F, (this.d.jdField_a_of_type_Long + this.c.jdField_a_of_type_Long) / 2L);
+    }
+    do
+    {
+      return;
+      if (this.d == paramacue.c)
+      {
+        this.d.a(paramacue.d);
+        this.b.a((this.d.jdField_a_of_type_Float + this.c.jdField_a_of_type_Float) / 2.0F, (this.d.b + this.c.b) / 2.0F, (this.d.c + this.c.c) / 2.0F, (this.d.jdField_a_of_type_Long + this.c.jdField_a_of_type_Long) / 2L);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("TransPathJob", 2, "TransPathJob merge point error");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acue
  * JD-Core Version:    0.7.0.1
  */

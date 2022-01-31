@@ -1,78 +1,74 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.earlydownload.xmldata.WebpSoData;
+import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import com.tencent.mobileqq.util.WebpSoLoader;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneVideoDownloadActivity;
-import cooperation.qzone.video.QzoneVideoBeaconReport;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class amzu
-  extends Handler
+  extends amza
 {
-  public amzu(QZoneVideoDownloadActivity paramQZoneVideoDownloadActivity) {}
+  QQAppInterface b = null;
   
-  public void handleMessage(Message paramMessage)
+  public amzu(QQAppInterface paramQQAppInterface)
   {
-    if (paramMessage == null) {}
-    do
+    super("qq.android.pic.webp.so", paramQQAppInterface);
+    this.b = paramQQAppInterface;
+  }
+  
+  public int a()
+  {
+    return 10056;
+  }
+  
+  public Class<? extends XmlData> a()
+  {
+    return WebpSoData.class;
+  }
+  
+  public String a()
+  {
+    return "QWebpSoDownloadDuration";
+  }
+  
+  public void a(String paramString)
+  {
+    try
     {
-      do
-      {
-        do
-        {
-          return;
-          switch (paramMessage.what)
-          {
-          default: 
-            return;
-          case 1000: 
-            if (QLog.isDevelopLevel()) {
-              QLog.d("QZoneVideoDownloadActivity", 4, "mIsUIInited=" + QZoneVideoDownloadActivity.a(this.a));
-            }
-            break;
-          }
-        } while (QZoneVideoDownloadActivity.a(this.a).get());
-        this.a.setContentView(2130971776);
-        this.a.a();
-        QZoneVideoDownloadActivity.a(this.a).set(true);
-        return;
-      } while ((this.a.jdField_a_of_type_AndroidWidgetTextView == null) || (this.a.jdField_a_of_type_AndroidWidgetProgressBar == null));
-      i = paramMessage.arg1;
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("正在加载短视频，已完成" + i + "%，请耐心等待");
-      this.a.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(i);
-      return;
-    } while ((this.a.jdField_a_of_type_AndroidWidgetTextView == null) || (this.a.jdField_a_of_type_AndroidWidgetProgressBar == null));
-    int i = paramMessage.arg1;
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText("正在加载短视频组件，已完成" + i + "%，请耐心等待");
-    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(i);
-    return;
-    String str2 = "短视频下载失败，请检查你的网络环境";
-    String str1 = str2;
-    if (paramMessage != null)
+      if (QLog.isColorLevel()) {
+        QLog.d("QWebpSoDownloadHandler", 2, "onDownload success: " + paramString);
+      }
+      String str = WebpSoLoader.a(BaseApplicationImpl.getContext());
+      if (!TextUtils.isEmpty(str)) {
+        bace.a(paramString, str, false);
+      }
+    }
+    catch (Exception localException)
     {
-      str1 = str2;
-      if (paramMessage.obj != null)
+      for (;;)
       {
-        str1 = str2;
-        if ((paramMessage.obj instanceof String)) {
-          str1 = (String)paramMessage.obj;
+        if (QLog.isColorLevel()) {
+          QLog.d("QWebpSoDownloadHandler", 2, localException.getMessage());
         }
       }
     }
-    Toast.makeText(this.a.getApplicationContext(), str1, 1).show();
-    QzoneVideoBeaconReport.a(this.a.jdField_a_of_type_JavaLangString, "qzone_video_recordtrim", "1005", null);
-    this.a.finish();
-    return;
-    Toast.makeText(this.a.getApplicationContext(), "短视频安装出错，请重试", 1).show();
-    QzoneVideoBeaconReport.a(this.a.jdField_a_of_type_JavaLangString, "qzone_video_recordtrim", "1006", null);
-    this.a.finish();
+    super.a(paramString);
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public String b()
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     amzu
  * JD-Core Version:    0.7.0.1
  */

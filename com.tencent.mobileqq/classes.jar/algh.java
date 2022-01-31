@@ -1,22 +1,31 @@
-import com.tencent.mobileqq.worldcup.WorldCupShareFragment;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.debug.ArkAsyncShareMiniAppTest.1.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
-class algh
-  implements Runnable
+public class algh
+  implements alhz
 {
-  algh(algg paramalgg, String paramString) {}
-  
-  public void run()
+  public boolean needProcess(JSONObject paramJSONObject)
   {
-    algi localalgi = new algi(this);
-    WXShareHelper.a().a(localalgi);
-    WorldCupShareFragment.b(this.jdField_a_of_type_Algg.a, String.valueOf(System.currentTimeMillis()));
-    WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, WorldCupShareFragment.a(this.jdField_a_of_type_Algg.a), 1, true, WorldCupShareFragment.c(this.jdField_a_of_type_Algg.a));
+    if (QLog.isColorLevel()) {
+      QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, new Object[] { "AAShare.mArkMessagePreprocessor needProcess=", Boolean.valueOf(true) });
+    }
+    return true;
+  }
+  
+  public void process(JSONObject paramJSONObject, alia paramalia, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("ArkApp.ArkAsyncShareMiniAppTest", 2, new Object[] { "AAShare.process msgJson=", paramJSONObject.toString() });
+    }
+    ThreadManager.getFileThreadHandler().postDelayed(new ArkAsyncShareMiniAppTest.1.1(this, paramJSONObject, paramalia, paramObject), 20000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     algh
  * JD-Core Version:    0.7.0.1
  */

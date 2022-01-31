@@ -12,11 +12,11 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class ilive_feeds_read$FeedUserInfo
-  extends MessageMicro
+  extends MessageMicro<FeedUserInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field age = PBField.initUInt32(0);
-  public final PBRepeatMessageField medal_infos = PBField.initRepeatMessage(ilive_user_basic_info.MedalInfo.class);
+  public final PBRepeatMessageField<ilive_user_basic_info.MedalInfo> medal_infos = PBField.initRepeatMessage(ilive_user_basic_info.MedalInfo.class);
   public final PBStringField nick = PBField.initString("");
   public final PBUInt64Field uin = PBField.initUInt64(0L);
   public final PBBytesField url = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -30,7 +30,7 @@ public final class ilive_feeds_read$FeedUserInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_read.FeedUserInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/w9" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/aei" />
+    <LinearLayout android:orientation="vertical" android:background="@color/x1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+        <View style="@style/sr" />
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/gft" android:layout_width="70.0dip" android:layout_height="70.0dip" android:layout_marginTop="20.0dip" android:src="@drawable/dxx" />
+        <TextView android:layout_gravity="center_horizontal" android:id="@id/gg9" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.0dip" style="@style/th" />
+        <View android:layout_marginLeft="12.0dip" android:layout_marginTop="19.0dip" android:layout_marginRight="12.0dip" style="@style/sr" />
+        <RelativeLayout android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e88" android:layout_alignParentLeft="true" style="@style/ti" />
+            <TextView android:id="@id/gg8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" style="@style/tg" />
+        </RelativeLayout>
+        <RelativeLayout android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:id="@id/gga" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e8p" android:layout_alignParentLeft="true" style="@style/ti" />
+            <TextView android:ellipsize="end" android:gravity="right" android:id="@id/gg_" android:paddingLeft="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_toRightOf="@id/gga" android:layout_alignParentRight="true" style="@style/ti" />
+        </RelativeLayout>
+        <View android:layout_marginTop="16.0dip" style="@style/sr" />
+    </LinearLayout>
+    <Button android:textColor="@color/wo" android:id="@id/ggb" android:layout_height="44.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" style="@style/t8" />
+</LinearLayout>

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bitmap android:src="@drawable/qq_setting_me_bg" android:antialias="true" android:dither="true" android:tileMode="disabled" qqskin:isNeedScale="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qqskin="http://qq.com" />

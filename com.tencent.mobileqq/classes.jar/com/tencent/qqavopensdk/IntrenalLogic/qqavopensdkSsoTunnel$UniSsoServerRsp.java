@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class qqavopensdkSsoTunnel$UniSsoServerRsp
-  extends MessageMicro
+  extends MessageMicro<UniSsoServerRsp>
 {
   public static final int COMM_FIELD_NUMBER = 3;
   public static final int ERRMSG_FIELD_NUMBER = 2;

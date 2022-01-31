@@ -1,36 +1,31 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.views.canvas.components.form.GdtCanvasFormError;
-import com.tencent.gdtad.views.canvas.components.form.textbox.GdtCanvasFormItemTextBoxData;
-import com.tencent.gdtad.views.canvas.components.form.textbox.GdtCanvasFormItemTextBoxView;
-import com.tencent.gdtad.views.canvas.framework.GdtCanvasTextData;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.qphone.base.util.QLog;
 
 public class qqp
-  implements View.OnFocusChangeListener
+  extends AnimatorListenerAdapter
 {
-  public qqp(GdtCanvasFormItemTextBoxView paramGdtCanvasFormItemTextBoxView) {}
+  public qqp(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    if ((this.a.a() == null) || (!this.a.a().isValid()))
-    {
-      GdtLog.b("GdtCanvasFormItemTextBoxView", "onFocusChange error");
-      return;
+    super.onAnimationEnd(paramAnimator);
+    ReadInJoyListViewGroup.a(this.a).setLayerType(0, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.videoanimation", 2, "alpha animation end");
     }
-    if (paramBoolean)
-    {
-      paramView = new GdtCanvasFormError(2, -1, this.a.a().title.text);
-      paramView.b = GdtCanvasFormItemTextBoxView.a(this.a);
-      GdtCanvasFormItemTextBoxView.a(this.a, paramView);
-      return;
-    }
-    GdtCanvasFormItemTextBoxView.a(this.a);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    super.onAnimationStart(paramAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qqp
  * JD-Core Version:    0.7.0.1
  */

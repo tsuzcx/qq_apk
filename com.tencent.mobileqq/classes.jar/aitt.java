@@ -1,53 +1,48 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import java.util.HashMap;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.SoftReference;
 
-public final class aitt
-  implements INetEngine.IBreakDownFix
+public class aitt
+  implements aiil
 {
-  public void a(NetReq paramNetReq, NetResp paramNetResp)
+  private SoftReference<ApolloGuestsStateActivity> a;
+  
+  public aitt(ApolloGuestsStateActivity paramApolloGuestsStateActivity)
   {
-    if ((paramNetReq == null) || (paramNetResp == null)) {}
-    label8:
-    do
-    {
-      do
-      {
-        do
-        {
-          break label8;
-          do
-          {
-            return;
-          } while (!(paramNetReq instanceof HttpNetReq));
-          paramNetReq = (HttpNetReq)paramNetReq;
-          paramNetReq.jdField_a_of_type_Long += paramNetResp.c;
-          if (0L != paramNetReq.b) {
-            break;
-          }
-          paramNetResp.c = 0L;
-          paramNetResp = "bytes=" + paramNetReq.jdField_a_of_type_Long + "-";
-          paramNetReq.jdField_a_of_type_JavaUtilHashMap.put("Range", paramNetResp);
-          paramNetResp = paramNetReq.jdField_a_of_type_JavaLangString;
-        } while (!paramNetResp.contains("range="));
-        paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
-        paramNetReq.jdField_a_of_type_JavaLangString = (paramNetResp + "range=" + paramNetReq.jdField_a_of_type_Long);
-        return;
-      } while ((paramNetReq.jdField_a_of_type_Long <= 0L) || (paramNetReq.b <= 0L) || (paramNetReq.jdField_a_of_type_Long >= paramNetReq.b));
-      paramNetResp.c = 0L;
-      paramNetResp = "bytes=" + paramNetReq.jdField_a_of_type_Long + "-" + paramNetReq.b;
-      paramNetReq.jdField_a_of_type_JavaUtilHashMap.put("Range", paramNetResp);
-      paramNetResp = paramNetReq.jdField_a_of_type_JavaLangString;
-    } while (!paramNetResp.contains("range="));
-    paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
-    paramNetReq.jdField_a_of_type_JavaLangString = (paramNetResp + "range=" + paramNetReq.jdField_a_of_type_Long + "-" + paramNetReq.b);
+    this.a = new SoftReference(paramApolloGuestsStateActivity);
+  }
+  
+  public void onNotifyLongTouch(String paramString) {}
+  
+  public void onNotifyStatusChanged(int paramInt, String paramString) {}
+  
+  public void onSurfaceReady(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloGuestsStateActivity", 2, "apollo view is Ready.");
+    }
+    ApolloGuestsStateActivity localApolloGuestsStateActivity = (ApolloGuestsStateActivity)this.a.get();
+    if ((localApolloGuestsStateActivity == null) || (localApolloGuestsStateActivity.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView == null) || (ApolloGuestsStateActivity.a(localApolloGuestsStateActivity) == null)) {
+      return;
+    }
+    float f3 = ajia.a() / 16.0F;
+    float f2 = localApolloGuestsStateActivity.c;
+    float f1 = f2;
+    if (0.0F != f3) {
+      f1 = f2 / f3;
+    }
+    localApolloGuestsStateActivity.jdField_a_of_type_Float = (paramInt1 / 2 / f1);
+    if (localApolloGuestsStateActivity.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl() != null) {
+      localApolloGuestsStateActivity.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl().a();
+    }
+    ApolloGuestsStateActivity.a(localApolloGuestsStateActivity).c();
+    localApolloGuestsStateActivity.b = paramInt1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aitt
  * JD-Core Version:    0.7.0.1
  */

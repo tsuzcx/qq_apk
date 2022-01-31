@@ -1,24 +1,20 @@
-import android.os.Handler;
-import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.OnBuiltListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.Layer;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-class ajkk
-  implements SceneBuilder.OnBuiltListener
+final class ajkk
+  implements DialogInterface.OnDismissListener
 {
-  ajkk(ajkj paramajkj) {}
+  ajkk(Activity paramActivity, int paramInt) {}
   
-  public void a(Layer paramLayer)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView == null) {
-      return;
-    }
-    this.a.a.jdField_a_of_type_AndroidOsHandler.post(new ajkl(this, paramLayer));
+    this.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajkk
  * JD-Core Version:    0.7.0.1
  */

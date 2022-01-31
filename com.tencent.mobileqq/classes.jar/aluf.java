@@ -1,20 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenPermissionDialogFragment;
 
 public class aluf
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aluf(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public aluf(ColorNoteSmallScreenPermissionDialogFragment paramColorNoteSmallScreenPermissionDialogFragment) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.finish();
+    paramDialogInterface.dismiss();
+    paramDialogInterface = babr.a(this.a.getActivity(), 230).setMessage(2131625301).setNegativeButton(2131625300, new alug(this));
+    paramDialogInterface.setOnDismissListener(new aluh(this));
+    paramDialogInterface.setCancelable(false);
+    paramDialogInterface.setCanceledOnTouchOutside(false);
+    paramDialogInterface.show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aluf
  * JD-Core Version:    0.7.0.1
  */

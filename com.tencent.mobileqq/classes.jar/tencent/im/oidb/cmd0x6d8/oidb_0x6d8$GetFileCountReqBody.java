@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x6d8$GetFileCountReqBody
-  extends MessageMicro
+  extends MessageMicro<GetFileCountReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "uint64_group_code", "uint32_app_id", "uint32_bus_id" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0) }, GetFileCountReqBody.class);
   public final PBUInt32Field uint32_app_id = PBField.initUInt32(0);
@@ -16,7 +16,7 @@ public final class oidb_0x6d8$GetFileCountReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFileCountReqBody
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,23 @@
-class pqs
-  implements pqq
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.JumpInfo;
+
+public final class pqs
+  implements Parcelable.Creator<SocializeFeedsInfo.JumpInfo>
 {
-  pqs(String paramString) {}
-  
-  public String a(String paramString)
+  public SocializeFeedsInfo.JumpInfo a(Parcel paramParcel)
   {
-    return pqr.a(this.a, paramString);
+    return new SocializeFeedsInfo.JumpInfo(paramParcel);
+  }
+  
+  public SocializeFeedsInfo.JumpInfo[] a(int paramInt)
+  {
+    return new SocializeFeedsInfo.JumpInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pqs
  * JD-Core Version:    0.7.0.1
  */

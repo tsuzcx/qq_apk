@@ -1,50 +1,30 @@
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.FormSimpleItem;
+import android.support.annotation.Nullable;
+import android.support.annotation.UiThread;
 
-public class tjp
-  implements URLDrawable.URLDrawableListener
+public abstract interface tjp
 {
-  public tjp(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public abstract tjq a(@Nullable tjs paramtjs, int paramInt);
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
-  {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
-    }
-    if (PermisionPrivacyActivity.c(this.a) != null) {
-      PermisionPrivacyActivity.c(this.a).postInvalidate();
-    }
-  }
+  @UiThread
+  public abstract tjv a();
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, 0, 0);
-    }
-    if (PermisionPrivacyActivity.c(this.a) != null) {
-      PermisionPrivacyActivity.c(this.a).postInvalidate();
-    }
-  }
+  public abstract void a();
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  @UiThread
+  public abstract void a(@Nullable tjs paramtjs, int paramInt1, int paramInt2, String paramString);
   
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (paramURLDrawable != null) {
-      paramURLDrawable.setBounds(0, 0, UIUtils.a(this.a.app.getApp(), 47.0F), UIUtils.a(this.a.app.getApp(), 14.0F));
-    }
-    if (PermisionPrivacyActivity.c(this.a) != null) {
-      PermisionPrivacyActivity.c(this.a).postInvalidate();
-    }
-  }
+  @UiThread
+  public abstract void a(@Nullable tjs paramtjs, String paramString);
+  
+  public abstract void a(tju paramtju);
+  
+  public abstract void b();
+  
+  public abstract void b(tju paramtju);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tjp
  * JD-Core Version:    0.7.0.1
  */

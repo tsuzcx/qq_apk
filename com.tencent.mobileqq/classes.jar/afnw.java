@@ -1,52 +1,44 @@
-import android.annotation.TargetApi;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.View.DragShadowBuilder;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import com.tencent.qphone.base.util.QLog;
 
-@TargetApi(11)
 public class afnw
-  extends View.DragShadowBuilder
+  extends azjp
 {
-  public int a;
+  public afnw(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public afnw(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel, View paramView)
+  public void a(int paramInt, String paramString)
   {
-    super(paramView);
-    this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.a.f * 1.4D));
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.history.BaseFragment", 2, "onGetGiftMemberList error");
+    }
+    ChatHistoryTroopMemberFragment.a(this.a, true);
+    if (ChatHistoryTroopMemberFragment.b(this.a))
+    {
+      paramString = this.a.b.obtainMessage(12, null);
+      this.a.b.sendMessage(paramString);
+    }
   }
   
-  public void onDrawShadow(Canvas paramCanvas)
+  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3)
   {
-    getView().setDrawingCacheEnabled(false);
-    getView().setDrawingCacheEnabled(true);
-    Object localObject = new Paint();
-    ((Paint)localObject).setShadowLayer(10.0F, 0.0F, 0.0F, -16777216);
-    paramCanvas.drawRect(new Rect(10, 10, this.jdField_a_of_type_Int + 10, this.jdField_a_of_type_Int + 10), (Paint)localObject);
-    localObject = getView().getDrawingCache();
-    Matrix localMatrix = new Matrix();
-    float f = this.jdField_a_of_type_Int / ((Bitmap)localObject).getWidth();
-    localMatrix.postScale(f, f);
-    paramCanvas.drawBitmap(Bitmap.createBitmap((Bitmap)localObject, 0, 0, ((Bitmap)localObject).getWidth(), ((Bitmap)localObject).getHeight(), localMatrix, true), 10.0F, 10.0F, null);
-  }
-  
-  public void onProvideShadowMetrics(Point paramPoint1, Point paramPoint2)
-  {
-    int i = this.jdField_a_of_type_Int + 20;
-    int j = this.jdField_a_of_type_Int + 20;
-    paramPoint1.set(i, j);
-    paramPoint2.set(i / 2, j / 2);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.history.BaseFragment", 2, "onGetGiftMemberList");
+    }
+    ChatHistoryTroopMemberFragment.a(this.a, paramArrayOfLong1);
+    ChatHistoryTroopMemberFragment.b(this.a, paramArrayOfLong2);
+    ChatHistoryTroopMemberFragment.c(this.a, paramArrayOfLong3);
+    ChatHistoryTroopMemberFragment.a(this.a, true);
+    if (ChatHistoryTroopMemberFragment.b(this.a))
+    {
+      paramArrayOfLong1 = this.a.b.obtainMessage(12, null);
+      this.a.b.sendMessage(paramArrayOfLong1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afnw
  * JD-Core Version:    0.7.0.1
  */

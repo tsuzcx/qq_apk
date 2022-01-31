@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.nearby.widget;
 
-import afqr;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
@@ -10,6 +9,8 @@ import android.view.ViewConfiguration;
 import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 import android.widget.Scroller;
+import atci;
+import atcj;
 import com.tencent.qphone.base.util.QLog;
 
 public class OverCoverFrameLayout
@@ -19,15 +20,16 @@ public class OverCoverFrameLayout
   protected Context a;
   protected GestureDetector a;
   protected Scroller a;
-  public OverCoverFrameLayout.OnActionListener a;
+  public atcj a;
   protected boolean a;
   protected int b;
-  boolean b;
+  protected boolean b;
   protected final int c;
   private boolean c;
   public int d;
   private boolean d;
   public int e;
+  protected int f;
   
   public OverCoverFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -47,15 +49,15 @@ public class OverCoverFrameLayout
     a(paramContext);
   }
   
-  private void a()
+  protected void a()
   {
     if (((this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean)) && (this.jdField_a_of_type_AndroidWidgetScroller.isFinished()) && ((this.jdField_b_of_type_Int == this.jdField_a_of_type_Int) || (this.jdField_b_of_type_Int == 0))) {
-      if (this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetOverCoverFrameLayout$OnActionListener != null)
+      if (this.jdField_a_of_type_Atcj != null)
       {
         if ((!this.jdField_c_of_type_Boolean) || (this.jdField_b_of_type_Int != 0)) {
           break label90;
         }
-        this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetOverCoverFrameLayout$OnActionListener.a(0, 0, this.jdField_b_of_type_Int);
+        this.jdField_a_of_type_Atcj.a(0, 0, this.jdField_b_of_type_Int);
       }
     }
     for (;;)
@@ -65,7 +67,7 @@ public class OverCoverFrameLayout
       return;
       label90:
       if ((this.jdField_d_of_type_Boolean) && (this.jdField_b_of_type_Int == this.jdField_a_of_type_Int)) {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetOverCoverFrameLayout$OnActionListener.a(0, 1, this.jdField_b_of_type_Int);
+        this.jdField_a_of_type_Atcj.a(0, 1, this.jdField_b_of_type_Int);
       }
     }
   }
@@ -79,7 +81,7 @@ public class OverCoverFrameLayout
     if (QLog.isColorLevel()) {
       QLog.d("OverCoverFrameLayout", 2, "init: minDis=" + this.jdField_d_of_type_Int + ", minVelocity=" + this.e);
     }
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new afqr(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(paramContext, new atci(this));
   }
   
   public boolean a()
@@ -88,12 +90,15 @@ public class OverCoverFrameLayout
     while (!this.jdField_a_of_type_AndroidWidgetScroller.isFinished()) {
       return false;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("OverCoverFrameLayout", 2, "slideUp, isFgViewOnBottom=" + this.jdField_a_of_type_Boolean);
+    }
     this.jdField_a_of_type_AndroidWidgetScroller.abortAnimation();
     this.jdField_c_of_type_Boolean = true;
     this.jdField_d_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidWidgetScroller.startScroll(this.jdField_a_of_type_Int, 0, -this.jdField_a_of_type_Int, 0, 200);
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetOverCoverFrameLayout$OnActionListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetOverCoverFrameLayout$OnActionListener.a(1, 0, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Atcj != null) {
+      this.jdField_a_of_type_Atcj.a(1, 0, this.jdField_a_of_type_Int);
     }
     invalidate();
     this.jdField_a_of_type_Boolean = false;
@@ -106,12 +111,15 @@ public class OverCoverFrameLayout
     while (!this.jdField_a_of_type_AndroidWidgetScroller.isFinished()) {
       return false;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("OverCoverFrameLayout", 2, "slideDown, isFgViewOnBottom=" + this.jdField_a_of_type_Boolean);
+    }
     this.jdField_a_of_type_AndroidWidgetScroller.abortAnimation();
     this.jdField_c_of_type_Boolean = false;
     this.jdField_d_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidWidgetScroller.startScroll(0, 0, this.jdField_a_of_type_Int, 0, 200);
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetOverCoverFrameLayout$OnActionListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetOverCoverFrameLayout$OnActionListener.a(1, 1, 0);
+    if (this.jdField_a_of_type_Atcj != null) {
+      this.jdField_a_of_type_Atcj.a(1, 1, 0);
     }
     invalidate();
     this.jdField_a_of_type_Boolean = true;
@@ -135,30 +143,57 @@ public class OverCoverFrameLayout
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    int i = paramMotionEvent.getAction();
-    if (this.jdField_a_of_type_Boolean) {
-      switch (i)
-      {
-      }
+    int i = 0;
+    int k = paramMotionEvent.getAction();
+    int j = (int)paramMotionEvent.getY();
+    switch (k)
+    {
     }
     for (;;)
     {
-      if (this.jdField_b_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+      boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+      if (QLog.isColorLevel()) {
+        QLog.d("OverCoverFrameLayout", 2, "dispatchTouchEvent, action=" + k + ", ret=" + bool + ", distance=" + i + ", isNeedDetector=" + this.jdField_b_of_type_Boolean + ", mBgViewHeight=" + this.jdField_a_of_type_Int);
       }
-      return super.dispatchTouchEvent(paramMotionEvent);
+      return bool;
       View localView = getChildAt(0);
-      if ((localView != null) && (paramMotionEvent.getY() <= localView.getHeight()))
-      {
-        this.jdField_b_of_type_Boolean = false;
+      if (this.jdField_a_of_type_Boolean) {
+        if ((localView != null) && (j <= localView.getHeight())) {
+          this.jdField_b_of_type_Boolean = false;
+        }
       }
-      else
+      for (;;)
       {
+        this.f = j;
+        break;
         this.jdField_b_of_type_Boolean = true;
         continue;
         this.jdField_b_of_type_Boolean = true;
-        continue;
-        this.jdField_b_of_type_Boolean = true;
+      }
+      j -= this.f;
+      i = j;
+      if (this.jdField_b_of_type_Boolean) {
+        if (j > 0)
+        {
+          i = j;
+          if (Math.abs(j) >= (int)(this.jdField_a_of_type_Int * 0.8D)) {
+            i = j;
+          }
+        }
+        else
+        {
+          i = j;
+          if (j < 0)
+          {
+            i = j;
+            if (Math.abs(j) >= this.jdField_d_of_type_Int)
+            {
+              i = j;
+              continue;
+              this.jdField_b_of_type_Boolean = true;
+            }
+          }
+        }
       }
     }
   }
@@ -194,9 +229,9 @@ public class OverCoverFrameLayout
     this.jdField_b_of_type_Int = 0;
   }
   
-  public void setOnActionListener(OverCoverFrameLayout.OnActionListener paramOnActionListener)
+  public void setOnActionListener(atcj paramatcj)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyWidgetOverCoverFrameLayout$OnActionListener = paramOnActionListener;
+    this.jdField_a_of_type_Atcj = paramatcj;
   }
 }
 

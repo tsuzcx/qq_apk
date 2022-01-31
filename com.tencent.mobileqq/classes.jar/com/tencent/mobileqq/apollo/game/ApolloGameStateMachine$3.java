@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.apollo.game;
 
 import java.util.HashMap;
+import java.util.List;
 
 final class ApolloGameStateMachine$3
-  extends HashMap
+  extends HashMap<Integer, List<Integer>>
 {
   ApolloGameStateMachine$3()
   {
@@ -18,7 +19,7 @@ final class ApolloGameStateMachine$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloGameStateMachine.3
  * JD-Core Version:    0.7.0.1
  */

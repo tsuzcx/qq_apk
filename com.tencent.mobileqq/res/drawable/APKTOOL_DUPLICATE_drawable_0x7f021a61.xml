@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<layer-list
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a360d" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021a60" android:left="12.0dip" android:top="12.0dip" android:right="12.0dip" android:bottom="12.0dip" />
-    <item android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a360e" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021a60" android:left="24.0dip" android:top="24.0dip" android:right="24.0dip" android:bottom="24.0dip" />
-    <item android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a360f" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021a68" android:left="36.0dip" android:top="36.0dip" android:right="36.0dip" android:bottom="36.0dip" />
-</layer-list>

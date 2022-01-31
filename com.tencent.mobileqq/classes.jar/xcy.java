@@ -1,22 +1,25 @@
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import cooperation.qzone.report.lp.LpReportManager;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import com.tencent.image.URLImageView;
 
-public class xcy
-  implements Runnable
+class xcy
+  implements Animation.AnimationListener
 {
-  public xcy(PhotoListActivity paramPhotoListActivity) {}
+  xcy(xcv paramxcv, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    LpReportInfo_pf00064 localLpReportInfo_pf00064 = new LpReportInfo_pf00064(723, 2, 1);
-    LpReportManager.getInstance().reportToPF00064(localLpReportInfo_pf00064, false, false);
-    PhotoListActivity.a(this.a, "aio_sync_qzone", "operation_type", "photo_list_expose");
+    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xcy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,14 @@
-import android.content.ClipboardManager;
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.adapter.WebFastAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.TextData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.BaseItemViewHolder;
+import OnlinePushPack.SvcRespPushMsg;
 
-public class mqp
-  implements View.OnClickListener
+public abstract interface mqp
 {
-  public mqp(WebFastAdapter paramWebFastAdapter) {}
+  public abstract void a(int paramInt, SvcRespPushMsg paramSvcRespPushMsg);
   
-  public void onClick(View paramView)
-  {
-    TextData localTextData = (TextData)WebFastAdapter.a(this.a).a;
-    ((ClipboardManager)paramView.getContext().getSystemService("clipboard")).setText(localTextData.a.toString());
-  }
+  public abstract void a(int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     mqp
  * JD-Core Version:    0.7.0.1
  */

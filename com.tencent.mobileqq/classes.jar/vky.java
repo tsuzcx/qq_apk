@@ -1,21 +1,41 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.utils.FileUtils;
-import java.io.File;
+import android.content.Context;
+import android.os.Handler;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
 
-class vky
-  implements Runnable
+public final class vky
 {
-  vky(vkv paramvkv, MessageForShortVideo paramMessageForShortVideo) {}
+  private final vkz a;
   
-  public void run()
+  public vky(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener)
   {
-    FileUtils.a(new File(this.jdField_a_of_type_Vkv.b), new File(ShortVideoUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4")));
+    this(paramContext, paramOnGestureListener, null);
+  }
+  
+  public vky(Context paramContext, GestureDetector.OnGestureListener paramOnGestureListener, Handler paramHandler)
+  {
+    this.a = new vla(paramContext, paramOnGestureListener, paramHandler);
+  }
+  
+  public void a(int paramInt)
+  {
+    vla.a(paramInt);
+  }
+  
+  public void a(GestureDetector.OnDoubleTapListener paramOnDoubleTapListener)
+  {
+    this.a.a(paramOnDoubleTapListener);
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    return this.a.a(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vky
  * JD-Core Version:    0.7.0.1
  */

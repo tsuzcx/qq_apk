@@ -10,12 +10,12 @@ import java.util.Map;
 public final class ClientSetUinConfReq
   extends JceStruct
 {
-  static Map cache_uinConf;
-  public Map uinConf;
+  static Map<String, ArrayList<byte[]>> cache_uinConf;
+  public Map<String, ArrayList<byte[]>> uinConf;
   
   public ClientSetUinConfReq() {}
   
-  public ClientSetUinConfReq(Map paramMap)
+  public ClientSetUinConfReq(Map<String, ArrayList<byte[]>> paramMap)
   {
     this.uinConf = paramMap;
   }

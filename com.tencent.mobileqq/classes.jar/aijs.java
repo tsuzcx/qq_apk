@@ -1,52 +1,35 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v4.util.MQLruCache;
-import android.util.Pair;
-import com.tencent.common.cache.MemoryClearManagerNew;
-import com.tencent.commonsdk.cache.Sizeable;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
+import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
 
-public class aijs
-  extends MQLruCache
+public abstract interface aijs
 {
-  public aijs(Integer paramInteger)
-  {
-    super(paramInteger.intValue());
-  }
+  public abstract void onDownloadConfirm(CmGameStartChecker.StartCheckParam paramStartCheckParam, aijr paramaijr, long paramLong);
   
-  protected int a(String paramString, Object paramObject)
-  {
-    if ((paramObject instanceof Pair)) {
-      return ((Integer)((Pair)paramObject).second).intValue();
-    }
-    if ((paramObject instanceof Bitmap))
-    {
-      paramString = (Bitmap)paramObject;
-      return paramString.getRowBytes() * paramString.getHeight();
-    }
-    if ((paramObject instanceof BitmapDrawable))
-    {
-      paramObject = ((BitmapDrawable)paramObject).getBitmap();
-      if (paramObject != null)
-      {
-        int i = paramObject.getRowBytes();
-        return paramObject.getHeight() * i;
-      }
-    }
-    else if ((paramObject instanceof Sizeable))
-    {
-      return ((Sizeable)paramObject).getByteSize();
-    }
-    MemoryClearManagerNew.a(paramString, MemoryClearManagerNew.m);
-    return 204800;
-  }
+  public abstract void onDownloadGameResDown(CmGameStartChecker.StartCheckParam paramStartCheckParam);
   
-  public void a(String paramString, int paramInt) {}
+  public abstract void onDownloadGameResProgress(CmGameStartChecker.StartCheckParam paramStartCheckParam, int paramInt);
   
-  protected void a(boolean paramBoolean, String paramString, Object paramObject1, Object paramObject2) {}
+  public abstract void onDownloadGameResStart(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  
+  public abstract void onGameCheckFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams);
+  
+  public abstract void onGameCheckRetry(int paramInt);
+  
+  public abstract void onGameCheckStart(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  
+  public abstract void onGameFailed(CmGameStartChecker.StartCheckParam paramStartCheckParam, long paramLong);
+  
+  public abstract void onGameLifeTipShow(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  
+  public abstract void onGetGameData(CmGameStartChecker.StartCheckParam paramStartCheckParam);
+  
+  public abstract void onSsoCmdRuleRsp(CmGameStartChecker.StartCheckParam paramStartCheckParam, String paramString);
+  
+  public abstract void onVerifyGameFinish(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aijs
  * JD-Core Version:    0.7.0.1
  */

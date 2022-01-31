@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.media.MediaPlayer;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
 
 public class agkz
-  implements Runnable
+  extends bbpo
 {
-  public agkz(ScanTorchActivity paramScanTorchActivity) {}
+  public agkz(RedPacketKSongFragment paramRedPacketKSongFragment, bbpp parambbpp) {}
   
-  public void run()
+  public void a()
   {
-    ScanTorchActivity.c(this.a, true);
-    ScanTorchActivity.l(this.a);
-    ScanTorchActivity.d(this.a, true);
+    RedPacketKSongFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment, false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketKSongFragment.a.release();
+    this.jdField_a_of_type_Bbpp.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agkz
  * JD-Core Version:    0.7.0.1
  */

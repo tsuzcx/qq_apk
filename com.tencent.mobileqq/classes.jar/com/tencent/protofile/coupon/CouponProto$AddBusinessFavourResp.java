@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class CouponProto$AddBusinessFavourResp
-  extends MessageMicro
+  extends MessageMicro<AddBusinessFavourResp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "retcode", "business", "ts" }, new Object[] { Integer.valueOf(0), null, Long.valueOf(0L) }, AddBusinessFavourResp.class);
   public CouponProto.Business business = new CouponProto.Business();

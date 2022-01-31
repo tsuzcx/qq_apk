@@ -1,5 +1,6 @@
 package com.tencent.component.media.image;
 
+import android.graphics.drawable.Drawable;
 import com.tencent.component.media.annotation.Public;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -13,11 +14,14 @@ public class ImageLoader$Options
   public static final int DEFAULT_IMAGE_TYPE = 1;
   public static final int DEFAULT_PANORAMA_ORIG_TYPE = 4;
   public static final int DEFAULT_PANORAMA_THUMB_TYPE = 3;
+  private static final long DEFAULT_PHOTO_DELAY_TIME_IN_MS = 200L;
   public static final int DEFAULT_TYPE = 0;
   public static final boolean DEFAULT_USE_MAIN_THREAD = false;
-  private static LinkedList a = new LinkedList();
+  private static LinkedList<Options> mObjectCache = new LinkedList();
   public int arg1;
   public int arg2;
+  public boolean cropHead = false;
+  public float cropHwRation = 1.0F;
   public boolean disableHitRateReport = false;
   @Public
   public String errCode;
@@ -31,23 +35,24 @@ public class ImageLoader$Options
   public boolean needShowPhotoGifAnimation = false;
   public Object obj;
   public long photoDelayTimeInMs = 200L;
-  public ArrayList photoList;
+  public ArrayList<String> photoList;
   public long totalSize;
   public String type;
+  public boolean useArgb8888 = false;
   @Public
   public boolean useMainThread = false;
-  public WeakReference watermarkDrawableRef;
+  public WeakReference<Drawable> watermarkDrawableRef;
   
   static
   {
-    localLinkedList = a;
+    localLinkedList = mObjectCache;
     int i = 0;
     for (;;)
     {
       if (i < 50) {}
       try
       {
-        a.add(new Options());
+        mObjectCache.add(new Options());
         i += 1;
       }
       finally {}
@@ -87,14 +92,18 @@ public class ImageLoader$Options
     localOptions.errCode = paramOptions.errCode;
     localOptions.watermarkDrawableRef = paramOptions.watermarkDrawableRef;
     localOptions.needCache = paramOptions.needCache;
+    localOptions.isNeedPieceLoad = paramOptions.isNeedPieceLoad;
+    localOptions.useArgb8888 = paramOptions.useArgb8888;
+    localOptions.cropHead = paramOptions.cropHead;
+    localOptions.cropHwRation = paramOptions.cropHwRation;
     return localOptions;
   }
   
   public static Options obtain()
   {
-    synchronized (a)
+    synchronized (mObjectCache)
     {
-      Options localOptions = (Options)a.poll();
+      Options localOptions = (Options)mObjectCache.poll();
       ??? = localOptions;
       if (localOptions == null) {
         ??? = new Options();
@@ -134,9 +143,12 @@ public class ImageLoader$Options
       this.errCode = null;
       this.watermarkDrawableRef = null;
       this.needCache = true;
-      synchronized (a)
+      this.useArgb8888 = false;
+      this.cropHead = false;
+      this.cropHwRation = 1.0F;
+      synchronized (mObjectCache)
       {
-        a.add(this);
+        mObjectCache.add(this);
         return;
       }
     }

@@ -1,0 +1,37 @@
+{
+    "ReadInjoy_pack_topic_cell": {
+        "view_type": "cell",
+        "direction": "vertical",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "subviews": [
+                     {
+                     "$includeComponet":"componet/topic_recommend_header.geojson"
+                     },
+                     {
+                     "view_type": "ReadInJoyMiddleBodyView",
+                     "view_id": "id_middle_body_content",
+                     "margin_bottom": "10",
+                     "height": {
+                     "type": "wrap_content"
+                     },
+                     "width": {
+                     "type": "relative",
+                     "value": "375"
+                     },
+                     "attributes": {
+                     "setArticleModel:": "-1"
+                     }
+                     },
+                     {
+                     "$includeComponet": "componet/separator.geojson"
+                     }
+                     ]
+    }
+}
+

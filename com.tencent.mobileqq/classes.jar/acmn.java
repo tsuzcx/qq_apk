@@ -1,22 +1,27 @@
-import android.content.Context;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.widget.QQToast;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.aio.IntimateTitleSwitchView;
 
-class acmn
-  implements Runnable
+public class acmn
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  acmn(acmm paramacmm) {}
+  public acmn(IntimateTitleSwitchView paramIntimateTitleSwitchView) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.a.a.a != null) {
-      QQToast.a(this.a.a.a, this.a.a.a.getString(2131438049), 1).b(this.a.a.g);
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    if (f < 0.5F)
+    {
+      this.a.c.setAlpha(1.0F - f * 2.0F);
+      return;
     }
+    this.a.c.setAlpha(f * 2.0F - 1.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acmn
  * JD-Core Version:    0.7.0.1
  */

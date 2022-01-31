@@ -14,6 +14,7 @@ public class TMAssistantDownloadConst
   public static final byte DOWNLOADTYPE_NORMAL_DOWNLOAD = 2;
   public static String PARAM_APPID = "appId";
   public static String PARAM_APP_NAME;
+  public static String PARAM_CALL_STACK = "param_call_stack";
   public static String PARAM_CHANNELID;
   public static String PARAM_DOWNLOADSIZE;
   public static String PARAM_DOWNLOADTSTYLE;
@@ -21,6 +22,7 @@ public class TMAssistantDownloadConst
   public static String PARAM_EXTRA_DATA;
   public static String PARAM_ICON_URL;
   public static String PARAM_IS_AUTOINSTALL_BY_SDK;
+  public static String PARAM_QQ_SOURCE_ID;
   public static String PARAM_SHOW_NOTIFICATION;
   public static String PARAM_TASK_PACKNAME = "packageName";
   public static String PARAM_TASK_VERSION = "versionCode";
@@ -48,11 +50,13 @@ public class TMAssistantDownloadConst
     PARAM_SHOW_NOTIFICATION = "show_notification";
     PARAM_IS_AUTOINSTALL_BY_SDK = "is_autoInstall_by_sdk";
     SHOW_NOTIFICATION_TRUE = 1;
+    SHOW_NOTIFICATION_FALSE = 0;
+    PARAM_QQ_SOURCE_ID = "big_brother_source_key";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmassistantbase.common.TMAssistantDownloadConst
  * JD-Core Version:    0.7.0.1
  */

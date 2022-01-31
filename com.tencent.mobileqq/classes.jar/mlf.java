@@ -1,38 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.biz.pubaccount.util.FeedExposureHelper;
-import com.tencent.biz.pubaccount.util.FeedExposureHelper.Range;
-import com.tencent.biz.pubaccount.util.ReadinjoyReportUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapClickListener;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 
 public class mlf
-  extends FeedExposureHelper
+  implements TencentMap.OnMapClickListener
 {
-  public mlf(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter) {}
+  public mlf(PoiMapActivity paramPoiMapActivity) {}
   
-  public void a(FeedExposureHelper.Range paramRange)
+  public void onMapClick(LatLng paramLatLng)
   {
-    if (paramRange != null)
-    {
-      int j = this.a.a.getHeaderViewsCount();
-      new ArrayList();
-      int i = paramRange.jdField_a_of_type_Int;
-      while ((i <= paramRange.b) && (i < this.a.getCount()))
-      {
-        int k = i - j;
-        if (k >= 0)
-        {
-          BaseArticleInfo localBaseArticleInfo = this.a.b(k);
-          QLog.d("FeedExposureHelper", 2, "onExposure : " + localBaseArticleInfo);
-          if (localBaseArticleInfo != null) {
-            ReadinjoyReportUtils.a(localBaseArticleInfo, paramRange.jdField_a_of_type_Long);
-          }
-        }
-        i += 1;
-      }
-    }
+    this.a.j();
   }
 }
 

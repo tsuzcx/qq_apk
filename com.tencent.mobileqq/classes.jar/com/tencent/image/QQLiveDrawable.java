@@ -5,12 +5,10 @@ import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.ConstantState;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
-import java.util.Arrays;
 
 public class QQLiveDrawable
   extends Drawable
@@ -19,12 +17,12 @@ public class QQLiveDrawable
   public static final String URL_PROTOCOL = "qqlive";
   private boolean mApplyGravity;
   private final Rect mDstRect = new Rect();
-  private QQLiveState mQQLiveState;
+  public QQLiveDrawable.QQLiveState mQQLiveState;
   private int mTargetDensity = 160;
   private int mVideoHeight;
   private int mVideoWidth;
   
-  public QQLiveDrawable(QQLiveState paramQQLiveState, Resources paramResources)
+  public QQLiveDrawable(QQLiveDrawable.QQLiveState paramQQLiveState, Resources paramResources)
   {
     this.mQQLiveState = paramQQLiveState;
     this.mQQLiveState.mVideo.attachDrawable(this);
@@ -38,7 +36,7 @@ public class QQLiveDrawable
   
   public QQLiveDrawable(QQLiveImage paramQQLiveImage, Resources paramResources)
   {
-    this(new QQLiveState(paramQQLiveImage), paramResources);
+    this(new QQLiveDrawable.QQLiveState(paramQQLiveImage), paramResources);
     this.mQQLiveState.mTargetDensity = this.mTargetDensity;
   }
   
@@ -77,6 +75,14 @@ public class QQLiveDrawable
     return 0L;
   }
   
+  public long getCurrentPostion()
+  {
+    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
+      return this.mQQLiveState.mVideo.getCurrentPosition();
+    }
+    return -1L;
+  }
+  
   public int getIntrinsicHeight()
   {
     return this.mVideoHeight;
@@ -85,6 +91,14 @@ public class QQLiveDrawable
   public int getIntrinsicWidth()
   {
     return this.mVideoWidth;
+  }
+  
+  public long getMsgUniseq()
+  {
+    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null) && (this.mQQLiveState.mVideo.mParams != null)) {
+      return this.mQQLiveState.mVideo.mParams.msgUniseq;
+    }
+    return 0L;
   }
   
   public int getOpacity()
@@ -135,6 +149,20 @@ public class QQLiveDrawable
     }
   }
   
+  public void recyleAndNotKeepPosition()
+  {
+    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
+      this.mQQLiveState.mVideo.recyleAndNotKeepPosition();
+    }
+  }
+  
+  public void recyleFor2Background()
+  {
+    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
+      this.mQQLiveState.mVideo.recyleFor2Background();
+    }
+  }
+  
   public void release()
   {
     if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
@@ -163,6 +191,13 @@ public class QQLiveDrawable
     }
   }
   
+  public void seek(int paramInt)
+  {
+    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
+      this.mQQLiveState.mVideo.seek(paramInt);
+    }
+  }
+  
   public void setAlpha(int paramInt)
   {
     this.mQQLiveState.mPaint.setAlpha(paramInt);
@@ -179,21 +214,35 @@ public class QQLiveDrawable
     this.mApplyGravity = true;
   }
   
-  public void setOnDownloadListener(OnDownloadListener paramOnDownloadListener)
+  public void setMute(boolean paramBoolean)
+  {
+    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null) && (this.mQQLiveState.mVideo.mParams != null)) {
+      this.mQQLiveState.mVideo.mParams.mMute = paramBoolean;
+    }
+  }
+  
+  public void setOnDownloadListener(QQLiveDrawable.OnDownloadListener paramOnDownloadListener)
   {
     if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
       this.mQQLiveState.mVideo.setOnDownloadListener(paramOnDownloadListener);
     }
   }
   
-  public void setOnStateListener(OnStateListener paramOnStateListener)
+  public void setOnLoopBackListener(QQLiveDrawable.OnLoopBackListener paramOnLoopBackListener)
+  {
+    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
+      this.mQQLiveState.mVideo.setOnLoopBackListener(paramOnLoopBackListener);
+    }
+  }
+  
+  public void setOnStateListener(QQLiveDrawable.OnStateListener paramOnStateListener)
   {
     if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
       this.mQQLiveState.mVideo.setOnStateListener(paramOnStateListener);
     }
   }
   
-  public void setParams(QQLiveDrawableParams paramQQLiveDrawableParams)
+  public void setParams(QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams)
   {
     if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
       this.mQQLiveState.mVideo.mParams = paramQQLiveDrawableParams;
@@ -214,162 +263,10 @@ public class QQLiveDrawable
     }
   }
   
-  public static class ErrorInfo
+  public void startVideo()
   {
-    public String detailInfo;
-    public int extra;
-    public Object info;
-    public int model;
-    public int what;
-    
-    public String toString()
-    {
-      String str;
-      switch (this.model)
-      {
-      default: 
-        str = " MODEL_UNKNOW ";
-      }
-      for (;;)
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(" ErrorInfo : [ model =").append(this.model);
-        localStringBuilder.append("\n modelDesc = ").append(str);
-        localStringBuilder.append("\n what = ").append(this.what);
-        localStringBuilder.append("\n extra = ").append(this.extra);
-        localStringBuilder.append("\n detainInfo = ").append(this.detailInfo);
-        localStringBuilder.append("\n info = ").append(this.info);
-        localStringBuilder.append("]");
-        return localStringBuilder.toString();
-        str = " MODEL_JAVA_LOGIC_ERR ";
-        continue;
-        str = " MODEL_PLAYER_CORE_ERR ";
-        continue;
-        str = " MODEL_CGI_GETVINFO_ERR ";
-        continue;
-        str = " MODEL_CGI_GETKEY_ERR ";
-        continue;
-        str = " MODEL_CGI_GETPROGINFO_ERR ";
-        continue;
-        str = " MODEL_DOWNLOAD_ERR ";
-      }
-    }
-  }
-  
-  public static abstract interface OnDownloadListener
-  {
-    public abstract void OnDownload(String paramString1, QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams, String paramString2);
-  }
-  
-  public static abstract interface OnStateListener
-  {
-    public static final int STATE_BUFFERING = 3;
-    public static final int STATE_COMPLETE = 6;
-    public static final int STATE_ERROR = 5;
-    public static final int STATE_IDLE = 0;
-    public static final int STATE_INITIALIZED = 8;
-    public static final int STATE_PAUSE = 4;
-    public static final int STATE_PLAYING = 2;
-    public static final int STATE_PREPARED = 1;
-    public static final int STATE_PREPARING = 9;
-    public static final int STATE_UNKNOW = 7;
-    
-    public abstract void onStateChange(String paramString, QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams, int paramInt, Object paramObject);
-  }
-  
-  public static class QQLiveDrawableParams
-  {
-    public static final int DATA_SOURCE_TYPE_FILE = 3;
-    public static final int DATA_SOURCE_TYPE_THIRD = 2;
-    public static final int DATA_SOURCE_TYPE_URL = 1;
-    public static final int DATA_SOURCE_TYPE_URL_LIST = 4;
-    public static final int DATA_SOURCE_TYPE_VID = 0;
-    public static final ColorDrawable DEFAULT_LOADING_DRAWABLE = new ColorDrawable(-2236446);
-    public static final boolean DEFAULT_MUTE_VALUE = true;
-    public static final int PLAY_TYPE_LOCAL_FILE = 2;
-    public static final int PLAY_TYPE_ONLINE_LIVE = 1;
-    public static final int PLAY_TYPE_ONLINE_VOD = 0;
-    public static final int PLAY_TYPE_THIRD = 3;
-    public ColorDrawable mCoverLoadingDrawable = DEFAULT_LOADING_DRAWABLE;
-    public String mCoverUrl;
-    public String mDataSource;
-    public volatile AbsThirdDataSourceAdapter mDataSourceAdapter;
-    public int mDataSourceType;
-    public QQLiveDrawable.OnDownloadListener mDownloadListener;
-    public int mDuraion;
-    public QQLiveDrawable.OnStateListener mListener;
-    public boolean mLoopback = true;
-    public int mMaxPlayTimeMs;
-    public boolean mMute = true;
-    public boolean mPlayPause;
-    public int mPlayType = 0;
-    public int mPreviewHeight;
-    public int mPreviewWidth;
-    public String mReportTag;
-    public String mRequestFormat = "sd";
-    public String mSavePath;
-    public String mServerType;
-    public int mStartPosi = 0;
-    public String[] mUrls;
-    public String mVid;
-    public long msgUniseq;
-    
-    public String toString()
-    {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(" QQLiveDrawableParams [");
-      localStringBuilder.append("\n mMute: ").append(this.mMute);
-      localStringBuilder.append("\n mRequestFormat: ").append(this.mRequestFormat);
-      localStringBuilder.append("\n mPreviewWidth: ").append(this.mPreviewWidth);
-      localStringBuilder.append("\n mPreviewHeight: ").append(this.mPreviewHeight);
-      localStringBuilder.append("\n mStartPosi: ").append(this.mStartPosi);
-      localStringBuilder.append("\n mPlayPause: ").append(this.mPlayPause);
-      localStringBuilder.append("\n mListener: ").append(this.mListener);
-      localStringBuilder.append("\n mDataSourceType: ").append(this.mDataSourceType);
-      localStringBuilder.append("\n mDataSource: ").append(this.mDataSource);
-      localStringBuilder.append("\n mCoverUrl: ").append(this.mCoverUrl);
-      localStringBuilder.append("\n mLoopback: ").append(this.mLoopback);
-      localStringBuilder.append("\n mMaxPlayTimeMs: ").append(this.mMaxPlayTimeMs);
-      localStringBuilder.append("\n mPlayType: ").append(this.mPlayType);
-      localStringBuilder.append("\n mUrls: ").append(Arrays.toString(this.mUrls));
-      localStringBuilder.append("\n mServerType: ").append(this.mServerType);
-      localStringBuilder.append("\n mSavePath: ").append(this.mSavePath);
-      localStringBuilder.append("\n mVid: ").append(this.mVid);
-      localStringBuilder.append("\n mDuraion: ").append(this.mDuraion);
-      localStringBuilder.append("\n msgUniseq: ").append(this.msgUniseq);
-      localStringBuilder.append("\n OnDownloadListener: ").append(this.mDownloadListener);
-      localStringBuilder.append("] ");
-      return localStringBuilder.toString();
-    }
-  }
-  
-  static class QQLiveState
-    extends Drawable.ConstantState
-  {
-    int mChangingConfigurations;
-    int mGravity = 119;
-    Paint mPaint = new Paint();
-    int mTargetDensity = 160;
-    QQLiveImage mVideo;
-    
-    public QQLiveState(QQLiveImage paramQQLiveImage)
-    {
-      this.mVideo = paramQQLiveImage;
-    }
-    
-    public int getChangingConfigurations()
-    {
-      return this.mChangingConfigurations;
-    }
-    
-    public Drawable newDrawable()
-    {
-      return new QQLiveDrawable(this, null);
-    }
-    
-    public Drawable newDrawable(Resources paramResources)
-    {
-      return new QQLiveDrawable(this, paramResources);
+    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
+      this.mQQLiveState.mVideo.start();
     }
   }
 }

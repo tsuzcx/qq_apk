@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class cmd0x8a1$GroupGeoInfo
-  extends MessageMicro
+  extends MessageMicro<GroupGeoInfo>
 {
   public static final int STRING_GEO_CONTENT_FIELD_NUMBER = 4;
   public static final int UINT32_CITY_ID_FIELD_NUMBER = 1;
@@ -29,7 +29,7 @@ public final class cmd0x8a1$GroupGeoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8a1.cmd0x8a1.GroupGeoInfo
  * JD-Core Version:    0.7.0.1
  */

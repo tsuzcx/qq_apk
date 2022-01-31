@@ -1,26 +1,55 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.AudioInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem;
-import cooperation.troop_homework.TroopHomeworkHelper;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
 public class ajsc
-  implements Runnable
+  extends QIPCModule
 {
-  public ajsc(AudioItem paramAudioItem, AudioInfo paramAudioInfo) {}
+  private static ajsc a;
   
-  public void run()
+  private ajsc()
   {
-    String str = TroopHomeworkHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo.b);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo.b(str);
-    if (!TextUtils.isEmpty(str)) {
-      ((Activity)AudioItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiAudioItem)).runOnUiThread(new ajsd(this));
+    super("SignInModule");
+  }
+  
+  public static ajsc a()
+  {
+    if (a == null) {
+      a = new ajsc();
     }
+    return a;
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    paramInt = paramBundle.getInt("type", 1);
+    int i = paramBundle.getInt("result", 2);
+    int j = paramBundle.getInt("day", 1);
+    if (QLog.isColorLevel()) {
+      QLog.i("DailySignIn", 2, "SignInModule onCall type = " + paramInt + ",result = " + i + ",day = " + j);
+    }
+    if (i == 0)
+    {
+      paramString = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (paramString != null)
+      {
+        paramString.getPreferences();
+        paramString = (ajfi)paramString.a(2);
+        if (QLog.isColorLevel()) {
+          QLog.i("DailySignIn", 2, "get oidb0x922 by web");
+        }
+        paramString.c(0);
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajsc
  * JD-Core Version:    0.7.0.1
  */

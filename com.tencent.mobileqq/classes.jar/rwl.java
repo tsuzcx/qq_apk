@@ -1,25 +1,46 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.StaggeredGridLayoutManager.LayoutParams;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
 
-class rwl
-  implements Runnable
+public class rwl
+  extends RecyclerView.ItemDecoration
 {
-  rwl(rwk paramrwk) {}
+  private final int a = aciy.a(4.0F, BaseApplicationImpl.getApplication().getResources());
   
-  public void run()
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    if (this.a.a.h != null)
+    super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
+    paramView = (StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams();
+    int i = paramView.getSpanIndex();
+    if (paramView.isFullSpan())
     {
-      this.a.a.h.setText(this.a.a.a.getResources().getString(2131433419));
-      this.a.a.h.setTag(Integer.valueOf(1));
+      paramRect.left = 0;
+      paramRect.right = 0;
+    }
+    for (;;)
+    {
+      paramRect.bottom = this.a;
+      return;
+      if (i % 2 == 0)
+      {
+        paramRect.left = 0;
+        paramRect.right = (this.a / 2);
+      }
+      else
+      {
+        paramRect.left = (this.a / 2);
+        paramRect.right = 0;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rwl
  * JD-Core Version:    0.7.0.1
  */

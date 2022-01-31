@@ -1,16 +1,21 @@
-import android.media.MediaPlayer;
-import android.os.Looper;
-import com.tencent.mobileqq.music.SongInfo;
+import java.util.ArrayList;
 
 public class aeso
+  extends afdh
 {
-  public MediaPlayer a;
-  public Looper a;
-  public SongInfo a;
+  public int a;
+  public String a;
+  public ArrayList<aesp> a;
+  public boolean a;
+  public int b = -1;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeso
  * JD-Core Version:    0.7.0.1
  */

@@ -1,56 +1,31 @@
-import android.os.IBinder;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.buscard.BuscardPluginInstallActivity;
-import cooperation.plugin.IPluginManager;
-
 public class amql
-  implements OnPluginInstallListener
 {
-  public amql(BuscardPluginInstallActivity paramBuscardPluginInstallActivity) {}
+  private static amqa jdField_a_of_type_Amqa;
+  private static boolean jdField_a_of_type_Boolean;
   
-  public IBinder asBinder()
+  public static void a(amqm paramamqm)
   {
-    return null;
+    if (paramamqm != null) {
+      amrq.a(paramamqm);
+    }
   }
   
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
+  public static boolean a()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("BuscardPluginInstallActivity", 4, "onInstallError, pluginId:" + paramString + ",errorCode:" + paramInt);
-    }
-    QQToast.a(this.a.getApplicationContext(), 2131438315, 0);
-    BuscardPluginInstallActivity.a(this.a, false);
-    this.a.finish();
+    return (jdField_a_of_type_Boolean) && (b());
   }
   
-  public void onInstallFinish(String paramString)
+  private static boolean b()
   {
-    long l = System.currentTimeMillis();
-    BuscardPluginInstallActivity.a(this.a).append(" ==step8: onInstallFinish, cost=" + (l - this.a.a));
-    if (QLog.isDevelopLevel()) {
-      QLog.i("BuscardPluginInstallActivity", 4, "onInstallFinish, pluginId:" + paramString);
+    if (jdField_a_of_type_Amqa != null) {
+      return jdField_a_of_type_Amqa.a();
     }
-    boolean bool = BuscardPluginInstallActivity.a(this.a).isPlugininstalled("BuscardPlugin.apk");
-    BuscardPluginInstallActivity.a(this.a).append(" ==step9: onInstallFinish, isPlugininstalled cost=" + (System.currentTimeMillis() - l));
-    if (bool)
-    {
-      BuscardPluginInstallActivity.a(this.a);
-      return;
-    }
-    QQToast.a(this.a.getApplicationContext(), 2131438315, 0);
-    BuscardPluginInstallActivity.a(this.a, false);
-    this.a.finish();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amql
  * JD-Core Version:    0.7.0.1
  */

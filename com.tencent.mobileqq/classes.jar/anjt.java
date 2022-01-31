@@ -1,18 +1,10 @@
-import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
-
-public class anjt
-  implements Runnable
+public abstract interface anjt
 {
-  public anjt(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, String[] paramArrayOfString) {}
-  
-  public void run()
-  {
-    QZoneSharePictureJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anjt
  * JD-Core Version:    0.7.0.1
  */

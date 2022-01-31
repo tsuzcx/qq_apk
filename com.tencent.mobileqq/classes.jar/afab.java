@@ -1,22 +1,27 @@
-import com.tencent.mobileqq.nearby.myvistor.NearbyVisitorListActivity;
-import java.util.List;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
+import com.tencent.qphone.base.util.QLog;
 
-class afab
-  implements Runnable
+public class afab
+  extends ajvu
 {
-  afab(afaa paramafaa) {}
+  public afab(SystemMsgListView paramSystemMsgListView) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, String paramString)
   {
-    if (this.a.a.a.size() > 0) {
-      this.a.a.a(true, true);
+    if (QLog.isColorLevel()) {
+      QLog.i("NewFriendVerification.manager", 2, "ui.onRefreshBlockedEntrance");
     }
-    NearbyVisitorListActivity.a(this.a.a, true, true);
+    if (((Activity)SystemMsgListView.a(this.a)).isFinishing()) {}
+    while ((!paramBoolean) || (SystemMsgListView.a(this.a) == null)) {
+      return;
+    }
+    SystemMsgListView.a(this.a).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afab
  * JD-Core Version:    0.7.0.1
  */

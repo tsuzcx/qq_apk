@@ -1,20 +1,23 @@
-import android.content.DialogInterface;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class uqz
-  extends DialogUtil.DialogOnClickAdapter
+class uqz
+  implements View.OnClickListener
 {
-  public uqz(PlusPanel paramPlusPanel) {}
+  uqz(uqy paramuqy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
+    uqy.a(this.a, false);
+    this.a.notifyDataSetChanged();
+    if (uqy.a(this.a) != null) {
+      uqy.a(this.a).f();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uqz
  * JD-Core Version:    0.7.0.1
  */

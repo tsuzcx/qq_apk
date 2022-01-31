@@ -11,12 +11,12 @@ import java.util.Map;
 public final class SvcMsgInfo
   extends JceStruct
 {
-  static Map cache_msgByteInfos;
-  static Map cache_msgInfos;
+  static Map<String, byte[]> cache_msgByteInfos;
+  static Map<String, String> cache_msgInfos;
   public int iMsgType;
   public long lFromUin;
-  public Map msgByteInfos;
-  public Map msgInfos;
+  public Map<String, byte[]> msgByteInfos;
+  public Map<String, String> msgInfos;
   public String strOther = "";
   public int tTimeStamp;
   
@@ -32,14 +32,14 @@ public final class SvcMsgInfo
   
   public SvcMsgInfo() {}
   
-  public SvcMsgInfo(long paramLong, int paramInt1, int paramInt2, String paramString, Map paramMap1, Map paramMap2)
+  public SvcMsgInfo(long paramLong, int paramInt1, int paramInt2, String paramString, Map<String, String> paramMap, Map<String, byte[]> paramMap1)
   {
     this.lFromUin = paramLong;
     this.tTimeStamp = paramInt1;
     this.iMsgType = paramInt2;
     this.strOther = paramString;
-    this.msgInfos = paramMap1;
-    this.msgByteInfos = paramMap2;
+    this.msgInfos = paramMap;
+    this.msgByteInfos = paramMap1;
   }
   
   public String className()

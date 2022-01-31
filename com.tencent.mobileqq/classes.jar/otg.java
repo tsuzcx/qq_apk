@@ -1,24 +1,47 @@
-import android.graphics.Rect;
-import android.view.TouchDelegate;
-import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.net.URL;
+import org.json.JSONObject;
 
-public final class otg
-  implements Runnable
+public class otg
 {
-  public otg(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
-  
-  public void run()
+  public static JSONObject a(BaseArticleInfo paramBaseArticleInfo)
   {
-    Object localObject = new Rect();
-    this.jdField_a_of_type_AndroidViewView.setEnabled(true);
-    this.jdField_a_of_type_AndroidViewView.getHitRect((Rect)localObject);
-    ((Rect)localObject).top -= this.jdField_a_of_type_Int;
-    ((Rect)localObject).bottom += this.b;
-    ((Rect)localObject).left -= this.c;
-    ((Rect)localObject).right += this.d;
-    localObject = new TouchDelegate((Rect)localObject, this.jdField_a_of_type_AndroidViewView);
-    if (View.class.isInstance(this.jdField_a_of_type_AndroidViewView.getParent())) {
-      ((View)this.jdField_a_of_type_AndroidViewView.getParent()).setTouchDelegate((TouchDelegate)localObject);
+    JSONObject localJSONObject1 = new JSONObject();
+    Object localObject = new JSONObject();
+    ((JSONObject)localObject).put("small_video_icon", "public_account_video_profile");
+    localJSONObject1.put("id_small_video_icon", localObject);
+    localObject = new JSONObject();
+    ((JSONObject)localObject).put("small_video_cover", "public_account_small_video_mengceng");
+    localJSONObject1.put("id_small_video_cover", localObject);
+    JSONObject localJSONObject2 = new JSONObject();
+    if (paramBaseArticleInfo.mSinglePicture != null)
+    {
+      localObject = paramBaseArticleInfo.mSinglePicture.getFile();
+      localJSONObject2.put("article_small_imge_url", localObject);
+      localJSONObject1.put("id_article_small_imge", localJSONObject2);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("small_video_duration", obj.a(paramBaseArticleInfo.mVideoDuration));
+      localJSONObject1.put("id_small_video_duration", localObject);
+      otl.a(paramBaseArticleInfo, localJSONObject1, true);
+      if (AdvertisementInfo.isAdvertisementInfo(paramBaseArticleInfo)) {
+        break label186;
+      }
+      otl.a(paramBaseArticleInfo, localJSONObject1);
+      otl.b(paramBaseArticleInfo, localJSONObject1);
+    }
+    for (;;)
+    {
+      otl.m(paramBaseArticleInfo, localJSONObject1);
+      otl.e(paramBaseArticleInfo, localJSONObject1);
+      otl.g(paramBaseArticleInfo, localJSONObject1);
+      localJSONObject1.put("style_ID", "ReadInjoy_small_cell");
+      otl.a(localJSONObject1, paramBaseArticleInfo);
+      return localJSONObject1;
+      localObject = null;
+      break;
+      label186:
+      otl.d(paramBaseArticleInfo, localJSONObject1);
     }
   }
 }

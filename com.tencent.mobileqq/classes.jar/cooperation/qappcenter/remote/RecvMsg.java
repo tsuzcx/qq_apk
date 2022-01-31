@@ -1,16 +1,16 @@
 package cooperation.qappcenter.remote;
 
-import amug;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bfeu;
 import com.tencent.qphone.base.util.QLog;
 
 public class RecvMsg
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator CREATOR = new amug();
+  public static final Parcelable.Creator<RecvMsg> CREATOR = new bfeu();
   public int a;
   public Bundle a;
   public String a;
@@ -52,44 +52,44 @@ public class RecvMsg
     // Byte code:
     //   0: aload_0
     //   1: aload_1
-    //   2: invokevirtual 63	android/os/Parcel:readInt	()I
-    //   5: putfield 36	cooperation/qappcenter/remote/RecvMsg:b	I
+    //   2: invokevirtual 64	android/os/Parcel:readInt	()I
+    //   5: putfield 37	cooperation/qappcenter/remote/RecvMsg:b	I
     //   8: aload_0
     //   9: aload_1
-    //   10: invokevirtual 63	android/os/Parcel:readInt	()I
-    //   13: putfield 34	cooperation/qappcenter/remote/RecvMsg:jdField_a_of_type_Int	I
+    //   10: invokevirtual 64	android/os/Parcel:readInt	()I
+    //   13: putfield 35	cooperation/qappcenter/remote/RecvMsg:jdField_a_of_type_Int	I
     //   16: aload_0
     //   17: aload_1
-    //   18: invokevirtual 67	android/os/Parcel:readString	()Ljava/lang/String;
-    //   21: putfield 38	cooperation/qappcenter/remote/RecvMsg:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   18: invokevirtual 68	android/os/Parcel:readString	()Ljava/lang/String;
+    //   21: putfield 39	cooperation/qappcenter/remote/RecvMsg:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   24: aload_0
-    //   25: getfield 31	cooperation/qappcenter/remote/RecvMsg:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
-    //   28: invokevirtual 70	android/os/Bundle:clear	()V
+    //   25: getfield 32	cooperation/qappcenter/remote/RecvMsg:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
+    //   28: invokevirtual 71	android/os/Bundle:clear	()V
     //   31: aload_1
     //   32: aload_0
-    //   33: invokevirtual 74	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   36: invokevirtual 80	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
-    //   39: invokevirtual 84	android/os/Parcel:readBundle	(Ljava/lang/ClassLoader;)Landroid/os/Bundle;
+    //   33: invokevirtual 75	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   36: invokevirtual 81	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
+    //   39: invokevirtual 85	android/os/Parcel:readBundle	(Ljava/lang/ClassLoader;)Landroid/os/Bundle;
     //   42: astore_1
     //   43: aload_1
-    //   44: invokestatic 90	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   47: invokestatic 95	cooperation/qzone/QzonePluginProxyActivity:a	(Landroid/content/Context;)Ljava/lang/ClassLoader;
-    //   50: invokevirtual 99	android/os/Bundle:setClassLoader	(Ljava/lang/ClassLoader;)V
+    //   44: invokestatic 91	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   47: invokestatic 96	cooperation/qzone/QzonePluginProxyActivity:a	(Landroid/content/Context;)Ljava/lang/ClassLoader;
+    //   50: invokevirtual 100	android/os/Bundle:setClassLoader	(Ljava/lang/ClassLoader;)V
     //   53: aload_0
-    //   54: getfield 31	cooperation/qappcenter/remote/RecvMsg:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
+    //   54: getfield 32	cooperation/qappcenter/remote/RecvMsg:jdField_a_of_type_AndroidOsBundle	Landroid/os/Bundle;
     //   57: aload_1
-    //   58: invokevirtual 103	android/os/Bundle:putAll	(Landroid/os/Bundle;)V
+    //   58: invokevirtual 104	android/os/Bundle:putAll	(Landroid/os/Bundle;)V
     //   61: return
     //   62: astore_2
     //   63: aload_2
-    //   64: invokevirtual 106	java/lang/Exception:printStackTrace	()V
+    //   64: invokevirtual 107	java/lang/Exception:printStackTrace	()V
     //   67: goto -14 -> 53
     //   70: astore_1
-    //   71: ldc 108
+    //   71: ldc 109
     //   73: iconst_1
-    //   74: ldc 110
+    //   74: ldc 111
     //   76: aload_1
-    //   77: invokestatic 116	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   77: invokestatic 117	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   80: aload_1
     //   81: athrow
     // Local variable table:

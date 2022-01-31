@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.startup.step;
 
-import cooperation.qzone.QZoneStartupMonitor;
+import bfqq;
 
 public class QzoneTracer
   extends Step
 {
-  protected boolean a()
+  protected boolean doStep()
   {
-    QZoneStartupMonitor.a();
-    return super.a();
+    bfqq.a();
+    return super.doStep();
   }
 }
 

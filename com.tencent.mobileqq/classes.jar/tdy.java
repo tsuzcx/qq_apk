@@ -1,27 +1,17 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import com.tencent.mobileqq.activity.LikeRankingListActivity;
-import com.tencent.widget.PullToZoomListView;
-import com.tencent.widget.UpSideDownDrawable;
-
-public class tdy
-  implements Runnable
+class tdy
+  extends tcu
 {
-  public tdy(LikeRankingListActivity paramLikeRankingListActivity, Bitmap paramBitmap) {}
+  tdy(tdo paramtdo, tew paramtew) {}
   
-  public void run()
+  public boolean b()
   {
-    UpSideDownDrawable localUpSideDownDrawable = new UpSideDownDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.b.getWidth(), this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.b.getHeight());
-    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.b.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.b.setImageDrawable(localUpSideDownDrawable);
-    localUpSideDownDrawable.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.a.a(false);
+    a("UploadImageJob_in_image_file_path", this.jdField_a_of_type_Tew.d);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tdy
  * JD-Core Version:    0.7.0.1
  */

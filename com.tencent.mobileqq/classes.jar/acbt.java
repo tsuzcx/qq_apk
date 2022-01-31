@@ -1,30 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Gxzb;
+import android.app.ProgressDialog;
+import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
 
-public final class acbt
-  implements Parcelable.Creator
+public class acbt
+  implements ajga
 {
-  public IPSiteModel.Gxzb a(Parcel paramParcel)
-  {
-    IPSiteModel.Gxzb localGxzb = new IPSiteModel.Gxzb();
-    localGxzb.appid = paramParcel.readInt();
-    localGxzb.appName = paramParcel.readString();
-    localGxzb.cover = paramParcel.readString();
-    localGxzb.feeType = paramParcel.readInt();
-    localGxzb.id = paramParcel.readString();
-    localGxzb.name = paramParcel.readString();
-    return localGxzb;
-  }
+  public acbt(TroopRobotPickerActivity paramTroopRobotPickerActivity) {}
   
-  public IPSiteModel.Gxzb[] a(int paramInt)
+  public void a(int paramInt, boolean paramBoolean)
   {
-    return new IPSiteModel.Gxzb[paramInt];
+    TroopRobotPickerActivity.a(this.a);
+    this.a.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acbt
  * JD-Core Version:    0.7.0.1
  */

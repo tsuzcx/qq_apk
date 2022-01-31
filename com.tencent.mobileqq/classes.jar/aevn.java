@@ -1,39 +1,22 @@
-import com.tencent.biz.ProtoServlet;
-import com.tencent.mobileqq.WebSsoBody.WebSsoRequestBody;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBStringField;
-import mqq.app.MobileQQ;
-import mqq.app.NewIntent;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
 
-public final class aevn
-  implements Runnable
+public class aevn
+  extends ajjh
 {
-  public aevn(String paramString, int paramInt, QQAppInterface paramQQAppInterface) {}
+  public aevn(SearchBaseFragment paramSearchBaseFragment) {}
   
-  public void run()
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    Object localObject = new JSONObject();
-    try
-    {
-      ((JSONObject)localObject).put("targetuin", Long.parseLong(this.jdField_a_of_type_JavaLangString));
-      ((JSONObject)localObject).put("type", this.jdField_a_of_type_Int);
-      NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), ProtoServlet.class);
-      localNewIntent.putExtra("cmd", "NearbySvr.get_chat_signature");
-      WebSsoBody.WebSsoRequestBody localWebSsoRequestBody = new WebSsoBody.WebSsoRequestBody();
-      localObject = ((JSONObject)localObject).toString();
-      localWebSsoRequestBody.data.set((String)localObject);
-      localNewIntent.putExtra("data", localWebSsoRequestBody.toByteArray());
-      localNewIntent.setObserver(new aevo(this));
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet(localNewIntent);
-      return;
+    if ((paramBoolean) && (paramObject != null) && (SearchBaseFragment.a(this.a) != null) && (SearchBaseFragment.a(this.a).uin.get() == ((Long)paramObject).longValue())) {
+      SearchBaseFragment.a(this.a).relation.set(SearchBaseFragment.a(this.a).relation.get() & 0x10);
     }
-    catch (Exception localException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aevn
  * JD-Core Version:    0.7.0.1
  */

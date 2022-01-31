@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.util.QQSettingUtil;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.applets.data.AppletItem;
 
 public final class akim
-  implements Runnable
+  implements Parcelable.Creator<AppletItem>
 {
-  public akim(QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
+  public AppletItem a(Parcel paramParcel)
   {
-    QQSettingUtil.b(this.a);
+    return new AppletItem(paramParcel);
+  }
+  
+  public AppletItem[] a(int paramInt)
+  {
+    return new AppletItem[paramInt];
   }
 }
 

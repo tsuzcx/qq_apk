@@ -1,65 +1,81 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.multimsg.MultiMsgManager;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.TextUtils;
+import com.tencent.image.QQLiveDrawable.ErrorInfo;
+import com.tencent.image.QQLiveDrawable.OnDownloadListener;
+import com.tencent.image.QQLiveDrawable.OnStateListener;
+import com.tencent.image.QQLiveDrawable.QQLiveDrawableParams;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Map;
-import mqq.os.MqqHandler;
+import java.lang.ref.WeakReference;
 
-public class sey
-  extends FriendListObserver
+class sey
+  implements QQLiveDrawable.OnDownloadListener, QQLiveDrawable.OnStateListener
 {
-  public sey(ChatHistoryFileActivity paramChatHistoryFileActivity) {}
+  WeakReference<ser> a;
   
-  protected void onGetFriendNickBatch(boolean paramBoolean, Object paramObject)
+  public sey(ser paramser)
   {
-    int i = 1;
-    this.a.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1);
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()))
+    this.a = new WeakReference(paramser);
+  }
+  
+  public void OnDownload(String paramString1, QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams, String paramString2)
+  {
+    int i = -1;
+    if ((this.a.get() == null) || (ser.a((ser)this.a.get()) != 2)) {
+      urk.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "holder not play mp4 , ignore download result");
+    }
+    while (TextUtils.isEmpty(paramString2)) {
+      return;
+    }
+    if ((paramString2.contains("\"callBackType\":\"4\"")) && (ser.b((ser)this.a.get()) != -1))
     {
-      HashMap localHashMap = new HashMap();
-      if ((!paramBoolean) && ((paramObject instanceof Integer)))
-      {
-        i = ((Integer)paramObject).intValue();
-        localHashMap.put("result", i + "");
-        localHashMap.put("netType", NetworkUtil.a(BaseApplication.getContext()) + "");
-        StatisticCollector.a(BaseApplication.getContext()).a(this.a.app.getCurrentAccountUin(), "multiMsgNickTimeoutR", false, 30000L, 0L, localHashMap, "");
+      urk.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "OnDownload callBackType= 4");
+      if (badq.d(BaseApplication.getContext())) {
+        break label209;
       }
+      ser.a((ser)this.a.get());
     }
     for (;;)
     {
+      ser.a((ser)this.a.get(), i);
+      ((ser)this.a.get()).a();
       return;
-      if (!paramBoolean) {
+      if ((!paramString2.contains("\"callBackType\":\"7\"")) || (ser.b((ser)this.a.get()) == 0)) {
         break;
       }
-      i = 0;
-      break;
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      MultiMsgManager.a().b.clear();
-      if ((paramBoolean) && (paramObject != null)) {
-        MultiMsgManager.a().b.putAll((Map)paramObject);
-      }
-      if (MultiMsgManager.a().b.size() == 0) {
-        QQToast.a(this.a.app.getApp(), 2131433438, 0).b(this.a.getTitleBarHeight());
-      }
-      while (QLog.isDevelopLevel())
-      {
-        QLog.d("MultiMsg", 4, "onGetFriendNickBatch = " + paramObject);
-        return;
-        this.a.a((Map)paramObject, MultiMsgManager.a().a);
-      }
+      urk.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "OnDownload callBackType= 7");
+      ser.a((ser)this.a.get(), 0);
+      ((ser)this.a.get()).a();
+      return;
+      label209:
+      i = -2;
+    }
+  }
+  
+  public void onStateChange(String paramString, QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams, int paramInt, Object paramObject)
+  {
+    if ((this.a.get() == null) || (ser.a((ser)this.a.get()) != 2)) {
+      urk.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "holder not play mp4 , ignore onStateChange");
+    }
+    while (paramInt != 5) {
+      return;
+    }
+    if ((paramObject instanceof QQLiveDrawable.ErrorInfo))
+    {
+      paramString = (QQLiveDrawable.ErrorInfo)paramObject;
+      if ((paramString.model != 122) || (paramString.what != 204)) {}
+    }
+    for (paramInt = -1;; paramInt = -2)
+    {
+      urk.d("Q.qqstory.recommendAlbum.ui.AlbumGalleryAdapterHolder", "onStateChange state=STATE_ERROR , set play state = %d", new Object[] { Integer.valueOf(paramInt) });
+      ser.a((ser)this.a.get());
+      ser.a((ser)this.a.get(), paramInt);
+      ((ser)this.a.get()).a();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sey
  * JD-Core Version:    0.7.0.1
  */

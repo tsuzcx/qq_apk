@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class im_msg_body$QQWalletAioElem
-  extends MessageMicro
+  extends MessageMicro<QQWalletAioElem>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_actions_priority = PBField.initBytes(ByteStringMicro.EMPTY);

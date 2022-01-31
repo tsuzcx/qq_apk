@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.widget.NearbyFacePowerDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class afqq
-  implements View.OnClickListener
+class afqq
+  implements DialogInterface.OnDismissListener
 {
-  public afqq(NearbyFacePowerDialog paramNearbyFacePowerDialog) {}
+  afqq(afqn paramafqn) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.dismiss();
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afqq
  * JD-Core Version:    0.7.0.1
  */

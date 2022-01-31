@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.apollo.game;
 
+import ailk;
+import aill;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -11,23 +13,18 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
-import yvr;
-import yvs;
-import yvt;
-import yvu;
-import yvv;
 
 public class ApolloGameStateMachine
   extends Observable
 {
-  public static ApolloGameStateMachine.HardwareInfo a;
+  public static aill a;
   private static ApolloGameStateMachine jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine;
-  public static final HashMap a;
+  public static final HashMap<Integer, List<Integer>> a;
   public static AtomicBoolean a;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private Runnable jdField_a_of_type_JavaLangRunnable = new yvr(this);
-  private Observer jdField_a_of_type_JavaUtilObserver = new yvs(this);
-  private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private Runnable jdField_a_of_type_JavaLangRunnable = new ApolloGameStateMachine.1(this);
+  private Observer jdField_a_of_type_JavaUtilObserver = new ailk(this);
+  private ConcurrentHashMap<Integer, ApolloGameStateMachine.StateTask> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   private AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong();
   private final Object b = new Object();
@@ -159,9 +156,9 @@ public class ApolloGameStateMachine
   
   protected void b()
   {
-    a(1, new yvt(this));
-    a(5, new yvu(this));
-    a(6, new yvv(this));
+    a(1, new ApolloGameStateMachine.4(this));
+    a(5, new ApolloGameStateMachine.5(this));
+    a(6, new ApolloGameStateMachine.6(this));
   }
   
   public void c()
@@ -187,7 +184,7 @@ public class ApolloGameStateMachine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloGameStateMachine
  * JD-Core Version:    0.7.0.1
  */

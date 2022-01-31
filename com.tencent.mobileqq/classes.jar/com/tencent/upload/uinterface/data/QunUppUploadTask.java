@@ -4,16 +4,16 @@ import FileUpload.MultiPicInfo;
 import FileUpload.UploadUppInfoV2Req;
 import FileUpload.UploadUppInfoV2Rsp;
 import FileUpload.stPhotoSepcInfo;
-import com.tencent.upload.common.Const.UploadRetCode;
-import com.tencent.upload.common.FileUtils;
-import com.tencent.upload.common.b;
-import com.tencent.upload.e.e;
-import com.tencent.upload.e.f;
 import com.tencent.upload.image.ImageProcessUtil;
 import com.tencent.upload.uinterface.AbstractUploadTask;
 import com.tencent.upload.uinterface.IUploadConfig.UploadImageSize;
 import com.tencent.upload.uinterface.IUploadTaskCallback;
 import com.tencent.upload.uinterface.TaskTypeConfig;
+import com.tencent.upload.utils.Const.UploadRetCode;
+import com.tencent.upload.utils.FileUtils;
+import com.tencent.upload.utils.ProtocolUtil;
+import com.tencent.upload.utils.StringUtils;
+import com.tencent.upload.utils.UploadLog;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
@@ -80,8 +80,8 @@ public class QunUppUploadTask
     ((Map)localObject).put("dLatitude", paramQunUppUploadTask.poiY);
     ((Map)localObject).put("sPOIName", paramQunUppUploadTask.poiName);
     ((Map)localObject).put("sPOIType", Integer.toString(paramQunUppUploadTask.poiType));
-    ((Map)localObject).put("mobile_fakefeeds_clientkey", f.a(paramQunUppUploadTask.clientFakeKey));
-    ((Map)localObject).put("a2", f.a(paramQunUppUploadTask.A2));
+    ((Map)localObject).put("mobile_fakefeeds_clientkey", StringUtils.getEmptyString(paramQunUppUploadTask.clientFakeKey));
+    ((Map)localObject).put("a2", StringUtils.getEmptyString(paramQunUppUploadTask.A2));
     localUploadUppInfoV2Req.mapExt = ((Map)localObject);
     return localUploadUppInfoV2Req;
   }
@@ -95,12 +95,12 @@ public class QunUppUploadTask
   {
     try
     {
-      byte[] arrayOfByte = e.a(getClass().getSimpleName(), this);
+      byte[] arrayOfByte = ProtocolUtil.pack(getClass().getSimpleName(), this);
       return arrayOfByte;
     }
     catch (Exception localException)
     {
-      b.b("QunUppUploadTask", "getControlRequestData()", localException);
+      UploadLog.w("QunUppUploadTask", "getControlRequestData()", localException);
     }
     return null;
   }
@@ -110,12 +110,12 @@ public class QunUppUploadTask
     return TaskTypeConfig.QunUploadTaskType;
   }
   
-  protected void processFileUploadFinishRsp(byte[] paramArrayOfByte)
+  public void processFileUploadFinishRsp(byte[] paramArrayOfByte)
   {
     Object localObject;
     try
     {
-      UploadUppInfoV2Rsp localUploadUppInfoV2Rsp = (UploadUppInfoV2Rsp)e.a(UploadUppInfoV2Rsp.class.getSimpleName(), paramArrayOfByte);
+      UploadUppInfoV2Rsp localUploadUppInfoV2Rsp = (UploadUppInfoV2Rsp)ProtocolUtil.unpack(UploadUppInfoV2Rsp.class.getSimpleName(), paramArrayOfByte);
       if (localUploadUppInfoV2Rsp == null)
       {
         paramArrayOfByte = "unpack PhotoWallUploadResult==null. " + paramArrayOfByte;
@@ -127,7 +127,7 @@ public class QunUppUploadTask
     {
       for (;;)
       {
-        b.b("QunUppUploadTask", "finish", localException);
+        UploadLog.w("QunUppUploadTask", "finish", localException);
         localObject = null;
       }
       if (this.uploadTaskCallback == null) {

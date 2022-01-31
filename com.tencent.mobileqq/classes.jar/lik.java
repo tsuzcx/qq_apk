@@ -1,40 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkUtil;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.data.ArkAppMessage;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.random.RandomController.5;
 import com.tencent.qphone.base.util.QLog;
 
-public final class lik
-  implements Runnable
+public class lik
+  implements DialogInterface.OnClickListener
 {
-  public lik(ArkAppMessage paramArkAppMessage, int paramInt) {}
+  public lik(RandomController.5 param5) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage.appName)) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage.appMinVersion))) {
-      if (ReadInJoyArkUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage)) {
-        if (QLog.isColorLevel()) {
-          QLog.d("ReadInJoyArkUtil", 2, "arkApp exists, no need to download again.");
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("RandomController", 2, " [random room owner] kick member fail because of network bad");
     }
-    while (!QLog.isColorLevel())
-    {
-      ArkLocalAppMgr localArkLocalAppMgr;
-      do
-      {
-        return;
-        localArkLocalAppMgr = ReadInJoyArkUtil.a();
-      } while (localArkLocalAppMgr == null);
-      localArkLocalAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage.appName, this.jdField_a_of_type_ComTencentMobileqqDataArkAppMessage.appMinVersion, "", new lil(this));
-      return;
-    }
-    QLog.d("ReadInJoyArkUtil", 2, "ArkAppMessage is invalid, preDownloadArkApp do not begin.");
+    this.a.this$0.c = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lik
  * JD-Core Version:    0.7.0.1
  */

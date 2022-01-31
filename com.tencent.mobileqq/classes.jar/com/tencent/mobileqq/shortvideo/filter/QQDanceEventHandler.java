@@ -4,17 +4,17 @@ import com.tencent.mobileqq.shortvideo.dancemachine.BoyDataReport;
 
 public abstract interface QQDanceEventHandler
 {
-  public abstract void a(int paramInt, String paramString1, String paramString2);
+  public abstract boolean changeDanceStatus(boolean paramBoolean, String paramString);
   
-  public abstract void a(BoyDataReport paramBoyDataReport);
+  public abstract void closeEvent(boolean paramBoolean);
   
-  public abstract boolean a(boolean paramBoolean, String paramString);
+  public abstract void enterSilhouette();
   
-  public abstract void c(long paramLong);
+  public abstract void playSceneEndEvent(BoyDataReport paramBoyDataReport);
   
-  public abstract void f(boolean paramBoolean);
+  public abstract void readySceneBegin(long paramLong);
   
-  public abstract void j();
+  public abstract void scoreSceneEnd(int paramInt, String paramString1, String paramString2);
 }
 
 

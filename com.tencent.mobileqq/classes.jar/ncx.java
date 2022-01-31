@@ -1,30 +1,15 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.PublicAccountManager.1;
+import mqq.observer.BusinessObserver;
 
 public class ncx
-  implements Runnable
+  implements BusinessObserver
 {
-  public ncx(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager) {}
+  public ncx(PublicAccountManager.1 param1) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    ??? = PublicAccountImageCollectionPreloadManager.a(this.a).iterator();
-    while (((Iterator)???).hasNext())
-    {
-      String str = (String)((Iterator)???).next();
-      PublicAccountImageCollectionPreloadManager.a(this.a, str);
-    }
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      PublicAccountImageCollectionPreloadManager.a(this.a).clear();
-      if (PublicAccountImageCollectionPreloadManager.b(this.a).size() > 0)
-      {
-        PublicAccountImageCollectionPreloadManager.a(this.a);
-        return;
-      }
-      this.a.jdField_a_of_type_Boolean = false;
-    }
+    this.a.a.a();
   }
 }
 

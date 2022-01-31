@@ -1,31 +1,28 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.mobileqq.activity.EditInfoActivity.11.1;
+import com.tencent.mobileqq.data.Card;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
-class aaql
-  implements ImageAssetDelegate
+public class aaql
+  extends ajfo
 {
-  aaql(aaqk paramaaqk) {}
+  public aaql(EditInfoActivity paramEditInfoActivity) {}
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
   {
-    String str = paramLottieImageAsset.getFileName();
-    Bitmap localBitmap = (Bitmap)this.a.a.b.get(str);
-    paramLottieImageAsset = localBitmap;
-    if (localBitmap == null)
+    if (!this.a.j) {}
+    do
     {
-      QLog.w("WorldCupMgr", 1, "loadBtnAnimation, 加载图片失败, image[" + str + "]");
-      paramLottieImageAsset = Bitmap.createBitmap(1, 1, Bitmap.Config.ALPHA_8);
-    }
-    return paramLottieImageAsset;
+      return;
+      this.a.j = false;
+      this.a.runOnUiThread(new EditInfoActivity.11.1(this, paramBoolean, paramCard));
+    } while (!QLog.isColorLevel());
+    QLog.d("EditInfoActivity", 2, String.format("onGetDetailInfo, isSuccess: %s, resultCode:%s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaql
  * JD-Core Version:    0.7.0.1
  */

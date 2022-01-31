@@ -1,57 +1,31 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.troop.data.TroopFileInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileManager;
-import java.util.List;
+import com.tencent.mobileqq.app.addfriendverifi.ui.NewFriendVerifyBlockedListFragment;
+import com.tencent.widget.AbsListView;
 
 public class ajvy
-  extends Handler
+  implements begh
 {
-  public ajvy(TroopFileManager paramTroopFileManager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ajvy(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    super.handleMessage(paramMessage);
-    Object[] arrayOfObject = (Object[])paramMessage.obj;
-    switch (paramMessage.what)
+    if (NewFriendVerifyBlockedListFragment.a(this.a) != null)
     {
-    default: 
-      return;
-    case 1: 
-      paramMessage = (List)arrayOfObject[0];
-      boolean bool = ((Boolean)arrayOfObject[1]).booleanValue();
-      String str = (String)arrayOfObject[2];
-      long l = ((Long)arrayOfObject[3]).longValue();
-      this.a.a(paramMessage, bool, str, l);
-      return;
-    case 2: 
-      paramMessage = (TroopFileInfo)arrayOfObject[0];
-      this.a.f(paramMessage);
-      return;
-    case 3: 
-      paramMessage = (TroopFileInfo)arrayOfObject[0];
-      this.a.g(paramMessage);
-      return;
-    case 4: 
-      paramMessage = (TroopFileInfo)arrayOfObject[0];
-      this.a.h(paramMessage);
-      return;
-    case 5: 
-      int i = paramMessage.arg1;
-      this.a.a(i);
+      if ((paramInt != 0) && (paramInt != 1)) {
+        NewFriendVerifyBlockedListFragment.a(this.a).a();
+      }
+    }
+    else {
       return;
     }
-    paramMessage = (TroopFileInfo)arrayOfObject[0];
-    this.a.j(paramMessage);
+    NewFriendVerifyBlockedListFragment.a(this.a).b();
+    NewFriendVerifyBlockedListFragment.a(this.a).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajvy
  * JD-Core Version:    0.7.0.1
  */

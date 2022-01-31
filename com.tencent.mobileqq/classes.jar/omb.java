@@ -1,16 +1,6 @@
-import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
-
-class omb
-  implements Runnable
+public abstract interface omb
 {
-  omb(olz paramolz) {}
-  
-  public void run()
-  {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$Mp4VideoFragmentInfo.b = null;
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$Mp4VideoFragmentInfo.a = true;
-    HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_Oly.a, this.a.jdField_a_of_type_Oly.a.a);
-  }
+  public abstract void a(String[] paramArrayOfString1, String[] paramArrayOfString2);
 }
 
 

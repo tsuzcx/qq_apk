@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Crm$GrayMsg
-  extends MessageMicro
+  extends MessageMicro<GrayMsg>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "uint32_type", "str_text", "uint64_from_uin" }, new Object[] { Integer.valueOf(0), "", Long.valueOf(0L) }, GrayMsg.class);
   public final PBStringField str_text = PBField.initString("");

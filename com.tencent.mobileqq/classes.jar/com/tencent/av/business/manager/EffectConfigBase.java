@@ -1,129 +1,105 @@
 package com.tencent.av.business.manager;
 
-import android.content.Context;
+import ajed;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
 import android.os.Message;
-import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import com.tencent.av.AVLog;
+import axro;
+import axsr;
+import azxx;
+import bace;
+import badq;
 import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.utils.UITools;
-import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.NetworkCenter;
-import com.tencent.mobileqq.util.JSONUtils;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.utils.SecUtil;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import jhf;
-import jhg;
-import jhh;
-import jhi;
-import mqq.os.MqqHandler;
+import krx;
+import ksi;
+import ksj;
+import kvq;
+import kwt;
+import kwx;
+import kwz;
+import kxa;
+import kxb;
+import kxc;
+import mjg;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public abstract class EffectConfigBase
-  extends BusinessManager
+public abstract class EffectConfigBase<T extends kxb>
+  extends kwt
 {
-  public static final String a;
-  protected static final String b;
+  public static final String b;
+  public static String c;
+  public static String d;
+  private static String e;
+  private static String f;
+  public int a;
   public Handler a;
-  public EffectConfigBase.ItemBase a;
-  public List a;
-  protected List b;
+  protected List<T> a;
+  protected final kwx a;
+  public T a;
+  protected List<T> b;
+  protected List<T> c;
+  protected List<WeakReference<kxa<T>>> d;
   
   static
   {
-    jdField_a_of_type_JavaLangString = AppConstants.aK + "qav" + File.separator;
-    jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "effect" + File.separator;
+    jdField_b_of_type_JavaLangString = ajed.aU + "qav" + File.separator;
+    e = "qav_config_";
+    f = "text";
+    jdField_c_of_type_JavaLangString = "ver";
+    jdField_d_of_type_JavaLangString = "0";
   }
   
   public EffectConfigBase(VideoAppInterface paramVideoAppInterface)
   {
     super(paramVideoAppInterface);
-    this.jdField_a_of_type_AndroidOsHandler = new jhh(this);
-    this.jdField_b_of_type_JavaUtilList = new ArrayList();
+    this.jdField_a_of_type_Kwx = new kwx();
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_AndroidOsHandler = new kxc(this.jdField_a_of_type_JavaLangString, this);
+    this.jdField_d_of_type_JavaUtilList = new ArrayList();
   }
   
-  private static int a(int paramInt)
+  public static SharedPreferences a(int paramInt, String paramString)
   {
-    switch (paramInt)
-    {
-    default: 
-      return -1;
-    case 216: 
-      return 0;
-    }
-    return 1;
-  }
-  
-  public static int a(Context paramContext, int paramInt)
-  {
-    long l1 = System.currentTimeMillis();
-    if (!a(paramInt)) {
-      return 0;
-    }
-    int i = PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("qav_effect_config_version" + String.valueOf(paramInt), 0);
-    long l2 = System.currentTimeMillis();
-    AVLog.c("EffectConfigBase", "getVideoConfigVersion:" + paramInt + "|" + i + "|" + (l2 - l1));
-    return i;
+    paramString = a(paramInt, paramString);
+    return BaseApplicationImpl.getContext().getSharedPreferences(paramString, 4);
   }
   
   public static String a(int paramInt)
   {
-    return jdField_a_of_type_JavaLangString + String.valueOf(paramInt) + File.separator;
+    return jdField_b_of_type_JavaLangString + paramInt + File.separator;
   }
   
-  public static String a(Context paramContext, int paramInt)
+  public static String a(int paramInt, String paramString)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    try
-    {
-      File localFile = new File(a(paramInt) + "config.xml");
-      localObject1 = localObject2;
-      AVLog.c("EffectConfigBase", "getVideoConfig:" + localFile.getPath() + "|" + localFile.exists());
-      localObject1 = localObject2;
-      if (localFile.exists())
-      {
-        localObject1 = localObject2;
-        paramContext = FileUtils.b(localFile);
-        localObject1 = paramContext;
-        AVLog.c("EffectConfigBase", "getVideoConfig:" + paramContext);
-        return paramContext;
-      }
-      localObject1 = localObject2;
-      a(paramContext, 0, paramInt);
-      return null;
+    if ((AudioHelper.d()) && (TextUtils.isEmpty(paramString))) {
+      throw new IllegalArgumentException("getConfigSPName uin不能为空, configId:" + paramInt);
     }
-    catch (IOException paramContext)
-    {
-      paramContext.printStackTrace();
-      AVLog.c("EffectConfigBase", "getVideoConfig exception:" + paramContext.toString());
-    }
-    return localObject1;
+    return e + paramInt + "_" + paramString;
   }
   
-  private WeakReference a(EffectConfigBase.IEffectConfigCallback paramIEffectConfigCallback)
+  private WeakReference<kxa<T>> a(kxa<T> paramkxa)
   {
-    int j = this.jdField_b_of_type_JavaUtilList.size();
+    int j = this.jdField_d_of_type_JavaUtilList.size();
     int i = 0;
     while (i < j)
     {
-      WeakReference localWeakReference = (WeakReference)this.jdField_b_of_type_JavaUtilList.get(i);
-      if ((localWeakReference != null) && (localWeakReference.get() != null) && (((EffectConfigBase.IEffectConfigCallback)localWeakReference.get()).equals(paramIEffectConfigCallback))) {
+      WeakReference localWeakReference = (WeakReference)this.jdField_d_of_type_JavaUtilList.get(i);
+      if ((localWeakReference != null) && (localWeakReference.get() != null) && (((kxa)localWeakReference.get()).equals(paramkxa))) {
         return localWeakReference;
       }
       i += 1;
@@ -131,104 +107,110 @@ public abstract class EffectConfigBase
     return null;
   }
   
-  public static void a(Context paramContext, int paramInt1, int paramInt2)
+  public static void a(int paramInt1, String paramString1, int paramInt2, String paramString2)
   {
-    AVLog.c("EffectConfigBase", "setVideoConfigVersion:" + paramInt2 + "|" + paramInt1);
-    paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putInt("qav_effect_config_version" + String.valueOf(paramInt2), paramInt1);
-    paramContext.commit();
-  }
-  
-  public static void a(Context paramContext, String paramString, int paramInt1, int paramInt2)
-  {
-    if (paramString == null)
+    SharedPreferences.Editor localEditor = a(paramInt1, paramString1).edit();
+    if (paramString2 == null)
     {
-      AVLog.c("EffectConfigBase", "updateVideoConfig error ");
-      return;
-    }
-    String str = a(paramInt2);
-    File localFile = new File(str);
-    if ((localFile.exists()) && (localFile.isFile())) {
-      FileUtils.d(str);
-    }
-    a(paramString, str, "config.xml");
-    a(paramContext, paramInt1, paramInt2);
-    BusinessManager.a(paramContext, a(paramInt2), false);
-  }
-  
-  private void a(EffectConfigBase.ItemBase paramItemBase, int paramInt)
-  {
-    int j = this.jdField_b_of_type_JavaUtilList.size();
-    int i = 0;
-    while (i < j)
-    {
-      WeakReference localWeakReference = (WeakReference)this.jdField_b_of_type_JavaUtilList.get(i);
-      if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-        ((EffectConfigBase.IEffectConfigCallback)localWeakReference.get()).onProgressUpdate(paramItemBase, paramInt);
+      localEditor.remove(f);
+      localEditor.putInt(jdField_c_of_type_JavaLangString, paramInt2);
+      localEditor.commit();
+      if (!QLog.isDevelopLevel()) {
+        break label143;
       }
-      i += 1;
+    }
+    for (;;)
+    {
+      QLog.w("EffectConfigBase_" + paramInt1, 1, "saveConfig, configId[" + paramInt1 + "], uin[" + paramString1 + "], version[" + paramInt2 + "],\n" + paramString2 + "");
+      return;
+      localEditor.putString(f, paramString2);
+      break;
+      label143:
+      if (paramString2 == null) {
+        paramString2 = "null";
+      } else {
+        paramString2 = paramString2.length() + "";
+      }
     }
   }
   
-  private void a(EffectConfigBase.ItemBase paramItemBase, boolean paramBoolean)
+  private void a(long paramLong, T paramT, boolean paramBoolean)
   {
-    AVLog.c("EffectConfigBase", "triggleonResourceDownloadFinished zzzzz: " + paramItemBase.getId() + "|" + paramBoolean);
+    if (AudioHelper.e()) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "triggleonResourceDownloadFinished, id[" + paramT.getId() + "], isSuccess[" + paramBoolean + "], seq[" + paramLong + "]");
+    }
     Object localObject;
     if (paramBoolean)
     {
-      localObject = a(paramItemBase.getId());
+      localObject = a(paramT.getId());
       if (localObject != null) {
-        ((EffectConfigBase.ItemBase)localObject).setUsable(true);
+        ((kxb)localObject).setUsable(true);
       }
     }
-    int j = this.jdField_b_of_type_JavaUtilList.size();
+    int j = this.jdField_d_of_type_JavaUtilList.size();
     int i = 0;
     while (i < j)
     {
-      localObject = (WeakReference)this.jdField_b_of_type_JavaUtilList.get(i);
+      localObject = (WeakReference)this.jdField_d_of_type_JavaUtilList.get(i);
       if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
-        ((EffectConfigBase.IEffectConfigCallback)((WeakReference)localObject).get()).onDownloadFinish(paramItemBase, paramBoolean);
+        ((kxa)((WeakReference)localObject).get()).onDownloadFinish(paramLong, paramT, paramBoolean);
       }
       i += 1;
     }
   }
   
-  static void a(String paramString1, String paramString2, String paramString3)
+  private void a(T paramT, int paramInt)
   {
-    ThreadManager.getFileThreadHandler().post(new jhg(paramString2, paramString3, paramString1));
-  }
-  
-  static boolean a(int paramInt)
-  {
-    return new File(a(paramInt) + "config.xml").exists();
-  }
-  
-  private boolean a(EffectConfigBase.ItemBase paramItemBase1, EffectConfigBase.ItemBase paramItemBase2)
-  {
-    boolean bool = false;
-    if (paramItemBase1 == null) {
-      if (paramItemBase2 == null) {
-        bool = true;
-      }
-    }
-    while (paramItemBase2 == null) {
-      return bool;
-    }
-    return paramItemBase1.getId().equals(paramItemBase2.getId());
-  }
-  
-  private void c(EffectConfigBase.ItemBase paramItemBase)
-  {
-    int j = this.jdField_b_of_type_JavaUtilList.size();
+    int j = this.jdField_d_of_type_JavaUtilList.size();
     int i = 0;
     while (i < j)
     {
-      WeakReference localWeakReference = (WeakReference)this.jdField_b_of_type_JavaUtilList.get(i);
+      WeakReference localWeakReference = (WeakReference)this.jdField_d_of_type_JavaUtilList.get(i);
       if ((localWeakReference != null) && (localWeakReference.get() != null)) {
-        ((EffectConfigBase.IEffectConfigCallback)localWeakReference.get()).onItemSelectedChanged(paramItemBase);
+        ((kxa)localWeakReference.get()).onProgressUpdate(paramT, paramInt);
       }
       i += 1;
     }
+  }
+  
+  private boolean a(T paramT1, T paramT2)
+  {
+    if (paramT1 == null) {
+      if (paramT2 != null) {}
+    }
+    while ((paramT2 != null) && (paramT1.getId().equals(paramT2.getId())))
+    {
+      return true;
+      return false;
+    }
+    return false;
+  }
+  
+  public static String b(int paramInt, String paramString)
+  {
+    return a(paramInt, paramString).getString(f, null);
+  }
+  
+  private void b(long paramLong, T paramT)
+  {
+    int j = this.jdField_d_of_type_JavaUtilList.size();
+    if (QLog.isDevelopLevel()) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "triggleonItemSelectedChanged, size[" + j + "], seq[" + paramLong + "]");
+    }
+    int i = 0;
+    while (i < j)
+    {
+      WeakReference localWeakReference = (WeakReference)this.jdField_d_of_type_JavaUtilList.get(i);
+      if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+        ((kxa)localWeakReference.get()).onItemSelectedChanged(paramLong, paramT);
+      }
+      i += 1;
+    }
+  }
+  
+  public static int c(int paramInt, String paramString)
+  {
+    return a(paramInt, paramString).getInt(jdField_c_of_type_JavaLangString, 0);
   }
   
   public abstract int a();
@@ -238,208 +220,355 @@ public abstract class EffectConfigBase
     return 0;
   }
   
-  public EffectConfigBase.ItemBase a()
+  protected abstract Class<?> a();
+  
+  protected String a()
   {
-    return this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase$ItemBase;
+    return ksj.b(a()).jdField_a_of_type_JavaLangString;
   }
   
-  public EffectConfigBase.ItemBase a(String paramString)
+  public String a(T paramT)
   {
-    b();
+    return jdField_b_of_type_JavaLangString + paramT.cid + File.separator + "temp" + File.separator + paramT.getId() + ".zip";
+  }
+  
+  protected List<T> a(int paramInt, String paramString)
+  {
+    ArrayList localArrayList = new ArrayList();
+    int k;
+    int i;
+    int j;
+    label68:
+    kxb localkxb;
+    int m;
+    boolean bool1;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      try
+      {
+        localObject = new JSONObject(paramString);
+        k = mjg.b();
+        if (paramInt != 543) {
+          break label432;
+        }
+        i = 1;
+      }
+      catch (Exception paramString)
+      {
+        Object localObject;
+        boolean bool2;
+        String str1;
+        String str2;
+        File localFile;
+        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "parse, cid[" + paramInt + "], Exception", paramString);
+        a(paramInt, jdField_d_of_type_JavaLangString, 0, null);
+      }
+      if (((JSONObject)localObject).has(paramString))
+      {
+        paramString = ((JSONObject)localObject).getJSONArray(paramString);
+        localObject = a();
+        j = 0;
+        if (j < paramString.length())
+        {
+          localkxb = (kxb)azxx.a((JSONObject)paramString.get(j), (Class)localObject);
+          if ((localkxb == null) || (TextUtils.isEmpty(localkxb.getId()))) {
+            break label423;
+          }
+          localkxb.cid = paramInt;
+          m = localkxb.getPlatform();
+          krx.c(this.jdField_a_of_type_JavaLangString, "cid = " + localkxb.cid + ", item: " + localkxb.toString() + "|" + k + "|" + m);
+          bool2 = a(localkxb);
+          bool1 = bool2;
+          if (bool2)
+          {
+            str1 = a(localkxb);
+            str2 = b(localkxb);
+            localFile = new File(str2);
+            bool1 = localFile.exists();
+            if (bool1) {}
+          }
+        }
+      }
+    }
+    label423:
+    label432:
+    label435:
+    for (;;)
+    {
+      try
+      {
+        bace.a(str1, str2, false);
+        bool1 = localFile.exists();
+        if (i == 0) {
+          break label382;
+        }
+        localkxb.setUsable(bool1);
+        localArrayList.add(localkxb);
+        break label423;
+        paramString = b();
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.i(this.jdField_a_of_type_JavaLangString, 1, "parse item fail, item[" + localkxb + "]", localThrowable);
+        continue;
+      }
+      return localArrayList;
+      label382:
+      if ((m == 0) || (k >= m))
+      {
+        localkxb.setUsable(bool1);
+        localArrayList.add(localkxb);
+      }
+      for (;;)
+      {
+        if (i == 0) {
+          break label435;
+        }
+        paramString = "content";
+        break;
+        j += 1;
+        break label68;
+        i = 0;
+      }
+    }
+  }
+  
+  public List<T> a(String paramString)
+  {
+    t_();
+    if (TextUtils.equals("voicesticker", paramString)) {
+      return this.jdField_b_of_type_JavaUtilList;
+    }
+    if (TextUtils.equals("creativecop", paramString)) {
+      return this.jdField_c_of_type_JavaUtilList;
+    }
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public T a()
+  {
+    return this.jdField_a_of_type_Kxb;
+  }
+  
+  public T a(String paramString)
+  {
+    t_();
+    Iterator localIterator;
+    kxb localkxb;
     if ((this.jdField_a_of_type_JavaUtilList != null) && (!TextUtils.isEmpty(paramString)))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
-        EffectConfigBase.ItemBase localItemBase = (EffectConfigBase.ItemBase)localIterator.next();
-        if (paramString.equals(localItemBase.getId())) {
-          return localItemBase;
+        localkxb = (kxb)localIterator.next();
+        if (paramString.equals(localkxb.getId())) {
+          return localkxb;
+        }
+      }
+    }
+    if ((this.jdField_b_of_type_JavaUtilList != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      localIterator = this.jdField_b_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        localkxb = (kxb)localIterator.next();
+        if (paramString.equals(localkxb.getId())) {
+          return localkxb;
+        }
+      }
+    }
+    if ((this.jdField_c_of_type_JavaUtilList != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      localIterator = this.jdField_c_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        localkxb = (kxb)localIterator.next();
+        if (paramString.equals(localkxb.getId())) {
+          return localkxb;
         }
       }
     }
     return null;
   }
   
-  public abstract Class a();
+  public void a() {}
   
-  public String a()
+  public void a(long paramLong, kxa<T> paramkxa)
   {
-    int i = a();
-    return a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp(), i);
+    if (paramkxa != null)
+    {
+      if (a(paramkxa) == null)
+      {
+        WeakReference localWeakReference = new WeakReference(paramkxa);
+        this.jdField_d_of_type_JavaUtilList.add(localWeakReference);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "addCallback, callback[" + paramkxa.getClass().getSimpleName() + "], callback[" + paramkxa + "], seq[" + paramLong + "]");
+      }
+    }
   }
   
-  public String a(EffectConfigBase.ItemBase paramItemBase)
+  public void a(long paramLong, T paramT)
   {
-    return jdField_a_of_type_JavaLangString + a() + File.separator + "temp" + File.separator + paramItemBase.getId() + ".zip";
+    if ((paramT.isUsable()) || (TextUtils.isEmpty(paramT.getResurl())))
+    {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "startDownload, 不下载, item[" + paramT + "], seq[" + paramLong + "]");
+      paramT.isDownloading = false;
+      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, 1, (int)paramLong, paramT).sendToTarget();
+      return;
+    }
+    axro localaxro = new axro();
+    localaxro.jdField_a_of_type_Axrt = new kwz(this, paramLong, paramT);
+    localaxro.jdField_a_of_type_JavaLangString = paramT.getResurl();
+    localaxro.jdField_a_of_type_Int = 0;
+    localaxro.jdField_c_of_type_JavaLangString = a(paramT);
+    localaxro.jdField_c_of_type_Int = badq.a(axsr.a().a());
+    localaxro.a(paramT);
+    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "startDownload, item[" + paramT + "], seq[" + paramLong + "]");
+    paramT.isDownloading = true;
+    ThreadManager.post(new EffectConfigBase.NetReqRunnable(this, localaxro), 5, null, true);
   }
-  
-  public String a(String paramString)
-  {
-    return jdField_a_of_type_JavaLangString + a() + File.separator + paramString + File.separator;
-  }
-  
-  public List a(String paramString)
-  {
-    b();
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  protected void a() {}
   
   public void a(Message paramMessage) {}
   
-  public void a(EffectConfigBase.IEffectConfigCallback paramIEffectConfigCallback)
-  {
-    if ((paramIEffectConfigCallback != null) && (a(paramIEffectConfigCallback) == null))
-    {
-      paramIEffectConfigCallback = new WeakReference(paramIEffectConfigCallback);
-      this.jdField_b_of_type_JavaUtilList.add(paramIEffectConfigCallback);
-    }
-  }
-  
-  public void a(EffectConfigBase.ItemBase paramItemBase)
-  {
-    if ((paramItemBase.isUsable()) || (TextUtils.isEmpty(paramItemBase.getResurl())))
-    {
-      this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, 1, 0, paramItemBase).sendToTarget();
-      return;
-    }
-    HttpNetReq localHttpNetReq = new HttpNetReq();
-    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new jhf(this, paramItemBase);
-    localHttpNetReq.jdField_a_of_type_JavaLangString = paramItemBase.getResurl();
-    localHttpNetReq.jdField_a_of_type_Int = 0;
-    localHttpNetReq.jdField_c_of_type_JavaLangString = a(paramItemBase);
-    localHttpNetReq.jdField_c_of_type_Int = NetworkUtil.a(NetworkCenter.a().a());
-    localHttpNetReq.a(paramItemBase);
-    ThreadManager.post(new jhi(this, localHttpNetReq), 5, null, true);
-  }
-  
   public void a(String paramString, boolean paramBoolean)
   {
-    if ((paramBoolean) && ((paramString.equals(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().jdField_c_of_type_JavaLangString)) || (paramString.equals(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().q)))) {
-      a(null);
+    if ((paramBoolean) && ((paramString.equals(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().jdField_d_of_type_JavaLangString)) || (paramString.equals(String.valueOf(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a().g))))) {
+      a(AudioHelper.b(), null);
     }
   }
   
-  public boolean a(EffectConfigBase.ItemBase paramItemBase)
+  public void a(T paramT) {}
+  
+  public boolean a(long paramLong, String paramString)
   {
-    boolean bool = false;
-    if (!a(this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase$ItemBase, paramItemBase))
-    {
-      this.jdField_a_of_type_ComTencentAvBusinessManagerEffectConfigBase$ItemBase = paramItemBase;
-      paramItemBase = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0, paramItemBase);
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramItemBase);
-      bool = true;
+    if (QLog.isDevelopLevel()) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setCurrentItemById, id[" + paramString + "], seq[" + paramLong + "]");
     }
-    return bool;
+    if (TextUtils.isEmpty(paramString))
+    {
+      a(paramLong, null);
+      return true;
+    }
+    a(paramLong, a(paramString));
+    return true;
+  }
+  
+  public boolean a(long paramLong, T paramT)
+  {
+    kxb localkxb = null;
+    Object localObject = null;
+    if (!a(this.jdField_a_of_type_Kxb, paramT))
+    {
+      localkxb = this.jdField_a_of_type_Kxb;
+      this.jdField_a_of_type_Kxb = paramT;
+      if (AudioHelper.e())
+      {
+        if (QLog.isDevelopLevel()) {
+          localObject = new Throwable("打印调用栈");
+        }
+        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setCurrentItem, notify MSG_ON_ITEM_SELECT_CHANGED, seq[" + paramLong + "], count_MSG[" + this.jdField_a_of_type_Int + "], \nlast[" + localkxb + "], \nnew[" + this.jdField_a_of_type_Kxb + "]", (Throwable)localObject);
+      }
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+      this.jdField_a_of_type_Int = 1;
+      paramT = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(0, paramT);
+      paramT.arg1 = ((int)paramLong);
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramT);
+      return true;
+    }
+    if (QLog.isDevelopLevel())
+    {
+      localObject = localkxb;
+      if (QLog.isDevelopLevel()) {
+        localObject = new Throwable("打印调用栈");
+      }
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "setCurrentItem, 重复, seq[" + paramLong + "], count_MSG_ON_ITEM_SELECT_CHANGED[" + this.jdField_a_of_type_Int + "], item[" + paramT + "]", (Throwable)localObject);
+    }
+    return false;
+  }
+  
+  protected boolean a(T paramT)
+  {
+    if ((paramT == null) || (paramT.cid <= 0) || (TextUtils.isEmpty(paramT.getId())))
+    {
+      str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder().append("isTemplateUsable:");
+      if (paramT != null) {}
+      for (paramT = Integer.valueOf(paramT.cid);; paramT = "item == null")
+      {
+        krx.e(str, paramT + "|");
+        return false;
+      }
+    }
+    if (TextUtils.isEmpty(paramT.getResurl())) {
+      return true;
+    }
+    if (!new File(a(paramT)).exists()) {
+      return false;
+    }
+    long l1 = System.currentTimeMillis();
+    String str = SecUtil.getFileMd5(a(paramT));
+    long l2 = System.currentTimeMillis();
+    paramT = paramT.getMd5();
+    krx.c(this.jdField_a_of_type_JavaLangString, "isTemplateUsable :" + str + "|" + paramT + "|" + (l2 - l1));
+    return paramT.equalsIgnoreCase(str);
   }
   
   public int b(int paramInt, String paramString)
   {
-    AVLog.c("EffectConfigBase", "onSendMessageToPeer :" + paramInt + "|" + paramString);
+    krx.c(this.jdField_a_of_type_JavaLangString, "onSendMessageToPeer :" + paramInt + "|" + paramString);
     return this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a(paramInt, paramString);
   }
   
-  public String b()
+  protected String b()
   {
     return "content";
   }
   
-  public String b(EffectConfigBase.ItemBase paramItemBase)
+  public String b(T paramT)
   {
-    return a(paramItemBase.getId());
+    return jdField_b_of_type_JavaLangString + paramT.cid + File.separator + paramT.getId() + File.separator;
   }
   
-  public List b(String paramString)
+  public void b(long paramLong, kxa<T> paramkxa)
   {
-    localArrayList = new ArrayList();
-    if (!TextUtils.isEmpty(paramString)) {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        int j = UITools.a();
-        Object localObject = b();
-        if (paramString.has((String)localObject))
-        {
-          paramString = paramString.getJSONArray((String)localObject);
-          localObject = a();
-          int i = 0;
-          while (i < paramString.length())
-          {
-            EffectConfigBase.ItemBase localItemBase = (EffectConfigBase.ItemBase)JSONUtils.a((JSONObject)paramString.get(i), (Class)localObject);
-            if ((localItemBase != null) && (!TextUtils.isEmpty(localItemBase.getId())))
-            {
-              int k = localItemBase.getPlatform();
-              AVLog.c("EffectConfigBase", "item: " + localItemBase.toString() + "|" + j + "|" + k);
-              if ((k == 0) || (j >= k))
-              {
-                localItemBase.setUsable(b(localItemBase));
-                localArrayList.add(localItemBase);
-              }
-            }
-            i += 1;
-          }
-        }
-        return localArrayList;
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-      }
-    }
-  }
-  
-  public void b()
-  {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      this.jdField_a_of_type_JavaUtilList = b(a());
-    }
-  }
-  
-  public void b(EffectConfigBase.IEffectConfigCallback paramIEffectConfigCallback)
-  {
-    if ((paramIEffectConfigCallback != null) && (a(paramIEffectConfigCallback) != null)) {
-      this.jdField_b_of_type_JavaUtilList.remove(paramIEffectConfigCallback);
-    }
-  }
-  
-  public void b(EffectConfigBase.ItemBase paramItemBase) {}
-  
-  public boolean b(EffectConfigBase.ItemBase paramItemBase)
-  {
-    if ((a() <= 0) || (paramItemBase == null) || (TextUtils.isEmpty(paramItemBase.getId()))) {
-      AVLog.e("EffectConfigBase", "isTemplateUsable:" + a() + "|");
-    }
-    do
+    if (paramkxa != null)
     {
-      return false;
-      if (TextUtils.isEmpty(paramItemBase.getResurl())) {
-        return true;
+      if (a(paramkxa) != null) {
+        this.jdField_d_of_type_JavaUtilList.remove(paramkxa);
       }
-    } while (!new File(a(paramItemBase)).exists());
-    long l1 = System.currentTimeMillis();
-    String str = SecUtil.getFileMd5(a(paramItemBase));
-    long l2 = System.currentTimeMillis();
-    paramItemBase = paramItemBase.getMd5();
-    AVLog.c("EffectConfigBase", "isTemplateUsable :" + str + "|" + paramItemBase + "|" + (l2 - l1));
-    return paramItemBase.equalsIgnoreCase(str);
+      if (QLog.isColorLevel()) {
+        QLog.w(this.jdField_a_of_type_JavaLangString, 1, "removeCallback, callback[" + paramkxa.getClass().getSimpleName() + "], callback[" + paramkxa + "], seq[" + paramLong + "]");
+      }
+    }
   }
   
-  public boolean b(String paramString)
+  public String c(T paramT)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      a(null);
-    }
-    for (;;)
+    return jdField_b_of_type_JavaLangString + paramT.cid + File.separator + paramT.getId();
+  }
+  
+  public void t_()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0))
     {
-      return true;
-      a(a(paramString));
+      String str = a();
+      this.jdField_a_of_type_JavaUtilList = a(a(), str);
+    }
+    if (a() == 176)
+    {
+      if ((this.jdField_b_of_type_JavaUtilList == null) || (this.jdField_b_of_type_JavaUtilList.size() == 0)) {
+        this.jdField_b_of_type_JavaUtilList = a(370, ksj.b(370).jdField_a_of_type_JavaLangString);
+      }
+      if ((this.jdField_c_of_type_JavaUtilList == null) || (this.jdField_c_of_type_JavaUtilList.size() == 0)) {
+        this.jdField_c_of_type_JavaUtilList = a(543, ksj.b(543).jdField_a_of_type_JavaLangString);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.business.manager.EffectConfigBase
  * JD-Core Version:    0.7.0.1
  */

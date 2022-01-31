@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class mobileqq_mp$LongMsgUrlRequest
-  extends MessageMicro
+  extends MessageMicro<LongMsgUrlRequest>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "puin", "str_fileid" }, new Object[] { Long.valueOf(0L), "" }, LongMsgUrlRequest.class);
   public final PBUInt64Field puin = PBField.initUInt64(0L);

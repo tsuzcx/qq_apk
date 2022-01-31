@@ -1,48 +1,26 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.util.BitmapManager;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-
-public class ansm
-  implements Runnable
+class ansm
+  extends anoj
 {
-  public ansm(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit, String paramString1, String paramString2) {}
+  ansm(ansl paramansl) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, int paramInt, anpe paramanpe, String paramString)
   {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (TextUtils.isEmpty(this.b)))
-    {
-      QIMEffectCameraCaptureUnit.c(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit);
-      return;
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      QIMEffectCameraCaptureUnit.b(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit).setText(this.jdField_a_of_type_JavaLangString);
-      QIMEffectCameraCaptureUnit.b(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit).setVisibility(0);
-    }
-    if (!TextUtils.isEmpty(this.b)) {}
-    try
-    {
-      Bitmap localBitmap = BitmapManager.a(this.b);
-      QIMEffectCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit).setImageBitmap(localBitmap);
-      QIMEffectCameraCaptureUnit.a(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit).setVisibility(0);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
-    }
+    this.a.a().a(paramBoolean, paramInt, paramanpe, paramString);
+  }
+  
+  protected void a(boolean paramBoolean, anpe paramanpe)
+  {
+    this.a.a().a(paramBoolean, paramanpe);
+  }
+  
+  protected void d(boolean paramBoolean)
+  {
+    this.a.a().a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ansm
  * JD-Core Version:    0.7.0.1
  */

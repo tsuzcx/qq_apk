@@ -1,42 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.homework.recite.data.ArticleInfo;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
-import com.tencent.mobileqq.util.TroopReportor;
+import java.util.Comparator;
 
-public class ajqf
-  implements DialogInterface.OnClickListener
+class ajqf
+  implements Comparator<ajqe>
 {
-  public ajqf(ReciteFragment paramReciteFragment) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(ajqe paramajqe1, ajqe paramajqe2)
   {
-    ReciteFragment.a(this.a, false);
-    ReciteFragment.d(this.a);
-    paramDialogInterface = ReciteFragment.a(this.a);
-    String str1;
-    String str2;
-    if (paramDialogInterface != null)
-    {
-      str1 = ReciteFragment.a(this.a).f;
-      str2 = TroopReportor.a(paramDialogInterface, ReciteFragment.a(this.a).f, paramDialogInterface.getCurrentAccountUin());
-      if (ReciteFragment.a(this.a) == null) {
-        break label108;
-      }
+    if (paramajqe1.b < paramajqe2.b) {
+      return -1;
     }
-    label108:
-    for (paramDialogInterface = ReciteFragment.a(this.a).title;; paramDialogInterface = "")
-    {
-      TroopReportor.a("Grp_edu", "Grp_recite", "Out_Recite_Clk", 0, 0, new String[] { str1, str2, paramDialogInterface });
-      return;
+    if (paramajqe1.b > paramajqe2.b) {
+      return 1;
     }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajqf
  * JD-Core Version:    0.7.0.1
  */

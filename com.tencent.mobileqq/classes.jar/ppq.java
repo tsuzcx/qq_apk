@@ -1,17 +1,23 @@
-import com.tencent.component.network.utils.FileUtils.FileComparator;
-import java.io.File;
-
-public final class ppq
-  implements FileUtils.FileComparator
+public class ppq
 {
-  public boolean a(File paramFile1, File paramFile2)
-  {
-    return (paramFile1.length() == paramFile2.length()) && (paramFile1.lastModified() == paramFile2.lastModified());
-  }
+  public int a;
+  public long a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public String f;
+  public String g;
+  public String h;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ppq
  * JD-Core Version:    0.7.0.1
  */

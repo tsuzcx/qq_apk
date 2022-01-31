@@ -1,25 +1,23 @@
-import android.content.Context;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.IPluginManager;
-import cooperation.plugin.IPluginManager.OnPluginReadyListener;
-import cooperation.plugin.IPluginManager.PluginParams;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.QQPhotoInfo;
 
 public final class amtl
-  implements IPluginManager.OnPluginReadyListener
+  implements Parcelable.Creator<QQPhotoInfo>
 {
-  public void a(boolean paramBoolean, Context paramContext, IPluginManager.PluginParams paramPluginParams)
+  public QQPhotoInfo a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "launchPluginService onPluginReady." + paramBoolean);
-    }
-    if (paramBoolean) {
-      IPluginManager.d(paramContext, paramPluginParams);
-    }
+    return new QQPhotoInfo(paramParcel, null);
+  }
+  
+  public QQPhotoInfo[] a(int paramInt)
+  {
+    return new QQPhotoInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amtl
  * JD-Core Version:    0.7.0.1
  */

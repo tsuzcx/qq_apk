@@ -1,17 +1,23 @@
-import com.tencent.mobileqq.activity.aio.anim.VipPendantDrawable;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
 
-public class usw
+public final class usw
+  implements Parcelable.Creator<EditRecordVideoSource>
 {
-  public String a;
-  
-  public usw(VipPendantDrawable paramVipPendantDrawable, String paramString)
+  public EditRecordVideoSource a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    return new EditRecordVideoSource(paramParcel);
+  }
+  
+  public EditRecordVideoSource[] a(int paramInt)
+  {
+    return new EditRecordVideoSource[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     usw
  * JD-Core Version:    0.7.0.1
  */

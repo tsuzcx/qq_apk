@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqavopensdkSsoTunnel$STAVCtrlParamReq
-  extends MessageMicro
+  extends MessageMicro<STAVCtrlParamReq>
 {
   public static final int LOCALVER_FIELD_NUMBER = 2;
   public static final int SDKAPPID_FIELD_NUMBER = 1;

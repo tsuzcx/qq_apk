@@ -1,123 +1,67 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil;
-import com.tencent.mobileqq.richmedia.capture.util.CaptureUtil;
-import com.tencent.mobileqq.richmedia.capture.util.ProviderViewBuilder;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureButtonLayout;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.data.PhoneContact;
 
-public class ahrd
+class ahrd
   implements View.OnClickListener
 {
-  public ahrd(ProviderContainerView paramProviderContainerView) {}
+  ahrd(ahrc paramahrc) {}
   
   public void onClick(View paramView)
   {
-    int i = ProviderContainerView.a(this.a).b(((Integer)paramView.getTag()).intValue());
-    if (i == 102)
-    {
-      CaptureReportUtil.b();
-      if (!PtvFilterSoLoad.a(this.a.getContext())) {
-        QQToast.a(this.a.getContext(), "挂件尚未准备完成，请稍候。", 0).a();
-      }
-    }
-    boolean bool;
+    if (paramView.getId() == 2131299650) {}
+    ahrj localahrj;
+    PhoneContact localPhoneContact;
     do
     {
       do
       {
         return;
-        if (CaptureUtil.a == 0)
-        {
-          QQToast.a(this.a.getContext(), "挂件插件加载失败，请重启QQ再试。", 0).a();
-          return;
-        }
-        if (CaptureUtil.a != -1) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("ProviderContainerView", 2, "ptv template so library hasn't loaded");
-      return;
-      if (CaptureUtil.a == 2)
-      {
-        bool = CaptureUtil.b();
-        if (QLog.isColorLevel()) {
-          QLog.d("ProviderContainerView", 2, "ProviderContainerView oncilck soLoaded=" + bool);
-        }
-        if (ProviderContainerView.a(this.a) != null) {
-          ProviderContainerView.a(this.a).t();
-        }
-      }
-      if (i != 103) {
-        break label320;
-      }
-      CaptureReportUtil.e();
-      CaptureReportUtil.b();
-      if (!PtvFilterSoLoad.a(this.a.getContext()))
-      {
-        QQToast.a(this.a.getContext(), "美颜插件尚未准备完成，请稍候再试。", 0).a();
-        return;
-      }
-      if (CaptureUtil.a == 0)
-      {
-        QQToast.a(this.a.getContext(), "美颜插件加载失败，请重启QQ再试。", 0).a();
-        return;
-      }
-      if (CaptureUtil.a != -1) {
+        localahrj = (ahrj)paramView.getTag();
+      } while ((localahrj == null) || (localahrj.jdField_a_of_type_AndroidWidgetCheckBox == null) || (localahrj.jdField_a_of_type_ComTencentMobileqqDataPhoneContact == null));
+      localPhoneContact = localahrj.jdField_a_of_type_ComTencentMobileqqDataPhoneContact;
+    } while (!localahrj.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled());
+    if (localahrj.jdField_a_of_type_JavaLangString.startsWith("+")) {}
+    for (boolean bool = this.a.a.a.a(localahrj.jdField_a_of_type_JavaLangString, localPhoneContact.name, 4, "-1", localPhoneContact.mobileNo);; bool = this.a.a.a.a(localahrj.jdField_a_of_type_JavaLangString, localPhoneContact.name, 0, "-1", localPhoneContact.mobileNo))
+    {
+      localahrj.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
+      if (!AppSetting.c) {
         break;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("ProviderContainerView", 2, "ptv template so library hasn't loaded for beauty");
-    return;
-    if (CaptureUtil.a == 2)
-    {
-      bool = CaptureUtil.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("ProviderContainerView", 2, "ProviderContainerView oncilck beauty soLoaded=" + bool);
+      if (!localahrj.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+        break label255;
       }
-      if (ProviderContainerView.a(this.a) != null) {
-        ProviderContainerView.a(this.a).t();
+      if (!localahrj.jdField_a_of_type_Boolean) {
+        break label216;
       }
-    }
-    label320:
-    if (i == 101)
-    {
-      CaptureReportUtil.d();
-      if (CaptureUtil.b != 2) {
-        break label434;
-      }
-      bool = CaptureUtil.d();
-      if (QLog.isColorLevel()) {
-        QLog.d("ProviderContainerView", 2, "svaf so should reload, needUpdate:" + bool);
-      }
-    }
-    for (;;)
-    {
-      if (i == 104)
-      {
-        ReportController.b(null, "dc00898", "", "", "0X8008756", "0X8008756", 0, 0, "", "", "", "");
-        CaptureReportUtil.c();
-      }
-      if (ProviderContainerView.a(this.a) != null) {
-        ProviderContainerView.a(this.a).a();
-      }
-      ProviderContainerView.a(this.a, paramView, i);
+      paramView.setContentDescription(localahrj.b.getText() + this.a.a.a.getString(2131653396));
       return;
-      label434:
-      if ((CaptureUtil.b != 1) && (QLog.isColorLevel())) {
-        QLog.d("ProviderContainerView", 2, "svaf so hasn't loaded, status:" + CaptureUtil.b);
+    }
+    label216:
+    paramView.setContentDescription(localahrj.b.getText().toString() + ajjy.a(2131642210));
+    return;
+    label255:
+    if (localahrj.jdField_a_of_type_Boolean) {}
+    for (int i = this.a.a.a.a(localahrj.jdField_a_of_type_JavaLangString);; i = 0)
+    {
+      if ((localahrj.jdField_a_of_type_Boolean) && (i != 0))
+      {
+        paramView.setContentDescription(localahrj.b.getText() + this.a.a.a.getString(i));
+        return;
       }
+      paramView.setContentDescription(localahrj.b.getText().toString() + ajjy.a(2131642207));
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahrd
  * JD-Core Version:    0.7.0.1
  */

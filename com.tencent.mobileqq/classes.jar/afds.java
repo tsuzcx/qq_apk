@@ -1,27 +1,22 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class afds
-  implements TVK_IMediaPlayer.OnInfoListener
+class afds
+  implements View.OnClickListener
 {
-  public afds(VideoViewTVKImpl paramVideoViewTVKImpl) {}
+  afds(afdq paramafdq, int paramInt) {}
   
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoViewTVKImpl", 2, "onInfo what=" + paramInt + "  ex:" + paramObject);
-    }
-    ThreadManager.getUIHandler().post(new afdt(this, paramInt, paramObject));
-    return false;
+    this.jdField_a_of_type_Afdq.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int] = 2;
+    this.jdField_a_of_type_Afdq.notifyDataSetChanged();
+    int i = afdq.a(this.jdField_a_of_type_Afdq, this.jdField_a_of_type_Int);
+    new awrb(this.jdField_a_of_type_Afdq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_listNew").c("Grp_contactlist").d("clk_inactive").a(new String[] { "", String.valueOf(i) }).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afds
  * JD-Core Version:    0.7.0.1
  */

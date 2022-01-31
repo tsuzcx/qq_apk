@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import java.util.Locale;
-import lrq;
+import ood;
 
 public class CG
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new lrq();
+  public static final Parcelable.Creator<CG> CREATOR = new ood();
   public final int a;
   public final String a;
   public final String b;

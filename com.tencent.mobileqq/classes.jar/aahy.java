@@ -1,23 +1,79 @@
-import com.tencent.mobileqq.ar.ARNativeBridge;
-import com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.MarkFaceMessage;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class aahy
-  implements Runnable
+class aahy
+  implements arok<anla>
 {
-  public aahy(Interactive3DRenderable paramInteractive3DRenderable, int paramInt, float paramFloat1, float paramFloat2, long paramLong) {}
+  aahy(aahr paramaahr, ImageView paramImageView1, MarkFaceMessage paramMarkFaceMessage, ImageView paramImageView2, MessageRecord paramMessageRecord) {}
   
-  public void run()
+  public void a(anla paramanla)
   {
-    Interactive3DRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DRenderable).native_onTouchEnd(this.jdField_a_of_type_Int, this.jdField_a_of_type_Float, this.b, 1, this.jdField_a_of_type_Long, Interactive3DRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DRenderable).mCurrentActiveId);
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_Interactive3DRenderable", 2, "ACTION_UP native_onTouchEnd");
+    Object localObject;
+    int i;
+    if (paramanla != null)
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setTag(paramanla);
+      String str2 = anjd.z.replace("[epId]", paramanla.a.epId);
+      String str1 = "";
+      localObject = str1;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage.mobileparam != null)
+      {
+        localObject = str1;
+        if (this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage.mobileparam.length > 0) {
+          localObject = new String(this.jdField_a_of_type_ComTencentMobileqqDataMarkFaceMessage.mobileparam);
+        }
+      }
+      i = argh.a((String)localObject);
+      if ((!bace.a(str2)) || (i != 1)) {
+        break label194;
+      }
+      i = 3;
+    }
+    for (;;)
+    {
+      if (paramanla.b())
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        localObject = this.jdField_a_of_type_Aahr.a.getResources().getDrawable(2130846036);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      }
+      for (;;)
+      {
+        this.b.setMinimumHeight((int)(this.jdField_a_of_type_Aahr.a.a * 100.0F));
+        this.b.setMinimumWidth((int)(this.jdField_a_of_type_Aahr.a.a * 100.0F));
+        this.jdField_a_of_type_Aahr.a(this.b, i, paramanla, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+        return;
+        label194:
+        if (paramanla.d())
+        {
+          i = 2;
+          break;
+        }
+        if (!paramanla.e()) {
+          break label258;
+        }
+        i = 1;
+        break;
+        if (i == 1)
+        {
+          this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+          localObject = this.jdField_a_of_type_Aahr.a.getResources().getDrawable(2130837701);
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+        }
+      }
+      label258:
+      i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aahy
  * JD-Core Version:    0.7.0.1
  */

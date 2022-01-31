@@ -5,33 +5,35 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.biz.now.NowLiveManager;
 import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.model.QQStoryActivityManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryNodeConfigManager;
-import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
+import com.tencent.biz.qqstory.playvideo.entrance.SingleFeedPlayInfo;
 import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
 import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import msg;
+import spu;
+import sqg;
+import stg;
+import tfk;
+import tij;
+import urp;
 
 public class StoryMsgNotificationReceiver
   extends BroadcastReceiver
 {
   public static final Intent a(Context paramContext)
   {
-    ((QQStoryActivityManager)SuperManager.a(18)).a();
+    ((spu)sqg.a(18)).a();
     if (QLog.isColorLevel()) {
-      QLog.w("Q.qqstory.protocol", 2, "getMainIntent() isNowTabAdded = " + NowLiveManager.c);
+      QLog.w("Q.qqstory.protocol", 2, "getMainIntent() isNowTabAdded = " + msg.c);
     }
-    if (NowLiveManager.c)
+    if (msg.c)
     {
       paramContext = new Intent(paramContext, SplashActivity.class);
       paramContext.putExtra("fragment_id", 1);
-      paramContext.putExtra("tab_index", MainFragment.f);
+      paramContext.putExtra("tab_index", MainFragment.g);
       paramContext.putExtra("open_now_tab_fragment", true);
       paramContext.putExtra("extra_from_share", true);
       paramContext.setFlags(335544320);
@@ -44,128 +46,118 @@ public class StoryMsgNotificationReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Object localObject1 = paramIntent.getAction();
+    Object localObject = paramIntent.getAction();
     if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "MsgNotificationReceiver action: " + (String)localObject1);
+      QLog.d("zivonchen", 2, "MsgNotificationReceiver action: " + (String)localObject);
     }
-    if ("com.tencent.biz.qqstory.notification.qqstory_delete_notify".equals(localObject1))
+    if ("com.tencent.biz.qqstory.notification.qqstory_delete_notify".equals(localObject))
     {
       i = paramIntent.getIntExtra("push_type", 0);
-      StoryMsgNotification.a().a(paramContext, i);
+      tfk.a().a(paramContext, i);
       if (QLog.isColorLevel()) {
         QLog.d("zivonchen", 2, "delete type = " + i);
       }
     }
-    while (!"com.tencent.biz.qqstory.notification.qqstory_jump_activity_notify".equals(localObject1)) {
+    while (!"com.tencent.biz.qqstory.notification.qqstory_jump_activity_notify".equals(localObject)) {
       return;
     }
-    Object localObject2 = (StoryPushMsg)paramIntent.getParcelableExtra("storyPushMsg");
+    localObject = (StoryPushMsg)paramIntent.getParcelableExtra("storyPushMsg");
     if (QLog.isColorLevel()) {
-      QLog.w("Q.qqstory.protocol", 2, "onReceive() jumpActivity pushMsg = " + localObject2);
+      QLog.w("Q.qqstory.protocol", 2, "onReceive() jumpActivity pushMsg = " + localObject);
     }
-    localObject1 = a(paramContext);
-    int i = ((StoryPushMsg)localObject2).jdField_a_of_type_Int;
-    paramIntent = (Intent)localObject1;
+    Intent localIntent = a(paramContext);
+    int i = ((StoryPushMsg)localObject).jdField_a_of_type_Int;
     switch (i)
     {
     default: 
-    case 5: 
-    case 12: 
-    case 13: 
-      for (paramIntent = (Intent)localObject1;; paramIntent = (Intent)localObject1)
-      {
-        localObject1 = "";
-        if ((((StoryPushMsg)localObject2).jdField_a_of_type_Int == 3) || (((StoryPushMsg)localObject2).jdField_a_of_type_Int == 9)) {
-          localObject1 = String.valueOf(((StoryPushMsg)localObject2).jdField_a_of_type_Long);
-        }
-        if (!TextUtils.isEmpty(((StoryPushMsg)localObject2).jdField_a_of_type_JavaLangString)) {
-          break label1021;
-        }
-        localObject2 = "9999";
-        StoryReportor.a("notice_msg", "clk_push", 0, 0, new String[] { localObject2, localObject1, "", "" });
-        if (paramIntent == null) {
-          break;
-        }
-        paramIntent.addFlags(268435456);
-        paramContext.startActivity(paramIntent);
-        return;
-        ((Intent)localObject1).putExtra("action", 8);
-        ((Intent)localObject1).putExtra("pushType", i);
-        ((Intent)localObject1).putExtra("extra_feedid", ((StoryPushMsg)localObject2).d);
-        StoryReportor.a("notice_msg", "clk_notice", 0, 0, new String[] { "", "", "", "" });
+      i = 0;
+      label310:
+      paramIntent = "";
+      if ((((StoryPushMsg)localObject).jdField_a_of_type_Int == 3) || (((StoryPushMsg)localObject).jdField_a_of_type_Int == 9)) {
+        paramIntent = String.valueOf(((StoryPushMsg)localObject).jdField_a_of_type_Long);
       }
-    case 3: 
-    case 37: 
-    case 39: 
-    case 40: 
-    case 42: 
-      label347:
-      if (!((MsgTabStoryNodeConfigManager)QQStoryContext.a().getManager(251)).a) {
+      if (!TextUtils.isEmpty(((StoryPushMsg)localObject).jdField_a_of_type_JavaLangString)) {
         break;
       }
     }
-    for (paramIntent = new Intent(paramContext, StoryPlayVideoActivity.class);; paramIntent = (Intent)localObject1)
+    for (localObject = "9999";; localObject = ((StoryPushMsg)localObject).jdField_a_of_type_JavaLangString)
     {
-      paramIntent.putExtra("action", 9);
-      paramIntent.putExtra("EXTRA_VIDEO_MODE", 19);
-      paramIntent.putExtra("EXTRA_USER_UIN", String.valueOf(((StoryPushMsg)localObject2).jdField_a_of_type_Long));
-      paramIntent.putExtra("EXTRA_USER_UNION_ID", ((StoryPushMsg)localObject2).c);
-      paramIntent.putExtra("extra_feedid", ((StoryPushMsg)localObject2).d);
-      paramIntent.putExtra("extra_vid", ((StoryPushMsg)localObject2).e);
-      paramIntent.putExtra("extra_is_use_cache_videolist", false);
-      paramIntent.putExtra("extra_pull_type", 1);
-      StoryReportor.a("notice_msg", "care_android", 0, 0, new String[] { "", "", "", "" });
-      break;
-      ((Intent)localObject1).putExtra("action", 4);
-      ((Intent)localObject1).putExtra("EXTRA_VIDEO_MODE", 9);
-      ((Intent)localObject1).putExtra("extra_topic_id", ((StoryPushMsg)localObject2).jdField_a_of_type_AndroidOsBundle.getLong("hot_topic_id"));
-      ((Intent)localObject1).putExtra("extra_topic_name", ((StoryPushMsg)localObject2).jdField_a_of_type_AndroidOsBundle.getString("hot_topic_name"));
-      ((Intent)localObject1).putExtra("extra_share_from_type", 31);
-      paramIntent = (Intent)localObject1;
-      break;
-      ((Intent)localObject1).putExtra("action", 1);
-      paramIntent = (Intent)localObject1;
-      break;
-      ((Intent)localObject1).putExtra("action", 7);
-      ((Intent)localObject1).putExtra("EXTRA_USER_UIN", ((StoryPushMsg)localObject2).jdField_a_of_type_AndroidOsBundle.getString("big_v_id"));
-      ((Intent)localObject1).putExtra("EXTRA_USER_UNION_ID", ((StoryPushMsg)localObject2).jdField_a_of_type_AndroidOsBundle.getString("big_v_union_id"));
-      ((Intent)localObject1).putExtra("extra_share_from_type", 31);
-      paramIntent = (Intent)localObject1;
-      break;
-      ((Intent)localObject1).putExtra("action", 6);
-      ((Intent)localObject1).putExtra("user_type", ((StoryPushMsg)localObject2).jdField_a_of_type_AndroidOsBundle.getInt("pgc_type"));
-      ((Intent)localObject1).putExtra("user_unionid", ((StoryPushMsg)localObject2).jdField_a_of_type_AndroidOsBundle.getString("pgc_column_union_id"));
-      ((Intent)localObject1).putExtra("come_from", 29);
-      paramIntent = (Intent)localObject1;
-      break;
-      ((Intent)localObject1).putExtra("action", 10);
-      ((Intent)localObject1).putExtra("url", ((StoryPushMsg)localObject2).jdField_a_of_type_AndroidOsBundle.getString("link"));
-      ((Intent)localObject1).putExtra("webStyle", "noBottomBar");
-      paramIntent = (Intent)localObject1;
-      break;
+      urp.a("notice_msg", "clk_push", 0, 0, new String[] { localObject, paramIntent, "", "" });
+      if ((i != 0) || (localIntent == null)) {
+        break;
+      }
+      localIntent.addFlags(268435456);
+      paramContext.startActivity(localIntent);
+      return;
+      localIntent.putExtra("action", 8);
+      localIntent.putExtra("pushType", i);
+      localIntent.putExtra("extra_feedid", ((StoryPushMsg)localObject).d);
+      urp.a("notice_msg", "clk_notice", 0, 0, new String[] { "", "", "", "" });
+      i = 0;
+      break label310;
+      if (((stg)QQStoryContext.a().getManager(252)).a)
+      {
+        tij.a(paramContext, ((StoryPushMsg)localObject).d, ((StoryPushMsg)localObject).e);
+        urp.a("notice_msg", "care_android", 0, 0, new String[] { "", "", "", "" });
+        i = 1;
+        break label310;
+      }
+      localIntent.putExtra("EXTRA_PLAY_INFO", new SingleFeedPlayInfo(((StoryPushMsg)localObject).d, ((StoryPushMsg)localObject).d, ((StoryPushMsg)localObject).e, 1, true));
+      localIntent.putExtra("action", 9);
+      urp.a("notice_msg", "care_android", 0, 0, new String[] { "", "", "", "" });
+      i = 0;
+      break label310;
+      i = 0;
+      break label310;
+      localIntent.putExtra("action", 4);
+      localIntent.putExtra("extra_topic_id", ((StoryPushMsg)localObject).jdField_a_of_type_AndroidOsBundle.getLong("hot_topic_id"));
+      localIntent.putExtra("extra_topic_name", ((StoryPushMsg)localObject).jdField_a_of_type_AndroidOsBundle.getString("hot_topic_name"));
+      localIntent.putExtra("extra_share_from_type", 31);
+      i = 0;
+      break label310;
+      localIntent.putExtra("action", 1);
+      i = 0;
+      break label310;
+      localIntent.putExtra("action", 7);
+      localIntent.putExtra("EXTRA_USER_UIN", ((StoryPushMsg)localObject).jdField_a_of_type_AndroidOsBundle.getString("big_v_id"));
+      localIntent.putExtra("EXTRA_USER_UNION_ID", ((StoryPushMsg)localObject).jdField_a_of_type_AndroidOsBundle.getString("big_v_union_id"));
+      localIntent.putExtra("extra_share_from_type", 31);
+      i = 0;
+      break label310;
+      localIntent.putExtra("action", 6);
+      localIntent.putExtra("user_type", ((StoryPushMsg)localObject).jdField_a_of_type_AndroidOsBundle.getInt("pgc_type"));
+      localIntent.putExtra("user_unionid", ((StoryPushMsg)localObject).jdField_a_of_type_AndroidOsBundle.getString("pgc_column_union_id"));
+      localIntent.putExtra("come_from", 29);
+      i = 0;
+      break label310;
+      localIntent.putExtra("action", 10);
+      localIntent.putExtra("url", ((StoryPushMsg)localObject).jdField_a_of_type_AndroidOsBundle.getString("link"));
+      localIntent.putExtra("webStyle", "noBottomBar");
+      i = 0;
+      break label310;
       paramIntent = new StringBuilder("http://story.now.qq.com/m/vote/index.html?_wv=3&_nav_alpha=0");
-      paramIntent.append("&vid=").append(((StoryPushMsg)localObject2).e);
-      ((Intent)localObject1).putExtra("action", 10);
-      ((Intent)localObject1).putExtra("url", paramIntent.toString());
-      ((Intent)localObject1).putExtra("webStyle", "noBottomBar");
-      paramIntent = (Intent)localObject1;
-      break;
+      paramIntent.append("&vid=").append(((StoryPushMsg)localObject).e);
+      localIntent.putExtra("action", 10);
+      localIntent.putExtra("url", paramIntent.toString());
+      localIntent.putExtra("webStyle", "noBottomBar");
+      i = 0;
+      break label310;
       paramIntent = new StringBuilder("http://story.now.qq.com/m/score/index.html?_wv=3&_nav_alpha=0");
-      paramIntent.append("&vid=").append(((StoryPushMsg)localObject2).e);
-      ((Intent)localObject1).putExtra("action", 10);
-      ((Intent)localObject1).putExtra("url", paramIntent.toString());
-      ((Intent)localObject1).putExtra("webStyle", "noBottomBar");
-      paramIntent = (Intent)localObject1;
-      break;
-      label1021:
-      localObject2 = ((StoryPushMsg)localObject2).jdField_a_of_type_JavaLangString;
-      break label347;
+      paramIntent.append("&vid=").append(((StoryPushMsg)localObject).e);
+      localIntent.putExtra("action", 10);
+      localIntent.putExtra("url", paramIntent.toString());
+      localIntent.putExtra("webStyle", "noBottomBar");
+      i = 0;
+      break label310;
+      tij.b(paramContext, ((StoryPushMsg)localObject).e, ((StoryPushMsg)localObject).d, 29);
+      i = 1;
+      break label310;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.notification.StoryMsgNotificationReceiver
  * JD-Core Version:    0.7.0.1
  */

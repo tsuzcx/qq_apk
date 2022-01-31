@@ -1,36 +1,21 @@
-import android.content.Context;
-import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
-import com.tencent.mobileqq.intervideo.IVPluginInfo;
-import com.tencent.mobileqq.intervideo.huayang.HuayangDowanloadHelper;
-import com.tencent.mobileqq.intervideo.huayang.HuayangLoadbackgroudActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class aecl
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  aecl(aeck paramaeck, boolean paramBoolean1, boolean paramBoolean2) {}
+  aecl(aecb paramaecb) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HuayangPluginNewDownloader", 2, "startLoadingActivity：" + System.currentTimeMillis());
-    }
-    Context localContext = HuayangDowanloadHelper.a(this.jdField_a_of_type_Aeck.a);
-    String str2 = aeck.a(this.jdField_a_of_type_Aeck);
-    IVPluginInfo localIVPluginInfo = aeck.a(this.jdField_a_of_type_Aeck);
-    InstalledPlugin localInstalledPlugin = aeck.a(this.jdField_a_of_type_Aeck);
-    String str3 = HuayangDowanloadHelper.d(this.jdField_a_of_type_Aeck.a);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str1 = HuayangDowanloadHelper.e(this.jdField_a_of_type_Aeck.a);; str1 = null)
-    {
-      HuayangLoadbackgroudActivity.a(localContext, str2, localIVPluginInfo, localInstalledPlugin, str3, str1, this.b, this.jdField_a_of_type_Boolean, HuayangDowanloadHelper.c(this.jdField_a_of_type_Aeck.a));
-      return;
-    }
+    ((aifg)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153)).a().b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 319);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aecl
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ public class HeavyTaskExecutor
   implements Runnable
 {
   private static HeavyTaskExecutor jdField_a_of_type_ComTencentMobileqqAppUtilsHeavyTaskExecutor;
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
+  private List<Runnable> jdField_a_of_type_JavaUtilList = new ArrayList();
   
   public static void a()
   {
@@ -40,52 +40,52 @@ public class HeavyTaskExecutor
   public static void a(Runnable paramRunnable)
   {
     // Byte code:
-    //   0: getstatic 23	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_ComTencentMobileqqAppUtilsHeavyTaskExecutor	Lcom/tencent/mobileqq/app/utils/HeavyTaskExecutor;
+    //   0: getstatic 24	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_ComTencentMobileqqAppUtilsHeavyTaskExecutor	Lcom/tencent/mobileqq/app/utils/HeavyTaskExecutor;
     //   3: ifnonnull +39 -> 42
     //   6: ldc 2
     //   8: monitorenter
-    //   9: getstatic 23	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_ComTencentMobileqqAppUtilsHeavyTaskExecutor	Lcom/tencent/mobileqq/app/utils/HeavyTaskExecutor;
+    //   9: getstatic 24	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_ComTencentMobileqqAppUtilsHeavyTaskExecutor	Lcom/tencent/mobileqq/app/utils/HeavyTaskExecutor;
     //   12: ifnonnull +27 -> 39
     //   15: new 2	com/tencent/mobileqq/app/utils/HeavyTaskExecutor
     //   18: dup
-    //   19: invokespecial 49	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:<init>	()V
-    //   22: putstatic 23	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_ComTencentMobileqqAppUtilsHeavyTaskExecutor	Lcom/tencent/mobileqq/app/utils/HeavyTaskExecutor;
-    //   25: invokestatic 53	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   19: invokespecial 50	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:<init>	()V
+    //   22: putstatic 24	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_ComTencentMobileqqAppUtilsHeavyTaskExecutor	Lcom/tencent/mobileqq/app/utils/HeavyTaskExecutor;
+    //   25: invokestatic 54	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   28: ifeq +11 -> 39
-    //   31: ldc 31
+    //   31: ldc 32
     //   33: iconst_4
-    //   34: ldc 55
-    //   36: invokestatic 39	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   34: ldc 56
+    //   36: invokestatic 40	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   39: ldc 2
     //   41: monitorexit
-    //   42: ldc 31
+    //   42: ldc 32
     //   44: iconst_1
-    //   45: new 57	java/lang/StringBuilder
+    //   45: new 58	java/lang/StringBuilder
     //   48: dup
-    //   49: invokespecial 58	java/lang/StringBuilder:<init>	()V
-    //   52: ldc 60
-    //   54: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   49: invokespecial 59	java/lang/StringBuilder:<init>	()V
+    //   52: ldc 61
+    //   54: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   57: aload_0
-    //   58: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   61: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   64: invokestatic 39	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   67: getstatic 23	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_ComTencentMobileqqAppUtilsHeavyTaskExecutor	Lcom/tencent/mobileqq/app/utils/HeavyTaskExecutor;
+    //   58: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   61: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   64: invokestatic 40	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   67: getstatic 24	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_ComTencentMobileqqAppUtilsHeavyTaskExecutor	Lcom/tencent/mobileqq/app/utils/HeavyTaskExecutor;
     //   70: astore_1
     //   71: aload_1
     //   72: monitorenter
-    //   73: getstatic 23	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_ComTencentMobileqqAppUtilsHeavyTaskExecutor	Lcom/tencent/mobileqq/app/utils/HeavyTaskExecutor;
-    //   76: getfield 18	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   73: getstatic 24	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_ComTencentMobileqqAppUtilsHeavyTaskExecutor	Lcom/tencent/mobileqq/app/utils/HeavyTaskExecutor;
+    //   76: getfield 19	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   79: aload_0
-    //   80: invokeinterface 75 2 0
+    //   80: invokeinterface 76 2 0
     //   85: pop
-    //   86: getstatic 23	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_ComTencentMobileqqAppUtilsHeavyTaskExecutor	Lcom/tencent/mobileqq/app/utils/HeavyTaskExecutor;
-    //   89: getfield 18	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   92: invokeinterface 29 1 0
+    //   86: getstatic 24	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_ComTencentMobileqqAppUtilsHeavyTaskExecutor	Lcom/tencent/mobileqq/app/utils/HeavyTaskExecutor;
+    //   89: getfield 19	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   92: invokeinterface 30 1 0
     //   97: iconst_1
     //   98: if_icmpne +13 -> 111
-    //   101: invokestatic 81	com/tencent/mobileqq/app/ThreadManager:getSubThreadHandler	()Lmqq/os/MqqHandler;
-    //   104: getstatic 23	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_ComTencentMobileqqAppUtilsHeavyTaskExecutor	Lcom/tencent/mobileqq/app/utils/HeavyTaskExecutor;
-    //   107: invokevirtual 87	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
+    //   101: invokestatic 82	com/tencent/mobileqq/app/ThreadManager:getSubThreadHandler	()Lmqq/os/MqqHandler;
+    //   104: getstatic 24	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_ComTencentMobileqqAppUtilsHeavyTaskExecutor	Lcom/tencent/mobileqq/app/utils/HeavyTaskExecutor;
+    //   107: invokevirtual 88	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   110: pop
     //   111: aload_1
     //   112: monitorexit
@@ -126,53 +126,53 @@ public class HeavyTaskExecutor
     //   6: aload_3
     //   7: astore_2
     //   8: aload_0
-    //   9: getfield 18	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   12: invokeinterface 29 1 0
+    //   9: getfield 19	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   12: invokeinterface 30 1 0
     //   17: ifle +104 -> 121
     //   20: aload_3
     //   21: astore_2
     //   22: aload_0
-    //   23: getfield 18	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   23: getfield 19	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   26: iconst_0
-    //   27: invokeinterface 94 2 0
+    //   27: invokeinterface 95 2 0
     //   32: checkcast 6	java/lang/Runnable
     //   35: astore_1
     //   36: aload_0
     //   37: monitorexit
-    //   38: ldc 31
+    //   38: ldc 32
     //   40: iconst_1
-    //   41: new 57	java/lang/StringBuilder
+    //   41: new 58	java/lang/StringBuilder
     //   44: dup
-    //   45: invokespecial 58	java/lang/StringBuilder:<init>	()V
-    //   48: ldc 96
-    //   50: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   45: invokespecial 59	java/lang/StringBuilder:<init>	()V
+    //   48: ldc 97
+    //   50: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   53: aload_1
-    //   54: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   57: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   60: invokestatic 39	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   54: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   57: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   60: invokestatic 40	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   63: aload_1
-    //   64: invokeinterface 98 1 0
+    //   64: invokeinterface 99 1 0
     //   69: aload_0
     //   70: monitorenter
     //   71: aload_0
-    //   72: getfield 18	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   75: invokeinterface 29 1 0
+    //   72: getfield 19	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   75: invokeinterface 30 1 0
     //   80: ifle +14 -> 94
     //   83: aload_0
-    //   84: getfield 18	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   84: getfield 19	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   87: iconst_0
-    //   88: invokeinterface 101 2 0
+    //   88: invokeinterface 102 2 0
     //   93: pop
     //   94: aload_0
-    //   95: getfield 18	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   98: invokeinterface 29 1 0
+    //   95: getfield 19	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   98: invokeinterface 30 1 0
     //   103: ifne +185 -> 288
-    //   106: ldc 31
+    //   106: ldc 32
     //   108: iconst_1
-    //   109: ldc 103
-    //   111: invokestatic 39	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   109: ldc 104
+    //   111: invokestatic 40	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   114: aload_0
-    //   115: invokevirtual 106	java/lang/Object:notify	()V
+    //   115: invokevirtual 107	java/lang/Object:notify	()V
     //   118: aload_0
     //   119: monitorexit
     //   120: return
@@ -183,24 +183,24 @@ public class HeavyTaskExecutor
     //   125: aload_0
     //   126: monitorenter
     //   127: aload_0
-    //   128: getfield 18	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   131: invokeinterface 29 1 0
+    //   128: getfield 19	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   131: invokeinterface 30 1 0
     //   136: ifle +14 -> 150
     //   139: aload_0
-    //   140: getfield 18	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   140: getfield 19	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   143: iconst_0
-    //   144: invokeinterface 101 2 0
+    //   144: invokeinterface 102 2 0
     //   149: pop
     //   150: aload_0
-    //   151: getfield 18	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   154: invokeinterface 29 1 0
+    //   151: getfield 19	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   154: invokeinterface 30 1 0
     //   159: ifne +23 -> 182
-    //   162: ldc 31
+    //   162: ldc 32
     //   164: iconst_1
-    //   165: ldc 103
-    //   167: invokestatic 39	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   165: ldc 104
+    //   167: invokestatic 40	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   170: aload_0
-    //   171: invokevirtual 106	java/lang/Object:notify	()V
+    //   171: invokevirtual 107	java/lang/Object:notify	()V
     //   174: aload_0
     //   175: monitorexit
     //   176: return
@@ -222,43 +222,43 @@ public class HeavyTaskExecutor
     //   192: aload_3
     //   193: athrow
     //   194: astore_2
-    //   195: invokestatic 53	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
+    //   195: invokestatic 54	com/tencent/qphone/base/util/QLog:isDevelopLevel	()Z
     //   198: ifeq +7 -> 205
     //   201: aload_2
-    //   202: invokevirtual 109	java/lang/Throwable:printStackTrace	()V
-    //   205: ldc 31
+    //   202: invokevirtual 110	java/lang/Throwable:printStackTrace	()V
+    //   205: ldc 32
     //   207: iconst_1
-    //   208: new 57	java/lang/StringBuilder
+    //   208: new 58	java/lang/StringBuilder
     //   211: dup
-    //   212: invokespecial 58	java/lang/StringBuilder:<init>	()V
-    //   215: ldc 111
-    //   217: invokevirtual 64	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   212: invokespecial 59	java/lang/StringBuilder:<init>	()V
+    //   215: ldc 112
+    //   217: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   220: aload_1
-    //   221: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   224: invokevirtual 71	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   221: invokevirtual 68	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   224: invokevirtual 72	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   227: aload_2
-    //   228: invokestatic 114	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   228: invokestatic 115	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   231: aload_0
     //   232: monitorenter
     //   233: aload_0
-    //   234: getfield 18	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   237: invokeinterface 29 1 0
+    //   234: getfield 19	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   237: invokeinterface 30 1 0
     //   242: ifle +14 -> 256
     //   245: aload_0
-    //   246: getfield 18	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   246: getfield 19	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   249: iconst_0
-    //   250: invokeinterface 101 2 0
+    //   250: invokeinterface 102 2 0
     //   255: pop
     //   256: aload_0
-    //   257: getfield 18	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   260: invokeinterface 29 1 0
+    //   257: getfield 19	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   260: invokeinterface 30 1 0
     //   265: ifne +33 -> 298
-    //   268: ldc 31
+    //   268: ldc 32
     //   270: iconst_1
-    //   271: ldc 103
-    //   273: invokestatic 39	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   271: ldc 104
+    //   273: invokestatic 40	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   276: aload_0
-    //   277: invokevirtual 106	java/lang/Object:notify	()V
+    //   277: invokevirtual 107	java/lang/Object:notify	()V
     //   280: aload_0
     //   281: monitorexit
     //   282: return
@@ -282,24 +282,24 @@ public class HeavyTaskExecutor
     //   304: aload_0
     //   305: monitorenter
     //   306: aload_0
-    //   307: getfield 18	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   310: invokeinterface 29 1 0
+    //   307: getfield 19	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   310: invokeinterface 30 1 0
     //   315: ifle +14 -> 329
     //   318: aload_0
-    //   319: getfield 18	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   319: getfield 19	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   322: iconst_0
-    //   323: invokeinterface 101 2 0
+    //   323: invokeinterface 102 2 0
     //   328: pop
     //   329: aload_0
-    //   330: getfield 18	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   333: invokeinterface 29 1 0
+    //   330: getfield 19	com/tencent/mobileqq/app/utils/HeavyTaskExecutor:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   333: invokeinterface 30 1 0
     //   338: ifne +23 -> 361
-    //   341: ldc 31
+    //   341: ldc 32
     //   343: iconst_1
-    //   344: ldc 103
-    //   346: invokestatic 39	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   344: ldc 104
+    //   346: invokestatic 40	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   349: aload_0
-    //   350: invokevirtual 106	java/lang/Object:notify	()V
+    //   350: invokevirtual 107	java/lang/Object:notify	()V
     //   353: aload_0
     //   354: monitorexit
     //   355: return

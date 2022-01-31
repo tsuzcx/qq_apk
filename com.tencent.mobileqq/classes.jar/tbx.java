@@ -1,25 +1,44 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetTagList;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagItem;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class tbx
-  implements Runnable
+  extends slu
 {
-  public tbx(Leba paramLeba) {}
+  public final String a;
+  public final List<vik> a;
+  public final int b;
   
-  public void run()
+  public tbx(qqstory_service.RspGetTagList paramRspGetTagList)
   {
-    LocalRedTouchManager localLocalRedTouchManager = (LocalRedTouchManager)this.a.a.getManager(159);
-    if (localLocalRedTouchManager.a(localLocalRedTouchManager.a(10013))) {
-      localLocalRedTouchManager.a(10013);
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+    Object localObject = paramRspGetTagList.tag_list.get();
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        qqstory_struct.TagItem localTagItem = (qqstory_struct.TagItem)((Iterator)localObject).next();
+        this.jdField_a_of_type_JavaUtilList.add(new vik(localTagItem));
+      }
     }
-    ReportController.b(this.a.a, "dc00898", "", "", "0X8008823", "0X8008823", 0, 0, "", "", "", "");
+    this.b = paramRspGetTagList.is_end.get();
+    this.jdField_a_of_type_JavaLangString = paramRspGetTagList.next_cookie.get();
+  }
+  
+  public String toString()
+  {
+    return "GetTagListResponse{mTagItems=" + this.jdField_a_of_type_JavaUtilList + ", mIsEnd=" + this.b + ", mNextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tbx
  * JD-Core Version:    0.7.0.1
  */

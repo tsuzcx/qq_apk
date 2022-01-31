@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.activity.aio.MessageShareActivity;
-import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
 
 public class uqv
-  implements Runnable
+  implements bekb
 {
-  public uqv(MessageShareActivity paramMessageShareActivity, AbsStructMsg paramAbsStructMsg, String paramString, int paramInt) {}
+  public uqv(StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
   
-  public void run()
+  public void a(int paramInt, boolean paramBoolean)
   {
-    StructMsgForImageShare.sendAndUploadImageShare(this.jdField_a_of_type_ComTencentMobileqqActivityAioMessageShareActivity.app, (StructMsgForImageShare)this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, null, 0);
+    if (StoryHomeHorizontalListView.a(this.a) != null) {
+      StoryHomeHorizontalListView.a(this.a).a(paramInt, paramBoolean);
+    }
+    urk.a("HorizontalListView", "on item scroll mHasMore=%b, mIsLoadingMore:%b", Boolean.valueOf(StoryHomeHorizontalListView.a(this.a)), Boolean.valueOf(StoryHomeHorizontalListView.b(this.a)));
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uqv
  * JD-Core Version:    0.7.0.1
  */

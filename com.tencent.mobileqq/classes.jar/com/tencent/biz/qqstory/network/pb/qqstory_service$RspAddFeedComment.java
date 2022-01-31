@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_service$RspAddFeedComment
-  extends MessageMicro
+  extends MessageMicro<RspAddFeedComment>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16 }, new String[] { "result", "comment_id" }, new Object[] { null, Integer.valueOf(0) }, RspAddFeedComment.class);
   public final PBUInt32Field comment_id = PBField.initUInt32(0);
@@ -14,7 +14,7 @@ public final class qqstory_service$RspAddFeedComment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspAddFeedComment
  * JD-Core Version:    0.7.0.1
  */

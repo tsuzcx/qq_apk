@@ -1,16 +1,16 @@
-import com.tencent.biz.qqstory.network.BatchHandlerListPuller;
-import com.tencent.biz.qqstory.network.BatchHandlerListPuller.IPullResultCallback;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class nqq
-  implements BatchHandlerListPuller.IPullResultCallback
+class nqq
+  implements View.OnClickListener
 {
-  public nqq(BatchGetVideoInfo paramBatchGetVideoInfo, BatchHandlerListPuller paramBatchHandlerListPuller) {}
+  nqq(nqp paramnqp) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.d();
+    npj.a(nqp.a(this.a), 1000, null);
+    rvb.a((Activity)nqp.a(this.a), nqp.a(this.a), nqp.a(this.a).a(), nqp.a(this.a).e(), false, npi.b(nqp.a(this.a)), new nmr());
   }
 }
 

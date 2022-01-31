@@ -1,20 +1,32 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.qwallet.QWalletFullWindowActivity.QWalletFullWindowFragment;
 
 public class agkh
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public agkh(ScanTorchActivity paramScanTorchActivity) {}
+  public agkh(QWalletFullWindowActivity.QWalletFullWindowFragment paramQWalletFullWindowFragment) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ScanTorchActivity.l(this.a);
-    ScanTorchActivity.k(this.a);
-    ScanTorchActivity.a(this.a, null);
+    if (paramIntent == null) {}
+    do
+    {
+      return;
+      if ("action_close_camera".equals(paramIntent.getAction()))
+      {
+        QWalletFullWindowActivity.QWalletFullWindowFragment.a(this.a).finish();
+        return;
+      }
+    } while ((!"cn.abel.action.broadcast".equals(paramIntent.getAction())) || (paramIntent.getBooleanExtra("isOpen", false)));
+    QWalletFullWindowActivity.QWalletFullWindowFragment.b(this.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agkh
  * JD-Core Version:    0.7.0.1
  */

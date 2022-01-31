@@ -1,38 +1,20 @@
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.storyHome.memory.view.MemoriesInnerListView;
 
-class uhk
-  implements Runnable
+public class uhk
+  implements bekd
 {
-  uhk(uhj paramuhj, String paramString) {}
+  public uhk(MemoriesInnerListView paramMemoriesInnerListView) {}
   
-  public void run()
+  public void onScrollStateChanged(int paramInt)
   {
-    if (this.jdField_a_of_type_Uhj.a.app != null)
-    {
-      localObject = (FriendsManager)this.jdField_a_of_type_Uhj.a.app.getManager(50);
-      if (localObject != null)
-      {
-        localObject = ((FriendsManager)localObject).a(this.jdField_a_of_type_JavaLangString);
-        if (localObject != null) {
-          this.jdField_a_of_type_Uhj.a.runOnUiThread(new uhl(this, (Card)localObject));
-        }
-      }
+    if ((paramInt == 4097) && (this.a.a != null)) {
+      this.a.a.a(MemoriesInnerListView.a(this.a).a);
     }
-    while (!QLog.isColorLevel())
-    {
-      Object localObject;
-      return;
-    }
-    QLog.d("Q.systemmsg.TroopRequestActivity", 2, "onUpdateFriendInfo app is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uhk
  * JD-Core Version:    0.7.0.1
  */

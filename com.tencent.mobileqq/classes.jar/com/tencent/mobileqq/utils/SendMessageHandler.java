@@ -11,11 +11,11 @@ import java.util.concurrent.ConcurrentHashMap;
 public class SendMessageHandler
   extends Handler
 {
-  private static ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+  private static ConcurrentHashMap<Long, SendMessageHandler> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private volatile int jdField_a_of_type_Int;
   public long a;
   public final String a;
-  private List jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
+  private List<SendMessageHandler.SendMessageRunnable> jdField_a_of_type_JavaUtilList = Collections.synchronizedList(new ArrayList());
   private volatile int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long = System.currentTimeMillis();
   public final String b;
@@ -26,6 +26,75 @@ public class SendMessageHandler
     super(Looper.getMainLooper());
     this.jdField_a_of_type_JavaLangString = "period";
     this.jdField_b_of_type_JavaLangString = "msf";
+  }
+  
+  /* Error */
+  private void a(long paramLong, String paramString)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_0
+    //   3: getfield 67	com/tencent/mobileqq/utils/SendMessageHandler:jdField_a_of_type_Int	I
+    //   6: aload_0
+    //   7: getfield 64	com/tencent/mobileqq/utils/SendMessageHandler:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   10: invokeinterface 73 1 0
+    //   15: if_icmpge +20 -> 35
+    //   18: aload_0
+    //   19: getfield 64	com/tencent/mobileqq/utils/SendMessageHandler:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   22: invokeinterface 73 1 0
+    //   27: istore 4
+    //   29: iload 4
+    //   31: iconst_1
+    //   32: if_icmpge +6 -> 38
+    //   35: aload_0
+    //   36: monitorexit
+    //   37: return
+    //   38: aload_0
+    //   39: getfield 67	com/tencent/mobileqq/utils/SendMessageHandler:jdField_a_of_type_Int	I
+    //   42: istore 4
+    //   44: aload_0
+    //   45: iload 4
+    //   47: iconst_1
+    //   48: iadd
+    //   49: putfield 67	com/tencent/mobileqq/utils/SendMessageHandler:jdField_a_of_type_Int	I
+    //   52: aload_0
+    //   53: getfield 64	com/tencent/mobileqq/utils/SendMessageHandler:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   56: iload 4
+    //   58: invokeinterface 77 2 0
+    //   63: checkcast 79	com/tencent/mobileqq/utils/SendMessageHandler$SendMessageRunnable
+    //   66: astore 5
+    //   68: aload 5
+    //   70: iload 4
+    //   72: putfield 81	com/tencent/mobileqq/utils/SendMessageHandler$SendMessageRunnable:jdField_b_of_type_Int	I
+    //   75: aload 5
+    //   77: invokestatic 51	java/lang/System:currentTimeMillis	()J
+    //   80: putfield 84	com/tencent/mobileqq/utils/SendMessageHandler$SendMessageRunnable:g	J
+    //   83: aload 5
+    //   85: lload_1
+    //   86: putfield 86	com/tencent/mobileqq/utils/SendMessageHandler$SendMessageRunnable:jdField_c_of_type_Long	J
+    //   89: aload 5
+    //   91: aload_3
+    //   92: putfield 87	com/tencent/mobileqq/utils/SendMessageHandler$SendMessageRunnable:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   95: aload 5
+    //   97: invokevirtual 90	com/tencent/mobileqq/utils/SendMessageHandler$SendMessageRunnable:run	()V
+    //   100: goto -65 -> 35
+    //   103: astore_3
+    //   104: aload_0
+    //   105: monitorexit
+    //   106: aload_3
+    //   107: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	108	0	this	SendMessageHandler
+    //   0	108	1	paramLong	long
+    //   0	108	3	paramString	String
+    //   27	44	4	i	int
+    //   66	30	5	localSendMessageRunnable	SendMessageHandler.SendMessageRunnable
+    // Exception table:
+    //   from	to	target	type
+    //   2	29	103	finally
+    //   38	100	103	finally
   }
   
   public long a(long paramLong)
@@ -83,14 +152,14 @@ public class SendMessageHandler
     //   3: istore_1
     //   4: iload_1
     //   5: aload_0
-    //   6: getfield 92	com/tencent/mobileqq/utils/SendMessageHandler:jdField_b_of_type_Int	I
+    //   6: getfield 116	com/tencent/mobileqq/utils/SendMessageHandler:jdField_b_of_type_Int	I
     //   9: if_icmpge +37 -> 46
     //   12: aload_0
-    //   13: getfield 62	com/tencent/mobileqq/utils/SendMessageHandler:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   13: getfield 64	com/tencent/mobileqq/utils/SendMessageHandler:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   16: iload_1
-    //   17: invokeinterface 106 2 0
-    //   22: checkcast 95	com/tencent/mobileqq/utils/SendMessageHandler$SendMessageRunnable
-    //   25: getfield 109	com/tencent/mobileqq/utils/SendMessageHandler$SendMessageRunnable:c	Z
+    //   17: invokeinterface 77 2 0
+    //   22: checkcast 79	com/tencent/mobileqq/utils/SendMessageHandler$SendMessageRunnable
+    //   25: getfield 127	com/tencent/mobileqq/utils/SendMessageHandler$SendMessageRunnable:jdField_c_of_type_Boolean	Z
     //   28: istore_2
     //   29: iload_2
     //   30: ifne +9 -> 39
@@ -132,72 +201,72 @@ public class SendMessageHandler
     //   1: monitorenter
     //   2: iload_1
     //   3: aload_0
-    //   4: getfield 65	com/tencent/mobileqq/utils/SendMessageHandler:jdField_a_of_type_Int	I
+    //   4: getfield 67	com/tencent/mobileqq/utils/SendMessageHandler:jdField_a_of_type_Int	I
     //   7: if_icmpge +134 -> 141
     //   10: aload_0
-    //   11: getfield 62	com/tencent/mobileqq/utils/SendMessageHandler:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   11: getfield 64	com/tencent/mobileqq/utils/SendMessageHandler:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   14: iload_1
-    //   15: invokeinterface 106 2 0
-    //   20: checkcast 95	com/tencent/mobileqq/utils/SendMessageHandler$SendMessageRunnable
+    //   15: invokeinterface 77 2 0
+    //   20: checkcast 79	com/tencent/mobileqq/utils/SendMessageHandler$SendMessageRunnable
     //   23: astore 8
     //   25: aload 8
-    //   27: invokestatic 49	java/lang/System:currentTimeMillis	()J
-    //   30: putfield 113	com/tencent/mobileqq/utils/SendMessageHandler$SendMessageRunnable:h	J
+    //   27: invokestatic 51	java/lang/System:currentTimeMillis	()J
+    //   30: putfield 131	com/tencent/mobileqq/utils/SendMessageHandler$SendMessageRunnable:h	J
     //   33: aload 8
     //   35: lload_2
-    //   36: putfield 115	com/tencent/mobileqq/utils/SendMessageHandler$SendMessageRunnable:d	J
+    //   36: putfield 133	com/tencent/mobileqq/utils/SendMessageHandler$SendMessageRunnable:d	J
     //   39: aload 8
     //   41: lload 4
-    //   43: putfield 118	com/tencent/mobileqq/utils/SendMessageHandler$SendMessageRunnable:e	J
+    //   43: putfield 136	com/tencent/mobileqq/utils/SendMessageHandler$SendMessageRunnable:e	J
     //   46: aload 8
     //   48: iconst_1
-    //   49: putfield 109	com/tencent/mobileqq/utils/SendMessageHandler$SendMessageRunnable:c	Z
+    //   49: putfield 127	com/tencent/mobileqq/utils/SendMessageHandler$SendMessageRunnable:jdField_c_of_type_Boolean	Z
     //   52: aload 8
     //   54: aload 6
-    //   56: putfield 121	com/tencent/mobileqq/utils/SendMessageHandler$SendMessageRunnable:a	[Ljava/lang/String;
-    //   59: invokestatic 73	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   56: putfield 139	com/tencent/mobileqq/utils/SendMessageHandler$SendMessageRunnable:jdField_a_of_type_ArrayOfJavaLangString	[Ljava/lang/String;
+    //   59: invokestatic 100	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   62: ifeq +71 -> 133
-    //   65: ldc 123
+    //   65: ldc 141
     //   67: iconst_2
-    //   68: new 125	java/lang/StringBuilder
+    //   68: new 143	java/lang/StringBuilder
     //   71: dup
-    //   72: invokespecial 126	java/lang/StringBuilder:<init>	()V
-    //   75: ldc 128
-    //   77: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   72: invokespecial 144	java/lang/StringBuilder:<init>	()V
+    //   75: ldc 146
+    //   77: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   80: aload_0
-    //   81: getfield 134	com/tencent/mobileqq/utils/SendMessageHandler:jdField_a_of_type_Long	J
-    //   84: invokevirtual 137	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   87: ldc 139
-    //   89: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   81: getfield 152	com/tencent/mobileqq/utils/SendMessageHandler:jdField_a_of_type_Long	J
+    //   84: invokevirtual 155	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   87: ldc 157
+    //   89: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   92: iload_1
-    //   93: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   96: ldc 144
-    //   98: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   93: invokevirtual 160	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   96: ldc 162
+    //   98: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   101: lload_2
-    //   102: invokevirtual 137	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   105: ldc 146
-    //   107: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   102: invokevirtual 155	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   105: ldc 164
+    //   107: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   110: lload 4
-    //   112: invokevirtual 137	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   115: ldc 148
-    //   117: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   112: invokevirtual 155	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   115: ldc 166
+    //   117: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   120: aload_0
-    //   121: invokevirtual 152	com/tencent/mobileqq/utils/SendMessageHandler:toString	()Ljava/lang/String;
-    //   124: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   127: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   130: invokestatic 81	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   121: invokevirtual 170	com/tencent/mobileqq/utils/SendMessageHandler:toString	()Ljava/lang/String;
+    //   124: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   127: invokevirtual 171	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   130: invokestatic 108	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   133: iconst_1
     //   134: istore 7
     //   136: aload_0
     //   137: monitorexit
     //   138: iload 7
     //   140: ireturn
-    //   141: invokestatic 73	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   141: invokestatic 100	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   144: ifeq +11 -> 155
-    //   147: ldc 123
+    //   147: ldc 141
     //   149: iconst_2
-    //   150: ldc 155
-    //   152: invokestatic 157	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   150: ldc 173
+    //   152: invokestatic 175	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   155: iconst_0
     //   156: istore 7
     //   158: goto -22 -> 136
@@ -228,11 +297,11 @@ public class SendMessageHandler
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 92	com/tencent/mobileqq/utils/SendMessageHandler:jdField_b_of_type_Int	I
+    //   3: getfield 116	com/tencent/mobileqq/utils/SendMessageHandler:jdField_b_of_type_Int	I
     //   6: istore 6
     //   8: aload_0
-    //   9: getfield 62	com/tencent/mobileqq/utils/SendMessageHandler:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   12: invokeinterface 162 1 0
+    //   9: getfield 64	com/tencent/mobileqq/utils/SendMessageHandler:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   12: invokeinterface 73 1 0
     //   17: istore 7
     //   19: iload 6
     //   21: iload 7
@@ -243,52 +312,52 @@ public class SendMessageHandler
     //   30: monitorexit
     //   31: iload 8
     //   33: ireturn
-    //   34: invokestatic 73	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   34: invokestatic 100	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   37: ifeq +71 -> 108
-    //   40: ldc 75
+    //   40: ldc 102
     //   42: iconst_2
-    //   43: new 125	java/lang/StringBuilder
+    //   43: new 143	java/lang/StringBuilder
     //   46: dup
-    //   47: invokespecial 126	java/lang/StringBuilder:<init>	()V
-    //   50: ldc 164
-    //   52: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   47: invokespecial 144	java/lang/StringBuilder:<init>	()V
+    //   50: ldc 178
+    //   52: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   55: aload_0
-    //   56: getfield 134	com/tencent/mobileqq/utils/SendMessageHandler:jdField_a_of_type_Long	J
-    //   59: invokevirtual 137	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   62: ldc 166
-    //   64: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   56: getfield 152	com/tencent/mobileqq/utils/SendMessageHandler:jdField_a_of_type_Long	J
+    //   59: invokevirtual 155	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   62: ldc 180
+    //   64: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   67: lload_1
-    //   68: invokevirtual 137	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   71: ldc 168
-    //   73: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   68: invokevirtual 155	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   71: ldc 182
+    //   73: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   76: lload_3
-    //   77: invokevirtual 137	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   80: ldc 170
-    //   82: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   77: invokevirtual 155	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   80: ldc 184
+    //   82: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   85: aload_0
-    //   86: getfield 92	com/tencent/mobileqq/utils/SendMessageHandler:jdField_b_of_type_Int	I
-    //   89: invokevirtual 142	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   92: ldc 172
-    //   94: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   86: getfield 116	com/tencent/mobileqq/utils/SendMessageHandler:jdField_b_of_type_Int	I
+    //   89: invokevirtual 160	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   92: ldc 186
+    //   94: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   97: aload 5
-    //   99: invokevirtual 132	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   102: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   105: invokestatic 81	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   99: invokevirtual 150	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   102: invokevirtual 171	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   105: invokestatic 108	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   108: aload_0
     //   109: aload_0
-    //   110: getfield 92	com/tencent/mobileqq/utils/SendMessageHandler:jdField_b_of_type_Int	I
+    //   110: getfield 116	com/tencent/mobileqq/utils/SendMessageHandler:jdField_b_of_type_Int	I
     //   113: iconst_1
     //   114: iadd
-    //   115: putfield 92	com/tencent/mobileqq/utils/SendMessageHandler:jdField_b_of_type_Int	I
+    //   115: putfield 116	com/tencent/mobileqq/utils/SendMessageHandler:jdField_b_of_type_Int	I
     //   118: aload_0
-    //   119: new 174	aknn
+    //   119: new 188	com/tencent/mobileqq/utils/SendMessageHandler$1
     //   122: dup
     //   123: aload_0
     //   124: lload_3
     //   125: aload 5
-    //   127: invokespecial 177	aknn:<init>	(Lcom/tencent/mobileqq/utils/SendMessageHandler;JLjava/lang/String;)V
+    //   127: invokespecial 190	com/tencent/mobileqq/utils/SendMessageHandler$1:<init>	(Lcom/tencent/mobileqq/utils/SendMessageHandler;JLjava/lang/String;)V
     //   130: lload_1
-    //   131: invokevirtual 181	com/tencent/mobileqq/utils/SendMessageHandler:postDelayed	(Ljava/lang/Runnable;J)Z
+    //   131: invokevirtual 194	com/tencent/mobileqq/utils/SendMessageHandler:postDelayed	(Ljava/lang/Runnable;J)Z
     //   134: pop
     //   135: iconst_1
     //   136: istore 8
@@ -318,27 +387,35 @@ public class SendMessageHandler
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[");
-    int j = this.jdField_a_of_type_Int;
-    if ((j > 0) && (this.jdField_a_of_type_JavaUtilList.size() >= j))
+    try
     {
-      int i = 0;
-      while (i < j) {
-        try
+      int j = this.jdField_a_of_type_Int;
+      if (j > 0)
+      {
+        int i = this.jdField_a_of_type_JavaUtilList.size();
+        if (i >= j)
         {
-          localStringBuilder.append(((SendMessageHandler.SendMessageRunnable)this.jdField_a_of_type_JavaUtilList.get(i)).toString());
-          if (i != j - 1) {
-            localStringBuilder.append(",");
+          i = 0;
+          while (i < j) {
+            try
+            {
+              localStringBuilder.append(((SendMessageHandler.SendMessageRunnable)this.jdField_a_of_type_JavaUtilList.get(i)).toString());
+              if (i != j - 1) {
+                localStringBuilder.append(",");
+              }
+              i += 1;
+            }
+            catch (Exception localException)
+            {
+              localStringBuilder.append(localException.getMessage());
+            }
           }
-          i += 1;
-        }
-        catch (Exception localException)
-        {
-          localStringBuilder.append(localException.getMessage());
         }
       }
+      localStringBuilder.append("]");
+      return localStringBuilder.toString();
     }
-    localStringBuilder.append("]");
-    return localStringBuilder.toString();
+    finally {}
   }
 }
 

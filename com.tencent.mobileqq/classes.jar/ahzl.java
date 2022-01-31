@@ -1,21 +1,8 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.search.presenter.SearchTemplatePresenter;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class ahzl
-  implements Runnable
+public abstract interface ahzl
 {
-  public ahzl(SearchTemplatePresenter paramSearchTemplatePresenter, ImageView paramImageView, boolean paramBoolean) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845575);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845574);
-  }
+  public abstract boolean a(FileManagerEntity paramFileManagerEntity);
 }
 
 

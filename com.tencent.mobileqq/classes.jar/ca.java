@@ -1,91 +1,185 @@
-import com.dataline.activities.LiteMutiPicViewerActivity;
-import com.dataline.util.DataLineReportUtil;
-import com.dataline.util.DatalineFilesAdapter;
-import com.dataline.util.file.DLFileInfo;
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.DatalineMessageManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.data.DataLineMsgSet;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import com.dataline.activities.LiteActivity;
+import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 public class ca
-  implements FMDialogUtil.FMDialogInterface
 {
-  public ca(LiteMutiPicViewerActivity paramLiteMutiPicViewerActivity, DataLineHandler paramDataLineHandler) {}
+  int jdField_a_of_type_Int;
+  LiteActivity jdField_a_of_type_ComDatalineActivitiesLiteActivity;
+  ArrayList<String> jdField_a_of_type_JavaUtilArrayList;
+  
+  public ca(LiteActivity paramLiteActivity1, LiteActivity paramLiteActivity2)
+  {
+    this.jdField_a_of_type_ComDatalineActivitiesLiteActivity = paramLiteActivity2;
+  }
+  
+  String a(Uri paramUri)
+  {
+    return FileProvider7Helper.getRealPathFromContentURI(this.b.getApplicationContext(), paramUri);
+  }
   
   public void a()
   {
-    Object localObject1 = null;
-    LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).setPaused(false);
-    if ((LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).getGroupType() == -2000) && (!LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).isSingle())) {
-      DataLineReportUtil.p(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity.app);
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
+    while (this.jdField_a_of_type_Int == -1) {
+      return;
     }
-    Iterator localIterator = LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).values().iterator();
-    Object localObject2 = null;
-    while (localIterator.hasNext())
+    if (QLog.isColorLevel())
     {
-      DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
-      DLFileInfo localDLFileInfo = DatalineFilesAdapter.a(localDataLineMsgRecord);
-      Object localObject3;
-      if (localDLFileInfo.a == 1)
+      QLog.i(LiteActivity.a, 1, "sendMultipleFileWithFileProvider. [fileType] = " + this.jdField_a_of_type_Int);
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
       {
-        localObject3 = localObject2;
-        if (localObject2 == null) {
-          localObject3 = new ArrayList();
-        }
-        ((ArrayList)localObject3).add(localDataLineMsgRecord);
-        localObject2 = localObject3;
-      }
-      else
-      {
-        if (localDLFileInfo.a != 4)
-        {
-          localObject3 = localObject1;
-          if (localDLFileInfo.a != 2) {}
-        }
-        else if ((localDataLineMsgRecord.fileMsgStatus == 1L) && (localDataLineMsgRecord.strMoloKey != null))
-        {
-          if (!DataLineMsgSet.isSingle(localDataLineMsgRecord)) {
-            break label269;
-          }
-          DataLineReportUtil.d(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity.app);
-        }
-        for (;;)
-        {
-          localObject3 = localObject1;
-          if (localObject1 == null) {
-            localObject3 = new ArrayList();
-          }
-          ((List)localObject3).add(Long.valueOf(localDataLineMsgRecord.sessionid));
-          int i = DataLineMsgRecord.getDevTypeBySeId(localDataLineMsgRecord.sessionid);
-          localDataLineMsgRecord.fileMsgStatus = 0L;
-          this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity.app.a().a(i).c(localDataLineMsgRecord.msgId);
-          localObject1 = localObject3;
-          break;
-          label269:
-          DataLineReportUtil.e(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity.app);
-        }
+        String str = (String)localIterator.next();
+        QLog.i(LiteActivity.a, 1, "[filePath] = " + str);
       }
     }
-    if ((localObject2 != null) && (localObject2.size() > 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a(localObject2, true);
-    }
-    if ((localObject1 != null) && (localObject1.size() > 0)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a(localObject1);
-    }
-    LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity);
+    this.b.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_JavaUtilArrayList = null;
+    this.jdField_a_of_type_Int = -1;
   }
   
-  public void b() {}
+  public void a(Intent paramIntent)
+  {
+    Bundle localBundle;
+    Object localObject;
+    try
+    {
+      localBundle = paramIntent.getExtras();
+      if (paramIntent.getBooleanExtra("dataline_share_finish", false)) {
+        return;
+      }
+      paramIntent.putExtra("dataline_share_finish", true);
+      localObject = paramIntent.getType();
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        return;
+      }
+      if (localBundle == null)
+      {
+        QLog.e(LiteActivity.a, 1, "LiteJumpAction:doShare type is [" + (String)localObject + "], action is [" + paramIntent.getAction() + "]");
+        return;
+      }
+    }
+    catch (Exception paramIntent)
+    {
+      paramIntent.printStackTrace();
+      return;
+    }
+    if ((((String)localObject).startsWith("text")) && (!localBundle.containsKey("android.intent.extra.STREAM")))
+    {
+      paramIntent = localBundle.getString("android.intent.extra.TEXT");
+      this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(paramIntent);
+      return;
+    }
+    if (((String)localObject).startsWith("message"))
+    {
+      paramIntent = (SpannableString)localBundle.get("android.intent.extra.TEXT");
+      this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(paramIntent.toString());
+      return;
+    }
+    if (((String)localObject).startsWith("image"))
+    {
+      if (paramIntent.getAction().equals("android.intent.action.SEND"))
+      {
+        paramIntent = (Uri)localBundle.get("android.intent.extra.STREAM");
+        if (paramIntent == null)
+        {
+          LiteActivity.a(this.b);
+          return;
+        }
+        localObject = new ArrayList();
+        ((ArrayList)localObject).add(paramIntent);
+        a((ArrayList)localObject, true);
+        return;
+      }
+      paramIntent = (ArrayList)localBundle.get("android.intent.extra.STREAM");
+      if (paramIntent.size() > 50)
+      {
+        LiteActivity.b(this.b);
+        return;
+      }
+      a(paramIntent, true);
+      return;
+    }
+    if (paramIntent.getAction().equals("android.intent.action.SEND"))
+    {
+      paramIntent = (Uri)localBundle.get("android.intent.extra.STREAM");
+      if (paramIntent == null)
+      {
+        LiteActivity.a(this.b);
+        return;
+      }
+      if (((paramIntent instanceof Uri)) && ("text/x-vcard".equals(localObject)) && ("content".equals(paramIntent.getScheme())))
+      {
+        new cd(this.b).execute(new Object[] { this.b.getApplicationContext(), paramIntent });
+        return;
+      }
+      localObject = new ArrayList();
+      ((ArrayList)localObject).add(paramIntent);
+      a((ArrayList)localObject, false);
+      return;
+    }
+    a((ArrayList)localBundle.get("android.intent.extra.STREAM"), false);
+  }
+  
+  void a(ArrayList<Uri> paramArrayList, boolean paramBoolean)
+  {
+    int i = 1;
+    if (paramArrayList == null)
+    {
+      LiteActivity.a(this.b);
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    String str;
+    if (paramArrayList.size() == 1)
+    {
+      str = a((Uri)paramArrayList.get(0));
+      if ((TextUtils.isEmpty(str)) || (!new File(str).canRead()))
+      {
+        localArrayList.add(LiteActivity.a(this.b, (Uri)paramArrayList.get(0)));
+        this.jdField_a_of_type_JavaUtilArrayList = localArrayList;
+        if (paramBoolean) {}
+        for (i = 1;; i = 0)
+        {
+          this.jdField_a_of_type_Int = i;
+          return;
+        }
+      }
+      localArrayList.add(str);
+      if (!paramBoolean) {
+        break label183;
+      }
+    }
+    for (;;)
+    {
+      this.b.a(localArrayList, i);
+      return;
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        str = a((Uri)paramArrayList.next());
+        if (!TextUtils.isEmpty(str)) {
+          localArrayList.add(str);
+        }
+      }
+      break;
+      label183:
+      i = 0;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ca
  * JD-Core Version:    0.7.0.1
  */

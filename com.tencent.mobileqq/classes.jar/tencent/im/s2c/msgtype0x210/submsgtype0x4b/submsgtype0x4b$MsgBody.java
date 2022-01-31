@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class submsgtype0x4b$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   public static final int RPT_UINT64_USER_FIELD_NUMBER = 10;
   public static final int STRING_ALBUMID_FIELD_NUMBER = 1;
@@ -23,7 +23,7 @@ public final class submsgtype0x4b$MsgBody
   public static final int UINT32_USR_TOTAL_FIELD_NUMBER = 9;
   public static final int UINT64_OPUIN_FIELD_NUMBER = 4;
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 45, 48, 58, 66, 72, 80 }, new String[] { "string_albumid", "string_coverUrl", "string_albumName", "uint64_opuin", "uint32_time", "uint32_pic_cnt", "string_push_msg_helper", "string_push_msg_album", "uint32_usr_total", "rpt_uint64_user" }, new Object[] { "", "", "", Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), Long.valueOf(0L) }, MsgBody.class);
-  public final PBRepeatField rpt_uint64_user = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> rpt_uint64_user = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBStringField string_albumName = PBField.initString("");
   public final PBStringField string_albumid = PBField.initString("");
   public final PBStringField string_coverUrl = PBField.initString("");

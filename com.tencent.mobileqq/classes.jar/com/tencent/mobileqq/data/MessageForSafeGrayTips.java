@@ -33,13 +33,13 @@ public class MessageForSafeGrayTips
     }
   }
   
-  protected void postRead()
+  public void postRead()
   {
     this.msgId = getLogicMsgID(getId(), this.versionCode);
     parse();
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     QLog.d(this.TAG, 2, "prewrite versionCode:" + this.versionCode);
     if (this.versionCode < 3) {

@@ -1,29 +1,39 @@
-import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.RecommendFriendActivity;
+import com.tencent.mobileqq.data.MayKnowRecommend;
+import java.util.List;
 
 public class abnu
-  implements View.OnClickListener
+  implements aibl
 {
-  public abnu(ARGridMapViewDialog paramARGridMapViewDialog, String paramString) {}
+  public abnu(RecommendFriendActivity paramRecommendFriendActivity) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog.a, QQBrowserActivity.class);
-      paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog.a.startActivity(paramView);
-    }
+    RecommendFriendActivity.a(this.a).setVisibility(0);
+  }
+  
+  public void a(String paramString)
+  {
+    RecommendFriendActivity.a(this.a, paramString);
+  }
+  
+  public void a(List<MayKnowRecommend> paramList)
+  {
+    Intent localIntent = this.a.getIntent();
+    int i = localIntent.getIntExtra("EntranceId", 0);
+    RecommendFriendActivity.a(this.a, localIntent, i, paramList);
+  }
+  
+  public void b()
+  {
+    RecommendFriendActivity.a(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abnu
  * JD-Core Version:    0.7.0.1
  */

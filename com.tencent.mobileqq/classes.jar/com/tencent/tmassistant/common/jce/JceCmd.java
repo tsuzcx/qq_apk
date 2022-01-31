@@ -8,22 +8,32 @@ public final class JceCmd
   public static final JceCmd Empty;
   public static final JceCmd GetAppSimpleDetail;
   public static final JceCmd GetAppUpdate;
-  public static final JceCmd GetCallerSetting;
   public static final JceCmd GetConfig;
   public static final JceCmd GetHalleyUrl;
+  public static final JceCmd GetHotSdkUpdate;
+  public static final JceCmd GetMobilePhoneQqApkInfo;
+  public static final JceCmd GetPkgInfo;
+  public static final JceCmd GetPush;
+  public static final JceCmd GetRecmdIdBatch;
   public static final JceCmd GetSettings;
   public static final JceCmd ReportApkFileInfo;
   public static final JceCmd ReportLog;
+  public static final JceCmd SDKDataReport;
   public static final JceCmd StatReport;
   public static final int _Empty = 0;
   public static final int _GetAppSimpleDetail = 5;
   public static final int _GetAppUpdate = 3;
-  public static final int _GetCallerSetting = 6;
   public static final int _GetConfig = 7;
   public static final int _GetHalleyUrl = 10;
+  public static final int _GetHotSdkUpdate = 11;
+  public static final int _GetMobilePhoneQqApkInfo = 15;
+  public static final int _GetPkgInfo = 12;
+  public static final int _GetPush = 8;
+  public static final int _GetRecmdIdBatch = 14;
   public static final int _GetSettings = 2;
   public static final int _ReportApkFileInfo = 4;
   public static final int _ReportLog = 1;
+  public static final int _SDKDataReport = 13;
   public static final int _StatReport = 9;
   private static JceCmd[] __values;
   private String __T = new String();
@@ -35,17 +45,22 @@ public final class JceCmd
     for (boolean bool = true;; bool = false)
     {
       a = bool;
-      __values = new JceCmd[10];
+      __values = new JceCmd[15];
       Empty = new JceCmd(0, 0, "Empty");
       ReportLog = new JceCmd(1, 1, "ReportLog");
       GetSettings = new JceCmd(2, 2, "GetSettings");
       GetAppUpdate = new JceCmd(3, 3, "GetAppUpdate");
       ReportApkFileInfo = new JceCmd(4, 4, "ReportApkFileInfo");
       GetAppSimpleDetail = new JceCmd(5, 5, "GetAppSimpleDetail");
-      GetCallerSetting = new JceCmd(6, 6, "GetCallerSetting");
-      GetConfig = new JceCmd(7, 7, "GetConfig");
-      StatReport = new JceCmd(9, 9, "StatReport");
-      GetHalleyUrl = new JceCmd(10, 10, "GetHalleyUrl");
+      GetConfig = new JceCmd(6, 7, "GetConfig");
+      GetPush = new JceCmd(7, 8, "GetPush");
+      StatReport = new JceCmd(8, 9, "StatReport");
+      GetHalleyUrl = new JceCmd(9, 10, "GetHalleyUrl");
+      GetHotSdkUpdate = new JceCmd(10, 11, "GetHotSdkUpdate");
+      GetPkgInfo = new JceCmd(11, 12, "GetPkgInfo");
+      SDKDataReport = new JceCmd(12, 13, "SDKDataReport");
+      GetRecmdIdBatch = new JceCmd(13, 14, "GetRecmdIdBatch");
+      GetMobilePhoneQqApkInfo = new JceCmd(14, 15, "GetMobilePhoneQqApkInfo");
       return;
     }
   }
@@ -101,7 +116,7 @@ public final class JceCmd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmassistant.common.jce.JceCmd
  * JD-Core Version:    0.7.0.1
  */

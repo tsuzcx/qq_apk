@@ -1,18 +1,16 @@
-import android.view.View;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aghu
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  aghu(aght paramaght, View paramView) {}
+  aghu(aght paramaght) {}
   
-  public void run()
-  {
-    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aghu
  * JD-Core Version:    0.7.0.1
  */

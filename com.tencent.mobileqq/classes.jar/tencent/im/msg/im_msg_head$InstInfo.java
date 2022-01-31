@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class im_msg_head$InstInfo
-  extends MessageMicro
+  extends MessageMicro<InstInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 80 }, new String[] { "uint32_apppid", "uint32_instid", "uint32_platform", "enum_device_type" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, InstInfo.class);
   public final PBEnumField enum_device_type = PBField.initEnum(0);

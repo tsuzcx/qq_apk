@@ -1,59 +1,68 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.pubaccount.ecshopassit.ShopWebViewFragment;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.av.business.manager.EffectConfigBase;
+import com.tencent.mobileqq.startup.step.UpdateAvSo;
+import com.tencent.qphone.base.util.QLog;
 
 public class lcr
-  implements View.OnTouchListener
 {
-  public lcr(ShopWebViewFragment paramShopWebViewFragment, JSONObject paramJSONObject1, JSONObject paramJSONObject2) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public static int a(lcj paramlcj)
   {
-    switch (paramMotionEvent.getAction())
+    if (paramlcj == null) {}
+    do
     {
-    }
-    for (;;)
-    {
-      return false;
-      this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.c = ((int)paramMotionEvent.getY());
-      return false;
-      int i = (int)(this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.c - paramMotionEvent.getY());
-      this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.c = ((int)paramMotionEvent.getY());
-      if ((i < 0) && (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d > 0)) {
-        this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d = 0;
-      }
-      if ((i > 0) && (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d < 0)) {
-        this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d = 0;
-      }
-      paramView = this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment;
-      paramView.d = (i + paramView.d);
-      return false;
-      try
+      do
       {
-        this.jdField_a_of_type_OrgJsonJSONObject.put("y_offset", this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.d);
-        paramView = WebViewPlugin.toJsScript("onScroll", this.jdField_a_of_type_OrgJsonJSONObject, this.b);
-        if (this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.a != null)
-        {
-          this.jdField_a_of_type_ComTencentBizPubaccountEcshopassitShopWebViewFragment.a.c(paramView);
-          return false;
+        return 11;
+        if (!TextUtils.isEmpty(paramlcj.c)) {
+          break;
         }
+      } while (!QLog.isDevelopLevel());
+      QLog.d("QavGPDownloadManager", 4, String.format("getEnableFlag, %s", new Object[] { paramlcj }));
+      return 11;
+      if (!paramlcj.a) {
+        break;
       }
-      catch (JSONException paramView)
-      {
-        paramView.printStackTrace();
+    } while (!a(paramlcj));
+    return 1;
+    return 2;
+  }
+  
+  static SharedPreferences a()
+  {
+    return EffectConfigBase.a(298, EffectConfigBase.d);
+  }
+  
+  public static String a()
+  {
+    return UpdateAvSo.a();
+  }
+  
+  public static boolean a(lcj paramlcj)
+  {
+    String str1 = paramlcj.b;
+    paramlcj = a() + paramlcj.d + ".so";
+    String str2 = a().getString("so_zip_md5", null);
+    if ((TextUtils.isEmpty(str2)) || (!str2.equals(str1))) {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("QavGPDownloadManager", 4, String.format("isSoReady, sp_md5[%s], xmlMd5[%s]", new Object[] { str2, str1 }));
       }
     }
+    do
+    {
+      return false;
+      if (bace.a(paramlcj)) {
+        break;
+      }
+    } while (!QLog.isDevelopLevel());
+    QLog.d("QavGPDownloadManager", 4, String.format("isSoReady, file no exist,  fileName[%s]", new Object[] { paramlcj }));
     return false;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lcr
  * JD-Core Version:    0.7.0.1
  */

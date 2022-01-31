@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class qqstory_struct$StoryVideoTotalInfo
-  extends MessageMicro
+  extends MessageMicro<StoryVideoTotalInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18 }, new String[] { "feature", "basic_info" }, new Object[] { null, null }, StoryVideoTotalInfo.class);
   public qqstory_struct.StoryVideoBasicInfo basic_info = new qqstory_struct.StoryVideoBasicInfo();
@@ -12,7 +12,7 @@ public final class qqstory_struct$StoryVideoTotalInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoTotalInfo
  * JD-Core Version:    0.7.0.1
  */

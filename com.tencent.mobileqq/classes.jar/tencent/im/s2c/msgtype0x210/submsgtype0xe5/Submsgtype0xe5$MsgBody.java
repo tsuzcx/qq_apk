@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class Submsgtype0xe5$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 66, 74, 82, 90, 98 }, new String[] { "uint32_sub_cmd", "msg_crm_common_head", "msg_s2c_cc_agent_status_change_push", "msg_s2c_cc_config_change_push", "msg_s2c_cc_exception_occur_push", "msg_s2c_cc_talking_status_change_push", "msg_s2c_cc_agent_action_result_push", "msg_s2c_call_record_change_push", "msg_s2c_sms_event_push", "msg_s2c_agent_call_status_event_push", "msg_s2c_user_get_coupon_for_kfext_event_push", "msg_s2c_user_get_coupon_for_c_event_push" }, new Object[] { Integer.valueOf(0), null, null, null, null, null, null, null, null, null, null, null }, MsgBody.class);
   public Submsgtype0xe5.CrmS2CMsgHead msg_crm_common_head = new Submsgtype0xe5.CrmS2CMsgHead();

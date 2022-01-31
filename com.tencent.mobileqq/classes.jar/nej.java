@@ -1,21 +1,18 @@
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.CreateFakeVideoEvent;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.StoryVideoPublishStatusEvent;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoTaskInfo;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.EntranceDownloadInfo;
 
-public class nej
-  implements Runnable
+public final class nej
+  implements Parcelable.Creator<VideoInfo.EntranceDownloadInfo>
 {
-  public nej(StoryVideoUploadManager paramStoryVideoUploadManager, StoryVideoTaskInfo paramStoryVideoTaskInfo, StoryVideoUploadManager.StoryVideoPublishStatusEvent paramStoryVideoPublishStatusEvent) {}
-  
-  public void run()
+  public VideoInfo.EntranceDownloadInfo a(Parcel paramParcel)
   {
-    SLog.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "create story %s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoTaskInfo });
-    Dispatchers.get().dispatch(this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadStoryVideoUploadManager$StoryVideoPublishStatusEvent);
-    Dispatchers.get().dispatch(new StoryVideoUploadManager.CreateFakeVideoEvent());
+    return new VideoInfo.EntranceDownloadInfo(paramParcel);
+  }
+  
+  public VideoInfo.EntranceDownloadInfo[] a(int paramInt)
+  {
+    return new VideoInfo.EntranceDownloadInfo[paramInt];
   }
 }
 

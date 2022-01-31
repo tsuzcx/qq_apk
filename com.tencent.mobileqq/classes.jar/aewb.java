@@ -1,43 +1,24 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomFloatView;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.mobileqq.werewolves.WerewolvesObserver;
-import com.tencent.mobileqq.widget.QQToast;
-import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody;
-import tencent.im.s2c.msgtype0x210.submsgtype0xdd.submsgtype0xdd.MsgBody.WifiPOIInfo;
+import com.tencent.pb.addcontacts.AccountSearchPb.ResultItem;
+import com.tencent.pb.addcontacts.AccountSearchPb.hotwordrecord;
+import com.tencent.pb.addcontacts.AccountSearchPb.record;
+import java.util.List;
 
 public class aewb
-  extends WerewolvesObserver
 {
-  public aewb(GameRoomFloatView paramGameRoomFloatView) {}
-  
-  public void a(submsgtype0xdd.MsgBody paramMsgBody)
-  {
-    switch (paramMsgBody.uint32_msg_type.get())
-    {
-    }
-    do
-    {
-      return;
-      paramMsgBody = (submsgtype0xdd.MsgBody.WifiPOIInfo)paramMsgBody.msg_poi_info.get();
-      String str = paramMsgBody.bytes_uid.get().toStringUtf8();
-      this.a.a(HotChatInfo.createHotChat(paramMsgBody, false, 0), paramMsgBody.uint32_group_code.get(), str, paramMsgBody.bytes_name.get().toStringUtf8());
-      return;
-      QQToast.a(this.a.a, "你被移出房间", 0).a();
-      paramMsgBody = BaseApplicationImpl.getApplication().getRuntime();
-    } while ((paramMsgBody == null) || (!(paramMsgBody instanceof QQAppInterface)));
-    paramMsgBody = (QQAppInterface)paramMsgBody;
-    SharedPreUtils.a(this.a.a, paramMsgBody.getCurrentAccountUin(), false, System.currentTimeMillis());
-  }
+  public int a;
+  public AccountSearchPb.hotwordrecord a;
+  public String a;
+  public List<String> a;
+  public boolean a;
+  public int b;
+  public List<AccountSearchPb.record> b;
+  public boolean b;
+  public int c;
+  public List<AccountSearchPb.ResultItem> c;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aewb
  * JD-Core Version:    0.7.0.1
  */

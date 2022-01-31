@@ -1,44 +1,32 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.OldHttpEngine.OldHttpCommunicatorListner;
-import com.tencent.mobileqq.transfile.RichMediaUtil;
-import com.tencent.mobileqq.utils.httputils.HttpMsg;
 import com.tencent.qphone.base.util.QLog;
-import java.util.TimerTask;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.io.File;
 
-public class aivp
-  extends TimerTask
+class aivp
+  implements aiud
 {
-  public aivp(OldHttpEngine.OldHttpCommunicatorListner paramOldHttpCommunicatorListner, HttpNetReq paramHttpNetReq) {}
+  aivp(aivd paramaivd, int paramInt, File paramFile, String paramString) {}
   
-  public void run()
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    boolean bool = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine$OldHttpCommunicatorListner.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      int i;
-      if ((QLog.isColorLevel()) && (this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq != null))
-      {
-        i = this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.g;
-        if (this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.a != 1) {
-          break label71;
-        }
-      }
-      for (;;)
-      {
-        RichMediaUtil.a(i, bool, this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.f, this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.e, "scheduleRetry", "mIsCancelled is true 4");
-        return;
-        label71:
-        bool = false;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloPluginRscLoader", 2, "getApolloRsc onDownLoadFinish:" + this.jdField_a_of_type_Int + " sucess:" + paramBoolean);
     }
-    this.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine$OldHttpCommunicatorListner.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg.a(9004, -1, "nonetwork");
-    this.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine$OldHttpCommunicatorListner.b(this.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine$OldHttpCommunicatorListner.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg, this.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine$OldHttpCommunicatorListner.jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg);
+    if (paramBoolean)
+    {
+      if (this.jdField_a_of_type_JavaIoFile.exists())
+      {
+        this.jdField_a_of_type_Aivd.a(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_Int + ajjy.a(2131634697));
+        return;
+      }
+      this.jdField_a_of_type_Aivd.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Int + ajjy.a(2131634696));
+      return;
+    }
+    this.jdField_a_of_type_Aivd.a(this.jdField_a_of_type_JavaLangString, 2, this.jdField_a_of_type_Int + ajjy.a(2131634718));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aivp
  * JD-Core Version:    0.7.0.1
  */

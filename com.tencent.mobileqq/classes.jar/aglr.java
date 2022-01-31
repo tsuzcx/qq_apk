@@ -1,27 +1,21 @@
-import com.tencent.mobileqq.olympic.activity.ARTipsManager.OcrClickListener;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aglr
-  implements ARTipsManager.OcrClickListener
+final class aglr
+  implements DialogInterface.OnClickListener
 {
-  public aglr(ScanTorchActivity paramScanTorchActivity) {}
+  aglr(Activity paramActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReportController.b(null, "dc00898", "", "", "0X80085B2", "0X80085B2", 0, 0, "", "", "", "");
-    ScanTorchActivity.p(this.a);
-  }
-  
-  public void b()
-  {
-    ReportController.b(null, "dc00898", "", "", "0X80087BE", "0X80087BE", 0, 0, "", "", "", "");
-    ScanTorchActivity.q(this.a);
+    this.a.setResult(-1);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aglr
  * JD-Core Version:    0.7.0.1
  */

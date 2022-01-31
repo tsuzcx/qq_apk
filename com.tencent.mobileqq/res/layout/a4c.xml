@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/f14" android:background="@drawable/a2m" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.widget.FixSizeImageView android:id="@id/f15" android:background="@drawable/t8" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="12.0dip" android:src="@drawable/cq9" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+            <TextView android:textSize="17.0dip" android:textColor="@color/skin_black_theme_version2" android:gravity="center_vertical" android:id="@id/f16" android:layout_width="wrap_content" android:layout_height="58.0dip" android:layout_marginLeft="@dimen/ado" android:singleLine="true" android:layout_alignParentLeft="true" />
+            <com.tencent.mobileqq.activity.recent.cur.DragTextView android:id="@id/kik" android:layout_marginRight="12.0dip" android:layout_below="@id/i6p" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/cg" />
+            <ImageView android:id="@id/za" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:src="@drawable/skin_icon_arrow_right_normal" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

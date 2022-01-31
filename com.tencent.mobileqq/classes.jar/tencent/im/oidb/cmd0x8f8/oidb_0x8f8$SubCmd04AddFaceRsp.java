@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.trunk.feeds_inner_define.feeds_inner_define.FaceRecordSet;
 
 public final class oidb_0x8f8$SubCmd04AddFaceRsp
-  extends MessageMicro
+  extends MessageMicro<SubCmd04AddFaceRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_feeds_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -22,7 +22,7 @@ public final class oidb_0x8f8$SubCmd04AddFaceRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8f8.oidb_0x8f8.SubCmd04AddFaceRsp
  * JD-Core Version:    0.7.0.1
  */

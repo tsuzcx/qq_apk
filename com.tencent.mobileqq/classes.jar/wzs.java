@@ -1,30 +1,23 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.phone.CountryActivity;
+import android.content.Context;
+import android.graphics.PointF;
+import android.support.v7.widget.LinearSmoothScroller;
 
-public class wzs
-  implements Animation.AnimationListener
+class wzs
+  extends LinearSmoothScroller
 {
-  public wzs(CountryActivity paramCountryActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  wzs(wzr paramwzr, Context paramContext)
   {
-    if (!this.a.isFinishing())
-    {
-      this.a.jdField_a_of_type_Wzz.show();
-      this.a.b.setAnimation(null);
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-    }
+    super(paramContext);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public PointF computeScrollVectorForPosition(int paramInt)
+  {
+    return this.a.a(paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wzs
  * JD-Core Version:    0.7.0.1
  */

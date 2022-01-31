@@ -1,19 +1,8 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.Button;
-import com.tencent.biz.qqstory.takevideo.EditPicQzonePublishActivity;
-
-public class ohx
-  implements DialogInterface.OnClickListener
+public abstract interface ohx
 {
-  public ohx(EditPicQzonePublishActivity paramEditPicQzonePublishActivity) {}
+  public abstract void l();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    EditPicQzonePublishActivity.a(this.a, true);
-    EditPicQzonePublishActivity.a(this.a).setSelected(true);
-  }
+  public abstract void m();
 }
 
 

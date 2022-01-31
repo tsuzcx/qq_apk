@@ -1,24 +1,29 @@
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.support.annotation.NonNull;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
 import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import java.util.List;
 
 public class ucs
-  implements Runnable
+  extends JobSegment<String, ucw>
 {
-  public ucs(TroopInfoActivity paramTroopInfoActivity) {}
+  private szd jdField_a_of_type_Szd = new szd();
   
-  public void run()
+  public ucs(ucr paramucr, @NonNull String paramString)
   {
-    ArrayList localArrayList = TroopInfoActivity.a(this.a, this.a.a);
-    if (localArrayList != null) {
-      ThreadManager.getUIHandler().post(new uct(this, localArrayList));
-    }
+    this.jdField_a_of_type_Szd.a = new ArrayList();
+    paramucr = new uiw(paramString, 0, "", "");
+    this.jdField_a_of_type_Szd.a.add(paramucr);
+  }
+  
+  protected void a(JobContext paramJobContext, String paramString)
+  {
+    slv.a().a(this.jdField_a_of_type_Szd, new uct(this, paramJobContext));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ucs
  * JD-Core Version:    0.7.0.1
  */

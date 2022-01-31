@@ -1,22 +1,18 @@
-import android.text.TextUtils;
-import cooperation.comic.jsp.QQComicJsCallback;
-import cooperation.comic.jsp.QQComicJsPlugin;
-
 public class amrf
-  implements QQComicJsCallback
 {
-  public amrf(QQComicJsPlugin paramQQComicJsPlugin) {}
+  private float jdField_a_of_type_Float;
+  private int jdField_a_of_type_Int;
+  private String jdField_a_of_type_JavaLangString;
+  private String b;
   
-  public void a(String paramString1, String paramString2)
+  public String toString()
   {
-    if (!TextUtils.isEmpty(paramString1)) {
-      QQComicJsPlugin.a(this.a, paramString1, new String[] { paramString2 });
-    }
+    return "DrawableParams{mUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mDefaultUrl='" + this.b + '\'' + ", mShape=" + this.jdField_a_of_type_Int + ", mCornerRadius=" + this.jdField_a_of_type_Float + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amrf
  * JD-Core Version:    0.7.0.1
  */

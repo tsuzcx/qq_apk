@@ -1,18 +1,28 @@
-import com.tencent.mobileqq.app.BizTroopHandler;
+import android.database.DataSetObserver;
+import android.support.v4.view.PagerAdapter;
+import com.tencent.biz.qqstory.view.EmptySupportViewPager;
 
-class vop
-  implements Runnable
+public class vop
+  extends DataSetObserver
 {
-  vop(voo paramvoo, BizTroopHandler paramBizTroopHandler) {}
+  public vop(EmptySupportViewPager paramEmptySupportViewPager) {}
   
-  public void run()
+  public void onChanged()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopHandler.a(this.jdField_a_of_type_Voo.a);
+    PagerAdapter localPagerAdapter = this.a.getAdapter();
+    if ((localPagerAdapter != null) && (localPagerAdapter.getCount() > 0))
+    {
+      this.a.a(8);
+      EmptySupportViewPager.a(this.a, 0);
+      return;
+    }
+    this.a.a(0);
+    EmptySupportViewPager.b(this.a, 8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vop
  * JD-Core Version:    0.7.0.1
  */

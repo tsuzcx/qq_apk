@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.ARMapActivity.LocationMonitor;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
 
 public class abiu
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public abiu(ARMapActivity.LocationMonitor paramLocationMonitor) {}
+  public abiu(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.a(-100);
+    ProfileLabelEditorActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abiu
  * JD-Core Version:    0.7.0.1
  */

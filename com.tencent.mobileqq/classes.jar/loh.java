@@ -1,23 +1,20 @@
-import android.content.SharedPreferences;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.telephony.PhoneStateListener;
+import com.tencent.av.smallscreen.BaseSmallScreenService;
 
 public class loh
-  implements Runnable
+  extends PhoneStateListener
 {
-  public loh(KandianMergeManager paramKandianMergeManager) {}
+  public loh(BaseSmallScreenService paramBaseSmallScreenService) {}
   
-  public void run()
+  public void onCallStateChanged(int paramInt, String paramString)
   {
-    SharedPreferences localSharedPreferences = ReadInJoyHelper.a(KandianMergeManager.a(this.a), true, false);
-    if (localSharedPreferences != null) {
-      KandianMergeManager.a(this.a, localSharedPreferences.getInt("kandian_follow_data_length", -1));
-    }
+    super.onCallStateChanged(paramInt, paramString);
+    this.a.a(paramInt, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     loh
  * JD-Core Version:    0.7.0.1
  */

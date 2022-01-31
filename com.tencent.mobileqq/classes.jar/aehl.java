@@ -1,34 +1,30 @@
-import com.tencent.mobileqq.leba.LebaFeedsVideoSdkInstaller;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import android.os.Bundle;
+import android.os.Handler;
+import mqq.observer.BusinessObserver;
 
-public class aehl
-  implements Runnable
+class aehl
+  implements BusinessObserver
 {
-  public aehl(LebaFeedsVideoSdkInstaller paramLebaFeedsVideoSdkInstaller) {}
+  aehl(aegy paramaegy) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LebaFeedsVideoSdkInstaller", 2, "start install video sdk in subThread");
-    }
-    try
+    if (paramBundle != null)
     {
-      if (LebaFeedsVideoSdkInstaller.a(this.a) != null) {
-        TVK_SDKMgr.installPlugin(LebaFeedsVideoSdkInstaller.a(this.a), new aehn(LebaFeedsVideoSdkInstaller.a(this.a)));
-      }
+      paramInt = paramBundle.getInt("update_type");
+      if (paramInt != 2) {}
+    }
+    else
+    {
       return;
     }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("LebaFeedsVideoSdkInstaller", 2, "TVK_SDKMgr.installPlugin ERROR e=" + localException.getMessage());
-    }
+    if (paramInt == 1) {}
+    this.a.a.sendEmptyMessage(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aehl
  * JD-Core Version:    0.7.0.1
  */

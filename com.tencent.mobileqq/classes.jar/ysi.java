@@ -1,44 +1,24 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRenderDriver;
-import com.tencent.mobileqq.apollo.ITriggerRenderCallback;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.locks.ReentrantLock;
+import android.view.View;
+import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
 
 public class ysi
-  implements Runnable
+  implements yrz
 {
-  public ysi(ApolloRenderDriver paramApolloRenderDriver, String[] paramArrayOfString) {}
+  public ysi(GdtVideoImaxFragment paramGdtVideoImaxFragment) {}
   
-  public void run()
+  public void a(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloRenderDriver", 2, "start run.");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    int i = 0;
-    try
+    switch (paramView.getId())
     {
-      while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_ComTencentMobileqqApolloApolloEngine.a(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
-        i += 1;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-      if ((!this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_ComTencentMobileqqApolloITriggerRenderCallback != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_ComTencentMobileqqApolloITriggerRenderCallback.onRender();
-      }
+    default: 
       return;
     }
-    finally
-    {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-    }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ysi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,37 @@
-import android.view.animation.Interpolator;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public final class wua
-  implements Interpolator
+class wua
+  extends Handler
 {
-  private float a = 1.6F;
-  
-  public float getInterpolation(float paramFloat)
+  wua(wtw paramwtw, Looper paramLooper)
   {
-    paramFloat -= 1.0F;
-    return (paramFloat * (this.a + 1.0F) + this.a) * (paramFloat * paramFloat) + 1.0F;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      wye.a("mystatus_shoot", "comp_recomm", 0, 0, new String[0]);
+      paramMessage = paramMessage.getData();
+      int i = paramMessage.getInt("sceneLvOne");
+      paramMessage = paramMessage.getString("sceneName");
+      this.a.a(i, paramMessage, true);
+      return;
+    }
+    wye.a("mystatus_shoot", "exp_recomm", 0, 0, new String[0]);
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wua
  * JD-Core Version:    0.7.0.1
  */

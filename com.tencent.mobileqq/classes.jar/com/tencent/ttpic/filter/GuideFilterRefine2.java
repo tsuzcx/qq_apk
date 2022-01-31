@@ -1,7 +1,7 @@
 package com.tencent.ttpic.filter;
 
+import com.tencent.aekit.openrender.UniformParam.FloatParam;
 import com.tencent.filter.BaseFilter;
-import com.tencent.filter.Param.FloatParam;
 
 public class GuideFilterRefine2
   extends BaseFilter
@@ -16,19 +16,19 @@ public class GuideFilterRefine2
   
   private void initParams()
   {
-    addParam(new Param.FloatParam("width", 0.0F));
-    addParam(new Param.FloatParam("height", 0.0F));
+    addParam(new UniformParam.FloatParam("width", 0.0F));
+    addParam(new UniformParam.FloatParam("height", 0.0F));
   }
   
   public void updateParams(int paramInt1, int paramInt2)
   {
-    addParam(new Param.FloatParam("width", paramInt1));
-    addParam(new Param.FloatParam("height", paramInt2));
+    addParam(new UniformParam.FloatParam("width", paramInt1));
+    addParam(new UniformParam.FloatParam("height", paramInt2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.filter.GuideFilterRefine2
  * JD-Core Version:    0.7.0.1
  */

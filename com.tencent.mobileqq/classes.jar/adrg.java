@@ -1,32 +1,35 @@
-import android.database.DataSetObserver;
-import com.tencent.mobileqq.filemanager.widget.QfileHorizontalListView;
+import com.tencent.mobileqq.activity.aio.item.TextItemBuilder.7.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
 public class adrg
-  extends DataSetObserver
+  extends fs
 {
-  public adrg(QfileHorizontalListView paramQfileHorizontalListView) {}
+  adrg(adra paramadra) {}
   
-  public void onChanged()
+  public void a(ChatMessage paramChatMessage, int paramInt) {}
+  
+  public void a(ChatMessage paramChatMessage, boolean paramBoolean, int paramInt)
   {
-    synchronized (this.a)
+    if ((!paramBoolean) && (paramChatMessage != null))
     {
-      QfileHorizontalListView.a(this.a, true);
-      this.a.invalidate();
-      this.a.requestLayout();
+      paramChatMessage.saveExtInfoToExtStr("font_animation_played", "1");
+      ThreadManager.excute(new TextItemBuilder.7.1(this, paramChatMessage), 128, null, true);
+    }
+    String str = this.a.a.c();
+    if (paramBoolean) {}
+    for (paramChatMessage = "1";; paramChatMessage = "0")
+    {
+      VasWebviewUtil.reportCommercialDrainage(str, "Font_Mall", "0X800813C", "0", 0, 1, 1, null, paramChatMessage, "" + paramInt);
       return;
     }
-  }
-  
-  public void onInvalidated()
-  {
-    QfileHorizontalListView.a(this.a);
-    this.a.invalidate();
-    this.a.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adrg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,107 +1,238 @@
+import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.MakeVideoActivity;
-import java.io.File;
-import java.util.ArrayList;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playmode.util.SendVideoToFriendHelper.1;
+import com.tencent.biz.qqstory.playmode.util.SendVideoToFriendHelper.2;
+import com.tencent.biz.qqstory.playmode.util.SendVideoToFriendHelper.3;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.IEventReceiver;
+import mqq.os.MqqHandler;
 
 public class tgm
-  extends Handler
+  implements IEventReceiver
 {
-  public tgm(MakeVideoActivity paramMakeVideoActivity) {}
+  private static tgm jdField_a_of_type_Tgm;
+  public Bundle a;
+  public StoryVideoItem a;
+  public String a;
+  private boolean jdField_a_of_type_Boolean;
   
-  public void handleMessage(Message paramMessage)
+  private tgm()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      MakeVideoActivity.a(this.a).setVisibility(4);
-      MakeVideoActivity.b(this.a).setVisibility(0);
-      MakeVideoActivity.c(this.a).setVisibility(0);
-      MakeVideoActivity.a(this.a).setVisibility(0);
-      return;
-    case 2: 
-      if (this.a.e < 4)
-      {
-        ((ImageView)this.a.b.get(this.a.e)).setVisibility(4);
-        paramMessage = (TextView)this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.e);
-        paramMessage.setTextColor(Color.parseColor("#ffffff"));
-        paramMessage.setText(this.a.jdField_a_of_type_ArrayOfJavaLangString[this.a.e]);
-        paramMessage.setVisibility(0);
-        if (this.a.e > 0) {
-          ((TextView)this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.e - 1)).setTextColor(Color.parseColor("#00a5e0"));
-        }
-      }
-      for (;;)
-      {
-        paramMessage = this.a;
-        paramMessage.e += 1;
-        if (this.a.e >= 6) {
-          break;
-        }
-        MakeVideoActivity.a(this.a).sendEmptyMessageDelayed(2, this.a.d);
-        return;
-        if (this.a.e == 4)
-        {
-          ((TextView)this.a.jdField_a_of_type_JavaUtilArrayList.get(this.a.e - 1)).setTextColor(Color.parseColor("#00a5e0"));
-        }
-        else if (this.a.e == 5)
-        {
-          MakeVideoActivity.a(this.a).setVisibility(8);
-          MakeVideoActivity.b(this.a).setBackgroundColor(Color.parseColor("#ee000000"));
-          MakeVideoActivity.a(this.a).setVisibility(0);
-          MakeVideoActivity.d(this.a).setVisibility(0);
-          MakeVideoActivity.a(this.a).setVisibility(8);
-          this.a.b();
-          MakeVideoActivity.a(this.a).sendEmptyMessageDelayed(3, 500L);
-        }
-      }
+    sgi.a().registerSubscriber(new tgn(this));
+  }
+  
+  public static tgm a()
+  {
+    if (jdField_a_of_type_Tgm == null) {
+      jdField_a_of_type_Tgm = new tgm();
     }
-    paramMessage = new File(this.a.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-    if ((paramMessage.exists()) && (paramMessage.length() > 0L))
+    return jdField_a_of_type_Tgm;
+  }
+  
+  private static boolean a(QQAppInterface paramQQAppInterface, Intent paramIntent)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("forward", 2, "handleForwardData");
+    }
+    Object localObject = ForwardUtils.a(paramIntent);
+    if ((((SessionInfo)localObject).jdField_a_of_type_Int == 1) && (((azjh)paramQQAppInterface.getManager(48)).a(((SessionInfo)localObject).jdField_a_of_type_JavaLangString, true).jdField_a_of_type_Boolean)) {
+      bbmy.a(paramQQAppInterface.getApp(), 2131631942, 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131167766));
+    }
+    do
     {
-      paramMessage = new Intent();
-      paramMessage.putExtra("path", this.a.jdField_a_of_type_JavaIoFile.getAbsolutePath());
-      this.a.setResult(-1, paramMessage);
-      this.a.jdField_a_of_type_Boolean = false;
+      return false;
+      i = paramIntent.getIntExtra("forward_type", 2147483647);
+      if (QLog.isColorLevel()) {
+        QLog.d("forward", 2, "handleForwardData() forwardType" + i);
+      }
+    } while (i == 2147483647);
+    paramIntent.removeExtra("forward_type");
+    paramIntent.getStringExtra("forward_filepath");
+    if (((SessionInfo)localObject).jdField_a_of_type_Int == 9501) {
+      return true;
+    }
+    if (paramIntent.getBooleanExtra("isFromFavorite", false)) {
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("SendVideoToFriendHelper", 2, "handleForwardData(): ShortVideo => " + paramIntent.getExtras());
+    }
+    int i = paramIntent.getIntExtra("from_busi_type", 0);
+    if (i == 1) {
+      i = 2;
     }
     for (;;)
     {
-      this.a.finish();
-      return;
-      paramMessage = new JSONObject();
-      try
-      {
-        paramMessage.put("errCode", 0);
-        paramMessage.put("msg", "视频录制失败");
-        paramMessage.put("content", "");
-        Intent localIntent = new Intent();
-        localIntent.putExtra("result", paramMessage.toString());
-        this.a.setResult(-3, localIntent);
-      }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
+      localObject = aweg.a(3, i);
+      ((awey)localObject).a(aweg.a(i, paramIntent, (awey)localObject));
+      aweg.a((awey)localObject, paramQQAppInterface);
+      return true;
+      if (i == 2) {
+        i = 3;
+      } else {
+        i = 0;
       }
     }
+  }
+  
+  private void b(StoryVideoItem paramStoryVideoItem)
+  {
+    int[] arrayOfInt;
+    if ((paramStoryVideoItem.mVideoWidth <= 0) || (paramStoryVideoItem.mVideoHeight <= 0))
+    {
+      arrayOfInt = auyq.a(paramStoryVideoItem.mLocalVideoPath);
+      if ((arrayOfInt[0] <= 0) || (arrayOfInt[1] <= 0)) {
+        urk.e("SendVideoToFriendHelper", "getVideoSize error, localPath:%s, width:%s, height:%s", new Object[] { paramStoryVideoItem.mLocalVideoPath, Integer.valueOf(arrayOfInt[0]), Integer.valueOf(arrayOfInt[1]) });
+      }
+    }
+    else
+    {
+      return;
+    }
+    paramStoryVideoItem.mVideoWidth = arrayOfInt[0];
+    paramStoryVideoItem.mVideoHeight = arrayOfInt[1];
+    ThreadManager.getSubThreadHandler().post(new SendVideoToFriendHelper.2(this, paramStoryVideoItem));
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidOsBundle = null;
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = null;
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void a(Activity paramActivity, String paramString)
+  {
+    if ((paramActivity == null) || (TextUtils.isEmpty(paramString)))
+    {
+      urk.e("SendVideoToFriendHelper", "start forward activity failed.");
+      a();
+      return;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("forward_type", 1);
+    localBundle.putString("forward_thumb", paramString);
+    localBundle.putString("forward_filepath", paramString);
+    localBundle.putString("forward_extra", paramString);
+    localBundle.putBoolean("k_favorites", false);
+    localBundle.putBoolean("isFromFavorites", true);
+    localBundle.putBoolean("isFromShare", true);
+    paramString = new Intent(paramActivity, ForwardRecentActivity.class);
+    paramString.putExtras(localBundle);
+    paramActivity.startActivity(paramString);
+    a();
+  }
+  
+  public void a(Activity paramActivity, String paramString, StoryVideoItem paramStoryVideoItem, int paramInt)
+  {
+    if ((paramActivity == null) || (TextUtils.isEmpty(paramString)) || (paramStoryVideoItem == null) || (paramInt <= 0))
+    {
+      urk.e("SendVideoToFriendHelper", "start forward activity failed.");
+      a();
+      return;
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
+    paramStoryVideoItem = new Bundle();
+    paramStoryVideoItem.putInt("forward_type", 21);
+    paramStoryVideoItem.putString("forward_thumb", paramString);
+    paramStoryVideoItem.putBoolean("forward_need_sendmsg", true);
+    paramStoryVideoItem.putBoolean("is_need_show_toast", false);
+    paramString = new Intent();
+    paramString.putExtras(paramStoryVideoItem);
+    aphp.a(paramActivity, paramString, paramInt);
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if (paramBundle == null)
+    {
+      urk.e("SendVideoToFriendHelper", "start forward activity failed.");
+      a();
+      return;
+    }
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
+    a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+  }
+  
+  public void a(Bundle paramBundle, StoryVideoItem paramStoryVideoItem, String paramString1, String paramString2)
+  {
+    if ((paramBundle == null) || (paramStoryVideoItem == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    {
+      bbmy.a(BaseApplicationImpl.getContext(), 1, ajjy.a(2131648039), 0).a();
+      urk.e("SendVideoToFriendHelper", "send video to friend failed because data is not validate.");
+      a();
+      return;
+    }
+    String str1 = bcdt.a(paramString2);
+    String str2 = bcdt.a(paramString1);
+    paramBundle.putInt("forward_type", 21);
+    paramBundle.putString("from_uin", tfy.a().c());
+    paramBundle.putString("file_uuid", paramStoryVideoItem.mVid);
+    paramBundle.putString("file_send_path", paramString2);
+    paramBundle.putString("file_shortvideo_md5", str1);
+    paramBundle.putInt("file_send_size", (int)paramStoryVideoItem.mVideoBytes);
+    if (paramStoryVideoItem.mVideoDuration <= 100L) {}
+    for (int i = (int)paramStoryVideoItem.mVideoDuration;; i = (int)(paramStoryVideoItem.mVideoDuration / 1000L))
+    {
+      paramBundle.putInt("file_send_duration", i);
+      paramBundle.putString("file_name", ShortVideoUtils.b(str1, "mp4"));
+      paramBundle.putString("thumbfile_send_path", paramString1);
+      paramBundle.putString("thumbfile_md5", str2);
+      paramBundle.putInt("thumbfile_send_width", paramStoryVideoItem.mVideoWidth);
+      paramBundle.putInt("thumbfile_send_height", paramStoryVideoItem.mVideoHeight);
+      paramString1 = aciy.a(new Intent(BaseApplicationImpl.getContext(), SplashActivity.class), null);
+      paramString1.putExtras(paramBundle);
+      a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramString1);
+      bbmy.a(BaseApplicationImpl.getContext(), 2, ajjy.a(2131648040), 0).a();
+      urp.a("play_video", "suc_friend", 0, 0, new String[] { "", "", "", paramStoryVideoItem.mVid });
+      a();
+      return;
+    }
+  }
+  
+  public void a(StoryVideoItem paramStoryVideoItem)
+  {
+    this.jdField_a_of_type_Boolean = true;
+    ThreadManager.post(new SendVideoToFriendHelper.3(this, paramStoryVideoItem), 10, null, false);
+  }
+  
+  public void a(StoryVideoItem paramStoryVideoItem, String paramString)
+  {
+    a();
+    long l = System.currentTimeMillis();
+    urk.d("SendVideoToFriendHelper", "generateShareThumb start: %d.", new Object[] { Long.valueOf(l) });
+    ThreadManager.post(new SendVideoToFriendHelper.1(this, l, paramStoryVideoItem, paramString), 10, null, false);
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean isValidate()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tgm
  * JD-Core Version:    0.7.0.1
  */

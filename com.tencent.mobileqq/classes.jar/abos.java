@@ -1,22 +1,23 @@
-import com.tencent.mobileqq.armap.test.ARWebTestActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 
 public class abos
-  implements Runnable
+  implements abcs
 {
-  public abos(ARWebTestActivity paramARWebTestActivity, String paramString) {}
+  public abos(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
   
-  public void run()
+  public void a()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("ARWebTestActivity", 4, "call from onPageFinished delay");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqArmapTestARWebTestActivity.a(this.jdField_a_of_type_JavaLangString);
+    RegisterPhoneNumActivity.a(this.a).b();
+  }
+  
+  public void b()
+  {
+    RegisterPhoneNumActivity.a(this.a).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abos
  * JD-Core Version:    0.7.0.1
  */

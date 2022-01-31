@@ -1,28 +1,30 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil.GetFileInfoCallBack;
-import com.tencent.mobileqq.statistics.StatisticAssist;
-import mqq.app.MobileQQ;
+import android.animation.ValueAnimator;
+import android.widget.Scroller;
+import com.tencent.mobileqq.activity.aio.item.HeartCombolEffectView;
 
 public class adhx
-  implements UniformDownloadUtil.GetFileInfoCallBack
 {
-  public adhx(UniformDownloadMgr paramUniformDownloadMgr) {}
+  public float a;
+  public int a;
+  public ValueAnimator a;
+  public Scroller a;
+  public boolean a;
+  public float b;
+  public int b;
+  public Scroller b;
+  public boolean b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g;
+  public int h;
   
-  public void a(String paramString, long paramLong)
-  {
-    if (UniformDownloadUtil.a(paramString))
-    {
-      StatisticAssist.a(this.a.a.getApplication().getApplicationContext(), this.a.a.getCurrentAccountUin(), "Stop_download_2-2_3-0");
-      return;
-    }
-    StatisticAssist.a(this.a.a.getApplication().getApplicationContext(), this.a.a.getCurrentAccountUin(), "Stop_download_2-2_3-1");
-  }
+  public adhx(HeartCombolEffectView paramHeartCombolEffectView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adhx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,49 @@
-import android.content.Intent;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.FileUtils;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.publish.GenerateContext;
-import dov.com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentTencentDocFileTabView;
 
-class aodc
-  implements Runnable
+public class aodc
+  extends apdj
 {
-  aodc(aodb paramaodb, GenerateContext paramGenerateContext) {}
+  public aodc(QfileRecentTencentDocFileTabView paramQfileRecentTencentDocFileTabView) {}
   
-  public void run()
+  public void a()
   {
-    PublishParam localPublishParam = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPublishGenerateContext.a;
-    SLog.b("Q.qqstory.publish.edit.EditVideoPartManager", "publishParam = " + localPublishParam);
-    if (this.jdField_a_of_type_Aodb.a.jdField_a_of_type_AndroidContentIntent == null) {}
-    for (Intent localIntent = new Intent();; localIntent = this.jdField_a_of_type_Aodb.a.jdField_a_of_type_AndroidContentIntent)
-    {
-      localIntent.putExtra(PublishParam.a, localPublishParam);
-      this.jdField_a_of_type_Aodb.a.a(localIntent, this.jdField_a_of_type_Aodb.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a(), localPublishParam);
-      FileUtils.g(this.jdField_a_of_type_Aodb.a.a());
-      return;
-    }
+    this.a.a.a().b();
+  }
+  
+  public void b()
+  {
+    this.a.a.a().p();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().q();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().s();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().t();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().G();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aodc
  * JD-Core Version:    0.7.0.1
  */

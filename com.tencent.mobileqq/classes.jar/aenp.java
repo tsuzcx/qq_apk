@@ -1,53 +1,74 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
-import com.tencent.mobileqq.utils.SharedPreferencesHandler;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Set;
+import android.content.Context;
+import android.util.Base64;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aenp
-  implements Runnable
+  implements aenz
 {
-  public aenp(TroopAssistantManager paramTroopAssistantManager, QQAppInterface paramQQAppInterface) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private View jdField_a_of_type_AndroidViewView;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void run()
+  public aenp(Context paramContext)
   {
-    localObject3 = null;
-    localObject4 = this.jdField_a_of_type_ComTencentMobileqqManagersTroopAssistantManager.jdField_a_of_type_JavaLangObject;
-    localObject1 = localObject3;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public int a()
+  {
+    return 66;
+  }
+  
+  public View a(Object... paramVarArgs)
+  {
+    if (this.jdField_a_of_type_AndroidViewView == null)
+    {
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131493036, null);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131296860));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131296859));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846237);
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new aenq(this));
+    }
+    if ((paramVarArgs != null) && (paramVarArgs.length > 0) && ((paramVarArgs[0] instanceof String))) {
+      paramVarArgs = new String(Base64.decode((String)paramVarArgs[0], 0));
+    }
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqManagersTroopAssistantManager.jdField_a_of_type_JavaUtilSet != null)
-      {
-        localObject1 = localObject3;
-        if (this.jdField_a_of_type_ComTencentMobileqqManagersTroopAssistantManager.jdField_a_of_type_JavaUtilSet.size() > 0) {
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqManagersTroopAssistantManager.jdField_a_of_type_JavaUtilSet.toArray();
-        }
-      }
+      paramVarArgs = new JSONObject(paramVarArgs);
+      String str = paramVarArgs.getString("content");
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+      this.jdField_a_of_type_JavaLangString = paramVarArgs.getString("url");
+      label150:
+      return this.jdField_a_of_type_AndroidViewView;
     }
-    catch (IllegalArgumentException localIllegalArgumentException)
+    catch (JSONException paramVarArgs)
     {
-      for (;;)
-      {
-        localObject1 = localObject3;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("troopassist_guide", 2, localIllegalArgumentException.getMessage());
-          localObject1 = localObject3;
-        }
-      }
+      break label150;
     }
-    finally {}
-    if (localObject1 != null) {
-      SharedPreferencesHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit(), "troop_assis_new_unread_list", (Object[])localObject1).commit();
-    }
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs) {}
+  
+  public int[] a()
+  {
+    return null;
+  }
+  
+  public int b()
+  {
+    return 17;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aenp
  * JD-Core Version:    0.7.0.1
  */

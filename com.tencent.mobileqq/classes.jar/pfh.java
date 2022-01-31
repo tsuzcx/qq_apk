@@ -1,32 +1,9 @@
-import android.os.SystemClock;
-import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.view.View;
+import java.util.Map;
 
-public class pfh
-  implements Runnable
+public abstract interface pfh
 {
-  public pfh(AbsBaseWebViewActivity paramAbsBaseWebViewActivity) {}
-  
-  public void run()
-  {
-    SystemClock.uptimeMillis();
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      if (this.a.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
-        this.a.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web"));
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine == null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine = WebAccelerateHelper.getInstance().createWebViewPluginEngine(this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, this.a, null, null);
-        WebAccelerateHelper.getInstance().onPluginRuntimeReady(this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPluginEngine, this.a.jdField_a_of_type_ComTencentCommonAppAppInterface, this.a);
-        SystemClock.uptimeMillis();
-      }
-      return;
-    }
-  }
+  public abstract void a(View paramView, Map<String, Object> paramMap);
 }
 
 

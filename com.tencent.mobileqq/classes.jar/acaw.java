@@ -1,18 +1,39 @@
-import com.tencent.mobileqq.contactsync.ContactSyncManager;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
 
 public class acaw
-  implements Runnable
+  extends Handler
 {
-  public acaw(ContactSyncManager paramContactSyncManager) {}
+  public acaw(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.b();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.i();
+      bbmy.a(this.a, this.a.getString(2131653435), 0).b(this.a.getTitleBarHeight());
+      this.a.finish();
+      return;
+    case 1: 
+      this.a.a(true);
+      this.a.i();
+      bbmy.a(this.a, this.a.getString(2131653422), 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    paramMessage = (String)paramMessage.obj;
+    this.a.o.setText(paramMessage + "");
+    this.a.o.setContentDescription(paramMessage + "");
+    this.a.o.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acaw
  * JD-Core Version:    0.7.0.1
  */

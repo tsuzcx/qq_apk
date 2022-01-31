@@ -1,10 +1,9 @@
 package cooperation.qzone;
 
-import amzu;
-import amzv;
-import amzx;
+import ajjy;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -14,7 +13,18 @@ import android.view.Window;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.tencent.av.camera.QavCameraUsage;
+import awek;
+import awfg;
+import awfi;
+import awgh;
+import awgj;
+import awlw;
+import badq;
+import bbmy;
+import bfpr;
+import bfpy;
+import bfqy;
+import bghf;
 import com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
 import com.tencent.biz.qqstory.takevideo.EditVideoActivity;
 import com.tencent.biz.qqstory.takevideo.EditVideoParams;
@@ -24,37 +34,30 @@ import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.activity.shortvideo.PreviewVideoActivity;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoErrorReport;
 import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.INet_ShortVideoResource;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceStatus.ISVConfig;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import cooperation.qzone.video.QzoneVideoBeaconReport;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
+import kzy;
 import mqq.app.AppRuntime;
 
 public class QZoneVideoDownloadActivity
   extends IphoneTitleBarActivity
-  implements ShortVideoResourceManager.INet_ShortVideoResource, ShortVideoResourceStatus.ISVConfig
+  implements awfg, awfi, awgj
 {
   public int a;
   public long a;
   private Bundle jdField_a_of_type_AndroidOsBundle;
-  Handler jdField_a_of_type_AndroidOsHandler = new amzu(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new bfqy(this);
   public ProgressBar a;
   public TextView a;
   public URLImageView a;
   private LocalMediaInfo jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
   public String a;
-  private HashMap jdField_a_of_type_JavaUtilHashMap;
+  private HashMap<Integer, String> jdField_a_of_type_JavaUtilHashMap;
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   public boolean a;
   private int jdField_b_of_type_Int;
@@ -66,13 +69,18 @@ public class QZoneVideoDownloadActivity
   private String jdField_c_of_type_JavaLangString;
   public boolean c;
   private int jdField_d_of_type_Int;
+  private long jdField_d_of_type_Long;
   private String jdField_d_of_type_JavaLangString;
   public boolean d;
-  private String e;
+  private int jdField_e_of_type_Int;
+  private long jdField_e_of_type_Long;
+  private String jdField_e_of_type_JavaLangString;
   public boolean e;
-  private String f;
+  private long jdField_f_of_type_Long;
+  private String jdField_f_of_type_JavaLangString;
   public boolean f;
-  private String g;
+  private long jdField_g_of_type_Long;
+  private String jdField_g_of_type_JavaLangString;
   public boolean g;
   private String h;
   public boolean h;
@@ -87,12 +95,16 @@ public class QZoneVideoDownloadActivity
   private boolean p;
   private boolean q;
   private boolean r;
+  private boolean s = true;
+  private boolean t = true;
+  private boolean u = true;
+  private boolean v = true;
   
-  public static Intent a(Activity paramActivity, String paramString, ArrayList paramArrayList, LocalMediaInfo paramLocalMediaInfo, long paramLong, int paramInt)
+  public static Intent a(Activity paramActivity, String paramString, ArrayList<String> paramArrayList, LocalMediaInfo paramLocalMediaInfo, long paramLong, int paramInt)
   {
     Intent localIntent = new Intent(paramActivity.getIntent());
     Bundle localBundle = new Bundle();
-    localBundle.putString("extra_publish_text", "确认");
+    localBundle.putString("extra_publish_text", ajjy.a(2131646798));
     try
     {
       paramString = new EditLocalGifSource(paramString, paramArrayList, paramLocalMediaInfo, paramLong);
@@ -109,7 +121,7 @@ public class QZoneVideoDownloadActivity
     catch (Exception paramString)
     {
       QLog.e("QZoneVideoDownloadActivity", 1, paramString, new Object[0]);
-      QQToast.a(paramActivity, "参数错误", 0).a();
+      bbmy.a(paramActivity, ajjy.a(2131646802), 0).a();
     }
     return null;
   }
@@ -137,59 +149,81 @@ public class QZoneVideoDownloadActivity
     this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
   }
   
-  private boolean a(QQAppInterface paramQQAppInterface)
+  private boolean a()
   {
-    boolean bool = VideoEnvironment.e(paramQQAppInterface);
-    if (PtvFilterSoLoad.a(BaseApplicationImpl.getContext()) == 2) {}
-    for (int i1 = 0; (bool) && (i1 != 0); i1 = 1) {
+    StringBuilder localStringBuilder = new StringBuilder().append("checkIsOK()=");
+    if ((this.s) && (this.t) && (this.u) && (this.v)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      VideoEnvironment.a("QZoneVideoDownloadActivity", bool, null);
+      if ((!this.s) || (!this.t) || (!this.u) || (!this.v)) {
+        break;
+      }
       return true;
     }
     return false;
   }
   
-  private void b(String paramString1, int paramInt, String paramString2)
+  private boolean a(QQAppInterface paramQQAppInterface)
   {
-    if (paramString1.startsWith("new_qq_android_native_short_video_"))
+    boolean bool2 = VideoEnvironment.e(paramQQAppInterface);
+    int i1;
+    if (awlw.a(BaseApplicationImpl.getContext()) == 2)
     {
-      if (paramInt != 0)
-      {
-        a("短视频插件下载失败[" + a(paramInt) + "]");
-        ShortVideoErrorReport.b(2, paramInt);
+      i1 = 0;
+      paramQQAppInterface = new StringBuilder().append("isAllReady()=");
+      if ((!bool2) || (i1 == 0)) {
+        break label72;
       }
     }
-    else if (paramString1.startsWith("new_qq_android_native_short_filter_"))
+    label72:
+    for (boolean bool1 = true;; bool1 = false)
     {
-      if (paramInt == 0) {
-        break label181;
+      VideoEnvironment.a("QZoneVideoDownloadActivity", bool1, null);
+      if ((!bool2) || (i1 == 0)) {
+        break label77;
       }
-      a("挂件资源下载失败[" + a(paramInt) + "]");
-      ShortVideoErrorReport.b(2, paramInt);
+      return true;
+      i1 = 1;
+      break;
+    }
+    label77:
+    return false;
+  }
+  
+  private void b(String paramString1, int paramInt, String paramString2)
+  {
+    if ((paramString1.startsWith("new_qq_android_native_short_video_")) && (paramInt != 0))
+    {
+      a(ajjy.a(2131646764) + a(paramInt) + "]");
+      awek.b(2, paramInt);
+    }
+    if ((paramString1.startsWith("new_qq_android_native_short_filter_")) && (paramInt != 0))
+    {
+      a(ajjy.a(2131646676) + a(paramInt) + "]");
+      awek.b(2, paramInt);
+    }
+    if ((!isFinishing()) && (a(this.app)) && (a())) {
+      e();
     }
     for (;;)
     {
       VideoEnvironment.a("QZoneVideoDownloadActivity", "name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
       return;
-      if ((!isFinishing()) && (a(this.app)))
-      {
-        e();
-        break;
-      }
-      VideoEnvironment.a("QZoneVideoDownloadActivity", "isFinishing= true", null);
-      break;
-      label181:
-      if ((!isFinishing()) && (a(this.app))) {
-        e();
-      } else {
-        VideoEnvironment.a("QZoneVideoDownloadActivity", "isFinishing= true", null);
-      }
+      VideoEnvironment.a("QZoneVideoDownloadActivity", "!isFinishing() && isAllReady(app) && checkIsOK() = false", null);
     }
   }
   
   private void c()
   {
-    if ((NetworkUtil.g(null)) && (this.app != null))
+    if ((badq.g(null)) && (this.app != null))
     {
+      this.jdField_g_of_type_Long = 0L;
+      this.jdField_f_of_type_Long = 0L;
+      this.jdField_e_of_type_Long = 0L;
+      this.jdField_d_of_type_Long = 0L;
       ShortVideoResourceManager.a(this.app, this);
+      awgh.a().b(0, this);
       return;
     }
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1002);
@@ -200,27 +234,27 @@ public class QZoneVideoDownloadActivity
     if (this.jdField_a_of_type_JavaUtilHashMap == null) {
       this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-1), "未知错误");
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-2), "配置版本错误");
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-2), "配置版本错误");
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-3), "重命名验证错误");
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-4), "文件名验证错误");
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-100), "解析配置错误");
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-101), "配置文件为空");
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-105), "路径错误");
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-1), ajjy.a(2131646776));
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-2), ajjy.a(2131646683));
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-2), ajjy.a(2131646749));
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-3), ajjy.a(2131646799));
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-4), ajjy.a(2131646765));
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-100), ajjy.a(2131646770));
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-101), ajjy.a(2131646744));
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-105), ajjy.a(2131646778));
     this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-106), "MD5为空错误");
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-107), "资源错误");
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-107), ajjy.a(2131646791));
     this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-108), "MD5校验错误");
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-117), "下载错误");
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-118), "解压错误");
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-125), "配置信息错误");
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-126), "解压错误");
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-117), ajjy.a(2131646693));
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-118), ajjy.a(2131646669));
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-125), ajjy.a(2131646773));
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-126), ajjy.a(2131646743));
     this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-127), "UTF-8编码错误");
     this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-127), "UTF-8编码错误");
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-128), "配置存储错误");
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-1000), "不支持下载");
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-1500), "下载中断");
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-1501), "AppInterface 参数为空");
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-128), ajjy.a(2131646672));
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-1000), ajjy.a(2131646805));
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-1500), ajjy.a(2131646790));
+    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(-1501), ajjy.a(2131646789));
   }
   
   private void e()
@@ -230,27 +264,30 @@ public class QZoneVideoDownloadActivity
       if (QLog.isColorLevel()) {
         QLog.e("QZoneVideoDownloadActivity", 2, "startQZoneVideo, getAppRunime and uin are null");
       }
-      QQToast.a(this, "短视频启动失败", 0).a();
-      QzoneVideoBeaconReport.a(null, "qzone_video_recordtrim", "1000", null);
+      bbmy.a(this, ajjy.a(2131646759), 0).a();
+      bghf.a(null, "qzone_video_recordtrim", "1000", null);
       finish();
       return;
     }
-    Object localObject2 = QZoneHelper.UserInfo.a();
+    Object localObject2 = bfpy.a();
     Object localObject1;
     Bundle localBundle;
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
       localObject1 = getAppRuntime().getAccount();
-      ((QZoneHelper.UserInfo)localObject2).jdField_a_of_type_JavaLangString = ((String)localObject1);
+      ((bfpy)localObject2).jdField_a_of_type_JavaLangString = ((String)localObject1);
       localObject1 = getIntent().getStringExtra("refer");
       QLog.i("QZoneVideoDownloadActivity", 1, "isSupportRecord=" + this.jdField_a_of_type_Boolean + ",isSupportTrim=" + this.jdField_b_of_type_Boolean + ",isPreviewVideo" + this.r + ",refer=" + (String)localObject1 + ",videoRefer=" + this.jdField_e_of_type_JavaLangString);
       localBundle = new Bundle();
       if ((!getIntent().hasExtra("support_pic")) || (getIntent().getBooleanExtra("support_pic", false))) {
-        break label784;
+        break label837;
       }
       localBundle.putBoolean("flow_camera_capture_mode", false);
       localBundle.putBoolean("flow_camera_capture_mode", false);
-      label230:
+      label233:
+      if (getIntent().hasExtra("enable_local_button")) {
+        localBundle.putBoolean("enable_local_video", getIntent().getBooleanExtra("enable_local_button", true));
+      }
       localBundle.putBoolean("flow_camera_video_mode", getIntent().getBooleanExtra("flow_camera_video_mode", true));
       localBundle.putString("sv_config", getIntent().getStringExtra("sv_config"));
       localBundle.putInt("UseQQCameraCompression", getIntent().getIntExtra("UseQQCameraCompression", 0));
@@ -267,8 +304,9 @@ public class QZoneVideoDownloadActivity
       localBundle.putBoolean("extra_directly_back", getIntent().getBooleanExtra("extra_directly_back", false));
       localBundle.putDouble("key_latitude", getIntent().getDoubleExtra("key_latitude", 4.9E-324D));
       localBundle.putDouble("key_longtitude", getIntent().getDoubleExtra("key_longtitude", 4.9E-324D));
+      localBundle.putParcelable("key_qzone_topic", getIntent().getParcelableExtra("key_qzone_topic"));
       if (this.jdField_b_of_type_Int != 3) {
-        break label806;
+        break label859;
       }
       localBundle.putString("qcamera_photo_filepath", getIntent().getStringExtra("qcamera_photo_filepath"));
       localBundle.putBoolean("support_pic", getIntent().getBooleanExtra("support_pic", false));
@@ -280,28 +318,28 @@ public class QZoneVideoDownloadActivity
     for (;;)
     {
       if (!this.jdField_a_of_type_Boolean) {
-        break label836;
+        break label889;
       }
-      QZoneHelper.a(this.app, this, (QZoneHelper.UserInfo)localObject2, 10009, this.jdField_b_of_type_Boolean, this.jdField_f_of_type_Boolean, (String)localObject1, this.jdField_e_of_type_JavaLangString, this.jdField_g_of_type_Boolean, this.jdField_h_of_type_Boolean, this.jdField_c_of_type_JavaLangString, this.jdField_i_of_type_Boolean, this.jdField_f_of_type_JavaLangString, this.jdField_g_of_type_JavaLangString, this.j, this.n, this.k, this.l, this.jdField_d_of_type_JavaLangString, this.m, this.o, this.p, this.jdField_b_of_type_Int, this.q, localBundle);
-      QzoneVideoBeaconReport.a(((QZoneHelper.UserInfo)localObject2).jdField_a_of_type_JavaLangString, "qzone_video_recordtrim", "0", "record");
+      bfpr.a(this.app, this, (bfpy)localObject2, 10009, this.jdField_b_of_type_Boolean, this.jdField_f_of_type_Boolean, (String)localObject1, this.jdField_e_of_type_JavaLangString, this.jdField_g_of_type_Boolean, this.jdField_h_of_type_Boolean, this.jdField_c_of_type_JavaLangString, this.jdField_i_of_type_Boolean, this.jdField_f_of_type_JavaLangString, this.jdField_g_of_type_JavaLangString, this.j, this.n, this.k, this.l, this.jdField_d_of_type_JavaLangString, this.m, this.o, this.p, this.jdField_b_of_type_Int, this.q, localBundle);
+      bghf.a(((bfpy)localObject2).jdField_a_of_type_JavaLangString, "qzone_video_recordtrim", "0", "record");
       f();
       finish();
       return;
       localObject1 = this.jdField_a_of_type_JavaLangString;
       break;
-      label784:
+      label837:
       localBundle.putBoolean("flow_camera_capture_mode", getIntent().getBooleanExtra("flow_camera_capture_mode", true));
-      break label230;
-      label806:
+      break label233;
+      label859:
       if (this.jdField_b_of_type_Int == 5) {
         localBundle.putBoolean("enable_local_video", getIntent().getBooleanExtra("enable_local_video", false));
       }
     }
-    label836:
+    label889:
     if (this.jdField_b_of_type_Boolean)
     {
-      QZoneHelper.a(this, (QZoneHelper.UserInfo)localObject2, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, 10009, this.jdField_a_of_type_Int, (String)localObject1, this.jdField_e_of_type_JavaLangString);
-      QzoneVideoBeaconReport.a(((QZoneHelper.UserInfo)localObject2).jdField_a_of_type_JavaLangString, "qzone_video_recordtrim", "1", "trim");
+      bfpr.a(this, (bfpy)localObject2, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, 10009, this.jdField_a_of_type_Int, (String)localObject1, this.jdField_e_of_type_JavaLangString);
+      bghf.a(((bfpy)localObject2).jdField_a_of_type_JavaLangString, "qzone_video_recordtrim", "1", "trim");
       finish();
       return;
     }
@@ -309,12 +347,12 @@ public class QZoneVideoDownloadActivity
     {
       localObject1 = new Intent(getApplicationContext(), PreviewVideoActivity.class);
       ((Intent)localObject1).putExtra("video_source_path", this.jdField_b_of_type_JavaLangString);
-      ((Intent)localObject1).putExtra("video_type", this.jdField_c_of_type_Int);
+      ((Intent)localObject1).putExtra("video_type", this.jdField_d_of_type_Int);
       ((Intent)localObject1).putExtra("start_time", this.jdField_b_of_type_Long);
       ((Intent)localObject1).putExtra("end_time", this.jdField_c_of_type_Long);
       ((Intent)localObject1).putExtra("encode_video_params", this.jdField_a_of_type_AndroidOsBundle);
       startActivity((Intent)localObject1);
-      overridePendingTransition(2131034134, 2131034135);
+      overridePendingTransition(2130771997, 2130772001);
       finish();
       return;
     }
@@ -345,13 +383,8 @@ public class QZoneVideoDownloadActivity
       localObject2 = getIntent().getStringExtra("PhotoConst.PHOTO_SELECT_ACTIVITY_CLASS_NAME");
       ((Intent)localObject1).setClassName(getIntent().getStringExtra("PhotoConst.PHOTO_SELECT_ACTIVITY_PACKAGE_NAME"), (String)localObject2);
       ((Intent)localObject1).addFlags(603979776);
-      QZoneHelper.a(this, "", (Intent)localObject1, -1);
+      bfpr.a(this, "", (Intent)localObject1, -1);
       finish();
-      return;
-    }
-    if (this.jdField_e_of_type_Boolean)
-    {
-      ThreadManager.postImmediately(new amzv(this), null, false);
       return;
     }
     finish();
@@ -376,19 +409,19 @@ public class QZoneVideoDownloadActivity
     QLog.i("QZoneVideoDownloadActivity", 2, "entry source quick left slide report");
   }
   
-  public void C_()
+  public void I_()
   {
     VideoEnvironment.a("QZoneVideoDownloadActivity", "onNetWorkNone...", null);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.post(new amzx(this));
-    ShortVideoErrorReport.b(3, -1500);
+    this.jdField_a_of_type_AndroidWidgetProgressBar.post(new QZoneVideoDownloadActivity.2(this));
+    awek.b(3, -1500);
   }
   
   public void a()
   {
-    setTitle("短视频");
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131375624));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375623));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131375625));
+    setTitle(ajjy.a(2131646746));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131306077));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131306076));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131306080));
     this.jdField_a_of_type_ComTencentImageURLImageView.setImageURL("http://qzs.qq.com/qzone/photo/v7/js/common/images/mini_video_cover_7.png");
   }
   
@@ -399,41 +432,118 @@ public class QZoneVideoDownloadActivity
     {
       if (paramInt2 != 0)
       {
-        a("短视频配置解压失败[" + a(paramInt2) + "]");
-        ShortVideoErrorReport.b(1, paramInt2);
+        a(ajjy.a(2131646677) + a(paramInt2) + "]");
+        awek.b(1, paramInt2);
         return;
       }
       ArrayList localArrayList = new ArrayList(1);
       paramInt1 = ShortVideoResourceManager.a(this.app, localArrayList);
       if (paramInt1 == 0)
       {
+        VideoEnvironment.a("QZoneVideoDownloadActivity", "onConfigResult| check config success...", null);
+        this.s = false;
         ShortVideoResourceManager.a(this.app, localArrayList, this);
-        if (PtvFilterSoLoad.a(VideoEnvironment.a()) == 2)
+        if (awlw.a(VideoEnvironment.a()) == 2)
         {
+          this.t = false;
           ShortVideoResourceManager.b(this.app, localArrayList, this);
-          return;
         }
-        VideoEnvironment.a("QZoneVideoDownloadActivity", "onConfigResult| getFilterSoState != 2", null);
-        return;
+        for (;;)
+        {
+          if (awlw.f())
+          {
+            this.u = false;
+            ShortVideoResourceManager.c(this.app, localArrayList, this);
+          }
+          if (!awlw.i()) {
+            break;
+          }
+          this.v = false;
+          ShortVideoResourceManager.d(this.app, localArrayList, this);
+          return;
+          VideoEnvironment.a("QZoneVideoDownloadActivity", "onConfigResult| getFilterSoState != 2", null);
+        }
       }
-      a("短视频配置校验失败[" + a(paramInt1) + "]");
-      ShortVideoErrorReport.b(1, paramInt1);
+      a(ajjy.a(2131646766) + a(paramInt1) + "]");
+      awek.b(1, paramInt1);
       return;
     }
-    a("短视频配置下载失败[" + a(paramInt2) + "]");
-    ShortVideoErrorReport.b(1, paramInt2);
+    a(ajjy.a(2131646701) + a(paramInt2) + "]");
+    awek.b(1, paramInt2);
+  }
+  
+  public void a(int paramInt, long paramLong1, long paramLong2)
+  {
+    if (paramInt == 0)
+    {
+      this.jdField_f_of_type_Long = paramLong1;
+      this.jdField_g_of_type_Long = paramLong2;
+      if (this.jdField_e_of_type_Long + this.jdField_g_of_type_Long <= 0L) {
+        break label141;
+      }
+    }
+    label141:
+    for (int i1 = (int)((float)(this.jdField_d_of_type_Long + this.jdField_f_of_type_Long) * 100.0F / (float)(this.jdField_e_of_type_Long + this.jdField_g_of_type_Long));; i1 = 0)
+    {
+      Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1004, i1, 0);
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      VideoEnvironment.a("QZoneVideoDownloadActivity", "packageIdx=" + paramInt + ",totalLen=" + paramLong2 + ",curOffset=" + paramLong1 + ",localProgress=" + i1, null);
+      return;
+    }
+  }
+  
+  public void a(int paramInt1, boolean paramBoolean, int paramInt2)
+  {
+    if (paramInt1 == 0)
+    {
+      if (!paramBoolean) {
+        break label53;
+      }
+      this.t = true;
+      if ((!isFinishing()) && (a(this.app)) && (a())) {
+        e();
+      }
+    }
+    else
+    {
+      return;
+    }
+    VideoEnvironment.a("QZoneVideoDownloadActivity", "!isFinishing() && isAllReady(app) && checkIsOK() = false", null);
+    return;
+    label53:
+    a(ajjy.a(2131646713) + a(paramInt2) + "]");
+    awek.b(2, paramInt2);
   }
   
   public void a(String paramString1, int paramInt, String paramString2)
   {
-    b(paramString1, paramInt, paramString2);
+    VideoEnvironment.a("QZoneVideoDownloadActivity", "onDownloadFinish| name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
+    if (paramString1.startsWith("new_qq_android_native_short_video_")) {
+      this.s = true;
+    }
+    for (;;)
+    {
+      b(paramString1, paramInt, paramString2);
+      return;
+      if (paramString1.startsWith("new_qq_android_native_art_filter_")) {
+        this.u = true;
+      } else if (paramString1.startsWith("new_qq_android_native_object_tracking_")) {
+        this.v = true;
+      }
+    }
   }
   
   public void a(String paramString, long paramLong1, long paramLong2)
   {
-    int i1 = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-    if (paramString.startsWith("new_qq_android_native_short_video_"))
+    this.jdField_d_of_type_Long = paramLong1;
+    this.jdField_e_of_type_Long = paramLong2;
+    int i1;
+    if (this.jdField_e_of_type_Long + this.jdField_g_of_type_Long > 0L)
     {
+      i1 = (int)((float)(this.jdField_d_of_type_Long + this.jdField_f_of_type_Long) * 100.0F / (float)(this.jdField_e_of_type_Long + this.jdField_g_of_type_Long));
+      if (!paramString.startsWith("new_qq_android_native_short_video_")) {
+        break label152;
+      }
       Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1004, i1, 0);
       this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
     }
@@ -441,11 +551,14 @@ public class QZoneVideoDownloadActivity
     {
       VideoEnvironment.a("QZoneVideoDownloadActivity", "name=" + paramString + ",totalLen=" + paramLong2 + ",curOffset=" + paramLong1 + ",localProgress=" + i1, null);
       return;
+      i1 = 0;
+      break;
+      label152:
       if (!paramString.startsWith("new_qq_android_native_short_filter_")) {}
     }
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
     if (this.app != null)
@@ -453,96 +566,133 @@ public class QZoneVideoDownloadActivity
       ShortVideoResourceManager.a(this.app, this);
       ShortVideoResourceManager.b(this.app, this);
     }
+    awgh.a().c();
   }
   
-  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     finish();
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     getWindow().getDecorView().setBackgroundColor(-16777216);
-    paramBundle = getIntent();
-    if (paramBundle == null)
+    Intent localIntent = getIntent();
+    if (localIntent == null)
     {
-      Toast.makeText(getApplicationContext(), "参数错误，无法启动", 1).show();
-      QzoneVideoBeaconReport.a(null, "qzone_video_recordtrim", "1002", null);
+      Toast.makeText(getApplicationContext(), ajjy.a(2131646769), 1).show();
+      bghf.a(null, "qzone_video_recordtrim", "1002", null);
       return;
     }
-    this.jdField_a_of_type_Boolean = paramBundle.getBooleanExtra("support_record", false);
-    this.jdField_b_of_type_Boolean = paramBundle.getBooleanExtra("support_trim", false);
-    this.jdField_c_of_type_Boolean = paramBundle.getBooleanExtra("support_edit_video", false);
-    this.jdField_d_of_type_Boolean = paramBundle.getBooleanExtra("support_jump_gif_chooser", false);
-    this.jdField_f_of_type_Boolean = paramBundle.getBooleanExtra("support_pic", false);
-    this.jdField_e_of_type_Boolean = paramBundle.getBooleanExtra("support_dynamic_video", false);
-    this.jdField_b_of_type_Int = paramBundle.getIntExtra("entry_source", 0);
-    this.jdField_g_of_type_Boolean = paramBundle.getBooleanExtra("is_qzone_vip", false);
-    this.jdField_h_of_type_Boolean = paramBundle.getBooleanExtra("enable_edit_video", false);
-    this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("uin");
-    this.jdField_b_of_type_JavaLangString = paramBundle.getStringExtra("file_send_path");
-    this.jdField_a_of_type_Long = paramBundle.getLongExtra("PhotoConst.VIDEO_SIZE", 0L);
-    this.jdField_a_of_type_Int = paramBundle.getIntExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 2);
-    this.r = paramBundle.getBooleanExtra("preview_video", false);
-    this.jdField_c_of_type_Int = paramBundle.getIntExtra("video_type", 0);
-    this.jdField_b_of_type_Long = paramBundle.getLongExtra("start_time", 0L);
-    this.jdField_c_of_type_Long = paramBundle.getLongExtra("end_time", 0L);
-    this.jdField_e_of_type_JavaLangString = paramBundle.getStringExtra("video_refer");
-    this.jdField_a_of_type_AndroidOsBundle = paramBundle.getBundleExtra("encode_video_params");
-    this.jdField_c_of_type_JavaLangString = paramBundle.getStringExtra("topicId");
-    this.jdField_i_of_type_Boolean = paramBundle.getBooleanExtra("enterPtu", false);
-    this.jdField_f_of_type_JavaLangString = paramBundle.getStringExtra("callback");
-    this.jdField_g_of_type_JavaLangString = paramBundle.getStringExtra("dongxiao_id");
-    this.n = paramBundle.getBooleanExtra("enable_priv_list", true);
-    this.j = paramBundle.getBooleanExtra("enable_input_text", true);
-    this.k = paramBundle.getBooleanExtra("enable_sync_qzone", false);
-    this.l = paramBundle.getBooleanExtra("enable_origin_video", false);
-    this.jdField_d_of_type_JavaLangString = paramBundle.getStringExtra("confirm_text");
-    this.m = paramBundle.getBooleanExtra("enable_edit_button", true);
-    this.o = paramBundle.getBooleanExtra("enable_local_button", true);
-    this.p = paramBundle.getBooleanExtra("is_glance_video", false);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)paramBundle.getSerializableExtra("gif_media_info"));
-    this.jdField_d_of_type_Int = paramBundle.getIntExtra("gif_photoplus_pos", -1);
-    this.jdField_h_of_type_JavaLangString = paramBundle.getStringExtra("gif_path");
-    this.jdField_i_of_type_JavaLangString = paramBundle.getStringExtra("gif_class_name");
-    this.q = paramBundle.getBooleanExtra("go_publish_activity", false);
+    this.jdField_a_of_type_Boolean = localIntent.getBooleanExtra("support_record", false);
+    this.jdField_b_of_type_Boolean = localIntent.getBooleanExtra("support_trim", false);
+    this.jdField_c_of_type_Boolean = localIntent.getBooleanExtra("support_edit_video", false);
+    this.jdField_d_of_type_Boolean = localIntent.getBooleanExtra("support_jump_gif_chooser", false);
+    this.jdField_f_of_type_Boolean = localIntent.getBooleanExtra("support_pic", false);
+    this.jdField_e_of_type_Boolean = localIntent.getBooleanExtra("support_dynamic_video", false);
+    this.jdField_b_of_type_Int = localIntent.getIntExtra("entry_source", 0);
+    this.jdField_g_of_type_Boolean = localIntent.getBooleanExtra("is_qzone_vip", false);
+    this.jdField_h_of_type_Boolean = localIntent.getBooleanExtra("enable_edit_video", false);
+    this.jdField_a_of_type_JavaLangString = localIntent.getStringExtra("uin");
+    this.jdField_b_of_type_JavaLangString = localIntent.getStringExtra("file_send_path");
+    this.jdField_a_of_type_Long = localIntent.getLongExtra("PhotoConst.VIDEO_SIZE", 0L);
+    this.jdField_a_of_type_Int = localIntent.getIntExtra("PhotoConst.PHOTOLIST_KEY_SHOW_MEDIA", 2);
+    this.r = localIntent.getBooleanExtra("preview_video", false);
+    this.jdField_d_of_type_Int = localIntent.getIntExtra("video_type", 0);
+    this.jdField_b_of_type_Long = localIntent.getLongExtra("start_time", 0L);
+    this.jdField_c_of_type_Long = localIntent.getLongExtra("end_time", 0L);
+    this.jdField_e_of_type_JavaLangString = localIntent.getStringExtra("video_refer");
+    this.jdField_a_of_type_AndroidOsBundle = localIntent.getBundleExtra("encode_video_params");
+    this.jdField_c_of_type_JavaLangString = localIntent.getStringExtra("topicId");
+    this.jdField_i_of_type_Boolean = localIntent.getBooleanExtra("enterPtu", false);
+    this.jdField_f_of_type_JavaLangString = localIntent.getStringExtra("callback");
+    this.jdField_g_of_type_JavaLangString = localIntent.getStringExtra("dongxiao_id");
+    this.n = localIntent.getBooleanExtra("enable_priv_list", true);
+    this.j = localIntent.getBooleanExtra("enable_input_text", true);
+    this.k = localIntent.getBooleanExtra("enable_sync_qzone", false);
+    this.l = localIntent.getBooleanExtra("enable_origin_video", false);
+    this.jdField_d_of_type_JavaLangString = localIntent.getStringExtra("confirm_text");
+    this.m = localIntent.getBooleanExtra("enable_edit_button", true);
+    this.o = localIntent.getBooleanExtra("enable_local_button", true);
+    this.p = localIntent.getBooleanExtra("is_glance_video", false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)localIntent.getSerializableExtra("gif_media_info"));
+    this.jdField_e_of_type_Int = localIntent.getIntExtra("gif_photoplus_pos", -1);
+    this.jdField_h_of_type_JavaLangString = localIntent.getStringExtra("gif_path");
+    this.jdField_i_of_type_JavaLangString = localIntent.getStringExtra("gif_class_name");
+    this.q = localIntent.getBooleanExtra("go_publish_activity", false);
+    this.jdField_c_of_type_Int = localIntent.getIntExtra("isGoCreateAlbumShortcut", 0);
     AppRuntime localAppRuntime = getAppRuntime();
     if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface)))
     {
-      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-      for (paramBundle = getAppRuntime().getAccount();; paramBundle = this.jdField_a_of_type_JavaLangString)
+      String str;
+      Bitmap localBitmap;
+      long l1;
+      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
       {
+        paramBundle = getAppRuntime().getAccount();
         this.jdField_a_of_type_JavaLangString = paramBundle;
-        if (!((QQAppInterface)localAppRuntime).c()) {
-          break;
+        if ((this.jdField_c_of_type_Int != 1) && (this.jdField_c_of_type_Int != 2) && (this.jdField_c_of_type_Int != 3)) {
+          break label707;
         }
-        Toast.makeText(getApplicationContext(), "正在通话中，请结束通话后再试", 1).show();
-        QzoneVideoBeaconReport.a(this.jdField_a_of_type_JavaLangString, "qzone_video_recordtrim", "1003", null);
+        paramBundle = localIntent.getStringExtra("UploadPhoto.key_album_id");
+        str = localIntent.getStringExtra("UploadPhoto.key_album_name");
+        localBitmap = (Bitmap)localIntent.getParcelableExtra("UploadPhoto.key_album_cover");
+        l1 = localIntent.getLongExtra("UploadPhoto.key_album_owner_uin", 0L);
+        if (this.jdField_c_of_type_Int != 1) {
+          break label674;
+        }
+        bfpr.a((QQAppInterface)localAppRuntime, paramBundle, str, localBitmap, l1);
+      }
+      for (;;)
+      {
+        finish();
+        return;
+        paramBundle = this.jdField_a_of_type_JavaLangString;
+        break;
+        label674:
+        if ((this.jdField_c_of_type_Int == 2) || (this.jdField_c_of_type_Int == 3)) {
+          bfpr.b((QQAppInterface)localAppRuntime, paramBundle, str, localBitmap, l1);
+        }
+      }
+      label707:
+      if (((QQAppInterface)localAppRuntime).c())
+      {
+        Toast.makeText(getApplicationContext(), ajjy.a(2131646761), 1).show();
+        bghf.a(this.jdField_a_of_type_JavaLangString, "qzone_video_recordtrim", "1003", null);
         finish();
         return;
       }
-      if (QavCameraUsage.b(BaseApplicationImpl.getContext()))
+      if (kzy.b(BaseApplicationImpl.getContext()))
       {
-        QzoneVideoBeaconReport.a(this.jdField_a_of_type_JavaLangString, "qzone_video_recordtrim", "1004", null);
+        bghf.a(this.jdField_a_of_type_JavaLangString, "qzone_video_recordtrim", "1004", null);
         finish();
         return;
       }
       if (!a((QQAppInterface)localAppRuntime))
       {
-        setContentView(2130971776);
+        setContentView(2131497050);
         a();
         this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
         d();
         c();
+        return;
+      }
+      if (this.jdField_e_of_type_Boolean)
+      {
+        setContentView(2131497050);
+        a();
       }
     }
-    else if (QLog.isColorLevel())
+    for (;;)
     {
-      QLog.d("QZoneVideoDownloadActivity", 2, "app is not QQAppInterface");
+      e();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("QZoneVideoDownloadActivity", 2, "app is not QQAppInterface");
+      }
     }
-    e();
   }
 }
 

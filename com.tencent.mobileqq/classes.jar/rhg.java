@@ -1,16 +1,12 @@
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
-public final class rhg
-  implements Runnable
+public abstract interface rhg
 {
-  public void run()
-  {
-    ThreadManager.excute(new rhh(this), 16, null, false);
-  }
+  public abstract void a(BaseArticleInfo paramBaseArticleInfo, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rhg
  * JD-Core Version:    0.7.0.1
  */

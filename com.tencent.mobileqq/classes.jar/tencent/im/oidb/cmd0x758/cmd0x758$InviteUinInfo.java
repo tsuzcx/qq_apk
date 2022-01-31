@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class cmd0x758$InviteUinInfo
-  extends MessageMicro
+  extends MessageMicro<InviteUinInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "uint64_uin", "uint64_judge_group_code", "uint64_judge_conf_code" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L) }, InviteUinInfo.class);
   public final PBUInt64Field uint64_judge_conf_code = PBField.initUInt64(0L);
@@ -15,7 +15,7 @@ public final class cmd0x758$InviteUinInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x758.cmd0x758.InviteUinInfo
  * JD-Core Version:    0.7.0.1
  */

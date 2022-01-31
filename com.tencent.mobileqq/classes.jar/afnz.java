@@ -1,21 +1,28 @@
-import com.tencent.mobileqq.nearby.FaceScoreConfig;
-import com.tencent.mobileqq.nearby.FaceScoreUtils;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class afnz
-  implements Runnable
+public class afnz
+  implements View.OnClickListener
 {
-  afnz(afny paramafny, FaceScoreConfig paramFaceScoreConfig) {}
+  public afnz(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    FaceScoreUtils.a(this.jdField_a_of_type_Afny.a.a.getAppInterface(), this.jdField_a_of_type_ComTencentMobileqqNearbyFaceScoreConfig);
+    paramView = new ArrayList();
+    Iterator localIterator = this.a.a.b.iterator();
+    while (localIterator.hasNext()) {
+      paramView.add(Long.valueOf(Long.parseLong((String)localIterator.next())));
+    }
+    ChatHistoryTroopMemberFragment.a(this.a, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afnz
  * JD-Core Version:    0.7.0.1
  */

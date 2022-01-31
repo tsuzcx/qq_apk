@@ -1,19 +1,25 @@
-import com.tencent.biz.ui.CustomMenuBar;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.subscribe.fragments.SubscribeHybirdFragment;
 
-class wct
-  implements Runnable
+public class wct
+  extends alry
 {
-  wct(wcs paramwcs) {}
+  public wct(SubscribeHybirdFragment paramSubscribeHybirdFragment) {}
   
-  public void run()
+  public void onAddColorNote(Bundle paramBundle, boolean paramBoolean)
   {
-    this.a.a.a.clearAnimation();
+    super.onAddColorNote(paramBundle, paramBoolean);
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().finish();
+      this.a.getActivity().overridePendingTransition(0, 0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wct
  * JD-Core Version:    0.7.0.1
  */

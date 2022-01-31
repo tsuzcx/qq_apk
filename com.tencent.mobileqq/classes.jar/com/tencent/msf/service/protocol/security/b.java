@@ -10,12 +10,12 @@ public final class b
   static byte[] g;
   static byte[] h;
   static byte[] i;
-  public byte[] a;
-  public int b;
-  public int c;
-  public byte[] d;
-  public int e;
-  public byte[] f;
+  public byte[] a = null;
+  public int b = 0;
+  public int c = 0;
+  public byte[] d = null;
+  public int e = 0;
+  public byte[] f = null;
   
   public b() {}
   

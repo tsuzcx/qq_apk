@@ -1,28 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import java.util.HashMap;
 
 public class sxo
-  implements DialogInterface.OnClickListener
+  extends sfo
 {
-  public sxo(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public HashMap<String, String[]> a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public String toString()
   {
-    paramDialogInterface.dismiss();
-    this.a.n = this.a.l;
-    FriendProfileMoreInfoActivity.a(this.a, this.a.l);
-    if (this.a.l)
-    {
-      this.a.a("0X80081E7", 4);
-      return;
-    }
-    this.a.a("0X80081E4", 3);
+    return "InteractionInfoChangeEvent{iconMap=" + this.a + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sxo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,66 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.activity.aio.tips.GamePartyTipsBar;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gameparty.GamePartyManager;
-import com.tencent.mobileqq.gameparty.GamePartyObserver;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StLike;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativeAdFeedItemView;
+import com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class vyf
-  extends GamePartyObserver
+  extends RecyclerView.ViewHolder
 {
-  public vyf(FriendChatPie paramFriendChatPie) {}
-  
-  protected void a()
+  public vyf(vya paramvya, View paramView)
   {
-    if (((GamePartyManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      FriendChatPie.a(this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGamePartyTipsBar, new Object[0]);
-    }
+    super(paramView);
   }
   
-  protected void b()
+  private boolean a(CertifiedAccountMeta.StFeed paramStFeed)
   {
-    if (((GamePartyManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioTipsGamePartyTipsBar.a();
+    if ((this.itemView instanceof BaseWidgetView))
+    {
+      CertifiedAccountMeta.StFeed localStFeed = (CertifiedAccountMeta.StFeed)((BaseWidgetView)this.itemView).a();
+      if ((localStFeed != null) && (paramStFeed != null) && (!TextUtils.isEmpty(localStFeed.id.get())) && (!TextUtils.isEmpty(localStFeed.id.get()))) {
+        return (localStFeed.id.get().equals(paramStFeed.id.get())) && (localStFeed.likeInfo.count.get() == paramStFeed.likeInfo.count.get());
+      }
     }
+    return false;
   }
   
-  protected void c()
+  public void a(CertifiedAccountMeta.StFeed paramStFeed, ExtraTypeInfo paramExtraTypeInfo)
   {
-    if ((((GamePartyManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(155)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString)) && (FriendChatPie.b(this.a).a() == 14)) {
-      FriendChatPie.c(this.a).a();
+    if (a(paramStFeed)) {
+      return;
+    }
+    if ((this.itemView instanceof RelativeFeedItemView))
+    {
+      ((RelativeFeedItemView)this.itemView).setIsInNightMode(vya.a(this.a));
+      ((RelativeFeedItemView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
+      ((RelativeFeedItemView)this.itemView).setData(paramStFeed);
+      ((RelativeFeedItemView)this.itemView).setDataPosInList(getAdapterPosition());
+    }
+    for (;;)
+    {
+      if (vya.a(this.a) != null) {
+        this.itemView.setOnClickListener(new vyg(this, paramStFeed));
+      }
+      this.itemView.setOnLongClickListener(new vyh(this, paramExtraTypeInfo, paramStFeed));
+      return;
+      if ((this.itemView instanceof RelativeAdFeedItemView))
+      {
+        ((RelativeAdFeedItemView)this.itemView).setIsInNightMode(vya.a(this.a));
+        ((RelativeAdFeedItemView)this.itemView).setExtraTypeInfo(paramExtraTypeInfo);
+        ((RelativeAdFeedItemView)this.itemView).setData(paramStFeed);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vyf
  * JD-Core Version:    0.7.0.1
  */

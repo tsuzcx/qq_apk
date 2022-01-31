@@ -1,23 +1,25 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.ttpic.openapi.config.BeautyRealConfig.TYPE;
 
-class lfb
-  implements AsyncBack
+public class lfb
 {
-  lfb(ley paramley) {}
+  public final int a;
+  final BeautyRealConfig.TYPE a;
+  final int b;
+  final int c;
+  public int d;
   
-  public void loaded(String paramString, int paramInt)
+  lfb(BeautyRealConfig.TYPE paramTYPE, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseActivity", 2, "load 2464 html web resource finish");
-    }
+    this.jdField_a_of_type_ComTencentTtpicOpenapiConfigBeautyRealConfig$TYPE = paramTYPE;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.d = paramInt2;
+    this.b = paramInt2;
+    this.c = paramInt3;
   }
-  
-  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lfb
  * JD-Core Version:    0.7.0.1
  */

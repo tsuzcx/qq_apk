@@ -1,19 +1,26 @@
-import com.tencent.litetransfersdk.ProtocolHelper;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.banner.ChannelTopBanner;
 
 public class rid
-  implements Runnable
+  implements rig
 {
-  public rid(ProtocolHelper paramProtocolHelper) {}
+  public rid(ChannelTopBanner paramChannelTopBanner) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    FMToastUtil.a(2131427562);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.e();
+      return;
+    }
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rid
  * JD-Core Version:    0.7.0.1
  */

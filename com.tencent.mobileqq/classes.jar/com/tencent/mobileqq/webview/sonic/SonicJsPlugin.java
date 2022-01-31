@@ -1,15 +1,13 @@
 package com.tencent.mobileqq.webview.sonic;
 
-import akud;
-import akue;
 import android.text.TextUtils;
+import bant;
+import bayu;
+import bbac;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.vas.IndividuationUrlHelper;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.MultiNameSpacePluginCompact;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.sonic.sdk.SonicSession;
 import java.util.ArrayList;
@@ -17,14 +15,22 @@ import org.json.JSONObject;
 
 public class SonicJsPlugin
   extends WebViewPlugin
-  implements MultiNameSpacePluginCompact
+  implements bayu
 {
+  public static final String METHOD_GET_DIFF_DATA = "getDiffData";
+  public static final String METHOD_GET_SWIFT_HTTP_DIFF_DATA = "getSwiftHttpDiffData";
+  public static final String METHOD_PRELOAD = "preload";
+  public static final String METHOD_RELOAD = "reloadHttpData";
+  public static final String PACKAGE_NAME_SONIC = "sonic";
+  public static final String PACKAGE_NAME_SWIFT = "SwiftHttp";
+  public static final String TAG = "SonicSdkImpl_SonicJsPlugin";
+  
   public String[] getMultiNameSpace()
   {
     return new String[] { "SwiftHttp", "sonic" };
   }
   
-  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if (QLog.isColorLevel()) {
       QLog.d("SonicSdkImpl_SonicJsPlugin", 2, "handleJsRequest, url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3);
@@ -50,9 +56,9 @@ public class SonicJsPlugin
       paramString1 = this.mRuntime.a();
       if (paramString1 != null)
       {
-        paramString2 = paramString1.a();
-        if ((paramString2 != null) && (paramString2.a() != null)) {
-          paramString2.getDiffData(new akud(this, paramString1, paramJsBridgeListener));
+        paramString2 = paramString1.getSonicClient();
+        if ((paramString2 != null) && (paramString2.getSession() != null)) {
+          paramString2.getDiffData(new SonicJsPlugin.1(this, paramString1, paramJsBridgeListener));
         }
       }
       return true;
@@ -78,10 +84,10 @@ public class SonicJsPlugin
           if (QLog.isColorLevel()) {
             QLog.d("SonicSdkImpl_SonicJsPlugin", 2, "handleJsRequest preload session, preload url = " + paramString3);
           }
-          paramString2 = new SonicPreloadData(0, IndividuationUrlHelper.a(BaseApplicationImpl.sApplication.getRuntime(), paramString3, ""), bool, 0L, 1);
+          paramString2 = new SonicPreloadData(0, bant.a(BaseApplicationImpl.sApplication.getRuntime(), paramString3, ""), bool, 0L, 1);
           paramString3 = new ArrayList();
           paramString3.add(paramString2);
-          if (!SonicPreloader.a(paramString3)) {
+          if (!SonicPreloader.preload(paramString3)) {
             break label562;
           }
           i = 1;
@@ -116,11 +122,11 @@ public class SonicJsPlugin
         paramString1 = this.mRuntime.a();
         if (paramString1 != null)
         {
-          paramString2 = paramString1.a();
-          if ((paramString2 != null) && (paramString2.a() != null))
+          paramString2 = paramString1.getSonicClient();
+          if ((paramString2 != null) && (paramString2.getSession() != null))
           {
-            paramString1.a().a().refresh();
-            paramString2.getDiffData(new akue(this, bool, paramString1, paramJsBridgeListener));
+            paramString1.getSonicClient().getSession().refresh();
+            paramString2.getDiffData(new SonicJsPlugin.2(this, bool, paramString1, paramJsBridgeListener));
           }
         }
         return true;
@@ -133,7 +139,7 @@ public class SonicJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webview.sonic.SonicJsPlugin
  * JD-Core Version:    0.7.0.1
  */

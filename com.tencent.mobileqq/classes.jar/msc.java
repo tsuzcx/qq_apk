@@ -1,64 +1,33 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Handler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
-public class msc
-  extends OrientationEventListener
+public final class msc
+  implements DialogInterface.OnClickListener
 {
-  public msc(FastWebVideoFeedsListView paramFastWebVideoFeedsListView, Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-  }
+  public msc(int paramInt, QQAppInterface paramQQAppInterface, long paramLong, Handler paramHandler) {}
   
-  public void onOrientationChanged(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (FastWebVideoFeedsListView.a(this.a)) {}
-    label10:
-    do
+    if (this.jdField_a_of_type_Int == 1)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                break label10;
-                break label10;
-                break label10;
-                break label10;
-                do
-                {
-                  return;
-                } while ((!FastWebVideoFeedsListView.b(this.a)) || (FastWebVideoFeedsListView.a(this.a) == 1) || (!FastWebVideoFeedsListView.a(this.a, paramInt)) || (!FastWebVideoFeedsListView.c(this.a)));
-                if ((paramInt < 0) || ((paramInt > 30) && (paramInt < 330))) {
-                  break;
-                }
-              } while ((FastWebVideoFeedsListView.b(this.a) != -1) && (FastWebVideoFeedsListView.b(this.a) != 0));
-              FastWebVideoFeedsListView.a(this.a, -1);
-            } while (FastWebVideoFeedsListView.c(this.a) == 0);
-            this.a.e();
-            return;
-            if ((paramInt < 70) || (paramInt > 110)) {
-              break;
-            }
-          } while ((FastWebVideoFeedsListView.b(this.a) != -1) && (FastWebVideoFeedsListView.b(this.a) != 2));
-          FastWebVideoFeedsListView.a(this.a, -1);
-        } while (FastWebVideoFeedsListView.c(this.a) == 2);
-        FastWebVideoFeedsListView.a(this.a, 2);
-        return;
-      } while ((paramInt < 250) || (paramInt > 290) || ((FastWebVideoFeedsListView.b(this.a) != -1) && (FastWebVideoFeedsListView.b(this.a) != 1)));
-      FastWebVideoFeedsListView.a(this.a, -1);
-    } while (FastWebVideoFeedsListView.c(this.a) == 1);
-    FastWebVideoFeedsListView.a(this.a, 1);
+      afqa.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, true, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+      l = NetConnInfoCenter.getServerTimeMillis();
+      ((ajqw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(31)).a(String.valueOf(this.jdField_a_of_type_Long), true, l);
+      return;
+    }
+    afqa.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, false, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    long l = NetConnInfoCenter.getServerTimeMillis();
+    ((ajqw)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(31)).a(String.valueOf(this.jdField_a_of_type_Long), false, l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     msc
  * JD-Core Version:    0.7.0.1
  */

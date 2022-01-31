@@ -1,65 +1,35 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.networkedmodule.ModuleDownloadListenerAdapter;
-import cooperation.qzone.networkedmodule.QzoneModuleConst;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
-import cooperation.qzone.util.NetworkState;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
 public class anec
-  extends ModuleDownloadListenerAdapter
+  extends ajjh
 {
-  public anec(QzoneModuleManager paramQzoneModuleManager) {}
+  public anec(MessengerService paramMessengerService) {}
   
-  private void a()
+  protected void onGetSigZanInfo(boolean paramBoolean, Object paramObject)
   {
-    if (!NetworkState.isWifiConn())
+    if (this.a.b != null)
     {
-      QLog.w("QzoneModuleManager", 1, "isWifiConn:false,so stop update.");
+      this.a.b.putString("cmd", "ipc_signature_setlike");
+      paramObject = new Bundle();
+      if (!paramBoolean) {
+        break label81;
+      }
+    }
+    label81:
+    for (int i = 0;; i = 101)
+    {
+      paramObject.putInt("result", i);
+      this.a.b.putBundle("response", paramObject);
+      this.a.a(this.a.b);
+      this.a.b = null;
       return;
     }
-    QzoneModuleManager.access$008(this.a);
-    for (;;)
-    {
-      if (QzoneModuleManager.access$000(this.a) < QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.size())
-      {
-        String str = (String)QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.get(QzoneModuleManager.access$000(this.a));
-        if (this.a.checkIfNeedUpdate(str)) {
-          this.a.updateModule(str, this);
-        }
-      }
-      else
-      {
-        if (QzoneModuleManager.access$000(this.a) != QzoneModuleConst.QZONE_MODULES_PREDOWNLOAD.size()) {
-          break;
-        }
-        QLog.i("QzoneModuleManager", 1, "updateAllModules completed--totalModules:" + QzoneModuleManager.access$000(this.a));
-        return;
-      }
-      QzoneModuleManager.access$008(this.a);
-    }
-  }
-  
-  public void onDownloadCanceled(String paramString)
-  {
-    super.onDownloadCanceled(paramString);
-    a();
-  }
-  
-  public void onDownloadFailed(String paramString)
-  {
-    super.onDownloadFailed(paramString);
-    a();
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    super.onDownloadSucceed(paramString);
-    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anec
  * JD-Core Version:    0.7.0.1
  */

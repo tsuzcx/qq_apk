@@ -1,17 +1,30 @@
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
-public class nrz
-  implements AbsListView.OnScrollListener
+class nrz
+  implements DialogInterface.OnClickListener
 {
-  public nrz(MyVideoVisibleTroopPageView paramMyVideoVisibleTroopPageView) {}
+  nrz(nrw paramnrw, boolean paramBoolean) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a = paramInt1;
+    paramDialogInterface = new HashMap();
+    paramDialogInterface.put("stat_src", "2");
+    nbe.a(new nmv().a(BaseApplication.getContext()).a(nbe.e).b(nbe.ac).a(npk.a(nrw.a(this.jdField_a_of_type_Nrw))).d(nbe.a(nrw.a(this.jdField_a_of_type_Nrw), paramDialogInterface)).a());
+    if (!this.jdField_a_of_type_Boolean) {
+      if (!nrw.a(this.jdField_a_of_type_Nrw)) {}
+    }
+    while (!(this.jdField_a_of_type_Nrw.a instanceof Activity))
+    {
+      return;
+      this.jdField_a_of_type_Nrw.g();
+      return;
+    }
+    rvb.a(this.jdField_a_of_type_Nrw.a);
+    npa.a(this.jdField_a_of_type_Nrw.a, nrw.a(this.jdField_a_of_type_Nrw));
   }
 }
 

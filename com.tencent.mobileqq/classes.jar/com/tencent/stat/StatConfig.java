@@ -3,7 +3,7 @@ package com.tencent.stat;
 import android.content.Context;
 import android.os.Build;
 import android.os.Build.VERSION;
-import com.tencent.a.a.a.c;
+import com.tencent.stat.a.a.c;
 import com.tencent.stat.common.DeviceInfo;
 import com.tencent.stat.common.StatCommonHelper;
 import com.tencent.stat.common.StatLogger;
@@ -146,7 +146,6 @@ public class StatConfig
   }
   
   static void a(Context paramContext, e parame)
-    throws JSONException
   {
     if (parame.a == b.a)
     {
@@ -392,10 +391,10 @@ public class StatConfig
             p.warn("MTA is disable for current SDK version");
           }
         }
-        if (!a(paramJSONObject, "sv", "2.2.4")) {
+        if (!a(paramJSONObject, "sv", "2.4.2")) {
           break label602;
         }
-        p.i("match sdk version:2.2.4");
+        p.i("match sdk version:2.4.2");
         i1 = 1;
         if (a(paramJSONObject, "md", Build.MODEL))
         {
@@ -435,7 +434,7 @@ public class StatConfig
         if (i1 == 0) {
           break;
         }
-        a(StatCommonHelper.getSDKLongVersion("2.2.4"));
+        a(StatCommonHelper.getSDKLongVersion("2.4.2"));
         return;
       }
       catch (Exception paramContext)
@@ -469,10 +468,10 @@ public class StatConfig
         b(g.a(), paramJSONObject);
         paramJSONObject = paramJSONObject.getString(c);
         if (isDebugEnable()) {
-          p.d("hibernateVer:" + paramJSONObject + ", current version:" + "2.2.4");
+          p.d("hibernateVer:" + paramJSONObject + ", current version:" + "2.4.2");
         }
         long l1 = StatCommonHelper.getSDKLongVersion(paramJSONObject);
-        if (StatCommonHelper.getSDKLongVersion("2.2.4") <= l1)
+        if (StatCommonHelper.getSDKLongVersion("2.4.2") <= l1)
         {
           a(l1);
           return;
@@ -496,9 +495,9 @@ public class StatConfig
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 389	com/tencent/stat/StatConfig:B	Ljava/lang/String;
+    //   3: getstatic 388	com/tencent/stat/StatConfig:B	Ljava/lang/String;
     //   6: ifnull +12 -> 18
-    //   9: getstatic 389	com/tencent/stat/StatConfig:B	Ljava/lang/String;
+    //   9: getstatic 388	com/tencent/stat/StatConfig:B	Ljava/lang/String;
     //   12: astore_0
     //   13: ldc 2
     //   15: monitorexit
@@ -506,21 +505,21 @@ public class StatConfig
     //   17: areturn
     //   18: aload_0
     //   19: ifnull +16 -> 35
-    //   22: getstatic 389	com/tencent/stat/StatConfig:B	Ljava/lang/String;
+    //   22: getstatic 388	com/tencent/stat/StatConfig:B	Ljava/lang/String;
     //   25: ifnonnull +10 -> 35
     //   28: aload_0
-    //   29: invokestatic 508	com/tencent/stat/common/StatCommonHelper:getAppKey	(Landroid/content/Context;)Ljava/lang/String;
-    //   32: putstatic 389	com/tencent/stat/StatConfig:B	Ljava/lang/String;
-    //   35: getstatic 389	com/tencent/stat/StatConfig:B	Ljava/lang/String;
+    //   29: invokestatic 507	com/tencent/stat/common/StatCommonHelper:getAppKey	(Landroid/content/Context;)Ljava/lang/String;
+    //   32: putstatic 388	com/tencent/stat/StatConfig:B	Ljava/lang/String;
+    //   35: getstatic 388	com/tencent/stat/StatConfig:B	Ljava/lang/String;
     //   38: ifnull +15 -> 53
-    //   41: getstatic 389	com/tencent/stat/StatConfig:B	Ljava/lang/String;
-    //   44: invokevirtual 511	java/lang/String:trim	()Ljava/lang/String;
-    //   47: invokevirtual 312	java/lang/String:length	()I
+    //   41: getstatic 388	com/tencent/stat/StatConfig:B	Ljava/lang/String;
+    //   44: invokevirtual 510	java/lang/String:trim	()Ljava/lang/String;
+    //   47: invokevirtual 311	java/lang/String:length	()I
     //   50: ifne +12 -> 62
     //   53: getstatic 73	com/tencent/stat/StatConfig:p	Lcom/tencent/stat/common/StatLogger;
-    //   56: ldc_w 513
-    //   59: invokevirtual 515	com/tencent/stat/common/StatLogger:e	(Ljava/lang/Object;)V
-    //   62: getstatic 389	com/tencent/stat/StatConfig:B	Ljava/lang/String;
+    //   56: ldc_w 512
+    //   59: invokevirtual 514	com/tencent/stat/common/StatLogger:e	(Ljava/lang/Object;)V
+    //   62: getstatic 388	com/tencent/stat/StatConfig:B	Ljava/lang/String;
     //   65: astore_0
     //   66: goto -53 -> 13
     //   69: astore_0
@@ -638,9 +637,9 @@ public class StatConfig
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 543	com/tencent/stat/StatConfig:C	Ljava/lang/String;
+    //   3: getstatic 542	com/tencent/stat/StatConfig:C	Ljava/lang/String;
     //   6: ifnull +12 -> 18
-    //   9: getstatic 543	com/tencent/stat/StatConfig:C	Ljava/lang/String;
+    //   9: getstatic 542	com/tencent/stat/StatConfig:C	Ljava/lang/String;
     //   12: astore_0
     //   13: ldc 2
     //   15: monitorexit
@@ -650,26 +649,26 @@ public class StatConfig
     //   19: getstatic 127	com/tencent/stat/StatConfig:D	Ljava/lang/String;
     //   22: ldc 129
     //   24: invokestatic 211	com/tencent/stat/common/StatPreferences:getString	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   27: putstatic 543	com/tencent/stat/StatConfig:C	Ljava/lang/String;
-    //   30: getstatic 543	com/tencent/stat/StatConfig:C	Ljava/lang/String;
+    //   27: putstatic 542	com/tencent/stat/StatConfig:C	Ljava/lang/String;
+    //   30: getstatic 542	com/tencent/stat/StatConfig:C	Ljava/lang/String;
     //   33: ifnull +15 -> 48
-    //   36: getstatic 543	com/tencent/stat/StatConfig:C	Ljava/lang/String;
-    //   39: invokevirtual 511	java/lang/String:trim	()Ljava/lang/String;
-    //   42: invokevirtual 312	java/lang/String:length	()I
+    //   36: getstatic 542	com/tencent/stat/StatConfig:C	Ljava/lang/String;
+    //   39: invokevirtual 510	java/lang/String:trim	()Ljava/lang/String;
+    //   42: invokevirtual 311	java/lang/String:length	()I
     //   45: ifne +10 -> 55
     //   48: aload_0
-    //   49: invokestatic 545	com/tencent/stat/common/StatCommonHelper:getInstallChannel	(Landroid/content/Context;)Ljava/lang/String;
-    //   52: putstatic 543	com/tencent/stat/StatConfig:C	Ljava/lang/String;
-    //   55: getstatic 543	com/tencent/stat/StatConfig:C	Ljava/lang/String;
+    //   49: invokestatic 544	com/tencent/stat/common/StatCommonHelper:getInstallChannel	(Landroid/content/Context;)Ljava/lang/String;
+    //   52: putstatic 542	com/tencent/stat/StatConfig:C	Ljava/lang/String;
+    //   55: getstatic 542	com/tencent/stat/StatConfig:C	Ljava/lang/String;
     //   58: ifnull +15 -> 73
-    //   61: getstatic 543	com/tencent/stat/StatConfig:C	Ljava/lang/String;
-    //   64: invokevirtual 511	java/lang/String:trim	()Ljava/lang/String;
-    //   67: invokevirtual 312	java/lang/String:length	()I
+    //   61: getstatic 542	com/tencent/stat/StatConfig:C	Ljava/lang/String;
+    //   64: invokevirtual 510	java/lang/String:trim	()Ljava/lang/String;
+    //   67: invokevirtual 311	java/lang/String:length	()I
     //   70: ifne +12 -> 82
     //   73: getstatic 73	com/tencent/stat/StatConfig:p	Lcom/tencent/stat/common/StatLogger;
-    //   76: ldc_w 547
-    //   79: invokevirtual 549	com/tencent/stat/common/StatLogger:w	(Ljava/lang/Object;)V
-    //   82: getstatic 543	com/tencent/stat/StatConfig:C	Ljava/lang/String;
+    //   76: ldc_w 546
+    //   79: invokevirtual 548	com/tencent/stat/common/StatLogger:w	(Ljava/lang/Object;)V
+    //   82: getstatic 542	com/tencent/stat/StatConfig:C	Ljava/lang/String;
     //   85: astore_0
     //   86: goto -73 -> 13
     //   89: astore_0

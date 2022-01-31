@@ -3,144 +3,207 @@ package dov.com.qq.im.capture.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
-import com.tencent.biz.qqstory.utils.UIUtils;
+import android.widget.RelativeLayout;
+import bhhl;
+import bhpp;
+import bhqt;
+import bhqw;
+import birb;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.data.IFaceSelectedListener;
 import dov.com.qq.im.capture.music.humrecognition.view.BgmRecognitionProviderView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
+import vms;
 
 public class ProviderViewEditContainer
   extends FrameLayout
 {
   private int jdField_a_of_type_Int = 100;
-  private IFaceSelectedListener jdField_a_of_type_DovComQqImCaptureDataIFaceSelectedListener;
-  private ProviderView.ProviderViewListener jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private bhhl jdField_a_of_type_Bhhl;
+  private bhpp jdField_a_of_type_Bhpp;
+  private bhqt jdField_a_of_type_Bhqt;
+  private bhqw jdField_a_of_type_Bhqw;
   private ProviderView jdField_a_of_type_DovComQqImCaptureViewProviderView;
-  private VideoSegmentPickerProviderView.VideoSegmentPickerListener jdField_a_of_type_DovComQqImCaptureViewVideoSegmentPickerProviderView$VideoSegmentPickerListener;
-  private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private int[] jdField_a_of_type_ArrayOfInt = { 103, 109, 110, 111 };
+  private HashMap<Integer, ProviderView> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private int[] jdField_a_of_type_ArrayOfInt = { 103, 109, 111, 113 };
   private int b = 0;
   
   public ProviderViewEditContainer(Context paramContext)
   {
     super(paramContext);
-    a();
   }
   
   public ProviderViewEditContainer(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    a();
   }
   
   public ProviderViewEditContainer(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    a();
   }
   
   private boolean a(int paramInt, Object... paramVarArgs)
   {
-    Object localObject = (ProviderView)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-    if (localObject == null)
+    Object localObject1;
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(paramInt))) {
+      localObject1 = (ProviderView)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
+    }
+    Object localObject2;
+    while (localObject1 == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("ProviderViewEditContainer", 2, "openContainerProviderView view not exsist");
+        QLog.d("ProviderViewEditContainer", 2, new Object[] { "openContainerProviderView view not exsist, id:", Integer.valueOf(paramInt) });
       }
       return false;
+      localObject2 = b(paramInt);
+      localObject1 = localObject2;
+      if (localObject2 != null)
+      {
+        this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(paramInt), localObject2);
+        addView((View)localObject2);
+        localObject1 = localObject2;
+      }
     }
-    this.jdField_a_of_type_DovComQqImCaptureViewProviderView = ((ProviderView)localObject);
+    this.jdField_a_of_type_DovComQqImCaptureViewProviderView = ((ProviderView)localObject1);
     switch (paramInt)
     {
+    case 104: 
+    case 105: 
+    case 106: 
+    case 107: 
+    case 108: 
+    case 112: 
+    default: 
+    case 103: 
+    case 109: 
+    case 110: 
+      for (;;)
+      {
+        return true;
+        localObject1 = (StaticStickerProviderView)localObject1;
+        if (!((StaticStickerProviderView)localObject1).d())
+        {
+          ((StaticStickerProviderView)localObject1).a(null);
+          ((StaticStickerProviderView)localObject1).setOnFaceSelectedListener(this.jdField_a_of_type_Bhhl);
+        }
+        ((StaticStickerProviderView)localObject1).setCaptureScene(this.b);
+        ((StaticStickerProviderView)localObject1).i();
+        ((StaticStickerProviderView)localObject1).c();
+        if ((paramVarArgs != null) && (paramVarArgs.length == 1)) {
+          ((StaticStickerProviderView)localObject1).a((birb)paramVarArgs[0]);
+        }
+        paramVarArgs = getLayoutParams();
+        paramInt = vms.a(getContext(), 206.0F);
+        if (paramVarArgs.height != paramInt)
+        {
+          paramVarArgs.height = paramInt;
+          setLayoutParams(paramVarArgs);
+        }
+        this.jdField_a_of_type_Int = 103;
+        continue;
+        localObject1 = (MusicFragmentProviderView)localObject1;
+        if (!((MusicFragmentProviderView)localObject1).d())
+        {
+          ((MusicFragmentProviderView)localObject1).d(250);
+          ((MusicFragmentProviderView)localObject1).a(null);
+          if (this.jdField_a_of_type_Bhpp != null) {
+            ((MusicFragmentProviderView)localObject1).setProviderViewListener(this.jdField_a_of_type_Bhpp);
+          }
+        }
+        ((MusicFragmentProviderView)localObject1).setCaptureScene(this.b);
+        if ((paramVarArgs != null) && (paramVarArgs.length == 1)) {
+          ((MusicFragmentProviderView)localObject1).setMusicProviderView((MusicItemInfo)paramVarArgs[0]);
+        }
+        paramVarArgs = getLayoutParams();
+        paramInt = vms.a(getContext(), 250.0F);
+        if (paramVarArgs.height != paramInt)
+        {
+          paramVarArgs.height = paramInt;
+          setLayoutParams(paramVarArgs);
+        }
+        paramVarArgs = getLayoutParams();
+        if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
+        {
+          paramVarArgs.height += this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
+          setLayoutParams(paramVarArgs);
+        }
+        this.jdField_a_of_type_Int = 109;
+        continue;
+        paramVarArgs = (BgmRecognitionProviderView)localObject1;
+        if (!paramVarArgs.d())
+        {
+          paramVarArgs.d(250);
+          paramVarArgs.a(null);
+          if (this.jdField_a_of_type_Bhpp != null) {
+            paramVarArgs.setProviderViewListener(this.jdField_a_of_type_Bhpp);
+          }
+        }
+        paramVarArgs.setCaptureScene(this.b);
+        paramVarArgs.c();
+        paramVarArgs = getLayoutParams();
+        paramInt = vms.a(getContext(), 250.0F);
+        if (paramVarArgs.height != paramInt)
+        {
+          paramVarArgs.height = paramInt;
+          setLayoutParams(paramVarArgs);
+        }
+        this.jdField_a_of_type_Int = 110;
+      }
+    case 111: 
+      localObject1 = (VideoSegmentPickerProviderView)localObject1;
+      if (!((VideoSegmentPickerProviderView)localObject1).d())
+      {
+        ((VideoSegmentPickerProviderView)localObject1).setCaptureScene(this.b);
+        ((VideoSegmentPickerProviderView)localObject1).setListener(this.jdField_a_of_type_Bhqw);
+        ((VideoSegmentPickerProviderView)localObject1).a(null);
+      }
+      if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) || (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getVisibility() != 0)) {
+        break;
+      }
     }
-    for (;;)
+    for (paramInt = ((VideoSegmentPickerProviderView)localObject1).b() + this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();; paramInt = 0)
     {
-      return true;
-      localObject = (StaticStickerProviderView)localObject;
-      if (!((StaticStickerProviderView)localObject).d())
+      localObject2 = getLayoutParams();
+      int i = vms.a(getContext(), 95.0F);
+      if (paramInt > 0) {}
+      for (((ViewGroup.LayoutParams)localObject2).height = paramInt;; ((ViewGroup.LayoutParams)localObject2).height = i)
       {
-        ((StaticStickerProviderView)localObject).a(null);
-        ((StaticStickerProviderView)localObject).setOnFaceSelectedListener(this.jdField_a_of_type_DovComQqImCaptureDataIFaceSelectedListener);
-      }
-      ((StaticStickerProviderView)localObject).setCaptureScene(this.b);
-      ((StaticStickerProviderView)localObject).i();
-      ((StaticStickerProviderView)localObject).a();
-      if ((paramVarArgs != null) && (paramVarArgs.length == 1)) {
-        ((StaticStickerProviderView)localObject).a((GestureHelper.ZoomItem)paramVarArgs[0]);
-      }
-      paramVarArgs = getLayoutParams();
-      paramInt = UIUtils.a(getContext(), 206.0F);
-      if (paramVarArgs.height != paramInt)
-      {
-        paramVarArgs.height = paramInt;
-        setLayoutParams(paramVarArgs);
-      }
-      this.jdField_a_of_type_Int = 103;
-      continue;
-      localObject = (MusicFragmentProviderView)localObject;
-      if (!((MusicFragmentProviderView)localObject).d())
-      {
-        ((MusicFragmentProviderView)localObject).d(250);
-        ((MusicFragmentProviderView)localObject).a(null);
-        if (this.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener != null) {
-          ((MusicFragmentProviderView)localObject).setProviderViewListener(this.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener);
+        setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        if ((paramVarArgs != null) && (paramVarArgs.length == 1) && ((paramVarArgs[0] instanceof birb)))
+        {
+          ((VideoSegmentPickerProviderView)localObject1).setItems((birb)paramVarArgs[0]);
+          ((VideoSegmentPickerProviderView)localObject1).c();
         }
+        this.jdField_a_of_type_Int = 111;
+        break;
       }
-      ((MusicFragmentProviderView)localObject).setCaptureScene(this.b);
-      if ((paramVarArgs != null) && (paramVarArgs.length == 1)) {
-        ((MusicFragmentProviderView)localObject).setMusicProviderView((MusicItemInfo)paramVarArgs[0]);
+      localObject1 = (VideoCoverPickerProviderView)localObject1;
+      if (!((VideoCoverPickerProviderView)localObject1).d())
+      {
+        ((VideoCoverPickerProviderView)localObject1).setCaptureScene(this.b);
+        ((VideoCoverPickerProviderView)localObject1).setListener(this.jdField_a_of_type_Bhqt);
+        ((VideoCoverPickerProviderView)localObject1).a(null);
+      }
+      if ((paramVarArgs != null) && (paramVarArgs.length == 1) && ((paramVarArgs[0] instanceof Long))) {
+        ((VideoCoverPickerProviderView)localObject1).setCoverFrameTime(((Long)paramVarArgs[0]).longValue());
       }
       paramVarArgs = getLayoutParams();
-      paramInt = UIUtils.a(getContext(), 250.0F);
-      if (paramVarArgs.height != paramInt)
-      {
-        paramVarArgs.height = paramInt;
-        setLayoutParams(paramVarArgs);
+      i = vms.a(getContext(), 185.0F);
+      paramInt = i;
+      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
+        paramInt = i + this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
       }
-      this.jdField_a_of_type_Int = 109;
-      continue;
-      paramVarArgs = (BgmRecognitionProviderView)localObject;
-      if (!paramVarArgs.d())
-      {
-        paramVarArgs.d(250);
-        paramVarArgs.a(null);
-        if (this.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener != null) {
-          paramVarArgs.setProviderViewListener(this.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener);
-        }
-      }
-      paramVarArgs.setCaptureScene(this.b);
-      paramVarArgs.a();
-      paramVarArgs = getLayoutParams();
-      paramInt = UIUtils.a(getContext(), 250.0F);
-      if (paramVarArgs.height != paramInt)
-      {
-        paramVarArgs.height = paramInt;
-        setLayoutParams(paramVarArgs);
-      }
-      this.jdField_a_of_type_Int = 110;
-      continue;
-      localObject = (VideoSegmentPickerProviderView)localObject;
-      if (!((VideoSegmentPickerProviderView)localObject).d())
-      {
-        ((VideoSegmentPickerProviderView)localObject).setCaptureScene(this.b);
-        ((VideoSegmentPickerProviderView)localObject).setListener(this.jdField_a_of_type_DovComQqImCaptureViewVideoSegmentPickerProviderView$VideoSegmentPickerListener);
-        ((VideoSegmentPickerProviderView)localObject).a(null);
-      }
-      ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
-      localLayoutParams.height = UIUtils.a(getContext(), 95.0F);
-      setLayoutParams(localLayoutParams);
-      if ((paramVarArgs != null) && (paramVarArgs.length == 1) && ((paramVarArgs[0] instanceof GestureHelper.ZoomItem)))
-      {
-        ((VideoSegmentPickerProviderView)localObject).setItems((GestureHelper.ZoomItem)paramVarArgs[0]);
-        ((VideoSegmentPickerProviderView)localObject).a();
-      }
-      this.jdField_a_of_type_Int = 111;
+      paramVarArgs.height = paramInt;
+      setLayoutParams(paramVarArgs);
+      this.jdField_a_of_type_Int = 113;
+      break;
     }
   }
   
@@ -153,6 +216,7 @@ public class ProviderViewEditContainer
     case 106: 
     case 107: 
     case 108: 
+    case 112: 
     default: 
       return null;
     case 103: 
@@ -165,8 +229,12 @@ public class ProviderViewEditContainer
       localObject = new BgmRecognitionProviderView(getContext());
       ((ProviderView)localObject).setNeedTabBar(false);
       return localObject;
+    case 111: 
+      localObject = new VideoSegmentPickerProviderView(getContext());
+      ((ProviderView)localObject).setNeedTabBar(false);
+      return localObject;
     }
-    Object localObject = new VideoSegmentPickerProviderView(getContext());
+    Object localObject = new VideoCoverPickerProviderView(getContext());
     ((ProviderView)localObject).setNeedTabBar(false);
     return localObject;
   }
@@ -181,20 +249,17 @@ public class ProviderViewEditContainer
   
   public void a()
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfInt.length)
+    setVisibility(8);
+    if (this.jdField_a_of_type_DovComQqImCaptureViewProviderView != null)
     {
-      int j = this.jdField_a_of_type_ArrayOfInt[i];
-      ProviderView localProviderView = b(j);
-      if (localProviderView != null)
-      {
-        localProviderView.b(null);
-        localProviderView.setVisibility(8);
-        addView(localProviderView);
-        this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(j), localProviderView);
+      if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_a_of_type_Int == 111)) {
+        setBackgroundColor(2131099748);
       }
-      i += 1;
+      this.jdField_a_of_type_DovComQqImCaptureViewProviderView.d();
+      this.jdField_a_of_type_DovComQqImCaptureViewProviderView.setVisibility(8);
+      this.jdField_a_of_type_DovComQqImCaptureViewProviderView = null;
     }
+    this.jdField_a_of_type_Int = 100;
   }
   
   public void a(int paramInt)
@@ -205,11 +270,16 @@ public class ProviderViewEditContainer
   public void a(int paramInt, Object... paramVarArgs)
   {
     if (!a(paramInt, paramVarArgs)) {}
-    while (this.jdField_a_of_type_DovComQqImCaptureViewProviderView == null) {
-      return;
-    }
-    this.jdField_a_of_type_DovComQqImCaptureViewProviderView.setVisibility(0);
-    setVisibility(0);
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_DovComQqImCaptureViewProviderView == null);
+      this.jdField_a_of_type_DovComQqImCaptureViewProviderView.setVisibility(0);
+      setVisibility(0);
+    } while ((this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) || (this.jdField_a_of_type_Int != 111));
+    setBackgroundColor(0);
   }
   
   public boolean a()
@@ -237,37 +307,35 @@ public class ProviderViewEditContainer
   
   public void b()
   {
-    setVisibility(8);
-    if (this.jdField_a_of_type_DovComQqImCaptureViewProviderView != null)
-    {
-      this.jdField_a_of_type_DovComQqImCaptureViewProviderView.b();
-      this.jdField_a_of_type_DovComQqImCaptureViewProviderView.setVisibility(8);
-      this.jdField_a_of_type_DovComQqImCaptureViewProviderView = null;
-    }
-    this.jdField_a_of_type_Int = 100;
-  }
-  
-  public void c()
-  {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
     while (localIterator.hasNext()) {
-      ((ProviderView)localIterator.next()).g();
+      ((ProviderView)localIterator.next()).b();
     }
   }
   
-  public void setProviderViewListener(ProviderView.ProviderViewListener paramProviderViewListener)
+  public void setLiuHaiParentView(RelativeLayout paramRelativeLayout)
   {
-    this.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener = paramProviderViewListener;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
   }
   
-  public void setStickerListener(IFaceSelectedListener paramIFaceSelectedListener)
+  public void setProviderViewListener(bhpp parambhpp)
   {
-    this.jdField_a_of_type_DovComQqImCaptureDataIFaceSelectedListener = paramIFaceSelectedListener;
+    this.jdField_a_of_type_Bhpp = parambhpp;
   }
   
-  public void setVideoSegmentPickerListener(VideoSegmentPickerProviderView.VideoSegmentPickerListener paramVideoSegmentPickerListener)
+  public void setStickerListener(bhhl parambhhl)
   {
-    this.jdField_a_of_type_DovComQqImCaptureViewVideoSegmentPickerProviderView$VideoSegmentPickerListener = paramVideoSegmentPickerListener;
+    this.jdField_a_of_type_Bhhl = parambhhl;
+  }
+  
+  public void setVideoCoverPickerListener(bhqt parambhqt)
+  {
+    this.jdField_a_of_type_Bhqt = parambhqt;
+  }
+  
+  public void setVideoSegmentPickerListener(bhqw parambhqw)
+  {
+    this.jdField_a_of_type_Bhqw = parambhqw;
   }
 }
 

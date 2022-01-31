@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/jj" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="63.5dip" android:layout_marginRight="23.5dip">
+        <ImageView android:id="@id/d3z" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginLeft="11.5dip" android:src="@drawable/cop" />
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip">
+            <com.tencent.widget.SingleLineTextView android:textSize="18.0dip" android:textColor="@color/skin_black_group_item" android:ellipsize="end" android:id="@id/f5e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+            <TextView android:textSize="14.0dip" android:textColor="#ff949494" android:id="@id/lastMsgTime" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView android:layout_width="13.5dip" android:layout_height="17.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/g_u" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

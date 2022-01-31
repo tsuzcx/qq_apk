@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.apollo.store;
 
+import aifg;
+import ajds;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Bundle;
@@ -8,40 +10,35 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import com.tencent.mobileqq.apollo.ApolloManager;
+import aquf;
+import bajr;
+import befq;
 import com.tencent.mobileqq.apollo.view.FrameGifView;
-import com.tencent.mobileqq.apollo.view.QQFrameZipDecoder;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ApolloPandora;
-import com.tencent.mobileqq.jsp.WebSSOAgentServlet;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.utils.VipUtils;
 import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReq;
 import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReqComm;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
 import java.lang.ref.WeakReference;
 import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
 import org.json.JSONObject;
-import yzf;
-import yzg;
-import yzh;
 
 public class ApolloBoxEnterView
   extends FrameGifView
   implements Handler.Callback, BusinessObserver
 {
   private int jdField_a_of_type_Int;
+  private befq jdField_a_of_type_Befq = new befq(Looper.getMainLooper(), this);
   private ApolloPandora jdField_a_of_type_ComTencentMobileqqDataApolloPandora;
-  private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
-  Runnable jdField_a_of_type_JavaLangRunnable = new yzg(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new ApolloBoxEnterView.2(this);
   private String jdField_a_of_type_JavaLangString;
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   private String b;
   private String c;
   
@@ -65,15 +62,22 @@ public class ApolloBoxEnterView
   
   public void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
   {
+    if (aifg.a(paramQQAppInterface, paramString2) == 2)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloBoxEnterView", 2, "[checkBoxStateAsync] 3D return.");
+      }
+      return;
+    }
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
     this.jdField_a_of_type_JavaLangString = paramString2;
     this.c = paramQQAppInterface.getCurrentAccountUin();
     this.b = paramString1;
-    ThreadManager.executeOnSubThread(new yzf(this, paramString1, paramString2));
+    ThreadManager.executeOnSubThread(new ApolloBoxEnterView.1(this, paramString1, paramString2));
   }
   
-  public void a(String paramString1, String paramString2)
+  protected void a(String paramString1, String paramString2)
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
     QQAppInterface localQQAppInterface;
@@ -86,24 +90,24 @@ public class ApolloBoxEnterView
     {
       try
       {
-        this.jdField_a_of_type_ComTencentMobileqqDataApolloPandora = ((ApolloManager)localQQAppInterface.getManager(152)).a(this.jdField_a_of_type_JavaLangString, true);
-        if ((TextUtils.isEmpty(ApolloManager.jdField_a_of_type_JavaLangString)) || (!ApolloManager.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString))) {
-          break label707;
+        this.jdField_a_of_type_ComTencentMobileqqDataApolloPandora = ((aifg)localQQAppInterface.getManager(153)).a(this.jdField_a_of_type_JavaLangString, true);
+        if ((TextUtils.isEmpty(aifg.jdField_a_of_type_JavaLangString)) || (!aifg.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString))) {
+          break label708;
         }
         if (QLog.isColorLevel()) {
-          QLog.d("ApolloBoxEnterView", 2, "checkBoxState ApolloManager.sUinForReload:" + ApolloManager.jdField_a_of_type_JavaLangString);
+          QLog.d("ApolloBoxEnterView", 2, "checkBoxState ApolloManager.sUinForReload:" + aifg.jdField_a_of_type_JavaLangString);
         }
-        ApolloManager.jdField_a_of_type_JavaLangString = null;
+        aifg.jdField_a_of_type_JavaLangString = null;
         i = 1;
         if ((i == 0) && (this.jdField_a_of_type_ComTencentMobileqqDataApolloPandora != null) && (NetConnInfoCenter.getServerTime() <= this.jdField_a_of_type_ComTencentMobileqqDataApolloPandora.checkPoint)) {
-          break label451;
+          break label452;
         }
-        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(256);
+        this.jdField_a_of_type_Befq.sendEmptyMessage(256);
         if (!QLog.isColorLevel()) {
-          break label701;
+          break label702;
         }
         if (this.jdField_a_of_type_ComTencentMobileqqDataApolloPandora == null) {
-          break label436;
+          break label437;
         }
         QLog.d("ApolloBoxEnterView", 2, "checkBoxState mApolloPandora.checkPoint:" + this.jdField_a_of_type_ComTencentMobileqqDataApolloPandora.checkPoint);
         bool = true;
@@ -116,19 +120,19 @@ public class ApolloBoxEnterView
         Object localObject = new WebSSOAgent.UniSsoServerReqComm();
         ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
         ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.8");
+        ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("8.2.6");
         WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
         localUniSsoServerReq.comm.set((MessageMicro)localObject);
         localObject = new JSONObject();
         ((JSONObject)localObject).put("cmd", "apollo_interact.get_user_drawer_info");
         if (!TextUtils.isEmpty(paramString1)) {
-          break label677;
+          break label678;
         }
         paramString1 = "android";
         ((JSONObject)localObject).put("from", paramString1);
         ((JSONObject)localObject).put("toUin", Long.parseLong(paramString2));
         localUniSsoServerReq.reqdata.set(((JSONObject)localObject).toString());
-        paramString1 = new NewIntent(localQQAppInterface.getApp(), WebSSOAgentServlet.class);
+        paramString1 = new NewIntent(localQQAppInterface.getApp(), aquf.class);
         paramString1.putExtra("extra_cmd", "apollo_interact.get_user_drawer_info");
         paramString1.putExtra("extra_data", localUniSsoServerReq.toByteArray());
         paramString1.putExtra("extra_callbackid", paramString2);
@@ -142,11 +146,11 @@ public class ApolloBoxEnterView
       }
       QLog.e("ApolloBoxEnterView", 2, "queryPandoraInfo failed ", paramString1);
       return;
-      label436:
+      label437:
       QLog.d("ApolloBoxEnterView", 2, "checkBoxState mApolloPandora == null");
       boolean bool = true;
       continue;
-      label451:
+      label452:
       if (QLog.isColorLevel()) {
         QLog.d("ApolloBoxEnterView", 2, "checkBoxState mApolloPandora.canSteal:" + this.jdField_a_of_type_ComTencentMobileqqDataApolloPandora.canSteal + ",mApolloPandora.hadStolen:" + this.jdField_a_of_type_ComTencentMobileqqDataApolloPandora.hadStolen);
       }
@@ -157,11 +161,11 @@ public class ApolloBoxEnterView
         }
         if (System.currentTimeMillis() < this.jdField_a_of_type_ComTencentMobileqqDataApolloPandora.updateTime + this.jdField_a_of_type_ComTencentMobileqqDataApolloPandora.queryInterval * 1000L)
         {
-          this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(257);
+          this.jdField_a_of_type_Befq.sendEmptyMessage(257);
           bool = false;
           continue;
         }
-        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(256);
+        this.jdField_a_of_type_Befq.sendEmptyMessage(256);
         if (QLog.isColorLevel())
         {
           QLog.d("ApolloBoxEnterView", 2, "checkBoxState updateTime has past need update");
@@ -170,17 +174,17 @@ public class ApolloBoxEnterView
       }
       else
       {
-        this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(256);
+        this.jdField_a_of_type_Befq.sendEmptyMessage(256);
         bool = false;
         continue;
-        label677:
+        label678:
         paramString1 = "android." + paramString1;
         continue;
       }
-      label701:
+      label702:
       bool = true;
       continue;
-      label707:
+      label708:
       int i = 0;
     }
   }
@@ -241,7 +245,7 @@ public class ApolloBoxEnterView
       return;
       if (paramBoolean)
       {
-        ThreadManager.executeOnSubThread(new yzh(this, paramBundle));
+        ThreadManager.executeOnSubThread(new ApolloBoxEnterView.3(this, paramBundle));
         return;
       }
     } while (!QLog.isColorLevel());
@@ -270,7 +274,7 @@ public class ApolloBoxEnterView
         if (QLog.isColorLevel()) {
           QLog.d("ApolloBoxEnterView", 2, "setVisibility mApolloPandora.mBoxTipUrl:" + this.jdField_a_of_type_ComTencentMobileqqDataApolloPandora.mBoxTipUrl);
         }
-        super.setGifData(100, null, this.jdField_a_of_type_ComTencentMobileqqDataApolloPandora.mBoxTipUrl, QQFrameZipDecoder.a(this.jdField_a_of_type_ComTencentMobileqqDataApolloPandora.mBoxTipUrl), true);
+        super.setGifData(100, null, this.jdField_a_of_type_ComTencentMobileqqDataApolloPandora.mBoxTipUrl, ajds.a(this.jdField_a_of_type_ComTencentMobileqqDataApolloPandora.mBoxTipUrl), true);
         if (!"drawer".equals(this.b)) {
           break label204;
         }
@@ -283,7 +287,7 @@ public class ApolloBoxEnterView
       label209:
       for (int i = 0;; i = 1)
       {
-        VipUtils.a(null, "cmshow", "Apollo", "0X80065BF", paramInt, 0, new String[] { String.valueOf(i) });
+        bajr.a(null, "cmshow", "Apollo", "0X80065BF", paramInt, 0, new String[] { String.valueOf(i) });
         if (b() == 3) {
           super.b();
         }
@@ -297,7 +301,7 @@ public class ApolloBoxEnterView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloBoxEnterView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,32 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.util.QLog;
-
 public class aktk
-  extends BroadcastReceiver
+  extends akti
 {
-  public aktk(WebProcessManager paramWebProcessManager) {}
+  public static final aktk a;
+  public aktm a;
+  public akto a;
+  public boolean a;
+  public boolean b;
+  public boolean c;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  static
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
-    do
-    {
-      do
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("WebProcessManager", 2, "action=" + paramContext);
-        }
-        if (!paramContext.equals("com.tencent.mobileqq.webprocess.restart_web_process")) {
-          break;
-        }
-        this.a.f();
-      } while (!paramIntent.getBooleanExtra("isPreloadWebProcess", false));
-      this.a.i();
-      return;
-    } while (!paramContext.equals("com.tencent.mobileqq.webprocess.report"));
-    this.a.i();
+    jdField_a_of_type_Aktk = new aktk(false);
+  }
+  
+  public aktk()
+  {
+    this.b = 128L;
+  }
+  
+  public aktk(boolean paramBoolean)
+  {
+    this.b = 128L;
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aktk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.image.GifDrawable;
-import java.io.File;
+import android.view.MotionEvent;
 
-public class mbn
-  implements Runnable
+public abstract interface mbn
 {
-  public mbn(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity, File paramFile) {}
-  
-  public void run()
-  {
-    ReadInJoyDeliverUGCActivity localReadInJoyDeliverUGCActivity = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDeliverUGCActivity;
-    if (GifDrawable.isGifFile(this.jdField_a_of_type_JavaIoFile)) {}
-    for (int i = 2;; i = 1)
-    {
-      ReadInJoyDeliverUGCActivity.a(localReadInJoyDeliverUGCActivity, i);
-      return;
-    }
-  }
+  public abstract boolean a(MotionEvent paramMotionEvent, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mbn
  * JD-Core Version:    0.7.0.1
  */

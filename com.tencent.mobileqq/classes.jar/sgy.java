@@ -1,63 +1,41 @@
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import java.util.Iterator;
+import java.util.List;
 
-public class sgy
-  extends MessageObserver
+class sgy
+  implements slx<tan, tby>
 {
-  public sgy(ChatSettingActivity paramChatSettingActivity) {}
+  sgy(sgs paramsgs, shb paramshb, String paramString) {}
   
-  protected void a(boolean paramBoolean, String paramString)
+  public void a(@NonNull tan paramtan, @Nullable tby paramtby, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (!ChatSettingActivity.c(this.a)) {
-      return;
-    }
-    ChatSettingActivity.c(this.a, false);
-    ChatSettingActivity.d(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "onInsertIntoBlackList, isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean)
+    urk.d("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url response " + paramtby);
+    if ((paramErrorMessage.isFail()) || (paramtby == null))
     {
-      if ((paramString != null) && (paramString.equals(ChatSettingActivity.d(this.a)))) {
-        ChatSettingActivity.a(this.a, true);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.a, 2, "onInsertIntoBlackList, mIsShield=" + ChatSettingActivity.a(this.a));
-      }
-      ChatSettingActivity.b(this.a);
+      urk.e("Q.qqstory.DownloadUrlManager", "pullNewVideoInfoIfNecessary: request video url response error!");
+      this.jdField_a_of_type_Shb.a(true);
       return;
     }
-    ChatSettingActivity.a(this.a, 2131434526, 1);
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if (!ChatSettingActivity.c(this.a)) {
-      return;
-    }
-    ChatSettingActivity.c(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "onRemoveFromBlackList, isSuccess=" + paramBoolean);
-    }
-    ChatSettingActivity.d(this.a);
-    if (paramBoolean)
+    paramtan = (sqd)sqg.a(5);
+    if (paramtby.a != null)
     {
-      if ((paramString != null) && (paramString.equals(ChatSettingActivity.d(this.a)))) {
-        ChatSettingActivity.a(this.a, false);
+      paramErrorMessage = paramtby.a.iterator();
+      while (paramErrorMessage.hasNext()) {
+        ((StoryVideoItem)paramErrorMessage.next()).mBasicInfoState = 1;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.a, 2, "onRemoveFromBlackList, mIsShield=" + ChatSettingActivity.a(this.a));
-      }
-      ChatSettingActivity.b(this.a);
-      return;
     }
-    ChatSettingActivity.a(this.a, 2131434526, 1);
+    paramtby.a = paramtan.a(paramtby.a);
+    ((sgs)sqg.a(28)).a(paramtby.b);
+    this.jdField_a_of_type_Sgs.c(this.jdField_a_of_type_JavaLangString, 0);
+    this.jdField_a_of_type_Shb.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sgy
  * JD-Core Version:    0.7.0.1
  */

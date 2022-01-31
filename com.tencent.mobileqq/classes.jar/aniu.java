@@ -1,17 +1,12 @@
-import com.tencent.mobileqq.testassister.ShareAppLogHelper.LogFile;
-import java.util.Comparator;
+import android.view.View;
 
-public final class aniu
-  implements Comparator
+public abstract interface aniu
 {
-  public int a(ShareAppLogHelper.LogFile paramLogFile1, ShareAppLogHelper.LogFile paramLogFile2)
-  {
-    return (int)(paramLogFile1.lastModified() - paramLogFile2.lastModified()) / 1000;
-  }
+  public abstract boolean a(View paramView, anht paramanht);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aniu
  * JD-Core Version:    0.7.0.1
  */

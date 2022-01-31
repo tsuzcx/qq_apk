@@ -1,31 +1,48 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
-import com.tencent.mobileqq.leba.view.LebaGridMenuView;
-import com.tencent.mobileqq.leba.view.LebaTopBarView;
+import android.app.Dialog;
+import android.os.Handler;
+import java.util.HashMap;
 
 class aeik
-  implements Runnable
+  extends bcqu
 {
-  aeik(aeij paramaeij, String paramString, Bitmap paramBitmap) {}
+  aeik(aegy paramaegy) {}
   
-  public void run()
+  protected void f(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    if (LebaWithFeeds.a(this.jdField_a_of_type_Aeij.a) != null)
+    if ((!paramBoolean) || (paramHashMap == null))
     {
-      LebaGridMenuView localLebaGridMenuView = LebaWithFeeds.a(this.jdField_a_of_type_Aeij.a).a();
-      if (localLebaGridMenuView != null) {
-        LebaWithFeeds.a(this.jdField_a_of_type_Aeij.a, localLebaGridMenuView, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap);
-      }
+      this.a.E(2);
+      this.a.a.sendEmptyMessageDelayed(10, 3000L);
+      return;
     }
-    if (LebaWithFeeds.a(this.jdField_a_of_type_Aeij.a) != null) {
-      LebaWithFeeds.a(this.jdField_a_of_type_Aeij.a, LebaWithFeeds.a(this.jdField_a_of_type_Aeij.a), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if (((Integer)paramHashMap.get("result")).intValue() == 0)
+    {
+      this.a.E(1);
+      this.a.a.sendEmptyMessageDelayed(10, 3000L);
+      return;
     }
-    LebaWithFeeds.a(this.jdField_a_of_type_Aeij.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.a.ao = true;
+    this.a.bC();
+    if ((aegy.a(this.a) != null) && (aegy.a(this.a).isShowing())) {
+      aegy.a(this.a).dismiss();
+    }
+    this.a.bD();
+  }
+  
+  protected void g(boolean paramBoolean, HashMap<String, Object> paramHashMap)
+  {
+    if ((!paramBoolean) || (paramHashMap == null)) {
+      return;
+    }
+    this.a.ar = true;
+    this.a.aq = ((Boolean)paramHashMap.get("result")).booleanValue();
+    this.a.bC();
+    this.a.bD();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeik
  * JD-Core Version:    0.7.0.1
  */

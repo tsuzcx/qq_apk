@@ -1,21 +1,16 @@
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class adrf
-  implements FMDialogUtil.FMDialogInterface
+class adrf
+  implements DialogInterface.OnClickListener
 {
-  public adrf(QfileEditBottomBar paramQfileEditBottomBar) {}
+  adrf(adra paramadra) {}
   
-  public void a()
-  {
-    QfileEditBottomBar.a(this.a);
-  }
-  
-  public void b() {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adrf
  * JD-Core Version:    0.7.0.1
  */

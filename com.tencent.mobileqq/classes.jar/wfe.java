@@ -1,24 +1,26 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar;
-import com.tencent.mobileqq.troop.data.TroopAioTips;
+import android.widget.ImageView;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
 
-class wfe
-  implements Runnable
+public class wfe
+  implements wez
 {
-  wfe(wey paramwey) {}
+  public wfe(VideoPlayerView paramVideoPlayerView) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    if (this.a.a.a != null)
+    if ((VideoPlayerView.a(this.a) != null) && (!paramBoolean) && (this.a.e != null) && (this.a.e.getVisibility() == 0))
     {
-      this.a.a.a.a().a(true);
-      this.a.a.a.a().a(0L);
+      this.a.e.setVisibility(8);
+      VideoPlayerView.a(this.a, "");
+    }
+    if (VideoPlayerView.a(this.a) != null) {
+      VideoPlayerView.a(this.a).a(paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wfe
  * JD-Core Version:    0.7.0.1
  */

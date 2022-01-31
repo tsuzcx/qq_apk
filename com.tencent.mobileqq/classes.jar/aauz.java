@@ -1,28 +1,45 @@
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.PositionCallback;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
 
-class aauz
-  implements ArkAppEventObserverManager.PositionCallback
+public class aauz
+  extends anoj
 {
-  aauz(aauy paramaauy) {}
+  public aauz(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void a(long paramLong)
+  protected void a(boolean paramBoolean)
   {
-    ark.VariantWrapper localVariantWrapper = this.a.a.a.jdField_a_of_type_Aauq.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
-    }
+    super.a(paramBoolean);
   }
   
-  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  protected void a(boolean paramBoolean, Card paramCard)
   {
-    ArkAppDeviceModule.a(this.a.a.a.jdField_a_of_type_Aauq.a, this.a.a.a.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
+    super.a(paramBoolean, paramCard);
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileCardActivity", 2, "checkUpdateExtendInfo, got extend info");
+    }
+    if (FriendProfileCardActivity.a(this.a) != null) {
+      FriendProfileCardActivity.a(this.a).dismiss();
+    }
+    if (FriendProfileCardActivity.a(this.a) != null)
+    {
+      FriendProfileCardActivity.a(this.a).removeCallbacksAndMessages(null);
+      FriendProfileCardActivity.a(this.a, null);
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendProfileCardActivity", 2, "checkUpdateExtendInfo, start add friend :" + FriendProfileCardActivity.d(this.a));
+      }
+      if (!FriendProfileCardActivity.d(this.a))
+      {
+        FriendProfileCardActivity.a(this.a, true);
+        FriendProfileCardActivity.b(this.a);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aauz
  * JD-Core Version:    0.7.0.1
  */

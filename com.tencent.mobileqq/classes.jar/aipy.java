@@ -1,52 +1,33 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite;
-import com.tencent.mobileqq.surfaceviewaction.gl.Texture;
-import java.util.LinkedList;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-class aipy
-  implements Runnable
+final class aipy
+  implements EIPCResultCallback
 {
-  aipy(aipx paramaipx) {}
+  aipy(String paramString, long paramLong) {}
   
-  public void run()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    for (;;)
+    paramEIPCResult = paramEIPCResult.data;
+    int i = paramEIPCResult.getInt("type");
+    if (i == 1)
     {
-      int j;
-      synchronized (this.a.a)
-      {
-        Texture[] arrayOfTexture = FrameSprite.a(this.a.a);
-        if ((arrayOfTexture == null) || (FrameSprite.a(this.a.a))) {
-          return;
-        }
-        FrameSprite.a(this.a.a, new Texture[FrameSprite.a(this.a.a).length / 2]);
-        j = 0;
-        int i = 0;
-        if (j < FrameSprite.a(this.a.a).length)
-        {
-          if (j % 2 == 0)
-          {
-            FrameSprite localFrameSprite2 = this.a.a;
-            int k = i + 1;
-            FrameSprite.a(localFrameSprite2, i, arrayOfTexture[j]);
-            i = k;
-          }
-          else
-          {
-            FrameSprite.a(this.a.a).remove(arrayOfTexture[j]);
-            arrayOfTexture[j].c();
-          }
-        }
-        else {
-          return;
-        }
-      }
-      j += 1;
+      paramEIPCResult = paramEIPCResult.getString("nickName");
+      aing.a().callbackGetNick(paramEIPCResult, this.jdField_a_of_type_JavaLangString, i, this.jdField_a_of_type_Long);
     }
+    while (i != 2) {
+      return;
+    }
+    paramEIPCResult = (Bitmap)paramEIPCResult.getParcelable("head");
+    aing.a().callbackGetHead(paramEIPCResult, this.jdField_a_of_type_JavaLangString, i, this.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aipy
  * JD-Core Version:    0.7.0.1
  */

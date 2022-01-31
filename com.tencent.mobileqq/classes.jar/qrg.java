@@ -1,28 +1,22 @@
-import com.tencent.gdtad.views.image.GdtDrawableLoader;
-import com.tencent.image.URLDrawable;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import java.util.List;
 
 public class qrg
+  extends omr
 {
-  GdtDrawableLoader a;
-  public String a;
-  public boolean a;
-  
-  private qrg()
+  public qrg(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, boolean paramBoolean1, int paramInt, List paramList, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Boolean = false;
+    super(paramString);
   }
   
-  public URLDrawable a()
+  public void a(oml paramoml)
   {
-    if (this.jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader != null) {
-      return this.jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader.a();
-    }
-    return null;
+    paramoml.b(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qrg
  * JD-Core Version:    0.7.0.1
  */

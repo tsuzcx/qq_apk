@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <com.tencent.biz.qqstory.view.AnimationPoint android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2799" android:layout_width="200.0dip" android:layout_height="50.0dip" />
-        <TextView android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2052" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="45.0dip" android:text="左右滑动可切换滤镜" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a2799" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-</RelativeLayout>

@@ -1,19 +1,42 @@
-import com.tencent.mobileqq.armap.ItemInfo;
-import com.tencent.mobileqq.armap.ShopScanActivity;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.activity.recent.data.RecentItemNewFriendMsgData;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-class abla
-  implements Runnable
+public class abla
+  implements ajnk
 {
-  abla(abky paramabky, ItemInfo paramItemInfo) {}
+  public abla(QQLSActivity paramQQLSActivity) {}
   
-  public void run()
+  public void aj_() {}
+  
+  public void b() {}
+  
+  public void i_(int paramInt)
   {
-    ShopScanActivity.a(this.jdField_a_of_type_Abky.a, this.jdField_a_of_type_ComTencentMobileqqArmapItemInfo);
+    if ((paramInt == 0) && (this.a.a.a().size() > 0))
+    {
+      Iterator localIterator = this.a.a.a().iterator();
+      while (localIterator.hasNext())
+      {
+        RecentBaseData localRecentBaseData = (RecentBaseData)localIterator.next();
+        if ((localRecentBaseData instanceof RecentItemNewFriendMsgData))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QQLSActivity", 2, "Need to delete RecentItemNewFriendMsgData");
+          }
+          this.a.a.a().remove(localRecentBaseData);
+          this.a.b();
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abla
  * JD-Core Version:    0.7.0.1
  */

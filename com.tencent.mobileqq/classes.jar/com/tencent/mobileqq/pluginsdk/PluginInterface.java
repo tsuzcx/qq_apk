@@ -11,39 +11,11 @@ import mqq.app.MobileQQ;
 
 public class PluginInterface
 {
-  PluginCommunicationChannel a;
-  
-  void a(IBinder paramIBinder)
-  {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramIBinder != null)
-    {
-      localObject1 = localObject2;
-      if (paramIBinder.isBinderAlive())
-      {
-        localObject1 = localObject2;
-        if (paramIBinder.pingBinder()) {
-          localObject1 = PluginCommunicationChannel.Stub.asInterface(paramIBinder);
-        }
-      }
-    }
-    this.a = ((PluginCommunicationChannel)localObject1);
-    try
-    {
-      paramIBinder.linkToDeath(new d(this, paramIBinder), 0);
-      return;
-    }
-    catch (Exception paramIBinder)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("plugin_tag", 2, paramIBinder, new Object[0]);
-    }
-  }
+  PluginCommunicationChannel mClient;
   
   public void destory()
   {
-    this.a = null;
+    this.mClient = null;
   }
   
   public String getNickName()
@@ -55,7 +27,7 @@ public class PluginInterface
         PluginInterfaceHelper.getPluginInterface(MobileQQ.sMobileQQ, null);
         return null;
       }
-      String str = this.a.getNickName();
+      String str = this.mClient.getNickName();
       return str;
     }
     catch (Exception localException)
@@ -76,7 +48,7 @@ public class PluginInterface
         PluginInterfaceHelper.getPluginInterface(MobileQQ.sMobileQQ, null);
         return null;
       }
-      String str = this.a.getSKey();
+      String str = this.mClient.getSKey();
       return str;
     }
     catch (RemoteException localRemoteException)
@@ -97,7 +69,7 @@ public class PluginInterface
         PluginInterfaceHelper.getPluginInterface(MobileQQ.sMobileQQ, null);
         return null;
       }
-      String str = this.a.getSid();
+      String str = this.mClient.getSid();
       return str;
     }
     catch (Exception localException)
@@ -118,7 +90,7 @@ public class PluginInterface
         PluginInterfaceHelper.getPluginInterface(MobileQQ.sMobileQQ, null);
         return 0L;
       }
-      long l = this.a.getUin();
+      long l = this.mClient.getUin();
       return l;
     }
     catch (Exception localException)
@@ -132,7 +104,7 @@ public class PluginInterface
   
   public boolean isValid()
   {
-    Object localObject = this.a;
+    Object localObject = this.mClient;
     if (localObject != null)
     {
       localObject = ((PluginCommunicationChannel)localObject).asBinder();
@@ -141,6 +113,34 @@ public class PluginInterface
       }
     }
     return false;
+  }
+  
+  void setBinder(IBinder paramIBinder)
+  {
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramIBinder != null)
+    {
+      localObject1 = localObject2;
+      if (paramIBinder.isBinderAlive())
+      {
+        localObject1 = localObject2;
+        if (paramIBinder.pingBinder()) {
+          localObject1 = PluginCommunicationChannel.Stub.asInterface(paramIBinder);
+        }
+      }
+    }
+    this.mClient = ((PluginCommunicationChannel)localObject1);
+    try
+    {
+      paramIBinder.linkToDeath(new PluginInterface.1(this, paramIBinder), 0);
+      return;
+    }
+    catch (Exception paramIBinder)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("plugin_tag", 2, paramIBinder, new Object[0]);
+    }
   }
   
   public Bundle transfer(String paramString, Bundle paramBundle)
@@ -155,7 +155,7 @@ public class PluginInterface
       if (paramBundle != null) {
         paramBundle.setClassLoader(MobileQQ.sMobileQQ.getClassLoader());
       }
-      paramString = this.a.transfer(paramString, paramBundle);
+      paramString = this.mClient.transfer(paramString, paramBundle);
       return paramString;
     }
     catch (Exception paramString)
@@ -179,7 +179,7 @@ public class PluginInterface
       if (paramBundle != null) {
         paramBundle.setClassLoader(MobileQQ.sMobileQQ.getClassLoader());
       }
-      this.a.transferAsync(paramString, paramBundle, paramRemoteResultCallback);
+      this.mClient.transferAsync(paramString, paramBundle, paramRemoteResultCallback);
       return;
     }
     catch (Exception paramString)

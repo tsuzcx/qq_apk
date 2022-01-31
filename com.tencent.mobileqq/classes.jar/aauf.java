@@ -1,53 +1,23 @@
-import android.media.SoundPool;
-import com.tencent.mobileqq.arcard.ARcardSound;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class aauf
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aauf(ARcardSound paramARcardSound) {}
+  public aauf(FriendProfileCardActivity paramFriendProfileCardActivity, begr parambegr) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      if (ARcardSound.a(this.a) != null)
-      {
-        if (ARcardSound.a(this.a).isPlaying()) {
-          ARcardSound.a(this.a).stop();
-        }
-        ARcardSound.a(this.a).release();
-        ARcardSound.a(this.a, null);
-      }
-      Iterator localIterator = ARcardSound.a(this.a).entrySet().iterator();
-      while (localIterator.hasNext())
-      {
-        aaug localaaug = (aaug)((Map.Entry)localIterator.next()).getValue();
-        if (localaaug != null) {
-          ARcardSound.a(this.a).stop(localaaug.a);
-        }
-      }
-      ARcardSound.a(this.a).release();
+    if (FriendProfileCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity) == 98) {
+      awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "dc00898", "", "", "0X800A97D", "0X800A97D", 3, 0, "0", "0", "", "");
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      if (QLog.isColorLevel()) {
-        QLog.e("Sound", 2, "release exception", localException);
-      }
-      return;
-    }
-    ARcardSound.a(this.a).clear();
+    this.jdField_a_of_type_Begr.a.onClick(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aauf
  * JD-Core Version:    0.7.0.1
  */

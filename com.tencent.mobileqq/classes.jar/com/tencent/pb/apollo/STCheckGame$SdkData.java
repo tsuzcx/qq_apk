@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class STCheckGame$SdkData
-  extends MessageMicro
+  extends MessageMicro<SdkData>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_sdk_app_token = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -26,7 +26,7 @@ public final class STCheckGame$SdkData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.apollo.STCheckGame.SdkData
  * JD-Core Version:    0.7.0.1
  */

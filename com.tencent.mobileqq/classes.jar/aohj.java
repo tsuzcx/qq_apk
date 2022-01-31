@@ -1,55 +1,96 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import dov.com.tencent.biz.qqstory.takevideo.EditVoteExport;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextFaceEditLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.LayerEventListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.VoteItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aohj
-  implements VoteLayer.LayerEventListener
+  extends aohs
 {
-  public aohj(DoodleLayout paramDoodleLayout) {}
-  
-  public void a()
+  public aohj(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo)
   {
-    SLog.b("DoodleLayout", "deleteVote.");
-    if (DoodleLayout.a(this.a) != null)
-    {
-      EditVoteExport localEditVoteExport = (EditVoteExport)DoodleLayout.a(this.a).a(EditVoteExport.class);
-      if (localEditVoteExport != null) {
-        localEditVoteExport.c();
-      }
-    }
+    super(paramQQAppInterface, paramContext, paramSessionInfo);
+    QLog.e("DefaultBubbleModel", 1, "error, this is a default bubble model.");
   }
   
-  public boolean a(VoteLayer.VoteItem paramVoteItem)
+  public int a()
   {
-    boolean bool = false;
-    if (this.a.a != null)
-    {
-      this.a.a.setVisibility(0);
-      if (this.a.a.a.b()) {
-        this.a.a.a.a().j = false;
-      }
-      this.a.a.a.a(paramVoteItem);
-      paramVoteItem.j = true;
-      paramVoteItem = paramVoteItem.a;
-      if (!this.a.a.a()) {
-        bool = true;
-      }
-      paramVoteItem.a(bool);
-      this.a.a.requestLayout();
-      return true;
-    }
+    return 0;
+  }
+  
+  public long a()
+  {
+    return 0L;
+  }
+  
+  public aodh a()
+  {
+    return null;
+  }
+  
+  public aodk a()
+  {
+    return null;
+  }
+  
+  public String a()
+  {
+    return null;
+  }
+  
+  public List<Integer> a(int paramInt)
+  {
+    return null;
+  }
+  
+  public void a() {}
+  
+  public void a(int paramInt) {}
+  
+  public void a(int paramInt, View paramView) {}
+  
+  protected void a(ChatMessage paramChatMessage) {}
+  
+  public boolean a()
+  {
     return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public String b()
+  {
+    return null;
+  }
+  
+  public List<Integer> b(int paramInt)
+  {
+    return null;
+  }
+  
+  public int c()
+  {
+    return 0;
+  }
+  
+  public int d()
+  {
+    return 0;
+  }
+  
+  public int e()
+  {
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aohj
  * JD-Core Version:    0.7.0.1
  */

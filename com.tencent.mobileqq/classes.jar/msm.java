@@ -1,19 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
 class msm
-  implements Runnable
+  extends Handler
 {
-  msm(msl parammsl) {}
-  
-  public void run()
+  msm(msl parammsl, Looper paramLooper)
   {
-    FastWebVideoFeedsPlayActivity.a(this.a.a).c();
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.a = true;
+    msl.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     msm
  * JD-Core Version:    0.7.0.1
  */

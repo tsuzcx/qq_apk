@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/chat_item_content_layout" android:focusable="false" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/icon"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="38.0dip">
+            <TextView android:textSize="14.0sp" android:textColor="@color/al3" android:id="@id/drq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:text="@string/kfm" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/f2c" android:background="@drawable/c_0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip">
+            <TextView android:textSize="16.0sp" android:textColor="@color/bp" android:id="@id/em3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="14.0dip" android:maxLines="1" />
+            <TextView android:textSize="14.0sp" android:textColor="#ffff8444" android:id="@id/j7y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="14.0dip" />
+            <View android:id="@id/iz_" android:background="@color/aq" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="14.0dip" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/k8" android:id="@id/j8_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginTop="14.0dip" android:layout_marginBottom="14.0dip" android:maxLines="3" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

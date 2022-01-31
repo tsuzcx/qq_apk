@@ -1,39 +1,40 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils.CreateCommentInterface;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListAdapter;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListFragment;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Intent;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class lmt
-  implements ReadInJoyCommentUtils.CreateCommentInterface
+  extends asfx
 {
-  public lmt(ReadInJoySecondCommentListFragment paramReadInJoySecondCommentListFragment, String paramString) {}
+  public lmt(QQServiceForAV paramQQServiceForAV) {}
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void a(boolean paramBoolean, long paramLong, String paramString, int paramInt1, int paramInt2)
   {
-    paramString1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListFragment.getActivity();
-    if (paramString1 != null) {
-      QQToast.a(paramString1, 1, 2131438902, 0).a();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(", nickname=").append(paramString).append(", gender=").append(paramInt1).append(", age=").append(paramInt2);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceForAV", 2, "QQServiceForAV.onNearbyCardDownload(), isSuccess: " + paramBoolean + ", card = " + ((StringBuilder)localObject).toString());
     }
-  }
-  
-  public void a(String paramString, CommentInfo paramCommentInfo)
-  {
-    ReadInJoyCommentUtils.a(ReadInJoySecondCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListFragment), this.jdField_a_of_type_JavaLangString);
-    FragmentActivity localFragmentActivity = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListFragment.getActivity();
-    if (localFragmentActivity != null) {
-      QQToast.a(localFragmentActivity, 0, 2131438901, 0).a();
+    Intent localIntent = new Intent();
+    localIntent.setAction("tencent.video.q2v.getNearByProfile");
+    localIntent.putExtra("uin", String.valueOf(paramLong));
+    localIntent.putExtra("nickname", paramString);
+    localIntent.putExtra("gender", paramInt1);
+    localIntent.putExtra("age", paramInt2);
+    localObject = (QQAppInterface)this.a.a();
+    paramString = (String)localObject;
+    if (localObject == null) {
+      paramString = (QQAppInterface)this.a.a();
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListFragment.a(paramString, null, 1, paramCommentInfo);
-    ReadInJoySecondCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListFragment).notifyDataSetChanged();
-    ReadInJoySecondCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListFragment);
+    if (paramString != null) {
+      paramString.getApp().sendBroadcast(localIntent);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lmt
  * JD-Core Version:    0.7.0.1
  */

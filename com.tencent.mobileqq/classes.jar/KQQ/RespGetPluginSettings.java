@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class RespGetPluginSettings
   extends JceStruct
 {
-  static ArrayList cache_PluginInfoList;
-  public ArrayList PluginInfoList;
+  static ArrayList<PluginInfo> cache_PluginInfoList;
+  public ArrayList<PluginInfo> PluginInfoList;
   
   public RespGetPluginSettings() {}
   
-  public RespGetPluginSettings(ArrayList paramArrayList)
+  public RespGetPluginSettings(ArrayList<PluginInfo> paramArrayList)
   {
     this.PluginInfoList = paramArrayList;
   }
@@ -36,7 +36,7 @@ public final class RespGetPluginSettings
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     KQQ.RespGetPluginSettings
  * JD-Core Version:    0.7.0.1
  */

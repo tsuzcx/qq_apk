@@ -1,23 +1,27 @@
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class nue
-  implements TVK_IMediaPlayer.OnErrorListener
+class nue
+  implements ViewBase.OnClickListener
 {
-  public nue(VideoViewTVKImpl paramVideoViewTVKImpl) {}
+  nue(ntu paramntu) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void onClick(ViewBase paramViewBase)
   {
-    ThreadManager.getUIHandler().post(new nuf(this, paramInt1, paramInt2, paramInt3, paramString, paramObject));
-    return false;
+    if (this.a.jdField_a_of_type_Nwx.a == null) {}
+    do
+    {
+      return;
+      paramViewBase = this.a.jdField_a_of_type_Nwx.a.medalInfo;
+    } while ((paramViewBase == null) || (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer == null));
+    obz.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), paramViewBase);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nue
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,37 @@
-import android.widget.ImageButton;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.util.InputMethodUtil;
-
 public class ajee
-  implements Runnable
+  implements ajfe
 {
-  public ajee(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  protected void a() {}
   
-  public void run()
+  protected void a(int paramInt) {}
+  
+  protected void a(boolean paramBoolean, Object paramObject) {}
+  
+  protected void b() {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    InputMethodUtil.a(this.a.jdField_a_of_type_AndroidWidgetEditText);
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setSelected(false);
-    this.a.c.setSelected(false);
+    switch (paramInt)
+    {
+    case 1: 
+    default: 
+      return;
+    case 0: 
+      a(paramBoolean, paramObject);
+      return;
+    case 2: 
+      b();
+      return;
+    case 3: 
+      a(((Integer)paramObject).intValue());
+      return;
+    }
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajee
  * JD-Core Version:    0.7.0.1
  */

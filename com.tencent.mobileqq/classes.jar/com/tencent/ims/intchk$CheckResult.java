@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class intchk$CheckResult
-  extends MessageMicro
+  extends MessageMicro<CheckResult>
 {
   public static final int BYTES_MEMREPORT_RESULT_FIELD_NUMBER = 4;
   public static final int UINT32_CHECK_ITEM_ID_FIELD_NUMBER = 1;

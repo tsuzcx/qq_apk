@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="@dimen/md" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/aej" android:textColor="@color/fl" android:gravity="left" android:id="@id/f13" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="false" android:lineSpacingExtra="3.0dip" android:lineSpacingMultiplier="1.0" />
+    <TextView android:textSize="9.0sp" android:gravity="bottom" android:id="@id/ca6" android:layout_width="fill_parent" android:layout_height="20.0dip" android:text="/storage/sdcard/tencent/QQ_FileRecv/" />
+    <ProgressBar android:id="@id/c_h" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="5.0dip" android:layout_marginLeft="0.0dip" android:layout_marginTop="10.0dip" android:maxHeight="3.0dip" android:max="100" android:progress="30" android:progressDrawable="@drawable/am" android:minHeight="3.0dip" style="?android:progressBarStyleHorizontal" />
+</LinearLayout>

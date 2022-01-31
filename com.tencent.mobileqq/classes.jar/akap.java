@@ -1,19 +1,15 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.troop.widget.TroopAIORobotPanel;
-
 public class akap
 {
-  public View a;
-  public TextView a;
-  public URLImageView a;
+  public boolean a;
   
-  private akap(TroopAIORobotPanel paramTroopAIORobotPanel) {}
+  public akap(akak paramakak)
+  {
+    this.jdField_a_of_type_Boolean = true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akap
  * JD-Core Version:    0.7.0.1
  */

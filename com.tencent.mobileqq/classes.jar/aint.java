@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout15;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
-public class aint
-  implements Runnable
+class aint
+  implements MediaPlayer.OnCompletionListener
 {
-  public aint(StructMsgItemLayout15 paramStructMsgItemLayout15, BaseChatPie paramBaseChatPie) {}
+  aint(ainq paramainq) {}
   
-  public void run()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.setStackFromBottomWithoutRequestLayoutIfNecessary(true);
+    this.a.a(10);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aint
  * JD-Core Version:    0.7.0.1
  */

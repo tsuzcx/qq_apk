@@ -1,32 +1,73 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.activity.qwallet.FrameAnimHelper;
-import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.Toast;
+import com.tencent.biz.widgets.ScannerView;
 
 public class xet
-  extends AsyncTask
+  extends Handler
 {
-  private xet(FrameAnimHelper paramFrameAnimHelper) {}
+  public xet(ScannerView paramScannerView) {}
   
-  protected AnimationView.AnimationInfo a(String... paramVarArgs)
+  public void handleMessage(Message paramMessage)
   {
-    if ("1".equals(paramVarArgs[1])) {
-      return AnimationView.AnimationInfo.loadFromZip(paramVarArgs[0]);
+    if (paramMessage.what == 9)
+    {
+      paramMessage = Toast.makeText(this.a.getContext(), this.a.getContext().getString(2131625030), 1);
+      paramMessage.setGravity(17, 0, 0);
+      paramMessage.show();
     }
-    return AnimationView.AnimationInfo.loadFromFolder(paramVarArgs[0]);
-  }
-  
-  protected void a(AnimationView.AnimationInfo paramAnimationInfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("FrameAnimHelper", 2, "task over info = " + paramAnimationInfo);
+    Object localObject;
+    do
+    {
+      return;
+      localObject = ScannerView.a(this.a);
+      if (localObject != null) {}
+      switch (paramMessage.what)
+      {
+      case 3: 
+      case 4: 
+      case 5: 
+      case 6: 
+      default: 
+        localObject = ScannerView.a(this.a);
+        if (localObject != null) {}
+        switch (paramMessage.what)
+        {
+        default: 
+          localObject = ScannerView.a(this.a);
+        }
+        break;
+      }
+    } while (localObject == null);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    this.a.a(paramAnimationInfo);
+    if (((paramMessage.obj instanceof Boolean)) && (((Boolean)paramMessage.obj).booleanValue())) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ((xew)localObject).a(bool);
+      return;
+      ((xex)localObject).a(String.valueOf(paramMessage.obj));
+      return;
+      ((xex)localObject).c();
+      return;
+      ((xex)localObject).b();
+      return;
+      ((xex)localObject).a();
+      return;
+      ((xev)localObject).a(String.valueOf(paramMessage.obj), 1, 1);
+      return;
+      ((xev)localObject).a(1);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     xet
  * JD-Core Version:    0.7.0.1
  */

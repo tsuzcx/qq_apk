@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class WebSSOAgent$UniSsoServerReq
-  extends MessageMicro
+  extends MessageMicro<UniSsoServerReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public WebSSOAgent.UniSsoServerReqComm comm = new WebSSOAgent.UniSsoServerReqComm();
@@ -23,7 +23,7 @@ public final class WebSSOAgent$UniSsoServerReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerReq
  * JD-Core Version:    0.7.0.1
  */

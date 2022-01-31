@@ -1,49 +1,25 @@
-import com.tencent.mobileqq.bubble.BubbleDiyFetcher;
-import com.tencent.mobileqq.bubble.VipBubbleDrawable;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.image.URLImageView;
 
-public class abrz
-  implements Runnable
+class abrz
+  extends RecyclerView.ViewHolder
 {
-  public abrz(BubbleDiyFetcher paramBubbleDiyFetcher, Set paramSet) {}
+  View jdField_a_of_type_AndroidViewView;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  URLImageView b;
   
-  public void run()
+  public abrz(abry paramabry, View paramView)
   {
-    HashSet localHashSet = new HashSet();
-    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.a.iterator();
-    while (localIterator.hasNext())
-    {
-      VipBubbleDrawable localVipBubbleDrawable = (VipBubbleDrawable)localIterator.next();
-      if ((localVipBubbleDrawable != null) && (localVipBubbleDrawable.getCallback() != null))
-      {
-        String str = localVipBubbleDrawable.a;
-        if ((this.jdField_a_of_type_JavaUtilSet.contains(str)) && (!localHashSet.contains(localVipBubbleDrawable)))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("BubbleDiyFetcher", 2, "refresh uinAndDiyId drawables: " + str + ", vipBubbleDrawable:" + localVipBubbleDrawable.toString());
-          }
-          localHashSet.add(localVipBubbleDrawable);
-          localVipBubbleDrawable.invalidateSelf();
-          this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.a.remove(localVipBubbleDrawable);
-        }
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.a.remove(localVipBubbleDrawable);
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("BubbleDiyFetcher", 2, "wait for refresh size: " + this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.a.size());
-    }
+    super(paramView);
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131302286));
+    this.b = ((URLImageView)paramView.findViewById(2131302301));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131303812);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abrz
  * JD-Core Version:    0.7.0.1
  */

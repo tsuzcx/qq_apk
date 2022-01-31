@@ -2,103 +2,81 @@ package com.tencent.ark;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
-import android.graphics.Canvas;
-import android.graphics.Path;
 import android.graphics.Rect;
-import android.graphics.SurfaceTexture;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.view.TextureView;
-import android.view.TextureView.SurfaceTextureListener;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+import android.widget.FrameLayout;
+import android.widget.FrameLayout.LayoutParams;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ArkTextureView
-  extends TextureView
-  implements TextureView.SurfaceTextureListener, ArkViewImplement.ArkViewInterface, View.OnTouchListener, View.OnLongClickListener
+  extends FrameLayout
+  implements View.OnLongClickListener, View.OnTouchListener, ArkViewImplement.ArkViewInterface
 {
-  protected static final ArkEnvironmentManager ENV = ArkEnvironmentManager.getInstance();
-  protected static String TAG = null;
-  private Bitmap mBitmap;
-  protected Lock mBitmapLock;
-  private Canvas mCanvas;
-  protected EGLContextHolder mContextHolder;
-  protected final boolean mIsGpuRendering = ENV.isHardwareAcceleration();
-  private Path mPath;
-  private Rect mRectBitmap;
-  protected Rect mRectUpdate;
-  protected SurfaceTexture mSurfaceTexture;
-  protected Object mSurfaceTextureLocker;
-  protected Lock mUpdateLock;
+  private static final ArkEnvironmentManager ENV = ArkEnvironmentManager.getInstance();
+  protected static String TAG = "ArkApp.ArkTextureView";
+  private View mArkView;
+  private Context mContext;
+  private boolean mIsGpuRendering;
+  private ArkTextureView.ArkTextureViewInterface mTextureViewInterface;
   public ArkViewImplement mViewImpl;
   
   public ArkTextureView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    if (TAG == null)
+    this.mContext = paramContext;
+    this.mViewImpl = new ArkViewImplement(this, this);
+  }
+  
+  private void prepareForRendering(ArkViewModel paramArkViewModel)
+  {
+    boolean bool = paramArkViewModel.isGpuRenderingEnabled();
+    if (bool != this.mIsGpuRendering)
     {
-      if (this.mIsGpuRendering)
+      this.mIsGpuRendering = bool;
+      if (this.mArkView != null)
       {
-        paramContext = "ArkApp.ArkTextureView.hw";
-        TAG = paramContext;
+        removeAllViews();
+        this.mArkView = null;
+      }
+      if (!this.mIsGpuRendering) {
+        break label101;
       }
     }
-    else
+    label101:
+    for (paramArkViewModel = new ArkTextureViewImpl(this.mContext, this.mViewImpl);; paramArkViewModel = new ArkSoftwareView(this.mContext, this.mViewImpl))
     {
-      if (this.mIsGpuRendering) {
-        break label166;
-      }
-      this.mRectUpdate = new Rect();
-      this.mBitmapLock = new ReentrantLock();
-      this.mUpdateLock = new ReentrantLock();
-      this.mPath = new Path();
-      this.mRectBitmap = new Rect();
-    }
-    for (;;)
-    {
-      setSurfaceTextureListener(this);
-      setOpaque(false);
-      this.mViewImpl = new ArkViewImplement(this, this);
-      if ((isAvailable()) && (ENV.mIsDebug)) {
-        ENV.logD(TAG, String.format("surface.available.this.%h", new Object[] { this }));
+      this.mArkView = paramArkViewModel;
+      paramArkViewModel = new FrameLayout.LayoutParams(-1, -1);
+      addView(this.mArkView, paramArkViewModel);
+      this.mTextureViewInterface = ((ArkTextureView.ArkTextureViewInterface)this.mArkView);
+      return;
+      if (this.mArkView == null) {
+        break;
       }
       return;
-      paramContext = "ArkApp.ArkTextureView.sw";
-      break;
-      label166:
-      this.mSurfaceTextureLocker = new Object();
     }
+  }
+  
+  public void checkSurfaceAvailable()
+  {
+    this.mTextureViewInterface.checkSurfaceAvailable();
+  }
+  
+  public void createViewContext()
+  {
+    this.mTextureViewInterface.createContext();
   }
   
   public void destroyBitmapBuffer()
   {
-    if (this.mIsGpuRendering) {
-      return;
-    }
-    this.mBitmapLock.lock();
-    try
-    {
-      this.mCanvas = null;
-      if (this.mBitmap != null)
-      {
-        this.mBitmap.recycle();
-        this.mBitmap = null;
-      }
-      if (this.mRectBitmap != null) {
-        this.mRectBitmap.setEmpty();
-      }
-      return;
-    }
-    finally
-    {
-      this.mBitmapLock.unlock();
-    }
+    this.mTextureViewInterface.destroyBitmapBuffer();
   }
   
   public void doDetach(ArkViewModel paramArkViewModel)
@@ -113,15 +91,7 @@ public class ArkTextureView
   
   public Bitmap getBitmapBuffer()
   {
-    if ((this.mIsGpuRendering) || (this.mBitmap == null) || (this.mBitmap.isRecycled())) {
-      return null;
-    }
-    return this.mBitmap;
-  }
-  
-  EGLContextHolder getContextHolder()
-  {
-    return this.mContextHolder;
+    return this.mTextureViewInterface.getBitmapBuffer();
   }
   
   public Rect getInputRect()
@@ -129,12 +99,21 @@ public class ArkTextureView
     return this.mViewImpl.getInputRect();
   }
   
+  public View getView()
+  {
+    return this.mArkView;
+  }
+  
   public void initArkView(ArkViewModel paramArkViewModel)
   {
-    if (this.mRectUpdate != null) {
-      this.mRectUpdate.setEmpty();
-    }
-    this.mViewImpl.initArkView(paramArkViewModel);
+    initArkView(paramArkViewModel, true);
+  }
+  
+  public void initArkView(ArkViewModel paramArkViewModel, boolean paramBoolean)
+  {
+    prepareForRendering(paramArkViewModel);
+    this.mTextureViewInterface.initArkView(paramArkViewModel);
+    this.mViewImpl.initArkView(paramArkViewModel, paramBoolean);
   }
   
   public boolean onCheckIsTextEditor()
@@ -147,41 +126,11 @@ public class ArkTextureView
     return this.mViewImpl.onCreateInputConnection(paramEditorInfo);
   }
   
+  public void onFirstPaint() {}
+  
   public boolean onInvalidate(Rect paramRect)
   {
-    if (this.mIsGpuRendering) {
-      return true;
-    }
-    Rect localRect = ArkViewModel.scaleRect(paramRect, this.mViewImpl.mScale);
-    if ((this.mCanvas != null) && (this.mViewImpl.mBorderType != 0) && (this.mViewImpl.mRound))
-    {
-      this.mCanvas.save();
-      this.mCanvas.clipRect(localRect);
-      this.mCanvas.drawPath(this.mPath, ArkViewImplement.sPaintPath);
-      this.mCanvas.restore();
-    }
-    try
-    {
-      if ((this.mBitmap == null) || (this.mBitmap.isRecycled()))
-      {
-        ENV.logE(TAG, String.format("onInvalidate.mBitmap.null.this.%h", new Object[] { this }));
-        return false;
-      }
-      paramRect = lockCanvas(ArkViewModel.scaleRect(paramRect, this.mViewImpl.mScale));
-      if (paramRect == null)
-      {
-        ENV.logE(TAG, String.format("onInvalidate.lockCanvas.null.this.%h", new Object[] { this }));
-        return false;
-      }
-      paramRect.drawBitmap(this.mBitmap, this.mRectBitmap, this.mViewImpl.mRectView, ArkViewImplement.sPaintOpaque);
-      unlockCanvasAndPost(paramRect);
-      return true;
-    }
-    catch (OutOfMemoryError paramRect)
-    {
-      ENV.logE(TAG, paramRect.getMessage());
-    }
-    return false;
+    return this.mTextureViewInterface.onInvalidate(paramRect);
   }
   
   public void onLoadFailed(String paramString, int paramInt, boolean paramBoolean) {}
@@ -204,118 +153,6 @@ public class ArkTextureView
     this.mViewImpl.onStartTemporaryDetach();
   }
   
-  public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
-  {
-    if (ENV.mIsDebug) {
-      ENV.logD(TAG, String.format("onSurfaceTextureAvailable.this.%h.size.(%d, %d)", new Object[] { this, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-    }
-    if (this.mIsGpuRendering) {
-      onSurfaceTextureSizeChanged(paramSurfaceTexture, paramInt1, paramInt2);
-    }
-    do
-    {
-      return;
-      paramSurfaceTexture = this.mViewImpl.getViewModel();
-    } while (paramSurfaceTexture == null);
-    paramSurfaceTexture.postRedraw();
-  }
-  
-  public boolean onSurfaceTextureDestroyed(SurfaceTexture arg1)
-  {
-    if (!this.mIsGpuRendering) {
-      return true;
-    }
-    ArkDispatchTask.getInstance().post(new Runnable()
-    {
-      public void run()
-      {
-        ArkTextureView.ENV.logD(ArkTextureView.TAG, String.format("onSurfaceTextureDestroyed.this.%h", new Object[] { ArkTextureView.this }));
-        ArkViewModel localArkViewModel = ArkTextureView.this.mViewImpl.getViewModel();
-        if (localArkViewModel != null) {
-          localArkViewModel.destroyDrawTarget();
-        }
-        if (ArkTextureView.this.mContextHolder != null)
-        {
-          ArkTextureView.this.mContextHolder.release();
-          ArkTextureView.this.mContextHolder = null;
-        }
-      }
-    });
-    synchronized (this.mSurfaceTextureLocker)
-    {
-      this.mSurfaceTexture = null;
-      return true;
-    }
-  }
-  
-  public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, final int paramInt1, final int paramInt2)
-  {
-    if (!this.mIsGpuRendering) {
-      return;
-    }
-    if (ENV.mIsDebug) {
-      ENV.logD(TAG, String.format("onSurfaceTextureSizeChanged.1.this.%h.size.(%d, %d)", new Object[] { this, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-    }
-    synchronized (this.mSurfaceTextureLocker)
-    {
-      this.mSurfaceTexture = paramSurfaceTexture;
-      ArkDispatchTask.getInstance().post(new Runnable()
-      {
-        public void run()
-        {
-          ArkTextureView.ENV.logD(ArkTextureView.TAG, String.format("onSurfaceTextureSizeChanged.2.this.%h.size.(%d, %d)", new Object[] { ArkTextureView.this, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-          ??? = ArkTextureView.this.mViewImpl.getViewModel();
-          if (??? != null) {
-            ((ArkViewModel)???).mTimeRecord.beginOfCreateContext = System.currentTimeMillis();
-          }
-          for (;;)
-          {
-            synchronized (ArkTextureView.this.mSurfaceTextureLocker)
-            {
-              if (ArkTextureView.this.mSurfaceTexture == null)
-              {
-                ArkTextureView.ENV.logD(ArkTextureView.TAG, String.format("onSurfaceTextureSizeChanged.surface.null: %h", new Object[] { ArkTextureView.this }));
-                return;
-              }
-              if ((ArkTextureView.this.mContextHolder != null) && (ArkTextureView.this.mSurfaceTexture == ArkTextureView.this.mContextHolder.mSurfaceTexture))
-              {
-                ArkTextureView.this.mContextHolder.sizeChanged(paramInt1, paramInt2);
-                ??? = ArkTextureView.this.mViewImpl.getViewModel();
-                if (??? == null) {
-                  break;
-                }
-                ((ArkViewModel)???).createDrawTarget(null);
-                return;
-              }
-              if (ArkTextureView.this.mContextHolder != null)
-              {
-                ArkTextureView.ENV.logD(ArkTextureView.TAG, String.format("onSurfaceTextureSizeChanged.surface.rebind: %h", new Object[] { ArkTextureView.this }));
-                ArkTextureView.this.mContextHolder.release();
-                ArkTextureView.this.mContextHolder = null;
-              }
-              EGLContextHolder localEGLContextHolder = ArkViewModel.getOffscreenContext();
-              if (localEGLContextHolder == null)
-              {
-                ArkTextureView.ENV.logD(ArkTextureView.TAG, String.format("onSurfaceTextureSizeChanged.offscreenContext.null: %h", new Object[] { ArkTextureView.this }));
-                return;
-              }
-            }
-            ArkTextureView.this.mContextHolder = new EGLContextHolder();
-            ArkTextureView.this.mContextHolder.create(localObject2.mContext, ArkTextureView.this.mSurfaceTexture, paramInt1, paramInt2);
-          }
-        }
-      });
-      return;
-    }
-  }
-  
-  public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture)
-  {
-    if (ENV.mShowVsyncLog) {
-      ENV.logD(TAG, String.format("onSurfaceTextureUpdated.this.%h", new Object[] { this }));
-    }
-  }
-  
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     if (paramView == this) {
@@ -326,60 +163,12 @@ public class ArkTextureView
   
   public Bitmap recreateBitmapBuffer(Rect paramRect)
   {
-    if (this.mIsGpuRendering) {
-      return null;
-    }
-    if (paramRect.isEmpty())
-    {
-      ENV.logE(TAG, String.format("recreateBitmapBuffer.return.null.view.%h", new Object[] { this }));
-      return null;
-    }
-    paramRect = ArkViewModel.scaleRect(paramRect, this.mViewImpl.mScale);
-    int i = paramRect.width();
-    int j = paramRect.height();
-    this.mBitmapLock.lock();
-    if ((this.mBitmap != null) && (!this.mBitmap.isRecycled()) && (this.mBitmap.getWidth() >= i) && (this.mBitmap.getHeight() >= j))
-    {
-      this.mRectBitmap = paramRect;
-      this.mViewImpl.refreshDrawPath(paramRect, this.mPath);
-      this.mBitmapLock.unlock();
-      return this.mBitmap;
-    }
-    ENV.logI(TAG, String.format("recreateBitmapBuffer.1.view.%h", new Object[] { this }));
-    this.mCanvas = null;
-    if (this.mBitmap != null)
-    {
-      this.mBitmap.recycle();
-      this.mBitmap = null;
-    }
-    if (this.mRectBitmap != null) {
-      this.mRectBitmap.setEmpty();
-    }
-    try
-    {
-      this.mBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-      this.mRectBitmap = paramRect;
-      if (this.mBitmap != null) {
-        this.mCanvas = new Canvas(this.mBitmap);
-      }
-      this.mBitmapLock.unlock();
-      this.mViewImpl.refreshDrawPath(paramRect, this.mPath);
-      return this.mBitmap;
-    }
-    catch (OutOfMemoryError paramRect)
-    {
-      ENV.logE(TAG, paramRect.getMessage());
-      if (this.mBitmap != null)
-      {
-        this.mBitmap.recycle();
-        this.mBitmap = null;
-      }
-      return null;
-    }
-    finally
-    {
-      this.mBitmapLock.unlock();
-    }
+    return this.mTextureViewInterface.recreateBitmapBuffer(paramRect);
+  }
+  
+  public void releaseViewContext()
+  {
+    this.mTextureViewInterface.releaseContext();
   }
   
   public void setAlignLeft(boolean paramBoolean)
@@ -402,6 +191,11 @@ public class ArkTextureView
     this.mViewImpl.mClipRadiusTop = paramFloat;
   }
   
+  public void setFixSize(int paramInt1, int paramInt2)
+  {
+    this.mViewImpl.setFixSize(paramInt1, paramInt2);
+  }
+  
   public void setInputCallback(ArkViewImplement.InputCallback paramInputCallback)
   {
     this.mViewImpl.mInputCallback = paramInputCallback;
@@ -421,10 +215,43 @@ public class ArkTextureView
   {
     this.mViewImpl.mLoadCallback = paramLoadCallback;
   }
+  
+  public void setMaxSize(int paramInt1, int paramInt2)
+  {
+    this.mViewImpl.setMaxSize(paramInt1, paramInt2);
+  }
+  
+  public void setMinSize(int paramInt1, int paramInt2)
+  {
+    this.mViewImpl.setMinSize(paramInt1, paramInt2);
+  }
+  
+  public void setViewPressed(boolean paramBoolean)
+  {
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("pressed", paramBoolean);
+      this.mViewImpl.doOnViewEvent("ViewPressed", localJSONObject.toString());
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        ENV.logE(TAG, "setViewPressed JSONException e:" + localJSONException.toString());
+      }
+    }
+  }
+  
+  public void setViewRect(int paramInt1, int paramInt2)
+  {
+    this.mViewImpl.setViewRect(paramInt1, paramInt2);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.ark.ArkTextureView
  * JD-Core Version:    0.7.0.1
  */

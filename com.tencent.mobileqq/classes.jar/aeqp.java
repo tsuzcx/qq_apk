@@ -1,24 +1,21 @@
-import com.tencent.mobileqq.app.SVIPObserver;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
 
 public class aeqp
-  extends SVIPObserver
+  implements DialogInterface.OnClickListener
 {
-  public aeqp(EmoticonManager paramEmoticonManager) {}
+  public aeqp(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonManager", 2, "mVipStatusObserver vip change");
-    }
-    super.a();
-    this.a.d();
+    paramDialogInterface.dismiss();
+    BlessSelectMemberActivity.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aeqp
  * JD-Core Version:    0.7.0.1
  */

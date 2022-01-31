@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class smart_device_proxy$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   public static final int BYTES_BODY_FIELD_NUMBER = 3;
   public static final int INT32_CMD_FIELD_NUMBER = 1;
@@ -26,7 +26,7 @@ public final class smart_device_proxy$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.smart_device_proxy.smart_device_proxy.ReqBody
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.webso;
 
-import akyu;
 import android.os.SystemClock;
+import bbdo;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -14,7 +14,7 @@ public class HybridWebReporter
   private static HybridWebReporter jdField_a_of_type_ComTencentMobileqqWebviewWebsoHybridWebReporter;
   private static final Object jdField_a_of_type_JavaLangObject = new Object();
   public static String a;
-  private static ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private static ArrayList<bbdo> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private Random jdField_a_of_type_JavaUtilRandom;
   
   public static HybridWebReporter a()
@@ -39,7 +39,7 @@ public class HybridWebReporter
       ArrayList localArrayList2 = new ArrayList(jdField_a_of_type_JavaUtilArrayList);
       jdField_a_of_type_JavaUtilArrayList.clear();
       jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      ThreadManager.executeOnNetWorkThread(new akyu(localArrayList2));
+      ThreadManager.executeOnNetWorkThread(new HybridWebReporter.ReportRunnable(localArrayList2));
       return;
     }
   }
@@ -57,9 +57,9 @@ public class HybridWebReporter
     return true;
   }
   
-  public void a(HybridWebReporter.HybridWebReportInfo paramHybridWebReportInfo)
+  public void a(bbdo parambbdo)
   {
-    if (paramHybridWebReportInfo == null) {}
+    if (parambbdo == null) {}
     for (;;)
     {
       return;
@@ -68,25 +68,25 @@ public class HybridWebReporter
       int j = QzoneConfig.getInstance().getConfig("QzUrlCache", "QzhwStatUploadBatchInterval", 600);
       int k = QzoneConfig.getInstance().getConfig("QzUrlCache", "QzhwStatUploadBatchCount", 10);
       if (QLog.isColorLevel()) {
-        QLog.d("HybridWebReporter", 2, "add report, isreported(" + paramHybridWebReportInfo.jdField_d_of_type_Boolean + "), url: " + paramHybridWebReportInfo.a);
+        QLog.d("HybridWebReporter", 2, "add report, isreported(" + parambbdo.jdField_d_of_type_Boolean + "), url: " + parambbdo.a);
       }
-      if ((paramHybridWebReportInfo.e == 0) || (paramHybridWebReportInfo.jdField_d_of_type_Boolean)) {
+      if ((parambbdo.f == 0) || (parambbdo.jdField_d_of_type_Boolean)) {
         continue;
       }
-      paramHybridWebReportInfo.jdField_d_of_type_Boolean = true;
-      if (paramHybridWebReportInfo.e < 0) {
-        paramHybridWebReportInfo.e = QzoneConfig.getInstance().getConfig("QzUrlCache", "QzhwStatDefaultSampling", 20);
+      parambbdo.jdField_d_of_type_Boolean = true;
+      if (parambbdo.f < 0) {
+        parambbdo.f = QzoneConfig.getInstance().getConfig("QzUrlCache", "QzhwStatDefaultSampling", 20);
       }
       try
       {
-        i = Integer.valueOf(paramHybridWebReportInfo.jdField_d_of_type_JavaLangString).intValue();
-        if (((paramHybridWebReportInfo.b != 1000) && (paramHybridWebReportInfo.b != 0)) || (i < 100) || (i > 400)) {
-          paramHybridWebReportInfo.e = 1;
+        i = Integer.valueOf(parambbdo.jdField_d_of_type_JavaLangString).intValue();
+        if (((parambbdo.b != 1000) && (parambbdo.b != 0)) || (i < 100) || (i > 400)) {
+          parambbdo.f = 1;
         }
         if (QLog.isColorLevel()) {
-          paramHybridWebReportInfo.e = 1;
+          parambbdo.f = 1;
         }
-        if (!a(paramHybridWebReportInfo.e)) {
+        if (!a(parambbdo.f)) {
           continue;
         }
       }
@@ -94,7 +94,7 @@ public class HybridWebReporter
       {
         synchronized (jdField_a_of_type_JavaUtilArrayList)
         {
-          jdField_a_of_type_JavaUtilArrayList.add(paramHybridWebReportInfo);
+          jdField_a_of_type_JavaUtilArrayList.add(parambbdo);
           if ((jdField_a_of_type_JavaUtilArrayList.size() < k) && ((l1 - l2 < j * 1000) || (jdField_a_of_type_JavaUtilArrayList.size() <= 0))) {
             continue;
           }
@@ -109,7 +109,7 @@ public class HybridWebReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.HybridWebReporter
  * JD-Core Version:    0.7.0.1
  */

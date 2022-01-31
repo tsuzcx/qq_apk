@@ -1,43 +1,21 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoPlayParam;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class mte
-  implements SeekBar.OnSeekBarChangeListener
+class mte
+  implements Animation.AnimationListener
 {
-  public mte(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager) {}
+  mte(mtc parammtc) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((FastWebVideoFeedsPlayManager.a(this.a) == null) || (!paramBoolean)) {
-      return;
-    }
-    FastWebVideoFeedsPlayManager.b(this.a, System.currentTimeMillis());
-    long l = FastWebVideoFeedsPlayManager.a(this.a).b();
-    double d = paramInt / 100.0D;
-    paramInt = (int)(l * d);
-    VideoFeedsHelper.a(FastWebVideoFeedsPlayManager.a(this.a).a, paramInt);
+    this.a.a.a.setVisibility(0);
+    this.a.a.a.startAnimation(this.a.b);
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    FastWebVideoFeedsPlayManager.d(this.a, true);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if (FastWebVideoFeedsPlayManager.a(this.a) == null) {
-      return;
-    }
-    FastWebVideoFeedsPlayManager.d(this.a, false);
-    int i = paramSeekBar.getProgress();
-    long l = FastWebVideoFeedsPlayManager.a(this.a).b();
-    i = (int)(i / 100.0D * l);
-    FastWebVideoFeedsPlayManager.a(this.a).a(i);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

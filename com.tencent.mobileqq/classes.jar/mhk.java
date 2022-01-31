@@ -1,28 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoStatusListener;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.PopupDialog;
 
-class mhk
-  implements Runnable
+public class mhk
+  implements DialogInterface.OnClickListener
 {
-  mhk(mhi parammhi) {}
+  public mhk(PopupDialog paramPopupDialog) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (VideoFeedsPlayManager.a(this.a.a) != null)
-    {
-      Iterator localIterator = VideoFeedsPlayManager.a(this.a.a).iterator();
-      while (localIterator.hasNext()) {
-        ((VideoFeedsPlayManager.VideoStatusListener)localIterator.next()).a(VideoFeedsPlayManager.a(this.a.a));
-      }
+    if (PopupDialog.a.a != null) {
+      PopupDialog.a.a.onClick(paramDialogInterface, paramInt);
     }
-    this.a.a.b(0);
+    paramDialogInterface.dismiss();
+    PopupDialog.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mhk
  * JD-Core Version:    0.7.0.1
  */

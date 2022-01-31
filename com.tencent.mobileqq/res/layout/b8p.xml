@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.PullRefreshHeader android:id="@id/e4z" android:layout_width="fill_parent" android:layout_height="400.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/i5j" android:layout_width="fill_parent" android:layout_height="@dimen/auf" android:layout_alignParentBottom="true">
+        <FrameLayout android:layout_width="33.0dip" android:layout_height="33.0dip" android:layout_marginLeft="60.0dip" android:layout_centerVertical="true">
+            <ProgressBar android:layout_gravity="center" android:id="@id/i5n" android:visibility="invisible" android:layout_width="18.0dip" android:layout_height="18.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading5" android:indeterminateBehavior="repeat" />
+            <ImageView android:layout_gravity="center" android:id="@id/i5l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/refresh_arrow" android:scaleType="fitCenter" android:contentDescription="@string/image" />
+        </FrameLayout>
+        <TextView android:textSize="14.0dip" android:textColor="@color/skin_over_header" android:gravity="center" android:layout_gravity="center" android:id="@id/i5m" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/hqh" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</com.tencent.mobileqq.widget.PullRefreshHeader>

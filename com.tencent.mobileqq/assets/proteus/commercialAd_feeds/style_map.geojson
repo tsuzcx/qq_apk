@@ -1,0 +1,436 @@
+{
+  "data_map":{
+    "id_artilce_title":{
+      "setText:":"artilce_title_text",
+      "setText:lineSpace:":[
+        "artilce_title_text",
+        "article_title_text_line_space"
+      ],
+      "setTextColorString:":"title_text_color"
+
+    },
+    "id_comment_num":{
+      "setText:":"article_comment_num"
+    },
+    "id_article_large_imge":{
+      "setImageWithURLString:lineup:":["article_large_imge_url","lineup"]
+    },
+    "id_article_small_imge":{
+      "setImageWithURLString:lineup:":["article_small_imge_url","lineup"]
+
+    },
+    "id_corner_text_image":{
+      "setImageWithURLString:lineup:":["ugc_small_imge_url","lineup"]
+
+    },
+    "id_info_status":{
+      "setText:":"info_status_text",
+      "setTextColorString:":"info_status_text_color",
+      "setBorderColorString:":"info_status_text_color"
+    },
+    "id_gallery_cnt":{
+      "setText:":"gallery_cn_text"
+    },
+    "id_view_AdBanner":{
+      "setFeedsModel:":"article_model"
+    },
+    "id_view_ad_coordinateView":{
+      "setLocation:":"ad_Location"
+    },
+    "id_view_app":{
+      "setText:":"view_app_text"
+    },
+    "id_info_avator":{
+      "loadQQAvatar:":"info_avator_uin",
+      "setArticleModel:":"article_model"
+    },
+    "id_info_source":{
+      "setText:":"info_source_text"
+
+    },
+    "id_participant_title":{
+      "setText:":"participant_title_text"
+    },
+    "id_participant_imge":{
+      "setImageWithURLString:lineup:":["participant_pic_url","lineup"]
+    },
+    "id_label_icon":{
+      "setImageWithURLString:lineup:":["label_icon_url","lineup"]
+    },
+    "id_label_text":{
+      "setText:":"label_text"
+    },
+    "id_multi_img_1":{
+      "setImageWithURLString:lineup:":["multi_img_url1","lineup"]
+    },
+    "id_multi_img_2":{
+      "setImageWithURLString:lineup:":["multi_img_url2","lineup"]
+    },
+    "id_multi_img_3":{
+      "setImageWithURLString:lineup:":["multi_img_url3","lineup"]
+    },
+    "id_ugc_content_image":{
+      "setImageWithURLString:lineup:":["ugc_image_url","lineup"]
+    },
+    "id_large_video_icon":{
+      "loadImageWithPath:":"large_video_icon"
+    },
+    "id_gallery_img":{
+      "loadImageWithPath:":"gallery_icon"
+    },
+    "id_large_video_cover":{
+      "loadImageWithPath:":"large_video_cover"
+    },
+    "id_large_video_duration":{
+      "setText:":"large_video_duration"
+    },
+
+    "id_video_play_icon":{
+      "loadImageWithPath:":"video_play_icon"
+    },
+    "id_video_paly_text":{
+      "setText:":"video_paly_text"
+    },
+    "id_video_play_tips":{
+      "setText:":"video_play_tips"
+    },
+    "id_topic_more":{
+      "setText:":"more_tips"
+    },
+
+    "id_addon_view":{
+      "setText:":"id_addon_text",
+      "setAttatchInfo:":"id_addon_attatch_info"
+    },
+    "id_small_video_icon":{
+      "loadImageWithPath:":"small_video_icon"
+    },
+    "id_small_video_cover":{
+      "loadImageWithPath:":"small_video_cover"
+    },
+    "id_small_video_duration":{
+      "setText:":"small_video_duration"
+    },
+    "id_nickname":{
+      "setText:":"nickname_text"
+    },
+    "id_biu_time":{
+      "setText:":"biu_time_text"
+    },
+    "id_biu_tips":{
+      "setText:":"biu_tips_text"
+    },
+    "id_summary":{
+      "setArticleModel:":"articl_model",
+      "setText:":"summary_text"
+    },
+    "id_like_button":{
+      "setSelectedString:": "selected_state",
+      "setTitle:":"like_count",
+      "setAlphaString:":"like_alpha",
+      "setEnableString:":"like_enable"
+    },
+    "id_comment_button":{
+      "setTitle:":"comment_count",
+      "setAlphaString:":"comment_alpha",
+      "setEnableString:":"comment_enable"
+    },
+    "id_biu_button":{
+      "setTitle:":"biu_count",
+      "setAlphaString:":"biu_alpha",
+      "setEnableString:":"biu_enable"
+    },
+    "id_multi_image":{
+      "setArticleModel:":"article_model"
+    },
+
+    "id_v_icon":{
+      "loadImageWithPath:":"v_icon_image"
+    },
+    "id_biu_comment":{
+      "setArticleModel:":"articl_model",
+      "setText:":"biu_comment"
+    },
+    "id_article_comment": {
+      "setArticleModel:":"article_model",
+      "setText:": "article_comment"
+    },
+    "id_hot_icon":{
+      "setImageWithURLString:lineup:":["hot_icon_url","lineup"]
+    },
+    "id_hot_title":{
+      "setText:":"hot_title"
+    },
+    "id_topic_name":{
+      "setText:":"topic_name"
+    },
+    "id_content":{
+      "setText:":"content_text"
+    },
+    "id_topic_avator":{
+      "setImageWithURLString:lineup:":["topic_avator_url","lineup"]
+    },
+    "id_topic_recommend_header":{
+      "setAttatchInfo:":"topic_header_jump_url"
+    },
+    "id_follow_button":{
+      "setSelectedString:": "selected_status",
+      "setTitle:": "button_status"
+    },
+    "id_topic_arrow_img":{
+      "loadImageWithPath:":"topic_arrow_img"
+    },
+    "id_topic_name_only":{
+      "setText:":"topic_name_only"
+    },
+    "id_topic_pre":{
+      "setText:":"topic_pre"
+    },
+    "id_super_topic":{
+      "setAttatchInfo:":"super_topic_jump_url"
+    },
+    "id_read_article":{
+      "setTitle:":"read_article",
+      "setAttatchInfo:":"read_article_jump_url"
+    },
+    "id_read_article_wrapper":{
+      "setAttatchInfo:":"read_article_wrapper_jump_url"
+    },
+    "id_super_topic_avator":{
+      "setImageWithURLString:lineup:":["super_topic_avator_url","lineup"]
+    },
+    "id_super_topic_button":{
+      "setTitle:":"super_topic_button_title",
+      "setAttatchInfo:":"jump_url"
+    },
+    "id_super_topic_name":{
+      "setText:":"super_topic_name"
+    },
+    "id_super_topic_subname":{
+      "setText:":"super_topic_subname"
+    },
+    "id_capsule_topic_pre":{
+      "loadImageWithPath:":"capsule_topic_pre"
+    },
+    "id_capsule_topic_name":{
+      "setText:":"capsule_topic_name"
+    },
+    "id_capsule_privacy_pre":{
+      "loadImageWithPath:":"capsule_privacy_pre"
+    },
+    "id_capsule_privacy_name":{
+      "setText:":"capsule_privacy_name"
+    },
+    "id_capsule_community_pre":{
+      "loadImageWithPath:":"capsule_community_pre"
+    },
+    "id_capsule_community_name":{
+      "setText:":"capsule_community_name"
+    },
+    "id_capsule_answer":{
+      "setAttatchInfo:":"capsule_answer_jump_url"
+    },
+    "id_capsule_answer_pre": {
+      "setText:": "capsule_answer_pre"
+    },
+    "id_capsule_answer_content": {
+      "setText:": "capsule_answer_content"
+    },
+    "id_social_data_like":{
+      "setText:":"social_data_like"
+    },
+    "id_social_data_biu":{
+      "setText:":"social_data_biu"
+    },
+    "id_comment_content":{
+      "setCommentContent:": "comment_list",
+      "setCommentAllLink:": "comment_all_link",
+      "setArticleModel:":"article_model"
+    },
+    "id_comment_all_link":{
+      "setText:":"comment_all_link"
+    },
+    "id_social_header_follow_button":{
+      "setSelectedString:": "selected_status",
+      "setTitle:": "button_status"
+    },
+    "id_star_postmark":{
+      "loadImageWithPath:":"star_postmark"
+    },
+    "id_middle_body_content":{
+      "setArticleModel:":"middle_body_content_model"
+    },
+    "id_super_topic_hot_icon":{
+      "setImageWithURLString:lineup:":["super_topic_hot_icon_url","lineup"]
+    },
+    "id_topic_recommend_biu_time":{
+      "setText:":"biu_time_text"
+    },
+    "id_pack_bottom_label":{
+      "setText:":"pack_bottom_text"
+    },
+    "id_pack_bottom_imageview":{
+      "loadImageWithPath:":"pack_bottom_imageview"
+    },
+    "id_pack_bottom":{
+      "setAttatchInfo:":"pack_bottom_click_info"
+    },
+    "id_capsule_common_pre":{
+      "setImageWithURLString:lineup:":["capsule_common_pre_url","lineup"]
+    },
+    "id_capsule_common_name":{
+      "setText:":"capsule_common_name"
+    },
+    "id_dislike_button": {
+      "setImage:": "feeds_dislike_icon"
+    },
+    "id_friends_biu":{
+      "setImage:":"uin_list"
+    },
+    "id_cmp_account_card_avator" : {
+      "setImageWithURLString:lineup:":["cmp_account_card_avator","lineup"]
+    },
+    "id_cmp_account_card_name" : {
+      "setText:": "cmp_account_card_name"
+    },
+    "id_cmp_account_card_desc" : {
+      "setText:": "cmp_account_card_desc"
+    },
+    "id_capsule_lbs_pre":{
+      "setImageWithURLString:lineup:":["capsule_lbs_pre_url","lineup"]
+    },
+    "id_capsule_lbs_name":{
+      "setText:":"capsule_lbs_name"
+    },
+    "id_large_video_activity_wrapper":{
+      "setAttatchInfo:":"activity_wrapper_jump_url"
+    },
+    "id_large_video_activity_label":{
+      "setRichText:":"activity_label_rich_text"
+    },
+    "id_large_video_activity_img":{
+      "loadImageWithPath:":"activity_img_path"
+    },
+    "id_web_container":{
+      "setAttatchInfo:":"url"
+    },
+    "id_web_pic":{
+      "loadImageWithPath:":"src"
+    },
+    "id_web_title":{
+      "setText:":"text"
+    },
+    "id_web_summary":{
+      "setText:":"text"
+    },
+    "id_web_pic_right":{
+      "loadImageWithPath:": "url"
+    },
+    "id_web_wording":{
+      "setText:":"text"
+    },
+    "id_jump_channel_bar":{
+      "setAttatchInfo:":"jump_channel_bar_url"
+    },
+    "id_jump_channel_name":{
+      "setText:":"jump_channel_name"
+    },
+    "id_jump_channel_img":{
+      "loadImageWithPath:":"jump_channel_img"
+    },
+    "id_social_header_fold_button": {
+      "setImage:": "social_header_fold"
+    },
+    "id_socialize_recommend_follow":{
+      "setFeedsModel:":"article_model"
+    },
+    "id_news_icon":{
+      "setImageWithURLString:lineup:":["src","lineup"]
+    },
+    "id_news_refresh_time":{
+      "setText:":"text"
+    },
+    "id_news_content_1":{
+      "setText:":"text",
+      "setTextColorString:": "color",
+      "setFontSizeString:": "fontSize"
+    },
+    "id_news_content_2":{
+      "setText:":"text",
+      "setTextColorString:": "color",
+      "setFontSizeString:": "fontSize"
+    },
+    "id_news_content_3":{
+      "setText:":"text",
+      "setTextColorString:": "color",
+      "setFontSizeString:": "fontSize"
+    },
+    "id_news_item_1":{
+      "setAttatchInfo:":"url",
+      "setProteusReportInfo:":"reportInfo"
+    },
+    "id_news_item_2":{
+      "setAttatchInfo:":"url",
+      "setProteusReportInfo:":"reportInfo"
+    },
+    "id_news_item_3":{
+      "setAttatchInfo:":"url",
+      "setProteusReportInfo:":"reportInfo"
+    },
+    "id_news_dot_1":{
+      "setImageWithURLString:lineup:":["src","lineup"]
+    },
+    "id_news_dot_2":{
+      "setImageWithURLString:lineup:":["src","lineup"]
+    },
+    "id_news_dot_3":{
+      "setImageWithURLString:lineup:":["src","lineup"]
+    },
+    "id_daily_header_icon":{
+      "setImageWithURLString:lineup:":["src","lineup"]
+    },
+    "id_daily_header_name":{
+      "setText:":"text"
+    },
+    "id_img_biu_num":{
+      "setText:":"text"
+    },
+    "id_img_like_num":{
+      "setText:":"text"
+    },
+    "id_img_comment_num":{
+      "setText:":"text"
+    },
+    "id_proteus_collection_view": {
+      "setCellArray:":"datas",
+      "setScrollJumpUrl:":"jump_url",
+      "setScrollTypeString:":"scrollType",
+      "setScrollIndicatorString:":"scrollIndicator",
+      "setScrollBounceString:":"scrollBounce",
+      "setEdgeDragString:":"edgeDrag"
+    },
+    "id_fg_icon_title": {
+      "setText:":"text"
+    },
+    "id_fg_title": {
+      "setText:":"text"
+    },
+    "id_fg_enter_title": {
+      "setText:":"text"
+    },
+    "id_subcribe_name": {
+      "setText:":"text"
+    },
+    "id_fg_button": {
+      "setAttatchInfo:":"url"
+    },
+    "id_fg_icon_view":{
+      "setBackgroundColorString:":"color"
+    },
+    "id_article_large_imge_cover":{
+      "setAttatchInfo:":"url"
+    }
+  },
+  "version":"201803061040"
+}
+

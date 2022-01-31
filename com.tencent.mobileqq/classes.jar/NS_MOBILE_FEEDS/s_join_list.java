@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class s_join_list
   extends JceStruct
 {
-  static ArrayList cache_users = new ArrayList();
+  static ArrayList<s_user> cache_users = new ArrayList();
   public int actionType;
   public String actionUrl = "";
   public String desc = "";
   public int isjoined;
   public int num;
-  public ArrayList users;
+  public ArrayList<s_user> users;
   
   static
   {
@@ -24,7 +24,7 @@ public final class s_join_list
   
   public s_join_list() {}
   
-  public s_join_list(int paramInt1, int paramInt2, ArrayList paramArrayList, String paramString1, String paramString2, int paramInt3)
+  public s_join_list(int paramInt1, int paramInt2, ArrayList<s_user> paramArrayList, String paramString1, String paramString2, int paramInt3)
   {
     this.num = paramInt1;
     this.isjoined = paramInt2;
@@ -62,7 +62,7 @@ public final class s_join_list
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_join_list
  * JD-Core Version:    0.7.0.1
  */

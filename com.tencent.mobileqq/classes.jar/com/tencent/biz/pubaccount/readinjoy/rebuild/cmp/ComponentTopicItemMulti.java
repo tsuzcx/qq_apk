@@ -9,27 +9,27 @@ import android.view.View;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDisplayUtils;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.ComponentInheritView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
+import bgmq;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo.TopicRecommendInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
-import cooperation.readinjoy.ReadInJoyHelper;
 import java.net.MalformedURLException;
 import java.net.URL;
-import mae;
-import maf;
+import obj;
+import pex;
+import pfh;
+import pmq;
+import pmr;
+import prx;
 
 public class ComponentTopicItemMulti
   extends RelativeLayout
-  implements ComponentInheritView
+  implements pex
 {
   private int jdField_a_of_type_Int;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   private ArticleInfo jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-  public TopicRecommendFeedsInfo.TopicRecommendInfo a;
   KandianUrlImageView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView;
+  public prx a;
   TextView b;
   
   public ComponentTopicItemMulti(Context paramContext)
@@ -58,7 +58,7 @@ public class ComponentTopicItemMulti
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969588, this, true);
+    return LayoutInflater.from(paramContext).inflate(2131494314, this, true);
   }
   
   public void a() {}
@@ -70,30 +70,28 @@ public class ComponentTopicItemMulti
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131364504));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363397));
-    this.b = ((TextView)findViewById(2131363598));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)findViewById(2131299236));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131311534));
+    this.b = ((TextView)findViewById(2131299450));
   }
-  
-  public void a(FeedItemCell.CellListener paramCellListener) {}
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof TopicRecommendFeedsInfo.TopicRecommendInfo))
+    if ((paramObject instanceof prx))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo = ((TopicRecommendFeedsInfo.TopicRecommendInfo)paramObject);
+      this.jdField_a_of_type_Prx = ((prx)paramObject);
       b();
     }
     try
     {
-      paramObject = new URL(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo.d);
-      ReadInJoyDisplayUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, paramObject, getContext());
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo.c + this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo.a);
-      paramObject = String.format(getResources().getString(2131438954), new Object[] { ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo.jdField_b_of_type_Int) });
+      paramObject = new URL(this.jdField_a_of_type_Prx.d);
+      obj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, paramObject, getContext());
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Prx.c + this.jdField_a_of_type_Prx.a);
+      paramObject = String.format(getResources().getString(2131652754), new Object[] { bgmq.a(this.jdField_a_of_type_Prx.jdField_b_of_type_Int) });
       this.b.setText(paramObject);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructTopicRecommendFeedsInfo$TopicRecommendInfo.jdField_b_of_type_JavaLangString))
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_Prx.jdField_b_of_type_JavaLangString))
       {
-        setOnClickListener(new mae(this));
+        setOnClickListener(new pmq(this));
         return;
       }
     }
@@ -101,12 +99,14 @@ public class ComponentTopicItemMulti
     {
       for (;;)
       {
-        ReadInJoyDisplayUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, null, getContext());
+        obj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, null, getContext());
         paramObject.printStackTrace();
       }
-      setOnClickListener(new maf(this));
+      setOnClickListener(new pmr(this));
     }
   }
+  
+  public void a(pfh parampfh) {}
   
   public void b()
   {

@@ -1,21 +1,27 @@
-import com.tencent.mobileqq.leba.LebaFeedsManager;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
-import com.tencent.mobileqq.leba.ark.LebaArkReporter;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class aeir
-  implements Runnable
+class aeir
+  extends BroadcastReceiver
 {
-  public aeir(LebaWithFeeds paramLebaWithFeeds) {}
+  private aeir(aegy paramaegy) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    LebaArkReporter.a();
-    LebaWithFeeds.a(this.a).b();
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")) {
+      aegy.a(this.a, 1);
+    }
+    while (!paramContext.equals("android.intent.action.SCREEN_OFF")) {
+      return;
+    }
+    aegy.a(this.a, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeir
  * JD-Core Version:    0.7.0.1
  */

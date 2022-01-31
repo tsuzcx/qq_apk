@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_0xb40$FavoriteExtInfo
-  extends MessageMicro
+  extends MessageMicro<FavoriteExtInfo>
 {
   public static final int Article = 1;
   public static final int PictureCollection = 3;
@@ -17,7 +17,7 @@ public final class oidb_0xb40$FavoriteExtInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0xb40.oidb_0xb40.FavoriteExtInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,112 @@
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.campuscircle.CampusCircleIpcClient;
-import com.tencent.mobileqq.confess.ConfessPlugin;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.28.1;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.28.2;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class abzn
-  implements Runnable
+  implements begw
 {
-  public abzn(ConfessPlugin paramConfessPlugin) {}
+  public abzn(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    String str = this.a.c;
-    if (TextUtils.isEmpty(str)) {
-      ThreadManager.getUIHandler().post(new abzo(this));
-    }
-    Object localObject;
-    boolean bool1;
-    do
+    if ((!TroopMemberListActivity.c(this.a)) && (paramInt >= 5)) {}
+    for (int i = paramInt + 1;; i = paramInt)
     {
-      return;
-      localObject = CampusCircleIpcClient.a().a(str);
-      ThreadManager.getUIHandler().post(new abzp(this));
-      if ((localObject == null) || (localObject.length != 3)) {
-        break;
+      if (this.a.e) {
+        if (paramInt == 0) {
+          this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopMemberListActivity.28.1(this), 320L);
+        }
       }
-      bool1 = ((Boolean)localObject[0]).booleanValue();
-      boolean bool2 = ((Boolean)localObject[1]).booleanValue();
-      if (localObject[2] == null) {}
-      for (localObject = null; !bool2; localObject = (List)localObject[2])
+      for (;;)
       {
-        this.a.callJs(this.a.d, new String[] { "本群成员不能向好友发起加群邀请。" });
+        if ((this.a.jdField_a_of_type_Begr != null) && (this.a.jdField_a_of_type_Begr.isShowing())) {
+          this.a.jdField_a_of_type_Begr.dismiss();
+        }
         return;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("TroopMemberListActivityget_troop_member", 2, "mOnActionSheetClickListener.OnClick, error : which = " + paramInt + ", troopUin = " + this.a.jdField_b_of_type_JavaLangString);
+          continue;
+          if (this.a.jdField_d_of_type_Int == 9) {
+            switch (i)
+            {
+            default: 
+              break;
+            case 0: 
+              this.a.c = true;
+              this.a.t = "";
+              this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+              this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+              this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+              if (this.a.jdField_a_of_type_Acao != null) {
+                this.a.jdField_a_of_type_Acao.a();
+              }
+              awqx.b(this.a.app, "P_CliOper", "Grp_pay", "", "un_pay_list", "Clk_del", 0, 0, this.a.jdField_b_of_type_JavaLangString, this.a.n, "", "");
+              break;
+            }
+          } else {
+            switch (i)
+            {
+            default: 
+              break;
+            case 0: 
+              this.a.l();
+              break;
+            case 1: 
+              if (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))
+              {
+                paramView = new Intent(this.a, SelectMemberActivity.class);
+                paramView.putExtra("param_from", 30);
+                paramView.putExtra("group_uin", this.a.jdField_b_of_type_JavaLangString);
+                paramView.putExtra("param_groupcode", this.a.jdField_a_of_type_JavaLangString);
+                paramView.putExtra("param_from", 30);
+                paramView.putExtra("param_subtype", 4);
+                paramView.putExtra("param_entrance", 30);
+                paramView.putExtra("param_max", 30);
+                paramView.putExtra("param_exit_animation", 3);
+                this.a.startActivity(paramView);
+                this.a.overridePendingTransition(2130771997, 0);
+                awqx.b(this.a.app, "dc00899", "Grp_mber", "", "mber_list", "clk_Add", 0, 0, this.a.jdField_b_of_type_JavaLangString, "", "", "");
+              }
+              break;
+            case 2: 
+              this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new TroopMemberListActivity.28.2(this), 320L);
+              break;
+            case 3: 
+              this.a.jdField_d_of_type_Boolean = true;
+              this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+              TroopMemberListActivity.a(this.a);
+              this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+              this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+              this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+              this.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.a.findViewById(2131302806));
+              this.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
+              this.a.jdField_d_of_type_AndroidWidgetTextView.setText(ajjy.a(2131649822));
+              this.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(new abzo(this));
+              if (this.a.jdField_a_of_type_Acao != null) {
+                this.a.jdField_a_of_type_Acao.a();
+              }
+              paramView = this.a.n;
+              this.a.a("Clk_del", paramView, "");
+            }
+          }
+        }
       }
-      if ((localObject == null) || (((List)localObject).size() == 0))
-      {
-        this.a.callJs(this.a.d, new String[] { "获取群成员失败，请重试。" });
-        return;
-      }
-    } while (ConfessPlugin.a(this.a, str, bool1, (ArrayList)localObject));
-    this.a.callJs(this.a.d, new String[] { "邀请群成员异常。" });
-    return;
-    this.a.callJs(this.a.d, new String[] { "邀请群成员异常。" });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abzn
  * JD-Core Version:    0.7.0.1
  */

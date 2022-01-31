@@ -1,30 +1,25 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.content.Context;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 
 public class aglw
-  implements View.OnTouchListener
+  extends ajjh
 {
-  public aglw(ScanTorchActivity paramScanTorchActivity) {}
+  public aglw(TransactionActivity paramTransactionActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    switch (paramMotionEvent.getAction())
-    {
+    if ((!paramBoolean) || (paramString == null)) {
+      return;
     }
-    for (;;)
-    {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+    TransactionActivity.c(this.a, babh.c(this.a.app, TransactionActivity.c(this.a), false));
+    paramString = agwj.a(TransactionActivity.a(this.a), TransactionActivity.d(this.a), aciy.a(TransactionActivity.c(this.a), TransactionActivity.a(this.a).getResources()), TransactionActivity.c(this.a).getPaint());
+    TransactionActivity.c(this.a).setText(paramString + "(" + TransactionActivity.c(this.a) + ")");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aglw
  * JD-Core Version:    0.7.0.1
  */

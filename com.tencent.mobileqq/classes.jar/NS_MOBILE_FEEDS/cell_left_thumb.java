@@ -9,12 +9,12 @@ import java.util.Map;
 public final class cell_left_thumb
   extends JceStruct
 {
-  static Map cache_mapExt;
+  static Map<String, String> cache_mapExt;
   static s_picdata cache_picdata = new s_picdata();
   static s_user cache_user = new s_user();
   public String actionturl = "";
   public int actiontype;
-  public Map mapExt;
+  public Map<String, String> mapExt;
   public int mediatype;
   public int pic_actiontype = -1;
   public String pic_actionurl = "";
@@ -36,7 +36,7 @@ public final class cell_left_thumb
   
   public cell_left_thumb() {}
   
-  public cell_left_thumb(int paramInt1, s_picdata params_picdata, String paramString1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, byte paramByte, s_user params_user, int paramInt3, String paramString6, int paramInt4, String paramString7, Map paramMap)
+  public cell_left_thumb(int paramInt1, s_picdata params_picdata, String paramString1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, byte paramByte, s_user params_user, int paramInt3, String paramString6, int paramInt4, String paramString7, Map<String, String> paramMap)
   {
     this.mediatype = paramInt1;
     this.picdata = params_picdata;
@@ -115,7 +115,7 @@ public final class cell_left_thumb
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_left_thumb
  * JD-Core Version:    0.7.0.1
  */

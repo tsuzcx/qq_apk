@@ -1,23 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.ui.WebViewTitlerBar;
+import com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView;
 
 public class akyq
-  implements View.OnClickListener
+  implements akyr
 {
-  public akyq(WebViewTitlerBar paramWebViewTitlerBar) {}
+  public akyq(ScanEntryProviderContainerView paramScanEntryProviderContainerView) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView != null) {
-      this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.a(this.a.jdField_a_of_type_JavaLangString, new String[] { "" });
+    if (ScanEntryProviderContainerView.a(this.a) != null) {
+      ScanEntryProviderContainerView.a(this.a).c(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akyq
  * JD-Core Version:    0.7.0.1
  */

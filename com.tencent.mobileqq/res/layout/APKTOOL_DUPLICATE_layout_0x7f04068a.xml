@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f32" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0744" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0745" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f33" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0744" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0745" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f34" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0744" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0745" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1f35" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0744" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0745" />
-</merge>

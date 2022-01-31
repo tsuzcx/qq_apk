@@ -1,25 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.qq.im.capture.music.humrecognition.HumUtils;
-import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
-public class anuz
-  implements View.OnClickListener
+class anuz
+  implements DialogInterface.OnClickListener
 {
-  public anuz(HummingActivity paramHummingActivity) {}
+  anuz(anuy paramanuy) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (HumUtils.b()) {
-      return;
-    }
-    HummingActivity.a(this.a, 2);
-    HummingActivity.b(this.a);
+    this.a.a.a = false;
+    this.a.a.doOnBackPressed();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anuz
  * JD-Core Version:    0.7.0.1
  */

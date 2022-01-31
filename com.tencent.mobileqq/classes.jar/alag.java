@@ -1,28 +1,28 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.widget.AntiphingToast;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 
-public class alag
-  extends Handler
+class alag
+  implements SensorEventListener
 {
-  public alag(AntiphingToast paramAntiphingToast, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  alag(alad paramalad) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    if (paramMessage.what == 1) {
-      this.a.a(0.0F, 0 - AntiphingToast.a(this.a).getHeight(), true);
+    if (paramSensorEvent.sensor.getType() == 1) {
+      alad.a(this.a, paramSensorEvent);
     }
-    super.handleMessage(paramMessage);
+    while (paramSensorEvent.sensor.getType() != 3) {
+      return;
+    }
+    alad.b(this.a, paramSensorEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alag
  * JD-Core Version:    0.7.0.1
  */

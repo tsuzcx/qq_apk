@@ -1,30 +1,20 @@
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
-import mqq.util.WeakReference;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class tne
-  implements TabBarView.OnTabChangeListener
+class tne
+  implements View.OnTouchListener
 {
-  final WeakReference a;
+  private tne(tnb paramtnb) {}
   
-  public tne(QQBrowserActivity paramQQBrowserActivity)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a = new WeakReference(paramQQBrowserActivity);
-  }
-  
-  public void onTabSelected(int paramInt1, int paramInt2)
-  {
-    QQBrowserActivity localQQBrowserActivity = (QQBrowserActivity)this.a.get();
-    if (localQQBrowserActivity == null) {}
-    while (paramInt1 == paramInt2) {
-      return;
-    }
-    QQBrowserActivity.a(paramInt2, localQQBrowserActivity);
+    return tnb.a(this.a).a(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tne
  * JD-Core Version:    0.7.0.1
  */

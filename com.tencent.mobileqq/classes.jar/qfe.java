@@ -1,50 +1,17 @@
-import android.text.TextUtils;
-import com.tencent.device.devicemgr.SmartDeviceProxyMgr;
-import com.tencent.device.msg.activities.DevLittleVideoItemBuilder;
-import com.tencent.device.msg.data.DeviceMsgHandle;
-import com.tencent.device.msg.data.MessageForDevLittleVideo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Iterator;
-import java.util.Map.Entry;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-
-public class qfe
-  implements Runnable
+public abstract interface qfe
+  extends qfs
 {
-  public qfe(DevLittleVideoItemBuilder paramDevLittleVideoItemBuilder, MessageForDevLittleVideo paramMessageForDevLittleVideo) {}
+  public abstract void a(boolean paramBoolean);
   
-  public void run()
-  {
-    SmartDeviceProxyMgr localSmartDeviceProxyMgr = (SmartDeviceProxyMgr)this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevLittleVideoItemBuilder.a.a(51);
-    DeviceMsgHandle localDeviceMsgHandle = (DeviceMsgHandle)this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevLittleVideoItemBuilder.a.a(49);
-    for (;;)
-    {
-      synchronized (localDeviceMsgHandle.a)
-      {
-        Iterator localIterator = localDeviceMsgHandle.a.entrySet().iterator();
-        if (localIterator.hasNext())
-        {
-          if (((MessageRecord)((Map.Entry)localIterator.next()).getValue()).uniseq != this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.uniseq) {
-            continue;
-          }
-          i = 1;
-          if ((i == 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.thumbFileKey)))
-          {
-            long l = localSmartDeviceProxyMgr.a(this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.thumbFileKey, this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo.coverkey2, 2154);
-            localDeviceMsgHandle.a.put(Long.valueOf(l), this.jdField_a_of_type_ComTencentDeviceMsgDataMessageForDevLittleVideo);
-          }
-          return;
-        }
-      }
-      int i = 0;
-    }
-  }
+  public abstract void a(boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract void c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qfe
  * JD-Core Version:    0.7.0.1
  */

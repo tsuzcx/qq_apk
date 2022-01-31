@@ -1,37 +1,44 @@
-import com.tencent.mobileqq.activity.DevlockPushActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.graphics.drawable.Drawable;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
 
 public class soa
-  implements Runnable
+  implements anhs
 {
-  public soa(DevlockPushActivity paramDevlockPushActivity) {}
+  public soa(StoryInputBarView paramStoryInputBarView) {}
   
-  public void run()
+  public void a(anht paramanht)
   {
-    try
-    {
-      if ((this.a.a == null) && (!this.a.isFinishing()))
-      {
-        this.a.a = new QQProgressDialog(this.a, this.a.getTitleBarHeight());
-        this.a.a.c(2131435086);
-      }
-      if ((this.a.a != null) && (!this.a.a.isShowing())) {
-        this.a.a.show();
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+    if (((paramanht instanceof anmf)) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)) {
+      ((anmf)paramanht).a(QQStoryContext.a(), this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, null);
     }
   }
+  
+  public void a(anht paramanht1, anht paramanht2, Drawable paramDrawable) {}
+  
+  public boolean a(anht paramanht)
+  {
+    return false;
+  }
+  
+  public void b()
+  {
+    if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx != null) {
+      axku.a(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx);
+    }
+  }
+  
+  public void b(anht paramanht) {}
+  
+  public void c() {}
+  
+  public void d() {}
+  
+  public void setting() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     soa
  * JD-Core Version:    0.7.0.1
  */

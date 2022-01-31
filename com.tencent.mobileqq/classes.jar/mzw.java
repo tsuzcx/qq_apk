@@ -1,31 +1,41 @@
-import android.net.Uri;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.EncryptUinInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public final class mzw
-  implements Runnable
+class mzw
+  extends mzx
 {
-  public mzw(Uri paramUri, int paramInt1, int paramInt2, String paramString) {}
+  mzw(mzv parammzv) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, List<EncryptUinInfo> paramList, Bundle paramBundle)
   {
-    for (;;)
+    if ((paramBoolean) && (paramList != null) && (!paramList.isEmpty()))
     {
-      try
-      {
-        String str = this.jdField_a_of_type_AndroidNetUri.getQueryParameter("article_id");
-        int i = this.jdField_a_of_type_Int;
-        if (this.jdField_a_of_type_Int == 0)
-        {
-          i = 100;
-          PublicAccountReportUtils.a(null, "dc00899", "Pb_account_lifeservice", "", "0X8006DF8", "0X8006DF8", this.b, 0, str, this.jdField_a_of_type_JavaLangString, "" + i, "", false);
-          PublicAccountReportUtils.a("0X8006DF8", "", str, this.jdField_a_of_type_JavaLangString, "" + i, "" + this.b);
-          return;
-        }
+      paramList = (EncryptUinInfo)paramList.get(0);
+      if ((paramList.jdField_a_of_type_Int != 0) || (paramList.jdField_a_of_type_Long != this.a.mApp.getLongAccountUin()) || (TextUtils.isEmpty(paramList.jdField_a_of_type_JavaLangString))) {
+        break label113;
       }
-      catch (Exception localException)
-      {
-        return;
+      mzv.a(this.a, paramList.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.d("EncryptUinHandler", 2, "onGetEncryptUin: " + mzv.a(this.a));
       }
+    }
+    label113:
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("EncryptUinHandler", 2, "onGetEncryptUin: failed，code=" + paramList.jdField_a_of_type_Int);
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    if (paramInt == 1)
+    {
+      super.onUpdate(paramInt, paramBoolean, paramObject);
+      this.a.mApp.removeObserver(mzv.a(this.a));
     }
   }
 }

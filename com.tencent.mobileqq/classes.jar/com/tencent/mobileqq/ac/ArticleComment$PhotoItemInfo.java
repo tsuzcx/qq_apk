@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ArticleComment$PhotoItemInfo
-  extends MessageMicro
+  extends MessageMicro<PhotoItemInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField content = PBField.initBytes(ByteStringMicro.EMPTY);

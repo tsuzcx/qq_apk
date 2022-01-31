@@ -1,50 +1,77 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.text.SpannableString;
-import android.text.style.AbsoluteSizeSpan;
-import android.text.style.ForegroundColorSpan;
-import android.text.style.StyleSpan;
-import android.widget.TextView;
-import com.tencent.mobileqq.armap.RedPackRainCloudView;
-import java.text.NumberFormat;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class abkb
-  implements ValueAnimator.AnimatorUpdateListener
+class abkb
+  implements View.OnClickListener
 {
-  public abkb(RedPackRainCloudView paramRedPackRainCloudView) {}
+  abkb(abjx paramabjx, amnn paramamnn, SharedPreferences paramSharedPreferences, String paramString) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    int j = String.valueOf(i).length();
-    if (j >= 8) {
-      RedPackRainCloudView.a(this.a).setTextSize(1, 19.0F);
+    Object localObject = this.jdField_a_of_type_Amnn.e;
+    paramView = this.jdField_a_of_type_Amnn.f;
+    if ((((String)localObject).equals("TMTWAPI")) || (((String)localObject).equals("WAPI")))
+    {
+      paramView = alzf.a(paramView, 0, null);
+      localObject = new Intent(this.jdField_a_of_type_Abjx.a, QQBrowserActivity.class);
+      ((Intent)localObject).putExtra("uin", this.jdField_a_of_type_Abjx.a.app.getCurrentAccountUin());
+      this.jdField_a_of_type_Abjx.a.startActivity(((Intent)localObject).putExtra("url", paramView));
     }
     for (;;)
     {
-      paramValueAnimator = NumberFormat.getNumberInstance();
-      paramValueAnimator = new SpannableString(paramValueAnimator.format(i) + "个");
-      ForegroundColorSpan localForegroundColorSpan = new ForegroundColorSpan(-10066330);
-      paramValueAnimator.setSpan(new AbsoluteSizeSpan(12, true), paramValueAnimator.length() - 1, paramValueAnimator.length(), 33);
-      paramValueAnimator.setSpan(localForegroundColorSpan, paramValueAnimator.length() - 1, paramValueAnimator.length(), 33);
-      paramValueAnimator.setSpan(new StyleSpan(1), 0, paramValueAnimator.length() - 1, 33);
-      RedPackRainCloudView.a(this.a).setText(paramValueAnimator);
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
+      this.jdField_a_of_type_Abjx.a.a.sendEmptyMessageDelayed(1010, 1000L);
       return;
-      if (j >= 7) {
-        RedPackRainCloudView.a(this.a).setTextSize(1, 21.0F);
-      } else if (j >= 6) {
-        RedPackRainCloudView.a(this.a).setTextSize(1, 23.0F);
-      } else if (j >= 5) {
-        RedPackRainCloudView.a(this.a).setTextSize(1, 25.0F);
-      } else {
-        RedPackRainCloudView.a(this.a).setTextSize(1, 27.0F);
+      if ((((String)localObject).equals("TMTWAP")) || (((String)localObject).equals("WAP")))
+      {
+        localObject = new Intent(this.jdField_a_of_type_Abjx.a, QQBrowserActivity.class);
+        ((Intent)localObject).putExtra("uin", this.jdField_a_of_type_Abjx.a.app.getCurrentAccountUin());
+        this.jdField_a_of_type_Abjx.a.startActivity(((Intent)localObject).putExtra("url", paramView));
+      }
+      else if (((String)localObject).equals("LOCAL"))
+      {
+        if ("CARD".equalsIgnoreCase(paramView))
+        {
+          paramView = this.jdField_a_of_type_Amnn.g.split(",")[0];
+          if (("".equals(paramView)) || (this.jdField_a_of_type_Abjx.a.app.getCurrentAccountUin().equals(paramView))) {}
+          for (paramView = new ProfileActivity.AllInOne(this.jdField_a_of_type_Abjx.a.app.getCurrentAccountUin(), 0);; paramView = new ProfileActivity.AllInOne(paramView, 19))
+          {
+            ProfileActivity.b(this.jdField_a_of_type_Abjx.a, paramView);
+            break;
+          }
+        }
+        if ("CHAT".equalsIgnoreCase(paramView))
+        {
+          paramView = this.jdField_a_of_type_Amnn.g.split(",")[0];
+          if (!"".equals(paramView)) {
+            if (((ajjj)this.jdField_a_of_type_Abjx.a.app.getManager(51)).b(paramView)) {
+              this.jdField_a_of_type_Abjx.a(paramView, 0, babh.i(this.jdField_a_of_type_Abjx.a.app, paramView));
+            } else {
+              this.jdField_a_of_type_Abjx.a(paramView, 1001, babh.i(this.jdField_a_of_type_Abjx.a.app, paramView));
+            }
+          }
+        }
+        else if ("NEARBY".equalsIgnoreCase(paramView))
+        {
+          this.jdField_a_of_type_Abjx.a.startActivity(new Intent(this.jdField_a_of_type_Abjx.a, NearbyActivity.class));
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abkb
  * JD-Core Version:    0.7.0.1
  */

@@ -6,6 +6,7 @@ public class DownloadInfo
   public String[] rpt_str_downloadip_list;
   public int rpt_str_downloadip_list_count;
   public String str_cookie;
+  public String str_download_dns;
   public String str_download_domain;
   public String str_download_ip;
   public String str_download_url;

@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public final class GetAllBgMusicListRsp
   extends JceStruct
 {
-  static ArrayList cache_all_music_list;
-  public ArrayList all_music_list;
+  static ArrayList<MusicInfo> cache_all_music_list;
+  public ArrayList<MusicInfo> all_music_list;
   public int all_music_nums;
   public byte green_diamond_flag;
   public boolean music_can_play = true;
@@ -18,7 +18,7 @@ public final class GetAllBgMusicListRsp
   
   public GetAllBgMusicListRsp() {}
   
-  public GetAllBgMusicListRsp(byte paramByte1, boolean paramBoolean, int paramInt, ArrayList paramArrayList, byte paramByte2, byte paramByte3)
+  public GetAllBgMusicListRsp(byte paramByte1, boolean paramBoolean, int paramInt, ArrayList<MusicInfo> paramArrayList, byte paramByte2, byte paramByte3)
   {
     this.green_diamond_flag = paramByte1;
     this.music_can_play = paramBoolean;

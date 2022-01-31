@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.URLInterceptManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
 
-public class akpl
-  implements Runnable
+public final class akpl
+  implements Parcelable.Creator<ARScanStarFaceConfigInfo>
 {
-  public akpl(URLInterceptManager paramURLInterceptManager, QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
+  public ARScanStarFaceConfigInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasURLInterceptManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    return new ARScanStarFaceConfigInfo(paramParcel);
+  }
+  
+  public ARScanStarFaceConfigInfo[] a(int paramInt)
+  {
+    return new ARScanStarFaceConfigInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akpl
  * JD-Core Version:    0.7.0.1
  */

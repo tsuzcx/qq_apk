@@ -9,10 +9,10 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class ilive_feeds_write$GetChangVideoAndResetRsp
-  extends MessageMicro
+  extends MessageMicro<GetChangVideoAndResetRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatMessageField chang = PBField.initRepeatMessage(ilive_feeds_tmem.Chang.class);
+  public final PBRepeatMessageField<ilive_feeds_tmem.Chang> chang = PBField.initRepeatMessage(ilive_feeds_tmem.Chang.class);
   public final PBBytesField errmsg = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBInt32Field ret = PBField.initInt32(0);
   
@@ -24,7 +24,7 @@ public final class ilive_feeds_write$GetChangVideoAndResetRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_write.GetChangVideoAndResetRsp
  * JD-Core Version:    0.7.0.1
  */

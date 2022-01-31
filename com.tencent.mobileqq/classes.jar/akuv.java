@@ -1,48 +1,27 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.scheduler.SwiftBrowserStateMachineScheduler.StateMachine;
-import com.tencent.qphone.base.util.QLog;
-
 public class akuv
-  implements SwiftBrowserStateMachineScheduler.StateMachine
 {
-  public akuv(WebViewFragment paramWebViewFragment) {}
-  
-  public int a(Bundle paramBundle)
+  public int a()
   {
-    int j = this.a.m;
-    int i = -1;
-    long l = System.currentTimeMillis();
-    switch (this.a.m)
-    {
-    }
-    for (;;)
-    {
-      QLog.i("WebLog_WebViewFragment", 1, "CreateLoop:step[" + j + "] -> step[" + this.a.m + "] cost" + (System.currentTimeMillis() - l) + " ms.");
-      return i;
-      i = this.a.f(paramBundle);
-      continue;
-      i = this.a.g(paramBundle);
-      continue;
-      i = this.a.h(paramBundle);
-      continue;
-      i = this.a.d(paramBundle);
-      continue;
-      i = this.a.i(paramBundle);
-      continue;
-      i = this.a.e(paramBundle);
-      continue;
-      i = this.a.c(paramBundle);
-      continue;
-      i = this.a.b(paramBundle);
-      continue;
-      i = this.a.a(paramBundle);
-    }
+    return 0;
+  }
+  
+  public void a() {}
+  
+  public void a(akuw paramakuw) {}
+  
+  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean)
+  {
+    return false;
+  }
+  
+  public boolean a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akuv
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.shortvideo.filter;
 
 public abstract interface QQSpecialAVFilter$MusicWaveformShaker
 {
-  public abstract void a(float paramFloat);
+  public abstract void setMusicScale(float paramFloat);
 }
 
 

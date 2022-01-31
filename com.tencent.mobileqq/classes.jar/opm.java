@@ -1,17 +1,15 @@
-import com.tencent.biz.qqstory.base.download.DownloaderImp;
-import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import java.util.ArrayList;
 
-public class opm
-  implements Runnable
+public abstract interface opm
 {
-  public opm(EditVideoMusicDialog paramEditVideoMusicDialog, String paramString1, String paramString2) {}
+  public abstract ArrayList<BaseArticleInfo> a(int paramInt);
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicEditVideoMusicDialog.a = new DownloaderImp();
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicEditVideoMusicDialog.a.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicEditVideoMusicDialog);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicEditVideoMusicDialog.a.a(this.jdField_a_of_type_JavaLangString, this.b, 0L);
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, opn paramopn);
+  
+  public abstract int[] a(int paramInt);
 }
 
 

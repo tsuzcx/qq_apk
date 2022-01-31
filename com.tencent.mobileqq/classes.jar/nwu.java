@@ -1,44 +1,61 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.network.handler.GetShareGroupInfoHandler.GetShareGroupInfoEvent;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.graphics.Color;
+import android.text.SpannableStringBuilder;
+import android.text.TextPaint;
+import android.text.style.ForegroundColorSpan;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
 
 public class nwu
-  extends QQUIEventReceiver
 {
-  public nwu(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
-  {
-    super(paramQQStoryShareGroupProfileActivity);
-  }
+  View jdField_a_of_type_AndroidViewView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  View b;
   
-  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull GetShareGroupInfoHandler.GetShareGroupInfoEvent paramGetShareGroupInfoEvent)
+  public View a(nwk paramnwk, int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramGetShareGroupInfoEvent.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    if ((paramGetShareGroupInfoEvent.errorInfo.isSuccess()) && (paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null))
+    View localView = paramView;
+    if (paramView == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "update sharegroup info: " + paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.toString());
+      localView = paramnwk.a().inflate(2131494276, paramViewGroup, false);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131312553));
+      if (this.jdField_a_of_type_AndroidWidgetTextView.getPaint() != null) {
+        this.jdField_a_of_type_AndroidWidgetTextView.getPaint().setFakeBoldText(true);
       }
-      QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
-      return;
+      this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131313341);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.b = localView.findViewById(2131313327);
+      this.b.setVisibility(0);
     }
-    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramGetShareGroupInfoEvent);
+    localView.setTag(this);
+    return localView;
   }
   
-  public Class acceptEventClass()
+  public void a(nwk paramnwk, int paramInt)
   {
-    return GetShareGroupInfoHandler.GetShareGroupInfoEvent.class;
+    if (paramnwk == null) {
+      return;
+    }
+    nwx localnwx = (nwx)paramnwk.getItem(paramInt);
+    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
+    String str = ajjy.a(2131646920);
+    if (localnwx.a != null) {}
+    for (paramnwk = String.valueOf(paramnwk.a().a(localnwx.a.commentId));; paramnwk = "")
+    {
+      localSpannableStringBuilder.append(str + " ");
+      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor("#262626")), 0, str.length(), 34);
+      localSpannableStringBuilder.append(paramnwk);
+      localSpannableStringBuilder.setSpan(new ForegroundColorSpan(Color.parseColor("#737373")), str.length(), localSpannableStringBuilder.length(), 34);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(localSpannableStringBuilder);
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nwu
  * JD-Core Version:    0.7.0.1
  */

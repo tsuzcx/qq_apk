@@ -1,55 +1,41 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask2;
+import android.content.Context;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.funchat.zimu.ZimuView;
+import com.tencent.av.ui.funchat.zimu.ZimuViewFilm;
+import com.tencent.av.ui.funchat.zimu.ZimuViewPacMan;
+import com.tencent.av.ui.funchat.zimu.ZimuViewRibon;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.manager.TicketManager;
-import org.json.JSONObject;
 
 public class mdk
-  implements Runnable
 {
-  public mdk(ReadInJoyWebDataManager paramReadInJoyWebDataManager, String paramString1, String paramString2, mdp parammdp, JSONObject paramJSONObject) {}
-  
-  public void run()
+  public static ZimuView a(long paramLong, VideoAppInterface paramVideoAppInterface, Context paramContext, String paramString)
   {
-    try
-    {
-      Object localObject3 = (QQAppInterface)ReadInJoyUtils.a();
-      if (localObject3 == null) {
-        return;
-      }
-      Object localObject1 = new Bundle();
-      TicketManager localTicketManager = (TicketManager)((QQAppInterface)localObject3).getManager(2);
-      Object localObject2 = ((QQAppInterface)localObject3).getAccount();
-      localObject3 = localTicketManager.getSkey(((QQAppInterface)localObject3).getCurrentAccountUin());
-      ((Bundle)localObject1).putString("Cookie", "uin=o" + (String)localObject2 + "; skey=" + (String)localObject3);
-      ((Bundle)localObject1).putString("User-Agent", ReadInJoyWebDataManager.d());
-      localObject2 = new HashMap();
-      ((HashMap)localObject2).put("BUNDLE", localObject1);
-      ((HashMap)localObject2).put("CONTEXT", BaseApplicationImpl.getApplication());
-      if (QLog.isColorLevel()) {
-        QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:url :" + this.jdField_a_of_type_JavaLangString);
-      }
-      localObject1 = new mdl(this);
-      new HttpWebCgiAsyncTask2(this.jdField_a_of_type_JavaLangString, "GET", (HttpWebCgiAsyncTask.Callback)localObject1, 0, null).execute(new HashMap[] { localObject2 });
-      return;
+    if (AudioHelper.e()) {
+      QLog.w("ZimuViewFactory", 1, "create, id[" + paramString + "], seq[" + paramLong + "]");
     }
-    catch (Exception localException)
+    if ("ribbon".equals(paramString)) {
+      paramVideoAppInterface = new ZimuViewRibon(paramLong, paramVideoAppInterface, paramContext, null);
+    }
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:request err " + localException);
+      if (paramVideoAppInterface != null) {
+        paramVideoAppInterface.b();
+      }
+      return paramVideoAppInterface;
+      if ("pacman".equals(paramString)) {
+        paramVideoAppInterface = new ZimuViewPacMan(paramLong, paramVideoAppInterface, paramContext, null);
+      } else if ("film".equals(paramString)) {
+        paramVideoAppInterface = new ZimuViewFilm(paramLong, paramVideoAppInterface, paramContext, null);
+      } else {
+        paramVideoAppInterface = null;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mdk
  * JD-Core Version:    0.7.0.1
  */

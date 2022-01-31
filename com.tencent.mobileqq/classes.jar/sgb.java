@@ -1,30 +1,25 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import java.lang.ref.WeakReference;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
-public class sgb
-  implements DialogInterface.OnCancelListener
+class sgb
+  extends SimpleJob<Object>
 {
-  private final WeakReference a;
-  
-  public sgb(ChatHistoryForC2C paramChatHistoryForC2C)
+  sgb(sga paramsga, String paramString, boolean paramBoolean)
   {
-    this.a = new WeakReference(paramChatHistoryForC2C);
+    super(paramString);
   }
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    paramDialogInterface = (ChatHistoryForC2C)this.a.get();
-    if ((paramDialogInterface != null) && (paramDialogInterface.a != null)) {
-      paramDialogInterface.a.dismiss();
-    }
+    this.jdField_a_of_type_Sga.b(this.jdField_a_of_type_Boolean);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sgb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,18 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troop.widget.ExpandableTextView.OnExpandStateListener;
-
 public class sha
-  implements ExpandableTextView.OnExpandStateListener
 {
-  public sha(ChatSettingForTroop paramChatSettingForTroop) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b = -1;
+  public String b;
+  public int c;
   
-  public void a(TextView paramTextView, View paramView, boolean paramBoolean)
-  {
-    paramView.setVisibility(8);
-  }
+  public void a() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sha
  * JD-Core Version:    0.7.0.1
  */

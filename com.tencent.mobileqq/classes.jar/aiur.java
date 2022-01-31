@@ -1,115 +1,54 @@
-import android.os.Bundle;
-import com.tencent.biz.webviewplugin.Share;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.mobileqq.transfile.TransferRequest.AppInfo;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.AndroidInfo;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.observer.BusinessObserver;
+import android.text.TextUtils;
 
-class aiur
-  implements BusinessObserver
+public class aiur
+  implements Comparable<aiur>
 {
-  aiur(aiuq paramaiuq) {}
+  public int a;
+  public long a;
+  public String a;
+  public short a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public short b;
+  public boolean b;
+  public int c;
+  public long c;
+  public String c;
+  public int d;
+  public long d;
+  public String d;
+  public int e = -1;
+  public long e;
+  public String e;
+  public int f;
+  public String f;
+  public int g = 0;
+  public String g;
+  public int h;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public int a(aiur paramaiur)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "GetAppInfoStep|isSuccess=" + paramBoolean + ",time=" + (System.currentTimeMillis() - ForwardSdkShareProcessor.b(this.a.b)));
-    }
-    i = -1;
-    paramInt = i;
-    if (paramBoolean) {}
-    for (;;)
+    if (paramaiur == null) {}
+    do
     {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        paramInt = i;
-        GetAppInfoProto.GetAppinfoResponse localGetAppinfoResponse;
-        if (paramBundle != null)
-        {
-          localGetAppinfoResponse = new GetAppInfoProto.GetAppinfoResponse();
-          localGetAppinfoResponse.mergeFrom(paramBundle);
-          paramInt = localGetAppinfoResponse.ret.get();
-        }
-        paramInt = i;
+      return -1;
+      if (this.jdField_a_of_type_Boolean == paramaiur.jdField_a_of_type_Boolean) {
+        return -(int)(this.c - paramaiur.c);
       }
-      catch (Exception paramBundle)
-      {
-        try
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("Q.share.ForwardSdkShareProcessor", 2, "GetAppInfoStep|ret=" + paramInt);
-          }
-          if (paramInt == 0)
-          {
-            ForwardSdkShareProcessor.a(this.a.b).d = Share.a(localGetAppinfoResponse.iconsURL, 16);
-            ForwardSdkShareProcessor.a(this.a.b).e = Share.a(localGetAppinfoResponse.iconsURL, 100);
-            if (localGetAppinfoResponse.androidInfo != null)
-            {
-              paramBundle = localGetAppinfoResponse.androidInfo;
-              if (paramBundle.packName.has()) {
-                ForwardSdkShareProcessor.a(this.a.b).jdField_a_of_type_JavaLangString = paramBundle.packName.get();
-              }
-              if (paramBundle.messagetail.has()) {
-                ForwardSdkShareProcessor.a(this.a.b).b = paramBundle.messagetail.get();
-              }
-              if ((paramBundle.sourceUrl.has()) && (ForwardSdkShareProcessor.a(this.a.b) != Long.parseLong("1103584836"))) {
-                ForwardSdkShareProcessor.a(this.a.b).c = paramBundle.sourceUrl.get();
-              }
-            }
-            ForwardSdkShareProcessor.a(this.a.b).jdField_a_of_type_Int = 1;
-            paramBundle = this.a.b.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.a.b.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.c, this.a.b.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Int, this.a.b.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Long);
-            if ((paramBundle != null) && ((paramBundle instanceof MessageForStructing)) && ((((MessageForStructing)paramBundle).structingMsg instanceof AbsShareMsg)))
-            {
-              paramBundle = (AbsShareMsg)((MessageForStructing)paramBundle).structingMsg;
-              paramBundle.mSource_A_ActionData = ForwardSdkShareProcessor.a(this.a.b).jdField_a_of_type_JavaLangString;
-              paramBundle.mSourceName = ForwardSdkShareProcessor.a(this.a.b).b;
-              paramBundle.mSourceIcon = ForwardSdkShareProcessor.a(this.a.b).d;
-              paramBundle.mSourceUrl = ForwardSdkShareProcessor.a(this.a.b).c;
-              paramBundle.shareData.appInfoStatus = 1;
-              this.a.b.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.b.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.c, this.a.b.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Int, this.a.b.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Long, paramBundle.getBytes());
-              this.a.b.d(1002);
-            }
-          }
-          if ((ForwardSdkShareProcessor.a(this.a.b).jdField_a_of_type_Int == 1) || (aiuq.a(this.a) >= 2) || (paramInt == 110507) || (paramInt == 110401)) {
-            break;
-          }
-          aiuq.b(this.a);
-          this.a.d();
-          return;
-        }
-        catch (Exception paramBundle)
-        {
-          for (;;)
-          {
-            i = paramInt;
-          }
-        }
-        paramBundle = paramBundle;
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.e("Q.share.ForwardSdkShareProcessor", 2, paramBundle, new Object[0]);
-        paramInt = i;
-      }
-    }
-    aiuq.a(this.a).set(true);
-    this.a.b();
+    } while (this.jdField_a_of_type_Boolean);
+    return 0;
+  }
+  
+  public boolean a(String paramString)
+  {
+    return (this.jdField_a_of_type_Long == this.b) || ((!TextUtils.isEmpty(paramString)) && (paramString.equals(String.valueOf(this.jdField_a_of_type_Long))));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiur
  * JD-Core Version:    0.7.0.1
  */

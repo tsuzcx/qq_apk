@@ -1,24 +1,40 @@
-import dov.com.qq.im.capture.paster.CaptureComboNormalPaster;
-import dov.com.qq.im.capture.util.DoodleLayoutConnector;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
+import com.tencent.qphone.base.util.QLog;
 
 public class anvf
-  implements Runnable
+  implements View.OnClickListener
 {
-  public anvf(CaptureComboNormalPaster paramCaptureComboNormalPaster, int paramInt) {}
+  public anvf(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    DoodleLayout localDoodleLayout = DoodleLayoutConnector.a().a(this.jdField_a_of_type_Int);
-    if (localDoodleLayout != null) {
-      CaptureComboNormalPaster.a(this.jdField_a_of_type_DovComQqImCapturePasterCaptureComboNormalPaster.a, CaptureComboNormalPaster.a(this.jdField_a_of_type_DovComQqImCapturePasterCaptureComboNormalPaster), ScreenUtil.jdField_a_of_type_Int, ScreenUtil.b, CaptureComboNormalPaster.a(this.jdField_a_of_type_DovComQqImCapturePasterCaptureComboNormalPaster), CaptureComboNormalPaster.b(this.jdField_a_of_type_DovComQqImCapturePasterCaptureComboNormalPaster), CaptureComboNormalPaster.c(this.jdField_a_of_type_DovComQqImCapturePasterCaptureComboNormalPaster), CaptureComboNormalPaster.a(this.jdField_a_of_type_DovComQqImCapturePasterCaptureComboNormalPaster), localDoodleLayout.a());
+    if (badq.d(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity))
+    {
+      long l = System.currentTimeMillis();
+      if ((l - this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.b < Face2FaceAddFriendActivity.jdField_a_of_type_Long) && (l > this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.b))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(Face2FaceAddFriendActivity.jdField_a_of_type_JavaLangString, 2, "click too offen,please try again later ");
+        }
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.b = l;
+      Face2FaceAddFriendActivity.b(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendDetailView.d();
+      awqx.b(null, "CliOper", "", "", "0X80050EF", "0X80050EF", 1, 0, "", "", "", "");
+      return;
     }
+    paramView = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getResources().getString(2131626684);
+    bbmy.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, 0, paramView, 0).b(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anvf
  * JD-Core Version:    0.7.0.1
  */

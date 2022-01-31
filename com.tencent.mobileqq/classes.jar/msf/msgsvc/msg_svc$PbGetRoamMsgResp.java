@@ -12,12 +12,12 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import msf.msgcomm.msg_comm.Msg;
 
 public final class msg_svc$PbGetRoamMsgResp
-  extends MessageMicro
+  extends MessageMicro<PbGetRoamMsgResp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField errmsg = PBField.initString("");
   public final PBUInt64Field last_msgtime = PBField.initUInt64(0L);
-  public final PBRepeatMessageField msg = PBField.initRepeatMessage(msg_comm.Msg.class);
+  public final PBRepeatMessageField<msg_comm.Msg> msg = PBField.initRepeatMessage(msg_comm.Msg.class);
   public final PBUInt64Field peer_uin = PBField.initUInt64(0L);
   public final PBUInt64Field random = PBField.initUInt64(0L);
   public final PBUInt32Field result = PBField.initUInt32(0);

@@ -1,27 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import org.json.JSONObject;
 
 public class wnh
-  implements View.OnClickListener
 {
-  public wnh(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
   
-  public void onClick(View paramView)
+  public wnh(JSONObject paramJSONObject)
   {
-    paramView = (InputMethodManager)this.a.getSystemService("input_method");
-    if ((paramView != null) && (paramView.isActive())) {
-      paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
+    if (paramJSONObject.has("title")) {
+      this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("title");
     }
-    this.a.setResult(1);
-    this.a.finish();
+    if (paramJSONObject.has("tabID")) {
+      this.jdField_a_of_type_Int = paramJSONObject.optInt("tabID");
+    }
+    if (paramJSONObject.has("icon")) {
+      this.jdField_b_of_type_JavaLangString = paramJSONObject.optString("icon");
+    }
+    if (paramJSONObject.has("jumpUrl")) {
+      this.jdField_c_of_type_JavaLangString = paramJSONObject.optString("jumpUrl");
+    }
+    if (paramJSONObject.has("width")) {
+      this.jdField_b_of_type_Int = paramJSONObject.optInt("width");
+    }
+    if (paramJSONObject.has("height")) {
+      this.jdField_c_of_type_Int = paramJSONObject.optInt("height");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wnh
  * JD-Core Version:    0.7.0.1
  */

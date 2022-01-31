@@ -1,29 +1,23 @@
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.ServerCheckCallback;
-import com.tencent.mobileqq.ark.ArkRecommendLogic;
-import com.tencent.mobileqq.data.RecommendCommonMessage;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class abey
-  implements ArkMessageServerLogic.ServerCheckCallback
+  extends BroadcastReceiver
 {
-  public abey(ArkRecommendLogic paramArkRecommendLogic, RecommendCommonMessage paramRecommendCommonMessage, WeakReference paramWeakReference) {}
+  public abey(NotificationActivity paramNotificationActivity) {}
   
-  public void a(ArrayList paramArrayList)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramArrayList != null) {
-      ArkRecommendLogic.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendLogic, paramArrayList, this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage, this.jdField_a_of_type_JavaLangRefWeakReference, 4);
+    if ((paramIntent.getAction().equals("com.tencent.mobileqq.closeNotification")) && (NotificationActivity.a(this.a) == 5)) {
+      this.a.finish();
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("ArkApp.ArkRecommendLogic", 2, "ContextItem is null.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abey
  * JD-Core Version:    0.7.0.1
  */

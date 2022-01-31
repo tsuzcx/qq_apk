@@ -1,29 +1,107 @@
-import android.app.Activity;
+import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.QQSettingSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
 
 public class abnh
-  implements View.OnClickListener
+  extends ajrv
 {
-  public abnh(ARGridMapViewDialog paramARGridMapViewDialog, long paramLong) {}
+  public abnh(QQSettingSettingActivity paramQQSettingSettingActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(Object paramObject)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog.jdField_a_of_type_AndroidAppActivity.isFinishing())
+    if (QLog.isColorLevel()) {
+      QLog.i("QQSetting2Activity", 2, String.format(Locale.getDefault(), "onGetPhoneUnityLocalData data: %s, create: %s, count: %s", new Object[] { paramObject, Boolean.valueOf(this.a.jdField_a_of_type_Boolean), Integer.valueOf(this.a.jdField_a_of_type_Int) }));
+    }
+    boolean bool1;
+    if (paramObject == null)
     {
-      paramView = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog.jdField_a_of_type_AndroidContentContext, 230, null, "当前地址有误我要去反馈", "取消", "去反馈", new abni(this), new abnj(this));
-      if (!this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-        paramView.show();
+      bool1 = true;
+      boolean bool2 = bool1;
+      if (!bool1)
+      {
+        bool2 = bool1;
+        if ((paramObject instanceof ajoe)) {
+          bool2 = ((ajoe)paramObject).b;
+        }
+      }
+      paramObject = this.a.findViewById(2131307483);
+      if (paramObject != null)
+      {
+        if (!bool2) {
+          break label190;
+        }
+        paramObject.setVisibility(0);
+        if (!this.a.jdField_a_of_type_Boolean) {
+          break label138;
+        }
+        this.a.a(true);
       }
     }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_Boolean = false;
+      return;
+      bool1 = false;
+      break;
+      label138:
+      if (this.a.jdField_a_of_type_Int == 0)
+      {
+        this.a.a(false);
+      }
+      else
+      {
+        paramObject = (ajof)this.a.app.getManager(102);
+        QQSettingSettingActivity.a(this.a, true, paramObject.a);
+        continue;
+        label190:
+        paramObject.setVisibility(8);
+      }
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, String paramString)
+  {
+    boolean bool = true;
+    if (this.a.isFinishing()) {}
+    do
+    {
+      return;
+      if (paramBoolean)
+      {
+        paramString = this.a;
+        if (paramInt == 1) {}
+        for (paramBoolean = bool;; paramBoolean = false)
+        {
+          QQSettingSettingActivity.a(paramString, paramBoolean);
+          return;
+        }
+      }
+    } while (!this.a.isResume());
+    paramString = this.a.getString(2131626567);
+    bbmy.a(this.a.getApplicationContext(), paramString, 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void a(boolean paramBoolean, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QQSetting2Activity", 2, "onGetPhoneUnityInfo isSuc: " + paramBoolean);
+    }
+    if (this.a.isFinishing()) {}
+    do
+    {
+      return;
+      QQSettingSettingActivity.a(this.a, paramBoolean, paramBundle);
+    } while (!this.a.isResume());
+    paramBundle = this.a;
+    paramBundle.jdField_a_of_type_Int -= 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abnh
  * JD-Core Version:    0.7.0.1
  */

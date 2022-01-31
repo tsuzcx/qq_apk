@@ -1,28 +1,62 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
-public final class sai
-  implements DialogInterface.OnClickListener
+public class sai
 {
-  public sai(QQAppInterface paramQQAppInterface, int paramInt) {}
+  private static final String a = "weishi" + "8.2.6".replaceAll("\\.", "");
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a(String paramString)
   {
-    paramDialogInterface.dismiss();
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (this.jdField_a_of_type_Int == 6) {}
-    for (paramInt = 1;; paramInt = 4)
-    {
-      ReportController.b(paramDialogInterface, "CliOper", "", "", "0X80063FA", "0X80063FA", paramInt, 0, "", "", "", "");
-      return;
-    }
+    b(a, 4, paramString);
+  }
+  
+  public static void a(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.i(paramString1, paramInt, paramString2);
+  }
+  
+  public static void a(String paramString1, String paramString2)
+  {
+    a(a + "-" + paramString1, 4, paramString2);
+  }
+  
+  public static void b(String paramString)
+  {
+    d(a, 1, paramString);
+  }
+  
+  public static void b(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.d(paramString1, paramInt, paramString2);
+  }
+  
+  public static void b(String paramString1, String paramString2)
+  {
+    b(a + "-" + paramString1, 4, paramString2);
+  }
+  
+  public static void c(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.w(paramString1, paramInt, paramString2);
+  }
+  
+  public static void c(String paramString1, String paramString2)
+  {
+    c(a + "-" + paramString1, 4, paramString2);
+  }
+  
+  public static void d(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.e(paramString1, paramInt, paramString2);
+  }
+  
+  public static void d(String paramString1, String paramString2)
+  {
+    d(a + "-" + paramString1, 1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sai
  * JD-Core Version:    0.7.0.1
  */

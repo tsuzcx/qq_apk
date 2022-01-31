@@ -1,5 +1,8 @@
 package com.tencent.mobileqq.activity;
 
+import aciy;
+import ajjy;
+import ajmp;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -8,8 +11,6 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.MessageRoamManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
 import java.util.BitSet;
@@ -46,7 +47,7 @@ public class TimeLineView
   
   public int a()
   {
-    return AIOUtils.b(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    return aciy.b(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
   }
   
   public BitSet a()
@@ -77,10 +78,10 @@ public class TimeLineView
   protected void dispatchDraw(Canvas paramCanvas)
   {
     super.dispatchDraw(paramCanvas);
-    int k = AIOUtils.b(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int m = AIOUtils.b(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int n = AIOUtils.b(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    int i1 = AIOUtils.b(7.5F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int k = aciy.b(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int m = aciy.b(2.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int n = aciy.b(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int i1 = aciy.b(7.5F, this.jdField_a_of_type_AndroidContentContext.getResources());
     int j = (this.jdField_b_of_type_Int >> 1) - (m >> 1);
     Paint localPaint1 = new Paint();
     Paint localPaint2 = new Paint();
@@ -103,24 +104,24 @@ public class TimeLineView
       i3 = localCalendar.get(5);
       localRect = new Rect();
       if ((1 != i3) && (i3 != 15)) {
-        break label416;
+        break label419;
       }
       localRect.left = j;
       localRect.top = (getHeight() - n);
       localRect.right = (localRect.left + m);
       localRect.bottom = getHeight();
       if (i3 != 1) {
-        break label386;
+        break label389;
       }
-      str = i2 + "月";
-      label284:
+      str = i2 + ajjy.a(2131649165);
+      label287:
       float f = localPaint2.measureText(str);
-      i2 = AIOUtils.b(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+      i2 = aciy.b(3.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       paramCanvas.drawText(str, m / 2 + j - f / 2.0F, (getHeight() >> 1) - i2, localPaint2);
-      label336:
+      label339:
       j += k + m;
       if (!this.jdField_a_of_type_JavaUtilBitSet.get(i)) {
-        break label460;
+        break label463;
       }
       localPaint1.setColor(-15158035);
     }
@@ -131,16 +132,16 @@ public class TimeLineView
       i += 1;
       break label151;
       break;
-      label386:
+      label389:
       str = i2 + "-" + i3;
-      break label284;
-      label416:
+      break label287;
+      label419:
       localRect.left = j;
       localRect.top = (getHeight() - i1);
       localRect.right = (localRect.left + m);
       localRect.bottom = getHeight();
-      break label336;
-      label460:
+      break label339;
+      label463:
       localPaint1.setColor(-3355444);
     }
   }
@@ -169,9 +170,9 @@ public class TimeLineView
       localStringBuilder.append(i).append("-").append(j + 1).append("-").append(k);
       localStringBuilder.append(", isLoc: ").append(paramBoolean);
     }
-    paramQQAppInterface = (MessageRoamManager)paramQQAppInterface.getManager(91);
+    paramQQAppInterface = (ajmp)paramQQAppInterface.getManager(92);
     if (!paramBoolean) {}
-    for (this.jdField_a_of_type_JavaUtilBitSet = paramQQAppInterface.b(this.jdField_a_of_type_JavaUtilCalendar, this.jdField_b_of_type_JavaUtilCalendar);; this.jdField_a_of_type_JavaUtilBitSet = paramQQAppInterface.a(paramCalendar1, paramCalendar2))
+    for (this.jdField_a_of_type_JavaUtilBitSet = paramQQAppInterface.c(this.jdField_a_of_type_JavaUtilCalendar, this.jdField_b_of_type_JavaUtilCalendar);; this.jdField_a_of_type_JavaUtilBitSet = paramQQAppInterface.a(paramCalendar1, paramCalendar2))
     {
       long l = paramCalendar1.getTimeInMillis();
       this.jdField_a_of_type_Int = ((int)((paramCalendar2.getTimeInMillis() - l) / 86400000L));
@@ -183,6 +184,7 @@ public class TimeLineView
         localStringBuilder.append(",displayWidth: ").append(this.jdField_b_of_type_Int);
         QLog.d("TimeLineView", 2, localStringBuilder.toString());
       }
+      requestLayout();
       invalidate();
       return;
     }

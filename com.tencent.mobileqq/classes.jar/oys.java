@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class oys
-  implements DialogInterface.OnDismissListener
+  implements ViewBase.IBuilder
 {
-  public oys(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public ViewBase build(VafContext paramVafContext)
   {
-    this.a.e = false;
+    return new oyr(paramVafContext);
   }
 }
 

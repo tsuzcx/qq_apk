@@ -1,43 +1,44 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
-import com.tencent.mobileqq.config.struct.LebaViewItem;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
-import com.tencent.mobileqq.widget.QQToast;
+import org.apache.http.Header;
+import org.apache.http.HeaderElement;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpResponseInterceptor;
+import org.apache.http.protocol.HttpContext;
 
-public class kpu
-  extends Handler
+class kpu
+  implements HttpResponseInterceptor
 {
-  public kpu(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
+  kpu(kpr paramkpr) {}
   
-  public void handleMessage(Message paramMessage)
+  public void process(HttpResponse paramHttpResponse, HttpContext paramHttpContext)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    switch (paramMessage.what)
+    paramHttpContext = paramHttpResponse.getEntity();
+    if (paramHttpContext == null) {}
+    for (;;)
     {
-    case -1: 
-    default: 
       return;
-    case 0: 
-      this.a.a.jdField_a_of_type_Byte = 0;
-      LebaSearchPluginManagerActivity.a(this.a);
-      localStringBuilder.append(this.a.getString(2131430539));
-      localStringBuilder.append(this.a.getString(2131430536));
-      localStringBuilder.append(this.a.a.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strResName);
-      QQToast.a(this.a, 2, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
-      return;
+      paramHttpContext = paramHttpContext.getContentEncoding();
+      if (paramHttpContext != null)
+      {
+        paramHttpContext = paramHttpContext.getElements();
+        int j = paramHttpContext.length;
+        int i = 0;
+        while (i < j)
+        {
+          if (paramHttpContext[i].getName().equalsIgnoreCase("gzip"))
+          {
+            paramHttpResponse.setEntity(new kpw(paramHttpResponse.getEntity()));
+            return;
+          }
+          i += 1;
+        }
+      }
     }
-    this.a.a.jdField_a_of_type_Byte = 1;
-    LebaSearchPluginManagerActivity.a(this.a);
-    localStringBuilder.append(this.a.getString(2131430539));
-    localStringBuilder.append(this.a.getString(2131430537));
-    localStringBuilder.append(this.a.a.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strResName);
-    QQToast.a(this.a, 2, localStringBuilder.toString(), 1).b(this.a.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     kpu
  * JD-Core Version:    0.7.0.1
  */

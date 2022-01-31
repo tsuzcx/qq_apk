@@ -8,14 +8,14 @@ import java.util.ArrayList;
 public final class batch_del_videos_rsp
   extends JceStruct
 {
-  static ArrayList cache_summarys;
+  static ArrayList<DelVideoSummary> cache_summarys;
   public String msg = "";
   public int ret;
-  public ArrayList summarys;
+  public ArrayList<DelVideoSummary> summarys;
   
   public batch_del_videos_rsp() {}
   
-  public batch_del_videos_rsp(int paramInt, String paramString, ArrayList paramArrayList)
+  public batch_del_videos_rsp(int paramInt, String paramString, ArrayList<DelVideoSummary> paramArrayList)
   {
     this.ret = paramInt;
     this.msg = paramString;

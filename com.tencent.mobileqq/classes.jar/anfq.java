@@ -1,17 +1,20 @@
-import java.io.File;
-import java.io.FileFilter;
+import com.tencent.mobileqq.data.EmoticonResp;
+import java.lang.ref.WeakReference;
 
-public final class anfq
-  implements FileFilter
+public class anfq
 {
-  public boolean accept(File paramFile)
+  WeakReference<ajhm> a;
+  
+  public anfq(anfj paramanfj, ajhm paramajhm)
   {
-    return paramFile.getName().endsWith(".cfg");
+    this.a = new WeakReference(paramajhm);
   }
+  
+  public void a(boolean paramBoolean, int paramInt, EmoticonResp paramEmoticonResp) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anfq
  * JD-Core Version:    0.7.0.1
  */

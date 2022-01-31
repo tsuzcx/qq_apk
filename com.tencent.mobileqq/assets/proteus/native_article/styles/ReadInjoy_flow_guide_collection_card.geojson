@@ -1,0 +1,47 @@
+
+{
+    "RIJ_fg_multi_cell": {
+        "view_type": "cell",
+       "direction": "vertical",
+        "height": {
+           "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "subviews": [
+            {
+                "view_type": "ProteusCollectionView",
+                "view_id": "id_proteus_collection_view",
+                "margin_top": "10",
+                "height": {
+                    "type": "relative",
+                    "value": "174"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "375"
+                },
+                "attributes": {
+                    "setCellArray:":"-1",
+                    "setScrollTypeString:":"1",
+                    "setAttatchInfo:":"-1",
+                    "setScrollIndicatorString:":"0",
+                    "setScrollBounceString:":"1",
+                    "setEdgeDragString:":"1",
+                    "setScrollJumpUrl:":"-1",
+                    "setScrollInsetLeft:right:top:bottom:":["9","12","0","0"],
+                    "setScrollPageWidthString:":"343"
+                }
+            },
+            {
+                "$includeComponet": "componet/flow_guide_button_white.geojson"
+            },
+            {
+                "$includeComponet": "componet/separator.geojson"
+            }
+        ]
+    }
+}
+

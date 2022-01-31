@@ -53,12 +53,12 @@ public abstract class QQAVImageColorFilter
   
   public void onDestroy()
   {
+    int i = 0;
     super.onDestroy();
     if (this.textureNum > 0) {
       try
       {
         GLES20.glDeleteTextures(1, this.sourceTextures, 0);
-        int i = 0;
         while (i < this.textureNum)
         {
           this.sourceTextures[i] = -1;
@@ -125,9 +125,9 @@ public abstract class QQAVImageColorFilter
   
   public void setRotation(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
+    paramInt = 0;
     FloatBuffer localFloatBuffer = ByteBuffer.allocateDirect(OpenGlUtils.CUBE8.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
     localFloatBuffer.put(OpenGlUtils.CUBE8).position(0);
-    paramInt = 0;
     while (paramInt < this.textureNum)
     {
       this.coordinatesBuffers[paramInt] = localFloatBuffer;
@@ -137,7 +137,7 @@ public abstract class QQAVImageColorFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.video.effect.core.qqavimage.QQAVImageColorFilter
  * JD-Core Version:    0.7.0.1
  */

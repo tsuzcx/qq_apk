@@ -1,44 +1,86 @@
-import com.tencent.ark.ArkDebugger.DebuggerCallback;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.support.v4.util.MQLruCache;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import mqq.util.WeakReference;
+import org.jetbrains.annotations.NotNull;
 
-class vvr
-  implements ArkDebugger.DebuggerCallback
+public class vvr
 {
-  vvr(vvq paramvvq) {}
-  
-  public void Accepted()
+  public static URLDrawable.URLDrawableOptions a(URLImageView paramURLImageView)
   {
-    ArkDispatchTask.getInstance().postToMainThread(new vvs(this));
-    QLog.d("ArkDebugChatPie", 1, "ArkDebugger Accepted");
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130841114);
+    if (paramURLImageView.getLayoutParams() != null)
+    {
+      localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
+      localURLDrawableOptions.mRequestHeight = paramURLImageView.getLayoutParams().height;
+    }
+    return localURLDrawableOptions;
   }
   
-  public boolean ReadyToRun(String paramString1, String paramString2, String paramString3)
+  public static void a()
   {
-    ArkAppCenter.a().postToMainThread(new vvw(this, paramString3, paramString2, paramString1));
-    QLog.d("ArkDebugChatPie", 1, String.format("ArkDebugger ReadyToRun viewId: %s, metaData: %s, mode: %s", new Object[] { paramString1, paramString2, paramString3 }));
-    return true;
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
+      BaseApplicationImpl.sImageCache.evict(0);
+      return;
+    }
+    BaseApplicationImpl.sImageCache.evictAll();
   }
   
-  public void ReceivedPackage(String paramString1, String paramString2)
+  public static void a(String paramString, URLImageView paramURLImageView)
   {
-    ArkDebugChatPie.a(this.a.a, paramString1);
-    ArkDebugChatPie.b(this.a.a, paramString2);
-    ArkDispatchTask.getInstance().postToMainThread(new vvv(this, paramString1, paramString2));
-    QLog.d("ArkDebugChatPie", 1, String.format("ArkDebugger ReceivedPackage appid: %s, appview: %s", new Object[] { paramString1, paramString2 }));
+    a(paramString, paramURLImageView, null, false);
   }
   
-  public void Stopped(int paramInt)
+  public static void a(String paramString, URLImageView paramURLImageView, URLDrawable.URLDrawableOptions paramURLDrawableOptions, boolean paramBoolean)
   {
-    ArkDispatchTask.getInstance().postToMainThread(new vvt(this, paramInt));
-    QLog.d("ArkDebugChatPie", 1, "ArkDebugger Stopped");
+    WeakReference localWeakReference = new WeakReference(paramURLImageView);
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = paramURLDrawableOptions;
+    if (paramURLDrawableOptions == null) {}
+    try
+    {
+      localURLDrawableOptions = b(paramURLImageView);
+      if (paramBoolean) {}
+      for (paramString = URLDrawable.getFileDrawable(paramString, localURLDrawableOptions); (paramString != null) && (localWeakReference.get() != null); paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions))
+      {
+        ((ImageView)localWeakReference.get()).setImageDrawable(paramString);
+        return;
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  @NotNull
+  private static URLDrawable.URLDrawableOptions b(URLImageView paramURLImageView)
+  {
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getApplication().getResources().getDrawable(2130845521);
+    if (paramURLImageView.getLayoutParams() != null)
+    {
+      localURLDrawableOptions.mRequestWidth = paramURLImageView.getLayoutParams().width;
+      localURLDrawableOptions.mRequestHeight = paramURLImageView.getLayoutParams().height;
+    }
+    return localURLDrawableOptions;
+  }
+  
+  public static void b(String paramString, URLImageView paramURLImageView)
+  {
+    a(paramString, paramURLImageView, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vvr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,11 @@
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
-
-class ajuu
-  implements Runnable
+public class ajuu
+  implements ajfe
 {
-  ajuu(ajus paramajus) {}
-  
-  public void run()
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a = 1;
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a(this.a.jdField_a_of_type_Boolean);
-  }
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajuu
  * JD-Core Version:    0.7.0.1
  */

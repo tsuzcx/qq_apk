@@ -1,23 +1,20 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.troop.utils.TroopAvatarManger;
-import com.tencent.mobileqq.troop.utils.UploadingTask;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.os.Bundle;
 
-public class ajvt
-  implements Runnable
+class ajvt
+  extends ajjh
 {
-  public ajvt(TroopAvatarManger paramTroopAvatarManger, AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, UploadingTask paramUploadingTask, Class paramClass, ArrayList paramArrayList, HashMap paramHashMap) {}
+  ajvt(ajvr paramajvr) {}
   
-  public void run()
+  protected void onAddFriendSecCheck(boolean paramBoolean, Bundle paramBundle) {}
+  
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAvatarManger.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "0", "0", this.jdField_a_of_type_JavaLangString, this.b, this.c);
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsUploadingTask.a(this.jdField_a_of_type_JavaLangClass, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaUtilHashMap, str);
+    ajvr.a(this.a, paramBoolean2, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajvt
  * JD-Core Version:    0.7.0.1
  */

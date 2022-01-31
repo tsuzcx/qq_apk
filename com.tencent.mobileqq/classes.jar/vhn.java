@@ -1,32 +1,80 @@
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
-import com.tencent.mobileqq.pic.PicResult;
-import com.tencent.mobileqq.pic.UiCallBack.DownAdapter;
+import android.media.MediaFormat;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class vhn
-  extends UiCallBack.DownAdapter
+  extends ajfb
 {
-  public vhn(PicItemBuilder paramPicItemBuilder, BaseChatItemLayout paramBaseChatItemLayout) {}
+  private MediaFormat jdField_a_of_type_AndroidMediaMediaFormat;
+  private ConcurrentHashMap<String, LocalMediaInfo> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public void a(int paramInt, PicResult paramPicResult)
+  public vhn(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setProgressVisable(false);
+    super(paramAppInterface);
+  }
+  
+  public MediaFormat a()
+  {
+    return this.jdField_a_of_type_AndroidMediaMediaFormat;
+  }
+  
+  public LocalMediaInfo a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      return (LocalMediaInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_AndroidMediaMediaFormat = null;
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
     if (QLog.isColorLevel()) {
-      QLog.d("PicItemBuilder", 2, "2g diy gif onDownload");
+      QLog.d("SlideShowProcessor", 2, "clearCatcheMediaInfo");
     }
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void a(MediaFormat paramMediaFormat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicItemBuilder", 2, "2g diy gif onUpdateProgress");
+    this.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaFormat;
+  }
+  
+  public void a(String paramString)
+  {
+    if (!TextUtils.isEmpty(paramString)) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
     }
   }
+  
+  public void a(String paramString, LocalMediaInfo paramLocalMediaInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SlideShowProcessor", 2, "setCatcheMediaInfo path : " + paramString);
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramLocalMediaInfo);
+  }
+  
+  public boolean a(String paramString)
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
+  }
+  
+  protected Class<? extends ajfe> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vhn
  * JD-Core Version:    0.7.0.1
  */

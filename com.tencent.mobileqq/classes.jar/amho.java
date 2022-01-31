@@ -1,72 +1,115 @@
-import android.util.SparseArray;
-import android.view.View;
-import com.tencent.widget.AbsSpinner;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.QStorageInstantiateException;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
 public class amho
+  extends alzl<amhn>
 {
-  private final SparseArray jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-  
-  public amho(AbsSpinner paramAbsSpinner) {}
-  
-  public View a(int paramInt)
+  public int a()
   {
-    View localView = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if (localView != null) {
-      this.jdField_a_of_type_AndroidUtilSparseArray.delete(paramInt);
-    }
-    return localView;
+    return 396;
   }
   
-  public void a()
+  @NonNull
+  public amhn a(int paramInt)
   {
-    SparseArray localSparseArray = this.jdField_a_of_type_AndroidUtilSparseArray;
-    int j = localSparseArray.size();
-    int i = 0;
-    while (i < j)
-    {
-      View localView = (View)localSparseArray.valueAt(i);
-      if (localView != null) {
-        AbsSpinner.a(this.jdField_a_of_type_ComTencentWidgetAbsSpinner, localView, true);
-      }
-      i += 1;
-    }
-    localSparseArray.clear();
+    QLog.i("QFileCommonConfigProcessor", 1, "migrateOldOrDefaultContent: type[" + paramInt + "]");
+    return new amhn();
   }
   
-  public void a(int paramInt, View paramView)
+  @Nullable
+  public amhn a(alzs[] paramArrayOfalzs)
   {
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramView);
+    QLog.i("QFileCommonConfigProcessor", 1, "onParsed");
+    if (paramArrayOfalzs != null) {
+      try
+      {
+        if (paramArrayOfalzs.length > 0)
+        {
+          paramArrayOfalzs = (amhn)amaf.a(paramArrayOfalzs[0].jdField_a_of_type_JavaLangString, amhn.class);
+          return paramArrayOfalzs;
+        }
+      }
+      catch (QStorageInstantiateException paramArrayOfalzs) {}
+    }
+    return null;
   }
   
-  public void b()
+  public Class<amhn> a()
   {
-    SparseArray localSparseArray = this.jdField_a_of_type_AndroidUtilSparseArray;
-    int j = localSparseArray.size();
-    int i = 0;
-    View localView;
-    if (i < j)
+    return amhn.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.i("QFileCommonConfigProcessor", 1, "onReqFailed: failCode[" + paramInt + "]");
+  }
+  
+  public void a(amhn paramamhn)
+  {
+    QLog.i("QFileCommonConfigProcessor", 1, "onUpdate");
+    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject1 instanceof QQAppInterface)) {}
+    for (localObject1 = (QQAppInterface)localObject1;; localObject1 = null)
     {
-      localView = (View)localSparseArray.valueAt(i);
-      if ((localView == null) || (!(localView.getTag(2131362522) instanceof Boolean))) {
-        break label94;
+      if (localObject1 != null)
+      {
+        Object localObject2 = ((QQAppInterface)localObject1).getApp().getSharedPreferences("file_config_" + ((QQAppInterface)localObject1).c(), 0).edit();
+        ((SharedPreferences.Editor)localObject2).putBoolean("https_c2c_up", paramamhn.jdField_a_of_type_Boolean);
+        ((SharedPreferences.Editor)localObject2).putBoolean("https_c2c_down", paramamhn.b);
+        ((SharedPreferences.Editor)localObject2).putBoolean("https_c2czip_down", paramamhn.c);
+        ((SharedPreferences.Editor)localObject2).putBoolean("https_c2c_thumb", paramamhn.d);
+        ((SharedPreferences.Editor)localObject2).putBoolean("https_disc_up", paramamhn.e);
+        ((SharedPreferences.Editor)localObject2).putBoolean("https_disc_down", paramamhn.f);
+        ((SharedPreferences.Editor)localObject2).putBoolean("https_disczip_down", paramamhn.g);
+        ((SharedPreferences.Editor)localObject2).putBoolean("https_disc_thumb", paramamhn.h);
+        ((SharedPreferences.Editor)localObject2).putBoolean("https_troop_up", paramamhn.i);
+        ((SharedPreferences.Editor)localObject2).putBoolean("https_troop_down", paramamhn.j);
+        ((SharedPreferences.Editor)localObject2).putBoolean("https_troopzip_down", paramamhn.k);
+        ((SharedPreferences.Editor)localObject2).putBoolean("https_troop_thumb", paramamhn.l);
+        ((SharedPreferences.Editor)localObject2).putBoolean("troop_video_preivew", paramamhn.m);
+        ((SharedPreferences.Editor)localObject2).putBoolean("troop_video_preivew_for_svip", paramamhn.n);
+        ((SharedPreferences.Editor)localObject2).putBoolean("troop_video_preivew_for_yearsvip", paramamhn.o);
+        ((SharedPreferences.Editor)localObject2).apply();
+        QLog.i("QFileCommonConfigProcessor", 1, "save download config." + paramamhn.jdField_a_of_type_JavaLangString);
+        localObject2 = new Bundle();
+        ((Bundle)localObject2).putBoolean("troop_video_preivew", paramamhn.m);
+        ((Bundle)localObject2).putBoolean("troop_video_preivew_for_svip", paramamhn.n);
+        ((Bundle)localObject2).putBoolean("troop_video_preivew_for_yearsvip", paramamhn.o);
+        paramamhn = (aofy)((QQAppInterface)localObject1).getManager(317);
+        if (paramamhn != null) {
+          paramamhn.a((Bundle)localObject2);
+        }
       }
-    }
-    label94:
-    for (boolean bool = ((Boolean)localView.getTag(2131362522)).booleanValue();; bool = true)
-    {
-      if ((localView != null) && (bool)) {
-        AbsSpinner.b(this.jdField_a_of_type_ComTencentWidgetAbsSpinner, localView, true);
-      }
-      i += 1;
-      break;
-      localSparseArray.clear();
       return;
     }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amho
  * JD-Core Version:    0.7.0.1
  */

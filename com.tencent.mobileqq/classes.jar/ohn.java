@@ -1,19 +1,8 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
+import android.os.Bundle;
 
-public final class ohn
-  implements Parcelable.Creator
+public abstract interface ohn
 {
-  public EditLocalPhotoSource a(Parcel paramParcel)
-  {
-    return new EditLocalPhotoSource(paramParcel);
-  }
-  
-  public EditLocalPhotoSource[] a(int paramInt)
-  {
-    return new EditLocalPhotoSource[paramInt];
-  }
+  public abstract int a(Bundle paramBundle);
 }
 
 

@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.ar.FaceScanDownloadManager.DownloadCallback;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 
-public final class aajq
-  implements Runnable
+public class aajq
+  implements DialogInterface.OnClickListener
 {
-  public aajq(FaceScanDownloadManager.DownloadCallback paramDownloadCallback, int paramInt, boolean paramBoolean) {}
+  public aajq(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArFaceScanDownloadManager$DownloadCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArFaceScanDownloadManager$DownloadCallback.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
+    if ((ChatSettingActivity.a(this.a) != null) && (ChatSettingActivity.a(this.a).isShowing())) {
+      ChatSettingActivity.a(this.a).dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aajq
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.IntentSender;
-import android.content.IntentSender.SendIntentException;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.content.res.Resources.Theme;
@@ -30,9 +28,7 @@ import android.os.Handler;
 import android.os.Looper;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 
 public class ApplicationDelegate
@@ -105,7 +101,6 @@ public class ApplicationDelegate
   }
   
   public void clearWallpaper()
-    throws IOException
   {
     if (this.mApplicationReal == null)
     {
@@ -116,7 +111,6 @@ public class ApplicationDelegate
   }
   
   public Context createPackageContext(String paramString, int paramInt)
-    throws PackageManager.NameNotFoundException
   {
     if (this.mApplicationReal == null) {
       return super.createPackageContext(paramString, paramInt);
@@ -453,7 +447,6 @@ public class ApplicationDelegate
   }
   
   public FileInputStream openFileInput(String paramString)
-    throws FileNotFoundException
   {
     if (this.mApplicationReal == null) {
       return super.openFileInput(paramString);
@@ -462,7 +455,6 @@ public class ApplicationDelegate
   }
   
   public FileOutputStream openFileOutput(String paramString, int paramInt)
-    throws FileNotFoundException
   {
     if (this.mApplicationReal == null) {
       return super.openFileOutput(paramString, paramInt);
@@ -627,7 +619,6 @@ public class ApplicationDelegate
   }
   
   public void setWallpaper(Bitmap paramBitmap)
-    throws IOException
   {
     if (this.mApplicationReal == null)
     {
@@ -638,7 +629,6 @@ public class ApplicationDelegate
   }
   
   public void setWallpaper(InputStream paramInputStream)
-    throws IOException
   {
     if (this.mApplicationReal == null)
     {
@@ -677,7 +667,6 @@ public class ApplicationDelegate
   }
   
   public void startIntentSender(IntentSender paramIntentSender, Intent paramIntent, int paramInt1, int paramInt2, int paramInt3)
-    throws IntentSender.SendIntentException
   {
     if (this.mApplicationReal == null)
     {

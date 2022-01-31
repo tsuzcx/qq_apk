@@ -1,40 +1,43 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.QZoneCover;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.profile.ProfileCardTemplate;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.widget.ARMapHongBaoListView;
 
-public class svi
-  implements Runnable
+class svi
+  extends RecyclerView.OnScrollListener
 {
-  public svi(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void run()
+  svi(svc paramsvc) {}
+  
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    Object localObject = ((FriendsManager)this.a.app.getManager(50)).a(this.a.app.getCurrentAccountUin());
-    if (localObject == null) {
-      this.a.j = "-1";
-    }
-    for (;;)
+    paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
+    if (paramInt == 0)
     {
-      this.a.j = "-1";
-      return;
-      if (((Card)localObject).lCurrentStyleId == ProfileCardTemplate.a)
-      {
-        localObject = (QZoneCover)this.a.app.getEntityManagerFactory().createEntityManager().a(QZoneCover.class, this.a.app.getCurrentAccountUin());
-        if (localObject != null) {
-          this.a.j = ((QZoneCover)localObject).type;
-        }
+      if ((paramRecyclerView.findLastCompletelyVisibleItemPosition() == paramRecyclerView.getItemCount() - 1) && (this.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_Svc.jdField_a_of_type_Suo.d();
       }
+      return;
+    }
+    svc.a(this.jdField_a_of_type_Svc);
+  }
+  
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    if (paramInt1 > 0) {}
+    for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
+    {
+      if (this.jdField_a_of_type_Svc.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.isDirty()) {
+        this.jdField_a_of_type_Svc.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.invalidate();
+      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     svi
  * JD-Core Version:    0.7.0.1
  */

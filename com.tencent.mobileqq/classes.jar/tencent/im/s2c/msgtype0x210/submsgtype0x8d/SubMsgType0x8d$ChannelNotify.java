@@ -9,12 +9,12 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0x8d$ChannelNotify
-  extends MessageMicro
+  extends MessageMicro<ChannelNotify>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_channel_name = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_wording = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField rpt_top_article_id_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> rpt_top_article_id_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBUInt64Field uint64_channel_id = PBField.initUInt64(0L);
   
   static

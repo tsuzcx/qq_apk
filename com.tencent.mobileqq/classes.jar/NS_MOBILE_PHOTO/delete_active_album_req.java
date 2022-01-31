@@ -9,8 +9,8 @@ import java.util.Map;
 public final class delete_active_album_req
   extends JceStruct
 {
-  static Map cache_map_params = new HashMap();
-  public Map map_params;
+  static Map<String, String> cache_map_params = new HashMap();
+  public Map<String, String> map_params;
   public String mgz_id = "";
   public long uin;
   
@@ -21,7 +21,7 @@ public final class delete_active_album_req
   
   public delete_active_album_req() {}
   
-  public delete_active_album_req(long paramLong, String paramString, Map paramMap)
+  public delete_active_album_req(long paramLong, String paramString, Map<String, String> paramMap)
   {
     this.uin = paramLong;
     this.mgz_id = paramString;

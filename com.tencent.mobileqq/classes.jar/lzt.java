@@ -1,40 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyActivityHelper;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class lzt
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public lzt(ComponentJump paramComponentJump, ArticleInfo paramArticleInfo) {}
+  public lzt(VideoInviteActivity paramVideoInviteActivity) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int i = 0;
-    ReadInJoyActivityHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoName, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoType, 1);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.hasChannelInfo()) {
-      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId;
+    String str = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "onReceive action = " + str);
     }
-    try
+    if ("tencent.video.q2v.ACTION_ON_UPDATE_FRIEND_INFO".equals(str)) {
+      this.a.h();
+    }
+    do
     {
-      paramView = new JSONObject();
-      paramView.put("feeds_channel_entrance", i);
-      PublicAccountReportUtils.a(null, "CliOper", "", "", "0X8006DF3", "0X8006DF3", 0, 0, "", "", "", paramView.toString(), false);
       return;
-    }
-    catch (JSONException paramView)
-    {
-      paramView.printStackTrace();
-    }
+      if ("tencent.video.q2v.sdk.onRequestVideo".equals(str))
+      {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "onReceive action = " + str);
+        this.a.e();
+        return;
+      }
+      if ("android.intent.action.USER_PRESENT".equals(str))
+      {
+        this.a.a("ACTION_USER_PRESENT");
+        return;
+      }
+    } while (this.a.jdField_a_of_type_Lzz == null);
+    this.a.jdField_a_of_type_Lzz.a(paramContext, str, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lzt
  * JD-Core Version:    0.7.0.1
  */

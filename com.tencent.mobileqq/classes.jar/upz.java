@@ -1,45 +1,44 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.HBCustomizeStrategy;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.aio.qwallet.elem.BaseRedPkgElem;
-import com.tencent.mobileqq.activity.aio.qwallet.elem.ThemeRedPkgElem;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.widget.StoryCoverView;
+import java.util.ArrayList;
 
-public class upz
-  implements CustomizeStrategyFactory.HBCustomizeStrategy
+class upz
+  extends ulp
 {
-  private PreloadManager jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  upz(upw paramupw, boolean paramBoolean) {}
   
-  public upz(QQAppInterface paramQQAppInterface)
+  public void a(int paramInt, View paramView, Object paramObject, unw paramunw)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(150));
+    if (paramView == paramunw.a()) {
+      upw.a(this.jdField_a_of_type_Upw, paramInt, (StoryVideoItem)upw.a(this.jdField_a_of_type_Upw).a().get(paramInt), paramView);
     }
-  }
-  
-  public void a() {}
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    if (paramRedPacketInfo == null) {
+    do
+    {
       return;
-    }
-    ThreadManager.post(new uqa(this, paramRedPacketInfo), 5, null, true);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, BaseRedPkgElem paramBaseRedPkgElem)
-  {
-    if ((paramRedPacketInfo != null) && ((paramBaseRedPkgElem instanceof ThemeRedPkgElem))) {
-      paramRedPacketInfo.background = ((ThemeRedPkgElem)paramBaseRedPkgElem).a;
-    }
+      if (paramView == paramunw.a(2131307605))
+      {
+        paramView = (StoryCoverView)paramunw.a(2131307604);
+        if (this.jdField_a_of_type_Boolean)
+        {
+          upw.a(this.jdField_a_of_type_Upw, paramInt, (StoryVideoItem)upw.a(this.jdField_a_of_type_Upw).a().get(paramInt), paramView);
+          return;
+        }
+        upw.b(this.jdField_a_of_type_Upw, paramInt, (StoryVideoItem)upw.a(this.jdField_a_of_type_Upw).a().get(paramInt), paramView);
+        return;
+      }
+      if ((paramView == paramunw.a(2131307660)) || (paramView == paramunw.a(2131307607)))
+      {
+        upw.a(this.jdField_a_of_type_Upw, paramInt, (StoryVideoItem)upw.a(this.jdField_a_of_type_Upw).a().get(paramInt));
+        return;
+      }
+    } while (paramView != paramunw.a(2131307656));
+    this.jdField_a_of_type_Upw.a(paramunw, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     upz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,70 @@
-import android.graphics.Rect;
-import android.view.TouchDelegate;
 import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyDailyXListView;
+import com.tencent.widget.ListView;
+import java.util.Iterator;
+import java.util.List;
 
-public final class qpv
-  implements Runnable
+public class qpv
+  implements qsb
 {
-  public qpv(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public qpv(ReadInJoyDailyXListView paramReadInJoyDailyXListView) {}
   
-  public void run()
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    Object localObject = new Rect();
-    this.jdField_a_of_type_AndroidViewView.setEnabled(true);
-    this.jdField_a_of_type_AndroidViewView.getHitRect((Rect)localObject);
-    ((Rect)localObject).top -= this.jdField_a_of_type_Int;
-    ((Rect)localObject).bottom += this.b;
-    ((Rect)localObject).left -= this.c;
-    ((Rect)localObject).right += this.d;
-    if (QLog.isColorLevel()) {
-      QLog.d("TouchDelegate", 2, " bounds.top=" + ((Rect)localObject).top + "bounds.bottom=" + ((Rect)localObject).bottom);
+    Iterator localIterator = this.a.a.iterator();
+    while (localIterator.hasNext()) {
+      ((belq)localIterator.next()).a(paramInt, paramView, paramListView);
     }
-    localObject = new TouchDelegate((Rect)localObject, this.jdField_a_of_type_AndroidViewView);
-    if (View.class.isInstance(this.jdField_a_of_type_AndroidViewView.getParent())) {
-      ((View)this.jdField_a_of_type_AndroidViewView.getParent()).setTouchDelegate((TouchDelegate)localObject);
+  }
+  
+  public void a(int paramInt1, View paramView, ListView paramListView, int paramInt2)
+  {
+    this.a.a(paramInt1, paramView, paramListView, paramInt2);
+  }
+  
+  public void a(View paramView, ListView paramListView, int paramInt)
+  {
+    this.a.a(paramView, paramListView, paramInt);
+  }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    Iterator localIterator = this.a.a.iterator();
+    boolean bool = false;
+    if (localIterator.hasNext())
+    {
+      if (!((belq)localIterator.next()).a(paramInt, paramView, paramListView)) {
+        break label57;
+      }
+      bool = true;
+    }
+    label57:
+    for (;;)
+    {
+      break;
+      return bool;
+    }
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    Iterator localIterator = this.a.a.iterator();
+    while (localIterator.hasNext()) {
+      ((belq)localIterator.next()).b(paramInt, paramView, paramListView);
+    }
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView)
+  {
+    Iterator localIterator = this.a.a.iterator();
+    while (localIterator.hasNext()) {
+      ((belq)localIterator.next()).c(paramInt, paramView, paramListView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qpv
  * JD-Core Version:    0.7.0.1
  */

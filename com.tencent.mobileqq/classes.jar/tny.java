@@ -1,26 +1,39 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.Comparator;
+import android.support.annotation.NonNull;
+import android.util.SparseArray;
+import java.util.LinkedList;
 
 public class tny
-  implements Comparator
 {
-  public tny(QQLSActivity paramQQLSActivity) {}
+  private final SparseArray<LinkedList<Object>> a = new SparseArray();
   
-  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
+  public <CLASS> CLASS a(@NonNull Class<CLASS> paramClass)
   {
-    if (paramChatMessage1.shmsgseq == paramChatMessage2.shmsgseq) {
-      return 0;
+    paramClass = (LinkedList)this.a.get(paramClass.hashCode());
+    if (paramClass != null)
+    {
+      paramClass = paramClass.poll();
+      if (paramClass != null) {}
+      return paramClass;
     }
-    if (paramChatMessage1.shmsgseq > paramChatMessage2.shmsgseq) {
-      return 1;
+    return null;
+  }
+  
+  public void a(@NonNull Object paramObject)
+  {
+    int i = paramObject.getClass().hashCode();
+    LinkedList localLinkedList2 = (LinkedList)this.a.get(i);
+    LinkedList localLinkedList1 = localLinkedList2;
+    if (localLinkedList2 == null)
+    {
+      localLinkedList1 = new LinkedList();
+      this.a.put(i, localLinkedList1);
     }
-    return -1;
+    localLinkedList1.offer(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tny
  * JD-Core Version:    0.7.0.1
  */

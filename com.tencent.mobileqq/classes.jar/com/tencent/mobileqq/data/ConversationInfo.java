@@ -1,15 +1,21 @@
 package com.tencent.mobileqq.data;
 
+import ajjj;
 import android.text.TextUtils;
+import atmo;
+import atnz;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 @uniqueConstraints(clause=ConflictClause.FAIL, columnNames="uin,type")
 public class ConversationInfo
-  extends Entity
+  extends atmo
 {
+  @atnz
+  public static boolean publicaccountTypeErrorReported = false;
   private static final String tableName = "conversation_info";
   public byte[] extData;
   public int extInt1;
@@ -30,6 +36,7 @@ public class ConversationInfo
   {
     this.uin = paramString;
     this.type = paramInt;
+    reportPublicaccoutTypeError(paramString, paramInt);
   }
   
   public ConversationInfo(String paramString, int paramInt1, long paramLong, int paramInt2)
@@ -38,11 +45,34 @@ public class ConversationInfo
     this.type = paramInt1;
     this.lastread = paramLong;
     this.unreadCount = paramInt2;
+    reportPublicaccoutTypeError(paramString, paramInt1);
   }
   
   public static String getConversationInfoTableName()
   {
     return "conversation_info";
+  }
+  
+  public static boolean reportPublicaccoutTypeError(String paramString, int paramInt)
+  {
+    if ((paramInt == 1008) && (!publicaccountTypeErrorReported))
+    {
+      Object localObject = BaseApplicationImpl.getApplication();
+      if (localObject != null)
+      {
+        localObject = ((BaseApplicationImpl)localObject).getRuntime();
+        if (localObject != null)
+        {
+          paramString = ((ajjj)((AppRuntime)localObject).getManager(51)).c(paramString);
+          if ((paramString != null) && (paramString.isFriend()))
+          {
+            publicaccountTypeErrorReported = true;
+            return true;
+          }
+        }
+      }
+    }
+    return false;
   }
   
   public String getTableName()

@@ -1,0 +1,168 @@
+{
+    "ReadInJoy_live_video_cell": {
+        "view_id": "id_live_video_container",
+        "view_type": "UIView",
+        "layout_type": "layout_linear",
+        "direction": "vertical",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "default_visible": "YES",
+        "event_type": "cmd_url_click_card_report",
+        "attributes": {
+            "setAttatchInfo:": "$url"
+        },
+        "data_attributes": {
+            "setLocalInfo:": {
+                "feeds_type": "2004"
+            },
+            "setRemoteInfo:": "$jump_report_info"
+        },
+        "subviews": [
+            {
+                "$includeComponet": "componet/live_info_with_avatar_cell.geojson"
+            },
+            {
+                "view_id": "id_common_topic_video_container",
+                "view_type": "UIView",
+                "layout_type": "layout_relative",
+                "height": {
+                    "type": "relative",
+                    "value": "203"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "363"
+                },
+                "margin_top": "8",
+                "margin_bottom": "8",
+                "default_visible": "YES",
+                "align_parent_center_horizontal": "YES",
+                "event_type": "cmd_url_click_card_report",
+                "attributes": {
+                    "setAttatchInfo:": "$video_jump_url"
+                },
+                "data_attributes": {
+                    "setLocalInfo:": {
+                        "feeds_type": "2004"
+                    },
+                    "setRemoteInfo:": "$video_jump_report_info"
+                },
+                "subviews": [
+                    {
+                        "view_id": "id_video_bg",
+                        "view_type": "UIView",
+                        "height": {
+                            "type": "match_parent"
+                        },
+                        "width": {
+                            "type": "match_parent"
+                        },
+                        "default_visible": "YES",
+                        "attributes": {
+                            "setBackgroundColorString:": "#e5e5e5"
+                        }
+                    },
+                    {
+                        "view_id": "id_video_cover",
+                        "view_type": "ReadInjoyAsynImageView",
+                        "height": {
+                            "type": "match_parent"
+                        },
+                        "width": {
+                            "type": "match_parent"
+                        },
+                        "attributes": {
+                            "setImageWithURLString:lineup:": [
+                                "$article_large_imge_url",
+                                "1"
+                            ]
+                        }
+                    },
+                    {
+                        "view_id": "id_video_shadow",
+                        "view_type": "UIView",
+                        "height": {
+                            "type": "match_parent"
+                        },
+                        "width": {
+                            "type": "match_parent"
+                        },
+                        "default_visible": "YES",
+                        "attributes": {
+                            "setGradientWithStartAlpha:endAlpha:color:direction:": [
+                                "0.3",
+                                "0.3",
+                                "#000000",
+                                "1"
+                            ]
+                        }
+                    },
+                    {
+                        "view_id": "id_video_live_style_cell",
+                        "view_type": "UIView",
+                        "height": {
+                            "type": "relative",
+                            "value": "19"
+                        },
+                        "width": {
+                            "type": "wrap_content"
+                        },
+                        "default_visible": "YES",
+                        "margin_top": "8",
+                        "margin_left": "8",
+                        "subviews": [
+                            {
+                                "$includeComponet": "componet/live_status_cell.geojson"
+                            }
+                        ]
+                    },
+                    {
+                        "view_id": "id_play_icon",
+                        "view_type": "UIImageView",
+                        "align_parent_center": "YES",
+                        "default_visible": "YES",
+                        "height": {
+                            "type": "relative",
+                            "value": "50"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "50"
+                        },
+                        "attributes": {
+                            "loadImageWithPath:": "$play_icon_url"
+                        }
+                    },
+                    {
+                        "view_id": "id_video_user_info_container",
+                        "view_type": "UIView",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "match_parent"
+                        },
+                        "default_visible": "YES",
+                        "align_parent_bottom": "YES",
+                        "subviews": [
+                            {
+                                "$includeComponet": "componet/live_info_video_common_cell.geojson"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "$includeComponet": "componet/live_info_bottom_common_cell.geojson"
+            },
+            {
+                "$includeComponet": "componet/separator.geojson"
+            }
+        ]
+    }
+}

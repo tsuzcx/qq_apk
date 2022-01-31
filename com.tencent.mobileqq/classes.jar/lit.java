@@ -1,38 +1,60 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import com.tencent.av.random.RandomWebProtocol;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import org.json.JSONObject;
 
 public class lit
-  implements Runnable
+  extends lip
 {
-  public lit(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity, ArrayList paramArrayList) {}
-  
-  public void run()
+  public lit(RandomWebProtocol paramRandomWebProtocol, int paramInt1, long paramLong, int paramInt2, String paramString)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuReadInJoyDeliverBiuActivity.app.getCurrentAccountUin();
-    localObject = BaseApplicationImpl.getContext().getSharedPreferences("sp_public_account_with_cuin_" + (String)localObject, 4);
-    if (localObject != null)
+    super(paramRandomWebProtocol);
+    boolean bool = RandomWebProtocol.b();
+    paramRandomWebProtocol = new JSONObject();
+    try
     {
-      HashSet localHashSet = new HashSet();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        localHashSet.add(String.valueOf((Long)localIterator.next()));
+      paramRandomWebProtocol.put("session_type", paramInt1).put("groupid", paramLong);
+      if (4 == paramInt2) {
+        paramRandomWebProtocol.put("peer_enuin", ChatActivityUtils.b(RandomWebProtocol.a(), paramString));
       }
-      ((SharedPreferences)localObject).edit().putStringSet("readinjoy_deliver_biu_guide_uin", localHashSet);
-      ((SharedPreferences)localObject).edit().commit();
+    }
+    catch (Exception paramString)
+    {
+      do
+      {
+        for (;;)
+        {
+          paramString.printStackTrace();
+          continue;
+          paramRandomWebProtocol = "https://play.mobile.qq.com/randchat/cgi-bin/chatplay/getroomowner";
+        }
+      } while (paramInt2 != 4);
+      if (!bool) {
+        break label139;
+      }
+    }
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_OrgJsonJSONObject = paramRandomWebProtocol;
+    this.jdField_a_of_type_Boolean = bool;
+    if (paramInt2 == 5) {
+      if (bool)
+      {
+        paramRandomWebProtocol = "https://play.mobile.qq.com/randchat_test/cgi-bin/chatplay/getroomowner";
+        this.c = paramRandomWebProtocol;
+        this.d = "[m] RequestMultiRoomOwner";
+        return;
+      }
+    }
+    label139:
+    for (paramRandomWebProtocol = "https://play.mobile.qq.com/randchat_test/cgi-bin/chatplay/multichatkick";; paramRandomWebProtocol = "https://play.mobile.qq.com/randchat/cgi-bin/chatplay/multichatkick")
+    {
+      this.c = paramRandomWebProtocol;
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lit
  * JD-Core Version:    0.7.0.1
  */

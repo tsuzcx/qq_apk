@@ -10,7 +10,7 @@ public final class RespHYCommonCard
 {
   static CommonCard cache_stCommonCard;
   static RespHead cache_stHeader;
-  static ArrayList cache_vFaceInfo;
+  static ArrayList<FaceInfo> cache_vFaceInfo;
   static byte[] cache_vQQFaceID;
   public byte bFavorited;
   public byte bQzoneInfo;
@@ -21,12 +21,12 @@ public final class RespHYCommonCard
   public CommonCard stCommonCard;
   public RespHead stHeader;
   public String strReMark = "";
-  public ArrayList vFaceInfo;
+  public ArrayList<FaceInfo> vFaceInfo;
   public byte[] vQQFaceID;
   
   public RespHYCommonCard() {}
   
-  public RespHYCommonCard(RespHead paramRespHead, CommonCard paramCommonCard, String paramString, byte paramByte1, byte paramByte2, ArrayList paramArrayList, byte paramByte3, byte paramByte4, byte paramByte5, byte[] paramArrayOfByte, byte paramByte6)
+  public RespHYCommonCard(RespHead paramRespHead, CommonCard paramCommonCard, String paramString, byte paramByte1, byte paramByte2, ArrayList<FaceInfo> paramArrayList, byte paramByte3, byte paramByte4, byte paramByte5, byte[] paramArrayOfByte, byte paramByte6)
   {
     this.stHeader = paramRespHead;
     this.stCommonCard = paramCommonCard;

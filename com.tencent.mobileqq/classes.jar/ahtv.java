@@ -1,74 +1,64 @@
-import android.graphics.drawable.ColorDrawable;
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.GridView;
-import com.tencent.mobileqq.richstatus.ActionListActivity;
-import com.tencent.mobileqq.richstatus.StateTag;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.2.1;
+import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.2.2;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahtv
-  extends PagerAdapter
+  implements ahtw
 {
-  private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  ahtv(ahtt paramahtt) {}
   
-  private ahtv(ActionListActivity paramActionListActivity) {}
-  
-  public void a()
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    try
+    if (ahtt.a(this.a) != null) {
+      ahtt.a(this.a).a(paramInt);
+    }
+  }
+  
+  public void a(int paramInt, String paramString1, PublishVideoEntry paramPublishVideoEntry, String paramString2, long paramLong)
+  {
+    if ((paramInt == 0) && (paramPublishVideoEntry != null) && (paramString2 != null)) {
+      ahtt.a(this.a).a(paramPublishVideoEntry, paramString2);
+    }
+    for (;;)
     {
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        StateTag localStateTag = (StateTag)localIterator.next();
-        GridView localGridView = new GridView(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getApplicationContext());
-        localGridView.setNumColumns(3);
-        localGridView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-        localGridView.setSelector(new ColorDrawable(0));
-        localGridView.setScrollingCacheEnabled(false);
-        localGridView.setAdapter(new ahtu(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity, localStateTag.jdField_a_of_type_JavaUtilArrayList));
-        this.jdField_a_of_type_JavaUtilArrayList.add(localGridView);
+      ThreadManager.excute(new EncodeVideoTask.2.2(this, paramInt, paramPublishVideoEntry, paramLong), 64, null, true);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("EncodeVideoTask", 2, new Object[] { "composite error, fakeVid:", ahtt.e(this.a), ", errorCode:", Integer.valueOf(paramInt), ", errorMsg:", paramString1 });
       }
+      ahtt.a(this.a).a(paramInt);
+    }
+  }
+  
+  public void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("EncodeVideoTask", 2, "generate files|onNext file: " + paramString);
+    }
+    if (ahtt.b(this.a))
+    {
+      b(paramPublishVideoEntry, paramString);
       return;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    if ((paramPublishVideoEntry != null) && (!TextUtils.isEmpty(paramPublishVideoEntry.doodlePath)) && (bace.b(paramPublishVideoEntry.doodlePath)))
     {
-      System.gc();
-      super.notifyDataSetChanged();
+      ahtt.a(paramString, paramPublishVideoEntry, ahtt.a(this.a));
+      return;
     }
+    b(paramPublishVideoEntry, paramString);
   }
   
-  public void destroyItem(View paramView, int paramInt, Object paramObject) {}
-  
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  public void b(PublishVideoEntry paramPublishVideoEntry, String paramString)
   {
-    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    GridView localGridView = (GridView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    paramViewGroup.addView(localGridView);
-    return localGridView;
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
+    ThreadManager.excute(new EncodeVideoTask.2.1(this, paramString, paramPublishVideoEntry), 64, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahtv
  * JD-Core Version:    0.7.0.1
  */

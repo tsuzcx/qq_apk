@@ -1,23 +1,17 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.qwallet.QWalletPrivacyFragment;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools.TextUrlClickListener;
+import android.app.Activity;
+import com.tencent.widget.AdapterView;
 
-public class xgh
-  implements QWalletTools.TextUrlClickListener
+public abstract class xgh
 {
-  public xgh(QWalletPrivacyFragment paramQWalletPrivacyFragment) {}
+  public abstract void a(int paramInt);
   
-  public void a(String paramString)
-  {
-    Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-    localIntent.putExtra("url", paramString);
-    this.a.startActivity(localIntent);
-  }
+  public abstract void a(Activity paramActivity, xgi paramxgi, int paramInt);
+  
+  public abstract void a(AdapterView paramAdapterView, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     xgh
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class sysmsg_push$ForwardBody
-  extends MessageMicro
+  extends MessageMicro<ForwardBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 162 }, new String[] { "uint32_notify_type", "uint32_op_type", "msg_appointment_not" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), null }, ForwardBody.class);
   public sysmsg_push.AppointmentNot msg_appointment_not = new sysmsg_push.AppointmentNot();
@@ -15,7 +15,7 @@ public final class sysmsg_push$ForwardBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.profile.forward.sysmsg_push.ForwardBody
  * JD-Core Version:    0.7.0.1
  */

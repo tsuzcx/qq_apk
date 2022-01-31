@@ -1,24 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.ark.open.ArkAppInfo.AppDownloadInfo;
 
 public class aldy
-  implements DialogInterface.OnKeyListener
 {
-  public aldy(QQProgressDialog paramQQProgressDialog, boolean paramBoolean) {}
-  
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
-  {
-    if ((paramInt == 84) || (paramInt == 4)) {
-      return this.jdField_a_of_type_Boolean;
-    }
-    return false;
-  }
+  public int a;
+  public ArkAppInfo.AppDownloadInfo a;
+  public String a;
+  public int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aldy
  * JD-Core Version:    0.7.0.1
  */

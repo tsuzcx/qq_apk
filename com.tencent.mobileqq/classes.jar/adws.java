@@ -1,27 +1,22 @@
-import android.widget.ImageView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
-import com.tencent.mobileqq.freshnews.QQInputView;
-import com.tencent.util.InputMethodUtil;
+import android.app.Activity;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class adws
-  implements Runnable
+class adws
+  implements EIPCResultCallback
 {
-  public adws(QQInputView paramQQInputView) {}
+  adws(adwr paramadwr) {}
   
-  public void run()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    QQInputView.a(this.a).setVisibility(8);
-    QQInputView.a(this.a).setImageResource(2130844609);
-    if (AppSetting.b) {
-      QQInputView.a(this.a).setContentDescription("键盘");
+    if (-102 == paramEIPCResult.code) {
+      advv.n(this.a.a).finish();
     }
-    InputMethodUtil.a(QQInputView.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adws
  * JD-Core Version:    0.7.0.1
  */

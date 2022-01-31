@@ -8,10 +8,10 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SummaryCardBusiEntry$ui_info
-  extends MessageMicro
+  extends MessageMicro<ui_info>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 64 }, new String[] { "strTitle", "strCoverUrl", "strJmpUrl", "strSubInfo", "strDesc", "strTitleIconUrl", "rptGroupTagList", "uint64_group_code" }, new Object[] { "", "", "", "", "", "", null, Long.valueOf(0L) }, ui_info.class);
-  public final PBRepeatMessageField rptGroupTagList = PBField.initRepeatMessage(SummaryCardBusiEntry.Label.class);
+  public final PBRepeatMessageField<SummaryCardBusiEntry.Label> rptGroupTagList = PBField.initRepeatMessage(SummaryCardBusiEntry.Label.class);
   public final PBStringField strCoverUrl = PBField.initString("");
   public final PBStringField strDesc = PBField.initString("");
   public final PBStringField strJmpUrl = PBField.initString("");
@@ -22,7 +22,7 @@ public final class SummaryCardBusiEntry$ui_info
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.profilecard.SummaryCardBusiEntry.ui_info
  * JD-Core Version:    0.7.0.1
  */

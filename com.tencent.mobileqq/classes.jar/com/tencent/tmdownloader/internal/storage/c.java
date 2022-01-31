@@ -4,7 +4,7 @@ import android.text.TextUtils;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.tmassistant.common.ProtocolPackage;
 import com.tencent.tmassistantbase.util.Settings;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ac;
 import java.util.Map;
 
 class c
@@ -22,22 +22,22 @@ class c
         {
           b.a(this.d).put(this.a, localJceStruct);
           Settings.getInstance().setBlob(this.a, this.b);
-          r.c("JceCacheManager", "<save> " + this.a + " success!");
+          ac.c("JceCacheManager", "<save> " + this.a + " success!");
           return;
         }
-        r.c("JceCacheManager", "<save> value of " + this.a + " is null !");
+        ac.c("JceCacheManager", "<save> value of " + this.a + " is null !");
         return;
       }
       catch (Exception localException)
       {
-        r.e("JceCacheManager", "<save> type cast error!");
+        ac.e("JceCacheManager", "<save> type cast error!");
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.storage.c
  * JD-Core Version:    0.7.0.1
  */

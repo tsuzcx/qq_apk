@@ -1,71 +1,89 @@
 package com.tencent.gdtad.views.canvas.components;
 
 import android.content.Context;
+import android.text.TextUtils;
+import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.statistics.GdtTimeStatistics;
-import com.tencent.gdtad.views.GdtViewStatus;
-import com.tencent.gdtad.views.GdtViewStatus.Listener;
 import com.tencent.gdtad.views.canvas.GdtCanvasData;
-import com.tencent.gdtad.views.canvas.framework.GdtCanvasViewListener;
+import com.tencent.gdtad.views.canvas.framework.GdtCanvasPageView;
+import com.tencent.gdtad.views.canvas.framework.GdtCanvasView;
 import java.lang.ref.WeakReference;
+import yny;
+import yon;
+import ypm;
+import ypn;
+import yqo;
 
 public abstract class GdtCanvasComponentView
   extends FrameLayout
-  implements GdtViewStatus.Listener
+  implements ypn
 {
-  protected GdtTimeStatistics a;
-  public GdtViewStatus a;
-  private WeakReference a;
+  public WeakReference<yqo> a;
+  protected yon a;
+  protected ypm a;
   
-  public GdtCanvasComponentView(Context paramContext, WeakReference paramWeakReference)
+  public GdtCanvasComponentView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics = new GdtTimeStatistics();
+    this.jdField_a_of_type_Yon = new yon();
+  }
+  
+  public GdtCanvasComponentView(Context paramContext, AttributeSet paramAttributeSet)
+  {
+    super(paramContext, paramAttributeSet);
+    this.jdField_a_of_type_Yon = new yon();
+  }
+  
+  public GdtCanvasComponentView(Context paramContext, WeakReference<yqo> paramWeakReference)
+  {
+    super(paramContext);
+    this.jdField_a_of_type_Yon = new yon();
     this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
   }
   
   private void b(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics == null)) {
-      GdtLog.d("GdtCanvasComponentView", "notifyLoaded error");
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_a_of_type_Yon == null)) {
+      yny.d("GdtCanvasComponentView", "notifyLoaded error");
     }
     long l;
     do
     {
       return;
-      l = this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics.a();
+      l = this.jdField_a_of_type_Yon.a();
     } while (l < 0L);
-    ((GdtCanvasViewListener)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(a(), l, paramBoolean);
+    ((yqo)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(a(), l, paramBoolean);
   }
-  
-  public abstract GdtViewStatus a();
   
   public GdtCanvasData a()
   {
     if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-      return ((GdtCanvasViewListener)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a();
+      return ((yqo)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a();
     }
     return null;
   }
   
   public abstract GdtCanvasComponentData a();
   
+  public abstract ypm a();
+  
   public void a()
   {
     if (a() == null) {
       return;
     }
-    GdtLog.b("GdtCanvasComponentView", a().id + ": onViewResume");
+    yny.b("GdtCanvasComponentView", a().id + ": onViewResume");
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics != null) {
-      this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics.b();
+    if (this.jdField_a_of_type_Yon != null) {
+      this.jdField_a_of_type_Yon.b();
     }
     b(paramBoolean);
-    this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics = null;
+    this.jdField_a_of_type_Yon = null;
   }
   
   public boolean a()
@@ -78,7 +96,7 @@ public abstract class GdtCanvasComponentView
     if (a() == null) {
       return;
     }
-    GdtLog.b("GdtCanvasComponentView", a().id + ": onViewPause");
+    yny.b("GdtCanvasComponentView", a().id + ": onViewPause");
   }
   
   public void c()
@@ -95,6 +113,25 @@ public abstract class GdtCanvasComponentView
     }
   }
   
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (((yqo)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a() == null) || (!(this.jdField_a_of_type_JavaLangRefWeakReference.get() instanceof GdtCanvasView))) {
+      return super.dispatchTouchEvent(paramMotionEvent);
+    }
+    if (paramMotionEvent.getAction() == 0)
+    {
+      String str = ((GdtCanvasView)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a;
+      if ((a() != null) && (!TextUtils.isEmpty(a().id)) && (!a().id.equals(str)) && (getContext() != null)) {
+        ((InputMethodManager)getContext().getSystemService("input_method")).hideSoftInputFromWindow(getWindowToken(), 0);
+      }
+      ((yqo)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().setFormFocusd(str, false);
+      if (a().id.contains("XJWebForm")) {
+        ((yqo)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a().setFormFocusd(a().id, true);
+      }
+    }
+    return super.dispatchTouchEvent(paramMotionEvent);
+  }
+  
   public void e()
   {
     if (a() != null) {
@@ -109,16 +146,16 @@ public abstract class GdtCanvasComponentView
     }
   }
   
-  public void g()
+  protected void g()
   {
-    if (this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics != null) {
-      this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics.a();
+    if (this.jdField_a_of_type_Yon != null) {
+      this.jdField_a_of_type_Yon.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.components.GdtCanvasComponentView
  * JD-Core Version:    0.7.0.1
  */

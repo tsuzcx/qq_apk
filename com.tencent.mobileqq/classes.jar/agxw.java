@@ -1,43 +1,32 @@
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.animation.Animation;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.ptt.LSRecordAnimations.LSRecordAnimationCallback;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.activity.Conversation;
+import mqq.os.MqqHandler;
 
-public class agxw
-  extends LSRecordAnimations.LSRecordAnimationCallback
+class agxw
+  implements DialogInterface.OnClickListener
 {
-  public agxw(LSRecordPanel paramLSRecordPanel) {}
+  agxw(agxv paramagxv) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "LS startCloseAnimation onAnimationEnd");
+    if (aipq.a() != null) {
+      aing.a();
     }
-    if (LSRecordPanel.a(this.a))
+    paramDialogInterface = aing.a();
+    if (paramDialogInterface != null)
     {
-      if (paramAnimation == this.a.b) {
-        LSRecordPanel.a(this.a);
+      paramDialogInterface = paramDialogInterface.getHandler(Conversation.class);
+      if (paramDialogInterface != null) {
+        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(1134052));
       }
-      this.a.a = null;
-      this.a.b = null;
-      paramAnimation = (RelativeLayout.LayoutParams)LSRecordPanel.a(this.a).getLayoutParams();
-      int i = (int)(this.a.getResources().getDisplayMetrics().density * 4.0F);
-      paramAnimation.height -= i;
-      paramAnimation.width -= i;
-      int j = paramAnimation.rightMargin;
-      paramAnimation.rightMargin = (i / 2 + j);
-      LSRecordPanel.a(this.a, false);
-      LSRecordPanel.a(this.a).setLayoutParams(paramAnimation);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agxw
  * JD-Core Version:    0.7.0.1
  */

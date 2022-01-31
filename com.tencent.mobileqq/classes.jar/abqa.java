@@ -1,24 +1,21 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SearchMightKnowFragment;
 
-class abqa
-  implements Runnable
+public class abqa
+  implements View.OnClickListener
 {
-  abqa(abpz paramabpz, Drawable paramDrawable) {}
+  public abqa(SearchMightKnowFragment paramSearchMightKnowFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (("KEY_SPLASH_BG_WEALTH_GOD_SLEEP".equals(this.jdField_a_of_type_Abpz.jdField_a_of_type_JavaLangString)) || ("KEY_SPLASH_BG_WEALTH_GOD_WORK".equals(this.jdField_a_of_type_Abpz.jdField_a_of_type_JavaLangString)) || ("KEY_SPLASH_BG_WEALTH_GOD_BAOXIANG".equals(this.jdField_a_of_type_Abpz.jdField_a_of_type_JavaLangString)))
-    {
-      this.jdField_a_of_type_Abpz.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      return;
-    }
-    this.jdField_a_of_type_Abpz.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.a.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abqa
  * JD-Core Version:    0.7.0.1
  */

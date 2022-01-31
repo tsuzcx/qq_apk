@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class PrivilegeBaseInfo
   extends JceStruct
 {
-  static ArrayList cache_vClosePriv;
-  static ArrayList cache_vOpenPriv = new ArrayList();
+  static ArrayList<PrivilegeInfo> cache_vClosePriv;
+  static ArrayList<PrivilegeInfo> cache_vOpenPriv = new ArrayList();
   public String strJumpUrl = "";
   public String strMsg = "";
-  public ArrayList vClosePriv;
-  public ArrayList vOpenPriv;
+  public ArrayList<PrivilegeInfo> vClosePriv;
+  public ArrayList<PrivilegeInfo> vOpenPriv;
   
   static
   {
@@ -26,7 +26,7 @@ public final class PrivilegeBaseInfo
   
   public PrivilegeBaseInfo() {}
   
-  public PrivilegeBaseInfo(String paramString1, String paramString2, ArrayList paramArrayList1, ArrayList paramArrayList2)
+  public PrivilegeBaseInfo(String paramString1, String paramString2, ArrayList<PrivilegeInfo> paramArrayList1, ArrayList<PrivilegeInfo> paramArrayList2)
   {
     this.strMsg = paramString1;
     this.strJumpUrl = paramString2;

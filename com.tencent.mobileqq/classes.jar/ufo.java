@@ -1,23 +1,32 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GatherCardInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 
 public class ufo
-  implements Runnable
 {
-  public ufo(TroopMemberListActivity paramTroopMemberListActivity) {}
+  private qqstory_struct.GatherCardInfo a;
   
-  public void run()
+  public ufo(qqstory_struct.GatherCardInfo paramGatherCardInfo)
   {
-    if ((this.a.d == 1) || (this.a.d == 11) || (this.a.d == 16))
+    this.a = paramGatherCardInfo;
+  }
+  
+  public ufo(byte[] paramArrayOfByte)
+  {
+    this.a = new qqstory_struct.GatherCardInfo();
+    try
     {
-      Object[] arrayOfObject = this.a.a(this.a.b);
-      this.a.a.sendMessage(this.a.a.obtainMessage(1, arrayOfObject));
+      this.a.mergeFrom(paramArrayOfByte);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      urk.e("Q.qqstory.discover.CardItem", paramArrayOfByte.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ufo
  * JD-Core Version:    0.7.0.1
  */

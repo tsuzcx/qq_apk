@@ -1,19 +1,10 @@
-import android.widget.ImageView;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-
-public class aosx
-  implements Runnable
+public abstract interface aosx
 {
-  public aosx(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
-  
-  public void run()
-  {
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.a.jdField_a_of_type_AndroidGraphicsBitmap);
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aosx
  * JD-Core Version:    0.7.0.1
  */

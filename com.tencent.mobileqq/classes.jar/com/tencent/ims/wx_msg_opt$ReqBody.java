@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class wx_msg_opt$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   public static final int UINT32_CMD_FIELD_NUMBER = 2;
   public static final int UINT32_OPT_FIELD_NUMBER = 4;

@@ -4,7 +4,6 @@ import android.content.Context;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.widget.BubbleImageView;
-import vcq;
 
 public class FlashPicItemBuilder$FlashPicAIOThumbView
   extends BubbleImageView
@@ -24,12 +23,12 @@ public class FlashPicItemBuilder$FlashPicAIOThumbView
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
     super.onLoadSuccessed(paramURLDrawable);
-    ThreadManager.postImmediately(new vcq(this), null, true);
+    ThreadManager.postImmediately(new FlashPicItemBuilder.FlashPicAIOThumbView.1(this), null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder.FlashPicAIOThumbView
  * JD-Core Version:    0.7.0.1
  */

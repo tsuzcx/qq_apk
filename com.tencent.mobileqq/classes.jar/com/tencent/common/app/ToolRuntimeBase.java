@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pluginsdk.PluginRuntime;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
-import pjm;
+import xfu;
 
 public class ToolRuntimeBase
   extends PluginRuntime
@@ -52,7 +52,7 @@ public class ToolRuntimeBase
   }
   
   @TargetApi(14)
-  protected void exitToolProc()
+  public void exitToolProc()
   {
     QIPCClientHelper.getInstance().disconnect();
     if (Build.VERSION.SDK_INT >= 14) {}
@@ -114,7 +114,7 @@ public class ToolRuntimeBase
     {
       if (this.componentCallbacks == null)
       {
-        this.componentCallbacks = new pjm(this);
+        this.componentCallbacks = new xfu(this);
         BaseApplicationImpl.getApplication().getApplicationContext().registerComponentCallbacks(this.componentCallbacks);
       }
       return;

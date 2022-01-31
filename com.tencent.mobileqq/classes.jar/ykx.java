@@ -1,23 +1,32 @@
-import android.os.Message;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.ad.tangram.statistics.AdAntiSpamForClick;
+import com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick;
 
-public class ykx
-  extends MqqHandler
+final class ykx
+  implements View.OnClickListener
 {
-  public ykx(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  ykx(yku paramyku, ykt paramykt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    paramMessage = ShortVideoUtils.a(paramMessage.arg1);
-    this.a.c.setText(paramMessage);
+    yku localyku = this.jdField_a_of_type_Yku;
+    paramView = yku.a.onClick(paramView);
+    if (!TextUtils.isEmpty(paramView))
+    {
+      this.jdField_a_of_type_Ykt.jdField_a_of_type_Yjs.a = paramView;
+      yny.d("GdtBannerViewBuilder", "onclick:" + this.jdField_a_of_type_Ykt.jdField_a_of_type_Yjs.a);
+    }
+    if (this.jdField_a_of_type_Ykt.jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick != null) {
+      this.jdField_a_of_type_Ykt.jdField_a_of_type_ComTencentGdtadStatisticsGdtDwellTimeStatisticsAfterClick.a();
+    }
+    yjr.a(this.jdField_a_of_type_Ykt.jdField_a_of_type_Yjs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ykx
  * JD-Core Version:    0.7.0.1
  */

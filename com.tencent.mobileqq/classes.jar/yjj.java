@@ -1,23 +1,30 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.Context;
+import com.tencent.ad.tangram.toast.AdToastAdapter;
 
-public final class yjj
-  implements DialogInterface.OnClickListener
+public class yjj
+  implements AdToastAdapter
 {
-  public yjj(boolean paramBoolean, BaseActivity paramBaseActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void show(Context paramContext, int paramInt1, CharSequence paramCharSequence, int paramInt2)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
+    int i = 1;
+    if (paramInt1 == 1) {
+      paramInt1 = i;
+    }
+    for (;;)
+    {
+      bbmy.a(paramContext, paramInt1, paramCharSequence, paramInt2).a();
+      return;
+      if (paramInt1 == 2) {
+        paramInt1 = 2;
+      } else {
+        paramInt1 = 0;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yjj
  * JD-Core Version:    0.7.0.1
  */

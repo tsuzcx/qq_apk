@@ -1,35 +1,42 @@
-import android.view.View;
-import android.view.Window;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import android.content.Context;
+import android.content.IntentFilter;
 
 public class ymn
-  implements Animation.AnimationListener
 {
-  public ymn(SpecailCareListActivity paramSpecailCareListActivity) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  private ymp jdField_a_of_type_Ymp;
+  private ymq jdField_a_of_type_Ymq;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public ymn(Context paramContext)
   {
-    this.a.c.clearAnimation();
-    ((FrameLayout)this.a.getWindow().getDecorView()).removeView(this.a.c);
-    this.a.c = null;
-    if (this.a.a != null)
-    {
-      this.a.a.a();
-      this.a.a = null;
-    }
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void a()
+  {
+    this.jdField_a_of_type_Ymp = new ymp(this, null);
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("android.media.VOLUME_CHANGED_ACTION");
+    this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_Ymp, localIntentFilter);
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void a(ymq paramymq)
+  {
+    this.jdField_a_of_type_Ymq = paramymq;
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Ymp != null) && (this.jdField_a_of_type_AndroidContentContext != null))
+    {
+      this.jdField_a_of_type_AndroidContentContext.unregisterReceiver(this.jdField_a_of_type_Ymp);
+      this.jdField_a_of_type_Ymq = null;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ymn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.data;
 
+import amso;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MessageForEnterTroop
   extends ChatMessage
 {
-  public List mList = new ArrayList();
+  public List<amso> mList = new ArrayList();
   
   protected void doParse() {}
 }

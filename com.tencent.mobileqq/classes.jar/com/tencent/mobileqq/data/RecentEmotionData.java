@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
+import atmo;
 
 public class RecentEmotionData
-  extends Entity
+  extends atmo
 {
   public static final int TYPE_CUSTOM_EMO = 3;
   public static final int TYPE_EMOJI_EMO = 4;

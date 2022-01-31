@@ -1,45 +1,72 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListModel;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaInfo;
-import com.tencent.mobileqq.lightReply.LightReplyEmojs;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
 
 public class vsd
-  extends BroadcastReceiver
+  extends ValueAnimator
 {
-  public vsd(AIOGalleryScene paramAIOGalleryScene) {}
+  private ValueAnimator.AnimatorUpdateListener jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener;
+  private View jdField_a_of_type_AndroidViewView;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  private vsd(View paramView, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6)
   {
-    if ("light_reply_count_changed".equals(paramIntent.getAction()))
-    {
-      paramContext = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListModel.a().a;
-      if ((paramContext instanceof AIOImageData))
-      {
-        paramContext = (AIOImageData)paramContext;
-        QLog.d("AIOGalleryScene", 2, "replyPhotoBtn: isAIOImageData true, isPicFile: " + paramContext.jdField_g_of_type_Boolean + " isFromImageList: false");
-        paramIntent = paramIntent.getExtras();
-        this.a.a(paramIntent, paramContext.b, paramContext.jdField_g_of_type_JavaLangString, paramContext.f, paramContext.jdField_e_of_type_Long, paramContext.jdField_e_of_type_JavaLangString);
-        if (1 == paramIntent.getInt("type"))
-        {
-          paramContext = (LightReplyEmojs)this.a.jdField_a_of_type_JavaUtilHashMap.get(paramContext.b + paramContext.jdField_g_of_type_JavaLangString + paramContext.jdField_e_of_type_Long);
-          if (paramContext != null) {
-            this.a.a(this.a.b, paramContext);
-          }
-        }
-      }
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    setObjectValues(new Object[] { new vsg(paramFloat1, paramFloat2, paramFloat3), new vsg(paramFloat4, paramFloat5, paramFloat6) });
+    setEvaluator(new vsh(null));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener = new vse(this, a(paramView));
+    addUpdateListener(this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener);
+  }
+  
+  private CircularRevealCompatLayout a(View paramView)
+  {
+    if ((paramView instanceof CircularRevealCompatLayout)) {
+      return (CircularRevealCompatLayout)paramView;
     }
+    ViewGroup localViewGroup = (ViewGroup)paramView.getParent();
+    if ((localViewGroup instanceof CircularRevealCompatLayout)) {
+      return (CircularRevealCompatLayout)localViewGroup;
+    }
+    CircularRevealCompatLayout localCircularRevealCompatLayout = new CircularRevealCompatLayout(paramView.getContext());
+    ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
+    int i = localViewGroup.indexOfChild(paramView);
+    localViewGroup.removeView(paramView);
+    localCircularRevealCompatLayout.addView(paramView, new ViewGroup.LayoutParams(-1, -1));
+    localViewGroup.addView(localCircularRevealCompatLayout, i, localLayoutParams);
+    return localCircularRevealCompatLayout;
+  }
+  
+  public static vsd a(View paramView, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
+  {
+    return new vsd(paramView, paramInt1, paramInt2, paramFloat1, paramInt1, paramInt2, paramFloat2);
+  }
+  
+  public void a()
+  {
+    Object localObject = this.jdField_a_of_type_AndroidViewView.getParent();
+    if ((localObject instanceof CircularRevealCompatLayout))
+    {
+      localObject = (CircularRevealCompatLayout)localObject;
+      ((CircularRevealCompatLayout)localObject).removeView(this.jdField_a_of_type_AndroidViewView);
+      ViewGroup localViewGroup = (ViewGroup)((CircularRevealCompatLayout)localObject).getParent();
+      ViewGroup.LayoutParams localLayoutParams = ((CircularRevealCompatLayout)localObject).getLayoutParams();
+      int i = localViewGroup.indexOfChild((View)localObject);
+      localViewGroup.removeView((View)localObject);
+      localViewGroup.addView(this.jdField_a_of_type_AndroidViewView, i, localLayoutParams);
+    }
+  }
+  
+  public void removeAllUpdateListeners()
+  {
+    super.removeAllUpdateListeners();
+    addUpdateListener(this.jdField_a_of_type_AndroidAnimationValueAnimator$AnimatorUpdateListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vsd
  * JD-Core Version:    0.7.0.1
  */

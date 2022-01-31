@@ -1,14 +1,17 @@
-public final class uoi
-  extends ThreadLocal
+class uoi
+  extends vql
 {
-  protected char[] a()
+  uoi(uoh paramuoh) {}
+  
+  public boolean a(boolean paramBoolean)
   {
-    return new char[1024];
+    uoh.a(this.a);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uoi
  * JD-Core Version:    0.7.0.1
  */

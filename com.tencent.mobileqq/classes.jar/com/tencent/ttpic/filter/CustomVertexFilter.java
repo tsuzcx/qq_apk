@@ -1,13 +1,13 @@
 package com.tencent.ttpic.filter;
 
 import android.graphics.PointF;
-import com.tencent.filter.Param.Float1sParam;
-import com.tencent.ttpic.model.FaceActionCounter;
-import com.tencent.ttpic.model.StickerItem;
-import com.tencent.ttpic.util.VideoFilterUtil.DRAW_MODE;
-import com.tencent.ttpic.util.VideoMaterialUtil;
+import com.tencent.aekit.openrender.AEOpenRenderConfig.DRAW_MODE;
+import com.tencent.aekit.openrender.UniformParam.Float1sParam;
+import com.tencent.aekit.openrender.internal.VideoFilterBase;
+import com.tencent.filter.BaseFilter;
+import com.tencent.ttpic.openapi.PTDetectInfo;
+import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import java.util.List;
-import java.util.Map;
 
 public class CustomVertexFilter
   extends VideoFilterBase
@@ -19,9 +19,9 @@ public class CustomVertexFilter
   private List<PointF> mFullscreenVertices;
   private List<PointF> mInitTextureCoordinates;
   
-  public CustomVertexFilter(String paramString1, String paramString2, StickerItem paramStickerItem)
+  public CustomVertexFilter(String paramString1, String paramString2)
   {
-    super(paramString1, paramString2, paramStickerItem);
+    super(BaseFilter.nativeDecrypt(paramString1), BaseFilter.nativeDecrypt(paramString2));
     initCoordinates();
     initParams();
   }
@@ -37,41 +37,45 @@ public class CustomVertexFilter
     super.ApplyGLSLFilter();
     setPositions(VideoMaterialUtil.toFlatArray((PointF[])this.mFullscreenVertices.toArray(new PointF[0])));
     setTexCords(VideoMaterialUtil.toFlatArray((PointF[])this.mInitTextureCoordinates.toArray(new PointF[0])));
-    setDrawMode(VideoFilterUtil.DRAW_MODE.TRIANGLE_STRIP);
+    setDrawMode(AEOpenRenderConfig.DRAW_MODE.TRIANGLE_STRIP);
     setCoordNum(1561);
   }
   
   public void initParams()
   {
-    addParam(new Param.Float1sParam("facePoints", new float[0]));
+    addParam(new UniformParam.Float1sParam("facePoints", new float[0]));
   }
   
-  public void updatePreview(List<PointF> paramList, float[] paramArrayOfFloat, Map<Integer, FaceActionCounter> paramMap, float paramFloat, long paramLong)
+  public void updatePreview(Object paramObject)
   {
-    paramList = VideoMaterialUtil.toFlatArray(paramList);
-    VideoMaterialUtil.flipYPoints(paramList, (int)(this.height * this.mScreenScale));
-    int i = 0;
-    if (i < 180)
+    if ((paramObject instanceof PTDetectInfo))
     {
-      if ((paramList == null) || (i >= paramList.length)) {
-        this.facePoints[i] = -1.0F;
-      }
-      for (;;)
+      paramObject = VideoMaterialUtil.toFlatArray(((PTDetectInfo)paramObject).facePoints);
+      VideoMaterialUtil.flipYPoints(paramObject, (int)(this.height * this.mFaceDetScale));
+      int i = 0;
+      if (i < 180)
       {
-        i += 1;
-        break;
-        this.facePoints[i] = ((float)(paramList[i] / this.mScreenScale));
+        if ((paramObject == null) || (i >= paramObject.length)) {
+          this.facePoints[i] = -1.0F;
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          this.facePoints[i] = ((float)(paramObject[i] / this.mFaceDetScale));
+        }
       }
-    }
-    if (paramList == null)
-    {
+      if (paramObject != null) {
+        break label129;
+      }
       this.facePoints['´'] = -1.0F;
       this.facePoints['µ'] = -1.0F;
     }
     for (;;)
     {
-      addParam(new Param.Float1sParam("facePoints", this.facePoints));
+      addParam(new UniformParam.Float1sParam("facePoints", this.facePoints));
       return;
+      label129:
       this.facePoints['´'] = this.width;
       this.facePoints['µ'] = this.height;
     }
@@ -79,7 +83,7 @@ public class CustomVertexFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.filter.CustomVertexFilter
  * JD-Core Version:    0.7.0.1
  */

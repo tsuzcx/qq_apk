@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.2.1;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class svf
-  implements Runnable
+  extends atdi
 {
-  public svf(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  svf(svc paramsvc) {}
   
-  public void run()
+  protected void a(Object paramObject)
   {
-    this.a.G();
-    this.a.I();
+    ThreadManager.post(new MsgTabStoryNodeListManager.2.1(this, paramObject), 5, null, true);
+    urk.b(svc.b(), "freshRedPoint, showStoryNode");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     svf
  * JD-Core Version:    0.7.0.1
  */

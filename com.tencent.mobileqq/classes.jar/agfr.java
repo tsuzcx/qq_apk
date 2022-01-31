@@ -1,33 +1,26 @@
-import android.view.View;
-import com.tencent.mobileqq.ocr.OCRShareHelper;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.widget.AbsListView;
 
 public class agfr
-  implements ActionSheet.OnButtonClickListener
+  implements begh
 {
-  public agfr(OCRShareHelper paramOCRShareHelper, String paramString1, String paramString2) {}
+  public agfr(NewPhotoListActivity paramNewPhotoListActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt == 0)
     {
-    }
-    for (;;)
-    {
-      if ((OCRShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRShareHelper) != null) && (OCRShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRShareHelper).isShowing())) {
-        OCRShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRShareHelper).dismiss();
-      }
+      zqk.a().a("list_photo", false);
       return;
-      OCRShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRShareHelper, 2, this.jdField_a_of_type_JavaLangString);
-      continue;
-      OCRShareHelper.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRShareHelper, 1, this.b);
     }
+    zqk.a().a("list_photo");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agfr
  * JD-Core Version:    0.7.0.1
  */

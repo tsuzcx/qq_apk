@@ -1,107 +1,40 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.aio.BabyQAIOPanel;
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
-import com.tencent.mobileqq.activity.aio.panel.AIOPanelUtiles;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.app.BabyQHandler;
-import com.tencent.mobileqq.app.BabyQObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.PBStringField;
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class vyc
-  extends BabyQObserver
+class vyc
+  implements wes
 {
-  public vyc(FriendChatPie paramFriendChatPie) {}
+  vyc(vya paramvya, CertifiedAccountMeta.StFeed paramStFeed) {}
   
-  protected void a()
+  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    if (this.a.q != null)
+    if (paramBoolean1)
     {
-      Animation localAnimation = this.a.q.getAnimation();
-      if (localAnimation != null) {
-        localAnimation.cancel();
+      wye.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_follow", "clk_unfollow", 0, 0, new String[0]);
+      paramString = this.jdField_a_of_type_Vya.b().iterator();
+      while (paramString.hasNext()) {
+        if (TextUtils.equals(((CertifiedAccountMeta.StFeed)paramString.next()).poster.id.get(), this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get())) {
+          paramString.remove();
+        }
       }
-      FriendChatPie.b(this.a).removeView(this.a.q);
-      this.a.q = null;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.BabyQ", 2, "onStopGuide");
+      this.jdField_a_of_type_Vya.notifyDataSetChanged();
+      bbmy.a(vya.a(this.jdField_a_of_type_Vya), 2, ajjy.a(2131625102), 0).a();
+      if (this.jdField_a_of_type_Vya.b().size() < 5) {
+        this.jdField_a_of_type_Vya.d();
       }
     }
-  }
-  
-  protected void a(Object paramObject)
-  {
-    int i = -1;
-    paramObject = (Integer)paramObject;
-    switch (paramObject.intValue())
-    {
-    default: 
-      if (i < 0)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.BabyQ", 2, "onStartGuide " + paramObject + " but panel is opened");
-        }
-        ((BabyQHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(53)).b();
-      }
-      break;
-    }
-    do
-    {
-      do
-      {
-        return;
-        if ((FriendChatPie.a(this.a) != null) && (FriendChatPie.b(this.a).getVisibility() == 0)) {
-          break;
-        }
-        i = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a().indexOf(AIOPanelUtiles.g);
-        break;
-        i = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a().indexOf(AIOPanelUtiles.m);
-        break;
-        if (ShortVideoUtils.f())
-        {
-          i = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a().indexOf(AIOPanelUtiles.j);
-          break;
-        }
-        i = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a().indexOf(AIOPanelUtiles.m);
-        break;
-        if ((FriendChatPie.a(this.a) != null) && (FriendChatPie.b(this.a).getVisibility() == 0)) {
-          break;
-        }
-        i = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.a().indexOf(AIOPanelUtiles.a);
-        break;
-      } while (this.a.q != null);
-      this.a.q = new View(this.a.jdField_a_of_type_AndroidContentContext);
-      this.a.q.setBackgroundResource(2130842346);
-      Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.getChildAt(i);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(((View)localObject).getHeight(), ((View)localObject).getHeight());
-      localLayoutParams.addRule(12);
-      localLayoutParams.setMargins(((View)localObject).getLeft() + ((View)localObject).getWidth() / 2 - ((View)localObject).getHeight() / 2, 0, 0, (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.getHeight() - ((View)localObject).getHeight()) / 2);
-      FriendChatPie.a(this.a).addView(this.a.q, localLayoutParams);
-      localObject = AnimationUtils.loadAnimation(this.a.jdField_a_of_type_AndroidContentContext, 2131034320);
-      ((Animation)localObject).setAnimationListener(new vyd(this));
-      this.a.q.startAnimation((Animation)localObject);
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.BabyQ", 2, "onStartGuide " + paramObject);
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioBabyQAIOPanel != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioBabyQAIOPanel.a();
+    if (paramBoolean2) {
+      wye.b(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed.poster.id.get(), "auth_follow", "clk_cancel", 0, 0, new String[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vyc
  * JD-Core Version:    0.7.0.1
  */

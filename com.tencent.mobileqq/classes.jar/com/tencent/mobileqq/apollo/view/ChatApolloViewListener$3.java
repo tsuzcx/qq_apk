@@ -1,0 +1,24 @@
+package com.tencent.mobileqq.apollo.view;
+
+import ajdo;
+
+public class ChatApolloViewListener$3
+  implements Runnable
+{
+  public ChatApolloViewListener$3(ajdo paramajdo) {}
+  
+  public void run()
+  {
+    if ((this.this$0.a) && (!this.this$0.b))
+    {
+      this.this$0.c();
+      this.this$0.a = false;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     com.tencent.mobileqq.apollo.view.ChatApolloViewListener.3
+ * JD-Core Version:    0.7.0.1
+ */

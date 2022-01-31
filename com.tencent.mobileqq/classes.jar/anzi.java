@@ -1,23 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.poi.PoiInfo;
+import android.widget.CheckBox;
+import com.tencent.widget.SingleLineTextView;
 
-public final class anzi
-  implements Parcelable.Creator
+public class anzi
 {
-  public PoiInfo a(Parcel paramParcel)
-  {
-    return new PoiInfo(paramParcel, null);
-  }
-  
-  public PoiInfo[] a(int paramInt)
-  {
-    return new PoiInfo[paramInt];
-  }
+  public int a;
+  public CheckBox a;
+  public SingleLineTextView a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anzi
  * JD-Core Version:    0.7.0.1
  */

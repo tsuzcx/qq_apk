@@ -1,20 +1,32 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import java.util.List;
+import com.tencent.av.gaudio.GaInviteLockActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class ldo
-  implements Runnable
+  extends kur
 {
-  public ldo(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity, List paramList) {}
+  public ldo(GaInviteLockActivity paramGaInviteLockActivity) {}
   
-  public void run()
+  protected void a(long paramLong, ArrayList<kth> paramArrayList, int paramInt1, int paramInt2)
   {
-    ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_JavaUtilList);
+    GaInviteLockActivity.a(this.a, paramLong, paramArrayList, paramInt1);
+  }
+  
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.b, 2, "onMembersChange");
+    }
+    if ((paramLong != this.a.a) || (paramBoolean)) {}
+    while (((paramInt != 10) && (paramInt != 1)) || (!this.a.isResume())) {
+      return;
+    }
+    GaInviteLockActivity.a(this.a, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ldo
  * JD-Core Version:    0.7.0.1
  */

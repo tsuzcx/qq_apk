@@ -1,22 +1,20 @@
-import android.content.Context;
 import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
+import android.os.Message;
+import com.tencent.biz.qqstory.takevideo.rmw.RMWService;
 
-public final class vgd
-  implements Runnable
+public class vgd
+  extends Handler
 {
-  public vgd(Context paramContext, QQAppInterface paramQQAppInterface, Emoticon paramEmoticon, Handler paramHandler) {}
+  public vgd(RMWService paramRMWService) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    MarketFaceItemBuilder.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, this.jdField_a_of_type_AndroidOsHandler);
+    vgb.b("RMWService", "service.handle : " + vgc.a(paramMessage));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vgd
  * JD-Core Version:    0.7.0.1
  */

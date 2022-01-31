@@ -1,23 +1,20 @@
-import android.app.Activity;
-import android.app.Dialog;
-import com.tencent.mobileqq.database.corrupt.DBFixDialogUI;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class acdu
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public acdu(DBFixDialogUI paramDBFixDialogUI, Dialog paramDialog) {}
+  public acdu(UpgradeActivity paramUpgradeActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (((this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixDialogUI.a instanceof Activity)) && (((Activity)this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixDialogUI.a).isFinishing())) {
-      return;
-    }
-    this.jdField_a_of_type_AndroidAppDialog.show();
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acdu
  * JD-Core Version:    0.7.0.1
  */

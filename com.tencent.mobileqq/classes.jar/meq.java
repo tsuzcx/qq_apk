@@ -1,26 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class meq
-  implements DialogInterface.OnShowListener
+class meq
+  implements View.OnClickListener
 {
-  public meq(VideoFeedsAdapter paramVideoFeedsAdapter) {}
+  meq(meo parammeo) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "mDisLikeActionSheet onShow() on VideoFeedsPlayActivity");
-    }
-    VideoFeedsAdapter.b(this.a).getWindow().clearFlags(8);
+    this.a.a(false, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     meq
  * JD-Core Version:    0.7.0.1
  */

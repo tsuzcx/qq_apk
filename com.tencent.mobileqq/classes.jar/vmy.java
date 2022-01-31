@@ -1,21 +1,34 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class vmy
-  implements Runnable
 {
-  public vmy(StructingMsgItemBuilder paramStructingMsgItemBuilder, Dialog paramDialog) {}
-  
-  public void run()
+  public static boolean a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    boolean bool1 = false;
+    paramQQAppInterface = bade.a(paramQQAppInterface, paramContext, paramString);
+    if (paramQQAppInterface != null) {
+      bool1 = paramQQAppInterface.c();
+    }
+    for (boolean bool2 = true;; bool2 = false)
+    {
+      if ((!bool2) && (paramBoolean))
+      {
+        Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+        localIntent.putExtra("url", paramString);
+        localIntent.putExtra("selfSet_leftViewText", ajjy.a(2131650139));
+        paramContext.startActivity(localIntent);
+      }
+      urk.b("UrlJumpUtils", "jump %s, actionResult = %b, handled = %b", paramQQAppInterface, Boolean.valueOf(bool1), Boolean.valueOf(bool2));
+      return bool2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vmy
  * JD-Core Version:    0.7.0.1
  */

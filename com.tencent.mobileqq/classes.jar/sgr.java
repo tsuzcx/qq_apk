@@ -1,21 +1,14 @@
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.QvipSpecialCareObserver;
-
-public class sgr
-  extends QvipSpecialCareObserver
+public abstract interface sgr
 {
-  public sgr(ChatSettingActivity paramChatSettingActivity) {}
+  public abstract void a(String paramString, int paramInt);
   
-  public void a(Object paramObject)
-  {
-    if (paramObject != null) {
-      ((Integer)paramObject).intValue();
-    }
-  }
+  public abstract void a(String paramString, long paramLong1, long paramLong2);
+  
+  public abstract void a(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sgr
  * JD-Core Version:    0.7.0.1
  */

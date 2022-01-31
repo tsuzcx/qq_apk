@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class torch_transfer$BusinessEntryInfo
-  extends MessageMicro
+  extends MessageMicro<BusinessEntryInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "uint32_business_entry_new", "uint32_business_entry_seq" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0) }, BusinessEntryInfo.class);
   public final PBUInt32Field uint32_business_entry_new = PBField.initUInt32(0);
@@ -14,7 +14,7 @@ public final class torch_transfer$BusinessEntryInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.olympic.torch_transfer.BusinessEntryInfo
  * JD-Core Version:    0.7.0.1
  */

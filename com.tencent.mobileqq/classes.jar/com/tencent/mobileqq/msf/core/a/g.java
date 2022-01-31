@@ -1,49 +1,45 @@
 package com.tencent.mobileqq.msf.core.a;
 
-import java.util.Map;
-import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
-
-class g
-  extends DefaultHandler
+public class g
 {
-  Map a;
-  String b;
-  private String c;
+  private static final String b = "WeakNetworkConfig";
   
-  public g(String paramString, Map paramMap)
+  static
   {
-    this.b = paramString;
-    this.a = paramMap;
-  }
-  
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-    throws SAXException
-  {
-    if (this.c != null)
+    if (!g.class.desiredAssertionStatus()) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
-      if (paramArrayOfChar != null) {
-        this.a.put(this.b + this.c, paramArrayOfChar);
-      }
+      a = bool;
+      return;
     }
   }
   
-  public void endElement(String paramString1, String paramString2, String paramString3)
-    throws SAXException
+  public static boolean a()
   {
-    this.c = null;
+    return a.bt() != 0;
   }
   
-  public void startDocument()
-    throws SAXException
-  {}
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
-    throws SAXException
+  public static g.a b()
   {
-    this.c = paramString2;
+    g.a locala;
+    switch ()
+    {
+    default: 
+      locala = c();
+    }
+    while ((!a) && (locala == null))
+    {
+      throw new AssertionError();
+      locala = c();
+      continue;
+      locala = new g.a(2, false, 2000, 2000, 2, 1, 2000, 20, 1000, 2000, 1000);
+    }
+    return locala;
+  }
+  
+  public static g.a c()
+  {
+    return new g.a(1, true, 3000, 3000, 2, 2, 2000, 20, 2000, 3000, 500);
   }
 }
 

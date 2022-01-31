@@ -1,19 +1,12 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-public class snk
-  implements Runnable
+public abstract interface snk
 {
-  public snk(Conversation paramConversation) {}
-  
-  public void run()
-  {
-    this.a.a.q();
-  }
+  public abstract void a(long paramLong, String paramString, CommentLikeFeedItem paramCommentLikeFeedItem);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     snk
  * JD-Core Version:    0.7.0.1
  */

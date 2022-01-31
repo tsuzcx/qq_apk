@@ -1,29 +1,20 @@
-import com.tencent.biz.qqstory.playmode.util.MultiGroupVideoDataProvider;
-import com.tencent.biz.qqstory.playmode.util.MultiGroupVideoDataProvider.DataObserver;
-import com.tencent.biz.qqstory.playmode.util.VideoData;
-import java.util.ArrayList;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
 
-public class nra
-  implements Runnable
+class nra
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public nra(MultiGroupVideoDataProvider paramMultiGroupVideoDataProvider, VideoData paramVideoData) {}
+  nra(nqz paramnqz) {}
   
-  public void run()
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    int i = 0;
-    try
+    if (Build.VERSION.SDK_INT >= 19) {}
+    for (paramInt = 4866;; paramInt = 771)
     {
-      while (i < this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMultiGroupVideoDataProvider.c.size())
-      {
-        ((MultiGroupVideoDataProvider.DataObserver)this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMultiGroupVideoDataProvider.c.get(i)).a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilVideoData);
-        i += 1;
-      }
+      this.a.getWindow().getDecorView().setSystemUiVisibility(paramInt);
       return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
     }
   }
 }

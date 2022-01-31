@@ -1,13 +1,15 @@
-import com.tencent.biz.qqstory.model.TrimmableManager;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ngw
-  implements Runnable
+class ngw
+  implements View.OnClickListener
 {
-  public ngw(TrimmableManager paramTrimmableManager, int paramInt) {}
+  ngw(ngv paramngv) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    TrimmableManager.a(this.jdField_a_of_type_ComTencentBizQqstoryModelTrimmableManager, this.jdField_a_of_type_Int);
+    ((Activity)paramView.getContext()).finish();
   }
 }
 

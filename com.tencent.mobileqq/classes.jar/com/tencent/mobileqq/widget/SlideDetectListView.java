@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.widget;
 
-import alen;
-import aleo;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
@@ -11,26 +9,30 @@ import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
+import bbkf;
+import bbnz;
+import bboa;
+import bbob;
+import begh;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.XListView;
 import java.util.ArrayList;
 
 public class SlideDetectListView
   extends XListView
-  implements MotionViewSetter
+  implements bbkf
 {
   float jdField_a_of_type_Float = 0.0F;
   public int a;
   protected GestureDetector.SimpleOnGestureListener a;
   protected GestureDetector a;
   public View a;
-  private SlideDetectListView.OnSlideListener jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView$OnSlideListener;
-  private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener;
-  private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private bbob jdField_a_of_type_Bbob;
+  private begh jdField_a_of_type_Begh;
+  private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public boolean a;
   public int b;
-  private AbsListView.OnScrollListener b;
+  private begh b;
   public boolean b;
   public int c;
   public boolean c;
@@ -49,8 +51,8 @@ public class SlideDetectListView
     this.jdField_c_of_type_Int = 0;
     this.jdField_e_of_type_Int = -1;
     this.jdField_c_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new alen(this);
-    super.setOnScrollListener(new aleo(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new bbnz(this);
+    super.setOnScrollListener(new bboa(this));
     this.f = (ViewConfiguration.getTouchSlop() + 2);
   }
   
@@ -161,8 +163,8 @@ public class SlideDetectListView
       if (this.jdField_a_of_type_AndroidViewView != null)
       {
         this.jdField_a_of_type_AndroidViewView.setPressed(false);
-        if (this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView$OnSlideListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView$OnSlideListener.b(this, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int - getHeaderViewsCount());
+        if (this.jdField_a_of_type_Bbob != null) {
+          this.jdField_a_of_type_Bbob.b(this, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int - getHeaderViewsCount());
         }
       }
       this.jdField_a_of_type_Boolean = false;
@@ -174,7 +176,7 @@ public class SlideDetectListView
   {
     if (this.jdField_a_of_type_AndroidViewView != null)
     {
-      View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131362746);
+      View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131310229);
       if (localView != null) {
         localView.setVisibility(8);
       }
@@ -264,8 +266,8 @@ public class SlideDetectListView
         if (this.jdField_a_of_type_AndroidViewView != null)
         {
           this.jdField_a_of_type_AndroidViewView.setPressed(false);
-          if (this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView$OnSlideListener != null) {
-            this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView$OnSlideListener.b(this, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int - getHeaderViewsCount());
+          if (this.jdField_a_of_type_Bbob != null) {
+            this.jdField_a_of_type_Bbob.b(this, this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int - getHeaderViewsCount());
           }
         }
         this.jdField_a_of_type_Boolean = false;
@@ -323,26 +325,26 @@ public class SlideDetectListView
     }
   }
   
-  public void setOnScrollGroupFloatingListener(AbsListView.OnScrollListener paramOnScrollListener)
+  public void setOnScrollGroupFloatingListener(begh parambegh)
   {
-    this.jdField_b_of_type_ComTencentWidgetAbsListView$OnScrollListener = paramOnScrollListener;
+    this.jdField_b_of_type_Begh = parambegh;
   }
   
-  public void setOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener) {}
+  public void setOnScrollListener(begh parambegh) {}
   
-  public void setOnScrollToTopListener(AbsListView.OnScrollListener paramOnScrollListener)
+  public void setOnScrollToTopListener(begh parambegh)
   {
-    this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = paramOnScrollListener;
+    this.jdField_a_of_type_Begh = parambegh;
   }
   
-  public void setOnSlideListener(SlideDetectListView.OnSlideListener paramOnSlideListener)
+  public void setOnSlideListener(bbob parambbob)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView$OnSlideListener = paramOnSlideListener;
+    this.jdField_a_of_type_Bbob = parambbob;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SlideDetectListView
  * JD-Core Version:    0.7.0.1
  */

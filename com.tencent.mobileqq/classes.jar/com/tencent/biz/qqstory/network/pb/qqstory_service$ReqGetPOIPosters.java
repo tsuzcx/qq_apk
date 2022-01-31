@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_service$ReqGetPOIPosters
-  extends MessageMicro
+  extends MessageMicro<ReqGetPOIPosters>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "coordinate", "gps", "version" }, new Object[] { Integer.valueOf(0), null, Integer.valueOf(0) }, ReqGetPOIPosters.class);
   public final PBUInt32Field coordinate = PBField.initUInt32(0);
@@ -15,7 +15,7 @@ public final class qqstory_service$ReqGetPOIPosters
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetPOIPosters
  * JD-Core Version:    0.7.0.1
  */

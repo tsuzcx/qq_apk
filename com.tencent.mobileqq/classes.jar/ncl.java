@@ -1,17 +1,17 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 
 public class ncl
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public ncl(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  public ncl(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (PublicAccountImageCollectionMainActivity.a(this.a) != null)
-    {
-      PublicAccountImageCollectionMainActivity.a(this.a).a(PublicAccountImageCollectionMainActivity.a(this.a));
-      PublicAccountImageCollectionMainActivity.a(this.a).notifyDataSetChanged();
-    }
+    this.a.a.finish();
   }
 }
 

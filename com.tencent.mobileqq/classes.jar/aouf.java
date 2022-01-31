@@ -1,60 +1,78 @@
-import com.tencent.av.AVLog;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.SecUtil;
-import dov.com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
-import dov.com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager.OnResourceDownloadListener;
-import java.io.IOException;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
 
-public class aouf
-  implements INetEngine.INetEngineListener
+class aouf
+  extends wma
 {
-  public aouf(CaptureVideoFilterManager paramCaptureVideoFilterManager) {}
+  aouf(aoue paramaoue, aojh paramaojh) {}
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
-  
-  public void a(NetResp paramNetResp)
+  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
   {
-    Object localObject = (FilterDesc)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a();
-    if (paramNetResp.jdField_a_of_type_Int != 0) {
-      AVLog.c("CaptureVideoFilterManager", "download file failed. errorCode: " + paramNetResp.b + ", errorMsg: " + paramNetResp.jdField_a_of_type_JavaLangString + ", file: " + ((FilterDesc)localObject).jdField_a_of_type_JavaLangString);
-    }
-    for (;;)
+    if (paramDownloadFileRspBody == null)
     {
+      if (QLog.isDevelopLevel()) {
+        QLog.e("VideoForTroop<QFile>", 4, "error DownloadFileRspBody is null!!!!!");
+      }
+      this.jdField_a_of_type_Aojh.a(-1, "");
       return;
-      if (!((FilterDesc)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c)))
-      {
-        AVLog.c("CaptureVideoFilterManager", "download file failed: md5 is not match.");
-        FileUtils.d(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c);
-        return;
-      }
-      AVLog.c("CaptureVideoFilterManager", "download resFile success. file: " + ((FilterDesc)localObject).jdField_a_of_type_JavaLangString);
-      try
-      {
-        localObject = CaptureVideoFilterManager.b;
-        FileUtils.a(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c, (String)localObject, false);
-        FileUtils.d(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c);
-        if ((CaptureVideoFilterManager.a(this.a).decrementAndGet() == 0) && (CaptureVideoFilterManager.a(this.a) != null))
-        {
-          CaptureVideoFilterManager.a(this.a).a(true);
-          return;
-        }
-      }
-      catch (IOException paramNetResp)
-      {
-        paramNetResp.printStackTrace();
-        AVLog.c("CaptureVideoFilterManager", "unzip file failed.");
-      }
     }
+    paramBundle = TroopFileTransferManager.a(aoue.a(this.jdField_a_of_type_Aoue).b);
+    if (paramBundle == null)
+    {
+      QLog.e("VideoForTroop<QFile>", 1, "getUrl: onReqDownloadFileResult: get troopFileTransferManager failed.");
+      return;
+    }
+    paramBundle = paramBundle.a(aoue.a(this.jdField_a_of_type_Aoue));
+    if (paramBundle == null)
+    {
+      this.jdField_a_of_type_Aojh.a(-2, "");
+      return;
+    }
+    paramInt = paramDownloadFileRspBody.int32_ret_code.get();
+    QLog.e("VideoForTroop<QFile>", 1, String.format("onRspDownload - retCode: %d", new Object[] { Integer.valueOf(paramInt) }));
+    if (paramDownloadFileRspBody.bytes_cookie_val.has())
+    {
+      paramBundle.cookieValue = bach.a(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
+      paramBundle.cookieValue = paramBundle.cookieValue.toLowerCase();
+    }
+    paramBundle.DownloadIp = paramDownloadFileRspBody.str_download_ip.get();
+    paramBundle.DownloadUrl = bach.a(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
+    paramBundle.Md5 = paramDownloadFileRspBody.bytes_md5.get().toByteArray();
+    paramBundle.NameForSave = paramDownloadFileRspBody.str_save_file_name.get();
+    if ((paramInt == -133) || (paramInt == -132) || (paramInt == -134))
+    {
+      QLog.w("VideoForTroop<QFile>", 1, "file invalidate retCode = " + paramInt);
+      this.jdField_a_of_type_Aojh.a(paramInt, "");
+      return;
+    }
+    if ((paramInt == -103) || (paramInt == -301))
+    {
+      QLog.w("VideoForTroop<QFile>", 1, "file invalidate retCode = " + paramInt);
+      return;
+    }
+    paramDownloadFileRspBody = aosn.a(paramBundle.DownloadIp, paramBundle.DownloadUrl, paramBundle.FilePath, paramBundle.cookieValue, "");
+    if (QLog.isColorLevel()) {
+      QLog.e("VideoForTroop<QFile>", 2, "url = " + paramDownloadFileRspBody + ", cookies = " + paramBundle.cookieValue);
+    }
+    if (!TextUtils.isEmpty(paramDownloadFileRspBody))
+    {
+      this.jdField_a_of_type_Aojh.a(paramDownloadFileRspBody, paramBundle.cookieValue);
+      return;
+    }
+    this.jdField_a_of_type_Aojh.a(-3, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aouf
  * JD-Core Version:    0.7.0.1
  */

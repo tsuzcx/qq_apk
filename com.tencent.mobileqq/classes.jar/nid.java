@@ -1,21 +1,14 @@
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.OnMsgTabNodeListLoadListener;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.biz.widgets.TabLayout;
 
-public class nid
-  implements Runnable
+class nid
+  implements bekd
 {
-  public nid(MsgTabNodeListLoader paramMsgTabNodeListLoader, boolean paramBoolean) {}
+  nid(nia paramnia) {}
   
-  public void run()
+  public void onScrollStateChanged(int paramInt)
   {
-    synchronized (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader.c)
-    {
-      Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader.c.iterator();
-      if (localIterator.hasNext()) {
-        ((MsgTabNodeListLoader.OnMsgTabNodeListLoadListener)localIterator.next()).b(this.jdField_a_of_type_Boolean);
-      }
+    if (paramInt == 4098) {
+      nia.a(this.a).setOverScrollMode(0);
     }
   }
 }

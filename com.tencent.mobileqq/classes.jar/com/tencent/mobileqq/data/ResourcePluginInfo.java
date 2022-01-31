@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.notColumn;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atmp;
+import atnz;
+import atoc;
 import java.util.List;
 
 public class ResourcePluginInfo
-  extends Entity
+  extends atmo
 {
-  @notColumn
+  @atnz
   public static final int MASK_FULL_CONFIG = 1;
   public static final int PLUGIN_TYPE_ABOUT = 32;
   public static final int PLUGIN_TYPE_LEBA = 64;
@@ -30,7 +30,7 @@ public class ResourcePluginInfo
   public String strGotoUrl;
   public String strNewPluginDesc;
   public String strNewPluginURL;
-  @unique
+  @atoc
   public String strPkgName;
   public String strResDesc;
   public String strResName;
@@ -39,40 +39,40 @@ public class ResourcePluginInfo
   public long uiCurVer;
   public long uiResId;
   
-  public static ResourcePluginInfo find(EntityManager paramEntityManager, String paramString)
+  public static ResourcePluginInfo find(atmp paramatmp, String paramString)
   {
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (paramEntityManager != null)
+    if (paramatmp != null)
     {
       localObject1 = localObject2;
       if (paramString != null) {
-        localObject1 = (ResourcePluginInfo)paramEntityManager.a(ResourcePluginInfo.class, "strPkgName=?", new String[] { paramString });
+        localObject1 = (ResourcePluginInfo)paramatmp.a(ResourcePluginInfo.class, "strPkgName=?", new String[] { paramString });
       }
     }
     return localObject1;
   }
   
-  public static List getAll(EntityManager paramEntityManager, int paramInt, boolean paramBoolean)
+  public static List<ResourcePluginInfo> getAll(atmp paramatmp, int paramInt, boolean paramBoolean)
   {
     List localList = null;
-    if (paramEntityManager != null)
+    if (paramatmp != null)
     {
       if (paramBoolean) {
-        localList = paramEntityManager.a(ResourcePluginInfo.class, false, "iPluginType=?", new String[] { String.valueOf(paramInt) }, null, null, "cLocalState desc", null);
+        localList = paramatmp.a(ResourcePluginInfo.class, false, "iPluginType=?", new String[] { String.valueOf(paramInt) }, null, null, "cLocalState desc", null);
       }
     }
     else {
       return localList;
     }
-    return paramEntityManager.a(ResourcePluginInfo.class, false, "iPluginType=?", new String[] { String.valueOf(paramInt) }, null, null, null, null);
+    return paramatmp.a(ResourcePluginInfo.class, false, "iPluginType=?", new String[] { String.valueOf(paramInt) }, null, null, null, null);
   }
   
-  public static void persistOrReplace(EntityManager paramEntityManager, ResourcePluginInfo paramResourcePluginInfo)
+  public static void persistOrReplace(atmp paramatmp, ResourcePluginInfo paramResourcePluginInfo)
   {
-    if ((paramEntityManager != null) && (paramResourcePluginInfo != null) && (paramResourcePluginInfo.strPkgName != null) && (!paramResourcePluginInfo.strPkgName.equals("")))
+    if ((paramatmp != null) && (paramResourcePluginInfo != null) && (paramResourcePluginInfo.strPkgName != null) && (!paramResourcePluginInfo.strPkgName.equals("")))
     {
-      ResourcePluginInfo localResourcePluginInfo = (ResourcePluginInfo)paramEntityManager.a(ResourcePluginInfo.class, "strPkgName=?", new String[] { paramResourcePluginInfo.strPkgName });
+      ResourcePluginInfo localResourcePluginInfo = (ResourcePluginInfo)paramatmp.a(ResourcePluginInfo.class, "strPkgName=?", new String[] { paramResourcePluginInfo.strPkgName });
       if (localResourcePluginInfo != null)
       {
         localResourcePluginInfo.strResName = paramResourcePluginInfo.strResName;
@@ -96,23 +96,23 @@ public class ResourcePluginInfo
         localResourcePluginInfo.pluginSetTips = paramResourcePluginInfo.pluginSetTips;
         localResourcePluginInfo.lebaSearchResultType = paramResourcePluginInfo.lebaSearchResultType;
         localResourcePluginInfo.flags = paramResourcePluginInfo.flags;
-        paramEntityManager.a(localResourcePluginInfo);
+        paramatmp.a(localResourcePluginInfo);
       }
     }
     else
     {
       return;
     }
-    paramEntityManager.a(paramResourcePluginInfo);
+    paramatmp.a(paramResourcePluginInfo);
   }
   
-  public static void remove(EntityManager paramEntityManager, String paramString)
+  public static void remove(atmp paramatmp, String paramString)
   {
-    if ((paramEntityManager != null) && (paramString != null))
+    if ((paramatmp != null) && (paramString != null))
     {
-      paramString = find(paramEntityManager, paramString);
+      paramString = find(paramatmp, paramString);
       if (paramString != null) {
-        paramEntityManager.b(paramString);
+        paramatmp.b(paramString);
       }
     }
   }

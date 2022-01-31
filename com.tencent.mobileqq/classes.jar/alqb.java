@@ -1,19 +1,23 @@
-import com.tencent.open.business.base.StaticAnalyz;
-import com.tencent.open.downloadnew.MyAppApi;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.businessCard.data.CardOCRInfo;
 
-public class alqb
-  implements Runnable
+public final class alqb
+  implements Parcelable.Creator<CardOCRInfo>
 {
-  public alqb(MyAppApi paramMyAppApi, String paramString1, String paramString2) {}
-  
-  public void run()
+  public CardOCRInfo a(Parcel paramParcel)
   {
-    StaticAnalyz.a("202", StaticAnalyz.a(this.jdField_a_of_type_JavaLangString, "NEWYYB"), this.b);
+    return new CardOCRInfo(paramParcel);
+  }
+  
+  public CardOCRInfo[] a(int paramInt)
+  {
+    return new CardOCRInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     alqb
  * JD-Core Version:    0.7.0.1
  */

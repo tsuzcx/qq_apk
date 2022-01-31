@@ -17,6 +17,11 @@ public class VoiceRecognizer
     return a;
   }
   
+  public int appendData(byte[] paramArrayOfByte, int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    return this.b.a(paramArrayOfByte, paramInt1, paramInt2, paramBoolean);
+  }
+  
   public int cancel()
   {
     this.b.c();
@@ -69,7 +74,7 @@ public class VoiceRecognizer
   public void resetGetPureRes()
   {
     b localb = this.b;
-    b.e();
+    b.f();
   }
   
   public void resetUri()
@@ -81,19 +86,25 @@ public class VoiceRecognizer
   public void setBackRecord(boolean paramBoolean)
   {
     b localb = this.b;
-    b.c(paramBoolean);
+    b.e(paramBoolean);
   }
   
-  public void setContReco(boolean paramBoolean)
+  public void setCompressOpen(boolean paramBoolean)
   {
     b localb = this.b;
     b.b(paramBoolean);
   }
   
+  public void setContReco(boolean paramBoolean)
+  {
+    b localb = this.b;
+    b.d(paramBoolean);
+  }
+  
   public void setContRes(boolean paramBoolean)
   {
     b localb = this.b;
-    b.a(paramBoolean);
+    b.c(paramBoolean);
   }
   
   public void setDomain(String paramString1, int paramInt, String paramString2)
@@ -111,13 +122,13 @@ public class VoiceRecognizer
   public void setGetPackageMode(boolean paramBoolean)
   {
     b localb = this.b;
-    b.d(paramBoolean);
+    b.f(paramBoolean);
   }
   
   public void setGetPureRes(boolean paramBoolean)
   {
     b localb = this.b;
-    b.e(paramBoolean);
+    b.g(paramBoolean);
   }
   
   public void setListener(VoiceRecognizerListener paramVoiceRecognizerListener)
@@ -147,7 +158,7 @@ public class VoiceRecognizer
   public void setSaveSilk(boolean paramBoolean)
   {
     b localb = this.b;
-    b.g(paramBoolean);
+    b.i(paramBoolean);
   }
   
   public void setSaveSpeex(boolean paramBoolean) {}
@@ -155,7 +166,7 @@ public class VoiceRecognizer
   public void setSaveVoice(boolean paramBoolean)
   {
     b localb = this.b;
-    b.f(paramBoolean);
+    b.h(paramBoolean);
   }
   
   public void setSemanticType(String paramString)
@@ -185,6 +196,12 @@ public class VoiceRecognizer
     InfoSender.setUri(paramString);
   }
   
+  public void setVadOpen(boolean paramBoolean)
+  {
+    b localb = this.b;
+    b.a(paramBoolean);
+  }
+  
   public void setVrDomain(int paramInt)
   {
     b localb = this.b;
@@ -196,6 +213,11 @@ public class VoiceRecognizer
     return this.b.a();
   }
   
+  public int startReceiving()
+  {
+    return this.b.e();
+  }
+  
   public int stop()
   {
     this.b.b();
@@ -204,7 +226,7 @@ public class VoiceRecognizer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.qq.wx.voice.recognizer.VoiceRecognizer
  * JD-Core Version:    0.7.0.1
  */

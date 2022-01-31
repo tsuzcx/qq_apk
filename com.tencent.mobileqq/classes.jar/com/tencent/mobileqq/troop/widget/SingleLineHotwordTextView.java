@@ -8,8 +8,8 @@ import android.text.style.ForegroundColorSpan;
 import android.util.AttributeSet;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
+import apdh;
+import azlj;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,10 +17,10 @@ import java.util.HashMap;
 public class SingleLineHotwordTextView
   extends TextView
 {
-  public static final HashMap a;
+  public static final HashMap<String, SpannableString> a;
   public int a;
   public String a;
-  private ArrayList a;
+  private ArrayList<String> a;
   public int b;
   public String b;
   public int c;
@@ -98,13 +98,13 @@ public class SingleLineHotwordTextView
     return 0;
   }
   
-  public static SpannableString a(String paramString, ArrayList paramArrayList, int paramInt)
+  public static SpannableString a(String paramString, ArrayList<String> paramArrayList, int paramInt)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
     paramString = new SpannableString(paramString);
-    if (TroopUtils.a(paramArrayList)) {
+    if (azlj.a(paramArrayList)) {
       return paramString;
     }
     String str1 = paramString.toString().toLowerCase();
@@ -244,7 +244,7 @@ public class SingleLineHotwordTextView
     }
   }
   
-  protected static String a(String paramString, ArrayList paramArrayList)
+  protected static String a(String paramString, ArrayList<String> paramArrayList)
   {
     StringBuilder localStringBuilder = new StringBuilder("key=[");
     if (paramArrayList != null)
@@ -420,7 +420,7 @@ public class SingleLineHotwordTextView
     String str1;
     if (paramInt1 == 1)
     {
-      str1 = FileUtil.a(str2);
+      str1 = apdh.a(str2);
       if (!TextUtils.isEmpty(str1))
       {
         paramInt1 = str2.toLowerCase().lastIndexOf(str1.toLowerCase());
@@ -478,13 +478,13 @@ public class SingleLineHotwordTextView
     this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
   }
   
-  public void setHotword(ArrayList paramArrayList, int paramInt)
+  public void setHotword(ArrayList<String> paramArrayList, int paramInt)
   {
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
     this.jdField_d_of_type_Int = paramInt;
   }
   
-  public void setHotwords(ArrayList paramArrayList)
+  public void setHotwords(ArrayList<String> paramArrayList)
   {
     this.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
   }
@@ -511,7 +511,7 @@ public class SingleLineHotwordTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.SingleLineHotwordTextView
  * JD-Core Version:    0.7.0.1
  */

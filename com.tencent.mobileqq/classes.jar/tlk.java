@@ -1,82 +1,33 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.app.ShieldListObserver;
-import com.tencent.mobileqq.util.Utils;
-import java.util.List;
-
-public class tlk
-  extends ShieldListObserver
+class tlk
+  implements uei
 {
-  public tlk(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
+  tlk(tlj paramtlj) {}
   
-  protected void a(boolean paramBoolean, List paramList)
+  public void a(int paramInt)
   {
-    if (this.a.a == null) {
-      return;
-    }
-    String str = this.a.a.a;
-    if (ProfileActivity.AllInOne.h(this.a.a)) {
-      str = this.a.a();
-    }
-    for (;;)
+    if ((paramInt == 1) && (tlj.a(this.a) != null) && (tlj.a(this.a).a != null))
     {
-      if (paramList == null) {}
-      int k;
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        k = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
+      if (tlj.a(this.a).a()) {
+        break label66;
       }
-      if (k == 0) {
-        break;
+      if (tlj.a(this.a).a(true)) {
+        tlj.a(this.a).c();
       }
-      this.a.a(paramBoolean, false);
-      return;
     }
-  }
-  
-  protected void b(boolean paramBoolean, List paramList)
-  {
-    int k = 0;
-    if (this.a.a == null) {
-      return;
-    }
-    String str = this.a.a.a;
-    if (ProfileActivity.AllInOne.h(this.a.a)) {
-      str = this.a.a();
-    }
-    for (;;)
+    label66:
+    do
     {
-      if (paramList == null) {}
-      for (int i = 0;; i = paramList.size())
-      {
-        int j = 0;
-        while ((k == 0) && (j < i))
-        {
-          if (Utils.a(String.valueOf(paramList.get(j)), str)) {
-            k = 1;
-          }
-          j += 1;
-        }
-      }
-      if (k == 0) {
-        break;
-      }
-      this.a.a(paramBoolean, true);
       return;
-    }
+      if (tlj.a(this.a).a(false)) {
+        tlj.b(this.a).c();
+      }
+    } while (!tlj.a(this.a).a(true));
+    tlj.a(this.a).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tlk
  * JD-Core Version:    0.7.0.1
  */

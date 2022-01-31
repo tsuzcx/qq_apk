@@ -1,36 +1,44 @@
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.confess.ConfessPlugin;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 import com.tencent.qphone.base.util.QLog;
 
-class abzm
-  implements WXShareHelper.WXShareListener
+public class abzm
+  extends azjp
 {
-  abzm(abzl paramabzl) {}
+  public abzm(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void a(int paramInt, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ConfessPlugin", 2, "onWXShareResp resp.errCode=" + paramBaseResp.errCode);
+      QLog.d("TroopMemberListActivityget_troop_member", 2, "onGetGiftMemberList error");
     }
-    switch (paramBaseResp.errCode)
+    TroopMemberListActivity.a(this.a, true);
+    if (TroopMemberListActivity.b(this.a))
     {
-    case -1: 
-    default: 
-      ConfessPlugin.a(this.a.a.a, false);
-      ConfessPlugin.a(this.a.a.a, 1, 2131435319);
-      return;
-    case 0: 
-      ConfessPlugin.a(this.a.a.a, true);
-      ConfessPlugin.a(this.a.a.a, 2, 2131435318);
-      return;
+      paramString = this.a.a.obtainMessage(12, null);
+      this.a.a.sendMessage(paramString);
     }
-    ConfessPlugin.a(this.a.a.a, false);
+  }
+  
+  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberListActivityget_troop_member", 2, "onGetGiftMemberList");
+    }
+    TroopMemberListActivity.a(this.a, paramArrayOfLong1);
+    TroopMemberListActivity.b(this.a, paramArrayOfLong2);
+    TroopMemberListActivity.c(this.a, paramArrayOfLong3);
+    TroopMemberListActivity.a(this.a, true);
+    if (TroopMemberListActivity.b(this.a))
+    {
+      paramArrayOfLong1 = this.a.a.obtainMessage(12, null);
+      this.a.a.sendMessage(paramArrayOfLong1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abzm
  * JD-Core Version:    0.7.0.1
  */

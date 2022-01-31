@@ -1,18 +1,12 @@
-import android.view.View;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
-public final class akgq
-  implements Runnable
+public abstract interface akgq
 {
-  public akgq(View paramView) {}
-  
-  public void run()
-  {
-    this.a.sendAccessibilityEvent(8);
-  }
+  public abstract void a(int paramInt, UpgradeDetailWrapper paramUpgradeDetailWrapper, akgo paramakgo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akgq
  * JD-Core Version:    0.7.0.1
  */

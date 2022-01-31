@@ -1,21 +1,19 @@
-import android.app.Activity;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowSendTask;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aopb
-  implements Runnable
+class aopb
+  implements View.OnClickListener
 {
-  public aopb(FlowSendTask paramFlowSendTask) {}
+  aopb(aopa paramaopa, avon paramavon) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.setResult(1001);
-    this.a.a.finish();
-    this.a.a = null;
+    this.jdField_a_of_type_Avon.a(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aopb
  * JD-Core Version:    0.7.0.1
  */

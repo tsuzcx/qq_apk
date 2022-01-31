@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class msg_svc$PbGetGroupMsgReq
-  extends MessageMicro
+  extends MessageMicro<PbGetGroupMsgReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64 }, new String[] { "group_code", "begin_seq", "end_seq", "filter", "member_seq", "public_group", "shield_flag", "save_traffic_flag" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), Boolean.valueOf(false), Integer.valueOf(0), Integer.valueOf(0) }, PbGetGroupMsgReq.class);
   public final PBUInt64Field begin_seq = PBField.initUInt64(0L);

@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class ResponeQueryQQMobileContactsV3
   extends JceStruct
 {
-  static ArrayList cache_BindFriendContacts;
-  static ArrayList cache_BindNotFriendContacts;
+  static ArrayList<MobileContactsFriendInfo> cache_BindFriendContacts;
+  static ArrayList<MobileContactsNotFriendInfo> cache_BindNotFriendContacts;
   static int cache_queryFlag;
   static byte[] cache_sessionSid = (byte[])new byte[1];
   static int cache_type = 0;
-  public ArrayList BindFriendContacts;
-  public ArrayList BindNotFriendContacts;
+  public ArrayList<MobileContactsFriendInfo> BindFriendContacts;
+  public ArrayList<MobileContactsNotFriendInfo> BindNotFriendContacts;
   public long ConfigVersion;
   public long ForcePopSwitch;
   public long MaxsignTimeStamp;
@@ -32,6 +32,8 @@ public final class ResponeQueryQQMobileContactsV3
   public String nationCode = "";
   public long nextFlag;
   public long nextQueryTimeInterval;
+  public long nextReLoginTimeInterval;
+  public long nextReconnectionTimeInterval;
   public boolean noBindUploadContacts;
   public long originBinder = 1L;
   public int queryFlag;
@@ -53,14 +55,14 @@ public final class ResponeQueryQQMobileContactsV3
   
   public ResponeQueryQQMobileContactsV3() {}
   
-  public ResponeQueryQQMobileContactsV3(long paramLong1, long paramLong2, byte[] paramArrayOfByte, int paramInt1, ArrayList paramArrayList1, ArrayList paramArrayList2, String paramString1, String paramString2, String paramString3, long paramLong3, long paramLong4, long paramLong5, long paramLong6, int paramInt2, long paramLong7, long paramLong8, long paramLong9, long paramLong10, long paramLong11, long paramLong12, long paramLong13, boolean paramBoolean1, long paramLong14, boolean paramBoolean2, boolean paramBoolean3)
+  public ResponeQueryQQMobileContactsV3(long paramLong1, long paramLong2, byte[] paramArrayOfByte, int paramInt1, ArrayList<MobileContactsFriendInfo> paramArrayList, ArrayList<MobileContactsNotFriendInfo> paramArrayList1, String paramString1, String paramString2, String paramString3, long paramLong3, long paramLong4, long paramLong5, long paramLong6, int paramInt2, long paramLong7, long paramLong8, long paramLong9, long paramLong10, long paramLong11, long paramLong12, long paramLong13, boolean paramBoolean1, long paramLong14, boolean paramBoolean2, boolean paramBoolean3, long paramLong15, long paramLong16)
   {
     this.nextFlag = paramLong1;
     this.timeStamp = paramLong2;
     this.sessionSid = paramArrayOfByte;
     this.queryFlag = paramInt1;
-    this.BindFriendContacts = paramArrayList1;
-    this.BindNotFriendContacts = paramArrayList2;
+    this.BindFriendContacts = paramArrayList;
+    this.BindNotFriendContacts = paramArrayList1;
     this.nationCode = paramString1;
     this.mobileNo = paramString2;
     this.MobileUniqueNo = paramString3;
@@ -80,6 +82,8 @@ public final class ResponeQueryQQMobileContactsV3
     this.UIBits = paramLong14;
     this.isChangeDev = paramBoolean2;
     this.noBindUploadContacts = paramBoolean3;
+    this.nextReconnectionTimeInterval = paramLong15;
+    this.nextReLoginTimeInterval = paramLong16;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -109,6 +113,8 @@ public final class ResponeQueryQQMobileContactsV3
     this.UIBits = paramJceInputStream.read(this.UIBits, 22, false);
     this.isChangeDev = paramJceInputStream.read(this.isChangeDev, 23, false);
     this.noBindUploadContacts = paramJceInputStream.read(this.noBindUploadContacts, 24, false);
+    this.nextReconnectionTimeInterval = paramJceInputStream.read(this.nextReconnectionTimeInterval, 25, false);
+    this.nextReLoginTimeInterval = paramJceInputStream.read(this.nextReLoginTimeInterval, 26, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -138,6 +144,8 @@ public final class ResponeQueryQQMobileContactsV3
     paramJceOutputStream.write(this.UIBits, 22);
     paramJceOutputStream.write(this.isChangeDev, 23);
     paramJceOutputStream.write(this.noBindUploadContacts, 24);
+    paramJceOutputStream.write(this.nextReconnectionTimeInterval, 25);
+    paramJceOutputStream.write(this.nextReLoginTimeInterval, 26);
   }
 }
 

@@ -1,48 +1,69 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.AppProtocolObserver;
-import com.tencent.biz.pubaccount.readinjoy.logic.ReadInJoyAtlasManager;
-import com.tencent.biz.pubaccount.readinjoy.logic.ReadInJoyAtlasManager.AtlasCallback;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.ui.AVLoadingDialogActivity;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xb3e.cmd0xb3e.RspBody;
-import tencent.im.oidb.gallery.gallery.GalleryList;
+import java.lang.ref.WeakReference;
 
 public class lrb
-  extends ProtoUtils.AppProtocolObserver
+  extends Handler
 {
-  public lrb(ReadInJoyAtlasManager paramReadInJoyAtlasManager, ReadInJoyAtlasManager.AtlasCallback paramAtlasCallback) {}
+  final String a;
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public lrb(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(ReadInJoyAtlasManager.a, 2, "fetchAtlasRecommendList onResult, errorCode=" + paramInt);
-    }
-    if ((paramInt != -1) && (paramArrayOfByte != null)) {}
-    try
+    this.a = paramString;
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if ((paramMessage.obj != null) && ((paramMessage.obj instanceof WeakReference)))
     {
-      paramBundle = new cmd0xb3e.RspBody();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      if (paramBundle.msg_gallery_list.has())
+      localObject = (WeakReference)paramMessage.obj;
+      if (localObject != null)
       {
-        paramArrayOfByte = (gallery.GalleryList)paramBundle.msg_gallery_list.get();
-        if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback != null) {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback.a(true, paramArrayOfByte.rpt_msg_gallery_info.get());
-        }
+        localObject = ((WeakReference)localObject).get();
+        if ((localObject == null) || (!(localObject instanceof AVLoadingDialogActivity))) {}
       }
-      return;
     }
-    catch (Exception paramArrayOfByte)
+    for (Object localObject = new WeakReference((AVLoadingDialogActivity)localObject);; localObject = null)
     {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyLogicReadInJoyAtlasManager$AtlasCallback.a(false, null);
+      switch (paramMessage.what)
+      {
       }
-      QLog.e(ReadInJoyAtlasManager.a, 1, "fetchAtlasList onResult(), exception=" + paramArrayOfByte.toString());
+      do
+      {
+        do
+        {
+          return;
+        } while ((localObject == null) || (((WeakReference)localObject).get() == null));
+        paramMessage = (Intent)((AVLoadingDialogActivity)((WeakReference)localObject).get()).getIntent().getParcelableExtra("avactivity_intent");
+        paramMessage.setExtrasClassLoader(ResultRecord.class.getClassLoader());
+        long l = min.a(paramMessage);
+        QLog.w(this.a, 1, "avideo handleMessage MSG_START_AVACTIVITY, seq[" + l + "]");
+        try
+        {
+          AudioHelper.a(this.a + ".MSG_START_AVACTIVITY", paramMessage.getExtras());
+          ((AVLoadingDialogActivity)((WeakReference)localObject).get()).startActivity(paramMessage);
+          ((AVLoadingDialogActivity)((WeakReference)localObject).get()).overridePendingTransition(2130772164, 0);
+          return;
+        }
+        catch (Exception paramMessage)
+        {
+          QLog.w(this.a, 1, "MSG_START_AVACTIVITY, Exception, seq[" + l + "]", paramMessage);
+          return;
+        }
+      } while ((localObject == null) || (((WeakReference)localObject).get() == null));
+      ((AVLoadingDialogActivity)((WeakReference)localObject).get()).finish();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lrb
  * JD-Core Version:    0.7.0.1
  */

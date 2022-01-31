@@ -1,53 +1,90 @@
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.widget.itemtouchhelper.ItemTouchHelper;
-import com.tencent.widget.itemtouchhelper.ItemTouchHelper.Callback;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class ammk
-  extends GestureDetector.SimpleOnGestureListener
 {
-  public ammk(ItemTouchHelper paramItemTouchHelper) {}
+  private int a;
+  private int b;
+  private int c;
+  private int d;
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  public static ammk a(alzs[] paramArrayOfalzs)
   {
-    return true;
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    Object localObject = this.a.a(paramMotionEvent);
-    if (localObject != null)
+    if ((paramArrayOfalzs == null) || (paramArrayOfalzs.length <= 0)) {
+      paramArrayOfalzs = null;
+    }
+    ammk localammk;
+    for (;;)
     {
-      localObject = this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getChildViewHolder((View)localObject);
-      if ((localObject != null) && (this.a.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper$Callback.a(this.a.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, (RecyclerView.ViewHolder)localObject))) {
-        break label57;
+      return paramArrayOfalzs;
+      localammk = new ammk();
+      try
+      {
+        JSONObject localJSONObject = new JSONObject(paramArrayOfalzs[0].a);
+        if (localJSONObject.has("flag"))
+        {
+          localammk.d = localJSONObject.getInt("flag");
+          if (QLog.isColorLevel()) {
+            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips flag = " + localammk.d);
+          }
+        }
+        if (localJSONObject.has("showCount"))
+        {
+          localammk.c = localJSONObject.getInt("showCount");
+          if (QLog.isColorLevel()) {
+            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips showCount = " + localammk.c);
+          }
+        }
+        if (localJSONObject.has("groupFlag"))
+        {
+          localammk.b = localJSONObject.getInt("groupFlag");
+          if (QLog.isColorLevel()) {
+            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips groupFlag = " + localammk.b);
+          }
+        }
+        paramArrayOfalzs = localammk;
+        if (localJSONObject.has("groupShowCount"))
+        {
+          localammk.a = localJSONObject.getInt("groupShowCount");
+          paramArrayOfalzs = localammk;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("TencentDocStructMsgGrayTipsConfigBean", 2, "handleDocsStructMsgGrayTips groupShowCount = " + localammk.a);
+            return localammk;
+          }
+        }
+      }
+      catch (Exception paramArrayOfalzs)
+      {
+        QLog.e("TencentDocStructMsgGrayTipsConfigBean", 1, "handleDocsStructMsgGrayTips e " + paramArrayOfalzs.toString());
       }
     }
-    label57:
-    do
-    {
-      do
-      {
-        return;
-      } while (paramMotionEvent.getPointerId(0) != this.a.jdField_a_of_type_Int);
-      int i = paramMotionEvent.findPointerIndex(this.a.jdField_a_of_type_Int);
-      float f1 = paramMotionEvent.getX(i);
-      float f2 = paramMotionEvent.getY(i);
-      this.a.jdField_a_of_type_Float = f1;
-      this.a.b = f2;
-      paramMotionEvent = this.a;
-      this.a.f = 0.0F;
-      paramMotionEvent.e = 0.0F;
-    } while (!this.a.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper$Callback.b());
-    this.a.a((RecyclerView.ViewHolder)localObject, 2);
+    return localammk;
+  }
+  
+  public int a()
+  {
+    return this.a;
+  }
+  
+  public int b()
+  {
+    return this.b;
+  }
+  
+  public int c()
+  {
+    return this.c;
+  }
+  
+  public int d()
+  {
+    return this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ammk
  * JD-Core Version:    0.7.0.1
  */

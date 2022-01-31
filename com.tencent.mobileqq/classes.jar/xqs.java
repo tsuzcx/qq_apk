@@ -1,28 +1,31 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class xqs
-  implements Runnable
+class xqs
+  extends MqqHandler
 {
-  public xqs(RecentOptPopBar paramRecentOptPopBar) {}
-  
-  public void run()
+  xqs(xqr paramxqr, Looper paramLooper)
   {
-    if (CmGameUtil.a() == null) {}
-    ApolloManager localApolloManager;
-    do
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.what == 100)
     {
-      return;
-      localApolloManager = (ApolloManager)CmGameUtil.a().getManager(152);
-    } while ((localApolloManager == null) || (localApolloManager.h));
-    this.a.c();
+      if (QLog.isColorLevel()) {
+        QLog.i("DeviceBLE2", 2, "QFindGattManager write data timeout bleSN " + (String)paramMessage.obj);
+      }
+      xqr.a(this.a, paramMessage.arg1);
+      this.a.a((String)paramMessage.obj);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     xqs
  * JD-Core Version:    0.7.0.1
  */

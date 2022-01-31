@@ -1,18 +1,24 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAdIMAXBrowserFragment;
+import com.tencent.common.app.AppInterface;
+import java.util.HashMap;
 
-public final class oig
-  implements Parcelable.Creator
+public class oig
+  implements View.OnClickListener
 {
-  public EditRecordVideoSource a(Parcel paramParcel)
-  {
-    return new EditRecordVideoSource(paramParcel);
-  }
+  public oig(ReadInJoyAdIMAXBrowserFragment paramReadInJoyAdIMAXBrowserFragment) {}
   
-  public EditRecordVideoSource[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new EditRecordVideoSource[paramInt];
+    paramView = (bbbt)this.a.a.a(4);
+    if ((paramView != null) && (paramView.a != null) && (paramView.a.a())) {
+      return;
+    }
+    ReadInJoyAdIMAXBrowserFragment.a(this.a);
+    paramView = new HashMap();
+    paramView.put("stat_src", "5");
+    nbe.a(new nmv().a((AppInterface)ReadInJoyAdIMAXBrowserFragment.a(this.a)).a(this.a.getActivity()).a(nbe.u).b(nbe.ae).a(ReadInJoyAdIMAXBrowserFragment.a(this.a)).d(nbe.a(paramView)).a());
   }
 }
 

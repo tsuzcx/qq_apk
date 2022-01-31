@@ -9,14 +9,14 @@ import java.util.Map;
 public final class operation_addcomment_req
   extends JceStruct
 {
-  static Map cache_busi_param = new HashMap();
-  static Map cache_bypass_param;
-  static Map cache_bypass_param_binary;
+  static Map<Integer, String> cache_busi_param = new HashMap();
+  static Map<String, String> cache_bypass_param;
+  static Map<String, byte[]> cache_bypass_param_binary;
   static MediaInfo cache_mediainfo;
   public int appid;
-  public Map busi_param;
-  public Map bypass_param;
-  public Map bypass_param_binary;
+  public Map<Integer, String> busi_param;
+  public Map<String, String> bypass_param;
+  public Map<String, byte[]> bypass_param_binary;
   public String content = "";
   public int isPrivateComment;
   public int isverified;
@@ -41,7 +41,7 @@ public final class operation_addcomment_req
   
   public operation_addcomment_req() {}
   
-  public operation_addcomment_req(int paramInt1, long paramLong1, long paramLong2, String paramString1, String paramString2, int paramInt2, Map paramMap1, String paramString3, MediaInfo paramMediaInfo, int paramInt3, int paramInt4, Map paramMap2, Map paramMap3)
+  public operation_addcomment_req(int paramInt1, long paramLong1, long paramLong2, String paramString1, String paramString2, int paramInt2, Map<Integer, String> paramMap, String paramString3, MediaInfo paramMediaInfo, int paramInt3, int paramInt4, Map<String, String> paramMap1, Map<String, byte[]> paramMap2)
   {
     this.appid = paramInt1;
     this.uin = paramLong1;
@@ -49,13 +49,13 @@ public final class operation_addcomment_req
     this.srcId = paramString1;
     this.content = paramString2;
     this.isverified = paramInt2;
-    this.busi_param = paramMap1;
+    this.busi_param = paramMap;
     this.srcSubid = paramString3;
     this.mediainfo = paramMediaInfo;
     this.mediabittype = paramInt3;
     this.isPrivateComment = paramInt4;
-    this.bypass_param = paramMap2;
-    this.bypass_param_binary = paramMap3;
+    this.bypass_param = paramMap1;
+    this.bypass_param_binary = paramMap2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -108,7 +108,7 @@ public final class operation_addcomment_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     NS_MOBILE_OPERATION.operation_addcomment_req
  * JD-Core Version:    0.7.0.1
  */

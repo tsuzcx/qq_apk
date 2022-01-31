@@ -1,32 +1,10 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-
-public class vzy
-  implements Runnable
+public abstract interface vzy
 {
-  public vzy(HotChatPie paramHotChatPie) {}
-  
-  public void run()
-  {
-    TroopHandler localTroopHandler = (TroopHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
-    if (localTroopHandler != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.BaseTroopChatPieQ.hotchat.aio_post_red_point", 2, "send_oidb_0x8c9_2");
-      }
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.add(Long.valueOf(1105933138L));
-      localTroopHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localArrayList, true);
-    }
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vzy
  * JD-Core Version:    0.7.0.1
  */

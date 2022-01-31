@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.shortvideo.filter;
 
-import aigf;
-import aigg;
 import com.tencent.mobileqq.shortvideo.videotransfer.TransferData;
 import com.tencent.mobileqq.shortvideo.videotransfer.TransferRender;
 import java.util.LinkedList;
@@ -9,81 +7,87 @@ import java.util.LinkedList;
 public class QQTransferFilter
   extends QQBaseFilter
 {
-  private TransferRender jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferRender = new TransferRender();
-  private final LinkedList jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
-  private boolean jdField_a_of_type_Boolean = true;
+  private static final String TAG = "QQTransferFilter";
+  private boolean mEnabled = true;
+  private TransferRender mRender = new TransferRender();
+  private final LinkedList<Runnable> mRunOnDraw = new LinkedList();
   
   public QQTransferFilter(QQFilterRenderManager paramQQFilterRenderManager)
   {
     super(160, paramQQFilterRenderManager);
   }
   
-  private void a()
+  private void runOnDraw(Runnable paramRunnable)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    synchronized (this.mRunOnDraw)
     {
-      if (!this.jdField_a_of_type_JavaUtilLinkedList.isEmpty()) {
-        ((Runnable)this.jdField_a_of_type_JavaUtilLinkedList.removeFirst()).run();
+      this.mRunOnDraw.addLast(paramRunnable);
+      return;
+    }
+  }
+  
+  private void runPendingOnDrawTasks()
+  {
+    synchronized (this.mRunOnDraw)
+    {
+      if (!this.mRunOnDraw.isEmpty()) {
+        ((Runnable)this.mRunOnDraw.removeFirst()).run();
       }
     }
   }
   
-  private void a(Runnable paramRunnable)
+  public void enable(boolean paramBoolean)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilLinkedList)
+    this.mEnabled = paramBoolean;
+  }
+  
+  public boolean isFilterWork()
+  {
+    return (this.mEnabled) && (this.mRender.isWorking());
+  }
+  
+  public void onDrawFrame()
+  {
+    if (this.mEnabled)
     {
-      this.jdField_a_of_type_JavaUtilLinkedList.addLast(paramRunnable);
-      return;
-    }
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    a(new aigg(this, paramFloat));
-  }
-  
-  public void a(TransferData paramTransferData)
-  {
-    if (!this.jdField_a_of_type_Boolean) {
-      return;
-    }
-    a(new aigf(this, paramTransferData));
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferRender.a(paramInt1, paramInt2);
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferRender.a();
-  }
-  
-  public boolean f_()
-  {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferRender.a());
-  }
-  
-  public void h()
-  {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      a();
-      long l = a().b() / 1000000L;
-      int i = this.jdField_a_of_type_ComTencentMobileqqShortvideoVideotransferTransferRender.a(this.jdField_a_of_type_Int, null, null, l);
+      runPendingOnDrawTasks();
+      long l = getQQFilterRenderManager().getBusinessOperation().getOrgTimeStamp() / 1000000L;
+      int i = this.mRender.process(this.mInputTextureID, null, null, l);
       if (i >= 0)
       {
-        this.b = i;
+        this.mOutputTextureID = i;
         return;
       }
-      this.b = this.jdField_a_of_type_Int;
+      this.mOutputTextureID = this.mInputTextureID;
       return;
     }
-    this.b = this.jdField_a_of_type_Int;
+    this.mOutputTextureID = this.mInputTextureID;
+  }
+  
+  public void onSurfaceChange(int paramInt1, int paramInt2)
+  {
+    this.mRender.onSurfaceChange(paramInt1, paramInt2);
+  }
+  
+  public void onSurfaceDestroy()
+  {
+    this.mRender.destroy();
+  }
+  
+  public void setSpeedRate(float paramFloat)
+  {
+    if (!this.mEnabled) {
+      return;
+    }
+    runOnDraw(new QQTransferFilter.2(this, paramFloat));
+  }
+  
+  public void setTransferData(TransferData paramTransferData)
+  {
+    if (!this.mEnabled) {
+      return;
+    }
+    runOnDraw(new QQTransferFilter.1(this, paramTransferData));
   }
 }
 

@@ -1,35 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import com.tencent.mobileqq.profile.ProfileLabelInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.List;
+import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
 
-class tma
-  implements View.OnClickListener
+public class tma
+  extends vql
 {
-  tma(tlz paramtlz) {}
+  public tma(StoryPlayerCommentListView paramStoryPlayerCommentListView) {}
   
-  public void onClick(View paramView)
+  public boolean a(boolean paramBoolean)
   {
-    paramView = paramView.getTag();
-    if ((paramView instanceof tly))
-    {
-      paramView = (tly)paramView;
-      if ((paramView.a >= 0) && (paramView.a < this.a.a.a.size()))
-      {
-        paramView = (ProfileLabelInfo)this.a.a.a.remove(paramView.a);
-        this.a.a.a(this.a.a.a.size());
-        this.a.notifyDataSetChanged();
-        tlz.a(this.a, paramView);
-        ReportController.b(this.a.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "2", "", "", "");
-      }
-    }
+    StoryPlayerCommentListView.a(this.a).a(StoryPlayerCommentListView.a(this.a).a());
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tma
  * JD-Core Version:    0.7.0.1
  */

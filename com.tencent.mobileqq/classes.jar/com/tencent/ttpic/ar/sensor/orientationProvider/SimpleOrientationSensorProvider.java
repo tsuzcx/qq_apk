@@ -42,10 +42,10 @@ public class SimpleOrientationSensorProvider
         f2 = (float)Math.toDegrees(this.values[0]);
         f1 = f2;
         if (f2 >= 0.0F) {
-          break label528;
+          break label534;
         }
         f1 = f2 + 360.0F;
-        break label528;
+        break label534;
         f1 = (float)Math.toDegrees(this.values[1]);
         float f3 = -(float)Math.toDegrees(this.values[2]);
         if (Math.abs(f2 - this.lastAzimuth) > 20.0F) {
@@ -81,25 +81,28 @@ public class SimpleOrientationSensorProvider
       while (localIterator.hasNext())
       {
         localFloat = (Float)localIterator.next();
-        paramArrayOfFloat[0] += localFloat.floatValue();
+        f1 = paramArrayOfFloat[0];
+        paramArrayOfFloat[0] = (localFloat.floatValue() + f1);
       }
       localIterator = this.pitchQueue.iterator();
       while (localIterator.hasNext())
       {
         localFloat = (Float)localIterator.next();
-        paramArrayOfFloat[1] += localFloat.floatValue();
+        f1 = paramArrayOfFloat[1];
+        paramArrayOfFloat[1] = (localFloat.floatValue() + f1);
       }
       localIterator = this.rollQueue.iterator();
       while (localIterator.hasNext())
       {
         localFloat = (Float)localIterator.next();
-        paramArrayOfFloat[2] += localFloat.floatValue();
+        f1 = paramArrayOfFloat[2];
+        paramArrayOfFloat[2] = (localFloat.floatValue() + f1);
       }
       paramArrayOfFloat[0] /= this.azimuthQueue.size();
       paramArrayOfFloat[1] /= this.pitchQueue.size();
       paramArrayOfFloat[2] /= this.rollQueue.size();
       return;
-      label528:
+      label534:
       float f2 = f1;
       if (180.0F <= f1)
       {
@@ -123,7 +126,7 @@ public class SimpleOrientationSensorProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.ar.sensor.orientationProvider.SimpleOrientationSensorProvider
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,23 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.animation.Animation;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
 
 public class afid
-  implements View.OnClickListener
+  extends beem
 {
-  public afid(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public afid(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((this.a.b != null) && (!this.a.isFinishing()))
-    {
-      this.a.b.dismiss();
-      this.a.b = null;
-    }
-    this.a.a(300L);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004BB0", "0X8004BB0", 0, 0, "", "", "", "");
+    this.a.a(true);
+    EmoticonGroupStoreFragment.a(this.a, false);
+    this.a.titleRoot.removeView(EmoticonGroupStoreFragment.a(this.a));
+    this.a.titleRoot.removeView(EmoticonGroupStoreFragment.b(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afid
  * JD-Core Version:    0.7.0.1
  */

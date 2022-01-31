@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x6c2$GiftBagInfo
-  extends MessageMicro
+  extends MessageMicro<GiftBagInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_ext = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -23,7 +23,7 @@ public final class oidb_0x6c2$GiftBagInfo
   public final PBInt32Field int32_remain_amount = PBField.initInt32(0);
   public final PBInt32Field int32_remain_count = PBField.initInt32(0);
   public final PBInt32Field int32_winner = PBField.initInt32(0);
-  public final PBRepeatMessageField msg_paly = PBField.initRepeatMessage(oidb_0x6c2.Player.class);
+  public final PBRepeatMessageField<oidb_0x6c2.Player> msg_paly = PBField.initRepeatMessage(oidb_0x6c2.Player.class);
   public final PBUInt64Field uint64_done_time = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_end_time = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_gift_owner = PBField.initUInt64(0L);
@@ -41,7 +41,7 @@ public final class oidb_0x6c2$GiftBagInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x6c2.oidb_0x6c2.GiftBagInfo
  * JD-Core Version:    0.7.0.1
  */

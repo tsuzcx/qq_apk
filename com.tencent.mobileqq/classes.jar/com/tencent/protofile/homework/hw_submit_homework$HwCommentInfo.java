@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class hw_submit_homework$HwCommentInfo
-  extends MessageMicro
+  extends MessageMicro<HwCommentInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field createts = PBField.initUInt64(0L);

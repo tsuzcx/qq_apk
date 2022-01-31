@@ -1,232 +1,145 @@
-import android.opengl.GLDebugHelper;
-import android.util.Log;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView.EGLConfigChooser;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView.EGLContextFactory;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView.EGLWindowSurfaceFactory;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView.GLWrapper;
-import java.io.Writer;
-import java.lang.ref.WeakReference;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
-import javax.microedition.khronos.egl.EGLSurface;
-import javax.microedition.khronos.opengles.GL;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.weiyun.transmission.upload.UploadFile;
+import com.tencent.weiyun.transmission.upload.UploadJobContext;
+import com.tencent.weiyun.transmission.upload.UploadJobContext.StatusInfo;
+import com.tencent.weiyun.transmission.upload.UploadManager.IUploadStatusListener;
 
-public class aoiw
+class aoiw
+  implements UploadManager.IUploadStatusListener
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  EGL10 jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10;
-  EGLConfig jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig;
-  EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
-  EGLDisplay jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay;
-  EGLSurface jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface;
+  aoiw(aoio paramaoio) {}
   
-  public aoiw(WeakReference paramWeakReference)
-  {
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
-  }
+  public void onUploadJobAdded(String paramString, long paramLong) {}
   
-  public static String a(int paramInt)
+  public void onUploadStatusChanged(String paramString, long paramLong, UploadJobContext.StatusInfo paramStatusInfo, boolean paramBoolean)
   {
-    switch (paramInt)
+    if (this.a.jdField_a_of_type_Aonh == null) {}
+    do
     {
-    default: 
-      return b(paramInt);
-    case 12288: 
-      return "EGL_SUCCESS";
-    case 12289: 
-      return "EGL_NOT_INITIALIZED";
-    case 12290: 
-      return "EGL_BAD_ACCESS";
-    case 12291: 
-      return "EGL_BAD_ALLOC";
-    case 12292: 
-      return "EGL_BAD_ATTRIBUTE";
-    case 12293: 
-      return "EGL_BAD_CONFIG";
-    case 12294: 
-      return "EGL_BAD_CONTEXT";
-    case 12295: 
-      return "EGL_BAD_CURRENT_SURFACE";
-    case 12296: 
-      return "EGL_BAD_DISPLAY";
-    case 12297: 
-      return "EGL_BAD_MATCH";
-    case 12298: 
-      return "EGL_BAD_NATIVE_PIXMAP";
-    case 12299: 
-      return "EGL_BAD_NATIVE_WINDOW";
-    case 12300: 
-      return "EGL_BAD_PARAMETER";
-    case 12301: 
-      return "EGL_BAD_SURFACE";
-    }
-    return "EGL_CONTEXT_LOST";
-  }
-  
-  public static String a(String paramString, int paramInt)
-  {
-    return paramString + " failed: " + a(paramInt);
-  }
-  
-  private void a(String paramString)
-  {
-    a(paramString, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError());
-  }
-  
-  public static void a(String paramString, int paramInt)
-  {
-    throw new RuntimeException(a(paramString, paramInt));
-  }
-  
-  public static void a(String paramString1, String paramString2, int paramInt)
-  {
-    Log.w(paramString1, a(paramString2, paramInt));
-  }
-  
-  private static String b(int paramInt)
-  {
-    return "0x" + Integer.toHexString(paramInt);
-  }
-  
-  private void d()
-  {
-    if ((this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface != null) && (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface != EGL10.EGL_NO_SURFACE))
-    {
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
-      GLTextureView localGLTextureView = (GLTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localGLTextureView != null) {
-        GLTextureView.a(localGLTextureView).a(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface);
-      }
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = null;
-    }
-  }
-  
-  public int a()
-  {
-    if (!this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglSwapBuffers(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface)) {
-      return this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError();
-    }
-    return 12288;
-  }
-  
-  GL a()
-  {
-    GL localGL2 = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext.getGL();
-    GLTextureView localGLTextureView = (GLTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    Object localObject = localGL2;
-    GL localGL1;
-    int i;
-    if (localGLTextureView != null)
-    {
-      localGL1 = localGL2;
-      if (GLTextureView.a(localGLTextureView) != null) {
-        localGL1 = GLTextureView.a(localGLTextureView).a(localGL2);
-      }
-      localObject = localGL1;
-      if ((GLTextureView.b(localGLTextureView) & 0x3) != 0)
+      do
       {
-        i = 0;
-        if ((GLTextureView.b(localGLTextureView) & 0x1) != 0) {
-          i = 1;
+        return;
+        if (!paramBoolean) {
+          break;
         }
-        if ((GLTextureView.b(localGLTextureView) & 0x2) == 0) {
-          break label106;
+        if (paramStatusInfo.state == 3)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("FileManagerRSWorker<FileAssistant>", 2, "WeiYun upload is onStarted[" + this.a.c + "]");
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.b, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 16, null, 0, null);
+          return;
+        }
+        if (paramStatusInfo.state == 6)
+        {
+          if (paramStatusInfo.errorCode == 1810002)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("FileManagerRSWorker<FileAssistant>", 2, "WeiYun upload is canceled[" + this.a.c + "],set trafficData size[" + this.a.jdField_a_of_type_Long + "]");
+            }
+            if (badq.b(BaseApplication.getContext()) == 1)
+            {
+              paramString = new String[3];
+              paramString[0] = "param_WIFIFileFlow";
+              paramString[1] = "param_WIFIFlow";
+              paramString[2] = "param_Flow";
+            }
+            for (;;)
+            {
+              this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendAppDataIncerment(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramString, this.a.jdField_a_of_type_Long);
+              this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.b, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 3, null, 0, null);
+              return;
+              paramString = new String[3];
+              paramString[0] = "param_XGFileFlow";
+              paramString[1] = "param_XGFlow";
+              paramString[2] = "param_Flow";
+            }
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("FileManagerRSWorker<FileAssistant>", 2, "WeiYun upload is onFailed[" + this.a.c + "],set trafficData size[" + this.a.jdField_a_of_type_Long + "]");
+          }
+          if (badq.b(BaseApplication.getContext()) == 1)
+          {
+            paramString = new String[3];
+            paramString[0] = "param_WIFIFileFlow";
+            paramString[1] = "param_WIFIFlow";
+            paramString[2] = "param_Flow";
+          }
+          for (;;)
+          {
+            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendAppDataIncerment(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramString, this.a.jdField_a_of_type_Long);
+            this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
+            this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isReaded = false;
+            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
+            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+            this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.b, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 38, null, paramStatusInfo.errorCode, paramStatusInfo.errorMsg);
+            return;
+            paramString = new String[3];
+            paramString[0] = "param_XGFileFlow";
+            paramString[1] = "param_XGFlow";
+            paramString[2] = "param_Flow";
+          }
+        }
+      } while (paramStatusInfo.state != 5);
+      this.a.jdField_a_of_type_Aonh.a(paramStatusInfo.fileId);
+      if (QLog.isColorLevel()) {
+        QLog.i("FileManagerRSWorker<FileAssistant>", 2, "WeiYun upload is onSucceed[" + this.a.c + "],set trafficData size[" + this.a.d + "]");
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunFileId = paramStatusInfo.fileId;
+      if (paramStatusInfo.jobContext != null)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunDirKey = paramStatusInfo.jobContext.file().pDirKey;
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileSHA = paramStatusInfo.jobContext.file().sha;
+        if (!TextUtils.isEmpty(paramStatusInfo.jobContext.file().thumbUrl)) {
+          this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath = paramStatusInfo.jobContext.file().thumbUrl;
         }
       }
-    }
-    label106:
-    for (localObject = new aoiz();; localObject = null)
-    {
-      localObject = GLDebugHelper.wrap(localGL1, i, (Writer)localObject);
-      return localObject;
-    }
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 = ((EGL10)EGLContext.getEGL());
-    this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay == EGL10.EGL_NO_DISPLAY) {
-      throw new RuntimeException("eglGetDisplay failed");
-    }
-    Object localObject = new int[2];
-    if (!this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglInitialize(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, (int[])localObject)) {
-      throw new RuntimeException("eglInitialize failed");
-    }
-    localObject = (GLTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localObject == null) {
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig = null;
-    }
-    for (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;; this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = GLTextureView.a((GLTextureView)localObject).a(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig))
-    {
-      if ((this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext == null) || (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext == EGL10.EGL_NO_CONTEXT))
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = 1.0F;
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setCloudType(2);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 1;
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.isReaded = false;
+      this.a.h = System.currentTimeMillis();
+      if (badq.b(BaseApplication.getContext()) == 1)
       {
-        this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
-        a("createContext");
+        paramString = new String[3];
+        paramString[0] = "param_WIFIFileFlow";
+        paramString[1] = "param_WIFIFlow";
+        paramString[2] = "param_Flow";
       }
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = null;
-      return;
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig = GLTextureView.a((GLTextureView)localObject).a(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay);
-    }
-  }
-  
-  public boolean a()
-  {
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10 == null) {
-      throw new RuntimeException("egl not initialized");
-    }
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay == null) {
-      throw new RuntimeException("eglDisplay not initialized");
-    }
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig == null) {
-      throw new RuntimeException("mEglConfig not initialized");
-    }
-    d();
-    GLTextureView localGLTextureView = (GLTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localGLTextureView != null) {}
-    for (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = GLTextureView.a(localGLTextureView).a(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLConfig, localGLTextureView.getSurfaceTexture()); (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface == null) || (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface == EGL10.EGL_NO_SURFACE); this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface = null)
-    {
-      if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError() == 12299) {
-        Log.e("EglHelper", "createWindowSurface returned EGL_BAD_NATIVE_WINDOW.");
+      for (;;)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.sendAppDataIncerment(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramString, this.a.jdField_a_of_type_Long);
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.b, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 37, null, 0, null);
+        paramString = new apcj();
+        paramString.b = "send_file_suc";
+        paramString.jdField_a_of_type_Int = 1;
+        apci.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString);
+        return;
+        paramString = new String[3];
+        paramString[0] = "param_XGFileFlow";
+        paramString[1] = "param_XGFlow";
+        paramString[2] = "param_Flow";
       }
-      return false;
+      paramLong = System.currentTimeMillis();
+      this.a.jdField_a_of_type_Long = paramStatusInfo.currSize;
+      this.a.d = paramStatusInfo.totalSize;
+    } while (paramLong - this.a.f < 1000L);
+    this.a.f = paramLong;
+    if (QLog.isColorLevel()) {
+      QLog.i("FileManagerRSWorker<FileAssistant>", 2, "Id[" + this.a.c + "]WeiYun upload is onProgressChange mtransferedSize[" + this.a.jdField_a_of_type_Long + "/" + this.a.d + "]");
     }
-    if (!this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglMakeCurrent(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLSurface, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext))
-    {
-      a("EGLHelper", "eglMakeCurrent", this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglGetError());
-      return false;
-    }
-    return true;
-  }
-  
-  public void b()
-  {
-    d();
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext != null)
-    {
-      GLTextureView localGLTextureView = (GLTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localGLTextureView != null) {
-        GLTextureView.a(localGLTextureView).a(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay, this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext);
-      }
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext = null;
-    }
-    if (this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay != null)
-    {
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGL10.eglTerminate(this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay);
-      this.jdField_a_of_type_JavaxMicroeditionKhronosEglEGLDisplay = null;
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fProgress = ((float)this.a.jdField_a_of_type_Long / (float)this.a.d);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.b, this.a.c, this.a.e, this.a.jdField_a_of_type_Int, 16, null, 0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoiw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import android.support.annotation.Nullable;
+import com.tribe.async.async.FutureListener.SimpleFutureListener;
+import com.tribe.async.async.JobController.DoneEvent;
+import com.tribe.async.async.Worker;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class sgf
-  implements DialogInterface.OnClickListener
+class sgf
+  extends FutureListener.SimpleFutureListener<Progress, Result>
 {
-  public sgf(ChatHistoryImageView paramChatHistoryImageView) {}
+  sgf(sge paramsge, Worker paramWorker) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onFutureDone(@Nullable Result paramResult)
   {
-    this.a.j();
+    sgi.a().dispatch(new JobController.DoneEvent(this.jdField_a_of_type_ComTribeAsyncAsyncWorker));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sgf
  * JD-Core Version:    0.7.0.1
  */

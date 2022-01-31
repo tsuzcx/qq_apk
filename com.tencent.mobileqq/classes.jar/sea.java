@@ -1,26 +1,24 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ChatHistory;
+import java.util.Comparator;
 
-public class sea
-  implements Animation.AnimationListener
+class sea
+  implements Comparator<sdf>
 {
-  public sea(ChatHistory paramChatHistory, View paramView, int paramInt) {}
+  sea(sdy paramsdy) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(sdf paramsdf1, sdf paramsdf2)
   {
-    this.jdField_a_of_type_AndroidViewView.offsetTopAndBottom(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidViewView.requestLayout();
+    if (paramsdf1.f() == paramsdf2.f()) {
+      return 0;
+    }
+    if (paramsdf1.f() > paramsdf2.f()) {
+      return 1;
+    }
+    return -1;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sea
  * JD-Core Version:    0.7.0.1
  */

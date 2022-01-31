@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
 
 public class affn
-  implements View.OnClickListener
+  extends ajjh
 {
-  public affn(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public affn(PublicAccountFragment paramPublicAccountFragment) {}
   
-  public void onClick(View paramView)
+  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
   {
-    this.a.i(paramView);
+    if (paramBoolean) {
+      this.a.i();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     affn
  * JD-Core Version:    0.7.0.1
  */

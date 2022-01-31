@@ -1,43 +1,61 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class amkt
+  extends alzl<amks>
 {
-  public int a;
-  public Bitmap a;
-  public int b;
-  
-  public amkt(int paramInt1, int paramInt2, Bitmap paramBitmap)
+  public static amks a()
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    a(paramInt1, paramInt2);
+    return (amks)alzw.a().a(486);
   }
   
   public int a()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      return 0;
+    return 486;
+  }
+  
+  @NonNull
+  public amks a(int paramInt)
+  {
+    return new amks();
+  }
+  
+  @Nullable
+  public amks a(alzs[] paramArrayOfalzs)
+  {
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
+      return amks.a(paramArrayOfalzs);
     }
-    return this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+    return null;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public Class<amks> a()
   {
-    int i = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-    int j = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
-    this.jdField_a_of_type_Int = (paramInt1 - i / 2);
-    this.b = (paramInt2 - j / 2);
+    return amks.class;
   }
   
-  public void a(Canvas paramCanvas, Paint paramPaint)
+  public void a(int paramInt) {}
+  
+  public void a(amks paramamks) {}
+  
+  public int b()
   {
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.b, paramPaint);
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amkt
  * JD-Core Version:    0.7.0.1
  */

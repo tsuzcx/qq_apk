@@ -1,46 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.KanDianViewController;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyRainAnimationController;
-import java.lang.ref.WeakReference;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.mobileqq.utils.AudioHelper;
 
 public class lda
-  extends Handler
 {
-  private WeakReference a;
+  public int a;
+  final long jdField_a_of_type_Long = AudioHelper.b();
+  public int b;
+  public long b;
+  public int c;
+  public long c;
   
-  public lda(KanDianViewController paramKanDianViewController)
-  {
-    this.a = new WeakReference(paramKanDianViewController);
-  }
+  public lda(AVNotifyCenter paramAVNotifyCenter) {}
   
-  public void handleMessage(Message paramMessage)
+  public String toString()
   {
-    KanDianViewController localKanDianViewController = (KanDianViewController)this.a.get();
-    if (localKanDianViewController == null) {}
-    do
-    {
-      do
-      {
-        return;
-        switch (paramMessage.what)
-        {
-        default: 
-          return;
-        case 1: 
-          KanDianViewController.a(localKanDianViewController);
-          return;
-        }
-      } while (KanDianViewController.a(localKanDianViewController) == null);
-      KanDianViewController.a(localKanDianViewController).a(KanDianViewController.a(localKanDianViewController));
-      return;
-    } while (KanDianViewController.a(localKanDianViewController) == null);
-    KanDianViewController.a(localKanDianViewController).b();
+    return "seq[" + this.jdField_a_of_type_Long + "], relationId[" + this.jdField_b_of_type_Long + "], avtype[" + this.jdField_b_of_type_Int + "], memberNum[" + this.jdField_a_of_type_Int + "], event[" + this.jdField_c_of_type_Int + "], time[" + this.jdField_c_of_type_Long + "]";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     lda
  * JD-Core Version:    0.7.0.1
  */

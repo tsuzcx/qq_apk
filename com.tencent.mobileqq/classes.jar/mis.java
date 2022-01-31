@@ -1,32 +1,48 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.View;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
 
 public class mis
-  implements TVK_ICacheMgr.IPreloadCallback
 {
-  public mis(VideoPreDownloadMgr paramVideoPreDownloadMgr) {}
-  
-  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
+  public static int a(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(VideoPreDownloadMgr.a(), 2, "预下载回调 vid:" + VideoPreDownloadMgr.a(this.a) + " ERROR code: " + paramInt);
+    paramView = paramView.getTag(paramInt);
+    if (paramView == null) {
+      return 2147483647;
     }
-    ThreadManager.post(new miv(this.a, false), 5, null, true);
+    if ((paramView instanceof Integer)) {
+      return ((Integer)paramView).intValue();
+    }
+    a("getInt", paramInt, paramView);
+    return 2147483647;
   }
   
-  public void onPreLoadSucess(String paramString1, String paramString2)
+  public static String a(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(VideoPreDownloadMgr.a(), 2, "预下载回调 vid:" + VideoPreDownloadMgr.a(this.a) + " SUCCESS");
+    paramView = paramView.getTag(paramInt);
+    if (paramView == null) {
+      return null;
     }
-    ThreadManager.post(new miv(this.a, true), 5, null, true);
+    if ((paramView instanceof String)) {
+      return (String)paramView;
+    }
+    a("getStr", paramInt, paramView);
+    return null;
+  }
+  
+  static void a(String paramString, int paramInt, Object paramObject)
+  {
+    if (AudioHelper.d())
+    {
+      paramString = paramString + ajjy.a(2131648936) + paramInt + "], object[" + paramObject.getClass().getSimpleName() + "]";
+      QLog.w("TagIndex", 1, paramString, new Throwable("打印调用栈"));
+      throw new ClassCastException(paramString);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mis
  * JD-Core Version:    0.7.0.1
  */

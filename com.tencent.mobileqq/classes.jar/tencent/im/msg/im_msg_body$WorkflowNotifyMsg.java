@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class im_msg_body$WorkflowNotifyMsg
-  extends MessageMicro
+  extends MessageMicro<WorkflowNotifyMsg>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_ext_msg = PBField.initBytes(ByteStringMicro.EMPTY);

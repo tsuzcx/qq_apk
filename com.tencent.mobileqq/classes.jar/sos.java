@@ -1,20 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import org.json.JSONObject;
 
 public class sos
-  implements View.OnClickListener
 {
-  public sos(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    DiscussionInfoCardActivity.a(this.a);
-  }
+  public int a;
+  public String a = "";
+  public JSONObject a;
+  public String b;
+  public String c;
+  public String d;
+  public String e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sos
  * JD-Core Version:    0.7.0.1
  */

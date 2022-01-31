@@ -1,21 +1,10 @@
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter;
-import com.tencent.biz.qqstory.storyHome.memory.view.segment.MemoriesProfileSegment;
-
-public class ocf
-  implements Runnable
+public abstract interface ocf
 {
-  public ocf(MemoriesProfileSegment paramMemoriesProfileSegment) {}
-  
-  public void run()
-  {
-    ((UserManager)SuperManager.a(2)).a(MemoriesProfileSegment.a(this.a).a);
-  }
+  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ocf
  * JD-Core Version:    0.7.0.1
  */

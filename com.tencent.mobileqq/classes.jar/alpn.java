@@ -1,58 +1,104 @@
-import android.os.Bundle;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadConstants;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct;
-import com.tencent.tmassistantsdk.TMAssistantCallYYB_V1;
-import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
 
-class alpn
-  implements Runnable
+public class alpn
+  implements TextWatcher
 {
-  alpn(alpl paramalpl) {}
+  int jdField_a_of_type_Int;
+  EditText jdField_a_of_type_AndroidWidgetEditText;
+  String jdField_a_of_type_JavaLangString = "";
+  boolean jdField_a_of_type_Boolean = true;
+  int b;
+  public boolean b;
   
-  public void run()
+  public alpn(BusinessCardEditActivity paramBusinessCardEditActivity, int paramInt, EditText paramEditText)
   {
-    boolean bool2 = false;
-    DownloadInfo localDownloadInfo = this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.a.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, this.a.jdField_a_of_type_AndroidOsBundle);
-    DownloadManager.a().e(localDownloadInfo);
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
+    this.jdField_b_of_type_Int = 0;
+  }
+  
+  public alpn(BusinessCardEditActivity paramBusinessCardEditActivity, int paramInt1, EditText paramEditText, int paramInt2)
+  {
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_AndroidWidgetEditText = paramEditText;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public void afterTextChanged(Editable paramEditable)
+  {
+    int j = 1;
+    boolean bool;
+    label69:
+    int i;
+    if ((this.jdField_b_of_type_Int == 1) && (!this.jdField_a_of_type_JavaLangString.equals(paramEditable.toString())))
+    {
+      if (this.jdField_a_of_type_Boolean)
+      {
+        bool = this.jdField_b_of_type_Boolean;
+        this.jdField_b_of_type_Boolean = bool;
+      }
+    }
+    else
+    {
+      this.jdField_a_of_type_Boolean = false;
+      if (!(this.jdField_a_of_type_AndroidWidgetEditText instanceof ClearEllipsisEditText)) {
+        break label155;
+      }
+      paramEditable = ((ClearEllipsisEditText)this.jdField_a_of_type_AndroidWidgetEditText).a();
+      i = paramEditable.length();
+      if ((this.jdField_a_of_type_AndroidWidgetEditText.getTag() == null) || (!((String)this.jdField_a_of_type_AndroidWidgetEditText.getTag()).equals("name"))) {
+        break label197;
+      }
+      i = paramEditable.getBytes().length;
+    }
     for (;;)
     {
-      boolean bool3;
-      try
+      if (i > this.jdField_a_of_type_Int)
       {
-        LogUtility.a("State_Log", "OpenSDK startToDownloadTaskList param SNGAppId=" + this.a.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.SNGAppId + " apkId=" + this.a.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskApkId + " taskAppId=" + this.a.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskAppId + " packageName=" + this.a.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskPackageName + " version=" + this.a.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskVersion + " uin=" + this.a.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.uin + " via=" + this.a.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.via);
-        LogUtility.c("TIME-STATISTIC", "mDownloadSdk.startToDownloadTaskList");
-        if (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a() <= 2)
+        for (;;)
         {
-          ((TMAssistantCallYYB_V1)this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a()).startToDownloadTaskList(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, this.a.jdField_a_of_type_Boolean, this.a.b);
-          return;
+          if (i <= this.jdField_a_of_type_Int) {
+            break label177;
+          }
+          paramEditable = paramEditable.substring(0, paramEditable.length() - 1);
+          if (j != 0)
+          {
+            i = paramEditable.getBytes().length;
+            continue;
+            bool = true;
+            break;
+            label155:
+            paramEditable = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+            break label69;
+          }
+          i = paramEditable.length();
         }
-        int i = this.a.jdField_a_of_type_AndroidOsBundle.getInt(DownloadConstants.j);
-        int j = this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.a.jdField_a_of_type_AndroidOsBundle);
-        boolean bool1 = this.a.jdField_a_of_type_Boolean;
-        bool3 = this.a.b;
-        if (i == 3)
-        {
-          bool1 = false;
-          ((TMAssistantCallYYB_V2)this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a()).startToDownloadTaskList(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, bool1, bool2, j);
-          return;
-        }
+        label177:
+        this.jdField_a_of_type_AndroidWidgetEditText.setText(paramEditable);
+        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(paramEditable.length());
       }
-      catch (Exception localException)
-      {
-        LogUtility.e("MyAppApi", "--startToDownloadTaskList--Exception = " + localException);
-        return;
-      }
-      bool2 = bool3;
+      return;
+      label197:
+      j = 0;
     }
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_JavaLangString = paramCharSequence.toString();
+  }
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     alpn
  * JD-Core Version:    0.7.0.1
  */

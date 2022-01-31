@@ -1,39 +1,23 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.image.GifDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity.2.1;
+import com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar;
 
-class uwm
-  implements Runnable
+public class uwm
+  implements tst
 {
-  uwm(uwl paramuwl, Drawable paramDrawable1, Drawable paramDrawable2) {}
+  public uwm(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
   
-  public void run()
+  public void a_(tso paramtso)
   {
-    QLog.d("DoodleMsgLayout", 2, "setDoodleContent start update drawable:" + DoodleMsgLayout.a(this.jdField_a_of_type_Uwl.a));
-    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (DoodleMsgLayout.b(this.jdField_a_of_type_Uwl.a) != null)) {
-      DoodleMsgLayout.b(this.jdField_a_of_type_Uwl.a).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    }
-    if (DoodleMsgLayout.c(this.jdField_a_of_type_Uwl.a) != null) {
-      DoodleMsgLayout.c(this.jdField_a_of_type_Uwl.a).setImageDrawable(this.b);
-    }
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-    {
-      Drawable localDrawable = ((URLDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).getCurrDrawable();
-      if ((localDrawable instanceof GifDrawable)) {
-        ((GifDrawable)localDrawable).getImage().reset();
-      }
-      ((URLDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).setIndividualPause(false);
-    }
-    DoodleMsgLayout.a(this.jdField_a_of_type_Uwl.a, 1);
+    urk.d("Q.qqstory.publish.edit.LocalVideoSelectActivity", "video prrepared completed!");
+    LocalVideoSelectActivity.a(this.a).c();
+    LocalVideoSelectActivity.a(this.a).postDelayed(new LocalVideoSelectActivity.2.1(this), 300L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uwm
  * JD-Core Version:    0.7.0.1
  */

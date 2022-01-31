@@ -1,29 +1,23 @@
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
-import com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 
-public class ajgn
-  implements AdapterView.OnItemClickListener
+class ajgn
+  extends BroadcastReceiver
 {
-  public ajgn(NewTroopContactView paramNewTroopContactView) {}
+  ajgn(ajgm paramajgm) {}
   
-  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramAdapterView = ((ResultRecord)paramView.getTag()).a;
-    if (this.a.a(paramAdapterView))
-    {
-      NewTroopContactView.a(this.a, paramAdapterView);
-      this.a.a.notifyDataSetChanged();
-      this.a.b(false);
+    paramContext = paramIntent.getAction();
+    if ((paramContext.equalsIgnoreCase("android.intent.action.MEDIA_UNMOUNTED")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_UNMOUNTABLE")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_EJECT")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_REMOVED"))) {
+      this.a.d(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajgn
  * JD-Core Version:    0.7.0.1
  */

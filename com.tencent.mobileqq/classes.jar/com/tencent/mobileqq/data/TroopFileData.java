@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 import java.io.Serializable;
 
 public class TroopFileData
-  extends Entity
+  extends atmo
   implements Serializable
 {
   public static final long serialVersionUID = 0L;
@@ -16,7 +16,7 @@ public class TroopFileData
   public int duration;
   public long entitySessionId;
   public String fileName;
-  @unique
+  @atoc
   public String fileUrl;
   public int height;
   public long lastTime;

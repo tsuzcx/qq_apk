@@ -1,45 +1,39 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class tdd
-  extends MqqHandler
+class tdd
+  implements atqq
 {
-  public tdd(Leba paramLeba) {}
+  tdd(tdc paramtdc) {}
   
-  public void handleMessage(Message paramMessage)
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    if ((this.a.a != null) && ("0".equals(this.a.a.getCurrentAccountUin()))) {
-      return;
-    }
-    switch (paramMessage.what)
+    return null;
+  }
+  
+  public void a(atqr paramatqr) {}
+  
+  public void b(atqr paramatqr)
+  {
+    if ((paramatqr.jdField_b_of_type_Int == 0) && (!TextUtils.isEmpty(paramatqr.jdField_b_of_type_JavaLangString)))
     {
-    default: 
-      return;
-    case 1134006: 
-      this.a.b();
-      return;
-    case 11340002: 
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.lebatab.leba", 2, "handler refresh leba config");
-      }
-      this.a.l();
-      return;
-    case 11340005: 
-      Leba.c(this.a);
-      return;
-    case 1134008: 
-      this.a.a(paramMessage);
+      this.a.a("UploadImageJob_out_image_url", paramatqr.jdField_b_of_type_JavaLangString);
+      tdc.a(this.a, true);
       return;
     }
-    this.a.r();
+    paramatqr = new ErrorMessage(paramatqr.jdField_b_of_type_Int, paramatqr.a);
+    if (QLog.isColorLevel()) {
+      QLog.e(this.a.jdField_b_of_type_JavaLangString, 2, paramatqr, new Object[0]);
+    }
+    tdc.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tdd
  * JD-Core Version:    0.7.0.1
  */

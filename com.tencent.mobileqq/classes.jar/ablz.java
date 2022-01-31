@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.armap.config.ARMapConfigManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class ablz
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public ablz(ARMapConfigManager paramARMapConfigManager) {}
+  public ablz(QQMapActivity paramQQMapActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a();
+    if ((this.a.l) && (!this.a.m) && (!this.a.k)) {
+      this.a.finish();
+    }
+    this.a.m = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ablz
  * JD-Core Version:    0.7.0.1
  */

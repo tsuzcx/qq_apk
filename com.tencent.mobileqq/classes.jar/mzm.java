@@ -1,18 +1,20 @@
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
-import com.tencent.mobileqq.app.FontSettingManager;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.smtt.export.external.interfaces.JsResult;
 
 class mzm
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnCancelListener
 {
-  mzm(mzl parammzl) {}
+  mzm(mzd parammzd, JsResult paramJsResult, Context paramContext) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    FontSettingManager.a();
-    this.a.a.a.finish();
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.cancel();
+    if (this.jdField_a_of_type_Mzd.a > 2) {
+      ((Activity)this.jdField_a_of_type_AndroidContentContext).finish();
+    }
   }
 }
 

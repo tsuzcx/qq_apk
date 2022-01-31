@@ -1,19 +1,29 @@
-import com.tencent.biz.qqstory.newshare.job.ShortenUrlJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareCopyLinkData;
-import java.util.HashMap;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.16.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class nkx
-  extends ShortenUrlJob
+  extends ohe
 {
-  public nkx(ShareModeBase paramShareModeBase, ShareCopyLinkData paramShareCopyLinkData) {}
+  public nkx(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
   
-  public boolean b()
+  public void a(int paramInt1, int paramInt2) {}
+  
+  public void a(View paramView)
   {
-    HashMap localHashMap = (HashMap)a("ShortenUrlJob_shortenedUrls");
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a = ((String)localHashMap.get(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a));
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "onComponentLastReadShow");
+    }
+    this.a.runOnUiThread(new ReadInJoyNewFeedsActivity.16.1(this));
   }
+  
+  public void b(int paramInt)
+  {
+    this.a.f(paramInt);
+  }
+  
+  public void c(int paramInt) {}
 }
 
 

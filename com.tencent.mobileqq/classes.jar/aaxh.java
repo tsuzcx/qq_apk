@@ -1,30 +1,20 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.API.ArkAppMusicModule;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.music.QQPlayerService.QQPlayerCallback;
-import com.tencent.mobileqq.music.SongInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
 
-public final class aaxh
-  implements QQPlayerService.QQPlayerCallback
+public class aaxh
+  implements DialogInterface.OnClickListener
 {
-  public String getToken()
-  {
-    return ArkAppMusicModule.a();
-  }
+  public aaxh(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity, bafb parambafb) {}
   
-  public void onPlaySongChanged(SongInfo paramSongInfo)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ArkAppCenter.a().post(new aaxj(this, paramSongInfo));
-  }
-  
-  public void onPlayStateChanged(int paramInt)
-  {
-    ArkAppCenter.a().post(new aaxi(this, paramInt));
+    this.jdField_a_of_type_Bafb.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaxh
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public final class GroupArea
   extends JceStruct
 {
-  static ArrayList cache_vGroupInfo;
+  static ArrayList<GroupInfo> cache_vGroupInfo;
   public long dwDistance;
   public long dwGroupStartIdx;
   public long dwGroupTotalCnt;
@@ -16,11 +16,11 @@ public final class GroupArea
   public int iLon;
   public String strAreaName = "";
   public String strStreet = "";
-  public ArrayList vGroupInfo;
+  public ArrayList<GroupInfo> vGroupInfo;
   
   public GroupArea() {}
   
-  public GroupArea(String paramString1, int paramInt1, int paramInt2, long paramLong1, ArrayList paramArrayList, long paramLong2, long paramLong3, String paramString2)
+  public GroupArea(String paramString1, int paramInt1, int paramInt2, long paramLong1, ArrayList<GroupInfo> paramArrayList, long paramLong2, long paramLong3, String paramString2)
   {
     this.strAreaName = paramString1;
     this.iLat = paramInt1;

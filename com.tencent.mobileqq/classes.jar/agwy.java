@@ -1,15 +1,34 @@
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.profile.view.VipPhotoViewForSimple.PhotoAdapter;
+import com.tencent.qphone.base.util.QLog;
 
-public class agwy
+class agwy
+  implements mcf
 {
-  public URLImageView a;
+  agwy(agwx paramagwx) {}
   
-  public agwy(VipPhotoViewForSimple.PhotoAdapter paramPhotoAdapter) {}
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("VoiceRedPacketHelper", 1, "convertMp3ToPcm onError " + paramInt);
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("VoiceRedPacketHelper", 1, "convertMp3ToPcm onStart " + paramString);
+    }
+  }
+  
+  public void b(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("VoiceRedPacketHelper", 1, "convertMp3ToPcm onFinish " + paramString);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agwy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,11 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.square.SquarePresenter;
-import com.tencent.biz.qqstory.storyHome.square.SquarePresenter.ISquareView;
-import com.tencent.biz.qqstory.storyHome.square.model.SquareFeedData;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskManager;
 
 public class ogp
-  implements Runnable
+  extends bgna
 {
-  public ogp(SquarePresenter paramSquarePresenter, SquareFeedData paramSquareFeedData) {}
-  
-  public void run()
+  protected void a(String paramString)
   {
-    if (SquarePresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareSquarePresenter) == null) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedData.errorInfo.isSuccess())
-    {
-      if (!this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedData.jdField_c_of_type_Boolean) {
-        break label81;
-      }
-      SquarePresenter.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareSquarePresenter, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedData.jdField_c_of_type_JavaUtilList);
-      SquarePresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareSquarePresenter, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedData.b);
-    }
-    for (;;)
-    {
-      SquarePresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareSquarePresenter).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedData);
-      return;
-      label81:
-      SquarePresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareSquarePresenter).addAll(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeSquareModelSquareFeedData.b);
-    }
+    TaskManager.getInstance().accept(paramString);
   }
 }
 

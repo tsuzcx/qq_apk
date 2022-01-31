@@ -1,17 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.biz.webviewplugin.ReadInJoyWebRenderPlugin;
-import com.tencent.mobileqq.webview.swift.utils.SwiftOfflineDataUtils;
+import android.content.Context;
 
 public class phm
-  implements Runnable
+  extends pez
 {
-  public phm(ReadInJoyWebRenderPlugin paramReadInJoyWebRenderPlugin) {}
-  
-  public void run()
+  public phm(Context paramContext, azwg paramazwg, qoe paramqoe)
   {
-    if (!TextUtils.isEmpty(ReadInJoyWebRenderPlugin.a(this.a))) {
-      SwiftOfflineDataUtils.a(ReadInJoyWebRenderPlugin.a(this.a));
-    }
+    super(paramContext, paramazwg, paramqoe);
+  }
+  
+  public pez a()
+  {
+    return this;
+  }
+  
+  public pez d()
+  {
+    return this;
+  }
+  
+  public pez e()
+  {
+    return null;
   }
 }
 

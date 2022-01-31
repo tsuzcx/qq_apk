@@ -1,45 +1,72 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager.ARTipsVisibleListener;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
 public class agjj
-  implements ARTipsManager.ARTipsVisibleListener
 {
-  public agjj(ScanTorchActivity paramScanTorchActivity) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
+  public String c;
+  @Deprecated
+  public boolean c;
+  public String d;
+  public String e;
+  public String f;
   
-  public void a(boolean paramBoolean)
+  public agjj() {}
+  
+  public agjj(String paramString1, String paramString2, String paramString3, long paramLong, String paramString4, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt)
   {
-    int j = 4;
-    RelativeLayout localRelativeLayout;
-    if (ScanTorchActivity.a(this.a) != null)
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.jdField_a_of_type_Long = paramLong;
+    this.d = paramString4;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.jdField_c_of_type_Boolean = paramBoolean3;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public agjj(String paramString1, String paramString2, String paramString3, long paramLong, String paramString4, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, String paramString5)
+  {
+    this(paramString1, paramString2, paramString3, paramLong, paramString4, paramBoolean1, paramBoolean2, paramBoolean3, paramInt);
+    this.e = paramString5;
+  }
+  
+  public agjj(String paramString1, String paramString2, String paramString3, long paramLong, String paramString4, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt, String paramString5, String paramString6)
+  {
+    this(paramString1, paramString2, paramString3, paramLong, paramString4, paramBoolean1, paramBoolean2, paramBoolean3, paramInt, paramString5);
+    this.f = paramString6;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Long < NetConnInfoCenter.getServerTime();
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject instanceof agjj))
     {
-      localRelativeLayout = ScanTorchActivity.a(this.a);
-      if (paramBoolean)
-      {
-        i = 4;
-        localRelativeLayout.setVisibility(i);
+      paramObject = (agjj)paramObject;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        break label24;
       }
     }
-    else if (this.a.b != null)
-    {
-      localRelativeLayout = this.a.b;
-      if (!paramBoolean) {
-        break label70;
-      }
+    label24:
+    while (!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) {
+      return false;
     }
-    label70:
-    for (int i = j;; i = 0)
-    {
-      localRelativeLayout.setVisibility(i);
-      return;
-      i = 0;
-      break;
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agjj
  * JD-Core Version:    0.7.0.1
  */

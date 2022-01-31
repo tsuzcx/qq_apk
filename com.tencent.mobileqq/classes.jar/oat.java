@@ -1,25 +1,22 @@
-import com.tencent.biz.qqstory.storyHome.discover.view.DiscoverPresenter;
-import com.tencent.biz.qqstory.storyHome.discover.view.QQStoryDiscoverFragment;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeSummaryView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 
-public class oat
-  implements LoadingMoreHelper.OnLoadMoreListener
+class oat
+  implements View.OnClickListener
 {
-  public oat(QQStoryDiscoverFragment paramQQStoryDiscoverFragment) {}
+  oat(oal paramoal) {}
   
-  public void a() {}
-  
-  public boolean a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    QQStoryDiscoverFragment.a(this.a).c();
-    StoryReportor.a("content_flow", "load_more", 0, 0, new String[0]);
-    return true;
+    NativeSummaryView.a((ArticleInfo)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.getContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oat
  * JD-Core Version:    0.7.0.1
  */

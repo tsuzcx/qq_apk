@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0xb14$UserInfo
-  extends MessageMicro
+  extends MessageMicro<UserInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34 }, new String[] { "uin", "id", "course", "name" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), "", "" }, UserInfo.class);
   public final PBStringField course = PBField.initString("");
@@ -18,7 +18,7 @@ public final class oidb_0xb14$UserInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0xb14.oidb_0xb14.UserInfo
  * JD-Core Version:    0.7.0.1
  */

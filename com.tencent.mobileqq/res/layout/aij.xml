@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@android:color/white" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:id="@id/g4y" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/q7a" />
+    <Button android:id="@id/j6q" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/q7d" />
+    <Button android:id="@id/j6o" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/q78" />
+    <Button android:id="@id/j6r" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/q6x" />
+    <Button android:id="@id/a7s" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/q73" />
+    <Button android:id="@id/als" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/q7f" />
+    <Button android:id="@id/i9w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/q7e" />
+</LinearLayout>

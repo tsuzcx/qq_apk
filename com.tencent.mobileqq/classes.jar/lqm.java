@@ -1,21 +1,20 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.av.ui.AVActivity;
 
 public class lqm
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public lqm(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  public lqm(AVActivity paramAVActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (ReadInJoySelfFragment.a(this.a) != null) {
-      ReadInJoySelfFragment.a(this.a).h();
-    }
+    this.a.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lqm
  * JD-Core Version:    0.7.0.1
  */

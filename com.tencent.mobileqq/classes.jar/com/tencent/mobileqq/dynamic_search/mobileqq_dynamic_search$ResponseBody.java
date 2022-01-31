@@ -11,20 +11,20 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class mobileqq_dynamic_search$ResponseBody
-  extends MessageMicro
+  extends MessageMicro<ResponseBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field cmd = PBField.initUInt32(0);
   public final PBUInt32Field hotwords_cache_timeout = PBField.initUInt32(0);
-  public final PBRepeatMessageField item_groups = PBField.initRepeatMessage(mobileqq_dynamic_search.ResultItemGroup.class);
+  public final PBRepeatMessageField<mobileqq_dynamic_search.ResultItemGroup> item_groups = PBField.initRepeatMessage(mobileqq_dynamic_search.ResultItemGroup.class);
   public mobileqq_dynamic_search.JumpInfo jump_info = new mobileqq_dynamic_search.JumpInfo();
   public final PBBytesField key_word = PBField.initBytes(ByteStringMicro.EMPTY);
   public mobileqq_dynamic_search.MoreWordInfo more_word_info = new mobileqq_dynamic_search.MoreWordInfo();
   public final PBInt32Field retcode = PBField.initInt32(0);
   public final PBUInt64Field search_id = PBField.initUInt64(0L);
   public final PBBytesField search_ver = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField tab_groups = PBField.initRepeatMessage(mobileqq_dynamic_search.TabItemGroup.class);
+  public final PBRepeatMessageField<mobileqq_dynamic_search.TabItemGroup> tab_groups = PBField.initRepeatMessage(mobileqq_dynamic_search.TabItemGroup.class);
   
   static
   {

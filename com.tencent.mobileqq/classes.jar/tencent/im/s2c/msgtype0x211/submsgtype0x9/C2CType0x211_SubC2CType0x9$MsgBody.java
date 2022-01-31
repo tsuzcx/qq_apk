@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class C2CType0x211_SubC2CType0x9$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   public static final int CMD_Enum_Printer = 1;
   public static final int CMD_Enum_Printer_Result = 2;

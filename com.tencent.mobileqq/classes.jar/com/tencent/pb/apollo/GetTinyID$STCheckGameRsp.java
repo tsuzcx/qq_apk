@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class GetTinyID$STCheckGameRsp
-  extends MessageMicro
+  extends MessageMicro<STCheckGameRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field appIdSource = PBField.initUInt32(0);
@@ -45,7 +45,7 @@ public final class GetTinyID$STCheckGameRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.apollo.GetTinyID.STCheckGameRsp
  * JD-Core Version:    0.7.0.1
  */

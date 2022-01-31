@@ -1,28 +1,56 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
+import NS_CERTIFIED_ACCOUNT_READ.CertifiedAccountRead.StGetFollowRcmdRsp;
+import android.text.TextUtils;
+import com.tencent.biz.subscribe.network.SubscribeGetFollowRcmdRequest;
+import com.tencent.biz.videostory.network.VSNetworkHelper;
+import com.tencent.biz.videostory.network.request.VSBaseRequest;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import java.util.List;
 
 class vxp
-  implements DialogInterface.OnClickListener
+  implements wxx<CertifiedAccountRead.StGetFollowRcmdRsp>
 {
-  vxp(vxo paramvxo, Context paramContext) {}
+  vxp(vxo paramvxo, SubscribeGetFollowRcmdRequest paramSubscribeGetFollowRcmdRequest, vxq paramvxq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, long paramLong, String paramString, CertifiedAccountRead.StGetFollowRcmdRsp paramStGetFollowRcmdRsp)
   {
-    paramDialogInterface = AIOUtils.a(new Intent(this.jdField_a_of_type_AndroidContentContext, SplashActivity.class), null);
-    paramDialogInterface.putExtra("uin", this.jdField_a_of_type_Vxo.a.a.a);
-    paramDialogInterface.putExtra("uintype", 3000);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+    boolean bool = VSNetworkHelper.a(paramString);
+    if ((!paramBoolean) || (paramLong != 0L) || (paramStGetFollowRcmdRsp == null))
+    {
+      if ((!TextUtils.isEmpty(paramString)) && (vxo.a(this.jdField_a_of_type_Vxo) != null)) {
+        bbmy.a(vxo.b(this.jdField_a_of_type_Vxo), 1, paramString, 0).a();
+      }
+      if (!bool)
+      {
+        VSBaseRequest.reMoveCache(this.jdField_a_of_type_ComTencentBizSubscribeNetworkSubscribeGetFollowRcmdRequest);
+        if ((this.jdField_a_of_type_Vxo.getItemCount() == 0) && (this.jdField_a_of_type_Vxq != null)) {
+          this.jdField_a_of_type_Vxq.a();
+        }
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+        paramString = paramStGetFollowRcmdRsp.rcmdList.get();
+      } while ((bool) && (!vxo.a(this.jdField_a_of_type_Vxo)));
+      if ((paramString != null) && (paramString.size() > 0))
+      {
+        if (vxo.a(this.jdField_a_of_type_Vxo)) {
+          vxo.a(this.jdField_a_of_type_Vxo, false);
+        }
+        vxo.a(this.jdField_a_of_type_Vxo, paramString, paramStGetFollowRcmdRsp.extInfo, true);
+        wye.b("auth_follow", "blank_exp", 0, 0, new String[0]);
+        return;
+      }
+    } while ((bool) || (this.jdField_a_of_type_Vxo.getItemCount() != 0));
+    vxo.b(this.jdField_a_of_type_Vxo, true);
+    this.jdField_a_of_type_Vxo.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vxp
  * JD-Core Version:    0.7.0.1
  */

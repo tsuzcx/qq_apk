@@ -1,31 +1,87 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
-import com.tencent.mobileqq.medalwall.MedalWallMng;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Context;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import java.util.HashSet;
+import java.util.Set;
 
 public class svp
-  implements Runnable
+  extends RecyclerView.ItemDecoration
 {
-  public svp(FriendProfileCardActivity paramFriendProfileCardActivity, DiniFlyAnimationView paramDiniFlyAnimationView) {}
+  static final Set<Integer> a;
+  protected int a;
+  protected int b;
+  protected int c;
+  protected int d;
+  protected int e;
   
-  public void run()
+  static
   {
-    JSONObject localJSONObject = MedalWallMng.a();
-    if (localJSONObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MedalWallMng", 2, "lottie json is null!");
-      }
+    jdField_a_of_type_JavaUtilSet = new HashSet();
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(1024));
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(12));
+    jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(3));
+  }
+  
+  public svp(Context paramContext)
+  {
+    this.jdField_a_of_type_Int = aciy.a(5.0F, paramContext.getResources());
+    this.b = aciy.a(16.0F, paramContext.getResources());
+    this.c = aciy.a(8.5F, paramContext.getResources());
+    this.d = aciy.a(3.0F, paramContext.getResources());
+    this.e = aciy.a(3.0F, paramContext.getResources());
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    int k = paramRecyclerView.getChildViewHolder(paramView).getAdapterPosition();
+    paramView = paramRecyclerView.getAdapter();
+    if ((k < 0) || (k >= paramView.getItemCount())) {
       return;
     }
-    LottieComposition.Factory.fromJson(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getResources(), localJSONObject, new svq(this));
+    int m = paramView.getItemViewType(k);
+    if (paramView.getItemCount() > k + 1)
+    {
+      int n = paramView.getItemViewType(k + 1);
+      int i = 0;
+      if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(m))) {
+        i = 1;
+      }
+      int j = i;
+      if (jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(n))) {
+        j = i + 1;
+      }
+      if (j == 1)
+      {
+        paramRect.right = this.d;
+        return;
+      }
+      if (j == 2)
+      {
+        paramRect.right = this.e;
+        return;
+      }
+    }
+    if (m == 2)
+    {
+      paramRect.right = this.b;
+      return;
+    }
+    if (k == paramState.getItemCount() - 1)
+    {
+      paramRect.right = this.c;
+      return;
+    }
+    paramRect.right = this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     svp
  * JD-Core Version:    0.7.0.1
  */

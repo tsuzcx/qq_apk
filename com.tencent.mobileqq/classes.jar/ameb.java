@@ -1,27 +1,41 @@
-import com.tencent.qqprotect.qsec.CSProcessorImpl;
-import com.tencent.qqprotect.qsec.ICSProcessor.ICSProcessorListener;
-import com.tencent.qqprotect.qsec.QSecFramework;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class ameb
-  implements ICSProcessor.ICSProcessorListener
 {
-  protected int a;
+  private int a;
   
-  public ameb(CSProcessorImpl paramCSProcessorImpl, int paramInt)
+  public static ameb a(String paramString)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if (paramString == null) {}
+    do
+    {
+      return null;
+      try
+      {
+        ameb localameb = new ameb();
+        localameb.a = new JSONObject(paramString).optInt("pttWithTextSwitch", -1);
+        return localameb;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("PttWithTextSwitchBean", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
   }
   
-  public void a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  public boolean a()
   {
-    if (this.jdField_a_of_type_Int != 0) {
-      QSecFramework.a(7, this.jdField_a_of_type_Int, paramInt, 0, paramArrayOfByte1, paramArrayOfByte2, null, null);
-    }
+    return this.a == 1;
+  }
+  
+  public String toString()
+  {
+    return "open:" + this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ameb
  * JD-Core Version:    0.7.0.1
  */

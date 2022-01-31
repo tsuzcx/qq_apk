@@ -1,21 +1,21 @@
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public class nhe
-  implements Runnable
+class nhe
+  implements QQPermissionCallback
 {
-  public nhe(UserManager paramUserManager) {}
+  nhe(ngv paramngv, Runnable paramRunnable) {}
   
-  public void run()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    this.a.a = false;
-    if (!UserManager.a(this.a).isEmpty())
-    {
-      new GetUserInfoHandler().a(1, UserManager.a(this.a));
-      UserManager.a(this.a, new ArrayList());
-    }
+    QLog.i("DailyHeaderViewController", 1, "[deny] ACCESS_FINE_LOCATION");
+    ngv.a(this.jdField_a_of_type_Ngv, 3);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.i("DailyHeaderViewController", 1, "[grant] ACCESS_FINE_LOCATION");
+    this.jdField_a_of_type_JavaLangRunnable.run();
   }
 }
 

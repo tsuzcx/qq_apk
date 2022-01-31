@@ -1,27 +1,60 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.image.AbstractGifImage;
-import com.tencent.mobileqq.hotpic.HotPicMainPanel;
-import com.tencent.widget.XPanelContainer;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.IInterface;
+import com.tencent.mobileqq.data.MessageForShortVideo;
 
-public class adye
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface adye
+  extends IInterface
 {
-  public adye(HotPicMainPanel paramHotPicMainPanel, int paramInt) {}
+  public abstract int a(long paramLong, int paramInt);
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (i == this.jdField_a_of_type_Int) {
-      AbstractGifImage.resumeAll();
-    }
-    XPanelContainer.jdField_a_of_type_Int = i;
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel.a.requestLayout();
-  }
+  public abstract Intent a(long paramLong, int paramInt);
+  
+  public abstract Intent a(long paramLong, int paramInt1, int paramInt2);
+  
+  public abstract MessageForShortVideo a(long paramLong);
+  
+  public abstract String a(String paramString1, String paramString2);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(long paramLong, int paramInt);
+  
+  public abstract void a(long paramLong, int paramInt1, int paramInt2);
+  
+  public abstract void a(long paramLong, int paramInt, Bundle paramBundle);
+  
+  public abstract void a(adyh paramadyh);
+  
+  public abstract void a(MessageForShortVideo paramMessageForShortVideo);
+  
+  public abstract void a(String paramString, int paramInt);
+  
+  public abstract void a(long[] paramArrayOfLong);
+  
+  public abstract void b(long paramLong);
+  
+  public abstract void b(long paramLong, int paramInt1, int paramInt2);
+  
+  public abstract void b(String paramString, int paramInt);
+  
+  public abstract void c();
+  
+  public abstract void c(long paramLong);
+  
+  public abstract void d(long paramLong);
+  
+  public abstract void e(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adye
  * JD-Core Version:    0.7.0.1
  */

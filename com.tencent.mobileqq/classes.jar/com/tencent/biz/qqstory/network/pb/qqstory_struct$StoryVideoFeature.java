@@ -9,12 +9,12 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_struct$StoryVideoFeature
-  extends MessageMicro
+  extends MessageMicro<StoryVideoFeature>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field deny_comment = PBField.initUInt32(0);
   public final PBUInt32Field has_like = PBField.initUInt32(0);
-  public final PBRepeatMessageField newest_like_list = PBField.initRepeatMessage(qqstory_struct.StoryVideoLikeInfo.class);
+  public final PBRepeatMessageField<qqstory_struct.StoryVideoLikeInfo> newest_like_list = PBField.initRepeatMessage(qqstory_struct.StoryVideoLikeInfo.class);
   public final PBUInt32Field stranger_view_total_num = PBField.initUInt32(0);
   public final PBUInt32Field total_comment_num = PBField.initUInt32(0);
   public final PBUInt32Field total_like_num = PBField.initUInt32(0);
@@ -31,7 +31,7 @@ public final class qqstory_struct$StoryVideoFeature
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoFeature
  * JD-Core Version:    0.7.0.1
  */

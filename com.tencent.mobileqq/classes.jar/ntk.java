@@ -1,34 +1,28 @@
-import com.tencent.biz.qqstory.model.DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent;
-import com.tencent.biz.qqstory.network.BatchHandlerListPuller;
-import com.tencent.biz.qqstory.network.BatchHandlerListPuller.IPullResultCallback;
-import com.tencent.biz.qqstory.network.response.GetCollectionVideoListResponse;
-import com.tencent.biz.qqstory.playvideo.model.MemorySharePlayingListSync;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
-import java.util.List;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
 class ntk
-  implements BatchHandlerListPuller.IPullResultCallback
+  implements View.OnTouchListener
 {
-  ntk(ntj paramntj, BatchHandlerListPuller paramBatchHandlerListPuller, GetCollectionVideoListResponse paramGetCollectionVideoListResponse) {}
+  ntk(nti paramnti, Context paramContext) {}
   
-  public void a(boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a();
-    DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent localPlayerVideoListEvent = new DefaultPlayerVideoListSynchronizer.PlayerVideoListEvent();
-    localPlayerVideoListEvent.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Ntj.a.jdField_b_of_type_JavaLangString;
-    localPlayerVideoListEvent.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_Ntj.a.jdField_d_of_type_JavaLangString;
-    localPlayerVideoListEvent.jdField_a_of_type_Boolean = false;
-    localPlayerVideoListEvent.jdField_b_of_type_Boolean = this.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetCollectionVideoListResponse.jdField_a_of_type_Boolean;
-    localPlayerVideoListEvent.c = this.jdField_a_of_type_Ntj.a.jdField_d_of_type_Boolean;
-    localPlayerVideoListEvent.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_Ntj.a.jdField_a_of_type_JavaUtilList;
-    localPlayerVideoListEvent.jdField_a_of_type_Int = localPlayerVideoListEvent.jdField_a_of_type_JavaUtilList.size();
-    if (localPlayerVideoListEvent.jdField_a_of_type_Int < localPlayerVideoListEvent.jdField_a_of_type_JavaUtilList.size()) {
-      localPlayerVideoListEvent.jdField_a_of_type_Int = localPlayerVideoListEvent.jdField_a_of_type_JavaUtilList.size();
+    if (paramMotionEvent.getAction() == 1) {
+      if ((this.jdField_a_of_type_AndroidContentContext == null) || (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) || (((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent() == null)) {
+        break label67;
+      }
     }
-    Dispatchers.get().dispatch(localPlayerVideoListEvent);
-    SLog.b("Q.qqstory.player.MemorySharePlayingListSync", "get video list return:" + localPlayerVideoListEvent);
+    label67:
+    for (int i = ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().getIntExtra("channel_from", -1);; i = 0)
+    {
+      nti.a("0X8007BE7", null, null, null, null, i);
+      return false;
+    }
   }
 }
 

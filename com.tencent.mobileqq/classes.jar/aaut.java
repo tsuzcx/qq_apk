@@ -1,46 +1,43 @@
-import android.content.res.Resources;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
 
 class aaut
-  implements Runnable
+  implements begw
 {
-  aaut(aauq paramaauq, String paramString1, String paramString2, long paramLong, String paramString3) {}
+  aaut(aaur paramaaur, int[] paramArrayOfInt, mjj parammjj) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    QQCustomDialog localQQCustomDialog = new QQCustomDialog(BaseActivity.sTopActivity, 2131624516);
-    localQQCustomDialog.setContentView(2130968847);
-    localQQCustomDialog.setTitle(BaseActivity.sTopActivity.getString(2131438264, new Object[] { this.jdField_a_of_type_JavaLangString }));
-    ((ImageView)localQQCustomDialog.findViewById(2131364066)).setImageDrawable(BaseActivity.sTopActivity.getResources().getDrawable(2130838205));
-    ((TextView)localQQCustomDialog.findViewById(2131364067)).setText(this.jdField_a_of_type_JavaLangString);
-    ((TextView)localQQCustomDialog.findViewById(2131362781)).setText(BaseActivity.sTopActivity.getString(2131438850));
-    localQQCustomDialog.setCanceledOnTouchOutside(false);
-    ArkAppCenter.a(this.b, new aauu(this, localQQCustomDialog));
-    localQQCustomDialog.setNegativeButton(2131434690, new aauv(this, localQQCustomDialog));
-    localQQCustomDialog.setPositiveButton(2131434688, new aaux(this, localQQCustomDialog));
-    try
+    int i = this.jdField_a_of_type_ArrayOfInt[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendProfileCardActivity", 2, "videoActionSheet onClick,showItems =  " + Arrays.toString(this.jdField_a_of_type_ArrayOfInt) + ",which = " + paramInt + ",item = " + i);
+    }
+    this.jdField_a_of_type_Mjj.dismiss();
+    switch (i)
     {
-      localQQCustomDialog.show();
-      label159:
-      if (ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_JavaLangString, "ark_authority_api_location", this.c) == 0) {
-        ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_JavaLangString, "ark_authority_api_location", this.c, 2);
-      }
+    default: 
+      return;
+    case 1: 
+      FriendProfileCardActivity.a(this.jdField_a_of_type_Aaur.a.app, this.jdField_a_of_type_Aaur.a, this.jdField_a_of_type_Aaur.a.a);
+      awqx.b(this.jdField_a_of_type_Aaur.a.app, "CliOper", "", "", "0X8008405", "0X8008405", 0, 0, "", "", "", "");
       return;
     }
-    catch (Exception localException)
-    {
-      break label159;
-    }
+    paramView = new SessionInfo();
+    paramView.jdField_a_of_type_Int = azyk.a(this.jdField_a_of_type_Aaur.a.a.a);
+    paramView.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Aaur.a.a.a.jdField_a_of_type_JavaLangString;
+    paramView.d = FriendProfileCardActivity.a(this.jdField_a_of_type_Aaur.a.a, this.jdField_a_of_type_Aaur.a.app);
+    paramView.b = this.jdField_a_of_type_Aaur.a.a.a.d;
+    acnc.a(this.jdField_a_of_type_Aaur.a.app, this.jdField_a_of_type_Aaur.a, paramView, false, null, null);
+    awqx.b(this.jdField_a_of_type_Aaur.a.app, "CliOper", "", "", "0X80085D6", "0X80085D6", 9, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaut
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class praise_sso$TPraiseSsoReq
-  extends MessageMicro
+  extends MessageMicro<TPraiseSsoReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34 }, new String[] { "i32_cmd", "i32_implat", "str_qq_ver", "st_cmd0x1_req" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), "", null }, TPraiseSsoReq.class);
   public final PBInt32Field i32_cmd = PBField.initInt32(0);

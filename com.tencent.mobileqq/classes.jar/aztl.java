@@ -1,0 +1,21 @@
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.unifiedebug.SnapshotService;
+
+public class aztl
+{
+  public long a;
+  public ResultReceiver a;
+  public aztk a;
+  public String a;
+  public long b;
+  public String b;
+  private long c;
+  
+  public aztl(SnapshotService paramSnapshotService) {}
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+ * Qualified Name:     aztl
+ * JD-Core Version:    0.7.0.1
+ */

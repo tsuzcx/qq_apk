@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.ptt.LSRecordPanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class agxx
-  implements Runnable
+class agxx
+  implements DialogInterface.OnClickListener
 {
-  public agxx(LSRecordPanel paramLSRecordPanel) {}
+  agxx(agxv paramagxv) {}
   
-  public void run()
-  {
-    LSRecordPanel.b(this.a);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agxx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,94 @@
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Point;
-import com.tencent.mapsdk.raster.model.GeoPoint;
-import com.tencent.tencentmap.mapsdk.map.MapView;
-import com.tencent.tencentmap.mapsdk.map.Overlay;
-import com.tencent.tencentmap.mapsdk.map.Projection;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajyy
-  extends Overlay
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private GeoPoint jdField_a_of_type_ComTencentMapsdkRasterModelGeoPoint;
-  
-  public ajyy(Bitmap paramBitmap, GeoPoint paramGeoPoint)
+  public static SharedPreferences a(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_a_of_type_ComTencentMapsdkRasterModelGeoPoint = paramGeoPoint;
+    return paramContext.getSharedPreferences("PrefHiddenChat" + paramString, 4);
   }
   
-  public void draw(Canvas paramCanvas, MapView paramMapView)
+  public static void a(String paramString, Context paramContext, boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.jdField_a_of_type_ComTencentMapsdkRasterModelGeoPoint != null))
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
+    do
     {
-      Point localPoint = paramMapView.getProjection().toPixels(this.jdField_a_of_type_ComTencentMapsdkRasterModelGeoPoint, null);
-      localPoint.x -= this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2;
-      localPoint.y -= this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / 2;
-      Paint localPaint = new Paint();
-      localPaint.setAntiAlias(true);
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, localPoint.x, localPoint.y, localPaint);
+      return;
+      paramContext = a(paramContext, paramString).edit();
+      paramContext.putBoolean("show_unread_msg", paramBoolean);
+      paramContext.commit();
+    } while (!QLog.isColorLevel());
+    QLog.i("HiddenChatUtil", 2, "setHiddenSession ac[" + paramString + "], open[" + paramBoolean + "]");
+  }
+  
+  public static boolean a(Context paramContext, String paramString1, String paramString2, int paramInt)
+  {
+    boolean bool2;
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString1))) {
+      bool2 = true;
     }
-    super.draw(paramCanvas, paramMapView);
+    boolean bool1;
+    do
+    {
+      return bool2;
+      paramContext = a(paramContext, paramString1);
+      bool2 = paramContext.getBoolean("show_video_msg", false);
+      bool1 = bool2;
+      if (!bool2)
+      {
+        paramContext = paramContext.getString("KeyHiddenChatList", "");
+        String str = paramString2 + "|" + paramInt + ";";
+        if ((TextUtils.isEmpty(paramContext)) || (!paramContext.contains(str))) {
+          bool2 = true;
+        }
+        bool1 = bool2;
+        if (QLog.isColorLevel())
+        {
+          QLog.i("HiddenChatUtil", 2, String.format("isShowVideoMsg ac[%s], uin[%s], type[%s], show[%s], cur[%s], list[%s]", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt), Boolean.valueOf(bool2), str, paramContext }));
+          bool1 = bool2;
+        }
+      }
+      bool2 = bool1;
+    } while (!QLog.isColorLevel());
+    QLog.i("HiddenChatUtil", 2, String.format("isShowVideoMsg ac[%s], uin[%s], type[%s], show[%s]", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt), Boolean.valueOf(bool1) }));
+    return bool1;
+  }
+  
+  public static boolean a(String paramString, Context paramContext)
+  {
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
+      return true;
+    }
+    return a(paramContext, paramString).getBoolean("show_unread_msg", true);
+  }
+  
+  public static void b(String paramString, Context paramContext, boolean paramBoolean)
+  {
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
+    do
+    {
+      return;
+      paramContext = a(paramContext, paramString).edit();
+      paramContext.putBoolean("show_video_msg", paramBoolean);
+      paramContext.commit();
+    } while (!QLog.isColorLevel());
+    QLog.i("HiddenChatUtil", 2, "setVideoMsg ac[" + paramString + "], open[" + paramBoolean + "]");
+  }
+  
+  public static boolean b(String paramString, Context paramContext)
+  {
+    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
+      return true;
+    }
+    return a(paramContext, paramString).getBoolean("show_video_msg", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajyy
  * JD-Core Version:    0.7.0.1
  */

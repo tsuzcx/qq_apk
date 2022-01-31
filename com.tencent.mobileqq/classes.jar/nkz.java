@@ -1,20 +1,19 @@
-import com.tencent.biz.qqstory.newshare.job.EncryptUrlJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareSinaData;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
+import com.tencent.qphone.base.util.QLog;
 
 public class nkz
-  extends EncryptUrlJob
+  implements moc
 {
-  public nkz(ShareModeBase paramShareModeBase, String paramString1, String paramString2, boolean paramBoolean, ShareSinaData paramShareSinaData)
+  public nkz(ReadInJoyNewFeedsActivity.2 param2) {}
+  
+  public void loaded(String paramString, int paramInt)
   {
-    super(paramString1, paramString2, paramBoolean);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2464 html web resource finish");
+    }
   }
   
-  public boolean b()
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.c = ((String)a("EncryptUrlJob_encryptedUrl"));
-    return true;
-  }
+  public void progress(int paramInt) {}
 }
 
 

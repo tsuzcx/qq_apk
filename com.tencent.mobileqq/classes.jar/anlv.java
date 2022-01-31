@@ -1,21 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import cooperation.qzone.webviewplugin.personalize.QZoneCoverStoreJsPlugin;
+import android.widget.LinearLayout;
+import com.tencent.image.URLImageView;
 
 public class anlv
-  extends BroadcastReceiver
+  extends angv
 {
-  public anlv(QZoneCoverStoreJsPlugin paramQZoneCoverStoreJsPlugin) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    QZoneCoverStoreJsPlugin.a(this.a, paramIntent);
-  }
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  URLImageView[] jdField_a_of_type_ArrayOfComTencentImageURLImageView;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anlv
  * JD-Core Version:    0.7.0.1
  */

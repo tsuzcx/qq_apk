@@ -1,21 +1,50 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
-import com.tencent.mobileqq.app.DiscussionHandler;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetFeedVisitor;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetFeedVisitor;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
 
-class tao
-  implements Runnable
+public class tao
+  extends slz
 {
-  tao(tan paramtan) {}
+  public static final String a = skt.a("StorySvc.feed_visitor_list");
+  public String b;
   
-  public void run()
+  public String a()
   {
-    Bitmap localBitmap = this.a.a.a.a(this.a.a.f);
-    this.a.a.runOnUiThread(new tap(this, localBitmap));
+    return a;
+  }
+  
+  public slu a(byte[] paramArrayOfByte)
+  {
+    qqstory_service.RspGetFeedVisitor localRspGetFeedVisitor = new qqstory_service.RspGetFeedVisitor();
+    try
+    {
+      localRspGetFeedVisitor.mergeFrom(paramArrayOfByte);
+      return new tbz(this.b, localRspGetFeedVisitor);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      urk.d("Q.qqstory:GetVideoWatcherListRequest", "" + paramArrayOfByte);
+    }
+    return null;
+  }
+  
+  protected byte[] a()
+  {
+    qqstory_service.ReqGetFeedVisitor localReqGetFeedVisitor = new qqstory_service.ReqGetFeedVisitor();
+    localReqGetFeedVisitor.feed_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    return localReqGetFeedVisitor.toByteArray();
+  }
+  
+  public String toString()
+  {
+    return "GetVideoWatcherListRequest{, feedId='" + this.b + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tao
  * JD-Core Version:    0.7.0.1
  */

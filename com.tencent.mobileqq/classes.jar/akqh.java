@@ -1,75 +1,79 @@
-import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import android.os.IBinder;
+import android.os.Parcel;
 
 class akqh
-  implements View.OnTouchListener
+  implements akqf
 {
-  akqh(akqg paramakqg) {}
+  private IBinder a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  akqh(IBinder paramIBinder)
   {
-    paramView = this.a.a.e.keySet().iterator();
-    while (paramView.hasNext())
+    this.a = paramIBinder;
+  }
+  
+  public void a()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-      paramMotionEvent = (String)paramView.next();
-      Object localObject = (FrameLayout)this.a.a.e.get(paramMotionEvent);
-      localObject = ((akqw)this.a.a.jdField_f_of_type_JavaUtilHashMap.get(paramMotionEvent)).jdField_a_of_type_AndroidWidgetSeekBar;
-      TextView localTextView1 = ((akqw)this.a.a.jdField_f_of_type_JavaUtilHashMap.get(paramMotionEvent)).jdField_c_of_type_AndroidWidgetTextView;
-      TextView localTextView2 = ((akqw)this.a.a.jdField_f_of_type_JavaUtilHashMap.get(paramMotionEvent)).jdField_b_of_type_AndroidWidgetTextView;
-      ImageView localImageView1 = ((akqw)this.a.a.jdField_f_of_type_JavaUtilHashMap.get(paramMotionEvent)).jdField_a_of_type_AndroidWidgetImageView;
-      ImageView localImageView2 = ((akqw)this.a.a.jdField_f_of_type_JavaUtilHashMap.get(paramMotionEvent)).jdField_b_of_type_AndroidWidgetImageView;
-      TextView localTextView3 = ((akqw)this.a.a.jdField_f_of_type_JavaUtilHashMap.get(paramMotionEvent)).jdField_a_of_type_AndroidWidgetTextView;
-      ImageView localImageView3 = ((akqw)this.a.a.jdField_f_of_type_JavaUtilHashMap.get(paramMotionEvent)).jdField_c_of_type_AndroidWidgetImageView;
-      if (QLog.isColorLevel()) {
-        QLog.d("HealthBusinessPlugin", 2, "videoplayer section clicked");
-      }
-      if (((SeekBar)localObject).getVisibility() == 4)
-      {
-        ((SeekBar)localObject).setVisibility(0);
-        localTextView1.setVisibility(0);
-        localTextView2.setVisibility(0);
-        localImageView3.setVisibility(0);
-        if (((TVK_IMediaPlayer)this.a.a.d.get(paramMotionEvent)).isPlaying()) {}
-        for (int i = 2130845085;; i = 2130845367)
-        {
-          localImageView1.setImageResource(i);
-          localImageView1.setVisibility(0);
-          this.a.a.jdField_f_of_type_Boolean = true;
-          localImageView2.setVisibility(4);
-          localTextView3.setVisibility(4);
-          this.a.a.c.removeCallbacksAndMessages(null);
-          paramMotionEvent = new akqi(this, (SeekBar)localObject, localTextView1, localTextView2, localImageView3, localImageView1, localImageView2, localTextView3);
-          this.a.a.c.postDelayed(paramMotionEvent, 3000L);
-          break;
-        }
-      }
-      ((SeekBar)localObject).setVisibility(4);
-      localTextView1.setVisibility(4);
-      localTextView2.setVisibility(4);
-      localImageView3.setVisibility(4);
-      localImageView1.setVisibility(4);
-      this.a.a.jdField_f_of_type_Boolean = false;
-      localImageView2.setVisibility(0);
-      localTextView3.setVisibility(0);
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
     }
-    return false;
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      localParcel1.writeInt(paramInt);
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
+  
+  public void b()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArSoCallback");
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akqh
  * JD-Core Version:    0.7.0.1
  */

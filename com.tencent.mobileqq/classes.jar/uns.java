@@ -1,38 +1,20 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class uns
-  implements Runnable
+class uns
+  implements View.OnClickListener
 {
-  public uns(ActivateFriendActivity paramActivateFriendActivity) {}
+  uns(unj paramunj, uqq paramuqq) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    int i = this.a.app.a().b();
-    Object localObject2 = this.a.app.getApp().getString(2131433311);
-    Object localObject1 = localObject2;
-    if (i > 0)
-    {
-      localObject2 = new StringBuilder().append((String)localObject2).append("(");
-      if (i <= 99) {
-        break label88;
-      }
-    }
-    label88:
-    for (localObject1 = "99+";; localObject1 = Integer.valueOf(i))
-    {
-      localObject1 = localObject1 + ")";
-      ActivateFriendActivity.a(this.a).setText((CharSequence)localObject1);
-      return;
-    }
+    urp.a("home_page", "guide_close", 0, 0, new String[0]);
+    this.jdField_a_of_type_Uqq.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uns
  * JD-Core Version:    0.7.0.1
  */

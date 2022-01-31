@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.RoundCorneredRelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.extendfriend.wiget.FeedBannerItemGradientLinearLayout android:id="@id/aag" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ImageView android:id="@id/bav" android:layout_width="118.0dip" android:layout_height="fill_parent" android:scaleType="fitXY" android:layout_alignParentRight="true" />
+    <View android:id="@id/bgh" android:background="#19000000" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/aka" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_alignParentBottom="true">
+        <ImageView android:id="@id/icon" android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginRight="6.0dip" android:scaleType="fitXY" />
+    </FrameLayout>
+    <TextView android:textSize="20.0dip" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="15.0dip" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/j5r" android:layout_width="273.0dip" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:layout_marginRight="1.0dip" android:singleLine="true" android:layout_toLeftOf="@id/aka" android:layout_below="@id/title" android:layout_alignLeft="@id/title" />
+</com.tencent.mobileqq.widget.RoundCorneredRelativeLayout>

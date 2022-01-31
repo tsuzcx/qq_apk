@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayBasePanel;
+import android.view.View;
+import android.view.View.AccessibilityDelegate;
+import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
 
-class afhh
-  implements Runnable
+public class afhh
+  extends View.AccessibilityDelegate
 {
-  afhh(afhg paramafhg) {}
+  public afhh(SimpleSlidingIndicator paramSimpleSlidingIndicator) {}
   
-  public void run()
+  public void sendAccessibilityEvent(View paramView, int paramInt)
   {
-    NearbyPeopleProfileActivity.a(this.a.a).i();
+    if (paramInt != 4096) {
+      super.sendAccessibilityEvent(paramView, paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afhh
  * JD-Core Version:    0.7.0.1
  */

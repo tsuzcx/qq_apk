@@ -1,44 +1,30 @@
 import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.ShopScanActivity;
-import com.tencent.mobileqq.armap.config.ShopScanCheckHandler.Info;
-import com.tencent.mobileqq.armap.config.ShopScanCheckHandler.OnResCheckResultListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.SharedPreferences;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-class abgx
-  implements ShopScanCheckHandler.OnResCheckResultListener
+public class abgx
+  implements View.OnClickListener
 {
-  abgx(abgs paramabgs) {}
+  public abgx(PermisionPrivacyActivity paramPermisionPrivacyActivity, SharedPreferences paramSharedPreferences, boolean paramBoolean) {}
   
-  public void a(boolean paramBoolean, ShopScanCheckHandler.Info paramInfo, int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapActivity", 2, new Object[] { "onClickPoi, success = ", Boolean.valueOf(paramBoolean), ", taskType: ", Integer.valueOf(this.a.jdField_a_of_type_Int), ", taskId: ", Long.valueOf(this.a.jdField_a_of_type_Long), ", poiId: ", Long.valueOf(this.a.b), ", info = ", paramInfo });
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.a.obtainMessage(9).sendToTarget();
-    if (paramBoolean)
-    {
-      Intent localIntent = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, ShopScanActivity.class);
-      localIntent.putExtra("taskType", paramInfo.jdField_a_of_type_Int);
-      localIntent.putExtra("taskId", paramInfo.b);
-      localIntent.putExtra("poiId", paramInfo.jdField_a_of_type_Long);
-      localIntent.putExtra("tips", paramInfo.i);
-      localIntent.putExtra("logoUrl", paramInfo.f);
-      localIntent.putExtra("imageUrl", paramInfo.c);
-      localIntent.putExtra("logoPath", paramInfo.h);
-      localIntent.putExtra("imagePath", paramInfo.e);
-      localIntent.putExtra("shopName", paramInfo.j);
-      localIntent.putExtra("shopLocation", paramInfo.k);
-      localIntent.putExtra("xmlContent", paramInfo.l);
-      this.a.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.startActivityForResult(localIntent, 106);
-    }
+    paramView = bant.a("gameIconSetupH5Url");
+    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity.app.getApp(), QQBrowserActivity.class);
+    localIntent.setFlags(268435456);
+    localIntent.putExtra("vasUsePreWebview", true);
+    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity.app.getApp(), paramView, -1L, localIntent, false, -1);
+    awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityPermisionPrivacyActivity.app, "CliOper", "", "", "Setting_tab", "0X8009C07", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abgx
  * JD-Core Version:    0.7.0.1
  */

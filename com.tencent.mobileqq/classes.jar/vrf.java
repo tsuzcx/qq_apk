@@ -1,20 +1,54 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import android.support.v7.widget.RecyclerView.AdapterDataObserver;
+import java.util.List;
 
 class vrf
-  implements Runnable
+  extends RecyclerView.AdapterDataObserver
 {
-  vrf(vrd paramvrd, long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean) {}
+  vrf(vre paramvre) {}
   
-  public void run()
+  public void onChanged()
   {
-    if (vrc.c(this.jdField_a_of_type_Vrd.a) != null) {
-      ((AIOGalleryScene)vrc.d(this.jdField_a_of_type_Vrd.a)).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.jdField_b_of_type_Long, this.jdField_a_of_type_Boolean);
+    this.a.notifyDataSetChanged();
+    if (vre.a(this.a) != null) {
+      vre.a(this.a).a(vre.a(this.a));
+    }
+  }
+  
+  public void onItemRangeChanged(int paramInt1, int paramInt2)
+  {
+    this.a.notifyItemRangeChanged(vre.a(this.a).size() + paramInt1, paramInt2);
+    if (vre.a(this.a) != null) {
+      vre.a(this.a).a(vre.a(this.a));
+    }
+  }
+  
+  public void onItemRangeInserted(int paramInt1, int paramInt2)
+  {
+    this.a.notifyItemRangeInserted(vre.a(this.a).size() + paramInt1, paramInt2);
+    if (vre.a(this.a) != null) {
+      vre.a(this.a).a(vre.a(this.a));
+    }
+  }
+  
+  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.a.notifyItemMoved(vre.a(this.a).size() + paramInt1, vre.a(this.a).size() + paramInt2);
+    if (vre.a(this.a) != null) {
+      vre.a(this.a).a(vre.a(this.a));
+    }
+  }
+  
+  public void onItemRangeRemoved(int paramInt1, int paramInt2)
+  {
+    this.a.notifyItemRangeRemoved(vre.a(this.a).size() + paramInt1, paramInt2);
+    if (vre.a(this.a) != null) {
+      vre.a(this.a).a(vre.a(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vrf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,49 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.DataTag;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.view.QzonePhotoView;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-
 public class agwr
-  implements View.OnClickListener
 {
-  private long jdField_a_of_type_Long;
+  public float a;
+  public int a;
+  public float b;
+  public int b;
+  public float c;
+  public int c;
+  public float d;
+  public float e;
+  public float f;
+  public float g;
+  public float h;
+  public float i;
+  public float j;
+  public float k;
   
-  public agwr(QzonePhotoView paramQzonePhotoView) {}
-  
-  public void onClick(View paramView)
+  public agwr(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, int paramInt1, int paramInt2)
   {
-    long l = System.currentTimeMillis();
-    if (Math.abs(l - this.jdField_a_of_type_Long) < 1000L) {}
-    do
-    {
-      do
-      {
-        return;
-        this.jdField_a_of_type_Long = l;
-      } while ((paramView == null) || (!(paramView.getTag() instanceof DataTag)));
-      paramView = (DataTag)paramView.getTag();
-    } while (paramView == null);
-    int i = paramView.a;
-    paramView = QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView).a.a;
-    switch (i)
-    {
-    default: 
-      return;
-    }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView.a, "CliOper", "", "", "card_mall", "0X80066C4", 0, 0, "2", "", "", "");
-    if (QLog.isColorLevel()) {
-      QLog.i("ProfileCard.QzonePhotoView", 2, "View.OnClickListener click type is photo wall view");
-    }
-    QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView, QzonePhotoView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewQzonePhotoView));
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.jdField_c_of_type_Float = paramFloat3;
+    this.f = paramFloat3;
+    this.d = paramFloat5;
+    this.h = paramFloat5;
+    this.e = paramFloat7;
+    this.j = paramFloat7;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.g = paramFloat4;
+    this.i = paramFloat6;
+    this.k = paramFloat8;
+    this.jdField_c_of_type_Int = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agwr
  * JD-Core Version:    0.7.0.1
  */

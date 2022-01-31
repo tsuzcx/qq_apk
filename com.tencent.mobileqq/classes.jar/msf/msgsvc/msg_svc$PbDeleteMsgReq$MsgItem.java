@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class msg_svc$PbDeleteMsgReq$MsgItem
-  extends MessageMicro
+  extends MessageMicro<MsgItem>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field from_uin = PBField.initUInt64(0L);

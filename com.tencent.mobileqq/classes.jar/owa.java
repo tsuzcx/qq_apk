@@ -1,22 +1,18 @@
-import android.util.LruCache;
-import com.tencent.biz.qqstory.view.widget.StoryQIMBadgeView;
-import friendlist.GetOnlineInfoResp;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
-class owa
-  implements Runnable
+public abstract interface owa
 {
-  owa(ovz paramovz, GetOnlineInfoResp paramGetOnlineInfoResp, String paramString) {}
+  public abstract TemplateBean a(int paramInt, JSONObject paramJSONObject);
   
-  public void run()
-  {
-    if (this.jdField_a_of_type_FriendlistGetOnlineInfoResp.eIconType == 11) {}
-    for (boolean bool = true;; bool = false)
-    {
-      StoryQIMBadgeView.a().put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(bool));
-      this.jdField_a_of_type_Ovz.a.a(bool);
-      return;
-    }
-  }
+  public abstract JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo);
+  
+  public abstract void a(int paramInt1, Container paramContainer, opw paramopw, int paramInt2);
+  
+  public abstract boolean a(int paramInt, Container paramContainer, opw paramopw, ViewBase paramViewBase);
 }
 
 

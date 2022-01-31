@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.friendlist.remote.FriendSingleInfo;
+import android.graphics.Bitmap;
 
-public final class aibx
-  implements Parcelable.Creator
+class aibx
+  implements avck
 {
-  public FriendSingleInfo a(Parcel paramParcel)
-  {
-    return new FriendSingleInfo(paramParcel);
-  }
+  aibx(aibw paramaibw) {}
   
-  public FriendSingleInfo[] a(int paramInt)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    return new FriendSingleInfo[paramInt];
+    if ((paramInt2 == 200) && (paramBitmap != null)) {
+      this.a.notifyDataSetChanged();
+    }
   }
 }
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/hgq" android:background="@drawable/arl" android:padding="1.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/aqc"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/dl" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/bgv" android:layout_width="@dimen/aqd" android:layout_height="@dimen/aqc" android:layout_toRightOf="@id/dl">
+        <com.qzone.widget.AsyncImageView android:id="@id/hmk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
+        <RelativeLayout android:paddingLeft="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
+            <TextView android:textSize="16.0sp" android:textColor="@color/qzone_skin_feed_content_text_color" android:ellipsize="end" android:id="@id/fod" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentLeft="true" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/qzone_skin_feed_second_content_text_color" android:ellipsize="end" android:id="@id/fop" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="@string/s9r" android:layout_below="@id/fod" />
+            <Button android:textSize="14.0sp" android:textColor="@color/a_2" android:id="@id/c4i" android:background="@drawable/aio" android:layout_width="75.0dip" android:layout_height="30.0dip" android:layout_marginTop="9.0dip" android:text="@string/s9s" android:layout_below="@id/fop" android:layout_alignParentLeft="true" />
+            <Button android:textSize="14.0sp" android:textColor="@color/a_2" android:gravity="center" android:id="@id/c4h" android:background="@drawable/aio" android:layout_width="75.0dip" android:layout_height="30.0dip" android:layout_marginLeft="8.0dip" android:layout_marginTop="9.0dip" android:text="@string/s9o" android:layout_toRightOf="@id/c4i" android:layout_below="@id/fop" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

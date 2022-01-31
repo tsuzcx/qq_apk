@@ -1,25 +1,22 @@
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.comment.CommentBottomBar;
 
 public class vzb
-  implements Runnable
+  implements View.OnClickListener
 {
-  public vzb(GameRoomChatPie paramGameRoomChatPie) {}
+  public vzb(CommentBottomBar paramCommentBottomBar) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    synchronized (this.a)
-    {
-      this.a.a.a(this.a.a(), this.a);
-      GameRoomChatPie.a(this.a).post(new vzc(this));
-      return;
+    if (CommentBottomBar.a(this.a) != null) {
+      CommentBottomBar.a(this.a).onClick(paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vzb
  * JD-Core Version:    0.7.0.1
  */

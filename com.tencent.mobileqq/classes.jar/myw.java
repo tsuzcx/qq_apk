@@ -1,18 +1,20 @@
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityForPtt;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
 
 public class myw
-  implements Runnable
+  implements View.OnClickListener
 {
-  public myw(PublicAccountH5AbilityForPtt paramPublicAccountH5AbilityForPtt) {}
+  public myw(VideoCoverView paramVideoCoverView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    PublicAccountH5AbilityForPtt.a(this.a);
+    VideoCoverView.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     myw
  * JD-Core Version:    0.7.0.1
  */

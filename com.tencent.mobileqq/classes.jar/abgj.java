@@ -1,24 +1,80 @@
+import android.view.View;
 import android.widget.ImageView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
+import android.widget.TextView;
 
-public class abgj
-  implements Runnable
+class abgj
+  implements ubl
 {
-  public abgj(ARMapActivity paramARMapActivity) {}
+  abgj(abgi paramabgi) {}
   
-  public void run()
+  public View a()
   {
-    this.a.b = 1;
-    this.a.a.post(new abgk(this));
-    ARMapEngine.guideToPOI(0.0F);
-    ThreadManager.post(new abgl(this), 5, null, false);
+    return this.a.jdField_b_of_type_AndroidWidgetRelativeLayout;
+  }
+  
+  public ImageView a()
+  {
+    if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      vkw.a(bool);
+      return this.a.jdField_a_of_type_AndroidWidgetImageView;
+    }
+  }
+  
+  public TextView a()
+  {
+    if (this.a.c != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      vkw.a(bool);
+      return this.a.c;
+    }
+  }
+  
+  public void a()
+  {
+    this.a.a();
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      abgi.a(this.a);
+      return;
+    }
+    abgi.b(this.a);
+  }
+  
+  public void b()
+  {
+    this.a.a(false);
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
+    {
+      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(i);
+      return;
+    }
+  }
+  
+  public void c()
+  {
+    this.a.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abgj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
+import com.tencent.biz.qqstory.database.CommentEntry;
 
-class upb
-  implements Runnable
+public abstract interface upb
 {
-  upb(upa paramupa, String paramString) {}
+  public abstract void a(String paramString, CommentEntry paramCommentEntry);
   
-  public void run()
-  {
-    this.jdField_a_of_type_Upa.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setTag(2131361863, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Upa.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setOnLongClickListener(this.jdField_a_of_type_Upa.jdField_a_of_type_AndroidViewView$OnLongClickListener);
-  }
+  public abstract void b();
+  
+  public abstract void c();
+  
+  public abstract void d();
+  
+  public abstract void e();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     upb
  * JD-Core Version:    0.7.0.1
  */

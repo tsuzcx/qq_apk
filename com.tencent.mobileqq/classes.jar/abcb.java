@@ -1,56 +1,102 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.GetAppPathByActionResult;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
-import java.util.ArrayList;
+import QQService.DeviceItemDes;
+import QQService.SvcDevLoginInfo;
+import android.os.Bundle;
+import android.os.Message;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AuthDevRenameActivity;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class abcb
-  implements ArkLocalAppMgr.IGetAppPathByNameCallback
+  extends MqqHandler
 {
-  public abcb(ArkLocalAppMgr paramArkLocalAppMgr, String paramString, int paramInt, abcv paramabcv) {}
+  public abcb(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void handleMessage(Message paramMessage)
   {
-    paramObject = null;
-    if ((paramInt != 0) || (paramAppPathInfo == null) || (paramAppPathInfo.jdField_a_of_type_JavaLangString == null))
+    switch (paramMessage.what)
     {
-      ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("getAppViewByIntent, getAppPathByName fail, ret=%d", new Object[] { Integer.valueOf(paramInt) }));
-      paramString = null;
-      paramAppPathInfo = null;
     }
-    for (;;)
+    do
     {
-      this.jdField_a_of_type_Abcv.d = paramString;
-      this.jdField_a_of_type_Abcv.e = paramAppPathInfo;
-      this.jdField_a_of_type_Abcv.c = paramObject;
-      ArkLocalAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr, this.jdField_a_of_type_Abcv);
-      return;
-      ArrayList localArrayList = new ArrayList();
-      ArkLocalAppMgr.a(paramAppPathInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, localArrayList);
-      ArkAppCenter.b("ArkBubbleState", String.format("getAppViewByIntent, getAppPathByName success, ret=%d", new Object[] { Integer.valueOf(2) }));
-      if ((localArrayList.isEmpty()) && (this.jdField_a_of_type_Int == 4))
+      do
       {
-        ArkLocalAppMgr.a(paramAppPathInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 1, localArrayList);
-        ArkAppCenter.b("ArkBubbleState", String.format("getAppViewByIntent, getAppPathByName success, ret=%d", new Object[] { Integer.valueOf(1) }));
-      }
-      if (!localArrayList.isEmpty())
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              if (QLog.isColorLevel()) {
+                QLog.d("LoginInfoActivity.AccDevSec", 2, "handleMessage.msg.arg1=" + paramMessage.arg1);
+              }
+            } while (LoginInfoActivity.a(this.a) == null);
+            LoginInfoActivity.a(this.a).DevSetup = paramMessage.arg1;
+            LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
+            return;
+          } while (LoginInfoActivity.a(this.a) == null);
+          localObject = paramMessage.getData();
+        } while (localObject == null);
+        paramMessage = ((Bundle)localObject).getString(AuthDevRenameActivity.f);
+        Object localObject = ((Bundle)localObject).getByteArray(AuthDevRenameActivity.h);
+        int i = 0;
+        for (;;)
+        {
+          if (i < LoginInfoActivity.a(this.a).size())
+          {
+            SvcDevLoginInfo localSvcDevLoginInfo = (SvcDevLoginInfo)LoginInfoActivity.a(this.a).get(i);
+            if ((localSvcDevLoginInfo != null) && (Arrays.equals(localSvcDevLoginInfo.stDeviceItemDes.vecItemDes, (byte[])localObject))) {
+              localSvcDevLoginInfo.strDeviceName = paramMessage;
+            }
+          }
+          else
+          {
+            LoginInfoActivity.a(this.a, LoginInfoActivity.a(this.a));
+            return;
+          }
+          i += 1;
+        }
+      } while ((LoginInfoActivity.a(this.a) == null) || ((!LoginInfoActivity.a(this.a)) && (!LoginInfoActivity.b(this.a))));
+      paramMessage = this.a.getString(2131651452);
+      if (LoginInfoActivity.a(this.a) >= 4)
       {
-        paramString = paramAppPathInfo.jdField_a_of_type_JavaLangString;
-        paramAppPathInfo = ((ArkLocalAppMgr.GetAppPathByActionResult)localArrayList.get(0)).d;
-        paramObject = ((ArkLocalAppMgr.GetAppPathByActionResult)localArrayList.get(0)).e;
+        LoginInfoActivity.a(this.a).setText(paramMessage);
+        return;
       }
-      else
+      LoginInfoActivity.a(this.a).setVisibility(0);
+      LoginInfoActivity.a(this.a, (LoginInfoActivity.a(this.a) + 1) % 4);
+      switch (LoginInfoActivity.a(this.a))
       {
-        paramString = null;
-        paramAppPathInfo = null;
       }
-    }
+      for (;;)
+      {
+        sendEmptyMessageDelayed(20170210, 300L);
+        return;
+        paramMessage = paramMessage + this.a.getString(2131653334);
+        LoginInfoActivity.a(this.a).setText(paramMessage);
+        continue;
+        paramMessage = paramMessage + this.a.getString(2131653335);
+        LoginInfoActivity.a(this.a).setText(paramMessage);
+        continue;
+        paramMessage = paramMessage + this.a.getString(2131653336);
+        LoginInfoActivity.a(this.a).setText(paramMessage);
+        continue;
+        LoginInfoActivity.a(this.a).setText(paramMessage);
+      }
+      paramMessage = paramMessage.getData();
+    } while (paramMessage == null);
+    boolean bool = paramMessage.getBoolean("bSafe");
+    paramMessage = paramMessage.getString("TipText");
+    LoginInfoActivity.a(this.a, bool, paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abcb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,31 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.ar.arengine.AREngineCallback;
-import com.tencent.mobileqq.arcard.ARCardUtils;
-import java.io.File;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.Conversation.46.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.os.MqqHandler;
 
 public class aanj
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public aanj(AREngine paramAREngine, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt1, int paramInt2, Object paramObject) {}
+  public aanj(Conversation paramConversation) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.a())) {
-      switch (this.jdField_a_of_type_Int)
-      {
-      default: 
-        AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine).a(null, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangObject);
-      }
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Int == 1001)
-      {
-        Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaLangObject;
-        ARCardUtils.a(localBitmap, new File("/sdcard/test/ARCloudSucessResult.jpg"), true);
-        localBitmap.recycle();
-      }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.s();
-    }
+    paramContext = paramIntent.getStringExtra("wording");
+    int i = paramIntent.getIntExtra("timetowait", 360000);
+    this.a.jdField_a_of_type_Agxq.jdField_a_of_type_Int = i;
+    this.a.jdField_a_of_type_Agxq.jdField_a_of_type_JavaLangString = paramContext;
+    this.a.jdField_a_of_type_Agxq.a(18, 2);
+    this.a.jdField_a_of_type_Agxq.a(-1, null);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class).postDelayed(new Conversation.46.1(this), i);
+    awqx.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_PushBanner", "showBanner", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aanj
  * JD-Core Version:    0.7.0.1
  */

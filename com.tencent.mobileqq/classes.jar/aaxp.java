@@ -1,39 +1,40 @@
-import com.tencent.mobileqq.ark.ArkActionAppMgr;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppInfo.ContextActionAppInfo;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.TreeMap;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
 
 public class aaxp
-  implements Runnable
+  extends Handler
 {
-  public aaxp(ArkActionAppMgr paramArkActionAppMgr) {}
+  public aaxp(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    TreeMap localTreeMap = new TreeMap(new aaxq(this));
-    ArkActionAppMgr.a(this.a, localTreeMap);
-    if (localTreeMap.isEmpty())
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
     {
-      ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("updateLocalAppInfo, no action need update", new Object[0]));
+    }
+    do
+    {
       return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder(128);
-    Iterator localIterator = localTreeMap.keySet().iterator();
-    while (localIterator.hasNext())
-    {
-      ArkAppInfo.ContextActionAppInfo localContextActionAppInfo = (ArkAppInfo.ContextActionAppInfo)localIterator.next();
-      aaxz localaaxz = (aaxz)localTreeMap.get(localContextActionAppInfo);
-      localStringBuilder.append(String.format("%s.%s(%d-%d);", new Object[] { localContextActionAppInfo.a, localContextActionAppInfo.b, Long.valueOf(localaaxz.a), Long.valueOf(localaaxz.b) }));
-    }
-    ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("updateLocalAppInfo, actions=%s", new Object[] { localStringBuilder.toString() }));
-    ArkActionAppMgr.b(this.a, localTreeMap);
+      if (!this.a.isFinishing())
+      {
+        this.a.jdField_a_of_type_Bbms.a(this.a.getString(2131625248));
+        this.a.jdField_a_of_type_Bbms.d(2130848385);
+        this.a.jdField_a_of_type_Bbms.b(false);
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
+      return;
+    } while ((this.a.jdField_a_of_type_Bbms == null) || (!this.a.jdField_a_of_type_Bbms.isShowing()));
+    this.a.jdField_a_of_type_Bbms.cancel();
+    this.a.jdField_a_of_type_Bbms.a(this.a.getString(2131625250));
+    this.a.jdField_a_of_type_Bbms.c(true);
+    this.a.jdField_a_of_type_Bbms.a(false);
+    this.a.jdField_a_of_type_Bbms.b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaxp
  * JD-Core Version:    0.7.0.1
  */

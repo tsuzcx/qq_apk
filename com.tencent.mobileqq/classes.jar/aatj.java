@@ -1,36 +1,56 @@
-import android.view.View;
-import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
 
 public class aatj
-  implements ActionSheet.OnButtonClickListener
+  implements abqm
 {
-  public aatj(ARGreetingCardListManager paramARGreetingCardListManager) {}
+  public aatj(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(Editable paramEditable)
   {
-    switch (paramInt)
-    {
+    paramEditable = paramEditable.toString();
+    if (TextUtils.isEmpty(paramEditable)) {
+      ForwardTroopListFragment.a(this.a).setVisibility(8);
     }
     for (;;)
     {
-      if (ARGreetingCardListManager.a(this.a) != null) {
-        ARGreetingCardListManager.a(this.a).dismiss();
+      if (ForwardTroopListFragment.a(this.a) != null) {
+        ForwardTroopListFragment.a(this.a).a(paramEditable);
       }
       return;
-      ReportController.b(null, "dc00898", "", "", "0X8008F18", "0X8008F18", 2, 0, "", "", "", "");
-      ARGreetingCardListManager.a(this.a, false);
-      continue;
-      ReportController.b(null, "dc00898", "", "", "0X8008F19", "0X8008F19", 2, 0, "", "", "", "");
-      ARGreetingCardListManager.a(this.a, true);
+      ForwardTroopListFragment.a(this.a).setVisibility(0);
+    }
+  }
+  
+  public void a(ResultRecord paramResultRecord)
+  {
+    if (paramResultRecord != null) {
+      ForwardTroopListFragment.a(this.a, paramResultRecord.a, paramResultRecord.a());
+    }
+    this.a.a.notifyDataSetChanged();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if ((paramBoolean) && (ForwardTroopListFragment.a(this.a) == null))
+    {
+      ForwardTroopListFragment.a(this.a, ContactSearchFragment.a(8, 2097176, null, null, ForwardTroopListFragment.a(this.a)));
+      FragmentTransaction localFragmentTransaction = this.a.getActivity().getSupportFragmentManager().beginTransaction();
+      localFragmentTransaction.add(2131309439, ForwardTroopListFragment.a(this.a));
+      localFragmentTransaction.commitAllowingStateLoss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aatj
  * JD-Core Version:    0.7.0.1
  */

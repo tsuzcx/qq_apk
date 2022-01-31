@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_gravity="center|left|top" android:orientation="vertical" android:id="@id/b8q" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center|left|top" android:id="@id/jm8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.biz.webviewplugin.Hole android:id="@id/d6b" android:background="#00ff0000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <View android:background="@drawable/dkc" android:layout_width="320.0dip" android:layout_height="132.5dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="150.0dip" />
+        <View android:background="@drawable/dkb" android:layout_width="74.5dip" android:layout_height="19.5dip" android:layout_marginLeft="150.0dip" android:layout_marginTop="250.0dip" />
+    </FrameLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/adu" android:background="@drawable/xx" android:paddingLeft="34.0dip" android:paddingRight="34.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="60.0dip">
+        <TextView android:id="@id/iqr" android:visibility="gone" android:text="@string/exg" android:drawableTop="@drawable/dll" style="@style/sj" />
+        <TextView android:id="@id/ins" android:visibility="gone" android:text="@string/exe" android:drawableTop="@drawable/dli" style="@style/sj" />
+        <TextView android:id="@id/ezq" android:visibility="gone" android:text="@string/exd" android:drawableTop="@drawable/dle" style="@style/sj" />
+        <TextView android:id="@id/cgm" android:visibility="gone" android:text="@string/exb" android:drawableTop="@drawable/dlc" style="@style/sj" />
+        <TextView android:id="@id/bzi" android:visibility="gone" android:text="@string/exa" android:drawableTop="@drawable/dl_" style="@style/sj" />
+    </LinearLayout>
+    <Button android:id="@id/cd8" android:background="@drawable/dlf" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginLeft="260.0dip" android:layout_marginTop="250.0dip" />
+</FrameLayout>

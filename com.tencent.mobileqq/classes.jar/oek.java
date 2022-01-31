@@ -1,91 +1,121 @@
-import android.view.View;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.IMyStoryListView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class oek
-  implements AbsListView.OnScrollListener
+  implements AladdinConfigHandler
 {
-  public oek(MystoryListView paramMystoryListView) {}
+  private static final Set<Integer> jdField_a_of_type_JavaUtilSet = new HashSet();
+  private static boolean jdField_a_of_type_Boolean = ((Boolean)bgmq.a("readinjjoy_feeds_card_whitelist", Boolean.valueOf(false))).booleanValue();
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  static
   {
-    if ((MystoryListView.a(this.a) != 1) && (paramAbsListView.getCount() != 0)) {
-      switch (paramInt)
-      {
-      }
-    }
-    for (;;)
+    a();
+  }
+  
+  private static void a()
+  {
+    a(1, 6);
+    a(10, 11);
+    a(19, 26);
+    a(28, 32);
+    a(28, 32);
+    a(36, 40);
+    a(43, 43);
+    a(48, 48);
+    a(51, 52);
+    a(60, 60);
+    a(67, 69);
+    a(71, 72);
+    a(78, 79);
+    a(81, 81);
+    a(84, 84);
+    a(102, 102);
+    a(1001, 1004);
+    a(1001, 1004);
+    a(1008, 1008);
+    a(1019, 1020);
+    a(1023, 1027);
+    a(1029, 1037);
+    a(2001, 2006);
+  }
+  
+  private static void a(int paramInt1, int paramInt2)
+  {
+    while (paramInt1 <= paramInt2)
     {
-      if (MystoryListView.a(this.a) != null) {
-        MystoryListView.a(this.a).a(paramAbsListView, paramInt);
-      }
-      return;
-      MystoryListView.a(this.a, false);
-      continue;
-      View localView = paramAbsListView.getChildAt(0);
-      MystoryListView.a(this.a, paramAbsListView.getFirstVisiblePosition());
-      if (localView != null)
-      {
-        MystoryListView.b(this.a, localView.getTop());
-        MystoryListView.c(this.a, localView.getBottom());
-        MystoryListView.d(this.a, localView.getHeight());
-      }
-      MystoryListView.a(this.a, true);
-      MystoryListView.e(this.a, 0);
+      jdField_a_of_type_JavaUtilSet.add(Integer.valueOf(paramInt1));
+      paramInt1 += 1;
     }
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public static boolean a(ArticleInfo paramArticleInfo)
   {
-    int j;
-    int k;
-    int m;
+    if (!jdField_a_of_type_Boolean) {
+      QLog.d("WhiteListBidConfigHandler", 1, "isWhiteListCardAndShow: close");
+    }
     int i;
-    if ((this.a.jdField_a_of_type_AndroidAppActivity != null) && (MystoryListView.a(this.a) != 1) && (paramAbsListView.getCount() != 0))
+    do
     {
-      if (-MystoryListView.b(this.a) > UIUtils.b(this.a.jdField_a_of_type_AndroidAppActivity) * 3) {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView.b(true);
-      }
-      if ((paramInt3 == 0) || (!MystoryListView.a(this.a))) {
-        return;
-      }
-      View localView = paramAbsListView.getChildAt(0);
-      j = localView.getTop();
-      k = localView.getBottom();
-      m = localView.getHeight();
-      if (paramInt1 <= MystoryListView.c(this.a)) {
-        break label257;
-      }
-      MystoryListView.b(this.a, MystoryListView.d(this.a) + MystoryListView.e(this.a));
-      i = j - MystoryListView.d(this.a);
-    }
-    for (;;)
+      do
+      {
+        do
+        {
+          return true;
+          if (paramArticleInfo == null) {
+            return false;
+          }
+        } while (((paramArticleInfo.mChannelID != 0L) && (paramArticleInfo.mChannelID != 70L) && (!odm.c((int)paramArticleInfo.mChannelID))) || ((paramArticleInfo instanceof AdvertisementInfo)) || (paramArticleInfo.mFeedType == 29));
+        i = obz.a(paramArticleInfo);
+        if (!jdField_a_of_type_JavaUtilSet.contains(Integer.valueOf(i))) {
+          break;
+        }
+      } while (!obz.s(paramArticleInfo));
+      i = ovn.a(paramArticleInfo);
+    } while ((i == 1) || (i == 2));
+    return false;
+    QLog.d("WhiteListBidConfigHandler", 1, "isWhiteListCardAndShow: " + i + " is not white list card: " + paramArticleInfo);
+    return false;
+  }
+  
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  {
+    QLog.d("WhiteListBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = ocx.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
     {
-      MystoryListView.e(this.a, MystoryListView.g(this.a) + i);
-      MystoryListView.f(this.a, i + MystoryListView.b(this.a));
-      MystoryListView.b(this.a, j);
-      MystoryListView.c(this.a, k);
-      MystoryListView.d(this.a, m);
-      MystoryListView.a(this.a, paramInt1);
-      if (MystoryListView.a(this.a) == null) {
-        break;
-      }
-      MystoryListView.a(this.a).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
-      return;
-      label257:
-      if (paramInt1 < MystoryListView.c(this.a))
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("WhiteListBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (TextUtils.equals(str1, "kandian_feeds_card_whitelist"))
       {
-        MystoryListView.c(this.a, MystoryListView.f(this.a) - MystoryListView.e(this.a));
-        i = k - MystoryListView.f(this.a);
+        if (Integer.valueOf(str2).intValue() == 1) {}
+        for (boolean bool = true;; bool = false)
+        {
+          jdField_a_of_type_Boolean = bool;
+          bgmq.a("readinjjoy_feeds_card_whitelist", Boolean.valueOf(bool));
+          break;
+        }
       }
-      else
+      if (TextUtils.equals(str1, "kandian_feeds_card_whitelist_bid"))
       {
-        i = k - MystoryListView.f(this.a);
+        bgmq.a("default_feeds_proteus_offline_bid", str2);
+        new rdj().a("default_feeds");
       }
     }
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    QLog.d("WhiteListBidConfigHandler", 1, "[onWipeConfig]");
   }
 }
 

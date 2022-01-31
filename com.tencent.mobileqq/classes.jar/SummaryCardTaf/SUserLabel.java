@@ -9,12 +9,12 @@ import java.util.Map;
 public final class SUserLabel
   extends JceStruct
 {
-  static Map cache_label;
-  public Map label;
+  static Map<Long, SLabelInfo> cache_label;
+  public Map<Long, SLabelInfo> label;
   
   public SUserLabel() {}
   
-  public SUserLabel(Map paramMap)
+  public SUserLabel(Map<Long, SLabelInfo> paramMap)
   {
     this.label = paramMap;
   }

@@ -1,24 +1,50 @@
-import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager.ArkGetLocationCallback;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler;
+import android.view.GestureDetector.OnDoubleTapListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public final class abdj
-  implements ArkAppLocationManager.ArkGetLocationCallback
+public class abdj
+  implements GestureDetector.OnDoubleTapListener
 {
-  public abdj(String paramString, Object paramObject, ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler paramIAnalyzeArkBabyQReplyByServerHandler) {}
+  public abdj(MainFragment paramMainFragment) {}
   
-  public void a(String paramString, double paramDouble1, double paramDouble2)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    abdt localabdt = new abdt(null);
-    localabdt.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localabdt.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangObject;
-    localabdt.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeArkBabyQReplyByServerHandler = this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeArkBabyQReplyByServerHandler;
-    ThreadManager.post(new abdk(this, localabdt, paramString, paramDouble1, paramDouble2), 5, null, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("MainFragment", 2, "onDoubleTap() called with: e = [" + paramMotionEvent + "]");
+    }
+    paramMotionEvent = (Conversation)this.a.a(Conversation.class);
+    if (paramMotionEvent != null) {}
+    for (int i = paramMotionEvent.d;; i = 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("DynimiIcon", 2, "onDoubleTap() unReadCount = " + i);
+      }
+      paramMotionEvent = this.a.b();
+      if ((paramMotionEvent instanceof Conversation)) {
+        ((Conversation)paramMotionEvent).c();
+      }
+      if (i == 0) {
+        MainFragment.d(this.a);
+      }
+      return false;
+    }
+  }
+  
+  public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abdj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,38 @@
-import android.graphics.Color;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.EditInfoActivity;
+import com.tencent.biz.qqstory.model.TroopNickNameManager.1.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.TroopMemberCardInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class sqp
-  implements Runnable
+public class sqp
+  extends ajuc
 {
-  sqp(sqn paramsqn, int paramInt) {}
+  sqp(sqo paramsqo) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList)
   {
-    this.jdField_a_of_type_Sqn.a.a.setText(this.jdField_a_of_type_Sqn.a.jdField_c_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Int > this.jdField_a_of_type_Sqn.a.jdField_c_of_type_Int)
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_Sqn.a.a.setTextColor(-65536);
-      this.jdField_a_of_type_Sqn.a.rightViewText.setEnabled(false);
+      localStringBuilder = new StringBuilder().append("onGetTroopMemberCardInfoResult suc=").append(paramBoolean).append(" size=");
+      if (paramArrayList != null) {
+        break label78;
+      }
+    }
+    label78:
+    for (int i = 0;; i = paramArrayList.size())
+    {
+      QLog.d("TroopNickNameManager", 2, i);
+      if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
+        ThreadManager.executeOnSubThread(new TroopNickNameManager.1.1(this, paramArrayList));
+      }
       return;
     }
-    this.jdField_a_of_type_Sqn.a.a.setTextColor(Color.rgb(119, 119, 119));
-    this.jdField_a_of_type_Sqn.a.rightViewText.setEnabled(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sqp
  * JD-Core Version:    0.7.0.1
  */

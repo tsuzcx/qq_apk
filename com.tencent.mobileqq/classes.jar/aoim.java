@@ -1,27 +1,25 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class aoim
-  implements Runnable
+class aoim
+  implements aoji
 {
-  public aoim(DoodleTextureView paramDoodleTextureView) {}
+  aoim(aoik paramaoik, FileManagerEntity paramFileManagerEntity) {}
   
-  public void run()
+  public void a() {}
+  
+  public void b()
   {
-    PersonalityOperator localPersonalityOperator = (PersonalityOperator)this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.a(102);
-    if (localPersonalityOperator != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType == 3000) {}
+    for (Object localObject = new aouc(this.jdField_a_of_type_Aoik.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);; localObject = new aotz(this.jdField_a_of_type_Aoik.a, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity))
     {
-      localPersonalityOperator.a();
-      localPersonalityOperator.a(this.a.jdField_a_of_type_Int, this.a.b);
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleOpController.h();
-      this.a.a();
+      aojd.a((aotv)localObject);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoim
  * JD-Core Version:    0.7.0.1
  */

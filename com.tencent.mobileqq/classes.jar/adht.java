@@ -1,23 +1,15 @@
-import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
+import com.tencent.mobileqq.activity.aio.item.HeartBreakCombolEffectView;
 
-class adht
-  implements Runnable
+public class adht
 {
-  adht(adhs paramadhs, String paramString) {}
+  public int a;
+  public String a;
   
-  public void run()
-  {
-    if (this.jdField_a_of_type_JavaLangString != null)
-    {
-      UniformDownloadUtil.a(this.jdField_a_of_type_Adhs.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    UniformDownloadUtil.b(this.jdField_a_of_type_Adhs.jdField_a_of_type_JavaLangString);
-  }
+  public adht(HeartBreakCombolEffectView paramHeartBreakCombolEffectView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adht
  * JD-Core Version:    0.7.0.1
  */

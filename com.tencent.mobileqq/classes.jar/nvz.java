@@ -1,19 +1,12 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-class nvz
+public abstract interface nvz
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  String jdField_a_of_type_JavaLangString;
+  public abstract void a(boolean paramBoolean, String paramString1, String paramString2);
   
-  nvz(nvy paramnvy) {}
+  public abstract void b(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nvz
  * JD-Core Version:    0.7.0.1
  */

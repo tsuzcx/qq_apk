@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class STCheckGame$STAVCtrlParamRsp
-  extends MessageMicro
+  extends MessageMicro<STAVCtrlParamRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField ctrlParam = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -23,7 +23,7 @@ public final class STCheckGame$STAVCtrlParamRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.apollo.STCheckGame.STAVCtrlParamRsp
  * JD-Core Version:    0.7.0.1
  */

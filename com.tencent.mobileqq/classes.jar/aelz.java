@@ -1,34 +1,57 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.magicface.drawable.IMessageHandler;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public final class aelz
-  extends Handler
+public class aelz
 {
-  java.lang.ref.WeakReference a;
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean;
   
-  public aelz(IMessageHandler paramIMessageHandler)
+  public static aelz a(String paramString)
   {
-    super(Looper.getMainLooper());
-    this.a = new mqq.util.WeakReference(paramIMessageHandler);
+    aelz localaelz = new aelz();
+    if (!TextUtils.isEmpty(paramString)) {}
+    try
+    {
+      paramString = new JSONObject(paramString);
+      if ((paramString.has("useRecommendedSticker")) && (paramString.has("maxMatchLength")))
+      {
+        localaelz.a(paramString.getBoolean("useRecommendedSticker"));
+        localaelz.a(paramString.getInt("maxMatchLength"));
+      }
+      return localaelz;
+    }
+    catch (Exception paramString)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("StickerRecConfigBean", 2, paramString.getMessage());
+    }
+    return localaelz;
   }
   
-  public void handleMessage(Message paramMessage)
+  public int a()
   {
-    if (this.a == null) {}
-    IMessageHandler localIMessageHandler;
-    do
-    {
-      return;
-      localIMessageHandler = (IMessageHandler)this.a.get();
-    } while (localIMessageHandler == null);
-    localIMessageHandler.a(paramMessage);
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aelz
  * JD-Core Version:    0.7.0.1
  */

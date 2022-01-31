@@ -1,26 +1,22 @@
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.activity.EditInfoActivity.TouchableSpan;
-
 class sqv
-  extends EditInfoActivity.TouchableSpan
+  implements ssc
 {
-  sqv(sqs paramsqs, int paramInt1, int paramInt2, String paramString)
-  {
-    super(paramsqs.a, paramInt1, paramInt2);
-  }
+  sqv(squ paramsqu) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, sry paramsry)
   {
-    if (this.jdField_a_of_type_Sqs.a.a != null) {
-      this.jdField_a_of_type_Sqs.a.a.setText(this.jdField_a_of_type_JavaLangString);
+    urk.b("WeatherDataProvider", "WeatherLbsListener: onLbsUpdate, isSuccess=" + paramBoolean);
+    if ((paramBoolean) && (paramsry != null))
+    {
+      this.a.a(paramsry.b, paramsry.a);
+      return;
     }
+    this.a.a(false, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sqv
  * JD-Core Version:    0.7.0.1
  */

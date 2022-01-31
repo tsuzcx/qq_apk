@@ -1,35 +1,62 @@
-import android.content.Intent;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import java.util.ArrayList;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class aawi
-  implements Runnable
+  implements begw
 {
-  public aawi(ArkAppModuleReg.ModuleQQ paramModuleQQ, int paramInt, ArrayList paramArrayList) {}
+  public aawi(FriendProfileImageActivity paramFriendProfileImageActivity, aawp paramaawp, boolean paramBoolean, begr parambegr) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    Intent localIntent = new Intent(localBaseActivity, TroopAvatarWallPreviewActivity.class);
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("index", this.jdField_a_of_type_Int);
-    localBundle.putStringArrayList("seqNum", this.jdField_a_of_type_JavaUtilArrayList);
-    localBundle.putBoolean("needBottomBar", false);
-    localBundle.putBoolean("IS_EDIT", false);
-    localBundle.putBoolean("is_use_path", true);
-    localBundle.putBoolean("is_show_action", true);
-    localBundle.putBoolean("is_not_show_index", false);
-    localBundle.putBoolean("is_index_show_bottom", true);
-    localIntent.putExtras(localBundle);
-    localBaseActivity.startActivity(localIntent);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Begr.dismiss();
+      return;
+      azyk.a(this.jdField_a_of_type_Aawp.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity);
+      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (paramView = "1";; paramView = "2")
+      {
+        awqx.b(localQQAppInterface, "dc00898", "", "", "0X800A8CA", "0X800A8CA", 0, 0, paramView, "", "", "");
+        break;
+      }
+      azyk.a(this.jdField_a_of_type_Aawp.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity);
+      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (paramView = "1";; paramView = "2")
+      {
+        awqx.b(localQQAppInterface, "dc00898", "", "", "0X800A8CB", "0X800A8CB", 0, 0, paramView, "", "", "");
+        break;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.a(this.jdField_a_of_type_Aawp.c, this.jdField_a_of_type_Aawp.d);
+      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (paramView = "1";; paramView = "2")
+      {
+        awqx.b(localQQAppInterface, "dc00898", "", "", "0X800A8CC", "0X800A8CC", 0, 0, paramView, "", "", "");
+        break;
+      }
+      azyk.b(this.jdField_a_of_type_Aawp.c, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity);
+      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.app;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (paramView = "1";; paramView = "2")
+      {
+        awqx.b(localQQAppInterface, "dc00898", "", "", "0X800A8CD", "0X800A8CD", 0, 0, paramView, "", "", "");
+        break;
+      }
+      if ((!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.b) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.jdField_a_of_type_Boolean)) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.b(this.jdField_a_of_type_Aawp);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aawi
  * JD-Core Version:    0.7.0.1
  */

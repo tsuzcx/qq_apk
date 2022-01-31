@@ -1,29 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.av.random.RandomWebProtocol;
+import org.json.JSONObject;
 
 public class liz
-  implements View.OnClickListener
+  extends liu
 {
-  public liz(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  String b;
   
-  public void onClick(View paramView)
+  public liz(RandomWebProtocol paramRandomWebProtocol) {}
+  
+  void a(String paramString)
   {
-    if ((ReadInJoyDeliverBiuActivity.b(this.a)) && ((!ReadInJoyDeliverBiuActivity.c(this.a)) || (ReadInJoyDeliverBiuActivity.k(this.a) != -1)))
-    {
-      this.a.c(ReadInJoyDeliverBiuActivity.l(this.a));
-      return;
+    super.a(paramString);
+    if ((this.jdField_a_of_type_Int == 5) && (this.jdField_a_of_type_OrgJsonJSONObject != null)) {
+      this.b = RandomWebProtocol.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("roomowner"));
     }
-    PublicAccountReportUtils.a(null, "", "0X8008661", "0X8008661", 0, 0, ReadInJoyDeliverBiuActivity.l(this.a) + "", "", "", ReadInJoyBaseDeliverActivity.a(), false);
-    this.a.finish();
-    ReadInJoyDeliverBiuActivity.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     liz
  * JD-Core Version:    0.7.0.1
  */

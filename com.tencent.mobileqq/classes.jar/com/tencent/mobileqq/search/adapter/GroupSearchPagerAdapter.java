@@ -17,7 +17,7 @@ public class GroupSearchPagerAdapter
   private Fragment jdField_a_of_type_AndroidSupportV4AppFragment;
   private final FragmentManager jdField_a_of_type_AndroidSupportV4AppFragmentManager;
   private FragmentTransaction jdField_a_of_type_AndroidSupportV4AppFragmentTransaction;
-  List jdField_a_of_type_JavaUtilList;
+  List<Fragment> jdField_a_of_type_JavaUtilList;
   
   private static String a(int paramInt, long paramLong)
   {

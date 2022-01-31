@@ -1,78 +1,36 @@
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.biz.AuthorizeConfig;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppContentView;
-import com.tencent.common.app.AppInterface;
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.views.videoceiling.GdtWebViewBuilder;
-import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.smtt.sdk.WebView;
+import android.graphics.PointF;
+import com.tencent.qphone.base.util.QLog;
 
 public class kzk
-  extends GdtWebViewBuilder
 {
-  public kzk(ReadInJoyNativeAdAppContentView paramReadInJoyNativeAdAppContentView, Context paramContext, Activity paramActivity, Intent paramIntent, AppInterface paramAppInterface)
+  long jdField_a_of_type_Long;
+  PointF jdField_a_of_type_AndroidGraphicsPointF = null;
+  boolean jdField_a_of_type_Boolean = false;
+  
+  public void a()
   {
-    super(paramContext, paramActivity, paramIntent, paramAppInterface);
+    QLog.w("ARZimuTask_SpitZimuTask", 1, "MouthLoactionInfo.clear");
+    this.jdField_a_of_type_AndroidGraphicsPointF = null;
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public void a(WebView paramWebView, String paramString)
+  public void a(PointF paramPointF)
   {
-    super.a(paramWebView, paramString);
+    this.jdField_a_of_type_AndroidGraphicsPointF = paramPointF;
   }
   
-  public void a(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  public boolean a()
   {
-    super.a(paramWebView, paramString, paramBitmap);
-  }
-  
-  public boolean a(WebView paramWebView, String paramString)
-  {
-    GdtLog.b("AbsWebView", "shouldOverrideUrlLoading:" + paramString);
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
-    Object localObject;
-    do
-    {
-      return true;
-      localObject = ((CustomWebView)paramWebView).a();
-      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
-      {
-        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
-        for (boolean bool = true;; bool = false) {
-          return bool;
-        }
-      }
-      paramString = Uri.parse(paramString);
-      localObject = paramString.getScheme();
-    } while (!AuthorizeConfig.a().a(paramWebView.getUrl(), (String)localObject).booleanValue());
-    paramWebView = new Intent("android.intent.action.VIEW", paramString);
-    paramWebView.addFlags(268435456);
-    try
-    {
-      this.e.startActivity(paramWebView);
+    if (this.jdField_a_of_type_Boolean) {}
+    while (System.currentTimeMillis() - this.jdField_a_of_type_Long <= 1500L) {
       return true;
     }
-    catch (ActivityNotFoundException paramWebView)
-    {
-      GdtLog.d("AbsWebView", paramWebView.toString());
-    }
-    return true;
-  }
-  
-  public void b(WebView paramWebView, String paramString)
-  {
-    super.b(paramWebView, paramString);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     kzk
  * JD-Core Version:    0.7.0.1
  */

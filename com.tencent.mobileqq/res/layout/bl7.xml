@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.qzone.widget.FrameLayoutForListViewItem android:orientation="vertical" android:id="@id/c7i" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="-10.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/hhm" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:id="@id/c5e" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="@dimen/aph" android:layout_marginTop="250.0dip">
+            <ImageView android:id="@id/hgf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" />
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="11.0dip" android:layout_marginBottom="86.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true">
+                <com.qzone.module.personalitycomponent.entity.QZoneVisitorNotifyView android:id="@id/m4v" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="6.0dip" android:layout_centerHorizontal="true" />
+                <com.qzone.proxy.personalitycomponent.ui.QZoneWidgetControllerDecorator android:id="@id/hf_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/m4v" android:layout_centerHorizontal="true" />
+                <com.qzone.proxy.personalitycomponent.canvasui.QZoneCanvasWidgetView android:id="@id/hem" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/m4v" android:layout_centerHorizontal="true" />
+            </RelativeLayout>
+            <com.qzone.cover.ui.QzoneAvatarDecorator android:id="@id/hf1" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:layout_marginBottom="81.0dip" android:layout_alignParentBottom="true" />
+            <com.qzone.cover.ui.QzoneFacadeDecorator android:id="@id/hex" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:layout_marginBottom="81.0dip" android:layout_alignParentBottom="true" />
+            <com.qzone.cover.ui.QzoneQbossDecorator android:id="@id/hey" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:layout_marginBottom="81.0dip" android:layout_alignParentBottom="true" />
+            <com.qzone.cover.ui.QzoneVipDecorator android:id="@id/hez" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:layout_marginBottom="81.0dip" android:layout_alignParentBottom="true" />
+            <com.qzone.cover.ui.QzoneVipAnimateDecorator android:id="@id/hf0" android:focusable="true" android:layout_width="58.0dip" android:layout_height="32.0dip" android:scaleType="centerCrop" android:layout_alignParentBottom="true" />
+            <ViewStub android:id="@id/hf5" android:layout="@layout/bta" android:layout_width="@dimen/ap4" android:layout_height="@dimen/ap3" android:layout_marginBottom="-16.0dip" android:layout_above="@id/hf1" android:layout_alignParentLeft="true" />
+            <ImageView android:id="@id/dfy" android:background="#4d000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <com.qzone.feed.ui.navigationbar.NavigatorBar android:id="@id/jqb" android:layout_width="fill_parent" android:layout_height="63.0dip" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+        <ViewStub android:id="@id/huh" android:layout="@layout/btm" android:layout_width="fill_parent" android:layout_height="50.0dip" />
+        <ViewStub android:id="@id/hui" android:layout="@layout/bl8" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <FrameLayout android:id="@id/h_p" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="300.0dip">
+        <com.qzone.widget.AsyncImageView android:id="@id/h_q" android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.qzone.widget.AsyncImageView android:id="@id/h_s" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="50.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+            <com.qzone.widget.AsyncImageView android:id="@id/h_r" android:background="@drawable/csv" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentBottom="true" />
+            <TextView android:textSize="12.0sp" android:textColor="#ffffffff" android:id="@id/h_t" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="17.0dip" android:text="@string/rvq" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </FrameLayout>
+</com.qzone.widget.FrameLayoutForListViewItem>

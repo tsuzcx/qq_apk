@@ -1,27 +1,30 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
 
-public class uff
-  implements View.OnTouchListener
+class uff
+  extends tco
 {
-  public uff(TroopMemberListActivity paramTroopMemberListActivity) {}
+  uff(ufc paramufc) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a()
   {
-    if (paramMotionEvent.getAction() == 1)
-    {
-      this.a.j();
-      paramView = this.a.n;
-      this.a.a("Clk_find", paramView, "");
-    }
-    return true;
+    super.a();
+    ufc.a(this.a, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    urp.a("home_page", "suc_share", 2, paramInt, new String[] { urp.b(ufc.a(this.a).a) + "", urp.a(ufc.a(this.a).a) + "", ufc.a(this.a).a.feedId });
+  }
+  
+  public void b(int paramInt)
+  {
+    urp.a("home_page", "share_chanel", 2, paramInt, new String[] { urp.b(ufc.a(this.a).a) + "", urp.a(ufc.a(this.a).a) + "", ufc.a(this.a).a.feedId });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uff
  * JD-Core Version:    0.7.0.1
  */

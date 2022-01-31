@@ -1,35 +1,48 @@
-import com.tencent.mobileqq.activity.aio.doodle.LineLayer;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-
 public class uxj
-  implements Runnable
 {
-  public final String a;
+  private static volatile uxj jdField_a_of_type_Uxj;
+  private uxk jdField_a_of_type_Uxk;
   
-  public uxj(LineLayer paramLineLayer)
+  public static uxj a()
   {
-    this.jdField_a_of_type_JavaLangString = (AppConstants.bN + "temp" + File.separator);
-  }
-  
-  public void run()
-  {
+    if (jdField_a_of_type_Uxj == null) {}
     try
     {
-      FileUtils.a(this.jdField_a_of_type_JavaLangString, true);
-      return;
+      if (jdField_a_of_type_Uxj == null) {
+        jdField_a_of_type_Uxj = new uxj();
+      }
+      return jdField_a_of_type_Uxj;
     }
-    catch (Exception localException)
-    {
-      QLog.d("ClearTempFileJobdownloading", 2, "makedir execption: " + localException);
+    finally {}
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Uxk = null;
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_Uxk != null) {
+      this.jdField_a_of_type_Uxk.a(paramString1, paramString2);
+    }
+  }
+  
+  public void a(uxk paramuxk)
+  {
+    this.jdField_a_of_type_Uxk = paramuxk;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Uxk != null) {
+      this.jdField_a_of_type_Uxk.W_();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uxj
  * JD-Core Version:    0.7.0.1
  */

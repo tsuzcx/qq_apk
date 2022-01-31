@@ -1,33 +1,39 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.fragment.NowLiveFragment;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import java.util.Locale;
 
-public class adwh
-  extends SosoInterface.OnLocationListener
+class adwh
+  implements advq
 {
-  public adwh(NowLiveFragment paramNowLiveFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  adwh(advv paramadvv) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(AIOImageData paramAIOImageData, boolean paramBoolean)
   {
-    if (paramInt != 0)
+    if ((this.a.jdField_a_of_type_Adxf.a() != null) && ((this.a.jdField_a_of_type_Adxf.a().a instanceof AIOImageData)))
     {
-      QQToast.a(this.a.a, 1, "获取地理位置失败。", 1).a();
-      this.a.e();
+      AIOImageData localAIOImageData = (AIOImageData)this.a.jdField_a_of_type_Adxf.a().a;
+      if ((!paramBoolean) && (TextUtils.equals(localAIOImageData.jdField_h_of_type_JavaLangString, paramAIOImageData.jdField_h_of_type_JavaLangString)))
+      {
+        if (localAIOImageData.jdField_h_of_type_Long <= 0L) {
+          break label127;
+        }
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(Locale.CHINA, advv.am(this.a).getString(2131629660), new Object[] { apdh.a(localAIOImageData.jdField_h_of_type_Long) }));
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("NowLiveFragment", 2, "startLocation finish" + System.currentTimeMillis());
+    for (;;)
+    {
+      this.a.c(true);
+      return;
+      label127:
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131629657);
     }
-    this.a.a(paramSosoLbsInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adwh
  * JD-Core Version:    0.7.0.1
  */

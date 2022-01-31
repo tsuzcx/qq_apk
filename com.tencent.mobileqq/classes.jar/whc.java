@@ -1,29 +1,23 @@
-import android.graphics.Point;
-import com.tencent.mobileqq.activity.aio.stickerbubble.ItemStatus.Acceleration;
-import com.tencent.mobileqq.activity.aio.stickerbubble.ItemStatus.Velocity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView;
 
 public class whc
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private Point jdField_a_of_type_AndroidGraphicsPoint;
-  private ItemStatus.Acceleration jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus$Acceleration;
-  private ItemStatus.Velocity jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus$Velocity;
-  private String jdField_a_of_type_JavaLangString;
-  private boolean jdField_a_of_type_Boolean;
+  public whc(ServiceFolderFollowPBHeadView paramServiceFolderFollowPBHeadView) {}
   
-  public whc(Point paramPoint, String paramString, boolean paramBoolean, ItemStatus.Velocity paramVelocity, ItemStatus.Acceleration paramAcceleration, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_AndroidGraphicsPoint = paramPoint;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus$Velocity = paramVelocity;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemStatus$Acceleration = paramAcceleration;
-    this.jdField_a_of_type_Int = paramInt;
+    vvy.a("https://h5.qzone.qq.com/subscription/messagelist?_proxy=1&_wv=1&_wwv=4");
+    ServiceFolderFollowPBHeadView.a(this.a).setVisibility(8);
+    awqx.b(null, "dc00898", "", "", "auth_page", "msg_exp", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     whc
  * JD-Core Version:    0.7.0.1
  */

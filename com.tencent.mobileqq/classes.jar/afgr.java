@@ -1,22 +1,24 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserImage;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserImage.OnLoadListener;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.data.RecentRecommendTroopItem;
+import com.tencent.widget.SingleLineTextView;
 
-public class afgr
-  implements Runnable
+class afgr
+  extends aiac
 {
-  public afgr(PicBrowserImage paramPicBrowserImage, URLDrawable paramURLDrawable, PicBrowserImage.OnLoadListener paramOnLoadListener, int paramInt) {}
-  
-  public void run()
-  {
-    if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 1) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 2)) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicBrowserImage$OnLoadListener.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentImageURLDrawable.getProgress());
-    }
-  }
+  public View a;
+  public Button a;
+  public ImageView a;
+  public TextView a;
+  public RecentRecommendTroopItem a;
+  public SingleLineTextView a;
+  public SingleLineTextView b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afgr
  * JD-Core Version:    0.7.0.1
  */

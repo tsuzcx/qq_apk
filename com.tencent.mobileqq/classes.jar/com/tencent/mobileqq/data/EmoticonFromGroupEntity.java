@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
 import android.support.annotation.NonNull;
+import atmo;
+import atnz;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import com.tencent.qphone.base.util.QLog;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="md5")
 public class EmoticonFromGroupEntity
-  extends Entity
+  extends atmo
   implements Comparable
 {
   public static final String TAG = "EmoticonFromGroupEntity";
@@ -17,10 +17,10 @@ public class EmoticonFromGroupEntity
   public int fromType;
   public boolean gifImg;
   public String md5;
-  @notColumn
+  @atnz
   public MessageForPic msg;
   public long msgseq;
-  @notColumn
+  @atnz
   public int status = -1;
   public String thumbURL;
   public long timestamp;

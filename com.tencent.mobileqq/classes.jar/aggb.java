@@ -1,27 +1,27 @@
-import com.tencent.mobileqq.ar.arengine.ARCloudReqFileInfo;
-import com.tencent.mobileqq.ar.arengine.ARCloudReqInfo;
-import com.tencent.mobileqq.ocr.OcrControl;
-import com.tencent.mobileqq.ocr.OcrControl.OcrCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class aggb
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aggb(OcrControl paramOcrControl, String paramString, ARCloudReqFileInfo paramARCloudReqFileInfo) {}
+  public aggb(NewPhotoPreviewActivity paramNewPhotoPreviewActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ARCloudReqInfo localARCloudReqInfo = OcrControl.a(this.jdField_a_of_type_ComTencentMobileqqOcrOcrControl, this.jdField_a_of_type_JavaLangString);
-    if ((localARCloudReqInfo != null) && (OcrControl.a(this.jdField_a_of_type_ComTencentMobileqqOcrOcrControl) != null))
-    {
-      long l1 = System.currentTimeMillis();
-      long l2 = localARCloudReqInfo.c;
-      OcrControl.a(this.jdField_a_of_type_ComTencentMobileqqOcrOcrControl).a(4, null, this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.b, l1 - l2);
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoPreviewActivity", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    }
+    if (this.a.b != null) {
+      this.a.b.setClickable(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aggb
  * JD-Core Version:    0.7.0.1
  */

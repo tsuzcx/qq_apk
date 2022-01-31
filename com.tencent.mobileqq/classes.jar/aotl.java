@@ -1,44 +1,29 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.tencent.mobileqq.richmedia.LOG;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.util.List;
 
-public class aotl
-  extends Handler
+class aotl
+  implements aoqz
 {
-  public aotl(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  aotl(aotk paramaotk, BaseActivity paramBaseActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public aovk a()
   {
-    LOG.a("CompoundProcessor", "handleMessage, msg.what = " + paramMessage.what + ",msg.arg1 = " + paramMessage.arg1);
-    switch (paramMessage.what)
+    Object localObject2 = null;
+    List localList = this.jdField_a_of_type_Aotk.a();
+    Object localObject1 = localObject2;
+    if (localList != null)
     {
-    case 1: 
-    default: 
-      return;
-    case 2: 
-      i = paramMessage.arg1;
-      paramMessage = paramMessage.getData();
-      LOG.a("CompoundProcessor", "ret is " + i + ",data is " + paramMessage);
-      return;
+      localObject1 = localObject2;
+      if (localList.size() > 0) {
+        localObject1 = new aovz(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localList, aotk.a(this.jdField_a_of_type_Aotk));
+      }
     }
-    int i = paramMessage.arg1;
-    switch (paramMessage.arg1)
-    {
-    default: 
-      return;
-    }
-    paramMessage = paramMessage.getData().getString("maxvideo.file.mp4");
-    LOG.a("CompoundProcessor", "ret is " + i + ",targetFile is " + paramMessage);
+    return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aotl
  * JD-Core Version:    0.7.0.1
  */

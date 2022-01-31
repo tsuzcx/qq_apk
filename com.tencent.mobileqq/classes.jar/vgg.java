@@ -1,20 +1,41 @@
-import android.content.Context;
-import android.content.res.Resources;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
 
-public final class vgg
-  implements Runnable
+class vgg
+  implements ServiceConnection
 {
-  public vgg(Context paramContext) {}
+  private vge a;
   
-  public void run()
+  public vgg(vge paramvge)
   {
-    QQToast.a(this.a.getApplicationContext(), this.a.getString(2131434511), 0).b(this.a.getResources().getDimensionPixelSize(2131558448));
+    this.a = paramvge;
+  }
+  
+  public void a()
+  {
+    this.a = null;
+  }
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  {
+    vge localvge = this.a;
+    if (localvge != null) {
+      localvge.a(paramComponentName, paramIBinder);
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    vge localvge = this.a;
+    if (localvge != null) {
+      localvge.a(paramComponentName);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vgg
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class nearfield_group$BusiReqHead
-  extends MessageMicro
+  extends MessageMicro<BusiReqHead>
 {
   public static final int INT32_SEQ_FIELD_NUMBER = 2;
   public static final int INT32_VERSION_FIELD_NUMBER = 1;
@@ -16,7 +16,7 @@ public final class nearfield_group$BusiReqHead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.nearfield_group.nearfield_group.BusiReqHead
  * JD-Core Version:    0.7.0.1
  */

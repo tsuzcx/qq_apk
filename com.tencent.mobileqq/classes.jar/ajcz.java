@@ -1,20 +1,30 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import java.util.Deque;
 
 public class ajcz
-  implements DialogInterface.OnClickListener
+  implements PopupWindow.OnDismissListener
 {
-  public ajcz(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public ajcz(ApolloPanel paramApolloPanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss()
   {
-    this.a.finish();
+    this.a.a = null;
+    if ((ApolloPanel.a(this.a) != null) && (ApolloPanel.a(this.a).size() > 0))
+    {
+      ajde localajde = (ajde)ApolloPanel.a(this.a).poll();
+      if (ApolloPanel.a(this.a).size() == 0) {
+        ApolloPanel.a(this.a, null);
+      }
+      if (localajde != null) {
+        ApolloPanel.a(this.a, localajde.jdField_a_of_type_AndroidViewView, localajde.jdField_a_of_type_Int, localajde.jdField_a_of_type_JavaLangString, localajde.b);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajcz
  * JD-Core Version:    0.7.0.1
  */

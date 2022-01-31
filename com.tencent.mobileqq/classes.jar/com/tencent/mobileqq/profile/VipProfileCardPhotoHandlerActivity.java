@@ -2,14 +2,16 @@ package com.tencent.mobileqq.profile;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
+import atyf;
+import azyk;
+import bacm;
 import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.utils.ImageUtil;
 
 public class VipProfileCardPhotoHandlerActivity
   extends BaseActivity
@@ -25,21 +27,31 @@ public class VipProfileCardPhotoHandlerActivity
     localIntent.putExtra("PhotoConst.PHOTO_LIST_SHOW_PREVIEW", true);
     localIntent.putExtra("Business_Origin", 101);
     localIntent.putExtra("PhotoConst.COMPRESS_QUALITY", 80);
-    PhotoUtils.a(localIntent, this, VipProfileCardPhotoHandlerActivity.class.getName(), ProfileCardUtil.b(this), ProfileCardUtil.a(this), ProfileCardUtil.b(this), ProfileCardUtil.a(this), ProfileCardUtil.c());
+    PhotoUtils.a(localIntent, this, VipProfileCardPhotoHandlerActivity.class.getName(), azyk.b(this), azyk.a(this), azyk.b(this), azyk.a(this), azyk.c());
   }
   
   private void b()
   {
+    if (Build.VERSION.SDK_INT > 23)
+    {
+      if (checkSelfPermission("android.permission.CAMERA") != 0)
+      {
+        requestPermissions(new atyf(this), 1, new String[] { "android.permission.CAMERA" });
+        return;
+      }
+      this.jdField_a_of_type_AndroidNetUri = ProfileActivity.a(this, 5);
+      return;
+    }
     this.jdField_a_of_type_AndroidNetUri = ProfileActivity.a(this, 5);
   }
   
   protected void a(Uri paramUri)
   {
-    paramUri = ImageUtil.b(this, paramUri);
+    paramUri = bacm.b(this, paramUri);
     Intent localIntent = new Intent();
     localIntent.putExtra("Business_Origin", 101);
     localIntent.putExtra("PhotoConst.COMPRESS_QUALITY", 80);
-    PhotoUtils.a(localIntent, this, VipProfileCardPhotoHandlerActivity.class.getName(), ProfileCardUtil.b(this), ProfileCardUtil.a(this), ProfileCardUtil.b(this), ProfileCardUtil.a(this), paramUri, ProfileCardUtil.c());
+    PhotoUtils.a(localIntent, this, VipProfileCardPhotoHandlerActivity.class.getName(), azyk.b(this), azyk.a(this), azyk.b(this), azyk.a(this), paramUri, azyk.c());
   }
   
   protected void a(String paramString)

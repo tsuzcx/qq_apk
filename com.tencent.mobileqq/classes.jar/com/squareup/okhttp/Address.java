@@ -14,7 +14,6 @@ public final class Address
   final CertificatePinner certificatePinner;
   final List<ConnectionSpec> connectionSpecs;
   final Dns dns;
-  public final String headerHost;
   final HostnameVerifier hostnameVerifier;
   final List<Protocol> protocols;
   final Proxy proxy;
@@ -23,13 +22,13 @@ public final class Address
   final SSLSocketFactory sslSocketFactory;
   final HttpUrl url;
   
-  public Address(String paramString1, int paramInt, Dns paramDns, SocketFactory paramSocketFactory, SSLSocketFactory paramSSLSocketFactory, HostnameVerifier paramHostnameVerifier, CertificatePinner paramCertificatePinner, Authenticator paramAuthenticator, Proxy paramProxy, List<Protocol> paramList, List<ConnectionSpec> paramList1, ProxySelector paramProxySelector, String paramString2)
+  public Address(String paramString, int paramInt, Dns paramDns, SocketFactory paramSocketFactory, SSLSocketFactory paramSSLSocketFactory, HostnameVerifier paramHostnameVerifier, CertificatePinner paramCertificatePinner, Authenticator paramAuthenticator, Proxy paramProxy, List<Protocol> paramList, List<ConnectionSpec> paramList1, ProxySelector paramProxySelector)
   {
     HttpUrl.Builder localBuilder = new HttpUrl.Builder();
     if (paramSSLSocketFactory != null) {}
     for (String str = "https";; str = "http")
     {
-      this.url = localBuilder.scheme(str).host(paramString1).port(paramInt).build();
+      this.url = localBuilder.scheme(str).host(paramString).port(paramInt).build();
       if (paramDns != null) {
         break;
       }
@@ -60,7 +59,6 @@ public final class Address
     this.sslSocketFactory = paramSSLSocketFactory;
     this.hostnameVerifier = paramHostnameVerifier;
     this.certificatePinner = paramCertificatePinner;
-    this.headerHost = paramString2;
   }
   
   public boolean equals(Object paramObject)
@@ -206,7 +204,7 @@ public final class Address
       if (this.certificatePinner != null) {
         m = this.certificatePinner.hashCode();
       }
-      return (((((((((n + 527) * 31 + i1) * 31 + i2) * 31 + i3) * 31 + i4) * 31 + i5) * 31 + i) * 31 + j) * 31 + k) * 31 + m;
+      return (k + (j + (i + ((((((n + 527) * 31 + i1) * 31 + i2) * 31 + i3) * 31 + i4) * 31 + i5) * 31) * 31) * 31) * 31 + m;
       i = 0;
       break;
       j = 0;

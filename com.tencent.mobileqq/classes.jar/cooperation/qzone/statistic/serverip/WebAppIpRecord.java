@@ -3,14 +3,14 @@ package cooperation.qzone.statistic.serverip;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anib;
+import bgem;
 
 public class WebAppIpRecord
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new anib();
+  public static final Parcelable.Creator<WebAppIpRecord> CREATOR = new bgem();
   public long a;
-  public WebAppIpRecord.FixedSizeLinkedHashMap a;
+  public WebAppIpRecord.FixedSizeLinkedHashMap<Integer, Long> a;
   
   public WebAppIpRecord() {}
   

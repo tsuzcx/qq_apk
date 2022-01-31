@@ -1,23 +1,20 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import java.util.HashMap;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aghc
-  implements Runnable
+class aghc
+  implements View.OnClickListener
 {
-  public aghc(ScanOcrActivity paramScanOcrActivity, int paramInt) {}
+  aghc(aggx paramaggx) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(this.jdField_a_of_type_Int));
-    StatisticCollector.a(BaseApplicationImpl.getContext()).a("", "ocr_recog", true, 0L, 0L, localHashMap, "", false);
+    this.a.a(paramView, -1, new Bundle(), 2, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aghc
  * JD-Core Version:    0.7.0.1
  */

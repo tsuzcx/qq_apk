@@ -1,97 +1,156 @@
 package com.tencent.mobileqq.msf.service;
 
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.os.Build;
-import android.os.Build.VERSION;
-import android.os.Process;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.ag;
+import com.tencent.mobileqq.msf.core.auth.b;
+import com.tencent.mobileqq.msf.core.c.a;
+import com.tencent.mobileqq.msf.core.net.m;
+import com.tencent.mobileqq.msf.core.net.n;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.Random;
+import java.util.TimeZone;
+import java.util.concurrent.ConcurrentHashMap;
 
-final class h
-  extends Thread
+public class h
 {
-  public void run()
+  public static volatile boolean a = false;
+  private static String b = "MsfExistReporter";
+  private static final String c = "SP_MSF_ALIVE_TODAY_ZERO_TIME";
+  private static ConcurrentHashMap d = new ConcurrentHashMap();
+  private static final int e = 0;
+  private static final int f = 1;
+  private static final int g = 2;
+  private static final String h = "sp_report_login";
+  private static final String i = "key_report_login_time_millis_today_zero_";
+  
+  private static long a()
   {
-    boolean bool = false;
+    return BaseApplication.getContext().getSharedPreferences("sp_boot_msf", 0).getLong("SP_MSF_ALIVE_TODAY_ZERO_TIME", 0L);
+  }
+  
+  private static long a(String paramString)
+  {
+    return BaseApplication.getContext().getSharedPreferences("sp_report_login", 4).getLong("key_report_login_time_millis_today_zero_" + paramString, 0L);
+  }
+  
+  private static void a(long paramLong)
+  {
+    BaseApplication.getContext().getSharedPreferences("sp_boot_msf", 0).edit().putLong("SP_MSF_ALIVE_TODAY_ZERO_TIME", paramLong).apply();
+  }
+  
+  public static void a(Handler paramHandler)
+  {
+    if (paramHandler != null) {}
     for (;;)
     {
-      int i;
+      SimpleAccount localSimpleAccount;
       try
       {
-        Thread.sleep(3000L);
-        HashMap localHashMap = new HashMap();
-        Object localObject1 = ((ActivityManager)BaseApplication.getContext().getSystemService("activity")).getRunningAppProcesses();
-        int j = Process.myPid();
-        localObject1 = ((List)localObject1).iterator();
-        if (!((Iterator)localObject1).hasNext()) {
-          break label417;
+        if (paramHandler.hasMessages(10500)) {
+          paramHandler.removeMessages(10500);
         }
-        Object localObject2 = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject1).next();
+        long l1 = System.currentTimeMillis();
+        long l2 = ((TimeZone.getDefault().getRawOffset() + l1) / 86400000L + 1L) * 86400000L - TimeZone.getDefault().getRawOffset() + new Random().nextInt(3600000) + 1800000L;
+        paramHandler.sendEmptyMessageDelayed(10500, l2 - l1);
         if (QLog.isColorLevel()) {
-          QLog.d("MSF.S.MsfService", 1, "process info: " + ((ActivityManager.RunningAppProcessInfo)localObject2).processName + " " + ((ActivityManager.RunningAppProcessInfo)localObject2).pid + " " + ((ActivityManager.RunningAppProcessInfo)localObject2).uid);
+          QLog.d(b, 2, "timeZone=" + TimeZone.getDefault().getRawOffset() + ",nextTime=" + l2 + ",nowTime=" + l1);
         }
-        if (!((ActivityManager.RunningAppProcessInfo)localObject2).processName.equals("com.tencent.mobileqq")) {
-          continue;
+        if ((MsfCore.sCore == null) || (!MsfService.core.sender.b.l().c())) {
+          break label386;
         }
-        i = ((ActivityManager.RunningAppProcessInfo)localObject2).pid;
-        localHashMap.clear();
-        localHashMap.put("DEVICE", Build.DEVICE);
-        localHashMap.put("PRODUCT", Build.PRODUCT);
-        localHashMap.put("MANUFACTURER", Build.MANUFACTURER);
-        localHashMap.put("MODEL", Build.MODEL);
-        localHashMap.put("RELEASE", Build.VERSION.RELEASE);
-        localHashMap.put("FROM", MsfService.access$000());
-        if (j < i)
+        a("SP_MSF_ALIVE_TODAY_ZERO_TIME", 0);
+        if ((MsfSdkUtils.getLoginedAccountList() == null) || (MsfSdkUtils.getLoginedAccountList().size() <= 0)) {
+          break;
+        }
+        paramHandler = MsfSdkUtils.getLoginedAccountList().iterator();
+        if (!paramHandler.hasNext()) {
+          break label381;
+        }
+        localSimpleAccount = (SimpleAccount)paramHandler.next();
+        if (localSimpleAccount.getUin().equals(MsfCore.sCore.getAccountCenter().i()))
         {
-          localHashMap.put("WAY", "Daemon");
-          if (MsfService.core.statReporter == null) {
-            break label389;
-          }
-          localObject1 = MsfService.core.statReporter;
-          if (j < i) {
-            bool = true;
-          }
-          ((j)localObject1).a("msfstartway", bool, 0L, 0L, localHashMap, false, false);
+          a(localSimpleAccount.getUin() + "_Background", 2);
           if (!QLog.isColorLevel()) {
-            break label406;
+            continue;
           }
-          localObject1 = localHashMap.keySet().iterator();
-          if (!((Iterator)localObject1).hasNext()) {
-            break label406;
-          }
-          localObject2 = (String)((Iterator)localObject1).next();
-          QLog.d("MSF.S.MsfService", 1, "upload map: " + (String)localObject2 + ":" + (String)localHashMap.get(localObject2));
+          QLog.d(b, 2, "MAIN UIN=" + localSimpleAccount.getUin() + " status=" + localSimpleAccount.isLogined());
           continue;
         }
-        localThrowable.put("WAY", "QQ");
-      }
-      catch (Throwable localThrowable)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.S.MsfService", 1, "upload start way fail : InterruptedException!");
+        if (!QLog.isColorLevel()) {
+          continue;
         }
+      }
+      catch (Exception paramHandler)
+      {
+        paramHandler.printStackTrace();
         return;
       }
-      continue;
-      label389:
-      if (QLog.isColorLevel())
-      {
-        QLog.d("MSF.S.MsfService", 1, "upload start way fail: RDM NULL!");
-        continue;
-        label406:
-        e.a(MsfService.core.statReporter, false);
-        return;
-        label417:
-        i = 2147483647;
+      QLog.d(b, 2, "UIN=" + localSimpleAccount.getUin() + " status=" + localSimpleAccount.isLogined());
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(b, 2, "no login account list");
+    }
+    label381:
+    a = false;
+    return;
+    label386:
+    a = true;
+  }
+  
+  private static void a(String paramString, int paramInt)
+  {
+    long l1 = System.currentTimeMillis();
+    if (!d.containsKey(paramString)) {}
+    switch (paramInt)
+    {
+    case 1: 
+    default: 
+      if (l1 - ((Long)d.get(paramString)).longValue() >= 86400000L) {
+        break;
       }
     }
+    for (;;)
+    {
+      return;
+      d.put(paramString, Long.valueOf(a()));
+      break;
+      d.put(paramString, Long.valueOf(a(paramString)));
+      break;
+      Calendar localCalendar = Calendar.getInstance();
+      localCalendar.setTimeInMillis(l1 / 1000L * 1000L);
+      localCalendar.set(11, 0);
+      localCalendar.set(12, 0);
+      localCalendar.set(13, 0);
+      long l2 = localCalendar.getTimeInMillis();
+      d.put(paramString, Long.valueOf(l2));
+      switch (paramInt)
+      {
+      }
+      while (QLog.isColorLevel())
+      {
+        QLog.d(b, 2, "Daily Report info key=" + paramString + " timeMillisInTodayZero=" + l2 + " nowTime=" + l1 + "sNeedReportMSFAlive=" + a);
+        return;
+        a(l2);
+        a.a(MsfCore.sCore, "start_up", "backstage", "device_cnt", "", 1, "");
+        continue;
+        a(paramString, l2);
+        a.a(MsfCore.sCore, "login", "msf", "login", "", 1, "");
+      }
+    }
+  }
+  
+  private static void a(String paramString, long paramLong)
+  {
+    BaseApplication.getContext().getSharedPreferences("sp_report_login", 4).edit().putLong("key_report_login_time_millis_today_zero_" + paramString, paramLong).apply();
   }
 }
 

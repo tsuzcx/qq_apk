@@ -1,19 +1,35 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.medalwall.MedalWallMng;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.TMG.utils.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 class ailz
-  implements Runnable
+  implements EIPCResultCallback
 {
-  ailz(aily paramaily, QQAppInterface paramQQAppInterface) {}
+  ailz(aily paramaily) {}
   
-  public void run()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    ((MedalWallMng)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(249)).a(2, null);
+    if (paramEIPCResult.code == 0)
+    {
+      paramEIPCResult = paramEIPCResult.data.getString("key_game_friUin");
+      QLog.i("CmGameTemp_CmGameAudioManager", 1, "[onCallback] current game friendUin:" + paramEIPCResult + ",mCurrentFriUin:" + aily.a(this.a));
+      if (!aily.a(this.a).equals(paramEIPCResult))
+      {
+        aily.a(this.a).removeMessages(1);
+        aily.a(this.a).sendEmptyMessage(1);
+      }
+      return;
+    }
+    QLog.i("CmGameTemp_CmGameAudioManager", 1, "[onCallback] game is not exist. exit room");
+    aily.a(this.a).removeMessages(1);
+    aily.a(this.a).sendEmptyMessage(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ailz
  * JD-Core Version:    0.7.0.1
  */

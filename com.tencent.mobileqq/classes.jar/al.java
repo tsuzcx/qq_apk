@@ -1,19 +1,18 @@
 import com.dataline.activities.LiteActivity;
-import com.dataline.util.DatalineSessionAdapter;
 
-class al
-  implements Runnable
+public class al
+  implements behy
 {
-  al(ab paramab) {}
+  public al(LiteActivity paramLiteActivity) {}
   
-  public void run()
+  public void a()
   {
-    this.a.a.a.notifyDataSetChanged();
+    this.a.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     al
  * JD-Core Version:    0.7.0.1
  */

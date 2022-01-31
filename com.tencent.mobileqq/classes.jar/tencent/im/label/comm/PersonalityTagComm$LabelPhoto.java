@@ -11,11 +11,11 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class PersonalityTagComm$LabelPhoto
-  extends MessageMicro
+  extends MessageMicro<LabelPhoto>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_praise_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_msg_praise_rec = PBField.initRepeatMessage(PersonalityTagComm.PraiseRec.class);
+  public final PBRepeatMessageField<PersonalityTagComm.PraiseRec> rpt_msg_praise_rec = PBField.initRepeatMessage(PersonalityTagComm.PraiseRec.class);
   public final PBUInt32Field uint32_file_slot = PBField.initUInt32(0);
   public final PBUInt32Field uint32_praise_flag = PBField.initUInt32(0);
   public final PBUInt32Field uint32_upload_time = PBField.initUInt32(0);
@@ -31,7 +31,7 @@ public final class PersonalityTagComm$LabelPhoto
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.label.comm.PersonalityTagComm.LabelPhoto
  * JD-Core Version:    0.7.0.1
  */

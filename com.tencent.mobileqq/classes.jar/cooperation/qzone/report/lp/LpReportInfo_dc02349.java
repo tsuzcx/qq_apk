@@ -1,7 +1,7 @@
 package cooperation.qzone.report.lp;
 
+import bfpk;
 import com.tencent.common.app.BaseApplicationImpl;
-import cooperation.qzone.QUA;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,14 +23,14 @@ public class LpReportInfo_dc02349
     return null;
   }
   
-  public Map toMap()
+  public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
     if (this.uin <= 1000L) {}
     for (String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();; str = String.valueOf(this.uin))
     {
       localHashMap.put("uin", str);
-      LpReportUtils.safePut(localHashMap, "qua", QUA.a());
+      LpReportUtils.safePut(localHashMap, "qua", bfpk.a());
       localHashMap.put("downloadType", String.valueOf(this.downloadType));
       localHashMap.put("isHttp2", String.valueOf(this.isHttp2));
       localHashMap.put("retCode", String.valueOf(this.retCode));

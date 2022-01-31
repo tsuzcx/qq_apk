@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class DeviceProto$MsgActionInfo
-  extends MessageMicro
+  extends MessageMicro<MsgActionInfo>
 {
   public static final int BYTES_BUFF_WITH_FILE_FIELD_NUMBER = 2;
   public static final int STR_BUSSINESS_NAME_FIELD_NUMBER = 1;

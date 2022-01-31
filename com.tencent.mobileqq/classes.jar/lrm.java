@@ -1,42 +1,32 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.readinjoy.magic.ReadInJoyWatcherObserver;
-import com.tencent.biz.pubaccount.readinjoy.magic.models.AndroidAPs;
-import java.io.File;
-import java.lang.ref.WeakReference;
-import java.util.List;
-import java.util.Set;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
 
 public class lrm
-  implements Runnable
 {
-  public lrm(ReadInJoyWatcherObserver paramReadInJoyWatcherObserver, WeakReference paramWeakReference) {}
-  
-  public void run()
+  public static void a(String paramString)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)
-    {
-      Object localObject = ReadInJoyWatcherObserver.a(new File("/dev/cpuctl/apps/tasks"));
-      if ((ReadInJoyWatcherObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicReadInJoyWatcherObserver) == null) || (!((Set)localObject).contains(Integer.valueOf(ReadInJoyWatcherObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicReadInJoyWatcherObserver).b))))
-      {
-        localObject = ReadInJoyWatcherObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicReadInJoyWatcherObserver, ReadInJoyWatcherObserver.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), (Set)localObject));
-        if (((List)localObject).size() <= 0) {
-          break label119;
-        }
-        ReadInJoyWatcherObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicReadInJoyWatcherObserver, (AndroidAPs)((List)localObject).get(0));
-      }
+    awqx.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
+  }
+  
+  public static void b(String paramString)
+  {
+    int i = 0;
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject instanceof VideoAppInterface)) {
+      i = ((VideoAppInterface)localObject).b("BEAUTY_SKIN");
     }
-    for (;;)
+    if (i > 0) {}
+    for (localObject = "0X80076B4";; localObject = "0X80076B3")
     {
-      ReadInJoyWatcherObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicReadInJoyWatcherObserver, ReadInJoyWatcherObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicReadInJoyWatcherObserver));
+      a((String)localObject);
+      krx.c("BeautyToolbar", "DataReport onUserBeauty:" + paramString + "|" + i);
       return;
-      label119:
-      ReadInJoyWatcherObserver.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyMagicReadInJoyWatcherObserver, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lrm
  * JD-Core Version:    0.7.0.1
  */

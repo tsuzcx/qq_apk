@@ -3,11 +3,9 @@ package com.tencent.mobileqq.app;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.SystemClock;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.RejectedExecutionHandler;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
@@ -24,7 +22,7 @@ class ThreadSmartPool
   private int initMaxPoolSize;
   protected long poolcheckTime = -1L;
   private boolean sAlreadyOutOfPool = false;
-  private SmartRejectedExecutionHandler smartRejectedExecutionHandler = new SmartRejectedExecutionHandler();
+  private ThreadSmartPool.SmartRejectedExecutionHandler smartRejectedExecutionHandler = new ThreadSmartPool.SmartRejectedExecutionHandler(this);
   
   ThreadSmartPool(int paramInt1, int paramInt2, long paramLong, BlockingQueue<Runnable> paramBlockingQueue, PriorityThreadFactory paramPriorityThreadFactory)
   {
@@ -145,41 +143,39 @@ class ThreadSmartPool
       if (ThreadSetting.logcatBgTaskMonitor) {
         ThreadLog.printQLog("ThreadManager", "command is not instanceof Job " + paramRunnable.toString());
       }
-      Job localJob1;
+      Job localJob;
       if ((this instanceof ThreadAsyncTaskPool)) {
-        localJob1 = ThreadExcutor.buildJob(256, paramRunnable, null, false);
+        localJob = ThreadExcutor.buildJob(256, paramRunnable, null, false);
       }
-      for (localJob1.poolNum = 10;; localJob1.poolNum = 11)
+      for (localJob.poolNum = 10; localJob == null; localJob.poolNum = 11)
       {
-        localJob2 = localJob1;
-        if (localJob1 != null) {
-          break;
-        }
         ThreadLog.printQLog("ThreadManager", "sp execute job == null ");
         doJobOneByOne(paramRunnable);
         return;
-        localJob1 = ThreadExcutor.buildJob(512, paramRunnable, null, false);
+        localJob = ThreadExcutor.buildJob(512, paramRunnable, null, false);
       }
     }
-    Job localJob2 = (Job)paramRunnable;
-    try
-    {
-      if (ThreadSetting.logcatBgTaskMonitor) {
-        ThreadLog.printQLog("ThreadManager", "tsp execute:" + localJob2.toString());
+    for (paramRunnable = (Job)paramRunnable;; paramRunnable = localOutOfMemoryError) {
+      try
+      {
+        if (ThreadSetting.logcatBgTaskMonitor) {
+          ThreadLog.printQLog("ThreadManager", "tsp execute:" + paramRunnable.toString());
+        }
+        checkBlockingState();
+        super.execute(paramRunnable);
+        return;
       }
-      checkBlockingState();
-      super.execute(localJob2);
-      return;
-    }
-    catch (OutOfMemoryError paramRunnable)
-    {
-      ThreadLog.printQLog("ThreadManager", "execute job OutOfMemoryError:" + localJob2.toString(), paramRunnable);
-      doJobOneByOne(localJob2);
-      return;
-    }
-    catch (InternalError paramRunnable)
-    {
-      ThreadLog.printQLog("ThreadManager", "java.lang.InternalError: Thread starting during runtime shutdown", paramRunnable);
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        ThreadLog.printQLog("ThreadManager", "execute job OutOfMemoryError:" + paramRunnable.toString(), localOutOfMemoryError);
+        doJobOneByOne(paramRunnable);
+        return;
+      }
+      catch (InternalError paramRunnable)
+      {
+        ThreadLog.printQLog("ThreadManager", "java.lang.InternalError: Thread starting during runtime shutdown", paramRunnable);
+        return;
+      }
     }
   }
   
@@ -201,44 +197,6 @@ class ThreadSmartPool
   protected void terminated()
   {
     super.terminated();
-  }
-  
-  private class SmartRejectedExecutionHandler
-    implements RejectedExecutionHandler
-  {
-    private int rejectReportCount = 0;
-    
-    public SmartRejectedExecutionHandler() {}
-    
-    private boolean needReportRejectedError()
-    {
-      return (this.rejectReportCount < 1) && (ThreadLog.needRecordJob());
-    }
-    
-    public void rejectedExecution(Runnable paramRunnable, ThreadPoolExecutor paramThreadPoolExecutor)
-    {
-      ThreadSmartPool.access$002(ThreadSmartPool.this, true);
-      if ((needReportRejectedError()) && ((paramThreadPoolExecutor instanceof ThreadSmartPool)))
-      {
-        String str1 = ((ThreadSmartPool)paramThreadPoolExecutor).getName();
-        String str2 = str1 + "_RejectedExecution";
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("\n revision:" + ThreadSetting.revision);
-        ThreadSmartPool.this.getRunningJob(str2, localStringBuilder);
-        localStringBuilder.append("\n" + str2 + paramThreadPoolExecutor.toString());
-        ThreadLog.printQLog("ThreadManager", str2 + localStringBuilder.toString());
-        if (ThreadManagerV2.sThreadWrapContext != null)
-        {
-          ThreadManagerV2.sThreadWrapContext.reportRDMException(new TSPRejectedCatchedException(str2), str2, localStringBuilder.toString());
-          this.rejectReportCount += 1;
-          paramThreadPoolExecutor = new HashMap();
-          paramThreadPoolExecutor.put("executor", str1);
-          paramThreadPoolExecutor.put("process", String.valueOf(ThreadSetting.sProcessId));
-          ThreadManagerV2.sThreadWrapContext.reportDengTaException("", "sp_reject_exception_report", true, 0L, 0L, paramThreadPoolExecutor, "", false);
-        }
-      }
-      ThreadSmartPool.this.doJobOneByOne(paramRunnable);
-    }
   }
 }
 

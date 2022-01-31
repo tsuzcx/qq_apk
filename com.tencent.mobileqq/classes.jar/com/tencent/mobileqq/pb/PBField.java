@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.pb;
 
-import java.io.IOException;
-
 public abstract class PBField<T>
 {
   public static PBBoolField initBool(boolean paramBoolean)
@@ -112,17 +110,13 @@ public abstract class PBField<T>
   
   protected abstract void copyFrom(PBField<T> paramPBField);
   
-  public abstract void readFrom(CodedInputStreamMicro paramCodedInputStreamMicro)
-    throws IOException;
+  public abstract void readFrom(CodedInputStreamMicro paramCodedInputStreamMicro);
   
-  protected abstract T readFromDirectly(CodedInputStreamMicro paramCodedInputStreamMicro)
-    throws IOException;
+  protected abstract T readFromDirectly(CodedInputStreamMicro paramCodedInputStreamMicro);
   
-  public abstract void writeTo(CodedOutputStreamMicro paramCodedOutputStreamMicro, int paramInt)
-    throws IOException;
+  public abstract void writeTo(CodedOutputStreamMicro paramCodedOutputStreamMicro, int paramInt);
   
-  protected abstract void writeToDirectly(CodedOutputStreamMicro paramCodedOutputStreamMicro, int paramInt, T paramT)
-    throws IOException;
+  protected abstract void writeToDirectly(CodedOutputStreamMicro paramCodedOutputStreamMicro, int paramInt, T paramT);
 }
 
 

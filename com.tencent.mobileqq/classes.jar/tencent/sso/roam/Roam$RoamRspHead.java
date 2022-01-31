@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class Roam$RoamRspHead
-  extends MessageMicro
+  extends MessageMicro<RoamRspHead>
 {
   public static final int MSG_FIELD_NUMBER = 2;
   public static final int RESULT_FIELD_NUMBER = 1;

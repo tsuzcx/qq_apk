@@ -1,25 +1,79 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.utils.ChnToSpell;
-import java.util.Comparator;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.VirtualViewUtils;
 
-public class oyu
-  implements Comparator
+class oyu
+  extends LinearLayout
 {
-  public oyu(QRDisplayActivity paramQRDisplayActivity) {}
+  private int jdField_a_of_type_Int;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private int jdField_b_of_type_Int;
+  private Paint jdField_b_of_type_AndroidGraphicsPaint;
+  private int c;
+  private int d;
+  private int e;
+  private int f;
+  private int g = -16777216;
   
-  public int a(String paramString1, String paramString2)
+  public oyu(Context paramContext)
   {
-    int i = 1;
-    if ((paramString1 != null) && (paramString2 != null)) {
-      i = ChnToSpell.a(paramString1, 1).compareTo(ChnToSpell.a(paramString2, 1));
+    super(paramContext);
+    setWillNotDraw(false);
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+  
+  public void b(int paramInt)
+  {
+    this.c = paramInt;
+  }
+  
+  public void c(int paramInt)
+  {
+    this.d = paramInt;
+  }
+  
+  public void d(int paramInt)
+  {
+    this.e = paramInt;
+  }
+  
+  protected void onDraw(Canvas paramCanvas)
+  {
+    if (this.jdField_a_of_type_Int != 0)
+    {
+      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+      {
+        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+        this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+      }
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
+      VirtualViewUtils.drawBackground(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint, getWidth(), getHeight(), this.f, this.jdField_b_of_type_Int, this.c, this.d, this.e);
     }
-    while (paramString1 != null) {
-      return i;
+    super.onDraw(paramCanvas);
+    if (this.f > 0)
+    {
+      if (this.jdField_b_of_type_AndroidGraphicsPaint == null)
+      {
+        this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
+        this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+        this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+      }
+      this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.f);
+      this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.g);
+      VirtualViewUtils.drawBorder(paramCanvas, this.jdField_b_of_type_AndroidGraphicsPaint, getWidth(), getHeight(), this.f, this.jdField_b_of_type_Int, this.c, this.d, this.e);
     }
-    if (paramString2 != null) {
-      return -1;
-    }
-    return 0;
+  }
+  
+  public void setBackgroundColor(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 

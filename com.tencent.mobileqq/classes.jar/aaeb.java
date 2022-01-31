@@ -1,39 +1,21 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
-import com.tencent.mobileqq.ar.ARMusicController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class aaeb
-  implements SoundPool.OnLoadCompleteListener
+  implements adze
 {
-  public aaeb(ARMusicController paramARMusicController) {}
+  public aaeb(BaseChatPie paramBaseChatPie) {}
   
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  public void a()
   {
-    if (paramInt2 != 0) {}
-    try
-    {
-      QLog.e("ARMusicController", 2, "load fire music failed. " + ARMusicController.a(this.a));
-      return;
+    if (this.a.K) {
+      this.a.ba();
     }
-    catch (Exception paramSoundPool)
-    {
-      paramSoundPool.printStackTrace();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMusicController", 2, "load fire music success. : " + ARMusicController.a(this.a));
-    }
-    ARMusicController.a(this.a, true);
-    if (ARMusicController.a(this.a))
-    {
-      paramSoundPool.play(paramInt1, 1.0F, 1.0F, 1, 0, 1.0F);
-      return;
-    }
+    ((acxt)this.a.a.a(7)).b(this.a.hashCode());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaeb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,37 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeSmallSocial;
+import android.widget.TextView;
 
-public class lya
-  implements View.OnTouchListener
+class lya
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public lya(FeedItemCellTypeSmallSocial paramFeedItemCellTypeSmallSocial, LinearLayout paramLinearLayout, RelativeLayout paramRelativeLayout) {}
+  lya(lxz paramlxz) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramMotionEvent.getAction() == 0)
+    paramValueAnimator.getAnimatedFraction();
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    float f;
+    if (i <= 220)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(true);
+      f = i / 220.0F;
+      lxz.a(this.a).setAlpha(f);
     }
-    return false;
+    if (i <= 160)
+    {
+      f = i / 100.0F;
+      lxz.a(this.a).setAlpha(f);
+    }
+    if (lxz.a(this.a) != null) {
+      lxz.a(this.a).requestLayout();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lya
  * JD-Core Version:    0.7.0.1
  */

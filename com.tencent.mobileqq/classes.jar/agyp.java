@@ -1,55 +1,30 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.qcall.QCallCardInfo;
+import android.content.Intent;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import mqq.os.MqqHandler;
 
-public final class agyp
-  implements Parcelable.Creator
+class agyp
+  implements View.OnClickListener
 {
-  public QCallCardInfo a(Parcel paramParcel)
-  {
-    QCallCardInfo localQCallCardInfo = new QCallCardInfo();
-    localQCallCardInfo.uin = paramParcel.readString();
-    localQCallCardInfo.nickname = paramParcel.readString();
-    localQCallCardInfo.gender = paramParcel.readInt();
-    localQCallCardInfo.birthday = paramParcel.readInt();
-    localQCallCardInfo.in_use_flag = paramParcel.readInt();
-    localQCallCardInfo.pre_recycle_flag = paramParcel.readInt();
-    localQCallCardInfo.recycle_flag = paramParcel.readInt();
-    localQCallCardInfo.reg_time = paramParcel.readInt();
-    localQCallCardInfo.reg_ip = paramParcel.readString();
-    localQCallCardInfo.recycle_time = paramParcel.readInt();
-    localQCallCardInfo.recycle_ip = paramParcel.readString();
-    localQCallCardInfo.remark = paramParcel.readString();
-    localQCallCardInfo.netstatus = paramParcel.readInt();
-    localQCallCardInfo.qq = paramParcel.readString();
-    localQCallCardInfo.phonenum = paramParcel.readString();
-    localQCallCardInfo.phone_mask = paramParcel.readInt();
-    localQCallCardInfo.freeStatus = paramParcel.readInt();
-    localQCallCardInfo.pstn_freeStatus = paramParcel.readInt();
-    localQCallCardInfo.is_ever_pstn = paramParcel.readInt();
-    localQCallCardInfo.vip_all_free_time = paramParcel.readInt();
-    localQCallCardInfo.vip_left_free_time = paramParcel.readInt();
-    localQCallCardInfo.normal_all_free_time = paramParcel.readInt();
-    localQCallCardInfo.normal_left_free_time = paramParcel.readInt();
-    localQCallCardInfo.used_free_time = paramParcel.readInt();
-    localQCallCardInfo.identity = paramParcel.readInt();
-    localQCallCardInfo.autoRemark = paramParcel.readString();
-    localQCallCardInfo.card_type = paramParcel.readInt();
-    localQCallCardInfo.isPopup = paramParcel.readInt();
-    localQCallCardInfo.qqUin2 = paramParcel.readString();
-    localQCallCardInfo.qid_qq_status = paramParcel.readInt();
-    localQCallCardInfo.contact_qq_status = paramParcel.readInt();
-    return localQCallCardInfo;
-  }
+  agyp(agxq paramagxq, String paramString) {}
   
-  public QCallCardInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new QCallCardInfo[paramInt];
+    paramView = new Intent(agxq.a(this.jdField_a_of_type_Agxq), QQBrowserActivity.class);
+    paramView.putExtra("individuation_url_type", 40100);
+    VasWebviewUtil.openQQBrowserWithoutAD(agxq.a(this.jdField_a_of_type_Agxq), bant.a(agxq.a(this.jdField_a_of_type_Agxq), "themeDetail", this.jdField_a_of_type_JavaLangString, ""), 32L, paramView, true, -1);
+    agxq.a(this.jdField_a_of_type_Agxq).obtainMessage(12).sendToTarget();
+    awqx.b(agxq.a(this.jdField_a_of_type_Agxq).app, "CliOper", "", "", "0X8005B9F", "0X8005B9F", 0, 0, "", "", "", "");
+    awqx.a(agxq.a(this.jdField_a_of_type_Agxq).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 16, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agyp
  * JD-Core Version:    0.7.0.1
  */

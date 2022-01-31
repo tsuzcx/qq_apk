@@ -1,23 +1,10 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
-import com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker.ColorPickerData;
-import com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker.ColorSelectListener;
-import com.tencent.mobileqq.util.SharePreferenceUtils;
-
-public class uwu
-  implements ColorPicker.ColorSelectListener
+public abstract interface uwu
 {
-  public uwu(DoodlePanel paramDoodlePanel) {}
-  
-  public void a(ColorPicker.ColorPickerData paramColorPickerData)
-  {
-    this.a.a(paramColorPickerData);
-    paramColorPickerData = "" + paramColorPickerData.a + ";" + paramColorPickerData.b + ";" + paramColorPickerData.c;
-    SharePreferenceUtils.a(this.a.getContext(), "aio_doodle_colorpicker_select", paramColorPickerData);
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uwu
  * JD-Core Version:    0.7.0.1
  */

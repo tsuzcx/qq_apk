@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.ar.ScanningSurfaceView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.activity.qwallet.RedPacketKSongFragment;
 
 public class agky
-  implements Runnable
+  implements MediaPlayer.OnCompletionListener
 {
-  public agky(ScanTorchActivity paramScanTorchActivity) {}
+  public agky(RedPacketKSongFragment paramRedPacketKSongFragment) {}
   
-  public void run()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    this.a.a.setVisibility(8);
+    RedPacketKSongFragment.a(this.a, false);
+    paramMediaPlayer.release();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agky
  * JD-Core Version:    0.7.0.1
  */

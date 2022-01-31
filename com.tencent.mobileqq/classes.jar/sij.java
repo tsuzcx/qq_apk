@@ -1,39 +1,15 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troop.utils.TroopAvatarManger;
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread.UploadState;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.Observable;
-import java.util.Observer;
-
 public class sij
-  implements Observer
 {
-  public sij(ChatSettingForTroop paramChatSettingForTroop) {}
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    if (this.a.isFinishing()) {}
-    while ((!(paramObject instanceof TroopUploadingThread.UploadState)) || (((TroopUploadingThread.UploadState)paramObject).a != 1)) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.a.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.hasSetNewTroopHead = true;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.hasSetNewTroopName) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isNewTroop = false;
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.hasSetNewTroopHead = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.hasSetNewTroopHead;
-      this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.isNewTroop = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isNewTroop;
-      this.a.u();
-    }
-    this.a.runOnUiThread(new sik(this));
-  }
+  public double a;
+  public int a;
+  public long a;
+  public boolean a;
+  public double b;
+  public int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sij
  * JD-Core Version:    0.7.0.1
  */

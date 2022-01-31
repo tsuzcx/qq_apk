@@ -1,7 +1,7 @@
 package com.tencent.upload.uinterface;
 
 import android.content.Context;
-import com.tencent.upload.b.f;
+import com.tencent.upload.network.route.DebugServerRoute;
 
 public abstract interface IUploadService
 {
@@ -14,7 +14,7 @@ public abstract interface IUploadService
   
   public abstract boolean commit(AbstractUploadTask paramAbstractUploadTask);
   
-  public abstract void init(Context paramContext, IUploadConfig paramIUploadConfig, IUploadLog paramIUploadLog, IUploadReport paramIUploadReport, IUploadEnv paramIUploadEnv);
+  public abstract void init(Context paramContext, IUploadConfig paramIUploadConfig, IUploadLog paramIUploadLog, IUploadReport paramIUploadReport, IUploadEnv paramIUploadEnv, IUploadSoLoader paramIUploadSoLoader);
   
   public abstract boolean isInitialized();
   
@@ -26,29 +26,9 @@ public abstract interface IUploadService
   
   public abstract void setBackgroundMode(boolean paramBoolean);
   
-  public abstract void setTestServer(Utility.TestServerCategory paramTestServerCategory);
-  
-  public abstract boolean setUploadV2Config(V2Config paramV2Config);
+  public abstract void setDebugServerRoute(DebugServerRoute paramDebugServerRoute);
   
   public abstract boolean upload(AbstractUploadTask paramAbstractUploadTask);
-  
-  public static final class UploadServiceCreator
-  {
-    public static final IUploadService getInstance()
-    {
-      return f.a();
-    }
-    
-    public static final IUploadService getMobileLogInstance()
-    {
-      return f.a();
-    }
-    
-    public static final void init(Context paramContext, IUploadConfig paramIUploadConfig, IUploadLog paramIUploadLog, IUploadReport paramIUploadReport, IUploadEnv paramIUploadEnv)
-    {
-      f.a().init(paramContext, paramIUploadConfig, paramIUploadLog, paramIUploadReport, paramIUploadEnv);
-    }
-  }
 }
 
 

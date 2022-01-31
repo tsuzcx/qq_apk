@@ -1,95 +1,58 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.apollo.view.ApolloMainInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionData;
-import com.tencent.mobileqq.data.ApolloMessage;
-import com.tencent.mobileqq.data.MessageForApollo;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.content.Context;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 
 public class uyx
-  implements View.OnClickListener
 {
-  public uyx(ApolloItemBuilder paramApolloItemBuilder) {}
+  private static uyx a = new uyx();
   
-  public void onClick(View paramView)
+  public static uyx a()
   {
-    int k = 1;
-    int i;
-    int j;
-    label68:
-    ApolloMessage localApolloMessage;
-    if (ApolloItemBuilder.a(this.a) != null)
+    return a;
+  }
+  
+  public void a(Context paramContext, ImageView paramImageView, String paramString, int paramInt1, int paramInt2, URLDrawable.URLDrawableListener paramURLDrawableListener)
+  {
+    if ((paramImageView == null) || (TextUtils.isEmpty(paramString)))
     {
-      paramView = ((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext).getChatFragment().a();
-      if (paramView != null)
-      {
-        if (paramView.f() != 21) {
-          break label131;
-        }
-        i = 1;
-        paramView = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        if (!ApolloItemBuilder.a(this.a).isDoubleAction()) {
-          break label136;
-        }
-        j = 1;
-        VipUtils.a(paramView, "cmshow", "Apollo", "groupplusclick", i, j, new String[] { Integer.toString(ApolloItemBuilder.a(this.a).mApolloMessage.id) });
-      }
-      localApolloMessage = ApolloItemBuilder.a(this.a).mApolloMessage;
-      if ((localApolloMessage != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
-        break label141;
-      }
-    }
-    label131:
-    label136:
-    label141:
-    ApolloMainInfo localApolloMainInfo;
-    do
-    {
+      urk.e("ImageLoader", "ImageView or uri is null.");
       return;
-      i = 0;
-      break;
-      j = 0;
-      break label68;
-      localApolloMainInfo = new ApolloMainInfo(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
-      paramView = new ApolloActionData();
-      ApolloDaoManager localApolloDaoManager = (ApolloDaoManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(154);
-      if (localApolloDaoManager == null) {
-        break label376;
+    }
+    urk.b("ImageLoader", "uri:" + paramString + ",width:" + paramInt1 + ",height:" + paramInt2);
+    paramContext = URLDrawable.URLDrawableOptions.obtain();
+    if ((paramInt1 > 0) && (paramInt2 > 0))
+    {
+      paramContext.mRequestWidth = paramInt1;
+      paramContext.mRequestHeight = paramInt2;
+    }
+    paramContext.mFailedDrawable = axwd.a;
+    paramContext.mLoadingDrawable = axwd.a;
+    paramContext.mUseAutoScaleParams = false;
+    paramContext = URLDrawable.getDrawable(paramString, paramContext);
+    if (paramURLDrawableListener != null)
+    {
+      if (paramContext.getStatus() != 1) {
+        break label154;
       }
-      paramView = localApolloDaoManager.a(localApolloMessage.id);
-    } while (paramView == null);
-    label376:
+      urk.b("ImageLoader", "URLDrawable's status is SUCCESSED.");
+      paramURLDrawableListener.onLoadSuccessed(paramContext);
+    }
     for (;;)
     {
-      paramView.peerUin = (localApolloMessage.peer_uin + "");
-      if (localApolloMessage.text != null) {
-        paramView.atNickName = new String(localApolloMessage.text);
-      }
-      paramView.inputText = ApolloItemBuilder.a(this.a).inputText;
-      localApolloMainInfo.jdField_a_of_type_ComTencentMobileqqDataApolloActionData = paramView;
-      if (ApolloItemBuilder.a(this.a).isBarrageMode()) {}
-      for (i = k;; i = 0)
-      {
-        localApolloMainInfo.d = i;
-        localApolloMainInfo.b = ApolloItemBuilder.a(this.a).inputText;
-        localApolloMainInfo.e = ApolloItemBuilder.a(this.a).audioId;
-        localApolloMainInfo.jdField_a_of_type_Float = ApolloItemBuilder.a(this.a).audioStartTime;
-        ChatActivityFacade.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, localApolloMainInfo);
-        return;
-      }
+      paramContext.setURLDrawableListener(paramURLDrawableListener);
+      paramImageView.setImageDrawable(paramContext);
+      return;
+      label154:
+      urk.b("ImageLoader", "start load URLDrawable.");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uyx
  * JD-Core Version:    0.7.0.1
  */

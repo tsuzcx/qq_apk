@@ -1,29 +1,18 @@
-import android.util.SparseArray;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.GridView;
-import dov.com.qq.im.capture.adapter.FilterProviderPagerAdapter;
-import dov.com.qq.im.capture.view.QIMFilterProviderView;
+import android.view.View;
 
-public class anyd
-  implements Runnable
+class anyd
+  implements behy
 {
-  public anyd(QIMFilterProviderView paramQIMFilterProviderView, int paramInt) {}
+  anyd(anyb paramanyb, View paramView) {}
   
-  public void run()
+  public void a()
   {
-    GridView localGridView = (GridView)this.jdField_a_of_type_DovComQqImCaptureViewQIMFilterProviderView.a.a.get(this.jdField_a_of_type_DovComQqImCaptureViewQIMFilterProviderView.b());
-    if (localGridView != null) {
-      localGridView.setSelection(this.jdField_a_of_type_Int);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("FilterProviderView", 2, "gridView is null ");
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anyd
  * JD-Core Version:    0.7.0.1
  */

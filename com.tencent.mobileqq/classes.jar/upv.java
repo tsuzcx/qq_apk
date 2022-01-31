@@ -1,38 +1,41 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-class upv
-  implements PreloadManager.OnGetPathListener
+public class upv
+  extends vpv
 {
-  upv(ups paramups) {}
+  public static final String KEY = "NewDividerSegment";
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public upv(Context paramContext)
   {
-    paramPathResult = paramPathResult.folderPath;
-    if (paramInt == 0) {}
-    try
-    {
-      this.a.a.resPath = paramPathResult;
-      if (QLog.isColorLevel()) {
-        QLog.d("CustomizeStrategyFactory", 2, "TYPE_POP_ANIM path=" + paramPathResult);
-      }
-      CustomizeStrategyFactory.a().a(this.a.a);
-      return;
-    }
-    catch (Throwable paramPathResult)
-    {
-      for (;;)
-      {
-        paramPathResult.printStackTrace();
-      }
-    }
+    super(paramContext);
+  }
+  
+  public int a()
+  {
+    return 1;
+  }
+  
+  public View a(int paramInt, unw paramunw, ViewGroup paramViewGroup)
+  {
+    return paramunw.a();
+  }
+  
+  public String a()
+  {
+    return "NewDividerSegment";
+  }
+  
+  public unw a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new unw(LayoutInflater.from(this.a).inflate(2131495631, paramViewGroup, false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     upv
  * JD-Core Version:    0.7.0.1
  */

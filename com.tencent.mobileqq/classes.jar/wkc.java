@@ -1,22 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-
-public class wkc
-  implements View.OnClickListener
+public abstract interface wkc
 {
-  public wkc(BlessActivity paramBlessActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    ReportController.b(this.a.app, "CliOper", "", "", "0X800632F", "0X800632F", 0, 0, "", "", "", "");
-    BlessActivity.a(this.a, true);
-  }
+  public abstract void a(String paramString1, boolean paramBoolean, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wkc
  * JD-Core Version:    0.7.0.1
  */

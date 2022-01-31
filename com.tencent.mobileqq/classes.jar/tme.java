@@ -1,36 +1,23 @@
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
 
-public class tme
-  extends PublicAccountObserver
+public final class tme
+  implements Parcelable.Creator<AnimationParam>
 {
-  public tme(PublicAccountListActivity paramPublicAccountListActivity) {}
-  
-  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  public AnimationParam a(Parcel paramParcel)
   {
-    if (paramInt == 0) {
-      this.a.c();
-    }
+    return new AnimationParam(paramParcel);
   }
   
-  public void a(int paramInt, boolean paramBoolean)
+  public AnimationParam[] a(int paramInt)
   {
-    if (paramBoolean) {
-      this.a.c();
-    }
-  }
-  
-  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
-  {
-    if (paramInt == 0) {
-      this.a.c();
-    }
+    return new AnimationParam[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tme
  * JD-Core Version:    0.7.0.1
  */

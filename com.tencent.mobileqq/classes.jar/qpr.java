@@ -1,26 +1,59 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.gdtad.net.GdtHttp;
-import com.tencent.gdtad.net.GdtHttp.Params;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianProgressView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
-public final class qpr
-  implements Runnable
+public class qpr
+  implements psn
 {
-  public qpr(GdtHttp.Params paramParams, WeakReference paramWeakReference) {}
+  public qpr(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup) {}
   
-  public void run()
+  public void a(Bundle paramBundle, float paramFloat)
   {
-    GdtHttp.a(this.jdField_a_of_type_ComTencentGdtadNetGdtHttp$Params);
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+    String str = paramBundle.getString("mTaskID");
+    ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "");
+    if (this.a.jdField_a_of_type_JavaUtilMap.get(str) != null) {
+      ((KandianProgressView)this.a.jdField_a_of_type_JavaUtilMap.get(str)).a((int)paramFloat);
+    }
+  }
+  
+  public void a(Bundle paramBundle, int paramInt, float paramFloat)
+  {
+    QLog.d("KandianVideoUpload", 1, paramBundle.getString("mTaskID") + "service中的状态:" + paramInt);
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 200: 
+      this.a.jdField_a_of_type_Psn.a(paramBundle, (int)paramFloat);
+      return;
+    case 202: 
+      ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "failed");
       return;
     }
-    new Handler(Looper.getMainLooper()).post(new qps(this));
+    psj.b(paramBundle);
+  }
+  
+  public void a(Bundle paramBundle, String paramString)
+  {
+    paramString = paramBundle.getString("mTaskID");
+    ReadInJoyBaseListViewGroup.a(this.a, paramBundle, "failed");
+    if (this.a.jdField_a_of_type_JavaUtilMap.get(paramString) != null) {
+      ((KandianProgressView)this.a.jdField_a_of_type_JavaUtilMap.get(paramString)).a();
+    }
+  }
+  
+  public void a(String paramString)
+  {
+    this.a.a();
+    ogy.a().b(true);
+    ReadInJoyBaseListViewGroup.a(this.a, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qpr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,15 @@
-import android.text.TextUtils;
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.biz.qqstory.utils.pngquant.PngQuantUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class oua
-  implements AsyncBack
+class oua
+  implements View.OnClickListener
 {
-  public void loaded(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("PngQuantUtils", 2, "checkUpByBusinessId loaded,code=" + paramInt);
-    }
-    if ((paramInt == 0) && (!TextUtils.isEmpty(paramString)) && (paramString.contains("url"))) {
-      PngQuantUtils.a.set(false);
-    }
-  }
+  oua(otz paramotz, opw paramopw) {}
   
-  public void progress(int paramInt) {}
+  public void onClick(View paramView)
+  {
+    qoe.a(this.jdField_a_of_type_Opw.a(), 0, 1);
+  }
 }
 
 

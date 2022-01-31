@@ -1,17 +1,21 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView.DoodleEditViewListener;
-import com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class oip
-  implements DoodleEditView.DoodleEditViewListener
+class oip
+  implements Animation.AnimationListener
 {
-  public oip(EditVideoDoodle paramEditVideoDoodle) {}
+  oip(oio paramoio) {}
   
-  public void a(GestureHelper.ZoomItem paramZoomItem)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.a(6);
+    this.a.a.clearAnimation();
+    this.a.a.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,21 +1,33 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import mqq.app.AppRuntime;
-
-class aekm
-  implements Runnable
+public class aekm
 {
-  aekm(aekl paramaekl) {}
+  public double a;
+  public double b;
   
-  public void run()
+  public aekm(double paramDouble1, double paramDouble2)
   {
-    BaseApplicationImpl.getApplication().getRuntime().getPreferences().edit().putInt("pic_light_reply_version_new", 0).commit();
+    this.a = paramDouble1;
+    this.b = paramDouble2;
+  }
+  
+  public aekm(aekm paramaekm)
+  {
+    a(paramaekm);
+  }
+  
+  public void a(aekm paramaekm)
+  {
+    this.a = paramaekm.a;
+    this.b = paramaekm.b;
+  }
+  
+  public String toString()
+  {
+    return "Acceleration{ax=" + this.a + ", ay=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aekm
  * JD-Core Version:    0.7.0.1
  */

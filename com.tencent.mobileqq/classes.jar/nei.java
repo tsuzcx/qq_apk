@@ -1,20 +1,18 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.ECommerceEntranceInfo;
 
 public final class nei
-  extends SimpleJob
+  implements Parcelable.Creator<VideoInfo.ECommerceEntranceInfo>
 {
-  public nei(String paramString) {}
-  
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public VideoInfo.ECommerceEntranceInfo a(Parcel paramParcel)
   {
-    int i = StoryVideoUploadManager.a();
-    SLog.d("Q.qqstory.publish.upload:StoryVideoUploadManager", this.a + " : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(i) });
-    return null;
+    return new VideoInfo.ECommerceEntranceInfo(paramParcel);
+  }
+  
+  public VideoInfo.ECommerceEntranceInfo[] a(int paramInt)
+  {
+    return new VideoInfo.ECommerceEntranceInfo[paramInt];
   }
 }
 

@@ -11,7 +11,7 @@ public class LabelContainer
   extends FrameLayout
 {
   protected int a;
-  protected SparseArray a;
+  protected SparseArray<ArrayList<View>> a;
   protected int b;
   
   public LabelContainer(Context paramContext, AttributeSet paramAttributeSet)

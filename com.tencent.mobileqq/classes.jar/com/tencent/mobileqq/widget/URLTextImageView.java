@@ -18,7 +18,7 @@ public class URLTextImageView
   public String e;
   int i;
   public int j;
-  int k = 2131493235;
+  int k = 2131099888;
   
   public URLTextImageView(Context paramContext)
   {
@@ -80,7 +80,7 @@ public class URLTextImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.URLTextImageView
  * JD-Core Version:    0.7.0.1
  */

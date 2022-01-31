@@ -1,15 +1,12 @@
-import com.tencent.mobileqq.activity.aio.item.FileItemBuilder;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil.DownLoadHandler;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import android.view.MotionEvent;
 
-public class vbl
-  implements ApolloUtil.DownLoadHandler
+public abstract class vbl
 {
-  public vbl(FileItemBuilder paramFileItemBuilder, FileManagerEntity paramFileManagerEntity) {}
+  public abstract boolean a(MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vbl
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x438$RedBagInfo
-  extends MessageMicro
+  extends MessageMicro<RedBagInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_pc_body = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -34,7 +34,7 @@ public final class oidb_0x438$RedBagInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x438.oidb_0x438.RedBagInfo
  * JD-Core Version:    0.7.0.1
  */

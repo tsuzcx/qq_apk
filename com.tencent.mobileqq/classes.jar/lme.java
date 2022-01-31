@@ -1,33 +1,160 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListAdapter;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils.CreateCommentInterface;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import android.os.IInterface;
+import android.os.ResultReceiver;
 
-public class lme
-  implements ReadInJoyCommentUtils.CreateCommentInterface
+public abstract interface lme
+  extends IInterface
 {
-  public lme(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment, String paramString) {}
+  public abstract int a();
   
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    QQToast.a(BaseApplication.getContext(), 1, BaseApplication.getContext().getString(2131438902), 0).a();
-  }
+  public abstract int a(int paramInt, String paramString);
   
-  public void a(String paramString, CommentInfo paramCommentInfo)
-  {
-    ReadInJoyCommentUtils.a(ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment), this.jdField_a_of_type_JavaLangString);
-    QQToast.a(BaseApplication.getContext(), 0, BaseApplication.getContext().getString(2131438901), 0).a();
-    ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment);
-    ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment).notifyDataSetChanged();
-    ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment);
-  }
+  public abstract int a(String paramString);
+  
+  public abstract long a(String paramString);
+  
+  public abstract Bitmap a(int paramInt, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2);
+  
+  public abstract Bundle a(int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte, Bundle paramBundle, ResultReceiver paramResultReceiver);
+  
+  public abstract String a();
+  
+  public abstract String a(int paramInt, String paramString1, String paramString2);
+  
+  public abstract String a(String paramString);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, long paramLong, int paramInt2, int paramInt3);
+  
+  public abstract void a(int paramInt, String paramString);
+  
+  public abstract void a(int paramInt, String paramString1, String paramString2);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(long paramLong, String paramString, int paramInt);
+  
+  public abstract void a(long paramLong1, String paramString, long paramLong2);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte);
+  
+  public abstract void a(String paramString, long paramLong);
+  
+  public abstract void a(String paramString1, String paramString2, String paramString3);
+  
+  public abstract void a(String paramString1, String paramString2, String paramString3, int paramInt);
+  
+  public abstract void a(lls paramlls);
+  
+  public abstract void a(lmb paramlmb);
+  
+  public abstract void a(lmb paramlmb, String paramString);
+  
+  public abstract void a(lmh paramlmh);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract void a(long[] paramArrayOfLong, String paramString);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(int paramInt, long paramLong);
+  
+  public abstract boolean a(long paramLong);
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract boolean a(String paramString, int paramInt);
+  
+  public abstract boolean a(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte);
+  
+  public abstract boolean a(String paramString1, String paramString2);
+  
+  public abstract boolean a(String paramString, boolean paramBoolean);
+  
+  public abstract int[] a();
+  
+  public abstract long[] a(String paramString);
+  
+  public abstract String[] a(String paramString);
+  
+  public abstract int b();
+  
+  public abstract int b(String paramString);
+  
+  public abstract long b(String paramString);
+  
+  public abstract String b(String paramString);
+  
+  public abstract void b();
+  
+  public abstract void b(int paramInt, String paramString);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void b(lls paramlls);
+  
+  public abstract void b(lmh paramlmh);
+  
+  public abstract void b(boolean paramBoolean);
+  
+  public abstract boolean b();
+  
+  public abstract boolean b(String paramString);
+  
+  public abstract boolean b(String paramString, int paramInt);
+  
+  public abstract long[] b(String paramString);
+  
+  public abstract int c();
+  
+  public abstract int c(String paramString);
+  
+  public abstract String c(String paramString);
+  
+  public abstract void c();
+  
+  public abstract void c(String paramString);
+  
+  public abstract void c(boolean paramBoolean);
+  
+  public abstract boolean c();
+  
+  public abstract boolean c(String paramString);
+  
+  public abstract boolean c(String paramString, int paramInt);
+  
+  public abstract int d();
+  
+  public abstract String d(String paramString);
+  
+  public abstract void d(String paramString);
+  
+  public abstract void d(boolean paramBoolean);
+  
+  public abstract boolean d();
+  
+  public abstract void e(String paramString);
+  
+  public abstract boolean e();
+  
+  public abstract void f(String paramString);
+  
+  public abstract boolean f();
+  
+  public abstract boolean g();
+  
+  public abstract boolean h();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lme
  * JD-Core Version:    0.7.0.1
  */

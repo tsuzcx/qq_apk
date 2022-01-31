@@ -89,6 +89,10 @@ public abstract interface IPluginActivity
   public abstract void ISetParent(BasePluginActivity paramBasePluginActivity);
   
   public abstract BasePluginActivity.ImmersiveConfig IgetImmersiveConfig();
+  
+  public abstract void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt);
+  
+  public abstract void requestPermissions(Object paramObject, int paramInt, String... paramVarArgs);
 }
 
 

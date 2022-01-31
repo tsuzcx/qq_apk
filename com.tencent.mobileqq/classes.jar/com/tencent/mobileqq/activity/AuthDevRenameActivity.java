@@ -1,5 +1,10 @@
 package com.tencent.mobileqq.activity;
 
+import aabo;
+import aabp;
+import aabq;
+import ajru;
+import ajrv;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,19 +15,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
+import badq;
+import bbms;
+import bbmy;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SecSvcHandler;
-import com.tencent.mobileqq.app.SecSvcObserver;
-import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.ClearableEditText;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import rsq;
-import rsr;
-import rss;
-import rst;
-import rsu;
 
 public class AuthDevRenameActivity
   extends IphoneTitleBarActivity
@@ -37,10 +35,10 @@ public class AuthDevRenameActivity
   public static String g = "target_type_info";
   public static String h = "target_desc";
   public static String i = "index";
-  private Handler jdField_a_of_type_AndroidOsHandler = new rss(this);
-  private SecSvcObserver jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver = new rsr(this);
+  private ajrv jdField_a_of_type_Ajrv = new aabp(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new aabq(this);
+  private bbms jdField_a_of_type_Bbms;
   private ClearableEditText jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   
   static
   {
@@ -49,21 +47,21 @@ public class AuthDevRenameActivity
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new rst(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new AuthDevRenameActivity.4(this));
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new rsu(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new AuthDevRenameActivity.5(this));
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970332);
-    super.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver);
-    super.setRightButton(2131436632, this);
-    this.leftView.setText(2131433029);
+    super.setContentView(2131495152);
+    super.addObserver(this.jdField_a_of_type_Ajrv);
+    super.setRightButton(2131626524, this);
+    this.leftView.setText(2131625035);
     this.leftView.setOnClickListener(this);
     if ((this.centerView != null) && ((this.centerView instanceof TextView))) {
       this.centerView.setVisibility(8);
@@ -77,31 +75,31 @@ public class AuthDevRenameActivity
     }
     for (;;)
     {
-      Object localObject = super.findViewById(2131363399);
+      Object localObject = super.findViewById(2131311586);
       if (localObject != null)
       {
         ((View)localObject).setVisibility(0);
-        TextView localTextView = (TextView)((View)localObject).findViewById(2131363489);
+        TextView localTextView = (TextView)((View)localObject).findViewById(2131311625);
         if (localTextView != null) {
-          localTextView.setText(2131436636);
+          localTextView.setText(2131626578);
         }
-        localObject = (TextView)((View)localObject).findViewById(2131363490);
+        localObject = (TextView)((View)localObject).findViewById(2131311563);
         if ((localObject != null) && (!TextUtils.isEmpty(paramBundle))) {
           ((TextView)localObject).setText(paramBundle);
         }
       }
       for (;;)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)super.findViewById(2131370057));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText = ((ClearableEditText)super.findViewById(2131297335));
         if (!TextUtils.isEmpty(str)) {
           this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setHint(str);
         }
         this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setImeOptions(6);
         this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setOnEditorActionListener(this);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setImeActionLabel(getString(2131433211), 6);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setFilters(new InputFilter[] { new rsq(this) });
+        this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setImeActionLabel(getString(2131628384), 6);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.setFilters(new InputFilter[] { new aabo(this) });
         return true;
-        super.setTitle(2131436636);
+        super.setTitle(2131626578);
       }
       paramBundle = null;
       str = null;
@@ -123,15 +121,15 @@ public class AuthDevRenameActivity
         {
           super.finish();
           return;
-          if (!NetworkUtil.d(this))
+          if (!badq.d(this))
           {
-            QQToast.a(this, getString(2131433023), 0).b(getTitleBarHeight());
+            bbmy.a(this, getString(2131626719), 0).b(getTitleBarHeight());
             return;
           }
           paramView = this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText.getEditableText().toString();
           if (TextUtils.isEmpty(paramView))
           {
-            QQToast.a(this, getString(2131436637), 0).b(getTitleBarHeight());
+            bbmy.a(this, getString(2131626543), 0).b(getTitleBarHeight());
             return;
           }
           localObject = super.getIntent();
@@ -141,17 +139,17 @@ public class AuthDevRenameActivity
       localObject = ((Intent)localObject).getExtras();
       ((Bundle)localObject).putString(f, paramView);
       ((Bundle)localObject).putString(jdField_a_of_type_JavaLangString, this.app.getCurrentAccountUin());
-      paramView = (SecSvcHandler)this.app.a(34);
+      paramView = (ajru)this.app.a(34);
     } while (paramView == null);
     a();
     paramView.a((Bundle)localObject);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     b();
     super.onDestroy();
-    super.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppSecSvcObserver);
+    super.removeObserver(this.jdField_a_of_type_Ajrv);
   }
   
   public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)

@@ -4,13 +4,13 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.os.Bundle;
 import com.tencent.mm.opensdk.utils.Log;
+import com.tencent.mm.opensdk.utils.d;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 
 public class WXImageObject
   implements WXMediaMessage.IMediaObject
 {
-  private static final int CONTENT_LENGTH_LIMIT = 10485760;
+  private static final int CONTENT_LENGTH_LIMIT = 26214400;
   private static final int PATH_LENGTH_LIMIT = 10240;
   private static final String TAG = "MicroMsg.SDK.WXImageObject";
   public byte[] imageData;
@@ -41,13 +41,7 @@ public class WXImageObject
   
   private int getFileSize(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    do
-    {
-      return 0;
-      paramString = new File(paramString);
-    } while (!paramString.exists());
-    return (int)paramString.length();
+    return d.getFileSize(paramString);
   }
   
   public boolean checkArgs()
@@ -57,7 +51,7 @@ public class WXImageObject
       Log.e("MicroMsg.SDK.WXImageObject", "checkArgs fail, all arguments are null");
       return false;
     }
-    if ((this.imageData != null) && (this.imageData.length > 10485760))
+    if ((this.imageData != null) && (this.imageData.length > 26214400))
     {
       Log.e("MicroMsg.SDK.WXImageObject", "checkArgs fail, content is too large");
       return false;
@@ -67,7 +61,7 @@ public class WXImageObject
       Log.e("MicroMsg.SDK.WXImageObject", "checkArgs fail, path is invalid");
       return false;
     }
-    if ((this.imagePath != null) && (getFileSize(this.imagePath) > 10485760))
+    if ((this.imagePath != null) && (getFileSize(this.imagePath) > 26214400))
     {
       Log.e("MicroMsg.SDK.WXImageObject", "checkArgs fail, image content is too large");
       return false;
@@ -99,7 +93,7 @@ public class WXImageObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXImageObject
  * JD-Core Version:    0.7.0.1
  */

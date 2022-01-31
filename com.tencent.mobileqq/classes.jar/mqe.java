@@ -1,16 +1,35 @@
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import android.content.Context;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class mqe
-  implements Runnable
+final class mqe
+  implements begw
 {
-  public mqe(FastWebActivity paramFastWebActivity) {}
+  mqe(begr parambegr, QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (FastWebActivity.a(this.a) != null) {
-      FastWebActivity.a(this.a).setVisibility(0);
+    this.jdField_a_of_type_Begr.dismiss();
+    switch (paramInt)
+    {
     }
+    do
+    {
+      return;
+      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004655", "0X8004655", 0, 0, "", "", "", "");
+      try
+      {
+        mqb.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "IvrAIOMessageEngineFalse");
+        return;
+      }
+      catch (Exception paramView)
+      {
+        paramView.printStackTrace();
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("CrmUtils", 2, "Start ivr audio error", paramView);
   }
 }
 

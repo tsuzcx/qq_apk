@@ -1,24 +1,12 @@
-import com.tencent.device.qfind.QFindBLEScanMgr;
-
-class qhm
-  implements Runnable
+public abstract interface qhm
 {
-  qhm(qhl paramqhl) {}
+  public abstract void a(pxn parampxn1, pxn parampxn2, int paramInt, boolean paramBoolean);
   
-  public void run()
-  {
-    if (this.a.a.b)
-    {
-      QFindBLEScanMgr.a(this.a.a, System.currentTimeMillis());
-      QFindBLEScanMgr.a(this.a.a, true);
-      return;
-    }
-    QFindBLEScanMgr.a(this.a.a);
-  }
+  public abstract void j();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qhm
  * JD-Core Version:    0.7.0.1
  */

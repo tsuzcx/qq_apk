@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.app.DataLineHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.text.style.CharacterStyle;
 
 class r
-  implements Runnable
 {
-  r(q paramq, String paramString) {}
+  char jdField_a_of_type_Char;
+  int jdField_a_of_type_Int;
+  CharacterStyle jdField_a_of_type_AndroidTextStyleCharacterStyle;
+  boolean jdField_a_of_type_Boolean;
+  int b;
+  int c;
+  int d;
+  int e;
+  int f;
   
-  public void run()
+  public String toString()
   {
-    ((DataLineHandler)this.jdField_a_of_type_Q.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8)).a(this.jdField_a_of_type_Q.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 1, 0L, 0, 0, 0, false);
+    return "FounderColorModel{type=" + this.jdField_a_of_type_Int + ", charAt=" + this.jdField_a_of_type_Char + ", width=" + this.b + ", height=" + this.c + ", left=" + this.d + ", top=" + this.e + ", lineIndex=" + this.f + ", isMissingWord=" + this.jdField_a_of_type_Boolean + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     r
  * JD-Core Version:    0.7.0.1
  */

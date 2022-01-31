@@ -5,10 +5,12 @@ import Sound.UploadReq;
 import Sound.UploadRsp;
 import android.util.Log;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.upload.common.Const.UploadRetCode;
-import com.tencent.upload.e.e;
 import com.tencent.upload.uinterface.AbstractUploadTask;
 import com.tencent.upload.uinterface.TaskTypeConfig;
+import com.tencent.upload.utils.Const.UploadRetCode;
+import com.tencent.upload.utils.JceEncoder;
+import com.tencent.upload.utils.ProtocolUtil;
+import com.tencent.upload.utils.UploadLog;
 
 public class AudioUploadTask
   extends AbstractUploadTask
@@ -40,7 +42,7 @@ public class AudioUploadTask
     ((UploadReq)localObject).server_ip = 0L;
     try
     {
-      localObject = e.a(localObject.getClass().getSimpleName(), localObject);
+      localObject = ProtocolUtil.pack(localObject.getClass().getSimpleName(), localObject);
       return localObject;
     }
     catch (Exception localException)
@@ -57,12 +59,12 @@ public class AudioUploadTask
     ((UploadTouchuanReq)localObject).vReqData = getSoundReq();
     try
     {
-      localObject = com.tencent.upload.e.b.a((JceStruct)localObject);
+      localObject = JceEncoder.encode((JceStruct)localObject);
       return localObject;
     }
     catch (Exception localException)
     {
-      com.tencent.upload.common.b.e("AudioUploadTask", localException.toString());
+      UploadLog.e("AudioUploadTask", localException.toString());
     }
     return null;
   }
@@ -72,12 +74,12 @@ public class AudioUploadTask
     return TaskTypeConfig.AudioUploadTaskType;
   }
   
-  protected void processFileUploadFinishRsp(byte[] paramArrayOfByte)
+  public void processFileUploadFinishRsp(byte[] paramArrayOfByte)
   {
     Object localObject2 = null;
     try
     {
-      localObject1 = (UploadRsp)e.a(UploadRsp.class.getSimpleName(), paramArrayOfByte);
+      localObject1 = (UploadRsp)ProtocolUtil.unpack(UploadRsp.class.getSimpleName(), paramArrayOfByte);
       localObject2 = localObject1;
       localObject1 = null;
     }
@@ -86,7 +88,7 @@ public class AudioUploadTask
       for (;;)
       {
         localObject1 = Log.getStackTraceString(localException);
-        com.tencent.upload.common.b.a("AudioUploadTask", "processFileUploadFinishRsp", localException);
+        UploadLog.i("AudioUploadTask", "processFileUploadFinishRsp", localException);
       }
       Object localObject1 = new AudioUploadResult();
       ((AudioUploadResult)localObject1).result = ((UploadRsp)localObject2).result;

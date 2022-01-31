@@ -9,28 +9,28 @@ import java.util.List;
 
 public class VasQuickUpdateManager$SCPreloadOrReport
 {
-  public long a;
-  public List a = new ArrayList();
+  public List<VasQuickUpdateManager.ItemVersion> itemList = new ArrayList();
+  public long ver;
   
-  public void a(PBRepeatMessageField paramPBRepeatMessageField)
+  public void setList(PBRepeatMessageField<SCUpdatePB.ItemVersion> paramPBRepeatMessageField)
   {
     int i = 0;
     while (i < paramPBRepeatMessageField.size())
     {
       VasQuickUpdateManager.ItemVersion localItemVersion = new VasQuickUpdateManager.ItemVersion();
       SCUpdatePB.ItemVersion localItemVersion1 = (SCUpdatePB.ItemVersion)paramPBRepeatMessageField.get(i);
-      localItemVersion.jdField_a_of_type_Long = localItemVersion1.bid.get();
-      localItemVersion.jdField_a_of_type_JavaLangString = localItemVersion1.scid.get();
-      localItemVersion.jdField_b_of_type_JavaLangString = localItemVersion1.version.get();
-      localItemVersion.jdField_b_of_type_Long = localItemVersion1.flag.get();
-      this.a.add(localItemVersion);
+      localItemVersion.bid = localItemVersion1.bid.get();
+      localItemVersion.scid = localItemVersion1.scid.get();
+      localItemVersion.version = localItemVersion1.version.get();
+      localItemVersion.flag = localItemVersion1.flag.get();
+      this.itemList.add(localItemVersion);
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasQuickUpdateManager.SCPreloadOrReport
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SubMsgType0xcb$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_anchor_head_url = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -18,6 +18,8 @@ public final class SubMsgType0xcb$MsgBody
   public final PBBytesField bytes_live_end_wording = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_live_wording = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field uint32_anchor_status = PBField.initUInt32(0);
+  public final PBUInt32Field uint32_end_wording_type = PBField.initUInt32(0);
+  public final PBUInt32Field uint32_live_wording_type = PBField.initUInt32(0);
   
   static
   {
@@ -27,7 +29,7 @@ public final class SubMsgType0xcb$MsgBody
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58 }, new String[] { "uint32_anchor_status", "bytes_jump_schema", "bytes_anchor_nickname", "bytes_anchor_head_url", "bytes_live_wording", "bytes_live_end_wording", "bytes_c2c_msg_wording" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6 }, MsgBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 64, 72 }, new String[] { "uint32_anchor_status", "bytes_jump_schema", "bytes_anchor_nickname", "bytes_anchor_head_url", "bytes_live_wording", "bytes_live_end_wording", "bytes_c2c_msg_wording", "uint32_live_wording_type", "uint32_end_wording_type" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, Integer.valueOf(0), Integer.valueOf(0) }, MsgBody.class);
   }
 }
 

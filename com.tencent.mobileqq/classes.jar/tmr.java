@@ -1,38 +1,21 @@
-import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tribe.async.dispatch.Dispatcher;
 
-public class tmr
+class tmr
+  extends tnm
 {
-  public PublicAccountInfo a;
-  public String a;
-  public String b = "";
+  tmr(tmq paramtmq) {}
   
-  public tmr(PublicAccountInfo paramPublicAccountInfo)
+  public void g()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = paramPublicAccountInfo;
-  }
-  
-  public void a(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.jdField_a_of_type_JavaLangString = str;
-  }
-  
-  public void b(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.b = str;
+    super.g();
+    tmq.a(this.a, false);
+    sgi.a().unRegisterSubscriber(tmq.a(this.a));
+    sgi.a().unRegisterSubscriber(tmq.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tmr
  * JD-Core Version:    0.7.0.1
  */

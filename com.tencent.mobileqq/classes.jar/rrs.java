@@ -1,34 +1,86 @@
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.FTSDBManager;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.managers.MessageRecordManagerImpl;
-import com.tencent.mobileqq.utils.DBUtils;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class rrs
-  implements Runnable
+  implements moc
 {
-  public rrs(AssociatedAccountManageActivity paramAssociatedAccountManageActivity, boolean paramBoolean, String paramString) {}
+  public int a;
+  public String a;
+  private ArrayList<mpp> a;
+  private int b;
+  public String b;
+  private int c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
   
-  public void run()
+  public rrs(String paramString)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      ProxyManager localProxyManager = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.app.a();
-      if (localProxyManager != null)
-      {
-        localProxyManager.d();
-        FTSDBManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.app, this.jdField_a_of_type_JavaLangString, true);
-        new MessageRecordManagerImpl().a(this.jdField_a_of_type_JavaLangString);
-        DBUtils.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.app.getApp(), this.jdField_a_of_type_JavaLangString, false);
-      }
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((mpp)localIterator.next()).a();
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.runOnUiThread(new rrt(this));
+  }
+  
+  public void a(int paramInt)
+  {
+    this.b = paramInt;
+  }
+  
+  public void a(mpp parammpp)
+  {
+    if (!this.jdField_a_of_type_JavaUtilArrayList.contains(parammpp)) {
+      this.jdField_a_of_type_JavaUtilArrayList.add(parammpp);
+    }
+  }
+  
+  public int b()
+  {
+    return this.b;
+  }
+  
+  public void b(mpp parammpp)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.remove(parammpp);
+  }
+  
+  public int c()
+  {
+    return this.c;
+  }
+  
+  public void loaded(String paramString, int paramInt)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((mpp)localIterator.next()).loaded(paramString, paramInt);
+    }
+  }
+  
+  public void progress(int paramInt)
+  {
+    this.c = paramInt;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((mpp)localIterator.next()).progress(paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rrs
  * JD-Core Version:    0.7.0.1
  */

@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class mobile_sub_del_photo_wall_req
   extends JceStruct
 {
-  static ArrayList cache_vecUrls;
-  public ArrayList vecUrls;
+  static ArrayList<PhotoWall> cache_vecUrls;
+  public ArrayList<PhotoWall> vecUrls;
   
   public mobile_sub_del_photo_wall_req() {}
   
-  public mobile_sub_del_photo_wall_req(ArrayList paramArrayList)
+  public mobile_sub_del_photo_wall_req(ArrayList<PhotoWall> paramArrayList)
   {
     this.vecUrls = paramArrayList;
   }

@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class Type_1_QQDataTextMsg
   extends JceStruct
 {
-  static ArrayList cache_msg_item;
-  public ArrayList msg_item;
+  static ArrayList<MsgType0x210SubMsgType0x13_MsgItem> cache_msg_item;
+  public ArrayList<MsgType0x210SubMsgType0x13_MsgItem> msg_item;
   
   public Type_1_QQDataTextMsg() {}
   
-  public Type_1_QQDataTextMsg(ArrayList paramArrayList)
+  public Type_1_QQDataTextMsg(ArrayList<MsgType0x210SubMsgType0x13_MsgItem> paramArrayList)
   {
     this.msg_item = paramArrayList;
   }

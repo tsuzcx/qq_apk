@@ -1,31 +1,31 @@
+import GROUP.MessageRemindRsp;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.leba.QZoneEntryController;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.service.qzone.QZoneUnreadServletLogic;
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.qphone.base.util.QLog;
 
 class aejf
-  implements Runnable
+  extends ajrp
 {
-  aejf(aeje paramaeje, QZoneManagerImp paramQZoneManagerImp) {}
+  aejf(aejb paramaejb) {}
   
-  public void run()
+  public void a(boolean paramBoolean, MessageRemindRsp paramMessageRemindRsp)
   {
-    this.jdField_a_of_type_ComTencentMobileqqServletQZoneManagerImp.c(53);
-    Map localMap = QZoneUnreadServletLogic.a(Long.valueOf(this.jdField_a_of_type_Aeje.a.a.getLongAccountUin()));
-    Object localObject = localMap;
-    if (localMap == null) {
-      localObject = new HashMap();
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("vip_pretty." + this.a.jdField_a_of_type_JavaLangString, 2, "SVIPObserver.onGetBigTroopExpiredInfo, troopUin: " + this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString + " iFreezedType=" + paramMessageRemindRsp.iFreezedType + " iLhGroupExpiredTime=" + paramMessageRemindRsp.iLhGroupExpiredTime + " iGroupType=" + paramMessageRemindRsp.iGroupType);
+      }
+      ((TroopManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramMessageRemindRsp);
+      TroopManager.a(paramMessageRemindRsp, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_AndroidContentContext, this.a, aejb.b(this.a));
+      return;
     }
-    ((Map)localObject).put(Long.valueOf(53L), Long.valueOf(NetConnInfoCenter.getServerTimeMillis()));
-    QZoneUnreadServletLogic.a((Map)localObject, Long.valueOf(this.jdField_a_of_type_Aeje.a.a.getLongAccountUin()));
+    QLog.e("vip_pretty." + this.a.jdField_a_of_type_JavaLangString, 2, String.format("SVIPObserver.onGetBigTroopExpiredInfo, troopUin: %s, isSuccess: false", new Object[] { this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aejf
  * JD-Core Version:    0.7.0.1
  */

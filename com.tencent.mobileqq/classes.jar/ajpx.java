@@ -1,22 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.BeginnerGuideFragment;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
-
-public class ajpx
-  implements View.OnClickListener
+class ajpx
+  implements bfcj
 {
-  public ajpx(ReciteFragment paramReciteFragment) {}
+  ajpx(ajpv paramajpv) {}
   
-  public void onClick(View paramView)
+  public void a(bfci parambfci)
   {
-    ReciteFragment.a(this.a);
-    BeginnerGuideFragment.b(this.a.getActivity(), null, 4);
+    parambfci.a(this.a.a);
+    parambfci.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajpx
  * JD-Core Version:    0.7.0.1
  */

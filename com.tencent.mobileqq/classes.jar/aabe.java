@@ -1,21 +1,20 @@
-import android.graphics.drawable.AnimationDrawable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.msgnotify.MsgNotifyPushDialog;
+import android.text.TextPaint;
+import android.text.style.CharacterStyle;
+import com.tencent.mobileqq.activity.AuthDevActivity;
 
-class aabe
-  implements Runnable
+public class aabe
+  extends CharacterStyle
 {
-  aabe(aabd paramaabd, AnimationDrawable paramAnimationDrawable) {}
+  public aabe(AuthDevActivity paramAuthDevActivity) {}
   
-  public void run()
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    this.jdField_a_of_type_Aabd.a.a.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable);
-    this.jdField_a_of_type_AndroidGraphicsDrawableAnimationDrawable.start();
+    paramTextPaint.setColor(-5855578);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aabe
  * JD-Core Version:    0.7.0.1
  */

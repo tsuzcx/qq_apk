@@ -1,87 +1,75 @@
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
-import android.widget.ImageView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.open.agent.BindGroupConfirmActivity;
-import com.tencent.open.agent.util.AuthorityUtil;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.MsgIconsurl;
-import java.util.List;
+import android.support.v4.util.LruCache;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class aliv
+class aliv
   extends Handler
 {
-  public aliv(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
+  aliv(alis paramalis, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
   
   public void handleMessage(Message paramMessage)
   {
-    if (paramMessage == null) {}
-    do
+    if (paramMessage.what == 1001) {}
+    try
     {
-      return;
-      switch (paramMessage.what)
+      paramMessage = (ArrayList)paramMessage.obj;
+      if ((paramMessage != null) && (paramMessage.size() > 0))
       {
-      default: 
-        return;
-      case 3: 
-        paramMessage = (GetAppInfoProto.GetAppinfoResponse)paramMessage.obj;
-      }
-    } while (!paramMessage.iconsURL.has());
-    int i = 0;
-    int j = 0;
-    int m = 0;
-    label58:
-    GetAppInfoProto.MsgIconsurl localMsgIconsurl;
-    if (i < paramMessage.iconsURL.get().size()) {
-      localMsgIconsurl = (GetAppInfoProto.MsgIconsurl)paramMessage.iconsURL.get(i);
-    }
-    for (;;)
-    {
-      try
-      {
-        k = Integer.parseInt(localMsgIconsurl.size.get());
-        if (k >= 100)
+        paramMessage = paramMessage.iterator();
+        while (paramMessage.hasNext())
         {
-          paramMessage = (GetAppInfoProto.MsgIconsurl)paramMessage.iconsURL.get(i);
-          if (paramMessage == null) {
-            break;
+          String str1 = (String)paramMessage.next();
+          String str2 = (String)this.a.b.get(str1);
+          Bitmap localBitmap = BitmapFactory.decodeFile(str2);
+          if (localBitmap != null)
+          {
+            localBitmap = this.a.a(localBitmap);
+            if (localBitmap != null)
+            {
+              Message localMessage = Message.obtain();
+              Bundle localBundle = new Bundle();
+              localBundle.putParcelable("bmp", localBitmap);
+              localBundle.putString("uin", str1);
+              localBundle.putString("path", str2);
+              localMessage.obj = localBundle;
+              localMessage.what = 1002;
+              this.a.a.sendMessage(localMessage);
+              if (QLog.isColorLevel()) {
+                QLog.d("NonMainAppHeadLoader", 2, "decodeFile, uin:" + str1);
+              }
+            }
           }
-          ThreadManager.executeOnNetWorkThread(new aliw(this, paramMessage));
-          return;
         }
       }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        int k = 0;
-        continue;
-        int n = m;
-        if (k > m)
-        {
-          j = i;
-          n = k;
-        }
-        i += 1;
-        m = n;
-      }
-      break label58;
-      paramMessage = (Bitmap)paramMessage.obj;
-      Bitmap localBitmap = AuthorityUtil.a(this.a, paramMessage, 50, 50);
-      paramMessage.recycle();
-      if (localBitmap == null) {
-        break;
-      }
-      this.a.b.setImageBitmap(localBitmap);
       return;
-      i = j;
+    }
+    catch (OutOfMemoryError paramMessage)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("NonMainAppHeadLoader", 2, "decodeFile, OutOfMemoryError");
+      }
+      return;
+    }
+    catch (Exception paramMessage)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e("NonMainAppHeadLoader", 2, "decodeFile, exception:" + paramMessage.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aliv
  * JD-Core Version:    0.7.0.1
  */

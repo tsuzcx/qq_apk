@@ -1,80 +1,138 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.armap.ArMapHandler.RespWealthGodInfo;
-import com.tencent.mobileqq.armap.ArMapObserver;
-import com.tencent.mobileqq.armap.config.ARMapConfigManager;
-import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashView;
-import com.tencent.mobileqq.armap.wealthgod.WealthGodInfo;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Text;
 
 public class abph
-  extends ArMapObserver
+  extends AsyncTask<Void, Void, Void>
 {
-  public abph(ARMapLoadingActivity paramARMapLoadingActivity) {}
+  WeakReference<RegisterVerifyCodeActivity> a = null;
   
-  public void onGetWealthGodInfo(boolean paramBoolean, ArMapHandler.RespWealthGodInfo paramRespWealthGodInfo)
+  public abph(RegisterVerifyCodeActivity paramRegisterVerifyCodeActivity)
   {
-    ARMapLoadingActivity.a(this.a).f = System.currentTimeMillis();
-    List localList = paramRespWealthGodInfo.jdField_a_of_type_JavaUtilList;
-    boolean bool = paramRespWealthGodInfo.jdField_a_of_type_Boolean;
-    ARMapLoadingActivity.a(this.a).removeMessages(107);
-    if (localList != null)
+    this.a = new WeakReference(paramRegisterVerifyCodeActivity);
+  }
+  
+  protected Void a(Void... paramVarArgs)
+  {
+    boolean bool3 = true;
+    File localFile = new File(BaseApplication.getContext().getFilesDir(), "RegDevLockCfg.xml");
+    if (!HttpDownloadUtil.a(null, "http://dldir1.qq.com/qqfile/qd/RegDevLockCfg.xml?mType=ConfigCheck", localFile))
     {
-      paramRespWealthGodInfo = localList.iterator();
-      while (paramRespWealthGodInfo.hasNext())
-      {
-        localWealthGodInfo = (WealthGodInfo)paramRespWealthGodInfo.next();
-        QLog.d("ARMapLoadingActivity", 2, "onGetWealthGodInfo info: " + localWealthGodInfo);
+      if (QLog.isColorLevel()) {
+        QLog.d("RegisterVerifyCodeActivity", 2, "download cfg file failed.");
       }
+      return null;
     }
-    WealthGodInfo localWealthGodInfo = null;
-    paramRespWealthGodInfo = localWealthGodInfo;
-    if (paramBoolean)
-    {
-      paramRespWealthGodInfo = localWealthGodInfo;
-      if (localList != null) {
-        paramRespWealthGodInfo = ARMapConfigManager.a(localList);
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapLoadingActivity", 2, String.format("onGetWealthGodInfo mRequestInfoTimeout=%s isSuc=%s recentInfo=%s", new Object[] { Boolean.valueOf(ARMapLoadingActivity.c(this.a)), Boolean.valueOf(paramBoolean), paramRespWealthGodInfo }));
-    }
-    if (!ARMapLoadingActivity.c(this.a))
-    {
-      ARMapLoadingActivity.a(this.a).removeObserver(ARMapLoadingActivity.a(this.a));
-      ARMapLoadingActivity.a(this.a, paramRespWealthGodInfo);
-      if (ARMapLoadingActivity.a(this.a) == null) {
-        break label384;
-      }
-      ARMapLoadingActivity.a(this.a).jdField_a_of_type_Boolean = bool;
-      ARMapLoadingActivity.b(this.a);
-    }
+    paramVarArgs = DocumentBuilderFactory.newInstance();
+    label524:
+    label530:
+    label536:
+    label542:
+    label547:
+    label553:
+    label558:
+    label563:
     for (;;)
     {
-      ARMapLoadingActivity.a(this.a).setWealthGodInfo(ARMapLoadingActivity.a(this.a), ARMapLoadingActivity.d(this.a));
-      ARMapLoadingActivity.b(this.a, ARMapLoadingActivity.a(this.a).a());
-      if ((ARMapLoadingActivity.a(this.a) != null) && (ARMapLoadingActivity.a(this.a) != null))
+      try
       {
-        ARMapLoadingActivity.a(this.a).a(ARMapLoadingActivity.a(this.a));
-        ARMapLoadingActivity.a(this.a).a(ARMapLoadingActivity.a(this.a), ARMapLoadingActivity.b(this.a));
+        localObject3 = paramVarArgs.newDocumentBuilder().parse(localFile).getDocumentElement();
+        paramVarArgs = ((Element)localObject3).getElementsByTagName("Enable");
+        if (paramVarArgs.getLength() <= 0) {
+          break label553;
+        }
+        if (Integer.parseInt(((Text)((Element)paramVarArgs.item(0)).getChildNodes().item(0)).getNodeValue()) == 1)
+        {
+          bool1 = true;
+          break label558;
+          paramVarArgs = ((Element)localObject3).getElementsByTagName("EnableVersion");
+          if (paramVarArgs.getLength() <= 0) {
+            break label547;
+          }
+          paramVarArgs = ((Text)((Element)paramVarArgs.item(0)).getChildNodes().item(0)).getNodeValue();
+          localObject1 = ((Element)localObject3).getElementsByTagName("CheckBoxDefStatus");
+          if (((NodeList)localObject1).getLength() <= 0) {
+            break label542;
+          }
+          if (Integer.parseInt(((Text)((Element)((NodeList)localObject1).item(0)).getChildNodes().item(0)).getNodeValue()) == 1)
+          {
+            bool1 = bool3;
+            break label563;
+            localObject1 = ((Element)localObject3).getElementsByTagName("CheckBoxWording");
+            if (((NodeList)localObject1).getLength() <= 0) {
+              break label536;
+            }
+            localObject1 = ((Text)((Element)((NodeList)localObject1).item(0)).getChildNodes().item(0)).getNodeValue();
+            localObject2 = ((Element)localObject3).getElementsByTagName("CheckBoxHighlightWording");
+            if (((NodeList)localObject2).getLength() <= 0) {
+              break label530;
+            }
+            localObject2 = ((Text)((Element)((NodeList)localObject2).item(0)).getChildNodes().item(0)).getNodeValue();
+            localObject3 = ((Element)localObject3).getElementsByTagName("IntroductionURL");
+            if (((NodeList)localObject3).getLength() <= 0) {
+              break label524;
+            }
+            localObject3 = ((Text)((Element)((NodeList)localObject3).item(0)).getChildNodes().item(0)).getNodeValue();
+            Bundle localBundle = new Bundle();
+            localBundle.putBoolean("visibility", bool2);
+            localBundle.putString("enableVersion", paramVarArgs);
+            localBundle.putBoolean("checked", bool1);
+            localBundle.putString("openDevLockText", (String)localObject1);
+            localBundle.putString("openDevLockHelpText", (String)localObject2);
+            localBundle.putString("openDevLockHelpURL", (String)localObject3);
+            paramVarArgs = (RegisterVerifyCodeActivity)this.a.get();
+            return null;
+          }
+        }
+        else
+        {
+          bool1 = false;
+          break label558;
+        }
+        bool1 = false;
       }
-      if (ARMapLoadingActivity.b(this.a) == 5) {
-        ARMapLoadingActivity.a(this.a).c();
+      catch (Exception paramVarArgs)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("RegisterVerifyCodeActivity", 2, "parse cfg file failed.");
+        }
+        paramVarArgs.printStackTrace();
+        return null;
       }
-      ARMapLoadingActivity.a(this.a).removeMessages(102);
-      ARMapLoadingActivity.a(this.a).sendEmptyMessageDelayed(102, 200L);
-      return;
-      label384:
-      QLog.d("ARMapLoadingActivity", 1, "onGetWealthGodInfo get info fail! no activity?");
+      finally
+      {
+        localFile.delete();
+      }
+      Object localObject3 = null;
+      continue;
+      Object localObject2 = null;
+      continue;
+      Object localObject1 = null;
+      continue;
+      boolean bool1 = false;
+      continue;
+      paramVarArgs = "";
+      continue;
+      boolean bool2 = false;
+      continue;
+      bool2 = bool1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abph
  * JD-Core Version:    0.7.0.1
  */

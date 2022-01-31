@@ -1,40 +1,34 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.aio.panel.PEPanel;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ListView;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.view.widget.StoryUserBadgeView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.HashMap;
 
 public class vrb
-  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
+  extends QQUIEventReceiver<StoryUserBadgeView, sxo>
 {
-  public vrb(PEPanel paramPEPanel) {}
-  
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public vrb(@NonNull StoryUserBadgeView paramStoryUserBadgeView)
   {
-    if ((PEPanel.a(this.a) != null) && (QLog.isColorLevel())) {
-      QLog.d("PokeEmo.PEPanel", 2, String.format(" playLottieAnim onAnimationEnd listView.visibility = %d ", new Object[] { Integer.valueOf(PEPanel.a(this.a).getVisibility()) }));
-    }
-    if ((PEPanel.a(this.a) != null) && (PEPanel.a(this.a).getVisibility() != 0)) {
-      PEPanel.a(this.a).setVisibility(0);
-    }
+    super(paramStoryUserBadgeView);
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public void a(@NonNull StoryUserBadgeView paramStoryUserBadgeView, @NonNull sxo paramsxo)
   {
-    this.a.setListViewVisibile(8);
+    if (paramsxo.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {}
+    while (paramsxo.jdField_a_of_type_JavaUtilHashMap.get(paramStoryUserBadgeView.a()) == null) {
+      return;
+    }
+    paramStoryUserBadgeView.a(paramStoryUserBadgeView.a());
   }
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator) {}
+  public Class acceptEventClass()
+  {
+    return sxo.class;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vrb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,58 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.activity.UncommonlyUsedContactsActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 
 public class uki
-  implements DialogInterface.OnClickListener
+  extends sgl<ujx, sql>
 {
-  public uki(UncommonlyUsedContactsActivity paramUncommonlyUsedContactsActivity, String paramString) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public uki(ujx paramujx)
   {
-    if (NetworkUtil.d(BaseApplication.getContext()))
+    super(paramujx);
+  }
+  
+  public void a(@NonNull ujx paramujx, @NonNull sql paramsql)
+  {
+    Object localObject = ujx.a(paramujx);
+    paramsql = paramsql.a;
+    sqj localsqj = (sqj)sqg.a(27);
+    localObject = ((ArrayList)localObject).iterator();
+    int i = 0;
+    while (((Iterator)localObject).hasNext())
     {
-      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app.a(1)).c(this.jdField_a_of_type_JavaLangString, (byte)2);
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app.getHandler(ChatActivity.class);
-      if (paramDialogInterface != null) {
-        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
+      ukt localukt = (ukt)((Iterator)localObject).next();
+      if ((localukt instanceof ukv))
+      {
+        szr localszr = (szr)paramsql.get(localukt.a().feedId);
+        if (localszr == null) {
+          break label129;
+        }
+        ((ukv)localukt).d = localsqj.a(((ukv)localukt).a(), localszr.a);
+        i = 1;
       }
-      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.app.getHandler(ChatSettingActivity.class);
-      if (paramDialogInterface != null) {
-        paramDialogInterface.sendMessage(paramDialogInterface.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
+    }
+    label129:
+    for (;;)
+    {
+      break;
+      if (i != 0) {
+        ujx.a(paramujx).f();
       }
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityUncommonlyUsedContactsActivity.a(2131437778, 0);
   }
+  
+  public Class acceptEventClass()
+  {
+    return sql.class;
+  }
+  
+  public void b(@NonNull ujx paramujx, @NonNull sql paramsql) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uki
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class WeiyunPB$DiskAlbumStatusReportReq
-  extends MessageMicro
+  extends MessageMicro<DiskAlbumStatusReportReq>
 {
   public static final int DURING_DAYS_FIELD_NUMBER = 2;
   public static final int NEW_PIC_NUMBER_FIELD_NUMBER = 1;
@@ -21,7 +21,7 @@ public final class WeiyunPB$DiskAlbumStatusReportReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cooperation.weiyun.channel.pb.WeiyunPB.DiskAlbumStatusReportReq
  * JD-Core Version:    0.7.0.1
  */

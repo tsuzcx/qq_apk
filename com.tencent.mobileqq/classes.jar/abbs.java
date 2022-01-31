@@ -1,25 +1,39 @@
-import android.content.Context;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.LikeSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qphone.base.util.QLog;
 
 public class abbs
-  implements Runnable
+  extends asez
 {
-  public abbs(ArkLocalAppMgr paramArkLocalAppMgr, abcq paramabcq, abcx paramabcx) {}
+  public abbs(LikeSettingActivity paramLikeSettingActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_Abcq.a = ArkLocalAppMgr.a();
-    BaseApplication localBaseApplication = BaseApplication.getContext();
-    localBaseApplication.getSharedPreferences("ArkAppUpdateRecord", 0);
-    localBaseApplication.getSharedPreferences("ArkAppUpdatePeriod", 0);
-    localBaseApplication.getSharedPreferences("ArkAppLastUsedTime", 0);
-    this.jdField_a_of_type_Abcx.a(this.jdField_a_of_type_Abcq.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("LikeSettingActivity", 2, "onGetNotifyOnLikeSwitch.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
+    }
+    if (paramBoolean1) {
+      LikeSettingActivity.a(this.a, this.a.a.a(), paramBoolean2);
+    }
+  }
+  
+  public void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LikeSettingActivity", 2, "onSetNotifyOnLikeSwitch.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
+    }
+    if (!paramBoolean1)
+    {
+      bbmy.a(this.a, 1, 2131653546, 0).b(this.a.getTitleBarHeight());
+      paramBoolean1 = ((ascu)this.a.app.getManager(161)).a();
+      LikeSettingActivity.a(this.a, this.a.a.a(), paramBoolean1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abbs
  * JD-Core Version:    0.7.0.1
  */

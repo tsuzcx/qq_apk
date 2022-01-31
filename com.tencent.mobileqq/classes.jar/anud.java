@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.data.LockedCategory;
+import android.graphics.drawable.GradientDrawable;
 
-public final class anud
-  implements Parcelable.Creator
+public class anud
 {
-  public LockedCategory a(Parcel paramParcel)
+  public static GradientDrawable a(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    return new LockedCategory(paramParcel);
-  }
-  
-  public LockedCategory[] a(int paramInt)
-  {
-    return new LockedCategory[paramInt];
+    GradientDrawable localGradientDrawable = new GradientDrawable();
+    localGradientDrawable.setShape(0);
+    localGradientDrawable.setColor(paramInt);
+    localGradientDrawable.setCornerRadii(new float[] { paramFloat1, paramFloat1, paramFloat2, paramFloat2, paramFloat3, paramFloat3, paramFloat4, paramFloat4 });
+    return localGradientDrawable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anud
  * JD-Core Version:    0.7.0.1
  */

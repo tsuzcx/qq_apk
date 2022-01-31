@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
 import android.support.annotation.NonNull;
+import atmo;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="busId,them,actId")
 public class AioPushData
-  extends Entity
-  implements Comparable
+  extends atmo
+  implements Comparable<AioPushData>
 {
   public String actId;
   public int begTs;

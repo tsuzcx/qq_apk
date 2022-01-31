@@ -1,44 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.RecvGVideoLevelInfo;
 
 public final class lng
-  implements Runnable
+  implements Parcelable.Creator<RecvGVideoLevelInfo>
 {
-  public lng(QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
+  public RecvGVideoLevelInfo a(Parcel paramParcel)
   {
-    if ((this.a == null) || (!this.a.isLogin())) {
-      return;
-    }
-    if (NetworkUtil.a(this.a.getApp()))
-    {
-      ReadInJoyUtils.e(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyUtils", 2, "handConversationToShow is wifi");
-      }
-    }
-    if (!ReadInJoyHelper.t(this.a))
-    {
-      ReadInJoyUtils.b(this.a);
-      ReadInJoyHelper.e(this.a);
-    }
-    if (ReadInJoyHelper.p(this.a))
-    {
-      ReadInJoyHelper.k(this.a, false);
-      ((KandianMergeManager)this.a.getManager(161)).j();
-      return;
-    }
-    ((KandianMergeManager)this.a.getManager(161)).i();
+    return new RecvGVideoLevelInfo(paramParcel);
+  }
+  
+  public RecvGVideoLevelInfo[] a(int paramInt)
+  {
+    return new RecvGVideoLevelInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lng
  * JD-Core Version:    0.7.0.1
  */

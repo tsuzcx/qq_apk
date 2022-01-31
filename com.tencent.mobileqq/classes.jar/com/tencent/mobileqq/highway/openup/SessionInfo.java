@@ -20,47 +20,43 @@ public class SessionInfo
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: invokestatic 35	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   6: ifeq +11 -> 17
-    //   9: ldc 37
-    //   11: iconst_2
-    //   12: ldc 39
-    //   14: invokestatic 43	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   17: invokestatic 49	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   20: astore_0
-    //   21: aload_0
-    //   22: ifnonnull +7 -> 29
-    //   25: ldc 2
-    //   27: monitorexit
-    //   28: return
-    //   29: new 51	java/io/File
-    //   32: dup
-    //   33: aload_0
-    //   34: invokevirtual 57	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   37: ldc 14
-    //   39: invokespecial 60	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   42: astore_0
+    //   3: ldc 31
+    //   5: ldc 33
+    //   7: invokestatic 39	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogEvent	(Ljava/lang/String;Ljava/lang/String;)V
+    //   10: invokestatic 45	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   13: astore_0
+    //   14: aload_0
+    //   15: ifnonnull +7 -> 22
+    //   18: ldc 2
+    //   20: monitorexit
+    //   21: return
+    //   22: new 47	java/io/File
+    //   25: dup
+    //   26: aload_0
+    //   27: invokevirtual 53	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   30: ldc 14
+    //   32: invokespecial 56	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   35: astore_0
+    //   36: aload_0
+    //   37: invokevirtual 60	java/io/File:exists	()Z
+    //   40: ifeq -22 -> 18
     //   43: aload_0
-    //   44: invokevirtual 63	java/io/File:exists	()Z
-    //   47: ifeq -22 -> 25
-    //   50: aload_0
-    //   51: invokevirtual 66	java/io/File:delete	()Z
-    //   54: pop
-    //   55: goto -30 -> 25
-    //   58: astore_0
-    //   59: ldc 2
-    //   61: monitorexit
-    //   62: aload_0
-    //   63: athrow
+    //   44: invokevirtual 63	java/io/File:delete	()Z
+    //   47: pop
+    //   48: goto -30 -> 18
+    //   51: astore_0
+    //   52: ldc 2
+    //   54: monitorexit
+    //   55: aload_0
+    //   56: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   20	31	0	localObject1	Object
-    //   58	5	0	localObject2	Object
+    //   13	31	0	localObject1	Object
+    //   51	5	0	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   3	17	58	finally
-    //   17	21	58	finally
-    //   29	55	58	finally
+    //   3	14	51	finally
+    //   22	48	51	finally
   }
   
   public static SessionInfo getInstance(String paramString)
@@ -80,335 +76,371 @@ public class SessionInfo
   private void loadFromDisk(String paramString)
   {
     // Byte code:
-    //   0: aload_1
-    //   1: ifnonnull +4 -> 5
-    //   4: return
-    //   5: invokestatic 49	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   8: astore_3
-    //   9: aload_3
-    //   10: ifnull -6 -> 4
-    //   13: new 51	java/io/File
-    //   16: dup
-    //   17: new 51	java/io/File
+    //   0: aconst_null
+    //   1: astore_3
+    //   2: aload_1
+    //   3: ifnonnull +4 -> 7
+    //   6: return
+    //   7: invokestatic 45	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   10: astore 4
+    //   12: aload 4
+    //   14: ifnull -8 -> 6
+    //   17: new 47	java/io/File
     //   20: dup
-    //   21: aload_3
-    //   22: invokevirtual 57	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   25: ldc 11
-    //   27: invokespecial 60	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   30: new 78	java/lang/StringBuilder
-    //   33: dup
-    //   34: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   37: aload_1
-    //   38: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   41: ldc 8
-    //   43: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   46: invokevirtual 87	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   49: invokespecial 60	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   52: astore_1
-    //   53: aload_1
-    //   54: invokevirtual 63	java/io/File:exists	()Z
-    //   57: ifeq +134 -> 191
-    //   60: new 89	com/tencent/mobileqq/highway/protocol/HwSessionInfoPersistentPB$HwSessionInfoPB
-    //   63: dup
-    //   64: invokespecial 90	com/tencent/mobileqq/highway/protocol/HwSessionInfoPersistentPB$HwSessionInfoPB:<init>	()V
-    //   67: astore 10
-    //   69: aconst_null
-    //   70: astore 9
-    //   72: aconst_null
-    //   73: astore 4
-    //   75: aconst_null
-    //   76: astore 7
-    //   78: aconst_null
-    //   79: astore 5
-    //   81: aconst_null
-    //   82: astore_3
-    //   83: aconst_null
-    //   84: astore 8
-    //   86: aconst_null
-    //   87: astore 6
-    //   89: new 92	java/io/FileInputStream
-    //   92: dup
-    //   93: aload_1
-    //   94: invokespecial 95	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   97: astore_1
-    //   98: new 97	java/io/ByteArrayOutputStream
-    //   101: dup
-    //   102: invokespecial 98	java/io/ByteArrayOutputStream:<init>	()V
-    //   105: astore_3
-    //   106: sipush 128
-    //   109: newarray byte
-    //   111: astore 4
-    //   113: aload_1
-    //   114: aload 4
-    //   116: iconst_0
-    //   117: aload 4
-    //   119: arraylength
-    //   120: invokevirtual 102	java/io/FileInputStream:read	([BII)I
-    //   123: istore_2
-    //   124: iload_2
-    //   125: iconst_m1
-    //   126: if_icmpeq +98 -> 224
-    //   129: aload_3
-    //   130: aload 4
-    //   132: iconst_0
-    //   133: iload_2
-    //   134: invokevirtual 106	java/io/ByteArrayOutputStream:write	([BII)V
-    //   137: goto -24 -> 113
-    //   140: astore 6
-    //   142: aload_3
-    //   143: astore 5
-    //   145: aload 5
+    //   21: new 47	java/io/File
+    //   24: dup
+    //   25: aload 4
+    //   27: invokevirtual 53	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   30: ldc 11
+    //   32: invokespecial 56	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   35: new 75	java/lang/StringBuilder
+    //   38: dup
+    //   39: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   42: aload_1
+    //   43: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   46: ldc 8
+    //   48: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   51: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   54: invokespecial 56	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   57: astore_1
+    //   58: aload_1
+    //   59: invokevirtual 60	java/io/File:exists	()Z
+    //   62: ifeq +129 -> 191
+    //   65: new 86	com/tencent/mobileqq/highway/protocol/HwSessionInfoPersistentPB$HwSessionInfoPB
+    //   68: dup
+    //   69: invokespecial 87	com/tencent/mobileqq/highway/protocol/HwSessionInfoPersistentPB$HwSessionInfoPB:<init>	()V
+    //   72: astore 7
+    //   74: new 89	java/io/FileInputStream
+    //   77: dup
+    //   78: aload_1
+    //   79: invokespecial 92	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   82: astore_1
+    //   83: new 94	java/io/ByteArrayOutputStream
+    //   86: dup
+    //   87: invokespecial 95	java/io/ByteArrayOutputStream:<init>	()V
+    //   90: astore 4
+    //   92: aload 4
+    //   94: astore 6
+    //   96: aload_1
+    //   97: astore 5
+    //   99: sipush 128
+    //   102: newarray byte
+    //   104: astore_3
+    //   105: aload 4
+    //   107: astore 6
+    //   109: aload_1
+    //   110: astore 5
+    //   112: aload_1
+    //   113: aload_3
+    //   114: iconst_0
+    //   115: aload_3
+    //   116: arraylength
+    //   117: invokevirtual 99	java/io/FileInputStream:read	([BII)I
+    //   120: istore_2
+    //   121: iload_2
+    //   122: iconst_m1
+    //   123: if_icmpeq +103 -> 226
+    //   126: aload 4
+    //   128: astore 6
+    //   130: aload_1
+    //   131: astore 5
+    //   133: aload 4
+    //   135: aload_3
+    //   136: iconst_0
+    //   137: iload_2
+    //   138: invokevirtual 103	java/io/ByteArrayOutputStream:write	([BII)V
+    //   141: goto -36 -> 105
+    //   144: astore 5
+    //   146: aload_1
     //   147: astore_3
-    //   148: aload_1
-    //   149: astore 4
-    //   151: ldc 37
-    //   153: iconst_2
-    //   154: ldc 108
-    //   156: aload 6
-    //   158: invokestatic 112	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   161: aload_1
-    //   162: ifnull +7 -> 169
-    //   165: aload_1
-    //   166: invokevirtual 115	java/io/FileInputStream:close	()V
-    //   169: aload 5
-    //   171: ifnull -167 -> 4
-    //   174: aload 5
-    //   176: invokevirtual 116	java/io/ByteArrayOutputStream:close	()V
-    //   179: return
-    //   180: astore_1
-    //   181: ldc 37
-    //   183: iconst_2
-    //   184: ldc 108
+    //   148: aload 4
+    //   150: astore_1
+    //   151: aload 5
+    //   153: astore 4
+    //   155: ldc 31
+    //   157: ldc 105
+    //   159: aload 4
+    //   161: invokestatic 109	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   164: aload_3
+    //   165: ifnull +7 -> 172
+    //   168: aload_3
+    //   169: invokevirtual 112	java/io/FileInputStream:close	()V
+    //   172: aload_1
+    //   173: ifnull -167 -> 6
+    //   176: aload_1
+    //   177: invokevirtual 113	java/io/ByteArrayOutputStream:close	()V
+    //   180: return
+    //   181: astore_1
+    //   182: ldc 31
+    //   184: ldc 105
     //   186: aload_1
-    //   187: invokestatic 112	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   187: invokestatic 109	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   190: return
-    //   191: new 51	java/io/File
+    //   191: new 47	java/io/File
     //   194: dup
-    //   195: aload_3
-    //   196: invokevirtual 57	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   199: ldc 14
-    //   201: invokespecial 60	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   204: astore_1
-    //   205: aload_1
-    //   206: invokevirtual 63	java/io/File:exists	()Z
-    //   209: ifeq +6 -> 215
-    //   212: goto -152 -> 60
-    //   215: ldc 37
-    //   217: iconst_2
-    //   218: ldc 118
-    //   220: invokestatic 120	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   223: return
-    //   224: aload_3
-    //   225: invokevirtual 123	java/io/ByteArrayOutputStream:flush	()V
-    //   228: aload 10
-    //   230: aload_3
-    //   231: invokevirtual 127	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   234: invokevirtual 131	com/tencent/mobileqq/highway/protocol/HwSessionInfoPersistentPB$HwSessionInfoPB:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
-    //   237: pop
-    //   238: aload 10
-    //   240: getfield 134	com/tencent/mobileqq/highway/protocol/HwSessionInfoPersistentPB$HwSessionInfoPB:bytes_httpconn_sig_session	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   243: invokevirtual 139	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   246: ifeq +18 -> 264
-    //   249: aload_0
-    //   250: aload 10
-    //   252: getfield 134	com/tencent/mobileqq/highway/protocol/HwSessionInfoPersistentPB$HwSessionInfoPB:bytes_httpconn_sig_session	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   255: invokevirtual 143	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   258: invokevirtual 146	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   261: putfield 148	com/tencent/mobileqq/highway/openup/SessionInfo:bytes_httpconn_sig_session	[B
-    //   264: aload 10
-    //   266: getfield 150	com/tencent/mobileqq/highway/protocol/HwSessionInfoPersistentPB$HwSessionInfoPB:bytes_session_key	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   269: invokevirtual 139	com/tencent/mobileqq/pb/PBBytesField:has	()Z
-    //   272: ifeq +18 -> 290
-    //   275: aload_0
-    //   276: aload 10
-    //   278: getfield 150	com/tencent/mobileqq/highway/protocol/HwSessionInfoPersistentPB$HwSessionInfoPB:bytes_session_key	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   281: invokevirtual 143	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   284: invokevirtual 146	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   287: putfield 152	com/tencent/mobileqq/highway/openup/SessionInfo:bytes_session_key	[B
-    //   290: aload_1
-    //   291: ifnull +7 -> 298
-    //   294: aload_1
-    //   295: invokevirtual 115	java/io/FileInputStream:close	()V
-    //   298: aload_3
-    //   299: ifnull +221 -> 520
-    //   302: aload_3
-    //   303: invokevirtual 116	java/io/ByteArrayOutputStream:close	()V
-    //   306: return
-    //   307: astore_1
-    //   308: ldc 37
-    //   310: iconst_2
-    //   311: ldc 108
-    //   313: aload_1
-    //   314: invokestatic 112	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   317: goto -19 -> 298
-    //   320: astore_1
-    //   321: ldc 37
-    //   323: iconst_2
-    //   324: ldc 108
-    //   326: aload_1
-    //   327: invokestatic 112	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   330: return
-    //   331: astore_1
-    //   332: ldc 37
-    //   334: iconst_2
-    //   335: ldc 108
-    //   337: aload_1
-    //   338: invokestatic 112	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   341: goto -172 -> 169
-    //   344: astore 6
-    //   346: aload 9
-    //   348: astore_1
-    //   349: aload 5
-    //   351: astore_3
-    //   352: aload_1
-    //   353: astore 4
-    //   355: ldc 37
-    //   357: iconst_2
-    //   358: ldc 108
-    //   360: aload 6
-    //   362: invokestatic 112	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   365: aload_1
-    //   366: ifnull +7 -> 373
-    //   369: aload_1
-    //   370: invokevirtual 115	java/io/FileInputStream:close	()V
-    //   373: aload 5
-    //   375: ifnull -371 -> 4
-    //   378: aload 5
-    //   380: invokevirtual 116	java/io/ByteArrayOutputStream:close	()V
-    //   383: return
-    //   384: astore_1
-    //   385: ldc 37
-    //   387: iconst_2
-    //   388: ldc 108
-    //   390: aload_1
-    //   391: invokestatic 112	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   394: return
-    //   395: astore_1
-    //   396: ldc 37
-    //   398: iconst_2
-    //   399: ldc 108
-    //   401: aload_1
-    //   402: invokestatic 112	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   405: goto -32 -> 373
-    //   408: astore_1
-    //   409: aload 4
-    //   411: ifnull +8 -> 419
-    //   414: aload 4
-    //   416: invokevirtual 115	java/io/FileInputStream:close	()V
-    //   419: aload_3
-    //   420: ifnull +7 -> 427
-    //   423: aload_3
-    //   424: invokevirtual 116	java/io/ByteArrayOutputStream:close	()V
-    //   427: aload_1
-    //   428: athrow
-    //   429: astore 4
-    //   431: ldc 37
-    //   433: iconst_2
-    //   434: ldc 108
-    //   436: aload 4
-    //   438: invokestatic 112	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   441: goto -22 -> 419
-    //   444: astore_3
-    //   445: ldc 37
-    //   447: iconst_2
-    //   448: ldc 108
-    //   450: aload_3
-    //   451: invokestatic 112	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   454: goto -27 -> 427
-    //   457: astore 5
-    //   459: aload 8
-    //   461: astore_3
-    //   462: aload_1
-    //   463: astore 4
-    //   465: aload 5
-    //   467: astore_1
-    //   468: goto -59 -> 409
-    //   471: astore 5
-    //   473: aload_1
-    //   474: astore 4
-    //   476: aload 5
-    //   478: astore_1
-    //   479: goto -70 -> 409
-    //   482: astore 6
-    //   484: goto -135 -> 349
-    //   487: astore 6
-    //   489: aload_3
-    //   490: astore 5
-    //   492: goto -143 -> 349
-    //   495: astore_1
-    //   496: aload 6
-    //   498: astore 5
-    //   500: aload_1
-    //   501: astore 6
-    //   503: aload 7
-    //   505: astore_1
-    //   506: goto -361 -> 145
-    //   509: astore_3
-    //   510: aload 6
-    //   512: astore 5
-    //   514: aload_3
-    //   515: astore 6
-    //   517: goto -372 -> 145
-    //   520: return
+    //   195: aload 4
+    //   197: invokevirtual 53	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   200: ldc 14
+    //   202: invokespecial 56	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   205: astore 4
+    //   207: aload 4
+    //   209: astore_1
+    //   210: aload 4
+    //   212: invokevirtual 60	java/io/File:exists	()Z
+    //   215: ifne -150 -> 65
+    //   218: ldc 31
+    //   220: ldc 115
+    //   222: invokestatic 39	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogEvent	(Ljava/lang/String;Ljava/lang/String;)V
+    //   225: return
+    //   226: aload 4
+    //   228: astore 6
+    //   230: aload_1
+    //   231: astore 5
+    //   233: aload 4
+    //   235: invokevirtual 118	java/io/ByteArrayOutputStream:flush	()V
+    //   238: aload 4
+    //   240: astore 6
+    //   242: aload_1
+    //   243: astore 5
+    //   245: aload 7
+    //   247: aload 4
+    //   249: invokevirtual 122	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   252: invokevirtual 126	com/tencent/mobileqq/highway/protocol/HwSessionInfoPersistentPB$HwSessionInfoPB:mergeFrom	([B)Lcom/tencent/mobileqq/pb/MessageMicro;
+    //   255: pop
+    //   256: aload 4
+    //   258: astore 6
+    //   260: aload_1
+    //   261: astore 5
+    //   263: aload 7
+    //   265: getfield 129	com/tencent/mobileqq/highway/protocol/HwSessionInfoPersistentPB$HwSessionInfoPB:bytes_httpconn_sig_session	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   268: invokevirtual 134	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   271: ifeq +25 -> 296
+    //   274: aload 4
+    //   276: astore 6
+    //   278: aload_1
+    //   279: astore 5
+    //   281: aload_0
+    //   282: aload 7
+    //   284: getfield 129	com/tencent/mobileqq/highway/protocol/HwSessionInfoPersistentPB$HwSessionInfoPB:bytes_httpconn_sig_session	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   287: invokevirtual 138	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   290: invokevirtual 141	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   293: putfield 143	com/tencent/mobileqq/highway/openup/SessionInfo:bytes_httpconn_sig_session	[B
+    //   296: aload 4
+    //   298: astore 6
+    //   300: aload_1
+    //   301: astore 5
+    //   303: aload 7
+    //   305: getfield 145	com/tencent/mobileqq/highway/protocol/HwSessionInfoPersistentPB$HwSessionInfoPB:bytes_session_key	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   308: invokevirtual 134	com/tencent/mobileqq/pb/PBBytesField:has	()Z
+    //   311: ifeq +25 -> 336
+    //   314: aload 4
+    //   316: astore 6
+    //   318: aload_1
+    //   319: astore 5
+    //   321: aload_0
+    //   322: aload 7
+    //   324: getfield 145	com/tencent/mobileqq/highway/protocol/HwSessionInfoPersistentPB$HwSessionInfoPB:bytes_session_key	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   327: invokevirtual 138	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   330: invokevirtual 141	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   333: putfield 147	com/tencent/mobileqq/highway/openup/SessionInfo:bytes_session_key	[B
+    //   336: aload_1
+    //   337: ifnull +7 -> 344
+    //   340: aload_1
+    //   341: invokevirtual 112	java/io/FileInputStream:close	()V
+    //   344: aload 4
+    //   346: ifnull -340 -> 6
+    //   349: aload 4
+    //   351: invokevirtual 113	java/io/ByteArrayOutputStream:close	()V
+    //   354: return
+    //   355: astore_1
+    //   356: ldc 31
+    //   358: ldc 105
+    //   360: aload_1
+    //   361: invokestatic 109	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   364: return
+    //   365: astore_1
+    //   366: ldc 31
+    //   368: ldc 105
+    //   370: aload_1
+    //   371: invokestatic 109	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   374: goto -30 -> 344
+    //   377: astore_3
+    //   378: ldc 31
+    //   380: ldc 105
+    //   382: aload_3
+    //   383: invokestatic 109	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   386: goto -214 -> 172
+    //   389: astore 7
+    //   391: aconst_null
+    //   392: astore_3
+    //   393: aconst_null
+    //   394: astore_1
+    //   395: aload_3
+    //   396: astore 6
+    //   398: aload_1
+    //   399: astore 5
+    //   401: ldc 31
+    //   403: ldc 105
+    //   405: aload 7
+    //   407: invokestatic 109	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   410: aload_1
+    //   411: ifnull +7 -> 418
+    //   414: aload_1
+    //   415: invokevirtual 112	java/io/FileInputStream:close	()V
+    //   418: aload_3
+    //   419: ifnull -413 -> 6
+    //   422: aload_3
+    //   423: invokevirtual 113	java/io/ByteArrayOutputStream:close	()V
+    //   426: return
+    //   427: astore_1
+    //   428: ldc 31
+    //   430: ldc 105
+    //   432: aload_1
+    //   433: invokestatic 109	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   436: return
+    //   437: astore_1
+    //   438: ldc 31
+    //   440: ldc 105
+    //   442: aload_1
+    //   443: invokestatic 109	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   446: goto -28 -> 418
+    //   449: astore_3
+    //   450: aconst_null
+    //   451: astore 4
+    //   453: aconst_null
+    //   454: astore_1
+    //   455: aload_1
+    //   456: ifnull +7 -> 463
+    //   459: aload_1
+    //   460: invokevirtual 112	java/io/FileInputStream:close	()V
+    //   463: aload 4
+    //   465: ifnull +8 -> 473
+    //   468: aload 4
+    //   470: invokevirtual 113	java/io/ByteArrayOutputStream:close	()V
+    //   473: aload_3
+    //   474: athrow
+    //   475: astore_1
+    //   476: ldc 31
+    //   478: ldc 105
+    //   480: aload_1
+    //   481: invokestatic 109	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   484: goto -21 -> 463
+    //   487: astore_1
+    //   488: ldc 31
+    //   490: ldc 105
+    //   492: aload_1
+    //   493: invokestatic 109	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   496: goto -23 -> 473
+    //   499: astore_3
+    //   500: aconst_null
+    //   501: astore 4
+    //   503: goto -48 -> 455
+    //   506: astore_3
+    //   507: aload 6
+    //   509: astore 4
+    //   511: aload 5
+    //   513: astore_1
+    //   514: goto -59 -> 455
+    //   517: astore 4
+    //   519: aload_3
+    //   520: astore 5
+    //   522: aload 4
+    //   524: astore_3
+    //   525: aload_1
+    //   526: astore 4
+    //   528: aload 5
+    //   530: astore_1
+    //   531: goto -76 -> 455
+    //   534: astore 7
+    //   536: aconst_null
+    //   537: astore_3
+    //   538: goto -143 -> 395
+    //   541: astore 7
+    //   543: aload 4
+    //   545: astore_3
+    //   546: goto -151 -> 395
+    //   549: astore 4
+    //   551: aconst_null
+    //   552: astore_1
+    //   553: goto -398 -> 155
+    //   556: astore 4
+    //   558: aconst_null
+    //   559: astore 5
+    //   561: aload_1
+    //   562: astore_3
+    //   563: aload 5
+    //   565: astore_1
+    //   566: goto -411 -> 155
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	521	0	this	SessionInfo
-    //   0	521	1	paramString	String
-    //   123	11	2	i	int
-    //   8	416	3	localObject1	Object
-    //   444	7	3	localIOException1	java.io.IOException
-    //   461	29	3	localObject2	Object
-    //   509	6	3	localInvalidProtocolBufferMicroException1	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
-    //   73	342	4	localObject3	Object
-    //   429	8	4	localIOException2	java.io.IOException
-    //   463	12	4	str	String
-    //   79	300	5	localObject4	Object
-    //   457	9	5	localObject5	Object
-    //   471	6	5	localObject6	Object
-    //   490	23	5	localObject7	Object
-    //   87	1	6	localObject8	Object
-    //   140	17	6	localInvalidProtocolBufferMicroException2	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
-    //   344	17	6	localIOException3	java.io.IOException
-    //   482	1	6	localIOException4	java.io.IOException
-    //   487	10	6	localIOException5	java.io.IOException
-    //   501	15	6	localObject9	Object
-    //   76	428	7	localObject10	Object
-    //   84	376	8	localObject11	Object
-    //   70	277	9	localObject12	Object
-    //   67	210	10	localHwSessionInfoPB	com.tencent.mobileqq.highway.protocol.HwSessionInfoPersistentPB.HwSessionInfoPB
+    //   0	569	0	this	SessionInfo
+    //   0	569	1	paramString	String
+    //   120	18	2	i	int
+    //   1	168	3	localObject1	Object
+    //   377	6	3	localIOException1	java.io.IOException
+    //   392	31	3	localObject2	Object
+    //   449	25	3	localObject3	Object
+    //   499	1	3	localObject4	Object
+    //   506	14	3	localObject5	Object
+    //   524	39	3	localObject6	Object
+    //   10	500	4	localObject7	Object
+    //   517	6	4	localObject8	Object
+    //   526	18	4	str1	String
+    //   549	1	4	localInvalidProtocolBufferMicroException1	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
+    //   556	1	4	localInvalidProtocolBufferMicroException2	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
+    //   97	35	5	str2	String
+    //   144	8	5	localInvalidProtocolBufferMicroException3	com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException
+    //   231	333	5	localObject9	Object
+    //   94	414	6	localObject10	Object
+    //   72	251	7	localHwSessionInfoPB	com.tencent.mobileqq.highway.protocol.HwSessionInfoPersistentPB.HwSessionInfoPB
+    //   389	17	7	localIOException2	java.io.IOException
+    //   534	1	7	localIOException3	java.io.IOException
+    //   541	1	7	localIOException4	java.io.IOException
     // Exception table:
     //   from	to	target	type
-    //   106	113	140	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   113	124	140	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   129	137	140	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   224	264	140	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   264	290	140	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   174	179	180	java/io/IOException
-    //   294	298	307	java/io/IOException
-    //   302	306	320	java/io/IOException
-    //   165	169	331	java/io/IOException
-    //   89	98	344	java/io/IOException
-    //   378	383	384	java/io/IOException
-    //   369	373	395	java/io/IOException
-    //   89	98	408	finally
-    //   151	161	408	finally
-    //   355	365	408	finally
-    //   414	419	429	java/io/IOException
-    //   423	427	444	java/io/IOException
-    //   98	106	457	finally
-    //   106	113	471	finally
-    //   113	124	471	finally
-    //   129	137	471	finally
-    //   224	264	471	finally
-    //   264	290	471	finally
-    //   98	106	482	java/io/IOException
-    //   106	113	487	java/io/IOException
-    //   113	124	487	java/io/IOException
-    //   129	137	487	java/io/IOException
-    //   224	264	487	java/io/IOException
-    //   264	290	487	java/io/IOException
-    //   89	98	495	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
-    //   98	106	509	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   99	105	144	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   112	121	144	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   133	141	144	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   233	238	144	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   245	256	144	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   263	274	144	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   281	296	144	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   303	314	144	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   321	336	144	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   176	180	181	java/io/IOException
+    //   349	354	355	java/io/IOException
+    //   340	344	365	java/io/IOException
+    //   168	172	377	java/io/IOException
+    //   74	83	389	java/io/IOException
+    //   422	426	427	java/io/IOException
+    //   414	418	437	java/io/IOException
+    //   74	83	449	finally
+    //   459	463	475	java/io/IOException
+    //   468	473	487	java/io/IOException
+    //   83	92	499	finally
+    //   99	105	506	finally
+    //   112	121	506	finally
+    //   133	141	506	finally
+    //   233	238	506	finally
+    //   245	256	506	finally
+    //   263	274	506	finally
+    //   281	296	506	finally
+    //   303	314	506	finally
+    //   321	336	506	finally
+    //   401	410	506	finally
+    //   155	164	517	finally
+    //   83	92	534	java/io/IOException
+    //   99	105	541	java/io/IOException
+    //   112	121	541	java/io/IOException
+    //   133	141	541	java/io/IOException
+    //   233	238	541	java/io/IOException
+    //   245	256	541	java/io/IOException
+    //   263	274	541	java/io/IOException
+    //   281	296	541	java/io/IOException
+    //   303	314	541	java/io/IOException
+    //   321	336	541	java/io/IOException
+    //   74	83	549	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
+    //   83	92	556	com/tencent/mobileqq/pb/InvalidProtocolBufferMicroException
   }
   
   /* Error */
@@ -417,262 +449,244 @@ public class SessionInfo
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: invokestatic 35	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   6: ifeq +11 -> 17
-    //   9: ldc 37
-    //   11: iconst_2
-    //   12: ldc 155
-    //   14: invokestatic 43	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   17: aload_0
-    //   18: ifnull +23 -> 41
-    //   21: aload_0
-    //   22: arraylength
-    //   23: ifeq +18 -> 41
-    //   26: aload_1
-    //   27: ifnull +14 -> 41
-    //   30: aload_1
-    //   31: arraylength
-    //   32: istore_3
-    //   33: iload_3
-    //   34: ifeq +7 -> 41
-    //   37: aload_2
-    //   38: ifnonnull +7 -> 45
-    //   41: ldc 2
-    //   43: monitorexit
-    //   44: return
-    //   45: invokestatic 157	com/tencent/mobileqq/highway/openup/SessionInfo:clearOldSession	()V
-    //   48: aload_0
-    //   49: aload_1
-    //   50: aload_2
-    //   51: invokestatic 161	com/tencent/mobileqq/highway/openup/SessionInfo:write2Disk	([B[BLjava/lang/String;)Z
-    //   54: ifeq -13 -> 41
-    //   57: aconst_null
-    //   58: putstatic 70	com/tencent/mobileqq/highway/openup/SessionInfo:sessionInfo	Lcom/tencent/mobileqq/highway/openup/SessionInfo;
-    //   61: goto -20 -> 41
-    //   64: astore_0
-    //   65: ldc 2
-    //   67: monitorexit
-    //   68: aload_0
-    //   69: athrow
+    //   3: ldc 31
+    //   5: ldc 150
+    //   7: invokestatic 39	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogEvent	(Ljava/lang/String;Ljava/lang/String;)V
+    //   10: aload_0
+    //   11: ifnull +23 -> 34
+    //   14: aload_0
+    //   15: arraylength
+    //   16: ifeq +18 -> 34
+    //   19: aload_1
+    //   20: ifnull +14 -> 34
+    //   23: aload_1
+    //   24: arraylength
+    //   25: istore_3
+    //   26: iload_3
+    //   27: ifeq +7 -> 34
+    //   30: aload_2
+    //   31: ifnonnull +7 -> 38
+    //   34: ldc 2
+    //   36: monitorexit
+    //   37: return
+    //   38: invokestatic 152	com/tencent/mobileqq/highway/openup/SessionInfo:clearOldSession	()V
+    //   41: aload_0
+    //   42: aload_1
+    //   43: aload_2
+    //   44: invokestatic 156	com/tencent/mobileqq/highway/openup/SessionInfo:write2Disk	([B[BLjava/lang/String;)Z
+    //   47: ifeq -13 -> 34
+    //   50: aconst_null
+    //   51: putstatic 67	com/tencent/mobileqq/highway/openup/SessionInfo:sessionInfo	Lcom/tencent/mobileqq/highway/openup/SessionInfo;
+    //   54: goto -20 -> 34
+    //   57: astore_0
+    //   58: ldc 2
+    //   60: monitorexit
+    //   61: aload_0
+    //   62: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	70	0	paramArrayOfByte1	byte[]
-    //   0	70	1	paramArrayOfByte2	byte[]
-    //   0	70	2	paramString	String
-    //   32	2	3	i	int
+    //   0	63	0	paramArrayOfByte1	byte[]
+    //   0	63	1	paramArrayOfByte2	byte[]
+    //   0	63	2	paramString	String
+    //   25	2	3	i	int
     // Exception table:
     //   from	to	target	type
-    //   3	17	64	finally
-    //   21	26	64	finally
-    //   30	33	64	finally
-    //   45	61	64	finally
+    //   3	10	57	finally
+    //   14	19	57	finally
+    //   23	26	57	finally
+    //   38	54	57	finally
   }
   
   /* Error */
   private static boolean write2Disk(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, String paramString)
   {
     // Byte code:
-    //   0: iconst_1
-    //   1: istore_3
-    //   2: invokestatic 49	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   5: astore 5
-    //   7: aload 5
-    //   9: ifnonnull +5 -> 14
-    //   12: iconst_0
-    //   13: ireturn
-    //   14: new 51	java/io/File
-    //   17: dup
-    //   18: aload 5
-    //   20: invokevirtual 57	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   23: ldc 11
-    //   25: invokespecial 60	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   28: astore 5
-    //   30: aload 5
-    //   32: invokevirtual 63	java/io/File:exists	()Z
-    //   35: ifne +9 -> 44
-    //   38: aload 5
-    //   40: invokevirtual 166	java/io/File:mkdir	()Z
-    //   43: pop
-    //   44: new 51	java/io/File
+    //   0: invokestatic 45	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   3: astore_3
+    //   4: aload_3
+    //   5: ifnonnull +5 -> 10
+    //   8: iconst_0
+    //   9: ireturn
+    //   10: new 47	java/io/File
+    //   13: dup
+    //   14: aload_3
+    //   15: invokevirtual 53	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   18: ldc 11
+    //   20: invokespecial 56	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   23: astore_3
+    //   24: aload_3
+    //   25: invokevirtual 60	java/io/File:exists	()Z
+    //   28: ifne +8 -> 36
+    //   31: aload_3
+    //   32: invokevirtual 161	java/io/File:mkdir	()Z
+    //   35: pop
+    //   36: new 47	java/io/File
+    //   39: dup
+    //   40: aload_3
+    //   41: invokevirtual 164	java/io/File:getPath	()Ljava/lang/String;
+    //   44: new 75	java/lang/StringBuilder
     //   47: dup
-    //   48: aload 5
-    //   50: invokevirtual 169	java/io/File:getPath	()Ljava/lang/String;
-    //   53: new 78	java/lang/StringBuilder
-    //   56: dup
-    //   57: invokespecial 79	java/lang/StringBuilder:<init>	()V
-    //   60: aload_2
-    //   61: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   64: ldc 8
-    //   66: invokevirtual 83	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   69: invokevirtual 87	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   72: invokespecial 172	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   75: astore 5
-    //   77: aload 5
-    //   79: invokevirtual 63	java/io/File:exists	()Z
-    //   82: ifeq +9 -> 91
-    //   85: aload 5
-    //   87: invokevirtual 66	java/io/File:delete	()Z
-    //   90: pop
-    //   91: aconst_null
-    //   92: astore 7
-    //   94: aconst_null
-    //   95: astore_2
-    //   96: aconst_null
-    //   97: astore 6
-    //   99: new 174	java/io/FileOutputStream
-    //   102: dup
-    //   103: aload 5
-    //   105: invokespecial 175	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   108: astore 5
-    //   110: new 89	com/tencent/mobileqq/highway/protocol/HwSessionInfoPersistentPB$HwSessionInfoPB
-    //   113: dup
-    //   114: invokespecial 90	com/tencent/mobileqq/highway/protocol/HwSessionInfoPersistentPB$HwSessionInfoPB:<init>	()V
-    //   117: astore_2
-    //   118: aload_2
-    //   119: getfield 134	com/tencent/mobileqq/highway/protocol/HwSessionInfoPersistentPB$HwSessionInfoPB:bytes_httpconn_sig_session	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   122: aload_0
-    //   123: invokestatic 179	com/tencent/mobileqq/pb/ByteStringMicro:copyFrom	([B)Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   126: invokevirtual 183	com/tencent/mobileqq/pb/PBBytesField:set	(Lcom/tencent/mobileqq/pb/ByteStringMicro;)V
-    //   129: aload_2
-    //   130: getfield 150	com/tencent/mobileqq/highway/protocol/HwSessionInfoPersistentPB$HwSessionInfoPB:bytes_session_key	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   133: aload_1
-    //   134: invokestatic 179	com/tencent/mobileqq/pb/ByteStringMicro:copyFrom	([B)Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   137: invokevirtual 183	com/tencent/mobileqq/pb/PBBytesField:set	(Lcom/tencent/mobileqq/pb/ByteStringMicro;)V
-    //   140: aload 5
-    //   142: aload_2
-    //   143: invokevirtual 184	com/tencent/mobileqq/highway/protocol/HwSessionInfoPersistentPB$HwSessionInfoPB:toByteArray	()[B
-    //   146: invokevirtual 187	java/io/FileOutputStream:write	([B)V
-    //   149: invokestatic 35	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   152: ifeq +11 -> 163
-    //   155: ldc 37
-    //   157: iconst_2
-    //   158: ldc 189
-    //   160: invokestatic 43	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   163: aload 5
-    //   165: ifnull +8 -> 173
-    //   168: aload 5
-    //   170: invokevirtual 190	java/io/FileOutputStream:close	()V
-    //   173: iload_3
-    //   174: ireturn
-    //   175: astore_0
-    //   176: ldc 37
-    //   178: iconst_2
-    //   179: ldc 192
-    //   181: aload_0
-    //   182: invokestatic 112	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   185: iconst_0
-    //   186: istore_3
-    //   187: goto -14 -> 173
-    //   190: astore_1
-    //   191: aload 6
-    //   193: astore_0
-    //   194: aload_0
-    //   195: astore_2
-    //   196: ldc 37
-    //   198: iconst_2
-    //   199: ldc 192
-    //   201: aload_1
-    //   202: invokestatic 112	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   205: iconst_0
-    //   206: istore 4
-    //   208: iload 4
-    //   210: istore_3
+    //   48: invokespecial 76	java/lang/StringBuilder:<init>	()V
+    //   51: aload_2
+    //   52: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: ldc 8
+    //   57: invokevirtual 80	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   60: invokevirtual 84	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   63: invokespecial 166	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   66: astore_2
+    //   67: aload_2
+    //   68: invokevirtual 60	java/io/File:exists	()Z
+    //   71: ifeq +8 -> 79
+    //   74: aload_2
+    //   75: invokevirtual 63	java/io/File:delete	()Z
+    //   78: pop
+    //   79: new 168	java/io/FileOutputStream
+    //   82: dup
+    //   83: aload_2
+    //   84: invokespecial 169	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   87: astore_3
+    //   88: aload_3
+    //   89: astore_2
+    //   90: new 86	com/tencent/mobileqq/highway/protocol/HwSessionInfoPersistentPB$HwSessionInfoPB
+    //   93: dup
+    //   94: invokespecial 87	com/tencent/mobileqq/highway/protocol/HwSessionInfoPersistentPB$HwSessionInfoPB:<init>	()V
+    //   97: astore 4
+    //   99: aload_3
+    //   100: astore_2
+    //   101: aload 4
+    //   103: getfield 129	com/tencent/mobileqq/highway/protocol/HwSessionInfoPersistentPB$HwSessionInfoPB:bytes_httpconn_sig_session	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   106: aload_0
+    //   107: invokestatic 173	com/tencent/mobileqq/pb/ByteStringMicro:copyFrom	([B)Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   110: invokevirtual 177	com/tencent/mobileqq/pb/PBBytesField:set	(Lcom/tencent/mobileqq/pb/ByteStringMicro;)V
+    //   113: aload_3
+    //   114: astore_2
+    //   115: aload 4
+    //   117: getfield 145	com/tencent/mobileqq/highway/protocol/HwSessionInfoPersistentPB$HwSessionInfoPB:bytes_session_key	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   120: aload_1
+    //   121: invokestatic 173	com/tencent/mobileqq/pb/ByteStringMicro:copyFrom	([B)Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   124: invokevirtual 177	com/tencent/mobileqq/pb/PBBytesField:set	(Lcom/tencent/mobileqq/pb/ByteStringMicro;)V
+    //   127: aload_3
+    //   128: astore_2
+    //   129: aload_3
+    //   130: aload 4
+    //   132: invokevirtual 178	com/tencent/mobileqq/highway/protocol/HwSessionInfoPersistentPB$HwSessionInfoPB:toByteArray	()[B
+    //   135: invokevirtual 181	java/io/FileOutputStream:write	([B)V
+    //   138: aload_3
+    //   139: astore_2
+    //   140: ldc 31
+    //   142: ldc 183
+    //   144: invokestatic 39	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogEvent	(Ljava/lang/String;Ljava/lang/String;)V
+    //   147: aload_3
+    //   148: ifnull +7 -> 155
+    //   151: aload_3
+    //   152: invokevirtual 184	java/io/FileOutputStream:close	()V
+    //   155: iconst_1
+    //   156: ireturn
+    //   157: astore_0
+    //   158: ldc 31
+    //   160: ldc 186
+    //   162: aload_0
+    //   163: invokestatic 109	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   166: iconst_0
+    //   167: ireturn
+    //   168: astore_0
+    //   169: aconst_null
+    //   170: astore_3
+    //   171: aload_3
+    //   172: astore_2
+    //   173: ldc 31
+    //   175: ldc 186
+    //   177: aload_0
+    //   178: invokestatic 109	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   181: aload_3
+    //   182: ifnull -174 -> 8
+    //   185: aload_3
+    //   186: invokevirtual 184	java/io/FileOutputStream:close	()V
+    //   189: iconst_0
+    //   190: ireturn
+    //   191: astore_0
+    //   192: ldc 31
+    //   194: ldc 186
+    //   196: aload_0
+    //   197: invokestatic 109	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   200: iconst_0
+    //   201: ireturn
+    //   202: astore_0
+    //   203: aconst_null
+    //   204: astore_3
+    //   205: aload_3
+    //   206: astore_2
+    //   207: ldc 31
+    //   209: ldc 186
     //   211: aload_0
-    //   212: ifnull -39 -> 173
-    //   215: aload_0
-    //   216: invokevirtual 190	java/io/FileOutputStream:close	()V
-    //   219: iload 4
-    //   221: istore_3
-    //   222: goto -49 -> 173
+    //   212: invokestatic 109	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   215: aload_3
+    //   216: ifnull -208 -> 8
+    //   219: aload_3
+    //   220: invokevirtual 184	java/io/FileOutputStream:close	()V
+    //   223: iconst_0
+    //   224: ireturn
     //   225: astore_0
-    //   226: ldc 37
-    //   228: iconst_2
-    //   229: ldc 192
-    //   231: aload_0
-    //   232: invokestatic 112	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   235: iconst_0
-    //   236: istore_3
-    //   237: goto -64 -> 173
-    //   240: astore_1
-    //   241: aload 7
-    //   243: astore_0
-    //   244: aload_0
-    //   245: astore_2
-    //   246: ldc 37
-    //   248: iconst_2
-    //   249: ldc 192
-    //   251: aload_1
-    //   252: invokestatic 112	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   255: iconst_0
-    //   256: istore 4
-    //   258: iload 4
-    //   260: istore_3
-    //   261: aload_0
-    //   262: ifnull -89 -> 173
-    //   265: aload_0
-    //   266: invokevirtual 190	java/io/FileOutputStream:close	()V
-    //   269: iload 4
-    //   271: istore_3
-    //   272: goto -99 -> 173
-    //   275: astore_0
-    //   276: ldc 37
-    //   278: iconst_2
-    //   279: ldc 192
-    //   281: aload_0
-    //   282: invokestatic 112	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   285: iconst_0
-    //   286: istore_3
-    //   287: goto -114 -> 173
-    //   290: astore_0
-    //   291: aload_2
-    //   292: ifnull +7 -> 299
-    //   295: aload_2
-    //   296: invokevirtual 190	java/io/FileOutputStream:close	()V
-    //   299: aload_0
-    //   300: athrow
-    //   301: astore_1
-    //   302: ldc 37
-    //   304: iconst_2
-    //   305: ldc 192
-    //   307: aload_1
-    //   308: invokestatic 112	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   311: goto -12 -> 299
-    //   314: astore_0
-    //   315: aload 5
-    //   317: astore_2
-    //   318: goto -27 -> 291
-    //   321: astore_1
-    //   322: aload 5
-    //   324: astore_0
-    //   325: goto -81 -> 244
-    //   328: astore_1
-    //   329: aload 5
-    //   331: astore_0
-    //   332: goto -138 -> 194
+    //   226: ldc 31
+    //   228: ldc 186
+    //   230: aload_0
+    //   231: invokestatic 109	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   234: iconst_0
+    //   235: ireturn
+    //   236: astore_0
+    //   237: aconst_null
+    //   238: astore_2
+    //   239: aload_2
+    //   240: ifnull +7 -> 247
+    //   243: aload_2
+    //   244: invokevirtual 184	java/io/FileOutputStream:close	()V
+    //   247: aload_0
+    //   248: athrow
+    //   249: astore_1
+    //   250: ldc 31
+    //   252: ldc 186
+    //   254: aload_1
+    //   255: invokestatic 109	com/tencent/mobileqq/highway/utils/BdhLogUtil:LogException	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   258: goto -11 -> 247
+    //   261: astore_0
+    //   262: goto -23 -> 239
+    //   265: astore_0
+    //   266: goto -61 -> 205
+    //   269: astore_0
+    //   270: goto -99 -> 171
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	335	0	paramArrayOfByte1	byte[]
-    //   0	335	1	paramArrayOfByte2	byte[]
-    //   0	335	2	paramString	String
-    //   1	286	3	bool1	boolean
-    //   206	64	4	bool2	boolean
-    //   5	325	5	localObject1	Object
-    //   97	95	6	localObject2	Object
-    //   92	150	7	localObject3	Object
+    //   0	273	0	paramArrayOfByte1	byte[]
+    //   0	273	1	paramArrayOfByte2	byte[]
+    //   0	273	2	paramString	String
+    //   3	217	3	localObject	Object
+    //   97	34	4	localHwSessionInfoPB	com.tencent.mobileqq.highway.protocol.HwSessionInfoPersistentPB.HwSessionInfoPB
     // Exception table:
     //   from	to	target	type
-    //   168	173	175	java/io/IOException
-    //   99	110	190	java/io/FileNotFoundException
-    //   215	219	225	java/io/IOException
-    //   99	110	240	java/io/IOException
-    //   265	269	275	java/io/IOException
-    //   99	110	290	finally
-    //   196	205	290	finally
-    //   246	255	290	finally
-    //   295	299	301	java/io/IOException
-    //   110	163	314	finally
-    //   110	163	321	java/io/IOException
-    //   110	163	328	java/io/FileNotFoundException
+    //   151	155	157	java/io/IOException
+    //   79	88	168	java/io/FileNotFoundException
+    //   185	189	191	java/io/IOException
+    //   79	88	202	java/io/IOException
+    //   219	223	225	java/io/IOException
+    //   79	88	236	finally
+    //   243	247	249	java/io/IOException
+    //   90	99	261	finally
+    //   101	113	261	finally
+    //   115	127	261	finally
+    //   129	138	261	finally
+    //   140	147	261	finally
+    //   173	181	261	finally
+    //   207	215	261	finally
+    //   90	99	265	java/io/IOException
+    //   101	113	265	java/io/IOException
+    //   115	127	265	java/io/IOException
+    //   129	138	265	java/io/IOException
+    //   140	147	265	java/io/IOException
+    //   90	99	269	java/io/FileNotFoundException
+    //   101	113	269	java/io/FileNotFoundException
+    //   115	127	269	java/io/FileNotFoundException
+    //   129	138	269	java/io/FileNotFoundException
+    //   140	147	269	java/io/FileNotFoundException
   }
   
   public byte[] getHttpconn_sig_session()
@@ -687,7 +701,7 @@ public class SessionInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.highway.openup.SessionInfo
  * JD-Core Version:    0.7.0.1
  */

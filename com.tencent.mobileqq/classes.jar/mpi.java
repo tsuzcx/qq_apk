@@ -1,25 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.KandianAppInPush;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.view.View;
 
-public class mpi
-  implements AppInPushNotification.OnDismissListener
+class mpi
+  implements begw
 {
-  public mpi(KandianAppInPush paramKandianAppInPush) {}
+  mpi(mpf parammpf, Activity paramActivity, String paramString, begr parambegr) {}
   
-  public void a(boolean paramBoolean)
+  public void OnClick(View paramView, int paramInt)
   {
-    KandianAppInPush.a(this.a, null);
-    KandianAppInPush.a(this.a, null);
-    if ((paramBoolean) && (KandianAppInPush.a(this.a) != null)) {
-      ThreadManager.getSubThreadHandler().postDelayed(new mpj(this), 500L);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Begr.dismiss();
+      return;
+      mpf.a(this.jdField_a_of_type_Mpf, this.jdField_a_of_type_AndroidAppActivity);
+      continue;
+      mpf.a(this.jdField_a_of_type_Mpf, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     mpi
  * JD-Core Version:    0.7.0.1
  */

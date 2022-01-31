@@ -205,20 +205,6 @@ public class ah
     }
     return 0;
   }
-  
-  static class a
-  {
-    int a;
-    String b;
-    String c;
-    
-    public a(int paramInt, String paramString1, String paramString2)
-    {
-      this.a = paramInt;
-      this.b = paramString1;
-      this.c = paramString2;
-    }
-  }
 }
 
 

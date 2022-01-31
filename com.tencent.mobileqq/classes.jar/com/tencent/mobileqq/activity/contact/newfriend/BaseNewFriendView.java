@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.activity.contact.newfriend;
 
+import aexu;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -10,8 +11,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 public class BaseNewFriendView
   extends FrameLayout
 {
+  public aexu a;
   protected Intent a;
-  public BaseNewFriendView.INewFriendContext a;
   public QQAppInterface a;
   private boolean a;
   private boolean b;
@@ -25,7 +26,7 @@ public class BaseNewFriendView
   {
     this.b = false;
     if (!a()) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendBaseNewFriendView$INewFriendContext.b();
+      this.jdField_a_of_type_Aexu.b();
     }
   }
   
@@ -33,21 +34,21 @@ public class BaseNewFriendView
   {
     if ((20000 == paramInt1) && (paramInt2 != 0))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendBaseNewFriendView$INewFriendContext.getActivity().setResult(paramInt2, paramIntent);
+      this.jdField_a_of_type_Aexu.getActivity().setResult(paramInt2, paramIntent);
       g();
     }
   }
   
   public final void a(Intent paramIntent, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendBaseNewFriendView$INewFriendContext.getActivity().startActivityForResult(paramIntent, paramInt);
+    this.jdField_a_of_type_Aexu.getActivity().startActivityForResult(paramIntent, paramInt);
   }
   
-  protected void a(Intent paramIntent, BaseNewFriendView.INewFriendContext paramINewFriendContext)
+  protected void a(Intent paramIntent, aexu paramaexu)
   {
     this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendBaseNewFriendView$INewFriendContext = paramINewFriendContext;
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendBaseNewFriendView$INewFriendContext.a();
+    this.jdField_a_of_type_Aexu = paramaexu;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = this.jdField_a_of_type_Aexu.a();
   }
   
   protected final boolean a()
@@ -60,10 +61,10 @@ public class BaseNewFriendView
     this.jdField_a_of_type_Boolean = false;
     if (this.b)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendBaseNewFriendView$INewFriendContext.a();
+      this.jdField_a_of_type_Aexu.a();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendBaseNewFriendView$INewFriendContext.b();
+    this.jdField_a_of_type_Aexu.b();
   }
   
   protected void c() {}
@@ -86,12 +87,12 @@ public class BaseNewFriendView
   protected void g()
   {
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendBaseNewFriendView$INewFriendContext.getActivity().finish();
+    this.jdField_a_of_type_Aexu.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.newfriend.BaseNewFriendView
  * JD-Core Version:    0.7.0.1
  */

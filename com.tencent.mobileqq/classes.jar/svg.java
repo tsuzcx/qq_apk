@@ -1,32 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.utils.VipUtils;
-
-public class svg
-  implements DialogInterface.OnClickListener
+class svg
+  extends ajee
 {
-  public svg(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  svg(svc paramsvc) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(int paramInt)
   {
-    if (this.a.f == 1) {
-      VipUtils.a(this.a, 1, ProfileCardUtil.a(3));
-    }
-    for (;;)
+    if (paramInt == 1)
     {
-      this.a.K();
-      return;
-      if (this.a.f == 2) {
-        VipUtils.b(this.a, 1, ProfileCardUtil.a(6));
-      }
+      urk.b(svc.b() + ".VASH", "Friend Cache Inited!");
+      svc.h = true;
+      this.a.a.notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     svg
  * JD-Core Version:    0.7.0.1
  */

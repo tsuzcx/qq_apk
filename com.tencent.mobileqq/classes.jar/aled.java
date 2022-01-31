@@ -1,93 +1,44 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.BlockingQueue;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
 public class aled
-  extends Handler
+  implements INetInfoHandler
 {
-  private long a = 0L;
+  public aled(ArkAppCenter paramArkAppCenter) {}
   
-  private aled(Looper paramLooper)
+  public void onNetMobile2None()
   {
-    super(paramLooper);
+    ArkAppCenter.a(this.a, 1, 0);
   }
   
-  private void a(long paramLong)
+  public void onNetMobile2Wifi(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQToast", 2, "scheduleNextToast to " + paramLong);
-    }
-    removeMessages(1);
-    sendEmptyMessageDelayed(1, paramLong);
+    ArkAppCenter.a(this.a, 1, 2);
   }
   
-  private void a(alec paramalec)
+  public void onNetNone2Mobile(String paramString)
   {
-    long l2 = 0L;
-    paramalec = paramalec.a();
-    long l1;
-    int i;
-    if (paramalec != null)
-    {
-      paramalec.a();
-      if (QQToast.a(paramalec) == 0)
-      {
-        l1 = 2000L;
-        this.a = (System.currentTimeMillis() + l1);
-        i = 1;
-      }
-    }
-    for (;;)
-    {
-      if (!QQToast.a().isEmpty())
-      {
-        if (i != 0) {
-          l2 = 100L + l1;
-        }
-        a(l2);
-      }
-      return;
-      l1 = 3500L;
-      break;
-      i = 0;
-      l1 = 0L;
-    }
+    ArkAppCenter.a(this.a, 0, 1);
   }
   
-  public void handleMessage(Message paramMessage)
+  public void onNetNone2Wifi(String paramString)
   {
-    switch (paramMessage.what)
-    {
-    }
-    long l;
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQToast", 2, "MSG_SHOW_TOAST received");
-      }
-      l = System.currentTimeMillis();
-      if (l <= this.a + 100L) {
-        break;
-      }
-      paramMessage = (alec)QQToast.a().poll();
-      if (paramMessage != null)
-      {
-        a(paramMessage);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("QQToast", 2, "MSG_SHOW_TOAST but no message to show");
-    return;
-    a(this.a - l + 100L);
+    ArkAppCenter.a(this.a, 0, 2);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    ArkAppCenter.a(this.a, 2, 1);
+  }
+  
+  public void onNetWifi2None()
+  {
+    ArkAppCenter.a(this.a, 2, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aled
  * JD-Core Version:    0.7.0.1
  */

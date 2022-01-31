@@ -2,7 +2,7 @@ package com.tencent.av.opengl.filter.qqavimage;
 
 public class QQAVImageFilterConstants
 {
-  public static int a(int paramInt)
+  public static int getFilterType(int paramInt)
   {
     if (paramInt == 9) {
       return 1;
@@ -13,12 +13,23 @@ public class QQAVImageFilterConstants
     if (paramInt == 10) {
       return 3;
     }
+    if ((paramInt == 1017) || (paramInt == 1018)) {
+      return 4;
+    }
+    if (paramInt == 12) {
+      return 5;
+    }
     return 0;
   }
   
-  public static boolean a(int paramInt)
+  public static boolean isMusicSpecialFilter(int paramInt)
   {
-    return (paramInt == 1013) || (paramInt == 1014);
+    return (paramInt == 1013) || (paramInt == 1014) || (paramInt == 1017);
+  }
+  
+  public static boolean isNormalFilterSpecialCases(int paramInt, String paramString)
+  {
+    return (getFilterType(paramInt) == 0) && (paramString.equals("MANHUA"));
   }
 }
 

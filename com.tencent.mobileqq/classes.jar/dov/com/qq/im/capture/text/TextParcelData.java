@@ -4,21 +4,24 @@ import android.graphics.PointF;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anxa;
+import bhlz;
+import bhna;
+import bhns;
+import bijo;
+import bijq;
+import bijr;
 import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.LayerParams;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
+import org.json.JSONObject;
 
 public class TextParcelData
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new anxa();
+  public static final Parcelable.Creator<TextParcelData> CREATOR = new bhns();
   private float jdField_a_of_type_Float;
+  private bijq jdField_a_of_type_Bijq;
   public SegmentKeeper a;
   private DynamicTextItem jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem;
-  private TextLayer.LayerParams jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer$LayerParams;
   private float b;
   private float c;
   private float d;
@@ -31,23 +34,23 @@ public class TextParcelData
   public TextParcelData(Parcel paramParcel)
   {
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = new SegmentKeeper();
-    Object localObject = new DynamicTextBuilder();
+    Object localObject = new bhlz();
     int j = paramParcel.readInt();
     DynamicTextItem.TextMap localTextMap = (DynamicTextItem.TextMap)paramParcel.readParcelable(DynamicTextItem.TextMap.class.getClassLoader());
-    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem = ((DynamicTextBuilder)localObject).a(j, localTextMap.a());
+    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem = ((bhlz)localObject).a(j, localTextMap.a());
     if (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem == null)
     {
       QLog.e("TextParcelData", 1, "read mDynamicTextItem from Parcel return null, use normal text instead");
-      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem = new NormalTextItem(j, localTextMap.a());
+      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem = new bhna(j, localTextMap.a());
     }
     localObject = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem;
     if (paramParcel.readInt() == 1) {}
     for (boolean bool = true;; bool = false)
     {
       ((DynamicTextItem)localObject).a(bool);
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer$LayerParams = new TextLayer.LayerParams(paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat());
+      this.jdField_a_of_type_Bijq = new bijq(paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat(), paramParcel.readFloat());
       this.jdField_a_of_type_Float = paramParcel.readFloat();
-      this.b = paramParcel.readFloat();
+      this.jdField_b_of_type_Float = paramParcel.readFloat();
       this.c = paramParcel.readFloat();
       this.d = paramParcel.readFloat();
       this.e = paramParcel.readFloat();
@@ -60,42 +63,77 @@ public class TextParcelData
     }
   }
   
-  public TextParcelData(TextLayer.TextItem paramTextItem)
+  public TextParcelData(bijr parambijr)
   {
     this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = new SegmentKeeper();
-    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem = paramTextItem.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem;
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer$LayerParams = new TextLayer.LayerParams(paramTextItem.jdField_a_of_type_AndroidGraphicsPointF.x, paramTextItem.jdField_a_of_type_AndroidGraphicsPointF.y, paramTextItem.q, paramTextItem.r, paramTextItem.s, paramTextItem.t, paramTextItem.u, paramTextItem.v);
-    this.jdField_a_of_type_Float = paramTextItem.jdField_a_of_type_Float;
-    this.b = paramTextItem.b;
-    this.c = paramTextItem.c;
-    this.d = paramTextItem.d;
-    this.e = paramTextItem.e;
-    this.f = paramTextItem.f;
-    this.g = paramTextItem.g;
-    this.h = paramTextItem.h;
-    this.i = paramTextItem.i;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.a(paramTextItem.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper);
+    this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem = parambijr.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem;
+    this.jdField_a_of_type_Bijq = new bijq(parambijr.jdField_b_of_type_AndroidGraphicsPointF.x, parambijr.jdField_b_of_type_AndroidGraphicsPointF.y, parambijr.q, parambijr.r, parambijr.s, parambijr.t, parambijr.u, parambijr.v);
+    this.jdField_a_of_type_Float = parambijr.jdField_a_of_type_Float;
+    this.jdField_b_of_type_Float = parambijr.jdField_b_of_type_Float;
+    this.c = parambijr.c;
+    this.d = parambijr.d;
+    this.e = parambijr.e;
+    this.f = parambijr.f;
+    this.g = parambijr.g;
+    this.h = parambijr.h;
+    this.i = parambijr.i;
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.set(parambijr.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper);
   }
   
-  public TextLayer.TextItem a(TextLayer paramTextLayer)
+  public bijr a(bijo parambijo)
   {
-    paramTextLayer.getClass();
-    paramTextLayer = new TextLayer.TextItem(paramTextLayer, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer$LayerParams);
-    paramTextLayer.q = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer$LayerParams.jdField_a_of_type_Float;
-    paramTextLayer.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem;
-    paramTextLayer.u = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a();
-    paramTextLayer.v = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b();
-    paramTextLayer.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-    paramTextLayer.b = this.b;
-    paramTextLayer.c = this.c;
-    paramTextLayer.d = this.d;
-    paramTextLayer.e = this.e;
-    paramTextLayer.f = this.f;
-    paramTextLayer.g = this.g;
-    paramTextLayer.h = this.h;
-    paramTextLayer.i = this.i;
-    paramTextLayer.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper);
-    return paramTextLayer;
+    parambijo.getClass();
+    parambijo = new bijr(parambijo, this.jdField_a_of_type_Bijq);
+    parambijo.q = this.jdField_a_of_type_Bijq.jdField_a_of_type_Float;
+    parambijo.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem;
+    parambijo.u = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a();
+    parambijo.v = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b();
+    parambijo.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+    parambijo.jdField_b_of_type_Float = this.jdField_b_of_type_Float;
+    parambijo.c = this.c;
+    parambijo.d = this.d;
+    parambijo.e = this.e;
+    parambijo.f = this.f;
+    parambijo.g = this.g;
+    parambijo.h = this.h;
+    parambijo.i = this.i;
+    parambijo.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.set(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper);
+    return parambijo;
+  }
+  
+  public JSONObject a()
+  {
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("dynamicTextType", this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.c());
+      DynamicTextItem.TextMap localTextMap = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a();
+      if (localTextMap != null)
+      {
+        localJSONObject.put("dynamicText", localTextMap.a());
+        localJSONObject.put("isFromCombo", this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.e());
+      }
+      localJSONObject.put("centerPx", this.jdField_a_of_type_Bijq.jdField_a_of_type_AndroidGraphicsPointF.x);
+      localJSONObject.put("centerPy", this.jdField_a_of_type_Bijq.jdField_a_of_type_AndroidGraphicsPointF.y);
+      localJSONObject.put("scale", this.jdField_a_of_type_Bijq.jdField_a_of_type_Float);
+      localJSONObject.put("rotate", this.jdField_a_of_type_Bijq.jdField_b_of_type_Float);
+      localJSONObject.put("translateX", this.jdField_a_of_type_Bijq.c);
+      localJSONObject.put("translateY", this.jdField_a_of_type_Bijq.d);
+      localJSONObject.put("width", this.jdField_a_of_type_Bijq.e);
+      localJSONObject.put("height", this.jdField_a_of_type_Bijq.f);
+      localJSONObject.put("textLeft", this.jdField_a_of_type_Float);
+      localJSONObject.put("saveScaleValue", this.jdField_b_of_type_Float);
+      localJSONObject.put("saveRotateValue", this.c);
+      localJSONObject.put("saveTranslateX", this.d);
+      localJSONObject.put("saveTranslateY", this.e);
+      localJSONObject.put("distanceX", this.f);
+      localJSONObject.put("distanceY", this.g);
+      localJSONObject.put("dScale", this.h);
+      localJSONObject.put("dRotate", this.i);
+      return localJSONObject;
+    }
+    catch (Exception localException) {}
+    return null;
   }
   
   public int describeContents()
@@ -111,16 +149,16 @@ public class TextParcelData
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeFloat(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer$LayerParams.jdField_a_of_type_AndroidGraphicsPointF.x);
-      paramParcel.writeFloat(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer$LayerParams.jdField_a_of_type_AndroidGraphicsPointF.y);
-      paramParcel.writeFloat(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer$LayerParams.jdField_a_of_type_Float);
-      paramParcel.writeFloat(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer$LayerParams.b);
-      paramParcel.writeFloat(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer$LayerParams.c);
-      paramParcel.writeFloat(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer$LayerParams.d);
-      paramParcel.writeFloat(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer$LayerParams.e);
-      paramParcel.writeFloat(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerTextLayer$LayerParams.f);
+      paramParcel.writeFloat(this.jdField_a_of_type_Bijq.jdField_a_of_type_AndroidGraphicsPointF.x);
+      paramParcel.writeFloat(this.jdField_a_of_type_Bijq.jdField_a_of_type_AndroidGraphicsPointF.y);
+      paramParcel.writeFloat(this.jdField_a_of_type_Bijq.jdField_a_of_type_Float);
+      paramParcel.writeFloat(this.jdField_a_of_type_Bijq.jdField_b_of_type_Float);
+      paramParcel.writeFloat(this.jdField_a_of_type_Bijq.c);
+      paramParcel.writeFloat(this.jdField_a_of_type_Bijq.d);
+      paramParcel.writeFloat(this.jdField_a_of_type_Bijq.e);
+      paramParcel.writeFloat(this.jdField_a_of_type_Bijq.f);
       paramParcel.writeFloat(this.jdField_a_of_type_Float);
-      paramParcel.writeFloat(this.b);
+      paramParcel.writeFloat(this.jdField_b_of_type_Float);
       paramParcel.writeFloat(this.c);
       paramParcel.writeFloat(this.d);
       paramParcel.writeFloat(this.e);

@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import anuc;
+import bhhj;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,15 +14,16 @@ import org.json.JSONObject;
 public class FilterCategory
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new anuc();
+  public static final Parcelable.Creator<FilterCategory> CREATOR = new bhhj();
   public int a;
   public String a;
-  public List a;
+  public List<QIMFilterCategoryItem> a;
   public boolean a;
   public int b;
   public boolean b;
+  public int c = 0;
   
-  public FilterCategory(int paramInt1, String paramString, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
+  public FilterCategory(int paramInt1, String paramString, boolean paramBoolean1, boolean paramBoolean2, int paramInt2, int paramInt3)
   {
     this.jdField_b_of_type_Int = 0;
     this.jdField_a_of_type_Int = paramInt1;
@@ -31,6 +32,7 @@ public class FilterCategory
     this.jdField_a_of_type_Boolean = paramBoolean1;
     this.jdField_b_of_type_Boolean = paramBoolean2;
     this.jdField_b_of_type_Int = paramInt2;
+    this.c = paramInt3;
   }
   
   public FilterCategory(Parcel paramParcel)
@@ -52,6 +54,7 @@ public class FilterCategory
     this.jdField_a_of_type_Int = paramJSONObject.optInt("categoryId");
     this.jdField_b_of_type_Boolean = "1".equals(paramJSONObject.optString("random_position", "0"));
     this.jdField_b_of_type_Int = paramJSONObject.optInt("hide_mask", 0);
+    this.c = paramJSONObject.optInt("source_type", 0);
     Object localObject1 = null;
     int i;
     boolean bool;
@@ -62,7 +65,7 @@ public class FilterCategory
       bool = paramJSONObject.optBoolean("needRedDot");
       localObject2 = (QIMRedDotConfig.CategoryRedConfig)paramQIMRedDotConfig.categories.get(Integer.valueOf(this.jdField_a_of_type_Int));
       if (localObject2 == null) {
-        break label370;
+        break label395;
       }
       localObject1 = localObject2;
       if (((QIMRedDotConfig.CategoryRedConfig)localObject2).version != i)
@@ -85,20 +88,22 @@ public class FilterCategory
       {
         JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
         QIMFilterCategoryItem localQIMFilterCategoryItem = new QIMFilterCategoryItem();
-        localQIMFilterCategoryItem.jdField_c_of_type_JavaLangString = localJSONObject.optString("iconUrl");
+        localQIMFilterCategoryItem.jdField_d_of_type_JavaLangString = localJSONObject.optString("iconUrl");
         localQIMFilterCategoryItem.jdField_b_of_type_JavaLangString = localJSONObject.optString("name");
-        localQIMFilterCategoryItem.f = localJSONObject.optString("camera");
+        localQIMFilterCategoryItem.g = localJSONObject.optString("camera");
         localQIMFilterCategoryItem.jdField_a_of_type_JavaLangString = localJSONObject.optString("id");
-        localQIMFilterCategoryItem.e = localJSONObject.optString("type_combo");
+        localQIMFilterCategoryItem.f = localJSONObject.optString("type_combo");
         localQIMFilterCategoryItem.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-        localQIMFilterCategoryItem.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-        localQIMFilterCategoryItem.g = localJSONObject.optString("jump_app");
+        localQIMFilterCategoryItem.e = this.jdField_a_of_type_JavaLangString;
+        localQIMFilterCategoryItem.jdField_b_of_type_Int = this.c;
+        localQIMFilterCategoryItem.h = localJSONObject.optString("jump_app");
         JSONArray localJSONArray = localJSONObject.optJSONArray("filters");
+        label395:
         if (localJSONArray != null)
         {
           int j = 0;
           int m = localJSONArray.length();
-          label317:
+          label342:
           if (j < m)
           {
             Object localObject3 = localJSONArray.getJSONObject(j);
@@ -109,8 +114,7 @@ public class FilterCategory
             for (;;)
             {
               j += 1;
-              break label317;
-              label370:
+              break label342;
               localObject1 = new QIMRedDotConfig.CategoryRedConfig();
               ((QIMRedDotConfig.CategoryRedConfig)localObject1).categoryId = this.jdField_a_of_type_Int;
               ((QIMRedDotConfig.CategoryRedConfig)localObject1).version = i;
@@ -125,9 +129,10 @@ public class FilterCategory
         }
         localQIMFilterCategoryItem.jdField_a_of_type_OrgJsonJSONArray = localJSONObject.optJSONArray("pasters");
         localQIMFilterCategoryItem.jdField_b_of_type_OrgJsonJSONArray = localJSONObject.optJSONArray("musics");
-        localQIMFilterCategoryItem.jdField_c_of_type_OrgJsonJSONArray = localJSONObject.optJSONArray("ufaces");
+        localQIMFilterCategoryItem.c = localJSONObject.optJSONArray("ufaces");
         localQIMFilterCategoryItem.jdField_d_of_type_OrgJsonJSONArray = localJSONObject.optJSONArray("texts");
-        if (((localQIMFilterCategoryItem.jdField_a_of_type_OrgJsonJSONArray == null) || (localQIMFilterCategoryItem.jdField_a_of_type_OrgJsonJSONArray.length() == 0)) && ((localQIMFilterCategoryItem.jdField_b_of_type_OrgJsonJSONArray == null) || (localQIMFilterCategoryItem.jdField_b_of_type_OrgJsonJSONArray.length() == 0)) && ((localQIMFilterCategoryItem.jdField_c_of_type_OrgJsonJSONArray == null) || (localQIMFilterCategoryItem.jdField_c_of_type_OrgJsonJSONArray.length() == 0))) {
+        localQIMFilterCategoryItem.i = localJSONObject.optString("desc", "");
+        if (((localQIMFilterCategoryItem.jdField_a_of_type_OrgJsonJSONArray == null) || (localQIMFilterCategoryItem.jdField_a_of_type_OrgJsonJSONArray.length() == 0)) && ((localQIMFilterCategoryItem.jdField_b_of_type_OrgJsonJSONArray == null) || (localQIMFilterCategoryItem.jdField_b_of_type_OrgJsonJSONArray.length() == 0)) && ((localQIMFilterCategoryItem.c == null) || (localQIMFilterCategoryItem.c.length() == 0))) {
           localQIMFilterCategoryItem.jdField_a_of_type_Boolean = false;
         }
         for (;;)

@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.activity.photo.SendWebPicActivity;
-import com.tencent.util.MqqWeakReferenceHandler;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class xeo
-  implements Runnable
+class xeo
+  implements View.OnClickListener
 {
-  public xeo(SendWebPicActivity paramSendWebPicActivity, String paramString) {}
+  xeo(xem paramxem, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    SendWebPicActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendWebPicActivity).sendEmptyMessage(1002);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSendWebPicActivity.c(this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Xem, 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     xeo
  * JD-Core Version:    0.7.0.1
  */

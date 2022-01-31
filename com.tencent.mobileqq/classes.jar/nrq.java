@@ -1,19 +1,45 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibilityDialog;
-import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class nrq
-  implements ViewPager.OnPageChangeListener
+class nrq
+  implements URLDrawable.URLDrawableListener
 {
-  public nrq(MyVideoVisibilityDialog paramMyVideoVisibilityDialog) {}
+  nrq(nrp paramnrp, String paramString) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    this.a.a.setSelectedTab(paramInt, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadCanceled:" + this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadFialed:" + this.jdField_a_of_type_JavaLangString);
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadProgressed");
+    }
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadSuccessed:" + this.jdField_a_of_type_JavaLangString);
+    }
+    if (paramURLDrawable != null)
+    {
+      nrp.a(this.jdField_a_of_type_Nrp, new nrn(paramURLDrawable.getCurrDrawable(), nrp.a(this.jdField_a_of_type_Nrp), nrp.b(this.jdField_a_of_type_Nrp) - (nrp.c(this.jdField_a_of_type_Nrp) + nrp.d(this.jdField_a_of_type_Nrp))));
+      nrp.a(this.jdField_a_of_type_Nrp).setImageDrawable(nrp.a(this.jdField_a_of_type_Nrp));
+      nrp.a(this.jdField_a_of_type_Nrp, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

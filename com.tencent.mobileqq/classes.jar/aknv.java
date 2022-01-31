@@ -1,21 +1,42 @@
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.ThreadPoolExecutor.CallerRunsPolicy;
-import java.util.concurrent.TimeUnit;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aknv
-  extends ThreadPoolExecutor
+  extends axxg
 {
-  private static int a;
+  akns jdField_a_of_type_Akns;
+  aknu jdField_a_of_type_Aknu;
   
-  public aknv(int paramInt, long paramLong)
+  public aknv(QQAppInterface paramQQAppInterface, aknu paramaknu, akns paramakns)
   {
-    super(paramInt, 2147483647, paramLong, TimeUnit.SECONDS, new LinkedBlockingQueue(), new aknw(), new ThreadPoolExecutor.CallerRunsPolicy());
+    super(paramQQAppInterface, paramaknu.b);
+    this.jdField_a_of_type_Aknu = paramaknu;
+    this.jdField_a_of_type_Akns = paramakns;
+  }
+  
+  protected void realCancel()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArResourceDownload", 2, "DownloadTask realCancel");
+    }
+  }
+  
+  protected void realStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_ArResourceDownload", 2, "DownloadTask realStart");
+    }
+    akns.a(this.jdField_a_of_type_Akns, this.jdField_a_of_type_Aknu);
+  }
+  
+  public String toString()
+  {
+    return "[DownloadTask] mInfo=" + this.jdField_a_of_type_Aknu + ", mDownloader=" + this.jdField_a_of_type_Akns;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aknv
  * JD-Core Version:    0.7.0.1
  */

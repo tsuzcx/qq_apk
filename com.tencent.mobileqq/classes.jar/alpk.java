@@ -1,38 +1,21 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.ControlPolicyUtil;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
-import com.tencent.tmassistantsdk.internal.logreport.OuterCallReportModel;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
-public final class alpk
-  implements Runnable
+public class alpk
+  implements View.OnClickListener
 {
-  public void run()
+  public alpk(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  
+  public void onClick(View paramView)
   {
-    long l = System.currentTimeMillis();
-    if (MyAppApi.h())
-    {
-      if (TMAssistantCallYYB_V2.getInstance().getIPCInterface() != null) {
-        break label70;
-      }
-      LogUtility.b("TAMST_WAKE", "getIPCInterface() == null");
-      OuterCallReportModel localOuterCallReportModel = MyAppApi.a();
-      MyAppApi.a(localOuterCallReportModel);
-      MyAppApi.b(localOuterCallReportModel);
-      ControlPolicyUtil.b();
-    }
-    for (;;)
-    {
-      LogUtility.c("TAMST_WAKE", "costTime = " + (System.currentTimeMillis() - l));
-      return;
-      label70:
-      LogUtility.b("TAMST_WAKE", "don't need tmast wake");
-    }
+    paramView = (alpm)paramView.getTag();
+    this.a.a(paramView.jdField_a_of_type_JavaLangString, paramView.b, paramView.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     alpk
  * JD-Core Version:    0.7.0.1
  */

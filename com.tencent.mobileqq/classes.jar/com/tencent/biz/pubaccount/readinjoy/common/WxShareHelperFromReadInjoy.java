@@ -1,18 +1,20 @@
 package com.tencent.biz.pubaccount.readinjoy.common;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Matrix;
+import android.net.Uri;
 import android.text.TextUtils;
-import com.tencent.biz.common.util.ImageUtil;
-import com.tencent.biz.qrcode.util.QRUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
+import com.tencent.mm.opensdk.modelmsg.ShowMessageFromWX.Req;
 import com.tencent.mm.opensdk.modelmsg.WXImageObject;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage.IMediaObject;
@@ -21,9 +23,23 @@ import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import mpo;
+import mqq.util.WeakReference;
+import ndn;
+import ocu;
+import org.json.JSONException;
+import org.json.JSONObject;
+import vvp;
 
 public class WxShareHelperFromReadInjoy
   extends BroadcastReceiver
@@ -32,7 +48,10 @@ public class WxShareHelperFromReadInjoy
   private static WxShareHelperFromReadInjoy jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonWxShareHelperFromReadInjoy;
   private static byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
   private IWXAPI jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI = WXAPIFactory.createWXAPI(BaseApplicationImpl.getApplication(), "wxeaef4303c20f3dea", true);
-  private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+  private Long jdField_a_of_type_JavaLangLong = Long.valueOf(0L);
+  private String jdField_a_of_type_JavaLangString = "";
+  private ArrayList<ocu> jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+  private WeakReference<Activity> jdField_a_of_type_MqqUtilWeakReference;
   
   private WxShareHelperFromReadInjoy()
   {
@@ -52,6 +71,36 @@ public class WxShareHelperFromReadInjoy
     }
   }
   
+  private void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      QLog.e("WxShareHelperFromReadInjoy", 2, "handleWXStartReport error, url is empty ");
+    }
+    Object localObject;
+    do
+    {
+      return;
+      localObject = Uri.parse(paramString);
+      paramString = ((Uri)localObject).getQueryParameter("from_source");
+      localObject = ((Uri)localObject).getQueryParameter("from_rowkey");
+      if (QLog.isColorLevel()) {
+        QLog.i("WxShareHelperFromReadInjoy", 2, "handleWXStartReport fromSource = " + paramString + " fromRowkey = " + (String)localObject);
+      }
+    } while (TextUtils.isEmpty(paramString));
+    JSONObject localJSONObject = new JSONObject();
+    try
+    {
+      localJSONObject.put("from_source", paramString);
+      localJSONObject.put("from_rowkey", localObject);
+      ndn.a(null, "CliOper", "", "", "0X800A7BF", "0X800A7BF", 0, 0, "", "", "", localJSONObject.toString(), false);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
   public static byte[] a(Bitmap paramBitmap, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (paramBitmap == null)
@@ -66,7 +115,7 @@ public class WxShareHelperFromReadInjoy
     if (paramBoolean2)
     {
       Bitmap localBitmap = Bitmap.createBitmap((Bitmap)localObject2, 0, 0, 100, 100);
-      localObject1 = ImageUtil.a(localBitmap);
+      localObject1 = mpo.a(localBitmap);
       localBitmap.recycle();
     }
     for (;;)
@@ -78,8 +127,28 @@ public class WxShareHelperFromReadInjoy
       }
       paramBitmap.recycle();
       return localObject1;
-      localObject1 = ImageUtil.a((Bitmap)localObject2);
+      localObject1 = mpo.a((Bitmap)localObject2);
     }
+  }
+  
+  private static byte[] b(Bitmap paramBitmap)
+  {
+    if (paramBitmap == null)
+    {
+      QLog.e("WxShareHelperFromReadInjoy", 1, "[bitmap2Bytes] bitmap is null.");
+      return null;
+    }
+    int i = 100;
+    Object localObject = new ByteArrayOutputStream();
+    paramBitmap.compress(Bitmap.CompressFormat.JPEG, 100, (OutputStream)localObject);
+    for (localObject = ((ByteArrayOutputStream)localObject).toByteArray(); (localObject.length >= 131072) && (i > 0); localObject = ((ByteArrayOutputStream)localObject).toByteArray())
+    {
+      i -= 10;
+      localObject = new ByteArrayOutputStream();
+      paramBitmap.compress(Bitmap.CompressFormat.JPEG, i, (OutputStream)localObject);
+    }
+    QLog.i("WxShareHelperFromReadInjoy", 1, "[bitmap2Bytes] length = " + localObject.length + ", quality = " + i);
+    return localObject;
   }
   
   public void a()
@@ -87,14 +156,18 @@ public class WxShareHelperFromReadInjoy
     this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.registerApp("wxeaef4303c20f3dea");
   }
   
-  public void a(WxShareHelperFromReadInjoy.WXShareHelperFromReadInjoyListener paramWXShareHelperFromReadInjoyListener)
+  public void a(Activity paramActivity, Intent paramIntent)
   {
-    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    if (QLog.isColorLevel()) {
+      QLog.i("WxShareHelperFromReadInjoy", 2, "handleWXEntryActivityIntent");
+    }
+    if (this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI != null)
     {
-      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramWXShareHelperFromReadInjoyListener)) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(paramWXShareHelperFromReadInjoyListener);
+      if (QLog.isColorLevel()) {
+        QLog.i("WxShareHelperFromReadInjoy", 2, "handleWXEntryActivityIntent api != null");
       }
-      return;
+      this.jdField_a_of_type_MqqUtilWeakReference = new WeakReference(paramActivity);
+      this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.handleIntent(paramIntent, this);
     }
   }
   
@@ -102,7 +175,7 @@ public class WxShareHelperFromReadInjoy
   {
     if (TextUtils.isEmpty(paramString))
     {
-      QRUtils.a(1, 2131430006);
+      vvp.a(1, 2131631056);
       return;
     }
     WXImageObject localWXImageObject = new WXImageObject();
@@ -134,10 +207,10 @@ public class WxShareHelperFromReadInjoy
     {
       paramString2 = new StringBuilder().append("shareWebPage.transaction: ").append(paramString1).append(" title:").append(paramString2).append(" description:").append(paramString3).append(" webPageUrl:").append(paramString4).append(" scene:");
       if (paramInt != 0) {
-        break label164;
+        break label171;
       }
     }
-    label164:
+    label171:
     for (paramString1 = "Friend";; paramString1 = "FriendCircle")
     {
       QLog.i("WxShareHelperFromReadInjoy", 2, paramString1 + " reqResult:" + bool);
@@ -145,12 +218,25 @@ public class WxShareHelperFromReadInjoy
     }
   }
   
-  public void b(WxShareHelperFromReadInjoy.WXShareHelperFromReadInjoyListener paramWXShareHelperFromReadInjoyListener)
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap, String paramString3, String paramString4, String paramString5)
+  {
+    c(paramString1, paramString2, paramBitmap, paramString3, paramString4, "/pages/index/index?share=1&share_type=2&channel_id=10&rowkey=" + paramString5 + "&title=" + URLEncoder.encode(paramString2) + "&timeTips=" + new SimpleDateFormat("MM-dd").format(new Date()));
+  }
+  
+  public void a(String paramString1, String paramString2, Bitmap paramBitmap, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    ThreadManagerV2.excute(new WxShareHelperFromReadInjoy.1(this, paramString4, paramString6, paramString5, paramString2, paramString3, paramBitmap, paramString1), 16, null, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("WxShareHelperFromReadInjoy", 2, "shareToMiniProgramWithPathAndId, title = " + paramString2 + ", description = " + paramString3 + ", path = " + paramString5 + ", webPageUrl = " + paramString4 + ", id = " + paramString6);
+    }
+  }
+  
+  public void a(ocu paramocu)
   {
     synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-      if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramWXShareHelperFromReadInjoyListener)) {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(paramWXShareHelperFromReadInjoyListener);
+      if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramocu)) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramocu);
       }
       return;
     }
@@ -174,10 +260,10 @@ public class WxShareHelperFromReadInjoy
     {
       paramString2 = new StringBuilder().append("shareVideo.transaction: ").append(paramString1).append(" title:").append(paramString2).append(" description:").append(paramString3).append(" webPageUrl:").append(paramString4).append(" scene:");
       if (paramInt != 0) {
-        break label180;
+        break label187;
       }
     }
-    label180:
+    label187:
     for (paramString1 = "Friend";; paramString1 = "FriendCircle")
     {
       QLog.i("WxShareHelperFromReadInjoy", 2, paramString1 + " reqResult:" + bool);
@@ -185,12 +271,74 @@ public class WxShareHelperFromReadInjoy
     }
   }
   
+  public void b(String paramString1, String paramString2, Bitmap paramBitmap, String paramString3, String paramString4, String paramString5)
+  {
+    c(paramString1, paramString2, paramBitmap, paramString3, paramString4, "/pages/index/index?share=1&share_type=1&channel_id=10&rowkey=" + paramString5);
+  }
+  
+  public void b(ocu paramocu)
+  {
+    synchronized (this.jdField_a_of_type_JavaUtilArrayList)
+    {
+      if (this.jdField_a_of_type_JavaUtilArrayList.contains(paramocu)) {
+        this.jdField_a_of_type_JavaUtilArrayList.remove(paramocu);
+      }
+      return;
+    }
+  }
+  
+  public void c(String paramString1, String paramString2, Bitmap paramBitmap, String paramString3, String paramString4, String paramString5)
+  {
+    a(paramString1, paramString2, paramBitmap, paramString3, paramString4, paramString5, "gh_eaa1f0b1626b");
+  }
+  
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     this.jdField_a_of_type_ComTencentMmOpensdkOpenapiIWXAPI.handleIntent(paramIntent, this);
   }
   
-  public void onReq(BaseReq paramBaseReq) {}
+  public void onReq(BaseReq paramBaseReq)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("WxShareHelperFromReadInjoy", 2, "WXShareHelper.onReq:" + paramBaseReq.getType());
+    }
+    Activity localActivity;
+    if (this.jdField_a_of_type_MqqUtilWeakReference != null)
+    {
+      localActivity = (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();
+      if (localActivity != null) {
+        break label98;
+      }
+      QLog.e("WxShareHelperFromReadInjoy", 2, "WXShareHelper.onReq:" + paramBaseReq.getType() + " activity == null.");
+    }
+    label98:
+    Long localLong;
+    do
+    {
+      do
+      {
+        return;
+        localActivity = null;
+        break;
+        switch (paramBaseReq.getType())
+        {
+        default: 
+          return;
+        }
+      } while (!(paramBaseReq instanceof ShowMessageFromWX.Req));
+      paramBaseReq = ((ShowMessageFromWX.Req)paramBaseReq).message.messageExt;
+      if (QLog.isColorLevel()) {
+        QLog.i("WxShareHelperFromReadInjoy", 2, "WXShareHelper.onReq: url = " + paramBaseReq);
+      }
+      localLong = Long.valueOf(System.currentTimeMillis());
+    } while ((TextUtils.isEmpty(paramBaseReq)) || ((paramBaseReq.equals(this.jdField_a_of_type_JavaLangString)) && (localLong.longValue() - this.jdField_a_of_type_JavaLangLong.longValue() < 300L)));
+    Intent localIntent = new Intent(localActivity, JumpActivity.class);
+    localIntent.setData(Uri.parse(paramBaseReq));
+    localActivity.startActivity(localIntent);
+    a(paramBaseReq);
+    this.jdField_a_of_type_JavaLangString = paramBaseReq;
+    this.jdField_a_of_type_JavaLangLong = localLong;
+  }
   
   public void onResp(BaseResp paramBaseResp)
   {
@@ -204,7 +352,7 @@ public class WxShareHelperFromReadInjoy
         int i = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
         while (i >= 0)
         {
-          ((WxShareHelperFromReadInjoy.WXShareHelperFromReadInjoyListener)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramBaseResp);
+          ((ocu)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramBaseResp);
           i -= 1;
         }
         return;
@@ -219,7 +367,7 @@ public class WxShareHelperFromReadInjoy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy
  * JD-Core Version:    0.7.0.1
  */

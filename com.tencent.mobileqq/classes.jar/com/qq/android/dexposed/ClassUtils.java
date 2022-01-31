@@ -68,25 +68,22 @@ public class ClassUtils
   
   public static List<Class<?>> convertClassNamesToClasses(List<String> paramList)
   {
-    if (paramList == null)
-    {
-      paramList = null;
-      return paramList;
+    if (paramList == null) {
+      return null;
     }
     ArrayList localArrayList = new ArrayList(paramList.size());
-    Iterator localIterator = paramList.iterator();
+    paramList = paramList.iterator();
     for (;;)
     {
-      paramList = localArrayList;
-      if (!localIterator.hasNext()) {
-        break;
+      if (!paramList.hasNext()) {
+        return localArrayList;
       }
-      paramList = (String)localIterator.next();
+      String str = (String)paramList.next();
       try
       {
-        localArrayList.add(Class.forName(paramList));
+        localArrayList.add(Class.forName(str));
       }
-      catch (Exception paramList)
+      catch (Exception localException)
       {
         localArrayList.add(null);
       }
@@ -95,24 +92,21 @@ public class ClassUtils
   
   public static List<String> convertClassesToClassNames(List<Class<?>> paramList)
   {
-    if (paramList == null)
-    {
-      paramList = null;
-      return paramList;
+    if (paramList == null) {
+      return null;
     }
     ArrayList localArrayList = new ArrayList(paramList.size());
-    Iterator localIterator = paramList.iterator();
+    paramList = paramList.iterator();
     for (;;)
     {
-      paramList = localArrayList;
-      if (!localIterator.hasNext()) {
-        break;
+      if (!paramList.hasNext()) {
+        return localArrayList;
       }
-      paramList = (Class)localIterator.next();
-      if (paramList == null) {
+      Class localClass = (Class)paramList.next();
+      if (localClass == null) {
         localArrayList.add(null);
       } else {
-        localArrayList.add(paramList.getName());
+        localArrayList.add(localClass.getName());
       }
     }
   }
@@ -201,13 +195,11 @@ public class ClassUtils
   }
   
   public static Class<?> getClass(ClassLoader paramClassLoader, String paramString)
-    throws ClassNotFoundException
   {
     return getClass(paramClassLoader, paramString, true);
   }
   
   public static Class<?> getClass(ClassLoader paramClassLoader, String paramString, boolean paramBoolean)
-    throws ClassNotFoundException
   {
     try
     {
@@ -233,22 +225,18 @@ public class ClassUtils
   }
   
   public static Class<?> getClass(String paramString)
-    throws ClassNotFoundException
   {
     return getClass(paramString, true);
   }
   
   public static Class<?> getClass(String paramString, boolean paramBoolean)
-    throws ClassNotFoundException
   {
-    ClassLoader localClassLoader = Thread.currentThread().getContextClassLoader();
-    if (localClassLoader == null) {
-      localClassLoader = ClassUtils.class.getClassLoader();
+    ClassLoader localClassLoader2 = Thread.currentThread().getContextClassLoader();
+    ClassLoader localClassLoader1 = localClassLoader2;
+    if (localClassLoader2 == null) {
+      localClassLoader1 = ClassUtils.class.getClassLoader();
     }
-    for (;;)
-    {
-      return getClass(localClassLoader, paramString, paramBoolean);
-    }
+    return getClass(localClassLoader1, paramString, paramBoolean);
   }
   
   public static String getPackageName(Class<?> paramClass)
@@ -327,7 +315,7 @@ public class ClassUtils
     if (paramString.startsWith("["))
     {
       if (paramString.charAt(0) == '[') {
-        break label181;
+        break label179;
       }
       str = paramString;
       if (paramString.charAt(0) == 'L')
@@ -338,26 +326,26 @@ public class ClassUtils
         }
       }
     }
-    paramString = str;
-    if (reverseAbbreviationMap.containsKey(str)) {
-      paramString = (String)reverseAbbreviationMap.get(str);
-    }
-    int j = paramString.lastIndexOf('.');
-    if (j == -1) {}
-    for (;;)
+    if (reverseAbbreviationMap.containsKey(str)) {}
+    for (paramString = (String)reverseAbbreviationMap.get(str);; paramString = str)
     {
-      i = paramString.indexOf('$', i);
-      str = paramString.substring(j + 1);
-      paramString = str;
-      if (i != -1) {
-        paramString = str.replace('$', '.');
+      int j = paramString.lastIndexOf('.');
+      if (j == -1) {}
+      for (;;)
+      {
+        i = paramString.indexOf('$', i);
+        str = paramString.substring(j + 1);
+        paramString = str;
+        if (i != -1) {
+          paramString = str.replace('$', '.');
+        }
+        return paramString + localStringBuilder;
+        label179:
+        paramString = paramString.substring(1);
+        localStringBuilder.append("[]");
+        break;
+        i = j + 1;
       }
-      return paramString + localStringBuilder;
-      label181:
-      paramString = paramString.substring(1);
-      localStringBuilder.append("[]");
-      break;
-      i = j + 1;
     }
   }
   
@@ -416,6 +404,7 @@ public class ClassUtils
   
   public static Class<?>[] toClass(Object... paramVarArgs)
   {
+    int i = 0;
     if (paramVarArgs == null) {
       return null;
     }
@@ -423,7 +412,6 @@ public class ClassUtils
       return new Class[0];
     }
     Class[] arrayOfClass = new Class[paramVarArgs.length];
-    int i = 0;
     if (i >= paramVarArgs.length) {
       return arrayOfClass;
     }

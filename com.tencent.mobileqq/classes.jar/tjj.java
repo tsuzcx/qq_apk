@@ -1,34 +1,18 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.activity.qwallet.QWalletPushManager;
+import java.util.List;
 
-public class tjj
-  implements View.OnClickListener
+class tjj
+  implements udj
 {
-  public tjj(PayBridgeActivity paramPayBridgeActivity, Dialog paramDialog) {}
+  tjj(tji paramtji, List paramList) {}
   
-  public void onClick(View paramView)
+  public void a(udk paramudk)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131364063: 
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
-      paramView = QWalletPushManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPayBridgeActivity.a);
-      PayBridgeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPayBridgeActivity, paramView);
-      return;
-    }
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
-    QWalletPushManager.b();
-    this.jdField_a_of_type_ComTencentMobileqqActivityPayBridgeActivity.finish();
+    tji.a(this.jdField_a_of_type_Tji, this.jdField_a_of_type_JavaUtilList, paramudk);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tjj
  * JD-Core Version:    0.7.0.1
  */

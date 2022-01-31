@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class hummer_commelem$MsgElemInfo_servtype4
-  extends MessageMicro
+  extends MessageMicro<MsgElemInfo_servtype4>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 34 }, new String[] { "uint32_imsg_type", "st_story_aio_obj_msg" }, new Object[] { Integer.valueOf(0), null }, MsgElemInfo_servtype4.class);
   public hummer_commelem.StoryAioObjMsg st_story_aio_obj_msg = new hummer_commelem.StoryAioObjMsg();

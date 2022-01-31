@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class DynamicTabSearch$SubHotWord
-  extends MessageMicro
+  extends MessageMicro<SubHotWord>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField search_word = PBField.initBytes(ByteStringMicro.EMPTY);

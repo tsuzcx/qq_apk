@@ -1,105 +1,25 @@
-import android.os.Build.VERSION;
 import android.os.Bundle;
-import com.tencent.common.config.AppSetting;
-import com.tencent.ims.ClientInfoB.EnvParamPacket;
-import com.tencent.ims.ClientInfoB.ReportDetectResultPacket;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.utils.SecUtil;
-import com.tencent.mqp.app.sec.SecClientInfoTaskEx;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import java.io.File;
-import java.security.MessageDigest;
-import mqq.app.MobileQQ;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
 
-public class algy
-  implements Runnable
+class algy
+  extends batl
 {
-  public algy(SecClientInfoTaskEx paramSecClientInfoTaskEx) {}
+  algy(algw paramalgw, String paramString, int paramInt) {}
   
-  public void run()
+  public void onDone(batm parambatm)
   {
-    Object localObject1 = null;
-    for (;;)
-    {
-      QQAppInterface localQQAppInterface;
-      String str;
-      ClientInfoB.ReportDetectResultPacket localReportDetectResultPacket;
-      Object localObject3;
-      try
-      {
-        localQQAppInterface = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
-        if (localQQAppInterface == null) {
-          return;
-        }
-        str = "" + SecClientInfoTaskEx.a(this.a);
-        localReportDetectResultPacket = new ClientInfoB.ReportDetectResultPacket();
-        localObject3 = new ClientInfoB.EnvParamPacket();
-        ((ClientInfoB.EnvParamPacket)localObject3).u32_platform.set(1);
-        ((ClientInfoB.EnvParamPacket)localObject3).str_sysversion.set(Build.VERSION.RELEASE);
-        ((ClientInfoB.EnvParamPacket)localObject3).str_qqversion.set("7.6.8.3615");
-        ((ClientInfoB.EnvParamPacket)localObject3).u32_appid.set(AppSetting.a);
-        ((ClientInfoB.EnvParamPacket)localObject3).bytes_guid.set(ByteStringMicro.copyFrom(NetConnInfoCenter.GUID));
-        ((ClientInfoB.EnvParamPacket)localObject3).str_uin.set(str);
-        localReportDetectResultPacket.uint32_cmd.set(1);
-        localReportDetectResultPacket.envParam.set((MessageMicro)localObject3);
-        if (SecClientInfoTaskEx.a(this.a) == 1)
-        {
-          localObject1 = SecClientInfoTaskEx.a(SecClientInfoTaskEx.b(this.a));
-          if (localObject1 != null) {
-            localReportDetectResultPacket.bytes_buffer.set(ByteStringMicro.copyFrom((byte[])localObject1));
-          }
-          localObject1 = new ToServiceMsg("mobileqq.service", str, "ClientInfoB.SecReport");
-          if (localObject1 == null) {
-            break;
-          }
-          ((ToServiceMsg)localObject1).putWupBuffer(localReportDetectResultPacket.toByteArray());
-          ((ToServiceMsg)localObject1).extraData.putBoolean("req_pb_protocol_flag", true);
-          ((ToServiceMsg)localObject1).setNeedCallback(false);
-          localQQAppInterface.sendToService((ToServiceMsg)localObject1);
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        return;
-      }
-      if (SecClientInfoTaskEx.a(this.a) == 2)
-      {
-        if (!SecClientInfoTaskEx.a())
-        {
-          localObject2 = localQQAppInterface.getApplication().getFilesDir().getParent() + "/lib/libhobi.so";
-          localObject3 = new File((String)localObject2);
-          if ((localObject3 != null) && (((File)localObject3).exists())) {
-            SecClientInfoTaskEx.a(SecUtil.getFileMd5((String)localObject2));
-          }
-          SecClientInfoTaskEx.a(true);
-        }
-        if ((SecClientInfoTaskEx.a() != null) && (SecClientInfoTaskEx.a().length() > 0)) {
-          localReportDetectResultPacket.str_safemd5.set(SecClientInfoTaskEx.a());
-        }
-        Object localObject2 = str + SecClientInfoTaskEx.b(this.a);
-        localObject3 = MessageDigest.getInstance("MD5");
-        ((MessageDigest)localObject3).update(((String)localObject2).getBytes());
-        localReportDetectResultPacket.bytes_buffer.set(ByteStringMicro.copyFrom(((MessageDigest)localObject3).digest()));
-        localObject2 = SecClientInfoTaskEx.a(SecClientInfoTaskEx.b(this.a) >> 1 & 0x7FFFFFFF);
-        if (localObject2 != null) {
-          localReportDetectResultPacket.bytes_buffer2.set(ByteStringMicro.copyFrom((byte[])localObject2));
-        }
-        localObject2 = new ToServiceMsg("mobileqq.service", str, "ClientInfoD.SecReport");
-      }
-    }
+    super.onDone(parambatm);
+    QLog.d("ArkApp.ChooseImageIPCModule", 1, String.format("ArkMultiProc.download finish, url=%s, err=%d", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(parambatm.jdField_a_of_type_Int) }));
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("code", parambatm.jdField_a_of_type_Int);
+    parambatm = EIPCResult.createResult(0, localBundle);
+    this.jdField_a_of_type_Algw.callbackResult(this.jdField_a_of_type_Int, parambatm);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     algy
  * JD-Core Version:    0.7.0.1
  */

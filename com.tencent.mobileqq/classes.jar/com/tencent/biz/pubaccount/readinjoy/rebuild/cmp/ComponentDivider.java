@@ -5,15 +5,19 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.ComponentView;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.Utils;
+import opw;
+import pey;
+import pfh;
+import pjg;
+import pmu;
 
 public class ComponentDivider
   extends View
-  implements ComponentView
+  implements pey
 {
-  CmpCtxt a;
+  pjg a;
   
   public ComponentDivider(Context paramContext)
   {
@@ -42,16 +46,16 @@ public class ComponentDivider
   private void a(Context paramContext, Object paramObject)
   {
     b(paramContext);
-    if ((paramObject instanceof IReadInJoyModel))
+    if ((paramObject instanceof opw))
     {
-      this.a.a((IReadInJoyModel)paramObject);
+      this.a.a((opw)paramObject);
       b();
     }
   }
   
   private void b(Context paramContext)
   {
-    this.a = new CmpCtxt();
+    this.a = new pjg();
     a(paramContext);
     a();
   }
@@ -60,19 +64,21 @@ public class ComponentDivider
   
   public void a(Context paramContext)
   {
-    setBackgroundColor(getContext().getResources().getColor(2131493479));
-  }
-  
-  public void a(FeedItemCell.CellListener paramCellListener)
-  {
-    this.a.a(paramCellListener);
+    setBackgroundColor(getContext().getResources().getColor(2131101143));
   }
   
   public void a(Object paramObject)
   {
-    if ((paramObject instanceof IReadInJoyModel))
+    if ((paramObject instanceof opw))
     {
-      this.a.a((IReadInJoyModel)paramObject);
+      this.a.a((opw)paramObject);
+      if ((((opw)paramObject).a() == 53) && ((getLayoutParams() instanceof LinearLayout.LayoutParams)))
+      {
+        paramObject = (LinearLayout.LayoutParams)getLayoutParams();
+        paramObject.leftMargin = Utils.dp2px(6.0D);
+        paramObject.rightMargin = Utils.dp2px(6.0D);
+        setBackgroundColor(getContext().getResources().getColor(2131099992));
+      }
       if (this.a.a.e()) {
         setVisibility(0);
       }
@@ -84,11 +90,16 @@ public class ComponentDivider
     setVisibility(8);
   }
   
+  public void a(pfh parampfh)
+  {
+    this.a.a(parampfh);
+  }
+  
   public void b()
   {
-    IReadInJoyModel localIReadInJoyModel = this.a.a;
+    opw localopw = this.a.a;
     ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -2);
-    UtilsForComponent.a(getContext(), localIReadInJoyModel, localLayoutParams);
+    pmu.a(getContext(), localopw, localLayoutParams);
     setLayoutParams(localLayoutParams);
   }
 }

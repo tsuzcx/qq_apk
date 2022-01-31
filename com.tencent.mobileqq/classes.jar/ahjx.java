@@ -1,36 +1,43 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ptt.PttBuffer;
-import com.tencent.mobileqq.receipt.ReceiptMsgManager;
-import com.tencent.mobileqq.utils.QQRecorder;
-import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Handler;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment;
+import com.tencent.mobileqq.activity.richmedia.QzoneSlideShowPreparingFragment.4.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import mqq.os.MqqHandler;
 
 public class ahjx
-  implements Runnable
+  implements vhi
 {
-  public ahjx(ReceiptMsgManager paramReceiptMsgManager, int paramInt1, int paramInt2, QQRecorder.RecorderParam paramRecorderParam, String paramString, int paramInt3, boolean paramBoolean, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
+  public ahjx(QzoneSlideShowPreparingFragment paramQzoneSlideShowPreparingFragment) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager.a.voiceLength = QQRecorder.a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager.a.voiceChangeFlag = this.b;
-    this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager.a.voiceType = this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam.c;
-    this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager.a.fullLocalPath = this.jdField_a_of_type_JavaLangString;
-    ArrayList localArrayList = new ArrayList(1);
-    localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager.a);
-    PttBuffer.b(this.jdField_a_of_type_JavaLangString);
-    Bundle localBundle = new Bundle();
-    localBundle.putString("ReceiptMsgManager.EXTRA_KEY_PTT_PATH", this.jdField_a_of_type_JavaLangString);
-    localBundle.putInt("ReceiptMsgManager.EXTRA_KEY_PTT_SEND_SOURCE", this.c);
-    localBundle.putBoolean("ReceiptMsgManager.EXTRA_KEY_PTT_COMPRESS_FINISHED", this.jdField_a_of_type_Boolean);
-    ReceiptMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, ReceiptMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager, 3), false, localArrayList, localBundle);
+    QLog.d(QzoneSlideShowPreparingFragment.a(), 2, "createSlideShowNew AblumListener - endMerge.");
+    QzoneSlideShowPreparingFragment.a(this.a).removeCallbacks(QzoneSlideShowPreparingFragment.a(this.a));
+    ThreadManager.getUIHandler().post(new QzoneSlideShowPreparingFragment.4.1(this));
+    if (QzoneSlideShowPreparingFragment.a(this.a) == 18) {
+      LpReportInfo_pf00064.allReport(585, 15, 8);
+    }
+    if (QzoneSlideShowPreparingFragment.a(this.a) != null)
+    {
+      Object localObject = (BitmapDrawable)QzoneSlideShowPreparingFragment.a(this.a).getDrawable();
+      if (localObject != null)
+      {
+        localObject = ((BitmapDrawable)localObject).getBitmap();
+        if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
+          ((Bitmap)localObject).recycle();
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahjx
  * JD-Core Version:    0.7.0.1
  */

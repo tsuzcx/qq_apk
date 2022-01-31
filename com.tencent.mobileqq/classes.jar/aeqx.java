@@ -1,21 +1,17 @@
-import android.util.Pair;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.model.QueryTask.Query;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessTypeActivity;
 
 public class aeqx
-  implements QueryTask.Query
+  implements DialogInterface.OnClickListener
 {
-  public aeqx(EmoticonManager paramEmoticonManager) {}
+  public aeqx(BlessTypeActivity paramBlessTypeActivity) {}
   
-  public Emoticon a(Pair paramPair)
-  {
-    return this.a.a((String)paramPair.first, (String)paramPair.second);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aeqx
  * JD-Core Version:    0.7.0.1
  */

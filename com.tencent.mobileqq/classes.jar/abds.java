@@ -1,87 +1,68 @@
+import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.ark.ArkAppPanelList.AppDetail;
-import com.tencent.ark.ArkAppPanelList.RespBody;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppManagerPanel.ArkAppPanelData;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IRequestArkAppListHandler;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBStringField;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class abds
-  implements BusinessObserver
+public class abds
+  extends ajne
 {
-  abds(abdr paramabdr) {}
+  public abds(NearbyActivity paramNearbyActivity) {}
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  protected void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    if ((paramBoolean) && (paramObject != null))
-    {
-      localObject1 = new ArkAppPanelList.RespBody();
-      try
-      {
-        ((ArkAppPanelList.RespBody)localObject1).mergeFrom((byte[])paramObject);
-        localArrayList = new ArrayList();
-        if (((ArkAppPanelList.RespBody)localObject1).apps.has())
-        {
-          paramObject = ((ArkAppPanelList.RespBody)localObject1).apps.get();
-          if ((paramObject == null) || (paramObject.size() <= 0)) {
-            break label234;
-          }
-          paramObject = paramObject.iterator();
-          while (paramObject.hasNext())
-          {
-            localObject2 = (ArkAppPanelList.AppDetail)paramObject.next();
-            if (localObject2 != null)
-            {
-              localObject1 = ((ArkAppPanelList.AppDetail)localObject2).appName.get();
-              str = ((ArkAppPanelList.AppDetail)localObject2).cnName.get();
-              localObject2 = ((ArkAppPanelList.AppDetail)localObject2).iconUrl.get();
-              if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
-              {
-                localArrayList.add(new ArkAppManagerPanel.ArkAppPanelData((String)localObject1, str, (String)localObject2));
-                continue;
-                return;
-              }
-            }
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramObject)
-      {
-        ArkAppCenter.b("ArkApp.ArkMessageServerLogic", "requestArkAppManagerPanelList mergeFrom exception=" + paramObject);
-        if (this.a.a != null) {
-          this.a.a.b(null);
-        }
-      }
+    QLog.d("nearby.check.auth", 1, "onCheckNearbyUserAuth isSuccess=" + paramBoolean + ", checkRet=" + paramInt + ", checkMsg=" + paramString + ", isFinishing=" + this.a.isFinishing() + ", isStopHeartBeat=" + this.a.c);
+    if ((paramBoolean) && (paramInt != 0)) {
+      if (!this.a.isFinishing()) {}
     }
-    label234:
-    while (this.a.a == null)
+    while ((this.a.isFinishing()) || (this.a.c))
     {
-      ArrayList localArrayList;
       do
       {
-        for (;;)
+        return;
+        try
         {
-          Object localObject1;
-          Object localObject2;
-          String str;
-          paramObject = null;
+          bafb localbafb = babr.a(this.a, 230);
+          localbafb.setCancelable(false);
+          String str = paramString;
+          if (TextUtils.isEmpty(paramString)) {
+            str = ajjy.a(2131641309);
+          }
+          localbafb.setMessage(str);
+          localbafb.setNegativeButton(ajjy.a(2131641310), new abdt(this));
+          localbafb.show();
+          new awrb(null).a("dc00899").b("grp_lbs").c("home").d("year_pop_exp").e(this.a.a.getCurrentAccountUin()).a();
+          return;
         }
-      } while (this.a.a == null);
-      this.a.a.b(localArrayList);
+        catch (Exception paramString) {}
+      } while (!QLog.isColorLevel());
+      QLog.d("nearby.NearbyActivity", 2, "onCheckNearbyUserAuth exp:" + paramString.toString());
       return;
     }
-    this.a.a.b(null);
+    this.a.e();
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("nearby.heart_beat", 2, "onNearbyHeartBeat:isSucc=" + paramBoolean + ", cmd=" + paramString + ", interval=" + paramLong);
+    }
+    if ("OidbSvc.0xafc_1".equals(paramString))
+    {
+      if (paramBoolean) {
+        this.a.n = paramLong;
+      }
+      if (!this.a.c)
+      {
+        this.a.b.removeMessages(this.a.i);
+        this.a.b.sendEmptyMessageDelayed(this.a.i, this.a.n);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abds
  * JD-Core Version:    0.7.0.1
  */

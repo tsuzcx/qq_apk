@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.profile.like;
 
+import atyv;
+import atyw;
 import com.tencent.commonsdk.cache.QQLruCache;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -25,13 +27,13 @@ public class PraiseManager$LoadCallback
     for (;;)
     {
       WeakReference[] arrayOfWeakReference;
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.jdField_a_of_type_JavaUtilList)
+      synchronized (this.this$0.jdField_a_of_type_JavaUtilList)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.jdField_a_of_type_JavaUtilList.isEmpty()) {
+        if (this.this$0.jdField_a_of_type_JavaUtilList.isEmpty()) {
           break label186;
         }
-        arrayOfWeakReference = (WeakReference[])Array.newInstance(((WeakReference)this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.jdField_a_of_type_JavaUtilList.get(0)).getClass(), this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.jdField_a_of_type_JavaUtilList.size());
-        this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.jdField_a_of_type_JavaUtilList.toArray(arrayOfWeakReference);
+        arrayOfWeakReference = (WeakReference[])Array.newInstance(((WeakReference)this.this$0.jdField_a_of_type_JavaUtilList.get(0)).getClass(), this.this$0.jdField_a_of_type_JavaUtilList.size());
+        this.this$0.jdField_a_of_type_JavaUtilList.toArray(arrayOfWeakReference);
         if (arrayOfWeakReference == null) {
           break label185;
         }
@@ -44,7 +46,7 @@ public class PraiseManager$LoadCallback
         {
           ??? = arrayOfWeakReference[i];
           if ((??? != null) && (???.get() != null)) {
-            ((PraiseManager.OnPraiseLoadListener)???.get()).a(this.jdField_a_of_type_Int, (PraiseInfo)this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(Integer.valueOf(this.jdField_a_of_type_Int)), this.b, this.jdField_a_of_type_JavaLangString);
+            ((atyw)???.get()).a(this.jdField_a_of_type_Int, (atyv)this.this$0.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(Integer.valueOf(this.jdField_a_of_type_Int)), this.b, this.jdField_a_of_type_JavaLangString);
           }
           i += 1;
           continue;

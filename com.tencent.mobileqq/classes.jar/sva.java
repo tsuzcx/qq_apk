@@ -1,21 +1,28 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.profile.view.ProfileBaseView;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgNodeShotView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class sva
-  implements Runnable
+public class sva
+  extends QQUIEventReceiver<suo, stl>
 {
-  sva(suz paramsuz) {}
-  
-  public void run()
+  public sva(@NonNull suo paramsuo)
   {
-    if ((this.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView != null) && ((this.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView instanceof ProfileBaseView))) {
-      ((ProfileBaseView)this.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView).b(this.a.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo, true);
-    }
+    super(paramsuo);
+  }
+  
+  public void a(@NonNull suo paramsuo, @NonNull stl paramstl)
+  {
+    paramsuo.a.a.d();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return stl.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sva
  * JD-Core Version:    0.7.0.1
  */

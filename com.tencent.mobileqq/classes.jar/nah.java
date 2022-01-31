@@ -1,21 +1,13 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
 
-public final class nah
-  implements BusinessObserver
+public class nah
+  implements begy
 {
-  public nah(QQAppInterface paramQQAppInterface) {}
+  public nah(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onDismiss()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PublicAccountUtil", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    ThreadManager.getSubThreadHandler().postDelayed(new nai(this, paramBoolean, paramBundle), 10L);
+    ReadInJoyNativeAdFragment.a(this.a, false);
   }
 }
 

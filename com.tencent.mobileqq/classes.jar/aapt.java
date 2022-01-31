@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.ar.config.MainDownAni;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class aapt
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aapt(MainDownAni paramMainDownAni, aapz paramaapz, aaqg paramaaqg) {}
+  public aapt(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    MainDownAni.a(this.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni, this.jdField_a_of_type_Aapz, this.jdField_a_of_type_Aaqg);
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aapt
  * JD-Core Version:    0.7.0.1
  */

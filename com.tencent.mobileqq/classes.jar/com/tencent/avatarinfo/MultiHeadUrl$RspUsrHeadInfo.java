@@ -8,10 +8,10 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class MultiHeadUrl$RspUsrHeadInfo
-  extends MessageMicro
+  extends MessageMicro<RspUsrHeadInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34 }, new String[] { "dstUin", "dstTid", "dstOpenid", "dstHeadInfos" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), "", null }, RspUsrHeadInfo.class);
-  public final PBRepeatMessageField dstHeadInfos = PBField.initRepeatMessage(MultiHeadUrl.RspHeadInfo.class);
+  public final PBRepeatMessageField<MultiHeadUrl.RspHeadInfo> dstHeadInfos = PBField.initRepeatMessage(MultiHeadUrl.RspHeadInfo.class);
   public final PBStringField dstOpenid = PBField.initString("");
   public final PBUInt64Field dstTid = PBField.initUInt64(0L);
   public final PBUInt64Field dstUin = PBField.initUInt64(0L);

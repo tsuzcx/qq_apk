@@ -7,18 +7,18 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.ConstantState;
 import com.tencent.component.media.annotation.Public;
-import pmt;
 
 @Public
 public class ScaleDrawable
   extends DrawableContainer
 {
-  private float jdField_a_of_type_Float = 0.0F;
-  private int jdField_a_of_type_Int;
-  private Matrix jdField_a_of_type_AndroidGraphicsMatrix;
-  private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
-  private pmt jdField_a_of_type_Pmt;
-  private float b = 0.0F;
+  private static final float PIVOT_DEFAULT_VALUE = 0.0F;
+  private Matrix mDrawMatrix;
+  private float mPivotXRate = 0.0F;
+  private float mPivotYRate = 0.0F;
+  private ScaleDrawable.ScaleState mScaleState;
+  private int mScaleType;
+  private Rect mTmpRect = new Rect();
   
   @Public
   public ScaleDrawable(Drawable paramDrawable)
@@ -29,23 +29,15 @@ public class ScaleDrawable
   @Public
   public ScaleDrawable(Drawable paramDrawable, int paramInt)
   {
-    this.jdField_a_of_type_Pmt = new pmt(paramDrawable, this);
-    setConstantState(this.jdField_a_of_type_Pmt);
+    this.mScaleState = new ScaleDrawable.ScaleState(paramDrawable, this);
+    setConstantState(this.mScaleState);
     setScaleType(paramInt);
   }
   
-  private ScaleDrawable(pmt parampmt, Resources paramResources)
+  private ScaleDrawable(ScaleDrawable.ScaleState paramScaleState, Resources paramResources)
   {
-    this.jdField_a_of_type_Pmt = new pmt(parampmt, this, paramResources);
-    setConstantState(this.jdField_a_of_type_Pmt);
-  }
-  
-  private void a()
-  {
-    if (this.jdField_a_of_type_AndroidGraphicsMatrix == null) {
-      this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-    }
-    getMatrix(this.jdField_a_of_type_AndroidGraphicsMatrix, this.jdField_a_of_type_Int, getIntrinsicWidth(), getIntrinsicHeight(), getBounds().width(), getBounds().height(), this.jdField_a_of_type_Float, this.b);
+    this.mScaleState = new ScaleDrawable.ScaleState(paramScaleState, this, paramResources);
+    setConstantState(this.mScaleState);
   }
   
   public static void getMatrix(Matrix paramMatrix, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, float paramFloat1, float paramFloat2)
@@ -201,9 +193,17 @@ public class ScaleDrawable
     }
   }
   
+  private void updateDrawMatrix()
+  {
+    if (this.mDrawMatrix == null) {
+      this.mDrawMatrix = new Matrix();
+    }
+    getMatrix(this.mDrawMatrix, this.mScaleType, getIntrinsicWidth(), getIntrinsicHeight(), getBounds().width(), getBounds().height(), this.mPivotXRate, this.mPivotYRate);
+  }
+  
   public void draw(Canvas paramCanvas)
   {
-    Matrix localMatrix = this.jdField_a_of_type_AndroidGraphicsMatrix;
+    Matrix localMatrix = this.mDrawMatrix;
     if ((localMatrix == null) || (localMatrix.isIdentity()))
     {
       super.draw(paramCanvas);
@@ -218,17 +218,17 @@ public class ScaleDrawable
   
   public Drawable.ConstantState getConstantState()
   {
-    if (this.jdField_a_of_type_Pmt.a())
+    if (this.mScaleState.canConstantState())
     {
-      this.jdField_a_of_type_Pmt.jdField_a_of_type_Int = getChangingConfigurations();
-      return this.jdField_a_of_type_Pmt;
+      this.mScaleState.mChangingConfigurations = getChangingConfigurations();
+      return this.mScaleState;
     }
     return null;
   }
   
   public Matrix getMatrix()
   {
-    return this.jdField_a_of_type_AndroidGraphicsMatrix;
+    return this.mDrawMatrix;
   }
   
   public int getMinimumHeight()
@@ -251,32 +251,32 @@ public class ScaleDrawable
       localRect = paramRect;
       if (j > 0)
       {
-        localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+        localRect = this.mTmpRect;
         localRect.set(0, 0, i, j);
       }
     }
     super.onBoundsChange(localRect);
-    a();
+    updateDrawMatrix();
   }
   
   @Public
   public void setPivot(float paramFloat1, float paramFloat2)
   {
-    if ((this.jdField_a_of_type_Float != paramFloat1) || (this.b != paramFloat2))
+    if ((this.mPivotXRate != paramFloat1) || (this.mPivotYRate != paramFloat2))
     {
-      this.jdField_a_of_type_Float = paramFloat1;
-      this.b = paramFloat2;
-      a();
+      this.mPivotXRate = paramFloat1;
+      this.mPivotYRate = paramFloat2;
+      updateDrawMatrix();
     }
   }
   
   @Public
   public void setScaleType(int paramInt)
   {
-    if (this.jdField_a_of_type_Int != paramInt)
+    if (this.mScaleType != paramInt)
     {
-      this.jdField_a_of_type_Int = paramInt;
-      a();
+      this.mScaleType = paramInt;
+      updateDrawMatrix();
     }
   }
 }

@@ -1,69 +1,40 @@
 import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import org.json.JSONObject;
 
 public class yqq
-  implements Runnable
 {
-  public yqq(ApolloManager paramApolloManager) {}
+  public int a;
+  public String a;
+  public int b = -1;
   
-  public void run()
+  public yqq(int paramInt1, int paramInt2, String paramString)
   {
-    Object localObject = null;
-    try
+    this.jdField_a_of_type_Int = 3;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public String toString()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-        break label152;
-      }
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
+      yny.d("GdtFormError", "toString error");
+      return null;
     }
-    catch (OutOfMemoryError localOutOfMemoryError)
+    switch (this.jdField_a_of_type_Int)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloManager", 2, localOutOfMemoryError.getMessage());
-        }
-      }
+    default: 
+      yny.d("GdtFormError", "toString error");
+      return null;
+    case 5: 
+      return ajjy.a(2131639383) + this.jdField_a_of_type_JavaLangString;
     }
-    catch (Exception localException)
-    {
-      do
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloManager", 2, localException.getMessage());
-          }
-        }
-      } while (localException != null);
-    }
-    localObject = new File(ApolloConstant.a);
-    ((File)localObject).mkdirs();
-    localObject = new File((File)localObject, "apollo_res_version_info.json");
-    if (((File)localObject).exists())
-    {
-      localObject = FileUtils.b((File)localObject);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        this.a.jdField_a_of_type_OrgJsonJSONObject = new JSONObject((String)localObject);
-      }
-    }
-    if (this.a.jdField_a_of_type_OrgJsonJSONObject == null)
-    {
-      this.a.jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
-      return;
-    }
-    label152:
+    return ajjy.a(2131639382) + this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yqq
  * JD-Core Version:    0.7.0.1
  */

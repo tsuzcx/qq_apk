@@ -15,6 +15,7 @@ public class TroopBarPublishActivity$Pic_list
   protected static final String JSON_KEY_URL = "url";
   protected static final String JSON_KEY_W = "w";
   protected static final long serialVersionUID = 10008L;
+  public boolean canReuse = true;
   public int h;
   public String type;
   public String url;
@@ -69,7 +70,7 @@ public class TroopBarPublishActivity$Pic_list
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopBarPublishActivity.Pic_list
  * JD-Core Version:    0.7.0.1
  */

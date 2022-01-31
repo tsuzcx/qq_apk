@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class AudioTransInterfaceTranslate$IntTransReportReq
-  extends MessageMicro
+  extends MessageMicro<IntTransReportReq>
 {
   public static final int INT_TRANS_CREATE_REPORT = 1;
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "enum_business_type", "enum_report_reason" }, new Object[] { Integer.valueOf(1), Integer.valueOf(1) }, IntTransReportReq.class);

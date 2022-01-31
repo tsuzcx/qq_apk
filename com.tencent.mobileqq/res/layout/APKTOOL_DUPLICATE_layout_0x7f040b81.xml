@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.tencent.widget.FormMultiLineItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3376" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:line_num="3"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
-    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3377" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d038f" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-        <TextView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a043d" android:focusable="false" android:focusableInTouchMode="false" android:visibility="visible" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b1657" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01dd" />
-        <TextView android:textSize="15.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c057e" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a043e" android:focusable="true" android:focusableInTouchMode="true" android:visibility="gone" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b1658" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </FrameLayout>
-</com.tencent.widget.FormMultiLineItem>

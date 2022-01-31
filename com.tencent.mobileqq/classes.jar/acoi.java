@@ -1,20 +1,24 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.emoticonview.IPSiteListGoodsAdapter;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public class acoi
+class acoi
+  extends AnimatorListenerAdapter
 {
-  public ImageView a;
-  public RelativeLayout a;
-  public TextView a;
-  public TextView b;
+  acoi(acoh paramacoh) {}
   
-  private acoi(IPSiteListGoodsAdapter paramIPSiteListGoodsAdapter) {}
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    this.a.d();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.d();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acoi
  * JD-Core Version:    0.7.0.1
  */

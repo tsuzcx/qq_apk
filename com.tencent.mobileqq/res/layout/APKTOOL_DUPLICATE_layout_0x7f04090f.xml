@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView android:layout_gravity="bottom" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a144b" android:padding="9.0dip" android:layout_width="45.0dip" android:layout_height="45.0dip" android:layout_marginBottom="5.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021846" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b1d01" />
-    <com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryDownloadView android:layout_gravity="bottom" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2855" android:padding="9.0dip" android:clickable="true" android:layout_width="27.0dip" android:layout_height="27.0dip" android:layout_marginBottom="7.0dip" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b2c4e" />
-    <com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView android:layout_gravity="bottom" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2856" android:padding="9.0dip" android:layout_width="45.0dip" android:layout_height="45.0dip" android:layout_marginRight="6.0dip" android:layout_marginBottom="7.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02178d" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b1a49" />
-</merge>

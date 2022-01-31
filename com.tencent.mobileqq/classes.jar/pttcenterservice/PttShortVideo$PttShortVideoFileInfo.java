@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class PttShortVideo$PttShortVideoFileInfo
-  extends MessageMicro
+  extends MessageMicro<PttShortVideoFileInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_decrypt_thumb_md5 = PBField.initBytes(ByteStringMicro.EMPTY);

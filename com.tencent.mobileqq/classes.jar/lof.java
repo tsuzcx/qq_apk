@@ -1,27 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager.onMainVideoTabRedChangeListener;
-import java.util.Iterator;
-import java.util.List;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
-public class lof
-  implements Runnable
+public abstract interface lof
 {
-  public lof(KandianMergeManager paramKandianMergeManager) {}
+  public abstract Bitmap a(long paramLong);
   
-  public void run()
-  {
-    if (KandianMergeManager.b(this.a) != null)
-    {
-      Iterator localIterator = KandianMergeManager.b(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((KandianMergeManager.onMainVideoTabRedChangeListener)localIterator.next()).a();
-      }
-    }
-  }
+  public abstract TroopInfoData a();
+  
+  public abstract String a();
+  
+  public abstract String a(int paramInt);
+  
+  public abstract String a(long paramLong, int paramInt);
+  
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract String b();
+  
+  public abstract void b(int paramInt1, int paramInt2, int paramInt3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lof
  * JD-Core Version:    0.7.0.1
  */

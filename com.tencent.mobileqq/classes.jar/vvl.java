@@ -1,61 +1,21 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import com.tencent.mobileqq.activity.aio.qim.QIMUserManager;
-import com.tencent.mobileqq.activity.aio.qim.QIMUserManager.QIMUserIcon;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.theme.SkinEngine;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.os.MqqHandler;
+import java.util.Comparator;
 
-public class vvl
-  implements Runnable
+class vvl
+  implements Comparator<vvj>
 {
-  public vvl(QIMUserManager paramQIMUserManager, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
+  vvl(vvk paramvvk) {}
   
-  public void run()
+  public int a(vvj paramvvj1, vvj paramvvj2)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      QIMUserManager.QIMUserIcon localQIMUserIcon = (QIMUserManager.QIMUserIcon)localIterator.next();
-      if ((this.b != null) && (this.b.size() > localQIMUserIcon.jdField_a_of_type_Int))
-      {
-        int i;
-        if (((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int)).length >= 7)
-        {
-          i = 5;
-          label73:
-          if (((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int)).length < 7) {
-            break label251;
-          }
-        }
-        label251:
-        for (int j = 6;; j = 5)
-        {
-          StateListDrawable localStateListDrawable = new StateListDrawable();
-          Drawable localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int))[j]);
-          localStateListDrawable.addState(new int[] { 16842913, 16842910 }, localDrawable);
-          localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int))[j]);
-          localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable);
-          localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int))[i]);
-          localStateListDrawable.addState(new int[] { 16842910 }, localDrawable);
-          localQIMUserIcon.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localStateListDrawable;
-          break;
-          i = 4;
-          break label73;
-        }
-      }
+    if (paramvvj1.d > paramvvj2.d) {
+      return 1;
     }
-    if (this.b != null) {
-      this.b.clear();
-    }
-    ThreadManager.getUIHandler().post(new vvm(this));
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     vvl
  * JD-Core Version:    0.7.0.1
  */

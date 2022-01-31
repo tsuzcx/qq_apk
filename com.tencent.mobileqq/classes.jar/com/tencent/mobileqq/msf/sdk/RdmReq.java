@@ -10,14 +10,14 @@ public final class RdmReq
   extends JceStruct
 {
   static Map cache_params;
-  public long elapse;
+  public long elapse = 0L;
   public String eventName = "";
-  public boolean isMerge;
-  public boolean isRealTime;
+  public boolean isMerge = false;
+  public boolean isRealTime = false;
   public boolean isSucceed = true;
-  public Map params;
-  public int reportType;
-  public long size;
+  public Map params = null;
+  public int reportType = 0;
+  public long size = 0L;
   
   public RdmReq() {}
   

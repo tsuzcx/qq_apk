@@ -1,57 +1,38 @@
-import android.text.TextUtils;
-import com.tencent.biz.lebasearch.SearchProtocol;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.leba.LebaShowListManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import cooperation.comic.PluginPreloader;
-import cooperation.comic.QQComicPreloadManager;
-import cooperation.qqreader.QRProcessManager;
+import android.graphics.Bitmap;
 
-public class tcv
-  implements Runnable
+class tcv
+  implements tyi
 {
-  public tcv(Leba paramLeba) {}
+  tcv(tcu paramtcu, String paramString) {}
   
-  public void run()
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    Object localObject = this.a.a.getCurrentAccountUin();
-    if (!TextUtils.isEmpty((CharSequence)localObject))
+    if (tcu.a(this.jdField_a_of_type_Tcu))
     {
-      long l = WebProcessManager.a((String)localObject);
-      if (System.currentTimeMillis() - l < 604800000L) {
-        WebProcessManager.a(Leba.a(), "key_health_dns_parse");
+      paramString = bacm.c(paramBitmap, paramBitmap.getWidth(), paramBitmap.getHeight());
+      if (paramString == null)
+      {
+        tcu.a(this.jdField_a_of_type_Tcu, false);
+        return;
       }
-      l = WebProcessManager.c((String)localObject);
-      if (System.currentTimeMillis() - l < 259200000L) {
-        WebProcessManager.a(Leba.b(), "key_gamecenter_dns_parse");
-      }
-      l = WebProcessManager.a((String)localObject, "key_reader_click_time");
-      if (System.currentTimeMillis() - l < 259200000L) {
-        WebProcessManager.a(Leba.c(), "key_reader_dns_parse");
-      }
+      bool = vlc.a(paramString, tcu.a(this.jdField_a_of_type_Tcu));
+      paramString.recycle();
+      tcu.b(this.jdField_a_of_type_Tcu, bool);
+      return;
     }
-    localObject = (QRProcessManager)this.a.a.getManager(128);
-    if (localObject != null) {
-      ((QRProcessManager)localObject).a(6);
-    }
-    localObject = (QQComicPreloadManager)this.a.a.getManager(141);
-    if (localObject != null) {
-      PluginPreloader.a(((QQComicPreloadManager)localObject).a(6), 500L);
-    }
-    if (LebaShowListManager.a().a())
-    {
-      SearchProtocol.a(this.a.a(), 10800000L, "Leba");
-      SearchProtocol.a(this.a.a, this.a.a());
-      Leba.b(this.a);
-    }
-    ThreadManager.post(new tcw(this), 5, null, false);
+    boolean bool = vlc.a(paramBitmap, tcu.a(this.jdField_a_of_type_Tcu));
+    tcu.c(this.jdField_a_of_type_Tcu, bool);
+  }
+  
+  public void a(String paramString, Throwable paramThrowable)
+  {
+    urk.e("DownloadPic2FileJob", "Download url failed url=%s", new Object[] { this.jdField_a_of_type_JavaLangString });
+    tcu.d(this.jdField_a_of_type_Tcu, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tcv
  * JD-Core Version:    0.7.0.1
  */

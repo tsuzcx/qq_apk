@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_cmd0x8c8$UGCFeedsInfo
-  extends MessageMicro
+  extends MessageMicro<UGCFeedsInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_json_content = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -18,8 +18,8 @@ public final class oidb_cmd0x8c8$UGCFeedsInfo
   public final PBBytesField bytes_json_video_list = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_ugc_comments = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBEnumField enum_ugc_feeds_card_type = PBField.initEnum(0);
-  public final PBRepeatMessageField msg_ugc_pic_info_list = PBField.initRepeatMessage(oidb_cmd0x8c8.UGCPicInfo.class);
-  public final PBRepeatMessageField msg_ugc_video_info_list = PBField.initRepeatMessage(oidb_cmd0x8c8.UGCVideoInfo.class);
+  public final PBRepeatMessageField<oidb_cmd0x8c8.UGCPicInfo> msg_ugc_pic_info_list = PBField.initRepeatMessage(oidb_cmd0x8c8.UGCPicInfo.class);
+  public final PBRepeatMessageField<oidb_cmd0x8c8.UGCVideoInfo> msg_ugc_video_info_list = PBField.initRepeatMessage(oidb_cmd0x8c8.UGCVideoInfo.class);
   public final PBUInt64Field uint64_cuin = PBField.initUInt64(0L);
   
   static
@@ -33,7 +33,7 @@ public final class oidb_cmd0x8c8$UGCFeedsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.UGCFeedsInfo
  * JD-Core Version:    0.7.0.1
  */

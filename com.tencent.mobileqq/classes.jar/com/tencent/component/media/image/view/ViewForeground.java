@@ -8,18 +8,18 @@ import android.view.View;
 
 public class ViewForeground
 {
-  private int jdField_a_of_type_Int;
-  private Context jdField_a_of_type_AndroidContentContext;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private View jdField_a_of_type_AndroidViewView;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int;
-  private boolean jdField_b_of_type_Boolean = true;
+  private Context mContext;
+  private Drawable mDrawable;
+  private int mDrawableHeight;
+  private int mDrawableWidth;
+  private boolean mForegroundBoundsChanged = false;
+  private boolean mForegroundInPadding = true;
+  private View mView;
   
   public ViewForeground(View paramView)
   {
-    this.jdField_a_of_type_AndroidContentContext = paramView.getContext();
-    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.mContext = paramView.getContext();
+    this.mView = paramView;
   }
   
   public ViewForeground(View paramView, int paramInt)
@@ -34,50 +34,50 @@ public class ViewForeground
     setDrawable(paramDrawable);
   }
   
-  private void a(Drawable paramDrawable)
+  private void updateDrawable(Drawable paramDrawable)
   {
-    View localView = this.jdField_a_of_type_AndroidViewView;
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    View localView = this.mView;
+    if (this.mDrawable != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setCallback(null);
-      localView.unscheduleDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      this.mDrawable.setCallback(null);
+      localView.unscheduleDrawable(this.mDrawable);
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.mDrawable = paramDrawable;
     if (paramDrawable != null)
     {
       paramDrawable.setCallback(localView);
       if (paramDrawable.isStateful()) {
         paramDrawable.setState(localView.getDrawableState());
       }
-      this.jdField_a_of_type_Int = paramDrawable.getIntrinsicWidth();
-      this.jdField_b_of_type_Int = paramDrawable.getIntrinsicHeight();
+      this.mDrawableWidth = paramDrawable.getIntrinsicWidth();
+      this.mDrawableHeight = paramDrawable.getIntrinsicHeight();
       return;
     }
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Int = -1;
+    this.mDrawableHeight = -1;
+    this.mDrawableWidth = -1;
   }
   
   public void boundsChanged()
   {
-    this.jdField_a_of_type_Boolean = true;
+    this.mForegroundBoundsChanged = true;
   }
   
   public void draw(Canvas paramCanvas)
   {
     int j = 0;
-    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Drawable localDrawable = this.mDrawable;
     int k;
     int i;
     int m;
     if (localDrawable != null)
     {
-      View localView = this.jdField_a_of_type_AndroidViewView;
-      if (this.jdField_a_of_type_Boolean)
+      View localView = this.mView;
+      if (this.mForegroundBoundsChanged)
       {
-        this.jdField_a_of_type_Boolean = false;
+        this.mForegroundBoundsChanged = false;
         k = localView.getWidth();
         i = localView.getHeight();
-        if (!this.jdField_b_of_type_Boolean) {
+        if (!this.mForegroundInPadding) {
           break label100;
         }
         m = localView.getPaddingLeft();
@@ -98,30 +98,30 @@ public class ViewForeground
   
   public void drawableStateChanged()
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.isStateful())) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(this.jdField_a_of_type_AndroidViewView.getDrawableState());
+    if ((this.mDrawable != null) && (this.mDrawable.isStateful())) {
+      this.mDrawable.setState(this.mView.getDrawableState());
     }
   }
   
   public Drawable getDrawable()
   {
-    return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    return this.mDrawable;
   }
   
   public void setDrawable(int paramInt)
   {
-    setDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(paramInt));
+    setDrawable(this.mContext.getResources().getDrawable(paramInt));
   }
   
   public void setDrawable(Drawable paramDrawable)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != paramDrawable)
+    if (this.mDrawable != paramDrawable)
     {
-      View localView = this.jdField_a_of_type_AndroidViewView;
-      int i = this.jdField_a_of_type_Int;
-      int j = this.jdField_b_of_type_Int;
-      a(paramDrawable);
-      if ((i != this.jdField_a_of_type_Int) || (j != this.jdField_b_of_type_Int)) {
+      View localView = this.mView;
+      int i = this.mDrawableWidth;
+      int j = this.mDrawableHeight;
+      updateDrawable(paramDrawable);
+      if ((i != this.mDrawableWidth) || (j != this.mDrawableHeight)) {
         localView.requestLayout();
       }
       localView.invalidate();
@@ -130,9 +130,9 @@ public class ViewForeground
   
   public void setForegroundInPadding(boolean paramBoolean)
   {
-    if (this.jdField_b_of_type_Boolean != paramBoolean)
+    if (this.mForegroundInPadding != paramBoolean)
     {
-      this.jdField_b_of_type_Boolean = paramBoolean;
+      this.mForegroundInPadding = paramBoolean;
       boundsChanged();
     }
   }

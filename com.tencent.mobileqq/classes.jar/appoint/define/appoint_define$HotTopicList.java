@@ -6,10 +6,10 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class appoint_define$HotTopicList
-  extends MessageMicro
+  extends MessageMicro<HotTopicList>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "rpt_topic_list" }, new Object[] { null }, HotTopicList.class);
-  public final PBRepeatMessageField rpt_topic_list = PBField.initRepeatMessage(appoint_define.HotTopic.class);
+  public final PBRepeatMessageField<appoint_define.HotTopic> rpt_topic_list = PBField.initRepeatMessage(appoint_define.HotTopic.class);
 }
 
 

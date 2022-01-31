@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_common$DataCardConfig
-  extends MessageMicro
+  extends MessageMicro<DataCardConfig>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_card_wording = PBField.initBytes(ByteStringMicro.EMPTY);

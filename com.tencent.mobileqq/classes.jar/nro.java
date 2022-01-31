@@ -1,23 +1,38 @@
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
-import com.tencent.biz.qqstory.playmode.util.ShareGroupVideoDataProvider;
-import java.util.ArrayList;
-
 public class nro
-  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
 {
-  public nro(ShareGroupVideoDataProvider paramShareGroupVideoDataProvider, BatchGetVideoInfo paramBatchGetVideoInfo, String paramString) {}
+  public float a;
+  public float b;
+  public float c;
+  public float d;
   
-  public void a()
+  public nro(float paramFloat1, float paramFloat2)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilShareGroupVideoDataProvider.a(this.jdField_a_of_type_JavaLangString, false, null);
+    this.a = paramFloat1;
+    this.b = paramFloat2;
   }
   
-  public void a(ArrayList paramArrayList)
+  public nro(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilShareGroupVideoDataProvider.a(this.jdField_a_of_type_JavaLangString, true, paramArrayList);
+    this.a = paramFloat1;
+    this.b = paramFloat2;
+    this.c = paramFloat3;
+    this.d = paramFloat4;
+  }
+  
+  public nro(nro paramnro)
+  {
+    this.a = paramnro.a;
+    this.b = paramnro.b;
+  }
+  
+  public void a(nro paramnro)
+  {
+    float f = this.a;
+    this.a = paramnro.a;
+    paramnro.a = f;
+    f = this.b;
+    this.b = paramnro.b;
+    paramnro.b = f;
   }
 }
 

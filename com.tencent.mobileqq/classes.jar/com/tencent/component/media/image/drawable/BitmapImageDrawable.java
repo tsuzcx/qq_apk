@@ -6,7 +6,7 @@ import com.tencent.component.media.image.image.Image.MetaInfo;
 public class BitmapImageDrawable
   extends ImageDrawable
 {
-  private final BitmapImage a;
+  private final BitmapImage mImage;
   
   public BitmapImageDrawable(BitmapImage paramBitmapImage)
   {
@@ -16,20 +16,20 @@ public class BitmapImageDrawable
   public BitmapImageDrawable(BitmapImage paramBitmapImage, int paramInt1, int paramInt2)
   {
     super(paramBitmapImage.getBitmap(), paramInt1, paramInt2);
-    this.a = paramBitmapImage;
-    a();
+    this.mImage = paramBitmapImage;
+    init();
   }
   
-  private void a()
+  private void init()
   {
-    setOriginalWidth(this.a.getMetaInfo().width);
-    setOriginalHeight(this.a.getMetaInfo().height);
+    setOriginalWidth(this.mImage.getMetaInfo().width);
+    setOriginalHeight(this.mImage.getMetaInfo().height);
   }
   
   public int size()
   {
-    if (this.a != null) {
-      return this.a.size();
+    if (this.mImage != null) {
+      return this.mImage.size();
     }
     return 0;
   }

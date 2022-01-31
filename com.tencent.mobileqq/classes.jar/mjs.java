@@ -1,31 +1,21 @@
-import android.telephony.PhoneStateListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.app.VideoAppInterface;
 
 public class mjs
-  extends PhoneStateListener
+  extends mjt
 {
-  public mjs(VideoVolumeControl paramVideoVolumeControl) {}
-  
-  public void onCallStateChanged(int paramInt, String paramString)
+  public mjs(VideoAppInterface paramVideoAppInterface, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "onCallStateChanged:" + paramInt);
-    }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.d(true);
-      return;
-    }
-    this.a.d(true);
+    super(paramVideoAppInterface, 64, paramLong);
+  }
+  
+  public void a(String paramString, mjv parammjv)
+  {
+    super.a(paramString, parammjv);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mjs
  * JD-Core Version:    0.7.0.1
  */

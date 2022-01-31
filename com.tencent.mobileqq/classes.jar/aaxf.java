@@ -1,24 +1,14 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppMusicModule;
-import com.tencent.mobileqq.music.QQPlayerService;
-
-public class aaxf
-  implements Runnable
+public abstract interface aaxf
 {
-  public aaxf(ArkAppMusicModule paramArkAppMusicModule) {}
+  public abstract void a(int paramInt1, int paramInt2);
   
-  public void run()
-  {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if ((localBaseActivity instanceof FragmentActivity)) {
-      QQPlayerService.a(localBaseActivity);
-    }
-  }
+  public abstract void a(byte[] paramArrayOfByte);
+  
+  public abstract void b(byte[] paramArrayOfByte);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaxf
  * JD-Core Version:    0.7.0.1
  */

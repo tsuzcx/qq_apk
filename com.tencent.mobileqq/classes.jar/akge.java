@@ -1,25 +1,23 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.mobileqq.troop.utils.TroopNativeUtils;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoAttribute;
 
 public final class akge
-  implements DownloadParams.DecodeHandler
+  implements Parcelable.Creator<SosoInterface.SosoAttribute>
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  public SosoInterface.SosoAttribute a(Parcel paramParcel)
   {
-    paramDownloadParams = paramDownloadParams.tag;
-    if ((TroopNativeUtils.a().a) && ((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 1))
-    {
-      int i = ((int[])(int[])paramDownloadParams)[0];
-      TroopNativeUtils.a().a(paramBitmap, i);
-    }
-    return paramBitmap;
+    return new SosoInterface.SosoAttribute(paramParcel);
+  }
+  
+  public SosoInterface.SosoAttribute[] a(int paramInt)
+  {
+    return new SosoInterface.SosoAttribute[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akge
  * JD-Core Version:    0.7.0.1
  */

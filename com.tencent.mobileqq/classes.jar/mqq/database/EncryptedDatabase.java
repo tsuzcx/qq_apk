@@ -3,12 +3,9 @@ package mqq.database;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteCursor;
-import android.database.sqlite.SQLiteCursorDriver;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.database.sqlite.SQLiteQuery;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -18,38 +15,14 @@ public class EncryptedDatabase
 {
   private static final String SQL_GET_TABLE_ATTR = "select sql from sqlite_master where type=? and name=?";
   private static final String TAG = "db";
-  private SQLiteDatabase.CursorFactory encryptedFactory = new SQLiteDatabase.CursorFactory()
-  {
-    String[] ex = { "sqlite_master", "sqlite_sequence", "sqlite_temp_master" };
-    
-    public Cursor newCursor(SQLiteDatabase paramAnonymousSQLiteDatabase, SQLiteCursorDriver paramAnonymousSQLiteCursorDriver, final String paramAnonymousString, SQLiteQuery paramAnonymousSQLiteQuery)
-    {
-      new SQLiteCursor(paramAnonymousSQLiteDatabase, paramAnonymousSQLiteCursorDriver, paramAnonymousString, paramAnonymousSQLiteQuery)
-      {
-        public String getString(int paramAnonymous2Int)
-        {
-          Object localObject = paramAnonymousString;
-          String str = super.getString(paramAnonymous2Int);
-          localObject = str;
-          if (!"sqlite_master".equals(paramAnonymousString)) {}
-          try
-          {
-            localObject = SecurityUtile.decode(str);
-            return localObject;
-          }
-          catch (Exception localException) {}
-          return str;
-        }
-      };
-    }
-  };
+  private SQLiteDatabase.CursorFactory encryptedFactory = new EncryptedDatabase.1(this);
   private final SQLiteOpenHelper mHelper;
   private final Map<String, ArrayList<String>> tableMap = new HashMap();
   
   public EncryptedDatabase(Context paramContext, String paramString, int paramInt)
   {
     SecurityUtile.setKey(paramContext);
-    this.mHelper = new DBHelper(paramContext, paramString, paramInt);
+    this.mHelper = new EncryptedDatabase.DBHelper(this, paramContext, paramString, paramInt);
   }
   
   private ArrayList<String> analyseTableField(String paramString1, String paramString2)
@@ -112,11 +85,9 @@ public class EncryptedDatabase
   
   private ArrayList<String> getTableInfo(String paramString)
   {
-    if (!this.tableMap.containsKey(paramString))
-    {
-      localObject2 = null;
-      localObject1 = null;
-    }
+    localObject2 = null;
+    localObject1 = null;
+    if (!this.tableMap.containsKey(paramString)) {}
     try
     {
       localCursor = this.mHelper.getReadableDatabase().rawQueryWithFactory(null, "select sql from sqlite_master where type=? and name=?", new String[] { "table", paramString }, "sqlite_master");
@@ -176,19 +147,6 @@ public class EncryptedDatabase
   public Cursor rawQuery(String paramString, String[] paramArrayOfString)
   {
     return this.mHelper.getReadableDatabase().rawQuery(paramString, paramArrayOfString);
-  }
-  
-  private class DBHelper
-    extends SQLiteOpenHelper
-  {
-    public DBHelper(Context paramContext, String paramString, int paramInt)
-    {
-      super(paramString, EncryptedDatabase.this.encryptedFactory, paramInt);
-    }
-    
-    public void onCreate(SQLiteDatabase paramSQLiteDatabase) {}
-    
-    public void onUpgrade(SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2) {}
   }
 }
 

@@ -1,25 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
+import android.util.Log;
+import com.tencent.mobileqq.apollo.GLTextureView;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
 public class aihy
-  implements View.OnClickListener
+  implements aiib
 {
-  public aihy(RedBagVideoManager paramRedBagVideoManager) {}
+  private int jdField_a_of_type_Int = 12440;
   
-  public void onClick(View paramView)
+  private aihy(GLTextureView paramGLTextureView) {}
+  
+  public EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
   {
-    RedBagVideoManager.a(this.a, RedBagVideoManager.a(this.a));
-    RedBagVideoManager.b(this.a, System.currentTimeMillis());
-    if (RedBagVideoManager.a(this.a) - RedBagVideoManager.b(this.a) < 300L) {
-      return;
+    int[] arrayOfInt = new int[3];
+    arrayOfInt[0] = this.jdField_a_of_type_Int;
+    arrayOfInt[1] = GLTextureView.access$300(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView);
+    arrayOfInt[2] = 12344;
+    EGLContext localEGLContext = EGL10.EGL_NO_CONTEXT;
+    if (GLTextureView.access$300(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView) != 0) {}
+    for (;;)
+    {
+      return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, arrayOfInt);
+      arrayOfInt = null;
     }
-    RedBagVideoManager.a(this.a);
+  }
+  
+  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
+  {
+    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext))
+    {
+      Log.e("DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext);
+      aiid.a("eglDestroyContex", paramEGL10.eglGetError());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aihy
  * JD-Core Version:    0.7.0.1
  */

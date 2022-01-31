@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class im_msg$ContentHead
-  extends MessageMicro
+  extends MessageMicro<ContentHead>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 72, 80 }, new String[] { "pkg_num", "pkg_index", "seq", "date_time", "msg_type", "div_seq", "msgdb_uin", "msgdb_seq", "word_msg_seq", "msg_rand" }, new Object[] { Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, ContentHead.class);
   public final PBUInt32Field date_time = PBField.initUInt32(0);

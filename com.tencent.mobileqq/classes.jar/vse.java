@@ -1,23 +1,21 @@
-import com.tencent.biz.troop.TroopMemberApiClient;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
-import com.tencent.mobileqq.lightReply.LightReplyEmojs;
-import com.tencent.mobileqq.lightReply.LightReplyMenuManager.LightReplyEmotionClickListener;
-import java.util.HashMap;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
 
-public class vse
-  implements LightReplyMenuManager.LightReplyEmotionClickListener
+class vse
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public vse(AIOGalleryScene paramAIOGalleryScene, TroopMemberApiClient paramTroopMemberApiClient) {}
+  vse(vsd paramvsd, CircularRevealCompatLayout paramCircularRevealCompatLayout) {}
   
-  public void a(int paramInt1, String paramString, long paramLong, int paramInt2, LightReplyEmojs paramLightReplyEmojs)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.a.put(paramInt1 + paramString + paramLong, paramLightReplyEmojs);
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(paramInt1, paramString, paramLong, paramInt2, paramLightReplyEmojs);
+    paramValueAnimator = (vsg)paramValueAnimator.getAnimatedValue();
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.setRevealClip(paramValueAnimator.a, paramValueAnimator.b, paramValueAnimator.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vse
  * JD-Core Version:    0.7.0.1
  */

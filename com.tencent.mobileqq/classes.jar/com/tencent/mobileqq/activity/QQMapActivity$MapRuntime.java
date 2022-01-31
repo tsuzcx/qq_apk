@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.activity;
 
+import abmb;
 import android.content.BroadcastReceiver;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import awpm;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.pluginsdk.PluginRuntime;
 import com.tencent.mobileqq.startup.step.Step;
-import com.tencent.mobileqq.startup.step.Step.AmStepFactory;
 import com.tencent.qphone.base.util.BaseApplication;
 import mqq.app.MobileQQ;
-import tpb;
 
 public class QQMapActivity$MapRuntime
   extends PluginRuntime
@@ -20,10 +20,10 @@ public class QQMapActivity$MapRuntime
   
   public QQMapActivity$MapRuntime()
   {
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new tpb(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new abmb(this);
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     this.jdField_a_of_type_JavaLangThread$UncaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
     Thread.setDefaultUncaughtExceptionHandler(this);
@@ -34,7 +34,7 @@ public class QQMapActivity$MapRuntime
     paramBundle.addAction("mqq.intent.action.LOGOUT");
     paramBundle.addAction("mqq.intent.action.EXIT_" + MobileQQ.getMobileQQ().getPackageName());
     MobileQQ.getContext().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
-    Step.AmStepFactory.b(10, BaseApplicationImpl.sDirector, null).c();
+    awpm.b(11, BaseApplicationImpl.sDirector, null).step();
   }
   
   public void uncaughtException(Thread paramThread, Throwable paramThrowable)

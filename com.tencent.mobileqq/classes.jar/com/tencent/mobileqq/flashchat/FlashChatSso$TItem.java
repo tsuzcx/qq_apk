@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class FlashChatSso$TItem
-  extends MessageMicro
+  extends MessageMicro<TItem>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 50, 58, 66 }, new String[] { "i32_id", "uint32_feetype", "string_name", "string_icon_url", "string_app_name", "string_main_view", "string_ver", "string_bg_color" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), "", "", "", "", "", "" }, TItem.class);
   public final PBInt32Field i32_id = PBField.initInt32(0);

@@ -2,7 +2,9 @@ package com.tencent.component.network.downloader;
 
 public abstract interface Downloader$NetworkFlowStatistics
 {
-  public abstract void a(String paramString, long paramLong1, long paramLong2);
+  public abstract void onDownloadFlow(String paramString, long paramLong1, long paramLong2);
+  
+  public abstract void onUploadFlow(String paramString, long paramLong1, long paramLong2);
 }
 
 

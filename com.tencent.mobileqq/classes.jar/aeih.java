@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.leba.LebaWithFeeds;
-
-public class aeih
-  implements Runnable
+class aeih
+  implements moc
 {
-  public aeih(LebaWithFeeds paramLebaWithFeeds) {}
+  aeih(aegy paramaegy) {}
   
-  public void run()
-  {
-    LebaWithFeeds.a(this.a, true);
-  }
+  public void loaded(String paramString, int paramInt) {}
+  
+  public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeih
  * JD-Core Version:    0.7.0.1
  */

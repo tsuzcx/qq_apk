@@ -5,12 +5,12 @@ import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 public class ReadInJoyProxyActivity
   extends PluginProxyActivity
 {
-  protected static Class a(String paramString)
+  protected static Class<? extends PluginProxyActivity> a(String paramString)
   {
     return ReadInJoyProxyActivity.class;
   }
   
-  protected Class getProxyActivity(String paramString)
+  public Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
   {
     return a(paramString);
   }

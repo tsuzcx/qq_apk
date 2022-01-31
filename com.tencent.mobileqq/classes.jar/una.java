@@ -1,29 +1,37 @@
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager;
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
-import com.tencent.mobileqq.statistics.ReportController;
-
 public class una
-  implements Runnable
+  extends umy
 {
-  public una(VisitorsActivity paramVisitorsActivity) {}
+  public Object a;
+  public String a;
   
-  public void run()
+  public una(Object paramObject)
   {
-    RedTouchItem localRedTouchItem = this.a.a.a(100601);
-    if ((localRedTouchItem != null) && (localRedTouchItem.unReadFlag) && (localRedTouchItem.passThroughLevel > 0))
-    {
-      localRedTouchItem.passThroughLevel = 0;
-      this.a.a.d();
-      ReportController.b(this.a.app, "dc00898", "", "", "0X800760F", "0X800760F", 0, 0, "1", "", "", "");
-      return;
-    }
-    ReportController.b(this.a.app, "dc00898", "", "", "0X800760F", "0X800760F", 0, 0, "2", "", "", "");
+    this.jdField_a_of_type_JavaLangString = "InitParamSimpleStep";
+    this.jdField_a_of_type_JavaLangObject = paramObject;
   }
+  
+  public Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a()
+  {
+    d();
+  }
+  
+  public void b() {}
+  
+  public void c() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     una
  * JD-Core Version:    0.7.0.1
  */

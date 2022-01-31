@@ -1,52 +1,39 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.util.BadgeUtils;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.playvideo.VideoCoverListBar;
 
 public class tiw
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnTouchListener
 {
-  public tiw(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  float jdField_a_of_type_Float = -1.0F;
+  float b = -1.0F;
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public tiw(VideoCoverListBar paramVideoCoverListBar, int paramInt) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
+    switch (paramMotionEvent.getAction())
     {
-      BadgeUtils.a();
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label78;
-      }
-      paramCompoundButton = "0X8004BE7";
-      label23:
-      if (!paramBoolean) {
-        break label84;
-      }
+    case 2: 
+    default: 
+      return false;
+    case 0: 
+      this.jdField_a_of_type_Float = paramMotionEvent.getX();
+      this.b = paramMotionEvent.getY();
+      return false;
     }
-    label78:
-    label84:
-    for (String str = "0X8004BE7";; str = "0X8004BE6")
-    {
-      ReportController.b(localQQAppInterface, "CliOper", "", "", paramCompoundButton, str, 0, 1, "1", "", "", "");
-      if (AppSetting.b) {
-        NotifyPushSettingActivity.d(this.a).setContentDescription("桌面图标显示未读消息数");
-      }
-      return;
-      BadgeUtils.b();
-      break;
-      paramCompoundButton = "0X8004BE6";
-      break label23;
+    if (Math.abs(paramMotionEvent.getY() - this.b) > Math.min(this.jdField_a_of_type_Int, 40)) {
+      urp.a("play_video", "slide_mini", 0, 0, new String[] { "2", "", "", VideoCoverListBar.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar) });
     }
+    this.jdField_a_of_type_Float = -1.0F;
+    this.b = -1.0F;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tiw
  * JD-Core Version:    0.7.0.1
  */

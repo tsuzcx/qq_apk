@@ -1,27 +1,60 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.ark.ArkAiBubbleView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.data.Groups;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aays
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public aays(ArkAiBubbleView paramArkAiBubbleView, View.OnClickListener paramOnClickListener) {}
+  public aays(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArkArkAiBubbleView.a.removeCallbacks(ArkAiBubbleView.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiBubbleView));
-    this.jdField_a_of_type_ComTencentMobileqqArkArkAiBubbleView.a.clearAnimation();
-    ArkAiBubbleView.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiBubbleView).run();
-    if (QLog.isColorLevel()) {
-      QLog.i("ark.ai", 2, String.format("ArkRecommendLogic.activate: %h", new Object[] { this.jdField_a_of_type_ComTencentMobileqqArkArkAiBubbleView }));
+    paramDialogInterface = GroupManagerActivity.a(this.a).getInputValue();
+    if (paramDialogInterface.equals("")) {
+      paramDialogInterface = this.a.getResources().getString(2131627551);
     }
-    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
+    for (;;)
+    {
+      if (GroupManagerActivity.a(this.a) == 0) {
+        if (this.a.a.size() > 0)
+        {
+          b = (byte)(((Groups)this.a.a.get(this.a.a.size() - 1)).seqid + 1);
+          GroupManagerActivity.a(this.a, this.a.a(b, paramDialogInterface));
+          if (QLog.isColorLevel()) {
+            QLog.d("GroupManagerActivity", 2, "AddFriendGroup needShowDialog = " + GroupManagerActivity.a(this.a));
+          }
+          if (GroupManagerActivity.a(this.a)) {
+            this.a.a(2131627588);
+          }
+          awqx.b(this.a.app, "CliOper", "", "", "category", "Add_category", 0, 0, "", "", "", "");
+        }
+      }
+      while (1 != GroupManagerActivity.a(this.a)) {
+        for (;;)
+        {
+          return;
+          byte b = 1;
+        }
+      }
+      GroupManagerActivity.a(this.a, this.a.b((byte)GroupManagerActivity.a(this.a).group_id, paramDialogInterface));
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupManagerActivity", 2, "EditeFriendGroup needShowDialog = " + GroupManagerActivity.a(this.a));
+      }
+      if (GroupManagerActivity.a(this.a)) {
+        this.a.a(2131627591);
+      }
+      awqx.b(this.a.app, "CliOper", "", "", "category", "Name_category", 0, 0, "", "", "", "");
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aays
  * JD-Core Version:    0.7.0.1
  */

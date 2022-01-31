@@ -1,22 +1,29 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.nearby.now.view.StoryViewRelayoutListener;
-import com.tencent.mobileqq.nearby.now.view.widget.FitXImageView;
-import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
+import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class affv
-  implements Runnable
+public class affv
+  extends ajee
 {
-  affv(affs paramaffs, Bitmap paramBitmap) {}
+  public affv(TroopFragment paramTroopFragment) {}
   
-  public void run()
+  protected void a(int paramInt)
   {
-    this.jdField_a_of_type_Affs.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    ImageDisplayView.a(this.jdField_a_of_type_Affs.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView).a(this.jdField_a_of_type_Affs.jdField_a_of_type_Int, this.jdField_a_of_type_Affs.b);
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("contacts.fragment.TroopFragment", 2, "onCacheInited " + paramInt);
+      }
+    } while (this.a.a == null);
+    this.a.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     affv
  * JD-Core Version:    0.7.0.1
  */

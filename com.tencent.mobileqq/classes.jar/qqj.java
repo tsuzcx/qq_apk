@@ -1,18 +1,33 @@
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFlowLayout;
 
-final class qqj
-  implements Runnable
+public class qqj
+  extends behh
 {
-  qqj(WeakReference paramWeakReference) {}
-  
-  public void run()
+  public qqj(ReadInJoyFlowLayout paramReadInJoyFlowLayout)
   {
-    qqi.b(this.a);
+    super(paramReadInJoyFlowLayout);
+  }
+  
+  public void a()
+  {
+    super.a();
+  }
+  
+  public void onChanged()
+  {
+    super.onChanged();
+    ReadInJoyFlowLayout.a(this.a);
+  }
+  
+  public void onInvalidated()
+  {
+    super.onInvalidated();
+    ReadInJoyFlowLayout.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qqj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,63 +1,101 @@
 import android.os.Bundle;
-import com.tencent.biz.pubaccount.AccountDetail.activity.PubAccountMoreInfoActivity;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class krn
-  implements BusinessObserver
+  extends QIPCModule
 {
-  public krn(PubAccountMoreInfoActivity paramPubAccountMoreInfoActivity) {}
+  private krp a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  private krn()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PubAccountMoreInfoActivity", 2, "success:" + String.valueOf(paramBoolean));
+    super("AioShareMusicIPCWebClient");
+  }
+  
+  public static krn a()
+  {
+    return krq.a();
+  }
+  
+  public static void a(JSONObject paramJSONObject, String paramString, EIPCResultCallback paramEIPCResultCallback)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("data", paramJSONObject.toString());
+    QIPCClientHelper.getInstance().getClient().callServer("AioShareMusicIPCMainClient", paramString, localBundle, paramEIPCResultCallback);
+  }
+  
+  public void a()
+  {
+    try
+    {
+      this.a = null;
+      if (QIPCClientHelper.getInstance().getClient() != null)
+      {
+        QIPCClientHelper.getInstance().getClient().unRegisterModule(a());
+        if (QLog.isColorLevel()) {
+          QLog.d("AioShareMusic.AioShareMusicIPCWebClient", 2, "unregister real");
+        }
+      }
+      return;
     }
-    if (!paramBoolean) {
-      this.a.a(2131430035);
+    catch (Exception localException)
+    {
+      QLog.e("AioShareMusic.AioShareMusicIPCWebClient", 1, "unregister ipc module error.", localException);
     }
+  }
+  
+  public void a(krp paramkrp)
+  {
+    if (this.a != null) {}
     for (;;)
     {
       return;
-      if (paramBoolean) {
-        try
+      try
+      {
+        krn localkrn = a();
+        this.a = paramkrp;
+        QIPCClientHelper.getInstance().register(localkrn);
+        if (QLog.isColorLevel())
         {
-          paramBundle = paramBundle.getByteArray("data");
-          if (paramBundle != null)
-          {
-            mobileqq_mp.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
-            localGetPublicAccountDetailInfoResponse.mergeFrom(paramBundle);
-            if (((mobileqq_mp.RetInfo)localGetPublicAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0)
-            {
-              if ((this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail == null) || ((localGetPublicAccountDetailInfoResponse.seqno.has()) && (localGetPublicAccountDetailInfoResponse.seqno.get() != this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.seqno)))
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("PubAccountMoreInfoActivity", 2, "sendPublicAccountDetailInfoRequest: need update local data , new seqno = " + localGetPublicAccountDetailInfoResponse.seqno.get());
-                }
-                this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse = localGetPublicAccountDetailInfoResponse;
-                this.a.jdField_a_of_type_ComTencentMobileqqDataAccountDetail = new AccountDetail(this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse);
-                PubAccountMoreInfoActivity.a(this.a);
-              }
-            }
-            else
-            {
-              this.a.a(2131430035);
-              return;
-            }
-          }
+          QLog.d("AioShareMusic.AioShareMusicIPCWebClient", 2, "register real");
+          return;
         }
-        catch (Exception paramBundle) {}
+      }
+      catch (Exception paramkrp)
+      {
+        QLog.e("AioShareMusic.AioShareMusicIPCWebClient", 1, "register ipc module error.", paramkrp);
+      }
+    }
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    try
+    {
+      paramBundle = new JSONObject(paramBundle.getString("data"));
+      if (this.a != null) {
+        this.a.a(paramString, paramBundle);
+      }
+      return null;
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     krn
  * JD-Core Version:    0.7.0.1
  */

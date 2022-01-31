@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/bho" android:layout_width="fill_parent" android:layout_height="418.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/ars" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="400.0dip" android:scaleType="fitXY" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="418.0dip" android:layout_alignParentTop="true">
+        <com.tencent.mobileqq.gamecenter.view.QQGamePubViewpager android:layout_gravity="center" android:id="@id/c9m" android:layout_width="wrap_content" android:layout_height="370.0dip" android:layout_marginTop="6.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mobileqq.gamecenter.view.QQGameIndicator android:id="@id/fhp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+            <ImageView android:id="@id/e_l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:src="@drawable/f_8" android:scaleType="fitXY" android:layout_alignParentLeft="true" />
+            <ImageView android:id="@id/e_q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:src="@drawable/f_9" android:scaleType="fitXY" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+    </LinearLayout>
+    <ImageView android:id="@id/icq" android:layout_width="90.0dip" android:layout_height="31.0dip" android:layout_marginTop="20.0dip" android:scaleType="fitXY" android:layout_alignParentRight="true" />
+</RelativeLayout>

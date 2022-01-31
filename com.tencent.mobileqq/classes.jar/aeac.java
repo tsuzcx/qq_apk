@@ -1,25 +1,46 @@
-import android.os.Handler;
-import com.tencent.mobileqq.hotpic.CircleProgressView;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
-import com.tencent.mobileqq.hotpic.VideoBaseItem;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
+import com.tencent.mobileqq.data.QQWalletTransferMsgElem;
 
 public class aeac
-  implements Runnable
+  extends adzu
 {
-  public aeac(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
-  
-  public void run()
+  public aeac(QQAppInterface paramQQAppInterface, aeam paramaeam, QQWalletTransferMsgElem paramQQWalletTransferMsgElem, int paramInt, ackq paramackq)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.a.setProgress(this.a.jdField_a_of_type_ComTencentMobileqqHotpicVideoBaseItem.b());
-    if (this.a.jdField_b_of_type_Boolean) {
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_b_of_type_JavaLangRunnable, 100L);
+    super(paramQQAppInterface, paramaeam, paramQQWalletTransferMsgElem, paramInt, paramackq);
+    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.isSend()) {
+      this.i = 0;
     }
+    this.j = 2130846132;
+  }
+  
+  public boolean b()
+  {
+    boolean bool = super.b();
+    if (bool) {
+      return bool;
+    }
+    this.jdField_a_of_type_Aeam.b.setVisibility(0);
+    this.jdField_a_of_type_Aeam.b.setTextColor(-8947849);
+    this.jdField_a_of_type_Aeam.b.setText("QQ视频通话红包");
+    return false;
+  }
+  
+  public void i()
+  {
+    if (!this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletMsg.isSend())
+    {
+      this.jdField_a_of_type_Aeam.d.setVisibility(0);
+      return;
+    }
+    super.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeac
  * JD-Core Version:    0.7.0.1
  */

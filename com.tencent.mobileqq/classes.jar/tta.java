@@ -1,37 +1,19 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.RecommendFriendActivity;
-import com.tencent.mobileqq.adapter.RecommendFriendAdapter;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.MayknowRecommendManager;
-import java.util.ArrayList;
-import java.util.List;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
-public class tta
-  extends FriendListObserver
+class tta
+  implements MediaPlayer.OnCompletionListener
 {
-  public tta(RecommendFriendActivity paramRecommendFriendActivity) {}
+  tta(tsy paramtsy, tsq paramtsq) {}
   
-  protected void onGetMayKnowRecommend(boolean paramBoolean)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (paramBoolean)
-    {
-      ArrayList localArrayList = RecommendFriendActivity.a(this.a).a();
-      if ((localArrayList != null) && (localArrayList.size() > 0))
-      {
-        RecommendFriendActivity.a(this.a).a(localArrayList);
-        RecommendFriendActivity.a(this.a).setVisibility(8);
-      }
-    }
-    else
-    {
-      return;
-    }
-    RecommendFriendActivity.a(this.a).setVisibility(0);
+    this.jdField_a_of_type_Tsq.a(this.jdField_a_of_type_Tsy);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tta
  * JD-Core Version:    0.7.0.1
  */

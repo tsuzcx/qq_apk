@@ -1,13 +1,12 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
+import ajed;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.ImageView;
-import aofk;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
-import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
 
@@ -20,10 +19,10 @@ public class QQStoryTakeVideoCloseAnimationActivity
   
   static
   {
-    jdField_a_of_type_JavaLangString = AppConstants.ba + "qqstory/animation_cover.jpg";
+    jdField_a_of_type_JavaLangString = ajed.bl + "qqstory/animation_cover.jpg";
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this);
@@ -36,23 +35,23 @@ public class QQStoryTakeVideoCloseAnimationActivity
     return true;
   }
   
-  protected void doOnResume()
+  public void doOnResume()
   {
     super.doOnResume();
-    ThreadManager.getUIHandler().postDelayed(new aofk(this), 150L);
+    ThreadManager.getUIHandler().postDelayed(new QQStoryTakeVideoCloseAnimationActivity.1(this), 150L);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     super.onDestroy();
   }
   
-  protected void onStop()
+  public void onStop()
   {
     super.onStop();
   }
   
-  protected void requestWindowFeature(Intent paramIntent)
+  public void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }

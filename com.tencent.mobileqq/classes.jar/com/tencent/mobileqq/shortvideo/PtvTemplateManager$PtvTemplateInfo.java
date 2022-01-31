@@ -3,8 +3,8 @@ package com.tencent.mobileqq.shortvideo;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.util.JSONUtils;
+import awrn;
+import azxx;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,7 +29,10 @@ public class PtvTemplateManager$PtvTemplateInfo
   public static final int LBS_MACDONALD = 1;
   public static final int LBS_NORMAL_FILTER = 0;
   public static final int NORMAL = 0;
+  public static final int OLD_FILTER = 22;
   public static final int PORTRAIT_FILTER = 7;
+  public static final int PTU_FILTER = 21;
+  public static final int QQ_BIG_HEAD = 20;
   static final String SV_FILTER_DOWNLOAD_TIME = "sv_filter_download_time";
   public static final int YSLD_FILTER = 2;
   public int activityType = 0;
@@ -39,6 +42,10 @@ public class PtvTemplateManager$PtvTemplateInfo
   public boolean advertisement;
   public String androidopenurlheader;
   public String badgeurl;
+  public String bigHeadMd5 = "";
+  public boolean bigHeadModelUsable;
+  public String bigHeadName = "";
+  public String bigHeadUrl = "";
   public int businessID;
   public String buttonbgcolor;
   public int category = 0;
@@ -53,7 +60,7 @@ public class PtvTemplateManager$PtvTemplateInfo
   public String dgStageResmd5;
   public String dgStageResurl;
   public boolean dgStageUsable;
-  public ArrayList doodleInfos;
+  public ArrayList<PtvTemplateManager.DoodleInfo> doodleInfos;
   public boolean downloading;
   public String filtername;
   public int funcType;
@@ -87,7 +94,7 @@ public class PtvTemplateManager$PtvTemplateInfo
   public int type;
   public boolean usable;
   
-  public static List convertFrom(String paramString)
+  public static List<PtvTemplateInfo> convertFrom(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
     do
@@ -104,7 +111,7 @@ public class PtvTemplateManager$PtvTemplateInfo
     return null;
   }
   
-  public static List convertFrom(JSONArray paramJSONArray)
+  public static List<PtvTemplateInfo> convertFrom(JSONArray paramJSONArray)
   {
     if (paramJSONArray == null) {
       return null;
@@ -124,7 +131,7 @@ public class PtvTemplateManager$PtvTemplateInfo
         if (i >= j) {
           break label188;
         }
-        PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateInfo)JSONUtils.a(paramJSONArray.getJSONObject(i), PtvTemplateInfo.class);
+        PtvTemplateInfo localPtvTemplateInfo = (PtvTemplateInfo)azxx.a(paramJSONArray.getJSONObject(i), PtvTemplateInfo.class);
         if (localPtvTemplateInfo == null) {
           break label193;
         }
@@ -193,7 +200,7 @@ public class PtvTemplateManager$PtvTemplateInfo
     localHashMap.put("timems", "" + (l1 - l2));
     localHashMap.put("totalsize", "" + this.totalLen);
     localHashMap.put("success", "" + this.usable);
-    StatisticCollector.a(VideoEnvironment.a()).a(null, "sv_filter_download_time", true, 0L, 0L, localHashMap, "");
+    awrn.a(VideoEnvironment.a()).a(null, "sv_filter_download_time", true, 0L, 0L, localHashMap, "");
   }
   
   public String getLbsActivityType(int paramInt)
@@ -223,7 +230,7 @@ public class PtvTemplateManager$PtvTemplateInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,45 @@
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ysy
-  implements Runnable
+  extends ysw
 {
-  public ysy(ApolloSurfaceView paramApolloSurfaceView) {}
-  
-  public void run()
+  public ysy(JSONObject paramJSONObject)
   {
-    if (this.a.mIsDestroy.get()) {
-      return;
-    }
-    if (this.a.mSurfaceCallBackData != null)
+    a(paramJSONObject);
+  }
+  
+  public String a()
+  {
+    String str = super.a();
+    try
     {
-      ApolloSurfaceView.access$901(this.a, this.a.mSurfaceCallBackData.jdField_a_of_type_AndroidViewSurfaceHolder, this.a.mSurfaceCallBackData.jdField_a_of_type_Int, this.a.mSurfaceCallBackData.b, this.a.mSurfaceCallBackData.c);
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloSurfaceView", 2, new Object[] { "mSurfaceChangeRunnable mSurfaceCallBackData:", this.a.mSurfaceCallBackData });
-      }
+      Object localObject = new JSONObject(str);
+      ((JSONObject)localObject).put("patchName", this.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("patchUrl", this.b);
+      ((JSONObject)localObject).put("patchSize", this.jdField_a_of_type_Int);
+      localObject = ((JSONObject)localObject).toString();
+      return localObject;
     }
-    ApolloSurfaceView.access$1002(this.a, false);
+    catch (JSONException localJSONException)
+    {
+      QLog.d("PatchLogTag", 1, "DexPatchItemConfigArtLM writeToJsonString", localJSONException);
+    }
+    return str;
+  }
+  
+  protected void a(JSONObject paramJSONObject)
+  {
+    super.a(paramJSONObject);
+    this.jdField_a_of_type_JavaLangString = paramJSONObject.optString("patchName", null);
+    this.b = paramJSONObject.optString("patchUrl", null);
+    this.jdField_a_of_type_Int = paramJSONObject.optInt("patchSize", 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ysy
  * JD-Core Version:    0.7.0.1
  */

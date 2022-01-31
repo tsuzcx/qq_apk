@@ -1,0 +1,201 @@
+package com.tencent.biz.subscribe.widget.relativevideo;
+
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFollowRcmd;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.content.Context;
+import android.support.annotation.RequiresApi;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import awmc;
+import been;
+import com.tencent.biz.subscribe.baseUI.BaseWidgetView;
+import com.tencent.biz.subscribe.widget.textview.FollowTextView;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.widget.SquareImageView;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import vvr;
+import vvy;
+import wgp;
+import wye;
+
+public class BlankRecommendItemView
+  extends BaseWidgetView<CertifiedAccountMeta.StFollowRcmd>
+  implements View.OnClickListener
+{
+  private View jdField_a_of_type_AndroidViewView;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private FollowTextView jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView;
+  private SquareImageView jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView;
+  private ArrayList<wgp> jdField_a_of_type_JavaUtilArrayList;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
+  private TextView jdField_b_of_type_AndroidWidgetTextView;
+  private TextView c;
+  
+  public BlankRecommendItemView(Context paramContext)
+  {
+    super(paramContext);
+  }
+  
+  private String a(int paramInt)
+  {
+    DecimalFormat localDecimalFormat;
+    if (paramInt >= 10000)
+    {
+      localDecimalFormat = new DecimalFormat(".#");
+      return localDecimalFormat.format(paramInt / 10000.0D) + "W";
+    }
+    if (paramInt >= 1000)
+    {
+      localDecimalFormat = new DecimalFormat(".#");
+      return localDecimalFormat.format(paramInt / 1000.0D) + "K";
+    }
+    return String.valueOf(paramInt);
+  }
+  
+  public int a()
+  {
+    return 2131493111;
+  }
+  
+  public View.OnClickListener a()
+  {
+    return null;
+  }
+  
+  public View a()
+  {
+    return this;
+  }
+  
+  @RequiresApi(api=8)
+  protected void a(CertifiedAccountMeta.StFollowRcmd paramStFollowRcmd)
+  {
+    if ((paramStFollowRcmd == null) || (!paramStFollowRcmd.user.has())) {
+      return;
+    }
+    CertifiedAccountMeta.StUser localStUser = (CertifiedAccountMeta.StUser)paramStFollowRcmd.user.get();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.getLayoutParams().width = awmc.a(36.0F);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.getLayoutParams().height = awmc.a(36.0F);
+    vvr.a(localStUser.icon.get(), this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(localStUser.nick.get());
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(String.format("%s%s", new Object[] { this.jdField_b_of_type_AndroidWidgetTextView.getContext().getString(2131654037), a(paramStFollowRcmd.fansCount.get()) }));
+    String str = paramStFollowRcmd.reason.get();
+    if (TextUtils.isEmpty(str)) {
+      str = localStUser.desc.get();
+    }
+    for (;;)
+    {
+      this.c.setText(str);
+      this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.setUserData(localStUser);
+      this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.setExtraTypeInfo(a());
+      paramStFollowRcmd = paramStFollowRcmd.feedList.get();
+      int i = 0;
+      if (i < 3)
+      {
+        if (been.a(i, paramStFollowRcmd)) {
+          ((wgp)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(null);
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          ((wgp)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a((CertifiedAccountMeta.StFeed)paramStFollowRcmd.get(i));
+        }
+      }
+      wye.b(localStUser.id.get(), "auth_follow", "blank_content_exp", 0, 0, new String[] { "", this.jdField_b_of_type_Int + "", localStUser.nick.get(), str });
+      return;
+    }
+  }
+  
+  public void a(Context paramContext, View paramView)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)findViewById(2131302878));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131312231));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131312230));
+    this.c = ((TextView)findViewById(2131312232));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131299708);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
+    this.c.setOnClickListener(this);
+    this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView = ((FollowTextView)findViewById(2131312355));
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    }
+    this.jdField_a_of_type_JavaUtilArrayList.add(new wgp(this, findViewById(2131309620), 1));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new wgp(this, findViewById(2131309621), 2));
+    this.jdField_a_of_type_JavaUtilArrayList.add(new wgp(this, findViewById(2131309622), 3));
+  }
+  
+  protected void onAttachedToWindow()
+  {
+    super.onAttachedToWindow();
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    }
+    CertifiedAccountMeta.StFollowRcmd localStFollowRcmd;
+    do
+    {
+      return;
+      localStFollowRcmd = (CertifiedAccountMeta.StFollowRcmd)a();
+      vvy.a(getContext(), localStFollowRcmd.user.id.get());
+      if (2131302878 == paramView.getId())
+      {
+        wye.b(localStFollowRcmd.user.id.get(), "auth_follow", "blank_head_clk", 0, 0, new String[] { "", "", localStFollowRcmd.user.nick.get() });
+        return;
+      }
+    } while (2131312231 != paramView.getId());
+    wye.b(localStFollowRcmd.user.id.get(), "auth_follow", "blank_name_clk", 0, 0, new String[] { "", "", localStFollowRcmd.user.nick.get() });
+  }
+  
+  protected void onDetachedFromWindow()
+  {
+    super.onDetachedFromWindow();
+  }
+  
+  public void setIsInNightMode(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView.setFilterColor(1711276032);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-5723992);
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-10132123);
+      this.c.setTextColor(-10132123);
+      this.jdField_a_of_type_ComTencentBizSubscribeWidgetTextviewFollowTextView.setIsInNightMode(this.jdField_a_of_type_Boolean);
+      this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-9211021);
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        wgp localwgp = (wgp)localIterator.next();
+        if (localwgp != null) {
+          localwgp.a();
+        }
+      }
+    }
+  }
+  
+  public void setPos(int paramInt)
+  {
+    this.jdField_b_of_type_Int = paramInt;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+ * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.BlankRecommendItemView
+ * JD-Core Version:    0.7.0.1
+ */

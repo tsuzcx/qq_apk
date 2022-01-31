@@ -1,25 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.GLTextureView;
+import android.os.Bundle;
 
-public class aoir
-  implements Runnable
+class aoir
+  implements aoix
 {
-  public aoir(GLTextureView paramGLTextureView) {}
-  
-  public void run()
-  {
-    GLTextureView.a(this.a).a(this.a.getWidth(), this.a.getHeight());
-    if (QLog.isColorLevel()) {
-      QLog.d("GLTextureView", 2, "TextureView mCheckAlphaTask,alpha:" + GLTextureView.a(this.a));
-    }
-    if (GLTextureView.a(this.a) != 1.0F) {
-      GLTextureView.a(this.a, 1.0F);
-    }
-  }
+  aoir(aoip paramaoip, boolean paramBoolean, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, long paramLong2, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoir
  * JD-Core Version:    0.7.0.1
  */

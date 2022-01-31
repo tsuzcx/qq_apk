@@ -1,14 +1,14 @@
 package cooperation.qzone.model;
 
-import anbv;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bfvy;
 
 public class CoverCacheData$GameCoverInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new anbv();
+  public static final Parcelable.Creator<GameCoverInfo> CREATOR = new bfvy();
   public double a;
   public int a;
   public String a;

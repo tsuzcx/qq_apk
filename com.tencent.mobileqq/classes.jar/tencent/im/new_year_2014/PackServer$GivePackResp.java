@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class PackServer$GivePackResp
-  extends MessageMicro
+  extends MessageMicro<GivePackResp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField data = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -22,7 +22,7 @@ public final class PackServer$GivePackResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.new_year_2014.PackServer.GivePackResp
  * JD-Core Version:    0.7.0.1
  */

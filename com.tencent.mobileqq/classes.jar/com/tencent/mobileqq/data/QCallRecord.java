@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.data;
 
+import ajjy;
+import akbm;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
-import com.tencent.mobileqq.persistence.Entity;
+import atmo;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -12,7 +13,7 @@ import java.util.Locale;
 import java.util.Random;
 
 public class QCallRecord
-  extends Entity
+  extends atmo
 {
   private static final int Kilo = 1000;
   public static int TYPE_DATE = 0;
@@ -47,7 +48,7 @@ public class QCallRecord
   
   public static String getTableName(String paramString, int paramInt)
   {
-    return "qc_" + paramInt + "_" + MsgProxyUtils.a(paramString);
+    return "qc_" + paramInt + "_" + akbm.a(paramString);
   }
   
   public void createMessageUniseq()
@@ -74,10 +75,10 @@ public class QCallRecord
     Calendar localCalendar2 = Calendar.getInstance();
     localCalendar2.setTimeInMillis(System.currentTimeMillis());
     if ((localCalendar1.get(1) == localCalendar2.get(1)) && (localCalendar1.get(6) == localCalendar2.get(6))) {
-      return "今天";
+      return ajjy.a(2131643796);
     }
     if ((localCalendar1.get(1) == localCalendar2.get(1)) && (localCalendar1.get(6) + 1 == localCalendar2.get(6))) {
-      return "昨天";
+      return ajjy.a(2131643794);
     }
     if ((localCalendar1.get(1) == localCalendar2.get(1)) && (localCalendar1.get(6) > localCalendar2.get(6) - 7)) {}
     switch (localCalendar1.get(7))
@@ -85,19 +86,19 @@ public class QCallRecord
     default: 
       return new SimpleDateFormat("yy-MM-dd").format(localDate);
     case 1: 
-      return "星期日";
+      return ajjy.a(2131643788);
     case 2: 
-      return "星期一";
+      return ajjy.a(2131643791);
     case 3: 
-      return "星期二";
+      return ajjy.a(2131643790);
     case 4: 
-      return "星期三";
+      return ajjy.a(2131643792);
     case 5: 
-      return "星期四";
+      return ajjy.a(2131643795);
     case 6: 
-      return "星期五";
+      return ajjy.a(2131643798);
     }
-    return "星期六";
+    return ajjy.a(2131643793);
   }
   
   public String getTableName()
@@ -125,7 +126,7 @@ public class QCallRecord
         l2 = l3 / 60L;
         l3 %= 60L;
         if (l2 <= 0L) {
-          break label274;
+          break label283;
         }
         localObject = String.format(Locale.CHINA, "%02d:%02d:%02d", new Object[] { Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(l1) });
       }
@@ -146,19 +147,19 @@ public class QCallRecord
     {
       label189:
       if (k != 0) {}
-      for (localObject = "" + k + "小时";; localObject = "")
+      for (localObject = "" + k + ajjy.a(2131643789);; localObject = "")
       {
         if (j != 0) {
-          localObject = (String)localObject + j + "分钟";
+          localObject = (String)localObject + j + ajjy.a(2131643797);
         }
         for (;;)
         {
-          return (String)localObject + i + "秒钟";
-          label274:
+          return (String)localObject + i + ajjy.a(2131643787);
+          label283:
           localObject = String.format(Locale.CHINA, "%02d:%02d", new Object[] { Long.valueOf(l3), Long.valueOf(l1) });
           break;
           if (localObject.length != 3) {
-            break label354;
+            break label363;
           }
           k = Integer.parseInt(localObject[0]);
           j = Integer.parseInt(localObject[1]);
@@ -167,7 +168,7 @@ public class QCallRecord
           return "";
         }
       }
-      label354:
+      label363:
       i = 0;
       k = 0;
     }

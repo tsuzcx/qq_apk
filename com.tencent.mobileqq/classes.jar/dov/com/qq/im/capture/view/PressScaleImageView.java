@@ -5,11 +5,12 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ImageView;
+import bhpm;
 
 public class PressScaleImageView
   extends ImageView
 {
-  private final PressScaleAnimDelegate a;
+  private final bhpm a;
   public boolean a;
   
   public PressScaleImageView(Context paramContext)
@@ -26,18 +27,18 @@ public class PressScaleImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_DovComQqImCaptureViewPressScaleAnimDelegate = new PressScaleAnimDelegate(this);
+    this.jdField_a_of_type_Bhpm = new bhpm(this);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_DovComQqImCaptureViewPressScaleAnimDelegate.a())
+    if (this.jdField_a_of_type_Bhpm.a())
     {
       paramCanvas.save();
-      this.jdField_a_of_type_DovComQqImCaptureViewPressScaleAnimDelegate.a(paramCanvas);
+      this.jdField_a_of_type_Bhpm.a(paramCanvas);
     }
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_DovComQqImCaptureViewPressScaleAnimDelegate.a()) {
+    if (this.jdField_a_of_type_Bhpm.a()) {
       paramCanvas.restore();
     }
   }
@@ -51,7 +52,7 @@ public class PressScaleImageView
     {
       return super.onTouchEvent(paramMotionEvent);
       if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_DovComQqImCaptureViewPressScaleAnimDelegate.a();
+        this.jdField_a_of_type_Bhpm.a();
       }
     }
   }

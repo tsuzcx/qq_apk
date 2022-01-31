@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.ark;
 
+import alfu;
 import android.content.Context;
 import android.view.MotionEvent;
+import babp;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout.StickerDismissGestureDetector;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
 
 public class ArkTopGestureLayout
   extends TopGestureLayout
@@ -17,9 +18,9 @@ public class ArkTopGestureLayout
     this.jdField_a_of_type_Int = 10;
   }
   
-  protected void a(Context paramContext)
+  public void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new ArkTopGestureLayout.ArkEdgeTopGestureDetector(this, paramContext);
+    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new alfu(this, paramContext);
     this.mTopGestureDetector = new TopGestureLayout.StickerDismissGestureDetector(this, paramContext, this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener);
     this.defaultGestureDetector = this.mTopGestureDetector;
   }
@@ -27,7 +28,7 @@ public class ArkTopGestureLayout
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool = false;
-    if (paramMotionEvent.getX() <= this.jdField_a_of_type_Int / 100.0F * (float)DeviceInfoUtil.j()) {}
+    if (paramMotionEvent.getX() <= this.jdField_a_of_type_Int / 100.0F * (float)babp.i()) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {

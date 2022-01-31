@@ -1,21 +1,12 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.util.DanceGameReporter;
-import com.tencent.mobileqq.shortvideo.dancegame.DanceGameVideoManager;
-
-public class ahnp
-  implements Runnable
+public abstract interface ahnp
 {
-  public ahnp(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment, long paramLong) {}
+  public abstract void a(float paramFloat);
   
-  public void run()
-  {
-    DanceGameVideoManager.a().a();
-    DanceGameReporter.a().a(this.jdField_a_of_type_Long);
-  }
+  public abstract void a(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahnp
  * JD-Core Version:    0.7.0.1
  */

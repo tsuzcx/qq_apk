@@ -1,19 +1,34 @@
-import dov.com.qq.im.capture.text.CaptureComboText;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.view.animation.Interpolator;
 
-public class anwd
-  implements Runnable
+class anwd
+  implements Interpolator
 {
-  public anwd(CaptureComboText paramCaptureComboText, DoodleLayout paramDoodleLayout) {}
+  anwd(anvy paramanvy) {}
   
-  public void run()
+  public float getInterpolation(float paramFloat)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(0, Boolean.valueOf(false));
+    if (paramFloat == 0.0F) {
+      return 0.0F;
+    }
+    float f = paramFloat * 2.0F;
+    if (f >= 2.0F) {
+      return 1.0F;
+    }
+    paramFloat = 0.45F / 4.0F;
+    if (f < 1.0F)
+    {
+      f -= 1.0F;
+      d = Math.pow(2.0D, 10.0F * f);
+      return (float)(Math.sin((f - paramFloat) * 6.283185307179586D / 0.45F) * (-0.5D * d));
+    }
+    f -= 1.0F;
+    double d = Math.pow(2.0D, -10.0F * f);
+    return (float)(Math.sin((f - paramFloat) * 6.283185307179586D / 0.45F) * (0.5D * d)) + 1.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anwd
  * JD-Core Version:    0.7.0.1
  */

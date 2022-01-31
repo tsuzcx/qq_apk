@@ -1,25 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
+import com.tencent.biz.subscribe.component.base.ComponentPageView;
 
 public class wby
-  implements ValueAnimator.AnimatorUpdateListener
+  implements SwipeRefreshLayout.OnRefreshListener
 {
-  public wby(PublicAccountChatPie paramPublicAccountChatPie, View paramView, int paramInt1, int paramInt2) {}
+  public wby(ComponentPageView paramComponentPageView) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onRefresh()
   {
-    float f1 = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() / 100.0F;
-    paramValueAnimator = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    float f2 = this.jdField_a_of_type_Int;
-    paramValueAnimator.height = ((int)(f1 * (this.b - this.jdField_a_of_type_Int) + f2));
-    this.jdField_a_of_type_AndroidViewView.requestLayout();
+    if (this.a.a != null) {
+      this.a.a.b();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wby
  * JD-Core Version:    0.7.0.1
  */

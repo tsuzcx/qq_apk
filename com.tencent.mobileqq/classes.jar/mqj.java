@@ -1,15 +1,12 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetDecoder;
 
-public class mqj
-  implements MessageQueue.IdleHandler
+final class mqj
+  extends ThreadLocal<CharsetDecoder>
 {
-  public mqj(FastWebActivity paramFastWebActivity) {}
-  
-  public boolean queueIdle()
+  protected CharsetDecoder a()
   {
-    FastWebActivity.a(this.a, FastWebActivity.a(this.a));
-    return false;
+    return Charset.forName("UTF-8").newDecoder();
   }
 }
 

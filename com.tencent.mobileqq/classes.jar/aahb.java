@@ -1,33 +1,17 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
-import com.tencent.mobileqq.ar.ARRenderModel.CameraRendererable;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class aahb
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aahb(CameraRendererable paramCameraRendererable) {}
+  public aahb(ChatHistory paramChatHistory) {}
   
-  public void run()
-  {
-    if (CameraRendererable.a(this.a) != null) {}
-    try
-    {
-      CameraRendererable.a(this.a).f();
-      return;
-    }
-    catch (Exception localException)
-    {
-      do
-      {
-        localException.printStackTrace();
-      } while (!QLog.isColorLevel());
-      QLog.d(CameraRendererable.a(), 2, "requestRender", localException);
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aahb
  * JD-Core Version:    0.7.0.1
  */

@@ -15,19 +15,19 @@ public final class a
   static PushRegisterInfo o;
   static NotifyRegisterInfo p;
   static CommandCallbackerInfo q;
-  public int a;
+  public int a = 0;
   public String b = "";
-  public long c;
-  public long d;
-  public long e;
-  public long f;
-  public long g;
-  public long h;
+  public long c = 0L;
+  public long d = 0L;
+  public long e = 0L;
+  public long f = 0L;
+  public long g = 0L;
+  public long h = 0L;
   public String i = "";
   public String j = "";
-  public PushRegisterInfo k;
-  public NotifyRegisterInfo l;
-  public CommandCallbackerInfo m;
+  public PushRegisterInfo k = null;
+  public NotifyRegisterInfo l = null;
+  public CommandCallbackerInfo m = null;
   public String n = "";
   
   public a() {}

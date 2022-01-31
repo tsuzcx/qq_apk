@@ -8,22 +8,22 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import bbms;
+import bcds;
 import com.tencent.common.app.AppInterface;
-import com.tencent.device.utils.SmartDeviceReport;
-import com.tencent.device.utils.SmartDeviceUtil;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.open.base.LogUtility;
 import com.tencent.widget.Switch;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import qfi;
-import qfk;
-import qfl;
+import xvb;
+import xvc;
+import xvd;
+import yds;
+import ydt;
 
 public class DeviceMsgSettingActivity
   extends IphoneTitleBarActivity
@@ -32,10 +32,10 @@ public class DeviceMsgSettingActivity
   public Handler a;
   public CompoundButton a;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  public bbms a;
   AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  public QQProgressDialog a;
   String jdField_a_of_type_JavaLangString;
-  public ArrayList a;
+  public ArrayList<xvd> a;
   public String b;
   public String c;
   
@@ -67,7 +67,7 @@ public class DeviceMsgSettingActivity
         paramString = "set_device_property";
       }
     }
-    SmartDeviceUtil.a(paramString, localBundle, i, null, this.app, new qfk(this));
+    ydt.a(paramString, localBundle, i, null, this.app, new xvc(this));
   }
   
   private void b()
@@ -91,12 +91,12 @@ public class DeviceMsgSettingActivity
         str1 = "get_device_property";
       }
     }
-    SmartDeviceUtil.a(str1, localBundle, i, null, this.jdField_a_of_type_ComTencentCommonAppAppInterface, new qfi(this));
+    ydt.a(str1, localBundle, i, null, this.jdField_a_of_type_ComTencentCommonAppAppInterface, new xvb(this));
   }
   
   private void c()
   {
-    Object localObject = (TextView)super.findViewById(2131364256);
+    Object localObject = (TextView)super.findViewById(2131310213);
     if (localObject != null)
     {
       if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
@@ -105,7 +105,7 @@ public class DeviceMsgSettingActivity
     }
     else
     {
-      localObject = super.findViewById(2131364257);
+      localObject = super.findViewById(2131310207);
       if (localObject != null)
       {
         if (this.jdField_a_of_type_JavaUtilArrayList.size() != 0) {
@@ -116,14 +116,14 @@ public class DeviceMsgSettingActivity
     }
     for (;;)
     {
-      localObject = super.findViewById(2131364254);
+      localObject = super.findViewById(2131310208);
       if (localObject != null)
       {
         if (this.jdField_a_of_type_JavaUtilArrayList.size() != 0) {
           break label107;
         }
         ((View)localObject).setVisibility(0);
-        LogUtility.c("DeviceMsgSettingActivity", "show none background");
+        bcds.c("DeviceMsgSettingActivity", "show none background");
       }
       return;
       ((TextView)localObject).setVisibility(0);
@@ -132,7 +132,7 @@ public class DeviceMsgSettingActivity
       ((View)localObject).setVisibility(0);
     }
     label107:
-    LogUtility.c("DeviceMsgSettingActivity", "hide none background");
+    bcds.c("DeviceMsgSettingActivity", "hide none background");
     ((View)localObject).setVisibility(8);
   }
   
@@ -143,10 +143,10 @@ public class DeviceMsgSettingActivity
     int i = 0;
     if (i < j)
     {
-      qfl localqfl = (qfl)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      xvd localxvd = (xvd)this.jdField_a_of_type_JavaUtilArrayList.get(i);
       FormSwitchItem localFormSwitchItem = new FormSwitchItem(this, null);
       localFormSwitchItem.setBgType(0);
-      localFormSwitchItem.setText(localqfl.jdField_a_of_type_JavaLangString);
+      localFormSwitchItem.setText(localxvd.jdField_a_of_type_JavaLangString);
       localFormSwitchItem.setFocusable(true);
       label76:
       Switch localSwitch;
@@ -154,8 +154,8 @@ public class DeviceMsgSettingActivity
       {
         localFormSwitchItem.setBgType(0);
         localSwitch = localFormSwitchItem.a();
-        localSwitch.setTag(Integer.valueOf(localqfl.jdField_a_of_type_Int));
-        if (localqfl.b != 1) {
+        localSwitch.setTag(Integer.valueOf(localxvd.jdField_a_of_type_Int));
+        if (localxvd.b != 1) {
           break label173;
         }
       }
@@ -183,42 +183,42 @@ public class DeviceMsgSettingActivity
     }
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130968913);
-    super.setTitle(2131427784);
+    super.setContentView(2131493407);
+    super.setTitle(2131626021);
     paramBundle = super.getIntent();
     this.b = String.valueOf(paramBundle.getIntExtra("pid", 0));
     this.c = paramBundle.getStringExtra("din");
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)super.getAppRuntime());
     this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, super.getTitleBarHeight());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131364258));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131427801);
-    if ((!super.isFinishing()) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+    this.jdField_a_of_type_Bbms = new bbms(this, super.getTitleBarHeight());
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131310205));
+    this.jdField_a_of_type_Bbms.c(2131627382);
+    if ((!super.isFinishing()) && (!this.jdField_a_of_type_Bbms.isShowing())) {
+      this.jdField_a_of_type_Bbms.show();
     }
     b();
-    SmartDeviceReport.a(this.app, Long.parseLong(this.c), "Usr_MsgMgr_Open", 0, 0, Integer.parseInt(this.b));
+    yds.a(this.app, Long.parseLong(this.c), "Usr_MsgMgr_Open", 0, 0, Integer.parseInt(this.b));
     return true;
   }
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     int j = ((Integer)paramCompoundButton.getTag()).intValue();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131427805);
-    if ((!super.isFinishing()) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+    this.jdField_a_of_type_Bbms.c(2131653500);
+    if ((!super.isFinishing()) && (!this.jdField_a_of_type_Bbms.isShowing())) {
+      this.jdField_a_of_type_Bbms.show();
     }
     JSONArray localJSONArray = new JSONArray();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      Object localObject = (qfl)localIterator.next();
-      if (((qfl)localObject).jdField_a_of_type_Int == j)
+      Object localObject = (xvd)localIterator.next();
+      if (((xvd)localObject).jdField_a_of_type_Int == j)
       {
-        int k = ((qfl)localObject).b;
+        int k = ((xvd)localObject).b;
         long l;
         if (paramBoolean)
         {
@@ -235,7 +235,7 @@ public class DeviceMsgSettingActivity
         label159:
         for (int i = 1;; i = 2)
         {
-          SmartDeviceReport.a(paramCompoundButton, l, "Usr_MsgMgr_Setting", i, 1, Integer.parseInt(this.b));
+          yds.a(paramCompoundButton, l, "Usr_MsgMgr_Setting", i, 1, Integer.parseInt(this.b));
           return;
           i = 0;
           break;
@@ -245,7 +245,7 @@ public class DeviceMsgSettingActivity
           try
           {
             label164:
-            localObject = new JSONObject().put("id", ((qfl)localObject).jdField_a_of_type_Int);
+            localObject = new JSONObject().put("id", ((xvd)localObject).jdField_a_of_type_Int);
             if (!paramBoolean) {
               break label218;
             }

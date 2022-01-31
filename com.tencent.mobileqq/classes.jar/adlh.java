@@ -1,21 +1,398 @@
-import com.tencent.mobileqq.filemanager.fileviewer.model.DeviceFileModel;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnTransEventListener;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.Build.VERSION;
+import android.os.Environment;
+import android.os.Handler;
+import android.os.HandlerThread;
+import android.os.Looper;
+import android.os.Message;
+import android.os.SystemClock;
+import android.preference.PreferenceManager;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPoke;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.vas.LzmaUtils;
+import com.tencent.qphone.base.BaseConstants;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.FitSystemWindowsRelativeLayout;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import mqq.os.MqqHandler;
 
-class adlh
-  implements Runnable
+public class adlh
 {
-  adlh(adlg paramadlg) {}
+  public static long a;
+  private static adlh jdField_a_of_type_Adlh;
+  public static final String a;
+  public static long b;
+  public static final String b;
+  public Handler a;
+  public HandlerThread a;
+  HashMap<String, adli> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public MqqHandler a;
+  adlj[] jdField_a_of_type_ArrayOfAdlj = null;
+  private ArrayList[] jdField_a_of_type_ArrayOfJavaUtilArrayList = new ArrayList[6];
+  private ArrayList[] b;
   
-  public void run()
+  static
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.f();
+    jdField_a_of_type_JavaLangString = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Tencent/MobileQQ/poke/";
+    jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString + "/dazhao_motion/dazhao_move.png";
+    jdField_a_of_type_Long = 1500L;
+  }
+  
+  private adlh()
+  {
+    this.jdField_b_of_type_ArrayOfJavaUtilArrayList = new ArrayList[6];
+    int i = 0;
+    while (i < this.jdField_a_of_type_ArrayOfJavaUtilArrayList.length)
+    {
+      this.jdField_a_of_type_ArrayOfJavaUtilArrayList[i] = null;
+      i += 1;
     }
+    i = 0;
+    while (i < this.jdField_b_of_type_ArrayOfJavaUtilArrayList.length)
+    {
+      this.jdField_b_of_type_ArrayOfJavaUtilArrayList[i] = null;
+      i += 1;
+    }
+    this.jdField_a_of_type_ArrayOfAdlj = new adlj[6];
+    adlj[] arrayOfadlj = this.jdField_a_of_type_ArrayOfAdlj;
+    int k = arrayOfadlj.length;
+    i = j;
+    while (i < k)
+    {
+      adlj localadlj = arrayOfadlj[i];
+      localadlj = new adlj(this);
+      localadlj.jdField_a_of_type_Int = 1;
+      localadlj.jdField_a_of_type_Long = -1L;
+      i += 1;
+    }
+    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("PokeAIOAnimThread");
+    this.jdField_a_of_type_AndroidOsHandlerThread.start();
+    this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+  }
+  
+  public static adlh a()
+  {
+    if (jdField_a_of_type_Adlh == null) {}
+    try
+    {
+      if (jdField_a_of_type_Adlh == null) {
+        jdField_a_of_type_Adlh = new adlh();
+      }
+      return jdField_a_of_type_Adlh;
+    }
+    finally {}
+  }
+  
+  private void a(String paramString, Context paramContext)
+  {
+    File localFile1 = new File(paramString);
+    if ((localFile1.exists()) && (localFile1.isDirectory()))
+    {
+      String[] arrayOfString = localFile1.list();
+      int j = arrayOfString.length;
+      int i = 0;
+      if (i < j)
+      {
+        String str1 = arrayOfString[i];
+        if (QLog.isColorLevel()) {
+          QLog.d("LzmaUtils", 2, "deal current file:" + str1);
+        }
+        if (new File(paramString + "/" + str1).isDirectory()) {
+          a(paramString + "/" + str1, paramContext);
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (str1.endsWith("7z"))
+          {
+            String str2 = str1.split("\\.")[0];
+            if (QLog.isColorLevel()) {
+              QLog.d("LzmaUtils", 2, "dirName:" + str2);
+            }
+            File localFile2 = new File(localFile1, str2);
+            if (localFile2.exists()) {
+              bace.a(str2, false);
+            }
+            localFile2.mkdir();
+            LzmaUtils.a(paramContext, paramString + "/" + str1, localFile2.getAbsolutePath());
+            bace.a(paramString + "/" + str1, true);
+          }
+        }
+      }
+    }
+  }
+  
+  public int a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PokeMsg", 2, "Strength D_HIT_TIME_MS" + jdField_b_of_type_Long + "curFriendUin" + paramString + "type" + paramInt1 + "status" + paramInt3);
+    }
+    long l1;
+    if (jdField_b_of_type_Long == 0L)
+    {
+      localObject1 = PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp());
+      localObject2 = paramQQAppInterface.getAccount();
+      l1 = ((SharedPreferences)localObject1).getLong((String)localObject2 + "_" + "aio_poke_strength_rule_interval", 0L) * 1000L;
+      jdField_b_of_type_Long = l1;
+      if (l1 == 0L)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("PokeMsg", 2, "Strength D_HIT_TIME_MS is not ready");
+        }
+        return 0;
+      }
+    }
+    if (TextUtils.isEmpty(paramString)) {
+      return 0;
+    }
+    if ((!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) || (this.jdField_a_of_type_JavaUtilHashMap.get(paramString) == null))
+    {
+      localObject1 = new adli(this);
+      ((adli)localObject1).jdField_a_of_type_ArrayOfAdlk = new adlk[6];
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localObject1);
+    }
+    Object localObject2 = (adli)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if (localObject2 == null)
+    {
+      paramQQAppInterface = new HashMap();
+      paramQQAppInterface.put(BaseConstants.RDM_NoChangeFailCode, "");
+      awrn.a(BaseApplication.getContext()).a(null, "pokeStrengthNullPoint", false, 0L, 0L, paramQQAppInterface, "");
+      return 0;
+    }
+    Object localObject1 = ((adli)localObject2).jdField_a_of_type_ArrayOfAdlk;
+    paramInt2 = ((adli)localObject2).jdField_a_of_type_Int;
+    if (paramInt1 - 1 == -1) {
+      paramInt1 = 0;
+    }
+    while ((paramInt1 >= 0) && (paramInt1 < 6))
+    {
+      l1 = SystemClock.uptimeMillis();
+      if (localObject1[paramInt1] == null)
+      {
+        localObject1[paramInt1] = new adlk(this);
+        localObject1[paramInt1].jdField_a_of_type_Int = 0;
+        localObject1[paramInt1].jdField_b_of_type_Int = 0;
+        localObject1[paramInt1].jdField_a_of_type_Long = -1L;
+      }
+      if (paramInt3 != -1)
+      {
+        localObject1[paramInt1].jdField_a_of_type_Int = paramInt3;
+        localObject1[paramInt1].jdField_a_of_type_Long = l1;
+        ((adli)localObject2).jdField_a_of_type_Int = paramInt1;
+        return localObject1[paramInt1].jdField_a_of_type_Int;
+        paramInt1 -= 1;
+      }
+      else
+      {
+        if ((paramInt2 == -1) || (localObject1[paramInt1].jdField_a_of_type_Long == -1L))
+        {
+          if (paramInt2 != -1) {
+            awqx.b(paramQQAppInterface, "CliOper", "", paramString, "0X8008914", "0X8008914", 0, 0, "" + localObject1[paramInt2].jdField_b_of_type_Int, "", "", "");
+          }
+          localObject1[paramInt1].jdField_a_of_type_Long = l1;
+          if (QLog.isColorLevel()) {
+            QLog.d("PokeMsg", 2, "Strength first click,type:" + paramInt1 + ".with status " + localObject1[paramInt1].jdField_a_of_type_Int);
+          }
+          ((adli)localObject2).jdField_a_of_type_Int = paramInt1;
+          localObject1[paramInt1].jdField_a_of_type_Int = 0;
+          localObject1[paramInt1].jdField_b_of_type_Int = 1;
+          return localObject1[paramInt1].jdField_a_of_type_Int;
+        }
+        long l2 = localObject1[paramInt1].jdField_a_of_type_Long;
+        localObject1[paramInt1].jdField_a_of_type_Long = l1;
+        if (paramInt2 != paramInt1)
+        {
+          awqx.b(paramQQAppInterface, "CliOper", "", paramString, "0X8008914", "0X8008914", 0, 0, "" + localObject1[paramInt2].jdField_b_of_type_Int, "", "", "");
+          if (QLog.isColorLevel()) {
+            QLog.d("PokeMsg", 2, "Strength click,type:" + paramInt1 + ".with status " + localObject1[paramInt1].jdField_a_of_type_Int + "to 0");
+          }
+          ((adli)localObject2).jdField_a_of_type_Int = paramInt1;
+          localObject1[paramInt1].jdField_a_of_type_Int = 0;
+          localObject1[paramInt1].jdField_b_of_type_Int = 1;
+          return localObject1[paramInt1].jdField_a_of_type_Int;
+        }
+        if (l1 - l2 < jdField_b_of_type_Long)
+        {
+          paramQQAppInterface = localObject1[paramInt1];
+          paramQQAppInterface.jdField_a_of_type_Int += 1;
+          paramQQAppInterface = localObject1[paramInt1];
+          paramQQAppInterface.jdField_b_of_type_Int += 1;
+          if (QLog.isColorLevel()) {
+            QLog.d("PokeMsg", 2, "Strength click ,type:" + paramInt1 + ".with status " + localObject1[paramInt1].jdField_a_of_type_Int);
+          }
+        }
+        for (;;)
+        {
+          if (localObject1[paramInt1].jdField_a_of_type_Int > 3) {
+            localObject1[paramInt1].jdField_a_of_type_Int = 3;
+          }
+          return localObject1[paramInt1].jdField_a_of_type_Int;
+          awqx.b(paramQQAppInterface, "CliOper", "", paramString, "0X8008914", "0X8008914", 0, 0, "" + localObject1[paramInt2].jdField_b_of_type_Int, "", "", "");
+          localObject1[paramInt1].jdField_a_of_type_Int = 0;
+          localObject1[paramInt1].jdField_b_of_type_Int = 1;
+          if (QLog.isColorLevel()) {
+            QLog.d("PokeMsg", 2, "Strength click,type:" + paramInt1 + ".with status " + localObject1[paramInt1].jdField_a_of_type_Int + ",out of time");
+          }
+        }
+      }
+    }
+    if (paramInt2 != -1)
+    {
+      awqx.b(paramQQAppInterface, "CliOper", "", paramString, "0X8008914", "0X8008914", 0, 0, "" + localObject1[paramInt2].jdField_b_of_type_Int, "", "", "");
+      ((adli)localObject2).jdField_a_of_type_Int = -1;
+    }
+    return 0;
+  }
+  
+  public MqqHandler a()
+  {
+    if ((this.jdField_a_of_type_MqqOsMqqHandler == null) || (this.jdField_a_of_type_AndroidOsHandlerThread == null))
+    {
+      this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("PokeAIOAnimThread");
+      this.jdField_a_of_type_AndroidOsHandlerThread.start();
+      this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+    }
+    return this.jdField_a_of_type_MqqOsMqqHandler;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_MqqOsMqqHandler != null) {
+      this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
+    }
+    if (this.jdField_a_of_type_AndroidOsHandlerThread != null)
+    {
+      if (Build.VERSION.SDK_INT < 18) {
+        break label49;
+      }
+      this.jdField_a_of_type_AndroidOsHandlerThread.quitSafely();
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidOsHandlerThread = null;
+      this.jdField_a_of_type_MqqOsMqqHandler = null;
+      return;
+      label49:
+      this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null) {
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(paramInt);
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    Message localMessage;
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      localMessage.what = paramInt1;
+      localMessage.arg1 = paramInt2;
+      if (!paramBoolean) {
+        break label49;
+      }
+    }
+    label49:
+    for (localMessage.arg2 = 1;; localMessage.arg2 = 0)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      return;
+    }
+  }
+  
+  public void a(int paramInt, long paramLong)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      localMessage.what = paramInt;
+      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, paramLong);
+    }
+  }
+  
+  public void a(int paramInt, long paramLong, boolean paramBoolean)
+  {
+    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    {
+      Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      localMessage.what = paramInt;
+      localMessage.obj = Boolean.valueOf(paramBoolean);
+      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, paramLong);
+    }
+  }
+  
+  public void a(View paramView)
+  {
+    paramView = aciy.a(paramView);
+    Object localObject;
+    if (adfq.class.isInstance(paramView))
+    {
+      localObject = (adfq)paramView;
+      if (QLog.isColorLevel()) {
+        QLog.d("GivingHeart", 2, new Object[] { "==>to be remove obj:", Integer.valueOf(((adfq)localObject).jdField_b_of_type_Int) });
+      }
+      if ((((adfq)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForPoke))
+      {
+        paramView = (MessageForPoke)((adfq)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+        if (adll.a(paramView.interactType)) {
+          break label82;
+        }
+      }
+    }
+    label82:
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (paramView.interactType != 6) {
+            break;
+          }
+        } while (!((adfq)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.a());
+        localObject = ((adfq)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.a();
+        paramView.mUnlimitedState.jdField_a_of_type_Int = ((aduf)localObject).jdField_a_of_type_Int;
+        paramView.mUnlimitedState.jdField_b_of_type_Int = ((aduf)localObject).jdField_b_of_type_Int;
+        paramView.mUnlimitedState.jdField_a_of_type_Long = ((aduf)localObject).jdField_a_of_type_Long;
+        paramView.mFrameState.c = ((aduf)localObject).jdField_b_of_type_Boolean;
+        paramView.mFrameState.jdField_a_of_type_Boolean = ((aduf)localObject).jdField_a_of_type_Boolean;
+        return;
+        localObject = ((adfq)localObject).jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getBackground();
+      } while (!(localObject instanceof CustomFrameAnimationDrawable));
+      localObject = (CustomFrameAnimationDrawable)localObject;
+      ((CustomFrameAnimationDrawable)localObject).f();
+      ((CustomFrameAnimationDrawable)localObject).a(null);
+      if (QLog.isColorLevel()) {
+        QLog.d("GivingHeart", 2, "drawble pause");
+      }
+    } while (paramView.mFrameState.jdField_a_of_type_Int != ((CustomFrameAnimationDrawable)localObject).b());
+    paramView.mFrameState.jdField_a_of_type_Boolean = false;
+    paramView.mFrameState.c = true;
+  }
+  
+  public void a(FitSystemWindowsRelativeLayout paramFitSystemWindowsRelativeLayout)
+  {
+    this.jdField_a_of_type_AndroidOsHandler = new befq(Looper.getMainLooper(), paramFitSystemWindowsRelativeLayout);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adlh
  * JD-Core Version:    0.7.0.1
  */

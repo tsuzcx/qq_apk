@@ -1,103 +1,294 @@
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.utils.TroopRobotManager;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.SystemClock;
+import android.util.Log;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.RegisterProxy;
 import com.tencent.qphone.base.util.QLog;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
+import java.util.HashMap;
 
 public class ajya
-  implements Runnable
+  extends ajmm
 {
-  public ajya(TroopRobotManager paramTroopRobotManager, String paramString1, String paramString2, cmd0x934.RspBody paramRspBody) {}
+  private ajya(RegisterProxy paramRegisterProxy) {}
   
-  public void run()
+  private void h()
   {
-    Object localObject3 = null;
-    Object localObject1 = null;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler1", 2, "stateC2C=" + RegisterProxy.a(this.a) + " stateGroupFirstMsg=" + RegisterProxy.c(this.a));
+    }
+    long l1;
+    long l2;
+    Object localObject1;
+    if ((RegisterProxy.a(this.a) == 2) && (RegisterProxy.c(this.a) == 2))
+    {
+      l1 = SystemClock.uptimeMillis();
+      this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a().c = true;
+      this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a().a(true);
+      if ((BaseApplicationImpl.sLaunchTime < 0L) && (BaseApplicationImpl.sShowTime < 0L))
+      {
+        l2 = BaseApplicationImpl.sLaunchTime + l1;
+        if (!QLog.isColorLevel()) {
+          break label470;
+        }
+        QLog.i("AutoMonitor", 2, "registerB, cost=" + l2);
+        awrn.a(this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApp()).a(null, "prxyRegisterB", true, l2, 0L, null, null);
+      }
+      if (BaseApplicationImpl.appStartTime > 0L)
+      {
+        l2 = BaseApplicationImpl.appStartTime;
+        if ((!BaseApplicationImpl.isCurrentVersionFirstLaunch) || (!BaseApplicationImpl.isFirstLogin)) {
+          break label498;
+        }
+        localObject1 = "1";
+      }
+    }
     for (;;)
     {
-      try
+      Object localObject2 = new HashMap();
+      ((HashMap)localObject2).put("actLoginType", localObject1);
+      awrn.a(this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApp()).a(null, "prxyRegisterT", true, l1 - l2, 0L, (HashMap)localObject2, null);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_Long > 0L)
       {
-        localFileOutputStream = BaseApplication.getContext().openFileOutput("troop_robot_panel_data_" + this.jdField_a_of_type_JavaLangString + "_" + this.b, 0);
-        localObject1 = localFileOutputStream;
-        localObject3 = localFileOutputStream;
-        localFileOutputStream.write(this.jdField_a_of_type_TencentImOidbCmd0x934Cmd0x934$RspBody.toByteArray());
-        localObject1 = localFileOutputStream;
-        localObject3 = localFileOutputStream;
-        localFileOutputStream.flush();
-        localObject1 = localFileOutputStream;
-        localObject3 = localFileOutputStream;
-        localFileOutputStream.close();
-        localObject1 = localFileOutputStream;
-        localObject3 = localFileOutputStream;
-        SharedPreUtils.Y(BaseApplication.getContext(), this.jdField_a_of_type_JavaLangString + "_" + this.b, this.jdField_a_of_type_TencentImOidbCmd0x934Cmd0x934$RspBody.version.get());
-      }
-      catch (IOException localIOException4)
-      {
-        FileOutputStream localFileOutputStream;
-        localObject3 = localIOException1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        localObject3 = localIOException1;
-        QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(localIOException4));
-        if (localIOException1 == null) {
-          continue;
-        }
-        try
+        l1 = System.currentTimeMillis() - this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_Long;
+        if (badq.g(this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApp()))
         {
-          localIOException1.close();
-          return;
-        }
-        catch (IOException localIOException2) {}
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(localIOException2));
-        return;
-      }
-      finally
-      {
-        if (localObject3 == null) {
-          break label210;
+          boolean bool = this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("isFirstQQInit", true);
+          localObject1 = new HashMap();
+          ((HashMap)localObject1).put("param_isFirstInit", String.valueOf(bool));
+          awrn.a(this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApp()).a(null, "prxyRegisterM", RegisterProxy.a(this.a), l1, 0L, (HashMap)localObject1, null);
+          if (QLog.isColorLevel()) {
+            QLog.i("AutoMonitor", 2, "machineStartToStopCircle, cost=" + l1 + ", isfirstQQInit=" + bool);
+          }
         }
       }
-      try
+      if (GuardManager.jdField_a_of_type_ComTencentMobileqqAppGuardManager != null)
       {
-        localFileOutputStream.close();
-        return;
+        localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.getApp();
+        localObject2 = GuardManager.jdField_a_of_type_ComTencentMobileqqAppGuardManager;
+        GuardManager.a((Context)localObject1, GuardManager.jdField_a_of_type_Boolean);
       }
-      catch (IOException localIOException1)
+      return;
+      label470:
+      Log.i("AutoMonitor", "registerB, cost=" + l2);
+      break;
+      label498:
+      if ((BaseApplicationImpl.isCurrentVersionFirstLaunch) && (!BaseApplicationImpl.isFirstLogin)) {
+        localObject1 = "2";
+      } else if ((!BaseApplicationImpl.isCurrentVersionFirstLaunch) && (BaseApplicationImpl.isFirstLogin)) {
+        localObject1 = "3";
+      } else {
+        localObject1 = "4";
+      }
+    }
+  }
+  
+  private void i()
+  {
+    if (this.a.a()) {
+      this.a.a(7);
+    }
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, this.a.jdField_a_of_type_JavaLangString + " on GetPAMsg Fin:" + paramBoolean);
+    }
+    Object localObject = this.a;
+    if (paramBoolean) {}
+    for (int i = 2;; i = 1)
+    {
+      RegisterProxy.e((RegisterProxy)localObject, i);
+      if (!MessageHandler.jdField_a_of_type_Boolean) {
+        break;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.c = true;
+      i();
+      return;
+    }
+    localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator;
+    if (RegisterProxy.b(this.a) == 2) {}
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      ((Automator)localObject).c = paramBoolean;
+      break;
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2)
+  {
+    int j = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, this.a.jdField_a_of_type_JavaLangString + " onGetAllProxyMsgFin:" + paramBoolean + ", timeoutFlag=" + paramLong1 + ", type=" + paramLong2);
+    }
+    RegisterProxy localRegisterProxy;
+    if (paramLong2 == 0L)
+    {
+      localRegisterProxy = this.a;
+      if ((!paramBoolean) || (paramLong1 == 8L) || (paramLong1 == 4L)) {
+        break label218;
+      }
+      i = 2;
+      RegisterProxy.d(localRegisterProxy, i);
+      localRegisterProxy = this.a;
+      if ((!paramBoolean) || (paramLong1 == 128L) || (paramLong1 == 64L) || (paramLong1 == 32L)) {
+        break label224;
+      }
+      i = 2;
+      label144:
+      RegisterProxy.c(localRegisterProxy, i);
+      this.a.jdField_a_of_type_Long = paramLong1;
+      if (MessageHandler.jdField_a_of_type_Boolean)
       {
-        if (QLog.isColorLevel())
-        {
-          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(localIOException1));
-          return;
+        localRegisterProxy = this.a;
+        if (!paramBoolean) {
+          break label230;
+        }
+        i = 2;
+        label179:
+        RegisterProxy.b(localRegisterProxy, i);
+        localRegisterProxy = this.a;
+        if (!paramBoolean) {
+          break label236;
         }
       }
     }
-    try
+    label218:
+    label224:
+    label230:
+    label236:
+    for (int i = j;; i = 1)
     {
-      localObject3.close();
-      label210:
-      throw localObject2;
+      RegisterProxy.e(localRegisterProxy, i);
+      MessageHandler.jdField_a_of_type_Boolean = false;
+      i();
+      return;
+      i = 1;
+      break;
+      i = 1;
+      break label144;
+      i = 1;
+      break label179;
     }
-    catch (IOException localIOException3)
+  }
+  
+  protected void a(boolean paramBoolean, String[] paramArrayOfString)
+  {
+    int i = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, this.a.jdField_a_of_type_JavaLangString + " on GetTroopMsg Fin:" + paramBoolean);
+    }
+    befa.a().h();
+    paramArrayOfString = this.a;
+    if (paramBoolean) {}
+    for (;;)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TroopRobotManager", 2, QLog.getStackTraceString(localIOException3));
-        }
+      RegisterProxy.d(paramArrayOfString, i);
+      i();
+      return;
+      i = 1;
+    }
+  }
+  
+  protected void f(boolean paramBoolean)
+  {
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, this.a.jdField_a_of_type_JavaLangString + " on GetC2CMsg Fin:" + paramBoolean);
+    }
+    befa.a().f();
+    Object localObject = this.a;
+    if (paramBoolean) {}
+    for (int i = 2;; i = 1)
+    {
+      RegisterProxy.b((RegisterProxy)localObject, i);
+      if (!MessageHandler.jdField_a_of_type_Boolean) {
+        break;
       }
+      if (QLog.isColorLevel()) {
+        QLog.d("QQInitHandler", 2, this.a.jdField_a_of_type_JavaLangString + " on GetDiscussionMsg Fin: Receive empty package set isC2CMsgSuccess true");
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b = true;
+      if (MessageHandler.b) {
+        h();
+      }
+      i();
+      return;
+    }
+    localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator;
+    if (RegisterProxy.a(this.a) == 2) {}
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      ((Automator)localObject).b = paramBoolean;
+      break;
+    }
+  }
+  
+  protected void g(boolean paramBoolean)
+  {
+    int i = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "on RegisterProxy Fin:" + paramBoolean);
+    }
+    RegisterProxy localRegisterProxy = this.a;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      RegisterProxy.a(localRegisterProxy, i);
+      if (!paramBoolean) {
+        break;
+      }
+      i();
+      return;
+      i = 1;
+    }
+    this.a.a(6);
+  }
+  
+  protected void h(boolean paramBoolean)
+  {
+    int i = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, this.a.jdField_a_of_type_JavaLangString + " on GetDiscussionMsg Fin:" + paramBoolean);
+    }
+    befa.a().j();
+    RegisterProxy localRegisterProxy = this.a;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      RegisterProxy.c(localRegisterProxy, i);
+      i();
+      return;
+      i = 1;
+    }
+  }
+  
+  protected void i(boolean paramBoolean)
+  {
+    int i = 2;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, this.a.jdField_a_of_type_JavaLangString + " on GetFirstGroup Fin:" + paramBoolean);
+    }
+    RegisterProxy localRegisterProxy = this.a;
+    if (paramBoolean) {}
+    for (;;)
+    {
+      RegisterProxy.f(localRegisterProxy, i);
+      h();
+      return;
+      i = 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajya
  * JD-Core Version:    0.7.0.1
  */

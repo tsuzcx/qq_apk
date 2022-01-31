@@ -1,56 +1,22 @@
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendBaseBuilder;
-import com.tencent.mobileqq.activity.contact.newfriend.PushRecommendBuilder;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class wpn
-  implements AbsListView.OnScrollListener
+class wpn
+  implements View.OnClickListener
 {
-  public wpn(SystemMsgListView paramSystemMsgListView) {}
+  wpn(wpm paramwpm, wpp paramwpp) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (SystemMsgListView.a(this.a) != null)
-    {
-      if ((paramInt != 0) && (paramInt != 1)) {
-        SystemMsgListView.a(this.a).f();
-      }
-    }
-    else {
+    if (wpl.a(wpm.class.getName() + "clickFeed")) {
       return;
     }
-    SystemMsgListView.a(this.a).g();
-    SystemMsgListView.a(this.a).e();
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.newfriendSystemMsgListView", 2, "onScroll firstVisibleItem: " + paramInt1 + " visibleItemCount: " + paramInt2 + " totalItemCount: " + paramInt3);
-    }
-    SystemMsgListView.a(this.a, paramInt1);
-    if (paramInt1 >= 1)
-    {
-      paramAbsListView = (NewFriendBaseBuilder)SystemMsgListView.a(this.a).getItem(paramInt1 - 1);
-      if ((paramAbsListView instanceof PushRecommendBuilder)) {
-        ((PushRecommendBuilder)paramAbsListView).c();
-      }
-    }
-    if (paramInt1 + paramInt2 < paramInt3)
-    {
-      paramAbsListView = (NewFriendBaseBuilder)SystemMsgListView.a(this.a).getItem(paramInt1 + paramInt2);
-      if ((paramAbsListView instanceof PushRecommendBuilder)) {
-        ((PushRecommendBuilder)paramAbsListView).c();
-      }
-    }
+    wpm.a(this.jdField_a_of_type_Wpm).a(this.jdField_a_of_type_Wpp);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wpn
  * JD-Core Version:    0.7.0.1
  */

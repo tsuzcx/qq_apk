@@ -1,30 +1,30 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.SearchArkBabyQInfo;
-import com.tencent.mobileqq.ark.ArkRecommendLogic.SemanticAnalysisResult;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class abex
-  implements Runnable
+public class abex
+  implements DialogInterface.OnClickListener
 {
-  abex(abew paramabew, ArkMessageServerLogic.SearchArkBabyQInfo paramSearchArkBabyQInfo, boolean paramBoolean) {}
+  public abex(NotificationActivity paramNotificationActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Abew.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
-      ArkAppCenter.b("ArkApp.ArkRecommendLogic", String.format("sendBabyQTextIntent, this is null, return", new Object[0]));
-    }
-    ArkRecommendLogic.SemanticAnalysisResult localSemanticAnalysisResult;
-    do
-    {
-      return;
-      localSemanticAnalysisResult = (ArkRecommendLogic.SemanticAnalysisResult)this.jdField_a_of_type_Abew.b.get();
-    } while (localSemanticAnalysisResult == null);
-    localSemanticAnalysisResult.a(this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$SearchArkBabyQInfo, this.jdField_a_of_type_Abew.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Boolean);
+    QLog.i("NotificationActivity", 1, "setNegativeButton.onClick: invoked.  isDialogShow: " + NotificationActivity.a(this.a));
+    paramDialogInterface = new Intent("qqplayer_exit_action");
+    this.a.sendBroadcast(paramDialogInterface);
+    paramDialogInterface = new Bundle();
+    paramDialogInterface.putString("password", null);
+    this.a.startActivity(new Intent(this.a, LoginActivity.class).putExtras(paramDialogInterface).addFlags(67108864));
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abex
  * JD-Core Version:    0.7.0.1
  */

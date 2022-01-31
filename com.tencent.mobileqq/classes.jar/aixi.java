@@ -1,23 +1,19 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.transfile.dns.InnerDns;
-
 public class aixi
-  extends BroadcastReceiver
 {
-  public aixi(InnerDns paramInnerDns) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public aixi(int paramInt, String paramString1, String paramString2)
   {
-    if ("com.tencent.innerdns.domainAddressDataUpdateAction".equals(paramIntent.getAction())) {
-      InnerDns.a(this.a);
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.b = paramString2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aixi
  * JD-Core Version:    0.7.0.1
  */

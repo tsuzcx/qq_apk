@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class ilive$iLiveResponse
-  extends MessageMicro
+  extends MessageMicro<iLiveResponse>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField binary_body = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -34,7 +34,7 @@ public final class ilive$iLiveResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.ilive.iLiveResponse
  * JD-Core Version:    0.7.0.1
  */

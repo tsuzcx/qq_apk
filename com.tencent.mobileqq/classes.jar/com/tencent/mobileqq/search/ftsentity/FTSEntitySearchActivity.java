@@ -2,37 +2,38 @@ package com.tencent.mobileqq.search.ftsentity;
 
 import android.content.Context;
 import android.content.Intent;
+import avmd;
 import com.tencent.mobileqq.search.activity.BaseSearchActivity;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
 
 public class FTSEntitySearchActivity
   extends BaseSearchActivity
 {
-  static String a;
+  static String d;
   
   public static void a(Context paramContext, String paramString, int paramInt)
   {
-    jdField_a_of_type_JavaLangString = paramString;
+    d = paramString;
     Intent localIntent = new Intent(paramContext, FTSEntitySearchActivity.class);
     localIntent.putExtra("keyword", paramString);
     localIntent.putExtra("extra_key_fts_type", paramInt);
     paramContext.startActivity(localIntent);
   }
   
-  protected BaseSearchFragment a()
+  public BaseSearchFragment a()
   {
-    return FTSEntitySearchFragment.a(jdField_a_of_type_JavaLangString);
+    return FTSEntitySearchFragment.a(d);
   }
   
-  protected String a()
+  public String a()
   {
-    return FTSEntitySearchUtils.b(this, this.jdField_a_of_type_Int);
+    return avmd.b(this, this.a);
   }
   
-  protected void doOnStart()
+  public void doOnStart()
   {
     super.doOnStart();
-    com.tencent.mobileqq.utils.fts.SQLiteFTSUtils.FtsItemClickEvent.a = true;
+    bakr.a = true;
   }
 }
 

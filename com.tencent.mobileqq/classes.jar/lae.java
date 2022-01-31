@@ -1,31 +1,47 @@
-import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
-import com.tencent.qphone.base.util.QLog;
+import java.util.Comparator;
 
-public class lae
-  implements Runnable
+class lae
+  implements Comparator<laf>
 {
-  public lae(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment) {}
+  lae(lad paramlad) {}
   
-  public void run()
+  public int a(laf paramlaf1, laf paramlaf2)
   {
-    try
+    int j = -1;
+    int i;
+    if (paramlaf1 == paramlaf2) {
+      i = 0;
+    }
+    do
     {
-      boolean bool = SubscriptRecommendController.a(this.a.a, false, this.a.g);
-      if (QLog.isColorLevel()) {
-        QLog.d("WebLog_WebViewFragment", 2, "set subscribe full recommend switch = false , result : " + bool);
+      do
+      {
+        do
+        {
+          return i;
+          i = j;
+        } while (paramlaf1 == null);
+        if (paramlaf2 == null) {
+          return 1;
+        }
+        if ((!paramlaf1.a()) || (!paramlaf2.a()) || (paramlaf1.d == paramlaf2.d)) {
+          break;
+        }
+        i = j;
+      } while (paramlaf2.d > paramlaf1.d);
+      return 1;
+      if (paramlaf1.b == paramlaf2.b) {
+        break;
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+      i = j;
+    } while (paramlaf2.b > paramlaf1.b);
+    return 1;
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lae
  * JD-Core Version:    0.7.0.1
  */

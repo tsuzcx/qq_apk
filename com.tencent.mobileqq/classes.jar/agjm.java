@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.ar.arengine.ARCloudLBSLocationCheckResult;
-import com.tencent.mobileqq.ar.model.ArLBSActivity;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import java.util.Comparator;
 
-public class agjm
-  implements Runnable
+class agjm
+  implements Comparator<agjj>
 {
-  public agjm(ScanTorchActivity paramScanTorchActivity, ARCloudLBSLocationCheckResult paramARCloudLBSLocationCheckResult, ArLBSActivity paramArLBSActivity) {}
+  agjm(agjk paramagjk) {}
   
-  public void run()
+  public int a(agjj paramagjj1, agjj paramagjj2)
   {
-    ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult, this.jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity);
+    return (int)(paramagjj2.a - paramagjj1.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agjm
  * JD-Core Version:    0.7.0.1
  */

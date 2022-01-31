@@ -1,33 +1,45 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.ProfileShoppingPhotoInfo;
-import com.tencent.mobileqq.profile.view.PhotoViewForShopping;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class agvj
-  implements Runnable
+class agvj
+  extends BroadcastReceiver
 {
-  public agvj(PhotoViewForShopping paramPhotoViewForShopping, ProfileCardInfo paramProfileCardInfo) {}
+  private agvj(agvf paramagvf) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a != null))
+    if ("open_video_callback".equals(paramIntent.getAction())) {}
+    try
     {
-      ProfileShoppingPhotoInfo localProfileShoppingPhotoInfo = ProfileShoppingPhotoInfo.getPhotoInfo(this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a, this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a);
-      if ((localProfileShoppingPhotoInfo != null) && (PhotoViewForShopping.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping) != null))
-      {
-        Message localMessage = Message.obtain();
-        localMessage.what = 200;
-        localMessage.obj = localProfileShoppingPhotoInfo;
-        PhotoViewForShopping.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping).sendMessage(localMessage);
+      int i = paramIntent.getIntExtra("retcode", 4);
+      paramContext = paramIntent.getStringExtra("retmsg");
+      int j = paramIntent.getIntExtra("isDownloaded", -1);
+      long l1 = paramIntent.getLongExtra("played_time", 0L);
+      long l2 = paramIntent.getLongExtra("total_time", 0L);
+      paramIntent = new JSONObject();
+      paramIntent.put("retcode", i);
+      paramIntent.put("retmsg", paramContext);
+      paramIntent.put("played_time", l1);
+      paramIntent.put("total_time", l2);
+      if (j != -1) {
+        paramIntent.put("is_downloaded", j);
       }
+      agvf.a(this.a, "openVideoPlayer", paramIntent.toString());
+      return;
+    }
+    catch (JSONException paramContext)
+    {
+      QLog.e("springHb_SpringFestivalRedpacketJsPlugin", 1, paramContext, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agvj
  * JD-Core Version:    0.7.0.1
  */

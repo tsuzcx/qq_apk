@@ -1,25 +1,20 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.biz.pubaccount.PhotoWallViewForAccountDetail;
+import com.tencent.widget.AdapterView;
+import java.util.List;
 
 public class nbv
-  implements Runnable
+  implements behi
 {
-  public nbv(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  public nbv(PhotoWallViewForAccountDetail paramPhotoWallViewForAccountDetail) {}
   
-  public void run()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (TextUtils.isEmpty(this.a.a)) {}
-    PublicAccountDataManager localPublicAccountDataManager;
-    do
-    {
+    paramAdapterView = (nbu)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (this.a.jdField_a_of_type_Nby == null) {
       return;
-      localPublicAccountDataManager = (PublicAccountDataManager)this.a.app.getManager(55);
-    } while (localPublicAccountDataManager == null);
-    PublicAccountImageCollectionMainActivity.c(this.a, localPublicAccountDataManager.a(Long.valueOf(this.a.a)));
-    PublicAccountImageCollectionMainActivity.a(this.a).postDelayed(new nbw(this), 0L);
+    }
+    this.a.jdField_a_of_type_Nby.a(paramAdapterView);
   }
 }
 

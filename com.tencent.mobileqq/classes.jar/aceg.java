@@ -1,30 +1,21 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.dating.BaseMsgBoxActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class aceg
-  extends FriendListObserver
+  implements DialogInterface.OnClickListener
 {
-  public aceg(BaseMsgBoxActivity paramBaseMsgBoxActivity) {}
+  public aceg(UpgradeActivity paramUpgradeActivity) {}
   
-  protected void onGetFriendDateNick(boolean paramBoolean, String paramString1, String paramString2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.a) {
-      return;
-    }
-    this.a.runOnUiThread(new acei(this, paramBoolean, paramString1, paramString2));
-  }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    if (!this.a.a) {
-      return;
-    }
-    this.a.runOnUiThread(new aceh(this, paramBoolean, paramString));
+    awqx.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, akgn.b(), String.valueOf(0), akgo.a(), "0");
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aceg
  * JD-Core Version:    0.7.0.1
  */

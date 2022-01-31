@@ -1,41 +1,68 @@
-import com.tencent.mobileqq.app.message.SystemMessageProcessor;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.transfile.ProtoReqManager.IProtoRespBack;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoReq;
-import com.tencent.mobileqq.transfile.ProtoReqManager.ProtoResp;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.RspHead;
-import tencent.mobileim.structmsg.structmsg.RspSystemMsgRead;
+import android.os.Message;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import mqq.os.MqqHandler;
 
 public class aaaq
-  implements ProtoReqManager.IProtoRespBack
+  extends ajfo
 {
-  public aaaq(SystemMessageProcessor paramSystemMessageProcessor, long paramLong1, long paramLong2, long paramLong3) {}
+  public aaaq(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void a(ProtoReqManager.ProtoResp paramProtoResp, ProtoReqManager.ProtoReq paramProtoReq)
+  protected void onSetSubaccountDisplayThirdQQ(boolean paramBoolean)
   {
-    try
+    boolean bool1 = true;
+    boolean bool2 = AssociatedAccountManageActivity.a(this.a).a();
+    AssociatedAccountManageActivity.a(this.a).removeMessages(8193);
+    AssociatedAccountManageActivity.a(this.a).sendEmptyMessage(8194);
+    Object localObject = AssociatedAccountManageActivity.a(this.a).obtainMessage(8195);
+    int i;
+    if (paramBoolean)
     {
-      paramProtoResp = paramProtoResp.a.getWupBuffer();
-      paramProtoReq = new structmsg.RspSystemMsgRead();
-      paramProtoReq.mergeFrom(paramProtoResp);
-      int i = paramProtoReq.head.result.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp reqSeq=" + this.jdField_a_of_type_Long + ";resultCode=" + i + ";latestFriendSeq=" + this.b + ";latestGroupSeq=" + this.c);
+      i = 2;
+      ((Message)localObject).arg1 = i;
+      if (!paramBoolean) {
+        break label134;
       }
-      return;
+      if (!bool2) {
+        break label128;
+      }
+      i = 2131633718;
     }
-    catch (Exception paramProtoResp)
+    for (;;)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.systemmsg.", 2, "sendFriendSystemMsgReadedReportResp exception", paramProtoResp);
+      ((Message)localObject).arg2 = i;
+      AssociatedAccountManageActivity.a(this.a).sendMessage((Message)localObject);
+      if (!paramBoolean) {
+        break label151;
+      }
+      AssociatedAccountManageActivity.a(this.a);
+      axam.a(this.a.app, bool2);
+      return;
+      i = 1;
+      break;
+      label128:
+      i = 2131633717;
+      continue;
+      label134:
+      if (bool2) {
+        i = 2131653972;
+      } else {
+        i = 2131653971;
+      }
+    }
+    label151:
+    localObject = this.a;
+    if (!bool2) {}
+    for (paramBoolean = bool1;; paramBoolean = false)
+    {
+      AssociatedAccountManageActivity.a((AssociatedAccountManageActivity)localObject, paramBoolean);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaaq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,20 @@
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import java.util.Iterator;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-public final class adpl
-  implements Runnable
+public class adpl
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public adpl(FileManagerEntity paramFileManagerEntity) {}
+  public adpl(SixCombolEffectView paramSixCombolEffectView, adpz paramadpz) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (FileUtil.a(this.a.getFilePath())) {}
-    PackageInfo localPackageInfo;
-    do
-    {
-      Iterator localIterator;
-      do
-      {
-        return;
-        while ((this.a.strApkPackageName == null) || (this.a.strApkPackageName.length() == 0)) {}
-        localIterator = FileCategoryUtil.a(BaseApplicationImpl.getContext()).iterator();
-      } while (!localIterator.hasNext());
-      localPackageInfo = (PackageInfo)localIterator.next();
-    } while (!this.a.strApkPackageName.equalsIgnoreCase(localPackageInfo.packageName));
-    this.a.setFilePath(localPackageInfo.applicationInfo.publicSourceDir);
-    this.a.fileName = FileCategoryUtil.a(this.a.getFilePath());
+    this.jdField_a_of_type_Adpz.a = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adpl
  * JD-Core Version:    0.7.0.1
  */

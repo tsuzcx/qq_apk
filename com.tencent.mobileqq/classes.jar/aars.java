@@ -1,23 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArWebInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FontSettingActivity;
 
-public final class aars
-  implements Parcelable.Creator
+public class aars
+  implements View.OnClickListener
 {
-  public ArWebInfo a(Parcel paramParcel)
-  {
-    return new ArWebInfo(paramParcel);
-  }
+  public aars(FontSettingActivity paramFontSettingActivity) {}
   
-  public ArWebInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new ArWebInfo[paramInt];
+    if (ajia.a(this.a, FontSettingActivity.a(this.a), true)) {
+      ajia.a();
+    }
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aars
  * JD-Core Version:    0.7.0.1
  */

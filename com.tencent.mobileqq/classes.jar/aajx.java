@@ -1,25 +1,54 @@
-import com.tencent.mobileqq.ar.ObjectBaseData;
-import com.tencent.mobileqq.ar.ObjectSurfaceView;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivity;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import mqq.os.MqqHandler;
 
 public class aajx
-  implements Runnable
+  implements begw
 {
-  public aajx(ObjectSurfaceView paramObjectSurfaceView, ObjectBaseData paramObjectBaseData1, ObjectBaseData paramObjectBaseData2) {}
+  public aajx(ChatSettingActivity paramChatSettingActivity, String paramString, begr parambegr) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    ObjectBaseData localObjectBaseData = this.jdField_a_of_type_ComTencentMobileqqArObjectBaseData;
-    if ((this.b != null) && (this.b.a) && (this.b.f) && (!this.b.e)) {}
-    for (boolean bool = true;; bool = false)
+    switch (paramInt)
     {
-      localObjectBaseData.a(bool);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Begr.e();
       return;
+      if (badq.d(BaseApplication.getContext()))
+      {
+        ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app.a(1)).c(this.jdField_a_of_type_JavaLangString, (byte)2);
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app.getHandler(ChatActivity.class);
+        if (paramView != null)
+        {
+          paramView.removeMessages(16711681);
+          paramView.sendMessage(paramView.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
+        }
+        awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app, "CliOper", "", "", "AIO", "AIO_delete_frd", 0, 0, "", "", "", "");
+        if (azzz.b(this.jdField_a_of_type_JavaLangString)) {
+          awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app, "dc00898", "", "", "0X8007FDF", "0X8007FDF", 0, 0, "", "", "", "");
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.finish();
+      }
+      else
+      {
+        ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity, 2131625912, 1);
+        continue;
+        if (azzz.b(this.jdField_a_of_type_JavaLangString)) {
+          awqx.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app, "dc00898", "", "", "0X8007FE0", "0X8007FE0", 0, 0, "", "", "", "");
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aajx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.dataline.util.widget;
 
+import amyk;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -8,13 +9,13 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+import apck;
+import axwd;
 import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.drawable.BitmapDrawableWithMargin;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.theme.SkinnableBitmapDrawable;
-import do;
+import fa;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -67,7 +68,7 @@ public class AsyncImageView
       }
       String str2;
       String str1;
-      if (FileManagerUtil.a(paramString) == 2)
+      if (apck.a(paramString) == 2)
       {
         str2 = "videothumb";
         str1 = paramString;
@@ -114,24 +115,27 @@ public class AsyncImageView
         return;
       }
     }
-    if (getDrawable() != null)
+    URLDrawable.URLDrawableOptions localURLDrawableOptions;
+    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
     {
-      paramString = getDrawable();
+      paramString = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mLoadingDrawable = paramString;
+      localURLDrawableOptions.mFailedDrawable = paramString;
+      localURLDrawableOptions.mPlayGifImage = false;
+      localURLDrawableOptions.mGifRoundCorner = 0.0F;
+      localURLDrawableOptions.mDecodeFileStrategy = 3;
       if ((this.jdField_a_of_type_Int <= 0) || (this.jdField_b_of_type_Int <= 0)) {
-        break label184;
+        break label204;
       }
+      localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_Int;
     }
-    label184:
-    for (paramString = URLDrawable.getDrawable(localURL, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramString, paramString, false);; paramString = URLDrawable.getDrawable(localURL, paramString, paramString, false))
+    for (localURLDrawableOptions.mRequestHeight = this.jdField_b_of_type_Int;; localURLDrawableOptions.mRequestHeight = 0)
     {
+      paramString = URLDrawable.getDrawable(localURL, localURLDrawableOptions);
       setImageDrawable(paramString);
-      paramString.setURLDrawableListener(new do(this));
+      paramString.setURLDrawableListener(new fa(this));
       return;
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
-      {
-        paramString = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        break;
-      }
       if (this.jdField_b_of_type_Boolean)
       {
         paramString = new ColorDrawable(this.d);
@@ -139,6 +143,8 @@ public class AsyncImageView
       }
       paramString = getResources().getDrawable(this.c);
       break;
+      label204:
+      localURLDrawableOptions.mRequestWidth = 0;
     }
   }
   
@@ -159,17 +165,17 @@ public class AsyncImageView
     int i = this.jdField_a_of_type_Int;
     int j = this.jdField_b_of_type_Int;
     Resources localResources = getResources();
-    if ((URLDrawableHelper.b() instanceof SkinnableBitmapDrawable))
+    if ((axwd.b() instanceof SkinnableBitmapDrawable))
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawableWithMargin(localResources, ((SkinnableBitmapDrawable)URLDrawableHelper.b()).getBitmap(), i, j, -921103);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new amyk(localResources, ((SkinnableBitmapDrawable)axwd.b()).getBitmap(), i, j, -921103);
       return;
     }
-    if ((URLDrawableHelper.b() instanceof BitmapDrawable))
+    if ((axwd.b() instanceof BitmapDrawable))
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawableWithMargin(localResources, ((BitmapDrawable)URLDrawableHelper.b()).getBitmap(), i, j, -921103);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new amyk(localResources, ((BitmapDrawable)axwd.b()).getBitmap(), i, j, -921103);
       return;
     }
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = URLDrawableHelper.b();
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = axwd.b();
   }
   
   public void setImageDrawableDefault()
@@ -184,7 +190,7 @@ public class AsyncImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.dataline.util.widget.AsyncImageView
  * JD-Core Version:    0.7.0.1
  */

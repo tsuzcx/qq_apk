@@ -8,11 +8,11 @@ import java.util.ArrayList;
 public final class PushInfo
   extends JceStruct
 {
-  static ArrayList cache_vecMsg = new ArrayList();
+  static ArrayList<SingleMsg> cache_vecMsg = new ArrayList();
   public String Mark = "";
   public long opUin;
   public long uin;
-  public ArrayList vecMsg;
+  public ArrayList<SingleMsg> vecMsg;
   
   static
   {
@@ -22,7 +22,7 @@ public final class PushInfo
   
   public PushInfo() {}
   
-  public PushInfo(long paramLong1, ArrayList paramArrayList, long paramLong2, String paramString)
+  public PushInfo(long paramLong1, ArrayList<SingleMsg> paramArrayList, long paramLong2, String paramString)
   {
     this.uin = paramLong1;
     this.vecMsg = paramArrayList;

@@ -1,30 +1,32 @@
-import android.content.Intent;
-import com.tencent.mobileqq.intervideo.huayang.HuayangJsPlugin;
-import com.tencent.mobileqq.intervideo.huayang.HuayangLoadbackgroudActivity;
-import com.tencent.mobileqq.intervideo.huayang.HuayangPluginLauncher.HuayangPluginLauncherListener;
-
 public class aeco
-  implements HuayangPluginLauncher.HuayangPluginLauncherListener
 {
-  public aeco(HuayangLoadbackgroudActivity paramHuayangLoadbackgroudActivity) {}
+  public int a;
+  public String a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
   
-  public void a(int paramInt)
+  public String toString()
   {
-    Intent localIntent = new Intent(HuayangJsPlugin.d(HuayangLoadbackgroudActivity.a(this.a)));
-    localIntent.putExtra("key_state", 4);
-    localIntent.putExtra("key_progress", paramInt);
-    localIntent.putExtra("key_totalSize", 100L);
-    this.a.sendBroadcast(localIntent);
-  }
-  
-  public void a(boolean paramBoolean, Throwable paramThrowable)
-  {
-    this.a.finish();
+    StringBuffer localStringBuffer = new StringBuffer("UserInfo{");
+    localStringBuffer.append("age=").append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", sex=").append(this.jdField_b_of_type_Int);
+    localStringBuffer.append(", nickName='").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", province='").append(this.jdField_b_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", city='").append(this.jdField_c_of_type_JavaLangString).append('\'');
+    localStringBuffer.append(", headPic='").append(this.d).append('\'');
+    localStringBuffer.append(", relationShip=").append(this.jdField_c_of_type_Int);
+    localStringBuffer.append(", uin='").append(this.e).append('\'');
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeco
  * JD-Core Version:    0.7.0.1
  */

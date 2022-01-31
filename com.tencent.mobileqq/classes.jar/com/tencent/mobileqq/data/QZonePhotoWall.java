@@ -4,29 +4,29 @@ import NS_MOBILE_MAIN_PAGE.PhotoWall;
 import NS_MOBILE_MAIN_PAGE.mobile_sub_get_photo_wall_rsp;
 import android.os.Parcel;
 import android.text.TextUtils;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atnz;
+import atoc;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class QZonePhotoWall
-  extends Entity
+  extends atmo
 {
   public String attachInfo;
-  @notColumn
+  @atnz
   public int curListSize;
   public int hasMore;
   public int totalPic;
-  @unique
+  @atoc
   public String uin;
   public byte[] vPhotoIds;
   public byte[] vPhotoTimes;
   public byte[] vPhotoUrls;
   
-  private void packPhotoWallData(String paramString, ArrayList paramArrayList)
+  private void packPhotoWallData(String paramString, ArrayList<PhotoWall> paramArrayList)
   {
     Object localObject1 = new ArrayList();
     if (!TextUtils.isEmpty(paramString)) {}
@@ -74,7 +74,7 @@ public class QZonePhotoWall
   }
   
   /* Error */
-  public ArrayList unpackPhotoWallData()
+  public ArrayList<PhotoWall> unpackPhotoWallData()
   {
     // Byte code:
     //   0: aconst_null
@@ -97,15 +97,15 @@ public class QZonePhotoWall
     //   32: aload_0
     //   33: getfield 98	com/tencent/mobileqq/data/QZonePhotoWall:vPhotoIds	[B
     //   36: arraylength
-    //   37: invokevirtual 144	android/os/Parcel:unmarshall	([BII)V
+    //   37: invokevirtual 146	android/os/Parcel:unmarshall	([BII)V
     //   40: aload_3
     //   41: iconst_0
     //   42: invokevirtual 88	android/os/Parcel:setDataPosition	(I)V
     //   45: aload_3
     //   46: aload_0
-    //   47: invokevirtual 150	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   50: invokevirtual 156	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
-    //   53: invokevirtual 160	android/os/Parcel:readArrayList	(Ljava/lang/ClassLoader;)Ljava/util/ArrayList;
+    //   47: invokevirtual 152	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   50: invokevirtual 158	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
+    //   53: invokevirtual 162	android/os/Parcel:readArrayList	(Ljava/lang/ClassLoader;)Ljava/util/ArrayList;
     //   56: astore_2
     //   57: aload_3
     //   58: invokevirtual 101	android/os/Parcel:recycle	()V
@@ -121,15 +121,15 @@ public class QZonePhotoWall
     //   80: aload_0
     //   81: getfield 103	com/tencent/mobileqq/data/QZonePhotoWall:vPhotoTimes	[B
     //   84: arraylength
-    //   85: invokevirtual 144	android/os/Parcel:unmarshall	([BII)V
+    //   85: invokevirtual 146	android/os/Parcel:unmarshall	([BII)V
     //   88: aload 4
     //   90: iconst_0
     //   91: invokevirtual 88	android/os/Parcel:setDataPosition	(I)V
     //   94: aload 4
     //   96: aload_0
-    //   97: invokevirtual 150	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   100: invokevirtual 156	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
-    //   103: invokevirtual 160	android/os/Parcel:readArrayList	(Ljava/lang/ClassLoader;)Ljava/util/ArrayList;
+    //   97: invokevirtual 152	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   100: invokevirtual 158	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
+    //   103: invokevirtual 162	android/os/Parcel:readArrayList	(Ljava/lang/ClassLoader;)Ljava/util/ArrayList;
     //   106: astore_3
     //   107: aload 4
     //   109: invokevirtual 101	android/os/Parcel:recycle	()V
@@ -153,7 +153,7 @@ public class QZonePhotoWall
     //   147: aload_0
     //   148: getfield 105	com/tencent/mobileqq/data/QZonePhotoWall:vPhotoUrls	[B
     //   151: arraylength
-    //   152: invokevirtual 144	android/os/Parcel:unmarshall	([BII)V
+    //   152: invokevirtual 146	android/os/Parcel:unmarshall	([BII)V
     //   155: aload 6
     //   157: astore 4
     //   159: aload 7
@@ -167,9 +167,9 @@ public class QZonePhotoWall
     //   175: astore 5
     //   177: aload 9
     //   179: aload_0
-    //   180: invokevirtual 150	java/lang/Object:getClass	()Ljava/lang/Class;
-    //   183: invokevirtual 156	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
-    //   186: invokevirtual 160	android/os/Parcel:readArrayList	(Ljava/lang/ClassLoader;)Ljava/util/ArrayList;
+    //   180: invokevirtual 152	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   183: invokevirtual 158	java/lang/Class:getClassLoader	()Ljava/lang/ClassLoader;
+    //   186: invokevirtual 162	android/os/Parcel:readArrayList	(Ljava/lang/ClassLoader;)Ljava/util/ArrayList;
     //   189: astore 6
     //   191: aload 6
     //   193: astore 4
@@ -193,26 +193,26 @@ public class QZonePhotoWall
     //   228: if_icmpge +245 -> 473
     //   231: new 57	NS_MOBILE_MAIN_PAGE/PhotoWall
     //   234: dup
-    //   235: invokespecial 161	NS_MOBILE_MAIN_PAGE/PhotoWall:<init>	()V
+    //   235: invokespecial 163	NS_MOBILE_MAIN_PAGE/PhotoWall:<init>	()V
     //   238: astore 5
     //   240: aload 5
     //   242: aload_3
     //   243: iload_1
-    //   244: invokevirtual 165	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   244: invokevirtual 167	java/util/ArrayList:get	(I)Ljava/lang/Object;
     //   247: checkcast 70	java/lang/Long
-    //   250: invokevirtual 169	java/lang/Long:longValue	()J
+    //   250: invokevirtual 171	java/lang/Long:longValue	()J
     //   253: putfield 68	NS_MOBILE_MAIN_PAGE/PhotoWall:ctime	J
     //   256: aload 5
     //   258: aload_2
     //   259: iload_1
-    //   260: invokevirtual 165	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   263: checkcast 171	java/lang/String
+    //   260: invokevirtual 167	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   263: checkcast 173	java/lang/String
     //   266: putfield 60	NS_MOBILE_MAIN_PAGE/PhotoWall:photoId	Ljava/lang/String;
     //   269: aload 5
     //   271: aload 4
     //   273: iload_1
-    //   274: invokevirtual 165	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   277: checkcast 173	java/util/Map
+    //   274: invokevirtual 167	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   277: checkcast 175	java/util/Map
     //   280: putfield 78	NS_MOBILE_MAIN_PAGE/PhotoWall:photoUrls	Ljava/util/Map;
     //   283: aload 8
     //   285: aload 5
@@ -226,82 +226,82 @@ public class QZonePhotoWall
     //   298: astore_3
     //   299: aconst_null
     //   300: astore_2
-    //   301: invokestatic 178	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   301: invokestatic 180	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   304: ifeq +13 -> 317
-    //   307: ldc 180
+    //   307: ldc 182
     //   309: iconst_2
     //   310: aload_3
-    //   311: invokevirtual 181	java/lang/Exception:toString	()Ljava/lang/String;
-    //   314: invokestatic 185	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   311: invokevirtual 183	java/lang/Exception:toString	()Ljava/lang/String;
+    //   314: invokestatic 187	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   317: goto -256 -> 61
     //   320: astore_3
     //   321: aconst_null
     //   322: astore_2
-    //   323: invokestatic 178	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   323: invokestatic 180	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   326: ifeq +13 -> 339
-    //   329: ldc 180
+    //   329: ldc 182
     //   331: iconst_2
     //   332: aload_3
-    //   333: invokevirtual 186	java/lang/Error:toString	()Ljava/lang/String;
-    //   336: invokestatic 185	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   333: invokevirtual 188	java/lang/Error:toString	()Ljava/lang/String;
+    //   336: invokestatic 187	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   339: goto -278 -> 61
     //   342: astore 4
     //   344: aconst_null
     //   345: astore_3
-    //   346: invokestatic 178	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   346: invokestatic 180	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   349: ifeq +14 -> 363
-    //   352: ldc 180
+    //   352: ldc 182
     //   354: iconst_2
     //   355: aload 4
-    //   357: invokevirtual 181	java/lang/Exception:toString	()Ljava/lang/String;
-    //   360: invokestatic 185	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   357: invokevirtual 183	java/lang/Exception:toString	()Ljava/lang/String;
+    //   360: invokestatic 187	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   363: goto -251 -> 112
     //   366: astore 4
     //   368: aconst_null
     //   369: astore_3
-    //   370: invokestatic 178	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   370: invokestatic 180	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   373: ifeq +14 -> 387
-    //   376: ldc 180
+    //   376: ldc 182
     //   378: iconst_2
     //   379: aload 4
-    //   381: invokevirtual 186	java/lang/Error:toString	()Ljava/lang/String;
-    //   384: invokestatic 185	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   381: invokevirtual 188	java/lang/Error:toString	()Ljava/lang/String;
+    //   384: invokestatic 187	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   387: goto -275 -> 112
     //   390: astore 5
-    //   392: invokestatic 178	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   392: invokestatic 180	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   395: ifeq +14 -> 409
-    //   398: ldc 180
+    //   398: ldc 182
     //   400: iconst_2
     //   401: aload 5
-    //   403: invokevirtual 181	java/lang/Exception:toString	()Ljava/lang/String;
-    //   406: invokestatic 185	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   403: invokevirtual 183	java/lang/Exception:toString	()Ljava/lang/String;
+    //   406: invokestatic 187	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   409: goto -201 -> 208
     //   412: astore 4
-    //   414: invokestatic 178	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   414: invokestatic 180	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   417: ifeq +14 -> 431
-    //   420: ldc 180
+    //   420: ldc 182
     //   422: iconst_2
     //   423: aload 4
-    //   425: invokevirtual 186	java/lang/Error:toString	()Ljava/lang/String;
-    //   428: invokestatic 185	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   425: invokevirtual 188	java/lang/Error:toString	()Ljava/lang/String;
+    //   428: invokestatic 187	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   431: aload 5
     //   433: astore 4
     //   435: goto -227 -> 208
     //   438: astore_2
-    //   439: invokestatic 178	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   439: invokestatic 180	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   442: ifeq +31 -> 473
-    //   445: ldc 188
+    //   445: ldc 190
     //   447: iconst_2
-    //   448: new 115	java/lang/StringBuilder
+    //   448: new 117	java/lang/StringBuilder
     //   451: dup
-    //   452: invokespecial 189	java/lang/StringBuilder:<init>	()V
-    //   455: ldc 191
-    //   457: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   452: invokespecial 191	java/lang/StringBuilder:<init>	()V
+    //   455: ldc 193
+    //   457: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   460: aload_2
-    //   461: invokevirtual 181	java/lang/Exception:toString	()Ljava/lang/String;
-    //   464: invokevirtual 123	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   467: invokevirtual 136	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   470: invokestatic 194	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   461: invokevirtual 183	java/lang/Exception:toString	()Ljava/lang/String;
+    //   464: invokevirtual 125	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   467: invokevirtual 138	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   470: invokestatic 196	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   473: aload 8
     //   475: areturn
     //   476: astore 4

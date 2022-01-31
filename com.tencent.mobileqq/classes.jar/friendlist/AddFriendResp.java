@@ -7,11 +7,12 @@ import com.qq.taf.jce.JceStruct;
 public final class AddFriendResp
   extends JceStruct
 {
-  static int cache_adduinsetting;
+  static int cache_adduinsetting = 0;
   static byte[] cache_name;
   static byte[] cache_name1;
-  static int cache_result;
-  static byte[] cache_sig;
+  static int cache_result = 0;
+  static byte[] cache_sig = (byte[])new byte[1];
+  static byte[] cache_verify;
   public String ErrorString = "";
   public long adduin;
   public int adduinsetting;
@@ -23,10 +24,22 @@ public final class AddFriendResp
   public int result;
   public byte[] sig;
   public long uin;
+  public byte[] verify;
+  
+  static
+  {
+    ((byte[])cache_sig)[0] = 0;
+    cache_name = (byte[])new byte[1];
+    ((byte[])cache_name)[0] = 0;
+    cache_name1 = (byte[])new byte[1];
+    ((byte[])cache_name1)[0] = 0;
+    cache_verify = (byte[])new byte[1];
+    ((byte[])cache_verify)[0] = 0;
+  }
   
   public AddFriendResp() {}
   
-  public AddFriendResp(long paramLong1, long paramLong2, int paramInt1, byte paramByte1, byte paramByte2, int paramInt2, short paramShort, String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
+  public AddFriendResp(long paramLong1, long paramLong2, int paramInt1, byte paramByte1, byte paramByte2, int paramInt2, short paramShort, String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4)
   {
     this.uin = paramLong1;
     this.adduin = paramLong2;
@@ -39,6 +52,7 @@ public final class AddFriendResp
     this.sig = paramArrayOfByte1;
     this.name = paramArrayOfByte2;
     this.name1 = paramArrayOfByte3;
+    this.verify = paramArrayOfByte4;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -51,24 +65,10 @@ public final class AddFriendResp
     this.result = paramJceInputStream.read(this.result, 6, true);
     this.errorCode = paramJceInputStream.read(this.errorCode, 7, false);
     this.ErrorString = paramJceInputStream.readString(8, false);
-    if (cache_sig == null)
-    {
-      cache_sig = (byte[])new byte[1];
-      ((byte[])cache_sig)[0] = 0;
-    }
     this.sig = ((byte[])paramJceInputStream.read(cache_sig, 9, false));
-    if (cache_name == null)
-    {
-      cache_name = (byte[])new byte[1];
-      ((byte[])cache_name)[0] = 0;
-    }
     this.name = ((byte[])paramJceInputStream.read(cache_name, 10, false));
-    if (cache_name1 == null)
-    {
-      cache_name1 = (byte[])new byte[1];
-      ((byte[])cache_name1)[0] = 0;
-    }
     this.name1 = ((byte[])paramJceInputStream.read(cache_name1, 11, false));
+    this.verify = ((byte[])paramJceInputStream.read(cache_verify, 12, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -91,6 +91,9 @@ public final class AddFriendResp
     }
     if (this.name1 != null) {
       paramJceOutputStream.write(this.name1, 11);
+    }
+    if (this.verify != null) {
+      paramJceOutputStream.write(this.verify, 12);
     }
   }
 }

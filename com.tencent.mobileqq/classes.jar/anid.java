@@ -1,14 +1,59 @@
-public final class anid
-  extends ThreadLocal
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.qphone.base.util.QLog;
+
+public class anid
+  extends ajfh
 {
-  protected Integer a()
+  public anid(EmoticonMainPanel paramEmoticonMainPanel) {}
+  
+  protected void a()
   {
-    return Integer.valueOf(-100);
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonMainPanel", 2, "CameraEmo, onCameraEmoInsert");
+    }
+    this.a.o();
+    if ((this.a.a != null) && (((anbo)this.a.a.getManager(333)).a() > 0)) {
+      EmoticonMainPanel.c(this.a);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonMainPanel", 2, "CameraEmo, doOnGetEmoListResult");
+    }
+    if (paramInt == 0)
+    {
+      if ((this.a.a != null) && (((anbo)this.a.a.getManager(333)).a() > 0)) {
+        EmoticonMainPanel.c(this.a);
+      }
+      this.a.o();
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonMainPanel", 2, "CameraEmo, onCameraEmoSend");
+    }
+    this.a.o();
+    EmoticonMainPanel.a(this.a, paramInt);
+  }
+  
+  protected void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonMainPanel", 2, "CameraEmo, doOnDeleteEmoResult");
+    }
+    if (paramInt == 0) {
+      this.a.o();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anid
  * JD-Core Version:    0.7.0.1
  */

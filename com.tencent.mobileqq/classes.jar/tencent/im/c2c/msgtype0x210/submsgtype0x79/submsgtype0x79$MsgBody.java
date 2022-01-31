@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class submsgtype0x79$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   public static final int UINT32_SRC_APP_ID_FIELD_NUMBER = 1;
   public static final int UINT32_UNDEAL_COUNT_FIELD_NUMBER = 2;
@@ -16,7 +16,7 @@ public final class submsgtype0x79$MsgBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.c2c.msgtype0x210.submsgtype0x79.submsgtype0x79.MsgBody
  * JD-Core Version:    0.7.0.1
  */

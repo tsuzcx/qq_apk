@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center" android:clickable="false" android:layout_width="fill_parent" android:layout_height="@dimen/b6h" android:minHeight="@dimen/b6h"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/action_sheet_title" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/xu" />
+    <TextView android:id="@id/d0" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_below="@id/action_sheet_title" style="@style/xs" />
+</RelativeLayout>

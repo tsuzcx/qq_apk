@@ -1,19 +1,12 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.widget.AbsListView.SavedState;
+import com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferDownloadConfig;
 
-public final class amhl
-  implements Parcelable.Creator
+public abstract interface amhl
 {
-  public AbsListView.SavedState a(Parcel paramParcel)
-  {
-    return new AbsListView.SavedState(paramParcel, null);
-  }
+  public abstract long a();
   
-  public AbsListView.SavedState[] a(int paramInt)
-  {
-    return new AbsListView.SavedState[paramInt];
-  }
+  public abstract ExcitingTransferDownloadConfig a();
+  
+  public abstract boolean a();
 }
 
 

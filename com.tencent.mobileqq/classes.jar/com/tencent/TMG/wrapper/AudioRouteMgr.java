@@ -2,7 +2,6 @@ package com.tencent.TMG.wrapper;
 
 import android.content.Context;
 import com.tencent.TMG.audio.TraeAudioSession;
-import com.tencent.TMG.audio.TraeAudioSession.ITraeAudioCallback;
 import com.tencent.TMG.utils.QLog;
 
 public class AudioRouteMgr
@@ -53,39 +52,7 @@ public class AudioRouteMgr
   public int start()
   {
     if (this.mAudioSession == null) {
-      this.mAudioSession = new TraeAudioSession(this.mContext, new TraeAudioSession.ITraeAudioCallback()
-      {
-        public void onAudioRouteSwitchEnd(String paramAnonymousString, long paramAnonymousLong) {}
-        
-        public void onAudioRouteSwitchStart(String paramAnonymousString1, String paramAnonymousString2) {}
-        
-        public void onConnectDeviceRes(int paramAnonymousInt, String paramAnonymousString, boolean paramAnonymousBoolean) {}
-        
-        public void onDeviceChangabledUpdate(boolean paramAnonymousBoolean) {}
-        
-        public void onDeviceListUpdate(String[] paramAnonymousArrayOfString, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3)
-        {
-          AudioRouteMgr.this.onOutputChanage(paramAnonymousString1);
-        }
-        
-        public void onGetConnectedDeviceRes(int paramAnonymousInt, String paramAnonymousString) {}
-        
-        public void onGetConnectingDeviceRes(int paramAnonymousInt, String paramAnonymousString) {}
-        
-        public void onGetDeviceListRes(int paramAnonymousInt, String[] paramAnonymousArrayOfString, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3) {}
-        
-        public void onGetStreamTypeRes(int paramAnonymousInt1, int paramAnonymousInt2) {}
-        
-        public void onIsDeviceChangabledRes(int paramAnonymousInt, boolean paramAnonymousBoolean) {}
-        
-        public void onRingCompletion(int paramAnonymousInt, String paramAnonymousString) {}
-        
-        public void onServiceStateUpdate(boolean paramAnonymousBoolean) {}
-        
-        public void onStreamTypeUpdate(int paramAnonymousInt) {}
-        
-        public void onVoicecallPreprocessRes(int paramAnonymousInt) {}
-      });
+      this.mAudioSession = new TraeAudioSession(this.mContext, new AudioRouteMgr.1(this));
     }
     return 0;
   }
@@ -97,7 +64,7 @@ public class AudioRouteMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.TMG.wrapper.AudioRouteMgr
  * JD-Core Version:    0.7.0.1
  */

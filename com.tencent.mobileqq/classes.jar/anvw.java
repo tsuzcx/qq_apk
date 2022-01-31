@@ -1,31 +1,19 @@
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import dov.com.qq.im.capture.poi.FacePoiManager;
-import dov.com.qq.im.capture.poi.FacePoiUI;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class anvw
-  implements AbsListView.OnScrollListener
+class anvw
+  implements DialogInterface.OnDismissListener
 {
-  int jdField_a_of_type_Int = 0;
+  anvw(anvt paramanvt) {}
   
-  public anvw(FacePoiUI paramFacePoiUI) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((paramInt == 0) && (FacePoiUI.a(this.jdField_a_of_type_DovComQqImCapturePoiFacePoiUI).a() != null) && (this.jdField_a_of_type_Int == FacePoiUI.a(this.jdField_a_of_type_DovComQqImCapturePoiFacePoiUI).a().size() - 1)) {
-      FacePoiUI.a(this.jdField_a_of_type_DovComQqImCapturePoiFacePoiUI).a();
-    }
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+    anvt.a(this.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anvw
  * JD-Core Version:    0.7.0.1
  */

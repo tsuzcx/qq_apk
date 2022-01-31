@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
-
-public final class akjw
-  implements Runnable
+public class akjw
 {
-  public akjw(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean) {}
+  public long a;
+  public String a;
+  public long b;
   
-  public void run()
+  public String toString()
   {
-    StatisticCollector.a(BaseApplication.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, 0L, 0L, new HashMap(), "");
+    StringBuffer localStringBuffer = new StringBuffer("PlayGuideShowInfo{");
+    localStringBuffer.append("nStartTime=").append(this.jdField_a_of_type_Long);
+    localStringBuffer.append(", nEndTime=").append(this.b);
+    localStringBuffer.append(", strShow=").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuffer.append('}');
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akjw
  * JD-Core Version:    0.7.0.1
  */

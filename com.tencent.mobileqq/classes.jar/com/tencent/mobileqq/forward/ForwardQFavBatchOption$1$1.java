@@ -1,0 +1,21 @@
+package com.tencent.mobileqq.forward;
+
+import apku;
+import bacg;
+
+class ForwardQFavBatchOption$1$1
+  implements Runnable
+{
+  ForwardQFavBatchOption$1$1(ForwardQFavBatchOption.1 param1, String paramString) {}
+  
+  public void run()
+  {
+    bacg.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardQFavBatchOption$1.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqForwardForwardQFavBatchOption$1.b, this.jdField_a_of_type_ComTencentMobileqqForwardForwardQFavBatchOption$1.a, this.jdField_a_of_type_ComTencentMobileqqForwardForwardQFavBatchOption$1.c, false, this.jdField_a_of_type_ComTencentMobileqqForwardForwardQFavBatchOption$1.this$0.jdField_a_of_type_AndroidAppActivity);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+ * Qualified Name:     com.tencent.mobileqq.forward.ForwardQFavBatchOption.1.1
+ * JD-Core Version:    0.7.0.1
+ */

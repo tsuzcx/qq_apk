@@ -1,15 +1,51 @@
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.WeakReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
 
-public class akgv
-  extends WeakReference
+public final class akgv
+  implements Parcelable.Creator<UpgradeTIMWrapper>
 {
-  private final String a;
-  
-  public akgv(String paramString, Object paramObject, ReferenceQueue paramReferenceQueue)
+  public UpgradeTIMWrapper a(Parcel paramParcel)
   {
-    super(paramObject, paramReferenceQueue);
-    this.a = paramString;
+    Object localObject = null;
+    String str2 = paramParcel.readString();
+    String str3 = paramParcel.readString();
+    String str4 = paramParcel.readString();
+    String str5 = paramParcel.readString();
+    String str6 = paramParcel.readString();
+    int j = 0;
+    for (;;)
+    {
+      try
+      {
+        int i = paramParcel.readInt();
+        j = i;
+        String str1 = paramParcel.readString();
+        paramParcel.printStackTrace();
+      }
+      catch (Exception paramParcel)
+      {
+        try
+        {
+          paramParcel = paramParcel.readString();
+          return new UpgradeTIMWrapper(str2, str3, str4, str5, str6, i, str1, paramParcel);
+        }
+        catch (Exception paramParcel)
+        {
+          break label81;
+        }
+        paramParcel = paramParcel;
+        str1 = null;
+        i = j;
+      }
+      label81:
+      paramParcel = localObject;
+    }
+  }
+  
+  public UpgradeTIMWrapper[] a(int paramInt)
+  {
+    return null;
   }
 }
 

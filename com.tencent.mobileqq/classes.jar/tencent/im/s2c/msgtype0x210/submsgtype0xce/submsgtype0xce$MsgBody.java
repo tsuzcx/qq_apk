@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class submsgtype0xce$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "int64_startTime", "int64_endTime", "string_params" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), "" }, MsgBody.class);
   public final PBInt64Field int64_endTime = PBField.initInt64(0L);

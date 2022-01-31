@@ -1,30 +1,21 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoSave;
-
-public class aodr
-  implements Runnable
+class aodr
+  extends aoft
 {
-  public aodr(EditVideoSave paramEditVideoSave) {}
+  aodr(aodq paramaodq, aodv paramaodv) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, int paramInt, String paramString1, String paramString2, long paramLong1, long paramLong2)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      return;
-    }
-    EditVideoSave localEditVideoSave = this.a;
-    localEditVideoSave.jdField_a_of_type_Int += this.a.b;
-    if (this.a.jdField_a_of_type_Int > 99)
+    if (paramBoolean)
     {
-      this.a.jdField_a_of_type_Int = 99;
-      this.a.a(this.a.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Aodv.a(paramString2);
       return;
     }
-    this.a.a(this.a.jdField_a_of_type_Int);
-    this.a.c();
+    this.jdField_a_of_type_Aodv.a(paramInt, paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aodr
  * JD-Core Version:    0.7.0.1
  */

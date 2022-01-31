@@ -1,20 +1,20 @@
 package com.tencent.biz.pubaccount.troopbarassit;
 
+import atmo;
+import atnz;
+import atoc;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
-import com.tencent.mobileqq.persistence.unique;
 
 public class TroopBarData
-  extends Entity
+  extends atmo
 {
   public boolean mIsSticky;
   public long mLastDraftTime;
   public long mLastMsgTime;
   public long mLastStickyTime;
-  @notColumn
+  @atnz
   public MessageRecord mLatestMessage;
-  @unique
+  @atoc
   public String mUin;
   
   public String getTableName()

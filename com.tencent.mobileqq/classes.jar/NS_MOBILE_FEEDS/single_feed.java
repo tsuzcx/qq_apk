@@ -10,18 +10,18 @@ import java.util.Map;
 public final class single_feed
   extends JceStruct
 {
-  static Map cache_patch_singlefeed;
-  static ArrayList cache_recomfeeds;
-  static Map cache_singlefeed = new HashMap();
+  static Map<Integer, byte[]> cache_patch_singlefeed;
+  static ArrayList<Map<Integer, byte[]>> cache_recomfeeds;
+  static Map<Integer, byte[]> cache_singlefeed = new HashMap();
   public String feed_attach_info = "";
   public String feed_info = "";
   public long feeds_update_time;
   public String feedskey = "";
   public int iUnifyRecomType;
-  public Map patch_singlefeed;
+  public Map<Integer, byte[]> patch_singlefeed;
   public boolean pullAll;
-  public ArrayList recomfeeds;
-  public Map singlefeed;
+  public ArrayList<Map<Integer, byte[]>> recomfeeds;
+  public Map<Integer, byte[]> singlefeed;
   public long status;
   public int time;
   public long uContainerSubType;
@@ -45,7 +45,7 @@ public final class single_feed
   
   public single_feed() {}
   
-  public single_feed(Map paramMap1, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, ArrayList paramArrayList, long paramLong2, Map paramMap2, long paramLong3, boolean paramBoolean, int paramInt2)
+  public single_feed(Map<Integer, byte[]> paramMap1, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, ArrayList<Map<Integer, byte[]>> paramArrayList, long paramLong2, Map<Integer, byte[]> paramMap2, long paramLong3, boolean paramBoolean, int paramInt2)
   {
     this.singlefeed = paramMap1;
     this.status = paramLong1;
@@ -107,7 +107,7 @@ public final class single_feed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.single_feed
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.shortvideo.filter;
 
-import aiga;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import com.tencent.av.video.effect.core.EffectTexture;
@@ -19,30 +18,26 @@ import java.io.FileOutputStream;
 public class QQLowLightFilter
   extends QQBaseFilter
 {
-  public static String a;
-  public static String b;
-  private static boolean b;
-  public static int e;
-  private static int h;
-  private static int i;
-  private static int j;
-  private static int k;
-  private DenoiseRender jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender = null;
-  private LowLightRender jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender = null;
-  private boolean jdField_a_of_type_Boolean = false;
-  private int f = 0;
-  private int g = 0;
+  private static final int DEFAULT_FBO = -1;
+  private static int ResExist = 0;
+  private static int ResFailed = -1;
+  private static int ResGenerating = 0;
+  private static int ResUncheck = 0;
+  private static final String TAG = "QQLowLightFilter";
+  private static boolean enableNightMode = false;
+  public static String lowLightDir = SdkContext.getInstance().getResources().getLowLightResource().getLowLightDir() + "capture_qsvf" + File.separator + "lowlight";
+  public static String lowLightPath = lowLightDir + File.separator + "LowLight.png";
+  public static int mLowLightResStatus = 0;
+  private boolean bwork = false;
+  private int lastHeight = 0;
+  private int lastWidth = 0;
+  private DenoiseRender mDenoiseRender = null;
+  private LowLightRender mLowLightRender = null;
   
   static
   {
-    jdField_a_of_type_JavaLangString = SdkContext.a().a().a().a() + "capture_qsvf" + File.separator + "lowlight";
-    jdField_b_of_type_JavaLangString = jdField_a_of_type_JavaLangString + File.separator + "LowLight.png";
-    e = 0;
-    h = 2;
-    i = 1;
-    j = -1;
-    k = 0;
-    jdField_b_of_type_Boolean = false;
+    ResExist = 2;
+    ResGenerating = 1;
   }
   
   public QQLowLightFilter(QQFilterRenderManager paramQQFilterRenderManager)
@@ -50,40 +45,56 @@ public class QQLowLightFilter
     super(10, paramQQFilterRenderManager);
   }
   
-  public static void a(boolean paramBoolean)
+  private static void CheckLowLightRes()
   {
-    jdField_b_of_type_Boolean = paramBoolean;
+    if (!new File(lowLightPath).exists())
+    {
+      mLowLightResStatus = ResGenerating;
+      new Thread(new QQLowLightFilter.1(), "ShortVideoEffect_LowLightThread").start();
+      return;
+    }
+    mLowLightResStatus = ResExist;
   }
   
-  private void b()
+  public static boolean bResCheckedFailed()
   {
-    if (this.jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender != null)
-    {
-      this.jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender.destroy();
-      this.jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender = null;
-    }
-    if (this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender != null)
-    {
-      this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender.destroy();
-      this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender = null;
-    }
+    return mLowLightResStatus == ResFailed;
   }
   
-  public static boolean b()
+  public static boolean bResReady()
   {
     boolean bool = false;
-    if (e == k) {
-      i();
+    if (mLowLightResStatus == ResUncheck) {
+      CheckLowLightRes();
     }
-    if (e == h) {
+    if (mLowLightResStatus == ResExist) {
       bool = true;
     }
     return bool;
   }
   
-  private static void c()
+  private void destroyRender()
   {
-    File localFile = new File(jdField_b_of_type_JavaLangString);
+    if (this.mLowLightRender != null)
+    {
+      this.mLowLightRender.destroy();
+      this.mLowLightRender = null;
+    }
+    if (this.mDenoiseRender != null)
+    {
+      this.mDenoiseRender.destroy();
+      this.mDenoiseRender = null;
+    }
+  }
+  
+  public static void enableNightMode(boolean paramBoolean)
+  {
+    enableNightMode = paramBoolean;
+  }
+  
+  private static void generateLowlightRes()
+  {
+    File localFile = new File(lowLightPath);
     if (localFile.exists()) {
       localFile.delete();
     }
@@ -98,7 +109,7 @@ public class QQLowLightFilter
         localBufferedOutputStream.close();
         if (!localFile.exists())
         {
-          e = j;
+          mLowLightResStatus = ResFailed;
           return;
           localObject = localFile.getParentFile();
           if (((File)localObject).exists()) {
@@ -111,99 +122,83 @@ public class QQLowLightFilter
       {
         for (;;)
         {
-          SLog.b("QQLowLightFilter", "LowLightTools saveBitmap:" + localException);
+          SLog.w("QQLowLightFilter", "LowLightTools saveBitmap:" + localException);
         }
-        e = h;
+        mLowLightResStatus = ResExist;
       }
     }
   }
   
-  public static boolean c()
+  public boolean isFilterWork()
   {
-    return e == j;
+    return this.bwork;
   }
   
-  private static void i()
+  public void onDrawFrame()
   {
-    if (!new File(jdField_b_of_type_JavaLangString).exists())
+    if (this.mLowLightRender == null)
     {
-      e = i;
-      new Thread(new aiga(), "ShortVideoEffect_LowLightThread").start();
-      return;
-    }
-    e = h;
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    if ((this.g != paramInt1) || (this.g != paramInt2)) {
-      b();
-    }
-  }
-  
-  public void e()
-  {
-    b();
-  }
-  
-  public boolean f_()
-  {
-    return this.jdField_a_of_type_Boolean;
-  }
-  
-  public void h()
-  {
-    if (this.jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender == null)
-    {
-      if (!b()) {
-        break label207;
+      if (!bResReady()) {
+        break label208;
       }
-      this.jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender = new LowLightRender(SdkContext.a().a(), jdField_a_of_type_JavaLangString);
-      if (SLog.a()) {
+      this.mLowLightRender = new LowLightRender(SdkContext.getInstance().getApplication(), lowLightDir);
+      if (SLog.isEnable()) {
         SLog.d("lowlightRender_time", "小太阳耗时 create with res");
       }
     }
-    if (this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender == null)
+    if (this.mDenoiseRender == null)
     {
-      this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender = new DenoiseRender(SdkContext.a().a());
-      this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender.setUpdateRate(15.0F);
+      this.mDenoiseRender = new DenoiseRender(SdkContext.getInstance().getApplication());
+      this.mDenoiseRender.setUpdateRate(15.0F);
     }
-    this.f = a().f();
-    this.g = a().g();
-    if ((jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender != null))
+    this.lastWidth = getQQFilterRenderManager().getFilterWidth();
+    this.lastHeight = getQQFilterRenderManager().getFilterHeight();
+    if ((enableNightMode) && (this.mLowLightRender != null))
     {
-      if ((SdkContext.a().a().c()) && (this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender != null))
+      if ((SdkContext.getInstance().getDpcSwitcher().isDeNoiseSwitchOpen()) && (this.mDenoiseRender != null))
       {
-        this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentAvVideoEffectDenoiseDenoiseRender.process(this.jdField_a_of_type_Int, -1, this.f, this.g).getTextureId();
-        QQFilterLogManager.a("QQDeNoiseFilter", true);
+        this.mInputTextureID = this.mDenoiseRender.process(this.mInputTextureID, -1, this.lastWidth, this.lastHeight).getTextureId();
+        QQFilterLogManager.setFilterStatus("QQDeNoiseFilter", true);
       }
       for (;;)
       {
-        this.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender.process(this.jdField_a_of_type_Int, -1, this.f, this.g).getTextureId();
-        QQFilterLogManager.a("QQLowLightFilter", true);
-        this.jdField_a_of_type_Boolean = true;
+        this.mOutputTextureID = this.mLowLightRender.process(this.mInputTextureID, -1, this.lastWidth, this.lastHeight).getTextureId();
+        QQFilterLogManager.setFilterStatus("QQLowLightFilter", true);
+        this.bwork = true;
         return;
-        label207:
-        if (c())
+        label208:
+        if (bResCheckedFailed())
         {
-          this.jdField_a_of_type_ComTencentAvVideoEffectLowlightLowLightRender = new LowLightRender(SdkContext.a().a());
-          if (!SLog.a()) {
+          this.mLowLightRender = new LowLightRender(SdkContext.getInstance().getApplication());
+          if (!SLog.isEnable()) {
             break;
           }
           SLog.d("lowlightRender_time", "小太阳耗时 create without res");
           break;
         }
-        if (!SLog.a()) {
+        if (!SLog.isEnable()) {
           break;
         }
         SLog.d("lowlightRender_time", "小太阳耗时 create wait");
         break;
-        QQFilterLogManager.a("QQDeNoiseFilter", false);
+        QQFilterLogManager.setFilterStatus("QQDeNoiseFilter", false);
       }
     }
-    this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-    QQFilterLogManager.a("QQLowLightFilter", false);
-    this.jdField_a_of_type_Boolean = false;
+    this.mOutputTextureID = this.mInputTextureID;
+    QQFilterLogManager.setFilterStatus("QQLowLightFilter", false);
+    this.bwork = false;
+  }
+  
+  public void onSurfaceChange(int paramInt1, int paramInt2)
+  {
+    if ((this.lastHeight != paramInt1) || (this.lastHeight != paramInt2)) {
+      destroyRender();
+    }
+  }
+  
+  public void onSurfaceDestroy()
+  {
+    destroyRender();
   }
 }
 

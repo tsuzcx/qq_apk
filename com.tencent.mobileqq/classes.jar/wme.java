@@ -1,80 +1,43 @@
-import android.content.Context;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.RspBody;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.UploadFileRspBody;
 
-public class wme
-  implements Handler.Callback
+public abstract class wme
+  extends mmn
 {
-  public wme(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    switch (paramMessage.what)
+    if (paramInt != 0)
     {
-    default: 
-      return true;
+      a(false, paramInt, null, paramBundle);
+      return;
     }
-    switch (paramMessage.arg2)
+    oidb_0x6d6.RspBody localRspBody = new oidb_0x6d6.RspBody();
+    try
     {
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Boolean = false;
-      break;
-      switch (paramMessage.arg1)
+      localRspBody.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (oidb_0x6d6.UploadFileRspBody)localRspBody.upload_file_rsp.get();
+      if (paramArrayOfByte.int32_ret_code.has())
       {
-      default: 
-        break;
-      case 20: 
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("没有聊天内容");
-        paramMessage = TroopMemberHistoryFragment.a(this.a).getContext().getResources();
-        Object localObject = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = AIOUtils.a(320.0F, paramMessage);
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = AIOUtils.a(177.5F, paramMessage);
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = URLDrawableHelper.a;
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = URLDrawableHelper.a;
-        paramMessage = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/files/20171229/e4f73825907a4cdeb29db9c6688cd82c.png", (URLDrawable.URLDrawableOptions)localObject);
-        localObject = (ImageView)this.a.jdField_a_of_type_AndroidViewView.findViewById(2131364216);
-        ((ImageView)localObject).setImageDrawable(paramMessage);
-        ((ImageView)localObject).setVisibility(0);
-        this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-        continue;
-        if ((paramMessage.obj instanceof List))
-        {
-          this.a.jdField_a_of_type_Wmi.a((List)paramMessage.obj);
-          this.a.jdField_a_of_type_Wmi.notifyDataSetChanged();
-        }
-        switch (paramMessage.arg1)
-        {
-        default: 
-          break;
-        case 20: 
-          this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-          continue;
-          if (paramMessage.arg1 == 20)
-          {
-            this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131430213);
-            this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
-          }
-          break;
-        }
-        break;
+        a(true, 0, paramArrayOfByte, paramBundle);
+        return;
       }
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      a(false, -1, null, paramBundle);
+      return;
+    }
+    a(false, -1, null, paramBundle);
   }
+  
+  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d6.UploadFileRspBody paramUploadFileRspBody, Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wme
  * JD-Core Version:    0.7.0.1
  */

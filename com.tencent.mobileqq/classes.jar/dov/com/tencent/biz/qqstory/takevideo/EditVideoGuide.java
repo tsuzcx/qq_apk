@@ -1,5 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
+import aciy;
+import ajjy;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Handler;
@@ -15,27 +17,28 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import aock;
-import aocl;
-import aocm;
-import aocn;
-import aoco;
-import com.tencent.biz.qqstory.model.AddressDataProvider;
-import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
-import com.tencent.biz.qqstory.model.DataProviderManager;
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.view.StoryNewGuideDialog;
-import com.tencent.biz.qqstory.view.widget.StoryAddDescribeGuideDialog;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import dov.com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import bifk;
+import bifl;
+import bifm;
+import bifz;
+import bigb;
+import bigl;
+import bihj;
+import bjlo;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
+import soy;
+import spb;
+import sph;
+import spz;
+import sqg;
+import urk;
+import urp;
+import vpd;
+import vqv;
 
 public class EditVideoGuide
-  extends EditVideoPart
+  extends bifz
   implements View.OnClickListener
 {
   public int a;
@@ -43,31 +46,31 @@ public class EditVideoGuide
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private aocn jdField_a_of_type_Aocn;
-  private aoco jdField_a_of_type_Aoco;
-  public AtomicBoolean a;
+  private EditVideoGuide.GotoLocationPageDelayRunnable jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGuide$GotoLocationPageDelayRunnable;
+  private EditVideoGuide.InitGuideTypeDelayRunnable jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGuide$InitGuideTypeDelayRunnable;
+  protected AtomicBoolean a;
   public int b;
   
-  public EditVideoGuide(@NonNull EditVideoPartManager paramEditVideoPartManager)
+  public EditVideoGuide(@NonNull bigb parambigb)
   {
-    super(paramEditVideoPartManager);
+    super(parambigb);
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean();
   }
   
   private boolean a(int paramInt)
   {
-    SLog.b("Q.qqstory.publish.edit.EditVideoGuide", "initTipGuide. guideType = %d", Integer.valueOf(paramInt));
-    int j = -AIOUtils.a(1.0F, a().getResources());
+    urk.b("Q.qqstory.publish.edit.EditVideoGuide", "initTipGuide. guideType = %d", Integer.valueOf(paramInt));
+    int j = -aciy.a(1.0F, a().getResources());
     int i = View.MeasureSpec.makeMeasureSpec(0, 0);
     int k = View.MeasureSpec.makeMeasureSpec(0, 0);
     switch (paramInt)
     {
     default: 
-      SLog.e("Q.qqstory.publish.edit.EditVideoGuide", "initTipGuide error. unknown guideType = %d", new Object[] { Integer.valueOf(paramInt) });
+      urk.e("Q.qqstory.publish.edit.EditVideoGuide", "initTipGuide error. unknown guideType = %d", new Object[] { Integer.valueOf(paramInt) });
       return false;
     case 1: 
-      this.jdField_a_of_type_AndroidWidgetTextView.setText("涂涂画画，圈点有趣");
-      i = AIOUtils.a(12.0F, a().getResources());
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(ajjy.a(2131637967));
+      i = aciy.a(12.0F, a().getResources());
       paramInt = 0;
     }
     for (;;)
@@ -80,46 +83,46 @@ public class EditVideoGuide
       this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       return true;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText("有趣的贴纸都在这里");
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(ajjy.a(2131638087));
       this.jdField_a_of_type_AndroidWidgetTextView.measure(i, k);
       i = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth();
-      paramInt = AIOUtils.a(114.0F, a().getResources());
+      paramInt = aciy.a(114.0F, a().getResources());
       k = i / 2;
-      i = AIOUtils.a(108.0F, a().getResources());
+      i = aciy.a(108.0F, a().getResources());
       paramInt -= k;
       continue;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText("为视频添加一首背景音乐吧");
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(ajjy.a(2131637984));
       this.jdField_a_of_type_AndroidWidgetTextView.measure(i, k);
       i = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth();
-      paramInt = AIOUtils.a(162.0F, a().getResources());
+      paramInt = aciy.a(162.0F, a().getResources());
       k = i / 2;
-      i = AIOUtils.a(156.0F, a().getResources());
+      i = aciy.a(156.0F, a().getResources());
       paramInt -= k;
       continue;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText("尝试用地点贴纸标记你所在的位置");
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(ajjy.a(2131637942));
       this.jdField_a_of_type_AndroidWidgetTextView.measure(i, k);
       i = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth();
-      paramInt = AIOUtils.a(114.0F, a().getResources());
+      paramInt = aciy.a(114.0F, a().getResources());
       k = i / 2;
-      i = AIOUtils.a(108.0F, a().getResources());
+      i = aciy.a(108.0F, a().getResources());
       paramInt -= k;
       continue;
-      this.jdField_a_of_type_AndroidWidgetTextView.setText("拖动视频片段以删除");
-      paramInt = AIOUtils.a(15.0F, a());
-      k = AIOUtils.a(12.0F, a());
-      i = AIOUtils.a(12.0F, a());
-      k = (ScreenUtil.jdField_a_of_type_Int - paramInt * 2 - k * 5) / 6;
-      paramInt = AIOUtils.a(3.0F, a());
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(ajjy.a(2131637982));
+      paramInt = aciy.a(15.0F, a());
+      k = aciy.a(12.0F, a());
+      i = aciy.a(12.0F, a());
+      k = (bjlo.jdField_a_of_type_Int - paramInt * 2 - k * 5) / 6;
+      paramInt = aciy.a(3.0F, a());
       i = paramInt + (k - i) / 2;
       localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
-      localLayoutParams.setMargins(0, 0, 0, AIOUtils.a(161.0F, a()));
+      localLayoutParams.setMargins(0, 0, 0, aciy.a(161.0F, a()));
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams);
     }
   }
   
   private boolean b()
   {
-    return ((Boolean)((StoryConfigManager)SuperManager.a(10)).b("has_show_fragment_guide", Boolean.valueOf(false))).booleanValue();
+    return ((Boolean)((spz)sqg.a(10)).b("has_show_fragment_guide", Boolean.valueOf(false))).booleanValue();
   }
   
   private void l()
@@ -141,10 +144,10 @@ public class EditVideoGuide
     localAnimationSet.addAnimation(localAlphaAnimation2);
     localAnimationSet.setFillAfter(false);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(localAnimationSet);
-    localTranslateAnimation.setAnimationListener(new aocm(this));
+    localTranslateAnimation.setAnimationListener(new bifm(this));
   }
   
-  private void m()
+  private void n()
   {
     switch (this.jdField_a_of_type_Int)
     {
@@ -152,90 +155,43 @@ public class EditVideoGuide
       return;
     case 3: 
     case 6: 
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(6);
+      this.jdField_a_of_type_Bigb.a(6);
       return;
     case 4: 
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(2);
+      this.jdField_a_of_type_Bigb.a(2);
       return;
     }
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(7);
+    this.jdField_a_of_type_Bigb.a(7);
   }
   
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131364444));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131364446));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131364445));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131307671));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131307672));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131307673));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    boolean bool1 = EditVideoPartManager.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.b, 262144);
+    boolean bool1 = bigb.a(this.jdField_a_of_type_Bigb.a.jdField_a_of_type_Long, 262144);
     boolean bool2 = b();
     if ((!bool1) || (bool2))
     {
-      SLog.b("Q.qqstory.publish.edit.EditVideoGuide", "enableMultiVideoFragment = %s, hasShowFragmentGuide = %s.", Boolean.valueOf(bool1), Boolean.valueOf(bool2));
-      a(false);
+      urk.b("Q.qqstory.publish.edit.EditVideoGuide", "enableMultiVideoFragment = %s, hasShowFragmentGuide = %s.", Boolean.valueOf(bool1), Boolean.valueOf(bool2));
+      b(false);
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
       return;
     }
-    SLog.c("Q.qqstory.publish.edit.EditVideoGuide", "wait for fragment list message.");
+    urk.c("Q.qqstory.publish.edit.EditVideoGuide", "wait for fragment list message.");
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
       this.jdField_a_of_type_AndroidOsHandler = new Handler();
     }
-    if (this.jdField_a_of_type_Aoco == null) {
-      this.jdField_a_of_type_Aoco = new aoco(this, null);
+    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGuide$InitGuideTypeDelayRunnable == null) {
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGuide$InitGuideTypeDelayRunnable = new EditVideoGuide.InitGuideTypeDelayRunnable(this, null);
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_Aoco, 5000L);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGuide$InitGuideTypeDelayRunnable, 5000L);
   }
   
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.jdField_a_of_type_Int != 1)
-    {
-      this.jdField_a_of_type_Int = 8;
-      this.b = 8;
-      SLog.c("Q.qqstory.publish.edit.EditVideoGuide", "not story business, initial guideType = GUIDE_NULL.");
-      return;
-    }
-    SLog.b("Q.qqstory.publish.edit.EditVideoGuide", "initGuideType. enableMultiFragment = %s.", Boolean.valueOf(paramBoolean));
-    StoryConfigManager localStoryConfigManager = (StoryConfigManager)SuperManager.a(10);
-    if ((paramBoolean) && (!((Boolean)localStoryConfigManager.b("has_show_fragment_guide", Boolean.valueOf(false))).booleanValue()))
-    {
-      this.jdField_a_of_type_Int = 7;
-      this.b = 7;
-      return;
-    }
-    if (!((Boolean)localStoryConfigManager.b("has_show_basal_guide", Boolean.valueOf(false))).booleanValue())
-    {
-      this.jdField_a_of_type_Int = 1;
-      this.b = 1;
-      return;
-    }
-    paramBoolean = ((Boolean)localStoryConfigManager.b("has_show_music_guide", Boolean.valueOf(false))).booleanValue();
-    AddressDataProvider localAddressDataProvider = (AddressDataProvider)((DataProviderManager)SuperManager.a(20)).a(1);
-    if ((!paramBoolean) && (!localAddressDataProvider.a((AddressDataProvider.AddressInfo)localAddressDataProvider.a())))
-    {
-      this.jdField_a_of_type_Int = 4;
-      this.b = 4;
-      return;
-    }
-    if (!((Boolean)localStoryConfigManager.b("has_show_draw_line_guide", Boolean.valueOf(false))).booleanValue())
-    {
-      this.jdField_a_of_type_Int = 5;
-      this.b = 5;
-      return;
-    }
-    if (!((Boolean)localStoryConfigManager.b("has_show_add_poi_paster_guide", Boolean.valueOf(false))).booleanValue())
-    {
-      this.jdField_a_of_type_Int = 6;
-      this.b = 6;
-      return;
-    }
-    this.jdField_a_of_type_Int = 8;
-    this.b = 8;
-  }
-  
-  protected boolean a(Message paramMessage)
+  public boolean a(Message paramMessage)
   {
     switch (paramMessage.what)
     {
@@ -243,14 +199,14 @@ public class EditVideoGuide
     do
     {
       return super.a(paramMessage);
-      SLog.b("Q.qqstory.publish.edit.EditVideoGuide", "handleEditVideoMessage. mWaitForFragmentMsg = %s.", Boolean.valueOf(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()));
+      urk.b("Q.qqstory.publish.edit.EditVideoGuide", "handleEditVideoMessage. mWaitForFragmentMsg = %s.", Boolean.valueOf(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()));
     } while (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false));
-    if ((this.jdField_a_of_type_AndroidOsHandler != null) && (this.jdField_a_of_type_Aoco != null))
+    if ((this.jdField_a_of_type_AndroidOsHandler != null) && (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGuide$InitGuideTypeDelayRunnable != null))
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_Aoco);
-      this.jdField_a_of_type_Aoco = null;
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGuide$InitGuideTypeDelayRunnable);
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGuide$InitGuideTypeDelayRunnable = null;
     }
-    paramMessage = (EditVideoPlayerExport)a(EditVideoPlayerExport.class);
+    paramMessage = (bigl)a(bigl.class);
     if (paramMessage != null) {}
     for (paramMessage = paramMessage.a();; paramMessage = null)
     {
@@ -259,37 +215,29 @@ public class EditVideoGuide
       {
         i = 0;
         int j = i;
-        if (i > this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.c()) {
-          j = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.c();
+        if (i > this.jdField_a_of_type_Bigb.a.d()) {
+          j = this.jdField_a_of_type_Bigb.a.d();
         }
         if (j >= 2) {
           break label171;
         }
-        a(false);
+        b(false);
       }
       for (;;)
       {
-        c();
+        d();
         return true;
         i = paramMessage.size();
         break;
         label171:
-        a(true);
+        b(true);
       }
-    }
-  }
-  
-  public void aF_()
-  {
-    super.aF_();
-    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      c();
     }
   }
   
   public void a_(int paramInt, Object paramObject)
   {
-    paramObject = (StoryConfigManager)SuperManager.a(10);
+    paramObject = (spz)sqg.a(10);
     switch (paramInt)
     {
     case 1: 
@@ -306,7 +254,7 @@ public class EditVideoGuide
     case 22: 
     case 23: 
     default: 
-      i();
+      j();
     case 0: 
     case 13: 
     case 10: 
@@ -332,65 +280,112 @@ public class EditVideoGuide
                   do
                   {
                     return;
-                    StoryAddDescribeGuideDialog localStoryAddDescribeGuideDialog = new StoryAddDescribeGuideDialog(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a());
-                    localStoryAddDescribeGuideDialog.a("点击屏幕可添加描述");
-                    localStoryAddDescribeGuideDialog.show();
-                    localStoryAddDescribeGuideDialog.setOnDismissListener(new aock(this));
+                    vqv localvqv = new vqv(this.jdField_a_of_type_Bihj.a());
+                    localvqv.a(ajjy.a(2131638052));
+                    localvqv.show();
+                    localvqv.setOnDismissListener(new bifk(this));
                     paramObject.b("has_show_basal_guide", Boolean.valueOf(true));
-                    StoryReportor.a("video_edit", "guide_txt", 0, 0, new String[0]);
+                    urp.a("video_edit", "guide_txt", 0, 0, new String[0]);
                     return;
-                    paramObject = new StoryNewGuideDialog(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a());
-                    paramObject.a("左右滑动可添加滤镜效果");
+                    paramObject = new vpd(this.jdField_a_of_type_Bihj.a());
+                    paramObject.a(ajjy.a(2131638083));
                   } while (((Activity)a()).isFinishing());
                   paramObject.show();
-                  paramObject.setOnDismissListener(new aocl(this));
-                  StoryReportor.a("video_edit", "guide_filter", 0, 0, new String[0]);
+                  paramObject.setOnDismissListener(new bifl(this));
+                  urp.a("video_edit", "guide_filter", 0, 0, new String[0]);
                   return;
                 } while (!a(2));
                 l();
-                StoryReportor.a("video_edit", "guide_sticker", 0, 0, new String[0]);
+                urp.a("video_edit", "guide_sticker", 0, 0, new String[0]);
                 return;
               } while (!a(3));
               l();
               paramObject.b("has_show_music_guide", Boolean.valueOf(true));
-              StoryReportor.a("video_edit", "guide_music", 0, 0, new String[0]);
+              urp.a("video_edit", "guide_music", 0, 0, new String[0]);
               return;
             } while (!a(1));
             l();
             paramObject.b("has_show_draw_line_guide", Boolean.valueOf(true));
-            StoryReportor.a("video_edit", "guide_graffiti", 0, 0, new String[0]);
+            urp.a("video_edit", "guide_graffiti", 0, 0, new String[0]);
             return;
           } while (!a(4));
           l();
           paramObject.b("has_show_add_poi_paster_guide", Boolean.valueOf(true));
-          StoryReportor.a("video_edit", "guide_place", 0, 0, new String[0]);
+          urp.a("video_edit", "guide_place", 0, 0, new String[0]);
           return;
         } while (!a(5));
         l();
         paramObject.b("has_show_fragment_guide", Boolean.valueOf(true));
         return;
-        if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.jdField_a_of_type_Int == 1) {
+        if (this.jdField_a_of_type_Bigb.a.jdField_a_of_type_Int == 1) {
           paramObject.b("has_show_draw_line_guide", Boolean.valueOf(true));
         }
-        i();
+        j();
         return;
       } while (this.jdField_a_of_type_Int == 2);
-      i();
+      j();
       return;
     case 6: 
       k();
-      i();
+      j();
       return;
     }
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.jdField_a_of_type_Int == 1) {
+    if (this.jdField_a_of_type_Bigb.a.jdField_a_of_type_Int == 1) {
       paramObject.b("has_show_music_guide", Boolean.valueOf(true));
     }
-    i();
+    j();
   }
   
-  public void c()
+  protected void b(boolean paramBoolean)
   {
-    SLog.b("Q.qqstory.publish.edit.EditVideoGuide", "checkShowGuide. guideType = %d.", Integer.valueOf(this.jdField_a_of_type_Int));
+    if (this.jdField_a_of_type_Bigb.a.jdField_a_of_type_Int != 1)
+    {
+      this.jdField_a_of_type_Int = 8;
+      this.b = 8;
+      urk.c("Q.qqstory.publish.edit.EditVideoGuide", "not story business, initial guideType = GUIDE_NULL.");
+      return;
+    }
+    urk.b("Q.qqstory.publish.edit.EditVideoGuide", "initGuideType. enableMultiFragment = %s.", Boolean.valueOf(paramBoolean));
+    spz localspz = (spz)sqg.a(10);
+    if ((paramBoolean) && (!((Boolean)localspz.b("has_show_fragment_guide", Boolean.valueOf(false))).booleanValue()))
+    {
+      this.jdField_a_of_type_Int = 7;
+      this.b = 7;
+      return;
+    }
+    if (!((Boolean)localspz.b("has_show_basal_guide", Boolean.valueOf(false))).booleanValue())
+    {
+      this.jdField_a_of_type_Int = 1;
+      this.b = 1;
+      return;
+    }
+    paramBoolean = ((Boolean)localspz.b("has_show_music_guide", Boolean.valueOf(false))).booleanValue();
+    soy localsoy = (soy)((sph)sqg.a(20)).a(1);
+    if ((!paramBoolean) && (!localsoy.a((spb)localsoy.a())))
+    {
+      this.jdField_a_of_type_Int = 4;
+      this.b = 4;
+      return;
+    }
+    if (!((Boolean)localspz.b("has_show_draw_line_guide", Boolean.valueOf(false))).booleanValue())
+    {
+      this.jdField_a_of_type_Int = 5;
+      this.b = 5;
+      return;
+    }
+    if (!((Boolean)localspz.b("has_show_add_poi_paster_guide", Boolean.valueOf(false))).booleanValue())
+    {
+      this.jdField_a_of_type_Int = 6;
+      this.b = 6;
+      return;
+    }
+    this.jdField_a_of_type_Int = 8;
+    this.b = 8;
+  }
+  
+  protected void d()
+  {
+    urk.b("Q.qqstory.publish.edit.EditVideoGuide", "checkShowGuide. guideType = %d.", Integer.valueOf(this.jdField_a_of_type_Int));
     switch (this.jdField_a_of_type_Int)
     {
     case 2: 
@@ -398,42 +393,50 @@ public class EditVideoGuide
     default: 
       return;
     case 7: 
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(24);
+      this.jdField_a_of_type_Bigb.a(24);
       return;
     case 1: 
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(13);
+      this.jdField_a_of_type_Bigb.a(13);
       return;
     case 4: 
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(15);
+      this.jdField_a_of_type_Bigb.a(15);
       return;
     case 5: 
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(16);
+      this.jdField_a_of_type_Bigb.a(16);
       return;
     }
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(17);
+    this.jdField_a_of_type_Bigb.a(17);
   }
   
-  public void h()
+  public void f()
+  {
+    super.f();
+    if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
+      d();
+    }
+  }
+  
+  public void g()
   {
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
     }
     if (this.jdField_a_of_type_AndroidOsHandler != null)
     {
-      if (this.jdField_a_of_type_Aocn != null)
+      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGuide$GotoLocationPageDelayRunnable != null)
       {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_Aocn);
-        this.jdField_a_of_type_Aocn = null;
+        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGuide$GotoLocationPageDelayRunnable);
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGuide$GotoLocationPageDelayRunnable = null;
       }
-      if (this.jdField_a_of_type_Aoco != null)
+      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGuide$InitGuideTypeDelayRunnable != null)
       {
-        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_Aoco);
-        this.jdField_a_of_type_Aoco = null;
+        this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGuide$InitGuideTypeDelayRunnable);
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGuide$InitGuideTypeDelayRunnable = null;
       }
     }
   }
   
-  public void i()
+  public void j()
   {
     if (this.jdField_a_of_type_Int != 8)
     {
@@ -456,10 +459,10 @@ public class EditVideoGuide
         if (this.jdField_a_of_type_AndroidOsHandler == null) {
           this.jdField_a_of_type_AndroidOsHandler = new Handler();
         }
-        if (this.jdField_a_of_type_Aocn == null) {
-          this.jdField_a_of_type_Aocn = new aocn(this);
+        if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGuide$GotoLocationPageDelayRunnable == null) {
+          this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGuide$GotoLocationPageDelayRunnable = new EditVideoGuide.GotoLocationPageDelayRunnable(this);
         }
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_Aocn, 200L);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoGuide$GotoLocationPageDelayRunnable, 200L);
       }
       return;
     }
@@ -472,7 +475,7 @@ public class EditVideoGuide
     default: 
       return;
     }
-    m();
+    n();
   }
 }
 

@@ -1,26 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
 
 public class vue
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public vue(PhotoListPanel paramPhotoListPanel) {}
+  public vue(QRLoginMgrActivity paramQRLoginMgrActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    paramView = paramView.getParent();
-    if (paramView != null) {
-      paramView.requestDisallowInterceptTouchEvent(true);
-    }
-    return false;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     vue
  * JD-Core Version:    0.7.0.1
  */

@@ -8,10 +8,10 @@ import java.util.ArrayList;
 public final class VideoBanner
   extends JceStruct
 {
-  static ArrayList cache_videos = new ArrayList();
+  static ArrayList<OneVideoInfo> cache_videos = new ArrayList();
   public String nick = "";
   public long uUin;
-  public ArrayList videos;
+  public ArrayList<OneVideoInfo> videos;
   
   static
   {
@@ -21,7 +21,7 @@ public final class VideoBanner
   
   public VideoBanner() {}
   
-  public VideoBanner(long paramLong, ArrayList paramArrayList, String paramString)
+  public VideoBanner(long paramLong, ArrayList<OneVideoInfo> paramArrayList, String paramString)
   {
     this.uUin = paramLong;
     this.videos = paramArrayList;
@@ -48,7 +48,7 @@ public final class VideoBanner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_AD_BANNER.VideoBanner
  * JD-Core Version:    0.7.0.1
  */

@@ -7,11 +7,11 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class value$HwTmemList
-  extends MessageMicro
+  extends MessageMicro<HwTmemList>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "simple_infos", "actual_cnt", "store_cnt" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(0) }, HwTmemList.class);
   public final PBInt32Field actual_cnt = PBField.initInt32(0);
-  public final PBRepeatMessageField simple_infos = PBField.initRepeatMessage(value.HwTmemList.HwSimpleInfo.class);
+  public final PBRepeatMessageField<value.HwTmemList.HwSimpleInfo> simple_infos = PBField.initRepeatMessage(value.HwTmemList.HwSimpleInfo.class);
   public final PBInt32Field store_cnt = PBField.initInt32(0);
 }
 

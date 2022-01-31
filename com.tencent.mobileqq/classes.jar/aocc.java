@@ -1,87 +1,121 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoFilter.ItemViewGestureListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.10.1;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.10.2;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.10.3;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.10.4;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView.10.5;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aocc
-  implements View.OnTouchListener
+  extends aodp
 {
-  private int jdField_a_of_type_Int;
-  private MotionEvent jdField_a_of_type_AndroidViewMotionEvent;
-  private EditVideoFilter.ItemViewGestureListener jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener;
-  private boolean jdField_a_of_type_Boolean;
-  private final int jdField_b_of_type_Int = 5;
-  private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
-  private boolean jdField_b_of_type_Boolean;
+  public aocc(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
   
-  public aocc(EditVideoFilter.ItemViewGestureListener paramItemViewGestureListener)
+  protected void a(int paramInt, long paramLong, String paramString)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener = paramItemViewGestureListener;
+    super.a(paramInt, paramLong, paramString);
+    apck.a(paramLong, paramInt, paramString);
+    bgwq.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, paramInt);
   }
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener == null) {}
+    FileManagerEntity localFileManagerEntity = QfileBaseRecentFileTabView.G(this.a).a().a(paramLong1, paramString, paramInt, paramLong2);
+    if (localFileManagerEntity == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 2, "OnFileCome,but query FileEntity null,uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + "], strUin[" + apck.e(paramString) + "], peerType[" + paramInt + "]");
+      }
+      return;
+    }
+    this.a.b(localFileManagerEntity);
+    QfileBaseRecentFileTabView.H(this.a).a().c(localFileManagerEntity);
+    QfileBaseRecentFileTabView.d(this.a, new QfileBaseRecentFileTabView.10.3(this));
+  }
+  
+  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
+  {
+    super.a(paramLong, paramString1, paramInt, paramString2);
+    apck.a(paramLong);
+    this.a.i();
+  }
+  
+  protected void a(aooa paramaooa)
+  {
+    if (paramaooa == null) {}
+    FileManagerEntity localFileManagerEntity;
     do
     {
       do
       {
-        float f;
-        do
-        {
-          do
-          {
-            return true;
-            f = paramMotionEvent.getY();
-            switch (paramMotionEvent.getAction() & 0xFF)
-            {
-            case 3: 
-            case 4: 
-            default: 
-              return true;
-            case 0: 
-              this.jdField_a_of_type_Int = ((int)f);
-              this.jdField_a_of_type_Boolean = false;
-              this.jdField_b_of_type_Boolean = false;
-              this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-              return true;
-            }
-          } while (paramMotionEvent.getPointerCount() > 2);
-          if (this.jdField_b_of_type_Boolean)
-          {
-            this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener.a(paramMotionEvent);
-            return true;
-          }
-          this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-          this.jdField_b_of_type_Boolean = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener.a(this.jdField_a_of_type_AndroidViewMotionEvent, this.jdField_b_of_type_AndroidViewMotionEvent);
-        } while ((!this.jdField_b_of_type_Boolean) || (!(paramView instanceof ViewParent)));
-        ((ViewParent)paramView).requestDisallowInterceptTouchEvent(true);
-        return true;
-        if (Math.abs((int)(f - this.jdField_a_of_type_Int)) > 5) {
-          this.jdField_a_of_type_Boolean = true;
-        }
-      } while (!this.jdField_b_of_type_Boolean);
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener.a(paramMotionEvent);
-      return true;
-    } while ((paramMotionEvent.getPointerCount() > 2) || (!this.jdField_b_of_type_Boolean));
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener.a(paramMotionEvent);
-    return true;
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener.a(paramView);
+        return;
+      } while (!(paramaooa.a instanceof FileManagerEntity));
+      localFileManagerEntity = (FileManagerEntity)paramaooa.a;
+    } while ((paramaooa.b == null) || (paramaooa.b.length() <= 0));
+    localFileManagerEntity.strThumbPath = paramaooa.b;
+    QfileBaseRecentFileTabView.C(this.a).a().c(localFileManagerEntity);
+    this.a.i();
+  }
+  
+  protected void a(Boolean paramBoolean, List<OfflineFileInfo> paramList)
+  {
+    QfileBaseRecentFileTabView.a(this.a, paramBoolean, paramList);
+  }
+  
+  protected void a(Integer paramInteger, long paramLong, String paramString)
+  {
+    QfileBaseRecentFileTabView.e(this.a, new QfileBaseRecentFileTabView.10.4(this));
+    apck.a(paramLong, paramInteger.intValue(), paramString);
+    bgwq.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, paramInteger.intValue());
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    QfileBaseRecentFileTabView.b(this.a, new QfileBaseRecentFileTabView.10.1(this));
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  {
+    FileManagerEntity localFileManagerEntity = QfileBaseRecentFileTabView.D(this.a).a().a(paramLong1, paramString1, paramInt1, paramLong2);
+    if (localFileManagerEntity == null)
+    {
+      QLog.e(QfileBaseRecentFileTabView.jdField_a_of_type_JavaLangString, 1, "OnFileCome,but query FileEntity null,uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + "], strUin[" + apck.e(paramString1) + "], peerType[" + paramInt1 + "]");
+      return;
     }
-    if ((this.jdField_b_of_type_Boolean) && ((paramView instanceof ViewParent))) {
-      ((ViewParent)paramView).requestDisallowInterceptTouchEvent(false);
+    if (!paramBoolean)
+    {
+      localFileManagerEntity.bDelInFM = false;
+      apck.a(paramLong2, paramInt2, paramString2);
+      bgwq.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, paramInt2);
     }
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener.a(paramMotionEvent);
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    return true;
+    for (;;)
+    {
+      if ((this.a.b == null) || (this.a.b.trim().length() == 0) || (localFileManagerEntity.getCloudType() != 2)) {
+        this.a.b(localFileManagerEntity);
+      }
+      QfileBaseRecentFileTabView.E(this.a).a().c(localFileManagerEntity);
+      QfileBaseRecentFileTabView.c(this.a, new QfileBaseRecentFileTabView.10.2(this, paramLong2));
+      return;
+      paramInt1 = localFileManagerEntity.nOpType;
+      if ((paramInt1 == 4) || (paramInt1 == 20) || (paramInt1 == 6)) {
+        apck.a(paramLong2);
+      }
+    }
+  }
+  
+  protected void b()
+  {
+    super.b();
+    QfileBaseRecentFileTabView.f(this.a, new QfileBaseRecentFileTabView.10.5(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aocc
  * JD-Core Version:    0.7.0.1
  */

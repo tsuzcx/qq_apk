@@ -1,35 +1,116 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.RedTouchHandler;
-import com.tencent.mobileqq.leba.header.LebaGridShowManager;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.os.Message;
+import org.apache.http.Header;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
-public final class kqa
-  implements DialogInterface.OnClickListener
+public class kqa
+  extends kpy
 {
-  public kqa(int paramInt, QQAppInterface paramQQAppInterface, long paramLong, Handler paramHandler) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected Object a(String paramString)
   {
-    if (this.jdField_a_of_type_Int == 1)
+    Object localObject = null;
+    String str = paramString.trim();
+    if (!str.startsWith("{"))
     {
-      LebaGridShowManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, true, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
-      l = NetConnInfoCenter.getServerTimeMillis();
-      ((RedTouchHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(31)).a(String.valueOf(this.jdField_a_of_type_Long), true, l);
+      paramString = localObject;
+      if (!str.startsWith("[")) {}
+    }
+    else
+    {
+      paramString = new JSONTokener(str).nextValue();
+    }
+    if (paramString == null) {
+      return str;
+    }
+    return paramString;
+  }
+  
+  protected void a(int paramInt, Header[] paramArrayOfHeader, Object paramObject)
+  {
+    if ((paramObject instanceof JSONObject))
+    {
+      a(paramInt, paramArrayOfHeader, (JSONObject)paramObject);
       return;
     }
-    LebaGridShowManager.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, false, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-    long l = NetConnInfoCenter.getServerTimeMillis();
-    ((RedTouchHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(31)).a(String.valueOf(this.jdField_a_of_type_Long), false, l);
+    if ((paramObject instanceof JSONArray))
+    {
+      a(paramInt, paramArrayOfHeader, (JSONArray)paramObject);
+      return;
+    }
+    a(new JSONException("Unexpected type " + paramObject.getClass().getName()), (JSONObject)null);
+  }
+  
+  public void a(int paramInt, Header[] paramArrayOfHeader, JSONArray paramJSONArray) {}
+  
+  public void a(int paramInt, Header[] paramArrayOfHeader, JSONObject paramJSONObject) {}
+  
+  protected void a(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      super.a(paramMessage);
+      return;
+    }
+    paramMessage = (Object[])paramMessage.obj;
+    a(((Integer)paramMessage[0]).intValue(), (Header[])paramMessage[1], paramMessage[2]);
+  }
+  
+  public void a(Throwable paramThrowable, JSONArray paramJSONArray) {}
+  
+  public void a(Throwable paramThrowable, JSONObject paramJSONObject) {}
+  
+  protected void b(int paramInt, Header[] paramArrayOfHeader, String paramString)
+  {
+    if (paramInt != 204) {
+      try
+      {
+        b(a(100, new Object[] { Integer.valueOf(paramInt), paramArrayOfHeader, a(paramString) }));
+        return;
+      }
+      catch (JSONException paramArrayOfHeader)
+      {
+        b(paramArrayOfHeader, paramString);
+        return;
+      }
+    }
+    b(a(100, new Object[] { Integer.valueOf(paramInt), new JSONObject() }));
+  }
+  
+  protected void c(Throwable paramThrowable, String paramString)
+  {
+    if (paramString != null)
+    {
+      try
+      {
+        Object localObject = a(paramString);
+        if ((localObject instanceof JSONObject))
+        {
+          a(paramThrowable, (JSONObject)localObject);
+          return;
+        }
+        if ((localObject instanceof JSONArray))
+        {
+          a(paramThrowable, (JSONArray)localObject);
+          return;
+        }
+      }
+      catch (JSONException localJSONException)
+      {
+        a(paramThrowable, paramString);
+        return;
+      }
+      a(paramThrowable, paramString);
+      return;
+    }
+    a(paramThrowable, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     kqa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,12 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.view.NeoVideoRecordButton;
-import com.tencent.biz.qqstory.view.RingView.DrawInfo;
-
-public class oum
-  implements ValueAnimator.AnimatorUpdateListener
+class oum
+  implements pjw
 {
-  public oum(NeoVideoRecordButton paramNeoVideoRecordButton) {}
+  oum(ouk paramouk, opw paramopw, qoe paramqoe) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a()
   {
-    this.a.a.a(((Integer)paramValueAnimator.getAnimatedValue("border")).intValue(), 0.0F);
-    this.a.a.b(((Integer)paramValueAnimator.getAnimatedValue("ring")).intValue(), 0.0F);
-    this.a.b.a(((Integer)paramValueAnimator.getAnimatedValue("center")).intValue(), 0.0F);
-    this.a.b.e = ((Integer)paramValueAnimator.getAnimatedValue("color")).intValue();
-    NeoVideoRecordButton.a(this.a);
+    obz.a = this.jdField_a_of_type_Opw.a();
+    obz.a(this.jdField_a_of_type_Qoe.a(), this.jdField_a_of_type_Opw.a(), 2);
   }
 }
 

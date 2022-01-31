@@ -1,28 +1,26 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
+import android.database.DataSetObserver;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
 
 public class abbg
-  implements ArkLocalAppMgr.IGetAppPathByNameCallback
+  extends DataSetObserver
 {
-  public abbg(ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter, ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder) {}
+  public abbg(LebaListMgrActivity paramLebaListMgrActivity) {}
   
-  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void onChanged()
   {
-    if ((paramInt == 0) && (paramAppPathInfo.a != null))
+    TextView localTextView = LebaListMgrActivity.a(this.a);
+    if (LebaListMgrActivity.a(this.a).getCount() > 0) {}
+    for (int i = 0;; i = 8)
     {
-      ArkAppCenter.a(paramAppPathInfo.a, new abbh(this));
-      paramString = ArkAppCenter.b(paramAppPathInfo.a);
-      ArkAppCenter.a().postToMainThread(new abbi(this, paramString));
+      localTextView.setVisibility(i);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abbg
  * JD-Core Version:    0.7.0.1
  */

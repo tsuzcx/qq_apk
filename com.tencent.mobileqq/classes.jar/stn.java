@@ -1,70 +1,27 @@
-import android.util.Pair;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.util.WeakReferenceHandler;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspCheckActivity;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public class stn
-  extends CardObserver
+  extends slu
 {
-  public stn(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public long a;
+  public int b;
   
-  public void e(boolean paramBoolean, Object paramObject)
+  public stn(qqstory_service.RspCheckActivity paramRspCheckActivity)
   {
-    for (;;)
-    {
-      try
-      {
-        if (this.a.isFinishing()) {
-          break;
-        }
-        this.a.jdField_b_of_type_ComTencentUtilWeakReferenceHandler.removeCallbacks(this.a.jdField_b_of_type_JavaLangRunnable);
-        this.a.G();
-        if ((!paramBoolean) || (paramObject == null)) {
-          break;
-        }
-        if ((paramObject instanceof Card))
-        {
-          ThreadManager.post(new sto(this, (Card)paramObject), 5, null, true);
-          return;
-        }
-        if (!(paramObject instanceof Pair)) {
-          break;
-        }
-        paramObject = (Pair)paramObject;
-        if (((Integer)paramObject.first).intValue() == 101107)
-        {
-          this.a.f = 1;
-          this.a.J();
-          return;
-        }
-      }
-      catch (Exception paramObject)
-      {
-        paramObject.printStackTrace();
-        return;
-      }
-      if (((Integer)paramObject.first).intValue() == 101108)
-      {
-        this.a.f = 2;
-      }
-      else
-      {
-        if ((((Integer)paramObject.first).intValue() >= 400000) && (((Integer)paramObject.first).intValue() <= 499999))
-        {
-          Toast.makeText(this.a.getApplicationContext(), (CharSequence)paramObject.second, 0).show();
-          return;
-        }
-        Toast.makeText(this.a.getApplicationContext(), 2131436764, 0).show();
-      }
-    }
+    super(paramRspCheckActivity.result);
+    this.b = paramRspCheckActivity.is_activity.get();
+    this.a = paramRspCheckActivity.next_check_time.get();
+  }
+  
+  public String toString()
+  {
+    return "MsgTabCheckActiveResponse{active=" + this.b + ", nextCheckTime=" + this.a + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     stn
  * JD-Core Version:    0.7.0.1
  */

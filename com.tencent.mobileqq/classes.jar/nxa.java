@@ -1,28 +1,33 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.shareGroup.infocard.model.ShareGroupDateListPageLoader;
-import com.tencent.biz.qqstory.shareGroup.infocard.model.ShareGroupDateListPageLoader.CacheContext;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.SubCommentData;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class nxa
-  extends SimpleJob
+class nxa
+  extends ClickableSpan
 {
-  public nxa(ShareGroupDateListPageLoader paramShareGroupDateListPageLoader) {}
+  nxa(nwx paramnwx, SubCommentData paramSubCommentData) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void onClick(View paramView)
   {
-    if (this.a.a == null) {
-      this.a.a = new ShareGroupDateListPageLoader.CacheContext(this.a, this.a.c);
-    }
-    this.a.d = this.a.a.a;
-    ShareGroupDateListPageLoader.a(this.a);
-    return null;
+    nvx.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentDataSubCommentData.repliedUserUin, BaseActivity.sTopActivity);
+    paramView = new nuj(this.jdField_a_of_type_Nwx).a().a();
+    ndn.a(null, nvx.a(this.jdField_a_of_type_Nwx.a), "0X800955B", "0X800955B", 0, 0, String.valueOf(this.jdField_a_of_type_Nwx.a.mArticleID), String.valueOf(this.jdField_a_of_type_Nwx.a.mAlgorithmID), this.jdField_a_of_type_Nwx.a.innerUniqueID, paramView, false);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+    paramTextPaint.setColor(Color.parseColor("#4D7CAF"));
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nxa
  * JD-Core Version:    0.7.0.1
  */

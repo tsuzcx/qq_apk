@@ -1,22 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.av.utils.PopupDialogQQSide;
 
-class mhp
-  implements Runnable
+public class mhp
+  implements DialogInterface.OnDismissListener
 {
-  mhp(mho parammho, VideoPlayerWrapper paramVideoPlayerWrapper) {}
+  public mhp(PopupDialogQQSide paramPopupDialogQQSide) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.h();
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
     }
-    VideoFeedsPlayManager.c(this.jdField_a_of_type_Mho.a);
+    if (this.a.getActivity() != null)
+    {
+      this.a.getActivity().doOnBackPressed();
+      this.a.getActivity().overridePendingTransition(0, 0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mhp
  * JD-Core Version:    0.7.0.1
  */

@@ -77,29 +77,26 @@ final class JobDbHelper
   
   public SQLiteDatabase openDatabase(boolean paramBoolean)
   {
-    Object localObject1 = null;
     if (paramBoolean) {}
-    for (;;)
+    try
     {
-      try
+      for (SQLiteDatabase localSQLiteDatabase = getWritableDatabase();; localSQLiteDatabase = getReadableDatabase())
       {
-        localSQLiteDatabase = getWritableDatabase();
-        localObject1 = localSQLiteDatabase;
+        if (localSQLiteDatabase != null) {
+          this.mRefCount += 1;
+        }
+        return localSQLiteDatabase;
       }
-      catch (Throwable localThrowable)
-      {
-        SQLiteDatabase localSQLiteDatabase;
-        TsLog.e("JobDbHelper", "openDatabase failed", localThrowable);
-        continue;
-      }
-      finally {}
-      if (localObject1 != null) {
-        this.mRefCount += 1;
-      }
-      return localObject1;
-      localSQLiteDatabase = getReadableDatabase();
-      localObject1 = localSQLiteDatabase;
     }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        TsLog.e("JobDbHelper", "openDatabase failed", localThrowable);
+        Object localObject1 = null;
+      }
+    }
+    finally {}
   }
 }
 

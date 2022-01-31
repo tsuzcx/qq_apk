@@ -1,20 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
-class afne
-  implements DialogInterface.OnClickListener
+public class afne
+  implements afpj
 {
-  afne(afna paramafna, QQCustomDialog paramQQCustomDialog) {}
+  public afne(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    ChatHistoryTroopMemberFragment.a(this.a).sendEmptyMessage(1);
+  }
+  
+  public void b()
+  {
+    ChatHistoryTroopMemberFragment.a(this.a).sendEmptyMessage(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afne
  * JD-Core Version:    0.7.0.1
  */

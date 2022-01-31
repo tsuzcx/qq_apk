@@ -1,96 +1,133 @@
-import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
-import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView.OnSelectListener;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.helper.TroopAddFriendTipsHelper.1;
+import com.tencent.mobileqq.activity.aio.helper.TroopAddFriendTipsHelper.2;
+import com.tencent.mobileqq.activity.aio.helper.TroopAddFriendTipsHelper.3;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.haoliyou.orion.XorCipherException;
+import com.tencent.mobileqq.troop.utils.TroopBatchAddFriendMgr;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class acym
-  implements QfilePinnedHeaderExpandableListView.OnSelectListener
+  implements acxg
 {
-  private int jdField_a_of_type_Int;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie;
+  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   
-  public acym(QfileCloudFileTabView paramQfileCloudFileTabView) {}
-  
-  public void a(int paramInt1, int paramInt2)
+  public acym(BaseChatPie paramBaseChatPie)
   {
-    boolean bool = false;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Int = -2147483648;
-    this.b = 2147483647;
-    WeiYunFileInfo localWeiYunFileInfo = (WeiYunFileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView.a.getChild(paramInt1, paramInt2);
-    if (localWeiYunFileInfo == null) {}
-    do
-    {
-      return;
-      if (!FMDataCache.a(localWeiYunFileInfo)) {
-        bool = true;
-      }
-      this.jdField_a_of_type_Boolean = bool;
-    } while (!QfileCloudFileTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView, localWeiYunFileInfo, this.jdField_a_of_type_Boolean));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView.o();
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.jdField_a_of_type_AndroidContentContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    this.jdField_a_of_type_MqqOsMqqHandler = paramBaseChatPie.a();
   }
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private void a(String paramString)
   {
-    if (paramInt1 != paramInt3) {
+    Object localObject = (ajtg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+    if (localObject != null)
+    {
+      localObject = ((ajtg)localObject).a();
+      if (localObject != null) {
+        ((TroopBatchAddFriendMgr)localObject).g(paramString);
+      }
+    }
+  }
+  
+  public void a()
+  {
+    ThreadManager.post(new TroopAddFriendTipsHelper.1(this, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent().getStringExtra("uin")), 2, null, true);
+  }
+  
+  public void a(int paramInt)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) {}
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 2: 
+      a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+      return;
+    case 6: 
+      a();
       return;
     }
-    paramInt3 = Math.min(paramInt2, paramInt4);
-    int i = Math.max(paramInt2, paramInt4);
-    if (paramInt4 < paramInt2) {
-      this.b = Math.min(paramInt4, this.b);
-    }
+    a(null);
+  }
+  
+  public void a(MessageRecord paramMessageRecord)
+  {
+    String str1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+    if (!str1.equalsIgnoreCase(paramMessageRecord.frienduin)) {}
     for (;;)
     {
-      paramInt2 = paramInt3;
-      while (paramInt2 <= i)
-      {
-        QfileCloudFileTabView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView, (WeiYunFileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView.a.getChild(paramInt1, paramInt2), this.jdField_a_of_type_Boolean);
-        paramInt2 += 1;
+      return;
+      TroopBatchAddFriendMgr localTroopBatchAddFriendMgr = ((ajtg)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).a();
+      String str2;
+      if ((paramMessageRecord != null) && (paramMessageRecord.msgtype == -1012) && (localTroopBatchAddFriendMgr.b("newMember"))) {
+        str2 = paramMessageRecord.getExtInfoFromExtStr("troop_new_member_uin");
       }
-      this.jdField_a_of_type_Int = Math.max(paramInt4, this.jdField_a_of_type_Int);
-    }
-    paramInt2 = this.b;
-    QfileCloudFileTabView localQfileCloudFileTabView;
-    WeiYunFileInfo localWeiYunFileInfo;
-    boolean bool;
-    if (paramInt2 < paramInt3)
-    {
-      localQfileCloudFileTabView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView;
-      localWeiYunFileInfo = (WeiYunFileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView.a.getChild(paramInt1, paramInt2);
-      if (!this.jdField_a_of_type_Boolean) {}
-      for (bool = true;; bool = false)
+      try
       {
-        QfileCloudFileTabView.a(localQfileCloudFileTabView, localWeiYunFileInfo, bool);
-        paramInt2 += 1;
-        break;
+        QLog.d("TroopAddFriendTipsHelper", 1, "checkTipsTriggerInAio update newMemberUin = " + aqca.a(str2) + " troop:" + str1);
+        if ((localTroopBatchAddFriendMgr.a(str1)) && (!azgu.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str1))) {
+          ThreadManager.getSubThreadHandler().postDelayed(new TroopAddFriendTipsHelper.2(this, str2, str1), 1000L);
+        }
+        if ((paramMessageRecord != null) && (!paramMessageRecord.isSendFromLocal()) && (paramMessageRecord.mMessageInfo != null) && (!mnf.a(paramMessageRecord)) && ((paramMessageRecord.mMessageInfo.a.a()) || (paramMessageRecord.mMessageInfo.l.a())) && (localTroopBatchAddFriendMgr.b("atMeOrReplyMe")) && (localTroopBatchAddFriendMgr.e(paramMessageRecord.senderuin))) {
+          localTroopBatchAddFriendMgr.a(str1, paramMessageRecord.senderuin, paramMessageRecord.time, paramMessageRecord.shmsgseq);
+        }
+        if ((paramMessageRecord == null) || (!paramMessageRecord.isSendFromLocal())) {
+          continue;
+        }
+        if (paramMessageRecord.atInfoList != null)
+        {
+          i = 1;
+          if (((i | paramMessageRecord instanceof MessageForReplyText) == 0) || (!localTroopBatchAddFriendMgr.b("atMeOrReplyMe"))) {
+            continue;
+          }
+          localTroopBatchAddFriendMgr.a(paramMessageRecord, str1);
+          return;
+        }
+      }
+      catch (XorCipherException localXorCipherException)
+      {
+        for (;;)
+        {
+          localXorCipherException.printStackTrace();
+          continue;
+          int i = 0;
+        }
       }
     }
-    paramInt2 = i + 1;
-    if (paramInt2 <= this.jdField_a_of_type_Int)
-    {
-      localQfileCloudFileTabView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView;
-      localWeiYunFileInfo = (WeiYunFileInfo)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView.a.getChild(paramInt1, paramInt2);
-      if (!this.jdField_a_of_type_Boolean) {}
-      for (bool = true;; bool = false)
-      {
-        QfileCloudFileTabView.a(localQfileCloudFileTabView, localWeiYunFileInfo, bool);
-        paramInt2 += 1;
-        break;
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileCloudFileTabView.o();
   }
   
-  public void a(boolean paramBoolean) {}
+  public void a(boolean paramBoolean, String paramString)
+  {
+    ThreadManager.postImmediately(new TroopAddFriendTipsHelper.3(this, paramBoolean, paramString), null, true);
+  }
   
-  public void b(int paramInt1, int paramInt2) {}
+  public int[] a()
+  {
+    return new int[] { 2, 6, 11 };
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acym
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,35 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment.SearchArticle;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
-import com.tencent.mobileqq.troop.widget.LoadMoreXListView;
-import com.tencent.mobileqq.util.TroopReportor;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
-import org.json.JSONException;
-
 public class ajre
-  implements AdapterView.OnItemClickListener
+  implements ajfe
 {
-  public ajre(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
+  protected void a(int paramInt) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  protected void a(int paramInt1, int paramInt2) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt < SearchReciteArticleFragment.a(this.a).getCount()) {
-      paramAdapterView = SearchReciteArticleFragment.a(this.a).a(paramInt);
-    }
-    try
+    switch (paramInt)
     {
-      TroopReportor.a("Grp_edu", "Grp_recite", "Search_Content_Clk", 0, 0, new String[] { SearchReciteArticleFragment.a(this.a), "1", String.valueOf(paramInt), String.valueOf(paramAdapterView.jdField_a_of_type_Int) });
-      TroopReportor.a("Grp_edu", "Grp_recite", "Clk_Success", 0, 0, new String[] { SearchReciteArticleFragment.a(this.a), String.valueOf(paramAdapterView.jdField_a_of_type_Int) });
-      SearchReciteArticleFragment.a(this.a, HWReciteInfo.a(SearchReciteArticleFragment.a(this.a), paramAdapterView.jdField_a_of_type_JavaLangString, paramAdapterView.c, null));
-      SearchReciteArticleFragment.b(this.a);
-      return;
     }
-    catch (JSONException paramAdapterView)
+    do
     {
-      paramAdapterView.printStackTrace();
-    }
+      do
+      {
+        do
+        {
+          return;
+        } while (paramObject == null);
+        paramObject = (Object[])paramObject;
+        a(((Integer)paramObject[0]).intValue(), ((Integer)paramObject[1]).intValue());
+        return;
+      } while (paramObject == null);
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length != 1);
+    a(((Integer)paramObject[0]).intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajre
  * JD-Core Version:    0.7.0.1
  */

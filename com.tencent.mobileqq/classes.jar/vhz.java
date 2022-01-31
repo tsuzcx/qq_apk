@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.activity.aio.item.PokeItemAnimationManager;
+import android.app.Activity;
+import android.os.Handler;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
+import java.util.List;
 
 public class vhz
+  extends vhw
 {
   public int a;
-  public long a;
-  
-  public vhz(PokeItemAnimationManager paramPokeItemAnimationManager)
-  {
-    this.jdField_a_of_type_Long = -1L;
-  }
+  public Activity a;
+  public Handler a;
+  public String a;
+  public List<SlideItemInfo> a;
+  public via a;
+  public int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vhz
  * JD-Core Version:    0.7.0.1
  */

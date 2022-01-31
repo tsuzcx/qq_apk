@@ -1,20 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import org.json.JSONObject;
 
 public class rlo
-  implements View.OnClickListener
+  implements rlp
 {
-  public rlo(AccountManageActivity paramAccountManageActivity) {}
+  public rlo(BridgeModule paramBridgeModule) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, JSONObject paramJSONObject)
   {
-    this.a.i();
+    this.a.invokeCallJS(paramString, paramJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rlo
  * JD-Core Version:    0.7.0.1
  */

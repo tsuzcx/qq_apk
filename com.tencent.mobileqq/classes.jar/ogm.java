@@ -1,50 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.DiscoverManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.network.request.square.GetSquareBannerRequest;
-import com.tencent.biz.qqstory.network.request.square.GetSquareBannerRequest.GetSquareBannerResponse;
-import com.tencent.biz.qqstory.storyHome.square.SquareFeedListPageLoader;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.util.List;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.kandianreport.TaskException;
 
 public class ogm
-  implements CmdTaskManger.CommandCallback
+  extends BroadcastReceiver
 {
-  public ogm(SquareFeedListPageLoader paramSquareFeedListPageLoader) {}
+  public ogm(KandianMergeManager paramKandianMergeManager) {}
   
-  public void a(@NonNull GetSquareBannerRequest arg1, @Nullable GetSquareBannerRequest.GetSquareBannerResponse paramGetSquareBannerResponse, @NonNull ErrorMessage paramErrorMessage)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ??? = (DiscoverManager)SuperManager.a(22);
-    if ((paramErrorMessage.isSuccess()) && (paramGetSquareBannerResponse != null))
-    {
-      ???.b(paramGetSquareBannerResponse.a, true);
-      SLog.a("Q.qqstory.discover.SquareFeedListPageLoader", "refresh banner :%s", paramGetSquareBannerResponse.a);
-      synchronized (this.a)
-      {
-        SquareFeedListPageLoader.a(this.a, paramGetSquareBannerResponse);
-        SquareFeedListPageLoader.a(this.a);
-        return;
-      }
-    }
-    SLog.b("Q.qqstory.discover.SquareFeedListPageLoader", "refresh banner fail:%s", paramErrorMessage);
-    paramGetSquareBannerResponse = ???.b();
-    for (;;)
-    {
-      synchronized (this.a)
-      {
-        if (paramGetSquareBannerResponse.size() > 0)
-        {
-          SquareFeedListPageLoader.a(this.a, new GetSquareBannerRequest.GetSquareBannerResponse(new ErrorMessage()));
-          SquareFeedListPageLoader.a(this.a).a = paramGetSquareBannerResponse;
-          SquareFeedListPageLoader.a(this.a);
-          return;
-        }
-      }
-      SquareFeedListPageLoader.a(this.a, new GetSquareBannerRequest.GetSquareBannerResponse(paramErrorMessage));
-    }
+    TaskException.reportCrash(paramIntent.getBooleanExtra("isNativeCrashed", false), paramIntent.getStringExtra("crashType"), paramIntent.getStringExtra("crashAddress"), paramIntent.getStringExtra("crashStack"), paramIntent.getIntExtra("native_SICODE", 0), paramIntent.getLongExtra("crashTime", 0L));
   }
 }
 

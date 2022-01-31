@@ -1,22 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.ar.ARMusicController;
-import com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aaht
-  implements Runnable
+class aaht
+  implements View.OnClickListener
 {
-  public aaht(Interactive3DRenderable paramInteractive3DRenderable, String paramString) {}
+  aaht(aahr paramaahr, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((Interactive3DRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DRenderable) != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      Interactive3DRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DRenderable).a(Interactive3DRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DRenderable) + this.jdField_a_of_type_JavaLangString, true, true);
-    }
+    this.jdField_a_of_type_Aahr.a.app.a(this.jdField_a_of_type_JavaLangString, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaht
  * JD-Core Version:    0.7.0.1
  */

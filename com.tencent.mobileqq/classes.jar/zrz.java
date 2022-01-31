@@ -1,30 +1,60 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
+import mqq.app.AppRuntime;
 
 public class zrz
-  extends BroadcastReceiver
 {
-  public zrz(QQAppInterface paramQQAppInterface) {}
+  TroopMemberApiService jdField_a_of_type_ComTencentBizTroopTroopMemberApiService;
+  AppRuntime jdField_a_of_type_MqqAppAppRuntime;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public zrz(AppRuntime paramAppRuntime, TroopMemberApiService paramTroopMemberApiService)
   {
-    if (this.a.l) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqhead.broadcast", 2, "qqHeadBroadcastReceiver onReceive, app isReleased");
-      }
+    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService = paramTroopMemberApiService;
+  }
+  
+  public static void a(int paramInt, Bundle paramBundle, zsa paramzsa)
+  {
+    Bundle localBundle = paramBundle;
+    if (paramBundle == null) {
+      localBundle = new Bundle();
     }
-    while ((paramIntent == null) || (!"com.tencent.qqhead.getheadreq".equals(paramIntent.getAction()))) {
+    localBundle.putInt("key_sub_cmd", paramInt);
+    if (paramzsa != null)
+    {
+      wis.a().a(116, localBundle, paramzsa);
       return;
     }
-    QQAppInterface.a(this.a, paramIntent);
+    wis.a().a(116, localBundle);
+  }
+  
+  public void a(int paramInt1, Bundle paramBundle, int paramInt2)
+  {
+    switch (paramBundle.getInt("key_sub_cmd"))
+    {
+    default: 
+      return;
+    case 1: 
+      paramBundle.putBundle("key_result", ztd.a());
+      this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService.a(paramInt1, paramBundle);
+      return;
+    case 2: 
+      str1 = paramBundle.getString("key");
+      paramInt1 = paramBundle.getInt("type");
+      paramBundle = paramBundle.getString("appid");
+      zun.a().b(str1, paramInt1, paramBundle);
+      return;
+    }
+    String str1 = paramBundle.getString("key");
+    paramInt1 = paramBundle.getInt("type");
+    String str2 = paramBundle.getString("appid");
+    paramBundle = paramBundle.getString("api");
+    zun.a().b(str1, paramInt1, str2, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zrz
  * JD-Core Version:    0.7.0.1
  */

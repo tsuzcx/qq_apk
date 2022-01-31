@@ -1,21 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.Doraemon.impl.commonModule.UserLoginLogic;
-import com.tencent.mobileqq.Doraemon.util.DoraemonUtil;
-
-public class rjq
-  implements DialogInterface.OnClickListener
+public abstract interface rjq
 {
-  public rjq(UserLoginLogic paramUserLoginLogic) {}
+  public abstract void a(int paramInt);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    DoraemonUtil.a(this.a.a, 4);
-  }
+  public abstract void a(boolean paramBoolean, int paramInt);
+  
+  public abstract void b(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rjq
  * JD-Core Version:    0.7.0.1
  */

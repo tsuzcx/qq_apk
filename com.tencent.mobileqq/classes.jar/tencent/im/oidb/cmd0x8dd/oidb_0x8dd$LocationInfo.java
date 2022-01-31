@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class oidb_0x8dd$LocationInfo
-  extends MessageMicro
+  extends MessageMicro<LocationInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50 }, new String[] { "str_province", "str_city", "str_district", "str_town", "str_road", "str_premises" }, new Object[] { "", "", "", "", "", "" }, LocationInfo.class);
   public final PBStringField str_city = PBField.initString("");
@@ -18,7 +18,7 @@ public final class oidb_0x8dd$LocationInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8dd.oidb_0x8dd.LocationInfo
  * JD-Core Version:    0.7.0.1
  */

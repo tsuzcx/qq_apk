@@ -1,20 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.view.View;
 
 public class altv
-  implements DialogInterface.OnClickListener
+  extends alts
 {
-  public altv(QidianProfileCardActivity paramQidianProfileCardActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(alti paramalti, int paramInt, boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
+    super.a(paramalti, paramInt, paramBoolean);
+    paramalti.b.setBackgroundResource(2130838966);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     altv
  * JD-Core Version:    0.7.0.1
  */

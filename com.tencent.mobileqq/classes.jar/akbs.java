@@ -1,97 +1,38 @@
-import android.content.Context;
-import android.support.v4.view.ViewCompat;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.widget.TroopMoreDetailView;
-import com.tencent.mobileqq.util.FaceDrawable;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import msf.msgsvc.msg_svc.PbSendMsgReq;
 
-public class akbs
-  implements Runnable
+class akbs
+  implements akae
 {
-  private final WeakReference a;
+  akbs(akbq paramakbq, String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte) {}
   
-  public akbs(TroopMoreDetailView paramTroopMoreDetailView)
+  public ToServiceMsg a()
   {
-    this.a = new WeakReference(paramTroopMoreDetailView);
-  }
-  
-  public void run()
-  {
-    int i = 6;
-    TroopMoreDetailView localTroopMoreDetailView = (TroopMoreDetailView)this.a.get();
-    if (localTroopMoreDetailView == null) {}
-    Object localObject1;
-    QQAppInterface localQQAppInterface;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          localObject1 = TroopMoreDetailView.a(localTroopMoreDetailView);
-        } while (localObject1 == null);
-        localQQAppInterface = TroopMoreDetailView.a(localTroopMoreDetailView);
-      } while ((localQQAppInterface == null) || (localTroopMoreDetailView.jdField_a_of_type_ArrayOfAndroidViewView == null));
-      localObject3 = localTroopMoreDetailView.jdField_a_of_type_ArrayOfAndroidViewView[6];
-    } while (localObject3 == null);
-    int k = localTroopMoreDetailView.jdField_a_of_type_JavaUtilArrayList.size();
-    if (k == 0)
-    {
-      ((View)localObject3).setVisibility(8);
-      return;
-    }
-    ((LinearLayout)((View)localObject3).findViewById(2131371579)).setVisibility(0);
-    Object localObject2 = (TextView)((View)localObject3).findViewById(2131371580);
-    ((TextView)localObject2).setText("共" + k + "人");
-    Object localObject3 = (TextView)((View)localObject3).findViewById(2131365887);
-    int j = (localTroopMoreDetailView.jdField_a_of_type_AndroidUtilDisplayMetrics.widthPixels - ((TextView)localObject3).getMeasuredWidth() - UIUtils.a((Context)localObject1, 27.0F) - ((TextView)localObject2).getMeasuredWidth() - UIUtils.a((Context)localObject1, 24.0F)) / UIUtils.a((Context)localObject1, 52.0F);
-    if (j > 6) {}
-    for (;;)
-    {
-      j = 0;
-      label209:
-      if (j < i - 1)
-      {
-        localObject1 = (ImageView)localTroopMoreDetailView.jdField_a_of_type_JavaUtilList.get(j);
-        if (j >= k) {
-          break label338;
-        }
-        localObject2 = (String)localTroopMoreDetailView.jdField_a_of_type_JavaUtilArrayList.get(j);
-        ((ImageView)localObject1).setVisibility(0);
-        ((ImageView)localObject1).setBackgroundDrawable(FaceDrawable.a(localQQAppInterface, 1, (String)localObject2, 3));
-        ((ImageView)localObject1).setTag(localObject2);
-        ((ImageView)localObject1).setOnClickListener(new akbt(this, localTroopMoreDetailView));
-        if (AppSetting.b)
-        {
-          ((ImageView)localObject1).setContentDescription("图片" + (j + 1));
-          ViewCompat.setImportantForAccessibility((View)localObject1, 1);
-        }
-      }
-      for (;;)
-      {
-        j += 1;
-        break label209;
-        break;
-        label338:
-        ((ImageView)localObject1).setVisibility(8);
-      }
-      i = j;
-    }
+    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_Akbq.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.createToServiceMsg("MessageSvc.PbSendMsg");
+    localToServiceMsg.extraData.putString("uin", this.jdField_a_of_type_JavaLangString);
+    localToServiceMsg.extraData.putByte("cmd", (byte)0);
+    localToServiceMsg.extraData.putByte("keyType", (byte)0);
+    localToServiceMsg.extraData.putByte("sendType", (byte)0);
+    localToServiceMsg.extraData.putInt("busiType", 1025);
+    localToServiceMsg.extraData.putString("toUin", this.jdField_a_of_type_JavaLangString);
+    localToServiceMsg.extraData.putLong("sessionid", this.jdField_a_of_type_Long);
+    localToServiceMsg.extraData.putInt("random", this.jdField_a_of_type_Int);
+    localToServiceMsg.extraData.putLong("msgsize", 0L);
+    localToServiceMsg.addAttribute("_tag_LOGSTR", String.valueOf(this.jdField_b_of_type_Long));
+    localToServiceMsg.extraData.putInt("ROUNTING_TYPE", 9);
+    localToServiceMsg.extraData.putInt("transC2CCmd", this.jdField_b_of_type_Int);
+    awbn localawbn = new awbn();
+    localawbn.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
+    localawbn.jdField_a_of_type_ArrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    localToServiceMsg.putWupBuffer(awbg.a(this.jdField_a_of_type_Akbq.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 9, this.jdField_a_of_type_JavaLangString, localawbn, this.jdField_b_of_type_Long, this.jdField_a_of_type_Int).toByteArray());
+    return localToServiceMsg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akbs
  * JD-Core Version:    0.7.0.1
  */

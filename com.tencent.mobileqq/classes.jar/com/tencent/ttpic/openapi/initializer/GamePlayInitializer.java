@@ -1,0 +1,43 @@
+package com.tencent.ttpic.openapi.initializer;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class GamePlayInitializer
+  extends Feature
+{
+  private static final String TAG = GamePlayInitializer.class.getSimpleName();
+  private static final SharedLibraryInfo sharedLibrary = new SharedLibraryInfo("gameplay");
+  
+  protected boolean destroyImpl()
+  {
+    return false;
+  }
+  
+  public List<ModelInfo> getModelInfos()
+  {
+    return new ArrayList();
+  }
+  
+  public String getName()
+  {
+    return "GamePlay";
+  }
+  
+  public List<SharedLibraryInfo> getSharedLibraries()
+  {
+    return Arrays.asList(new SharedLibraryInfo[] { sharedLibrary });
+  }
+  
+  protected boolean initImpl()
+  {
+    return loadAllSoFiles();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     com.tencent.ttpic.openapi.initializer.GamePlayInitializer
+ * JD-Core Version:    0.7.0.1
+ */

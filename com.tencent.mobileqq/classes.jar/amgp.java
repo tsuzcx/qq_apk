@@ -1,29 +1,37 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.msf.core.push.BadgeUtilImpl;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public final class amgp
-  implements Runnable
+public class amgp
 {
-  public void run()
+  public int a;
+  
+  public static amgp a(String paramString)
   {
+    amgp localamgp = new amgp();
     try
     {
-      if (!BadgeUtilImpl.isEnabled(BaseApplicationImpl.sApplication)) {
-        BadgeUtilImpl.disableBadge(BaseApplicationImpl.sApplication);
-      }
-      return;
+      localamgp.a = new JSONObject(paramString).optInt("preloadPskey", 0);
+      QLog.d("WVPreloadPskeyConfProcessor", 2, "confBean = " + localamgp.toString());
+      return localamgp;
     }
-    catch (Exception localException)
+    catch (Exception paramString)
     {
       while (!QLog.isColorLevel()) {}
-      QLog.e("BadgeUtils", 2, "disableBadge mobileqq", localException);
+      QLog.e("WVPreloadPskeyConfProcessor", 1, new Object[] { "parse e:", paramString.toString() });
     }
+    return localamgp;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(20);
+    localStringBuilder.append("preloadPskey:").append(this.a);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amgp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,34 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo.Biu0x210Msg;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.view.MotionEvent;
 
-public class mbk
-  implements Runnable
+class mbk
+  implements mbn
 {
-  public mbk(KandianOx210MsgInfo.Biu0x210Msg paramBiu0x210Msg, QQAppInterface paramQQAppInterface) {}
+  mbk(mbf parammbf) {}
   
-  public void run()
+  public boolean a(MotionEvent paramMotionEvent, boolean paramBoolean)
   {
-    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, false).edit();
-    localEditor.putLong("kandian_biu_0x210_seq", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo$Biu0x210Msg.jdField_a_of_type_Long);
-    localEditor.putLong("kandian_biu_0x210_uin", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo$Biu0x210Msg.b);
-    localEditor.putInt("kandian_biu_0x210_status", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo$Biu0x210Msg.jdField_a_of_type_Int);
-    ReadInJoyHelper.a(localEditor, true);
+    if (paramBoolean)
+    {
+      if (!this.a.c()) {
+        break label23;
+      }
+      this.a.f();
+    }
+    for (;;)
+    {
+      return false;
+      label23:
+      if (this.a.b()) {
+        this.a.e();
+      } else if (mbf.a(this.a) != null) {
+        mbf.a(this.a).a(paramMotionEvent);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mbk
  * JD-Core Version:    0.7.0.1
  */

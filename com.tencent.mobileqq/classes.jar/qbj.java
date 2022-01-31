@@ -1,32 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.device.datadef.ProductNetLinkInfo;
+import android.view.View;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawableDownListener.Adapter;
+import com.tencent.image.URLImageView;
 
-public final class qbj
-  implements Parcelable.Creator
+class qbj
+  extends URLDrawableDownListener.Adapter
 {
-  public ProductNetLinkInfo a(Parcel paramParcel)
-  {
-    ProductNetLinkInfo localProductNetLinkInfo = new ProductNetLinkInfo();
-    localProductNetLinkInfo.productId = paramParcel.readInt();
-    localProductNetLinkInfo.linkResetVoiceDesc = paramParcel.readString();
-    localProductNetLinkInfo.volumeUpTitleDesc = paramParcel.readString();
-    localProductNetLinkInfo.volumeUpContentDesc = paramParcel.readString();
-    localProductNetLinkInfo.volumeUpDescImg = paramParcel.readString();
-    localProductNetLinkInfo.volumeUpVoiceDesc = paramParcel.readString();
-    localProductNetLinkInfo.stopSoundWaveDesc1 = paramParcel.readString();
-    localProductNetLinkInfo.stopSoundWaveDesc2 = paramParcel.readString();
-    return localProductNetLinkInfo;
-  }
+  qbj(qbi paramqbi) {}
   
-  public ProductNetLinkInfo[] a(int paramInt)
+  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    return new ProductNetLinkInfo[paramInt];
+    this.a.a.setScaleType(ImageView.ScaleType.CENTER_CROP);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qbj
  * JD-Core Version:    0.7.0.1
  */

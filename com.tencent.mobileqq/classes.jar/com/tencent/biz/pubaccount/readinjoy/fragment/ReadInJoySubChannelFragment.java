@@ -1,12 +1,16 @@
 package com.tencent.biz.pubaccount.readinjoy.fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewController;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import nhx;
+import nia;
 
 public class ReadInJoySubChannelFragment
   extends ReadInJoyBaseFragment
@@ -14,13 +18,18 @@ public class ReadInJoySubChannelFragment
   public static final String a;
   protected int a;
   protected View a;
-  protected ReadInJoyChannelViewController a;
+  protected nhx a;
   protected int b;
   protected String b;
   
   static
   {
     jdField_a_of_type_JavaLangString = ReadInJoySubChannelFragment.class.getName();
+  }
+  
+  public ReadInJoySubChannelFragment()
+  {
+    this.jdField_a_of_type_Int = -1;
   }
   
   public static ReadInJoySubChannelFragment a(int paramInt1, int paramInt2, String paramString)
@@ -34,17 +43,25 @@ public class ReadInJoySubChannelFragment
     return localReadInJoySubChannelFragment;
   }
   
-  private void b()
+  private void a()
   {
-    Object localObject = (ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131367215);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController = new ReadInJoyChannelViewController(getActivity());
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController.a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController.b(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController.a((ViewGroup)localObject);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController.a();
-    localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController.a();
-    if (localObject != null) {
-      ((ReadInJoyBaseListView)localObject).setSaveEnabled(false);
+    Object localObject = jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_Nhx != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.d((String)localObject, 2, new Object[] { "initUI, mViewController = ", Boolean.valueOf(bool), ", mChannelID = ", Integer.valueOf(this.jdField_a_of_type_Int) });
+      localObject = (ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131309089);
+      this.jdField_a_of_type_Nhx = new nhx(getActivity());
+      this.jdField_a_of_type_Nhx.a(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Nhx.b(this.jdField_b_of_type_Int);
+      this.jdField_a_of_type_Nhx.a((ViewGroup)localObject);
+      this.jdField_a_of_type_Nhx.a();
+      localObject = (ViewGroup)this.jdField_a_of_type_Nhx.a();
+      int i = b();
+      if (i > 0) {
+        ((ViewGroup)localObject).setPadding(0, i, 0, 0);
+      }
+      return;
     }
   }
   
@@ -53,89 +70,176 @@ public class ReadInJoySubChannelFragment
     return this.jdField_a_of_type_Int;
   }
   
-  public void e()
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController.a(true);
+    super.a(paramInt);
+    if (this.jdField_a_of_type_Nhx != null)
+    {
+      this.jdField_a_of_type_Nhx.a(true);
+      return;
+    }
+    nia.e(a());
+  }
+  
+  public void a(boolean paramBoolean, Activity paramActivity, Bundle paramBundle)
+  {
+    super.a(paramBoolean, paramActivity, paramBundle);
+    if (this.jdField_a_of_type_Nhx != null)
+    {
+      this.jdField_a_of_type_Nhx.h();
+      paramActivity = (KandianMergeManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(162);
+      if (paramActivity != null)
+      {
+        paramBundle = paramActivity.a();
+        if ((paramActivity.b()) && (paramBundle != null)) {
+          this.jdField_a_of_type_Nhx.a(true);
+        }
+      }
     }
   }
   
   public void f()
   {
-    super.f();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController.j();
+    if (this.jdField_a_of_type_Nhx != null) {
+      this.jdField_a_of_type_Nhx.a(true);
     }
   }
   
   public void g()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController.l();
+    super.g();
+    if (this.jdField_a_of_type_Nhx != null) {
+      this.jdField_a_of_type_Nhx.g();
+    }
+  }
+  
+  public void i()
+  {
+    if (this.jdField_a_of_type_Nhx != null) {
+      this.jdField_a_of_type_Nhx.k();
     }
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController.a(paramInt1, paramInt2, paramIntent);
+    if (this.jdField_a_of_type_Nhx != null) {
+      this.jdField_a_of_type_Nhx.a(paramInt1, paramInt2, paramIntent);
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
+    boolean bool = false;
+    Object localObject = getArguments();
+    if (localObject != null)
+    {
+      this.jdField_a_of_type_Int = ((Bundle)localObject).getInt("channel_id");
+      this.jdField_b_of_type_Int = ((Bundle)localObject).getInt("channel_type");
+      this.jdField_b_of_type_JavaLangString = ((Bundle)localObject).getString("channel_name");
+    }
+    localObject = jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_Nhx != null) {
+      bool = true;
+    }
+    QLog.d((String)localObject, 2, new Object[] { "onCreate, mViewController = ", Boolean.valueOf(bool), ", mChannelID = ", Integer.valueOf(this.jdField_a_of_type_Int) });
     super.onCreate(paramBundle);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
+    boolean bool = false;
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(getActivity());
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969620, paramViewGroup, false);
-    paramLayoutInflater = getArguments();
-    this.jdField_a_of_type_Int = paramLayoutInflater.getInt("channel_id");
-    this.jdField_b_of_type_Int = paramLayoutInflater.getInt("channel_type");
-    this.jdField_b_of_type_JavaLangString = paramLayoutInflater.getString("channel_name");
-    b();
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131494361, paramViewGroup, false);
+    a();
+    paramLayoutInflater = jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_Nhx != null) {
+      bool = true;
+    }
+    QLog.d(paramLayoutInflater, 2, new Object[] { "onCreateView, mViewController = ", Boolean.valueOf(bool), ", mChannelID = ", Integer.valueOf(this.jdField_a_of_type_Int) });
     return this.jdField_a_of_type_AndroidViewView;
   }
   
   public void onDestroy()
   {
-    super.onDestroy();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController.d();
+    boolean bool = false;
+    String str = jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_Nhx != null) {
+      bool = true;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController = null;
+    QLog.d(str, 2, new Object[] { "onDestroy, mViewController = ", Boolean.valueOf(bool), ", mChannelID = ", Integer.valueOf(this.jdField_a_of_type_Int) });
+    super.onDestroy();
+    if (this.jdField_a_of_type_Nhx != null) {
+      this.jdField_a_of_type_Nhx.d();
+    }
+    this.jdField_a_of_type_Nhx = null;
   }
   
   public void onDestroyView()
   {
+    boolean bool = false;
+    String str = jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_Nhx != null) {
+      bool = true;
+    }
+    QLog.d(str, 2, new Object[] { "onDestroyView, mViewController = ", Boolean.valueOf(bool), ", mChannelID = ", Integer.valueOf(this.jdField_a_of_type_Int) });
     super.onDestroyView();
     this.jdField_a_of_type_AndroidViewView = null;
   }
   
+  public void onPause()
+  {
+    boolean bool = false;
+    String str = jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_Nhx != null) {
+      bool = true;
+    }
+    QLog.d(str, 2, new Object[] { "onPause, mViewController = ", Boolean.valueOf(bool), ", mChannelID = ", Integer.valueOf(this.jdField_a_of_type_Int), ", mIsShowingSelf = ", Boolean.valueOf(this.c) });
+    super.onPause();
+    if ((this.jdField_a_of_type_Nhx != null) && (this.c)) {
+      this.jdField_a_of_type_Nhx.g();
+    }
+  }
+  
   public void onResume()
   {
+    boolean bool = false;
+    String str = jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_Nhx != null) {
+      bool = true;
+    }
+    QLog.d(str, 2, new Object[] { "onResume, mViewController = ", Boolean.valueOf(bool), ", mChannelID = ", Integer.valueOf(this.jdField_a_of_type_Int), ", mIsShowingSelf = ", Boolean.valueOf(this.c) });
     super.onResume();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController.h();
+    if ((this.jdField_a_of_type_Nhx != null) && (this.c)) {
+      this.jdField_a_of_type_Nhx.h();
     }
   }
   
   public void onStart()
   {
+    boolean bool = false;
+    String str = jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_Nhx != null) {
+      bool = true;
+    }
+    QLog.d(str, 2, new Object[] { "onStart, mViewController = ", Boolean.valueOf(bool), ", mChannelID = ", Integer.valueOf(this.jdField_a_of_type_Int) });
     super.onStart();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController.e();
+    if (this.jdField_a_of_type_Nhx != null) {
+      this.jdField_a_of_type_Nhx.e();
     }
   }
   
   public void onStop()
   {
+    boolean bool = false;
+    String str = jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_Nhx != null) {
+      bool = true;
+    }
+    QLog.d(str, 2, new Object[] { "onStop, mViewController = ", Boolean.valueOf(bool), ", mChannelID = ", Integer.valueOf(this.jdField_a_of_type_Int) });
     super.onStop();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController.f();
+    if (this.jdField_a_of_type_Nhx != null) {
+      this.jdField_a_of_type_Nhx.f();
     }
   }
 }

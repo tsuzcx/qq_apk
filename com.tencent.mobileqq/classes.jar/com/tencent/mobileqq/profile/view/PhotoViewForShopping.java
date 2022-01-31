@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.profile.view;
 
-import agvi;
-import agvj;
+import ajfi;
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Handler;
@@ -15,19 +15,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import atwx;
+import atxq;
+import atzw;
+import awqx;
+import azyk;
+import azzz;
+import badq;
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.CardHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
 import com.tencent.mobileqq.profile.ProfileShoppingPhotoInfo;
-import com.tencent.mobileqq.profile.ShoppingPhotoItemInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.Reference;
@@ -44,17 +44,17 @@ public class PhotoViewForShopping
   public int a;
   private Handler jdField_a_of_type_AndroidOsHandler;
   View jdField_a_of_type_AndroidViewView;
+  private atwx jdField_a_of_type_Atwx;
   public QQAppInterface a;
-  private ProfileCardInfo jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo;
   ProfileShoppingView jdField_a_of_type_ComTencentMobileqqProfileViewProfileShoppingView;
   public VipScaledViewPager a;
   private String jdField_a_of_type_JavaLangString;
-  private Reference jdField_a_of_type_JavaLangRefReference;
-  public List a;
+  private Reference<Activity> jdField_a_of_type_JavaLangRefReference;
+  public List<atxq> a;
   private boolean jdField_a_of_type_Boolean;
   public float b;
   public int b;
-  List b;
+  List<atxq> b;
   public float c;
   public int c;
   public float d;
@@ -95,7 +95,7 @@ public class PhotoViewForShopping
     this.jdField_d_of_type_Float = 1.35F;
   }
   
-  private List a(List paramList)
+  private List<atxq> a(List<atxq> paramList)
   {
     new ArrayList();
     if (this.jdField_b_of_type_JavaUtilList == null) {
@@ -109,28 +109,28 @@ public class PhotoViewForShopping
   }
   
   @TargetApi(9)
-  public void a(BaseActivity paramBaseActivity, ProfileCardInfo paramProfileCardInfo, int paramInt, ProfileShoppingView paramProfileShoppingView)
+  public void a(BaseActivity paramBaseActivity, atwx paramatwx, int paramInt, ProfileShoppingView paramProfileShoppingView)
   {
     if (QLog.isColorLevel()) {
       QLog.i("ProfileCard.ProfileShoppingView", 2, "initView");
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseActivity.app;
     this.jdField_a_of_type_JavaLangRefReference = new WeakReference(paramBaseActivity);
-    this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo = paramProfileCardInfo;
+    this.jdField_a_of_type_Atwx = paramatwx;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
-    this.jdField_a_of_type_JavaLangString = paramProfileCardInfo.a.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_JavaLangString = paramatwx.a.jdField_a_of_type_JavaLangString;
     this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileShoppingView = paramProfileShoppingView;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()).inflate(2130971026, this, true);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager = ((VipScaledViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131362809));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication()).inflate(2131496032, this, true);
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager = ((VipScaledViewPager)this.jdField_a_of_type_AndroidViewView.findViewById(2131313342));
     paramBaseActivity = getResources().getDisplayMetrics();
     this.jdField_a_of_type_Int = paramBaseActivity.widthPixels;
     this.jdField_b_of_type_Int = paramBaseActivity.heightPixels;
     this.jdField_g_of_type_Float = paramBaseActivity.density;
     this.jdField_c_of_type_Int = ((int)(this.jdField_a_of_type_Int / this.jdField_d_of_type_Float));
     this.jdField_d_of_type_Int = ((int)(this.jdField_c_of_type_Int / jdField_e_of_type_Float));
-    this.jdField_e_of_type_Int = getResources().getDimensionPixelSize(2131558803);
+    this.jdField_e_of_type_Int = getResources().getDimensionPixelSize(2131167257);
     boolean bool;
-    if (paramProfileCardInfo.a.jdField_a_of_type_Int == 0)
+    if (paramatwx.a.jdField_a_of_type_Int == 0)
     {
       bool = true;
       this.jdField_a_of_type_Boolean = bool;
@@ -138,7 +138,7 @@ public class PhotoViewForShopping
       if (this.jdField_b_of_type_Int / this.jdField_a_of_type_Int <= (this.jdField_a_of_type_Float + this.jdField_b_of_type_Float) / 2.0F) {
         break label374;
       }
-      this.jdField_g_of_type_Int = Math.round(this.jdField_b_of_type_Int / (1136.0F * this.jdField_f_of_type_Float) * ProfileCardUtil.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), 15));
+      this.jdField_g_of_type_Int = Math.round(this.jdField_b_of_type_Int / (1136.0F * this.jdField_f_of_type_Float) * azyk.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), 15));
     }
     for (this.h = 0.824503F;; this.h = 0.8192771F)
     {
@@ -148,17 +148,17 @@ public class PhotoViewForShopping
       this.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.setScale(this.h);
       this.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.setGap(this.jdField_g_of_type_Int);
       this.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.setParentView((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.getParent());
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.setOnPageChangeListener(new agvi(this));
-      ThreadManager.executeOnFileThread(new agvj(this, paramProfileCardInfo));
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewVipScaledViewPager.setOnPageChangeListener(new atzw(this));
+      ThreadManager.executeOnFileThread(new PhotoViewForShopping.2(this, paramatwx));
       return;
       bool = false;
       break;
       label374:
-      this.jdField_g_of_type_Int = Math.round(this.jdField_b_of_type_Int / (800.0F * this.jdField_f_of_type_Float) * ProfileCardUtil.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), 15));
+      this.jdField_g_of_type_Int = Math.round(this.jdField_b_of_type_Int / (800.0F * this.jdField_f_of_type_Float) * azyk.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), 15));
     }
   }
   
-  public void a(List paramList)
+  public void a(List<atxq> paramList)
   {
     if ((QLog.isColorLevel()) && (paramList != null)) {
       QLog.i("ProfileCard.ProfileShoppingView", 2, "updatePhotoView photoInfo size=" + paramList.size());
@@ -171,9 +171,9 @@ public class PhotoViewForShopping
     }
   }
   
-  public void a(boolean paramBoolean, String paramString, List paramList)
+  public void a(boolean paramBoolean, String paramString, List<atxq> paramList)
   {
-    if (!Utils.a(paramString, this.jdField_a_of_type_JavaLangString)) {
+    if (!azzz.a(paramString, this.jdField_a_of_type_JavaLangString)) {
       return;
     }
     List localList;
@@ -190,14 +190,14 @@ public class PhotoViewForShopping
       }
       if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > i))
       {
-        paramString = (ShoppingPhotoItemInfo)this.jdField_a_of_type_JavaUtilList.get(i);
+        paramString = (atxq)this.jdField_a_of_type_JavaUtilList.get(i);
         label77:
         if ((localList == null) || (localList.size() <= i)) {
           break label176;
         }
-        paramList = (ShoppingPhotoItemInfo)localList.get(i);
+        paramList = (atxq)localList.get(i);
         label107:
-        if (Utils.a(paramString, paramList)) {
+        if (azzz.a(paramString, paramList)) {
           break label181;
         }
       }
@@ -221,7 +221,7 @@ public class PhotoViewForShopping
       break label107;
       i += 1;
       break label34;
-      if ((!NetworkUtil.a(BaseApplication.getContext())) || (this.jdField_f_of_type_Int >= 3)) {
+      if ((!badq.a(BaseApplication.getContext())) || (this.jdField_f_of_type_Int >= 3)) {
         break;
       }
       paramString = Message.obtain();
@@ -244,7 +244,7 @@ public class PhotoViewForShopping
         if (QLog.isColorLevel()) {
           QLog.i("ProfileCard.ProfileShoppingView", 2, "handleMessage() MSG_REQ_ALBUM");
         }
-        paramMessage = (CardHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2);
+        paramMessage = (ajfi)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2);
         if (paramMessage != null)
         {
           paramMessage.a(this.jdField_a_of_type_JavaLangString, 2);
@@ -269,21 +269,21 @@ public class PhotoViewForShopping
     }
     this.jdField_b_of_type_JavaUtilList = paramMessage;
     if ((this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileShoppingView != null) && (paramMessage.size() > 0) && ((this.jdField_a_of_type_JavaLangRefReference.get() instanceof FriendProfileCardActivity))) {
-      ((FriendProfileCardActivity)this.jdField_a_of_type_JavaLangRefReference.get()).B();
+      ((FriendProfileCardActivity)this.jdField_a_of_type_JavaLangRefReference.get()).w();
     }
-    if ((paramMessage.size() > 0) && (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a != null))
+    if ((paramMessage.size() > 0) && (this.jdField_a_of_type_Atwx != null) && (this.jdField_a_of_type_Atwx.a != null))
     {
-      if (!this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
+      if (!this.jdField_a_of_type_Atwx.a.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) {
         break label366;
       }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "PhotoView", "", "Shop_Mtemplatewindow", "0X8005B95", 0, 0, "", "", "", "");
+      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "PhotoView", "", "Shop_Mtemplatewindow", "0X8005B95", 0, 0, "", "", "", "");
     }
     for (;;)
     {
       a(paramMessage);
       return false;
       label366:
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "PhotoView", "", "Shop_Ftemplatewindow", "0X8005B99", 0, 0, "", "", "", "");
+      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "PhotoView", "", "Shop_Ftemplatewindow", "0X8005B99", 0, 0, "", "", "", "");
     }
   }
 }

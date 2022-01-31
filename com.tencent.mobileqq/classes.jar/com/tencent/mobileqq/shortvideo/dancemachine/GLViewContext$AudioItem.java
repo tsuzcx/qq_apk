@@ -2,17 +2,19 @@ package com.tencent.mobileqq.shortvideo.dancemachine;
 
 public class GLViewContext$AudioItem
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
-  int b;
-  int c;
-  int d;
+  static final int INIT_STATUS = -1;
+  static final int SUCCESS_STATUS = 0;
+  boolean loaded;
+  int loop;
+  int priority;
+  int sampleId;
+  int status;
   
   GLViewContext$AudioItem(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = false;
-    this.b = -1;
+    this.sampleId = paramInt;
+    this.loaded = false;
+    this.status = -1;
   }
 }
 

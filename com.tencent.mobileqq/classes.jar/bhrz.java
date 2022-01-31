@@ -1,0 +1,138 @@
+import android.graphics.PointF;
+import android.opengl.GLES20;
+import com.tencent.aekit.api.standard.filter.AEGifSticker;
+import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.filter.BaseFilter;
+import com.tencent.view.RendererUtils;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+public class bhrz
+{
+  private double jdField_a_of_type_Double = 1.0D;
+  private int jdField_a_of_type_Int;
+  private bhrv jdField_a_of_type_Bhrv = new bhrv();
+  private bhsa jdField_a_of_type_Bhsa;
+  private AEGifSticker jdField_a_of_type_ComTencentAekitApiStandardFilterAEGifSticker;
+  private Frame jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+  private BaseFilter jdField_a_of_type_ComTencentFilterBaseFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+  private boolean jdField_a_of_type_Boolean = true;
+  private int jdField_b_of_type_Int;
+  private Frame jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame = new Frame();
+  private BaseFilter jdField_b_of_type_ComTencentFilterBaseFilter = new BaseFilter("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
+  private boolean jdField_b_of_type_Boolean;
+  
+  private Frame a(Frame paramFrame, List<List<PointF>> paramList, List<float[]> paramList1)
+  {
+    Object localObject = paramFrame;
+    if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEGifSticker != null)
+    {
+      localObject = new HashSet();
+      ((Set)localObject).add(Integer.valueOf(1));
+      ((Set)localObject).add(Integer.valueOf(2));
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEGifSticker.updateFaceParams(paramList, paramList1, (Set)localObject);
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEGifSticker.updateVideoSize(paramFrame.width, paramFrame.height, this.jdField_a_of_type_Double * 2.0D);
+      localObject = this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEGifSticker.render(paramFrame);
+    }
+    return localObject;
+  }
+  
+  public Frame a(Frame paramFrame, int paramInt1, int paramInt2, List<List<PointF>> paramList, List<float[]> paramList1)
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Bhrv.a(paramFrame, paramInt1, paramInt2, this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame);
+      paramFrame = this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame;
+    }
+    for (;;)
+    {
+      if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Bhsa != null))
+      {
+        GLES20.glEnable(3042);
+        GLES20.glBlendFunc(770, 771);
+        float f1 = -1.0F + this.jdField_a_of_type_Bhsa.jdField_a_of_type_Float * 2.0F;
+        float f2 = -1.0F + this.jdField_a_of_type_Bhsa.b * 2.0F;
+        float f3 = this.jdField_a_of_type_Bhsa.c * 2.0F + f1;
+        float f4 = this.jdField_a_of_type_Bhsa.d * 2.0F + f2;
+        this.jdField_a_of_type_ComTencentFilterBaseFilter.setPositions(new float[] { f1, f2, f1, f4, f3, f4, f3, f2 });
+        this.jdField_a_of_type_ComTencentFilterBaseFilter.RenderProcess(this.jdField_a_of_type_Bhsa.jdField_a_of_type_Int, paramFrame.width, paramFrame.height, -1, 0.0D, paramFrame);
+        GLES20.glDisable(3042);
+      }
+      this.jdField_b_of_type_ComTencentFilterBaseFilter.RenderProcess(paramFrame.getTextureId(), 320, 320, -1, 0.0D, this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame);
+      return a(this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame, paramList, paramList1);
+    }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Bhrv.apply();
+    this.jdField_a_of_type_ComTencentFilterBaseFilter.apply();
+    this.jdField_b_of_type_ComTencentFilterBaseFilter.apply();
+  }
+  
+  public void a(double paramDouble)
+  {
+    this.jdField_a_of_type_Double = paramDouble;
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEGifSticker != null) {
+      this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEGifSticker.clear();
+    }
+    this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEGifSticker = new AEGifSticker(paramString);
+    this.jdField_a_of_type_ComTencentAekitApiStandardFilterAEGifSticker.apply();
+  }
+  
+  public void a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    this.jdField_a_of_type_Bhsa = new bhsa(this);
+    bhsj localbhsj = new bhsj((int)(320.0F * paramFloat3), (int)(320.0F * paramFloat4));
+    localbhsj.a(paramString1);
+    localbhsj.a(paramInt1);
+    localbhsj.b(paramString2);
+    localbhsj.c(paramString3);
+    localbhsj.a(paramInt2);
+    localbhsj.b();
+    paramString1 = localbhsj.a();
+    this.jdField_a_of_type_Bhsa.jdField_a_of_type_Int = RendererUtils.createTexture(paramString1);
+    localbhsj.c();
+    this.jdField_a_of_type_Bhsa.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_a_of_type_Bhsa.b = paramFloat2;
+    this.jdField_a_of_type_Bhsa.c = paramFloat3;
+    this.jdField_a_of_type_Bhsa.d = paramFloat4;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b()
+  {
+    this.jdField_a_of_type_Bhrv.ClearGLSL();
+    this.jdField_a_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+    this.jdField_a_of_type_ComTencentFilterBaseFilter.ClearGLSL();
+    this.jdField_b_of_type_ComTencentFilterBaseFilter.ClearGLSL();
+    this.jdField_b_of_type_ComTencentAekitOpenrenderInternalFrame.clear();
+    if (this.jdField_a_of_type_Bhsa != null)
+    {
+      int[] arrayOfInt = new int[1];
+      arrayOfInt[0] = this.jdField_a_of_type_Bhsa.jdField_a_of_type_Int;
+      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+ * Qualified Name:     bhrz
+ * JD-Core Version:    0.7.0.1
+ */

@@ -13,8 +13,8 @@ import android.os.Message;
 import android.widget.RemoteViews;
 import com.tencent.tmassistantbase.common.TMAssistantDownloadConst;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import com.tencent.tmassistantbase.util.k;
-import com.tencent.tmassistantbase.util.r;
+import com.tencent.tmassistantbase.util.ac;
+import com.tencent.tmassistantbase.util.q;
 import com.tencent.tmdownloader.internal.downloadservice.ApkDownloadManager;
 import com.tencent.tmdownloader.internal.downloadservice.h;
 import java.util.Iterator;
@@ -28,7 +28,7 @@ public class a
 {
   private static a f = null;
   protected final ConcurrentHashMap<String, b> a = new ConcurrentHashMap();
-  k b = null;
+  q b = null;
   protected AtomicInteger c;
   d d;
   protected long e = 0L;
@@ -84,7 +84,7 @@ public class a
     if ((GlobalUtil.getInstance().getContext() == null) || (paramNotifyParam == null)) {
       return null;
     }
-    r.c("SDK_NotificationManager", "<getNotification> title = " + paramNotifyParam.title + ", content=" + paramNotifyParam.content);
+    ac.c("SDK_NotificationManager", "<getNotification> title = " + paramNotifyParam.title + ", content=" + paramNotifyParam.content);
     Notification localNotification = new Notification();
     localNotification.tickerText = paramNotifyParam.title;
     localNotification.when = System.currentTimeMillis();
@@ -110,7 +110,7 @@ public class a
     }
     catch (Exception paramNotification)
     {
-      r.c("SDK_NotificationManager", "notify " + paramNotification);
+      ac.c("SDK_NotificationManager", "notify " + paramNotification);
     }
   }
   
@@ -148,9 +148,9 @@ public class a
   {
     try
     {
-      r.a("SDK_NotificationManager", "***尝试  保存至本地：" + paramb.toString());
+      ac.a("SDK_NotificationManager", "***尝试  保存至本地：" + paramb.toString());
       Object localObject = GlobalUtil.getInstance().getContext().getSharedPreferences("downloadsdk_notification_ids", 0);
-      r.d("SDK_NotificationManager", "***保存至本地：" + paramb.toString());
+      ac.d("SDK_NotificationManager", "***保存至本地：" + paramb.toString());
       localObject = ((SharedPreferences)localObject).edit();
       ((SharedPreferences.Editor)localObject).putString(paramb.a, paramb.toString());
       ((SharedPreferences.Editor)localObject).commit();
@@ -158,7 +158,7 @@ public class a
     }
     catch (Exception paramb)
     {
-      r.c("SDK_NotificationManager", "saveToLocal>>>", paramb);
+      ac.c("SDK_NotificationManager", "saveToLocal>>>", paramb);
     }
   }
   
@@ -170,14 +170,14 @@ public class a
   public void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
     Object localObject = ApkDownloadManager.getInstance().queryDownloadInfo(paramString1);
-    if ((localObject == null) || (((com.tencent.tmdownloader.internal.downloadservice.c)localObject).L != TMAssistantDownloadConst.SHOW_NOTIFICATION_TRUE)) {
+    if ((localObject == null) || (((com.tencent.tmdownloader.internal.downloadservice.c)localObject).K != TMAssistantDownloadConst.SHOW_NOTIFICATION_TRUE)) {
       return;
     }
     StringBuilder localStringBuilder = new StringBuilder().append("onDownloadWait notify enter info.id=");
     if (localObject == null) {}
     for (localObject = "";; localObject = paramString1)
     {
-      r.a("SDK_NotificationManager", (String)localObject);
+      ac.a("SDK_NotificationManager", (String)localObject);
       localObject = this.d.obtainMessage();
       ((Message)localObject).what = paramInt1;
       ((Message)localObject).obj = paramString2;
@@ -195,7 +195,7 @@ public class a
     {
       this.e = System.currentTimeMillis();
       localObject1 = ApkDownloadManager.getInstance().queryDownloadInfo(paramString);
-      if ((localObject1 != null) && (((com.tencent.tmdownloader.internal.downloadservice.c)localObject1).L == TMAssistantDownloadConst.SHOW_NOTIFICATION_TRUE)) {}
+      if ((localObject1 != null) && (((com.tencent.tmdownloader.internal.downloadservice.c)localObject1).K == TMAssistantDownloadConst.SHOW_NOTIFICATION_TRUE)) {}
     }
     else
     {
@@ -205,7 +205,7 @@ public class a
     if (localObject1 == null) {}
     for (Object localObject1 = "";; localObject1 = paramString)
     {
-      r.a("SDK_NotificationManager", (String)localObject1);
+      ac.a("SDK_NotificationManager", (String)localObject1);
       localObject1 = this.d.obtainMessage();
       ((Message)localObject1).what = 2;
       localObject2 = new Bundle();
@@ -240,7 +240,7 @@ public class a
   
   public void b(String paramString)
   {
-    r.a("SDK_NotificationManager", "cancelBySendTime:" + paramString);
+    ac.a("SDK_NotificationManager", "cancelBySendTime:" + paramString);
     if ((this.g != null) && (this.a.containsKey(paramString)))
     {
       this.g.cancel(((b)this.a.get(paramString)).c);
@@ -258,7 +258,7 @@ public class a
   
   public void c(String paramString)
   {
-    r.a("SDK_NotificationManager", "cancelBySendTime:" + paramString);
+    ac.a("SDK_NotificationManager", "cancelBySendTime:" + paramString);
     if ((this.g != null) && (this.a.containsKey(paramString))) {
       this.g.cancel(((b)this.a.get(paramString)).c);
     }
@@ -266,7 +266,7 @@ public class a
   
   protected void d()
   {
-    r.a("SDK_NotificationManager", "------------从本地初始化ID------------");
+    ac.a("SDK_NotificationManager", "------------从本地初始化ID------------");
     for (;;)
     {
       Map.Entry localEntry;
@@ -274,7 +274,7 @@ public class a
       {
         Object localObject = GlobalUtil.getInstance().getContext().getSharedPreferences("downloadsdk_notification_ids", 0).getAll();
         if (localObject != null) {
-          r.a("SDK_NotificationManager", "%%%共有" + ((Map)localObject).size() + "条数据");
+          ac.a("SDK_NotificationManager", "%%%共有" + ((Map)localObject).size() + "条数据");
         }
         if ((localObject == null) || (((Map)localObject).size() <= 0)) {
           break;
@@ -284,40 +284,40 @@ public class a
           break;
         }
         localEntry = (Map.Entry)((Iterator)localObject).next();
-        r.a("SDK_NotificationManager", ">>>数据：key=" + (String)localEntry.getKey() + ",value=" + (String)localEntry.getValue());
+        ac.a("SDK_NotificationManager", ">>>数据：key=" + (String)localEntry.getKey() + ",value=" + (String)localEntry.getValue());
         if (this.a.containsKey(localEntry.getKey()))
         {
-          r.d("SDK_NotificationManager", "列表已经包含，跳过");
+          ac.d("SDK_NotificationManager", "列表已经包含，跳过");
           continue;
         }
         localb = e((String)localEntry.getValue());
       }
       catch (Exception localException)
       {
-        r.c("SDK_NotificationManager", "init id from local error:" + localException.getMessage(), localException);
+        ac.c("SDK_NotificationManager", "init id from local error:" + localException.getMessage(), localException);
         return;
       }
       b localb;
       if (localb != null)
       {
-        r.a("SDK_NotificationManager", ">>>转换为数据对象：" + localb.toString());
+        ac.a("SDK_NotificationManager", ">>>转换为数据对象：" + localb.toString());
         this.h = Math.max(this.h, localb.c);
-        r.d("SDK_NotificationManager", ">>>initValue=" + this.h);
+        ac.d("SDK_NotificationManager", ">>>initValue=" + this.h);
         this.a.put(localEntry.getKey(), localb);
       }
       else
       {
-        r.e("SDK_NotificationManager", "init id from local en.getValue() error:");
+        ac.e("SDK_NotificationManager", "init id from local en.getValue() error:");
       }
     }
-    r.a("SDK_NotificationManager", "------------从本地初始化ID 结束------------");
+    ac.a("SDK_NotificationManager", "------------从本地初始化ID 结束------------");
   }
   
   protected void d(String paramString)
   {
     try
     {
-      r.a("SDK_NotificationManager", "&&&从本地删除 removeFromLocal:" + paramString);
+      ac.a("SDK_NotificationManager", "&&&从本地删除 removeFromLocal:" + paramString);
       SharedPreferences.Editor localEditor = GlobalUtil.getInstance().getContext().getSharedPreferences("downloadsdk_notification_ids", 0).edit();
       localEditor.remove(paramString);
       localEditor.commit();
@@ -325,7 +325,7 @@ public class a
     }
     catch (Exception paramString)
     {
-      r.c("SDK_NotificationManager", "remove nid from local error:" + paramString.getMessage(), paramString);
+      ac.c("SDK_NotificationManager", "remove nid from local error:" + paramString.getMessage(), paramString);
     }
   }
   
@@ -346,7 +346,7 @@ public class a
   {
     try
     {
-      r.a("SDK_NotificationManager", "&&&从本地清除 clearLocal");
+      ac.a("SDK_NotificationManager", "&&&从本地清除 clearLocal");
       SharedPreferences.Editor localEditor = GlobalUtil.getInstance().getContext().getSharedPreferences("downloadsdk_notification_ids", 0).edit();
       localEditor.clear();
       localEditor.commit();
@@ -354,20 +354,20 @@ public class a
     }
     catch (Exception localException)
     {
-      r.c("SDK_NotificationManager", "clear nid from local error:" + localException.getMessage(), localException);
+      ac.c("SDK_NotificationManager", "clear nid from local error:" + localException.getMessage(), localException);
     }
   }
   
   protected void finalize()
   {
-    r.e("SDK_NotificationManager", "finalize 清理 sp数据");
+    ac.e("SDK_NotificationManager", "finalize 清理 sp数据");
     e();
     super.finalize();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.notification.a
  * JD-Core Version:    0.7.0.1
  */

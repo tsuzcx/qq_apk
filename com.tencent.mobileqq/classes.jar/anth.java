@@ -1,12 +1,10 @@
-import dov.com.qq.im.capture.QIMManager;
-
-public class anth
+public abstract interface anth
 {
-  public static final QIMManager a = new QIMManager(null);
+  public abstract void a(int paramInt, anpe paramanpe, String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anth
  * JD-Core Version:    0.7.0.1
  */

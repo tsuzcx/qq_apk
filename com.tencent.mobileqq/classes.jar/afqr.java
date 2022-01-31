@@ -1,62 +1,22 @@
-import android.view.GestureDetector.OnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.nearby.widget.OverCoverFrameLayout;
-import com.tencent.mobileqq.nearby.widget.OverCoverFrameLayout.OnActionListener;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class afqr
-  implements GestureDetector.OnGestureListener
+class afqr
+  extends atdi
 {
-  public afqr(OverCoverFrameLayout paramOverCoverFrameLayout) {}
+  afqr(afqi paramafqi) {}
   
-  public boolean onDown(MotionEvent paramMotionEvent)
+  protected void a(Object paramObject)
   {
-    return true;
-  }
-  
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if (Math.abs(paramFloat2) <= this.a.e) {}
-    while ((this.a.a != null) && (this.a.a.a())) {
-      return false;
+    this.a.g();
+    if ((this.a.a != null) && (this.a.a.app != null) && (this.a.a.app.a() != null)) {
+      this.a.a.app.a().e();
     }
-    if (paramFloat2 < 0.0F) {
-      this.a.a();
-    }
-    for (;;)
-    {
-      return true;
-      this.a.b();
-    }
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
-  {
-    if (Math.abs(paramFloat2) <= this.a.d) {}
-    while ((this.a.a != null) && (this.a.a.a())) {
-      return false;
-    }
-    if (paramFloat2 > 0.0F) {
-      this.a.a();
-    }
-    for (;;)
-    {
-      return true;
-      this.a.b();
-    }
-  }
-  
-  public void onShowPress(MotionEvent paramMotionEvent) {}
-  
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afqr
  * JD-Core Version:    0.7.0.1
  */

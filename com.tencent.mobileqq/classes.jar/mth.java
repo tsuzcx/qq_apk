@@ -1,27 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoPlayParam;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.lang.ref.WeakReference;
-import java.util.TimerTask;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class mth
-  extends TimerTask
+  implements View.OnClickListener
 {
-  mth(mtg parammtg, WeakReference paramWeakReference1, WeakReference paramWeakReference2) {}
+  mth(mtc parammtc) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    VideoPlayerWrapper localVideoPlayerWrapper = (VideoPlayerWrapper)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    FastWebVideoFeedsPlayManager.VideoPlayParam localVideoPlayParam = (FastWebVideoFeedsPlayManager.VideoPlayParam)this.b.get();
-    if ((localVideoPlayerWrapper != null) && (localVideoPlayerWrapper.a()) && (!FastWebVideoFeedsPlayManager.d(this.jdField_a_of_type_Mtg.a)))
-    {
-      long l1 = localVideoPlayerWrapper.a();
-      long l2 = localVideoPlayerWrapper.b();
-      long l3 = localVideoPlayerWrapper.b();
-      ThreadManager.getUIHandler().post(new mti(this, localVideoPlayParam, l3, l1, l2));
-    }
+    this.a.d(this.a.b());
   }
 }
 

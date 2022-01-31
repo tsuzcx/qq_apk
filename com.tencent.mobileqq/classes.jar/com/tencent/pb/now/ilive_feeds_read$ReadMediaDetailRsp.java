@@ -9,13 +9,13 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ilive_feeds_read$ReadMediaDetailRsp
-  extends MessageMicro
+  extends MessageMicro<ReadMediaDetailRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field err_code = PBField.initUInt32(0);
   public final PBBytesField err_msg = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt32Field is_end = PBField.initUInt32(0);
-  public final PBRepeatMessageField media_list = PBField.initRepeatMessage(FeedsProtocol.MediaInfo.class);
+  public final PBRepeatMessageField<FeedsProtocol.MediaInfo> media_list = PBField.initRepeatMessage(FeedsProtocol.MediaInfo.class);
   public final PBUInt32Field total = PBField.initUInt32(0);
   
   static
@@ -26,7 +26,7 @@ public final class ilive_feeds_read$ReadMediaDetailRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_read.ReadMediaDetailRsp
  * JD-Core Version:    0.7.0.1
  */

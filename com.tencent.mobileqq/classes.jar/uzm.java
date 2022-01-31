@@ -1,17 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder;
+import java.util.List;
 
-public class uzm
-  implements DialogInterface.OnClickListener
+public abstract interface uzm
 {
-  public uzm(ArkAppItemBubbleBuilder paramArkAppItemBubbleBuilder) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public abstract void a(int paramInt, List<srl> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uzm
  * JD-Core Version:    0.7.0.1
  */

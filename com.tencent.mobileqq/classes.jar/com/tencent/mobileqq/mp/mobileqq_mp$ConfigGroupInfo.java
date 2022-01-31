@@ -6,10 +6,10 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class mobileqq_mp$ConfigGroupInfo
-  extends MessageMicro
+  extends MessageMicro<ConfigGroupInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "config_info" }, new Object[] { null }, ConfigGroupInfo.class);
-  public final PBRepeatMessageField config_info = PBField.initRepeatMessage(mobileqq_mp.ConfigInfo.class);
+  public final PBRepeatMessageField<mobileqq_mp.ConfigInfo> config_info = PBField.initRepeatMessage(mobileqq_mp.ConfigInfo.class);
 }
 
 

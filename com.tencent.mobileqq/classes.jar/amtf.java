@@ -1,24 +1,23 @@
-import java.io.File;
-import java.util.Comparator;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.PrecoverConfig;
 
 public final class amtf
-  implements Comparator
+  implements Parcelable.Creator<PrecoverConfig>
 {
-  public int a(File paramFile1, File paramFile2)
+  public PrecoverConfig a(Parcel paramParcel)
   {
-    long l = paramFile1.length() - paramFile2.length();
-    if (l > 0L) {
-      return 1;
-    }
-    if (l == 0L) {
-      return 0;
-    }
-    return -1;
+    return new PrecoverConfig(paramParcel);
+  }
+  
+  public PrecoverConfig[] a(int paramInt)
+  {
+    return new PrecoverConfig[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amtf
  * JD-Core Version:    0.7.0.1
  */

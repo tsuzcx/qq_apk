@@ -4,11 +4,12 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView.ScaleType;
+import bbgg;
 
 public class AnyScaleTypeImageView
   extends URLTextImageView
 {
-  private AnyScaleTypeImageView.DisplayRuleDef jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView$DisplayRuleDef;
+  private bbgg jdField_a_of_type_Bbgg;
   private boolean jdField_a_of_type_Boolean;
   
   public AnyScaleTypeImageView(Context paramContext)
@@ -26,10 +27,10 @@ public class AnyScaleTypeImageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void setDisplayRuleDef(AnyScaleTypeImageView.DisplayRuleDef paramDisplayRuleDef)
+  public void setDisplayRuleDef(bbgg parambbgg)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView$DisplayRuleDef = paramDisplayRuleDef;
-    if (paramDisplayRuleDef != null) {
+    this.jdField_a_of_type_Bbgg = parambbgg;
+    if (parambbgg != null) {
       setScaleType(ImageView.ScaleType.MATRIX);
     }
   }
@@ -41,20 +42,20 @@ public class AnyScaleTypeImageView
     if (localDrawable == null) {
       return super.setFrame(paramInt1, paramInt2, paramInt3, paramInt4);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView$DisplayRuleDef != null)
+    if (this.jdField_a_of_type_Bbgg != null)
     {
       int i = getPaddingLeft();
       int j = getPaddingRight();
       int k = getPaddingTop();
       int m = getPaddingBottom();
-      setImageMatrix(this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView$DisplayRuleDef.a(localDrawable, paramInt3 - paramInt1 - i - j, paramInt4 - paramInt2 - k - m));
+      setImageMatrix(this.jdField_a_of_type_Bbgg.a(localDrawable, paramInt3 - paramInt1 - i - j, paramInt4 - paramInt2 - k - m));
     }
     return super.setFrame(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void setImageDrawable(Drawable paramDrawable)
   {
-    if ((this.jdField_a_of_type_Boolean) && (paramDrawable != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView$DisplayRuleDef != null))
+    if ((this.jdField_a_of_type_Boolean) && (paramDrawable != null) && (this.jdField_a_of_type_Bbgg != null))
     {
       int i = getWidth();
       int j = getPaddingLeft();
@@ -62,14 +63,14 @@ public class AnyScaleTypeImageView
       int m = getHeight();
       int n = getPaddingTop();
       int i1 = getPaddingBottom();
-      setImageMatrix(this.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView$DisplayRuleDef.a(paramDrawable, i - j - k, m - n - i1));
+      setImageMatrix(this.jdField_a_of_type_Bbgg.a(paramDrawable, i - j - k, m - n - i1));
     }
     super.setImageDrawable(paramDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AnyScaleTypeImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,101 +1,78 @@
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
-import com.tencent.mobileqq.pic.UpCallBack;
-import com.tencent.mobileqq.pic.UpCallBack.SendResult;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.TMG.sdk.AVAudioCtrl;
+import com.tencent.TMG.sdk.AVContext;
+import com.tencent.TMG.sdk.AVRoomMulti.AVCustomData;
+import com.tencent.TMG.sdk.AVRoomMulti.EventListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
-import tencent.im.msg.im_msg_body.RichText;
 
 class aixb
-  implements UpCallBack
+  implements AVRoomMulti.EventListener
 {
-  aixb(aixa paramaixa, boolean paramBoolean) {}
+  aixb(aixa paramaixa) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void onCameraSettingNotify(int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onDisableAudioIssue() {}
+  
+  public void onEndpointsUpdateInfo(int paramInt, String[] paramArrayOfString)
   {
-    return null;
+    QLog.i("AVManager", 1, String.format("onEndpointsUpdateInfo|eventid=%d", new Object[] { Integer.valueOf(paramInt) }));
+    if (this.a.jdField_a_of_type_Aixe != null) {
+      this.a.jdField_a_of_type_Aixe.a(paramInt, paramArrayOfString);
+    }
   }
   
-  public void a(UpCallBack.SendResult paramSendResult) {}
-  
-  public void b(UpCallBack.SendResult paramSendResult)
+  public void onEnterRoomComplete(int paramInt, String paramString)
   {
-    boolean bool;
-    int i;
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder().append(" onSend result is null ? ");
-      if (paramSendResult == null)
-      {
-        bool = true;
-        localObject = ((StringBuilder)localObject).append(bool).append(" result is: ");
-        if (paramSendResult != null) {
-          break label71;
-        }
-        i = -99;
-        label46:
-        QLog.i("NearbyPeoplePhotoUploadProcessor", 2, i);
-      }
+    QLog.i("AVManager", 1, "mRoomEventListener.onEnterRoomComplete| result = " + paramInt + paramString);
+    if (paramInt != 0) {
+      this.a.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl().stopTRAEService();
     }
-    else
-    {
-      if (paramSendResult != null) {
-        break label79;
-      }
+    if (this.a.jdField_a_of_type_Aixd != null) {
+      this.a.jdField_a_of_type_Aixd.a(paramInt, paramString);
     }
-    label71:
-    label79:
-    do
-    {
-      return;
-      bool = false;
-      break;
-      i = paramSendResult.a;
-      break label46;
-      if (paramSendResult.a == 0)
-      {
-        bool = true;
-        localObject = (CardHandler)this.jdField_a_of_type_Aixa.a.a(2);
-        if (localObject == null) {
-          break label149;
-        }
-        ((CardHandler)localObject).a(bool, this.jdField_a_of_type_Aixa.a.getCurrentAccountUin(), 0);
-      }
-      for (;;)
-      {
-        if (bool) {
-          break label156;
-        }
-        ProfileCardUtil.a("TransferRequest.onSend", paramSendResult.b, paramSendResult.toString());
-        return;
-        bool = false;
-        break;
-        ProfileCardUtil.a(null);
-      }
-      if (((Integer)NearbySPUtil.a(this.jdField_a_of_type_Aixa.a.getAccount(), "qq_avatar_type", Integer.valueOf(-1))).intValue() != 1) {
-        NearbySPUtil.a(this.jdField_a_of_type_Aixa.a.getAccount(), "qq_avatar_type", Integer.valueOf(1));
-      }
-      if (this.jdField_a_of_type_Boolean) {
-        ThreadManager.getUIHandler().post(new aixc(this));
-      }
-    } while (SharedPreUtils.ax(this.jdField_a_of_type_Aixa.a.getApp(), this.jdField_a_of_type_Aixa.a.getCurrentAccountUin()) == 2);
-    label149:
-    label156:
-    paramSendResult = (CardHandler)this.jdField_a_of_type_Aixa.a.a(2);
-    Object localObject = new ArrayList();
-    ((ArrayList)localObject).add(Integer.valueOf(42104));
-    paramSendResult.a(this.jdField_a_of_type_Aixa.a.getCurrentAccountUin(), this.jdField_a_of_type_Aixa.a.getCurrentAccountUin(), 0, (ArrayList)localObject);
   }
+  
+  public void onExitRoomComplete()
+  {
+    QLog.i("AVManager", 1, "mRoomEventListener.onExitRoomComplete");
+    this.a.jdField_a_of_type_ComTencentTMGSdkAVContext.getAudioCtrl().stopTRAEService();
+    if (this.a.jdField_a_of_type_Aixe != null) {
+      this.a.jdField_a_of_type_Aixe.a();
+    }
+  }
+  
+  public void onHwStateChangeNotify(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString) {}
+  
+  public void onPrivilegeDiffNotify(int paramInt) {}
+  
+  public void onRecvCustomData(AVRoomMulti.AVCustomData paramAVCustomData, String paramString) {}
+  
+  public void onRoomDisconnect(int paramInt, String paramString)
+  {
+    if (this.a.jdField_a_of_type_Aixe != null) {
+      this.a.jdField_a_of_type_Aixe.a(paramInt, paramString);
+    }
+  }
+  
+  public void onRoomEvent(int paramInt1, int paramInt2, Object paramObject) {}
+  
+  public void onSemiAutoRecvCameraVideo(String[] paramArrayOfString)
+  {
+    QLog.i("AVManager", 1, String.format("onSemiAutoRecvCameraVideo", new Object[0]));
+    if (this.a.jdField_a_of_type_Aixe != null) {
+      this.a.jdField_a_of_type_Aixe.a(paramArrayOfString);
+    }
+  }
+  
+  public void onSemiAutoRecvMediaFileVideo(String[] paramArrayOfString) {}
+  
+  public void onSemiAutoRecvScreenVideo(String[] paramArrayOfString) {}
+  
+  public void onSwitchRoomComplete(int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aixb
  * JD-Core Version:    0.7.0.1
  */

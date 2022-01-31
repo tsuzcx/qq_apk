@@ -1,47 +1,52 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.profile.view.PhotoViewForShopping;
-import com.tencent.mobileqq.profile.view.VipScaledViewPager;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.js.SpringFestivalRedpacketJsPlugin.3;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
+import org.json.JSONObject;
 
 public class agvi
-  implements ViewPager.OnPageChangeListener
+  implements EIPCResultCallback
 {
-  boolean jdField_a_of_type_Boolean = false;
-  boolean b = false;
+  public agvi(SpringFestivalRedpacketJsPlugin.3 param3, String paramString) {}
   
-  public agvi(PhotoViewForShopping paramPhotoViewForShopping) {}
-  
-  public void onPageScrollStateChanged(int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if (paramInt == 1)
+    QLog.i("springHb_SpringFestivalRedpacketJsPlugin", 1, "uploadHeadToH5: invoked.  QWalletIPCModule.ACTION_GET_User_Nick: " + paramEIPCResult);
+    Object localObject;
+    if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.b();
-      this.jdField_a_of_type_Boolean = true;
+      paramEIPCResult = paramEIPCResult.data;
+      if (paramEIPCResult == null)
+      {
+        localObject = "";
+        paramEIPCResult = (EIPCResult)localObject;
+        if (!baip.a((String)localObject)) {}
+      }
     }
-    if (paramInt == 2) {
-      this.b = true;
-    }
-    if (paramInt == 0)
+    for (paramEIPCResult = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalJsSpringFestivalRedpacketJsPlugin$3.jdField_a_of_type_JavaLangString;; paramEIPCResult = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalJsSpringFestivalRedpacketJsPlugin$3.jdField_a_of_type_JavaLangString)
     {
-      if (this.b)
+      try
       {
-        this.b = false;
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.a();
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("avatar", this.jdField_a_of_type_JavaLangString);
+        ((JSONObject)localObject).put("nickname", paramEIPCResult);
+        agvf.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketSpringfestivalJsSpringFestivalRedpacketJsPlugin$3.this$0, "getAvatarAndNickname", ((JSONObject)localObject).toString());
+        QLog.i("springHb_SpringFestivalRedpacketJsPlugin", 1, "uploadHeadToH5 doCallback: " + ((JSONObject)localObject).toString());
+        return;
       }
-      if (this.jdField_a_of_type_Boolean)
+      catch (Exception paramEIPCResult)
       {
-        this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.a();
-        this.jdField_a_of_type_Boolean = false;
+        QLog.e("springHb_SpringFestivalRedpacketJsPlugin", 1, "uploadHeadToH5 parse result throw an exception: " + paramEIPCResult);
       }
+      localObject = paramEIPCResult.getString("user_nick");
+      break;
     }
   }
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agvi
  * JD-Core Version:    0.7.0.1
  */

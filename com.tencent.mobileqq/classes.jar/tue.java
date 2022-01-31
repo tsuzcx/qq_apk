@@ -1,24 +1,32 @@
-import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class tue
-  implements Runnable
+  extends QQUIEventReceiver<ttr, sxr>
 {
-  public tue(RegisterNewBaseActivity paramRegisterNewBaseActivity, String paramString1, String paramString2) {}
-  
-  public void run()
+  public tue(@NonNull ttr paramttr)
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity, 230);
-    localQQCustomDialog.setTitle(this.jdField_a_of_type_JavaLangString);
-    localQQCustomDialog.setMessage(this.b);
-    localQQCustomDialog.setPositiveButton(2131436340, new tuf(this));
-    localQQCustomDialog.show();
+    super(paramttr);
+  }
+  
+  public void a(@NonNull ttr paramttr, @NonNull sxr paramsxr)
+  {
+    if (paramsxr.a.isSuccess())
+    {
+      urk.a(paramttr.b, "receive user info event. %s.", paramsxr.toString());
+      paramttr.i();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return sxr.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tue
  * JD-Core Version:    0.7.0.1
  */

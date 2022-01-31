@@ -1,22 +1,23 @@
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class nje
-  implements Runnable
+class nje
+  implements ViewFactory.FoundClickableViewListener
 {
-  public nje(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
+  nje(njd paramnjd, TemplateBean paramTemplateBean) {}
   
-  public void run()
+  public void onFound(ViewBase paramViewBase)
   {
-    if (this.a.jdField_a_of_type_Int == 0)
+    switch (StringCommon.getStrIdFromString(paramViewBase.getClickEvnet()))
     {
-      if (MsgTabStoryNodeListManager.a(this.a)) {
-        this.a.jdField_a_of_type_JavaLangRunnable = null;
-      }
-      return;
     }
-    ThreadManager.getUIHandler().post(this.a.jdField_a_of_type_JavaLangRunnable);
+    do
+    {
+      return;
+    } while (!(paramViewBase instanceof pbz));
+    ((pbz)paramViewBase).a(new njf(this, paramViewBase));
   }
 }
 

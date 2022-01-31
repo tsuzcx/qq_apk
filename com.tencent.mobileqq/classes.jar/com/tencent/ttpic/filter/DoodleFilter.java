@@ -2,31 +2,22 @@ package com.tencent.ttpic.filter;
 
 import android.graphics.PointF;
 import android.opengl.GLES20;
-import com.tencent.ttpic.model.FaceActionCounter;
-import com.tencent.ttpic.model.StickerItem;
-import com.tencent.ttpic.util.VideoFileUtil;
-import com.tencent.ttpic.util.VideoGlobalContext;
-import com.tencent.ttpic.util.VideoMaterialUtil;
+import com.tencent.aekit.openrender.internal.VideoFilterBase;
+import com.tencent.ttpic.openapi.shader.ShaderCreateFactory.PROGRAM_TYPE;
+import com.tencent.ttpic.openapi.shader.ShaderManager;
+import com.tencent.ttpic.openapi.util.VideoMaterialUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 public class DoodleFilter
   extends VideoFilterBase
 {
-  private static final String FRAGMENT_SHADER = VideoFileUtil.loadAssetsString(VideoGlobalContext.getContext(), "camera/camera_video/shader/DoodleFragmentShader.dat");
-  private static final String VERTEX_SHADER = VideoFileUtil.loadAssetsString(VideoGlobalContext.getContext(), "camera/camera_video/shader/DoodleVertexShader.dat");
   private List<List<PointF>> list = new ArrayList();
   
   public DoodleFilter()
   {
-    this(VERTEX_SHADER, FRAGMENT_SHADER, null);
-  }
-  
-  public DoodleFilter(String paramString1, String paramString2, StickerItem paramStickerItem)
-  {
-    super(paramString1, paramString2, paramStickerItem);
+    super(ShaderManager.getInstance().getShader(ShaderCreateFactory.PROGRAM_TYPE.DOODLE));
   }
   
   public void initAttribParams()
@@ -75,12 +66,10 @@ public class DoodleFilter
       }
     }
   }
-  
-  public void updatePreview(List<PointF> paramList, float[] paramArrayOfFloat, Map<Integer, FaceActionCounter> paramMap, float paramFloat, long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.filter.DoodleFilter
  * JD-Core Version:    0.7.0.1
  */

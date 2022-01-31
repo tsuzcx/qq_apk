@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class FrdSysMsg$GroupInfo
-  extends MessageMicro
+  extends MessageMicro<GroupInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26 }, new String[] { "uint64_group_uin", "str_group_name", "str_group_nick" }, new Object[] { Long.valueOf(0L), "", "" }, GroupInfo.class);
   public final PBStringField str_group_name = PBField.initString("");

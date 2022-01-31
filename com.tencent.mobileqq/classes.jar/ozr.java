@@ -1,50 +1,26 @@
-import com.tencent.biz.tribe.TribeVideoPlugin;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.OnLogListener;
 
-public class ozr
-  implements TVK_SDKMgr.OnLogListener
+class ozr
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public ozr(TribeVideoPlugin paramTribeVideoPlugin) {}
+  ozr(ozq paramozq) {}
   
-  public int d(String paramString1, String paramString2)
+  public void onGlobalLayout()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
+    if ((ozq.a(this.a).isShown()) && (!ozq.a(this.a)))
+    {
+      QLog.d("ReadInJoyLottieView", 2, "resumeAnimation");
+      this.a.a();
+      ozq.a(this.a, true);
     }
-    return 0;
-  }
-  
-  public int e(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
+    if ((!ozq.a(this.a).isShown()) && (ozq.a(this.a)))
+    {
+      QLog.d("ReadInJoyLottieView", 2, "pauseAnimation");
+      this.a.b();
+      ozq.a(this.a, false);
     }
-    return 0;
-  }
-  
-  public int i(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
-  }
-  
-  public int v(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
-  }
-  
-  public int w(String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("TribeVideoPlugin", 2, paramString1 + " " + paramString2);
-    }
-    return 0;
   }
 }
 

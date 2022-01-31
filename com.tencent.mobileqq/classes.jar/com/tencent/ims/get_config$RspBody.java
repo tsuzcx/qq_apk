@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class get_config$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   public static final int STR_CONFIG_NAME_FIELD_NUMBER = 4;
   public static final int STR_DOWNLOAD_LINK_FIELD_NUMBER = 8;

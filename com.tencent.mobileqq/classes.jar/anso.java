@@ -1,26 +1,10 @@
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-import dov.com.qq.im.capture.QIMManager;
-import dov.com.qq.im.capture.data.CaptureComboManager;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools.DataSet;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
-
-public class anso
-  implements Runnable
+public abstract interface anso
 {
-  public anso(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
-  
-  public void run()
-  {
-    CaptureComboManager localCaptureComboManager = (CaptureComboManager)QIMManager.a(5);
-    VideoFilterViewPager localVideoFilterViewPager = QIMEffectCameraCaptureUnit.a(this.a);
-    if ((localVideoFilterViewPager != null) && (localCaptureComboManager.a() != null)) {
-      localVideoFilterViewPager.a(localCaptureComboManager.a().c);
-    }
-  }
+  public abstract void a(int paramInt, anpe paramanpe, String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anso
  * JD-Core Version:    0.7.0.1
  */

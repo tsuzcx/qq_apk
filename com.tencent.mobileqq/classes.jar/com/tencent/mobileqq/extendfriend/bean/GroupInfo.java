@@ -18,7 +18,7 @@ public class GroupInfo
   public String groupDesc;
   public String groupFace;
   public String groupName;
-  public List labels = new ArrayList();
+  public List<GroupInfo.Label> labels = new ArrayList();
   public long lastMsgTime;
   
   public boolean equals(Object paramObject)

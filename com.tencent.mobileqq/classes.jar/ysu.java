@@ -1,18 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
-
 class ysu
-  implements Runnable
 {
-  ysu(yst paramyst) {}
+  public int a;
+  public long a;
+  public String a;
+  public ytb a;
   
-  public void run()
+  public ysu(yst paramyst, int paramInt, long paramLong, String paramString, ytb paramytb)
   {
-    QLog.d("ApolloSurfaceView", 1, "[onEnterGame] apollosurfaceview visiable");
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Ytb = paramytb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ysu
  * JD-Core Version:    0.7.0.1
  */

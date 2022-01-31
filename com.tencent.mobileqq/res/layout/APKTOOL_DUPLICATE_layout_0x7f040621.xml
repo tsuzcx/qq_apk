@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.tencent.biz.qqstory.widget.IgnoreParentRelativeLayout android:orientation="vertical" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res/com.tencent.mobileqq">
-    <LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021194" android:layout_width="238.0dip" android:layout_height="84.0dip">
-        <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="#ff212226" android:textColorHint="#ffbbbbbb" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1cc4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="28.0dip" android:layout_marginTop="23.0dip" android:hint="让好友评分..." android:singleLine="true" />
-        <dov.com.tencent.biz.qqstory.takevideo.interact.RateWidgetRatingBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1cc5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" app:starImageWidth="37.0dip" app:starImageHeight="37.0dip" app:starImagePadding="0.0dip" app:starImageMarginRight="4.0dip" app:starNum="5" app:rating="0" app:starEmptyDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021193" app:starFillDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021192" app:enableRate="true" />
-    </LinearLayout>
-</com.tencent.biz.qqstory.widget.IgnoreParentRelativeLayout>

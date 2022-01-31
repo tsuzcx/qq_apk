@@ -1,45 +1,116 @@
-import com.tencent.av.avgesture.AVGestureWrapper;
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.data.TroopMemberCardInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aamt
-  implements Runnable
+  extends ajuc
 {
-  public aamt(AREngine paramAREngine) {}
+  public aamt(Conversation paramConversation) {}
   
-  public void run()
+  protected void a()
   {
-    if ((AREngine.e(this.a)) && (AREngine.e(this.a) == 2)) {
-      if (AREngine.a(this.a) != null) {
-        AREngine.b(this.a, 5);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, "refresh recent, from_onupdaterecentlist");
+    }
+    this.a.a(0L);
+  }
+  
+  protected void a(int paramInt1, int paramInt2, String paramString)
+  {
+    if (paramInt1 == 6) {
+      if (paramInt2 == 0)
+      {
+        ariz.a().c(this.a.a);
+        this.a.a(8, paramString, 1);
+        this.a.a(8, ajed.C, 5000);
+        this.a.a(8, ajed.aJ, 5001);
       }
     }
-    try
-    {
-      AVGestureWrapper.clearCache();
-      ARWorldCupGameLogicManager.a().e();
+    while ((paramInt1 != 2) || (paramInt2 != 0)) {
       return;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    ariz.a().b(paramString, this.a.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.recent", 2, "refresh recent, from_ontroopmanagersuccess");
+    }
+    this.a.a(8, paramString, 1);
+    this.a.a(8, ajed.C, 5000);
+    this.a.a(8, ajed.aJ, 5001);
+  }
+  
+  protected void a(String paramString1, String paramString2)
+  {
+    this.a.a(8, paramString1, 1);
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    ariz.a().c(this.a.a);
+  }
+  
+  protected void a(boolean paramBoolean1, byte paramByte, TroopInfo paramTroopInfo, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
     {
-      for (;;)
-      {
-        QLog.i("AREngine_AREngine", 2, "AVGestureWrapper.clearCache failed. UnsatisfiedLinkError. err = " + localUnsatisfiedLinkError.getMessage());
+      this.a.a(8, ajed.C, 5000);
+      this.a.a(8, ajed.aJ, 5001);
+      if (paramTroopInfo != null) {
+        this.a.a(8, paramTroopInfo.troopuin, 1);
       }
     }
-    catch (Exception localException)
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean)
     {
-      for (;;)
+      this.a.a(8, paramString, 1);
+      this.a.a(8, ajed.C, 5000);
+      this.a.a(8, ajed.aJ, 5001);
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, ArrayList<TroopMemberCardInfo> paramArrayList, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (paramBoolean2) && (paramArrayList != null) && (paramArrayList.size() > 0))
+    {
+      paramArrayList = (TroopMemberCardInfo)paramArrayList.get(0);
+      if (paramArrayList != null)
       {
-        QLog.i("AREngine_AREngine", 2, "AVGestureWrapper.clearCache failed. err = " + localException.getMessage());
+        this.a.a(8, paramArrayList.troopuin, 1);
+        this.a.a(8, paramArrayList.memberuin, -2147483648);
+        this.a.a(8, ajed.C, 5000);
+        this.a.a(8, ajed.aJ, 5001);
       }
+    }
+  }
+  
+  protected void b(String paramString1, String paramString2)
+  {
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (paramString2.equals(this.a.a.getCurrentAccountUin()))) {
+      this.a.a(8, paramString1, 1);
+    }
+  }
+  
+  protected void b(boolean paramBoolean, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, "Conversation.onGetTroopMemberCard isSuccess=" + paramBoolean + " data=" + paramObject);
+    }
+    if ((paramBoolean) && (paramObject != null))
+    {
+      long l = ((Long)((Object[])(Object[])paramObject)[0]).longValue();
+      this.a.a(8, String.valueOf(l), 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aamt
  * JD-Core Version:    0.7.0.1
  */

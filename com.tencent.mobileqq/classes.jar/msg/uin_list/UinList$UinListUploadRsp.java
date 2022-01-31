@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class UinList$UinListUploadRsp
-  extends MessageMicro
+  extends MessageMicro<UinListUploadRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_store_key = PBField.initBytes(ByteStringMicro.EMPTY);

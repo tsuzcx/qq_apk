@@ -4,6 +4,7 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.media.SoundPool;
 import android.media.SoundPool.OnLoadCompleteListener;
+import android.opengl.GLES20;
 import android.opengl.Matrix;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,196 +17,142 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class GLViewContext
   implements SoundPool.OnLoadCompleteListener
 {
-  private float jdField_a_of_type_Float;
-  private Rect jdField_a_of_type_AndroidGraphicsRect;
-  private SoundPool jdField_a_of_type_AndroidMediaSoundPool;
-  private BgmPlayer jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBgmPlayer;
-  public BoyDataReport a;
-  private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-  private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  private CopyOnWriteArrayList jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-  private float[] jdField_a_of_type_ArrayOfFloat = new float[16];
-  private float jdField_b_of_type_Float;
-  private Rect jdField_b_of_type_AndroidGraphicsRect;
-  private final ArrayList jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+  private BgmPlayer mBgmPlayer;
+  private final ArrayList<GLViewContext.LoadItem> mLoadItemList = new ArrayList();
+  private ArrayList<GLViewContext.AudioItem> mPlayCommandList = new ArrayList();
+  private float[] mProjectMatrix = new float[16];
+  public BoyDataReport mReport = new BoyDataReport();
+  private SoundPool mSoundPool;
+  private HashMap<String, GLViewContext.AudioItem> mSoundPoolIdCache = new HashMap();
+  private CopyOnWriteArrayList<Integer> mStreamIdCache = new CopyOnWriteArrayList();
+  private Rect mSurfaceViewSize;
+  private float mVideoResolveRatio;
+  private Rect mViewPort;
+  private float mViewPortRatio;
   
   public GLViewContext()
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBoyDataReport = new BoyDataReport();
-    Matrix.setIdentityM(this.jdField_a_of_type_ArrayOfFloat, 0);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBgmPlayer = new BgmPlayer();
+    Matrix.setIdentityM(this.mProjectMatrix, 0);
+    this.mBgmPlayer = new BgmPlayer();
   }
   
-  private void a(int paramInt1, int paramInt2)
+  private void calledInGlThread(int paramInt1, int paramInt2)
   {
-    Object localObject1 = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
+    Object localObject1 = this.mSoundPoolIdCache.values().iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (GLViewContext.AudioItem)((Iterator)localObject1).next();
-      if (((GLViewContext.AudioItem)localObject2).jdField_a_of_type_Int == paramInt1)
+      if (((GLViewContext.AudioItem)localObject2).sampleId == paramInt1)
       {
-        ((GLViewContext.AudioItem)localObject2).jdField_a_of_type_Boolean = true;
-        ((GLViewContext.AudioItem)localObject2).b = paramInt2;
+        ((GLViewContext.AudioItem)localObject2).loaded = true;
+        ((GLViewContext.AudioItem)localObject2).status = paramInt2;
       }
     }
-    Object localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    Object localObject2 = this.mPlayCommandList.iterator();
     while (((Iterator)localObject2).hasNext())
     {
       localObject1 = (GLViewContext.AudioItem)((Iterator)localObject2).next();
-      if (((GLViewContext.AudioItem)localObject1).jdField_a_of_type_Int == paramInt1) {
-        a((GLViewContext.AudioItem)localObject1);
+      if (((GLViewContext.AudioItem)localObject1).sampleId == paramInt1) {
+        playAudioItem((GLViewContext.AudioItem)localObject1);
       }
     }
     for (;;)
     {
       if (localObject1 != null) {
-        this.jdField_a_of_type_JavaUtilArrayList.remove(localObject1);
+        this.mPlayCommandList.remove(localObject1);
       }
       return;
       localObject1 = null;
     }
   }
   
-  private void a(GLViewContext.AudioItem paramAudioItem)
+  public static void filterCullBegin()
   {
-    if (paramAudioItem.jdField_a_of_type_Boolean) {
-      if (paramAudioItem.b == 0)
+    GLES20.glEnable(2884);
+    if (GlView.ENABLE_X_INVERSE) {
+      GLES20.glFrontFace(2304);
+    }
+    for (;;)
+    {
+      GLES20.glCullFace(1029);
+      return;
+      GLES20.glFrontFace(2305);
+    }
+  }
+  
+  public static void filterCullEnd()
+  {
+    GLES20.glDisable(2884);
+  }
+  
+  private void playAudioItem(GLViewContext.AudioItem paramAudioItem)
+  {
+    if (paramAudioItem.loaded) {
+      if (paramAudioItem.status == 0)
       {
-        i = this.jdField_a_of_type_AndroidMediaSoundPool.play(paramAudioItem.jdField_a_of_type_Int, 1.0F, 1.0F, paramAudioItem.d, paramAudioItem.c, 1.0F);
-        this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.add(Integer.valueOf(i));
+        i = this.mSoundPool.play(paramAudioItem.sampleId, 1.0F, 1.0F, paramAudioItem.priority, paramAudioItem.loop, 1.0F);
+        this.mStreamIdCache.add(Integer.valueOf(i));
       }
     }
-    while (this.jdField_a_of_type_JavaUtilArrayList.contains(paramAudioItem))
+    while (this.mPlayCommandList.contains(paramAudioItem))
     {
       int i;
       return;
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramAudioItem);
+    this.mPlayCommandList.add(paramAudioItem);
   }
   
-  private void a(String paramString, int paramInt1, int paramInt2)
+  private void playSoundInternal(String paramString, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_AndroidMediaSoundPool == null) {
+    if (this.mSoundPool == null) {
       return;
     }
-    if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))
+    if (!this.mSoundPoolIdCache.containsKey(paramString))
     {
-      GLViewContext.AudioItem localAudioItem = new GLViewContext.AudioItem(this.jdField_a_of_type_AndroidMediaSoundPool.load(paramString, 1));
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localAudioItem);
+      GLViewContext.AudioItem localAudioItem = new GLViewContext.AudioItem(this.mSoundPool.load(paramString, 1));
+      this.mSoundPoolIdCache.put(paramString, localAudioItem);
     }
-    paramString = (GLViewContext.AudioItem)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    paramString.c = paramInt1;
-    paramString.d = paramInt2;
-    a(paramString);
+    paramString = (GLViewContext.AudioItem)this.mSoundPoolIdCache.get(paramString);
+    paramString.loop = paramInt1;
+    paramString.priority = paramInt2;
+    playAudioItem(paramString);
   }
   
-  public float a()
+  public void allPauseAudio()
   {
-    return this.jdField_a_of_type_Float;
-  }
-  
-  public final Rect a()
-  {
-    return this.jdField_a_of_type_AndroidGraphicsRect;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_AndroidMediaSoundPool == null) {}
-    do
-    {
-      return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        int i = ((Integer)localIterator.next()).intValue();
-        this.jdField_a_of_type_AndroidMediaSoundPool.stop(i);
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-      localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        Object localObject = (String)localIterator.next();
-        localObject = (GLViewContext.AudioItem)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-        this.jdField_a_of_type_AndroidMediaSoundPool.unload(((GLViewContext.AudioItem)localObject).jdField_a_of_type_Int);
-      }
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-      this.jdField_a_of_type_AndroidMediaSoundPool.release();
-      this.jdField_a_of_type_AndroidMediaSoundPool = null;
-    } while (this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBgmPlayer == null);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBgmPlayer.b();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBgmPlayer = null;
-  }
-  
-  public final void a(Rect paramRect)
-  {
-    this.jdField_a_of_type_AndroidGraphicsRect = paramRect;
-    Matrix.orthoM(this.jdField_a_of_type_ArrayOfFloat, 0, 0.0F, this.jdField_a_of_type_AndroidGraphicsRect.width(), this.jdField_a_of_type_AndroidGraphicsRect.height(), 0.0F, 0.0F, 1.0F);
-    this.jdField_a_of_type_Float = (this.jdField_a_of_type_AndroidGraphicsRect.width() * 1.0F / this.jdField_b_of_type_AndroidGraphicsRect.width());
-    this.jdField_b_of_type_Float = (this.jdField_a_of_type_AndroidGraphicsRect.width() / 750.0F);
-  }
-  
-  public final void a(RectF paramRectF)
-  {
-    float f = a();
-    paramRectF.set(paramRectF.left * f, paramRectF.top * f, paramRectF.right * f, f * paramRectF.bottom);
-  }
-  
-  public void a(String paramString)
-  {
-    a(paramString, 0, 1);
-  }
-  
-  public void a(List paramList)
-  {
-    if ((this.jdField_a_of_type_AndroidMediaSoundPool != null) || (paramList == null) || (paramList.size() == 0)) {}
-    for (;;)
-    {
-      return;
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
-      this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(3, 3, 0);
-      this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(this);
-      int i = 0;
-      while (i < paramList.size())
-      {
-        GLViewContext.AudioItem localAudioItem = new GLViewContext.AudioItem(this.jdField_a_of_type_AndroidMediaSoundPool.load((String)paramList.get(i), 1));
-        this.jdField_a_of_type_JavaUtilHashMap.put(paramList.get(i), localAudioItem);
-        i += 1;
-      }
+    if (this.mSoundPool != null) {
+      this.mSoundPool.autoPause();
+    }
+    if (this.mBgmPlayer != null) {
+      this.mBgmPlayer.pauseAudio();
     }
   }
   
-  public float[] a()
+  public void allResumeAudio()
   {
-    return this.jdField_a_of_type_ArrayOfFloat;
+    if (this.mSoundPool != null) {
+      this.mSoundPool.autoResume();
+    }
+    if (this.mBgmPlayer != null) {
+      this.mBgmPlayer.resumeAudio();
+    }
   }
   
-  public float b()
+  public void executeDraw()
   {
-    return this.jdField_b_of_type_Float;
-  }
-  
-  public final Rect b()
-  {
-    return this.jdField_b_of_type_AndroidGraphicsRect;
-  }
-  
-  public void b()
-  {
-    if (this.jdField_b_of_type_JavaUtilArrayList.size() > 0) {
-      synchronized (this.jdField_b_of_type_JavaUtilArrayList)
+    if (this.mLoadItemList.size() > 0) {
+      synchronized (this.mLoadItemList)
       {
-        GLViewContext.LoadItem[] arrayOfLoadItem = new GLViewContext.LoadItem[this.jdField_b_of_type_JavaUtilArrayList.size()];
-        this.jdField_b_of_type_JavaUtilArrayList.toArray(arrayOfLoadItem);
-        this.jdField_b_of_type_JavaUtilArrayList.clear();
+        GLViewContext.LoadItem[] arrayOfLoadItem = new GLViewContext.LoadItem[this.mLoadItemList.size()];
+        this.mLoadItemList.toArray(arrayOfLoadItem);
+        this.mLoadItemList.clear();
         int j = arrayOfLoadItem.length;
         int i = 0;
         if (i < j)
         {
           ??? = arrayOfLoadItem[i];
           if (??? != null) {
-            a(???.jdField_a_of_type_Int, ???.b);
+            calledInGlThread(???.sampleId, ???.status);
           }
           i += 1;
         }
@@ -213,51 +160,153 @@ public class GLViewContext
     }
   }
   
-  public final void b(Rect paramRect)
+  public float[] getProjectMatrix()
   {
-    this.jdField_b_of_type_AndroidGraphicsRect = paramRect;
+    return this.mProjectMatrix;
   }
   
-  public final void b(RectF paramRectF)
+  public float getRealVideoRatio()
   {
-    float f = a();
-    paramRectF.set(paramRectF.left / f, paramRectF.top / f, paramRectF.right / f, paramRectF.bottom / f);
+    return this.mVideoResolveRatio;
   }
   
-  public void b(String paramString)
+  public final Rect getSurfaceViewSize()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBgmPlayer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBgmPlayer.a(paramString);
-    }
+    return this.mSurfaceViewSize;
   }
   
-  public void c()
+  public final Rect getViewPort()
   {
-    if (this.jdField_a_of_type_AndroidMediaSoundPool != null)
+    return this.mViewPort;
+  }
+  
+  public float getViewPortRatio()
+  {
+    return this.mViewPortRatio;
+  }
+  
+  public void loadSoundResource(List<String> paramList)
+  {
+    if ((this.mSoundPool != null) || (paramList == null) || (paramList.size() == 0)) {}
+    for (;;)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-      while (localIterator.hasNext())
+      return;
+      this.mSoundPoolIdCache.clear();
+      this.mStreamIdCache.clear();
+      this.mSoundPool = new SoundPool(3, 3, 0);
+      this.mSoundPool.setOnLoadCompleteListener(this);
+      int i = 0;
+      while (i < paramList.size())
       {
-        int i = ((Integer)localIterator.next()).intValue();
-        this.jdField_a_of_type_AndroidMediaSoundPool.stop(i);
+        GLViewContext.AudioItem localAudioItem = new GLViewContext.AudioItem(this.mSoundPool.load((String)paramList.get(i), 1));
+        this.mSoundPoolIdCache.put(paramList.get(i), localAudioItem);
+        i += 1;
       }
-      this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBgmPlayer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineBgmPlayer.a();
-    }
+  }
+  
+  public final void mapNormalRegion(RectF paramRectF)
+  {
+    float f = getViewPortRatio();
+    paramRectF.set(paramRectF.left * f, paramRectF.top * f, paramRectF.right * f, f * paramRectF.bottom);
   }
   
   public void onLoadComplete(SoundPool arg1, int paramInt1, int paramInt2)
   {
     GLViewContext.LoadItem localLoadItem = new GLViewContext.LoadItem();
-    localLoadItem.jdField_a_of_type_Int = paramInt1;
-    localLoadItem.b = paramInt2;
-    synchronized (this.jdField_b_of_type_JavaUtilArrayList)
+    localLoadItem.sampleId = paramInt1;
+    localLoadItem.status = paramInt2;
+    synchronized (this.mLoadItemList)
     {
-      this.jdField_b_of_type_JavaUtilArrayList.add(localLoadItem);
+      this.mLoadItemList.add(localLoadItem);
       return;
     }
+  }
+  
+  public void playBackGroundSound(String paramString)
+  {
+    if (this.mBgmPlayer != null) {
+      this.mBgmPlayer.playAsync(paramString);
+    }
+  }
+  
+  public void playBackGroundSoundPool(String paramString)
+  {
+    playSoundInternal(paramString, -1, 5);
+  }
+  
+  public void playSound(String paramString)
+  {
+    playSoundInternal(paramString, 0, 1);
+  }
+  
+  public void playSoundCount(String paramString, int paramInt)
+  {
+    playSoundInternal(paramString, paramInt, 1);
+  }
+  
+  public void releaseSoundResource()
+  {
+    if (this.mSoundPool == null) {}
+    do
+    {
+      return;
+      Iterator localIterator = this.mStreamIdCache.iterator();
+      while (localIterator.hasNext())
+      {
+        int i = ((Integer)localIterator.next()).intValue();
+        this.mSoundPool.stop(i);
+      }
+      this.mStreamIdCache.clear();
+      localIterator = this.mSoundPoolIdCache.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (String)localIterator.next();
+        localObject = (GLViewContext.AudioItem)this.mSoundPoolIdCache.get(localObject);
+        this.mSoundPool.unload(((GLViewContext.AudioItem)localObject).sampleId);
+      }
+      this.mSoundPoolIdCache.clear();
+      this.mSoundPool.release();
+      this.mSoundPool = null;
+    } while (this.mBgmPlayer == null);
+    this.mBgmPlayer.releaseResource();
+    this.mBgmPlayer = null;
+  }
+  
+  public final void setSurfaceSize(Rect paramRect)
+  {
+    this.mSurfaceViewSize = paramRect;
+  }
+  
+  public final void setViewPort(Rect paramRect)
+  {
+    this.mViewPort = paramRect;
+    Matrix.orthoM(this.mProjectMatrix, 0, 0.0F, this.mViewPort.width(), this.mViewPort.height(), 0.0F, 0.0F, 1.0F);
+    this.mViewPortRatio = (this.mViewPort.width() * 1.0F / this.mSurfaceViewSize.width());
+    this.mVideoResolveRatio = (this.mViewPort.width() / 750.0F);
+  }
+  
+  public void stopAllSound()
+  {
+    if (this.mSoundPool != null)
+    {
+      Iterator localIterator = this.mStreamIdCache.iterator();
+      while (localIterator.hasNext())
+      {
+        int i = ((Integer)localIterator.next()).intValue();
+        this.mSoundPool.stop(i);
+      }
+      this.mStreamIdCache.clear();
+    }
+    if (this.mBgmPlayer != null) {
+      this.mBgmPlayer.stop();
+    }
+  }
+  
+  public final void unmapNormalRegion(RectF paramRectF)
+  {
+    float f = getViewPortRatio();
+    paramRectF.set(paramRectF.left / f, paramRectF.top / f, paramRectF.right / f, paramRectF.bottom / f);
   }
 }
 

@@ -1,27 +1,49 @@
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCommentManager;
+import android.content.Intent;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class mfg
-  implements Animation.AnimationListener
+class mfg
+  extends ClickableSpan
 {
-  public mfg(VideoFeedsCommentManager paramVideoFeedsCommentManager) {}
+  mfg(mfb parammfb, boolean paramBoolean, String paramString1, String paramString2) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (VideoFeedsCommentManager.a(this.a) != null) {
-      VideoFeedsCommentManager.a(this.a).setVisibility(8);
+    QLog.w(this.jdField_a_of_type_Mfb.i, 1, "closeUI showNoNameDialog, realName[" + this.jdField_a_of_type_Boolean + "]");
+    this.jdField_a_of_type_Mfb.a(this.jdField_a_of_type_JavaLangString);
+    paramView = this.jdField_a_of_type_Mfb.a();
+    if (paramView == null) {
+      return;
     }
+    paramView.finish();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      mek.a(this.jdField_a_of_type_Mfb.a, this.b);
+      return;
+    }
+    paramView = aciy.a(new Intent(BaseApplicationImpl.getApplication(), SplashActivity.class), new int[] { 2 });
+    paramView.putExtra("uin", this.jdField_a_of_type_Mfb.a.a().a().d);
+    paramView.putExtra("uintype", 0);
+    paramView.putExtra("uinname", this.jdField_a_of_type_Mfb.a.a().a().e);
+    paramView.putExtra("entrance", 8);
+    BaseApplicationImpl.getApplication().startActivity(paramView);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    super.updateDrawState(paramTextPaint);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mfg
  * JD-Core Version:    0.7.0.1
  */

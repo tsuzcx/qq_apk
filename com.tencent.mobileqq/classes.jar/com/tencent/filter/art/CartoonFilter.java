@@ -1,86 +1,85 @@
 package com.tencent.filter.art;
 
+import com.tencent.aekit.openrender.UniformParam.FloatParam;
 import com.tencent.filter.BaseFilter;
-import com.tencent.filter.GLSLRender;
-import com.tencent.filter.Param.FloatParam;
 
 public class CartoonFilter
   extends BaseFilter
 {
-  int type;
+  private int type;
   
   public CartoonFilter(int paramInt)
   {
-    super(GLSLRender.FILTER_SHADER_NONE);
+    super("precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n");
     this.type = paramInt;
   }
   
-  public void ApplyGLSLFilter(boolean paramBoolean, float paramFloat1, float paramFloat2)
+  public void applyFilterChain(boolean paramBoolean, float paramFloat1, float paramFloat2)
   {
     ClearGLSL();
     if (paramBoolean)
     {
-      this.glsl_programID = GLSLRender.FILTER_SHADER_NONE;
+      this.glslProgramShader = "precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n";
       setNextFilter(null, null);
     }
     for (;;)
     {
-      super.ApplyGLSLFilter(paramBoolean, paramFloat1, paramFloat2);
+      super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
       return;
-      this.glsl_programID = GLSLRender.FILTER_GAUSSBLURV;
-      BaseFilter localBaseFilter2 = new BaseFilter(GLSLRender.FILTER_GAUSSBLURH);
+      this.glslProgramShader = BaseFilter.getFragmentShader(78);
+      BaseFilter localBaseFilter2 = new BaseFilter(BaseFilter.getFragmentShader(77));
       setNextFilter(localBaseFilter2, null);
-      BaseFilter localBaseFilter1 = new BaseFilter(GLSLRender.FILTER_GRAYFILTERP);
+      BaseFilter localBaseFilter1 = new BaseFilter(BaseFilter.getFragmentShader(79));
       localBaseFilter2.setNextFilter(localBaseFilter1, null);
-      localBaseFilter2 = new BaseFilter(GLSLRender.FILTER_DIRECTIONFILTERP);
-      localBaseFilter2.addParam(new Param.FloatParam("threshold", 0.0F));
+      localBaseFilter2 = new BaseFilter(BaseFilter.getFragmentShader(72));
+      localBaseFilter2.addParam(new UniformParam.FloatParam("threshold", 0.0F));
       localBaseFilter1.setNextFilter(localBaseFilter2, null);
-      localBaseFilter1 = new BaseFilter(GLSLRender.FILTER_STRUCTTENSORFILTER);
+      localBaseFilter1 = new BaseFilter(BaseFilter.getFragmentShader(82));
       localBaseFilter2.setNextFilter(localBaseFilter1, null);
-      localBaseFilter2 = new BaseFilter(GLSLRender.FILTER_FLOWBASEDBL);
-      localBaseFilter2.addParam(new Param.FloatParam("inv_2sigma2", 127.00195F));
-      localBaseFilter2.addParam(new Param.FloatParam("inv_sigma_root_2pi", 0.0008F));
+      localBaseFilter2 = new BaseFilter(BaseFilter.getFragmentShader(73));
+      localBaseFilter2.addParam(new UniformParam.FloatParam("inv_2sigma2", 127.00195F));
+      localBaseFilter2.addParam(new UniformParam.FloatParam("inv_sigma_root_2pi", 0.0008F));
       localBaseFilter1.setNextFilter(localBaseFilter2, new int[] { 2 });
-      localBaseFilter1 = new BaseFilter(GLSLRender.FILTER_FLOWBASEDDOGFOREDGE);
-      localBaseFilter1.addParam(new Param.FloatParam("par", 0.15F));
+      localBaseFilter1 = new BaseFilter(BaseFilter.getFragmentShader(76));
+      localBaseFilter1.addParam(new UniformParam.FloatParam("par", 0.15F));
       localBaseFilter2.setNextFilter(localBaseFilter1, new int[] { 4 });
-      localBaseFilter2 = new BaseFilter(GLSLRender.FILTER_FLOWBASEDDOG);
-      localBaseFilter2.addParam(new Param.FloatParam("par", 0.35F));
-      localBaseFilter2.addParam(new Param.FloatParam("par_b", 0.2F));
+      localBaseFilter2 = new BaseFilter(BaseFilter.getFragmentShader(75));
+      localBaseFilter2.addParam(new UniformParam.FloatParam("par", 0.35F));
+      localBaseFilter2.addParam(new UniformParam.FloatParam("par_b", 0.2F));
       localBaseFilter1.setNextFilter(localBaseFilter2, new int[] { 4, 5 });
-      localBaseFilter1 = new BaseFilter(GLSLRender.FILTER_FLOWBASEDBLUR);
-      localBaseFilter1.addParam(new Param.FloatParam("inv_2sigma", 12.0F));
+      localBaseFilter1 = new BaseFilter(BaseFilter.getFragmentShader(74));
+      localBaseFilter1.addParam(new UniformParam.FloatParam("inv_2sigma", 12.0F));
       localBaseFilter2.setNextFilter(localBaseFilter1, new int[] { 4 });
       if (this.type == 1)
       {
-        localBaseFilter2 = new BaseFilter(GLSLRender.FILTER_BILATERALFILTER_NEW);
-        localBaseFilter2.addParam(new Param.FloatParam("inv_2sigma2", 144.5F));
-        localBaseFilter2.addParam(new Param.FloatParam("inv_sigma_root_2pi", 0.02F));
+        localBaseFilter2 = new BaseFilter(BaseFilter.getFragmentShader(71));
+        localBaseFilter2.addParam(new UniformParam.FloatParam("inv_2sigma2", 144.5F));
+        localBaseFilter2.addParam(new UniformParam.FloatParam("inv_sigma_root_2pi", 0.02F));
         localBaseFilter1.setNextFilter(localBaseFilter2, new int[] { 5, 4 });
-        localBaseFilter1 = new BaseFilter(GLSLRender.FILTER_BILATERALFILTER2_NEW);
-        localBaseFilter1.addParam(new Param.FloatParam("inv_2sigma2", 144.5F));
-        localBaseFilter1.addParam(new Param.FloatParam("inv_sigma_root_2pi", 0.02F));
+        localBaseFilter1 = new BaseFilter(BaseFilter.getFragmentShader(70));
+        localBaseFilter1.addParam(new UniformParam.FloatParam("inv_2sigma2", 144.5F));
+        localBaseFilter1.addParam(new UniformParam.FloatParam("inv_sigma_root_2pi", 0.02F));
         localBaseFilter2.setNextFilter(localBaseFilter1, new int[] { 4 });
-        localBaseFilter1.setNextFilter(new BaseFilter(GLSLRender.FILTER_MIXEDGEFILTEREDIT), new int[] { 8 });
+        localBaseFilter1.setNextFilter(new BaseFilter(BaseFilter.getFragmentShader(80)), new int[] { 8 });
       }
       else if (this.type == 2)
       {
-        localBaseFilter2 = new BaseFilter(GLSLRender.FILTER_BILATERALFILTER_NEW);
-        localBaseFilter2.addParam(new Param.FloatParam("inv_2sigma2", 144.5F));
-        localBaseFilter2.addParam(new Param.FloatParam("inv_sigma_root_2pi", 0.02F));
+        localBaseFilter2 = new BaseFilter(BaseFilter.getFragmentShader(71));
+        localBaseFilter2.addParam(new UniformParam.FloatParam("inv_2sigma2", 144.5F));
+        localBaseFilter2.addParam(new UniformParam.FloatParam("inv_sigma_root_2pi", 0.02F));
         localBaseFilter1.setNextFilter(localBaseFilter2, new int[] { 5, 4 });
-        localBaseFilter1 = new BaseFilter(GLSLRender.FILTER_BILATERALFILTER2_NEW);
-        localBaseFilter1.addParam(new Param.FloatParam("inv_2sigma2", 144.5F));
-        localBaseFilter1.addParam(new Param.FloatParam("inv_sigma_root_2pi", 0.02F));
+        localBaseFilter1 = new BaseFilter(BaseFilter.getFragmentShader(70));
+        localBaseFilter1.addParam(new UniformParam.FloatParam("inv_2sigma2", 144.5F));
+        localBaseFilter1.addParam(new UniformParam.FloatParam("inv_sigma_root_2pi", 0.02F));
         localBaseFilter2.setNextFilter(localBaseFilter1, new int[] { 4 });
-        localBaseFilter1.setNextFilter(new BaseFilter(GLSLRender.FILTER_MIXEDGENOSTAGE), new int[] { 8 });
+        localBaseFilter1.setNextFilter(new BaseFilter(BaseFilter.getFragmentShader(81)), new int[] { 8 });
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.filter.art.CartoonFilter
  * JD-Core Version:    0.7.0.1
  */

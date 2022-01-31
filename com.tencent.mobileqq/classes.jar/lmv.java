@@ -1,69 +1,72 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnArticleWrapperClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnBiuClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnCommentClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnJumpWrapperClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnLikeClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnTopicRecommendHeaderClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnTopicRecommendHeaderFollowClickListener;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.common.StringCommon;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
-import com.tencent.mobileqq.util.FaceDecoder;
+import android.content.Intent;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
-public final class lmv
-  implements ViewFactory.FoundClickableViewListener
+public class lmv
+  extends ajjh
 {
-  public lmv(VafContext paramVafContext, FaceDecoder paramFaceDecoder, ReadInJoyBaseAdapter paramReadInJoyBaseAdapter, IReadInJoyModel paramIReadInJoyModel, Container paramContainer, BaseArticleInfo paramBaseArticleInfo) {}
+  public lmv(QQServiceForAV paramQQServiceForAV) {}
   
-  public void a(ViewBase paramViewBase)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if (paramViewBase.a() == null) {
-      return;
+    Intent localIntent = new Intent("com.tencent.qqhead.getheadresp2");
+    localIntent.putExtra("uin", paramString);
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
+    if (this.a.b.contains(paramString)) {
+      localQQAppInterface.getApp().sendBroadcast(localIntent);
     }
-    switch (StringCommon.a(paramViewBase.a()))
+    this.a.b.remove(paramString);
+    if (this.a.b()) {
+      localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Ajjh);
+    }
+  }
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel())
     {
-    case 1009: 
-    default: 
-      paramViewBase.a(new lmy(this, paramViewBase));
-      return;
-    case 1001: 
-      paramViewBase.a(new lmw(this, paramViewBase));
-      return;
-    case 1002: 
-      paramViewBase.a(new OnLikeClickListener((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a()));
-      return;
-    case 1003: 
-      paramViewBase.a(new OnCommentClickListener((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a()));
-      return;
-    case 1004: 
-      paramViewBase.a(new OnBiuClickListener((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a()));
-      return;
-    case 1005: 
-      paramViewBase.a(new OnTopicRecommendHeaderClickListener((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a()));
-      return;
-    case 1006: 
-      paramViewBase.a(new OnTopicRecommendHeaderFollowClickListener((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a()));
-      return;
-    case 1007: 
-      paramViewBase.a().setOnClickListener(new lmx(this));
-      return;
-    case 1008: 
-      paramViewBase.a(new OnArticleWrapperClickListener((ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter));
+      QLog.d("QQServiceForAV", 2, "onUpdateFriendInfo uin = " + paramString);
+      QLog.d("QQServiceForAV", 2, "onUpdateFriendInfo isSuccess = " + paramBoolean);
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
+    Intent localIntent;
+    if ((paramBoolean) && (paramString != null))
+    {
+      localIntent = new Intent();
+      localIntent.setAction("tencent.video.q2v.ACTION_ON_UPDATE_FRIEND_INFO");
+      localIntent.putExtra("uin", paramString);
+      localObject = (ajjj)QQServiceForAV.m(this.a).getManager(51);
+      if (localObject == null) {
+        break label205;
+      }
+      localObject = ((ajjj)localObject).e(paramString);
+      if (localObject == null) {
+        break label205;
+      }
+    }
+    label205:
+    for (Object localObject = babh.a((Friends)localObject);; localObject = paramString)
+    {
+      localIntent.putExtra("nick", (String)localObject);
+      localIntent.setPackage(localQQAppInterface.getApplication().getPackageName());
+      localQQAppInterface.getApp().sendBroadcast(localIntent);
+      this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramString);
+      if (this.a.b()) {
+        localQQAppInterface.removeObserver(this.a.jdField_a_of_type_Ajjh);
+      }
       return;
     }
-    paramViewBase.a(new OnJumpWrapperClickListener(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a(), (ArticleInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lmv
  * JD-Core Version:    0.7.0.1
  */

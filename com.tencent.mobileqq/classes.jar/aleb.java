@@ -1,16 +1,16 @@
 class aleb
-  implements Runnable
+  extends aldz
 {
-  aleb(alea paramalea) {}
+  public String d;
   
-  public void run()
+  private aleb()
   {
-    this.a.cancel();
+    super(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aleb
  * JD-Core Version:    0.7.0.1
  */

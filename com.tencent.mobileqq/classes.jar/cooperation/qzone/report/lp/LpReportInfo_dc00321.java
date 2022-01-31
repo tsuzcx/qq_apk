@@ -1,10 +1,10 @@
 package cooperation.qzone.report.lp;
 
 import android.text.TextUtils;
+import bfpk;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.component.network.module.common.NetworkState;
 import cooperation.qzone.LbsDataV2.GpsInfo;
-import cooperation.qzone.QUA;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -39,7 +39,7 @@ public class LpReportInfo_dc00321
   public String h265_url;
   public int height;
   public String imei;
-  public Map infos;
+  public Map<String, String> infos;
   public int is_auto_play;
   public int is_original;
   public long is_video_seek;
@@ -100,7 +100,7 @@ public class LpReportInfo_dc00321
     }
   }
   
-  public LpReportInfo_dc00321(int paramInt1, int paramInt2, int paramInt3, Map paramMap, LbsDataV2.GpsInfo paramGpsInfo)
+  public LpReportInfo_dc00321(int paramInt1, int paramInt2, int paramInt3, Map<String, String> paramMap, LbsDataV2.GpsInfo paramGpsInfo)
   {
     this.actiontype = paramInt1;
     this.subactiontype = paramInt2;
@@ -153,7 +153,7 @@ public class LpReportInfo_dc00321
     LpReportManager.getInstance().reportToDC00321(paramGpsInfo, false, true);
   }
   
-  public static void report(int paramInt1, int paramInt2, int paramInt3, Map paramMap, LbsDataV2.GpsInfo paramGpsInfo)
+  public static void report(int paramInt1, int paramInt2, int paramInt3, Map<String, String> paramMap, LbsDataV2.GpsInfo paramGpsInfo)
   {
     paramMap = new LpReportInfo_dc00321(paramInt1, paramInt2, paramInt3, paramMap, paramGpsInfo);
     LpReportManager.getInstance().reportToDC00321(paramMap, false, true);
@@ -178,7 +178,7 @@ public class LpReportInfo_dc00321
     return "dc00321:" + this.actiontype + "," + this.subactiontype + "," + this.reserves;
   }
   
-  public Map toMap()
+  public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
     Object localObject1;
@@ -216,7 +216,7 @@ public class LpReportInfo_dc00321
         {
           i = Integer.parseInt((String)localHashMap.get("network_type"));
           localHashMap.put("network_type", String.valueOf(convertNetworkTypeToFitInDc00321(i)));
-          localHashMap.put("qua", QUA.a());
+          localHashMap.put("qua", bfpk.a());
           localHashMap.put("device", "2");
           localHashMap.put("p_x", this.longitude);
           localHashMap.put("p_y", this.latitude);

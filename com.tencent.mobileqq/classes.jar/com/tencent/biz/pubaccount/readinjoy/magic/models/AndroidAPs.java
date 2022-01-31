@@ -6,31 +6,30 @@ import android.os.Parcelable.Creator;
 import java.io.File;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import lro;
+import ooa;
+import oob;
 
 public class AndroidAPs
   extends AndroidPs
 {
-  public static final Parcelable.Creator CREATOR = new lro();
-  private static final Pattern a;
-  private static final boolean b = new File("/dev/cpuctl/tasks").exists();
+  public static final Parcelable.Creator<AndroidAPs> CREATOR = new oob();
+  private static Boolean jdField_a_of_type_JavaLangBoolean;
+  private static final Pattern jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("^([A-Za-z]{1}[A-Za-z0-9_]*[\\.|:])*[A-Za-z][A-Za-z0-9_]*$");
   public final int a;
   public final boolean a;
-  
-  static
-  {
-    jdField_a_of_type_JavaUtilRegexPattern = Pattern.compile("^([A-Za-z]{1}[A-Za-z0-9_]*[\\.|:])*[A-Za-z][A-Za-z0-9_]*$");
-  }
   
   public AndroidAPs(int paramInt)
   {
     super(paramInt);
     if ((this.jdField_a_of_type_JavaLangString == null) || (!jdField_a_of_type_JavaUtilRegexPattern.matcher(this.jdField_a_of_type_JavaLangString).matches()) || (!new File("/data/data", a()).exists())) {
-      throw new AndroidAPs.NotAndroidAppProcessException(paramInt);
+      throw new AndroidAPs.NotAAPsException(paramInt);
+    }
+    if (jdField_a_of_type_JavaLangBoolean == null) {
+      jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(new File(ooa.b()).exists());
     }
     Object localObject;
     CG localCG;
-    if (b)
+    if (jdField_a_of_type_JavaLangBoolean.booleanValue())
     {
       localObject = a();
       localCG = ((CgF)localObject).getGroup("cpuacct");
@@ -38,7 +37,7 @@ public class AndroidAPs
       if (Build.VERSION.SDK_INT >= 21)
       {
         if ((localObject == null) || (localCG == null) || (!localCG.b.contains("pid_"))) {
-          throw new AndroidAPs.NotAndroidAppProcessException(paramInt);
+          throw new AndroidAPs.NotAAPsException(paramInt);
         }
         if (((CG)localObject).b.contains("bg_non_interactive")) {}
       }
@@ -60,7 +59,7 @@ public class AndroidAPs
         continue;
       }
       if ((localObject == null) || (localException1 == null) || (!((CG)localObject).b.contains("apps"))) {
-        throw new AndroidAPs.NotAndroidAppProcessException(paramInt);
+        throw new AndroidAPs.NotAAPsException(paramInt);
       }
       if (!((CG)localObject).b.contains("bg_non_interactive")) {}
       for (bool1 = bool3;; bool1 = false) {

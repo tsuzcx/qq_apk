@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 import com.tencent.qphone.base.util.QLog;
 
 public class SpecialCareInfo
-  extends Entity
+  extends atmo
   implements Cloneable
 {
   public long dateTime;
@@ -14,7 +14,7 @@ public class SpecialCareInfo
   public int groupFriendSwitch;
   public int qzoneSwitch;
   public int specialRingSwitch;
-  @unique
+  @atoc
   public String uin;
   public byte[] zoneInfo;
   

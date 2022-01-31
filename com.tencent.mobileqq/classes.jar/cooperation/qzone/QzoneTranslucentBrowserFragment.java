@@ -1,6 +1,5 @@
 package cooperation.qzone;
 
-import anao;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -9,6 +8,7 @@ import android.util.DisplayMetrics;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import bfrw;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity.QQTranslucentBrowserFragment;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.smtt.sdk.WebView;
@@ -40,8 +40,8 @@ public class QzoneTranslucentBrowserFragment
       localLayoutParams.rightMargin = a(15.0F);
       localLayoutParams.addRule(11);
       paramRelativeLayout.addView(localImageView, localLayoutParams);
-      localImageView.setImageDrawable(getResources().getDrawable(2130845050));
-      localImageView.setOnClickListener(new anao(this));
+      localImageView.setImageDrawable(getResources().getDrawable(2130847414));
+      localImageView.setOnClickListener(new bfrw(this));
     }
   }
   
@@ -51,12 +51,12 @@ public class QzoneTranslucentBrowserFragment
     a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebBrowserViewContainer);
   }
   
-  protected int c(Bundle paramBundle)
+  public int d(Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.d = true;
+    if (this.jdField_a_of_type_Bbcj != null) {
+      this.jdField_a_of_type_Bbcj.d = true;
     }
-    int i = super.c(paramBundle);
+    int i = super.d(paramBundle);
     if (this.jdField_a_of_type_AndroidContentIntent != null)
     {
       int j = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("CONTENT_BACKGROUND_COLOR", 0);

@@ -1,16 +1,40 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
 public class owh
-  implements ValueAnimator.AnimatorUpdateListener
+  implements owa
 {
-  public owh(RotateCircleImageView paramRotateCircleImageView) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    RotateCircleImageView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidate();
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    return otf.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, opw paramopw, int paramInt2)
+  {
+    ArticleInfo localArticleInfo = paramopw.a();
+    if ((localArticleInfo != null) && (localArticleInfo.isAccountShown)) {
+      oxx.a(paramContainer, paramopw);
+    }
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, opw paramopw, ViewBase paramViewBase)
+  {
+    if ((paramViewBase != null) && (!TextUtils.isEmpty(paramViewBase.getClickEvnet())) && (paramViewBase.getClickEvnet().startsWith("search_word_click_")))
+    {
+      paramViewBase.setOnClickListener(new owi(this, paramopw, paramContainer));
+      return true;
+    }
+    return false;
   }
 }
 

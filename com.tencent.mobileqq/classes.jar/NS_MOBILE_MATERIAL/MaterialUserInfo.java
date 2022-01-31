@@ -10,12 +10,12 @@ public final class MaterialUserInfo
 {
   static int cache_iSwitchState = 0;
   static MaterialUserItem cache_stCurrentItem = new MaterialUserItem();
-  static ArrayList cache_vecHistoryItem;
-  static ArrayList cache_vecUserItem = new ArrayList();
+  static ArrayList<MaterialUserItem> cache_vecHistoryItem;
+  static ArrayList<MaterialUserItem> cache_vecUserItem = new ArrayList();
   public int iSwitchState;
   public MaterialUserItem stCurrentItem;
-  public ArrayList vecHistoryItem;
-  public ArrayList vecUserItem;
+  public ArrayList<MaterialUserItem> vecHistoryItem;
+  public ArrayList<MaterialUserItem> vecUserItem;
   
   static
   {
@@ -28,7 +28,7 @@ public final class MaterialUserInfo
   
   public MaterialUserInfo() {}
   
-  public MaterialUserInfo(ArrayList paramArrayList1, ArrayList paramArrayList2, int paramInt, MaterialUserItem paramMaterialUserItem)
+  public MaterialUserInfo(ArrayList<MaterialUserItem> paramArrayList1, ArrayList<MaterialUserItem> paramArrayList2, int paramInt, MaterialUserItem paramMaterialUserItem)
   {
     this.vecUserItem = paramArrayList1;
     this.vecHistoryItem = paramArrayList2;

@@ -1,35 +1,90 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.network.handler.VidToSimpleInfoHandler.GetSimpleInfoListEvent;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesVideoCollectionPresenter;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesVideoCollectionPresenter.VideoCollectionPresenterEventListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class obs
-  extends QQUIEventReceiver
 {
-  public obs(@NonNull MemoriesVideoCollectionPresenter paramMemoriesVideoCollectionPresenter)
+  private static String a(String paramString)
   {
-    super(paramMemoriesVideoCollectionPresenter);
-  }
-  
-  public void a(@NonNull MemoriesVideoCollectionPresenter paramMemoriesVideoCollectionPresenter, @NonNull VidToSimpleInfoHandler.GetSimpleInfoListEvent paramGetSimpleInfoListEvent)
-  {
-    SLog.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "receive video info list. %s.", paramGetSimpleInfoListEvent.toString());
-    if (paramGetSimpleInfoListEvent.errorInfo.isSuccess()) {
-      MemoriesVideoCollectionPresenter.a(paramMemoriesVideoCollectionPresenter).a(paramGetSimpleInfoListEvent.jdField_a_of_type_JavaLangString, paramGetSimpleInfoListEvent.jdField_a_of_type_JavaUtilList);
+    paramString = paramString.getBytes();
+    int j = paramString.length;
+    int i = 0;
+    while (i < j)
+    {
+      paramString[i] = ((byte)(paramString[i] ^ 0xB6));
+      i += 1;
     }
+    return baaw.encodeToString(paramString, 2);
   }
   
-  public Class acceptEventClass()
+  public static void a()
   {
-    return VidToSimpleInfoHandler.GetSimpleInfoListEvent.class;
+    Object localObject1 = obz.a().getApplication().getPackageManager();
+    Object localObject2 = ((PackageManager)localObject1).getInstalledPackages(0);
+    String str = obz.a();
+    if (localObject2 != null)
+    {
+      ArrayList localArrayList = new ArrayList();
+      localObject2 = ((List)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        PackageInfo localPackageInfo = (PackageInfo)((Iterator)localObject2).next();
+        try
+        {
+          if (((PackageManager)localObject1).getLaunchIntentForPackage(localPackageInfo.packageName) != null)
+          {
+            JSONObject localJSONObject = new JSONObject();
+            localJSONObject.put("package_name", localPackageInfo.packageName);
+            localJSONObject.put("version_name", localPackageInfo.versionName);
+            localJSONObject.put("first_install_time", localPackageInfo.firstInstallTime);
+            localJSONObject.put("last_update_time", localPackageInfo.lastUpdateTime);
+            localArrayList.add(localJSONObject);
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          QLog.e("ReadInJoyRUA", 2, "reportUserApps: ", localJSONException);
+        }
+      }
+      int k = localArrayList.size();
+      int m = k / 4;
+      int i = 0;
+      while (i < m + 1)
+      {
+        localObject1 = new JSONArray();
+        int j = 0;
+        while (j < 4)
+        {
+          int n = i * 4 + j;
+          if (n >= k) {
+            break;
+          }
+          ((JSONArray)localObject1).put(localArrayList.get(n));
+          j += 1;
+        }
+        localObject1 = a(((JSONArray)localObject1).toString());
+        localObject2 = new HashMap();
+        ((HashMap)localObject2).put("uin", str);
+        ((HashMap)localObject2).put("data", localObject1);
+        QLog.d("ReadInJoyRUA", 2, "reportUserApps: " + (String)localObject1);
+        awrn.a(obz.a().getApplication()).a(str, "actKandianRUA", true, 1L, 0L, (HashMap)localObject2, null, false);
+        i += 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     obs
  * JD-Core Version:    0.7.0.1
  */

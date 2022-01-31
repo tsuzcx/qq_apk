@@ -11,12 +11,12 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class appoint_define$FeedsCookie
-  extends MessageMicro
+  extends MessageMicro<FeedsCookie>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField rpt_str_list = PBField.initRepeat(PBStringField.__repeatHelper__);
-  public final PBRepeatField rpt_uint64_topics = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<String> rpt_str_list = PBField.initRepeat(PBStringField.__repeatHelper__);
+  public final PBRepeatField<Long> rpt_uint64_topics = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBUInt32Field uint32_pose = PBField.initUInt32(0);
   
   static

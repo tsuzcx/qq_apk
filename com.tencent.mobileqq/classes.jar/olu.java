@@ -1,15 +1,17 @@
-import android.os.Message;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import com.tencent.biz.pubaccount.readinjoy.gifvideo.base.video.VideoView;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
 
 public class olu
-  implements Runnable
+  implements TVK_IMediaPlayer.OnSeekCompleteListener
 {
-  public olu(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer, int paramInt) {}
+  public olu(VideoView paramVideoView) {}
   
-  public void run()
+  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer.a.a(Message.obtain(null, 8, 1, this.jdField_a_of_type_Int));
+    if (VideoView.a(this.a) != null) {
+      VideoView.a(this.a).start();
+    }
   }
 }
 

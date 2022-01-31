@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.config.operation;
 
+import atmo;
+import atoc;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,7 +11,7 @@ import java.util.Date;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="taskid")
 public class QQOperationViopTipTask
-  extends Entity
+  extends atmo
 {
   public String adwords;
   public String begin;
@@ -25,7 +25,7 @@ public class QQOperationViopTipTask
   public int limitTotalAIOCount;
   public int limitTotalShowCount;
   public int linkOffset;
-  @unique
+  @atoc
   public int taskid;
   public int tipType;
   public int uinType;
@@ -61,7 +61,7 @@ public class QQOperationViopTipTask
     return null;
   }
   
-  public ArrayList getKeywordList()
+  public ArrayList<String> getKeywordList()
   {
     ArrayList localArrayList = new ArrayList();
     if ((this.keywordString != null) && (this.keywordString.length() > 0))

@@ -1,30 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.addfriendverifi.data.AddFriendBlockedInfo;
+import com.tencent.mobileqq.app.addfriendverifi.ui.NewFriendVerifyBlockedListFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-public final class ajvx
-  implements DialogInterface.OnClickListener
+public class ajvx
+  extends ajvu
 {
-  public ajvx(long paramLong) {}
+  public ajvx(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean, List<AddFriendBlockedInfo> paramList, String paramString)
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.i("BlockedListFragment", 2, "onGetAddFriendBlockedList, success=" + paramBoolean);
     }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
+    if ((!paramBoolean) || (NewFriendVerifyBlockedListFragment.a(this.a) == null) || (NewFriendVerifyBlockedListFragment.a(this.a).isFinishing()) || (NewFriendVerifyBlockedListFragment.a(this.a) == null) || (NewFriendVerifyBlockedListFragment.a(this.a) == null)) {
       return;
-      TroopFileTransferManager.i();
-      continue;
-      TroopFileTransferManager.a(this.a);
+    }
+    this.a.a.removeMessages(1);
+    this.a.a.sendEmptyMessage(1);
+  }
+  
+  protected void b(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean)
+    {
+      this.a.a.removeMessages(1);
+      this.a.a.sendEmptyMessage(1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajvx
  * JD-Core Version:    0.7.0.1
  */

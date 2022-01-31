@@ -1,16 +1,67 @@
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.service.message.MessagePBElemDecoder;
-import cooperation.dingdong.data.OfficeCenterSharedPref;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-public class aice
-  implements Runnable
+class aice
+  implements View.OnClickListener
 {
-  public aice(MessagePBElemDecoder paramMessagePBElemDecoder) {}
+  aice(aicc paramaicc) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (!OfficeCenterSharedPref.a().a(MessagePBElemDecoder.a(this.a).getCurrentAccountUin() + "officecenter_receive_schedule_message", false)) {
-      OfficeCenterSharedPref.a().b(MessagePBElemDecoder.a(this.a).getCurrentAccountUin() + "officecenter_receive_schedule_message", true);
+    if (!aicc.a(this.a)) {
+      babr.a(aicc.a(this.a), 230, "", ajjy.a(2131647690), new aicf(this), null).show();
+    }
+    do
+    {
+      return;
+      localObject = paramView.getTag();
+    } while ((localObject == null) || (!(localObject instanceof String)));
+    if ((paramView instanceof Button))
+    {
+      paramView = (Button)paramView;
+      if (paramView != null) {
+        paramView.setEnabled(false);
+      }
+    }
+    Object localObject = (String)localObject;
+    for (;;)
+    {
+      try
+      {
+        l1 = Long.parseLong(aicc.a(this.a));
+      }
+      catch (Exception paramView)
+      {
+        try
+        {
+          l2 = Long.parseLong((String)localObject);
+          aicc.a(this.a).add(localObject);
+          ((ajtg)aicc.a(this.a).a(20)).c(l1, l2);
+          if (aicc.a(this.a) == null) {
+            break;
+          }
+          awqx.b(aicc.a(this.a).app, "dc00898", "", "", "", "0X8009FA0", 0, 0, (String)localObject, "", "", "");
+          return;
+        }
+        catch (Exception paramView)
+        {
+          long l1;
+          long l2;
+          break label189;
+        }
+        paramView = paramView;
+        l1 = 0L;
+      }
+      label189:
+      if (QLog.isColorLevel()) {
+        QLog.d("RobotAdapter", 2, "parseLong err", paramView);
+      }
+      l2 = 0L;
     }
   }
 }

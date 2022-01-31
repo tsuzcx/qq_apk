@@ -2,7 +2,7 @@ package dualsim.common;
 
 public abstract interface InitCallback
 {
-  public abstract void onInitFinished();
+  public abstract void onInitFinished(boolean paramBoolean);
 }
 
 

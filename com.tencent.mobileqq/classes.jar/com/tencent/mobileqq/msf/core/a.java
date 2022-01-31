@@ -4,7 +4,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.c.k;
 import com.tencent.mobileqq.msf.service.MsfService;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.CodecWarpper;
@@ -38,15 +38,15 @@ public class a
   private static final int n = 11;
   private static final int o = 12;
   private static final int p = 13;
-  private static int q;
-  private static int r;
-  private static int s;
-  private static int t;
-  private static int u;
-  private static int v;
-  private static int w;
-  private static int x;
-  private static int y;
+  private static int q = 0;
+  private static int r = 0;
+  private static int s = 0;
+  private static int t = 0;
+  private static int u = 0;
+  private static int v = 0;
+  private static int w = 0;
+  private static int x = 0;
+  private static int y = 0;
   private static long z;
   
   private static int a(int paramInt, String[] paramArrayOfString)

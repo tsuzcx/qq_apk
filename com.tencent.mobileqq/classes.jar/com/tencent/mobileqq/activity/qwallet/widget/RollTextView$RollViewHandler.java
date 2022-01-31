@@ -8,7 +8,7 @@ import java.lang.ref.WeakReference;
 class RollTextView$RollViewHandler
   extends Handler
 {
-  WeakReference mRootView;
+  WeakReference<RollTextView> mRootView;
   
   RollTextView$RollViewHandler(RollTextView paramRollTextView)
   {
@@ -39,7 +39,7 @@ class RollTextView$RollViewHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.widget.RollTextView.RollViewHandler
  * JD-Core Version:    0.7.0.1
  */

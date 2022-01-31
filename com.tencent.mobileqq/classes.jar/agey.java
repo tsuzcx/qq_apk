@@ -1,38 +1,28 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ocr.OCRHandler;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.qphone.base.util.QLog;
-
-public class agey
-  implements INetEngine.INetEngineListener
+public abstract interface agey
 {
-  private Intent jdField_a_of_type_AndroidContentIntent;
-  private String jdField_a_of_type_JavaLangString;
-  private byte[] jdField_a_of_type_ArrayOfByte;
+  public abstract void a(agfe paramagfe);
   
-  public agey(OCRHandler paramOCRHandler, Intent paramIntent, byte[] paramArrayOfByte, String paramString)
-  {
-    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
+  public abstract void a(agfe paramagfe, int paramInt);
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
+  public abstract void a(agfe paramagfe, int paramInt1, int paramInt2, String paramString);
   
-  public void a(NetResp paramNetResp)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.ocr.OCRHandler", 2, "BaseOCRReqBigListener.onResp()");
-    }
-    ThreadManager.post(new agez(this, paramNetResp), 8, null, true);
-  }
+  public abstract void a(agfe paramagfe, long paramLong);
+  
+  public abstract void a(agfe paramagfe, boolean paramBoolean);
+  
+  public abstract void b(agfe paramagfe);
+  
+  public abstract void b(agfe paramagfe, int paramInt);
+  
+  public abstract void c(agfe paramagfe);
+  
+  public abstract void d(agfe paramagfe);
+  
+  public abstract void v();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agey
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,22 @@
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
 
 public class abwb
-  implements View.OnTouchListener
+  extends axvs
 {
-  public abwb(ClearEllipsisEditText paramClearEllipsisEditText) {}
+  public abwb(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.getCompoundDrawables()[2] == null) {}
-    for (;;)
-    {
-      return false;
-      if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - ClearEllipsisEditText.a(this.a).getIntrinsicWidth()) {}
-      for (int i = 1; (paramMotionEvent.getAction() == 0) && (i != 0); i = 0)
-      {
-        this.a.setText("");
-        this.a.setClearButtonVisible(false);
-        return true;
-      }
+    int i = paramMessage.what;
+    if ((i == 1003) || (i == 2003)) {
+      this.a.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abwb
  * JD-Core Version:    0.7.0.1
  */

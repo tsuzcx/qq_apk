@@ -1,18 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
-public final class mtj
-  implements Parcelable.Creator
+class mtj
+  implements View.OnClickListener
 {
-  public FastWebVideoInfo a(Parcel paramParcel)
-  {
-    return new FastWebVideoInfo(paramParcel);
-  }
+  mtj(mtc parammtc, mto parammto) {}
   
-  public FastWebVideoInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new FastWebVideoInfo[paramInt];
+    this.jdField_a_of_type_Mto.jdField_a_of_type_AndroidWidgetTextView.setText(2131629903);
+    this.jdField_a_of_type_Mto.b.setVisibility(4);
+    this.jdField_a_of_type_Mto.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    mug.a(this.jdField_a_of_type_Mtc.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.jdField_a_of_type_Mtc.jdField_a_of_type_JavaLangString), ((AccountDetailActivity)this.jdField_a_of_type_Mtc.jdField_a_of_type_AndroidAppActivity).a());
   }
 }
 

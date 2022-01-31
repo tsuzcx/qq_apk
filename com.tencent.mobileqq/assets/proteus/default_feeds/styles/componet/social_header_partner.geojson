@@ -1,0 +1,170 @@
+{
+    "view_type": "UIView",
+    "view_id": "id_social_partner_header_wrapper",
+    "margin_bottom": "-7.5",
+    "event_type": "cmd_url_click_partner_header_report",
+    "layout_type": "layout_relative",
+    "visible_depend_on_children": "YES",
+    "height": {
+        "type": "absolutely",
+        "value": "64"
+    },
+    "width": {
+        "type": "relative",
+        "value": "375"
+    },
+    "attributes": {
+        "setAttatchInfo:": "$partner_jump_url"
+    },
+    "data_attributes": {
+        "setLocalInfo:": {
+            "click_area": "6"
+        }
+    },
+    "subviews": [{
+        "view_type": "ReadInJoyAvatarView",
+        "view_id": "id_partner_info_avator",
+        "align_parent_left": "YES",
+        "align_parent_center_vertical": "YES",
+        "event_type": "cmd_url_click_partner_header_report",
+        "margin_left": "9",
+        "height": {
+            "type": "absolutely",
+            "value": "43"
+        },
+        "width": {
+            "type": "absolutely",
+            "value": "43"
+        },
+        "attributes": {
+            "loadAvatarByUin:": "$info_avator_uin",
+            "setArticleModel:": "-1",
+            "setAttatchInfo:": "$partner_head_jump_url"
+        },
+        "data_attributes": {
+            "setLocalInfo:": {
+                "click_area": "10"
+            },
+            "setRemoteInfo:": {
+                "jump_src": "$jump_src_img",
+                "jump_page": "$jump_page_img"
+            }
+        }
+    },
+    {
+        "view_type": "UIView",
+        "layout_type": "layout_relative",
+        "view_id": "id_partner_header_container",
+        "align_parent_center_vertical": "YES",
+        "right_of_view": "id_partner_info_avator",
+        "event_type": "cmd_url_click_partner_header_report",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "wrap_content"
+        },
+        "attributes": {
+                    "setAttatchInfo:": "$partner_head_jump_url"
+                },
+        "data_attributes": {
+             "setLocalInfo:": {
+              "click_area": "10"
+              },
+              "setRemoteInfo:": {
+               "jump_src": "$jump_src_img",
+               "jump_page": "$jump_page_img"
+             }
+                },
+        "subviews": [{
+            "view_type": "UILabel",
+            "view_id": "id_nickname",
+            "margin_left": "4",
+            "height": {
+                "type": "wrap_content"
+            },
+            "width": {
+                "type": "wrap_content"
+            },
+            "attributes": {
+                "setText:": "$partner_nickname_text",
+                "setTextColorString:": "#D9000000",
+                "setBoldFontSizeString:": "16",
+                "setNumberOfLinesString:": "1"
+            }
+        },
+        {
+            "view_type": "UILabel",
+            "view_id": "id_partner_info",
+            "right_of_view": "id_partner_info_avator",
+            "below_of_view": "id_nickname",
+            "margin_top": "2",
+            "margin_left": "4",
+            "height": {
+                "type": "wrap_content"
+            },
+            "width": {
+                "type": "wrap_content"
+            },
+            "attributes": {
+                "setText:": "$partner_info_text",
+                "setTextColorString:": "#8C000000",
+                "setFontSizeString:": "12",
+                "setNumberOfLinesString:": "1"
+            }
+        }
+        
+        ]
+    },
+    {
+        "view_type": "UIButton",
+        "view_id": "id_social_header_follow_button",
+        "align_parent_center_vertical": "YES",
+        "margin_top": "20.5",
+        "margin_right": "12",
+        "align_parent_right": "YES",
+        "height": {
+            "type": "absolutely",
+            "value": "23"
+        },
+        "width": {
+            "type": "absolutely",
+            "value": "50"
+        },
+        "event_type": "cmd_social_header_follow_click",
+        "attributes": {
+            "setSelectedString:": "-1",
+            "setTitle:": "-1",
+            "setImages:colors:direction:forStates:": [
+                [
+                    "",
+                    ""
+                ],
+                [
+                    "#FFFFFF",
+                    "#8C000000"
+                ],
+                [
+                    "0",
+                    "0"
+                ],
+                [
+                    "0",
+                    "4"
+                ]
+            ],
+            "setFontSizeString:": "11",
+            "setBackgroundImages:forStates:": [
+                [
+                    "Base_Blue",
+                    "Base_Grey"
+                ],
+                [
+                    "0",
+                    "4"
+                ]
+            ]
+        }
+    }
+    ]
+}

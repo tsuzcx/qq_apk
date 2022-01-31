@@ -1,28 +1,19 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
+import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ahnx
-  implements Runnable
 {
-  public ahnx(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public AtomicBoolean a;
+  public boolean a;
   
-  public void run()
+  private ahnx(CameraFilterGLView paramCameraFilterGLView)
   {
-    EffectsCameraCaptureFragment.h(this.a, false);
-    if (EffectsCameraCaptureFragment.a(this.a) == null) {
-      return;
-    }
-    EffectsCameraCaptureFragment.a(this.a).removeView(EffectsCameraCaptureFragment.a(this.a));
-    EffectsCameraCaptureFragment.a(this.a).setVisibility(0);
-    EffectsCameraCaptureFragment.a(this.a).setEnabled(true);
-    this.a.a.a(null);
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahnx
  * JD-Core Version:    0.7.0.1
  */

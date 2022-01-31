@@ -1,27 +1,23 @@
-import com.tencent.mobileqq.app.automator.step.CleanCache;
-import java.io.File;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.AddFriendActivity;
 
 public class zww
-  implements Comparator
+  implements aeur
 {
-  public zww(CleanCache paramCleanCache) {}
+  public zww(AddFriendActivity paramAddFriendActivity) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString)
   {
-    long l = paramFile1.lastModified() - paramFile2.lastModified();
-    if (l > 0L) {
-      return -1;
+    if (AddFriendActivity.a(this.a))
+    {
+      AddFriendActivity.a(this.a, paramInt1, paramBoolean, paramObject, paramInt2, paramString);
+      return;
     }
-    if (l < 0L) {
-      return 1;
-    }
-    return 0;
+    AddFriendActivity.b(this.a, paramInt1, paramBoolean, paramObject, paramInt2, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zww
  * JD-Core Version:    0.7.0.1
  */

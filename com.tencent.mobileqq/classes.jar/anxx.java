@@ -1,33 +1,33 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
-public final class anxx
-  implements ValueAnimator.AnimatorUpdateListener
+public class anxx
+  implements View.OnClickListener
 {
-  public float a;
-  final View a;
+  public anxx(LocalFileBrowserActivity paramLocalFileBrowserActivity) {}
   
-  public anxx(View paramView)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_Float = f;
-    this.jdField_a_of_type_AndroidViewView.invalidate();
-    if (QLog.isColorLevel()) {
-      QLog.d("PressScaleAnimDelegate ", 2, "do scale animtion, scale=" + f);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetSlideDetectListView.a();
     }
+    paramView = (Button)paramView.findViewById(2131299406);
+    if (paramView.getTag() != null)
+    {
+      this.a.e = ((Integer)paramView.getTag()).intValue();
+      if (this.a.jdField_a_of_type_Aonw != null) {
+        this.a.jdField_a_of_type_Aonw.a(null);
+      }
+    }
+    this.a.m();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anxx
  * JD-Core Version:    0.7.0.1
  */

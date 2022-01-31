@@ -1,16 +1,17 @@
 package com.tencent.biz.webviewplugin;
 
 import android.app.Activity;
+import bayt;
+import bayu;
+import bbac;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.JsWebViewPlugin;
-import com.tencent.mobileqq.webview.swift.MultiNameSpacePluginCompact;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.open.adapter.OpenAppClient;
 import com.tencent.open.appcommon.js.BaseInterface;
 import com.tencent.open.appcommon.js.BaseJsCallBack;
 import com.tencent.open.appcommon.js.DownloadInterface;
 import com.tencent.open.appcommon.js.HttpInterface;
 import com.tencent.open.appcommon.now.download.js.DownloadWebInterface;
+import com.tencent.open.appstore.js.DINewForCommonWebView;
 import com.tencent.open.export.js.VipDownloadInterface;
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -20,10 +21,10 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class OpenCenterPlugin
-  extends JsWebViewPlugin
-  implements MultiNameSpacePluginCompact
+  extends bayt
+  implements bayu
 {
-  private Map a;
+  private Map<String, BaseInterface> a;
   
   private void a()
   {
@@ -34,16 +35,18 @@ public class OpenCenterPlugin
     HttpInterface localHttpInterface = new HttpInterface((Activity)localObject, this.mRuntime.a());
     com.tencent.open.appcommon.js.AppInterface localAppInterface = new com.tencent.open.appcommon.js.AppInterface((Activity)localObject, this.mRuntime.a());
     DownloadInterface localDownloadInterface = new DownloadInterface((Activity)localObject, this.mRuntime.a());
+    DINewForCommonWebView localDINewForCommonWebView = new DINewForCommonWebView((Activity)localObject, this.mRuntime.a());
     localObject = new DownloadWebInterface((Activity)localObject, this.mRuntime.a());
     this.a.put(localBaseJsCallBack.getInterfaceName(), localBaseJsCallBack);
     this.a.put(localVipDownloadInterface.getInterfaceName(), localVipDownloadInterface);
     this.a.put(localHttpInterface.getInterfaceName(), localHttpInterface);
     this.a.put(localAppInterface.getInterfaceName(), localAppInterface);
     this.a.put(localDownloadInterface.getInterfaceName(), localDownloadInterface);
+    this.a.put(localDINewForCommonWebView.getInterfaceName(), localDINewForCommonWebView);
     this.a.put(((BaseInterface)localObject).getInterfaceName(), localObject);
   }
   
-  protected Method getJsMethod(String paramString1, String paramString2, int paramInt)
+  public Method getJsMethod(String paramString1, String paramString2, int paramInt)
   {
     paramString1 = (BaseInterface)this.a.get(paramString1);
     if (paramString1 != null)
@@ -65,15 +68,15 @@ public class OpenCenterPlugin
   
   public String[] getMultiNameSpace()
   {
-    return new String[] { "opencenter", "qqZoneAppList", "q_download", "qzone_http", "qzone_app", "q_download", "q_download_now" };
+    return new String[] { "opencenter", "qqZoneAppList", "q_download_vip", "qzone_http", "qzone_app", "q_download", "q_download_now", "q_download_v2" };
   }
   
-  protected String getNameSpace()
+  public String getNameSpace()
   {
     return "opencenter";
   }
   
-  protected boolean handleEvent(String paramString, long paramLong, Map paramMap)
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
     if (paramLong == 8589934593L) {
       OpenAppClient.a(this.mRuntime.a());
@@ -81,7 +84,7 @@ public class OpenCenterPlugin
     return false;
   }
   
-  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     Method[] arrayOfMethod = null;
     paramString1 = null;
@@ -142,9 +145,9 @@ public class OpenCenterPlugin
   
   public void onAppRuntimeReady(com.tencent.common.app.AppInterface paramAppInterface) {}
   
-  protected void onCreate() {}
+  public void onCreate() {}
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     if (this.a == null) {}
     for (;;)
@@ -163,7 +166,7 @@ public class OpenCenterPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.OpenCenterPlugin
  * JD-Core Version:    0.7.0.1
  */

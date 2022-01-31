@@ -1,25 +1,41 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
 
 public class mxm
-  implements Animation.AnimationListener
+  implements ViewPager.OnPageChangeListener
 {
-  public mxm(SubscriptRecommendController paramSubscriptRecommendController) {}
+  public mxm(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onPageScrollStateChanged(int paramInt)
   {
-    this.a.a(SubscriptRecommendController.a(this.a));
-    this.a.c();
+    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
+    if (paramInt != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
+      return;
+    }
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  {
+    PublicAccountAdvertisementActivity localPublicAccountAdvertisementActivity = this.a;
+    if (paramInt2 != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      PublicAccountAdvertisementActivity.a(localPublicAccountAdvertisementActivity, bool);
+      return;
+    }
+  }
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onPageSelected(int paramInt)
+  {
+    PublicAccountAdvertisementActivity.a(this.a, paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     mxm
  * JD-Core Version:    0.7.0.1
  */

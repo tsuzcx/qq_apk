@@ -1,29 +1,83 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import android.content.Context;
+import android.view.MotionEvent;
+import com.tencent.qphone.base.util.QLog;
 
-public class lfy
-  implements Runnable
+public abstract class lfy
 {
-  public lfy(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity, int paramInt) {}
+  protected float a;
+  protected long a;
+  protected final Context a;
+  protected MotionEvent a;
+  protected boolean a;
+  protected float b;
+  protected MotionEvent b;
   
-  public void run()
+  public lfy(Context paramContext)
   {
-    if (this.jdField_a_of_type_Int <= 0)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a.setText(2131433311);
-      return;
-    }
-    if (this.jdField_a_of_type_Int > 99)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a.setText(String.format("%s(%d+)", new Object[] { this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.getString(2131433311), Integer.valueOf(99) }));
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a.setText(String.format("%s(%d)", new Object[] { this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.getString(2131433311), Integer.valueOf(this.jdField_a_of_type_Int) }));
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_AndroidViewMotionEvent != null)
+    {
+      this.jdField_a_of_type_AndroidViewMotionEvent.recycle();
+      this.jdField_a_of_type_AndroidViewMotionEvent = null;
+    }
+    if (this.jdField_b_of_type_AndroidViewMotionEvent != null)
+    {
+      this.jdField_b_of_type_AndroidViewMotionEvent.recycle();
+      this.jdField_b_of_type_AndroidViewMotionEvent = null;
+    }
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  protected abstract void a(int paramInt, MotionEvent paramMotionEvent);
+  
+  protected void a(MotionEvent paramMotionEvent)
+  {
+    MotionEvent localMotionEvent = this.jdField_a_of_type_AndroidViewMotionEvent;
+    if ((paramMotionEvent == null) || (localMotionEvent == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BaseGestureDetector", 2, "updateStateByEvent-->Curr Or Prev is null");
+      }
+      return;
+    }
+    if (this.jdField_b_of_type_AndroidViewMotionEvent != null)
+    {
+      this.jdField_b_of_type_AndroidViewMotionEvent.recycle();
+      this.jdField_b_of_type_AndroidViewMotionEvent = null;
+    }
+    this.jdField_b_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+    this.jdField_a_of_type_Long = (paramMotionEvent.getEventTime() - localMotionEvent.getEventTime());
+    this.jdField_a_of_type_Float = paramMotionEvent.getPressure(paramMotionEvent.getActionIndex());
+    this.jdField_b_of_type_Float = localMotionEvent.getPressure(localMotionEvent.getActionIndex());
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    int i = paramMotionEvent.getAction() & 0xFF;
+    if (!this.jdField_a_of_type_Boolean) {
+      a(i, paramMotionEvent);
+    }
+    for (;;)
+    {
+      return true;
+      b(i, paramMotionEvent);
+    }
+  }
+  
+  protected abstract void b(int paramInt, MotionEvent paramMotionEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lfy
  * JD-Core Version:    0.7.0.1
  */

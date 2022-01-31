@@ -1,35 +1,31 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import java.util.ArrayList;
+import java.io.File;
 
 class sin
-  implements Runnable
+  implements Comparable<sin>
 {
-  sin(sim paramsim, ArrayList paramArrayList) {}
+  public final long a;
+  public final File a;
   
-  public void run()
+  public sin(sim paramsim, File paramFile)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
-    View localView;
-    do
-    {
-      return;
-      localView = this.jdField_a_of_type_Sim.a.a[33];
-    } while (localView == null);
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) {
-      localView.setVisibility(8);
+    this.jdField_a_of_type_JavaIoFile = paramFile;
+    this.jdField_a_of_type_Long = paramFile.lastModified();
+  }
+  
+  public int a(sin paramsin)
+  {
+    if (this.jdField_a_of_type_Long < paramsin.jdField_a_of_type_Long) {
+      return -1;
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Sim.a.a(33, localView, this.jdField_a_of_type_JavaUtilArrayList, true, true);
-      return;
-      localView.setVisibility(0);
+    if (this.jdField_a_of_type_Long == paramsin.jdField_a_of_type_Long) {
+      return 0;
     }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sin
  * JD-Core Version:    0.7.0.1
  */

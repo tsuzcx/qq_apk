@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
+import acnu;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.util.PAMessageUtil;
-import com.tencent.biz.pubaccount.util.PublicAccountConfigUtil;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.XMLMessageUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.ArrayList;
 import java.util.List;
+import rry;
+import rsp;
 
 public class MessageForPubAccount
   extends ChatMessage
@@ -19,7 +19,7 @@ public class MessageForPubAccount
   
   public static String getMsgSummary(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, boolean paramBoolean)
   {
-    Object localObject = XMLMessageUtils.a(paramMessageRecord);
+    Object localObject = acnu.a(paramMessageRecord);
     if ((localObject == null) || (((PAMessage)localObject).items == null) || (((PAMessage)localObject).items.size() == 0))
     {
       if ((localObject != null) && (((PAMessage)localObject).msg != null))
@@ -27,12 +27,12 @@ public class MessageForPubAccount
         localObject = ((PAMessage)localObject).msg;
         return localObject;
       }
-      return paramQQAppInterface.getApp().getString(2131436140);
+      return paramQQAppInterface.getApp().getString(2131629273);
     }
     String str1 = ((PAMessage.Item)((PAMessage)localObject).items.get(0)).title;
     String str2 = ((PAMessage.Item)((PAMessage)localObject).items.get(0)).cover;
     if (paramBoolean) {}
-    for (paramMessageRecord = String.format(paramQQAppInterface.getApp().getString(2131430785), new Object[] { PublicAccountConfigUtil.a(paramQQAppInterface, BaseApplicationImpl.getContext()) });; paramMessageRecord = "")
+    for (paramMessageRecord = String.format(paramQQAppInterface.getApp().getString(2131632195), new Object[] { rsp.a(paramQQAppInterface, BaseApplicationImpl.getContext()) });; paramMessageRecord = "")
     {
       if ((str2 == null) && (((PAMessage.Item)((PAMessage)localObject).items.get(0)).digestList != null)) {}
       for (paramMessageRecord = paramMessageRecord + str1 + "：" + (String)((PAMessage.Item)((PAMessage)localObject).items.get(0)).digestList.get(0);; paramMessageRecord = paramMessageRecord + str1)
@@ -41,7 +41,7 @@ public class MessageForPubAccount
         if (!TextUtils.isEmpty(paramMessageRecord)) {
           break;
         }
-        return paramQQAppInterface.getApp().getString(2131436140);
+        return paramQQAppInterface.getApp().getString(2131629273);
       }
     }
   }
@@ -50,7 +50,7 @@ public class MessageForPubAccount
   {
     try
     {
-      this.mPAMessage = PAMessageUtil.a(this.msgData);
+      this.mPAMessage = rry.a(this.msgData);
       if ((this.mPAMessage != null) && ((this.mPAMessage.items == null) || (this.mPAMessage.items.size() == 0)) && (this.mPAMessage.msg != null)) {
         this.msg = this.mPAMessage.msg;
       }
@@ -67,12 +67,12 @@ public class MessageForPubAccount
     return ((this.mPAMessage == null) || (this.mPAMessage.items == null) || (this.mPAMessage.items.size() == 0)) && (this.mPAMessage != null) && (this.mPAMessage.msg != null);
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     if (this.mPAMessage != null) {}
     try
     {
-      this.msgData = PAMessageUtil.a(this.mPAMessage);
+      this.msgData = rry.a(this.mPAMessage);
       return;
     }
     catch (Exception localException)

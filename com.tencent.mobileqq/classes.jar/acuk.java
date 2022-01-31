@@ -1,37 +1,34 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportObserver;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-
 public class acuk
-  extends TeamWorkFileImportObserver
+  extends acus
 {
-  public acuk(FilePreviewActivity paramFilePreviewActivity) {}
+  public int a;
+  public int b;
+  public int c;
   
-  public void a(TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  public acuk(int paramInt1, int paramInt2, int paramInt3)
   {
-    super.a(paramTeamWorkFileImportInfo);
-    if ((FilePreviewActivity.a(this.a) != null) && (FilePreviewActivity.a(this.a).isShowing())) {
-      FilePreviewActivity.a(this.a).dismiss();
-    }
-    if ((paramTeamWorkFileImportInfo != null) && (paramTeamWorkFileImportInfo.d)) {
-      QQToast.a(this.a.app.getApp(), 1, 2131439161, 0).a();
-    }
+    this.a = paramInt1;
+    this.b = paramInt2;
+    this.c = paramInt3;
   }
   
-  public void a(String paramString, TeamWorkFileImportInfo paramTeamWorkFileImportInfo)
+  public boolean equals(Object paramObject)
   {
-    super.a(paramString, paramTeamWorkFileImportInfo);
-    if ((FilePreviewActivity.a(this.a) != null) && (FilePreviewActivity.a(this.a).isShowing())) {
-      FilePreviewActivity.a(this.a).dismiss();
-    }
+    if (paramObject == null) {}
+    do
+    {
+      do
+      {
+        return false;
+      } while (!(paramObject instanceof acuk));
+      paramObject = (acuk)paramObject;
+    } while ((this.a != paramObject.a) || (this.c != paramObject.c) || (this.b != paramObject.b));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acuk
  * JD-Core Version:    0.7.0.1
  */

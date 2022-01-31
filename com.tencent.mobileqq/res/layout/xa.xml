@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/gat" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ViewStub android:id="@id/gal" android:layout="@layout/x_" android:layout_width="@dimen/a3o" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/g7v" android:layout="@layout/x9" android:layout_width="@dimen/a3o" android:layout_height="@dimen/a3j" />
+</RelativeLayout>

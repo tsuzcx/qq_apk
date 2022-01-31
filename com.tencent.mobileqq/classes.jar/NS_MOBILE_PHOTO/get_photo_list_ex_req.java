@@ -9,11 +9,11 @@ import java.util.Map;
 public final class get_photo_list_ex_req
   extends JceStruct
 {
-  static Map cache_busi_param = new HashMap();
+  static Map<Integer, String> cache_busi_param = new HashMap();
   public String albumid = "";
   public long albumtype;
   public int appid;
-  public Map busi_param;
+  public Map<Integer, String> busi_param;
   public String curid = "";
   public String curlloc = "";
   public int get_comment;
@@ -36,7 +36,7 @@ public final class get_photo_list_ex_req
   
   public get_photo_list_ex_req() {}
   
-  public get_photo_list_ex_req(long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3, String paramString3, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong4, String paramString4, Map paramMap, int paramInt5, String paramString5, long paramLong5, int paramInt6, long paramLong6)
+  public get_photo_list_ex_req(long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3, String paramString3, int paramInt1, int paramInt2, int paramInt3, int paramInt4, long paramLong4, String paramString4, Map<Integer, String> paramMap, int paramInt5, String paramString5, long paramLong5, int paramInt6, long paramLong6)
   {
     this.uin = paramLong1;
     this.albumid = paramString1;

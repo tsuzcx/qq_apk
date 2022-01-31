@@ -8,8 +8,9 @@ import java.util.ArrayList;
 public final class AIONewestFeedReq
   extends JceStruct
 {
-  static ArrayList cache_uHostUin = new ArrayList();
-  public ArrayList uHostUin;
+  static ArrayList<Long> cache_uHostUin = new ArrayList();
+  public int src = 0;
+  public ArrayList<Long> uHostUin;
   public long uLastTime;
   public long uOpUin;
   
@@ -20,11 +21,12 @@ public final class AIONewestFeedReq
   
   public AIONewestFeedReq() {}
   
-  public AIONewestFeedReq(long paramLong1, ArrayList paramArrayList, long paramLong2)
+  public AIONewestFeedReq(long paramLong1, ArrayList<Long> paramArrayList, long paramLong2, int paramInt)
   {
     this.uOpUin = paramLong1;
     this.uHostUin = paramArrayList;
     this.uLastTime = paramLong2;
+    this.src = paramInt;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -32,6 +34,7 @@ public final class AIONewestFeedReq
     this.uOpUin = paramJceInputStream.read(this.uOpUin, 0, false);
     this.uHostUin = ((ArrayList)paramJceInputStream.read(cache_uHostUin, 1, false));
     this.uLastTime = paramJceInputStream.read(this.uLastTime, 2, false);
+    this.src = paramJceInputStream.read(this.src, 3, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -41,11 +44,12 @@ public final class AIONewestFeedReq
       paramJceOutputStream.write(this.uHostUin, 1);
     }
     paramJceOutputStream.write(this.uLastTime, 2);
+    paramJceOutputStream.write(this.src, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_AIONewestFeed.AIONewestFeedReq
  * JD-Core Version:    0.7.0.1
  */

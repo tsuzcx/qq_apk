@@ -1,8 +1,15 @@
-import com.tencent.biz.qqstory.model.SuperManager;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
 
-public class ngu
+final class ngu
+  extends azue
 {
-  public static final SuperManager a = new SuperManager(null);
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  {
+    paramDownloadParams = paramBitmap.copy(paramBitmap.getConfig(), true);
+    bain.a(paramDownloadParams, 40);
+    return paramDownloadParams;
+  }
 }
 
 

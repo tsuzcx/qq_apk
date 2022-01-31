@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.apollo.data;
 
-import com.tencent.mobileqq.persistence.Entity;
+import atmo;
 
 public class ApolloActionRecentData
-  extends Entity
+  extends atmo
 {
   public int actionId;
   public int orderId;
@@ -12,7 +12,7 @@ public class ApolloActionRecentData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.data.ApolloActionRecentData
  * JD-Core Version:    0.7.0.1
  */

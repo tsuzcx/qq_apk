@@ -1,18 +1,18 @@
 package com.tencent.mobileqq.filemanager.data;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
+import apdh;
+import atmo;
+import atnz;
+import atoc;
+import awao;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
-import com.tencent.mobileqq.persistence.unique;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
-import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.qphone.base.util.QLog;
 
 @uniqueConstraints(clause=ConflictClause.IGNORE, columnNames="nSessionId")
 public class FileManagerEntity
-  extends Entity
+  extends atmo
   implements Cloneable
 {
   public long TroopUin;
@@ -24,12 +24,12 @@ public class FileManagerEntity
   public boolean bDelInFM;
   public boolean bOnceSuccess;
   public boolean bSend;
-  @notColumn
+  @atnz
   public boolean bSetVerify;
   public byte[] bombData;
   public int busId;
   public int cloudType;
-  @notColumn
+  @atnz
   public long datalineEntitySessionId;
   public long dbVer;
   public int errCode;
@@ -39,20 +39,26 @@ public class FileManagerEntity
   public String fileName;
   public long fileSize;
   public int forwardTroopFileEntrance;
+  public String httpsDomain;
   public int imgHeight;
   public int imgWidth;
-  @notColumn
+  @atnz
   public boolean isFromrMolo;
   public boolean isReaded;
   public boolean isZipInnerFile;
-  @notColumn
+  @atnz
   public long lastSuccessTime;
   public long lastTime;
-  @notColumn
+  public long localModifyTime;
+  @atnz
   public Object mContext;
-  @notColumn
+  @atnz
+  public String mExcitingSpeed;
+  @atnz
   public int mThumbRetryCount;
   public long mTroopFileVideoReqInterval;
+  @atnz
+  public String miniAppDownloadId;
   public long msgSeq;
   public long msgTime;
   public long msgUid;
@@ -61,29 +67,32 @@ public class FileManagerEntity
   public int nOlSenderProgress;
   public int nOpType = -1;
   public long nRelatedSessionId;
-  @unique
+  @atoc
   public long nSessionId = 0L;
   public int nWeiYunSrcType;
-  @notColumn
+  @atnz
   public long peerDin;
   public String peerNick;
   public int peerType = 0;
   public String peerUin;
-  @notColumn
+  @atnz
   public int qlmsgSrc;
-  @notColumn
+  @atnz
   public FileManagerEntity relatedEntity;
   public String selfUin;
-  public long srvTime = MessageCache.a() * 1000L;
+  public long srvTime = awao.a() * 1000L;
   public int status;
+  public String str10Md5;
   public String strApkPackageName;
-  @notColumn
+  @atnz
   public String strDataLineMPFileID;
   public String strFileMd5;
   public String strFilePath;
   public String strFileSHA;
+  public String strFileSha3;
   public String strLargeThumPath;
   public String strMiddleThumPath;
+  public String strQRUrl;
   public String strServerPath;
   public String strSrcName;
   public String strThumbPath;
@@ -94,11 +103,11 @@ public class FileManagerEntity
   public long structMsgSeq;
   public String tmpSessionFromPhone;
   public String tmpSessionRelatedUin;
-  @notColumn
+  @atnz
   public byte[] tmpSessionSig;
   public String tmpSessionToPhone;
   public long tmpSessionType;
-  @notColumn
+  @atnz
   public int transSpeed;
   public long uniseq = -1L;
   public String zipFileId;
@@ -218,6 +227,7 @@ public class FileManagerEntity
       this.lastSuccessTime = paramFileManagerEntity.lastSuccessTime;
       this.zipInnerPath = paramFileManagerEntity.zipInnerPath;
       this.isZipInnerFile = paramFileManagerEntity.isZipInnerFile;
+      this.httpsDomain = paramFileManagerEntity.httpsDomain;
       return;
     }
     finally {}
@@ -249,8 +259,8 @@ public class FileManagerEntity
   
   public boolean hasNoThumb()
   {
-    if (FileUtil.b(this.strLargeThumPath)) {}
-    while ((FileUtil.b(this.strMiddleThumPath)) || (FileUtil.b(this.strThumbPath))) {
+    if (apdh.b(this.strLargeThumPath)) {}
+    while ((apdh.b(this.strMiddleThumPath)) || (apdh.b(this.strThumbPath))) {
       return true;
     }
     return false;

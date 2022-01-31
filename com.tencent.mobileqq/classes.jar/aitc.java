@@ -1,37 +1,24 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.theme.NightModeLogic;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
 
 public class aitc
-  implements DialogInterface.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public aitc(NightModeLogic paramNightModeLogic) {}
+  public aitc(ApolloGameActivity paramApolloGameActivity, Intent paramIntent, String paramString, Bitmap paramBitmap, ajab paramajab, int paramInt) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = new Bundle();
-    paramDialogInterface.putInt("start_status", 2);
-    this.a.a(0, paramDialogInterface);
-    this.a.jdField_a_of_type_AndroidAppDialog = null;
-    try
-    {
-      paramDialogInterface = new HashMap();
-      paramDialogInterface.put("param_FailCode", "2");
-      StatisticCollector.a(this.a.jdField_a_of_type_MqqAppAppRuntime.getApplication().getApplicationContext()).a(((QQAppInterface)this.a.jdField_a_of_type_MqqAppAppRuntime).getAccount(), "VipNightThemeDialogClick", false, 1L, 0L, paramDialogInterface, "", false);
-      return;
-    }
-    catch (Exception paramDialogInterface) {}
+    ApolloGameUtil.a(this.jdField_a_of_type_AndroidContentIntent, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap, new aitd(this));
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aitc
  * JD-Core Version:    0.7.0.1
  */

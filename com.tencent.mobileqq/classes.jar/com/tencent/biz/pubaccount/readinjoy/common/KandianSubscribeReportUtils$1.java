@@ -1,0 +1,24 @@
+package com.tencent.biz.pubaccount.readinjoy.common;
+
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import obz;
+
+public final class KandianSubscribeReportUtils$1
+  implements Runnable
+{
+  public KandianSubscribeReportUtils$1(MessageRecord paramMessageRecord) {}
+  
+  public void run()
+  {
+    this.a.extLong = 0;
+    ((QQAppInterface)obz.a()).a().a(this.a.frienduin, this.a.istroop, this.a.uniseq, "extLong", Integer.valueOf(this.a.extLong));
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.common.KandianSubscribeReportUtils.1
+ * JD-Core Version:    0.7.0.1
+ */

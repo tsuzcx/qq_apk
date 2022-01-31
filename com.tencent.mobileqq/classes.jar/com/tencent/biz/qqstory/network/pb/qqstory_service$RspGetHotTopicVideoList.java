@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_service$RspGetHotTopicVideoList
-  extends MessageMicro
+  extends MessageMicro<RspGetHotTopicVideoList>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field is_end = PBField.initUInt32(0);
@@ -19,7 +19,7 @@ public final class qqstory_service$RspGetHotTopicVideoList
   public final PBBytesField topic_desc = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBUInt64Field totle_time = PBField.initUInt64(0L);
   public final PBUInt32Field video_count = PBField.initUInt32(0);
-  public final PBRepeatMessageField video_list = PBField.initRepeatMessage(qqstory_struct.StoryVideoDes.class);
+  public final PBRepeatMessageField<qqstory_struct.StoryVideoDes> video_list = PBField.initRepeatMessage(qqstory_struct.StoryVideoDes.class);
   
   static
   {
@@ -30,7 +30,7 @@ public final class qqstory_service$RspGetHotTopicVideoList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetHotTopicVideoList
  * JD-Core Version:    0.7.0.1
  */

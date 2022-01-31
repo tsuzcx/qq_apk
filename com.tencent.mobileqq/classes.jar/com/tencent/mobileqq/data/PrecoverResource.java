@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.data;
 
-import accv;
+import amtg;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atnz;
+import atoc;
 
 public class PrecoverResource
-  extends Entity
+  extends atmo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new accv();
-  @notColumn
+  public static final Parcelable.Creator<PrecoverResource> CREATOR = new amtg();
+  @atnz
   public int arg1;
-  @notColumn
+  @atnz
   public int arg2;
   public String businessId;
   public String md5;
-  @unique
+  @atoc
   public String pk;
   public String resId;
-  @notColumn
+  @atnz
   public String thirdPartDownloadPath;
   public String url;
   
@@ -86,17 +86,17 @@ public class PrecoverResource
     return (!TextUtils.isEmpty(this.businessId)) && (!TextUtils.isEmpty(this.resId)) && (!TextUtils.isEmpty(this.url)) && (!TextUtils.isEmpty(this.md5));
   }
   
-  protected void postRead()
+  public void postRead()
   {
     super.postRead();
   }
   
-  protected void postwrite()
+  public void postwrite()
   {
     super.postwrite();
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     super.prewrite();
     if ((!TextUtils.isEmpty(this.businessId)) && (!TextUtils.isEmpty(this.resId)))

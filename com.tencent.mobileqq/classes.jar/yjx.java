@@ -1,26 +1,102 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils.VideoFileSaveRunnable;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
+import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.ConfigSeq;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import org.json.JSONObject;
 
-class yjx
-  implements DialogInterface.OnClickListener
+public class yjx
 {
-  yjx(yjw paramyjw) {}
+  private static boolean a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public static void a()
   {
-    if (this.a.a.a.get() != null) {
-      ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.a.a.b, (MqqHandler)this.a.a.a.get(), this.a.a.g + ".mp4", true));
+    yny.b("GdtAnalysisConfigUtil", "handleNotResponse");
+  }
+  
+  public static void a(ConfigurationService.Config paramConfig)
+  {
+    if ((paramConfig == null) || (paramConfig.type.get() != 237))
+    {
+      yny.d("GdtAnalysisConfigUtil", "handleResponse error");
+      return;
     }
+    Object localObject = null;
+    try
+    {
+      paramConfig = amnh.b(paramConfig, 0, paramConfig.type.get());
+      a(paramConfig);
+      yny.b("GdtAnalysisConfigUtil", String.format("handleResponse %s", new Object[] { paramConfig }));
+      return;
+    }
+    catch (Throwable paramConfig)
+    {
+      for (;;)
+      {
+        yny.d("GdtAnalysisConfigUtil", "handleResponse", paramConfig);
+        paramConfig = localObject;
+      }
+    }
+  }
+  
+  public static void a(ConfigurationService.ConfigSeq paramConfigSeq)
+  {
+    if (paramConfigSeq == null)
+    {
+      yny.d("GdtAnalysisConfigUtil", "handleRequest error");
+      return;
+    }
+    yny.b("GdtAnalysisConfigUtil", "handleRequest");
+    paramConfigSeq.version.set(0);
+    paramConfigSeq.compress.set(1);
+  }
+  
+  private static void a(String paramString)
+  {
+    boolean bool = true;
+    yny.b("GdtAnalysisConfigUtil", String.format("parseResponse %s", new Object[] { paramString }));
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      return;
+      paramString = ynw.a(paramString);
+    } while ((paramString == null) || (paramString == JSONObject.NULL));
+    for (;;)
+    {
+      try
+      {
+        if (Integer.valueOf(paramString.getJSONObject("sdkConfiguration").getString("GdtAdMonitorSwitch")).intValue() != 0)
+        {
+          a = bool;
+          yny.b("GdtAnalysisConfigUtil", String.format("parseResponse enabled:%b", new Object[] { Boolean.valueOf(a) }));
+          return;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        yny.d("GdtAnalysisConfigUtil", "parseResponse", paramString);
+        return;
+      }
+      bool = false;
+    }
+  }
+  
+  public static boolean a()
+  {
+    if (BaseApplicationImpl.getApplication() == null) {}
+    while (BaseApplicationImpl.getApplication().getRuntime() == null) {
+      return false;
+    }
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      return a;
+    }
+    return yjw.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yjx
  * JD-Core Version:    0.7.0.1
  */

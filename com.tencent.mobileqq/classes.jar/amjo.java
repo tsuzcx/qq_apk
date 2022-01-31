@@ -1,44 +1,70 @@
-import android.view.View;
-import android.widget.ListAdapter;
-import com.tencent.widget.HorizontalListView;
+import android.support.annotation.NonNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amjo
-  extends amjs
-  implements Runnable
+  extends amie<amjn>
 {
-  public int a;
+  public static final amjn a = new amjn();
   
-  private amjo(HorizontalListView paramHorizontalListView)
+  public static amjn c()
   {
-    super(paramHorizontalListView, null);
+    amjn localamjn2 = (amjn)alzw.a().a(423);
+    amjn localamjn1 = localamjn2;
+    if (localamjn2 == null) {
+      localamjn1 = new amjn();
+    }
+    return localamjn1;
   }
   
-  public void run()
+  public int a()
   {
-    if (this.jdField_a_of_type_ComTencentWidgetHorizontalListView.c()) {}
-    ListAdapter localListAdapter;
-    int i;
-    View localView;
-    do
+    return 423;
+  }
+  
+  @NonNull
+  public amjn a()
+  {
+    return a;
+  }
+  
+  @NonNull
+  public amjn a(alzs[] paramArrayOfalzs)
+  {
+    boolean bool = true;
+    localamjn = new amjn();
+    paramArrayOfalzs = paramArrayOfalzs[0].a;
+    try
     {
-      do
+      if (new JSONObject(paramArrayOfalzs).optInt("show_red_name_card", 0) == 1) {}
+      for (;;)
       {
-        ((View)this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getParent()).performClick();
-        do
-        {
-          return;
-        } while (this.jdField_a_of_type_ComTencentWidgetHorizontalListView.b);
-        localListAdapter = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.a;
-        i = this.jdField_a_of_type_Int;
-      } while ((localListAdapter == null) || (i == -1) || (i >= localListAdapter.getCount()) || (!a()));
-      localView = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getChildAt(i - this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getFirstVisiblePosition());
-    } while (localView == null);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.performItemClick(localView, i, localListAdapter.getItemId(i));
+        localamjn.a = bool;
+        return localamjn;
+        bool = false;
+      }
+      return localamjn;
+    }
+    catch (JSONException paramArrayOfalzs)
+    {
+      urk.e("QVipRedNameCardProcessor", "QVipRedNameCardConfig onParsed exception :" + paramArrayOfalzs.getMessage());
+    }
+  }
+  
+  public Class<amjn> a()
+  {
+    return amjn.class;
+  }
+  
+  @NonNull
+  public amjn b()
+  {
+    return a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amjo
  * JD-Core Version:    0.7.0.1
  */

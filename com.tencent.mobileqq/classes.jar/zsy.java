@@ -1,25 +1,40 @@
-import com.tencent.mobileqq.app.RedpointHandler;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface;
 import com.tencent.qphone.base.util.QLog;
 
-public class zsy
-  extends SosoInterface.OnLocationListener
+abstract class zsy
+  extends akgd
 {
-  public zsy(RedpointHandler paramRedpointHandler, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  long jdField_a_of_type_Long;
+  zrt jdField_a_of_type_Zrt;
+  boolean jdField_a_of_type_Boolean;
+  long b;
+  
+  public zsy(zrt paramzrt, int paramInt, long paramLong)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    super(paramInt, true, true, paramLong, true, false, "Doraemon");
+    this.jdField_a_of_type_Zrt = paramzrt;
+    this.b = 10000L;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_a_of_type_Boolean = true;
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onConsecutiveFailure(int paramInt1, int paramInt2)
   {
-    QLog.d("RedpointHandler", 1, "onLocationFinish errCode:" + paramInt + ",info:" + paramSosoLbsInfo);
-    RedpointHandler.a(this.a, paramInt, paramSosoLbsInfo);
+    if (QLog.isColorLevel()) {
+      QLog.d("DoraemonOpenAPI.sensor.location", 2, "onConsecutiveFailure: errCode=" + paramInt1 + ", failCount=" + paramInt2);
+    }
+    if ((paramInt2 * 2000 < this.b) || (!this.jdField_a_of_type_Boolean)) {
+      return;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    zva.a(this.jdField_a_of_type_Zrt, paramInt1, "error " + paramInt1);
+    Long.toString(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    SosoInterface.b(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zsy
  * JD-Core Version:    0.7.0.1
  */

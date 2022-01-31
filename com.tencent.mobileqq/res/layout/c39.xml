@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginRight="4.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="54.0dip" android:layout_height="54.0dip">
+        <ImageView android:id="@id/kty" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/kuh" android:background="#00000000" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+        <RelativeLayout android:id="@id/mfa" android:background="@drawable/hfo" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ImageView android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@drawable/hke" android:layout_centerInParent="true" />
+        </RelativeLayout>
+        <ImageView android:id="@id/kum" android:background="@drawable/hfp" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <ImageView android:layout_gravity="bottom|center|right" android:id="@id/ku8" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginRight="2.0dip" android:layout_marginBottom="2.0dip" android:src="@drawable/f7u" />
+    <ImageView android:layout_gravity="center|right|top" android:id="@id/kus" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/f6x" />
+    <ProgressBar android:layout_gravity="center" android:id="@id/kur" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:indeterminateOnly="true" android:indeterminateDrawable="@drawable/al4" android:indeterminateBehavior="repeat" android:layout_centerInParent="true" />
+</FrameLayout>

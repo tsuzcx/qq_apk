@@ -1,47 +1,50 @@
-import android.app.Activity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.settings.FMSettingInterface.MoveFileCallback;
-import com.tencent.mobileqq.filemanager.settings.FMSettings;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.customviews.VideoProgressView;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.shortvideo.videoplayer.AIOBubbleVideoView;
+import java.util.concurrent.CopyOnWriteArraySet;
 
-class ados
-  implements FMSettingInterface.MoveFileCallback
+public class ados
+  extends acju
 {
-  ados(ador paramador) {}
+  public ImageView a;
+  public ProgressBar a;
+  public RelativeLayout a;
+  public TextView a;
+  public URLDrawable a;
+  public VideoProgressView a;
+  public AIOBubbleVideoView a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  
+  public ados(adoi paramadoi) {}
   
   public void a()
   {
-    this.a.a.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new adov(this));
-    FMSettings.a(this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings);
-    FileManagerReporter.a("0X8005BE2");
-    synchronized (BaseApplicationImpl.getContext())
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoplayerAIOBubbleVideoView != null)
     {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.b = false;
-      return;
+      long l = this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoplayerAIOBubbleVideoView.a();
+      if (l > 0L)
+      {
+        MessageForShortVideo localMessageForShortVideo = baab.a().a(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoplayerAIOBubbleVideoView.getId()));
+        if (localMessageForShortVideo != null) {
+          adoi.a(this.jdField_a_of_type_Adoi, localMessageForShortVideo, l);
+        }
+      }
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoplayerAIOBubbleVideoView.a(true);
+      adoi.a().remove(this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoplayerAIOBubbleVideoView);
     }
   }
-  
-  public void a(int paramInt)
-  {
-    this.a.a.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new adou(this));
-    FMSettings.a(this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings);
-    synchronized (BaseApplicationImpl.getContext())
-    {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.b = false;
-      return;
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    this.a.a.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new adot(this, paramLong1, paramLong2));
-  }
-  
-  public void a(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ados
  * JD-Core Version:    0.7.0.1
  */

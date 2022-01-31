@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class OfflineWebRes
-  extends Entity
+  extends atmo
 {
   public String bid;
   public String fileName;
   public String hashName;
   public int hitCount = 1;
-  @unique
+  @atoc
   public String md5;
 }
 

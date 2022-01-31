@@ -1,15 +1,16 @@
 package com.tencent.biz.qqstory.database;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class FeedEntry
-  extends Entity
+  extends atmo
 {
   public String date;
   public byte[] extraInfo;
-  @unique
+  @atoc
   public String feedId;
+  public int feedSourceTagType;
   public String ownerId;
   public int type;
   
@@ -25,7 +26,7 @@ public class FeedEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.FeedEntry
  * JD-Core Version:    0.7.0.1
  */

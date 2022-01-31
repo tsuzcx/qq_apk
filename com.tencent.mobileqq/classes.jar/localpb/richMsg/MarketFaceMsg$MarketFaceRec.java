@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class MarketFaceMsg$MarketFaceRec
-  extends MessageMicro
+  extends MessageMicro<MarketFaceRec>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_face_id = PBField.initBytes(ByteStringMicro.EMPTY);

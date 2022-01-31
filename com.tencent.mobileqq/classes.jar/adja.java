@@ -1,23 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.etrump.mixlayout.ETTextView;
 
-public final class adja
-  implements Parcelable.Creator
+public class adja
+  extends acju
 {
-  public WeiYunFileInfo a(Parcel paramParcel)
-  {
-    return new WeiYunFileInfo(paramParcel);
-  }
+  public ahpa a;
+  protected ViewGroup a;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  protected ETTextView a;
+  protected TextView b;
+  public ETTextView b;
   
-  public WeiYunFileInfo[] a(int paramInt)
-  {
-    return new WeiYunFileInfo[paramInt];
-  }
+  public adja(adiu paramadiu) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adja
  * JD-Core Version:    0.7.0.1
  */

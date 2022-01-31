@@ -1,15 +1,12 @@
-import com.tencent.biz.qqstory.playmode.child.NewDiscoverBannerPlayMode;
-import com.tencent.biz.qqstory.playmode.util.NewDiscoverBannerDataProvider;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.ad.multiVideo.MultiVideoAdFooterView;
 
 public class nol
-  implements Runnable
 {
-  public nol(NewDiscoverBannerPlayMode paramNewDiscoverBannerPlayMode) {}
-  
-  public void run()
-  {
-    this.a.a.a(true);
-  }
+  public Activity a;
+  public VideoInfo a;
+  public MultiVideoAdFooterView a;
 }
 
 

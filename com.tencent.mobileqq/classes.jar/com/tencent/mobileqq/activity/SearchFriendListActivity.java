@@ -1,7 +1,10 @@
 package com.tencent.mobileqq.activity;
 
-import SummaryCard.RespSearch;
-import SummaryCard.SearchInfo;
+import abpv;
+import abpw;
+import abpx;
+import ajjh;
+import ajjy;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -9,119 +12,110 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.qq.taf.jce.JceInputStream;
-import com.tencent.biz.eqq.CrmUtils;
-import com.tencent.mobileqq.app.FriendListObserver;
+import azwp;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchResultItem;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.util.FaceDrawable;
 import com.tencent.widget.XListView;
 import java.util.ArrayList;
-import tvv;
-import tvw;
-import tvx;
+import mqb;
 
 public class SearchFriendListActivity
   extends IphoneTitleBarActivity
   implements View.OnClickListener
 {
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new tvv(this);
+  private abpw jdField_a_of_type_Abpw;
+  private ajjh jdField_a_of_type_Ajjh = new abpv(this);
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private ArrayList jdField_a_of_type_JavaUtilArrayList;
-  private tvw jdField_a_of_type_Tvw;
-  private byte[] jdField_a_of_type_ArrayOfByte;
+  private ArrayList<SearchResultItem> jdField_a_of_type_JavaUtilArrayList;
   
   public void a(View paramView, int paramInt)
   {
-    SearchInfo localSearchInfo = (SearchInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    tvx localtvx = (tvx)paramView.getTag();
-    if (!TextUtils.isEmpty(localSearchInfo.strNick))
+    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size())) {}
+    do
     {
-      localtvx.jdField_a_of_type_AndroidWidgetTextView.setText(localSearchInfo.strNick);
-      if (localSearchInfo.eSource != 1) {
-        break label187;
+      return;
+      localObject2 = (SearchResultItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    } while (localObject2 == null);
+    Object localObject1 = ((SearchResultItem)localObject2).jdField_a_of_type_JavaLangString;
+    String str1 = String.valueOf(((SearchResultItem)localObject2).jdField_a_of_type_Long);
+    String str2 = ((SearchResultItem)localObject2).b;
+    int i = ((SearchResultItem)localObject2).jdField_a_of_type_Int;
+    Object localObject2 = (abpx)paramView.getTag();
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      ((abpx)localObject2).jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
+      if (i != 1) {
+        break label194;
       }
-      localtvx.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(FaceDrawable.a(this.app, String.valueOf(localSearchInfo.lUIN), (byte)3));
-      localtvx.b.setText("QQ号码: " + localSearchInfo.lUIN);
+      ((abpx)localObject2).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(azwp.a(this.app, str1, (byte)3));
+      ((abpx)localObject2).b.setText("QQ号码: " + str1);
     }
     for (;;)
     {
-      localtvx.jdField_a_of_type_Int = paramInt;
-      paramView.setContentDescription(localtvx.jdField_a_of_type_AndroidWidgetTextView.getText());
+      ((abpx)localObject2).jdField_a_of_type_Int = paramInt;
+      paramView.setContentDescription(((abpx)localObject2).jdField_a_of_type_AndroidWidgetTextView.getText());
       return;
-      TextView localTextView = localtvx.jdField_a_of_type_AndroidWidgetTextView;
-      if (localSearchInfo.eSource == 1) {}
-      for (String str = localSearchInfo.lUIN + "";; str = localSearchInfo.strMobile)
+      TextView localTextView = ((abpx)localObject2).jdField_a_of_type_AndroidWidgetTextView;
+      if (i == 1) {}
+      for (localObject1 = str1;; localObject1 = str2)
       {
-        localTextView.setText(str);
+        localTextView.setText((CharSequence)localObject1);
         break;
       }
-      label187:
-      localtvx.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(FaceDrawable.b(this.app, localSearchInfo.strMobile, (byte)3));
-      localtvx.b.setText("手机号码: " + localSearchInfo.strMobile);
+      label194:
+      ((abpx)localObject2).jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(azwp.b(this.app, str2, (byte)3));
+      ((abpx)localObject2).b.setText(ajjy.a(2131647838) + str2);
     }
   }
   
   public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130971548);
-    setContentBackgroundResource(2130838219);
-    setTitle("搜索结果");
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131375062));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130838219);
-    addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    paramBundle = new JceInputStream(getIntent().getByteArrayExtra("param_search_resp"));
-    RespSearch localRespSearch = new RespSearch();
-    localRespSearch.readFrom(paramBundle);
-    this.jdField_a_of_type_JavaUtilArrayList = localRespSearch.vRecords;
-    this.jdField_a_of_type_ArrayOfByte = localRespSearch.vSecureSig;
-    this.jdField_a_of_type_Tvw = new tvw(this, null);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Tvw);
+    super.setContentView(2131496767);
+    setContentBackgroundResource(2130838503);
+    setTitle(ajjy.a(2131647837));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131309946));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setContentBackground(2130838503);
+    addObserver(this.jdField_a_of_type_Ajjh);
+    this.jdField_a_of_type_JavaUtilArrayList = getIntent().getParcelableArrayListExtra("param_search_result_item_list");
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    }
+    this.jdField_a_of_type_Abpw = new abpw(this, null);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Abpw);
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
-    removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    removeObserver(this.jdField_a_of_type_Ajjh);
     super.doOnDestroy();
   }
   
   public void onClick(View paramView)
   {
-    Object localObject = paramView.getTag();
-    if (localObject != null)
+    int i;
+    if ((paramView.getTag() instanceof abpx))
     {
-      if (!(localObject instanceof SearchInfo)) {
-        break label123;
+      i = ((abpx)paramView.getTag()).jdField_a_of_type_Int;
+      if ((i < 0) || (i >= this.jdField_a_of_type_JavaUtilArrayList.size())) {
+        break label90;
       }
-      paramView = (SearchInfo)localObject;
-      if (paramView.eSource != 1) {
-        break label78;
-      }
-      paramView = AddFriendLogicActivity.a(this, 1, paramView.lUIN + "", null, 3001, 3999, paramView.strNick, null, null, null, null);
-      startActivity(paramView);
     }
-    label78:
-    label123:
-    while (!(localObject instanceof tvx))
+    label90:
+    for (paramView = (SearchResultItem)this.jdField_a_of_type_JavaUtilArrayList.get(i);; paramView = null)
     {
-      return;
-      if (paramView.bInContact == 1) {}
-      for (int i = 3006;; i = 3014)
+      if (paramView == null) {
+        return;
+      }
+      if (paramView.c == 0)
       {
-        paramView = AddFriendLogicActivity.a(this, 2, paramView.strMobile, null, i, 3999, paramView.strNick, null, null, null, null);
-        break;
+        AddFriendActivity.a(this, paramView, this.app, false, 1);
+        return;
       }
-    }
-    paramView = (tvx)paramView.getTag();
-    localObject = (SearchInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramView.jdField_a_of_type_Int);
-    if (((SearchInfo)localObject).bIsEnterpriseQQ == 0)
-    {
-      AddFriendActivity.a(this, (SearchInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramView.jdField_a_of_type_Int), this.app.getCurrentAccountUin(), this.jdField_a_of_type_ArrayOfByte, false, 0);
+      mqb.a(this, null, String.valueOf(paramView.jdField_a_of_type_Long), false, -1, true, -1);
       return;
     }
-    CrmUtils.a(this, null, String.valueOf(((SearchInfo)localObject).lUIN), false, -1, true, -1);
   }
 }
 

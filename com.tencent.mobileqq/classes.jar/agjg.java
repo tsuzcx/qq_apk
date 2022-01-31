@@ -1,33 +1,31 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.olympic.activity.ARTipsCircleProgress;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager;
+import android.os.AsyncTask;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class agjg
+class agjg
+  extends AsyncTask<String, Void, AnimationView.AnimationInfo>
 {
-  public View a;
-  public ViewGroup a;
-  public ImageView a;
-  public TextView a;
-  public ARTipsCircleProgress a;
-  public ViewGroup b;
-  public TextView b;
-  public ViewGroup c;
-  public TextView c;
-  public ViewGroup d;
-  public TextView d;
-  public TextView e;
-  public TextView f;
-  public TextView g;
-  public TextView h;
+  private agjg(agje paramagje) {}
   
-  private agjg(ARTipsManager paramARTipsManager) {}
+  protected AnimationView.AnimationInfo a(String... paramVarArgs)
+  {
+    if ("1".equals(paramVarArgs[1])) {
+      return AnimationView.AnimationInfo.loadFromZip(paramVarArgs[0]);
+    }
+    return AnimationView.AnimationInfo.loadFromFolder(paramVarArgs[0]);
+  }
+  
+  protected void a(AnimationView.AnimationInfo paramAnimationInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("FrameAnimHelper", 2, "task over info = " + paramAnimationInfo);
+    }
+    this.a.a(paramAnimationInfo);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agjg
  * JD-Core Version:    0.7.0.1
  */

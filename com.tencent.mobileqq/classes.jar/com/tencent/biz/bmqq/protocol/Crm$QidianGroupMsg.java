@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Crm$QidianGroupMsg
-  extends MessageMicro
+  extends MessageMicro<QidianGroupMsg>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42 }, new String[] { "uint32_group_task_id", "uint32_group_msg_type", "uint64_kfuin", "uint32_show_tip", "str_tip_text" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), "" }, QidianGroupMsg.class);
   public final PBStringField str_tip_text = PBField.initString("");

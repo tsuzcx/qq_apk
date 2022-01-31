@@ -2,12 +2,13 @@ package com.tencent.biz.pubaccount.readinjoy.engine;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.TreeSet;
 
 public class SPEventReportSwitch$SPEventReportCondition
   implements Serializable
 {
   private boolean needReportNextTime;
-  private ArrayList timeSeq;
+  private ArrayList<TreeSet<Integer>> timeSeq;
   
   public String toString()
   {

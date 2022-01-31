@@ -1,42 +1,34 @@
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import com.tencent.image.ProxyDrawable;
-import com.tencent.widget.BubblePopupWindow;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amic
-  extends ProxyDrawable
+  implements alzn<String>
 {
-  int jdField_a_of_type_Int;
-  int b;
+  public boolean a;
   
-  public amic(BubblePopupWindow paramBubblePopupWindow, Drawable paramDrawable)
+  public void a(String paramString)
   {
-    super(paramDrawable);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    invalidateSelf();
-  }
-  
-  public void draw(Canvas paramCanvas)
-  {
-    Rect localRect = getBounds();
-    if (this.b > this.jdField_a_of_type_Int)
+    if (TextUtils.isEmpty(paramString))
     {
-      int i = paramCanvas.save();
-      paramCanvas.clipRect(this.jdField_a_of_type_Int, 0, this.b, localRect.height());
-      this.mCurrDrawable.draw(paramCanvas);
-      paramCanvas.restoreToCount(i);
+      QLog.e("QFileIPv6ConfigBean", 1, "receiveAllConfigs|type: 449configContent is empty");
+      return;
+    }
+    try
+    {
+      this.a = new JSONObject(paramString).getJSONObject("ipv6Config").getBoolean("allSwitch");
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("QFileIPv6ConfigBean", 1, paramString, new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amic
  * JD-Core Version:    0.7.0.1
  */

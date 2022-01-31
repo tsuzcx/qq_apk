@@ -1,89 +1,104 @@
-import android.graphics.Color;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment.SearchArticle;
-import java.util.ArrayList;
-import java.util.List;
+import KQQ.ReqItem;
+import KQQ.RespItem;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.ReqGetConfig;
+import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.RespGetConfig;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajrg
-  extends BaseAdapter
+  implements awbo
 {
-  private SearchReciteArticleFragment jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment;
-  private String jdField_a_of_type_JavaLangString;
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
+  private AppInterface a;
   
-  public ajrg(SearchReciteArticleFragment paramSearchReciteArticleFragment)
+  public ajrg(AppInterface paramAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment = paramSearchReciteArticleFragment;
+    this.a = paramAppInterface;
   }
   
-  public SearchReciteArticleFragment.SearchArticle a(int paramInt)
+  public int a()
   {
-    return (SearchReciteArticleFragment.SearchArticle)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return 1;
   }
   
-  public void a()
+  public ReqItem a(int paramInt)
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
+    QLog.i("ReqDpcInfoNewItem", 1, "getCheckUpdateItemData");
+    ReqItem localReqItem = new ReqItem();
+    localReqItem.eServiceID = 117;
+    localReqItem.cOperType = 1;
+    byte[] arrayOfByte1 = DeviceProfileManager.a(this.a).toByteArray();
+    byte[] arrayOfByte2 = new byte[arrayOfByte1.length + 4];
+    bakz.a(arrayOfByte2, 0, arrayOfByte1.length + 4);
+    bakz.a(arrayOfByte2, 4, arrayOfByte1, arrayOfByte1.length);
+    localReqItem.vecParam = arrayOfByte2;
+    return localReqItem;
   }
   
-  public void a(SearchReciteArticleFragment.SearchArticle paramSearchArticle)
+  public void a(RespItem paramRespItem)
   {
-    this.jdField_a_of_type_JavaUtilList.add(paramSearchArticle);
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilList.size();
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (paramView == null)
+    QLog.i("ReqDpcInfoNewItem", 1, "handleCheckUpdateItemData" + paramRespItem.cResult);
+    byte[] arrayOfByte;
+    int i;
+    if (paramRespItem.eServiceID == 117)
     {
-      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130969935, null, false);
-      paramViewGroup = new ajrh(this, null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131361926));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131368494));
-      paramViewGroup.c = ((TextView)paramView.findViewById(2131361932));
-      paramViewGroup.b.setOnClickListener(paramViewGroup);
-      paramView.setTag(paramViewGroup);
-      paramViewGroup.jdField_a_of_type_Int = paramInt;
-      SearchReciteArticleFragment.SearchArticle localSearchArticle = a(paramInt);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(SearchReciteArticleFragment.a(this.jdField_a_of_type_JavaLangString, localSearchArticle.jdField_a_of_type_JavaLangString, Color.parseColor("#00B6F9")));
-      paramViewGroup.c.setText(SearchReciteArticleFragment.a(this.jdField_a_of_type_JavaLangString, localSearchArticle.b, Color.parseColor("#00B6F9")));
-      paramViewGroup = paramViewGroup.b;
-      if (localSearchArticle.jdField_a_of_type_Int != 1) {
-        break label175;
+      if (paramRespItem.cResult != 2) {
+        break label224;
+      }
+      arrayOfByte = bakc.b(paramRespItem.vecUpdate);
+      if (arrayOfByte != null) {
+        paramRespItem = new ConfigurationService.RespGetConfig();
       }
     }
-    label175:
-    for (paramInt = 0;; paramInt = 8)
+    else
     {
-      paramViewGroup.setVisibility(paramInt);
-      return paramView;
-      paramViewGroup = (ajrh)paramView.getTag();
+      try
+      {
+        paramRespItem.mergeFrom(arrayOfByte);
+        if ((paramRespItem != null) && (paramRespItem.result.get() == 0)) {
+          if ((paramRespItem.config_list != null) && (paramRespItem.config_list.size() > 0))
+          {
+            DeviceProfileManager.a().a(paramRespItem, this.a.getCurrentAccountUin());
+            i = 1;
+            if (i == 0) {
+              DeviceProfileManager.a().a(4);
+            }
+            return;
+          }
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramRespItem)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("ReqDpcInfoNewItem", 2, "error: " + paramRespItem.getMessage());
+          }
+          paramRespItem.printStackTrace();
+          paramRespItem = null;
+        }
+        QLog.i("ReqDpcInfoNewItem", 1, "respGetConfig has no contentlist");
+        if ((this.a instanceof QQAppInterface)) {
+          ((sfz)((QQAppInterface)this.a).a(98)).notifyUI(1023, true, Boolean.valueOf(false));
+        }
+      }
+    }
+    for (;;)
+    {
+      i = 0;
       break;
+      label224:
+      QLog.i("ReqDpcInfoNewItem", 1, "error happend item.cResult = " + paramRespItem.cResult);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajrg
  * JD-Core Version:    0.7.0.1
  */

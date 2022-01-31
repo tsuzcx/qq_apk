@@ -1,22 +1,26 @@
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import cooperation.qzone.report.lp.LpReportManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
-public class xcr
-  implements Runnable
+class xcr
+  implements QQPermissionCallback
 {
-  public xcr(PhotoListActivity paramPhotoListActivity, int paramInt, String paramString) {}
+  xcr(xco paramxco) {}
   
-  public void run()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    LpReportInfo_pf00064 localLpReportInfo_pf00064 = new LpReportInfo_pf00064(723, 2, this.jdField_a_of_type_Int);
-    LpReportManager.getInstance().reportToPF00064(localLpReportInfo_pf00064, false, false);
-    PhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity, "aio_sync_qzone", "operation_type", this.jdField_a_of_type_JavaLangString);
+    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user denied = ");
+    babr.a(this.a.mRuntime.a(), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.d("PubAccountMailJsPlugin", 1, "CheckPermission user grant = ");
+    xco.f(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xcr
  * JD-Core Version:    0.7.0.1
  */

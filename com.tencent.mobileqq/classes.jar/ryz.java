@@ -1,155 +1,116 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.ResponseHandler;
+import android.os.Handler;
+import android.os.Looper;
+import com.qq.jce.wup.UniAttribute;
+import com.qq.taf.jce.JceStruct;
+import common.config.service.QzoneConfig;
+import cooperation.qzone.util.QZLog;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
 public class ryz
-  extends FMObserver
+  implements ryn
 {
-  private ryz(BaseChatPie paramBaseChatPie) {}
+  private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  protected static final ryv a;
+  public static boolean a;
+  public int a;
+  public long a;
+  public transient UniAttribute a;
+  public Object a;
+  public transient String a;
+  private WeakReference<Handler> jdField_a_of_type_JavaLangRefWeakReference;
+  public HashMap<Object, Object> a;
+  public transient ryo a;
+  public ryp a;
+  public ryw a;
+  public int b;
+  public int c;
+  public int d;
   
-  protected void a()
+  static
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
+    jdField_a_of_type_Ryv = ryv.a();
   }
   
-  protected void a(int paramInt, long paramLong, String paramString)
+  public ryz()
   {
-    FileManagerUtil.a(paramLong, paramInt, paramString);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public ryz(ryw paramryw, Handler paramHandler, ryo paramryo, int paramInt)
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_Ryw = paramryw;
+    this.c = paramInt;
+    this.jdField_a_of_type_Ryo = paramryo;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (paramHandler != null) {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramHandler);
     }
   }
   
-  protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
+  private String a(int paramInt)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
-  }
-  
-  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
-  {
-    if ((paramString2 != null) && (paramString2.length() > 0))
+    switch (paramInt)
     {
-      FileManagerUtil.a(paramString2);
-      return;
+    case 1000005: 
+    default: 
+      return "";
+    case 1000006: 
+      QZLog.i("QZLog", 1, "weishi\t 网络无连接");
+      return QzoneConfig.getInstance().getConfig("QZoneTextSetting", "NetWorkNotConnect", "网络无连接");
+    case 1000004: 
+      return "";
     }
-    FileManagerUtil.a(paramLong);
+    return "";
   }
   
-  protected void a(long paramLong, boolean paramBoolean, int paramInt, String paramString)
+  public void a()
   {
-    if ((paramString != null) && (paramString.length() > 0)) {
-      FileManagerUtil.a(paramString);
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
-  }
-  
-  protected void a(ThumbnailInfo paramThumbnailInfo)
-  {
-    if (paramThumbnailInfo == null) {}
-    do
+    if (this.jdField_a_of_type_Ryw != null)
     {
-      FileManagerEntity localFileManagerEntity;
-      do
+      this.jdField_a_of_type_Ryw.a(this.d);
+      if (jdField_a_of_type_Boolean)
       {
-        do
-        {
-          return;
-        } while (!(paramThumbnailInfo.a instanceof FileManagerEntity));
-        localFileManagerEntity = (FileManagerEntity)paramThumbnailInfo.a;
-      } while ((paramThumbnailInfo.b == null) || (paramThumbnailInfo.b.length() <= 0));
-      localFileManagerEntity.strThumbPath = paramThumbnailInfo.b;
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localFileManagerEntity);
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
-  }
-  
-  protected void a(Integer paramInteger, long paramLong, String paramString)
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
-    }
-    FileManagerUtil.a(paramLong, paramInteger.intValue(), paramString);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
-    }
-    paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramLong2);
-    if ((paramString1 != null) && (paramString1.nOpType == 6)) {
-      if (ResponseHandler.a(paramInt2))
-      {
-        if (!paramBoolean) {
-          break label153;
-        }
-        QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2, 2131429825, 1).b(this.a.a());
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
-      return;
-      label153:
-      if (ResponseHandler.b())
-      {
-        ResponseHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      }
-      else if (!TextUtils.isEmpty(paramString2))
-      {
-        QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), paramString2, 1).b(this.a.a());
-      }
-      else
-      {
-        QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131428197, 1).b(this.a.a());
-        continue;
-        if ((!paramBoolean) && (paramString1 != null) && (!TextUtils.isEmpty(paramString1.peerUin)) && (paramString1.peerUin.equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))) {
-          FileManagerUtil.a(paramLong2, paramInt2, paramString2);
+        StringBuilder localStringBuilder = new StringBuilder();
+        if (this.jdField_a_of_type_Ryw.a != null) {
+          this.jdField_a_of_type_Ryw.a.display(localStringBuilder, 0);
         }
       }
     }
-  }
-  
-  protected void b()
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
-  }
-  
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
-  }
-  
-  protected void c()
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
-  }
-  
-  protected void d()
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
+    int i = jdField_a_of_type_Ryv.a(this.jdField_a_of_type_Ryw, this);
+    if (i != 0) {
+      a(null, i, i, a(i), false, this.jdField_a_of_type_Ryp);
     }
+  }
+  
+  public void a(Object paramObject, int paramInt1, int paramInt2, String paramString, boolean paramBoolean, ryp paramryp)
+  {
+    if ((paramObject instanceof UniAttribute)) {
+      this.jdField_a_of_type_ComQqJceWupUniAttribute = ((UniAttribute)paramObject);
+    }
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.b = paramInt1;
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Ryp = paramryp;
+    if (1000006 == paramInt1) {
+      this.jdField_a_of_type_JavaLangString = ajjy.a(2131651127);
+    }
+    rys.a().b(this);
+  }
+  
+  public boolean a()
+  {
+    return (this.b == 0) || (this.b == 1000) || ((Math.abs(this.b) <= 19999) && (Math.abs(this.b) >= 19000));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ryz
  * JD-Core Version:    0.7.0.1
  */

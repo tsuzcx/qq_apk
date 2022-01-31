@@ -7,24 +7,24 @@ import com.tencent.pb.scupdate.SCUpdatePB.VCR;
 
 public class VasQuickUpdateManager$VCR
 {
-  public int a;
-  public long a;
-  public String a;
-  public long b;
-  public String b;
+  public long bid;
+  public int optype;
+  public String scid;
+  public long seq;
+  public String version;
   
-  public void a(SCUpdatePB.VCR paramVCR)
+  public void set(SCUpdatePB.VCR paramVCR)
   {
-    this.jdField_a_of_type_Long = paramVCR.seq.get();
-    this.jdField_b_of_type_Long = paramVCR.bid.get();
-    this.jdField_a_of_type_JavaLangString = paramVCR.scid.get();
-    this.jdField_a_of_type_Int = paramVCR.optype.get();
-    this.jdField_b_of_type_JavaLangString = paramVCR.version.get();
+    this.seq = paramVCR.seq.get();
+    this.bid = paramVCR.bid.get();
+    this.scid = paramVCR.scid.get();
+    this.optype = paramVCR.optype.get();
+    this.version = paramVCR.version.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasQuickUpdateManager.VCR
  * JD-Core Version:    0.7.0.1
  */

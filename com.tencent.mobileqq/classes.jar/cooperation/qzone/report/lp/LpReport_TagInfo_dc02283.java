@@ -22,7 +22,7 @@ public class LpReport_TagInfo_dc02283
     return null;
   }
   
-  public Map toMap()
+  public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
     if (this.uin <= 1000L) {}

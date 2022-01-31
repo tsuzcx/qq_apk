@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class QPSingleUpdateProto$LoginSig
-  extends MessageMicro
+  extends MessageMicro<LoginSig>
 {
   public static final int BYTES_SIG_FIELD_NUMBER = 2;
   public static final int UINT32_TYPE_FIELD_NUMBER = 1;
@@ -24,7 +24,7 @@ public final class QPSingleUpdateProto$LoginSig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.qqprotect.singleupdate.QPSingleUpdateProto.LoginSig
  * JD-Core Version:    0.7.0.1
  */

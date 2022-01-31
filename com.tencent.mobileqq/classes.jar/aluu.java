@@ -1,53 +1,42 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.graytip.UniteGrayTipParam;
-import com.tencent.qidian.controller.QidianHandler;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.app.Activity;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.colornote.swipeback.SwipeBackLayout;
 
 public class aluu
-  implements Runnable
+  extends GestureDetector.SimpleOnGestureListener
 {
-  public aluu(QidianHandler paramQidianHandler, ToServiceMsg paramToServiceMsg, HashMap paramHashMap) {}
+  public aluu(SwipeBackLayout paramSwipeBackLayout) {}
   
-  public void run()
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    try
-    {
-      Object localObject = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.getString("extUin");
-      long l = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.getLong("uinseq");
-      int i = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData.getInt("uinType");
-      if (!TextUtils.isEmpty((CharSequence)localObject))
-      {
-        localObject = this.jdField_a_of_type_ComTencentQidianControllerQidianHandler.b.a().b((String)localObject, i, l);
-        if ((localObject != null) && ((localObject instanceof MessageForUniteGrayTip)))
-        {
-          localObject = (MessageForUniteGrayTip)localObject;
-          if ((((MessageForUniteGrayTip)localObject).tipParam != null) && (((MessageForUniteGrayTip)localObject).tipParam.a != null))
-          {
-            ((MessageForUniteGrayTip)localObject).tipParam.a.clear();
-            ((MessageForUniteGrayTip)localObject).updateUniteGrayTipMsgData(this.jdField_a_of_type_ComTencentQidianControllerQidianHandler.b);
-            this.jdField_a_of_type_ComTencentQidianControllerQidianHandler.a(1005, true, this.jdField_a_of_type_JavaUtilHashMap);
-          }
-        }
-      }
-      return;
+    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
-    catch (Exception localException)
+    float f1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+    float f2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / f1);
+    if ((!this.a.jdField_a_of_type_Boolean) || (paramFloat1 < 200.0F)) {
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+    }
+    if ((f1 < 0.0F) && (f2 < 0.5F))
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(QidianHandler.a(), 2, "handleBlockBulkMsg ", localException);
+      if (!(this.a.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+        break label126;
+      }
+      this.a.c = true;
+      this.a.d();
+    }
+    for (;;)
+    {
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
+      label126:
+      this.a.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aluu
  * JD-Core Version:    0.7.0.1
  */

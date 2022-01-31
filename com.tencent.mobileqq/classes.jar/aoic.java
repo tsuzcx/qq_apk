@@ -1,22 +1,20 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-class aoic
-  implements aoii
+public class aoic
+  extends aohx
 {
-  aoic(aoib paramaoib, boolean paramBoolean) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  long b;
   
-  public void a()
+  public aoic(FileManagerEntity paramFileManagerEntity)
   {
-    if (DoodleLayout.a(this.jdField_a_of_type_Aoib.a) != null) {
-      DoodleLayout.a(this.jdField_a_of_type_Aoib.a).c(true);
-    }
-    this.jdField_a_of_type_Aoib.a.a().b(this.jdField_a_of_type_Boolean);
+    super(paramFileManagerEntity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoic
  * JD-Core Version:    0.7.0.1
  */

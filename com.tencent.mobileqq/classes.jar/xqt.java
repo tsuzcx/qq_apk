@@ -1,69 +1,40 @@
-import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ar.ARNativeBridge;
-import com.tencent.mobileqq.earlydownload.EarlyDownloadManager.EarlyDownLoadListener;
-import com.tencent.mobileqq.earlydownload.handler.ArNativeSoDownloadHandler;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.device.qfind.BluetoothLeService;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class xqt
-  implements EarlyDownloadManager.EarlyDownLoadListener
+class xqt
+  implements ServiceConnection
 {
-  public xqt(RecentOptPopBar paramRecentOptPopBar, ArNativeSoDownloadHandler paramArNativeSoDownloadHandler) {}
+  xqt(xqr paramxqr) {}
   
-  public void a(XmlData paramXmlData)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
+    xqr.a(this.a, ((xwz)paramIBinder).a());
+    if ((!xqr.a(this.a).a()) && (QLog.isColorLevel())) {
+      QLog.e("DeviceBLE2", 2, "Unable to initialize Bluetooth");
+    }
     if (QLog.isColorLevel()) {
-      QLog.d("RecentOptPopBar", 2, "ArMap, ArNativeSoDownloadHandler, onDownloadBegin, data=" + paramXmlData);
+      QLog.i("DeviceBLE2", 2, "ServiceConnection onServiceConnected ");
+    }
+    if (!xqr.a(this.a).isEmpty())
+    {
+      this.a.a = ((xxe)xqr.a(this.a).get(0));
+      xqr.a(this.a).remove(0);
+      xqr.a(this.a).a(this.a.a.a, this.a.a.b);
     }
   }
   
-  public void a(XmlData paramXmlData, long paramLong1, long paramLong2)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentOptPopBar", 2, "ArMap, onDownloadProgress, onDownloadBegin, data=" + paramXmlData + ", cur=" + paramLong1 + ", total=" + paramLong2);
-    }
-  }
-  
-  public void a(XmlData paramXmlData, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentOptPopBar", 2, "ArMap, ArNativeSoDownloadHandler, onDownloadFinish, data=" + paramXmlData + ", result=" + paramBoolean1 + ", errCode=" + paramInt + ", delRes=" + paramBoolean2 + ", filePath=" + paramString);
-    }
-    if (!paramBoolean1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptPopBar.a.runOnUiThread(new xqu(this));
-      this.jdField_a_of_type_ComTencentMobileqqEarlydownloadHandlerArNativeSoDownloadHandler.b(this);
-      return;
-    }
-    if (!ARNativeBridge.loadNativeLibrary())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptPopBar.a.runOnUiThread(new xqv(this));
-      QLog.d("RecentOptPopBar", 1, "ArMap, ArNativeSoDownloadHandler, onDownloadFinish, loadNativeLibrary failed");
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptPopBar.a.runOnUiThread(new xqw(this));
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.d("RecentOptPopBar", 2, "ArMap, ArNativeSoDownloadHandler, load so success");
-      }
-      RecentOptPopBar.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptPopBar);
-    }
-  }
-  
-  public void b(XmlData paramXmlData)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentOptPopBar", 2, "ArMap, ArNativeSoDownloadHandler, onDownloadCancel, data=" + paramXmlData);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqEarlydownloadHandlerArNativeSoDownloadHandler.b(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentOptPopBar.a.runOnUiThread(new xqx(this));
+    xqr.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     xqt
  * JD-Core Version:    0.7.0.1
  */

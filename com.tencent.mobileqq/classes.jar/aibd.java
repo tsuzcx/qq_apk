@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.search.model.PublicAccountSearchResultModel;
-import com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine;
-import java.util.Comparator;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public final class aibd
-  implements Comparator
+class aibd
+  implements View.OnTouchListener
 {
-  public int a(PublicAccountSearchResultModel paramPublicAccountSearchResultModel1, PublicAccountSearchResultModel paramPublicAccountSearchResultModel2)
+  aibd(aibc paramaibc) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int j = Long.signum(paramPublicAccountSearchResultModel2.b() - paramPublicAccountSearchResultModel1.b());
-    int i = j;
-    if (j == 0) {
-      i = PublicAccountSearchEngine.a(paramPublicAccountSearchResultModel1, paramPublicAccountSearchResultModel2);
+    switch (paramMotionEvent.getAction())
+    {
     }
-    return i;
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 

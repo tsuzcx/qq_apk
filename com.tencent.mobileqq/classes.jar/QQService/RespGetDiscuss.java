@@ -11,10 +11,10 @@ public final class RespGetDiscuss
   extends JceStruct
   implements Cloneable
 {
-  static ArrayList cache_DiscussList;
-  static ArrayList cache_FavoriteDiscussList;
-  public ArrayList DiscussList;
-  public ArrayList FavoriteDiscussList;
+  static ArrayList<DiscussInfo> cache_DiscussList;
+  static ArrayList<DiscussInfo> cache_FavoriteDiscussList;
+  public ArrayList<DiscussInfo> DiscussList;
+  public ArrayList<DiscussInfo> FavoriteDiscussList;
   
   static
   {
@@ -28,7 +28,7 @@ public final class RespGetDiscuss
   
   public RespGetDiscuss() {}
   
-  public RespGetDiscuss(ArrayList paramArrayList1, ArrayList paramArrayList2)
+  public RespGetDiscuss(ArrayList<DiscussInfo> paramArrayList1, ArrayList<DiscussInfo> paramArrayList2)
   {
     this.DiscussList = paramArrayList1;
     this.FavoriteDiscussList = paramArrayList2;
@@ -85,7 +85,7 @@ public final class RespGetDiscuss
     return "QQService.RespGetDiscuss";
   }
   
-  public ArrayList getDiscussList()
+  public ArrayList<DiscussInfo> getDiscussList()
   {
     return this.DiscussList;
   }

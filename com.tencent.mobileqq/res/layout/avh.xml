@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/dcj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="80.0dip" android:src="@drawable/cqv" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/tk" android:textColor="@color/bp" android:gravity="center_horizontal" android:id="@id/jft" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:text="@string/fvq" android:layout_below="@id/dcj" android:layout_centerHorizontal="true" android:lineSpacingExtra="5.0dip" />
+    <Button android:enabled="false" android:id="@id/f8w" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="70.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="70.0dip" android:text="@string/fzq" android:layout_below="@id/jft" style="@style/hs" />
+    <LinearLayout android:id="@id/awx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="65.0dip" android:layout_marginTop="14.0dip" android:layout_marginRight="65.0dip" android:layout_below="@id/f8w">
+        <CheckBox android:id="@id/awt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:button="@drawable/hq" />
+        <TextView android:textSize="14.0sp" android:textColor="#ff797979" android:id="@id/jfu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/fvr" android:lineSpacingExtra="3.0dip" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="15.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/f2b" />
+        <TextView android:textSize="12.0sp" android:textColor="#ff797979" android:gravity="center" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:text="@string/fvp" />
+    </LinearLayout>
+</RelativeLayout>

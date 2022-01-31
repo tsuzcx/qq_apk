@@ -5,7 +5,7 @@ public class AttachedAdData
 {
   public AttachedAdData()
   {
-    this.d = 11;
+    super(11);
   }
 }
 

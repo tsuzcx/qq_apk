@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/laba_entrys_layout" android:background="@drawable/skin_entry_background_theme_version2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/e6t" android:background="@drawable/skin_searchbar_bg_theme_version2" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="@dimen/atz">
+        <include android:id="@id/search_box" android:layout_width="fill_parent" android:layout_height="@dimen/atz" layout="@layout/bx4" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="85.0dip">
+        <RelativeLayout android:id="@id/qzone_feed_entry" android:background="@drawable/j7" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" android:contentDescription="@string/qtr">
+            <ImageView android:id="@id/hh9" android:background="@drawable/ewe" style="@style/e3" />
+            <TextView android:id="@id/hhb" android:layout_marginTop="5.0dip" android:text="@string/hvk" android:layout_below="@id/hh9" style="@style/em" />
+            <ImageSwitcher android:gravity="center" android:id="@id/hh_" android:padding="1.0dip" android:visibility="gone" android:layout_width="31.0dip" android:layout_height="31.0dip" android:layout_marginRight="-16.0dip" android:layout_alignRight="@id/hh9" android:layout_alignBottom="@id/hh9" />
+            <TextView android:id="@id/qzone_feed_reddot" android:visibility="invisible" android:layout_marginLeft="@dimen/ro" android:layout_marginBottom="@dimen/rm" android:layout_alignLeft="@id/hh9" android:layout_alignBottom="@id/hh9" style="@style/cg" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/f67" android:background="@drawable/j7" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" android:contentDescription="@string/qtq">
+            <ImageView android:id="@id/f68" android:background="@drawable/qq_leba_list_seek_neighbour" style="@style/e3" />
+            <TextView android:id="@id/f69" android:layout_marginTop="5.0dip" android:text="@string/cfz" android:layout_below="@id/f68" style="@style/em" />
+            <TextView android:textSize="11.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/f6_" android:background="@drawable/skin_tips_newmessage" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-15.0dip" android:layout_marginTop="-4.0dip" android:singleLine="true" android:layout_toRightOf="@id/f68" android:layout_alignTop="@id/f68" android:lineSpacingExtra="0.0dip" />
+            <com.tencent.image.URLImageView android:gravity="center" android:id="@id/f6e" android:background="@drawable/agi" android:padding="1.0dip" android:visibility="gone" android:layout_width="31.0dip" android:layout_height="31.0dip" android:layout_marginRight="-16.0dip" android:src="@drawable/com" android:layout_alignRight="@id/f68" android:layout_alignBottom="@id/f68" />
+            <ImageView android:id="@id/dhm" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-4.0dip" android:layout_marginRight="-4.0dip" android:src="@drawable/skin_tips_dot" android:layout_alignTop="@id/f6e" android:layout_alignRight="@id/f6e" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/l68" android:background="@drawable/j7" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" android:contentDescription="@string/qts">
+            <ImageView android:id="@id/l69" android:background="@drawable/dkj" style="@style/e3" />
+            <TextView android:id="@id/l6_" android:layout_marginTop="5.0dip" android:text="@string/ihb" android:layout_below="@id/l69" style="@style/em" />
+            <com.tencent.image.URLImageView android:gravity="center" android:id="@id/alt" android:background="@drawable/agi" android:padding="1.0dip" android:visibility="invisible" android:layout_width="31.0dip" android:layout_height="31.0dip" android:layout_marginRight="-16.0dip" android:src="@drawable/com" android:layout_alignRight="@id/l69" android:layout_alignBottom="@id/l69" />
+            <TextView android:id="@id/l6a" android:layout_marginLeft="@dimen/ro" android:layout_marginBottom="@dimen/rm" android:layout_alignLeft="@id/l69" android:layout_alignBottom="@id/l69" style="@style/cg" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

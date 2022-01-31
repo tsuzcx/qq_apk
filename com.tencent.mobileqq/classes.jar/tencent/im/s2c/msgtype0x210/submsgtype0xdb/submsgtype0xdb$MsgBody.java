@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class submsgtype0xdb$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   public static final int STRING_RSPBODY_FIELD_NUMBER = 2;
   public static final int UINT32_RSPTYPE_FIELD_NUMBER = 1;

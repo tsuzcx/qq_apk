@@ -9,17 +9,20 @@ import java.util.Map;
 public final class get_video_float_layer_req
   extends JceStruct
 {
-  static Map cache_busi_param = new HashMap();
-  static Map cache_extend_info;
-  static QzoneWeisiReqcommendReq cache_qzone_weisi_req = new QzoneWeisiReqcommendReq();
+  static Map<Integer, String> cache_busi_param = new HashMap();
+  static Map<String, String> cache_extend_info;
+  static byte[] cache_layer_user_session_action;
+  static QzoneWeisiReqcommendReq cache_qzone_weisi_req;
   static int cache_req_type;
   public int appid;
   public String attach_info = "";
-  public Map busi_param;
-  public Map extend_info;
+  public Map<Integer, String> busi_param;
+  public Map<String, String> extend_info;
   public int get_type;
+  public byte[] layer_user_session_action;
   public QzoneWeisiReqcommendReq qzone_weisi_req;
   public int req_type = 1;
+  public String rooftop_id = "";
   public int scene;
   public String ugckey = "";
   public long uin;
@@ -31,23 +34,28 @@ public final class get_video_float_layer_req
     cache_extend_info = new HashMap();
     cache_extend_info.put("", "");
     cache_req_type = 0;
+    cache_qzone_weisi_req = new QzoneWeisiReqcommendReq();
+    cache_layer_user_session_action = (byte[])new byte[1];
+    ((byte[])cache_layer_user_session_action)[0] = 0;
   }
   
   public get_video_float_layer_req() {}
   
-  public get_video_float_layer_req(long paramLong, int paramInt1, int paramInt2, String paramString1, String paramString2, Map paramMap1, Map paramMap2, String paramString3, int paramInt3, int paramInt4, QzoneWeisiReqcommendReq paramQzoneWeisiReqcommendReq)
+  public get_video_float_layer_req(long paramLong, int paramInt1, int paramInt2, String paramString1, String paramString2, Map<Integer, String> paramMap, Map<String, String> paramMap1, String paramString3, int paramInt3, int paramInt4, QzoneWeisiReqcommendReq paramQzoneWeisiReqcommendReq, String paramString4, byte[] paramArrayOfByte)
   {
     this.uin = paramLong;
     this.scene = paramInt1;
     this.appid = paramInt2;
     this.ugckey = paramString1;
     this.video_url = paramString2;
-    this.busi_param = paramMap1;
-    this.extend_info = paramMap2;
+    this.busi_param = paramMap;
+    this.extend_info = paramMap1;
     this.attach_info = paramString3;
     this.get_type = paramInt3;
     this.req_type = paramInt4;
     this.qzone_weisi_req = paramQzoneWeisiReqcommendReq;
+    this.rooftop_id = paramString4;
+    this.layer_user_session_action = paramArrayOfByte;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -63,6 +71,8 @@ public final class get_video_float_layer_req
     this.get_type = paramJceInputStream.read(this.get_type, 8, false);
     this.req_type = paramJceInputStream.read(this.req_type, 9, false);
     this.qzone_weisi_req = ((QzoneWeisiReqcommendReq)paramJceInputStream.read(cache_qzone_weisi_req, 10, false));
+    this.rooftop_id = paramJceInputStream.readString(11, false);
+    this.layer_user_session_action = ((byte[])paramJceInputStream.read(cache_layer_user_session_action, 12, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -89,6 +99,12 @@ public final class get_video_float_layer_req
     paramJceOutputStream.write(this.req_type, 9);
     if (this.qzone_weisi_req != null) {
       paramJceOutputStream.write(this.qzone_weisi_req, 10);
+    }
+    if (this.rooftop_id != null) {
+      paramJceOutputStream.write(this.rooftop_id, 11);
+    }
+    if (this.layer_user_session_action != null) {
+      paramJceOutputStream.write(this.layer_user_session_action, 12);
     }
   }
 }

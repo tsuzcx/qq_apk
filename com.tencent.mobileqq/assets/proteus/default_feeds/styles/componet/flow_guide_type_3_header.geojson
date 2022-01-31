@@ -1,0 +1,40 @@
+{
+    "view_type": "UIView",
+    "view_id": "id_header_type_3_wrapper",
+    "event_type": "cmd_url_click_card_report",
+    "height": {
+        "type": "wrap_content"
+    },
+    "width": {
+        "type":"relative",
+        "value":"375"
+    },
+    "attributes": {
+        "setAttatchInfo:": "$fg_url"
+    },
+    "data_attributes": {
+        "setLocalInfo:": {
+            "click_area":"1"
+        }
+    },
+    "subviews": [
+        {
+            "view_type": "ReadInjoyAsynImageView",
+            "view_id": "id_type3_header_img",
+            "height": {
+                "type":"relative",
+                "value":"96"
+            },
+            "width": {
+                "type":"relative",
+                "value":"375"
+            },
+            "attributes": {
+                "setImageWithURLString:lineup:": [
+                    "$type3_header_image_url",
+                    "1"
+                ]
+            }
+        }
+    ]
+}

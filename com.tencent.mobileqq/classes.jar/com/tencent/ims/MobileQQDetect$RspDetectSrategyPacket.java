@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class MobileQQDetect$RspDetectSrategyPacket
-  extends MessageMicro
+  extends MessageMicro<RspDetectSrategyPacket>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_buffer = PBField.initBytes(ByteStringMicro.EMPTY);

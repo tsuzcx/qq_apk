@@ -1,0 +1,112 @@
+{
+  "ReadInJoyDailyDynamicWeatherHeader": {
+    "view_type": "UIView",
+    "view_id": "id_daily_dynamic_header",
+    "layout_type": "layout_relative",
+    "default_visible": "YES",
+    "padding_right": "14",
+    "height": {
+      "type": "relative",
+      "value": "175"
+    },
+    "width": {
+      "type": "relative",
+      "value": "375"
+    },
+    "subviews": [
+      {
+        "view_type": "UIView",
+        "view_id": "id_temperature_container",
+        "layout_type": "layout_linear",
+        "direction": "horizontal",
+        "default_visible": "YES",
+        "align_parent_bottom": "YES",
+        "margin_bottom": "10",
+        "height": {
+          "type": "relative",
+          "value": "62.5"
+        },
+        "width": {
+          "type": "match_parent"
+        },
+        "event_type": "cmd_daily_festival_title_click",
+        "attributes": {
+        	"setAttatchInfo:": "$weather_jump_url"
+        },
+        "subviews": [
+          {
+            "view_type": "ProteusTickerView",
+            "view_id": "id_temperature",
+            "align_parent_center_vertical": "YES",
+            "margin_left": "14",
+            "padding_top": "-5",
+            "margin_right": "8",
+            "height": {
+              "type": "wrap_content"
+            },
+            "width": {
+              "type": "wrap_content"
+            },
+            "attributes": {
+              "setText:": "$temperature",
+              "setTextColorString:": "#FFFFFF",
+              "setBoldFontSizeString:": "54",
+              "setNumberOfLinesString:": "1"
+            }
+          },
+          {
+            "view_type": "UIView",
+            "layout_type": "layout_linear",
+            "view_id": "id_weather_summary_container",
+            "right_of_view": "id_temperature",
+            "direction": "vertical",
+            "align_parent_center_vertical": "YES",
+            "default_visible": "YES",
+            "height": {
+              "type": "wrap_content"
+            },
+            "width": {
+              "type": "match_parent"
+            },
+            "subviews": [
+              {
+                "view_type": "UILabel",
+                "view_id": "id_weather_summary",
+                "margin_bottom": "6.5",
+                "height": {
+                  "type": "wrap_content"
+                },
+                "width": {
+                  "type": "wrap_content"
+                },
+                "attributes": {
+                  "setText:": "$weather_summary",
+                  "setTextColorString:": "#FFFFFF",
+                  "setFontSizeString:": "15",
+                  "setNumberOfLinesString:": "1"
+                }
+              },
+              {
+                "view_type": "UILabel",
+                "view_id": "id_city_date",
+                "height": {
+                  "type": "wrap_content"
+                },
+                "width": {
+                  "type": "wrap_content"
+                },
+                "attributes": {
+                  "setText:": "$city_date",
+                  "setTextColorString:": "#FFFFFF",
+                  "setFontSizeString:": "15",
+                  "setNumberOfLinesString:": "1"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+

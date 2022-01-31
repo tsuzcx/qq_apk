@@ -5,11 +5,11 @@ import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.IBinder;
 import android.widget.Toast;
-import com.tencent.av.AVLog;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.utils.TraeHelper;
 import com.tencent.qphone.base.util.QLog;
-import joq;
+import krx;
+import llr;
+import miu;
 import mqq.app.AppService;
 
 public class AVServiceForQQ
@@ -18,9 +18,9 @@ public class AVServiceForQQ
   private int jdField_a_of_type_Int = 10;
   public Notification a;
   public VideoAppInterface a;
-  private TraeHelper jdField_a_of_type_ComTencentAvUtilsTraeHelper;
   public String a;
-  private joq jdField_a_of_type_Joq;
+  private llr jdField_a_of_type_Llr;
+  private miu jdField_a_of_type_Miu;
   private boolean jdField_a_of_type_Boolean;
   private int b = 13;
   public String b;
@@ -42,11 +42,11 @@ public class AVServiceForQQ
     if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      if (this.jdField_a_of_type_Joq != null) {
+      if (this.jdField_a_of_type_Llr != null) {
         bool2 = true;
       }
-      AVLog.d(paramIntent, String.format("onBind, appInterface[%b], AVServiceForQQ[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
-      return this.jdField_a_of_type_Joq;
+      krx.d(paramIntent, String.format("onBind, appInterface[%b], AVServiceForQQ[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+      return this.jdField_a_of_type_Llr;
     }
   }
   
@@ -56,8 +56,8 @@ public class AVServiceForQQ
     try
     {
       super.onCreate();
-      if (this.jdField_a_of_type_Joq == null) {
-        this.jdField_a_of_type_Joq = new joq(this, null);
+      if (this.jdField_a_of_type_Llr == null) {
+        this.jdField_a_of_type_Llr = new llr(this, null);
       }
     }
     catch (Exception localException1)
@@ -72,19 +72,26 @@ public class AVServiceForQQ
         if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
         for (boolean bool1 = true;; bool1 = false)
         {
-          if (this.jdField_a_of_type_Joq != null) {
-            bool2 = true;
+          for (;;)
+          {
+            if (this.jdField_a_of_type_Llr != null) {
+              bool2 = true;
+            }
+            krx.d(str1, String.format("onCreate, appInterface[%b], AVServiceForQQ[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+            return;
+            localException1 = localException1;
+            QLog.d(this.jdField_a_of_type_JavaLangString, 1, "AVServiceForQQ onCreate, Fail", localException1);
+            String str2 = super.getString(2131654840) + " 0x0a";
+            try
+            {
+              Toast.makeText(super.getBaseContext(), str2, 0).show();
+            }
+            catch (Exception localException2) {}
           }
-          AVLog.d(str1, String.format("onCreate, appInterface[%b], AVServiceForQQ[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
-          return;
-          localException1 = localException1;
-          QLog.d(this.jdField_a_of_type_JavaLangString, 1, "AVServiceForQQ onCreate, Fail", localException1);
-          String str2 = super.getString(2131428796) + " 0x0a";
-          Toast.makeText(super.getBaseContext(), str2, 0).show();
           break;
         }
       }
-      catch (Exception localException2)
+      catch (Exception localException3)
       {
         break label48;
       }
@@ -114,41 +121,60 @@ public class AVServiceForQQ
     if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
     for (bool1 = true;; bool1 = false)
     {
-      if (this.jdField_a_of_type_Joq != null) {
+      if (this.jdField_a_of_type_Llr != null) {
         bool2 = true;
       }
-      AVLog.d(str, String.format("onDestroy, appInterface[%b], AVServiceForQQ[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
+      krx.d(str, String.format("onDestroy, appInterface[%b], AVServiceForQQ[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
       return;
     }
   }
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
-    boolean bool2 = false;
     if ((this.app instanceof VideoAppInterface)) {
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = ((VideoAppInterface)this.app);
     }
+    String str;
+    boolean bool1;
     if (QLog.isDevelopLevel())
     {
-      paramIntent = this.jdField_a_of_type_JavaLangString;
+      str = this.jdField_a_of_type_JavaLangString;
       if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
-        break label101;
+        break label143;
+      }
+      bool1 = true;
+      if (this.jdField_a_of_type_Llr == null) {
+        break label149;
       }
     }
-    label101:
-    for (boolean bool1 = true;; bool1 = false)
+    label143:
+    label149:
+    for (boolean bool2 = true;; bool2 = false)
     {
-      if (this.jdField_a_of_type_Joq != null) {
-        bool2 = true;
+      QLog.d(str, 4, String.format("onCreate, appInterface[%b], AVServiceForQQ[%b], flags[%d], startId[%d]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+      if ((paramIntent != null) && (paramIntent.getBooleanExtra("setForeground", false)))
+      {
+        bool1 = paramIntent.getBooleanExtra("foreground", false);
+        paramIntent = (Notification)paramIntent.getParcelableExtra("notification");
       }
-      QLog.d(paramIntent, 4, String.format("onCreate, appInterface[%b], AVServiceForQQ[%b], flags[%d], startId[%d]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-      return 2;
+      try
+      {
+        this.jdField_a_of_type_Llr.a(bool1, paramIntent);
+        return 2;
+      }
+      catch (Throwable paramIntent)
+      {
+        QLog.e(this.jdField_a_of_type_JavaLangString, 1, "", paramIntent);
+      }
+      bool1 = false;
+      break;
     }
+    return 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.service.AVServiceForQQ
  * JD-Core Version:    0.7.0.1
  */

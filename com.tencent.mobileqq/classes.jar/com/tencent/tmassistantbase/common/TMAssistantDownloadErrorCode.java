@@ -27,6 +27,7 @@ public class TMAssistantDownloadErrorCode
   public static final int DownloadSDKErrorCode_WRITE_FILE_FAILED = 703;
   public static final int DownloadSDKErrorCode_WRITE_FILE_NO_ENOUGH_SPACE = 710;
   public static final int DownloadSDKErrorCode_WRITE_FILE_SDCARD_EXCEPTION = 711;
+  public static final int DownloadSDK_DB_DATA_NOT_READY = 6;
   public static final int DownloadSDK_START_FAILED_BUSY = 5;
   public static final int DownloadSDK_START_FAILED_EXISTED = 4;
   public static final int DownloadSDK_START_FAILED_NETWORK_NOT_CONNECTED = 1;
@@ -36,7 +37,7 @@ public class TMAssistantDownloadErrorCode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmassistantbase.common.TMAssistantDownloadErrorCode
  * JD-Core Version:    0.7.0.1
  */

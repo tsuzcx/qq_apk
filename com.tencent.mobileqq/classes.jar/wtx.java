@@ -1,20 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contacts.view.SimpleSlidingIndicator;
+import com.tencent.aekit.api.standard.filter.AEFilterManager;
 
-public class wtx
-  implements View.OnClickListener
+class wtx
+  implements wuf
 {
-  public wtx(SimpleSlidingIndicator paramSimpleSlidingIndicator, int paramInt) {}
+  wtx(wtw paramwtw) {}
   
-  public void onClick(View paramView)
+  public void a() {}
+  
+  public void a(int paramInt, AEFilterManager paramAEFilterManager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsViewSimpleSlidingIndicator.a(this.jdField_a_of_type_Int, true, true);
+    this.a.a(paramInt, paramAEFilterManager);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wtx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.List;
 
 public class ugv
-  implements View.OnClickListener
+  extends QQUIEventReceiver<ugr, ugu>
 {
-  public ugv(TroopMemberListActivity paramTroopMemberListActivity) {}
-  
-  public void onClick(View paramView)
+  public ugv(ugr paramugr)
   {
-    this.a.setResult(0, this.a.getIntent());
-    this.a.finish();
-    if (this.a.d == 11) {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8006215", "0X8006215", 0, 0, "1", "", "", "");
+    super(paramugr);
+  }
+  
+  public void a(@NonNull ugr paramugr, @NonNull ugu paramugu)
+  {
+    if (paramugu.jdField_a_of_type_Boolean)
+    {
+      if (paramugu.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+      {
+        ugr.a(paramugr, paramugu.jdField_a_of_type_JavaUtilList, true);
+        ugr.a(paramugr).a(true);
+      }
+      return;
     }
+    ugr.a(paramugr, paramugu);
+    ugr.a(paramugr).remove(ugr.b());
+    ugr.a(paramugr);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return ugu.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ugv
  * JD-Core Version:    0.7.0.1
  */

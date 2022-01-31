@@ -1,23 +1,23 @@
+import android.text.style.ClickableSpan;
 import android.view.View;
-import com.nineoldandroids.animation.ValueAnimator;
-import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
+import android.view.View.OnClickListener;
 
-public class lpz
-  implements ValueAnimator.AnimatorUpdateListener
+final class lpz
+  extends ClickableSpan
 {
-  public lpz(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment, View paramView) {}
+  lpz(lqe paramlqe) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_AndroidViewView.setScaleX(f);
-    this.jdField_a_of_type_AndroidViewView.setScaleY(f);
+    View.OnClickListener localOnClickListener = this.a.a();
+    if (localOnClickListener != null) {
+      localOnClickListener.onClick(paramView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lpz
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ public class DownloadRequest
   private boolean mCacheEntry = false;
   private boolean mIsCanceled = false;
   private Downloader.DownloadListener mListener;
-  private Map mParams;
+  private Map<String, String> mParams;
   private final String[] mPaths;
   private final String mUrl;
   public Downloader.DownloadMode mode = Downloader.DownloadMode.FastMode;
@@ -29,7 +29,7 @@ public class DownloadRequest
         bool1 = true;
       }
     }
-    AssertUtil.a(bool1);
+    AssertUtil.assertTrue(bool1);
     this.mUrl = paramString;
     this.mPaths = paramArrayOfString;
     this.mListener = paramDownloadListener;
@@ -87,7 +87,7 @@ public class DownloadRequest
     return this.mListener;
   }
   
-  public Map getParams()
+  public Map<String, String> getParams()
   {
     return this.mParams;
   }

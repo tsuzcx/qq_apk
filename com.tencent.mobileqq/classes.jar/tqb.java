@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.richstatus.IActionListener;
+import android.os.Parcel;
+import android.support.v4.os.ParcelableCompatCreatorCallbacks;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.SavedState;
 
-public class tqb
-  implements IActionListener
+public final class tqb
+  implements ParcelableCompatCreatorCallbacks<XViewPager.SavedState>
 {
-  public tqb(QQSettingMe paramQQSettingMe) {}
-  
-  public void a(int paramInt1, int paramInt2)
+  public XViewPager.SavedState a(Parcel paramParcel, ClassLoader paramClassLoader)
   {
-    if ((this.a.c) && (paramInt1 == 102) && (paramInt2 == 300)) {
-      this.a.B();
-    }
+    return new XViewPager.SavedState(paramParcel, paramClassLoader);
+  }
+  
+  public XViewPager.SavedState[] a(int paramInt)
+  {
+    return new XViewPager.SavedState[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tqb
  * JD-Core Version:    0.7.0.1
  */

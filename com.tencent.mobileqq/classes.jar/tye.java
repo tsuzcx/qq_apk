@@ -1,30 +1,75 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
+import android.support.annotation.NonNull;
+import com.tencent.image.RegionDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.HashSet;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class tye
-  implements Runnable
+  implements tyh
 {
-  public tye(SplashActivity paramSplashActivity) {}
+  private final HashSet<URLDrawable> jdField_a_of_type_JavaUtilHashSet = new HashSet();
+  private final ConcurrentHashMap<String, HashSet<tyi>> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   
-  public void run()
+  private Bitmap a(@NonNull URLDrawable paramURLDrawable, int paramInt1, int paramInt2)
   {
-    boolean bool = SettingCloneUtil.readValue(this.a.app.getApp(), this.a.app.getAccount(), null, "pcactive_notice_key", false);
-    if ((!SettingCloneUtil.readValue(this.a.app.getApp(), this.a.app.getAccount(), null, "pcactive_has_notice", false)) && (bool))
+    Object localObject = paramURLDrawable.getCurrDrawable();
+    if ((localObject instanceof RegionDrawable))
     {
-      SettingCloneUtil.writeValue(this.a.app.getApp(), this.a.app.getAccount(), null, "pcactive_has_notice", true);
-      Intent localIntent = new Intent("mqq.intent.action.NOTICE_ON_PCACTIVE");
-      localIntent.addFlags(268435456);
-      localIntent.putExtra("uin", this.a.app.getAccount());
-      BaseApplicationImpl.getApplication().startActivity(localIntent);
+      localObject = ((RegionDrawable)localObject).getBitmap();
+      if (localObject != null) {
+        return localObject;
+      }
     }
+    return bacm.a(paramURLDrawable, paramInt1, paramInt2);
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2, tyi paramtyi)
+  {
+    Object localObject = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = new ColorDrawable(1073741824);
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable;
+    try
+    {
+      URL localURL = new URL(paramString);
+      localObject = URLDrawable.getDrawable(localURL, (URLDrawable.URLDrawableOptions)localObject);
+      ((URLDrawable)localObject).setURLDrawableListener(new tyf(this, paramString, paramInt1, paramInt2, (URLDrawable)localObject));
+      ((URLDrawable)localObject).setAutoDownload(true);
+      if (((URLDrawable)localObject).getStatus() != 1) {
+        break label177;
+      }
+      urk.a("story.icon.ShareGroupIconManager", "download url success directly. %s", paramString);
+      localObject = a((URLDrawable)localObject, paramInt1, paramInt2);
+      if (localObject != null)
+      {
+        paramtyi.a(paramString, (Bitmap)localObject);
+        return;
+      }
+    }
+    catch (MalformedURLException localMalformedURLException)
+    {
+      urk.d("story.icon.ShareGroupIconManager", localMalformedURLException, "can not download url. %s", new Object[] { paramString });
+      paramtyi.a(paramString, new Throwable("getBitmapFromDrawable failed"));
+      return;
+    }
+    urk.e("story.icon.ShareGroupIconManager", "download url success directly. but OOM occur !");
+    paramtyi.a(paramString, new Throwable("getBitmapFromDrawable failed"));
+    return;
+    label177:
+    urk.a("story.icon.ShareGroupIconManager", "download url pending. %s", paramString);
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putIfAbsent(paramString, new HashSet());
+    ((HashSet)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString)).add(paramtyi);
+    this.jdField_a_of_type_JavaUtilHashSet.add(localMalformedURLException);
+    localMalformedURLException.startDownload();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tye
  * JD-Core Version:    0.7.0.1
  */

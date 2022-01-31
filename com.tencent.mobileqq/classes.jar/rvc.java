@@ -1,115 +1,110 @@
-import android.content.Context;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.emoticon.SogouEmoji;
-import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.open.agent.util.AuthorityUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.InputMethodUtil;
-import com.tencent.widget.XEditTextEx;
-import com.tencent.widget.XEditTextEx.OnPrivateIMECommandListener;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class rvc
-  implements XEditTextEx.OnPrivateIMECommandListener
+final class rvc
+  implements ViewBase.OnClickListener
 {
-  public rvc(BaseChatPie paramBaseChatPie) {}
+  rvc(ArticleInfo paramArticleInfo, Activity paramActivity, qoe paramqoe, int paramInt1, int paramInt2, ViewBase paramViewBase) {}
   
-  public boolean a(String paramString, Bundle paramBundle)
+  public void onClick(ViewBase paramViewBase)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, "onPrivateIMECommand(), action:" + paramString);
-    }
-    int i;
-    if ((!TextUtils.isEmpty(paramString)) && (paramBundle != null) && (InputMethodUtil.a(this.a.jdField_a_of_type_AndroidContentContext)))
-    {
-      if ((!"com.sogou.inputmethod.expression".equals(paramString)) && (!"com.tencent.qqpinyin.expression".equals(paramString))) {
-        break label182;
-      }
-      if (!"com.sogou.inputmethod.expression".equals(paramString)) {
-        break label168;
-      }
-      paramString = paramBundle.getString("SOGOU_EXP_PATH");
-      i = 1034;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.BaseChatPie", 2, "onPrivateIMECommand(), path:" + paramString + ", busiType = " + i);
-      }
-      if (!TextUtils.isEmpty(paramString)) {
-        ChatActivityFacade.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramString, i);
-      }
-    }
-    label168:
-    label182:
-    do
-    {
-      do
+    boolean bool2 = false;
+    AdvertisementInfo localAdvertisementInfo = (AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+    rvb.a(this.jdField_a_of_type_AndroidAppActivity, localAdvertisementInfo, this.jdField_a_of_type_Qoe, this.jdField_a_of_type_Int);
+    int j = this.b;
+    int i = j;
+    if (j == 6) {
+      if ((this.jdField_a_of_type_Qoe != null) && (this.jdField_a_of_type_Qoe.a() != null))
       {
-        return true;
-        paramString = paramBundle.getString("QQINPUT_EXP_PATH");
-        i = 1038;
-        break;
-        if ("com.sogou.inputmethod.appid".equals(paramString))
-        {
-          localObject1 = paramBundle.getString("SOGOU_APP_ID");
-          Object localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-          paramString = AuthorityUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), (String)localObject2, (String)localObject1);
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.aio.BaseChatPie", 2, "onPrivateIMECommand(), appId:" + (String)localObject1 + "selfUin:" + (String)localObject2 + "openId:" + paramString);
-          }
-          localObject1 = (InputMethodManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("input_method");
-          localObject2 = new Bundle();
-          ((Bundle)localObject2).putString("SOGOU_OPENID", paramString);
-          ((InputMethodManager)localObject1).sendAppPrivateCommand(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, "com.tencent.mobileqq.sogou.openid", (Bundle)localObject2);
-          paramString = paramBundle.getStringArrayList("EXP_ALL_PACKID");
-          if (BaseChatPie.a(this.a) == null) {
-            BaseChatPie.a(this.a, new SogouEmoji(this.a));
-          }
-          BaseChatPie.a(this.a).a(paramString);
-          return true;
-        }
-        if (("com.sogou.inputmethod.qqexp".equals(paramString)) || ("com.tencent.qqpinyin.qqexp".equals(paramString)))
-        {
-          i = paramBundle.getInt("PACKAGE_ID");
-          paramString = paramBundle.getString("EXP_ID");
-          paramBundle = paramBundle.getString("EXP_PATH");
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.aio.BaseChatPie", 2, "onPrivateIMECommand(), packId:" + i + ",exprId:" + paramString + ",ePath:" + paramBundle);
-          }
-          if (BaseChatPie.a(this.a) == null) {
-            BaseChatPie.a(this.a, new SogouEmoji(this.a));
-          }
-          BaseChatPie.a(this.a).a(i, paramString);
-          return true;
-        }
-      } while (!"com.tencent.mobileqq_audioArgs".equals(paramString));
-      paramString = paramBundle.getString("PCMFilePath");
-      i = paramBundle.getInt("SampleRate");
-      int j = paramBundle.getInt("Channels");
-      Object localObject1 = (QQRecorder.RecorderParam)this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.a;
-      paramBundle = paramBundle.getString("InputMethodName");
-      if (QLog.isColorLevel()) {
-        QLog.d("sougouptt", 2, "recv args from sogou, pcmPath = " + paramString + " sampleRate = " + i + " channels = " + j + " inputName = " + paramBundle + " my sampleRate = " + ((QQRecorder.RecorderParam)localObject1).a);
+        i = j;
+        if (this.jdField_a_of_type_Qoe.a().a()) {}
       }
-      if ((i == ((QQRecorder.RecorderParam)localObject1).a) && (!StringUtil.a(paramString))) {
-        break label667;
+      else
+      {
+        i = 5;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("sougouptt", 2, "invalid datas from sougou ");
-    return true;
-    label667:
-    ThreadManager.getSubThreadHandler().post(new rvd(this, paramString, i, paramBundle));
-    return true;
+    }
+    if (this.b == 103) {
+      i = 101;
+    }
+    for (j = 1;; j = 0)
+    {
+      if (this.b == 104)
+      {
+        i = 102;
+        j = 1;
+      }
+      for (;;)
+      {
+        npj.a(localAdvertisementInfo, i, null);
+        paramViewBase = null;
+        if (this.jdField_a_of_type_Qoe != null) {
+          paramViewBase = this.jdField_a_of_type_Qoe.a();
+        }
+        if ((npj.h((AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) && ((this.b == 4) || (this.b == 3) || (this.b == 1)))
+        {
+          if (this.b == 1) {
+            i = 3;
+          }
+          npj.a(this.jdField_a_of_type_AndroidAppActivity, 1);
+          rvb.a(this.jdField_a_of_type_AndroidAppActivity);
+          rvb.a(this.jdField_a_of_type_AndroidAppActivity, (AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+          nbe.a(new nmv().a(this.jdField_a_of_type_AndroidAppActivity).a(nbe.jdField_a_of_type_Int).b(nbe.ai).a((AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo).d(i).a());
+        }
+        while (rvb.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, paramViewBase, localAdvertisementInfo)) {
+          return;
+        }
+        boolean bool1 = bool2;
+        if (this.b != 6)
+        {
+          bool1 = bool2;
+          if (this.b != 5) {
+            if ((this.jdField_a_of_type_Qoe != null) && ((this.jdField_a_of_type_Int == 0) || (odm.b(this.jdField_a_of_type_Int))))
+            {
+              paramViewBase = this.jdField_a_of_type_Qoe;
+              bool1 = bool2;
+              if (qoe.a(localAdvertisementInfo, this.jdField_a_of_type_Int) != 104)
+              {
+                paramViewBase = this.jdField_a_of_type_Qoe;
+                bool1 = bool2;
+                if (qoe.a(localAdvertisementInfo, this.jdField_a_of_type_Int) == 105) {}
+              }
+            }
+            else
+            {
+              if (j != 0) {
+                break label461;
+              }
+              bool1 = bool2;
+              if (this.b != 101) {
+                if (this.b != 102) {
+                  break label461;
+                }
+              }
+            }
+          }
+        }
+        label461:
+        for (bool1 = bool2;; bool1 = true)
+        {
+          paramViewBase = new nmr();
+          if (this.b == 8) {
+            paramViewBase.c = true;
+          }
+          rvb.a(this.jdField_a_of_type_AndroidAppActivity, localAdvertisementInfo, this.jdField_a_of_type_Qoe, this.jdField_a_of_type_Int, bool1, npi.b((AdvertisementInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo), paramViewBase);
+          npl.a().a(4);
+          return;
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rvc
  * JD-Core Version:    0.7.0.1
  */

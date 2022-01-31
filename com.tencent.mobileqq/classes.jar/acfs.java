@@ -1,26 +1,22 @@
-import android.os.Message;
-import com.tencent.mobileqq.dating.NewVoteAnimHelper;
-import com.tencent.mobileqq.profile.like.PraiseInfo;
-import com.tencent.mobileqq.profile.like.PraiseManager.OnPraiseLoadListener;
-import mqq.os.MqqHandler;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class acfs
-  implements PraiseManager.OnPraiseLoadListener
+  extends beem
 {
-  public acfs(NewVoteAnimHelper paramNewVoteAnimHelper, int paramInt) {}
+  public acfs(VisitorsActivity paramVisitorsActivity) {}
   
-  public void a(int paramInt1, PraiseInfo paramPraiseInfo, int paramInt2, String paramString)
+  public void onAnimationStart(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDatingNewVoteAnimHelper.a.hasMessages(0))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqDatingNewVoteAnimHelper.a.removeMessages(0);
-      this.jdField_a_of_type_ComTencentMobileqqDatingNewVoteAnimHelper.a.obtainMessage(0, this.jdField_a_of_type_Int, 0).sendToTarget();
-    }
+    this.a.d.setVisibility(0);
+    this.a.a.setClipChildren(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acfs
  * JD-Core Version:    0.7.0.1
  */

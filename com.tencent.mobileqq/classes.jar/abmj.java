@@ -1,26 +1,36 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.armap.config.ARMapConfigManager;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
 public class abmj
-  extends SosoInterface.OnLocationListener
+  implements View.OnTouchListener
 {
-  public abmj(ARMapConfigManager paramARMapConfigManager, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public abmj(QQSettingMe paramQQSettingMe, ImageView paramImageView, TextView paramTextView, View paramView) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null)) {
-      ARMapConfigManager.a(this.a, paramSosoLbsInfo.a.a, paramSosoLbsInfo.a.b);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      mjg.a(this.jdField_a_of_type_AndroidWidgetImageView, 0.5F);
+      mjg.a(this.jdField_a_of_type_AndroidWidgetTextView, 0.5F);
+      mjg.a(this.jdField_a_of_type_AndroidViewView, 0.5F);
+      continue;
+      mjg.a(this.jdField_a_of_type_AndroidWidgetImageView, 1.0F);
+      mjg.a(this.jdField_a_of_type_AndroidWidgetTextView, 1.0F);
+      mjg.a(this.jdField_a_of_type_AndroidViewView, 1.0F);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abmj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,33 @@
-import java.io.File;
-import java.util.Comparator;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.AddAccountActivity;
 
-class zwt
-  implements Comparator
+public class zwt
+  implements TextWatcher
 {
-  zwt(zwq paramzwq) {}
+  public zwt(AddAccountActivity paramAddAccountActivity) {}
   
-  public int a(File paramFile1, File paramFile2)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramFile2.lastModified() - paramFile1.lastModified() > 0L) {
-      return 1;
+    if (paramCharSequence.length() > 0) {
+      if (this.a.a != null) {
+        this.a.a.setVisibility(0);
+      }
     }
-    return 0;
+    while ((this.a.a == null) || (!this.a.a.isShown())) {
+      return;
+    }
+    this.a.a.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zwt
  * JD-Core Version:    0.7.0.1
  */

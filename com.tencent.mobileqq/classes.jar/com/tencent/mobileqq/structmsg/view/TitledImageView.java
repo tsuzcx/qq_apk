@@ -14,7 +14,7 @@ import android.text.TextUtils.TruncateAt;
 import android.text.method.SingleLineTransformationMethod;
 import android.text.method.TransformationMethod;
 import android.util.AttributeSet;
-import com.tencent.mobileqq.text.QQText;
+import axkd;
 import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
 
 public class TitledImageView
@@ -128,12 +128,12 @@ public class TitledImageView
   
   public void setTitle(CharSequence paramCharSequence)
   {
-    if ((this.jdField_a_of_type_JavaLangCharSequence instanceof QQText))
+    if ((this.jdField_a_of_type_JavaLangCharSequence instanceof axkd))
     {
       this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
       return;
     }
-    this.jdField_a_of_type_JavaLangCharSequence = new QQText(paramCharSequence, 1, 16);
+    this.jdField_a_of_type_JavaLangCharSequence = new axkd(paramCharSequence, 1, 16);
   }
   
   public void settextBgRadius(int paramInt)
@@ -143,7 +143,7 @@ public class TitledImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.TitledImageView
  * JD-Core Version:    0.7.0.1
  */

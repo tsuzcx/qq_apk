@@ -1,59 +1,62 @@
 import android.content.Context;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder.Holder;
-import com.tencent.mobileqq.data.MessageForScribble;
-import com.tencent.mobileqq.widget.MessageProgressView;
-import java.lang.ref.WeakReference;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
 
 public class vkj
-  implements Runnable
+  extends vra
 {
-  private WeakReference a;
-  private WeakReference b;
-  private WeakReference c;
-  private WeakReference d;
-  
-  public vkj(MessageForScribble paramMessageForScribble, ScribbleItemBuilder.Holder paramHolder, Handler paramHandler, Context paramContext)
+  public View a(Context paramContext, View paramView, bent parambent, int paramInt)
   {
-    this.a = new WeakReference(paramMessageForScribble);
-    this.b = new WeakReference(paramHolder);
-    this.c = new WeakReference(paramHandler);
-    this.d = new WeakReference(paramContext);
+    parambent.a = new benu[this.b];
+    paramInt = 0;
+    while (paramInt < this.b)
+    {
+      parambent.a[paramInt] = new benu();
+      parambent.a[paramInt].jdField_a_of_type_Int = -1;
+      parambent.a[paramInt].c = 0;
+      parambent.a[paramInt].jdField_a_of_type_AndroidViewView = null;
+      paramInt += 1;
+    }
+    parambent.g = paramView.findViewById(2131303232);
+    return paramView;
   }
   
-  public void run()
+  public void a(int paramInt, Object paramObject, benu[] paramArrayOfbenu)
   {
-    if (this.a != null) {}
-    for (MessageForScribble localMessageForScribble = (MessageForScribble)this.a.get();; localMessageForScribble = null)
+    paramArrayOfbenu[0].jdField_a_of_type_Int = 0;
+    paramArrayOfbenu[0].b = 0;
+    paramArrayOfbenu[1].jdField_a_of_type_Int = -1;
+    paramArrayOfbenu[1].b = -1;
+    String str = QQStoryContext.a().a();
+    if ((this.a.a) || (((TroopStoryItemInfo)paramObject).uin.equals(str)))
     {
-      if (this.b != null) {}
-      for (ScribbleItemBuilder.Holder localHolder = (ScribbleItemBuilder.Holder)this.b.get();; localHolder = null)
-      {
-        if (this.c != null) {}
-        for (Handler localHandler = (Handler)this.c.get();; localHandler = null)
-        {
-          if (this.d != null) {}
-          for (Context localContext = (Context)this.d.get();; localContext = null)
-          {
-            if ((localMessageForScribble == null) || (localHandler == null) || (localHolder == null) || (localContext == null)) {}
-            do
-            {
-              return;
-              ScribbleItemBuilder.a(localMessageForScribble);
-              ScribbleItemBuilder.a(localMessageForScribble, localHolder, localMessageForScribble.mUiProgress, false, localContext, localHandler);
-            } while (!localHolder.a.isShown());
-            localHandler.postDelayed(localMessageForScribble.mUpdateProgressRunnable, 50L);
-            return;
-          }
-        }
-      }
+      paramArrayOfbenu[1].jdField_a_of_type_Int = 1;
+      paramArrayOfbenu[1].b = 1;
+    }
+  }
+  
+  protected void a(ViewGroup paramViewGroup, View paramView, benu parambenu, int paramInt)
+  {
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
+    if (localLayoutParams == null) {
+      paramView.setLayoutParams(new LinearLayout.LayoutParams(parambenu.c, parambenu.d));
+    }
+    for (;;)
+    {
+      paramViewGroup.addView(paramView, paramInt);
+      return;
+      localLayoutParams.width = parambenu.c;
+      localLayoutParams.height = parambenu.d;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vkj
  * JD-Core Version:    0.7.0.1
  */

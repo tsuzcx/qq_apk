@@ -1,49 +1,27 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashView;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.activity.SearchFriendListActivity;
 
 public class abpv
-  implements URLDrawable.URLDrawableListener
+  extends ajjh
 {
-  public abpv(ARMapSplashView paramARMapSplashView) {}
+  public abpv(SearchFriendListActivity paramSearchFriendListActivity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapSplashView", 2, "onLoadCanceled");
+    if (paramBoolean) {
+      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
     }
   }
   
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapSplashView", 2, "onLoadFialed");
-    }
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapSplashView", 2, String.format("onLoadProgressed i=%s", new Object[] { Integer.valueOf(paramInt) }));
-    }
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapSplashView", 2, "onLoadSuccessed");
-    }
-    paramURLDrawable = paramURLDrawable.getFileInLocal();
-    if ((paramURLDrawable != null) && (paramURLDrawable.exists())) {
-      ARMapSplashView.a(this.a).e = paramURLDrawable.getAbsolutePath();
+    if ((paramBoolean) && (paramString != null)) {
+      SearchFriendListActivity.a(this.a).notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abpv
  * JD-Core Version:    0.7.0.1
  */

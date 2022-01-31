@@ -1,0 +1,113 @@
+{
+    "ReadInJoy_comment_pop_guide": {
+        "view_type": "UIView",
+        "view_id": "id_pop_guide_view",
+        "default_visible": "YES",
+        "direction": "vertical",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "296"
+        },
+        "subviews": [
+            {
+                "view_type":"UIView",
+                "view_id":"id_guide_content",
+                "layout_type": "layout_relative",
+                "default_visible": "YES",
+                "height":{
+                    "type":"relative",
+                    "value":"311"
+                },
+                "width":{
+                    "type":"match_parent"
+                },
+                "attributes":{
+                    "setBackgroundColorString:":"#FFFFFF",
+                    "setCornerRadiusString:":"6.0"
+                },
+                "subviews":[
+                    {
+                        "view_type":"UIImageView",
+                        "view_id": "id_guide_image_view",
+                        "align_parent_top": "YES",
+                        "height":{
+                            "type":"relative",
+                            "value":"170"
+                        },
+                        "width":{
+                            "type":"match_parent"
+                        },
+                        "attributes":{
+                            "loadImageWithPath:":"$guide_image",
+                            "setScaleType:":"1"
+                        }
+                    },
+                    {
+                        "view_type":"UILabel",
+                        "view_id":"id_prompt_label",
+                        "margin_top":"185",
+                        "align_parent_center_horizontal": "YES",
+                        "height":{
+                            "type":"relative",
+                            "value":"40"
+                        },
+                        "width":{
+                            "type":"relative",
+                            "value":"211"
+                        },
+                        "attributes":{
+                            "setText:": "$guide_wording",
+                            "setTextColorString:": "#03081A",
+                            "setFontSizeString:": "14",
+                            "setNumberOfLinesString:": "2"
+                        }
+                    },
+                    {
+                        "view_type":"UILabel",
+                        "view_id": "id_jump_button",
+                        "below_of_view":"id_prompt_label",
+                        "event_type":"cmd_guide_jump_clicked",
+                        "margin_top":"20",
+                        "align_parent_center_horizontal": "YES",
+                        "height":{
+                            "type":"relative",
+                            "value":"41"
+                        },
+                        "width":{
+                            "type":"relative",
+                            "value":"236"
+                        },
+                        "attributes":{
+                            "setText:": "$jump_button_text",
+                            "setTextAlignmentString:":"1",
+                            "setTextColorString:": "#FFFFFF",
+                            "setFontSizeString:": "17",
+                            "setBackgroundColorString:":"#00CAFC",
+                            "setCornerRadiusString:":"6.0"
+                        }
+                    }
+                ]
+            },
+            {
+                "view_type": "UIButton",
+                "view_id": "id_guide_dismiss",
+                "default_visible": "YES",
+                "margin_top":"38",
+                "align_parent_center_horizontal": "YES",
+                "height":{
+                    "type": "wrap_content"
+                },
+                "width":{
+                    "type": "wrap_content"
+                },
+                "event_type":"cmd_guide_dismiss_clicked",
+                "attributes":{
+                    "setImage:":"$dismiss_button_image"
+                }
+            }
+        ]
+    }
+}

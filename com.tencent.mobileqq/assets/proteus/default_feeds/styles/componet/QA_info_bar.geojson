@@ -1,0 +1,57 @@
+{
+    "view_type": "container",
+    "layout_type":"layout_relative",
+    "margin_top":"-2",
+    "margin_left":"2",
+    "height":{
+        "type":"relative",
+        "value":"36"
+    },
+    "width":{
+        "type":"relative",
+        "value":"359"
+    },
+    
+    "subviews": [
+        {
+            "view_type":"UILabel",
+            "view_id":"id_QA_info_bar_left_view",
+            "margin_left": "6",
+            "height":{
+                "type":"relative",
+                "value":"36"
+            },
+            "width":{
+                "type":"wrap_content"
+            },
+            "attributes":{
+                "setText:":"$info_bar_text",
+                "setTextColorString:":"#A6A6A6",
+                "setFontSizeString:":"12",
+                "setTextAlignmentString:":"1",
+                "setNumberOfLinesString:":"1"
+            }
+        },
+        {
+            "view_type":"UIButton",
+            "view_id":"id_dislike_button",
+            "default_visible": "YES",
+            "align_parent_right":"YES",
+            "align_parent_center_vertical": "YES",
+            "margin_right":"-12",
+            "event_type":"cmd_dislike_click",
+            "height":{
+                "type":"relative",
+                "value":"30"
+            },
+            "width":{
+                "type":"relative",
+                "value":"41"
+            },
+
+            "attributes":{
+                "setImage:":"feeds_dislike"
+            }
+        }
+    ]
+}

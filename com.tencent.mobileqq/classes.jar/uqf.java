@@ -1,24 +1,18 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.FileTransferManager;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import android.os.Handler;
 
-public class uqf
-  extends TransProcessorHandler
+class uqf
+  implements ume
 {
-  public uqf(FileTransferManager paramFileTransferManager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  uqf(uqe paramuqe) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(ulj paramulj)
   {
-    this.a.a(paramMessage);
+    upw.a(this.a.a).sendMessage(upw.a(this.a.a).obtainMessage(0, paramulj));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uqf
  * JD-Core Version:    0.7.0.1
  */

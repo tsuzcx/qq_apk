@@ -1,19 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class lsf
-  implements Runnable
+public class lsf
+  implements View.OnClickListener
 {
-  lsf(lse paramlse, List paramList) {}
+  public lsf(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ReadInJoyLogicEngineEventDispatcher.a().b(true, this.jdField_a_of_type_Lse.a, this.jdField_a_of_type_JavaUtilList, true);
+    QLog.d(this.a.c, 1, "quit double screen from reset clicker");
+    if ((this.a.a != null) && (this.a.a.get() != null) && ((this.a.a.get() instanceof AVActivity))) {
+      ((AVActivity)this.a.a.get()).BtnOnClick(paramView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lsf
  * JD-Core Version:    0.7.0.1
  */

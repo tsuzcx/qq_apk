@@ -1,76 +1,92 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.SetFunctionFlagResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Switch;
-import mqq.observer.BusinessObserver;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.os.Build.VERSION;
+import android.os.Environment;
+import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class krb
-  implements BusinessObserver
 {
-  public krb(EqqAccountDetailActivity paramEqqAccountDetailActivity, PaConfigAttr.PaConfigInfo paramPaConfigInfo, Switch paramSwitch, int paramInt1, int paramInt2, boolean paramBoolean) {}
+  static final char[] a = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  @TargetApi(8)
+  public static File a(Context paramContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a, 2, "success:" + String.valueOf(paramBoolean));
+    if (Build.VERSION.SDK_INT >= 8) {
+      return paramContext.getExternalCacheDir();
     }
-    EqqAccountDetailActivity.g(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity);
-    if (!paramBoolean)
+    paramContext = "/Android/data/" + paramContext.getPackageName() + "/cache/";
+    return new File(Environment.getExternalStorageDirectory().getPath() + paramContext);
+  }
+  
+  public static String a(String paramString)
+  {
+    try
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo, this.jdField_a_of_type_ComTencentWidgetSwitch);
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.d(2131430035);
+      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
+      localMessageDigest.update(paramString.getBytes("UTF-8"));
+      paramString = a(localMessageDigest.digest());
+      return paramString;
     }
-    for (;;)
+    catch (NoSuchAlgorithmException paramString)
     {
-      EqqAccountDetailActivity.i(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity);
-      if (EqqAccountDetailActivity.j(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity) == 0) {
-        EqqAccountDetailActivity.h(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity);
-      }
-      return;
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          mobileqq_mp.SetFunctionFlagResponse localSetFunctionFlagResponse = new mobileqq_mp.SetFunctionFlagResponse();
-          localSetFunctionFlagResponse.mergeFrom(paramBundle);
-          if (((mobileqq_mp.RetInfo)localSetFunctionFlagResponse.ret_info.get()).ret_code.get() == 0)
-          {
-            this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.d = this.jdField_a_of_type_Int;
-            this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.b, this.jdField_a_of_type_Boolean);
-            if (QLog.isColorLevel()) {
-              QLog.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a, 2, "状态切换成功");
-            }
-          }
-          else
-          {
-            this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo, this.jdField_a_of_type_ComTencentWidgetSwitch);
-            if (QLog.isColorLevel()) {
-              QLog.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a, 2, "状态切换失败1");
-            }
-            this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.d(2131430035);
-          }
-        }
-        else
-        {
-          this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo, this.jdField_a_of_type_ComTencentWidgetSwitch);
-          this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.d(2131430035);
-          if (QLog.isColorLevel()) {
-            QLog.d(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a, 2, "状态切换失败");
-          }
-        }
-      }
-      catch (Exception paramBundle) {}
+      throw new AssertionError();
     }
+    catch (UnsupportedEncodingException paramString)
+    {
+      throw new AssertionError();
+    }
+    catch (Throwable paramString)
+    {
+      throw new AssertionError();
+    }
+  }
+  
+  public static String a(String paramString1, String paramString2)
+  {
+    return paramString1 + "{@}" + paramString2;
+  }
+  
+  public static String a(String paramString1, String paramString2, long paramLong)
+  {
+    return paramString1 + "[@]" + paramString2 + "[id:]" + paramLong;
+  }
+  
+  static String a(byte[] paramArrayOfByte)
+  {
+    int i = 0;
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    char[] arrayOfChar = new char[paramArrayOfByte.length * 2];
+    int k = paramArrayOfByte.length;
+    int j = 0;
+    while (i < k)
+    {
+      int m = paramArrayOfByte[i];
+      int n = j + 1;
+      arrayOfChar[j] = a[(m >>> 4 & 0xF)];
+      j = n + 1;
+      arrayOfChar[n] = a[(m & 0xF)];
+      i += 1;
+    }
+    return new String(arrayOfChar);
+  }
+  
+  @TargetApi(9)
+  public static boolean a()
+  {
+    if (Build.VERSION.SDK_INT >= 9) {
+      return Environment.isExternalStorageRemovable();
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     krb
  * JD-Core Version:    0.7.0.1
  */

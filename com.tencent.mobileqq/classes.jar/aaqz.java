@@ -1,27 +1,27 @@
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
-class aaqz
-  implements Runnable
+public class aaqz
+  implements View.OnClickListener
 {
-  aaqz(aaqy paramaaqy, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
+  public aaqz(EditInfoActivity paramEditInfoActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext()) {
-      ((aark)localIterator.next()).a(true);
-    }
-    localIterator = this.b.iterator();
-    for (boolean bool = true; localIterator.hasNext(); bool = false) {
-      ((aark)localIterator.next()).a(false);
-    }
-    this.jdField_a_of_type_Aaqy.a.a(bool, this.jdField_a_of_type_Aaqy.b);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(true);
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846792);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(ajjy.a(2131637841));
+    this.a.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaqz
  * JD-Core Version:    0.7.0.1
  */

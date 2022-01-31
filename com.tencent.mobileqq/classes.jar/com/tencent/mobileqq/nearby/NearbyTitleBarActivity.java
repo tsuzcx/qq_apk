@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.nearby;
 
-import aevk;
-import aevl;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
@@ -9,8 +7,8 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.reflect.Method;
 import mqq.app.AppRuntime;
+import mqq.os.MqqHandler;
 
 public class NearbyTitleBarActivity
   extends IphoneTitleBarActivity
@@ -28,28 +26,24 @@ public class NearbyTitleBarActivity
   
   public static void a(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    ThreadManager.post(new aevk(paramAppInterface, paramString1, paramString2, paramString3, paramString4, paramString5), 5, null, true);
+    ThreadManager.post(new NearbyTitleBarActivity.1(paramAppInterface, paramString1, paramString2, paramString3, paramString4, paramString5), 5, null, true);
   }
   
   static void a(NearbyAppInterface paramNearbyAppInterface, long paramLong1, long paramLong2, long paramLong3)
   {
-    aevl localaevl = null;
+    NearbyTitleBarActivity.ReportRunnable localReportRunnable = null;
     if (paramLong1 != 0L) {}
     try
     {
-      localaevl = new aevl();
-      localaevl.jdField_a_of_type_JavaLangString = paramNearbyAppInterface.getCurrentAccountUin();
-      localaevl.jdField_a_of_type_Int = paramNearbyAppInterface.c;
-      localaevl.jdField_b_of_type_Int = paramNearbyAppInterface.d;
-      localaevl.jdField_a_of_type_Long = paramLong2;
-      localaevl.c = paramLong1;
-      localaevl.jdField_b_of_type_Long = paramLong3;
+      localReportRunnable = new NearbyTitleBarActivity.ReportRunnable();
+      localReportRunnable.jdField_a_of_type_JavaLangString = paramNearbyAppInterface.getCurrentAccountUin();
+      localReportRunnable.jdField_a_of_type_Int = paramNearbyAppInterface.c;
+      localReportRunnable.jdField_b_of_type_Int = paramNearbyAppInterface.d;
+      localReportRunnable.jdField_a_of_type_Long = paramLong2;
+      localReportRunnable.c = paramLong1;
+      localReportRunnable.jdField_b_of_type_Long = paramLong3;
       paramNearbyAppInterface.a(2, 0);
-      if (localaevl != null)
-      {
-        paramNearbyAppInterface = Class.forName("android.view.ViewRootImpl");
-        paramNearbyAppInterface.getMethod("addFirstDrawHandler", new Class[] { Runnable.class }).invoke(paramNearbyAppInterface, new Object[] { localaevl });
-      }
+      ThreadManager.getUIHandler().post(localReportRunnable);
       return;
     }
     catch (Throwable paramNearbyAppInterface)
@@ -63,8 +57,6 @@ public class NearbyTitleBarActivity
     return 0;
   }
   
-  public void a() {}
-  
   public boolean a()
   {
     return false;
@@ -74,6 +66,8 @@ public class NearbyTitleBarActivity
   {
     return 0;
   }
+  
+  public void b() {}
   
   public boolean doOnCreate(Bundle paramBundle)
   {
@@ -94,7 +88,7 @@ public class NearbyTitleBarActivity
     if ((this.d) && (!this.e)) {}
     try
     {
-      a();
+      b();
       this.e = true;
       i = b();
       if (i == 0)
@@ -135,7 +129,7 @@ public class NearbyTitleBarActivity
     }
   }
   
-  protected String getModuleId()
+  public String getModuleId()
   {
     return "module_nearby";
   }
@@ -153,7 +147,7 @@ public class NearbyTitleBarActivity
     }
     try
     {
-      a();
+      b();
       this.e = true;
       return true;
     }

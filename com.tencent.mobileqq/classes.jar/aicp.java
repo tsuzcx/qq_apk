@@ -1,23 +1,10 @@
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
-import com.tencent.qphone.base.util.QLog;
-
-public class aicp
-  implements Runnable
+public abstract interface aicp
 {
-  public aicp(QZoneManagerImp paramQZoneManagerImp) {}
-  
-  public void run()
-  {
-    QZoneManagerImp.a(this.a);
-    QZoneManagerImp.a(this.a, QZoneManagerImp.b(this.a));
-    if (QLog.isColorLevel()) {
-      QLog.d("UndealCount.QZoneManagerImp.", 2, "QZoneManagerImp init notifyQQTab type:" + Long.toBinaryString(QZoneManagerImp.a(this.a)));
-    }
-  }
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aicp
  * JD-Core Version:    0.7.0.1
  */

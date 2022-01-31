@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/zk" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:formItem="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/c_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" formItem:bgType="evy" formItem:leftText="@string/bu0" formItem:showArrow="true" />
+    <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/cl" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="evy" formItem:leftText="@string/bu2" formItem:showArrow="true" />
+    <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/c7" android:layout_width="fill_parent" android:layout_height="wrap_content" formItem:bgType="abp" formItem:leftText="@string/bty" formItem:showArrow="true" />
+    <RelativeLayout android:id="@id/e2y" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="46.0dip" android:layout_marginTop="20.0dip">
+        <TextView android:textSize="18.0sp" android:textColor="@color/bp" android:gravity="center_vertical" android:paddingLeft="12.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/yl" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/gm" android:gravity="center_vertical" android:id="@id/k67" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="12.0dip" android:text="@string/yj" android:layout_alignParentRight="true" />
+        <ImageView android:layout_gravity="center" android:id="@id/dug" android:layout_width="18.0dip" android:layout_height="fill_parent" android:layout_marginRight="1.0dip" android:src="@drawable/bqm" android:layout_toLeftOf="@id/k67" />
+    </RelativeLayout>
+</LinearLayout>

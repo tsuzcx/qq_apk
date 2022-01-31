@@ -1,16 +1,23 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
 
-class aonv
+public final class aonv
+  implements Parcelable.Creator<ForwardFileInfo>
 {
-  ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  public ForwardFileInfo a(Parcel paramParcel)
+  {
+    return new ForwardFileInfo(paramParcel, null);
+  }
   
-  aonv(aonu paramaonu) {}
+  public ForwardFileInfo[] a(int paramInt)
+  {
+    return new ForwardFileInfo[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aonv
  * JD-Core Version:    0.7.0.1
  */

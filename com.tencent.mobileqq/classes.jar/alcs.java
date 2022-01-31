@@ -1,25 +1,22 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.musicpendant.MusicPendantManager;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.MusicPendantView;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.ark.open.ArkAppCacheMgr.OnGetAppIcon;
 
-public class alcs
-  implements Runnable
+class alcs
+  implements ArkAppCacheMgr.OnGetAppIcon
 {
-  public alcs(MusicPendantView paramMusicPendantView) {}
+  alcs(alcr paramalcr, alct paramalct) {}
   
-  public void run()
+  public void callback(String paramString, Bitmap paramBitmap)
   {
-    Card localCard = MusicPendantManager.a().a();
-    if ((localCard != null) && (localCard.autoPlayMusicPendant) && (!NetworkUtil.b(BaseApplicationImpl.getContext()))) {
-      MusicPendantManager.a().b();
+    if (paramBitmap != null) {
+      this.jdField_a_of_type_Alct.a.setImageBitmap(paramBitmap);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alcs
  * JD-Core Version:    0.7.0.1
  */

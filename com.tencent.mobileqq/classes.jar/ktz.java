@@ -1,17 +1,21 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailWindowViewWrapper.PhotoAdapter;
-import com.tencent.image.URLImageView;
-
 public class ktz
 {
-  public TextView a;
-  public URLImageView a;
+  @Deprecated
+  public int a;
+  @Deprecated
+  public boolean a;
+  @Deprecated
+  public int b = 5;
   
-  public ktz(AccountDetailWindowViewWrapper.PhotoAdapter paramPhotoAdapter) {}
+  public ktz()
+  {
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ktz
  * JD-Core Version:    0.7.0.1
  */

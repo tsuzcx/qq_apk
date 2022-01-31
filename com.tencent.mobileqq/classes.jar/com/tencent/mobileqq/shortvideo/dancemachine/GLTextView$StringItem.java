@@ -2,10 +2,10 @@ package com.tencent.mobileqq.shortvideo.dancemachine;
 
 public class GLTextView$StringItem
 {
-  public float a;
-  public int a;
-  public String a;
-  public int b;
+  public int color;
+  public int count;
+  public String data;
+  public float measureSize;
   
   public GLTextView$StringItem(GLTextView paramGLTextView) {}
 }

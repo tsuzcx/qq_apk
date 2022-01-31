@@ -1,12 +1,12 @@
 package com.tencent.widget;
 
-import amjf;
-import amjg;
 import android.content.Context;
-import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewConfiguration;
+import begh;
+import bejv;
+import bejw;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class GestureSelectGridView
@@ -14,15 +14,13 @@ public class GestureSelectGridView
 {
   float jdField_a_of_type_Float;
   int jdField_a_of_type_Int;
-  Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  public AbsListView.OnScrollListener a;
-  public GestureSelectGridView.OnSelectListener a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new amjf(this);
-  public AtomicBoolean a;
+  public begh a;
+  public bejw a;
+  AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   public boolean a;
-  float b;
+  float jdField_b_of_type_Float;
   public int b;
-  public AtomicBoolean b;
+  AtomicBoolean jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   public boolean b;
   public int c;
   AtomicBoolean c;
@@ -38,13 +36,11 @@ public class GestureSelectGridView
     super(paramContext, paramAttributeSet);
     this.jdField_b_of_type_Int = -1;
     this.jdField_c_of_type_Int = -1;
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
     this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_Int = (ViewConfiguration.get(paramContext).getScaledTouchSlop() * 15);
-    super.setOnScrollListener(new amjg(this));
+    super.setOnScrollListener(new bejv(this));
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -85,7 +81,6 @@ public class GestureSelectGridView
           this.jdField_a_of_type_Float = f1;
           this.jdField_b_of_type_Float = f2;
           continue;
-          this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 700L);
           this.jdField_a_of_type_Float = f1;
           this.jdField_b_of_type_Float = f2;
           i = pointToPosition((int)f1, (int)f2);
@@ -96,7 +91,6 @@ public class GestureSelectGridView
           }
         }
       }
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       bool1 = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
       this.jdField_b_of_type_Int = -1;
@@ -114,8 +108,6 @@ public class GestureSelectGridView
     int i = paramMotionEvent.getAction();
     float f1 = paramMotionEvent.getX();
     float f2 = paramMotionEvent.getY();
-    float f3;
-    float f4;
     switch (i & 0xFF)
     {
     default: 
@@ -124,29 +116,22 @@ public class GestureSelectGridView
       }
       break;
     case 2: 
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       if (!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
       {
-        f3 = Math.abs(f1 - this.jdField_a_of_type_Float);
-        f4 = Math.abs(f2 - this.jdField_b_of_type_Float);
-        if ((f3 > 1.73F * f4) && (f3 > this.jdField_a_of_type_Int))
+        float f3 = Math.abs(f1 - this.jdField_a_of_type_Float);
+        if ((f3 > Math.abs(f2 - this.jdField_b_of_type_Float) * 1.73F) && (f3 > this.jdField_a_of_type_Int))
         {
           this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
           this.jdField_a_of_type_Float = f1;
           this.jdField_b_of_type_Float = f2;
         }
       }
-      else
-      {
-        label163:
-        if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) || (this.jdField_a_of_type_Boolean)) {
-          break label424;
-        }
+      if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (!this.jdField_a_of_type_Boolean)) {
         if ((f2 < 0.0F) || (f2 > getHeight()))
         {
           this.jdField_a_of_type_Boolean = true;
           if (f2 >= 0.0F) {
-            break label402;
+            break label334;
           }
           i = -20000000;
           this.jdField_b_of_type_Boolean = false;
@@ -156,14 +141,14 @@ public class GestureSelectGridView
     }
     for (;;)
     {
-      label216:
+      label201:
       smoothScrollBy(i, 1000000);
       while (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
       {
         if ((!this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_b_of_type_Int != -1))
         {
-          if (this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView$OnSelectListener != null) {
-            this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView$OnSelectListener.b(this.jdField_b_of_type_Int);
+          if (this.jdField_a_of_type_Bejw != null) {
+            this.jdField_a_of_type_Bejw.a(this.jdField_b_of_type_Int);
           }
           this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
         }
@@ -172,50 +157,41 @@ public class GestureSelectGridView
           break;
         }
         if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-          break label469;
+          break label401;
         }
         this.jdField_c_of_type_Int = i;
         this.jdField_b_of_type_Int = i;
-        if (this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView$OnSelectListener != null) {
-          this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView$OnSelectListener.b(this.jdField_b_of_type_Int);
+        if (this.jdField_a_of_type_Bejw != null) {
+          this.jdField_a_of_type_Bejw.a(this.jdField_b_of_type_Int);
         }
         this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
         break;
-        if ((paramMotionEvent.getEventTime() - paramMotionEvent.getDownTime() <= 700L) || (f3 >= 50.0F) || (f4 >= 50.0F)) {
-          break label163;
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-        this.jdField_a_of_type_Float = f1;
-        this.jdField_b_of_type_Float = f2;
-        break label163;
-        label402:
+        label334:
         if (f2 <= getHeight()) {
-          break label627;
+          break label548;
         }
         i = 20000000;
         this.jdField_b_of_type_Boolean = true;
-        break label216;
-        label424:
+        break label201;
         if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_Boolean) && (f2 > 0.0F) && (f2 < getHeight()))
         {
           abordFling();
           this.jdField_a_of_type_Boolean = false;
         }
       }
-      label469:
+      label401:
       if (this.jdField_c_of_type_Int == i) {
         break;
       }
       this.jdField_c_of_type_Int = i;
-      if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView$OnSelectListener == null)) {
+      if ((this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Bejw == null)) {
         break;
       }
-      this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView$OnSelectListener.a(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
+      this.jdField_a_of_type_Bejw.a(this.jdField_b_of_type_Int, this.jdField_c_of_type_Int);
       break;
       this.jdField_a_of_type_Float = f1;
       this.jdField_b_of_type_Float = f2;
       break;
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       if (this.jdField_a_of_type_Boolean)
       {
         abordFling();
@@ -226,37 +202,42 @@ public class GestureSelectGridView
       this.jdField_c_of_type_Int = -1;
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
       this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
-      if ((bool) && (this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView$OnSelectListener != null)) {
-        this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView$OnSelectListener.g();
+      if ((bool) && (this.jdField_a_of_type_Bejw != null)) {
+        this.jdField_a_of_type_Bejw.g();
       }
       if (!bool) {
         break;
       }
       return true;
       return super.onTouchEvent(paramMotionEvent);
-      label627:
+      label548:
       i = 0;
     }
   }
   
-  public void setOnIndexChangedListener(GestureSelectGridView.OnSelectListener paramOnSelectListener)
+  public void setOnIndexChangedListener(bejw parambejw)
   {
-    this.jdField_a_of_type_ComTencentWidgetGestureSelectGridView$OnSelectListener = paramOnSelectListener;
+    this.jdField_a_of_type_Bejw = parambejw;
   }
   
-  public void setOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener)
+  public void setOnScrollListener(begh parambegh)
   {
-    this.jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = paramOnScrollListener;
+    this.jdField_a_of_type_Begh = parambegh;
   }
   
   public void setSelectMode(boolean paramBoolean)
   {
     this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(paramBoolean);
   }
+  
+  public void setTouchSlopRate(int paramInt)
+  {
+    this.jdField_a_of_type_Int = (ViewConfiguration.get(getContext()).getScaledTouchSlop() * paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.widget.GestureSelectGridView
  * JD-Core Version:    0.7.0.1
  */

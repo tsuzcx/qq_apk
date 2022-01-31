@@ -1,29 +1,32 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.Subscriber.SingleEventSubscriberNoRefect;
 
 public class tkr
-  implements ActionSheet.OnButtonClickListener
+  extends Subscriber.SingleEventSubscriberNoRefect<spl>
 {
-  public tkr(PhoneUnityChangeActivity paramPhoneUnityChangeActivity) {}
+  tko a;
   
-  public void OnClick(View paramView, int paramInt)
+  public tkr(@NonNull tko paramtko)
   {
-    this.a.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.a, 230, "解除手机号码绑定", "解除绑定，将降低QQ的安全性，并将无法发QQ消息给手机通讯录联系人（服务器存储的通讯录数据也将被删除）、无法在QQ查看手机话费。注:解绑不影响密码保护功能。", "解绑", "取消", new tks(this), new tkt(this));
+    this.a = paramtko;
+  }
+  
+  protected void a(@NonNull spl paramspl)
+  {
+    if (paramspl.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) {
+      this.a.a(paramspl.jdField_a_of_type_JavaLangString);
     }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (!this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) && (!this.a.isFinishing())) {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return spl.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tkr
  * JD-Core Version:    0.7.0.1
  */

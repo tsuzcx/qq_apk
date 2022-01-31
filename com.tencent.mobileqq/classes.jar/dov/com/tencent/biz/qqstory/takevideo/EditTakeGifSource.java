@@ -2,16 +2,23 @@ package dov.com.tencent.biz.qqstory.takevideo;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import aoav;
+import bida;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import java.util.ArrayList;
 
 public class EditTakeGifSource
   extends EditLocalGifSource
 {
-  public static final Parcelable.Creator CREATOR = new aoav();
+  public static final Parcelable.Creator<EditTakeGifSource> CREATOR = new bida();
   
   public EditTakeGifSource(Parcel paramParcel)
   {
     super(paramParcel);
+  }
+  
+  public EditTakeGifSource(String paramString, ArrayList<String> paramArrayList, LocalMediaInfo paramLocalMediaInfo)
+  {
+    super(paramString, paramArrayList, paramLocalMediaInfo);
   }
 }
 

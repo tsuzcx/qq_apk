@@ -1,84 +1,109 @@
-import com.tencent.mobileqq.activity.SendMultiPictureHelper;
-import com.tencent.mobileqq.activity.SendMultiPictureHelper.SendingFileInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.Color;
+import android.os.Looper;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget;
+import com.tencent.biz.qqstory.playvideo.playerwidget.ProgressBarVideoInfoWidget.2;
+import com.tencent.biz.qqstory.view.SplitedProgressBar;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.dispatch.Subscriber;
+import java.util.Map;
+import mqq.os.MqqHandler;
 
 public class twd
-  extends FMObserver
+  extends AbsVideoInfoWidget
 {
-  public twd(SendMultiPictureHelper paramSendMultiPictureHelper) {}
+  public SplitedProgressBar a;
+  @NonNull
+  private thk a;
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public twd(@NonNull ViewGroup paramViewGroup)
   {
-    QLog.w("SendMultiPictureHelper", 2, "OnFileTransferProgress");
-    if (this.a.jdField_a_of_type_JavaUtilList != null)
-    {
-      paramInt = 0;
-      if (paramInt >= this.a.jdField_a_of_type_JavaUtilArrayList.size()) {
-        break label232;
-      }
-      if (((SendMultiPictureHelper.SendingFileInfo)this.a.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a != paramLong1) {}
+    super(paramViewGroup);
+  }
+  
+  private int d()
+  {
+    int i = awmc.b(this.jdField_a_of_type_AndroidViewView.getContext());
+    int j = awmc.a(this.jdField_a_of_type_AndroidViewView.getContext());
+    int k = awmc.d(this.jdField_a_of_type_AndroidViewView.getContext());
+    boolean bool = awmc.a(this.jdField_a_of_type_AndroidViewView.getContext());
+    int m = awmc.e(this.jdField_a_of_type_AndroidViewView.getContext());
+    int n = awmc.c(this.jdField_a_of_type_AndroidViewView.getContext());
+    urk.b("FredguoFix", "hasNavi: " + bool + ", naviHeight " + k);
+    urk.b("FredguoFix", "debug: instantWidth " + i + ", instantHeight" + j + ", rawWidth " + m + ", rawHeight " + n);
+    urk.b("FredguoFix", "ScreenWidth " + awmc.a + ", ScreenHeight " + awmc.b);
+    if (bool) {
+      return -2;
     }
-    for (;;)
+    return (int)Math.min(awmc.b - awmc.a / 9.0F * 16.0F, 140.0F);
+  }
+  
+  public String a()
+  {
+    return "ProgressBarVideoInfoWidget";
+  }
+  
+  public void a(View paramView)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar = ((SplitedProgressBar)paramView.findViewById(2131313244));
+    this.jdField_a_of_type_Thk = new thk(this.jdField_a_of_type_ComTencentBizQqstoryViewSplitedProgressBar);
+    if (bjeh.b(b()))
     {
-      if (paramInt != -1) {
-        paramInt = 0;
+      paramView = (LinearLayout)a().jdField_a_of_type_AndroidViewView.findViewById(2131297823);
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
+      localLayoutParams.height = d();
+      if (!awmc.a(this.jdField_a_of_type_AndroidViewView.getContext())) {
+        paramView.setBackgroundColor(Color.parseColor("#181818"));
       }
-      for (;;)
-      {
-        if (paramInt < this.a.jdField_a_of_type_JavaUtilList.size())
-        {
-          paramString = (FileManagerEntity)this.a.jdField_a_of_type_JavaUtilList.get(paramInt);
-          if (paramString.uniseq != paramLong1) {
-            break label202;
-          }
-          if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
-            this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(String.format(this.a.d, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf((int)(paramString.fProgress * 100.0F)) }));
-          }
-        }
-        return;
-        paramInt += 1;
-        break;
-        label202:
-        paramInt += 1;
-      }
-      this.a.jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c();
-      return;
-      label232:
-      paramInt = -1;
+      paramView.setLayoutParams(localLayoutParams);
+    }
+    a(new twe(this));
+  }
+  
+  public void a(@NonNull Map<Subscriber, String> paramMap) {}
+  
+  public void a(@NonNull tnz paramtnz, @NonNull StoryVideoItem paramStoryVideoItem) {}
+  
+  public void a(tqg paramtqg)
+  {
+    if (Looper.myLooper() != Looper.getMainLooper()) {
+      ThreadManager.getUIHandler().post(new ProgressBarVideoInfoWidget.2(this, paramtqg));
+    }
+    if (!this.c)
+    {
+      h();
+      j();
+    }
+    if (this.jdField_a_of_type_Thk != null) {
+      this.jdField_a_of_type_Thk.a(paramtqg);
     }
   }
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String arg6, int paramInt1, int paramInt2, String paramString2)
+  public boolean a(@NonNull tnz paramtnz, @NonNull StoryVideoItem paramStoryVideoItem)
   {
-    QLog.w("SendMultiPictureHelper", 2, "OnFileTransferEnd");
-    if (!this.a.jdField_b_of_type_Boolean) {
-      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
-      {
-        this.a.a();
-        return;
-      }
-    }
+    return (paramtnz.a == null) || (paramtnz.a.a != 13);
   }
   
-  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  public int b()
   {
-    QLog.w("SendMultiPictureHelper", 2, "OnFileTransferStart");
-    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(String.format(this.a.d, new Object[] { Integer.valueOf(this.a.jdField_a_of_type_Int + 1), Integer.valueOf(this.a.jdField_b_of_type_Int), Integer.valueOf(0) }));
-    }
-    this.a.jdField_a_of_type_JavaUtilList = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c();
+    return 2131495816;
+  }
+  
+  public void f() {}
+  
+  public void g()
+  {
+    this.jdField_a_of_type_Thk.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     twd
  * JD-Core Version:    0.7.0.1
  */

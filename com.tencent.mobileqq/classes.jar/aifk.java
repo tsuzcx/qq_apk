@@ -1,46 +1,22 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLViewContext;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager;
-import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.ReadyResource;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceManagerFilter;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceReadyFilter;
+import com.tencent.mobileqq.DrawerPushItem;
+import java.util.Comparator;
 
-public class aifk
-  implements Animation.AnimationListener
+class aifk
+  implements Comparator<DrawerPushItem>
 {
-  public aifk(DanceReadyFilter paramDanceReadyFilter) {}
+  aifk(aifg paramaifg) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(DrawerPushItem paramDrawerPushItem1, DrawerPushItem paramDrawerPushItem2)
   {
-    switch (DanceReadyFilter.a(this.a))
-    {
+    if (paramDrawerPushItem2.priority == paramDrawerPushItem1.priority) {
+      return paramDrawerPushItem1.sub_priority - paramDrawerPushItem2.sub_priority;
     }
-    for (;;)
-    {
-      DanceReadyFilter.b(this.a);
-      if (DanceReadyFilter.a(this.a) == 0)
-      {
-        DanceReadyFilter.d(this.a).e();
-        DanceReadyFilter.d(this.a).a(DanceReadyFilter.b(this.a));
-      }
-      return;
-      this.a.a.a().a(DanceReadyFilter.a(this.a).a.e);
-      continue;
-      this.a.a.a().a(DanceReadyFilter.a(this.a).a.d);
-      continue;
-      this.a.a.a().a(DanceReadyFilter.a(this.a).a.c);
-    }
+    return paramDrawerPushItem1.priority - paramDrawerPushItem2.priority;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aifk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,19 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.anim.VipPngPlayAnimationDrawable;
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
-
 public class utg
-  extends View
 {
-  public utg(XBubbleAnimation paramXBubbleAnimation, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public final int a;
+  public final CharSequence a;
+  public final int b;
   
-  protected boolean verifyDrawable(Drawable paramDrawable)
+  public utg(int paramInt1, int paramInt2, CharSequence paramCharSequence)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.a()) || (this.a.b.a())) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new uth(this));
-    }
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimVipPngPlayAnimationDrawable.d) && (this.a.b.d)) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new uti(this));
-    }
-    return true;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     utg
  * JD-Core Version:    0.7.0.1
  */

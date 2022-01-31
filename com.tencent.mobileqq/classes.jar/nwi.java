@@ -1,25 +1,28 @@
-import android.util.LruCache;
-import com.tencent.biz.qqstory.shareGroup.icon.IconLog;
-import com.tencent.biz.qqstory.shareGroup.icon.ShareGroupIconManager;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListFragment;
+import com.tencent.widget.AbsListView;
 
 public class nwi
-  extends LruCache
+  implements begh
 {
-  public nwi(ShareGroupIconManager paramShareGroupIconManager, int paramInt)
+  public nwi(ReadInJoySecondCommentListFragment paramReadInJoySecondCommentListFragment) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    super(paramInt);
+    ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt1, paramInt2, paramInt3);
   }
   
-  protected void a(boolean paramBoolean, String paramString, nwb paramnwb1, nwb paramnwb2)
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    super.entryRemoved(paramBoolean, paramString, paramnwb1, paramnwb2);
-    IconLog.a("story.icon.ShareGroupIconManager", "entryRemoved key = %s" + paramString);
-    paramnwb1.a();
+    ((ReadInJoyCommentListView)paramAbsListView).a(paramAbsListView, paramInt);
+    if ((ReadInJoySecondCommentListFragment.a(this.a) != null) && (ReadInJoySecondCommentListFragment.a(this.a).a() != null)) {
+      ReadInJoySecondCommentListFragment.a(this.a).a().a(ReadInJoySecondCommentListFragment.a(this.a).getFirstVisiblePosition(), ReadInJoySecondCommentListFragment.a(this.a).getLastVisiblePosition());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nwi
  * JD-Core Version:    0.7.0.1
  */

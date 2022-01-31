@@ -1,19 +1,27 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.richstatus.RichStatus;
+import android.view.View;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.LayoutParams;
+import java.util.Comparator;
 
-class tqd
-  implements Runnable
+public class tqd
+  implements Comparator<View>
 {
-  tqd(tqc paramtqc, RichStatus paramRichStatus) {}
-  
-  public void run()
+  public int a(View paramView1, View paramView2)
   {
-    this.jdField_a_of_type_Tqc.a.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
+    paramView1 = (XViewPager.LayoutParams)paramView1.getLayoutParams();
+    paramView2 = (XViewPager.LayoutParams)paramView2.getLayoutParams();
+    if (paramView1.a != paramView2.a)
+    {
+      if (paramView1.a) {
+        return 1;
+      }
+      return -1;
+    }
+    return paramView1.b - paramView2.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tqd
  * JD-Core Version:    0.7.0.1
  */

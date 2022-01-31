@@ -1,21 +1,32 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout;
+import java.net.URL;
 
-public class aovl
-  implements View.OnTouchListener
+public abstract interface aovl
 {
-  public aovl(QIMCameraCaptureButtonLayout paramQIMCameraCaptureButtonLayout) {}
+  public abstract int a();
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return this.a.a(paramView, paramMotionEvent);
-  }
+  public abstract String a();
+  
+  public abstract URL a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(String paramString);
+  
+  public abstract int b();
+  
+  public abstract String b();
+  
+  public abstract void b(String paramString);
+  
+  public abstract boolean b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aovl
  * JD-Core Version:    0.7.0.1
  */

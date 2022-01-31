@@ -1,25 +1,52 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoPoi;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyViolaChannelFragment.2.1;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.readinjoy.viola.view.ViolaBaseView;
+import com.tencent.qphone.base.util.QLog;
 
 public class okr
-  implements AbsListView.OnScrollListener
+  implements rno
 {
-  int jdField_a_of_type_Int = 0;
+  public okr(ReadInJoyViolaChannelFragment paramReadInJoyViolaChannelFragment) {}
   
-  public okr(EditVideoPoi paramEditVideoPoi) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void a()
   {
-    if ((paramInt == 0) && (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.a != null) && (this.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.a.size() - 1)) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoi.e();
+    if (this.a.getActivity() != null) {
+      new Handler(this.a.getActivity().getMainLooper()).postDelayed(new ReadInJoyViolaChannelFragment.2.1(this), 200L);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyViolaChannelFragment", 2, "initViola success!");
+    }
+    if ((ReadInJoyViolaChannelFragment.a(this.a) != null) && (ReadInJoyViolaChannelFragment.a(this.a).c()) && (this.a.c()) && (ReadinjoyTabFrame.c_())) {
+      ReadInJoyViolaChannelFragment.a(this.a).a(true);
     }
   }
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+    ReadInJoyViolaChannelFragment.a(this.a);
+    ReadInJoyViolaChannelFragment.a(this.a).c();
+    if (QLog.isColorLevel()) {
+      QLog.e("ReadInJoyViolaChannelFragment", 2, "initViola error,error code=" + paramInt);
+    }
+  }
+  
+  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, boolean paramBoolean) {}
+  
+  public void a(String paramString, int paramInt)
+  {
+    if ((1 == paramInt) && (odi.a())) {
+      ohb.a().n();
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyViolaChannelFragment", 2, "initViola process,process code=" + paramInt);
+    }
   }
 }
 

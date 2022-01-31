@@ -74,14 +74,14 @@ public class HttpDownloadUtil$IdleConnectionMonitorThread
     //   start	length	slot	name	signature
     //   0	86	0	this	IdleConnectionMonitorThread
     //   63	4	1	localObject	Object
-    //   68	7	1	localException	java.lang.Exception
+    //   68	7	1	localThrowable	java.lang.Throwable
     //   81	1	1	localInterruptedException	java.lang.InterruptedException
     // Exception table:
     //   from	to	target	type
     //   9	16	63	finally
     //   16	18	63	finally
     //   64	66	63	finally
-    //   18	42	68	java/lang/Exception
+    //   18	42	68	java/lang/Throwable
     //   9	16	81	java/lang/InterruptedException
   }
 }

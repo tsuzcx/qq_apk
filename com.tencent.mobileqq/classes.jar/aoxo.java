@@ -1,93 +1,109 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.utils.FileUtils;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoArtResourceMgr;
-import java.io.File;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.SimpleFileViewer;
+import com.tencent.qphone.base.util.QLog;
 
-public final class aoxo
-  implements Runnable
+public class aoxo
+  extends aoxw
 {
-  public void run()
+  public aoxo(aovk paramaovk, Activity paramActivity)
   {
-    String str1 = ShortVideoArtResourceMgr.b();
-    String str2 = ShortVideoArtResourceMgr.a();
-    File[] arrayOfFile = new File(str1).listFiles();
-    int j;
-    Object localObject1;
-    int i;
-    Object localObject2;
-    Object localObject3;
-    int m;
-    if ((arrayOfFile != null) && (arrayOfFile.length > 2))
+    super(paramaovk, paramActivity);
+  }
+  
+  private void c()
+  {
+    int i = this.jdField_a_of_type_Aovk.g();
+    int j = this.jdField_a_of_type_Aovk.b();
+    switch (this.jdField_a_of_type_Aovk.e())
     {
-      j = 2147483647;
-      localObject1 = "unknown";
-      int k = 0;
-      i = 0;
-      if (k < arrayOfFile.length)
+    default: 
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131626962));
+      switch (i)
       {
-        if (arrayOfFile[k] == null) {}
-        for (;;)
-        {
-          k += 1;
-          break;
-          localObject2 = arrayOfFile[k].getName();
-          if (!str2.equalsIgnoreCase((String)localObject2))
-          {
-            localObject3 = aoya.a((String)localObject2);
-            m = ((aoyb)localObject3).a();
-            if (m == 0) {
-              break label197;
-            }
-            VideoEnvironment.a("[executeClearArtFilterSoCache] errorCodec=" + m + " filename=" + (String)localObject2, null);
-            localObject2 = new File(str1 + (String)localObject2);
-            if ((((File)localObject2).exists()) && (((File)localObject2).isFile())) {
-              ((File)localObject2).delete();
-            }
-          }
+      case 0: 
+      case 2: 
+      case 3: 
+      case 4: 
+      case 5: 
+      case 6: 
+      case 7: 
+      case 8: 
+      default: 
+        if (QLog.isColorLevel()) {
+          QLog.e("SimpleFilePresenter<FileAssistant>", 2, "getFileTips: opType[" + i + "not implemented");
         }
-        label197:
-        localObject3 = ((aoyb)localObject3).a();
-      }
-    }
-    label419:
-    for (;;)
-    {
-      try
-      {
-        m = Integer.parseInt((String)localObject3);
-        if (m >= j) {
-          break label419;
-        }
-        j = m;
-        localObject1 = localObject2;
-        i += 1;
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        VideoEnvironment.a("[executeClearArtFilterSoCache] filename=" + (String)localObject2 + "  tempVersion=" + (String)localObject3, localNumberFormatException);
+        break;
       }
       break;
-      VideoEnvironment.a("[executeClearArtFilterSoCache] deleteName=" + (String)localObject1 + "  validNumPendantCache=" + i + " leastVersion=" + j, null);
-      if (i >= 2)
-      {
-        localObject1 = new File(str1 + (String)localObject1);
-        if ((((File)localObject1).exists()) && (((File)localObject1).isFile()))
-        {
-          VideoEnvironment.a("[executeClearArtFilterSoCache] deletePath=" + ((File)localObject1).getAbsolutePath(), null);
-          ((File)localObject1).delete();
-        }
-      }
-      if (new File(VideoFilterTools.a).exists()) {
-        FileUtils.a(VideoFilterTools.a);
-      }
-      return;
     }
+    do
+    {
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131626961));
+      break;
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131626963));
+      break;
+      switch (j)
+      {
+      case 10: 
+      default: 
+        if (QLog.isColorLevel()) {
+          QLog.e("SimpleFilePresenter<FileAssistant>", 2, "getFileTips: opType[OPERATION_TYPE_OLFILE_BE_PC_HANDLED] status[" + j + "not implemented");
+        }
+        break;
+      }
+      for (;;)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(false);
+        return;
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131629130));
+        continue;
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131629133));
+        continue;
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131629134));
+      }
+      switch (j)
+      {
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("SimpleFilePresenter<FileAssistant>", 2, "getFileTips: opType[OPERATION_TYPE_OLFILE_GOTO_UPLOAD] status[" + j + "not implemented");
+    return;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131629129));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(false);
+    return;
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.b(false);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(false);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131629134));
+  }
+  
+  public void a()
+  {
+    super.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("SimpleFilePresenter<FileAssistant>", 1, "FileBrowserPresenter init: type = online simple");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.f(apdh.a(this.jdField_a_of_type_Aovk.c()));
+    c();
+  }
+  
+  protected void b()
+  {
+    super.b();
+    int i = this.jdField_a_of_type_Aovk.b();
+    if ((i == 8) || (i == 9) || (i == 5) || (i == 7) || (i == 12) || (i == 6) || (i == 16)) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.a(false);
+    }
+  }
+  
+  public void g()
+  {
+    m();
+    c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoxo
  * JD-Core Version:    0.7.0.1
  */

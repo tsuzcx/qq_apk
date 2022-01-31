@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class msg_comm$C2CTmpMsgHead
-  extends MessageMicro
+  extends MessageMicro<C2CTmpMsgHead>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field c2c_type = PBField.initUInt32(0);

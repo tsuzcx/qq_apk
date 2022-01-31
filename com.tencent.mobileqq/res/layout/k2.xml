@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.activity.qwallet.widget.MyLinearLayout android:orientation="vertical" android:background="@drawable/l7" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <TextView android:textSize="14.0dip" android:textColor="@color/ey" android:gravity="center|right" android:layout_gravity="right" android:id="@id/eav" android:clickable="true" android:layout_width="wrap_content" android:layout_height="38.5dip" android:layout_marginRight="18.5dip" android:text="@string/c1b" android:singleLine="true" />
+    <View android:background="@drawable/l8" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <ScrollView android:id="@id/ii8" android:scrollbars="none" android:fadingEdge="none" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/eas" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </ScrollView>
+</com.tencent.mobileqq.activity.qwallet.widget.MyLinearLayout>

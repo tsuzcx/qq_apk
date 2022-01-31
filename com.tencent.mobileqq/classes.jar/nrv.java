@@ -1,26 +1,13 @@
-import com.tencent.biz.qqstory.base.QQStoryBanInfo;
-import com.tencent.biz.qqstory.base.QQStoryObserver;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class nrv
-  extends QQStoryObserver
+  implements ViewBase.IBuilder
 {
-  public nrv(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
-  
-  public void a(boolean paramBoolean, QQStoryBanInfo paramQQStoryBanInfo)
+  public ViewBase build(VafContext paramVafContext)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MyVideoVisiblePersonPageView", 2, "onGetVideoReaderConfig: isSuccess " + paramBoolean + ", QQStoryBanInfo = " + paramQQStoryBanInfo);
-    }
-    if (paramBoolean)
-    {
-      if (paramQQStoryBanInfo != null) {
-        this.a.a(paramQQStoryBanInfo.a);
-      }
-      return;
-    }
-    this.a.e();
+    return new nru(paramVafContext);
   }
 }
 

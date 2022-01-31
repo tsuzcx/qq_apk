@@ -2,85 +2,65 @@ package com.tencent.component.network.utils.thread;
 
 import com.tencent.component.network.module.base.QDLog;
 
-class ThreadPool$Worker
-  implements Future, ThreadPool.JobContext, Comparable, Runnable
+class ThreadPool$Worker<T>
+  implements Future<T>, ThreadPool.JobContext, Comparable<Worker>, Runnable
 {
-  private int jdField_a_of_type_Int;
-  private final FutureListener jdField_a_of_type_ComTencentComponentNetworkUtilsThreadFutureListener;
-  private ThreadPool.CancelListener jdField_a_of_type_ComTencentComponentNetworkUtilsThreadThreadPool$CancelListener;
-  private final ThreadPool.Job jdField_a_of_type_ComTencentComponentNetworkUtilsThreadThreadPool$Job;
-  private ThreadPool.ResourceCounter jdField_a_of_type_ComTencentComponentNetworkUtilsThreadThreadPool$ResourceCounter;
-  private Object jdField_a_of_type_JavaLangObject;
-  private volatile boolean jdField_a_of_type_Boolean;
-  private boolean b;
+  private static final String TAG = "Worker";
+  private ThreadPool.CancelListener mCancelListener;
+  private volatile boolean mIsCancelled;
+  private boolean mIsDone;
+  private final ThreadPool.Job<T> mJob;
+  private final FutureListener<T> mListener;
+  private int mMode;
+  private T mResult;
+  private ThreadPool.ResourceCounter mWaitOnResource;
   
-  public ThreadPool$Worker(ThreadPool paramThreadPool, ThreadPool.Job paramJob, FutureListener paramFutureListener)
+  public ThreadPool$Worker(ThreadPool.Job<T> paramJob, FutureListener<T> paramFutureListener)
   {
-    this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadThreadPool$Job = paramJob;
-    this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadFutureListener = paramFutureListener;
-  }
-  
-  private ThreadPool.ResourceCounter a(int paramInt)
-  {
-    if (paramInt == 1) {
-      return this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadThreadPool.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadThreadPool$ResourceCounter;
-    }
-    if (paramInt == 2) {
-      return this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadThreadPool.b;
-    }
-    return null;
-  }
-  
-  private void a(ThreadPool.ResourceCounter paramResourceCounter)
-  {
-    try
-    {
-      paramResourceCounter.value += 1;
-      paramResourceCounter.notifyAll();
-      return;
-    }
-    finally {}
+    this.mJob = paramFutureListener;
+    Object localObject;
+    this.mListener = localObject;
   }
   
   /* Error */
-  private boolean a(ThreadPool.ResourceCounter paramResourceCounter)
+  private boolean acquireResource(ThreadPool.ResourceCounter paramResourceCounter)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 55	com/tencent/component/network/utils/thread/ThreadPool$Worker:jdField_a_of_type_Boolean	Z
+    //   3: getfield 57	com/tencent/component/network/utils/thread/ThreadPool$Worker:mIsCancelled	Z
     //   6: ifeq +12 -> 18
     //   9: aload_0
     //   10: aconst_null
-    //   11: putfield 56	com/tencent/component/network/utils/thread/ThreadPool$Worker:jdField_a_of_type_ComTencentComponentNetworkUtilsThreadThreadPool$ResourceCounter	Lcom/tencent/component/network/utils/thread/ThreadPool$ResourceCounter;
+    //   11: putfield 59	com/tencent/component/network/utils/thread/ThreadPool$Worker:mWaitOnResource	Lcom/tencent/component/network/utils/thread/ThreadPool$ResourceCounter;
     //   14: aload_0
     //   15: monitorexit
     //   16: iconst_0
     //   17: ireturn
     //   18: aload_0
     //   19: aload_1
-    //   20: putfield 56	com/tencent/component/network/utils/thread/ThreadPool$Worker:jdField_a_of_type_ComTencentComponentNetworkUtilsThreadThreadPool$ResourceCounter	Lcom/tencent/component/network/utils/thread/ThreadPool$ResourceCounter;
+    //   20: putfield 59	com/tencent/component/network/utils/thread/ThreadPool$Worker:mWaitOnResource	Lcom/tencent/component/network/utils/thread/ThreadPool$ResourceCounter;
     //   23: aload_0
     //   24: monitorexit
     //   25: aload_1
     //   26: monitorenter
     //   27: aload_1
-    //   28: getfield 47	com/tencent/component/network/utils/thread/ThreadPool$ResourceCounter:value	I
+    //   28: getfield 64	com/tencent/component/network/utils/thread/ThreadPool$ResourceCounter:value	I
     //   31: ifle +31 -> 62
     //   34: aload_1
     //   35: aload_1
-    //   36: getfield 47	com/tencent/component/network/utils/thread/ThreadPool$ResourceCounter:value	I
+    //   36: getfield 64	com/tencent/component/network/utils/thread/ThreadPool$ResourceCounter:value	I
     //   39: iconst_1
     //   40: isub
-    //   41: putfield 47	com/tencent/component/network/utils/thread/ThreadPool$ResourceCounter:value	I
+    //   41: putfield 64	com/tencent/component/network/utils/thread/ThreadPool$ResourceCounter:value	I
     //   44: aload_1
     //   45: monitorexit
     //   46: aload_0
     //   47: monitorenter
     //   48: aload_0
     //   49: aconst_null
-    //   50: putfield 56	com/tencent/component/network/utils/thread/ThreadPool$Worker:jdField_a_of_type_ComTencentComponentNetworkUtilsThreadThreadPool$ResourceCounter	Lcom/tencent/component/network/utils/thread/ThreadPool$ResourceCounter;
+    //   50: putfield 59	com/tencent/component/network/utils/thread/ThreadPool$Worker:mWaitOnResource	Lcom/tencent/component/network/utils/thread/ThreadPool$ResourceCounter;
     //   53: aload_0
     //   54: monitorexit
     //   55: iconst_1
@@ -91,7 +71,7 @@ class ThreadPool$Worker
     //   60: aload_1
     //   61: athrow
     //   62: aload_1
-    //   63: invokevirtual 59	java/lang/Object:wait	()V
+    //   63: invokevirtual 67	java/lang/Object:wait	()V
     //   66: aload_1
     //   67: monitorexit
     //   68: goto -68 -> 0
@@ -127,6 +107,28 @@ class ThreadPool$Worker
     //   62	66	81	java/lang/InterruptedException
   }
   
+  private ThreadPool.ResourceCounter modeToCounter(int paramInt)
+  {
+    if (paramInt == 1) {
+      return this.this$0.mCpuCounter;
+    }
+    if (paramInt == 2) {
+      return this.this$0.mNetworkCounter;
+    }
+    return null;
+  }
+  
+  private void releaseResource(ThreadPool.ResourceCounter paramResourceCounter)
+  {
+    try
+    {
+      paramResourceCounter.value += 1;
+      paramResourceCounter.notifyAll();
+      return;
+    }
+    finally {}
+  }
+  
   /* Error */
   public void cancel()
   {
@@ -134,7 +136,7 @@ class ThreadPool$Worker
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 55	com/tencent/component/network/utils/thread/ThreadPool$Worker:jdField_a_of_type_Boolean	Z
+    //   3: getfield 57	com/tencent/component/network/utils/thread/ThreadPool$Worker:mIsCancelled	Z
     //   6: istore_1
     //   7: iload_1
     //   8: ifeq +6 -> 14
@@ -143,26 +145,26 @@ class ThreadPool$Worker
     //   13: return
     //   14: aload_0
     //   15: iconst_1
-    //   16: putfield 55	com/tencent/component/network/utils/thread/ThreadPool$Worker:jdField_a_of_type_Boolean	Z
+    //   16: putfield 57	com/tencent/component/network/utils/thread/ThreadPool$Worker:mIsCancelled	Z
     //   19: aload_0
-    //   20: getfield 56	com/tencent/component/network/utils/thread/ThreadPool$Worker:jdField_a_of_type_ComTencentComponentNetworkUtilsThreadThreadPool$ResourceCounter	Lcom/tencent/component/network/utils/thread/ThreadPool$ResourceCounter;
+    //   20: getfield 59	com/tencent/component/network/utils/thread/ThreadPool$Worker:mWaitOnResource	Lcom/tencent/component/network/utils/thread/ThreadPool$ResourceCounter;
     //   23: ifnull +19 -> 42
     //   26: aload_0
-    //   27: getfield 56	com/tencent/component/network/utils/thread/ThreadPool$Worker:jdField_a_of_type_ComTencentComponentNetworkUtilsThreadThreadPool$ResourceCounter	Lcom/tencent/component/network/utils/thread/ThreadPool$ResourceCounter;
+    //   27: getfield 59	com/tencent/component/network/utils/thread/ThreadPool$Worker:mWaitOnResource	Lcom/tencent/component/network/utils/thread/ThreadPool$ResourceCounter;
     //   30: astore_2
     //   31: aload_2
     //   32: monitorenter
     //   33: aload_0
-    //   34: getfield 56	com/tencent/component/network/utils/thread/ThreadPool$Worker:jdField_a_of_type_ComTencentComponentNetworkUtilsThreadThreadPool$ResourceCounter	Lcom/tencent/component/network/utils/thread/ThreadPool$ResourceCounter;
-    //   37: invokevirtual 50	java/lang/Object:notifyAll	()V
+    //   34: getfield 59	com/tencent/component/network/utils/thread/ThreadPool$Worker:mWaitOnResource	Lcom/tencent/component/network/utils/thread/ThreadPool$ResourceCounter;
+    //   37: invokevirtual 82	java/lang/Object:notifyAll	()V
     //   40: aload_2
     //   41: monitorexit
     //   42: aload_0
-    //   43: getfield 62	com/tencent/component/network/utils/thread/ThreadPool$Worker:jdField_a_of_type_ComTencentComponentNetworkUtilsThreadThreadPool$CancelListener	Lcom/tencent/component/network/utils/thread/ThreadPool$CancelListener;
+    //   43: getfield 85	com/tencent/component/network/utils/thread/ThreadPool$Worker:mCancelListener	Lcom/tencent/component/network/utils/thread/ThreadPool$CancelListener;
     //   46: ifnull -35 -> 11
     //   49: aload_0
-    //   50: getfield 62	com/tencent/component/network/utils/thread/ThreadPool$Worker:jdField_a_of_type_ComTencentComponentNetworkUtilsThreadThreadPool$CancelListener	Lcom/tencent/component/network/utils/thread/ThreadPool$CancelListener;
-    //   53: invokeinterface 67 1 0
+    //   50: getfield 85	com/tencent/component/network/utils/thread/ThreadPool$Worker:mCancelListener	Lcom/tencent/component/network/utils/thread/ThreadPool$CancelListener;
+    //   53: invokeinterface 90 1 0
     //   58: goto -47 -> 11
     //   61: astore_2
     //   62: aload_0
@@ -192,16 +194,16 @@ class ThreadPool$Worker
   
   public int compareTo(Worker paramWorker)
   {
-    return ((Comparable)this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadThreadPool$Job).compareTo(paramWorker.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadThreadPool$Job);
+    return ((Comparable)this.mJob).compareTo(paramWorker.mJob);
   }
   
-  public Object get()
+  public T get()
   {
     try
     {
       for (;;)
       {
-        boolean bool = this.b;
+        boolean bool = this.mIsDone;
         if (bool) {
           break;
         }
@@ -211,10 +213,10 @@ class ThreadPool$Worker
         }
         catch (Exception localException)
         {
-          QDLog.c("Worker", "ignore exception", localException);
+          QDLog.w("Worker", "ignore exception", localException);
         }
       }
-      localObject2 = this.jdField_a_of_type_JavaLangObject;
+      localObject2 = this.mResult;
     }
     finally {}
     Object localObject2;
@@ -223,14 +225,14 @@ class ThreadPool$Worker
   
   public boolean isCancelled()
   {
-    return this.jdField_a_of_type_Boolean;
+    return this.mIsCancelled;
   }
   
   public boolean isDone()
   {
     try
     {
-      boolean bool = this.b;
+      boolean bool = this.mIsDone;
       return bool;
     }
     finally
@@ -242,34 +244,41 @@ class ThreadPool$Worker
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadFutureListener != null) {
-      this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadFutureListener.a(this);
+    if (this.mListener != null) {
+      this.mListener.onFutureBegin(this);
     }
     Object localObject4 = null;
     Object localObject1 = localObject4;
     if (setMode(1)) {}
     try
     {
-      localObject1 = this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadThreadPool$Job.run(this);
+      localObject1 = this.mJob.run(this);
     }
-    catch (Throwable localThrowable)
+    catch (Throwable localThrowable1)
     {
       for (;;)
       {
         try
         {
           setMode(0);
-          this.jdField_a_of_type_JavaLangObject = localObject1;
-          this.b = true;
+          this.mResult = localObject1;
+          this.mIsDone = true;
           notifyAll();
-          if (this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadFutureListener != null) {
-            this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadFutureListener.b(this);
+        }
+        finally {}
+        try
+        {
+          if (this.mListener != null) {
+            this.mListener.onFutureDone(this);
           }
           return;
         }
-        finally {}
-        localThrowable = localThrowable;
-        QDLog.c("Worker", "Exception in running a job", localThrowable);
+        catch (Throwable localThrowable2)
+        {
+          QDLog.w("Worker", "Exception in onFutureDone.", localThrowable2);
+        }
+        localThrowable1 = localThrowable1;
+        QDLog.w("Worker", "Exception in running a job", localThrowable1);
         Object localObject2 = localObject4;
       }
     }
@@ -279,9 +288,9 @@ class ThreadPool$Worker
   {
     try
     {
-      this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadThreadPool$CancelListener = paramCancelListener;
-      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadThreadPool$CancelListener != null)) {
-        this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadThreadPool$CancelListener.onCancel();
+      this.mCancelListener = paramCancelListener;
+      if ((this.mIsCancelled) && (this.mCancelListener != null)) {
+        this.mCancelListener.onCancel();
       }
       return;
     }
@@ -294,18 +303,18 @@ class ThreadPool$Worker
   
   public boolean setMode(int paramInt)
   {
-    ThreadPool.ResourceCounter localResourceCounter = a(this.jdField_a_of_type_Int);
+    ThreadPool.ResourceCounter localResourceCounter = modeToCounter(this.mMode);
     if (localResourceCounter != null) {
-      a(localResourceCounter);
+      releaseResource(localResourceCounter);
     }
-    this.jdField_a_of_type_Int = 0;
-    localResourceCounter = a(paramInt);
+    this.mMode = 0;
+    localResourceCounter = modeToCounter(paramInt);
     if (localResourceCounter != null)
     {
-      if (!a(localResourceCounter)) {
+      if (!acquireResource(localResourceCounter)) {
         return false;
       }
-      this.jdField_a_of_type_Int = paramInt;
+      this.mMode = paramInt;
     }
     return true;
   }

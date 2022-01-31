@@ -1,41 +1,38 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.mobileqq.ar.aidl.IArConfigManager;
-import com.tencent.mobileqq.ar.aidl.IArConfigManager.Stub;
-import com.tencent.mobileqq.ar.config.DownloadDependRes;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class aapo
-  implements ServiceConnection
+  implements Animation.AnimationListener
 {
-  public aapo(DownloadDependRes paramDownloadDependRes) {}
+  public aapo(DiscussionMemberActivity paramDiscussionMemberActivity, TranslateAnimation paramTranslateAnimation1, Dialog paramDialog, TranslateAnimation paramTranslateAnimation2, int paramInt) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QLog.w("WorldCupMgr", 1, "onServiceConnected, name[" + paramComponentName + "]");
-    try
+    if (paramAnimation == this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation)
     {
-      this.a.a = IArConfigManager.Stub.a(paramIBinder);
-      this.a.a.a(DownloadDependRes.a(this.a));
-      this.a.a.c();
+      this.jdField_a_of_type_AndroidAppDialog.show();
+      this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.setAnimation(null);
+      DiscussionMemberActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity).setVisibility(8);
+    }
+    while (paramAnimation != this.b) {
       return;
     }
-    catch (Exception paramComponentName)
-    {
-      QLog.w("WorldCupMgr", 1, "onServiceConnected, Exception", paramComponentName);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.setAnimation(null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.offsetTopAndBottom(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a.requestLayout();
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    QLog.w("WorldCupMgr", 1, "onServiceDisconnected, name[" + paramComponentName + "]");
-    this.a.a();
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aapo
  * JD-Core Version:    0.7.0.1
  */

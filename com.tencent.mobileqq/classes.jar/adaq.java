@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
+import android.os.Handler;
 
 class adaq
-  implements Runnable
+  implements ajzp
 {
-  adaq(adap paramadap) {}
+  adaq(adao paramadao) {}
   
-  public void run()
+  public void a(int paramInt, xfw paramxfw) {}
+  
+  public void a(long paramLong)
   {
-    this.a.a.e();
+    adao.a("onLowMemory");
+    adao.a().sendMessage(adao.a().obtainMessage(5));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adaq
  * JD-Core Version:    0.7.0.1
  */

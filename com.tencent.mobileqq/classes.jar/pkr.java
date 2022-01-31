@@ -1,33 +1,66 @@
-import com.tencent.component.media.gif.NewGifDrawable;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowGroup;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import java.util.List;
 
 public class pkr
-  implements Runnable
+  implements View.OnClickListener
 {
-  long jdField_a_of_type_Long;
+  LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ppi jdField_a_of_type_Ppi;
+  ImageView[] jdField_a_of_type_ArrayOfAndroidWidgetImageView;
+  RelativeLayout[] jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout;
+  TextView[] jdField_a_of_type_ArrayOfAndroidWidgetTextView;
+  LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView[] jdField_b_of_type_ArrayOfAndroidWidgetImageView;
+  ImageView[] c;
   
-  public pkr(NewGifDrawable paramNewGifDrawable, long paramLong)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-  }
+  private pkr(ComponentContentRecommendFollowGroup paramComponentContentRecommendFollowGroup) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    long l = 0L;
-    NewGifDrawable.a(this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable);
-    NewGifDrawable localNewGifDrawable = this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable;
-    ScheduledThreadPoolExecutor localScheduledThreadPoolExecutor = this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor;
-    pkt localpkt = NewGifDrawable.a(this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable);
-    if (this.jdField_a_of_type_Long > 0L) {
-      l = this.jdField_a_of_type_Long;
+    boolean bool = true;
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131300919: 
+      i = 0;
+      if (i < this.jdField_a_of_type_Ppi.a.size()) {
+        if (((RecommendFollowInfo)this.jdField_a_of_type_Ppi.a.get(i)).isFollowed) {
+          break;
+        }
+      }
+      break;
     }
-    localNewGifDrawable.jdField_a_of_type_JavaUtilConcurrentScheduledFuture = localScheduledThreadPoolExecutor.schedule(localpkt, l, TimeUnit.MILLISECONDS);
+    for (int i = 0;; i = 1)
+    {
+      paramView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowGroup;
+      List localList = this.jdField_a_of_type_Ppi.a;
+      if (i == 0) {}
+      for (;;)
+      {
+        paramView.a(localList, bool);
+        return;
+        i += 1;
+        break;
+        bool = false;
+      }
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowGroup.a((RecommendFollowInfo)paramView.getTag());
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pkr
  * JD-Core Version:    0.7.0.1
  */

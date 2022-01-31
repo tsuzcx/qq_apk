@@ -1,30 +1,26 @@
-import android.support.annotation.Nullable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
 
-public class agnx
-  implements OnCompositionLoadedListener
+public abstract class agnx
+  implements TextWatcher
 {
-  public agnx(ScanTorchActivity paramScanTorchActivity) {}
+  protected EditText a;
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public agnx(EditText paramEditText)
   {
-    LottieDrawable localLottieDrawable = new LottieDrawable();
-    localLottieDrawable.setImagesAssetsFolder(ScanTorchActivity.d(this.a));
-    localLottieDrawable.setImageAssetDelegate(new agny(this));
-    localLottieDrawable.setComposition(paramLottieComposition);
-    localLottieDrawable.loop(true);
-    localLottieDrawable.playAnimation();
-    ScanTorchActivity.a(this.a, localLottieDrawable);
-    ScanTorchActivity.a(this.a).setImageDrawable(localLottieDrawable);
+    this.a = paramEditText;
   }
+  
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agnx
  * JD-Core Version:    0.7.0.1
  */

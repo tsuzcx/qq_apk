@@ -2,13 +2,12 @@ package cooperation.qwallet.plugin.ipc;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import auqh;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.redtouch.NumRedPointManager;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedDisplayInfo;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.RedTypeInfo;
@@ -27,7 +26,7 @@ public class WalletHomeReq
   public static final int RED_TOUCH_REPORT = 2;
   public boolean isAppLoadFinished;
   public String redTouchPath;
-  public ArrayList redTouchPaths;
+  public ArrayList<String> redTouchPaths;
   public int type;
   
   private static String getContentByAppInfo(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
@@ -193,77 +192,90 @@ public class WalletHomeReq
   
   protected void getRedTouch(QQAppInterface paramQQAppInterface)
   {
-    Object localObject1 = (RedTouchManager)paramQQAppInterface.getManager(35);
+    auqh localauqh = (auqh)paramQQAppInterface.getManager(36);
     ArrayList localArrayList = new ArrayList();
-    localObject1 = ((RedTouchManager)localObject1).a();
-    if (localObject1 == null)
+    paramQQAppInterface = localauqh.a();
+    if (paramQQAppInterface == null)
     {
       onGetRedTouch(null);
       return;
     }
-    Iterator localIterator1 = ((BusinessInfoCheckUpdate.TimeRspBody)localObject1).rptMsgAppInfo.get().iterator();
-    BusinessInfoCheckUpdate.AppInfo localAppInfo;
-    label84:
-    int j;
-    int i;
-    label179:
-    Object localObject2;
+    Iterator localIterator1 = paramQQAppInterface.rptMsgAppInfo.get().iterator();
     if (localIterator1.hasNext())
     {
-      localAppInfo = (BusinessInfoCheckUpdate.AppInfo)localIterator1.next();
+      BusinessInfoCheckUpdate.AppInfo localAppInfo = (BusinessInfoCheckUpdate.AppInfo)localIterator1.next();
       Iterator localIterator2 = this.redTouchPaths.iterator();
-      while (localIterator2.hasNext())
+      label81:
+      int j;
+      Object localObject2;
+      Object localObject3;
+      Object localObject1;
+      List localList;
+      for (;;)
       {
-        localObject1 = (String)localIterator2.next();
-        if ((localAppInfo.path.get().equals(localObject1)) && (localAppInfo.iNewFlag.get() != 0))
+        if (localIterator2.hasNext())
         {
-          j = getRedType(localAppInfo);
-          if ((j != 3) && (j != 5) && (j != 4)) {
-            break label389;
+          paramQQAppInterface = (String)localIterator2.next();
+          if ((localAppInfo.path.get().equals(paramQQAppInterface)) && (localAppInfo.iNewFlag.get() != 0))
+          {
+            j = getRedType(localAppInfo);
+            localObject2 = null;
+            localObject3 = null;
+            if ((j != 3) && (j != 5))
+            {
+              localObject1 = localObject2;
+              paramQQAppInterface = localObject3;
+              if (j != 4) {
+                break;
+              }
+            }
+            else
+            {
+              localList = localAppInfo.red_display_info.red_type_info.get();
+              localObject1 = localObject2;
+              paramQQAppInterface = localObject3;
+              if (localList.size() > 0) {
+                i = 0;
+              }
+            }
           }
-          localObject1 = localAppInfo.red_display_info.red_type_info.get();
-          if (((List)localObject1).size() <= 0) {
-            break label389;
-          }
-          i = 0;
-          if (i >= ((List)localObject1).size()) {
-            break label389;
-          }
-          localObject2 = (BusinessInfoCheckUpdate.RedTypeInfo)((List)localObject1).get(i);
-          if ((localObject2 == null) || ((((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_type.get() != 3) && (((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_type.get() != 5) && (((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_type.get() != 4))) {
-            break label298;
-          }
-          localObject1 = ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_desc.get();
-          localObject2 = ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_content.get();
         }
       }
-    }
-    for (;;)
-    {
-      localArrayList.add(new QWalletRedTouchInfo(localAppInfo.path.get(), j, getContentByAppInfo(localAppInfo), (String)localObject1, (String)localObject2));
-      break label84;
-      break;
-      label298:
-      i += 1;
-      break label179;
-      i = ((NumRedPointManager)paramQQAppInterface.getManager(63)).a("100007.102000", 100);
-      if (i > 0) {
-        localArrayList.add(new QWalletRedTouchInfo("100007.102000", 5, null, null, i + ""));
-      }
-      if ((localArrayList == null) || (localArrayList.size() == 0))
+      for (;;)
       {
-        onGetRedTouch(null);
-        return;
+        localObject1 = localObject2;
+        paramQQAppInterface = localObject3;
+        if (i < localList.size())
+        {
+          paramQQAppInterface = (BusinessInfoCheckUpdate.RedTypeInfo)localList.get(i);
+          if ((paramQQAppInterface != null) && ((paramQQAppInterface.red_type.get() == 3) || (paramQQAppInterface.red_type.get() == 5) || (paramQQAppInterface.red_type.get() == 4)))
+          {
+            localObject1 = paramQQAppInterface.red_desc.get();
+            paramQQAppInterface = paramQQAppInterface.red_content.get();
+          }
+        }
+        else
+        {
+          localArrayList.add(new QWalletRedTouchInfo(localAppInfo.path.get(), j, getContentByAppInfo(localAppInfo), (String)localObject1, paramQQAppInterface));
+          break label81;
+          break;
+        }
+        i += 1;
       }
-      onGetRedTouch(localArrayList);
-      return;
-      label389:
-      localObject2 = null;
-      localObject1 = null;
     }
+    int i = localauqh.a("100007.102000", 100);
+    if (i > 0) {
+      localArrayList.add(new QWalletRedTouchInfo("100007.102000", 5, null, null, i + ""));
+    }
+    if ((localArrayList == null) || (localArrayList.size() == 0))
+    {
+      onGetRedTouch(null);
+      return;
+    }
+    onGetRedTouch(localArrayList);
   }
   
-  protected void onGetRedTouch(ArrayList paramArrayList)
+  protected void onGetRedTouch(ArrayList<QWalletRedTouchInfo> paramArrayList)
   {
     WalletHomeResp localWalletHomeResp = new WalletHomeResp();
     localWalletHomeResp.resp = paramArrayList;
@@ -297,7 +309,7 @@ public class WalletHomeReq
   protected void reportRedTouch(QQAppInterface paramQQAppInterface)
   {
     if (paramQQAppInterface != null) {
-      ((RedTouchManager)paramQQAppInterface.getManager(35)).b(this.redTouchPath);
+      ((auqh)paramQQAppInterface.getManager(36)).b(this.redTouchPath);
     }
   }
   
@@ -312,7 +324,7 @@ public class WalletHomeReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cooperation.qwallet.plugin.ipc.WalletHomeReq
  * JD-Core Version:    0.7.0.1
  */

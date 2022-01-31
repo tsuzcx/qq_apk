@@ -12,7 +12,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_0x6d8$GetFileListRspBody
-  extends MessageMicro
+  extends MessageMicro<GetFileListRspBody>
 {
   public static final int TYPE_FILE = 1;
   public static final int TYPE_FOLDER = 2;
@@ -22,7 +22,7 @@ public final class oidb_0x6d8$GetFileListRspBody
   public final PBBytesField bytes_context = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBInt32Field int32_ret_code = PBField.initInt32(0);
   public oidb_0x6d8.FileTimeStamp msg_max_timestamp = new oidb_0x6d8.FileTimeStamp();
-  public final PBRepeatMessageField rpt_item_list = PBField.initRepeatMessage(oidb_0x6d8.GetFileListRspBody.Item.class);
+  public final PBRepeatMessageField<oidb_0x6d8.GetFileListRspBody.Item> rpt_item_list = PBField.initRepeatMessage(oidb_0x6d8.GetFileListRspBody.Item.class);
   public final PBStringField str_client_wording = PBField.initString("");
   public final PBStringField str_ret_msg = PBField.initString("");
   public final PBUInt32Field uint32_all_file_count = PBField.initUInt32(0);
@@ -40,7 +40,7 @@ public final class oidb_0x6d8$GetFileListRspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x6d8.oidb_0x6d8.GetFileListRspBody
  * JD-Core Version:    0.7.0.1
  */

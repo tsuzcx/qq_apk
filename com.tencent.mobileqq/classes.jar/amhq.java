@@ -1,17 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.widget.ActionSheet;
-
 public class amhq
-  implements View.OnClickListener
 {
-  public amhq(ActionSheet paramActionSheet) {}
+  public int a;
+  public int b = 3145728;
+  public int c = 3145728;
   
-  public void onClick(View paramView) {}
+  public amhq(amhp paramamhp)
+  {
+    this.jdField_a_of_type_Int = 512000;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amhq
  * JD-Core Version:    0.7.0.1
  */

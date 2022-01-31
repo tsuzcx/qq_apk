@@ -1,41 +1,43 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.QQStoryObserver;
-import com.tencent.biz.qqstory.notification.StoryPushMsg;
-import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailPresenter;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class oaa
-  extends QQStoryObserver
+  implements INetInfoHandler
 {
-  public oaa(StoryDetailPresenter paramStoryDetailPresenter) {}
+  public void onNetMobile2None() {}
   
-  public void a(StoryPushMsg paramStoryPushMsg)
+  public void onNetMobile2Wifi(String paramString)
   {
-    if ((!TextUtils.equals(StoryDetailPresenter.a(this.a), paramStoryPushMsg.d)) || (StoryDetailPresenter.a(this.a) == null))
-    {
-      SLog.a("Q.qqstory.detail.StoryDetailPresenter", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.d, StoryDetailPresenter.a(this.a));
-      return;
-    }
-    if ((paramStoryPushMsg.a == 15) || (paramStoryPushMsg.a == 19))
-    {
-      SLog.a("Q.qqstory.detail.StoryDetailPresenter", "Receive new comment PUSH: %s, refreshing comments......", paramStoryPushMsg);
-      StoryDetailPresenter.a(this.a);
-    }
-    for (;;)
-    {
-      this.a.i();
-      return;
-      if ((paramStoryPushMsg.a == 14) || (paramStoryPushMsg.a == 16) || (paramStoryPushMsg.a == 18))
-      {
-        SLog.a("Q.qqstory.detail.StoryDetailPresenter", "Receive new like PUSH: %s, refreshing likes......", paramStoryPushMsg);
-        StoryDetailPresenter.b(this.a);
-      }
-    }
+    QLog.d("KBPreDownloadUtils", 2, "[onNetMobile2Wifi] ");
+    AppNetConnInfo.unregisterNetInfoHandler(nzy.a());
+    nzy.a();
+  }
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    QLog.d("KBPreDownloadUtils", 2, "[onNetNone2Wifi] ");
+    AppNetConnInfo.unregisterNetInfoHandler(nzy.a());
+    nzy.a();
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    QLog.i("KBPreDownloadUtils", 1, "[onNetWifi2Mobile] pause download");
+    bcgo.a().a("101480433");
+  }
+  
+  public void onNetWifi2None()
+  {
+    QLog.i("KBPreDownloadUtils", 1, "[onNetWifi2None] pause download");
+    bcgo.a().a("101480433");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oaa
  * JD-Core Version:    0.7.0.1
  */

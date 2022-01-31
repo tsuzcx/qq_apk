@@ -1,35 +1,28 @@
-import com.tencent.biz.qrcode.QRCodeEncodeCallback;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnAttachStateChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.FusionBiuInfo;
 
 class oyn
-  implements QRCodeEncodeCallback
+  implements View.OnAttachStateChangeListener
 {
-  oyn(oyl paramoyl, String paramString, int paramInt) {}
+  oyn(oyl paramoyl, ohe paramohe) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onViewAttachedToWindow(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QRDisplayActivity", 2, "onReceive qrcode url: " + paramBoolean);
-    }
-    if ((this.jdField_a_of_type_Oyl.a.b) || (this.jdField_a_of_type_Oyl.a.isFinishing())) {
-      return;
-    }
-    if (!paramBoolean)
+    ohb.a().a(this.jdField_a_of_type_Ohe);
+    if ((oyl.a(this.jdField_a_of_type_Oyl) != null) && (oyl.a(this.jdField_a_of_type_Oyl).fusionBiuInfo != null) && (!oyl.a(this.jdField_a_of_type_Oyl).fusionBiuInfo.b) && (oyl.a(this.jdField_a_of_type_Oyl) == 1) && (!oyl.a(this.jdField_a_of_type_Oyl)) && (qzk.a().a()))
     {
-      this.jdField_a_of_type_Oyl.a.g();
-      return;
+      ohb.a().e();
+      oyl.a(this.jdField_a_of_type_Oyl, true);
     }
-    this.jdField_a_of_type_Oyl.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramString);
-    paramString = QRUtils.a(paramString, -1);
-    if (paramString != null)
-    {
-      this.jdField_a_of_type_Oyl.a.a = paramString;
-      this.jdField_a_of_type_Oyl.a.f();
-      return;
-    }
-    this.jdField_a_of_type_Oyl.a.g();
+  }
+  
+  public void onViewDetachedFromWindow(View paramView)
+  {
+    ohb.a().b(this.jdField_a_of_type_Ohe);
+    oyl.a(this.jdField_a_of_type_Oyl).removeCallbacksAndMessages(null);
   }
 }
 

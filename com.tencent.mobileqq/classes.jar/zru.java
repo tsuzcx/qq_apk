@@ -1,44 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qzonealbumreddot.QzoneAlbumRedTouchManager;
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-
 public class zru
-  extends BroadcastReceiver
 {
-  public zru(QQAppInterface paramQQAppInterface) {}
+  public final int a;
+  public final Class<? extends zrx> a;
+  public final String a;
+  public final int b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public zru(String paramString, int paramInt1, int paramInt2, Class<? extends zrx> paramClass)
   {
-    if (this.a.l) {
-      QLog.i("QQAppInterface", 1, "qzoneBrocastReceiver release() has been called  ,return ", null);
-    }
-    do
-    {
-      int i;
-      do
-      {
-        return;
-        paramContext = paramIntent.getAction();
-        if (!"com.tencent.qzone.cleanunreadcount".equals(paramContext)) {
-          break;
-        }
-        i = paramIntent.getIntExtra("clean_unread_feed_type", -1);
-        paramContext = (QZoneManagerImp)this.a.getManager(9);
-      } while ((paramContext == null) || (i == -1));
-      paramContext.a(i, 0L, new ArrayList(), null, false, false, "");
-      return;
-    } while (!"com.tecent.qzone.clearAlbumRedTouch".equals(paramContext));
-    ((QzoneAlbumRedTouchManager)this.a.getManager(103)).b();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.b = paramInt2;
+    this.jdField_a_of_type_JavaLangClass = paramClass;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zru
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,47 @@
-import android.database.Cursor;
-import android.os.Parcel;
-import com.tencent.open.base.http.HttpCacheData;
-import com.tencent.open.component.cache.database.DbCacheData.DbCreator;
-import com.tencent.open.component.cache.database.DbCacheData.Structure;
+import android.os.Bundle;
+import com.tencent.mobileqq.bubble.BubbleManager;
+import com.tencent.qphone.base.util.QLog;
 
-public final class alnf
-  implements DbCacheData.DbCreator
+public class alnf
+  extends batl
 {
-  public int a()
+  public alnf(BubbleManager paramBubbleManager, String paramString1, String paramString2)
   {
-    return 1;
+    super(paramString1, paramString2);
   }
   
-  public HttpCacheData a(Cursor paramCursor)
+  public void onCancel(batm parambatm)
   {
-    try
-    {
-      String str1 = paramCursor.getString(paramCursor.getColumnIndex("urlKey"));
-      String str2 = paramCursor.getString(paramCursor.getColumnIndex("ETag"));
-      long l1 = paramCursor.getLong(paramCursor.getColumnIndex("lastModify"));
-      long l2 = paramCursor.getLong(paramCursor.getColumnIndex("cacheTime"));
-      Object localObject = paramCursor.getBlob(paramCursor.getColumnIndex("response"));
-      paramCursor = Parcel.obtain();
-      paramCursor.unmarshall((byte[])localObject, 0, localObject.length);
-      paramCursor.setDataPosition(0);
-      localObject = paramCursor.readString();
-      paramCursor.recycle();
-      paramCursor = new HttpCacheData(str1, str2, l1, l2, (String)localObject);
-      return paramCursor;
+    String str = parambatm.a().getString("name");
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleManager", 2, "bubbleDownloadListener onCancel pkgName = " + str);
     }
-    catch (Exception paramCursor)
-    {
-      paramCursor.printStackTrace();
+    this.a.a("Bubble_download_cancel", parambatm.b(), str, 0L);
+  }
+  
+  public void onDone(batm parambatm)
+  {
+    long l = parambatm.h - parambatm.g;
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleManager", 2, "bubbleDownloadListener onDone downloadTime = " + l);
     }
-    return null;
+    this.a.a("Bubble_download_succ", parambatm.b(), "pkgName", l);
   }
   
-  public String a()
+  public boolean onStart(batm parambatm)
   {
-    return null;
-  }
-  
-  public DbCacheData.Structure[] a()
-  {
-    return new DbCacheData.Structure[] { new DbCacheData.Structure("urlKey", "TEXT"), new DbCacheData.Structure("ETag", "TEXT"), new DbCacheData.Structure("lastModify", "INTEGER"), new DbCacheData.Structure("cacheTime", "INTEGER"), new DbCacheData.Structure("response", "BLOB") };
+    String str = parambatm.a().getString("name");
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleManager", 2, "bubbleDownloadListener onStart pkgName = " + str);
+    }
+    this.a.a("Bubble_download", parambatm.b(), str, 0L);
+    super.onStart(parambatm);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alnf
  * JD-Core Version:    0.7.0.1
  */

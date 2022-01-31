@@ -1,43 +1,29 @@
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.support.v4.view.ViewPager;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivityNew;
 
 public class rod
-  implements Runnable
+  implements RadioGroup.OnCheckedChangeListener
 {
-  public rod(AddFriendVerifyActivity paramAddFriendVerifyActivity, int paramInt1, int paramInt2, boolean paramBoolean, String paramString, int paramInt3) {}
+  public rod(ServiceAccountFolderActivityNew paramServiceAccountFolderActivityNew) {}
   
-  public void run()
+  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    String str1;
-    QQAppInterface localQQAppInterface;
-    String str3;
-    if ((this.jdField_a_of_type_Int == 3004) && (this.b == 5))
-    {
-      if (!this.jdField_a_of_type_Boolean) {
-        break label75;
-      }
-      str1 = "multiMode_send";
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app;
-      str3 = this.jdField_a_of_type_JavaLangString;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label81;
-      }
+    ServiceAccountFolderActivityNew.a(this.a, true);
+    if (ServiceAccountFolderActivityNew.a(this.a).getId() == paramInt) {
+      ServiceAccountFolderActivityNew.a(this.a).setCurrentItem(0);
     }
-    label75:
-    label81:
-    for (String str2 = "1";; str2 = String.valueOf(this.c))
-    {
-      ReportController.b(localQQAppInterface, "dc00899", "Grp_addFrd", "", "frd_select", str1, 0, 0, str3, str2, "", "");
+    while (ServiceAccountFolderActivityNew.b(this.a).getId() != paramInt) {
       return;
-      str1 = "singleMode_send";
-      break;
     }
+    ServiceAccountFolderActivityNew.a(this.a).setCurrentItem(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rod
  * JD-Core Version:    0.7.0.1
  */

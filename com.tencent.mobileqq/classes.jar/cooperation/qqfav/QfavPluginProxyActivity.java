@@ -1,37 +1,32 @@
 package cooperation.qqfav;
 
-import android.app.Activity;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import bfcz;
+import bfdi;
+import bfhn;
+import bfjr;
 import com.tencent.mobileqq.pluginsdk.PluginProxyActivity;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.IPluginManager;
-import cooperation.plugin.IPluginManager.PluginParams;
-import cooperation.qqfav.widget.QfavLoadingDialog;
 
 public class QfavPluginProxyActivity
   extends PluginProxyActivity
 {
-  private static Class a(Intent paramIntent)
+  private static Class<? extends PluginProxyActivity> a(Intent paramIntent)
   {
     String str = a(paramIntent);
     if ("com.qqfav.FavoriteIpcDelegate".equals(str)) {
       return QfavPluginProxyActivity.ForResult.class;
     }
-    if (str != null)
-    {
-      if (str.equals("com.qqfav.file.activity.QfavFileBrowserActivity")) {
-        return QfavPluginProxyActivity.ScreenOrientationProxy.class;
-      }
-      if ((str.equals("com.qqfav.activity.AddPhotosFavActivity")) || (str.equals("com.qqfav.activity.AddLocationFavActivity")) || (str.equals("com.qqfav.FavoriteIpcDelegate"))) {
-        paramIntent.setFlags(paramIntent.getFlags() | 0x20000000);
-      }
+    if ((str != null) && ((str.equals("com.qqfav.activity.AddPhotosFavActivity")) || (str.equals("com.qqfav.activity.AddLocationFavActivity")) || (str.equals("com.qqfav.FavoriteIpcDelegate")) || (str.equals("com.qqfav.file.activity.QfavFileBrowserActivity")))) {
+      paramIntent.setFlags(paramIntent.getFlags() | 0x20000000);
     }
     if ((paramIntent.getFlags() & 0x20000000) != 0) {
       return QfavPluginProxyActivity.SingleTop.class;
     }
-    if ((str != null) && ((str.equals("com.qqfav.activity.AddPhotosFavActivity")) || (str.equals("com.qqfav.activity.AddLocationFavActivity")) || (str.equals("com.qqfav.FavoriteIpcDelegate")) || (str.equals("com.qqfav.edit.EditPhotosActivity"))))
+    if ((str != null) && ((str.equals("com.qqfav.activity.AddPhotosFavActivity")) || (str.equals("com.qqfav.activity.AddLocationFavActivity")) || (str.equals("com.qqfav.FavoriteIpcDelegate")) || (str.equals("com.qqfav.edit.EditPhotosActivity")) || (str.equals("com.qqfav.file.activity.QfavFileBrowserActivity"))))
     {
       paramIntent.setFlags(paramIntent.getFlags() | 0x20000000);
       return QfavPluginProxyActivity.SingleTop.class;
@@ -64,31 +59,30 @@ public class QfavPluginProxyActivity
     return paramIntent.getClassName();
   }
   
-  public static boolean a(Activity paramActivity, String paramString, Intent paramIntent, int paramInt)
+  public static boolean a(Context paramContext, String paramString, Intent paramIntent, int paramInt)
   {
     QfavPluginProxyService.a();
-    if ((paramIntent.getBooleanExtra("bShowProgress", false)) && (!QfavHelper.a(paramActivity))) {}
-    for (QfavLoadingDialog localQfavLoadingDialog = new QfavLoadingDialog(paramActivity);; localQfavLoadingDialog = null)
+    if ((paramIntent.getBooleanExtra("bShowProgress", false)) && (!bfhn.a(paramContext))) {}
+    for (bfjr localbfjr = new bfjr(paramContext);; localbfjr = null)
     {
       String str = a(paramIntent);
-      paramIntent.putExtra("useSkinEngine", false);
+      paramIntent.putExtra("useSkinEngine", true);
       paramIntent.putExtra("userQqResources", 1);
-      IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-      localPluginParams.jdField_b_of_type_JavaLangString = "qqfav.apk";
-      localPluginParams.d = "qqfav.apk";
-      localPluginParams.jdField_a_of_type_JavaLangString = paramString;
-      localPluginParams.e = str;
-      localPluginParams.jdField_a_of_type_JavaLangClass = a(paramIntent);
-      localPluginParams.jdField_a_of_type_AndroidContentIntent = paramIntent;
-      localPluginParams.jdField_b_of_type_Int = paramInt;
-      localPluginParams.jdField_a_of_type_AndroidAppDialog = localQfavLoadingDialog;
-      localPluginParams.c = 30000;
-      localPluginParams.f = null;
-      localPluginParams.jdField_a_of_type_Boolean = false;
-      IPluginManager.a(paramActivity, localPluginParams);
-      if (QLog.isColorLevel()) {
-        QLog.d("qqfav", 2, "QfavPluginProxyActivity: openPluginActivityForResult: " + str);
-      }
+      paramIntent.addFlags(268435456);
+      bfdi localbfdi = new bfdi(0);
+      localbfdi.jdField_b_of_type_JavaLangString = "qqfav.apk";
+      localbfdi.d = "qqfav.apk";
+      localbfdi.jdField_a_of_type_JavaLangString = paramString;
+      localbfdi.e = str;
+      localbfdi.jdField_a_of_type_JavaLangClass = a(paramIntent);
+      localbfdi.jdField_a_of_type_AndroidContentIntent = paramIntent;
+      localbfdi.jdField_b_of_type_Int = paramInt;
+      localbfdi.jdField_a_of_type_AndroidAppDialog = localbfjr;
+      localbfdi.c = 30000;
+      localbfdi.f = null;
+      localbfdi.jdField_b_of_type_Boolean = false;
+      bfcz.a(paramContext, localbfdi);
+      QLog.i("qqfav", 2, "QfavPluginProxyActivity: openPluginActivityForResult: " + str);
       return true;
     }
   }
@@ -98,7 +92,7 @@ public class QfavPluginProxyActivity
     return "qqfav.apk";
   }
   
-  protected Class getProxyActivity(String paramString)
+  public Class<? extends PluginProxyActivity> getProxyActivity(String paramString)
   {
     if (paramString.equals("com.qqfav.activity.ImageDetailActivity")) {
       return QfavPluginProxyActivity.ImageViewer.class;
@@ -110,11 +104,8 @@ public class QfavPluginProxyActivity
       }
       return QfavPluginProxyActivity.DetailProxy.class;
     }
-    if ((paramString.equals("com.qqfav.activity.AddPhotosFavActivity")) || (paramString.equals("com.qqfav.activity.AddLocationFavActivity")) || (paramString.equals("com.qqfav.FavoriteIpcDelegate")) || (paramString.equals("com.qqfav.edit.EditPhotosActivity"))) {
+    if ((paramString.equals("com.qqfav.activity.AddPhotosFavActivity")) || (paramString.equals("com.qqfav.activity.AddLocationFavActivity")) || (paramString.equals("com.qqfav.FavoriteIpcDelegate")) || (paramString.equals("com.qqfav.edit.EditPhotosActivity")) || (paramString.equals("com.qqfav.file.activity.QfavFileBrowserActivity"))) {
       return QfavPluginProxyActivity.SingleTop.class;
-    }
-    if (paramString.equals("com.qqfav.file.activity.QfavFileBrowserActivity")) {
-      return QfavPluginProxyActivity.ScreenOrientationProxy.class;
     }
     if (paramString.equals("com.qqfav.edit.QfavEditActivity")) {
       return QfavPluginProxyActivity.DetailProxy.class;
@@ -128,7 +119,7 @@ public class QfavPluginProxyActivity
     super.onCreate(paramBundle);
     paramBundle = getIntent().getExtras();
     if ((paramBundle != null) && (paramBundle.getInt("nOperation") == 6)) {
-      super.overridePendingTransition(2131034132, 2131034133);
+      super.overridePendingTransition(2130771992, 2130771993);
     }
   }
 }

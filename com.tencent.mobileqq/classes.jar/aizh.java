@@ -1,18 +1,12 @@
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aizh
-  implements Runnable
+public abstract interface aizh
 {
-  public aizh(MediaPreviewActivity paramMediaPreviewActivity) {}
-  
-  public void run()
-  {
-    this.a.b = false;
-  }
+  public abstract void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aizh
  * JD-Core Version:    0.7.0.1
  */

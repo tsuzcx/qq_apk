@@ -8,35 +8,20 @@ import android.os.RemoteException;
 import android.util.Log;
 import com.tencent.component.network.DownloaderFactory;
 import com.tencent.component.network.downloader.Downloader;
-import pop;
-import poq;
 
 public class DownloadSerice
   extends Service
 {
-  private final Messenger a = new Messenger(new poq(this));
+  private static final String TAG = "DownloadSerice";
+  private final Messenger mMessenger = new Messenger(new DownloadSerice.ClientHandler(this));
   
-  private void a(Const.SimpleRequest paramSimpleRequest, Messenger paramMessenger)
-  {
-    if ((paramSimpleRequest == null) || (paramMessenger == null)) {
-      return;
-    }
-    Log.i("DownloadSerice", "download request from DownloadClient:" + paramSimpleRequest.toString());
-    int i = paramSimpleRequest.jdField_a_of_type_Int;
-    Downloader localDownloader = DownloaderFactory.getInstance(this).getImageDownloader();
-    if (i == 2) {
-      localDownloader = DownloaderFactory.getInstance(this).getCommonDownloader();
-    }
-    localDownloader.download(paramSimpleRequest.jdField_a_of_type_JavaLangString, paramSimpleRequest.a(), true, new pop(this, paramMessenger));
-  }
-  
-  private void b(Const.SimpleRequest paramSimpleRequest, Messenger paramMessenger)
+  private void cancel(Const.SimpleRequest paramSimpleRequest, Messenger paramMessenger)
   {
     if ((paramSimpleRequest == null) || (paramMessenger == null)) {
       return;
     }
     Log.i("DownloadSerice", "cancel request from DownloadClient:" + paramSimpleRequest.toString());
-    paramSimpleRequest = Const.a(paramSimpleRequest.jdField_a_of_type_JavaLangString);
+    paramSimpleRequest = Const.obtainDownloadCanceledMsg(paramSimpleRequest.url);
     try
     {
       paramMessenger.send(paramSimpleRequest);
@@ -48,29 +33,43 @@ public class DownloadSerice
     }
   }
   
-  private void c(Const.SimpleRequest paramSimpleRequest, Messenger paramMessenger)
+  private void cleanCache(Const.SimpleRequest paramSimpleRequest, Messenger paramMessenger)
   {
     if ((paramSimpleRequest == null) || (paramMessenger == null)) {
       return;
     }
     Log.i("DownloadSerice", "clean cache." + paramSimpleRequest.toString());
-    int i = paramSimpleRequest.jdField_a_of_type_Int;
+    int i = paramSimpleRequest.content_type;
     paramMessenger = DownloaderFactory.getInstance(this).getImageDownloader();
     if (i == 2) {
       paramMessenger = DownloaderFactory.getInstance(this).getCommonDownloader();
     }
-    if ("".equals(paramSimpleRequest.jdField_a_of_type_JavaLangString))
+    if ("".equals(paramSimpleRequest.url))
     {
       paramMessenger.cleanCache();
       return;
     }
-    paramMessenger.cleanCache(paramSimpleRequest.jdField_a_of_type_JavaLangString);
+    paramMessenger.cleanCache(paramSimpleRequest.url);
+  }
+  
+  private void download(Const.SimpleRequest paramSimpleRequest, Messenger paramMessenger)
+  {
+    if ((paramSimpleRequest == null) || (paramMessenger == null)) {
+      return;
+    }
+    Log.i("DownloadSerice", "download request from DownloadClient:" + paramSimpleRequest.toString());
+    int i = paramSimpleRequest.content_type;
+    Downloader localDownloader = DownloaderFactory.getInstance(this).getImageDownloader();
+    if (i == 2) {
+      localDownloader = DownloaderFactory.getInstance(this).getCommonDownloader();
+    }
+    localDownloader.download(paramSimpleRequest.url, paramSimpleRequest.getPaths(), true, new DownloadSerice.1(this, paramMessenger));
   }
   
   public IBinder onBind(Intent paramIntent)
   {
     Log.w("DownloadSerice", "Download Service Binded");
-    return this.a.getBinder();
+    return this.mMessenger.getBinder();
   }
   
   public void onCreate()

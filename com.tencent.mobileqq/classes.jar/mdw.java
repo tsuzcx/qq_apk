@@ -1,21 +1,33 @@
-import com.tencent.biz.pubaccount.readinjoy.video.TopicShareHelper;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.redpacket.AVRedPacketManager;
 
 class mdw
-  implements Runnable
+  extends kzq
 {
   mdw(mdv parammdv) {}
   
-  public void run()
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
   {
-    if ((TopicShareHelper.a(this.a.a) != null) && (TopicShareHelper.a(this.a.a).isShowing())) {
-      TopicShareHelper.a(this.a.a).dismiss();
+    c();
+  }
+  
+  protected void b(long paramLong, boolean paramBoolean)
+  {
+    c();
+  }
+  
+  void c()
+  {
+    med localmed = this.a.a();
+    if ((localmed != null) && (localmed.a())) {
+      ((AVRedPacketManager)this.a.a.a(6)).c(this.a.a.a().a().j);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mdw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,69 +1,64 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.utils.AvatarPendantUtil;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
-import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.util.Arrays;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class wxp
-  extends DownloadListener
 {
-  public wxp(AvatarPendantActivity paramAvatarPendantActivity) {}
+  public String a;
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public wxp(wxm paramwxm, String paramString, JSONObject paramJSONObject)
   {
-    super.onDone(paramDownloadTask);
-    if (QLog.isColorLevel()) {
-      QLog.d("AvatarPendantActivity", 2, "download onDone status=" + paramDownloadTask.a() + ",errCode=" + paramDownloadTask.jdField_a_of_type_Int);
-    }
-    int i = paramDownloadTask.jdField_a_of_type_JavaLangString.indexOf("?");
-    String str;
-    if (i == -1)
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaLangString = paramString;
+    try
     {
-      str = paramDownloadTask.jdField_a_of_type_JavaLangString;
-      if (!AvatarPendantUtil.jdField_a_of_type_JavaLangString.equals(str)) {
-        break label290;
-      }
-      if ((paramDownloadTask.jdField_a_of_type_Int != 0) || (paramDownloadTask.e != 200)) {
-        break label237;
-      }
-      str = AvatarPendantUtil.b + "/icon.zip";
-      localFile = new File(AvatarPendantUtil.c);
-      if (DownloaderFactory.a(new File(str), localFile, false)) {
-        break label215;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AvatarPendantActivity", 2, "unzip avatarPendantMarketIcon fail: " + paramDownloadTask.e + ", url: " + paramDownloadTask.jdField_a_of_type_JavaLangString);
-      }
-      FileUtils.a(AvatarPendantUtil.b);
+      this.b = paramJSONObject.getString("title");
+      this.c = paramJSONObject.getString("title_color");
+      this.d = paramJSONObject.getString("bg_color");
+      this.e = paramJSONObject.getString("bg_border_color");
+      return;
     }
-    label215:
-    label237:
-    while (!QLog.isColorLevel())
+    catch (JSONException paramwxm)
     {
-      File localFile;
-      return;
-      str = paramDownloadTask.jdField_a_of_type_JavaLangString.substring(0, i);
-      break;
-      AvatarPendantActivity.b(this.a);
-      this.a.a.sendEmptyMessage(1000);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("AvatarPendantActivity", 2, "download avatarPendantMarketIcon fail: " + paramDownloadTask.e + ", url: " + paramDownloadTask.jdField_a_of_type_JavaLangString);
-      }
-      FileUtils.a(AvatarPendantUtil.b);
-      return;
+      paramwxm.printStackTrace();
     }
-    label290:
-    QLog.e("AvatarPendantActivity", 2, "onDone unkonw url: " + paramDownloadTask.jdField_a_of_type_JavaLangString + ",errCode:" + paramDownloadTask.jdField_a_of_type_Int + ",httpCode:" + paramDownloadTask.e);
+  }
+  
+  public void a(String paramString)
+  {
+    paramString = paramString + "/" + this.jdField_a_of_type_JavaLangString;
+    Object localObject = new File(paramString);
+    if (((File)localObject).exists())
+    {
+      localObject = Arrays.asList(((File)localObject).list());
+      if (((List)localObject).contains("take_video@2x.png"))
+      {
+        String str = paramString + "/" + "take_video@2x.png";
+        if (new File(str).exists()) {
+          this.f = str;
+        }
+      }
+      if (((List)localObject).contains("take_video_no_bg@2x.png"))
+      {
+        paramString = paramString + "/" + "take_video_no_bg@2x.png";
+        if (new File(paramString).exists()) {
+          this.g = paramString;
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wxp
  * JD-Core Version:    0.7.0.1
  */

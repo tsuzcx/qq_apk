@@ -1,23 +1,27 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoResDownload;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.SelectedAndSearchBar;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import java.util.List;
 
 public class abqe
-  implements Runnable
+  implements AdapterView.OnItemClickListener
 {
-  public abqe(DynamicAvatarManager paramDynamicAvatarManager) {}
+  public abqe(SelectedAndSearchBar paramSelectedAndSearchBar) {}
   
-  public void run()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((!VideoEnvironment.e(DynamicAvatarManager.a(this.a))) && ((DynamicAvatarManager.a(this.a) instanceof QQAppInterface))) {
-      ShortVideoResDownload.a((QQAppInterface)DynamicAvatarManager.a(this.a), false);
+    paramAdapterView = (ResultRecord)SelectedAndSearchBar.a(this.a).get(paramInt);
+    if (SelectedAndSearchBar.a(this.a) != null) {
+      SelectedAndSearchBar.a(this.a).a(paramAdapterView);
     }
+    this.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abqe
  * JD-Core Version:    0.7.0.1
  */

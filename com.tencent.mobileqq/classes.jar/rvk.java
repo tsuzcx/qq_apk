@@ -1,25 +1,24 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
 public class rvk
-  implements Runnable
 {
-  public rvk(BaseChatPie paramBaseChatPie) {}
+  public final int a;
+  public long a;
+  public BaseArticleInfo a;
   
-  public void run()
+  public rvk(int paramInt)
   {
-    if ((this.a.e != null) && (this.a.e.isShowing())) {
-      this.a.e.dismiss();
-    }
-    while ((this.a.f == null) || (!this.a.f.isShowing())) {
-      return;
-    }
-    this.a.f.dismiss();
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public String toString()
+  {
+    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo + "_duration : " + this.jdField_a_of_type_Long;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rvk
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ public class PAMessage
 {
   private static final long serialVersionUID = 243242567575L;
   public String grayTips;
-  public ArrayList items;
+  public ArrayList<PAMessage.Item> items;
   public long mMsgId;
   public String moreText;
   public String msg;

@@ -1,20 +1,38 @@
-import android.content.Context;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import java.lang.ref.WeakReference;
 
 public class mmx
-  implements Runnable
+  implements INetInfoHandler
 {
-  public mmx(ReadInJoySkinGuideView paramReadInJoySkinGuideView, QQAppInterface paramQQAppInterface, String paramString1, View.OnClickListener paramOnClickListener1, String paramString2, View.OnClickListener paramOnClickListener2, Context paramContext) {}
+  protected WeakReference<mmr> a;
   
-  public void run()
+  public mmx(mmr parammmr)
   {
-    ReadInJoySkinManager localReadInJoySkinManager = (ReadInJoySkinManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(260);
-    new SceneBuilder().a(this.jdField_a_of_type_JavaLangString).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a.getWidth()).a(new mna(this)).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a, new mmy(this));
+    this.a = new WeakReference(parammmr);
+  }
+  
+  public void onNetMobile2None()
+  {
+    mmr localmmr = (mmr)this.a.get();
+    if (localmmr != null) {
+      localmmr.a = 2;
+    }
+  }
+  
+  public void onNetMobile2Wifi(String paramString) {}
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None()
+  {
+    mmr localmmr = (mmr)this.a.get();
+    if (localmmr != null) {
+      localmmr.a = 2;
+    }
   }
 }
 

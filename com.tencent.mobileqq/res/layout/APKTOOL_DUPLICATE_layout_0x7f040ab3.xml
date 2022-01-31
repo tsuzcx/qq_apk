@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:layout_gravity="bottom" android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021ebc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="39.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="12.0sp" android:textColor="@android:color/white" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3011" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="33.0dip" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021aa2" android:drawablePadding="8.0dip" />
-    <View android:background="@android:color/white" android:layout_width="1.0dip" android:layout_height="fill_parent" />
-    <TextView android:textSize="12.0sp" android:textColor="@android:color/white" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3012" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="33.0dip" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021a9f" android:drawablePadding="11.0dip" />
-</LinearLayout>

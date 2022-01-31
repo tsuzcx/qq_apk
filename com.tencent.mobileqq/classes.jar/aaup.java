@@ -1,12 +1,22 @@
-import com.tencent.ark.ark.VariantWrapper;
+import android.view.View;
+import android.widget.TextView;
 
-public abstract interface aaup
+class aaup
+  implements behy
 {
-  public abstract boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper);
+  aaup(aaun paramaaun, View paramView) {}
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Aaun.a = false;
+    if ((this.jdField_a_of_type_AndroidViewView instanceof TextView)) {
+      this.jdField_a_of_type_Aaun.a((TextView)this.jdField_a_of_type_AndroidViewView);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaup
  * JD-Core Version:    0.7.0.1
  */

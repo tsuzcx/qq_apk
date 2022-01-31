@@ -1,16 +1,46 @@
+import android.content.Context;
 import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent;
+import java.util.ArrayList;
 
-class nss
-  implements Runnable
+public class nss
+  extends BaseAdapter
 {
-  nss(nsr paramnsr) {}
+  Context jdField_a_of_type_AndroidContentContext;
+  ArrayList<MultiBiuSameContent> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public void run()
+  public nss(Context paramContext, ArrayList<MultiBiuSameContent> paramArrayList)
   {
-    this.a.a.jdField_a_of_type_AndroidViewView.setBackgroundColor(-285212672);
-    this.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(-14277082);
+    this.jdField_a_of_type_AndroidContentContext = paramArrayList;
+    Object localObject;
+    this.jdField_a_of_type_JavaUtilArrayList = localObject;
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null) {}
+    for (paramView = new nst(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyBiuReadInjoyFriendsBiuComponentFragment, this.jdField_a_of_type_AndroidContentContext);; paramView = (nst)paramView.getTag())
+    {
+      paramView.a((MultiBiuSameContent)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt), paramInt);
+      return paramView.a();
+    }
   }
 }
 

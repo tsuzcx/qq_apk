@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class AudioTransClientTransInfo$IntS2CPushDataReq
-  extends MessageMicro
+  extends MessageMicro<IntS2CPushDataReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField str_key = PBField.initString("");

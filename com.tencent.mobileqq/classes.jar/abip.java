@@ -1,30 +1,67 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.NonMainAppHeadLoader.FaceObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class abip
-  implements NonMainAppHeadLoader.FaceObserver
+  extends ajfo
 {
-  public abip(ARMapActivity paramARMapActivity) {}
+  public abip(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap)
+  protected void onGetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (paramBitmap != null) && (paramString1.equals(this.a.h)) && (this.a.j))
+    if ((paramBoolean1) && (paramBoolean2 != this.a.d.a()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMapActivity", 2, "onFaceUpdate uin:" + paramString1 + " path=" + paramString2);
+      this.a.d.setOnCheckedChangeListener(null);
+      this.a.d.setChecked(paramBoolean2);
+      this.a.d.setOnCheckedChangeListener(this.a);
+    }
+  }
+  
+  protected void onImpeach(boolean paramBoolean, String paramString)
+  {
+    if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a.equals(paramString)) {
+      return;
+    }
+    this.a.f();
+    if (paramBoolean)
+    {
+      this.a.a(2131625063, 2);
+      return;
+    }
+    this.a.a(2131625061, 1);
+  }
+  
+  protected void onSetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (paramBoolean2 != this.a.d.a()))
+    {
+      this.a.d.setOnCheckedChangeListener(null);
+      this.a.d.setChecked(paramBoolean2);
+      this.a.d.setOnCheckedChangeListener(this.a);
+    }
+  }
+  
+  protected void onSetDetailInfo(boolean paramBoolean, int paramInt, Card paramCard)
+  {
+    if (((paramBoolean) && (paramInt == 0)) || ((!paramBoolean) && (paramInt == 34))) {}
+    for (;;)
+    {
+      if (this.a.jdField_a_of_type_AndroidOsBundle == null) {
+        this.a.jdField_a_of_type_AndroidOsBundle = new Bundle();
       }
-      this.a.j = false;
-      ThreadManager.post(new abiq(this, paramBitmap), 5, null, false);
+      if (paramCard != null) {
+        this.a.jdField_a_of_type_AndroidOsBundle.putShort("key_personality_label_switch", paramCard.switch_disable_personality_label);
+      }
+      return;
+      this.a.a(2131629765, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abip
  * JD-Core Version:    0.7.0.1
  */

@@ -1,46 +1,42 @@
-import android.view.GestureDetector;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.open.agent.SwitchAccountActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-
 public class alkk
-  implements View.OnTouchListener
+  implements ajfe
 {
-  protected GestureDetector.SimpleOnGestureListener a;
-  protected GestureDetector a;
-  View jdField_a_of_type_AndroidViewView;
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  protected void a(boolean paramBoolean1, alkf paramalkf, Long paramLong, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean2) {}
   
-  public alkk(SwitchAccountActivity paramSwitchAccountActivity)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener = new alkl(this);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidViewGestureDetector$SimpleOnGestureListener);
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    int i = paramMotionEvent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.i("AccountManage", 2, "action = " + i);
-    }
-    if (i == 0)
+    boolean bool = false;
+    int j = -1;
+    switch (paramInt)
     {
-      this.jdField_a_of_type_AndroidViewView = paramView;
-      if (this.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a == true) {
-        this.jdField_a_of_type_ComTencentOpenAgentSwitchAccountActivity.a = false;
-      }
+    default: 
+      return;
     }
-    this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
-    return false;
+    Object[] arrayOfObject = (Object[])paramObject;
+    paramObject = null;
+    long l = -1L;
+    int i;
+    if ((arrayOfObject != null) && (arrayOfObject.length == 6))
+    {
+      paramObject = (alkf)arrayOfObject[0];
+      l = ((Long)arrayOfObject[1]).longValue();
+      paramInt = ((Integer)arrayOfObject[2]).intValue();
+      i = ((Integer)arrayOfObject[3]).intValue();
+      j = ((Integer)arrayOfObject[4]).intValue();
+      bool = ((Boolean)arrayOfObject[5]).booleanValue();
+    }
+    for (;;)
+    {
+      a(paramBoolean, paramObject, Long.valueOf(l), paramInt, i, j, bool);
+      return;
+      i = -1;
+      paramInt = -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alkk
  * JD-Core Version:    0.7.0.1
  */

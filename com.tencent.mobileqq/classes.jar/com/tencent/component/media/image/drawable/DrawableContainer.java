@@ -7,75 +7,74 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.Callback;
 import android.graphics.drawable.Drawable.ConstantState;
 import com.tencent.component.media.annotation.Public;
-import pmn;
 
 @Public
 public abstract class DrawableContainer
   extends Drawable
   implements Drawable.Callback
 {
-  private pmn jdField_a_of_type_Pmn;
-  private boolean jdField_a_of_type_Boolean;
+  private boolean mMutated;
+  private DrawableContainer.ContainerState mState;
   
   public void draw(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_Pmn.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+    this.mState.mDrawable.draw(paramCanvas);
   }
   
   public int getChangingConfigurations()
   {
-    return super.getChangingConfigurations() | this.jdField_a_of_type_Pmn.jdField_a_of_type_Int | this.jdField_a_of_type_Pmn.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getChangingConfigurations();
+    return super.getChangingConfigurations() | this.mState.mChangingConfigurations | this.mState.mDrawable.getChangingConfigurations();
   }
   
   public Drawable.ConstantState getConstantState()
   {
-    if (this.jdField_a_of_type_Pmn.a())
+    if (this.mState.canConstantState())
     {
-      this.jdField_a_of_type_Pmn.jdField_a_of_type_Int = getChangingConfigurations();
-      return this.jdField_a_of_type_Pmn;
+      this.mState.mChangingConfigurations = getChangingConfigurations();
+      return this.mState;
     }
     return null;
   }
   
   public Drawable getDrawable()
   {
-    return this.jdField_a_of_type_Pmn.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    return this.mState.mDrawable;
   }
   
   public int getIntrinsicHeight()
   {
-    return this.jdField_a_of_type_Pmn.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
+    return this.mState.mDrawable.getIntrinsicHeight();
   }
   
   public int getIntrinsicWidth()
   {
-    return this.jdField_a_of_type_Pmn.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
+    return this.mState.mDrawable.getIntrinsicWidth();
   }
   
   public int getMinimumHeight()
   {
-    if (this.jdField_a_of_type_Pmn.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      return this.jdField_a_of_type_Pmn.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getMinimumHeight();
+    if (this.mState.mDrawable != null) {
+      return this.mState.mDrawable.getMinimumHeight();
     }
     return 0;
   }
   
   public int getMinimumWidth()
   {
-    if (this.jdField_a_of_type_Pmn.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      return this.jdField_a_of_type_Pmn.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getMinimumWidth();
+    if (this.mState.mDrawable != null) {
+      return this.mState.mDrawable.getMinimumWidth();
     }
     return 0;
   }
   
   public int getOpacity()
   {
-    return this.jdField_a_of_type_Pmn.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getOpacity();
+    return this.mState.mDrawable.getOpacity();
   }
   
   public boolean getPadding(Rect paramRect)
   {
-    return this.jdField_a_of_type_Pmn.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getPadding(paramRect);
+    return this.mState.mDrawable.getPadding(paramRect);
   }
   
   public void invalidateDrawable(Drawable paramDrawable)
@@ -85,34 +84,34 @@ public abstract class DrawableContainer
   
   public boolean isStateful()
   {
-    return this.jdField_a_of_type_Pmn.jdField_a_of_type_AndroidGraphicsDrawableDrawable.isStateful();
+    return this.mState.mDrawable.isStateful();
   }
   
   public Drawable mutate()
   {
-    if ((!this.jdField_a_of_type_Boolean) && (super.mutate() == this))
+    if ((!this.mMutated) && (super.mutate() == this))
     {
-      this.jdField_a_of_type_Pmn.jdField_a_of_type_AndroidGraphicsDrawableDrawable.mutate();
-      this.jdField_a_of_type_Boolean = true;
+      this.mState.mDrawable.mutate();
+      this.mMutated = true;
     }
     return this;
   }
   
   protected void onBoundsChange(Rect paramRect)
   {
-    this.jdField_a_of_type_Pmn.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(paramRect);
+    this.mState.mDrawable.setBounds(paramRect);
   }
   
   protected boolean onLevelChange(int paramInt)
   {
-    this.jdField_a_of_type_Pmn.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setLevel(paramInt);
+    this.mState.mDrawable.setLevel(paramInt);
     invalidateSelf();
     return true;
   }
   
   protected boolean onStateChange(int[] paramArrayOfInt)
   {
-    boolean bool = this.jdField_a_of_type_Pmn.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(paramArrayOfInt);
+    boolean bool = this.mState.mDrawable.setState(paramArrayOfInt);
     onBoundsChange(getBounds());
     return bool;
   }
@@ -124,29 +123,29 @@ public abstract class DrawableContainer
   
   public void setAlpha(int paramInt)
   {
-    this.jdField_a_of_type_Pmn.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setAlpha(paramInt);
+    this.mState.mDrawable.setAlpha(paramInt);
   }
   
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    this.jdField_a_of_type_Pmn.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setColorFilter(paramColorFilter);
+    this.mState.mDrawable.setColorFilter(paramColorFilter);
   }
   
   @Public
-  protected void setConstantState(pmn parampmn)
+  protected void setConstantState(DrawableContainer.ContainerState paramContainerState)
   {
-    this.jdField_a_of_type_Pmn = parampmn;
+    this.mState = paramContainerState;
   }
   
   public void setDither(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Pmn.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setDither(paramBoolean);
+    this.mState.mDrawable.setDither(paramBoolean);
   }
   
   public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
   {
     boolean bool = super.setVisible(paramBoolean1, paramBoolean2);
-    this.jdField_a_of_type_Pmn.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(paramBoolean1, paramBoolean2);
+    this.mState.mDrawable.setVisible(paramBoolean1, paramBoolean2);
     return bool;
   }
   

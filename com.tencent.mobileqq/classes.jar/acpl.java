@@ -1,22 +1,39 @@
-import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
 import com.tencent.qphone.base.util.QLog;
 
-public class acpl
-  implements Runnable
+class acpl
+  implements ImageAssetDelegate
 {
-  public acpl(EquipmentLockImpl paramEquipmentLockImpl) {}
+  acpl(acpj paramacpj) {}
   
-  public void run()
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("DevLock", 2, "notification runnable run.");
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inScaled = true;
+    localOptions.inDensity = 320;
+    try
+    {
+      paramLottieImageAsset = bacm.a(acpj.a(this.a) + "images/" + paramLottieImageAsset.getFileName(), localOptions);
+      return paramLottieImageAsset;
     }
-    this.a.b();
+    catch (Exception paramLottieImageAsset)
+    {
+      QLog.e("FriendShipAnimDirector", 1, "Delegate decode bitmap error");
+      return null;
+    }
+    catch (OutOfMemoryError paramLottieImageAsset)
+    {
+      QLog.e("FriendShipAnimDirector", 1, "Delegate decode bitmap OOM");
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acpl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,52 +1,40 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr.SelfGagInfo;
-import com.tencent.mobileqq.widget.QQToast;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.util.SparseBooleanArray;
+import android.view.View;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class wfg
-  extends Handler
+  extends AnimatorListenerAdapter
 {
-  public wfg(TroopChatPie paramTroopChatPie, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public wfg(VideoPlayerView paramVideoPlayerView, WeakReference paramWeakReference, int paramInt1, boolean paramBoolean, int paramInt2) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    switch (paramMessage.what)
-    {
-    case 3: 
-    default: 
-    case 1: 
-    case 2: 
-    case 4: 
-      do
-      {
-        do
-        {
-          return;
-          this.a.a(null, false);
-          return;
-          paramMessage = paramMessage.obj;
-        } while (!(paramMessage instanceof TroopGagMgr.SelfGagInfo));
-        this.a.a((TroopGagMgr.SelfGagInfo)paramMessage);
-        return;
-      } while (TroopChatPie.k(this.a) == null);
-      TroopChatPie.l(this.a).a();
+    if (this.jdField_a_of_type_Boolean) {
+      VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView, this.jdField_a_of_type_JavaLangRefWeakReference, this.jdField_a_of_type_Int, this.b, false);
+    }
+    while ((this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_a_of_type_Int != 0) || (VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView) == null) || (VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView).get(((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getId()))) {
       return;
     }
-    String str = (String)paramMessage.obj;
-    int i = paramMessage.arg1;
-    QQToast.a(this.a.a, str, i).b(this.a.a.getTitleBarHeight());
+    ((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).setVisibility(8);
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (this.jdField_a_of_type_Int == 1) && (VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView) != null) && (!VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView).get(((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getId()))) {
+      ((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).setVisibility(0);
+    }
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (this.jdField_a_of_type_Int == 0) && (VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView) != null) && (!VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView).get(((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getId()))) {
+      VideoPlayerView.a(this.jdField_a_of_type_ComTencentBizSubscribeVideoplayerVideoPlayerView).put(this.jdField_a_of_type_JavaLangRefWeakReference, Integer.valueOf(((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getVisibility()));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wfg
  * JD-Core Version:    0.7.0.1
  */

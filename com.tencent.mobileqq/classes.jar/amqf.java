@@ -1,82 +1,10 @@
-import java.util.Map.Entry;
-
-public class amqf
-  implements Map.Entry
+public abstract interface amqf
 {
-  private final Object a;
-  private Object b;
-  
-  public amqf(Map.Entry paramEntry)
-  {
-    this.a = paramEntry.getKey();
-    this.b = paramEntry.getValue();
-  }
-  
-  private static boolean a(Object paramObject1, Object paramObject2)
-  {
-    if (paramObject1 == null) {
-      return paramObject2 == null;
-    }
-    return paramObject1.equals(paramObject2);
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    if (!(paramObject instanceof Map.Entry)) {}
-    do
-    {
-      return false;
-      paramObject = (Map.Entry)paramObject;
-    } while ((!a(this.a, paramObject.getKey())) || (!a(this.b, paramObject.getValue())));
-    return true;
-  }
-  
-  public Object getKey()
-  {
-    return this.a;
-  }
-  
-  public Object getValue()
-  {
-    return this.b;
-  }
-  
-  public int hashCode()
-  {
-    int j = 0;
-    int i;
-    if (this.a == null)
-    {
-      i = 0;
-      if (this.b != null) {
-        break label33;
-      }
-    }
-    for (;;)
-    {
-      return i ^ j;
-      i = this.a.hashCode();
-      break;
-      label33:
-      j = this.b.hashCode();
-    }
-  }
-  
-  public Object setValue(Object paramObject)
-  {
-    Object localObject = this.b;
-    this.b = paramObject;
-    return localObject;
-  }
-  
-  public String toString()
-  {
-    return this.a + "=" + this.b;
-  }
+  public abstract void a(ampo paramampo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amqf
  * JD-Core Version:    0.7.0.1
  */

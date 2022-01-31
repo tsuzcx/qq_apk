@@ -1,19 +1,32 @@
-import android.view.View;
-import com.tencent.mobileqq.leba.LebaWithFeeds;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 
 class aeig
-  implements Runnable
+  extends nfu
 {
-  aeig(aeif paramaeif, View paramView, int paramInt) {}
+  aeig(aegy paramaegy) {}
   
-  public void run()
+  protected void d(boolean paramBoolean, Object paramObject)
   {
-    LebaWithFeeds.a(this.jdField_a_of_type_Aeif.a, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Int);
+    if ((paramBoolean) && (aegy.a(this.a).getVisibility() != 0))
+    {
+      if (lqh.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
+      {
+        aegy.b(this.a).setVisibility(0);
+        aegy.c(this.a).setOnClickListener(this.a);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setRight2Icon(2130845993, 2130845994);
+      }
+    }
+    else {
+      return;
+    }
+    aegy.d(this.a).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeig
  * JD-Core Version:    0.7.0.1
  */

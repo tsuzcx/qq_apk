@@ -1,20 +1,45 @@
-import com.tencent.mobileqq.ar.ArNativeSoManager;
-import com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload.ARResourceDownloadCallback;
-import java.util.ArrayList;
+import android.os.Handler;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.activity.ChatHistoryViewBase.1;
 
-public class aaji
-  implements Runnable
+public abstract class aaji
 {
-  public aaji(ArNativeSoManager paramArNativeSoManager, ArrayList paramArrayList, String paramString, ARPreSoResourceDownload.ARResourceDownloadCallback paramARResourceDownloadCallback) {}
+  public ChatHistoryFileActivity a;
+  public boolean i = true;
   
-  public void run()
+  public abstract View a();
+  
+  public void a() {}
+  
+  public void a(long paramLong) {}
+  
+  public abstract boolean a();
+  
+  public void b() {}
+  
+  protected boolean b()
   {
-    ArNativeSoManager.a(this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload$ARResourceDownloadCallback);
+    return this.i;
+  }
+  
+  public void c() {}
+  
+  public abstract void d();
+  
+  public abstract void e();
+  
+  public void h_(int paramInt) {}
+  
+  protected void k()
+  {
+    this.i = false;
+    new Handler().postDelayed(new ChatHistoryViewBase.1(this), 1500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaji
  * JD-Core Version:    0.7.0.1
  */

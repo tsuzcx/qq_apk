@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="#fff1f1f5" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03d4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <ImageView android:layout_gravity="center|left|top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a35ea" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a35eb" android:background="#6fffffff" android:padding="0.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <CheckBox android:layout_gravity="center|right|top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a35ec" android:paddingTop="4.0dip" android:paddingRight="4.0dip" android:layout_width="28.0dip" android:layout_height="28.0dip" android:button="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022309" />
-</FrameLayout>

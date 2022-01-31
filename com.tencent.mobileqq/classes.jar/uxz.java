@@ -1,25 +1,33 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
-import com.tencent.mobileqq.activity.aio.doodle.PlayLastLogic;
-import java.lang.ref.WeakReference;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 
-public class uxz
+class uxz
+  extends AnimatorListenerAdapter
 {
-  public int a;
-  public long a;
-  public WeakReference a;
-  public long b;
+  uxz(uxx paramuxx) {}
   
-  public uxz(PlayLastLogic paramPlayLastLogic, long paramLong1, long paramLong2, int paramInt, DoodleMsgLayout paramDoodleMsgLayout)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.jdField_a_of_type_Long = paramLong2;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramLong1;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramDoodleMsgLayout);
+    urk.b("FaceLayer", "scaleAnimator cancel!");
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    urk.b("FaceLayer", "scaleAnimator end!");
+    this.a.p = 1.0F;
+    this.a.c = false;
+    this.a.b.g();
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    urk.b("FaceLayer", "scaleAnimator start!");
+    this.a.c = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uxz
  * JD-Core Version:    0.7.0.1
  */

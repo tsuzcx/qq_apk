@@ -1,22 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkViewController;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
+import android.view.KeyEvent;
 
-class anmi
-  implements ArkLocalAppMgr.IGetAppPathByNameCallback
+public abstract interface anmi
 {
-  anmi(anmh paramanmh) {}
-  
-  public void a(int paramInt, String paramString, ArkLocalAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
-  {
-    if (paramInt == 0) {
-      ReadInJoyArkViewController.a().a("0", this.a.c);
-    }
-  }
+  public abstract boolean a(KeyEvent paramKeyEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anmi
  * JD-Core Version:    0.7.0.1
  */

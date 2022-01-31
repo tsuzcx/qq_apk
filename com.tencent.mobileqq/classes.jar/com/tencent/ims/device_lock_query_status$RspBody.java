@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class device_lock_query_status$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   public static final int STR_WORDING_FIELD_NUMBER = 3;
   public static final int U32_RET_FIELD_NUMBER = 4;

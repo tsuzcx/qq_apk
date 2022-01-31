@@ -1,98 +1,61 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.animation.ValueAnimator;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import com.tencent.widget.itemtouchhelper.ItemTouchHelper;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class amml
-  implements Animator.AnimatorListener
+  extends alzl<ammk>
 {
-  final float jdField_a_of_type_Float;
-  private final ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  public boolean a;
-  final float jdField_b_of_type_Float;
-  public final int b;
-  public final RecyclerView.ViewHolder b;
-  public boolean b;
-  final float c;
-  public final int c;
-  public boolean c;
-  final float d;
-  public float e;
-  public float f;
-  private float g;
-  
-  amml(ItemTouchHelper paramItemTouchHelper, RecyclerView.ViewHolder paramViewHolder, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  public static ammk a()
   {
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt1;
-    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder = paramViewHolder;
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = paramFloat2;
-    this.jdField_c_of_type_Float = paramFloat3;
-    this.d = paramFloat4;
-    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new ammm(this, paramItemTouchHelper));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setTarget(paramViewHolder.itemView);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(this);
-    a(0.0F);
+    return (ammk)alzw.a().a(348);
   }
   
-  public void a()
+  public int a()
   {
-    this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.setIsRecyclable(false);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+    return 348;
   }
   
-  public void a(float paramFloat)
+  @NonNull
+  public ammk a(int paramInt)
   {
-    this.g = paramFloat;
+    return new ammk();
   }
   
-  public void a(long paramLong)
+  @Nullable
+  public ammk a(alzs[] paramArrayOfalzs)
   {
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(paramLong);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_Float == this.jdField_c_of_type_Float) {}
-    for (this.e = this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView.getTranslationX(); this.jdField_b_of_type_Float == this.d; this.e = (this.jdField_a_of_type_Float + this.g * (this.jdField_c_of_type_Float - this.jdField_a_of_type_Float)))
-    {
-      this.f = this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView.getTranslationY();
-      return;
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
+      return ammk.a(paramArrayOfalzs);
     }
-    this.f = (this.jdField_b_of_type_Float + this.g * (this.d - this.jdField_b_of_type_Float));
+    return null;
   }
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public Class<ammk> a()
   {
-    a(1.0F);
+    return ammk.class;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(int paramInt) {}
+  
+  public void a(ammk paramammk) {}
+  
+  public int b()
   {
-    if (!this.jdField_c_of_type_Boolean) {
-      this.jdField_b_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.setIsRecyclable(true);
-    }
-    this.jdField_c_of_type_Boolean = true;
+    return 0;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public boolean b()
+  {
+    return false;
+  }
   
-  public void onAnimationStart(Animator paramAnimator) {}
+  public boolean c()
+  {
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amml
  * JD-Core Version:    0.7.0.1
  */

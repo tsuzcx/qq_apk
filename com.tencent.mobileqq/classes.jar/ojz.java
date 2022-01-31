@@ -1,18 +1,15 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyProteusFamilyFragment;
 
-public final class ojz
-  implements Parcelable.Creator
+public class ojz
+  implements bemm
 {
-  public EditVideoParams a(Parcel paramParcel)
-  {
-    return new EditVideoParams(paramParcel);
-  }
+  public ojz(ReadInJoyProteusFamilyFragment paramReadInJoyProteusFamilyFragment) {}
   
-  public EditVideoParams[] a(int paramInt)
+  public void a(beml parambeml)
   {
-    return new EditVideoParams[paramInt];
+    switch (parambeml.a)
+    {
+    }
   }
 }
 

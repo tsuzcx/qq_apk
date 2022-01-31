@@ -115,6 +115,9 @@ varying vec3 v_cameraDirection;
 varying float v_clipDistance;
 #endif
 
+uniform float u_canvasWidth;
+uniform float u_canvasHeight;
+
 void main()
 {
     vec4 position = getPosition();

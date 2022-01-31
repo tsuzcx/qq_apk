@@ -1,31 +1,48 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.QSecFramework;
+import org.json.JSONObject;
 
 public class amew
-  extends Handler
 {
-  public amew(QSecFramework paramQSecFramework, Looper paramLooper)
+  public amex a = new amex(this);
+  
+  public static amew a(String paramString)
   {
-    super(paramLooper);
+    if (paramString == null) {}
+    do
+    {
+      return null;
+      try
+      {
+        amew localamew = new amew();
+        paramString = new JSONObject(paramString).optJSONObject("webbundle");
+        if (paramString != null)
+        {
+          paramString = paramString.optJSONObject("qqcomic");
+          if (paramString != null)
+          {
+            localamew.a.jdField_a_of_type_Boolean = paramString.optBoolean("enable", false);
+            localamew.a.jdField_a_of_type_JavaLangString = paramString.optString("preload_url", "");
+          }
+        }
+        QLog.d("ConfBean", 2, "confBean = " + localamew.toString());
+        return localamew;
+      }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.e("ConfBean", 1, new Object[] { "parse e:", paramString.toString() });
+    return null;
   }
   
-  public void handleMessage(Message paramMessage)
+  public String toString()
   {
-    if ((paramMessage.what == 1) && (paramMessage.arg1 != 0))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSecFramework", 2, "handle native msg for cookie:" + paramMessage.arg1);
-      }
-      QSecFramework.a(6, paramMessage.arg1, 0, 0, null, null, null, null);
-    }
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("qqComicConfig:").append(this.a);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amew
  * JD-Core Version:    0.7.0.1
  */

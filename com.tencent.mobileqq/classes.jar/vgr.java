@@ -1,22 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
-import com.tencent.mobileqq.app.ThreadManager;
-
-public class vgr
-  implements View.OnClickListener
+public abstract interface vgr
 {
-  public vgr(MarketFaceItemBuilder paramMarketFaceItemBuilder, MarketFaceItemBuilder.Holder paramHolder) {}
-  
-  public void onClick(View paramView)
-  {
-    ThreadManager.post(new vgs(this), 5, null, true);
-  }
+  public abstract void a(vgv paramvgv);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vgr
  * JD-Core Version:    0.7.0.1
  */

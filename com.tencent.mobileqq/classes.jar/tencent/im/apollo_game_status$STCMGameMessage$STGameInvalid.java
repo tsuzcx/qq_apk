@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class apollo_game_status$STCMGameMessage$STGameInvalid
-  extends MessageMicro
+  extends MessageMicro<STGameInvalid>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField str_game_invlid_info = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -20,7 +20,7 @@ public final class apollo_game_status$STCMGameMessage$STGameInvalid
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.apollo_game_status.STCMGameMessage.STGameInvalid
  * JD-Core Version:    0.7.0.1
  */

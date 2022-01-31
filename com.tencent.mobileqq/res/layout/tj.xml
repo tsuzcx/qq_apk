@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.TCWNumberPickerButton android:id="@id/dja" android:background="@drawable/byd" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <EditText android:textSize="30.0sp" android:gravity="center" android:id="@id/jm5" android:background="@drawable/by9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" style="?android:textAppearanceLargeInverse" />
+    <com.tencent.widget.TCWNumberPickerButton android:id="@id/beq" android:background="@drawable/by3" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</merge>

@@ -1,17 +1,15 @@
-import cooperation.qzone.sim.DeviceInfoUtil;
-import cooperation.qzone.util.NetworkState.NetworkStateListener;
-
-public final class anhq
-  implements NetworkState.NetworkStateListener
+public abstract class anhq
+  extends anht
 {
-  public void onNetworkConnect(boolean paramBoolean)
-  {
-    DeviceInfoUtil.a(null);
-  }
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anhq
  * JD-Core Version:    0.7.0.1
  */

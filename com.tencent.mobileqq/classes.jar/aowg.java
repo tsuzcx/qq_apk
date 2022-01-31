@@ -1,79 +1,121 @@
-import android.media.Image;
-import android.media.ImageReader;
-import android.media.ImageReader.OnImageAvailableListener;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager.Item;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.tracker.SimpleSurfaceStickerTracker;
+import java.util.UUID;
+import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
 
-public class aowg
-  implements ImageReader.OnImageAvailableListener
+class aowg
+  extends wma
 {
-  public aowg(SimpleSurfaceStickerTracker paramSimpleSurfaceStickerTracker) {}
+  aowg(aovz paramaovz, aovm paramaovm) {}
   
-  public void onImageAvailable(ImageReader paramImageReader)
+  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SimpleSurfaceStickerTracker", 2, "onImageAvailable , thread id=" + Thread.currentThread().getId());
-    }
-    if (SimpleSurfaceStickerTracker.a(this.a) >= SimpleSurfaceStickerTracker.b(this.a))
+    if (this.jdField_a_of_type_Aovm == null) {}
+    Object localObject;
+    label612:
+    do
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SimpleSurfaceStickerTracker", 2, "onFrameAvailable wait onDecodeFrame. mLastAvailableTimestamp = " + SimpleSurfaceStickerTracker.a(this.a) + " , mLastDecodeTimestamp " + SimpleSurfaceStickerTracker.b(this.a));
-      }
-      try
+      do
       {
-        synchronized (SimpleSurfaceStickerTracker.b(this.a))
+        do
         {
-          SimpleSurfaceStickerTracker.b(this.a).wait(5L);
-        }
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        for (;;)
-        {
-          localInterruptedException.printStackTrace();
-        }
-      }
-    }
-    synchronized (SimpleSurfaceStickerTracker.a(this.a))
-    {
-      if (SimpleSurfaceStickerTracker.b(this.a))
-      {
-        SimpleSurfaceStickerTracker.a(this.a, true);
-        SimpleSurfaceStickerTracker.a(this.a).notifyAll();
-        QLog.w("SimpleSurfaceStickerTracker", 2, "onFrameAvailable error= ; isStoped=" + SimpleSurfaceStickerTracker.b(this.a));
+          return;
+          if (paramDownloadFileRspBody == null)
+          {
+            if (QLog.isDevelopLevel()) {
+              QLog.e("TroopFileModel<FileAssistant>", 4, "error DownloadFileRspBody is null!!!!!");
+            }
+            this.jdField_a_of_type_Aovm.c();
+            return;
+          }
+          long l = paramBundle.getLong("troopUin");
+          localObject = TroopFileTransferManager.a(l);
+          if (localObject == null)
+          {
+            if (QLog.isDevelopLevel()) {
+              QLog.e("TroopFileModel<FileAssistant>", 4, "bad troopUin" + l);
+            }
+            this.jdField_a_of_type_Aovm.c();
+            return;
+          }
+          paramBundle = paramBundle.getString("itemKey");
+          if (paramBundle == null)
+          {
+            this.jdField_a_of_type_Aovm.c();
+            return;
+          }
+          localObject = ((TroopFileTransferManager)localObject).a(UUID.fromString(paramBundle));
+          if (localObject == null)
+          {
+            if (QLog.isDevelopLevel()) {
+              QLog.e("TroopFileModel<FileAssistant>", 4, "bad item key" + paramBundle);
+            }
+            this.jdField_a_of_type_Aovm.c();
+            return;
+          }
+          paramInt = paramDownloadFileRspBody.int32_ret_code.get();
+          if (QLog.isDevelopLevel()) {
+            QLog.e("TroopFileModel<FileAssistant>", 4, String.format("onRspDownload - retCode: %d", new Object[] { Integer.valueOf(paramInt) }));
+          }
+          ((TroopFileTransferManager.Item)localObject).cookieValue = bach.a(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
+          if (((TroopFileTransferManager.Item)localObject).cookieValue != null) {
+            ((TroopFileTransferManager.Item)localObject).cookieValue = ((TroopFileTransferManager.Item)localObject).cookieValue.toLowerCase();
+          }
+          ((TroopFileTransferManager.Item)localObject).DownloadIp = paramDownloadFileRspBody.str_download_ip.get();
+          ((TroopFileTransferManager.Item)localObject).DownloadUrl = bach.a(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
+          ((TroopFileTransferManager.Item)localObject).Md5 = paramDownloadFileRspBody.bytes_md5.get().toByteArray();
+          ((TroopFileTransferManager.Item)localObject).NameForSave = paramDownloadFileRspBody.str_save_file_name.get();
+          if ((paramInt != -133) && (paramInt != -132) && (paramInt != -134)) {
+            break;
+          }
+          this.jdField_a_of_type_Aovm.c();
+        } while (!QLog.isDevelopLevel());
+        QLog.i("TroopFileModel<FileAssistant>", 4, "file invalidate retCode = " + paramInt);
         return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("SimpleSurfaceStickerTracker", 2, "onFrameAvailable start");
-      }
-      if (SimpleSurfaceStickerTracker.a(this.a)) {
-        new RuntimeException("mFrameAvailable already set, frame could be dropped");
-      }
-      SimpleSurfaceStickerTracker.a(this.a, SimpleSurfaceStickerTracker.b(this.a));
-    }
-    try
-    {
-      paramImageReader = paramImageReader.acquireNextImage();
-      SimpleSurfaceStickerTracker.a(this.a, paramImageReader);
-      paramImageReader.close();
-      SimpleSurfaceStickerTracker.a(this.a, true);
-      SimpleSurfaceStickerTracker.a(this.a).notifyAll();
+        if ((paramInt != -103) && (paramInt != -301)) {
+          break;
+        }
+      } while (!QLog.isDevelopLevel());
+      QLog.i("TroopFileModel<FileAssistant>", 4, "file invalidate retCode = " + paramInt);
       return;
-    }
-    catch (Exception paramImageReader)
-    {
-      paramImageReader.printStackTrace();
-      SimpleSurfaceStickerTracker.a(this.a, true);
-      SimpleSurfaceStickerTracker.a(this.a).notifyAll();
-      QLog.w("SimpleSurfaceStickerTracker", 2, "onFrameAvailable error= ; isStoped=" + SimpleSurfaceStickerTracker.b(this.a));
-    }
-    paramImageReader = finally;
-    throw paramImageReader;
+      paramDownloadFileRspBody = aosn.a(((TroopFileTransferManager.Item)localObject).DownloadIp, ((TroopFileTransferManager.Item)localObject).DownloadUrl, ((TroopFileTransferManager.Item)localObject).FilePath, ((TroopFileTransferManager.Item)localObject).cookieValue, "");
+      if (!TextUtils.isEmpty(paramDownloadFileRspBody))
+      {
+        this.jdField_a_of_type_Aovm.a(paramDownloadFileRspBody, ((TroopFileTransferManager.Item)localObject).cookieValue);
+        if (QLog.isColorLevel()) {
+          QLog.e("zivonchen", 2, "url = " + paramDownloadFileRspBody + ", cookies = " + ((TroopFileTransferManager.Item)localObject).cookieValue);
+        }
+        if (this.jdField_a_of_type_Aovz.a.a() != null)
+        {
+          paramDownloadFileRspBody = String.valueOf(this.jdField_a_of_type_Aovz.a.a().TroopUin);
+          if (this.jdField_a_of_type_Aovz.a.a() == null) {
+            break label612;
+          }
+        }
+        for (paramBundle = apck.b(this.jdField_a_of_type_Aovz.a.a().nFileType);; paramBundle = "unknow")
+        {
+          awqx.b(null, "dc00899", "Grp_files", "", "oper", "Clk_pre_video", 0, 0, paramDownloadFileRspBody, "", paramBundle, "1");
+          return;
+          paramDownloadFileRspBody = "";
+          break;
+        }
+      }
+      this.jdField_a_of_type_Aovm.c();
+    } while (!QLog.isColorLevel());
+    QLog.e("zivonchen", 2, "url = " + paramDownloadFileRspBody + ", cookies = " + ((TroopFileTransferManager.Item)localObject).cookieValue);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aowg
  * JD-Core Version:    0.7.0.1
  */

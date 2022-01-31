@@ -1,51 +1,41 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.graphics.Bitmap;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.reactive.SimpleObserver;
 
-public class txt
-  implements CompoundButton.OnCheckedChangeListener
+class txt
+  extends SimpleObserver<Bitmap>
 {
-  public txt(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  txt(txs paramtxs) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void a(Bitmap paramBitmap)
   {
-    int i = 1;
-    if (paramBoolean)
-    {
-      this.a.b.setVisibility(0);
-      SoundAndVibrateActivity.d(this.a).setBackgroundResource(2130838641);
-      if (this.a.app.b() == 0)
-      {
-        this.a.b.setChecked(false);
-        this.a.app.f(1);
-        label64:
-        paramCompoundButton = this.a.app;
-        if (!paramBoolean) {
-          break label153;
-        }
-      }
-    }
-    for (;;)
-    {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_shake", 0, i, "", "", "", "");
-      return;
-      this.a.b.setChecked(true);
-      break;
-      this.a.b.setVisibility(8);
-      SoundAndVibrateActivity.d(this.a).setBackgroundResource(2130838629);
-      this.a.app.f(0);
-      break label64;
-      label153:
-      i = 0;
-    }
+    super.onNext(paramBitmap);
+    txq.b(txs.a(this.a), "onNext, oldResult=%s, newResult=%s", txs.a(this.a), paramBitmap);
+    txs.a(this.a, paramBitmap);
+    txs.a(this.a, true);
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+    txq.a(txs.a(this.a), "onCancel");
+    onError(new ErrorMessage(-1, "onCancel"));
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    txq.c(txs.a(this.a), "onError, oldError=%s, newError=%s", txs.a(this.a), paramError);
+    txs.a(this.a, paramError);
+    txs.a(this.a, SystemClock.uptimeMillis());
+    txs.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     txt
  * JD-Core Version:    0.7.0.1
  */

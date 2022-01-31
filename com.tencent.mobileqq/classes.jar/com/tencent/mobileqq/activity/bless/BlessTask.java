@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.activity.bless;
 
+import ajjy;
+import atmo;
+import atoc;
 import com.tencent.mobileqq.persistence.ConflictClause;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
 import com.tencent.mobileqq.persistence.uniqueConstraints;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import org.json.JSONTokener;
 
 @uniqueConstraints(clause=ConflictClause.REPLACE, columnNames="id")
 public class BlessTask
-  extends Entity
+  extends atmo
 {
   public int cameraMode;
   public String defaultShareTitle;
@@ -26,15 +27,16 @@ public class BlessTask
   public String ex2 = "";
   public int ex3;
   public int ex4;
+  public int festival_id;
   public String filterCategory = "";
   public String filterId = "";
-  @unique
+  @atoc
   public int id = 1000;
   public boolean isDeleted;
   public boolean isNew = true;
   public String mainBanner;
   public String mainCenter;
-  public String pendantCategory = "热门";
+  public String pendantCategory = ajjy.a(2131635370);
   public String pendantId = "";
   public int ptvAnimationCost;
   public int ptvAnimationCount;
@@ -42,6 +44,7 @@ public class BlessTask
   public String ptvAnimationUrl;
   public int ptvEnabled;
   public String recentHeadImgUrl;
+  public String recentHeadImgUrlSimple;
   public String sendBackBegin;
   public String sendBackEnd;
   public int sendTotalLimit;
@@ -49,6 +52,7 @@ public class BlessTask
   public String shareUrl;
   public String shareWeixinTitle;
   public String starAvator;
+  public String starAvatorSimple;
   public String starBegin;
   public String starBless;
   public String starEnd;
@@ -61,28 +65,36 @@ public class BlessTask
   public int supportPendant = 1;
   public int supportPhoto;
   public int supportVideo = 1;
+  public int task_id;
   public String typeBanner;
   public int uinTotalLimit;
   public int unfoldFilter;
   public int unfoldPendant = 1;
   public int unread;
   public boolean videoPlayed;
+  public String webBlessUrl;
   
-  public static boolean parse(String paramString, BlessTask paramBlessTask, ArrayList paramArrayList1, ArrayList paramArrayList2)
+  public static boolean parse(String paramString, BlessTask paramBlessTask, ArrayList<BlessPtvModule> paramArrayList, ArrayList<BlessWording> paramArrayList1)
   {
-    label478:
+    label585:
     for (;;)
     {
       try
       {
         paramString = (JSONObject)new JSONTokener(paramString).nextValue();
+        paramBlessTask.festival_id = paramString.optInt("festival_id", -1);
+        paramBlessTask.task_id = paramString.optInt("task_id", -1);
         paramBlessTask.entranceEnabled = paramString.getInt("mb_open");
         paramBlessTask.ptvEnabled = paramString.getInt("mb_ptv_open");
         paramBlessTask.starVideo = paramString.getString("mb_star_video");
         paramBlessTask.starAvator = paramString.getString("mb_star_avator");
+        if (paramString.has("mb_star_avator_simple")) {
+          paramBlessTask.starAvatorSimple = paramString.getString("mb_star_avator_simple");
+        }
         paramBlessTask.starWord = paramString.getString("mb_star_word");
         paramBlessTask.starBless = paramString.getString("mb_star_bless");
         paramBlessTask.ex2 = paramString.getString("mb_star_bless_orange");
+        paramBlessTask.ex3 = paramString.optInt("use_hint", 0);
         paramBlessTask.entranceHint = paramString.getString("mb_hint");
         paramBlessTask.entranceBegin = paramString.getString("mb_begin");
         paramBlessTask.entranceEnd = paramString.getString("mb_end");
@@ -105,6 +117,9 @@ public class BlessTask
           if (paramString.has("mb_recent_head")) {
             paramBlessTask.recentHeadImgUrl = paramString.getString("mb_recent_head");
           }
+          if (paramString.has("mb_recent_head_simple")) {
+            paramBlessTask.recentHeadImgUrlSimple = paramString.getString("mb_recent_head_simple");
+          }
           if (paramString.has("mb_shareQzone_title")) {
             paramBlessTask.shareQzoneTitle = paramString.getString("mb_shareQzone_title");
           }
@@ -114,7 +129,7 @@ public class BlessTask
           if (paramString.has("mb_ptvAnimation_open"))
           {
             if (paramString.getInt("mb_ptvAnimation_open") != 1) {
-              break label478;
+              break label585;
             }
             bool = true;
             paramBlessTask.ptvAnimationSwtich = bool;
@@ -125,12 +140,15 @@ public class BlessTask
               paramBlessTask.ptvAnimationCost = paramString.getInt("mb_ptvAnimation_cost");
             }
           }
+          if (paramString.has("mb_bless_url")) {
+            paramBlessTask.webBlessUrl = paramString.getString("mb_bless_url");
+          }
           JSONArray localJSONArray = paramString.getJSONArray("mb_words");
           i = 0;
           if (i >= localJSONArray.length()) {
             break;
           }
-          paramArrayList2.add(new BlessWording(localJSONArray.getString(i)));
+          paramArrayList1.add(new BlessWording(localJSONArray.getString(i)));
           i += 1;
           continue;
         }
@@ -148,12 +166,12 @@ public class BlessTask
       }
     }
     paramBlessTask.defaultVoice = paramString.getString("mb_default_voice");
-    paramArrayList2 = paramString.getJSONArray("mb_ptvs");
+    paramArrayList1 = paramString.getJSONArray("mb_ptvs");
     int i = 0;
-    while (i < paramArrayList2.length())
+    while (i < paramArrayList1.length())
     {
-      JSONObject localJSONObject = paramArrayList2.getJSONObject(i);
-      paramArrayList1.add(new BlessPtvModule(localJSONObject.getString("mb_name"), localJSONObject.getString("mb_data"), localJSONObject.getString("mb_id"), localJSONObject.getString("mb_viplevel"), localJSONObject.getInt("mb_music_length"), localJSONObject.getString("mb_share_title")));
+      JSONObject localJSONObject = paramArrayList1.getJSONObject(i);
+      paramArrayList.add(new BlessPtvModule(localJSONObject.getString("mb_name"), localJSONObject.getString("mb_data"), localJSONObject.getString("mb_id"), localJSONObject.getString("mb_viplevel"), localJSONObject.getInt("mb_music_length"), localJSONObject.getString("mb_share_title")));
       i += 1;
     }
     boolean bool = paramString.has("camera_param");
@@ -189,7 +207,7 @@ public class BlessTask
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("-----BlessTask KeyDump-----:").append(",entranceEnabled:").append(this.entranceEnabled).append(",ptvEnabled:").append(this.ptvEnabled).append(",videoPlayed:").append(this.videoPlayed).append(",uinTotalLimit:").append(this.uinTotalLimit).append(",sendTotalLimit:").append(this.sendTotalLimit).append(",unfoldPendant:").append(this.unfoldPendant).append(",unfoldFilter:").append(this.unfoldFilter);
+    localStringBuilder.append("-----BlessTask KeyDump-----:").append(",festival_id:").append(this.festival_id).append(",task_id:").append(this.task_id).append(",entranceEnabled:").append(this.entranceEnabled).append(",entranceBegin:").append(this.entranceBegin).append(",entranceEnd:").append(this.entranceEnd).append(",ptvEnabled:").append(this.ptvEnabled).append(",videoPlayed:").append(this.videoPlayed).append(",uinTotalLimit:").append(this.uinTotalLimit).append(",sendTotalLimit:").append(this.sendTotalLimit).append(",unfoldPendant:").append(this.unfoldPendant).append(",unfoldFilter:").append(this.unfoldFilter);
     return localStringBuilder.toString();
   }
 }

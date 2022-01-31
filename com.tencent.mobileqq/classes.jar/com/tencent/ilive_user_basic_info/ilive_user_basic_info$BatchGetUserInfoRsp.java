@@ -7,11 +7,11 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ilive_user_basic_info$BatchGetUserInfoRsp
-  extends MessageMicro
+  extends MessageMicro<BatchGetUserInfoRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16 }, new String[] { "userinfo_list", "result" }, new Object[] { null, Integer.valueOf(0) }, BatchGetUserInfoRsp.class);
   public final PBUInt32Field result = PBField.initUInt32(0);
-  public final PBRepeatMessageField userinfo_list = PBField.initRepeatMessage(ilive_user_basic_info.UserInfo.class);
+  public final PBRepeatMessageField<ilive_user_basic_info.UserInfo> userinfo_list = PBField.initRepeatMessage(ilive_user_basic_info.UserInfo.class);
 }
 
 

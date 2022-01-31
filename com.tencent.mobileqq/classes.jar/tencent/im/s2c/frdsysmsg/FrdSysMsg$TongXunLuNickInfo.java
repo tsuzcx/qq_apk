@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class FrdSysMsg$TongXunLuNickInfo
-  extends MessageMicro
+  extends MessageMicro<TongXunLuNickInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "uint64_fromuin", "uint64_touin", "str_tongxunlu_nickname" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), "" }, TongXunLuNickInfo.class);
   public final PBStringField str_tongxunlu_nickname = PBField.initString("");

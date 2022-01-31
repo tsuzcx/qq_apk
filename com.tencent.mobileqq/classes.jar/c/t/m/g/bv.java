@@ -21,9 +21,9 @@ public final class bv
   private Runnable g = new bz(this);
   private Runnable h = new cb(this);
   private Runnable i = new cc(this);
-  private Map<String, a> j = new HashMap();
+  private Map<String, bv.a> j = new HashMap();
   
-  private a a(String paramString)
+  private bv.a a(String paramString)
   {
     Object localObject3;
     if (this.j.isEmpty()) {
@@ -42,7 +42,7 @@ public final class bv
               JSONObject localJSONObject = ((JSONObject)localObject1).optJSONObject(str);
               if (localJSONObject != null)
               {
-                a locala = new a((byte)0);
+                bv.a locala = new bv.a((byte)0);
                 locala.b = localJSONObject.optInt("lastCode");
                 locala.a = localJSONObject.optLong("lastReqTime");
                 this.j.put(str, locala);
@@ -50,7 +50,7 @@ public final class bv
             }
           }
         }
-        localObject3 = (a)this.j.get(paramString);
+        localObject3 = (bv.a)this.j.get(paramString);
       }
       catch (Exception localException)
       {
@@ -60,7 +60,7 @@ public final class bv
     Object localObject2 = localObject3;
     if (localObject3 == null)
     {
-      localObject2 = new a((byte)0);
+      localObject2 = new bv.a((byte)0);
       this.j.put(paramString, localObject2);
     }
     return localObject2;
@@ -153,16 +153,10 @@ public final class bv
       this.e.post(this.i);
     }
   }
-  
-  final class a
-  {
-    public long a;
-    public int b;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     c.t.m.g.bv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,26 @@
-import android.os.Handler;
-import com.tencent.biz.troop.feeds.TroopNewGuidePopWindow;
-import com.tencent.mobileqq.troop.data.TroopFeedsDataManager.TroopNotify;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
+import java.util.List;
 
-public class pco
-  implements Runnable
+class pco
+  implements ViewBase.OnClickListener
 {
-  public pco(TroopNewGuidePopWindow paramTroopNewGuidePopWindow, JSONObject paramJSONObject, int paramInt) {}
+  pco(pck parampck) {}
   
-  public void run()
+  public void onClick(ViewBase paramViewBase)
   {
-    this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify = TroopFeedsDataManager.TroopNotify.a(this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.b, this.jdField_a_of_type_OrgJsonJSONObject);
-    this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_AndroidOsHandler.post(new pcp(this));
+    if ((this.a.jdField_a_of_type_Pcj.a != null) && (this.a.jdField_a_of_type_Pcj.a.a() != null)) {
+      oag.a(this.a.jdField_a_of_type_Pcj.a.a(), this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
+    }
+    oag.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, paramViewBase);
+    if ((pcj.a(this.a.jdField_a_of_type_Pcj) != null) && (this.a.jdField_a_of_type_Int < pcj.a(this.a.jdField_a_of_type_Pcj).size()))
+    {
+      obz.a(pcj.a(this.a.jdField_a_of_type_Pcj).getContext(), (BaseArticleInfo)pcj.a(this.a.jdField_a_of_type_Pcj).get(this.a.jdField_a_of_type_Int), paramViewBase.getEventAttachedData());
+      return;
+    }
+    obz.a(pcj.a(this.a.jdField_a_of_type_Pcj).getContext(), paramViewBase.getEventAttachedData());
   }
 }
 

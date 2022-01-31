@@ -1,0 +1,75 @@
+package com.tencent.aekit.plugin.core;
+
+import android.graphics.PointF;
+import java.util.List;
+
+public class PTHandAttr
+{
+  public static final int HAND_LABEL_EIGHT = 211;
+  public static final int HAND_LABEL_FIST = 204;
+  public static final int HAND_LABEL_HAND = 200;
+  public static final int HAND_LABEL_HEART = 201;
+  public static final int HAND_LABEL_LIFT = 212;
+  public static final int HAND_LABEL_LIKE = 207;
+  public static final int HAND_LABEL_LOVE = 206;
+  public static final int HAND_LABEL_OK = 208;
+  public static final int HAND_LABEL_ONE = 205;
+  public static final int HAND_LABEL_PAPER = 202;
+  public static final int HAND_LABEL_ROCK = 209;
+  public static final int HAND_LABEL_SCISSOR = 203;
+  public static final int HAND_LABEL_SIX = 210;
+  public static final int HAND_LABEL_ST_BLESS = 214;
+  public static final int HAND_LABEL_ST_CONGRATULATE = 213;
+  public static final int HAND_LABEL_ST_ILOVEYOU = 215;
+  public static final int[] handTypes = { 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215 };
+  protected float confidence = 0.0F;
+  private long gestureTime = 0L;
+  private List<PointF> handPointList = null;
+  protected int handType = 0;
+  
+  public float getConfidence()
+  {
+    return this.confidence;
+  }
+  
+  public long getGestureDetectTime()
+  {
+    return this.gestureTime;
+  }
+  
+  public List<PointF> getHandPointList()
+  {
+    return this.handPointList;
+  }
+  
+  public int getHandType()
+  {
+    return this.handType;
+  }
+  
+  public void setConfidence(float paramFloat)
+  {
+    this.confidence = paramFloat;
+  }
+  
+  public void setGestureTime(long paramLong)
+  {
+    this.gestureTime = paramLong;
+  }
+  
+  public void setHandPointList(List<PointF> paramList)
+  {
+    this.handPointList = paramList;
+  }
+  
+  public void setHandType(int paramInt)
+  {
+    this.handType = paramInt;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+ * Qualified Name:     com.tencent.aekit.plugin.core.PTHandAttr
+ * JD-Core Version:    0.7.0.1
+ */

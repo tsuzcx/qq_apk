@@ -1,105 +1,70 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqTodayStoryVidList;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.RspTodayStoryVidList;
-import com.tencent.biz.qqstory.network.request.CommonRequest;
-import com.tencent.biz.qqstory.network.response.CommonResponse;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetMyStoryVideoListStep;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetMyStoryVideoListStep.Result;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.Step.ErrorCallBack;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.Step.FinishCallBack;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ListIterator;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class oea
-  implements CmdTaskManger.CommandCallback
+  implements AladdinConfigHandler
 {
-  public oea(GetMyStoryVideoListStep paramGetMyStoryVideoListStep, qqstory_service.ReqTodayStoryVidList paramReqTodayStoryVidList, String paramString) {}
+  private final String a = "reset_kandian_configuration";
+  private final String b = "reset_version";
   
-  public void a(@NonNull CommonRequest paramCommonRequest, @Nullable CommonResponse paramCommonResponse, @NonNull ErrorMessage paramErrorMessage)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    if (paramErrorMessage.isFail())
+    QLog.d("ResetAllConfigHandler", 2, "[onReceiveConfig] id=" + paramInt1 + ", version=" + paramInt2 + ", content=" + paramString);
+    Map localMap = ocx.a(paramString);
+    Object localObject2 = localMap.keySet();
+    Object localObject1 = "";
+    paramString = "";
+    Iterator localIterator = ((Set)localObject2).iterator();
+    String str;
+    if (localIterator.hasNext())
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$ErrorCallBack != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$ErrorCallBack.a(paramErrorMessage);
-      }
-      return;
-    }
-    if (paramCommonResponse == null)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result.jdField_a_of_type_Int = paramErrorMessage.errorCode;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack != null)
+      str = (String)localIterator.next();
+      localObject2 = (String)localMap.get(str);
+      QLog.d("ResetAllConfigHandler", 2, "[onReceiveConfig] key=" + str + ", value=" + (String)localObject2);
+      if (TextUtils.equals(str, "reset_kandian_configuration"))
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep.a());
-        return;
+        localObject1 = paramString;
+        paramString = (String)localObject2;
       }
-      SLog.d("GetMyStoryVideoListStep", "finish callBack is null");
-      return;
     }
-    paramCommonRequest = new qqstory_service.RspTodayStoryVidList();
     for (;;)
     {
-      try
+      localObject2 = paramString;
+      paramString = (String)localObject1;
+      localObject1 = localObject2;
+      break;
+      if (TextUtils.equals(str, "reset_version"))
       {
-        paramCommonRequest.mergeFrom(paramCommonResponse.a);
-        paramCommonResponse = paramCommonRequest.vid_list.get().listIterator();
-        paramErrorMessage = paramCommonRequest.feed_id.get().toStringUtf8();
-        if (!TextUtils.isEmpty(paramErrorMessage)) {
-          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result.jdField_a_of_type_JavaLangString = paramErrorMessage;
-        }
-        paramErrorMessage = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result;
-        if (paramCommonRequest.share_to_discover.get() == 1)
+        paramString = (String)localObject1;
+        localObject1 = localObject2;
+        continue;
+        if ((TextUtils.equals("1", (CharSequence)localObject1)) && (!TextUtils.isEmpty(paramString))) {}
+        try
         {
-          bool = true;
-          paramErrorMessage.jdField_a_of_type_Boolean = bool;
-          ((StoryConfigManager)SuperManager.a(10)).b("qqstory_my_story_have_contributed", Integer.valueOf(paramCommonRequest.share_to_discover.get()));
-          if (!paramCommonResponse.hasNext()) {
-            break;
-          }
-          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result.jdField_a_of_type_JavaUtilArrayList.add(((ByteStringMicro)paramCommonResponse.next()).toStringUtf8());
-          continue;
+          paramInt1 = Integer.valueOf(paramString).intValue();
+          baig.q(BaseApplicationImpl.getApplication(), paramInt1, obz.a());
+          return true;
         }
-        boolean bool = false;
-      }
-      catch (InvalidProtocolBufferMicroException paramCommonRequest)
-      {
-        SLog.c("GetMyStoryVideoListStep", "协议返回错误, RspGetBatchUserVidList", paramCommonRequest);
-        if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack != null)
+        catch (NumberFormatException paramString)
         {
-          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep.a());
-          return;
+          QLog.e("ResetAllConfigHandler", 1, "[onReceiveConfig] e = " + paramString);
+          return true;
         }
-        SLog.d("GetMyStoryVideoListStep", "finish callBack is null");
-        return;
       }
+      localObject2 = paramString;
+      paramString = (String)localObject1;
+      localObject1 = localObject2;
     }
-    if ((!paramCommonRequest.is_end.has()) || (paramCommonRequest.is_end.get() == 1))
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack != null)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep.a());
-        return;
-      }
-      SLog.d("GetMyStoryVideoListStep", "finish callBack is null");
-      return;
-    }
-    paramCommonResponse = new qqstory_service.ReqTodayStoryVidList();
-    paramCommonResponse.date.set(this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$ReqTodayStoryVidList.date.get());
-    paramCommonResponse.cookie.set(paramCommonRequest.cookie.get());
-    CmdTaskManger.a().a(new CommonRequest(this.jdField_a_of_type_JavaLangString, paramCommonResponse, null), this);
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    QLog.d("ResetAllConfigHandler", 2, "[onWipeConfig] id=" + paramInt);
   }
 }
 

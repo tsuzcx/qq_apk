@@ -1,82 +1,45 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager.LayoutParams;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.qwallet.widget.MyLinearLayout;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.SoftReference;
-
-class akmt
-  implements Runnable
+public class akmt
+  extends aklv
 {
-  akmt(akms paramakms) {}
+  public akpn a;
+  public akvv a;
+  public boolean a;
+  public long b;
+  public String b;
+  public int d;
+  public int e = 1;
   
-  public void run()
+  public akmt(String paramString1, int paramInt1, int paramInt2, int paramInt3, akvv paramakvv, akpn paramakpn, String paramString2, long paramLong, boolean paramBoolean, int paramInt4, int paramInt5, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    int j = 0;
-    int k = this.a.a.a(this.a.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout);
-    int m = this.a.a.a(this.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    int n = this.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
-    Object localObject1 = this.a.a.getWindow().getAttributes();
-    int i;
-    Object localObject2;
-    if (k - n > 0)
-    {
-      i = this.a.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout.getHeight() / 2;
-      ((WindowManager.LayoutParams)localObject1).y = (-i);
-      this.a.a.getWindow().setAttributes((WindowManager.LayoutParams)localObject1);
-      if ((this.a.a.c) && (this.a.a.jdField_a_of_type_AndroidWidgetEditText.getText() != null) && (TextUtils.isEmpty(this.a.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString())))
-      {
-        localObject1 = (LinearLayout)this.a.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout.findViewById(2131364114);
-        if ((localObject1 != null) && (((LinearLayout)localObject1).getChildCount() > 0))
-        {
-          localObject1 = ((LinearLayout)localObject1).getChildAt(0);
-          localObject2 = (TextView)((View)localObject1).findViewById(2131364115);
-          if (((TextView)localObject2).getText() != null) {
-            this.a.a.a(((TextView)localObject2).getText().toString());
-          }
-          localObject1 = ((View)localObject1).findViewById(2131364116);
-          ((View)localObject1).setVisibility(0);
-          this.a.a.jdField_a_of_type_AndroidViewView = ((View)localObject1);
-          this.a.a.c = false;
-        }
-      }
-      if (QLog.isColorLevel())
-      {
-        localObject1 = (Context)this.a.a.jdField_a_of_type_JavaLangRefSoftReference.get();
-        if (localObject1 != null) {
-          j = ((Context)localObject1).getResources().getDisplayMetrics().heightPixels;
-        }
-        localObject2 = new StringBuilder(128);
-        if (localObject1 != null) {
-          break label429;
-        }
-        ((StringBuilder)localObject2).append("|context is null");
-      }
-    }
-    for (;;)
-    {
-      ((StringBuilder)localObject2).append("|screenHeight=").append(j).append("|emoSpaceY=").append(k).append("|dialogY=").append(m).append("|dialogHeight=").append(n).append("|moveY=").append(i);
-      QLog.d("QQCustomDialogWtihInputAndChoose.meassure", 2, ((StringBuilder)localObject2).toString());
-      return;
-      i = m + n - k;
-      break;
-      label429:
-      ((StringBuilder)localObject2).append("|context is not null");
-    }
+    super(paramString1, paramInt1, paramInt2, paramInt5, paramFloat1, paramFloat2, paramFloat3);
+    this.d = paramInt3;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_Long = paramLong;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.e = paramInt4;
+    this.jdField_a_of_type_Akvv = paramakvv;
+    this.jdField_a_of_type_Akpn = paramakpn;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("OnlineVideoARRenderableInfo{");
+    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
+    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", trackMode=").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", mRealRenderType=").append(this.d);
+    localStringBuilder.append(", mKeyingParams='").append(this.jdField_a_of_type_Akvv).append('\'');
+    localStringBuilder.append(", mVideoUrl='").append(this.jdField_b_of_type_JavaLangString).append('\'');
+    localStringBuilder.append(", mVideoSize='").append(this.jdField_b_of_type_Long).append('\'');
+    localStringBuilder.append(", mLayout='").append(this.jdField_a_of_type_Akpn).append('\'');
+    localStringBuilder.append(", isSoftPlay='").append(this.jdField_a_of_type_Boolean).append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akmt
  * JD-Core Version:    0.7.0.1
  */

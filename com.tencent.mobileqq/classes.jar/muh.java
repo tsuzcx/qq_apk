@@ -1,34 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class muh
-  implements Runnable
+final class muh
+  implements BusinessObserver
 {
-  public muh(ReadInJoyGlobalReporter paramReadInJoyGlobalReporter) {}
+  muh(QQAppInterface paramQQAppInterface, boolean paramBoolean, ajpe paramajpe) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList isSuccess:" + String.valueOf(paramBoolean));
+    }
+    paramBundle = paramBundle.getByteArray("data");
+    if ((paramBoolean) && (paramBundle != null)) {}
+    for (paramInt = mug.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Boolean, paramBundle, false);; paramInt = 1)
     {
-      if (ReadInJoyGlobalReporter.b(this.a) == 1)
-      {
-        BaseApplicationImpl.getContext().unregisterReceiver(this.a.a);
-        ReadInJoyGlobalReporter.a(this.a, 0);
+      if (this.jdField_a_of_type_Ajpe != null) {
+        this.jdField_a_of_type_Ajpe.a(paramBoolean, paramInt);
       }
       if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyGlobalReporter", 2, "unRegisterScreenListener");
+        QLog.d("AccountDetailDynamicListModel", 2, "getAccountDetailDynamicList onReceiveerrCode:" + paramInt);
       }
       return;
-    }
-    catch (Exception localException)
-    {
-      do
-      {
-        localException.printStackTrace();
-      } while (!QLog.isColorLevel());
-      QLog.e("ReadInJoyGlobalReporter", 2, "unRegisterScreenListener:" + localException.toString());
     }
   }
 }

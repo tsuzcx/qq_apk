@@ -1,32 +1,30 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class tuq
-  implements Runnable
+class tuq
+  implements begw
 {
-  public tuq(RegisterPhoneNumActivity paramRegisterPhoneNumActivity, String paramString) {}
+  tuq(tun paramtun, StoryVideoItem paramStoryVideoItem, VideoViewVideoHolder paramVideoViewVideoHolder, AtomicBoolean paramAtomicBoolean, begr parambegr) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    Object localObject2 = this.jdField_a_of_type_JavaLangString;
-    if ((localObject2 == null) || (((String)localObject2).length() <= 0)) {
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Begr.dismiss();
       return;
+      tfy.a(this.jdField_a_of_type_Tun.b(), this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, new tur(this));
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
     }
-    Object localObject1 = localObject2;
-    if (!((String)localObject2).startsWith("http://")) {
-      localObject1 = "http://" + (String)localObject2;
-    }
-    localObject2 = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity.getActivity(), QQBrowserActivity.class);
-    ((Intent)localObject2).putExtra("selfSet_leftViewText", "返回");
-    this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity.startActivity(((Intent)localObject2).putExtra("url", (String)localObject1));
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterPhoneNumActivity.app, "CliOper", "", "", "0X800665B", "0X800665B", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tuq
  * JD-Core Version:    0.7.0.1
  */

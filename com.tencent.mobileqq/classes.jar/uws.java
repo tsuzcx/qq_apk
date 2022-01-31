@@ -1,18 +1,30 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class uws
-  implements Runnable
+public class uws
+  extends QQUIEventReceiver<QQStoryTakeVideoCloseAnimationActivity, uoy>
 {
-  uws(uwr paramuwr) {}
-  
-  public void run()
+  public uws(@NonNull QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity)
   {
-    this.a.a.d();
+    super(paramQQStoryTakeVideoCloseAnimationActivity);
+  }
+  
+  public void a(@NonNull QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity, @NonNull uoy paramuoy)
+  {
+    if (paramuoy != null) {
+      paramQQStoryTakeVideoCloseAnimationActivity.a(paramuoy.a, paramuoy.b, paramuoy.c, paramuoy.d);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return uoy.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uws
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,26 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.PositionCallback;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.61.1;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.61.2;
 
-class aavq
-  implements Runnable
+public class aavq
+  implements bbmb
 {
-  aavq(aavo paramaavo) {}
+  public aavq(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void run()
+  public void a(int paramInt, String paramString)
   {
-    if (ArkAppEventObserverManager.a(this.a.a) != null) {
-      ArkAppEventObserverManager.a(this.a.a).a(false, 0.0D, 0.0D);
+    if ("profile_btn_config".equals(paramString)) {
+      this.a.runOnUiThread(new FriendProfileCardActivity.61.1(this));
     }
-    SosoInterface.b(ArkAppEventObserverManager.a(this.a.a));
-    ArkAppEventObserverManager.a(this.a.a, null);
+    while (!"profile_switch_config".equals(paramString)) {
+      return;
+    }
+    this.a.runOnUiThread(new FriendProfileCardActivity.61.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aavq
  * JD-Core Version:    0.7.0.1
  */

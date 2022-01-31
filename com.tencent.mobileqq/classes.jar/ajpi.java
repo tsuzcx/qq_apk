@@ -1,25 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import com.tencent.mobileqq.data.QIMNotifyAddFriend;
+import java.util.Comparator;
 
-public class ajpi
-  implements DialogInterface.OnClickListener
+class ajpi
+  implements Comparator<QIMNotifyAddFriend>
 {
-  public ajpi(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  ajpi(ajph paramajph) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public int a(QIMNotifyAddFriend paramQIMNotifyAddFriend1, QIMNotifyAddFriend paramQIMNotifyAddFriend2)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    SubmitHomeWorkFragment.a(this.a);
+    return (int)(paramQIMNotifyAddFriend2.pushTime - paramQIMNotifyAddFriend1.pushTime);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajpi
  * JD-Core Version:    0.7.0.1
  */

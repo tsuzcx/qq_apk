@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkActionAppMgr.IGetAppNameByActionCallback;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import java.util.Set;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
 
 public class abbu
-  implements ArkActionAppMgr.IGetAppNameByActionCallback
+  extends atdh
 {
-  public abbu(ArkLocalAppMgr paramArkLocalAppMgr, abcr paramabcr) {}
+  public abbu(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void a(Object paramObject, Set paramSet)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    ThreadManager.post(new abbv(this, paramSet), 5, null, true);
+    LoginInfoActivity.a(this.a);
+    LoginInfoActivity.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abbu
  * JD-Core Version:    0.7.0.1
  */

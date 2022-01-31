@@ -1,30 +1,22 @@
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.apollo.debug.page.CmGameDebugToolFragment;
 
-public final class aiko
-  implements Runnable
+public class aiko
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aiko(String paramString1, String paramString2) {}
+  public aiko(CmGameDebugToolFragment paramCmGameDebugToolFragment) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    try
-    {
-      Intent localIntent = new Intent();
-      localIntent.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
-      localIntent.putExtra("reporting_tag", this.a);
-      localIntent.putExtra("reporting_detail", this.b);
-      localIntent.putExtra("reporting_count", 1);
-      localIntent.putExtra("is_runtime", 0);
-      BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
-      return;
-    }
-    catch (Exception localException) {}
+    CmGameDebugToolFragment.a(this.a).edit().putBoolean("game_whitelist_verify_switch", paramBoolean).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiko
  * JD-Core Version:    0.7.0.1
  */

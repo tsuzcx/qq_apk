@@ -1,31 +1,39 @@
-import android.content.Context;
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.view.View;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
-import com.tencent.mobileqq.util.AccessibilityUtil;
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import android.widget.ImageView;
+import com.tribe.async.reactive.SimpleObserver;
 
-public class uve
-  extends AccessibilityDelegateCompat
+class uve
+  extends SimpleObserver<Bitmap>
 {
-  public uve(PressToSpeakPanel paramPressToSpeakPanel) {}
+  uve(uvd paramuvd) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  public void a(Bitmap paramBitmap)
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
-    if ((AppSetting.b) && (PressToSpeakPanel.a(this.a) > 0) && (!PressToSpeakPanel.a(this.a)) && (PressToSpeakPanel.a(this.a).a() == 1))
+    super.onNext(paramBitmap);
+    if (paramBitmap != null)
     {
-      PressToSpeakPanel.a(this.a, true);
-      PressToSpeakPanel.b(this.a);
-      AccessibilityUtil.a(this.a, this.a.getContext().getString(2131427474));
+      if (this.a.b)
+      {
+        this.a.a.setImageBitmap(paramBitmap);
+        urk.b("Q.qqstory.record.EditVideoPlayer", "blur current frame success");
+      }
     }
+    else {
+      return;
+    }
+    urk.d("Q.qqstory.record.EditVideoPlayer", "finish blur current frame but play-cover-view is not visible");
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    urk.d("Q.qqstory.record.EditVideoPlayer", "blur the current frame error : " + paramError);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uve
  * JD-Core Version:    0.7.0.1
  */

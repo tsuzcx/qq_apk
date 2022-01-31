@@ -1,68 +1,60 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.AppProtocolObserver;
-import com.tencent.mobileqq.nearby.FaceScoreCallBack;
-import com.tencent.mobileqq.nearby.FaceScoreConfig;
-import com.tencent.mobileqq.nearby.NearbyFaceScoreManager;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x938.cmd0x938.ClientConfig;
-import tencent.im.oidb.cmd0x938.cmd0x938.DataCardConfig;
-import tencent.im.oidb.cmd0x938.cmd0x938.RspBody;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 
 public class aeud
-  extends ProtoUtils.AppProtocolObserver
+  implements TextView.OnEditorActionListener
 {
-  public aeud(NearbyFaceScoreManager paramNearbyFaceScoreManager, FaceScoreCallBack paramFaceScoreCallBack) {}
+  public aeud(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    boolean bool2 = true;
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    try
+    if ((paramInt == 3) || ((paramKeyEvent != null) && (paramKeyEvent.getKeyCode() == 66)))
     {
-      paramBundle = new cmd0x938.RspBody();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramArrayOfByte = (cmd0x938.ClientConfig)paramBundle.msg_client_config.get();
-      boolean bool1;
-      if (paramArrayOfByte.uint32_show_card.get() == 1)
-      {
-        bool1 = true;
-        if (paramArrayOfByte.uint32_show_list.get() != 1) {
-          break label208;
+      paramTextView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+      if (!TextUtils.isEmpty(paramTextView)) {
+        if ((this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int) && (!TextUtils.isEmpty(paramTextView.trim())))
+        {
+          this.a.a(paramTextView);
+          ndn.a(null, "dc00899", "Pb_account_lifeservice", "", "0X80067C4", "0X80067C4", 0, 0, "", "", paramTextView, "", true);
+          ClassificationSearchActivity.a(this.a, paramTextView);
         }
       }
       for (;;)
       {
-        long l = paramArrayOfByte.uint64_next_time.get();
-        if (paramBundle.msg_datacard_config.has()) {
-          ((cmd0x938.DataCardConfig)paramBundle.msg_datacard_config.get()).uint32_entry_ability.get();
+        return true;
+        if (this.a.f == ClassificationSearchActivity.d)
+        {
+          ndn.a(null, "", "0X800742D", "0X800742D", 0, 0, paramTextView, "", "", "");
+          ClassificationSearchActivity.a(this.a, paramTextView);
         }
-        if (QLog.isColorLevel()) {
-          QLog.e("Q..troop.faceScore", 2, "fetchGrayAbility onResult isShowCard=" + bool1 + "  isShowList=" + bool2 + "  expireTime=" + l);
+        else
+        {
+          this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramTextView, false);
+          continue;
+          if (this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int)
+          {
+            paramTextView = this.a.jdField_a_of_type_AndroidWidgetEditText.getHint().toString();
+            if ((!TextUtils.isEmpty(paramTextView.trim())) && (!TextUtils.equals(paramTextView, ajjy.a(2131636131))) && (!TextUtils.equals(paramTextView, ajjy.a(2131636146))))
+            {
+              this.a.a(paramTextView);
+              ndn.a(null, "dc00899", "Pb_account_lifeservice", "", "0X80067C4", "0X80067C4", 0, 0, "", "", paramTextView, "", true);
+              ClassificationSearchActivity.a(this.a, paramTextView);
+            }
+          }
         }
-        paramArrayOfByte = new FaceScoreConfig(bool1, bool2, l, paramArrayOfByte.bytes_list_jump_url.get().toStringUtf8(), paramArrayOfByte.bytes_card_url_h.get().toStringUtf8(), paramArrayOfByte.bytes_card_url_g.get().toStringUtf8());
-        this.jdField_a_of_type_ComTencentMobileqqNearbyFaceScoreCallBack.a(paramArrayOfByte);
-        return;
-        bool1 = false;
-        break;
-        label208:
-        bool2 = false;
       }
-      return;
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
-      paramArrayOfByte.printStackTrace();
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeud
  * JD-Core Version:    0.7.0.1
  */

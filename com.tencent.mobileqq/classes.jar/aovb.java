@@ -1,22 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aovb
-  implements Runnable
+class aovb
+  implements View.OnClickListener
 {
-  public aovb(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
+  aovb(aous paramaous) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "onCaptureVideoFilterRefresh");
-    }
-    this.a.b();
+    apck.b(this.a.a, this.a.c());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aovb
  * JD-Core Version:    0.7.0.1
  */

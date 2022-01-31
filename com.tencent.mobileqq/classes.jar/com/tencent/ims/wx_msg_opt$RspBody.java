@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class wx_msg_opt$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   public static final int STR_WORDING_FIELD_NUMBER = 6;
   public static final int UINT32_CMD_FIELD_NUMBER = 2;

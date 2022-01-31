@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBInt64Field;
 
 public final class SCUpdatePB$SCUpdateRsp
-  extends MessageMicro
+  extends MessageMicro<SCUpdateRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field cmd = PBField.initInt32(0);
@@ -27,7 +27,7 @@ public final class SCUpdatePB$SCUpdateRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.scupdate.SCUpdatePB.SCUpdateRsp
  * JD-Core Version:    0.7.0.1
  */

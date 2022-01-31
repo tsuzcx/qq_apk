@@ -1,97 +1,77 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.activity.messagesearch.BaseMessageResultAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatHistorySearchData;
-import com.tencent.mobileqq.utils.HistoryChatMsgSearchKeyUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MqqWeakReferenceHandler;
-import java.util.ArrayList;
+import android.view.View;
 
 public class wwm
-  implements Runnable
 {
-  public wwm(BaseMessageResultAdapter paramBaseMessageResultAdapter, String paramString, int paramInt, long paramLong) {}
+  private int a;
+  private int b;
   
-  public void run()
+  public wwm(int paramInt1, int paramInt2)
   {
-    boolean bool = true;
-    if (QLog.isColorLevel()) {
-      QLog.i(BaseMessageResultAdapter.b(), 2, "loadMessageResult, run(), keyword = " + this.jdField_a_of_type_JavaLangString + ", loadType = " + this.jdField_a_of_type_Int);
-    }
-    ??? = null;
-    Object localObject2;
-    Object localObject4;
-    if (this.jdField_a_of_type_Int == 1)
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public static wwm a(int paramInt)
+  {
+    switch (paramInt)
     {
-      ??? = this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchBaseMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchBaseMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
-      HistoryChatMsgSearchKeyUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchBaseMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString);
-      localObject2 = new ArrayList();
-      localObject4 = this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchBaseMessageResultAdapter.a((ChatHistorySearchData)???, (ArrayList)localObject2);
-      if (QLog.isColorLevel()) {
-        QLog.i(BaseMessageResultAdapter.b(), 2, "loadMessageResult, get: messageItems[] = " + localObject2);
-      }
+    default: 
+      return new wwm(0, -1);
+    case 0: 
+      return new wwm(0, 0);
+    case 1: 
+      return new wwm(0, -1);
     }
-    for (;;)
+    return new wwm(0, -2);
+  }
+  
+  public static wwm b(int paramInt)
+  {
+    switch (paramInt)
     {
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchBaseMessageResultAdapter.jdField_a_of_type_JavaLangObject)
+    case 2: 
+    default: 
+      return new wwm(1, -1);
+    case 3: 
+      return new wwm(1, 0);
+    case 1: 
+      return new wwm(1, -1);
+    }
+    return new wwm(1, -2);
+  }
+  
+  public void a(View paramView)
+  {
+    if (this.a == 0) {
+      switch (this.b)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchBaseMessageResultAdapter.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString))
-        {
-          if (this.jdField_a_of_type_Int != 1) {
-            continue;
-          }
-          localBaseMessageResultAdapter = this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchBaseMessageResultAdapter;
-          if (((ArrayList)localObject2).size() < 20)
-          {
-            localBaseMessageResultAdapter.jdField_a_of_type_Boolean = bool;
-            this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchBaseMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqDataChatHistorySearchData = ((ChatHistorySearchData)localObject4);
-            localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchBaseMessageResultAdapter.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(2, localObject2);
-            ((Message)localObject2).arg1 = 1;
-            localObject4 = new Bundle();
-            ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);
-            ((Bundle)localObject4).putString("searchKeyword", this.jdField_a_of_type_JavaLangString);
-            ((Message)localObject2).setData((Bundle)localObject4);
-            ((Message)localObject2).sendToTarget();
-          }
-        }
-        else
-        {
-          return;
-          if (this.jdField_a_of_type_Int != 2) {
-            break;
-          }
-          ??? = this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchBaseMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqDataChatHistorySearchData;
-          break;
-        }
-        bool = false;
-        continue;
-        if (this.jdField_a_of_type_Int != 2) {
-          continue;
-        }
-        BaseMessageResultAdapter localBaseMessageResultAdapter = this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchBaseMessageResultAdapter;
-        if (((ArrayList)localObject2).size() < 20)
-        {
-          bool = true;
-          localBaseMessageResultAdapter.jdField_a_of_type_Boolean = bool;
-          this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchBaseMessageResultAdapter.jdField_a_of_type_ComTencentMobileqqDataChatHistorySearchData = ((ChatHistorySearchData)localObject4);
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchBaseMessageResultAdapter.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(2, localObject2);
-          ((Message)localObject2).arg1 = 2;
-          localObject4 = new Bundle();
-          ((Bundle)localObject4).putLong("searchSequence", this.jdField_a_of_type_Long);
-          ((Bundle)localObject4).putString("searchKeyword", this.jdField_a_of_type_JavaLangString);
-          ((Message)localObject2).setData((Bundle)localObject4);
-          ((Message)localObject2).sendToTarget();
-        }
+      default: 
+        paramView.setPivotX(this.b);
       }
-      bool = false;
     }
+    while (this.a != 1)
+    {
+      return;
+      paramView.setPivotX(paramView.getWidth() * 0.5F);
+      return;
+      paramView.setPivotX(paramView.getWidth());
+      return;
+    }
+    switch (this.b)
+    {
+    default: 
+      paramView.setPivotY(this.b);
+      return;
+    case -1: 
+      paramView.setPivotY(paramView.getHeight() * 0.5F);
+      return;
+    }
+    paramView.setPivotY(paramView.getHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wwm
  * JD-Core Version:    0.7.0.1
  */

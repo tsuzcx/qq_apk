@@ -1,76 +1,117 @@
-import android.os.Bundle;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.GalleryReportedUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyAtlasViewPagerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment.ReportEventListener;
-import com.tencent.biz.pubaccount.readinjoy.view.VariableSizeTextView;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.List;
-import tencent.im.oidb.gallery.gallery.GalleryInfo;
-
-public class lqd
-  implements ViewPager.OnPageChangeListener
+public abstract class lqd
 {
-  public lqd(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment) {}
+  protected int a;
+  protected String a;
+  protected int b = 0;
+  protected int c = 3;
+  protected int d;
+  protected int e = 1;
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  protected lqd(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
   {
-    ReadInJoyAtlasFragment.a(this.a).a(2, null);
-    if (paramInt == 0)
-    {
-      this.a.b(1);
-      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setVisibility(0);
+    this.jdField_a_of_type_Int = paramInt1;
+    this.d = paramInt2;
+    this.c = paramInt3;
+    this.e = paramInt4;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public static boolean a(lqd paramlqd1, lqd paramlqd2)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if (paramlqd2 == null) {
+      bool1 = false;
     }
-    for (;;)
+    do
     {
-      return;
-      if (paramInt == 1)
+      do
       {
-        this.a.b(2);
-        this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.a();
-        this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setVisibility(4);
-        Object localObject = new Bundle();
-        ((Bundle)localObject).putInt("exitType", 4);
-        ((Bundle)localObject).putSerializable("lastShowImageModel", this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyAtlasViewPagerAdapter.b());
-        ReadInJoyAtlasFragment.a(this.a).a(-2, (Bundle)localObject);
-        localObject = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyAtlasViewPagerAdapter.a();
-        List localList1 = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyAtlasViewPagerAdapter.b();
-        List localList2 = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyAtlasViewPagerAdapter.c();
-        long l1 = System.currentTimeMillis();
-        if ((localObject == null) || (((List)localObject).size() <= 0) || (localList1.size() <= 0) || (localList2.size() <= 0)) {
-          break;
-        }
-        paramInt = 0;
-        while ((paramInt < ((List)localObject).size()) && (paramInt < localList1.size()) && (paramInt < localList2.size()))
+        int i;
+        int j;
+        do
         {
-          String str1 = GalleryReportedUtils.a((String)((List)localObject).get(paramInt), System.currentTimeMillis());
-          gallery.GalleryInfo localGalleryInfo = (gallery.GalleryInfo)localList2.get(paramInt);
-          int i = ((Integer)localList1.get(paramInt)).intValue();
-          long l2 = localGalleryInfo.uint64_article_id.get();
-          String str2 = localGalleryInfo.bytes_row_key.get().toStringUtf8();
-          String str3 = localGalleryInfo.bytes_report_exdata.get().toStringUtf8();
-          int j = localGalleryInfo.int32_reason.get();
-          PublicAccountReportUtils.a(null, "", "0X8008E2E", "0X8008E2E", 0, 0, "", l2 + "", j + "", str1, false);
-          GalleryReportedUtils.a(7, ReadInJoyUtils.a(), j, 2, l1, i, str2, str3);
-          paramInt += 1;
+          do
+          {
+            return bool1;
+            bool1 = bool2;
+          } while (paramlqd1 == null);
+          i = paramlqd2.e();
+          j = paramlqd1.e();
+          kyu.a("CheckAvTipsItemLevelCanShow, lvNew[" + i + "], lvOld[" + j + "], idNew[" + paramlqd2.b() + "], idOld[" + paramlqd1.b() + "]");
+          bool1 = bool2;
+        } while (i < j);
+        if (i > j) {
+          return false;
         }
+        bool1 = bool2;
+      } while (paramlqd1.a());
+      if (paramlqd2.a()) {
+        return false;
       }
+      bool1 = bool2;
+    } while (paramlqd2.c() <= paramlqd1.c());
+    return false;
+  }
+  
+  public abstract int a();
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public void a(int paramInt)
+  {
+    this.c = paramInt;
+  }
+  
+  public void a(String paramString)
+  {
+    if (paramString != null) {
+      this.jdField_a_of_type_JavaLangString = paramString;
     }
+  }
+  
+  public boolean a()
+  {
+    return this.c == 0;
+  }
+  
+  public int b()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public int c()
+  {
+    return this.c;
+  }
+  
+  public int d()
+  {
+    return this.e;
+  }
+  
+  public int e()
+  {
+    return this.d;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject == null) || (!(paramObject instanceof lqd))) {}
+    do
+    {
+      return false;
+      paramObject = (lqd)paramObject;
+    } while (b() != paramObject.b());
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lqd
  * JD-Core Version:    0.7.0.1
  */

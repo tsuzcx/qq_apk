@@ -4,41 +4,41 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
+import axam;
+import babr;
+import badq;
+import bafb;
+import bbms;
+import bbmy;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class SubAccountBaseActivity
   extends IphoneTitleBarActivity
   implements DialogInterface.OnClickListener
 {
-  private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
-  private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+  private bafb jdField_a_of_type_Bafb;
+  private bbms jdField_a_of_type_Bbms;
   public String b;
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
+    if (this.jdField_a_of_type_Bbms == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(true);
+      this.jdField_a_of_type_Bbms = new bbms(this, getTitleBarHeight());
+      this.jdField_a_of_type_Bbms.c(true);
     }
     if (paramInt > 0) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(paramInt);
+      this.jdField_a_of_type_Bbms.c(paramInt);
     }
     for (;;)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) && (!isFinishing())) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
+      if ((this.jdField_a_of_type_Bbms != null) && (!this.jdField_a_of_type_Bbms.isShowing()) && (!isFinishing())) {
+        this.jdField_a_of_type_Bbms.show();
       }
       return;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435086);
+      this.jdField_a_of_type_Bbms.c(2131629253);
     }
   }
   
@@ -49,38 +49,51 @@ public class SubAccountBaseActivity
       localObject = this;
     }
     d();
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230).setTitle(paramString1).setMessage(paramString2);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131432428, (DialogInterface.OnClickListener)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131433029, (DialogInterface.OnClickListener)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(false);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+    this.jdField_a_of_type_Bafb = babr.a(this, 230).setTitle(paramString1).setMessage(paramString2);
+    this.jdField_a_of_type_Bafb.setPositiveButton(2131625463, (DialogInterface.OnClickListener)localObject);
+    this.jdField_a_of_type_Bafb.setNegativeButton(2131625035, (DialogInterface.OnClickListener)localObject);
+    this.jdField_a_of_type_Bafb.setCancelable(false);
+    this.jdField_a_of_type_Bafb.show();
   }
   
   public boolean a()
   {
-    return NetworkUtil.d(BaseApplication.getContext());
+    return badq.d(BaseApplication.getContext());
   }
   
   public void b(String paramString)
   {
-    QQToast.a(this, paramString, 0).b(getTitleBarHeight());
+    bbmy.a(this, paramString, 0).b(getTitleBarHeight());
+  }
+  
+  public void b(String paramString1, String paramString2, DialogInterface.OnClickListener paramOnClickListener)
+  {
+    Object localObject = paramOnClickListener;
+    if (paramOnClickListener == null) {
+      localObject = this;
+    }
+    d();
+    this.jdField_a_of_type_Bafb = babr.a(this, 230).setTitle(paramString1).setMessage(paramString2);
+    this.jdField_a_of_type_Bafb.setPositiveButton(2131625463, (DialogInterface.OnClickListener)localObject);
+    this.jdField_a_of_type_Bafb.setCancelable(false);
+    this.jdField_a_of_type_Bafb.show();
   }
   
   public boolean b()
   {
     boolean bool = a();
     if (!bool) {
-      b(getString(2131433023));
+      b(getString(2131626719));
     }
     return bool;
   }
   
   public void c()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {}
+    if ((this.jdField_a_of_type_Bbms != null) && (this.jdField_a_of_type_Bbms.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      this.jdField_a_of_type_Bbms.dismiss();
       return;
     }
     catch (Exception localException) {}
@@ -88,17 +101,17 @@ public class SubAccountBaseActivity
   
   public void c(String paramString)
   {
-    QQToast.a(this, 2, paramString, 0).b(getTitleBarHeight());
+    bbmy.a(this, 2, paramString, 0).b(getTitleBarHeight());
   }
   
   public void d()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
+    if ((this.jdField_a_of_type_Bafb != null) && (this.jdField_a_of_type_Bafb.isShowing())) {}
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      this.jdField_a_of_type_Bafb.dismiss();
       label24:
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
+      this.jdField_a_of_type_Bafb = null;
       return;
     }
     catch (Exception localException)
@@ -107,19 +120,19 @@ public class SubAccountBaseActivity
     }
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     this.b = getIntent().getStringExtra("fromWhere");
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
-    SubAccountControll localSubAccountControll = (SubAccountControll)this.app.getManager(61);
-    if (localSubAccountControll != null) {
-      localSubAccountControll.a(this);
+    axam localaxam = (axam)this.app.getManager(62);
+    if (localaxam != null) {
+      localaxam.a(this);
     }
   }
   

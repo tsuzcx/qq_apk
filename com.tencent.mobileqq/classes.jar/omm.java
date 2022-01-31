@@ -1,35 +1,54 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterManager;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
-import com.tencent.mobileqq.vip.DownloaderInterface;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.handlers.DailyHandler.1;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.ListView;
+import java.util.Map;
 
 public class omm
-  extends AbsPreDownloadTask
+  extends oml
 {
-  public omm(ArtFilterManager paramArtFilterManager, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, File paramFile, String paramString4)
+  public int a()
   {
-    super(paramQQAppInterface, paramString1);
+    return 3;
   }
   
-  protected void a()
+  public void a(View paramView, ListView paramListView) {}
+  
+  public void a(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArtFilterManager", 2, "realStart download url:" + this.jdField_a_of_type_JavaLangString + " path:" + this.b);
+    paramAdapterView = (ArticleInfo)a((int)paramLong);
+    if (odm.c(b())) {
+      if (!obz.a(paramAdapterView)) {
+        break label35;
+      }
     }
-    DownloaderInterface localDownloaderInterface = ((DownloaderFactory)ArtFilterManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterManager).getManager(46)).a(1);
-    DownloadTask localDownloadTask = new DownloadTask(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile);
-    localDownloadTask.l = true;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("url", this.jdField_a_of_type_JavaLangString);
-    localBundle.putString("md5", this.c);
-    localBundle.putString("path", this.b);
-    localDownloaderInterface.a(localDownloadTask, ArtFilterManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterManager), localBundle);
+    label35:
+    for (paramInt = 4;; paramInt = 2)
+    {
+      oab.a(paramInt);
+      return;
+    }
+  }
+  
+  public void a(Map<Long, pov> paramMap, boolean paramBoolean)
+  {
+    super.a(paramMap, paramBoolean);
+    if (odm.c(b()))
+    {
+      paramMap = a();
+      if (bgmq.w()) {
+        break label36;
+      }
+      QLog.d("DailyHandler", 1, "detachFromViewGroup,now cmd is 0x68b");
+    }
+    label36:
+    while (paramMap == null) {
+      return;
+    }
+    ThreadManager.executeOnSubThread(new DailyHandler.1(this, paramMap.a));
   }
 }
 

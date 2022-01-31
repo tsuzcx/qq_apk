@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x9ab$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   public static final int UINT32_TAB_ID_FIELD_NUMBER = 2;
   public static final int UINT64_GROUP_CODE_FIELD_NUMBER = 1;
@@ -17,7 +17,7 @@ public final class oidb_0x9ab$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x9ab.oidb_0x9ab.ReqBody
  * JD-Core Version:    0.7.0.1
  */

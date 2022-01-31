@@ -1,42 +1,55 @@
+import UserGrowth.stGlobalConfig;
+import UserGrowth.stPopWindowsConfig;
+import android.app.Activity;
 import android.content.Context;
-import android.os.Build;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.widget.ToastStyleDialog;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
+import com.tencent.biz.pubaccount.weishi_new.report.WSPublicAccReport;
+import java.net.URLDecoder;
 
-public class rwj
-  implements Runnable
+class rwj
+  implements sar
 {
-  public rwj(BaseChatPie paramBaseChatPie, int paramInt) {}
+  rwj(rwi paramrwi, Context paramContext) {}
   
-  public void run()
+  public void a(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, "recorderVolumeChange " + this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_a_of_type_Int == 1) {
-      if (!this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.j()) {
-        QLog.i("Q.aio.BaseChatPie", 1, "volueme state err" + Build.MANUFACTURER + Build.MODEL);
-      }
-    }
-    while (((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 0)) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetToastStyleDialog == null) || (!this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetToastStyleDialog.isShowing()) || (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetToastStyleDialog.getWindow() == null))
+    sak.a(rwi.a(this.jdField_a_of_type_Rwi), "biz_src_jc_gzh_weishi", paramString, 1, rwi.a(this.jdField_a_of_type_Rwi).link_strategy_type, rwi.a(this.jdField_a_of_type_Rwi));
+    rzu.a(114, rwi.b(this.jdField_a_of_type_Rwi), rwi.c(this.jdField_a_of_type_Rwi), this.jdField_a_of_type_Rwi.a.windowsid);
+    rzw.c(114, this.jdField_a_of_type_Rwi.a.type, this.jdField_a_of_type_Rwi.a.windowsid);
+    WSPublicAccReport.getInstance().reportClickRichBlockPop(1000003, this.jdField_a_of_type_Rwi.a.windowsid);
+  }
+  
+  public void b(String paramString, int paramInt)
+  {
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
     {
-      do
-      {
-        return;
-      } while ((this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetToastStyleDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetToastStyleDialog.isShowing()));
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetToastStyleDialog = new ToastStyleDialog(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetToastStyleDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext.getString(2131433407));
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetToastStyleDialog.show();
+      paramString = URLDecoder.decode(paramString);
+      obz.e(rwi.a(this.jdField_a_of_type_Rwi), paramString);
+      sai.a("weishi-813", "阻断rich弹窗:" + paramString);
+      rzu.a(140, rwi.b(this.jdField_a_of_type_Rwi), rwi.c(this.jdField_a_of_type_Rwi), this.jdField_a_of_type_Rwi.a.windowsid);
+      rzw.c(140, this.jdField_a_of_type_Rwi.a.type, this.jdField_a_of_type_Rwi.a.windowsid);
+      WSPublicAccReport.getInstance().reportClickRichBlockPop(1000004, this.jdField_a_of_type_Rwi.a.windowsid);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetToastStyleDialog.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqWidgetToastStyleDialog = null;
+    sai.c("weishi-813", "阻断rich弹窗:context 不是Activity");
+  }
+  
+  public void c(String paramString, int paramInt)
+  {
+    WSDownloadParams localWSDownloadParams = new WSDownloadParams();
+    localWSDownloadParams.mScene = 1;
+    localWSDownloadParams.mLinkStrategyType = rwi.a(this.jdField_a_of_type_Rwi).link_strategy_type;
+    localWSDownloadParams.mEventId = 401;
+    localWSDownloadParams.mTestId = rzw.b();
+    localWSDownloadParams.mScheme = paramString;
+    rxu.a((Activity)rwi.a(this.jdField_a_of_type_Rwi), localWSDownloadParams, false);
+    rzw.c(115, this.jdField_a_of_type_Rwi.a.type, this.jdField_a_of_type_Rwi.a.windowsid);
+    WSPublicAccReport.getInstance().reportClickRichBlockPop(1000002, this.jdField_a_of_type_Rwi.a.windowsid);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rwj
  * JD-Core Version:    0.7.0.1
  */

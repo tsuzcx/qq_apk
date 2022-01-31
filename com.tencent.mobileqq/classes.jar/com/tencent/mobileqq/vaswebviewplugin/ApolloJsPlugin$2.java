@@ -1,22 +1,28 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.app.Activity;
+import babr;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionCallback;
 
 class ApolloJsPlugin$2
-  implements Runnable
+  implements QQPermissionCallback
 {
   ApolloJsPlugin$2(ApolloJsPlugin paramApolloJsPlugin, Activity paramActivity) {}
   
-  public void run()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    if ((this.val$activity != null) && (!this.val$activity.isFinishing())) {
-      this.val$activity.finish();
-    }
+    babr.a(this.val$activity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.d("ApolloJsPlugin", 1, "[startRecord] grant");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ApolloJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,38 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 
 class vyd
-  implements Animation.AnimationListener
+  extends RecyclerView.OnScrollListener
 {
-  vyd(vyc paramvyc) {}
+  vyd(vya paramvya) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (this.a.a.q != null)
-    {
-      paramAnimation = AnimationUtils.loadAnimation(this.a.a.a, 2131034320);
-      paramAnimation.setAnimationListener(this);
-      this.a.a.q.startAnimation(paramAnimation);
-    }
+    super.onScrollStateChanged(paramRecyclerView, paramInt);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+  {
+    if ((this.a.a instanceof StaggeredGridLayoutManager))
+    {
+      paramRecyclerView = (StaggeredGridLayoutManager)this.a.a;
+      int[] arrayOfInt = new int[paramRecyclerView.getColumnCountForAccessibility(null, null)];
+      paramRecyclerView.findFirstVisibleItemPositions(arrayOfInt);
+      if ((this.a.b(arrayOfInt[0]) <= 0) && (!vya.b(this.a)))
+      {
+        vya.a(this.a, true);
+        paramRecyclerView.invalidateSpanAssignments();
+      }
+      if (arrayOfInt[0] > 2) {
+        vya.a(this.a, false);
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vyd
  * JD-Core Version:    0.7.0.1
  */

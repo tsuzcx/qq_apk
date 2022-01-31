@@ -10,16 +10,16 @@ import java.util.Map;
 public final class newest_feeds_rsp
   extends JceStruct
 {
-  static Map cache_mapExt;
-  static Map cache_mapVcByte;
-  static ArrayList cache_vec_feed_info = new ArrayList();
+  static Map<Long, String> cache_mapExt;
+  static Map<Long, QzoneData> cache_mapVcByte;
+  static ArrayList<feed_info> cache_vec_feed_info = new ArrayList();
   public int code;
   public long last_feed_time;
-  public Map mapExt;
-  public Map mapVcByte;
+  public Map<Long, String> mapExt;
+  public Map<Long, QzoneData> mapVcByte;
   public String str_attach = "";
   public long uNextTime;
-  public ArrayList vec_feed_info;
+  public ArrayList<feed_info> vec_feed_info;
   
   static
   {
@@ -34,14 +34,14 @@ public final class newest_feeds_rsp
   
   public newest_feeds_rsp() {}
   
-  public newest_feeds_rsp(int paramInt, ArrayList paramArrayList, long paramLong1, String paramString, Map paramMap1, Map paramMap2, long paramLong2)
+  public newest_feeds_rsp(int paramInt, ArrayList<feed_info> paramArrayList, long paramLong1, String paramString, Map<Long, QzoneData> paramMap, Map<Long, String> paramMap1, long paramLong2)
   {
     this.code = paramInt;
     this.vec_feed_info = paramArrayList;
     this.last_feed_time = paramLong1;
     this.str_attach = paramString;
-    this.mapVcByte = paramMap1;
-    this.mapExt = paramMap2;
+    this.mapVcByte = paramMap;
+    this.mapExt = paramMap1;
     this.uNextTime = paramLong2;
   }
   

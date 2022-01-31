@@ -1,0 +1,86 @@
+{
+    "RIJ_fg_single_cell": {
+        "view_type": "cell",
+        "direction": "vertical",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "subviews": [
+            {
+                "view_type": "UIView",
+                "view_id": "id_fg_view",
+                "default_visible":"YES",
+                "margin_left": "12",
+                "margin_right": "12",
+                "margin_top": "10",
+                "margin_bottom": "10",
+                "direction": "vertical",
+                "height": {
+                    "type": "wrap_content"
+                },
+                "width": {
+                    "type": "relative",
+                    "value": "351"
+                },
+                "attributes": {
+                    "setBackgroundColorString:": "#E5E5E5"
+                },
+                "subviews": [
+                    {
+                        "view_type": "UIView",
+                        "view_id": "id_fg_sub_container",
+                        "default_visible":"YES",
+                        "margin_left": "0.5",
+                        "margin_right": "0.5",
+                        "margin_top": "0.5",
+                        "margin_bottom": "0.5",
+                        "direction": "vertical",
+                        "height": {
+                            "type": "wrap_content"
+                        },
+                        "width": {
+                            "type": "relative",
+                            "value": "350"
+                        },
+                        "attributes": {
+                            "setBackgroundColorString:": "#F7F7F7"
+                        },
+                        "subviews": [
+                            {
+                                 "$includeComponet": "componet/flow_middle_container_single.geojson"
+                            },
+                            {
+                                "view_type": "UIView",
+                                "view_id": "id_in_line",
+                                "default_visible":"YES",
+                                "margin_top": "10",
+                                "margin_left": "9.5",
+                                "height": {
+                                    "type": "absolutely",
+                                    "value": "0.5"
+                                },
+                                "width": {
+                                    "type": "relative",
+                                    "value": "330"
+                                },
+                                "attributes": {
+                                    "setBackgroundColorString:": "#E5E5E5"
+                                }
+                            },
+                            {
+                                "$includeComponet": "componet/flow_guide_button_gray.geojson"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "$includeComponet": "componet/separator.geojson"
+            }
+        ]
+    }
+}

@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.utils;
 
 import android.content.Context;
+import audm;
+import audo;
+import awrn;
+import bahn;
 import com.tencent.commonsdk.soload.SoLoadUtilNew;
-import com.tencent.mobileqq.ptt.processor.IPttProcessor.ProcessData;
-import com.tencent.mobileqq.ptt.processor.PttComponentProcessor;
-import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.BaseConstants;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -15,10 +16,10 @@ import java.nio.ShortBuffer;
 import java.util.HashMap;
 
 public final class WechatNsWrapper
-  extends PttComponentProcessor
+  extends audo
 {
-  private static boolean jdField_a_of_type_Boolean;
-  short[] jdField_a_of_type_ArrayOfShort;
+  public static boolean a;
+  short[] a;
   int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean;
   
@@ -54,7 +55,7 @@ public final class WechatNsWrapper
       HashMap localHashMap = new HashMap();
       localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
       localHashMap.put("throwable", localThrowable.getMessage());
-      StatisticCollector.a(BaseApplication.getContext()).a(null, "actWechatNsLoadFail", false, 0L, 0L, localHashMap, "");
+      awrn.a(BaseApplication.getContext()).a(null, "actWechatNsLoadFail", false, 0L, 0L, localHashMap, "");
     }
   }
   
@@ -98,7 +99,7 @@ public final class WechatNsWrapper
         jdField_a_of_type_Boolean = false;
         continue;
       }
-      this.jdField_a_of_type_Int = RecordParams.a(paramInt1);
+      this.jdField_a_of_type_Int = bahn.a(paramInt1);
       this.jdField_a_of_type_ArrayOfShort = new short[this.jdField_a_of_type_Int / 2];
       this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
       this.jdField_b_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
@@ -107,7 +108,7 @@ public final class WechatNsWrapper
         paramInt1 = this.jdField_a_of_type_Int * 2;
       }
       this.c = new byte[paramInt1];
-      this.jdField_a_of_type_ComTencentMobileqqPttProcessorIPttProcessor$ProcessData = new IPttProcessor.ProcessData(this.c, 0);
+      this.jdField_a_of_type_Audm = new audm(this.c, 0);
       return;
       bool = false;
     }
@@ -158,10 +159,7 @@ public final class WechatNsWrapper
     {
       return -1;
       a(this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ArrayOfShort);
-      paramInt2 = nsProcess(this.jdField_b_of_type_Int, this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_ArrayOfByte.length);
-      if (QLog.isColorLevel()) {
-        QLog.d("SilkCodecWrapper", 2, "encode=" + paramInt2 + " outLen=" + paramInt2);
-      }
+      nsProcess(this.jdField_b_of_type_Int, this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_ArrayOfByte.length);
       a(this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_ArrayOfByte);
       System.arraycopy(this.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte, paramInt1, this.jdField_a_of_type_Int);
       return this.jdField_a_of_type_Int;

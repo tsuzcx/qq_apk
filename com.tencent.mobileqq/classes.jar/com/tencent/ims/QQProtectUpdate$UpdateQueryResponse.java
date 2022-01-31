@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class QQProtectUpdate$UpdateQueryResponse
-  extends MessageMicro
+  extends MessageMicro<UpdateQueryResponse>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 56 }, new String[] { "uint32_sec_cmd", "int32_status", "uint32_file_id", "uint32_file_version", "string_file_hash", "string_file_url", "uint32_zip_flag" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0) }, UpdateQueryResponse.class);
   public final PBInt32Field int32_status = PBField.initInt32(0);

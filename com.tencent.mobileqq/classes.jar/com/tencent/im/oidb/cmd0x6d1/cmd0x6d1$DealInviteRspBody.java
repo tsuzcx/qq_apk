@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class cmd0x6d1$DealInviteRspBody
-  extends MessageMicro
+  extends MessageMicro<DealInviteRspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[0], new String[0], new Object[0], DealInviteRspBody.class);
 }

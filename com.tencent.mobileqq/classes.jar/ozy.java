@@ -1,26 +1,16 @@
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class ozy
-  implements Runnable
+class ozy
+  implements ViewBase.OnClickListener
 {
-  private WeakReference a;
+  ozy(ozx paramozx) {}
   
-  public ozy(TribeVideoPlugin paramTribeVideoPlugin)
+  public void onClick(ViewBase paramViewBase)
   {
-    this.a = new WeakReference(paramTribeVideoPlugin);
-  }
-  
-  public void run()
-  {
-    TribeVideoPlugin localTribeVideoPlugin = (TribeVideoPlugin)this.a.get();
-    if (localTribeVideoPlugin == null) {
-      return;
-    }
-    TVK_SDKMgr.installPlugin(localTribeVideoPlugin.mRuntime.a().getApplication(), new ozz(this));
+    ozx.a(this.a, false);
+    ozx.a(this.a);
+    ndn.a(null, obz.a() + "", "0X800984B", "0X800984B", 0, 0, "1", "", "", "", false);
   }
 }
 

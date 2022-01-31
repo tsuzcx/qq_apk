@@ -1,34 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Goods;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
+import com.tencent.mobileqq.activity.TroopRobotPickerActivity.RobotPickerData;
+import com.tencent.mobileqq.conditionsearch.CountrySelectActivity;
 
-public final class acbs
-  implements Parcelable.Creator
+public class acbs
+  implements View.OnClickListener
 {
-  public IPSiteModel.Goods a(Parcel paramParcel)
-  {
-    IPSiteModel.Goods localGoods = new IPSiteModel.Goods();
-    localGoods.cover = paramParcel.readString();
-    localGoods.goodsTags = paramParcel.readString();
-    localGoods.id = paramParcel.readString();
-    localGoods.name = paramParcel.readString();
-    localGoods.price = paramParcel.readString();
-    localGoods.saleTags = paramParcel.readString();
-    localGoods.svipPrice = paramParcel.readString();
-    localGoods.url = paramParcel.readString();
-    localGoods.moreUrl = paramParcel.readString();
-    localGoods.saleNum = paramParcel.readString();
-    return localGoods;
-  }
+  public acbs(TroopRobotPickerActivity paramTroopRobotPickerActivity) {}
   
-  public IPSiteModel.Goods[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new IPSiteModel.Goods[paramInt];
+    paramView = new Intent(this.a, CountrySelectActivity.class);
+    paramView.putExtra("key_country_code", this.a.a.mLocationCountyCode);
+    paramView.putExtra("key_no_limit_allow", true);
+    this.a.startActivityForResult(paramView, 111);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acbs
  * JD-Core Version:    0.7.0.1
  */

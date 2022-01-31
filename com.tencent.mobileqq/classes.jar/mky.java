@@ -1,14 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import oicq.wlogin_sdk.request.Ticket;
+import oicq.wlogin_sdk.request.WtTicketPromise;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
 class mky
-  implements Runnable
+  implements WtTicketPromise
 {
-  mky(mks parammks) {}
+  mky(mkw parammkw) {}
   
-  public void run()
+  public void Done(Ticket paramTicket)
   {
-    this.a.a.notifyDataSetChanged();
+    mkw.a(this.a, false);
+    this.a.h();
   }
+  
+  public void Failed(ErrMsg paramErrMsg) {}
+  
+  public void Timeout(ErrMsg paramErrMsg) {}
 }
 
 

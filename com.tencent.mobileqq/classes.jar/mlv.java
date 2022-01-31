@@ -1,47 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.biz.pubaccount.util.PublicTracker;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.widget.XListView.DrawFinishedListener;
-import mqq.os.MqqHandler;
+import android.app.Dialog;
+import android.view.View;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import java.util.List;
 
 public class mlv
-  implements XListView.DrawFinishedListener
+  implements behi
 {
-  public mlv(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  public mlv(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
   
-  public void a()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if ((!this.a.jdField_a_of_type_Boolean) && (this.a.b))
-    {
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.b = false;
-      switch (this.a.jdField_a_of_type_Int)
-      {
-      }
+    if (QLog.isColorLevel()) {
+      QLog.i("PoiMapActivity", 2, "setOnItemClickListener" + paramInt);
     }
-    for (;;)
+    paramAdapterView = (mlx)this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.get(paramInt);
+    if (paramAdapterView != null)
     {
-      PublicTracker.a("KANDIAN_NEW_FEEDS_LIST_VIEW_GROUP_MEASURE_LAYOUT_DRAW", null);
-      PublicTracker.a("KANDIAN_FEEDS_STAGE_2_COST", null);
-      PublicTracker.a("KANDIAN_FEEDS_COST", null);
-      if (this.a.jdField_a_of_type_Int == 56) {
-        PublicTracker.a("video_tab_cost", null);
-      }
-      if (ReadInJoyListViewGroup.b(this.a))
-      {
-        ReadInJoyListViewGroup.a(this.a);
-        ThreadManager.getUIHandler().postDelayed(new mlw(this), 100L);
-      }
-      if (ReadInJoyListViewGroup.c(this.a)) {
-        ReadInJoyListViewGroup.c(this.a);
-      }
-      return;
-      PublicTracker.jdField_a_of_type_Int = 1;
-      continue;
-      PublicTracker.jdField_a_of_type_Int = 2;
-      continue;
-      PublicTracker.jdField_a_of_type_Int = 3;
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.h = true;
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a(paramAdapterView);
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "click_sch_result", "", "", "", "");
     }
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 

@@ -7,27 +7,27 @@ import com.tencent.component.media.utils.ImageManagerLog;
 import com.tencent.sharpP.SharpPUtils;
 import java.io.File;
 import java.util.concurrent.ConcurrentHashMap;
-import plc;
-import plz;
 
 public class DownloadImageTask
-  extends plz
+  extends ImageTask
 {
-  private static int jdField_a_of_type_Int;
-  private static IDownloader jdField_a_of_type_ComTencentComponentMediaIDownloader = null;
-  private static ImageManagerEnv.ImageDownloaderListener jdField_a_of_type_ComTencentComponentMediaImageManagerEnv$ImageDownloaderListener;
-  private static DownloadImageTask jdField_a_of_type_ComTencentComponentMediaImageDownloadImageTask;
-  private static final Object jdField_a_of_type_JavaLangObject;
-  private static ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-  private DownloadImageTask b = null;
+  private static final String TAG = "DownloadImageTask";
+  private static ImageManagerEnv.ImageDownloaderListener imageDownloaderListener;
+  private static ConcurrentHashMap<String, DownloadImageTask> mDownloadTaskRecord;
+  private static IDownloader mImageDownloader = null;
+  private static int mObjectPoolSize;
+  private static DownloadImageTask sPool;
+  private static final Object sPoolSync;
+  private DownloadImageTask next = null;
   
   static
   {
-    jdField_a_of_type_ComTencentComponentMediaImageManagerEnv$ImageDownloaderListener = new plc();
-    a();
-    jdField_a_of_type_ComTencentComponentMediaImageDownloadImageTask = null;
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_Int = 0;
+    mDownloadTaskRecord = new ConcurrentHashMap();
+    imageDownloaderListener = new DownloadImageTask.1();
+    initDownloader();
+    sPool = null;
+    sPoolSync = new Object();
+    mObjectPoolSize = 0;
     clearAndInitSize();
   }
   
@@ -36,50 +36,50 @@ public class DownloadImageTask
     super(paramImageKey);
   }
   
-  private DownloadImageTask(plz paramplz)
+  private DownloadImageTask(ImageTask paramImageTask)
   {
-    super(paramplz);
-  }
-  
-  private static void a()
-  {
-    jdField_a_of_type_ComTencentComponentMediaIDownloader = ImageManagerEnv.g().getDownloader(jdField_a_of_type_ComTencentComponentMediaImageManagerEnv$ImageDownloaderListener);
+    super(paramImageTask);
   }
   
   public static void clearAndInitSize()
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (sPoolSync)
     {
-      jdField_a_of_type_ComTencentComponentMediaImageDownloadImageTask = null;
+      sPool = null;
       int i = 0;
       while (i < mInitAllocatedSize)
       {
         DownloadImageTask localDownloadImageTask = new DownloadImageTask(null);
-        localDownloadImageTask.b = jdField_a_of_type_ComTencentComponentMediaImageDownloadImageTask;
-        jdField_a_of_type_ComTencentComponentMediaImageDownloadImageTask = localDownloadImageTask;
-        jdField_a_of_type_Int += 1;
+        localDownloadImageTask.next = sPool;
+        sPool = localDownloadImageTask;
+        mObjectPoolSize += 1;
         i += 1;
       }
       return;
     }
   }
   
-  public static IDownloader getDownloader()
+  protected static IDownloader getDownloader()
   {
-    return jdField_a_of_type_ComTencentComponentMediaIDownloader;
+    return mImageDownloader;
+  }
+  
+  private static void initDownloader()
+  {
+    mImageDownloader = ImageManagerEnv.g().getDownloader(imageDownloaderListener);
   }
   
   public static DownloadImageTask obtain(ImageKey paramImageKey)
   {
     if (needRecycle) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (sPoolSync)
     {
-      if (jdField_a_of_type_ComTencentComponentMediaImageDownloadImageTask != null)
+      if (sPool != null)
       {
-        DownloadImageTask localDownloadImageTask = jdField_a_of_type_ComTencentComponentMediaImageDownloadImageTask;
-        jdField_a_of_type_ComTencentComponentMediaImageDownloadImageTask = jdField_a_of_type_ComTencentComponentMediaImageDownloadImageTask.b;
-        localDownloadImageTask.b = null;
-        jdField_a_of_type_Int -= 1;
+        DownloadImageTask localDownloadImageTask = sPool;
+        sPool = sPool.next;
+        localDownloadImageTask.next = null;
+        mObjectPoolSize -= 1;
         localDownloadImageTask.setImageKey(paramImageKey);
         return localDownloadImageTask;
       }
@@ -87,41 +87,42 @@ public class DownloadImageTask
     }
   }
   
-  public static DownloadImageTask obtain(plz paramplz)
+  public static DownloadImageTask obtain(ImageTask paramImageTask)
   {
     if (needRecycle) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (sPoolSync)
     {
-      if (jdField_a_of_type_ComTencentComponentMediaImageDownloadImageTask != null)
+      if (sPool != null)
       {
-        DownloadImageTask localDownloadImageTask = jdField_a_of_type_ComTencentComponentMediaImageDownloadImageTask;
-        jdField_a_of_type_ComTencentComponentMediaImageDownloadImageTask = jdField_a_of_type_ComTencentComponentMediaImageDownloadImageTask.b;
-        localDownloadImageTask.b = null;
-        jdField_a_of_type_Int -= 1;
-        localDownloadImageTask.setImageTask(paramplz);
+        DownloadImageTask localDownloadImageTask = sPool;
+        sPool = sPool.next;
+        localDownloadImageTask.next = null;
+        mObjectPoolSize -= 1;
+        localDownloadImageTask.setImageTask(paramImageTask);
         return localDownloadImageTask;
       }
-      return new DownloadImageTask(paramplz);
+      return new DownloadImageTask(paramImageTask);
     }
   }
   
   public void excuteTask()
   {
-    Object localObject1 = ImageManager.getInstance().a(this.mImageKey);
+    Object localObject1 = ImageManager.getInstance().getDrawbleFromCache(this.mImageKey);
     if (localObject1 != null)
     {
       setResult(11, new Object[] { localObject1 });
       return;
     }
-    ImageManager.getInstance().c(this.mImageKey);
+    ImageManager.getInstance().imageKeyFilePathCheck(this.mImageKey);
     localObject1 = new File(this.mImageKey.filePath);
-    SharpPUtils.a((File)localObject1, this.mImageKey.url);
+    SharpPUtils.deleteSharppCacheFileIfNessary((File)localObject1, this.mImageKey.url);
+    SharpPUtils.checkNotSharppCacheFileIfNessary((File)localObject1, this.mImageKey.url);
     if (((File)localObject1).exists())
     {
       setResult(12, new Object[0]);
       return;
     }
-    boolean bool = ImageManager.getInstance().a(getImageKey());
+    boolean bool = ImageManager.getInstance().canDownloadImage(getImageKey());
     if (!bool)
     {
       if (this.mImageKey.options != null) {
@@ -144,23 +145,23 @@ public class DownloadImageTask
         localObject2 = localObject1;
         if (!ImageManagerEnv.g().isSupportSharpp())
         {
-          localObject2 = SharpPUtils.a((String)localObject1);
+          localObject2 = SharpPUtils.getWebpUrl((String)localObject1);
           ImageManagerLog.w("DownloadImageTask", "sharpp is not support,transfer to webp url");
         }
-        jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject2, this);
+        mDownloadTaskRecord.put(localObject2, this);
         ImageTaskTracer.addImageDownloadRecord(this.mImageKey.urlKey);
         ImageTracer.startDownlaod(this.mImageKey.url);
         ProgressTracer.print(1, this.mImageKey.urlKey);
-        jdField_a_of_type_ComTencentComponentMediaIDownloader.download((String)localObject2, this.mImageKey.filePath, bool);
+        mImageDownloader.download((String)localObject2, this.mImageKey.filePath, bool);
         return;
       }
     }
     if ((ImageManagerEnv.g().needCheckAvatar()) && (this.mImageKey.isAvatarUrl()))
     {
-      jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(this.mImageKey.url, this);
+      mDownloadTaskRecord.put(this.mImageKey.url, this);
       ImageTaskTracer.addImageDownloadRecord(this.mImageKey.urlKey);
       ProgressTracer.print(1, this.mImageKey.urlKey);
-      jdField_a_of_type_ComTencentComponentMediaIDownloader.download(this.mImageKey.url, "", false);
+      mImageDownloader.download(this.mImageKey.url, "", false);
       return;
     }
     if (this.mNextTask != null)
@@ -182,13 +183,13 @@ public class DownloadImageTask
       return;
     }
     reset();
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (sPoolSync)
     {
-      if (jdField_a_of_type_Int < 50)
+      if (mObjectPoolSize < 50)
       {
-        this.b = jdField_a_of_type_ComTencentComponentMediaImageDownloadImageTask;
-        jdField_a_of_type_ComTencentComponentMediaImageDownloadImageTask = this;
-        jdField_a_of_type_Int += 1;
+        this.next = sPool;
+        sPool = this;
+        mObjectPoolSize += 1;
       }
       return;
     }

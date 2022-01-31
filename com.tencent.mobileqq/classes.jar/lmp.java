@@ -1,37 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListAdapter;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.widget.ActionSheet;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class lmp
-  implements View.OnClickListener
+public class lmp
+  extends ajmm
 {
-  lmp(lmo paramlmo, ActionSheet paramActionSheet) {}
+  public lmp(QQServiceForAV paramQQServiceForAV) {}
   
-  public void onClick(View paramView)
+  protected void a()
   {
-    paramView = this.jdField_a_of_type_Lmo.a.a;
-    String str1 = ReadInJoyCommentUtils.a(ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_Lmo.a));
-    long l = ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_Lmo.a).mArticleID;
-    int j = ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_Lmo.a).mStrategyId;
-    String str2 = ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_Lmo.a).innerUniqueID;
-    ArticleInfo localArticleInfo = ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_Lmo.a);
-    if (ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_Lmo.a)) {}
-    for (int i = 2;; i = 1)
-    {
-      PublicAccountReportUtils.a(paramView, str1, "0X8009018", "0X8009018", 0, 0, String.valueOf(l), String.valueOf(j), str2, ReadInJoyCommentUtils.a(localArticleInfo, i, ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_Lmo.a).commentId, 3, 2), false);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
+    if (localQQAppInterface != null) {
+      new bfci(localQQAppInterface).a(new lmq(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lmp
  * JD-Core Version:    0.7.0.1
  */

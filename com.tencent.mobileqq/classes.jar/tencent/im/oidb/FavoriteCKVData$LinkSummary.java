@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class FavoriteCKVData$LinkSummary
-  extends MessageMicro
+  extends MessageMicro<LinkSummary>
 {
   public static final int Audio = 2;
   public static final int Video = 1;
@@ -20,7 +20,7 @@ public final class FavoriteCKVData$LinkSummary
   public final PBBytesField bytes_title = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_type = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_uri = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_msg_pic_info = PBField.initRepeatMessage(FavoriteCKVData.PicInfo.class);
+  public final PBRepeatMessageField<FavoriteCKVData.PicInfo> rpt_msg_pic_info = PBField.initRepeatMessage(FavoriteCKVData.PicInfo.class);
   
   static
   {
@@ -35,7 +35,7 @@ public final class FavoriteCKVData$LinkSummary
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.FavoriteCKVData.LinkSummary
  * JD-Core Version:    0.7.0.1
  */

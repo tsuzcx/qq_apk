@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FontSettingActivity;
 
-public final class aarr
-  implements Parcelable.Creator
+public class aarr
+  implements View.OnClickListener
 {
-  public ArVideoResourceInfo a(Parcel paramParcel)
-  {
-    return new ArVideoResourceInfo(paramParcel);
-  }
+  public aarr(FontSettingActivity paramFontSettingActivity) {}
   
-  public ArVideoResourceInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new ArVideoResourceInfo[paramInt];
+    FontSettingActivity.a(this.a).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aarr
  * JD-Core Version:    0.7.0.1
  */

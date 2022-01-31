@@ -10,12 +10,9 @@ import android.net.Uri;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
-import android.telephony.TelephonyManager;
 import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -25,7 +22,6 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -33,21 +29,22 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class a
 {
-  private static final int A = 11;
-  private static final int B = 12;
-  private static final int C = 14;
-  private static final int D = 15;
-  private static int E = 0;
-  private static boolean F = false;
-  private static long G = 0L;
-  private static Uri H = Uri.parse("content://telephony/carriers/preferapn");
-  private static final byte I = 0;
-  private static final byte J = 1;
-  private static final byte K = 2;
+  private static final int A = 10;
+  private static final int B = 11;
+  private static final int C = 12;
+  private static final int D = 14;
+  private static final int E = 15;
+  private static int F = 0;
+  private static boolean G = false;
+  private static long H = 0L;
+  private static Uri I = Uri.parse("content://telephony/carriers/preferapn");
+  private static final byte J = 0;
+  private static final byte K = 1;
+  private static final byte L = 2;
   static List a;
   static List b;
   static volatile boolean c = false;
-  static a d;
+  static a.a d;
   static Handler e;
   static NetworkInfo f;
   public static boolean g = false;
@@ -69,16 +66,19 @@ public class a
   private static final int w = 17;
   private static final int x = 18;
   private static final int y = 19;
-  private static final int z = 10;
+  private static final int z = 20;
   
   static
   {
     a = new LinkedList();
     b = new LinkedList();
     c = false;
-    d = new a("nethandlerthread");
-    E = -1;
-    F = true;
+    d = new a.a("nethandlerthread");
+    e = null;
+    f = null;
+    F = -1;
+    G = true;
+    H = 0L;
     h = 0;
     i = "";
     j = "";
@@ -102,7 +102,6 @@ public class a
   }
   
   public static void a()
-    throws Exception
   {
     Object localObject = (HttpURLConnection)new URL("http://3gimg.qq.com/ping.html").openConnection();
     ((HttpURLConnection)localObject).setDoOutput(true);
@@ -375,14 +374,14 @@ public class a
         {
           b(true);
           QLog.d(m, 1, "netchange " + a(o) + " to " + a(paramInt));
-          E = -1;
+          F = -1;
           if (paramInt != 1) {
             break;
           }
           if ((o != 0) && (o != -2)) {
             break label171;
           }
-          E = 0;
+          F = 0;
           o = paramInt;
           continue;
         }
@@ -392,9 +391,9 @@ public class a
       continue;
       label171:
       if ((o == 2) || (o == 3)) {
-        E = 1;
+        F = 1;
       } else if (o <= 7) {
-        E = 6;
+        F = 6;
       }
     }
     for (;;)
@@ -402,18 +401,18 @@ public class a
       label208:
       if ((o == 0) || (o == -2))
       {
-        E = 2;
+        F = 2;
         break;
       }
       if (o == 1)
       {
-        E = 3;
+        F = 3;
         break;
       }
       if (o > 7) {
         break;
       }
-      E = 7;
+      F = 7;
       break;
       do
       {
@@ -421,34 +420,34 @@ public class a
         {
           if ((o == 0) || (o == -2))
           {
-            E = 8;
+            F = 8;
             break;
           }
           if (o == 1)
           {
-            E = 9;
+            F = 9;
             break;
           }
           if ((o != 2) && (paramInt != 3)) {
             break;
           }
-          E = 10;
+          F = 10;
           break;
         }
         if (o == 1)
         {
-          E = 4;
+          F = 4;
           break;
         }
         if ((o == 2) || (o == 3))
         {
-          E = 5;
+          F = 5;
           break;
         }
         if (o > 7) {
           break;
         }
-        E = 11;
+        F = 11;
         break;
         if (paramInt == 2) {
           break label208;
@@ -524,8 +523,8 @@ public class a
             return;
           } while ((!c) || (b()));
           l1 = System.currentTimeMillis();
-        } while (l1 - G < 5000L);
-        G = l1;
+        } while (l1 - H < 5000L);
+        H = l1;
         a(true);
       }
       return;
@@ -540,66 +539,66 @@ public class a
   private static void n()
   {
     // Byte code:
-    //   0: invokestatic 393	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   3: ldc 235
-    //   5: invokevirtual 394	com/tencent/qphone/base/util/BaseApplication:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   8: checkcast 243	android/net/ConnectivityManager
+    //   0: invokestatic 398	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   3: ldc 244
+    //   5: invokevirtual 399	com/tencent/qphone/base/util/BaseApplication:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   8: checkcast 252	android/net/ConnectivityManager
     //   11: iconst_0
-    //   12: invokevirtual 247	android/net/ConnectivityManager:getNetworkInfo	(I)Landroid/net/NetworkInfo;
+    //   12: invokevirtual 256	android/net/ConnectivityManager:getNetworkInfo	(I)Landroid/net/NetworkInfo;
     //   15: astore_0
     //   16: aload_0
     //   17: ifnull +11 -> 28
     //   20: aload_0
-    //   21: invokevirtual 252	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
-    //   24: putstatic 112	com/tencent/mobileqq/msf/sdk/a:i	Ljava/lang/String;
+    //   21: invokevirtual 261	android/net/NetworkInfo:getExtraInfo	()Ljava/lang/String;
+    //   24: putstatic 122	com/tencent/mobileqq/msf/sdk/a:i	Ljava/lang/String;
     //   27: return
-    //   28: invokestatic 393	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   31: invokevirtual 532	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
-    //   34: getstatic 126	com/tencent/mobileqq/msf/sdk/a:H	Landroid/net/Uri;
+    //   28: invokestatic 398	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   31: invokevirtual 533	com/tencent/qphone/base/util/BaseApplication:getContentResolver	()Landroid/content/ContentResolver;
+    //   34: getstatic 136	com/tencent/mobileqq/msf/sdk/a:I	Landroid/net/Uri;
     //   37: aconst_null
     //   38: aconst_null
     //   39: aconst_null
     //   40: aconst_null
-    //   41: invokevirtual 538	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   41: invokevirtual 539	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   44: astore_1
     //   45: aload_1
     //   46: ifnull +99 -> 145
     //   49: aload_1
     //   50: astore_0
     //   51: aload_1
-    //   52: invokeinterface 543 1 0
+    //   52: invokeinterface 544 1 0
     //   57: ifeq +88 -> 145
     //   60: aload_1
     //   61: astore_0
     //   62: aload_1
     //   63: aload_1
-    //   64: ldc_w 545
-    //   67: invokeinterface 549 2 0
-    //   72: invokeinterface 552 2 0
-    //   77: putstatic 112	com/tencent/mobileqq/msf/sdk/a:i	Ljava/lang/String;
+    //   64: ldc_w 546
+    //   67: invokeinterface 550 2 0
+    //   72: invokeinterface 553 2 0
+    //   77: putstatic 122	com/tencent/mobileqq/msf/sdk/a:i	Ljava/lang/String;
     //   80: goto -35 -> 45
     //   83: astore_2
     //   84: aload_1
     //   85: astore_0
     //   86: aload_2
-    //   87: invokevirtual 553	java/lang/Throwable:printStackTrace	()V
+    //   87: invokevirtual 554	java/lang/Throwable:printStackTrace	()V
     //   90: aload_1
     //   91: ifnull -64 -> 27
     //   94: aload_1
-    //   95: invokeinterface 554 1 0
+    //   95: invokeinterface 555 1 0
     //   100: return
     //   101: astore_0
     //   102: getstatic 77	com/tencent/mobileqq/msf/sdk/a:m	Ljava/lang/String;
     //   105: iconst_1
-    //   106: new 215	java/lang/StringBuilder
+    //   106: new 223	java/lang/StringBuilder
     //   109: dup
-    //   110: invokespecial 216	java/lang/StringBuilder:<init>	()V
-    //   113: ldc_w 263
-    //   116: invokevirtual 222	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   110: invokespecial 224	java/lang/StringBuilder:<init>	()V
+    //   113: ldc_w 270
+    //   116: invokevirtual 230	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   119: aload_0
-    //   120: invokevirtual 266	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   123: invokevirtual 226	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   126: invokestatic 229	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   120: invokevirtual 273	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   123: invokevirtual 234	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   126: invokestatic 237	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   129: return
     //   130: astore_1
     //   131: aconst_null
@@ -607,13 +606,13 @@ public class a
     //   133: aload_0
     //   134: ifnull +9 -> 143
     //   137: aload_0
-    //   138: invokeinterface 554 1 0
+    //   138: invokeinterface 555 1 0
     //   143: aload_1
     //   144: athrow
     //   145: aload_1
     //   146: ifnull -119 -> 27
     //   149: aload_1
-    //   150: invokeinterface 554 1 0
+    //   150: invokeinterface 555 1 0
     //   155: return
     //   156: astore_1
     //   157: goto -24 -> 133
@@ -720,249 +719,6 @@ public class a
     catch (Exception localException)
     {
       QLog.d(m, 1, "initHandler exception " + localException.toString());
-    }
-  }
-  
-  static class a
-    extends HandlerThread
-    implements Handler.Callback
-  {
-    public a(String paramString)
-    {
-      super();
-    }
-    
-    public boolean handleMessage(Message paramMessage)
-    {
-      int i = paramMessage.what;
-      int j;
-      Object localObject1;
-      label437:
-      label450:
-      label498:
-      boolean bool;
-      switch (i)
-      {
-      default: 
-      case 1: 
-      case 2: 
-      case 3: 
-        label551:
-        do
-        {
-          do
-          {
-            do
-            {
-              for (;;)
-              {
-                return false;
-                try
-                {
-                  paramMessage = (INetInfoHandler)paramMessage.obj;
-                  if (paramMessage != null) {
-                    if (!a.a.contains(paramMessage))
-                    {
-                      a.a.add(paramMessage);
-                      QLog.d(a.i(), 1, "register netInfo " + paramMessage + ", total=" + a.a.size());
-                      return false;
-                    }
-                  }
-                }
-                catch (Exception paramMessage)
-                {
-                  QLog.d(a.i(), 1, "failed to handle msg " + i);
-                  return false;
-                }
-              }
-              QLog.w(a.i(), 1, "register netInfo " + paramMessage + " duplication, total=" + a.a.size());
-              return false;
-              paramMessage = (INetEventHandler)paramMessage.obj;
-            } while (paramMessage == null);
-            if (!a.b.contains(paramMessage))
-            {
-              a.b.add(paramMessage);
-              QLog.d(a.i(), 1, "register netEvent " + paramMessage + ", total=" + a.b.size());
-              return false;
-            }
-            QLog.w(a.i(), 1, "register netEvent " + paramMessage + " duplication, total=" + a.b.size());
-            return false;
-            j = a.j();
-            if (j != -1) {
-              break;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.d(a.i(), 2, "no change in connectivity");
-          return false;
-          if (a.f())
-          {
-            a.k();
-            paramMessage = a.a.iterator();
-          }
-          for (;;)
-          {
-            if (!paramMessage.hasNext()) {
-              break label498;
-            }
-            localObject1 = (INetInfoHandler)paramMessage.next();
-            if (localObject1 != null)
-            {
-              if ((j == 0) || (j == 6))
-              {
-                ((INetInfoHandler)localObject1).onNetNone2Mobile(a.i);
-                continue;
-                if (!a.e()) {
-                  break;
-                }
-                a.l();
-                break;
-              }
-              if (j != 1) {
-                break label1263;
-              }
-              ((INetInfoHandler)localObject1).onNetWifi2Mobile(a.i);
-              continue;
-              ((INetInfoHandler)localObject1).onNetNone2Wifi(a.k);
-              continue;
-              if (j == 3) {
-                ((INetInfoHandler)localObject1).onNetMobile2Wifi(a.k);
-              } else if (j == 4) {
-                ((INetInfoHandler)localObject1).onNetMobile2None();
-              } else if (j == 5) {
-                ((INetInfoHandler)localObject1).onNetWifi2None();
-              }
-            }
-          }
-          paramMessage = a.b.iterator();
-          while (paramMessage.hasNext())
-          {
-            localObject1 = (INetEventHandler)paramMessage.next();
-            if (localObject1 != null)
-            {
-              if ((j == 4) || (j == 5)) {
-                break label1277;
-              }
-              if (j != 11) {
-                break label1257;
-              }
-              break label1277;
-              ((INetEventHandler)localObject1).onNetChangeEvent(bool);
-            }
-          }
-        } while (!a.f());
-        if ((a.f != null) && (a.f.isAvailable()))
-        {
-          j = a.f.getType();
-          switch (j)
-          {
-          case 1: 
-          case 6: 
-          case 7: 
-          case 8: 
-          case 9: 
-          case 13: 
-            a.h = -1;
-            QLog.d(a.i(), 1, "Unexcepted Mobile Type:" + j);
-            return false;
-          case 0: 
-          case 2: 
-          case 3: 
-          case 4: 
-          case 5: 
-          case 10: 
-          case 11: 
-          case 12: 
-          case 14: 
-          case 15: 
-            label672:
-            paramMessage = (TelephonyManager)BaseApplication.getContext().getSystemService("phone");
-            j = g.b(paramMessage);
-            switch (j)
-            {
-            }
-            break;
-          }
-        }
-        break;
-      }
-      for (;;)
-      {
-        a.h = g.a(paramMessage, j);
-        QLog.d(a.i(), 1, "Unexcepted networkType:" + j + " ,mobileInfo:" + a.h);
-        return false;
-        a.h = 3;
-        return false;
-        a.h = 2;
-        return false;
-        a.h = 1;
-        return false;
-        a.h = 0;
-        return false;
-        paramMessage = (INetInfoHandler)paramMessage.obj;
-        Object localObject2;
-        if (paramMessage != null)
-        {
-          localObject1 = a.a.iterator();
-          while (((Iterator)localObject1).hasNext())
-          {
-            localObject2 = (INetInfoHandler)((Iterator)localObject1).next();
-            if (localObject2 == paramMessage)
-            {
-              QLog.i(a.i(), 1, "unRegister netInfo " + localObject2);
-              ((Iterator)localObject1).remove();
-            }
-          }
-        }
-        QLog.d(a.i(), 1, "unRegister netInfo remain=" + a.a.size());
-        if (!a.m()) {
-          break;
-        }
-        paramMessage = a.a.iterator();
-        while (paramMessage.hasNext())
-        {
-          localObject1 = (INetInfoHandler)paramMessage.next();
-          QLog.i(a.i(), 1, "netInfo " + localObject1);
-        }
-        paramMessage = (INetEventHandler)paramMessage.obj;
-        if (paramMessage != null)
-        {
-          localObject1 = a.b.iterator();
-          while (((Iterator)localObject1).hasNext())
-          {
-            localObject2 = (INetEventHandler)((Iterator)localObject1).next();
-            if (localObject2 == paramMessage)
-            {
-              QLog.i(a.i(), 1, "unRegister netEvent " + localObject2);
-              ((Iterator)localObject1).remove();
-            }
-          }
-        }
-        QLog.d(a.i(), 1, "unRegister netEvent remain=" + a.b.size());
-        if (!a.m()) {
-          break;
-        }
-        paramMessage = a.b.iterator();
-        while (paramMessage.hasNext())
-        {
-          localObject1 = (INetEventHandler)paramMessage.next();
-          QLog.i(a.i(), 1, "netEvent " + localObject1);
-        }
-        label1257:
-        bool = true;
-        break label551;
-        label1263:
-        if (j == 2) {
-          break label437;
-        }
-        if (j != 7) {
-          break label450;
-        }
-        break label437;
-        label1277:
-        bool = false;
-        break label551;
-        break label672;
-      }
     }
   }
 }

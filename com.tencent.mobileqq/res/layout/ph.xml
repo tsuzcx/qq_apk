@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout android:id="@id/yu" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.activity.aio.item.ArkAppView android:id="@id/y_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="0.0dip" />
+    <RelativeLayout android:id="@id/yn" android:background="#fff8f8f8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_alignParentBottom="true">
+        <com.tencent.widget.HorizontalListView android:orientation="horizontal" android:id="@id/yb" android:background="#fff8f8f8" android:layout_width="150.0dip" android:layout_height="fill_parent" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+        <Button android:gravity="center" android:id="@id/yl" android:layout_width="76.0dip" android:layout_height="fill_parent" android:text="@string/a1p" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" style="@style/aj" />
+    </RelativeLayout>
+</com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout>

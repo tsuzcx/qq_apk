@@ -1,20 +1,20 @@
-import com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter.Callback;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.widget.XListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.device.bind.DevicePluginDownloadActivity;
 
 public class xqc
-  implements RecentTabHaloPresenter.Callback
+  implements DialogInterface.OnClickListener
 {
-  public xqc(RecentAdapter paramRecentAdapter) {}
+  public xqc(DevicePluginDownloadActivity paramDevicePluginDownloadActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.invalidateViews();
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     xqc
  * JD-Core Version:    0.7.0.1
  */

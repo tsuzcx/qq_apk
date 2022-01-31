@@ -1,30 +1,32 @@
-import android.app.Activity;
-import android.os.Build.VERSION;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
 
 public class vqh
-  implements Runnable
+  extends AccessibilityDelegateCompat
 {
-  public vqh(UnlimitedBladeWorks paramUnlimitedBladeWorks, Activity paramActivity) {}
+  public vqh(LeftTabBarView paramLeftTabBarView) {}
   
-  public void run()
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    if (((Build.VERSION.SDK_INT > 16) && (this.jdField_a_of_type_AndroidAppActivity.isDestroyed())) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {}
-    View localView;
-    do
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    if (LeftTabBarView.a(this.a, paramView) == LeftTabBarView.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
     {
+      paramAccessibilityNodeInfoCompat.setSelected(bool);
       return;
-      localView = ((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView()).getChildAt(0).findViewById(2131363510);
-    } while (localView == null);
-    localView.clearAnimation();
+    }
+  }
+  
+  public void sendAccessibilityEvent(View paramView, int paramInt)
+  {
+    super.sendAccessibilityEvent(paramView, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vqh
  * JD-Core Version:    0.7.0.1
  */

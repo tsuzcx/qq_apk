@@ -1,20 +1,21 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.device.bind.DevicePluginDownloadActivity;
 
 public class xqd
-  implements BubblePopupWindow.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public xqd(RecentAdapter paramRecentAdapter, View paramView) {}
+  public xqd(DevicePluginDownloadActivity paramDevicePluginDownloadActivity) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    paramDialogInterface.dismiss();
+    bgnd.a().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     xqd
  * JD-Core Version:    0.7.0.1
  */

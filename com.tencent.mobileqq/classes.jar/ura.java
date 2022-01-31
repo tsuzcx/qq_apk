@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ura
-  implements Runnable
+class ura
+  implements View.OnClickListener
 {
-  public ura(PlusPanel paramPlusPanel) {}
+  ura(uqy paramuqy) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.a.setSelected(8);
+    if (uqy.a(this.a) != null) {
+      uqy.a(this.a).Q_();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ura
  * JD-Core Version:    0.7.0.1
  */

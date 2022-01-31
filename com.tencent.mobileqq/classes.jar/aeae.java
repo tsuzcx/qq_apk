@@ -1,22 +1,23 @@
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
 import com.tencent.qphone.base.util.QLog;
 
 class aeae
-  implements Runnable
+  implements bfof
 {
   aeae(aead paramaead) {}
   
-  public void run()
+  public void a(int paramInt, String... paramVarArgs)
   {
-    PresenceInterfaceImpl.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
-    PresenceInterfaceImpl.a(this.a.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl, true);
-    this.a.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl.a(0, this.a.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl.a);
-    QLog.d("PresenceInterfaceImpl", 2, "saveUserPermission true");
+    if ((paramVarArgs.length <= 0) || (paramVarArgs[0] == null))
+    {
+      QLog.i(aead.a, 2, "error get pskey...");
+      return;
+    }
+    aead.a(this.a, paramVarArgs[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeae
  * JD-Core Version:    0.7.0.1
  */

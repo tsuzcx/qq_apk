@@ -1,35 +1,23 @@
-import com.tencent.component.network.utils.http.pool.AbstractConnPool;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
-import org.apache.commons.logging.Log;
-import org.apache.http.conn.OperatedClientConnection;
-import org.apache.http.conn.routing.HttpRoute;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.MultiBiuSameContent;
 
-public class pps
-  extends AbstractConnPool
+public final class pps
+  implements Parcelable.Creator<MultiBiuSameContent>
 {
-  private static AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong();
-  private final long jdField_a_of_type_Long;
-  private final TimeUnit jdField_a_of_type_JavaUtilConcurrentTimeUnit;
-  private final Log jdField_a_of_type_OrgApacheCommonsLoggingLog;
-  
-  public pps(Log paramLog, int paramInt1, int paramInt2, long paramLong, TimeUnit paramTimeUnit)
+  public MultiBiuSameContent a(Parcel paramParcel)
   {
-    super(new ppt(), paramInt1, paramInt2);
-    this.jdField_a_of_type_OrgApacheCommonsLoggingLog = paramLog;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaUtilConcurrentTimeUnit = paramTimeUnit;
+    return new MultiBiuSameContent(paramParcel);
   }
   
-  protected ppu a(HttpRoute paramHttpRoute, OperatedClientConnection paramOperatedClientConnection)
+  public MultiBiuSameContent[] a(int paramInt)
   {
-    String str = Long.toString(jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.getAndIncrement());
-    return new ppu(this.jdField_a_of_type_OrgApacheCommonsLoggingLog, str, paramHttpRoute, paramOperatedClientConnection, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilConcurrentTimeUnit);
+    return new MultiBiuSameContent[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pps
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,53 @@
-import android.os.Bundle;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.filemanager.app.UniformDownload;
-import com.tencent.mobileqq.webview.AbsWebView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.DownloadListener;
-
 public class aktr
-  implements DownloadListener
 {
-  public aktr(AbsWebView paramAbsWebView) {}
+  public double a;
+  public int a;
+  public aktn a;
+  public String a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public String d;
+  public String e;
+  public String f;
+  public String g = "";
   
-  public void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
+  public String toString()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AbsWebView", 2, "start UniformDownloadActivity");
+    StringBuilder localStringBuilder = new StringBuilder().append("result:{sclass:");
+    if (this.jdField_a_of_type_JavaLangString != null)
+    {
+      str = this.jdField_a_of_type_JavaLangString;
+      localStringBuilder = localStringBuilder.append(str).append(",").append("sItemId:");
+      if (this.jdField_a_of_type_Aktn == null) {
+        break label230;
+      }
+      str = this.jdField_a_of_type_Aktn.jdField_a_of_type_JavaLangString;
+      label56:
+      localStringBuilder = localStringBuilder.append(str).append(",").append("dProb:").append(this.jdField_a_of_type_Double).append(",").append("sTitle:").append(this.d).append(",").append("sWiki:").append(this.e).append(",").append("sJumpUrl:").append(this.f).append(",").append("sCdbRes:");
+      if (this.jdField_a_of_type_ArrayOfByte == null) {
+        break label236;
+      }
     }
-    String str = this.a.a.getUrl();
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("_filesize", paramLong);
-    localBundle.putString("param_user_agent", paramString2);
-    localBundle.putString("param_content_des", paramString3);
-    localBundle.putString("param_mime_type", paramString4);
-    localBundle.putString("param_refer_url", str);
-    UniformDownload.a(this.a.g, paramString1, localBundle);
+    label230:
+    label236:
+    for (String str = new String(this.jdField_a_of_type_ArrayOfByte);; str = "")
+    {
+      return str + "," + "isAutoJump:" + this.jdField_a_of_type_Boolean + "," + "iNeedCheckLBS:" + this.c + "," + "imageId:" + this.g + "}";
+      str = "";
+      break;
+      str = "";
+      break label56;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aktr
  * JD-Core Version:    0.7.0.1
  */

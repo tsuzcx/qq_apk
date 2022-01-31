@@ -11,9 +11,10 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
+import azvv;
 import com.nineoldandroids.view.ViewHelper;
 import com.nineoldandroids.view.animation.AnimatorProxy;
-import com.tencent.mobileqq.util.DisplayUtil;
+import vpz;
 
 public class DragFrameLayout
   extends FrameLayout
@@ -24,7 +25,7 @@ public class DragFrameLayout
   private AnimationSet jdField_a_of_type_AndroidViewAnimationAnimationSet;
   private ScaleAnimation jdField_a_of_type_AndroidViewAnimationScaleAnimation;
   private TranslateAnimation jdField_a_of_type_AndroidViewAnimationTranslateAnimation;
-  private DragFrameLayout.OnDraggingListener jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout$OnDraggingListener;
+  private vpz jdField_a_of_type_Vpz;
   protected boolean a;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -46,63 +47,20 @@ public class DragFrameLayout
     this.jdField_b_of_type_Boolean = true;
   }
   
-  public void a()
-  {
-    AnimatorProxy.wrap(this.jdField_a_of_type_AndroidViewView).reset();
-    this.jdField_a_of_type_AndroidViewView.clearAnimation();
-    if (this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation != null)
-    {
-      this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.cancel();
-      this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = null;
-    }
-    if (this.jdField_a_of_type_AndroidViewAnimationScaleAnimation != null)
-    {
-      this.jdField_a_of_type_AndroidViewAnimationScaleAnimation.cancel();
-      this.jdField_a_of_type_AndroidViewAnimationScaleAnimation = null;
-    }
-    if (this.jdField_a_of_type_AndroidViewAnimationAnimationSet != null)
-    {
-      this.jdField_a_of_type_AndroidViewAnimationAnimationSet.cancel();
-      this.jdField_a_of_type_AndroidViewAnimationAnimationSet = null;
-    }
-    super.removeView(this.jdField_a_of_type_AndroidViewView);
-  }
+  @Deprecated
+  public void a() {}
   
   public void a(int paramInt)
   {
-    a(paramInt, new LinearInterpolator());
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, Animation.AnimationListener paramAnimationListener)
-  {
-    float f1 = ViewHelper.getScaleX(this.jdField_a_of_type_AndroidViewView);
-    float f2 = ViewHelper.getScaleY(this.jdField_a_of_type_AndroidViewView);
-    if (this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation != null) {
-      this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.cancel();
-    }
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(0, ViewHelper.getX(this.jdField_a_of_type_AndroidViewView), 0, paramInt1, 0, ViewHelper.getY(this.jdField_a_of_type_AndroidViewView), 0, paramInt2);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setDuration(paramInt5);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(paramAnimationListener);
-    if (this.jdField_a_of_type_AndroidViewAnimationScaleAnimation != null) {
-      this.jdField_a_of_type_AndroidViewAnimationScaleAnimation.cancel();
-    }
-    float f3 = paramInt3 / super.getWidth();
-    this.jdField_a_of_type_AndroidViewAnimationScaleAnimation = new ScaleAnimation(f1, f3, f2, f3, 0.0F, 0.0F);
-    this.jdField_a_of_type_AndroidViewAnimationScaleAnimation.setDuration(paramInt5);
-    this.jdField_a_of_type_AndroidViewAnimationScaleAnimation.setFillAfter(true);
-    if (this.jdField_a_of_type_AndroidViewAnimationAnimationSet != null) {
-      this.jdField_a_of_type_AndroidViewAnimationAnimationSet.cancel();
-    }
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet = new AnimationSet(true);
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.addAnimation(this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.setFillAfter(true);
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimationSet);
-    this.jdField_a_of_type_Boolean = true;
+    a(paramInt, new LinearInterpolator(), null);
   }
   
   public void a(int paramInt, Interpolator paramInterpolator)
+  {
+    a(paramInt, paramInterpolator, null);
+  }
+  
+  public void a(int paramInt, Interpolator paramInterpolator, Animation.AnimationListener paramAnimationListener)
   {
     float f1 = ViewHelper.getScaleX(this.jdField_a_of_type_AndroidViewView);
     float f2 = ViewHelper.getScaleY(this.jdField_a_of_type_AndroidViewView);
@@ -112,6 +70,9 @@ public class DragFrameLayout
     this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(0, ViewHelper.getX(this.jdField_a_of_type_AndroidViewView), 0, 0.0F, 0, ViewHelper.getY(this.jdField_a_of_type_AndroidViewView), 0, 0.0F);
     this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setDuration(paramInt);
     this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setFillAfter(true);
+    if (paramAnimationListener != null) {
+      this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.setAnimationListener(paramAnimationListener);
+    }
     if (this.jdField_a_of_type_AndroidViewAnimationScaleAnimation != null) {
       this.jdField_a_of_type_AndroidViewAnimationScaleAnimation.cancel();
     }
@@ -129,15 +90,44 @@ public class DragFrameLayout
     this.jdField_a_of_type_Boolean = false;
   }
   
+  protected void onDetachedFromWindow()
+  {
+    super.onDetachedFromWindow();
+    if (this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation != null)
+    {
+      this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation.cancel();
+      this.jdField_a_of_type_AndroidViewAnimationTranslateAnimation = null;
+    }
+    if (this.jdField_a_of_type_AndroidViewAnimationScaleAnimation != null)
+    {
+      this.jdField_a_of_type_AndroidViewAnimationScaleAnimation.cancel();
+      this.jdField_a_of_type_AndroidViewAnimationScaleAnimation = null;
+    }
+    if (this.jdField_a_of_type_AndroidViewAnimationAnimationSet != null)
+    {
+      this.jdField_a_of_type_AndroidViewAnimationAnimationSet.cancel();
+      this.jdField_a_of_type_AndroidViewAnimationAnimationSet = null;
+    }
+    if (this.jdField_a_of_type_AndroidViewView != null)
+    {
+      this.jdField_a_of_type_AndroidViewView.clearAnimation();
+      AnimatorProxy.wrap(this.jdField_a_of_type_AndroidViewView).reset();
+    }
+  }
+  
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool = true;
-    if (!this.jdField_b_of_type_Boolean) {
+    if ((!this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_AndroidViewView == null)) {
       bool = super.onInterceptTouchEvent(paramMotionEvent);
     }
-    while (this.jdField_a_of_type_Boolean) {
+    do
+    {
       return bool;
-    }
+      if (paramMotionEvent.getPointerCount() > 1) {
+        return super.onInterceptTouchEvent(paramMotionEvent);
+      }
+    } while (this.jdField_a_of_type_Boolean);
     int i = paramMotionEvent.getAction();
     this.jdField_c_of_type_Float = paramMotionEvent.getX();
     this.jdField_d_of_type_Float = paramMotionEvent.getY();
@@ -157,7 +147,7 @@ public class DragFrameLayout
     {
       float f1 = Math.abs(this.jdField_c_of_type_Float - this.jdField_a_of_type_Float);
       float f2 = Math.abs(this.jdField_d_of_type_Float - this.jdField_b_of_type_Float);
-      if ((this.jdField_d_of_type_Int == 0) && (f1 + f2 < DisplayUtil.a(getContext(), 10.0F))) {
+      if ((this.jdField_d_of_type_Int == 0) && (f1 + f2 < azvv.a(getContext(), 10.0F))) {
         return false;
       }
       f1 = this.jdField_c_of_type_Float - this.jdField_a_of_type_Float;
@@ -172,14 +162,10 @@ public class DragFrameLayout
       {
         if (this.jdField_d_of_type_Int == 0)
         {
-          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout$OnDraggingListener.a()))
+          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Vpz.a()))
           {
             this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
             this.jdField_b_of_type_Float = this.jdField_d_of_type_Float;
-            f1 = this.jdField_c_of_type_Float;
-            f1 = this.jdField_a_of_type_Float;
-            f1 = this.jdField_d_of_type_Float;
-            f1 = this.jdField_b_of_type_Float;
             this.jdField_d_of_type_Int = 1;
             return true;
           }
@@ -192,14 +178,10 @@ public class DragFrameLayout
       {
         if (this.jdField_d_of_type_Int == 0)
         {
-          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout$OnDraggingListener.b()))
+          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Vpz.b()))
           {
             this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
             this.jdField_b_of_type_Float = this.jdField_d_of_type_Float;
-            f1 = this.jdField_c_of_type_Float;
-            f1 = this.jdField_a_of_type_Float;
-            f1 = this.jdField_d_of_type_Float;
-            f1 = this.jdField_b_of_type_Float;
             this.jdField_d_of_type_Int = 2;
             return true;
           }
@@ -212,14 +194,10 @@ public class DragFrameLayout
       {
         if (this.jdField_d_of_type_Int == 0)
         {
-          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout$OnDraggingListener.c()))
+          if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Vpz != null) && (this.jdField_a_of_type_Vpz.c()))
           {
             this.jdField_a_of_type_Float = this.jdField_c_of_type_Float;
             this.jdField_b_of_type_Float = this.jdField_d_of_type_Float;
-            f1 = this.jdField_c_of_type_Float;
-            f1 = this.jdField_a_of_type_Float;
-            f1 = this.jdField_d_of_type_Float;
-            f1 = this.jdField_b_of_type_Float;
             this.jdField_d_of_type_Int = 4;
             return true;
           }
@@ -345,12 +323,12 @@ public class DragFrameLayout
       if (this.jdField_d_of_type_Int != 0)
       {
         this.jdField_a_of_type_Boolean = true;
-        if (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout$OnDraggingListener != null)
+        if (this.jdField_a_of_type_Vpz != null)
         {
           f1 = ViewHelper.getScaleX(this.jdField_a_of_type_AndroidViewView);
           f2 = ViewHelper.getScaleY(this.jdField_a_of_type_AndroidViewView);
           if ((f1 > 0.0F) && (f2 > 0.0F)) {
-            this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout$OnDraggingListener.a(this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, (int)(f1 * this.jdField_b_of_type_Int), (int)(f2 * this.jdField_c_of_type_Int), (int)ViewHelper.getX(this.jdField_a_of_type_AndroidViewView), (int)ViewHelper.getY(this.jdField_a_of_type_AndroidViewView));
+            this.jdField_a_of_type_Vpz.a(this.jdField_a_of_type_AndroidViewView, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, (int)(f1 * this.jdField_b_of_type_Int), (int)(f2 * this.jdField_c_of_type_Int), (int)ViewHelper.getX(this.jdField_a_of_type_AndroidViewView), (int)ViewHelper.getY(this.jdField_a_of_type_AndroidViewView));
           }
         }
       }
@@ -367,14 +345,21 @@ public class DragFrameLayout
     this.jdField_a_of_type_AndroidViewView = paramView;
   }
   
+  public void setDraggableView(View paramView, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.jdField_c_of_type_Int = paramInt2;
+  }
+  
   public void setEnabled(boolean paramBoolean)
   {
     this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
-  public void setOnDraggingListener(DragFrameLayout.OnDraggingListener paramOnDraggingListener)
+  public void setOnDraggingListener(vpz paramvpz)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout$OnDraggingListener = paramOnDraggingListener;
+    this.jdField_a_of_type_Vpz = paramvpz;
   }
   
   public void setSizeAndPosition(float paramFloat, int paramInt1, int paramInt2)
@@ -389,14 +374,14 @@ public class DragFrameLayout
     ViewHelper.setScaleY(this.jdField_a_of_type_AndroidViewView, f);
     ViewHelper.setX(this.jdField_a_of_type_AndroidViewView, paramInt1);
     ViewHelper.setY(this.jdField_a_of_type_AndroidViewView, paramInt2);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout$OnDraggingListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetDragFrameLayout$OnDraggingListener.a(paramInt1, paramInt2, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, (int)(this.jdField_b_of_type_Int * f), (int)(this.jdField_c_of_type_Int * f));
+    if (this.jdField_a_of_type_Vpz != null) {
+      this.jdField_a_of_type_Vpz.a(paramInt1, paramInt2, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, (int)(this.jdField_b_of_type_Int * f), (int)(this.jdField_c_of_type_Int * f));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.DragFrameLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,26 @@
-import com.tencent.mobileqq.config.ConfigManager;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class acaa
+  implements View.OnTouchListener
 {
-  public byte a;
-  public String a;
-  public byte b;
-  public String b = "";
+  public acaa(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public acaa(ConfigManager paramConfigManager)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    if (paramMotionEvent.getAction() == 4)
+    {
+      this.a.a.dismiss();
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acaa
  * JD-Core Version:    0.7.0.1
  */

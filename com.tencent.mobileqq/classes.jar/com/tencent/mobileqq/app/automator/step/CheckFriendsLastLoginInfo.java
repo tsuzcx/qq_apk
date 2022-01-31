@@ -1,37 +1,37 @@
 package com.tencent.mobileqq.app.automator.step;
 
+import ajjh;
+import ajwy;
 import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import zwm;
 
 public class CheckFriendsLastLoginInfo
   extends AsyncStep
 {
-  private FriendListObserver a;
+  private ajjh a;
   
-  protected int a()
+  public int a()
   {
-    if (((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.a(1)).e())
+    if (((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(1)).e())
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver == null)
+      if (this.jdField_a_of_type_Ajjh == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new zwm(this, null);
-        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+        this.jdField_a_of_type_Ajjh = new ajwy(this, null);
+        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.addObserver(this.jdField_a_of_type_Ajjh);
       }
       return 2;
     }
     return 7;
   }
   
-  public void c()
+  public void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver != null)
+    if (this.jdField_a_of_type_Ajjh != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-      this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Ajjh);
+      this.jdField_a_of_type_Ajjh = null;
     }
   }
 }

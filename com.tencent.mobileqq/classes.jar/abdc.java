@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.ark.ArkMediaPlayer;
+import com.tencent.mobileqq.activity.MainFragment;
 
 public class abdc
-  implements Runnable
+  implements bboo
 {
-  public abdc(ArkMediaPlayer paramArkMediaPlayer) {}
+  public abdc(MainFragment paramMainFragment) {}
   
-  public void run()
+  public void a()
   {
-    ArkMediaPlayer.a(this.a, false);
-    if (this.a.Pause()) {
-      ArkMediaPlayer.a(this.a, ArkMediaPlayer.d(this.a));
-    }
+    MainFragment.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abdc
  * JD-Core Version:    0.7.0.1
  */

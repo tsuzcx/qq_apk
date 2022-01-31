@@ -1,70 +1,48 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.data.RecentTroopAssistantItem;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import java.util.Comparator;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
+import com.tencent.biz.qqstory.utils.pngquant.PngQuantUtils;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class ubg
-  implements Comparator
+  extends SimpleJob<Void>
 {
-  public ubg(TroopAssistantActivity paramTroopAssistantActivity) {}
-  
-  public int a(RecentBaseData paramRecentBaseData1, RecentBaseData paramRecentBaseData2)
+  public ubg(QQStoryMainController paramQQStoryMainController, String paramString)
   {
-    if (((paramRecentBaseData1 instanceof RecentTroopAssistantItem)) && ((paramRecentBaseData2 instanceof RecentTroopAssistantItem)))
-    {
-      paramRecentBaseData1 = (RecentTroopAssistantItem)paramRecentBaseData1;
-      paramRecentBaseData2 = (RecentTroopAssistantItem)paramRecentBaseData2;
-      TroopManager localTroopManager = (TroopManager)this.a.app.getManager(51);
-      boolean bool1 = localTroopManager.b(paramRecentBaseData1.a());
-      boolean bool2 = localTroopManager.b(paramRecentBaseData2.a());
-      if ((bool1) && (!bool2)) {
-        return -1;
-      }
-      if ((!bool1) && (bool2)) {
-        return 1;
-      }
-      long l2;
-      long l1;
-      if ((!bool1) && (!bool2))
-      {
-        l2 = Math.max(paramRecentBaseData1.a(), paramRecentBaseData1.b());
-        l1 = Math.max(paramRecentBaseData2.a(), paramRecentBaseData2.b());
-        if (l2 <= l1) {
-          break label173;
-        }
-        l1 = 3L;
-      }
-      for (;;)
-      {
-        l1 = (int)(l1 | 0) - (int)(0x2 | 0);
-        if (l1 != 0L) {
-          break label195;
-        }
-        return 0;
-        l2 = paramRecentBaseData1.a;
-        l1 = paramRecentBaseData2.a;
-        break;
-        label173:
-        if (l2 < l1) {
-          l1 = 1L;
-        } else {
-          l1 = 2L;
-        }
-      }
-      label195:
-      if (l1 < 0L) {
-        return 1;
-      }
-      return -1;
-    }
-    return 0;
+    super(paramString);
+  }
+  
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  {
+    vlm.a(this.a.jdField_a_of_type_AndroidAppActivity);
+    ((sia)sqg.a(6)).c();
+    tri.a(this.a.jdField_a_of_type_AndroidAppActivity).a(this.a.jdField_a_of_type_AndroidAppActivity);
+    PngQuantUtils.a(QQStoryContext.a());
+    ((sgm)sqg.a(4)).c();
+    axvg.g();
+    ((spz)sqg.a(10)).c();
+    urk.d("QQStoryMainController", "onCreate : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(sis.a()) });
+    tfk.a().a(this.a.jdField_a_of_type_AndroidAppActivity, 3);
+    urk.b("QQStoryMainController", "queueIdle loadShortVideoSo start");
+    ShortVideoUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    urk.b("QQStoryMainController", "queueIdle loadShortVideoSo end");
+    urk.b("QQStoryMainController", "queueIdle startDownloadFilterSo start");
+    this.a.b = awlw.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext());
+    urk.b("QQStoryMainController", "queueIdle startDownloadFilterSo end");
+    urk.b("QQStoryMainController", "queueIdle preloadFrameDrawable start");
+    QQStoryLoadingView.a(this.a.jdField_a_of_type_AndroidAppActivity);
+    urk.b("QQStoryMainController", "queueIdle preloadFrameDrawable end");
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ubg
  * JD-Core Version:    0.7.0.1
  */

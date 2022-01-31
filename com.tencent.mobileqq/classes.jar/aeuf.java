@@ -1,32 +1,53 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.NearbyFakeActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 
 public class aeuf
-  extends Handler
+  implements View.OnClickListener
 {
-  public aeuf(NearbyFakeActivity paramNearbyFakeActivity) {}
+  public aeuf(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    switch (paramMessage.what)
+    if ((TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText())) || (this.a.f == ClassificationSearchActivity.c))
     {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("NearbyFakeActivity", 2, "procPreload time out");
+      paramView = (InputMethodManager)this.a.getSystemService("input_method");
+      if ((paramView != null) && (paramView.isActive())) {
+        paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
       }
-      NearbyFakeActivity.a(this.a, 1);
+      this.a.setResult(0);
+      this.a.finish();
+      if ((this.a.f == ClassificationSearchActivity.d) || (this.a.f == ClassificationSearchActivity.e)) {
+        this.a.sendBroadcast(new Intent("com.tencent.mobileqq.search.cancel"));
+      }
+      return;
     }
+    paramView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    if ((this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int) && (!TextUtils.isEmpty(paramView.trim())))
+    {
+      this.a.a(paramView);
+      ClassificationSearchActivity.a(this.a, paramView);
+      ndn.a(null, "dc00899", "Pb_account_lifeservice", "", "0X80067C4", "0X80067C4", 0, 0, "", "", paramView, "", true);
+      return;
+    }
+    if (this.a.f == ClassificationSearchActivity.d)
+    {
+      ndn.a(null, "", "0X800742D", "0X800742D", 0, 0, paramView, "", "", "");
+      ClassificationSearchActivity.a(this.a, paramView);
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramView, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeuf
  * JD-Core Version:    0.7.0.1
  */

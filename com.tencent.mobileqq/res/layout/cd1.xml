@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.EntryBgView android:id="@id/lj7" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/lj6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/m2c" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/s_" android:layout_marginRight="@dimen/s_">
+        <com.tencent.mobileqq.portal.StrokeTextView android:textSize="@dimen/s6" android:textStyle="bold" android:ellipsize="end" android:gravity="center" android:id="@id/m2b" android:paddingLeft="3.0dip" android:paddingRight="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bdp" android:singleLine="true" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+        <FrameLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/s9" android:layout_toRightOf="@id/m2b" android:layout_centerVertical="true">
+            <ProgressBar android:layout_gravity="center_vertical" android:id="@id/i5n" android:visibility="invisible" android:layout_width="@dimen/s8" android:layout_height="@dimen/s8" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading5" android:indeterminateBehavior="repeat" />
+            <View android:layout_gravity="center_vertical" android:id="@id/m5l" android:visibility="invisible" android:layout_width="@dimen/s8" android:layout_height="@dimen/s8" android:layout_marginTop="2.0dip" />
+        </FrameLayout>
+    </RelativeLayout>
+</merge>

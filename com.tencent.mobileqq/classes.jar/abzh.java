@@ -1,34 +1,47 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.armap.NonMainAppHeadLoader.FaceObserver;
-import com.tencent.mobileqq.confess.ConfessPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.20;
+import com.tencent.mobileqq.pb.PBBoolField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import tencent.im.oidb.cmd0x74f.oidb_cmd0x74f.RspBody;
 
 public class abzh
-  implements NonMainAppHeadLoader.FaceObserver
+  extends mmn
 {
-  public abzh(ConfessPlugin paramConfessPlugin) {}
+  public abzh(TroopMemberListActivity.20 param20) {}
   
-  public void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isColorLevel())
+    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
+    do
     {
-      QLog.i("ConfessPlugin", 4, "preLoadQQSelfHeaderBitmap onFaceUpdate uin: " + paramString1 + " -- " + paramString2 + " head:" + paramBitmap);
-      if ((this.a.a != null) && (this.a.mRuntime != null) && (this.a.mRuntime.a() != null) && (TextUtils.equals(paramString1, this.a.mRuntime.a().getCurrentAccountUin())))
+      for (;;)
       {
-        ThreadManager.getUIHandler().removeCallbacks(ConfessPlugin.a(this.a));
-        ThreadManager.getUIHandler().post(ConfessPlugin.a(this.a));
+        return;
+        try
+        {
+          paramBundle = new oidb_cmd0x74f.RspBody();
+          paramBundle.mergeFrom(paramArrayOfByte);
+          if ((paramBundle.uint32_ret_code.get() == 0) && (paramBundle.bool_display_entrance.get()))
+          {
+            TroopMemberListActivity.a(this.a.this$0, paramBundle.range.get());
+            TroopMemberListActivity.c(this.a.this$0);
+            TroopMemberListActivity.a(this.a.this$0, paramBundle.uint64_next_pull_time.get());
+            return;
+          }
+        }
+        catch (Exception paramArrayOfByte) {}
       }
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("TroopMemberListActivityget_troop_member", 2, "initListView, get0x74f：failed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abzh
  * JD-Core Version:    0.7.0.1
  */

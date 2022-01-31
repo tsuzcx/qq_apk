@@ -137,12 +137,12 @@ public final class v
     {
       if ((!z.a(paraman.d)) && (!com.tencent.bugly.crashreport.common.info.a.b().h().equals(paraman.d)))
       {
-        p.a().a(com.tencent.bugly.crashreport.common.strategy.a.a, "key_ip", paraman.d.getBytes("UTF-8"), null, true);
+        p.a().a(com.tencent.bugly.crashreport.common.strategy.a.a, "gateway", paraman.d.getBytes("UTF-8"), null, true);
         parama.d(paraman.d);
       }
       if ((!z.a(paraman.f)) && (!com.tencent.bugly.crashreport.common.info.a.b().i().equals(paraman.f)))
       {
-        p.a().a(com.tencent.bugly.crashreport.common.strategy.a.a, "key_imei", paraman.f.getBytes("UTF-8"), null, true);
+        p.a().a(com.tencent.bugly.crashreport.common.strategy.a.a, "device", paraman.f.getBytes("UTF-8"), null, true);
         parama.e(paraman.f);
       }
     }
@@ -191,7 +191,7 @@ public final class v
       this.q = 0L;
       this.r = 0L;
       byte[] arrayOfByte = this.e;
-      if (b.f(this.c) == null)
+      if (b.c(this.c) == null)
       {
         a(null, false, 0, "network is not available", 0);
         return;
@@ -244,7 +244,7 @@ public final class v
       localHashMap.put("cmd", Integer.toString(this.d));
       localHashMap.put("platformId", Byte.toString((byte)1));
       this.f.getClass();
-      localHashMap.put("sdkVer", "2.7.8");
+      localHashMap.put("sdkVer", "2.8.6");
       localHashMap.put("strategylastUpdateTime", Long.toString(((StrategyBean)localObject2).o));
       if (!this.i.a(localHashMap))
       {

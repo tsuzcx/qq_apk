@@ -1,18 +1,26 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.qwallet.RedPacketEmojiFragment;
 
 public class agkp
-  implements Runnable
+  extends axwe
 {
-  public agkp(ScanTorchActivity paramScanTorchActivity) {}
+  public agkp(RedPacketEmojiFragment paramRedPacketEmojiFragment) {}
   
-  public void run()
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    this.a.l();
+    super.onLoadFialed(paramURLDrawable, paramThrowable);
+    this.a.b();
+  }
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    super.onLoadSuccessed(paramURLDrawable);
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agkp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,72 +1,51 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SubAccountBindHandler;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.SubAccountObserver;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
-public class zuf
-  extends SubAccountObserver
+public final class zuf
 {
-  public zuf(SubAccountBindHandler paramSubAccountBindHandler, SubAccountBackProtocData paramSubAccountBackProtocData, SubAccountManager paramSubAccountManager, boolean paramBoolean) {}
+  private static Map<String, zru> a;
   
-  protected void onGetKeyBack(String paramString1, String paramString2, String paramString3)
+  public static Map<String, zru> a()
   {
-    boolean bool1 = false;
-    boolean bool2 = false;
-    if ((paramString3 == null) || (paramString2 == null) || (paramString1 == null))
+    if (a == null) {}
+    try
     {
-      if (QLog.isColorLevel())
+      if (a == null)
       {
-        StringBuilder localStringBuilder = new StringBuilder().append("handlerGetBindSubAccount() onGetKeyBack key is null or ? happen 0 ? =>");
-        if (paramString3 != null) {
-          break label107;
-        }
-        bool1 = true;
-        paramString3 = localStringBuilder.append(bool1);
-        if (paramString2 != null) {
-          break label113;
-        }
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("getLocation", new zru("getLocation", 7, 1, zsx.class));
+        localHashMap.put("getCity", new zru("getCity", 6, 1, zsx.class));
+        localHashMap.put("login", new zru("login", 17, 0, ztd.class));
+        localHashMap.put("loginSilent", new zru("loginSilent", 18, 0, ztd.class));
+        localHashMap.put("getUserInfo", new zru("getUserInfo", 10, 2, ztd.class));
+        localHashMap.put("getAppFriends", new zru("getAppFriends", 5, 2, ztd.class));
+        localHashMap.put("getRankingList", new zru("getRankingList", 8, 2, zsu.class));
+        localHashMap.put("reportScore", new zru("reportScore", 24, 2, zsu.class));
+        localHashMap.put("showShareMenu", new zru("showShareMenu", 30, 0, ztb.class));
+        localHashMap.put("shareMessage", new zru("shareMessage", 27, 0, ztb.class));
+        localHashMap.put("showActionSheet", new zru("showActionSheet", 28, 0, ztn.class));
+        localHashMap.put("showDialog", new zru("showDialog", 29, 0, ztn.class));
+        localHashMap.put("getSkey", new zru("getSkey", 9, 0, zts.class));
+        localHashMap.put("openWebView", new zru("openWebView", 21, 0, ztt.class));
+        localHashMap.put("openPlatoView", new zru("openPlatoView", 20, 0, ztt.class));
+        localHashMap.put("openNativeView", new zru("openNativeView", 19, 0, ztt.class));
+        localHashMap.put("addEventListener", new zru("addEventListener", 1, 0, ztq.class));
+        localHashMap.put("removeEventListener", new zru("removeEventListener", 23, 0, ztq.class));
+        localHashMap.put("dispatchEvent", new zru("dispatchEvent", 4, 0, ztq.class));
+        localHashMap.put("sdk_dynamic_avatar_edit", new zru("sdk_dynamic_avatar_edit", 31, 0, ztu.class));
+        localHashMap.put("sdk_face_collection", new zru("sdk_face_collection", 32, 0, ztu.class));
+        localHashMap.put("sdk_avatar_edit", new zru("sdk_avatar_edit", 33, 0, ztu.class));
+        a = Collections.unmodifiableMap(localHashMap);
       }
-      label107:
-      label113:
-      for (bool1 = true;; bool1 = false)
-      {
-        paramString2 = paramString3.append(bool1);
-        bool1 = bool2;
-        if (paramString1 == null) {
-          bool1 = true;
-        }
-        QLog.e("SUB_ACCOUNT", 2, bool1);
-        this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindHandler.a(2, true, this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData);
-        return;
-        bool1 = false;
-        break;
-      }
+      return a;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindHandler.b != null) && (paramString2.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData.c)) && (paramString1.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindHandler.b.getAccount())))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqSubaccountDatamanagerSubAccountManager.a(paramString2, paramString3, this.jdField_a_of_type_Boolean);
-      SubAccountControll.a(this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindHandler.b, (byte)1, paramString2);
-      this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData.b = true;
-      this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindHandler.a(2, true, this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData);
-      return;
-    }
-    if (QLog.isColorLevel())
-    {
-      paramString3 = new StringBuilder().append("handlerGetBindSubAccount() onGetKeyBack error happen 1 ? =>app:");
-      if (this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindHandler.b == null) {
-        bool1 = true;
-      }
-      QLog.d("SUB_ACCOUNT", 2, bool1 + " subUin:" + paramString2.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData.c) + " mainAccount:" + paramString1.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindHandler.b.getAccount()));
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppSubAccountBindHandler.a(2, true, this.jdField_a_of_type_ComTencentMobileqqSubaccountLogicSubAccountBackProtocData);
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zuf
  * JD-Core Version:    0.7.0.1
  */

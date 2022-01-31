@@ -1,25 +1,21 @@
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
 
-public class adrk
-  implements View.OnClickListener
+class adrk
+  implements bbgb
 {
-  public adrk(SendBottomBar paramSendBottomBar) {}
+  adrk(adrj paramadrj) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView)
   {
-    if (SendBottomBar.a(this.a) != null) {
-      SendBottomBar.a(this.a).a();
-    }
-    FileManagerUtil.a(SendBottomBar.a(this.a));
+    aciy.n = true;
+    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adrk
  * JD-Core Version:    0.7.0.1
  */

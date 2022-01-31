@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/de2" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <include layout="@layout/a6j" />
+    </FrameLayout>
+    <View android:background="@drawable/d8_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignLeft="@id/de2" android:layout_alignTop="@id/de2" android:layout_alignRight="@id/de2" android:layout_alignBottom="@id/de2" />
+    <TextView android:textSize="@dimen/asp" android:textColor="@color/al3" android:id="@id/bqo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.5dip" android:layout_marginBottom="5.5dip" android:text="00:00" android:includeFontPadding="false" android:layout_above="@id/acz" android:layout_alignRight="@id/de2" android:layout_alignBottom="@id/de2" />
+    <View android:id="@id/kta" android:background="@drawable/dtb" android:layout_width="@dimen/asr" android:layout_height="@dimen/asq" android:layout_marginRight="2.0dip" android:layout_marginBottom="7.5dip" android:layout_toLeftOf="@id/bqo" android:layout_alignBottom="@id/de2" />
+</merge>

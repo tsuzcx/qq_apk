@@ -1,0 +1,12 @@
+public abstract interface awnp
+{
+  public static final String[] a = { "http://pub.idqqimg.com/pc/misc/files/20190823/721f0f8c828844578d033f880eed7038.png", "http://pub.idqqimg.com/pc/misc/files/20190823/789cf004424d4272826729e8ce62faa7.png", "http://pub.idqqimg.com/pc/misc/files/20190823/20417d3e1e6f42f48888b2a446fbb2e0.png", "http://pub.idqqimg.com/pc/misc/files/20190823/1e82870d00414961873b3eeeb489a76e.png", "http://pub.idqqimg.com/pc/misc/files/20190823/f87abe50bf834f52bf28f1bebfe81007.png", "http://pub.idqqimg.com/pc/misc/files/20190823/13f5af4d045943b0b85f4aa91f6a8e20.png", "http://pub.idqqimg.com/pc/misc/files/20190823/aaae8674703045769cf4575ce8361dde.png", "http://pub.idqqimg.com/pc/misc/files/20191210/207d5348096d4b5494c5bd066693a08a.png" };
+  public static final String[] b = { "2921", "2971", "3063", "3064", "3066", "3065", "3067", "2920" };
+  public static final String[] c = { ajjy.a(2131648390), ajjy.a(2131648382), ajjy.a(2131648384), ajjy.a(2131648388), ajjy.a(2131648379), ajjy.a(2131648378), ajjy.a(2131648381), ajjy.a(2131653562) };
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+ * Qualified Name:     awnp
+ * JD-Core Version:    0.7.0.1
+ */

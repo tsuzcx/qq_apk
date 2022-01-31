@@ -1,39 +1,76 @@
-import android.annotation.TargetApi;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import com.tencent.ark.ArkViewImplement.LoadCallback;
-import com.tencent.mobileqq.activity.aio.item.ArkAioContainerWrapper;
-import com.tencent.mobileqq.ark.ArkAdapterItemForTextMsg;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity.2.1;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity.2.2;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity.2.3;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity.2.4;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.gesturelock.LockPatternView;
+import com.tencent.mobileqq.gesturelock.LockPatternView.DisplayMode;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class aayc
-  implements ArkViewImplement.LoadCallback
+  implements aqan
 {
-  public aayc(ArkAdapterItemForTextMsg paramArkAdapterItemForTextMsg, ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder, ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter, ArkAioContainerWrapper paramArkAioContainerWrapper, int paramInt) {}
+  public aayc(GesturePWDCreateActivity paramGesturePWDCreateActivity) {}
   
-  @TargetApi(14)
-  public void onLoadFinish(int paramInt)
+  public void a() {}
+  
+  public void a(List<aqam> paramList)
   {
-    if (paramInt == 1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.a.setVisibility(0);
-      ArkAdapterItemForTextMsg.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAdapterItemForTextMsg, this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter, this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder);
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.b.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder, this.jdField_a_of_type_ComTencentMobileqqArkArkAdapterItemForTextMsg);
+    if (paramList != null) {
+      switch (this.a.jdField_a_of_type_Int)
+      {
+      }
     }
-    for (;;)
+    do
     {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAioContainerWrapper, this.jdField_a_of_type_Int);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.a.setVisibility(8);
-      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.b.setVisibility(8);
+      if ((paramList != null) && (paramList.size() >= 3))
+      {
+        this.a.a(paramList);
+        this.a.jdField_a_of_type_JavaLangString = GesturePWDUtils.encodeGesture(GesturePWDUtils.patternToString(paramList), this.a.app.getCurrentAccountUin());
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131627344);
+        this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new GesturePWDCreateActivity.2.1(this), 500L);
+        this.a.jdField_a_of_type_Int = 1;
+        return;
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setDisplayMode(LockPatternView.DisplayMode.Wrong);
+      bbmy.a(this.a, 1, this.a.getString(2131627364), 0).b(this.a.getTitleBarHeight());
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new GesturePWDCreateActivity.2.2(this), 500L);
+      return;
+      paramList = GesturePWDUtils.encodeGesture(GesturePWDUtils.patternToString(paramList), this.a.app.getCurrentAccountUin());
+      if ((this.a.jdField_a_of_type_JavaLangString == null) || (paramList == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(paramList))) {
+        break;
+      }
+      GesturePWDUtils.setGesturePWD(this.a, this.a.app.getCurrentAccountUin(), this.a.jdField_a_of_type_JavaLangString);
+      GesturePWDUtils.setGesturePWDState(this.a, this.a.app.getCurrentAccountUin(), 2);
+      awqx.b(this.a.app, "CliOper", "", "", "Setting_tab", "Gesture_password", 0, 1, "", "", "", "");
+      bbmy.a(this.a, 2, this.a.getString(2131627346), 0).b(this.a.getTitleBarHeight());
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new GesturePWDCreateActivity.2.3(this), 300L);
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.gesturelock.creat", 2, "gesture lock create success...");
+    return;
+    this.a.jdField_a_of_type_ComTencentMobileqqGesturelockLockPatternView.setDisplayMode(LockPatternView.DisplayMode.Wrong);
+    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new GesturePWDCreateActivity.2.4(this), 500L);
+    bbmy.a(this.a, 1, this.a.getString(2131627345), 0).b(this.a.getTitleBarHeight());
+  }
+  
+  public void b() {}
+  
+  public void b(List<aqam> paramList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.gesturelock.creat", 2, "celladd.");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aayc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,55 @@
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
 public class abxm
-  implements Runnable
+  implements View.OnClickListener
 {
-  public abxm(ConditionSearchFriendActivity paramConditionSearchFriendActivity, int paramInt1, int paramInt2) {}
+  public abxm(TroopInfoActivity paramTroopInfoActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqConditionsearchConditionSearchFriendActivity.a.getHeight();
-    ConditionSearchFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchConditionSearchFriendActivity, this.jdField_a_of_type_Int - (this.jdField_a_of_type_ComTencentMobileqqConditionsearchConditionSearchFriendActivity.d.getBottom() - i) + this.b);
-    int j = this.jdField_a_of_type_ComTencentMobileqqConditionsearchConditionSearchFriendActivity.getResources().getDisplayMetrics().heightPixels;
-    int k = this.jdField_a_of_type_ComTencentMobileqqConditionsearchConditionSearchFriendActivity.getResources().getDisplayMetrics().widthPixels;
-    if (QLog.isColorLevel()) {
-      QLog.d("meassure", 2, "(" + k + "," + j + ")value: " + ConditionSearchFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchConditionSearchFriendActivity) + " itemTop:" + this.jdField_a_of_type_Int + "  pvTop:" + (this.jdField_a_of_type_ComTencentMobileqqConditionsearchConditionSearchFriendActivity.d.getBottom() - i) + "  itemHeight:" + this.b + " RootBottom:" + this.jdField_a_of_type_ComTencentMobileqqConditionsearchConditionSearchFriendActivity.d.getBottom() + " pvHeight:" + i);
-    }
-    if ((ConditionSearchFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchConditionSearchFriendActivity) <= 0) || (this.jdField_a_of_type_Int == -1) || (this.b == -1)) {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqConditionsearchConditionSearchFriendActivity.e.scrollBy(0, ConditionSearchFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchConditionSearchFriendActivity));
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId != 0L) || (this.a.c != 0L))
+    {
+      this.a.c();
+      return;
+    }
+    switch (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTypeExt)
+    {
+    default: 
+      return;
+    case 0: 
+    case 1: 
+      this.a.i();
+      return;
+    }
+    if ((this.a.jdField_a_of_type_Long > 0L) && (this.a.jdField_a_of_type_Long <= this.a.jdField_b_of_type_Long) && (this.a.jdField_b_of_type_Int == 0))
+    {
+      paramView = babr.a(this.a, 230);
+      paramView.setTitle(null);
+      paramView.setMessage(this.a.getString(2131627852, new Object[] { this.a.jdField_a_of_type_Long + "" }));
+      paramView.setPositiveButton(this.a.getString(2131627829), new baca());
+      paramView.setPositiveButtonContentDescription(this.a.getString(2131627829));
+      paramView.show();
+      return;
+    }
+    paramView = TroopInfoActivity.a(this.a);
+    if (!TextUtils.isEmpty(paramView))
+    {
+      this.a.a(paramView);
+      return;
+    }
+    TroopInfoActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abxm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,38 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.app.NearbyFlowerManager;
-import com.tencent.mobileqq.nearby.gift.TroopGiftPanelForNearby;
-import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-
-public class aeyg
-  extends TroopGiftCallback
+class aeyg
+  extends benv
 {
-  public aeyg(TroopGiftPanelForNearby paramTroopGiftPanelForNearby) {}
-  
-  public void a(int paramInt)
+  aeyg(aeyf paramaeyf, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    NearbyFlowerManager.a("gift_store", "suc_one", this.a.a(), TroopGiftPanelForNearby.a(this.a) + "", "", "");
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
   }
   
-  public void a(int paramInt, String paramString)
+  public void a(int paramInt, Object paramObject, benu[] paramArrayOfbenu)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "onGetThrowGiftResult() onError errorCode = " + paramInt + ", errorMsg = " + paramString);
-    }
-    if (paramInt == 20007) {
-      QQToast.a(TroopGiftPanelForNearby.a(this.a), "对方拒收了你的礼物", 0).b(this.a.getResources().getDimensionPixelSize(2131558448));
-    }
+    paramInt = 1;
+    if ((paramArrayOfbenu == null) || (paramArrayOfbenu.length <= 0)) {}
     for (;;)
     {
-      NearbyFlowerManager.a("gift_store", "fail_one", this.a.a(), TroopGiftPanelForNearby.b(this.a) + "", "", "");
       return;
-      QQToast.a(TroopGiftPanelForNearby.b(this.a), "赠送失败", 0).b(this.a.getResources().getDimensionPixelSize(2131558448));
+      int i = this.a.a();
+      if ((paramArrayOfbenu.length < 0) && ((i & 0xF) == 1))
+      {
+        paramArrayOfbenu[0].b = 0;
+        paramArrayOfbenu[0].a = 0;
+      }
+      while (paramInt < paramArrayOfbenu.length)
+      {
+        paramArrayOfbenu[paramInt].b = -1;
+        paramArrayOfbenu[paramInt].a = -1;
+        paramInt += 1;
+        continue;
+        paramInt = 0;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeyg
  * JD-Core Version:    0.7.0.1
  */

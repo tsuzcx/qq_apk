@@ -1,31 +1,28 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
-import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
-import com.tencent.mobileqq.armap.ShopScanActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.QQLSActivity.17.1;
 
 public class abks
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public abks(ShopScanActivity paramShopScanActivity, ARRenderMangerInnerCallback paramARRenderMangerInnerCallback, ArVideoResourceInfo paramArVideoResourceInfo) {}
+  public abks(QQLSActivity paramQQLSActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ShopScanActivity.c(this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity);
-    this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.a.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.jdField_c_of_type_AndroidViewView.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.jdField_c_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new abkt(this));
-    if (QLog.isColorLevel()) {
-      QLog.i("ShopScanActivity", 2, "onMultiARAnimationInteraction 请点击屏幕进入下一动画片段！");
+    if (QQLSActivity.a(this.a) != null) {
+      QQLSActivity.a(this.a).post(new QQLSActivity.17.1(this));
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abks
  * JD-Core Version:    0.7.0.1
  */

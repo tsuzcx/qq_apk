@@ -1,16 +1,35 @@
-import com.tencent.mobileqq.hotpic.VideoBaseItem;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
 public class aeax
-  implements TVK_IMediaPlayer.OnDownloadCallbackListener
+  extends aeav
 {
-  public aeax(VideoBaseItem paramVideoBaseItem) {}
+  public Bitmap a;
+  public String b;
   
-  public void OnDownloadCallback(String paramString) {}
+  public aeax(String paramString)
+  {
+    super(paramString);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo != null)
+    {
+      this.a = paramRedPacketInfo.icon;
+      this.b = paramRedPacketInfo.resPath;
+    }
+  }
+  
+  public boolean a()
+  {
+    return (this.a != null) && (!TextUtils.isEmpty(this.b));
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeax
  * JD-Core Version:    0.7.0.1
  */

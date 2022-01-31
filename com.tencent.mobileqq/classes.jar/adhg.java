@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
 
-public class adhg
-  implements Runnable
+class adhg
+  extends ClickableSpan
 {
-  public adhg(ThumbDownloadManager paramThumbDownloadManager, String paramString) {}
+  adhg(adfw paramadfw, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ThumbDownloadManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreThumbDownloadManager, this.jdField_a_of_type_JavaLangString);
-    ThumbDownloadManager.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreThumbDownloadManager, this.jdField_a_of_type_JavaLangString);
+    Integer.parseInt(this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-12541697);
+    paramTextPaint.setUnderlineText(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adhg
  * JD-Core Version:    0.7.0.1
  */

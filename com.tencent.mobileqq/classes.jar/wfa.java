@@ -1,23 +1,45 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troop.logic.HomeworkTroopController;
-import com.tencent.mobileqq.troop.utils.HWTroopUtils;
-import com.tencent.mobileqq.troop.utils.HWTroopUtils.OnHomeworkTroopIdentityCheckListener;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.biz.subscribe.videoplayer.VideoPlayerView;
+import com.tencent.qphone.base.util.QLog;
 
-class wfa
-  implements HWTroopUtils.OnHomeworkTroopIdentityCheckListener
+public class wfa
+  implements SeekBar.OnSeekBarChangeListener
 {
-  wfa(wey paramwey) {}
+  public wfa(VideoPlayerView paramVideoPlayerView) {}
   
-  public void a(int paramInt)
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.c(HWTroopUtils.b(paramInt));
+    Message localMessage = Message.obtain();
+    localMessage.what = 1;
+    localMessage.arg1 = paramSeekBar.getProgress();
+    localMessage.arg2 = ((int)this.a.a().b());
+    localMessage.obj = Boolean.valueOf(false);
+    this.a.a().sendMessage(localMessage);
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    VideoPlayerView.a(this.a, true);
+    VideoPlayerView.b(this.a, true);
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    if (this.a.a() != null)
+    {
+      QLog.d("VideoPlayerView", 1, "seek onStopTrackingTouch seekBar progress" + paramSeekBar.getProgress());
+      this.a.a((int)(paramSeekBar.getProgress() / (this.a.a.getMax() * 1.0F) * (float)this.a.a().b()));
     }
+    VideoPlayerView.a(this.a, false);
+    VideoPlayerView.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wfa
  * JD-Core Version:    0.7.0.1
  */

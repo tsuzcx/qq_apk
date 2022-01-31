@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.persistence.fts;
 
-import com.tencent.mobileqq.persistence.Entity;
+import atmo;
 
 public abstract class FTSOptSync
-  extends Entity
+  extends atmo
 {
   public String mContent;
   public long mOId;

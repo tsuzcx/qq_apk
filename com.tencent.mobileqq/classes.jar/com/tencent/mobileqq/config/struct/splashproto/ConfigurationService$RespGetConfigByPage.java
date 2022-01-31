@@ -10,14 +10,14 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ConfigurationService$RespGetConfigByPage
-  extends MessageMicro
+  extends MessageMicro<RespGetConfigByPage>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField content = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField delay_time = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
+  public final PBRepeatField<Integer> delay_time = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
   public ConfigurationService.PageRespInfo page_info = new ConfigurationService.PageRespInfo();
   public final PBInt32Field result = PBField.initInt32(0);
-  public final PBRepeatField seed_ids = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
+  public final PBRepeatField<Integer> seed_ids = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
   public final PBUInt32Field show_strategy = PBField.initUInt32(0);
   public final PBUInt32Field show_time = PBField.initUInt32(0);
   public final PBUInt32Field type = PBField.initUInt32(0);

@@ -1,16 +1,174 @@
-import com.tencent.biz.qrcode.CustomAccessibilityDelegate;
-import com.tencent.biz.qrcode.CustomAccessibilityDelegate.CallBack;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.button.ButtonBase;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class oxa
-  implements Runnable
+  extends oxl
 {
-  public oxa(CustomAccessibilityDelegate paramCustomAccessibilityDelegate) {}
-  
-  public void run()
+  public oxa(ArticleInfo paramArticleInfo, Context paramContext)
   {
-    if (CustomAccessibilityDelegate.a(this.a) != null) {
-      CustomAccessibilityDelegate.a(this.a).b();
+    super(paramArticleInfo, paramContext);
+  }
+  
+  private void a(ButtonBase paramButtonBase)
+  {
+    boolean bool = true;
+    int i;
+    if (paramButtonBase.isSelected())
+    {
+      i = -1;
+      paramButtonBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo;
+      paramButtonBase.b += i;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.b < 0) {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.b = 0;
+      }
+      paramButtonBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo;
+      if (i <= 0) {
+        break label136;
+      }
     }
+    label136:
+    for (int j = 1;; j = 0)
+    {
+      paramButtonBase.c = j;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.invalidateProteusTemplateBean();
+      obz.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
+      if ((!obz.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo)) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID))) {
+        break label141;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.e("ATLAS", 2, "atlas native has undercarriage");
+      }
+      ohb.a().b();
+      return;
+      i = 1;
+      break;
+    }
+    label141:
+    paramButtonBase = ogy.a();
+    long l1 = obz.a();
+    long l2 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mFeedId;
+    if (i > 0) {}
+    for (;;)
+    {
+      paramButtonBase.a(l1, l2, bool, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.clone());
+      break;
+      bool = false;
+    }
+  }
+  
+  protected int a()
+  {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mSocialFeedInfo.c == 1) {
+      return 2;
+    }
+    return 13;
+  }
+  
+  protected void a(ArticleInfo paramArticleInfo)
+  {
+    String str2 = obz.a(paramArticleInfo);
+    SocializeFeedsInfo localSocializeFeedsInfo = paramArticleInfo.mSocialFeedInfo;
+    boolean bool = rvf.a(paramArticleInfo.mChannelID);
+    Object localObject;
+    String str1;
+    if (bool)
+    {
+      localObject = "0X800935E";
+      if (!bool) {
+        break label163;
+      }
+      str1 = "0X800935F";
+      label35:
+      if (localSocializeFeedsInfo.c != 1) {
+        break label268;
+      }
+      if ((!qoe.i(paramArticleInfo)) && (!qoe.a(paramArticleInfo)) && (!qoe.j(paramArticleInfo)) && (!qoe.k(paramArticleInfo))) {
+        break label170;
+      }
+      if (!qoe.o(paramArticleInfo)) {
+        ndn.a(null, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Pre.jdField_a_of_type_Long), (String)localObject, (String)localObject, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), "0", "" + paramArticleInfo.mStrategyId, str2, false);
+      }
+      if ((!obz.k(paramArticleInfo)) && (!obz.l(paramArticleInfo))) {
+        qoe.a(paramArticleInfo, (int)paramArticleInfo.mChannelID);
+      }
+    }
+    label163:
+    label170:
+    do
+    {
+      return;
+      localObject = "0X8007B65";
+      break;
+      str1 = "0X8007B66";
+      break label35;
+      if (obz.b(paramArticleInfo))
+      {
+        localObject = new JSONObject();
+        try
+        {
+          ((JSONObject)localObject).put("like", 0);
+          nzv.a(this.jdField_a_of_type_AndroidContentContext, paramArticleInfo, "0X8009A74", (JSONObject)localObject);
+          return;
+        }
+        catch (JSONException localJSONException1)
+        {
+          for (;;)
+          {
+            localJSONException1.printStackTrace();
+          }
+        }
+      }
+      ndn.a(null, paramArticleInfo.mSubscribeID, (String)localObject, (String)localObject, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), String.valueOf(paramArticleInfo.mArticleID), "" + paramArticleInfo.mStrategyId, str2, false);
+      return;
+      if ((!qoe.i(paramArticleInfo)) && (!qoe.a(paramArticleInfo)) && (!qoe.j(paramArticleInfo)) && (!qoe.k(paramArticleInfo))) {
+        break label383;
+      }
+      if (!qoe.o(paramArticleInfo)) {
+        ndn.a(null, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Pre.jdField_a_of_type_Long), localJSONException1, localJSONException1, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), "0", "" + paramArticleInfo.mStrategyId, str2, false);
+      }
+    } while ((obz.k(paramArticleInfo)) || (obz.l(paramArticleInfo)));
+    label268:
+    qoe.a(paramArticleInfo, (int)paramArticleInfo.mChannelID);
+    return;
+    label383:
+    if (obz.b(paramArticleInfo))
+    {
+      localObject = new JSONObject();
+      try
+      {
+        ((JSONObject)localObject).put("like", 1);
+        nzv.a(this.jdField_a_of_type_AndroidContentContext, paramArticleInfo, "0X8009A74", (JSONObject)localObject);
+        return;
+      }
+      catch (JSONException localJSONException2)
+      {
+        for (;;)
+        {
+          localJSONException2.printStackTrace();
+        }
+      }
+    }
+    ndn.a(null, paramArticleInfo.mSubscribeID, localJSONException2, localJSONException2, 0, 0, String.valueOf(localSocializeFeedsInfo.jdField_a_of_type_Long), String.valueOf(paramArticleInfo.mArticleID), "" + paramArticleInfo.mStrategyId, str2, false);
+  }
+  
+  protected void a(ViewBase paramViewBase)
+  {
+    if ((paramViewBase instanceof ButtonBase)) {
+      a((ButtonBase)paramViewBase);
+    }
+    do
+    {
+      return;
+      paramViewBase = paramViewBase.findViewBaseByName("id_like_button");
+    } while ((paramViewBase == null) || (!(paramViewBase instanceof ozm)));
+    ((ozm)paramViewBase).onClick();
   }
 }
 

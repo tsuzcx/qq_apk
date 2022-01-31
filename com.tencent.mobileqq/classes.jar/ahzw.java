@@ -1,15 +1,23 @@
-import com.tencent.mobileqq.search.searchengine.ContactSearchEngine;
-import java.util.List;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import java.util.Comparator;
+import java.util.HashMap;
 
-public class ahzw
+class ahzw
+  implements Comparator<atmo>
 {
-  public String a;
-  public List a;
+  ahzw(ahzv paramahzv, HashMap paramHashMap) {}
   
-  public ahzw(ContactSearchEngine paramContactSearchEngine, String paramString, List paramList)
+  public int a(atmo paramatmo1, atmo paramatmo2)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilList = paramList;
+    long l1 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramatmo1).uin)).longValue();
+    long l2 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramatmo2).uin)).longValue();
+    if (l1 < l2) {
+      return -1;
+    }
+    if (l1 > l2) {
+      return 1;
+    }
+    return 0;
   }
 }
 

@@ -1,21 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
+import java.util.ArrayList;
 
-public class ajua
-  implements View.OnTouchListener
+public abstract interface ajua
 {
-  public ajua(BulkSendMessageFragment paramBulkSendMessageFragment) {}
+  public abstract void a(String paramString);
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
+  public abstract void a(String paramString1, String paramString2);
+  
+  public abstract void a(ArrayList<String> paramArrayList);
+  
+  public abstract void b(String paramString);
+  
+  public abstract void b(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajua
  * JD-Core Version:    0.7.0.1
  */

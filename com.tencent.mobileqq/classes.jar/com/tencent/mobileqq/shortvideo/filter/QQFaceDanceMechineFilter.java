@@ -1,149 +1,149 @@
 package com.tencent.mobileqq.shortvideo.filter;
 
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.TextureRender;
 import com.tencent.mobileqq.shortvideo.dancemachine.GLFrameImage;
 import com.tencent.mobileqq.shortvideo.dancemachine.GLShaderManager;
 import com.tencent.mobileqq.shortvideo.dancemachine.GLViewContext;
 import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceManagerFilter;
 import com.tencent.mobileqq.shortvideo.facedancegame.FaceDanceDetectTask;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import com.tencent.ttpic.openapi.filter.TextureRender;
 import java.util.TreeSet;
 
 public class QQFaceDanceMechineFilter
   extends QQBaseFilter
 {
-  public static boolean a;
-  private RenderBuffer jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer;
-  private TextureRender jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender;
-  private DanceManagerFilter jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter;
-  private QQFaceDanceDetectFilter jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFaceDanceDetectFilter;
-  private boolean b;
-  private int e = 720;
-  private int f = 1280;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = false;
-  }
+  public static boolean isEnableFaceDance = false;
+  private DanceManagerFilter mDanceMgrFilter;
+  private QQFaceDanceDetectFilter mFaceDanceDetectFilter;
+  private RenderBuffer mRenderFBO;
+  private boolean textureInited = false;
+  private TextureRender textureRender;
+  private int videoHeight = 1280;
+  private int videoWidth = 720;
   
   public QQFaceDanceMechineFilter(int paramInt, QQFilterRenderManager paramQQFilterRenderManager)
   {
     super(paramInt, paramQQFilterRenderManager);
-    this.jdField_b_of_type_Boolean = false;
-    jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter = new DanceManagerFilter(0, paramQQFilterRenderManager);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFaceDanceDetectFilter = new QQFaceDanceDetectFilter(0, paramQQFilterRenderManager);
+    isEnableFaceDance = false;
+    this.mDanceMgrFilter = new DanceManagerFilter(0, paramQQFilterRenderManager);
+    this.mFaceDanceDetectFilter = new QQFaceDanceDetectFilter(0, paramQQFilterRenderManager);
   }
   
-  private void c()
+  private void initTexture()
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.d();
-  }
-  
-  private void i()
-  {
-    QQFilterRenderManager localQQFilterRenderManager = a();
-    int i = localQQFilterRenderManager.h();
-    int j = localQQFilterRenderManager.i();
-    this.e = localQQFilterRenderManager.f();
-    this.f = localQQFilterRenderManager.g();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.b(i, j);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a(this.e, this.f);
-    float f1 = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a().a();
-    j = (int)(this.f / f1);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.b(i, j);
-  }
-  
-  private void j()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.d();
+    if (this.mRenderFBO != null) {
+      this.mRenderFBO.destroy();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender.a();
+    if (this.textureRender != null) {
+      this.textureRender.release();
     }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer = new RenderBuffer(this.e, this.f, 33984);
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender = new TextureRender();
+    this.mRenderFBO = new RenderBuffer(this.videoWidth, this.videoHeight, 33984);
+    this.textureRender = new TextureRender();
   }
   
-  public void a()
+  private void onInternalChanged()
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a();
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a();
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.b();
+    QQFilterRenderManager localQQFilterRenderManager = getQQFilterRenderManager();
+    int i = localQQFilterRenderManager.getSufaceWidth();
+    int j = localQQFilterRenderManager.getSurfaceHeight();
+    this.videoWidth = localQQFilterRenderManager.getFilterWidth();
+    this.videoHeight = localQQFilterRenderManager.getFilterHeight();
+    this.mDanceMgrFilter.onSurfaceChange(i, j);
+    this.mDanceMgrFilter.setViewportSize(this.videoWidth, this.videoHeight);
+    float f = this.mDanceMgrFilter.getContext().getViewPortRatio();
+    j = (int)(this.videoHeight / f);
+    this.mDanceMgrFilter.onSurfaceChange(i, j);
+  }
+  
+  private void onInternalCreate()
+  {
+    this.mDanceMgrFilter.onSurfaceCreate();
+  }
+  
+  public void changeToReadyFilter()
+  {
+    this.mDanceMgrFilter.selectToFilter(0);
+    this.mFaceDanceDetectFilter.clearFlipFrame();
+    GLFrameImage.reloadTextureCache();
+  }
+  
+  public boolean isFilterWork()
+  {
+    return isEnableFaceDance;
+  }
+  
+  public void onCloseClicked()
+  {
+    int i = this.mDanceMgrFilter.getCurrentFilterKind();
+    boolean bool = this.mDanceMgrFilter.getFilterParam();
+    this.mDanceMgrFilter.onCloseClicked();
     if (i == 0)
     {
-      QQDanceEventHandler localQQDanceEventHandler = a().a();
+      QQDanceEventHandler localQQDanceEventHandler = getQQFilterRenderManager().getBusinessOperation().getDanceEventHandler();
       if (localQQDanceEventHandler != null) {
-        localQQDanceEventHandler.f(bool);
+        localQQDanceEventHandler.closeEvent(bool);
       }
     }
   }
   
-  public void b()
+  public void onDrawFrame()
   {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a(0);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFaceDanceDetectFilter.b();
-    GLFrameImage.g();
-  }
-  
-  public void e()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFaceDanceDetectFilter.e();
-    GLShaderManager.a();
-    GLFrameImage.am_();
-  }
-  
-  public void f()
-  {
-    FaceDanceDetectTask.a("QQFaceDanceMechineFilter.onResume");
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.f();
-  }
-  
-  public boolean f_()
-  {
-    return jdField_a_of_type_Boolean;
-  }
-  
-  public void g()
-  {
-    FaceDanceDetectTask.a("QQFaceDanceMechineFilter.onPause");
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.g();
-  }
-  
-  public void h()
-  {
-    if (!jdField_a_of_type_Boolean)
+    if (!isEnableFaceDance)
     {
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
+      this.mOutputTextureID = this.mInputTextureID;
       return;
     }
-    if (!this.jdField_b_of_type_Boolean)
+    if (!this.textureInited)
     {
-      c();
-      i();
-      j();
-      this.jdField_b_of_type_Boolean = true;
+      onInternalCreate();
+      onInternalChanged();
+      initTexture();
+      this.textureInited = true;
     }
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFaceDanceDetectFilter.b(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFaceDanceDetectFilter.h();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.b();
+    this.mFaceDanceDetectFilter.setInputTextureID(this.mInputTextureID);
+    this.mFaceDanceDetectFilter.onDrawFrame();
+    this.mRenderFBO.bind();
     try
     {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererTextureRender.a(3553, this.jdField_a_of_type_Int, null, null);
-      TreeSet localTreeSet = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.a();
-      FaceDanceDetectTask.a().a();
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineFilterDanceManagerFilter.h();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.c();
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFaceDanceDetectFilter.a(localTreeSet);
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.a();
+      this.textureRender.drawTexture(3553, this.mInputTextureID, null, null);
+      TreeSet localTreeSet = this.mDanceMgrFilter.getCurrentVisible();
+      FaceDanceDetectTask.getInstance().updateDetectResult();
+      this.mDanceMgrFilter.onDrawFrame();
+      this.mRenderFBO.unbind();
+      this.mFaceDanceDetectFilter.postDetectTask(localTreeSet);
+      this.mOutputTextureID = this.mRenderFBO.getTexId();
       return;
     }
     catch (Throwable localThrowable)
     {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.c();
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererRenderBuffer.a();
+      this.mRenderFBO.unbind();
+      this.mOutputTextureID = this.mRenderFBO.getTexId();
     }
+  }
+  
+  public void onPause()
+  {
+    FaceDanceDetectTask.loginfo("QQFaceDanceMechineFilter.onPause");
+    this.mDanceMgrFilter.onPause();
+  }
+  
+  public void onResume()
+  {
+    FaceDanceDetectTask.loginfo("QQFaceDanceMechineFilter.onResume");
+    this.mDanceMgrFilter.onResume();
+  }
+  
+  public void onSurfaceDestroy()
+  {
+    this.mFaceDanceDetectFilter.onSurfaceDestroy();
+    GLShaderManager.clearShaderManager();
+    GLFrameImage.clearTextureCache();
+  }
+  
+  public void setVideoSize(int paramInt1, int paramInt2)
+  {
+    this.videoWidth = paramInt1;
+    this.videoHeight = paramInt2;
   }
 }
 

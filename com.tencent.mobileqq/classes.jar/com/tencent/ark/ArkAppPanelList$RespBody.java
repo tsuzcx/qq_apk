@@ -6,14 +6,14 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class ArkAppPanelList$RespBody
-  extends MessageMicro
+  extends MessageMicro<RespBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10 }, new String[] { "apps" }, new Object[] { null }, RespBody.class);
-  public final PBRepeatMessageField apps = PBField.initRepeatMessage(ArkAppPanelList.AppDetail.class);
+  public final PBRepeatMessageField<ArkAppPanelList.AppDetail> apps = PBField.initRepeatMessage(ArkAppPanelList.AppDetail.class);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.ark.ArkAppPanelList.RespBody
  * JD-Core Version:    0.7.0.1
  */

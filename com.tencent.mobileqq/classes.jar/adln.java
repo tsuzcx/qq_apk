@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.filemanager.activity.MPFileFailedView.MPFileFailedEvent;
-import com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
 
-public class adln
-  implements MPFileFailedView.MPFileFailedEvent
+class adln
+  implements ImageAssetDelegate
 {
-  public adln(MPcFileModel paramMPcFileModel) {}
+  adln(adlm paramadlm) {}
   
-  public void a(long paramLong)
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    MPcFileModel.b(this.a, paramLong);
+    return (Bitmap)BaseApplicationImpl.sImageCache.get(paramLottieImageAsset.getKey());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adln
  * JD-Core Version:    0.7.0.1
  */

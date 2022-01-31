@@ -1,150 +1,173 @@
+import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import android.os.ResultReceiver;
 import android.text.TextUtils;
-import com.tencent.biz.anonymous.AnonymousChatHelper;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.preload.DownloadParam;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManagerProxy.1;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.PicMessageExtraData;
-import com.tencent.mobileqq.doutu.DoutuUtils;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
-import com.tencent.mobileqq.highway.HwEngine;
-import com.tencent.mobileqq.hotpic.HotPicHelper;
-import com.tencent.mobileqq.pic.BasePicOprerator;
-import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.mobileqq.pic.Logger;
-import com.tencent.mobileqq.pic.PicReq;
-import com.tencent.mobileqq.pic.PicUploadInfo;
-import com.tencent.mobileqq.pic.compress.CompressOperator;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.mobileqq.transfile.TransferRequest.PicUpExtraInfo;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCClient;
+import eipc.EIPCResult;
+import java.util.LinkedList;
+import mqq.app.AppRuntime;
 
 public class agph
-  implements Runnable
+  extends agpg
 {
-  public agph(BasePicOprerator paramBasePicOprerator, PicUploadInfo paramPicUploadInfo, PicReq paramPicReq) {}
+  private static volatile agph a;
   
-  public void run()
+  private agph(AppRuntime paramAppRuntime)
   {
-    this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHwEngine().preConnect();
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo;
-    ??? = new CompressInfo(((PicUploadInfo)localObject1).g, 0);
-    CompressOperator.b((CompressInfo)???);
-    if (((CompressInfo)???).jdField_e_of_type_JavaLangString != null)
+    super(paramAppRuntime);
+    agpq.a().a();
+  }
+  
+  public static agph a()
+  {
+    return a(BaseApplicationImpl.getApplication().getRuntime());
+  }
+  
+  @Deprecated
+  public static agph a(AppRuntime paramAppRuntime)
+  {
+    if (jdField_a_of_type_Agph == null) {}
+    try
     {
-      ((PicUploadInfo)localObject1).h = ((CompressInfo)???).jdField_e_of_type_JavaLangString;
-      ((PicUploadInfo)localObject1).jdField_e_of_type_Int = ((CompressInfo)???).d;
-      ((PicUploadInfo)localObject1).jdField_f_of_type_Int = ((CompressInfo)???).jdField_e_of_type_Int;
+      if (jdField_a_of_type_Agph == null) {
+        jdField_a_of_type_Agph = new agph(paramAppRuntime);
+      }
+      return jdField_a_of_type_Agph;
     }
-    if ((((PicUploadInfo)localObject1).jdField_f_of_type_Boolean) && (((PicUploadInfo)localObject1).jdField_b_of_type_JavaLangObject != null)) {}
-    for (localObject1 = (MessageForPic)((PicUploadInfo)localObject1).jdField_b_of_type_JavaLangObject; localObject1 == null; localObject1 = this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.a((PicUploadInfo)localObject1))
-    {
-      Logger.a(this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_b_of_type_JavaLangString, "doSendPic", "error, mr==null, return");
+    finally {}
+  }
+  
+  public static ResultReceiver a(ResultReceiver paramResultReceiver)
+  {
+    if (paramResultReceiver == null) {
+      return null;
+    }
+    Parcel localParcel = Parcel.obtain();
+    paramResultReceiver.writeToParcel(localParcel, 0);
+    localParcel.setDataPosition(0);
+    paramResultReceiver = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(localParcel);
+    localParcel.recycle();
+    return paramResultReceiver;
+  }
+  
+  private void a(String paramString1, Bundle paramBundle, agpa paramagpa, String paramString2)
+  {
+    paramBundle.putParcelable("receiver", a(new PreloadManagerProxy.1(this, null, paramagpa, paramString2)));
+    if (paramString1.equals("downloadModule")) {
+      QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "downloadModule", paramBundle, null);
+    }
+    while (!paramString1.equals("downloadRes")) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgVia", 2, "doSendPic, entrance: " + ((MessageForPic)localObject1).msgVia);
-    }
-    if (MessageForPic.class.isInstance(localObject1))
+    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "downloadRes", paramBundle, null);
+  }
+  
+  public void a(DownloadParam paramDownloadParam, agpe paramagpe)
+  {
+    if ((paramDownloadParam == null) || (TextUtils.isEmpty(paramDownloadParam.url))) {}
+    do
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqPicPicReq.a != null)
+      return;
+      if (!(this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface))
       {
-        ((MessageForPic)localObject1).picExtraData = this.jdField_a_of_type_ComTencentMobileqqPicPicReq.a;
-        ??? = this.jdField_a_of_type_ComTencentMobileqqPicPicReq.a;
-        if (((PicMessageExtraData)???).stickerInfo != null) {
-          ((MessageRecord)localObject1).saveExtInfoToExtStr("sticker_info", ((PicMessageExtraData)???).stickerInfo.toJsonString());
-        }
-        if (!TextUtils.isEmpty(((MessageRecord)localObject1).getExtInfoFromExtStr("sticker_info")))
-        {
-          EmojiStickerManager.a((MessageRecord)localObject1, null);
-          EmojiStickerManager.a().a((MessageRecord)localObject1);
-        }
-      }
-      BasePicOprerator.a((MessageForPic)localObject1);
-    }
-    if ((((MessageRecord)localObject1).istroop == 1) && (this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo$RetryInfo == null)) {
-      AnonymousChatHelper.a().a((MessageRecord)localObject1);
-    }
-    if (GoldMsgChatHelper.a(((MessageRecord)localObject1).istroop)) {
-      GoldMsgChatHelper.a().a((MessageRecord)localObject1);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_c_of_type_Boolean) {
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_a_of_type_JavaLangObject = localObject1;
-        this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.notifyAll();
-        Logger.a(this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_b_of_type_JavaLangString, "doSendPic ", "PresendStatus: destPath:" + this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.g + ",uuid:" + this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_JavaLangString + ",canceled:false, peakCompress:true, peakUpload:true, saveMR:true");
-        if (this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_c_of_type_Int == 3)
-        {
-          Logger.a(this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_JavaLangString, "PresendPic doSendPic ", "FLAG_NOT_UPLOAD,do not upload!");
-          Logger.a(this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_b_of_type_JavaLangString, "doSendPic", "PresendStatus: destPath:" + this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.g + ",uuid:" + this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_JavaLangString + ",canceled:false, peakCompress:true, peakUpload:true, saveMR:true, FLAG_NOT_UPLOAD,do not upload!");
-          return;
-        }
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = localObject2;
-    long l = System.currentTimeMillis();
-    ??? = new TransferRequest();
-    ((TransferRequest)???).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
-    ((TransferRequest)???).c = localObject2.frienduin;
-    ((TransferRequest)???).d = localObject2.senderuin;
-    ((TransferRequest)???).jdField_a_of_type_Int = localObject2.istroop;
-    ((TransferRequest)???).jdField_b_of_type_Int = 1;
-    ((TransferRequest)???).jdField_a_of_type_Long = localObject2.uniseq;
-    ((TransferRequest)???).jdField_a_of_type_Boolean = true;
-    ((TransferRequest)???).jdField_e_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_a_of_type_Int;
-    ((TransferRequest)???).jdField_i_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.g;
-    ((TransferRequest)???).jdField_f_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_f_of_type_JavaLangString;
-    ??? = new TransferRequest.PicUpExtraInfo();
-    if (this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.a() == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ((TransferRequest.PicUpExtraInfo)???).jdField_a_of_type_Boolean = bool;
-      ((TransferRequest)???).jdField_a_of_type_JavaLangObject = ???;
-      ((TransferRequest)???).jdField_a_of_type_ComTencentMobileqqPicUpCallBack = this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator;
-      ((TransferRequest)???).jdField_a_of_type_ComTencentMobileqqDataMessageRecord = this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      ((TransferRequest)???).jdField_i_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_c_of_type_Boolean;
-      ((TransferRequest)???).j = this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_e_of_type_Boolean;
-      HotPicHelper.a(this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (TransferRequest)???);
-      if (this.jdField_a_of_type_ComTencentMobileqqPicPicReq.jdField_b_of_type_Int == 1044) {
-        DoutuUtils.a(this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (TransferRequest)???);
-      }
-      if (!this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_c_of_type_Boolean) {
-        break label1110;
-      }
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo)
-      {
-        if (!this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.d) {
-          break;
-        }
-        Logger.a(this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_JavaLangString, "PresendPic doSendPic cancel transferAsync!", "");
-        Logger.a(this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_b_of_type_JavaLangString, "doSendPic ", "PresendStatus: destPath:" + this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.g + ",uuid:" + this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_JavaLangString + ",canceled:true, peakCompress:true, peakUpload:true, saveMR:true, transferAsync:false");
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("method_type", 1);
+        localBundle.putSerializable("download_params", paramDownloadParam);
+        QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "preloadCommon", localBundle, new agpj(this, paramagpe, paramDownloadParam));
         return;
       }
+    } while (paramagpe == null);
+    paramagpe.onResult(1, PreloadManager.PathResult.getFailRes(paramDownloadParam.url));
+  }
+  
+  public void a(String paramString, ResultReceiver paramResultReceiver)
+  {
+    if (paramResultReceiver == null) {
+      return;
     }
-    Logger.a(this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_JavaLangString, "PresendPic doSendPic start transferAsync!", "");
-    this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((TransferRequest)???);
-    Logger.a(this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_b_of_type_JavaLangString, "doSendPic ", "PresendStatus: destPath:" + this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.g + ",uuid:" + this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_JavaLangString + ",canceled:false, peakCompress:true, peakUpload:true, saveMR:true, transferAsync:true");
+    if (!(this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("id", paramString);
+      QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "getFilePathByResID", localBundle, new agpi(this, paramResultReceiver));
+      return;
+    }
+    paramResultReceiver.send(0, null);
+  }
+  
+  @Deprecated
+  public void a(String paramString1, String paramString2, agpa paramagpa)
+  {
+    if (!(this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface))
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("id", paramString1);
+      localBundle.putString("config_str", paramString2);
+      a("downloadModule", localBundle, paramagpa, paramString1);
+    }
+  }
+  
+  public void a(LinkedList<DownloadParam> paramLinkedList, agpf paramagpf)
+  {
+    if (paramLinkedList == null) {
+      if (paramagpf != null) {
+        paramagpf.a(1, null);
+      }
+    }
+    do
+    {
+      return;
+      if (!(this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface))
+      {
+        Bundle localBundle = new Bundle();
+        localBundle.putInt("method_type", 3);
+        localBundle.putSerializable("download_params", paramLinkedList);
+        QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "preloadCommon", localBundle, new agpk(this, paramagpf));
+        return;
+      }
+    } while (paramagpf == null);
+    paramagpf.a(1, null);
+  }
+  
+  public String d(String paramString)
+  {
+    Object localObject2 = null;
+    Object localObject1;
+    if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof QQAppInterface)) {
+      localObject1 = localObject2;
+    }
     for (;;)
     {
-      Logger.a(this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_JavaLangString, "sendReq", "cost:" + (System.currentTimeMillis() - l));
-      if ((this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_c_of_type_Boolean))
-      {
-        Logger.a(this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_JavaLangString, "sendPic", "@#addMsg");
-        BasePicOprerator.a(this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator, localMessageRecord);
+      if (QLog.isColorLevel()) {
+        QLog.d("PreloadManagerProxy", 2, "getVideoResPathByID:" + paramString + "|" + (String)localObject1);
       }
-      Logger.a(this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_JavaLangString, "getSendTask.start", "");
-      return;
-      label1110:
-      this.jdField_a_of_type_ComTencentMobileqqPicBasePicOprerator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((TransferRequest)???);
+      return localObject1;
+      localObject1 = new Bundle();
+      ((Bundle)localObject1).putString("mid", paramString);
+      agpq.a().a();
+      EIPCResult localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("QWalletIPCModule", "getVideoResPathByMID", (Bundle)localObject1);
+      localObject1 = localObject2;
+      if (localEIPCResult != null)
+      {
+        localObject1 = localObject2;
+        if (localEIPCResult.isSuccess()) {
+          localObject1 = localEIPCResult.data.getString("path");
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agph
  * JD-Core Version:    0.7.0.1
  */

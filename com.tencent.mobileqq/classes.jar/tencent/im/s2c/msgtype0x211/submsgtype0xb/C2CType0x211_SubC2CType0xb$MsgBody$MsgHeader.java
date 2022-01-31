@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class C2CType0x211_SubC2CType0xb$MsgBody$MsgHeader
-  extends MessageMicro
+  extends MessageMicro<MsgHeader>
 {
   public static final int AUDIO_START_SUCCESS_NOTIFY = 102;
   public static final int REJECT_NOTIFY = 101;

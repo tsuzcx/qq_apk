@@ -8,9 +8,9 @@ import java.util.ArrayList;
 public final class cluster_identify_face_req
   extends JceStruct
 {
-  static ArrayList cache_feature = new ArrayList();
+  static ArrayList<Float> cache_feature = new ArrayList();
   static int cache_mode = 0;
-  public ArrayList feature;
+  public ArrayList<Float> feature;
   public String img = "";
   public boolean is_demo;
   public int mode = 0;
@@ -23,7 +23,7 @@ public final class cluster_identify_face_req
   
   public cluster_identify_face_req() {}
   
-  public cluster_identify_face_req(long paramLong, ArrayList paramArrayList, int paramInt, String paramString, boolean paramBoolean)
+  public cluster_identify_face_req(long paramLong, ArrayList<Float> paramArrayList, int paramInt, String paramString, boolean paramBoolean)
   {
     this.op_uin = paramLong;
     this.feature = paramArrayList;

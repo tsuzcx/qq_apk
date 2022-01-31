@@ -51,7 +51,7 @@ public class AccountDetailBounceScrollView
     return super.onTouchEvent(paramMotionEvent);
   }
   
-  protected boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
+  public boolean overScrollBy(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, boolean paramBoolean)
   {
     if (this.jdField_b_of_type_Boolean) {
       return super.overScrollBy(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, this.jdField_b_of_type_Int, paramInt7, this.jdField_a_of_type_Int, paramBoolean);

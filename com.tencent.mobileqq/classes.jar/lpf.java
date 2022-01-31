@@ -1,131 +1,157 @@
-import android.util.Pair;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
+import android.text.TextUtils;
+import com.tencent.av.so.DownloadInfo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
-import java.util.List;
+import java.io.File;
 
-public class lpf
-  implements Runnable
+class lpf
 {
-  public lpf(ReadinjoySPEventReport paramReadinjoySPEventReport, int paramInt) {}
+  int jdField_a_of_type_Int = 0;
+  axro jdField_a_of_type_Axro;
+  DownloadInfo jdField_a_of_type_ComTencentAvSoDownloadInfo = null;
+  boolean jdField_a_of_type_Boolean = false;
+  int b = 0;
+  int c;
   
-  public void run()
+  lpf()
   {
-    int i;
-    if (ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport) != null)
+    this.jdField_c_of_type_Int = 0;
+  }
+  
+  boolean a(DownloadInfo paramDownloadInfo)
+  {
+    boolean bool;
+    if (this.jdField_a_of_type_Boolean)
     {
-      if (((Integer)ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).second).intValue() == this.jdField_a_of_type_Int) {
-        return;
+      if ((this.jdField_a_of_type_ComTencentAvSoDownloadInfo == paramDownloadInfo) || (((TextUtils.isEmpty(paramDownloadInfo.MD5_zip_model)) || (paramDownloadInfo.MD5_zip_model.equals(this.jdField_a_of_type_ComTencentAvSoDownloadInfo.MD5_zip_model))) && ((TextUtils.isEmpty(paramDownloadInfo.MD5_zip_so)) || (paramDownloadInfo.MD5_zip_so.equals(this.jdField_a_of_type_ComTencentAvSoDownloadInfo.MD5_zip_so))))) {
+        break label348;
       }
-      if (((Integer)ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).second).intValue() < this.jdField_a_of_type_Int) {
-        i = 1;
-      }
+      bool = true;
     }
     for (;;)
     {
-      label59:
-      int j = ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).size();
-      long l1;
-      if (j > ReadInJoyHelper.b(ReadInJoyUtils.a())) {
-        l1 = j - ReadInJoyHelper.b(ReadInJoyUtils.a());
+      if (QLog.isColorLevel()) {
+        QLog.d("QavSo", 2, String.format("DownloadContrl, mDownloading[%s], reDownload[%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(bool) }));
       }
-      for (;;)
+      if (!bool)
       {
-        long l2 = l1 - 1L;
-        if (l1 > 0L)
-        {
-          if (ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).size() <= 1) {
-            break label824;
-          }
-          ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).remove(1);
-          l1 = l2;
-          continue;
-          i = 0;
-          break label59;
-        }
-        ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport, false);
-        if (j == 0) {
-          ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).add(new Pair(Long.valueOf(System.currentTimeMillis() / 1000L), Integer.valueOf(0)));
-        }
-        ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport, new Pair(Long.valueOf(System.currentTimeMillis() / 1000L - ((Long)((Pair)ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).get(0)).first).longValue()), Integer.valueOf(this.jdField_a_of_type_Int)));
-        ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).add(ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport));
-        QLog.d(ReadinjoySPEventReport.class.getSimpleName(), 2, "update msg tab total red pnt change, cnt : " + this.jdField_a_of_type_Int);
-        j = ReadInJoyUtils.b();
-        if (j < 0) {
-          break;
-        }
-        if (j > this.jdField_a_of_type_Int) {
-          j = this.jdField_a_of_type_Int;
-        }
-        for (;;)
-        {
-          int k = ReadinjoySPEventReport.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).size();
-          if (k > ReadInJoyHelper.c(ReadInJoyUtils.a())) {
-            l1 = k - ReadInJoyHelper.c(ReadInJoyUtils.a());
-          }
-          for (;;)
-          {
-            l2 = l1 - 1L;
-            if (l1 > 0L)
-            {
-              if (ReadinjoySPEventReport.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).size() > 1)
-              {
-                ReadinjoySPEventReport.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).remove(1);
-                l1 = l2;
-              }
-            }
-            else
-            {
-              if ((ReadinjoySPEventReport.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport) != null) && (((Integer)ReadinjoySPEventReport.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).second).intValue() == j)) {
-                break;
-              }
-              if (k == 0) {
-                ReadinjoySPEventReport.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).add(new Pair(Long.valueOf(System.currentTimeMillis() / 1000L), Integer.valueOf(0)));
-              }
-              ReadinjoySPEventReport.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport, new Pair(Long.valueOf(System.currentTimeMillis() / 1000L - ((Long)((Pair)ReadinjoySPEventReport.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).get(0)).first).longValue()), Integer.valueOf(j)));
-              ReadinjoySPEventReport.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).add(ReadinjoySPEventReport.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport));
-              QLog.d(ReadinjoySPEventReport.class.getSimpleName(), 2, "update msg tab first screen red pnt change, cnt : " + j);
-              j = ReadInJoyHelper.a();
-              if ((this.jdField_a_of_type_Int <= j) && (!ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport)) && (i == 0))
-              {
-                if ((ReadinjoySPEventReport.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport) != null) && (ReadinjoySPEventReport.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).size() > 0))
-                {
-                  i = ((Integer)((Pair)ReadinjoySPEventReport.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).get(ReadinjoySPEventReport.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).size() - 1)).second).intValue();
-                  l1 = ((Long)((Pair)ReadinjoySPEventReport.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).get(0)).first).longValue();
-                  l2 = ((Long)((Pair)ReadinjoySPEventReport.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).get(ReadinjoySPEventReport.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).size() - 1)).first).longValue();
-                  if ((System.currentTimeMillis() / 1000L - (l1 + l2) <= 600L) && (i == 1))
-                  {
-                    ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport, true);
-                    return;
-                  }
-                }
-                if (ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport) != null) {
-                  break label804;
-                }
-                ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport, 0);
-              }
-              for (;;)
-              {
-                ReadinjoySPEventReport.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport, false);
-                return;
-                label804:
-                ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport);
-              }
-            }
-            l1 = l2;
-          }
-        }
-        label824:
-        l1 = l2;
+        return this.jdField_a_of_type_Boolean;
+        bool = true;
       }
+      else
+      {
+        if (this.jdField_a_of_type_Axro != null)
+        {
+          Object localObject = BaseApplicationImpl.sApplication.getRuntime();
+          if ((localObject instanceof AppInterface))
+          {
+            localObject = ((AppInterface)localObject).getNetEngine(0);
+            if (localObject != null)
+            {
+              QLog.d("QavSo", 2, String.format("DownloadContrl, cancelReq[%s]", new Object[] { (String)this.jdField_a_of_type_Axro.a() }));
+              ((axrr)localObject).b(this.jdField_a_of_type_Axro);
+            }
+          }
+        }
+        this.jdField_a_of_type_ComTencentAvSoDownloadInfo = paramDownloadInfo;
+        this.jdField_c_of_type_Int = 0;
+        this.jdField_a_of_type_Axro = null;
+        this.jdField_a_of_type_Int = 0;
+        this.b = 0;
+        if (!lpj.b(this.jdField_a_of_type_ComTencentAvSoDownloadInfo))
+        {
+          this.jdField_c_of_type_Int |= 0x1;
+          this.jdField_a_of_type_Int += 1;
+        }
+        if (!lpj.a(this.jdField_a_of_type_ComTencentAvSoDownloadInfo))
+        {
+          this.jdField_c_of_type_Int |= 0x2;
+          this.jdField_a_of_type_Int += 1;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("QavSo", 2, String.format("DownloadContrl, mResFlag[%s], mInfo[%s]", new Object[] { Integer.valueOf(this.jdField_c_of_type_Int), this.jdField_a_of_type_ComTencentAvSoDownloadInfo }));
+        }
+        if (this.jdField_a_of_type_Int == 0) {
+          return this.jdField_a_of_type_Boolean;
+        }
+        this.jdField_a_of_type_Boolean = a(this.jdField_a_of_type_ComTencentAvSoDownloadInfo, 3);
+        return this.jdField_a_of_type_Boolean;
+        label348:
+        bool = false;
+      }
+    }
+  }
+  
+  boolean a(DownloadInfo paramDownloadInfo, int paramInt)
+  {
+    String str3;
+    String str1;
+    String str2;
+    int i;
+    if (!lpj.b(paramDownloadInfo))
+    {
+      str3 = paramDownloadInfo.url_zip_so;
+      str1 = paramDownloadInfo.MD5_zip_so;
+      str2 = lpj.b() + str1;
       i = 1;
+    }
+    boolean bool2;
+    while (paramInt < 0)
+    {
+      QLog.d("QavSo", 1, String.format("downloadRes, 下载死循环了. res_flag[%s], info[%s]", new Object[] { Integer.valueOf(i), paramDownloadInfo }));
+      lpe.a(-3);
+      bool2 = false;
+      return bool2;
+      if ((paramDownloadInfo.enable) && (!lpj.a(paramDownloadInfo)))
+      {
+        str3 = paramDownloadInfo.url_zip_model;
+        str1 = paramDownloadInfo.MD5_zip_model;
+        str2 = lpj.a() + str1;
+        i = 2;
+      }
+      else
+      {
+        lpe.a(100);
+        return false;
+      }
+    }
+    QLog.i("QavSo", 1, String.format("downloadRes. res_flag[%s], outPath[%s], info[%s]", new Object[] { Integer.valueOf(i), str2, paramDownloadInfo }));
+    axro localaxro = new axro();
+    localaxro.jdField_a_of_type_Axrt = new lpg(this, str1, i, paramDownloadInfo, paramInt);
+    localaxro.a(i + "_" + str1);
+    localaxro.jdField_a_of_type_JavaLangString = str3;
+    localaxro.jdField_a_of_type_Int = 0;
+    localaxro.jdField_c_of_type_JavaLangString = new File(str2).getPath();
+    localaxro.jdField_c_of_type_Int = badq.a(axsr.a().a());
+    paramDownloadInfo = BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramDownloadInfo instanceof QQAppInterface))
+    {
+      paramDownloadInfo = ((QQAppInterface)paramDownloadInfo).getNetEngine(0);
+      if (paramDownloadInfo != null)
+      {
+        this.jdField_a_of_type_Axro = localaxro;
+        paramDownloadInfo.a(this.jdField_a_of_type_Axro);
+      }
+    }
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      if (!bool1) {
+        lpe.a(-2);
+      }
+      bool2 = bool1;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.i("QavSo", 2, String.format("downloadRes, res_flag[%s], md5[%s], etr[%s]", new Object[] { Integer.valueOf(i), str1, Boolean.valueOf(bool1) }));
+      return bool1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lpf
  * JD-Core Version:    0.7.0.1
  */

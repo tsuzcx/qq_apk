@@ -1,65 +1,61 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Binder;
+import android.os.IBinder;
+import android.os.IInterface;
+import android.os.Parcel;
+import com.tencent.mobileqq.pic.CompressInfo;
 
-public class adyl
-  extends BroadcastReceiver
+public abstract class adyl
+  extends Binder
+  implements adyk
 {
-  private final String jdField_a_of_type_JavaLangString = "reason";
-  private final String b = "homekey";
-  
-  public adyl(HotPicPageView paramHotPicPageView) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public adyl()
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("HotPicManagerHotPicPageView", 2, "onReceive ===>" + paramContext);
+    attachInterface(this, "com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+  }
+  
+  public static adyk a(IBinder paramIBinder)
+  {
+    if (paramIBinder == null) {
+      return null;
     }
-    if ("android.intent.action.SCREEN_OFF".equals(paramContext)) {
-      HotPicPageView.b = true;
+    IInterface localIInterface = paramIBinder.queryLocalInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+    if ((localIInterface != null) && ((localIInterface instanceof adyk))) {
+      return (adyk)localIInterface;
     }
-    label49:
-    do
+    return new adym(paramIBinder);
+  }
+  
+  public IBinder asBinder()
+  {
+    return this;
+  }
+  
+  public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            break label49;
-            break label49;
-            do
-            {
-              return;
-            } while ("android.intent.action.SCREEN_ON".equals(paramContext));
-            if ("tencent.av.v2q.StartVideoChat".equals(paramContext))
-            {
-              HotPicPageView.b = true;
-              return;
-            }
-          } while (("tencent.av.v2q.StopVideoChat".equals(paramContext)) || (!paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")));
-          paramContext = paramIntent.getStringExtra("reason");
-          if (paramContext != null) {
-            break;
-          }
-        } while ((this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a == null) || (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a.a != 3));
-        paramContext = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a.a();
-      } while (paramContext == null);
-      paramContext.d();
-      return;
-    } while (!paramContext.equals("homekey"));
-    HotPicPageView.b = true;
+    default: 
+      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+    case 1598968902: 
+      paramParcel2.writeString("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+      return true;
+    case 1: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+      a((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
+      return true;
+    case 2: 
+      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+      b((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
+      return true;
+    }
+    paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+    c((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adyl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ms" android:layout_marginTop="@dimen/nh" android:layout_marginRight="@dimen/ms">
+        <View android:background="#ffe6e6e6" android:layout_width="26.0dip" android:layout_height="1.0dip" android:layout_marginTop="1.0dip" />
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1.0dip" android:layout_marginBottom="2.5dip" android:src="@drawable/gfg" />
+        <View android:background="#ffe6e6e6" android:layout_width="26.0dip" android:layout_height="1.0dip" android:layout_marginTop="1.0dip" android:layout_weight="1.0" />
+    </LinearLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ni" android:layout_marginBottom="@dimen/ni">
+        <LinearLayout android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ms">
+            <TextView android:textSize="@dimen/ayo" android:textColor="#ff3d3d3d" android:id="@id/hs1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/goi" />
+            <TextView android:textSize="@dimen/ayk" android:textColor="#ffaeaeae" android:id="@id/hs2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ms" android:text="@string/gc5" />
+        </LinearLayout>
+        <ImageButton android:layout_gravity="end|center" android:id="@id/hs0" android:background="@android:color/transparent" android:layout_width="@dimen/n4" android:layout_height="@dimen/n4" android:layout_marginRight="@dimen/na" android:src="@drawable/qzone_skin_feed_icon_dropdown" android:contentDescription="@string/pb" />
+    </FrameLayout>
+</LinearLayout>

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b4c" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b58" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0405b8" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <com.tencent.widget.XListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b59" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="10.0dip" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:transcriptMode="normal" android:cacheColorHint="@null" android:divider="@null" android:layout_weight="1.0" />
-    </LinearLayout>
-</RelativeLayout>

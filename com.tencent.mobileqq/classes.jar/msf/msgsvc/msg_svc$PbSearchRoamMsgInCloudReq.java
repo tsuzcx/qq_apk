@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class msg_svc$PbSearchRoamMsgInCloudReq
-  extends MessageMicro
+  extends MessageMicro<PbSearchRoamMsgInCloudReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField serialize_reqbody = PBField.initBytes(ByteStringMicro.EMPTY);

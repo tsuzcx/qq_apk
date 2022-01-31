@@ -1,25 +1,20 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment;
 
 public class afms
-  implements TextWatcher
+  extends ajey
 {
-  public afms(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel) {}
+  public afms(ChatHistoryTroopAllFragment paramChatHistoryTroopAllFragment) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  protected void a(Object paramObject)
   {
-    NearbyUtils.a(this.a.a, 30);
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afms
  * JD-Core Version:    0.7.0.1
  */

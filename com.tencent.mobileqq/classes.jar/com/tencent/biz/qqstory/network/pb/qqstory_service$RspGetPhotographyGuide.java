@@ -9,12 +9,12 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_service$RspGetPhotographyGuide
-  extends MessageMicro
+  extends MessageMicro<RspGetPhotographyGuide>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public qqstory_struct.ErrorInfo result = new qqstory_struct.ErrorInfo();
   public final PBUInt32Field seqno = PBField.initUInt32(0);
-  public final PBRepeatField word = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> word = PBField.initRepeat(PBBytesField.__repeatHelper__);
   
   static
   {
@@ -24,7 +24,7 @@ public final class qqstory_service$RspGetPhotographyGuide
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPhotographyGuide
  * JD-Core Version:    0.7.0.1
  */

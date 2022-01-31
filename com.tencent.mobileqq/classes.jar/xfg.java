@@ -1,62 +1,33 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
-import tencent.im.oidb.cmd0x438.oidb_0x438.RedBagInfo;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import com.tencent.biz.widgets.TabLayout;
+import java.io.PrintStream;
 
 public class xfg
-  extends Handler
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public xfg(PasswdRedBagManager paramPasswdRedBagManager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public xfg(TabLayout paramTabLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView, int paramInt5) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    int i = paramMessage.what;
-    boolean bool;
-    if (paramMessage.arg1 == 1)
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    System.out.println("value = " + f);
+    int i = 0;
+    while (i < this.jdField_a_of_type_Int - this.b)
     {
-      bool = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("PasswdRedBagManager", 2, "receive passwdredbags from group or disgroup, isSuccess = " + bool);
+      paramValueAnimator = this.jdField_a_of_type_ComTencentBizWidgetsTabLayout.getChildAt(this.c + i);
+      if (paramValueAnimator != null) {
+        paramValueAnimator.setTranslationX(this.d * f);
       }
-      if (bool) {
-        break label56;
-      }
+      i += 1;
     }
-    for (;;)
-    {
-      return;
-      bool = false;
-      break;
-      label56:
-      if ((i == 1) || (i == 0))
-      {
-        ThreadManager.getFileThreadHandler().post(new xfh(this, i));
-        paramMessage = (List)paramMessage.obj;
-        if (paramMessage != null)
-        {
-          paramMessage = paramMessage.iterator();
-          while (paramMessage.hasNext())
-          {
-            oidb_0x438.RedBagInfo localRedBagInfo = (oidb_0x438.RedBagInfo)paramMessage.next();
-            this.a.a(localRedBagInfo);
-          }
-        }
-      }
-    }
+    this.jdField_a_of_type_AndroidViewView.setTranslationX(f * -this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     xfg
  * JD-Core Version:    0.7.0.1
  */

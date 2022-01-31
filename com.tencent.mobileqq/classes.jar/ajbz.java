@@ -1,34 +1,31 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.redtouch.RedTouch;
 
 public class ajbz
-  implements View.OnClickListener
 {
-  public ajbz(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
-    case 2131364683: 
-      TroopAvatarWallPreviewActivity.d(this.a);
-      return;
-    case 2131364684: 
-      TroopAvatarWallPreviewActivity.e(this.a);
-      return;
-    case 2131364685: 
-      TroopAvatarWallPreviewActivity.f(this.a);
-      return;
-    }
-    TroopAvatarWallPreviewActivity.g(this.a);
-  }
+  public ajbx a;
+  public View a;
+  public ImageView a;
+  public RelativeLayout a;
+  public TextView a;
+  public URLImageView a;
+  public RedTouch a;
+  public ImageView b;
+  public RelativeLayout b;
+  public TextView b;
+  public ImageView c;
+  public RelativeLayout c;
+  public TextView c;
+  public ImageView d;
+  public ImageView e;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajbz
  * JD-Core Version:    0.7.0.1
  */

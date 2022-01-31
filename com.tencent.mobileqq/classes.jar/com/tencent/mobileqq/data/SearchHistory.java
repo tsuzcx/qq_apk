@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class SearchHistory
-  extends Entity
+  extends atmo
 {
   public int count;
   public String displayName;
   public String extralInfo;
-  @unique
+  @atoc
   public String key;
   public long time;
   public String troopUin;

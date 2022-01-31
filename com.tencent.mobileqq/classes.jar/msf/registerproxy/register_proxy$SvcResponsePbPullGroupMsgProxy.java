@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class register_proxy$SvcResponsePbPullGroupMsgProxy
-  extends MessageMicro
+  extends MessageMicro<SvcResponsePbPullGroupMsgProxy>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field member_seq = PBField.initUInt64(0L);

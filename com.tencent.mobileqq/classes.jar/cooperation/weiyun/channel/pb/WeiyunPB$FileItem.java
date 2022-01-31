@@ -13,7 +13,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class WeiyunPB$FileItem
-  extends MessageMicro
+  extends MessageMicro<FileItem>
 {
   public static final int APPID_FIELD_NUMBER = 12;
   public static final int APP_DATA_FIELD_NUMBER = 30;
@@ -89,7 +89,7 @@ public final class WeiyunPB$FileItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cooperation.weiyun.channel.pb.WeiyunPB.FileItem
  * JD-Core Version:    0.7.0.1
  */

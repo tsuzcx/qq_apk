@@ -1,40 +1,28 @@
 package com.tencent.mobileqq.msf.sdk.utils;
 
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.LinkedBlockingDeque;
 
 class e
   implements Runnable
 {
-  e(MonitorSocketStat paramMonitorSocketStat) {}
+  e(MonitorSocketStat paramMonitorSocketStat, b paramb, int paramInt) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("MSF.D.MonitorSocket", 2, "start to get status of Process");
+      QLog.d("MonitorSocketStat", 1, "sendMsg fail, total=" + MonitorSocketStat.access$100(this.c).size() + " dataFlowItem=" + this.a + " result=" + this.b);
     }
-    if (MsfSdkUtils.isTopActivity(BaseApplication.getContext()))
+    try
     {
-      if (MonitorSocketStat.access$200(this.a))
-      {
-        MonitorSocketStat.access$402(this.a, (byte)4);
-        return;
-      }
-      MonitorSocketStat.access$402(this.a, (byte)1);
+      MonitorSocketStat.access$100(this.c).put(this.a);
       return;
     }
-    if (MonitorSocketStat.access$200(this.a))
+    catch (Exception localException)
     {
-      MonitorSocketStat.access$402(this.a, (byte)2);
-      return;
+      while (!QLog.isColorLevel()) {}
+      QLog.d("MonitorSocketStat", 1, "MonitorSocketStat excep!", localException);
     }
-    if ((!MsfSdkUtils.isTopActivity(BaseApplication.getContext())) && (!MonitorSocketStat.access$200(this.a)))
-    {
-      MonitorSocketStat.access$402(this.a, (byte)3);
-      return;
-    }
-    MonitorSocketStat.access$402(this.a, (byte)0);
   }
 }
 

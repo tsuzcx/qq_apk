@@ -1,15 +1,22 @@
-import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity.13.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class nsk
-  implements Runnable
+public class nsk
+  extends ajjh
 {
-  nsk(nsj paramnsj) {}
+  public nsk(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  public void run()
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    QQToast.a(this.a.a, 1, "网络异常，请稍后重试", 0).a();
-    this.a.a.a(2);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyDeliverBiuActivity", 2, "current uin = " + paramString + " is success " + paramBoolean);
+    }
+    if (paramBoolean) {
+      ThreadManager.getUIHandler().post(new ReadInJoyDeliverBiuActivity.13.1(this));
+    }
   }
 }
 

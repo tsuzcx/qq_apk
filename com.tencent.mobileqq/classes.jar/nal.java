@@ -1,37 +1,42 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.util.ProfileParams;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-public final class nal
-  implements DialogInterface.OnClickListener
+class nal
+  implements View.OnClickListener
 {
-  public nal(Activity paramActivity, ProfileParams paramProfileParams, QQAppInterface paramQQAppInterface) {}
+  nal(nak paramnak) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
+    if (this.a.jdField_a_of_type_Nac.b == 2)
     {
+      paramView = new Intent((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramView.putExtra("url", this.a.jdField_a_of_type_Nac.jdField_c_of_type_JavaLangString);
+      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      nbe.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 3, 0);
     }
-    do
-    {
-      do
-      {
-        return;
-        ForwardSdkShareOption.a(this.jdField_a_of_type_AndroidAppActivity, false, "shareToQzone", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams.a()).longValue());
-      } while ((this.jdField_a_of_type_AndroidAppActivity == null) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing()));
-      this.jdField_a_of_type_AndroidAppActivity.setResult(0);
-      this.jdField_a_of_type_AndroidAppActivity.finish();
+    while (this.a.jdField_a_of_type_Nac.b != 1) {
       return;
-    } while (PublicAccountUtil.a == null);
-    PublicAccountUtil.a.dismiss();
-    PublicAccountUtil.a = null;
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-    PublicAccountUtil.d(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams);
+    }
+    switch (this.a.jdField_c_of_type_Int)
+    {
+    case 3: 
+    default: 
+      return;
+    case 0: 
+      nak.a(this.a);
+      return;
+    case 1: 
+      nbe.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_Nac.f);
+      nbe.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 1, 0);
+      return;
+    }
+    nbe.a(this.a.jdField_a_of_type_Nac);
+    nbe.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 4, 0);
   }
 }
 

@@ -1,36 +1,83 @@
-import com.tencent.av.AVLog;
-import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
-import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager.OnResourceDownloadListener;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.LinkedList;
+import java.util.Random;
 
-public class ahmi
-  implements INetEngine.INetEngineListener
+class ahmi
 {
-  public ahmi(CaptureVideoFilterManager paramCaptureVideoFilterManager) {}
+  private int jdField_a_of_type_Int;
+  private LinkedList<Integer> jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
+  private Random jdField_a_of_type_JavaUtilRandom = new Random();
+  private int[] jdField_a_of_type_ArrayOfInt;
+  private int b;
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
-  
-  public void a(NetResp paramNetResp)
+  public ahmi(int paramInt1, int paramInt2)
   {
-    FilterDesc localFilterDesc = (FilterDesc)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a();
-    if (paramNetResp.jdField_a_of_type_Int != 0)
+    this.b = paramInt1;
+    if (paramInt2 > 0)
     {
-      AVLog.c("CaptureVideoFilterManager", "download IconFile failed. errorCode: " + paramNetResp.b + ", errorMsg: " + paramNetResp.jdField_a_of_type_JavaLangString + ", file: " + localFilterDesc.c);
-      return;
+      this.jdField_a_of_type_ArrayOfInt = new int[paramInt2];
+      paramInt1 = 0;
+      while (paramInt1 < paramInt2)
+      {
+        this.jdField_a_of_type_ArrayOfInt[paramInt1] = -1;
+        paramInt1 += 1;
+      }
     }
-    if ((CaptureVideoFilterManager.a(this.a).decrementAndGet() == 0) && (CaptureVideoFilterManager.a(this.a) != null)) {
-      CaptureVideoFilterManager.a(this.a).a(true);
+    this.jdField_a_of_type_ArrayOfInt = null;
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_JavaUtilLinkedList.size() == 0)
+    {
+      i = 0;
+      if (i < this.b)
+      {
+        if (a(i)) {}
+        for (;;)
+        {
+          i += 1;
+          break;
+          this.jdField_a_of_type_JavaUtilLinkedList.add(Integer.valueOf(i));
+        }
+      }
     }
-    AVLog.c("CaptureVideoFilterManager", "download iconFile success. file: " + localFilterDesc.c);
+    int i = this.jdField_a_of_type_JavaUtilRandom.nextInt(this.jdField_a_of_type_JavaUtilLinkedList.size()) % this.b;
+    int j = ((Integer)this.jdField_a_of_type_JavaUtilLinkedList.get(i)).intValue();
+    this.jdField_a_of_type_JavaUtilLinkedList.remove(i);
+    a(j);
+    return j;
+  }
+  
+  public void a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_ArrayOfInt != null) && (this.jdField_a_of_type_ArrayOfInt.length > this.jdField_a_of_type_Int))
+    {
+      this.jdField_a_of_type_ArrayOfInt[this.jdField_a_of_type_Int] = paramInt;
+      this.jdField_a_of_type_Int += 1;
+      this.jdField_a_of_type_Int %= this.jdField_a_of_type_ArrayOfInt.length;
+    }
+  }
+  
+  public boolean a(int paramInt)
+  {
+    if ((this.jdField_a_of_type_ArrayOfInt == null) || (this.jdField_a_of_type_ArrayOfInt.length == 0)) {}
+    for (;;)
+    {
+      return false;
+      int i = 0;
+      while (i < this.jdField_a_of_type_ArrayOfInt.length)
+      {
+        if (this.jdField_a_of_type_ArrayOfInt[i] == paramInt) {
+          return true;
+        }
+        i += 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahmi
  * JD-Core Version:    0.7.0.1
  */

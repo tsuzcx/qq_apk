@@ -12,13 +12,13 @@ public final class f
   static ArrayList i;
   static ArrayList j;
   static byte[] k;
-  public b a;
-  public ArrayList b;
-  public ArrayList c;
+  public b a = null;
+  public ArrayList b = null;
+  public ArrayList c = null;
   public String d = "";
   public String e = "";
-  public byte f;
-  public byte[] g;
+  public byte f = 0;
+  public byte[] g = null;
   
   public f() {}
   

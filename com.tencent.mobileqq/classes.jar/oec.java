@@ -1,44 +1,65 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.MyStorys;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.Repository;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetUserSelfInfoStep;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetUserSelfInfoStep.Response;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class oec
-  implements Runnable
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  public oec(GetUserSelfInfoStep paramGetUserSelfInfoStep, GetUserSelfInfoStep.Response paramResponse) {}
-  
-  public void run()
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    boolean bool = true;
-    SLog.a("Q.qqstory.home.GetUserSelfInfoStep", "receive the user self info: %s", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserSelfInfoStep$Response);
-    Object localObject = GetUserSelfInfoStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserSelfInfoStep).a();
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserSelfInfoStep$Response.jdField_b_of_type_Int == 1) {}
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d("VideoColumnHandler", 1, "[onReceiveConfig] " + paramString);
     for (;;)
     {
-      ((MyStorys)localObject).jdField_c_of_type_Boolean = bool;
-      GetUserSelfInfoStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserSelfInfoStep).a().jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserSelfInfoStep$Response.jdField_c_of_type_Int;
-      GetUserSelfInfoStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserSelfInfoStep).a().jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserSelfInfoStep$Response.jdField_d_of_type_Int;
-      GetUserSelfInfoStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserSelfInfoStep).a().a = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserSelfInfoStep$Response.e;
-      GetUserSelfInfoStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserSelfInfoStep).a().jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserSelfInfoStep$Response.jdField_c_of_type_JavaLangString;
-      GetUserSelfInfoStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserSelfInfoStep).a().jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserSelfInfoStep$Response.jdField_d_of_type_JavaLangString;
-      GetUserSelfInfoStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserSelfInfoStep).a().jdField_d_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserSelfInfoStep$Response.a;
-      localObject = (StoryConfigManager)SuperManager.a(10);
-      ((StoryConfigManager)localObject).b("qqstory_my_fans_count", Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserSelfInfoStep$Response.jdField_c_of_type_Int));
-      ((StoryConfigManager)localObject).b("qqstory_i_am_vip", Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserSelfInfoStep$Response.jdField_b_of_type_Int));
-      ((StoryConfigManager)localObject).b("qqstory_my_vidoe_count", Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserSelfInfoStep$Response.jdField_d_of_type_Int));
-      ((StoryConfigManager)localObject).b("qqstory_my_visiter_count", Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserSelfInfoStep$Response.e));
-      ((StoryConfigManager)localObject).b("qqstory_my_newest_video_cover", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserSelfInfoStep$Response.jdField_c_of_type_JavaLangString);
-      ((StoryConfigManager)localObject).b("qqstory_my_newest_video_vid", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserSelfInfoStep$Response.jdField_d_of_type_JavaLangString);
-      QQStoryContext.a().a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserSelfInfoStep$Response.a);
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetUserSelfInfoStep.d();
-      return;
-      bool = false;
+      String str1;
+      String str2;
+      try
+      {
+        paramString = ocx.a(paramString);
+        Iterator localIterator = paramString.keySet().iterator();
+        if (localIterator.hasNext())
+        {
+          str1 = (String)localIterator.next();
+          str2 = (String)paramString.get(str1);
+          if (TextUtils.isEmpty(str2)) {
+            break label209;
+          }
+          QLog.d("VideoColumnHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+          if (TextUtils.equals(str1, "video_channel_feeds_type")) {
+            bgmq.a(Integer.parseInt(str2));
+          }
+        }
+        else
+        {
+          return true;
+        }
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoColumnHandler", 2, "error in parse video_feeds_Type config: " + paramString.getMessage());
+        }
+      }
+      if (TextUtils.equals(str1, "multi_video_feeds_type"))
+      {
+        bgmq.b(Integer.parseInt(str2));
+        continue;
+        label209:
+        QLog.d("VideoColumnHandler", 2, "key: " + str1 + " of value is null");
+      }
     }
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    super.onWipeConfig(paramInt);
+    bgmq.a(1);
+    bgmq.b(1);
   }
 }
 

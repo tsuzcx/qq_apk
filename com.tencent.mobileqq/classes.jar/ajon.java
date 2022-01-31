@@ -1,39 +1,16 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.QLog;
-
-public class ajon
-  implements CompoundButton.OnCheckedChangeListener
+class ajon
+  extends ajmm
 {
-  public ajon(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  ajon(ajom paramajom) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void a(int paramInt1, int paramInt2)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("口算开关状态改变 ");
-      if (!paramBoolean) {
-        break label71;
-      }
-    }
-    label71:
-    for (paramCompoundButton = "on";; paramCompoundButton = "off")
-    {
-      QLog.d("PublishHomeWorkFragment", 2, paramCompoundButton);
-      PublishHomeWorkFragment.c(this.a, paramBoolean);
-      if (PublishHomeWorkFragment.e(this.a)) {
-        PublishHomeWorkFragment.a(this.a).setChecked(true);
-      }
-      return;
-    }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajon
  * JD-Core Version:    0.7.0.1
  */

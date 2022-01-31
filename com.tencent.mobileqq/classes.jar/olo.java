@@ -1,68 +1,75 @@
-import android.app.Activity;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import com.tencent.biz.qqstory.takevideo.EditVideoPart;
-import com.tencent.biz.qqstory.takevideo.EditVideoPlayerExport;
-import com.tencent.biz.qqstory.takevideo.EditVideoUi;
-import com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
-import com.tencent.biz.qqstory.takevideo.EditWebVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.publish.GenerateContext;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.reactive.SimpleObserver;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_IProxyFactory;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import com.tencent.qqlive.mediaplayer.api.TVK_UserInfo;
 
 public class olo
-  extends SimpleObserver
 {
-  public olo(EditWebVideoPartManager paramEditWebVideoPartManager, GenerateContext paramGenerateContext) {}
-  
-  public void a(GenerateContext paramGenerateContext)
+  public static void a(String paramString)
   {
-    super.onNext(paramGenerateContext);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.f();
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity().overridePendingTransition(0, 0);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.p();
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.h = false;
-    Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      ((EditVideoPart)localIterator.next()).b(paramGenerateContext);
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.h = false;
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.f();
-    paramGenerateContext = (EditVideoPlayerExport)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.a(EditVideoPlayerExport.class);
-    if (paramGenerateContext != null) {
-      paramGenerateContext.j();
-    }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.b.isEmpty())
+    Object localObject = TVK_SDKMgr.getProxyFactory();
+    if (localObject != null)
     {
-      paramGenerateContext = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity();
-      if (paramGenerateContext != null)
+      localObject = ((TVK_IProxyFactory)localObject).getCacheMgr(BaseApplicationImpl.getContext());
+      if (localObject != null)
       {
-        ((EditWebVideoActivity)paramGenerateContext).d("视频合成中...");
-        EditWebVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager, paramGenerateContext, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPublishGenerateContext.a);
+        TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo(2, nbe.a(paramString), "");
+        localTVK_PlayerVideoInfo.setConfigMap("cache_duration", "2");
+        localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", qhv.a);
+        ((TVK_ICacheMgr)localObject).preLoadVideoByUrl(BaseApplicationImpl.getContext(), paramString, null, localTVK_PlayerVideoInfo);
       }
-      return;
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(), "对不起，视频发送失败...", 0).a();
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity().finish();
   }
   
-  public void onCancel()
+  public static boolean a(String paramString)
   {
-    super.onCancel();
-  }
-  
-  public void onError(@NonNull Error paramError)
-  {
-    super.onError(paramError);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.b.add(paramError);
-    if (QLog.isColorLevel()) {
-      QLog.e("EditWebVideoActivity", 2, "publish error:", paramError);
+    Object localObject1 = TVK_SDKMgr.getProxyFactory();
+    if (localObject1 == null) {
+      return false;
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(), "对不起，视频发送失败...", 0).a();
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditWebVideoPartManager.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity().finish();
+    localObject1 = ((TVK_IProxyFactory)localObject1).getCacheMgr(BaseApplicationImpl.getContext());
+    if (localObject1 == null) {
+      return false;
+    }
+    Object localObject2 = nbe.a(paramString);
+    TVK_UserInfo localTVK_UserInfo = new TVK_UserInfo("", "");
+    localObject2 = new TVK_PlayerVideoInfo(2, (String)localObject2, "");
+    ((TVK_PlayerVideoInfo)localObject2).setConfigMap("cache_duration", "2");
+    ((TVK_PlayerVideoInfo)localObject2).setConfigMap("cache_servers_type", qhv.a);
+    ((TVK_PlayerVideoInfo)localObject2).addExtraParamsMap("shouq_bus_type", "bus_type_kandian_feeds");
+    String[] arrayOfString = new String[6];
+    arrayOfString[0] = "msd";
+    arrayOfString[1] = "hd";
+    arrayOfString[2] = "fhd";
+    arrayOfString[3] = "mp4";
+    arrayOfString[4] = "shd";
+    arrayOfString[5] = "sd";
+    int m = arrayOfString.length;
+    int j = 0;
+    int i = 0;
+    while (j < m)
+    {
+      String str = arrayOfString[j];
+      try
+      {
+        int k = ((TVK_ICacheMgr)localObject1).isVideoCached(BaseApplicationImpl.getContext(), paramString, localTVK_UserInfo, (TVK_PlayerVideoInfo)localObject2, str);
+        i = k;
+      }
+      catch (Exception localException)
+      {
+        label176:
+        break label176;
+        j += 1;
+      }
+      if ((i == 2) || (i == 1)) {
+        return true;
+      }
+    }
+    if (QLog.isColorLevel()) {}
+    return false;
   }
 }
 

@@ -1,14 +1,14 @@
 package cooperation.qzone;
 
-import amyr;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bfox;
 
 public class LbsDataV2$CellInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amyr();
+  public static final Parcelable.Creator<CellInfo> CREATOR = new bfox();
   public int cellId = -1;
   public int lac = -1;
   public int mcc = -1;

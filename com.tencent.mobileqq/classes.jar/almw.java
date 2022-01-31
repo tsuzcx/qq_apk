@@ -1,19 +1,31 @@
-import android.widget.TextView;
-import com.tencent.open.applist.QZoneAppListActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.Pair;
 
 class almw
-  implements Runnable
+  extends Handler
 {
-  almw(almv paramalmv) {}
-  
-  public void run()
+  almw(almv paramalmv, Looper paramLooper)
   {
-    QZoneAppListActivity.a(this.a.a).setText("安装失败");
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    super.handleMessage(paramMessage);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    paramMessage = (Pair)paramMessage.obj;
+    this.a.b(((Long)paramMessage.first).longValue(), ((Long)paramMessage.second).longValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     almw
  * JD-Core Version:    0.7.0.1
  */

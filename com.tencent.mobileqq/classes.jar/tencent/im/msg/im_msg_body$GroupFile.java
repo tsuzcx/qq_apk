@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class im_msg_body$GroupFile
-  extends MessageMicro
+  extends MessageMicro<GroupFile>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_batch_id = PBField.initBytes(ByteStringMicro.EMPTY);

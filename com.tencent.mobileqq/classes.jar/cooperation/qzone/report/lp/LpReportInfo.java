@@ -6,7 +6,7 @@ public abstract interface LpReportInfo
 {
   public abstract String getSimpleInfo();
   
-  public abstract Map toMap();
+  public abstract Map<String, String> toMap();
 }
 
 

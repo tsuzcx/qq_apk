@@ -1,21 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.AddressItem;
+import java.util.HashMap;
 
-public class sdi
-  implements DialogInterface.OnClickListener
+public abstract interface sdi
 {
-  public sdi(ChatHistory paramChatHistory) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ThreadManager.post(new sdj(this), 8, null, false);
-  }
+  public abstract void a(ErrorMessage paramErrorMessage, HashMap<String, AddressItem> paramHashMap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sdi
  * JD-Core Version:    0.7.0.1
  */

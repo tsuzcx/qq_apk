@@ -1,29 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.biz.qqstory.takevideo.CommonPicUploadFragment;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.biz.pubaccount.readinjoy.struct.TabChannelCoverInfo;
 
-public class ogz
-  implements DialogInterface.OnKeyListener
+class ogz
+  implements psi<TabChannelCoverInfo>
 {
-  public ogz(CommonPicUploadFragment paramCommonPicUploadFragment) {}
+  ogz(ogy paramogy, int paramInt) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public boolean a(TabChannelCoverInfo paramTabChannelCoverInfo)
   {
-    if (paramInt == 84) {
-      return true;
-    }
-    if (paramInt == 4)
-    {
-      this.a.a();
-      paramDialogInterface = this.a.a;
-      paramKeyEvent = this.a.a;
-      paramDialogInterface.setResult(0);
-      this.a.a.finish();
-      return true;
-    }
-    return false;
+    return paramTabChannelCoverInfo.mChannelCoverId == this.jdField_a_of_type_Int;
   }
 }
 

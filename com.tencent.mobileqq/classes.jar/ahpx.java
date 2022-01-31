@@ -1,18 +1,27 @@
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import android.os.Message;
+import com.tencent.mobileqq.activity.selectmember.ContactsInnerFrame;
+import mqq.os.MqqHandler;
 
 public class ahpx
-  implements Runnable
+  extends MqqHandler
 {
-  public ahpx(CameraCaptureView paramCameraCaptureView) {}
+  public ahpx(ContactsInnerFrame paramContactsInnerFrame) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    CameraCaptureView.a(this.a, false);
+    switch (paramMessage.what)
+    {
+    case 1: 
+    case 2: 
+    default: 
+      return;
+    }
+    ContactsInnerFrame.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahpx
  * JD-Core Version:    0.7.0.1
  */

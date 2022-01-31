@@ -1,38 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebShareInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebShareUtils;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.qphone.base.util.QLog;
-
-class mpn
-  implements Runnable
+public class mpn
 {
-  mpn(mpm parammpm, boolean paramBoolean, int paramInt, FastWebShareInfo paramFastWebShareInfo) {}
+  public final int a;
+  public final String a;
   
-  public void run()
+  private mpn(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      FastWebShareUtils localFastWebShareUtils = FastWebActivity.a(this.jdField_a_of_type_Mpm.a);
-      ArticleInfo localArticleInfo = FastWebActivity.a(this.jdField_a_of_type_Mpm.a);
-      int i = this.jdField_a_of_type_Int;
-      FastWebActivity localFastWebActivity = this.jdField_a_of_type_Mpm.a;
-      String str2 = FastWebActivity.a(this.jdField_a_of_type_Mpm.a).mArticleContentUrl;
-      if (FastWebActivity.a(this.jdField_a_of_type_Mpm.a)) {}
-      for (String str1 = "0X8008994";; str1 = "0X800898D")
-      {
-        localFastWebShareUtils.a(localArticleInfo, i, localFastWebActivity, str2, str1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebShareInfo.a(this.jdField_a_of_type_Int));
-        return;
-      }
-    }
-    QRUtils.a(1, 2131435496);
-    QLog.d("Q.readinjoy.fast_web", 2, "shareJson get false ! action : " + this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     mpn
  * JD-Core Version:    0.7.0.1
  */

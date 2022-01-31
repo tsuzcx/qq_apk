@@ -1,43 +1,61 @@
-import android.animation.Animator;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import com.tencent.widget.itemtouchhelper.ItemTouchHelper;
-import com.tencent.widget.itemtouchhelper.ItemTouchHelper.Callback;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 public class ammf
-  extends amml
+  extends alzl<amme>
 {
-  public ammf(ItemTouchHelper paramItemTouchHelper, RecyclerView.ViewHolder paramViewHolder1, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, int paramInt3, RecyclerView.ViewHolder paramViewHolder2)
+  public static amme a()
   {
-    super(paramItemTouchHelper, paramViewHolder1, paramInt1, paramInt2, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
+    return (amme)alzw.a().a(437);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public int a()
   {
-    super.onAnimationEnd(paramAnimator);
-    if (this.b) {}
-    for (;;)
-    {
-      return;
-      if (this.jdField_a_of_type_Int <= 0) {
-        this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper$Callback.a(this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder);
-      }
-      while (this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper.jdField_a_of_type_AndroidViewView == this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView)
-      {
-        this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper.a(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView);
-        return;
-        this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$ViewHolder.itemView);
-        this.jdField_a_of_type_Boolean = true;
-        if (this.jdField_a_of_type_Int > 0) {
-          this.jdField_a_of_type_ComTencentWidgetItemtouchhelperItemTouchHelper.a(this, this.jdField_a_of_type_Int);
-        }
-      }
+    return 437;
+  }
+  
+  @NonNull
+  public amme a(int paramInt)
+  {
+    return new amme();
+  }
+  
+  @Nullable
+  public amme a(alzs[] paramArrayOfalzs)
+  {
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
+      return amme.a(paramArrayOfalzs);
     }
+    return null;
+  }
+  
+  public Class<amme> a()
+  {
+    return amme.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(amme paramamme) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ammf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,22 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.util.WeakReferenceHandler;
-import java.lang.ref.WeakReference;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View;
+import android.view.View.OnCreateContextMenuListener;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
 
 public class abcl
-  implements Runnable
+  implements View.OnCreateContextMenuListener
 {
-  public abcl(ArkLocalAppMgr paramArkLocalAppMgr, abcp paramabcp, abcw paramabcw) {}
+  public abcl(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
   
-  public void run()
+  public void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    this.jdField_a_of_type_Abcp.a = NetworkUtil.g(BaseApplication.getContext());
-    ArkLocalAppMgr localArkLocalAppMgr = (ArkLocalAppMgr)ArkLocalAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr).get();
-    if (localArkLocalAppMgr != null) {
-      ArkLocalAppMgr.a(localArkLocalAppMgr).post(new abcm(this));
-    }
+    paramContextMenu.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abcl
  * JD-Core Version:    0.7.0.1
  */

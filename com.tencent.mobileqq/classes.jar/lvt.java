@@ -1,21 +1,20 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyHeaderPresenter;
-import com.tencent.widget.KandianPopupWindow.OnUninterestConfirmListener;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
 
-class lvt
-  implements KandianPopupWindow.OnUninterestConfirmListener
+public class lvt
+  implements DialogInterface.OnClickListener
 {
-  lvt(lvs paramlvs) {}
+  public lvt(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public void a(View paramView, int paramInt, ArrayList paramArrayList, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReadInJoyHeaderPresenter.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPresenterReadInJoyHeaderPresenter, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelIReadInJoyModel, paramInt, paramArrayList, paramObject);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lvt
  * JD-Core Version:    0.7.0.1
  */

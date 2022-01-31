@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class structmsg$RspHead
-  extends MessageMicro
+  extends MessageMicro<RspHead>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "result", "msg_fail" }, new Object[] { Integer.valueOf(0), "" }, RspHead.class);
   public final PBStringField msg_fail = PBField.initString("");

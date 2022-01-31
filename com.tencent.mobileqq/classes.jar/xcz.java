@@ -1,22 +1,25 @@
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import com.tencent.image.URLImageView;
 
-public class xcz
-  implements Runnable
+class xcz
+  implements Animation.AnimationListener
 {
-  final boolean jdField_a_of_type_Boolean = PhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity);
+  xcz(xcv paramxcv, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
   
-  public xcz(PhotoListActivity paramPhotoListActivity) {}
-  
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.B) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.b())) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.runOnUiThread(new xda(this));
-    }
+    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xcz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,23 @@
-import android.content.Context;
-import com.tencent.mobileqq.vas.URLInterceptManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.aidl.ARScanStarFaceActInfo;
 
-public class akpk
-  implements Runnable
+public final class akpk
+  implements Parcelable.Creator<ARScanStarFaceActInfo>
 {
-  public akpk(URLInterceptManager paramURLInterceptManager, Context paramContext) {}
-  
-  public void run()
+  public ARScanStarFaceActInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasURLInterceptManager.a(this.jdField_a_of_type_AndroidContentContext);
+    return new ARScanStarFaceActInfo(paramParcel);
+  }
+  
+  public ARScanStarFaceActInfo[] a(int paramInt)
+  {
+    return new ARScanStarFaceActInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akpk
  * JD-Core Version:    0.7.0.1
  */

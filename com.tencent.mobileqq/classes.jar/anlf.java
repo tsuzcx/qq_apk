@@ -1,20 +1,24 @@
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
-import cooperation.qzone.webviewplugin.QzoneUiJsPlugin;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.qphone.base.util.QLog;
 
-public class anlf
-  implements Runnable
+class anlf
+  implements arib
 {
-  public anlf(QzoneUiJsPlugin paramQzoneUiJsPlugin, String paramString) {}
+  anlf(anle paramanle, String paramString) {}
   
-  public void run()
+  public void a()
   {
-    RemoteHandleManager.a().a().i(this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("PicEmoticonInfo", 2, "[play back] ready to send msg,magicvalue:" + this.jdField_a_of_type_Anle.jdField_a_of_type_ComTencentMobileqqDataEmoticon.magicValue);
+    }
+    this.jdField_a_of_type_Anle.jdField_a_of_type_ComTencentMobileqqDataEmoticon.magicValue = this.jdField_a_of_type_JavaLangString;
+    aael.a(this.jdField_a_of_type_Anle.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Anle.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Anle.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Anle.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
+    awqx.b(this.jdField_a_of_type_Anle.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X800579D", 0, 0, this.jdField_a_of_type_Anle.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anlf
  * JD-Core Version:    0.7.0.1
  */

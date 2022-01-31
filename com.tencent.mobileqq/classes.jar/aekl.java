@@ -1,28 +1,28 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.lightReply.LightReplyMenuManager;
-import com.tencent.mobileqq.utils.FileUtils;
-import mqq.os.MqqHandler;
+import android.graphics.RectF;
 
 public class aekl
-  implements Runnable
 {
-  public aekl(LightReplyMenuManager paramLightReplyMenuManager, String paramString1, String paramString2) {}
+  public int a;
+  public aekm a;
+  public aekn a;
+  public RectF a;
   
-  public void run()
+  public aekl()
   {
-    synchronized ()
-    {
-      boolean bool = FileUtils.a(this.jdField_a_of_type_JavaLangString, this.b);
-      if (!bool) {
-        ThreadManager.getUIHandler().post(new aekm(this));
-      }
-      return;
-    }
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+    this.jdField_a_of_type_Aekn = new aekn(0.0D, 0.0D);
+    this.jdField_a_of_type_Aekm = new aekm(0.0D, 0.0D);
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public String toString()
+  {
+    return "ItemStatus{rect=" + this.jdField_a_of_type_AndroidGraphicsRectF + ", velocity=" + this.jdField_a_of_type_Aekn + ", acceleration=" + this.jdField_a_of_type_Aekm + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aekl
  * JD-Core Version:    0.7.0.1
  */

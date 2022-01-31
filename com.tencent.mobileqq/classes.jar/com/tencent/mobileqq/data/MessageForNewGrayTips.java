@@ -1,31 +1,30 @@
 package com.tencent.mobileqq.data;
 
-import accj;
+import akhp;
+import amsy;
+import amwx;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.webkit.URLUtil;
 import android.widget.TextView;
+import awqx;
+import bacn;
+import bade;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.utils.MessagePkgUtils;
-import com.tencent.mobileqq.dating.widget.DatingCommentTextView.TouchableSpan;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class MessageForNewGrayTips
   extends ChatMessage
 {
-  public ArrayList spans;
+  public ArrayList<GrayTipsSpan> spans;
   
   public void buildTextView(QQAppInterface paramQQAppInterface, TextView paramTextView)
   {
@@ -41,7 +40,7 @@ public class MessageForNewGrayTips
         GrayTipsSpan localGrayTipsSpan = (GrayTipsSpan)localIterator.next();
         try
         {
-          paramQQAppInterface.setSpan(new DatingCommentTextView.TouchableSpan(new accj(this, localGrayTipsSpan), Color.rgb(26, 144, 240)), localGrayTipsSpan.begin, localGrayTipsSpan.end, 33);
+          paramQQAppInterface.setSpan(new amwx(new amsy(this, localGrayTipsSpan), -12541697), localGrayTipsSpan.begin, localGrayTipsSpan.end, 33);
         }
         catch (Exception localException)
         {
@@ -59,13 +58,13 @@ public class MessageForNewGrayTips
     for (;;)
     {
       return;
-      Object localObject = JumpParser.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramView.getContext(), paramString);
+      Object localObject = bade.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), paramView.getContext(), paramString);
       if (localObject != null) {
-        ((JumpAction)localObject).b();
+        ((bacn)localObject).c();
       }
       while ((this.msgtype == -2037) && ((paramView.getContext() instanceof BaseActivity)))
       {
-        ReportController.b(((BaseActivity)paramView.getContext()).app, "CliOper", "", "", "0X80060B7", "0X80060B7", 0, 0, "", "", "", "");
+        awqx.b(((BaseActivity)paramView.getContext()).app, "CliOper", "", "", "0X80060B7", "0X80060B7", 0, 0, "", "", "", "");
         return;
         localObject = new Intent(paramView.getContext(), QQBrowserActivity.class);
         ((Intent)localObject).putExtra("url", URLUtil.guessUrl(paramString));
@@ -78,7 +77,7 @@ public class MessageForNewGrayTips
   {
     try
     {
-      GrayTipsInfo localGrayTipsInfo = (GrayTipsInfo)MessagePkgUtils.a(this.msgData);
+      GrayTipsInfo localGrayTipsInfo = (GrayTipsInfo)akhp.a(this.msgData);
       if (localGrayTipsInfo != null)
       {
         this.msg = localGrayTipsInfo.text;
@@ -96,7 +95,7 @@ public class MessageForNewGrayTips
     }
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     GrayTipsInfo localGrayTipsInfo;
     if (this.msg != null)
@@ -107,7 +106,7 @@ public class MessageForNewGrayTips
     }
     try
     {
-      this.msgData = MessagePkgUtils.a(localGrayTipsInfo);
+      this.msgData = akhp.a(localGrayTipsInfo);
       return;
     }
     catch (Exception localException)

@@ -14,9 +14,9 @@ import java.util.concurrent.ConcurrentHashMap;
 public class LpReportInfos
 {
   private static final String TAG = "LpReport.LpReportInfos";
-  private Map infos = new ConcurrentHashMap();
+  private Map<Integer, REPORT_INFO> infos = new ConcurrentHashMap();
   
-  private void checkParams(int paramInt, Map paramMap, LpReportInfo paramLpReportInfo)
+  private void checkParams(int paramInt, Map<String, String> paramMap, LpReportInfo paramLpReportInfo)
   {
     paramMap = paramMap.entrySet().iterator();
     while (paramMap.hasNext())
@@ -59,7 +59,7 @@ public class LpReportInfos
     this.infos.clear();
   }
   
-  public ArrayList getInfos()
+  public ArrayList<REPORT_INFO> getInfos()
   {
     return new ArrayList(this.infos.values());
   }

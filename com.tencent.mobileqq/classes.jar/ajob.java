@@ -1,26 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
+import com.tencent.mobileqq.data.PhoneContact;
+import java.util.Comparator;
 
 class ajob
-  implements View.OnClickListener
+  implements Comparator<PhoneContact>
 {
-  ajob(ajnz paramajnz, CheckBox paramCheckBox) {}
+  ajob(ajoa paramajoa) {}
   
-  public void onClick(View paramView)
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    paramView = this.jdField_a_of_type_AndroidWidgetCheckBox;
-    if (!this.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramView.setChecked(bool);
-      return;
-    }
+    return paramPhoneContact1.contactID - paramPhoneContact2.contactID;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajob
  * JD-Core Version:    0.7.0.1
  */

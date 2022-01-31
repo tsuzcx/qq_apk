@@ -1,52 +1,104 @@
-import android.graphics.Bitmap;
-import com.tencent.image.DownloadParams;
-import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
-import com.tencent.mobileqq.utils.ImageUtil;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
-public final class akgk
-  implements DownloadParams.DecodeHandler
+public class akgk
+  implements bcgf
 {
-  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
+  private akgl jdField_a_of_type_Akgl;
+  private String jdField_a_of_type_JavaLangString;
+  
+  public akgk(String paramString, akgl paramakgl)
   {
-    if (paramBitmap == null) {
-      paramDownloadParams = null;
-    }
-    do
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Akgl = paramakgl;
+  }
+  
+  public int a(String paramString1, int paramInt, String paramString2, Bundle paramBundle)
+  {
+    int i = -20;
+    if (paramString1.equals(BaseApplicationImpl.sApplication.getPackageName()))
     {
-      do
+      if (this.jdField_a_of_type_JavaLangString == null)
       {
-        Object localObject;
-        do
+        paramString1 = null;
+        paramInt = -1;
+      }
+      for (;;)
+      {
+        if (this.jdField_a_of_type_Akgl != null) {
+          this.jdField_a_of_type_Akgl.a(paramInt);
+        }
+        QLog.d("UpgradeController", 1, "writeCodeToApk:" + this.jdField_a_of_type_JavaLangString + ", forFile:" + paramString2 + " result: " + paramInt, paramString1);
+        return paramInt;
+        if (this.jdField_a_of_type_JavaLangString.length() == 0)
         {
-          do
+          paramString1 = null;
+          paramInt = 0;
+        }
+        else
+        {
+          try
           {
-            return paramDownloadParams;
-            localObject = paramDownloadParams.tag;
-            paramDownloadParams = paramBitmap;
-          } while (!(localObject instanceof int[]));
-          paramDownloadParams = paramBitmap;
-        } while (((int[])localObject).length != 3);
-        paramDownloadParams = (int[])localObject;
-        if (paramDownloadParams[0] == 0) {
-          paramDownloadParams[0] = paramBitmap.getWidth();
+            paramString1 = new File(paramString2);
+            paramBundle = new File(paramString2 + "~tmp");
+            if (paramBundle.exists()) {
+              paramBundle.delete();
+            }
+            paramString1.renameTo(paramBundle);
+            becv.a(paramBundle, this.jdField_a_of_type_JavaLangString);
+            paramBundle.renameTo(paramString1);
+            paramString1 = null;
+            paramInt = 0;
+          }
+          catch (FileNotFoundException paramString1)
+          {
+            paramInt = -30;
+          }
+          catch (IOException paramString1)
+          {
+            paramInt = i;
+            if (paramString1 != null)
+            {
+              paramInt = i;
+              if (paramString1.getMessage() != null)
+              {
+                paramInt = i;
+                if (paramString1.getMessage().contains("space")) {
+                  paramInt = -10;
+                }
+              }
+            }
+          }
+          catch (Exception paramString1)
+          {
+            paramInt = -20;
+          }
         }
-        if (paramDownloadParams[1] == 0) {
-          paramDownloadParams[1] = paramBitmap.getHeight();
-        }
-        paramBitmap = ImageUtil.c(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
-        paramDownloadParams = paramBitmap;
-      } while (paramBitmap != null);
-      paramDownloadParams = paramBitmap;
-    } while (!QLog.isDevelopLevel());
-    QLog.w(URLDrawableDecodeHandler.a(), 2, "ROUND_CORNER_DECODER bitmap == null");
-    return paramBitmap;
+      }
+    }
+    return -1;
+  }
+  
+  public void a(String paramString, int paramInt, Bundle paramBundle)
+  {
+    if (BaseApplicationImpl.sApplication.getPackageName().equals(paramString))
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("UpgradeController", 4, "syncVersionCodeToTool:" + paramString + ", versionCode:" + paramInt);
+      }
+      if ((this.jdField_a_of_type_Akgl != null) && (!this.jdField_a_of_type_Akgl.a(paramInt))) {
+        this.jdField_a_of_type_JavaLangString = null;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akgk
  * JD-Core Version:    0.7.0.1
  */

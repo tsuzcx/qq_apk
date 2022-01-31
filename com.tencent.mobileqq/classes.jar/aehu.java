@@ -1,52 +1,54 @@
-import com.tencent.mobileqq.app.UniteSearchObserver;
-import com.tencent.mobileqq.leba.LebaTitleBar;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
-import com.tencent.mobileqq.search.model.SearchEntryDataModel;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.33.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import mqq.observer.BusinessObserver;
+import mqq.os.MqqHandler;
+import tencent.im.oidb.cmd0xcf8.oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse;
 
 public class aehu
-  extends UniteSearchObserver
+  implements BusinessObserver
 {
-  public aehu(LebaTitleBar paramLebaTitleBar) {}
+  aehu(aegy paramaegy) {}
   
-  public void b(int paramInt1, String paramString, int paramInt2)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.leba_with_feeds_search", 2, "handleSearchDiscoveryError error, resultCode = " + paramInt1 + ",  errorMsg = " + paramString + ", fromType = " + paramInt2);
+      QLog.d(this.a.a, 2, "success:" + String.valueOf(paramBoolean));
     }
-  }
-  
-  public void b(List paramList, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.lebatab.leba_with_feeds_search", 2, "handleSearchDiscoveryResult() result = " + paramList + ", fromType = " + paramInt);
-    }
-    if (paramInt != 4) {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.lebatab.leba_with_feeds_search", 2, "handleSearchDiscoveryResult(), fromType is wrong, return");
-      }
-    }
+    if (!paramBoolean) {}
     for (;;)
     {
       return;
-      paramInt = 0;
-      while (paramInt < paramList.size())
+      try
       {
-        SearchEntryDataModel localSearchEntryDataModel = (SearchEntryDataModel)paramList.get(paramInt);
-        if ((localSearchEntryDataModel instanceof HotWordSearchEntryDataModel))
+        byte[] arrayOfByte = paramBundle.getByteArray("data");
+        paramInt = paramBundle.getInt("type", 0);
+        if (arrayOfByte == null) {
+          continue;
+        }
+        paramBundle = new mobileqq_mp.GetPublicAccountDetailInfoResponse();
+        oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse localGetPublicAccountDetailInfoResponse = new oidb_cmd0xcf8.GetPublicAccountDetailInfoResponse();
+        if (paramInt == 0) {
+          paramBundle.mergeFrom(arrayOfByte);
+        }
+        for (paramBoolean = true; (paramBoolean) && (paramBundle.ret_info.has()) && (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.has()) && (((mobileqq_mp.RetInfo)paramBundle.ret_info.get()).ret_code.get() == 0); paramBoolean = rtr.a(arrayOfByte, localGetPublicAccountDetailInfoResponse, paramBundle))
         {
-          this.a.a(((HotWordSearchEntryDataModel)localSearchEntryDataModel).a);
+          ThreadManager.getSubThreadHandler().postDelayed(new PublicAccountChatPie.33.1(this, paramBundle), 10L);
           return;
         }
-        paramInt += 1;
+        return;
       }
+      catch (Exception paramBundle) {}
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aehu
  * JD-Core Version:    0.7.0.1
  */

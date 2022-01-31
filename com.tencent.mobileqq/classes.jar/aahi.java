@@ -1,19 +1,31 @@
-import com.tencent.mobileqq.ar.ARNativeBridge;
-import com.tencent.mobileqq.ar.ARRenderModel.GreetingCardRender;
+import com.tencent.image.AbstractGifImage;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.widget.AbsListView;
 
 public class aahi
-  implements Runnable
+  implements begh
 {
-  public aahi(GreetingCardRender paramGreetingCardRender, int paramInt) {}
+  public aahi(ChatHistory paramChatHistory) {}
   
-  public void run()
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    GreetingCardRender.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelGreetingCardRender).native_playARCardAnimation(this.jdField_a_of_type_Int);
+    this.a.m = paramInt;
+    if (paramInt == 0)
+    {
+      AbstractGifImage.resumeAll();
+      return;
+    }
+    if ((this.a.a != null) && (this.a.a.jdField_a_of_type_Int == 1) && (!this.a.a.jdField_a_of_type_Boolean)) {
+      this.a.a.d();
+    }
+    AbstractGifImage.pauseAll();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aahi
  * JD-Core Version:    0.7.0.1
  */

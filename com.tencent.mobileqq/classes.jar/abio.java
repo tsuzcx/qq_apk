@@ -1,24 +1,45 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.businessCard.data.BusinessCard;
+import com.tencent.qphone.base.util.QLog;
 
 public class abio
-  implements Runnable
+  extends alow
 {
-  public abio(ARMapActivity paramARMapActivity, int paramInt) {}
+  public abio(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.isResume()) {
+    super.a(paramBoolean, paramString);
+  }
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt)
+  {
+    super.a(paramBoolean, paramString, paramInt);
+    if (paramBoolean)
+    {
+      BusinessCard localBusinessCard = ((alov)this.a.app.getManager(112)).a(paramString);
+      QLog.i("BusinessCard_observer_ProfileCardMoreActivity", 4, "onGetCardInfo success : cardId = " + paramString);
+      this.a.a(localBusinessCard);
+      this.a.a = localBusinessCard;
       return;
     }
-    SosoInterface.b(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.a);
-    SosoInterface.jdField_a_of_type_Int = this.jdField_a_of_type_Int * 1000;
-    SosoInterface.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.a);
+    QLog.e("BusinessCard_observer_ProfileCardMoreActivity", 4, "onGetCardInfo faild : cardId = " + paramString);
+  }
+  
+  public void b(boolean paramBoolean, String paramString)
+  {
+    super.b(paramBoolean, paramString);
+  }
+  
+  public void b(boolean paramBoolean, String paramString, int paramInt)
+  {
+    super.b(paramBoolean, paramString, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abio
  * JD-Core Version:    0.7.0.1
  */

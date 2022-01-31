@@ -1,29 +1,23 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.qphone.base.util.QLog;
 
-public class sst
-  implements View.OnClickListener
+class sst
+  implements slx<suh, sui>
 {
-  public sst(ForwardRecentActivity paramForwardRecentActivity) {}
+  sst(ssr paramssr) {}
   
-  public void onClick(View paramView)
+  public void a(@NonNull suh paramsuh, @Nullable sui paramsui, @NonNull ErrorMessage paramErrorMessage)
   {
-    paramView = new Bundle();
-    paramView.putString("uin", String.valueOf(AppConstants.z));
-    paramView.putInt("uintype", -1);
-    this.a.a.a(ForwardAbility.ForwardAbilityType.k.intValue(), paramView);
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004051", "0X8004051", 0, 0, "", "", "", "");
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.MsgTabNodeListLoader", 2, "requestQQStoryGuide onCmdRespond = " + paramsui + " ,errorMsg = " + paramErrorMessage);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sst
  * JD-Core Version:    0.7.0.1
  */

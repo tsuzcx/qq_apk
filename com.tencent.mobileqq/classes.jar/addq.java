@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForDeviceText;
 
-public class addq
-  implements Runnable
+class addq
+  implements DialogInterface.OnClickListener
 {
-  public addq(FileManagerRSWorker paramFileManagerRSWorker, long paramLong) {}
+  addq(addp paramaddp, MessageForDeviceText paramMessageForDeviceText) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileManagerRSWorker.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileManagerRSWorker.f, this.jdField_a_of_type_Long);
+    ((xvq)this.jdField_a_of_type_Addp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(49)).a(this.jdField_a_of_type_Addp.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Addp.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Addp.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceText);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     addq
  * JD-Core Version:    0.7.0.1
  */

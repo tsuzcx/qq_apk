@@ -1,19 +1,27 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.portal.ShareHelper;
+import com.tencent.qphone.base.util.QLog;
 
 class agro
-  implements Runnable
+  implements agsr
 {
-  agro(agrn paramagrn, Bitmap paramBitmap) {}
+  agro(agrn paramagrn, agrq paramagrq) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    ShareHelper.a(this.jdField_a_of_type_Agrn.jdField_a_of_type_ComTencentMobileqqPortalShareHelper, this.jdField_a_of_type_Agrn.jdField_a_of_type_Int, this.jdField_a_of_type_Agrn.b, this.jdField_a_of_type_Agrn.c, this.jdField_a_of_type_Agrn.d, this.jdField_a_of_type_Agrn.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if (QLog.isColorLevel()) {
+      QLog.d("DrawClassifier", 2, "TensorFlow init:" + paramBoolean);
+    }
+    if (paramBoolean) {
+      agrn.a(this.jdField_a_of_type_Agrn, agrn.a(this.jdField_a_of_type_Agrn), this.jdField_a_of_type_Agrq, true);
+    }
+    while (this.jdField_a_of_type_Agrq == null) {
+      return;
+    }
+    this.jdField_a_of_type_Agrq.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agro
  * JD-Core Version:    0.7.0.1
  */

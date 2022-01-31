@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/goh" android:background="@drawable/ads" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="19.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/goi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/ex7" android:layout_centerVertical="true" />
+    <TextView android:textSize="14.0sp" android:textColor="#ffbfbfbd" android:id="@id/gol" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="@string/quf" android:maxLines="10" android:layout_toRightOf="@id/goi" android:layout_centerVertical="true" />
+    <com.tencent.mobileqq.activity.aio.item.BreathAnimationLayout android:id="@id/gok" android:background="@drawable/d5z" android:layout_width="wrap_content" android:layout_height="26.0dip" android:layout_marginTop="7.0dip" android:layout_toRightOf="@id/gol">
+        <ImageView android:id="@id/goj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-10.0dip" android:src="@drawable/exc" android:layout_centerVertical="true" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/al3" android:id="@id/qq_aio_ptt_time_tv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="5" android:includeFontPadding="false" android:layout_toRightOf="@id/goj" android:layout_centerVertical="true" />
+    </com.tencent.mobileqq.activity.aio.item.BreathAnimationLayout>
+</LinearLayout>

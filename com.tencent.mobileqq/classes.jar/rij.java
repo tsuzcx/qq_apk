@@ -1,19 +1,25 @@
-import android.view.Choreographer.FrameCallback;
-import com.tencent.mfsdk.collector.DropFrameMonitor;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.widget.reddot.ColorBandVideoEntranceButton;
 
 public class rij
-  implements Choreographer.FrameCallback
+  extends AnimatorListenerAdapter
 {
-  public rij(DropFrameMonitor paramDropFrameMonitor) {}
+  public rij(ColorBandVideoEntranceButton paramColorBandVideoEntranceButton) {}
   
-  public void doFrame(long paramLong)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.a(paramLong);
+    this.a.a();
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rij
  * JD-Core Version:    0.7.0.1
  */

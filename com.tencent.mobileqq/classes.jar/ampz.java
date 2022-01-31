@@ -1,92 +1,47 @@
-import common.qzone.component.cache.common.SoftHashMap;
-import java.lang.ref.ReferenceQueue;
-import java.lang.ref.SoftReference;
-import java.util.Map.Entry;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ampz
-  extends SoftReference
-  implements Map.Entry
+public final class ampz
 {
-  private final int jdField_a_of_type_Int;
-  private ampz jdField_a_of_type_Ampz;
-  private Object jdField_a_of_type_JavaLangObject;
+  private int jdField_a_of_type_Int;
+  private amqb jdField_a_of_type_Amqb;
+  public amqc a;
+  private amqe jdField_a_of_type_Amqe;
+  private amqf jdField_a_of_type_Amqf;
+  public amqg a;
+  private amqh jdField_a_of_type_Amqh;
+  private amqj jdField_a_of_type_Amqj;
+  private amqk jdField_a_of_type_Amqk;
+  private List<amqo> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private boolean jdField_a_of_type_Boolean;
+  private boolean b;
   
-  public ampz(Object paramObject1, Object paramObject2, ReferenceQueue paramReferenceQueue, int paramInt, ampz paramampz)
+  public ampx a()
   {
-    super(paramObject1, paramReferenceQueue);
-    this.jdField_a_of_type_JavaLangObject = paramObject2;
+    return new ampx(this, null);
+  }
+  
+  public ampz a(int paramInt)
+  {
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Ampz = paramampz;
+    return this;
   }
   
-  public boolean equals(Object paramObject)
+  public ampz a(amqh paramamqh)
   {
-    if (!(paramObject instanceof Map.Entry)) {}
-    Object localObject1;
-    do
-    {
-      Object localObject2;
-      do
-      {
-        return false;
-        paramObject = (Map.Entry)paramObject;
-        localObject1 = getKey();
-        localObject2 = paramObject.getKey();
-      } while ((localObject1 != localObject2) && ((localObject1 == null) || (!localObject1.equals(localObject2))));
-      localObject1 = getValue();
-      paramObject = paramObject.getValue();
-    } while ((localObject1 != paramObject) && ((localObject1 == null) || (!localObject1.equals(paramObject))));
-    return true;
+    this.jdField_a_of_type_Amqh = paramamqh;
+    return this;
   }
   
-  public Object getKey()
+  public ampz a(amqo paramamqo)
   {
-    return SoftHashMap.a(get());
-  }
-  
-  public Object getValue()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public int hashCode()
-  {
-    int j = 0;
-    Object localObject1 = getKey();
-    Object localObject2 = getValue();
-    int i;
-    if (localObject1 == null)
-    {
-      i = 0;
-      if (localObject2 != null) {
-        break label36;
-      }
-    }
-    for (;;)
-    {
-      return j ^ i;
-      i = localObject1.hashCode();
-      break;
-      label36:
-      j = localObject2.hashCode();
-    }
-  }
-  
-  public Object setValue(Object paramObject)
-  {
-    Object localObject = this.jdField_a_of_type_JavaLangObject;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    return localObject;
-  }
-  
-  public String toString()
-  {
-    return getKey() + "=" + getValue();
+    this.jdField_a_of_type_JavaUtilList.add(paramamqo);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ampz
  * JD-Core Version:    0.7.0.1
  */

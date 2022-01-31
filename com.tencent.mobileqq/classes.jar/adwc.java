@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.fragment.NowLiveFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 
-public class adwc
-  implements Runnable
+class adwc
+  implements DialogInterface.OnCancelListener
 {
-  public adwc(NowLiveFragment paramNowLiveFragment) {}
+  adwc(advv paramadvv) {}
   
-  public void run()
-  {
-    this.a.e();
-  }
+  public void onCancel(DialogInterface paramDialogInterface) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adwc
  * JD-Core Version:    0.7.0.1
  */

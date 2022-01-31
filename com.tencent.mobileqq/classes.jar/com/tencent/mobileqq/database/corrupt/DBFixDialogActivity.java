@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.database.corrupt;
 
+import amua;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -7,14 +8,14 @@ import com.tencent.mobileqq.app.BaseActivity;
 public class DBFixDialogActivity
   extends BaseActivity
 {
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    new DBFixDialogUI(this, this.app).b();
+    new amua(this, this.app).b();
     return true;
   }
   
-  protected void requestWindowFeature(Intent paramIntent)
+  public void requestWindowFeature(Intent paramIntent)
   {
     super.requestWindowFeature(1);
   }

@@ -1,30 +1,12 @@
-import com.tencent.mobileqq.transfile.predownload.schedule.PreDownloadItem;
-import java.util.Comparator;
-
-public class aixm
-  implements Comparator
+public abstract class aixm
 {
-  public int compare(Object paramObject1, Object paramObject2)
-  {
-    paramObject1 = (PreDownloadItem)paramObject1;
-    paramObject2 = (PreDownloadItem)paramObject2;
-    if (paramObject1.c > paramObject2.c) {}
-    do
-    {
-      return -1;
-      if (paramObject1.c < paramObject2.c) {
-        return 1;
-      }
-    } while (paramObject1.d > paramObject2.d);
-    if (paramObject1.d < paramObject2.d) {
-      return 1;
-    }
-    return 0;
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aixm
  * JD-Core Version:    0.7.0.1
  */

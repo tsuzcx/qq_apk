@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_struct$BannerFeed
-  extends MessageMicro
+  extends MessageMicro<BannerFeed>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField blurb = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -36,7 +36,7 @@ public final class qqstory_struct$BannerFeed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.BannerFeed
  * JD-Core Version:    0.7.0.1
  */

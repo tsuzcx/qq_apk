@@ -1,29 +1,29 @@
-import android.content.Context;
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.PublicQuickPayManager.QQWalletPayCompletionImp;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportUtil;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemButton;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-class aini
-  implements PublicQuickPayManager.QQWalletPayCompletionImp
+final class aini
+  implements BusinessObserver
 {
-  aini(ainh paramainh, StructMsgForGeneralShare paramStructMsgForGeneralShare, Context paramContext) {}
-  
-  public void a(Bundle paramBundle)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int i = paramBundle.getInt("retCode");
-    String str = paramBundle.getString("retMsg");
-    int j = paramBundle.getInt("payTime");
-    paramBundle = paramBundle.getString("orderId");
-    this.jdField_a_of_type_Ainh.a.b(i);
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.savePayInfo(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Ainh.a.F, i);
-    VACDReportUtil.a("ret_code=" + i + "|ret_str=" + str + "|pay_time=" + j + "|order_id=" + paramBundle, "qqwallet", "publicpaymsg.pay.result", null, null, 0, null);
+    try
+    {
+      paramInt = paramBundle.getInt("extra_result_code");
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameUtil", 1, new Object[] { "[reportGameData] retCode=", Integer.valueOf(paramInt) });
+      }
+      return;
+    }
+    catch (Exception paramBundle)
+    {
+      QLog.e("cmgame_process.CmGameUtil", 1, "[reportGameData] onReceive, exception=", paramBundle);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aini
  * JD-Core Version:    0.7.0.1
  */

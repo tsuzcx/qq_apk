@@ -1,25 +1,41 @@
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.CheckListener;
-import java.util.List;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
 class aech
-  implements Runnable
+  implements Handler.Callback
 {
-  aech(aecg paramaecg, List paramList) {}
+  aech(aecb paramaecb) {}
   
-  public void run()
+  public boolean handleMessage(Message paramMessage)
   {
-    GroupVideoManager.CheckListener localCheckListener = this.jdField_a_of_type_Aecg.a;
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0)) {}
-    for (boolean bool = true;; bool = false)
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "[handleMessage] handle message mStoped = " + aecb.a(this.a));
+    }
+    switch (paramMessage.what)
     {
-      localCheckListener.a(bool);
-      return;
+    }
+    for (;;)
+    {
+      return false;
+      Object localObject = (aifg)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(153);
+      paramMessage = (String)paramMessage.obj;
+      if (!aecb.a(this.a)) {
+        ((aifg)localObject).a().e(paramMessage);
+      }
+      localObject = Message.obtain();
+      ((Message)localObject).what = 1;
+      ((Message)localObject).obj = paramMessage;
+      aecb.a(this.a).removeMessages(1);
+      aecb.a(this.a).sendMessageDelayed((Message)localObject, 30000L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aech
  * JD-Core Version:    0.7.0.1
  */

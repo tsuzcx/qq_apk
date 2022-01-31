@@ -1,20 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import java.util.List;
+import java.util.Map;
 
-class actk
-  implements DialogInterface.OnDismissListener
+public abstract interface actk
 {
-  actk(acth paramacth) {}
+  public abstract void a(String paramString, int paramInt, actc paramactc, List<actx> paramList, Map<Integer, Integer> paramMap);
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    acth.a(this.a).dismiss();
-  }
+  public abstract boolean a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     actk
  * JD-Core Version:    0.7.0.1
  */

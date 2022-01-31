@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class devlock_verify_scheme$SchemePkg
-  extends MessageMicro
+  extends MessageMicro<SchemePkg>
 {
   public static final int STR_BUTTON1_CAPTION_FIELD_NUMBER = 7;
   public static final int STR_BUTTON2_CAPTION_FIELD_NUMBER = 10;

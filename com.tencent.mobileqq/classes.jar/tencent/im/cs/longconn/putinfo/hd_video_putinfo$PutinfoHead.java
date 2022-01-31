@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class hd_video_putinfo$PutinfoHead
-  extends MessageMicro
+  extends MessageMicro<PutinfoHead>
 {
   public static final int CMD_CLIENT_REPORT_REQ = 1;
   public static final int CMD_S2C_PUTINFO_REQ = 2;
@@ -35,7 +35,7 @@ public final class hd_video_putinfo$PutinfoHead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.longconn.putinfo.hd_video_putinfo.PutinfoHead
  * JD-Core Version:    0.7.0.1
  */

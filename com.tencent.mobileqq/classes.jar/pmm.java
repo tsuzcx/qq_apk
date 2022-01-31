@@ -1,59 +1,174 @@
-import android.graphics.drawable.Drawable;
-import android.util.Log;
-import com.tencent.component.media.gif.NewGifDrawable;
-import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
-import com.tencent.component.media.image.ImageLoader.Options;
-import com.tencent.component.media.image.drawable.AutoGifDrawable;
-import com.tencent.component.media.image.drawable.AutoGifDrawable.GifDownloadCallBackListener;
-import com.tencent.component.media.utils.ImageManagerLog;
+import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentPolymericView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import org.json.JSONObject;
 
 public class pmm
-  implements ImageLoader.ImageLoadListener
+  extends BaseAdapter
 {
-  private pmm(AutoGifDrawable paramAutoGifDrawable) {}
+  private pmm(ComponentPolymericView paramComponentPolymericView) {}
   
-  public void onImageCanceled(String paramString, ImageLoader.Options paramOptions)
+  public int getCount()
   {
-    if (this.a.jdField_a_of_type_ComTencentComponentMediaImageDrawableAutoGifDrawable$GifDownloadCallBackListener != null) {
-      this.a.jdField_a_of_type_ComTencentComponentMediaImageDrawableAutoGifDrawable$GifDownloadCallBackListener.onImageCanceled(paramString, paramOptions);
+    if (ComponentPolymericView.a(this.a) != null) {
+      return ComponentPolymericView.a(this.a).size();
     }
+    return 0;
   }
   
-  public void onImageFailed(String paramString, ImageLoader.Options paramOptions)
+  public Object getItem(int paramInt)
   {
-    if (this.a.jdField_a_of_type_ComTencentComponentMediaImageDrawableAutoGifDrawable$GifDownloadCallBackListener != null) {
-      this.a.jdField_a_of_type_ComTencentComponentMediaImageDrawableAutoGifDrawable$GifDownloadCallBackListener.onImageFailed(paramString, paramOptions);
-    }
+    return ComponentPolymericView.a(this.a).get(paramInt);
   }
   
-  public void onImageLoaded(String paramString, Drawable paramDrawable, ImageLoader.Options paramOptions)
+  public long getItemId(int paramInt)
   {
-    if ((paramDrawable != null) && ((paramDrawable instanceof NewGifDrawable))) {}
-    try
+    return ((BaseArticleInfo)ComponentPolymericView.a(this.a).get(paramInt)).mRecommendSeq;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    BaseArticleInfo localBaseArticleInfo = (BaseArticleInfo)ComponentPolymericView.a(this.a).get(paramInt);
+    if (obz.s(localBaseArticleInfo))
     {
-      this.a.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable = ((NewGifDrawable)paramDrawable);
-      this.a.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.setCallback(AutoGifDrawable.a(this.a));
-      if (this.a.jdField_a_of_type_ComTencentComponentMediaImageDrawableAutoGifDrawable$GifDownloadCallBackListener != null) {
-        this.a.jdField_a_of_type_ComTencentComponentMediaImageDrawableAutoGifDrawable$GifDownloadCallBackListener.onImageLoaded(paramString, this.a.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable, paramOptions);
+      switch (localBaseArticleInfo.mNewPolymericInfo.jdField_a_of_type_Int)
+      {
+      default: 
+        if (obz.c(localBaseArticleInfo)) {
+          return 51;
+        }
+        break;
+      case 9: 
+        return 67;
+      case 11: 
+        return 69;
+      case 10: 
+        return 68;
+      case 12: 
+        return 98;
+      case 13: 
+        return 97;
       }
-      return;
+      if (obz.e(localBaseArticleInfo)) {
+        return 52;
+      }
+      if (localBaseArticleInfo.mSinglePicture != null) {
+        return 50;
+      }
     }
-    catch (NullPointerException paramString)
+    else
     {
-      ImageManagerLog.e(AutoGifDrawable.a(), "catch an exception:" + Log.getStackTraceString(paramString));
+      if (localBaseArticleInfo.mPolymericInfo != null) {}
+      switch (localBaseArticleInfo.mPolymericInfo.jdField_a_of_type_Int)
+      {
+      default: 
+        if (obz.a(localBaseArticleInfo)) {
+          return 51;
+        }
+        break;
+      case 9: 
+        return 67;
+      case 11: 
+        return 69;
+      case 10: 
+        return 68;
+      }
+      if (obz.e(localBaseArticleInfo)) {
+        return 52;
+      }
+      if (localBaseArticleInfo.mSinglePicture != null) {
+        return 50;
+      }
+    }
+    return 50;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = (BaseArticleInfo)ComponentPolymericView.a(this.a).get(paramInt);
+    Object localObject1 = ComponentPolymericView.a(this.a);
+    Object localObject2 = (ArticleInfo)paramViewGroup;
+    int j = getItemViewType(paramInt);
+    int k = (int)paramViewGroup.mChannelID;
+    int i;
+    if (paramViewGroup.mChannelID == 3L)
+    {
+      i = 1;
+      localObject2 = new oqh((Context)localObject1, (ArticleInfo)localObject2, j, k, i, paramInt, false, getCount(), null, ComponentPolymericView.a(this.a).a.a());
+      localObject1 = pew.a(paramInt, localObject2, getItemViewType(paramInt), paramView, ComponentPolymericView.a(this.a), ComponentPolymericView.a(this.a).a.a(), ComponentPolymericView.a(this.a).a.a().a());
+      if (localObject1 != null)
+      {
+        ((View)localObject1).setTag(2131313373, localObject2);
+        ComponentPolymericView.a(this.a).a.a().a(paramViewGroup, (opw)localObject2, System.currentTimeMillis(), paramInt);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PolymericSmallVideo", 2, "ComponentPolymericView getView position:" + paramInt + " count:" + getCount());
+      }
+      if (ComponentPolymericView.a(this.a)[paramInt] == null) {
+        ComponentPolymericView.a(this.a)[paramInt] = Boolean.valueOf(false);
+      }
+      if (((obz.o(paramViewGroup)) || (obz.p(paramViewGroup))) && (!ComponentPolymericView.a(this.a)[paramInt].booleanValue())) {
+        localObject2 = new JSONObject();
+      }
+    }
+    for (;;)
+    {
+      try
+      {
+        localObject3 = (ppv)paramViewGroup.mNewPolymericInfo.jdField_a_of_type_JavaUtilList.get(0);
+        ((JSONObject)localObject2).put("channel_id", paramViewGroup.mChannelID);
+        if (((ppv)localObject3).jdField_a_of_type_Ppw == null) {
+          continue;
+        }
+        paramView = ((ppv)localObject3).jdField_a_of_type_Ppw.a;
+        ((JSONObject)localObject2).put("rowkey", paramView);
+        if (((ppv)localObject3).jdField_a_of_type_Ppx == null) {
+          continue;
+        }
+        i = ((ppv)localObject3).jdField_a_of_type_Ppx.b;
+        ((JSONObject)localObject2).put("topicid", i);
+      }
+      catch (Exception paramView)
+      {
+        Object localObject3;
+        paramView.printStackTrace();
+        continue;
+        paramView = "2";
+        continue;
+      }
+      localObject3 = paramViewGroup.mFeedId + "";
+      if (!obz.o(paramViewGroup)) {
+        continue;
+      }
+      paramView = "1";
+      ndn.a(null, "CliOper", "", "", "0X8009829", "0X8009829", 0, 0, (String)localObject3, paramView, paramViewGroup.mStrategyId + "", ((JSONObject)localObject2).toString(), false);
+      ComponentPolymericView.a(this.a)[paramInt] = Boolean.valueOf(true);
+      if ((obz.i(paramViewGroup)) && (paramViewGroup.mPolymericInfo != null)) {
+        paramViewGroup.mPolymericInfo.f = paramInt;
+      }
+      return localObject1;
+      i = 0;
+      break;
+      paramView = Integer.valueOf(0);
+      continue;
+      i = 0;
     }
   }
   
-  public void onImageProgress(String paramString, float paramFloat, ImageLoader.Options paramOptions)
+  public int getViewTypeCount()
   {
-    if (this.a.jdField_a_of_type_ComTencentComponentMediaImageDrawableAutoGifDrawable$GifDownloadCallBackListener != null) {
-      this.a.jdField_a_of_type_ComTencentComponentMediaImageDrawableAutoGifDrawable$GifDownloadCallBackListener.onImageProgress(paramString, paramFloat, paramOptions);
-    }
+    return 15;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pmm
  * JD-Core Version:    0.7.0.1
  */

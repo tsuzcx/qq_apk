@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.webview.sonic;
 
-import akuf;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,32 +7,32 @@ import android.os.Parcelable.Creator;
 public class SonicPreloadData
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new akuf();
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
+  public static final Parcelable.Creator<SonicPreloadData> CREATOR = new SonicPreloadData.1();
+  public boolean accountRelated;
+  public int id;
+  public int noCacheFilePreloadType;
+  public long templateChangeTime;
+  public String url;
   
   public SonicPreloadData(int paramInt1, String paramString, boolean paramBoolean, long paramLong, int paramInt2)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Long = paramLong;
-    this.b = paramInt2;
+    this.id = paramInt1;
+    this.url = paramString;
+    this.accountRelated = paramBoolean;
+    this.templateChangeTime = paramLong;
+    this.noCacheFilePreloadType = paramInt2;
   }
   
   public SonicPreloadData(Parcel paramParcel)
   {
-    this.jdField_a_of_type_Int = paramParcel.readInt();
-    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    this.id = paramParcel.readInt();
+    this.url = paramParcel.readString();
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_Long = paramParcel.readLong();
-      this.b = paramParcel.readInt();
+      this.accountRelated = bool;
+      this.templateChangeTime = paramParcel.readLong();
+      this.noCacheFilePreloadType = paramParcel.readInt();
       return;
       bool = false;
     }
@@ -46,26 +45,26 @@ public class SonicPreloadData
   
   public String toString()
   {
-    return "SonicPreloadData{id='" + this.jdField_a_of_type_Int + '\'' + "url='" + this.jdField_a_of_type_JavaLangString + '\'' + ", accountRelated='" + this.jdField_a_of_type_Boolean + '\'' + ", templateChangeTime='" + this.jdField_a_of_type_Long + '\'' + ", noCacheFilePreloadType='" + this.b + '\'' + '}';
+    return "SonicPreloadData{id='" + this.id + '\'' + "url='" + this.url + '\'' + ", accountRelated='" + this.accountRelated + '\'' + ", templateChangeTime='" + this.templateChangeTime + '\'' + ", noCacheFilePreloadType='" + this.noCacheFilePreloadType + '\'' + '}';
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(this.jdField_a_of_type_Int);
-    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Boolean) {}
+    paramParcel.writeInt(this.id);
+    paramParcel.writeString(this.url);
+    if (this.accountRelated) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeLong(this.jdField_a_of_type_Long);
-      paramParcel.writeInt(this.b);
+      paramParcel.writeLong(this.templateChangeTime);
+      paramParcel.writeInt(this.noCacheFilePreloadType);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webview.sonic.SonicPreloadData
  * JD-Core Version:    0.7.0.1
  */

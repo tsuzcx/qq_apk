@@ -1,20 +1,36 @@
-import android.widget.TextView;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeView;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.RedPointUtils;
+import android.content.Context;
+import android.text.TextUtils;
 
-public class njj
-  implements Runnable
+final class njj
+  implements allt
 {
-  public njj(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
+  njj(boolean paramBoolean, String paramString1, Context paramContext, String paramString2) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2)
   {
-    int i = RedPointUtils.a(49);
-    String str = this.a.a.a.getText().toString();
-    SLog.a(MsgTabStoryNodeListManager.a(), "redpoint update, update count = %s->%d", str, Integer.valueOf(i));
-    this.a.a.a(i);
+    int i = 1;
+    if (nji.a() == paramInt1)
+    {
+      almh.a().a(paramInt1);
+      nji.a(-1);
+      if ((2 != paramInt2) && (1 != paramInt2)) {
+        break label101;
+      }
+    }
+    label101:
+    for (paramInt1 = 1;; paramInt1 = 0)
+    {
+      if ((-1 == paramInt2) && (this.jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_AndroidContentContext != null)) {
+        obz.f(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+      }
+      String str = this.b;
+      if (this.jdField_a_of_type_Boolean) {}
+      for (paramInt2 = i;; paramInt2 = 0)
+      {
+        obz.a(str, paramInt1, paramInt2);
+        return;
+      }
+    }
   }
 }
 

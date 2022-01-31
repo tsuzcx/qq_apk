@@ -1,64 +1,18 @@
-import android.util.SparseBooleanArray;
-import android.view.View;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.LineLayer;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.model.TextInfo;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.EditTextDialogEventListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.magic.models.Status;
 
-public class oog
-  implements EditTextDialog.EditTextDialogEventListener
+public final class oog
+  implements Parcelable.Creator<Status>
 {
-  private oog(DoodleLayout paramDoodleLayout) {}
-  
-  public void a()
+  public Status a(Parcel paramParcel)
   {
-    this.a.a().c();
+    return new Status(paramParcel, null);
   }
   
-  public void a(int paramInt)
+  public Status[] a(int paramInt)
   {
-    this.a.a().a(paramInt);
-  }
-  
-  public void a(boolean paramBoolean, TextInfo paramTextInfo)
-  {
-    TextLayer localTextLayer = this.a.a();
-    if (paramBoolean)
-    {
-      localTextLayer.a(true);
-      switch (this.a.b)
-      {
-      }
-      for (;;)
-      {
-        this.a.c(3);
-        return;
-        this.a.a().b(false);
-      }
-    }
-    if (paramTextInfo.jdField_a_of_type_Int != -1) {
-      this.a.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(this.a.jdField_a_of_type_Int, true);
-    }
-    for (;;)
-    {
-      localTextLayer.a(paramTextInfo);
-      localTextLayer.a(false);
-      this.a.a(new View[] { this.a.jdField_a_of_type_AndroidWidgetRelativeLayout });
-      this.a.c(0);
-      this.a.d(0);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleEventListener.i();
-      return;
-      this.a.jdField_a_of_type_AndroidUtilSparseBooleanArray.put(this.a.jdField_a_of_type_Int, false);
-    }
-  }
-  
-  public void b(int paramInt)
-  {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleEventListener != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleEventListener.b(3, paramInt);
-    }
+    return new Status[paramInt];
   }
 }
 

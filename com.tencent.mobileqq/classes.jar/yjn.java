@@ -1,40 +1,10 @@
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import java.lang.ref.WeakReference;
-import mqq.os.MqqHandler;
-
-public class yjn
-  implements TVK_SDKMgr.InstallListener
+public abstract interface yjn
 {
-  public yjn(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
-  
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
-  {
-    ShortVideoPlayActivity.a(this.a, false);
-    ShortVideoPlayActivity.b(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.b(this.a));
-    this.a.a("腾讯视频插件加载失败");
-    ShortVideoPlayActivity.c(this.a, 3000);
-    ShortVideoPlayActivity.d(this.a, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onInstalledFailed:" + paramInt);
-    }
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    ShortVideoPlayActivity.a(this.a, true);
-    ShortVideoPlayActivity.b(this.a, System.currentTimeMillis() - ShortVideoPlayActivity.b(this.a));
-    if (this.a.a.get() != null) {
-      ((MqqHandler)this.a.a.get()).post(new yjo(this));
-    }
-  }
+  public abstract void onResponse(yjm paramyjm);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yjn
  * JD-Core Version:    0.7.0.1
  */

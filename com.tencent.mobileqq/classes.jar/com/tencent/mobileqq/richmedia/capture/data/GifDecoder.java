@@ -4,9 +4,11 @@ import android.graphics.Bitmap;
 
 public abstract interface GifDecoder
 {
-  public abstract Bitmap a(long paramLong);
+  public abstract Bitmap getNextGifFrame(long paramLong);
   
-  public abstract void a();
+  public abstract void init();
+  
+  public abstract void release();
 }
 
 

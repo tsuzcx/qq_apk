@@ -1,64 +1,79 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.aio.ChatItemAnimLayout;
-import com.tencent.mobileqq.activity.aio.ChatItemAnimLayout.OnItemAnimEndListener;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import java.io.File;
+import java.util.Map;
 
-public class upk
-  extends Handler
+class upk
+  extends sie
 {
-  public upk(ChatItemAnimLayout paramChatItemAnimLayout) {}
-  
-  public void handleMessage(Message paramMessage)
+  public upk(uph paramuph)
   {
-    switch (paramMessage.what)
-    {
-    }
+    super("Q.qqstory.download.preload.FeedVideoPreloader");
+  }
+  
+  public void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, shp paramshp)
+  {
+    super.a(paramString, paramInt1, paramErrorMessage, paramInt2, paramshp);
+    a(paramString, paramInt1, paramErrorMessage, paramshp);
+  }
+  
+  protected void a(String paramString, int paramInt, ErrorMessage paramErrorMessage, shp paramshp)
+  {
+    upj localupj = this.a.jdField_a_of_type_Upj;
+    if (localupj == null) {}
+    label14:
+    label168:
     do
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatItemAnimLayout", 2, "ANIMATION_START");
-      }
-      this.a.b.mMsgAnimTime = System.currentTimeMillis();
-      this.a.e = 0.0F;
-      this.a.f = 0.0F;
-      sendMessageDelayed(ChatItemAnimLayout.a(this.a).obtainMessage(1), 10L);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatItemAnimLayout", 2, "ANIMATION_UPDADE");
-      }
-      this.a.b.mMsgAnimTime = System.currentTimeMillis();
-      float f2 = (float)(this.a.b.mMsgAnimTime - this.a.jdField_a_of_type_Long) / 300.0F;
-      float f1 = f2;
-      if (f2 > 1.0F) {
-        f1 = 1.0F;
-      }
-      this.a.e = (1.0F - (1.0F - f1) * (1.0F - f1) * (1.0F - f1));
-      this.a.f = f1;
-      if (this.a.e < 1.0F) {
-        sendMessageDelayed(ChatItemAnimLayout.a(this.a).obtainMessage(1), 10L);
-      }
-      for (;;)
+      break label14;
+      do
       {
-        this.a.invalidate();
         return;
-        this.a.e = 1.0F;
-        sendMessageDelayed(ChatItemAnimLayout.a(this.a).obtainMessage(2), 0L);
+      } while (!TextUtils.equals(paramString, localupj.jdField_a_of_type_JavaLangString));
+      if (paramErrorMessage.isFail()) {
+        if (!TextUtils.isEmpty(localupj.b)) {
+          break label135;
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatItemAnimLayout", 2, "ANIMATION_END");
+      for (paramErrorMessage = paramErrorMessage.errorMsg;; paramErrorMessage = paramErrorMessage.errorMsg + " | " + paramErrorMessage.errorMsg)
+      {
+        localupj.b = paramErrorMessage;
+        localupj.jdField_a_of_type_Int = (paramInt + 1000);
+        if ((!paramshp.a.containsKey("handleCallback")) || (localupj.jdField_a_of_type_Boolean)) {
+          break;
+        }
+        localupj.jdField_a_of_type_Boolean = true;
+        if (!this.a.a(paramString)) {
+          break label168;
+        }
+        if (this.a.jdField_a_of_type_Upl == null) {
+          break;
+        }
+        this.a.jdField_a_of_type_Upl.a(paramString, paramshp.d);
+        return;
       }
-      this.a.e = 1.0F;
-      this.a.invalidate();
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatItemAnimLayout$OnItemAnimEndListener == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatItemAnimLayout$OnItemAnimEndListener.d(this.a.b);
+    } while (this.a.jdField_a_of_type_Upl == null);
+    label135:
+    this.a.jdField_a_of_type_Upl.a(paramString, paramshp.d, localupj.a());
+  }
+  
+  public void b(String paramString, int paramInt1, File paramFile, int paramInt2, shp paramshp)
+  {
+    super.b(paramString, paramInt1, paramFile, paramInt2, paramshp);
+    a(paramString, paramInt1, new ErrorMessage(), paramshp);
+  }
+  
+  public void b(String paramString, int paramInt, shp paramshp)
+  {
+    super.b(paramString, paramInt, paramshp);
+    if ((this.a.jdField_a_of_type_Upl != null) && ((paramInt == 0) || (paramInt == 1))) {
+      this.a.jdField_a_of_type_Upl.b(paramString, paramshp.d);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     upk
  * JD-Core Version:    0.7.0.1
  */

@@ -9,14 +9,14 @@ import android.graphics.Path.Direction;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-import com.tencent.av.utils.UITools;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
+import mjg;
 
 public class RoundRelativeLayout
   extends RelativeLayout
 {
-  private float jdField_a_of_type_Float = 14.0F;
+  private float jdField_a_of_type_Float = 16.0F;
   private Path jdField_a_of_type_AndroidGraphicsPath;
   private RectF jdField_a_of_type_AndroidGraphicsRectF;
   
@@ -40,7 +40,7 @@ public class RoundRelativeLayout
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Float = UITools.a(getContext(), paramInt);
+    this.jdField_a_of_type_Float = mjg.a(getContext(), paramInt);
     setWillNotDraw(false);
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
@@ -48,7 +48,7 @@ public class RoundRelativeLayout
   
   public void a(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this.jdField_a_of_type_Float = UITools.a(getContext(), 16.0F);
+    this.jdField_a_of_type_Float = mjg.a(getContext(), 16.0F);
     setWillNotDraw(false);
     if (paramAttributeSet != null)
     {

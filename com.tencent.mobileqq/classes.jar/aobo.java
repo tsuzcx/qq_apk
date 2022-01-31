@@ -1,21 +1,18 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfoLoadObserver;
+import android.view.View;
 
-public class aobo
-  extends PtvTemplateManager.DoodleInfoLoadObserver
+class aobo
+  implements behy
 {
-  public aobo(EditVideoDoodle paramEditVideoDoodle) {}
+  aobo(aobl paramaobl, View paramView) {}
   
   public void a()
   {
-    SLog.c("Q.qqstory.publish.edit.StoryDoodle", "DoodleInfoLoadObserver, onLoadSucc");
-    this.a.b();
+    this.jdField_a_of_type_AndroidViewView.setSelected(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aobo
  * JD-Core Version:    0.7.0.1
  */

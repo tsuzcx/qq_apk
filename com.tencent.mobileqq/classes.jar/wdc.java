@@ -1,30 +1,24 @@
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetPublicAccountDetailInfoResponse;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.fragments.SubscribePersonalBottomOpusFragment;
+import com.tencent.mobileqq.pb.PBStringField;
 
-class wdc
-  implements Runnable
+public class wdc
+  implements View.OnClickListener
 {
-  wdc(wdb paramwdb, mobileqq_mp.GetPublicAccountDetailInfoResponse paramGetPublicAccountDetailInfoResponse) {}
+  public wdc(SubscribePersonalBottomOpusFragment paramSubscribePersonalBottomOpusFragment, wcm paramwcm) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    AccountDetail localAccountDetail = new AccountDetail(this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetPublicAccountDetailInfoResponse);
-    EntityManager localEntityManager = this.jdField_a_of_type_Wdb.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory(this.jdField_a_of_type_Wdb.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()).createEntityManager();
-    if (localEntityManager != null) {
-      localEntityManager.b(localAccountDetail);
-    }
-    this.jdField_a_of_type_Wdb.a.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount(localAccountDetail, 0L);
-    this.jdField_a_of_type_Wdb.a.a(this.jdField_a_of_type_Wdb.a.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
+    vvy.a("https://h5.qzone.qq.com/subscription/syncFeeds/{uin}?_proxy=1&_wv=3".replace("{uin}", this.jdField_a_of_type_Wcm.a.poster.id.get()));
+    wye.b(this.jdField_a_of_type_Wcm.a.poster.id.get(), "auth_person", "sync_qzone", 0, 0, new String[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wdc
  * JD-Core Version:    0.7.0.1
  */

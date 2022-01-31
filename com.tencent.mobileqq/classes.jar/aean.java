@@ -1,44 +1,54 @@
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import com.tencent.mobileqq.hotpic.RecyclerFooterWrapperAdapter;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.widget.AnimationView;
+import com.tencent.mobileqq.widget.AnimationView.Player;
+import java.lang.ref.WeakReference;
 
-public class aean
-  extends RecyclerView.AdapterDataObserver
+public final class aean
+  extends AnimationView.Player
 {
-  public aean(RecyclerFooterWrapperAdapter paramRecyclerFooterWrapperAdapter) {}
+  public static boolean a;
   
-  public void onChanged()
+  public aean(AnimationView paramAnimationView)
   {
-    super.onChanged();
-    this.a.notifyDataSetChanged();
+    super(paramAnimationView);
   }
   
-  public void onItemRangeChanged(int paramInt1, int paramInt2)
+  public static void a(boolean paramBoolean)
   {
-    super.onItemRangeChanged(paramInt1, paramInt2);
-    this.a.notifyItemRangeChanged(paramInt1, paramInt2);
+    jdField_a_of_type_Boolean = paramBoolean;
   }
   
-  public void onItemRangeInserted(int paramInt1, int paramInt2)
+  public void a(AnimationView paramAnimationView)
   {
-    super.onItemRangeInserted(paramInt1, paramInt2);
-    this.a.notifyItemRangeInserted(paramInt1, paramInt2);
+    reset();
+    this.jdField_a_of_type_JavaLangRefWeakReference.clear();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAnimationView);
   }
   
-  public void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
+  public boolean handleMessage(Message paramMessage)
   {
-    super.onItemRangeMoved(paramInt1, paramInt2, paramInt3);
-    this.a.notifyItemRangeChanged(paramInt1, paramInt2 + paramInt3);
-  }
-  
-  public void onItemRangeRemoved(int paramInt1, int paramInt2)
-  {
-    super.onItemRangeRemoved(paramInt1, paramInt2);
-    this.a.notifyItemRangeRemoved(paramInt1, paramInt2);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if (jdField_a_of_type_Boolean)
+      {
+        paramMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
+        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 500L);
+      }
+      else
+      {
+        a();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aean
  * JD-Core Version:    0.7.0.1
  */

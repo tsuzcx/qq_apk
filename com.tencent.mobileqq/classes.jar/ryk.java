@@ -1,46 +1,56 @@
+import UserGrowth.stSimpleMetaFeed;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 public class ryk
-  implements Runnable
+  extends rxz
 {
-  public ryk(BaseChatPie paramBaseChatPie) {}
+  private TextView a;
   
-  public void run()
+  private ryk(ViewGroup paramViewGroup, rwm paramrwm)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.delmsg", 2, "hor anim onAnimationEnd() is called,time is:" + System.currentTimeMillis());
+    super(paramViewGroup, paramrwm, 2131494547);
+  }
+  
+  public static ryk a(ViewGroup paramViewGroup, rwm paramrwm)
+  {
+    return new ryk(paramViewGroup, paramrwm);
+  }
+  
+  protected void a()
+  {
+    this.a = ((TextView)a(2).findViewById(2131313270));
+  }
+  
+  protected void a(int paramInt)
+  {
+    super.a(paramInt);
+    this.a.setVisibility(paramInt);
+  }
+  
+  public void a(stSimpleMetaFeed paramstSimpleMetaFeed)
+  {
+    super.a(paramstSimpleMetaFeed);
+    if (paramstSimpleMetaFeed == null) {
+      return;
     }
-    int i;
-    if (this.a.jdField_a_of_type_ArrayOfAndroidWidgetFrameLayout != null)
+    TextView localTextView = this.a;
+    if (TextUtils.isEmpty(paramstSimpleMetaFeed.feed_desc)) {}
+    for (int i = 8;; i = 0)
     {
-      i = 0;
-      while (i < this.a.jdField_a_of_type_ArrayOfAndroidWidgetFrameLayout.length)
-      {
-        if (this.a.jdField_a_of_type_ArrayOfAndroidWidgetFrameLayout[i] != null) {
-          this.a.jdField_a_of_type_ArrayOfAndroidWidgetFrameLayout[i].setVisibility(8);
-        }
-        i += 1;
-      }
-    }
-    if (this.a.jdField_a_of_type_ArrayOfAndroidViewView != null)
-    {
-      i = 0;
-      while (i < this.a.jdField_a_of_type_ArrayOfAndroidViewView.length)
-      {
-        if (this.a.jdField_a_of_type_ArrayOfAndroidViewView[i] != null) {
-          this.a.jdField_a_of_type_ArrayOfAndroidViewView[i].setVisibility(0);
-        }
-        i += 1;
-      }
+      localTextView.setVisibility(i);
+      this.a.setText(paramstSimpleMetaFeed.feed_desc);
+      a(1, paramstSimpleMetaFeed);
+      a(2, 1, paramstSimpleMetaFeed);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ryk
  * JD-Core Version:    0.7.0.1
  */

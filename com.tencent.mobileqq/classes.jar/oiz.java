@@ -1,17 +1,13 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilter;
-import com.tencent.biz.qqstory.view.UnHandleTouchEventViewPager;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyDailyFragment;
 
 public class oiz
-  implements View.OnTouchListener
+  implements ohc
 {
-  public oiz(EditVideoFilter paramEditVideoFilter) {}
+  public oiz(ReadInJoyDailyFragment paramReadInJoyDailyFragment, int paramInt) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(ohe paramohe)
   {
-    return this.a.a.a(paramMotionEvent);
+    paramohe.h(this.jdField_a_of_type_Int);
   }
 }
 

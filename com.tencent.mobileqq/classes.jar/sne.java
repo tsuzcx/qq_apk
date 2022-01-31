@@ -1,77 +1,44 @@
-import android.annotation.TargetApi;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.activity.recent.DrawerFrame.IDrawerCallbacks;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.mobileqq.armap.ConversationPullDownActiveBase;
-import com.tencent.mobileqq.portal.ConversationHongBao;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 
 public class sne
-  implements DrawerFrame.IDrawerCallbacks
+  extends QQUIEventReceiver<smz, sxo>
 {
-  public sne(Conversation paramConversation) {}
-  
-  public void a(int paramInt)
+  public sne(@NonNull smz paramsmz)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.d();
-    }
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.f();
-    }
+    super(paramsmz);
   }
   
-  @TargetApi(11)
-  public void a(int paramInt, float paramFloat)
+  public void a(@NonNull smz paramsmz, @NonNull sxo paramsxo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("drawerScale", 2, "scale:" + paramFloat);
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.l();
-    if (this.a.jdField_a_of_type_JavaUtilArrayList != null)
+    if (paramsxo.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) {}
+    CommentEntry localCommentEntry;
+    do
     {
-      Iterator localIterator = this.a.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        ConversationPullDownActiveBase localConversationPullDownActiveBase = (ConversationPullDownActiveBase)localIterator.next();
-        if (localConversationPullDownActiveBase != null) {
-          localConversationPullDownActiveBase.m();
-        }
+      return;
+      Iterator localIterator;
+      while (!localIterator.hasNext()) {
+        localIterator = paramsmz.a.iterator();
       }
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.N();
-    }
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.g();
-    }
+      localCommentEntry = (CommentEntry)localIterator.next();
+    } while ((paramsxo.jdField_a_of_type_JavaUtilHashMap.get(localCommentEntry.authorUnionId) == null) && (paramsxo.jdField_a_of_type_JavaUtilHashMap.get(localCommentEntry.replierUnionId) == null));
+    paramsmz.f();
+    urk.e(this.TAG, "UserIconUpdateReceiver FeedCommentLego need to update");
   }
   
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void b(int paramInt1, int paramInt2)
+  public Class acceptEventClass()
   {
-    Conversation.d(this.a);
-    this.a.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBao.m();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityQQSettingMe.M();
-    }
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.l();
-    }
+    return sxo.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sne
  * JD-Core Version:    0.7.0.1
  */

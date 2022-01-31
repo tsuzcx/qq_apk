@@ -1,67 +1,75 @@
 package com.tencent.mobileqq.msf.service;
 
-import android.os.Binder;
-import android.os.RemoteException;
+import android.app.job.JobParameters;
+import android.app.job.JobScheduler;
+import android.content.Intent;
+import android.os.Handler.Callback;
+import android.os.Message;
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.h;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.IBaseService.Stub;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.c.k.c;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 class f
-  extends IBaseService.Stub
+  implements Handler.Callback
 {
-  f(MsfService paramMsfService) {}
+  f(MSFAliveJobService paramMSFAliveJobService) {}
   
-  public FromServiceMsg sendSyncToServiceMsg(ToServiceMsg paramToServiceMsg)
-    throws RemoteException
+  public boolean handleMessage(Message paramMessage)
   {
-    return null;
-  }
-  
-  public int sendToServiceMsg(ToServiceMsg paramToServiceMsg)
-    throws RemoteException
-  {
-    if (paramToServiceMsg == null)
+    if (!g.g())
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("MSF.S.MsfService", 2, "sendToServiceMsg toServiceMsg null!");
+      QLog.d("MSFAliveJobService", 1, "MSF_Alive_Log MSFAliveJobService handleMessage not enable");
+      try
+      {
+        JobScheduler localJobScheduler = (JobScheduler)BaseApplication.getContext().getSystemService("jobscheduler");
+        if (localJobScheduler != null)
+        {
+          localJobScheduler.cancel(1);
+          QLog.d("MSFAliveJobService", 1, "MSF_Alive_Log MSFAliveJobService handleMessage job cancelled");
+        }
       }
-      return -1;
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          QLog.d("MSFAliveJobService", 1, "MSF_Alive_Log MSFAliveJobService handleMessage e ", localException);
+        }
+      }
+      this.a.jobFinished((JobParameters)paramMessage.obj, false);
+      return true;
     }
-    int i = MsfCore.getNextSeq();
-    if (paramToServiceMsg.getRequestSsoSeq() == -1) {
-      paramToServiceMsg.setRequestSsoSeq(i);
-    }
-    if (paramToServiceMsg.getTimeout() == -1L) {
-      paramToServiceMsg.setTimeout(30000L);
-    }
-    if (MsfService.core.getMsfAppid() == -1) {
-      MsfService.core.setMsfAppid(paramToServiceMsg.getAppId());
-    }
-    try
+    QLog.d("MSFAliveJobService", 1, "MSF_Alive_Log MSFAliveJobService handleMessage start service");
+    if ((MsfCore.sCore != null) && (MsfCore.sCore.statReporter != null) && (MsfCore.sCore.statReporter.X != null))
     {
-      int j = Binder.getCallingUid();
-      paramToServiceMsg.addAttribute("__base_tag_isAppMsg", Boolean.valueOf(true));
-      if (paramToServiceMsg.getServiceCmd().startsWith("cmd_sync_syncuser"))
+      boolean bool = MsfCore.sCore.statReporter.X.a;
+      long l1 = MsfCore.sCore.statReporter.X.g;
+      long l2 = MsfCore.sCore.statReporter.X.b;
+      long l3 = MsfCore.sCore.statReporter.X.c;
+      long l4 = Math.abs(System.currentTimeMillis() - l1);
+      QLog.d("MSFAliveJobService", 1, new Object[] { "MSF_Alive_Log : isDeviceIdleMode=", Boolean.valueOf(bool), ", netWorkFailTime=", Long.valueOf(l1), ", enterIdle=", Long.valueOf(l2), " levelIdle=", Long.valueOf(l3), ",netFailInterval=", Long.valueOf(l4) });
+      if ((l1 != 0L) && (l4 > 270000.0D))
       {
-        this.a.handleAccountSyncRequest(this.a, paramToServiceMsg, j);
-      }
-      else
-      {
-        h.a();
-        if (MsfService.isSamePackage(this.a, j, paramToServiceMsg.getServiceCmd())) {
-          MsfService.msfServiceReqHandler.a(this.a, paramToServiceMsg, j);
+        QLog.d("MSFAliveJobService", 1, "MSF_Alive_Log MSFAliveJobService handleMessage send push query");
+        if (MsfCore.sCore.pushManager != null)
+        {
+          QLog.d("MSFAliveJobService", 1, "MSF_Alive_Log MSFAliveJobService handleMessage send push query real");
+          MsfCore.sCore.pushManager.c();
         }
       }
     }
-    catch (Exception paramToServiceMsg)
+    if (!MsfService.inited)
     {
-      QLog.w("MSF.S.MsfService", 1, "service handle msg error " + paramToServiceMsg, paramToServiceMsg);
+      g.a(false);
+      QLog.d("MSFAliveJobService", 1, "MSF_Alive_Log MSFAliveJobService handleMessage init MSF Service");
+      Intent localIntent = new Intent(BaseApplication.getContext(), MsfService.class);
+      localIntent.putExtra("key_from_job", true);
+      NetConnInfoCenter.startOrBindService(localIntent);
     }
-    return -2;
-    return i;
+    this.a.jobFinished((JobParameters)paramMessage.obj, false);
+    return true;
   }
 }
 

@@ -1,28 +1,28 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeNoImageSocial;
+import com.tencent.av.ui.QavPanel;
 
 public class lxn
-  implements View.OnTouchListener
+  implements lxr
 {
-  public lxn(FeedItemCellTypeNoImageSocial paramFeedItemCellTypeNoImageSocial, LinearLayout paramLinearLayout, RelativeLayout paramRelativeLayout) {}
+  boolean jdField_a_of_type_Boolean = false;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public lxn(QavPanel paramQavPanel) {}
+  
+  public void a(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setDuplicateParentStateEnabled(true);
+    if (!this.jdField_a_of_type_Boolean) {
+      mfs.a("0X800A567", 0);
     }
-    return false;
+  }
+  
+  public void b(long paramLong, RelativeLayout paramRelativeLayout, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lxn
  * JD-Core Version:    0.7.0.1
  */

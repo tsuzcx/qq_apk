@@ -1,0 +1,22 @@
+package com.tencent.mobileqq.camera;
+
+import alql;
+import alqp;
+import alqy;
+
+public class CameraManagerImpl$CameraOpenErrorCallbackForward$3
+  implements Runnable
+{
+  public CameraManagerImpl$CameraOpenErrorCallbackForward$3(alqy paramalqy, alql paramalql) {}
+  
+  public void run()
+  {
+    alqy.a(this.this$0).a(this.a);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+ * Qualified Name:     com.tencent.mobileqq.camera.CameraManagerImpl.CameraOpenErrorCallbackForward.3
+ * JD-Core Version:    0.7.0.1
+ */

@@ -1,24 +1,19 @@
-import com.tencent.biz.pubaccount.util.PublicTracker;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.widget.XListView.DrawFinishedListener;
-
-public class wdy
-  implements XListView.DrawFinishedListener
+final class wdy
+  implements begy
 {
-  public wdy(PublicAccountChatPie paramPublicAccountChatPie) {}
+  wdy(web paramweb, begr parambegr) {}
   
-  public void a()
+  public void onDismiss()
   {
-    if ((!this.a.ag) && (this.a.ah))
-    {
-      this.a.ag = true;
-      PublicTracker.a("SUBSCRIPT_AIO_COST", null);
+    if (this.jdField_a_of_type_Web != null) {
+      this.jdField_a_of_type_Web.a(false);
     }
+    this.jdField_a_of_type_Begr.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wdy
  * JD-Core Version:    0.7.0.1
  */

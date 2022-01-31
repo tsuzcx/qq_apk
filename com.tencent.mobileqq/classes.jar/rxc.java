@@ -1,95 +1,177 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.app.EmoticonHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.qphone.base.util.QLog;
+import UserGrowth.stSimpleGetFeedListRsp;
+import UserGrowth.stSimpleMetaFeed;
+import android.text.TextUtils;
+import com.qq.taf.jce.JceInputStream;
+import com.qq.taf.jce.JceOutputStream;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.1;
+import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.2;
+import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.3;
+import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.5;
+import com.tencent.biz.pubaccount.weishi_new.cache.WeiShiCacheManager.6;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.qzone.LocalMultiProcConfig;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import mqq.os.MqqHandler;
 
 public class rxc
-  implements Runnable
 {
-  public rxc(BaseChatPie paramBaseChatPie, String paramString1, String paramString2) {}
-  
-  public void run()
+  private stSimpleGetFeedListRsp a(int paramInt)
   {
-    int i = 9;
-    int m = 0;
-    int j = BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).b(this.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, this.b + "is hotword, totalnum = " + j);
+    Object localObject = "";
+    if (paramInt == 1) {
+      localObject = a();
     }
-    if (j == 0) {
+    while (TextUtils.isEmpty((CharSequence)localObject))
+    {
+      return null;
+      if (paramInt == 2) {
+        localObject = b();
+      }
+    }
+    localObject = bace.a((String)localObject);
+    return (stSimpleGetFeedListRsp)a(new stSimpleGetFeedListRsp(), (byte[])localObject);
+  }
+  
+  private String a()
+  {
+    return BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath() + "/file/weishi/ws_recommend_data";
+  }
+  
+  public static rxc a()
+  {
+    return rxd.a();
+  }
+  
+  private boolean a(List<stSimpleMetaFeed> paramList, String paramString)
+  {
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramList.size() > 0)
+    {
+      Object localObject = new stSimpleGetFeedListRsp();
+      ((stSimpleGetFeedListRsp)localObject).feeds = new ArrayList(paramList);
+      localObject = a((JceStruct)localObject);
+      bool1 = bool2;
+      if (localObject != null)
+      {
+        bool1 = bool2;
+        if (localObject.length > 0)
+        {
+          bool1 = bace.a((byte[])localObject, paramString, false);
+          sai.d("WeiShiCacheManager", "cacheRecommendData writeSuccess = " + bool1 + ", cache list size = " + paramList.size() + ", bytes length = " + localObject.length);
+        }
+      }
+    }
+    return bool1;
+  }
+  
+  private int b()
+  {
+    return rxf.a().f();
+  }
+  
+  private String b()
+  {
+    return BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath() + "/file/weishi/ws_reddot_data";
+  }
+  
+  public int a()
+  {
+    return LocalMultiProcConfig.getInt("weishi_usergrowth", "key_red_msg_valid_count", 0);
+  }
+  
+  public <T extends JceStruct> T a(T paramT, byte[] paramArrayOfByte)
+  {
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      return null;
+    }
+    try
+    {
+      paramArrayOfByte = new JceInputStream(paramArrayOfByte);
+      paramArrayOfByte.setServerEncoding("utf8");
+      paramT.readFrom(paramArrayOfByte);
+      return paramT;
+    }
+    catch (Exception paramT)
+    {
+      paramT.printStackTrace();
+    }
+    return null;
+  }
+  
+  public void a()
+  {
+    ThreadManager.executeOnFileThread(new WeiShiCacheManager.6(this));
+  }
+  
+  public void a(List<stSimpleMetaFeed> paramList, int paramInt)
+  {
+    if (b() == 0) {
+      ThreadManager.executeOnFileThread(new WeiShiCacheManager.2(this));
+    }
+    while ((paramList == null) || (paramList.size() <= 0)) {
       return;
     }
-    Object localObject3 = BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(this.jdField_a_of_type_JavaLangString);
-    Object localObject2 = BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).b(this.jdField_a_of_type_JavaLangString);
-    Object localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = new ArrayList();
-    }
-    if (j > 9) {}
-    for (;;)
+    ThreadManager.executeOnFileThread(new WeiShiCacheManager.3(this, new ArrayList(paramList), paramInt));
+  }
+  
+  public void a(List<stSimpleMetaFeed> paramList, long paramLong)
+  {
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      long l = BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(this.jdField_a_of_type_JavaLangString);
-      boolean bool;
-      if (BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a()) {
-        if (System.currentTimeMillis() - l > 86400000L) {
-          bool = true;
-        }
-      }
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.aio.BaseChatPie", 2, "afterTextChanged isNeedReq = " + bool);
-        }
-        if (bool)
-        {
-          ((List)localObject1).clear();
-          localObject2 = new ArrayList();
-          j = i;
-          int k = m;
-          if (localObject3 != null)
-          {
-            ((List)localObject2).add(((Emoticon)localObject3).eId);
-            ((List)localObject1).add(localObject3);
-            j = i - 1;
-            k = m;
-          }
-          for (;;)
-          {
-            if (k < j)
-            {
-              localObject3 = new Emoticon();
-              ((Emoticon)localObject3).epId = "NONE";
-              ((Emoticon)localObject3).eId = ("_" + k);
-              ((List)localObject1).add(localObject3);
-              k += 1;
-              continue;
-              if (((List)localObject1).size() >= i) {
-                break label401;
-              }
-              bool = true;
-              break;
-            }
-          }
-          localObject3 = BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).c(this.jdField_a_of_type_JavaLangString);
-          ((EmoticonHandler)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(12)).a(this.b, (List)localObject2, (List)localObject3);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_MqqOsMqqHandler.post(new rxd(this, (List)localObject1));
-        return;
-        label401:
-        bool = false;
-      }
-      i = j;
+      ThreadManager.executeOnFileThread(new WeiShiCacheManager.5(this, new ArrayList(paramList), paramLong, paramList));
+      return;
     }
+    a();
+  }
+  
+  public void a(rwy paramrwy)
+  {
+    ThreadManager.executeOnFileThread(new WeiShiCacheManager.1(this, paramrwy));
+  }
+  
+  public boolean a()
+  {
+    long l1 = LocalMultiProcConfig.getLong("weishi_usergrowth", "key_red_msg_valid_timestamp", 0L);
+    long l2 = System.currentTimeMillis();
+    long l3 = l1 - l2;
+    sai.d("WeiShiCacheManager", "validTimestamp-currentTimestamp = " + l1 + "-" + l2 + " = " + l3);
+    return l3 > 0L;
+  }
+  
+  public byte[] a(JceStruct paramJceStruct)
+  {
+    if (paramJceStruct != null) {
+      try
+      {
+        JceOutputStream localJceOutputStream = new JceOutputStream();
+        localJceOutputStream.setServerEncoding("utf8");
+        paramJceStruct.writeTo(localJceOutputStream);
+        paramJceStruct = localJceOutputStream.toByteArray();
+        return paramJceStruct;
+      }
+      catch (Exception paramJceStruct)
+      {
+        paramJceStruct.printStackTrace();
+      }
+    }
+    return null;
+  }
+  
+  public boolean b()
+  {
+    String str1 = sam.b();
+    String str2 = LocalMultiProcConfig.getString("weishi_usergrowth", "key_ws_cache_v", "");
+    sai.b("CacheResponseLog", "getCachedTrendsWSData versionName = " + str1 + ", cachedVersionName = " + str2);
+    return (!TextUtils.isEmpty(str1)) && (TextUtils.equals(str1, str2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rxc
  * JD-Core Version:    0.7.0.1
  */

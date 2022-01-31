@@ -1,76 +1,100 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.Map;
+import android.support.annotation.NonNull;
+import java.io.File;
 
-public class sii
-  extends FriendListObserver
+public abstract class sii
 {
-  public sii(ChatSettingForTroop paramChatSettingForTroop) {}
+  protected sii a;
+  protected String[] a;
   
-  protected void onSetGenralSettingsTroopFilter(boolean paramBoolean, Map paramMap)
+  public sii(@NonNull String[] paramArrayOfString)
   {
-    super.onSetGenralSettingsTroopFilter(paramBoolean, paramMap);
-    if ((paramMap == null) || (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo == null)) {
-      return;
-    }
-    if (!paramBoolean) {
-      if (paramMap.get(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin) != null) {
-        QQToast.a(this.a.app.getApp(), 1, this.a.getString(2131434530), 0).b(this.a.getTitleBarHeight());
-      }
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(18);
-      return;
-      paramMap = (Integer)paramMap.get(this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopuin);
-      if (paramMap != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopmask = paramMap.intValue();
-      }
-    }
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
   }
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public static double a(File paramFile)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {}
+    double d1 = 0.0D;
+    double d2;
+    if (paramFile.isDirectory())
+    {
+      paramFile = paramFile.listFiles();
+      d2 = d1;
+      if (paramFile != null)
+      {
+        int j = paramFile.length;
+        int i = 0;
+        for (;;)
+        {
+          d2 = d1;
+          if (i >= j) {
+            break;
+          }
+          d2 = a(paramFile[i]);
+          i += 1;
+          d1 = d2 + d1;
+        }
+      }
+    }
+    else
+    {
+      d2 = paramFile.length() / 1024.0D / 1024.0D;
+    }
+    return d2;
+  }
+  
+  public sii a(sii paramsii)
+  {
+    this.jdField_a_of_type_Sii = paramsii;
+    return this.jdField_a_of_type_Sii;
+  }
+  
+  public void a(File paramFile)
+  {
     try
     {
-      l = Long.valueOf(paramString).longValue();
-      if (l != 0L)
-      {
-        this.a.a(l);
-        this.a.b(l);
-      }
+      vlm.d(paramFile.getPath());
       return;
     }
-    catch (NumberFormatException paramString)
+    catch (Exception paramFile)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        long l = 0L;
-      }
+      urk.d("Q.qqstory.cleaner:AbsCleanStep", "delete failed : " + paramFile);
     }
   }
   
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  public void a(sij paramsij)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {}
-    while ((!paramBoolean) || (!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin))) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.notifyDataSetChanged();
+    a(this.jdField_a_of_type_ArrayOfJavaLangString, paramsij);
+    if (this.jdField_a_of_type_Sii != null) {}
+    long l;
+    do
+    {
+      try
+      {
+        Thread.sleep(100L);
+        this.jdField_a_of_type_Sii.a(paramsij);
+        return;
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        for (;;)
+        {
+          urk.e("Q.qqstory.cleaner:AbsCleanStep", "sleep error ,InterruptedException");
+        }
+      }
+      l = vlm.a() / 1024L;
+      urk.d("Q.qqstory.cleaner:AbsCleanStep", "clean cache over , spend time = %d , free size = %d", new Object[] { Long.valueOf(System.currentTimeMillis() - paramsij.jdField_a_of_type_Long), Long.valueOf(l) });
+      if (paramsij.jdField_a_of_type_Int != 0) {
+        urp.b("story_cache", "clear_cache", 0, 0, new String[] { String.valueOf(0), String.valueOf(paramsij.jdField_a_of_type_Int), String.valueOf(paramsij.jdField_a_of_type_Double), String.valueOf(l) });
+      }
+    } while (paramsij.jdField_b_of_type_Int == 0);
+    urp.b("story_cache", "clear_cache", 0, 0, new String[] { String.valueOf(1), String.valueOf(paramsij.jdField_b_of_type_Int), String.valueOf(paramsij.jdField_b_of_type_Double), String.valueOf(l) });
   }
+  
+  protected abstract void a(String[] paramArrayOfString, sij paramsij);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sii
  * JD-Core Version:    0.7.0.1
  */

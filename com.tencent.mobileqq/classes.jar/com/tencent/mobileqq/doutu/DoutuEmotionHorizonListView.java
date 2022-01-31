@@ -1,15 +1,17 @@
 package com.tencent.mobileqq.doutu;
 
+import aepg;
+import amxq;
+import amxt;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituPicAdapter;
 import com.tencent.widget.HorizontalListView;
 
 public class DoutuEmotionHorizonListView
   extends HorizontalListView
 {
-  private DoutuEmotionHorizonListView.HorizonListViewTouchListener a;
+  private amxt a;
   
   public DoutuEmotionHorizonListView(Context paramContext)
   {
@@ -29,29 +31,29 @@ public class DoutuEmotionHorizonListView
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  protected void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
+  public void onOverScrolled(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
   {
     if (paramInt1 > 0)
     {
-      if (!(a() instanceof DoutuEmotionAdapter)) {
+      if (!(getAdapter() instanceof amxq)) {
         break label34;
       }
-      ((DoutuEmotionAdapter)a()).b();
+      ((amxq)getAdapter()).b();
     }
     for (;;)
     {
       super.onOverScrolled(paramInt1, paramInt2, paramBoolean1, paramBoolean2);
       return;
       label34:
-      if ((a() instanceof ZhituPicAdapter)) {
-        ((ZhituPicAdapter)a()).b();
+      if ((getAdapter() instanceof aepg)) {
+        ((aepg)getAdapter()).b();
       }
     }
   }
   
-  public void setTouchListener(DoutuEmotionHorizonListView.HorizonListViewTouchListener paramHorizonListViewTouchListener)
+  public void setTouchListener(amxt paramamxt)
   {
-    this.a = paramHorizonListViewTouchListener;
+    this.a = paramamxt;
   }
 }
 

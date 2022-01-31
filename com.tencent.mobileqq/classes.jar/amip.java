@@ -1,26 +1,50 @@
-import android.view.ViewTreeObserver;
-import com.tencent.widget.DynamicGridView;
+import android.support.annotation.NonNull;
 
 public class amip
-  implements amis
+  extends amie<amji>
 {
-  private int jdField_a_of_type_Int;
-  private int b;
-  
-  public amip(DynamicGridView paramDynamicGridView, int paramInt1, int paramInt2)
+  @NonNull
+  public static amji c()
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
+    amji localamji2 = (amji)alzw.a().a(527);
+    amji localamji1 = localamji2;
+    if (localamji2 == null) {
+      localamji1 = new amji();
+    }
+    return localamji1;
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public int a()
   {
-    this.jdField_a_of_type_ComTencentWidgetDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new amiq(this, paramInt1, paramInt2));
+    return 527;
+  }
+  
+  @NonNull
+  public amji a()
+  {
+    return new amji();
+  }
+  
+  @NonNull
+  public amji a(@NonNull alzs[] paramArrayOfalzs)
+  {
+    return amji.a(paramArrayOfalzs[0].a);
+  }
+  
+  public Class<amji> a()
+  {
+    return amji.class;
+  }
+  
+  @NonNull
+  public amji b()
+  {
+    return new amji();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amip
  * JD-Core Version:    0.7.0.1
  */

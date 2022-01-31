@@ -1,68 +1,14 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishUtils.UserInvokeAction;
+import android.graphics.Bitmap;
 
-public final class ajdq
-  implements DialogInterface.OnClickListener
+public abstract interface ajdq
 {
-  public ajdq(Bundle paramBundle, int paramInt1, int paramInt2, Activity paramActivity) {}
+  public abstract Bitmap a(int[] paramArrayOfInt, Bitmap paramBitmap, int paramInt1, int paramInt2);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    TroopBarPublishUtils.a().a();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      paramDialogInterface.dismiss();
-      String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("bid", "0");
-      String str1;
-      if ("interestcircle".endsWith(this.jdField_a_of_type_AndroidOsBundle.getString("from")))
-      {
-        paramDialogInterface = "pub_page_new";
-        if (this.jdField_a_of_type_Int != 3) {
-          break label144;
-        }
-        str1 = "Clk_cancel";
-        label79:
-        if (this.jdField_a_of_type_Int != 3) {
-          break label155;
-        }
-        if (!"0".endsWith(str2)) {
-          break label150;
-        }
-        paramInt = 2;
-      }
-      for (;;)
-      {
-        ReportController.b(null, "dc00899", "Grp_tribe", "", paramDialogInterface, str1, paramInt, 0, str2, "", "", "");
-        return;
-        if ("0".endsWith(str2)) {}
-        for (paramDialogInterface = "pub_page_new";; paramDialogInterface = "reply_page_new") {
-          break;
-        }
-        label144:
-        str1 = "Clk_cancelup";
-        break label79;
-        label150:
-        paramInt = 1;
-        continue;
-        label155:
-        paramInt = 0;
-      }
-    }
-    paramDialogInterface.dismiss();
-    TroopBarPublishUtils.a(this.b, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidOsBundle);
-  }
+  public abstract void a(ajdr paramajdr, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ajdq
  * JD-Core Version:    0.7.0.1
  */

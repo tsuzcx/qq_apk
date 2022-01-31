@@ -1,7 +1,7 @@
 package cooperation.qzone.report.lp;
 
+import bfpk;
 import com.tencent.common.app.BaseApplicationImpl;
-import cooperation.qzone.QUA;
 import cooperation.qzone.util.NetworkState;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -39,7 +39,7 @@ public class LpReportInfo_DC02293
     return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(localDate);
   }
   
-  public Map toMap()
+  public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("Uin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
@@ -47,13 +47,17 @@ public class LpReportInfo_DC02293
     LpReportUtils.safePut(localHashMap, "LogTime", getStringDate());
     localHashMap.put("Event", this.mQzoneCmd);
     localHashMap.put("RetCode", String.valueOf(this.mRetCode));
-    localHashMap.put("CmdMsg", this.mMsg);
-    localHashMap.put("TimeCost", String.valueOf(this.mTimeCost));
-    localHashMap.put("AppId", "Android-QzoneInQQ");
-    localHashMap.put("network", String.valueOf(NetworkState.getNetworkType()));
-    localHashMap.put("qua", QUA.a());
-    localHashMap.put("deviceinfo", QUA.a());
-    return localHashMap;
+    if (this.mMsg != null) {}
+    for (String str = this.mMsg;; str = "")
+    {
+      localHashMap.put("CmdMsg", str);
+      localHashMap.put("TimeCost", String.valueOf(this.mTimeCost));
+      localHashMap.put("AppId", "Android-QzoneInQQ");
+      localHashMap.put("network", String.valueOf(NetworkState.getNetworkType()));
+      localHashMap.put("qua", bfpk.a());
+      localHashMap.put("deviceinfo", bfpk.a());
+      return localHashMap;
+    }
   }
 }
 

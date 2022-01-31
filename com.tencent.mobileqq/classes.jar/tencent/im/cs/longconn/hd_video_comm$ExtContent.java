@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class hd_video_comm$ExtContent
-  extends MessageMicro
+  extends MessageMicro<ExtContent>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_ext_content = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -24,7 +24,7 @@ public final class hd_video_comm$ExtContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.longconn.hd_video_comm.ExtContent
  * JD-Core Version:    0.7.0.1
  */

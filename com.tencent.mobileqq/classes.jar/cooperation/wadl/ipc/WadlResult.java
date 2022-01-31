@@ -3,12 +3,13 @@ package cooperation.wadl.ipc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import anox;
+import bcko;
+import bgtc;
 
 public class WadlResult
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new anox();
+  public static final Parcelable.Creator<WadlResult> CREATOR = new bgtc();
   public int a;
   public long a;
   public WadlParams a;
@@ -40,6 +41,20 @@ public class WadlResult
     if (paramWadlParams != null) {
       this.jdField_a_of_type_CooperationWadlIpcWadlParams = paramWadlParams;
     }
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_CooperationWadlIpcWadlParams != null) {}
+    for (String str = this.jdField_a_of_type_CooperationWadlIpcWadlParams.j;; str = "")
+    {
+      this.jdField_b_of_type_Int = bcko.a(this.jdField_b_of_type_Int, str, this.jdField_b_of_type_JavaLangString);
+      if (this.jdField_b_of_type_Int != 0) {
+        break;
+      }
+      return false;
+    }
+    return true;
   }
   
   public int describeContents()

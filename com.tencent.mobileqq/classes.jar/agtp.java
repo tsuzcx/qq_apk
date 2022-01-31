@@ -1,37 +1,25 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.OnUseResListener;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.config.SpringFestivalRedpacketConfBean.TimeInfo;
+import java.util.Comparator;
 
 class agtp
-  implements Runnable
+  implements Comparator<SpringFestivalRedpacketConfBean.TimeInfo>
 {
-  agtp(agto paramagto, String paramString) {}
+  agtp(agtk paramagtk) {}
   
-  public void run()
+  public int a(SpringFestivalRedpacketConfBean.TimeInfo paramTimeInfo1, SpringFestivalRedpacketConfBean.TimeInfo paramTimeInfo2)
   {
-    if (this.jdField_a_of_type_Agto.jdField_a_of_type_Agtj.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-      return;
+    if (paramTimeInfo1.beginTime == paramTimeInfo2.beginTime) {
+      return 0;
     }
-    this.jdField_a_of_type_Agto.jdField_a_of_type_Agtj.a.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$OnUseResListener.a(false);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      QRUtils.a(1, 2131430006);
-      return;
+    if (paramTimeInfo1.beginTime > paramTimeInfo2.beginTime) {
+      return 1;
     }
-    if (this.jdField_a_of_type_Agto.jdField_a_of_type_Long == 2L)
-    {
-      WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Agto.jdField_a_of_type_Agtj.a.jdField_a_of_type_AndroidGraphicsBitmap, 0);
-      return;
-    }
-    WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Agto.jdField_a_of_type_Agtj.a.jdField_a_of_type_AndroidGraphicsBitmap, 1);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agtp
  * JD-Core Version:    0.7.0.1
  */

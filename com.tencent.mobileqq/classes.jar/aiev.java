@@ -1,71 +1,107 @@
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils.WatermarkVideoRunnable;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.content.Context;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import android.view.SurfaceView;
+import android.view.WindowManager;
+import android.view.WindowManager.LayoutParams;
+import com.tencent.TMG.sdk.AVContext;
+import com.tencent.TMG.sdk.AVVideoCtrl;
+import com.tencent.TMG.utils.QLog;
 
 public class aiev
-  implements FFmpegExecuteResponseCallback
 {
-  public aiev(ShortVideoUtils.WatermarkVideoRunnable paramWatermarkVideoRunnable, String paramString) {}
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  private SurfaceHolder.Callback jdField_a_of_type_AndroidViewSurfaceHolder$Callback = new aiew(this);
+  public SurfaceView a;
   
-  public void a() {}
-  
-  public void a(String paramString)
+  public aiev(Context paramContext, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoUtils", 2, new Object[] { "update system gallery: ", this.jdField_a_of_type_JavaLangString });
-    }
-    com.tencent.biz.qqstory.utils.FileUtils.a(BaseApplication.getContext(), new File(this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = paramInt;
   }
   
-  public void a(boolean paramBoolean)
+  AVVideoCtrl a()
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("ShortVideoUtils", 2, new Object[] { "watermark video finish: ", Boolean.valueOf(paramBoolean) });
-      double d = (SystemClock.uptimeMillis() - this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUtils$WatermarkVideoRunnable.jdField_a_of_type_Long) / 1000.0D;
-      QLog.d("ShortVideoUtils", 2, "generate files|third step cost:" + d);
+    AVContext localAVContext = aixa.a(this.jdField_a_of_type_AndroidContentContext).a();
+    if (localAVContext != null) {
+      return localAVContext.getVideoCtrl();
     }
-    for (;;)
+    return null;
+  }
+  
+  public void a()
+  {
+    WindowManager localWindowManager = (WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window");
+    WindowManager.LayoutParams localLayoutParams = new WindowManager.LayoutParams();
+    localLayoutParams.width = 1;
+    localLayoutParams.height = 1;
+    localLayoutParams.flags = 776;
+    localLayoutParams.format = -3;
+    localLayoutParams.windowAnimations = 0;
+    localLayoutParams.gravity = 51;
+    try
     {
-      synchronized (ShortVideoUtils.WatermarkVideoRunnable.a())
+      if (this.jdField_a_of_type_AndroidViewSurfaceView == null)
       {
-        ShortVideoUtils.WatermarkVideoRunnable.a().notify();
-        if (!ShortVideoUtils.WatermarkVideoRunnable.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUtils$WatermarkVideoRunnable))
-        {
-          ??? = this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUtils$WatermarkVideoRunnable;
-          if (paramBoolean)
-          {
-            i = 10000;
-            ShortVideoUtils.WatermarkVideoRunnable.a((ShortVideoUtils.WatermarkVideoRunnable)???, i);
-          }
-        }
-        else
-        {
-          if (this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUtils$WatermarkVideoRunnable.jdField_a_of_type_JavaLangString != null) {
-            com.tencent.mobileqq.utils.FileUtils.d(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUtils$WatermarkVideoRunnable.jdField_a_of_type_JavaLangString);
-          }
-          return;
+        this.jdField_a_of_type_AndroidViewSurfaceView = new SurfaceView(this.jdField_a_of_type_AndroidContentContext);
+        SurfaceHolder localSurfaceHolder = this.jdField_a_of_type_AndroidViewSurfaceView.getHolder();
+        localSurfaceHolder.addCallback(this.jdField_a_of_type_AndroidViewSurfaceHolder$Callback);
+        localSurfaceHolder.setType(3);
+        this.jdField_a_of_type_AndroidViewSurfaceView.setZOrderMediaOverlay(true);
+        localWindowManager.addView(this.jdField_a_of_type_AndroidViewSurfaceView, localLayoutParams);
+      }
+      QLog.e("AVCameraCaptureModel", 0, "memoryLeak initCameraPreview");
+      return;
+    }
+    catch (IllegalStateException localIllegalStateException)
+    {
+      for (;;)
+      {
+        localWindowManager.updateViewLayout(this.jdField_a_of_type_AndroidViewSurfaceView, localLayoutParams);
+        if (QLog.isColorLevel()) {
+          QLog.d("AVCameraCaptureModel", 0, "add camera surface view fail: IllegalStateException." + localIllegalStateException);
         }
       }
-      int i = 10001;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AVCameraCaptureModel", 0, "add camera surface view fail." + localException);
+        }
+      }
     }
   }
   
-  public void b(String paramString)
+  public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("ShortVideoUtils", 2, "watermark video failed: " + paramString);
+    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_AndroidViewSurfaceView == null)) {
+      return;
+    }
+    WindowManager localWindowManager = (WindowManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("window");
+    try
+    {
+      localWindowManager.removeView(this.jdField_a_of_type_AndroidViewSurfaceView);
+      this.jdField_a_of_type_AndroidViewSurfaceView = null;
+      QLog.e("AVCameraCaptureModel", 0, "memoryLeak unInitCameraaPreview");
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("AVCameraCaptureModel", 0, "remove camera view fail.", localException);
+        }
+      }
     }
   }
-  
-  public void c(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiev
  * JD-Core Version:    0.7.0.1
  */

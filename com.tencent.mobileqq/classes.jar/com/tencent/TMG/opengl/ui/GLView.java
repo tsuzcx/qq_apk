@@ -28,8 +28,8 @@ public class GLView
   protected int mLastWidthSpec = -1;
   protected int mMeasuredHeight = 0;
   protected int mMeasuredWidth = 0;
-  protected OnTouchListener mOnTouchListener;
-  protected OnZOrderChangedListener mOnZOrderChangedListener;
+  protected GLView.OnTouchListener mOnTouchListener;
+  protected GLView.OnZOrderChangedListener mOnZOrderChangedListener;
   protected final Rect mPaddings = new Rect(0, 0, 0, 0);
   protected GLView mParent;
   protected GLRootView mRootView;
@@ -60,7 +60,6 @@ public class GLView
   }
   
   protected void finalize()
-    throws Throwable
   {
     super.finalize();
     if (this.mBackground != null)
@@ -276,7 +275,7 @@ public class GLView
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 95	com/tencent/TMG/opengl/ui/GLView:mBackgroundBitmapLock	Ljava/lang/Object;
+    //   1: getfield 89	com/tencent/TMG/opengl/ui/GLView:mBackgroundBitmapLock	Ljava/lang/Object;
     //   4: astore_2
     //   5: aload_2
     //   6: monitorenter
@@ -286,23 +285,23 @@ public class GLView
     //   12: monitorexit
     //   13: return
     //   14: aload_0
-    //   15: getfield 127	com/tencent/TMG/opengl/ui/GLView:mBackground	Lcom/tencent/TMG/opengl/texture/BasicTexture;
+    //   15: getfield 121	com/tencent/TMG/opengl/ui/GLView:mBackground	Lcom/tencent/TMG/opengl/texture/BasicTexture;
     //   18: ifnull +15 -> 33
     //   21: aload_0
-    //   22: getfield 127	com/tencent/TMG/opengl/ui/GLView:mBackground	Lcom/tencent/TMG/opengl/texture/BasicTexture;
-    //   25: invokevirtual 256	com/tencent/TMG/opengl/texture/BasicTexture:recycle	()V
+    //   22: getfield 121	com/tencent/TMG/opengl/ui/GLView:mBackground	Lcom/tencent/TMG/opengl/texture/BasicTexture;
+    //   25: invokevirtual 249	com/tencent/TMG/opengl/texture/BasicTexture:recycle	()V
     //   28: aload_0
     //   29: aconst_null
-    //   30: putfield 127	com/tencent/TMG/opengl/ui/GLView:mBackground	Lcom/tencent/TMG/opengl/texture/BasicTexture;
+    //   30: putfield 121	com/tencent/TMG/opengl/ui/GLView:mBackground	Lcom/tencent/TMG/opengl/texture/BasicTexture;
     //   33: aload_0
-    //   34: new 268	com/tencent/TMG/opengl/texture/BitmapTexture
+    //   34: new 261	com/tencent/TMG/opengl/texture/BitmapTexture
     //   37: dup
     //   38: aload_1
-    //   39: invokespecial 270	com/tencent/TMG/opengl/texture/BitmapTexture:<init>	(Landroid/graphics/Bitmap;)V
-    //   42: putfield 127	com/tencent/TMG/opengl/ui/GLView:mBackground	Lcom/tencent/TMG/opengl/texture/BasicTexture;
+    //   39: invokespecial 263	com/tencent/TMG/opengl/texture/BitmapTexture:<init>	(Landroid/graphics/Bitmap;)V
+    //   42: putfield 121	com/tencent/TMG/opengl/ui/GLView:mBackground	Lcom/tencent/TMG/opengl/texture/BasicTexture;
     //   45: aload_0
     //   46: iconst_0
-    //   47: putfield 88	com/tencent/TMG/opengl/ui/GLView:mBackgroundResource	I
+    //   47: putfield 82	com/tencent/TMG/opengl/ui/GLView:mBackgroundResource	I
     //   50: aload_2
     //   51: monitorexit
     //   52: return
@@ -346,12 +345,12 @@ public class GLView
     this.mMeasuredHeight = paramInt2;
   }
   
-  public void setOnTouchListener(OnTouchListener paramOnTouchListener)
+  public void setOnTouchListener(GLView.OnTouchListener paramOnTouchListener)
   {
     this.mOnTouchListener = paramOnTouchListener;
   }
   
-  protected void setOnZOrderChangedListener(OnZOrderChangedListener paramOnZOrderChangedListener)
+  protected void setOnZOrderChangedListener(GLView.OnZOrderChangedListener paramOnZOrderChangedListener)
   {
     this.mOnZOrderChangedListener = paramOnZOrderChangedListener;
   }
@@ -407,20 +406,10 @@ public class GLView
       this.mRootView.unlockRenderThread();
     }
   }
-  
-  public static abstract interface OnTouchListener
-  {
-    public abstract boolean onTouch(GLView paramGLView, MotionEvent paramMotionEvent);
-  }
-  
-  public static abstract interface OnZOrderChangedListener
-  {
-    public abstract void OnZOrderChanged(GLView paramGLView, int paramInt1, int paramInt2);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.TMG.opengl.ui.GLView
  * JD-Core Version:    0.7.0.1
  */

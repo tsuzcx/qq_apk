@@ -3,6 +3,8 @@ package com.tencent.mobileqq.utils.traceroute;
 public enum TraceConstants$TraceMethod
 {
   ICMP,  UDP;
+  
+  private TraceConstants$TraceMethod() {}
 }
 
 

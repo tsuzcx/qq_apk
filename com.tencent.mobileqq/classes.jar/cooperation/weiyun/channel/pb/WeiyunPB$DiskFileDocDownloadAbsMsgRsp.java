@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class WeiyunPB$DiskFileDocDownloadAbsMsgRsp
-  extends MessageMicro
+  extends MessageMicro<DiskFileDocDownloadAbsMsgRsp>
 {
   public static final int COOKIE_FIELD_NUMBER = 6;
   public static final int DOWNLOADDNS_FIELD_NUMBER = 2;
@@ -36,7 +36,7 @@ public final class WeiyunPB$DiskFileDocDownloadAbsMsgRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cooperation.weiyun.channel.pb.WeiyunPB.DiskFileDocDownloadAbsMsgRsp
  * JD-Core Version:    0.7.0.1
  */

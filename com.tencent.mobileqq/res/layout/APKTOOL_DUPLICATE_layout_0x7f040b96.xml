@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.HorizontalListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33cf" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0176" android:paddingLeft="15.0dip" android:paddingRight="30.0dip" android:fadingEdge="none" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ProgressPointer android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33d0" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.RangeSelectBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33d1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</merge>

@@ -5,27 +5,27 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewController;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl;
+import bgmq;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import cooperation.readinjoy.ReadInJoyHelper;
-import lfj;
+import nhx;
+import nks;
+import qji;
 
 public class ReadInJoyFollowActivity
   extends IphoneTitleBarActivity
 {
-  public ReadInJoyChannelViewController a;
+  public nhx a;
   
   private void a()
   {
-    ViewGroup localViewGroup = (ViewGroup)findViewById(2131367215);
-    this.a = new ReadInJoyChannelViewController(this);
+    ViewGroup localViewGroup = (ViewGroup)findViewById(2131309089);
+    this.a = new nhx(this);
     this.a.a(70);
     this.a.b(0);
     this.a.a(localViewGroup);
   }
   
-  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if (this.a != null) {
       this.a.a(paramInt1, paramInt2, paramIntent);
@@ -33,48 +33,48 @@ public class ReadInJoyFollowActivity
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    VideoVolumeControl.a().a(this);
+    qji.a().a(this);
     if (Build.VERSION.SDK_INT >= 11) {
       getWindow().setFlags(16777216, 16777216);
     }
-    setContentView(2130969620);
+    setContentView(2131494361);
     getWindow().setBackgroundDrawable(null);
-    setClickableTitle("BB圈", new lfj(this));
+    setClickableTitle("BB圈", new nks(this));
     a();
     this.a.a();
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
     this.a.d();
-    VideoVolumeControl.a().b(this);
+    qji.a().b(this);
   }
   
-  protected void doOnPause()
+  public void doOnPause()
   {
     super.doOnPause();
     this.a.g();
   }
   
-  protected void doOnResume()
+  public void doOnResume()
   {
     super.doOnResume();
     this.a.h();
   }
   
-  protected void doOnStart()
+  public void doOnStart()
   {
     super.doOnStart();
-    ReadInJoyHelper.a(getAppRuntime());
+    bgmq.a(getAppRuntime());
     this.a.e();
   }
   
-  protected void doOnStop()
+  public void doOnStop()
   {
     super.doOnStop();
     this.a.f();

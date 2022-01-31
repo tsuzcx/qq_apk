@@ -24,16 +24,16 @@ public class PhoneUnityVerifyActivity
     }
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970531);
-    super.setTitle(getString(2131436866));
+    super.setContentView(2131495367);
+    super.setTitle(getString(2131629346));
     this.leftView.setVisibility(8);
     this.rightViewText.setVisibility(0);
-    this.rightViewText.setText(2131436322);
+    this.rightViewText.setText(2131627595);
     this.rightViewText.setOnClickListener(this);
-    paramBundle = (Button)super.findViewById(2131370973);
+    paramBundle = (Button)super.findViewById(2131305762);
     if (paramBundle != null) {
       paramBundle.setOnClickListener(this);
     }
@@ -48,7 +48,7 @@ public class PhoneUnityVerifyActivity
   {
     super.setResult(-1, new Intent());
     super.finish();
-    super.overridePendingTransition(0, 2131034135);
+    super.overridePendingTransition(0, 2130772001);
     return false;
   }
   
@@ -58,7 +58,7 @@ public class PhoneUnityVerifyActivity
     {
     default: 
       return;
-    case 2131370973: 
+    case 2131305762: 
       paramView = new Intent(this, QQBrowserActivity.class);
       paramView.putExtra("uin", this.app.getCurrentAccountUin());
       paramView.putExtra("url", this.a);
@@ -73,7 +73,7 @@ public class PhoneUnityVerifyActivity
     }
     super.setResult(-1, new Intent());
     super.finish();
-    super.overridePendingTransition(0, 2131034135);
+    super.overridePendingTransition(0, 2130772001);
   }
 }
 

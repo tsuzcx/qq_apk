@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.search.activity;
 
+import ajjy;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
@@ -22,7 +23,7 @@ public class MessageSearchActivity
   
   protected String a()
   {
-    return "搜索聊天记录";
+    return ajjy.a(2131640874);
   }
 }
 

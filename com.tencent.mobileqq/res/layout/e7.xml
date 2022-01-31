@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.activity.book.ResizeLayout android:id="@id/abg" android:background="@drawable/b0w" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingLeft="37.0dip" android:paddingRight="37.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:layout_gravity="left" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="50.0dip" android:layout_marginBottom="20.0dip">
+            <TextView android:textSize="18.0sp" android:textColor="#ff4d4d4d" android:id="@id/abf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="xxxxxxx" android:singleLine="true" android:layout_weight="1.0" />
+            <TextView android:textSize="18.0sp" android:textColor="#ff4d4d4d" android:id="@id/ay7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="100.0dip" android:text="@string/k2o" android:singleLine="true" android:layout_weight="1.0" />
+        </LinearLayout>
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="140.0dip">
+            <com.tencent.mobileqq.activity.book.BookEditText android:textSize="18.0sp" android:textColor="#ff4d4d4d" android:textColorHint="#ffa1a1a1" android:gravity="top" android:id="@id/abh" android:background="#00000000" android:paddingLeft="12.0dip" android:paddingTop="12.0dip" android:paddingRight="12.0dip" android:paddingBottom="40.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:hint="@string/wq" android:singleLine="false" android:imeOptions="actionDone" android:textCursorDrawable="@drawable/gk2" />
+            <TextView android:textSize="16.0dip" android:textColor="#ff9a9a9a" android:id="@id/bap" android:background="#00000000" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:layout_marginBottom="12.0dip" android:layout_alignRight="@id/abh" android:layout_alignBottom="@id/abh" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
+            <TextView android:textSize="18.0sp" android:textColor="#ff4d4d4d" android:id="@id/abe" android:paddingLeft="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="xxxxx" android:singleLine="true" android:layout_toLeftOf="@id/l7a" />
+            <TextView android:textSize="18.0sp" android:textColor="#ff4d4d4d" android:id="@id/l7a" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/k2p" android:singleLine="true" android:layout_alignTop="@id/abe" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</com.tencent.mobileqq.activity.book.ResizeLayout>

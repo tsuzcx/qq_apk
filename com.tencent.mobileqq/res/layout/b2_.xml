@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/j2"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:gravity="center_vertical" android:id="@id/gus" android:paddingLeft="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="10.0dip" android:layout_centerVertical="true" style="@style/w2" />
+    <ImageView android:id="@id/gun" android:background="@drawable/f0r" android:layout_width="47.0dip" android:layout_height="18.0dip" android:layout_marginRight="8.0dip" android:layout_toLeftOf="@id/gur" android:layout_centerVertical="true" android:contentDescription="@null" />
+    <TextView android:textSize="@dimen/j9" android:textColor="@color/skin_gray3" android:id="@id/gur" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:text="" android:layout_toLeftOf="@id/dce" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/dce" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:src="@drawable/skin_icon_arrow_right_normal" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+</RelativeLayout>

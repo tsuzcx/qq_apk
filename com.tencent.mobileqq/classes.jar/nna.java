@@ -1,12 +1,46 @@
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
-import com.tencent.mobileqq.app.FriendListObserver;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class nna
-  extends FriendListObserver
+  implements AladdinConfigHandler
 {
-  public nna(VideoPlayModeBase paramVideoPlayModeBase) {}
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  {
+    QLog.d("AdConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = ocx.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("AdConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      if (paramInt1 == 185)
+      {
+        if ((TextUtils.equals(str1, "adcard_style")) && (!TextUtils.isEmpty(str2))) {
+          bgmq.a("sp_key_ad_imax_style", str2.trim());
+        }
+      }
+      else if ((paramInt1 == 188) && (TextUtils.equals(str1, "ad_exposure_supplement")) && (!TextUtils.isEmpty(str2))) {
+        bgmq.a("readinjjoy_ad_supplement_config", str2.trim());
+      }
+    }
+    return true;
+  }
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean) {}
+  public void onWipeConfig(int paramInt)
+  {
+    if (paramInt == 185) {
+      bgmq.a("sp_key_ad_imax_style", "0");
+    }
+    while (paramInt != 188) {
+      return;
+    }
+    bgmq.a("readinjjoy_ad_supplement_config", "0");
+  }
 }
 
 

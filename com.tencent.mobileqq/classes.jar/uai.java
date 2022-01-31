@@ -1,26 +1,31 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
 
 public class uai
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public uai(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  public uai(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramCompoundButton.getId())
+    switch (paramInt)
     {
+    case 0: 
     default: 
       return;
     }
-    TroopAssistantManager.a().a(this.a.app, paramBoolean);
+    paramDialogInterface = new Intent();
+    paramDialogInterface.putExtra("extra_checked_vidset", this.a.a);
+    this.a.getActivity().setResult(-1, paramDialogInterface);
+    this.a.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uai
  * JD-Core Version:    0.7.0.1
  */

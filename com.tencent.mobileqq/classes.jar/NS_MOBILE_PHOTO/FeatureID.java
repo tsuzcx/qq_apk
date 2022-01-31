@@ -6,6 +6,7 @@ public final class FeatureID
   implements Serializable
 {
   public static final int _FeatureID_RecommandAlbum = 1;
+  public static final int _FeatureID_RecommandUpload = 2;
 }
 
 

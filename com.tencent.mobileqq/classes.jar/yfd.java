@@ -1,29 +1,23 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.selectmember.FriendListInnerFrame;
+import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
 
 public class yfd
-  extends Handler
+  implements TouchWebView.OnScrollChangedListener
 {
-  public yfd(FriendListInnerFrame paramFriendListInnerFrame) {}
+  public yfd(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.a.setPadding(0, 0, 40, 0);
-      return;
+    if (GameCenterAPIJavaScript.access$000(this.a) != null) {
+      GameCenterAPIJavaScript.access$000(this.a).scrollBy(0, paramInt2 - paramInt4);
     }
-    this.a.a.setPadding(0, 0, 0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yfd
  * JD-Core Version:    0.7.0.1
  */

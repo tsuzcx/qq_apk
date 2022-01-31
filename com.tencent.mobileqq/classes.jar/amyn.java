@@ -1,26 +1,47 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.RectF;
+import android.graphics.drawable.ColorDrawable;
 
-class amyn
-  implements AsyncBack
+public class amyn
+  extends ColorDrawable
 {
-  amyn(amym paramamym) {}
+  private float jdField_a_of_type_Float;
+  private final int jdField_a_of_type_Int;
+  private final Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private final RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  private final int b;
   
-  public void loaded(String paramString, int paramInt)
+  public amyn(int paramInt1, float paramFloat, int paramInt2, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipPreloadReaderProcess", 2, "Load offline package finish, code = " + paramInt);
-    }
-    if ((paramInt != 0) && (QLog.isColorLevel())) {
-      QLog.e("VipProxyRreLoadReaderProcess", 2, "offline update failed.");
-    }
+    super(paramInt1);
+    this.jdField_a_of_type_Float = paramFloat;
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt1);
+    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, paramInt2, paramInt3);
+    this.jdField_a_of_type_Int = paramInt2;
+    this.b = paramInt3;
   }
   
-  public void progress(int paramInt) {}
+  public void draw(Canvas paramCanvas)
+  {
+    paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+  }
+  
+  public int getIntrinsicHeight()
+  {
+    return this.b;
+  }
+  
+  public int getIntrinsicWidth()
+  {
+    return this.jdField_a_of_type_Int;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amyn
  * JD-Core Version:    0.7.0.1
  */

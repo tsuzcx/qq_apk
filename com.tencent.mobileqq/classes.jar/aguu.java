@@ -1,27 +1,22 @@
-import com.tencent.mobileqq.profile.like.PraiseManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.qwallet.redpacket.springfestival.entry.ui.SpringHbFullScreenVideoFragment;
 
 public class aguu
-  implements Runnable
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public aguu(PraiseManager paramPraiseManager, int paramInt, boolean paramBoolean, String paramString) {}
+  public aguu(SpringHbFullScreenVideoFragment paramSpringHbFullScreenVideoFragment, ViewGroup paramViewGroup) {}
   
-  public void run()
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("PraiseManager", 1, "createPraiseInfo failed, id=" + this.jdField_a_of_type_Int, localException);
+    if ((paramInt & 0x4) == 0) {
+      this.jdField_a_of_type_AndroidViewViewGroup.setSystemUiVisibility(3846);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aguu
  * JD-Core Version:    0.7.0.1
  */

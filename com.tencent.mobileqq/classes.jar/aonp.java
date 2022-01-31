@@ -1,18 +1,26 @@
-import dov.com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class aonp
-  implements Runnable
+public class aonp
+  implements Cloneable
 {
-  aonp(aono paramaono) {}
+  public int a;
+  public View a;
+  public ImageView a;
+  public TextView a;
+  public String a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
   
-  public void run()
-  {
-    EditVideoTagPresenter.a(EditVideoTagPresenter.a(this.a.a), EditVideoTagPresenter.a(this.a.a));
-  }
+  public aonp(aono paramaono) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aonp
  * JD-Core Version:    0.7.0.1
  */

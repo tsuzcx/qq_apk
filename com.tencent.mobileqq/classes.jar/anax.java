@@ -1,60 +1,33 @@
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.shortvideo.ShortVideoErrorReport;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.INet_ShortVideoResource;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneVideoSoDownloadModule;
+import java.util.ArrayList;
+import java.util.List;
 
-public class anax
-  implements ShortVideoResourceManager.INet_ShortVideoResource
+class anax
+  implements anaf
 {
-  ResultReceiver jdField_a_of_type_AndroidOsResultReceiver;
+  anax(anaw paramanaw) {}
   
-  public anax(QzoneVideoSoDownloadModule paramQzoneVideoSoDownloadModule, ResultReceiver paramResultReceiver)
+  public void a(List<anht> paramList)
   {
-    this.jdField_a_of_type_AndroidOsResultReceiver = paramResultReceiver;
-  }
-  
-  public void C_()
-  {
-    QLog.e("QzoneVideoSoDownloadModule", 1, "onNetWorkNone");
-    QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -3, "短视频插件下载失败：网络异常");
-  }
-  
-  public void a(String paramString1, int paramInt, String paramString2)
-  {
-    QLog.i("QzoneVideoSoDownloadModule", 1, "onDownloadFinish name=" + paramString1 + " result=" + paramInt + " filePath=" + paramString2);
-    if (paramString1.startsWith("new_qq_android_native_short_video_"))
-    {
-      if (paramInt == 0) {
-        break label108;
-      }
-      QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -3, "短视频插件下载失败[" + paramInt + "]");
-      ShortVideoErrorReport.b(2, paramInt);
+    Object localObject = paramList;
+    if (paramList == null) {
+      localObject = new ArrayList();
     }
-    for (;;)
-    {
-      if (paramString1.startsWith("new_qq_android_native_short_filter_")) {}
-      return;
-      label108:
-      if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
-      {
-        paramString2 = new Bundle();
-        this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramString2);
-      }
+    QLog.d("FavEmoRoamingHandler", 1, new Object[] { "fav emoticon size:", Integer.valueOf(((List)localObject).size()) });
+    if (((List)localObject).size() >= ance.a) {
+      awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005CFA", "0X8005CFA", 0, 0, "", "", "", "");
     }
-  }
-  
-  public void a(String paramString, long paramLong1, long paramLong2)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QzoneVideoSoDownloadModule", 4, "onUpdateProgress: name=" + paramString + " curOffset=" + paramLong1 + " totalLen=" + paramLong2);
+    if (((List)localObject).size() >= ance.b) {
+      awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005CFB", "0X8005CFB", 0, 0, "", "", "", "");
+    }
+    if (this.a.jdField_a_of_type_Anao != null) {
+      this.a.jdField_a_of_type_Anao.b((List)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anax
  * JD-Core Version:    0.7.0.1
  */

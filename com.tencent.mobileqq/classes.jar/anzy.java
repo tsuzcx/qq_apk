@@ -1,25 +1,22 @@
-import android.view.View;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicSave;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-public class anzy
-  implements ThreadExcutor.IThreadListener
+class anzy
+  implements apca
 {
-  public anzy(EditPicSave paramEditPicSave) {}
+  anzy(anzx paramanzx, FileManagerEntity paramFileManagerEntity) {}
   
-  public void onAdded() {}
-  
-  public void onPostRun()
+  public void a()
   {
-    this.a.a.a().postDelayed(new anzz(this), 500L);
+    QfileBaseCloudFileTabView.e(this.jdField_a_of_type_Anzx.a).a().a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
   }
   
-  public void onPreRun() {}
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anzy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,49 @@
-import android.view.View;
-import android.widget.ListAdapter;
-import com.tencent.widget.AbsListView;
+import android.text.TextUtils;
+import org.json.JSONObject;
 
 public class amhc
-  extends amhm
-  implements Runnable
 {
-  private amhc(AbsListView paramAbsListView)
+  private String a = "";
+  private String b = "";
+  private String c = "";
+  private String d = "";
+  
+  public static amhc a(JSONObject paramJSONObject)
   {
-    super(paramAbsListView, null);
+    if (paramJSONObject == null) {
+      return null;
+    }
+    amhc localamhc = new amhc();
+    localamhc.a = paramJSONObject.getString("tips");
+    localamhc.b = paramJSONObject.getString("buttonText");
+    localamhc.c = paramJSONObject.getString("url");
+    localamhc.d = paramJSONObject.getString("icon");
+    return localamhc;
   }
   
-  public void run()
+  public String a()
   {
-    int i = this.a.mMotionPosition;
-    View localView = this.a.getChildAt(i - this.a.mFirstPosition);
-    long l;
-    if (localView != null)
-    {
-      i = this.a.mMotionPosition;
-      l = this.a.mAdapter.getItemId(this.a.mMotionPosition);
-      if ((!a()) || (this.a.mDataChanged)) {
-        break label126;
-      }
-    }
-    label126:
-    for (boolean bool = this.a.performLongPress(localView, i, l);; bool = false)
-    {
-      if (bool)
-      {
-        this.a.mTouchMode = -1;
-        this.a.setPressed(false);
-        localView.setPressed(false);
-        return;
-      }
-      this.a.mTouchMode = 2;
-      return;
-    }
+    return this.a;
+  }
+  
+  public boolean a()
+  {
+    return (TextUtils.isEmpty(this.a)) && (TextUtils.isEmpty(this.b)) && (TextUtils.isEmpty(this.c)) && (TextUtils.isEmpty(this.d));
+  }
+  
+  public String b()
+  {
+    return this.b;
+  }
+  
+  public String c()
+  {
+    return this.c;
+  }
+  
+  public String d()
+  {
+    return this.d;
   }
 }
 

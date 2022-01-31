@@ -3,19 +3,12 @@ package com.tencent.av.utils;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import android.text.TextUtils;
-import com.tencent.av.gaudio.AVPhoneUserInfo;
-import com.tencent.av.gaudio.AVPhoneUserInfo.TelInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionMemberInfo;
-import com.tencent.mobileqq.data.PhoneContact;
-import com.tencent.mobileqq.model.PhoneContactManager;
-import kie;
+import mgx;
 
 public class InviteBaseData
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new kie();
+  public static final Parcelable.Creator<InviteBaseData> CREATOR = new mgx();
   public int a;
   public String a;
   public int b;
@@ -37,57 +30,6 @@ public class InviteBaseData
     this.c = paramParcel.readString();
     this.jdField_b_of_type_Int = paramParcel.readInt();
     this.d = paramParcel.readString();
-  }
-  
-  public InviteBaseData(AVPhoneUserInfo paramAVPhoneUserInfo, QQAppInterface paramQQAppInterface)
-  {
-    this.jdField_b_of_type_Int = 0;
-    if (paramAVPhoneUserInfo == null) {}
-    label181:
-    for (;;)
-    {
-      return;
-      this.jdField_a_of_type_JavaLangString = String.valueOf(paramAVPhoneUserInfo.account);
-      if (paramAVPhoneUserInfo.accountType == 1) {}
-      for (this.jdField_a_of_type_Int = 0;; this.jdField_a_of_type_Int = 1006) {
-        do
-        {
-          if (paramAVPhoneUserInfo.telInfo == null) {
-            break label181;
-          }
-          this.c = paramAVPhoneUserInfo.telInfo.mobile;
-          paramQQAppInterface = ((PhoneContactManager)paramQQAppInterface.getManager(10)).b(this.c);
-          if (paramQQAppInterface == null) {
-            break label189;
-          }
-          this.jdField_b_of_type_JavaLangString = paramQQAppInterface.name;
-          if (TextUtils.isEmpty(paramQQAppInterface.uin)) {
-            break;
-          }
-          if (!paramQQAppInterface.uin.equals("0")) {
-            break label183;
-          }
-          this.jdField_a_of_type_Int = 1006;
-          this.c = (paramAVPhoneUserInfo.telInfo.nation + paramAVPhoneUserInfo.telInfo.mobile);
-          return;
-        } while ((paramAVPhoneUserInfo.accountType != 2) && (paramAVPhoneUserInfo.accountType != 3));
-      }
-    }
-    label183:
-    this.jdField_a_of_type_Int = 0;
-    return;
-    label189:
-    this.jdField_b_of_type_JavaLangString = paramAVPhoneUserInfo.telInfo.mobile;
-  }
-  
-  public InviteBaseData(DiscussionMemberInfo paramDiscussionMemberInfo)
-  {
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangString = paramDiscussionMemberInfo.memberUin;
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_JavaLangString = paramDiscussionMemberInfo.getDiscussionMemberName();
-    this.jdField_b_of_type_Int = 0;
-    this.d = paramDiscussionMemberInfo.discussionUin;
   }
   
   public int describeContents()
@@ -116,7 +58,7 @@ public class InviteBaseData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.utils.InviteBaseData
  * JD-Core Version:    0.7.0.1
  */

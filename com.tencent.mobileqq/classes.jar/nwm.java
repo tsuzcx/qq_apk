@@ -1,36 +1,27 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.qqstory.shareGroup.icon.IconLog;
-import com.tencent.biz.qqstory.shareGroup.icon.UrlBitmapDownloader.Listener;
-import com.tencent.biz.qqstory.shareGroup.icon.UrlListToBitmapListSegment;
-import java.util.List;
+import android.view.View;
 
-public class nwm
-  implements UrlBitmapDownloader.Listener
+class nwm
+  implements begw
 {
-  public nwm(UrlListToBitmapListSegment paramUrlListToBitmapListSegment, List paramList, Bitmap[] paramArrayOfBitmap, Handler paramHandler) {}
+  nwm(nwk paramnwk, nwx paramnwx, begr parambegr) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void OnClick(View paramView, int paramInt)
   {
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString);
-    IconLog.b(UrlListToBitmapListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlListToBitmapListSegment), "bitmap download success index=%d, url=%s", Integer.valueOf(i), paramString);
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i] = paramBitmap;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 0, this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap), 200L);
-  }
-  
-  public void a(String paramString, Throwable paramThrowable)
-  {
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString);
-    IconLog.c(UrlListToBitmapListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlListToBitmapListSegment), "bitmap download failed index=%s, error=%s", Integer.valueOf(i), paramThrowable);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 1, paramThrowable), 500L);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Begr.dismiss();
+      return;
+      this.jdField_a_of_type_Nwk.a().a(this.jdField_a_of_type_Nwx, this.jdField_a_of_type_Nwk.c);
+      this.jdField_a_of_type_Nwk.notifyDataSetChanged();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nwm
  * JD-Core Version:    0.7.0.1
  */

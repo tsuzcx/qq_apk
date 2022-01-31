@@ -1,18 +1,27 @@
-import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.biz.qqstory.view.widget.AutoStartProgressBar;
+import com.tencent.mobileqq.data.MessageForArkFlashChat;
+import java.lang.ref.WeakReference;
 
-public class adbz
-  implements Runnable
+class adbz
+  implements adbt
 {
-  public adbz(FMObserver paramFMObserver, Object paramObject) {}
+  adbz(adbx paramadbx, MessageForArkFlashChat paramMessageForArkFlashChat) {}
   
-  public void run()
+  public void a()
   {
-    FMObserver.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver, this.jdField_a_of_type_JavaLangObject);
+    AutoStartProgressBar localAutoStartProgressBar = (AutoStartProgressBar)this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat.mSendingProgress.get();
+    if ((localAutoStartProgressBar.getTag() == this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkFlashChat) && (localAutoStartProgressBar != null))
+    {
+      localAutoStartProgressBar.b();
+      localAutoStartProgressBar.setVisibility(8);
+    }
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adbz
  * JD-Core Version:    0.7.0.1
  */

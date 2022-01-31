@@ -1,18 +1,26 @@
-import java.util.Map;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
 
-class aeqr
-  implements Runnable
+public class aeqr
+  implements View.OnClickListener
 {
-  aeqr(aeqq paramaeqq, Map paramMap) {}
+  public aeqr(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Aeqq.a.jdField_a_of_type_JavaUtilMap = this.jdField_a_of_type_JavaUtilMap;
+    if (BlessSelectMemberActivity.a() != null) {
+      BlessSelectMemberActivity.a().sendEmptyMessage(1);
+    }
+    if (this.a.a.isShowing()) {
+      this.a.a.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aeqr
  * JD-Core Version:    0.7.0.1
  */

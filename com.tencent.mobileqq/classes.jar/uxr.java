@@ -1,53 +1,40 @@
-import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
-import com.tencent.mobileqq.activity.aio.doodle.MyParcel;
-import com.tencent.mobileqq.activity.aio.doodle.MyParcelable.Creator;
-import com.tencent.mobileqq.activity.aio.doodle.PathDrawer;
-import com.tencent.qphone.base.util.QLog;
+import android.annotation.TargetApi;
+import android.os.Build.VERSION;
+import android.view.View;
 
+@TargetApi(14)
 public class uxr
-  implements Runnable
 {
-  private uxs jdField_a_of_type_Uxs;
-  private byte[] jdField_a_of_type_ArrayOfByte;
-  
-  public uxr(LoadDataJob paramLoadDataJob, byte[] paramArrayOfByte, uxs paramuxs)
+  public static float a(View paramView)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Uxs = paramuxs;
+    if (paramView == null) {}
+    while (Build.VERSION.SDK_INT < 11) {
+      return 0.0F;
+    }
+    return paramView.getX();
   }
   
-  public void run()
+  public static void a(View paramView, float paramFloat)
   {
-    if (this.jdField_a_of_type_Uxs == null) {
+    if (paramView == null) {}
+    while (Build.VERSION.SDK_INT < 11) {
       return;
     }
-    if (this.jdField_a_of_type_ArrayOfByte == null)
-    {
-      this.jdField_a_of_type_Uxs.a(null);
-      return;
+    paramView.setAlpha(paramFloat);
+  }
+  
+  public static float b(View paramView)
+  {
+    if (paramView == null) {}
+    while (Build.VERSION.SDK_INT < 11) {
+      return 0.0F;
     }
-    try
-    {
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob.a(this.jdField_a_of_type_ArrayOfByte);
-      if (localObject != null)
-      {
-        localObject = (PathDrawer)PathDrawer.a.a((MyParcel)localObject);
-        this.jdField_a_of_type_Uxs.a((PathDrawer)localObject);
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("UnmarshallJob", 2, "unmarshall  exception:" + this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob.a);
-      }
-      this.jdField_a_of_type_Uxs.a(null);
-    }
+    return paramView.getY();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uxr
  * JD-Core Version:    0.7.0.1
  */

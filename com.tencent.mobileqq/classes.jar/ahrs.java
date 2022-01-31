@@ -1,23 +1,26 @@
-import android.graphics.SurfaceTexture;
-import com.tencent.mobileqq.richmedia.capture.view.SplitEffectsCameraCaptureView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity.2.1;
 
 public class ahrs
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ahrs(SplitEffectsCameraCaptureView paramSplitEffectsCameraCaptureView, SurfaceTexture paramSurfaceTexture) {}
+  public ahrs(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsSurfaceTexture == this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSplitEffectsCameraCaptureView.jdField_a_of_type_AndroidGraphicsSurfaceTexture)
-    {
-      this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.updateTexImage();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewSplitEffectsCameraCaptureView.requestRender();
+    this.a.onBackEvent();
+    if (AppSetting.c) {
+      this.a.c.post(new SelectMemberActivity.2.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahrs
  * JD-Core Version:    0.7.0.1
  */

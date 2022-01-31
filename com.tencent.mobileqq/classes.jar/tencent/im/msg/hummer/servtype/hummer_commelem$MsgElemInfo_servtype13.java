@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class hummer_commelem$MsgElemInfo_servtype13
-  extends MessageMicro
+  extends MessageMicro<MsgElemInfo_servtype13>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "uint32_sys_head_id", "uint32_head_flag" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0) }, MsgElemInfo_servtype13.class);
   public final PBUInt32Field uint32_head_flag = PBField.initUInt32(0);

@@ -1,22 +1,10 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.richmedia.capture.fragment.AIOEffectsCameraCaptureFragment.MediaCodecEditCallback;
-import com.tencent.mobileqq.richmedia.capture.fragment.QuickShootEffectsCameraCaptureFragment;
-
-public class ahov
-  extends AIOEffectsCameraCaptureFragment.MediaCodecEditCallback
+public abstract interface ahov
 {
-  public ahov(QuickShootEffectsCameraCaptureFragment paramQuickShootEffectsCameraCaptureFragment, Activity paramActivity, Intent paramIntent) {}
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidAppActivity.setResult(-1, this.jdField_a_of_type_AndroidContentIntent);
-    this.jdField_a_of_type_AndroidAppActivity.finish();
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahov
  * JD-Core Version:    0.7.0.1
  */

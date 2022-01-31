@@ -1,18 +1,13 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader;
-import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.OnGetUserInfoCallback;
-import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent;
-import com.tencent.biz.qqstory.support.logging.SLog;
-
-public class nhy
-  implements GetUserInfoHandler.OnGetUserInfoCallback
+class nhy
+  implements qrs
 {
-  public nhy(MsgTabNodeListLoader paramMsgTabNodeListLoader) {}
+  nhy(nhx paramnhx) {}
   
-  public void a(GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
+  public void a(int paramInt)
   {
-    SLog.a("Q.qqstory.msgTab.MsgTabNodeListLoader.VASH", "Update UserItems %s", paramUpdateUserInfoEvent);
-    this.a.a.post(new nhz(this, paramUpdateUserInfoEvent));
+    if (this.a.jdField_a_of_type_Qvd != null) {
+      this.a.jdField_a_of_type_Qvd.a(paramInt, this.a.jdField_a_of_type_Int);
+    }
   }
 }
 

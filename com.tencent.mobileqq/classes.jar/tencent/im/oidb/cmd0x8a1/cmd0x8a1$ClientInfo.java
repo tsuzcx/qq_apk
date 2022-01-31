@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class cmd0x8a1$ClientInfo
-  extends MessageMicro
+  extends MessageMicro<ClientInfo>
 {
   public static final int STRING_INST_ID_FIELD_NUMBER = 4;
   public static final int UINT32_APP_ID_FIELD_NUMBER = 3;
@@ -28,7 +28,7 @@ public final class cmd0x8a1$ClientInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8a1.cmd0x8a1.ClientInfo
  * JD-Core Version:    0.7.0.1
  */

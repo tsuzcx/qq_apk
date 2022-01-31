@@ -1,31 +1,50 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.NearbyProcessMonitor;
+import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.widget.XListView;
 
 public class acfm
-  implements Handler.Callback
+  implements avck
 {
-  private String a;
+  public acfm(VisitorsActivity paramVisitorsActivity) {}
   
-  public acfm(String paramString)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    this.a = paramString;
-  }
-  
-  public boolean handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
+    int i = 0;
+    if ((paramBitmap != null) && (paramInt2 == 200))
     {
-    default: 
-      return true;
+      paramBitmap = this.a.a;
+      if (paramBitmap == null) {
+        break label108;
+      }
+      paramInt2 = paramBitmap.getChildCount();
     }
-    NearbyProcessMonitor.a(this.a, 1);
-    return true;
+    for (;;)
+    {
+      if (i < paramInt2)
+      {
+        Object localObject = paramBitmap.getChildAt(i).getTag();
+        if ((localObject != null) && ((localObject instanceof acgd)))
+        {
+          localObject = (acgd)localObject;
+          if ((((acgd)localObject).b == paramInt1) && (((acgd)localObject).e != null)) {
+            VisitorsActivity.a(this.a, ((acgd)localObject).e, paramInt1);
+          }
+        }
+        i += 1;
+      }
+      else
+      {
+        return;
+        label108:
+        paramInt2 = 0;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acfm
  * JD-Core Version:    0.7.0.1
  */

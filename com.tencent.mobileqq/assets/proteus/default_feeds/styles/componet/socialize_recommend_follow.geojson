@@ -1,0 +1,16 @@
+{
+    "view_type": "ReadInJoySocializeRecommendFollowView",
+    "view_id":"id_socialize_recommend_follow",
+    "margin_top":"-6",
+    "height": {
+        "type": "absolutely",
+        "value": "236"
+    },
+    "width": {
+        "type": "relative",
+        "value": "375"
+    },
+    "attributes": {
+        "setFeedsModel:":"-1"
+    }
+}

@@ -74,7 +74,7 @@ public class g
     this.c = paramInt;
     try
     {
-      this.m = a.aa();
+      this.m = a.ab();
       this.j = new InetSocketAddress(this.b, paramInt);
       paramString1 = new Socket();
       paramString1.setSoTimeout(this.m);
@@ -85,7 +85,7 @@ public class g
       {
         paramString2 = (Network)this.h;
         paramString2.bindSocket(paramString1);
-        this.g = k.a(BaseApplication.getContext(), paramString2, 0);
+        this.g = l.a(BaseApplication.getContext(), paramString2, 0);
       }
       paramString2 = Thread.currentThread().getName();
       if ((MsfCore.sCore != null) && (MsfCore.sCore.mMsfMonitorCallback != null) && (!TextUtils.isEmpty(paramString2)) && (paramString2.contains("LightSender"))) {

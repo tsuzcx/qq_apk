@@ -1,13 +1,15 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import aiqg;
 import android.content.Context;
 import android.util.AttributeSet;
+import axbz;
+import axcq;
+import axcr;
 
 public class SpriteVideoView
   extends SpriteGLView
 {
-  public int a;
+  protected int a;
   protected VideoSprite a;
   
   public SpriteVideoView(Context paramContext, AttributeSet paramAttributeSet)
@@ -27,22 +29,22 @@ public class SpriteVideoView
     this.a.j();
   }
   
-  public void a(String paramString, int paramInt, FrameSprite.OnFrameEndListener paramOnFrameEndListener)
+  public void a(String paramString, int paramInt, axbz paramaxbz)
   {
     this.a.a(paramString, paramInt);
-    this.a.a(paramOnFrameEndListener);
+    this.a.a(paramaxbz);
   }
   
-  public void a(String paramString, FrameSprite.OnFrameEndListener paramOnFrameEndListener)
+  public void a(String paramString, axbz paramaxbz)
   {
-    this.a.b(paramString);
-    this.a.a(paramOnFrameEndListener);
+    this.a.c(paramString);
+    this.a.a(paramaxbz);
   }
   
   protected void a(boolean paramBoolean)
   {
-    this.a = new aiqg(this, this, getContext(), paramBoolean);
-    this.a.a = true;
+    this.a = new SpriteVideoView.1(this, this, getContext(), paramBoolean);
+    this.a.b = true;
     this.a.c = true;
     a(this.a);
   }
@@ -54,7 +56,7 @@ public class SpriteVideoView
   
   public void setFilePath(String paramString)
   {
-    this.a.a(paramString);
+    this.a.b(paramString);
   }
   
   public void setLooping(boolean paramBoolean)
@@ -62,14 +64,14 @@ public class SpriteVideoView
     this.a.a(paramBoolean);
   }
   
-  public void setOnPlayedListener(VideoSprite.OnOnPlayedListener paramOnOnPlayedListener)
+  public void setOnPlayedListener(axcq paramaxcq)
   {
-    this.a.a(paramOnOnPlayedListener);
+    this.a.a(paramaxcq);
   }
   
-  public void setOnProgressChangedListener(VideoSprite.OnProgressChangedListener paramOnProgressChangedListener)
+  public void setOnProgressChangedListener(axcr paramaxcr)
   {
-    this.a.a(paramOnProgressChangedListener);
+    this.a.a(paramaxcr);
   }
 }
 

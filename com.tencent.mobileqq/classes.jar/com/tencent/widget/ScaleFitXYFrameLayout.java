@@ -19,8 +19,8 @@ public class ScaleFitXYFrameLayout
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     paramContext = this.jdField_a_of_type_AndroidContentContext.obtainStyledAttributes(paramAttributeSet, R.styleable.ScaleFitXYFrameLayout);
-    this.jdField_a_of_type_Float = paramContext.getFloat(0, 1.0F);
-    this.b = paramContext.getFloat(1, 1.0F);
+    this.jdField_a_of_type_Float = paramContext.getFloat(1, 1.0F);
+    this.b = paramContext.getFloat(0, 1.0F);
     paramContext.recycle();
   }
   
@@ -54,7 +54,7 @@ public class ScaleFitXYFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.widget.ScaleFitXYFrameLayout
  * JD-Core Version:    0.7.0.1
  */

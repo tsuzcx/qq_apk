@@ -1,32 +1,25 @@
-import android.annotation.TargetApi;
-import android.graphics.SurfaceTexture;
-import android.os.Build.VERSION;
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnVideoSizeChangedListener;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 
-public class ntp
-  implements IMediaPlayer.OnVideoSizeChangedListener
+public final class ntp
+  implements oqi
 {
-  public ntp(TextureVideoView paramTextureVideoView) {}
+  public ntp(CommentInfo paramCommentInfo) {}
   
-  @TargetApi(15)
-  public void a(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public void a(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
   {
-    this.a.d = paramIMediaPlayer.c();
-    this.a.e = paramIMediaPlayer.d();
-    if ((this.a.d != 0) && (this.a.e != 0))
-    {
-      if (Build.VERSION.SDK_INT >= 15) {
-        this.a.getSurfaceTexture().setDefaultBufferSize(this.a.d, this.a.e);
-      }
-      this.a.requestLayout();
+    if ((TextUtils.isEmpty(paramString)) || (!paramString.equalsIgnoreCase(this.a.authorUin)) || (paramReadInJoyUserInfo == null)) {
+      return;
     }
+    this.a.authorNickName = paramReadInJoyUserInfo.nick;
   }
+  
+  public void a(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ntp
  * JD-Core Version:    0.7.0.1
  */

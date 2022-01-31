@@ -1,25 +1,25 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import agtf;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import atwg;
+import azzz;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.util.Utils;
 import java.io.Serializable;
 import tencent.im.label.comm.PersonalityTagComm.LabelPhoto;
 
 public class PersonalityLabelPhoto
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new agtf();
+  public static final Parcelable.Creator<PersonalityLabelPhoto> CREATOR = new atwg();
   public static final long ID_INVALID = -1L;
   public static final String TAG = "PersonalityLabelPhoto";
   public long fileId = -1L;
-  boolean local = false;
+  public boolean local = false;
   public String localThumbPath = "";
   long praiseCount = 0L;
   public long uniseq = 0L;
@@ -79,7 +79,7 @@ public class PersonalityLabelPhoto
   
   public boolean equals(Object paramObject)
   {
-    return Utils.a(((PersonalityLabelPhoto)paramObject).url, this.url);
+    return azzz.a(((PersonalityLabelPhoto)paramObject).url, this.url);
   }
   
   public String get128SizeUrl()

@@ -14,10 +14,10 @@ public final class RspWalletConfig
   public static final int ACTION_INCRE_CHANGE = 2;
   public static final int ACTION_NOT_CHANGE = 1;
   public static int RET_SUCC;
-  static Map cache_mConfig = new HashMap();
+  static Map<String, String> cache_mConfig = new HashMap();
   public int action;
   public String commonMsg = "";
-  public Map mConfig;
+  public Map<String, String> mConfig;
   public int refreshTime;
   public int refreshType;
   public long reqType;
@@ -31,7 +31,7 @@ public final class RspWalletConfig
   
   public RspWalletConfig() {}
   
-  public RspWalletConfig(int paramInt1, long paramLong1, long paramLong2, int paramInt2, int paramInt3, int paramInt4, String paramString, Map paramMap)
+  public RspWalletConfig(int paramInt1, long paramLong1, long paramLong2, int paramInt2, int paramInt3, int paramInt4, String paramString, Map<String, String> paramMap)
   {
     this.result = paramInt1;
     this.reqType = paramLong1;

@@ -1,32 +1,28 @@
-import android.os.Bundle;
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.emosm.Client;
-import com.tencent.mobileqq.emosm.DataFactory;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.gaudio.GaInviteLockActivity;
+import com.tencent.av.ui.QavPanel;
 
 public class ldr
-  implements MessageQueue.IdleHandler
+  implements DialogInterface.OnClickListener
 {
-  public ldr(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
+  public ldr(GaInviteLockActivity paramGaInviteLockActivity) {}
   
-  public boolean queueIdle()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!WebIPCOperator.a().a())
+    mga.e(false, false);
+    if (paramDialogInterface != null)
     {
-      WebIPCOperator.a().a().doBindService(BaseApplicationImpl.getApplication());
-      WebIPCOperator.a().a(new lds(this));
-      return false;
+      paramDialogInterface.dismiss();
+      if ((this.a.a != null) && (this.a.a.a != null)) {
+        this.a.a.a.b();
+      }
     }
-    Bundle localBundle = DataFactory.a("ipc_kandian_hb_close_guid", "onPageStarted", 0, new Bundle());
-    WebIPCOperator.a().a(localBundle);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ldr
  * JD-Core Version:    0.7.0.1
  */

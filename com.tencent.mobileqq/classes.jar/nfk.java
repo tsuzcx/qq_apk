@@ -1,22 +1,81 @@
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.channel.NetworkRequest;
-import com.tencent.biz.qqstory.channel.NetworkRequest.IProtocolListener;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
-class nfk
-  extends Job
+public class nfk
+  extends alzl<nfj>
 {
-  nfk(nfj paramnfj, QQStoryCmdHandler.IllegalUinException paramIllegalUinException) {}
-  
-  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  public int a()
   {
-    SLog.d("Q.qqstory.net:QQStoryCmdHandler", "uin convert error");
-    this.jdField_a_of_type_Nfj.a.a().a(880002, this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler$IllegalUinException.getMessage(), null);
+    return 81;
+  }
+  
+  public Class<nfj> a()
+  {
+    return nfj.class;
+  }
+  
+  @NonNull
+  public nfj a(int paramInt)
+  {
+    if (paramInt == 0)
+    {
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime instanceof QQAppInterface))
+      {
+        rsp.a((QQAppInterface)localAppRuntime);
+        return nfj.a();
+      }
+    }
+    return new nfj();
+  }
+  
+  @Nullable
+  public nfj a(alzs[] paramArrayOfalzs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ServiceAccountFolderConfProcessor", 2, "[onParsed]");
+    }
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
+      return nfj.a(paramArrayOfalzs);
+    }
     return null;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(nfj paramnfj)
+  {
+    paramnfj.b();
+    paramnfj.a();
+    paramnfj.c();
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      return rsp.a((QQAppInterface)localAppRuntime);
+    }
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.dinifly.animation.keyframe;
 
 import android.graphics.PointF;
-import com.tencent.mobileqq.dinifly.animation.Keyframe;
+import com.tencent.mobileqq.dinifly.value.Keyframe;
 import java.util.Collections;
 import java.util.List;
 
@@ -17,6 +17,7 @@ public class SplitDimensionPathKeyframeAnimation
     super(Collections.emptyList());
     this.xAnimation = paramBaseKeyframeAnimation1;
     this.yAnimation = paramBaseKeyframeAnimation2;
+    setProgress(getProgress());
   }
   
   public PointF getValue()
@@ -44,7 +45,7 @@ public class SplitDimensionPathKeyframeAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.keyframe.SplitDimensionPathKeyframeAnimation
  * JD-Core Version:    0.7.0.1
  */

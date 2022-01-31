@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
+import akgo;
+import aqre;
 import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
-import com.tencent.mobileqq.jsbridge.JsBridge.JsHandler;
 import com.tencent.qphone.base.util.QLog;
 import protocol.KQQConfig.UpgradeInfo;
 
 public class UpgradeDetailActivity$JsCover
-  extends JsBridge.JsHandler
+  extends aqre
 {
   protected UpgradeDetailActivity$JsCover(UpgradeDetailActivity paramUpgradeDetailActivity) {}
   
@@ -28,7 +28,7 @@ public class UpgradeDetailActivity$JsCover
   
   public int getDownloadState()
   {
-    return UpgradeController.a().a();
+    return akgo.a().a();
   }
   
   public long getUpgradeTime()
@@ -38,13 +38,13 @@ public class UpgradeDetailActivity$JsCover
   
   public int installApk()
   {
-    UpgradeController.a().a(this.a);
+    akgo.a().a(this.a);
     return 0;
   }
   
   public int pauseDownload()
   {
-    UpgradeController.a().e();
+    akgo.a().e();
     return 0;
   }
   
@@ -53,7 +53,7 @@ public class UpgradeDetailActivity$JsCover
     if (QLog.isColorLevel()) {
       QLog.d("preLoad_configServlet", 2, "resume download from web, mark it.");
     }
-    UpgradeController.a().d();
+    akgo.a().d();
     return 0;
   }
   
@@ -62,13 +62,13 @@ public class UpgradeDetailActivity$JsCover
     if (QLog.isColorLevel()) {
       QLog.d("preLoad_configServlet", 2, "start download from web, mark it.");
     }
-    UpgradeController.a().b(false);
+    akgo.a().a(false, UpgradeDetailActivity.a(this.a, UpgradeDetailActivity.a(this.a).b));
     return 0;
   }
   
   public int stopDownload()
   {
-    UpgradeController.a().c();
+    akgo.a().c();
     return 0;
   }
   
@@ -77,7 +77,7 @@ public class UpgradeDetailActivity$JsCover
     QLog.d("Hyim", 2, "loadTipsComplete");
     this.a.a = true;
     int i = getDownloadState();
-    this.a.a(i, UpgradeController.a());
+    this.a.a(i, akgo.a());
     return 0;
   }
 }

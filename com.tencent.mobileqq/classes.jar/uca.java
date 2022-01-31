@@ -1,119 +1,55 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.view.View;
-import com.tencent.mobileqq.activity.TroopGagActivity;
-import com.tencent.mobileqq.activity.TroopGagActivity.GagMemInfo;
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopManager.MemberGagInfo;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr.GagStatus;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr.GagTroopMemberResult;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr.GagTroopResult;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr.TroopGagInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.Switch;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.support.annotation.NonNull;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.atvideo.view.StoryAtVideoFragment;
+import com.tencent.biz.qqstory.storyHome.model.VideoListFeedItem;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
 import java.util.List;
 
 public class uca
-  extends BizTroopObserver
+  extends sgl<StoryAtVideoFragment, udk>
 {
-  public uca(TroopGagActivity paramTroopGagActivity) {}
-  
-  protected void a(TroopGagMgr.GagStatus paramGagStatus)
+  public uca(StoryAtVideoFragment paramStoryAtVideoFragment)
   {
-    if ((paramGagStatus == null) || (!paramGagStatus.jdField_a_of_type_JavaLangString.equals(this.a.jdField_a_of_type_JavaLangString))) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopGagActivity", 2, "onTroopGagStatusChange, statuCode=" + paramGagStatus.jdField_a_of_type_Int);
-    }
-    TroopManager.MemberGagInfo localMemberGagInfo;
-    TroopGagActivity.GagMemInfo localGagMemInfo;
-    if (paramGagStatus.jdField_a_of_type_Int == 3)
-    {
-      this.a.jdField_a_of_type_JavaUtilList.clear();
-      if (paramGagStatus.jdField_a_of_type_JavaUtilArrayList != null)
-      {
-        paramGagStatus = paramGagStatus.jdField_a_of_type_JavaUtilArrayList.iterator();
-        while (paramGagStatus.hasNext())
-        {
-          localMemberGagInfo = (TroopManager.MemberGagInfo)paramGagStatus.next();
-          localGagMemInfo = new TroopGagActivity.GagMemInfo();
-          localGagMemInfo.jdField_a_of_type_JavaLangString = localMemberGagInfo.jdField_a_of_type_JavaLangString;
-          localGagMemInfo.jdField_a_of_type_Long = localMemberGagInfo.jdField_a_of_type_Long;
-          this.a.jdField_a_of_type_JavaUtilList.add(localGagMemInfo);
-        }
-      }
-      this.a.jdField_a_of_type_Ucf.notifyDataSetChanged();
-    }
-    while (this.a.jdField_a_of_type_JavaUtilList.size() == 0)
-    {
-      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      return;
-      if (paramGagStatus.jdField_a_of_type_Int == 1)
-      {
-        paramGagStatus = paramGagStatus.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$TroopGagInfo;
-        this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
-        if (paramGagStatus.jdField_a_of_type_Long != 0L) {
-          this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(true);
-        }
-        for (;;)
-        {
-          this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.a);
-          break;
-          this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(false);
-        }
-      }
-      if (paramGagStatus.jdField_a_of_type_Int == 5)
-      {
-        if (!paramGagStatus.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$GagTroopMemberResult.jdField_a_of_type_Boolean)
-        {
-          ThreadManager.post(new ucb(this, new Handler(Looper.getMainLooper())), 8, null, false);
-        }
-        else
-        {
-          this.a.jdField_a_of_type_JavaUtilList.clear();
-          if (paramGagStatus.jdField_a_of_type_JavaUtilArrayList != null)
-          {
-            paramGagStatus = paramGagStatus.jdField_a_of_type_JavaUtilArrayList.iterator();
-            while (paramGagStatus.hasNext())
-            {
-              localMemberGagInfo = (TroopManager.MemberGagInfo)paramGagStatus.next();
-              localGagMemInfo = new TroopGagActivity.GagMemInfo();
-              localGagMemInfo.jdField_a_of_type_JavaLangString = localMemberGagInfo.jdField_a_of_type_JavaLangString;
-              localGagMemInfo.jdField_a_of_type_Long = localMemberGagInfo.jdField_a_of_type_Long;
-              this.a.jdField_a_of_type_JavaUtilList.add(localGagMemInfo);
-            }
-          }
-          this.a.jdField_a_of_type_Ucf.notifyDataSetChanged();
-        }
-      }
-      else if (paramGagStatus.jdField_a_of_type_Int == 4)
-      {
-        paramGagStatus = paramGagStatus.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr$GagTroopResult;
-        if (!paramGagStatus.jdField_a_of_type_Boolean)
-        {
-          this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
-          if (paramGagStatus.jdField_a_of_type_Long != 0L) {
-            this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(false);
-          }
-          for (;;)
-          {
-            this.a.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this.a);
-            break;
-            this.a.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(true);
-          }
-        }
-      }
-    }
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    super(paramStoryAtVideoFragment);
   }
+  
+  public void a(@NonNull StoryAtVideoFragment paramStoryAtVideoFragment, @NonNull udk paramudk)
+  {
+    if ((!paramudk.jdField_a_of_type_JavaLangString.equals(paramStoryAtVideoFragment.jdField_a_of_type_JavaLangString)) || (paramudk.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramStoryAtVideoFragment.jdField_a_of_type_Ucw == null))
+    {
+      urk.b(this.TAG, "ignore this comment list event. %s.", paramudk.toString());
+      return;
+    }
+    if (!paramStoryAtVideoFragment.jdField_a_of_type_Ucw.c())
+    {
+      urk.e(this.TAG, "this feed does not support video list.ignore this comment list event. %s.", new Object[] { paramudk.toString() });
+      return;
+    }
+    urk.a(this.TAG, "receive comment list event. %s.", paramudk.toString());
+    paramStoryAtVideoFragment.jdField_a_of_type_Ucw.a(paramudk.jdField_a_of_type_JavaUtilList, paramudk.c);
+    paramStoryAtVideoFragment.jdField_a_of_type_Ucw.a().updateVideoInfo(paramudk.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo);
+    if (paramStoryAtVideoFragment.jdField_a_of_type_Ucw.a().size() < 1)
+    {
+      paramStoryAtVideoFragment.jdField_a_of_type_AndroidViewViewGroup.setVisibility(0);
+      paramStoryAtVideoFragment.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.setVisibility(8);
+      paramStoryAtVideoFragment.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      return;
+    }
+    paramStoryAtVideoFragment.a(paramStoryAtVideoFragment.jdField_a_of_type_Ucw);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return udk.class;
+  }
+  
+  public void b(@NonNull StoryAtVideoFragment paramStoryAtVideoFragment, @NonNull udk paramudk) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uca
  * JD-Core Version:    0.7.0.1
  */

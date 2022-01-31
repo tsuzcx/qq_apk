@@ -1,29 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager;
-import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aecf
-  implements INetEventHandler
+class aecf
+  implements View.OnClickListener
 {
-  public aecf(GroupVideoManager paramGroupVideoManager) {}
+  aecf(aecb paramaecb) {}
   
-  public void onNetChangeEvent(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (GroupVideoManager.a(this.a) == null) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("GroupVideoManager", 2, "onNetChangeEvent connect:" + paramBoolean + " isMSFConnect:" + GroupVideoManager.a(this.a).e);
-      }
-    } while (!paramBoolean);
-    this.a.a(false);
+    this.a.w(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aecf
  * JD-Core Version:    0.7.0.1
  */

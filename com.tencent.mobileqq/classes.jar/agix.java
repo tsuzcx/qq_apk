@@ -1,16 +1,96 @@
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager.BaikeClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
+import java.io.File;
+import mqq.util.WeakReference;
 
 public class agix
-  implements View.OnClickListener
+  extends aggx
 {
-  public agix(ARTipsManager paramARTipsManager, agjf paramagjf) {}
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean;
   
-  public void onClick(View paramView)
+  private agix(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    this.jdField_a_of_type_Agjf.a.b();
+    super(paramNewPhotoPreviewActivity);
+  }
+  
+  public static aggt b(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
+  {
+    if ((jdField_a_of_type_Aggt == null) || (jdField_a_of_type_Aggt.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoPreviewActivity)) {}
+    try
+    {
+      if ((jdField_a_of_type_Aggt == null) || (jdField_a_of_type_Aggt.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoPreviewActivity)) {
+        jdField_a_of_type_Aggt = new agix(paramNewPhotoPreviewActivity);
+      }
+      return jdField_a_of_type_Aggt;
+    }
+    finally {}
+  }
+  
+  protected void a(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if (paramInt1 == 10012)
+    {
+      if ((paramInt2 == -1) && (this.jdField_a_of_type_Boolean))
+      {
+        ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).setResult(paramInt2, paramIntent);
+        ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).finish();
+      }
+      do
+      {
+        do
+        {
+          return;
+        } while (!this.jdField_a_of_type_Boolean);
+        paramIntent = paramIntent.getStringExtra("PhotoConst.FROM_QQSTORY_SLIDESHOW_DATA");
+      } while (TextUtils.isEmpty(paramIntent));
+      bace.a(new File(paramIntent).getParent());
+      return;
+    }
+    super.a(paramInt1, paramInt2, paramIntent);
+  }
+  
+  protected void a(Intent paramIntent)
+  {
+    super.a(paramIntent);
+    this.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("from_tribe_slideshow", false);
+    this.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("from_tribe_class_name");
+    this.jdField_a_of_type_Aggf.a(this.jdField_a_of_type_Boolean);
+  }
+  
+  protected void a(View paramView, int paramInt1, Bundle paramBundle, int paramInt2, Intent paramIntent)
+  {
+    super.a(paramView, paramInt1, paramBundle, paramInt2, paramIntent);
+    if ((this.jdField_a_of_type_Aggs.b != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    {
+      if (!TroopBarPublishActivity.class.getSimpleName().equals(this.jdField_a_of_type_JavaLangString)) {
+        break label60;
+      }
+      azhe.a("pub_page_new", "clk_photo_edit", 0, 0, new String[0]);
+    }
+    label60:
+    while (!TroopBarReplyActivity.class.getSimpleName().equals(this.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    azhe.a("reply", "clk_photo_edit", 0, 0, new String[0]);
+  }
+  
+  protected void d()
+  {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      vhj.a((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get(), this.jdField_a_of_type_Aggf.a);
+      ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).b.setClickable(true);
+      return;
+    }
+    super.d();
   }
 }
 

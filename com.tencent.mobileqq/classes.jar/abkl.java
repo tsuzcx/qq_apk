@@ -1,23 +1,24 @@
-import com.tencent.mobileqq.armap.ShopScanActivity;
-import com.tencent.mobileqq.armap.ShopScanDragView;
+import com.tencent.mobileqq.activity.QQIdentiferLegacy;
+import mqq.app.QQPermissionCallback;
 
 public class abkl
-  implements Runnable
+  implements QQPermissionCallback
 {
-  public abkl(ShopScanActivity paramShopScanActivity) {}
+  public abkl(QQIdentiferLegacy paramQQIdentiferLegacy) {}
   
-  public void run()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    ShopScanActivity.c(this.a);
-    ShopScanActivity.d(this.a);
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
+    babr.a(QQIdentiferLegacy.a(this.a), paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QQIdentiferLegacy.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abkl
  * JD-Core Version:    0.7.0.1
  */

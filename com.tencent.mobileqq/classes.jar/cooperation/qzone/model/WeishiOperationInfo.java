@@ -1,26 +1,30 @@
 package cooperation.qzone.model;
 
-import anco;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bfwt;
 import java.util.HashMap;
 import java.util.Map;
 
 public class WeishiOperationInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new anco();
-  public Map a = new HashMap();
+  public static final Parcelable.Creator<WeishiOperationInfo> CREATOR = new bfwt();
+  public String a;
+  public Map<Integer, String> a;
   
   public WeishiOperationInfo(Parcel paramParcel)
   {
-    paramParcel.readMap(this.a, Map.class.getClassLoader());
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    paramParcel.readMap(this.jdField_a_of_type_JavaUtilMap, Map.class.getClassLoader());
+    this.jdField_a_of_type_JavaLangString = paramParcel.readString();
   }
   
-  public WeishiOperationInfo(Map paramMap)
+  public WeishiOperationInfo(Map<Integer, String> paramMap)
   {
-    this.a = paramMap;
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    this.jdField_a_of_type_JavaUtilMap = paramMap;
   }
   
   public int describeContents()
@@ -30,7 +34,8 @@ public class WeishiOperationInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeMap(this.a);
+    paramParcel.writeMap(this.jdField_a_of_type_JavaUtilMap);
+    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
   }
 }
 

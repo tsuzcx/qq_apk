@@ -1,6 +1,7 @@
 package com.etrump.mixlayout;
 
 import android.graphics.Typeface;
+import fe;
 
 public class ETFont
 {
@@ -32,7 +33,15 @@ public class ETFont
   public boolean mShouldDisplayAnimation;
   public CharSequence mText;
   public Typeface mTypeface;
+  public int m_comboIndex;
   public long m_diyHandle;
+  
+  public ETFont()
+  {
+    this.mFontId = 0;
+    this.mFontPath = "";
+    setSize(48.0F);
+  }
   
   public ETFont(int paramInt, String paramString, float paramFloat)
   {
@@ -54,6 +63,16 @@ public class ETFont
     this.mFontType = paramInt2;
     this.mTypeface = paramTypeface;
     this.m_diyHandle = 0L;
+  }
+  
+  public static ETFont createFont(ETFont paramETFont)
+  {
+    if (paramETFont == null) {
+      return null;
+    }
+    ETFont localETFont = new ETFont();
+    localETFont.copy(paramETFont);
+    return localETFont;
   }
   
   public void copy(ETFont paramETFont)
@@ -81,6 +100,7 @@ public class ETFont
       this.mContactId = paramETFont.mContactId;
       this.mContactName = paramETFont.mContactName;
       setDIYConfigHandle(paramETFont.getDIYConfigHandle());
+      this.m_comboIndex = paramETFont.m_comboIndex;
     }
   }
   
@@ -98,7 +118,7 @@ public class ETFont
     {
       return false;
       paramObject = (ETFont)paramObject;
-    } while ((this.mFontId != paramObject.mFontId) || (this.mFontColor != paramObject.mFontColor) || (this.mFontSize != paramObject.mFontSize) || (this.mFontStyle != paramObject.mFontStyle) || (this.m_diyHandle != paramObject.m_diyHandle));
+    } while ((this.mFontId != paramObject.mFontId) || (this.mFontSize != paramObject.mFontSize) || (this.mFontStyle != paramObject.mFontStyle) || (this.m_diyHandle != paramObject.m_diyHandle));
     return true;
   }
   
@@ -135,7 +155,7 @@ public class ETFont
   public void onDestroy()
   {
     if (0L != this.m_diyHandle) {
-      ETDIYConfig.a(this.m_diyHandle);
+      fe.a(this.m_diyHandle);
     }
   }
   
@@ -145,7 +165,7 @@ public class ETFont
       return;
     }
     this.mDIYConfigString = paramString;
-    this.m_diyHandle = ETDIYConfig.a(this, paramString);
+    this.m_diyHandle = fe.a(this, paramString);
   }
   
   public void setBold(boolean paramBoolean)
@@ -224,7 +244,7 @@ public class ETFont
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.etrump.mixlayout.ETFont
  * JD-Core Version:    0.7.0.1
  */

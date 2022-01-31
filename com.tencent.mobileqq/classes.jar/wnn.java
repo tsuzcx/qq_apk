@@ -1,32 +1,36 @@
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchFragment;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchResult;
+import android.content.res.Resources;
+import android.widget.Button;
+import com.tencent.biz.troopgift.TroopGiftPanel;
 
 public class wnn
-  implements Runnable
+  extends azjp
 {
-  public wnn(ClassificationSearchFragment paramClassificationSearchFragment, SearchResult paramSearchResult) {}
+  public wnn(TroopGiftPanel paramTroopGiftPanel) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    ClassificationSearchFragment localClassificationSearchFragment;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult != null)
-    {
-      localClassificationSearchFragment = this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactClassificationSearchFragment;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchResult.a) {
-        break label30;
-      }
-    }
-    label30:
-    for (int i = 1;; i = 0)
-    {
-      ClassificationSearchFragment.a(localClassificationSearchFragment, i);
-      return;
-    }
+    super.a(paramInt);
+    this.a.jdField_a_of_type_AndroidWidgetButton.setText(TroopGiftPanel.a(this.a));
+    TroopGiftPanel.a(this.a, 0L);
+  }
+  
+  public void a(int paramInt, String paramString)
+  {
+    super.a(paramInt, paramString);
+    bbmy.a(this.a.jdField_a_of_type_AndroidContentContext, ajjy.a(2131649633), 0).b(this.a.getResources().getDimensionPixelSize(2131167766));
+    TroopGiftPanel.a(true);
+  }
+  
+  public void b(int paramInt, String paramString)
+  {
+    super.b(paramInt, paramString);
+    bbmy.a(this.a.jdField_a_of_type_AndroidContentContext, ajjy.a(2131649600), 0).b(this.a.getResources().getDimensionPixelSize(2131167766));
+    TroopGiftPanel.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wnn
  * JD-Core Version:    0.7.0.1
  */

@@ -9,9 +9,9 @@ import java.util.ArrayList;
 public final class RecommendPhotos
   extends JceStruct
 {
-  static ArrayList cache_recommend_photos = new ArrayList();
+  static ArrayList<s_picdata> cache_recommend_photos = new ArrayList();
   public String recommend_id = "";
-  public ArrayList recommend_photos;
+  public ArrayList<s_picdata> recommend_photos;
   
   static
   {
@@ -21,7 +21,7 @@ public final class RecommendPhotos
   
   public RecommendPhotos() {}
   
-  public RecommendPhotos(ArrayList paramArrayList, String paramString)
+  public RecommendPhotos(ArrayList<s_picdata> paramArrayList, String paramString)
   {
     this.recommend_photos = paramArrayList;
     this.recommend_id = paramString;

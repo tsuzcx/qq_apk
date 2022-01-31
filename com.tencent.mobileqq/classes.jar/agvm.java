@@ -1,45 +1,15 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.view.ProfileBaseView;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.AvatarPendantUtil;
-import com.tencent.mobileqq.vas.AvatarPendantManager;
-import com.tencent.mobileqq.vas.PendantInfo;
-
-class agvm
-  implements Runnable
+public class agvm
 {
-  agvm(agvl paramagvl, ExtensionInfo paramExtensionInfo) {}
-  
-  public void run()
-  {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.isPendantValid()))
-    {
-      this.jdField_a_of_type_Agvl.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.jdField_a_of_type_Agvl.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantId;
-      AvatarPendantManager localAvatarPendantManager = (AvatarPendantManager)this.jdField_a_of_type_Agvl.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(45);
-      if (AvatarPendantUtil.a(this.jdField_a_of_type_Agvl.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView.jdField_a_of_type_Long)) {
-        localAvatarPendantManager.a(this.jdField_a_of_type_Agvl.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView.jdField_a_of_type_Long).a(this.jdField_a_of_type_Agvl.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView.jdField_a_of_type_AndroidWidgetImageView, 2, PendantInfo.c, this.jdField_a_of_type_Agvl.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantDiyId);
-      }
-      for (;;)
-      {
-        if (this.jdField_a_of_type_Agvl.jdField_a_of_type_Boolean) {
-          ReportController.b(this.jdField_a_of_type_Agvl.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "AvatarClick", "ppshow", 0, 0, "", "", "", "");
-        }
-        return;
-        localAvatarPendantManager.a(this.jdField_a_of_type_Agvl.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView.jdField_a_of_type_Long).a(this.jdField_a_of_type_Agvl.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView.jdField_a_of_type_AndroidWidgetImageView, 1, PendantInfo.c, this.jdField_a_of_type_Agvl.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantDiyId);
-      }
-    }
-    this.jdField_a_of_type_Agvl.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    this.jdField_a_of_type_Agvl.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView.jdField_a_of_type_Long = 0L;
-  }
+  public static String a = "ResPreload";
+  public static String b = "CJConfig";
+  public static String c = "OfflinePreload";
+  public static String d = "adcode";
+  public static String e = "ActivityException";
+  public static String f = "ResHit";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agvm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,40 @@
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
 
-public class tgd
-  implements Runnable
+final class tgd
+  implements begw
 {
-  public tgd(MainFragment paramMainFragment) {}
+  tgd(QQUserUIItem paramQQUserUIItem, begr parambegr) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecialCare", 2, "getSpecialRecommendStat=" + FriendListHandler.a);
-    }
-    if ((FriendListHandler.a == 0) || (FriendListHandler.a == 2) || (FriendListHandler.a == 3)) {}
-    do
+    switch (paramInt)
     {
-      do
-      {
-        return;
-        if (!MainFragment.a(this.a)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("SpecialCare", 2, "hasSpecialCareFriend=" + MainFragment.a(this.a));
-      return;
-    } while (MainFragment.a(this.a) == null);
-    List localList = ((FriendsManager)MainFragment.a(this.a).getManager(50)).b();
-    if ((localList != null) && (localList.size() > 0))
+    default: 
+      paramView = "16384";
+      if ((this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq))) {
+        new syc().a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq, this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isFriend(), paramView);
+      }
+      break;
+    }
+    for (;;)
     {
-      MainFragment.b(this.a, true);
+      this.jdField_a_of_type_Begr.dismiss();
       return;
+      paramView = "2";
+      break;
+      paramView = "1";
+      break;
+      paramView = "4";
+      break;
+      urk.d("Q.qqstory.player.PlayModeUtils", "report user error because evil uin is empty.");
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("SpecialCare", 2, "hasSpecialCareFriend=" + MainFragment.a(this.a));
-    }
-    ((FriendListHandler)MainFragment.a(this.a).a(1)).a(0, 10, null, true, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tgd
  * JD-Core Version:    0.7.0.1
  */

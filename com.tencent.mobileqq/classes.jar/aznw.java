@@ -1,0 +1,15 @@
+import com.tencent.mobileqq.data.TroopFeedItem;
+
+public class aznw
+{
+  int jdField_a_of_type_Int;
+  TroopFeedItem jdField_a_of_type_ComTencentMobileqqDataTroopFeedItem;
+  
+  public aznw(aznr paramaznr) {}
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+ * Qualified Name:     aznw
+ * JD-Core Version:    0.7.0.1
+ */

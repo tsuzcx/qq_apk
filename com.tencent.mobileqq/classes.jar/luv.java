@@ -1,33 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoRepository;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
 
 public class luv
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public luv(ReadInJoyUserInfoRepository paramReadInJoyUserInfoRepository, int paramInt) {}
+  public luv(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = ReadInJoyUserInfoRepository.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoRepository).a(ReadInJoyUserInfo.class, true, null, null, null, null, null, String.valueOf(this.jdField_a_of_type_Int));
-    if ((localObject != null) && (((List)localObject).size() > 0))
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        ReadInJoyUserInfo localReadInJoyUserInfo = (ReadInJoyUserInfo)((Iterator)localObject).next();
-        QLog.d("ReadInJoyUserInfoRepository", 2, new Object[] { "loadReadInJoyUserInfoFromDB, userInfo = ", localReadInJoyUserInfo, Character.valueOf('\n') });
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoRepository.a("", localReadInJoyUserInfo.md5Uin, localReadInJoyUserInfo, false);
-      }
-    }
+    QLog.w(this.a.c, 1, "showConfirmBoxToHangup, no, mRelationId[" + this.a.b + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     luv
  * JD-Core Version:    0.7.0.1
  */

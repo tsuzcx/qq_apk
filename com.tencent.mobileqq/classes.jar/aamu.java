@@ -1,116 +1,86 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl;
-import com.tencent.mobileqq.ar.ARTarget;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.ar.arengine.AREngineCallback;
-import com.tencent.mobileqq.ar.arengine.ARLocalControl;
-import com.tencent.mobileqq.ar.model.ArFeatureInfo;
-import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class aamu
-  implements Runnable
+  extends ajey
 {
-  public aamu(AREngine paramAREngine, boolean paramBoolean, ArCloudConfigInfo paramArCloudConfigInfo) {}
+  public aamu(Conversation paramConversation) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, Map<String, Integer> paramMap, String paramString)
   {
-    if (((!this.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.a())) && ((!this.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.c())) && (AREngine.e(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine)) && (AREngine.e(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) == 2) && (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) != null))
+    paramString = this.a.a();
+    String str1 = this.a.a.getCurrentAccountUin();
+    if ((paramMap != null) && (paramMap.size() > 0))
     {
-      localObject = AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label174;
-      }
-    }
-    label174:
-    for (int i = 4;; i = 5)
-    {
-      ((AREngineCallback)localObject).a(1, i);
-      if (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) != null)
+      Iterator localIterator = paramMap.keySet().iterator();
+      paramInt1 = 0;
+      if (localIterator.hasNext())
       {
-        AREngine.b(AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine));
-        AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine, null);
-      }
-      if (this.jdField_a_of_type_Boolean) {
-        break;
-      }
-      QLog.i("AREngine_AREngine", 1, "onARMarkerAllDownloadComplete. download resource failed.");
-      QLog.i("AREngine_AREngine", 1, "processCloudMarkerRecogResult end.");
-      AREngine.c(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine, false);
-      AREngine.c(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine);
-      ThreadManager.getUIHandler().post(new aamv(this));
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.a()) {
-      if ((AREngine.e(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine)) && (AREngine.e(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) == 2) && (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) != null)) {
-        AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine).a(this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, 10, 0, null);
+        String str2 = (String)localIterator.next();
+        paramInt2 = ((Integer)paramMap.get(str2)).intValue();
+        if (paramInt2 == 4000) {
+          baig.j(paramString, str1, str2);
+        }
       }
     }
     for (;;)
     {
-      AREngine.c(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine, false);
-      this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.b = null;
-      return;
-      if (!this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.c()) {
-        break;
-      }
-      if ((AREngine.e(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine)) && (AREngine.e(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) == 2))
-      {
-        ARGreetingCardListManager.a().a(this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, 0);
-        this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo = this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo;
-      }
-    }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.a.a;
-    String str = this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.a.c;
-    if ((!this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.d()) && (AREngine.h(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine)))
-    {
-      if ((AREngine.e(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine)) && (AREngine.e(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) == 2) && (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) != null)) {
-        AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine).a(1L, new ARTarget(this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo));
-      }
-      if (!this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.f()) {
-        break label595;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.f()) {
-        ARVideoRecordUIControllerImpl.a().a(1);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.a(1L);
-      AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine, 1L, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, 0, 0.0F, 0.0F, 0.0F);
-      if (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.j()) {
-        AREngine.d(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine, false);
-      }
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl.a((String)localObject, str, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
-        AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine, 0L);
-        AREngine.b(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine, 0L);
-      }
-      QLog.i("AREngine_AREngine", 1, "processCloudMarkerRecogResult end. isNeedInternalRender = " + this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.f() + ", isNeedExternalRender = " + this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.g() + ", isNeedWaitUserOperation = " + this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.h());
       break;
-      label595:
-      if ((this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.h()) || (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.g()))
+      if (paramInt2 != 0)
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.g())
+        paramInt1 = 1;
+        continue;
+        if (paramInt1 == 0) {
+          baig.j(this.a.a(), this.a.a.getCurrentAccountUin());
+        }
+        return;
+      }
+    }
+  }
+  
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
+  {
+    if (paramInt2 != 0)
+    {
+      paramString1 = paramString2;
+      if (!this.a.a().isFinishing())
+      {
+        paramString1 = paramString2;
+        if (Conversation.a(this.a))
         {
-          this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.a(1L);
-          if (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.j()) {
-            AREngine.d(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine, true);
+          paramString1 = paramString2;
+          if (!"troop_delete_top_from_conversation".equals(paramString3))
+          {
+            paramString1 = paramString2;
+            if (TextUtils.isEmpty(paramString2)) {
+              paramString1 = this.a.a().getString(2131629250);
+            }
+            bbmy.a(this.a.a(), 1, paramString1, 0).a();
           }
         }
       }
-      else {
-        AREngine.c(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.recent", 2, "onSetCommonUsedTroop, retCode = " + paramInt2 + " , wording = " + paramString1);
       }
+      return;
+      this.a.a(9, paramString1, 1);
+      paramString1 = paramString2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aamu
  * JD-Core Version:    0.7.0.1
  */

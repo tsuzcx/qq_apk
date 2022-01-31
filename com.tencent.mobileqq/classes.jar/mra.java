@@ -1,45 +1,46 @@
-import android.text.Html;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.LinkData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.BaseItemViewHolder;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.biz.game.SensorAPIJavaScript;
 
 public class mra
-  extends BaseItemViewHolder
-  implements View.OnClickListener
+  implements SensorEventListener
 {
-  private TextView a;
+  protected byte a;
+  protected String a;
   
-  public mra(View paramView, BaseData paramBaseData)
+  public mra(SensorAPIJavaScript paramSensorAPIJavaScript, byte paramByte, String paramString)
   {
-    super(paramView, paramBaseData);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367129));
-    paramView.setOnClickListener(this);
+    this.jdField_a_of_type_Byte = paramByte;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    switch (paramBaseData2.d)
+    switch (this.jdField_a_of_type_Byte)
     {
     default: 
       return;
+    case 0: 
+      f1 = paramSensorEvent.values[0];
+      float f2 = paramSensorEvent.values[1];
+      float f3 = paramSensorEvent.values[2];
+      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(f1), String.valueOf(f2), String.valueOf(f3) });
+      return;
+    case 1: 
+      f1 = paramSensorEvent.values[0];
+      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(f1) });
+      return;
     }
-    paramBaseData1 = (LinkData)paramBaseData2;
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(Html.fromHtml(paramBaseData1.a));
-  }
-  
-  public void onClick(View paramView)
-  {
-    paramView = (LinkData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
-    ReadInJoyUtils.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), paramView.b);
+    float f1 = paramSensorEvent.values[0];
+    this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { String.valueOf(true), String.valueOf(f1) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     mra
  * JD-Core Version:    0.7.0.1
  */

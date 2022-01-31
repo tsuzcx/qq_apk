@@ -1,30 +1,33 @@
 package com.tencent.mobileqq.dinifly.animation.content;
 
 import android.graphics.Canvas;
-import android.graphics.ColorFilter;
 import android.graphics.Matrix;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import com.tencent.mobileqq.dinifly.LottieDrawable;
+import com.tencent.mobileqq.dinifly.LottieProperty;
 import com.tencent.mobileqq.dinifly.animation.keyframe.BaseKeyframeAnimation;
 import com.tencent.mobileqq.dinifly.animation.keyframe.BaseKeyframeAnimation.AnimationListener;
 import com.tencent.mobileqq.dinifly.animation.keyframe.TransformKeyframeAnimation;
+import com.tencent.mobileqq.dinifly.model.KeyPath;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableFloatValue;
 import com.tencent.mobileqq.dinifly.model.animatable.AnimatableTransform;
 import com.tencent.mobileqq.dinifly.model.content.Repeater;
 import com.tencent.mobileqq.dinifly.model.layer.BaseLayer;
 import com.tencent.mobileqq.dinifly.utils.MiscUtils;
+import com.tencent.mobileqq.dinifly.value.LottieValueCallback;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.ListIterator;
 
 public class RepeaterContent
-  implements DrawingContent, PathContent, GreedyContent, BaseKeyframeAnimation.AnimationListener
+  implements DrawingContent, GreedyContent, KeyPathElementContent, PathContent, BaseKeyframeAnimation.AnimationListener
 {
   private ContentGroup contentGroup;
   private final BaseKeyframeAnimation<Float, Float> copies;
+  private final boolean hidden;
   private final BaseLayer layer;
   private final LottieDrawable lottieDrawable;
   private final Matrix matrix = new Matrix();
@@ -38,6 +41,7 @@ public class RepeaterContent
     this.lottieDrawable = paramLottieDrawable;
     this.layer = paramBaseLayer;
     this.name = paramRepeater.getName();
+    this.hidden = paramRepeater.isHidden();
     this.copies = paramRepeater.getCopies().createAnimation();
     paramBaseLayer.addAnimation(this.copies);
     this.copies.addUpdateListener(this);
@@ -62,12 +66,22 @@ public class RepeaterContent
       paramListIterator.remove();
     }
     Collections.reverse(localArrayList);
-    this.contentGroup = new ContentGroup(this.lottieDrawable, this.layer, "Repeater", localArrayList, null);
+    this.contentGroup = new ContentGroup(this.lottieDrawable, this.layer, "Repeater", this.hidden, localArrayList, null);
   }
   
-  public void addColorFilter(@Nullable String paramString1, @Nullable String paramString2, @Nullable ColorFilter paramColorFilter)
+  public <T> void addValueCallback(T paramT, @Nullable LottieValueCallback<T> paramLottieValueCallback)
   {
-    this.contentGroup.addColorFilter(paramString1, paramString2, paramColorFilter);
+    if (this.transform.applyValueCallback(paramT, paramLottieValueCallback)) {}
+    do
+    {
+      return;
+      if (paramT == LottieProperty.REPEATER_COPIES)
+      {
+        this.copies.setValueCallback(paramLottieValueCallback);
+        return;
+      }
+    } while (paramT != LottieProperty.REPEATER_OFFSET);
+    this.offset.setValueCallback(paramLottieValueCallback);
   }
   
   public void draw(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
@@ -88,9 +102,9 @@ public class RepeaterContent
     }
   }
   
-  public void getBounds(RectF paramRectF, Matrix paramMatrix)
+  public void getBounds(RectF paramRectF, Matrix paramMatrix, boolean paramBoolean)
   {
-    this.contentGroup.getBounds(paramRectF, paramMatrix);
+    this.contentGroup.getBounds(paramRectF, paramMatrix, paramBoolean);
   }
   
   public String getName()
@@ -119,6 +133,11 @@ public class RepeaterContent
     this.lottieDrawable.invalidateSelf();
   }
   
+  public void resolveKeyPath(KeyPath paramKeyPath1, int paramInt, List<KeyPath> paramList, KeyPath paramKeyPath2)
+  {
+    MiscUtils.resolveKeyPath(paramKeyPath1, paramInt, paramList, paramKeyPath2, this);
+  }
+  
   public void setContents(List<Content> paramList1, List<Content> paramList2)
   {
     this.contentGroup.setContents(paramList1, paramList2);
@@ -126,7 +145,7 @@ public class RepeaterContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.content.RepeaterContent
  * JD-Core Version:    0.7.0.1
  */

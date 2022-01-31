@@ -13,7 +13,7 @@ public final class RespSummaryCard
   extends JceStruct
 {
   static int cache_eAddOption;
-  static Map cache_mapQzoneEx;
+  static Map<String, String> cache_mapQzoneEx;
   static AlbumInfo cache_oLatestPhotos = new AlbumInfo();
   static AddFrdSrcInfo cache_stAddFrdSrcInfo;
   static QQApolloInfo cache_stApollo;
@@ -41,16 +41,19 @@ public final class RespSummaryCard
   static QQVideoInfo cache_stVideoInfo;
   static VipBaseInfo cache_stVipInfo;
   static VoiceInfo cache_stVoiceInfo;
-  static ArrayList cache_vAddQuestion;
+  static WeishiInfo cache_stWeishiInfo;
+  static ArrayList<String> cache_vAddQuestion;
   static byte[] cache_vCommLabel;
   static byte[] cache_vExtendCard;
   static byte[] cache_vHotChatInfo;
+  static byte[] cache_vLongNickTopicInfo;
   static byte[] cache_vNearbyTaskInfo;
   static byte[] cache_vNowInfo;
-  static ArrayList cache_vPraiseList;
+  static ArrayList<TPraiseInfo> cache_vPraiseList;
   static byte[] cache_vQzoneCoverInfo;
   static byte[] cache_vResp0x5ebInfo;
   static byte[] cache_vRespCustomLabelInfo;
+  static byte[] cache_vRespKandianInfo;
   static byte[] cache_vRespLastGameInfo;
   static byte[] cache_vRespQQStoryInfo;
   static byte[] cache_vRespStarInfo;
@@ -59,14 +62,15 @@ public final class RespSummaryCard
   static byte[] cache_vSeed;
   static byte[] cache_vTempChatSig;
   static byte[] cache_vVisitingCardInfo;
-  static ArrayList cache_vvRespServices;
-  static ArrayList cache_vvRespServicesBigOrder;
+  static ArrayList<byte[]> cache_vvRespServices;
+  static ArrayList<byte[]> cache_vvRespServicesBigOrder;
   public byte bAge;
   public short bAvailVoteCnt;
   public short bHaveVotedCnt;
   public byte bSex;
   public byte bValid4Vote;
   public int eAddOption = 101;
+  public int i0x6d4Success;
   public int iBirthday;
   public int iContactNotBindQQ;
   public int iFace;
@@ -77,7 +81,7 @@ public final class RespSummaryCard
   public long lCacheControl;
   public long lUIN;
   public long lUserFlag;
-  public Map mapQzoneEx;
+  public Map<String, String> mapQzoneEx;
   public AlbumInfo oLatestPhotos;
   public AddFrdSrcInfo stAddFrdSrcInfo;
   public QQApolloInfo stApollo;
@@ -105,6 +109,7 @@ public final class RespSummaryCard
   public QQVideoInfo stVideoInfo;
   public VipBaseInfo stVipInfo;
   public VoiceInfo stVoiceInfo;
+  public WeishiInfo stWeishiInfo;
   public String strAutoRemark = "";
   public String strCity = "";
   public String strContactName = "";
@@ -131,23 +136,27 @@ public final class RespSummaryCard
   public String strVoteLimitedNotice = "";
   public long uAccelerateMultiple;
   public long uCareer;
+  public long uCurMulType;
   public long uFriendGroupId;
   public long uLoginDays;
   public long uQQMasterLoginDays = 20L;
+  public long uRichCardNameVer;
   public long uSignModifyTime;
   public long uTemplateId;
   public long ulFaceAddonId;
   public long ulShowControl;
-  public ArrayList vAddQuestion;
+  public ArrayList<String> vAddQuestion;
   public byte[] vCommLabel;
   public byte[] vExtendCard;
   public byte[] vHotChatInfo;
+  public byte[] vLongNickTopicInfo;
   public byte[] vNearbyTaskInfo;
   public byte[] vNowInfo;
-  public ArrayList vPraiseList;
+  public ArrayList<TPraiseInfo> vPraiseList;
   public byte[] vQzoneCoverInfo;
   public byte[] vResp0x5ebInfo;
   public byte[] vRespCustomLabelInfo;
+  public byte[] vRespKandianInfo;
   public byte[] vRespLastGameInfo;
   public byte[] vRespQQStoryInfo;
   public byte[] vRespStarInfo;
@@ -156,8 +165,8 @@ public final class RespSummaryCard
   public byte[] vSeed;
   public byte[] vTempChatSig;
   public byte[] vVisitingCardInfo;
-  public ArrayList vvRespServices;
-  public ArrayList vvRespServicesBigOrder;
+  public ArrayList<byte[]> vvRespServices;
+  public ArrayList<byte[]> vvRespServicesBigOrder;
   
   static
   {
@@ -235,11 +244,16 @@ public final class RespSummaryCard
     ((byte[])cache_vExtendCard)[0] = 0;
     cache_mapQzoneEx = new HashMap();
     cache_mapQzoneEx.put("", "");
+    cache_vRespKandianInfo = (byte[])new byte[1];
+    ((byte[])cache_vRespKandianInfo)[0] = 0;
+    cache_stWeishiInfo = new WeishiInfo();
+    cache_vLongNickTopicInfo = (byte[])new byte[1];
+    ((byte[])cache_vLongNickTopicInfo)[0] = 0;
   }
   
   public RespSummaryCard() {}
   
-  public RespSummaryCard(int paramInt1, byte paramByte1, byte paramByte2, String paramString1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, long paramLong1, String paramString10, AlbumInfo paramAlbumInfo, int paramInt3, int paramInt4, byte paramByte3, String paramString11, String paramString12, String paramString13, long paramLong2, long paramLong3, int paramInt5, int paramInt6, ArrayList paramArrayList1, byte[] paramArrayOfByte1, String paramString14, VipBaseInfo paramVipBaseInfo1, String paramString15, VoiceInfo paramVoiceInfo, byte[] paramArrayOfByte2, long paramLong4, byte[] paramArrayOfByte3, long paramLong5, long paramLong6, String paramString16, long paramLong7, long paramLong8, long paramLong9, byte[] paramArrayOfByte4, String paramString17, byte[] paramArrayOfByte5, VipBaseInfo paramVipBaseInfo2, long paramLong10, ArrayList paramArrayList2, String paramString18, DateCard paramDateCard, int paramInt7, QCallInfo paramQCallInfo, GiftInfo paramGiftInfo, PanSocialInfo paramPanSocialInfo, QQVideoInfo paramQQVideoInfo, byte[] paramArrayOfByte6, InterestTagInfo paramInterestTagInfo, UserFeed paramUserFeed, QiqiVideoInfo paramQiqiVideoInfo, PrivilegeBaseInfo paramPrivilegeBaseInfo, QQApolloInfo paramQQApolloInfo, AddFrdSrcInfo paramAddFrdSrcInfo, BindPhoneInfo paramBindPhoneInfo, byte[] paramArrayOfByte7, String paramString19, short paramShort1, short paramShort2, String paramString20, String paramString21, String paramString22, long paramLong11, String paramString23, byte[] paramArrayOfByte8, OlympicInfo paramOlympicInfo, TCoverInfo paramTCoverInfo, TNowBroadcastInfo paramTNowBroadcastInfo, TEIMInfo paramTEIMInfo, TVideoHeadInfo paramTVideoHeadInfo, int paramInt8, TMedalWallInfo paramTMedalWallInfo, ArrayList paramArrayList3, byte[] paramArrayOfByte9, TNearbyGodInfo paramTNearbyGodInfo, byte[] paramArrayOfByte10, byte[] paramArrayOfByte11, ArrayList paramArrayList4, TCampusCircleInfo paramTCampusCircleInfo, TTimInfo paramTTimInfo, TQimInfo paramTQimInfo, HeartInfo paramHeartInfo, byte[] paramArrayOfByte12, byte[] paramArrayOfByte13, byte[] paramArrayOfByte14, long paramLong12, byte[] paramArrayOfByte15, byte[] paramArrayOfByte16, String paramString24, Map paramMap)
+  public RespSummaryCard(int paramInt1, byte paramByte1, byte paramByte2, String paramString1, String paramString2, int paramInt2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9, long paramLong1, String paramString10, AlbumInfo paramAlbumInfo, int paramInt3, int paramInt4, byte paramByte3, String paramString11, String paramString12, String paramString13, long paramLong2, long paramLong3, int paramInt5, int paramInt6, ArrayList<String> paramArrayList, byte[] paramArrayOfByte1, String paramString14, VipBaseInfo paramVipBaseInfo1, String paramString15, VoiceInfo paramVoiceInfo, byte[] paramArrayOfByte2, long paramLong4, byte[] paramArrayOfByte3, long paramLong5, long paramLong6, String paramString16, long paramLong7, long paramLong8, long paramLong9, byte[] paramArrayOfByte4, String paramString17, byte[] paramArrayOfByte5, VipBaseInfo paramVipBaseInfo2, long paramLong10, ArrayList<byte[]> paramArrayList1, String paramString18, DateCard paramDateCard, int paramInt7, QCallInfo paramQCallInfo, GiftInfo paramGiftInfo, PanSocialInfo paramPanSocialInfo, QQVideoInfo paramQQVideoInfo, byte[] paramArrayOfByte6, InterestTagInfo paramInterestTagInfo, UserFeed paramUserFeed, QiqiVideoInfo paramQiqiVideoInfo, PrivilegeBaseInfo paramPrivilegeBaseInfo, QQApolloInfo paramQQApolloInfo, AddFrdSrcInfo paramAddFrdSrcInfo, BindPhoneInfo paramBindPhoneInfo, byte[] paramArrayOfByte7, String paramString19, short paramShort1, short paramShort2, String paramString20, String paramString21, String paramString22, long paramLong11, String paramString23, byte[] paramArrayOfByte8, OlympicInfo paramOlympicInfo, TCoverInfo paramTCoverInfo, TNowBroadcastInfo paramTNowBroadcastInfo, TEIMInfo paramTEIMInfo, TVideoHeadInfo paramTVideoHeadInfo, int paramInt8, TMedalWallInfo paramTMedalWallInfo, ArrayList<byte[]> paramArrayList2, byte[] paramArrayOfByte9, TNearbyGodInfo paramTNearbyGodInfo, byte[] paramArrayOfByte10, byte[] paramArrayOfByte11, ArrayList<TPraiseInfo> paramArrayList3, TCampusCircleInfo paramTCampusCircleInfo, TTimInfo paramTTimInfo, TQimInfo paramTQimInfo, HeartInfo paramHeartInfo, byte[] paramArrayOfByte12, byte[] paramArrayOfByte13, byte[] paramArrayOfByte14, long paramLong12, byte[] paramArrayOfByte15, byte[] paramArrayOfByte16, String paramString24, Map<String, String> paramMap, byte[] paramArrayOfByte17, WeishiInfo paramWeishiInfo, long paramLong13, long paramLong14, byte[] paramArrayOfByte18, int paramInt9)
   {
     this.iFace = paramInt1;
     this.bSex = paramByte1;
@@ -267,7 +281,7 @@ public final class RespSummaryCard
     this.lUIN = paramLong3;
     this.iPhotoCount = paramInt5;
     this.eAddOption = paramInt6;
-    this.vAddQuestion = paramArrayList1;
+    this.vAddQuestion = paramArrayList;
     this.vSeed = paramArrayOfByte1;
     this.strDiscussName = paramString14;
     this.stVipInfo = paramVipBaseInfo1;
@@ -287,7 +301,7 @@ public final class RespSummaryCard
     this.vRespStarInfo = paramArrayOfByte5;
     this.stDiamonds = paramVipBaseInfo2;
     this.uAccelerateMultiple = paramLong10;
-    this.vvRespServices = paramArrayList2;
+    this.vvRespServices = paramArrayList1;
     this.strSpaceName = paramString18;
     this.stDateCard = paramDateCard;
     this.iBirthday = paramInt7;
@@ -320,12 +334,12 @@ public final class RespSummaryCard
     this.stVideoHeadInfo = paramTVideoHeadInfo;
     this.iContactNotBindQQ = paramInt8;
     this.stMedalWallInfo = paramTMedalWallInfo;
-    this.vvRespServicesBigOrder = paramArrayList3;
+    this.vvRespServicesBigOrder = paramArrayList2;
     this.vResp0x5ebInfo = paramArrayOfByte9;
     this.stNearbyGodInfo = paramTNearbyGodInfo;
     this.vRespQQStoryInfo = paramArrayOfByte10;
     this.vRespCustomLabelInfo = paramArrayOfByte11;
-    this.vPraiseList = paramArrayList4;
+    this.vPraiseList = paramArrayList3;
     this.stCampusCircleInfo = paramTCampusCircleInfo;
     this.stTimInfo = paramTTimInfo;
     this.stQimInfo = paramTQimInfo;
@@ -338,6 +352,12 @@ public final class RespSummaryCard
     this.vExtendCard = paramArrayOfByte16;
     this.strQzoneHeader = paramString24;
     this.mapQzoneEx = paramMap;
+    this.vRespKandianInfo = paramArrayOfByte17;
+    this.stWeishiInfo = paramWeishiInfo;
+    this.uRichCardNameVer = paramLong13;
+    this.uCurMulType = paramLong14;
+    this.vLongNickTopicInfo = paramArrayOfByte18;
+    this.i0x6d4Success = paramInt9;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -439,6 +459,12 @@ public final class RespSummaryCard
     this.vExtendCard = ((byte[])paramJceInputStream.read(cache_vExtendCard, 96, false));
     this.strQzoneHeader = paramJceInputStream.readString(97, false);
     this.mapQzoneEx = ((Map)paramJceInputStream.read(cache_mapQzoneEx, 98, false));
+    this.vRespKandianInfo = ((byte[])paramJceInputStream.read(cache_vRespKandianInfo, 99, false));
+    this.stWeishiInfo = ((WeishiInfo)paramJceInputStream.read(cache_stWeishiInfo, 100, false));
+    this.uRichCardNameVer = paramJceInputStream.read(this.uRichCardNameVer, 101, false);
+    this.uCurMulType = paramJceInputStream.read(this.uCurMulType, 102, false);
+    this.vLongNickTopicInfo = ((byte[])paramJceInputStream.read(cache_vLongNickTopicInfo, 103, false));
+    this.i0x6d4Success = paramJceInputStream.read(this.i0x6d4Success, 104, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -684,6 +710,18 @@ public final class RespSummaryCard
     if (this.mapQzoneEx != null) {
       paramJceOutputStream.write(this.mapQzoneEx, 98);
     }
+    if (this.vRespKandianInfo != null) {
+      paramJceOutputStream.write(this.vRespKandianInfo, 99);
+    }
+    if (this.stWeishiInfo != null) {
+      paramJceOutputStream.write(this.stWeishiInfo, 100);
+    }
+    paramJceOutputStream.write(this.uRichCardNameVer, 101);
+    paramJceOutputStream.write(this.uCurMulType, 102);
+    if (this.vLongNickTopicInfo != null) {
+      paramJceOutputStream.write(this.vLongNickTopicInfo, 103);
+    }
+    paramJceOutputStream.write(this.i0x6d4Success, 104);
   }
 }
 

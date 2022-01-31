@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.widget.TCWNumberPickerButton android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0df3" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02227c" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <EditText android:textSize="30.0sp" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0df4" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022277" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" style="?android:attr/textAppearanceLargeInverse" />
-    <com.tencent.widget.TCWNumberPickerButton android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0df5" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022271" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</merge>

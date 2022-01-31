@@ -1,50 +1,87 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
+import java.io.BufferedReader;
 
 public class lca
-  extends BroadcastReceiver
+  extends lcc
 {
-  public lca(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
+  private static float[] b;
+  float[] a;
+  private float[] c = { 1.0F, 1.0F, 1.0F };
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  static
   {
-    paramContext = paramIntent.getAction();
-    if ("action_decode_finish".equals(paramContext))
+    jdField_b_of_type_ArrayOfFloat = new float[4];
+  }
+  
+  public lca()
+  {
+    this.jdField_a_of_type_ArrayOfFloat = new float[] { 0.0F };
+    this.jdField_b_of_type_Boolean = true;
+  }
+  
+  public void a(BufferedReader paramBufferedReader)
+  {
+    int j = 0;
+    super.a(paramBufferedReader);
+    if (!this.jdField_a_of_type_Boolean) {}
+    for (;;)
     {
-      paramContext = paramIntent.getStringExtra("uin");
-      paramIntent = (Bitmap)paramIntent.getParcelableExtra("bitmap");
-      if ((this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(paramContext)) && (paramIntent != null)) {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramIntent);
+      return;
+      this.c = new float[lbz.a(paramBufferedReader, "colorsCount")];
+      int i = 0;
+      while (i < this.c.length)
+      {
+        this.c[i] = lbz.a(paramBufferedReader, "colors" + i);
+        i += 1;
+      }
+      this.jdField_a_of_type_ArrayOfFloat = new float[lbz.a(paramBufferedReader, "timelineCount")];
+      i = j;
+      while (i < this.jdField_a_of_type_ArrayOfFloat.length)
+      {
+        this.jdField_a_of_type_ArrayOfFloat[i] = lbz.a(paramBufferedReader, "timeline" + i);
+        i += 1;
       }
     }
-    do
-    {
-      do
-      {
-        return;
-      } while ((!"action_follow_status_finish".equals(paramContext)) || (!String.valueOf(paramIntent.getStringExtra("uin")).equals(this.a.jdField_a_of_type_JavaLangString)));
-      this.a.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("isFollow", false);
-    } while (this.a.jdField_a_of_type_AndroidWidgetTextView == null);
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("已关注");
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
-      return;
+  }
+  
+  public float[] a(float paramFloat)
+  {
+    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+    int k = arrayOfFloat.length;
+    int i = 1;
+    int j = 0;
+    if (i < k) {
+      if (arrayOfFloat[i] <= paramFloat) {}
     }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText("关注");
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130844007);
+    for (;;)
+    {
+      float f4 = arrayOfFloat[j];
+      j *= 3;
+      float f1 = this.c[j];
+      float f2 = this.c[(j + 1)];
+      float f3 = this.c[(j + 2)];
+      if (i == -1)
+      {
+        jdField_b_of_type_ArrayOfFloat[0] = f1;
+        jdField_b_of_type_ArrayOfFloat[1] = f2;
+        jdField_b_of_type_ArrayOfFloat[2] = f3;
+        return jdField_b_of_type_ArrayOfFloat;
+        j = i;
+        i += 1;
+        break;
+      }
+      paramFloat = (paramFloat - f4) / (arrayOfFloat[i] - f4);
+      i *= 3;
+      jdField_b_of_type_ArrayOfFloat[0] = ((this.c[i] - f1) * paramFloat + f1);
+      jdField_b_of_type_ArrayOfFloat[1] = ((this.c[(i + 1)] - f2) * paramFloat + f2);
+      jdField_b_of_type_ArrayOfFloat[2] = ((this.c[(i + 2)] - f3) * paramFloat + f3);
+      return jdField_b_of_type_ArrayOfFloat;
+      i = -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lca
  * JD-Core Version:    0.7.0.1
  */

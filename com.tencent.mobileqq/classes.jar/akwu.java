@@ -1,21 +1,61 @@
-import android.os.Environment;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserMiscHandler;
-import java.io.File;
+import android.content.Context;
+import android.graphics.SurfaceTexture;
+import android.opengl.GLSurfaceView;
+import android.opengl.GLSurfaceView.Renderer;
+import android.util.Size;
+import com.tencent.mobileqq.ar.ARRecord.VideoRecordController;
+import java.nio.FloatBuffer;
 
-public class akwu
-  implements Runnable
+public abstract interface akwu
+  extends GLSurfaceView.Renderer
 {
-  public akwu(SwiftBrowserMiscHandler paramSwiftBrowserMiscHandler) {}
+  public abstract int a();
   
-  public void run()
-  {
-    FileUtil.a(new File(Environment.getExternalStorageDirectory(), "/tencent/MobileQQ/ShareScreenShots"));
-  }
+  public abstract long a();
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt1, SurfaceTexture paramSurfaceTexture, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
+  
+  public abstract void a(int paramInt, Object paramObject);
+  
+  public abstract void a(int paramInt, float[] paramArrayOfFloat);
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(akls paramakls);
+  
+  public abstract void a(aklw paramaklw);
+  
+  public abstract void a(akye paramakye);
+  
+  public abstract void a(VideoRecordController paramVideoRecordController);
+  
+  public abstract void a(FloatBuffer paramFloatBuffer, Size paramSize);
+  
+  public abstract boolean a();
+  
+  public abstract boolean a(aklv paramaklv);
+  
+  public abstract boolean a(GLSurfaceView paramGLSurfaceView, Context paramContext);
+  
+  public abstract boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2);
+  
+  public abstract void b();
+  
+  public abstract void b(long paramLong);
+  
+  public abstract boolean b();
+  
+  public abstract void c();
+  
+  public abstract void d();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akwu
  * JD-Core Version:    0.7.0.1
  */

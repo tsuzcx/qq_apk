@@ -1,18 +1,39 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.content.Context;
+import com.tencent.common.app.AppInterface;
 
-public class ruc
-  implements Runnable
+final class ruc
+  extends akih
 {
-  public ruc(BaseChatPie paramBaseChatPie) {}
+  ruc(ajpe paramajpe, String paramString, AppInterface paramAppInterface, Context paramContext) {}
   
-  public void run()
+  public int a()
   {
-    this.a.A = false;
+    return 4;
   }
+  
+  public void a(Object paramObject)
+  {
+    if (this.jdField_a_of_type_Ajpe != null) {
+      this.jdField_a_of_type_Ajpe.onUpdate(101, true, this.jdField_a_of_type_JavaLangString);
+    }
+    rtr.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
+  }
+  
+  public void a(boolean paramBoolean, Object paramObject) {}
+  
+  public void b(Object paramObject)
+  {
+    if (this.jdField_a_of_type_Ajpe != null) {
+      this.jdField_a_of_type_Ajpe.onUpdate(101, false, this.jdField_a_of_type_JavaLangString);
+    }
+    rtr.a(this.jdField_a_of_type_AndroidContentContext, 2131629887);
+  }
+  
+  public void b(boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ruc
  * JD-Core Version:    0.7.0.1
  */

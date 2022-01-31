@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class shuoshuo_privacy
   extends JceStruct
 {
-  static ArrayList cache_mood_allowuins;
-  public ArrayList mood_allowuins;
+  static ArrayList<Long> cache_mood_allowuins;
+  public ArrayList<Long> mood_allowuins;
   public String mood_permission = "";
   
   public shuoshuo_privacy() {}
   
-  public shuoshuo_privacy(String paramString, ArrayList paramArrayList)
+  public shuoshuo_privacy(String paramString, ArrayList<Long> paramArrayList)
   {
     this.mood_permission = paramString;
     this.mood_allowuins = paramArrayList;

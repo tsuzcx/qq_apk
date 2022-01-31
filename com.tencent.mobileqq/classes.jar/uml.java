@@ -1,31 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.data.CardProfile;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetPhotographyGuide;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBRepeatField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class uml
-  implements View.OnClickListener
+  extends slu
 {
-  public uml(VisitorsActivity paramVisitorsActivity) {}
+  public List<String> a = new ArrayList();
+  public int b;
   
-  public void onClick(View paramView)
+  public uml(qqstory_service.RspGetPhotographyGuide paramRspGetPhotographyGuide)
   {
-    if ((paramView.getTag() instanceof unh))
+    super(paramRspGetPhotographyGuide.result);
+    Object localObject = paramRspGetPhotographyGuide.word.get();
+    if (localObject != null)
     {
-      paramView = (unh)paramView.getTag();
-      ReportController.a(this.a.app, "CliOper", "", "", "0X800444A", "0X800444A", 0, 0, "", "", "", "");
-      VisitorsActivity.a(this.a, (CardProfile)paramView.a);
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        ByteStringMicro localByteStringMicro = (ByteStringMicro)((Iterator)localObject).next();
+        this.a.add(localByteStringMicro.toStringUtf8());
+      }
     }
-    while (!(paramView.getTag() instanceof unj)) {
-      return;
-    }
-    this.a.a();
+    this.b = paramRspGetPhotographyGuide.seqno.get();
+  }
+  
+  public String toString()
+  {
+    return "GetPhotographyGuideResponse{, wordList=" + this.a.size() + ", seqno=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uml
  * JD-Core Version:    0.7.0.1
  */

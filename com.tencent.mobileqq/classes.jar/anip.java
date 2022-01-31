@@ -1,35 +1,25 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import java.util.concurrent.CountDownLatch;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import java.util.List;
 
-public final class anip
-  implements Downloader.DownloadListener
+public class anip
+  implements anhx
 {
-  public anip(boolean[] paramArrayOfBoolean, CountDownLatch paramCountDownLatch) {}
+  private anip(EmoticonMainPanel paramEmoticonMainPanel) {}
   
-  public void onDownloadCanceled(String paramString)
+  public List<ankb> a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-  }
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
-  {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-  }
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = true;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    if (paramBoolean2) {
+      return anjd.b(this.a.a);
+    }
+    if (!paramBoolean1) {
+      return anjd.a(this.a.a);
+    }
+    return anjd.a(this.a.a, this.a.h, this.a.q);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anip
  * JD-Core Version:    0.7.0.1
  */

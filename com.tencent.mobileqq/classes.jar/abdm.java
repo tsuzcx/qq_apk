@@ -1,31 +1,13 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.ark.ArkAiInfo;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppViewByIntentCallback;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.SearchArkBabyQInfo;
-import java.util.ArrayList;
+import com.tencent.mobileqq.data.ResourcePluginInfo;
 
-class abdm
-  implements ArkLocalAppMgr.IGetAppViewByIntentCallback
+public class abdm
 {
-  abdm(abdl paramabdl, ArkAiInfo paramArkAiInfo, ArkMessageServerLogic.SearchArkBabyQInfo paramSearchArkBabyQInfo, int paramInt1, int paramInt2) {}
-  
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
-  {
-    if ((!TextUtils.isEmpty(paramString3)) && (!TextUtils.isEmpty(paramString4)))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo.d = paramString3;
-      this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo.b = paramString4;
-      this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$SearchArkBabyQInfo.a.add(this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo);
-    }
-    if ((this.jdField_a_of_type_Int == this.b - 1) && (this.jdField_a_of_type_Abdl.a.a.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeArkBabyQReplyByServerHandler != null)) {
-      this.jdField_a_of_type_Abdl.a.a.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeArkBabyQReplyByServerHandler.a(this.jdField_a_of_type_Abdl.a.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Abdl.a.a.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$SearchArkBabyQInfo, false);
-    }
-  }
+  public ResourcePluginInfo a;
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abdm
  * JD-Core Version:    0.7.0.1
  */

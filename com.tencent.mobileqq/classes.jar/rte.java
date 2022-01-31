@@ -1,34 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
 
-public class rte
-  implements View.OnTouchListener
+class rte
+  implements wiu
 {
-  public rte(AutoRemarkActivity paramAutoRemarkActivity) {}
+  rte(rsv paramrsv) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(Bundle paramBundle)
   {
-    switch (paramMotionEvent.getAction() & 0xFF)
-    {
+    if (this.a.a != null) {
+      this.a.k();
     }
-    do
-    {
-      return false;
-      paramView = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
-    } while (!paramView.isActive());
-    paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rte
  * JD-Core Version:    0.7.0.1
  */

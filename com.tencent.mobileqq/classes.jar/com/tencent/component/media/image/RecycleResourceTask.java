@@ -1,68 +1,78 @@
 package com.tencent.component.media.image;
 
 import android.util.Log;
-import plz;
-import pma;
 
 public class RecycleResourceTask
-  extends plz
+  extends ImageTask
 {
-  private static double jdField_a_of_type_Double;
-  private static int jdField_a_of_type_Int;
-  private static RecycleResourceTask jdField_a_of_type_ComTencentComponentMediaImageRecycleResourceTask;
-  private static final Object jdField_a_of_type_JavaLangObject;
-  private static long jdField_b_of_type_Long = 0L;
-  private long jdField_a_of_type_Long = 0L;
-  private RecycleResourceTask jdField_b_of_type_ComTencentComponentMediaImageRecycleResourceTask = null;
+  private static double averageTime;
+  private static int mObjectPoolSize;
+  private static long requestNum = 0L;
+  private static RecycleResourceTask sPool;
+  private static final Object sPoolSync;
+  private RecycleResourceTask next = null;
+  private long startTime = 0L;
   
   static
   {
-    jdField_a_of_type_Double = 0.0D;
-    jdField_a_of_type_ComTencentComponentMediaImageRecycleResourceTask = null;
-    jdField_a_of_type_JavaLangObject = new Object();
-    jdField_a_of_type_Int = 0;
+    averageTime = 0.0D;
+    sPool = null;
+    sPoolSync = new Object();
+    mObjectPoolSize = 0;
     clearAndInitSize();
   }
   
-  private RecycleResourceTask(plz paramplz)
+  private RecycleResourceTask(ImageTask paramImageTask)
   {
-    super(paramplz);
+    super(paramImageTask);
   }
   
   public static void clearAndInitSize()
   {
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (sPoolSync)
     {
-      jdField_a_of_type_ComTencentComponentMediaImageRecycleResourceTask = null;
+      sPool = null;
       int i = 0;
       while (i < mInitAllocatedSize)
       {
         RecycleResourceTask localRecycleResourceTask = new RecycleResourceTask(null);
-        localRecycleResourceTask.jdField_b_of_type_ComTencentComponentMediaImageRecycleResourceTask = jdField_a_of_type_ComTencentComponentMediaImageRecycleResourceTask;
-        jdField_a_of_type_ComTencentComponentMediaImageRecycleResourceTask = localRecycleResourceTask;
-        jdField_a_of_type_Int += 1;
+        localRecycleResourceTask.next = sPool;
+        sPool = localRecycleResourceTask;
+        mObjectPoolSize += 1;
         i += 1;
       }
       return;
     }
   }
   
-  public static RecycleResourceTask obtain(plz paramplz)
+  public static RecycleResourceTask obtain(ImageTask paramImageTask)
   {
     if (needRecycle) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (sPoolSync)
     {
-      if (jdField_a_of_type_ComTencentComponentMediaImageRecycleResourceTask != null)
+      if (sPool != null)
       {
-        RecycleResourceTask localRecycleResourceTask = jdField_a_of_type_ComTencentComponentMediaImageRecycleResourceTask;
-        jdField_a_of_type_ComTencentComponentMediaImageRecycleResourceTask = jdField_a_of_type_ComTencentComponentMediaImageRecycleResourceTask.jdField_b_of_type_ComTencentComponentMediaImageRecycleResourceTask;
-        localRecycleResourceTask.jdField_b_of_type_ComTencentComponentMediaImageRecycleResourceTask = null;
-        jdField_a_of_type_Int -= 1;
-        localRecycleResourceTask.setImageTask(paramplz);
+        RecycleResourceTask localRecycleResourceTask = sPool;
+        sPool = sPool.next;
+        localRecycleResourceTask.next = null;
+        mObjectPoolSize -= 1;
+        localRecycleResourceTask.setImageTask(paramImageTask);
         return localRecycleResourceTask;
       }
-      return new RecycleResourceTask(paramplz);
+      return new RecycleResourceTask(paramImageTask);
     }
+  }
+  
+  private void updateTime(long paramLong)
+  {
+    try
+    {
+      averageTime = (requestNum * averageTime + paramLong) / (requestNum + 1L);
+      Log.i("ttt", "ImageTask averageTime: " + averageTime);
+      requestNum += 1L;
+      return;
+    }
+    finally {}
   }
   
   public void excuteTask()
@@ -70,7 +80,7 @@ public class RecycleResourceTask
     if (this.mNextTask != null)
     {
       ImageTaskTracer.addImageTaskLifeCycleRecord(this.mImageKey.hashCodeEx());
-      pma.a(this);
+      ImageTaskManager.addImageTask(this);
       this.mNextTask.excuteTask();
     }
   }
@@ -79,11 +89,11 @@ public class RecycleResourceTask
   {
     ImageTaskTracer.removeImageTaskLifeCycleRecord(this.mImageKey.hashCodeEx());
     Log.d("RecycleResourceTask", "onResult type:" + paramInt + " hashcode:" + this.mImageKey.hashCodeEx() + " url:" + getImageKey().url);
-    pma.a(getImageKey());
-    plz localplz;
-    for (paramVarArgs = this.mNextTask; paramVarArgs != null; paramVarArgs = localplz)
+    ImageTaskManager.removeImageTask(getImageKey());
+    ImageTask localImageTask;
+    for (paramVarArgs = this.mNextTask; paramVarArgs != null; paramVarArgs = localImageTask)
     {
-      localplz = paramVarArgs.getNextTask();
+      localImageTask = paramVarArgs.getNextTask();
       paramVarArgs.recycle();
     }
     recycle();
@@ -95,13 +105,13 @@ public class RecycleResourceTask
       return;
     }
     reset();
-    synchronized (jdField_a_of_type_JavaLangObject)
+    synchronized (sPoolSync)
     {
-      if (jdField_a_of_type_Int < 50)
+      if (mObjectPoolSize < 50)
       {
-        this.jdField_b_of_type_ComTencentComponentMediaImageRecycleResourceTask = jdField_a_of_type_ComTencentComponentMediaImageRecycleResourceTask;
-        jdField_a_of_type_ComTencentComponentMediaImageRecycleResourceTask = this;
-        jdField_a_of_type_Int += 1;
+        this.next = sPool;
+        sPool = this;
+        mObjectPoolSize += 1;
       }
       return;
     }

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class C2CType0x211_SubC2CType0x8$Wifi
-  extends MessageMicro
+  extends MessageMicro<Wifi>
 {
   public static final int INT32_RSSI_FIELD_NUMBER = 2;
   public static final int UINT64_MAC_FIELD_NUMBER = 1;

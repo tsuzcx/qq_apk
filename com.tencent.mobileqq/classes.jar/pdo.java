@@ -1,18 +1,24 @@
 import android.content.Context;
-import android.widget.GridView;
-import com.tencent.biz.troopgift.GridListViewPager;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
 
 public class pdo
-  extends GridView
+  implements View.OnClickListener
 {
-  public pdo(GridListViewPager paramGridListViewPager, Context paramContext)
-  {
-    super(paramContext);
-  }
+  public pdo(PTSFragment paramPTSFragment) {}
   
-  public void setOverScrollMode(int paramInt)
+  public void onClick(View paramView)
   {
-    super.setOverScrollMode(2);
+    paramView = paramView.getContext();
+    Intent localIntent = new Intent(paramView, AccountDetailActivity.class);
+    localIntent.putExtra("uin", String.valueOf(3434959637L));
+    localIntent.putExtra("uintype", 1008);
+    localIntent.putExtra("source", 121);
+    paramView.startActivity(localIntent);
+    ndn.a(null, "", "0X8009941", "0X8009941", 0, 0, "", "", "", "", false);
   }
 }
 

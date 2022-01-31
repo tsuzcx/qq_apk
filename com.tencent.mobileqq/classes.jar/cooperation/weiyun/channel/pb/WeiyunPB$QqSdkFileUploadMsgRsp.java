@@ -12,7 +12,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class WeiyunPB$QqSdkFileUploadMsgRsp
-  extends MessageMicro
+  extends MessageMicro<QqSdkFileUploadMsgRsp>
 {
   public static final int CHANNEL_COUNT_FIELD_NUMBER = 25;
   public static final int CHECK_KEY_FIELD_NUMBER = 7;
@@ -69,7 +69,7 @@ public final class WeiyunPB$QqSdkFileUploadMsgRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cooperation.weiyun.channel.pb.WeiyunPB.QqSdkFileUploadMsgRsp
  * JD-Core Version:    0.7.0.1
  */

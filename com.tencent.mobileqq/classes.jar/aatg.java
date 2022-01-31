@@ -1,22 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.arcard.ARCardShareHelper;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
 
 public class aatg
-  implements DialogInterface.OnDismissListener
+  extends ajey
 {
-  public aatg(ARCardShareHelper paramARCardShareHelper, DialogInterface.OnDismissListener paramOnDismissListener) {}
+  public aatg(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener.onDismiss(paramDialogInterface);
+    if (paramInt2 == 0)
+    {
+      this.a.a();
+      if (this.a.isResumed()) {
+        if (paramInt1 != 0) {
+          break label47;
+        }
+      }
     }
+    label47:
+    while (!this.a.isResumed())
+    {
+      bbmy.a(this.a.getActivity(), 2, ajjy.a(2131639053), 0).a();
+      do
+      {
+        return;
+      } while (paramInt1 != 1);
+      bbmy.a(this.a.getActivity(), 2, ajjy.a(2131639052), 0).a();
+      return;
+    }
+    paramString1 = paramString2;
+    if (TextUtils.isEmpty(paramString2)) {
+      paramString1 = this.a.getResources().getString(2131629250);
+    }
+    bbmy.a(this.a.getActivity(), 1, paramString1, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aatg
  * JD-Core Version:    0.7.0.1
  */

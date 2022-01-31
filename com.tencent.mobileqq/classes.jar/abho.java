@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class abho
-  implements Runnable
+public class abho
+  implements DialogInterface.OnClickListener
 {
-  abho(abhn paramabhn) {}
+  public abho(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ARMapActivity.j(this.a.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "showRecommendDialog confirm clicked!");
+    }
+    PhoneUnityBindInfoActivity.c(this.a);
+    awqx.b(this.a.app, "dc00898", "", "", "0X800A604", "0X800A604", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abho
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,21 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.activity.AssistantSettingActivity.34.1;
+import com.tencent.widget.HeightAdaptableListView;
 
-public final class zzw
-  implements Comparator
+public class zzw
+  implements afgc
 {
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public zzw(AssistantSettingActivity paramAssistantSettingActivity) {}
+  
+  public void a()
   {
-    return (int)(paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq);
+    this.a.a.post(new AssistantSettingActivity.34.1(this));
+    AssistantSettingActivity.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zzw
  * JD-Core Version:    0.7.0.1
  */

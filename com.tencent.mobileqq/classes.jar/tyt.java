@@ -1,20 +1,32 @@
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.util.FaceDrawable;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.ShareGroupsListView;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class tyt
-  implements Runnable
+public class tyt
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, sys>
 {
-  tyt(tys paramtys, String paramString, int paramInt) {}
-  
-  public void run()
+  public tyt(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    FaceDrawable localFaceDrawable = FaceDrawable.a(this.jdField_a_of_type_Tys.a.app, 1, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Tys.a.runOnUiThread(new tyu(this, localFaceDrawable));
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull sys paramsys)
+  {
+    if (paramsys.a.isSuccess()) {
+      paramQQStoryShareGroupProfileActivity.a.a(paramsys);
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return sys.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tyt
  * JD-Core Version:    0.7.0.1
  */

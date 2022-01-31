@@ -10,11 +10,11 @@ public final class PoiInfoCell_V2
 {
   static GPS_V2 cache_stClientGps = new GPS_V2();
   static GPS_V2 cache_stGps = new GPS_V2();
-  static ArrayList cache_vPoiList = new ArrayList();
+  static ArrayList<PoiInfo_V2> cache_vPoiList = new ArrayList();
   public int iRet;
   public GPS_V2 stClientGps;
   public GPS_V2 stGps;
-  public ArrayList vPoiList;
+  public ArrayList<PoiInfo_V2> vPoiList;
   
   static
   {
@@ -24,7 +24,7 @@ public final class PoiInfoCell_V2
   
   public PoiInfoCell_V2() {}
   
-  public PoiInfoCell_V2(GPS_V2 paramGPS_V21, ArrayList paramArrayList, int paramInt, GPS_V2 paramGPS_V22)
+  public PoiInfoCell_V2(GPS_V2 paramGPS_V21, ArrayList<PoiInfo_V2> paramArrayList, int paramInt, GPS_V2 paramGPS_V22)
   {
     this.stGps = paramGPS_V21;
     this.vPoiList = paramArrayList;

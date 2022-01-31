@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.troop.logic;
 
-import ajtq;
+import azcw;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopManager;
@@ -9,23 +10,17 @@ import java.util.ArrayList;
 
 public class TroopSearchLogic
 {
-  public QQAppInterface a;
-  public TroopManager a;
+  QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+  TroopManager jdField_a_of_type_ComTencentMobileqqAppTroopManager = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(52);
   
-  public TroopSearchLogic()
+  public void a(ArrayList<ResultRecord> paramArrayList, azcw paramazcw)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51));
-  }
-  
-  public void a(ArrayList paramArrayList, TroopSearchLogic.TroopSearchCallback paramTroopSearchCallback)
-  {
-    ThreadManager.postImmediately(new ajtq(this, paramTroopSearchCallback, paramArrayList), null, false);
+    ThreadManager.postImmediately(new TroopSearchLogic.TroopSearchTask(this, paramazcw, paramArrayList), null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.logic.TroopSearchLogic
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager.FavEmotionDataInPanelCallback;
-import java.util.List;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment.5.1;
 
-class achq
-  implements Runnable
+public class achq
+  implements acig
 {
-  achq(achp paramachp, List paramList) {}
+  public achq(ReminderListFragment.5.1 param1) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_Achp.a.a(this.jdField_a_of_type_JavaUtilList);
+    ReminderListFragment.a(this.a.a.a, ajjy.a(2131647594));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     achq
  * JD-Core Version:    0.7.0.1
  */

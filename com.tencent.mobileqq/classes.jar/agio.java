@@ -1,70 +1,45 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.olympic.OlympicManager;
-import com.tencent.mobileqq.olympic.OlympicObserver;
-import com.tencent.mobileqq.olympic.ShuayishuaConfig;
-import com.tencent.mobileqq.olympic.TorchInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import java.util.ArrayList;
+import mqq.util.WeakReference;
 
-public class agio
-  extends OlympicObserver
+class agio
+  extends aggx
 {
-  public agio(OlympicManager paramOlympicManager) {}
-  
-  public void a(boolean paramBoolean, int paramInt1, TorchInfo paramTorchInfo, int paramInt2)
+  protected agio(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    if (QLog.isColorLevel())
-    {
-      OlympicManager localOlympicManager = this.a;
-      QLog.i("OlympicManager", 2, "onGetMyTorchInfo.isSuccess=" + paramBoolean + ",errCode=" + paramInt1 + ",errStr=,info=" + paramTorchInfo);
-    }
+    super(paramNewPhotoPreviewActivity);
   }
   
-  public void a(boolean paramBoolean, int paramInt, String paramString, byte[] paramArrayOfByte, TorchInfo paramTorchInfo)
+  public static aggt b(NewPhotoPreviewActivity paramNewPhotoPreviewActivity)
   {
-    if (QLog.isColorLevel())
+    if ((jdField_a_of_type_Aggt == null) || (jdField_a_of_type_Aggt.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoPreviewActivity)) {}
+    try
     {
-      OlympicManager localOlympicManager = this.a;
-      QLog.i("OlympicManager", 2, "onCollectTorch.isSuccess=" + paramBoolean + ",errCode=" + paramInt + ",errStr=" + paramString + ",sig=" + paramArrayOfByte + ",info=" + paramTorchInfo);
-    }
-    OlympicManager.a(this.a, false);
-    if (paramBoolean)
-    {
-      OlympicManager.a(this.a, paramArrayOfByte);
-      if (paramInt == 0)
-      {
-        ReportController.b(this.a.a, "CliOper", "", "", "0X80069C8", "0X80069C8", 0, 0, "", "", "", "");
-        this.a.a(1);
-        this.a.a(paramTorchInfo);
-        OlympicManager.b(this.a).obtainMessage(6).sendToTarget();
-        OlympicManager.b(this.a).obtainMessage(5).sendToTarget();
-        paramArrayOfByte = Long.valueOf(-1L);
-        paramString = paramArrayOfByte;
-        if (OlympicManager.a(this.a) != null)
-        {
-          paramString = paramArrayOfByte;
-          if (OlympicManager.a(this.a).type == 2) {
-            paramString = Long.valueOf(OlympicManager.a(this.a).uiBegin);
-          }
-        }
-        OlympicManager.a(this.a).obtainMessage(7, paramString).sendToTarget();
+      if ((jdField_a_of_type_Aggt == null) || (jdField_a_of_type_Aggt.jdField_a_of_type_MqqUtilWeakReference.get() != paramNewPhotoPreviewActivity)) {
+        jdField_a_of_type_Aggt = new agio(paramNewPhotoPreviewActivity);
       }
+      return jdField_a_of_type_Aggt;
     }
-    else
-    {
-      return;
-    }
-    if (paramInt == 1)
-    {
-      this.a.a(1);
-      OlympicManager.b(this.a).obtainMessage(6).sendToTarget();
-      OlympicManager.b(this.a).obtainMessage(5).sendToTarget();
-      return;
-    }
-    OlympicManager.b(this.a, false);
-    OlympicManager.b(this.a, null);
-    OlympicManager.a(this.a, 0);
+    finally {}
+  }
+  
+  protected void a(Intent paramIntent)
+  {
+    super.a(paramIntent);
+    this.jdField_a_of_type_Aggs.c = ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getString(2131629467);
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_a_of_type_Aggf.a != null) && (!this.jdField_a_of_type_Aggf.a.isEmpty());
+  }
+  
+  protected void b()
+  {
+    super.b();
+    ((NewPhotoPreviewActivity)this.jdField_a_of_type_MqqUtilWeakReference.get()).b.setOnClickListener(new agip(this));
   }
 }
 

@@ -1,36 +1,16 @@
 import android.view.View;
-import com.tencent.biz.qqstory.boundaries.StoryApi;
-import com.tencent.biz.qqstory.pgc.QQStoryDiscoverSearchDialog;
-import com.tencent.biz.qqstory.pgc.adapter.PgcSearchResultAdapter.ListItemData;
-import com.tencent.biz.qqstory.pgc.model.UserInfo;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
 
-public class nmj
-  implements AdapterView.OnItemClickListener
+class nmj
+  implements View.OnClickListener
 {
-  public nmj(QQStoryDiscoverSearchDialog paramQQStoryDiscoverSearchDialog) {}
+  nmj(nmh paramnmh, nmk paramnmk) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void onClick(View paramView)
   {
-    paramAdapterView = paramAdapterView.getItemAtPosition(paramInt);
-    if (paramAdapterView != null)
-    {
-      paramAdapterView = ((PgcSearchResultAdapter.ListItemData)paramAdapterView).a;
-      if ((paramAdapterView != null) && (paramAdapterView.type != 0)) {
-        break label43;
-      }
-    }
-    for (;;)
-    {
-      StoryReportor.a("search", "clk_detail", 0, 0, new String[0]);
-      return;
-      label43:
-      if (paramAdapterView.type == 1) {
-        StoryApi.a(this.a.a, 19, paramAdapterView.uid);
-      }
-    }
+    ReadinjoySubscriptManagerActivity.a(this.jdField_a_of_type_Nmh.a, nmk.c(this.jdField_a_of_type_Nmk));
+    ndn.a(null, "CliOper", "", nmk.c(this.jdField_a_of_type_Nmk), "0X80078A8", "0X80078A8", 0, 0, "", "", "", obz.c(), false);
   }
 }
 

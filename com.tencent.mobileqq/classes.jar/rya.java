@@ -1,21 +1,7 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.model.QueryCallback;
-
-class rya
-  implements QueryCallback
-{
-  rya(rxz paramrxz, int paramInt1, int paramInt2, String paramString) {}
-  
-  public void a(Emoticon paramEmoticon)
-  {
-    MarketFaceItemBuilder.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Rxz.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Rxz.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticon, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Rxz.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-  }
-}
+public class rya {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rya
  * JD-Core Version:    0.7.0.1
  */

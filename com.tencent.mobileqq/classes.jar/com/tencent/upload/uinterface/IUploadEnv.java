@@ -20,8 +20,6 @@ public abstract interface IUploadEnv
   
   public abstract int getSocketCount();
   
-  public abstract int getUploadVersion();
-  
   public abstract boolean isAvailable();
   
   public abstract boolean isMobile();
@@ -29,8 +27,6 @@ public abstract interface IUploadEnv
   public abstract boolean isWap();
   
   public abstract boolean isWifi();
-  
-  public abstract boolean loadLibrary(String paramString);
   
   public abstract void registerNetworkStateObserver(UploadConfiguration.NetworkStateObserver paramNetworkStateObserver);
 }

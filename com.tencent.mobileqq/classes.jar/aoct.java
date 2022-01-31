@@ -1,18 +1,13 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoMultiSegment;
-
-public class aoct
-  implements Runnable
+class aoct
 {
-  public aoct(EditVideoMultiSegment paramEditVideoMultiSegment) {}
+  int jdField_a_of_type_Int;
+  int b;
   
-  public void run()
-  {
-    EditVideoMultiSegment.a(this.a, false);
-  }
+  aoct(aocs paramaocs) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoct
  * JD-Core Version:    0.7.0.1
  */

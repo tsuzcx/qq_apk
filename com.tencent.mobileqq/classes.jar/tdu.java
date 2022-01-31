@@ -1,32 +1,20 @@
-import com.tencent.mobileqq.activity.LikeRankingListActivity;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-public class tdu
-  implements Runnable
+class tdu
+  extends tdb
 {
-  public tdu(LikeRankingListActivity paramLikeRankingListActivity, String paramString) {}
+  tdu(tdo paramtdo, tes paramtes) {}
   
-  public void run()
+  public boolean b()
   {
-    Card localCard = this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(this.jdField_a_of_type_JavaLangString);
-    if (localCard != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.a(localCard);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("LikeRankingListActivity", 2, "update cover card = null");
-    }
-    byte b = (byte)SharedPreUtils.aj(this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.getApplication(), this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.app.getCurrentAccountUin());
-    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 1, 0L, (byte)1, 0L, 0L, null, "", 0L | 1L | 0x20 | 0x2000, 3022, null, b);
+    HashMap localHashMap = (HashMap)a("ShortenUrlJob_shortenedUrls");
+    this.jdField_a_of_type_Tes.a = ((String)localHashMap.get(this.jdField_a_of_type_Tes.a));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tdu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,41 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class mvj
-  implements Runnable
+class mvj
+  extends ajjh
 {
-  public mvj(ServiceAccountFolderActivity paramServiceAccountFolderActivity) {}
+  mvj(mut parammut) {}
   
-  public void run()
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
   {
-    this.a.b(false);
+    if (this.a.jdField_a_of_type_AndroidViewViewGroup == null) {}
+    label134:
+    for (;;)
+    {
+      return;
+      int j = this.a.jdField_a_of_type_AndroidViewViewGroup.getChildCount();
+      int i = 0;
+      for (;;)
+      {
+        if (i >= j) {
+          break label134;
+        }
+        View localView = this.a.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i);
+        if (((localView.getTag() instanceof String)) && ((localView instanceof ImageView)) && (((String)localView.getTag()).equals(paramString)))
+        {
+          ((ImageView)localView).setImageDrawable(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramString));
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, "onUpdateTroopHead:" + paramString);
+          return;
+        }
+        i += 1;
+      }
+    }
   }
 }
 

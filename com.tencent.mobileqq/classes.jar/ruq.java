@@ -1,44 +1,46 @@
+import android.annotation.TargetApi;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.activity.aio.ChatItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.ItemBuilderFactory;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class ruq
+final class ruq
   implements DialogInterface.OnClickListener
 {
-  public ruq(BaseChatPie paramBaseChatPie, boolean paramBoolean, List paramList) {}
+  ruq(int paramInt1, int paramInt2, Runnable paramRunnable) {}
   
+  @TargetApi(11)
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    paramInt = 1;
+    bgmq.a("readinjoy_user_data_switch", Integer.valueOf(0));
     paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(this.jdField_a_of_type_JavaUtilList, 2);
-    }
-    for (;;)
+    paramDialogInterface = new JSONObject();
+    try
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", AIOShareActionSheet.b, AIOShareActionSheet.b, 1, 0, "", "", "", "");
-      return;
-      if (this.jdField_a_of_type_JavaUtilList.size() == 1)
-      {
-        paramDialogInterface = (ChatMessage)this.jdField_a_of_type_JavaUtilList.get(0);
-        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.a.a(paramDialogInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1).a(2131363536, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, paramDialogInterface);
+      if (this.jdField_a_of_type_Int == 1) {
+        paramInt = 0;
       }
-      else
+      paramDialogInterface.put("click_src", paramInt);
+      paramDialogInterface.put("user_data_alert_interval", this.b);
+      paramDialogInterface.put("click_opt", 1);
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
       {
-        BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_a_of_type_JavaUtilList);
+        localJSONException.printStackTrace();
       }
+    }
+    ndn.a(null, "", "0X800A809", "0X800A809", 0, 0, "", "", "", paramDialogInterface.toString(), false);
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     ruq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,18 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
 
 class trv
-  implements Runnable
+  implements tsr
 {
-  trv(tru paramtru, tsa paramtsa) {}
+  trv(trt paramtrt, tqj paramtqj, Object paramObject) {}
   
-  public void run()
+  public boolean a(tso paramtso, int paramInt1, int paramInt2)
   {
-    SharedPreferences.Editor localEditor = this.jdField_a_of_type_Tru.a.app.getPreferences().edit();
-    localEditor.putString("chatHistoryEventName", this.jdField_a_of_type_Tsa.a);
-    localEditor.putBoolean("chatHistoryEventEntryFirstShow", true);
-    localEditor.commit();
+    return this.jdField_a_of_type_Tqj.a(this.jdField_a_of_type_Trt, 0, paramInt1, this.jdField_a_of_type_Trt.a.getCurrentPosition(), String.valueOf(paramInt2), this.jdField_a_of_type_JavaLangObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     trv
  * JD-Core Version:    0.7.0.1
  */

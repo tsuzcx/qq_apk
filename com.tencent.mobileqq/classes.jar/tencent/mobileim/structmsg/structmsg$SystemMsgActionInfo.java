@@ -12,7 +12,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class structmsg$SystemMsgActionInfo
-  extends MessageMicro
+  extends MessageMicro<SystemMsgActionInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public structmsg.AddFrdSNInfo addFrdSNInfo = new structmsg.AddFrdSNInfo();
@@ -23,11 +23,12 @@ public final class structmsg$SystemMsgActionInfo
   public final PBStringField remark = PBField.initString("");
   public final PBBytesField sig = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBEnumField type = PBField.initEnum(1);
+  public final PBUInt32Field uint32_req_msg_type = PBField.initUInt32(0);
   
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 402, 408, 418, 424, 434 }, new String[] { "type", "group_code", "sig", "msg", "group_id", "remark", "blacklist", "addFrdSNInfo" }, new Object[] { Integer.valueOf(1), Long.valueOf(0L), localByteStringMicro, "", Integer.valueOf(0), "", Boolean.valueOf(false), null }, SystemMsgActionInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 402, 408, 418, 424, 434, 440 }, new String[] { "type", "group_code", "sig", "msg", "group_id", "remark", "blacklist", "addFrdSNInfo", "uint32_req_msg_type" }, new Object[] { Integer.valueOf(1), Long.valueOf(0L), localByteStringMicro, "", Integer.valueOf(0), "", Boolean.valueOf(false), null, Integer.valueOf(0) }, SystemMsgActionInfo.class);
   }
 }
 

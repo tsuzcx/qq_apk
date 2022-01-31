@@ -3,7 +3,7 @@ package com.tencent.mobileqq.troop.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.widget.QQToast;
+import bbmy;
 
 public class TroopLocationModifyActivity
   extends TroopCreateMapViewSupportActivity
@@ -14,7 +14,7 @@ public class TroopLocationModifyActivity
   public static void a(Activity paramActivity, String paramString1, String paramString2, int paramInt)
   {
     Intent localIntent = new Intent(paramActivity, TroopLocationModifyActivity.class);
-    localIntent.putExtra("url", "http://admin.qun.qq.com/mcreatev3/location.html?_bid=206&from=edit&_wv=2097152");
+    localIntent.putExtra("url", "https://admin.qun.qq.com/mcreatev3/location.html?_bid=206&from=edit&_wv=2097152");
     localIntent.putExtra("troopUin", paramString1);
     localIntent.putExtra("troopLocation", paramString2);
     paramActivity.startActivityForResult(localIntent, paramInt);
@@ -23,14 +23,14 @@ public class TroopLocationModifyActivity
   public static void b(Activity paramActivity, String paramString1, String paramString2, int paramInt)
   {
     Intent localIntent = new Intent(paramActivity, TroopLocationModifyActivity.class);
-    localIntent.putExtra("url", "http://admin.qun.qq.com/mcreatev3/location.html?_bid=206&from=edit&_wv=2097152");
+    localIntent.putExtra("url", "https://admin.qun.qq.com/mcreatev3/location.html?_bid=206&from=edit&_wv=2097152");
     localIntent.putExtra("saveDirect", false);
     localIntent.putExtra("troopUin", paramString1);
     localIntent.putExtra("troopLocation", paramString2);
     paramActivity.startActivityForResult(localIntent, paramInt);
   }
   
-  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     switch (paramInt1)
     {
@@ -51,7 +51,7 @@ public class TroopLocationModifyActivity
     if (i == 0)
     {
       if (bool) {
-        QQToast.a(this, 2131435575, 0).b(getTitleBarHeight());
+        bbmy.a(this, 2131654680, 0).b(getTitleBarHeight());
       }
       for (;;)
       {
@@ -62,25 +62,25 @@ public class TroopLocationModifyActivity
         setResult(-1, localIntent);
         finish();
         break;
-        QQToast.a(this, 2131435573, 0).b(getTitleBarHeight());
+        bbmy.a(this, 2131654685, 0).b(getTitleBarHeight());
       }
     }
     if (i == 1002) {
-      str = getString(2131435577);
+      str = getString(2131654693);
     }
     for (;;)
     {
-      QQToast.a(this, str, 0).b(getTitleBarHeight());
+      bbmy.a(this, str, 0).b(getTitleBarHeight());
       break;
       if (bool) {
-        str = getString(2131435576);
+        str = getString(2131654679);
       } else {
-        str = getString(2131435574);
+        str = getString(2131654684);
       }
     }
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     paramBundle = getIntent().getExtras();
@@ -90,14 +90,14 @@ public class TroopLocationModifyActivity
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopLocationModifyActivity
  * JD-Core Version:    0.7.0.1
  */

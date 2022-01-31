@@ -1,41 +1,57 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.VideoItemHolder;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsListView;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.mobileqq.utils.AudioHelper;
 
 public class mfa
-  implements Runnable
 {
-  public mfa(VideoFeedsAdapter paramVideoFeedsAdapter) {}
+  public int a;
+  public long a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public boolean b;
+  public int c;
+  public String c;
+  public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public String f;
+  public String g;
+  public String h;
+  public String i = "---";
   
-  public void run()
+  public mfa(String paramString1, String paramString2, VideoAppInterface paramVideoAppInterface)
   {
-    VideoInfo localVideoInfo = (VideoInfo)VideoFeedsAdapter.a(this.a).get(0);
-    Object localObject;
-    if (VideoFeedsAdapter.a(this.a).getFirstVisiblePosition() == 0)
-    {
-      localObject = VideoFeedsAdapter.a(this.a).getChildAt(VideoFeedsAdapter.a(this.a).getHeaderViewsCount());
-      if ((localObject != null) && ((((View)localObject).getTag() instanceof VideoFeedsAdapter.VideoItemHolder)))
-      {
-        localObject = (VideoFeedsAdapter.VideoItemHolder)((View)localObject).getTag();
-        if (!VideoFeedsAdapter.f(this.a)) {
-          break label93;
-        }
-        ((VideoFeedsAdapter.VideoItemHolder)localObject).k.setText("免流量播放");
-      }
-    }
-    return;
-    label93:
-    ((VideoFeedsAdapter.VideoItemHolder)localObject).k.setText(VideoFeedsHelper.b(localVideoInfo.b) + "流量");
+    this.jdField_e_of_type_Int = -1;
+    this.jdField_e_of_type_JavaLangString = "-9999";
+    this.jdField_f_of_type_Int = 0;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_b_of_type_Boolean = TextUtils.equals(this.jdField_a_of_type_JavaLangString, paramVideoAppInterface.getCurrentAccountUin());
+    this.jdField_a_of_type_Long = AudioHelper.b();
+  }
+  
+  public boolean a()
+  {
+    return (this.jdField_f_of_type_Int == 1) || (this.jdField_f_of_type_Int == 2) || ((this.jdField_a_of_type_Int == 0) && (this.jdField_f_of_type_Int == 0));
+  }
+  
+  public boolean b()
+  {
+    return (this.jdField_a_of_type_Int != 0) && (this.jdField_f_of_type_Int == 0);
+  }
+  
+  public String toString()
+  {
+    return "mSeq(" + this.jdField_a_of_type_Long + "), mStartUin(" + this.jdField_a_of_type_JavaLangString + "), mPlayUin(" + this.jdField_b_of_type_JavaLangString + "), mStarter(" + this.jdField_b_of_type_Boolean + "), mRedbagId(" + this.c + "), SucAboutGame(" + this.jdField_a_of_type_Boolean + "), ExceptionType(" + this.jdField_f_of_type_Int + "), ErrorType(" + this.jdField_e_of_type_Int + "), ResultCode(" + this.jdField_e_of_type_JavaLangString + "), ResultState(" + this.jdField_f_of_type_JavaLangString + ")";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mfa
  * JD-Core Version:    0.7.0.1
  */

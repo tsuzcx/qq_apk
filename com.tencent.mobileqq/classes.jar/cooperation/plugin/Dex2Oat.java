@@ -1,11 +1,13 @@
 package cooperation.plugin;
 
-import amtf;
-import amtg;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.Log;
-import com.tencent.mobileqq.utils.kapalaiadapter.ReflecterHelper;
+import balj;
+import bfcv;
+import bfcw;
+import bfcx;
+import bfdt;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -25,7 +27,7 @@ public final class Dex2Oat
   
   public static String a()
   {
-    String str2 = (String)ReflecterHelper.a("dalvik.system.VMRuntime", "getCurrentInstructionSet");
+    String str2 = (String)balj.a("dalvik.system.VMRuntime", "getCurrentInstructionSet");
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
       str1 = "arm";
@@ -67,7 +69,7 @@ public final class Dex2Oat
   
   public static boolean a(String paramString)
   {
-    String str = PluginInstaller.a();
+    String str = bfdt.a();
     if ((paramString == null) || (paramString.equals("")) || (str == null) || (str.equals("")))
     {
       Log.d("plugin_tag.Dex2Oat", "fingerprint empty:" + paramString + ",current:" + str);
@@ -82,24 +84,24 @@ public final class Dex2Oat
     return true;
   }
   
-  public static boolean a(Collection paramCollection, File paramFile, boolean paramBoolean, String paramString, Dex2Oat.ResultCallback paramResultCallback)
+  public static boolean a(Collection<File> paramCollection, File paramFile, boolean paramBoolean, String paramString, bfcx parambfcx)
   {
-    return a(paramCollection, paramFile, paramBoolean, paramString, new AtomicInteger(0), paramResultCallback, 2);
+    return a(paramCollection, paramFile, paramBoolean, paramString, new AtomicInteger(0), parambfcx, 2);
   }
   
-  private static boolean a(Collection paramCollection, File paramFile, boolean paramBoolean, String paramString, AtomicInteger paramAtomicInteger, Dex2Oat.ResultCallback paramResultCallback, int paramInt)
+  private static boolean a(Collection<File> paramCollection, File paramFile, boolean paramBoolean, String paramString, AtomicInteger paramAtomicInteger, bfcx parambfcx, int paramInt)
   {
     try
     {
       CountDownLatch localCountDownLatch = new CountDownLatch(paramCollection.size());
-      ExecutorService localExecutorService = Executors.newFixedThreadPool(paramInt);
+      ExecutorService localExecutorService = Executors.newFixedThreadPool(paramInt, new bfcv());
       long l = System.nanoTime();
       Object localObject = new ArrayList(paramCollection);
-      Collections.sort((List)localObject, new amtf());
+      Collections.sort((List)localObject, new bfcw());
       Collections.reverse((List)localObject);
       localObject = ((ArrayList)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
-        localExecutorService.submit(new amtg((File)((Iterator)localObject).next(), paramFile, paramBoolean, paramString, paramAtomicInteger, localCountDownLatch, paramResultCallback));
+        localExecutorService.submit(new Dex2Oat.OptimizeWorker((File)((Iterator)localObject).next(), paramFile, paramBoolean, paramString, paramAtomicInteger, localCountDownLatch, parambfcx));
       }
       try
       {

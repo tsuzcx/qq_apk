@@ -1,37 +1,66 @@
-import android.content.Intent;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.utils.AssertUtils;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ATroopMember;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.ViewGroup;
+import com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailListView;
 
 public class ufb
-  implements View.OnClickListener
+  extends vpv
 {
-  public ufb(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public static final String KEY = "DetailEmptySegment";
   
-  public void onClick(View paramView)
+  public ufb(Context paramContext)
   {
-    AssertUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter);
-    AssertUtils.a(this.a.jdField_a_of_type_JavaUtilList);
-    paramView = new ArrayList();
-    int i = 0;
-    while (i < this.a.jdField_a_of_type_JavaUtilList.size())
+    super(paramContext);
+  }
+  
+  public void T_()
+  {
+    if (((StoryDetailListView)a()).a())
     {
-      paramView.add(((TroopMemberListActivity.ATroopMember)this.a.jdField_a_of_type_JavaUtilList.get(i)).a);
-      i += 1;
+      this.jdField_a_of_type_Boolean = false;
+      return;
     }
-    Intent localIntent = new Intent();
-    localIntent.putStringArrayListExtra("extra_member_uin_list", paramView);
-    this.a.setResult(-1, localIntent);
-    this.a.finish();
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Boolean) {
+      return 1;
+    }
+    return 0;
+  }
+  
+  public View a(int paramInt, unw paramunw, ViewGroup paramViewGroup)
+  {
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)) {}
+    for (paramInt = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getTitleBarHeight();; paramInt = 0)
+    {
+      int i = vms.e(this.jdField_a_of_type_AndroidContentContext);
+      int j = vms.a(this.jdField_a_of_type_AndroidContentContext);
+      int k = vms.d(this.jdField_a_of_type_AndroidContentContext);
+      paramunw.a().getLayoutParams().width = j;
+      paramunw.a().getLayoutParams().height = (k - paramInt - i);
+      urk.b("Q.qqstory.detail.DetailEmptySegment", "titleBarHeight=%d, statusBarHeight=%d, screenHeight=%d.", Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(k));
+      return paramunw.a();
+    }
+  }
+  
+  public String a()
+  {
+    return "DetailEmptySegment";
+  }
+  
+  public unw a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new unw(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495625, paramViewGroup, false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ufb
  * JD-Core Version:    0.7.0.1
  */

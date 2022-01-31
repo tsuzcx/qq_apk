@@ -1,13 +1,20 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
+import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
+import java.util.Comparator;
 
 class ogc
-  implements Runnable
+  implements Comparator<DynamicChannelDataModel>
 {
-  ogc(ogb paramogb) {}
+  ogc(ofz paramofz) {}
   
-  public void run()
+  public int a(DynamicChannelDataModel paramDynamicChannelDataModel1, DynamicChannelDataModel paramDynamicChannelDataModel2)
   {
-    this.a.a.c(false);
+    if (paramDynamicChannelDataModel1.recommendSeq == paramDynamicChannelDataModel2.recommendSeq) {
+      return 0;
+    }
+    if (paramDynamicChannelDataModel1.recommendSeq < paramDynamicChannelDataModel2.recommendSeq) {
+      return -1;
+    }
+    return 1;
   }
 }
 

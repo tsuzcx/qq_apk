@@ -9,7 +9,7 @@ import org.json.JSONObject;
 public class JsBridgeListener
 {
   public long a;
-  WeakReference a;
+  WeakReference<WebView> a;
   public boolean a;
   
   public JsBridgeListener(WebView paramWebView, long paramLong, String paramString)
@@ -118,7 +118,7 @@ public class JsBridgeListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.JsBridgeListener
  * JD-Core Version:    0.7.0.1
  */

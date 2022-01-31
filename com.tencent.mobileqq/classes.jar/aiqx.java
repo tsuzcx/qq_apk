@@ -1,54 +1,21 @@
-import com.tencent.mobileqq.teamwork.NoSSLv3SocketFactory;
-import com.tencent.mobileqq.teamwork.NoSSLv3SocketFactory.DelegateSSLSocket;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import javax.net.ssl.SSLSocket;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aiqx
-  extends NoSSLv3SocketFactory.DelegateSSLSocket
+class aiqx
+  implements DialogInterface.OnClickListener
 {
-  private aiqx(NoSSLv3SocketFactory paramNoSSLv3SocketFactory, SSLSocket paramSSLSocket)
-  {
-    super(paramNoSSLv3SocketFactory, paramSSLSocket);
-  }
+  aiqx(aiqu paramaiqu, airc paramairc) {}
   
-  public void setEnabledProtocols(String[] paramArrayOfString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    String[] arrayOfString = paramArrayOfString;
-    if (paramArrayOfString != null)
-    {
-      arrayOfString = paramArrayOfString;
-      if (paramArrayOfString.length == 1)
-      {
-        arrayOfString = paramArrayOfString;
-        if ("SSLv3".equals(paramArrayOfString[0]))
-        {
-          paramArrayOfString = new ArrayList(Arrays.asList(this.a.getEnabledProtocols()));
-          if (paramArrayOfString.size() <= 1) {
-            break label101;
-          }
-          paramArrayOfString.remove("SSLv3");
-          QLog.i("setEnabledProtocols", 1, "Removed SSLv3 from enabled protocols");
-        }
-      }
-    }
-    for (;;)
-    {
-      arrayOfString = (String[])paramArrayOfString.toArray(new String[paramArrayOfString.size()]);
-      if (arrayOfString != null) {
-        super.setEnabledProtocols(arrayOfString);
-      }
-      return;
-      label101:
-      QLog.i("setEnabledProtocols", 1, "SSL stuck with protocol available for " + String.valueOf(paramArrayOfString));
+    if (this.jdField_a_of_type_Airc != null) {
+      this.jdField_a_of_type_Airc.a(this.jdField_a_of_type_Aiqu.a(), "sc.xy_alert_show_success.local", "{\"cancel\":1}");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiqx
  * JD-Core Version:    0.7.0.1
  */

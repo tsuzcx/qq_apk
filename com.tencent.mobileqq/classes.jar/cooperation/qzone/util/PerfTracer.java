@@ -1,6 +1,9 @@
 package cooperation.qzone.util;
 
 import android.content.Intent;
+import android.os.SystemClock;
+import bgfm;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -16,6 +19,17 @@ public final class PerfTracer
   public static final String DETAIL_ONCREATE = "Detail_onCreate";
   public static final String DETAIL_ONRESUME = "Detail_onResume";
   public static final String DETAIL_RENDER = "Detail_render";
+  public static final String EXTEND_FEED_DELAYSHOW = "ExtendFeed__delayShow";
+  public static final String EXTEND_FEED_FRAGMENT_ONCREATE = "ExtendFeed_fragement_onActivityCreated";
+  public static final String EXTEND_FEED_INITDATA = "ExtendFeed_initData";
+  public static final String EXTEND_FEED_INITFAKEUI = "ExtendFeed_initFakeUI";
+  public static final String EXTEND_FEED_INITHEADER = "ExtendFeed_initHeader";
+  public static final String EXTEND_FEED_INITUI = "ExtendFeed_initUI";
+  public static final String EXTEND_FEED_ONCREATE = "ExtendFeed_onCreate";
+  public static final String EXTEND_FEED_ONCREATE2WINDOWFOCUS = "ExtendFeed_onCreate2WindowFocus";
+  public static final String EXTEND_FEED_ONRESUME = "ExtendFeed_onResume";
+  public static final String EXTEND_FEED_PARSEINTENT = "ExtendFeed_parseIntent";
+  public static final String EXTEND_FEED_SUPER_ONCREATE = "ExtendFeed_Super_onCreate";
   public static final String FRENIDFEED_GET_VIEW = "Friendfeed_getview";
   public static final String FRIENDFEED_DELAYSHOW = "FriendFeed_delayShow";
   public static final String FRIENDFEED_FRAGMENT_ONCREATE = "FriendFeed_fragement_onActivityCreated";
@@ -37,6 +51,17 @@ public final class PerfTracer
   public static final String MYFEED_INITUI = "MyFeed_initUI";
   public static final String MYFEED_ONCREATE = "MyFeed_onCreate";
   public static final String MYFEED_ONRESUME = "MyFeed_onResume";
+  public static final String NUAN_FRIEND_FEED_DELAYSHOW = "ExtendFeed__delayShow";
+  public static final String NUAN_FRIEND_FEED_FRAGMENT_ONCREATE = "ExtendFeed_fragement_onActivityCreated";
+  public static final String NUAN_FRIEND_FEED_INITDATA = "ExtendFeed_initData";
+  public static final String NUAN_FRIEND_FEED_INITFAKEUI = "ExtendFeed_initFakeUI";
+  public static final String NUAN_FRIEND_FEED_INITHEADER = "ExtendFeed_initHeader";
+  public static final String NUAN_FRIEND_FEED_INITUI = "ExtendFeed_initUI";
+  public static final String NUAN_FRIEND_FEED_ONCREATE = "ExtendFeed_onCreate";
+  public static final String NUAN_FRIEND_FEED_ONCREATE2WINDOWFOCUS = "ExtendFeed_onCreate2WindowFocus";
+  public static final String NUAN_FRIEND_FEED_ONRESUME = "ExtendFeed_onResume";
+  public static final String NUAN_FRIEND_FEED_PARSEINTENT = "ExtendFeed_parseIntent";
+  public static final String NUAN_FRIEND_FEED_SUPER_ONCREATE = "ExtendFeed_Super_onCreate";
   public static final String PARAM_CLICK_TIME = "click_time";
   public static final String PARAM_STARTUP_SCENEID = "startup_sceneid";
   public static final String PHOTOWALL_INITDATA = "PhotoWall_initData";
@@ -48,10 +73,12 @@ public final class PerfTracer
   public static final String PRELOAD_CONTENT_VIEW = "Preload_contentView";
   public static final String PRELOAD_COVER = "Preload_Cover";
   public static final String PRELOAD_FEED_VIEW = "Preload_Feed_View";
+  public static final String PRELOAD_FEED_VIEW_SECTIONS = "Preload_Feed_View_Sections";
   public static final String PRELOAD_FRIENDFEED_DATA = "Preload_FriendFeedData";
   public static final String PRELOAD_HEAD_VIEW = "Preload_headView";
   public static final String PRELOAD_LOAD_FRIENDFEED_CLASS = "Preload_New_FriendFeed";
   public static final String PRELOAD_LOAD_USERHOME_CLASS = "Preload_Load_UserHome_Class";
+  public static final String PRELOAD_NAVIGATOR_RES = "Preload_Navigator_Res";
   public static final String PRELOAD_NICK_NAME = "Preload_Nick_Name";
   public static final String PRELOAD_QUNFEED_DATA = "Preload_QunFeedData";
   public static final String PRELOAD_USERHOME_LAYOUT = "Preload_UserHomeLayout";
@@ -76,6 +103,7 @@ public final class PerfTracer
   public static final String QZONEALBUM_ONCREATE = "QzoneAlbum_onCreate";
   public static final String QZONEALBUM_ONRESUME = "QzoneAlbum_onResume";
   public static final String QZONEALBUM_PARSEINTENT = "QzoneAlbum_parseIntent";
+  public static final String QZONEALBUM_SHOW = "QzoneAlbum_show";
   public static final String REACT_ONCREATE = "React_onCreate";
   public static final String RUNTIME_BUSINESS_ONLOGIN = "Runtime_Business_onLogin";
   public static final String RUNTIME_FIRST_INIT = "Runtime_first_init";
@@ -87,11 +115,15 @@ public final class PerfTracer
   public static final String RUNTIME_VIDEO_INIT = "Runtime_Video_Init";
   public static final int STARTUP_SCENEID_ALBUM = 3;
   public static final int STARTUP_SCENEID_DETAIL = 4;
+  public static final int STARTUP_SCENEID_EXTEND_FEEDS = 7;
   public static final int STARTUP_SCENEID_FRIEND_FEED = 1;
+  public static final int STARTUP_SCENEID_GROUPFEED = 8;
   public static final int STARTUP_SCENEID_PUBLISHMOOD = 5;
   public static final int STARTUP_SCENEID_UPLOADPHOTO = 6;
   public static final int STARTUP_SCENEID_USERHOME = 2;
+  private static final String SUB_TAG = "FeedsScrollPerformanceAutoMonitor";
   private static final String TAG = "Perf.Qzone";
+  public static final String THREADTIME_TAG = "threadtime";
   public static final boolean TRACE = false;
   public static final String UPLOADPHOTO_INITDATA = "UploadPhoto_initData";
   public static final String UPLOADPHOTO_INITEMOVIEW = "UploadPhoto_initEmoView";
@@ -109,13 +141,24 @@ public final class PerfTracer
   public static final String USERHOME_PERFORMREPORTRESUME = "UserHome_PerformanceReport_Resume";
   public static final String VIDEO_COMPONENT_ONCREATE = "Video_component_onCreate";
   public static final String VIDEO_COMPONENT_PRE_LAUNCH = "Video_component_pre_launch";
-  public static final ConcurrentHashMap sLogs = new ConcurrentHashMap(new HashMap(8));
+  public static final ConcurrentHashMap<String, Long> sLogs = new ConcurrentHashMap(new HashMap(8));
+  
+  public static void reportTracePerf(String paramString, long paramLong)
+  {
+    ThreadManagerV2.excute(new PerfTracer.1(paramString, paramLong), 128, null, false);
+  }
   
   public static void trace(String paramString1, String paramString2)
   {
+    trace(paramString1, paramString2, -1, false);
+  }
+  
+  public static void trace(String paramString1, String paramString2, int paramInt, boolean paramBoolean)
+  {
     System.currentTimeMillis();
-    TimeCostTrace.a("qzone_launch").b(paramString1);
-    TimeCostTrace.a("qzone_launch").a(paramString2);
+    SystemClock.currentThreadTimeMillis();
+    TimeCostTrace.getTrace("qzone_launch").stopStep(paramString1);
+    TimeCostTrace.getTrace("qzone_launch").startStep(paramString2);
   }
   
   public static void traceClick2Activity(Intent paramIntent)
@@ -129,26 +172,26 @@ public final class PerfTracer
     } while (l <= 0L);
     boolean bool = paramIntent.getBooleanExtra("QZoneExtra.Plugin.isloading", false);
     int i = paramIntent.getIntExtra("startup_sceneid", -1);
-    TimeCostTrace.a("qzone_launch").a(l, i, bool);
-    TimeCostTrace.a("qzone_launch").a("click2LoadActivityCreate", l);
-    TimeCostTrace.a("qzone_launch").a("click2LoadCompleted", l);
-    TimeCostTrace.a("qzone_launch").a("click2WindowShow", l);
+    TimeCostTrace.getTrace("qzone_launch").markFirst(l, i, bool);
+    TimeCostTrace.getTrace("qzone_launch").startStep("click2LoadActivityCreate", l);
+    TimeCostTrace.getTrace("qzone_launch").startStep("click2LoadCompleted", l);
+    TimeCostTrace.getTrace("qzone_launch").startStep("click2WindowShow", l);
     traceEnd("click2LoadActivityCreate");
   }
   
-  public static void traceClick2Completed(PerfTracer.PerfTimeReport paramPerfTimeReport)
+  public static void traceClick2Completed(bgfm parambgfm)
   {
     traceEnd("click2LoadCompleted");
-    TimeCostTrace localTimeCostTrace = TimeCostTrace.a("qzone_launch");
+    TimeCostTrace localTimeCostTrace = TimeCostTrace.getTrace("qzone_launch");
     if (localTimeCostTrace == null) {
       return;
     }
-    if ((localTimeCostTrace.a() > 0L) && (paramPerfTimeReport != null))
+    if ((localTimeCostTrace.getTimeCost() > 0L) && (parambgfm != null))
     {
-      paramPerfTimeReport.reportPerfTime(localTimeCostTrace);
+      parambgfm.reportPerfTime(localTimeCostTrace);
       return;
     }
-    localTimeCostTrace.b();
+    localTimeCostTrace.destroy();
   }
   
   public static void traceClick2Window()
@@ -159,6 +202,16 @@ public final class PerfTracer
   public static void traceEnd(String paramString)
   {
     trace(paramString, null);
+  }
+  
+  public static void traceEnd(String paramString, int paramInt)
+  {
+    trace(paramString, null, paramInt, false);
+  }
+  
+  public static void traceEnd(String paramString, boolean paramBoolean)
+  {
+    trace(paramString, null, -1, paramBoolean);
   }
   
   public static void traceStart(String paramString)

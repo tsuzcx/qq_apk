@@ -1,24 +1,22 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.app.utils.BatchAddFriendData;
-import com.tencent.mobileqq.troop.utils.TroopMemberGlobalLevelUtils;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class weu
-  implements Runnable
+class weu
+  implements View.OnClickListener
 {
-  public weu(TroopChatPie paramTroopChatPie) {}
+  weu(wet paramwet, adcg paramadcg) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    TroopMemberGlobalLevelUtils.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-    String str = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("uin");
-    BatchAddFriendData.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, str);
+    wet.a(this.jdField_a_of_type_Wet).removeCallbacks(wet.a(this.jdField_a_of_type_Wet));
+    wet.a(this.jdField_a_of_type_Wet, true);
+    wet.a(this.jdField_a_of_type_Wet, this.jdField_a_of_type_Adcg, this.jdField_a_of_type_Adcg.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     weu
  * JD-Core Version:    0.7.0.1
  */

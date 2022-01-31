@@ -1,13 +1,16 @@
 import android.view.View;
+import com.tencent.gdtad.api.banner.GdtBannerAd;
 
 public class ainl
 {
+  int a;
   public View a;
-  public View b;
+  public GdtBannerAd a;
+  int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ainl
  * JD-Core Version:    0.7.0.1
  */

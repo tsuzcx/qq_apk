@@ -1,50 +1,41 @@
-import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.util.Iterator;
+import java.util.List;
 
-public class tuc
-  extends AccountObserver
+public final class tuc
+  extends QQUIEventReceiver<ttr, swv>
 {
-  public tuc(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
-  
-  protected void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt, byte[] paramArrayOfByte)
+  public tuc(@NonNull ttr paramttr)
   {
-    super.onLoginFailed(paramString1, paramString2, paramString3, paramInt, paramArrayOfByte);
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onLoginFailed ");
-    }
-    RegisterChooseLoginActivity.a(this.a);
+    super(paramttr);
   }
   
-  public void onLoginSuccess(String paramString1, String paramString2)
+  public void a(@NonNull ttr paramttr, @NonNull swv paramswv)
   {
-    super.onLoginSuccess(paramString1, paramString2);
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onLoginSuccess ");
+    if ((paramswv.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramswv.jdField_a_of_type_JavaUtilList != null) && (paramttr.a != null))
+    {
+      paramswv = paramswv.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramswv.hasNext())
+      {
+        srj localsrj = (srj)paramswv.next();
+        if (TextUtils.equals(paramttr.a.b, localsrj.a)) {
+          paramttr.i();
+        }
+      }
     }
   }
   
-  protected void onLoginTimeout(String paramString)
+  public Class acceptEventClass()
   {
-    super.onLoginTimeout(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onLoginTimeout ");
-    }
-    RegisterChooseLoginActivity.a(this.a);
-  }
-  
-  protected void onUserCancel(String paramString)
-  {
-    super.onUserCancel(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_RegisterNewQQActivity", 2, "AccountObserver ,onUserCancel ");
-    }
-    RegisterChooseLoginActivity.a(this.a);
+    return swv.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tuc
  * JD-Core Version:    0.7.0.1
  */

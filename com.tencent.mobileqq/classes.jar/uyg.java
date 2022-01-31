@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker;
-import com.tencent.mobileqq.activity.aio.doodle.control.ColorPicker.ViewHolder;
+import android.graphics.PointF;
 
-public class uyg
-  implements uyi
+public abstract interface uyg
 {
-  public uyg(ColorPicker paramColorPicker, ColorPicker.ViewHolder paramViewHolder) {}
+  public abstract void a(vcw paramvcw);
   
-  public void a()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker.onClick(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleControlColorPicker$ViewHolder.a);
-  }
+  public abstract void a(vcw paramvcw, int paramInt1, int paramInt2);
+  
+  public abstract void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uyg
  * JD-Core Version:    0.7.0.1
  */

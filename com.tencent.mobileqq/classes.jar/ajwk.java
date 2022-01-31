@@ -1,20 +1,77 @@
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.applets.data.AppletsAccountInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ajwk
-  implements Runnable
+  extends ajwi
 {
-  public ajwk(TroopFileTransferManager paramTroopFileTransferManager) {}
-  
-  public void run()
+  public ajwk(QQAppInterface paramQQAppInterface, ajwh paramajwh)
   {
-    if (this.a.c()) {
-      this.a.h();
+    super(paramQQAppInterface, paramajwh, AppletsAccountInfo.class);
+  }
+  
+  public AppletsAccountInfo a(String paramString)
+  {
+    return (AppletsAccountInfo)a(paramString);
+  }
+  
+  protected String a(atmo paramatmo)
+  {
+    return ((AppletsAccountInfo)paramatmo).uin;
+  }
+  
+  public void a(AppletsAccountInfo paramAppletsAccountInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("AppletAccountCache", 2, "saveAppletsAccount AppletsAccount = " + paramAppletsAccountInfo);
     }
+    a(paramAppletsAccountInfo);
+    this.jdField_a_of_type_Ajwh.c();
+  }
+  
+  protected void b() {}
+  
+  public void c()
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    List localList = ((atmp)localObject).a(AppletsAccountInfo.class);
+    ((atmp)localObject).a();
+    if (localList != null)
+    {
+      d();
+      localObject = localList.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        AppletsAccountInfo localAppletsAccountInfo = (AppletsAccountInfo)((Iterator)localObject).next();
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(String.valueOf(localAppletsAccountInfo.uin), localAppletsAccountInfo);
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder().append("doInit size = ");
+      if (localList != null) {
+        break label118;
+      }
+    }
+    label118:
+    for (int i = 0;; i = localList.size())
+    {
+      QLog.d("AppletAccountCache", 2, i);
+      return;
+    }
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajwk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,14 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.support.annotation.NonNull;
 
-public class txu
-  implements CompoundButton.OnCheckedChangeListener
+abstract interface txu
 {
-  public txu(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
+  public abstract void a(@NonNull txs paramtxs);
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
-  {
-    int i = 1;
-    if (paramBoolean)
-    {
-      this.a.app.c(1);
-      paramCompoundButton = this.a.app;
-      if (!paramBoolean) {
-        break label68;
-      }
-    }
-    for (;;)
-    {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_notice_gupsound", 0, i, "", "", "", "");
-      return;
-      this.a.app.c(0);
-      break;
-      label68:
-      i = 0;
-    }
-  }
+  public abstract void b(@NonNull txs paramtxs);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     txu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,17 @@
-import com.tencent.biz.qqstory.model.TroopNickNameManager;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.DailyTitleBarSwitcher;
 
-public class ngx
-  extends TroopObserver
+class ngx
+  implements View.OnClickListener
 {
-  public ngx(TroopNickNameManager paramTroopNickNameManager) {}
+  ngx(ngv paramngv, String paramString) {}
   
-  protected void a(boolean paramBoolean, ArrayList paramArrayList)
+  public void onClick(View paramView)
   {
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onGetTroopMemberCardInfoResult suc=").append(paramBoolean).append(" size=");
-      if (paramArrayList != null) {
-        break label78;
-      }
-    }
-    label78:
-    for (int i = 0;; i = paramArrayList.size())
-    {
-      QLog.d("TroopNickNameManager", 2, i);
-      if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
-        ThreadManager.executeOnSubThread(new ngy(this, paramArrayList));
-      }
-      return;
+    if ((ngv.a(this.jdField_a_of_type_Ngv) != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+      obz.a(ngv.a(this.jdField_a_of_type_Ngv).getContext(), this.jdField_a_of_type_JavaLangString);
     }
   }
 }

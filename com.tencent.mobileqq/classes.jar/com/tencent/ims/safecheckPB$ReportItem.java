@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class safecheckPB$ReportItem
-  extends MessageMicro
+  extends MessageMicro<ReportItem>
 {
   public static final int STRING_TARGET_MD5_FIELD_NUMBER = 2;
   public static final int STRING_TARGET_PACKNAME_FIELD_NUMBER = 1;

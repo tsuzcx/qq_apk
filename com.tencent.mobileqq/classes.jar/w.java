@@ -1,63 +1,71 @@
-import android.view.View;
-import com.dataline.activities.LiteActivity;
-import com.dataline.util.ItemHolder;
-import com.dataline.util.ItemHolder.TextItemHolder;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.data.DataLineMsgSet;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.IInterface;
+import android.telephony.SubscriptionInfo;
+import java.util.List;
 
-public class w
-  implements ActionSheet.OnButtonClickListener
+public abstract interface w
+  extends IInterface
 {
-  public w(LiteActivity paramLiteActivity, DataLineMsgSet paramDataLineMsgSet, ItemHolder paramItemHolder, ActionSheet paramActionSheet) {}
+  public abstract int a();
   
-  public void OnClick(View paramView, int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -1000)
-      {
-        paramView = this.jdField_a_of_type_ComDatalineUtilItemHolder.a().jdField_a_of_type_JavaLangString;
-        this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(paramView, this.jdField_a_of_type_ComDatalineUtilItemHolder.a().jdField_a_of_type_Long, -1);
-      }
-      else
-      {
-        DataLineMsgRecord localDataLineMsgRecord;
-        if (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2000)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.setPaused(false);
-          paramView = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().iterator();
-          while (paramView.hasNext())
-          {
-            localDataLineMsgRecord = (DataLineMsgRecord)paramView.next();
-            if (DataLineMsgSet.isCanReciveOrResend(localDataLineMsgRecord)) {
-              this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(localDataLineMsgRecord.path, localDataLineMsgRecord.sessionid, 0);
-            }
-          }
-        }
-        else if ((this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2005) || (this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.getGroupType() == -2009))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.setPaused(false);
-          paramView = this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet.values().iterator();
-          while (paramView.hasNext())
-          {
-            localDataLineMsgRecord = (DataLineMsgRecord)paramView.next();
-            if (DataLineMsgSet.isCanReciveOrResend(localDataLineMsgRecord)) {
-              this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(localDataLineMsgRecord.path, localDataLineMsgRecord.sessionid, 2);
-            }
-          }
-        }
-      }
-    }
-  }
+  public abstract int a(int paramInt);
+  
+  public abstract int a(int paramInt1, int paramInt2);
+  
+  public abstract int a(String paramString);
+  
+  public abstract int a(String paramString, int paramInt);
+  
+  public abstract int a(String paramString, int paramInt, long paramLong);
+  
+  public abstract SubscriptionInfo a(int paramInt, String paramString);
+  
+  public abstract SubscriptionInfo a(String paramString1, String paramString2);
+  
+  public abstract String a(int paramInt, String paramString1, String paramString2);
+  
+  public abstract List<SubscriptionInfo> a(String paramString);
+  
+  public abstract void a();
+  
+  public abstract void a(int paramInt);
+  
+  public abstract void a(int paramInt, String paramString1, String paramString2);
+  
+  public abstract boolean a(int paramInt);
+  
+  public abstract int[] a();
+  
+  public abstract int[] a(int paramInt);
+  
+  public abstract int b();
+  
+  public abstract int b(int paramInt);
+  
+  public abstract int b(int paramInt1, int paramInt2);
+  
+  public abstract int b(String paramString);
+  
+  public abstract int b(String paramString, int paramInt);
+  
+  public abstract SubscriptionInfo b(int paramInt, String paramString);
+  
+  public abstract List<SubscriptionInfo> b(String paramString);
+  
+  public abstract void b(int paramInt);
+  
+  public abstract int c();
+  
+  public abstract int c(int paramInt);
+  
+  public abstract int c(String paramString, int paramInt);
+  
+  public abstract void c(int paramInt);
+  
+  public abstract int d();
+  
+  public abstract int e();
+  
+  public abstract int f();
 }
 
 

@@ -11,13 +11,13 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_cmd0x439$SubscribeInfo
-  extends MessageMicro
+  extends MessageMicro<SubscribeInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_reason = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_subscribe_name = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField rpt_article_list = PBField.initRepeatMessage(oidb_cmd0x439.ArticleInfo.class);
-  public final PBRepeatField rpt_uint64_likely_subscribe_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatMessageField<oidb_cmd0x439.ArticleInfo> rpt_article_list = PBField.initRepeatMessage(oidb_cmd0x439.ArticleInfo.class);
+  public final PBRepeatField<Long> rpt_uint64_likely_subscribe_list = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBUInt32Field uint32_friend_subscribed_count = PBField.initUInt32(0);
   public final PBUInt32Field uint32_has_more = PBField.initUInt32(0);
   public final PBUInt64Field uint64_subscribe_id = PBField.initUInt64(0L);
@@ -31,7 +31,7 @@ public final class oidb_cmd0x439$SubscribeInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x439.oidb_cmd0x439.SubscribeInfo
  * JD-Core Version:    0.7.0.1
  */

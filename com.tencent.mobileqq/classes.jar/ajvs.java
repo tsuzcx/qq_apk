@@ -1,27 +1,25 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.troop.utils.TroopAppMgr;
-import com.tencent.mobileqq.troop.utils.TroopAppMgr.ClickReportObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-public class ajvs
-  extends TroopAppMgr.ClickReportObserver
+class ajvs
+  extends ajfo
 {
-  public ajvs(TroopAppMgr paramTroopAppMgr) {}
+  ajvs(ajvr paramajvr) {}
   
-  protected void a(boolean paramBoolean)
+  protected void onGetSelfAddFriendSetting(boolean paramBoolean, int paramInt)
   {
-    if (paramBoolean) {}
-    synchronized (this.a.a)
-    {
-      this.a.a.clear();
-      this.a.b();
-      TroopAppMgr.a(this.a);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendVerification.manager", 2, "onGetSelfAddFriendSetting() addFriendSetting is:" + paramInt);
+    }
+    ajvr.a(this.a, ajvr.a(this.a, paramInt));
+    if ((ajvr.a(this.a)) && (ajvr.a(this.a) != null)) {
+      this.a.b(ajvr.a(this.a).c());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajvs
  * JD-Core Version:    0.7.0.1
  */

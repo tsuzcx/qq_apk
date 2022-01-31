@@ -1,54 +1,44 @@
-import android.view.View;
-import com.tencent.av.app.PstnSessionInfo;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.av.utils.VideoActionSheet;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.item.VideoItemBuilder;
-import com.tencent.mobileqq.data.MessageForVideo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.view.widget.SlideTabViewPager;
+import com.tencent.biz.qqstory.view.widget.ViewPagerTapBlockView;
 
 public class vqs
-  implements ActionSheet.OnButtonClickListener
+  implements ViewPager.OnPageChangeListener
 {
-  public vqs(VideoItemBuilder paramVideoItemBuilder, VideoActionSheet paramVideoActionSheet, MessageForVideo paramMessageForVideo, int paramInt, PstnSessionInfo paramPstnSessionInfo) {}
+  public vqs(SlideTabViewPager paramSlideTabViewPager) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onPageScrollStateChanged(int paramInt) {}
+  
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentAvUtilsVideoActionSheet.dismiss();
-    switch (paramInt)
+    if (SlideTabViewPager.a(this.a) == 0)
     {
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)SlideTabViewPager.a(this.a).getLayoutParams();
+      SlideTabViewPager localSlideTabViewPager = this.a;
+      paramInt2 = SlideTabViewPager.b(this.a).getWidth();
+      SlideTabViewPager.a(localSlideTabViewPager, localLayoutParams.leftMargin + paramInt2);
     }
-    do
-    {
-      return;
-      VideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder, false, this.jdField_a_of_type_ComTencentMobileqqDataMessageForVideo);
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForVideo.isVideo)
-      {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005642", "0X8005642", 0, 0, "", "", "", "");
-        return;
-      }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005243", "0X8005243", 0, 0, "", "", "", "");
-      return;
-      if (this.jdField_a_of_type_Int == 0)
-      {
-        VideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder, false, this.jdField_a_of_type_ComTencentMobileqqDataMessageForVideo);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005243", "0X8005243", 0, 0, "", "", "", "");
-        return;
-      }
-      if ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2))
-      {
-        ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentAvAppPstnSessionInfo, 0);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006406", "0X8006406", 6, 0, "", "", "", "");
-        return;
-      }
-    } while (this.jdField_a_of_type_Int != 5);
-    PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemVideoItemBuilder.jdField_a_of_type_AndroidContentContext, 1, 3);
+    paramInt2 = (int)(SlideTabViewPager.a(this.a, 12.5F) + SlideTabViewPager.a(this.a) * (paramInt1 + paramFloat));
+    SlideTabViewPager.a(this.a).setOffset(paramInt2);
+    paramInt2 = SlideTabViewPager.b(this.a).getWidth();
+    int i = SlideTabViewPager.a(this.a).getWidth();
+    paramInt1 = (int)(paramInt2 + (i - paramInt2) * (paramInt1 + paramFloat));
+    SlideTabViewPager.a(this.a).setBlockWidth(paramInt1);
+  }
+  
+  public void onPageSelected(int paramInt)
+  {
+    this.a.a(paramInt);
+    if (SlideTabViewPager.a(this.a) != null) {
+      onPageSelected(paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vqs
  * JD-Core Version:    0.7.0.1
  */

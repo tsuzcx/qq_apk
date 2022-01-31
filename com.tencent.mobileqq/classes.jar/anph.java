@@ -1,54 +1,56 @@
-import android.text.TextUtils;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.TMG.utils.QLog;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal.UploadServerInfoCallback;
-import com.tencent.weiyun.transmission.upload.UploadFile;
-import com.tencent.weiyun.utils.Utils;
-import cooperation.weiyun.channel.pb.WeiyunPB.DiskPicBackupRsp;
-import cooperation.weiyun.sdk.api.IWeiyunCallback;
-import cooperation.weiyun.utils.PreferenceUtils;
-import cooperation.weiyun.utils.StringUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
 class anph
-  implements IWeiyunCallback
+  implements Handler.Callback
 {
-  anph(anpg paramanpg, WeiyunTransmissionGlobal.UploadServerInfoCallback paramUploadServerInfoCallback, UploadFile paramUploadFile) {}
+  anph(anpg paramanpg) {}
   
-  public void a(int paramInt, String paramString, WeiyunPB.DiskPicBackupRsp paramDiskPicBackupRsp)
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, false, paramInt, paramString);
-  }
-  
-  public void a(WeiyunPB.DiskPicBackupRsp paramDiskPicBackupRsp)
-  {
-    if (paramDiskPicBackupRsp == null)
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, false, 1828004, "服务器回包为空!");
-      return;
+    default: 
+      return false;
+    case 1: 
+      if (this.a.b.size() == 0)
+      {
+        QLog.d("MatchViewHolder", 1, "MSG_START_ANIMATION uinList is empty!");
+        return false;
+      }
+      this.a.b();
+      if (this.a.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+      }
+      paramMessage = (String)this.a.b.get(this.a.b.size() - 1);
+      Drawable localDrawable = bacm.a(true);
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (localQQAppInterface != null) {
+        azwp.a(localQQAppInterface, 1, paramMessage, 4, localDrawable, localDrawable);
+      }
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 3000L);
+      return false;
     }
-    ByteStringMicro localByteStringMicro1 = paramDiskPicBackupRsp.pdir_key.get();
-    ByteStringMicro localByteStringMicro2 = paramDiskPicBackupRsp.ppdir_key.get();
-    if (localByteStringMicro1 != null) {
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pDirKey = StringUtils.a(localByteStringMicro1);
+    paramMessage = (anpd)paramMessage.obj;
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      paramMessage = Message.obtain(this.a.jdField_a_of_type_AndroidOsHandler, 2, paramMessage);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 500L);
+      return false;
     }
-    if (localByteStringMicro2 != null) {
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pPDirKey = StringUtils.a(localByteStringMicro2);
-    }
-    if (!TextUtils.isEmpty(paramDiskPicBackupRsp.backup_path.get())) {
-      this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.pDirName = paramDiskPicBackupRsp.backup_path.get();
-    }
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile.setServerInfo(paramDiskPicBackupRsp.file_exist.get(), paramDiskPicBackupRsp.file_id.get(), paramDiskPicBackupRsp.server_name.get(), paramDiskPicBackupRsp.inside_upload_ip.get(), paramDiskPicBackupRsp.server_port.get(), Utils.bytes2HexStr(paramDiskPicBackupRsp.check_key.get().toByteArray()).toLowerCase(), paramDiskPicBackupRsp.channel_count.get(), Integer.toString(paramDiskPicBackupRsp.file_version.get()));
-    this.jdField_a_of_type_ComTencentWeiyunTransmissionWeiyunTransmissionGlobal$UploadServerInfoCallback.onResult(this.jdField_a_of_type_ComTencentWeiyunTransmissionUploadUploadFile, true, 0, null);
-    PreferenceUtils.a(BaseApplicationImpl.getContext(), String.valueOf(this.jdField_a_of_type_Anpg.getCurrentUin()), "upload_coupon_count", String.valueOf(paramDiskPicBackupRsp.coupon_count.get()));
+    this.a.a(paramMessage);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anph
  * JD-Core Version:    0.7.0.1
  */

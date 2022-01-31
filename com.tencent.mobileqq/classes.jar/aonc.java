@@ -1,32 +1,12 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.MarkDrawable;
-
-public class aonc
-  extends Property
+public abstract interface aonc
 {
-  public aonc(MarkDrawable paramMarkDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public abstract void a(int paramInt, String paramString);
   
-  public Float a(MarkDrawable paramMarkDrawable)
-  {
-    if (paramMarkDrawable != null) {
-      return Float.valueOf(MarkDrawable.a(paramMarkDrawable));
-    }
-    return Float.valueOf(0.0F);
-  }
-  
-  public void a(MarkDrawable paramMarkDrawable, Float paramFloat)
-  {
-    if (paramMarkDrawable != null) {
-      MarkDrawable.a(paramMarkDrawable, paramFloat.floatValue());
-    }
-  }
+  public abstract void a(Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aonc
  * JD-Core Version:    0.7.0.1
  */

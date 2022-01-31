@@ -61,7 +61,6 @@ public final class RouteSelector
   }
   
   private InetSocketAddress nextInetSocketAddress()
-    throws IOException
   {
     if (!hasNextInetSocketAddress()) {
       throw new SocketException("No route to " + this.address.getUriHost() + "; exhausted inet socket addresses: " + this.inetSocketAddresses);
@@ -78,7 +77,6 @@ public final class RouteSelector
   }
   
   private Proxy nextProxy()
-    throws IOException
   {
     if (!hasNextProxy()) {
       throw new SocketException("No route to " + this.address.getUriHost() + "; exhausted proxy configurations: " + this.proxies);
@@ -92,7 +90,6 @@ public final class RouteSelector
   }
   
   private void resetNextInetSocketAddress(Proxy paramProxy)
-    throws IOException
   {
     this.inetSocketAddresses = new ArrayList();
     Object localObject;
@@ -118,8 +115,8 @@ public final class RouteSelector
       this.nextInetSocketAddressIndex = 0;
       return;
       paramProxy = this.address.getDns().lookup((String)localObject);
-      int j = 0;
       int k = paramProxy.size();
+      int j = 0;
       while (j < k)
       {
         localObject = (InetAddress)paramProxy.get(j);
@@ -162,7 +159,6 @@ public final class RouteSelector
   }
   
   public Route next()
-    throws IOException
   {
     Object localObject;
     if (!hasNextInetSocketAddress()) {

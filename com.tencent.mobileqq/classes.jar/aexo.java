@@ -1,14 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnLongClickListener;
 
-public final class aexo
-  implements DialogInterface.OnClickListener
+class aexo
+  implements View.OnLongClickListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  aexo(aexl paramaexl, aexr paramaexr) {}
+  
+  public boolean onLongClick(View paramView)
+  {
+    if (this.jdField_a_of_type_Aexl.a != null)
+    {
+      int i = this.jdField_a_of_type_Aexr.getAdapterPosition();
+      return this.jdField_a_of_type_Aexl.a.a(paramView, this.jdField_a_of_type_Aexr, i);
+    }
+    return false;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aexo
  * JD-Core Version:    0.7.0.1
  */

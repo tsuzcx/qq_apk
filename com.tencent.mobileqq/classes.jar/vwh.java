@@ -1,30 +1,20 @@
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
-import com.tencent.mobileqq.app.EnterpriseQQObserver;
-import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerView;
 
 public class vwh
-  extends EnterpriseQQObserver
+  implements View.OnClickListener
 {
-  public vwh(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
+  public vwh(FollowedRecommendBannerView paramFollowedRecommendBannerView) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      this.a.b = EnterpriseQQManager.a(this.a.a).a(this.a.a, this.a.a());
-      this.a.b(this.a.b);
-      if ((this.a.b != null) && (!this.a.b.isEmpty())) {
-        this.a.o(false);
-      }
-    }
+    FollowedRecommendBannerView.a(this.a);
   }
-  
-  protected void b(boolean paramBoolean, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vwh
  * JD-Core Version:    0.7.0.1
  */

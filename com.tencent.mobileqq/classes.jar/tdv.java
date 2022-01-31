@@ -1,26 +1,25 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.LikeRankingListActivity;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.widget.CircleProgress;
+import java.util.HashMap;
 
-public class tdv
-  implements Runnable
+class tdv
+  extends tcw
 {
-  public tdv(LikeRankingListActivity paramLikeRankingListActivity, Card paramCard) {}
-  
-  public void run()
+  tdv(tdo paramtdo, String paramString1, String paramString2, boolean paramBoolean, tes paramtes)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_ComTencentMobileqqDataCard.strNick);
-    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.jdField_c_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.a.setVisibility(0);
-    this.jdField_a_of_type_ComTencentMobileqqActivityLikeRankingListActivity.d.setVisibility(0);
+    super(paramString1, paramString2, paramBoolean);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_Tes.a = ((String)a("EncryptUrlJob_encryptedUrl"));
+    HashMap localHashMap = new HashMap();
+    localHashMap.put(this.jdField_a_of_type_Tes.a, this.jdField_a_of_type_Tes.a);
+    a("ShortenUrlJob_shortenedUrls", localHashMap);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tdv
  * JD-Core Version:    0.7.0.1
  */

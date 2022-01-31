@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_group$ReqGetGroupHotRankVideo
-  extends MessageMicro
+  extends MessageMicro<ReqGetGroupHotRankVideo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field seq = PBField.initUInt64(0L);
@@ -26,7 +26,7 @@ public final class qqstory_group$ReqGetGroupHotRankVideo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_group.ReqGetGroupHotRankVideo
  * JD-Core Version:    0.7.0.1
  */

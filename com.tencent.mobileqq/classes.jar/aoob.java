@@ -1,20 +1,23 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import dov.com.tencent.mobileqq.activity.richmedia.EditVideoQzComment;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
 
-public class aoob
-  implements CompoundButton.OnCheckedChangeListener
+public final class aoob
+  implements Parcelable.Creator<WeiYunFileInfo>
 {
-  public aoob(EditVideoQzComment paramEditVideoQzComment) {}
-  
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public WeiYunFileInfo a(Parcel paramParcel)
   {
-    EditVideoQzComment.a(this.a).f = paramBoolean;
+    return new WeiYunFileInfo(paramParcel);
+  }
+  
+  public WeiYunFileInfo[] a(int paramInt)
+  {
+    return new WeiYunFileInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoob
  * JD-Core Version:    0.7.0.1
  */

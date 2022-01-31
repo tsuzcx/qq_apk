@@ -10,10 +10,10 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class ARCloudRecogCustomPb$SearchQuestionResult
-  extends MessageMicro
+  extends MessageMicro<SearchQuestionResult>
 {
   static final MessageMicro.FieldMap __fieldMap__;
-  public final PBRepeatField cdb_res = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> cdb_res = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public ARCloudRecogCustomPb.QuestionRes question_res = new ARCloudRecogCustomPb.QuestionRes();
   public final PBInt32Field search_question_errorcode = PBField.initInt32(0);
   public final PBStringField search_question_errormsg = PBField.initString("");
@@ -26,7 +26,7 @@ public final class ARCloudRecogCustomPb$SearchQuestionResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.ARCloudRecogCustomPb.SearchQuestionResult
  * JD-Core Version:    0.7.0.1
  */

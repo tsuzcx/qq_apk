@@ -1,41 +1,41 @@
-import com.tencent.mobileqq.ar.arengine.ARWorldCupBaseResDownload;
-import com.tencent.mobileqq.ar.config.WorldCupMgr;
-import com.tencent.mobileqq.ar.config.WorldCupMgr.DownloadListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.view.View;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionInfo;
 
 public class aapj
-  implements WorldCupMgr.DownloadListener
+  implements begw
 {
-  public aapj(ARWorldCupBaseResDownload paramARWorldCupBaseResDownload) {}
+  public aapj(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, begr parambegr) {}
   
-  public void a() {}
-  
-  public void a(int paramInt1, int paramInt2)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (paramInt2 < 0)
+    switch (paramInt)
     {
-      QLog.i("AREngine_ARWorldCupBaseResDownload", 2, "downloadWorldCupBaseRes0. download failed. error code = " + paramInt2);
-      WorldCupMgr.a(ARWorldCupBaseResDownload.a(this.a)).b(this);
-      ARWorldCupBaseResDownload.a(this.a, 0, paramInt2);
     }
-    do
+    for (;;)
     {
-      return;
-      if ((paramInt2 >= 0) && (paramInt2 <= 99))
+      if ((this.jdField_a_of_type_Begr != null) && (this.jdField_a_of_type_Begr.isShowing()) && (!this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.isFinishing()))
       {
-        QLog.i("AREngine_ARWorldCupBaseResDownload", 2, "downloadWorldCupBaseRes0. download... progress = " + paramInt2);
-        ARWorldCupBaseResDownload.a(this.a, 0, paramInt2);
-        return;
+        this.jdField_a_of_type_Begr.dismiss();
+        this.jdField_a_of_type_Begr.cancel();
       }
-    } while (paramInt2 != 100);
-    QLog.i("AREngine_ARWorldCupBaseResDownload", 2, "downloadWorldCupBaseRes0. download successfully.");
-    WorldCupMgr.a(ARWorldCupBaseResDownload.a(this.a)).b(this);
-    ARWorldCupBaseResDownload.a(this.a, 0, paramInt2);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.b();
+      continue;
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a.uin;
+      Bundle localBundle = xbq.a(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), 3000);
+      xbq.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity, DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), "", "", paramView, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app.getCurrentAccountUin(), 22001, null, localBundle);
+      azzx.a("Grp_Dis_set", "Dis_info", "clk_report", 0, 0, new String[] { DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), azzx.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a) });
+      continue;
+      DiscussionInfoCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aapj
  * JD-Core Version:    0.7.0.1
  */

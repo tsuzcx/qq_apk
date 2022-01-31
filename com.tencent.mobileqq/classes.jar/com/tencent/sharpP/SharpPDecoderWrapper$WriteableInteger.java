@@ -2,11 +2,11 @@ package com.tencent.sharpP;
 
 public class SharpPDecoderWrapper$WriteableInteger
 {
-  Integer a;
+  Integer realInt;
   
   public SharpPDecoderWrapper$WriteableInteger(int paramInt)
   {
-    this.a = new Integer(paramInt);
+    this.realInt = new Integer(paramInt);
   }
 }
 

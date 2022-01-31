@@ -1,44 +1,19 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.util.LruCache;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.download.DownloadUrlManager;
-import com.tencent.biz.qqstory.database.DownloadingUrlEntry;
-import com.tencent.biz.qqstory.model.StoryManager;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.List;
-import java.util.concurrent.locks.ReentrantLock;
-
 public class nds
-  extends SimpleJob
 {
-  public nds(DownloadUrlManager paramDownloadUrlManager, String paramString, int paramInt) {}
+  public String a;
+  public boolean a;
+  public String b;
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public nds(ndo paramndo, String paramString1, String paramString2, boolean paramBoolean)
   {
-    try
-    {
-      DownloadUrlManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager).lock();
-      paramJobContext = DownloadingUrlEntry.makeKey(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      DownloadUrlManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager).remove(paramJobContext);
-      paramJobContext = QQStoryContext.a().a().createEntityManager();
-      paramVarArgs = StoryManager.a(paramJobContext, DownloadingUrlEntry.class, DownloadingUrlEntry.class.getSimpleName(), "key=?", new String[] { DownloadingUrlEntry.makeKey(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int) });
-      if ((paramVarArgs != null) && (paramVarArgs.size() > 0))
-      {
-        paramVarArgs = (DownloadingUrlEntry)paramVarArgs.get(0);
-        paramVarArgs.setStatus(1000);
-        paramVarArgs.bIsDownloadCompleted = 1;
-        paramJobContext.b(paramVarArgs);
-      }
-      return null;
-    }
-    finally
-    {
-      DownloadUrlManager.a(this.jdField_a_of_type_ComTencentBizQqstoryBaseDownloadDownloadUrlManager).unlock();
-    }
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public String toString()
+  {
+    return "PublicAccountSearchRecommendItem->uin:" + this.jdField_a_of_type_JavaLangString + ", name:" + this.b + ", isPublicAccount:" + this.jdField_a_of_type_Boolean;
   }
 }
 

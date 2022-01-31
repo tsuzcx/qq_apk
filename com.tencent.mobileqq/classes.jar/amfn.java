@@ -1,34 +1,67 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.singleupdate.QPSingleUpdTimerTask;
-import com.tencent.qqprotect.singleupdate.QPUpdateManager;
-import mqq.app.MobileQQ;
+import android.text.TextUtils;
+import com.tencent.TMG.utils.QLog;
+import java.util.HashMap;
+import java.util.Iterator;
+import org.json.JSONObject;
 
 public class amfn
-  implements Runnable
 {
-  public amfn(QPSingleUpdTimerTask paramQPSingleUpdTimerTask) {}
+  public int a;
+  public String a;
+  public HashMap<String, String> a;
+  public String b = "";
   
-  public void run()
+  public amfn()
   {
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  }
+  
+  public static amfn a(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    amfn localamfn;
     try
     {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sMobileQQ.waitAppRuntime(null);
-      if (localQQAppInterface != null)
-      {
-        ((QPUpdateManager)localQQAppInterface.getManager(193)).a();
-        return;
+      localamfn = new amfn();
+      localamfn.jdField_a_of_type_JavaLangString = paramString;
+      paramString = new JSONObject(paramString);
+      localamfn.jdField_a_of_type_Int = paramString.optInt("isShowEntry");
+      localamfn.b = paramString.optString("iconUrl");
+      if (!TextUtils.isEmpty(localamfn.b)) {
+        localamfn.b = localamfn.b.trim();
       }
-      QLog.w("QPUpdate", 1, "qqprotect failed to start update because QQAppInterface is null");
-      return;
+      paramString = paramString.optJSONObject("grayTips");
+      Iterator localIterator = paramString.keys();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        localamfn.jdField_a_of_type_JavaUtilHashMap.put(str, paramString.optString(str));
+      }
+      QLog.d("ConfBean", 0, "confBean = " + localamfn.toString());
     }
-    catch (Exception localException) {}
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ConfBean", 1, "parse e:", paramString);
+      }
+      return null;
+    }
+    return localamfn;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder(100);
+    localStringBuilder.append("configContent:").append(this.jdField_a_of_type_JavaLangString);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amfn
  * JD-Core Version:    0.7.0.1
  */

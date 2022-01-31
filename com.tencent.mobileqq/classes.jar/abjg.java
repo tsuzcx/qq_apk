@@ -1,19 +1,26 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
-public final class abjg
-  implements Runnable
+public class abjg
+  implements View.OnTouchListener
 {
-  public abjg(String paramString) {}
+  public abjg(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QQToast.a(BaseApplicationImpl.getContext(), this.a, 1000).a();
+    if (paramMotionEvent.getAction() == 1)
+    {
+      this.a.a();
+      ndn.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573C", "0X800573C", 0, 0, "", "", "", "", false);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abjg
  * JD-Core Version:    0.7.0.1
  */

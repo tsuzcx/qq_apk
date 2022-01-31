@@ -1,29 +1,20 @@
-import com.tencent.mobileqq.extendfriend.ExtendFriendObserver;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
-public class acqd
-  extends ExtendFriendObserver
+class acqd
+  implements axbf
 {
-  public acqd(ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
+  acqd(acqc paramacqc) {}
   
-  protected void a(boolean paramBoolean1, List paramList, boolean paramBoolean2, long paramLong, boolean paramBoolean3)
+  public void a()
   {
-    try
-    {
-      ExtendFriendGroupFragment.a(this.a, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramList);
-      return;
-    }
-    catch (Exception paramList)
-    {
-      QLog.e("ExtendFriendGroupFragment", 1, "mExtendFriendObserver exception", paramList);
-    }
+    axbl localaxbl = new axbl(3000, 360, 0);
+    localaxbl.a = true;
+    this.a.a.d.a(new axbe[] { localaxbl });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acqd
  * JD-Core Version:    0.7.0.1
  */

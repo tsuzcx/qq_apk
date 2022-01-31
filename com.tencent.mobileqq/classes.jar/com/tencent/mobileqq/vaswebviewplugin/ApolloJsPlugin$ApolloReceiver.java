@@ -4,9 +4,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import bbac;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -17,7 +17,7 @@ import org.json.JSONObject;
 class ApolloJsPlugin$ApolloReceiver
   extends BroadcastReceiver
 {
-  private List mJsList = new ArrayList();
+  private List<WeakReference<ApolloJsPlugin>> mJsList = new ArrayList();
   
   public void onApolloJsCreated(ApolloJsPlugin paramApolloJsPlugin)
   {
@@ -103,50 +103,55 @@ class ApolloJsPlugin$ApolloReceiver
       if (QLog.isColorLevel()) {
         QLog.d("ApolloJsPlugin", 2, new Object[] { "[onReceive] action=", paramContext });
       }
-      if (!"action_apollo_game_event_notify".equals(paramContext)) {
-        continue;
-      }
-      try
-      {
-        paramIntent = paramIntent.getStringExtra("data");
-        paramContext = new JSONObject(paramIntent);
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloJsPlugin", 2, new Object[] { "[onReceive] data=", paramIntent });
-        }
-        if (this.mJsList.isEmpty()) {
-          continue;
-        }
-        paramIntent = new ArrayList();
-        int i = this.mJsList.size() - 1;
-        while (i >= 0)
+      if ("action_apollo_game_event_notify".equals(paramContext)) {
+        try
         {
-          ApolloJsPlugin localApolloJsPlugin = (ApolloJsPlugin)((WeakReference)this.mJsList.get(i)).get();
-          if ((localApolloJsPlugin != null) && (localApolloJsPlugin.mRuntime != null))
-          {
-            CustomWebView localCustomWebView = localApolloJsPlugin.mRuntime.a();
-            if ((localCustomWebView != null) && (!paramIntent.contains(localCustomWebView)))
-            {
-              localApolloJsPlugin.dispatchJsEvent("apolloGameWebMessage", paramContext, null);
-              paramIntent.add(localCustomWebView);
-              if (QLog.isColorLevel()) {
-                QLog.d("ApolloJsPlugin", 2, new Object[] { "jsPlugin.dispatchJsEvent, jsPlugin:", localApolloJsPlugin, "webview:", localCustomWebView });
-              }
-            }
+          paramIntent = paramIntent.getStringExtra("data");
+          paramContext = new JSONObject(paramIntent);
+          if (QLog.isColorLevel()) {
+            QLog.d("ApolloJsPlugin", 2, new Object[] { "[onReceive] data=", paramIntent });
           }
-          i -= 1;
+          if (!this.mJsList.isEmpty())
+          {
+            paramIntent = new ArrayList();
+            int i = this.mJsList.size() - 1;
+            while (i >= 0)
+            {
+              ApolloJsPlugin localApolloJsPlugin = (ApolloJsPlugin)((WeakReference)this.mJsList.get(i)).get();
+              if ((localApolloJsPlugin != null) && (localApolloJsPlugin.mRuntime != null))
+              {
+                CustomWebView localCustomWebView = localApolloJsPlugin.mRuntime.a();
+                if ((localCustomWebView != null) && (!paramIntent.contains(localCustomWebView)))
+                {
+                  localApolloJsPlugin.dispatchJsEvent("apolloGameWebMessage", paramContext, null);
+                  paramIntent.add(localCustomWebView);
+                  if (QLog.isColorLevel()) {
+                    QLog.d("ApolloJsPlugin", 2, new Object[] { "jsPlugin.dispatchJsEvent, jsPlugin:", localApolloJsPlugin, "webview:", localCustomWebView });
+                  }
+                }
+              }
+              i -= 1;
+            }
+            if (!"action_apollo_cmshow_content_update".equals(paramContext)) {}
+          }
         }
-        return;
-      }
-      catch (Exception paramContext)
-      {
-        QLog.e("ApolloJsPlugin", 1, "[onReceive] exception=", paramContext);
+        catch (Exception paramContext)
+        {
+          QLog.e("ApolloJsPlugin", 1, "[onReceive] exception=", paramContext);
+          return;
+        }
       }
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("ApolloJsPlugin", 2, "rscContent_CmShowRscCacheManager onReceive action:" + paramContext);
+    }
+    paramContext = paramIntent.getStringExtra("key_content_update_zip_name");
+    QLog.i("ApolloJsPlugin", 1, "rscContent_CmShowRscCacheManager onReceive zipName:" + paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ApolloJsPlugin.ApolloReceiver
  * JD-Core Version:    0.7.0.1
  */

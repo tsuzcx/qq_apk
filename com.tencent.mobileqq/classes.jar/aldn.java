@@ -1,31 +1,38 @@
-import android.text.TextUtils;
-import com.tencent.biz.troop.feeds.TroopNewGuidePopWindow;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
+import java.util.LinkedHashMap;
 
 public class aldn
-  implements Runnable
 {
-  public aldn(ProfileCardMoreInfoView paramProfileCardMoreInfoView) {}
+  public String a;
+  public LinkedHashMap<String, String> a;
+  public String b = "";
+  public String c = "1.0.0.1";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
   
-  public void run()
+  public aldn()
   {
-    Object localObject = this.a.a();
-    if (localObject != null) {}
-    for (localObject = "最近发言于" + TroopNewGuidePopWindow.a(((MessageRecord)localObject).time, true, false, true).toString();; localObject = null)
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (!(paramObject instanceof aldn)) {}
+    do
     {
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.e = ((String)localObject);
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new aldo(this));
-      return;
-    }
+      return false;
+      paramObject = (aldn)paramObject;
+    } while ((!this.jdField_a_of_type_JavaLangString.equals(paramObject.jdField_a_of_type_JavaLangString)) || (!this.b.equals(paramObject.b)) || (!this.h.equals(paramObject.h)) || (!this.jdField_a_of_type_JavaUtilLinkedHashMap.equals(paramObject.jdField_a_of_type_JavaUtilLinkedHashMap)));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aldn
  * JD-Core Version:    0.7.0.1
  */

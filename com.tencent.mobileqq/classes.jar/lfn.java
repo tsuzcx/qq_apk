@@ -1,19 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
-import java.util.List;
-
 public class lfn
-  implements Runnable
+  extends lfc
 {
-  public lfn(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity, List paramList) {}
+  short a;
+  short jdField_b_of_type_Short;
+  byte[] jdField_b_of_type_ArrayOfByte;
+  byte[] c;
+  byte[] d;
   
-  public void run()
+  lfn(lfc paramlfc, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, short paramShort1, short paramShort2)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyMessagesActivity.a(this.jdField_a_of_type_JavaUtilList);
+    super(paramlfc);
+    this.jdField_b_of_type_ArrayOfByte = paramArrayOfByte1;
+    this.c = paramArrayOfByte2;
+    this.d = paramArrayOfByte3;
+    this.a = paramShort1;
+    this.jdField_b_of_type_Short = paramShort2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lfn
  * JD-Core Version:    0.7.0.1
  */

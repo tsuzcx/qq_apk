@@ -1,83 +1,88 @@
-import com.tencent.qqprotect.qsec.CloudAVEngineImpl;
-import com.tencent.qqprotect.qsec.ICloudAVEngine.ApkDetectBundle;
-import com.tencent.qqprotect.qsec.ICloudAVEngine.DetectBundle;
-import com.tencent.qqprotect.qsec.QSecFramework.IGoingUpHandler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager;
+import java.io.File;
 
-public final class amem
-  implements QSecFramework.IGoingUpHandler
+public class amem
+  extends alzl<bhny>
 {
-  private amem(CloudAVEngineImpl paramCloudAVEngineImpl) {}
-  
-  public int a(int paramInt1, int paramInt2, int paramInt3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
+  public int a()
   {
-    if (paramInt1 == 2) {}
-    try
-    {
-      this.a.flushRequest();
+    return 309;
+  }
+  
+  @NonNull
+  public bhny a(int paramInt)
+  {
+    return new bhny();
+  }
+  
+  @Nullable
+  public bhny a(alzs[] paramArrayOfalzs)
+  {
+    if ((paramArrayOfalzs == null) || (paramArrayOfalzs.length == 0)) {
+      return null;
+    }
+    paramArrayOfalzs = paramArrayOfalzs[0].a;
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMDynamicTextConfigProcessor", 2, "handleQIMDynamicTextConfig onParsed, content:" + paramArrayOfalzs);
+    }
+    return new bhnv().a(paramArrayOfalzs, DynamicTextConfigManager.a.getAbsolutePath(), "temp_dynamic_text_zip", new amen(this));
+  }
+  
+  public Class<bhny> a()
+  {
+    return bhny.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMDynamicTextConfigProcessor", 2, "handleQIMDynamicTextConfig onReqFailed");
+    }
+  }
+  
+  public void a(bhny parambhny)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMDynamicTextConfigProcessor", 2, "handleQIMDynamicTextConfig onUpdate");
+    }
+  }
+  
+  public int b()
+  {
+    if (!DynamicTextConfigManager.b()) {
       return 0;
     }
-    catch (Exception paramObject1)
+    return baig.a(BaseApplicationImpl.getContext());
+  }
+  
+  public int b(int paramInt)
+  {
+    if (!DynamicTextConfigManager.b())
     {
-      label57:
-      paramObject1.printStackTrace();
-      return -1;
+      QLog.i("QIMDynamicTextConfigProcessor", 1, "config file not exist");
+      alzw.a().a(309, 0);
+      return 0;
     }
-    if ((paramObject1 != null) && (paramObject2 != null) && (paramArrayOfObject1 != null))
-    {
-      if (paramArrayOfObject1.length >= 6) {
-        break label236;
-      }
-      break label233;
-      if (paramInt2 != 0)
-      {
-        paramArrayOfObject2 = new amel(paramInt2);
-        break label246;
-        if (((Integer)paramObject1).intValue() == 0) {
-          break label262;
-        }
-      }
-    }
-    label262:
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      if (((Integer)paramObject2).intValue() == 1) {
-        paramObject1 = new ICloudAVEngine.ApkDetectBundle((String)paramArrayOfObject1[2]);
-      }
-      for (;;)
-      {
-        return this.a.cloudDetect(paramObject1, bool1, bool2, paramArrayOfObject2);
-        paramObject1 = new ICloudAVEngine.DetectBundle();
-        paramObject1.jdField_a_of_type_Int = ((Integer)paramObject2).intValue();
-        paramObject1.b = ((Integer)paramArrayOfObject1[0]).intValue();
-        paramObject1.jdField_a_of_type_JavaLangString = ((String)paramArrayOfObject1[1]);
-        paramObject1.c = ((String)paramArrayOfObject1[2]);
-        paramObject1.d = ((String)paramArrayOfObject1[3]);
-        paramObject1.e = ((String)paramArrayOfObject1[4]);
-        paramObject1.jdField_a_of_type_ArrayOfByte = ((byte[])paramArrayOfObject1[5]);
-      }
-      paramArrayOfObject2 = null;
-      break label246;
-      label233:
-      return 13;
-      label236:
-      if (paramArrayOfObject1[0] != null) {
-        break;
-      }
-      return 13;
-      label246:
-      if (paramInt3 != 0)
-      {
-        bool1 = true;
-        break label57;
-      }
-      boolean bool1 = false;
-      break label57;
-    }
+    return super.b(paramInt);
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amem
  * JD-Core Version:    0.7.0.1
  */

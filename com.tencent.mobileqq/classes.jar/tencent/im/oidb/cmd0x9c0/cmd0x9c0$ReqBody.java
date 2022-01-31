@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class cmd0x9c0$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   public static final int MSG_LBS_INFO_FIELD_NUMBER = 3;
   public static final int UINT32_HEARTBEAT_FIELD_NUMBER = 2;
@@ -20,7 +20,7 @@ public final class cmd0x9c0$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x9c0.cmd0x9c0.ReqBody
  * JD-Core Version:    0.7.0.1
  */

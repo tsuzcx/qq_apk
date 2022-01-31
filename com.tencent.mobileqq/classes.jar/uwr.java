@@ -1,39 +1,31 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleDrawer;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView;
-import java.util.TimerTask;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.biz.qqstory.takevideo.QQStoryTakeVideoCloseAnimationActivity;
 
 public class uwr
-  extends TimerTask
+  implements Animator.AnimatorListener
 {
-  public uwr(DoodleMsgView paramDoodleMsgView, long paramLong1, long paramLong2) {}
+  public uwr(QQStoryTakeVideoCloseAnimationActivity paramQQStoryTakeVideoCloseAnimationActivity) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    if (DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView) == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView.a(new uws(this));
-    }
-    do
-    {
-      return;
-      if (DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView) < 0L) {
-        DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView, this.jdField_a_of_type_Long);
-      }
-      if (DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView) < this.jdField_a_of_type_Long) {
-        DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView, DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView) + this.b);
-      }
-      DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView).a(DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView), true);
-      if (DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView) >= this.jdField_a_of_type_Long)
-      {
-        DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView);
-        return;
-      }
-    } while (DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView));
-    DoodleMsgView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgView).a(this.jdField_a_of_type_Long, true);
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2130772038);
   }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.finish();
+    this.a.overridePendingTransition(0, 2130772038);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uwr
  * JD-Core Version:    0.7.0.1
  */

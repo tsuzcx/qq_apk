@@ -1,32 +1,31 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.utils.ImageUtil;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import org.apache.http.HttpRequest;
+import org.apache.http.HttpRequestInterceptor;
+import org.apache.http.protocol.HttpContext;
 
-public class kpt
-  implements URLDrawable.URLDrawableListener
+class kpt
+  implements HttpRequestInterceptor
 {
-  public kpt(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
+  kpt(kpr paramkpr) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void process(HttpRequest paramHttpRequest, HttpContext paramHttpContext)
   {
-    paramURLDrawable = ImageUtil.a(paramURLDrawable);
-    Bitmap localBitmap = ImageUtil.c(paramURLDrawable, 110, 110);
-    this.a.c.setImageBitmap(localBitmap);
-    paramURLDrawable.recycle();
+    if (!paramHttpRequest.containsHeader("Accept-Encoding")) {
+      paramHttpRequest.addHeader("Accept-Encoding", "gzip");
+    }
+    paramHttpContext = kpr.a(this.a).keySet().iterator();
+    while (paramHttpContext.hasNext())
+    {
+      String str = (String)paramHttpContext.next();
+      paramHttpRequest.addHeader(str, (String)kpr.a(this.a).get(str));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     kpt
  * JD-Core Version:    0.7.0.1
  */

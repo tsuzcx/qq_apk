@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import tencent.im.oidb.olympic.MqqLbs.LBSInfo;
 
 public final class MqqLbsPack$ReqGetLBSPID
-  extends MessageMicro
+  extends MessageMicro<ReqGetLBSPID>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_encrypt_sig = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -31,7 +31,7 @@ public final class MqqLbsPack$ReqGetLBSPID
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.lbspack.MqqLbsPack.ReqGetLBSPID
  * JD-Core Version:    0.7.0.1
  */

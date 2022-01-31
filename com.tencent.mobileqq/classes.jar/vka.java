@@ -1,29 +1,23 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
 
-class vka
-  implements Runnable
+public final class vka
+  implements Parcelable.Creator<TroopStoryItemInfo>
 {
-  vka(vjz paramvjz, int paramInt) {}
-  
-  public void run()
+  public TroopStoryItemInfo a(Parcel paramParcel)
   {
-    Object localObject = (ArrayList)this.jdField_a_of_type_Vjz.a.a.get(Integer.valueOf(this.jdField_a_of_type_Int));
-    if (localObject != null)
-    {
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((URLDrawable)((Iterator)localObject).next()).restartDownload();
-      }
-    }
+    return new TroopStoryItemInfo(paramParcel);
+  }
+  
+  public TroopStoryItemInfo[] a(int paramInt)
+  {
+    return new TroopStoryItemInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vka
  * JD-Core Version:    0.7.0.1
  */

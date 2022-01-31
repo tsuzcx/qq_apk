@@ -1,20 +1,28 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import com.tencent.widget.AbsListView;
+import java.util.ArrayList;
 
-public class uvh
-  implements Runnable
+class uvh
+  implements begh
 {
-  public uvh(PressToSpeakPanel paramPressToSpeakPanel, String paramString) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void run()
+  uvh(uvg paramuvg) {}
+  
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    PressToSpeakPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel).b(this.jdField_a_of_type_JavaLangString, null);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelPressToSpeakPanel.b();
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
+  }
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if ((paramInt == 0) && (this.jdField_a_of_type_Uvg.a != null) && (this.jdField_a_of_type_Int == this.jdField_a_of_type_Uvg.a.size() - 1)) {
+      this.jdField_a_of_type_Uvg.f();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uvh
  * JD-Core Version:    0.7.0.1
  */

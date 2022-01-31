@@ -1,100 +1,48 @@
-import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.agent.report.BaseData;
-import com.tencent.open.agent.report.ReportCenter;
-import com.tencent.open.agent.report.ReportDatabaseHelper;
-import com.tencent.open.base.APNUtil;
-import com.tencent.open.business.base.OpenConfig;
+import android.os.Build.VERSION;
+import android.os.MessageQueue.IdleHandler;
+import android.view.WindowManager.BadTokenException;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 
 public class alkr
-  implements Runnable
+  implements MessageQueue.IdleHandler
 {
-  public alkr(ReportCenter paramReportCenter, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong1, long paramLong2, long paramLong3, long paramLong4, boolean paramBoolean) {}
+  public alkr(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity) {}
   
-  public void run()
+  public boolean queueIdle()
   {
-    int j = 1;
+    if (awii.d(awii.b)) {
+      this.a.a(true);
+    }
     for (;;)
     {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.onResume();
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
+      DynamicAvatarRecordActivity.a(this.a);
+      if (Build.VERSION.SDK_INT < 14) {
+        this.a.jdField_a_of_type_Bafb = babr.a(this.a, 230).setMessage(ajjy.a(2131637780)).setPositiveButton(this.a.getString(2131628445), new alks(this));
+      }
       try
       {
-        localObject1 = new Bundle();
-        Object localObject3 = APNUtil.a(CommonDataAdapter.a().a());
-        ((Bundle)localObject1).putString("apn", (String)localObject3);
-        ((Bundle)localObject1).putString("appid", this.jdField_a_of_type_JavaLangString);
-        ((Bundle)localObject1).putString("commandid", this.jdField_b_of_type_JavaLangString);
-        ((Bundle)localObject1).putString("detail", this.jdField_c_of_type_JavaLangString);
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("network=").append((String)localObject3).append('&');
-        localObject3 = localStringBuilder.append("sdcard=");
-        if (Environment.getExternalStorageState().equals("mounted"))
+        this.a.jdField_a_of_type_Bafb.setCancelable(false);
+        this.a.jdField_a_of_type_Bafb.show();
+        if (QLog.isColorLevel()) {
+          QLog.i("PEAK_CAMERA", 2, "Added camera view.");
+        }
+        return false;
+        this.a.a(false);
+      }
+      catch (WindowManager.BadTokenException localBadTokenException)
+      {
+        for (;;)
         {
-          i = 1;
-          ((StringBuilder)localObject3).append(i).append('&');
-          localStringBuilder.append("wifi=").append(APNUtil.e(CommonDataAdapter.a().a()));
-          ((Bundle)localObject1).putString("deviceInfo", localStringBuilder.toString());
-          i = 100 / this.jdField_a_of_type_ComTencentOpenAgentReportReportCenter.a(this.jdField_a_of_type_Int);
-          if (i > 0) {
-            continue;
+          if (QLog.isColorLevel()) {
+            QLog.i("DynamicAvatarRecordActivity", 2, "", localBadTokenException);
           }
-          i = j;
-          ((Bundle)localObject1).putString("frequency", i + "");
-          ((Bundle)localObject1).putString("reqSize", this.jdField_a_of_type_Long + "");
-          ((Bundle)localObject1).putString("resultCode", this.jdField_a_of_type_Int + "");
-          ((Bundle)localObject1).putString("rspSize", this.jdField_b_of_type_Long + "");
-          ((Bundle)localObject1).putString("timeCost", this.jdField_c_of_type_Long + "");
-          ((Bundle)localObject1).putString("uin", this.d + "");
-          localObject1 = new BaseData((Bundle)localObject1);
-        }
-      }
-      catch (Exception localException)
-      {
-        Object localObject1;
-        int k;
-        int m;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ReportCenter", 2, "-->reportCgi, exception in sub thread.", localException);
-        return;
-      }
-      try
-      {
-        this.jdField_a_of_type_ComTencentOpenAgentReportReportCenter.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
-        k = this.jdField_a_of_type_ComTencentOpenAgentReportReportCenter.jdField_a_of_type_JavaUtilArrayList.size();
-        m = ReportDatabaseHelper.a().a("report_cgi");
-        j = OpenConfig.a(CommonDataAdapter.a().a(), null).a("Agent_ReportTimeInterval");
-        i = j;
-        if (j == 0) {
-          i = 10000;
-        }
-        if ((!this.jdField_a_of_type_ComTencentOpenAgentReportReportCenter.a("report_cgi", m + k)) && (!this.jdField_a_of_type_Boolean)) {
-          break label513;
-        }
-        this.jdField_a_of_type_ComTencentOpenAgentReportReportCenter.a("yingyongbao");
-        this.jdField_a_of_type_ComTencentOpenAgentReportReportCenter.jdField_a_of_type_AndroidOsHandler.removeMessages(1000);
-        return;
-      }
-      finally {}
-      int i = 0;
-      continue;
-      if (i > 100)
-      {
-        i = 100;
-        continue;
-        label513:
-        if (!this.jdField_a_of_type_ComTencentOpenAgentReportReportCenter.jdField_a_of_type_AndroidOsHandler.hasMessages(1000))
-        {
-          Message localMessage = Message.obtain();
-          localMessage.what = 1000;
-          localMessage.obj = "yingyongbao";
-          this.jdField_a_of_type_ComTencentOpenAgentReportReportCenter.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, i);
-          return;
         }
       }
     }
@@ -102,7 +50,7 @@ public class alkr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alkr
  * JD-Core Version:    0.7.0.1
  */

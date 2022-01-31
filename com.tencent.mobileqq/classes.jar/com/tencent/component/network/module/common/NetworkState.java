@@ -7,7 +7,6 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Handler;
-import android.telephony.TelephonyManager;
 import com.tencent.component.network.downloader.GlobalHandlerThread;
 import com.tencent.component.network.module.base.QDLog;
 import java.util.ArrayList;
@@ -26,7 +25,7 @@ public class NetworkState
   private static int networkType = 0;
   private Context context = null;
   private boolean loadProviderName = false;
-  private List observers = new ArrayList();
+  private List<NetworkState.NetworkStateListener> observers = new ArrayList();
   private String providerName = null;
   
   public static NetworkState g()
@@ -165,42 +164,6 @@ public class NetworkState
     return networkType;
   }
   
-  public String getProviderName()
-  {
-    Object localObject1;
-    if (!this.loadProviderName)
-    {
-      this.loadProviderName = true;
-      localObject1 = (TelephonyManager)this.context.getSystemService("phone");
-    }
-    try
-    {
-      localObject1 = ((TelephonyManager)localObject1).getSubscriberId();
-      if ((localObject1 == null) || ("".equals(localObject1)))
-      {
-        this.providerName = "unknown";
-        return this.providerName;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        Object localObject2 = null;
-        continue;
-        if ((localObject2.startsWith("46000")) || (localObject2.startsWith("46002"))) {
-          this.providerName = "ChinaMobile";
-        } else if (localObject2.startsWith("46001")) {
-          this.providerName = "ChinaUnicom";
-        } else if (localObject2.startsWith("46003")) {
-          this.providerName = "ChinaTelecom";
-        } else {
-          this.providerName = "unknown";
-        }
-      }
-    }
-  }
-  
   public boolean isNetworkAvailable()
   {
     boolean bool1;
@@ -219,7 +182,7 @@ public class NetworkState
       bool2 = localNetworkInfo.isConnected();
       bool1 = bool2;
     } while (bool2);
-    QDLog.d(TAG, "isNetworkEnable() : FALSE with TYPE = " + localNetworkInfo.getType());
+    QDLog.e(TAG, "isNetworkEnable() : FALSE with TYPE = " + localNetworkInfo.getType());
     return bool2;
   }
   
@@ -233,12 +196,12 @@ public class NetworkState
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QDLog.d(TAG, "NetworkStateReceiver ====== " + paramIntent.getAction());
+    QDLog.e(TAG, "NetworkStateReceiver ====== " + paramIntent.getAction());
     if (paramIntent.getAction() == null) {}
     while (paramIntent.getAction().compareTo("android.net.conn.CONNECTIVITY_CHANGE") != 0) {
       return;
     }
-    GlobalHandlerThread.a(paramContext).a().post(new NetworkState.1(this, paramContext));
+    GlobalHandlerThread.getInstance(paramContext).getHandler().post(new NetworkState.1(this, paramContext));
   }
   
   public void removeListener(NetworkState.NetworkStateListener paramNetworkStateListener)

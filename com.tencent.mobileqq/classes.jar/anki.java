@@ -1,17 +1,23 @@
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.emoticonview.EmotionPreviewInfo;
 
 public final class anki
-  implements Runnable
+  implements Parcelable.Creator<EmotionPreviewInfo>
 {
-  public void run()
+  public EmotionPreviewInfo a(Parcel paramParcel)
   {
-    RemoteHandleManager.a().a().m();
+    return new EmotionPreviewInfo(paramParcel);
+  }
+  
+  public EmotionPreviewInfo[] a(int paramInt)
+  {
+    return new EmotionPreviewInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anki
  * JD-Core Version:    0.7.0.1
  */

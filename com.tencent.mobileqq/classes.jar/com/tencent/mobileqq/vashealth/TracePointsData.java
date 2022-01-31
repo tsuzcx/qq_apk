@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.vashealth;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 import org.json.JSONObject;
 
 public class TracePointsData
-  extends Entity
+  extends atmo
 {
   public static final String TABLE_NAME = "TracePointsData";
   public int accuracy;
@@ -15,7 +15,7 @@ public class TracePointsData
   public float speed;
   public long startTime;
   public int steps;
-  @unique
+  @atoc
   public long time;
   
   public JSONObject toJson()
@@ -45,7 +45,7 @@ public class TracePointsData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.TracePointsData
  * JD-Core Version:    0.7.0.1
  */

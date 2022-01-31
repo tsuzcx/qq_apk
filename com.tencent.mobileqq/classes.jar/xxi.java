@@ -1,32 +1,15 @@
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraReporter;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy;
-import com.tencent.qphone.base.util.QLog;
-
 public class xxi
-  implements Camera.AutoFocusCallback
 {
-  public xxi(NewFlowCameraActivity paramNewFlowCameraActivity) {}
-  
-  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(".photo", 2, "single tap focus " + paramBoolean);
-    }
-    NewFlowCameraReporter.a(paramBoolean);
-    if (paramBoolean)
-    {
-      NewFlowCameraActivity.h(this.a, true);
-      return;
-    }
-    this.a.a.f();
-  }
+  public int a;
+  public int b = 1;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     xxi
  * JD-Core Version:    0.7.0.1
  */

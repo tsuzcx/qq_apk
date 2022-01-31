@@ -1,50 +1,51 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.unifiedebug.UnifiedDebugReporter;
-import com.tencent.pb.unifiedebug.RemoteDebugReportMsg.RemoteLogRsp;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-
-public class akfw
-  implements BusinessObserver
+class akfw
 {
-  public akfw(UnifiedDebugReporter paramUnifiedDebugReporter) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public boolean c;
+  public boolean d;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public akfw(String paramString, boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    if (paramBoolean)
-    {
-      paramBundle = paramBundle.getByteArray("extra_data");
-      if (paramBundle == null) {}
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+    this.c = paramBoolean3;
+    this.d = paramBoolean4;
+  }
+  
+  public int a()
+  {
+    if (this.jdField_a_of_type_Int == 5) {
+      return 0;
     }
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        RemoteDebugReportMsg.RemoteLogRsp localRemoteLogRsp = new RemoteDebugReportMsg.RemoteLogRsp();
-        localRemoteLogRsp.mergeFrom(paramBundle);
-        if (localRemoteLogRsp.i32_ret.has())
-        {
-          paramInt = localRemoteLogRsp.i32_ret.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("UnifiedDebugReporter", 2, "onReceive: retCode=" + paramInt);
-          }
-        }
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.e("UnifiedDebugReporter", 2, "onReceive: exception=" + paramBundle.getMessage());
-        return;
-      }
+    if (this.jdField_a_of_type_Int == 4) {
+      return 60000;
     }
-    QLog.e("UnifiedDebugReporter", 2, "onReceive: isSuccess=" + paramBoolean);
+    if (this.jdField_a_of_type_Int == 3) {
+      return 180000;
+    }
+    if (this.jdField_a_of_type_Int == 2) {
+      return 600000;
+    }
+    return 1800000;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("businessId: ").append(this.jdField_a_of_type_JavaLangString).append(",").append("reqLonAndLat: ").append(this.jdField_a_of_type_Boolean).append(",").append("realTimeRequirement: ").append(this.jdField_a_of_type_Int).append(",").append("requestDataLevel: ").append(this.jdField_b_of_type_Int).append(",").append("reqGoon: ").append(this.jdField_b_of_type_Boolean).append(",").append("canUseGps: ").append(this.c);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akfw
  * JD-Core Version:    0.7.0.1
  */

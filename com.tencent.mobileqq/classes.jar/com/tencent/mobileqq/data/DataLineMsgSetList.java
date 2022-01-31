@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class DataLineMsgSetList
-  implements Iterable
+  implements Iterable<DataLineMsgSet>
 {
-  ArrayList mList = new ArrayList();
+  ArrayList<DataLineMsgSet> mList = new ArrayList();
   private long nFirstId;
   private long nLastId;
   
@@ -74,18 +74,14 @@ public class DataLineMsgSetList
   {
     try
     {
-      if (!this.mList.contains(paramDataLineMsgSet))
+      if ((!this.mList.contains(paramDataLineMsgSet)) || (paramDataLineMsgSet.getFirstItem().msgtype == -2073))
       {
         this.mList.add(paramDataLineMsgSet);
         checkFirstLastIdByAddOrModify(paramDataLineMsgSet);
       }
       return;
     }
-    finally
-    {
-      paramDataLineMsgSet = finally;
-      throw paramDataLineMsgSet;
-    }
+    finally {}
   }
   
   public void clear()
@@ -208,7 +204,7 @@ public class DataLineMsgSetList
     return this.mList.isEmpty();
   }
   
-  public Iterator iterator()
+  public Iterator<DataLineMsgSet> iterator()
   {
     return this.mList.iterator();
   }
@@ -235,27 +231,27 @@ public class DataLineMsgSetList
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 20	com/tencent/mobileqq/data/DataLineMsgSetList:mList	Ljava/util/ArrayList;
-    //   6: invokevirtual 41	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   3: getfield 22	com/tencent/mobileqq/data/DataLineMsgSetList:mList	Ljava/util/ArrayList;
+    //   6: invokevirtual 43	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   9: astore_3
     //   10: aload_3
-    //   11: invokeinterface 47 1 0
+    //   11: invokeinterface 49 1 0
     //   16: ifeq +41 -> 57
     //   19: aload_3
-    //   20: invokeinterface 51 1 0
-    //   25: checkcast 27	com/tencent/mobileqq/data/DataLineMsgSet
+    //   20: invokeinterface 53 1 0
+    //   25: checkcast 29	com/tencent/mobileqq/data/DataLineMsgSet
     //   28: astore 4
     //   30: aload 4
     //   32: aload_1
-    //   33: invokevirtual 137	com/tencent/mobileqq/data/DataLineMsgSet:equals	(Ljava/lang/Object;)Z
+    //   33: invokevirtual 148	com/tencent/mobileqq/data/DataLineMsgSet:equals	(Ljava/lang/Object;)Z
     //   36: ifeq -26 -> 10
     //   39: aload_0
-    //   40: getfield 20	com/tencent/mobileqq/data/DataLineMsgSetList:mList	Ljava/util/ArrayList;
+    //   40: getfield 22	com/tencent/mobileqq/data/DataLineMsgSetList:mList	Ljava/util/ArrayList;
     //   43: aload 4
-    //   45: invokevirtual 139	java/util/ArrayList:remove	(Ljava/lang/Object;)Z
+    //   45: invokevirtual 150	java/util/ArrayList:remove	(Ljava/lang/Object;)Z
     //   48: istore_2
     //   49: aload_0
-    //   50: invokespecial 133	com/tencent/mobileqq/data/DataLineMsgSetList:checkFirstLastIdByRemove	()V
+    //   50: invokespecial 144	com/tencent/mobileqq/data/DataLineMsgSetList:checkFirstLastIdByRemove	()V
     //   53: aload_0
     //   54: monitorexit
     //   55: iload_2

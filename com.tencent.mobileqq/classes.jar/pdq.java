@@ -1,20 +1,21 @@
-import android.widget.TextView;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.image.URLDrawable.DownloadListener;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
+import com.tencent.biz.pubaccount.readinjoy.pts.PTSFragment;
 
 public class pdq
-  implements URLDrawable.DownloadListener
+  extends RecyclerView.OnScrollListener
 {
-  public pdq(TroopGiftPanel paramTroopGiftPanel, TextView paramTextView) {}
+  public pdq(PTSFragment paramPTSFragment) {}
   
-  public void onFileDownloadFailed(int paramInt)
+  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
+    if (paramInt == 0)
+    {
+      zqk.a().a("list_kandian_daily_new", false);
+      return;
+    }
+    zqk.a().a("list_kandian_daily_new");
   }
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong) {}
 }
 
 

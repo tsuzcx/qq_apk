@@ -1,26 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
-import com.tencent.mobileqq.pb.PBStringField;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.PackJumpInfo;
+import android.content.Context;
+import android.view.Window;
+import com.tencent.av.ui.VideoInviteActivity;
 
 public class lzs
-  implements View.OnClickListener
+  extends begr
 {
-  public lzs(ComponentJump paramComponentJump, oidb_cmd0x68b.PackJumpInfo paramPackJumpInfo) {}
-  
-  public void onClick(View paramView)
+  public lzs(VideoInviteActivity paramVideoInviteActivity, Context paramContext)
   {
-    paramView = this.jdField_a_of_type_TencentImOidbCmd0x68bOidb_cmd0x68b$PackJumpInfo.str_url.get();
-    ReadInJoyUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), paramView);
-    ReadInJoyFooterPresenter.a(2, this.jdField_a_of_type_TencentImOidbCmd0x68bOidb_cmd0x68b$PackJumpInfo.str_wording.get());
+    super(paramContext);
+    super.getWindow().addFlags(524288);
+    super.getWindow().addFlags(128);
+    super.getWindow().addFlags(1024);
+    super.getWindow().addFlags(2097152);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lzs
  * JD-Core Version:    0.7.0.1
  */

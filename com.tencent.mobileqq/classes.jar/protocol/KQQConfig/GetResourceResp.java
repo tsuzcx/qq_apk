@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class GetResourceResp
   extends JceStruct
 {
-  static ArrayList cache_vecResRespInfo;
-  public ArrayList vecResRespInfo;
+  static ArrayList<GetResourceRespInfo> cache_vecResRespInfo;
+  public ArrayList<GetResourceRespInfo> vecResRespInfo;
   
   public GetResourceResp() {}
   
-  public GetResourceResp(ArrayList paramArrayList)
+  public GetResourceResp(ArrayList<GetResourceRespInfo> paramArrayList)
   {
     this.vecResRespInfo = paramArrayList;
   }

@@ -1,26 +1,19 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.TroopFileVideoItemBuilder;
-import com.tencent.mobileqq.widget.BubbleImageView;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class voz
-  extends BaseBubbleBuilder.ViewHolder
+class voz
+  implements View.OnClickListener
 {
-  public RelativeLayout a;
-  public TextView a;
-  public BubbleImageView a;
-  public MessageProgressView a;
-  public RelativeLayout b;
-  public int e;
-  public int f;
+  voz(voy paramvoy) {}
   
-  public voz(TroopFileVideoItemBuilder paramTroopFileVideoItemBuilder) {}
+  public void onClick(View paramView)
+  {
+    this.a.dismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     voz
  * JD-Core Version:    0.7.0.1
  */

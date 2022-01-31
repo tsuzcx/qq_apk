@@ -5,10 +5,11 @@ import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
+import azsl;
 
 public class NormalPicView
   extends ImageView
-  implements IPicView
+  implements azsl
 {
   public NormalPicView(Context paramContext)
   {
@@ -32,7 +33,7 @@ public class NormalPicView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.view.NormalPicView
  * JD-Core Version:    0.7.0.1
  */

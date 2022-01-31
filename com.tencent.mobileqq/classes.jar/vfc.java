@@ -1,21 +1,25 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.aio.item.HeartBreakCombolEffectView;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.permission.PermissionSettingActivity;
 
 public class vfc
-  implements View.OnTouchListener
+  implements View.OnClickListener
 {
-  public vfc(HeartBreakCombolEffectView paramHeartBreakCombolEffectView) {}
+  public vfc(PermissionSettingActivity paramPermissionSettingActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(View paramView)
   {
-    return true;
+    paramView = PermissionSettingActivity.a(this.a).a();
+    if (paramView != null)
+    {
+      PermissionSettingActivity.a(this.a, paramView);
+      this.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vfc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,55 @@
-import com.tencent.mobileqq.ar.ScanEntranceDPC;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import Wallet.PfaFriendRsp;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 
-public class aglo
-  implements Runnable
+final class aglo
+  extends Handler
 {
-  public aglo(ScanTorchActivity paramScanTorchActivity, int paramInt) {}
-  
-  public void run()
+  aglo(Looper paramLooper)
   {
-    if (!ScanTorchActivity.h(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity)) {
-      if (this.jdField_a_of_type_Int > ScanEntranceDPC.a().c) {
-        break label54;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool2 = true;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramMessage.obj != null)
+    {
+      localObject1 = localObject2;
+      if ((paramMessage.obj instanceof PfaFriendRsp)) {
+        localObject1 = (PfaFriendRsp)paramMessage.obj;
       }
     }
-    label54:
-    for (boolean bool = true;; bool = false)
+    boolean bool1;
+    if (paramMessage.arg1 == 1)
     {
-      if (ScanTorchActivity.g(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity) != bool)
-      {
-        ScanTorchActivity.o(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, bool);
-        ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, false);
+      bool1 = true;
+      if (paramMessage.arg2 != 1) {
+        break label93;
       }
+    }
+    for (;;)
+    {
+      agln.a(bool1, (PfaFriendRsp)localObject1, bool2);
       return;
+      bool1 = false;
+      break;
+      label93:
+      bool2 = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aglo
  * JD-Core Version:    0.7.0.1
  */

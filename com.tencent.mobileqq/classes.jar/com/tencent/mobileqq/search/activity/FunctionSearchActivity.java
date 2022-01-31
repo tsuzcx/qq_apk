@@ -21,7 +21,7 @@ public class FunctionSearchActivity
     return FunctionSearchFragment.a();
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     this.a = true;
     super.doOnCreate(paramBundle);

@@ -1,25 +1,31 @@
-import com.tencent.mobileqq.businessCard.activity.FlowCameraPhotoActivity;
-import com.tencent.mobileqq.businessCard.data.CardOCRInfo;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
 
-class abvg
-  implements Runnable
+public class abvg
+  extends Handler
 {
-  abvg(abve paramabve) {}
-  
-  public void run()
+  public abvg(TroopAssisSettingActivity paramTroopAssisSettingActivity, Looper paramLooper)
   {
-    if ((QLog.isColorLevel()) && (this.a.a.a != null)) {
-      QLog.w("BusinessCard_FlowCameraPhotoActivity", 2, "onSend error " + this.a.a.a.toString() + "errorCode=" + this.a.a.a.a);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
-    this.a.a.e();
-    QQToast.a(this.a.a, 2131437099, 1).a();
+    this.a.jdField_a_of_type_Aidk.a(this.a.jdField_a_of_type_JavaUtilMap);
+    this.a.jdField_a_of_type_Aidk.notifyDataSetChanged();
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abvg
  * JD-Core Version:    0.7.0.1
  */

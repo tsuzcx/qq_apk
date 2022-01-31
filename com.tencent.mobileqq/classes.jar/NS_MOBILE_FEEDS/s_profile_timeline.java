@@ -10,8 +10,8 @@ import java.util.Map;
 public final class s_profile_timeline
   extends JceStruct
 {
-  static Map cache_map_timeline = new HashMap();
-  public Map map_timeline;
+  static Map<Integer, ArrayList<s_profile_calendar>> cache_map_timeline = new HashMap();
+  public Map<Integer, ArrayList<s_profile_calendar>> map_timeline;
   
   static
   {
@@ -22,7 +22,7 @@ public final class s_profile_timeline
   
   public s_profile_timeline() {}
   
-  public s_profile_timeline(Map paramMap)
+  public s_profile_timeline(Map<Integer, ArrayList<s_profile_calendar>> paramMap)
   {
     this.map_timeline = paramMap;
   }
@@ -41,7 +41,7 @@ public final class s_profile_timeline
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_profile_timeline
  * JD-Core Version:    0.7.0.1
  */

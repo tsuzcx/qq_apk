@@ -10,12 +10,12 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class account_detail_dynamic_list$AccountDetailDynamicListResponse
-  extends MessageMicro
+  extends MessageMicro<AccountDetailDynamicListResponse>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field last_msg_id = PBField.initUInt64(0L);
   public final PBUInt32Field msg_cnt = PBField.initUInt32(0);
-  public final PBRepeatField msg_infos = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> msg_infos = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBUInt64Field puin = PBField.initUInt64(0L);
   public account_detail_dynamic_list.RetInfo ret_info = new account_detail_dynamic_list.RetInfo();
   

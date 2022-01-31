@@ -1,27 +1,58 @@
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ItemDatasListUtils;
-import java.util.List;
+import java.nio.ByteBuffer;
 
 public class mqg
-  implements Runnable
+  extends mqi
 {
-  public mqg(FastWebActivity paramFastWebActivity) {}
+  public int a;
   
-  public void run()
+  public byte a(int paramInt)
   {
-    Object localObject = FastWebActivity.a(this.a).getCommentList();
-    ItemDatasListUtils.a(FastWebActivity.a(this.a), (List)localObject, FastWebActivity.a(this.a), FastWebActivity.a(this.a));
-    localObject = ReadInJoyLogicEngine.a().a();
-    if (localObject != null) {
-      ((FastWebModule)localObject).a(FastWebActivity.a(this.a).j, FastWebActivity.a(this.a));
+    paramInt = this.c + paramInt;
+    if (a(paramInt, 1)) {
+      return this.jdField_a_of_type_JavaNioByteBuffer.get(paramInt);
     }
-    FastWebActivity.a(this.a).notifyDataSetChanged();
-    this.a.a(FastWebActivity.a(this.a));
+    return 0;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public String a()
+  {
+    return a(this.c - 4, true);
+  }
+  
+  public String a(int paramInt)
+  {
+    return b(this.c + paramInt * 4);
+  }
+  
+  public mqg a(int paramInt, ByteBuffer paramByteBuffer)
+  {
+    if ((paramInt < 0) || (paramByteBuffer.capacity() < paramInt + 4)) {
+      return null;
+    }
+    this.jdField_a_of_type_Int = paramByteBuffer.getInt(paramInt);
+    this.c = (paramInt + 4);
+    this.jdField_a_of_type_JavaNioByteBuffer = paramByteBuffer;
+    return this;
+  }
+  
+  public mqg a(int paramInt, mqg parammqg)
+  {
+    return parammqg.a(a(this.c + paramInt * 4), this.jdField_a_of_type_JavaNioByteBuffer);
+  }
+  
+  public mqh a(int paramInt)
+  {
+    return a(paramInt, new mqh());
+  }
+  
+  public mqh a(int paramInt, mqh parammqh)
+  {
+    return parammqh.a(a(this.c + paramInt * 4), this.jdField_a_of_type_JavaNioByteBuffer);
   }
 }
 

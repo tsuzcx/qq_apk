@@ -1,33 +1,20 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.TextView;
-import com.dataline.activities.PrinterOptionActivity;
+import com.dataline.activities.PrinterActivity;
 
 public class cn
-  implements CompoundButton.OnCheckedChangeListener
+  extends ajgs
 {
-  public cn(PrinterOptionActivity paramPrinterOptionActivity) {}
+  public cn(PrinterActivity paramPrinterActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  protected void a(Object paramObject, boolean paramBoolean)
   {
-    if (paramBoolean)
-    {
-      PrinterOptionActivity.a(this.a).setVisibility(0);
-      PrinterOptionActivity.a(this.a).setText(2131427687);
-      return;
+    if ((paramBoolean) && (PrinterActivity.a(this.a))) {
+      PrinterActivity.a(this.a, paramObject);
     }
-    if (PrinterOptionActivity.b(this.a))
-    {
-      PrinterOptionActivity.a(this.a).setVisibility(0);
-      PrinterOptionActivity.a(this.a).setText(2131427688);
-      return;
-    }
-    PrinterOptionActivity.a(this.a).setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     cn
  * JD-Core Version:    0.7.0.1
  */

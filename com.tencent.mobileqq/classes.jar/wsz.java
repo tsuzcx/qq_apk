@@ -1,25 +1,44 @@
-import com.tencent.mobileqq.activity.contacts.fragment.PhoneContactFragment;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.widget.XListView;
-
 public class wsz
-  implements Runnable
+  extends bhwk
 {
-  public wsz(PhoneContactFragment paramPhoneContactFragment) {}
+  private bhwf<Boolean> a = new bhwf();
+  private bhwf<Boolean> b = new bhwf();
+  private bhwf<Boolean> c = new bhwf();
   
-  public void run()
+  public bhwf<Boolean> a()
   {
-    if (PhoneContactFragment.a(this.a) == null) {
-      PhoneContactFragment.a(this.a, (PhoneContactManagerImp)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10));
+    return this.a;
+  }
+  
+  public boolean a()
+  {
+    if (this.b.a() != null) {
+      return ((Boolean)this.b.a()).booleanValue();
     }
-    boolean bool = PhoneContactFragment.a(this.a).f();
-    this.a.jdField_a_of_type_ComTencentWidgetXListView.post(new wta(this, bool));
+    return false;
+  }
+  
+  public bhwf<Boolean> b()
+  {
+    return this.b;
+  }
+  
+  public boolean b()
+  {
+    if (this.c.a() != null) {
+      return ((Boolean)this.c.a()).booleanValue();
+    }
+    return false;
+  }
+  
+  public bhwf<Boolean> c()
+  {
+    return this.c;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wsz
  * JD-Core Version:    0.7.0.1
  */

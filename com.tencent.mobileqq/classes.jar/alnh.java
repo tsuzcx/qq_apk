@@ -1,27 +1,23 @@
-import com.tencent.open.business.base.OpenConfig;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
 
 public class alnh
-  implements Runnable
 {
-  public alnh(OpenConfig paramOpenConfig) {}
+  public final int a;
+  public final Rect a;
+  public final BitmapDrawable a;
   
-  public void run()
+  public alnh(BitmapDrawable paramBitmapDrawable, int paramInt, Rect paramRect)
   {
-    String str = this.a.a("com.tencent.open.config.json");
-    try
-    {
-      this.a.a = new JSONObject(str);
-      OpenConfig.a(this.a, true);
-      return;
-    }
-    catch (JSONException localJSONException) {}
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = paramBitmapDrawable;
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidGraphicsRect.set(paramRect);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alnh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,37 @@
-import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
-import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager.OnResourceDownloadListener;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager.3.1;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 
-class ahoo
-  implements CaptureVideoFilterManager.OnResourceDownloadListener
+public class ahoo
+  implements INetInfoHandler
 {
   ahoo(ahon paramahon) {}
   
-  public void a(boolean paramBoolean)
+  public void onNetMobile2None() {}
+  
+  public void onNetMobile2Wifi(String paramString)
   {
-    if (paramBoolean)
-    {
-      this.a.a.a(CaptureVideoFilterManager.a().a());
-      if (QLog.isColorLevel()) {
-        QLog.d("CameraCaptureFragment", 2, "EffectsCameraCaptureFragment onResourceDownload");
-      }
+    long l = Thread.currentThread().getId();
+    if (ahon.a(this.a) == l) {
+      ahon.a(this.a);
     }
+    while (ahon.a(this.a) == null) {
+      return;
+    }
+    ahon.a(this.a).post(new LbsFilterStatusManager.3.1(this));
   }
+  
+  public void onNetNone2Mobile(String paramString) {}
+  
+  public void onNetNone2Wifi(String paramString) {}
+  
+  public void onNetWifi2Mobile(String paramString) {}
+  
+  public void onNetWifi2None() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahoo
  * JD-Core Version:    0.7.0.1
  */

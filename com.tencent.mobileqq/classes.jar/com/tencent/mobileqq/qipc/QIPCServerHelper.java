@@ -2,27 +2,26 @@ package com.tencent.mobileqq.qipc;
 
 import android.os.Bundle;
 import eipc.EIPCConnection;
+import eipc.EIPCModuleManager;
 import eipc.EIPCResult;
 import eipc.EIPCResultCallback;
 import eipc.EIPCServer;
 import java.util.ArrayList;
 import java.util.Iterator;
-import mqq.app.MobileQQ;
 
 public class QIPCServerHelper
 {
-  static QIPCServerHelper a;
-  EIPCServer b = null;
+  static volatile QIPCServerHelper sInstance;
   
   public static QIPCServerHelper getInstance()
   {
+    if (sInstance == null) {}
     try
     {
-      if (a == null) {
-        a = new QIPCServerHelper();
+      if (sInstance == null) {
+        sInstance = new QIPCServerHelper();
       }
-      QIPCServerHelper localQIPCServerHelper = a;
-      return localQIPCServerHelper;
+      return sInstance;
     }
     finally {}
   }
@@ -34,15 +33,7 @@ public class QIPCServerHelper
   
   public EIPCServer getServer()
   {
-    try
-    {
-      if (this.b == null) {
-        this.b = new EIPCServer(MobileQQ.sMobileQQ);
-      }
-      EIPCServer localEIPCServer = this.b;
-      return localEIPCServer;
-    }
-    finally {}
+    return EIPCServer.getServer();
   }
   
   public boolean isModuleRunning(String paramString)
@@ -66,6 +57,35 @@ public class QIPCServerHelper
       }
     }
     return false;
+  }
+  
+  public boolean isProcessRunning(String paramString)
+  {
+    if ((paramString == null) || ("".equals(paramString))) {
+      return false;
+    }
+    Iterator localIterator = getServer().getClientConnectionList().iterator();
+    while (localIterator.hasNext())
+    {
+      EIPCConnection localEIPCConnection = (EIPCConnection)localIterator.next();
+      try
+      {
+        boolean bool = paramString.equals(localEIPCConnection.procName);
+        if (bool) {
+          return true;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
+    return false;
+  }
+  
+  public void notifyOnAccountChanged()
+  {
+    EIPCModuleManager.excuteOnAsyncThread(new QIPCServerHelper.1(this));
   }
   
   public void register(QIPCModule paramQIPCModule)

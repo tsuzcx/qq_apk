@@ -10,11 +10,11 @@ public final class material_set_switch_req
   extends JceStruct
 {
   static int cache_iSwitchState = 0;
-  static Map cache_mapExtInfo = new HashMap();
+  static Map<String, String> cache_mapExtInfo = new HashMap();
   public int iAppid;
   public int iSwitchState;
   public long lUin;
-  public Map mapExtInfo;
+  public Map<String, String> mapExtInfo;
   
   static
   {
@@ -23,7 +23,7 @@ public final class material_set_switch_req
   
   public material_set_switch_req() {}
   
-  public material_set_switch_req(long paramLong, int paramInt1, int paramInt2, Map paramMap)
+  public material_set_switch_req(long paramLong, int paramInt1, int paramInt2, Map<String, String> paramMap)
   {
     this.lUin = paramLong;
     this.iAppid = paramInt1;

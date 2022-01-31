@@ -4,8 +4,8 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.Matrix;
 import android.text.TextUtils;
-import dov.com.tencent.mobileqq.shortvideo.common.GloableValue;
-import dov.com.tencent.mobileqq.shortvideo.util.VidUtil;
+import bjjl;
+import bjlx;
 import java.io.File;
 
 public class RecordThumbnailUtils
@@ -198,7 +198,7 @@ public class RecordThumbnailUtils
     //   340: aload 11
     //   342: iload_2
     //   343: iload_3
-    //   344: invokestatic 125	dov/com/tencent/mobileqq/shortvideo/util/ImageUtil:a	([I[BII)V
+    //   344: invokestatic 125	bjlg:a	([I[BII)V
     //   347: aload 12
     //   349: iload_2
     //   350: iload_3
@@ -214,7 +214,7 @@ public class RecordThumbnailUtils
     //   370: aload_1
     //   371: astore 11
     //   373: iload 5
-    //   375: invokestatic 139	dov/com/tencent/mobileqq/activity/richmedia/view/CameraFilterGLView:a	(I)Z
+    //   375: invokestatic 139	bjbo:a	(I)Z
     //   378: ifne +11 -> 389
     //   381: aload_1
     //   382: iload 5
@@ -239,7 +239,7 @@ public class RecordThumbnailUtils
     //   423: astore_1
     //   424: aload 11
     //   426: getstatic 157	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   429: bipush 60
+    //   429: bipush 80
     //   431: aload 10
     //   433: invokevirtual 161	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   436: pop
@@ -396,7 +396,7 @@ public class RecordThumbnailUtils
   public static String a(String paramString, int paramInt1, int paramInt2, int paramInt3, Bitmap.Config paramConfig)
   {
     File localFile = new File(paramString);
-    return a(paramString, paramInt1, paramInt2, GloableValue.b + File.separator + VidUtil.a(localFile) + ".jpg", paramInt3, paramConfig);
+    return a(paramString, paramInt1, paramInt2, bjjl.a + File.separator + bjlx.a(localFile) + ".jpg", paramInt3, paramConfig);
   }
   
   /* Error */
@@ -410,12 +410,12 @@ public class RecordThumbnailUtils
     //   6: iload_1
     //   7: iload_2
     //   8: aload 5
-    //   10: invokestatic 209	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    //   10: invokestatic 208	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
     //   13: astore 5
     //   15: aload 5
     //   17: iload_1
     //   18: iload_2
-    //   19: invokestatic 213	dov/com/tencent/mobileqq/shortvideo/cover/RecordThumbnailUtils:nativeGenCover	(Landroid/graphics/Bitmap;II)I
+    //   19: invokestatic 212	dov/com/tencent/mobileqq/shortvideo/cover/RecordThumbnailUtils:nativeGenCover	(Landroid/graphics/Bitmap;II)I
     //   22: istore 6
     //   24: invokestatic 47	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   27: ifeq +39 -> 66
@@ -424,11 +424,11 @@ public class RecordThumbnailUtils
     //   33: new 51	java/lang/StringBuilder
     //   36: dup
     //   37: invokespecial 52	java/lang/StringBuilder:<init>	()V
-    //   40: ldc 215
+    //   40: ldc 214
     //   42: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   45: iload 6
-    //   47: invokevirtual 218	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   50: ldc 220
+    //   47: invokevirtual 217	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   50: ldc 219
     //   52: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   55: aload 5
     //   57: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -442,23 +442,23 @@ public class RecordThumbnailUtils
     //   74: iload_2
     //   75: aload_3
     //   76: iload 4
-    //   78: invokestatic 222	dov/com/tencent/mobileqq/shortvideo/cover/RecordThumbnailUtils:a	(ILjava/lang/String;IILjava/lang/String;I)Ljava/lang/String;
+    //   78: invokestatic 221	dov/com/tencent/mobileqq/shortvideo/cover/RecordThumbnailUtils:a	(ILjava/lang/String;IILjava/lang/String;I)Ljava/lang/String;
     //   81: astore_0
     //   82: aload_0
     //   83: areturn
     //   84: astore_0
     //   85: ldc 49
     //   87: iconst_2
-    //   88: ldc 224
+    //   88: ldc 223
     //   90: invokestatic 179	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   93: invokestatic 229	com/tencent/image/URLDrawable:clearMemoryCache	()V
-    //   96: invokestatic 234	java/lang/System:gc	()V
+    //   93: invokestatic 228	com/tencent/image/URLDrawable:clearMemoryCache	()V
+    //   96: invokestatic 233	java/lang/System:gc	()V
     //   99: aconst_null
     //   100: areturn
     //   101: astore_0
     //   102: ldc 49
     //   104: iconst_2
-    //   105: ldc 236
+    //   105: ldc 235
     //   107: invokestatic 179	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   110: aconst_null
     //   111: areturn
@@ -468,7 +468,7 @@ public class RecordThumbnailUtils
     //   117: new 51	java/lang/StringBuilder
     //   120: dup
     //   121: invokespecial 52	java/lang/StringBuilder:<init>	()V
-    //   124: ldc 236
+    //   124: ldc 235
     //   126: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   129: aload 9
     //   131: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
@@ -482,7 +482,7 @@ public class RecordThumbnailUtils
     //   151: iload 4
     //   153: ifeq +237 -> 390
     //   156: iload 4
-    //   158: invokestatic 139	dov/com/tencent/mobileqq/activity/richmedia/view/CameraFilterGLView:a	(I)Z
+    //   158: invokestatic 139	bjbo:a	(I)Z
     //   161: ifne +229 -> 390
     //   164: aload 5
     //   166: iload 4
@@ -507,7 +507,7 @@ public class RecordThumbnailUtils
     //   206: ifnull +21 -> 227
     //   209: aload 5
     //   211: getstatic 157	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   214: bipush 60
+    //   214: bipush 80
     //   216: aload 7
     //   218: invokevirtual 161	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   221: pop
@@ -526,14 +526,14 @@ public class RecordThumbnailUtils
     //   248: new 51	java/lang/StringBuilder
     //   251: dup
     //   252: invokespecial 52	java/lang/StringBuilder:<init>	()V
-    //   255: ldc 238
+    //   255: ldc 237
     //   257: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   260: aload_3
     //   261: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   264: ldc 240
+    //   264: ldc 239
     //   266: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   269: aload_3
-    //   270: invokestatic 244	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/lang/String;)Z
+    //   270: invokestatic 244	bace:b	(Ljava/lang/String;)Z
     //   273: invokevirtual 247	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   276: invokevirtual 62	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   279: invokestatic 66	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
@@ -621,12 +621,6 @@ public class RecordThumbnailUtils
     //   347	351	368	java/io/IOException
     //   209	227	372	finally
     //   209	227	379	java/io/IOException
-  }
-  
-  public static String b(String paramString, int paramInt1, int paramInt2, int paramInt3, Bitmap.Config paramConfig)
-  {
-    paramConfig = new File(paramString);
-    return a(0, paramString, paramInt1, paramInt2, GloableValue.b + File.separator + VidUtil.a(paramConfig) + ".jpg", paramInt3);
   }
   
   private static native int nativeGenCover(Bitmap paramBitmap, int paramInt1, int paramInt2);

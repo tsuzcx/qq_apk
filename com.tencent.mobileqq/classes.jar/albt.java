@@ -1,67 +1,43 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.util.DisplayUtil;
-import com.tencent.mobileqq.widget.DraggableGridView;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.BaseActivity;
+import cooperation.qzone.QzonePluginProxyActivity;
+import cooperation.qzone.TranslucentActivity;
+import org.json.JSONObject;
 
 public class albt
-  implements Runnable
+  implements albq
 {
-  private int jdField_a_of_type_Int;
-  private DraggableGridView jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView;
-  public boolean a;
-  
-  public albt(DraggableGridView paramDraggableGridView)
+  public boolean a(String paramString1, String paramString2, JSONObject paramJSONObject, long paramLong, String paramString3)
   {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView = paramDraggableGridView;
-  }
-  
-  public void a(int paramInt)
-  {
-    if (paramInt != this.jdField_a_of_type_Int) {
-      DraggableGridView.c(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView, 0);
-    }
-    this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Boolean)
+    if (paramLong != 0L) {}
+    do
     {
-      this.jdField_a_of_type_Boolean = false;
-      ThreadManager.post(this, 8, null, true);
-    }
-  }
-  
-  public void run()
-  {
-    if (!this.jdField_a_of_type_Boolean)
+      return false;
+      paramJSONObject = BaseActivity.sTopActivity;
+    } while (paramJSONObject == null);
+    paramString3 = new Intent(paramJSONObject, TranslucentActivity.class);
+    paramString3.addFlags(268435456);
+    QzonePluginProxyActivity.a(paramString3, "com.qzone.misc.web.QZoneTranslucentActivity");
+    paramString3.setAction("action_js2qzone");
+    paramString3.putExtra("cmd", "Schema");
+    paramString2 = paramString1;
+    if (paramString1.startsWith("arouse/detailbyurl?base64url"))
     {
-      int i = 0;
-      if (this.jdField_a_of_type_Int == 1) {
-        i = DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView.getContext(), 10.0F);
-      }
-      for (;;)
-      {
-        for (;;)
-        {
-          Message localMessage = new Message();
-          localMessage.arg1 = i;
-          DraggableGridView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView).sendMessage(localMessage);
-          try
-          {
-            Thread.sleep(16L);
-          }
-          catch (InterruptedException localInterruptedException) {}
-        }
-        break;
-        if (this.jdField_a_of_type_Int == 2) {
-          i = -DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqWidgetDraggableGridView.getContext(), 10.0F);
-        }
+      paramString2 = paramString1;
+      if (!paramString1.contains("from")) {
+        paramString2 = paramString1 + "&from=aio";
       }
     }
+    paramString3.putExtra("schema", "mqzone://" + paramString2);
+    paramString3.putExtra("from", 2);
+    paramJSONObject.startActivity(paramString3);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     albt
  * JD-Core Version:    0.7.0.1
  */

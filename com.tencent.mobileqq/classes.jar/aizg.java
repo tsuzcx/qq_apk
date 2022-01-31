@@ -1,26 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class aizg
-  implements Animation.AnimationListener
+final class aizg
+  implements aiud
 {
-  public aizg(MediaPreviewActivity paramMediaPreviewActivity) {}
+  aizg(aizi paramaizi, int paramInt, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, aiju paramaiju, int[] paramArrayOfInt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    this.a.b = false;
-    paramAnimation.setAnimationListener(null);
-    this.a.finish();
+    if (this.jdField_a_of_type_Aizi != null) {
+      this.jdField_a_of_type_Aizi.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Aiju.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfInt, 22);
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aizg
  * JD-Core Version:    0.7.0.1
  */

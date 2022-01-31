@@ -1,41 +1,31 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment;
 
 public class afnk
-  implements IphonePickerView.PickerViewAdapter
+  implements View.OnClickListener
 {
-  public afnk(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel) {}
+  public afnk(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public int getColumnCount()
+  public void onClick(View paramView)
   {
-    return 1;
-  }
-  
-  public int getRowCount(int paramInt)
-  {
-    return 2;
-  }
-  
-  public String getText(int paramInt1, int paramInt2)
-  {
-    if (paramInt2 >= 0)
-    {
-      paramInt1 = paramInt2;
-      if (paramInt2 <= 1) {}
+    this.a.f = false;
+    this.a.u = "";
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    if (this.a.d != 22) {
+      this.a.b.setVisibility(0);
     }
-    else
-    {
-      paramInt1 = 0;
+    if (this.a.jdField_a_of_type_Afow != null) {
+      this.a.jdField_a_of_type_Afow.a();
     }
-    if (paramInt1 == 0) {
-      return "男";
-    }
-    return "女";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afnk
  * JD-Core Version:    0.7.0.1
  */

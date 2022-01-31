@@ -9,12 +9,10 @@ import android.graphics.BitmapFactory.Options;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.os.AsyncTask;
-import android.os.Handler;
 import android.os.SystemClock;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.concurrent.RejectedExecutionException;
@@ -42,13 +40,11 @@ public class NativeGifIndex8
   protected String mSrcGifFile;
   
   public NativeGifIndex8(File paramFile, boolean paramBoolean)
-    throws IOException
   {
     this(paramFile, paramBoolean, false, 0, 0, 0.0F);
   }
   
   public NativeGifIndex8(File paramFile, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, float paramFloat)
-    throws IOException
   {
     if (paramFile == null) {
       throw new NullPointerException("Source is null");
@@ -187,8 +183,8 @@ public class NativeGifIndex8
     if (URLDrawable.mApplicationContext != null)
     {
       SharedPreferences localSharedPreferences = URLDrawable.mApplicationContext.getSharedPreferences("early_qq.android.native.gif", 4);
-      bool1 = bool2;
       localObject = localSharedPreferences;
+      bool1 = bool2;
       if (localSharedPreferences != null)
       {
         bool1 = localSharedPreferences.getBoolean("gif_so_is_update", false);
@@ -312,7 +308,7 @@ public class NativeGifIndex8
     }
     try
     {
-      Utils.executeAsyncTaskOnSerialExcuter(new NativeDecodeFrameTask(l1 + l2), (Void[])null);
+      ThreadManagerV2.excute(new NativeGifIndex8.NativeDecodeFrameTask(this, l1 + l2), 64, null, true);
       return;
     }
     catch (RejectedExecutionException localRejectedExecutionException)
@@ -333,7 +329,6 @@ public class NativeGifIndex8
   }
   
   protected void finalize()
-    throws Throwable
   {
     int i = this.mGifHandler;
     this.mGifHandler = 0;
@@ -385,50 +380,50 @@ public class NativeGifIndex8
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: getstatic 40	com/tencent/image/NativeGifIndex8:mIsGIFEngineAvaliable	Z
+    //   2: getstatic 35	com/tencent/image/NativeGifIndex8:mIsGIFEngineAvaliable	Z
     //   5: istore_2
     //   6: iload_2
     //   7: ifeq +117 -> 124
     //   10: aload_0
     //   11: aload_0
-    //   12: getfield 106	com/tencent/image/NativeGifIndex8:mExtData	[I
+    //   12: getfield 98	com/tencent/image/NativeGifIndex8:mExtData	[I
     //   15: aload_0
-    //   16: getfield 55	com/tencent/image/NativeGifIndex8:mGifHandler	I
-    //   19: invokestatic 379	com/tencent/image/NativeGifIndex8:nativeDecodeNext	([II)Landroid/graphics/Bitmap;
-    //   22: putfield 199	com/tencent/image/NativeGifIndex8:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
+    //   16: getfield 47	com/tencent/image/NativeGifIndex8:mGifHandler	I
+    //   19: invokestatic 373	com/tencent/image/NativeGifIndex8:nativeDecodeNext	([II)Landroid/graphics/Bitmap;
+    //   22: putfield 191	com/tencent/image/NativeGifIndex8:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
     //   25: aload_0
-    //   26: getfield 199	com/tencent/image/NativeGifIndex8:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
+    //   26: getfield 191	com/tencent/image/NativeGifIndex8:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
     //   29: ifnull +12 -> 41
     //   32: aload_0
-    //   33: getfield 106	com/tencent/image/NativeGifIndex8:mExtData	[I
+    //   33: getfield 98	com/tencent/image/NativeGifIndex8:mExtData	[I
     //   36: iconst_1
     //   37: iaload
     //   38: ifeq +38 -> 76
-    //   41: getstatic 222	com/tencent/image/URLDrawable:mApplicationContext	Landroid/content/Context;
-    //   44: ldc 224
+    //   41: getstatic 214	com/tencent/image/URLDrawable:mApplicationContext	Landroid/content/Context;
+    //   44: ldc 216
     //   46: iconst_4
-    //   47: invokevirtual 228	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   47: invokevirtual 220	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
     //   50: astore_3
     //   51: aload_3
     //   52: ifnull +24 -> 76
     //   55: aload_3
-    //   56: invokeinterface 249 1 0
-    //   61: ldc_w 299
+    //   56: invokeinterface 241 1 0
+    //   61: ldc_w 291
     //   64: iconst_0
-    //   65: invokeinterface 255 3 0
-    //   70: invokeinterface 258 1 0
+    //   65: invokeinterface 247 3 0
+    //   70: invokeinterface 250 1 0
     //   75: pop
     //   76: aload_0
     //   77: monitorexit
     //   78: return
     //   79: astore_3
-    //   80: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   80: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   83: ifeq -58 -> 25
-    //   86: ldc 18
+    //   86: ldc 13
     //   88: iconst_2
     //   89: aload_3
-    //   90: invokevirtual 380	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   93: invokestatic 314	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   90: invokevirtual 374	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   93: invokestatic 306	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   96: goto -71 -> 25
     //   99: astore_3
     //   100: aload_0
@@ -436,75 +431,75 @@ public class NativeGifIndex8
     //   102: aload_3
     //   103: athrow
     //   104: astore_3
-    //   105: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   105: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   108: ifeq -83 -> 25
-    //   111: ldc 18
+    //   111: ldc 13
     //   113: iconst_2
     //   114: aload_3
-    //   115: invokevirtual 381	java/lang/IllegalArgumentException:getMessage	()Ljava/lang/String;
-    //   118: invokestatic 314	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   115: invokevirtual 375	java/lang/IllegalArgumentException:getMessage	()Ljava/lang/String;
+    //   118: invokestatic 306	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   121: goto -96 -> 25
-    //   124: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   124: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   127: ifeq +12 -> 139
-    //   130: ldc 18
+    //   130: ldc 13
     //   132: iconst_2
-    //   133: ldc_w 383
-    //   136: invokestatic 314	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   133: ldc_w 377
+    //   136: invokestatic 306	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
     //   139: aload_0
-    //   140: getfield 118	com/tencent/image/NativeGifIndex8:mReqHeight	I
+    //   140: getfield 110	com/tencent/image/NativeGifIndex8:mReqHeight	I
     //   143: ifle -67 -> 76
     //   146: aload_0
-    //   147: getfield 116	com/tencent/image/NativeGifIndex8:mReqWidth	I
+    //   147: getfield 108	com/tencent/image/NativeGifIndex8:mReqWidth	I
     //   150: istore_1
     //   151: iload_1
     //   152: ifle -76 -> 76
     //   155: aload_0
     //   156: aload_0
-    //   157: getfield 79	com/tencent/image/NativeGifIndex8:mSrcGifFile	Ljava/lang/String;
-    //   160: invokestatic 386	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;)Landroid/graphics/Bitmap;
-    //   163: putfield 199	com/tencent/image/NativeGifIndex8:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
+    //   157: getfield 71	com/tencent/image/NativeGifIndex8:mSrcGifFile	Ljava/lang/String;
+    //   160: invokestatic 380	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;)Landroid/graphics/Bitmap;
+    //   163: putfield 191	com/tencent/image/NativeGifIndex8:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
     //   166: aload_0
     //   167: aload_0
-    //   168: getfield 199	com/tencent/image/NativeGifIndex8:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
+    //   168: getfield 191	com/tencent/image/NativeGifIndex8:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
     //   171: aload_0
-    //   172: getfield 116	com/tencent/image/NativeGifIndex8:mReqWidth	I
+    //   172: getfield 108	com/tencent/image/NativeGifIndex8:mReqWidth	I
     //   175: aload_0
-    //   176: getfield 118	com/tencent/image/NativeGifIndex8:mReqHeight	I
+    //   176: getfield 110	com/tencent/image/NativeGifIndex8:mReqHeight	I
     //   179: iconst_1
-    //   180: invokestatic 390	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
-    //   183: putfield 199	com/tencent/image/NativeGifIndex8:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
+    //   180: invokestatic 384	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
+    //   183: putfield 191	com/tencent/image/NativeGifIndex8:mCurrentFrameBitmap	Landroid/graphics/Bitmap;
     //   186: goto -110 -> 76
     //   189: astore_3
-    //   190: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   190: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   193: ifeq -117 -> 76
-    //   196: ldc 18
+    //   196: ldc 13
     //   198: iconst_2
-    //   199: new 90	java/lang/StringBuilder
+    //   199: new 82	java/lang/StringBuilder
     //   202: dup
-    //   203: invokespecial 91	java/lang/StringBuilder:<init>	()V
-    //   206: ldc_w 392
-    //   209: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   203: invokespecial 83	java/lang/StringBuilder:<init>	()V
+    //   206: ldc_w 386
+    //   209: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   212: aload_3
-    //   213: invokevirtual 380	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   216: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   219: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   222: invokestatic 104	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   213: invokevirtual 374	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   216: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   219: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   222: invokestatic 96	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   225: goto -149 -> 76
     //   228: astore_3
-    //   229: invokestatic 88	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   229: invokestatic 80	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   232: ifeq -156 -> 76
-    //   235: ldc 18
+    //   235: ldc 13
     //   237: iconst_2
-    //   238: new 90	java/lang/StringBuilder
+    //   238: new 82	java/lang/StringBuilder
     //   241: dup
-    //   242: invokespecial 91	java/lang/StringBuilder:<init>	()V
-    //   245: ldc_w 394
-    //   248: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   242: invokespecial 83	java/lang/StringBuilder:<init>	()V
+    //   245: ldc_w 388
+    //   248: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   251: aload_3
-    //   252: invokevirtual 311	java/lang/Throwable:getMessage	()Ljava/lang/String;
-    //   255: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   258: invokevirtual 100	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   261: invokestatic 104	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   252: invokevirtual 303	java/lang/Throwable:getMessage	()Ljava/lang/String;
+    //   255: invokevirtual 87	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   258: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   261: invokestatic 96	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   264: goto -188 -> 76
     // Local variable table:
     //   start	length	slot	name	signature
@@ -543,42 +538,6 @@ public class NativeGifIndex8
       return nativeGetWidth(this.mGifHandler);
     }
     return 0;
-  }
-  
-  private class NativeDecodeFrameTask
-    extends AsyncTask<Void, Void, Void>
-  {
-    final long mNextFrameTime;
-    
-    public NativeDecodeFrameTask(long paramLong)
-    {
-      this.mNextFrameTime = paramLong;
-    }
-    
-    protected Void doInBackground(Void... paramVarArgs)
-    {
-      NativeGifIndex8.this.getNextFrame();
-      if (NativeGifIndex8.this.mFrameNumber > 1)
-      {
-        long l = SystemClock.uptimeMillis();
-        paramVarArgs = new Runnable()
-        {
-          public void run()
-          {
-            AbstractGifImage.sAccumulativeRunnable.add(new WeakReference[] { new WeakReference(NativeGifIndex8.this) });
-          }
-        };
-        if (l < this.mNextFrameTime)
-        {
-          AbstractGifImage.sUIThreadHandler.postDelayed(paramVarArgs, this.mNextFrameTime - l);
-          return null;
-        }
-        AbstractGifImage.sUIThreadHandler.post(paramVarArgs);
-        return null;
-      }
-      NativeGifIndex8.this.mDecodeNextFrameEnd = true;
-      return null;
-    }
   }
 }
 

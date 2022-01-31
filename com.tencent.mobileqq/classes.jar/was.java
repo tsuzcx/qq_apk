@@ -1,62 +1,171 @@
-import android.os.Message;
-import android.widget.RelativeLayout;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadRegulator;
-import com.tencent.mobileqq.bubble.ChatXListView;
-import com.tencent.mobileqq.multimsg.MultiMsgManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qzone.util.QZLog;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class was
-  extends MqqHandler
 {
-  public was(MultiForwardChatPie paramMultiForwardChatPie) {}
+  private static final String jdField_a_of_type_JavaLangString = was.class.getSimpleName();
+  private static StringBuilder jdField_a_of_type_JavaLangStringBuilder = new StringBuilder(32);
+  public static final SimpleDateFormat a;
+  public static final SimpleDateFormat b;
+  public static final SimpleDateFormat c;
+  public static final SimpleDateFormat d;
   
-  public void handleMessage(Message paramMessage)
+  static
   {
-    switch (paramMessage.what)
+    jdField_a_of_type_JavaTextSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    b = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    c = new SimpleDateFormat("yyyyMMddHHmm");
+    d = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss");
+  }
+  
+  public static String a(long paramLong)
+  {
+    long l1 = System.currentTimeMillis();
+    int m;
+    int i2;
+    try
     {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof List)));
-      this.a.b = ((List)paramMessage.obj);
-      if ((this.a.b == null) || (this.a.b.size() == 0))
-      {
-        MultiForwardChatPie.a(this.a, System.currentTimeMillis());
-        if (QLog.isColorLevel()) {
-          QLog.d("MultiMsg", 2, "MultiForwardActivity.doOnCreate, start requestReceiveMultiMsg");
-        }
-        this.a.x();
-        this.a.c = new wat(this);
-        MultiForwardChatPie.a(this.a).postDelayed(this.a.c, 60000L);
-        ThreadRegulator.a().b(1);
-        MultiMsgManager.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.f, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.a.h, 1035, this.a.a(MultiForwardChatPie.a(this.a)));
-        return;
+      str = BaseApplicationImpl.getContext().getString(2131655016);
+      localObject2 = BaseApplicationImpl.getContext().getString(2131655017);
+      localObject1 = BaseApplicationImpl.getContext().getString(2131655015);
+      l2 = (l1 - paramLong) / 1000L;
+      if (l2 < 60L) {
+        return str;
       }
-      paramMessage = ChatActivityUtils.a(this.a.b, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      paramMessage = ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext(), this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramMessage);
-      MultiForwardChatPie.a(this.a).setVisibility(8);
-      MultiForwardChatPie.a(this.a).setVisibility(0);
-      MultiForwardChatPie.a(this.a).setVisibility(0);
-      MultiForwardChatPie.a(this.a).a(this.a.b, paramMessage);
-    } while (!QLog.isColorLevel());
-    QLog.d("MultiMsg", 2, "MultiForwardActivity.doOnCreate, MultiMsg has been downloaded");
+    }
+    catch (Exception localException)
+    {
+      long l2;
+      for (;;)
+      {
+        String str = ajjy.a(2131637056);
+        localObject2 = "%d分钟前";
+        localObject1 = "%d小时前";
+        QZLog.d(jdField_a_of_type_JavaLangString, 1, localException, new Object[0]);
+      }
+      if (l2 < 3600L) {
+        return String.format((String)localObject2, new Object[] { Long.valueOf(l2 / 60L) });
+      }
+      if (l2 < 86400L) {
+        return String.format((String)localObject1, new Object[] { Long.valueOf(l2 / 60L / 60L) });
+      }
+      localObject1 = Calendar.getInstance();
+      ((Calendar)localObject1).setTimeInMillis(paramLong);
+      m = ((Calendar)localObject1).get(5);
+      int n = ((Calendar)localObject1).get(11);
+      int i1 = ((Calendar)localObject1).get(12);
+      int k = ((Calendar)localObject1).get(1);
+      i2 = ((Calendar)localObject1).get(2) + 1;
+      int i4 = ((Calendar)localObject1).get(6);
+      localObject1 = Calendar.getInstance();
+      ((Calendar)localObject1).setTimeInMillis(l1);
+      int i3 = ((Calendar)localObject1).get(1);
+      int i5 = ((Calendar)localObject1).get(6);
+      int i;
+      if (i3 != k)
+      {
+        i = 0;
+        int j = k;
+        if (j < i3)
+        {
+          if (((j % 4 == 0) && (j % 100 != 0)) || (j % 400 == 0)) {
+            i += 366;
+          }
+          for (;;)
+          {
+            j += 1;
+            break;
+            i += 365;
+          }
+        }
+        i += i5 - i4;
+        jdField_a_of_type_JavaLangStringBuilder.delete(0, jdField_a_of_type_JavaLangStringBuilder.length());
+        if (i != 1) {
+          break label459;
+        }
+        localObject2 = jdField_a_of_type_JavaLangStringBuilder.append("昨天");
+        if (n >= 10) {
+          break label439;
+        }
+        localObject1 = "0" + n;
+        label376:
+        localObject2 = ((StringBuilder)localObject2).append(localObject1).append(":");
+        if (i1 >= 10) {
+          break label449;
+        }
+      }
+      label439:
+      label449:
+      for (localObject1 = "0" + i1;; localObject1 = Integer.valueOf(i1))
+      {
+        return localObject1;
+        i = i5 - i4;
+        break;
+        localObject1 = Integer.valueOf(n);
+        break label376;
+      }
+      label459:
+      if (i == 2)
+      {
+        localObject2 = jdField_a_of_type_JavaLangStringBuilder.append("前天");
+        if (n < 10)
+        {
+          localObject1 = "0" + n;
+          localObject2 = ((StringBuilder)localObject2).append(localObject1).append(":");
+          if (i1 >= 10) {
+            break label567;
+          }
+        }
+        for (localObject1 = "0" + i1;; localObject1 = Integer.valueOf(i1))
+        {
+          return localObject1;
+          localObject1 = Integer.valueOf(n);
+          break;
+        }
+      }
+      label567:
+      if (i3 != k)
+      {
+        localObject2 = jdField_a_of_type_JavaLangStringBuilder.append(k).append("-");
+        if (i2 < 10)
+        {
+          localObject1 = "0" + i2;
+          localObject2 = ((StringBuilder)localObject2).append(localObject1).append("-");
+          if (m >= 10) {
+            break label692;
+          }
+        }
+        for (localObject1 = "0" + m;; localObject1 = Integer.valueOf(m))
+        {
+          return localObject1;
+          localObject1 = Integer.valueOf(i2);
+          break;
+        }
+      }
+      label692:
+      localObject2 = jdField_a_of_type_JavaLangStringBuilder;
+      if (i2 >= 10) {
+        break label790;
+      }
+    }
+    Object localObject1 = "0" + i2;
+    Object localObject2 = ((StringBuilder)localObject2).append(localObject1).append("-");
+    if (m < 10) {}
+    for (localObject1 = "0" + m;; localObject1 = Integer.valueOf(m))
+    {
+      return localObject1;
+      label790:
+      localObject1 = Integer.valueOf(i2);
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     was
  * JD-Core Version:    0.7.0.1
  */

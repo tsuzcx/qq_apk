@@ -1,18 +1,66 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
-import com.tencent.mobileqq.surfaceviewaction.gl.Layer;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-
-class mmz
-  implements Runnable
+public class mmz
 {
-  mmz(mmy parammmy, Layer paramLayer) {}
-  
-  public void run()
+  public static int a()
   {
-    this.jdField_a_of_type_Mmy.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView.a.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlLayer);
-    PublicAccountReportUtils.a(this.jdField_a_of_type_Mmy.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "", "0X8008C80", "0X8008C80", 0, 0, this.jdField_a_of_type_Mmy.a.b, "" + ReadInJoyUtils.e(), "" + ReadInJoySkinGuideView.a(this.jdField_a_of_type_Mmy.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoySkinGuideView), "", false);
+    amgv localamgv = (amgv)alzw.a().a(207);
+    if (localamgv != null) {
+      return localamgv.jdField_a_of_type_Int;
+    }
+    return 0;
+  }
+  
+  public static String a()
+  {
+    amgv localamgv = (amgv)alzw.a().a(207);
+    if (localamgv != null) {
+      return localamgv.jdField_a_of_type_JavaLangString;
+    }
+    return null;
+  }
+  
+  public static int b()
+  {
+    amgv localamgv = (amgv)alzw.a().a(207);
+    if (localamgv != null) {
+      return localamgv.b;
+    }
+    return -1;
+  }
+  
+  public static String b()
+  {
+    amgv localamgv = (amgv)alzw.a().a(207);
+    if (localamgv != null) {
+      return localamgv.c;
+    }
+    return null;
+  }
+  
+  public static String c()
+  {
+    amgv localamgv = (amgv)alzw.a().a(207);
+    if (localamgv != null) {
+      return localamgv.d;
+    }
+    return null;
+  }
+  
+  public static String d()
+  {
+    amgv localamgv = (amgv)alzw.a().a(207);
+    if (localamgv != null) {
+      return localamgv.e;
+    }
+    return null;
+  }
+  
+  public static String e()
+  {
+    amgv localamgv = (amgv)alzw.a().a(207);
+    if (localamgv != null) {
+      return localamgv.f;
+    }
+    return null;
   }
 }
 

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0x8d$LikeFeeds
-  extends MessageMicro
+  extends MessageMicro<LikeFeeds>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_feeds_subject = PBField.initBytes(ByteStringMicro.EMPTY);

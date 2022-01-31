@@ -1,37 +1,22 @@
-import com.tencent.biz.qqstory.model.TroopNickNameManager;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
+import mqq.app.QQPermissionCallback;
 
-public class nhb
-  implements Runnable
+class nhb
+  implements QQPermissionCallback
 {
-  public nhb(TroopNickNameManager paramTroopNickNameManager) {}
+  nhb(nha paramnha, BaseActivity paramBaseActivity) {}
   
-  public void run()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    long l = System.currentTimeMillis();
-    Iterator localIterator = this.a.a.entrySet().iterator();
-    int i = 0;
-    if (localIterator.hasNext())
-    {
-      if (l - ((Long)((Map.Entry)localIterator.next()).getValue()).longValue() < 30000L) {
-        break label115;
-      }
-      localIterator.remove();
-      i += 1;
-    }
-    label115:
-    for (;;)
-    {
-      break;
-      if ((i > 0) && (QLog.isColorLevel())) {
-        QLog.d("TroopNickNameManager", 2, "timeout count=" + i);
-      }
-      return;
-    }
+    QLog.i("DailyHeaderViewController", 1, "[deny] ACCESS_FINE_LOCATION");
+    babr.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    QLog.i("DailyHeaderViewController", 1, "[grant] ACCESS_FINE_LOCATION");
+    ngv.a(this.jdField_a_of_type_Nha.a, 5);
   }
 }
 

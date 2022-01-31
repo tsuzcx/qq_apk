@@ -62,14 +62,14 @@ public class EcdhCrypt
     catch (ExceptionInInitializerError paramArrayOfByte)
     {
       util.LOGW("create key failed ExceptionInInitializerError, " + paramArrayOfByte.getMessage(), "");
-      t.an.attr_api(2459818);
+      t.aq.attr_api(2459818);
       return null;
     }
     catch (Exception localException)
     {
       util.LOGI("calShareKeyByBouncycastle failed " + pkcs8PrivateKey.toString() + " peer public key " + util.buf_to_string(paramArrayOfByte), "");
       util.printException(localException);
-      t.an.attr_api(2459818);
+      t.aq.attr_api(2459818);
     }
     return null;
   }
@@ -80,13 +80,13 @@ public class EcdhCrypt
     if (GenECDHKeyEx(paramString3, paramString2, paramString1) == 0) {
       return _g_share_key;
     }
-    t.an.attr_api(2461268);
+    t.aq.attr_api(2461268);
     return null;
   }
   
   private PublicKey constructX509PublicKey(String paramString)
   {
-    util.LOGI("constructX509PublicKey publickey " + paramString + " at " + t.l(), "");
+    util.LOGI("constructX509PublicKey publickey " + paramString + " at " + t.m(), "");
     return KeyFactory.getInstance("EC", "BC").generatePublic(new X509EncodedKeySpec(util.string_to_buf(paramString)));
   }
   
@@ -116,14 +116,14 @@ public class EcdhCrypt
     catch (ExceptionInInitializerError localExceptionInInitializerError)
     {
       util.LOGW("create key pair and shared key failed ExceptionInInitializerError, " + localExceptionInInitializerError.getMessage(), "");
-      t.an.attr_api(2368735);
+      t.aq.attr_api(2368735);
       return -1;
     }
     catch (Exception localException)
     {
       util.LOGI("initShareKeyByBouncycastle failed, ", "");
       util.printException(localException);
-      t.an.attr_api(2368735);
+      t.aq.attr_api(2368735);
     }
     return -2;
   }
@@ -183,7 +183,7 @@ public class EcdhCrypt
   
   public byte[] calShareKeyMd5ByPeerPublicKey(byte[] paramArrayOfByte)
   {
-    util.LOGI("userOpenSSLLib " + userOpenSSLLib + " peerRawPublicKey " + util.buf_to_string(paramArrayOfByte) + " at " + t.l(), "");
+    util.LOGI("userOpenSSLLib " + userOpenSSLLib + " peerRawPublicKey " + util.buf_to_string(paramArrayOfByte) + " at " + t.m(), "");
     if (true == userOpenSSLLib) {
       return calShareKeyByOpenSSL(util.buf_to_string(_c_pri_key), util.buf_to_string(_c_pub_key), util.buf_to_string(paramArrayOfByte));
     }

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class msg_svc$WPATmp
-  extends MessageMicro
+  extends MessageMicro<WPATmp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField sig = PBField.initBytes(ByteStringMicro.EMPTY);

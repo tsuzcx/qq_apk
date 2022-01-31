@@ -17,7 +17,7 @@ public class KapalaiRadioGroupBase
     super(paramContext, paramAttributeSet);
   }
   
-  public void a() {}
+  protected void a() {}
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {

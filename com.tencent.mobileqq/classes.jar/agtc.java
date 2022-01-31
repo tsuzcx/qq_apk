@@ -1,34 +1,34 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelGalleryActivity;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.qphone.base.util.QLog;
 
-public class agtc
-  extends RecyclerView.ViewHolder
+class agtc
+  implements moc
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  public RelativeLayout a;
-  public MessageProgressView a;
-  public ImageView b;
+  agtc(agtb paramagtb, String paramString, int paramInt) {}
   
-  public agtc(PersonalityLabelGalleryActivity paramPersonalityLabelGalleryActivity, View paramView)
+  public void loaded(String paramString, int paramInt)
   {
-    super(paramView);
-    float f = 2.0F * PersonalityLabelGalleryActivity.a(paramPersonalityLabelGalleryActivity);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131370955));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365239));
-    ((CornerImageView)this.jdField_a_of_type_AndroidWidgetImageView).setRadius(f);
-    ((CornerImageView)this.jdField_a_of_type_AndroidWidgetImageView).setPressMask(true);
-    this.b = ((ImageView)paramView.findViewById(2131370956));
-    ((CornerImageView)this.b).setRadius(f);
+    if (QLog.isColorLevel()) {
+      QLog.i("springHb_SpringFestivalRedpacketConfigManager", 2, "CODE_SUCCESS[" + this.jdField_a_of_type_JavaLangString + ", " + paramInt + ", " + paramString + "]");
+    }
+    if ((paramInt == 0) && (paramString == null))
+    {
+      baig.h(agtb.a(this.jdField_a_of_type_Agtb), agtb.a(this.jdField_a_of_type_Agtb).getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int + 1);
+      baig.b(agtb.a(this.jdField_a_of_type_Agtb), agtb.a(this.jdField_a_of_type_Agtb).getCurrentAccountUin(), this.jdField_a_of_type_JavaLangString, NetConnInfoCenter.getServerTimeMillis());
+    }
+  }
+  
+  public void progress(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("springHb_SpringFestivalRedpacketConfigManager", 2, "progress[" + paramInt + "]");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agtc
  * JD-Core Version:    0.7.0.1
  */

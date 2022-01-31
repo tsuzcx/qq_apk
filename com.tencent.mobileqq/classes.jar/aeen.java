@@ -1,34 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.jsp.EventApiPlugin;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aeen
-  extends BroadcastReceiver
+class aeen
+  implements DialogInterface.OnClickListener
 {
-  public aeen(EventApiPlugin paramEventApiPlugin) {}
+  aeen(aeeh paramaeeh) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ((EventApiPlugin.a != null) && (EventApiPlugin.a.size() > 0))
-    {
-      Iterator localIterator = EventApiPlugin.a.iterator();
-      while (localIterator.hasNext())
-      {
-        EventApiPlugin localEventApiPlugin = (EventApiPlugin)((WeakReference)localIterator.next()).get();
-        if (localEventApiPlugin != null) {
-          localEventApiPlugin.a(paramContext, paramIntent);
-        }
-      }
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeen
  * JD-Core Version:    0.7.0.1
  */

@@ -1,60 +1,52 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.ArkFullScreenAppActivity;
-import com.tencent.mobileqq.ark.ArkAppDataReport;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomArkDialog.AppInfo;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.biz.pubaccount.subscript.ReadInJoyArticle;
+import java.util.ArrayList;
+import java.util.List;
 
 public class rpp
-  implements ActionSheet.OnButtonClickListener
+  implements ajfe
 {
-  public rpp(ArkFullScreenAppActivity paramArkFullScreenAppActivity, ActionSheet paramActionSheet) {}
+  protected void a(boolean paramBoolean, ArrayList<ReadInJoyArticle> paramArrayList) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected void a(boolean paramBoolean, List<rpu> paramList) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (ArkFullScreenAppActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity) != null)
+    switch (paramInt)
     {
-      ArkAppDataReport.c(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity.app, ArkFullScreenAppActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity).jdField_a_of_type_JavaLangString, ArkAppDataReport.d);
-      ArkAppDataReport.l(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity.app, ArkFullScreenAppActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity).jdField_a_of_type_JavaLangString);
-    }
-    if (QLog.isColorLevel())
-    {
-      StringBuilder localStringBuilder = new StringBuilder().append("share click:");
-      if (ArkFullScreenAppActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity) == null)
-      {
-        paramView = "none";
-        QLog.d("ArkFullScreenAppActivity", 2, paramView);
-      }
-    }
-    else
-    {
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity.a(ArkFullScreenAppActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity).jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer);
-      if (paramView == null) {
-        break label153;
-      }
-      ForwardBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity, paramView, 100);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    default: 
       return;
-      paramView = ArkFullScreenAppActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity).jdField_a_of_type_JavaLangString;
-      break;
-      label153:
-      if (QLog.isColorLevel()) {
-        QLog.i("ArkFullScreenAppActivity", 2, "showActionSheet share: intent == null");
+    case 1: 
+      if (paramObject != null) {
+        try
+        {
+          a(paramBoolean, (ArrayList)paramObject);
+          return;
+        }
+        catch (Exception paramObject)
+        {
+          return;
+        }
       }
-      DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityArkFullScreenAppActivity, 230, "提示", "无法分享该页面。", new rpq(this), null).show();
+      a(false, new ArrayList(0));
+      return;
     }
+    if (paramObject != null) {
+      try
+      {
+        a(paramBoolean, (ArrayList)paramObject);
+        return;
+      }
+      catch (Exception paramObject)
+      {
+        return;
+      }
+    }
+    a(false, new ArrayList(0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rpp
  * JD-Core Version:    0.7.0.1
  */

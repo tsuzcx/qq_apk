@@ -1,34 +1,20 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.armap.ArMapUtil;
-import com.tencent.mobileqq.armap.map.MapEngineCallback;
-import com.tencent.mobileqq.armap.test.ARMainActivity;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity.2;
 
 public class abop
-  implements View.OnLongClickListener
+  implements DialogInterface.OnClickListener
 {
-  public abop(ARMainActivity paramARMainActivity) {}
+  public abop(RegisterNewBaseActivity.2 param2) {}
   
-  public boolean onLongClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    FileUtils.a(MapEngineCallback.getRootPath());
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMainActivity", 2, "clear map cache");
-    }
-    QQToast.a(this.a, "map cache deleted", 0).a();
-    ArMapUtil.a(this.a.a).edit().clear().commit();
-    ArMapUtil.b(this.a.a).edit().clear().commit();
-    return false;
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abop
  * JD-Core Version:    0.7.0.1
  */

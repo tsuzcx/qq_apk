@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipWaveView;
-
-public class utn
-  implements Runnable
+class utn
+  extends awdy
 {
-  public utn(FriendShipWaveView paramFriendShipWaveView) {}
+  utn(uth paramuth) {}
   
-  public void run()
+  public void a()
   {
-    this.a.c();
+    urk.c("Q.qqstory.publish.edit.StoryDoodle", "DoodleInfoLoadObserver, onLoadSucc");
+    this.a.aa_();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     utn
  * JD-Core Version:    0.7.0.1
  */

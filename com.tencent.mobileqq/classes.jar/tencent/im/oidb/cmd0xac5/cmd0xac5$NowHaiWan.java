@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class cmd0xac5$NowHaiWan
-  extends MessageMicro
+  extends MessageMicro<NowHaiWan>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_cover_url = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -33,7 +33,7 @@ public final class cmd0xac5$NowHaiWan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0xac5.cmd0xac5.NowHaiWan
  * JD-Core Version:    0.7.0.1
  */

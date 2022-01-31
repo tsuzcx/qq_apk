@@ -16,9 +16,9 @@ final class b
   public final void onAuthFinish(OAuthErrCode paramOAuthErrCode, String paramString)
   {
     Log.d("MicroMsg.SDK.ListenerWrapper", String.format("onAuthFinish, errCode = %s, authCode = %s", new Object[] { paramOAuthErrCode.toString(), paramString }));
-    a.c(this.ab);
+    a.c(this.f);
     Object localObject = new ArrayList();
-    ((List)localObject).addAll(a.a(this.ab));
+    ((List)localObject).addAll(a.a(this.f));
     localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
       ((OAuthListener)((Iterator)localObject).next()).onAuthFinish(paramOAuthErrCode, paramString);
@@ -29,7 +29,7 @@ final class b
   {
     Log.d("MicroMsg.SDK.ListenerWrapper", "onAuthGotQrcode, qrcodeImgPath = " + paramString);
     Object localObject = new ArrayList();
-    ((List)localObject).addAll(a.a(this.ab));
+    ((List)localObject).addAll(a.a(this.f));
     localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext()) {
       ((OAuthListener)((Iterator)localObject).next()).onAuthGotQrcode(paramString, paramArrayOfByte);
@@ -39,14 +39,14 @@ final class b
   public final void onQrcodeScanned()
   {
     Log.d("MicroMsg.SDK.ListenerWrapper", "onQrcodeScanned");
-    if (a.b(this.ab) != null) {
-      a.b(this.ab).post(new c(this));
+    if (a.b(this.f) != null) {
+      a.b(this.f).post(new c(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mm.opensdk.diffdev.a.b
  * JD-Core Version:    0.7.0.1
  */

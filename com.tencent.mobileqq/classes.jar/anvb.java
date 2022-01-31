@@ -1,19 +1,22 @@
-import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
-import java.io.File;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 public class anvb
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public anvb(HummingActivity paramHummingActivity, String paramString) {}
+  public anvb(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    new File(this.jdField_a_of_type_JavaLangString).delete();
+    this.a.a = false;
+    this.a.doOnBackPressed();
+    awqx.b(null, "P_CliOper", "Grp_set", "", "Radar_grp_admin", "Clk_quit", 0, 0, this.a.d, "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anvb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/edw" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/a7v" android:background="@drawable/or" android:paddingLeft="20.5dip" android:paddingTop="16.5dip" android:paddingRight="20.5dip" android:paddingBottom="16.5dip" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="55.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="55.0dip" android:layout_marginBottom="20.0dip" android:layout_centerHorizontal="true">
+        <com.tencent.mobileqq.limitchat.TopicTextView android:textSize="17.5sp" android:textColor="@color/skin_black" android:ellipsize="end" android:gravity="left" android:id="@id/kbs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:maxLines="3" android:singleLine="false" android:layout_centerHorizontal="true" android:lineSpacingExtra="2.5dip" android:lineSpacingMultiplier="1.0" />
+    </RelativeLayout>
+</FrameLayout>

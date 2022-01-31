@@ -27,7 +27,7 @@ public class TroopTagViewActivity
     this.d = paramString;
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     Intent localIntent = super.getIntent();
     if (localIntent == null)
@@ -63,7 +63,7 @@ public class TroopTagViewActivity
       if (this.jdField_a_of_type_Int != 1) {
         break label263;
       }
-      localIntent.putExtra("url", String.format("http://web.qun.qq.com/tag/index.html?_bid=146&t=%d#tags=%s&gc=%s&base=%s&modifyToSrv=%s", new Object[] { Long.valueOf(System.currentTimeMillis() / 1000L), str, this.jdField_a_of_type_JavaLangString, this.c, Integer.valueOf(this.e) }));
+      localIntent.putExtra("url", String.format("https://web.qun.qq.com/tag/index.html?_bid=146&t=%d#tags=%s&gc=%s&base=%s&modifyToSrv=%s", new Object[] { Long.valueOf(System.currentTimeMillis() / 1000L), str, this.jdField_a_of_type_JavaLangString, this.c, Integer.valueOf(this.e) }));
     }
     for (;;)
     {
@@ -75,7 +75,7 @@ public class TroopTagViewActivity
       break;
       label263:
       if (this.jdField_a_of_type_Int == 2) {
-        localIntent.putExtra("url", String.format("http://web.qun.qq.com/tag/edit.html?_bid=146#tags=%s&gc=%s&base=%s&modifyToSrv=%s", new Object[] { str, this.jdField_a_of_type_JavaLangString, this.c, Integer.valueOf(this.e) }));
+        localIntent.putExtra("url", String.format("https://web.qun.qq.com/tag/edit.html?_bid=146#tags=%s&gc=%s&base=%s&modifyToSrv=%s", new Object[] { str, this.jdField_a_of_type_JavaLangString, this.c, Integer.valueOf(this.e) }));
       } else {
         localIntent.putExtra("url", localBundle.getString("url"));
       }
@@ -95,7 +95,7 @@ public class TroopTagViewActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopTagViewActivity
  * JD-Core Version:    0.7.0.1
  */

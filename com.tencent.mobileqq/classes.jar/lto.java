@@ -1,29 +1,45 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleReadInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleReadInfo;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.av.ui.GamePlayView;
+import com.tencent.mobileqq.armap.ARGLSurfaceView.SurfaceStateListener;
+import com.tencent.qphone.base.util.QLog;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
+import javax.microedition.khronos.opengles.GL10;
 
 public class lto
-  implements Runnable
+  implements ARGLSurfaceView.SurfaceStateListener
 {
-  public lto(ArticleReadInfoModule paramArticleReadInfoModule, List paramList) {}
+  boolean jdField_a_of_type_Boolean = false;
   
-  public void run()
+  public lto(GamePlayView paramGamePlayView) {}
+  
+  public void onDestroy() {}
+  
+  public void onEGLConfigCreated(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, EGLContext paramEGLContext, long paramLong) {}
+  
+  public void onEGLContextDestroyed(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext) {}
+  
+  public void onInit(long paramLong)
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
-      {
-        ArticleReadInfo localArticleReadInfo = (ArticleReadInfo)localIterator.next();
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleReadInfoModule.a(localArticleReadInfo);
-      }
-    }
+    GamePlayView.a(this.jdField_a_of_type_ComTencentAvUiGamePlayView, paramLong);
   }
+  
+  public void onPause()
+  {
+    QLog.d("ARZimuTask_GamePlayView", 2, "surfaceListener onPause");
+  }
+  
+  public void onResume()
+  {
+    QLog.d("ARZimuTask_GamePlayView", 2, "surfaceListener onResume");
+  }
+  
+  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lto
  * JD-Core Version:    0.7.0.1
  */

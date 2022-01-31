@@ -1,161 +1,181 @@
-import android.media.AudioRecord;
-import android.os.Process;
-import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
-import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture.AudioCaptureListener;
-import com.tencent.mobileqq.richmedia.capture.audio.AudioDataCache;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Canvas;
+import android.graphics.Typeface;
+import android.text.TextUtils;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
 
-public class ahlr
-  implements Runnable
+class ahlr
+  extends ahma
 {
-  public Object a;
-  public boolean a;
-  public boolean b;
-  public boolean c = false;
-  public boolean d = true;
+  private static int jdField_a_of_type_Int = 50;
+  private float jdField_a_of_type_Float;
+  private ahlx jdField_a_of_type_Ahlx;
+  private String jdField_a_of_type_JavaLangString;
+  private int jdField_b_of_type_Int;
+  private ahlx jdField_b_of_type_Ahlx;
   
-  private ahlr(AudioCapture paramAudioCapture)
+  public ahlr(long paramLong1, long paramLong2, float paramFloat1, float paramFloat2, float paramFloat3, boolean paramBoolean, String paramString, float paramFloat4, int paramInt, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, float paramFloat9, Typeface paramTypeface)
   {
-    this.jdField_a_of_type_JavaLangObject = new Object();
+    super(paramLong1, paramLong2, paramBoolean);
+    a(8, paramFloat1);
+    a(9, paramFloat2);
+    a(6, paramFloat5);
+    this.jdField_a_of_type_Float = paramFloat5;
+    a(5, a(paramFloat3, paramFloat2 * paramFloat1));
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_a_of_type_Ahlx = new ahlx(a(this.jdField_b_of_type_Int), paramFloat4, paramInt, paramFloat7, paramFloat9, paramTypeface);
+    this.jdField_b_of_type_Ahlx = new ahlx(a(this.jdField_b_of_type_Int + jdField_a_of_type_Int), paramFloat4, paramInt, paramFloat7, paramFloat9, paramTypeface);
+    a(3, this.jdField_a_of_type_Ahlx.b.jdField_a_of_type_Float);
+    a(4, this.jdField_a_of_type_Ahlx.b.b);
+    a(7, (paramFloat8 - this.jdField_a_of_type_Ahlx.b.b) / 2.0F + paramFloat6);
   }
   
-  public void run()
+  private float a(float paramFloat1, float paramFloat2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioCapture", 2, "RecordRunnable run");
-    }
-    this.b = false;
-    AudioCapture.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture);
-    Process.setThreadPriority(-19);
-    if (!this.c)
+    return paramFloat1 * paramFloat2;
+  }
+  
+  private String a(int paramInt)
+  {
+    Object localObject;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      if (this.b) {
-        if (QLog.isColorLevel()) {
-          QLog.d("AudioCapture", 2, "RecordRunnable exit before record");
-        }
+      localObject = "";
+      return localObject;
+    }
+    if (this.jdField_a_of_type_JavaLangString.length() <= paramInt) {
+      return "";
+    }
+    if (this.jdField_a_of_type_JavaLangString.length() > jdField_a_of_type_Int + paramInt) {}
+    for (String str = this.jdField_a_of_type_JavaLangString.substring(paramInt, jdField_a_of_type_Int + paramInt);; str = this.jdField_a_of_type_JavaLangString.substring(paramInt, this.jdField_a_of_type_JavaLangString.length()))
+    {
+      localObject = str;
+      if (str != null) {
+        break;
       }
-      do
-      {
-        for (;;)
-        {
-          return;
-          if (this.d)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("AudioCapture", 2, "RecordRunnable pause");
-            }
-            synchronized (this.jdField_a_of_type_JavaLangObject)
-            {
-              try
-              {
-                if (this.d) {
-                  this.jdField_a_of_type_JavaLangObject.wait();
-                }
-                while (QLog.isColorLevel())
-                {
-                  QLog.d("AudioCapture", 2, "RecordRunnable resume, startrecord:" + this.c + " interrupt:" + this.b + " pause:" + this.d);
-                  break;
-                  QLog.d("AudioCapture", 2, "is not pause now:");
-                }
-              }
-              catch (Exception localException2)
-              {
-                for (;;)
-                {
-                  QLog.d("AudioCapture", 2, "RecordRunnable wait exception:" + localException2);
-                }
-              }
-            }
-          }
-        }
-        if ((this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.jdField_a_of_type_AndroidMediaAudioRecord != null) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.jdField_a_of_type_ArrayOfByte != null))
-        {
-          i = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.jdField_a_of_type_AndroidMediaAudioRecord.read(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.e);
-          if (AudioCapture.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture) == null) {
-            break;
-          }
-          AudioCapture.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture).a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.jdField_a_of_type_ArrayOfByte, 0, i);
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("AudioCapture", 2, "Error param, RecordRunnable exit");
-      return;
+      return "";
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioCapture", 2, "RecordRunnable record run");
-    }
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioDataCache = new AudioDataCache(AudioCapture.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture));
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioDataCache.a();
-    int i = 0;
-    label768:
+  }
+  
+  private void a(Canvas paramCanvas, RenderBuffer paramRenderBuffer)
+  {
+    if ((paramCanvas == null) && (paramRenderBuffer == null)) {}
+    float f;
     for (;;)
     {
-      try
+      return;
+      if (this.jdField_a_of_type_Ahlx != null)
       {
-        if ((!this.jdField_a_of_type_Boolean) || (this.b)) {
-          break label700;
-        }
-        if ((this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.jdField_a_of_type_AndroidMediaAudioRecord == null) || (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.b == null)) {
-          continue;
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.e >= this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.f)
+        f = a(6) + this.jdField_a_of_type_Ahlx.b.jdField_a_of_type_Float;
+        if (f >= 0.0F)
         {
-          if ((this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.jdField_a_of_type_AndroidMediaAudioRecord == null) || (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.jdField_a_of_type_ArrayOfByte == null)) {
-            break label763;
+          if (paramCanvas == null) {
+            break label102;
           }
-          j = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.jdField_a_of_type_AndroidMediaAudioRecord.read(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.f);
-          this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.a(j);
-          this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.jdField_a_of_type_ArrayOfByte, j);
-          continue;
+          this.jdField_a_of_type_Ahlx.a(paramCanvas, a(6), a(7));
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.jdField_a_of_type_AndroidMediaAudioRecord == null) {
-          break label758;
-        }
-      }
-      catch (Exception localException1)
-      {
-        localException1.printStackTrace();
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioDataCache.a();
-        return;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.jdField_a_of_type_ArrayOfByte != null) {}
-      label700:
-      label758:
-      for (int j = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.jdField_a_of_type_AndroidMediaAudioRecord.read(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.e);; j = 0)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.a(j);
-        if (j <= 0) {
-          break;
-        }
-        if (i + j > this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.f)
+        while ((f - this.jdField_a_of_type_Float <= 0.0F) && (this.jdField_b_of_type_Ahlx != null))
         {
-          System.arraycopy(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.b, i, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.f - i);
-          this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.b, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.f);
-          i = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.f - i;
-          j -= i;
-          System.arraycopy(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.jdField_a_of_type_ArrayOfByte, i, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.b, 0, j);
-          i = j + 0;
-          break label768;
+          if (paramCanvas == null) {
+            break label125;
+          }
+          this.jdField_b_of_type_Ahlx.a(paramCanvas, f, a(7));
+          return;
+          label102:
+          this.jdField_a_of_type_Ahlx.a(paramRenderBuffer, a(6), a(7));
         }
-        System.arraycopy(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.b, i, j);
-        i = j + i;
-        break label768;
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioDataCache.a();
-        if ((!this.jdField_a_of_type_Boolean) && (AudioCapture.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture) != null)) {
-          AudioCapture.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture).b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioDataCache.b());
-        }
-        AudioCapture.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureAudioAudioCapture);
-        return;
       }
-      label763:
-      j = 0;
     }
+    label125:
+    this.jdField_b_of_type_Ahlx.a(paramRenderBuffer, f, a(7));
+  }
+  
+  private void h()
+  {
+    if ((this.jdField_a_of_type_Ahlx != null) && (this.jdField_b_of_type_Ahlx != null) && (this.jdField_b_of_type_Ahlx.jdField_a_of_type_Boolean))
+    {
+      Object localObject = this.jdField_a_of_type_Ahlx;
+      this.jdField_a_of_type_Ahlx = this.jdField_b_of_type_Ahlx;
+      this.jdField_b_of_type_Ahlx = ((ahlx)localObject);
+      a(3, this.jdField_a_of_type_Ahlx.b.jdField_a_of_type_Float);
+      a(6, a(6) + ((ahlx)localObject).jdField_a_of_type_Ahms.jdField_a_of_type_Float);
+      if (((ahlx)localObject).jdField_a_of_type_Ahms.jdField_a_of_type_JavaLangString != null)
+      {
+        int i = this.jdField_b_of_type_Int;
+        this.jdField_b_of_type_Int = (((ahlx)localObject).jdField_a_of_type_Ahms.jdField_a_of_type_JavaLangString.length() + i);
+      }
+      localObject = a(this.jdField_b_of_type_Int + jdField_a_of_type_Int);
+      this.jdField_b_of_type_Ahlx.a((String)localObject);
+    }
+  }
+  
+  public void a()
+  {
+    super.a();
+    if ((this.jdField_a_of_type_Ahlx != null) && (a(6) + this.jdField_a_of_type_Ahlx.b.jdField_a_of_type_Float <= 0.0F)) {
+      h();
+    }
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    a(paramCanvas, null);
+  }
+  
+  public void a(RenderBuffer paramRenderBuffer)
+  {
+    a(null, paramRenderBuffer);
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (paramString.equals(this.jdField_a_of_type_JavaLangString));
+      this.jdField_a_of_type_JavaLangString = paramString;
+      paramString = a(this.jdField_b_of_type_Int);
+      if (this.jdField_a_of_type_Ahlx != null)
+      {
+        this.jdField_a_of_type_Ahlx.a(paramString);
+        a(3, this.jdField_a_of_type_Ahlx.b.jdField_a_of_type_Float);
+        a(4, this.jdField_a_of_type_Ahlx.b.b);
+      }
+      paramString = a(this.jdField_b_of_type_Int + jdField_a_of_type_Int);
+      if (this.jdField_b_of_type_Ahlx != null) {
+        this.jdField_b_of_type_Ahlx.a(paramString);
+      }
+    } while ((this.jdField_a_of_type_Ahlx == null) || (a(6) + this.jdField_a_of_type_Ahlx.b.jdField_a_of_type_Float >= 0.0F));
+    h();
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Ahlx != null)
+    {
+      this.jdField_a_of_type_Ahlx.a();
+      this.jdField_a_of_type_Ahlx = null;
+    }
+    if (this.jdField_b_of_type_Ahlx != null)
+    {
+      this.jdField_b_of_type_Ahlx.a();
+      this.jdField_b_of_type_Ahlx = null;
+    }
+  }
+  
+  public void c()
+  {
+    this.jdField_b_of_type_Int = 0;
+    a(this.jdField_a_of_type_JavaLangString);
+    a(6, this.jdField_a_of_type_Float);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahlr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,22 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
-class ncj
-  implements Runnable
+public class ncj
 {
-  ncj(nby paramnby, ArrayList paramArrayList) {}
+  public ncj(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString, long paramLong) {}
   
-  public void run()
+  @QQPermissionDenied(1)
+  public void denied()
   {
-    if (PublicAccountImageCollectionMainActivity.a(this.jdField_a_of_type_Nby.a) != null) {
-      PublicAccountImageCollectionMainActivity.a(this.jdField_a_of_type_Nby.a).a(this.jdField_a_of_type_JavaUtilArrayList);
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+  }
+  
+  @QQPermissionGrant(1)
+  public void grant()
+  {
+    SosoInterface.a(new ncv(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, 0, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long));
   }
 }
 

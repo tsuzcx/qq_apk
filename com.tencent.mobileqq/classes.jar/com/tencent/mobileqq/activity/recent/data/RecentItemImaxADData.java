@@ -12,12 +12,13 @@ import com.tencent.qphone.base.util.QLog;
 public class RecentItemImaxADData
   extends RecentItemChatMsgData
 {
-  public String g;
+  private static final String TAG = "RecentItemImaxADData";
+  public String mHeaderUrl;
   
   public RecentItemImaxADData(RecentUser paramRecentUser)
   {
     super(paramRecentUser);
-    this.jdField_b_of_type_Int = 1;
+    this.mUnreadFlag = 1;
   }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
@@ -30,34 +31,34 @@ public class RecentItemImaxADData
       paramQQAppInterface = paramQQAppInterface.a();
       if (paramQQAppInterface != null)
       {
-        paramQQAppInterface = paramQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.uin, this.jdField_a_of_type_ComTencentMobileqqDataRecentUser.type);
+        paramQQAppInterface = paramQQAppInterface.a(this.mUser.uin, this.mUser.getType());
         if (paramQQAppInterface != null)
         {
           paramContext = paramQQAppInterface.getExtInfoFromExtStr("recent_list_advertisement_message_name");
           if (!TextUtils.isEmpty(paramContext)) {
-            this.jdField_b_of_type_JavaLangString = paramContext;
+            this.mTitleName = paramContext;
           }
           paramQQAppInterface = paramQQAppInterface.getExtInfoFromExtStr("recent_list_advertisement_uin_head_url");
           if (!TextUtils.isEmpty(paramQQAppInterface)) {
-            this.g = paramQQAppInterface;
+            this.mHeaderUrl = paramQQAppInterface;
           }
         }
       }
-      if (this.jdField_c_of_type_Int > 0) {
-        this.jdField_c_of_type_Int = 1;
+      if (this.mUnreadNum > 0) {
+        this.mUnreadNum = 1;
       }
-      if (AppSetting.b)
+      if (AppSetting.c)
       {
         paramQQAppInterface = new StringBuilder();
-        paramQQAppInterface.append(this.jdField_b_of_type_JavaLangString).append(",");
-        if (this.jdField_d_of_type_JavaLangCharSequence != null) {
-          paramQQAppInterface.append(this.jdField_d_of_type_JavaLangCharSequence + ",");
+        paramQQAppInterface.append(this.mTitleName).append(",");
+        if (this.mMsgExtroInfo != null) {
+          paramQQAppInterface.append(this.mMsgExtroInfo + ",");
         }
-        paramQQAppInterface.append(this.jdField_c_of_type_JavaLangCharSequence).append(",").append(this.jdField_c_of_type_JavaLangString);
-        this.jdField_d_of_type_JavaLangString = paramQQAppInterface.toString();
+        paramQQAppInterface.append(this.mLastMsg).append(",").append(this.mShowTime);
+        this.mContentDesc = paramQQAppInterface.toString();
       }
     } while (!QLog.isColorLevel());
-    QLog.d("RecentItemImaxADData", 2, "mTitleName:" + this.jdField_b_of_type_JavaLangString + ", mDisplayTime:" + this.jdField_a_of_type_Long + ", mUnreadNum:" + this.jdField_c_of_type_Int + ", mUnreadFlag:" + this.jdField_b_of_type_Int + ", mShowTime:" + this.jdField_c_of_type_JavaLangString + ", mStatus:" + this.jdField_a_of_type_Int + ", mMsgExtroInfo:" + this.jdField_d_of_type_JavaLangCharSequence + ", mExtraInfoColor:" + this.e + ", mLastMsg:" + this.jdField_c_of_type_JavaLangCharSequence);
+    QLog.d("RecentItemImaxADData", 2, "mTitleName:" + this.mTitleName + ", mDisplayTime:" + this.mDisplayTime + ", mUnreadNum:" + this.mUnreadNum + ", mUnreadFlag:" + this.mUnreadFlag + ", mShowTime:" + this.mShowTime + ", mStatus:" + this.mStatus + ", mMsgExtroInfo:" + this.mMsgExtroInfo + ", mExtraInfoColor:" + this.mExtraInfoColor + ", mLastMsg:" + this.mLastMsg);
   }
 }
 

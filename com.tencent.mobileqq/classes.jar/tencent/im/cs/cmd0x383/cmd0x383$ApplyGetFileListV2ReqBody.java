@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class cmd0x383$ApplyGetFileListV2ReqBody
-  extends MessageMicro
+  extends MessageMicro<ApplyGetFileListV2ReqBody>
 {
   public static final int REQ_FROM_MB_FILE_LIST_BY_FILETYPE = 2;
   public static final int REQ_FROM_MB_FILE_LIST_BY_TIMESTAMP = 1;
@@ -20,7 +20,7 @@ public final class cmd0x383$ApplyGetFileListV2ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.cmd0x383.cmd0x383.ApplyGetFileListV2ReqBody
  * JD-Core Version:    0.7.0.1
  */

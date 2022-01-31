@@ -13,21 +13,21 @@ public class PluginTab
   extends PluginActivity
   implements TabHost.OnTabChangeListener, TabHost.TabContentFactory
 {
-  private PluginTabHost d;
-  private String e;
-  private TabHost.OnTabChangeListener f;
+  private TabHost.OnTabChangeListener mOnTabChangeListener;
+  private PluginTabHost mPluginTabHost;
+  private String mPreTag;
   
   protected final void addTabSpec(TabHost.TabSpec paramTabSpec, String paramString, Intent paramIntent)
   {
-    if (this.d == null) {
+    if (this.mPluginTabHost == null) {
       return;
     }
     if (DebugHelper.sDebug) {
       DebugHelper.log("plugin_tag", "PluginTab addTabSpec:" + paramTabSpec.getTag() + ", " + paramString);
     }
     paramTabSpec.setContent(this);
-    this.d.a(paramTabSpec.getTag(), paramString, paramIntent);
-    this.d.addTab(paramTabSpec);
+    this.mPluginTabHost.addPluginInfo(paramTabSpec.getTag(), paramString, paramIntent);
+    this.mPluginTabHost.addTab(paramTabSpec);
   }
   
   public View createTabContent(String paramString)
@@ -35,7 +35,7 @@ public class PluginTab
     if (DebugHelper.sDebug) {
       DebugHelper.log("plugin_tag", "PluginTab createTabContent:" + paramString);
     }
-    PluginTabHost.TabSpecPluginInfo localTabSpecPluginInfo = this.d.getPluginInfo(paramString);
+    PluginTabHost.TabSpecPluginInfo localTabSpecPluginInfo = this.mPluginTabHost.getPluginInfo(paramString);
     if (localTabSpecPluginInfo != null)
     {
       try
@@ -83,9 +83,9 @@ public class PluginTab
     if (paramString != null)
     {
       localObject1 = localObject2;
-      if (this.d != null)
+      if (this.mPluginTabHost != null)
       {
-        paramString = this.d.getPluginInfo(paramString);
+        paramString = this.mPluginTabHost.getPluginInfo(paramString);
         localObject1 = localObject2;
         if (paramString != null) {
           localObject1 = paramString.mActivity;
@@ -97,15 +97,15 @@ public class PluginTab
   
   protected IPluginActivity getCurrentActivity()
   {
-    if (this.d == null) {
+    if (this.mPluginTabHost == null) {
       return null;
     }
-    return getActivityByTag(this.d.getCurrentTabTag());
+    return getActivityByTag(this.mPluginTabHost.getCurrentTabTag());
   }
   
   public PluginTabHost getTabHost()
   {
-    return this.d;
+    return this.mPluginTabHost;
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -120,35 +120,35 @@ public class PluginTab
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    int j = this.d.getTabCount();
+    int j = this.mPluginTabHost.getTabCount();
     int i = 0;
     while (i < j)
     {
-      paramConfiguration = this.d.getTabAt(i);
+      paramConfiguration = this.mPluginTabHost.getTabAt(i);
       if (paramConfiguration != null)
       {
-        paramConfiguration = this.d.getPluginInfo(paramConfiguration.getTag());
+        paramConfiguration = this.mPluginTabHost.getPluginInfo(paramConfiguration.getTag());
         if ((paramConfiguration == null) || (paramConfiguration.mActivity == null)) {}
       }
       i += 1;
     }
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     super.onDestroy();
-    if (this.d == null) {}
+    if (this.mPluginTabHost == null) {}
     for (;;)
     {
       return;
-      int j = this.d.getTabCount();
+      int j = this.mPluginTabHost.getTabCount();
       int i = 0;
       while (i < j)
       {
-        Object localObject = this.d.getTabAt(i);
+        Object localObject = this.mPluginTabHost.getTabAt(i);
         if (localObject != null)
         {
-          localObject = this.d.getPluginInfo(((TabHost.TabSpec)localObject).getTag());
+          localObject = this.mPluginTabHost.getPluginInfo(((TabHost.TabSpec)localObject).getTag());
           if ((localObject != null) && (((PluginTabHost.TabSpecPluginInfo)localObject).mActivity != null)) {
             ((PluginTabHost.TabSpecPluginInfo)localObject).mActivity.IOnDestroy();
           }
@@ -158,7 +158,7 @@ public class PluginTab
     }
   }
   
-  protected void onPause()
+  public void onPause()
   {
     super.onPause();
     IPluginActivity localIPluginActivity = getCurrentActivity();
@@ -176,7 +176,7 @@ public class PluginTab
     }
   }
   
-  protected void onResume()
+  public void onResume()
   {
     super.onResume();
     IPluginActivity localIPluginActivity = getCurrentActivity();
@@ -185,7 +185,7 @@ public class PluginTab
     }
   }
   
-  protected void onStart()
+  public void onStart()
   {
     super.onStart();
     IPluginActivity localIPluginActivity = getCurrentActivity();
@@ -194,7 +194,7 @@ public class PluginTab
     }
   }
   
-  protected void onStop()
+  public void onStop()
   {
     super.onStop();
     IPluginActivity localIPluginActivity = getCurrentActivity();
@@ -208,23 +208,23 @@ public class PluginTab
     if (DebugHelper.sDebug) {
       DebugHelper.log("plugin_tag", "PluginTab onTabChanged:" + paramString);
     }
-    IPluginActivity localIPluginActivity = getActivityByTag(this.e);
+    IPluginActivity localIPluginActivity = getActivityByTag(this.mPreTag);
     if (localIPluginActivity != null) {
       localIPluginActivity.IOnPause();
     }
-    this.e = paramString;
+    this.mPreTag = paramString;
     localIPluginActivity = getCurrentActivity();
     if (localIPluginActivity != null) {
       localIPluginActivity.IOnResume();
     }
-    if (this.f != null) {
-      this.f.onTabChanged(paramString);
+    if (this.mOnTabChangeListener != null) {
+      this.mOnTabChangeListener.onTabChanged(paramString);
     }
   }
   
   public void setOnTabChangedListener(TabHost.OnTabChangeListener paramOnTabChangeListener)
   {
-    this.f = paramOnTabChangeListener;
+    this.mOnTabChangeListener = paramOnTabChangeListener;
   }
   
   protected final void setPluginTabHost(PluginTabHost paramPluginTabHost)
@@ -232,9 +232,9 @@ public class PluginTab
     if (DebugHelper.sDebug) {
       DebugHelper.log("plugin_tag", "PluginTab setPluginTabHost:" + paramPluginTabHost);
     }
-    this.d = paramPluginTabHost;
-    this.d.setup();
-    this.d.setOnTabChangedListener(this);
+    this.mPluginTabHost = paramPluginTabHost;
+    this.mPluginTabHost.setup();
+    this.mPluginTabHost.setOnTabChangedListener(this);
   }
 }
 

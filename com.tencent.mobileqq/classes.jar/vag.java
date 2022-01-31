@@ -1,17 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.ArkFlashChatItemBubbleBuilder;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
 
-public class vag
-  implements DialogInterface.OnClickListener
+final class vag
+  implements Animator.AnimatorListener
 {
-  public vag(ArkFlashChatItemBubbleBuilder paramArkFlashChatItemBubbleBuilder) {}
+  vag(vah paramvah, ValueAnimator paramValueAnimator) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onAnimationCancel(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Vah != null) {
+      this.jdField_a_of_type_Vah.d(this.jdField_a_of_type_AndroidAnimationValueAnimator);
+    }
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Vah != null) {
+      this.jdField_a_of_type_Vah.c(this.jdField_a_of_type_AndroidAnimationValueAnimator);
+    }
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_Vah != null) {
+      this.jdField_a_of_type_Vah.b(this.jdField_a_of_type_AndroidAnimationValueAnimator);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vag
  * JD-Core Version:    0.7.0.1
  */

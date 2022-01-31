@@ -1,18 +1,16 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
 
 public class ncm
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ncm(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  public ncm(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, long paramLong, String paramString2, String paramString3) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.setVisibility(8);
-    this.a.a.findViewById(2131365659).setVisibility(8);
-    this.a.a.findViewById(2131365593).setVisibility(8);
-    this.a.a.findViewById(2131365594).setVisibility(8);
+    PublicAccountJavascriptInterface.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
+    PublicAccountJavascriptInterface.setLocationPermissionGrant(this.b, this.c, 1);
   }
 }
 

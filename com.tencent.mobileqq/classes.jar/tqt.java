@@ -1,65 +1,99 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.theme.NightModeLogic.NightModeCallback;
-import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class tqt
-  extends NightModeLogic.NightModeCallback
+  implements Cloneable
 {
-  public tqt(QQSettingMe paramQQSettingMe) {}
+  public int a;
+  public long a;
+  public String a;
+  public ArrayList<Integer> a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b;
+  public long c;
+  public String c;
+  public long d;
+  public String d;
+  public long e;
   
-  public void a(Bundle paramBundle)
+  public tqt()
   {
-    this.a.r();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
-  public void b(Bundle paramBundle)
+  public tqt(tqt paramtqt)
   {
-    int i = paramBundle.getInt("start_status");
-    if (i == 1) {
-      this.a.r();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramtqt.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_JavaLangString = paramtqt.jdField_a_of_type_JavaLangString;
+    this.jdField_a_of_type_Boolean = paramtqt.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Long = paramtqt.jdField_a_of_type_Long;
+    this.jdField_b_of_type_JavaLangString = paramtqt.jdField_b_of_type_JavaLangString;
+    this.jdField_a_of_type_Int = paramtqt.jdField_a_of_type_Int;
+    this.jdField_b_of_type_Int = paramtqt.jdField_b_of_type_Int;
+    this.jdField_b_of_type_Long = paramtqt.jdField_b_of_type_Long;
+    this.jdField_c_of_type_JavaLangString = paramtqt.jdField_c_of_type_JavaLangString;
+    this.jdField_c_of_type_Long = paramtqt.jdField_c_of_type_Long;
+    this.d = paramtqt.d;
+  }
+  
+  public long a()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() >= 3) {
+      return ((Integer)Collections.max(this.jdField_a_of_type_JavaUtilArrayList)).intValue();
     }
-    do
-    {
-      do
-      {
-        return;
-        if (i == 2)
-        {
-          this.a.r();
-          return;
-        }
-      } while (i != 3);
-      if (!(this.a.jdField_a_of_type_AndroidWidgetImageView.getDrawable() instanceof Animatable)) {
-        break;
-      }
-      i = paramBundle.getInt("percent");
-      paramBundle = String.valueOf(i) + "%";
-      this.a.c.setText(paramBundle);
-    } while (!QLog.isDevelopLevel());
-    QLog.d("QQSettingRedesign", 4, "NIGHTMODE_ACTION_DOWNLOADING: " + i);
-    return;
-    if (QQSettingMe.e(this.a)) {}
-    for (Drawable localDrawable = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDrawable(2130843326);; localDrawable = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources().getDrawable(2130843327))
-    {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localDrawable);
-      if (!(localDrawable instanceof Animatable)) {
-        break;
-      }
-      ((Animatable)localDrawable).start();
-      break;
+    return -1L;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_b_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_b_of_type_Long = 0L;
+    this.jdField_c_of_type_JavaLangString = null;
+    this.jdField_c_of_type_Long = 0L;
+    this.d = null;
+  }
+  
+  public long b()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() >= 3) {
+      return ((Integer)Collections.min(this.jdField_a_of_type_JavaUtilArrayList)).intValue();
     }
+    return -1L;
+  }
+  
+  public long c()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() < 3) {
+      return -1L;
+    }
+    int k = Math.min(this.jdField_a_of_type_JavaUtilArrayList.size(), 10);
+    int i = 0;
+    int j = 0;
+    while (i < k)
+    {
+      j += ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i)).intValue();
+      i += 1;
+    }
+    return j / k;
+  }
+  
+  public String toString()
+  {
+    return " " + this.jdField_a_of_type_JavaLangString + " " + this.jdField_a_of_type_Long + " " + this.jdField_a_of_type_Int + " " + this.jdField_b_of_type_Int + " " + this.jdField_b_of_type_Long + " " + this.jdField_a_of_type_Boolean + " " + c() + " " + b() + " " + a() + " " + this.jdField_b_of_type_JavaLangString + " " + this.jdField_c_of_type_JavaLangString + " " + this.jdField_c_of_type_Long + " " + this.d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tqt
  * JD-Core Version:    0.7.0.1
  */

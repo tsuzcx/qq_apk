@@ -1,52 +1,30 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SignatureManager;
-import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.vas.SignatureTemplateConfig.SignatureTemplateType;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import org.json.JSONObject;
 
 public class ztu
-  implements Handler.Callback
+  extends zrx
 {
-  public ztu(SignatureManager paramSignatureManager) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull zrt paramzrt)
   {
-    if (2 == paramMessage.what)
+    switch (paramInt)
     {
-      SignatureManager.jdField_a_of_type_ArrayOfComTencentMobileqqVasSignatureTemplateConfig$SignatureTemplateType = (SignatureTemplateConfig.SignatureTemplateType[])paramMessage.obj;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-      {
-        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(EditActivity.class);
-        if (paramMessage != null) {
-          paramMessage.sendEmptyMessageDelayed(2, 50L);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("SignatureManager", 2, "update sign tpl info...");
-        }
-      }
+    default: 
+      return false;
+    case 31: 
+      zva.a(paramzrt, null);
     }
     for (;;)
     {
       return true;
-      if ((3 == paramMessage.what) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
-      {
-        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(EditActivity.class);
-        if (paramMessage != null) {
-          paramMessage.sendEmptyMessageDelayed(7, 50L);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("SignatureManager", 2, "update sign tpl animation ...");
-        }
-      }
+      zva.a(paramzrt, null);
+      continue;
+      zva.a(paramzrt, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ztu
  * JD-Core Version:    0.7.0.1
  */

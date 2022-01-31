@@ -1,38 +1,130 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.richstatus.RichStatusEditText;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.QZLog;
+import java.io.File;
 
 public class ahub
-  implements TextWatcher
 {
-  public ahub(EditActivity paramEditActivity) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public static int a(String paramString1, String paramString2, PublishVideoEntry paramPublishVideoEntry)
   {
-    EditActivity.a = true;
-    ReportController.b(this.a.app, "CliOper", "", "", "signiture", "set_clk_mdf", 0, 0, "", "", "", "");
-    if ((EditActivity.a(this.a).getSelectionStart() == 7) && (EditActivity.a(this.a).getText().toString().trim().length() == 7)) {
-      EditActivity.a(this.a).setSelection(paramEditable.length());
+    int i = 0;
+    if ((paramPublishVideoEntry == null) || (paramPublishVideoEntry.videoMaxrate <= 0)) {
+      i = -1;
     }
-    EditActivity.a(this.a);
+    do
+    {
+      for (;;)
+      {
+        return i;
+        double d = paramPublishVideoEntry.recordTime / 1000.0D;
+        int j = paramPublishVideoEntry.videoMaxrate;
+        try
+        {
+          j = bggu.a(new String[] { "-threads", "1", "-ss", "0.0", "-accurate_seek", "-i", paramString1, "-t", String.valueOf(d), "-vf", "null", "-metadata:s", "rotate=0", "-acodec", "aac", "-vcodec", "libx264", "-movflags", "faststart", "-preset", "veryfast", "-tune", "psnr", "-profile:v", "high", "-level", "3.0", "-b:v", String.valueOf(j), "-y", paramString2 });
+          return j;
+        }
+        catch (Exception paramString1)
+        {
+          if (QLog.isColorLevel())
+          {
+            QLog.i("EncodeVideoUtil", 2, "TrimNative.trim: ", paramString1);
+            return 0;
+          }
+        }
+        catch (Error paramString1) {}
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("EncodeVideoUtil", 2, "TrimNative.trim: error", paramString1);
+    return 0;
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public static ahuc a(String paramString)
   {
-    QLog.d("EditActivity", 2, "beforeTextChanged CharSequence = " + paramCharSequence + ", start = " + paramInt1 + ", count = " + paramInt2 + ", after = " + paramInt3);
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        Object localObject = new File(paramString);
+        ahuc localahuc = new ahuc();
+        if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
+        {
+          String str = a((File)localObject);
+          localObject = b((File)localObject);
+          if (TextUtils.isEmpty(str)) {
+            return null;
+          }
+          localahuc.a = str;
+          localahuc.b = ((String)localObject);
+          localahuc.c = paramString;
+          return localahuc;
+        }
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("EncodeVideoUtil", 2, "getVideoInfoByPath error", paramString);
+        }
+      }
+    }
+    return null;
   }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  @NonNull
+  private static String a(File paramFile)
   {
-    QLog.d("EditActivity", 2, "onTextChanged CharSequence = " + paramCharSequence + ", start = " + paramInt1 + ", count = " + paramInt3);
+    paramFile = paramFile.listFiles();
+    if ((paramFile != null) && (paramFile.length > 0))
+    {
+      int j = paramFile.length;
+      int i = 0;
+      while (i < j)
+      {
+        Object localObject = paramFile[i];
+        if (localObject.getName().endsWith(".mp4")) {
+          return localObject.getAbsolutePath();
+        }
+        i += 1;
+      }
+    }
+    return null;
+  }
+  
+  public static String a(String paramString)
+  {
+    if (paramString == null) {
+      return null;
+    }
+    try
+    {
+      paramString = ShortVideoUtils.a(new File(paramString).getParentFile());
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      QZLog.i("EncodeVideoUtil", 1, "get target path error encode error", paramString);
+    }
+    return null;
+  }
+  
+  @NonNull
+  private static String b(File paramFile)
+  {
+    paramFile = new File(paramFile.getAbsolutePath() + File.separator + "audio_data_cache");
+    if ((paramFile.exists()) && (paramFile.isDirectory()))
+    {
+      paramFile = paramFile.listFiles();
+      if ((paramFile != null) && (paramFile.length > 0)) {
+        return paramFile[0].getAbsolutePath();
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahub
  * JD-Core Version:    0.7.0.1
  */

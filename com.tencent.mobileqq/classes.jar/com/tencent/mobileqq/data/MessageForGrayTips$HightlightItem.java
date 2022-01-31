@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.data;
 
+import bajq;
+
 public class MessageForGrayTips$HightlightItem
 {
   public int actionType;
@@ -7,6 +9,7 @@ public class MessageForGrayTips$HightlightItem
   public int groupId;
   public String icon;
   public String iconAlt;
+  private int iconSize = bajq.b(16.0F);
   public String mMsgActionData;
   public String mMsg_A_ActionData;
   public boolean needUpdateNick;
@@ -44,6 +47,11 @@ public class MessageForGrayTips$HightlightItem
     this(paramInt1, paramInt2, paramLong, paramInt3, paramInt4, paramString1, paramString2, paramString3, paramString4, paramInt5);
     this.remark = paramString5;
     this.groupId = paramInt6;
+  }
+  
+  public int getIconSize()
+  {
+    return this.iconSize;
   }
 }
 

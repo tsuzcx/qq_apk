@@ -1,11 +1,16 @@
-public final class aowt
-  implements Runnable
+class aowt
+  implements apdk
 {
-  public void run() {}
+  aowt(aows paramaows) {}
+  
+  public void a()
+  {
+    aows.a(this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aowt
  * JD-Core Version:    0.7.0.1
  */

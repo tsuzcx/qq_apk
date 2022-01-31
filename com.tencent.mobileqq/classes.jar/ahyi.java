@@ -1,38 +1,57 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.search.adapter.BaseMvpFaceAdapter;
-import com.tencent.mobileqq.search.fragment.SelectMemberContactSearchFragment;
-import com.tencent.mobileqq.search.presenter.ContactSearchResultPresenter;
-import com.tencent.mobileqq.search.presenter.IPresenter;
-import com.tencent.mobileqq.search.util.SearchUtils;
-import com.tencent.mobileqq.search.view.ContactSearchResultView;
-import com.tencent.mobileqq.search.view.IView;
-import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.widget.ListView;
+import com.tencent.mobileqq.activity.weather.WeatherServlet.PermissionCallback.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppActivity;
+import mqq.app.NewIntent;
+import mqq.app.QQPermissionCallback;
+import mqq.os.MqqHandler;
+import mqq.util.WeakReference;
 
-public class ahyi
-  extends BaseMvpFaceAdapter
+public final class ahyi
+  implements QQPermissionCallback
 {
-  public ahyi(SelectMemberContactSearchFragment paramSelectMemberContactSearchFragment, ListView paramListView, FaceDecoder paramFaceDecoder)
+  private WeakReference<QQAppInterface> a;
+  private WeakReference<NewIntent> b;
+  private WeakReference<AppActivity> c;
+  
+  private ahyi(QQAppInterface paramQQAppInterface, NewIntent paramNewIntent, AppActivity paramAppActivity)
   {
-    super(paramListView, paramFaceDecoder);
+    this.a = new WeakReference(paramQQAppInterface);
+    this.b = new WeakReference(paramNewIntent);
+    this.c = new WeakReference(paramAppActivity);
   }
   
-  protected IPresenter a(int paramInt)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    return new ContactSearchResultPresenter(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
-  }
-  
-  protected IView a(int paramInt, ViewGroup paramViewGroup)
-  {
-    if (SearchUtils.a(SelectMemberContactSearchFragment.a(this.jdField_a_of_type_ComTencentMobileqqSearchFragmentSelectMemberContactSearchFragment))) {
-      return new ContactSearchResultView(paramViewGroup, 2130971558);
+    if (QLog.isColorLevel()) {
+      QLog.d("weatherManager", 1, "User requestPermissions denied...");
     }
-    return new ContactSearchResultView(paramViewGroup, 2130971559);
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    NewIntent localNewIntent = (NewIntent)this.b.get();
+    AppActivity localAppActivity = (AppActivity)this.c.get();
+    if ((localQQAppInterface != null) && (localNewIntent != null) && (localAppActivity != null))
+    {
+      ThreadManager.getSubThreadHandler().post(new WeatherServlet.PermissionCallback.1(this, localNewIntent, localQQAppInterface));
+      babr.a(localAppActivity, paramArrayOfString, paramArrayOfInt);
+    }
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("weatherManager", 1, "User requestPermissions grant...");
+    }
+    paramArrayOfString = (QQAppInterface)this.a.get();
+    paramArrayOfInt = (NewIntent)this.b.get();
+    if ((paramArrayOfString != null) && (paramArrayOfInt != null)) {
+      ahyg.a(paramArrayOfString, paramArrayOfInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahyi
  * JD-Core Version:    0.7.0.1
  */

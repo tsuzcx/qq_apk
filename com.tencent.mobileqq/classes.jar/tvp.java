@@ -1,93 +1,70 @@
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.widget.RecyclerView;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.av.utils.ImageResUtil;
-import com.tencent.av.widget.RatingBar.OnRatingListener;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class tvp
-  implements RatingBar.OnRatingListener
+  extends QQUIEventReceiver<tvd, tgh>
 {
-  public tvp(ScoreQAVFragment paramScoreQAVFragment) {}
-  
-  public void a(Object paramObject, int paramInt)
+  public tvp(@NonNull tvd paramtvd)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScoreActivity", 2, "ratingScore : " + paramInt);
+    super(paramtvd);
+  }
+  
+  public void a(@NonNull tvd paramtvd, @NonNull tgh paramtgh)
+  {
+    if (TextUtils.equals(String.valueOf(paramtvd.hashCode()), paramtgh.jdField_a_of_type_JavaLangString)) {
+      b(paramtvd, paramtgh);
     }
-    this.a.e = paramInt;
-    if (paramInt <= 3) {}
-    for (;;)
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tgh.class;
+  }
+  
+  public void b(tvd paramtvd, tgh paramtgh)
+  {
+    paramtvd = ((StoryPlayerGroupHolder)paramtvd.a()).a();
+    if (paramtvd != null) {
+      paramtvd.c(false);
+    }
+    if (paramtgh.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null) {
+      return;
+    }
+    boolean bool = tfy.a(paramtgh.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    switch (paramtgh.jdField_a_of_type_Int)
     {
-      try
+    case 0: 
+    default: 
+      return;
+    case 1: 
+      bbmy.a(BaseApplicationImpl.getContext(), 1, ajjy.a(2131641094), 0).a();
+      return;
+    case 2: 
+      if (bool) {}
+      for (paramtvd = "2";; paramtvd = "1")
       {
-        if (ImageResUtil.a("qav_score_bad.jpg")) {
-          this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), ImageResUtil.b() + "qav_score_bad.jpg"));
-        }
-        ScoreQAVFragment.a(this.a).setVisibility(0);
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.a.b.setText(2131429659);
-        if ((this.a.jdField_a_of_type_JavaUtilList != null) && (this.a.jdField_a_of_type_JavaUtilList.size() > 0))
-        {
-          ScoreQAVFragment.a(this.a).setAdapter(ScoreQAVFragment.a(this.a));
-          if (paramInt <= 0) {
-            break label398;
-          }
-          this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
-          this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#FFFFFF"));
-          this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-          return;
-        }
+        urp.a("play_video", "down_suc", 0, 0, new String[] { paramtvd, "", "", paramtgh.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+        bbmy.a(BaseApplicationImpl.getContext(), 2, skt.a(2131633920), 0).a();
+        return;
       }
-      catch (OutOfMemoryError paramObject)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.w("ScoreActivity", 2, "mIcon OOM: " + paramObject);
-        continue;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("ScoreActivity", 2, "mDatas is invalid!");
-        continue;
-      }
-      if (paramInt > 3)
-      {
-        ScoreQAVFragment.a(this.a).setVisibility(8);
-        try
-        {
-          if (ImageResUtil.a("qav_score_good.jpg")) {
-            this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(new BitmapDrawable(this.a.getResources(), ImageResUtil.b() + "qav_score_good.jpg"));
-          }
-          this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-          this.a.b.setText(2131429659);
-        }
-        catch (OutOfMemoryError paramObject)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.w("ScoreActivity", 2, "mIcon OOM: " + paramObject);
-            }
-          }
-        }
-        label398:
-        this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-        this.a.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#BBBBBB"));
-      }
+    }
+    if (bool) {}
+    for (paramtvd = "2";; paramtvd = "1")
+    {
+      urp.a("play_video", "down_fail", 0, 0, new String[] { paramtvd, "", "", paramtgh.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+      bbmy.a(BaseApplicationImpl.getContext(), 1, ajjy.a(2131641098), 0).a();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tvp
  * JD-Core Version:    0.7.0.1
  */

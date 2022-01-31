@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.app.message.BaseMessageManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.multimsg.LongTextMsgManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AddRequestActivity;
 
 public class zyp
-  implements Runnable
+  implements View.OnClickListener
 {
-  public zyp(BaseMessageManager paramBaseMessageManager, LongTextMsgManager paramLongTextMsgManager, MessageRecord paramMessageRecord) {}
+  public zyp(AddRequestActivity paramAddRequestActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMultimsgLongTextMsgManager.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zyp
  * JD-Core Version:    0.7.0.1
  */

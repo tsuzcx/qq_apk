@@ -1,5 +1,7 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
+import ahhj;
+import ajjy;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,50 +9,57 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
-import anzl;
+import awqt;
+import awtt;
+import bhdr;
+import bhfm;
+import bhfv;
+import bhgs;
+import bhhq;
+import bhil;
+import bibz;
+import bicj;
+import bief;
+import bifv;
+import bigb;
+import bihj;
+import bihk;
+import biiw;
+import biiy;
+import biiz;
+import bijc;
+import bijk;
+import bijo;
+import bijr;
+import binj;
+import bink;
+import biok;
+import bird;
+import birp;
+import bism;
+import bjac;
+import bjae;
+import bjin;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraConstant;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
-import com.tencent.mobileqq.statistics.QIMReportController;
-import com.tencent.mobileqq.statistics.reportitem.QIMMsgReportItem;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMSegmentCaptureManager;
-import dov.com.qq.im.capture.QIMManager;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter;
-import dov.com.qq.im.capture.data.CaptureComboManager;
 import dov.com.qq.im.capture.data.FilterCategory;
 import dov.com.qq.im.capture.data.QIMFilterCategoryItem;
-import dov.com.qq.im.capture.data.TemplateGroupItem;
-import dov.com.qq.im.capture.music.EditVideoQimMusic;
 import dov.com.qq.im.capture.text.DynamicTextItem;
 import dov.com.qq.im.capture.view.ComboProviderView;
 import dov.com.qq.im.capture.view.QIMFilterProviderView;
 import dov.com.qq.im.capture.view.QIMPtvTemplateProviderView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.DynamicFaceLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceAndTextItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.LineLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLinePath;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PureLinePath;
-import dov.com.tencent.biz.qqstory.takevideo.filter.FilterData;
-import dov.com.tencent.biz.qqstory.takevideo.filter.VideoEffectsFilterData;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools.DataSet;
 import dov.com.tencent.mobileqq.activity.richmedia.view.GLVideoClipUtil;
 import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+import srv;
 
 public class DataReporter
 {
@@ -87,7 +96,6 @@ public class DataReporter
     case 1022: 
     case 1024: 
     case 1025: 
-    case 1029: 
     case 7400: 
     case 10002: 
       return DataReporter.Destination.C2C;
@@ -98,22 +106,22 @@ public class DataReporter
   }
   
   @NonNull
-  public List a(@Nullable EditVideoPartManager paramEditVideoPartManager, DataReporter.T paramT1, DataReporter.T paramT2)
+  public List<awtt> a(@Nullable bigb parambigb, DataReporter.T paramT1, DataReporter.T paramT2)
   {
     ArrayList localArrayList1 = new ArrayList();
-    if (paramEditVideoPartManager != null) {
+    if (parambigb != null) {
       try
       {
-        paramEditVideoPartManager.o();
-        if ((paramEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi != null) && (paramEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null)) {
+        parambigb.p();
+        if ((parambigb.jdField_a_of_type_Bihj != null) && (parambigb.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null)) {
           break label61;
         }
         throw new IllegalStateException("have not attach ui and params");
       }
-      catch (Throwable paramEditVideoPartManager)
+      catch (Throwable parambigb)
       {
         if (QLog.isColorLevel()) {
-          QLog.e("QIMReportController.DataReporter", 2, Log.getStackTraceString(paramEditVideoPartManager));
+          QLog.e("QIMReportController.DataReporter", 2, Log.getStackTraceString(parambigb));
         }
       }
     } else {
@@ -124,24 +132,24 @@ public class DataReporter
     label90:
     Object localObject2;
     label102:
-    QIMMsgReportItem localQIMMsgReportItem;
+    awtt localawtt;
     Object localObject4;
-    label396:
-    label401:
+    label420:
+    label425:
     boolean bool1;
     boolean bool2;
-    if ((paramEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a() instanceof EditWebVideoActivity))
+    if ((parambigb.jdField_a_of_type_Bihj.a() instanceof EditWebVideoActivity))
     {
-      localObject1 = (EditWebVideoActivity)paramEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a();
+      localObject1 = (EditWebVideoActivity)parambigb.jdField_a_of_type_Bihj.a();
       if (localObject1 != null)
       {
         localObject2 = ((Activity)localObject1).getIntent();
-        localQIMMsgReportItem = new QIMMsgReportItem();
-        localQIMMsgReportItem.jdField_e_of_type_JavaLangString = "0";
-        localQIMMsgReportItem.g = DataReporter.Destination.UNKNOWN.toString();
-        if (paramEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a != null)
+        localawtt = new awtt();
+        localawtt.jdField_e_of_type_JavaLangString = "0";
+        localawtt.g = DataReporter.Destination.UNKNOWN.toString();
+        if (parambigb.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a != null)
         {
-          localObject4 = (SessionInfo)paramEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a.getParcelable("edit_send_session_info");
+          localObject4 = (SessionInfo)parambigb.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a.getParcelable("edit_send_session_info");
           localObject1 = localObject4;
           if (localObject4 == null)
           {
@@ -152,111 +160,111 @@ public class DataReporter
           }
           if (localObject1 != null)
           {
-            localQIMMsgReportItem.jdField_e_of_type_JavaLangString = ((SessionInfo)localObject1).jdField_a_of_type_JavaLangString;
+            localawtt.jdField_e_of_type_JavaLangString = ((SessionInfo)localObject1).jdField_a_of_type_JavaLangString;
             localObject4 = a(((SessionInfo)localObject1).jdField_a_of_type_Int);
             localObject1 = localObject4;
             if (localObject4 == null) {
               localObject1 = DataReporter.Destination.UNKNOWN;
             }
-            localQIMMsgReportItem.g = ((DataReporter.Destination)localObject1).toString();
+            localawtt.g = ((DataReporter.Destination)localObject1).toString();
           }
         }
-        localQIMMsgReportItem.h = ("fake_vid_" + System.currentTimeMillis() + "-" + new Random(System.currentTimeMillis() + Thread.currentThread().getId()).nextInt());
+        localawtt.h = ("fake_vid_" + System.currentTimeMillis() + "-" + new Random(System.currentTimeMillis() + Thread.currentThread().getId()).nextInt());
       }
     }
     else
     {
-      label452:
+      label476:
       double d;
-      label467:
-      label484:
+      label491:
+      label508:
       int i;
-      switch (paramEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.b())
+      switch (parambigb.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.c())
       {
       case 1: 
         localObject1 = DataReporter.MsgEntry.UNDEFINE;
-        localQIMMsgReportItem.f = ((DataReporter.MsgEntry)localObject1).toString();
-        localQIMMsgReportItem.jdField_a_of_type_Int = 1;
-        bool1 = paramEditVideoPartManager.a();
-        bool2 = ((QIMSegmentCaptureManager)QIMManager.a().c(13)).a();
+        localawtt.f = ((DataReporter.MsgEntry)localObject1).toString();
+        localawtt.jdField_a_of_type_Int = 1;
+        bool1 = parambigb.a();
+        bool2 = ((bhdr)bhfm.a().c(13)).a();
         if (bool1)
         {
           localObject1 = DataReporter.MsgType.PICTURE.toString();
-          localQIMMsgReportItem.i = ((String)localObject1);
+          localawtt.i = ((String)localObject1);
           if (!bool1) {
-            break label1365;
+            break label1411;
           }
           d = 0.0D;
-          localQIMMsgReportItem.jdField_a_of_type_Double = d;
+          localawtt.jdField_a_of_type_Double = d;
           if (!bool1) {
-            break label1375;
+            break label1421;
           }
           paramT1 = paramT1.toString();
-          localQIMMsgReportItem.d = paramT1;
-          localQIMMsgReportItem.k = DataReporter.ElementType.OTHER.toString();
-          localQIMMsgReportItem.j = DataReporter.ContentSource.UNKNOWN.toString();
+          localawtt.d = paramT1;
+          localawtt.k = DataReporter.ElementType.OTHER.toString();
+          localawtt.j = DataReporter.ContentSource.UNKNOWN.toString();
           localObject1 = DataReporter.ContentSource.UNKNOWN;
           if (localObject2 == null) {
-            break label3506;
+            break label3727;
           }
           paramT1 = ((Intent)localObject2).getBundleExtra("state");
           if (!bool1) {
-            break label1399;
+            break label1445;
           }
           i = ((Intent)localObject2).getIntExtra("pic_entrance_type", -1);
           if (i <= 0) {
-            break label3533;
+            break label3754;
           }
           switch (i)
           {
           case 1: 
             localObject1 = DataReporter.ContentSource.EDIT_AFTER_SHOT;
-            break label3533;
+            break label3754;
             if (paramT1 != DataReporter.ContentSource.UNKNOWN) {
-              localQIMMsgReportItem.j = paramT1.toString();
+              localawtt.j = paramT1.toString();
             }
-            if ((paramT1 != DataReporter.ContentSource.UNKNOWN) && (paramEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditPicCropPart != null) && (paramEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditPicCropPart.c))
+            if ((paramT1 != DataReporter.ContentSource.UNKNOWN) && (parambigb.jdField_a_of_type_Bibz != null) && (parambigb.jdField_a_of_type_Bibz.c))
             {
-              localQIMMsgReportItem.j = paramT1.toString();
-              localObject2 = new QIMMsgReportItem(localQIMMsgReportItem);
-              ((QIMMsgReportItem)localObject2).k = DataReporter.ElementType.CLIP.toString();
-              ((QIMMsgReportItem)localObject2).m = "";
-              ((QIMMsgReportItem)localObject2).l = "";
+              localawtt.j = paramT1.toString();
+              localObject2 = new awtt(localawtt);
+              ((awtt)localObject2).k = DataReporter.ElementType.CLIP.toString();
+              ((awtt)localObject2).m = "";
+              ((awtt)localObject2).l = "";
               localArrayList1.add(localObject2);
             }
             if (paramT1 != DataReporter.ContentSource.EDIT_AFTER_IMPORT)
             {
-              localObject2 = new QIMMsgReportItem(localQIMMsgReportItem);
-              ((QIMMsgReportItem)localObject2).j = DataReporter.ContentSource.UNKNOWN.toString();
-              ((QIMMsgReportItem)localObject2).k = DataReporter.ElementType.CAMERA.toString();
-              ((QIMMsgReportItem)localObject2).l = "";
-              if (FlowCameraConstant.jdField_a_of_type_Int != 2) {
-                break label1502;
+              localObject2 = new awtt(localawtt);
+              ((awtt)localObject2).j = DataReporter.ContentSource.UNKNOWN.toString();
+              ((awtt)localObject2).k = DataReporter.ElementType.CAMERA.toString();
+              ((awtt)localObject2).l = "";
+              if (ahhj.jdField_a_of_type_Int != 2) {
+                break label1546;
               }
-              ((QIMMsgReportItem)localObject2).m = "back";
+              ((awtt)localObject2).m = "back";
               localArrayList1.add(localObject2);
               if (GLVideoClipUtil.b())
               {
-                localObject2 = new QIMMsgReportItem(localQIMMsgReportItem);
-                ((QIMMsgReportItem)localObject2).k = DataReporter.ElementType.DARK.toString();
-                ((QIMMsgReportItem)localObject2).l = "";
-                ((QIMMsgReportItem)localObject2).m = "on";
+                localObject2 = new awtt(localawtt);
+                ((awtt)localObject2).k = DataReporter.ElementType.DARK.toString();
+                ((awtt)localObject2).l = "";
+                ((awtt)localObject2).m = "on";
                 localArrayList1.add(localObject2);
               }
             }
-            if ((!bool1) && (paramEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter != null))
+            if ((!bool1) && (parambigb.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter != null))
             {
-              localObject2 = paramEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter.a();
-              if ((localObject2 != null) && ((localObject2 instanceof VideoEffectsFilterData)))
+              localObject2 = parambigb.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter.a();
+              if ((localObject2 != null) && ((localObject2 instanceof birp)))
               {
-                localObject4 = new QIMMsgReportItem(localQIMMsgReportItem);
-                ((QIMMsgReportItem)localObject4).k = DataReporter.ElementType.SPEED.toString();
-                ((QIMMsgReportItem)localObject4).l = "";
-                ((QIMMsgReportItem)localObject4).m = ((FilterData)localObject2).toString();
+                localObject4 = new awtt(localawtt);
+                ((awtt)localObject4).k = DataReporter.ElementType.SPEED.toString();
+                ((awtt)localObject4).l = "";
+                ((awtt)localObject4).m = ((bird)localObject2).toString();
                 localArrayList1.add(localObject4);
               }
             }
-            localObject2 = paramEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoDoodle;
+            localObject2 = parambigb.jdField_a_of_type_Bief;
             if (localObject2 != null) {
               localObject2 = null;
             }
@@ -268,43 +276,48 @@ public class DataReporter
       case 14: 
       case 15: 
       case 8: 
+      case 103: 
       case 9: 
       case 10: 
       case 11: 
       case 100: 
       case 7: 
-        label600:
-        label986:
-        label1502:
+      case 105: 
+      case 106: 
+        label1152:
+        label1411:
+        label1421:
+        label1557:
         try
         {
-          label608:
-          if (!paramEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.b()) {
-            break label1513;
+          label624:
+          label632:
+          if (!parambigb.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.b()) {
+            break label1557;
           }
-          localObject4 = paramEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoDoodle.a().a().jdField_a_of_type_JavaUtilList;
+          label792:
+          localObject4 = parambigb.jdField_a_of_type_Bief.a().a().jdField_a_of_type_JavaUtilList;
           localObject2 = localObject4;
         }
         catch (NullPointerException localNullPointerException4)
         {
+          label983:
+          label1010:
           Object localObject5;
           Object localObject6;
-          label1125:
-          label1399:
-          break label959;
-          label1375:
-          label1513:
+          label1088:
+          label1136:
+          label1656:
+          break label983;
+          label1445:
+          label1504:
           paramT1 = paramT2;
         }
-        label768:
-        label959:
         localObject4 = localObject2;
         if (localObject2 == null) {
           localObject4 = new ArrayList();
         }
         localObject4 = ((List)localObject4).iterator();
-        label1061:
-        label1109:
         do
         {
           do
@@ -312,79 +325,82 @@ public class DataReporter
             if (!((Iterator)localObject4).hasNext()) {
               break;
             }
-            localObject5 = (FaceLayer.FaceItem)((Iterator)localObject4).next();
+            localObject5 = (bijc)((Iterator)localObject4).next();
           } while (localObject5 == null);
-          localObject6 = new QIMMsgReportItem(localQIMMsgReportItem);
-          if (!(localObject5 instanceof FaceLayer.FaceAndTextItem)) {
+          localObject6 = new awtt(localawtt);
+          if (!(localObject5 instanceof biiz)) {
             break;
           }
-          ((QIMMsgReportItem)localObject6).k = DataReporter.ElementType.POSTER.toString();
-          ((QIMMsgReportItem)localObject6).l = "地理位置";
-          ((QIMMsgReportItem)localObject6).m = ((FaceLayer.FaceItem)localObject5).jdField_e_of_type_JavaLangString;
+          ((awtt)localObject6).k = DataReporter.ElementType.POSTER.toString();
+          ((awtt)localObject6).l = ajjy.a(2131636988);
+          ((awtt)localObject6).m = ((bijc)localObject5).jdField_e_of_type_JavaLangString;
           if ((paramT2 == DataReporter.T.VIDEO_RETAKE) || (paramT2 == DataReporter.T.VIDEO_SAVE) || (paramT2 == DataReporter.T.VIDEO_PUBLISH))
           {
-            if ((((FaceLayer.FaceItem)localObject5).jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper == null) || (((FaceLayer.FaceItem)localObject5).jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.b())) {
-              break label1609;
+            if ((((bijc)localObject5).jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper == null) || (((bijc)localObject5).jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.isEmpty())) {
+              break label1656;
             }
-            ((QIMMsgReportItem)localObject6).n = "1";
+            ((awtt)localObject6).n = "1";
           }
-          if (((FaceLayer.FaceItem)localObject5).jdField_e_of_type_Int != 0) {
-            break label1619;
+          if (((bijc)localObject5).jdField_e_of_type_Int != 0) {
+            break label1666;
           }
           localObject2 = DataReporter.ContentSource.BEFORE_SHOT.toString();
-          ((QIMMsgReportItem)localObject6).j = ((String)localObject2);
+          ((awtt)localObject6).j = ((String)localObject2);
           localArrayList1.add(localObject6);
-        } while (!((FaceLayer.FaceItem)localObject5).d.equals("信息贴纸"));
-        localObject2 = new QIMMsgReportItem();
-        ((QIMMsgReportItem)localObject2).m = ((FaceLayer.FaceItem)localObject5).jdField_e_of_type_JavaLangString;
-        ((QIMMsgReportItem)localObject2).l = ((FaceLayer.FaceItem)localObject5).d;
-        ((QIMMsgReportItem)localObject2).k = DataReporter.ElementType.POSTER.toString();
-        ((QIMMsgReportItem)localObject2).j = localQIMMsgReportItem.d;
-        ((QIMMsgReportItem)localObject2).i = localQIMMsgReportItem.i;
-        if (((FaceLayer.FaceItem)localObject5).g == 1) {
-          ((QIMMsgReportItem)localObject2).d = "0X8008C04";
+        } while (!((bijc)localObject5).d.equals(ajjy.a(2131636984)));
+        localObject2 = new awtt();
+        ((awtt)localObject2).m = ((bijc)localObject5).jdField_e_of_type_JavaLangString;
+        ((awtt)localObject2).l = ((bijc)localObject5).d;
+        ((awtt)localObject2).k = DataReporter.ElementType.POSTER.toString();
+        ((awtt)localObject2).j = localawtt.d;
+        ((awtt)localObject2).i = localawtt.i;
+        if (((bijc)localObject5).g == 1) {
+          ((awtt)localObject2).d = "0X8008C04";
         }
         for (;;)
         {
-          QIMReportController.b(null, (QIMMsgReportItem)localObject2);
-          break label986;
-          if ((paramEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a() instanceof EditVideoActivity))
+          awqt.b(null, (awtt)localObject2);
+          break label1010;
+          if ((parambigb.jdField_a_of_type_Bihj.a() instanceof EditVideoActivity))
           {
-            localObject1 = (EditVideoActivity)paramEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a();
+            localObject1 = (EditVideoActivity)parambigb.jdField_a_of_type_Bihj.a();
             break;
           }
-          if (!(paramEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a() instanceof EditPicActivity)) {
-            break label3521;
+          if (!(parambigb.jdField_a_of_type_Bihj.a() instanceof EditPicActivity)) {
+            break label3742;
           }
-          localObject1 = (EditPicActivity)paramEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a();
+          localObject1 = (EditPicActivity)parambigb.jdField_a_of_type_Bihj.a();
           break;
           localObject1 = DataReporter.MsgEntry.MOMENTS;
-          break label401;
+          break label425;
           localObject1 = DataReporter.MsgEntry.HOME;
-          break label401;
+          break label425;
           localObject1 = DataReporter.MsgEntry.AIO;
-          break label401;
+          break label425;
           localObject1 = DataReporter.MsgEntry.WEB;
-          break label401;
+          break label425;
+          localObject1 = DataReporter.MsgEntry.TRIBE;
+          break label425;
+          localObject1 = DataReporter.MsgEntry.READINJOY;
+          break label425;
           if (bool2)
           {
             localObject1 = DataReporter.MsgType.SEGMENT_VIDEO.toString();
-            break label452;
+            break label476;
           }
           localObject1 = DataReporter.MsgType.SHORT_VIDEO.toString();
-          break label452;
-          label1365:
-          d = paramEditVideoPartManager.a();
-          break label467;
+          break label476;
+          d = parambigb.a();
+          break label491;
           paramT1 = paramT2.toString();
-          break label484;
+          break label508;
           localObject1 = DataReporter.ContentSource.EDIT_AFTER_SHOT;
-          break label3533;
+          break label3754;
           localObject1 = DataReporter.ContentSource.EDIT_AFTER_IMPORT;
-          break label3533;
+          break label3754;
           i = ((Intent)localObject2).getIntExtra("short_video_entrance_type", -1);
           if (i <= 0) {
-            break label3493;
+            break label3714;
           }
           switch (i)
           {
@@ -403,35 +419,34 @@ public class DataReporter
             break;
           case 6: 
           case 7: 
-            label1460:
             localObject2 = DataReporter.ContentSource.EDIT_AFTER_IMPORT;
             localObject1 = paramT1;
             paramT1 = (DataReporter.T)localObject2;
             break;
-            ((QIMMsgReportItem)localObject2).m = "front";
-            break label768;
-            localObject4 = paramEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoDoodle.a().a().jdField_a_of_type_JavaUtilList;
+            label1546:
+            ((awtt)localObject2).m = "front";
+            break label792;
+            localObject4 = parambigb.jdField_a_of_type_Bief.a().a().jdField_a_of_type_JavaUtilList;
             localObject2 = localObject4;
-            break label959;
-            if (((FaceLayer.FaceItem)localObject5).b)
+            break label983;
+            if (((bijc)localObject5).b)
             {
-              ((QIMMsgReportItem)localObject6).k = DataReporter.ElementType.POSTER.toString();
-              ((QIMMsgReportItem)localObject6).l = "信息贴纸";
-              ((QIMMsgReportItem)localObject6).m = ((FaceLayer.FaceItem)localObject5).jdField_e_of_type_JavaLangString;
-              break label1061;
+              ((awtt)localObject6).k = DataReporter.ElementType.POSTER.toString();
+              ((awtt)localObject6).l = ajjy.a(2131636978);
+              ((awtt)localObject6).m = ((bijc)localObject5).jdField_e_of_type_JavaLangString;
+              break label1088;
             }
-            ((QIMMsgReportItem)localObject6).k = DataReporter.ElementType.POSTER.toString();
-            ((QIMMsgReportItem)localObject6).l = ((FaceLayer.FaceItem)localObject5).d;
-            ((QIMMsgReportItem)localObject6).m = ((FaceLayer.FaceItem)localObject5).jdField_e_of_type_JavaLangString;
-            break label1061;
-            label1609:
-            ((QIMMsgReportItem)localObject6).n = "0";
-            break label1109;
-            label1619:
+            ((awtt)localObject6).k = DataReporter.ElementType.POSTER.toString();
+            ((awtt)localObject6).l = ((bijc)localObject5).d;
+            ((awtt)localObject6).m = ((bijc)localObject5).jdField_e_of_type_JavaLangString;
+            break label1088;
+            ((awtt)localObject6).n = "0";
+            break label1136;
+            label1666:
             localObject2 = paramT1.toString();
-            break label1125;
-            if (((FaceLayer.FaceItem)localObject5).g == 0) {
-              ((QIMMsgReportItem)localObject2).d = "0X8008C05";
+            break label1152;
+            if (((bijc)localObject5).g == 0) {
+              ((awtt)localObject2).d = "0X8008C05";
             }
             break;
           }
@@ -444,39 +459,39 @@ public class DataReporter
     {
       try
       {
-        if (paramEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.b()) {
-          localObject2 = paramEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoDoodle.a().a().jdField_a_of_type_JavaUtilList;
+        if (parambigb.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.b()) {
+          localObject2 = parambigb.jdField_a_of_type_Bief.a().a().jdField_a_of_type_JavaUtilList;
         }
         if (localObject2 != null)
         {
           localObject4 = ((List)localObject2).iterator();
           if (((Iterator)localObject4).hasNext())
           {
-            localObject2 = (FaceLayer.FaceItem)((Iterator)localObject4).next();
+            localObject2 = (bijc)((Iterator)localObject4).next();
             if (localObject2 == null) {
               continue;
             }
-            localObject5 = new QIMMsgReportItem(localQIMMsgReportItem);
-            ((QIMMsgReportItem)localObject5).k = DataReporter.ElementType.POSTER.toString();
-            ((QIMMsgReportItem)localObject5).l = ((FaceLayer.FaceItem)localObject2).d;
-            ((QIMMsgReportItem)localObject5).m = ((FaceLayer.FaceItem)localObject2).jdField_e_of_type_JavaLangString;
+            localObject5 = new awtt(localawtt);
+            ((awtt)localObject5).k = DataReporter.ElementType.POSTER.toString();
+            ((awtt)localObject5).l = ((bijc)localObject2).d;
+            ((awtt)localObject5).m = ((bijc)localObject2).jdField_e_of_type_JavaLangString;
             if ((paramT2 == DataReporter.T.VIDEO_RETAKE) || (paramT2 == DataReporter.T.VIDEO_SAVE) || (paramT2 == DataReporter.T.VIDEO_PUBLISH))
             {
-              if ((((FaceLayer.FaceItem)localObject2).jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper != null) && (!((FaceLayer.FaceItem)localObject2).jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.b())) {
-                ((QIMMsgReportItem)localObject5).n = "1";
+              if ((((bijc)localObject2).jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper != null) && (!((bijc)localObject2).jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.isEmpty())) {
+                ((awtt)localObject5).n = "1";
               }
             }
             else
             {
-              if (((FaceLayer.FaceItem)localObject2).jdField_e_of_type_Int != 0) {
+              if (((bijc)localObject2).jdField_e_of_type_Int != 0) {
                 continue;
               }
               localObject2 = DataReporter.ContentSource.BEFORE_SHOT.toString();
-              ((QIMMsgReportItem)localObject5).j = ((String)localObject2);
+              ((awtt)localObject5).j = ((String)localObject2);
               localArrayList1.add(localObject5);
               continue;
             }
-            ((QIMMsgReportItem)localObject5).n = "0";
+            ((awtt)localObject5).n = "0";
             continue;
             localObject2 = paramT1.toString();
             continue;
@@ -485,7 +500,7 @@ public class DataReporter
         localObject2 = null;
         try
         {
-          localObject4 = paramEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoDoodle.a().a().jdField_a_of_type_JavaUtilArrayList;
+          localObject4 = parambigb.jdField_a_of_type_Bief.a().a().jdField_a_of_type_JavaUtilArrayList;
           localObject2 = localObject4;
         }
         catch (NullPointerException localNullPointerException3)
@@ -499,19 +514,19 @@ public class DataReporter
         localObject2 = ((List)localObject4).iterator();
         if (((Iterator)localObject2).hasNext())
         {
-          localObject4 = (TextLayer.TextItem)((Iterator)localObject2).next();
-          localObject5 = new QIMMsgReportItem(localQIMMsgReportItem);
-          ((QIMMsgReportItem)localObject5).k = "text";
-          ((QIMMsgReportItem)localObject5).l = "";
-          localObject6 = ((TextLayer.TextItem)localObject4).jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem;
+          localObject4 = (bijr)((Iterator)localObject2).next();
+          localObject5 = new awtt(localawtt);
+          ((awtt)localObject5).k = "text";
+          ((awtt)localObject5).l = "";
+          localObject6 = ((bijr)localObject4).jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem;
           if (localObject6 != null)
           {
-            ((QIMMsgReportItem)localObject5).m = String.valueOf(((DynamicTextItem)localObject6).c());
-            ((QIMMsgReportItem)localObject5).j = paramT1.toString();
+            ((awtt)localObject5).m = String.valueOf(((DynamicTextItem)localObject6).c());
+            ((awtt)localObject5).j = paramT1.toString();
             if ((paramT2 == DataReporter.T.VIDEO_RETAKE) || (paramT2 == DataReporter.T.VIDEO_SAVE) || (paramT2 == DataReporter.T.VIDEO_PUBLISH))
             {
-              if ((((TextLayer.TextItem)localObject4).jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper != null) && (!((TextLayer.TextItem)localObject4).jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.b())) {
-                ((QIMMsgReportItem)localObject5).n = "1";
+              if ((((bijr)localObject4).jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper != null) && (!((bijr)localObject4).jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.isEmpty())) {
+                ((awtt)localObject5).n = "1";
               }
             }
             else {
@@ -520,16 +535,16 @@ public class DataReporter
           }
           else
           {
-            ((QIMMsgReportItem)localObject5).m = "";
+            ((awtt)localObject5).m = "";
             continue;
           }
-          ((QIMMsgReportItem)localObject5).n = "0";
+          ((awtt)localObject5).n = "0";
           continue;
         }
         paramT2 = null;
         try
         {
-          localObject2 = paramEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoDoodle.a().a().a.a();
+          localObject2 = parambigb.jdField_a_of_type_Bief.a().a().a.a();
           paramT2 = (DataReporter.T)localObject2;
         }
         catch (NullPointerException localNullPointerException1)
@@ -545,71 +560,71 @@ public class DataReporter
           paramT2 = paramT2.iterator();
           if (paramT2.hasNext())
           {
-            localObject2 = (DoodleLinePath)paramT2.next();
-            localObject4 = new QIMMsgReportItem(localQIMMsgReportItem);
-            ((QIMMsgReportItem)localObject4).l = ((DoodleLinePath)localObject2).a();
-            ((QIMMsgReportItem)localObject4).k = "doodle";
-            if (((DoodleLinePath)localObject2).a(101))
+            localObject2 = (binj)paramT2.next();
+            localObject4 = new awtt(localawtt);
+            ((awtt)localObject4).l = ((binj)localObject2).a();
+            ((awtt)localObject4).k = "doodle";
+            if (((binj)localObject2).a(101))
             {
-              if ((localObject2 instanceof PureLinePath)) {
-                ((QIMMsgReportItem)localObject4).m = ("#" + Integer.toHexString(((PureLinePath)localObject2).jdField_b_of_type_Int));
+              if ((localObject2 instanceof biok)) {
+                ((awtt)localObject4).m = ("#" + Integer.toHexString(((biok)localObject2).jdField_b_of_type_Int));
               }
-              ((QIMMsgReportItem)localObject4).j = paramT1.toString();
+              ((awtt)localObject4).j = paramT1.toString();
               localArrayList1.add(localObject4);
               continue;
             }
-            ((QIMMsgReportItem)localObject4).m = "";
+            ((awtt)localObject4).m = "";
             continue;
           }
         }
-        localObject6 = new QIMMsgReportItem(localQIMMsgReportItem);
-        paramT2 = VideoFilterTools.a();
+        localObject6 = new awtt(localawtt);
+        paramT2 = bjac.a();
         localObject4 = paramT2.a;
         if (localObject4 != null)
         {
           localObject2 = localObject4[paramT2.c()];
           localObject5 = localObject4[0];
           if (localObject2 != null) {
-            break label3490;
+            break label3711;
           }
           localObject2 = localObject5;
           if ((paramT2.a != null) && (localObject2 != null))
           {
             bool2 = ((QIMFilterCategoryItem)localObject2).jdField_a_of_type_Boolean;
-            if (paramEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditProviderPart == null) {
-              break label3485;
+            if (parambigb.jdField_a_of_type_Bicj == null) {
+              break label3706;
             }
-            paramT2 = (QIMFilterProviderView)paramEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditProviderPart.a(QIMFilterProviderView.class);
+            paramT2 = (QIMFilterProviderView)parambigb.jdField_a_of_type_Bicj.a(QIMFilterProviderView.class);
             if ((paramT2 == null) || (paramT2.jdField_a_of_type_JavaUtilArrayList == null)) {
-              break label3485;
+              break label3706;
             }
             paramT2 = paramT2.a();
             if (paramT2 == null) {
-              break label3485;
+              break label3706;
             }
             if ((paramT2 != null) || (localObject1 == null)) {
-              break label3482;
+              break label3703;
             }
             localObject4 = ((Bundle)localObject1).getBundle("container");
             if (localObject4 == null) {
-              break label3482;
+              break label3703;
             }
             if (bool2)
             {
               localObject4 = ((Bundle)localObject4).getBundle(ComboProviderView.class.getSimpleName());
               if (localObject4 == null) {
-                break label3482;
+                break label3703;
               }
               localObject4 = ((Bundle)localObject4).getParcelable("ProviderView.select_item_category");
               if (localObject4 == null) {
-                break label3482;
+                break label3703;
               }
               paramT2 = (FilterCategory)localObject4;
               localArrayList2 = new ArrayList();
-              localObject4 = (CaptureComboManager)QIMManager.a(5);
-              if ((paramT2 == null) && (((CaptureComboManager)localObject4).a() != null))
+              localObject4 = (bhgs)bhfm.a(5);
+              if ((paramT2 == null) && (((bhgs)localObject4).a() != null))
               {
-                localObject4 = ((CaptureComboManager)localObject4).a().jdField_a_of_type_JavaUtilArrayList.iterator();
+                localObject4 = ((bhgs)localObject4).a().jdField_a_of_type_JavaUtilArrayList.iterator();
                 if (((Iterator)localObject4).hasNext())
                 {
                   localFilterCategory = (FilterCategory)((Iterator)localObject4).next();
@@ -635,32 +650,33 @@ public class DataReporter
               continue;
             }
             localObject4 = DataReporter.ElementType.COMBO.toString();
-            ((QIMMsgReportItem)localObject6).k = ((String)localObject4);
+            ((awtt)localObject6).k = ((String)localObject4);
             if (paramT2 == null) {
               continue;
             }
-            ((QIMMsgReportItem)localObject6).l = paramT2.jdField_a_of_type_JavaLangString;
+            ((awtt)localObject6).l = paramT2.jdField_a_of_type_JavaLangString;
             if ((!((QIMFilterCategoryItem)localObject2).jdField_a_of_type_Boolean) && (((QIMFilterCategoryItem)localObject2).jdField_a_of_type_JavaUtilArrayList != null) && (!((QIMFilterCategoryItem)localObject2).jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
               continue;
             }
-            ((QIMMsgReportItem)localObject6).m = ((QIMFilterCategoryItem)localObject2).jdField_a_of_type_JavaLangString;
+            ((awtt)localObject6).m = ((QIMFilterCategoryItem)localObject2).jdField_a_of_type_JavaLangString;
             if (paramT1 != DataReporter.ContentSource.EDIT_AFTER_IMPORT) {
               continue;
             }
-            ((QIMMsgReportItem)localObject6).j = paramT1.toString();
+            ((awtt)localObject6).j = paramT1.toString();
             localArrayList1.add(localObject6);
           }
         }
-        if ((!"0".equals(QIMPtvTemplateAdapter.jdField_b_of_type_JavaLangString)) || (QIMPtvTemplateAdapter.jdField_b_of_type_Int != 0) || (!TextUtils.isEmpty(QIMPtvTemplateAdapter.jdField_a_of_type_JavaLangString)))
+        if ((!"0".equals(bhfv.jdField_b_of_type_JavaLangString)) || (bhfv.jdField_b_of_type_Int != 0) || (!TextUtils.isEmpty(bhfv.jdField_a_of_type_JavaLangString)))
         {
-          if (QIMPtvTemplateAdapter.jdField_b_of_type_JavaLangString == null) {
-            QIMPtvTemplateAdapter.jdField_b_of_type_JavaLangString = "";
+          bhfv.c = 0;
+          if (bhfv.jdField_b_of_type_JavaLangString == null) {
+            bhfv.jdField_b_of_type_JavaLangString = "";
           }
-          if (QIMPtvTemplateAdapter.jdField_a_of_type_JavaLangString == null) {
-            QIMPtvTemplateAdapter.jdField_a_of_type_JavaLangString = "";
+          if (bhfv.jdField_a_of_type_JavaLangString == null) {
+            bhfv.jdField_a_of_type_JavaLangString = "";
           }
           paramT2 = "";
-          localObject2 = (QIMPtvTemplateManager)QIMManager.a(3);
+          localObject2 = (bjin)bhfm.a(3);
           paramT1 = paramT2;
           if (localObject1 != null)
           {
@@ -677,14 +693,14 @@ public class DataReporter
           }
           if (localObject2 != null)
           {
-            localObject1 = ((QIMPtvTemplateManager)localObject2).a(QIMPtvTemplateAdapter.jdField_b_of_type_JavaLangString);
+            localObject1 = ((bjin)localObject2).a(bhfv.jdField_b_of_type_JavaLangString);
             if (localObject1 != null)
             {
               if (!TextUtils.isEmpty(paramT1)) {
-                break label3479;
+                break label3700;
               }
               paramT1 = "";
-              localObject2 = ((QIMPtvTemplateManager)localObject2).a();
+              localObject2 = ((bjin)localObject2).a();
               paramT2 = paramT1;
               if (localObject2 != null)
               {
@@ -692,8 +708,8 @@ public class DataReporter
                 paramT2 = paramT1;
                 if (((Iterator)localObject2).hasNext())
                 {
-                  localObject4 = (TemplateGroupItem)((Iterator)localObject2).next();
-                  paramT2 = ((TemplateGroupItem)localObject4).jdField_a_of_type_JavaUtilList;
+                  localObject4 = (bhhq)((Iterator)localObject2).next();
+                  paramT2 = ((bhhq)localObject4).jdField_a_of_type_JavaUtilList;
                   if (paramT2 == null) {
                     continue;
                   }
@@ -705,40 +721,40 @@ public class DataReporter
                   }
                   paramT1 = (PtvTemplateManager.PtvTemplateInfo)((Iterator)localObject5).next();
                   if ((paramT1.name == null) || (!paramT1.name.equals(((PtvTemplateManager.PtvTemplateInfo)localObject1).name)) || (paramT1.id == null) || (!paramT1.id.equals(((PtvTemplateManager.PtvTemplateInfo)localObject1).id))) {
-                    break label3474;
+                    break label3695;
                   }
-                  paramT1 = paramT2 + ((TemplateGroupItem)localObject4).jdField_a_of_type_JavaLangString + ",";
-                  break label3549;
+                  paramT1 = paramT2 + ((bhhq)localObject4).jdField_a_of_type_JavaLangString + ",";
+                  break label3770;
                   localObject4 = DataReporter.ElementType.FILTER.toString();
                   continue;
-                  ((QIMMsgReportItem)localObject6).j = DataReporter.ContentSource.BEFORE_SHOT.toString();
+                  ((awtt)localObject6).j = DataReporter.ContentSource.BEFORE_SHOT.toString();
                   if (!localArrayList2.isEmpty())
                   {
                     paramT2 = localArrayList2.iterator();
                     if (paramT2.hasNext())
                     {
                       localObject4 = (FilterCategory)paramT2.next();
-                      ((QIMMsgReportItem)localObject6).l = (((QIMMsgReportItem)localObject6).l + ((FilterCategory)localObject4).jdField_a_of_type_JavaLangString + ",");
+                      ((awtt)localObject6).l = (((awtt)localObject6).l + ((FilterCategory)localObject4).jdField_a_of_type_JavaLangString + ",");
                       continue;
                     }
                   }
                   else
                   {
-                    ((QIMMsgReportItem)localObject6).l = "";
+                    ((awtt)localObject6).l = "";
                   }
-                  if ((TextUtils.isEmpty(((QIMMsgReportItem)localObject6).l)) || (!((QIMMsgReportItem)localObject6).l.endsWith(","))) {
+                  if ((TextUtils.isEmpty(((awtt)localObject6).l)) || (!((awtt)localObject6).l.endsWith(","))) {
                     continue;
                   }
-                  ((QIMMsgReportItem)localObject6).l = ((QIMMsgReportItem)localObject6).l.substring(0, ((QIMMsgReportItem)localObject6).l.length() - 1);
+                  ((awtt)localObject6).l = ((awtt)localObject6).l.substring(0, ((awtt)localObject6).l.length() - 1);
                   continue;
-                  ((QIMMsgReportItem)localObject6).m = ((String)((QIMFilterCategoryItem)localObject2).jdField_a_of_type_JavaUtilArrayList.get(0));
+                  ((awtt)localObject6).m = ((String)((QIMFilterCategoryItem)localObject2).jdField_a_of_type_JavaUtilArrayList.get(0));
                   continue;
                   if ((localObject5 != null) && (((QIMFilterCategoryItem)localObject2).a() == ((QIMFilterCategoryItem)localObject5).a()) && (((QIMFilterCategoryItem)localObject2).a() != null) && (((QIMFilterCategoryItem)localObject2).a().equals(((QIMFilterCategoryItem)localObject5).a())))
                   {
-                    ((QIMMsgReportItem)localObject6).j = DataReporter.ContentSource.BEFORE_SHOT.toString();
+                    ((awtt)localObject6).j = DataReporter.ContentSource.BEFORE_SHOT.toString();
                     continue;
                   }
-                  ((QIMMsgReportItem)localObject6).j = DataReporter.ContentSource.EDIT_AFTER_SHOT.toString();
+                  ((awtt)localObject6).j = DataReporter.ContentSource.EDIT_AFTER_SHOT.toString();
                   continue;
                 }
               }
@@ -749,7 +765,7 @@ public class DataReporter
               if (paramT2.endsWith(",")) {
                 paramT1 = paramT2.substring(0, paramT2.length() - 1);
               }
-              paramT2 = new QIMMsgReportItem(localQIMMsgReportItem);
+              paramT2 = new awtt(localawtt);
               paramT2.j = DataReporter.ContentSource.BEFORE_SHOT.toString();
               paramT2.l = paramT1;
               paramT2.m = ((PtvTemplateManager.PtvTemplateInfo)localObject1).id;
@@ -758,22 +774,52 @@ public class DataReporter
             }
           }
         }
-        if (paramEditVideoPartManager.jdField_a_of_type_DovComQqImCaptureMusicEditVideoQimMusic != null)
+        if (parambigb.jdField_a_of_type_Bhil != null)
         {
-          paramEditVideoPartManager = paramEditVideoPartManager.jdField_a_of_type_DovComQqImCaptureMusicEditVideoQimMusic.a();
-          if ((!bool1) && (paramEditVideoPartManager != null) && (!TextUtils.isEmpty(paramEditVideoPartManager.jdField_a_of_type_JavaLangString)))
+          paramT1 = parambigb.jdField_a_of_type_Bhil.a();
+          if ((!bool1) && (paramT1 != null) && (!TextUtils.isEmpty(paramT1.mMusicName)))
           {
-            paramT1 = new QIMMsgReportItem(localQIMMsgReportItem);
-            paramT1.l = paramEditVideoPartManager.d;
-            paramT1.m = paramEditVideoPartManager.jdField_a_of_type_JavaLangString;
-            paramT1.k = DataReporter.ElementType.MUSIC.toString();
-            localArrayList1.add(paramT1);
+            paramT2 = new awtt(localawtt);
+            paramT2.l = paramT1.mTagName;
+            paramT2.m = paramT1.mMusicName;
+            paramT2.k = DataReporter.ElementType.MUSIC.toString();
+            localArrayList1.add(paramT2);
           }
         }
-        if (!localArrayList1.isEmpty()) {
+        if (localArrayList1.isEmpty()) {
+          localArrayList1.add(localawtt);
+        }
+        if (parambigb.jdField_a_of_type_Bifv != null)
+        {
+          paramT1 = parambigb.jdField_a_of_type_Bifv.a();
+          if (paramT1 != null)
+          {
+            paramT1 = paramT1.jdField_a_of_type_JavaLangString;
+            if (paramT1 != null)
+            {
+              paramT2 = new awtt(localawtt);
+              paramT2.l = paramT1;
+              paramT2.k = DataReporter.ElementType.LINKER.toString();
+              if (paramT2.g.equals(DataReporter.Destination.UNKNOWN.toString())) {
+                paramT2.g = DataReporter.Destination.MOMENTS.toString();
+              }
+              localArrayList1.add(paramT2);
+            }
+          }
+        }
+        if (parambigb.jdField_a_of_type_Bihk == null) {
           break;
         }
-        localArrayList1.add(localQIMMsgReportItem);
+        parambigb = parambigb.jdField_a_of_type_Bihk.a();
+        if ((parambigb == null) || (parambigb.jdField_a_of_type_Int != 5)) {
+          break;
+        }
+        parambigb = new awtt(localawtt);
+        parambigb.k = DataReporter.ElementType.FRWRD_LINKER.toString();
+        if (parambigb.g.equals(DataReporter.Destination.UNKNOWN.toString())) {
+          parambigb.g = DataReporter.Destination.MOMENTS.toString();
+        }
+        localArrayList1.add(parambigb);
         return localArrayList1;
         paramT1 = "";
         continue;
@@ -783,44 +829,44 @@ public class DataReporter
         localObject3 = localNullPointerException3;
         continue;
       }
-      label3474:
-      label3479:
+      label3695:
+      label3700:
       continue;
-      label3482:
+      label3703:
       continue;
-      label3485:
+      label3706:
       paramT2 = null;
       continue;
-      label3490:
+      label3711:
       continue;
-      label3493:
+      label3714:
       Object localObject3 = paramT1;
       paramT1 = (DataReporter.T)localObject1;
       localObject1 = localObject3;
-      break label608;
-      label3506:
+      break label632;
+      label3727:
       paramT1 = (DataReporter.T)localObject1;
       localObject1 = null;
-      break label608;
+      break label632;
       localObject3 = null;
       break label102;
-      label3521:
+      label3742:
       localObject1 = null;
       break label90;
-      break label396;
-      break label600;
-      label3533:
+      break label420;
+      break label624;
+      label3754:
       localObject3 = paramT1;
       paramT1 = (DataReporter.T)localObject1;
       localObject1 = localObject3;
-      break label608;
-      break label1460;
-      label3549:
+      break label632;
+      break label1504;
+      label3770:
       paramT2 = paramT1;
     }
   }
   
-  public void a(QQAppInterface paramQQAppInterface, @NonNull List paramList)
+  public void a(QQAppInterface paramQQAppInterface, @NonNull List<awtt> paramList)
   {
     if (paramQQAppInterface == null) {}
     ArrayList localArrayList = new ArrayList();
@@ -828,38 +874,10 @@ public class DataReporter
     {
       paramList = paramList.iterator();
       if (paramList.hasNext()) {
-        localArrayList.add(new QIMMsgReportItem((QIMMsgReportItem)paramList.next()));
+        localArrayList.add(new awtt((awtt)paramList.next()));
       }
     }
-    ThreadManager.post(new anzl(this, localArrayList, paramQQAppInterface), 5, null, true);
-  }
-  
-  public void a(QQAppInterface paramQQAppInterface, @NonNull List paramList, @Nullable String paramString, @Nullable DataReporter.Destination paramDestination)
-  {
-    Object localObject = this.jdField_a_of_type_JavaLangObject;
-    if (paramDestination != null)
-    {
-      try
-      {
-        Iterator localIterator = paramList.iterator();
-        while (localIterator.hasNext()) {
-          ((QIMMsgReportItem)localIterator.next()).g = paramDestination.toString();
-        }
-        if (paramString == null) {
-          break label98;
-        }
-      }
-      finally {}
-    }
-    else
-    {
-      paramDestination = paramList.iterator();
-      while (paramDestination.hasNext()) {
-        ((QIMMsgReportItem)paramDestination.next()).jdField_e_of_type_JavaLangString = paramString;
-      }
-    }
-    label98:
-    a(paramQQAppInterface, paramList);
+    ThreadManager.post(new DataReporter.1(this, localArrayList, paramQQAppInterface), 5, null, true);
   }
 }
 

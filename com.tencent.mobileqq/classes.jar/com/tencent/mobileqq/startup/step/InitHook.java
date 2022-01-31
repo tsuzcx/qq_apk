@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.startup.step;
 
-import aijk;
 import android.annotation.TargetApi;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
+import aqqz;
+import awoj;
+import awrn;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.DeviceProfileManager;
-import com.tencent.mobileqq.javahook.TimeoutExceptionHooker;
 import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
-import com.tencent.mobileqq.statistics.StatisticCollector;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.Writer;
@@ -45,7 +45,7 @@ public class InitHook
     }
     while (paramBoolean)
     {
-      StatisticCollector.a(BaseApplicationImpl.getApplication()).a(null, "JavaHookSdkLoadSo", paramBoolean, 0L, 0L, null, "", true);
+      awrn.a(BaseApplicationImpl.getApplication()).a(null, "JavaHookSdkLoadSo", paramBoolean, 0L, 0L, null, "", true);
       return;
       ((SharedPreferences.Editor)localObject1).commit();
     }
@@ -57,7 +57,7 @@ public class InitHook
       ((HashMap)localObject1).put("detail", localObject2.toString());
     }
     ((HashMap)localObject1).put("param_FailCode", Integer.toString(paramInt));
-    StatisticCollector.a(BaseApplicationImpl.getApplication()).a(null, "JavaHookSdkLoadSo", paramBoolean, 0L, 0L, (HashMap)localObject1, "", true);
+    awrn.a(BaseApplicationImpl.getApplication()).a(null, "JavaHookSdkLoadSo", paramBoolean, 0L, 0L, (HashMap)localObject1, "", true);
   }
   
   private static void b()
@@ -90,7 +90,7 @@ public class InitHook
         return;
       }
       finally {}
-      TimeoutExceptionHooker.a();
+      aqqz.a();
     }
   }
   
@@ -132,7 +132,7 @@ public class InitHook
     //   62: ldc 161
     //   64: invokestatic 163	com/tencent/mobileqq/startup/step/InitHook:a	(ZLjava/lang/Throwable;I)V
     //   67: invokestatic 95	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   70: invokestatic 100	com/tencent/mobileqq/statistics/StatisticCollector:a	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
+    //   70: invokestatic 100	awrn:a	(Landroid/content/Context;)Lawrn;
     //   73: aconst_null
     //   74: ldc 191
     //   76: iconst_1
@@ -141,7 +141,7 @@ public class InitHook
     //   79: aconst_null
     //   80: ldc 47
     //   82: iconst_1
-    //   83: invokevirtual 105	com/tencent/mobileqq/statistics/StatisticCollector:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
+    //   83: invokevirtual 105	awrn:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;Z)V
     //   86: goto -75 -> 11
     //   89: astore_1
     //   90: ldc 2
@@ -169,13 +169,13 @@ public class InitHook
     //   132: iconst_1
     //   133: ldc 205
     //   135: invokestatic 199	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   138: invokestatic 210	com/tencent/mobileqq/app/QQAppInterface:a	()Lcom/tencent/mobileqq/statistics/battery/BatteryStats;
-    //   141: invokevirtual 214	com/tencent/mobileqq/statistics/battery/BatteryStats:b	()V
+    //   138: invokestatic 210	com/tencent/mobileqq/app/QQAppInterface:a	()Lawsn;
+    //   141: invokevirtual 214	awsn:b	()V
     //   144: getstatic 33	com/tencent/common/app/BaseApplicationImpl:sProcessId	I
     //   147: iconst_1
     //   148: if_icmpne -137 -> 11
-    //   151: invokestatic 217	com/tencent/mobileqq/javahook/BitmapOOMHooker:a	()V
-    //   154: invokestatic 220	com/tencent/mobileqq/javahook/BadTokenHooker:a	()V
+    //   151: invokestatic 217	aqqu:a	()V
+    //   154: invokestatic 220	aqqr:a	()V
     //   157: getstatic 33	com/tencent/common/app/BaseApplicationImpl:sProcessId	I
     //   160: iconst_1
     //   161: if_icmpne +3 -> 164
@@ -211,7 +211,7 @@ public class InitHook
     //   164	170	119	java/lang/Error
   }
   
-  protected boolean a()
+  protected boolean doStep()
   {
     if (BaseApplicationImpl.sProcessId == 1) {
       if (DeviceProfileManager.b().a() == 4) {
@@ -222,7 +222,7 @@ public class InitHook
     {
       b();
       return true;
-      DeviceProfileManager.a(new aijk(null));
+      DeviceProfileManager.a(new awoj(null));
       continue;
       c();
     }

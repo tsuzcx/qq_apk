@@ -11,19 +11,19 @@ import java.util.Map;
 public final class cell_summary
   extends JceStruct
 {
-  static Map cache_mapExt;
-  static Map cache_mapProtoExt;
+  static Map<String, String> cache_mapExt;
+  static Map<String, byte[]> cache_mapProtoExt;
   static sparkle_word cache_sparkleword;
-  static ArrayList cache_summarypic = new ArrayList();
+  static ArrayList<s_picdata> cache_summarypic = new ArrayList();
   public int actiontype;
   public String actionurl = "";
   public int hasmore;
-  public Map mapExt;
-  public Map mapProtoExt;
+  public Map<String, String> mapExt;
+  public Map<String, byte[]> mapProtoExt;
   public String more_info = "";
   public sparkle_word sparkleword;
   public String summary = "";
-  public ArrayList summarypic;
+  public ArrayList<s_picdata> summarypic;
   
   static
   {
@@ -40,7 +40,7 @@ public final class cell_summary
   
   public cell_summary() {}
   
-  public cell_summary(String paramString1, int paramInt1, int paramInt2, ArrayList paramArrayList, String paramString2, sparkle_word paramsparkle_word, Map paramMap1, Map paramMap2, String paramString3)
+  public cell_summary(String paramString1, int paramInt1, int paramInt2, ArrayList<s_picdata> paramArrayList, String paramString2, sparkle_word paramsparkle_word, Map<String, String> paramMap, Map<String, byte[]> paramMap1, String paramString3)
   {
     this.summary = paramString1;
     this.hasmore = paramInt1;
@@ -48,8 +48,8 @@ public final class cell_summary
     this.summarypic = paramArrayList;
     this.more_info = paramString2;
     this.sparkleword = paramsparkle_word;
-    this.mapExt = paramMap1;
-    this.mapProtoExt = paramMap2;
+    this.mapExt = paramMap;
+    this.mapProtoExt = paramMap1;
     this.actionurl = paramString3;
   }
   
@@ -95,7 +95,7 @@ public final class cell_summary
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_summary
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class LBS$Wifi
-  extends MessageMicro
+  extends MessageMicro<Wifi>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField essid = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -24,7 +24,7 @@ public final class LBS$Wifi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.hotchat.LBS.Wifi
  * JD-Core Version:    0.7.0.1
  */

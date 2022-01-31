@@ -10,14 +10,14 @@ public final class QmfTokenInfo
   extends JceStruct
 {
   static byte[] cache_Key;
-  static Map cache_ext_key;
+  static Map<Integer, byte[]> cache_ext_key;
   public byte[] Key;
   public int Type;
-  public Map ext_key;
+  public Map<Integer, byte[]> ext_key;
   
   public QmfTokenInfo() {}
   
-  public QmfTokenInfo(int paramInt, byte[] paramArrayOfByte, Map paramMap)
+  public QmfTokenInfo(int paramInt, byte[] paramArrayOfByte, Map<Integer, byte[]> paramMap)
   {
     this.Type = paramInt;
     this.Key = paramArrayOfByte;

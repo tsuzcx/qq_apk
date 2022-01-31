@@ -1,30 +1,29 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
-import com.tencent.widget.PatchedButton;
-import com.tencent.widget.XEditTextEx;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-class vvi
-  implements Runnable
+public class vvi
 {
-  vvi(vvh paramvvh, Drawable paramDrawable1, Drawable paramDrawable2, Drawable paramDrawable3, StateListDrawable paramStateListDrawable) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
+  ImageView c;
   
-  public void run()
+  public vvi(View paramView)
   {
-    this.jdField_a_of_type_Vvh.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    if (this.jdField_a_of_type_Vvh.jdField_a_of_type_ComTencentWidgetXEditTextEx != null)
-    {
-      this.jdField_a_of_type_Vvh.jdField_a_of_type_ComTencentWidgetXEditTextEx.setBackgroundDrawable(this.b);
-      this.jdField_a_of_type_Vvh.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTextColor(-16777216);
-    }
-    this.jdField_a_of_type_Vvh.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout.setBackgroundDrawable(this.c);
-    this.jdField_a_of_type_Vvh.jdField_a_of_type_ComTencentWidgetPatchedButton.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131299534));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131300609));
+    this.jdField_b_of_type_AndroidWidgetImageView.setContentDescription(ajjy.a(2131640541));
+    this.c = ((ImageView)paramView.findViewById(2131298705));
+    this.c.setContentDescription(ajjy.a(2131640540));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131304065));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131306169));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     vvi
  * JD-Core Version:    0.7.0.1
  */

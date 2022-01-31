@@ -1,20 +1,13 @@
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qzone.share.WXShareFromQZHelper;
+import android.widget.RelativeLayout;
 
 public class anhm
-  implements Runnable
+  extends angv
 {
-  public anhm(WXShareFromQZHelper paramWXShareFromQZHelper) {}
-  
-  public void run()
-  {
-    QQToast.a(BaseApplication.getContext(), 2131432740, 0).a();
-  }
+  RelativeLayout[] a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anhm
  * JD-Core Version:    0.7.0.1
  */

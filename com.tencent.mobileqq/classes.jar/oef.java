@@ -1,17 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.aladdin.config.handlers.SimpleConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
 
 public class oef
-  implements DialogInterface.OnClickListener
+  extends SimpleConfigHandler
+  implements AladdinConfigHandler
 {
-  public oef(StoryListPresenter paramStoryListPresenter) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
   {
-    StoryReportor.a("home_page", "guide_known", 0, 0, new String[0]);
-    paramDialogInterface.dismiss();
+    super.onReceiveConfig(paramInt1, paramInt2, paramString);
+    QLog.d("VideoFloatWindowConfigHandler", 2, "[onReceiveConfig] " + paramString);
+    paramString = ocx.a(paramString);
+    if ((String)paramString.get("readinjoy_tinyvideo_window_switch") != null) {
+      bgmq.b((String)paramString.get("readinjoy_tinyvideo_window_switch"));
+    }
+    paramString = (String)paramString.get("readinjoy_tinyvideo_autoplay_nextvideo");
+    if (paramString != null) {}
+    try
+    {
+      bgmq.d(Integer.parseInt(paramString));
+      return true;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    super.onWipeConfig(paramInt);
+    bgmq.b(null);
+    bgmq.d(0);
   }
 }
 

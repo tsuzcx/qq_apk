@@ -8,15 +8,15 @@ import java.util.ArrayList;
 public final class PfaFriendRsp
   extends JceStruct
 {
-  static ArrayList cache_vecPfaMsg;
-  static ArrayList cache_vecRec = new ArrayList();
-  static ArrayList cache_vecSpfaRec;
+  static ArrayList<String> cache_vecPfaMsg;
+  static ArrayList<PfaFriend> cache_vecRec = new ArrayList();
+  static ArrayList<PfaFriend> cache_vecSpfaRec;
   public String pfa_msg_edition = "";
   public int ret;
   public int use_default;
-  public ArrayList vecPfaMsg;
-  public ArrayList vecRec;
-  public ArrayList vecSpfaRec;
+  public ArrayList<String> vecPfaMsg;
+  public ArrayList<PfaFriend> vecRec;
+  public ArrayList<PfaFriend> vecSpfaRec;
   
   static
   {

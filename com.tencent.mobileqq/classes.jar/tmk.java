@@ -1,18 +1,26 @@
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.os.Build.VERSION;
+import android.widget.ImageView;
 
-public class tmk
-  implements Runnable
+class tmk
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public tmk(PublicAccountListActivity paramPublicAccountListActivity) {}
+  tmk(tmj paramtmj) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.c();
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      this.a.a.setImageAlpha(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+      return;
+    }
+    this.a.a.setImageResource(2130849314);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tmk
  * JD-Core Version:    0.7.0.1
  */

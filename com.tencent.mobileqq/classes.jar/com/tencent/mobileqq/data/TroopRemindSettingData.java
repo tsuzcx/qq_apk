@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class TroopRemindSettingData
-  extends Entity
+  extends atmo
 {
   public int isOpenState;
-  @unique
+  @atoc
   public String troopUin;
 }
 

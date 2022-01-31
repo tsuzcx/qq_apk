@@ -1,37 +1,53 @@
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import com.tribe.async.dispatch.QQUIEventReceiver;
+import java.lang.ref.WeakReference;
 
 public class tum
-  extends MqqHandler
+  extends QQUIEventReceiver<tuj, tnx>
 {
-  public tum(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  private WeakReference<ttq> a;
   
-  public void handleMessage(Message paramMessage)
+  public tum(@NonNull tuj paramtuj)
   {
-    switch (paramMessage.what)
-    {
+    super(paramtuj);
+  }
+  
+  public void a(ttq paramttq)
+  {
+    this.a = new WeakReference(paramttq);
+  }
+  
+  public void a(@NonNull tuj paramtuj, @NonNull tnx paramtnx)
+  {
+    if (paramtnx.jdField_a_of_type_Boolean) {
+      if ((paramtnx.jdField_a_of_type_JavaLangString != null) && (this.a != null))
+      {
+        paramtuj = (ttq)this.a.get();
+        if (paramtuj != null) {
+          paramtuj.b(paramtnx.jdField_a_of_type_JavaLangString);
+        }
+      }
     }
     do
     {
-      return;
-      this.a.finish();
-      return;
-      paramMessage = (String)paramMessage.obj;
-      if (!TextUtils.isEmpty(paramMessage))
+      do
       {
-        RegisterPhoneNumActivity.a(this.a, paramMessage);
         return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("RegisterPhoneNumActivity", 2, "captcha sig is empty");
+        urk.e(this.TAG, "StoryVideoDownloadResultReceiver, onEvent download failed, vid:%s", new Object[] { paramtnx.jdField_a_of_type_JavaLangString });
+      } while (this.a == null);
+      paramtuj = (ttq)this.a.get();
+    } while (paramtuj == null);
+    paramtuj.d();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tnx.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tum
  * JD-Core Version:    0.7.0.1
  */

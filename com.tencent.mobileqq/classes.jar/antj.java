@@ -1,19 +1,22 @@
-import android.widget.ImageView;
-import dov.com.qq.im.capture.adapter.ComboProviderGridAdapter;
+import android.graphics.drawable.Drawable;
 
-public class antj
-  implements Runnable
+public abstract interface antj
 {
-  public antj(ComboProviderGridAdapter paramComboProviderGridAdapter, ImageView paramImageView) {}
+  public abstract void setLastUpdatedLabel(CharSequence paramCharSequence);
   
-  public void run()
-  {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-  }
+  public abstract void setLoadingDrawable(Drawable paramDrawable);
+  
+  public abstract void setPullLabel(CharSequence paramCharSequence);
+  
+  public abstract void setRefreshResultLabel(CharSequence paramCharSequence);
+  
+  public abstract void setRefreshingLabel(CharSequence paramCharSequence);
+  
+  public abstract void setReleaseLabel(CharSequence paramCharSequence);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     antj
  * JD-Core Version:    0.7.0.1
  */

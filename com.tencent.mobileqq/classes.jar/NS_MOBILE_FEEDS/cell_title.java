@@ -8,19 +8,19 @@ import java.util.ArrayList;
 public final class cell_title
   extends JceStruct
 {
-  static ArrayList cache_talk_user_list;
+  static ArrayList<s_user> cache_talk_user_list;
   static s_user cache_user;
-  static ArrayList cache_userlist = new ArrayList();
+  static ArrayList<s_user> cache_userlist = new ArrayList();
   public int actiontype;
   public int relation;
   public String relation_type = "";
   public int status;
-  public ArrayList talk_user_list;
+  public ArrayList<s_user> talk_user_list;
   public String title = "";
   public String titleurl = "";
   public s_user user;
   public int useractiontype = 5;
-  public ArrayList userlist;
+  public ArrayList<s_user> userlist;
   public int usernum;
   
   static
@@ -35,7 +35,7 @@ public final class cell_title
   
   public cell_title() {}
   
-  public cell_title(String paramString1, String paramString2, ArrayList paramArrayList1, int paramInt1, int paramInt2, s_user params_user, int paramInt3, String paramString3, int paramInt4, ArrayList paramArrayList2, int paramInt5)
+  public cell_title(String paramString1, String paramString2, ArrayList<s_user> paramArrayList1, int paramInt1, int paramInt2, s_user params_user, int paramInt3, String paramString3, int paramInt4, ArrayList<s_user> paramArrayList2, int paramInt5)
   {
     this.title = paramString1;
     this.titleurl = paramString2;
@@ -94,7 +94,7 @@ public final class cell_title
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_title
  * JD-Core Version:    0.7.0.1
  */

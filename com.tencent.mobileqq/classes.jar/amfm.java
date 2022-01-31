@@ -1,18 +1,19 @@
-import com.tencent.qqprotect.sfcfg.QPTxVerifyApkTimerTask;
-
 public class amfm
-  implements Runnable
 {
-  public amfm(QPTxVerifyApkTimerTask paramQPTxVerifyApkTimerTask) {}
+  public String a = "";
+  public String b = "";
   
-  public void run()
+  public amfm() {}
+  
+  public amfm(String paramString1, String paramString2)
   {
-    this.a.a();
+    this.a = paramString1;
+    this.b = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amfm
  * JD-Core Version:    0.7.0.1
  */

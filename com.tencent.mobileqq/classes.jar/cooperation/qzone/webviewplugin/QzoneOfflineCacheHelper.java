@@ -1,16 +1,14 @@
 package cooperation.qzone.webviewplugin;
 
 import android.text.TextUtils;
-import ankr;
-import anks;
+import bftg;
+import bfti;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.URLUtil;
 import com.tencent.smtt.sdk.WebView;
 import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.cache.CacheManager;
-import cooperation.qzone.cache.FileCacheService;
 import cooperation.qzone.thread.QzoneBaseThread;
 import cooperation.qzone.thread.QzoneHandlerThreadFactory;
 import java.io.File;
@@ -24,8 +22,8 @@ public class QzoneOfflineCacheHelper
   private static final String TAG = "QzoneOfflineCacheHelper";
   private static final int UPDATE_LRU_FILE_DELAY_TIME = 20000;
   private static final byte[] URL_LOCK = new byte[0];
-  private static ConcurrentHashMap downloadindUrlMap = new ConcurrentHashMap();
-  private static FileCacheService mFileCache;
+  private static ConcurrentHashMap<String, ArrayList<Object>> downloadindUrlMap = new ConcurrentHashMap();
+  private static bfti mFileCache;
   
   public static boolean checkFileIfExist(String paramString)
   {
@@ -61,7 +59,7 @@ public class QzoneOfflineCacheHelper
         str2 = urlKey2FileName(paramString1, true);
         if (!paramBoolean)
         {
-          str1 = CacheManager.e().a("dressup");
+          str1 = bftg.e().a("dressup");
           localFile1 = new File(str1);
           if (!localFile1.exists()) {
             localFile1.mkdirs();
@@ -148,7 +146,7 @@ public class QzoneOfflineCacheHelper
         }
       }
       label103:
-      paramAppInterface = new anks(paramString1, paramString2, paramAppInterface, paramString3, paramInt);
+      paramAppInterface = new QzoneOfflineCacheHelper.2(paramString1, paramString2, paramAppInterface, paramString3, paramInt);
       QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").postDelayed(paramAppInterface, 10000L);
       return;
       label133:
@@ -156,10 +154,10 @@ public class QzoneOfflineCacheHelper
     }
   }
   
-  private static FileCacheService getFileCache()
+  private static bfti getFileCache()
   {
     if (mFileCache == null) {
-      mFileCache = CacheManager.b();
+      mFileCache = bftg.b();
     }
     return mFileCache;
   }
@@ -228,7 +226,7 @@ public class QzoneOfflineCacheHelper
   
   public static void updateLruFileInNewThread(String paramString)
   {
-    QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").postDelayed(new ankr(paramString), 20000L);
+    QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").postDelayed(new QzoneOfflineCacheHelper.1(paramString), 20000L);
   }
   
   private static String urlKey2FileName(String paramString, boolean paramBoolean)

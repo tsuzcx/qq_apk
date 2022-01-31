@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/h0l" android:background="@color/mi" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:mobileqq="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <include android:id="@id/jp3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" layout="@layout/bwi" />
+    <com.tencent.mobileqq.widget.BounceScrollView android:scrollbarThumbVertical="@drawable/b2n" android:focusable="true" android:focusableInTouchMode="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/jp3">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:orientation="horizontal" android:id="@id/e3_" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="27.5dip" android:layout_marginTop="10.0dip" android:layout_marginRight="27.5dip">
+                <TextView android:textSize="@dimen/ays" android:textColor="#ff777777" android:ellipsize="middle" android:gravity="center|right" android:id="@id/kdh" android:layout_width="@dimen/yk" android:layout_height="fill_parent" android:text="@string/qu3" android:maxLines="1" android:singleLine="true" />
+                <TextView android:textSize="@dimen/ays" android:textColor="@color/a3l" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/kdg" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="24.0dip" android:maxLines="1" android:singleLine="true" android:layout_weight="1.0" />
+                <ImageView android:layout_gravity="center_vertical" android:id="@id/z1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/an3" android:contentDescription="@string/qu4" />
+            </LinearLayout>
+            <View android:id="@id/io8" android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="27.5dip" android:layout_marginRight="27.5dip" android:layout_below="@id/e3_" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/e4r" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="27.5dip" android:layout_marginRight="27.5dip" android:layout_below="@id/e3_">
+                <TextView android:textSize="@dimen/ays" android:textColor="#ff777777" android:ellipsize="middle" android:gravity="center|right" android:id="@id/kdf" android:layout_width="@dimen/yk" android:layout_height="fill_parent" android:maxLines="1" android:singleLine="true" />
+                <com.tencent.mobileqq.widget.ConfigClearableEditText android:textSize="@dimen/ays" android:textColor="@color/fl" android:textColorHint="@color/skin_gray2" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/fcb" android:background="@null" android:longClickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="24.0dip" android:maxLines="1" android:singleLine="true" android:maxLength="15" android:inputType="number" android:textIsSelectable="false" android:textCursorDrawable="@drawable/b3j" mobileqq:clearBtnDrawable="@drawable/fl6" mobileqq:clearBtnDrawableHeight="25.0dip" mobileqq:clearBtnDrawableWidth="25.0dip" mobileqq:disableBeSelected="true" mobileqq:disableContextMenu="true" mobileqq:disableCopy="true" mobileqq:disableCut="true" mobileqq:disablePaste="true" mobileqq:disableSelectAllText="true" mobileqq:disableSelectText="true">
+                    <requestFocus />
+                </com.tencent.mobileqq.widget.ConfigClearableEditText>
+            </LinearLayout>
+            <View android:id="@id/io_" android:background="#ffdedfe0" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="27.5dip" android:layout_marginRight="27.5dip" android:layout_below="@id/e4r" />
+            <Button android:enabled="false" android:id="@id/ail" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="27.5dip" android:layout_marginTop="20.0dip" android:layout_marginRight="27.5dip" android:text="@string/fzq" android:layout_below="@id/io_" style="@style/hs" />
+        </RelativeLayout>
+    </com.tencent.mobileqq.widget.BounceScrollView>
+</RelativeLayout>

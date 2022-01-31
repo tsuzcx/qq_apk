@@ -12,26 +12,28 @@ public final class get_parenting_photo_list_rsp
   extends JceStruct
 {
   static Album cache_albuminfo = new Album();
-  static Map cache_busi_param;
-  static Map cache_features;
-  static ArrayList cache_photolist = new ArrayList();
-  static ArrayList cache_recommand_album;
-  static RecommendPhotos cache_recommend_photos = new RecommendPhotos();
+  static Map<Integer, String> cache_busi_param;
+  static Map<Integer, byte[]> cache_features;
+  static int cache_photo_search_status = 0;
+  static ArrayList<s_picdata> cache_photolist = new ArrayList();
+  static ArrayList<Album> cache_recommand_album;
+  static RecommendPhotos cache_recommend_photos;
   static s_outshare cache_shareinfo;
-  static ArrayList cache_timeevent;
-  static ArrayList cache_timeline;
+  static ArrayList<TimeEvent> cache_timeevent;
+  static ArrayList<TimeLine> cache_timeline;
   public Album albuminfo;
   public int appid;
   public String attach_info = "";
-  public Map busi_param;
-  public Map features;
+  public Map<Integer, String> busi_param;
+  public Map<Integer, byte[]> features;
   public int hasmore;
-  public ArrayList photolist;
-  public ArrayList recommand_album;
+  public int photo_search_status = 1;
+  public ArrayList<s_picdata> photolist;
+  public ArrayList<Album> recommand_album;
   public RecommendPhotos recommend_photos;
   public s_outshare shareinfo;
-  public ArrayList timeevent;
-  public ArrayList timeline;
+  public ArrayList<TimeEvent> timeevent;
+  public ArrayList<TimeLine> timeline;
   
   static
   {
@@ -53,24 +55,26 @@ public final class get_parenting_photo_list_rsp
     localObject = (byte[])new byte[1];
     ((byte[])localObject)[0] = 0;
     cache_features.put(Integer.valueOf(0), localObject);
+    cache_recommend_photos = new RecommendPhotos();
   }
   
   public get_parenting_photo_list_rsp() {}
   
-  public get_parenting_photo_list_rsp(Album paramAlbum, ArrayList paramArrayList1, String paramString, int paramInt1, ArrayList paramArrayList2, Map paramMap1, int paramInt2, s_outshare params_outshare, ArrayList paramArrayList3, ArrayList paramArrayList4, Map paramMap2, RecommendPhotos paramRecommendPhotos)
+  public get_parenting_photo_list_rsp(Album paramAlbum, ArrayList<s_picdata> paramArrayList, String paramString, int paramInt1, ArrayList<TimeLine> paramArrayList1, Map<Integer, String> paramMap, int paramInt2, s_outshare params_outshare, ArrayList<TimeEvent> paramArrayList2, ArrayList<Album> paramArrayList3, Map<Integer, byte[]> paramMap1, RecommendPhotos paramRecommendPhotos, int paramInt3)
   {
     this.albuminfo = paramAlbum;
-    this.photolist = paramArrayList1;
+    this.photolist = paramArrayList;
     this.attach_info = paramString;
     this.hasmore = paramInt1;
-    this.timeline = paramArrayList2;
-    this.busi_param = paramMap1;
+    this.timeline = paramArrayList1;
+    this.busi_param = paramMap;
     this.appid = paramInt2;
     this.shareinfo = params_outshare;
-    this.timeevent = paramArrayList3;
-    this.recommand_album = paramArrayList4;
-    this.features = paramMap2;
+    this.timeevent = paramArrayList2;
+    this.recommand_album = paramArrayList3;
+    this.features = paramMap1;
     this.recommend_photos = paramRecommendPhotos;
+    this.photo_search_status = paramInt3;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -87,6 +91,7 @@ public final class get_parenting_photo_list_rsp
     this.recommand_album = ((ArrayList)paramJceInputStream.read(cache_recommand_album, 9, false));
     this.features = ((Map)paramJceInputStream.read(cache_features, 10, false));
     this.recommend_photos = ((RecommendPhotos)paramJceInputStream.read(cache_recommend_photos, 11, false));
+    this.photo_search_status = paramJceInputStream.read(this.photo_search_status, 12, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -119,6 +124,7 @@ public final class get_parenting_photo_list_rsp
     if (this.recommend_photos != null) {
       paramJceOutputStream.write(this.recommend_photos, 11);
     }
+    paramJceOutputStream.write(this.photo_search_status, 12);
   }
 }
 

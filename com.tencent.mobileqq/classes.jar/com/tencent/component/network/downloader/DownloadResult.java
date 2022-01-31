@@ -5,12 +5,11 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.component.network.utils.AssertUtil;
-import pny;
 
 public final class DownloadResult
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new pny();
+  public static final Parcelable.Creator<DownloadResult> CREATOR = new DownloadResult.1();
   private DownloadResult.Content mContent = new DownloadResult.Content();
   private String mDescInfo;
   private String mDetailDownloadInfo;
@@ -39,7 +38,7 @@ public final class DownloadResult
     if (!TextUtils.isEmpty(paramString)) {}
     for (boolean bool = true;; bool = false)
     {
-      AssertUtil.a(bool);
+      AssertUtil.assertTrue(bool);
       this.mUrl = paramString;
       return;
     }
@@ -93,7 +92,7 @@ public final class DownloadResult
   public void reset()
   {
     this.mStatus.reset();
-    this.mProcess.a();
+    this.mProcess.reset();
     this.mContent.reset();
   }
   

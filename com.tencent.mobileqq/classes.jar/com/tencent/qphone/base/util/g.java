@@ -1,104 +1,73 @@
 package com.tencent.qphone.base.util;
 
-import android.os.Environment;
-import com.tencent.mobileqq.msf.core.h;
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
+import com.tencent.msf.service.protocol.push.a.a;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-final class g
-  extends Thread
+public class g
 {
-  g(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3, String paramString4) {}
-  
-  public void run()
+  public static int a(int paramInt)
   {
-    Object localObject1 = Calendar.getInstance();
-    Object localObject2 = QLog.logFileFormatter.format(((Calendar)localObject1).getTime());
-    ((Calendar)localObject1).add(11, -1);
-    String str = QLog.logFileFormatter.format(((Calendar)localObject1).getTime());
-    File[] arrayOfFile = new File(QLog.access$600()).listFiles();
-    ArrayList localArrayList;
-    int j;
-    File localFile;
-    int i;
-    if ((arrayOfFile != null) && (arrayOfFile.length > 0))
+    return (0xFF00 & paramInt) >> 8 | (paramInt & 0xFF) << 8;
+  }
+  
+  public static String a(String paramString)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (paramString != null)
     {
-      localArrayList = new ArrayList();
-      int k = arrayOfFile.length;
-      j = 0;
-      if (j < k)
+      int i = 0;
+      if (i < paramString.length())
       {
-        localFile = arrayOfFile[j];
-        localObject1 = localFile.getName();
-        if (((String)localObject1).endsWith(".log"))
+        String str = Integer.toHexString(paramString.charAt(i));
+        if (str.length() % 2 == 0) {
+          localStringBuilder.append(str);
+        }
+        for (;;)
         {
-          localObject1 = ((String)localObject1).substring(0, ((String)localObject1).length() - 4);
-          i = 1;
+          i += 1;
+          break;
+          localStringBuilder.append("0").append(str);
         }
       }
     }
-    for (;;)
+    return localStringBuilder.toString();
+  }
+  
+  public static InetAddress a(long paramLong)
+  {
+    int i = (byte)(int)(paramLong >> 24 & 0xFF);
+    int j = (byte)(int)(paramLong >> 16 & 0xFF);
+    int k = (byte)(int)(paramLong >> 8 & 0xFF);
+    return InetAddress.getByAddress(new byte[] { (byte)(int)(paramLong & 0xFF), k, j, i });
+  }
+  
+  public static InetAddress a(a parama)
+  {
+    try
     {
-      if (((i != 0) && (((String)localObject1).endsWith((String)localObject2))) || (((String)localObject1).endsWith(str))) {
-        localArrayList.add(new QLog.a(localFile.getPath()));
-      }
-      j += 1;
-      break;
-      if (((String)localObject1).endsWith(".log.zip"))
-      {
-        localObject1 = ((String)localObject1).substring(0, ((String)localObject1).length() - 8);
-        i = 1;
-      }
-      else
-      {
-        if (((String)localObject1).endsWith(".qlog"))
-        {
-          localObject1 = ((String)localObject1).substring(0, ((String)localObject1).length() - 5);
-          i = 1;
-          continue;
-          if (this.a) {
-            h.a(localArrayList);
-          }
-          QLog.access$702(QLog.access$700().replace(":", "_"));
-          localObject1 = QLog.access$600() + QLog.access$700() + "_" + QLog.getReportLevel(QLog.getUIN_REPORTLOG_LEVEL()) + ".zip";
-          localObject2 = new File((String)localObject1);
-          ((File)localObject2).delete();
-          try
-          {
-            ((File)localObject2).createNewFile();
-            h.a(localArrayList, (String)localObject1);
-            h.a(this.b, (String)localObject1, this.c, this.d, this.e, this.f);
-            ((File)localObject2).delete();
-            if (this.a)
-            {
-              localObject1 = new File(Environment.getExternalStorageDirectory().getPath() + "/tencent/msflogs/corruptInfo");
-              if (((File)localObject1).exists()) {
-                ((File)localObject1).delete();
-              }
-            }
-            return;
-          }
-          catch (IOException localIOException)
-          {
-            for (;;)
-            {
-              QLog.d("MSF.D.QLog", 1, "doReportLogSelf exception " + localIOException);
-            }
-          }
-          catch (Throwable localThrowable)
-          {
-            for (;;)
-            {
-              QLog.d("MSF.D.QLog", 1, "doReportLogSelf error " + localThrowable);
-            }
-          }
-        }
-        i = 0;
-      }
+      InetAddress localInetAddress = InetAddress.getByAddress(parama.d);
+      return localInetAddress;
     }
+    catch (UnknownHostException localUnknownHostException) {}
+    return a(parama.a);
+  }
+  
+  public static final long b(String paramString)
+  {
+    Matcher localMatcher = Pattern.compile("((\\d{1,3}\\.){3}\\d{1,3})").matcher(paramString);
+    if (!localMatcher.find())
+    {
+      QLog.d("MSF.C.NetConnTag", 1, "ip not match:" + paramString);
+      return -2L;
+    }
+    paramString = localMatcher.group(1).split("\\.");
+    long l1 = Long.parseLong(paramString[3]);
+    long l2 = Long.parseLong(paramString[2]);
+    long l3 = Long.parseLong(paramString[1]);
+    return Long.parseLong(paramString[0]) + ((l1 << 24) + (l2 << 16) + (l3 << 8));
   }
 }
 

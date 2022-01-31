@@ -10,13 +10,13 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class HotPicMsg$GetVideoInfoRsp
-  extends MessageMicro
+  extends MessageMicro<GetVideoInfoRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_fail_msg = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBInt32Field int32_result = PBField.initInt32(0);
-  public final PBRepeatMessageField rpt_msg_tag_info = PBField.initRepeatMessage(HotPicMsg.TagInfo.class);
-  public final PBRepeatMessageField rpt_msg_video_info = PBField.initRepeatMessage(HotPicMsg.VideoInfo.class);
+  public final PBRepeatMessageField<HotPicMsg.TagInfo> rpt_msg_tag_info = PBField.initRepeatMessage(HotPicMsg.TagInfo.class);
+  public final PBRepeatMessageField<HotPicMsg.VideoInfo> rpt_msg_video_info = PBField.initRepeatMessage(HotPicMsg.VideoInfo.class);
   public final PBUInt32Field uint32_build_ver = PBField.initUInt32(0);
   public final PBUInt32Field uint32_tag_id = PBField.initUInt32(0);
   
@@ -28,7 +28,7 @@ public final class HotPicMsg$GetVideoInfoRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.hotpicmsg.HotPicMsg.GetVideoInfoRsp
  * JD-Core Version:    0.7.0.1
  */

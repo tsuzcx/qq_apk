@@ -1,22 +1,27 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.arcard.ARCardShareHelper;
-import mqq.os.MqqHandler;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import java.util.ArrayList;
+import java.util.Map;
 
-class aate
-  implements Runnable
+public class aate
+  implements View.OnClickListener
 {
-  aate(aasz paramaasz, int paramInt) {}
+  public aate(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    boolean bool = ARCardShareHelper.a(this.jdField_a_of_type_Aasz.a);
-    String str = ARCardShareHelper.b(this.jdField_a_of_type_Aasz.a);
-    ThreadManager.getUIHandler().post(new aatf(this, bool, str));
+    paramView = new Intent();
+    paramView.putParcelableArrayListExtra("selected_target_list", new ArrayList(ForwardTroopListFragment.a(this.a).values()));
+    this.a.getActivity().setResult(0, paramView);
+    this.a.getActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aate
  * JD-Core Version:    0.7.0.1
  */

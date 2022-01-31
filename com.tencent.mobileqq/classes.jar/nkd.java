@@ -1,14 +1,17 @@
-import com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter;
-import com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter.ReadStoryVideoEventReceiver;
+import android.text.Editable;
+import android.widget.EditText;
 
-public class nkd
-  implements Runnable
+public final class nkd
+  implements arok<char[]>
 {
-  public nkd(RecentTabHaloPresenter.ReadStoryVideoEventReceiver paramReadStoryVideoEventReceiver, RecentTabHaloPresenter paramRecentTabHaloPresenter) {}
+  public nkd(EditText paramEditText) {}
   
-  public void run()
+  public void a(char[] paramArrayOfChar)
   {
-    RecentTabHaloPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerRecentTabHaloPresenter);
+    int i = this.a.getSelectionStart();
+    int j = this.a.getSelectionEnd();
+    this.a.getEditableText().replace(i, j, String.valueOf(paramArrayOfChar));
+    this.a.requestFocus();
   }
 }
 

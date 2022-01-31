@@ -1,24 +1,22 @@
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.mobileqq.business.sougou.WordMatchManager.MatcherCallback;
-import com.tencent.mobileqq.business.sougou.WordMatchManager.WordMatcher;
-
 public class uab
-  implements WordMatchManager.MatcherCallback
 {
-  public uab(TextPreviewActivity paramTextPreviewActivity) {}
+  public String a;
+  public String b;
   
-  public void a(WordMatchManager.WordMatcher paramWordMatcher)
+  public uab(String paramString1, String paramString2)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$WordMatcher = paramWordMatcher;
-    if (this.a.h != 0) {
-      paramWordMatcher.a(this.a.h);
-    }
-    this.a.h = paramWordMatcher.a(1, this.a.c, 3, this.a.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$MatchCallback);
+    this.a = paramString1;
+    this.b = paramString2;
+  }
+  
+  public String toString()
+  {
+    return "GroupID{groupUin='" + this.a + '\'' + ", groupUnionID='" + this.b + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uab
  * JD-Core Version:    0.7.0.1
  */

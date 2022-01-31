@@ -1,60 +1,74 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.IEventReceiver;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class sxw
-  extends BroadcastReceiver
+  implements IEventReceiver
 {
-  public sxw(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  private sxx jdField_a_of_type_Sxx;
+  private sxy jdField_a_of_type_Sxy;
+  private sxz jdField_a_of_type_Sxz;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public sxw(QQAppInterface paramQQAppInterface)
   {
-    paramContext = paramIntent.getAction();
-    String str1 = paramIntent.getStringExtra("event");
-    if ((TroopInfo.isHomeworkTroop(this.a.app, this.a.a)) && ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext)) && ("onHomeworkTroopIdentityChanged".equals(str1)))
-    {
-      paramContext = paramIntent.getStringExtra("data");
-      if (!TextUtils.isEmpty(paramContext)) {
-        break label67;
-      }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    b();
+  }
+  
+  private void b()
+  {
+    this.jdField_a_of_type_Sxy = new sxy(this);
+    this.jdField_a_of_type_Sxz = new sxz(this);
+    sgi.a().registerSubscriber(this.jdField_a_of_type_Sxy);
+    sgi.a().registerSubscriber(this.jdField_a_of_type_Sxz);
+  }
+  
+  private void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RecentTabHaloPresenter", 2, "invalidateHalo: invoked.  mCallback: " + this.jdField_a_of_type_Sxx);
     }
-    for (;;)
-    {
-      return;
-      try
-      {
-        label67:
-        paramContext = new JSONObject(paramContext);
-        paramIntent = paramContext.optString("groupCode");
-        if (TextUtils.equals(this.a.a, paramIntent))
-        {
-          paramContext.optString("content");
-          paramIntent = paramContext.optString("source");
-          int i = paramContext.optInt("rankId", 333);
-          str1 = paramContext.optString("nickName");
-          String str2 = paramContext.optString("uin");
-          String str3 = paramContext.optString("course");
-          paramContext = paramContext.optString("name");
-          if ("qqProfile".equals(paramIntent))
-          {
-            ThreadManager.post(new sxx(this, str2, str1, i, str3, paramContext), 8, null, false);
-            return;
-          }
-        }
-      }
-      catch (JSONException paramContext) {}
+    if (this.jdField_a_of_type_Sxx != null) {
+      this.jdField_a_of_type_Sxx.a();
     }
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RecentTabHaloPresenter", 2, "destroy: invoked. ");
+    }
+    sgi.a().unRegisterSubscriber(this.jdField_a_of_type_Sxy);
+    sgi.a().unRegisterSubscriber(this.jdField_a_of_type_Sxz);
+    this.jdField_a_of_type_Sxx = null;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+  }
+  
+  public void a(sxx paramsxx)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("RecentTabHaloPresenter", 2, "setCallback: invoked. Message: callback: " + paramsxx);
+    }
+    this.jdField_a_of_type_Sxx = paramsxx;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+  }
+  
+  public boolean isValidate()
+  {
+    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sxw
  * JD-Core Version:    0.7.0.1
  */

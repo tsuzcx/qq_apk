@@ -1,15 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.StoryImageDialog;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class ous
-  implements View.OnClickListener
+class ous
+  implements ViewBase.OnClickListener
 {
-  public ous(StoryImageDialog paramStoryImageDialog) {}
+  ous(ouq paramouq, int paramInt, opw paramopw, BaseArticleInfo paramBaseArticleInfo1, BaseArticleInfo paramBaseArticleInfo2) {}
   
-  public void onClick(View paramView)
+  public void onClick(ViewBase paramViewBase)
   {
-    this.a.dismiss();
+    boolean bool;
+    qoe localqoe;
+    if (this.jdField_a_of_type_Int == 1149)
+    {
+      bool = true;
+      localqoe = this.jdField_a_of_type_Opw.a();
+      if (!bool) {
+        break label43;
+      }
+    }
+    label43:
+    for (paramViewBase = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo;; paramViewBase = this.b)
+    {
+      localqoe.b(bool, paramViewBase);
+      return;
+      bool = false;
+      break;
+    }
   }
 }
 

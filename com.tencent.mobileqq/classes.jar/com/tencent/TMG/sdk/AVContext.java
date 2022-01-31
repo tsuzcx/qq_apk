@@ -6,7 +6,7 @@ import com.tencent.TMG.opengl.GraphicRendererMgr;
 
 public abstract class AVContext
 {
-  public static final String sdkVersion = "1.9.6.14";
+  public static final String sdkVersion = "";
   
   public static AVContext createInstance(Context paramContext)
   {
@@ -68,9 +68,9 @@ public abstract class AVContext
   
   public abstract int setSurfaceHolder(SurfaceHolder paramSurfaceHolder);
   
-  public abstract void start(StartParam paramStartParam, AVCallback paramAVCallback);
+  public abstract void start(AVContext.StartParam paramStartParam, AVCallback paramAVCallback);
   
-  public abstract void start(StartParam paramStartParam, AVSDKLogSetting paramAVSDKLogSetting, AVCallback paramAVCallback);
+  public abstract void start(AVContext.StartParam paramStartParam, AVSDKLogSetting paramAVSDKLogSetting, AVCallback paramAVCallback);
   
   abstract int startPreservingEncData(String paramString1, String paramString2);
   
@@ -82,20 +82,10 @@ public abstract class AVContext
   public abstract void switchRoom(int paramInt);
   
   public abstract void switchRoom(AVRoomMulti.ChangeRoomInfo paramChangeRoomInfo);
-  
-  public static class StartParam
-  {
-    public String accountType = "";
-    public String appIdAt3rd = "";
-    public int engineCtrlType = 1;
-    public String identifier = "";
-    public int sdkAppId = 0;
-    public boolean useSurfaceTexture = false;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.TMG.sdk.AVContext
  * JD-Core Version:    0.7.0.1
  */

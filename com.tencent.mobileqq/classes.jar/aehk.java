@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.leba.LebaFeedsVideoPlayer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public abstract interface aehk
+class aehk
+  implements DialogInterface.OnDismissListener
 {
-  public abstract void a(LebaFeedsVideoPlayer paramLebaFeedsVideoPlayer);
+  aehk(aegy paramaegy) {}
   
-  public abstract void a(LebaFeedsVideoPlayer paramLebaFeedsVideoPlayer, int paramInt1, int paramInt2);
-  
-  public abstract void a(LebaFeedsVideoPlayer paramLebaFeedsVideoPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject);
-  
-  public abstract void b(LebaFeedsVideoPlayer paramLebaFeedsVideoPlayer);
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.ah = false;
+    awqx.b(this.a.a, "CliOper", "", "", "0X8004EFA", "0X8004EFA", 0, 0, "", "", "", "");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aehk
  * JD-Core Version:    0.7.0.1
  */

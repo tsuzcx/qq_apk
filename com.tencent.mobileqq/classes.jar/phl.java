@@ -1,13 +1,56 @@
-import com.tencent.biz.webviewplugin.QzoneWebViewOfflinePlugin;
+import android.content.Context;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBig;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentBigImageVideo;
+import com.tencent.widget.AbsListView.LayoutParams;
 
 public class phl
-  implements Runnable
+  extends pez
 {
-  public phl(QzoneWebViewOfflinePlugin paramQzoneWebViewOfflinePlugin, String paramString, long paramLong) {}
-  
-  public void run()
+  public phl(Context paramContext, azwg paramazwg, qoe paramqoe)
   {
-    QzoneWebViewOfflinePlugin.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentBizWebviewpluginQzoneWebViewOfflinePlugin.mRuntime);
+    super(paramContext, paramazwg, paramqoe);
+  }
+  
+  public pez a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return g().h();
+  }
+  
+  public pez d()
+  {
+    if (!this.jdField_a_of_type_Boolean) {
+      throw new Exception("buildComponent() must after buildComponent()!");
+    }
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    if ((this.jdField_a_of_type_JavaLangObject != null) && ((this.jdField_a_of_type_JavaLangObject instanceof oqh)) && (obz.s(((oqh)this.jdField_a_of_type_JavaLangObject).a()))) {
+      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(aciy.a(250.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
+    }
+    for (;;)
+    {
+      if ((this.jdField_a_of_type_Pey != null) && ((this.jdField_a_of_type_Pey instanceof ComponentContentBig))) {
+        localLinearLayout.addView((ComponentContentBig)this.jdField_a_of_type_Pey);
+      }
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle != null) {
+        localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
+      }
+      a(localLinearLayout);
+      return this;
+      localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(aciy.a(220.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), -2));
+    }
+  }
+  
+  public pez e()
+  {
+    return null;
+  }
+  
+  public pez g()
+  {
+    this.jdField_a_of_type_Pey = new ComponentContentBigImageVideo(this.jdField_a_of_type_AndroidContentContext);
+    return this;
   }
 }
 

@@ -2,7 +2,6 @@ package com.tencent.mobileqq.activity.aio.item;
 
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
-import vas;
 
 public abstract class DetectableAnimationDrawable
   extends AnimationDrawable
@@ -38,12 +37,12 @@ public abstract class DetectableAnimationDrawable
   {
     super.start();
     this.a = new Handler();
-    this.a.postDelayed(new vas(this), a());
+    this.a.postDelayed(new DetectableAnimationDrawable.1(this), a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.DetectableAnimationDrawable
  * JD-Core Version:    0.7.0.1
  */

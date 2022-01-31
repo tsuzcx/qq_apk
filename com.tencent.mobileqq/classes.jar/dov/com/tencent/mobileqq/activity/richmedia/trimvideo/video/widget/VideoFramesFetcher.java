@@ -1,29 +1,33 @@
 package dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget;
 
-import aoqs;
+import bjbc;
+import bjbg;
+import bjbi;
+import bjbm;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class VideoFramesFetcher
-  implements OnFetchFrameListener
+  implements bjbi
 {
   private static long jdField_a_of_type_Long;
-  private volatile int jdField_a_of_type_Int = 1;
-  private FrameAdapter jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter;
-  private BlockingQueue jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
-  private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
-  private int b = 1000;
+  private volatile int jdField_a_of_type_Int;
+  private bjbc jdField_a_of_type_Bjbc;
+  private BlockingQueue<bjbm> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
+  private ConcurrentHashMap<Integer, bjbm> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private int b;
   private int c;
   
-  private FramesProcessor.Frame b(int paramInt)
+  private bjbg b(int paramInt)
   {
     if (!a()) {
       if (QLog.isColorLevel()) {
         QLog.d("VideoFramesFetcher", 2, "FetchFrameAtTime fail, status=" + this.jdField_a_of_type_Int);
       }
     }
-    aoqs localaoqs2;
+    bjbm localbjbm2;
     do
     {
       return null;
@@ -31,10 +35,10 @@ public class VideoFramesFetcher
       {
         if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt)))
         {
-          aoqs localaoqs1 = (aoqs)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+          bjbm localbjbm1 = (bjbm)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
           l = jdField_a_of_type_Long;
           jdField_a_of_type_Long = 1L + l;
-          localaoqs1.jdField_a_of_type_Long = l;
+          localbjbm1.jdField_a_of_type_Long = l;
           return null;
         }
       }
@@ -45,13 +49,13 @@ public class VideoFramesFetcher
       }
       long l = jdField_a_of_type_Long;
       jdField_a_of_type_Long = 1L + l;
-      localaoqs2 = new aoqs(this, l, paramInt, paramInt + this.b);
+      localbjbm2 = new bjbm(this, l, paramInt, paramInt + this.b);
     } while (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue == null);
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localaoqs2);
+    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localbjbm2);
     return null;
   }
   
-  public FramesProcessor.Frame a(int paramInt)
+  public bjbg a(int paramInt)
   {
     if ((!a()) || (paramInt < 0))
     {
@@ -60,8 +64,8 @@ public class VideoFramesFetcher
       }
       return null;
     }
-    if (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter.a(paramInt)) {
-      return this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter.a(paramInt);
+    if (this.jdField_a_of_type_Bjbc.a(paramInt)) {
+      return this.jdField_a_of_type_Bjbc.a(paramInt);
     }
     return b(this.b * paramInt);
   }

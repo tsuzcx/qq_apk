@@ -1,27 +1,58 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qzone.QZoneShareData;
-import cooperation.qzone.share.QZoneShareActivity;
-import mqq.os.MqqHandler;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.concurrent.RejectedExecutionException;
 
-public class anhd
-  implements Runnable
+class anhd
+  implements URLDrawable.URLDrawableListener
 {
-  public anhd(QZoneShareActivity paramQZoneShareActivity) {}
+  anhd(angw paramangw) {}
   
-  public void run()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if ((this.a.app != null) && (QZoneShareActivity.a(this.a).a > 0L) && (!TextUtils.isEmpty(QZoneShareActivity.a(this.a).i)) && (!this.a.a(this.a.app, QZoneShareActivity.a(this.a).a, QZoneShareActivity.a(this.a).i))) {
-      return;
+    if ((paramThrowable instanceof RejectedExecutionException)) {
+      if (QLog.isColorLevel()) {
+        QLog.i("BigEmotionDownloadedAdapter", 2, "arg0.getConstantState() = " + paramURLDrawable.getConstantState());
+      }
     }
-    int i = this.a.b();
-    int j = this.a.a();
-    ThreadManager.getUIHandler().post(new anhe(this, i, j));
+    label41:
+    int i;
+    do
+    {
+      do
+      {
+        do
+        {
+          break label41;
+          do
+          {
+            return;
+          } while (paramURLDrawable == null);
+          paramThrowable = paramURLDrawable.getFileInLocal();
+          if ((paramThrowable != null) && (paramThrowable.exists())) {
+            paramThrowable.delete();
+          }
+          paramThrowable = paramURLDrawable.getTag();
+        } while (!(paramThrowable instanceof Integer));
+        i = ((Integer)paramThrowable).intValue();
+      } while (i >= 3);
+      i += 1;
+      paramURLDrawable.setTag(Integer.valueOf(i));
+      paramURLDrawable.restartDownload();
+    } while (!QLog.isColorLevel());
+    QLog.i("BigEmotionDownloadedAdapter", 2, "download recomment comic pic , try count = " + i);
   }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anhd
  * JD-Core Version:    0.7.0.1
  */

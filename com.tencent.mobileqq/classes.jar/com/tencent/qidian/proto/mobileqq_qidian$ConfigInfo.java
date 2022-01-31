@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class mobileqq_qidian$ConfigInfo
-  extends MessageMicro
+  extends MessageMicro<ConfigInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 50, 58, 66, 74, 82, 90, 98 }, new String[] { "uint32_type", "uint32_event", "str_title", "str_content", "str_action", "str_aaction", "str_iaction", "str_paction", "msg_corp_simple", "str_url", "str_log", "str_lat" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), "", "", "", "", "", "", null, "", "", "" }, ConfigInfo.class);
   public mobileqq_qidian.ConfigCorpSimpleInfo msg_corp_simple = new mobileqq_qidian.ConfigCorpSimpleInfo();
@@ -25,7 +25,7 @@ public final class mobileqq_qidian$ConfigInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.qidian.proto.mobileqq_qidian.ConfigInfo
  * JD-Core Version:    0.7.0.1
  */

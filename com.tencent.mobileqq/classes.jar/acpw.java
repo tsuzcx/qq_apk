@@ -1,20 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public class acpw
-  implements DialogInterface.OnClickListener
+class acpw
+  implements acpy
 {
-  public acpw(ExtendFriendEditFragment paramExtendFriendEditFragment) {}
+  acpw(acpv paramacpv, acpx paramacpx) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
+    if (paramBoolean)
+    {
+      acpv.a(this.jdField_a_of_type_Acpv, this.jdField_a_of_type_Acpx.a());
+      this.jdField_a_of_type_Acpx.a();
+      return;
+    }
+    QLog.e("FriendShipViewManager", 1, "director.prepare not ready, cannot play anim, type = " + this.jdField_a_of_type_Acpx.a());
+    acpv.a(this.jdField_a_of_type_Acpv, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acpw
  * JD-Core Version:    0.7.0.1
  */

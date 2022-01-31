@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.widget.QQToast;
-import dov.com.tencent.mobileqq.richmedia.capture.activity.EditWebDanceMachineVideoActivity;
-
-public class aotv
-  implements Runnable
+public abstract interface aotv
 {
-  public aotv(EditWebDanceMachineVideoActivity paramEditWebDanceMachineVideoActivity) {}
+  public abstract long a();
   
-  public void run()
-  {
-    QQToast.a(this.a, 1, "上传失败", 0).a();
-  }
+  public abstract String a();
+  
+  public abstract void a(long paramLong);
+  
+  public abstract void a(aojh paramaojh);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void a(boolean paramBoolean);
+  
+  public abstract boolean a();
+  
+  public abstract String b();
+  
+  public abstract String c();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aotv
  * JD-Core Version:    0.7.0.1
  */

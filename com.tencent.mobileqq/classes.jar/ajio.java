@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopSearchResultDialog;
-import com.tencent.mobileqq.troop.data.TroopCreateLogic;
+import android.os.Handler;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 
-class ajio
-  implements Runnable
+public class ajio
+  implements ajpj
 {
-  ajio(ajin paramajin) {}
+  public ajio(FrameHelperActivity paramFrameHelperActivity) {}
   
-  public void run()
+  public void a()
   {
-    TroopCreateLogic.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic);
-    new NewTroopSearchResultDialog(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback).show();
+    if (this.a.a.hasMessages(17)) {
+      this.a.a.removeMessages(17);
+    }
+    this.a.a.sendEmptyMessage(17);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajio
  * JD-Core Version:    0.7.0.1
  */

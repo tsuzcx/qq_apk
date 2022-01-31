@@ -1,19 +1,96 @@
-import com.tencent.mobileqq.activity.contact.newfriend.ContactMatchBuilder;
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.ui.CustomMenuBar;
 
-class wow
-  implements Runnable
+public class wow
+  implements View.OnClickListener
 {
-  wow(wov paramwov) {}
+  public wow(CustomMenuBar paramCustomMenuBar, ImageView paramImageView, TextView paramTextView, wpc paramwpc, String paramString1, int paramInt, String paramString2) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.a.c();
+    for (;;)
+    {
+      try
+      {
+        if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Wpe != null) {
+          break label190;
+        }
+        if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Boolean) {
+          return;
+        }
+        this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842571);
+        if (CustomMenuBar.a())
+        {
+          this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131101399));
+          this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b = false;
+          this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
+          this.jdField_a_of_type_Wpc.a(paramView);
+          this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidViewView.setVisibility(0);
+          this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Wpe = this.jdField_a_of_type_Wpc;
+          ndn.a(null, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_JavaLangString, "mp_caidan_click", "aio_caidan_click", 0, 0, String.valueOf(1), String.valueOf(this.jdField_a_of_type_Int), this.b, String.valueOf(0), false);
+          return;
+        }
+      }
+      finally {}
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131101280));
+      continue;
+      label190:
+      if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Wpe != this.jdField_a_of_type_Wpc) {
+        break;
+      }
+      if (!this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b)
+      {
+        if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Boolean) {
+          return;
+        }
+        this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842571);
+        if (CustomMenuBar.a()) {
+          this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131101399));
+        }
+        for (;;)
+        {
+          this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b = false;
+          this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
+          this.jdField_a_of_type_Wpc.a(paramView);
+          this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidViewView.setVisibility(0);
+          ndn.a(null, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_JavaLangString, "mp_caidan_click", "aio_caidan_click", 0, 0, String.valueOf(1), String.valueOf(this.jdField_a_of_type_Int), this.b, String.valueOf(0), false);
+          break;
+          this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131101280));
+        }
+      }
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b = false;
+    }
+    if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842571);
+    if (CustomMenuBar.a()) {
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131101399));
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b = false;
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_Wpc.a(paramView);
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_Wpe = this.jdField_a_of_type_Wpc;
+      ndn.a(null, "P_CliOper", "Pb_account_lifeservice", this.jdField_a_of_type_JavaLangString, "mp_caidan_click", "aio_caidan_click", 0, 0, String.valueOf(1), String.valueOf(this.jdField_a_of_type_Int), this.b, String.valueOf(0), false);
+      break;
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.getResources().getColor(2131101280));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wow
  * JD-Core Version:    0.7.0.1
  */

@@ -39,17 +39,10 @@ public class ThreadLog
     }
   }
   
-  public static void trackException(String paramString1, final String paramString2)
+  public static void trackException(String paramString1, String paramString2)
   {
     paramString2 = new IllegalArgumentException(paramString2);
-    new Handler(Looper.getMainLooper()).post(new Runnable()
-    {
-      public void run()
-      {
-        ThreadLog.printQLog(this.val$tag, "ExceptinTracker", paramString2);
-        throw new IllegalArgumentException(paramString2);
-      }
-    });
+    new Handler(Looper.getMainLooper()).post(new ThreadLog.1(paramString1, paramString2));
     throw paramString2;
   }
 }

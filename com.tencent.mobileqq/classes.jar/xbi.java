@@ -1,19 +1,30 @@
-import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
-import java.util.List;
+import android.os.Bundle;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-public class xbi
-  implements Runnable
+class xbi
+  implements wiu
 {
-  public xbi(AlbumListAdapter paramAlbumListAdapter, List paramList) {}
+  xbi(xbe paramxbe) {}
   
-  public void run()
+  public void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoAlbumListAdapter.a(this.jdField_a_of_type_JavaUtilList);
+    if ((paramBundle != null) && (paramBundle.getBoolean("isSuccess")))
+    {
+      ArrayList localArrayList = paramBundle.getStringArrayList("uins");
+      paramBundle = paramBundle.getStringArrayList("tinyIds");
+      int i = 0;
+      while (i < localArrayList.size())
+      {
+        xbe.a(this.a).put(paramBundle.get(i), localArrayList.get(i));
+        i += 1;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xbi
  * JD-Core Version:    0.7.0.1
  */

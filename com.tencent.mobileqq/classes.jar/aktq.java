@@ -1,30 +1,31 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.webview.AbsWebView;
-import com.tencent.qphone.base.util.QLog;
-
 public class aktq
-  implements Runnable
 {
-  public aktq(AbsWebView paramAbsWebView) {}
+  public double a;
+  public int a;
+  public String a;
+  public aktr[] a;
+  public int b;
   
-  public void run()
+  public String toString()
   {
-    long l1 = SystemClock.uptimeMillis();
-    if (this.a.a == null)
-    {
-      this.a.z();
-      if (QLog.isColorLevel())
-      {
-        long l2 = SystemClock.uptimeMillis();
-        QLog.d("AbsWebView", 2, "initPluginEngine cost= " + (l2 - l1));
-      }
+    StringBuilder localStringBuilder = new StringBuilder("");
+    int i;
+    if ((this.jdField_a_of_type_ArrayOfAktr != null) && (this.jdField_a_of_type_ArrayOfAktr.length > 0)) {
+      i = 0;
     }
-    Thread.yield();
+    while (i < this.jdField_a_of_type_ArrayOfAktr.length)
+    {
+      localStringBuilder.append("\n index:").append(i).append(this.jdField_a_of_type_ArrayOfAktr[i].toString()).append('\n');
+      i += 1;
+      continue;
+      localStringBuilder.append("\n only have one itemContent:" + this.jdField_a_of_type_JavaLangString + ",prob:" + this.jdField_a_of_type_Double).append('\n');
+    }
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aktq
  * JD-Core Version:    0.7.0.1
  */

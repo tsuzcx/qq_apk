@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/w_" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/lnq" android:layout_width="fill_parent" android:layout_height="227.0dip" />
+    <LinearLayout android:orientation="vertical" android:id="@id/lql" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include android:visibility="visible" layout="@layout/ccl" />
+        <com.tencent.mobileqq.widget.TipsBar android:id="@id/lkb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="12.5dip" app:showCloseBtn="true" />
+        <com.tencent.mobileqq.activity.qwallet.redpacket.widget.ViewPagerTabLayout android:layout_gravity="center_horizontal" android:id="@id/j_o" android:background="@color/wy" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="32.0dip" />
+        <android.support.v4.view.ViewPager android:id="@id/meu" android:background="@color/wy" android:visibility="visible" android:persistentDrawingCache="animation" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="22.0dip" android:flipInterval="30" android:overScrollMode="never" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,40 @@
+{
+    "ReadInjoy_pack_cell": {
+        "view_type": "cell",
+        "direction": "vertical",
+        "height": {
+            "type": "wrap_content"
+        },
+        "width": {
+            "type": "relative",
+            "value": "375"
+        },
+        "subviews": [
+                     {
+                     "$includeComponet": "componet/social_header.geojson"
+                     },
+                     {
+                       "$includeComponet": "componet/socialize_recommend_follow.geojson"
+                     },
+                     {
+                     "view_type": "ReadInJoyMiddleBodyView",
+                     "view_id": "id_middle_body_content",
+                     "margin_bottom": "10",
+                     "height": {
+                     "type": "wrap_content"
+                     },
+                     "width": {
+                     "type": "relative",
+                     "value": "375"
+                     },
+                     "attributes": {
+                     "setArticleModel:": "-1"
+                     }
+                     },
+                     {
+                     "$includeComponet": "componet/separator.geojson"
+                     }
+                     ]
+    }
+}
+

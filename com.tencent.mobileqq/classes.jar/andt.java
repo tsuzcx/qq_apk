@@ -1,18 +1,25 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import org.json.JSONObject;
 
 public class andt
-  implements andz
+  extends nge
 {
-  public andt(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
+  public andt(MessengerService paramMessengerService) {}
   
-  public void a()
+  public void a(Object paramObject)
   {
-    QzoneWebMusicJsPlugin.access$000(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin, this.jdField_a_of_type_JavaLangString);
+    if (this.a.a != null)
+    {
+      this.a.a.putString("data", azxx.a(paramObject).toString());
+      this.a.a(this.a.a);
+      this.a.a = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     andt
  * JD-Core Version:    0.7.0.1
  */

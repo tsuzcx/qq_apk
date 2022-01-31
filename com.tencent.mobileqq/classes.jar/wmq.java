@@ -1,19 +1,13 @@
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.mobileqq.app.ConditionSearchManager.IFirstLocationReqCancelListener;
+import java.util.List;
 
 public class wmq
-  implements ConditionSearchManager.IFirstLocationReqCancelListener
 {
-  public wmq(AddContactsView paramAddContactsView) {}
-  
-  public void a()
-  {
-    this.a.a = false;
-  }
+  public String a;
+  public List<wmr> a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wmq
  * JD-Core Version:    0.7.0.1
  */

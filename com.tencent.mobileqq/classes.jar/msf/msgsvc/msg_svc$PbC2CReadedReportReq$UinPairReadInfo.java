@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class msg_svc$PbC2CReadedReportReq$UinPairReadInfo
-  extends MessageMicro
+  extends MessageMicro<UinPairReadInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField crm_sig = PBField.initBytes(ByteStringMicro.EMPTY);

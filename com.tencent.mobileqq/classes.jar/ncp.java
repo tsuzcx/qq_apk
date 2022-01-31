@@ -1,24 +1,25 @@
-import android.view.View;
-import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import com.tencent.mobileqq.app.soso.SosoInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
 public class ncp
-  implements Runnable
 {
-  public ncp(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  public ncp(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString, long paramLong) {}
   
-  public void run()
+  @QQPermissionDenied(1)
+  public void denied()
   {
-    TranslateAnimation localTranslateAnimation = PublicAccountImageCollectionMainActivity.b(this.a);
-    if (localTranslateAnimation != null)
-    {
-      this.a.a.setVisibility(0);
-      this.a.a.findViewById(2131365659).setVisibility(0);
-      this.a.a.findViewById(2131365593).setVisibility(0);
-      this.a.a.findViewById(2131365594).setVisibility(0);
-      this.a.a.bringToFront();
-      this.a.a.startAnimation(localTranslateAnimation);
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "-3", "{}" });
+  }
+  
+  @QQPermissionGrant(1)
+  public void grant()
+  {
+    SosoInterface.a(new ncv(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, 0, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long));
+    if (QLog.isColorLevel()) {
+      QLog.d("PAjs.location", 2, "SosoInterface.startLocation");
     }
   }
 }

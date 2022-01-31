@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:customFitMode="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mobileqq.nearby.now.view.widget.FitXImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a221b" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" customFitMode:useFitXFromStart="true" />
-</FrameLayout>

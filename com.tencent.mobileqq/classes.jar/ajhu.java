@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.troop.data.TroopAioKeywordHelper;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
-import java.util.List;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.app.FaceDownloader;
+import com.tencent.mobileqq.util.FaceInfo;
 
-class ajhu
-  implements Runnable
+public class ajhu
 {
-  ajhu(ajht paramajht, List paramList) {}
+  public Bitmap a;
+  public FaceInfo a;
   
-  public void run()
-  {
-    TroopAioKeywordHelper.a(this.jdField_a_of_type_Ajht.a.a, this.jdField_a_of_type_JavaUtilList);
-  }
+  public ajhu(FaceDownloader paramFaceDownloader) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajhu
  * JD-Core Version:    0.7.0.1
  */

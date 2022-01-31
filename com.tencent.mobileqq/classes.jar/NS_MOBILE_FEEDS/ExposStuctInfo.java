@@ -9,9 +9,9 @@ import java.util.Map;
 public final class ExposStuctInfo
   extends JceStruct
 {
-  static Map cache_extendInfo = new HashMap();
+  static Map<String, String> cache_extendInfo = new HashMap();
   public int appid;
-  public Map extendInfo;
+  public Map<String, String> extendInfo;
   public byte opType;
   public String recordId = "";
   
@@ -22,7 +22,7 @@ public final class ExposStuctInfo
   
   public ExposStuctInfo() {}
   
-  public ExposStuctInfo(String paramString, int paramInt, byte paramByte, Map paramMap)
+  public ExposStuctInfo(String paramString, int paramInt, byte paramByte, Map<String, String> paramMap)
   {
     this.recordId = paramString;
     this.appid = paramInt;
@@ -52,7 +52,7 @@ public final class ExposStuctInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.ExposStuctInfo
  * JD-Core Version:    0.7.0.1
  */

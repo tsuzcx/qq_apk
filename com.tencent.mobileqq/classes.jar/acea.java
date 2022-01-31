@@ -1,25 +1,20 @@
-import com.tencent.mobileqq.database.corrupt.DBFixDialogUI;
-import com.tencent.mobileqq.database.corrupt.DBFixLoadingDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
 
 public class acea
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public acea(DBFixDialogUI paramDBFixDialogUI, int paramInt) {}
+  public acea(UpgradeActivity paramUpgradeActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.jdField_a_of_type_Int == DBFixLoadingDialog.d) {
-      DBFixDialogUI.c(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixDialogUI);
-    }
-    while (this.jdField_a_of_type_Int != DBFixLoadingDialog.e) {
-      return;
-    }
-    DBFixDialogUI.d(this.jdField_a_of_type_ComTencentMobileqqDatabaseCorruptDBFixDialogUI);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acea
  * JD-Core Version:    0.7.0.1
  */

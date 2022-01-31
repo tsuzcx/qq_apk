@@ -1,19 +1,40 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.common.recyclerview.BaseAdapter.OnItemClickListener;
-import com.tencent.biz.qqstory.common.recyclerview.BaseViewHolder;
-import com.tencent.biz.qqstory.common.recyclerview.HeaderAndFooterAdapter;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
 
-public class ngi
-  implements View.OnClickListener
+class ngi
+  extends ajmm
 {
-  public ngi(HeaderAndFooterAdapter paramHeaderAndFooterAdapter, BaseViewHolder paramBaseViewHolder) {}
+  ngi(ngh paramngh) {}
   
-  public void onClick(View paramView)
+  public void a(List<MessageRecord> paramList)
   {
-    int i = this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewBaseViewHolder.getPosition();
-    if (i >= 0) {
-      this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewHeaderAndFooterAdapter.a.a(this.jdField_a_of_type_ComTencentBizQqstoryCommonRecyclerviewBaseViewHolder.itemView, i);
+    super.a(paramList);
+    HashSet localHashSet = new HashSet();
+    if (nfp.b != null) {
+      localHashSet.addAll(nfp.b);
+    }
+    ngh localngh = (ngh)this.a.mApp.getBusinessHandler(88);
+    paramList = new ArrayList(paramList).iterator();
+    label164:
+    while (paramList.hasNext())
+    {
+      MessageRecord localMessageRecord = (MessageRecord)paramList.next();
+      if (("2".equals(localMessageRecord.getExtInfoFromExtStr("inter_num"))) || ((localMessageRecord.istroop == 1008) && (rol.e(this.a.app, localMessageRecord.senderuin)))) {}
+      for (int i = 1;; i = 0)
+      {
+        if ((i == 0) && (!localHashSet.contains(localMessageRecord.senderuin))) {
+          break label164;
+        }
+        if (i != 0) {
+          localngh.a(localMessageRecord);
+        }
+        localngh.b(localMessageRecord);
+        break;
+      }
     }
   }
 }

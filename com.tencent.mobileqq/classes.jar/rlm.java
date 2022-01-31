@@ -1,22 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaGestureLayout;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.viola.bridge.ViolaBridgeManager;
+import com.tencent.viola.core.ViolaInstance;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class rlm
-  implements DialogInterface.OnDismissListener
+  implements rjp
 {
-  public rlm(AccountManageActivity paramAccountManageActivity) {}
+  public rlm(BridgeModule paramBridgeModule, String paramString) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(int paramInt)
   {
-    if (paramDialogInterface == this.a.c) {
-      this.a.c = null;
+    if ((BridgeModule.access$000(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule) != paramInt) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance() != null)) {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        if ((paramInt == ViolaGestureLayout.c) || (paramInt == ViolaGestureLayout.e)) {
+          localJSONObject.put("state", 1);
+        }
+        for (;;)
+        {
+          BridgeModule.access$002(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, paramInt);
+          ViolaBridgeManager.getInstance().callbackJavascript(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getViolaInstance().getInstanceId(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.getModuleName(), "callback", this.jdField_a_of_type_JavaLangString, localJSONObject, true);
+          return;
+          localJSONObject.put("state", 0);
+        }
+        return;
+      }
+      catch (JSONException localJSONException) {}
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rlm
  * JD-Core Version:    0.7.0.1
  */

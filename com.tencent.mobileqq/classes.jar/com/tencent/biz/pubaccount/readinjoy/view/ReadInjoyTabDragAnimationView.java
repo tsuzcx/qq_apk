@@ -11,9 +11,9 @@ import android.util.AttributeSet;
 import android.view.animation.LinearInterpolator;
 import com.tencent.mobileqq.widget.TabDragAnimationView;
 import com.tencent.qphone.base.util.QLog;
-import mnh;
-import mni;
-import mnj;
+import qtn;
+import qto;
+import qtp;
 
 public class ReadInjoyTabDragAnimationView
   extends TabDragAnimationView
@@ -41,9 +41,9 @@ public class ReadInjoyTabDragAnimationView
     a();
   }
   
-  private mnj a()
+  private qtp a()
   {
-    mnj localmnj = new mnj(null);
+    qtp localqtp = new qtp(null);
     int n = getPaddingLeft();
     int m = getRight() - getLeft() - getPaddingRight();
     int k = getPaddingTop();
@@ -60,11 +60,11 @@ public class ReadInjoyTabDragAnimationView
     }
     for (;;)
     {
-      localmnj.jdField_a_of_type_Int = n;
-      localmnj.c = k;
-      localmnj.jdField_b_of_type_Int = m;
-      localmnj.d = j;
-      return localmnj;
+      localqtp.jdField_a_of_type_Int = n;
+      localqtp.c = k;
+      localqtp.jdField_b_of_type_Int = m;
+      localqtp.d = j;
+      return localqtp;
       j = (n + m) / 2;
       n = j - this.jdField_b_of_type_Int / 2;
       m = this.jdField_b_of_type_Int / 2 + j;
@@ -99,7 +99,7 @@ public class ReadInjoyTabDragAnimationView
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130845499);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130848208);
   }
   
   public void a(int paramInt)
@@ -111,7 +111,7 @@ public class ReadInjoyTabDragAnimationView
       this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
       this.jdField_a_of_type_AndroidAnimationAnimatorSet = null;
     }
-    com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.f = this.g;
+    obz.g = this.g;
     invalidate();
   }
   
@@ -134,7 +134,7 @@ public class ReadInjoyTabDragAnimationView
       this.jdField_a_of_type_AndroidAnimationAnimatorSet.play(localObjectAnimator1).with(localObjectAnimator2);
       this.jdField_a_of_type_AndroidAnimationAnimatorSet.play(localObjectAnimator2).before(localObjectAnimator3);
       this.jdField_a_of_type_AndroidAnimationAnimatorSet.play(localObjectAnimator3).with(localObjectAnimator4);
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new mnh(this));
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new qtn(this));
       this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
       return;
     }
@@ -145,31 +145,31 @@ public class ReadInjoyTabDragAnimationView
     ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this, "rotation", new float[] { -30.0F, 0.0F }).setDuration(500L);
     this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.play(localObjectAnimator2).with(localObjectAnimator1);
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new mni(this));
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new qto(this));
     this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
   }
   
-  protected void onDraw(Canvas paramCanvas)
+  public void onDraw(Canvas paramCanvas)
   {
-    mnj localmnj;
+    qtp localqtp;
     if ((a()) && (this.d) && (this.g == 1))
     {
-      localmnj = a();
+      localqtp = a();
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
       {
-        this.h = ((localmnj.jdField_a_of_type_Int + localmnj.jdField_b_of_type_Int) / 2);
-        this.i = ((localmnj.c + localmnj.d) / 2);
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(localmnj.jdField_a_of_type_Int, localmnj.c, localmnj.jdField_b_of_type_Int, localmnj.d);
+        this.h = ((localqtp.jdField_a_of_type_Int + localqtp.jdField_b_of_type_Int) / 2);
+        this.i = ((localqtp.c + localqtp.d) / 2);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(localqtp.jdField_a_of_type_Int, localqtp.c, localqtp.jdField_b_of_type_Int, localqtp.d);
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
       }
       return;
     }
     if (this.h == 0)
     {
-      localmnj = a();
-      this.h = ((localmnj.jdField_a_of_type_Int + localmnj.jdField_b_of_type_Int) / 2);
-      int j = localmnj.c;
-      this.i = ((localmnj.d + j) / 2);
+      localqtp = a();
+      this.h = ((localqtp.jdField_a_of_type_Int + localqtp.jdField_b_of_type_Int) / 2);
+      int j = localqtp.c;
+      this.i = ((localqtp.d + j) / 2);
     }
     super.onDraw(paramCanvas);
   }

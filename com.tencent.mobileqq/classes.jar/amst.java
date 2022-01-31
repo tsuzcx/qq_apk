@@ -1,42 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.widget.TextView;
-import cooperation.groupvideo.GVideoPluginInstallerActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan;
 
 public class amst
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public amst(GVideoPluginInstallerActivity paramGVideoPluginInstallerActivity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public amst(MessageForGrayTips.HightlightClickableSpan paramHightlightClickableSpan) {}
   
-  public void dispatchMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMessage == null) {}
-    do
-    {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 1: 
-        GVideoPluginInstallerActivity.a(this.a);
-        return;
-      }
-    } while ((!(paramMessage.obj instanceof String)) || (this.a.a == null));
-    this.a.a.setText((String)paramMessage.obj);
-    return;
-    GVideoPluginInstallerActivity.b(this.a);
-    return;
-    this.a.finish();
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amst
  * JD-Core Version:    0.7.0.1
  */

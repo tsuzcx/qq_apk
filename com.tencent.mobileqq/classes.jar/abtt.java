@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.mobileqq.businessCard.data.BusinessCard;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.SubLoginActivity;
 
-class abtt
-  implements Runnable
+public class abtt
+  implements DialogInterface.OnDismissListener
 {
-  abtt(abts paramabts) {}
+  public abtt(SubLoginActivity paramSubLoginActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.jdField_a_of_type_JavaLangString = this.a.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardId;
-    BusinessCardEditActivity.a(this.a.a, this.a.a.jdField_a_of_type_Boolean, true, true);
+    this.a.b = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abtt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,13 @@
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.widget.immersive.SoftInputResizeLayout;
+import java.util.List;
 
 public class amlx
-  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public amlx(SoftInputResizeLayout paramSoftInputResizeLayout) {}
-  
-  public void onGlobalLayout()
-  {
-    SoftInputResizeLayout.a(this.a);
-  }
+  public int a;
+  public List<amlw> a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amlx
  * JD-Core Version:    0.7.0.1
  */

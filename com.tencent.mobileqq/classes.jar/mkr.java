@@ -1,33 +1,38 @@
-import android.app.Activity;
-import android.os.Handler;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.os.SystemClock;
 
-class mkr
-  implements Runnable
+public class mkr
 {
-  mkr(mkq parammkq, int paramInt) {}
+  public final int a;
+  public final long a;
+  public final boolean a;
+  public int[] a;
+  public final int b;
+  public final int c;
+  public int d;
+  public int e;
   
-  public void run()
+  private mkr(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseAdapter", 2, "scroll " + this.jdField_a_of_type_Int + " to top");
+    this.b = mkj.a(paramInt1, 20000);
+    this.c = paramInt2;
+    this.jdField_a_of_type_Long = (SystemClock.uptimeMillis() + paramInt4);
+    this.e = paramInt1;
+    paramInt1 = mkj.a(paramInt1, this.c, 20000, true);
+    if (paramInt1 > 10000) {
+      this.d = (20000 - paramInt1);
     }
-    View localView = this.jdField_a_of_type_Mkq.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getChildAt(this.jdField_a_of_type_Int - this.jdField_a_of_type_Mkq.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.getFirstVisiblePosition());
-    if (localView != null)
+    for (this.jdField_a_of_type_Boolean = false; paramInt3 == -1; this.jdField_a_of_type_Boolean = true)
     {
-      ReadInJoyBaseAdapter.a(this.jdField_a_of_type_Mkq.a).removeMessages(1001);
-      this.jdField_a_of_type_Mkq.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView.smoothScrollBy(localView.getBottom() - AIOUtils.a(175.0F, this.jdField_a_of_type_Mkq.a.jdField_a_of_type_AndroidAppActivity.getResources()), 800);
-      ReadInJoyBaseAdapter.d(this.jdField_a_of_type_Mkq.a, true);
+      this.jdField_a_of_type_Int = ((int)(0.1F * this.d));
+      return;
+      this.d = paramInt1;
     }
+    this.jdField_a_of_type_Int = paramInt3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mkr
  * JD-Core Version:    0.7.0.1
  */

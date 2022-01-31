@@ -1,9 +1,9 @@
 package com.tencent.biz.qqstory.database;
 
-import com.tencent.mobileqq.persistence.Entity;
+import atmo;
 
 public class CardEntry
-  extends Entity
+  extends atmo
 {
   public static final int CARD_LIST_TYPE_DISCOVER = 0;
   public static final int CARD_LIST_TYPE_NEARBY = 1;
@@ -26,7 +26,7 @@ public class CardEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.CardEntry
  * JD-Core Version:    0.7.0.1
  */

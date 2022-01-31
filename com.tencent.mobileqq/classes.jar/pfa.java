@@ -1,14 +1,27 @@
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import java.util.Map;
 
-public final class pfa
-  implements Runnable
+class pfa
+  implements pfh
 {
-  public pfa(Exception paramException) {}
+  pfa(pez parampez) {}
   
-  public void run()
+  public void a(View paramView, Map<String, Object> paramMap)
   {
-    ReportController.b(null, "P_CliOper", "BizTechReport", "", "leba_search", "leba_search_set_data", 0, 0, HtmlOffline.a("1002"), this.a.getClass().getSimpleName(), null, null);
+    if (paramView.getId() == 2131312796) {
+      this.a.a(paramView);
+    }
+    do
+    {
+      return;
+      if (paramView != this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead) {
+        break;
+      }
+      paramView = this.a.jdField_a_of_type_Qoe.a();
+    } while (paramView == null);
+    paramView.c();
+    return;
+    this.a.a(paramView, paramMap);
   }
 }
 

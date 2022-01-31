@@ -1,36 +1,11 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.widget.calloutpopupwindow.CalloutPopupWindow;
-import java.lang.ref.WeakReference;
-
 public class amlw
-  extends Handler
 {
-  public amlw()
-  {
-    super(Looper.getMainLooper());
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (paramMessage.obj == null);
-      paramMessage = ((WeakReference)paramMessage.obj).get();
-    } while ((paramMessage == null) || (!(paramMessage instanceof CalloutPopupWindow)));
-    ((CalloutPopupWindow)paramMessage).dismiss();
-  }
+  public String a;
+  public String b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amlw
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class PttShortVideo$PttShortVideoDeleteResp
-  extends MessageMicro
+  extends MessageMicro<PttShortVideoDeleteResp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "int32_ret_code", "str_ret_msg" }, new Object[] { Integer.valueOf(0), "" }, PttShortVideoDeleteResp.class);
   public final PBInt32Field int32_ret_code = PBField.initInt32(0);

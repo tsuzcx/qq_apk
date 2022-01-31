@@ -1,38 +1,87 @@
-import com.tencent.biz.troop.file.TroopFileProtocol.GetOneFileInfoObserver;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troop.data.TroopFileInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileManager;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import tencent.im.cs.group_file_common.group_file_common.FileInfo;
+import QC.HamletCheck;
+import QC.UniBusinessCheckItem;
+import QC.UniLoginCheckRsp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.automator.step.ChatBackgroundAuth;
+import com.tencent.mobileqq.model.ChatBackgroundManager;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ajwu
-  extends TroopFileProtocol.GetOneFileInfoObserver
+  implements ajfe
 {
-  public ajwu(TroopFileTransferManager paramTroopFileTransferManager) {}
+  private WeakReference<QQAppInterface> a;
   
-  protected void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
+  public ajwu(QQAppInterface paramQQAppInterface)
   {
-    if ((paramBoolean) && (paramFileInfo != null))
+    this.a = new WeakReference(paramQQAppInterface);
+  }
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    if (localQQAppInterface == null) {}
+    for (;;)
     {
-      String str = paramFileInfo.str_file_id.get();
-      Object localObject = str;
-      if (!str.startsWith("/")) {
-        localObject = "/" + str;
-      }
-      localObject = this.a.a().a((String)localObject);
-      if (localObject != null)
+      return;
+      if ((paramObject instanceof UniLoginCheckRsp))
       {
-        ((TroopFileInfo)localObject).a = paramFileInfo.uint32_bus_id.get();
-        ((TroopFileInfo)localObject).c = paramFileInfo.uint32_dead_time.get();
+        bara.a(localQQAppInterface).a(((UniLoginCheckRsp)paramObject).stKeyWord);
+        paramObject = (UniLoginCheckRsp)paramObject;
+        if (paramObject.ret != 0) {
+          break;
+        }
+        ChatBackgroundManager localChatBackgroundManager = (ChatBackgroundManager)localQQAppInterface.getManager(63);
+        localChatBackgroundManager.a();
+        localChatBackgroundManager.b();
+        if (QLog.isColorLevel()) {
+          QLog.d("QQInitHandler", 2, "bg and effect id clear");
+        }
+        Iterator localIterator = paramObject.stHamletList.iterator();
+        while (localIterator.hasNext())
+        {
+          HamletCheck localHamletCheck = (HamletCheck)localIterator.next();
+          if ((localHamletCheck.itemlist != null) && (localHamletCheck.itemlist.size() > 0))
+          {
+            int i = -1;
+            paramInt = -1;
+            paramObject = localHamletCheck.itemlist.iterator();
+            Object localObject;
+            while (paramObject.hasNext())
+            {
+              localObject = (UniBusinessCheckItem)paramObject.next();
+              if (((UniBusinessCheckItem)localObject).appid == 8) {
+                i = ((UniBusinessCheckItem)localObject).itemid;
+              } else if (((UniBusinessCheckItem)localObject).appid == 35) {
+                paramInt = ((UniBusinessCheckItem)localObject).itemid;
+              }
+            }
+            if (i >= 0)
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("QQInitHandler", 2, "bgId:" + i + " effectId:" + paramInt);
+              }
+              localObject = String.valueOf(localHamletCheck.uid);
+              paramObject = localObject;
+              if (localQQAppInterface.getAccount().equals(localObject)) {
+                paramObject = null;
+              }
+              if ((!"99".equals(String.valueOf(i))) || (paramInt > 0)) {
+                localChatBackgroundManager.a(i, paramInt, paramObject, "chatbgAuth", ChatBackgroundAuth.a(localHamletCheck.locationtype));
+              }
+            }
+          }
+        }
       }
-      this.a.a().d((TroopFileInfo)localObject);
     }
+    QLog.e("QQInitHandler", 1, "onResponse: ret:" + paramObject.ret + " errmsg:" + paramObject.errmsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajwu
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,29 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
+import java.lang.ref.WeakReference;
+import java.util.Observable;
+import java.util.Observer;
 
 class kww
-  implements Runnable
+  implements Observer
 {
-  kww(kwv paramkwv) {}
+  private WeakReference<kwv> a;
   
-  public void run()
+  kww(kwv paramkwv)
   {
-    this.a.a.a(1);
+    this.a = new WeakReference(paramkwv);
+  }
+  
+  public void update(Observable paramObservable, Object paramObject)
+  {
+    kwv localkwv = (kwv)this.a.get();
+    if (localkwv == null) {
+      return;
+    }
+    kwv.a(localkwv, paramObservable, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     kww
  * JD-Core Version:    0.7.0.1
  */

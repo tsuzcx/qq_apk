@@ -1,21 +1,19 @@
-import com.tencent.biz.qqstory.newshare.job.ShareGroupAvatarJob;
-import com.tencent.biz.qqstory.shareGroup.icon.RestrictedBitmap;
-import com.tencent.biz.qqstory.shareGroup.icon.ShareGroupIconManager.LoadBitmapCallBack;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class nkn
-  extends ShareGroupIconManager.LoadBitmapCallBack
+  implements moc
 {
-  public nkn(ShareGroupAvatarJob paramShareGroupAvatarJob) {}
+  public nkn(ReadInJoyFeedsActivity.1 param1) {}
   
-  protected void a(RestrictedBitmap paramRestrictedBitmap)
+  public void loaded(String paramString, int paramInt)
   {
-    this.a.a(paramRestrictedBitmap);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseActivity", 2, "load 2464 html web resource finish");
+    }
   }
   
-  protected void a(Error paramError)
-  {
-    this.a.a(paramError);
-  }
+  public void progress(int paramInt) {}
 }
 
 

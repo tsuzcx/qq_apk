@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.emosm.web;
 
-import acis;
+import andq;
 import android.os.Handler;
 import android.os.HandlerThread;
 
 public class EmojiIPCAlarmer
 {
-  private volatile Handler a;
-  public EmojiIPCAlarmer.TimeoutObserver a;
+  andq jdField_a_of_type_Andq;
+  private volatile Handler jdField_a_of_type_AndroidOsHandler;
   
-  public EmojiIPCAlarmer(EmojiIPCAlarmer.TimeoutObserver paramTimeoutObserver)
+  public EmojiIPCAlarmer(andq paramandq)
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebEmojiIPCAlarmer$TimeoutObserver = paramTimeoutObserver;
+    this.jdField_a_of_type_Andq = paramandq;
   }
   
   public Runnable a(int paramInt, long paramLong)
   {
-    acis localacis = new acis(this, paramInt);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(localacis, paramLong);
-    return localacis;
+    EmojiIPCAlarmer.TimeoutTaskWrapper localTimeoutTaskWrapper = new EmojiIPCAlarmer.TimeoutTaskWrapper(this, paramInt);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(localTimeoutTaskWrapper, paramLong);
+    return localTimeoutTaskWrapper;
   }
   
   public void a()

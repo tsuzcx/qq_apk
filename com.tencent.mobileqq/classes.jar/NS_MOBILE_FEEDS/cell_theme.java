@@ -9,14 +9,14 @@ import java.util.Map;
 public final class cell_theme
   extends JceStruct
 {
-  static Map cache_extendinfo;
-  static Map cache_photourl = new HashMap();
-  public Map extendinfo;
+  static Map<String, String> cache_extendinfo;
+  static Map<Integer, s_picurl> cache_photourl = new HashMap();
+  public Map<String, String> extendinfo;
   public boolean is_deepcolor = true;
   public boolean is_optpalette = true;
   public String major_forecolor = "";
   public String minor_forecolor = "";
-  public Map photourl;
+  public Map<Integer, s_picurl> photourl;
   
   static
   {
@@ -28,14 +28,14 @@ public final class cell_theme
   
   public cell_theme() {}
   
-  public cell_theme(String paramString1, String paramString2, boolean paramBoolean1, Map paramMap1, boolean paramBoolean2, Map paramMap2)
+  public cell_theme(String paramString1, String paramString2, boolean paramBoolean1, Map<Integer, s_picurl> paramMap, boolean paramBoolean2, Map<String, String> paramMap1)
   {
     this.major_forecolor = paramString1;
     this.minor_forecolor = paramString2;
     this.is_deepcolor = paramBoolean1;
-    this.photourl = paramMap1;
+    this.photourl = paramMap;
     this.is_optpalette = paramBoolean2;
-    this.extendinfo = paramMap2;
+    this.extendinfo = paramMap1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -68,7 +68,7 @@ public final class cell_theme
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_theme
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,15 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class mvh
-  implements Runnable
+class mvh
+  implements View.OnClickListener
 {
-  public mvh(ServiceAccountFolderActivity paramServiceAccountFolderActivity) {}
+  mvh(mut parammut, String paramString, nbu paramnbu) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ServiceAccountFolderManager localServiceAccountFolderManager = ServiceAccountFolderManager.a();
-    ServiceAccountFolderActivity.a(this.a, localServiceAccountFolderManager.a());
-    ServiceAccountFolderActivity.a(this.a).sendEmptyMessage(101);
+    mut.b(this.jdField_a_of_type_Mut, this.jdField_a_of_type_JavaLangString);
+    mut.a(this.jdField_a_of_type_Mut, this.jdField_a_of_type_Nbu.jdField_a_of_type_JavaLangString);
   }
 }
 

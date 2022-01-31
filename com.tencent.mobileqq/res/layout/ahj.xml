@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.activity.history.widget.DispatchTouchEventFrameLayout android:id="@id/root" android:background="@drawable/bg_texture" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.bubble.ChatXListView android:scrollbarThumbVertical="@drawable/b2n" android:id="@id/listViewHistory" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:divider="@color/d7" android:dividerHeight="0.0dip" />
+</com.tencent.mobileqq.activity.history.widget.DispatchTouchEventFrameLayout>

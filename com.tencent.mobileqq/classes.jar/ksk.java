@@ -1,97 +1,182 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.mp.mobileqq_mp.SetFunctionFlagResponse;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
+import org.json.JSONObject;
 
-public final class ksk
-  implements BusinessObserver
+public abstract class ksk<T>
+  extends alzl<T>
 {
-  public ksk(QQAppInterface paramQQAppInterface, PaConfigAttr.PaConfigInfo paramPaConfigInfo, int paramInt, String paramString) {}
+  final int jdField_a_of_type_Int;
+  final String jdField_a_of_type_JavaLangString;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public ksk(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailBaseInfoModel", 2, "success:" + String.valueOf(paramBoolean));
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = ("QAVConfig_" + this.jdField_a_of_type_Int);
+  }
+  
+  private static int a(String paramString)
+  {
+    try
+    {
+      int i = new JSONObject(paramString).optInt("task_id");
+      return i;
     }
-    PublicAccountHandler localPublicAccountHandler = (PublicAccountHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11);
-    if (paramBoolean) {}
+    catch (Exception paramString) {}
+    return 0;
+  }
+  
+  @NonNull
+  static alzs a(String paramString, int paramInt, alzs[] paramArrayOfalzs)
+  {
+    int i;
+    Object localObject2;
+    Object localObject4;
+    Object localObject3;
+    int j;
+    if ((QLog.isDevelopLevel()) || (paramArrayOfalzs.length > 1))
+    {
+      i = 1;
+      Object localObject1 = (AppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      paramInt = alzw.a().a(paramInt, ((AppInterface)localObject1).getCurrentAccountUin());
+      localObject2 = null;
+      if (i != 0) {
+        localObject2 = "getSuitableItem, Version[" + paramInt + "], size[" + paramArrayOfalzs.length + "]";
+      }
+      localObject1 = paramArrayOfalzs[0];
+      localObject4 = localObject2;
+      localObject3 = localObject1;
+      if (paramArrayOfalzs.length <= 1) {
+        break label237;
+      }
+      int k = paramArrayOfalzs.length;
+      paramInt = 0;
+      j = 0;
+      label109:
+      localObject4 = localObject2;
+      localObject3 = localObject1;
+      if (paramInt >= k) {
+        break label237;
+      }
+      localObject4 = paramArrayOfalzs[paramInt];
+      int m = a(((alzs)localObject4).jdField_a_of_type_JavaLangString);
+      localObject3 = localObject2;
+      if (i != 0) {
+        localObject3 = (String)localObject2 + ", \nindex[" + j + "], taskId[" + ((alzs)localObject4).jdField_a_of_type_Int + "], task_id[" + m + "]";
+      }
+      if (m != ((alzs)localObject4).jdField_a_of_type_Int) {
+        break label305;
+      }
+      localObject1 = localObject4;
+    }
+    label305:
     for (;;)
     {
-      try
+      j += 1;
+      paramInt += 1;
+      localObject2 = localObject3;
+      break label109;
+      i = 0;
+      break;
+      label237:
+      if (i != 0)
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
-        {
-          Object localObject = new mobileqq_mp.SetFunctionFlagResponse();
-          ((mobileqq_mp.SetFunctionFlagResponse)localObject).mergeFrom(paramBundle);
-          if (((mobileqq_mp.RetInfo)((mobileqq_mp.SetFunctionFlagResponse)localObject).ret_info.get()).ret_code.get() == 0)
-          {
-            ((mobileqq_mp.RetInfo)((mobileqq_mp.SetFunctionFlagResponse)localObject).ret_info.get()).ret_code.get();
-            if (QLog.isColorLevel()) {
-              QLog.d("AccountDetailBaseInfoModel", 2, "sendSetFunctionFlagRequest success");
-            }
-            this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.d = this.jdField_a_of_type_Int;
-            paramBundle = null;
-            localObject = (PublicAccountDataManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(55);
-            if (localObject != null) {
-              paramBundle = ((PublicAccountDataManager)localObject).a(this.jdField_a_of_type_JavaLangString);
-            }
-            if (paramBundle != null)
-            {
-              if (this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.e == 6)
-              {
-                if (this.jdField_a_of_type_Int == 1) {
-                  paramBundle.mShowMsgFlag = this.jdField_a_of_type_Int;
-                }
-                ThreadManager.getSubThreadHandler().postDelayed(new ksl(this, paramBundle), 10L);
-                localPublicAccountHandler.a(109, true, this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo);
-                return;
-              }
-              if (this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.e != 3) {
-                continue;
-              }
-              paramBundle.isSyncLbs = true;
-              if (this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.d != 1) {
-                break label315;
-              }
-              paramBoolean = true;
-              paramBundle.isAgreeSyncLbs = paramBoolean;
-              continue;
-            }
-          }
-          else
-          {
-            localPublicAccountHandler.a(109, false, this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo);
-          }
-        }
-        else
-        {
-          localPublicAccountHandler.a(109, false, this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo);
-          return;
-          localPublicAccountHandler.a(109, false, this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo);
-        }
-        return;
+        paramArrayOfalzs = (String)localObject4 + ", \nselect taskId[" + ((alzs)localObject3).jdField_a_of_type_Int;
+        QLog.w(paramString, 1, paramArrayOfalzs + "], content\n" + ((alzs)localObject3).jdField_a_of_type_JavaLangString);
       }
-      catch (Exception paramBundle)
-      {
-        return;
-      }
-      label315:
-      paramBoolean = false;
+      return localObject3;
     }
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
+  }
+  
+  @NonNull
+  protected abstract T a(alzs[] paramArrayOfalzs);
+  
+  public void a()
+  {
+    if (QLog.isDevelopLevel())
+    {
+      int i = c();
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onReqNoReceive, version[" + i + "]");
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isDevelopLevel())
+    {
+      int i = c();
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onReqFailed, failCode[" + paramInt + "], version[" + i + "]");
+    }
+  }
+  
+  public void a(T paramT)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onUpdate, " + paramT);
+    }
+  }
+  
+  public boolean a()
+  {
+    return false;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  @Nullable
+  public final T b(alzs[] paramArrayOfalzs)
+  {
+    try
+    {
+      Object localObject = a(paramArrayOfalzs);
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onParsed, 配置解析异常, [\n" + paramArrayOfalzs[0].jdField_a_of_type_JavaLangString + "\n]", localException);
+      AudioHelper.c(this.jdField_a_of_type_JavaLangString + ajjy.a(2131643116));
+    }
+    return a(a());
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public int c()
+  {
+    String str = "";
+    if (a()) {
+      str = ((AppInterface)BaseApplicationImpl.getApplication().getRuntime()).getCurrentAccountUin();
+    }
+    return alzw.a().a(this.jdField_a_of_type_Int, str);
+  }
+  
+  public boolean c()
+  {
+    return true;
+  }
+  
+  public boolean d()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ksk
  * JD-Core Version:    0.7.0.1
  */

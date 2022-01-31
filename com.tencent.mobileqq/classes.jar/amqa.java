@@ -1,22 +1,10 @@
-import common.qzone.component.cache.common.SoftHashMap;
-import java.util.Map.Entry;
-
-public class amqa
-  extends amqc
+public abstract interface amqa
 {
-  amqa(SoftHashMap paramSoftHashMap)
-  {
-    super(paramSoftHashMap);
-  }
-  
-  public Map.Entry a()
-  {
-    return a();
-  }
+  public abstract boolean a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amqa
  * JD-Core Version:    0.7.0.1
  */

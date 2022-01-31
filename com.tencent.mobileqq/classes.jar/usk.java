@@ -1,24 +1,38 @@
-import android.view.View;
-import android.view.animation.Animation;
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.ComboAnimation3;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.graphics.Bitmap;
 
 public class usk
-  extends AnimateUtils.AnimationAdapter
+  extends uwy
 {
-  public usk(ComboAnimation3 paramComboAnimation3) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean = false;
+  int jdField_b_of_type_Int;
+  boolean jdField_b_of_type_Boolean = false;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public usk(int paramInt, Bitmap paramBitmap)
   {
-    if ((ComboAnimation3.a(this.a) != null) && (ComboAnimation3.a(this.a).isShown())) {
-      this.a.a.post(new usl(this));
-    }
+    super(paramInt, paramBitmap);
+  }
+  
+  public static usk a(usk paramusk, Bitmap paramBitmap)
+  {
+    paramBitmap = new usk(paramusk.c, paramBitmap);
+    paramBitmap.jdField_a_of_type_Int = paramusk.jdField_a_of_type_Int;
+    paramBitmap.jdField_b_of_type_Int = paramusk.jdField_b_of_type_Int;
+    paramBitmap.jdField_a_of_type_JavaLangString = paramusk.jdField_a_of_type_JavaLangString;
+    paramBitmap.jdField_a_of_type_Boolean = paramusk.jdField_a_of_type_Boolean;
+    paramBitmap.jdField_b_of_type_Boolean = paramusk.jdField_b_of_type_Boolean;
+    return paramBitmap;
+  }
+  
+  public String toString()
+  {
+    return "PlayerContext{startTime=" + this.jdField_a_of_type_Int + ", endTime=" + this.jdField_b_of_type_Int + ", isMute=" + this.jdField_a_of_type_Boolean + ", isDeleted=" + this.jdField_b_of_type_Boolean + "} " + super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     usk
  * JD-Core Version:    0.7.0.1
  */

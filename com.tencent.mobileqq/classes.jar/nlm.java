@@ -1,19 +1,19 @@
-import com.tencent.biz.qqstory.newshare.job.EncryptUrlJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareWeChatData;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
 public class nlm
-  extends EncryptUrlJob
+  implements begw
 {
-  public nlm(ShareModeBase paramShareModeBase, String paramString1, String paramString2, boolean paramBoolean, ShareWeChatData paramShareWeChatData)
-  {
-    super(paramString1, paramString2, paramBoolean);
-  }
+  public nlm(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public boolean b()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareWeChatData.d = ((String)a("EncryptUrlJob_encryptedUrl"));
-    return true;
+    ReadInJoySettingActivity.c(this.a).d(paramInt);
+    ((TextView)this.a.findViewById(2131305955)).setText(ReadInJoySettingActivity.a(this.a)[paramInt]);
+    obz.a(Integer.toString(paramInt));
+    ndn.a(null, "", "0X8007416", "0X8007416", 0, 0, Integer.toString(paramInt), "", "", "", false);
+    ReadInJoySettingActivity.c(this.a).cancel();
   }
 }
 

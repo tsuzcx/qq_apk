@@ -1,31 +1,23 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimGetTipsInfoIPC.IGetQQPimTipsCallBack;
-import cooperation.qqpim.QQPimTipsInfo;
-import cooperation.qqpim.QQPimTipsInfoHelper;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class wzn
-  implements QQPimGetTipsInfoIPC.IGetQQPimTipsCallBack
+class wzn
+  implements View.OnClickListener
 {
-  public wzn(ContactListView paramContactListView) {}
+  wzn(wzm paramwzm) {}
   
-  public void a(QQPimTipsInfo paramQQPimTipsInfo)
+  public void onClick(View paramView)
   {
-    if (paramQQPimTipsInfo == null) {
+    if (wzm.a(this.a) == null) {}
+    while (wpl.a(wzm.class.getName() + "clickPanel")) {
       return;
     }
-    QLog.i("ContactListView", 2, "getQQPimTips() callback ");
-    QQPimTipsInfoHelper.b(this.a.getContext(), paramQQPimTipsInfo);
-    Message localMessage = new Message();
-    localMessage.what = 6;
-    localMessage.obj = paramQQPimTipsInfo;
-    this.a.a.sendMessage(localMessage);
+    this.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wzn
  * JD-Core Version:    0.7.0.1
  */

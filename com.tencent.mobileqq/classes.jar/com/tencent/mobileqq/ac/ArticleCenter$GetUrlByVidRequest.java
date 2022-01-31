@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBFloatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ArticleCenter$GetUrlByVidRequest
-  extends MessageMicro
+  extends MessageMicro<GetUrlByVidRequest>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBFloatField latitude = PBField.initFloat(0.0F);

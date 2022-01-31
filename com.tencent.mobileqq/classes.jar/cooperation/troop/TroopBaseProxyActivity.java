@@ -1,5 +1,6 @@
 package cooperation.troop;
 
+import ajjy;
 import android.app.Activity;
 import android.app.Dialog;
 import android.widget.TextView;
@@ -15,7 +16,7 @@ public class TroopBaseProxyActivity
     {
       try
       {
-        paramActivity = new Dialog(paramActivity, 2131624516);
+        paramActivity = new Dialog(paramActivity, 2131690181);
         Activity localActivity = paramActivity;
       }
       catch (OutOfMemoryError localOutOfMemoryError1)
@@ -23,9 +24,9 @@ public class TroopBaseProxyActivity
         try
         {
           paramActivity.setCancelable(true);
-          paramActivity.setContentView(2130969178);
+          paramActivity.setContentView(2131493818);
           paramActivity.show();
-          ((TextView)paramActivity.findViewById(2131363418)).setText("正在加载...");
+          ((TextView)paramActivity.findViewById(2131305861)).setText(ajjy.a(2131649461));
           localActivity = paramActivity;
           return localActivity;
         }

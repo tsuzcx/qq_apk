@@ -1,20 +1,13 @@
-import com.tencent.mobileqq.lyric.data.Sentence;
-import java.util.Comparator;
+import android.annotation.SuppressLint;
 
-public class aelc
-  implements Comparator
+class aelc
 {
-  public int a(Sentence paramSentence1, Sentence paramSentence2)
-  {
-    if (paramSentence1.a >= paramSentence2.a) {
-      return 1;
-    }
-    return -1;
-  }
+  @SuppressLint({"StaticFieldLeak"})
+  private static aeky a = new aeky(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aelc
  * JD-Core Version:    0.7.0.1
  */

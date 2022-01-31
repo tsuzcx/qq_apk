@@ -4,17 +4,20 @@ import android.content.Context;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.widget.TextView;
+import azgc;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.troop.data.TroopTipsEntity;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.IAnimationMessage;
 import com.tencent.qphone.base.util.QLog;
 
 public class MessageForDeliverGiftTips
   extends MessageForGrayTips
-  implements AIOAnimationControlManager.IAnimationMessage
+  implements azgc
 {
   public static final String MESSAGERECORD_EXTSTR_TYPE = "troop_send_gift_ext_remind";
   public static final int VERSION = 2;
+  public String activity_text;
+  public String activity_text_color;
+  public String activity_url;
   public long alreadyPlayMicroseconds;
   public String animationBrief = "";
   public int animationPackageId;
@@ -36,12 +39,15 @@ public class MessageForDeliverGiftTips
   public int interactState;
   public String interactText = "";
   public boolean isFromNearby;
+  public int is_activity_gift;
   public String jumpUrl;
   public int objColor;
   public int participateNum;
   public long playTotalMicroseconds;
   public String rcvName;
   public String receiveAvatarUrl;
+  public String receiverHead;
+  public String receiverName;
   public long receiverUin;
   public int recvScore;
   public String remindBrief = "";
@@ -62,7 +68,7 @@ public class MessageForDeliverGiftTips
     if (QLog.isColorLevel()) {
       QLog.d(".troop.send_gift", 2, "MessageForDeliverGiftTips.buildDeliverGiftTips seq:" + this.shmsgseq);
     }
-    paramTextView.setText(getHightlightMsgText(paramQQAppInterface, paramContext));
+    paramTextView.setText(getHightlightMsgText(paramQQAppInterface, paramContext, false, paramTextView));
     paramTextView.setClickable(true);
     paramTextView.setFocusable(true);
     paramTextView.setMovementMethod(LinkMovementMethod.getInstance());
@@ -71,6 +77,11 @@ public class MessageForDeliverGiftTips
   public String getFriendUin()
   {
     return this.frienduin;
+  }
+  
+  public int getLimitType()
+  {
+    return 0;
   }
   
   public long getSenderUin()

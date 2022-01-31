@@ -1,23 +1,31 @@
-import com.tencent.mobileqq.ar.ARNativeBridge;
-import com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.data.Emoticon;
 
-public class aahw
-  implements Runnable
+class aahw
+  implements View.OnClickListener
 {
-  public aahw(Interactive3DRenderable paramInteractive3DRenderable, int[] paramArrayOfInt, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, long paramLong) {}
+  aahw(aahr paramaahr, anla paramanla) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Interactive3DRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DRenderable).native_onTouchMove(this.jdField_a_of_type_ArrayOfInt, this.jdField_a_of_type_ArrayOfFloat, this.b, this.jdField_a_of_type_Long, Interactive3DRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DRenderable).mCurrentActiveId);
-    if (QLog.isColorLevel()) {
-      QLog.d("AREngine_Interactive3DRenderable", 2, "ACTION_MOVE native_onTouchMove");
+    if ((paramView != null) && ((paramView instanceof ImageView)))
+    {
+      View localView = (View)paramView.getParent();
+      paramView = paramView.getTag();
+      String str = anjd.o.replace("[epId]", this.jdField_a_of_type_Anla.a.epId).replace("[eId]", this.jdField_a_of_type_Anla.a.eId);
+      if (this.jdField_a_of_type_Aahr.a.a == null) {
+        this.jdField_a_of_type_Aahr.a.a = new aaic(this.jdField_a_of_type_Aahr.a);
+      }
+      this.jdField_a_of_type_Aahr.a.a.a(1, localView, paramView, str);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aahw
  * JD-Core Version:    0.7.0.1
  */

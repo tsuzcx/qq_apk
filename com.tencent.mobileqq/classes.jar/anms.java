@@ -1,21 +1,35 @@
-import android.os.Bundle;
-import cooperation.smartdevice.ipc.SmartDeviceIPCHost;
-import java.util.ArrayList;
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.mobileqq.vaswebviewplugin.EmojiHomeUiPlugin;
 
 public class anms
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public anms(SmartDeviceIPCHost paramSmartDeviceIPCHost, Bundle paramBundle) {}
+  public anms(AIOEmotionFragment paramAIOEmotionFragment) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.a.add(this.jdField_a_of_type_AndroidOsBundle);
-    this.jdField_a_of_type_CooperationSmartdeviceIpcSmartDeviceIPCHost.b();
+    if (paramMotionEvent.getAction() == 1)
+    {
+      this.a.b.setBackgroundColor(Color.parseColor("#F7F7F7"));
+      EmojiHomeUiPlugin.openEmojiDetailPage(this.a.getActivity(), this.a.a().getAccount(), 8, this.a.a.epId, false, false);
+      this.a.a("0X800997F");
+    }
+    while (paramMotionEvent.getAction() != 0) {
+      return false;
+    }
+    this.a.b.setBackgroundColor(Color.parseColor("#DEDEDE"));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anms
  * JD-Core Version:    0.7.0.1
  */

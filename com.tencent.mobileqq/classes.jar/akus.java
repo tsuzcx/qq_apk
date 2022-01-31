@@ -1,46 +1,19 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
-import com.tencent.mobileqq.webview.ui.WebViewTopTabHelper;
-
 public class akus
-  implements RadioGroup.OnCheckedChangeListener
 {
-  public akus(SwiftIphoneTitleBarUI paramSwiftIphoneTitleBarUI) {}
+  public int a;
+  public long a;
+  public String a;
+  public String b;
+  public String c;
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public String toString()
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabHelper != null) && (!TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabHelper.a))) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWebviewUiWebViewTopTabHelper.a(paramInt);
-    }
-    TouchWebView localTouchWebView;
-    do
-    {
-      do
-      {
-        return;
-        localTouchWebView = this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a();
-      } while (localTouchWebView == null);
-      String str = localTouchWebView.getUrl();
-      paramRadioGroup = str;
-      if (TextUtils.isEmpty(str))
-      {
-        paramRadioGroup = str;
-        if (this.a.jdField_a_of_type_AndroidContentIntent != null) {
-          paramRadioGroup = this.a.jdField_a_of_type_AndroidContentIntent.getStringExtra("url");
-        }
-      }
-    } while (TextUtils.isEmpty(paramRadioGroup));
-    localTouchWebView.loadUrl(paramRadioGroup.replaceAll("(?<=[?&])subIndex=[^&]*", "subIndex=" + paramInt));
+    return "SearchQuestionResult{errCode=" + this.jdField_a_of_type_Int + ", errMsg='" + this.jdField_a_of_type_JavaLangString + '\'' + ", questionId=" + this.jdField_a_of_type_Long + ", questionText='" + this.b + '\'' + ", questionUrl='" + this.c + '\'' + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akus
  * JD-Core Version:    0.7.0.1
  */

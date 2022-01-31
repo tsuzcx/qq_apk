@@ -1,75 +1,13 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
 public class oyq
-  implements View.OnTouchListener
+  implements ViewBase.IBuilder
 {
-  public oyq(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ViewBase build(VafContext paramVafContext)
   {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if (paramMotionEvent.getAction() == 0)
-      {
-        this.a.b.setImageResource(2130843940);
-      }
-      else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-      {
-        this.a.b.setImageResource(2130843939);
-      }
-      else if (paramMotionEvent.getAction() == 2)
-      {
-        int i = (int)paramMotionEvent.getRawX();
-        int j = (int)paramMotionEvent.getRawY();
-        if (!QRDisplayActivity.a(paramView, i, j))
-        {
-          this.a.b.setImageResource(2130843939);
-          continue;
-          if (paramMotionEvent.getAction() == 0)
-          {
-            this.a.c.setImageResource(2130843942);
-          }
-          else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-          {
-            this.a.c.setImageResource(2130843941);
-          }
-          else if (paramMotionEvent.getAction() == 2)
-          {
-            i = (int)paramMotionEvent.getRawX();
-            j = (int)paramMotionEvent.getRawY();
-            if (!QRDisplayActivity.a(paramView, i, j))
-            {
-              this.a.c.setImageResource(2130843941);
-              continue;
-              if (paramMotionEvent.getAction() == 0)
-              {
-                this.a.d.setImageResource(2130843944);
-              }
-              else if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-              {
-                this.a.d.setImageResource(2130843943);
-              }
-              else if (paramMotionEvent.getAction() == 2)
-              {
-                i = (int)paramMotionEvent.getRawX();
-                j = (int)paramMotionEvent.getRawY();
-                if (!QRDisplayActivity.a(paramView, i, j)) {
-                  this.a.d.setImageResource(2130843943);
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+    return new oyp(paramVafContext);
   }
 }
 

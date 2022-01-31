@@ -1,42 +1,41 @@
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
 import android.view.View;
-import com.tencent.mobileqq.ar.config.WorldCupMgr;
-import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
-import com.tencent.mobileqq.dinifly.LottieImageAsset;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.HashMap;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.EditActivity;
 
-class aaqd
-  implements ImageAssetDelegate
+public class aaqd
+  implements View.OnClickListener
 {
-  aaqd(aaqc paramaaqc) {}
+  public aaqd(EditActivity paramEditActivity) {}
   
-  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
+  public void onClick(View paramView)
   {
-    View localView = (View)this.a.a.d.get();
-    Bitmap localBitmap2 = (Bitmap)this.a.a.a.a.a.get(paramLottieImageAsset.getFileName());
-    Bitmap localBitmap1 = localBitmap2;
-    if (localBitmap2 == null)
-    {
-      paramLottieImageAsset = new StringBuilder().append("loadRollAnimation, 加载图片失败, image[").append(paramLottieImageAsset.getFileName()).append("], canvas[");
-      if (localView == null) {
-        break label116;
-      }
-    }
-    label116:
+    paramView = this.a;
+    if (!EditActivity.a(this.a)) {}
     for (boolean bool = true;; bool = false)
     {
-      QLog.w("WorldCupMgr", 1, bool + "]");
-      localBitmap1 = Bitmap.createBitmap(1, 1, Bitmap.Config.ALPHA_8);
-      return localBitmap1;
+      EditActivity.a(paramView, bool);
+      if (!EditActivity.a(this.a)) {
+        break;
+      }
+      this.a.e();
+      EditActivity.a(this.a).setImageResource(2130837913);
+      if (EditActivity.a(this.a) != null) {
+        EditActivity.a(this.a).setVisibility(0);
+      }
+      return;
     }
+    if (EditActivity.a(this.a) != null) {
+      EditActivity.a(this.a).setVisibility(4);
+    }
+    EditActivity.a(this.a).setImageResource(2130846792);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaqd
  * JD-Core Version:    0.7.0.1
  */

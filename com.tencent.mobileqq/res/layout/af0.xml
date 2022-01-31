@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/w9" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/eap" android:background="@color/w9" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@color/wc" android:dividerHeight="1.0px" android:layout_above="@id/a6i" android:layout_alignParentTop="true" />
+    <View android:id="@id/l7c" android:background="@drawable/dxk" android:layout_width="fill_parent" android:layout_height="24.0dip" android:layout_above="@id/a6i" />
+    <LinearLayout android:orientation="vertical" android:id="@id/a6i" android:background="@color/w9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <View android:id="@id/fhn" android:background="@color/wc" android:layout_width="fill_parent" android:layout_height="0.5dip" />
+        <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="45.5dip">
+            <TextView android:textSize="14.0sp" android:textColor="@color/wa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e8d" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/ui" android:id="@id/a4p" android:paddingLeft="7.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e8o" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

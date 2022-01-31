@@ -1,23 +1,20 @@
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ConnectionCallback;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
 
-class aavx
-  implements Runnable
+public class aavx
+  implements View.OnClickListener
 {
-  aavx(aavt paramaavt) {}
+  public aavx(FriendProfileImageActivity paramFriendProfileImageActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((ArkAppEventObserverManager.a(this.a.a) != null) && (!"cellular".equals(ArkAppEventObserverManager.a(this.a.a))))
-    {
-      ArkAppEventObserverManager.a(this.a.a).a(true, "cellular");
-      ArkAppEventObserverManager.a(this.a.a, "cellular");
-    }
+    FriendProfileImageActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aavx
  * JD-Core Version:    0.7.0.1
  */

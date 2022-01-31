@@ -2,7 +2,6 @@ package com.tencent.TMG.sdk;
 
 import android.graphics.Bitmap;
 import android.hardware.Camera.Parameters;
-import android.util.Log;
 import com.tencent.TMG.utils.QLog;
 import com.tencent.TMG.utils.VcSystemInfo;
 import java.nio.ByteBuffer;
@@ -37,7 +36,7 @@ public class AVVideoCtrl
   static int[] timeArray = new int[2];
   public int nativeObj = 0;
   
-  private native int enableCameraPreview(int paramInt, boolean paramBoolean, EnableCameraCompleteCallback paramEnableCameraCompleteCallback);
+  private native int enableCameraPreview(int paramInt, boolean paramBoolean, AVVideoCtrl.EnableCameraCompleteCallback paramEnableCameraCompleteCallback);
   
   private native int enableCameraSendPermission(boolean paramBoolean);
   
@@ -55,7 +54,7 @@ public class AVVideoCtrl
   
   private native int nativeFillExternalScreenFrame(ByteBuffer paramByteBuffer, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7);
   
-  private native boolean nativeSetLocalVideoPreProcessCallback(LocalVideoPreProcessCallback paramLocalVideoPreProcessCallback);
+  private native boolean nativeSetLocalVideoPreProcessCallback(AVVideoCtrl.LocalVideoPreProcessCallback paramLocalVideoPreProcessCallback);
   
   private native void unInitNative();
   
@@ -83,7 +82,7 @@ public class AVVideoCtrl
     }
   }
   
-  public int enableCamera(int paramInt1, boolean paramBoolean, int paramInt2, EnableCameraCompleteCallback paramEnableCameraCompleteCallback)
+  public int enableCamera(int paramInt1, boolean paramBoolean, int paramInt2, AVVideoCtrl.EnableCameraCompleteCallback paramEnableCameraCompleteCallback)
   {
     switch (paramInt2)
     {
@@ -96,18 +95,18 @@ public class AVVideoCtrl
     return enableCameraPreview(paramInt1, paramBoolean, paramEnableCameraCompleteCallback);
   }
   
-  public native int enableCamera(int paramInt, boolean paramBoolean, EnableCameraCompleteCallback paramEnableCameraCompleteCallback);
+  public native int enableCamera(int paramInt, boolean paramBoolean, AVVideoCtrl.EnableCameraCompleteCallback paramEnableCameraCompleteCallback);
   
-  public native int enableExternalCapture(boolean paramBoolean1, boolean paramBoolean2, EnableExternalCaptureCompleteCallback paramEnableExternalCaptureCompleteCallback);
+  public native int enableExternalCapture(boolean paramBoolean1, boolean paramBoolean2, AVVideoCtrl.EnableExternalCaptureCompleteCallback paramEnableExternalCaptureCompleteCallback);
   
-  public native int enableScreen(boolean paramBoolean, int paramInt, EnableScreenCompleteCallback paramEnableScreenCompleteCallback);
+  public native int enableScreen(boolean paramBoolean, int paramInt, AVVideoCtrl.EnableScreenCompleteCallback paramEnableScreenCompleteCallback);
   
   public int fillExternalCaptureFrame(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
     return nativeFillExternalCaptureFrame(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7);
   }
   
-  public int fillScreenFrame(VideoFrameWithByteBuffer paramVideoFrameWithByteBuffer)
+  public int fillScreenFrame(AVVideoCtrl.VideoFrameWithByteBuffer paramVideoFrameWithByteBuffer)
   {
     return nativeFillExternalScreenFrame(paramVideoFrameWithByteBuffer.data, paramVideoFrameWithByteBuffer.dataLen, paramVideoFrameWithByteBuffer.stride, paramVideoFrameWithByteBuffer.width, paramVideoFrameWithByteBuffer.height, paramVideoFrameWithByteBuffer.rotate, paramVideoFrameWithByteBuffer.videoFormat, paramVideoFrameWithByteBuffer.srcType);
   }
@@ -162,38 +161,38 @@ public class AVVideoCtrl
     }
   }
   
-  public native void setAfterPreviewListener(AfterPreviewListener paramAfterPreviewListener);
+  public native void setAfterPreviewListener(AVVideoCtrl.AfterPreviewListener paramAfterPreviewListener);
   
   public native void setCameraPara(Camera.Parameters paramParameters);
   
-  public native void setCameraPreviewChangeCallback(CameraPreviewChangeCallback paramCameraPreviewChangeCallback);
+  public native void setCameraPreviewChangeCallback(AVVideoCtrl.CameraPreviewChangeCallback paramCameraPreviewChangeCallback);
   
   public native int setHwEnableFlag(int paramInt1, int paramInt2);
   
-  public boolean setLocalVideoPreProcessCallback(LocalVideoPreProcessCallback paramLocalVideoPreProcessCallback)
+  public boolean setLocalVideoPreProcessCallback(AVVideoCtrl.LocalVideoPreProcessCallback paramLocalVideoPreProcessCallback)
   {
     return nativeSetLocalVideoPreProcessCallback(paramLocalVideoPreProcessCallback);
   }
   
   @Deprecated
-  public native boolean setLocalVideoPreviewCallback(LocalVideoPreviewCallback paramLocalVideoPreviewCallback);
+  public native boolean setLocalVideoPreviewCallback(AVVideoCtrl.LocalVideoPreviewCallback paramLocalVideoPreviewCallback);
   
-  public native boolean setLocalVideoPreviewCallbackWithByteBuffer(LocalVideoPreviewCallbackWithByteBuffer paramLocalVideoPreviewCallbackWithByteBuffer);
+  public native boolean setLocalVideoPreviewCallbackWithByteBuffer(AVVideoCtrl.LocalVideoPreviewCallbackWithByteBuffer paramLocalVideoPreviewCallbackWithByteBuffer);
   
-  public native boolean setRemoteMediaVideoPreviewCallback(RemoteMediaVideoPreviewCallback paramRemoteMediaVideoPreviewCallback);
+  public native boolean setRemoteMediaVideoPreviewCallback(AVVideoCtrl.RemoteMediaVideoPreviewCallback paramRemoteMediaVideoPreviewCallback);
   
-  public native boolean setRemoteScreenVideoPreviewCallback(RemoteScreenVideoPreviewCallback paramRemoteScreenVideoPreviewCallback);
+  public native boolean setRemoteScreenVideoPreviewCallback(AVVideoCtrl.RemoteScreenVideoPreviewCallback paramRemoteScreenVideoPreviewCallback);
   
   @Deprecated
-  public native boolean setRemoteVideoPreviewCallback(RemoteVideoPreviewCallback paramRemoteVideoPreviewCallback);
+  public native boolean setRemoteVideoPreviewCallback(AVVideoCtrl.RemoteVideoPreviewCallback paramRemoteVideoPreviewCallback);
   
-  public native boolean setRemoteVideoPreviewCallbackWithByteBuffer(RemoteVideoPreviewCallbackWithByteBuffer paramRemoteVideoPreviewCallbackWithByteBuffer);
+  public native boolean setRemoteVideoPreviewCallbackWithByteBuffer(AVVideoCtrl.RemoteVideoPreviewCallbackWithByteBuffer paramRemoteVideoPreviewCallbackWithByteBuffer);
   
   public native void setRotation(int paramInt);
   
   native int setUseSurfaceTexture(boolean paramBoolean);
   
-  public native int switchCamera(int paramInt, SwitchCameraCompleteCallback paramSwitchCameraCompleteCallback);
+  public native int switchCamera(int paramInt, AVVideoCtrl.SwitchCameraCompleteCallback paramSwitchCameraCompleteCallback);
   
   void unInit()
   {
@@ -215,147 +214,10 @@ public class AVVideoCtrl
     }
     return enableCameraSendPermission(false);
   }
-  
-  public static abstract interface AfterPreviewListener
-  {
-    public abstract void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame);
-  }
-  
-  public static class CameraPreviewChangeCallback
-  {
-    static final String TAG = "SdkJni";
-    
-    public void onCameraPreviewChangeCallback(int paramInt)
-    {
-      Log.d("SdkJni", "base class CameraPreviewChangeCallback.onCameraPreviewChangeCallback");
-    }
-  }
-  
-  public static class EnableCameraCompleteCallback
-  {
-    static final String TAG = "SdkJni";
-    
-    protected void onComplete(boolean paramBoolean, int paramInt)
-    {
-      Log.d("SdkJni", "EnableCameraCompleteCallback.OnComplete. result = " + paramInt);
-    }
-  }
-  
-  public static class EnableExternalCaptureCompleteCallback
-  {
-    static final String TAG = "SdkJni";
-    
-    protected void onComplete(boolean paramBoolean, int paramInt)
-    {
-      Log.d("SdkJni", "EnableExternalCaptureCompleteCallback.OnComplete. enable = " + paramBoolean + "  result = " + paramInt);
-    }
-  }
-  
-  public static abstract interface EnableScreenCompleteCallback
-  {
-    public abstract void onComplete(boolean paramBoolean, int paramInt);
-  }
-  
-  public static class LocalVideoPreProcessCallback
-  {
-    static final String TAG = "SdkJni";
-    
-    public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
-    {
-      Log.d("SdkJni", "base class SetLocalPreProcessCallback.onFrameReceive");
-    }
-  }
-  
-  @Deprecated
-  public static class LocalVideoPreviewCallback
-  {
-    static final String TAG = "SdkJni";
-    
-    public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
-    {
-      Log.d("SdkJni", "base class LocalVideoPreviewCallback.onFrameReceive");
-    }
-  }
-  
-  public static abstract interface LocalVideoPreviewCallbackWithByteBuffer
-  {
-    public abstract void onFrameReceive(AVVideoCtrl.VideoFrameWithByteBuffer paramVideoFrameWithByteBuffer);
-  }
-  
-  public static class RemoteMediaVideoPreviewCallback
-  {
-    static final String TAG = "SdkJni";
-    
-    public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
-    {
-      Log.d("SdkJni", "base class RemoteMediaVideoPreviewCallback.onFrameReceive");
-    }
-  }
-  
-  public static class RemoteScreenVideoPreviewCallback
-  {
-    static final String TAG = "SdkJni";
-    
-    public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
-    {
-      Log.d("SdkJni", "base class RemoteScreenVideoPreviewCallback.onFrameReceive");
-    }
-  }
-  
-  @Deprecated
-  public static class RemoteVideoPreviewCallback
-  {
-    static final String TAG = "SdkJni";
-    
-    public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
-    {
-      Log.d("SdkJni", "base class RemoteVideoPreviewCallback.onFrameReceive");
-    }
-  }
-  
-  public static abstract interface RemoteVideoPreviewCallbackWithByteBuffer
-  {
-    public abstract void onFrameReceive(AVVideoCtrl.VideoFrameWithByteBuffer paramVideoFrameWithByteBuffer);
-  }
-  
-  public static class SwitchCameraCompleteCallback
-  {
-    static final String TAG = "SdkJni";
-    
-    protected void onComplete(int paramInt1, int paramInt2)
-    {
-      Log.d("SdkJni", "SwitchCameraCompleteCallback.OnComplete. result = " + paramInt2);
-    }
-  }
-  
-  public static class VideoFrame
-    extends AVVideoCtrl.VideoFrameWithoutData
-  {
-    public byte[] data;
-  }
-  
-  public static class VideoFrameWithByteBuffer
-    extends AVVideoCtrl.VideoFrameWithoutData
-  {
-    public ByteBuffer data;
-  }
-  
-  static class VideoFrameWithoutData
-  {
-    public int dataLen;
-    public int height;
-    public String identifier;
-    public int rotate;
-    public int srcType;
-    public int stride;
-    public long timeStamp;
-    public int videoFormat;
-    public int width;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.TMG.sdk.AVVideoCtrl
  * JD-Core Version:    0.7.0.1
  */

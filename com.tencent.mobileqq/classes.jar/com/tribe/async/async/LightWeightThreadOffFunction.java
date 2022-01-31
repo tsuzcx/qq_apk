@@ -5,56 +5,23 @@ import com.tribe.async.reactive.StreamFunction;
 public class LightWeightThreadOffFunction<IN>
   extends StreamFunction<IN, IN>
 {
-  protected void call(IN paramIN)
+  public void call(IN paramIN)
   {
-    paramIN = new ThreadOffRunnable(paramIN);
+    paramIN = new LightWeightThreadOffFunction.ThreadOffRunnable(this, paramIN);
     Bosses.get().postLightWeightJob(paramIN, 0);
   }
   
-  protected void error(Error paramError)
+  public void error(Error paramError)
   {
-    paramError = new ThreadOffErrRunnable(paramError);
+    paramError = new LightWeightThreadOffFunction.ThreadOffErrRunnable(this, paramError);
     Bosses.get().postLightWeightJob(paramError, 0);
   }
   
-  protected void onCancel() {}
-  
-  private class ThreadOffErrRunnable
-    implements Runnable
-  {
-    private Error mError;
-    
-    public ThreadOffErrRunnable(Error paramError)
-    {
-      this.mError = paramError;
-    }
-    
-    public void run()
-    {
-      LightWeightThreadOffFunction.this.notifyError(this.mError);
-    }
-  }
-  
-  private class ThreadOffRunnable
-    implements Runnable
-  {
-    private IN mResult;
-    
-    public ThreadOffRunnable()
-    {
-      Object localObject;
-      this.mResult = localObject;
-    }
-    
-    public void run()
-    {
-      LightWeightThreadOffFunction.this.notifyResult(this.mResult);
-    }
-  }
+  public void onCancel() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tribe.async.async.LightWeightThreadOffFunction
  * JD-Core Version:    0.7.0.1
  */

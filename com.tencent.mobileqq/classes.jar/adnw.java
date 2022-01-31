@@ -1,22 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.ZipFilePresenter;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import android.graphics.Bitmap;
+import java.lang.ref.WeakReference;
 
-public class adnw
-  implements View.OnClickListener
+class adnw
+  implements avcl
 {
-  public adnw(ZipFilePresenter paramZipFilePresenter) {}
+  public WeakReference<adnu> a;
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap, int paramInt3)
   {
-    FileManagerUtil.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.b());
+    if (this.a.get() != null) {
+      adnu.a((adnu)this.a.get(), paramInt1, paramInt2, paramBitmap, paramInt3);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adnw
  * JD-Core Version:    0.7.0.1
  */

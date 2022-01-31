@@ -33,7 +33,7 @@ public class LpReportInfo_dc02795
     return str;
   }
   
-  public Map toMap()
+  public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
     if (this.reportInfo != null)

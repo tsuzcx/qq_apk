@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/bwn" android:background="@drawable/hj3" android:clickable="false" android:layout_width="fill_parent" android:layout_height="18.0dip" />
+    <LinearLayout android:id="@id/jwj" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/b0v">
+            <TextView android:id="@id/title" android:paddingBottom="0.0dip" style="@style/k6" />
+            <TextView android:id="@id/f8v" android:visibility="invisible" style="@style/k3" />
+            <LinearLayout android:id="@id/content" android:paddingBottom="0.0dip" style="@style/js">
+                <View style="@style/k4" />
+                <TextView android:id="@id/info" style="@style/jx" />
+            </LinearLayout>
+            <ImageView android:id="@id/yw" style="@style/jq" />
+            <TextView android:textSize="15.0dip" android:textColor="@color/xi" android:id="@id/dr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="@dimen/b0y" android:layout_toLeftOf="@id/yw" android:layout_below="@id/title" android:layout_alignParentLeft="true" android:lineSpacingExtra="4.0dip" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

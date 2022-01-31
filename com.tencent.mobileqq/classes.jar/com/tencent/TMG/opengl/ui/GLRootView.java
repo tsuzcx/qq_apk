@@ -41,13 +41,7 @@ public class GLRootView
   long mLastRenderTime = 0L;
   private final ReentrantLock mRenderLock = new ReentrantLock();
   private volatile boolean mRenderRequested = false;
-  private Runnable mRequestRenderOnAnimationFrame = new Runnable()
-  {
-    public void run()
-    {
-      GLRootView.this.superRequestRender();
-    }
-  };
+  private Runnable mRequestRenderOnAnimationFrame = new GLRootView.1(this);
   
   public GLRootView(Context paramContext)
   {
@@ -255,7 +249,7 @@ public class GLRootView
     //   9: ifnull +48 -> 57
     //   12: invokestatic 153	com/tencent/TMG/utils/QLog:isColorLevel	()Z
     //   15: ifeq +42 -> 57
-    //   18: ldc 21
+    //   18: ldc 19
     //   20: iconst_0
     //   21: new 155	java/lang/StringBuilder
     //   24: dup
@@ -272,7 +266,7 @@ public class GLRootView
     //   51: invokevirtual 171	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   54: invokestatic 175	com/tencent/TMG/utils/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   57: aload_0
-    //   58: getfield 64	com/tencent/TMG/opengl/ui/GLRootView:mRenderLock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   58: getfield 62	com/tencent/TMG/opengl/ui/GLRootView:mRenderLock	Ljava/util/concurrent/locks/ReentrantLock;
     //   61: invokevirtual 191	java/util/concurrent/locks/ReentrantLock:lock	()V
     //   64: aload_0
     //   65: aload_1
@@ -292,7 +286,7 @@ public class GLRootView
     //   93: putfield 231	com/tencent/TMG/opengl/ui/GLRootView:mCanvas	Lcom/tencent/TMG/opengl/glrenderer/GLCanvas;
     //   96: invokestatic 323	com/tencent/TMG/opengl/texture/BasicTexture:invalidateAllTextures	()V
     //   99: aload_0
-    //   100: getfield 64	com/tencent/TMG/opengl/ui/GLRootView:mRenderLock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   100: getfield 62	com/tencent/TMG/opengl/ui/GLRootView:mRenderLock	Ljava/util/concurrent/locks/ReentrantLock;
     //   103: invokevirtual 196	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   106: aload_0
     //   107: iconst_0
@@ -306,7 +300,7 @@ public class GLRootView
     //   121: goto -30 -> 91
     //   124: astore_1
     //   125: aload_0
-    //   126: getfield 64	com/tencent/TMG/opengl/ui/GLRootView:mRenderLock	Ljava/util/concurrent/locks/ReentrantLock;
+    //   126: getfield 62	com/tencent/TMG/opengl/ui/GLRootView:mRenderLock	Ljava/util/concurrent/locks/ReentrantLock;
     //   129: invokevirtual 196	java/util/concurrent/locks/ReentrantLock:unlock	()V
     //   132: aload_1
     //   133: athrow
@@ -436,7 +430,7 @@ public class GLRootView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.TMG.opengl.ui.GLRootView
  * JD-Core Version:    0.7.0.1
  */

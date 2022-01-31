@@ -7,8 +7,10 @@ import com.tencent.qphone.base.util.QLog;
 public class QZoneLoginReportHelper
 {
   public static final String KEY_LOGIN_FROM_MQQ = "login_from_mqq";
+  public static final int LOGIN_FROM_ACTIVATE_FRIEND = 24;
   public static final int LOGIN_FROM_AIO_FEED_CARD = 3;
   public static final int LOGIN_FROM_AIO_SHARE = 4;
+  public static final int LOGIN_FROM_EXTEND_FEED = 23;
   public static final int LOGIN_FROM_FRIEND_PROFILE = 2;
   public static final int LOGIN_FROM_LEBA_TAB = 1;
   public static final int LOGIN_FROM_MQQ_PUSH = 13;
@@ -104,6 +106,18 @@ public class QZoneLoginReportHelper
     return true;
   }
   
+  public static void reportLoginFromActivateFriend()
+  {
+    LpReportInfo_pf00034 localLpReportInfo_pf00034 = new LpReportInfo_pf00034(24);
+    LpReportManager.getInstance().reportToPF00034(localLpReportInfo_pf00034);
+  }
+  
+  public static void reportLoginFromExtendFriend()
+  {
+    LpReportInfo_pf00034 localLpReportInfo_pf00034 = new LpReportInfo_pf00034(23);
+    LpReportManager.getInstance().reportToPF00034(localLpReportInfo_pf00034);
+  }
+  
   public static void reportLoginFromMQQPublicAccount(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
@@ -149,6 +163,18 @@ public class QZoneLoginReportHelper
   public static void reportLoginFromMQQSearchH5()
   {
     LpReportInfo_pf00034 localLpReportInfo_pf00034 = new LpReportInfo_pf00034(12);
+    LpReportManager.getInstance().reportToPF00034(localLpReportInfo_pf00034);
+  }
+  
+  public static void reportLoginFromQQAio()
+  {
+    LpReportInfo_pf00034 localLpReportInfo_pf00034 = new LpReportInfo_pf00034(26);
+    LpReportManager.getInstance().reportToPF00034(localLpReportInfo_pf00034);
+  }
+  
+  public static void reportLoginFromQZoneMsgBox()
+  {
+    LpReportInfo_pf00034 localLpReportInfo_pf00034 = new LpReportInfo_pf00034(16);
     LpReportManager.getInstance().reportToPF00034(localLpReportInfo_pf00034);
   }
   

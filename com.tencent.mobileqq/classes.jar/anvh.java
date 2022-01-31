@@ -1,53 +1,21 @@
-import dov.com.qq.im.capture.paster.CaptureComboPtvTemplate;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.IPtvTemplateDownloadListener;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
 
 public class anvh
-  implements PtvTemplateManager.IPtvTemplateDownloadListener
+  implements View.OnClickListener
 {
-  public anvh(CaptureComboPtvTemplate paramCaptureComboPtvTemplate) {}
+  public anvh(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
   
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt)
+  public void onClick(View paramView)
   {
-    synchronized (CaptureComboPtvTemplate.a(this.a))
-    {
-      if (paramPtvTemplateInfo.id.equals(CaptureComboPtvTemplate.a(this.a).id))
-      {
-        CaptureComboPtvTemplate.a(this.a).downloading = true;
-        CaptureComboPtvTemplate.a(this.a, 1.0F * paramInt / 100.0F);
-        CaptureComboPtvTemplate.a(this.a, 1);
-      }
-      return;
-    }
-  }
-  
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, boolean paramBoolean)
-  {
-    synchronized (CaptureComboPtvTemplate.a(this.a))
-    {
-      if (paramPtvTemplateInfo.id.equals(CaptureComboPtvTemplate.a(this.a).id))
-      {
-        CaptureComboPtvTemplate.a(this.a).downloading = false;
-        CaptureComboPtvTemplate.a(this.a).usable = paramBoolean;
-      }
-      if (paramBoolean)
-      {
-        if (CaptureComboPtvTemplate.a(this.a).id.equals(paramPtvTemplateInfo.id))
-        {
-          CaptureComboPtvTemplate.a(this.a, 3);
-          CaptureComboPtvTemplate.a(this.a, 1.0F);
-          this.a.b();
-        }
-        return;
-      }
-      this.a.a(1);
-      CaptureComboPtvTemplate.a(this.a, 2);
-    }
+    azyk.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.a(), this.jdField_a_of_type_JavaLangString, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anvh
  * JD-Core Version:    0.7.0.1
  */

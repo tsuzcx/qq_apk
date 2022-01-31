@@ -1,21 +1,54 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionInfo;
 
-public class adgx
-  extends adgb
+class adgx
+  extends ClickableSpan
 {
-  public adgx(OnlineFileSessionWorker paramOnlineFileSessionWorker)
+  adgx(adfw paramadfw) {}
+  
+  public void onClick(View paramView)
   {
-    super(paramOnlineFileSessionWorker);
+    Intent localIntent;
+    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      localIntent = new Intent(this.a.jdField_a_of_type_AndroidContentContext, EditActivity.class);
+      paramView = ((ajhh)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(53)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      if ((paramView == null) || (!paramView.hasRenamed())) {
+        break label193;
+      }
+    }
+    label193:
+    for (paramView = paramView.discussionName;; paramView = "")
+    {
+      localIntent.putExtra("title", 2131626296);
+      localIntent.putExtra("action", 102);
+      localIntent.putExtra("limit", 48);
+      localIntent.putExtra("current", paramView);
+      localIntent.putExtra("canPostNull", false);
+      localIntent.putExtra("multiLine", false);
+      localIntent.putExtra("selfSet_leftViewText", this.a.jdField_a_of_type_AndroidContentContext.getString(2131624770));
+      ((Activity)this.a.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 6002);
+      awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800666A", "0X800666A", 0, 0, "", "", "", "");
+      return;
+    }
   }
   
-  protected String a()
+  public void updateDrawState(TextPaint paramTextPaint)
   {
-    return "StateUploadoneWhenPause";
+    paramTextPaint.setColor(-12541697);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adgx
  * JD-Core Version:    0.7.0.1
  */

@@ -29,89 +29,89 @@ public class MD5Coding
     // Byte code:
     //   0: ldc 15
     //   2: invokestatic 21	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
-    //   5: astore_2
+    //   5: astore_3
     //   6: new 48	java/io/FileInputStream
     //   9: dup
     //   10: aload_0
     //   11: invokespecial 51	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   14: astore_0
+    //   14: astore_2
     //   15: sipush 16384
     //   18: newarray byte
-    //   20: astore_3
-    //   21: aload_0
-    //   22: aload_3
+    //   20: astore_0
+    //   21: aload_2
+    //   22: aload_0
     //   23: invokevirtual 55	java/io/FileInputStream:read	([B)I
     //   26: istore_1
     //   27: iload_1
     //   28: iconst_m1
-    //   29: if_icmpeq +20 -> 49
-    //   32: aload_2
-    //   33: aload_3
+    //   29: if_icmpeq +22 -> 51
+    //   32: aload_3
+    //   33: aload_0
     //   34: iconst_0
     //   35: iload_1
     //   36: invokevirtual 58	java/security/MessageDigest:update	([BII)V
     //   39: goto -18 -> 21
-    //   42: astore_2
-    //   43: aload_0
+    //   42: astore_0
+    //   43: aload_2
     //   44: invokevirtual 61	java/io/FileInputStream:close	()V
     //   47: aconst_null
-    //   48: areturn
-    //   49: aload_2
-    //   50: invokevirtual 29	java/security/MessageDigest:digest	()[B
-    //   53: astore_2
-    //   54: aload_0
-    //   55: invokevirtual 61	java/io/FileInputStream:close	()V
-    //   58: aload_2
-    //   59: areturn
-    //   60: astore_0
-    //   61: aload_2
-    //   62: areturn
+    //   48: astore_0
+    //   49: aload_0
+    //   50: areturn
+    //   51: aload_3
+    //   52: invokevirtual 29	java/security/MessageDigest:digest	()[B
+    //   55: astore_0
+    //   56: aload_2
+    //   57: invokevirtual 61	java/io/FileInputStream:close	()V
+    //   60: goto -11 -> 49
     //   63: astore_2
-    //   64: aload_0
-    //   65: invokevirtual 61	java/io/FileInputStream:close	()V
-    //   68: aload_2
-    //   69: athrow
-    //   70: astore_0
-    //   71: aconst_null
-    //   72: areturn
+    //   64: goto -15 -> 49
+    //   67: astore_0
+    //   68: aconst_null
+    //   69: astore_0
+    //   70: goto -21 -> 49
     //   73: astore_0
-    //   74: aconst_null
-    //   75: areturn
-    //   76: astore_0
-    //   77: aconst_null
-    //   78: areturn
-    //   79: astore_0
-    //   80: goto -12 -> 68
+    //   74: aload_2
+    //   75: invokevirtual 61	java/io/FileInputStream:close	()V
+    //   78: aload_0
+    //   79: athrow
+    //   80: astore_0
+    //   81: aconst_null
+    //   82: areturn
+    //   83: astore_2
+    //   84: goto -6 -> 78
+    //   87: astore_0
+    //   88: aconst_null
+    //   89: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	83	0	paramString	String
+    //   0	90	0	paramString	String
     //   26	10	1	i	int
-    //   5	28	2	localMessageDigest	MessageDigest
-    //   42	8	2	localIOException	java.io.IOException
-    //   53	9	2	arrayOfByte1	byte[]
-    //   63	6	2	localObject	Object
-    //   20	14	3	arrayOfByte2	byte[]
+    //   14	43	2	localFileInputStream	java.io.FileInputStream
+    //   63	12	2	localIOException1	java.io.IOException
+    //   83	1	2	localIOException2	java.io.IOException
+    //   5	47	3	localMessageDigest	MessageDigest
     // Exception table:
     //   from	to	target	type
     //   21	27	42	java/io/IOException
     //   32	39	42	java/io/IOException
-    //   49	54	42	java/io/IOException
-    //   54	58	60	java/io/IOException
-    //   21	27	63	finally
-    //   32	39	63	finally
-    //   49	54	63	finally
-    //   0	21	70	java/io/FileNotFoundException
-    //   43	47	70	java/io/FileNotFoundException
-    //   54	58	70	java/io/FileNotFoundException
-    //   64	68	70	java/io/FileNotFoundException
-    //   68	70	70	java/io/FileNotFoundException
-    //   0	21	73	java/security/NoSuchAlgorithmException
-    //   43	47	73	java/security/NoSuchAlgorithmException
-    //   54	58	73	java/security/NoSuchAlgorithmException
-    //   64	68	73	java/security/NoSuchAlgorithmException
-    //   68	70	73	java/security/NoSuchAlgorithmException
-    //   43	47	76	java/io/IOException
-    //   64	68	79	java/io/IOException
+    //   51	56	42	java/io/IOException
+    //   56	60	63	java/io/IOException
+    //   43	47	67	java/io/IOException
+    //   21	27	73	finally
+    //   32	39	73	finally
+    //   51	56	73	finally
+    //   0	21	80	java/io/FileNotFoundException
+    //   43	47	80	java/io/FileNotFoundException
+    //   56	60	80	java/io/FileNotFoundException
+    //   74	78	80	java/io/FileNotFoundException
+    //   78	80	80	java/io/FileNotFoundException
+    //   74	78	83	java/io/IOException
+    //   0	21	87	java/security/NoSuchAlgorithmException
+    //   43	47	87	java/security/NoSuchAlgorithmException
+    //   56	60	87	java/security/NoSuchAlgorithmException
+    //   74	78	87	java/security/NoSuchAlgorithmException
+    //   78	80	87	java/security/NoSuchAlgorithmException
   }
   
   public static String encodeFile2HexStr(String paramString)

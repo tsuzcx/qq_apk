@@ -1,45 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.campuscircle.CampusCirclePublishActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ScrollView;
+import com.tencent.mobileqq.activity.TroopDisbandActivity;
 
 public class abwm
-  implements View.OnTouchListener
+  extends ajjh
 {
-  public abwm(CampusCirclePublishActivity paramCampusCirclePublishActivity) {}
+  public abwm(TroopDisbandActivity paramTroopDisbandActivity) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    int i;
-    if (paramView == this.a.jdField_a_of_type_ComTencentWidgetPrefixXEditText)
-    {
-      i = paramMotionEvent.getAction() & 0xFF;
-      if (i != 0) {
-        break label51;
-      }
-      this.a.jdField_a_of_type_ComTencentWidgetScrollView.requestDisallowInterceptTouchEvent(true);
-      if (QLog.isDevelopLevel()) {
-        QLog.i("CampusCircle", 4, "disallow intercept touch event");
-      }
+    if ((paramBoolean) && (this.a.a != null) && (this.a.a.a(paramString))) {
+      this.a.a.notifyDataSetChanged();
     }
-    label51:
-    do
-    {
-      do
-      {
-        return false;
-      } while ((i != 1) && (i != 3));
-      this.a.jdField_a_of_type_ComTencentWidgetScrollView.requestDisallowInterceptTouchEvent(false);
-    } while (!QLog.isDevelopLevel());
-    QLog.i("CampusCircle", 4, "all intercept touch event");
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abwm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,20 @@
-import com.tencent.component.media.gif.NewGifDecoder;
-import com.tencent.component.media.gif.NewGifDrawable;
-import com.tencent.component.media.utils.ImageManagerLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowGroup;
 
-class pkn
-  extends pkv
+public class pkn
+  implements View.OnClickListener
 {
-  pkn(pkm parampkm, NewGifDrawable paramNewGifDrawable)
-  {
-    super(paramNewGifDrawable);
-  }
+  public pkn(ComponentContentRecommendFollowGroup paramComponentContentRecommendFollowGroup) {}
   
-  public void doWork()
+  public void onClick(View paramView)
   {
-    ImageManagerLog.e("NewGifDrawable", "reset");
-    if (this.a.a.a.reset()) {
-      this.a.a.start();
-    }
-    NewGifDrawable.a(this.a.a, false);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pkn
  * JD-Core Version:    0.7.0.1
  */

@@ -60,7 +60,7 @@ class c
       localParcel1.writeInterfaceToken("com.tencent.tmdownloader.internal.remote.IRemoteOpInterface");
       localParcel1.writeString(paramString);
       localParcel1.writeInt(paramInt);
-      this.a.transact(6, localParcel1, localParcel2, 0);
+      this.a.transact(7, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
     }
@@ -80,7 +80,7 @@ class c
       localParcel1.writeInterfaceToken("com.tencent.tmdownloader.internal.remote.IRemoteOpInterface");
       localParcel1.writeString(paramString);
       localParcel1.writeLong(paramLong);
-      this.a.transact(7, localParcel1, localParcel2, 0);
+      this.a.transact(8, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
     }
@@ -100,7 +100,7 @@ class c
       localParcel1.writeInterfaceToken("com.tencent.tmdownloader.internal.remote.IRemoteOpInterface");
       localParcel1.writeString(paramString1);
       localParcel1.writeString(paramString2);
-      this.a.transact(8, localParcel1, localParcel2, 0);
+      this.a.transact(9, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
     }
@@ -124,7 +124,7 @@ class c
         i = 1;
       }
       localParcel1.writeInt(i);
-      this.a.transact(9, localParcel1, localParcel2, 0);
+      this.a.transact(10, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
     }
@@ -144,7 +144,7 @@ class c
       localParcel1.writeInterfaceToken("com.tencent.tmdownloader.internal.remote.IRemoteOpInterface");
       localParcel1.writeString(paramString);
       localParcel1.writeByteArray(paramArrayOfByte);
-      this.a.transact(5, localParcel1, localParcel2, 0);
+      this.a.transact(6, localParcel1, localParcel2, 0);
       localParcel2.readException();
       return;
     }
@@ -163,7 +163,7 @@ class c
     {
       localParcel1.writeInterfaceToken("com.tencent.tmdownloader.internal.remote.IRemoteOpInterface");
       localParcel1.writeString(paramString);
-      this.a.transact(10, localParcel1, localParcel2, 0);
+      this.a.transact(11, localParcel1, localParcel2, 0);
       localParcel2.readException();
       paramString = localParcel2.createByteArray();
       return paramString;
@@ -188,7 +188,7 @@ class c
     {
       localParcel1.writeInterfaceToken("com.tencent.tmdownloader.internal.remote.IRemoteOpInterface");
       localParcel1.writeString(paramString);
-      this.a.transact(11, localParcel1, localParcel2, 0);
+      this.a.transact(12, localParcel1, localParcel2, 0);
       localParcel2.readException();
       int i = localParcel2.readInt();
       return i;
@@ -226,7 +226,7 @@ class c
     {
       localParcel1.writeInterfaceToken("com.tencent.tmdownloader.internal.remote.IRemoteOpInterface");
       localParcel1.writeString(paramString);
-      this.a.transact(12, localParcel1, localParcel2, 0);
+      this.a.transact(13, localParcel1, localParcel2, 0);
       localParcel2.readException();
       long l = localParcel2.readLong();
       return l;
@@ -264,10 +264,28 @@ class c
     {
       localParcel1.writeInterfaceToken("com.tencent.tmdownloader.internal.remote.IRemoteOpInterface");
       localParcel1.writeString(paramString);
-      this.a.transact(13, localParcel1, localParcel2, 0);
+      this.a.transact(14, localParcel1, localParcel2, 0);
       localParcel2.readException();
       paramString = localParcel2.readString();
       return paramString;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void d()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.tmdownloader.internal.remote.IRemoteOpInterface");
+      this.a.transact(5, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
     }
     finally
     {
@@ -285,7 +303,7 @@ class c
     {
       localParcel1.writeInterfaceToken("com.tencent.tmdownloader.internal.remote.IRemoteOpInterface");
       localParcel1.writeString(paramString);
-      this.a.transact(14, localParcel1, localParcel2, 0);
+      this.a.transact(15, localParcel1, localParcel2, 0);
       localParcel2.readException();
       int i = localParcel2.readInt();
       if (i != 0) {
@@ -302,7 +320,7 @@ class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.remote.c
  * JD-Core Version:    0.7.0.1
  */

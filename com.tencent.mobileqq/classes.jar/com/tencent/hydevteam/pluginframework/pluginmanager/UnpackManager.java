@@ -1,5 +1,6 @@
 package com.tencent.hydevteam.pluginframework.pluginmanager;
 
+import com.tencent.commonsdk.zip.QZipInputStream;
 import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
 import com.tencent.hydevteam.pluginframework.installedplugin.UseDynamicPluginLoaderInstalledPlugin;
 import java.io.BufferedInputStream;
@@ -13,9 +14,7 @@ import java.io.InputStreamReader;
 import java.util.Iterator;
 import java.util.List;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 class UnpackManager
@@ -39,7 +38,6 @@ class UnpackManager
   }
   
   private static InstalledPlugin f(File paramFile)
-    throws IOException, JSONException
   {
     Object localObject1 = new BufferedReader(new InputStreamReader(new FileInputStream(new File(paramFile, "config.json"))));
     Object localObject2 = new StringBuilder("");
@@ -117,7 +115,6 @@ class UnpackManager
   }
   
   final InstalledPlugin c(File paramFile)
-    throws IOException, JSONException
   {
     File localFile2 = a(paramFile);
     localFile2.mkdirs();
@@ -136,60 +133,57 @@ class UnpackManager
       }
     }
     MinFileUtils.c(localFile2);
-    ZipInputStream localZipInputStream = new ZipInputStream(new FileInputStream(paramFile));
+    QZipInputStream localQZipInputStream = new QZipInputStream(new FileInputStream(paramFile));
     for (;;)
     {
       try
       {
-        paramFile = localZipInputStream.getNextEntry();
+        paramFile = localQZipInputStream.getNextEntry();
         if (paramFile != null)
         {
           boolean bool = paramFile.isDirectory();
           if (bool) {
             continue;
           }
-          localBufferedInputStream = null;
         }
       }
       finally
       {
-        BufferedInputStream localBufferedInputStream;
-        localZipInputStream.close();
+        localQZipInputStream.close();
       }
       try
       {
-        paramFile = new BufferedOutputStream(new FileOutputStream(new File(localFile2, paramFile.getName())));
+        localBufferedOutputStream = new BufferedOutputStream(new FileOutputStream(new File(localFile2, paramFile.getName())));
         try
         {
-          localBufferedInputStream = new BufferedInputStream(localZipInputStream);
+          paramFile = new BufferedInputStream(localQZipInputStream);
           byte[] arrayOfByte = new byte[8192];
-          int i = localBufferedInputStream.read(arrayOfByte, 0, 8192);
+          int i = paramFile.read(arrayOfByte, 0, 8192);
           if (i < 0) {
-            break label225;
+            break label222;
           }
-          paramFile.write(arrayOfByte, 0, i);
+          localBufferedOutputStream.write(arrayOfByte, 0, i);
           continue;
-          localZipInputStream.closeEntry();
+          localQZipInputStream.closeEntry();
         }
         finally {}
       }
       finally
       {
-        paramFile = localObject1;
-        Object localObject2 = localObject3;
+        localBufferedOutputStream = null;
         continue;
       }
-      if (paramFile != null) {
-        paramFile.close();
+      if (localBufferedOutputStream != null) {
+        localBufferedOutputStream.close();
       }
-      throw localObject1;
-      label225:
-      localZipInputStream.closeEntry();
-      paramFile.close();
+      throw paramFile;
+      label222:
+      localQZipInputStream.closeEntry();
+      localBufferedOutputStream.close();
     }
     paramFile = f(localFile2);
     localFile1.createNewFile();
-    localZipInputStream.close();
+    localQZipInputStream.close();
     return paramFile;
   }
 }

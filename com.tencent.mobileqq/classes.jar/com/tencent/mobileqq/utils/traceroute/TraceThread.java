@@ -16,7 +16,7 @@ public class TraceThread
   private int jdField_a_of_type_Int;
   private TraceConstants.TraceMethod jdField_a_of_type_ComTencentMobileqqUtilsTracerouteTraceConstants$TraceMethod;
   private String jdField_a_of_type_JavaLangString;
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  private WeakReference<Handler> jdField_a_of_type_JavaLangRefWeakReference;
   
   private String a(String paramString)
   {

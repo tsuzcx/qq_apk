@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class C2CType0x211_SubC2CType0x8$UpdateInfo
-  extends MessageMicro
+  extends MessageMicro<UpdateInfo>
 {
   public static final int MSG_USER_FIELD_NUMBER = 2;
   public static final int TYPE_FIELD_NUMBER = 1;

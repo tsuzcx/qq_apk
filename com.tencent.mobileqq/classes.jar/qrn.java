@@ -1,18 +1,21 @@
-import com.tencent.gdtad.views.video.GdtVideoCommonView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
-class qrn
-  implements Runnable
+public class qrn
+  extends omr
 {
-  qrn(qrm paramqrm) {}
-  
-  public void run()
+  public qrn(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString)
   {
-    GdtVideoCommonView.a(this.a.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView, this.a.jdField_a_of_type_AndroidContentContext);
+    super(paramString);
+  }
+  
+  public void a(oml paramoml)
+  {
+    paramoml.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qrn
  * JD-Core Version:    0.7.0.1
  */

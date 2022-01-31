@@ -1,55 +1,17 @@
-import android.content.ContentResolver;
-import com.tencent.common.config.provider.QZConfigProviderUtil;
-import com.tencent.common.config.provider.QZoneConfigProvider;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.service.qzone.QZoneUnreadServletLogic;
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public final class aicj
-  implements Runnable
+class aicj
 {
-  public aicj(QQAppInterface paramQQAppInterface, ArrayList paramArrayList) {}
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  String jdField_a_of_type_JavaLangString;
+  ImageView jdField_b_of_type_AndroidWidgetImageView;
+  TextView jdField_b_of_type_AndroidWidgetTextView;
   
-  public void run()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        return;
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(9);
-      } while ((localObject == null) || (!(localObject instanceof QZoneManagerImp)));
-      localObject = (QZoneManagerImp)localObject;
-      if (((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList == null) {
-        ((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      if (((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList.size() == 0) {
-        QZConfigProviderUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), ((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList);
-      }
-    } while (QZoneUnreadServletLogic.a(this.jdField_a_of_type_JavaUtilArrayList, ((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList));
-    ((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList.clear();
-    ((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    try
-    {
-      BaseApplication.getContext().getContentResolver().delete(QZoneConfigProvider.g, null, null);
-      QZConfigProviderUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaUtilArrayList);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("UndealCount.QZoneUnreadServletLogic", 2, "getNavigatorConfigs error:" + localException.getMessage(), localException);
-        }
-      }
-    }
-  }
+  aicj(aicc paramaicc) {}
 }
 
 

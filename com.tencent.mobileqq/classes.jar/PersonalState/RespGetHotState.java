@@ -9,13 +9,13 @@ public final class RespGetHotState
   extends JceStruct
 {
   static BusiRespHead cache_oHead;
-  static ArrayList cache_vHostRichSateList;
+  static ArrayList<HotRishState> cache_vHostRichSateList;
   public BusiRespHead oHead;
-  public ArrayList vHostRichSateList;
+  public ArrayList<HotRishState> vHostRichSateList;
   
   public RespGetHotState() {}
   
-  public RespGetHotState(BusiRespHead paramBusiRespHead, ArrayList paramArrayList)
+  public RespGetHotState(BusiRespHead paramBusiRespHead, ArrayList<HotRishState> paramArrayList)
   {
     this.oHead = paramBusiRespHead;
     this.vHostRichSateList = paramArrayList;

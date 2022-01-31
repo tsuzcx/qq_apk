@@ -1,142 +1,388 @@
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.pubaccount.VideoInfo;
-import com.tencent.biz.pubaccount.readinjoy.common.ThirdVideoManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.FileTransferManager;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoBusiManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoReq;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.av.gaudio.AVPhoneUserInfo;
+import com.tencent.av.gaudio.AVPhoneUserInfo.TelInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.data.QCallRecent;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.oidb.cmd0xa02.cmd0xa02.TinyID2UserAccInfo;
 
+@Deprecated
 public class mhq
-  implements Runnable
 {
-  public mhq(VideoFeedsPlayManager paramVideoFeedsPlayManager) {}
-  
-  public void run()
+  public static int a(String paramString, boolean paramBoolean)
   {
-    Object localObject2 = VideoFeedsPlayManager.a(this.a);
-    Object localObject1 = VideoFeedsPlayManager.a(this.a);
-    if ((localObject2 == null) || (localObject1 == null)) {}
-    long l;
-    label299:
-    label304:
+    if (TextUtils.isEmpty(paramString)) {
+      return -1;
+    }
+    String str = paramString.replace("-", "").replace(" ", "");
+    if (str.length() <= 6) {
+      return 5;
+    }
+    if (str.length() > 16) {
+      return 4;
+    }
+    paramString = str;
+    if (paramBoolean) {
+      if ((!str.startsWith("00")) && (!str.startsWith("+")))
+      {
+        paramString = str;
+        if (!str.startsWith("86")) {}
+      }
+      else
+      {
+        if (!str.startsWith("0086")) {
+          break label117;
+        }
+        paramString = str.substring(4);
+      }
+    }
+    while ((paramString.startsWith("400")) || (paramString.startsWith("800")))
+    {
+      return 2;
+      label117:
+      if (str.startsWith("+86")) {
+        paramString = str.substring(3);
+      } else if (str.startsWith("86")) {
+        paramString = str.substring(2);
+      } else {
+        return 1;
+      }
+    }
+    if ((!paramString.startsWith("0")) && (paramString.length() <= 9)) {
+      return 3;
+    }
+    if ((paramString.length() == 11) || (paramString.length() == 12)) {
+      return 0;
+    }
+    return 6;
+  }
+  
+  private static Bitmap a(QQAppInterface paramQQAppInterface, String paramString)
+  {
+    Object localObject2 = ((aroh)paramQQAppInterface.getManager(11)).b(paramString);
+    Object localObject1 = null;
+    if (localObject2 != null) {
+      localObject1 = babh.b(((PhoneContact)localObject2).name);
+    }
+    localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = babh.b(paramString);
+    }
+    paramString = new azyj(paramQQAppInterface.getApp(), (String)localObject2);
+    int i = paramString.getIntrinsicWidth();
+    int j = paramString.getIntrinsicHeight();
+    if (paramString.getOpacity() != -1) {}
+    for (paramQQAppInterface = Bitmap.Config.ARGB_8888;; paramQQAppInterface = Bitmap.Config.RGB_565)
+    {
+      paramQQAppInterface = Bitmap.createBitmap(i, j, paramQQAppInterface);
+      localObject1 = new Canvas(paramQQAppInterface);
+      paramString.setBounds(0, 0, paramString.getIntrinsicWidth(), paramString.getIntrinsicHeight());
+      paramString.draw((Canvas)localObject1);
+      return paramQQAppInterface;
+    }
+  }
+  
+  public static String a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PstnUtils", 2, "getPstnInfoFromQCallRecent --> uin = " + paramString + " ,uinType = " + paramInt);
+    }
+    if ((paramQQAppInterface == null) || (paramString == null)) {
+      paramQQAppInterface = null;
+    }
+    do
+    {
+      return paramQQAppInterface;
+      paramQQAppInterface = (aufl)paramQQAppInterface.getManager(38);
+      if (paramQQAppInterface == null) {
+        break;
+      }
+      paramQQAppInterface = paramQQAppInterface.a(paramString, paramInt);
+      if (paramQQAppInterface == null) {
+        break;
+      }
+      paramString = paramQQAppInterface.pstnInfo;
+      paramQQAppInterface = paramString;
+    } while (!QLog.isColorLevel());
+    QLog.d("PstnUtils", 2, "getPstnInfoFromQCallRecent --> value = " + paramString);
+    return paramString;
+    return null;
+  }
+  
+  public static String a(String paramString, int paramInt)
+  {
+    if (paramString == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PstnUtils", 2, "hideCharacterInPhoneNumbe--> phoneNumber is null");
+      }
+      str = null;
+    }
     do
     {
       do
       {
-        do
-        {
-          Object localObject4;
-          do
-          {
-            return;
-            VideoFeedsPlayManager.a(this.a, true);
-            l = 0L;
-            if (((VideoFeedsPlayManager.VideoPlayParam)localObject2).jdField_a_of_type_Int == 0)
-            {
-              if (VideoFeedsPlayManager.a(this.a) > 0L)
-              {
-                l = VideoFeedsPlayManager.a(this.a);
-                VideoFeedsPlayManager.a(this.a, 0L);
-              }
-            }
-            else
-            {
-              if (((VideoFeedsPlayManager.VideoPlayParam)localObject2).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_Int != 0) {
-                break;
-              }
-              localObject2 = ((VideoFeedsPlayManager.VideoPlayParam)localObject2).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayManager", 2, "Message For Short Video: " + ((MessageForShortVideo)localObject2).toLogString());
-              }
-              bool = true;
-              localObject3 = ShortVideoUtils.a((MessageForShortVideo)localObject2, "mp4");
-              localObject4 = new File((String)localObject3);
-              if (((File)localObject4).exists()) {
-                if (((File)localObject4).length() >= ((MessageForShortVideo)localObject2).videoFileSize) {
-                  break label299;
-                }
-              }
-            }
-            for (boolean bool = true;; bool = false)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayManager", 2, "ShortVideo file.exists()=" + ((File)localObject4).exists() + ", msg.videoFileStatus=" + ((MessageForShortVideo)localObject2).videoFileStatus + ", transferredSize=" + ((File)localObject4).length() + ", msg.videoFileSize=" + ((MessageForShortVideo)localObject2).videoFileSize + ", needDownload=" + bool);
-              }
-              if (bool) {
-                break label304;
-              }
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayManager", 2, "play short video from local");
-              }
-              ((VideoPlayerWrapper)localObject1).a(null, (String)localObject3, 4, l, 0L, 0);
-              return;
-              l = 0L;
-              break;
-            }
-            localObject1 = FileTransferManager.a(VideoFeedsPlayManager.a(this.a));
-            if (localObject1 != null)
-            {
-              if (VideoFeedsPlayManager.a(this.a) == null) {
-                VideoFeedsPlayManager.a(this.a, new View(BaseApplicationImpl.getContext()));
-              }
-              VideoFeedsPlayManager.a(this.a, new mhr(this, (MessageForShortVideo)localObject2));
-              ((FileTransferManager)localObject1).a(VideoFeedsPlayManager.a(this.a), VideoFeedsPlayManager.a(this.a));
-            }
-            ((MessageForShortVideo)localObject2).busiType = 0;
-            localObject1 = ShortVideoBusiManager.a(VideoFeedsPlayManager.a(this.a), (MessageForShortVideo)localObject2, 1);
-          } while (localObject1 == null);
-          ShortVideoBusiManager.a((ShortVideoReq)localObject1, VideoFeedsPlayManager.a(this.a));
-          return;
-          if ((((VideoFeedsPlayManager.VideoPlayParam)localObject2).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_Int == 1) || (((VideoFeedsPlayManager.VideoPlayParam)localObject2).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_Int == 3) || (((VideoFeedsPlayManager.VideoPlayParam)localObject2).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_Int == 7))
-          {
-            if (VideoFeedsPlayManager.a(this.a) != null)
-            {
-              localObject3 = VideoFeedsPlayManager.a(this.a);
-              localObject4 = ((VideoPreDownloadMgr)localObject3).a;
-              ((VideoPlayerWrapper)localObject1).b = ((VideoPreDownloadMgr)localObject3).a(null, ((VideoFeedsPlayManager.VideoPlayParam)localObject2).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaLangString);
-              ((VideoPreDownloadMgr)localObject3).a(((VideoFeedsPlayManager.VideoPlayParam)localObject2).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaLangString, ((VideoPlayerWrapper)localObject1).b);
-            }
-            ((VideoPlayerWrapper)localObject1).a(((VideoFeedsPlayManager.VideoPlayParam)localObject2).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaLangString, 2, l);
-            return;
-          }
-          if ((((VideoFeedsPlayManager.VideoPlayParam)localObject2).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_Int != 2) && ((((VideoFeedsPlayManager.VideoPlayParam)localObject2).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_Int != 6) || (TextUtils.isEmpty(((VideoFeedsPlayManager.VideoPlayParam)localObject2).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaLangString)))) {
-            break;
-          }
-        } while (((VideoFeedsPlayManager.VideoPlayParam)localObject2).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaLangString == null);
-        localObject3 = ThirdVideoManager.a();
-        ((ThirdVideoManager)localObject3).a(((VideoFeedsPlayManager.VideoPlayParam)localObject2).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaLangString, "PubAccountArticleCenter.GetUrlByVid", new mhs(this, (VideoPlayerWrapper)localObject1, l, (ThirdVideoManager)localObject3));
-        return;
-        if (((VideoFeedsPlayManager.VideoPlayParam)localObject2).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_Int != 5) {
+        return str;
+        if (paramString.length() >= paramInt) {
           break;
         }
-      } while (((VideoFeedsPlayManager.VideoPlayParam)localObject2).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaLangString == null);
-      Object localObject3 = VideoFeedsPlayManager.a(this.a);
-      if (localObject3 != null)
+        str = paramString;
+      } while (!QLog.isColorLevel());
+      QLog.d("PstnUtils", 2, "hideCharacterInPhoneNumbe--> phoneNumber less ncount");
+      return paramString;
+      str = paramString;
+    } while (paramString.length() < "***".length() + paramInt);
+    String str = paramString.substring(paramString.length() - 2, paramString.length());
+    paramString = paramString.substring(0, 3);
+    return paramString + "***" + str;
+  }
+  
+  public static String a(ArrayList<AVPhoneUserInfo> paramArrayList)
+  {
+    try
+    {
+      JSONArray localJSONArray = new JSONArray();
+      int i = 0;
+      while (i < paramArrayList.size())
       {
-        ((VideoPlayerWrapper)localObject1).b = ((VideoPreDownloadMgr)localObject3).a(((VideoFeedsPlayManager.VideoPlayParam)localObject2).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaLangString, ((VideoFeedsPlayManager.VideoPlayParam)localObject2).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaLangString);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.pubaccount.video.feeds.VideoFeedsPlayManager", 2, "广告视频预下载: url:" + ((VideoFeedsPlayManager.VideoPlayParam)localObject2).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaLangString + " ;isPreDownloadHit: " + ((VideoPlayerWrapper)localObject1).b);
-        }
-        ((VideoPreDownloadMgr)localObject3).a(((VideoFeedsPlayManager.VideoPlayParam)localObject2).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaLangString, ((VideoPlayerWrapper)localObject1).b);
+        AVPhoneUserInfo localAVPhoneUserInfo = (AVPhoneUserInfo)paramArrayList.get(i);
+        JSONObject localJSONObject1 = new JSONObject();
+        JSONObject localJSONObject2 = new JSONObject();
+        localJSONObject1.put("a", localAVPhoneUserInfo.account);
+        localJSONObject1.put("at", localAVPhoneUserInfo.accountType);
+        localJSONObject2.put("m", localAVPhoneUserInfo.telInfo.mobile);
+        localJSONObject2.put("n", localAVPhoneUserInfo.telInfo.nation);
+        localJSONObject2.put("p", localAVPhoneUserInfo.telInfo.prefix);
+        localJSONObject2.put("ns", localAVPhoneUserInfo.telInfo.nationState);
+        localJSONObject1.put("ti", localJSONObject2);
+        localJSONArray.put(localJSONObject1);
+        i += 1;
       }
-      ((VideoPlayerWrapper)localObject1).a("", ((VideoFeedsPlayManager.VideoPlayParam)localObject2).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_JavaLangString, 2, l, 0L, ((VideoFeedsPlayManager.VideoPlayParam)localObject2).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.d, false, false);
-      return;
-    } while ((((VideoFeedsPlayManager.VideoPlayParam)localObject2).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.jdField_a_of_type_Int != 6) || (TextUtils.isEmpty(((VideoFeedsPlayManager.VideoPlayParam)localObject2).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.n)));
-    ((VideoPlayerWrapper)localObject1).a("", ((VideoFeedsPlayManager.VideoPlayParam)localObject2).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.n, 2, l, 0L, ((VideoFeedsPlayManager.VideoPlayParam)localObject2).jdField_a_of_type_ComTencentBizPubaccountVideoInfo.d);
+      paramArrayList = localJSONArray.toString();
+      return paramArrayList;
+    }
+    catch (JSONException paramArrayList)
+    {
+      paramArrayList.printStackTrace();
+    }
+    return null;
+  }
+  
+  public static ArrayList<AVPhoneUserInfo> a(String paramString)
+  {
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        JSONArray localJSONArray = new JSONArray(paramString);
+        ArrayList localArrayList = new ArrayList();
+        paramString = localArrayList;
+        if (i < localJSONArray.length())
+        {
+          paramString = localJSONArray.getJSONObject(i);
+          JSONObject localJSONObject = paramString.optJSONObject("ti");
+          AVPhoneUserInfo localAVPhoneUserInfo = new AVPhoneUserInfo();
+          localAVPhoneUserInfo.account = paramString.optLong("a", 0L);
+          localAVPhoneUserInfo.accountType = paramString.optInt("at", -1);
+          localAVPhoneUserInfo.telInfo.mobile = localJSONObject.optString("m", "");
+          localAVPhoneUserInfo.telInfo.nation = localJSONObject.optString("n", "");
+          localAVPhoneUserInfo.telInfo.prefix = localJSONObject.optString("p", "");
+          localAVPhoneUserInfo.telInfo.nationState = localJSONObject.optInt("ns", 0);
+          if (-1 == localAVPhoneUserInfo.accountType) {
+            break label174;
+          }
+          localArrayList.add(localAVPhoneUserInfo);
+        }
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+        paramString = null;
+      }
+      return paramString;
+      label174:
+      i += 1;
+    }
+  }
+  
+  public static ArrayList<AVPhoneUserInfo> a(List<cmd0xa02.TinyID2UserAccInfo> paramList)
+  {
+    ArrayList localArrayList = new ArrayList();
+    if ((paramList == null) || (paramList.size() == 0)) {
+      return localArrayList;
+    }
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
+    {
+      paramList = (cmd0xa02.TinyID2UserAccInfo)localIterator.next();
+      AVPhoneUserInfo localAVPhoneUserInfo = new AVPhoneUserInfo();
+      localAVPhoneUserInfo.account = paramList.uint64_tinyid.get();
+      localAVPhoneUserInfo.accountType = paramList.uint32_useracctype.get();
+      paramList = paramList.str_useracc_identifier.get();
+      if ((!TextUtils.isEmpty(paramList)) && (paramList.length() >= 5))
+      {
+        String str;
+        if (paramList.contains("-"))
+        {
+          paramList = paramList.split("-");
+          str = paramList[0];
+        }
+        for (paramList = paramList[1];; paramList = paramList.substring(4, paramList.length()))
+        {
+          localAVPhoneUserInfo.telInfo.nation = str;
+          localAVPhoneUserInfo.telInfo.mobile = paramList;
+          if (!TextUtils.isEmpty(localAVPhoneUserInfo.telInfo.nation)) {
+            localAVPhoneUserInfo.telInfo.nationState = 1;
+          }
+          localArrayList.add(localAVPhoneUserInfo);
+          break;
+          str = paramList.substring(0, 4);
+        }
+      }
+    }
+    return localArrayList;
+  }
+  
+  public static List<AVPhoneUserInfo> a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  {
+    Object localObject1 = a(paramQQAppInterface, paramString, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.i("PstnUtils", 2, " ==== getRealAVPhoneUserInfo === pstnInfo : " + (String)localObject1);
+    }
+    if ((localObject1 == null) || (((String)localObject1).length() == 0)) {
+      return null;
+    }
+    Object localObject2 = a((String)localObject1);
+    if ((localObject2 == null) || (((ArrayList)localObject2).size() == 0)) {
+      return null;
+    }
+    localObject1 = (ajhh)paramQQAppInterface.getManager(53);
+    if (localObject1 == null) {
+      return null;
+    }
+    paramString = ((ajhh)localObject1).a(paramString);
+    localObject1 = (aroh)paramQQAppInterface.getManager(11);
+    ArrayList localArrayList = new ArrayList();
+    localObject2 = ((ArrayList)localObject2).iterator();
+    AVPhoneUserInfo localAVPhoneUserInfo;
+    while (((Iterator)localObject2).hasNext())
+    {
+      localAVPhoneUserInfo = (AVPhoneUserInfo)((Iterator)localObject2).next();
+      paramQQAppInterface = localAVPhoneUserInfo.telInfo.mobile;
+      if ((paramQQAppInterface != null) && (paramQQAppInterface.length() != 0))
+      {
+        paramQQAppInterface = ((aroh)localObject1).b(paramQQAppInterface);
+        if (paramQQAppInterface == null) {
+          break label266;
+        }
+      }
+    }
+    label266:
+    for (paramQQAppInterface = paramQQAppInterface.uin;; paramQQAppInterface = null)
+    {
+      if ((paramQQAppInterface == null) || (paramQQAppInterface.length() == 0))
+      {
+        localArrayList.add(localAVPhoneUserInfo);
+        break;
+      }
+      if ((paramString != null) && (paramString.containsKey(paramQQAppInterface))) {
+        break;
+      }
+      localArrayList.add(localAVPhoneUserInfo);
+      break;
+      if (QLog.isColorLevel()) {
+        QLog.i("PstnUtils", 2, " ==== getRealAVPhoneUserInfo === list : " + localArrayList.toString());
+      }
+      return localArrayList;
+    }
+  }
+  
+  public static List<Bitmap> a(QQAppInterface paramQQAppInterface, String paramString, int paramInt1, int paramInt2)
+  {
+    Object localObject = a(paramQQAppInterface, paramString, paramInt1);
+    QLog.i("PstnUtils", 2, " ==== getRealAVPhoneBitmap === pstnInfo : " + (String)localObject);
+    if ((localObject == null) || (((String)localObject).length() == 0)) {
+      return null;
+    }
+    ArrayList localArrayList1 = a((String)localObject);
+    if ((localArrayList1 == null) || (localArrayList1.size() == 0)) {
+      return null;
+    }
+    localObject = (ajhh)paramQQAppInterface.getManager(53);
+    if (localObject == null) {
+      return null;
+    }
+    Map localMap = ((ajhh)localObject).a(paramString);
+    aroh localaroh = (aroh)paramQQAppInterface.getManager(11);
+    ArrayList localArrayList2 = new ArrayList();
+    paramInt2 = Math.min(paramInt2, localArrayList1.size());
+    paramInt1 = 0;
+    if (paramInt1 < paramInt2)
+    {
+      localObject = (AVPhoneUserInfo)localArrayList1.get(paramInt1);
+      String str = ((AVPhoneUserInfo)localObject).telInfo.mobile;
+      if ((str == null) || (str.length() == 0)) {}
+      for (;;)
+      {
+        paramInt1 += 1;
+        break;
+        PhoneContact localPhoneContact = localaroh.b(str);
+        paramString = null;
+        if (localPhoneContact != null) {
+          paramString = localPhoneContact.uin;
+        }
+        if ((paramString == null) || (paramString.length() == 0))
+        {
+          localArrayList2.add(a(paramQQAppInterface, str));
+        }
+        else if (!localMap.containsKey(paramString))
+        {
+          localObject = paramQQAppInterface.a(11, ((AVPhoneUserInfo)localObject).telInfo.nation + str, (byte)3, true, 0);
+          paramString = (String)localObject;
+          if (localObject == null) {
+            paramString = a(paramQQAppInterface, str);
+          }
+          localArrayList2.add(paramString);
+        }
+      }
+    }
+    return localArrayList2;
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
+  {
+    paramQQAppInterface = a(paramQQAppInterface, paramString, paramInt);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramQQAppInterface != null)
+    {
+      bool1 = bool2;
+      if (paramQQAppInterface.size() > 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mhq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,16 @@
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.mobileqq.activity.Now;
+import java.util.List;
 
-public class tjb
-  implements Runnable
+public abstract interface tjb
 {
-  public tjb(Now paramNow) {}
+  public abstract List<String> a();
   
-  public void run()
-  {
-    this.a.a.a(null);
-  }
+  public abstract boolean a();
+  
+  public abstract boolean b();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tjb
  * JD-Core Version:    0.7.0.1
  */

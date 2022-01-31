@@ -1,22 +1,21 @@
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView.OnHorizontalScrollListener;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoryDataPuller;
+import java.util.List;
 
-public class nxh
-  implements StoryPickerHorizontalListView.OnHorizontalScrollListener
+class nxh
+  extends nyf
 {
-  public nxh(StoryPickerFragment paramStoryPickerFragment) {}
-  
-  public void a(String paramString)
+  nxh(nxd paramnxd, boolean paramBoolean, List paramList)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramString);
-    }
+    super(paramnxd, null);
+  }
+  
+  void a(nyi paramnyi)
+  {
+    paramnyi.onCommentLoadMore(1, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList, nxd.a(this.jdField_a_of_type_Nxd), 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nxh
  * JD-Core Version:    0.7.0.1
  */

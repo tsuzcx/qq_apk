@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class mobileqq_bmqq$CorpcardRspBody
-  extends MessageMicro
+  extends MessageMicro<CorpcardRspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 42, 50, 58, 66, 74, 82, 88 }, new String[] { "retInfo", "uint64_qquin", "uint64_kfuin", "nickname", "remarkname", "jobs", "mobile", "phone", "email", "corpname", "flag" }, new Object[] { null, Long.valueOf(0L), Long.valueOf(0L), "", "", "", "", "", "", "", Integer.valueOf(0) }, CorpcardRspBody.class);
   public final PBStringField corpname = PBField.initString("");

@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.activity.book.ResizeLayout;
-import com.tencent.mobileqq.activity.book.ResizeLayout.OnResizeListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.troop.file.MoveFileActivity;
 
 public class wli
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public wli(ResizeLayout paramResizeLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public wli(MoveFileActivity paramMoveFileActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ResizeLayout.a(this.jdField_a_of_type_ComTencentMobileqqActivityBookResizeLayout).a(this.jdField_a_of_type_Int, this.b, this.c, this.d);
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wli
  * JD-Core Version:    0.7.0.1
  */

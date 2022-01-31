@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class ResponeQueryQQMobileContacts
   extends JceStruct
 {
-  static ArrayList cache_alreadyBindContacts;
-  static ArrayList cache_noBindContacts;
+  static ArrayList<MobileContactsDetailInfo> cache_alreadyBindContacts;
+  static ArrayList<MobileContactsDetailInfo> cache_noBindContacts;
   static byte[] cache_sessionSid = (byte[])new byte[1];
-  public ArrayList alreadyBindContacts;
+  public ArrayList<MobileContactsDetailInfo> alreadyBindContacts;
   public long nextFlag;
-  public ArrayList noBindContacts;
+  public ArrayList<MobileContactsDetailInfo> noBindContacts;
   public byte[] sessionSid;
   public long timeStamp;
   
@@ -30,7 +30,7 @@ public final class ResponeQueryQQMobileContacts
   
   public ResponeQueryQQMobileContacts() {}
   
-  public ResponeQueryQQMobileContacts(long paramLong1, long paramLong2, byte[] paramArrayOfByte, ArrayList paramArrayList1, ArrayList paramArrayList2)
+  public ResponeQueryQQMobileContacts(long paramLong1, long paramLong2, byte[] paramArrayOfByte, ArrayList<MobileContactsDetailInfo> paramArrayList1, ArrayList<MobileContactsDetailInfo> paramArrayList2)
   {
     this.nextFlag = paramLong1;
     this.timeStamp = paramLong2;

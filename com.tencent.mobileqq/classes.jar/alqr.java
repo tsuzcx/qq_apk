@@ -1,37 +1,10 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.UpdateManager;
-import java.io.File;
-
-public class alqr
-  implements Runnable
+public abstract interface alqr
 {
-  public alqr(UpdateManager paramUpdateManager, String paramString, DownloadInfo paramDownloadInfo) {}
-  
-  public void run()
-  {
-    try
-    {
-      File localFile = new File(this.jdField_a_of_type_JavaLangString);
-      if (localFile.exists())
-      {
-        long l = localFile.length();
-        DownloadManager.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, l);
-        return;
-      }
-      LogUtility.c(UpdateManager.jdField_a_of_type_JavaLangString, "patchNewApk report file not exists");
-      return;
-    }
-    catch (Exception localException)
-    {
-      LogUtility.c(UpdateManager.jdField_a_of_type_JavaLangString, "patchNewApk report>>>", localException);
-    }
-  }
+  public abstract void a(byte[] paramArrayOfByte, alqs paramalqs, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alqr
  * JD-Core Version:    0.7.0.1
  */

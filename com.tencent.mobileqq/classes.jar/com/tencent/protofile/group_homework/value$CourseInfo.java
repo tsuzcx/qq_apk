@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class value$CourseInfo
-  extends MessageMicro
+  extends MessageMicro<CourseInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "course_id", "course_name" }, new Object[] { Integer.valueOf(0), "" }, CourseInfo.class);
   public final PBUInt32Field course_id = PBField.initUInt32(0);

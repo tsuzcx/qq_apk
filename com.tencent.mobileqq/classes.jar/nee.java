@@ -1,27 +1,18 @@
-import com.tencent.biz.qqstory.base.preload.cachecleaner.CapacityCleanStep;
-import java.io.File;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.VideoInfo.AdTagInfo;
 
-public class nee
-  implements Comparable
+public final class nee
+  implements Parcelable.Creator<VideoInfo.AdTagInfo>
 {
-  public final long a;
-  public final File a;
-  
-  public nee(CapacityCleanStep paramCapacityCleanStep, File paramFile)
+  public VideoInfo.AdTagInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-    this.jdField_a_of_type_Long = paramFile.lastModified();
+    return new VideoInfo.AdTagInfo(paramParcel);
   }
   
-  public int a(nee paramnee)
+  public VideoInfo.AdTagInfo[] a(int paramInt)
   {
-    if (this.jdField_a_of_type_Long < paramnee.jdField_a_of_type_Long) {
-      return -1;
-    }
-    if (this.jdField_a_of_type_Long == paramnee.jdField_a_of_type_Long) {
-      return 0;
-    }
-    return 1;
+    return new VideoInfo.AdTagInfo[paramInt];
   }
 }
 

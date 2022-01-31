@@ -1,69 +1,41 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloFavActionData;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.troop.honor.widget.TroopHonorView;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-class acjs
-  implements Runnable
+public class acjs
+  implements ajtw
 {
-  acjs(acjg paramacjg, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public BaseChatItemLayout a;
+  public String a;
   
-  public void run()
+  private acjs(BaseBubbleBuilder paramBaseBubbleBuilder) {}
+  
+  public void a(TroopMemberInfo paramTroopMemberInfo)
   {
-    JSONObject localJSONObject1;
-    JSONArray localJSONArray;
-    int i;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if ((paramTroopMemberInfo != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(paramTroopMemberInfo.memberuin)))
     {
-      localObject = ((ApolloDaoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(154)).d();
-      localJSONObject1 = new JSONObject();
-      localJSONArray = new JSONArray();
-      if (localObject != null) {
-        i = 0;
-      }
-    }
-    try
-    {
-      while (i < ((List)localObject).size())
+      paramTroopMemberInfo = ((azcd)this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.a.getManager(346)).a(paramTroopMemberInfo.honorList);
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a != null))
       {
-        JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("seq", ((ApolloFavActionData)((List)localObject).get(i)).favId);
-        localJSONObject2.put("actionId", ((ApolloFavActionData)((List)localObject).get(i)).acitonId);
-        localJSONObject2.put("actionText", ((ApolloFavActionData)((List)localObject).get(i)).text);
-        localJSONObject2.put("textType", ((ApolloFavActionData)((List)localObject).get(i)).textType);
-        localJSONObject2.put("audioId", ((ApolloFavActionData)((List)localObject).get(i)).audioId);
-        if (!Float.isNaN(((ApolloFavActionData)((List)localObject).get(i)).audioStartTime)) {
-          localJSONObject2.put("audioStartTime", ((ApolloFavActionData)((List)localObject).get(i)).audioStartTime);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setHonorList(paramTroopMemberInfo);
+        if ((paramTroopMemberInfo == null) || (paramTroopMemberInfo.size() <= 0)) {
+          break label108;
         }
-        localJSONArray.put(localJSONObject2);
-        i += 1;
-      }
-      localJSONObject1.put("favActionSet", localJSONArray);
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.emoji.web.MessengerService", 2, "getLocalFavAction json error " + localJSONException.toString());
-        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setOnClickListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder);
       }
     }
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putString("getFavResult", localJSONObject1.toString());
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+    return;
+    label108:
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a.setOnClickListener(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acjs
  * JD-Core Version:    0.7.0.1
  */

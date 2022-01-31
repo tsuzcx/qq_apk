@@ -5,6 +5,8 @@ import com.tencent.component.media.ImageManagerEnv;
 
 public class ImageManagerLog
 {
+  private static final String TAG = "QZoneImageManager";
+  
   public static void d(String paramString1, String paramString2)
   {
     paramString1 = "[" + paramString1 + "] " + paramString2;

@@ -12,7 +12,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class value$HomeworkInfo
-  extends MessageMicro
+  extends MessageMicro<HomeworkInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field appid = PBField.initUInt32(0);
@@ -32,7 +32,7 @@ public final class value$HomeworkInfo
   public value.MultiMedia multi_media = new value.MultiMedia();
   public final PBBoolField need_feedback = PBField.initBool(false);
   public final PBUInt64Field push_time = PBField.initUInt64(0L);
-  public final PBRepeatField syncgids = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public final PBRepeatField<Long> syncgids = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
   public final PBUInt64Field team_id = PBField.initUInt64(0L);
   public final PBStringField title = PBField.initString("");
   public final PBUInt64Field uin = PBField.initUInt64(0L);

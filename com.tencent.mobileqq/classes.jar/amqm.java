@@ -1,28 +1,20 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.buscard.BuscardPluginInstallActivity;
-
-public class amqm
-  extends BroadcastReceiver
+public abstract interface amqm
 {
-  private amqm(BuscardPluginInstallActivity paramBuscardPluginInstallActivity) {}
+  public abstract void a(String paramString1, String paramString2);
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("BuscardPluginInstallActivity", 4, "BuscardPluginOnResumeReceiver->onReceive, intent:" + paramIntent);
-    }
-    if ((paramIntent == null) || (!"bridge.plugin.onresume.broadcast".equals(paramIntent.getAction()))) {
-      return;
-    }
-    this.a.finish();
-  }
+  public abstract void a(String paramString1, String paramString2, Throwable paramThrowable);
+  
+  public abstract void b(String paramString1, String paramString2);
+  
+  public abstract void c(String paramString1, String paramString2);
+  
+  public abstract void d(String paramString1, String paramString2);
+  
+  public abstract void e(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amqm
  * JD-Core Version:    0.7.0.1
  */

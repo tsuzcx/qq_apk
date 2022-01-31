@@ -2,15 +2,16 @@ package com.tencent.mobileqq.utils;
 
 import android.content.Context;
 import android.os.SystemClock;
-import com.tencent.mobileqq.ptt.PttSoLoader;
-import com.tencent.mobileqq.ptt.processor.IPttProcessor.ProcessData;
-import com.tencent.mobileqq.ptt.processor.PttComponentProcessor;
-import com.tencent.mobileqq.transfile.PttInfoCollector;
+import auct;
+import audm;
+import audo;
+import axte;
+import bahn;
 import com.tencent.qphone.base.util.QLog;
 import java.io.PipedInputStream;
 
 public final class SilkCodecWrapper
-  extends PttComponentProcessor
+  extends audo
 {
   private static boolean jdField_b_of_type_Boolean;
   long jdField_a_of_type_Long;
@@ -36,7 +37,7 @@ public final class SilkCodecWrapper
   {
     if (!jdField_b_of_type_Boolean)
     {
-      PttSoLoader.a(this.jdField_a_of_type_AndroidContentContext, "codecsilk");
+      auct.a(this.jdField_a_of_type_AndroidContentContext, "codecsilk");
       jdField_b_of_type_Boolean = true;
     }
     this.jdField_a_of_type_Boolean = paramBoolean;
@@ -78,7 +79,7 @@ public final class SilkCodecWrapper
     return 0;
   }
   
-  public IPttProcessor.ProcessData a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public audm a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     long l = SystemClock.uptimeMillis();
     paramArrayOfByte = super.a(paramArrayOfByte, paramInt1, paramInt2);
@@ -105,11 +106,11 @@ public final class SilkCodecWrapper
       if (this.jdField_a_of_type_Boolean) {}
       for (this.jdField_b_of_type_Int = SilkEncoderNew(paramInt1, paramInt2);; this.jdField_b_of_type_Int = SilkDecoderNew(paramInt1, paramInt2))
       {
-        this.jdField_a_of_type_Int = RecordParams.a(paramInt1);
+        this.jdField_a_of_type_Int = bahn.a(paramInt1);
         this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
         this.jdField_b_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
         this.jdField_c_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
-        this.jdField_a_of_type_ComTencentMobileqqPttProcessorIPttProcessor$ProcessData = new IPttProcessor.ProcessData(this.jdField_c_of_type_ArrayOfByte, 0);
+        this.jdField_a_of_type_Audm = new audm(this.jdField_c_of_type_ArrayOfByte, 0);
         return;
       }
     }
@@ -136,7 +137,7 @@ public final class SilkCodecWrapper
         if (!this.jdField_a_of_type_Boolean) {
           break label60;
         }
-        PttInfoCollector.a(this.jdField_a_of_type_Long, this.jdField_c_of_type_Int, this.jdField_b_of_type_Long, 0);
+        axte.a(this.jdField_a_of_type_Long, this.jdField_c_of_type_Int, this.jdField_b_of_type_Long, 0);
       }
     }
     for (;;)
@@ -144,7 +145,7 @@ public final class SilkCodecWrapper
       this.jdField_b_of_type_Int = 0;
       return;
       label60:
-      PttInfoCollector.a(this.jdField_a_of_type_Long, this.jdField_c_of_type_Int, this.jdField_b_of_type_Long, 1);
+      axte.a(this.jdField_a_of_type_Long, this.jdField_c_of_type_Int, this.jdField_b_of_type_Long, 1);
     }
   }
   
@@ -171,7 +172,7 @@ public final class SilkCodecWrapper
     if (this.jdField_a_of_type_Boolean) {
       this.d = encode(this.jdField_b_of_type_Int, this.jdField_a_of_type_ArrayOfByte, this.jdField_b_of_type_ArrayOfByte, this.jdField_a_of_type_Int);
     }
-    RecordParams.a(this.d, paramArrayOfByte, paramInt1);
+    bahn.a(this.d, paramArrayOfByte, paramInt1);
     System.arraycopy(this.jdField_b_of_type_ArrayOfByte, 0, paramArrayOfByte, paramInt1 + 2, this.d);
     return this.d + 2;
   }

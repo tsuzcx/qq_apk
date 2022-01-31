@@ -1,6 +1,7 @@
 package com.tencent.component.network.module.cache.file;
 
 import android.content.Context;
+import android.os.Looper;
 import android.os.StatFs;
 import android.text.TextUtils;
 import com.tencent.component.network.module.base.QDLog;
@@ -12,29 +13,35 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.concurrent.atomic.AtomicInteger;
-import pow;
-import pox;
-import poy;
 
 public class FileCacheService
 {
-  private static Comparator jdField_a_of_type_JavaUtilComparator = new pox();
-  private final Context jdField_a_of_type_AndroidContentContext;
-  private final FileCache jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileCache;
-  private FileCacheService.StorageHandler jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileCacheService$StorageHandler;
-  private final String jdField_a_of_type_JavaLangString;
-  private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private final boolean jdField_a_of_type_Boolean;
-  private final FileCache b;
+  private static final String DIR_NAME = "file";
+  private static final long MEGABYTES = 1048576L;
+  private static final int STORAGE_CHECK_INTERVAL = 3;
+  private static final long STORAGE_LOW_BOUNDS = 10485760L;
+  private static Comparator<FileCacheService.FileEntry> sFileComparator = new FileCacheService.2();
+  private final Context mContext;
+  private final FileCache<String> mExternalCache;
+  private final FileCache<String> mInternalCache;
+  private final String mName;
+  private final boolean mPersist;
+  private AtomicInteger mStorageCounter = new AtomicInteger(0);
+  private FileCacheService.StorageHandler mStorageHandler;
+  
+  public FileCacheService(Context paramContext, String paramString, int paramInt)
+  {
+    this(paramContext, paramString, paramInt, false);
+  }
   
   public FileCacheService(Context paramContext, String paramString, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     if (TextUtils.isEmpty(paramString)) {
       throw new NullPointerException("file cache: name can NOT be empty!");
     }
-    this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
-    this.jdField_a_of_type_JavaLangString = ("file" + File.separator + paramString);
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.mContext = paramContext.getApplicationContext();
+    this.mName = ("file" + File.separator + paramString);
+    this.mPersist = paramBoolean;
     int i = paramInt2;
     if (paramInt2 < 0) {
       i = 0;
@@ -42,115 +49,27 @@ public class FileCacheService
     if (paramInt1 > 0) {}
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileCache = new FileCache(paramInt1);
-      this.b = new FileCache(i);
-      b();
+      this.mExternalCache = new FileCache(paramInt1);
+      this.mInternalCache = new FileCache(i);
+      init();
       return;
       paramInt1 = 2147483647;
     }
   }
   
-  private FileCache a(boolean paramBoolean)
+  public FileCacheService(Context paramContext, String paramString, int paramInt, boolean paramBoolean)
   {
-    if (paramBoolean) {
-      return this.jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileCache;
-    }
-    return this.b;
+    this(paramContext, paramString, paramInt, 0, paramBoolean);
   }
   
-  private String a(boolean paramBoolean)
+  private File createFile(String paramString, boolean paramBoolean)
   {
-    if (paramBoolean) {
-      return CacheManager.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
-    }
-    return CacheManager.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
-  }
-  
-  private void a(boolean paramBoolean)
-  {
-    int j = 0;
-    label182:
-    for (;;)
-    {
-      String str;
-      poy[] arrayOfpoy;
-      int i;
-      int k;
-      try
-      {
-        str = a(paramBoolean);
-        FileCache localFileCache = a(paramBoolean);
-        paramBoolean = TextUtils.isEmpty(str);
-        if (paramBoolean) {
-          return;
-        }
-        String[] arrayOfString = new File(str).list();
-        if ((arrayOfString == null) || (arrayOfString.length == 0)) {
-          continue;
-        }
-        arrayOfpoy = new poy[arrayOfString.length];
-        i = 0;
-        if (i < arrayOfpoy.length)
-        {
-          arrayOfpoy[i] = new poy(str, arrayOfString[i]);
-          i += 1;
-          continue;
-        }
-        Arrays.sort(arrayOfpoy, jdField_a_of_type_JavaUtilComparator);
-        k = arrayOfpoy.length;
-        i = j;
-      }
-      finally {}
-      if (!str.jdField_a_of_type_Boolean) {
-        FileUtils.delete(str.jdField_a_of_type_JavaLangString);
-      } else {
-        localObject.a(str.b, str.jdField_a_of_type_JavaLangString);
-      }
-      for (;;)
-      {
-        if (i >= k) {
-          break label182;
-        }
-        str = arrayOfpoy[i];
-        if (str != null) {
-          break;
-        }
-        i += 1;
-      }
-    }
-  }
-  
-  private static boolean a(File paramFile)
-  {
-    return (paramFile != null) && (paramFile.exists()) && (paramFile.isFile());
-  }
-  
-  private boolean a(String paramString, boolean paramBoolean)
-  {
-    FileCache localFileCache = a(paramBoolean);
-    Object localObject = a(paramString, paramBoolean);
-    if (localObject == null) {}
-    do
-    {
-      return false;
-      localObject = new File((String)localObject);
-      if (((File)localObject).isDirectory()) {
-        FileUtils.delete((File)localObject);
-      }
-    } while (!a((File)localObject));
-    localFileCache.a(paramString, ((File)localObject).getAbsolutePath());
-    b(paramBoolean);
-    return true;
-  }
-  
-  private File b(String paramString, boolean paramBoolean)
-  {
-    paramString = a(paramString, paramBoolean);
+    paramString = getPath(paramString, paramBoolean);
     if (paramString == null) {
       return null;
     }
     paramString = new File(paramString);
-    if (!a(paramString)) {
+    if (!isFileValid(paramString)) {
       FileUtils.delete(paramString);
     }
     try
@@ -160,19 +79,68 @@ public class FileCacheService
     }
     catch (IOException localIOException)
     {
-      QDLog.d("FileCacheService", "", localIOException);
+      QDLog.e("FileCacheService", "", localIOException);
     }
     return paramString;
   }
   
-  private void b()
+  private void ensureCache(boolean paramBoolean)
   {
-    PriorityThreadPool.getDefault().submit(new pow(this));
+    int j = 0;
+    label182:
+    for (;;)
+    {
+      String str;
+      FileCacheService.FileEntry[] arrayOfFileEntry;
+      int i;
+      int k;
+      try
+      {
+        str = getDir(paramBoolean);
+        FileCache localFileCache = getCache(paramBoolean);
+        paramBoolean = TextUtils.isEmpty(str);
+        if (paramBoolean) {
+          return;
+        }
+        String[] arrayOfString = new File(str).list();
+        if ((arrayOfString == null) || (arrayOfString.length == 0)) {
+          continue;
+        }
+        arrayOfFileEntry = new FileCacheService.FileEntry[arrayOfString.length];
+        i = 0;
+        if (i < arrayOfFileEntry.length)
+        {
+          arrayOfFileEntry[i] = new FileCacheService.FileEntry(str, arrayOfString[i]);
+          i += 1;
+          continue;
+        }
+        Arrays.sort(arrayOfFileEntry, sFileComparator);
+        k = arrayOfFileEntry.length;
+        i = j;
+      }
+      finally {}
+      if (!str.isFile) {
+        FileUtils.delete(str.path);
+      } else {
+        localObject.put(str.name, str.path);
+      }
+      for (;;)
+      {
+        if (i >= k) {
+          break label182;
+        }
+        str = arrayOfFileEntry[i];
+        if (str != null) {
+          break;
+        }
+        i += 1;
+      }
+    }
   }
   
-  private void b(boolean paramBoolean)
+  private void ensureStorage(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement() < 3) {}
+    if (this.mStorageCounter.getAndIncrement() < 3) {}
     Object localObject;
     long l1;
     long l2;
@@ -180,53 +148,159 @@ public class FileCacheService
     do
     {
       return;
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-      for (localObject = new File(a(paramBoolean)); !((File)localObject).exists(); localObject = ((File)localObject).getParentFile()) {}
+      this.mStorageCounter.set(0);
+      for (localObject = new File(getDir(paramBoolean)); !((File)localObject).exists(); localObject = ((File)localObject).getParentFile()) {}
       localObject = new StatFs(((File)localObject).getAbsolutePath());
       l1 = ((StatFs)localObject).getBlockCount();
       l2 = ((StatFs)localObject).getBlockSize();
       l3 = ((StatFs)localObject).getAvailableBlocks() * ((StatFs)localObject).getBlockSize();
-      localObject = this.jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileCacheService$StorageHandler;
+      localObject = this.mStorageHandler;
     } while ((l3 >= 10485760L) || (localObject == null));
-    ((FileCacheService.StorageHandler)localObject).a(this, l1 * l2, l3, paramBoolean);
+    ((FileCacheService.StorageHandler)localObject).onLowStorage(this, l1 * l2, l3, paramBoolean);
   }
   
-  public int a(boolean paramBoolean)
+  private FileCache<String> getCache(boolean paramBoolean)
   {
     if (paramBoolean) {
-      return this.jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileCache.a();
+      return this.mExternalCache;
     }
-    return this.b.a();
+    return this.mInternalCache;
   }
   
-  public Context a()
+  private String getDir(boolean paramBoolean)
   {
-    return this.jdField_a_of_type_AndroidContentContext;
+    if (paramBoolean) {
+      return CacheManager.getExternalCacheDir(this.mContext, this.mName, this.mPersist);
+    }
+    return CacheManager.getInternalCacheDir(this.mContext, this.mName, this.mPersist);
   }
   
-  public File a(String paramString)
+  private void init()
   {
-    return a(paramString, false);
+    if (isMainThread())
+    {
+      PriorityThreadPool.getDefault().submit(new FileCacheService.1(this));
+      return;
+    }
+    ensureCache(false);
+    ensureCache(true);
   }
   
-  public File a(String paramString, boolean paramBoolean)
+  private static boolean isFileValid(File paramFile)
+  {
+    return (paramFile != null) && (paramFile.exists()) && (paramFile.isFile());
+  }
+  
+  private boolean putFile(String paramString, boolean paramBoolean)
+  {
+    FileCache localFileCache = getCache(paramBoolean);
+    Object localObject = getPath(paramString, paramBoolean);
+    if (localObject == null) {}
+    do
+    {
+      return false;
+      localObject = new File((String)localObject);
+      if (((File)localObject).isDirectory()) {
+        FileUtils.delete((File)localObject);
+      }
+    } while (!isFileValid((File)localObject));
+    localFileCache.put(paramString, ((File)localObject).getAbsolutePath());
+    ensureStorage(paramBoolean);
+    return true;
+  }
+  
+  public void clear()
+  {
+    try
+    {
+      getCache(false).evictAll();
+      getCache(true).evictAll();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void clear(boolean paramBoolean)
+  {
+    try
+    {
+      getCache(paramBoolean).evictAll();
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void clear(boolean paramBoolean, int paramInt)
+  {
+    try
+    {
+      getCache(paramBoolean).trimToSize(paramInt);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void deleteFile(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    getCache(false).remove(paramString);
+    getCache(true).remove(paramString);
+    String str = getPath(paramString, false);
+    paramString = getPath(paramString, true);
+    FileUtils.delete(str);
+    FileUtils.delete(paramString);
+  }
+  
+  public int getCapacity(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      return this.mExternalCache.maxSize();
+    }
+    return this.mInternalCache.maxSize();
+  }
+  
+  public Context getContext()
+  {
+    return this.mContext;
+  }
+  
+  public File getFile(String paramString)
+  {
+    return getFile(paramString, false);
+  }
+  
+  public File getFile(String paramString, boolean paramBoolean)
   {
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    boolean bool = CacheManager.a();
-    Object localObject1 = (String)a(bool).a(paramString);
+    boolean bool = CacheManager.isExternalAvailable();
+    Object localObject1 = (String)getCache(bool).get(paramString);
     Object localObject2;
     if (localObject1 == null)
     {
       localObject2 = null;
       localObject1 = localObject2;
-      if (!a((File)localObject2))
+      if (!isFileValid((File)localObject2))
       {
         localObject1 = localObject2;
         if (bool)
         {
-          localObject1 = (String)a(false).a(paramString);
+          localObject1 = (String)getCache(false).get(paramString);
           if (localObject1 != null) {
             break label172;
           }
@@ -238,22 +312,22 @@ public class FileCacheService
       if (paramBoolean)
       {
         localObject2 = localObject1;
-        if (!a((File)localObject1))
+        if (!isFileValid((File)localObject1))
         {
-          localObject2 = b(paramString, bool);
+          localObject2 = createFile(paramString, bool);
           localObject1 = localObject2;
-          if (!a((File)localObject2)) {
-            localObject1 = b(paramString, false);
+          if (!isFileValid((File)localObject2)) {
+            localObject1 = createFile(paramString, false);
           }
           localObject2 = localObject1;
-          if (a((File)localObject1))
+          if (isFileValid((File)localObject1))
           {
-            a(paramString);
+            putFile(paramString);
             localObject2 = localObject1;
           }
         }
       }
-      if (!a((File)localObject2)) {
+      if (!isFileValid((File)localObject2)) {
         break label186;
       }
     }
@@ -270,71 +344,42 @@ public class FileCacheService
     }
   }
   
-  public String a(String paramString)
+  public String getPath(String paramString)
   {
-    return a(paramString, CacheManager.a());
+    return getPath(paramString, CacheManager.isExternalAvailable());
   }
   
-  public String a(String paramString, boolean paramBoolean)
+  public String getPath(String paramString, boolean paramBoolean)
   {
     if (TextUtils.isEmpty(paramString)) {}
     String str;
     do
     {
       return null;
-      str = a(paramBoolean);
+      str = getDir(paramBoolean);
     } while (str == null);
     return str + File.separator + paramString;
   }
   
-  public void a()
+  public int getSize(boolean paramBoolean)
   {
-    try
-    {
-      a(false).a();
-      a(true).a();
-      return;
+    if (paramBoolean) {
+      return this.mExternalCache.size();
     }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
+    return this.mInternalCache.size();
   }
   
-  public void a(FileCacheService.StorageHandler paramStorageHandler)
+  public boolean isMainThread()
   {
-    this.jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileCacheService$StorageHandler = paramStorageHandler;
+    return Looper.getMainLooper().getThread() == Thread.currentThread();
   }
   
-  public void a(String paramString)
+  public boolean isPersist()
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return;
-    }
-    a(false).b(paramString);
-    a(true).b(paramString);
-    String str = a(paramString, false);
-    paramString = a(paramString, true);
-    FileUtils.delete(str);
-    FileUtils.delete(paramString);
+    return this.mPersist;
   }
   
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    try
-    {
-      a(paramBoolean).a(paramInt);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public boolean a(String paramString)
+  public boolean putFile(String paramString)
   {
     boolean bool1;
     if (TextUtils.isEmpty(paramString)) {
@@ -347,26 +392,23 @@ public class FileCacheService
       do
       {
         return bool1;
-        bool3 = CacheManager.a();
-        bool2 = a(paramString, bool3);
+        bool3 = CacheManager.isExternalAvailable();
+        bool2 = putFile(paramString, bool3);
         bool1 = bool2;
       } while (bool2);
       bool1 = bool2;
     } while (!bool3);
-    return a(paramString, false);
+    return putFile(paramString, false);
   }
   
-  public int b(boolean paramBoolean)
+  public void setStorageHandler(FileCacheService.StorageHandler paramStorageHandler)
   {
-    if (paramBoolean) {
-      return this.jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileCache.b();
-    }
-    return this.b.b();
+    this.mStorageHandler = paramStorageHandler;
   }
   
   public String toString()
   {
-    return "AlbumUtil#" + this.jdField_a_of_type_JavaLangString + "#capacity=" + b(true) + "," + b(false) + "#size=" + a(true) + "," + a(false);
+    return "AlbumUtil#" + this.mName + "#capacity=" + getCapacity(true) + "," + getCapacity(false) + "#size=" + getSize(true) + "," + getSize(false);
   }
 }
 

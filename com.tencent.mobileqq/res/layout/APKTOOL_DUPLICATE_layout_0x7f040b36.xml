@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3247" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021e2c" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="50.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="16.0sp" android:textColor="#ff707070" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3248" android:background="@android:color/transparent" android:paddingLeft="12.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="说点什么吧..." android:singleLine="true" android:layout_weight="1.0" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3249" android:background="@android:color/transparent" android:paddingLeft="12.0dip" android:paddingRight="14.0dip" android:layout_width="56.0dip" android:layout_height="fill_parent" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f05" android:scaleType="centerInside" />
-    <View android:background="#ffd4d4d4" android:layout_width="0.5dip" android:layout_height="15.0dip" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a324a" android:background="@android:color/transparent" android:paddingLeft="14.0dip" android:paddingRight="12.0dip" android:layout_width="56.0dip" android:layout_height="fill_parent" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f06" android:scaleType="centerInside" />
-</LinearLayout>

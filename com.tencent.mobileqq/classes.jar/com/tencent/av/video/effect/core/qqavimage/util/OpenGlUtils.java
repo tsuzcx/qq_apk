@@ -84,8 +84,8 @@ public class OpenGlUtils
       {
         for (;;)
         {
-          paramInt = 0;
           Log.d("OpenGlUtils", "Load loadShader: " + paramString);
+          paramInt = 0;
         }
       }
     }
@@ -192,12 +192,12 @@ public class OpenGlUtils
   
   public static float rnd(float paramFloat1, float paramFloat2)
   {
-    return (paramFloat2 - paramFloat1) * (float)Math.random() + paramFloat1;
+    return (float)Math.random() * (paramFloat2 - paramFloat1) + paramFloat1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.video.effect.core.qqavimage.util.OpenGlUtils
  * JD-Core Version:    0.7.0.1
  */

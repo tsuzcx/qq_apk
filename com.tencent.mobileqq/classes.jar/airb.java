@@ -1,40 +1,25 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportHandler;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.mobileqq.teamwork.TeamWorkHttpUtils;
+import android.content.Context;
 
-public class airb
-  implements Runnable
+public abstract class airb
 {
-  public airb(TeamWorkFileImportHandler paramTeamWorkFileImportHandler, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
+  abstract int a(Context paramContext);
   
-  public void run()
+  abstract String a();
+  
+  abstract void a();
+  
+  void a(String paramString1, String paramString2, airc paramairc)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportHandler.b == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.c))) {}
-    boolean bool;
-    do
+    if (("destroy".equals(paramString2)) && (paramairc != null))
     {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportHandler.a(TeamWorkHttpUtils.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.c), this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo));
-      localObject = TeamWorkHttpUtils.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.c, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportHandler.b.getCurrentAccountUin());
-      bool = false;
-      if (localObject != null) {
-        bool = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportHandler.b((String)localObject, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      }
-    } while ((bool) || (TeamWorkFileImportHandler.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportHandler) == null));
-    Object localObject = TeamWorkFileImportHandler.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportHandler).obtainMessage(8002);
-    ((Message)localObject).obj = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo;
-    TeamWorkFileImportHandler.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportHandler).sendMessage((Message)localObject);
+      a();
+      paramairc.a(this);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     airb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,28 @@
-import com.tencent.mobileqq.app.RecommendTroopManagerImp;
-import tencent.im.oidb.cmd0x9fb.oidb_0x9fb.RspBody;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class zsw
-  implements Runnable
+class zsw
+  extends mmn
 {
-  public zsw(RecommendTroopManagerImp paramRecommendTroopManagerImp, long paramLong, oidb_0x9fb.RspBody paramRspBody) {}
+  zsw(zsu paramzsu, ztg paramztg, JSONObject paramJSONObject, zrt paramzrt) {}
   
-  public void run()
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    RecommendTroopManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppRecommendTroopManagerImp, this.jdField_a_of_type_Long, this.jdField_a_of_type_TencentImOidbCmd0x9fbOidb_0x9fb$RspBody);
+    if (QLog.isColorLevel()) {
+      QLog.i(zsu.a, 2, "onResult appid=" + zsu.b(this.jdField_a_of_type_Zsu).a + ", openid=" + this.jdField_a_of_type_Ztg.a + ", openkey=" + this.jdField_a_of_type_Ztg.b + ", code=" + paramInt + ", req param=" + this.jdField_a_of_type_OrgJsonJSONObject);
+    }
+    if ((paramInt != 0) || (paramArrayOfByte == null))
+    {
+      zva.a(this.jdField_a_of_type_Zrt, paramInt, "reportScore result error, try again");
+      return;
+    }
+    zva.a(this.jdField_a_of_type_Zrt, zrv.jdField_a_of_type_OrgJsonJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zsw
  * JD-Core Version:    0.7.0.1
  */

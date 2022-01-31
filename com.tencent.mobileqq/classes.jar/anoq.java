@@ -1,29 +1,36 @@
-import android.os.Bundle;
-import com.tencent.open.wadl.WLog;
-import cooperation.wadl.ipc.WadlProxyServiceManager;
-import mqq.observer.BusinessObserver;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
 
 public class anoq
-  implements BusinessObserver
+  extends WebViewPlugin
 {
-  public anoq(WadlProxyServiceManager paramWadlProxyServiceManager, String paramString) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public anoq()
   {
-    paramInt = paramBundle.getInt("extra_result_code");
-    String str = paramBundle.getString("extra_result_err_msg");
-    paramBundle = paramBundle.getString("extra_cmd");
-    if (!paramBoolean)
-    {
-      WLog.a("WadlProxyServiceManager", "onReportDownloadEvent fail operId=" + this.jdField_a_of_type_JavaLangString + ",cmd=" + paramBundle + ",errCode=" + paramInt + ",errMsg=" + str);
-      return;
+    this.mPluginNameSpace = "extendFriend";
+  }
+  
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ExtendFriend", 2, "handleJsRequest url is: " + paramString1 + " method: " + paramString3 + " pkgName: " + paramString2 + " args: " + paramVarArgs);
     }
-    WLog.b("WadlProxyServiceManager", "onReportDownloadEvent success operId=" + this.jdField_a_of_type_JavaLangString + ",cmd=" + paramBundle);
+    if (!"extendFriend".equals(paramString2)) {}
+    while (!"answerResult".equals(paramString3)) {
+      return false;
+    }
+    paramJsBridgeListener = this.mRuntime.a().getCurrentAccountUin();
+    if (!TextUtils.isEmpty(paramJsBridgeListener)) {
+      anoe.a(paramJsBridgeListener, false);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anoq
  * JD-Core Version:    0.7.0.1
  */

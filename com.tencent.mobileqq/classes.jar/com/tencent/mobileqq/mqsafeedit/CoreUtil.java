@@ -12,40 +12,45 @@ public class CoreUtil
   
   public static boolean loadLibrary(String paramString, Context paramContext)
   {
-    bool2 = false;
-    if (paramContext == null) {
-      return false;
+    boolean bool2;
+    if (paramContext == null)
+    {
+      bool2 = false;
+      return bool2;
     }
     File localFile2 = new File(getTxLib(paramContext) + "lib" + paramString + ".so");
     File localFile1 = localFile2;
     if (!localFile2.exists()) {
       localFile1 = new File(paramContext.getFilesDir().getParent() + "/lib/lib" + paramString + ".so");
     }
-    bool1 = bool2;
     if (localFile1.exists()) {}
-    try
+    for (;;)
     {
-      System.load(localFile1.getAbsolutePath());
-      bool1 = true;
-    }
-    catch (UnsatisfiedLinkError paramContext)
-    {
-      for (;;)
+      try
       {
-        bool1 = bool2;
+        System.load(localFile1.getAbsolutePath());
+        bool1 = true;
       }
-    }
-    bool2 = bool1;
-    if (!bool1) {}
-    try
-    {
-      System.loadLibrary(paramString);
-      bool2 = true;
-      return bool2;
-    }
-    catch (UnsatisfiedLinkError paramString)
-    {
-      return false;
+      catch (UnsatisfiedLinkError paramContext)
+      {
+        try
+        {
+          System.loadLibrary(paramString);
+          return true;
+        }
+        catch (UnsatisfiedLinkError paramString)
+        {
+          return false;
+        }
+        paramContext = paramContext;
+        bool1 = false;
+        continue;
+      }
+      bool2 = bool1;
+      if (bool1) {
+        break;
+      }
+      boolean bool1 = false;
     }
   }
 }

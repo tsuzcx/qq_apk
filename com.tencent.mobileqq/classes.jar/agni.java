@@ -1,36 +1,20 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
-import com.tencent.mobileqq.olympic.view.ScanIconAnimateView.PopUpListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
 
 public class agni
-  implements ScanIconAnimateView.PopUpListener
+  implements DialogInterface.OnClickListener
 {
-  public agni(ScanTorchActivity paramScanTorchActivity) {}
+  public agni(QzoneHbFragment paramQzoneHbFragment) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanTorchActivity", 2, "PopUp onStart ");
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanTorchActivity", 2, "PopUp onEnd  needReportRedDot = " + this.a.n);
-    }
-    if (this.a.n)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.a();
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agni
  * JD-Core Version:    0.7.0.1
  */

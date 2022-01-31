@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.data;
 
-import acdf;
+import amtp;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class Setting
-  extends Entity
+  extends atmo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new acdf();
+  public static final Parcelable.Creator<Setting> CREATOR = new amtp();
   public byte bFaceFlags;
   public byte bHeadType;
   public byte bSourceType;
   public byte bUsrType;
   public long headImgTimestamp;
   public short systemHeadID;
-  @unique
+  @atoc
   public String uin;
   public long updateTimestamp;
   public String url;

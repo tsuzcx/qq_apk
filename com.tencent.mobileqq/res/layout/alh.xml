@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginRight="0.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <RelativeLayout android:id="@id/arl" android:background="@drawable/jj" android:layout_width="fill_parent" android:layout_height="43.0dip">
+        <ImageView android:id="@id/ark" android:background="@drawable/qq_leba_list_seek_folder" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="15.0dip" android:layout_centerVertical="true" tencent:skintype="leba_icon" />
+        <ImageView android:id="@id/yx" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/common_arrow_right_selector" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/skin_gray3" android:gravity="center_vertical" android:id="@id/j1q" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:maxWidth="184.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_toLeftOf="@id/yx" android:layout_centerVertical="true" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/skin_dark_gray" android:gravity="center_vertical" android:id="@id/arm" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:maxWidth="182.0dip" android:text="test" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/ark" android:layout_centerVertical="true" />
+        <TextView android:textSize="16.0dip" android:textColor="@color/skin_gray3" android:gravity="center_vertical" android:id="@id/fca" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:maxWidth="184.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/arm" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/i4s" android:background="@drawable/skin_tips_dot_small" android:duplicateParentState="true" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_marginRight="30.0dip" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <View android:id="@id/e_1" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0px" android:layout_alignParentBottom="true" />
+</RelativeLayout>

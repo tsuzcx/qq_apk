@@ -1,29 +1,26 @@
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.2;
+import com.tencent.qphone.base.util.QLog;
 
 public class tfi
-  implements Runnable
+  extends sly<tau, tav>
 {
-  public tfi(LoginVerifyCodeActivity paramLoginVerifyCodeActivity) {}
+  public tfi(StoryShareEncryptHelper.2 param2, long paramLong, bbms parambbms) {}
   
-  public void run()
+  public void a(@NonNull tau paramtau, @Nullable tav paramtav, @NonNull ErrorMessage paramErrorMessage)
   {
-    if ((LoginVerifyCodeActivity.a(this.a) == 1) || (this.a.isFinishing()))
-    {
-      LoginVerifyCodeActivity.a(this.a).setText(2131434293);
-      LoginVerifyCodeActivity.a(this.a).setEnabled(true);
-      LoginVerifyCodeActivity.a(this.a).setClickable(true);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.share.trans.helper", 2, "decrypt done costTime = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ", resp:" + paramtav);
     }
-    LoginVerifyCodeActivity.b(this.a);
-    LoginVerifyCodeActivity.a(this.a).setText(this.a.getString(2131434293) + "(" + LoginVerifyCodeActivity.a(this.a) + ")");
-    this.a.a.postDelayed(this, 1000L);
+    urp.a("StoryShareEncryptHelper", "decrypt", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Long) });
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareUtilStoryShareEncryptHelper$2.a.a(paramtav, this.jdField_a_of_type_Bbms);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tfi
  * JD-Core Version:    0.7.0.1
  */

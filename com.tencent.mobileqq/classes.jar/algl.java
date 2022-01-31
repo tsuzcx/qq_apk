@@ -1,36 +1,21 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.worldcup.WorldCupShareFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
-public class algl
-  implements Animation.AnimationListener
+class algl
+  implements DialogInterface.OnDismissListener
 {
-  public algl(WorldCupShareFragment paramWorldCupShareFragment) {}
+  algl(algk paramalgk, begr parambegr) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramAnimation = this.a.getView();
-    ImageView localImageView = (ImageView)paramAnimation.findViewById(2131375534);
-    localImageView.setVisibility(8);
-    if (WorldCupShareFragment.a(this.a) != null)
-    {
-      WorldCupShareFragment.a(this.a).cancelAnimation();
-      WorldCupShareFragment.a(this.a, null);
-    }
-    localImageView.setImageDrawable(null);
-    WorldCupShareFragment.a(this.a, paramAnimation);
+    this.jdField_a_of_type_Begr.dismiss();
+    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ClearApp actionsheet is closed", new Object[0]));
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     algl
  * JD-Core Version:    0.7.0.1
  */

@@ -6,9 +6,14 @@ import android.graphics.Paint;
 public class AtFriendsSpan
   extends BiuNicknameSpan
 {
+  public AtFriendsSpan(String paramString, long paramLong, CharSequence paramCharSequence)
+  {
+    super(paramString, paramLong, paramCharSequence);
+  }
+  
   public AtFriendsSpan(String paramString, long paramLong, CharSequence paramCharSequence, Context paramContext, Paint paramPaint, int paramInt)
   {
-    super(paramString, paramLong, paramCharSequence, paramContext, paramPaint, paramInt);
+    super(paramString, paramLong, paramCharSequence);
   }
 }
 

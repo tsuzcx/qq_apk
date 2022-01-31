@@ -1,42 +1,32 @@
-import com.tencent.mobileqq.activity.LikeSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearByGeneralManager;
-import com.tencent.mobileqq.nearby.NearbyRelevantObserver;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
-public class ted
-  extends NearbyRelevantObserver
+class ted
+  extends tcq
 {
-  public ted(LikeSettingActivity paramLikeSettingActivity) {}
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  ted(tdo paramtdo, StoryVideoItem paramStoryVideoItem, tew paramtew)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LikeSettingActivity", 2, "onGetNotifyOnLikeSwitch.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
-    }
-    if (paramBoolean1) {
-      LikeSettingActivity.a(this.a, this.a.a.a(), paramBoolean2);
-    }
+    super(paramStoryVideoItem);
   }
   
-  public void b(boolean paramBoolean1, boolean paramBoolean2)
+  public boolean b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LikeSettingActivity", 2, "onSetNotifyOnLikeSwitch.isSuccess=" + paramBoolean1 + ",open=" + paramBoolean2);
-    }
-    if (!paramBoolean1)
+    String str = (String)a("result");
+    vkw.a(str);
+    vkw.a(this.jdField_a_of_type_Tew.d);
+    if (this.jdField_a_of_type_Tew.d == null)
     {
-      QQToast.a(this.a, 1, 2131436084, 0).b(this.a.getTitleBarHeight());
-      paramBoolean1 = ((NearByGeneralManager)this.a.app.getManager(160)).a();
-      LikeSettingActivity.a(this.a, this.a.a.a(), paramBoolean1);
+      this.jdField_a_of_type_Tew.d = "";
+      urk.c(this.b, "imageLocalPath is null", new Throwable());
     }
+    a("DownloadPic2FileJob_iiu", str);
+    a("DownloadPic2FileJob_isfp", this.jdField_a_of_type_Tew.d);
+    a("DownloadPic2FileJob_IN_ROUND", Boolean.valueOf(this.jdField_a_of_type_Tew.a));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ted
  * JD-Core Version:    0.7.0.1
  */

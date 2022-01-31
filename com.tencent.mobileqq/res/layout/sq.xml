@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/ic3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.TabBarView android:id="@id/j_a" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_alignParentBottom="true" />
+    <com.tencent.mobileqq.widget.NonSwipeableViewPager android:id="@id/l0p" android:background="@color/al3" android:fadingEdge="none" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/j_a" android:fadeScrollbars="false" />
+    <View android:background="@drawable/d3c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/j_a" />
+</RelativeLayout>

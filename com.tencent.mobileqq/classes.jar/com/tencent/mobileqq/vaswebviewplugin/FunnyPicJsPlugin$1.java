@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
+import anad;
+import anah;
 import android.os.Bundle;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
-import com.tencent.mobileqq.emosm.DataFactory;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.pb.webssoagent.WebSSOAgent.UniSsoServerRsp;
 import com.tencent.qphone.base.util.QLog;
@@ -43,7 +43,7 @@ class FunnyPicJsPlugin$1
           this.this$0.mReqBundle.clear();
           this.this$0.mReqBundle.putString("jsonContent", this.val$json.toString());
           this.this$0.mReqBundle.putInt("action", this.val$action);
-          localObject = DataFactory.a("ipc_funnypic_add", this.val$innerCallBackId, this.this$0.mOnRemoteResp.key, this.this$0.mReqBundle);
+          localObject = anah.a("ipc_funnypic_add", this.val$innerCallBackId, this.this$0.mOnRemoteResp.key, this.this$0.mReqBundle);
           FunnyPicJsPlugin.access$001(this.this$0, (Bundle)localObject, true, true);
           if (!QLog.isColorLevel()) {
             return;
@@ -74,7 +74,7 @@ class FunnyPicJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.FunnyPicJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

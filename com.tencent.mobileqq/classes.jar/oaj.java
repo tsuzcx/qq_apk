@@ -1,23 +1,21 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.CardVideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public final class oaj
-  implements Parcelable.Creator
+class oaj
+  implements ViewBase.OnClickListener
 {
-  public CardItem.CardVideoInfo a(Parcel paramParcel)
-  {
-    return new CardItem.CardVideoInfo(paramParcel);
-  }
+  oaj(oah paramoah) {}
   
-  public CardItem.CardVideoInfo[] a(int paramInt)
+  public void onClick(ViewBase paramViewBase)
   {
-    return new CardItem.CardVideoInfo[paramInt];
+    if (this.a.a != null) {
+      oag.a(this.a.a, paramViewBase);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     oaj
  * JD-Core Version:    0.7.0.1
  */

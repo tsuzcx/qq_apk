@@ -1,60 +1,45 @@
-import android.os.Bundle;
-import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.base.TicketUtils;
-import com.tencent.open.base.TicketUtils.TicketCallback;
-import mqq.manager.WtloginManager;
-import mqq.observer.SSOAccountObserver;
-import oicq.wlogin_sdk.sharemem.WloginSimpleInfo;
-import oicq.wlogin_sdk.tools.RSACrypt;
-import oicq.wlogin_sdk.tools.util;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.qphone.base.util.QLog;
 
-public class alna
-  extends SSOAccountObserver
+class alna
+  extends AnimatorListenerAdapter
 {
-  public alna(TicketUtils paramTicketUtils) {}
+  alna(almv paramalmv, alnc paramalnc) {}
   
-  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
+  public void onAnimationEnd(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
   {
-    if (this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback != null) {
-      this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback.a();
+    if (QLog.isColorLevel()) {
+      QLog.i("BubbleInterActiveAnim", 2, "animHolder.animView.startPassiveAnimator!");
     }
-  }
-  
-  public void onGetA1WithA1(String paramString, int paramInt1, byte[] paramArrayOfByte, int paramInt2, Bundle paramBundle)
-  {
-    if (paramInt1 == 0)
+    if ((this.jdField_a_of_type_Alnc != null) && (this.jdField_a_of_type_Alnc.b != null))
     {
-      paramBundle = new WloginSimpleInfo();
-      if (this.a.jdField_a_of_type_MqqManagerWtloginManager != null) {
-        this.a.jdField_a_of_type_MqqManagerWtloginManager.GetBasicUserInfo(paramString, paramBundle);
+      paramAnimator = "";
+      if (this.jdField_a_of_type_Alnc.b.istroop != 0) {
+        break label84;
       }
-      paramString = "" + paramBundle._uin;
-      if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
-      {
-        util.LOGD("outA1 buff: " + util.buf_to_string(paramArrayOfByte));
-        paramArrayOfByte = new RSACrypt(CommonDataAdapter.a().a()).EncryptData(this.a.a(CommonDataAdapter.a().a(), this.a.jdField_a_of_type_Long, 1L), paramArrayOfByte);
-        util.LOGD("encrypt buff:" + util.buf_to_string(paramArrayOfByte));
-        if (this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback != null) {
-          this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback.a(paramString, paramArrayOfByte);
-        }
-      }
+      paramAnimator = "1";
     }
-    while (this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback == null) {
+    for (;;)
+    {
+      VasWebviewUtil.reportCommercialDrainage("", "Bubble", "Passive_dync", paramAnimator, 1, 0, 0, "", String.valueOf(ajrm.a(this.jdField_a_of_type_Alnc.b.vipBubbleID)), "");
       return;
-    }
-    this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback.a();
-  }
-  
-  public void onUserCancel(String paramString, int paramInt, Bundle paramBundle)
-  {
-    if (this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback != null) {
-      this.a.jdField_a_of_type_ComTencentOpenBaseTicketUtils$TicketCallback.a();
+      label84:
+      if (this.jdField_a_of_type_Alnc.b.istroop == 1) {
+        paramAnimator = "2";
+      } else if (this.jdField_a_of_type_Alnc.b.istroop == 3000) {
+        paramAnimator = "3";
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alna
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.widget;
 
-import amia;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Handler;
@@ -14,6 +13,7 @@ import android.view.animation.AccelerateInterpolator;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
 import android.widget.ViewSwitcher.ViewFactory;
+import behu;
 
 public class AutoVerticalScrollTextView
   extends TextSwitcher
@@ -21,12 +21,12 @@ public class AutoVerticalScrollTextView
 {
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long = 1000L;
-  private amia jdField_a_of_type_Amia;
   private Context jdField_a_of_type_AndroidContentContext;
   private Handler jdField_a_of_type_AndroidOsHandler;
+  private behu jdField_a_of_type_Behu;
   private String[] jdField_a_of_type_ArrayOfJavaLangString;
   private long jdField_b_of_type_Long = 800L;
-  private amia jdField_b_of_type_Amia;
+  private behu jdField_b_of_type_Behu;
   
   public AutoVerticalScrollTextView(Context paramContext)
   {
@@ -40,32 +40,32 @@ public class AutoVerticalScrollTextView
     c();
   }
   
-  private amia a(boolean paramBoolean1, boolean paramBoolean2)
+  private behu a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    amia localamia = new amia(this, paramBoolean1, paramBoolean2);
-    localamia.setDuration(this.jdField_b_of_type_Long);
-    localamia.setFillAfter(false);
-    localamia.setInterpolator(new AccelerateInterpolator());
-    return localamia;
+    behu localbehu = new behu(this, paramBoolean1, paramBoolean2);
+    localbehu.setDuration(this.jdField_b_of_type_Long);
+    localbehu.setFillAfter(false);
+    localbehu.setInterpolator(new AccelerateInterpolator());
+    return localbehu;
   }
   
   private void c()
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
     setFactory(this);
-    this.jdField_a_of_type_Amia = a(true, true);
-    this.jdField_b_of_type_Amia = a(false, true);
-    setInAnimation(this.jdField_a_of_type_Amia);
-    setOutAnimation(this.jdField_b_of_type_Amia);
+    this.jdField_a_of_type_Behu = a(true, true);
+    this.jdField_b_of_type_Behu = a(false, true);
+    setInAnimation(this.jdField_a_of_type_Behu);
+    setOutAnimation(this.jdField_b_of_type_Behu);
   }
   
   public void a()
   {
-    if (getInAnimation() != this.jdField_a_of_type_Amia) {
-      setInAnimation(this.jdField_a_of_type_Amia);
+    if (getInAnimation() != this.jdField_a_of_type_Behu) {
+      setInAnimation(this.jdField_a_of_type_Behu);
     }
-    if (getOutAnimation() != this.jdField_b_of_type_Amia) {
-      setOutAnimation(this.jdField_b_of_type_Amia);
+    if (getOutAnimation() != this.jdField_b_of_type_Behu) {
+      setOutAnimation(this.jdField_b_of_type_Behu);
     }
   }
   
@@ -135,7 +135,7 @@ public class AutoVerticalScrollTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.widget.AutoVerticalScrollTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,20 @@
-import com.tencent.mobileqq.DrawerPushItem;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import java.util.Comparator;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.gdtad.views.canvas.framework.GdtCanvasView;
 
 public class yqn
-  implements Comparator
+  implements View.OnClickListener
 {
-  public yqn(ApolloManager paramApolloManager) {}
+  public yqn(GdtCanvasView paramGdtCanvasView) {}
   
-  public int a(DrawerPushItem paramDrawerPushItem1, DrawerPushItem paramDrawerPushItem2)
+  public void onClick(View paramView)
   {
-    if (paramDrawerPushItem2.priority == paramDrawerPushItem1.priority) {
-      return paramDrawerPushItem1.sub_priority - paramDrawerPushItem2.sub_priority;
-    }
-    return paramDrawerPushItem1.priority - paramDrawerPushItem2.priority;
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yqn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,45 @@
-import android.os.Build.VERSION;
-import android.view.ViewGroup;
-import android.view.ViewPropertyAnimator;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment;
-import com.tencent.mobileqq.pluginsdk.IPluginAdapterProxy;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.VideoController;
+import com.tencent.av.gaudio.GaInviteLockActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class ldu
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public ldu(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment paramReadInJoyArticleDetailFragment) {}
+  public ldu(GaInviteLockActivity paramGaInviteLockActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((IPluginAdapterProxy.getProxy().isNightMode()) && (this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a.setBackgroundColor(-1);
-    }
-    if (this.a.jdField_a_of_type_AndroidWidgetImageView != null)
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
     {
-      if (Build.VERSION.SDK_INT >= 14)
+      paramContext = paramIntent.getStringExtra("reason");
+      if ((paramContext != null) && (paramContext.equals("homekey")))
       {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.animate().alpha(0.0F).setDuration(200L).setListener(new ldv(this));
-        this.a.jdField_a_of_type_AndroidWidgetImageView.animate().start();
+        awqx.b(null, "CliOper", "", "", "0X8004210", "0X8004210", 0, 0, "", "", "", "");
+        this.a.c(-1038L);
       }
     }
-    else {
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    boolean bool;
+    do
+    {
+      do
+      {
+        return;
+      } while (!paramContext.equals("android.intent.action.SCREEN_OFF"));
+      bool = VideoController.a(this.a);
+      if (bool) {
+        awqx.b(null, "CliOper", "", "", "0X800420C", "0X800420C", 0, 0, "", "", "", "");
+      }
+    } while (!QLog.isColorLevel());
+    QLog.w(this.a.b, 1, "ACTION_SCREEN_OFF, isScreenLocked[" + bool + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ldu
  * JD-Core Version:    0.7.0.1
  */

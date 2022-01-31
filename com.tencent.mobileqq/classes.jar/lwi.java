@@ -1,98 +1,36 @@
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeGridImageView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.PGCFeedsInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.PGCPicInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.SquareCornerTextImageView.PicInfo;
+import com.tencent.av.ui.QavListItemBase;
 import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
-public class lwi
+class lwi
+  implements lxd
 {
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
-  private List b = new ArrayList();
+  lwi(lwf paramlwf) {}
   
-  public lwi(NativeGridImageView paramNativeGridImageView, ArticleInfo paramArticleInfo)
+  public void a(long paramLong, int paramInt, QavListItemBase paramQavListItemBase)
   {
-    int i;
-    if ((paramArticleInfo != null) && (paramArticleInfo.mSocialFeedInfo != null) && (paramArticleInfo.mSocialFeedInfo.a != null) && (paramArticleInfo.mSocialFeedInfo.a.a != null) && (paramArticleInfo.mSocialFeedInfo.a.a.size() > 0))
+    if ((System.currentTimeMillis() - this.a.a < 500L) && (paramInt > 0)) {}
+    for (boolean bool = true;; bool = false)
     {
-      paramArticleInfo = paramArticleInfo.mSocialFeedInfo.a.a;
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i < paramArticleInfo.size()) {}
-      try
-      {
-        int j = this.jdField_a_of_type_JavaUtilList.size();
-        if (j >= 9)
-        {
-          if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
-            ((SquareCornerTextImageView.PicInfo)this.jdField_a_of_type_JavaUtilList.get(0)).a(true);
-          }
-          return;
-        }
-        if ((((SocializeFeedsInfo.PGCPicInfo)paramArticleInfo.get(i)).jdField_b_of_type_JavaLangString != null) || (((SocializeFeedsInfo.PGCPicInfo)paramArticleInfo.get(i)).jdField_c_of_type_JavaLangString != null))
-        {
-          Object localObject;
-          label255:
-          int k;
-          if (((SocializeFeedsInfo.PGCPicInfo)paramArticleInfo.get(i)).jdField_b_of_type_JavaLangString != null)
-          {
-            paramNativeGridImageView = ((SocializeFeedsInfo.PGCPicInfo)paramArticleInfo.get(i)).jdField_b_of_type_JavaLangString;
-            localObject = new URL(paramNativeGridImageView);
-            if (((SocializeFeedsInfo.PGCPicInfo)paramArticleInfo.get(i)).jdField_c_of_type_JavaLangString == null) {
-              break label374;
-            }
-            paramNativeGridImageView = ((SocializeFeedsInfo.PGCPicInfo)paramArticleInfo.get(i)).jdField_c_of_type_JavaLangString;
-            paramNativeGridImageView = new URL(paramNativeGridImageView);
-            this.b.add(localObject);
-            localObject = this.jdField_a_of_type_JavaUtilList;
-            j = ((SocializeFeedsInfo.PGCPicInfo)paramArticleInfo.get(i)).a;
-            k = ((SocializeFeedsInfo.PGCPicInfo)paramArticleInfo.get(i)).jdField_b_of_type_Int;
-            if (((SocializeFeedsInfo.PGCPicInfo)paramArticleInfo.get(i)).jdField_c_of_type_Int != 1) {
-              break label391;
-            }
-          }
-          label391:
-          for (boolean bool = true;; bool = false)
-          {
-            ((List)localObject).add(new SquareCornerTextImageView.PicInfo(j, k, paramNativeGridImageView, bool));
-            break label410;
-            paramNativeGridImageView = ((SocializeFeedsInfo.PGCPicInfo)paramArticleInfo.get(i)).jdField_c_of_type_JavaLangString;
-            break;
-            label374:
-            paramNativeGridImageView = ((SocializeFeedsInfo.PGCPicInfo)paramArticleInfo.get(i)).jdField_b_of_type_JavaLangString;
-            break label255;
-          }
-        }
+      if (QLog.isColorLevel()) {
+        QLog.w("QAVPtvTemplateAdapter", 1, "onItemClicked begin, position[" + paramInt + "], mCurSelectedPosition[" + this.a.d + "], ignore[" + bool + "], seq[" + paramLong + "]");
       }
-      catch (Exception paramNativeGridImageView)
-      {
-        paramNativeGridImageView.printStackTrace();
-        QLog.d("Proteus.NativeGridImageView", 1, "GridImageModel exception.");
-        label410:
-        i += 1;
+      if (!bool) {
+        break;
       }
+      return;
     }
-  }
-  
-  public List a()
-  {
-    return this.jdField_a_of_type_JavaUtilList;
-  }
-  
-  public List b()
-  {
-    return this.b;
+    QLog.w("QAVPtvTemplateAdapter", 1, "onItemClicked valid, position[" + paramInt + "], mCurSelectedPosition[" + this.a.d + "], seq[" + paramLong + "]");
+    this.a.a = System.currentTimeMillis();
+    int i = this.a.d;
+    this.a.d = paramInt;
+    this.a.a(i, this.a.d);
+    this.a.a(this.a.d);
+    this.a.a(paramLong, this.a.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lwi
  * JD-Core Version:    0.7.0.1
  */

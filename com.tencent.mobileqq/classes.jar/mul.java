@@ -1,20 +1,27 @@
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.IBitmapCallback;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageRequest;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.RunningJob;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.3.1;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
 
 public class mul
-  implements Runnable
+  implements TVK_IMediaPlayer.OnErrorListener
 {
-  public mul(RunningJob paramRunningJob, WeakReference paramWeakReference, Throwable paramThrowable) {}
+  mul(mui parammui) {}
   
-  public void run()
+  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.a.a) {}
-    while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
-      return;
+    if (QLog.isColorLevel())
+    {
+      paramTVK_IMediaPlayer = new StringBuilder();
+      paramTVK_IMediaPlayer.append("video player error model=" + paramInt1);
+      paramTVK_IMediaPlayer.append(",what=" + paramInt2);
+      paramTVK_IMediaPlayer.append(",extra=" + paramInt3);
+      paramTVK_IMediaPlayer.append(",detailInfo=" + paramString);
+      QLog.e("AccountDetailVideoManager", 2, paramTVK_IMediaPlayer.toString());
     }
-    ((IBitmapCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.a, this.jdField_a_of_type_JavaLangThrowable);
+    this.a.a.runOnUiThread(new AccountDetailVideoManager.3.1(this));
+    return false;
   }
 }
 

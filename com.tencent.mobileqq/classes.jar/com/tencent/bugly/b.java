@@ -66,10 +66,10 @@ public final class b
         x.e("--------------------------------------------------------------------------------------------", new Object[0]);
         x.b("[init] Open debug mode of Bugly.", new Object[0]);
       }
-      x.a("[init] Bugly version: v%s", new Object[] { "2.7.8" });
+      x.a("[init] Bugly version: v%s", new Object[] { "2.8.6" });
       x.a(" crash report start initializing...", new Object[0]);
       x.b("[init] Bugly start initializing...", new Object[0]);
-      x.a("[init] Bugly complete version: v%s", new Object[] { "2.7.8" });
+      x.a("[init] Bugly complete version: v%s", new Object[] { "2.8.6" });
       localContext = z.a(paramContext);
       locala1 = com.tencent.bugly.crashreport.common.info.a.a(localContext);
       locala1.s();

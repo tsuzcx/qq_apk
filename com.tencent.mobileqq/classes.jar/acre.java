@@ -1,27 +1,18 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
-import com.tencent.qphone.base.util.QLog;
-
-class acre
-  implements Runnable
+public abstract interface acre
 {
-  acre(acrd paramacrd) {}
+  public abstract void a();
   
-  public void run()
-  {
-    try
-    {
-      ExtendFriendSquareFragment.a(this.a.a).a(0, true);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("ExtendFriendSquareFragment", 1, "onScrolled fail.", localException);
-    }
-  }
+  public abstract void a(int paramInt);
+  
+  public abstract void a(String paramString);
+  
+  public abstract void b();
+  
+  public abstract void setSttNetFinish();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acre
  * JD-Core Version:    0.7.0.1
  */

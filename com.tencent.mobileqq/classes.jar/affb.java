@@ -1,28 +1,22 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
 
 public class affb
-  implements View.OnTouchListener
+  extends ajjh
 {
-  public affb(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public affb(DeviceFragment paramDeviceFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void onPullIpad()
   {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      this.a.a.findViewById(2131370593).setAlpha(0.5F);
+    if (this.a.a == null) {
+      return;
     }
-    for (;;)
-    {
-      return false;
-      this.a.a.findViewById(2131370593).setAlpha(1.0F);
-    }
+    this.a.a.e();
+    this.a.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     affb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,43 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Rect;
 
-public final class lla
-  implements Runnable
+public class lla
 {
-  public lla(ChannelCoverInfo paramChannelCoverInfo, String paramString1, String paramString2, String paramString3, String paramString4) {}
+  public Bitmap a;
+  public Rect a;
   
-  public void run()
+  public lla(Bitmap paramBitmap)
   {
-    str = "";
-    try
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()))
     {
-      localObject = new JSONObject();
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo != null) {
-        ((JSONObject)localObject).put("channel_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId);
-      }
-      ((JSONObject)localObject).put("network_type", VideoReporter.a());
-      ((JSONObject)localObject).put("version", VideoReporter.jdField_a_of_type_JavaLangString);
-      ((JSONObject)localObject).put("os", "1");
-      ((JSONObject)localObject).put("imei", ReadInJoyUtils.f());
-      ((JSONObject)localObject).put("imsi", ReadInJoyUtils.g());
-      ((JSONObject)localObject).put("kandian_mode_new", VideoReporter.a());
-      ((JSONObject)localObject).put("kandian_mode", ReadInJoyUtils.e());
-      localObject = ((JSONObject)localObject).toString();
+      this.jdField_a_of_type_AndroidGraphicsRect.right = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+      this.jdField_a_of_type_AndroidGraphicsRect.bottom = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Object localObject = str;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ChannelCoverView", 2, "ERROR Exception=" + localException.getMessage());
-          localObject = str;
-        }
-      }
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
     }
-    PublicAccountReportUtils.a(null, "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, this.b, this.c, this.d, (String)localObject, false);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    this.jdField_a_of_type_AndroidGraphicsRect = null;
+  }
+  
+  public void a(Canvas paramCanvas, Rect paramRect, Paint paramPaint)
+  {
+    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsRect, paramRect, paramPaint);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lla
  * JD-Core Version:    0.7.0.1
  */

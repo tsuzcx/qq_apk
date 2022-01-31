@@ -1,15 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.GuideInfoDialog;
-
 public class ogf
-  implements View.OnClickListener
 {
-  public ogf(GuideInfoDialog paramGuideInfoDialog) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void onClick(View paramView)
+  public String toString()
   {
-    this.a.dismiss();
+    return "styleID = " + this.jdField_a_of_type_JavaLangString + ", proteusData = " + this.b + ", rankWeight = " + this.jdField_a_of_type_Int;
   }
 }
 

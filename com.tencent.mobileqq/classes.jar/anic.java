@@ -1,37 +1,31 @@
-import android.os.Looper;
-import android.util.Printer;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.thread.BaseHandler;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 
 public class anic
-  implements Printer
+  implements View.OnClickListener
 {
-  public anic(BaseHandler paramBaseHandler) {}
+  public anic(EmoticonMainPanel paramEmoticonMainPanel) {}
   
-  public void println(String paramString)
+  public void onClick(View paramView)
   {
-    if ((!BaseHandler.isBusy) && (!((Boolean)BaseHandler.isRegulated.get()).booleanValue())) {}
-    do
+    long l = System.currentTimeMillis();
+    if (l - this.a.b > 1000L)
     {
-      return;
-      if (!BaseHandler.access$000())
-      {
-        Looper.myLooper().setMessageLogging(null);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseHandler", 2, paramString);
-      }
-      if ((paramString != null) && (paramString.contains(">>>>> Dispatching to"))) {
-        BaseHandler.access$100(this.a);
-      }
-    } while ((paramString == null) || (!paramString.contains("<<<<< Finished to")));
-    BaseHandler.access$200(this.a);
+      this.a.b = l;
+      paramView = new Bundle();
+      paramView.putInt("AECAMERA_MODE", 202);
+      paramView.putInt("VIDEO_STORY_FROM_TYPE", bgww.h.a());
+      bgxa.a((BaseActivity)this.a.a, 120, paramView);
+      awqx.b(((BaseActivity)this.a.a).app, "dc00898", "", "", "ep_mall", "0X800A36E", 0, 0, "", "", "", "");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anic
  * JD-Core Version:    0.7.0.1
  */

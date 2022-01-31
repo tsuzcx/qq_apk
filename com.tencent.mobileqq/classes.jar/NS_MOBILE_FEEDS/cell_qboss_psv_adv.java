@@ -10,7 +10,7 @@ public final class cell_qboss_psv_adv
   extends JceStruct
 {
   static s_picdata cache_backgd_picdata;
-  static Map cache_extendinfo;
+  static Map<String, String> cache_extendinfo;
   static s_picdata cache_float_picdata = new s_picdata();
   static s_picdata cache_picdata = new s_picdata();
   public int actiontype;
@@ -18,7 +18,7 @@ public final class cell_qboss_psv_adv
   public s_picdata backgd_picdata;
   public String btnText = "";
   public long countDownTime;
-  public Map extendinfo;
+  public Map<String, String> extendinfo;
   public s_picdata float_picdata;
   public int markType;
   public int mediatype;
@@ -36,7 +36,7 @@ public final class cell_qboss_psv_adv
   
   public cell_qboss_psv_adv() {}
   
-  public cell_qboss_psv_adv(int paramInt1, s_picdata params_picdata1, String paramString1, String paramString2, long paramLong, s_picdata params_picdata2, int paramInt2, int paramInt3, String paramString3, int paramInt4, String paramString4, Map paramMap, s_picdata params_picdata3)
+  public cell_qboss_psv_adv(int paramInt1, s_picdata params_picdata1, String paramString1, String paramString2, long paramLong, s_picdata params_picdata2, int paramInt2, int paramInt3, String paramString3, int paramInt4, String paramString4, Map<String, String> paramMap, s_picdata params_picdata3)
   {
     this.mediatype = paramInt1;
     this.picdata = params_picdata1;
@@ -105,7 +105,7 @@ public final class cell_qboss_psv_adv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_qboss_psv_adv
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class nearby_troop_post$RspNearbyPostInfo
-  extends MessageMicro
+  extends MessageMicro<RspNearbyPostInfo>
 {
   public static final int STR_DESC_FIELD_NUMBER = 2;
   public static final int STR_POST_ADDRESS_FIELD_NUMBER = 7;
@@ -31,7 +31,7 @@ public final class nearby_troop_post$RspNearbyPostInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.nearby_troop_post.nearby_troop_post.RspNearbyPostInfo
  * JD-Core Version:    0.7.0.1
  */

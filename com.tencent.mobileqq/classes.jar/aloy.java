@@ -1,51 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.business.base.AppUtil;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.common.AppNotificationManager;
-import com.tencent.open.downloadnew.common.AppNotificationManager.NoticeIdentity;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import mqq.app.QQPermissionCallback;
 
 public class aloy
-  implements Runnable
+  implements QQPermissionCallback
 {
-  public aloy(DownloadManager paramDownloadManager) {}
+  public aloy(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public void run()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Object localObject1 = AppUtil.b(CommonDataAdapter.a().a());
-    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).contains(":")))
-    {
-      localObject1 = AppNotificationManager.a().a();
-      if (localObject1 != null)
-      {
-        Iterator localIterator = ((ConcurrentHashMap)localObject1).keySet().iterator();
-        while (localIterator.hasNext())
-        {
-          AppNotificationManager.NoticeIdentity localNoticeIdentity = (AppNotificationManager.NoticeIdentity)((ConcurrentHashMap)localObject1).get((String)localIterator.next());
-          if (localNoticeIdentity != null)
-          {
-            Object localObject2 = this.a.a(localNoticeIdentity.b);
-            if ((localObject2 != null) && (!TextUtils.isEmpty(((DownloadInfo)localObject2).c)))
-            {
-              localObject2 = this.a.a(((DownloadInfo)localObject2).c);
-              if ((localObject2 != null) && (4 != DownloadManager.a(((TMAssistantDownloadTaskInfo)localObject2).mState))) {
-                AppNotificationManager.a().a(localNoticeIdentity.a);
-              }
-            }
-          }
-        }
-      }
-    }
+    this.a.denied();
+    babr.a(this.a, paramArrayOfString, paramArrayOfInt);
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    this.a.grant();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     aloy
  * JD-Core Version:    0.7.0.1
  */

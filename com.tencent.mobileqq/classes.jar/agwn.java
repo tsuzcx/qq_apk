@@ -1,33 +1,42 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
-import com.tencent.mobileqq.profile.view.VipTagView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class agwn
-  implements Animation.AnimationListener
+final class agwn
+  implements View.OnTouchListener
 {
-  public agwn(ProfileTagView paramProfileTagView, boolean paramBoolean, VipTagView paramVipTagView) {}
+  private float b = 1.0F;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  agwn(float paramFloat) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a.a.a != 0) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131362046) != null) && (this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131362046).equals(Boolean.valueOf(true))))
+    if (paramMotionEvent.getAction() == 0)
     {
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.setTag(2131362046, Boolean.valueOf(false));
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a(this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView, ((Long)this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.getTag(2131362047)).longValue());
-      return;
+      this.b = paramView.getAlpha();
+      paramView.setAlpha(this.a);
     }
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewVipTagView.setShakingState(true);
+    for (;;)
+    {
+      return false;
+      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+      {
+        paramView.setAlpha(this.b);
+      }
+      else if (paramMotionEvent.getAction() == 2)
+      {
+        int i = (int)paramMotionEvent.getRawX();
+        int j = (int)paramMotionEvent.getRawY();
+        if (!agwj.a(paramView, i, j)) {
+          paramView.setAlpha(1.0F);
+        }
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agwn
  * JD-Core Version:    0.7.0.1
  */

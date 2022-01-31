@@ -1,20 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richmedia.capture.view.QQSlidingTabView;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
 
 public class ahrl
-  implements View.OnClickListener
+  implements aagm
 {
-  public ahrl(QQSlidingTabView paramQQSlidingTabView, int paramInt) {}
+  public ahrl(SelectMemberActivity paramSelectMemberActivity) {}
   
-  public void onClick(View paramView)
+  public void a() {}
+  
+  public void b() {}
+  
+  public void c()
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewQQSlidingTabView.a(this.jdField_a_of_type_Int);
+    this.a.e = 2;
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahrl
  * JD-Core Version:    0.7.0.1
  */

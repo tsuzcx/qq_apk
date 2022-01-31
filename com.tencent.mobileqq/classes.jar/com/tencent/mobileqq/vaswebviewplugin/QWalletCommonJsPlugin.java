@@ -2,12 +2,18 @@ package com.tencent.mobileqq.vaswebviewplugin;
 
 import Wallet.AuthCodeItem;
 import Wallet.AuthCodeRsp;
+import ajjy;
+import anad;
+import anah;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.net.Uri;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcel;
@@ -17,36 +23,33 @@ import android.os.ResultReceiver;
 import android.os.SystemClock;
 import android.provider.ContactsContract.Contacts;
 import android.text.TextUtils;
+import anfc;
+import badf;
+import bbac;
+import bfom;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ForwardRecentActivity;
 import com.tencent.mobileqq.activity.PayBridgeActivity;
-import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler;
 import com.tencent.mobileqq.activity.qwallet.TransactionActivity;
 import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
 import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
-import com.tencent.mobileqq.emosm.DataFactory;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
-import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.statistics.DcReportUtil;
-import com.tencent.mobileqq.utils.JumpQqPimSecureUtil;
+import com.tencent.mobileqq.microapp.appbrand.utils.MiniLogManager;
+import com.tencent.mobileqq.microapp.sdk.MiniAppLauncher;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qwallet.plugin.QWalletHelper;
 import cooperation.qwallet.plugin.QWalletPayBridge;
-import cooperation.qwallet.plugin.TenCookie;
 import java.io.File;
-import java.io.PrintStream;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import mqq.app.AppActivity;
+import mqq.app.QQPermissionCallback;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -78,13 +81,20 @@ public class QWalletCommonJsPlugin
   private final String QWALLET_TOKEN_GET_ALL_CONTATC = "qw_charge_getAllContact";
   private final String QWALLET_TOKEN_GET_SELECT_CONTACT = "qw_charge_getSelectContact";
   private final String QWALLET_TOKEN_GOTO_QWALLET_HOME = "qw_charge_gotoQWalletHome";
+  private final int REQ_CODE_GETALLCONTACT = 3;
+  private final int REQ_CODE_GETSELECTCONTACT = 2;
+  private final int REQ_CODE_OPENCTCONTACT = 1;
   protected QWalletCommonJsPlugin.ChooseQQFriendForTransferReceiver aioChoFriReceiver;
   AppInterface app;
   private ExecutorService executorService;
   private long mAuthCodeAppId;
   private String mCallback;
+  String mContactId;
   private Context mContext;
+  protected QQPermissionCallback mGetAllContactCallBack = new QWalletCommonJsPlugin.7(this);
+  protected QQPermissionCallback mGetSelectContactCallBack = new QWalletCommonJsPlugin.6(this);
   private long mLastAuthCodeReqTime;
+  protected QQPermissionCallback mOpenContactCallBack = new QWalletCommonJsPlugin.5(this);
   protected QWalletCommonJsPlugin.MyResultRecevicer mRecevicer;
   private long mReqAuthCodeStartTime;
   BroadcastReceiver mScreenReceiver = new QWalletCommonJsPlugin.1(this);
@@ -119,7 +129,7 @@ public class QWalletCommonJsPlugin
     try
     {
       Object localObject2 = new JSONObject(paramString);
-      paramString = ((JSONObject)localObject2).optString("title", "选择联系人");
+      paramString = ((JSONObject)localObject2).optString("title", ajjy.a(2131645637));
       int i = ((JSONObject)localObject2).optInt("type", 1);
       this.mCallback = ((JSONObject)localObject2).optString("callback");
       if ((i & 0x1) == 0) {}
@@ -183,29 +193,29 @@ public class QWalletCommonJsPlugin
     //   13: aconst_null
     //   14: astore_3
     //   15: aload_0
-    //   16: getfield 168	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:mContext	Landroid/content/Context;
+    //   16: getfield 212	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:mContext	Landroid/content/Context;
     //   19: ifnonnull +5 -> 24
     //   22: aconst_null
     //   23: areturn
-    //   24: new 205	org/json/JSONObject
+    //   24: new 249	org/json/JSONObject
     //   27: dup
-    //   28: invokespecial 306	org/json/JSONObject:<init>	()V
+    //   28: invokespecial 351	org/json/JSONObject:<init>	()V
     //   31: astore 8
-    //   33: new 308	org/json/JSONArray
+    //   33: new 353	org/json/JSONArray
     //   36: dup
-    //   37: invokespecial 309	org/json/JSONArray:<init>	()V
+    //   37: invokespecial 354	org/json/JSONArray:<init>	()V
     //   40: astore 9
-    //   42: getstatic 315	android/provider/ContactsContract$Contacts:CONTENT_URI	Landroid/net/Uri;
+    //   42: getstatic 360	android/provider/ContactsContract$Contacts:CONTENT_URI	Landroid/net/Uri;
     //   45: astore 5
     //   47: aload_0
-    //   48: getfield 168	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:mContext	Landroid/content/Context;
-    //   51: invokevirtual 321	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   48: getfield 212	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:mContext	Landroid/content/Context;
+    //   51: invokevirtual 366	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   54: aload 5
     //   56: aconst_null
     //   57: aconst_null
     //   58: aconst_null
     //   59: aconst_null
-    //   60: invokevirtual 327	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   60: invokevirtual 372	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   63: astore 5
     //   65: aload 6
     //   67: astore 4
@@ -216,7 +226,7 @@ public class QWalletCommonJsPlugin
     //   78: aload 7
     //   80: astore_1
     //   81: aload 5
-    //   83: invokeinterface 333 1 0
+    //   83: invokeinterface 378 1 0
     //   88: ifeq +74 -> 162
     //   91: aload_3
     //   92: astore 4
@@ -226,16 +236,16 @@ public class QWalletCommonJsPlugin
     //   99: astore_2
     //   100: aload 5
     //   102: aload 5
-    //   104: ldc_w 335
-    //   107: invokeinterface 339 2 0
-    //   112: invokeinterface 343 2 0
+    //   104: ldc_w 380
+    //   107: invokeinterface 384 2 0
+    //   112: invokeinterface 387 2 0
     //   117: astore_3
     //   118: aload 4
     //   120: astore_1
     //   121: aload 4
     //   123: astore_2
     //   124: aload_3
-    //   125: invokestatic 200	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   125: invokestatic 244	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   128: ifeq +94 -> 222
     //   131: aload 4
     //   133: astore_3
@@ -250,7 +260,7 @@ public class QWalletCommonJsPlugin
     //   147: aload_3
     //   148: astore_2
     //   149: aload 5
-    //   151: invokeinterface 346 1 0
+    //   151: invokeinterface 390 1 0
     //   156: ifne -62 -> 94
     //   159: aload_3
     //   160: astore 4
@@ -259,27 +269,27 @@ public class QWalletCommonJsPlugin
     //   165: aload 4
     //   167: astore_2
     //   168: aload 8
-    //   170: ldc_w 348
+    //   170: ldc_w 392
     //   173: aload 9
-    //   175: invokevirtual 352	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   175: invokevirtual 396	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   178: pop
     //   179: aload 4
     //   181: astore_1
     //   182: aload 4
     //   184: astore_2
     //   185: aload 8
-    //   187: ldc_w 354
+    //   187: ldc_w 398
     //   190: iconst_0
-    //   191: invokevirtual 357	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   191: invokevirtual 401	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   194: pop
     //   195: aload 5
     //   197: ifnull +10 -> 207
     //   200: aload 5
-    //   202: invokeinterface 360 1 0
+    //   202: invokeinterface 404 1 0
     //   207: aload 4
     //   209: ifnull +10 -> 219
     //   212: aload 4
-    //   214: invokeinterface 360 1 0
+    //   214: invokeinterface 404 1 0
     //   219: aload 8
     //   221: areturn
     //   222: aload 4
@@ -288,7 +298,7 @@ public class QWalletCommonJsPlugin
     //   227: astore_2
     //   228: aload_0
     //   229: aload_3
-    //   230: invokevirtual 363	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:trimPhoneName	(Ljava/lang/String;)Ljava/lang/String;
+    //   230: invokevirtual 407	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:trimPhoneName	(Ljava/lang/String;)Ljava/lang/String;
     //   233: astore 6
     //   235: aload 4
     //   237: astore_3
@@ -298,9 +308,9 @@ public class QWalletCommonJsPlugin
     //   243: astore_2
     //   244: aload 5
     //   246: aload 5
-    //   248: ldc_w 365
-    //   251: invokeinterface 339 2 0
-    //   256: invokeinterface 369 2 0
+    //   248: ldc_w 409
+    //   251: invokeinterface 384 2 0
+    //   256: invokeinterface 413 2 0
     //   261: ifle -127 -> 134
     //   264: aload 4
     //   266: astore_1
@@ -308,30 +318,30 @@ public class QWalletCommonJsPlugin
     //   269: astore_2
     //   270: aload 5
     //   272: aload 5
-    //   274: ldc_w 371
-    //   277: invokeinterface 339 2 0
-    //   282: invokeinterface 343 2 0
+    //   274: ldc_w 415
+    //   277: invokeinterface 384 2 0
+    //   282: invokeinterface 387 2 0
     //   287: astore_3
     //   288: aload 4
     //   290: astore_1
     //   291: aload 4
     //   293: astore_2
     //   294: aload_0
-    //   295: getfield 168	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:mContext	Landroid/content/Context;
-    //   298: invokevirtual 321	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   301: getstatic 374	android/provider/ContactsContract$CommonDataKinds$Phone:CONTENT_URI	Landroid/net/Uri;
+    //   295: getfield 212	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:mContext	Landroid/content/Context;
+    //   298: invokevirtual 366	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   301: getstatic 418	android/provider/ContactsContract$CommonDataKinds$Phone:CONTENT_URI	Landroid/net/Uri;
     //   304: aconst_null
-    //   305: new 376	java/lang/StringBuilder
+    //   305: new 420	java/lang/StringBuilder
     //   308: dup
-    //   309: invokespecial 377	java/lang/StringBuilder:<init>	()V
-    //   312: ldc_w 379
-    //   315: invokevirtual 383	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   309: invokespecial 421	java/lang/StringBuilder:<init>	()V
+    //   312: ldc_w 423
+    //   315: invokevirtual 427	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   318: aload_3
-    //   319: invokevirtual 383	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   322: invokevirtual 387	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   319: invokevirtual 427	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   322: invokevirtual 431	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   325: aconst_null
     //   326: aconst_null
-    //   327: invokevirtual 327	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   327: invokevirtual 372	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   330: astore 4
     //   332: aload 4
     //   334: ifnull +77 -> 411
@@ -340,7 +350,7 @@ public class QWalletCommonJsPlugin
     //   340: aload 4
     //   342: astore_2
     //   343: aload 4
-    //   345: invokeinterface 333 1 0
+    //   345: invokeinterface 378 1 0
     //   350: ifeq +61 -> 411
     //   353: aload 4
     //   355: astore_1
@@ -348,16 +358,16 @@ public class QWalletCommonJsPlugin
     //   358: astore_2
     //   359: aload 4
     //   361: aload 4
-    //   363: ldc_w 389
-    //   366: invokeinterface 339 2 0
-    //   371: invokeinterface 343 2 0
+    //   363: ldc_w 433
+    //   366: invokeinterface 384 2 0
+    //   371: invokeinterface 387 2 0
     //   376: astore_3
     //   377: aload 4
     //   379: astore_1
     //   380: aload 4
     //   382: astore_2
     //   383: aload_3
-    //   384: invokestatic 200	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   384: invokestatic 244	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   387: ifeq +111 -> 498
     //   390: aload 4
     //   392: ifnull +19 -> 411
@@ -366,7 +376,7 @@ public class QWalletCommonJsPlugin
     //   398: aload 4
     //   400: astore_2
     //   401: aload 4
-    //   403: invokeinterface 346 1 0
+    //   403: invokeinterface 390 1 0
     //   408: ifne -55 -> 353
     //   411: aload 4
     //   413: astore_3
@@ -377,7 +387,7 @@ public class QWalletCommonJsPlugin
     //   422: aload 4
     //   424: astore_2
     //   425: aload 4
-    //   427: invokeinterface 360 1 0
+    //   427: invokeinterface 404 1 0
     //   432: aload 4
     //   434: astore_3
     //   435: goto -301 -> 134
@@ -385,29 +395,29 @@ public class QWalletCommonJsPlugin
     //   439: aload 5
     //   441: astore_2
     //   442: aload_3
-    //   443: invokevirtual 390	java/lang/Exception:printStackTrace	()V
+    //   443: invokevirtual 434	java/lang/Exception:printStackTrace	()V
     //   446: aload 8
-    //   448: ldc_w 348
+    //   448: ldc_w 392
     //   451: aload 9
-    //   453: invokevirtual 352	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   453: invokevirtual 396	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   456: pop
     //   457: aload 8
-    //   459: ldc_w 354
+    //   459: ldc_w 398
     //   462: iconst_m1
-    //   463: invokevirtual 357	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   463: invokevirtual 401	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   466: pop
     //   467: aload_2
     //   468: ifnull +9 -> 477
     //   471: aload_2
-    //   472: invokeinterface 360 1 0
+    //   472: invokeinterface 404 1 0
     //   477: aload_1
     //   478: ifnull -259 -> 219
     //   481: aload_1
-    //   482: invokeinterface 360 1 0
+    //   482: invokeinterface 404 1 0
     //   487: goto -268 -> 219
     //   490: astore_1
     //   491: aload_1
-    //   492: invokevirtual 390	java/lang/Exception:printStackTrace	()V
+    //   492: invokevirtual 434	java/lang/Exception:printStackTrace	()V
     //   495: goto -276 -> 219
     //   498: aload 4
     //   500: astore_1
@@ -415,33 +425,33 @@ public class QWalletCommonJsPlugin
     //   503: astore_2
     //   504: aload_0
     //   505: aload_3
-    //   506: invokevirtual 393	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:trimPhoneNumPre	(Ljava/lang/String;)Ljava/lang/String;
+    //   506: invokevirtual 437	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:trimPhoneNumPre	(Ljava/lang/String;)Ljava/lang/String;
     //   509: astore_3
     //   510: aload 4
     //   512: astore_1
     //   513: aload 4
     //   515: astore_2
-    //   516: new 205	org/json/JSONObject
+    //   516: new 249	org/json/JSONObject
     //   519: dup
-    //   520: invokespecial 306	org/json/JSONObject:<init>	()V
+    //   520: invokespecial 351	org/json/JSONObject:<init>	()V
     //   523: astore 7
     //   525: aload 4
     //   527: astore_1
     //   528: aload 4
     //   530: astore_2
     //   531: aload 7
-    //   533: ldc_w 395
+    //   533: ldc_w 439
     //   536: aload 6
-    //   538: invokevirtual 352	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   538: invokevirtual 396	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   541: pop
     //   542: aload 4
     //   544: astore_1
     //   545: aload 4
     //   547: astore_2
     //   548: aload 7
-    //   550: ldc_w 397
+    //   550: ldc_w 441
     //   553: aload_3
-    //   554: invokevirtual 352	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   554: invokevirtual 396	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   557: pop
     //   558: aload 4
     //   560: astore_1
@@ -449,7 +459,7 @@ public class QWalletCommonJsPlugin
     //   563: astore_2
     //   564: aload 9
     //   566: aload 7
-    //   568: invokevirtual 400	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
+    //   568: invokevirtual 444	org/json/JSONArray:put	(Ljava/lang/Object;)Lorg/json/JSONArray;
     //   571: pop
     //   572: goto -182 -> 390
     //   575: astore_3
@@ -460,24 +470,24 @@ public class QWalletCommonJsPlugin
     //   580: aload 5
     //   582: ifnull +10 -> 592
     //   585: aload 5
-    //   587: invokeinterface 360 1 0
+    //   587: invokeinterface 404 1 0
     //   592: aload_1
     //   593: ifnull +9 -> 602
     //   596: aload_1
-    //   597: invokeinterface 360 1 0
+    //   597: invokeinterface 404 1 0
     //   602: aload_2
     //   603: athrow
     //   604: astore_1
     //   605: aload_1
-    //   606: invokevirtual 390	java/lang/Exception:printStackTrace	()V
+    //   606: invokevirtual 434	java/lang/Exception:printStackTrace	()V
     //   609: goto -402 -> 207
     //   612: astore_1
     //   613: aload_1
-    //   614: invokevirtual 390	java/lang/Exception:printStackTrace	()V
+    //   614: invokevirtual 434	java/lang/Exception:printStackTrace	()V
     //   617: goto -398 -> 219
     //   620: astore_3
     //   621: aload_3
-    //   622: invokevirtual 294	org/json/JSONException:printStackTrace	()V
+    //   622: invokevirtual 342	org/json/JSONException:printStackTrace	()V
     //   625: goto -158 -> 467
     //   628: astore_3
     //   629: aload_2
@@ -487,15 +497,15 @@ public class QWalletCommonJsPlugin
     //   634: goto -54 -> 580
     //   637: astore_2
     //   638: aload_2
-    //   639: invokevirtual 390	java/lang/Exception:printStackTrace	()V
+    //   639: invokevirtual 434	java/lang/Exception:printStackTrace	()V
     //   642: goto -165 -> 477
     //   645: astore_3
     //   646: aload_3
-    //   647: invokevirtual 390	java/lang/Exception:printStackTrace	()V
+    //   647: invokevirtual 434	java/lang/Exception:printStackTrace	()V
     //   650: goto -58 -> 592
     //   653: astore_1
     //   654: aload_1
-    //   655: invokevirtual 390	java/lang/Exception:printStackTrace	()V
+    //   655: invokevirtual 434	java/lang/Exception:printStackTrace	()V
     //   658: goto -56 -> 602
     //   661: astore_2
     //   662: aconst_null
@@ -645,7 +655,7 @@ public class QWalletCommonJsPlugin
     if ((this.executorService == null) || (this.executorService.isShutdown())) {
       this.executorService = Executors.newFixedThreadPool(1);
     }
-    this.executorService.execute(new QWalletCommonJsPlugin.4(this, paramString));
+    this.executorService.execute(new QWalletCommonJsPlugin.2(this, paramString));
   }
   
   public static void getHbDetail(AppInterface paramAppInterface, String paramString, QWalletCommonJsPlugin.MyResultRecevicer paramMyResultRecevicer)
@@ -668,7 +678,7 @@ public class QWalletCommonJsPlugin
       paramString.putParcelable("_qwallet_payresult_receiver", paramMyResultRecevicer);
       paramString.putBundle("_qwallet_payparams_data", localBundle);
       paramString.putString("_qwallet_payparams_tag", "redgiftDetail");
-      QWalletPayBridge.getWalletDataByService(BaseApplicationImpl.sApplication, paramAppInterface, paramString);
+      QWalletPayBridge.launchBackground(BaseApplicationImpl.sApplication, paramAppInterface, paramString);
       return;
     }
     catch (Throwable paramAppInterface)
@@ -702,69 +712,69 @@ public class QWalletCommonJsPlugin
     //   3: astore 4
     //   5: aconst_null
     //   6: astore 6
-    //   8: new 205	org/json/JSONObject
+    //   8: new 249	org/json/JSONObject
     //   11: dup
-    //   12: invokespecial 306	org/json/JSONObject:<init>	()V
+    //   12: invokespecial 351	org/json/JSONObject:<init>	()V
     //   15: astore 7
-    //   17: getstatic 315	android/provider/ContactsContract$Contacts:CONTENT_URI	Landroid/net/Uri;
+    //   17: getstatic 360	android/provider/ContactsContract$Contacts:CONTENT_URI	Landroid/net/Uri;
     //   20: astore_3
     //   21: aload_0
-    //   22: getfield 168	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:mContext	Landroid/content/Context;
-    //   25: invokevirtual 321	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   22: getfield 212	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:mContext	Landroid/content/Context;
+    //   25: invokevirtual 366	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   28: aload_3
     //   29: aconst_null
-    //   30: ldc_w 532
+    //   30: ldc_w 576
     //   33: iconst_1
-    //   34: anewarray 299	java/lang/String
+    //   34: anewarray 344	java/lang/String
     //   37: dup
     //   38: iconst_0
     //   39: aload_1
     //   40: aastore
     //   41: aconst_null
-    //   42: invokevirtual 327	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   42: invokevirtual 372	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   45: astore_3
     //   46: aload_3
     //   47: astore_2
     //   48: aload_2
-    //   49: invokeinterface 333 1 0
+    //   49: invokeinterface 378 1 0
     //   54: ifeq +410 -> 464
     //   57: aload_0
     //   58: aload_2
     //   59: aload_2
-    //   60: ldc_w 335
-    //   63: invokeinterface 339 2 0
-    //   68: invokeinterface 343 2 0
-    //   73: invokevirtual 363	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:trimPhoneName	(Ljava/lang/String;)Ljava/lang/String;
+    //   60: ldc_w 380
+    //   63: invokeinterface 384 2 0
+    //   68: invokeinterface 387 2 0
+    //   73: invokevirtual 407	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:trimPhoneName	(Ljava/lang/String;)Ljava/lang/String;
     //   76: astore_3
     //   77: aload_2
     //   78: aload_2
-    //   79: ldc_w 365
-    //   82: invokeinterface 339 2 0
-    //   87: invokeinterface 369 2 0
+    //   79: ldc_w 409
+    //   82: invokeinterface 384 2 0
+    //   87: invokeinterface 413 2 0
     //   92: ifle +367 -> 459
     //   95: aload_0
-    //   96: getfield 168	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:mContext	Landroid/content/Context;
-    //   99: invokevirtual 321	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   102: getstatic 374	android/provider/ContactsContract$CommonDataKinds$Phone:CONTENT_URI	Landroid/net/Uri;
+    //   96: getfield 212	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:mContext	Landroid/content/Context;
+    //   99: invokevirtual 366	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   102: getstatic 418	android/provider/ContactsContract$CommonDataKinds$Phone:CONTENT_URI	Landroid/net/Uri;
     //   105: aconst_null
-    //   106: new 376	java/lang/StringBuilder
+    //   106: new 420	java/lang/StringBuilder
     //   109: dup
-    //   110: invokespecial 377	java/lang/StringBuilder:<init>	()V
-    //   113: ldc_w 379
-    //   116: invokevirtual 383	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   110: invokespecial 421	java/lang/StringBuilder:<init>	()V
+    //   113: ldc_w 423
+    //   116: invokevirtual 427	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   119: aload_1
-    //   120: invokevirtual 383	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   123: invokevirtual 387	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   120: invokevirtual 427	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   123: invokevirtual 431	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   126: aconst_null
     //   127: aconst_null
-    //   128: invokevirtual 327	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   128: invokevirtual 372	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   131: astore_1
     //   132: aload_1
     //   133: astore 5
     //   135: aload_1
     //   136: astore 4
     //   138: aload_1
-    //   139: invokeinterface 333 1 0
+    //   139: invokeinterface 378 1 0
     //   144: ifeq +312 -> 456
     //   147: aload_1
     //   148: astore 5
@@ -773,109 +783,109 @@ public class QWalletCommonJsPlugin
     //   153: aload_0
     //   154: aload_1
     //   155: aload_1
-    //   156: ldc_w 389
-    //   159: invokeinterface 339 2 0
-    //   164: invokeinterface 343 2 0
-    //   169: invokevirtual 393	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:trimPhoneNumPre	(Ljava/lang/String;)Ljava/lang/String;
+    //   156: ldc_w 433
+    //   159: invokeinterface 384 2 0
+    //   164: invokeinterface 387 2 0
+    //   169: invokevirtual 437	com/tencent/mobileqq/vaswebviewplugin/QWalletCommonJsPlugin:trimPhoneNumPre	(Ljava/lang/String;)Ljava/lang/String;
     //   172: astore 6
     //   174: aload_1
     //   175: astore 5
     //   177: aload_1
     //   178: astore 4
     //   180: aload 6
-    //   182: invokestatic 200	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   182: invokestatic 244	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   185: ifne +65 -> 250
     //   188: aload_1
     //   189: astore 5
     //   191: aload_1
     //   192: astore 4
     //   194: aload_3
-    //   195: invokestatic 200	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   195: invokestatic 244	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   198: ifne +52 -> 250
     //   201: aload_1
     //   202: astore 5
     //   204: aload_1
     //   205: astore 4
     //   207: aload 7
-    //   209: ldc_w 354
+    //   209: ldc_w 398
     //   212: iconst_0
-    //   213: invokevirtual 357	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   213: invokevirtual 401	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   216: pop
     //   217: aload_1
     //   218: astore 5
     //   220: aload_1
     //   221: astore 4
     //   223: aload 7
-    //   225: ldc_w 395
+    //   225: ldc_w 439
     //   228: aload_3
-    //   229: invokevirtual 352	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   229: invokevirtual 396	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   232: pop
     //   233: aload_1
     //   234: astore 5
     //   236: aload_1
     //   237: astore 4
     //   239: aload 7
-    //   241: ldc_w 397
+    //   241: ldc_w 441
     //   244: aload 6
-    //   246: invokevirtual 352	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   246: invokevirtual 396	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   249: pop
     //   250: aload_2
     //   251: ifnull +9 -> 260
     //   254: aload_2
-    //   255: invokeinterface 360 1 0
+    //   255: invokeinterface 404 1 0
     //   260: aload_1
     //   261: ifnull +9 -> 270
     //   264: aload_1
-    //   265: invokeinterface 360 1 0
+    //   265: invokeinterface 404 1 0
     //   270: aload 7
     //   272: areturn
     //   273: astore_2
     //   274: aload_2
-    //   275: invokevirtual 390	java/lang/Exception:printStackTrace	()V
+    //   275: invokevirtual 434	java/lang/Exception:printStackTrace	()V
     //   278: goto -18 -> 260
     //   281: astore_1
     //   282: aload_1
-    //   283: invokevirtual 390	java/lang/Exception:printStackTrace	()V
+    //   283: invokevirtual 434	java/lang/Exception:printStackTrace	()V
     //   286: aload 7
     //   288: areturn
     //   289: astore_3
     //   290: aconst_null
     //   291: astore_1
     //   292: aload_3
-    //   293: invokevirtual 390	java/lang/Exception:printStackTrace	()V
+    //   293: invokevirtual 434	java/lang/Exception:printStackTrace	()V
     //   296: aload 7
-    //   298: ldc_w 354
+    //   298: ldc_w 398
     //   301: iconst_m1
-    //   302: invokevirtual 357	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
+    //   302: invokevirtual 401	org/json/JSONObject:put	(Ljava/lang/String;I)Lorg/json/JSONObject;
     //   305: pop
     //   306: aload 7
-    //   308: ldc_w 395
-    //   311: ldc 66
-    //   313: invokevirtual 352	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   308: ldc_w 439
+    //   311: ldc 74
+    //   313: invokevirtual 396	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   316: pop
     //   317: aload 7
-    //   319: ldc_w 397
-    //   322: ldc 66
-    //   324: invokevirtual 352	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   319: ldc_w 441
+    //   322: ldc 74
+    //   324: invokevirtual 396	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
     //   327: pop
     //   328: aload_2
     //   329: ifnull +9 -> 338
     //   332: aload_2
-    //   333: invokeinterface 360 1 0
+    //   333: invokeinterface 404 1 0
     //   338: aload_1
     //   339: ifnull -69 -> 270
     //   342: aload_1
-    //   343: invokeinterface 360 1 0
+    //   343: invokeinterface 404 1 0
     //   348: aload 7
     //   350: areturn
     //   351: astore_1
     //   352: aload_1
-    //   353: invokevirtual 390	java/lang/Exception:printStackTrace	()V
+    //   353: invokevirtual 434	java/lang/Exception:printStackTrace	()V
     //   356: aload 7
     //   358: areturn
     //   359: astore_3
     //   360: aload_3
-    //   361: invokevirtual 294	org/json/JSONException:printStackTrace	()V
+    //   361: invokevirtual 342	org/json/JSONException:printStackTrace	()V
     //   364: goto -36 -> 328
     //   367: astore 4
     //   369: aload_1
@@ -885,24 +895,24 @@ public class QWalletCommonJsPlugin
     //   374: aload_2
     //   375: ifnull +9 -> 384
     //   378: aload_2
-    //   379: invokeinterface 360 1 0
+    //   379: invokeinterface 404 1 0
     //   384: aload_3
     //   385: ifnull +9 -> 394
     //   388: aload_3
-    //   389: invokeinterface 360 1 0
+    //   389: invokeinterface 404 1 0
     //   394: aload_1
     //   395: athrow
     //   396: astore_2
     //   397: aload_2
-    //   398: invokevirtual 390	java/lang/Exception:printStackTrace	()V
+    //   398: invokevirtual 434	java/lang/Exception:printStackTrace	()V
     //   401: goto -63 -> 338
     //   404: astore_2
     //   405: aload_2
-    //   406: invokevirtual 390	java/lang/Exception:printStackTrace	()V
+    //   406: invokevirtual 434	java/lang/Exception:printStackTrace	()V
     //   409: goto -25 -> 384
     //   412: astore_2
     //   413: aload_2
-    //   414: invokevirtual 390	java/lang/Exception:printStackTrace	()V
+    //   414: invokevirtual 434	java/lang/Exception:printStackTrace	()V
     //   417: goto -23 -> 394
     //   420: astore_1
     //   421: aconst_null
@@ -989,6 +999,177 @@ public class QWalletCommonJsPlugin
     //   239	250	449	java/lang/Exception
   }
   
+  private void handleMiniApp(String paramString, int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 == 20) && (paramInt2 == 1)) {
+      try
+      {
+        paramString = new JSONObject(paramString);
+        paramInt1 = paramString.optInt("action");
+        JSONObject localJSONObject;
+        if (paramInt1 == 1)
+        {
+          String str = paramString.optString("mini_appid");
+          localJSONObject = new JSONObject();
+          if (!MiniAppLauncher.launchMiniApp(this.mContext, str, 1201)) {
+            break label108;
+          }
+          localJSONObject.put("result_code", 0);
+        }
+        for (;;)
+        {
+          doCallback(localJSONObject.toString());
+          if (paramInt1 != 2) {
+            break;
+          }
+          MiniLogManager.compressAndUploadLog(paramString.optString("mini_appid"), paramString.optInt("mini_version"));
+          return;
+          label108:
+          localJSONObject.put("result_code", 1);
+        }
+        return;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        try
+        {
+          paramString = new JSONObject();
+          paramString.put("result_code", 1);
+          doCallback(paramString.toString());
+          return;
+        }
+        catch (Throwable paramString) {}
+      }
+    }
+  }
+  
+  private boolean handleOpenContact()
+  {
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      Activity localActivity = this.mRuntime.a();
+      if ((localActivity instanceof AppActivity))
+      {
+        if (((AppActivity)localActivity).checkSelfPermission("android.permission.READ_CONTACTS") != 0)
+        {
+          ((AppActivity)localActivity).requestPermissions(this.mOpenContactCallBack, 1, new String[] { "android.permission.READ_CONTACTS" });
+          return true;
+        }
+        openContact();
+        return true;
+      }
+      callJs(this.mCallback, new String[] { "false", "no record activity" });
+      return true;
+    }
+    openContact();
+    return true;
+  }
+  
+  private void handlePendantSwitch(String paramString)
+  {
+    localJSONObject = new JSONObject();
+    try
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        break label267;
+      }
+      localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("spring_entry_sp", 4);
+      str = "key_show_pendant_by_user_" + this.app.getCurrentAccountUin();
+      paramString = new JSONObject(paramString);
+      bool = localSharedPreferences.getBoolean(str, true);
+      if (!bool) {
+        break label250;
+      }
+      i = 1;
+    }
+    catch (Throwable paramString)
+    {
+      try
+      {
+        for (;;)
+        {
+          SharedPreferences localSharedPreferences;
+          String str;
+          localJSONObject.put("retcode", k);
+          localJSONObject.put("state", j);
+          paramString = localJSONObject.toString();
+          if (QLog.isColorLevel()) {
+            QLog.i("QWalletCommonJsPlugin", 2, "pendant switch result:" + paramString);
+          }
+          doCallback(paramString);
+          return;
+          i = 0;
+          continue;
+          bool = false;
+          continue;
+          m = -1;
+          continue;
+          j = 1;
+          k = -1;
+          continue;
+          paramString = paramString;
+          i = 1;
+          QLog.e("QWalletCommonJsPlugin", 1, paramString, new Object[0]);
+          k = -1;
+          j = i;
+        }
+      }
+      catch (Throwable paramString)
+      {
+        for (;;)
+        {
+          QLog.e("QWalletCommonJsPlugin", 1, paramString, new Object[0]);
+        }
+      }
+    }
+    j = i;
+    try
+    {
+      if (paramString.optInt("action") != 1) {
+        break label318;
+      }
+      j = i;
+      k = paramString.optInt("state");
+      j = i;
+      paramString = localSharedPreferences.edit();
+      if (k != 1) {
+        break label255;
+      }
+      bool = true;
+      j = i;
+      bool = paramString.putBoolean(str, bool).commit();
+      if (!bool) {
+        break label326;
+      }
+      i = k;
+    }
+    catch (Throwable paramString)
+    {
+      for (;;)
+      {
+        int m;
+        i = j;
+        continue;
+        int k = 0;
+        j = i;
+        continue;
+        if (bool) {
+          m = 0;
+        }
+      }
+    }
+    j = i;
+    k = m;
+    if (!bool)
+    {
+      j = i;
+      QLog.e("QWalletCommonJsPlugin", 1, "handlePendantSwitch,set sp fail");
+      k = m;
+      j = i;
+    }
+  }
+  
   private void handleRedPackSkin(String paramString, int paramInt)
   {
     if (paramInt == 1) {}
@@ -1005,117 +1186,43 @@ public class QWalletCommonJsPlugin
     }
   }
   
-  private void handleSkin(String paramString, int paramInt1, int paramInt2)
-  {
-    boolean bool = true;
-    if ((TextUtils.isEmpty(paramString)) || ((paramInt1 == 2) && (paramInt2 == 2))) {}
-    while (paramInt2 != 1) {
-      try
-      {
-        if (new JSONObject(paramString).getInt("status") == 1)
-        {
-          QWalletSkinHandler.a().a(bool);
-          System.out.println();
-          paramString = new JSONObject();
-          paramString.put("result_code", 0);
-          doCallback(paramString.toString());
-        }
-        do
-        {
-          return;
-          bool = false;
-          break;
-        } while (paramInt1 != 4);
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        return;
-      }
-    }
-    JSONObject localJSONObject = new JSONObject();
-    for (;;)
-    {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        switch (paramString.getInt("action"))
-        {
-        case 0: 
-          localJSONObject.put("result_code", 1);
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        return;
-      }
-      QWalletSkinHandler.a().a(new QWalletCommonJsPlugin.2(this, localJSONObject));
-      return;
-      paramInt1 = paramString.getInt("skin_id");
-      QWalletSkinHandler.a().a(paramInt1, new QWalletCommonJsPlugin.3(this, localJSONObject));
-      return;
-      bool = QWalletSkinHandler.a().a(0, null);
-      if (bool) {}
-      for (;;)
-      {
-        try
-        {
-          localJSONObject.put("status", 1);
-          localJSONObject.put("skin_id", QWalletSkinHandler.a().a());
-          doCallback(localJSONObject.toString());
-          return;
-        }
-        catch (Exception paramString)
-        {
-          paramString.printStackTrace();
-          return;
-        }
-        localJSONObject.put("status", 0);
-      }
-    }
-  }
+  private void handleSkin(String paramString, int paramInt1, int paramInt2) {}
   
   private boolean isSecurityPayOpen()
   {
     if (this.mContext == null) {
       return false;
     }
-    return JumpQqPimSecureUtil.f(this.mContext);
+    return badf.f(this.mContext);
   }
   
   private void notifyViewUpdate(String paramString1, String paramString2)
   {
+    int i;
+    int j;
+    String str;
     for (;;)
     {
-      int i;
-      int j;
-      String str;
       try
       {
         paramString1 = new JSONObject(paramString1);
         i = paramString1.optInt("bid");
         j = paramString1.optInt("viewid");
         str = paramString1.optString("extstr");
-        if ((i == 2) || (i == 4))
-        {
-          handleSkin(str, i, j);
-          return;
+        if ((i != 2) && (i != 4)) {
+          break;
         }
-        if ((i == 3) && (j == 1))
-        {
-          updateGoldMsgEntry();
-          paramString1 = new Intent("action_notify_view_update");
-          paramString1.putExtra("businessId", i);
-          paramString1.putExtra("viewId", j);
-          paramString1.putExtra("extstr", str);
-          this.mContext.sendBroadcast(paramString1);
-          return;
-        }
+        handleSkin(str, i, j);
+        paramString1 = new Intent("action_notify_view_update");
+        paramString1.putExtra("businessId", i);
+        paramString1.putExtra("viewId", j);
+        paramString1.putExtra("extstr", str);
+        this.mContext.sendBroadcast(paramString1);
+        return;
       }
       catch (Exception paramString1)
       {
+        label102:
         paramString1.printStackTrace();
         return;
       }
@@ -1139,7 +1246,7 @@ public class QWalletCommonJsPlugin
               localObject1 = new JSONObject(str);
               paramString1 = ((JSONObject)localObject1).optString("listid");
               localObject1 = ((JSONObject)localObject1).optString("feedsid");
-              localObject2 = TenCookie.getInstance().getTempArgs(paramString1);
+              localObject2 = bfom.a().b(paramString1);
               paramString1 = paramString2;
               if (!TextUtils.isEmpty((CharSequence)localObject1))
               {
@@ -1175,7 +1282,6 @@ public class QWalletCommonJsPlugin
           doCallback(paramString1);
           continue;
         }
-        label649:
         if ((i == 17) && (j == 1))
         {
           try
@@ -1189,15 +1295,15 @@ public class QWalletCommonJsPlugin
             localObject1 = ((JSONObject)localObject2).optString("offset");
             localObject2 = ((JSONObject)localObject2).optString("limit");
             if ((TextUtils.isEmpty(paramString2)) || (!paramString2.equals(this.app.getCurrentAccountUin())) || (TextUtils.isEmpty(paramString1))) {
-              break label649;
+              break label633;
             }
             mListid = paramString1;
-            mParamForGarpHb = TenCookie.getInstance().getTempArgs(paramString1);
+            mParamForGarpHb = bfom.a().b(paramString1);
             if (QLog.isColorLevel()) {
               QLog.d("QWalletCommonJsPlugin", 2, "paramForGarpHb paramForGarpHb:" + mParamForGarpHb);
             }
             if (TextUtils.isEmpty(mParamForGarpHb)) {
-              break label631;
+              break label615;
             }
             localObject3 = new JSONObject(mParamForGarpHb);
             JSONObject localJSONObject = new JSONObject();
@@ -1216,27 +1322,55 @@ public class QWalletCommonJsPlugin
             paramString1.printStackTrace();
           }
           continue;
-          label631:
+          label615:
           if (QLog.isColorLevel())
           {
             QLog.d("QWalletCommonJsPlugin", 2, "paramForGarpHb is null");
             continue;
+            label633:
             if (QLog.isColorLevel()) {
               QLog.d("QWalletCommonJsPlugin", 2, "notifyViewUpdate extstr = " + str);
             }
           }
         }
+        else
+        {
+          if ((i != 20) || (j != 1)) {
+            break label728;
+          }
+          handleMiniApp(str, i, j);
+        }
+      }
+    }
+    while ((i == 24) && (j == 1))
+    {
+      handlePendantSwitch(str);
+      break;
+      if (i != 3) {
+        break label102;
+      }
+      if (j == 1) {
+        break;
+      }
+      break label102;
+      label728:
+      if (((i == 21) && (j == 1)) || ((i == 22) && (j == 1))) {
+        break;
+      }
+      if (i == 23) {
+        if (j == 1) {
+          break;
+        }
       }
     }
   }
   
-  private boolean openContact()
+  private void openContact()
   {
     Intent localIntent = new Intent();
     localIntent.setAction("android.intent.action.PICK");
     localIntent.setData(ContactsContract.Contacts.CONTENT_URI);
     super.startActivityForResult(localIntent, (byte)16);
-    return true;
   }
   
   private void parseCallback(String paramString)
@@ -1257,105 +1391,24 @@ public class QWalletCommonJsPlugin
   
   private void reportAuthCode(String paramString, long paramLong1, long paramLong2)
   {
-    str2 = "";
-    try
-    {
-      localObject = this.mRuntime.a();
-      str1 = "";
-      if (localObject != null) {
-        str1 = ((CustomWebView)localObject).getUrl();
-      }
-      localObject = str2;
-      if (!TextUtils.isEmpty(str1)) {
-        localObject = URLEncoder.encode(str1, "utf-8");
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        String str1;
-        int i;
-        Object localObject = str2;
-        if (QLog.isDevelopLevel())
-        {
-          localException.printStackTrace();
-          localObject = str2;
-        }
-      }
-    }
-    i = 3;
-    str1 = paramString;
-    if (TextUtils.isEmpty(paramString))
-    {
-      i = 4;
-      str1 = "";
-      paramLong2 = 0L;
-    }
-    DcReportUtil.a(null, "dc01021", "" + i + '|' + str1 + '|' + (String)localObject + '|' + "2|" + paramLong1 + "|||" + paramLong2, false);
+    CustomWebView localCustomWebView = this.mRuntime.a();
+    localCustomWebView.post(new QWalletCommonJsPlugin.4(this, paramLong2, localCustomWebView, paramString, paramLong1));
   }
   
   private void sendAuthCodeReq()
   {
     Bundle localBundle = new Bundle();
     localBundle.putLong("appId", this.mAuthCodeAppId);
-    localBundle = DataFactory.a("qwallet_getAuthCode", this.mCallback, this.mOnRemoteResp.key, localBundle);
-    WebIPCOperator.a().a(localBundle);
-  }
-  
-  private void updateGoldMsgEntry()
-  {
-    QIPCClientHelper.getInstance().callServer("QWalletIPCModule", "request_gold_msg_entry", null, null);
+    localBundle = anah.a("qwallet_getAuthCode", this.mCallback, this.mOnRemoteResp.key, localBundle);
+    anfc.a().a(localBundle);
   }
   
   protected void doAuthCodeCallback(String paramString, AuthCodeItem paramAuthCodeItem)
   {
-    int j = 0;
-    long l = SystemClock.uptimeMillis() - this.mReqAuthCodeStartTime;
-    for (;;)
-    {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        if ((paramAuthCodeItem != null) && (this.mAuthCodeAppId == paramAuthCodeItem.appid))
-        {
-          if (TextUtils.isEmpty(paramAuthCodeItem.urlDomain)) {
-            break label216;
-          }
-          String[] arrayOfString = (paramAuthCodeItem.urlDomain + "|#").split("\\|");
-          String str = Uri.parse(this.mRuntime.a().getUrl()).getHost().toLowerCase();
-          i = 0;
-          if ((i < arrayOfString.length - 1) && (!str.contains(arrayOfString[i]))) {
-            break label221;
-          }
-          if (i < arrayOfString.length - 1) {
-            break label216;
-          }
-          i = j;
-          if (i != 0)
-          {
-            localJSONObject.put("code", paramAuthCodeItem.authCode);
-            doCallback(paramString, localJSONObject.toString());
-            reportAuthCode(paramAuthCodeItem.authCode, this.mAuthCodeAppId, l);
-            return;
-          }
-        }
-        localJSONObject.put("code", "");
-        doCallback(paramString, localJSONObject.toString());
-        reportAuthCode(null, this.mAuthCodeAppId, l);
-        return;
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-        return;
-      }
-      label216:
-      int i = 1;
-      continue;
-      label221:
-      i += 1;
-    }
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = this.mReqAuthCodeStartTime;
+    CustomWebView localCustomWebView = this.mRuntime.a();
+    localCustomWebView.post(new QWalletCommonJsPlugin.3(this, paramAuthCodeItem, localCustomWebView, paramString, l1 - l2));
   }
   
   protected void dochooseQQFriendsForTransferResult(String paramString)
@@ -1378,17 +1431,17 @@ public class QWalletCommonJsPlugin
     return 2415919104L;
   }
   
-  protected boolean handleEvent(String paramString, long paramLong, Map paramMap)
+  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
     if (QLog.isColorLevel()) {
       QLog.i("QWalletCommonJsPlugin", 2, "handleEvent, type=" + paramLong);
     }
     if ((paramLong == 8589934610L) || (paramLong == 8589934601L))
     {
-      if (QWalletCommonJsPlugin.QWVideoJsPlugin.access$700(this.mVideoJsPlugin, QWalletCommonJsPlugin.QWVideoJsPlugin.access$600(this.mVideoJsPlugin)))
+      if (QWalletCommonJsPlugin.QWVideoJsPlugin.access$900(this.mVideoJsPlugin, QWalletCommonJsPlugin.QWVideoJsPlugin.access$800(this.mVideoJsPlugin)))
       {
         if (QLog.isColorLevel()) {
-          QLog.i("QWalletCommonJsPlugin", 2, "handleEvent_Back,stopVideo:" + QWalletCommonJsPlugin.QWVideoJsPlugin.access$600(this.mVideoJsPlugin));
+          QLog.i("QWalletCommonJsPlugin", 2, "handleEvent_Back,stopVideo:" + QWalletCommonJsPlugin.QWVideoJsPlugin.access$800(this.mVideoJsPlugin));
         }
         return true;
       }
@@ -1398,96 +1451,158 @@ public class QWalletCommonJsPlugin
         break label122;
       }
     }
-    for (;;)
+    label122:
+    do
     {
-      return super.handleEvent(paramString, paramLong, paramMap);
-      label122:
-      if (paramLong == 8589934597L) {
-        this.mVideoJsPlugin.resumeOrPause(false, false);
-      } else if (paramLong == 2L) {
-        this.mVideoJsPlugin.resumeOrPause(true, false);
+      for (;;)
+      {
+        return super.handleEvent(paramString, paramLong, paramMap);
+        if (paramLong == 8589934597L)
+        {
+          this.mVideoJsPlugin.resumeOrPause(false, false);
+        }
+        else
+        {
+          if (paramLong != 2L) {
+            break;
+          }
+          this.mVideoJsPlugin.resumeOrPause(true, false);
+        }
+      }
+      if (paramLong == 8589934619L)
+      {
+        paramString = new JSONObject();
+        if (paramMap != null) {}
+        try
+        {
+          paramString.put("action", (Integer)paramMap.get("action"));
+          dispatchJsEvent("walletFeedsEvent", paramString, null);
+          return true;
+        }
+        catch (ClassCastException localClassCastException)
+        {
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("QWalletCommonJsPlugin", 2, "action, " + paramMap.get("action"));
+            }
+            localClassCastException.printStackTrace();
+          }
+        }
+        catch (JSONException paramMap)
+        {
+          for (;;)
+          {
+            paramMap.printStackTrace();
+          }
+        }
+      }
+    } while (paramLong != 8589934620L);
+    paramString = new JSONObject();
+    if (paramMap != null) {}
+    try
+    {
+      paramString.put("action", (Integer)paramMap.get("action"));
+      paramString.put("height", (Integer)paramMap.get("height"));
+      paramString.put("sHeight", (Integer)paramMap.get("sHeight"));
+      dispatchJsEvent("walletFeedsEvent", paramString, null);
+      return true;
+    }
+    catch (ClassCastException paramMap)
+    {
+      for (;;)
+      {
+        paramMap.printStackTrace();
+      }
+    }
+    catch (JSONException paramMap)
+    {
+      for (;;)
+      {
+        paramMap.printStackTrace();
       }
     }
   }
   
-  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    boolean bool2 = true;
-    boolean bool1;
     if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (this.mContext == null)) {
-      bool1 = false;
+      return false;
     }
-    do
+    paramJsBridgeListener = paramString2 + "_" + paramString3;
+    if (paramVarArgs.length > 0) {
+      parseCallback(paramVarArgs[0]);
+    }
+    if ("qw_charge_getSelectContact".equals(paramJsBridgeListener))
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return bool1;
-              paramJsBridgeListener = paramString2 + "_" + paramString3;
-              if (paramVarArgs.length > 0) {
-                parseCallback(paramVarArgs[0]);
-              }
-              if ("qw_charge_getSelectContact".equals(paramJsBridgeListener))
-              {
-                openContact();
-                return true;
-              }
-              if ("qw_charge_getAllContact".equals(paramJsBridgeListener))
-              {
-                new QWalletCommonJsPlugin.GetAllContactTask(this).execute(new Void[0]);
-                return true;
-              }
-              if (!"qw_charge_gotoQWalletHome".equals(paramJsBridgeListener)) {
-                break;
-              }
-              bool1 = bool2;
-            } while (this.mRuntime == null);
-            bool1 = bool2;
-          } while (this.mRuntime.a() == null);
-          QWalletHelper.gotoQWalletHome(this.mRuntime.a());
-          return true;
-          if ("qw_charge_qqpimsecure_safe_isopen_securitypay".equals(paramJsBridgeListener))
-          {
-            doCallback(getSecurityPayIsOpenJson().toString());
-            return true;
-          }
-          if ("qw_charge_tenpayTransfer".equals(paramJsBridgeListener))
-          {
-            if (paramVarArgs.length <= 0)
-            {
-              chooseQQFriendsForTransfer(null);
-              return true;
-            }
-            chooseQQFriendsForTransfer(paramVarArgs[0]);
-            return true;
-          }
-          if ("qw_charge_checkPermission".equals(paramJsBridgeListener))
-          {
-            checkWebankPermission();
-            return true;
-          }
-          if (!"qw_charge_emojiPayResultOk".equals(paramJsBridgeListener)) {
-            break;
-          }
-          bool1 = bool2;
-        } while (this.mRuntime == null);
-        bool1 = bool2;
-      } while (this.mRuntime.a() == null);
-      this.mRuntime.a().setResult(8213);
-      this.mRuntime.a().finish();
+      handleOpenContact();
       return true;
-      if (!"qw_charge_getAppAuthorizationCode".equals(paramJsBridgeListener)) {
-        break;
+    }
+    if ("qw_charge_getAllContact".equals(paramJsBridgeListener))
+    {
+      if (Build.VERSION.SDK_INT >= 23)
+      {
+        paramJsBridgeListener = this.mRuntime.a();
+        if ((paramJsBridgeListener instanceof AppActivity)) {
+          if (((AppActivity)paramJsBridgeListener).checkSelfPermission("android.permission.READ_CONTACTS") != 0) {
+            ((AppActivity)paramJsBridgeListener).requestPermissions(this.mGetAllContactCallBack, 3, new String[] { "android.permission.READ_CONTACTS" });
+          }
+        }
       }
-      bool1 = bool2;
-    } while (paramVarArgs.length <= 0);
-    getAppAuthCode(paramVarArgs[0]);
-    return true;
+      for (;;)
+      {
+        return true;
+        new QWalletCommonJsPlugin.GetAllContactTask(this).execute(new Void[0]);
+        continue;
+        callJs(this.mCallback, new String[] { "false", "no record activity" });
+        continue;
+        new QWalletCommonJsPlugin.GetAllContactTask(this).execute(new Void[0]);
+      }
+    }
+    if ("qw_charge_gotoQWalletHome".equals(paramJsBridgeListener))
+    {
+      if ((this.mRuntime != null) && (this.mRuntime.a() != null)) {
+        QWalletHelper.gotoQWalletHome(this.mRuntime.a());
+      }
+      return true;
+    }
+    if ("qw_charge_qqpimsecure_safe_isopen_securitypay".equals(paramJsBridgeListener))
+    {
+      doCallback(getSecurityPayIsOpenJson().toString());
+      return true;
+    }
+    if ("qw_charge_tenpayTransfer".equals(paramJsBridgeListener))
+    {
+      if (paramVarArgs.length <= 0) {
+        chooseQQFriendsForTransfer(null);
+      }
+      for (;;)
+      {
+        return true;
+        chooseQQFriendsForTransfer(paramVarArgs[0]);
+      }
+    }
+    if ("qw_charge_checkPermission".equals(paramJsBridgeListener))
+    {
+      checkWebankPermission();
+      return true;
+    }
+    if ("qw_charge_emojiPayResultOk".equals(paramJsBridgeListener))
+    {
+      if ((this.mRuntime != null) && (this.mRuntime.a() != null))
+      {
+        this.mRuntime.a().setResult(8213);
+        this.mRuntime.a().finish();
+      }
+      return true;
+    }
+    if ("qw_charge_getAppAuthorizationCode".equals(paramJsBridgeListener))
+    {
+      if (paramVarArgs.length > 0) {
+        getAppAuthCode(paramVarArgs[0]);
+      }
+      return true;
+    }
     if ("qw_charge_notifyViewUpdate".equals(paramJsBridgeListener))
     {
       notifyViewUpdate(paramVarArgs[0], paramString1);
@@ -1503,13 +1618,32 @@ public class QWalletCommonJsPlugin
       if ((paramInt == -1) && (paramIntent != null) && (paramIntent.getData() != null))
       {
         paramIntent = paramIntent.getData().getLastPathSegment();
-        if ((paramIntent != null) && (paramIntent.length() > 0)) {
-          new QWalletCommonJsPlugin.SelectContactTask(this).execute(new String[] { paramIntent });
+        if ((paramIntent != null) && (paramIntent.length() > 0))
+        {
+          this.mContactId = paramIntent;
+          if (Build.VERSION.SDK_INT < 23) {
+            break label162;
+          }
+          localObject = this.mRuntime.a();
+          if (!(localObject instanceof AppActivity)) {
+            break label137;
+          }
+          if (((AppActivity)localObject).checkSelfPermission("android.permission.READ_CONTACTS") == 0) {
+            break label116;
+          }
+          ((AppActivity)localObject).requestPermissions(this.mGetSelectContactCallBack, 2, new String[] { "android.permission.READ_CONTACTS" });
         }
       }
     }
+    label116:
     do
     {
+      return;
+      new QWalletCommonJsPlugin.SelectContactTask(this).execute(new String[] { paramIntent });
+      return;
+      callJs(this.mCallback, new String[] { "false", "no record activity" });
+      return;
+      new QWalletCommonJsPlugin.SelectContactTask(this).execute(new String[] { paramIntent });
       return;
       if (paramByte == REQUESTCODE_TRANSFER)
       {
@@ -1522,6 +1656,8 @@ public class QWalletCommonJsPlugin
         return;
       }
     } while (paramByte != 17);
+    label137:
+    label162:
     Object localObject = paramIntent;
     if (paramIntent == null) {
       localObject = new Intent();
@@ -1541,12 +1677,12 @@ public class QWalletCommonJsPlugin
         {
           localJSONObject2.put("card_status", paramIntent);
           if (str == null) {
-            break label285;
+            break label399;
           }
           paramIntent = str;
           localJSONObject2.put("available_amount", paramIntent);
           if (localObject == null) {
-            break label278;
+            break label392;
           }
           paramIntent = (Intent)localObject;
           localJSONObject2.put("overdue_amount", paramIntent);
@@ -1563,15 +1699,15 @@ public class QWalletCommonJsPlugin
       }
       paramIntent = "0";
       continue;
-      label278:
+      label392:
       paramIntent = "0";
       continue;
-      label285:
+      label399:
       paramIntent = "0";
     }
   }
   
-  protected void onCreate()
+  public void onCreate()
   {
     super.onCreate();
     if (this.mRuntime != null)
@@ -1591,7 +1727,7 @@ public class QWalletCommonJsPlugin
     }
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     if (this.mRuntime != null)
     {
@@ -1646,7 +1782,7 @@ public class QWalletCommonJsPlugin
     }
   }
   
-  protected void onWebViewCreated(CustomWebView paramCustomWebView)
+  public void onWebViewCreated(CustomWebView paramCustomWebView)
   {
     super.onWebViewCreated(paramCustomWebView);
     this.mVideoJsPlugin.onWebViewCreated(this.mRuntime);
@@ -1740,7 +1876,7 @@ public class QWalletCommonJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin
  * JD-Core Version:    0.7.0.1
  */

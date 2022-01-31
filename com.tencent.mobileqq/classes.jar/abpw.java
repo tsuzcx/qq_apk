@@ -1,28 +1,55 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.armap.SdCardImageAnimView;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashView;
-import com.tencent.mobileqq.armap.wealthgod.SplashBitmapUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.SearchFriendListActivity;
+import java.util.ArrayList;
 
 public class abpw
-  implements ValueAnimator.AnimatorUpdateListener
+  extends BaseAdapter
 {
-  public abpw(ARMapSplashView paramARMapSplashView) {}
+  private abpw(SearchFriendListActivity paramSearchFriendListActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public int getCount()
   {
-    float f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() / 1000.0F;
-    ARMapSplashView.a(this.a).setRotation(SplashBitmapUtils.d(f, ARMapSplashView.a(this.a)));
-    ARMapSplashView.a(this.a).setTranslationX(SplashBitmapUtils.a(f, ARMapSplashView.a(this.a)));
-    ARMapSplashView.a(this.a).setTranslationY(SplashBitmapUtils.b(f, ARMapSplashView.a(this.a)));
-    f = SplashBitmapUtils.c(f, ARMapSplashView.a(this.a));
-    ARMapSplashView.a(this.a).setScaleX(f);
-    ARMapSplashView.a(this.a).setScaleY(f);
+    return SearchFriendListActivity.a(this.a).size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    if ((paramInt < 0) || (paramInt >= SearchFriendListActivity.a(this.a).size())) {
+      return null;
+    }
+    return SearchFriendListActivity.a(this.a).get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    View localView = paramView;
+    if (paramView == null)
+    {
+      localView = this.a.getLayoutInflater().inflate(2131496766, paramViewGroup, false);
+      paramView = new abpx();
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131301797));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131305157));
+      paramView.b = ((TextView)localView.findViewById(2131299396));
+      localView.setTag(paramView);
+      localView.setOnClickListener(this.a);
+    }
+    this.a.a(localView, paramInt);
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abpw
  * JD-Core Version:    0.7.0.1
  */

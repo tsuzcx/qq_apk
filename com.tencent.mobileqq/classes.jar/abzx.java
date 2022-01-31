@@ -1,46 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.AboutConfig;
-import com.tencent.mobileqq.data.ResourcePluginInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class abzx
-  implements Runnable
+  implements View.OnClickListener
 {
-  public abzx(AboutConfig paramAboutConfig, boolean paramBoolean) {}
+  public abzx(TroopMemberListActivity paramTroopMemberListActivity, Dialog paramDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    int i = 0;
-    ??? = AboutConfig.a(this.jdField_a_of_type_ComTencentMobileqqConfigAboutConfig).getEntityManagerFactory().createEntityManager();
-    List localList = ResourcePluginInfo.getAll((EntityManager)???, 32, false);
-    ((EntityManager)???).a();
-    int j;
-    if (localList != null)
-    {
-      j = localList.size();
-      i = j;
-      if (j <= 0) {}
-    }
-    synchronized (AboutConfig.a(this.jdField_a_of_type_ComTencentMobileqqConfigAboutConfig))
-    {
-      AboutConfig.a(this.jdField_a_of_type_ComTencentMobileqqConfigAboutConfig);
-      AboutConfig.a(this.jdField_a_of_type_ComTencentMobileqqConfigAboutConfig, localList);
-      this.jdField_a_of_type_ComTencentMobileqqConfigAboutConfig.b();
-      i = j;
-      if (QLog.isColorLevel()) {
-        QLog.d("AboutConfig", 2, "Load about config from DB = " + AboutConfig.a(this.jdField_a_of_type_ComTencentMobileqqConfigAboutConfig) + ",asynchronous=" + this.jdField_a_of_type_Boolean + ",size=" + i);
-      }
-      AboutConfig.a(this.jdField_a_of_type_ComTencentMobileqqConfigAboutConfig, true);
-      return;
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abzx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,60 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class afpf
-  implements Runnable
 {
-  public afpf(NearbyMomentFragment paramNearbyMomentFragment, URLDrawable paramURLDrawable) {}
+  ArrayList<Object> a = new ArrayList();
   
-  public void run()
+  private boolean a()
   {
-    this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly();
+    boolean bool = false;
+    if (this.a != null) {}
+    for (int i = this.a.size() + 0;; i = 0)
+    {
+      if (i >= 20) {
+        bool = true;
+      }
+      if ((bool) && (QLog.isColorLevel())) {
+        QLog.d("Q.history.", 2, "isOverLimit");
+      }
+      return bool;
+    }
+  }
+  
+  public List<Object> a()
+  {
+    return this.a;
+  }
+  
+  public void a()
+  {
+    this.a.clear();
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (a(paramObject))
+    {
+      this.a.remove(paramObject);
+      return;
+    }
+    if (a())
+    {
+      apcb.a(2131626944);
+      return;
+    }
+    this.a.add(paramObject);
+  }
+  
+  public boolean a(Object paramObject)
+  {
+    return this.a.contains(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afpf
  * JD-Core Version:    0.7.0.1
  */

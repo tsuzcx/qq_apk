@@ -1,17 +1,17 @@
 package cooperation.qzone.model;
 
-import ancq;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bfwv;
 import java.util.ArrayList;
 
 public class WeishiShareDataInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ancq();
+  public static final Parcelable.Creator<WeishiShareDataInfo> CREATOR = new bfwv();
   public String a;
-  public ArrayList a;
+  public ArrayList<WeishiPictureUrl> a;
   public String b;
   
   public WeishiShareDataInfo(Parcel paramParcel)
@@ -22,7 +22,7 @@ public class WeishiShareDataInfo
     paramParcel.readTypedList(this.jdField_a_of_type_JavaUtilArrayList, WeishiPictureUrl.CREATOR);
   }
   
-  public WeishiShareDataInfo(String paramString1, String paramString2, ArrayList paramArrayList)
+  public WeishiShareDataInfo(String paramString1, String paramString2, ArrayList<WeishiPictureUrl> paramArrayList)
   {
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.b = paramString2;

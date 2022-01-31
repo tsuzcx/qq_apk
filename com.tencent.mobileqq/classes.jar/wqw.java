@@ -1,20 +1,36 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.videostory.capture.widgets.AEBottomListScrollView;
 
-public class wqw
-  implements View.OnClickListener
+class wqw
+  implements Animation.AnimationListener
 {
-  public wqw(TroopActivity paramTroopActivity) {}
+  wqw(wqq paramwqq) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    TroopActivity.a(this.a);
+    if ((wqq.a(this.a) != null) && (!wqq.a(this.a)))
+    {
+      wqq.a(this.a).setAlpha(1.0F);
+      wqq.a(this.a).setVisibility(4);
+    }
+    if (this.a.a != null)
+    {
+      this.a.a.a(327684, new Object[0]);
+      this.a.a.a(196612, new Object[0]);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    wqq.a(this.a).a().a(true, 150);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wqw
  * JD-Core Version:    0.7.0.1
  */

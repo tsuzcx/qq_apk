@@ -1,26 +1,19 @@
-import android.widget.Button;
-import com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class rtc
-  implements Runnable
+class rtc
+  implements View.OnClickListener
 {
-  public rtc(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity, String paramString1, String paramString2) {}
+  rtc(rsv paramrsv) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    String str = Utils.c(this.jdField_a_of_type_JavaLangString, this.b);
-    if ((str != null) && (str.length() > 0) && (AuthDevVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevVerifyCodeActivity) != null))
-    {
-      AuthDevVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevVerifyCodeActivity).setText(str);
-      AuthDevVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAuthDevVerifyCodeActivity).setEnabled(true);
-    }
+    this.a.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rtc
  * JD-Core Version:    0.7.0.1
  */

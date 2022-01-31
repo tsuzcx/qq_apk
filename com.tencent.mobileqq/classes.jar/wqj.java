@@ -1,22 +1,16 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
+import camera.XEFFECT_MATERIALS_GENERAL_DATASTRUCT.MetaMaterial;
 
-class wqj
-  implements Runnable
+public abstract interface wqj
 {
-  wqj(wqi paramwqi, Bitmap paramBitmap) {}
+  public abstract void a(MetaMaterial paramMetaMaterial);
   
-  public void run()
-  {
-    BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_Wqi.a.a.findViewById(2131362845).setBackgroundDrawable(localBitmapDrawable);
-  }
+  public abstract void a(MetaMaterial paramMetaMaterial, int paramInt);
+  
+  public abstract void b(MetaMaterial paramMetaMaterial);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wqj
  * JD-Core Version:    0.7.0.1
  */

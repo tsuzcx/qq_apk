@@ -1,49 +1,41 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qidian.QidianManager;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class altd
-  extends SosoInterface.OnLocationListener
+  implements alsv
 {
-  public altd(QidianManager paramQidianManager, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString1, String paramString2, int paramInt2, String paramString3, int paramInt3, String paramString4, String paramString5, String paramString6)
+  public void a(Context paramContext, ColorNote paramColorNote)
   {
-    super(paramInt1, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString1);
-  }
-  
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    double d2 = 0.0D;
-    if (QLog.isColorLevel()) {
-      QLog.d("QidianManager", 2, "onLocationFinish(): BEGIN errCode=" + paramInt);
-    }
-    String str;
-    double d1;
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null)) {
-      if (paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString != null)
-      {
-        str = paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString;
-        if (QLog.isColorLevel()) {
-          QLog.d("QidianManager", 2, "onLocationFinish() latitude=" + paramSosoLbsInfo.a.a + ", longitude=" + paramSosoLbsInfo.a.jdField_b_of_type_Double + ", address=" + str);
-        }
-        d1 = paramSosoLbsInfo.a.a;
-        d2 = paramSosoLbsInfo.a.jdField_b_of_type_Double;
-      }
-    }
-    for (;;)
+    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+    localIntent.putExtra("big_brother_source_key", "biz_src_jc_floatwin");
+    localIntent.putExtra("url", paramColorNote.getSubType());
+    if (paramColorNote.getReserve() != null) {}
+    try
     {
-      this.jdField_a_of_type_ComTencentQidianQidianManager.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true, d1, d2, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, this.d, this.e, this.f);
+      localIntent.putExtra("key_scroll_y", new JSONObject(new String(paramColorNote.getReserve())).getInt("key_scroll_y"));
+      localIntent.putExtra("subType", paramColorNote.mSubType);
+      localIntent.addFlags(268435456);
+      paramContext.startActivity(localIntent);
+      raz.b(paramColorNote);
       return;
-      str = "";
-      break;
-      d1 = 0.0D;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        QLog.e("WebLauncher", 1, localJSONException, new Object[0]);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     altd
  * JD-Core Version:    0.7.0.1
  */

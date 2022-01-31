@@ -1,22 +1,20 @@
 package com.tencent.mobileqq.msf.core.net;
 
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 class o
-  extends Thread
+  implements Runnable
 {
-  o(m paramm) {}
+  o(n paramn, int paramInt, CopyOnWriteArrayList paramCopyOnWriteArrayList1, CopyOnWriteArrayList paramCopyOnWriteArrayList2, ArrayList paramArrayList) {}
   
   public void run()
   {
-    Iterator localIterator = this.a.v.iterator();
-    while (localIterator.hasNext()) {
-      ((m.a)localIterator.next()).a();
+    QLog.d("MSF.C.NetConnTag", 1, "asyncSelectAndConnect threadId: " + Thread.currentThread().getId() + ", threadName" + Thread.currentThread().getName() + ", connID" + this.a);
+    if (!n.a(this.e, this.b, this.c, this.d, this.a)) {
+      this.e.i.a(-1, this.a);
     }
-    this.a.w.addAll(this.a.v);
-    this.a.v.clear();
-    this.a.x = null;
   }
 }
 

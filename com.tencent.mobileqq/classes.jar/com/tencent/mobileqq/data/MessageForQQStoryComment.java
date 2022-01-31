@@ -149,7 +149,7 @@ public class MessageForQQStoryComment
     return this.msg;
   }
   
-  protected void postRead()
+  public void postRead()
   {
     super.parse();
   }

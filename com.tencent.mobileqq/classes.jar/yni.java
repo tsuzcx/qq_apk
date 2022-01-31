@@ -1,29 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.adapter.BuddyListAdapter;
-import java.lang.ref.WeakReference;
+import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
 
 public class yni
-  implements View.OnClickListener
+  implements ynl
 {
-  private WeakReference a;
-  
-  public yni(BuddyListAdapter paramBuddyListAdapter)
+  public boolean a(ymw paramymw, String paramString, String... paramVarArgs)
   {
-    this.a = new WeakReference(paramBuddyListAdapter);
-  }
-  
-  public void onClick(View paramView)
-  {
-    BuddyListAdapter localBuddyListAdapter = (BuddyListAdapter)this.a.get();
-    if (localBuddyListAdapter != null) {
-      localBuddyListAdapter.onClick(paramView);
+    Object localObject = null;
+    wis localwis = wis.a();
+    localwis.a();
+    localwis.j(new ynj(this, paramymw, paramString, paramVarArgs, localwis));
+    if (paramymw != null) {}
+    for (paramString = paramymw.a();; paramString = null)
+    {
+      paramVarArgs = localObject;
+      if (paramymw != null) {
+        paramVarArgs = paramymw.a();
+      }
+      AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, false, "getUserInfo", paramVarArgs);
+      return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yni
  * JD-Core Version:    0.7.0.1
  */

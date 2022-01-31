@@ -1,24 +1,27 @@
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
-import android.os.Handler;
-import com.tencent.mobileqq.camera.CameraManager.CameraAFCallback;
-import com.tencent.mobileqq.camera.CameraManager.CameraProxy;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.TroopClassChoiceActivity;
+import com.tencent.mobileqq.activity.TroopClassChoiceActivity.GetClassChoiceCallBack.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class abwd
-  implements Camera.AutoFocusCallback
+  implements azrl
 {
-  private final Handler jdField_a_of_type_AndroidOsHandler;
-  private final CameraManager.CameraAFCallback jdField_a_of_type_ComTencentMobileqqCameraCameraManager$CameraAFCallback;
-  private final CameraManager.CameraProxy jdField_a_of_type_ComTencentMobileqqCameraCameraManager$CameraProxy;
+  public abwd(TroopClassChoiceActivity paramTroopClassChoiceActivity) {}
   
-  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
+  public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new abwe(this, paramBoolean));
+    if (paramBoolean)
+    {
+      this.a.a = azrj.a(BaseApplicationImpl.getContext()).a(BaseApplicationImpl.getContext(), TroopClassChoiceActivity.a(this.a));
+      this.a.runOnUiThread(new TroopClassChoiceActivity.GetClassChoiceCallBack.1(this));
+      return;
+    }
+    QLog.e("IphoneTitleBarActivity", 1, "getClassChoiceFromServer failed!");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abwd
  * JD-Core Version:    0.7.0.1
  */

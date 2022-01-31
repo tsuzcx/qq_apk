@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a041e" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <com.tencent.image.URLImageView android:layout_gravity="center_horizontal" android:id="@id/head" android:layout_width="50.0dip" android:layout_height="50.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0206b8" />
-        <com.tencent.av.widget.EllipseTextView android:textSize="12.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c054c" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03c7" android:layout_width="75.0dip" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="name" android:singleLine="true" />
-    </LinearLayout>
-</LinearLayout>

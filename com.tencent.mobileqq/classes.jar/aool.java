@@ -1,51 +1,48 @@
-import android.animation.Animator;
-import android.content.res.Resources;
-import android.view.View;
-import android.widget.Button;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowPlusPanel;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.search.FileSearchDetailFragment;
+import com.tencent.widget.ListView;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class aool
-  extends aooa
+  extends avkk<avon, avww>
 {
-  public aool(FlowCameraActivity2 paramFlowCameraActivity2) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public aool(FileSearchDetailFragment paramFileSearchDetailFragment, ListView paramListView, azwg paramazwg, avon paramavon, String paramString, QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "enterPtvModeAnimation: onAnimationEnd <<===");
-    }
-    this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.x();
-    this.a.m();
-    if (!this.a.g) {
-      this.a.e(false);
+    super(paramListView, paramazwg);
+    paramFileSearchDetailFragment = (aooj)paramavon;
+    if (paramFileSearchDetailFragment.jdField_a_of_type_JavaUtilList.size() > 1)
+    {
+      paramListView = new ArrayList();
+      paramazwg = paramFileSearchDetailFragment.jdField_a_of_type_JavaUtilList.iterator();
+      while (paramazwg.hasNext())
+      {
+        paramavon = (FileManagerEntity)paramazwg.next();
+        paramString = new aooj();
+        paramString.jdField_a_of_type_JavaLangString = paramFileSearchDetailFragment.jdField_a_of_type_JavaLangString;
+        paramString.jdField_a_of_type_JavaUtilList.add(paramavon);
+        paramListView.add(paramString);
+      }
+      a(paramListView);
     }
   }
   
-  public void onAnimationStart(Animator paramAnimator)
+  protected avri<avon, avww> a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "enterPtvModeAnimation: onAnimationStart ===>>");
-    }
-    this.a.e.setVisibility(0);
-    this.a.f.setBackgroundColor(this.a.getResources().getColor(2131493275));
-    this.a.d = true;
-    if (this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowPlusPanel != null) {
-      this.a.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaFlowPlusPanel.b();
-    }
-    if (this.a.g)
-    {
-      this.a.b.setOnTouchListener(this.a.jdField_a_of_type_AndroidViewView$OnTouchListener);
-      this.a.b.setLongClickable(false);
-    }
+    return new aooo(this.a.a);
+  }
+  
+  protected avwx a(int paramInt, ViewGroup paramViewGroup)
+  {
+    return new aoop(paramViewGroup);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aool
  * JD-Core Version:    0.7.0.1
  */

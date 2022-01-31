@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.readinjoy.view.fastweb.data;
 public class TextData
   extends BaseData
 {
-  public CharSequence a;
-  public String a;
+  public int a = 3;
+  public int b = 1;
   
   public TextData()
   {
-    this.d = 1;
+    super(1);
   }
 }
 

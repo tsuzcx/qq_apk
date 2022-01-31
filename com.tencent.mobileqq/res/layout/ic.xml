@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.widget.XListView android:scrollbarStyle="outsideOverlay" android:id="@id/i3h" android:paddingBottom="54.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/bw1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="68.0dip" android:layout_centerHorizontal="true">
+        <ImageView android:id="@id/bwf" android:layout_width="200.0dip" android:layout_height="145.0dip" />
+        <TextView android:textSize="14.0dip" android:textColor="#ff777777" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.5dip" android:text="@string/l41" android:layout_centerHorizontal="true" />
+    </LinearLayout>
+</RelativeLayout>

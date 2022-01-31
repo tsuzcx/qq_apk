@@ -1,29 +1,19 @@
-import com.tencent.biz.qqstory.playmode.IPlayVideoStatusChangeListener;
-import com.tencent.biz.qqstory.playmode.child.VidListPlayMode;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
-import java.util.ArrayList;
+import android.os.Handler;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.liveroom.LiveRoomGiftCallback;
 
-public class nqn
-  extends IPlayVideoStatusChangeListener
+class nqn
+  implements LiveRoomGiftCallback
 {
-  public nqn(VidListPlayMode paramVidListPlayMode) {}
+  nqn(nqi paramnqi) {}
   
-  public void c(int paramInt)
+  public void onCall(int paramInt, String paramString)
   {
-    if (paramInt < this.a.a.a.size() - 1) {
-      StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { VidListPlayMode.a(this.a), "", "", "" });
+    if (paramInt == 7)
+    {
+      QLog.d("KandianAdPandent", 2, "Vpng play completion!");
+      nqi.a(this.a).sendEmptyMessage(2);
     }
-  }
-  
-  public void d(int paramInt)
-  {
-    StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { VidListPlayMode.a(this.a), "", "", "" });
-  }
-  
-  public void e(int paramInt)
-  {
-    StoryReportor.a("content_flow", "switch_play", 0, 0, new String[] { VidListPlayMode.a(this.a), "", "", "" });
   }
 }
 

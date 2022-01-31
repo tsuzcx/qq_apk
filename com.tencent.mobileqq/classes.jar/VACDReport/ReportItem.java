@@ -6,7 +6,7 @@ import com.qq.taf.jce.JceStruct;
 
 public final class ReportItem
   extends JceStruct
-  implements Cloneable, Comparable
+  implements Cloneable, Comparable<ReportItem>
 {
   public long costTime;
   public long createTime;

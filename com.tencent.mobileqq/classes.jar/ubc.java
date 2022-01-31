@@ -1,26 +1,54 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import java.util.List;
+import android.app.PendingIntent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class ubc
-  implements Runnable
+public class ubc
+  implements DialogInterface.OnClickListener
 {
-  ubc(ubb paramubb, List paramList) {}
+  public ubc(QQStoryMainActivity paramQQStoryMainActivity, Intent paramIntent) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.jdField_a_of_type_Ubb.a.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout != null) && (this.jdField_a_of_type_Ubb.a.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() == -1) && (this.jdField_a_of_type_Ubb.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null))
+    switch (paramInt)
     {
-      this.jdField_a_of_type_Ubb.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(4);
-      this.jdField_a_of_type_Ubb.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_Ubb.a.d();
     }
+    do
+    {
+      do
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.qqstory.home.QQStoryMainActivity", 2, "qbShowShareResultDialog back");
+        }
+        mpw.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity, 0, "", "");
+        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity.finish();
+        try
+        {
+          paramDialogInterface = (PendingIntent)this.jdField_a_of_type_AndroidContentIntent.getParcelableExtra("activity_finish_run_pendingIntent");
+          if ((paramDialogInterface != null) && ((paramDialogInterface instanceof PendingIntent)))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "-->finish--send callback using PendingIntent");
+            }
+            paramDialogInterface.send();
+          }
+          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainActivity.moveTaskToBack(true);
+          return;
+        }
+        catch (Throwable paramDialogInterface) {}
+      } while (!QLog.isColorLevel());
+      QLog.e("Q.qqstory.home.QQStoryMainActivity", 2, "qbShowShareResultDialog ", paramDialogInterface);
+      return;
+    } while (!QLog.isColorLevel());
+    QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "-->qbShowShareResultDialog--stay");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ubc
  * JD-Core Version:    0.7.0.1
  */

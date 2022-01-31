@@ -1,56 +1,95 @@
-import android.util.SparseIntArray;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
-import java.util.ArrayList;
+import android.annotation.TargetApi;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.aio.AIOInputTypeHelper.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class acin
 {
-  private int jdField_a_of_type_Int;
-  private SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray;
-  private ArrayList jdField_a_of_type_JavaUtilArrayList;
+  public static volatile boolean a;
+  public static boolean b;
+  public static boolean c;
+  private static boolean d;
   
-  public acin(DragSortListView paramDragSortListView, int paramInt)
+  public static SharedPreferences a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray(paramInt);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramInt);
-    this.jdField_a_of_type_Int = paramInt;
+    return paramQQAppInterface.getApp().getSharedPreferences("sp_aio_input_helper_" + paramQQAppInterface.getAccount(), 0);
   }
   
-  public int a(int paramInt)
+  public static void a()
   {
-    return this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt, -1);
+    c = true;
+    BaseApplication.getContext().getSharedPreferences("sp_upgrade", 0).edit().putBoolean("upgrade", true).commit();
   }
   
-  public void a()
+  /* Error */
+  public static void a(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: aload_0
+    //   4: ifnull +11 -> 15
+    //   7: getstatic 70	acin:d	Z
+    //   10: istore_1
+    //   11: iload_1
+    //   12: ifeq +7 -> 19
+    //   15: ldc 2
+    //   17: monitorexit
+    //   18: return
+    //   19: aload_0
+    //   20: invokestatic 72	acin:a	(Lcom/tencent/mobileqq/app/QQAppInterface;)Landroid/content/SharedPreferences;
+    //   23: ldc 74
+    //   25: iconst_1
+    //   26: invokeinterface 78 3 0
+    //   31: putstatic 80	acin:a	Z
+    //   34: iconst_1
+    //   35: putstatic 70	acin:d	Z
+    //   38: goto -23 -> 15
+    //   41: astore_0
+    //   42: ldc 2
+    //   44: monitorexit
+    //   45: aload_0
+    //   46: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	47	0	paramQQAppInterface	QQAppInterface
+    //   10	2	1	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   7	11	41	finally
+    //   19	38	41	finally
   }
   
-  public void a(int paramInt1, int paramInt2)
+  @TargetApi(9)
+  public static boolean a(QQAppInterface paramQQAppInterface)
   {
-    int i = this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt1, -1);
-    if (i != paramInt2)
+    boolean bool1 = false;
+    if (!d) {
+      a(paramQQAppInterface);
+    }
+    if (a)
     {
-      if (i != -1) {
-        break label77;
-      }
-      if (this.jdField_a_of_type_AndroidUtilSparseIntArray.size() == this.jdField_a_of_type_Int) {
-        this.jdField_a_of_type_AndroidUtilSparseIntArray.delete(((Integer)this.jdField_a_of_type_JavaUtilArrayList.remove(0)).intValue());
+      a = false;
+      ThreadManager.getFileThreadHandler().post(new AIOInputTypeHelper.1(paramQQAppInterface));
+      boolean bool2 = true;
+      bool1 = bool2;
+      if (QLog.isColorLevel())
+      {
+        QLog.d("Q.aio.BaseChatPie", 2, "inputhelper : need guide");
+        bool1 = bool2;
       }
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidUtilSparseIntArray.put(paramInt1, paramInt2);
-      this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(paramInt1));
-      return;
-      label77:
-      this.jdField_a_of_type_JavaUtilArrayList.remove(Integer.valueOf(paramInt1));
-    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acin
  * JD-Core Version:    0.7.0.1
  */

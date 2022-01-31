@@ -9,14 +9,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mobileqq.utils.DisplayUtils;
+import ayls;
+import bacc;
 import com.tencent.qphone.base.util.QLog;
 import java.io.Serializable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class AudioInfo
-  extends MediaInfo
+  extends ayls
   implements Serializable, Cloneable
 {
   public static final String AUDIO_DURATION = "duration";
@@ -124,23 +125,23 @@ public class AudioInfo
     if (this.duration < 0) {
       return null;
     }
-    View localView = LayoutInflater.from(paramContext).inflate(2130969469, null);
-    RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131366629);
+    View localView = LayoutInflater.from(paramContext).inflate(2131494143, null);
+    RelativeLayout localRelativeLayout = (RelativeLayout)localView.findViewById(2131297311);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(localRelativeLayout.getLayoutParams());
     int i = (int)((this.mMaxLayoutLength - this.mMinLayoutLength) / 60000.0F * this.duration + this.mMinLayoutLength);
     if (this.duration < 60000) {}
-    for (localLayoutParams.width = ((int)DisplayUtils.a(paramContext, i));; localLayoutParams.width = ((int)DisplayUtils.a(paramContext, this.mMaxLayoutLength)))
+    for (localLayoutParams.width = ((int)bacc.a(paramContext, i));; localLayoutParams.width = ((int)bacc.a(paramContext, this.mMaxLayoutLength)))
     {
-      localLayoutParams.height = ((int)DisplayUtils.a(paramContext, 41.0F));
-      localLayoutParams.topMargin = ((int)DisplayUtils.a(paramContext, 12.0F));
-      localLayoutParams.leftMargin = ((int)DisplayUtils.a(paramContext, 3.0F));
+      localLayoutParams.height = ((int)bacc.a(paramContext, 41.0F));
+      localLayoutParams.topMargin = ((int)bacc.a(paramContext, 12.0F));
+      localLayoutParams.leftMargin = ((int)bacc.a(paramContext, 3.0F));
       localRelativeLayout.setLayoutParams(localLayoutParams);
-      i = (int)DisplayUtils.a(paramContext, 5.0F);
+      i = (int)bacc.a(paramContext, 5.0F);
       localRelativeLayout.setPadding(i, i, i, i);
-      localView.findViewById(2131366632).setOnClickListener(paramOnClickListener);
-      this.mAudioIcon = ((ImageView)localView.findViewById(2131366630));
+      localView.findViewById(2131297314).setOnClickListener(paramOnClickListener);
+      this.mAudioIcon = ((ImageView)localView.findViewById(2131297313));
       this.mAudioIcon.setOnClickListener(paramOnClickListener);
-      paramContext = (TextView)localView.findViewById(2131366631);
+      paramContext = (TextView)localView.findViewById(2131297312);
       paramContext.setOnClickListener(paramOnClickListener);
       paramContext.setText(getAudioTime(this.duration));
       return localView;
@@ -159,7 +160,7 @@ public class AudioInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.AudioInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ public final class cell_recomm_header
   extends JceStruct
 {
   static s_button cache_left_top_button = new s_button();
-  static Map cache_mapCoverUrl = new HashMap();
+  static Map<String, s_picurl> cache_mapCoverUrl = new HashMap();
   public String action_type = "";
   public String action_url = "";
   public byte btn_type;
@@ -20,7 +20,7 @@ public final class cell_recomm_header
   public int icon_width;
   public String left_title = "";
   public s_button left_top_button;
-  public Map mapCoverUrl;
+  public Map<String, s_picurl> mapCoverUrl;
   public long recomm_uin;
   public String right_title = "";
   
@@ -32,7 +32,7 @@ public final class cell_recomm_header
   
   public cell_recomm_header() {}
   
-  public cell_recomm_header(String paramString1, byte paramByte, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, Map paramMap, long paramLong, String paramString5, String paramString6, s_button params_button)
+  public cell_recomm_header(String paramString1, byte paramByte, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, Map<String, s_picurl> paramMap, long paramLong, String paramString5, String paramString6, s_button params_button)
   {
     this.left_title = paramString1;
     this.btn_type = paramByte;
@@ -98,7 +98,7 @@ public final class cell_recomm_header
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_recomm_header
  * JD-Core Version:    0.7.0.1
  */

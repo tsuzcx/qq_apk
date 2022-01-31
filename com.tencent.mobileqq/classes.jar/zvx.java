@@ -1,45 +1,47 @@
-import com.tencent.mobileqq.app.activateFriends.ActivateFriendServlet;
-import com.tencent.mobileqq.app.activateFriends.ActivateFriendsManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.util.Pair;
+import java.util.ArrayList;
 
 public class zvx
-  implements Runnable
+  extends ajmm
 {
-  public zvx(ActivateFriendsManager paramActivateFriendsManager) {}
+  public zvx(AccountManageActivity paramAccountManageActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString, axau paramaxau)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if (Math.abs(System.currentTimeMillis() - ActivateFriendsManager.a(this.a)) > ActivateFriendsManager.b(this.a))
+    if (this.a.isFinishing()) {}
+    axam localaxam;
+    do
     {
-      bool1 = true;
-      if (Math.abs(System.currentTimeMillis() - ActivateFriendsManager.c(this.a)) <= ActivateFriendsManager.d(this.a)) {
-        break label168;
+      for (;;)
+      {
+        return;
+        AccountManageActivity.a(this.a, false);
+        localaxam = (axam)this.a.app.getManager(62);
+        if (paramaxau.a != 1) {
+          break;
+        }
+        if ((this.a.isResume()) && (axam.a(this.a.app, "sub.uin.all")))
+        {
+          paramString = localaxam.a("sub.uin.all");
+          int j = paramString.size();
+          int i = 0;
+          while (i < j)
+          {
+            paramaxau = (Pair)paramString.get(i);
+            localaxam.a(this.a.app, this.a, paramaxau, new zvy(this, localaxam, paramaxau));
+            i += 1;
+          }
+        }
       }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ActivateFriends.Manager", 2, "checkRunnable | lastBirthdayCheckInStamp = " + ActivateFriendsManager.a(this.a) + " | checkBirthdayInterval = " + ActivateFriendsManager.b(this.a) + " | lastMemorialCheckInStamp = " + ActivateFriendsManager.c(this.a) + " | checkMemorialInterval = " + ActivateFriendsManager.d(this.a) + " | isBirthday = " + bool1 + " | isMemorial = " + bool2);
-      }
-      if ((bool1) || (bool2)) {
-        break label173;
-      }
-      return;
-      bool1 = false;
-      break;
-      label168:
-      bool2 = false;
-    }
-    label173:
-    ActivateFriendServlet.a(ActivateFriendsManager.a(this.a), bool1, bool2);
-    this.a.a = ActivateFriendsManager.a(this.a);
+    } while (!this.a.isResume());
+    localaxam.a(paramString, 1, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zvx
  * JD-Core Version:    0.7.0.1
  */

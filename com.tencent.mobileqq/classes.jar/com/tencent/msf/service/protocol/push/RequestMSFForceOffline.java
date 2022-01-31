@@ -8,14 +8,14 @@ public final class RequestMSFForceOffline
   extends JceStruct
 {
   static byte[] cache_vecSigKickData;
-  public byte bKickType;
-  public byte bSameDevice;
-  public byte bSigKick;
-  public long iSeqno;
-  public long lUin;
+  public byte bKickType = 0;
+  public byte bSameDevice = 0;
+  public byte bSigKick = 0;
+  public long iSeqno = 0L;
+  public long lUin = 0L;
   public String strInfo = "";
   public String strTitle = "";
-  public byte[] vecSigKickData;
+  public byte[] vecSigKickData = null;
   
   public RequestMSFForceOffline() {}
   

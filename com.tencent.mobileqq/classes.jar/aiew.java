@@ -1,95 +1,55 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.video.decode.ShortVideoSoLoad;
-import java.io.File;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import com.tencent.TMG.opengl.GraphicRendererMgr;
+import com.tencent.TMG.sdk.AVContext;
+import com.tencent.TMG.sdk.AVVideoCtrl;
+import com.tencent.TMG.utils.QLog;
 
-public final class aiew
-  implements Runnable
+public class aiew
+  implements SurfaceHolder.Callback
 {
-  public void run()
+  aiew(aiev paramaiev) {}
+  
+  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
   {
-    String str1 = ShortVideoSoLoad.getShortVideoSoPath(VideoEnvironment.a());
-    Object localObject1 = new File(str1 + VideoEnvironment.b());
-    if (((File)localObject1).exists()) {
-      ((File)localObject1).delete();
-    }
-    localObject1 = new File(str1 + VideoEnvironment.c());
-    if (((File)localObject1).exists()) {
-      ((File)localObject1).delete();
-    }
-    String str2 = aies.a();
-    File[] arrayOfFile = new File(str1).listFiles();
-    int i = VideoEnvironment.a().length;
-    int j;
-    Object localObject2;
-    Object localObject3;
-    int m;
-    if ((arrayOfFile != null) && (arrayOfFile.length > i + 3))
-    {
-      j = 2147483647;
-      localObject1 = "unknown";
-      int k = 0;
-      i = 0;
-      if (k < arrayOfFile.length)
-      {
-        if (arrayOfFile[k] == null) {}
-        for (;;)
-        {
-          k += 1;
-          break;
-          localObject2 = arrayOfFile[k].getName();
-          if ((!str2.equalsIgnoreCase((String)localObject2)) && (!VideoEnvironment.a((String)localObject2)))
-          {
-            localObject3 = aies.a((String)localObject2);
-            m = ((aiet)localObject3).a();
-            if (m == 0) {
-              break label306;
-            }
-            VideoEnvironment.a("[executeClearHistorySOLibFile] errorCodec=" + m + "  filename=" + (String)localObject2, null);
-            localObject2 = new File(str1 + (String)localObject2);
-            if ((((File)localObject2).exists()) && (((File)localObject2).isFile())) {
-              ((File)localObject2).delete();
-            }
-          }
-        }
-        label306:
-        localObject3 = ((aiet)localObject3).b();
-      }
-    }
-    label506:
-    for (;;)
-    {
-      try
-      {
-        m = Integer.parseInt((String)localObject3);
-        if (m >= j) {
-          break label506;
-        }
-        j = m;
-        localObject1 = localObject2;
-        i += 1;
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        VideoEnvironment.a("[executeClearHistorySOLibFile] filename=" + (String)localObject2 + "  tempVersion=" + (String)localObject3, localNumberFormatException);
-      }
-      break;
-      VideoEnvironment.a("[executeClearHistorySOLibFile] deleteName=" + (String)localObject1 + "  validNumLibso=" + i + " leastVersion=" + j, null);
-      if (i >= 3)
-      {
-        localObject1 = new File(str1 + (String)localObject1);
-        if ((((File)localObject1).exists()) && (((File)localObject1).isFile()))
-        {
-          VideoEnvironment.a("[executeClearHistorySOLibFile] deletePath=" + ((File)localObject1).getAbsolutePath(), null);
-          ((File)localObject1).delete();
-        }
-      }
+    if (paramSurfaceHolder.getSurface() == null) {
       return;
     }
+    paramSurfaceHolder.setFixedSize(paramInt2, paramInt3);
+    QLog.e("AVCameraCaptureModel", 0, "memoryLeak surfaceChanged");
+  }
+  
+  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  {
+    if (GraphicRendererMgr.getInstance() != null)
+    {
+      aixa.a(aiev.a(this.a)).a().setRenderMgrAndHolder(GraphicRendererMgr.getInstance(), paramSurfaceHolder);
+      aixa.a(aiev.a(this.a)).a().getVideoCtrl().setLocalVideoPreviewCallback(new aiex(this));
+      aixa.a(aiev.a(this.a)).a().getVideoCtrl().setRemoteVideoPreviewCallback(new aiey(this));
+    }
+    for (;;)
+    {
+      QLog.e("AVCameraCaptureModel", 0, "memoryLeak surfaceCreated");
+      return;
+      QLog.e("AVCameraCaptureModel", 0, "GraphicRendererMgr is null, so can't load");
+    }
+  }
+  
+  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+  {
+    paramSurfaceHolder = this.a.a();
+    if (paramSurfaceHolder == null)
+    {
+      QLog.e("AVCameraCaptureModel", 0, "memoryLeak surfaceDestroyed avCtrl == null");
+      return;
+    }
+    paramSurfaceHolder.enableCamera(0, false, new aiez(this));
+    QLog.e("AVCameraCaptureModel", 0, "memoryLeak surfaceDestroyed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiew
  * JD-Core Version:    0.7.0.1
  */

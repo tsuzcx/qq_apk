@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="100.0dip" android:layout_height="178.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.qqstory.storyHome.qqstorylist.autoplay.QQStoryAutoPlayView android:id="@id/gwl" android:layout_width="100.0dip" android:layout_height="178.0dip" />
+    <View android:background="@drawable/amo" android:layout_width="fill_parent" android:layout_height="109.0dip" android:layout_alignParentBottom="true" />
+    <View android:id="@id/bb8" android:background="#26000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/edt" android:paddingBottom="4.5dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_above="@id/ka0" android:layout_centerHorizontal="true">
+        <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/tv_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:maxWidth="62.0dip" android:singleLine="true" android:shadowColor="#4d000000" android:shadowRadius="1.0" />
+        <com.tencent.biz.qqstory.view.widget.StoryUserBadgeView android:layout_gravity="center_vertical" android:id="@id/kyg" android:layout_width="13.0dip" android:layout_height="13.0dip" android:src="@drawable/btl" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/ms" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/ka0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="@dimen/mu" android:singleLine="true" android:shadowColor="#4d000000" android:shadowRadius="1.0" android:layout_above="@id/kb1" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/kb1" android:layout_width="60.0dip" android:layout_height="25.0dip" android:layout_marginBottom="10.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

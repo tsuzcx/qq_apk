@@ -24,7 +24,7 @@ public class NetworkManager
   public static final int Operator_Unknown = 0;
   public static final int Operator_WIFI = 4;
   private static Context mContext;
-  private static List mNetworkListener = Collections.synchronizedList(new ArrayList());
+  private static List<WeakReference<NetworkManager.NetStatusListener>> mNetworkListener = Collections.synchronizedList(new ArrayList());
   private static NetworkManager.NetworkChangeReceiver sNetworkChangeReceiver;
   
   public static String getApnValue()
@@ -76,7 +76,7 @@ public class NetworkManager
   
   private static int getOperator()
   {
-    return Config.c();
+    return Config.getOperator();
   }
   
   public static void init(Context paramContext)
@@ -94,7 +94,7 @@ public class NetworkManager
     }
     catch (Exception paramContext)
     {
-      QDLog.d("NetworkManager", "downloader register NetworkChangeReceiver failed!", paramContext);
+      QDLog.e("NetworkManager", "downloader register NetworkChangeReceiver failed!", paramContext);
     }
   }
   

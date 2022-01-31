@@ -1,27 +1,52 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment.FlowLayoutKeywordsListAdapter;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment.FlowLayoutKeywordsListAdapter.OnItemClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class ajrf
-  implements View.OnClickListener
+  extends ajfb
 {
-  public int a;
-  public TextView a;
+  public static String a = "Add_friend_to_desktop|";
+  public static String b = "Click_desktop_friend|";
+  private String c = "FuMeiTiCeSu|";
   
-  private ajrf(SearchReciteArticleFragment.FlowLayoutKeywordsListAdapter paramFlowLayoutKeywordsListAdapter) {}
-  
-  public void onClick(View paramView)
+  public ajrf(QQAppInterface paramQQAppInterface)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment$FlowLayoutKeywordsListAdapter.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment$FlowLayoutKeywordsListAdapter.a.a(paramView, this.jdField_a_of_type_Int);
+    super(paramQQAppInterface);
+  }
+  
+  public static String a(String paramString1, String paramString2, String paramString3, String paramString4)
+  {
+    return "PLUG|" + paramString1 + "|" + paramString2 + "|internal|" + paramString3 + "|PB|" + paramString4 + "||";
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    if ((paramBundle != null) && (paramBundle.containsKey("data")))
+    {
+      ToServiceMsg localToServiceMsg = createToServiceMsg("CliLogSvc.UploadReq");
+      localToServiceMsg.extraData.putAll(paramBundle);
+      super.send(localToServiceMsg);
     }
   }
+  
+  public void a(String[] paramArrayOfString)
+  {
+    ToServiceMsg localToServiceMsg = createToServiceMsg("CliLogSvc.UploadReq");
+    localToServiceMsg.extraData.putStringArray("data", paramArrayOfString);
+    super.send(localToServiceMsg);
+  }
+  
+  protected Class<? extends ajfe> observerClass()
+  {
+    return null;
+  }
+  
+  public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajrf
  * JD-Core Version:    0.7.0.1
  */

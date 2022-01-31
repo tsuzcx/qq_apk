@@ -1,18 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.widget.AbsListView;
 
-public class mmd
-  extends FriendListObserver
+class mmd
+  implements begh
 {
-  public mmd(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  mmd(mmb parammmb, PoiMapActivity paramPoiMapActivity) {}
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (((this.a.a == 0) || (this.a.a == 70)) && (paramBoolean))
+    if ((paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (this.jdField_a_of_type_Mmb.jdField_a_of_type_Mly.b))
     {
-      QLog.d("ReadInJoyListViewGroup", 1, "onUpdateFriendInfo uin:" + paramString);
-      this.a.k();
+      this.jdField_a_of_type_Mmb.b(false);
+      if (!PoiMapActivity.b(this.jdField_a_of_type_Mmb.jdField_a_of_type_ComTencentBizPoiMapActivity)) {
+        this.jdField_a_of_type_Mmb.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "turn_page", this.jdField_a_of_type_Mmb.jdField_a_of_type_ComTencentBizPoiMapActivity.f, this.jdField_a_of_type_Mmb.jdField_a_of_type_ComTencentBizPoiMapActivity.e, "", "");
+      }
     }
   }
 }

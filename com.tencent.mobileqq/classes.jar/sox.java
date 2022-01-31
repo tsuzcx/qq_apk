@@ -1,32 +1,71 @@
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import android.os.Bundle;
+import android.text.Editable;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.biz.qqstory.debug.activities.DebugPromoteTaskCode.1;
+import com.tencent.biz.qqstory.debug.activities.DebugPromoteTaskCode.2;
+import com.tencent.biz.qqstory.debug.activities.DebugPromoteTaskCode.3;
+import com.tencent.biz.qqstory.debug.activities.DebugPromoteTaskCode.4;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.app.AppRuntime;
 
 public class sox
-  implements WXShareHelper.WXShareListener
+  extends ukz
+  implements View.OnClickListener
 {
-  public sox(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  public EditText a;
+  public sqe a;
+  public EditText b;
   
-  public void a(BaseResp paramBaseResp)
+  public void a()
   {
-    if ((this.a.a == null) || (!this.a.a.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    switch (paramBaseResp.errCode)
+    super.a();
+  }
+  
+  public void a(Bundle paramBundle1, Bundle paramBundle2)
+  {
+    super.a(paramBundle1, paramBundle2);
+    this.jdField_a_of_type_Sqe = ((sqe)sqg.a(29));
+    a(2131492905);
+    a(2131297994).setOnClickListener(this);
+    a(2131298041).setOnClickListener(this);
+    a(2131297950).setOnClickListener(this);
+    a(2131298069).setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)a(2131299940));
+    this.b = ((EditText)a(2131299907));
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
     {
-    case -2: 
-    case -1: 
     default: 
-      QRUtils.a(1, 2131435319);
+      return;
+    case 2131297994: 
+      ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.1(this), true);
+      return;
+    case 2131298041: 
+      ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.2(this), true);
+      return;
+    case 2131297950: 
+      ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.3(this));
+      return;
+    case 2131297952: 
+      this.b.getText().toString();
+      this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+      this.b.getText().clear();
+      this.jdField_a_of_type_AndroidWidgetEditText.getText().clear();
+      new sow(BaseApplicationImpl.getApplication().getRuntime().getAccount()).a();
       return;
     }
-    QRUtils.a(2, 2131435318);
+    ThreadManager.executeOnSubThread(new DebugPromoteTaskCode.4(this, this.b.getText().toString(), this.jdField_a_of_type_AndroidWidgetEditText.getText().toString()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sox
  * JD-Core Version:    0.7.0.1
  */

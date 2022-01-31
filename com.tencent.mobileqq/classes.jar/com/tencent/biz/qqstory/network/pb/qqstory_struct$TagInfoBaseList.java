@@ -8,11 +8,11 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class qqstory_struct$TagInfoBaseList
-  extends MessageMicro
+  extends MessageMicro<TagInfoBaseList>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField feed_id = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField tag_info_list = PBField.initRepeatMessage(qqstory_struct.TagInfoBase.class);
+  public final PBRepeatMessageField<qqstory_struct.TagInfoBase> tag_info_list = PBField.initRepeatMessage(qqstory_struct.TagInfoBase.class);
   
   static
   {
@@ -22,7 +22,7 @@ public final class qqstory_struct$TagInfoBaseList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBaseList
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.tmassistantsdk.internal.a;
 
 import com.tencent.tmassistantbase.util.a;
-import com.tencent.tmassistantbase.util.e;
+import com.tencent.tmassistantbase.util.f;
 import java.io.UnsupportedEncodingException;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -46,7 +46,7 @@ public class c
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
       return null;
     }
-    paramArrayOfByte = new e().a(paramArrayOfByte, "&-*)Wb5_U,[^!9'+".getBytes());
+    paramArrayOfByte = new f().a(paramArrayOfByte, "&-*)Wb5_U,[^!9'+".getBytes());
     if (paramArrayOfByte != null) {}
     try
     {
@@ -127,7 +127,7 @@ public class c
         localObject = ((String)localObject).getBytes("UTF-8");
         if (localObject != null)
         {
-          localObject = new e().b((byte[])localObject, "&-*)Wb5_U,[^!9'+".getBytes());
+          localObject = new f().b((byte[])localObject, "&-*)Wb5_U,[^!9'+".getBytes());
           return localObject;
         }
       }
@@ -148,7 +148,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-
-public class urc
-  implements DialogInterface.OnClickListener
+public abstract interface urc
 {
-  public urc(PlusPanel paramPlusPanel) {}
+  public abstract void Q_();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void a(vil paramvil);
+  
+  public abstract void f();
+  
+  public abstract void h();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     urc
  * JD-Core Version:    0.7.0.1
  */

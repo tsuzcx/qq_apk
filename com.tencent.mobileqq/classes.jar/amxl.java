@@ -1,30 +1,32 @@
-import android.content.Context;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
 
-public class amxl
-  extends QQProgressDialog
+class amxl
+  extends Handler
 {
-  public amxl(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity, Context paramContext, int paramInt)
+  amxl(amxj paramamxj, Looper paramLooper)
   {
-    super(paramContext, paramInt);
+    super(paramLooper);
   }
   
-  public void onBackPressed()
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.a) {
-      super.onBackPressed();
+    switch (paramMessage.what)
+    {
     }
-    while (!QLog.isColorLevel()) {
+    do
+    {
       return;
-    }
-    QLog.d("IphoneTitleBarActivity", 2, "tool process has started, cancel by the tool");
+    } while (amxj.a(this.a));
+    QLog.e("CameraHelper", 1, "checkPermission uncertain");
+    amxj.a(this.a, false, 1830004);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amxl
  * JD-Core Version:    0.7.0.1
  */

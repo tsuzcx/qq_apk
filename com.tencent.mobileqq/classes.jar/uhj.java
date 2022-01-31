@@ -1,23 +1,30 @@
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 
 public class uhj
-  extends FriendListObserver
 {
-  public uhj(TroopRequestActivity paramTroopRequestActivity) {}
+  public StoryVideoItem a;
+  public String a;
+  public boolean a;
+  public boolean b = true;
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public uhj(String paramString, StoryVideoItem paramStoryVideoItem)
   {
-    if ((!paramBoolean) || (paramString == null)) {
-      return;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = paramStoryVideoItem;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject instanceof uhj)) {
+      return TextUtils.equals(this.jdField_a_of_type_JavaLangString, ((uhj)paramObject).jdField_a_of_type_JavaLangString);
     }
-    ThreadManager.post(new uhk(this, paramString), 5, null, true);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uhj
  * JD-Core Version:    0.7.0.1
  */

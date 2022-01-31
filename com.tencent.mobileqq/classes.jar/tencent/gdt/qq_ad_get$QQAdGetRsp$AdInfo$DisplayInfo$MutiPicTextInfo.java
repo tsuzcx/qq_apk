@@ -7,12 +7,12 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class qq_ad_get$QQAdGetRsp$AdInfo$DisplayInfo$MutiPicTextInfo
-  extends MessageMicro
+  extends MessageMicro<MutiPicTextInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26 }, new String[] { "txt", "image", "url" }, new Object[] { "", "", "" }, MutiPicTextInfo.class);
-  public final PBRepeatField image = PBField.initRepeat(PBStringField.__repeatHelper__);
-  public final PBRepeatField txt = PBField.initRepeat(PBStringField.__repeatHelper__);
-  public final PBRepeatField url = PBField.initRepeat(PBStringField.__repeatHelper__);
+  public final PBRepeatField<String> image = PBField.initRepeat(PBStringField.__repeatHelper__);
+  public final PBRepeatField<String> txt = PBField.initRepeat(PBStringField.__repeatHelper__);
+  public final PBRepeatField<String> url = PBField.initRepeat(PBStringField.__repeatHelper__);
 }
 
 

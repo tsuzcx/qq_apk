@@ -36,14 +36,13 @@ public final class CertificateChainCleaner
   }
   
   public List<Certificate> clean(List<Certificate> paramList)
-    throws SSLPeerUnverifiedException
   {
     paramList = new ArrayDeque(paramList);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramList.removeFirst());
     int j = 0;
     int i = 0;
-    if (i < 9)
+    if (j < 9)
     {
       X509Certificate localX509Certificate1 = (X509Certificate)localArrayList.get(localArrayList.size() - 1);
       Object localObject = this.trustRootIndex.findByIssuerAndSignature(localX509Certificate1);
@@ -52,29 +51,30 @@ public final class CertificateChainCleaner
         if ((localArrayList.size() > 1) || (!localX509Certificate1.equals(localObject))) {
           localArrayList.add(localObject);
         }
-        if (!verifySignature((X509Certificate)localObject, (X509Certificate)localObject)) {}
-      }
-      do
-      {
-        return localArrayList;
-        j = 1;
-        for (;;)
-        {
-          i += 1;
-          break;
-          localObject = paramList.iterator();
-          X509Certificate localX509Certificate2;
-          do
-          {
-            if (!((Iterator)localObject).hasNext()) {
-              break;
-            }
-            localX509Certificate2 = (X509Certificate)((Iterator)localObject).next();
-          } while (!verifySignature(localX509Certificate1, localX509Certificate2));
-          ((Iterator)localObject).remove();
-          localArrayList.add(localX509Certificate2);
+        if (verifySignature((X509Certificate)localObject, (X509Certificate)localObject)) {
+          return localArrayList;
         }
-      } while (j != 0);
+        i = 1;
+      }
+      for (;;)
+      {
+        j += 1;
+        break;
+        localObject = paramList.iterator();
+        X509Certificate localX509Certificate2;
+        do
+        {
+          if (!((Iterator)localObject).hasNext()) {
+            break;
+          }
+          localX509Certificate2 = (X509Certificate)((Iterator)localObject).next();
+        } while (!verifySignature(localX509Certificate1, localX509Certificate2));
+        ((Iterator)localObject).remove();
+        localArrayList.add(localX509Certificate2);
+      }
+      if (i != 0) {
+        return localArrayList;
+      }
       throw new SSLPeerUnverifiedException("Failed to find a trusted cert that signed " + localX509Certificate1);
     }
     throw new SSLPeerUnverifiedException("Certificate chain too long: " + localArrayList);

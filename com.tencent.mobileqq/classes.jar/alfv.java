@@ -1,44 +1,83 @@
+import android.app.Activity;
+import android.graphics.Rect;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.View;
-import com.tencent.mobileqq.arcard.ARCardLoadingProgressView;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.mobileqq.worldcup.WorldCupShareFragment;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView;
 
-class alfv
-  implements Runnable
+public class alfv
 {
-  alfv(alfu paramalfu, boolean paramBoolean, int paramInt) {}
+  private int jdField_a_of_type_Int;
+  private View jdField_a_of_type_AndroidViewView;
+  private ViewGroup.MarginLayoutParams jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams;
+  private ArkAppView jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
+  private int b;
+  private int c;
   
-  public void run()
+  private alfv(Activity paramActivity, ArkAppView paramArkAppView)
   {
-    if (((ARCardLoadingProgressView)this.jdField_a_of_type_Alfu.a.getView().findViewById(2131375575)).getVisibility() == 0)
+    this.jdField_a_of_type_AndroidViewView = ((FrameLayout)paramActivity.findViewById(16908290)).getChildAt(0);
+    if (this.jdField_a_of_type_AndroidViewView != null) {
+      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(new alfw(this));
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView = paramArkAppView;
+    this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams = ((ViewGroup.MarginLayoutParams)paramArkAppView.getLayoutParams());
+    paramArkAppView = new DisplayMetrics();
+    paramActivity.getWindowManager().getDefaultDisplay().getMetrics(paramArkAppView);
+    this.c = paramArkAppView.heightPixels;
+    this.b = this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.topMargin;
+  }
+  
+  private int a()
+  {
+    Rect localRect = new Rect();
+    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(localRect);
+    return localRect.bottom - localRect.top;
+  }
+  
+  private void a()
+  {
+    int i = a();
+    if (i != this.jdField_a_of_type_Int)
     {
-      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int == 0))
-      {
-        WorldCupShareFragment.a(this.jdField_a_of_type_Alfu.a);
-        WorldCupShareFragment.b(this.jdField_a_of_type_Alfu.a);
+      int k = this.jdField_a_of_type_AndroidViewView.getRootView().getHeight();
+      int j = k - i;
+      if (j <= k / 4) {
+        break label104;
       }
-    }
-    else {
-      return;
-    }
-    int i;
-    if (this.jdField_a_of_type_Int == 12)
-    {
-      i = 2131439419;
-      WorldCupShareFragment.a("0X8009319", 2);
+      Rect localRect = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getInputRect();
+      int[] arrayOfInt = new int[2];
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getLocationOnScreen(arrayOfInt);
+      k = localRect.bottom + arrayOfInt[1];
+      j = this.c - j;
+      if (j < k)
+      {
+        this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.topMargin = (j - k);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.requestLayout();
+      }
     }
     for (;;)
     {
-      QQToast.a(BaseApplication.getContext(), 1, i, 0).a();
-      break;
-      i = 2131439414;
+      this.jdField_a_of_type_Int = i;
+      return;
+      label104:
+      this.jdField_a_of_type_AndroidViewViewGroup$MarginLayoutParams.topMargin = this.b;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.requestLayout();
     }
+  }
+  
+  public static void a(Activity paramActivity, ArkAppView paramArkAppView)
+  {
+    new alfv(paramActivity, paramArkAppView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alfv
  * JD-Core Version:    0.7.0.1
  */

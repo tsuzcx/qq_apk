@@ -1,26 +1,51 @@
-import com.tencent.mobileqq.activity.NotifyPCActiveActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.QQStoryWarningActivity;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.Data;
+import com.tencent.biz.qqstory.playvideo.entrance.OpenPlayerBuilder.UIStyle;
+import com.tencent.biz.qqstory.playvideo.entrance.VidListPlayInfo;
 
-public class tik
-  extends CardObserver
+final class tik
+  extends tgl
 {
-  public tik(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
+  tik(String paramString1, String paramString2, int paramInt, Context paramContext) {}
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
+  public void a(int paramInt, String paramString, StoryVideoItem paramStoryVideoItem)
   {
-    if (paramBoolean1)
+    if ((paramInt == 0) && (paramStoryVideoItem != null))
     {
-      SettingCloneUtil.writeValue(this.a.app.getApp(), paramString2, null, "qqsetting_pcactive_key", true);
-      QLog.i("CardObserver_onSetPCActiveState", 1, "Set the PC Active State " + paramBoolean1);
+      paramString = new OpenPlayerBuilder(new VidListPlayInfo(this.jdField_a_of_type_JavaLangString, this.b), this.jdField_a_of_type_Int).a();
+      OpenPlayerBuilder.UIStyle localUIStyle = paramString.mUIStyle;
+      if (paramStoryVideoItem.mInteractStatus == 1) {}
+      for (paramInt = 1;; paramInt = 2)
+      {
+        localUIStyle.bottomWidgetShowFlag = paramInt;
+        paramString.mUIStyle.mPlayerRepeatMode = 1;
+        tij.a(this.jdField_a_of_type_AndroidContentContext, paramString, null);
+        return;
+      }
     }
+    if (paramInt == 10100)
+    {
+      paramString = new Intent(this.jdField_a_of_type_AndroidContentContext, QQStoryWarningActivity.class);
+      paramString.putExtra("tipsResource", ajjy.a(2131648754));
+      this.jdField_a_of_type_AndroidContentContext.startActivity(paramString);
+      return;
+    }
+    if (!TextUtils.isEmpty(paramString))
+    {
+      bbmy.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, paramString, 0).a();
+      return;
+    }
+    bbmy.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 1, ajjy.a(2131648755) + paramInt, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tik
  * JD-Core Version:    0.7.0.1
  */

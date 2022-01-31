@@ -1,30 +1,52 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.support.annotation.Nullable;
+import com.tencent.map.geolocation.TencentLocation;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class swl
-  implements Animation.AnimationListener
+public abstract class swl
 {
-  public swl(FriendProfileImageActivity paramFriendProfileImageActivity, TextView paramTextView) {}
+  public long a;
+  protected AtomicBoolean a;
+  public boolean a;
+  public long b;
+  public boolean b;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public swl()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  public void a()
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageActivity.f) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
+  {
+    this.jdField_a_of_type_Boolean = false;
+  }
+  
+  public void a(String paramString)
+  {
+    long l2 = System.currentTimeMillis();
+    long l1 = this.b - this.jdField_a_of_type_Long;
+    l2 -= this.b;
+    urk.c(paramString, "page network respond times " + l1);
+    urk.c(paramString, "page db times " + l2);
+  }
+  
+  public void b()
+  {
+    this.b = System.currentTimeMillis();
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     swl
  * JD-Core Version:    0.7.0.1
  */

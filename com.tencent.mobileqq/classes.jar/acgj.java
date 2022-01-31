@@ -1,31 +1,19 @@
-import com.tencent.mobileqq.doutu.DoutuEmotionAdapter;
-import com.tencent.mobileqq.doutu.DoutuManager;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class acgj
-  implements Runnable
+class acgj
+  implements View.OnClickListener
 {
-  public acgj(DoutuManager paramDoutuManager, boolean paramBoolean1, List paramList, boolean paramBoolean2, long paramLong) {}
+  acgj(acgg paramacgg, acgd paramacgd) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuManager.a != null)
-    {
-      if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaUtilList.size() < 0)) {
-        break label52;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuManager.a.a(this.jdField_a_of_type_JavaUtilList, this.b, this.jdField_a_of_type_Long);
-    }
-    label52:
-    while (!this.b) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuManager.a.a(this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_Acgg.a.a(this.jdField_a_of_type_Acgd);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acgj
  * JD-Core Version:    0.7.0.1
  */

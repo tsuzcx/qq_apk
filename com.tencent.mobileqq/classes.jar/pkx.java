@@ -1,131 +1,132 @@
-import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
-import android.os.Build.VERSION;
-import com.tencent.component.media.ImageManagerEnv;
-import com.tencent.component.media.image.BitmapReference;
-import com.tencent.component.media.image.DecodeImageTask;
-import com.tencent.component.media.image.ImageKey;
-import com.tencent.component.media.image.ImageLoader.Options;
-import com.tencent.component.media.image.ImageManager;
-import com.tencent.component.media.image.ImageProcessor;
-import com.tencent.component.media.image.ImageTracer;
-import com.tencent.component.media.image.ProgressTracer;
-import com.tencent.component.media.image.drawable.BitmapImageDrawable;
-import com.tencent.component.media.image.drawable.SpecifiedBitmapDrawable;
-import com.tencent.component.media.image.image.BitmapImage;
-import com.tencent.component.media.image.image.FeedsBitmapImage;
-import com.tencent.component.media.utils.BaseHandler;
-import com.tencent.component.media.utils.ImageManagerLog;
-import com.tencent.component.media.utils.RapidNetUtils;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentRecommendFollowList;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.RecommendFollowInfo;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
 import java.util.HashMap;
+import java.util.List;
 
 public class pkx
-  implements Runnable
+  extends BaseAdapter
 {
-  public pkx(DecodeImageTask paramDecodeImageTask, ImageKey paramImageKey, Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3) {}
+  private List<RecommendFollowInfo> jdField_a_of_type_JavaUtilList;
   
-  public void run()
+  private pkx(ComponentContentRecommendFollowList paramComponentContentRecommendFollowList) {}
+  
+  public void a(List<RecommendFollowInfo> paramList)
   {
-    ImageTracer.startSuperResolution(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.url);
-    ProgressTracer.print(8, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.urlKey);
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
-    {
-      ImageManagerLog.w(DecodeImageTask.a(), "super resolution. bitmap == null before process");
-      return;
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    notifyDataSetChanged();
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
     }
-    int i = RapidNetUtils.getModelIdFromUrl(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.url);
-    if (i < 0)
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    int i = 0;
+    if (paramView == null)
     {
-      ImageManagerLog.e(DecodeImageTask.a(), "super resolution. invalid modelId. url=" + this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.url);
-      return;
-    }
-    Object localObject1 = Runtime.getRuntime();
-    long l = ((Runtime)localObject1).maxMemory() - ((Runtime)localObject1).totalMemory() + ((Runtime)localObject1).freeMemory();
-    ImageManagerLog.w(DecodeImageTask.a(), "super resolution. freeMemory=" + l);
-    if (l / 1024L / 1024L < ImageManagerEnv.g().getSuperResolutionMemoryThreshold())
-    {
-      ImageManagerLog.w(DecodeImageTask.a(), "super resolution. Low memory, ignore super resolution.");
-      return;
-    }
-    ImageManagerLog.w(DecodeImageTask.a(), "super resolution. using model modelId=" + i + " url=" + this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.url);
-    l = System.currentTimeMillis();
-    localObject1 = RapidNetUtils.superResolution(this.jdField_a_of_type_AndroidGraphicsBitmap, i);
-    l = System.currentTimeMillis() - l;
-    if (RapidNetUtils.isHighScaleUrl(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.url))
-    {
-      ImageManagerLog.w(DecodeImageTask.a(), "high scale super resolution. Total function cost=" + l);
-      ImageManagerEnv.g().reportImageTimeCostMTA("qzone_image_decode", "image_time_cost", "super_resolution_total_procedure_high_scale", (int)l);
-    }
-    Object localObject2;
-    for (;;)
-    {
-      localObject2 = new HashMap();
-      ((HashMap)localObject2).put("PhoneType", Build.MODEL);
-      ((HashMap)localObject2).put("sdk", String.valueOf(Build.VERSION.SDK_INT));
-      ((HashMap)localObject2).put("modelId", String.valueOf(i));
-      ((HashMap)localObject2).put("timeCost", String.valueOf(l));
-      ((HashMap)localObject2).put("isHighScale", String.valueOf(RapidNetUtils.isHighScaleUrl(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.url)));
-      ImageManagerEnv.g().statisticCollectorReport("qzone_super_resolution", (HashMap)localObject2);
-      if (localObject1 != null) {
-        break;
+      paramView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131494434, paramViewGroup, false);
+      paramViewGroup = new pky(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList, null);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131301789));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131301798));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131312976));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131310629));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131305165));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131311068));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131300928));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131300919));
+      paramView.setTag(paramViewGroup);
+      paramView.setOnClickListener(paramViewGroup);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(paramViewGroup);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(paramViewGroup);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(paramViewGroup);
+      RecommendFollowInfo localRecommendFollowInfo = (RecommendFollowInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructRecommendFollowInfo = localRecommendFollowInfo;
+      ComponentContentRecommendFollowList.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentRecommendFollowList).mRecommendFollowInfos.a.put(Long.valueOf(localRecommendFollowInfo.uin), localRecommendFollowInfo);
+      if (TextUtils.isEmpty(localRecommendFollowInfo.headUrl)) {
+        break label409;
       }
-      ImageManagerLog.w(DecodeImageTask.a(), "super resolution. superResolutionBitmap == null after process. url=" + this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.url);
-      return;
-      ImageManagerLog.w(DecodeImageTask.a(), "super resolution. Total function cost=" + l);
-      ImageManagerEnv.g().reportImageTimeCostMTA("qzone_image_decode", "image_time_cost", "super_resolution_total_procedure", (int)l);
-    }
-    l = System.currentTimeMillis();
-    ImageManager.getInstance().saveSuperResImage((Bitmap)localObject1, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey);
-    BitmapImage localBitmapImage = new BitmapImage(BitmapReference.getBitmapReference((Bitmap)localObject1));
-    if ((this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options != null) && (this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options.extraProcessor != null))
-    {
-      localObject2 = new BitmapImageDrawable(localBitmapImage, this.jdField_a_of_type_Int, this.b);
-      ImageManagerLog.w(DecodeImageTask.a(), "super resolution. check high scale after sr. url=" + this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.url);
-      localObject1 = localObject2;
-      if (DecodeImageTask.a((Drawable)localObject2)) {
-        localObject1 = DecodeImageTask.a((Drawable)localObject2);
+      Object localObject = URLDrawable.URLDrawableOptions.obtain();
+      Drawable localDrawable = bacm.b();
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localDrawable;
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localDrawable;
+      localObject = URLDrawable.getDrawable(localRecommendFollowInfo.headUrl, (URLDrawable.URLDrawableOptions)localObject);
+      ((URLDrawable)localObject).setDecodeHandler(azue.a);
+      ((URLDrawable)localObject).setFadeInImage(true);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      label291:
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localRecommendFollowInfo.nickName);
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(localRecommendFollowInfo.recommendReason);
+      if (!localRecommendFollowInfo.isFollowed) {
+        break label422;
       }
-      localObject1 = this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options.extraProcessor.doProcess((Drawable)localObject1);
-      if ((localObject1 instanceof SpecifiedBitmapDrawable))
-      {
-        localObject2 = ((SpecifiedBitmapDrawable)localObject1).getBitmapRef();
-        ImageManager.getInstance().a(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.urlKey, this.c, new FeedsBitmapImage((BitmapReference)localObject2), (Drawable)localObject1, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options);
-        if (this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.listener != null) {
-          DecodeImageTask.a().post(new pky(this, (Drawable)localObject1));
-        }
-        label661:
-        l = System.currentTimeMillis() - l;
-        if (!RapidNetUtils.isHighScaleUrl(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.url)) {
-          break label843;
-        }
-        ImageManagerEnv.g().reportImageTimeCostMTA("qzone_image_decode", "image_time_cost", "post_process_after_super_resolution_high_scale", (int)l);
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText(ajjy.a(2131636546));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-8947849);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130848207);
+      label353:
+      localObject = paramViewGroup.jdField_b_of_type_AndroidWidgetImageView;
+      if (!localRecommendFollowInfo.isVip) {
+        break label454;
+      }
+      paramInt = 0;
+      label369:
+      ((ImageView)localObject).setVisibility(paramInt);
+      paramViewGroup = paramViewGroup.jdField_c_of_type_AndroidWidgetImageView;
+      if (!localRecommendFollowInfo.isStar) {
+        break label460;
       }
     }
-    for (;;)
+    label409:
+    label422:
+    label454:
+    label460:
+    for (paramInt = i;; paramInt = 8)
     {
-      ImageTracer.reportDownloadTime(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.url, true);
-      ImageTracer.reportDecodeTime(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.url, true);
-      ImageTracer.endSuperResolution(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.url);
-      ProgressTracer.print(9, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.urlKey);
-      return;
-      ImageManager.getInstance().a(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.urlKey, this.c, localBitmapImage, (Drawable)localObject1, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options);
+      paramViewGroup.setVisibility(paramInt);
+      return paramView;
+      paramViewGroup = (pky)paramView.getTag();
       break;
-      localObject1 = new SpecifiedBitmapDrawable(localBitmapImage.getBitmap());
-      ImageManager.getInstance().a(this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.urlKey, this.c, localBitmapImage, (Drawable)localObject1, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options);
-      if (this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.listener == null) {
-        break label661;
-      }
-      DecodeImageTask.a().post(new pkz(this, (Drawable)localObject1));
-      break label661;
-      label843:
-      ImageManagerEnv.g().reportImageTimeCostMTA("qzone_image_decode", "image_time_cost", "post_process_after_super_resolution", (int)l);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(bacm.b());
+      break label291;
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setText(ajjy.a(2131636536));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-1);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130848174);
+      break label353;
+      paramInt = 8;
+      break label369;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pkx
  * JD-Core Version:    0.7.0.1
  */

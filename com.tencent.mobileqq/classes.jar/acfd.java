@@ -1,33 +1,22 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
-import com.tencent.mobileqq.nearpeople.NearbyRecommender.ChatPushCarrierHelper;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-class acfd
-  implements Runnable
+public class acfd
+  implements DialogInterface.OnClickListener
 {
-  acfd(acfb paramacfb, List paramList) {}
+  public acfd(VipProfileCardDiyActivity paramVipProfileCardDiyActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Acfb.a.jdField_a_of_type_ComTencentMobileqqNearpeopleNearbyRecommenderChatPushCarrierHelper != null)
-    {
-      if (this.jdField_a_of_type_JavaUtilList != null) {
-        this.jdField_a_of_type_Acfb.a.jdField_a_of_type_ComTencentMobileqqNearpeopleNearbyRecommenderChatPushCarrierHelper.a(this.jdField_a_of_type_JavaUtilList);
-      }
-      this.jdField_a_of_type_Acfb.a.jdField_d_of_type_AndroidViewView = this.jdField_a_of_type_Acfb.a.jdField_a_of_type_ComTencentMobileqqNearpeopleNearbyRecommenderChatPushCarrierHelper.a();
-      this.jdField_a_of_type_Acfb.a.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_Acfb.a.jdField_d_of_type_AndroidViewView);
-      this.jdField_a_of_type_Acfb.a.jdField_d_of_type_Boolean = true;
-      if ((this.jdField_a_of_type_Acfb.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) && ((this.jdField_a_of_type_Acfb.a.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_Acfb.a.jdField_a_of_type_JavaUtilList.size() == 0))) {
-        this.jdField_a_of_type_Acfb.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.notifyDataSetChanged();
-      }
-    }
+    this.a.n();
+    VasWebviewUtil.reportCommercialDrainage("", "card_mall", "0X80081CA", "", 1, 0, 0, mpl.a(), "2", "0");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acfd
  * JD-Core Version:    0.7.0.1
  */

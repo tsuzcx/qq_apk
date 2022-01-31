@@ -1,26 +1,26 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgQueueView;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
 
-public class uug
-  extends AnimatorListenerAdapter
+class uug
+  extends uwy
 {
-  public uug(GoldMsgQueueView paramGoldMsgQueueView) {}
+  public Bitmap a;
+  public Bitmap b;
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public uug(int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3)
   {
-    super.onAnimationEnd(paramAnimator);
-    GoldMsgQueueView.a(this.a, false);
-    GoldMsgQueueView.a(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("GoldMsgQueueView", 2, "tryDoInsert end");
-    }
+    super(paramInt, paramBitmap1);
+    this.b = paramBitmap2;
+    this.a = paramBitmap3;
+  }
+  
+  public uug(uwy paramuwy, Bitmap paramBitmap1, Bitmap paramBitmap2)
+  {
+    this(paramuwy.jdField_c_of_type_Int, paramuwy.jdField_c_of_type_AndroidGraphicsBitmap, paramBitmap1, paramBitmap2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uug
  * JD-Core Version:    0.7.0.1
  */

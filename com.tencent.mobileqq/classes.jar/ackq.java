@@ -1,19 +1,12 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
 
-public class ackq
-  implements Runnable
+public abstract interface ackq
 {
-  public ackq(WebIPCOperator paramWebIPCOperator, Bundle paramBundle) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebWebIPCOperator.e(this.jdField_a_of_type_AndroidOsBundle);
-  }
+  public abstract void onSucc(int paramInt, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ackq
  * JD-Core Version:    0.7.0.1
  */

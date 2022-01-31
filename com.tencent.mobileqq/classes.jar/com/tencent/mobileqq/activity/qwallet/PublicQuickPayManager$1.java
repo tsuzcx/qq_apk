@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.activity.qwallet;
 
+import agkb;
+import agkd;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
@@ -7,10 +9,10 @@ import android.text.TextUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-class PublicQuickPayManager$1
+public class PublicQuickPayManager$1
   extends ResultReceiver
 {
-  PublicQuickPayManager$1(PublicQuickPayManager paramPublicQuickPayManager, Handler paramHandler, PublicQuickPayManager.QQWalletPayCompletionImp paramQQWalletPayCompletionImp, String paramString)
+  public PublicQuickPayManager$1(agkb paramagkb, Handler paramHandler, agkd paramagkd, String paramString)
   {
     super(paramHandler);
   }
@@ -30,9 +32,9 @@ class PublicQuickPayManager$1
           paramInt = ((JSONObject)localObject).optInt("resultCode", -2);
         }
         if ((paramInt == -3) || (paramInt == -4) || (paramInt == -6)) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPublicQuickPayManager.a();
+          this.jdField_a_of_type_Agkb.a();
         }
-        PublicQuickPayManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPublicQuickPayManager, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPublicQuickPayManager$QQWalletPayCompletionImp, paramInt, paramBundle.getString("retmsg"), paramBundle.getString("payTime"), this.jdField_a_of_type_JavaLangString);
+        agkb.a(this.jdField_a_of_type_Agkb, this.jdField_a_of_type_Agkd, paramInt, paramBundle.getString("retmsg"), paramBundle.getString("payTime"), this.jdField_a_of_type_JavaLangString);
         return;
       }
       catch (JSONException localJSONException)
@@ -45,7 +47,7 @@ class PublicQuickPayManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qwallet.PublicQuickPayManager.1
  * JD-Core Version:    0.7.0.1
  */

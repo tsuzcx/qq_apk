@@ -34,19 +34,27 @@ public class EMImage
     paramCanvas.save();
     paramCanvas.setMatrix(paramMatrix);
     if (paramBoolean1) {
-      localPaint.setShadowLayer(paramInt6, paramInt4, paramInt5, paramInt3);
+      if (paramInt6 != 0) {
+        break label174;
+      }
     }
-    paramCanvas.drawText((String)localObject, 0.0F, paramFloat1, localPaint);
-    if (paramBoolean2)
+    label174:
+    for (paramFloat2 = 0.1F;; paramFloat2 = paramInt6)
     {
-      localPaint.reset();
-      localPaint.setStyle(Paint.Style.STROKE);
-      localPaint.setColor(paramInt7);
-      localPaint.setStrokeWidth(paramInt8 / 2.0F);
-      localPaint.setTextSize(paramFloat4);
+      localPaint.setShadowLayer(paramFloat2, paramInt4, paramInt5, paramInt3);
       paramCanvas.drawText((String)localObject, 0.0F, paramFloat1, localPaint);
+      if (paramBoolean2)
+      {
+        localPaint.reset();
+        localPaint.setStyle(Paint.Style.STROKE);
+        localPaint.setColor(paramInt7);
+        localPaint.setStrokeWidth(paramInt8);
+        localPaint.setTextSize(paramFloat4);
+        paramCanvas.drawText((String)localObject, 0.0F, paramFloat1, localPaint);
+      }
+      paramCanvas.restore();
+      return;
     }
-    paramCanvas.restore();
   }
   
   public Bitmap getBitmap()
@@ -66,7 +74,7 @@ public class EMImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.etrump.mixlayout.EMImage
  * JD-Core Version:    0.7.0.1
  */

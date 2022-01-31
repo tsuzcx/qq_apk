@@ -2,7 +2,7 @@ package com.tencent.mobileqq.shortvideo.dancemachine.filter;
 
 public class DanceManagerFilter$GamePlayOutData
 {
-  public int a;
+  public int mScore;
 }
 
 

@@ -1,23 +1,56 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
-import cooperation.weiyun.sdk.download.WyDownloader;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.InterestSwitchEditActivity;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendBaseFragment;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendEditFragment;
 
 public class anqa
-  implements ThreadPool.Job
+  implements View.OnClickListener
 {
-  public anqa(WyDownloader paramWyDownloader, HttpNetReq paramHttpNetReq) {}
+  public anqa(ExtendFriendBaseFragment paramExtendFriendBaseFragment) {}
   
-  public Void a(ThreadPool.JobContext paramJobContext)
+  public void onClick(View paramView)
   {
-    WyDownloader.a(this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader).a(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
-    return null;
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131297987: 
+      if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+      }
+      if (!this.a.jdField_a_of_type_Boolean)
+      {
+        awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092EC", "0X80092EC", 0, 0, "", "", "", "");
+        return;
+      }
+      awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092E9", "0X80092E9", 0, 0, "", "", "", "");
+      return;
+    }
+    if (!this.a.jdField_a_of_type_Boolean) {
+      PublicFragmentActivity.a(this.a.getActivity(), ExtendFriendEditFragment.class, 1033);
+    }
+    for (;;)
+    {
+      if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
+      }
+      if (this.a.jdField_a_of_type_Boolean) {
+        break;
+      }
+      awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092EB", "0X80092EB", 0, 0, "", "", "", "");
+      return;
+      paramView = InterestSwitchEditActivity.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
+      this.a.startActivityForResult(paramView, 2);
+    }
+    awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092E8", "0X80092E8", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anqa
  * JD-Core Version:    0.7.0.1
  */

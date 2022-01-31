@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class qqavopensdkSsoTunnel$UniSsoServerReqComm
-  extends MessageMicro
+  extends MessageMicro<UniSsoServerReqComm>
 {
   public static final int MQQVER_FIELD_NUMBER = 3;
   public static final int OSVER_FIELD_NUMBER = 2;

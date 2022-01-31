@@ -1,71 +1,76 @@
-import QQService.EVIPSPEC;
+import com.tencent.mobileqq.data.DiscussionInfo;
 import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.data.TroopInfo;
 import java.util.Comparator;
 
-public class ajgi
-  implements Comparator
+final class ajgi
+  implements Comparator<atmo>
 {
-  public int a(ajgg paramajgg)
+  public int a(atmo paramatmo1, atmo paramatmo2)
   {
-    if (paramajgg.jdField_a_of_type_Int != -1) {
-      return paramajgg.jdField_a_of_type_Int;
-    }
-    Friends localFriends = paramajgg.jdField_a_of_type_ComTencentMobileqqDataFriends;
-    int k = ContactUtils.a(localFriends.detalStatusFlag, localFriends.iTermType);
-    int j;
-    int i;
-    if ((k != 6) && (k != 0))
+    int i = 0;
+    if ((paramatmo1 instanceof Groups))
     {
-      j = 65536;
-      if (!localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERVIP)) {
-        break label132;
-      }
-      i = 4096;
-      switch (k)
-      {
-      case 5: 
-      case 6: 
-      default: 
-        label64:
-        i = j | i | (int)localFriends.getLastLoginType();
-      }
+      paramatmo1 = (Groups)paramatmo1;
+      paramatmo2 = (Groups)paramatmo2;
+      return paramatmo1.seqid - paramatmo2.seqid;
+    }
+    Object localObject = "-";
+    String str = "-";
+    int j;
+    if ((paramatmo1 instanceof Friends))
+    {
+      paramatmo1 = (Friends)paramatmo1;
+      localObject = (Friends)paramatmo2;
+      j = paramatmo1.mComparePartInt;
+      paramatmo2 = paramatmo1.mCompareSpell;
+      i = ((Friends)localObject).mComparePartInt;
+      paramatmo1 = ((Friends)localObject).mCompareSpell;
     }
     for (;;)
     {
-      paramajgg.jdField_a_of_type_Int = i;
-      return i;
-      j = 131072;
-      break;
-      label132:
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_QQVIP))
+      return ajgh.a(j, paramatmo2, i, paramatmo1);
+      if ((paramatmo1 instanceof TroopInfo))
       {
-        i = 8192;
-        break label64;
+        paramatmo1 = (TroopInfo)paramatmo1;
+        localObject = (TroopInfo)paramatmo2;
+        j = paramatmo1.mComparePartInt;
+        i = ((TroopInfo)localObject).mComparePartInt;
+        paramatmo2 = paramatmo1.mCompareSpell;
+        paramatmo1 = ((TroopInfo)localObject).mCompareSpell;
       }
-      if (localFriends.isServiceEnabled(EVIPSPEC.E_SP_SUPERQQ))
+      else if ((paramatmo1 instanceof DiscussionInfo))
       {
-        i = 12288;
-        break label64;
+        paramatmo1 = (DiscussionInfo)paramatmo1;
+        localObject = (DiscussionInfo)paramatmo2;
+        j = paramatmo1.mComparePartInt;
+        i = ((DiscussionInfo)localObject).mComparePartInt;
+        paramatmo2 = paramatmo1.mCompareSpell;
+        paramatmo1 = ((DiscussionInfo)localObject).mCompareSpell;
       }
-      i = 16384;
-      break label64;
-      i = j | i | 0x1;
-      continue;
-      i = j | i | 0x2;
-      continue;
-      i = j | i | 0x3;
+      else if ((paramatmo1 instanceof PublicAccountInfo))
+      {
+        paramatmo1 = (PublicAccountInfo)paramatmo1;
+        localObject = (PublicAccountInfo)paramatmo2;
+        j = paramatmo1.mComparePartInt;
+        i = ((PublicAccountInfo)localObject).mComparePartInt;
+        paramatmo2 = paramatmo1.mCompareSpell;
+        paramatmo1 = ((PublicAccountInfo)localObject).mCompareSpell;
+      }
+      else
+      {
+        j = 0;
+        paramatmo1 = str;
+        paramatmo2 = (atmo)localObject;
+      }
     }
-  }
-  
-  public int a(ajgg paramajgg1, ajgg paramajgg2)
-  {
-    return a(paramajgg1) - a(paramajgg2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajgi
  * JD-Core Version:    0.7.0.1
  */

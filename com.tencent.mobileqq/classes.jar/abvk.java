@@ -1,23 +1,29 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.businessCard.data.CardUinInfo;
+import android.view.View;
+import android.widget.ExpandableListAdapter;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.widget.ExpandableListView;
 
-public final class abvk
-  implements Parcelable.Creator
+public class abvk
+  implements beji
 {
-  public CardUinInfo a(Parcel paramParcel)
-  {
-    return new CardUinInfo(paramParcel);
-  }
+  public abvk(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  public CardUinInfo[] a(int paramInt)
+  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt1, int paramInt2, long paramLong)
   {
-    return new CardUinInfo[paramInt];
+    if (((aidk)paramExpandableListView.a()).getChildType(paramInt1, paramInt2) == 1) {
+      return true;
+    }
+    awrw.b(this.a.getActivity(), this.a.app.getCurrentAccountUin());
+    paramExpandableListView = (TroopInfo)paramExpandableListView.a().getChild(paramInt1, paramInt2);
+    this.a.a(paramExpandableListView);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abvk
  * JD-Core Version:    0.7.0.1
  */

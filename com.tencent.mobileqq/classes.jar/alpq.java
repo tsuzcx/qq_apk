@@ -1,32 +1,24 @@
-import android.app.Activity;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.TicketUtils;
-import com.tencent.open.base.TicketUtils.TicketCallback;
-import com.tencent.open.downloadnew.MyAppApi;
-import mqq.os.MqqHandler;
+import android.view.View;
+import com.tencent.mobileqq.businessCard.activity.CardPicGalleryActivity;
+import com.tencent.widget.AdapterView;
 
 public class alpq
-  implements TicketUtils.TicketCallback
+  implements behi
 {
-  public alpq(MyAppApi paramMyAppApi, TicketUtils paramTicketUtils, long paramLong, Activity paramActivity, DialogInterface.OnClickListener paramOnClickListener) {}
+  public alpq(CardPicGalleryActivity paramCardPicGalleryActivity) {}
   
-  public void a()
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    LogUtility.a("MyAppApi", "onGetA1Fail ---");
-    ThreadManager.getSubThreadHandler().post(new alps(this));
-  }
-  
-  public void a(String paramString, byte[] paramArrayOfByte)
-  {
-    LogUtility.a("MyAppApi", "onGetA1 ---");
-    ThreadManager.getSubThreadHandler().post(new alpr(this, paramArrayOfByte, paramString));
+    if (!this.a.isFinishing())
+    {
+      this.a.overridePendingTransition(0, 2130772327);
+      this.a.finish();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     alpq
  * JD-Core Version:    0.7.0.1
  */

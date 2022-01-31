@@ -1,27 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.TimeUtil;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.widget.XListView.DrawFinishedListener;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class mqa
-  implements XListView.DrawFinishedListener
+  extends axkl
 {
-  public mqa(FastWebActivity paramFastWebActivity) {}
-  
-  public void a()
+  public mqa(mpz parammpz, String paramString)
   {
-    if (FastWebActivity.f(this.a))
+    super(parammpz, paramString);
+  }
+  
+  public void onClick(View paramView)
+  {
+    if (mqb.a.matcher(this.jdField_a_of_type_JavaLangString).find())
     {
-      FastWebActivity.c(this.a, false);
-      FastWebActivity.e(this.a);
-      long l = TimeUtil.a("FastWebActivity.show");
-      TimeUtil.b("fast_web_show_light_house_draw_finish");
-      ArrayList localArrayList = new ArrayList();
-      localArrayList.addAll(FastWebActivity.a(this.a));
-      ThreadManager.post(new mqb(this, l, localArrayList), 5, null, false);
+      mpz.a(paramView, this.jdField_a_of_type_Mpz.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Mpz.b, this.jdField_a_of_type_Mpz.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      return;
     }
+    super.onClick(paramView);
   }
 }
 

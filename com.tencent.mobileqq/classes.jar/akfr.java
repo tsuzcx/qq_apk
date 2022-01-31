@@ -1,20 +1,32 @@
-import com.tencent.mobileqq.unifiedebug.UnifiedDebugManager;
-import java.io.File;
-import java.io.FilenameFilter;
-
 public class akfr
-  implements FilenameFilter
+  implements ajfe
 {
-  public akfr(UnifiedDebugManager paramUnifiedDebugManager, String paramString) {}
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    return (paramString.startsWith(this.jdField_a_of_type_JavaLangString)) && (paramString.endsWith(".localstorage"));
+    switch (paramInt)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (paramObject == null);
+      if (!paramBoolean) {
+        break;
+      }
+      paramObject = (Object[])paramObject;
+    } while (paramObject.length < 2);
+    a(true, ((Boolean)paramObject[0]).booleanValue(), ((Integer)paramObject[1]).intValue());
+    return;
+    a(false, false, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akfr
  * JD-Core Version:    0.7.0.1
  */

@@ -12,23 +12,17 @@ import android.view.View.MeasureSpec;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 import com.tencent.component.media.utils.ImageManagerLog;
-import pnh;
-import pni;
-import pnj;
-import pnk;
-import pnl;
-import pnm;
 
 public class ExtendImageView
   extends ImageView
 {
-  private static final ThreadLocal jdField_a_of_type_JavaLangThreadLocal = new pnh();
-  private int jdField_a_of_type_Int = 0;
-  private ViewForeground jdField_a_of_type_ComTencentComponentMediaImageViewViewForeground = new ViewForeground(this, null);
-  private boolean jdField_a_of_type_Boolean = false;
-  private boolean b = false;
-  private boolean c = false;
-  private boolean d = false;
+  private static final ThreadLocal<Rect> sLocalTmpRect = new ExtendImageView.1();
+  private boolean mAdjustViewBounds = false;
+  private boolean mBlockMeasurement = false;
+  private ViewForeground mForeground = new ViewForeground(this, null);
+  private int mForegroundResource = 0;
+  private boolean mIgnoreContentBounds = false;
+  private boolean mMeasuredExactly = false;
   
   public ExtendImageView(Context paramContext)
   {
@@ -45,66 +39,9 @@ public class ExtendImageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  private void a(int paramInt)
+  private boolean isBackgroundHasPadding(Drawable paramDrawable1, Drawable paramDrawable2)
   {
-    this.b = true;
-    try
-    {
-      super.setImageResource(paramInt);
-      this.b = false;
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      ImageManagerLog.e("ExtendImageView", "out of memory " + localOutOfMemoryError.toString());
-    }
-  }
-  
-  private void a(Bitmap paramBitmap)
-  {
-    this.b = true;
-    super.setImageBitmap(paramBitmap);
-    this.b = false;
-  }
-  
-  private void a(Drawable paramDrawable)
-  {
-    this.b = true;
-    super.setImageDrawable(paramDrawable);
-    this.b = false;
-  }
-  
-  private void a(Uri paramUri)
-  {
-    this.b = true;
-    super.setImageURI(paramUri);
-    this.b = false;
-  }
-  
-  private void a(Animation paramAnimation, Runnable paramRunnable)
-  {
-    if (paramAnimation == null)
-    {
-      if (paramRunnable != null) {
-        paramRunnable.run();
-      }
-      return;
-    }
-    clearAnimation();
-    paramAnimation.setAnimationListener(new pnm(this, paramRunnable));
-    startAnimation(paramAnimation);
-  }
-  
-  private boolean a(int paramInt1, int paramInt2)
-  {
-    paramInt1 = View.MeasureSpec.getMode(paramInt1);
-    paramInt2 = View.MeasureSpec.getMode(paramInt2);
-    return (paramInt1 == 1073741824) && (paramInt2 == 1073741824);
-  }
-  
-  private boolean a(Drawable paramDrawable1, Drawable paramDrawable2)
-  {
-    Rect localRect = (Rect)jdField_a_of_type_JavaLangThreadLocal.get();
+    Rect localRect = (Rect)sLocalTmpRect.get();
     boolean bool;
     if ((paramDrawable1 != null) && (paramDrawable1.getPadding(localRect))) {
       bool = true;
@@ -123,17 +60,74 @@ public class ExtendImageView
     return bool;
   }
   
-  private void b(Drawable paramDrawable)
+  private boolean isMeasuredExactly(int paramInt1, int paramInt2)
   {
-    this.b = true;
-    this.jdField_a_of_type_ComTencentComponentMediaImageViewViewForeground.setDrawable(paramDrawable);
-    this.b = false;
+    paramInt1 = View.MeasureSpec.getMode(paramInt1);
+    paramInt2 = View.MeasureSpec.getMode(paramInt2);
+    return (paramInt1 == 1073741824) && (paramInt2 == 1073741824);
+  }
+  
+  private void scheduleAnimation(Animation paramAnimation, Runnable paramRunnable)
+  {
+    if (paramAnimation == null)
+    {
+      if (paramRunnable != null) {
+        paramRunnable.run();
+      }
+      return;
+    }
+    clearAnimation();
+    paramAnimation.setAnimationListener(new ExtendImageView.6(this, paramRunnable));
+    startAnimation(paramAnimation);
+  }
+  
+  private void setForegroundInternal(Drawable paramDrawable)
+  {
+    this.mBlockMeasurement = true;
+    this.mForeground.setDrawable(paramDrawable);
+    this.mBlockMeasurement = false;
+  }
+  
+  private void setImageBitmapInternal(Bitmap paramBitmap)
+  {
+    this.mBlockMeasurement = true;
+    super.setImageBitmap(paramBitmap);
+    this.mBlockMeasurement = false;
+  }
+  
+  private void setImageDrawableInternal(Drawable paramDrawable)
+  {
+    this.mBlockMeasurement = true;
+    super.setImageDrawable(paramDrawable);
+    this.mBlockMeasurement = false;
+  }
+  
+  private void setImageResourceInternal(int paramInt)
+  {
+    this.mBlockMeasurement = true;
+    try
+    {
+      super.setImageResource(paramInt);
+      this.mBlockMeasurement = false;
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      ImageManagerLog.e("ExtendImageView", "out of memory " + localOutOfMemoryError.toString());
+    }
+  }
+  
+  private void setImageURIInternal(Uri paramUri)
+  {
+    this.mBlockMeasurement = true;
+    super.setImageURI(paramUri);
+    this.mBlockMeasurement = false;
   }
   
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    ViewForeground localViewForeground = this.jdField_a_of_type_ComTencentComponentMediaImageViewViewForeground;
+    ViewForeground localViewForeground = this.mForeground;
     if (localViewForeground != null) {
       localViewForeground.drawableStateChanged();
     }
@@ -141,32 +135,32 @@ public class ExtendImageView
   
   public boolean getAdjustViewBounds()
   {
-    return this.d;
+    return this.mAdjustViewBounds;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    ViewForeground localViewForeground = this.jdField_a_of_type_ComTencentComponentMediaImageViewViewForeground;
+    ViewForeground localViewForeground = this.mForeground;
     if (localViewForeground != null) {
       localViewForeground.draw(paramCanvas);
     }
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    ViewForeground localViewForeground = this.jdField_a_of_type_ComTencentComponentMediaImageViewViewForeground;
+    ViewForeground localViewForeground = this.mForeground;
     if (localViewForeground != null) {
       localViewForeground.boundsChanged();
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Boolean = a(paramInt1, paramInt2);
+    this.mMeasuredExactly = isMeasuredExactly(paramInt1, paramInt2);
     super.onMeasure(paramInt1, paramInt2);
-    if ((this.c) && (!this.d)) {
+    if ((this.mIgnoreContentBounds) && (!this.mAdjustViewBounds)) {
       setMeasuredDimension(getDefaultSize(getMeasuredWidth(), paramInt1), getDefaultSize(getMeasuredHeight(), paramInt2));
     }
   }
@@ -174,7 +168,7 @@ public class ExtendImageView
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    ViewForeground localViewForeground = this.jdField_a_of_type_ComTencentComponentMediaImageViewViewForeground;
+    ViewForeground localViewForeground = this.mForeground;
     if (localViewForeground != null) {
       localViewForeground.boundsChanged();
     }
@@ -182,7 +176,7 @@ public class ExtendImageView
   
   public void requestLayout()
   {
-    if ((this.b) && (this.jdField_a_of_type_Boolean)) {
+    if ((this.mBlockMeasurement) && (this.mMeasuredExactly)) {
       return;
     }
     super.requestLayout();
@@ -191,142 +185,142 @@ public class ExtendImageView
   public void setAdjustViewBounds(boolean paramBoolean)
   {
     super.setAdjustViewBounds(paramBoolean);
-    this.d = paramBoolean;
+    this.mAdjustViewBounds = paramBoolean;
   }
   
   public void setBackgroundColor(int paramInt)
   {
-    this.b = true;
+    this.mBlockMeasurement = true;
     super.setBackgroundColor(paramInt);
-    this.b = false;
+    this.mBlockMeasurement = false;
   }
   
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
-    if (!a(getBackground(), paramDrawable)) {}
+    if (!isBackgroundHasPadding(getBackground(), paramDrawable)) {}
     for (boolean bool = true;; bool = false)
     {
-      this.b = bool;
+      this.mBlockMeasurement = bool;
       super.setBackgroundDrawable(paramDrawable);
-      this.b = false;
+      this.mBlockMeasurement = false;
       return;
     }
   }
   
   public void setBackgroundResource(int paramInt)
   {
-    this.b = true;
+    this.mBlockMeasurement = true;
     super.setBackgroundResource(paramInt);
-    this.b = false;
+    this.mBlockMeasurement = false;
   }
   
   public void setForeground(int paramInt)
   {
-    if ((paramInt != 0) && (paramInt == this.jdField_a_of_type_Int)) {
+    if ((paramInt != 0) && (paramInt == this.mForegroundResource)) {
       return;
     }
-    this.jdField_a_of_type_Int = paramInt;
+    this.mForegroundResource = paramInt;
     if (paramInt != 0) {}
     for (Drawable localDrawable = getResources().getDrawable(paramInt);; localDrawable = null)
     {
-      b(localDrawable);
+      setForegroundInternal(localDrawable);
       return;
     }
   }
   
   public void setForeground(Drawable paramDrawable)
   {
-    if (paramDrawable == this.jdField_a_of_type_ComTencentComponentMediaImageViewViewForeground.getDrawable()) {
+    if (paramDrawable == this.mForeground.getDrawable()) {
       return;
     }
-    this.jdField_a_of_type_Int = 0;
-    b(paramDrawable);
+    this.mForegroundResource = 0;
+    setForegroundInternal(paramDrawable);
   }
   
   public void setIgnoreContentBounds(boolean paramBoolean)
   {
-    if (this.c != paramBoolean)
+    if (this.mIgnoreContentBounds != paramBoolean)
     {
-      this.c = paramBoolean;
+      this.mIgnoreContentBounds = paramBoolean;
       requestLayout();
     }
   }
   
   public void setImageBitmap(Bitmap paramBitmap)
   {
-    a(paramBitmap);
+    setImageBitmapInternal(paramBitmap);
   }
   
   public void setImageBitmap(Bitmap paramBitmap, Animation paramAnimation1, Animation paramAnimation2)
   {
     if (paramAnimation2 != null) {
-      a(paramAnimation2, new pni(this, paramBitmap, paramAnimation1));
+      scheduleAnimation(paramAnimation2, new ExtendImageView.2(this, paramBitmap, paramAnimation1));
     }
     do
     {
       return;
-      a(paramBitmap);
+      setImageBitmapInternal(paramBitmap);
     } while (paramAnimation1 == null);
-    a(paramAnimation1, null);
+    scheduleAnimation(paramAnimation1, null);
   }
   
   public void setImageDrawable(Drawable paramDrawable)
   {
-    a(paramDrawable);
+    setImageDrawableInternal(paramDrawable);
   }
   
   public void setImageDrawable(Drawable paramDrawable, Animation paramAnimation1, Animation paramAnimation2)
   {
     if (paramAnimation2 != null) {
-      a(paramAnimation2, new pnj(this, paramDrawable, paramAnimation1));
+      scheduleAnimation(paramAnimation2, new ExtendImageView.3(this, paramDrawable, paramAnimation1));
     }
     do
     {
       return;
-      a(paramDrawable);
+      setImageDrawableInternal(paramDrawable);
     } while (paramAnimation1 == null);
-    a(paramAnimation1, null);
+    scheduleAnimation(paramAnimation1, null);
   }
   
   public void setImageResource(int paramInt)
   {
-    a(paramInt);
+    setImageResourceInternal(paramInt);
   }
   
   public void setImageResource(int paramInt, Animation paramAnimation1, Animation paramAnimation2)
   {
     if (paramAnimation2 != null) {
-      a(paramAnimation2, new pnk(this, paramInt, paramAnimation1));
+      scheduleAnimation(paramAnimation2, new ExtendImageView.4(this, paramInt, paramAnimation1));
     }
     do
     {
       return;
-      a(paramInt);
+      setImageResourceInternal(paramInt);
     } while (paramAnimation1 == null);
-    a(paramAnimation1, null);
+    scheduleAnimation(paramAnimation1, null);
   }
   
   public void setImageURI(Uri paramUri)
   {
-    a(paramUri);
+    setImageURIInternal(paramUri);
   }
   
   public void setImageURI(Uri paramUri, Animation paramAnimation1, Animation paramAnimation2)
   {
     if (paramAnimation2 != null) {
-      a(paramAnimation2, new pnl(this, paramUri, paramAnimation1));
+      scheduleAnimation(paramAnimation2, new ExtendImageView.5(this, paramUri, paramAnimation1));
     }
     do
     {
       return;
-      a(paramUri);
+      setImageURIInternal(paramUri);
     } while (paramAnimation1 == null);
-    a(paramAnimation1, null);
+    scheduleAnimation(paramAnimation1, null);
   }
   
   protected boolean verifyDrawable(Drawable paramDrawable)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentComponentMediaImageViewViewForeground;
+    Object localObject = this.mForeground;
     if (localObject == null) {}
     for (localObject = null; (localObject == paramDrawable) || (super.verifyDrawable(paramDrawable)); localObject = ((ViewForeground)localObject).getDrawable()) {
       return true;

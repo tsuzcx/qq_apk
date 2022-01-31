@@ -42,6 +42,8 @@ public abstract class URLDrawableParams
   
   protected abstract String doGetLocalFilePath(String paramString);
   
+  protected abstract ApngSoLoader getApngSoLoader();
+  
   protected abstract Drawable getDefaultLoadingDrawable();
   
   protected abstract Drawable getDefualtFailedDrawable();

@@ -1,54 +1,46 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.utils.JumpQqPimSecureUtil;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import java.lang.ref.WeakReference;
-import mqq.app.MobileQQ;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
-public class tez
-  implements Runnable
+class tez
+  implements AdapterView.OnItemClickListener
 {
-  private WeakReference a;
-  private WeakReference b;
+  tez(tey paramtey) {}
   
-  public tez(Activity paramActivity, FormSimpleItem paramFormSimpleItem)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a = new WeakReference(paramFormSimpleItem);
-    this.b = new WeakReference(paramActivity);
-  }
-  
-  public void run()
-  {
-    boolean bool1 = JumpQqPimSecureUtil.a(MobileQQ.sMobileQQ);
-    boolean bool2 = JumpQqPimSecureUtil.b(MobileQQ.sMobileQQ);
-    if (!bool1)
-    {
-      i = LoginInfoActivity.a();
-      if (i == LoginInfoActivity.c()) {
-        break label85;
+    if (tey.a(this.a).a().isShowing()) {
+      tey.a(this.a).a().dismiss();
+    }
+    int i = ((baia)paramView.getTag()).a.c;
+    if ((i == 9) || (i == 10)) {
+      if (!WXShareHelper.a().a()) {
+        paramInt = 2131655008;
       }
     }
-    label85:
-    for (int i = 2131436666;; i = 2131436667)
+    for (;;)
     {
-      Activity localActivity = (Activity)this.b.get();
-      if (localActivity != null) {
-        localActivity.runOnUiThread(new tfb(i, this.a));
-      }
-      return;
-      if (!bool2)
+      if (paramInt != -1)
       {
-        i = LoginInfoActivity.b();
-        break;
+        vvp.a(1, paramInt);
+        return;
+        if (!WXShareHelper.a().b()) {
+          paramInt = 2131655009;
+        }
       }
-      i = LoginInfoActivity.c();
-      break;
+      else
+      {
+        this.a.a(i);
+        return;
+      }
+      paramInt = -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tez
  * JD-Core Version:    0.7.0.1
  */

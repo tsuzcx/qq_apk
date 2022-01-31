@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class GetTinyID$STUserAccInfo
-  extends MessageMicro
+  extends MessageMicro<STUserAccInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18 }, new String[] { "tinyid", "identifier" }, new Object[] { Long.valueOf(0L), "" }, STUserAccInfo.class);
   public final PBStringField identifier = PBField.initString("");
@@ -15,7 +15,7 @@ public final class GetTinyID$STUserAccInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.apollo.GetTinyID.STUserAccInfo
  * JD-Core Version:    0.7.0.1
  */

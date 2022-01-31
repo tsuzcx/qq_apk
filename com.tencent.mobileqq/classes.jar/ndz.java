@@ -1,79 +1,66 @@
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.preload.DownloadTask;
-import com.tencent.biz.qqstory.base.preload.PlayingListPreloader;
-import com.tencent.biz.qqstory.base.preload.PlayingListPreloader.CurrentVid;
-import com.tencent.biz.qqstory.base.preload.PlayingListPreloader.OnVideoDownloadListener;
-import com.tencent.biz.qqstory.base.preload.SimplePreloadListener;
-import java.io.File;
-import java.util.Map;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.NewIntent;
+import mqq.observer.BusinessObserver;
+import tencent.im.oidb.cc_sso_report_svr.cc_sso_report_svr.ReportInfoRsp;
 
-public class ndz
-  extends SimplePreloadListener
+class ndz
+  implements BusinessObserver
 {
-  public ndz(PlayingListPreloader paramPlayingListPreloader)
+  private NewIntent a;
+  
+  ndz(NewIntent paramNewIntent)
   {
-    super("Q.qqstory.download.preload.PlayingListPreloader");
+    this.a = paramNewIntent;
   }
   
-  public void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, DownloadTask paramDownloadTask)
+  private void a()
   {
-    super.a(paramString, paramInt1, paramErrorMessage, paramInt2, paramDownloadTask);
-    a(paramString, paramInt1, paramErrorMessage, paramDownloadTask);
-  }
-  
-  protected void a(String paramString, int paramInt, ErrorMessage paramErrorMessage, DownloadTask paramDownloadTask)
-  {
-    PlayingListPreloader.CurrentVid localCurrentVid = this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$CurrentVid;
-    if (localCurrentVid == null) {}
-    label14:
-    label169:
-    do
-    {
-      break label14;
-      do
-      {
-        return;
-      } while (!TextUtils.equals(paramString, localCurrentVid.jdField_a_of_type_JavaLangString));
-      if (paramErrorMessage.isFail()) {
-        if (!TextUtils.isEmpty(localCurrentVid.b)) {
-          break label136;
-        }
-      }
-      for (paramErrorMessage = paramErrorMessage.errorMsg;; paramErrorMessage = paramErrorMessage.errorMsg + " | " + paramErrorMessage.errorMsg)
-      {
-        localCurrentVid.b = paramErrorMessage;
-        localCurrentVid.jdField_a_of_type_Int = (paramInt + 1000);
-        if ((!paramDownloadTask.a.containsKey("handleCallback")) || (localCurrentVid.jdField_a_of_type_Boolean)) {
-          break;
-        }
-        localCurrentVid.jdField_a_of_type_Boolean = true;
-        if (!this.a.a(paramString)) {
-          break label169;
-        }
-        if (this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$OnVideoDownloadListener == null) {
-          break;
-        }
-        this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$OnVideoDownloadListener.a(paramString, paramDownloadTask.d, paramInt);
-        return;
-      }
-    } while (this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$OnVideoDownloadListener == null);
-    label136:
-    this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$OnVideoDownloadListener.a(paramString, paramDownloadTask.d, localCurrentVid.a(), paramInt);
-  }
-  
-  public void b(String paramString, int paramInt, DownloadTask paramDownloadTask)
-  {
-    super.b(paramString, paramInt, paramDownloadTask);
-    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$OnVideoDownloadListener != null) && ((paramInt == 0) || (paramInt == 1))) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$OnVideoDownloadListener.b(paramString, paramDownloadTask.d, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("QualityReporter", 2, "onSuccess: ");
     }
   }
   
-  public void b(String paramString, int paramInt1, File paramFile, int paramInt2, DownloadTask paramDownloadTask)
+  private void a(int paramInt, String paramString)
   {
-    super.b(paramString, paramInt1, paramFile, paramInt2, paramDownloadTask);
-    a(paramString, paramInt1, new ErrorMessage(), paramDownloadTask);
+    if (QLog.isColorLevel()) {
+      QLog.d("QualityReporter", 2, "onError: code=" + paramInt + ", msg=" + paramString);
+    }
+  }
+  
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  {
+    this.a.setObserver(null);
+    if (paramBoolean)
+    {
+      cc_sso_report_svr.ReportInfoRsp localReportInfoRsp;
+      try
+      {
+        paramBundle = paramBundle.getByteArray("data");
+        if (paramBundle == null)
+        {
+          a(-123, "data null");
+          return;
+        }
+        localReportInfoRsp = new cc_sso_report_svr.ReportInfoRsp();
+        localReportInfoRsp.mergeFrom(paramBundle);
+        if ((localReportInfoRsp.ret_code.has()) && (localReportInfoRsp.ret_code.get() == 0))
+        {
+          a();
+          return;
+        }
+      }
+      catch (Exception paramBundle)
+      {
+        paramBundle.printStackTrace();
+        return;
+      }
+      a(localReportInfoRsp.ret_code.get(), localReportInfoRsp.ret_msg.get());
+      return;
+    }
+    a(-123, "success=false");
   }
 }
 

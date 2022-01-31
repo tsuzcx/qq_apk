@@ -1,61 +1,80 @@
-import android.text.TextUtils;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.QSecDatabaseMgr;
-import com.tencent.qqprotect.qsec.QSecDatabaseMgr.LibEntry;
-import com.tencent.qqprotect.qsec.QSecLibMgr;
 
 public class amfh
+  extends alzl<amfi>
 {
-  protected boolean a;
-  
-  private amfh(QSecLibMgr paramQSecLibMgr) {}
-  
-  public void a()
+  public int a()
   {
-    if (this.a) {
-      QSecLibMgr.a(this.b).a();
+    return 92;
+  }
+  
+  @NonNull
+  public amfi a(int paramInt)
+  {
+    return new amfi();
+  }
+  
+  @Nullable
+  public amfi a(alzs[] paramArrayOfalzs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyCommonConfProcessor", 2, "[onParsed]");
+    }
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
+    {
+      amfi localamfi = new amfi();
+      localamfi.a(paramArrayOfalzs);
+      return localamfi;
+    }
+    return new amfi();
+  }
+  
+  public Class<amfi> a()
+  {
+    return amfi.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyCommonConfProcessor", 2, new Object[] { "[onReqFailed] failCode=", Integer.valueOf(paramInt) });
     }
   }
   
-  public void a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a(amfi paramamfi)
   {
-    if (TextUtils.isEmpty(paramString2)) {}
-    QSecDatabaseMgr.LibEntry localLibEntry2;
-    do
-    {
-      return;
-      localLibEntry2 = QSecLibMgr.a(this.b).a(paramInt1);
-    } while ((localLibEntry2 != null) && (paramString1.equals(localLibEntry2.jdField_b_of_type_JavaLangString)) && (paramString2.equals(localLibEntry2.jdField_a_of_type_JavaLangString)) && (paramInt2 == localLibEntry2.jdField_b_of_type_Int) && (paramInt3 == localLibEntry2.c));
-    QSecDatabaseMgr.LibEntry localLibEntry1;
-    if (localLibEntry2 == null) {
-      localLibEntry1 = new QSecDatabaseMgr.LibEntry();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadinjoyCommonConfProcessor", 2, "[onUpdate]");
     }
-    for (;;)
+  }
+  
+  public int b()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)obz.a();
+    if (localQQAppInterface != null)
     {
-      localLibEntry1.jdField_a_of_type_Int = paramInt1;
-      localLibEntry1.jdField_b_of_type_Int = paramInt2;
-      localLibEntry1.c = paramInt3;
-      localLibEntry1.jdField_b_of_type_JavaLangString = paramString1;
-      localLibEntry1.jdField_a_of_type_JavaLangString = paramString2;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQProtect.QSec", 2, String.format("Add lost lib: %d,%d,%d,%s", new Object[] { Integer.valueOf(localLibEntry1.jdField_a_of_type_Int), Integer.valueOf(localLibEntry1.jdField_b_of_type_Int), Integer.valueOf(localLibEntry1.c), localLibEntry1.jdField_b_of_type_JavaLangString }));
-      }
-      QSecLibMgr.a(this.b).a(localLibEntry1, false);
-      this.a = true;
-      return;
-      QSecLibMgr.a(this.b).a(paramInt1, false);
-      localLibEntry1 = localLibEntry2;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("QQProtect.QSec", 2, String.format("Database info mismatch for lib: %d", new Object[] { Integer.valueOf(paramInt1) }));
-        localLibEntry1 = localLibEntry2;
-      }
+      String str = localQQAppInterface.c();
+      return baig.M(localQQAppInterface.getApp(), str);
     }
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amfh
  * JD-Core Version:    0.7.0.1
  */

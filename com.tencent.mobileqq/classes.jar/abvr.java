@@ -1,23 +1,32 @@
-import android.view.View;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardListActivity;
-import com.tencent.mobileqq.businessCard.utilities.BusinessCardGroupLogic;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.os.Message;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.os.MqqHandler;
 
 public class abvr
-  implements AdapterView.OnItemClickListener
+  extends MqqHandler
 {
-  public abvr(BusinessCardGroupLogic paramBusinessCardGroupLogic) {}
+  public abvr(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.a(paramInt);
-    this.a.a(false);
+    if (!this.a.app.isLogin()) {
+      return;
+    }
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      this.a.c();
+      return;
+    }
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abvr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,22 @@
 package com.tencent.mobileqq.troop.widget;
 
-import akbx;
-import akby;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
+import axcq;
+import azoy;
 import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
 import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.OnOnPlayedListener;
 import com.tencent.qphone.base.util.QLog;
 
 public class TroopSignVideoView
   extends SpriteGLView
 {
   private int jdField_a_of_type_Int;
-  private VideoSprite.OnOnPlayedListener jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite$OnOnPlayedListener;
+  private axcq jdField_a_of_type_Axcq;
   private VideoSprite jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite;
   private String jdField_a_of_type_JavaLangString;
-  private boolean c;
+  private boolean d;
   
   public TroopSignVideoView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -38,20 +37,20 @@ public class TroopSignVideoView
   
   public void a(String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite == null) || (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.a()) || (!paramString.equals(this.jdField_a_of_type_JavaLangString)))
+    if ((this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite == null) || (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.c()) || (!paramString.equals(this.jdField_a_of_type_JavaLangString)))
     {
       if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite != null) {
         b(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite);
       }
       this.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite = new akby(this, this, getContext(), true);
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.a = true;
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite = new TroopSignVideoView.SignVideoSprite(this, this, getContext(), true);
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.b = true;
       this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.c = true;
       a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite);
     }
     this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.a(true);
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.b(paramString);
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.a(new akbx(this));
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.c(paramString);
+    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.a(new azoy(this));
     if (QLog.isColorLevel()) {
       QLog.d("SpriteGLView", 2, "SpriteGLView->play");
     }
@@ -60,7 +59,7 @@ public class TroopSignVideoView
   public void l()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.d();
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.b();
     }
     if (QLog.isColorLevel()) {
       QLog.d("SpriteGLView", 2, "SpriteGLView->pause");
@@ -69,8 +68,8 @@ public class TroopSignVideoView
   
   public void m()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite != null) && (!this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.a())) {
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.e();
+    if ((this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite != null) && (!this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.c())) {
+      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite.c();
     }
     for (;;)
     {
@@ -109,19 +108,19 @@ public class TroopSignVideoView
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void setOnPlayedListener(VideoSprite.OnOnPlayedListener paramOnOnPlayedListener)
+  public void setOnPlayedListener(axcq paramaxcq)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlVideoSprite$OnOnPlayedListener = paramOnOnPlayedListener;
+    this.jdField_a_of_type_Axcq = paramaxcq;
   }
   
   public void setShowCover(boolean paramBoolean)
   {
-    this.c = paramBoolean;
+    this.d = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopSignVideoView
  * JD-Core Version:    0.7.0.1
  */

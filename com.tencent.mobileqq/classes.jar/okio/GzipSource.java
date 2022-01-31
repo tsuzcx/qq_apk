@@ -33,7 +33,6 @@ public final class GzipSource
   }
   
   private void checkEqual(String paramString, int paramInt1, int paramInt2)
-    throws IOException
   {
     if (paramInt2 != paramInt1) {
       throw new IOException(String.format("%s: actual 0x%08x != expected 0x%08x", new Object[] { paramString, Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) }));
@@ -41,7 +40,6 @@ public final class GzipSource
   }
   
   private void consumeHeader()
-    throws IOException
   {
     this.source.require(10L);
     int j = this.source.buffer().getByte(3L);
@@ -100,7 +98,6 @@ public final class GzipSource
   }
   
   private void consumeTrailer()
-    throws IOException
   {
     checkEqual("CRC", this.source.readIntLe(), (int)this.crc.getValue());
     checkEqual("ISIZE", this.source.readIntLe(), this.inflater.getTotalOut());
@@ -123,19 +120,17 @@ public final class GzipSource
       int j = (int)Math.min(paramBuffer.limit - i, paramLong2);
       this.crc.update(paramBuffer.data, i, j);
       paramLong2 -= j;
-      paramLong1 = 0L;
       paramBuffer = paramBuffer.next;
+      paramLong1 = 0L;
     }
   }
   
   public void close()
-    throws IOException
   {
     this.inflaterSource.close();
   }
   
   public long read(Buffer paramBuffer, long paramLong)
-    throws IOException
   {
     if (paramLong < 0L) {
       throw new IllegalArgumentException("byteCount < 0: " + paramLong);

@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.activity.AssociatedAccountActivity;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.image.AbstractGifImage.DoAccumulativeRunnable;
 
 public class rrl
-  implements Runnable
 {
-  public rrl(AssociatedAccountActivity paramAssociatedAccountActivity) {}
+  private static int a;
   
-  public void run()
+  public static void a()
   {
-    if (this.a.a != null) {
-      this.a.a.springBackOverScrollHeaderView();
-    }
+    a = AbstractGifImage.DoAccumulativeRunnable.DELAY;
+    AbstractGifImage.DoAccumulativeRunnable.DELAY = 0;
+  }
+  
+  public static void b()
+  {
+    AbstractGifImage.DoAccumulativeRunnable.DELAY = a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rrl
  * JD-Core Version:    0.7.0.1
  */

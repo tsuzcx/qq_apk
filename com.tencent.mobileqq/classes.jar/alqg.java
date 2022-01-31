@@ -1,68 +1,111 @@
-import android.os.Bundle;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.TicketUtils;
-import com.tencent.open.downloadnew.DownloadConstants;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct;
-import com.tencent.tmassistantsdk.TMAssistantCallYYB_V1;
-import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
-import mqq.os.MqqHandler;
-import oicq.wlogin_sdk.tools.util;
+import com.tencent.mobileqq.businessCard.data.BusinessCard;
+import com.tencent.mobileqq.businessCard.utilities.BusinessCardUtils.2;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
-class alqg
-  implements Runnable
+public class alqg
 {
-  alqg(alqf paramalqf, byte[] paramArrayOfByte, String paramString) {}
-  
-  public void run()
+  public static BusinessCard a(QQAppInterface paramQQAppInterface)
   {
-    boolean bool2 = false;
-    this.jdField_a_of_type_Alqf.jdField_a_of_type_ComTencentOpenBaseTicketUtils.a();
+    paramQQAppInterface = (alov)paramQQAppInterface.getManager(112);
+    if (paramQQAppInterface != null) {}
+    for (paramQQAppInterface = paramQQAppInterface.a();; paramQQAppInterface = null)
+    {
+      Object localObject = paramQQAppInterface;
+      if (paramQQAppInterface == null) {
+        localObject = new BusinessCard();
+      }
+      return localObject;
+    }
+  }
+  
+  public static BusinessCard a(QQAppInterface paramQQAppInterface, atwx paramatwx)
+  {
+    alov localalov = (alov)paramQQAppInterface.getManager(112);
+    if (paramatwx.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0) {
+      paramQQAppInterface = localalov.a();
+    }
     for (;;)
     {
-      boolean bool3;
+      paramatwx = paramQQAppInterface;
+      if (paramQQAppInterface == null) {
+        paramatwx = new BusinessCard();
+      }
+      return paramatwx;
+      if (paramatwx.jdField_a_of_type_ComTencentMobileqqDataCard != null)
+      {
+        paramQQAppInterface = paramatwx.jdField_a_of_type_ComTencentMobileqqDataCard.getCardInfo();
+        if ((paramatwx.jdField_a_of_type_ComTencentMobileqqDataCard.hasCardInfo()) && (!TextUtils.isEmpty(paramQQAppInterface.cardId))) {
+          localalov.a(paramatwx.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, paramQQAppInterface);
+        } else {
+          paramQQAppInterface = localalov.b(paramatwx.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
+        }
+      }
+      else
+      {
+        paramQQAppInterface = null;
+      }
+    }
+  }
+  
+  public static void a(String paramString)
+  {
+    try
+    {
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mRequestWidth = 1000;
+      localURLDrawableOptions.mRequestHeight = 600;
+      ThreadManager.post(new BusinessCardUtils.2(URLDrawable.getDrawable(paramString, localURLDrawableOptions)), 8, null, true);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+  }
+  
+  public static void a(String paramString, int paramInt)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("errorCode", String.valueOf(paramInt));
+    awrn.a(BaseApplicationImpl.getContext()).a(paramString, "ocr_user_edit_action_report", true, 0L, 0L, localHashMap, null);
+  }
+  
+  public static void a(String paramString, URLImageView paramURLImageView, int paramInt1, int paramInt2)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramURLImageView == null)) {}
+    do
+    {
+      return;
       try
       {
-        Object localObject = this.jdField_a_of_type_Alqf.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_Alqf.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, this.jdField_a_of_type_Alqf.jdField_a_of_type_AndroidOsBundle);
-        ThreadManager.getSubThreadHandler().post(new alqh(this, (DownloadInfo)localObject));
-        if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length != 0))
-        {
-          localObject = new StringBuilder();
-          this.jdField_a_of_type_Alqf.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.uin = (this.jdField_a_of_type_JavaLangString + "&identity=" + util.buf_to_string(this.jdField_a_of_type_ArrayOfByte));
-          this.jdField_a_of_type_Alqf.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.d = this.jdField_a_of_type_Alqf.jdField_a_of_type_Long;
-        }
-        LogUtility.a("MyAppApi", "OpenSDK startToAppDetail param SNGAppId=" + this.jdField_a_of_type_Alqf.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.SNGAppId + " apkId=" + this.jdField_a_of_type_Alqf.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskApkId + " taskAppId=" + this.jdField_a_of_type_Alqf.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskAppId + " packageName=" + this.jdField_a_of_type_Alqf.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskPackageName + " version=" + this.jdField_a_of_type_Alqf.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskVersion + " uin=" + this.jdField_a_of_type_Alqf.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.uin + " via=" + this.jdField_a_of_type_Alqf.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.via);
-        LogUtility.c("TIME-STATISTIC", "mDownloadSdk.startToAppDetail");
-        if (this.jdField_a_of_type_Alqf.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a() <= 2)
-        {
-          ((TMAssistantCallYYB_V1)this.jdField_a_of_type_Alqf.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a()).startToAppDetail(this.jdField_a_of_type_Alqf.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Alqf.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, this.jdField_a_of_type_Alqf.jdField_a_of_type_Boolean, this.jdField_a_of_type_Alqf.b);
-          return;
-        }
-        int i = this.jdField_a_of_type_Alqf.jdField_a_of_type_AndroidOsBundle.getInt(DownloadConstants.j);
-        int j = this.jdField_a_of_type_Alqf.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_Alqf.jdField_a_of_type_AndroidOsBundle);
-        boolean bool1 = this.jdField_a_of_type_Alqf.jdField_a_of_type_Boolean;
-        bool3 = this.jdField_a_of_type_Alqf.b;
-        if (i == 3)
-        {
-          bool1 = false;
-          ((TMAssistantCallYYB_V2)this.jdField_a_of_type_Alqf.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a()).startToAppDetail(this.jdField_a_of_type_Alqf.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Alqf.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, bool1, bool2, j);
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        LogUtility.b("MyAppApi", "startToAppDetail err", localException);
+        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+        localURLDrawableOptions.mRequestWidth = paramInt1;
+        localURLDrawableOptions.mRequestHeight = paramInt2;
+        localURLDrawableOptions.mLoadingDrawable = paramURLImageView.getContext().getResources().getDrawable(2130844048);
+        paramURLImageView.setImageDrawable(URLDrawable.getDrawable(paramString, localURLDrawableOptions));
+        paramURLImageView.setURLDrawableDownListener(new alqh(paramURLImageView));
         return;
       }
-      bool2 = bool3;
-    }
+      catch (Exception paramString) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("BusinessCard", 2, "error " + paramString.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     alqg
  * JD-Core Version:    0.7.0.1
  */

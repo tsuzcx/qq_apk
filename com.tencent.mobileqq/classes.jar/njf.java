@@ -1,17 +1,16 @@
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.observer.GetRedPointExObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
 
-public class njf
-  extends GetRedPointExObserver
+class njf
+  implements pby
 {
-  public njf(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
+  njf(nje paramnje, ViewBase paramViewBase) {}
   
-  protected void a(Object paramObject)
+  public void a()
   {
-    ThreadManager.post(new njg(this, paramObject), 5, null, true);
-    SLog.b(MsgTabStoryNodeListManager.a(), "freshRedPoint, showStoryNode");
+    String str = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase.getEventAttachedData();
+    obz.a(njd.a(this.jdField_a_of_type_Nje.jdField_a_of_type_Njd).getContext(), str);
+    oag.a(this.jdField_a_of_type_Nje.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusBeanTemplateBean, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreViewBase);
   }
 }
 

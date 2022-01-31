@@ -1,64 +1,128 @@
 package com.tencent.mobileqq.activity.contacts.adapter;
 
+import afdh;
+import afew;
+import afex;
+import afey;
+import afgy;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.SparseArray;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.activity.contacts.ContactsConstant;
 import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment;
-import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment.FragmentLifeListener;
-import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment.RefreshDataListener;
-import com.tencent.mobileqq.activity.contacts.fragment.ContactsFragmentFactory;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class ContactsViewPagerAdapter
-  extends FragmentStatePagerAdapter
-  implements ContactsBaseFragment.FragmentLifeListener
+  extends CustomFragmentStatePagerAdapter
+  implements afew
 {
-  protected SparseArray a;
-  protected ContactsBaseFragment.RefreshDataListener a;
-  private BaseActivity a;
+  protected int a;
+  protected afex a;
+  protected SparseArray<ContactsBaseFragment> a;
+  protected BaseActivity a;
   protected QQAppInterface a;
+  protected ArrayList<afdh> a;
+  protected int b;
+  protected ArrayList<afgy> b;
   
-  public ContactsViewPagerAdapter(FragmentManager paramFragmentManager, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity)
+  public ContactsViewPagerAdapter(FragmentManager paramFragmentManager, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, ArrayList<afdh> paramArrayList)
   {
     super(paramFragmentManager);
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(ContactsConstant.a.length);
+    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+  }
+  
+  protected int a(int paramInt)
+  {
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      if (((afdh)this.jdField_a_of_type_JavaUtilArrayList.get(i)).c == paramInt) {
+        return i;
+      }
+      i += 1;
+    }
+    return -1;
+  }
+  
+  protected afdh a(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
+      return (afdh)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    }
+    return null;
+  }
+  
+  public Fragment a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Contacts.ContactsViewPagerAdapter", 2, "getItem:" + paramInt);
+    }
+    return a(paramInt, true);
+  }
+  
+  protected ContactsBaseFragment a(int paramInt)
+  {
+    return (ContactsBaseFragment)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt, null);
   }
   
   public ContactsBaseFragment a(int paramInt, boolean paramBoolean)
   {
-    ContactsBaseFragment localContactsBaseFragment2 = (ContactsBaseFragment)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    ContactsBaseFragment localContactsBaseFragment1 = localContactsBaseFragment2;
-    if (localContactsBaseFragment2 == null)
+    afdh localafdh = a(paramInt);
+    Object localObject = null;
+    if (localafdh != null)
     {
-      localContactsBaseFragment1 = localContactsBaseFragment2;
-      if (paramBoolean)
+      ContactsBaseFragment localContactsBaseFragment = a(localafdh.c);
+      localObject = localContactsBaseFragment;
+      if (localContactsBaseFragment == null)
       {
-        localContactsBaseFragment1 = ContactsFragmentFactory.a(paramInt);
-        localContactsBaseFragment1.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-        localContactsBaseFragment1.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        localContactsBaseFragment1.a(this);
-        localContactsBaseFragment1.a(this.jdField_a_of_type_ComTencentMobileqqActivityContactsFragmentContactsBaseFragment$RefreshDataListener);
-        this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localContactsBaseFragment1);
+        localObject = localContactsBaseFragment;
+        if (paramBoolean)
+        {
+          localObject = afey.a(localafdh.c);
+          ((ContactsBaseFragment)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
+          ((ContactsBaseFragment)localObject).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+          ((ContactsBaseFragment)localObject).a(this);
+          ((ContactsBaseFragment)localObject).a(this.jdField_a_of_type_Afex);
+          ((ContactsBaseFragment)localObject).e(paramInt);
+          if ((localObject instanceof afgy)) {
+            this.jdField_b_of_type_JavaUtilArrayList.add((afgy)localObject);
+          }
+          this.jdField_a_of_type_AndroidUtilSparseArray.put(localafdh.c, localObject);
+          QLog.d("Contacts.ContactsViewPagerAdapter", 2, "getFragment ..... create " + paramInt + "  " + localafdh.c);
+        }
       }
     }
-    return localContactsBaseFragment1;
+    if (localObject != null) {
+      QLog.d("Contacts.ContactsViewPagerAdapter", 2, "getFragment ..... pos:" + paramInt + "  id:" + ((ContactsBaseFragment)localObject).a() + "  isDetached: " + ((ContactsBaseFragment)localObject).isDetached() + " contactsViewPager:" + this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(2131299084) + "  isAdd: " + ((ContactsBaseFragment)localObject).isAdded() + " " + localObject);
+    }
+    if ((localObject != null) && ((localObject instanceof afgy)) && (this.jdField_b_of_type_Int > 0)) {
+      ((afgy)localObject).a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+    }
+    return localObject;
   }
   
   public void a()
   {
     int i = 0;
-    while (i < 6)
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      ContactsBaseFragment localContactsBaseFragment = (ContactsBaseFragment)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-      if (localContactsBaseFragment != null) {
-        localContactsBaseFragment.f();
+      Object localObject = a(i);
+      if (localObject != null)
+      {
+        localObject = a(((afdh)localObject).c);
+        if (localObject != null) {
+          ((ContactsBaseFragment)localObject).g();
+        }
       }
       i += 1;
     }
@@ -71,23 +135,23 @@ public class ContactsViewPagerAdapter
     }
     ContactsBaseFragment localContactsBaseFragment = a(paramInt, false);
     if (localContactsBaseFragment != null) {
-      localContactsBaseFragment.g();
+      localContactsBaseFragment.f();
     }
   }
   
   public void a(int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Contacts.ContactsViewPagerAdapter", 2, "onPageSelected. curPos:" + paramInt1 + " prePos:" + paramInt2);
+      QLog.i("Contacts.ContactsViewPagerAdapter", 2, "headViewScrollChanged currentY:" + paramInt1 + "  maxY:" + paramInt2);
     }
-    ContactsBaseFragment localContactsBaseFragment = a(paramInt1, false);
-    if (localContactsBaseFragment != null) {
-      localContactsBaseFragment.c(true);
+    int i = 0;
+    while (i < this.jdField_b_of_type_JavaUtilArrayList.size())
+    {
+      ((afgy)this.jdField_b_of_type_JavaUtilArrayList.get(i)).a(paramInt1, paramInt2);
+      i += 1;
     }
-    localContactsBaseFragment = a(paramInt2, false);
-    if (localContactsBaseFragment != null) {
-      localContactsBaseFragment.c(false);
-    }
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
   }
   
   public void a(int paramInt, boolean paramBoolean)
@@ -101,9 +165,9 @@ public class ContactsViewPagerAdapter
     }
   }
   
-  public void a(ContactsBaseFragment.RefreshDataListener paramRefreshDataListener)
+  public void a(afex paramafex)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityContactsFragmentContactsBaseFragment$RefreshDataListener = paramRefreshDataListener;
+    this.jdField_a_of_type_Afex = paramafex;
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -112,17 +176,32 @@ public class ContactsViewPagerAdapter
     {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
       int i = 0;
-      while (i < 6)
+      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        ContactsBaseFragment localContactsBaseFragment = (ContactsBaseFragment)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-        if (localContactsBaseFragment != null)
+        Object localObject = a(i);
+        if (localObject != null)
         {
-          localContactsBaseFragment.a(paramQQAppInterface);
-          localContactsBaseFragment.c();
+          localObject = a(((afdh)localObject).c);
+          if (localObject != null)
+          {
+            ((ContactsBaseFragment)localObject).a(paramQQAppInterface);
+            ((ContactsBaseFragment)localObject).c();
+          }
         }
         i += 1;
       }
     }
+  }
+  
+  public void a(ArrayList<afdh> paramArrayList)
+  {
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
+    c();
+    if (QLog.isColorLevel()) {
+      QLog.i("Contacts.ContactsViewPagerAdapter", 2, "tabDatasUpdated. size:" + this.jdField_a_of_type_JavaUtilArrayList.size());
+    }
+    notifyDataSetChanged();
   }
   
   public void a(boolean paramBoolean)
@@ -131,11 +210,15 @@ public class ContactsViewPagerAdapter
       QLog.d("Contacts.ContactsViewPagerAdapter", 2, "onThemeChange:" + paramBoolean);
     }
     int i = 0;
-    while (i < 6)
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      ContactsBaseFragment localContactsBaseFragment = (ContactsBaseFragment)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-      if (localContactsBaseFragment != null) {
-        localContactsBaseFragment.d(paramBoolean);
+      Object localObject = a(i);
+      if (localObject != null)
+      {
+        localObject = a(((afdh)localObject).c);
+        if (localObject != null) {
+          ((ContactsBaseFragment)localObject).e(paramBoolean);
+        }
       }
       i += 1;
     }
@@ -144,17 +227,19 @@ public class ContactsViewPagerAdapter
   public void b()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Contacts.ContactsViewPagerAdapter", 2, "doOnDestroy");
+      QLog.d("Contacts.ContactsViewPagerAdapter", 2, "doOnDestroy  mFragmentsCache.size() = " + this.jdField_a_of_type_AndroidUtilSparseArray.size());
     }
     int i = 0;
-    while (i < 6)
+    while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
     {
-      ContactsBaseFragment localContactsBaseFragment = (ContactsBaseFragment)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+      ContactsBaseFragment localContactsBaseFragment = (ContactsBaseFragment)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
       if (localContactsBaseFragment != null) {
         localContactsBaseFragment.a();
       }
       i += 1;
     }
+    this.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    this.jdField_b_of_type_JavaUtilArrayList.clear();
   }
   
   public void b(int paramInt)
@@ -164,7 +249,22 @@ public class ContactsViewPagerAdapter
     }
     ContactsBaseFragment localContactsBaseFragment = a(paramInt, false);
     if (localContactsBaseFragment != null) {
-      localContactsBaseFragment.b();
+      localContactsBaseFragment.aq_();
+    }
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Contacts.ContactsViewPagerAdapter", 2, "onPageSelected. curPos:" + paramInt1 + " prePos:" + paramInt2);
+    }
+    ContactsBaseFragment localContactsBaseFragment = a(paramInt1, false);
+    if (localContactsBaseFragment != null) {
+      localContactsBaseFragment.d(true);
+    }
+    localContactsBaseFragment = a(paramInt2, false);
+    if (localContactsBaseFragment != null) {
+      localContactsBaseFragment.d(false);
     }
   }
   
@@ -181,39 +281,50 @@ public class ContactsViewPagerAdapter
   
   public void d(int paramInt)
   {
-    if ((paramInt != 0) && (paramInt != 1))
+    if ((paramInt != 1) && (paramInt != 2))
     {
       if (QLog.isColorLevel()) {
         QLog.d("Contacts.ContactsViewPagerAdapter", 2, "remove fragment cache :" + paramInt);
       }
-      ContactsBaseFragment localContactsBaseFragment = (ContactsBaseFragment)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+      ContactsBaseFragment localContactsBaseFragment = a(paramInt);
       if (localContactsBaseFragment != null)
       {
         localContactsBaseFragment.a();
-        this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
+        this.jdField_a_of_type_AndroidUtilSparseArray.delete(paramInt);
+        this.jdField_b_of_type_JavaUtilArrayList.remove(localContactsBaseFragment);
       }
     }
   }
   
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.ContactsViewPagerAdapter", 2, "destroyItem:" + paramInt);
-    }
-    super.destroyItem(paramViewGroup, paramInt, paramObject);
-  }
-  
   public int getCount()
   {
-    return ContactsConstant.a.length;
+    if (QLog.isColorLevel()) {
+      QLog.i("Contacts.ContactsViewPagerAdapter", 2, "getCount. size:" + this.jdField_a_of_type_JavaUtilArrayList.size());
+    }
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
   }
   
-  public Fragment getItem(int paramInt)
+  public int getItemPosition(Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.ContactsViewPagerAdapter", 2, "getItem:" + paramInt);
+    QLog.d("Contacts.ContactsViewPagerAdapter", 2, "getItemPosition " + paramObject);
+    paramObject = (ContactsBaseFragment)paramObject;
+    if (paramObject != null)
+    {
+      int i = a(paramObject.a());
+      if (i >= 0)
+      {
+        if (paramObject.b() == i)
+        {
+          QLog.d("Contacts.ContactsViewPagerAdapter", 2, "getItemPosition POSITION_UNCHANGED");
+          return -1;
+        }
+        QLog.d("Contacts.ContactsViewPagerAdapter", 2, "getItemPosition newPos" + i + " oldPos:" + paramObject.b());
+        paramObject.e(i);
+        return i;
+      }
     }
-    return a(paramInt, true);
+    QLog.d("Contacts.ContactsViewPagerAdapter", 2, "getItemPosition POSITION_NONE");
+    return -2;
   }
 }
 

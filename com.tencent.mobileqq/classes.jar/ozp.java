@@ -1,21 +1,13 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.qrcode.ipc.VoiceScan;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView.SpanClickListener;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.IBuilder;
 
-class ozp
-  implements ClickableColorSpanTextView.SpanClickListener
+public class ozp
+  implements ViewBase.IBuilder
 {
-  ozp(ozo paramozo) {}
-  
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  public ViewBase build(VafContext paramVafContext)
   {
-    paramClickableColorSpanTextView = new Intent(VoiceScan.a(this.a.a), QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    VoiceScan.a(this.a.a).startActivity(paramClickableColorSpanTextView);
+    return new ozm(paramVafContext);
   }
 }
 

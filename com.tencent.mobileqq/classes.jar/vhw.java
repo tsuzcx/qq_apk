@@ -1,16 +1,12 @@
-import com.tencent.mobileqq.activity.aio.item.PokeEmoItemBuilder;
-import com.tencent.mobileqq.activity.aio.stickerbubble.PEPanelHelper;
-
 public class vhw
-  implements Runnable
 {
-  public vhw(PokeEmoItemBuilder paramPokeEmoItemBuilder) {}
-  
-  public void run() {}
+  public vhv a;
+  public long b;
+  public boolean d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vhw
  * JD-Core Version:    0.7.0.1
  */

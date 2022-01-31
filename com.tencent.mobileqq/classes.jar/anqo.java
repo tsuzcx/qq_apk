@@ -1,24 +1,23 @@
-import dov.com.qq.im.QIMCameraCaptureUnit;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
 
 public class anqo
-  implements Runnable
+  extends anoj
 {
-  public anqo(QIMCameraCaptureUnit paramQIMCameraCaptureUnit, boolean paramBoolean) {}
+  public anqo(ExtendFriendFragment paramExtendFriendFragment) {}
   
-  public void run()
+  protected void a(int paramInt)
   {
-    if (!this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.c) {
-      this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.h(true);
-    }
-    this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.g();
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_DovComQqImQIMCameraCaptureUnit.e();
-    }
+    arjg.a(this.a.a, ExtendFriendFragment.a(this.a).app);
+    Intent localIntent = new Intent("match_chat_notify_update");
+    BaseApplicationImpl.getApplication().sendBroadcast(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anqo
  * JD-Core Version:    0.7.0.1
  */

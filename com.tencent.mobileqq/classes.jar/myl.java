@@ -1,71 +1,53 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.mp.mobileqq_mp.ReportPublicAccountResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import java.io.File;
+import org.json.JSONObject;
 
-public final class myl
-  implements BusinessObserver
+class myl
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  private myl(myh parammyh) {}
+  
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAReport", 2, "reportClickEventForAdver onReceive: " + String.valueOf(paramBoolean));
-    }
-    long l2;
-    if (paramBoolean) {
-      l2 = -1L;
-    }
-    do
+    synchronized (myh.a(this.a))
     {
+      myh.c("onPreLoadFailed vid:" + paramString1 + ", i:" + paramInt + ", callbackMsg:" + paramString2);
+      myh.a(this.a, myh.a(this.a));
+      return;
+    }
+  }
+  
+  public void onPreLoadSucess(String paramString1, String paramString2)
+  {
+    synchronized (myh.a(this.a))
+    {
+      myh.c("onPreLoadSucess vid:" + paramString1 + ", detail:" + paramString2);
       try
       {
-        paramBundle = paramBundle.getByteArray("data");
-        mobileqq_mp.ReportPublicAccountResponse localReportPublicAccountResponse = new mobileqq_mp.ReportPublicAccountResponse();
-        localReportPublicAccountResponse.mergeFrom(paramBundle);
-        l1 = l2;
-        if (localReportPublicAccountResponse.ret_info.has())
+        paramString2 = new JSONObject(paramString2);
+        long l1 = paramString2.optLong("fileSize");
+        long l2 = paramString2.optLong("offset");
+        if ((l1 > 0L) && (l2 > 0L) && (l2 >= l1))
         {
-          l1 = l2;
-          if (localReportPublicAccountResponse.ret_info.ret_code.has())
-          {
-            paramInt = localReportPublicAccountResponse.ret_info.ret_code.get();
-            l2 = paramInt;
-            l1 = l2;
-            if (l2 == 0L)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("PAReport", 2, "reportClickEventRuntime ret_code: " + String.valueOf(l2));
-              }
-              return;
-            }
+          paramString2 = new File(myh.b(paramString1));
+          if (paramString2.exists()) {
+            paramString2.renameTo(new File(myh.a(paramString1)));
           }
+          myh.a(this.a, myh.a(this.a));
         }
       }
-      catch (Exception paramBundle)
+      catch (Exception paramString1)
       {
-        long l1;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.e("PAReport", 2, "reportClickEventRuntime exception", paramBundle);
-        return;
+        label136:
+        break label136;
       }
-      finally
-      {
-        if (!QLog.isColorLevel()) {
-          break label288;
-        }
-        QLog.d("PAReport", 2, "reportClickEventRuntime ret_code: " + String.valueOf(-1L));
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("PAReport", 2, "reportClickEventRuntime ret_code: " + String.valueOf(l1));
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     myl
  * JD-Core Version:    0.7.0.1
  */

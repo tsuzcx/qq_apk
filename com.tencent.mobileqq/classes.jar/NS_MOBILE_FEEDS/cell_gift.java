@@ -10,7 +10,7 @@ public final class cell_gift
   extends JceStruct
 {
   static int cache_giftactiontype = 0;
-  static Map cache_gifturl = new HashMap();
+  static Map<Integer, String> cache_gifturl = new HashMap();
   public String actionurl = "";
   public int giftactiontype = 1;
   public String giftbackid = "";
@@ -18,7 +18,7 @@ public final class cell_gift
   public String giftid = "";
   public String giftname = "";
   public String gifttype = "";
-  public Map gifturl;
+  public Map<Integer, String> gifturl;
   
   static
   {
@@ -27,7 +27,7 @@ public final class cell_gift
   
   public cell_gift() {}
   
-  public cell_gift(String paramString1, String paramString2, String paramString3, Map paramMap, String paramString4, String paramString5, int paramInt, String paramString6)
+  public cell_gift(String paramString1, String paramString2, String paramString3, Map<Integer, String> paramMap, String paramString4, String paramString5, int paramInt, String paramString6)
   {
     this.giftname = paramString1;
     this.gifttype = paramString2;
@@ -79,7 +79,7 @@ public final class cell_gift
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_gift
  * JD-Core Version:    0.7.0.1
  */

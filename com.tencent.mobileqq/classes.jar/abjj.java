@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.armap.CameraSurfaceView;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class abjj
-  implements Runnable
+  implements View.OnClickListener
 {
-  public abjj(CameraSurfaceView paramCameraSurfaceView) {}
+  public abjj(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.d();
+    this.a.a.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abjj
  * JD-Core Version:    0.7.0.1
  */

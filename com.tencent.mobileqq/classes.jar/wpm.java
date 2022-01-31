@@ -1,200 +1,144 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
-import com.tencent.mobileqq.activity.contact.newfriend.BaseNewFriendView.INewFriendContext;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.KplRoleInfo.WZRYUIinfo;
-import com.tencent.mobileqq.newfriend.FriendSystemMessage;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
+import WEISHI_USER_GROWTH.WEISHI.stMetaFeed;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
-import com.tencent.mobileqq.systemmsg.SystemMsgUtils;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import java.util.ArrayList;
+import java.util.List;
 
 public class wpm
-  extends MessageObserver
+  extends RecyclerView.Adapter<RecyclerView.ViewHolder>
 {
-  public wpm(SystemMsgListView paramSystemMsgListView) {}
+  private final BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+  private List<wpp> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private wzp jdField_a_of_type_Wzp;
+  private boolean jdField_a_of_type_Boolean;
   
-  protected void a(String paramString)
+  public wpm(BaseActivity paramBaseActivity)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendBaseNewFriendView$INewFriendContext.a())
-    {
-      paramString = SystemMsgListView.a(this.a).getResources().getString(2131433190);
-      QQToast.a(SystemMsgListView.a(this.a), 1, paramString, 0).b(this.a.a());
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("Q.newfriendSystemMsgListView", 2, "onSendSystemMsgActionError");
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = paramBaseActivity;
   }
   
-  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
+  private void a(RecyclerView.ViewHolder paramViewHolder, WEISHI.stMetaFeed paramstMetaFeed, int paramInt)
   {
-    long l1 = FriendSystemMsgController.a().b();
-    if (!TextUtils.isEmpty(paramString1)) {}
+    paramViewHolder = (wpo)paramViewHolder;
+    paramstMetaFeed = paramstMetaFeed.material_thumburl.get();
+    a(paramViewHolder.a, paramstMetaFeed);
+  }
+  
+  private void a(ImageView paramImageView, String paramString)
+  {
+    paramString = vmp.a(paramString);
+    if (!paramString.equals(paramImageView.getTag())) {
+      vms.a(paramImageView, paramString, 68, 90, 4, vms.b, "QQStoryMemory");
+    }
+  }
+  
+  public void a(List<WEISHI.stMetaFeed> paramList, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    int i;
+    wpp localwpp;
+    int j;
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      i = 3;
+      if (paramBoolean)
+      {
+        i = 2;
+        localwpp = new wpp(null, 100);
+        this.jdField_a_of_type_JavaUtilList.add(localwpp);
+      }
+      j = paramList.size();
+      if (j >= i) {
+        break label133;
+      }
+      i = j;
+    }
+    label133:
     for (;;)
     {
-      structmsg.StructMsg localStructMsg;
-      try
+      j = 0;
+      while (j < i)
       {
-        l2 = Long.parseLong(paramString1);
-        l1 = l2;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1012);
-        localStructMsg = FriendSystemMsgController.a().a(Long.valueOf(l1));
-        if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendBaseNewFriendView$INewFriendContext.a()) {
-          break label90;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.newfriendSystemMsgListView", 2, "onSendSystemMsgActionFin");
-        }
-        return;
+        localwpp = new wpp((WEISHI.stMetaFeed)paramList.get(j), 101);
+        this.jdField_a_of_type_JavaUtilList.add(localwpp);
+        j += 1;
       }
-      catch (Exception paramString1)
-      {
-        paramString1.printStackTrace();
-      }
-      continue;
-      label90:
-      if (!paramBoolean)
-      {
-        if (!TextUtils.isEmpty(paramString3)) {}
-        for (;;)
-        {
-          QQToast.a(SystemMsgListView.a(this.a), 1, paramString3, 0).b(this.a.a());
-          SystemMsgUtils.a(localStructMsg, paramInt3, paramString2, paramString4);
-          return;
-          paramString3 = SystemMsgListView.a(this.a).getResources().getString(2131434480);
-        }
-      }
-      paramString1 = SystemMsgListView.a(this.a).getResources().getString(2131433085);
-      QQToast.a(SystemMsgListView.a(this.a), 2, paramString1, 0).b(this.a.a());
-      long l2 = FriendSystemMsgController.a().a();
-      SystemMsgUtils.a(localStructMsg, paramInt1, paramString2, paramInt2);
-      if ((l2 != 0L) && (localStructMsg != null)) {}
-      try
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(AppConstants.K, 0, l2, localStructMsg.toByteArray());
-        if ((paramInt1 != 0) || (localStructMsg == null)) {
-          continue;
-        }
-        paramString3 = new Bundle();
-        paramString3.putString("base_uin", String.valueOf(localStructMsg.req_uin.get()));
-        paramString2 = localStructMsg.msg.req_uin_nick.get();
-        paramString1 = paramString2;
-        if (TextUtils.isEmpty(paramString2)) {
-          paramString1 = String.valueOf(localStructMsg.req_uin.get());
-        }
-        paramString3.putString("base_nick", paramString1);
-        paramString3.putInt("verfy_type", localStructMsg.msg.sub_type.get());
-        paramString3.putString("verfy_msg", localStructMsg.msg.msg_additional.get());
-        if (FriendSystemMessage.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(localStructMsg.req_uin.get()), localStructMsg, false))
-        {
-          paramString4 = new String(localStructMsg.msg.bytes_game_nick.get().toByteArray());
-          paramString2 = paramString1;
-          if (!TextUtils.isEmpty(paramString4)) {
-            paramString2 = KplRoleInfo.WZRYUIinfo.buildNickName(paramString1, paramString4);
-          }
-          paramString3.putString("base_nick", paramString2);
-          paramString3.putBoolean("isFromWzry", true);
-        }
-        AutoRemarkActivity.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityContactNewfriendBaseNewFriendView$INewFriendContext.getActivity(), 0, String.valueOf(localStructMsg.req_uin.get()), l1, paramString3);
-        return;
-      }
-      catch (Exception paramString1)
-      {
-        for (;;)
-        {
-          paramString1.printStackTrace();
-          if (QLog.isColorLevel()) {
-            QLog.i("Q.newfriendSystemMsgListView", 2, "onSendSystemMsgActionFin Exception!");
-          }
-        }
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.newfriendSystemMsgListView", 2, "onGetSystemMsgFin.bengin");
-    }
-    if (((Activity)SystemMsgListView.a(this.a)).isFinishing()) {}
-    while (!paramBoolean1) {
+      notifyDataSetChanged();
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.newfriendSystemMsgListView", 2, "onGetSystemMsgFin.success");
-    }
-    try
+  }
+  
+  public void a(wzp paramwzp)
+  {
+    this.jdField_a_of_type_Wzp = paramwzp;
+  }
+  
+  public int getItemCount()
+  {
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
     {
-      if (SystemMsgListView.a(this.a) != null) {
-        SystemMsgListView.a(this.a).c();
+      if (this.jdField_a_of_type_JavaUtilList.size() > 3) {
+        return 3;
       }
-      this.a.i();
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    return ((wpp)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_a_of_type_Int;
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    paramInt = paramViewHolder.getAdapterPosition();
+    wpp localwpp = (wpp)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    int i = localwpp.jdField_a_of_type_Int;
+    WEISHI.stMetaFeed localstMetaFeed = localwpp.jdField_a_of_type_WEISHI_USER_GROWTHWEISHI$stMetaFeed;
+    switch (i)
+    {
+    }
+    for (;;)
+    {
+      paramViewHolder.itemView.setOnClickListener(new wpn(this, localwpp));
       return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
-  }
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.newfriendSystemMsgListView", 2, "onGetDelSystemMsgFin.bengin");
-    }
-    this.a.k();
-    if (paramBoolean1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.newfriendSystemMsgListView", 2, "onGetDelSystemMsgFin.success");
-      }
-      if (SystemMsgListView.a(this.a) != null) {
-        SystemMsgListView.a(this.a).c();
+      if (i == 101)
+      {
+        a(paramViewHolder, localstMetaFeed, paramInt);
+        continue;
+        if (ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null)) {
+          ((wpo)paramViewHolder).a.setImageResource(2130848956);
+        } else {
+          ((wpo)paramViewHolder).a.setImageResource(2130844955);
+        }
       }
     }
-    while (!paramBoolean2) {
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1016);
   }
   
-  public void c(String paramString)
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
   {
-    if (SystemMsgListView.a(this.a) != null) {
-      SystemMsgListView.a(this.a).c();
+    LayoutInflater localLayoutInflater = LayoutInflater.from(paramViewGroup.getContext());
+    switch (paramInt)
+    {
+    default: 
+      return null;
     }
-  }
-  
-  protected void e()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.newfriendSystemMsgListView", 2, "onGetDelSystemMsgError");
-    }
-    this.a.k();
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1016);
+    return new wpo(localLayoutInflater.inflate(2131495441, paramViewGroup, false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wpm
  * JD-Core Version:    0.7.0.1
  */

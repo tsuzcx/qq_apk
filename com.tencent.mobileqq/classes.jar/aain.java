@@ -1,23 +1,37 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.ARScanAR;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.util.Iterator;
+import java.util.List;
 
-public final class aain
-  implements Parcelable.Creator
+public class aain
+  implements bbrx
 {
-  public ARScanAR a(Parcel paramParcel)
-  {
-    return new ARScanAR(paramParcel);
-  }
+  public aain(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList, aodw paramaodw) {}
   
-  public ARScanAR[] a(int paramInt)
+  public void a(int paramInt)
   {
-    return new ARScanAR[paramInt];
+    if (paramInt == 2)
+    {
+      apcb.d(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.getString(2131627191));
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+        if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+          if (bace.b(localFileManagerEntity.getFilePath())) {
+            this.jdField_a_of_type_Aodw.a(localFileManagerEntity.getFilePath(), "", this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.getCurrentAccountUin(), 0, false);
+          } else {
+            this.jdField_a_of_type_Aodw.a(localFileManagerEntity, String.valueOf(localFileManagerEntity.peerUin));
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aain
  * JD-Core Version:    0.7.0.1
  */

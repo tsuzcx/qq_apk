@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class NeedHandleUserData
-  extends Entity
+  extends atmo
 {
   public int type;
-  @unique
+  @atoc
   public String uin;
 }
 

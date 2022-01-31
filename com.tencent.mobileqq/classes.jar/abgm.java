@@ -1,23 +1,24 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.qq.im.poi.LbsPackSendActivity;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.OverloadTipsActivity;
 
 public class abgm
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnKeyListener
 {
-  public abgm(ARMapActivity paramARMapActivity, QQCustomDialog paramQQCustomDialog) {}
+  public abgm(OverloadTipsActivity paramOverloadTipsActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    LbsPackSendActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, 105);
+    if (paramInt == 4) {
+      this.a.finish();
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abgm
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class mobileqq_mp$SetRefuseFollowRequest
-  extends MessageMicro
+  extends MessageMicro<SetRefuseFollowRequest>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32 }, new String[] { "luin", "account_type", "refuse_forever", "refuse_period" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Boolean.valueOf(false), Integer.valueOf(0) }, SetRefuseFollowRequest.class);
   public final PBUInt32Field account_type = PBField.initUInt32(0);

@@ -1,171 +1,104 @@
-import android.content.Context;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.support.report.VideoEditReport;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import dov.com.qq.im.capture.data.IFaceSelectedListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.DynamicFaceLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.LayerParams;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.model.SelectedItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage.Item;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InformationFaceConstant;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.LocationFacePackage.Item;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.InfoStickerDrawable;
-import dov.com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 
 public class aoid
-  implements IFaceSelectedListener
+  extends aohw
 {
-  private aoid(DoodleLayout paramDoodleLayout) {}
+  private aodp a;
   
-  public void a()
+  public aoid(QQAppInterface paramQQAppInterface)
   {
-    this.a.a().c();
-    this.a.a().c();
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.invalidate();
+    super(paramQQAppInterface);
+    this.jdField_a_of_type_Aodp = new aoie(this);
+    paramQQAppInterface.a().addObserver(this.jdField_a_of_type_Aodp);
   }
   
-  public void a(SelectedItem paramSelectedItem, float paramFloat1, float paramFloat2, float paramFloat3, String paramString, SegmentKeeper paramSegmentKeeper)
+  private aoif a(long paramLong, boolean paramBoolean)
   {
-    SLog.b("DoodleLayout", "onNormalFaceSelected, item : %s , x : %s , y : %s , scale : %s path: %s", new Object[] { paramSelectedItem, Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Float.valueOf(paramFloat3), paramString });
-    if ((this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams == null) || ((this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.d == 0) && (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.c == 0)) || (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.d > this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.c)) {}
-    for (;;)
+    aohx localaohx = a(paramLong);
+    if (localaohx == null) {
+      return null;
+    }
+    if ((localaohx instanceof aoif)) {
+      return (aoif)localaohx;
+    }
+    return null;
+  }
+  
+  public String a(FileManagerEntity paramFileManagerEntity, int paramInt)
+  {
+    if (paramFileManagerEntity.Uuid == null)
     {
-      FaceLayer.LayerParams localLayerParams = new FaceLayer.LayerParams(paramFloat1, paramFloat2, paramFloat3, 0.0F, 0.0F, 0.0F, paramSelectedItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth(), paramSelectedItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
-      if ((this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int == 3)) {
-        LpReportInfo_pf00064.report(615, 6);
-      }
-      FaceLayer localFaceLayer = this.a.a();
-      Object localObject = localFaceLayer;
-      if (paramSelectedItem.jdField_a_of_type_Int == 1) {
-        if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null)
-        {
-          localObject = localFaceLayer;
-          if (!this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.b()) {}
-        }
-        else
-        {
-          localObject = this.a.a();
-        }
-      }
-      if (((FaceLayer)localObject).a(paramSelectedItem.jdField_a_of_type_JavaLangString, paramSelectedItem.b, paramSelectedItem.jdField_a_of_type_AndroidGraphicsDrawableDrawable, localLayerParams, paramString, false, paramSelectedItem.jdField_a_of_type_Int, this.a.d(), paramSegmentKeeper))
-      {
-        DoodleLayout.a(this.a, (FaceLayer)localObject);
-        DoodleLayout.a("clk_oneface");
-        VideoEditReport.a("0X80076CA");
-        VideoEditReport.b("0X80075DF");
-      }
-      return;
-      paramFloat2 = ScreenUtil.b / 2;
+      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb]  download. uuid = null nSession[" + paramFileManagerEntity.nSessionId + "]");
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false, 50, new Object[] { paramFileManagerEntity });
+      return null;
     }
-  }
-  
-  public void a(InfomationFacePackage.Item paramItem, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    if (paramItem == null) {
-      SLog.e("DoodleLayout", "the item is null.");
-    }
-    label133:
-    label267:
-    label444:
-    label450:
-    label454:
-    for (;;)
+    int i = a(paramFileManagerEntity.fileName);
+    if (-1 == i)
     {
+      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb]  download. can not getThumb of file:" + paramFileManagerEntity.fileName);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(false, 50, new Object[] { paramFileManagerEntity });
+      return null;
+    }
+    String str = paramFileManagerEntity.Uuid.replace("/", "");
+    a();
+    str = apbo.a().d() + a(paramInt, str);
+    if (bace.b(str) == true)
+    {
+      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb] Id[" + paramFileManagerEntity.nSessionId + "] thumb Downloaded:" + str);
+      return str;
+    }
+    aoif localaoif = new aoif(paramFileManagerEntity);
+    localaoif.jdField_a_of_type_Int = paramInt;
+    localaoif.b = i;
+    a(localaoif, str);
+    QLog.i("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb] download  nSession[" + paramFileManagerEntity.nSessionId + "], ThumbDownloadId[" + localaoif.jdField_a_of_type_Long + "]");
+    return null;
+  }
+  
+  public void a(long paramLong, aomc paramaomc) {}
+  
+  public void a(long paramLong, bakw parambakw)
+  {
+    parambakw.c = 0;
+  }
+  
+  public void a(long paramLong, boolean paramBoolean, int paramInt, String paramString, aomc paramaomc)
+  {
+    aoif localaoif = a(paramLong, false);
+    if (localaoif == null)
+    {
+      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] onDownloadCompleted no this session");
       return;
-      SLog.a("DoodleLayout", "onInformationFaceSelected, pictureUrl: %s , x : %s , y : %s , scale : %f", paramItem.jdField_a_of_type_JavaLangString, Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Float.valueOf(paramFloat3));
-      this.a.a();
-      SLog.b("DoodleLayout", "addLocationFaceItem:" + paramItem.toString());
-      InfoStickerDrawable localInfoStickerDrawable = InformationFaceConstant.a(paramItem, this.a.getContext(), -1L);
-      Object localObject1;
-      if ((this.a.getContext() instanceof EditPicActivity))
-      {
-        if (localInfoStickerDrawable == null) {
-          break label450;
-        }
-        localObject1 = new BitmapDrawable(this.a.getContext().getResources(), localInfoStickerDrawable.a());
-        paramItem.c = 0;
-      }
-      for (;;)
-      {
-        if (localObject1 == null) {
-          break label454;
-        }
-        ((Drawable)localObject1).setBounds(0, 0, ((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight());
-        if (QLog.isColorLevel()) {
-          QLog.d("DoodleLayout", 2, "[" + ((Drawable)localObject1).getIntrinsicWidth() + "," + ((Drawable)localObject1).getIntrinsicHeight() + "]");
-        }
-        FaceLayer.LayerParams localLayerParams;
-        Object localObject2;
-        int i;
-        if ((this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams == null) || ((this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.d == 0) && (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.c == 0)) || (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.d > this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.c))
-        {
-          localLayerParams = new FaceLayer.LayerParams(paramFloat1, paramFloat2, paramFloat3, 0.0F, 0.0F, 0.0F, ((Drawable)localObject1).getIntrinsicWidth(), ((Drawable)localObject1).getIntrinsicHeight());
-          localObject2 = this.a.a();
-          if ((paramItem.c != 3) || ((this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null) && (!this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.b()))) {
-            break label444;
-          }
-          i = 3;
-          localObject2 = this.a.a();
-        }
-        for (;;)
-        {
-          boolean bool = ((FaceLayer)localObject2).a(paramItem.h, paramItem.jdField_a_of_type_JavaLangString, (Drawable)localObject1, localLayerParams, "", paramItem.jdField_a_of_type_Boolean, paramItem.g, i, localInfoStickerDrawable.c(), 0, this.a.d());
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("DoodleLayout", 2, "add Face result" + bool);
-          return;
-          paramItem.c = 3;
-          localObject1 = localInfoStickerDrawable;
-          break label133;
-          paramFloat2 = ScreenUtil.b / 2;
-          break label267;
-          i = 0;
-        }
-        localObject1 = null;
-      }
     }
+    if (paramBoolean)
+    {
+      localaoif.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath = paramString;
+      apck.e(localaoif.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(localaoif.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramBoolean, 50, new Object[] { localaoif.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, Integer.valueOf(localaoif.jdField_a_of_type_Int) });
+    super.a(paramLong, paramBoolean, paramInt, paramString, paramaomc);
   }
   
-  public void a(LocationFacePackage.Item paramItem, float paramFloat1, float paramFloat2, float paramFloat3)
+  public boolean a(long paramLong, aomc paramaomc)
   {
-    SLog.a("DoodleLayout", "onLocationFaceSelected, pictureUrl: %s , x : %s , y : %s , scale : %f", paramItem.d, Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), Float.valueOf(paramFloat3));
-    this.a.a(paramItem, paramFloat1, paramFloat2, paramFloat3);
-    if ((this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int == 3)) {
-      LpReportInfo_pf00064.report(615, 6);
+    paramaomc = a(paramLong, false);
+    if (paramaomc == null)
+    {
+      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] onGetDownloadUrl no this session");
+      return false;
     }
-    VideoEditReport.b("0X80075E3");
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramaomc.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, paramaomc.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, paramLong);
+    return true;
   }
   
-  public void a(LocationFacePackage.Item paramItem, float paramFloat1, float paramFloat2, float paramFloat3, SegmentKeeper paramSegmentKeeper)
-  {
-    SLog.b("DoodleLayout", "onComboLocationFaceSelected, pictureUrl:" + paramItem.d);
-    this.a.a(paramItem, paramFloat1, paramFloat2, paramFloat3, paramSegmentKeeper);
-    if ((this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int == 3)) {
-      LpReportInfo_pf00064.report(615, 6);
-    }
-    VideoEditReport.b("0X80075E3");
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.a.a().a(paramString1, paramString2);
-    this.a.a().a(paramString1, paramString2);
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleView.invalidate();
-  }
+  public void b(long paramLong, aomc paramaomc) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoid
  * JD-Core Version:    0.7.0.1
  */

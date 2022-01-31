@@ -1,37 +1,36 @@
 package com.tribe.async.dispatch;
 
-import android.os.HandlerThread;
+import android.os.Looper;
 import android.support.annotation.NonNull;
+import com.tribe.async.utils.AssertUtils;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Dispatchers
 {
-  private static volatile Dispatcher sDispatcher;
+  private static final ConcurrentHashMap<Long, Dispatcher> sDispatcherMap = new ConcurrentHashMap();
   
   @NonNull
-  public static Dispatcher get()
+  public static Dispatcher get(@NonNull Looper paramLooper)
   {
-    if (sDispatcher != null) {
-      return sDispatcher;
-    }
-    try
+    AssertUtils.checkNotNull(paramLooper);
+    Object localObject2 = (Dispatcher)sDispatcherMap.get(Long.valueOf(paramLooper.getThread().getId()));
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      if (sDispatcher != null)
-      {
-        Dispatcher localDispatcher = sDispatcher;
-        return localDispatcher;
-      }
+      localObject2 = new DefaultDispatcher(paramLooper);
+      localObject1 = (Dispatcher)sDispatcherMap.putIfAbsent(Long.valueOf(paramLooper.getThread().getId()), localObject2);
+      if (localObject1 == null) {}
     }
-    finally {}
-    Object localObject2 = new HandlerThread("dispatcher", 10);
-    ((HandlerThread)localObject2).start();
-    sDispatcher = new DefaultDispatcher(((HandlerThread)localObject2).getLooper());
-    localObject2 = sDispatcher;
+    else
+    {
+      return localObject1;
+    }
     return localObject2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tribe.async.dispatch.Dispatchers
  * JD-Core Version:    0.7.0.1
  */

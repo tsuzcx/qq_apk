@@ -20,7 +20,6 @@ class DynamicPluginLoaderLoader
   }
   
   final PluginLoader a()
-    throws DynamicPluginLoaderLoadException
   {
     if (!this.a.exists()) {
       throw new DynamicPluginLoaderLoadException("文件" + this.a.getAbsolutePath() + "不存在");

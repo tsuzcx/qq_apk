@@ -8,16 +8,16 @@ import android.view.Surface;
 @TargetApi(14)
 public class DecodeOutputSurface
 {
-  public int a;
-  public SurfaceTexture a;
-  public Surface a;
+  public Surface surface;
+  public SurfaceTexture surfaceTexture;
+  public int textureId;
   
   public DecodeOutputSurface(int paramInt, SurfaceTexture.OnFrameAvailableListener paramOnFrameAvailableListener)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(paramInt);
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(paramOnFrameAvailableListener);
-    this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
+    this.textureId = paramInt;
+    this.surfaceTexture = new SurfaceTexture(paramInt);
+    this.surfaceTexture.setOnFrameAvailableListener(paramOnFrameAvailableListener);
+    this.surface = new Surface(this.surfaceTexture);
   }
 }
 

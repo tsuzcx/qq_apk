@@ -1,24 +1,21 @@
-import com.tencent.mobileqq.nearby.NearbyProxy;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.nearby.ipc.NearbyProxyObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
 
 public class aevh
-  extends NearbyProxyObserver
+  implements View.OnClickListener
 {
-  public aevh(NearbyProxy paramNearbyProxy, int paramInt) {}
+  public aevh(SearchBaseActivity paramSearchBaseActivity) {}
   
-  protected void a()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      NearbyUtils.a("realHasUnreadMsg", new Object[] { "onNearbyProcStart" });
-    }
-    NearbyProxy.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyProxy, 4100, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
+    this.a.setResult(1);
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aevh
  * JD-Core Version:    0.7.0.1
  */

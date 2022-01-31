@@ -1,35 +1,17 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager;
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeView;
 
 public class svn
-  implements Runnable
+  implements View.OnClickListener
 {
-  public svn(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public svn(MsgTabStoryNodeView paramMsgTabStoryNodeView) {}
   
-  public void run()
-  {
-    Object localObject = (LocalRedTouchManager)this.a.app.getManager(159);
-    RedTouchItem localRedTouchItem = ((LocalRedTouchManager)localObject).a(100601);
-    if ((((LocalRedTouchManager)localObject).a(localRedTouchItem, false)) && (localRedTouchItem.passThroughLevel > 0))
-    {
-      localObject = this.a.b.obtainMessage();
-      ((Message)localObject).what = 14;
-      ((Message)localObject).arg1 = 2;
-      this.a.b.sendMessageDelayed((Message)localObject, 300L);
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendProfileCardActivity", 2, "update red touch of like ranking list");
-      }
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     svn
  * JD-Core Version:    0.7.0.1
  */

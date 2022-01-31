@@ -1,39 +1,53 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.util.UniformDownloader;
-import com.tencent.mobileqq.filemanager.util.UniformDownloader.IUniformDownloaderListener;
-import java.util.Iterator;
-import java.util.List;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.mp.mobileqq_mp.SubscribeRequest;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import mqq.app.NewIntent;
 
 public class adqn
-  implements Runnable
+  implements bemm
 {
-  public adqn(UniformDownloader paramUniformDownloader, Bundle paramBundle, int paramInt, String paramString) {}
+  public adqn(StructingMsgItemBuilder paramStructingMsgItemBuilder, ChatMessage paramChatMessage, Activity paramActivity, AbsStructMsg paramAbsStructMsg) {}
   
-  public void run()
+  public void a(beml parambeml)
   {
-    if (UniformDownloader.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader, false, UniformDownloader.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader))) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader.a();
-    }
-    for (;;)
-    {
+    if (StructingMsgItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder)) {
       return;
-      if (this.jdField_a_of_type_AndroidOsBundle != null) {
-        this.jdField_a_of_type_AndroidOsBundle.putBundle("_CB_USERDATA", UniformDownloader.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader));
-      }
-      Iterator localIterator = UniformDownloader.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloader).iterator();
-      while (localIterator.hasNext())
-      {
-        UniformDownloader.IUniformDownloaderListener localIUniformDownloaderListener = (UniformDownloader.IUniformDownloaderListener)localIterator.next();
-        if (localIUniformDownloaderListener != null) {
-          localIUniformDownloaderListener.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
-        }
-      }
     }
+    String str = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("msg_template_id");
+    int i = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop;
+    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_AndroidAppActivity, ndt.class);
+    localNewIntent.putExtra("cmd", "PubAccountFollowSvc.subscribe");
+    mobileqq_mp.SubscribeRequest localSubscribeRequest = new mobileqq_mp.SubscribeRequest();
+    localSubscribeRequest.msg_id.set(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.msgId);
+    localSubscribeRequest.index.set(parambeml.a);
+    long l1 = 0L;
+    try
+    {
+      long l2 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin);
+      l1 = l2;
+    }
+    catch (Exception parambeml)
+    {
+      label108:
+      break label108;
+    }
+    localSubscribeRequest.template_id.set(str);
+    localSubscribeRequest.puin.set(l1);
+    localNewIntent.setObserver(new adqo(this, str));
+    localNewIntent.putExtra("data", localSubscribeRequest.toByteArray());
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.a.startServlet(localNewIntent);
+    StructingMsgItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adqn
  * JD-Core Version:    0.7.0.1
  */

@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class s_black
   extends JceStruct
 {
-  static ArrayList cache_datalist;
+  static ArrayList<s_user> cache_datalist;
   public int allnum;
-  public ArrayList datalist;
+  public ArrayList<s_user> datalist;
   
   public s_black() {}
   
-  public s_black(int paramInt, ArrayList paramArrayList)
+  public s_black(int paramInt, ArrayList<s_user> paramArrayList)
   {
     this.allnum = paramInt;
     this.datalist = paramArrayList;

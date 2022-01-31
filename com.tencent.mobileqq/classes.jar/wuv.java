@@ -1,30 +1,24 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter;
-import com.tencent.mobileqq.activity.emogroupstore.PicSelectAdapter;
-import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
+import dov.com.tencent.mobileqq.richmedia.capture.view.AEPituCameraCaptureButtonLayout;
 
-public class wuv
-  implements ViewPager.OnPageChangeListener
+class wuv
+  implements bhou
 {
-  public wuv(PicSelectAdapter paramPicSelectAdapter) {}
+  wuv(wut paramwut) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void a()
   {
-    EmoticonFromGroupEntity localEmoticonFromGroupEntity = PicSelectAdapter.a(this.a).a(paramInt);
-    if (localEmoticonFromGroupEntity != null)
-    {
-      PicSelectAdapter.a(this.a, localEmoticonFromGroupEntity);
-      PicSelectAdapter.b(this.a, localEmoticonFromGroupEntity);
-    }
+    wut.a(this.a).setTouchEnable(true);
+  }
+  
+  public void b()
+  {
+    wut.a(this.a).l();
+    wut.a(this.a).setTouchEnable(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wuv
  * JD-Core Version:    0.7.0.1
  */

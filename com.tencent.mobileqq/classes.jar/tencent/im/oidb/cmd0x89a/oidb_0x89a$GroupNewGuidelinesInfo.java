@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class oidb_0x89a$GroupNewGuidelinesInfo
-  extends MessageMicro
+  extends MessageMicro<GroupNewGuidelinesInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField bool_enabled = PBField.initBool(false);
@@ -22,7 +22,7 @@ public final class oidb_0x89a$GroupNewGuidelinesInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x89a.oidb_0x89a.GroupNewGuidelinesInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class QTimedMessage$Message
-  extends MessageMicro
+  extends MessageMicro<Message>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_msg_id = PBField.initBytes(ByteStringMicro.EMPTY);

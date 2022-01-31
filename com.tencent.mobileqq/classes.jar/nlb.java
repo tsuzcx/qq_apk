@@ -1,17 +1,19 @@
-import com.tencent.biz.qqstory.newshare.job.DownloadPic2FileJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareSinaData;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity.2;
+import com.tencent.qphone.base.util.QLog;
 
 public class nlb
-  extends DownloadPic2FileJob
+  implements moc
 {
-  public nlb(ShareModeBase paramShareModeBase, ShareSinaData paramShareSinaData) {}
+  public nlb(ReadInJoyNewFeedsActivity.2 param2) {}
   
-  public boolean b()
+  public void loaded(String paramString, int paramInt)
   {
-    a("UploadImageJob_in_image_file_path", this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d);
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 3256 html web resource finish");
+    }
   }
+  
+  public void progress(int paramInt) {}
 }
 
 

@@ -1,18 +1,13 @@
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
+import android.graphics.Bitmap;
+import java.util.ArrayList;
 
-class wtl
-  implements Runnable
+public abstract interface wtl
 {
-  wtl(wtk paramwtk) {}
-  
-  public void run()
-  {
-    this.a.a.i();
-  }
+  public abstract void a(Bitmap paramBitmap, ArrayList<wtm> paramArrayList, wtn paramwtn);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wtl
  * JD-Core Version:    0.7.0.1
  */

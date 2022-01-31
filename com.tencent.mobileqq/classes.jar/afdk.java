@@ -1,65 +1,34 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.view.View;
+import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
-import com.tencent.mobileqq.nearby.now.utils.QualityReporter;
-import com.tencent.mobileqq.nearby.now.view.PlayResultListener;
-import com.tencent.mobileqq.nearby.now.view.VideoPlayerView;
-import com.tencent.mobileqq.nearby.now.view.VideoPlayerView.VideoInfoListener;
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView;
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnPreparedListener;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.data.Friends;
 
-public class afdk
-  implements IVideoView.OnPreparedListener
+class afdk
+  implements begw
 {
-  public afdk(VideoPlayerView paramVideoPlayerView, VideoData paramVideoData, boolean paramBoolean) {}
+  afdk(afdi paramafdi, boolean paramBoolean, Friends paramFriends, begr parambegr) {}
   
-  public void a(IVideoView paramIVideoView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView$VideoInfoListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView$VideoInfoListener.c();
+    if (!badq.g(afdi.a(this.jdField_a_of_type_Afdi))) {
+      bbmy.a(afdi.a(this.jdField_a_of_type_Afdi), 1, 2131626719, 0).a();
     }
-    NowVideoReporter localNowVideoReporter;
-    if (((this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) && (((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_AndroidContentContext).isResume()))
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("VideoPlayerView", 2, "player truly start! app=" + this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_ComTencentMobileqqNearbyNowProtocolNowShortVideoProtoManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString, null);
-      if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayResultListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayResultListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString, 100, 0, "");
-      }
-      ((NearbyMomentManager)this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(262)).g(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString);
-      localNowVideoReporter = new NowVideoReporter().i("video_view").h("video");
-      if (!this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_Boolean) {
-        break label367;
-      }
-    }
-    label367:
-    for (paramIVideoView = "0";; paramIVideoView = "1")
-    {
-      localNowVideoReporter.g(paramIVideoView).b().f(NowVideoReporter.a + "").a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView.b();
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        long l = this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.b();
-        double d = this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.c() / l;
-        QualityReporter.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.jdField_a_of_type_JavaLangString, 1, String.valueOf(d), String.valueOf(l), String.valueOf(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.c()), String.valueOf(QualityReporter.a()), true);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_AndroidOsHandler.removeMessages(2025);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2025, 100L);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2026, 300L);
+      this.jdField_a_of_type_Begr.e();
       return;
+      paramView = (FriendListHandler)afdi.a(this.jdField_a_of_type_Afdi).a(1);
+      if (this.jdField_a_of_type_Boolean) {
+        paramView.b(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { false });
+      } else {
+        paramView.b(1, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataFriends.uin }, new boolean[] { true });
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afdk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,73 +1,191 @@
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.apollo.script.SpriteCommFunc;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.service.message.MessageCache;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import android.provider.MediaStore.Images.Thumbnails;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.SerializationPB.PicInfo;
+import com.tencent.biz.qqstory.database.StoryAlbumPicEntry;
+import com.tencent.biz.qqstory.model.item.AddressItem;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.pb.PBDoubleField;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public class sdg
-  implements DialogInterface.OnClickListener
 {
-  public sdg(ChatHistory paramChatHistory, String paramString) {}
+  public double a;
+  public int a;
+  public long a;
+  public AddressItem a;
+  private LocalMediaInfo a;
+  public String a;
+  public double b;
+  public int b;
+  public long b;
+  @Deprecated
+  public String b;
+  public int c;
+  public long c;
+  public String c;
+  private int d;
+  public long d;
+  public String d;
+  public long e;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Bitmap a(Context paramContext, int paramInt, BitmapFactory.Options paramOptions)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.app.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a);
-    if ((paramDialogInterface != null) && (!paramDialogInterface.isEmpty())) {
-      if ((1 != this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a) && (3000 != this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a)) {}
+    
+    if (paramContext == null)
+    {
+      vkw.a("Need the context to get thumbnail!", new Object[0]);
+      return null;
     }
-    for (long l1 = ((MessageRecord)paramDialogInterface.get(paramDialogInterface.size() - 1)).shmsgseq;; l1 = 0L) {
-      for (;;)
-      {
-        ThreadManager.getSubThreadHandler().post(new sdh(this));
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.app.a().e(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a);
-        SpriteCommFunc.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.app, "chat_history_confirm_del_msg");
-        if (this.jdField_a_of_type_JavaLangString != null) {}
-        try
-        {
-          l2 = Long.parseLong(this.jdField_a_of_type_JavaLangString);
-          l1 = Math.max(l2, l1);
-          if (l1 > 0L) {
-            this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.app.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a, l1);
-          }
-          paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.app.getHandler(Conversation.class);
-          Message localMessage = paramDialogInterface.obtainMessage(1017);
-          localMessage.obj = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_b_of_type_JavaLangString;
-          localMessage.arg1 = this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.a;
-          paramDialogInterface.sendMessage(localMessage);
-          this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.jdField_b_of_type_AndroidAppDialog.dismiss();
-          this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.setResult(-1);
-          this.jdField_a_of_type_ComTencentMobileqqActivityChatHistory.finish();
-          return;
-          if (((MessageRecord)paramDialogInterface.get(paramDialogInterface.size() - 1)).isSendFromLocal()) {
-            l1 = ((MessageRecord)paramDialogInterface.get(paramDialogInterface.size() - 1)).time + 2L;
-          } else {
-            l1 = ((MessageRecord)paramDialogInterface.get(paramDialogInterface.size() - 1)).time;
-          }
-        }
-        catch (Exception paramDialogInterface)
-        {
-          for (;;)
-          {
-            paramDialogInterface.printStackTrace();
-            long l2 = 0L;
-          }
-        }
+    if ((paramInt != 1) && (paramInt != 3))
+    {
+      vkw.a("kind is illegal", new Object[0]);
+      return null;
+    }
+    return MediaStore.Images.Thumbnails.getThumbnail(paramContext.getContentResolver(), this.jdField_a_of_type_Long, paramInt, paramOptions);
+  }
+  
+  public SerializationPB.PicInfo a()
+  {
+    SerializationPB.PicInfo localPicInfo = new SerializationPB.PicInfo();
+    localPicInfo.id.set(this.jdField_a_of_type_Long);
+    PBStringField localPBStringField = localPicInfo.path;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      str = "";
+      localPBStringField.set(str);
+      localPBStringField = localPicInfo.thumb;
+      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+        break label196;
       }
     }
+    label196:
+    for (String str = "";; str = this.jdField_b_of_type_JavaLangString)
+    {
+      localPBStringField.set(str);
+      localPicInfo.width.set(this.jdField_a_of_type_Int);
+      localPicInfo.height.set(this.jdField_b_of_type_Int);
+      localPicInfo.orientation.set(this.jdField_c_of_type_Int);
+      localPicInfo.create_time.set(this.jdField_b_of_type_Long);
+      localPicInfo.lat.set(this.jdField_a_of_type_Double);
+      localPicInfo.lng.set(this.jdField_b_of_type_Double);
+      localPicInfo.geo_hash.set(this.jdField_c_of_type_JavaLangString);
+      localPicInfo.state.set(this.jdField_d_of_type_Int);
+      localPicInfo.mime.set(this.jdField_d_of_type_JavaLangString);
+      localPicInfo.size.set(this.e);
+      localPicInfo.db_create_time.set(this.jdField_d_of_type_Long);
+      return localPicInfo;
+      str = this.jdField_a_of_type_JavaLangString;
+      break;
+    }
+  }
+  
+  public StoryAlbumPicEntry a()
+  {
+    StoryAlbumPicEntry localStoryAlbumPicEntry = new StoryAlbumPicEntry();
+    localStoryAlbumPicEntry.path = this.jdField_a_of_type_JavaLangString;
+    localStoryAlbumPicEntry.thumbPath = this.jdField_b_of_type_JavaLangString;
+    localStoryAlbumPicEntry.width = this.jdField_a_of_type_Int;
+    localStoryAlbumPicEntry.height = this.jdField_b_of_type_Int;
+    localStoryAlbumPicEntry.orientation = this.jdField_c_of_type_Int;
+    localStoryAlbumPicEntry.createTime = this.jdField_b_of_type_Long;
+    localStoryAlbumPicEntry.gpsLat = this.jdField_a_of_type_Double;
+    localStoryAlbumPicEntry.gpsLng = this.jdField_b_of_type_Double;
+    localStoryAlbumPicEntry.geohashString = this.jdField_c_of_type_JavaLangString;
+    localStoryAlbumPicEntry.state = this.jdField_d_of_type_Int;
+    localStoryAlbumPicEntry.mime = this.jdField_d_of_type_JavaLangString;
+    localStoryAlbumPicEntry.size = this.e;
+    return localStoryAlbumPicEntry;
+  }
+  
+  public LocalMediaInfo a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = new LocalMediaInfo();
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo._id = this.jdField_a_of_type_Long;
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.path = this.jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.orientation = this.jdField_c_of_type_Int;
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaWidth = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mediaHeight = this.jdField_b_of_type_Int;
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.mMimeType = this.jdField_d_of_type_JavaLangString;
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.fileSize = this.e;
+      LocalMediaInfo localLocalMediaInfo1 = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
+      LocalMediaInfo localLocalMediaInfo2 = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
+      int i = axoh.jdField_a_of_type_Int;
+      localLocalMediaInfo2.thumbHeight = i;
+      localLocalMediaInfo1.thumbWidth = i;
+    }
+    return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
+  }
+  
+  public void a(SerializationPB.PicInfo paramPicInfo)
+  {
+    this.jdField_a_of_type_Long = paramPicInfo.id.get();
+    this.jdField_a_of_type_JavaLangString = paramPicInfo.path.get();
+    this.jdField_b_of_type_JavaLangString = paramPicInfo.thumb.get();
+    this.jdField_a_of_type_Int = paramPicInfo.width.get();
+    this.jdField_b_of_type_Int = paramPicInfo.height.get();
+    this.jdField_c_of_type_Int = paramPicInfo.orientation.get();
+    this.jdField_b_of_type_Long = paramPicInfo.create_time.get();
+    this.jdField_a_of_type_Double = paramPicInfo.lat.get();
+    this.jdField_b_of_type_Double = paramPicInfo.lng.get();
+    this.jdField_c_of_type_JavaLangString = paramPicInfo.geo_hash.get();
+    this.jdField_d_of_type_Int = paramPicInfo.state.get();
+    this.jdField_d_of_type_JavaLangString = paramPicInfo.mime.get();
+    this.e = paramPicInfo.size.get();
+    this.jdField_d_of_type_Long = paramPicInfo.db_create_time.get();
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      this.jdField_d_of_type_Int = i;
+      return;
+    }
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_d_of_type_Int == 1;
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if ((paramObject instanceof sdg)) {
+      return this.jdField_a_of_type_JavaLangString.equals(((sdg)paramObject).jdField_a_of_type_JavaLangString);
+    }
+    return false;
+  }
+  
+  public String toString()
+  {
+    StringBuilder localStringBuilder = new StringBuilder("PicInfo=[");
+    localStringBuilder.append(" mId:").append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(" mPath:").append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" mThumbPath:").append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" width:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" height:").append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(" orientation:").append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(" mCreateTime:").append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(" mDBCreateTime:").append(this.jdField_d_of_type_Long);
+    localStringBuilder.append(" mGpsLat:").append(this.jdField_a_of_type_Double);
+    localStringBuilder.append(" mGpsLng:").append(this.jdField_b_of_type_Double);
+    localStringBuilder.append(" mGeohashString:").append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(" mState:").append(this.jdField_d_of_type_Int);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sdg
  * JD-Core Version:    0.7.0.1
  */

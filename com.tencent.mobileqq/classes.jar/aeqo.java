@@ -1,44 +1,28 @@
-import com.tencent.mobileqq.data.EmoticonKeywords;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityTransaction;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
 
 public class aeqo
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aeqo(EmoticonManager paramEmoticonManager, EmoticonKeywords paramEmoticonKeywords) {}
+  public aeqo(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    long l = System.currentTimeMillis();
-    localEntityTransaction = this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a.a();
-    try
-    {
-      localEntityTransaction.a();
-      EmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager, this.jdField_a_of_type_ComTencentMobileqqDataEmoticonKeywords);
-      localEntityTransaction.c();
+    if (!badq.g(this.a.getApplicationContext())) {
+      bbmy.a(this.a, 2131629294, 1).a();
     }
-    catch (Exception localException)
+    for (;;)
     {
-      for (;;)
-      {
-        QLog.e("EmoticonManager", 1, "saveKeywordReqTimeToDB e = " + localException.getMessage());
-        localEntityTransaction.b();
-      }
-    }
-    finally
-    {
-      localEntityTransaction.b();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonManager", 2, "saveKeywordReqTimeToDB cost : " + (System.currentTimeMillis() - l));
+      paramDialogInterface.dismiss();
+      return;
+      this.a.f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aeqo
  * JD-Core Version:    0.7.0.1
  */

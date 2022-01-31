@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
+import javax.microedition.khronos.egl.EGL10;
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.egl.EGLContext;
+import javax.microedition.khronos.egl.EGLDisplay;
 
-public class aiib
-  implements Runnable
+public abstract interface aiib
 {
-  public aiib(RedBagVideoManager paramRedBagVideoManager) {}
+  public abstract EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig);
   
-  public void run()
-  {
-    RedBagVideoManager.b(this.a);
-  }
+  public abstract void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiib
  * JD-Core Version:    0.7.0.1
  */

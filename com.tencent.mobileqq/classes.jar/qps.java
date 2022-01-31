@@ -1,21 +1,46 @@
-import com.tencent.gdtad.net.GdtHttp.Listener;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.ugc.KandianVideoUploadService;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListViewGroup;
+import com.tencent.qphone.base.util.QLog;
 
-class qps
-  implements Runnable
+public class qps
+  implements qnv
 {
-  qps(qpr paramqpr) {}
+  public qps(ReadInJoyBaseListViewGroup paramReadInJoyBaseListViewGroup) {}
   
-  public void run()
+  public void a(Bundle paramBundle)
   {
-    if ((this.a.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.a.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
-      ((GdtHttp.Listener)this.a.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.a.jdField_a_of_type_ComTencentGdtadNetGdtHttp$Params);
+    String str = paramBundle.getString("mTaskID");
+    ReadInJoyBaseListViewGroup.a(this.a, str);
+    psj.b(paramBundle);
+  }
+  
+  public void a(String paramString, Bundle paramBundle)
+  {
+    paramString = this.a.a();
+    Intent localIntent;
+    if ((paramBundle != null) && (paramString != null))
+    {
+      localIntent = new Intent();
+      localIntent.putExtras(paramBundle);
+      localIntent.setClass(paramString, KandianVideoUploadService.class);
+    }
+    try
+    {
+      paramString.startService(localIntent);
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.d("KandianVideoUpload", 1, "Kandian retryFail", paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qps
  * JD-Core Version:    0.7.0.1
  */

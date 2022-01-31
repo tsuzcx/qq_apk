@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2732" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="3.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2733" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" android:layout_centerInParent="true" />
-    <dov.com.qq.im.capture.view.QIMCommonLoadingView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2734" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2735" android:visibility="invisible" android:layout_width="20.0dip" android:layout_height="20.0dip" android:indeterminateOnly="true" android:indeterminateDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0217bc" android:indeterminateBehavior="repeat" android:layout_centerInParent="true" />
-</RelativeLayout>

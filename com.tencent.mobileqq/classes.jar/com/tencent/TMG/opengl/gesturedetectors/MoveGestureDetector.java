@@ -11,10 +11,10 @@ public class MoveGestureDetector
   private PointF mCurrFocusInternal;
   private PointF mFocusDeltaExternal = new PointF();
   private PointF mFocusExternal = new PointF();
-  private final OnMoveGestureListener mListener;
+  private final MoveGestureDetector.OnMoveGestureListener mListener;
   private PointF mPrevFocusInternal;
   
-  public MoveGestureDetector(Context paramContext, OnMoveGestureListener paramOnMoveGestureListener)
+  public MoveGestureDetector(Context paramContext, MoveGestureDetector.OnMoveGestureListener paramOnMoveGestureListener)
   {
     super(paramContext);
     this.mListener = paramOnMoveGestureListener;
@@ -111,35 +111,10 @@ public class MoveGestureDetector
       break;
     }
   }
-  
-  public static abstract interface OnMoveGestureListener
-  {
-    public abstract boolean onMove(MoveGestureDetector paramMoveGestureDetector);
-    
-    public abstract boolean onMoveBegin(MoveGestureDetector paramMoveGestureDetector);
-    
-    public abstract void onMoveEnd(MoveGestureDetector paramMoveGestureDetector);
-  }
-  
-  public static class SimpleOnMoveGestureListener
-    implements MoveGestureDetector.OnMoveGestureListener
-  {
-    public boolean onMove(MoveGestureDetector paramMoveGestureDetector)
-    {
-      return false;
-    }
-    
-    public boolean onMoveBegin(MoveGestureDetector paramMoveGestureDetector)
-    {
-      return true;
-    }
-    
-    public void onMoveEnd(MoveGestureDetector paramMoveGestureDetector) {}
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.TMG.opengl.gesturedetectors.MoveGestureDetector
  * JD-Core Version:    0.7.0.1
  */

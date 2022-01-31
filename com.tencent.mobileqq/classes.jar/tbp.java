@@ -1,24 +1,19 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetMusicListConfig;
 
 public class tbp
-  implements AdapterView.OnItemClickListener
+  extends slu
 {
-  public tbp(Leba paramLeba) {}
+  public qqstory_service.RspGetMusicListConfig a;
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public tbp(qqstory_service.RspGetMusicListConfig paramRspGetMusicListConfig)
   {
-    if (this.a.c()) {
-      ThreadManager.post(new tbq(this, paramView, paramInt), 8, null, true);
-    }
+    super(paramRspGetMusicListConfig.result);
+    this.a = paramRspGetMusicListConfig;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tbp
  * JD-Core Version:    0.7.0.1
  */

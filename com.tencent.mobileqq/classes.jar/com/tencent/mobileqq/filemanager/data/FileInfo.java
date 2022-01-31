@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.filemanager.data;
 
-import adit;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import aonr;
+import apck;
 import java.io.File;
 import java.io.FileNotFoundException;
 
 public class FileInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new adit();
+  public static final Parcelable.Creator<FileInfo> CREATOR = new aonr();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private String jdField_a_of_type_JavaLangString;
@@ -19,7 +19,9 @@ public class FileInfo
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
   private String jdField_b_of_type_JavaLangString;
-  private String c;
+  private boolean jdField_b_of_type_Boolean;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean;
   private String d;
   private String e;
   
@@ -56,12 +58,12 @@ public class FileInfo
     if (!paramString.exists()) {
       throw new FileNotFoundException("file not exist!");
     }
-    a(paramString.isDirectory());
+    b(paramString.isDirectory());
     e(paramString.getAbsolutePath());
     d(paramString.getName());
     a(paramString.length());
     b(paramString.lastModified());
-    b(FileManagerUtil.a(this.jdField_b_of_type_JavaLangString));
+    b(apck.a(this.jdField_b_of_type_JavaLangString));
     c("");
     a("");
   }
@@ -91,7 +93,7 @@ public class FileInfo
   
   private boolean a(FileInfo paramFileInfo)
   {
-    return (d().equals(paramFileInfo.d())) && (a() == paramFileInfo.a()) && (b() == paramFileInfo.b()) && (c().equals(paramFileInfo.c()));
+    return (a() == paramFileInfo.a()) && (b() == paramFileInfo.b()) && (c().equals(paramFileInfo.c()));
   }
   
   public int a()
@@ -107,6 +109,11 @@ public class FileInfo
   public String a()
   {
     return this.e;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = true;
   }
   
   public void a(int paramInt)
@@ -126,7 +133,7 @@ public class FileInfo
   
   public void a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
   public boolean a()
@@ -156,7 +163,17 @@ public class FileInfo
   
   public void b(String paramString)
   {
-    this.c = paramString;
+    this.jdField_c_of_type_JavaLangString = paramString;
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    this.jdField_c_of_type_Boolean = paramBoolean;
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_b_of_type_Boolean;
   }
   
   public String c()
@@ -167,6 +184,11 @@ public class FileInfo
   public void c(String paramString)
   {
     this.d = paramString;
+  }
+  
+  public boolean c()
+  {
+    return this.jdField_c_of_type_Boolean;
   }
   
   public String d()
@@ -211,7 +233,7 @@ public class FileInfo
     paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
     paramParcel.writeLong(this.jdField_a_of_type_Long);
     paramParcel.writeLong(this.jdField_b_of_type_Long);
-    paramParcel.writeString(this.c);
+    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
     paramParcel.writeInt(this.jdField_b_of_type_Int);
     paramParcel.writeString(this.d);
     paramParcel.writeString(this.e);

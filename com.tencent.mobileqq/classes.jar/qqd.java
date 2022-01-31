@@ -1,18 +1,22 @@
-import java.lang.ref.WeakReference;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
 
-final class qqd
-  implements Runnable
+public class qqd
+  implements nyx
 {
-  qqd(WeakReference paramWeakReference1, WeakReference paramWeakReference2) {}
+  public qqd(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView, nyx paramnyx) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    qqc.b(this.a, this.b);
+    ReadInJoyFastWebBottomSocialView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialView).setVisibility(8);
+    if (this.jdField_a_of_type_Nyx != null) {
+      this.jdField_a_of_type_Nyx.a(paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qqd
  * JD-Core Version:    0.7.0.1
  */

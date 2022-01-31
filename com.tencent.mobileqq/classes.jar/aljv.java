@@ -1,43 +1,32 @@
-import com.tencent.open.agent.OpenSdkFriendService;
-import com.tencent.open.agent.OpenSdkFriendService.CheckAvatarUpdateCallback;
-import com.tencent.open.agent.datamodel.ImageLoader;
-import com.tencent.open.agent.datamodel.QZonePortraitData;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-public class aljv
-  implements Runnable
+class aljv
 {
-  public aljv(OpenSdkFriendService.CheckAvatarUpdateCallback paramCheckAvatarUpdateCallback, int paramInt, JSONArray paramJSONArray) {}
+  static final float[] a;
   
-  public void run()
+  static
   {
+    int k = 0;
+    a = new float[8192];
     int i = 0;
+    int j;
     for (;;)
     {
-      if (i < this.jdField_a_of_type_Int) {
-        try
-        {
-          String str = this.jdField_a_of_type_OrgJsonJSONArray.getJSONObject(i).getString("openid");
-          str = QZonePortraitData.a(this.jdField_a_of_type_ComTencentOpenAgentOpenSdkFriendService$CheckAvatarUpdateCallback.a.a, str);
-          ImageLoader.a().a(str);
-          i += 1;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            localJSONException.printStackTrace();
-          }
-        }
+      j = k;
+      if (i >= 8192) {
+        break;
       }
+      a[i] = ((float)Math.sin((i + 0.5F) / 8192.0F * 6.283186F));
+      i += 1;
+    }
+    while (j < 360)
+    {
+      a[((int)(j * 22.755556F) & 0x1FFF)] = ((float)Math.sin(j * 0.01745329F));
+      j += 90;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aljv
  * JD-Core Version:    0.7.0.1
  */

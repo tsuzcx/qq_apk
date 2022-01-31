@@ -1,35 +1,37 @@
 package com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget;
 
+import ahnf;
+import ahnk;
+import ahnm;
+import ahnq;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.PriorityBlockingQueue;
-import ydf;
-import ydg;
 
 public class VideoFramesFetcher
-  implements OnFetchFrameListener
+  implements ahnm
 {
   private static long jdField_a_of_type_Long;
   private volatile int jdField_a_of_type_Int = 1;
-  private FrameAdapter jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter;
-  private BlockingQueue jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
-  private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private ahnf jdField_a_of_type_Ahnf;
+  private BlockingQueue<ahnq> jdField_a_of_type_JavaUtilConcurrentBlockingQueue;
+  private ConcurrentHashMap<Integer, ahnq> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
   private ExecutorService jdField_a_of_type_JavaUtilConcurrentExecutorService;
   private volatile boolean jdField_a_of_type_Boolean;
   private int b = 1000;
   private int c;
   
-  private FramesProcessor.Frame b(int paramInt)
+  private ahnk b(int paramInt)
   {
     if (!a()) {
       if (QLog.isColorLevel()) {
         QLog.d("VideoFramesFetcher", 2, "FetchFrameAtTime fail, status=" + this.jdField_a_of_type_Int);
       }
     }
-    ydg localydg2;
+    ahnq localahnq2;
     do
     {
       return null;
@@ -37,10 +39,10 @@ public class VideoFramesFetcher
       {
         if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(paramInt)))
         {
-          ydg localydg1 = (ydg)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+          ahnq localahnq1 = (ahnq)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
           l = jdField_a_of_type_Long;
           jdField_a_of_type_Long = 1L + l;
-          localydg1.jdField_a_of_type_Long = l;
+          localahnq1.jdField_a_of_type_Long = l;
           return null;
         }
       }
@@ -51,25 +53,25 @@ public class VideoFramesFetcher
       }
       long l = jdField_a_of_type_Long;
       jdField_a_of_type_Long = 1L + l;
-      localydg2 = new ydg(this, l, paramInt, paramInt + this.b);
+      localahnq2 = new ahnq(this, l, paramInt, paramInt + this.b);
     } while (this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue == null);
-    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localydg2);
+    this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue.offer(localahnq2);
     return null;
   }
   
-  public int a(int paramInt1, int paramInt2, FrameAdapter paramFrameAdapter)
+  public int a(int paramInt1, int paramInt2, ahnf paramahnf)
   {
     this.b = paramInt1;
     this.c = paramInt2;
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter = paramFrameAdapter;
+    this.jdField_a_of_type_Ahnf = paramahnf;
     this.jdField_a_of_type_JavaUtilConcurrentBlockingQueue = new PriorityBlockingQueue();
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_a_of_type_JavaUtilConcurrentExecutorService = Executors.newSingleThreadExecutor();
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(new ydf(this));
+    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(new VideoFramesFetcher.FrameFetchRunnable(this));
     return 0;
   }
   
-  public FramesProcessor.Frame a(int paramInt)
+  public ahnk a(int paramInt)
   {
     if ((!a()) || (paramInt < 0))
     {
@@ -78,8 +80,8 @@ public class VideoFramesFetcher
       }
       return null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter.a(paramInt)) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaTrimvideoVideoWidgetFrameAdapter.a(paramInt);
+    if (this.jdField_a_of_type_Ahnf.a(paramInt)) {
+      return this.jdField_a_of_type_Ahnf.a(paramInt);
     }
     return b(this.b * paramInt);
   }
@@ -128,7 +130,7 @@ public class VideoFramesFetcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.VideoFramesFetcher
  * JD-Core Version:    0.7.0.1
  */

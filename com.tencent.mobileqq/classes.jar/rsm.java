@@ -1,29 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.AuthDevEnableCompleteActivity;
+import java.io.FilterOutputStream;
+import java.io.OutputStream;
 
-public class rsm
-  implements View.OnClickListener
+class rsm
+  extends FilterOutputStream
 {
-  public rsm(AuthDevEnableCompleteActivity paramAuthDevEnableCompleteActivity) {}
+  int jdField_a_of_type_Int = 0;
   
-  public void onClick(View paramView)
+  public rsm(rsl paramrsl, OutputStream paramOutputStream)
   {
-    paramView = (ImageView)paramView.findViewById(2131362772);
-    if (paramView != null)
-    {
-      int i = 0;
-      if (paramView.getVisibility() == 0) {
-        i = 4;
-      }
-      paramView.setVisibility(i);
-    }
+    super(paramOutputStream);
+  }
+  
+  public void write(int paramInt)
+  {
+    this.jdField_a_of_type_Int += 1;
+    this.out.write(paramInt);
+  }
+  
+  public void write(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    this.jdField_a_of_type_Int += paramInt2;
+    this.out.write(paramArrayOfByte, paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rsm
  * JD-Core Version:    0.7.0.1
  */

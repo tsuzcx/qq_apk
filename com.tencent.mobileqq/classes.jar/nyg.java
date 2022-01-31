@@ -1,33 +1,26 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController.QQStoryMainView;
-import com.tencent.biz.qqstory.storyHome.StoryHomePushYellowBarHandler;
-
 public class nyg
-  implements Runnable
 {
-  public nyg(QQStoryMainController paramQQStoryMainController) {}
+  public String a;
+  public boolean a;
+  public String b;
+  public boolean b;
   
-  public void run()
+  public nyg(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (QQStoryMainController.a(this.a)) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView = this.a.a();
-    this.a.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.setInputViewHideListener(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeStoryHomePushYellowBarHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView);
-    QQStoryMainController.a(this.a, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController$QQStoryMainView.a());
-    QQStoryMainController.a(this.a, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController$QQStoryMainView.a());
-    QQStoryMainController.a(this.a).setVisibility(8);
-    QQStoryMainController.a(this.a).setVisibility(8);
-    QQStoryMainController.a(this.a.jdField_a_of_type_AndroidAppActivity, "mainHallConfig", QQStoryMainController.a(this.a), QQStoryMainController.a(this.a));
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_b_of_type_Boolean = paramBoolean2;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nyg
  * JD-Core Version:    0.7.0.1
  */

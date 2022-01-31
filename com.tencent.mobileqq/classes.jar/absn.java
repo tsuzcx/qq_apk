@@ -1,44 +1,29 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.bubble.BubbleManager;
-import java.io.File;
-import org.json.JSONArray;
+import android.content.res.Resources;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
 
 public class absn
-  implements Runnable
+  extends ClickableSpan
 {
-  public absn(BubbleManager paramBubbleManager) {}
+  public absn(SoundAndVibrateActivity paramSoundAndVibrateActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    synchronized (this.a)
-    {
-      Object localObject1 = new File(this.a.a(), "bubble_local.cfg");
-      boolean bool = ((File)localObject1).exists();
-      if (bool) {}
-      try
-      {
-        localObject1 = this.a.a(((File)localObject1).getAbsolutePath());
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          this.a.a = new JSONArray((String)localObject1);
-        }
-        if (this.a.a == null) {
-          this.a.a = new JSONArray();
-        }
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localException.printStackTrace();
-        }
-      }
-    }
+    SoundAndVibrateActivity.a(this.a);
+    bajr.a(this.a.app, "Vip_SpecialCare", "0X80049EE", "0X80049EE", 0, 1, null);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setUnderlineText(false);
+    paramTextPaint.setColor(this.a.getResources().getColor(2131101268));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     absn
  * JD-Core Version:    0.7.0.1
  */

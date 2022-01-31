@@ -1,8 +1,10 @@
 package com.tencent.mobileqq.activity.aio;
 
+import acko;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
+import com.tencent.mobileqq.data.MessageForQQWalletMsg;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
@@ -11,8 +13,8 @@ public class CustomizeStrategyFactory$RedPacketInfo
 {
   public int a;
   public long a;
+  public acko a;
   public Bitmap a;
-  public CustomizeStrategyFactory.AnimConfig a;
   public MessageRecord a;
   public String a;
   public boolean a;
@@ -21,10 +23,18 @@ public class CustomizeStrategyFactory$RedPacketInfo
   public boolean b;
   public boolean c;
   
+  public int a()
+  {
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof MessageForQQWalletMsg)) {
+      return ((MessageForQQWalletMsg)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).getIsHideTitleDefault();
+    }
+    return 0;
+  }
+  
   public boolean a()
   {
     Object localObject2 = null;
-    if ((this.b) && (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable != null) && (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable.length > 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$AnimConfig != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$AnimConfig.b > 0))
+    if ((this.b) && (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable != null) && (this.jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable.length > 0) && (this.jdField_a_of_type_Acko != null) && (this.jdField_a_of_type_Acko.b > 0))
     {
       if (QLog.isColorLevel()) {
         QLog.d("CustomizeStrategyFactory", 2, "anim valid");
@@ -44,8 +54,8 @@ public class CustomizeStrategyFactory$RedPacketInfo
     {
       localStringBuilder = localStringBuilder.append(localObject1).append("|");
       localObject1 = localObject2;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$AnimConfig != null) {
-        localObject1 = Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$AnimConfig.b);
+      if (this.jdField_a_of_type_Acko != null) {
+        localObject1 = Integer.valueOf(this.jdField_a_of_type_Acko.b);
       }
       QLog.d("CustomizeStrategyFactory", 2, localObject1);
       return false;
@@ -54,7 +64,7 @@ public class CustomizeStrategyFactory$RedPacketInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo
  * JD-Core Version:    0.7.0.1
  */

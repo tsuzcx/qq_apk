@@ -1,13 +1,9 @@
 package com.squareup.okhttp.internal.framed;
 
-import java.io.EOFException;
 import java.io.IOException;
 import java.io.InterruptedIOException;
-import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.List;
-import okio.AsyncTimeout;
-import okio.Buffer;
 import okio.BufferedSource;
 import okio.Sink;
 import okio.Source;
@@ -19,13 +15,13 @@ public final class FramedStream
   private final FramedConnection connection;
   private ErrorCode errorCode = null;
   private final int id;
-  private final StreamTimeout readTimeout = new StreamTimeout();
+  private final FramedStream.StreamTimeout readTimeout = new FramedStream.StreamTimeout(this);
   private final List<Header> requestHeaders;
   private List<Header> responseHeaders;
-  final FramedDataSink sink;
-  private final FramedDataSource source;
+  final FramedStream.FramedDataSink sink;
+  private final FramedStream.FramedDataSource source;
   long unacknowledgedBytesRead = 0L;
-  private final StreamTimeout writeTimeout = new StreamTimeout();
+  private final FramedStream.StreamTimeout writeTimeout = new FramedStream.StreamTimeout(this);
   
   static
   {
@@ -48,15 +44,14 @@ public final class FramedStream
     this.id = paramInt;
     this.connection = paramFramedConnection;
     this.bytesLeftInWriteWindow = paramFramedConnection.peerSettings.getInitialWindowSize(65536);
-    this.source = new FramedDataSource(paramFramedConnection.okHttpSettings.getInitialWindowSize(65536), null);
-    this.sink = new FramedDataSink();
-    FramedDataSource.access$102(this.source, paramBoolean2);
-    FramedDataSink.access$202(this.sink, paramBoolean1);
+    this.source = new FramedStream.FramedDataSource(this, paramFramedConnection.okHttpSettings.getInitialWindowSize(65536), null);
+    this.sink = new FramedStream.FramedDataSink(this);
+    FramedStream.FramedDataSource.access$102(this.source, paramBoolean2);
+    FramedStream.FramedDataSink.access$202(this.sink, paramBoolean1);
     this.requestHeaders = paramList;
   }
   
   private void cancelStreamIfNecessary()
-    throws IOException
   {
     assert (!Thread.holdsLock(this));
     for (;;)
@@ -64,12 +59,12 @@ public final class FramedStream
       try
       {
         boolean bool;
-        if ((!this.source.finished) && (this.source.closed))
+        if ((!FramedStream.FramedDataSource.access$100(this.source)) && (FramedStream.FramedDataSource.access$300(this.source)))
         {
-          if (this.sink.finished) {
+          if (FramedStream.FramedDataSink.access$200(this.sink)) {
             break label112;
           }
-          if (this.sink.closed)
+          if (FramedStream.FramedDataSink.access$400(this.sink))
           {
             break label112;
             bool = isOpen();
@@ -96,12 +91,11 @@ public final class FramedStream
   }
   
   private void checkOutNotClosed()
-    throws IOException
   {
-    if (this.sink.closed) {
+    if (FramedStream.FramedDataSink.access$400(this.sink)) {
       throw new IOException("stream closed");
     }
-    if (this.sink.finished) {
+    if (FramedStream.FramedDataSink.access$200(this.sink)) {
       throw new IOException("stream finished");
     }
     if (this.errorCode != null) {
@@ -117,7 +111,7 @@ public final class FramedStream
       if (this.errorCode != null) {
         return false;
       }
-      if ((this.source.finished) && (this.sink.finished)) {
+      if ((FramedStream.FramedDataSource.access$100(this.source)) && (FramedStream.FramedDataSink.access$200(this.sink))) {
         return false;
       }
     }
@@ -129,7 +123,6 @@ public final class FramedStream
   }
   
   private void waitForIo()
-    throws InterruptedIOException
   {
     try
     {
@@ -151,7 +144,6 @@ public final class FramedStream
   }
   
   public void close(ErrorCode paramErrorCode)
-    throws IOException
   {
     if (!closeInternal(paramErrorCode)) {
       return;
@@ -197,7 +189,6 @@ public final class FramedStream
   }
   
   public List<Header> getResponseHeaders()
-    throws IOException
   {
     try
     {
@@ -260,7 +251,7 @@ public final class FramedStream
     //   2: aload_0
     //   3: monitorenter
     //   4: aload_0
-    //   5: getfield 63	com/squareup/okhttp/internal/framed/FramedStream:errorCode	Lcom/squareup/okhttp/internal/framed/ErrorCode;
+    //   5: getfield 54	com/squareup/okhttp/internal/framed/FramedStream:errorCode	Lcom/squareup/okhttp/internal/framed/ErrorCode;
     //   8: astore_2
     //   9: aload_2
     //   10: ifnull +7 -> 17
@@ -269,23 +260,23 @@ public final class FramedStream
     //   15: iload_1
     //   16: ireturn
     //   17: aload_0
-    //   18: getfield 99	com/squareup/okhttp/internal/framed/FramedStream:source	Lcom/squareup/okhttp/internal/framed/FramedStream$FramedDataSource;
-    //   21: invokestatic 153	com/squareup/okhttp/internal/framed/FramedStream$FramedDataSource:access$100	(Lcom/squareup/okhttp/internal/framed/FramedStream$FramedDataSource;)Z
+    //   18: getfield 92	com/squareup/okhttp/internal/framed/FramedStream:source	Lcom/squareup/okhttp/internal/framed/FramedStream$FramedDataSource;
+    //   21: invokestatic 143	com/squareup/okhttp/internal/framed/FramedStream$FramedDataSource:access$100	(Lcom/squareup/okhttp/internal/framed/FramedStream$FramedDataSource;)Z
     //   24: ifne +13 -> 37
     //   27: aload_0
-    //   28: getfield 99	com/squareup/okhttp/internal/framed/FramedStream:source	Lcom/squareup/okhttp/internal/framed/FramedStream$FramedDataSource;
-    //   31: invokestatic 156	com/squareup/okhttp/internal/framed/FramedStream$FramedDataSource:access$300	(Lcom/squareup/okhttp/internal/framed/FramedStream$FramedDataSource;)Z
+    //   28: getfield 92	com/squareup/okhttp/internal/framed/FramedStream:source	Lcom/squareup/okhttp/internal/framed/FramedStream$FramedDataSource;
+    //   31: invokestatic 146	com/squareup/okhttp/internal/framed/FramedStream$FramedDataSource:access$300	(Lcom/squareup/okhttp/internal/framed/FramedStream$FramedDataSource;)Z
     //   34: ifeq +32 -> 66
     //   37: aload_0
-    //   38: getfield 102	com/squareup/okhttp/internal/framed/FramedStream:sink	Lcom/squareup/okhttp/internal/framed/FramedStream$FramedDataSink;
-    //   41: invokestatic 160	com/squareup/okhttp/internal/framed/FramedStream$FramedDataSink:access$200	(Lcom/squareup/okhttp/internal/framed/FramedStream$FramedDataSink;)Z
+    //   38: getfield 97	com/squareup/okhttp/internal/framed/FramedStream:sink	Lcom/squareup/okhttp/internal/framed/FramedStream$FramedDataSink;
+    //   41: invokestatic 150	com/squareup/okhttp/internal/framed/FramedStream$FramedDataSink:access$200	(Lcom/squareup/okhttp/internal/framed/FramedStream$FramedDataSink;)Z
     //   44: ifne +13 -> 57
     //   47: aload_0
-    //   48: getfield 102	com/squareup/okhttp/internal/framed/FramedStream:sink	Lcom/squareup/okhttp/internal/framed/FramedStream$FramedDataSink;
-    //   51: invokestatic 163	com/squareup/okhttp/internal/framed/FramedStream$FramedDataSink:access$400	(Lcom/squareup/okhttp/internal/framed/FramedStream$FramedDataSink;)Z
+    //   48: getfield 97	com/squareup/okhttp/internal/framed/FramedStream:sink	Lcom/squareup/okhttp/internal/framed/FramedStream$FramedDataSink;
+    //   51: invokestatic 153	com/squareup/okhttp/internal/framed/FramedStream$FramedDataSink:access$400	(Lcom/squareup/okhttp/internal/framed/FramedStream$FramedDataSink;)Z
     //   54: ifeq +12 -> 66
     //   57: aload_0
-    //   58: getfield 238	com/squareup/okhttp/internal/framed/FramedStream:responseHeaders	Ljava/util/List;
+    //   58: getfield 232	com/squareup/okhttp/internal/framed/FramedStream:responseHeaders	Ljava/util/List;
     //   61: astore_2
     //   62: aload_2
     //   63: ifnonnull -50 -> 13
@@ -317,7 +308,6 @@ public final class FramedStream
   }
   
   void receiveData(BufferedSource paramBufferedSource, int paramInt)
-    throws IOException
   {
     assert (!Thread.holdsLock(this));
     this.source.receive(paramBufferedSource, paramInt);
@@ -328,7 +318,7 @@ public final class FramedStream
     assert (!Thread.holdsLock(this));
     try
     {
-      FramedDataSource.access$102(this.source, true);
+      FramedStream.FramedDataSource.access$102(this.source, true);
       boolean bool = isOpen();
       notifyAll();
       if (!bool) {
@@ -404,10 +394,9 @@ public final class FramedStream
   }
   
   public void reply(List<Header> paramList, boolean paramBoolean)
-    throws IOException
   {
+    boolean bool = true;
     assert (!Thread.holdsLock(this));
-    boolean bool = false;
     if (paramList == null) {
       try
       {
@@ -419,435 +408,22 @@ public final class FramedStream
       throw new IllegalStateException("reply already sent");
     }
     this.responseHeaders = paramList;
-    if (!paramBoolean)
-    {
-      FramedDataSink.access$202(this.sink, true);
-      bool = true;
+    if (!paramBoolean) {
+      FramedStream.FramedDataSink.access$202(this.sink, true);
     }
-    this.connection.writeSynReply(this.id, bool, paramList);
-    if (bool) {
-      this.connection.flush();
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      this.connection.writeSynReply(this.id, paramBoolean, paramList);
+      if (paramBoolean) {
+        this.connection.flush();
+      }
+      return;
     }
   }
   
   public Timeout writeTimeout()
   {
     return this.writeTimeout;
-  }
-  
-  final class FramedDataSink
-    implements Sink
-  {
-    private static final long EMIT_BUFFER_SIZE = 16384L;
-    private boolean closed;
-    private boolean finished;
-    private final Buffer sendBuffer = new Buffer();
-    
-    static
-    {
-      if (!FramedStream.class.desiredAssertionStatus()) {}
-      for (boolean bool = true;; bool = false)
-      {
-        $assertionsDisabled = bool;
-        return;
-      }
-    }
-    
-    FramedDataSink() {}
-    
-    /* Error */
-    private void emitDataFrame(boolean paramBoolean)
-      throws IOException
-    {
-      // Byte code:
-      //   0: aload_0
-      //   1: getfield 36	com/squareup/okhttp/internal/framed/FramedStream$FramedDataSink:this$0	Lcom/squareup/okhttp/internal/framed/FramedStream;
-      //   4: astore 5
-      //   6: aload 5
-      //   8: monitorenter
-      //   9: aload_0
-      //   10: getfield 36	com/squareup/okhttp/internal/framed/FramedStream$FramedDataSink:this$0	Lcom/squareup/okhttp/internal/framed/FramedStream;
-      //   13: invokestatic 60	com/squareup/okhttp/internal/framed/FramedStream:access$1100	(Lcom/squareup/okhttp/internal/framed/FramedStream;)Lcom/squareup/okhttp/internal/framed/FramedStream$StreamTimeout;
-      //   16: invokevirtual 65	com/squareup/okhttp/internal/framed/FramedStream$StreamTimeout:enter	()V
-      //   19: aload_0
-      //   20: getfield 36	com/squareup/okhttp/internal/framed/FramedStream$FramedDataSink:this$0	Lcom/squareup/okhttp/internal/framed/FramedStream;
-      //   23: getfield 68	com/squareup/okhttp/internal/framed/FramedStream:bytesLeftInWriteWindow	J
-      //   26: lconst_0
-      //   27: lcmp
-      //   28: ifgt +60 -> 88
-      //   31: aload_0
-      //   32: getfield 47	com/squareup/okhttp/internal/framed/FramedStream$FramedDataSink:finished	Z
-      //   35: ifne +53 -> 88
-      //   38: aload_0
-      //   39: getfield 52	com/squareup/okhttp/internal/framed/FramedStream$FramedDataSink:closed	Z
-      //   42: ifne +46 -> 88
-      //   45: aload_0
-      //   46: getfield 36	com/squareup/okhttp/internal/framed/FramedStream$FramedDataSink:this$0	Lcom/squareup/okhttp/internal/framed/FramedStream;
-      //   49: invokestatic 72	com/squareup/okhttp/internal/framed/FramedStream:access$800	(Lcom/squareup/okhttp/internal/framed/FramedStream;)Lcom/squareup/okhttp/internal/framed/ErrorCode;
-      //   52: ifnonnull +36 -> 88
-      //   55: aload_0
-      //   56: getfield 36	com/squareup/okhttp/internal/framed/FramedStream$FramedDataSink:this$0	Lcom/squareup/okhttp/internal/framed/FramedStream;
-      //   59: invokestatic 75	com/squareup/okhttp/internal/framed/FramedStream:access$900	(Lcom/squareup/okhttp/internal/framed/FramedStream;)V
-      //   62: goto -43 -> 19
-      //   65: astore 6
-      //   67: aload_0
-      //   68: getfield 36	com/squareup/okhttp/internal/framed/FramedStream$FramedDataSink:this$0	Lcom/squareup/okhttp/internal/framed/FramedStream;
-      //   71: invokestatic 60	com/squareup/okhttp/internal/framed/FramedStream:access$1100	(Lcom/squareup/okhttp/internal/framed/FramedStream;)Lcom/squareup/okhttp/internal/framed/FramedStream$StreamTimeout;
-      //   74: invokevirtual 78	com/squareup/okhttp/internal/framed/FramedStream$StreamTimeout:exitAndThrowIfTimedOut	()V
-      //   77: aload 6
-      //   79: athrow
-      //   80: astore 6
-      //   82: aload 5
-      //   84: monitorexit
-      //   85: aload 6
-      //   87: athrow
-      //   88: aload_0
-      //   89: getfield 36	com/squareup/okhttp/internal/framed/FramedStream$FramedDataSink:this$0	Lcom/squareup/okhttp/internal/framed/FramedStream;
-      //   92: invokestatic 60	com/squareup/okhttp/internal/framed/FramedStream:access$1100	(Lcom/squareup/okhttp/internal/framed/FramedStream;)Lcom/squareup/okhttp/internal/framed/FramedStream$StreamTimeout;
-      //   95: invokevirtual 78	com/squareup/okhttp/internal/framed/FramedStream$StreamTimeout:exitAndThrowIfTimedOut	()V
-      //   98: aload_0
-      //   99: getfield 36	com/squareup/okhttp/internal/framed/FramedStream$FramedDataSink:this$0	Lcom/squareup/okhttp/internal/framed/FramedStream;
-      //   102: invokestatic 81	com/squareup/okhttp/internal/framed/FramedStream:access$1200	(Lcom/squareup/okhttp/internal/framed/FramedStream;)V
-      //   105: aload_0
-      //   106: getfield 36	com/squareup/okhttp/internal/framed/FramedStream$FramedDataSink:this$0	Lcom/squareup/okhttp/internal/framed/FramedStream;
-      //   109: getfield 68	com/squareup/okhttp/internal/framed/FramedStream:bytesLeftInWriteWindow	J
-      //   112: aload_0
-      //   113: getfield 43	com/squareup/okhttp/internal/framed/FramedStream$FramedDataSink:sendBuffer	Lokio/Buffer;
-      //   116: invokevirtual 85	okio/Buffer:size	()J
-      //   119: invokestatic 91	java/lang/Math:min	(JJ)J
-      //   122: lstore_3
-      //   123: aload_0
-      //   124: getfield 36	com/squareup/okhttp/internal/framed/FramedStream$FramedDataSink:this$0	Lcom/squareup/okhttp/internal/framed/FramedStream;
-      //   127: astore 6
-      //   129: aload 6
-      //   131: aload 6
-      //   133: getfield 68	com/squareup/okhttp/internal/framed/FramedStream:bytesLeftInWriteWindow	J
-      //   136: lload_3
-      //   137: lsub
-      //   138: putfield 68	com/squareup/okhttp/internal/framed/FramedStream:bytesLeftInWriteWindow	J
-      //   141: aload 5
-      //   143: monitorexit
-      //   144: aload_0
-      //   145: getfield 36	com/squareup/okhttp/internal/framed/FramedStream$FramedDataSink:this$0	Lcom/squareup/okhttp/internal/framed/FramedStream;
-      //   148: invokestatic 60	com/squareup/okhttp/internal/framed/FramedStream:access$1100	(Lcom/squareup/okhttp/internal/framed/FramedStream;)Lcom/squareup/okhttp/internal/framed/FramedStream$StreamTimeout;
-      //   151: invokevirtual 65	com/squareup/okhttp/internal/framed/FramedStream$StreamTimeout:enter	()V
-      //   154: aload_0
-      //   155: getfield 36	com/squareup/okhttp/internal/framed/FramedStream$FramedDataSink:this$0	Lcom/squareup/okhttp/internal/framed/FramedStream;
-      //   158: invokestatic 95	com/squareup/okhttp/internal/framed/FramedStream:access$500	(Lcom/squareup/okhttp/internal/framed/FramedStream;)Lcom/squareup/okhttp/internal/framed/FramedConnection;
-      //   161: astore 5
-      //   163: aload_0
-      //   164: getfield 36	com/squareup/okhttp/internal/framed/FramedStream$FramedDataSink:this$0	Lcom/squareup/okhttp/internal/framed/FramedStream;
-      //   167: invokestatic 99	com/squareup/okhttp/internal/framed/FramedStream:access$600	(Lcom/squareup/okhttp/internal/framed/FramedStream;)I
-      //   170: istore_2
-      //   171: iload_1
-      //   172: ifeq +40 -> 212
-      //   175: lload_3
-      //   176: aload_0
-      //   177: getfield 43	com/squareup/okhttp/internal/framed/FramedStream$FramedDataSink:sendBuffer	Lokio/Buffer;
-      //   180: invokevirtual 85	okio/Buffer:size	()J
-      //   183: lcmp
-      //   184: ifne +28 -> 212
-      //   187: iconst_1
-      //   188: istore_1
-      //   189: aload 5
-      //   191: iload_2
-      //   192: iload_1
-      //   193: aload_0
-      //   194: getfield 43	com/squareup/okhttp/internal/framed/FramedStream$FramedDataSink:sendBuffer	Lokio/Buffer;
-      //   197: lload_3
-      //   198: invokevirtual 105	com/squareup/okhttp/internal/framed/FramedConnection:writeData	(IZLokio/Buffer;J)V
-      //   201: aload_0
-      //   202: getfield 36	com/squareup/okhttp/internal/framed/FramedStream$FramedDataSink:this$0	Lcom/squareup/okhttp/internal/framed/FramedStream;
-      //   205: invokestatic 60	com/squareup/okhttp/internal/framed/FramedStream:access$1100	(Lcom/squareup/okhttp/internal/framed/FramedStream;)Lcom/squareup/okhttp/internal/framed/FramedStream$StreamTimeout;
-      //   208: invokevirtual 78	com/squareup/okhttp/internal/framed/FramedStream$StreamTimeout:exitAndThrowIfTimedOut	()V
-      //   211: return
-      //   212: iconst_0
-      //   213: istore_1
-      //   214: goto -25 -> 189
-      //   217: astore 5
-      //   219: aload_0
-      //   220: getfield 36	com/squareup/okhttp/internal/framed/FramedStream$FramedDataSink:this$0	Lcom/squareup/okhttp/internal/framed/FramedStream;
-      //   223: invokestatic 60	com/squareup/okhttp/internal/framed/FramedStream:access$1100	(Lcom/squareup/okhttp/internal/framed/FramedStream;)Lcom/squareup/okhttp/internal/framed/FramedStream$StreamTimeout;
-      //   226: invokevirtual 78	com/squareup/okhttp/internal/framed/FramedStream$StreamTimeout:exitAndThrowIfTimedOut	()V
-      //   229: aload 5
-      //   231: athrow
-      // Local variable table:
-      //   start	length	slot	name	signature
-      //   0	232	0	this	FramedDataSink
-      //   0	232	1	paramBoolean	boolean
-      //   170	22	2	i	int
-      //   122	76	3	l	long
-      //   4	186	5	localObject1	Object
-      //   217	13	5	localObject2	Object
-      //   65	13	6	localObject3	Object
-      //   80	6	6	localObject4	Object
-      //   127	5	6	localFramedStream	FramedStream
-      // Exception table:
-      //   from	to	target	type
-      //   19	62	65	finally
-      //   9	19	80	finally
-      //   67	80	80	finally
-      //   82	85	80	finally
-      //   88	144	80	finally
-      //   154	171	217	finally
-      //   175	187	217	finally
-      //   189	201	217	finally
-    }
-    
-    public void close()
-      throws IOException
-    {
-      assert (!Thread.holdsLock(FramedStream.this));
-      synchronized (FramedStream.this)
-      {
-        if (this.closed) {
-          return;
-        }
-        if (FramedStream.this.sink.finished) {
-          break label113;
-        }
-        if (this.sendBuffer.size() > 0L)
-        {
-          if (this.sendBuffer.size() <= 0L) {
-            break label113;
-          }
-          emitDataFrame(true);
-        }
-      }
-      FramedStream.this.connection.writeData(FramedStream.this.id, true, null, 0L);
-      label113:
-      synchronized (FramedStream.this)
-      {
-        this.closed = true;
-        FramedStream.this.connection.flush();
-        FramedStream.this.cancelStreamIfNecessary();
-        return;
-      }
-    }
-    
-    public void flush()
-      throws IOException
-    {
-      assert (!Thread.holdsLock(FramedStream.this));
-      synchronized (FramedStream.this)
-      {
-        FramedStream.this.checkOutNotClosed();
-        if (this.sendBuffer.size() > 0L)
-        {
-          emitDataFrame(false);
-          FramedStream.this.connection.flush();
-        }
-      }
-    }
-    
-    public Timeout timeout()
-    {
-      return FramedStream.this.writeTimeout;
-    }
-    
-    public void write(Buffer paramBuffer, long paramLong)
-      throws IOException
-    {
-      assert (!Thread.holdsLock(FramedStream.this));
-      this.sendBuffer.write(paramBuffer, paramLong);
-      while (this.sendBuffer.size() >= 16384L) {
-        emitDataFrame(false);
-      }
-    }
-  }
-  
-  private final class FramedDataSource
-    implements Source
-  {
-    private boolean closed;
-    private boolean finished;
-    private final long maxByteCount;
-    private final Buffer readBuffer = new Buffer();
-    private final Buffer receiveBuffer = new Buffer();
-    
-    static
-    {
-      if (!FramedStream.class.desiredAssertionStatus()) {}
-      for (boolean bool = true;; bool = false)
-      {
-        $assertionsDisabled = bool;
-        return;
-      }
-    }
-    
-    private FramedDataSource(long paramLong)
-    {
-      this.maxByteCount = paramLong;
-    }
-    
-    private void checkNotClosed()
-      throws IOException
-    {
-      if (this.closed) {
-        throw new IOException("stream closed");
-      }
-      if (FramedStream.this.errorCode != null) {
-        throw new IOException("stream was reset: " + FramedStream.this.errorCode);
-      }
-    }
-    
-    private void waitUntilReadable()
-      throws IOException
-    {
-      FramedStream.this.readTimeout.enter();
-      try
-      {
-        if (this.readBuffer.size() == 0L) {
-          if ((!this.finished) && (!this.closed) && (FramedStream.this.errorCode == null)) {
-            FramedStream.this.waitForIo();
-          }
-        }
-        return;
-      }
-      finally
-      {
-        FramedStream.this.readTimeout.exitAndThrowIfTimedOut();
-      }
-    }
-    
-    public void close()
-      throws IOException
-    {
-      synchronized (FramedStream.this)
-      {
-        this.closed = true;
-        this.readBuffer.clear();
-        FramedStream.this.notifyAll();
-        FramedStream.this.cancelStreamIfNecessary();
-        return;
-      }
-    }
-    
-    public long read(Buffer arg1, long paramLong)
-      throws IOException
-    {
-      if (paramLong < 0L) {
-        throw new IllegalArgumentException("byteCount < 0: " + paramLong);
-      }
-      synchronized (FramedStream.this)
-      {
-        waitUntilReadable();
-        checkNotClosed();
-        if (this.readBuffer.size() == 0L) {
-          return -1L;
-        }
-        paramLong = this.readBuffer.read(???, Math.min(paramLong, this.readBuffer.size()));
-        ??? = FramedStream.this;
-        ???.unacknowledgedBytesRead += paramLong;
-        if (FramedStream.this.unacknowledgedBytesRead >= FramedStream.this.connection.okHttpSettings.getInitialWindowSize(65536) / 2)
-        {
-          FramedStream.this.connection.writeWindowUpdateLater(FramedStream.this.id, FramedStream.this.unacknowledgedBytesRead);
-          FramedStream.this.unacknowledgedBytesRead = 0L;
-        }
-        synchronized (FramedStream.this.connection)
-        {
-          ??? = FramedStream.this.connection;
-          ((FramedConnection)???).unacknowledgedBytesRead += paramLong;
-          if (FramedStream.this.connection.unacknowledgedBytesRead >= FramedStream.this.connection.okHttpSettings.getInitialWindowSize(65536) / 2)
-          {
-            FramedStream.this.connection.writeWindowUpdateLater(0, FramedStream.this.connection.unacknowledgedBytesRead);
-            FramedStream.this.connection.unacknowledgedBytesRead = 0L;
-          }
-          return paramLong;
-        }
-      }
-    }
-    
-    void receive(BufferedSource paramBufferedSource, long paramLong)
-      throws IOException
-    {
-      long l = paramLong;
-      if (!$assertionsDisabled)
-      {
-        l = paramLong;
-        if (Thread.holdsLock(FramedStream.this)) {
-          throw new AssertionError();
-        }
-      }
-      for (;;)
-      {
-        l -= paramLong;
-        synchronized (FramedStream.this)
-        {
-          if (this.readBuffer.size() == 0L)
-          {
-            i = 1;
-            this.readBuffer.writeAll(this.receiveBuffer);
-            if (i != 0) {
-              FramedStream.this.notifyAll();
-            }
-            if (l > 0L) {}
-            boolean bool;
-            synchronized (FramedStream.this)
-            {
-              bool = this.finished;
-              if (this.readBuffer.size() + l > this.maxByteCount)
-              {
-                i = 1;
-                if (i != 0)
-                {
-                  paramBufferedSource.skip(l);
-                  FramedStream.this.closeLater(ErrorCode.FLOW_CONTROL_ERROR);
-                }
-              }
-              else
-              {
-                i = 0;
-              }
-            }
-            if (bool)
-            {
-              paramBufferedSource.skip(l);
-              return;
-            }
-            paramLong = paramBufferedSource.read(this.receiveBuffer, l);
-            if (paramLong != -1L) {
-              continue;
-            }
-            throw new EOFException();
-          }
-          int i = 0;
-        }
-      }
-    }
-    
-    public Timeout timeout()
-    {
-      return FramedStream.this.readTimeout;
-    }
-  }
-  
-  class StreamTimeout
-    extends AsyncTimeout
-  {
-    StreamTimeout() {}
-    
-    public void exitAndThrowIfTimedOut()
-      throws IOException
-    {
-      if (exit()) {
-        throw newTimeoutException(null);
-      }
-    }
-    
-    protected IOException newTimeoutException(IOException paramIOException)
-    {
-      SocketTimeoutException localSocketTimeoutException = new SocketTimeoutException("timeout");
-      if (paramIOException != null) {
-        localSocketTimeoutException.initCause(paramIOException);
-      }
-      return localSocketTimeoutException;
-    }
-    
-    protected void timedOut()
-    {
-      FramedStream.this.closeLater(ErrorCode.CANCEL);
-    }
   }
 }
 

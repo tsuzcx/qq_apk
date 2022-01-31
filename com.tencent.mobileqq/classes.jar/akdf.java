@@ -1,21 +1,14 @@
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
+import java.util.List;
 
-class akdf
-  implements Action.OnActionEndListener
+public abstract interface akdf
 {
-  akdf(akde paramakde) {}
+  public abstract void a(String paramString, atmo paramatmo);
   
-  public void a()
-  {
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
-  }
+  public abstract void a(String paramString, List<? extends atmo> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akdf
  * JD-Core Version:    0.7.0.1
  */

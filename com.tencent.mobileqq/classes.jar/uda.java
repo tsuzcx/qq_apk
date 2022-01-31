@@ -1,53 +1,33 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.transfile.AbsDownloader;
-import com.tencent.mobileqq.troop.utils.AvatarTroopUtil;
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread.UploadState;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.LikeEntry;
+import java.util.List;
 
 public class uda
-  implements Observer
+  extends sfo
 {
-  public uda(TroopInfoActivity paramTroopInfoActivity) {}
+  public int a;
+  public String a;
+  public List<LikeEntry> a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c;
+  public boolean c;
   
-  public void update(Observable paramObservable, Object paramObject)
+  public uda(ErrorMessage paramErrorMessage, String paramString)
   {
-    if (paramObject == null) {}
-    label4:
-    int i;
-    do
-    {
-      do
-      {
-        do
-        {
-          break label4;
-          do
-          {
-            return;
-          } while (!(paramObject instanceof TroopUploadingThread.UploadState));
-          paramObservable = (TroopUploadingThread.UploadState)paramObject;
-        } while (paramObservable.a == 0);
-        this.a.jdField_a_of_type_AndroidOsHandler.post(new udb(this, paramObservable));
-      } while ((paramObservable.a != 1) || (paramObservable.c < 0) || (this.a.jdField_a_of_type_AndroidNetUri == null));
-      paramObject = ImageUtil.b(this.a, this.a.jdField_a_of_type_AndroidNetUri);
-      i = AvatarWallAdapter.b(paramObject, AbsDownloader.d(AvatarTroopUtil.b(AvatarTroopUtil.a(String.valueOf(paramObservable.b), this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, 1))));
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.troopinfo", 2, "origin photo,result:" + i);
-      }
-      i = AvatarWallAdapter.a(paramObject, AbsDownloader.d(AvatarTroopUtil.a(AvatarTroopUtil.a(String.valueOf(paramObservable.b), this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, 1))));
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.troopinfo", 2, "thumb photo,result:" + i);
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public String toString()
+  {
+    return "GetLikeListEvent{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isForDetail=" + this.jdField_a_of_type_Boolean + ", mType=" + this.jdField_a_of_type_Int + ", mLikeCount=" + this.b + ", mHasLike=" + this.c + ", mLikeEntryList=" + this.jdField_a_of_type_JavaUtilList + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uda
  * JD-Core Version:    0.7.0.1
  */

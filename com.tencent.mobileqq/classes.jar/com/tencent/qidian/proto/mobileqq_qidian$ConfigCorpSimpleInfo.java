@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class mobileqq_qidian$ConfigCorpSimpleInfo
-  extends MessageMicro
+  extends MessageMicro<ConfigCorpSimpleInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34 }, new String[] { "str_corp_name", "str_short_name", "str_detail_desc", "str_click_url" }, new Object[] { "", "", "", "" }, ConfigCorpSimpleInfo.class);
   public final PBStringField str_click_url = PBField.initString("");
@@ -16,7 +16,7 @@ public final class mobileqq_qidian$ConfigCorpSimpleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.qidian.proto.mobileqq_qidian.ConfigCorpSimpleInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class AudioTransInterfaceTranslate$TransIntPushDataReq
-  extends MessageMicro
+  extends MessageMicro<TransIntPushDataReq>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField translate_result = PBField.initBytes(ByteStringMicro.EMPTY);

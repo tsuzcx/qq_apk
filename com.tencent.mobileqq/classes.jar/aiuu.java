@@ -1,45 +1,40 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.store.openbox.ApolloCardWindow;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.Map;
 
 public class aiuu
-  extends aiuo
+  extends batl
 {
-  private int a;
+  public aiuu(ApolloCardWindow paramApolloCardWindow) {}
   
-  public aiuu(ForwardSdkShareProcessor paramForwardSdkShareProcessor)
+  public void onDoneFile(batm parambatm)
   {
-    super(paramForwardSdkShareProcessor);
-    this.jdField_a_of_type_JavaLangString = "ImageUploadStep";
-  }
-  
-  protected boolean a()
-  {
-    return ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).get();
-  }
-  
-  protected void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "ImageUploadStep|process|ready=" + ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor) + ",remoteUrl=" + ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor) + " ,localUrl=" + ForwardSdkShareProcessor.b(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor));
-    }
-    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-    {
-      f();
+    if (parambatm == null) {
       return;
     }
-    if (ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor).get())
+    try
     {
-      b();
+      ??? = parambatm.a().getString("path");
+      String str = parambatm.a().getString("url");
+      parambatm = this.a.a((String)???);
+      str = bcdu.d(str);
+      synchronized (ApolloCardWindow.a)
+      {
+        ApolloCardWindow.a.put(str, parambatm);
+        return;
+      }
       return;
     }
-    ThreadManager.post(new aiuv(this), 8, null, true);
+    catch (Exception parambatm)
+    {
+      QLog.e("ApolloCardWindow", 1, "onDoneFile error:", parambatm);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiuu
  * JD-Core Version:    0.7.0.1
  */

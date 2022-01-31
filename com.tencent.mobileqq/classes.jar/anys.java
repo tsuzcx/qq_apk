@@ -1,54 +1,70 @@
-import android.util.Pair;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
-import dov.com.qq.im.capture.view.VideoSegmentPickerProviderView;
-import dov.com.qq.im.capture.view.VideoSegmentPickerProviderView.VideoSegmentPickerListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.SegmentPicker;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.1;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.2;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.3;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.4;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.5;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.11.6;
+import com.tencent.qphone.base.util.QLog;
 
 public class anys
-  implements View.OnClickListener
+  implements apeq
 {
-  public anys(VideoSegmentPickerProviderView paramVideoSegmentPickerProviderView) {}
+  public anys(UniformDownloadActivity paramUniformDownloadActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, Bundle paramBundle)
   {
-    long l1 = 0L;
-    VideoSegmentPickerProviderView.VideoSegmentPickerListener localVideoSegmentPickerListener;
-    long l2;
-    if (VideoSegmentPickerProviderView.a(this.a) != null)
-    {
-      paramView = VideoSegmentPickerProviderView.a(this.a).a();
-      VideoSegmentPickerProviderView.a(this.a).a.a();
-      VideoSegmentPickerProviderView.a(this.a).a.b(paramView);
-      if (VideoSegmentPickerProviderView.a(this.a) != null)
-      {
-        localVideoSegmentPickerListener = (VideoSegmentPickerProviderView.VideoSegmentPickerListener)VideoSegmentPickerProviderView.a(this.a).get();
-        if (localVideoSegmentPickerListener != null)
-        {
-          if ((paramView == null) || (paramView.size() <= 0)) {
-            break label145;
-          }
-          l2 = ((Long)((Pair)paramView.get(0)).first).longValue();
-          l1 = ((Long)((Pair)paramView.get(0)).second).longValue();
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadStart progress = " + paramInt);
     }
-    for (;;)
-    {
-      localVideoSegmentPickerListener.a(l2, l1);
-      return;
-      label145:
-      l2 = 0L;
+    this.a.runOnUiThread(new UniformDownloadActivity.11.2(this));
+  }
+  
+  public void a(int paramInt, String paramString, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadFailed errCode = " + paramInt);
     }
+    this.a.runOnUiThread(new UniformDownloadActivity.11.6(this));
+  }
+  
+  public void a(String paramString, long paramLong, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadSucess ");
+    }
+    this.a.runOnUiThread(new UniformDownloadActivity.11.1(this));
+    awqx.b(null, "dc00898", "", "", "0X8008FFA", "0X8008FFA", 1, 0, "", "", "", "");
+  }
+  
+  public void b(int paramInt, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadProgress progress = " + paramInt);
+    }
+    this.a.runOnUiThread(new UniformDownloadActivity.11.4(this, paramInt));
+  }
+  
+  public void c(int paramInt, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadPause progress = " + paramInt);
+    }
+    this.a.runOnUiThread(new UniformDownloadActivity.11.5(this));
+  }
+  
+  public void d(int paramInt, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadResume progress = " + paramInt);
+    }
+    this.a.runOnUiThread(new UniformDownloadActivity.11.3(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anys
  * JD-Core Version:    0.7.0.1
  */

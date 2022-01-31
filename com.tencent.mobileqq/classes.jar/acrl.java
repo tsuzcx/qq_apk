@@ -1,50 +1,37 @@
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.ArrayList;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.audiopanel.VoiceTextEditPanel;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 
 public class acrl
+  implements View.OnClickListener
 {
-  private List jdField_a_of_type_JavaUtilList = new ArrayList(20);
+  public acrl(VoiceTextEditPanel paramVoiceTextEditPanel) {}
   
-  private acrl(ExtendFriendSquareFragment paramExtendFriendSquareFragment) {}
-  
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-      b();
-    }
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaUtilList.add(paramString);
-    if (this.jdField_a_of_type_JavaUtilList.size() >= 20) {
-      b();
-    }
-  }
-  
-  void b()
-  {
-    StringBuffer localStringBuffer = new StringBuffer();
-    int i = 0;
-    while (i < this.jdField_a_of_type_JavaUtilList.size())
+    VoiceTextEditPanel.a(this.a).a.setVisibility(0);
+    if (!this.a.a())
     {
-      if (i != 0) {
-        localStringBuffer.append("|");
-      }
-      localStringBuffer.append((String)this.jdField_a_of_type_JavaUtilList.get(i));
-      i += 1;
+      VoiceTextEditPanel.a(this.a).h(false);
+      VoiceTextEditPanel.a(this.a).a();
+      VoiceTextEditPanel.b(this.a);
+      awqx.b(null, "dc00898", "", "", "0X800A1DB", "0X800A1DB", 1, 0, "", "", "", "");
     }
-    if (ExtendFriendSquareFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment) != null) {
-      ReportController.b(ExtendFriendSquareFragment.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendSquareFragment), "dc00898", "", "", "0X8009324", "0X8009324", 0, 0, "", "", localStringBuffer.toString(), "");
+    for (;;)
+    {
+      VoiceTextEditPanel.c(this.a);
+      return;
+      VoiceTextEditPanel.a(this.a).a(1);
+      VoiceTextEditPanel.a(this.a).aI();
+      awqx.b(null, "dc00898", "", "", "0X800A1DB", "0X800A1DB", 2, 0, "", "", "", "");
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acrl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,11 @@
 package com.tencent.component.network.downloader.strategy;
 
-public abstract interface StrategyProvider$RequestProcessor {}
+import org.apache.http.HttpRequest;
+
+public abstract interface StrategyProvider$RequestProcessor
+{
+  public abstract void prepareRequest(String paramString, HttpRequest paramHttpRequest);
+}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar

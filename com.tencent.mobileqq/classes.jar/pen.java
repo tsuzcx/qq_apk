@@ -1,18 +1,11 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.ui.CustomMenuBar;
-import com.tencent.biz.ui.CustomMenuBar.OnMenuItemClickListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class pen
-  implements View.OnClickListener
 {
-  public pen(CustomMenuBar paramCustomMenuBar, String paramString, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a != null) {
-      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1);
-    }
+    QLog.i("PTSReport", 1, "[reportData], actionName = " + paramString1 + ", r2 = " + paramString2 + ", r3 = " + paramString3 + ", r4 = " + paramString4 + ", r5 = " + paramString5);
+    ndn.a(null, "", paramString1, paramString1, 0, 0, paramString2, paramString3, paramString4, paramString5, false);
   }
 }
 

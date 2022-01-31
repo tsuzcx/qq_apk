@@ -1,16 +1,24 @@
-public class abaj
-  extends abad
+import com.tencent.mobileqq.config.ResourcePluginListener;
+import com.tencent.qphone.base.util.QLog;
+
+class abaj
+  extends ResourcePluginListener
 {
-  public String d;
+  abaj(abai paramabai) {}
   
-  private abaj()
+  public void a(byte paramByte)
   {
-    super(null);
+    if (QLog.isDevelopLevel()) {
+      QLog.d("Q.lebatab.leba", 4, "ResourcePluginListener listener notify = " + paramByte);
+    }
+    if (paramByte != -1) {
+      this.a.a.sendEmptyMessage(11340002);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abaj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,7 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
-
-public class ljr
-  implements DialogInterface.OnClickListener
-{
-  public ljr(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.setResult(0, this.a.getIntent());
-    this.a.finish();
-  }
-}
+public class ljr {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ljr
  * JD-Core Version:    0.7.0.1
  */

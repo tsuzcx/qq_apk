@@ -1,18 +1,10 @@
-import com.tencent.mobileqq.redtouch.RedTouchTextView;
-
-public class ahkk
-  implements Runnable
+public abstract interface ahkk
 {
-  public ahkk(RedTouchTextView paramRedTouchTextView) {}
-  
-  public void run()
-  {
-    this.a.invalidate();
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahkk
  * JD-Core Version:    0.7.0.1
  */

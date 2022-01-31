@@ -1,22 +1,37 @@
-import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.os.Looper;
+import com.tencent.mobileqq.activity.RegisterQQNumberActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class abpb
-  implements Runnable
+  implements bavt
 {
-  public abpb(ARMapLoadingActivity paramARMapLoadingActivity, boolean paramBoolean) {}
+  private final WeakReference<RegisterQQNumberActivity> a;
   
-  public void run()
+  public abpb(RegisterQQNumberActivity paramRegisterQQNumberActivity)
   {
-    HashMap localHashMap = new HashMap();
-    StatisticCollector.a(BaseApplication.getContext()).a("", "REPORT_TAG_PRE_START_THREAD", this.jdField_a_of_type_Boolean, 0L, 0L, localHashMap, "", false);
+    this.a = new WeakReference(paramRegisterQQNumberActivity);
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
+      if (QLog.isColorLevel()) {
+        QLog.i("RegisterQQNumberActivity", 2, "CheckRegisterLiangHao.RequestCallBack not called in main thread !!!");
+      }
+    }
+    RegisterQQNumberActivity localRegisterQQNumberActivity;
+    do
+    {
+      return;
+      localRegisterQQNumberActivity = (RegisterQQNumberActivity)this.a.get();
+    } while (localRegisterQQNumberActivity == null);
+    localRegisterQQNumberActivity.a(paramString, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abpb
  * JD-Core Version:    0.7.0.1
  */

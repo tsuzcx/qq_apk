@@ -1,24 +1,10 @@
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationHelper;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleReceiverAnimationRunnable;
-
-public class whm
-  implements Runnable
+public abstract interface whm
 {
-  public whm(StickerBubbleReceiverAnimationRunnable paramStickerBubbleReceiverAnimationRunnable) {}
-  
-  public void run()
-  {
-    if (StickerBubbleReceiverAnimationRunnable.a(this.a))
-    {
-      StickerBubbleAnimationHelper.a(this.a, StickerBubbleReceiverAnimationRunnable.a(this.a));
-      StickerBubbleReceiverAnimationRunnable.a(this.a, false);
-      StickerBubbleReceiverAnimationRunnable.b(this.a, false);
-    }
-  }
+  public abstract void a(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     whm
  * JD-Core Version:    0.7.0.1
  */

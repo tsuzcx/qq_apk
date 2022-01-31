@@ -1,59 +1,40 @@
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.FriendsManager;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.QidianProfileCardActivity.PaGroupStruct;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.colornote.data.ColorNote;
+import java.util.List;
 
-public class altk
-  extends FriendListObserver
+class altk
+  implements View.OnClickListener
 {
-  public altk(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  altk(altj paramaltj) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void onClick(View paramView)
   {
-    super.onUpdateCustomHead(paramBoolean, paramString);
-    if (paramBoolean)
-    {
-      if (!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.jdField_a_of_type_JavaLangString)) {
-        break label57;
-      }
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap = this.a.app.a(paramString, false);
-      this.a.c();
-    }
-    label57:
-    do
-    {
+    if ((altj.a(this.a) != null) && (altj.a(this.a).getVisibility() == 0) && (altj.a(this.a).hasFocus())) {
       return;
-      paramString = (QidianProfileCardActivity.PaGroupStruct)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    } while (paramString == null);
-    this.a.a(paramString.jdField_a_of_type_Int, (URLImageView)paramString.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString.jdField_a_of_type_JavaLangString, true);
-  }
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.jdField_a_of_type_JavaLangString.equals(String.valueOf(paramObject)))) {
-      this.a.b();
     }
-  }
-  
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (paramBoolean2) && (this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.jdField_a_of_type_JavaLangString != null) && (!ProfileActivity.AllInOne.b(this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a)) && (this.a.jdField_a_of_type_ComTencentMobileqqAppFriendsManager != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.b(this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.jdField_a_of_type_JavaLangString)) && (!this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.jdField_a_of_type_JavaLangString.equals(this.a.app.getCurrentAccountUin())))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.jdField_a_of_type_Int = 1;
-      QidianProfileCardActivity.b(this.a, this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.jdField_a_of_type_JavaLangString);
-      this.a.b();
+    altj.a(this.a);
+    paramView = new Intent(altj.a(this.a), AssistantSettingActivity.class);
+    paramView.putExtra("jumpTo", "color_note_recently_viewed");
+    paramView.putExtra("from", "color_note");
+    List localList = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a().a().a();
+    if ((localList.size() == 1) && (alsr.b((ColorNote)localList.get(0)))) {
+      paramView.putExtra("do_not_open", true);
     }
+    paramView.addFlags(268435456);
+    altj.a(this.a).startActivity(paramView);
+    awqx.b(null, "dc00898", "", "", "0X800A8AF", "0X800A8AF", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     altk
  * JD-Core Version:    0.7.0.1
  */

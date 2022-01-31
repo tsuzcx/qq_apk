@@ -16,7 +16,7 @@ public class BitmapError
   public static final int REASON_OUT_OF_MEM = 5;
   public static final int REASON_UNKNOWN = 0;
   public static final int REASON_URL_EMPTY = 1;
-  public Optional detail = Optional.empty();
+  public Optional<String> detail = Optional.empty();
   public final int reason;
   public final String source;
   
@@ -38,7 +38,7 @@ public class BitmapError
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.BitmapError
  * JD-Core Version:    0.7.0.1
  */

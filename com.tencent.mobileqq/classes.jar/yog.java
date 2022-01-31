@@ -1,18 +1,12 @@
-import com.tencent.mobileqq.adapter.NewFriendMoreSysMsgAdapter;
+import tencent.gdt.qq_ad_get.QQAdGetRsp.AdInfo;
 
-class yog
-  implements Runnable
+public abstract interface yog
 {
-  yog(yof paramyof) {}
-  
-  public void run()
-  {
-    NewFriendMoreSysMsgAdapter.a(this.a.a);
-  }
+  public abstract void a(int paramInt1, int paramInt2, qq_ad_get.QQAdGetRsp.AdInfo paramAdInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yog
  * JD-Core Version:    0.7.0.1
  */

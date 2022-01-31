@@ -1,28 +1,39 @@
-import android.view.View;
-import android.view.ViewPropertyAnimator;
-import android.view.animation.OvershootInterpolator;
-import com.tencent.mobileqq.activity.qwallet.RedPacketRecordFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public class xgt
-  implements Runnable
+class xgt
+  implements xgv
 {
-  public xgt(RedPacketRecordFragment paramRedPacketRecordFragment) {}
+  xgt(xgn paramxgn) {}
   
-  public void run()
+  public void b()
   {
-    this.a.a.setAlpha(0.3F);
-    this.a.a.animate().alpha(1.0F).setDuration(200L);
-    this.a.b.setAlpha(0.3F);
-    this.a.b.setPivotX(this.a.b.getWidth() / 2);
-    this.a.b.setPivotY(this.a.b.getHeight() / 2);
-    this.a.b.setScaleX(0.5F);
-    this.a.b.setScaleY(0.5F);
-    this.a.b.animate().alpha(1.0F).scaleX(1.0F).scaleY(1.0F).setDuration(300L).setInterpolator(new OvershootInterpolator(1.6F));
+    if (QLog.isColorLevel()) {
+      QLog.d("GalleryComponent", 2, "image list onEnterAnimationEnd");
+    }
+    this.a.b();
+  }
+  
+  public void c()
+  {
+    this.a.c();
+  }
+  
+  public void d()
+  {
+    this.a.d();
+  }
+  
+  public void e()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GalleryComponent", 2, "image list onExitAnimationEnd");
+    }
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     xgt
  * JD-Core Version:    0.7.0.1
  */

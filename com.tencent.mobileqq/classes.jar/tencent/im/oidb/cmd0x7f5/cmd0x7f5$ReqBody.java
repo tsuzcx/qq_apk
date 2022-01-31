@@ -10,13 +10,13 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class cmd0x7f5$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_req_context = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_route_mac = PBField.initBytes(ByteStringMicro.EMPTY);
   public cmd0x7f5.GPS msg_gps = new cmd0x7f5.GPS();
-  public final PBRepeatMessageField rpt_msg_wifi_mac = PBField.initRepeatMessage(cmd0x7f5.Wifi.class);
+  public final PBRepeatMessageField<cmd0x7f5.Wifi> rpt_msg_wifi_mac = PBField.initRepeatMessage(cmd0x7f5.Wifi.class);
   public final PBUInt32Field uint32_area_count = PBField.initUInt32(0);
   public final PBUInt32Field uint32_filter_id = PBField.initUInt32(0);
   public final PBFixed32Field uint32_ipv4 = PBField.initFixed32(0);
@@ -35,7 +35,7 @@ public final class cmd0x7f5$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x7f5.cmd0x7f5.ReqBody
  * JD-Core Version:    0.7.0.1
  */

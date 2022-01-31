@@ -1,46 +1,127 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.colornote.data.ColorNote;
 
 public class altx
-  implements ActionSheet.OnButtonClickListener
 {
-  public altx(QidianProfileCardActivity paramQidianProfileCardActivity, ActionSheet paramActionSheet, URLDrawable paramURLDrawable, String paramString) {}
+  private alrw jdField_a_of_type_Alrw = new alrw();
+  private alsb jdField_a_of_type_Alsb;
+  private alsd jdField_a_of_type_Alsd;
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public void OnClick(View paramView, int paramInt)
+  public altx()
   {
-    if (paramView == null) {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    }
-    do
+    this.jdField_a_of_type_Alrw.a(new alry());
+    this.jdField_a_of_type_Alsb = new alsb();
+    this.jdField_a_of_type_Alsb.a(this.jdField_a_of_type_Alrw);
+  }
+  
+  private boolean a(int paramInt)
+  {
+    return paramInt == 16908289;
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_Alrw != null) && (this.jdField_a_of_type_Alsd != null))
     {
+      localColorNote = this.jdField_a_of_type_Alsd.getColorNote();
+      if (localColorNote != null)
+      {
+        this.jdField_a_of_type_Alrw.a(localColorNote.getServiceType(), localColorNote.getSubType(), true);
+        localColorNote = alsr.a(localColorNote);
+        this.jdField_a_of_type_Alrw.a(localColorNote.getServiceType(), localColorNote.getSubType(), true);
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      ColorNote localColorNote;
+      do
+      {
+        return;
+      } while (!QLog.isColorLevel());
+      QLog.e("ColorNoteStateNotice", 1, "onResume: colorNote is null");
       return;
-      paramView = this.jdField_a_of_type_ComTencentWidgetActionSheet.a(paramInt);
-      if (TextUtils.isEmpty(paramView))
+    }
+    QLog.e("ColorNoteStateNotice", 1, "onResume: mColorNoteCurd or mServiceInfo is null");
+  }
+  
+  public void a(alrw paramalrw)
+  {
+    this.jdField_a_of_type_Alrw = paramalrw;
+  }
+  
+  public void a(alry paramalry)
+  {
+    if (this.jdField_a_of_type_Alrw != null) {
+      this.jdField_a_of_type_Alrw.a(paramalry);
+    }
+  }
+  
+  public void a(alsd paramalsd)
+  {
+    this.jdField_a_of_type_Alsd = paramalsd;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Alrw != null) && (this.jdField_a_of_type_Alsd != null))
+    {
+      localColorNote = this.jdField_a_of_type_Alsd.getColorNote();
+      if (localColorNote != null)
       {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-        return;
+        this.jdField_a_of_type_Alrw.a(localColorNote.getServiceType(), localColorNote.getSubType(), false);
+        localColorNote = alsr.a(localColorNote);
+        this.jdField_a_of_type_Alrw.a(localColorNote.getServiceType(), localColorNote.getSubType(), false);
       }
-      if (paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131435887)))
+    }
+    while (!QLog.isColorLevel())
+    {
+      ColorNote localColorNote;
+      do
       {
-        QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
         return;
-      }
-      if (paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131435893)))
+      } while (!QLog.isColorLevel());
+      QLog.e("ColorNoteStateNotice", 1, "onPause: colorNote is null");
+      return;
+    }
+    QLog.e("ColorNoteStateNotice", 1, "onPause: mColorNoteCurd or mServiceInfo is null");
+  }
+  
+  public void b(boolean paramBoolean)
+  {
+    if ((this.jdField_a_of_type_Alsd != null) && (this.jdField_a_of_type_Alrw != null) && (this.jdField_a_of_type_Alsb != null))
+    {
+      int j = 0;
+      ColorNote localColorNote = this.jdField_a_of_type_Alsd.getColorNote();
+      int i = j;
+      if (localColorNote != null)
       {
-        QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
-        return;
+        i = j;
+        if (a(localColorNote.getServiceType())) {
+          i = 1;
+        }
       }
-    } while (!paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131438754)));
-    QidianProfileCardActivity.c(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_JavaLangString);
+      if ((i != 0) && (this.jdField_a_of_type_Boolean) && (paramBoolean) && (!this.jdField_a_of_type_Alrw.a(localColorNote.getServiceType(), localColorNote.getSubType())))
+      {
+        alsr.a(localColorNote);
+        this.jdField_a_of_type_Alsb.a(localColorNote);
+      }
+    }
+  }
+  
+  public void c()
+  {
+    b(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     altx
  * JD-Core Version:    0.7.0.1
  */

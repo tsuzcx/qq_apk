@@ -1,28 +1,77 @@
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyAtlasViewPagerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment.ReportEventListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySwipeView.OnSlidingFinishListener;
+import android.view.View.OnClickListener;
+import java.lang.ref.WeakReference;
 
 public class lqe
-  implements ReadInJoySwipeView.OnSlidingFinishListener
+  extends lqf
 {
-  public lqe(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment) {}
+  WeakReference<View.OnClickListener> a = null;
+  int f = 0;
+  int g = 0;
+  int h = -1;
+  int i = -1;
+  int j = -1;
   
-  public void a()
+  public lqe(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString, int paramInt5, int paramInt6, View.OnClickListener paramOnClickListener)
   {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("exitType", 2);
-    localBundle.putSerializable("lastShowImageModel", this.a.a.b());
-    ReadInJoyAtlasFragment.a(this.a).a(-2, localBundle);
-    ReadInJoyAtlasFragment.b(this.a, true);
-    ReadInJoyAtlasFragment.a(this.a).finish();
+    super(paramInt1, paramInt2, paramInt3, paramInt4, paramString);
+    this.f = paramInt5;
+    this.g = paramInt6;
+    if (paramOnClickListener != null) {
+      this.a = new WeakReference(paramOnClickListener);
+    }
+  }
+  
+  public int a()
+  {
+    return 3;
+  }
+  
+  public View.OnClickListener a()
+  {
+    if ((this.a == null) || (this.a.isEnqueued())) {
+      return null;
+    }
+    return (View.OnClickListener)this.a.get();
+  }
+  
+  public void a(View.OnClickListener paramOnClickListener)
+  {
+    if (paramOnClickListener != null)
+    {
+      this.a = new WeakReference(paramOnClickListener);
+      return;
+    }
+    this.a = null;
+  }
+  
+  public int f()
+  {
+    return this.f;
+  }
+  
+  public int g()
+  {
+    return this.g;
+  }
+  
+  public int h()
+  {
+    return this.h;
+  }
+  
+  public int i()
+  {
+    return this.i;
+  }
+  
+  public int j()
+  {
+    return this.j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lqe
  * JD-Core Version:    0.7.0.1
  */

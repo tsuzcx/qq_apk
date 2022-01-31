@@ -1,20 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.equipmentlock.DevlockPhoneStatus;
-
-public class acpi
-  implements DialogInterface.OnClickListener
+class acpi
+  implements axcd
 {
-  public acpi(DevlockPhoneStatus paramDevlockPhoneStatus) {}
+  acpi(acph paramacph) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(axci paramaxci)
   {
-    paramDialogInterface.dismiss();
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acpi
  * JD-Core Version:    0.7.0.1
  */

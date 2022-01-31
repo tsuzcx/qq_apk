@@ -1,57 +1,30 @@
-import android.app.Dialog;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
+import com.tencent.biz.subscribe.account_folder.top_pannel.TopPanelView;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.InterceptTouchEventListener;
 
 public class rny
-  implements View.OnClickListener
+  implements TopGestureLayout.InterceptTouchEventListener
 {
-  public rny(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  public rny(ServiceAccountFolderActivity paramServiceAccountFolderActivity) {}
   
-  public void onClick(View paramView)
+  public void OnDispatchTouchEvent(MotionEvent paramMotionEvent) {}
+  
+  public boolean OnInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.a.a != null)
+    if (ServiceAccountFolderActivity.a(this.a) != null)
     {
-      this.a.getWindow().setSoftInputMode(2);
-      this.a.a.hideSoftInputFromWindow(AddFriendVerifyActivity.a(this.a).getWindowToken(), 0);
-      AddFriendVerifyActivity.a(this.a).clearFocus();
-    }
-    if (AddFriendVerifyActivity.a(this.a).getText().toString().length() > 90)
-    {
-      paramView = new Dialog(this.a, 2131624516);
-      paramView.setContentView(2130971534);
-      ((TextView)paramView.findViewById(2131362781)).setText(this.a.getString(2131434800));
-      ((ProgressBar)paramView.findViewById(2131362780)).setVisibility(8);
-      ((ImageView)paramView.findViewById(2131374274)).setImageResource(2130838761);
-      paramView.show();
-    }
-    do
-    {
-      return;
-      this.a.a(AddFriendVerifyActivity.a(this.a).getText().toString(), true);
-      if (!NetworkUtil.d(this.a)) {
-        break;
+      float f = paramMotionEvent.getY();
+      if ((f > ServiceAccountFolderActivity.a(this.a).getTop()) && (f < ServiceAccountFolderActivity.a(this.a).getBottom())) {
+        return false;
       }
-      AddFriendVerifyActivity.a(this.a, AddFriendVerifyActivity.a(this.a), AddFriendVerifyActivity.a(this.a).getText().toString(), this.a.getIntent().getIntExtra("stat_option", 0));
-    } while (!"d2g".equals(this.a.getIntent().getStringExtra("jump_from")));
-    ReportController.b(this.a.app, "P_CliOper", "Grp_discuss", "", "discuss_set", "send_ask", 0, 0, AddFriendVerifyActivity.a(this.a), "", "", "");
-    return;
-    QQToast.a(this.a, 1, 2131434827, 0).b(this.a.getTitleBarHeight());
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rny
  * JD-Core Version:    0.7.0.1
  */

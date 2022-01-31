@@ -1,107 +1,126 @@
-import android.content.Intent;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.Align;
+import android.graphics.Paint.FontMetrics;
+import android.graphics.PointF;
+import android.graphics.Typeface;
+import android.text.TextPaint;
 import android.text.TextUtils;
-import com.tencent.biz.common.util.ZipUtils;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraReporter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class ahlu
-  implements INetEngine.INetEngineListener
+class ahlu
 {
-  public ahlu(CapturePtvTemplateManager paramCapturePtvTemplateManager, String paramString1, String paramString2, QQAppInterface paramQQAppInterface, String paramString3) {}
+  public float a;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+  private TextPaint jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
+  public String a;
+  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  public float b;
+  ArrayList<PointF> b;
+  public float c;
+  public float d;
+  private float e;
+  private float f;
+  private float g;
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
-  
-  public void a(NetResp paramNetResp)
+  public ahlu(String paramString, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, Typeface paramTypeface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CapturePtvTemplateManager_PTV", 2, "onResp resultcode: " + paramNetResp.c + " threadid=" + Thread.currentThread().getId());
+    this.jdField_a_of_type_Float = -1.0F;
+    this.jdField_b_of_type_Float = -1.0F;
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_AndroidTextTextPaint.setColor(-16777216);
+    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramFloat1);
+    this.jdField_a_of_type_AndroidTextTextPaint.setTextAlign(Paint.Align.LEFT);
+    if (paramTypeface != null) {
+      this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(paramTypeface);
     }
-    File localFile = new File(CapturePtvTemplateManager.jdField_a_of_type_JavaIoFile, "temp_ptv_template_zip");
-    if (!localFile.exists())
+    this.jdField_a_of_type_Float = paramFloat5;
+    this.jdField_b_of_type_Float = paramFloat6;
+    this.e = paramFloat2;
+    this.f = paramFloat3;
+    this.g = paramFloat4;
+    a(paramString);
+  }
+  
+  private void b(Canvas paramCanvas)
+  {
+    float f1 = this.jdField_b_of_type_Float;
+    f1 = this.e / 2.0F + f1;
+    float f2 = this.e / 2.0F;
+    float f3 = (this.e - this.g) / 2.0F;
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip !zipfile.exists()");
-      }
-      NewFlowCameraReporter.a(0);
+      float f4 = this.jdField_a_of_type_Float + this.e / 2.0F + i * (this.e + this.f);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16777216);
+      paramCanvas.drawCircle(f4, f1, f2, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
+      paramCanvas.drawCircle(f4, f1, f3, this.jdField_a_of_type_AndroidGraphicsPaint);
+      i += 1;
+    }
+  }
+  
+  private void c(Canvas paramCanvas)
+  {
+    float f1 = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics().ascent;
+    int i = 0;
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      String str = (String)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      float f2 = this.jdField_a_of_type_Float;
+      float f3 = i;
+      float f4 = this.f;
+      float f5 = this.e;
+      float f6 = ((PointF)this.jdField_b_of_type_JavaUtilArrayList.get(i)).x;
+      float f7 = this.jdField_b_of_type_Float;
+      paramCanvas.drawText(str, f3 * (f4 + f5) + f2 + f6, ((PointF)this.jdField_b_of_type_JavaUtilArrayList.get(i)).y + (f7 + f1 * -1.0F), this.jdField_a_of_type_AndroidTextTextPaint);
+      i += 1;
+    }
+  }
+  
+  public void a(Canvas paramCanvas)
+  {
+    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) || (paramCanvas == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() != this.jdField_b_of_type_JavaUtilArrayList.size())) {
       return;
     }
-    Object localObject = "";
-    try
+    b(paramCanvas);
+    c(paramCanvas);
+  }
+  
+  public void a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
     {
-      paramNetResp = FileUtils.b(localFile.getPath());
-      if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramNetResp))) {}
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
+      return;
+      this.jdField_a_of_type_JavaLangString = paramString;
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      int i = 0;
+      while (i < paramString.length())
       {
-        try
-        {
-          ZipUtils.a(localFile, this.b);
-          paramNetResp = new File(this.c);
-          if (!paramNetResp.exists()) {
-            break label330;
-          }
-          paramNetResp = CapturePtvTemplateManager.a(paramNetResp);
-          localObject = CapturePtvTemplateManager.a(null, paramNetResp, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCaptureRedDotConfig);
-          if ((localObject != null) && (!((List)localObject).isEmpty())) {
-            break;
-          }
-          CapturePtvTemplateManager.a(paramNetResp, "ptv_template_new.cfg");
-          if (QLog.isColorLevel()) {
-            QLog.w("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip null == infos || infos.isEmpty()");
-          }
-          NewFlowCameraReporter.a(-4);
-          return;
-          localUnsatisfiedLinkError = localUnsatisfiedLinkError;
-          paramNetResp = (NetResp)localObject;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          localUnsatisfiedLinkError.printStackTrace();
-          paramNetResp = (NetResp)localObject;
-        }
-        catch (Exception paramNetResp)
-        {
-          NewFlowCameraReporter.a(-3);
-          SharedPreUtils.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 0);
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          paramNetResp.printStackTrace();
-          continue;
-        }
-        NewFlowCameraReporter.a(-2);
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramString.substring(i, i + 1));
+        i += 1;
       }
-      CapturePtvTemplateManager.a(paramNetResp, "ptv_template_new.cfg");
-      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataCapturePtvTemplateManager.c(false);
-      if (QLog.isColorLevel()) {
-        QLog.d("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip finsh configContent=" + paramNetResp);
+      this.c = (this.jdField_a_of_type_JavaUtilArrayList.size() * (this.e + this.f));
+      this.d = this.e;
+      this.jdField_b_of_type_JavaUtilArrayList.clear();
+      paramString = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
+      float f1 = paramString.bottom;
+      float f2 = paramString.top;
+      paramString = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (paramString.hasNext())
+      {
+        Object localObject = (String)paramString.next();
+        localObject = new PointF((this.e - this.jdField_a_of_type_AndroidTextTextPaint.measureText((String)localObject)) / 2.0F, (this.e - (f1 - f2)) / 2.0F);
+        this.jdField_b_of_type_JavaUtilArrayList.add(localObject);
       }
-      NewFlowCameraReporter.a(1);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(new Intent("action_brocassreceiver_for_ptv"));
-      return;
     }
-    label330:
-    if (QLog.isColorLevel()) {
-      QLog.w("CapturePtvTemplateManager_PTV", 2, "parseFilterConfigZip !jsonFile.exists()");
-    }
-    SharedPreUtils.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ahlu
  * JD-Core Version:    0.7.0.1
  */

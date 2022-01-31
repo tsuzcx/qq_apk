@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import com.tencent.qphone.base.util.QLog;
 import java.io.DataOutputStream;
+import java.nio.Buffer;
 import java.nio.ByteBuffer;
 
 public class NativeUtil
@@ -34,53 +35,41 @@ public class NativeUtil
   
   public static Bitmap screenshot(Context paramContext)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
+    paramContext = null;
     if (sLoadSO) {}
-    try
+    for (;;)
     {
-      localObject1 = getFrameBuffer();
-      paramContext = (Context)localObject1;
-      if (localObject1 == null)
+      try
       {
-        paramContext = Runtime.getRuntime().exec("su");
-        localObject1 = new DataOutputStream(paramContext.getOutputStream());
-        ((DataOutputStream)localObject1).writeBytes("chmod 666 /dev/graphics/fb0\n");
-        ((DataOutputStream)localObject1).writeBytes("exit\n");
-        ((DataOutputStream)localObject1).flush();
-        new Thread()
+        Object localObject = getFrameBuffer();
+        paramContext = (Context)localObject;
+        if (localObject == null)
         {
-          public void run()
-          {
-            try
-            {
-              this.val$process.waitFor();
-              return;
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              localInterruptedException.printStackTrace();
-            }
-          }
-        }.start();
-        paramContext = getFrameBuffer();
+          paramContext = Runtime.getRuntime().exec("su");
+          localObject = new DataOutputStream(paramContext.getOutputStream());
+          ((DataOutputStream)localObject).writeBytes("chmod 666 /dev/graphics/fb0\n");
+          ((DataOutputStream)localObject).writeBytes("exit\n");
+          ((DataOutputStream)localObject).flush();
+          new NativeUtil.1(paramContext).start();
+          paramContext = getFrameBuffer();
+        }
+        if (paramContext != null)
+        {
+          int i = getWidth();
+          int j = getHeight();
+          localObject = ByteBuffer.wrap(paramContext);
+          paramContext = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+          paramContext.copyPixelsFromBuffer((Buffer)localObject);
+          return paramContext;
+        }
       }
-      localObject1 = localObject2;
-      if (paramContext != null)
+      catch (Throwable paramContext)
       {
-        int i = getWidth();
-        int j = getHeight();
-        paramContext = ByteBuffer.wrap(paramContext);
-        localObject1 = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-        ((Bitmap)localObject1).copyPixelsFromBuffer(paramContext);
+        paramContext.printStackTrace();
+        return null;
       }
-      return localObject1;
+      paramContext = null;
     }
-    catch (Throwable paramContext)
-    {
-      paramContext.printStackTrace();
-    }
-    return null;
   }
 }
 

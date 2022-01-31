@@ -1,22 +1,26 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController;
+import com.tencent.mobileqq.app.msgcache.MsgLruCache;
+import java.util.Comparator;
+import java.util.Map.Entry;
 
-class akdo
-  implements FrameSprite.OnFrameEndListener
+public class akdo
+  implements Comparator<Map.Entry<String, Integer>>
 {
-  akdo(akdn paramakdn) {}
+  public akdo(MsgLruCache paramMsgLruCache) {}
   
-  public void a()
+  public int a(Map.Entry<String, Integer> paramEntry1, Map.Entry<String, Integer> paramEntry2)
   {
-    this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopInteractGiftAnimationController.a();
-    if (this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener != null) {
-      this.a.a.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener.a();
+    if (((Integer)paramEntry1.getValue()).intValue() < ((Integer)paramEntry2.getValue()).intValue()) {
+      return 1;
     }
+    if (paramEntry1.getValue() == paramEntry2.getValue()) {
+      return 0;
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akdo
  * JD-Core Version:    0.7.0.1
  */

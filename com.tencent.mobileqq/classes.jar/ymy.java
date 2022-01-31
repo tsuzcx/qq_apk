@@ -1,38 +1,33 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
-import com.tencent.mobileqq.activity.specialcare.VipSpecialSoundWebViewPlugin;
+import com.tencent.gdtad.jsbridge.GdtBannerFragmentForJS;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ymy
-  implements MediaPlayer.OnCompletionListener
+  implements ynl
 {
-  public ymy(VipSpecialSoundWebViewPlugin paramVipSpecialSoundWebViewPlugin, String paramString1, String paramString2) {}
-  
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public boolean a(ymw paramymw, String paramString, String... paramVarArgs)
   {
-    int i = VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin).a(this.jdField_a_of_type_JavaLangString);
-    VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, "-->media:" + this.jdField_a_of_type_JavaLangString + " play completed, soundId:" + i);
+    if (paramymw != null) {}
+    for (paramString = paramymw.a(); (paramymw == null) || (paramString == null); paramString = null)
+    {
+      yny.d("GdtBannerJsCallHandler", "handleJsCallRequest error");
+      return true;
+    }
     try
     {
-      paramMediaPlayer = new JSONObject();
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("id", i);
-      paramMediaPlayer.put("code", 0);
-      paramMediaPlayer.put("data", localJSONObject);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin.callJs(this.b, new String[] { paramMediaPlayer.toString() });
-      return;
+      GdtBannerFragmentForJS.a(paramString, new JSONObject(paramVarArgs[0]), GdtBannerFragmentForJS.class);
+      return true;
     }
-    catch (JSONException paramMediaPlayer)
+    catch (JSONException paramymw)
     {
-      VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, "-->json exception:" + paramMediaPlayer.toString());
+      yny.d("GdtBannerJsCallHandler", "handleJsCallRequest error", paramymw);
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ymy
  * JD-Core Version:    0.7.0.1
  */

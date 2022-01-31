@@ -1,34 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoRepository;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
 
 public class lur
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public lur(ReadInJoyUserInfoModule paramReadInJoyUserInfoModule, String paramString, int paramInt1, int paramInt2, int paramInt3) {}
+  public lur(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion) {}
   
-  public void run()
-  {
-    if (ReadInJoyUserInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoModule).get(this.jdField_a_of_type_JavaLangString) != null) {
-      QLog.d("ReadInJoyUserInfoModule", 2, "getSingleReadInJoyUserInfoWithParams return ahead of time, do not load db or network request, because the userInfo is loading.");
-    }
-    do
-    {
-      return;
-      ReadInJoyUserInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoModule).put(this.jdField_a_of_type_JavaLangString, Boolean.valueOf(true));
-      localObject = ReadInJoyUserInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoModule).a(this.jdField_a_of_type_JavaLangString);
-    } while ((localObject != null) && (((List)localObject).size() > 0));
-    Object localObject = new ArrayList();
-    ((List)localObject).add(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoModule.a((List)localObject, this.jdField_a_of_type_Int, this.b, this.c);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lur
  * JD-Core Version:    0.7.0.1
  */

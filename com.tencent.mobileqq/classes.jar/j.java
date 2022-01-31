@@ -1,69 +1,136 @@
-import com.dataline.activities.DLFilesViewerActivity;
-import com.dataline.util.DatalineFilesAdapter;
-import com.tencent.mobileqq.app.DataLineObserver;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.data.DataLineMsgSet;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.animation.ValueAnimator;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.PorterDuff.Mode;
+import android.view.animation.LinearInterpolator;
+import com.etrump.mixlayout.ETFont;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Arrays;
 
-public class j
-  extends DataLineObserver
+public abstract class j
 {
-  public j(DLFilesViewerActivity paramDLFilesViewerActivity) {}
+  public ValueAnimator a;
+  public Bitmap a;
+  protected Canvas a;
+  public ETFont a;
+  public int e;
+  public int[] i = { -1, -1 };
   
-  protected void a(long paramLong, float paramFloat)
+  public j()
   {
-    super.a(paramLong, paramFloat);
-    this.a.runOnUiThread(new k(this, paramLong, paramFloat));
+    this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
   }
   
-  protected void a(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
+  public abstract int a(int paramInt1, int paramInt2, ge paramge);
+  
+  protected String a()
   {
-    super.a(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
-    DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
-    DLFilesViewerActivity.b(this.a);
+    if (g.a) {
+      return getClass().getSimpleName();
+    }
+    return "BaseLayout";
   }
   
-  protected void a(String paramString)
+  protected void a()
   {
-    super.a(paramString);
-    Iterator localIterator = DLFilesViewerActivity.a(this.a).values().iterator();
-    while (localIterator.hasNext())
+    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, this.i[0] });
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(this.i[0] * this.i[1]);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(0);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
+  }
+  
+  protected boolean a(int paramInt1, int paramInt2)
+  {
+    try
     {
-      DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
-      if (paramString.equals(localDataLineMsgRecord.strMoloKey))
-      {
-        localDataLineMsgRecord.nAppStatus = 1;
-        DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
+      if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
+        this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+      } else if ((paramInt1 > this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) || (paramInt2 > this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) || ((paramInt1 << 1 < this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) && (paramInt2 << 1 < this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()))) {
+        this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
       }
     }
-    DLFilesViewerActivity.b(this.a);
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      QLog.e("FounderBaseLayout", 2, "FounderColorLayout#createNewWordBitmapIfNeed w=" + paramInt1 + " h=" + paramInt2, localOutOfMemoryError);
+      return false;
+    }
+    return true;
   }
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  public abstract boolean a(Canvas paramCanvas);
+  
+  public abstract int[] a(int paramInt1, int paramInt2, long paramLong, boolean paramBoolean, ETFont paramETFont);
+  
+  public abstract void b();
+  
+  protected void c()
   {
-    super.a(paramBoolean, paramLong, paramString);
-    DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
-    DLFilesViewerActivity.b(this.a);
+    if (this.jdField_a_of_type_AndroidGraphicsCanvas == null) {
+      this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
+    }
+    this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.jdField_a_of_type_AndroidGraphicsCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
   }
   
-  protected void b(long paramLong1, String paramString, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong2)
+  public void e()
   {
-    super.b(paramLong1, paramString, paramInt, paramBoolean1, paramBoolean2, paramLong2);
-    DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
-    DLFilesViewerActivity.b(this.a);
+    i.a("FounderBaseLayout", "release....");
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
+      this.jdField_a_of_type_AndroidGraphicsBitmap = null;
+    }
+    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
+    {
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+      this.jdField_a_of_type_AndroidAnimationValueAnimator = null;
+    }
+    this.jdField_a_of_type_AndroidGraphicsCanvas = null;
   }
   
-  protected void b(boolean paramBoolean, long paramLong, String paramString)
+  public void f()
   {
-    super.a(paramBoolean, paramLong, paramString);
-    DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
-    DLFilesViewerActivity.b(this.a);
+    if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning()) && (this.e > 0))
+    {
+      i.a("FounderBaseLayout", "PauseAnimation...... animInfo:" + Arrays.toString(this.i) + "  frameIndex:" + this.e);
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+      this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mShouldDisplayAnimation = false;
+    }
+  }
+  
+  public void g()
+  {
+    if ((this.jdField_a_of_type_ComEtrumpMixlayoutETFont == null) || (this.i[0] <= 0) || (this.i[1] <= 0)) {}
+    while ((this.jdField_a_of_type_AndroidAnimationValueAnimator == null) || (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning()) || (this.e <= 0) || (this.e >= this.i[0])) {
+      return;
+    }
+    i.a("FounderBaseLayout", "RestartAnimation...... animInfo:" + Arrays.toString(this.i) + "  frameIndex:" + this.e);
+    this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mShouldDisplayAnimation = true;
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.setIntValues(new int[] { this.e, this.i[0] });
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration((this.i[0] - this.e) * this.i[1]);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+  }
+  
+  public void h()
+  {
+    this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mShouldDisplayAnimation = true;
+    if (this.jdField_a_of_type_AndroidAnimationValueAnimator == null)
+    {
+      a();
+      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+    }
+    while (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning()) {
+      return;
+    }
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.setIntValues(new int[] { this.i[0] });
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(this.i[0] * this.i[1]);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     j
  * JD-Core Version:    0.7.0.1
  */

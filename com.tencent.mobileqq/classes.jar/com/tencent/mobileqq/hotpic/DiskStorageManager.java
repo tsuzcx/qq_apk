@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.hotpic;
 
-import adxy;
 import android.util.Log;
+import aqgs;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -10,7 +10,6 @@ import java.util.List;
 import mqq.os.MqqHandler;
 
 public class DiskStorageManager
-  implements DiskStorageManagerInterface
 {
   private int jdField_a_of_type_Int;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler = ThreadManager.getSubThreadHandler();
@@ -28,7 +27,7 @@ public class DiskStorageManager
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  private void a(List paramList)
+  private void a(List<File> paramList)
   {
     int i = paramList.size();
     if (i <= this.jdField_a_of_type_Int)
@@ -63,12 +62,12 @@ public class DiskStorageManager
   
   private void b(File paramFile)
   {
-    a(HotVideoUtils.a(paramFile.getParentFile()));
+    a(aqgs.a(paramFile.getParentFile()));
   }
   
   public void a(File paramFile)
   {
-    this.jdField_a_of_type_MqqOsMqqHandler.post(new adxy(this, paramFile));
+    this.jdField_a_of_type_MqqOsMqqHandler.post(new DiskStorageManager.TouchCallable(this, paramFile));
   }
   
   protected boolean a(File paramFile, long paramLong, int paramInt)
@@ -78,7 +77,7 @@ public class DiskStorageManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.DiskStorageManager
  * JD-Core Version:    0.7.0.1
  */

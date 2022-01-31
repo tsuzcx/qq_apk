@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class Qworkflow$Picture
-  extends MessageMicro
+  extends MessageMicro<Picture>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_pic_md5 = PBField.initBytes(ByteStringMicro.EMPTY);

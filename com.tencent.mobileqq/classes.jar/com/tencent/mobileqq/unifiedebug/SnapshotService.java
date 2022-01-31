@@ -1,12 +1,5 @@
 package com.tencent.mobileqq.unifiedebug;
 
-import akfh;
-import akfi;
-import akfk;
-import akfl;
-import akfm;
-import akfn;
-import akfo;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -21,11 +14,15 @@ import android.os.ResultReceiver;
 import android.text.TextUtils;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout;
+import azti;
+import aztj;
+import aztk;
+import aztl;
+import bbdc;
+import bcdu;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
-import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -40,53 +37,39 @@ import mqq.app.MobileQQ;
 public class SnapshotService
   extends IphoneTitleBarActivity
 {
-  private static String jdField_a_of_type_JavaLangString = "SnapshotService";
+  public static String a;
   private static boolean jdField_a_of_type_Boolean;
+  private static String jdField_b_of_type_JavaLangString = "SnapshotService";
   private long jdField_a_of_type_Long;
-  private akfo jdField_a_of_type_Akfo;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new akfl(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new azti(this);
   public Handler a;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private aztl jdField_a_of_type_Aztl;
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  private Queue jdField_a_of_type_JavaUtilQueue;
-  private akfo b;
+  private Queue<aztj> jdField_a_of_type_JavaUtilQueue;
+  private aztl jdField_b_of_type_Aztl;
+  
+  static
+  {
+    jdField_a_of_type_JavaLangString = "try{document.querySelectorAll('video,audio').forEach(function(item){item.autoplay=false;item.pause();});[HTMLAudioElement, HTMLVideoElement].forEach(function(i){i.prototype.play=function(){}})}catch(err){console.log(err.message)}";
+  }
   
   public SnapshotService()
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
   }
   
-  private void a(akfm paramakfm, akfo paramakfo)
-  {
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new akfh(this, paramakfo, paramakfm), paramakfo.jdField_a_of_type_Long);
-  }
-  
-  private void a(akfo paramakfo)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "mQueue size = " + this.jdField_a_of_type_JavaUtilQueue.size());
-    }
-    akfm localakfm = (akfm)this.jdField_a_of_type_JavaUtilQueue.peek();
-    if (localakfm != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "current cmd=" + localakfm.jdField_a_of_type_Long);
-      }
-      a(localakfm, paramakfo);
-    }
-  }
-  
-  private void a(Bitmap paramBitmap, akfm paramakfm, akfo paramakfo)
+  private void a(Bitmap paramBitmap, aztj paramaztj, aztl paramaztl)
   {
     int j = 1;
-    if ((paramakfo == null) || (paramakfo.jdField_a_of_type_Akfn == null) || (paramakfo.jdField_a_of_type_Akfn.a.getX5WebViewExtension() == null))
+    if ((paramaztl == null) || (paramaztl.jdField_a_of_type_Aztk == null) || (paramaztl.jdField_a_of_type_Aztk.mWebview.getX5WebViewExtension() == null))
     {
       if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "snapshotVisibleWithBitmap: null");
+        QLog.i(jdField_b_of_type_JavaLangString, 2, "snapshotVisibleWithBitmap: null");
       }
       return;
     }
-    Object localObject1 = paramakfo.jdField_a_of_type_Akfn.a.getX5WebViewExtension().getClass().getInterfaces();
+    Object localObject1 = paramaztl.jdField_a_of_type_Aztk.mWebview.getX5WebViewExtension().getClass().getInterfaces();
     int k = localObject1.length;
     int i = 0;
     label69:
@@ -102,9 +85,9 @@ public class SnapshotService
       {
         localObject1 = localObject2.getDeclaredMethod("snapshotVisibleWithBitmap", new Class[] { Bitmap.class, Boolean.TYPE, Boolean.TYPE, Boolean.TYPE, Boolean.TYPE, Float.TYPE, Float.TYPE, Runnable.class });
         if (QLog.isColorLevel()) {
-          QLog.i(jdField_a_of_type_JavaLangString, 2, "call snapshotVisibleWithBitmap");
+          QLog.i(jdField_b_of_type_JavaLangString, 2, "call snapshotVisibleWithBitmap");
         }
-        ((Method)localObject1).invoke(paramakfo.jdField_a_of_type_Akfn.a.getX5WebViewExtension(), new Object[] { paramBitmap, Boolean.valueOf(true), Boolean.valueOf(true), Boolean.valueOf(true), Boolean.valueOf(true), Integer.valueOf(1), Integer.valueOf(1), new akfi(this, paramBitmap, paramakfm, paramakfo) });
+        ((Method)localObject1).invoke(paramaztl.jdField_a_of_type_Aztk.mWebview.getX5WebViewExtension(), new Object[] { paramBitmap, Boolean.valueOf(true), Boolean.valueOf(true), Boolean.valueOf(true), Boolean.valueOf(true), Integer.valueOf(1), Integer.valueOf(1), new SnapshotService.2(this, paramBitmap, paramaztj, paramaztl) });
         i = j;
       }
       catch (Exception paramBitmap)
@@ -112,24 +95,44 @@ public class SnapshotService
         if (!QLog.isColorLevel()) {
           continue;
         }
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "call snapshotVisibleWithBitmap failed: " + paramBitmap.getMessage());
+        QLog.i(jdField_b_of_type_JavaLangString, 2, "call snapshotVisibleWithBitmap failed: " + paramBitmap.getMessage());
         i = 0;
         continue;
       }
       if (i != 0) {
         break;
       }
-      if (paramakfo.jdField_a_of_type_AndroidOsResultReceiver != null)
+      if (paramaztl.jdField_a_of_type_AndroidOsResultReceiver != null)
       {
         paramBitmap = new Bundle();
-        paramBitmap.putLong("seq", paramakfm.jdField_a_of_type_Long);
-        paramakfo.jdField_a_of_type_AndroidOsResultReceiver.send(3, paramBitmap);
+        paramBitmap.putLong("seq", paramaztj.jdField_a_of_type_Long);
+        paramaztl.jdField_a_of_type_AndroidOsResultReceiver.send(3, paramBitmap);
       }
       finish();
       return;
       i += 1;
       break label69;
       i = 0;
+    }
+  }
+  
+  private void a(aztj paramaztj, aztl paramaztl)
+  {
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new SnapshotService.1(this, paramaztl, paramaztj), paramaztl.jdField_a_of_type_Long);
+  }
+  
+  private void a(aztl paramaztl)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(jdField_b_of_type_JavaLangString, 2, "mQueue size = " + this.jdField_a_of_type_JavaUtilQueue.size());
+    }
+    aztj localaztj = (aztj)this.jdField_a_of_type_JavaUtilQueue.peek();
+    if (localaztj != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(jdField_b_of_type_JavaLangString, 2, "current cmd=" + localaztj.jdField_a_of_type_Long);
+      }
+      a(localaztj, paramaztl);
     }
   }
   
@@ -140,60 +143,90 @@ public class SnapshotService
   
   private boolean a(Intent arg1)
   {
-    akfm localakfm = new akfm();
-    localakfm.jdField_a_of_type_Long = ???.getLongExtra("seq", -1L);
-    localakfm.jdField_a_of_type_JavaLangString = ???.getStringExtra("seqKey");
-    localakfm.b = ???.getIntExtra("maxSnapshotCount", 5);
-    localakfm.jdField_a_of_type_Int = 0;
-    localakfm.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    aztj localaztj = new aztj();
+    localaztj.jdField_a_of_type_Long = ???.getLongExtra("seq", -1L);
+    localaztj.jdField_a_of_type_JavaLangString = ???.getStringExtra("seqKey");
+    localaztj.b = ???.getIntExtra("maxSnapshotCount", 5);
+    localaztj.jdField_a_of_type_Int = 0;
+    localaztj.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "new Command seq=" + localakfm.jdField_a_of_type_Long);
+      QLog.i(jdField_b_of_type_JavaLangString, 2, "new Command seq=" + localaztj.jdField_a_of_type_Long);
     }
-    if (localakfm.jdField_a_of_type_Long == -1L) {
+    if (localaztj.jdField_a_of_type_Long == -1L) {
       return false;
     }
     synchronized (this.jdField_a_of_type_JavaUtilQueue)
     {
       if (this.jdField_a_of_type_JavaUtilQueue.isEmpty())
       {
-        this.jdField_a_of_type_JavaUtilQueue.offer(localakfm);
-        a(this.jdField_a_of_type_Akfo);
+        this.jdField_a_of_type_JavaUtilQueue.offer(localaztj);
+        a(this.jdField_a_of_type_Aztl);
         return true;
       }
-      this.jdField_a_of_type_JavaUtilQueue.offer(localakfm);
+      this.jdField_a_of_type_JavaUtilQueue.offer(localaztj);
     }
   }
   
-  private boolean a(Intent paramIntent, akfo paramakfo)
+  private boolean a(Intent paramIntent, aztl paramaztl)
   {
-    akfo.a(paramakfo, paramIntent.getLongExtra("id", -1L));
-    paramakfo.jdField_a_of_type_AndroidOsResultReceiver = ((ResultReceiver)paramIntent.getParcelableExtra("callback"));
-    paramakfo.jdField_a_of_type_Long = paramIntent.getLongExtra("delay", 10000L);
-    paramakfo.jdField_b_of_type_Long = 3000L;
-    paramakfo.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("debugUrl");
-    if (!TextUtils.isEmpty(paramakfo.jdField_a_of_type_JavaLangString))
+    aztl.a(paramaztl, paramIntent.getLongExtra("id", -1L));
+    paramaztl.jdField_a_of_type_AndroidOsResultReceiver = ((ResultReceiver)paramIntent.getParcelableExtra("callback"));
+    paramaztl.jdField_a_of_type_Long = paramIntent.getLongExtra("delay", 10000L);
+    paramaztl.jdField_b_of_type_Long = 3000L;
+    paramaztl.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("debugUrl");
+    if (!TextUtils.isEmpty(paramaztl.jdField_a_of_type_JavaLangString))
     {
-      paramakfo.jdField_b_of_type_JavaLangString = (akfo.a(paramakfo) + MD5Utils.d(paramakfo.jdField_a_of_type_JavaLangString));
+      paramaztl.jdField_b_of_type_JavaLangString = (aztl.a(paramaztl) + bcdu.d(paramaztl.jdField_a_of_type_JavaLangString));
       return true;
     }
     return false;
   }
   
-  private void b(akfm arg1, akfo paramakfo)
+  private void b(Bitmap paramBitmap, aztj paramaztj, aztl paramaztl)
+  {
+    try
+    {
+      Object localObject = new File(Environment.getExternalStorageDirectory(), "/tencent/MobileQQ/unifiedebug");
+      if (!((File)localObject).exists()) {
+        ((File)localObject).mkdirs();
+      }
+      paramaztl = new StringBuilder().append("/Snapshot_").append(paramaztl.jdField_b_of_type_JavaLangString).append("_");
+      int i = paramaztj.jdField_a_of_type_Int;
+      paramaztj.jdField_a_of_type_Int = (i + 1);
+      paramaztl = new File((File)localObject, i + ".png");
+      localObject = new FileOutputStream(paramaztl);
+      paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, (OutputStream)localObject);
+      ((OutputStream)localObject).flush();
+      ((OutputStream)localObject).close();
+      paramBitmap.recycle();
+      paramaztj.jdField_a_of_type_JavaUtilArrayList.add(paramaztl.getAbsolutePath());
+      if (QLog.isColorLevel()) {
+        QLog.d(jdField_b_of_type_JavaLangString, 2, "saveSnapshotBitmap file path = " + paramaztl.getAbsolutePath());
+      }
+      return;
+    }
+    catch (Exception paramBitmap)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.e(jdField_b_of_type_JavaLangString, 2, paramBitmap.getMessage());
+    }
+  }
+  
+  private void b(aztj arg1, aztl paramaztl)
   {
     if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "finish once debug, webview id =" + akfo.a(paramakfo) + ", seq=" + ???.jdField_a_of_type_Long);
+      QLog.i(jdField_b_of_type_JavaLangString, 2, "finish once debug, webview id =" + aztl.a(paramaztl) + ", seq=" + ???.jdField_a_of_type_Long);
     }
     Bundle localBundle;
     int i;
-    if (paramakfo.jdField_a_of_type_AndroidOsResultReceiver != null)
+    if (paramaztl.jdField_a_of_type_AndroidOsResultReceiver != null)
     {
       localBundle = new Bundle();
       localBundle.putStringArrayList("snapshotPaths", ???.jdField_a_of_type_JavaUtilArrayList);
       localBundle.putLong("seq", ???.jdField_a_of_type_Long);
       localBundle.putString("seqKey", ???.jdField_a_of_type_JavaLangString);
-      ??? = paramakfo.jdField_a_of_type_AndroidOsResultReceiver;
-      if (akfo.a(paramakfo) <= 0L) {
+      ??? = paramaztl.jdField_a_of_type_AndroidOsResultReceiver;
+      if (aztl.a(paramaztl) <= 0L) {
         break label168;
       }
       i = 1;
@@ -208,7 +241,7 @@ public class SnapshotService
         }
         if (this.jdField_a_of_type_Long > 0L)
         {
-          a(paramakfo);
+          a(paramaztl);
           return;
           label168:
           i = 0;
@@ -218,110 +251,80 @@ public class SnapshotService
     finish();
   }
   
-  private void b(Bitmap paramBitmap, akfm paramakfm, akfo paramakfo)
+  private void c(aztj paramaztj, aztl paramaztl)
   {
-    try
-    {
-      Object localObject = new File(Environment.getExternalStorageDirectory(), "/tencent/MobileQQ/unifiedebug");
-      if (!((File)localObject).exists()) {
-        ((File)localObject).mkdirs();
-      }
-      paramakfo = new StringBuilder().append("/Snapshot_").append(paramakfo.jdField_b_of_type_JavaLangString).append("_");
-      int i = paramakfm.jdField_a_of_type_Int;
-      paramakfm.jdField_a_of_type_Int = (i + 1);
-      paramakfo = new File((File)localObject, i + ".png");
-      localObject = new FileOutputStream(paramakfo);
-      paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, (OutputStream)localObject);
-      ((OutputStream)localObject).flush();
-      ((OutputStream)localObject).close();
-      paramBitmap.recycle();
-      paramakfm.jdField_a_of_type_JavaUtilArrayList.add(paramakfo.getAbsolutePath());
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "saveSnapshotBitmap file path = " + paramakfo.getAbsolutePath());
-      }
-      return;
-    }
-    catch (Exception paramBitmap)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(jdField_a_of_type_JavaLangString, 2, paramBitmap.getMessage());
-    }
-  }
-  
-  private void c(akfm paramakfm, akfo paramakfo)
-  {
-    if ((paramakfo.jdField_a_of_type_Akfn.a.getWidth() <= 0) || (paramakfo.jdField_a_of_type_Akfn.a.getHeight() <= 0))
+    if ((paramaztl.jdField_a_of_type_Aztk.mWebview.getWidth() <= 0) || (paramaztl.jdField_a_of_type_Aztk.mWebview.getHeight() <= 0))
     {
       if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "webview width =" + paramakfo.jdField_a_of_type_Akfn.a.getWidth() + ", height=" + paramakfo.jdField_a_of_type_Akfn.a.getHeight());
+        QLog.i(jdField_b_of_type_JavaLangString, 2, "webview width =" + paramaztl.jdField_a_of_type_Aztk.mWebview.getWidth() + ", height=" + paramaztl.jdField_a_of_type_Aztk.mWebview.getHeight());
       }
-      if ((this.jdField_a_of_type_Long > 0L) && (paramakfo.jdField_a_of_type_AndroidOsResultReceiver != null))
+      if ((this.jdField_a_of_type_Long > 0L) && (paramaztl.jdField_a_of_type_AndroidOsResultReceiver != null))
       {
         localObject = new Bundle();
-        ((Bundle)localObject).putString("debugUrl", paramakfo.jdField_a_of_type_JavaLangString);
-        ((Bundle)localObject).putInt("maxCount", paramakfm.b);
-        ((Bundle)localObject).putLong("delay", paramakfo.jdField_a_of_type_Long);
-        ((Bundle)localObject).putLong("seq", paramakfm.jdField_a_of_type_Long);
-        ((Bundle)localObject).putString("seqKey", paramakfm.jdField_a_of_type_JavaLangString);
-        paramakfo.jdField_a_of_type_AndroidOsResultReceiver.send(2, (Bundle)localObject);
+        ((Bundle)localObject).putString("debugUrl", paramaztl.jdField_a_of_type_JavaLangString);
+        ((Bundle)localObject).putInt("maxCount", paramaztj.b);
+        ((Bundle)localObject).putLong("delay", paramaztl.jdField_a_of_type_Long);
+        ((Bundle)localObject).putLong("seq", paramaztj.jdField_a_of_type_Long);
+        ((Bundle)localObject).putString("seqKey", paramaztj.jdField_a_of_type_JavaLangString);
+        paramaztl.jdField_a_of_type_AndroidOsResultReceiver.send(2, (Bundle)localObject);
         if (QLog.isColorLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, "WebView is invalid and send to restart alive webview.");
+          QLog.d(jdField_b_of_type_JavaLangString, 2, "WebView is invalid and send to restart alive webview.");
         }
       }
       finish();
       return;
     }
-    Object localObject = Bitmap.createBitmap(paramakfo.jdField_a_of_type_Akfn.a.getWidth(), paramakfo.jdField_a_of_type_Akfn.a.getHeight(), Bitmap.Config.ARGB_8888);
-    if (paramakfo.jdField_a_of_type_Akfn.a.getX5WebViewExtension() != null)
+    Object localObject = Bitmap.createBitmap(paramaztl.jdField_a_of_type_Aztk.mWebview.getWidth(), paramaztl.jdField_a_of_type_Aztk.mWebview.getHeight(), Bitmap.Config.ARGB_8888);
+    if (paramaztl.jdField_a_of_type_Aztk.mWebview.getX5WebViewExtension() != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "start x5 snapshot");
+        QLog.i(jdField_b_of_type_JavaLangString, 2, "start x5 snapshot");
       }
-      a((Bitmap)localObject, paramakfm, paramakfo);
+      a((Bitmap)localObject, paramaztj, paramaztl);
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "start webview snapshot");
+      QLog.i(jdField_b_of_type_JavaLangString, 2, "start webview snapshot");
     }
     Canvas localCanvas = new Canvas((Bitmap)localObject);
-    paramakfo.jdField_a_of_type_Akfn.a.draw(localCanvas);
-    if (paramakfm.jdField_a_of_type_Int == 0) {
-      paramakfm.jdField_a_of_type_Int += 1;
+    paramaztl.jdField_a_of_type_Aztk.mWebview.draw(localCanvas);
+    if (paramaztj.jdField_a_of_type_Int == 0) {
+      paramaztj.jdField_a_of_type_Int += 1;
     }
     for (;;)
     {
-      d(paramakfm, paramakfo);
+      d(paramaztj, paramaztl);
       return;
-      b((Bitmap)localObject, paramakfm, paramakfo);
+      b((Bitmap)localObject, paramaztj, paramaztl);
     }
   }
   
-  private void d(akfm paramakfm, akfo paramakfo)
+  private void d(aztj paramaztj, aztl paramaztl)
   {
     int j;
     int i;
     boolean bool;
-    if (paramakfo.jdField_a_of_type_Akfn.a.getX5WebViewExtension() != null)
+    if (paramaztl.jdField_a_of_type_Aztk.mWebview.getX5WebViewExtension() != null)
     {
       j = 1;
       if (j == 0) {
         break label217;
       }
-      i = paramakfo.jdField_a_of_type_Akfn.a.getHeight();
+      i = paramaztl.jdField_a_of_type_Aztk.mWebview.getHeight();
       if (QLog.isColorLevel())
       {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "webview width =" + paramakfo.jdField_a_of_type_Akfn.a.getWidth() + ", height=" + paramakfo.jdField_a_of_type_Akfn.a.getHeight());
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "webview scroll height =" + i);
+        QLog.i(jdField_b_of_type_JavaLangString, 2, "webview width =" + paramaztl.jdField_a_of_type_Aztk.mWebview.getWidth() + ", height=" + paramaztl.jdField_a_of_type_Aztk.mWebview.getHeight());
+        QLog.i(jdField_b_of_type_JavaLangString, 2, "webview scroll height =" + i);
       }
-      paramakfo.jdField_a_of_type_Akfn.a.loadUrl("javascript:window.scrollBy(0, " + i + " / window.devicePixelRatio)");
+      paramaztl.jdField_a_of_type_Aztk.mWebview.loadUrl("javascript:window.scrollBy(0, " + i + " / window.devicePixelRatio)");
       bool = false;
       label159:
       if (j == 0) {
         break label233;
       }
-      i = paramakfm.b;
+      i = paramaztj.b;
       label169:
-      if (paramakfm.jdField_a_of_type_Int >= i) {
+      if (paramaztj.jdField_a_of_type_Int >= i) {
         break label243;
       }
       i = 1;
@@ -335,34 +338,34 @@ public class SnapshotService
       if (i == 0) {
         break label275;
       }
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new akfk(this, paramakfm, paramakfo), paramakfo.jdField_b_of_type_Long);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new SnapshotService.3(this, paramaztj, paramaztl), paramaztl.jdField_b_of_type_Long);
       return;
       j = 0;
       break;
       label217:
-      bool = paramakfo.jdField_a_of_type_Akfn.a.pageDown(false);
+      bool = paramaztl.jdField_a_of_type_Aztk.mWebview.pageDown(false);
       break label159;
       label233:
-      i = paramakfm.b + 1;
+      i = paramaztj.b + 1;
       break label169;
       label243:
       i = 0;
       break label179;
       label248:
-      if ((paramakfm.jdField_a_of_type_Int <= 1) || ((bool) && (i != 0))) {
+      if ((paramaztj.jdField_a_of_type_Int <= 1) || ((bool) && (i != 0))) {
         i = 1;
       } else {
         i = 0;
       }
     }
     label275:
-    b(paramakfm, paramakfo);
+    b(paramaztj, paramaztl);
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "in onDestroy method()");
+      QLog.i(jdField_b_of_type_JavaLangString, 2, "in onDestroy method()");
     }
     if (this.jdField_a_of_type_Long > 0L)
     {
@@ -372,22 +375,22 @@ public class SnapshotService
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
     this.jdField_a_of_type_JavaUtilQueue.clear();
     super.doOnDestroy();
-    if (this.jdField_a_of_type_Akfo != null) {
-      this.jdField_a_of_type_Akfo.jdField_a_of_type_Akfn.c();
+    if (this.jdField_a_of_type_Aztl != null) {
+      this.jdField_a_of_type_Aztl.jdField_a_of_type_Aztk.c();
     }
-    if (this.b != null) {
-      this.b.jdField_a_of_type_Akfn.c();
+    if (this.jdField_b_of_type_Aztl != null) {
+      this.jdField_b_of_type_Aztl.jdField_a_of_type_Aztk.c();
     }
   }
   
-  protected void doOnPause()
+  public void doOnPause()
   {
     super.doOnPause();
-    if (this.jdField_a_of_type_Akfo != null) {
-      this.jdField_a_of_type_Akfo.jdField_a_of_type_Akfn.b();
+    if (this.jdField_a_of_type_Aztl != null) {
+      this.jdField_a_of_type_Aztl.jdField_a_of_type_Aztk.b();
     }
-    if (this.b != null) {
-      this.b.jdField_a_of_type_Akfn.b();
+    if (this.jdField_b_of_type_Aztl != null) {
+      this.jdField_b_of_type_Aztl.jdField_a_of_type_Aztk.b();
     }
   }
   
@@ -396,7 +399,7 @@ public class SnapshotService
     return "modular_web";
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(this);
@@ -407,26 +410,26 @@ public class SnapshotService
     if (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 2, "app == null");
+        QLog.d(jdField_b_of_type_JavaLangString, 2, "app == null");
       }
       super.finish();
     }
-    SwiftWebViewUtils.b();
+    bbdc.b();
     this.jdField_a_of_type_JavaUtilQueue = new LinkedList();
     this.jdField_a_of_type_Long = getIntent().getLongExtra("id", -1L);
     if (this.jdField_a_of_type_Long > 0L)
     {
-      this.jdField_a_of_type_Akfo = new akfo(this);
-      if (!a(getIntent(), this.jdField_a_of_type_Akfo)) {
+      this.jdField_a_of_type_Aztl = new aztl(this);
+      if (!a(getIntent(), this.jdField_a_of_type_Aztl)) {
         finish();
       }
-      this.jdField_a_of_type_Akfo.jdField_a_of_type_Akfn = new akfn(getBaseContext(), this, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-      this.jdField_a_of_type_Akfo.jdField_a_of_type_Akfn.a(super.getIntent());
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_Akfo.jdField_a_of_type_Akfn.a, new ViewGroup.LayoutParams(-1, -1));
+      this.jdField_a_of_type_Aztl.jdField_a_of_type_Aztk = new aztk(getBaseContext(), this, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+      this.jdField_a_of_type_Aztl.jdField_a_of_type_Aztk.a(super.getIntent());
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_Aztl.jdField_a_of_type_Aztk.mWebview, new ViewGroup.LayoutParams(-1, -1));
       super.setContentView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
       super.moveTaskToBack(true);
       if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "new Command in onCreate");
+        QLog.i(jdField_b_of_type_JavaLangString, 2, "new Command in onCreate");
       }
       if (this.jdField_a_of_type_Long <= 0L) {
         break label417;
@@ -434,10 +437,10 @@ public class SnapshotService
       paramBundle = new IntentFilter("android.intent.action.ultimatesnapshot");
       registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
       if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "registered receiver: android.intent.action.ultimatesnapshot");
+        QLog.i(jdField_b_of_type_JavaLangString, 2, "registered receiver: android.intent.action.ultimatesnapshot");
       }
       jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_Akfo.jdField_a_of_type_Akfn.a(this.jdField_a_of_type_Akfo.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Aztl.jdField_a_of_type_Aztk.a(this.jdField_a_of_type_Aztl.jdField_a_of_type_JavaLangString);
       if (!a(getIntent())) {
         finish();
       }
@@ -446,29 +449,29 @@ public class SnapshotService
     do
     {
       return;
-      this.b = new akfo(this);
-      if (!a(getIntent(), this.b)) {
+      this.jdField_b_of_type_Aztl = new aztl(this);
+      if (!a(getIntent(), this.jdField_b_of_type_Aztl)) {
         finish();
       }
-      this.b.jdField_a_of_type_Akfn = new akfn(getBaseContext(), this, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-      this.b.jdField_a_of_type_Akfn.a(super.getIntent());
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.b.jdField_a_of_type_Akfn.a, new ViewGroup.LayoutParams(-1, -1));
+      this.jdField_b_of_type_Aztl.jdField_a_of_type_Aztk = new aztk(getBaseContext(), this, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+      this.jdField_b_of_type_Aztl.jdField_a_of_type_Aztk.a(super.getIntent());
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_Aztl.jdField_a_of_type_Aztk.mWebview, new ViewGroup.LayoutParams(-1, -1));
       break;
-      this.b.jdField_a_of_type_Akfn.a(this.b.jdField_a_of_type_JavaLangString);
-      paramBundle = new akfm();
+      this.jdField_b_of_type_Aztl.jdField_a_of_type_Aztk.a(this.jdField_b_of_type_Aztl.jdField_a_of_type_JavaLangString);
+      paramBundle = new aztj();
       paramBundle.jdField_a_of_type_Long = getIntent().getLongExtra("seq", -1L);
       paramBundle.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("seqKey");
       paramBundle.b = getIntent().getIntExtra("maxSnapshotCount", 5);
       paramBundle.jdField_a_of_type_Int = 0;
       paramBundle.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
       if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "new Command seq=" + paramBundle.jdField_a_of_type_Long);
+        QLog.i(jdField_b_of_type_JavaLangString, 2, "new Command seq=" + paramBundle.jdField_a_of_type_Long);
       }
     } while (paramBundle.jdField_a_of_type_Long == -1L);
-    a(paramBundle, this.b);
+    a(paramBundle, this.jdField_b_of_type_Aztl);
   }
   
-  protected void onNewIntent(Intent paramIntent)
+  public void onNewIntent(Intent paramIntent)
   {
     super.onNewIntent(paramIntent);
     setIntent(paramIntent);
@@ -476,29 +479,29 @@ public class SnapshotService
     long l = paramIntent.getLongExtra("id", -1L);
     if (l < 0L)
     {
-      if (this.b == null)
+      if (this.jdField_b_of_type_Aztl == null)
       {
-        this.b = new akfo(this);
-        this.b.jdField_a_of_type_Akfn = new akfn(getBaseContext(), this, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-        this.b.jdField_a_of_type_Akfn.a(super.getIntent());
-        this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.b.jdField_a_of_type_Akfn.a, new ViewGroup.LayoutParams(-1, -1));
+        this.jdField_b_of_type_Aztl = new aztl(this);
+        this.jdField_b_of_type_Aztl.jdField_a_of_type_Aztk = new aztk(getBaseContext(), this, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+        this.jdField_b_of_type_Aztl.jdField_a_of_type_Aztk.a(super.getIntent());
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_Aztl.jdField_a_of_type_Aztk.mWebview, new ViewGroup.LayoutParams(-1, -1));
       }
-      a(paramIntent, this.b);
-      akfm localakfm = new akfm();
-      localakfm.jdField_a_of_type_Long = paramIntent.getLongExtra("seq", -1L);
-      localakfm.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("seqKey");
-      localakfm.b = paramIntent.getIntExtra("maxSnapshotCount", 5);
-      localakfm.jdField_a_of_type_Int = 0;
-      localakfm.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+      a(paramIntent, this.jdField_b_of_type_Aztl);
+      aztj localaztj = new aztj();
+      localaztj.jdField_a_of_type_Long = paramIntent.getLongExtra("seq", -1L);
+      localaztj.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("seqKey");
+      localaztj.b = paramIntent.getIntExtra("maxSnapshotCount", 5);
+      localaztj.jdField_a_of_type_Int = 0;
+      localaztj.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
       if (QLog.isColorLevel())
       {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "new Command in onNewIntent()");
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "new Command seq=" + localakfm.jdField_a_of_type_Long);
+        QLog.i(jdField_b_of_type_JavaLangString, 2, "new Command in onNewIntent()");
+        QLog.i(jdField_b_of_type_JavaLangString, 2, "new Command seq=" + localaztj.jdField_a_of_type_Long);
       }
-      if (localakfm.jdField_a_of_type_Long != -1L)
+      if (localaztj.jdField_a_of_type_Long != -1L)
       {
-        this.b.jdField_a_of_type_Akfn.a(this.b.jdField_a_of_type_JavaLangString);
-        a(localakfm, this.b);
+        this.jdField_b_of_type_Aztl.jdField_a_of_type_Aztk.a(this.jdField_b_of_type_Aztl.jdField_a_of_type_JavaLangString);
+        a(localaztj, this.jdField_b_of_type_Aztl);
       }
     }
     do
@@ -506,12 +509,12 @@ public class SnapshotService
       do
       {
         return;
-        if (this.jdField_a_of_type_Akfo == null)
+        if (this.jdField_a_of_type_Aztl == null)
         {
-          this.jdField_a_of_type_Akfo = new akfo(this);
-          this.jdField_a_of_type_Akfo.jdField_a_of_type_Akfn = new akfn(getBaseContext(), this, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-          this.jdField_a_of_type_Akfo.jdField_a_of_type_Akfn.a(super.getIntent());
-          this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_Akfo.jdField_a_of_type_Akfn.a, new ViewGroup.LayoutParams(-1, -1));
+          this.jdField_a_of_type_Aztl = new aztl(this);
+          this.jdField_a_of_type_Aztl.jdField_a_of_type_Aztk = new aztk(getBaseContext(), this, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+          this.jdField_a_of_type_Aztl.jdField_a_of_type_Aztk.a(super.getIntent());
+          this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_Aztl.jdField_a_of_type_Aztk.mWebview, new ViewGroup.LayoutParams(-1, -1));
         }
         switch (paramIntent.getIntExtra("action", 2))
         {
@@ -521,43 +524,43 @@ public class SnapshotService
         }
       } while (l != this.jdField_a_of_type_Long);
       if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "onNewIntent(), just snapshot for loaded url");
+        QLog.i(jdField_b_of_type_JavaLangString, 2, "onNewIntent(), just snapshot for loaded url");
       }
-      this.jdField_a_of_type_Akfo.jdField_a_of_type_Long = 1000L;
-      this.jdField_a_of_type_Akfo.jdField_b_of_type_Long = 1000L;
+      this.jdField_a_of_type_Aztl.jdField_a_of_type_Long = 1000L;
+      this.jdField_a_of_type_Aztl.jdField_b_of_type_Long = 1000L;
       a(paramIntent);
       return;
       if (QLog.isColorLevel()) {
-        QLog.i(jdField_a_of_type_JavaLangString, 2, "onNewIntent(), load url");
+        QLog.i(jdField_b_of_type_JavaLangString, 2, "onNewIntent(), load url");
       }
       if (!jdField_a_of_type_Boolean)
       {
         paramIntent = new IntentFilter("android.intent.action.ultimatesnapshot");
         registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramIntent);
         if (QLog.isColorLevel()) {
-          QLog.i(jdField_a_of_type_JavaLangString, 2, "registered receiver: android.intent.action.ultimatesnapshot");
+          QLog.i(jdField_b_of_type_JavaLangString, 2, "registered receiver: android.intent.action.ultimatesnapshot");
         }
       }
       jdField_a_of_type_Boolean = true;
-    } while ((!a(getIntent(), this.jdField_a_of_type_Akfo)) || (!a(getIntent())));
-    this.jdField_a_of_type_Akfo.jdField_a_of_type_Akfn.a(this.jdField_a_of_type_Akfo.jdField_a_of_type_JavaLangString);
+    } while ((!a(getIntent(), this.jdField_a_of_type_Aztl)) || (!a(getIntent())));
+    this.jdField_a_of_type_Aztl.jdField_a_of_type_Aztk.a(this.jdField_a_of_type_Aztl.jdField_a_of_type_JavaLangString);
     this.jdField_a_of_type_Long = l;
   }
   
-  protected void onResume()
+  public void onResume()
   {
     super.onResume();
-    if (this.jdField_a_of_type_Akfo != null) {
-      this.jdField_a_of_type_Akfo.jdField_a_of_type_Akfn.a();
+    if (this.jdField_a_of_type_Aztl != null) {
+      this.jdField_a_of_type_Aztl.jdField_a_of_type_Aztk.a();
     }
-    if (this.b != null) {
-      this.b.jdField_a_of_type_Akfn.a();
+    if (this.jdField_b_of_type_Aztl != null) {
+      this.jdField_b_of_type_Aztl.jdField_a_of_type_Aztk.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.unifiedebug.SnapshotService
  * JD-Core Version:    0.7.0.1
  */

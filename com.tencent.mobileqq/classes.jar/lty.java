@@ -1,28 +1,35 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.ChannelInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.model.SpecialChannelFilter;
-import java.util.List;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class lty
-  implements Runnable
+  extends kur
 {
-  public lty(ChannelInfoModule paramChannelInfoModule, boolean paramBoolean, List paramList) {}
+  public lty(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  public void run()
+  protected void a(long paramLong, ArrayList<kth> paramArrayList, int paramInt1, int paramInt2)
   {
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      ReadInJoyLogicEngineEventDispatcher.a().d(false, null);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.b, 2, "onUserListALLUpdate");
+    }
+    MultiIncomingCallsActivity.a(this.a, paramLong, paramArrayList, paramInt1);
+  }
+  
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.b, 2, "onMembersChange");
+    }
+    if ((paramLong != this.a.a) || (paramBoolean)) {}
+    while (((paramInt != 10) && (paramInt != 1)) || (!this.a.isResume())) {
       return;
     }
-    SpecialChannelFilter.a().a(this.jdField_a_of_type_JavaUtilList);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.c(this.jdField_a_of_type_JavaUtilList);
-    ReadInJoyLogicEngineEventDispatcher.a().d(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaUtilList);
+    MultiIncomingCallsActivity.a(this.a, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lty
  * JD-Core Version:    0.7.0.1
  */

@@ -1,287 +1,251 @@
-import android.opengl.GLES20;
-import android.opengl.GLSurfaceView.Renderer;
-import android.opengl.Matrix;
-import com.tencent.mobileqq.surfaceviewaction.gl.Label;
-import com.tencent.mobileqq.surfaceviewaction.gl.SpriteGLView;
-import com.tencent.mobileqq.surfaceviewaction.util.GLUtil;
-import com.tencent.mobileqq.util.DisplayUtil;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
+import com.tencent.mobileqq.apollo.process.download.CmGameRscDownloader.1;
+import com.tencent.mobileqq.apollo.process.download.CmGameRscDownloader.2;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.opengles.GL10;
+import mqq.os.MqqHandler;
 
 public class aiqf
-  implements GLSurfaceView.Renderer
 {
   private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private Label jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlLabel;
-  private final float[] jdField_a_of_type_ArrayOfFloat = new float[16];
-  private int jdField_b_of_type_Int;
-  private final float[] jdField_b_of_type_ArrayOfFloat = new float[16];
-  private int jdField_c_of_type_Int;
-  private final float[] jdField_c_of_type_ArrayOfFloat = new float[16];
-  private int d;
-  private int e;
-  private int f;
+  private aiqi jdField_a_of_type_Aiqi;
+  private aiqo jdField_a_of_type_Aiqo;
+  public batl a;
   
-  private aiqf(SpriteGLView paramSpriteGLView) {}
-  
-  /* Error */
-  @android.annotation.SuppressLint({"DefaultLocale"})
-  public void onDrawFrame(GL10 paramGL10)
+  public aiqf(aiqi paramaiqi, aiqo paramaiqo)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 21	aiqf:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
-    //   4: invokestatic 44	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:a	(Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;)Ljava/lang/Object;
-    //   7: astore_1
-    //   8: aload_1
-    //   9: monitorenter
-    //   10: iconst_0
-    //   11: istore_2
-    //   12: iload_2
-    //   13: aload_0
-    //   14: getfield 21	aiqf:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
-    //   17: invokestatic 47	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:b	(Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;)Ljava/util/List;
-    //   20: invokeinterface 53 1 0
-    //   25: if_icmpge +31 -> 56
-    //   28: aload_0
-    //   29: getfield 21	aiqf:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
-    //   32: invokestatic 47	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:b	(Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;)Ljava/util/List;
-    //   35: iload_2
-    //   36: invokeinterface 57 2 0
-    //   41: checkcast 59	java/lang/Runnable
-    //   44: invokeinterface 62 1 0
-    //   49: iload_2
-    //   50: iconst_1
-    //   51: iadd
-    //   52: istore_2
-    //   53: goto -41 -> 12
-    //   56: aload_0
-    //   57: getfield 21	aiqf:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
-    //   60: invokestatic 47	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:b	(Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;)Ljava/util/List;
-    //   63: invokeinterface 65 1 0
-    //   68: aload_1
-    //   69: monitorexit
-    //   70: aload_0
-    //   71: getfield 21	aiqf:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
-    //   74: invokestatic 67	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:b	(Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;)Ljava/lang/Object;
-    //   77: astore_1
-    //   78: aload_1
-    //   79: monitorenter
-    //   80: iconst_0
-    //   81: istore_2
-    //   82: iload_2
-    //   83: aload_0
-    //   84: getfield 21	aiqf:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
-    //   87: invokestatic 69	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:c	(Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;)Ljava/util/List;
-    //   90: invokeinterface 53 1 0
-    //   95: if_icmpge +36 -> 131
-    //   98: aload_0
-    //   99: getfield 21	aiqf:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
-    //   102: invokestatic 69	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:c	(Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;)Ljava/util/List;
-    //   105: iload_2
-    //   106: invokeinterface 57 2 0
-    //   111: checkcast 59	java/lang/Runnable
-    //   114: invokeinterface 62 1 0
-    //   119: iload_2
-    //   120: iconst_1
-    //   121: iadd
-    //   122: istore_2
-    //   123: goto -41 -> 82
-    //   126: astore_3
-    //   127: aload_1
-    //   128: monitorexit
-    //   129: aload_3
-    //   130: athrow
-    //   131: aload_1
-    //   132: monitorexit
-    //   133: sipush 16640
-    //   136: invokestatic 75	android/opengl/GLES20:glClear	(I)V
-    //   139: iconst_0
-    //   140: istore_2
-    //   141: iload_2
-    //   142: aload_0
-    //   143: getfield 21	aiqf:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
-    //   146: invokestatic 77	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:a	(Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;)Ljava/util/List;
-    //   149: invokeinterface 53 1 0
-    //   154: if_icmpge +95 -> 249
-    //   157: sipush 3042
-    //   160: invokestatic 80	android/opengl/GLES20:glEnable	(I)V
-    //   163: iconst_1
-    //   164: sipush 771
-    //   167: invokestatic 84	android/opengl/GLES20:glBlendFunc	(II)V
-    //   170: aload_0
-    //   171: getfield 21	aiqf:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
-    //   174: getfield 86	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:jdField_c_of_type_Int	I
-    //   177: invokestatic 89	android/opengl/GLES20:glUseProgram	(I)V
-    //   180: aload_0
-    //   181: getfield 21	aiqf:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
-    //   184: invokestatic 77	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:a	(Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;)Ljava/util/List;
-    //   187: iload_2
-    //   188: invokeinterface 57 2 0
-    //   193: checkcast 91	com/tencent/mobileqq/surfaceviewaction/gl/Node
-    //   196: aload_0
-    //   197: getfield 21	aiqf:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
-    //   200: invokevirtual 94	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:getWidth	()I
-    //   203: aload_0
-    //   204: getfield 21	aiqf:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
-    //   207: invokevirtual 97	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:getHeight	()I
-    //   210: aload_0
-    //   211: getfield 99	aiqf:jdField_a_of_type_Int	I
-    //   214: aload_0
-    //   215: getfield 100	aiqf:jdField_c_of_type_Int	I
-    //   218: aload_0
-    //   219: getfield 102	aiqf:jdField_b_of_type_Int	I
-    //   222: aload_0
-    //   223: getfield 104	aiqf:d	I
-    //   226: aload_0
-    //   227: getfield 106	aiqf:e	I
-    //   230: aload_0
-    //   231: getfield 30	aiqf:jdField_c_of_type_ArrayOfFloat	[F
-    //   234: invokevirtual 109	com/tencent/mobileqq/surfaceviewaction/gl/Node:c	(IIIIIII[F)V
-    //   237: iload_2
-    //   238: iconst_1
-    //   239: iadd
-    //   240: istore_2
-    //   241: goto -100 -> 141
-    //   244: astore_3
-    //   245: aload_1
-    //   246: monitorexit
-    //   247: aload_3
-    //   248: athrow
-    //   249: aload_0
-    //   250: getfield 21	aiqf:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
-    //   253: getfield 112	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:a	Z
-    //   256: ifeq +137 -> 393
-    //   259: aload_0
-    //   260: aload_0
-    //   261: getfield 114	aiqf:f	I
-    //   264: iconst_1
-    //   265: iadd
-    //   266: putfield 114	aiqf:f	I
-    //   269: aload_0
-    //   270: getfield 114	aiqf:f	I
-    //   273: iconst_5
-    //   274: if_icmplt +64 -> 338
-    //   277: invokestatic 120	java/lang/System:currentTimeMillis	()J
-    //   280: aload_0
-    //   281: getfield 122	aiqf:jdField_a_of_type_Long	J
-    //   284: lsub
-    //   285: l2i
-    //   286: istore_2
-    //   287: ldc 124
-    //   289: iconst_1
-    //   290: anewarray 4	java/lang/Object
-    //   293: dup
-    //   294: iconst_0
-    //   295: aload_0
-    //   296: getfield 114	aiqf:f	I
-    //   299: i2f
-    //   300: ldc 125
-    //   302: fmul
-    //   303: iload_2
-    //   304: i2f
-    //   305: fdiv
-    //   306: invokestatic 131	java/lang/Float:valueOf	(F)Ljava/lang/Float;
-    //   309: aastore
-    //   310: invokestatic 137	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   313: astore_1
-    //   314: aload_0
-    //   315: invokestatic 120	java/lang/System:currentTimeMillis	()J
-    //   318: putfield 122	aiqf:jdField_a_of_type_Long	J
-    //   321: aload_0
-    //   322: iconst_0
-    //   323: putfield 114	aiqf:f	I
-    //   326: aload_0
-    //   327: getfield 139	aiqf:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlLabel	Lcom/tencent/mobileqq/surfaceviewaction/gl/Label;
-    //   330: aload_0
-    //   331: getfield 21	aiqf:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
-    //   334: aload_1
-    //   335: invokevirtual 144	com/tencent/mobileqq/surfaceviewaction/gl/Label:a	(Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;Ljava/lang/String;)V
-    //   338: aload_0
-    //   339: getfield 21	aiqf:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
-    //   342: getfield 86	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:jdField_c_of_type_Int	I
-    //   345: invokestatic 89	android/opengl/GLES20:glUseProgram	(I)V
-    //   348: aload_0
-    //   349: getfield 139	aiqf:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlLabel	Lcom/tencent/mobileqq/surfaceviewaction/gl/Label;
-    //   352: aload_0
-    //   353: getfield 21	aiqf:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
-    //   356: invokevirtual 94	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:getWidth	()I
-    //   359: aload_0
-    //   360: getfield 21	aiqf:jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView	Lcom/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView;
-    //   363: invokevirtual 97	com/tencent/mobileqq/surfaceviewaction/gl/SpriteGLView:getHeight	()I
-    //   366: aload_0
-    //   367: getfield 99	aiqf:jdField_a_of_type_Int	I
-    //   370: aload_0
-    //   371: getfield 100	aiqf:jdField_c_of_type_Int	I
-    //   374: aload_0
-    //   375: getfield 102	aiqf:jdField_b_of_type_Int	I
-    //   378: aload_0
-    //   379: getfield 104	aiqf:d	I
-    //   382: aload_0
-    //   383: getfield 106	aiqf:e	I
-    //   386: aload_0
-    //   387: getfield 30	aiqf:jdField_c_of_type_ArrayOfFloat	[F
-    //   390: invokevirtual 145	com/tencent/mobileqq/surfaceviewaction/gl/Label:c	(IIIIIII[F)V
-    //   393: invokestatic 148	android/opengl/GLES20:glFinish	()V
-    //   396: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	397	0	this	aiqf
-    //   0	397	1	paramGL10	GL10
-    //   11	293	2	i	int
-    //   126	4	3	localObject1	Object
-    //   244	4	3	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   12	49	126	finally
-    //   56	70	126	finally
-    //   127	129	126	finally
-    //   82	119	244	finally
-    //   131	133	244	finally
-    //   245	247	244	finally
+    this.jdField_a_of_type_Batl = new aiqh(this);
+    this.jdField_a_of_type_Aiqi = paramaiqi;
+    this.jdField_a_of_type_Aiqo = paramaiqo;
   }
   
-  public void onSurfaceChanged(GL10 paramGL10, int paramInt1, int paramInt2)
+  private void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.jdField_c_of_type_Int == 0) {}
-    try
+    Object localObject = aing.a(paramInt);
+    if (localObject == null) {
+      QLog.w("cmgame_process.CmGameRscDownloader", 1, "[handleLoadSuppack], launcher is null, mGameId:" + paramInt);
+    }
+    do
     {
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.jdField_c_of_type_Int = GLUtil.a(GLUtil.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getContext(), "troop" + File.separator + "shaders" + File.separator + "VertexShader.glsl"), GLUtil.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getContext(), "troop" + File.separator + "shaders" + File.separator + "FragmentShader.glsl"));
-      this.jdField_a_of_type_Int = GLES20.glGetAttribLocation(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.jdField_c_of_type_Int, "vPosition");
-      this.jdField_c_of_type_Int = GLES20.glGetAttribLocation(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.jdField_c_of_type_Int, "a_texCoord");
-      this.jdField_b_of_type_Int = GLES20.glGetUniformLocation(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.jdField_c_of_type_Int, "uMVPMatrix");
-      this.d = GLES20.glGetUniformLocation(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.jdField_c_of_type_Int, "s_texture");
-      this.e = GLES20.glGetUniformLocation(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.jdField_c_of_type_Int, "v_alpha");
-      float f1 = paramInt1 / paramInt2;
-      Matrix.frustumM(this.jdField_a_of_type_ArrayOfFloat, 0, -f1, f1, -1.0F, 1.0F, 3.0F, 7.0F);
-      Matrix.setLookAtM(this.jdField_b_of_type_ArrayOfFloat, 0, 0.0F, 0.0F, 3.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F);
-      Matrix.multiplyMM(this.jdField_c_of_type_ArrayOfFloat, 0, this.jdField_a_of_type_ArrayOfFloat, 0, this.jdField_b_of_type_ArrayOfFloat, 0);
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlLabel.c = (DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getContext(), 50.0F) - paramInt1 / 2);
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlLabel.d = (DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getContext(), 10.0F) - paramInt2 / 2);
-      GLES20.glViewport(0, 0, paramInt1, paramInt2);
+      return;
+      localObject = ((aipj)localObject).a();
+    } while (localObject == null);
+    ((aiqj)localObject).a();
+  }
+  
+  private void a(String paramString)
+  {
+    Object localObject = aing.a();
+    if ((localObject == null) || (this.jdField_a_of_type_Aiqi == null)) {
       return;
     }
-    catch (Exception paramGL10)
+    aing.c(this.jdField_a_of_type_Aiqi.jdField_b_of_type_Int);
+    batr localbatr = null;
+    localObject = (bato)((AppInterface)localObject).getManager(47);
+    if (localObject != null) {
+      localbatr = ((bato)localObject).a(3);
+    }
+    if (localbatr == null)
     {
-      for (;;)
+      QLog.e("cmgame_process.CmGameRscDownloader", 1, "updateGameRes no downloaderInterface");
+      return;
+    }
+    localObject = babp.b();
+    if ((localObject != null) && (localObject.length == 2) && (localObject[1] <= 50L))
+    {
+      ApolloItemBuilder.a(ajjy.a(2131636318), 1, BaseApplicationImpl.getContext());
+      QLog.w("cmgame_process.CmGameRscDownloader", 2, "updateGameRes:available space on SD card is less than 50M. ====> Stop download game rsc.");
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder().append(aiys.s).append(this.jdField_a_of_type_Aiqi.jdField_a_of_type_JavaLangString);
+    int k;
+    if (this.jdField_a_of_type_Aiqi.jdField_b_of_type_Boolean)
+    {
+      localObject = ".patch";
+      paramString = new batm(paramString, new File((String)localObject));
+      paramString.p = true;
+      paramString.j = false;
+      paramString.n = true;
+      paramString.s = false;
+      paramString.q = true;
+      paramString.r = true;
+      paramString.jdField_b_of_type_Boolean = true;
+      paramString.f = "apollo_res";
+      localObject = new Bundle();
+      localbatr.a(paramString, this.jdField_a_of_type_Batl, (Bundle)localObject);
+      k = this.jdField_a_of_type_Aiqi.jdField_c_of_type_Int;
+      if ((k != 2) && (k != 1)) {
+        break label372;
+      }
+    }
+    label372:
+    for (int i = 1;; i = 0)
+    {
+      int j;
+      if ((k != 4) && (k != 5))
       {
-        QLog.e("SpriteGLView", 2, QLog.getStackTraceString(paramGL10));
+        j = k;
+        if (k != 3) {}
+      }
+      else
+      {
+        j = 1;
+      }
+      this.jdField_a_of_type_Int = 1;
+      bajr.a(null, "cmshow", "Apollo", "game_renew_start", i, j, new String[] { String.valueOf(this.jdField_a_of_type_Aiqi.jdField_b_of_type_Int), String.valueOf(this.jdField_a_of_type_Aiqi.jdField_a_of_type_Int), this.jdField_a_of_type_Aiqi.jdField_b_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Aiqi.jdField_d_of_type_Int) });
+      return;
+      localObject = ".zip";
+      break;
+    }
+  }
+  
+  private void b()
+  {
+    int i = 0;
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.CmGameRscDownloader", 2, "[doOnGameResFileDone]");
+    }
+    if (this.jdField_a_of_type_Aiqi == null) {}
+    do
+    {
+      String str1;
+      do
+      {
+        return;
+        QLog.i("cmgame_process.CmGameRscDownloader", 1, "[game_launch_cost], download rsc:" + (System.currentTimeMillis() - this.jdField_a_of_type_Aiqi.jdField_c_of_type_Long));
+        boolean bool = this.jdField_a_of_type_Aiqi.jdField_b_of_type_Boolean;
+        String str2 = this.jdField_a_of_type_Aiqi.jdField_c_of_type_JavaLangString;
+        str1 = aiys.s + this.jdField_a_of_type_Aiqi.jdField_a_of_type_JavaLangString + ".zip";
+        SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 4);
+        try
+        {
+          localSharedPreferences.edit().putBoolean("apollo_sp_game_rsc_verify_" + this.jdField_a_of_type_Aiqi.jdField_a_of_type_JavaLangString, false).commit();
+          if (!bool) {
+            break;
+          }
+          bool = aifg.a(String.valueOf(this.jdField_a_of_type_Aiqi.jdField_a_of_type_JavaLangString), str2);
+          QLog.i("cmgame_process.CmGameRscDownloader", 1, "[game_launch_cost], patch rsc:" + (System.currentTimeMillis() - this.jdField_a_of_type_Aiqi.jdField_c_of_type_Long));
+          if (bool) {
+            break;
+          }
+          QLog.e("cmgame_process.CmGameRscDownloader", 1, "fail to patch, download complete pack.");
+          this.jdField_a_of_type_Aiqi.jdField_b_of_type_Boolean = false;
+          a(this.jdField_a_of_type_Aiqi.jdField_d_of_type_JavaLangString);
+          return;
+        }
+        catch (Exception localException)
+        {
+          QLog.e("cmgame_process.CmGameRscDownloader", 1, "uncompressZip fail zip file: " + str1, localException);
+          localSharedPreferences.edit().putBoolean("apollo_sp_game_rsc_verify_" + this.jdField_a_of_type_Aiqi.jdField_a_of_type_JavaLangString, true).commit();
+        }
+      } while (this.jdField_a_of_type_Aiqo == null);
+      this.jdField_a_of_type_Aiqo.c(-1006, this.jdField_a_of_type_Aiqi.jdField_b_of_type_JavaLangString);
+      return;
+      if (this.jdField_a_of_type_Aiqo != null) {
+        bace.a(str1, this.jdField_a_of_type_Aiqo.a(this.jdField_a_of_type_Aiqi.jdField_b_of_type_Int, this.jdField_a_of_type_Aiqi.jdField_b_of_type_JavaLangString), false);
+      }
+      ApolloUtil.a();
+      QLog.i("cmgame_process.CmGameRscDownloader", 1, "[game_launch_cost], unzip rsc:" + (System.currentTimeMillis() - this.jdField_a_of_type_Aiqi.jdField_c_of_type_Long));
+      aing.a(new Object[] { "[downloadRes], done packName:", this.jdField_a_of_type_Aiqi.jdField_b_of_type_JavaLangString, ", cost:", Long.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_Aiqi.jdField_c_of_type_Long) });
+      a(this.jdField_a_of_type_Aiqi.jdField_b_of_type_Int);
+      if (this.jdField_a_of_type_Aiqo != null) {
+        this.jdField_a_of_type_Aiqo.b(this.jdField_a_of_type_Aiqi.jdField_b_of_type_Int, this.jdField_a_of_type_Aiqi.jdField_b_of_type_JavaLangString);
+      }
+      this.jdField_a_of_type_Int = 0;
+    } while (this.jdField_a_of_type_Aiqi.jdField_b_of_type_Boolean);
+    int k = this.jdField_a_of_type_Aiqi.jdField_c_of_type_Int;
+    if (k != 2) {
+      if (k != 1) {
+        break label626;
+      }
+    }
+    for (;;)
+    {
+      int j;
+      bajr.a(null, "cmshow", "Apollo", "game_renew_succeed", i, j, new String[] { String.valueOf(this.jdField_a_of_type_Aiqi.jdField_b_of_type_Int), String.valueOf(this.jdField_a_of_type_Aiqi.jdField_a_of_type_Int), this.jdField_a_of_type_Aiqi.jdField_b_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Aiqi.jdField_d_of_type_Int) });
+      return;
+      i = 1;
+      label626:
+      if ((k != 2) && (k != 5))
+      {
+        j = k;
+        if (k != 3) {}
+      }
+      else
+      {
+        j = 1;
       }
     }
   }
   
-  public void onSurfaceCreated(GL10 paramGL10, EGLConfig paramEGLConfig)
+  public int a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlLabel = new Label(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView, this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView.getContext(), "fps:", -1, 40);
-    SpriteGLView.a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView, System.currentTimeMillis());
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public void a()
+  {
+    if (this.jdField_a_of_type_Aiqo != null) {
+      this.jdField_a_of_type_Aiqo.a(this.jdField_a_of_type_Aiqi.jdField_b_of_type_Int, this.jdField_a_of_type_Aiqi.jdField_b_of_type_JavaLangString);
+    }
+    if ((this.jdField_a_of_type_Aiqi.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_Aiqi.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_Aiqi.jdField_a_of_type_ArrayOfByte.length > 0))
+    {
+      ThreadManager.excute(new CmGameRscDownloader.2(this), 192, null, true);
+      return;
+    }
+    boolean bool = badq.h(BaseApplicationImpl.getApplication().getApplicationContext());
+    if (QLog.isColorLevel()) {
+      QLog.i("cmgame_process.CmGameRscDownloader", 2, "is wifi:" + bool + ",pkg size:" + this.jdField_a_of_type_Aiqi.jdField_b_of_type_Long + ",tip size:" + this.jdField_a_of_type_Aiqi.jdField_a_of_type_Long);
+    }
+    if ((bool) || (this.jdField_a_of_type_Aiqi.jdField_b_of_type_Long < this.jdField_a_of_type_Aiqi.jdField_a_of_type_Long))
+    {
+      if (this.jdField_a_of_type_Aiqi.jdField_b_of_type_Boolean) {}
+      for (localObject = this.jdField_a_of_type_Aiqi.jdField_e_of_type_JavaLangString;; localObject = this.jdField_a_of_type_Aiqi.jdField_d_of_type_JavaLangString)
+      {
+        a((String)localObject);
+        return;
+      }
+    }
+    Object localObject = new aiqg(this);
+    if (this.jdField_a_of_type_Aiqo != null) {
+      this.jdField_a_of_type_Aiqo.a((aijr)localObject, this.jdField_a_of_type_Aiqi.jdField_b_of_type_Long);
+    }
+    if ("message".equals(this.jdField_a_of_type_Aiqi.f)) {}
+    for (int i = 1;; i = 0)
+    {
+      bajr.a(null, "cmshow", "Apollo", "download_confirm_toast", i, 3, new String[] { String.valueOf(this.jdField_a_of_type_Aiqi.jdField_b_of_type_Int) });
+      return;
+    }
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_Aiqi == null) {}
+    boolean bool;
+    do
+    {
+      return false;
+      bool = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 4).getBoolean("apollo_sp_game_rsc_verify_" + this.jdField_a_of_type_Aiqi.jdField_a_of_type_JavaLangString, false);
+      if (bool) {}
+      QLog.i("cmgame_process.CmGameRscDownloader", 1, "isVerifyFail:" + bool + ",isUpdate:" + this.jdField_a_of_type_Aiqi.jdField_a_of_type_Boolean + ",isPatch:" + this.jdField_a_of_type_Aiqi.jdField_b_of_type_Boolean + "packType:" + this.jdField_a_of_type_Aiqi.jdField_d_of_type_Int + ",delay:" + this.jdField_a_of_type_Aiqi.jdField_e_of_type_Int);
+      if (QLog.isColorLevel()) {
+        QLog.d("cmgame_process.CmGameRscDownloader", 2, new Object[] { "patchUrl:", this.jdField_a_of_type_Aiqi.jdField_e_of_type_JavaLangString });
+      }
+    } while ((!bool) && (!this.jdField_a_of_type_Aiqi.jdField_a_of_type_Boolean));
+    ThreadManager.getSubThreadHandler().postDelayed(new CmGameRscDownloader.1(this), this.jdField_a_of_type_Aiqi.jdField_e_of_type_Int);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiqf
  * JD-Core Version:    0.7.0.1
  */

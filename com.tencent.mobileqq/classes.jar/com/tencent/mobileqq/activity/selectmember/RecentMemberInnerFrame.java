@@ -1,5 +1,10 @@
 package com.tencent.mobileqq.activity.selectmember;
 
+import ahrf;
+import ahrg;
+import ajjj;
+import ajjy;
+import akeu;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.AttributeSet;
@@ -13,10 +18,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.common.app.InnerFrameManager;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
@@ -24,18 +27,16 @@ import com.tencent.widget.XListView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import ygi;
-import ygj;
 
 public class RecentMemberInnerFrame
   extends SelectMemberInnerFrame
   implements View.OnClickListener
 {
+  private ahrf jdField_a_of_type_Ahrf;
+  private ajjj jdField_a_of_type_Ajjj;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
-  private FriendsManager jdField_a_of_type_ComTencentMobileqqAppFriendsManager;
   private XListView jdField_a_of_type_ComTencentWidgetXListView;
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
-  private ygi jdField_a_of_type_Ygi;
+  private List<RecentUser> jdField_a_of_type_JavaUtilList = new ArrayList();
   
   public RecentMemberInnerFrame(Context paramContext)
   {
@@ -58,7 +59,7 @@ public class RecentMemberInnerFrame
     Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a();
     if (localObject1 != null)
     {
-      Object localObject2 = ((RecentUserProxy)localObject1).a(true);
+      Object localObject2 = ((akeu)localObject1).a(true);
       if (localObject2 != null)
       {
         localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
@@ -69,9 +70,9 @@ public class RecentMemberInnerFrame
           if (localRecentUser != null) {
             try
             {
-              if ((localRecentUser.type == 0) && (Long.parseLong(localRecentUser.uin) >= 10000L) && (!localRecentUser.uin.equals(localObject1)) && (!this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.h.contains(localRecentUser.uin)))
+              if ((localRecentUser.getType() == 0) && (Long.parseLong(localRecentUser.uin) >= 10000L) && (!localRecentUser.uin.equals(localObject1)) && (!this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d.contains(localRecentUser.uin)))
               {
-                Friends localFriends = this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(localRecentUser.uin);
+                Friends localFriends = this.jdField_a_of_type_Ajjj.b(localRecentUser.uin);
                 if ((localFriends != null) && (localFriends.isFriend())) {
                   this.jdField_a_of_type_JavaUtilList.add(localRecentUser);
                 }
@@ -97,59 +98,59 @@ public class RecentMemberInnerFrame
   public void a(Bundle paramBundle)
   {
     super.a(paramBundle);
-    setContentView(2130971596);
-    this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(50));
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131366742));
-    this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(2131492924);
-    paramBundle = (RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getLayoutInflater().inflate(2130971543, this.jdField_a_of_type_ComTencentWidgetXListView, false);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramBundle.findViewById(2131368324));
-    ((Button)paramBundle.findViewById(2131368323)).setVisibility(8);
+    setContentView(2131496818);
+    this.jdField_a_of_type_Ajjj = ((ajjj)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(51));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131313707));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setSelector(2131101491);
+    paramBundle = (RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getLayoutInflater().inflate(2131496760, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramBundle.findViewById(2131300167));
+    ((Button)paramBundle.findViewById(2131297934)).setVisibility(8);
     this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(paramBundle);
     g();
-    this.jdField_a_of_type_Ygi = new ygi(this);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ygi);
+    this.jdField_a_of_type_Ahrf = new ahrf(this);
+    this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_Ahrf);
   }
   
   public void b(Bundle paramBundle)
   {
     super.b(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(true, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131436009), "最近联系人");
-    if (this.jdField_a_of_type_Ygi != null) {
-      this.jdField_a_of_type_Ygi.notifyDataSetChanged();
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(true, this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getString(2131653392), ajjy.a(2131647408));
+    if (this.jdField_a_of_type_Ahrf != null) {
+      this.jdField_a_of_type_Ahrf.notifyDataSetChanged();
     }
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_Ygi != null) {
-      this.jdField_a_of_type_Ygi.Z_();
+    if (this.jdField_a_of_type_Ahrf != null) {
+      this.jdField_a_of_type_Ahrf.c();
     }
     super.d();
   }
   
   public void f()
   {
-    this.jdField_a_of_type_Ygi.notifyDataSetChanged();
+    this.jdField_a_of_type_Ahrf.notifyDataSetChanged();
   }
   
   public void onClick(View paramView)
   {
-    ygj localygj = (ygj)paramView.getTag();
-    if ((localygj != null) && (localygj.jdField_a_of_type_JavaLangString != null) && (localygj.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localygj.jdField_a_of_type_AndroidWidgetTextView != null) && (localygj.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled()))
+    ahrg localahrg = (ahrg)paramView.getTag();
+    if ((localahrg != null) && (localahrg.jdField_a_of_type_JavaLangString != null) && (localahrg.jdField_a_of_type_AndroidWidgetCheckBox != null) && (localahrg.jdField_a_of_type_AndroidWidgetTextView != null) && (localahrg.jdField_a_of_type_AndroidWidgetCheckBox.isEnabled()))
     {
-      boolean bool = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(localygj.jdField_a_of_type_JavaLangString, localygj.jdField_a_of_type_AndroidWidgetTextView.getText().toString(), 0, "-1");
-      localygj.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
-      if (AppSetting.b)
+      boolean bool = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(localahrg.jdField_a_of_type_JavaLangString, localahrg.jdField_a_of_type_AndroidWidgetTextView.getText().toString(), 0, "-1");
+      localahrg.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(bool);
+      if (AppSetting.c)
       {
-        if (!localygj.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
-          break label130;
+        if (!localahrg.jdField_a_of_type_AndroidWidgetCheckBox.isChecked()) {
+          break label133;
         }
-        paramView.setContentDescription(localygj.jdField_a_of_type_AndroidWidgetTextView.getText().toString() + "已选中,双击取消");
+        paramView.setContentDescription(localahrg.jdField_a_of_type_AndroidWidgetTextView.getText().toString() + ajjy.a(2131647406));
       }
     }
     return;
-    label130:
-    paramView.setContentDescription(localygj.jdField_a_of_type_AndroidWidgetTextView.getText().toString() + "未选中,双击选中");
+    label133:
+    paramView.setContentDescription(localahrg.jdField_a_of_type_AndroidWidgetTextView.getText().toString() + ajjy.a(2131647409));
   }
 }
 

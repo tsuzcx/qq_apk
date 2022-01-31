@@ -1,83 +1,81 @@
-import android.graphics.PointF;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.richmedia.capture.gesture.GLGestureListener;
-import com.tencent.mobileqq.richmedia.capture.gesture.GLGestureProxy;
-import com.tencent.mobileqq.shortvideo.ptvfilter.NonFit2DFilter;
-import com.tencent.ttpic.util.VideoGlobalContext;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class aihl
-  implements GLGestureListener
+final class aihl
+  extends batl
 {
-  public aihl(NonFit2DFilter paramNonFit2DFilter) {}
+  aihl(String paramString1, File paramFile, AtomicInteger paramAtomicInteger1, int paramInt1, int paramInt2, AtomicInteger paramAtomicInteger2, AtomicInteger paramAtomicInteger3, aihm paramaihm, aihj paramaihj, String paramString2, List paramList) {}
   
-  public int a()
+  public void onDone(batm parambatm)
   {
-    return 1030;
-  }
-  
-  public boolean a(MotionEvent paramMotionEvent, boolean paramBoolean)
-  {
-    int i = paramMotionEvent.getPointerCount();
-    int j = paramMotionEvent.getAction();
-    if (i > 2)
-    {
-      NonFit2DFilter.a("onClick two_more pointer!");
-      return false;
+    boolean bool = true;
+    super.onDone(parambatm);
+    if (QLog.isColorLevel()) {
+      QLog.d("rscContent_CmShowRscDownloader", 1, "download url:" + this.jdField_a_of_type_JavaLangString + " task.getStatus()->" + parambatm.a());
     }
-    float f2;
-    float f1;
-    if ((i == 2) && (paramBoolean))
-    {
-      f2 = GLGestureProxy.a().a(paramMotionEvent.getX(1));
-      f1 = GLGestureProxy.a().b(paramMotionEvent.getY(1));
-      switch (j & 0xFF)
-      {
-      }
+    if (3 == parambatm.a()) {
+      if (!this.jdField_a_of_type_JavaIoFile.exists()) {}
     }
-    for (;;)
+    do
     {
-      return true;
-      f2 = paramMotionEvent.getX();
-      f1 = paramMotionEvent.getY();
-      break;
-      NonFit2DFilter.a(this.a).x = f2;
-      NonFit2DFilter.a(this.a).y = f1;
-      NonFit2DFilter.a(this.a, true);
-      continue;
-      if (NonFit2DFilter.a(NonFit2DFilter.a(this.a).x, NonFit2DFilter.a(this.a).y, f2, f1) > NonFit2DFilter.a(VideoGlobalContext.getContext()) * 0.05F)
+      for (;;)
       {
-        NonFit2DFilter.a(this.a, false);
-        NonFit2DFilter.a("onClick move, x:" + f2 + ", y:" + f1);
-        continue;
-        NonFit2DFilter.a("onClick up mNeedRecordTouchPoint:" + NonFit2DFilter.a(this.a) + ", isRecording:" + paramBoolean);
-        if ((NonFit2DFilter.a(this.a)) && (!paramBoolean)) {
-          NonFit2DFilter.a(this.a, paramMotionEvent.getX(), paramMotionEvent.getY());
-        }
-        NonFit2DFilter.a(this.a, true);
-        continue;
-        NonFit2DFilter.a("onClick point_down pointCnt:" + i + ", isRecording:" + paramBoolean + ", x:" + f2 + ", y:" + f1);
-        if ((i == 2) && (paramBoolean))
+        try
         {
-          NonFit2DFilter.a(this.a).x = f2;
-          NonFit2DFilter.a(this.a).y = f1;
-          NonFit2DFilter.a(this.a, true);
-          continue;
-          NonFit2DFilter.a("onClick point_up mNeedRecordTouchPoint:" + NonFit2DFilter.a(this.a));
-          if (NonFit2DFilter.a(this.a))
-          {
-            if ((i == 2) && (paramBoolean)) {
-              NonFit2DFilter.a(this.a, f2, f1);
-            }
-            NonFit2DFilter.a(this.a, false);
+          mpx.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_JavaIoFile.getParent() + File.separator);
+          this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+          if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != this.c.get()) {
+            break;
           }
+          if (this.jdField_a_of_type_Aihm != null)
+          {
+            parambatm = "";
+            if (this.jdField_a_of_type_Aihj != null) {
+              parambatm = this.jdField_a_of_type_Aihj.c();
+            }
+            aihm localaihm = this.jdField_a_of_type_Aihm;
+            if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0) {
+              bool = false;
+            }
+            localaihm.a(bool, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, parambatm);
+            if (QLog.isColorLevel()) {
+              QLog.d("rscContent_CmShowRscDownloader", 2, "downloadApolloRes download all done uin: " + this.jdField_b_of_type_JavaLangString + "all cnt: " + this.c.get() + ", err cnt: " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+            }
+          }
+          return;
         }
+        catch (Exception parambatm)
+        {
+          this.jdField_a_of_type_JavaIoFile.delete();
+          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("rscContent_CmShowRscDownloader", 2, "unZipFile file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " error->" + parambatm.getMessage());
+          continue;
+        }
+        catch (OutOfMemoryError parambatm)
+        {
+          this.jdField_a_of_type_JavaIoFile.delete();
+          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("rscContent_CmShowRscDownloader", 2, "unZipFile file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " error->" + parambatm.getMessage());
+          continue;
+        }
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+        QLog.d("rscContent_CmShowRscDownloader", 1, "download file error resType->" + this.jdField_a_of_type_Int + " id->" + this.jdField_b_of_type_Int + " task.getStatus()->" + parambatm.a());
       }
-    }
+    } while (!QLog.isColorLevel());
+    QLog.d("rscContent_CmShowRscDownloader", 2, "downloadApolloRes download uin:" + this.jdField_b_of_type_JavaLangString + ", cb cnt: " + this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", all cnt: " + this.c.get());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aihl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,10 @@
-class aigr
+public abstract interface aigr
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
-  
-  aigr(aigo paramaigo) {}
+  public abstract void a(int[] paramArrayOfInt, int paramInt1, int paramInt2, int paramInt3, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aigr
  * JD-Core Version:    0.7.0.1
  */

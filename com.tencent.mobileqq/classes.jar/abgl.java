@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.OverloadTipsActivity;
 
-class abgl
-  implements Runnable
+public class abgl
+  implements DialogInterface.OnClickListener
 {
-  abgl(abgj paramabgj) {}
+  public abgl(OverloadTipsActivity paramOverloadTipsActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReportController.b(null, "dc01440", "", "", "0X800784A", "0X800784A", 0, 0, "", "", "", "");
+    this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abgl
  * JD-Core Version:    0.7.0.1
  */

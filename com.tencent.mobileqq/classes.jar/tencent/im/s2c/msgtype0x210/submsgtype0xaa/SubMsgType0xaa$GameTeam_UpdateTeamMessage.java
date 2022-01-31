@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SubMsgType0xaa$GameTeam_UpdateTeamMessage
-  extends MessageMicro
+  extends MessageMicro<GameTeam_UpdateTeamMessage>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 40, 48, 56, 64, 74, 80 }, new String[] { "str_teamId", "str_gameId", "uint32_status", "str_modeImg", "uint32_current_count", "uint64_createMsgTime", "uint32_expire", "uint64_buildTeamTime", "str_leaderUin", "uin32_leaderStatus" }, new Object[] { "", "", Integer.valueOf(0), "", Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), "", Integer.valueOf(0) }, GameTeam_UpdateTeamMessage.class);
   public final PBStringField str_gameId = PBField.initString("");

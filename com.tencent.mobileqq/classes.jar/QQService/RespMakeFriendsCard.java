@@ -10,9 +10,9 @@ public final class RespMakeFriendsCard
 {
   static RespHead cache_stHeader;
   static MakeFriendsCard cache_stMakeFriendsCard;
-  static ArrayList cache_vFaceInfo;
-  static ArrayList cache_vVisitors;
-  static ArrayList cache_vVoter;
+  static ArrayList<FaceInfo> cache_vFaceInfo;
+  static ArrayList<Visitor> cache_vVisitors;
+  static ArrayList<Visitor> cache_vVoter;
   public byte bShareLBS;
   public byte cSqqLevel;
   public int iVoteIncrement;
@@ -20,21 +20,21 @@ public final class RespMakeFriendsCard
   public int lListVoterTime;
   public RespHead stHeader;
   public MakeFriendsCard stMakeFriendsCard;
-  public ArrayList vFaceInfo;
-  public ArrayList vVisitors;
-  public ArrayList vVoter;
+  public ArrayList<FaceInfo> vFaceInfo;
+  public ArrayList<Visitor> vVisitors;
+  public ArrayList<Visitor> vVoter;
   
   public RespMakeFriendsCard() {}
   
-  public RespMakeFriendsCard(RespHead paramRespHead, MakeFriendsCard paramMakeFriendsCard, long paramLong, ArrayList paramArrayList1, int paramInt1, ArrayList paramArrayList2, ArrayList paramArrayList3, int paramInt2, byte paramByte1, byte paramByte2)
+  public RespMakeFriendsCard(RespHead paramRespHead, MakeFriendsCard paramMakeFriendsCard, long paramLong, ArrayList<FaceInfo> paramArrayList, int paramInt1, ArrayList<Visitor> paramArrayList1, ArrayList<Visitor> paramArrayList2, int paramInt2, byte paramByte1, byte paramByte2)
   {
     this.stHeader = paramRespHead;
     this.stMakeFriendsCard = paramMakeFriendsCard;
     this.lCardShowNum = paramLong;
-    this.vFaceInfo = paramArrayList1;
+    this.vFaceInfo = paramArrayList;
     this.iVoteIncrement = paramInt1;
-    this.vVisitors = paramArrayList2;
-    this.vVoter = paramArrayList3;
+    this.vVisitors = paramArrayList1;
+    this.vVoter = paramArrayList2;
     this.lListVoterTime = paramInt2;
     this.bShareLBS = paramByte1;
     this.cSqqLevel = paramByte2;

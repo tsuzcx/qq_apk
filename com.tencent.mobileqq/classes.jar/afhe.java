@@ -1,19 +1,40 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.widget.BounceScrollView;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contacts.view.SimpleCheckableSlidingIndicator;
 
 public class afhe
-  implements Runnable
+  implements Handler.Callback
 {
-  public afhe(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity, BounceScrollView paramBounceScrollView, int paramInt) {}
+  public afhe(SimpleCheckableSlidingIndicator paramSimpleCheckableSlidingIndicator) {}
   
-  public void run()
+  public boolean handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetBounceScrollView.scrollBy(0, this.jdField_a_of_type_Int);
+    if (paramMessage.what == SimpleCheckableSlidingIndicator.d)
+    {
+      if (this.a.getScrollX() == SimpleCheckableSlidingIndicator.a(this.a))
+      {
+        SimpleCheckableSlidingIndicator.a(this.a, SimpleCheckableSlidingIndicator.a);
+        if (SimpleCheckableSlidingIndicator.a(this.a) != null) {
+          SimpleCheckableSlidingIndicator.a(this.a).a(SimpleCheckableSlidingIndicator.b(this.a));
+        }
+        SimpleCheckableSlidingIndicator.a(this.a).removeMessages(SimpleCheckableSlidingIndicator.d);
+      }
+    }
+    else {
+      return false;
+    }
+    SimpleCheckableSlidingIndicator.a(this.a, SimpleCheckableSlidingIndicator.c);
+    if (SimpleCheckableSlidingIndicator.a(this.a) != null) {
+      SimpleCheckableSlidingIndicator.a(this.a).a(SimpleCheckableSlidingIndicator.b(this.a));
+    }
+    SimpleCheckableSlidingIndicator.b(this.a, this.a.getScrollX());
+    SimpleCheckableSlidingIndicator.a(this.a).sendEmptyMessageDelayed(SimpleCheckableSlidingIndicator.d, 50L);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afhe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,37 @@
-import com.tencent.hotpatch.PatchDownloadManager;
-import com.tencent.hotpatch.config.PatchConfig;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 
-public class qse
+class qse
+  extends omr
 {
-  public int a;
-  public long a;
-  public PatchConfig a;
-  public String a;
-  
-  public qse(PatchDownloadManager paramPatchDownloadManager, int paramInt, long paramLong, String paramString, PatchConfig paramPatchConfig)
+  qse(qsc paramqsc, String paramString, int paramInt1, BaseArticleInfo paramBaseArticleInfo, int paramInt2, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_ComTencentHotpatchConfigPatchConfig = paramPatchConfig;
+    super(paramString);
+  }
+  
+  public void a(oml paramoml)
+  {
+    beoj.a("ReadInJoyBaseAdapter.Viewtype " + this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_Qsc.a(this.jdField_a_of_type_Int)) {
+      if ((oag.a(this.jdField_a_of_type_Qsc.a(), this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo)) && (this.jdField_a_of_type_Qsc.c != 56))
+      {
+        if ((paramoml instanceof omn)) {}
+      }
+      else {
+        while ((paramoml instanceof omn)) {
+          return;
+        }
+      }
+    }
+    if (paramoml.a(this.jdField_a_of_type_Int)) {
+      this.jdField_a_of_type_JavaLangObject = paramoml.a(this.b, null, this.jdField_a_of_type_AndroidViewViewGroup);
+    }
+    beoj.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qse
  * JD-Core Version:    0.7.0.1
  */

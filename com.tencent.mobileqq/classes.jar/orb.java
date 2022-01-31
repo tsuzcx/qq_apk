@@ -1,14 +1,20 @@
-import android.widget.ImageButton;
-import com.tencent.biz.qqstory.takevideo2.StoryLocalPublishPart;
+import com.tencent.biz.pubaccount.readinjoy.struct.WeiShiVideoArticleInfo;
+import java.util.Comparator;
 
-public class orb
-  implements Runnable
+class orb
+  implements Comparator<WeiShiVideoArticleInfo>
 {
-  public orb(StoryLocalPublishPart paramStoryLocalPublishPart) {}
+  orb(oqz paramoqz) {}
   
-  public void run()
+  public int a(WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo1, WeiShiVideoArticleInfo paramWeiShiVideoArticleInfo2)
   {
-    StoryLocalPublishPart.a(this.a).setVisibility(8);
+    if (paramWeiShiVideoArticleInfo1.recommendSeq == paramWeiShiVideoArticleInfo2.recommendSeq) {
+      return 0;
+    }
+    if (paramWeiShiVideoArticleInfo1.recommendSeq > paramWeiShiVideoArticleInfo2.recommendSeq) {
+      return -1;
+    }
+    return 1;
   }
 }
 

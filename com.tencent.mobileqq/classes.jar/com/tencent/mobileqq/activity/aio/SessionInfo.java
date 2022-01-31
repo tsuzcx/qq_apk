@@ -1,23 +1,28 @@
 package com.tencent.mobileqq.activity.aio;
 
+import ackc;
+import acnr;
+import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import uru;
 
 public class SessionInfo
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator CREATOR = new uru();
+  public static final Parcelable.Creator<SessionInfo> CREATOR = new acnr();
   public int a;
   public long a;
-  public ChatBackground a;
+  public ackc a;
+  private Bundle a;
   public String a;
   public boolean a;
   public int b;
+  public long b;
   public String b;
   public boolean b;
   public int c = 0;
+  public long c;
   public String c;
   public boolean c;
   public int d;
@@ -26,16 +31,20 @@ public class SessionInfo
   public int e;
   public String e;
   public boolean e;
+  public int f;
   public String f;
   public boolean f;
+  public int g;
   public String g = "";
   public boolean g;
   public String h;
   public boolean h;
+  public String i;
   public boolean i;
   public boolean j;
   public boolean k;
   public boolean l;
+  public boolean m;
   
   public SessionInfo()
   {
@@ -53,12 +62,23 @@ public class SessionInfo
     this.jdField_d_of_type_JavaLangString = paramParcel.readString();
     this.e = paramParcel.readString();
     this.jdField_d_of_type_Int = paramParcel.readInt();
+    this.jdField_a_of_type_AndroidOsBundle = paramParcel.readBundle(getClass().getClassLoader());
+  }
+  
+  public Bundle a()
+  {
+    return this.jdField_a_of_type_AndroidOsBundle;
   }
   
   public void a()
   {
     this.l = false;
-    this.h = null;
+    this.i = null;
+  }
+  
+  public void a(Bundle paramBundle)
+  {
+    this.jdField_a_of_type_AndroidOsBundle = paramBundle;
   }
   
   public Object clone()
@@ -79,11 +99,12 @@ public class SessionInfo
     paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
     paramParcel.writeString(this.e);
     paramParcel.writeInt(this.jdField_d_of_type_Int);
+    paramParcel.writeBundle(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.SessionInfo
  * JD-Core Version:    0.7.0.1
  */

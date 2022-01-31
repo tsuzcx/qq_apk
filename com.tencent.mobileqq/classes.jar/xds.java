@@ -1,34 +1,55 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.AlbumUtil;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Locale;
+import org.json.JSONObject;
 
 public class xds
-  implements View.OnClickListener
+  extends WebViewPlugin
 {
-  public xds(PhotoPreviewActivity paramPhotoPreviewActivity) {}
-  
-  public void onClick(View paramView)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (PhotoPreviewActivity.c(this.a))
+    boolean bool = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.security_verify", 2, String.format(Locale.getDefault(), "handleJsRequest url: %s pkgName; %s method: %s, args: %s", new Object[] { paramString1, paramString2, paramString3, paramVarArgs }));
+    }
+    if (!"userVerify".equals(paramString2)) {}
+    do
     {
-      this.a.i();
-      return;
+      return false;
+      paramJsBridgeListener = this.mRuntime.a();
+    } while (paramJsBridgeListener == null);
+    if ("setTicket".equals(paramString3)) {}
+    for (;;)
+    {
+      try
+      {
+        paramString1 = new JSONObject(paramVarArgs[0]).optString("ticket");
+        int i = paramJsBridgeListener.getIntent().getIntExtra("verify_type", -1);
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.security_verify", 2, String.format("verifyTicket: %s, verifyType: %s", new Object[] { paramString1, Integer.valueOf(i) }));
+        }
+        paramString2 = new Intent();
+        paramString2.putExtra("ticket", paramString1);
+        paramJsBridgeListener.setResult(-1, paramString2);
+        paramJsBridgeListener.finish();
+      }
+      catch (Exception paramJsBridgeListener)
+      {
+        paramJsBridgeListener.printStackTrace();
+        QLog.d("Q.security_verify", 1, "handleJsRequest", paramJsBridgeListener);
+        continue;
+      }
+      return bool;
+      bool = false;
     }
-    if (this.a.x) {
-      ReportController.b(null, "CliOper", "", "", "0X8004D94", "0X8004D94", 0, 0, "", "", "", "");
-    }
-    if (("FROM_PHOTO_LIST_FLOW".equals(this.a.e)) && (this.a.v)) {
-      this.a.setResult(-1);
-    }
-    this.a.finish();
-    AlbumUtil.a(this.a, true, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xds
  * JD-Core Version:    0.7.0.1
  */

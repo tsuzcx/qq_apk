@@ -7,24 +7,31 @@ import com.tencent.component.network.module.base.QDLog;
 import com.tencent.component.network.utils.thread.Future;
 import com.tencent.component.network.utils.thread.PriorityThreadPool;
 import java.util.concurrent.atomic.AtomicInteger;
-import poz;
 
 public class FileStorageHandler
   implements FileCacheService.StorageHandler
 {
-  private static final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private final FileStorageHandler.Collector jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileStorageHandler$Collector;
-  private Future jdField_a_of_type_ComTencentComponentNetworkUtilsThreadFuture;
-  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
+  private static final int COUNT_OF_HALF_INTERVAL = 6;
+  private static final int MAX_WARN_INTERVAL = 1800000;
+  private static final int MINUTE = 60000;
+  private static final float STORAGE_EXIST_PERCENTAGE_OFFSET = 0.02F;
+  private static final int STORAGE_OP_INTERVAL = 2;
+  private static final float STORAGE_REMAIN_PERCENTAGE = 0.1F;
+  private static final float STORAGE_REMAIN_PERCENTAGE_EXTREME = 0.05F;
+  private static final float STORAGE_WARNING_PERCENTAGE = 0.1F;
+  private static final Handler sMainHandler = new Handler(Looper.getMainLooper());
+  private final FileStorageHandler.Collector mCollector;
+  private final AtomicInteger mCounter = new AtomicInteger(0);
+  private long mLastWarnTime;
+  private Future mPendingFuture;
+  private int mWarnCount;
   
   public FileStorageHandler(FileStorageHandler.Collector paramCollector)
   {
-    this.jdField_a_of_type_ComTencentComponentNetworkModuleCacheFileFileStorageHandler$Collector = paramCollector;
+    this.mCollector = paramCollector;
   }
   
-  private int a(int paramInt1, int paramInt2)
+  private int calculateRemainSize(int paramInt1, int paramInt2)
   {
     if (paramInt1 <= 0) {
       return paramInt1;
@@ -35,48 +42,48 @@ public class FileStorageHandler
     }
   }
   
-  private void a(Context paramContext)
+  private void notifyStorageWarning(Context paramContext)
   {
     if (paramContext == null) {}
-    while (a()) {
+    while (shouldShowWarning()) {
       return;
     }
   }
   
-  private boolean a()
+  private boolean shouldShowWarning()
   {
-    long l1 = ((1.0F - 1.0F / (this.jdField_a_of_type_Int / 6.0F + 1.0F)) * 1800000.0F);
+    long l1 = ((1.0F - 1.0F / (this.mWarnCount / 6.0F + 1.0F)) * 1800000.0F);
     long l2 = System.currentTimeMillis();
-    if (l2 - this.jdField_a_of_type_Long >= l1) {}
+    if (l2 - this.mLastWarnTime >= l1) {}
     for (boolean bool = true;; bool = false)
     {
       if (bool)
       {
-        if (this.jdField_a_of_type_Int < 2147483647) {
-          this.jdField_a_of_type_Int += 1;
+        if (this.mWarnCount < 2147483647) {
+          this.mWarnCount += 1;
         }
-        this.jdField_a_of_type_Long = l2;
+        this.mLastWarnTime = l2;
       }
       return bool;
     }
   }
   
-  public void a(FileCacheService paramFileCacheService, long paramLong1, long paramLong2, boolean paramBoolean)
+  public void onLowStorage(FileCacheService paramFileCacheService, long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement() < 2) {
+    if (this.mCounter.getAndIncrement() < 2) {
       return;
     }
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-    QDLog.c("downloader", "low storage: totalSize=" + paramLong1 + ", availableSize=" + paramLong2 + ", external=" + paramBoolean);
+    this.mCounter.set(0);
+    QDLog.w("downloader", "low storage: totalSize=" + paramLong1 + ", availableSize=" + paramLong2 + ", external=" + paramBoolean);
     try
     {
-      if ((this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadFuture != null) && (!this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadFuture.isDone())) {
+      if ((this.mPendingFuture != null) && (!this.mPendingFuture.isDone())) {
         return;
       }
     }
     finally {}
-    paramFileCacheService = paramFileCacheService.a();
-    this.jdField_a_of_type_ComTencentComponentNetworkUtilsThreadFuture = PriorityThreadPool.getDefault().submit(new poz(this, paramBoolean, paramFileCacheService));
+    paramFileCacheService = paramFileCacheService.getContext();
+    this.mPendingFuture = PriorityThreadPool.getDefault().submit(new FileStorageHandler.1(this, paramBoolean, paramFileCacheService));
   }
 }
 

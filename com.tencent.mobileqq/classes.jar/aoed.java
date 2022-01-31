@@ -1,29 +1,59 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoHallowenUpload;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class aoed
-  implements Runnable
+class aoed
+  implements aodv
 {
-  public aoed(EditWebVideoHallowenUpload paramEditWebVideoHallowenUpload, boolean paramBoolean, String paramString1, String paramString2) {}
+  aoed(aoec paramaoec, String paramString, aoex paramaoex) {}
   
-  public void run()
+  public void a(int paramInt, String paramString)
   {
-    Runnable localRunnable = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditWebVideoHallowenUpload.jdField_a_of_type_JavaLangRunnable;
-    if (localRunnable != null) {
-      localRunnable.run();
+    boolean bool2 = false;
+    QLog.e("FileMultiMsgManager<FileAssistant>", 1, "Buddy2BuddyTaskExcuter faild");
+    boolean bool1;
+    if ((paramInt == -100001) || (paramInt == -100002) || (paramInt == -100003)) {
+      bool1 = true;
     }
-    if (this.jdField_a_of_type_Boolean)
+    for (;;)
     {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditWebVideoHallowenUpload.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditWebVideoHallowenUpload.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.b);
+      if (QLog.isColorLevel()) {
+        QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start forwardOfflineFileToX[" + this.jdField_a_of_type_Aoec.jdField_a_of_type_JavaLangString + "] faild:" + paramInt);
+      }
+      this.jdField_a_of_type_Aoex.a(aoea.a(this.jdField_a_of_type_Aoec.jdField_a_of_type_Long, bool2), bool1);
       return;
+      if ((paramInt == -6101) || (paramInt == -7003))
+      {
+        bool1 = false;
+        bool2 = true;
+      }
+      else
+      {
+        bool1 = false;
+      }
     }
-    QQToast.a(BaseApplicationImpl.sApplication, "上传失败", 0).a();
+  }
+  
+  public void a(String paramString)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putString("_m_ForwardFileType", "1");
+    localBundle.putString("_m_ForwardReceiverUin", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardFileName", this.jdField_a_of_type_Aoec.jdField_a_of_type_JavaLangString);
+    localBundle.putString("_m_ForwardSize", this.jdField_a_of_type_Aoec.jdField_a_of_type_Long + "");
+    localBundle.putString("_m_ForwardMd5", this.jdField_a_of_type_Aoec.c);
+    localBundle.putString("_m_ForwardUuid", paramString);
+    localBundle.putString("_m_ForwardDeadTime", "0");
+    localBundle.putString("_m_ForwardImgWidth", this.jdField_a_of_type_Aoec.e);
+    localBundle.putString("_m_ForwardImgHeight", this.jdField_a_of_type_Aoec.f);
+    if (QLog.isColorLevel()) {
+      QLog.i("FileMultiMsgManager<FileAssistant>", 1, "start forwardOfflineFileToX[" + this.jdField_a_of_type_Aoec.jdField_a_of_type_JavaLangString + "] success");
+    }
+    this.jdField_a_of_type_Aoex.a(paramString, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aoed
  * JD-Core Version:    0.7.0.1
  */

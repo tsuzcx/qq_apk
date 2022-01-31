@@ -1,23 +1,45 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.profile.PersonalityLabel.PersonalityLabelZan;
+import android.support.v4.util.SparseArrayCompat;
+import android.text.TextUtils;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public final class agti
-  implements Parcelable.Creator
+public class agti
 {
-  public PersonalityLabelZan a(Parcel paramParcel)
+  public int a;
+  public SparseArrayCompat<ArrayList<String>> a;
+  
+  public agti()
   {
-    return new PersonalityLabelZan(paramParcel);
+    this.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = new SparseArrayCompat();
   }
   
-  public PersonalityLabelZan[] a(int paramInt)
+  public static agti a(String paramString)
   {
-    return new PersonalityLabelZan[paramInt];
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    agti localagti = new agti();
+    Object localObject = new JSONObject(paramString);
+    localagti.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("avoid_peak_interval");
+    paramString = new SparseArrayCompat();
+    localObject = ((JSONObject)localObject).optJSONArray("regions");
+    if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+    {
+      int i = 0;
+      while (i < ((JSONArray)localObject).length())
+      {
+        paramString.put(i, agsy.a(((JSONArray)localObject).optJSONArray(i)));
+        i += 1;
+      }
+    }
+    localagti.jdField_a_of_type_AndroidSupportV4UtilSparseArrayCompat = paramString;
+    return localagti;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agti
  * JD-Core Version:    0.7.0.1
  */

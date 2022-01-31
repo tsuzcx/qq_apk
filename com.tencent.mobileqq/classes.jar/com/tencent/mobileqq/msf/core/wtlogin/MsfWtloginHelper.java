@@ -50,13 +50,11 @@ public class MsfWtloginHelper
   }
   
   public int CheckPictureAndGetSt(String paramString, byte[] paramArrayOfByte, WUserSigInfo paramWUserSigInfo)
-    throws Exception
   {
     return this._baseService.CheckPictureAndGetSt(this.helperTag, paramString, paramArrayOfByte, paramWUserSigInfo, this.subRemoteWtloginListener);
   }
   
   public int CheckSMSAndGetSt(String paramString, byte[] paramArrayOfByte, WUserSigInfo paramWUserSigInfo)
-    throws Exception
   {
     return this._baseService.CheckSMSAndGetSt(this.helperTag, paramString, paramArrayOfByte, paramWUserSigInfo, this.subRemoteWtloginListener);
   }
@@ -67,13 +65,11 @@ public class MsfWtloginHelper
   }
   
   public int CloseCode(String paramString, long paramLong, byte[] paramArrayOfByte, int paramInt, List paramList, WUserSigInfo paramWUserSigInfo)
-    throws Exception
   {
     return this._baseService.CloseCode(this.helperTag, paramString, paramLong, paramArrayOfByte, paramInt, paramList, paramWUserSigInfo, this.subRemoteWtloginListener);
   }
   
   public int GetA1WithA1(String paramString, long paramLong1, long paramLong2, byte[] paramArrayOfByte1, long paramLong3, long paramLong4, long paramLong5, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, WUserSigInfo paramWUserSigInfo, WFastLoginInfo paramWFastLoginInfo)
-    throws Exception
   {
     return this._baseService.GetA1WithA1(this.helperTag, paramString, paramLong1, paramLong2, paramArrayOfByte1, paramLong3, paramLong4, paramLong5, paramArrayOfByte2, paramArrayOfByte3, paramWUserSigInfo, paramWFastLoginInfo, this.subRemoteWtloginListener);
   }
@@ -104,13 +100,11 @@ public class MsfWtloginHelper
   }
   
   public int GetStWithPasswd(String paramString1, long paramLong, String paramString2, WUserSigInfo paramWUserSigInfo)
-    throws Exception
   {
     return this._baseService.GetStWithPasswd(this.helperTag, paramString1, paramLong, paramString2, paramWUserSigInfo, this.subRemoteWtloginListener);
   }
   
   public int GetStWithoutPasswd(String paramString, long paramLong1, long paramLong2, WUserSigInfo paramWUserSigInfo)
-    throws Exception
   {
     return this._baseService.GetStWithoutPasswd(this.helperTag, paramString, paramLong1, paramLong2, paramWUserSigInfo, this.subRemoteWtloginListener);
   }
@@ -131,25 +125,21 @@ public class MsfWtloginHelper
   }
   
   public int RefreshPictureData(String paramString, WUserSigInfo paramWUserSigInfo)
-    throws Exception
   {
     return this._baseService.RefreshPictureData(this.helperTag, paramString, paramWUserSigInfo, this.subRemoteWtloginListener);
   }
   
   public int RefreshSMSData(String paramString, WUserSigInfo paramWUserSigInfo)
-    throws Exception
   {
     return this._baseService.RefreshSMSData(this.helperTag, paramString, paramWUserSigInfo, this.subRemoteWtloginListener);
   }
   
   public void SetTestHost(int paramInt, String paramString)
-    throws Exception
   {
     this._baseService.setTestHost(this.helperTag, paramInt, paramString, this.subRemoteWtloginListener);
   }
   
   public int VerifyCode(String paramString, long paramLong, boolean paramBoolean, byte[] paramArrayOfByte, int[] paramArrayOfInt, int paramInt, WUserSigInfo paramWUserSigInfo)
-    throws Exception
   {
     return this._baseService.VerifyCode(this.helperTag, paramString, paramLong, paramBoolean, paramArrayOfByte, paramArrayOfInt, paramInt, paramWUserSigInfo, this.subRemoteWtloginListener);
   }

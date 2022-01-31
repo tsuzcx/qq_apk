@@ -2,12 +2,12 @@ package com.tencent.device;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.ipc.QrHandleResultCallBack;
+import vux;
 
 final class DeviceScanner$1
   implements DialogInterface.OnClickListener
 {
-  DeviceScanner$1(QrHandleResultCallBack paramQrHandleResultCallBack) {}
+  DeviceScanner$1(vux paramvux) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {

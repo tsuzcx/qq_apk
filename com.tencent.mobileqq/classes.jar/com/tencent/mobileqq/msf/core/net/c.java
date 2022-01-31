@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.msf.core.net;
 
 import com.tencent.mobileqq.msf.core.MsfCore;
-import com.tencent.mobileqq.msf.core.af;
+import com.tencent.mobileqq.msf.core.ag;
 import com.tencent.qphone.base.util.MsfSocketInputBuffer;
 import com.tencent.qphone.base.util.QLog;
 import java.io.InputStream;
@@ -33,11 +33,10 @@ public class c
   
   public void a()
   {
-    this.a.sender.h();
+    this.a.sender.i();
   }
   
-  public void a(MsfSocketInputBuffer paramMsfSocketInputBuffer)
-    throws Exception
+  public void a(MsfSocketInputBuffer paramMsfSocketInputBuffer, int paramInt)
   {
     Object localObject2 = new MsfHttpRespParse(paramMsfSocketInputBuffer).parse();
     if (MsfHttpRespParse.canResponseHaveBody((MsfHttpResp)localObject2))
@@ -54,7 +53,7 @@ public class c
         break;
       }
       if (i == 100) {
-        break label283;
+        break label287;
       }
       throw new ProtocolException("Unexpected response: " + ((MsfHttpResp)localObject2).getStatusLine());
       label104:
@@ -85,9 +84,9 @@ public class c
       }
     }
     if (((ArrayList)localObject1).size() == 1) {
-      this.a.sender.c((byte[])((ArrayList)localObject1).get(0));
+      this.a.sender.a((byte[])((ArrayList)localObject1).get(0), paramInt);
     }
-    label283:
+    label287:
     while (!paramMsfSocketInputBuffer.hasBufferedData())
     {
       return;
@@ -98,7 +97,7 @@ public class c
         arrayOfByte1 = (byte[])((Iterator)localObject1).next();
         System.arraycopy(arrayOfByte1, 0, localObject2, i, arrayOfByte1.length);
       }
-      this.a.sender.c((byte[])localObject2);
+      this.a.sender.a((byte[])localObject2, paramInt);
     }
   }
   
@@ -147,7 +146,7 @@ public class c
   
   protected byte[] b(com.tencent.mobileqq.msf.core.d paramd, String paramString1, String paramString2, byte[] paramArrayOfByte)
   {
-    paramd = ("POST / HTTP/1.1\r\nConnection: Keep-Alive\r\nHost: " + paramd.c() + ":" + paramd.d() + "\r\nAccept: */*\r\nUser-Agent: javaMsfClient\r\nContent-Type: application/x-www-form-urlencoded\r\nContent-Length: " + paramArrayOfByte.length + "\r\n\r\n").getBytes();
+    paramd = ("POST / HTTP/1.1\r\nConnection: Keep-Alive\r\nHost: " + paramd.c() + ":" + paramd.f() + "\r\nAccept: */*\r\nUser-Agent: javaMsfClient\r\nContent-Type: application/x-www-form-urlencoded\r\nContent-Length: " + paramArrayOfByte.length + "\r\n\r\n").getBytes();
     paramString1 = new byte[paramd.length + paramArrayOfByte.length];
     System.arraycopy(paramd, 0, paramString1, 0, paramd.length);
     System.arraycopy(paramArrayOfByte, 0, paramString1, paramd.length, paramArrayOfByte.length);

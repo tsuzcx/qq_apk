@@ -26,6 +26,7 @@ public abstract class z
   protected static ConcurrentLinkedQueue g = new ConcurrentLinkedQueue();
   protected static final HashSet h = new HashSet(3);
   static final String n = "appTimeoutReq";
+  private volatile boolean b = false;
   protected volatile IBaseService c;
   protected Object d = new Object();
   protected volatile Handler i;
@@ -34,10 +35,11 @@ public abstract class z
   protected volatile int l = -1;
   AtomicInteger m = new AtomicInteger();
   String o;
-  protected boolean p;
-  protected boolean q;
-  protected a r;
+  protected boolean p = false;
+  protected boolean q = false;
+  protected z.a r = null;
   protected ServiceConnection s = new aa(this);
+  private volatile long t;
   
   public z(String paramString)
   {
@@ -53,11 +55,10 @@ public abstract class z
       h.add(MsfCommand.reportSocket.name());
       h.add("App_reportRDM");
     }
-    this.r = new a();
+    this.r = new z.a(this);
   }
   
   protected int a(ToServiceMsg paramToServiceMsg)
-    throws RemoteException, NullPointerException
   {
     try
     {
@@ -115,54 +116,54 @@ public abstract class z
   boolean b()
   {
     // Byte code:
-    //   0: new 180	android/content/ComponentName
+    //   0: new 184	android/content/ComponentName
     //   3: dup
-    //   4: invokestatic 103	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   7: invokevirtual 183	com/tencent/qphone/base/util/BaseApplication:getPackageName	()Ljava/lang/String;
+    //   4: invokestatic 108	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   7: invokevirtual 187	com/tencent/qphone/base/util/BaseApplication:getPackageName	()Ljava/lang/String;
     //   10: aload_0
-    //   11: getfield 94	com/tencent/mobileqq/msf/sdk/z:o	Ljava/lang/String;
-    //   14: invokespecial 186	android/content/ComponentName:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   11: getfield 99	com/tencent/mobileqq/msf/sdk/z:o	Ljava/lang/String;
+    //   14: invokespecial 190	android/content/ComponentName:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   17: astore_2
-    //   18: new 188	android/content/Intent
+    //   18: new 192	android/content/Intent
     //   21: dup
-    //   22: invokespecial 189	android/content/Intent:<init>	()V
+    //   22: invokespecial 193	android/content/Intent:<init>	()V
     //   25: astore_3
     //   26: aload_3
     //   27: aload_2
-    //   28: invokevirtual 193	android/content/Intent:setComponent	(Landroid/content/ComponentName;)Landroid/content/Intent;
+    //   28: invokevirtual 197	android/content/Intent:setComponent	(Landroid/content/ComponentName;)Landroid/content/Intent;
     //   31: pop
-    //   32: invokestatic 103	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   32: invokestatic 108	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
     //   35: aload_3
     //   36: aload_0
-    //   37: getfield 92	com/tencent/mobileqq/msf/sdk/z:s	Landroid/content/ServiceConnection;
+    //   37: getfield 97	com/tencent/mobileqq/msf/sdk/z:s	Landroid/content/ServiceConnection;
     //   40: iconst_1
-    //   41: invokevirtual 220	com/tencent/qphone/base/util/BaseApplication:bindService	(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
+    //   41: invokevirtual 224	com/tencent/qphone/base/util/BaseApplication:bindService	(Landroid/content/Intent;Landroid/content/ServiceConnection;I)Z
     //   44: istore_1
-    //   45: invokestatic 203	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   45: invokestatic 207	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   48: ifeq +40 -> 88
-    //   51: ldc 13
+    //   51: ldc 8
     //   53: iconst_2
-    //   54: new 222	java/lang/StringBuilder
+    //   54: new 226	java/lang/StringBuilder
     //   57: dup
-    //   58: invokespecial 223	java/lang/StringBuilder:<init>	()V
-    //   61: ldc 225
-    //   63: invokevirtual 229	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: invokespecial 227	java/lang/StringBuilder:<init>	()V
+    //   61: ldc 229
+    //   63: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   66: aload_0
-    //   67: getfield 94	com/tencent/mobileqq/msf/sdk/z:o	Ljava/lang/String;
-    //   70: invokevirtual 229	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   73: ldc 231
-    //   75: invokevirtual 229	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   67: getfield 99	com/tencent/mobileqq/msf/sdk/z:o	Ljava/lang/String;
+    //   70: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   73: ldc 235
+    //   75: invokevirtual 233	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   78: iload_1
-    //   79: invokevirtual 234	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   82: invokevirtual 237	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   85: invokestatic 208	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   79: invokevirtual 238	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   82: invokevirtual 241	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   85: invokestatic 212	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   88: iload_1
     //   89: ireturn
     //   90: astore_2
     //   91: iconst_0
     //   92: istore_1
     //   93: aload_2
-    //   94: invokevirtual 211	java/lang/Exception:printStackTrace	()V
+    //   94: invokevirtual 215	java/lang/Exception:printStackTrace	()V
     //   97: iload_1
     //   98: ireturn
     //   99: astore_2
@@ -247,61 +248,52 @@ public abstract class z
     }
   }
   
+  public int getMsfConnectedIPFamily()
+  {
+    try
+    {
+      int i1 = this.c.getMsfConnectedIPFamily();
+      return i1;
+    }
+    catch (Exception localException) {}
+    return 0;
+  }
+  
+  public final int getMsfConnectedNetType()
+  {
+    try
+    {
+      int i1 = this.c.getMsfConnectedNetType();
+      return i1;
+    }
+    catch (RemoteException localRemoteException) {}
+    return 0;
+  }
+  
   protected boolean m()
   {
     return this.c != null;
   }
   
+  public int onProcessViewableChanged(boolean paramBoolean, long paramLong, String paramString)
+  {
+    IBaseService localIBaseService = this.c;
+    this.b = paramBoolean;
+    this.t = paramLong;
+    if (localIBaseService != null) {}
+    try
+    {
+      localIBaseService.onProcessViewableChanged(paramBoolean, this.t, paramString);
+      label36:
+      return 0;
+    }
+    catch (Exception paramString)
+    {
+      break label36;
+    }
+  }
+  
   public abstract int sendMsg(ToServiceMsg paramToServiceMsg);
-  
-  protected class a
-    implements Runnable
-  {
-    public a() {}
-    
-    public void run()
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.D.RemoteServiceProxy", 2, "delay send queueSize: " + z.g.size());
-      }
-      z.this.q = false;
-      if (z.g.size() > 0) {
-        while (!z.g.isEmpty())
-        {
-          ToServiceMsg localToServiceMsg = (ToServiceMsg)z.g.poll();
-          z.this.sendMsg(localToServiceMsg);
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.D.RemoteServiceProxy", 2, "delay send finished queueSize: " + z.g.size());
-      }
-    }
-  }
-  
-  protected class b
-    implements Runnable
-  {
-    private ToServiceMsg b;
-    
-    public b(ToServiceMsg paramToServiceMsg)
-    {
-      this.b = paramToServiceMsg;
-    }
-    
-    public void run()
-    {
-      if (("LongConn.OffPicUp".equalsIgnoreCase(this.b.getServiceCmd())) || ("ImgStore.GroupPicUp".equalsIgnoreCase(this.b.getServiceCmd()))) {
-        QLog.d("MSF.D.RemoteServiceProxy", 1, "enter MonitorTaskWrapper.run(), appseq is " + this.b.getAppSeq());
-      }
-      Object localObject = (ToServiceMsg)z.f.get(Integer.valueOf(this.b.getAppSeq()));
-      if ((localObject != null) && (((ToServiceMsg)localObject).getAttribute("appTimeoutReq", Integer.valueOf(-1)) == this.b.getAttribute("appTimeoutReq", Integer.valueOf(-2))) && ((ToServiceMsg)z.f.remove(Integer.valueOf(this.b.getAppSeq())) != null))
-      {
-        QLog.d("MSF.D.RemoteServiceProxy", 1, "found timeout req, appseq is " + this.b.getAppSeq());
-        localObject = z.this.a(this.b, this.b.getServiceName() + " timeout");
-        z.this.a(this.b, (FromServiceMsg)localObject);
-      }
-    }
-  }
 }
 
 

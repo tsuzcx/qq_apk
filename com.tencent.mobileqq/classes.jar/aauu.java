@@ -1,23 +1,31 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
 
 class aauu
-  implements ArkAppCenter.OnGetAppIcon
+  implements afxz
 {
-  aauu(aaut paramaaut, QQCustomDialog paramQQCustomDialog) {}
+  aauu(aaur paramaaur) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void a(Context paramContext, boolean paramBoolean)
   {
-    if (paramBitmap != null) {
-      ((ImageView)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131364066)).setImageBitmap(paramBitmap);
+    if (paramBoolean)
+    {
+      bbmy.a(this.a.a.getApplicationContext(), 1, ajjy.a(2131639105), 0).a();
+      return;
     }
+    paramContext = new Intent(this.a.a, GuideBindPhoneActivity.class);
+    paramContext.putExtra("fromKeyForContactBind", 5);
+    paramContext.putExtra("key_contact_name", this.a.a.a.a.k);
+    paramContext.putExtra("key_contact_phone", this.a.a.a.a.a);
+    this.a.a.startActivity(paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aauu
  * JD-Core Version:    0.7.0.1
  */

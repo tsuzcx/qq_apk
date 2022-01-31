@@ -1,19 +1,27 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
-import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class aagj
-  implements Runnable
+public final class aagj
+  implements DialogInterface.OnClickListener
 {
-  public aagj(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
+  public aagj(aagn paramaagn, aagm paramaagm) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ARWorldCupGameLogicManager.a().h();
+    if (this.jdField_a_of_type_Aagn.a) {
+      awqx.b(null, "CliOper", "", "", "Two_call", "Clk_shield_btn", 0, 0, "2", "", "", "");
+    }
+    if (this.jdField_a_of_type_Aagm != null) {
+      this.jdField_a_of_type_Aagm.a();
+    }
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aagj
  * JD-Core Version:    0.7.0.1
  */

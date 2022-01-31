@@ -1,24 +1,22 @@
-import android.content.SharedPreferences;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.olympic.OlympicManager;
-import com.tencent.mobileqq.olympic.TorchInfo;
-import java.io.ByteArrayOutputStream;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import mqq.util.WeakReference;
 
-public class agim
-  implements Runnable
+class agim
+  implements acwd
 {
-  public agim(OlympicManager paramOlympicManager, TorchInfo paramTorchInfo) {}
+  agim(agil paramagil) {}
   
-  public void run()
+  public void a()
   {
-    synchronized (OlympicManager.b(this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager))
-    {
-      new ByteArrayOutputStream();
-      OlympicManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager);
-      boolean bool = this.jdField_a_of_type_ComTencentMobileqqOlympicOlympicManager.a.getPreferences().getBoolean("olympic_setting_ever_fetch_flag_switch_here", false);
-      if ((this.jdField_a_of_type_ComTencentMobileqqOlympicTorchInfo.transfer_num != 1L) && (!bool)) {}
-      return;
-    }
+    ((NewPhotoPreviewActivity)this.a.a.a.get()).setResult(-1, new Intent());
+    ((NewPhotoPreviewActivity)this.a.a.a.get()).finish();
+  }
+  
+  public void b()
+  {
+    ((NewPhotoPreviewActivity)this.a.a.a.get()).setResult(-1, new Intent());
+    ((NewPhotoPreviewActivity)this.a.a.a.get()).finish();
   }
 }
 

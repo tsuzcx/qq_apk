@@ -1,21 +1,17 @@
-import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForPic;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public class vhs
-  implements Runnable
+public final class vhs
+  implements FilenameFilter
 {
-  public vhs(PicItemBuilder paramPicItemBuilder, MessageForPic paramMessageForPic) {}
-  
-  public void run()
+  public boolean accept(File paramFile, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.a.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq);
+    return paramString.endsWith(".mp4");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vhs
  * JD-Core Version:    0.7.0.1
  */

@@ -7,21 +7,27 @@ import com.qq.taf.jce.JceStruct;
 public final class FeedQzmallDeco
   extends JceStruct
 {
-  static QzmallCustomBubbleSkin cache_stBubbleSkin = new QzmallCustomBubbleSkin();
+  static QzmallCustomBubbleSkin cache_stBubbleSkin;
   static QzmallCustomPassivePraise cache_stCustomPassivePraise;
   static QzmallCustomPraise cache_stCustomPraise;
   static QzmallCustomVip cache_stCustomVip;
   static QzmallFacade cache_stFacade;
+  static FacadeDIY cache_stFacadeDIY = new FacadeDIY();
   static QzmallFeedAvatar cache_stFeedAvatar = new QzmallFeedAvatar();
   static QzmallFeedSkin cache_stFeedSkin;
-  static ActYellowDiamond cache_stYellowDiamond = new ActYellowDiamond();
+  static QzoneDescription cache_stQzDescription = new QzoneDescription();
+  static ReturnToPraise cache_stReturnToPraise;
+  static ActYellowDiamond cache_stYellowDiamond;
   public QzmallCustomBubbleSkin stBubbleSkin;
   public QzmallCustomPassivePraise stCustomPassivePraise;
   public QzmallCustomPraise stCustomPraise;
   public QzmallCustomVip stCustomVip;
   public QzmallFacade stFacade;
+  public FacadeDIY stFacadeDIY;
   public QzmallFeedAvatar stFeedAvatar;
   public QzmallFeedSkin stFeedSkin;
+  public QzoneDescription stQzDescription;
+  public ReturnToPraise stReturnToPraise;
   public ActYellowDiamond stYellowDiamond;
   
   static
@@ -31,11 +37,14 @@ public final class FeedQzmallDeco
     cache_stCustomPraise = new QzmallCustomPraise();
     cache_stFeedSkin = new QzmallFeedSkin();
     cache_stFacade = new QzmallFacade();
+    cache_stBubbleSkin = new QzmallCustomBubbleSkin();
+    cache_stYellowDiamond = new ActYellowDiamond();
+    cache_stReturnToPraise = new ReturnToPraise();
   }
   
   public FeedQzmallDeco() {}
   
-  public FeedQzmallDeco(QzmallFeedAvatar paramQzmallFeedAvatar, QzmallCustomVip paramQzmallCustomVip, QzmallCustomPassivePraise paramQzmallCustomPassivePraise, QzmallCustomPraise paramQzmallCustomPraise, QzmallFeedSkin paramQzmallFeedSkin, QzmallFacade paramQzmallFacade, QzmallCustomBubbleSkin paramQzmallCustomBubbleSkin, ActYellowDiamond paramActYellowDiamond)
+  public FeedQzmallDeco(QzmallFeedAvatar paramQzmallFeedAvatar, QzmallCustomVip paramQzmallCustomVip, QzmallCustomPassivePraise paramQzmallCustomPassivePraise, QzmallCustomPraise paramQzmallCustomPraise, QzmallFeedSkin paramQzmallFeedSkin, QzmallFacade paramQzmallFacade, QzmallCustomBubbleSkin paramQzmallCustomBubbleSkin, ActYellowDiamond paramActYellowDiamond, ReturnToPraise paramReturnToPraise, FacadeDIY paramFacadeDIY, QzoneDescription paramQzoneDescription)
   {
     this.stFeedAvatar = paramQzmallFeedAvatar;
     this.stCustomVip = paramQzmallCustomVip;
@@ -45,6 +54,9 @@ public final class FeedQzmallDeco
     this.stFacade = paramQzmallFacade;
     this.stBubbleSkin = paramQzmallCustomBubbleSkin;
     this.stYellowDiamond = paramActYellowDiamond;
+    this.stReturnToPraise = paramReturnToPraise;
+    this.stFacadeDIY = paramFacadeDIY;
+    this.stQzDescription = paramQzoneDescription;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -57,6 +69,9 @@ public final class FeedQzmallDeco
     this.stFacade = ((QzmallFacade)paramJceInputStream.read(cache_stFacade, 5, false));
     this.stBubbleSkin = ((QzmallCustomBubbleSkin)paramJceInputStream.read(cache_stBubbleSkin, 6, false));
     this.stYellowDiamond = ((ActYellowDiamond)paramJceInputStream.read(cache_stYellowDiamond, 7, false));
+    this.stReturnToPraise = ((ReturnToPraise)paramJceInputStream.read(cache_stReturnToPraise, 8, false));
+    this.stFacadeDIY = ((FacadeDIY)paramJceInputStream.read(cache_stFacadeDIY, 9, false));
+    this.stQzDescription = ((QzoneDescription)paramJceInputStream.read(cache_stQzDescription, 10, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -84,6 +99,15 @@ public final class FeedQzmallDeco
     }
     if (this.stYellowDiamond != null) {
       paramJceOutputStream.write(this.stYellowDiamond, 7);
+    }
+    if (this.stReturnToPraise != null) {
+      paramJceOutputStream.write(this.stReturnToPraise, 8);
+    }
+    if (this.stFacadeDIY != null) {
+      paramJceOutputStream.write(this.stFacadeDIY, 9);
+    }
+    if (this.stQzDescription != null) {
+      paramJceOutputStream.write(this.stQzDescription, 10);
     }
   }
 }

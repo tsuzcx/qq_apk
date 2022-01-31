@@ -1,21 +1,10 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-
-public class ugt
-  implements View.OnClickListener
+public abstract interface ugt
 {
-  public ugt(TroopMemberListActivity paramTroopMemberListActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    this.a.setResult(0, this.a.getIntent());
-    this.a.finish();
-  }
+  public abstract void a(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ugt
  * JD-Core Version:    0.7.0.1
  */

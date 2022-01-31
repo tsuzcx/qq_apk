@@ -1,20 +1,41 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-class acwv
-  implements Runnable
+public class acwv
+  implements acxg
 {
-  acwv(acwp paramacwp) {}
+  private BaseChatPie a;
   
-  public void run()
+  public acwv(BaseChatPie paramBaseChatPie)
   {
-    UniformDownloadActivity.b(this.a.a).setVisibility(4);
-    this.a.a.finish();
+    this.a = paramBaseChatPie;
+  }
+  
+  private void a()
+  {
+    if ((this.a != null) && (this.a.a != null)) {
+      ((aryq)this.a.a.getManager(324)).onDestroy();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    a();
+  }
+  
+  public int[] a()
+  {
+    return new int[] { 11 };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acwv
  * JD-Core Version:    0.7.0.1
  */

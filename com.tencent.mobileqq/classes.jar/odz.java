@@ -1,86 +1,57 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.model.StoryManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.network.BatchHandlerListPuller.IPullResultCallback;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.MyStorys;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetMyStoryDesFromVidListStep;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetMyStoryDesFromVidListStep.ReceiveDataListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetMyStoryVideoListStep.Result;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.Step.FinishCallBack;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.util.ArrayList;
-import java.util.Collections;
+import android.text.TextUtils;
+import com.tencent.aladdin.config.handlers.AladdinConfigHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class odz
-  implements BatchHandlerListPuller.IPullResultCallback
+  implements AladdinConfigHandler
 {
-  public odz(GetMyStoryDesFromVidListStep paramGetMyStoryDesFromVidListStep, ArrayList paramArrayList) {}
+  private static final Set<String> a = ;
   
-  public void a(boolean paramBoolean)
+  public static Set<String> a()
   {
-    SLog.d("GetMyStoryDesFromVidListStep", "onFinishAll(%b[isEveryTaskSuccess])", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (!paramBoolean)
-    {
-      SLog.e("GetMyStoryDesFromVidListStep", "Get vid to basic info failed!");
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack != null)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep.a());
-        return;
-      }
-      SLog.d("GetMyStoryDesFromVidListStep", "finish callBack is null");
-      return;
+    return a;
+  }
+  
+  private static Set<String> b()
+  {
+    HashSet localHashSet = new HashSet();
+    Object localObject = (String)bgmq.a("readinjjoy_feeds_card_whitelist", "");
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return localHashSet;
     }
-    Object localObject1 = (StoryManager)SuperManager.a(5);
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    ArrayList localArrayList = new ArrayList();
-    Object localObject2;
-    Object localObject3;
+    localObject = ((String)localObject).split("\\|");
+    int j = localObject.length;
+    int i = 0;
+    while (i < j)
+    {
+      localHashSet.add(localObject[i]);
+      i += 1;
+    }
+    return localHashSet;
+  }
+  
+  public boolean onReceiveConfig(int paramInt1, int paramInt2, String paramString)
+  {
+    QLog.d("WhiteListBidConfigHandler", 1, "[onReceiveConfig] " + paramString);
+    paramString = ocx.a(paramString);
+    Iterator localIterator = paramString.keySet().iterator();
     while (localIterator.hasNext())
     {
-      localObject2 = (String)localIterator.next();
-      localObject3 = ((StoryManager)localObject1).a((String)localObject2);
-      SLog.b("GetMyStoryDesFromVidListStep", "manager.queryVideoByVid(%s) = %s", localObject2, localObject3);
-      if (localObject3 == null) {
-        SLog.e("GetMyStoryDesFromVidListStep", "manager.queryVideoByVid(%s) return null", new Object[] { localObject2 });
-      } else {
-        localArrayList.add(localObject3);
-      }
+      String str1 = (String)localIterator.next();
+      String str2 = (String)paramString.get(str1);
+      QLog.d("WhiteListBidConfigHandler", 2, "[onReceiveConfig] key=" + str1 + ", value=" + str2);
+      bgmq.a("default_feeds_aladdin_keys", str2);
     }
-    ((StoryManager)localObject1).a(QQStoryContext.a().b(), 0, localArrayList, true);
-    localIterator = ((StoryManager)localObject1).a(false).iterator();
-    while (localIterator.hasNext())
-    {
-      localObject2 = (StoryVideoItem)localIterator.next();
-      localObject3 = HomeFeedPresenter.b((StoryVideoItem)localObject2, localArrayList);
-      if (localObject3 != null)
-      {
-        ((StoryManager)localObject1).a(((StoryVideoItem)localObject2).mVid);
-        SLog.d("GetMyStoryDesFromVidListStep", "delete local fake item because we get real item from server, local vid=%s, network vid=%s", new Object[] { ((StoryVideoItem)localObject2).mVid, localObject3 });
-      }
-      else
-      {
-        HomeFeedPresenter.a((StoryVideoItem)localObject2);
-      }
-    }
-    localObject1 = ((StoryManager)localObject1).e(QQStoryContext.a().b());
-    GetMyStoryDesFromVidListStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep).b();
-    GetMyStoryDesFromVidListStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep).a((List)localObject1);
-    GetMyStoryDesFromVidListStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep).jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result.jdField_a_of_type_ComTencentBizQqstoryModelItemFeedFeatureItem;
-    GetMyStoryDesFromVidListStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep).b = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryVideoListStep$Result.jdField_a_of_type_Boolean;
-    Collections.sort(GetMyStoryDesFromVidListStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep).a());
-    if (GetMyStoryDesFromVidListStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep) != null) {
-      GetMyStoryDesFromVidListStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep).a(GetMyStoryDesFromVidListStep.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep));
-    }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack != null)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestStep$FinishCallBack.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestGetMyStoryDesFromVidListStep.a());
-      return;
-    }
-    SLog.d("GetMyStoryDesFromVidListStep", "finish callBack is null");
+    return true;
+  }
+  
+  public void onWipeConfig(int paramInt)
+  {
+    QLog.d("WhiteListBidConfigHandler", 1, "[onWipeConfig]");
   }
 }
 

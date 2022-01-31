@@ -4,7 +4,6 @@ import android.content.Context;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.provider.Settings.Secure;
-import android.telephony.TelephonyManager;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -31,24 +30,7 @@ public class AVDeviceHelper
   
   public static String doRead(Context paramContext)
   {
-    for (;;)
-    {
-      try
-      {
-        paramContext = (TelephonyManager)paramContext.getSystemService("phone");
-        if (paramContext == null) {
-          continue;
-        }
-        paramContext = paramContext.getDeviceId();
-      }
-      catch (Exception paramContext)
-      {
-        paramContext = "";
-        continue;
-      }
-      return string2Md5(paramContext);
-      paramContext = null;
-    }
+    return string2Md5("");
   }
   
   public static String getDeviceIdentifier(Context paramContext)
@@ -135,7 +117,7 @@ public class AVDeviceHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.TMG.utils.AVDeviceHelper
  * JD-Core Version:    0.7.0.1
  */

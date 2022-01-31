@@ -1,76 +1,169 @@
-import android.content.ComponentName;
+import android.content.ContentResolver;
 import android.content.Context;
-import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore.Images.Media;
 import android.text.TextUtils;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.av.ui.AVLoadingDialogActivity;
-import com.tencent.av.utils.GVideoUpdateUtil.OnGVideoUpdateListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.qcall.QCallFacade;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.groupvideo.GroupVideoHelper;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
-public final class scl
-  implements GVideoUpdateUtil.OnGVideoUpdateListener
+public class scl
 {
-  public scl(int paramInt1, int paramInt2, QQAppInterface paramQQAppInterface, QCallFacade paramQCallFacade, long paramLong1, Intent paramIntent, long paramLong2, String paramString) {}
+  private Context a = QQStoryContext.a().a().getBaseContext();
   
-  public void a(Context paramContext, String paramString)
+  private boolean a(sdg paramsdg)
   {
-    paramString = null;
-    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_b_of_type_Int == 3000)) {
-      ThreadManager.post(new scm(this), 5, null, true);
-    }
-    int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("MultiAVType", 0);
-    String str;
-    if (i != 2)
+    if ((paramsdg.jdField_a_of_type_Int <= 240) || (paramsdg.jdField_b_of_type_Int <= 240))
     {
-      str = this.jdField_a_of_type_AndroidContentIntent.getComponent().getClassName();
-      paramString = paramContext.getClass().getName();
-      QLog.w("ChatActivityUtils", 1, "createOrEnterGroupAudio, className[" + str + "], contextName[" + paramString + "]");
+      urk.a("Q.qqstory.recommendAlbum.logic.StoryScanManager.ScanTask", "is not match w=%d,h=%d,path=%s", Integer.valueOf(paramsdg.jdField_a_of_type_Int), Integer.valueOf(paramsdg.jdField_b_of_type_Int), paramsdg.jdField_a_of_type_JavaLangString);
+      return false;
+    }
+    if (paramsdg.jdField_b_of_type_Int / paramsdg.jdField_a_of_type_Int <= 0.2F)
+    {
+      urk.a("Q.qqstory.recommendAlbum.logic.StoryScanManager.ScanTask", "is not match w=%d,h=%d,path=%s", Integer.valueOf(paramsdg.jdField_a_of_type_Int), Integer.valueOf(paramsdg.jdField_b_of_type_Int), paramsdg.jdField_a_of_type_JavaLangString);
+      return false;
+    }
+    if (paramsdg.jdField_b_of_type_Int / paramsdg.jdField_a_of_type_Int >= 2.2F)
+    {
+      urk.a("Q.qqstory.recommendAlbum.logic.StoryScanManager.ScanTask", "is not match w=%d,h=%d,path=%s", Integer.valueOf(paramsdg.jdField_a_of_type_Int), Integer.valueOf(paramsdg.jdField_b_of_type_Int), paramsdg.jdField_a_of_type_JavaLangString);
+      return false;
+    }
+    return true;
+  }
+  
+  public List<sdg> a(Context paramContext, long paramLong, boolean paramBoolean, int paramInt)
+  {
+    urk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.ScanTask", "queryFromMediaStore : " + paramLong);
+    Object localObject1 = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
+    String str = "/DCIM/";
+    Object localObject3 = ((File)localObject1).listFiles();
+    localObject1 = str;
+    int j;
+    int i;
+    if (localObject3 != null)
+    {
+      j = localObject3.length;
+      i = 0;
     }
     for (;;)
     {
-      if (i == 2) {
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(1, this.jdField_b_of_type_Long))
-        {
-          paramContext = new Intent("tencent.video.q2v.back2VideoRoom");
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(paramContext);
-        }
-      }
-      for (;;)
+      localObject1 = str;
+      ArrayList localArrayList;
+      if (i < j)
       {
-        if (this.jdField_a_of_type_Int == 0) {
-          ThreadManager.getFileThreadHandler().post(new sco(this));
-        }
-        return;
-        GroupVideoHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramContext, this.jdField_a_of_type_AndroidContentIntent, 1);
-        continue;
-        if ((!TextUtils.isEmpty(str)) && (str.equals("com.tencent.av.ui.AVActivity")) && (((!TextUtils.isEmpty(paramString)) && (paramString.equals("com.tencent.mobileqq.qcall.QCallDetailActivity"))) || (paramString.equals("com.tencent.mobileqq.activity.selectmember.SelectMemberActivity")) || (paramString.equals("com.tencent.mobileqq.activity.SplashActivity")) || (paramString.equals("com.tencent.mobileqq.activity.recent.RecentT9SearchActivity"))))
-        {
-          paramString = new Intent(paramContext, AVLoadingDialogActivity.class);
-          paramString.putExtra("avactivity_intent", this.jdField_a_of_type_AndroidContentIntent);
-          paramString.addFlags(268435456);
-          AudioHelper.b("发起音视频_start_AVLoadingDialogActivity");
-          paramContext.startActivity(paramString);
-        }
-        else
-        {
-          AudioHelper.b("发起音视频_start_AVActivity");
-          paramContext.startActivity(this.jdField_a_of_type_AndroidContentIntent);
+        localObject1 = localObject3[i];
+        if (TextUtils.equals(((File)localObject1).getName().toLowerCase(), "camera")) {
+          localObject1 = "/DCIM/" + ((File)localObject1).getName() + "/";
         }
       }
-      str = null;
+      else
+      {
+        localArrayList = new ArrayList();
+        localObject3 = QQStoryContext.a().a().createEntityManager();
+        Object localObject4 = "date_modified >=" + paramLong + " and ";
+        str = "_size<=12582912 and (_data like '%" + (String)localObject1 + "%' or " + "_data" + ajjy.a(2131647731);
+        localObject1 = str;
+        if (paramLong > 0L) {
+          localObject1 = (String)localObject4 + str;
+        }
+        if (paramBoolean) {}
+        for (;;)
+        {
+          try
+          {
+            str = " asc limit " + paramInt;
+            paramContext = paramContext.getContentResolver();
+            localObject4 = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+            str = "date_modified" + str;
+            paramContext = paramContext.query((Uri)localObject4, new String[] { "_id", "_data", "date_added", "date_modified", "latitude", "longitude", "_size", "width", "height", "orientation", "mime_type" }, (String)localObject1, null, str);
+          }
+          catch (Exception paramContext)
+          {
+            urk.e("Q.qqstory.recommendAlbum.logic.StoryScanManager.ScanTask", "query cursor error:" + paramContext);
+            paramContext = null;
+            continue;
+            urk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.ScanTask", "queryFromMediaStore DB result = " + paramContext.getCount());
+            if (paramContext.getCount() != 0) {
+              continue;
+            }
+            paramContext.close();
+            return localArrayList;
+            try
+            {
+              ((atmp)localObject3).a().a();
+              paramContext.moveToFirst();
+              paramInt = paramContext.getColumnIndex("_id");
+              i = paramContext.getColumnIndex("date_modified");
+              j = paramContext.getColumnIndex("latitude");
+              int k = paramContext.getColumnIndex("longitude");
+              int m = paramContext.getColumnIndex("_size");
+              int n = paramContext.getColumnIndex("height");
+              int i1 = paramContext.getColumnIndex("width");
+              int i2 = paramContext.getColumnIndex("orientation");
+              int i3 = paramContext.getColumnIndex("_data");
+              int i4 = paramContext.getColumnIndex("mime_type");
+              int i5 = paramContext.getColumnIndex("date_added");
+              localObject1 = new sdg();
+              ((sdg)localObject1).jdField_a_of_type_Long = paramContext.getInt(paramInt);
+              ((sdg)localObject1).jdField_b_of_type_Long = paramContext.getLong(i);
+              ((sdg)localObject1).jdField_a_of_type_Double = paramContext.getDouble(j);
+              ((sdg)localObject1).jdField_b_of_type_Double = paramContext.getDouble(k);
+              ((sdg)localObject1).jdField_b_of_type_Int = paramContext.getInt(n);
+              ((sdg)localObject1).jdField_a_of_type_Int = paramContext.getInt(i1);
+              ((sdg)localObject1).jdField_c_of_type_Int = paramContext.getInt(i2);
+              ((sdg)localObject1).jdField_a_of_type_JavaLangString = paramContext.getString(i3);
+              ((sdg)localObject1).e = paramContext.getLong(m);
+              ((sdg)localObject1).jdField_b_of_type_JavaLangString = "";
+              ((sdg)localObject1).jdField_d_of_type_JavaLangString = paramContext.getString(i4);
+              ((sdg)localObject1).jdField_c_of_type_Long = paramContext.getLong(i5);
+              ((sdg)localObject1).jdField_d_of_type_Long = ((sdg)localObject1).jdField_b_of_type_Long;
+              if (apdh.b(((sdg)localObject1).jdField_a_of_type_JavaLangString)) {
+                continue;
+              }
+              if (paramContext.moveToNext()) {
+                continue;
+              }
+              ((atmp)localObject3).a().c();
+            }
+            catch (Exception localException)
+            {
+              urk.e("Q.qqstory.recommendAlbum.logic.StoryScanManager.ScanTask", "write to db error:" + localException);
+              paramContext.close();
+              ((atmp)localObject3).a().b();
+              continue;
+            }
+            finally
+            {
+              paramContext.close();
+              ((atmp)localObject3).a().b();
+            }
+            urk.d("Q.qqstory.recommendAlbum.logic.StoryScanManager.ScanTask", "queryFromMediaStore match result = " + localArrayList.size());
+            return localArrayList;
+            if (!a((sdg)localObject1)) {
+              continue;
+            }
+            ((atmp)localObject3).b(((sdg)localObject1).a());
+            localArrayList.add(localObject1);
+            continue;
+            if (paramContext != null) {
+              continue;
+            }
+            return localArrayList;
+          }
+          str = " desc limit " + paramInt;
+        }
+      }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     scl
  * JD-Core Version:    0.7.0.1
  */

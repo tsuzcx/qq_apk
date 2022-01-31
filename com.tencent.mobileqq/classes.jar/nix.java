@@ -1,20 +1,86 @@
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Iterator;
+import java.util.List;
 
-public class nix
-  implements Runnable
+class nix
+  extends ohe
 {
-  public nix(MsgTabStoryNodeDelegate paramMsgTabStoryNodeDelegate, boolean paramBoolean1, boolean paramBoolean2) {}
+  nix(nit paramnit) {}
   
-  public void run()
+  public void b(boolean paramBoolean, List<ChannelCoverInfo> paramList)
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a.a()))
+    if ((paramBoolean) && (paramList != null))
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a("exp_story", true, this.b);
-      return;
+      if ((paramList != null) && (paramList.size() > 0)) {
+        this.a.a(paramList);
+      }
+      Iterator localIterator = paramList.iterator();
+      while (localIterator.hasNext())
+      {
+        Object localObject = (ChannelCoverInfo)localIterator.next();
+        if ((!TextUtils.isEmpty(((ChannelCoverInfo)localObject).mChannelJumpUrl)) && (((ChannelCoverInfo)localObject).mChannelJumpUrl.indexOf("html/topic.html") != -1)) {
+          for (;;)
+          {
+            int i;
+            try
+            {
+              for (;;)
+              {
+                localObject = new URL(((ChannelCoverInfo)localObject).mChannelJumpUrl);
+                if (TextUtils.isEmpty(((URL)localObject).getQuery())) {
+                  break;
+                }
+                localObject = ((URL)localObject).getQuery().split("[&]");
+                int j = localObject.length;
+                i = 0;
+                if (i >= j) {
+                  break;
+                }
+                String[] arrayOfString = localObject[i].split("[=]");
+                if (arrayOfString.length <= 1) {
+                  break label272;
+                }
+                boolean bool = "topicid".equals(arrayOfString[0]);
+                if (!bool) {
+                  break label272;
+                }
+                try
+                {
+                  Integer.valueOf(arrayOfString[1]).intValue();
+                  if (!QLog.isColorLevel()) {
+                    break;
+                  }
+                  QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate preload topic and topicId = " + arrayOfString[1]);
+                }
+                catch (Exception localException) {}
+              }
+              if (!QLog.isColorLevel()) {
+                break;
+              }
+              QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate preload topic and topic is illegal");
+            }
+            catch (MalformedURLException localMalformedURLException) {}
+            if (!QLog.isColorLevel()) {
+              break;
+            }
+            QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate preload topic MalformedURLException " + localMalformedURLException);
+            break;
+            label272:
+            i += 1;
+          }
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate infos size" + paramList.size());
+      }
     }
-    SLog.a("Q.qqstory.msgTab.MsgTabStoryNodeDelegate", "exp_story not report because isFirstPage = %b, visible = %b", Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a.a()));
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNaviController", 2, "onMainChannelListUpdate" + paramBoolean);
+    }
   }
 }
 

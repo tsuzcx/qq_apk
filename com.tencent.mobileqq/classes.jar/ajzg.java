@@ -1,70 +1,55 @@
-import android.graphics.BitmapFactory;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.transfile.NearbyImgDownloader;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
-import com.tencent.mobileqq.troop.widget.BorderURLImageView;
-import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
-import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.mobileqq.utils.ImageUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.icebreaking.AIOIceBreakView;
 import com.tencent.qphone.base.util.QLog;
-import java.net.MalformedURLException;
+import com.tencent.widget.CustomImgView;
 
-class ajzg
-  implements Runnable
+public class ajzg
+  implements View.OnClickListener
 {
-  ajzg(ajzf paramajzf, Setting paramSetting) {}
+  public ajzg(AIOIceBreakView paramAIOIceBreakView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataSetting == null) || (this.jdField_a_of_type_ComTencentMobileqqDataSetting.bHeadType == 0))
+    int i = 1;
+    QLog.i("IceBreak.HotPic", 2, "onClick.");
+    URLImageView localURLImageView = (URLImageView)((CustomImgView)paramView).a;
+    paramView = (aelm)paramView.getTag();
+    if ((localURLImageView.getDrawable() instanceof URLDrawable))
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataSetting == null) && (!this.jdField_a_of_type_Ajzf.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.g))
-      {
-        this.jdField_a_of_type_Ajzf.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.g = true;
-        if (!this.jdField_a_of_type_Ajzf.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a()) {
-          this.jdField_a_of_type_Ajzf.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(this.jdField_a_of_type_Ajzf.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.b, 4, true);
-        }
-      }
-      if (this.jdField_a_of_type_Ajzf.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_AndroidGraphicsBitmap == null) {}
-      try
-      {
-        this.jdField_a_of_type_Ajzf.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(BaseApplicationImpl.getContext().getResources(), 2130840558);
-        this.jdField_a_of_type_Ajzf.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.b(this.jdField_a_of_type_Ajzf.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Ajzf.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.f, this.jdField_a_of_type_Ajzf.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.c, this.jdField_a_of_type_Ajzf.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.c);
-        if (this.jdField_a_of_type_Ajzf.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_AndroidGraphicsBitmap != null)
-        {
-          this.jdField_a_of_type_Ajzf.jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView.setImageBitmap(this.jdField_a_of_type_Ajzf.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.jdField_a_of_type_AndroidGraphicsBitmap);
-          return;
-        }
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(AvatarWallAdapter.jdField_a_of_type_JavaLangString, 2, QLog.getStackTraceString(localOutOfMemoryError));
-          }
-        }
-        this.jdField_a_of_type_Ajzf.jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView.setImageResource(2130840558);
-        return;
+      if (((URLDrawable)localURLImageView.getDrawable()).getStatus() == 1) {
+        AIOIceBreakView.a(this.a, paramView);
       }
     }
-    try
+    else if (AIOIceBreakView.a(this.a).a.a != 1044) {
+      if (AIOIceBreakView.a(this.a).a.a != 0) {
+        break label167;
+      }
+    }
+    for (;;)
     {
-      URLDrawable localURLDrawable = URLDrawable.getDrawable(NearbyImgDownloader.a(this.jdField_a_of_type_Ajzf.jdField_a_of_type_JavaLangString));
-      localURLDrawable.setTag(URLDrawableDecodeHandler.a(this.jdField_a_of_type_Ajzf.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.c, this.jdField_a_of_type_Ajzf.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.c, this.jdField_a_of_type_Ajzf.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.f));
-      localURLDrawable.setDecodeHandler(URLDrawableDecodeHandler.b);
-      this.jdField_a_of_type_Ajzf.jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView.setImageDrawable(localURLDrawable);
+      awqx.b(AIOIceBreakView.a(this.a), "CliOper", "", "", "0X800A4CB", "0X800A4CB", i, 0, "", "", "", "");
+      if (AIOIceBreakView.a(this.a) != null) {
+        AIOIceBreakView.a(this.a).a(localURLImageView);
+      }
       return;
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("IceBreak.HotPic", 2, "onClick:URLDrawable status != successed");
+      break;
+      label167:
+      i = 2;
     }
-    catch (MalformedURLException localMalformedURLException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajzg
  * JD-Core Version:    0.7.0.1
  */

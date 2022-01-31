@@ -1,47 +1,64 @@
-import android.os.Bundle;
+import android.graphics.Color;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.Toast;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.item.PttItemBuilder;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class vij
-  implements ActionSheet.OnButtonClickListener
+class vij
 {
-  public vij(PttItemBuilder paramPttItemBuilder, MessageForPtt paramMessageForPtt, ActionSheet paramActionSheet) {}
+  View jdField_a_of_type_AndroidViewView;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
+  TextView c;
+  TextView d;
   
-  public void OnClick(View paramView, int paramInt)
+  public vij(View paramView)
   {
-    ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-    paramView = ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
-    if (paramView != null) {}
-    try
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131311048));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131311069));
+    this.b = ((TextView)paramView.findViewById(2131311039));
+    this.c = ((TextView)paramView.findViewById(2131311038));
+    this.d = ((TextView)paramView.findViewById(2131311071));
+  }
+  
+  private void a(TextView paramTextView, String paramString)
+  {
+    if (TextUtils.isEmpty(paramString))
     {
-      ((MessageForPtt)paramView).c2cViaOffline = true;
-      ((MessageForPtt)paramView).isResend = true;
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("DiyTextId", paramView.vipBubbleDiyTextId);
-      ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.getLocalFilePath(), paramView.uniseq, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceLength * 1000, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceType, true, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.voiceChangeFlag, 0, true, paramView.vipSubBubbleId, localBundle);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder.b();
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      paramTextView.setVisibility(8);
       return;
     }
-    catch (RuntimeException paramView)
-    {
-      for (;;)
-      {
-        paramView.printStackTrace();
-        Toast.makeText(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder.jdField_a_of_type_AndroidContentContext, paramView.getMessage(), 0).show();
-      }
+    paramTextView.setVisibility(0);
+    paramTextView.setText(paramString);
+  }
+  
+  public void a(vik paramvik1, vik paramvik2)
+  {
+    a(this.jdField_a_of_type_AndroidWidgetTextView, paramvik1.jdField_a_of_type_Vil.jdField_a_of_type_JavaLangString);
+    a(this.b, paramvik1.jdField_a_of_type_Vil.b);
+    if (paramvik1.jdField_a_of_type_Int <= 0) {
+      this.c.setVisibility(8);
     }
+    for (;;)
+    {
+      a(this.d, paramvik1.jdField_a_of_type_JavaLangString);
+      if (!paramvik1.equals(paramvik2)) {
+        break;
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845754);
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FFA34B"));
+      return;
+      a(this.c, paramvik1.jdField_a_of_type_Int + ajjy.a(2131645265));
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845758);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#FFFFFF"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vij
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,24 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.browser.TroopWebviewPlugin;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.conditionsearch.data.BaseAddress;
+import java.util.Comparator;
 
-public class ajfx
-  implements ActionSheet.OnButtonClickListener
+class ajfx
+  implements Comparator<BaseAddress>
 {
-  public ajfx(TroopWebviewPlugin paramTroopWebviewPlugin) {}
+  ajfx(ajfw paramajfw) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public int a(BaseAddress paramBaseAddress1, BaseAddress paramBaseAddress2)
   {
-    TroopWebviewPlugin.a(this.a);
-    if (paramInt == 0) {
-      TroopWebviewPlugin.a(this.a, "");
+    int j = paramBaseAddress1.pinyinFirst.compareTo(paramBaseAddress2.pinyinFirst);
+    int i = j;
+    if (j == 0) {
+      i = paramBaseAddress1.pinyinAll.compareTo(paramBaseAddress2.pinyinAll);
     }
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajfx
  * JD-Core Version:    0.7.0.1
  */

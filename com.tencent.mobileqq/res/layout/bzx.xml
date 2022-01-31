@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.widget.AlphaClickableRelativeLayout android:id="@id/dqx" android:layout_width="fill_parent" android:layout_height="@dimen/f9"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/d_n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/f4" android:layout_marginTop="19.0dip" android:layout_marginRight="16.0dip">
+        <com.tencent.widget.FixSizeImageView android:id="@id/icon" android:focusable="false" android:clickable="false" android:layout_width="@dimen/f0" android:layout_height="@dimen/f0" android:layout_margin="0.0dip" android:scaleType="fitXY" android:layout_centerInParent="true" android:contentDescription="@null" />
+        <ImageView android:id="@id/d_c" android:focusable="false" android:clickable="false" android:layout_width="@dimen/f0" android:layout_height="@dimen/f0" android:layout_margin="0.0dip" android:src="@drawable/icon_cover_recent_subaccount" android:scaleType="fitEnd" android:layout_centerInParent="true" android:contentDescription="@null" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/f9s" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/f5" android:layout_toRightOf="@id/d_n">
+        <com.tencent.widget.SingleLineTextView android:textSize="12.0dip" android:textColor="@color/afi" android:id="@id/bgt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+        <com.tencent.widget.SingleLineTextView android:textSize="20.0dip" android:textColor="@color/skin_black" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="1.0dip" android:includeFontPadding="false" android:layout_above="@id/bgt" android:layout_alignParentLeft="true" />
+    </RelativeLayout>
+</com.tencent.widget.AlphaClickableRelativeLayout>

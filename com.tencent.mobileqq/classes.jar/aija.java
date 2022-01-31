@@ -1,21 +1,10 @@
-import com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer;
-import com.tencent.mobileqq.shortvideo.widget.ImageViewVideoPlayer.IMPlayerEndListener;
-
-public class aija
-  implements Runnable
+public abstract interface aija
 {
-  public aija(ImageViewVideoPlayer paramImageViewVideoPlayer) {}
-  
-  public void run()
-  {
-    if (this.a.a != null) {
-      this.a.a.M_();
-    }
-  }
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aija
  * JD-Core Version:    0.7.0.1
  */

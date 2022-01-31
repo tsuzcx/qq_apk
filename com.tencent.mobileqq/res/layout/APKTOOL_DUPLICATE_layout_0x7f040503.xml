@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03d4" android:layout_width="70.0dip" android:layout_height="70.0dip" android:scaleType="fitXY" android:contentDescription="上传头像" />
-    <View android:background="#4c000000" android:layout_width="70.0dip" android:layout_height="70.0dip" android:layout_alignLeft="@id/APKTOOL_DUPLICATE_id_0x7f0a03d4" android:layout_alignTop="@id/APKTOOL_DUPLICATE_id_0x7f0a03d4" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0a03d4" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0a03d4" />
-    <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0035" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="60.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02044a" android:progress="0" android:layout_centerInParent="true" android:importantForAccessibility="no" />
-    <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a123f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="4.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020ee2" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0a03d4" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0a03d4" android:importantForAccessibility="no" />
-</RelativeLayout>

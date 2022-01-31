@@ -1,87 +1,30 @@
-import android.os.Bundle;
-import com.tencent.biz.now.NowLiveManager;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Context;
+import com.rookery.translate.AITranslator;
+import com.rookery.translate.AITranslator.TranslatorType;
+import com.rookery.translate.type.Language;
+import com.rookery.translate.type.TranslateError;
+import java.util.List;
 
 public class kqd
-  implements HttpWebCgiAsyncTask.Callback
+  implements krd
 {
-  public kqd(NowLiveManager paramNowLiveManager) {}
+  public kqd(AITranslator paramAITranslator, String paramString1, long paramLong, Context paramContext, adrn paramadrn, String paramString2, Language paramLanguage, krc paramkrc, List paramList1, List paramList2, int paramInt, AITranslator.TranslatorType paramTranslatorType) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void a(TranslateError paramTranslateError, Long paramLong)
   {
-    NowLiveManager.a(this.a);
-    String str = "";
-    long l = 0L;
-    Object localObject1 = "";
-    if (paramBundle != null)
-    {
-      l = paramBundle.getLong("time", 0L);
-      str = paramBundle.getString("room_id");
-      localObject1 = paramBundle.getString("friendUin");
-    }
-    localObject1 = this.a.a((String)localObject1, l);
-    if (paramJSONObject == null)
-    {
-      NowLiveManager.b(this.a);
-      this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(false), localObject1, paramBundle });
-      return;
-    }
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        for (;;)
-        {
-          this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(false), null, paramBundle });
-          return;
-          Object localObject2 = paramJSONObject.optJSONObject("result");
-          if ((localObject2 != null) && (((JSONObject)localObject2).optInt("retcode") == 0))
-          {
-            paramJSONObject = new ArrayList();
-            localObject2 = ((JSONObject)localObject2).optJSONArray("videoURLList");
-            if (localObject2 != null)
-            {
-              int i = 0;
-              for (;;)
-              {
-                if (i < ((JSONArray)localObject2).length()) {
-                  try
-                  {
-                    paramJSONObject.add(((JSONArray)localObject2).getString(i));
-                    i += 1;
-                  }
-                  catch (JSONException localJSONException)
-                  {
-                    for (;;)
-                    {
-                      localJSONException.printStackTrace();
-                    }
-                  }
-                }
-              }
-              ((kqe)localObject1).jdField_a_of_type_JavaUtilList = paramJSONObject;
-              ((kqe)localObject1).b = str;
-            }
-            this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(true), localObject1, paramBundle });
-          }
-        }
-      } while (paramJSONObject.optInt("retcode") != 0);
-      paramJSONObject = paramJSONObject.optJSONObject("result");
-    } while (paramJSONObject == null);
-    ((kqe)localObject1).jdField_a_of_type_Int = paramJSONObject.optInt("state");
-    this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(true), localObject1, paramBundle });
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator).remove(this.jdField_a_of_type_JavaLangString);
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adrn, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList, this.jdField_b_of_type_JavaUtilList, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, this.jdField_a_of_type_Krc, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComRookeryTranslateAITranslator$TranslatorType, paramTranslateError, paramLong);
+  }
+  
+  public void a(List<Language> paramList, List<String> paramList1, Long paramLong)
+  {
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator).remove(this.jdField_a_of_type_JavaLangString);
+    AITranslator.a(this.jdField_a_of_type_ComRookeryTranslateAITranslator, this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Adrn, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComRookeryTranslateTypeLanguage, this.jdField_a_of_type_Krc, 0, AITranslator.TranslatorType.MS, paramList, paramList1, this.jdField_a_of_type_JavaUtilList, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     kqd
  * JD-Core Version:    0.7.0.1
  */

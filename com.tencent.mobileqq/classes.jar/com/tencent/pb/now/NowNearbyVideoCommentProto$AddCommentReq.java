@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class NowNearbyVideoCommentProto$AddCommentReq
-  extends MessageMicro
+  extends MessageMicro<AddCommentReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 50, 56, 64 }, new String[] { "feed_type", "feed_id", "record_uid", "reply_uid", "feed_owner", "content", "is_aggregate_short_video", "anchor_uid" }, new Object[] { Long.valueOf(0L), "", Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), null, Integer.valueOf(0), Long.valueOf(0L) }, AddCommentReq.class);
   public final PBUInt64Field anchor_uid = PBField.initUInt64(0L);
@@ -22,7 +22,7 @@ public final class NowNearbyVideoCommentProto$AddCommentReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.NowNearbyVideoCommentProto.AddCommentReq
  * JD-Core Version:    0.7.0.1
  */

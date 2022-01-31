@@ -1,43 +1,39 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import aiio;
-import aiip;
-import aiiq;
-import android.content.Context;
+import ajed;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.text.TextUtils;
 import android.util.Base64;
+import atiu;
+import ausk;
+import autt;
+import awlz;
+import awmd;
+import axro;
+import axrr;
+import axsr;
+import azxx;
+import bace;
+import badq;
+import bech;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Content;
-import com.tencent.mobileqq.olympic.utils.OlympicUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.qmcf.QmcfManager;
-import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
-import com.tencent.mobileqq.richmedia.capture.util.CaptureUtil;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.mobileqq.transfile.NetworkCenter;
-import com.tencent.mobileqq.util.JSONUtils;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.singleupdate.MD5FileUtil;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -48,10 +44,10 @@ import org.json.JSONObject;
 
 public class RecentDanceConfigMgr
 {
-  private static AtomicReference a;
+  private static AtomicReference<RecentDanceConfigMgr> a;
   private static volatile boolean b;
   private static boolean c;
-  public HashMap a;
+  public HashMap<String, RecentDanceConfigMgr.DItemInfo> a;
   public boolean a;
   
   static
@@ -83,7 +79,7 @@ public class RecentDanceConfigMgr
         if (paramQQAppInterface != null) {
           if (paramQQAppInterface.compress.get() == 1)
           {
-            paramQQAppInterface = OlympicUtil.a(paramQQAppInterface.content.get().toByteArray());
+            paramQQAppInterface = atiu.a(paramQQAppInterface.content.get().toByteArray());
             if (paramQQAppInterface == null) {}
           }
         }
@@ -211,7 +207,7 @@ public class RecentDanceConfigMgr
     {
       return (RecentDanceConfigMgr)jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
       label52:
-      b((String)localObject);
+      c((String)localObject);
     }
   }
   
@@ -230,7 +226,7 @@ public class RecentDanceConfigMgr
     if (!b)
     {
       b = true;
-      ThreadManager.post(new aiiq(), 5, null, true);
+      ThreadManager.post(new RecentDanceConfigMgr.3(), 5, null, true);
     }
   }
   
@@ -256,20 +252,6 @@ public class RecentDanceConfigMgr
     return false;
   }
   
-  public static boolean a(Context paramContext)
-  {
-    if (!PtvFilterSoLoad.a(paramContext)) {}
-    do
-    {
-      do
-      {
-        return false;
-      } while (CaptureUtil.jdField_a_of_type_Int != 1);
-      paramContext = new File(CapturePtvTemplateManager.a, "ptv_template_new.cfg");
-    } while ((!paramContext.exists()) || (TextUtils.isEmpty(CapturePtvTemplateManager.a(paramContext))));
-    return true;
-  }
-  
   public static boolean a(AppInterface paramAppInterface)
   {
     Object localObject = a();
@@ -287,7 +269,7 @@ public class RecentDanceConfigMgr
     {
       localObject = (RecentDanceConfigMgr.DItemInfo)((RecentDanceConfigMgr)localObject).jdField_a_of_type_JavaUtilHashMap.get("plus");
       if (localObject == null) {
-        break label231;
+        break label234;
       }
       if (QLog.isColorLevel()) {
         QLog.d("RecentDanceConfigMgr", 2, "needShowDanceInPlus plus.show=" + ((RecentDanceConfigMgr.DItemInfo)localObject).show);
@@ -311,6 +293,7 @@ public class RecentDanceConfigMgr
         if (QLog.isColorLevel()) {
           QLog.d("RecentDanceConfigMgr", 2, "needShowDanceInPlus sTemplateFileOk=" + c);
         }
+        b();
         if (c) {
           return a(paramAppInterface, (RecentDanceConfigMgr.DItemInfo)localObject);
         }
@@ -320,7 +303,7 @@ public class RecentDanceConfigMgr
     for (;;)
     {
       return false;
-      label231:
+      label234:
       if (QLog.isColorLevel()) {
         QLog.d("RecentDanceConfigMgr", 2, "needShowDanceInPlus PLUS_PANEL=null");
       }
@@ -329,7 +312,7 @@ public class RecentDanceConfigMgr
   
   private static boolean a(AppInterface paramAppInterface, RecentDanceConfigMgr.DItemInfo paramDItemInfo)
   {
-    boolean bool = CaptureUtil.a();
+    boolean bool = autt.a();
     if (QLog.isColorLevel()) {
       QLog.d("RecentDanceConfigMgr", 2, "needShowDanceInPlus supportMediaCodec=" + bool);
     }
@@ -337,7 +320,7 @@ public class RecentDanceConfigMgr
     {
       if (paramDItemInfo.categoryID == 10)
       {
-        bool = ShortVideoGuideUtil.h(paramAppInterface);
+        bool = awmd.g(paramAppInterface);
         if (QLog.isColorLevel()) {
           QLog.d("RecentDanceConfigMgr", 2, "needShowDanceInPlus isSupportDance=" + bool);
         }
@@ -363,43 +346,6 @@ public class RecentDanceConfigMgr
     return localEditor.commit();
   }
   
-  public static RecentDanceConfigMgr.DItemInfo b()
-  {
-    RecentDanceConfigMgr localRecentDanceConfigMgr = b();
-    if (localRecentDanceConfigMgr == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("RecentDanceConfigMgr", 2, "getFloatItemInfo mgr == null");
-      }
-    }
-    while (!localRecentDanceConfigMgr.jdField_a_of_type_Boolean) {
-      return null;
-    }
-    return (RecentDanceConfigMgr.DItemInfo)localRecentDanceConfigMgr.jdField_a_of_type_JavaUtilHashMap.get("float");
-  }
-  
-  private static RecentDanceConfigMgr b()
-  {
-    Object localObject;
-    if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get() == null)
-    {
-      localObject = b();
-      if ((localObject != null) && (!"".equals(localObject))) {
-        break label52;
-      }
-      localObject = new RecentDanceConfigMgr();
-      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.getAndSet(localObject);
-    }
-    for (;;)
-    {
-      return (RecentDanceConfigMgr)jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.get();
-      label52:
-      localObject = b((String)localObject);
-      if (localObject != null) {
-        jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.getAndSet(localObject);
-      }
-    }
-  }
-  
   private static RecentDanceConfigMgr b(String paramString)
   {
     RecentDanceConfigMgr localRecentDanceConfigMgr = new RecentDanceConfigMgr();
@@ -418,7 +364,7 @@ public class RecentDanceConfigMgr
           i = 0;
           if (i < paramString.length())
           {
-            localDItemInfo = (RecentDanceConfigMgr.DItemInfo)JSONUtils.a(paramString.getJSONObject(i), RecentDanceConfigMgr.DItemInfo.class);
+            localDItemInfo = (RecentDanceConfigMgr.DItemInfo)azxx.a(paramString.getJSONObject(i), RecentDanceConfigMgr.DItemInfo.class);
             if (localDItemInfo == null) {
               break label492;
             }
@@ -510,12 +456,19 @@ public class RecentDanceConfigMgr
     {
       try
       {
-        paramString = MD5FileUtil.a(new File(paramString));
+        paramString = bech.a(new File(paramString));
         return paramString;
       }
       catch (Exception paramString) {}
     }
     return null;
+  }
+  
+  private static void b()
+  {
+    if (!c) {
+      c = c();
+    }
   }
   
   private static void b(RecentDanceConfigMgr.DItemInfo paramDItemInfo, String paramString)
@@ -545,93 +498,12 @@ public class RecentDanceConfigMgr
   
   private static void b(String paramString)
   {
-    ThreadManager.post(new aiio(paramString), 5, null, true);
-  }
-  
-  public static boolean b()
-  {
-    Object localObject = b();
-    if (localObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("RecentDanceConfigMgr", 2, "needShowDanceFloat mgr == null");
-      }
-      return false;
-    }
-    if (((RecentDanceConfigMgr)localObject).jdField_a_of_type_Boolean)
-    {
-      localObject = (RecentDanceConfigMgr.DItemInfo)((RecentDanceConfigMgr)localObject).jdField_a_of_type_JavaUtilHashMap.get("float");
-      if (localObject != null)
-      {
-        if (((RecentDanceConfigMgr.DItemInfo)localObject).categoryID == 10)
-        {
-          if (((RecentDanceConfigMgr.DItemInfo)localObject).show) {
-            return QmcfManager.a().a(2);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("RecentDanceConfigMgr", 2, "hasQmcfEntrance false, show " + ((RecentDanceConfigMgr.DItemInfo)localObject).show);
-          }
-          return false;
-        }
-        return ((RecentDanceConfigMgr.DItemInfo)localObject).show;
-      }
-    }
-    return false;
-  }
-  
-  public static boolean b(Context paramContext)
-  {
-    if (!PtvFilterSoLoad.a(paramContext)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("RecentDanceConfigMgr", 2, "so not exist");
-      }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-          if (CaptureUtil.jdField_a_of_type_Int == 1) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("RecentDanceConfigMgr", 2, "so not loaded");
-        return false;
-        paramContext = new File(QIMPtvTemplateManager.a, "ptv_template_new.cfg");
-        if (paramContext.exists()) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("RecentDanceConfigMgr", 2, "configuration not exist");
-      return false;
-      if (!TextUtils.isEmpty(QIMPtvTemplateManager.a(paramContext))) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("RecentDanceConfigMgr", 2, "configuration is empty");
-    return false;
-    return true;
-  }
-  
-  public static RecentDanceConfigMgr.DItemInfo c()
-  {
-    RecentDanceConfigMgr localRecentDanceConfigMgr = b();
-    if (localRecentDanceConfigMgr == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("RecentDanceConfigMgr", 2, "getStoryFloatItemInfo mgr == null");
-      }
-    }
-    while (!localRecentDanceConfigMgr.jdField_a_of_type_Boolean) {
-      return null;
-    }
-    return (RecentDanceConfigMgr.DItemInfo)localRecentDanceConfigMgr.jdField_a_of_type_JavaUtilHashMap.get("floatStory");
+    ThreadManager.post(new RecentDanceConfigMgr.1(paramString), 5, null, true);
   }
   
   private static String c()
   {
-    Object localObject = new StringBuilder(AppConstants.aK);
+    Object localObject = new StringBuilder(ajed.aU);
     ((StringBuilder)localObject).append("sv_config_icon");
     ((StringBuilder)localObject).append(File.separator);
     localObject = ((StringBuilder)localObject).toString();
@@ -655,14 +527,14 @@ public class RecentDanceConfigMgr
     Object localObject = Base64.decode(paramDItemInfo.icon_url, 0);
     if (localObject != null)
     {
-      FileUtils.a((byte[])localObject, paramString);
+      bace.a((byte[])localObject, paramString);
       if (new File(paramString).exists())
       {
         localObject = b(paramString);
         if ((localObject != null) && (!"".equals(localObject)) && (((String)localObject).equalsIgnoreCase(paramDItemInfo.icon_md5))) {
           break label68;
         }
-        FileUtils.d(paramString);
+        bace.d(paramString);
       }
     }
     return;
@@ -670,51 +542,33 @@ public class RecentDanceConfigMgr
     b(paramDItemInfo, paramString);
   }
   
-  public static boolean c()
+  private static void c(String paramString)
   {
-    Object localObject = b();
-    if (localObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("RecentDanceConfigMgr", 2, "needShowDanceFloat mgr == null");
-      }
-      return false;
+    paramString = b(paramString);
+    if (paramString != null) {
+      jdField_a_of_type_JavaUtilConcurrentAtomicAtomicReference.getAndSet(paramString);
     }
-    if (((RecentDanceConfigMgr)localObject).jdField_a_of_type_Boolean)
-    {
-      localObject = (RecentDanceConfigMgr.DItemInfo)((RecentDanceConfigMgr)localObject).jdField_a_of_type_JavaUtilHashMap.get("floatStory");
-      if (localObject != null)
-      {
-        if (((RecentDanceConfigMgr.DItemInfo)localObject).categoryID == 10)
-        {
-          if (((RecentDanceConfigMgr.DItemInfo)localObject).show) {
-            return QmcfManager.a().a(2);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("RecentDanceConfigMgr", 2, "hasQmcfEntrance false, show " + ((RecentDanceConfigMgr.DItemInfo)localObject).show);
-          }
-          return false;
-        }
-        return ((RecentDanceConfigMgr.DItemInfo)localObject).show;
-      }
-    }
-    return false;
+  }
+  
+  private static boolean c()
+  {
+    return new File(ausk.a, "ptv_template_new.cfg").exists();
   }
   
   private static void d(RecentDanceConfigMgr.DItemInfo paramDItemInfo, String paramString)
   {
-    HttpNetReq localHttpNetReq = new HttpNetReq();
-    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new aiip(paramDItemInfo, paramString);
-    localHttpNetReq.jdField_a_of_type_JavaLangString = paramDItemInfo.icon_url;
-    localHttpNetReq.jdField_a_of_type_Int = 0;
-    localHttpNetReq.jdField_c_of_type_JavaLangString = (paramString + "_temp");
-    localHttpNetReq.jdField_c_of_type_Int = NetworkUtil.a(NetworkCenter.a().a());
+    axro localaxro = new axro();
+    localaxro.jdField_a_of_type_Axrt = new awlz(paramDItemInfo, paramString);
+    localaxro.jdField_a_of_type_JavaLangString = paramDItemInfo.icon_url;
+    localaxro.jdField_a_of_type_Int = 0;
+    localaxro.jdField_c_of_type_JavaLangString = (paramString + "_temp");
+    localaxro.jdField_c_of_type_Int = badq.a(axsr.a().a());
     try
     {
       paramString = BaseApplicationImpl.getApplication().getRuntime();
       if (QQAppInterface.class.isInstance(paramString))
       {
-        ((QQAppInterface)paramString).getNetEngine(0).a(localHttpNetReq);
+        ((QQAppInterface)paramString).getNetEngine(0).a(localaxro);
         if (QLog.isColorLevel()) {
           QLog.i("RecentDanceConfigMgr", 2, "processNetWork url: " + paramDItemInfo.icon_url);
         }
@@ -727,15 +581,10 @@ public class RecentDanceConfigMgr
       QLog.i("RecentDanceConfigMgr", 2, "processNetWork[Exception] url: " + paramDItemInfo.icon_url, paramString);
     }
   }
-  
-  private static boolean e()
-  {
-    return new File(CapturePtvTemplateManager.a, "ptv_template_new.cfg").exists();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr
  * JD-Core Version:    0.7.0.1
  */

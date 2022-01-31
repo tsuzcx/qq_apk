@@ -16,7 +16,6 @@ class FaultHidingSink
   }
   
   public void close()
-    throws IOException
   {
     if (this.hasErrors) {
       return;
@@ -34,7 +33,6 @@ class FaultHidingSink
   }
   
   public void flush()
-    throws IOException
   {
     if (this.hasErrors) {
       return;
@@ -54,7 +52,6 @@ class FaultHidingSink
   protected void onException(IOException paramIOException) {}
   
   public void write(Buffer paramBuffer, long paramLong)
-    throws IOException
   {
     if (this.hasErrors)
     {

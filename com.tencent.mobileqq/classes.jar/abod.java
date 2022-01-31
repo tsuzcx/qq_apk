@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.armap.ArMapHandler;
-import com.tencent.mobileqq.armap.ArMapInterface;
-import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.RegisterActivity;
 
 public class abod
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public abod(ARMapPOIStarDialog paramARMapPOIStarDialog, ArMapInterface paramArMapInterface, long paramLong1, long paramLong2) {}
+  public abod(RegisterActivity paramRegisterActivity, String paramString1, String paramString2) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((ArMapHandler)this.jdField_a_of_type_ComTencentMobileqqArmapArMapInterface.a(2)).a(this.jdField_a_of_type_Long, this.b, null);
+    paramDialogInterface.dismiss();
+    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity, ajjy.a(2131647554) + ajjy.a(2131647575) + this.jdField_a_of_type_JavaLangString + ajjy.a(2131647553) + this.b + ajjy.a(2131647546));
+    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity);
+    RegisterActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterActivity, 60000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abod
  * JD-Core Version:    0.7.0.1
  */

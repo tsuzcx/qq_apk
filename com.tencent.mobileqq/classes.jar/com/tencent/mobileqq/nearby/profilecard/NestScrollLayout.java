@@ -11,6 +11,7 @@ import android.view.View.MeasureSpec;
 import android.view.ViewConfiguration;
 import android.widget.LinearLayout;
 import android.widget.Scroller;
+import asye;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class NestScrollLayout
@@ -21,7 +22,7 @@ public class NestScrollLayout
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private View jdField_a_of_type_AndroidViewView;
   private Scroller jdField_a_of_type_AndroidWidgetScroller;
-  private NestScrollHelper jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNestScrollHelper;
+  private asye jdField_a_of_type_Asye;
   private boolean jdField_a_of_type_Boolean;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -48,11 +49,11 @@ public class NestScrollLayout
   public NestScrollLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramInt = paramContext.getResources().getDimensionPixelSize(2131558448) + ImmersiveUtils.a(paramContext);
+    paramInt = paramContext.getResources().getDimensionPixelSize(2131167766) + ImmersiveUtils.getStatusBarHeight(paramContext);
     this.jdField_b_of_type_Int = paramInt;
     this.jdField_b_of_type_Int = paramInt;
     this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNestScrollHelper = new NestScrollHelper();
+    this.jdField_a_of_type_Asye = new asye();
     paramContext = ViewConfiguration.get(paramContext);
     this.jdField_c_of_type_Int = paramContext.getScaledTouchSlop();
     this.jdField_d_of_type_Int = paramContext.getScaledMaximumFlingVelocity();
@@ -103,7 +104,7 @@ public class NestScrollLayout
       {
         int k = this.jdField_a_of_type_AndroidWidgetScroller.getFinalY();
         int m = a(this.jdField_a_of_type_AndroidWidgetScroller.getDuration(), this.jdField_a_of_type_AndroidWidgetScroller.timePassed());
-        this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNestScrollHelper.a(a(), k - j, m);
+        this.jdField_a_of_type_Asye.a(a(), k - j, m);
         this.jdField_a_of_type_AndroidWidgetScroller.abortAnimation();
       }
     }
@@ -118,7 +119,7 @@ public class NestScrollLayout
       this.i = j;
       return;
       label99:
-      if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNestScrollHelper.a())
+      if (this.jdField_a_of_type_Asye.a())
       {
         scrollTo(0, j - this.i + getScrollY());
         if (this.h <= this.g)
@@ -160,7 +161,7 @@ public class NestScrollLayout
         do
         {
           bool = a();
-          if ((!this.jdField_a_of_type_Boolean) || (((this.jdField_d_of_type_Float <= 0.0F) || (bool)) && ((!this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNestScrollHelper.a()) || (this.jdField_d_of_type_Float >= 0.0F)))) {
+          if ((!this.jdField_a_of_type_Boolean) || (((this.jdField_d_of_type_Float <= 0.0F) || (bool)) && ((!this.jdField_a_of_type_Asye.a()) || (this.jdField_d_of_type_Float >= 0.0F)))) {
             break;
           }
           scrollBy(0, (int)(this.jdField_d_of_type_Float + 0.5D));
@@ -256,12 +257,12 @@ public class NestScrollLayout
   
   public void setPosition(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNestScrollHelper.a(paramInt);
+    this.jdField_a_of_type_Asye.a(paramInt);
   }
   
   public void setViewPager(ViewPager paramViewPager)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNestScrollHelper.a(paramViewPager);
+    this.jdField_a_of_type_Asye.a(paramViewPager);
   }
 }
 

@@ -1,37 +1,75 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import java.util.concurrent.atomic.AtomicBoolean;
+import mqq.app.AppRuntime;
 
 public class onm
-  implements View.OnTouchListener
 {
-  private final int jdField_a_of_type_Int = 10;
-  private boolean jdField_a_of_type_Boolean;
-  private int b;
+  public static onm a;
+  private long jdField_a_of_type_Long;
+  private final String jdField_a_of_type_JavaLangString = "readinjoy_ex_last_update_time";
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  public onn a;
+  public ono a;
+  public boolean a;
   
-  public onm(EditTextDialog paramEditTextDialog) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  private onm()
   {
-    paramMotionEvent.getX();
-    float f = paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
+    this.jdField_a_of_type_Onn = new onn();
+    this.jdField_a_of_type_Ono = new ono();
+    if (a(BaseApplicationImpl.getApplication().getRuntime()))
     {
-    default: 
-    case 0: 
-    case 2: 
-      do
-      {
-        return false;
-        this.b = ((int)f);
-        this.jdField_a_of_type_Boolean = false;
-        return false;
-      } while (Math.abs(f - this.b) <= 10.0F);
       this.jdField_a_of_type_Boolean = true;
+      a(BaseApplicationImpl.getApplication().getRuntime(), false);
+    }
+  }
+  
+  public static onm a()
+  {
+    if (jdField_a_of_type_Onm == null) {}
+    try
+    {
+      if (jdField_a_of_type_Onm == null) {
+        jdField_a_of_type_Onm = new onm();
+      }
+      return jdField_a_of_type_Onm;
+    }
+    finally {}
+  }
+  
+  private void a(long paramLong)
+  {
+    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
+    if (localObject == null) {}
+    do
+    {
+      return;
+      localObject = bgmq.a((AppRuntime)localObject, true, true);
+    } while (localObject == null);
+    localObject = ((SharedPreferences)localObject).edit();
+    ((SharedPreferences.Editor)localObject).putLong("readinjoy_ex_last_update_time", paramLong);
+    bgmq.a((SharedPreferences.Editor)localObject, true);
+  }
+  
+  public static void a(AppRuntime paramAppRuntime, boolean paramBoolean)
+  {
+    paramAppRuntime = bgmq.a(paramAppRuntime, true, true);
+    if (paramAppRuntime == null) {
+      return;
+    }
+    paramAppRuntime = paramAppRuntime.edit();
+    paramAppRuntime.putBoolean("simple_force_report_once", paramBoolean);
+    bgmq.a(paramAppRuntime, true);
+  }
+  
+  public static boolean a(AppRuntime paramAppRuntime)
+  {
+    paramAppRuntime = bgmq.a(paramAppRuntime, true, true);
+    if (paramAppRuntime == null) {
       return false;
     }
-    return this.jdField_a_of_type_Boolean;
+    return paramAppRuntime.getBoolean("simple_force_report_once", false);
   }
 }
 

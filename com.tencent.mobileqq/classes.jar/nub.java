@@ -1,22 +1,19 @@
-import android.util.SparseArray;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public final class nub
-  extends SparseArray
+class nub
+  implements ViewBase.OnClickListener
 {
-  public nub()
+  nub(ntu paramntu) {}
+  
+  public void onClick(ViewBase paramViewBase)
   {
-    put(31, "PLAYER_INFO_PLAYER_TYPE");
-    put(24, "PLAYER_INFO_SUCC_SET_DECODER_MODE");
-    put(33, "PLAYER_INFO_START_GET_VINFO");
-    put(21, "PLAYER_INFO_START_BUFFERING");
-    put(34, "PLAYER_INFO_END_GET_VINFO");
-    put(22, "PLAYER_INFO_ENDOF_BUFFERING");
-    put(23, "PLAYER_INFO_START_RENDERING");
+    this.a.jdField_a_of_type_Nwk.c(this.a.jdField_a_of_type_Nwx);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nub
  * JD-Core Version:    0.7.0.1
  */

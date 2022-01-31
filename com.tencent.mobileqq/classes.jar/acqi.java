@@ -1,25 +1,19 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.View;
-import android.widget.RelativeLayout;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
+import com.tencent.mobileqq.activity.aio.anim.friendship.impl.boat.FriendShipWaveView;
 
 public class acqi
-  extends RecyclerView.ViewHolder
+  implements axbf
 {
-  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public acqi(FriendShipWaveView paramFriendShipWaveView) {}
   
-  public acqi(ExtendFriendGroupFragment paramExtendFriendGroupFragment, View paramView)
+  public void a()
   {
-    super(paramView);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131362724));
+    this.a.jdField_a_of_type_Axcc.a = 255;
+    this.a.jdField_a_of_type_Axcc.a(this.a.jdField_a_of_type_Axcd);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acqi
  * JD-Core Version:    0.7.0.1
  */

@@ -8,24 +8,34 @@ import java.util.Map;
 
 public final class get_travel_photo_list_req
   extends JceStruct
-  implements Cloneable
 {
-  static Map cache_busi_param;
+  static Map<Integer, String> cache_busi_param = new HashMap();
   public String albumid = "";
   public String attach_info = "";
-  public Map busi_param;
+  public Map<Integer, String> busi_param;
+  public String ciphertext = "";
   public String password = "";
+  public int share_flag;
+  public int type;
   public long uin;
+  
+  static
+  {
+    cache_busi_param.put(Integer.valueOf(0), "");
+  }
   
   public get_travel_photo_list_req() {}
   
-  public get_travel_photo_list_req(long paramLong, String paramString1, String paramString2, String paramString3, Map paramMap)
+  public get_travel_photo_list_req(long paramLong, String paramString1, String paramString2, String paramString3, Map<Integer, String> paramMap, int paramInt1, String paramString4, int paramInt2)
   {
     this.uin = paramLong;
     this.albumid = paramString1;
     this.attach_info = paramString2;
     this.password = paramString3;
     this.busi_param = paramMap;
+    this.share_flag = paramInt1;
+    this.ciphertext = paramString4;
+    this.type = paramInt2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -34,12 +44,10 @@ public final class get_travel_photo_list_req
     this.albumid = paramJceInputStream.readString(1, true);
     this.attach_info = paramJceInputStream.readString(2, false);
     this.password = paramJceInputStream.readString(3, false);
-    if (cache_busi_param == null)
-    {
-      cache_busi_param = new HashMap();
-      cache_busi_param.put(Integer.valueOf(0), "");
-    }
     this.busi_param = ((Map)paramJceInputStream.read(cache_busi_param, 4, false));
+    this.share_flag = paramJceInputStream.read(this.share_flag, 5, false);
+    this.ciphertext = paramJceInputStream.readString(6, false);
+    this.type = paramJceInputStream.read(this.type, 7, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -55,6 +63,11 @@ public final class get_travel_photo_list_req
     if (this.busi_param != null) {
       paramJceOutputStream.write(this.busi_param, 4);
     }
+    paramJceOutputStream.write(this.share_flag, 5);
+    if (this.ciphertext != null) {
+      paramJceOutputStream.write(this.ciphertext, 6);
+    }
+    paramJceOutputStream.write(this.type, 7);
   }
 }
 

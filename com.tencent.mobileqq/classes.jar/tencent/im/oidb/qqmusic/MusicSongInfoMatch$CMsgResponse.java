@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class MusicSongInfoMatch$CMsgResponse
-  extends MessageMicro
+  extends MessageMicro<CMsgResponse>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field code = PBField.initUInt64(0L);
@@ -27,7 +27,7 @@ public final class MusicSongInfoMatch$CMsgResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.qqmusic.MusicSongInfoMatch.CMsgResponse
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class qqstory_service$RspGetMissStoryInfo
-  extends MessageMicro
+  extends MessageMicro<RspGetMissStoryInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public qqstory_struct.ErrorInfo result = new qqstory_struct.ErrorInfo();
@@ -21,7 +21,7 @@ public final class qqstory_service$RspGetMissStoryInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetMissStoryInfo
  * JD-Core Version:    0.7.0.1
  */

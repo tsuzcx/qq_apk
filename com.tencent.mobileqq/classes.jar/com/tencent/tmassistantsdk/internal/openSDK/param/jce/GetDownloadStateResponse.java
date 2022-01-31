@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class GetDownloadStateResponse
   extends JceStruct
 {
-  static IPCBaseParam a;
+  static IPCBaseParam cache_requestParam;
   public int errorCode = 0;
   public String errorMsg = "";
   public IPCBaseParam requestParam = null;
@@ -25,10 +25,10 @@ public final class GetDownloadStateResponse
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
-    if (a == null) {
-      a = new IPCBaseParam();
+    if (cache_requestParam == null) {
+      cache_requestParam = new IPCBaseParam();
     }
-    this.requestParam = ((IPCBaseParam)paramJceInputStream.read(a, 0, true));
+    this.requestParam = ((IPCBaseParam)paramJceInputStream.read(cache_requestParam, 0, true));
     this.state = paramJceInputStream.read(this.state, 1, false);
     this.errorCode = paramJceInputStream.read(this.errorCode, 2, false);
     this.errorMsg = paramJceInputStream.readString(3, false);
@@ -46,7 +46,7 @@ public final class GetDownloadStateResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.param.jce.GetDownloadStateResponse
  * JD-Core Version:    0.7.0.1
  */

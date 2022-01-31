@@ -1,28 +1,23 @@
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.widget.FileWebView;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class acvd
-  implements Runnable
+  extends aclw
 {
-  acvd(acvc paramacvc) {}
-  
-  public void run()
+  acvd(acvc paramacvc, QQAppInterface paramQQAppInterface, FragmentActivity paramFragmentActivity, Context paramContext, String paramString)
   {
-    try
-    {
-      this.a.a.a.loadUrl("javascript:qpreview.onClientResponse('addMorePage',{})");
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("<FileAssistant>FilePreviewActivity", 1, localException.toString());
-    }
+    super(paramQQAppInterface, paramFragmentActivity, paramContext, paramString);
+  }
+  
+  public void j()
+  {
+    this.a.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acvd
  * JD-Core Version:    0.7.0.1
  */

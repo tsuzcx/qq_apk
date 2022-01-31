@@ -1,22 +1,28 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.tips.VideoStatusTipsBar;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.qphone.base.util.QLog;
 
-public class wix
-  implements Runnable
+class wix
+  implements wiu
 {
-  public wix(VideoStatusTipsBar paramVideoStatusTipsBar) {}
+  wix(wiw paramwiw, String paramString) {}
   
-  public void run()
+  public void a(Bundle paramBundle)
   {
-    VideoStatusTipsBar.a(this.a).a().e(true);
-    this.a.a("RefreshMultiStateRunnable", VideoStatusTipsBar.a(this.a).jdField_a_of_type_Int, VideoStatusTipsBar.a(this.a).jdField_a_of_type_JavaLangString, 0, 0L);
+    boolean bool = paramBundle.getBoolean("isSuccess", false);
+    if (bool)
+    {
+      paramBundle = paramBundle.getString("data");
+      this.jdField_a_of_type_Wiw.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramBundle });
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d(this.jdField_a_of_type_Wiw.TAG, 2, "getTroopBarPublishInfo() in callback isSuccess=" + bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wix
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,12 @@
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.tips.ArkTipsBar;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.ArkTipsManager;
+import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 
-public class whu
-  implements View.OnClickListener
+public abstract interface whu
 {
-  public whu(ArkTipsBar paramArkTipsBar) {}
-  
-  public void onClick(View paramView)
-  {
-    if ((BaseActivity.sTopActivity instanceof FragmentActivity))
-    {
-      paramView = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
-      if (paramView != null)
-      {
-        paramView = paramView.a();
-        if (paramView != null) {
-          paramView.a(ArkTipsBar.a(this.a));
-        }
-      }
-      ArkTipsManager.a().a();
-    }
-  }
+  public abstract void a(boolean paramBoolean, CertifiedAccountMeta.StFeed paramStFeed);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     whu
  * JD-Core Version:    0.7.0.1
  */

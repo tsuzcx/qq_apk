@@ -1,55 +1,37 @@
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.view.View;
-import com.tencent.av.app.PstnSessionInfo;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qcall.QCallFacade;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
-import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.os.MqqHandler;
 
-public final class agyl
-  implements ActionSheet.OnButtonClickListener
+class agyl
+  implements View.OnClickListener
 {
-  public agyl(ActionSheet paramActionSheet, int[] paramArrayOfInt, int paramInt1, QQAppInterface paramQQAppInterface, Context paramContext, PstnSessionInfo paramPstnSessionInfo, int paramInt2, String paramString) {}
+  agyl(agxq paramagxq, long paramLong, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    switch (this.jdField_a_of_type_ArrayOfInt[paramInt])
+    if (agxq.a(this.jdField_a_of_type_Agxq) != null)
     {
-    default: 
-    case 0: 
-      do
-      {
-        return;
-        if ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2))
-        {
-          ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentAvAppPstnSessionInfo, this.b);
-          return;
-        }
-      } while (this.jdField_a_of_type_Int != 5);
-      PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, 1, 3);
-      return;
+      paramView = agxq.a(this.jdField_a_of_type_Agxq).obtainMessage(1134028);
+      agxq.a(this.jdField_a_of_type_Agxq).sendMessage(paramView);
     }
-    paramView = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-    if ((!MobileIssueSettings.a) && (KapalaiAdapterUtil.a().a())) {
-      KapalaiAdapterUtil.a().a(paramView);
-    }
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-    paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    long l = MessageCache.a();
-    paramView.a(this.jdField_a_of_type_JavaLangString, 26, -1, l, this.jdField_a_of_type_JavaLangString);
+    paramView = new Intent();
+    paramView.putExtra("bookid", this.jdField_a_of_type_Long);
+    paramView.putExtra("chapterid", this.jdField_a_of_type_JavaLangString);
+    paramView.putExtra("is_from_conversation", true);
+    Intent localIntent = new Intent();
+    localIntent.putExtras(paramView);
+    localIntent.putExtra("readtype", "15");
+    localIntent.setClassName(agxq.a(this.jdField_a_of_type_Agxq), "cooperation.qqreader.QRBridgeActivity");
+    localIntent.addFlags(268435456);
+    agxq.a(this.jdField_a_of_type_Agxq).startActivity(localIntent);
+    awqx.a(agxq.a(this.jdField_a_of_type_Agxq).app, "dc00898", "", "", "0X8009EE3", "0X8009EE3", 1, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agyl
  * JD-Core Version:    0.7.0.1
  */

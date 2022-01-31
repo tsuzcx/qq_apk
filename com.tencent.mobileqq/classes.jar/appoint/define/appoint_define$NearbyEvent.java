@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class appoint_define$NearbyEvent
-  extends MessageMicro
+  extends MessageMicro<NearbyEvent>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32 }, new String[] { "uint32_eventtype", "msg_rankevent", "uint64_event_uin", "uint64_event_tinyid" }, new Object[] { Integer.valueOf(0), null, Long.valueOf(0L), Long.valueOf(0L) }, NearbyEvent.class);
   public appoint_define.RankEvent msg_rankevent = new appoint_define.RankEvent();

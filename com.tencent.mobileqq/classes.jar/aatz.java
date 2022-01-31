@@ -1,37 +1,26 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipUploadRusult.StoryVideoExtRsp;
-import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipUploadRusult.UploadPicExtInfo;
-import com.tencent.mobileqq.arcard.ARRelationShipFileUpload.ARRelationShipFileUploadCallBack;
-import com.tencent.mobileqq.arcard.ARVideoPreviewActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 
-class aatz
-  implements ARRelationShipFileUpload.ARRelationShipFileUploadCallBack
+public class aatz
+  extends bajp
 {
-  aatz(aatw paramaatw) {}
-  
-  public void a(int paramInt)
+  public aatz(FriendProfileCardActivity paramFriendProfileCardActivity, int paramInt)
   {
-    this.a.a.a(1, paramInt);
+    super(paramInt);
   }
   
-  public void a(String paramString)
+  public void a()
   {
-    ARVideoPreviewActivity.a(this.a.a).post(new aaua(this));
-  }
-  
-  public void a(String paramString, ARRelationShipUploadRusult.StoryVideoExtRsp paramStoryVideoExtRsp) {}
-  
-  public void a(String paramString, ARRelationShipUploadRusult.UploadPicExtInfo paramUploadPicExtInfo)
-  {
-    paramString = paramUploadPicExtInfo.bytes_download_url.get().toStringUtf8();
-    this.a.a.a(1, paramString);
+    azyk.a(this.a, this.a.app.getCurrentAccountUin(), "inside.myCardButton", 1, 3, 1, "", true);
+    awqx.b(this.a.app, "CliOper", "", "", "card_mall", "0X8004DBF", 0, 0, "", "", "", "");
+    VasWebviewUtil.reportCommercialDrainage(this.a.app.getCurrentAccountUin(), "defaultcard", "click_card_mine", "", 1, 0, 0, "", "", "");
+    this.a.b(2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aatz
  * JD-Core Version:    0.7.0.1
  */

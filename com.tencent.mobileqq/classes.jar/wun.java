@@ -1,54 +1,21 @@
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupDBManager;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import com.tencent.biz.videostory.capture.VideoStoryCapturePart.6.1;
+import dov.com.qq.im.AECamera.View.AECameraGLSurfaceView;
 
 public class wun
-  implements Runnable
+  implements wur
 {
-  public wun(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  wun(wuh paramwuh) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2)
   {
-    Object localObject = (EmoticonFromGroupDBManager)EmoticonGroupStoreFragment.a(this.a).getManager(258);
-    if (localObject != null) {
-      ((EmoticonFromGroupDBManager)localObject).b();
-    }
-    localObject = new CopyOnWriteArrayList(EmoticonGroupStoreFragment.a(this.a).a());
-    if ((localObject != null) && (!((List)localObject).isEmpty()))
-    {
-      int i = ((List)localObject).size();
-      if (i < 50)
-      {
-        EmoticonGroupStoreFragment.a(this.a, (List)localObject);
-        EmoticonGroupStoreFragment.b(this.a, EmoticonGroupStoreFragment.c(this.a));
-        EmoticonGroupStoreFragment.a(this.a);
-        EmoticonGroupStoreFragment.b(this.a);
-      }
-      for (;;)
-      {
-        if (EmoticonGroupStoreFragment.b(this.a) != null) {
-          EmoticonGroupStoreFragment.c(this.a);
-        }
-        return;
-        EmoticonGroupStoreFragment.a(this.a, ((List)localObject).subList(0, 50));
-        int j = EmoticonGroupStoreFragment.c(this.a).size();
-        EmoticonGroupStoreFragment.b(this.a, EmoticonGroupStoreFragment.c(this.a));
-        EmoticonGroupStoreFragment.b(this.a);
-        EmoticonGroupStoreFragment.a(this.a, ((List)localObject).subList(50, i));
-        EmoticonGroupStoreFragment.a(this.a);
-        EmoticonGroupStoreFragment.b(this.a, EmoticonGroupStoreFragment.c(this.a).subList(j, EmoticonGroupStoreFragment.c(this.a).size()));
-        EmoticonGroupStoreFragment.b(this.a);
-      }
-    }
-    EmoticonGroupStoreFragment.d(this.a);
+    wuh.a(this.a).setOnSurfaceChangedListener(null);
+    wuh.a(this.a).f();
+    wuh.a(this.a).setOnFrameDraw(new VideoStoryCapturePart.6.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wun
  * JD-Core Version:    0.7.0.1
  */

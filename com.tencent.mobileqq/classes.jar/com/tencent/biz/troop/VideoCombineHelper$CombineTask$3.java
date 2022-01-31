@@ -1,12 +1,12 @@
 package com.tencent.biz.troop;
 
 import java.util.ArrayList;
-import pbw;
+import wkf;
 
 public class VideoCombineHelper$CombineTask$3
-  extends ArrayList
+  extends ArrayList<Object>
 {
-  public VideoCombineHelper$CombineTask$3(pbw parampbw, String paramString1, String paramString2)
+  public VideoCombineHelper$CombineTask$3(wkf paramwkf, String paramString1, String paramString2)
   {
     add(this.val$inputPath);
     add(this.val$tsFilePath);
@@ -14,7 +14,7 @@ public class VideoCombineHelper$CombineTask$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.biz.troop.VideoCombineHelper.CombineTask.3
  * JD-Core Version:    0.7.0.1
  */

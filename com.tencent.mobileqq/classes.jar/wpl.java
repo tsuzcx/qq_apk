@@ -1,64 +1,50 @@
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
-import com.tencent.mobileqq.app.DiscussionObserver;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import android.util.Pair;
+import com.tencent.ttpic.baseutils.log.LogUtils;
 
-public class wpl
-  extends DiscussionObserver
+public final class wpl
 {
-  public wpl(SystemMsgListView paramSystemMsgListView) {}
+  private static Pair<String, Long> a;
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList paramArrayList)
+  public static boolean a(@NonNull String paramString)
   {
-    if (paramBoolean) {
-      SystemMsgListView.a(this.a).a(paramLong);
+    if ((a != null) && (TextUtils.equals(paramString, (CharSequence)a.first))) {}
+    long l;
+    for (Long localLong = (Long)a.second;; localLong = null)
+    {
+      l = SystemClock.elapsedRealtime();
+      if ((localLong == null) || (l - localLong.longValue() >= 1000L)) {
+        break;
+      }
+      LogUtils.w("FastClickUtils", "fast click ,tag  = " + paramString + ", intervalTime = " + (l - localLong.longValue()));
+      return true;
     }
+    a = new Pair(paramString, Long.valueOf(l));
+    return false;
   }
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public static boolean a(@NonNull String paramString, long paramLong)
   {
-    if (paramBoolean) {
-      if (!(paramObject instanceof ArrayList)) {
-        break label76;
+    if ((a != null) && (TextUtils.equals(paramString, (CharSequence)a.first))) {}
+    long l;
+    for (Long localLong = (Long)a.second;; localLong = null)
+    {
+      l = SystemClock.elapsedRealtime();
+      if ((localLong == null) || (l - localLong.longValue() >= paramLong)) {
+        break;
       }
+      LogUtils.w("FastClickUtils", "fast click ,tag  = " + paramString + ", intervalTime = " + (l - localLong.longValue()));
+      return true;
     }
-    label76:
-    for (paramObject = (ArrayList)paramObject;; paramObject = null)
-    {
-      if ((paramObject != null) && (paramObject.size() > 0))
-      {
-        paramObject = paramObject.iterator();
-        while (paramObject.hasNext())
-        {
-          Object localObject = paramObject.next();
-          if ((localObject instanceof Long)) {
-            SystemMsgListView.a(this.a).a(((Long)localObject).longValue());
-          }
-        }
-      }
-      return;
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if (paramBoolean) {}
-    try
-    {
-      long l = Long.parseLong(paramString);
-      SystemMsgListView.a(this.a).a(l);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-    }
+    a = new Pair(paramString, Long.valueOf(l));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wpl
  * JD-Core Version:    0.7.0.1
  */

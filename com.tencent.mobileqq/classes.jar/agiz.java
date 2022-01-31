@@ -1,20 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager;
-import com.tencent.mobileqq.olympic.activity.ARTipsManager.OcrClickListener;
+import com.tencent.image.Utils;
 
 public class agiz
-  implements View.OnClickListener
+  extends agja
 {
-  public agiz(ARTipsManager paramARTipsManager, agjf paramagjf) {}
-  
-  public void onClick(View paramView)
+  public agiz(String paramString)
   {
-    ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).removeMessages(101);
-    ARTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityARTipsManager).obtainMessage(101).sendToTarget();
-    this.jdField_a_of_type_Agjf.a.b();
+    super(paramString);
+    this.a = "PhotoIncompatibleWebp";
+    this.b = "reportGenerateHeif";
+  }
+  
+  static boolean a(String paramString)
+  {
+    return Utils.isHeifFile(paramString);
   }
 }
 

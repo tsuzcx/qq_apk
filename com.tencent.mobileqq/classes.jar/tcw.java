@@ -1,31 +1,60 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyProcessMonitor;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-class tcw
-  implements Runnable
+public class tcw
+  extends ten
 {
-  tcw(tcv paramtcv) {}
+  private String a;
+  private String jdField_c_of_type_JavaLangString;
+  private boolean jdField_c_of_type_Boolean;
   
-  public void run()
+  public tcw(String paramString1, String paramString2, boolean paramBoolean)
   {
-    WebProcessManager localWebProcessManager = (WebProcessManager)this.a.a.a.getManager(12);
-    if ((localWebProcessManager != null) && (localWebProcessManager.d())) {
-      localWebProcessManager.a(202, new tcx(this));
+    a(false, true);
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_c_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("EncryptUrlJob", 2, new Object[] { "encrypt url:", this.jdField_a_of_type_JavaLangString });
     }
-    this.a.a.n();
-    this.a.a.a(1);
-    if (NearbyUtils.b()) {
-      NearbyUtils.a("Q.lebatab.", new Object[] { "preload nearby process/tool process" });
+    tau localtau = new tau();
+    localtau.jdField_c_of_type_Int = 1;
+    String[] arrayOfString = this.jdField_a_of_type_JavaLangString.split("\\?");
+    if (arrayOfString.length != 2)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("EncryptUrlJob", 2, new Object[] { "Illegal url:", this.jdField_a_of_type_JavaLangString });
+      }
+      a("EncryptUrlJob_encryptedUrl", this.jdField_a_of_type_JavaLangString);
+      b(true);
+      return;
     }
-    NearbyProcessMonitor.a(this.a.a.a.getAccount(), 0);
+    localtau.b = arrayOfString[1];
+    localtau.jdField_c_of_type_JavaLangString = this.jdField_c_of_type_JavaLangString;
+    slv.a().a(localtau, new tcx(this, arrayOfString));
+  }
+  
+  protected void a(Map<String, Object> paramMap)
+  {
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()))
+    {
+      if (paramMap.containsKey("EncryptUrlJob_shareUrl")) {
+        this.jdField_a_of_type_JavaLangString = ((String)a("EncryptUrlJob_shareUrl"));
+      }
+      if (paramMap.containsKey("EncryptUrlJob_feedId")) {
+        this.jdField_c_of_type_JavaLangString = ((String)a("EncryptUrlJob_feedId"));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tcw
  * JD-Core Version:    0.7.0.1
  */

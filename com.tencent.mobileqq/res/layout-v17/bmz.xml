@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/eqv" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/lto" android:clipChildren="false" android:layout_width="78.0dip" android:layout_height="wrap_content">
+        <FrameLayout android:layout_gravity="center_horizontal" android:clipChildren="false" android:layout_width="48.0dip" android:layout_height="48.0dip">
+            <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <ViewFlipper android:layout_gravity="center" android:id="@id/luo" android:layout_width="42.0dip" android:layout_height="42.0dip" />
+            </FrameLayout>
+            <com.tencent.widget.ThemeImageView android:id="@id/exe" android:layout_width="48.0dip" android:layout_height="48.0dip" android:foreground="@drawable/av4" />
+            <TextView android:textSize="7.0dip" android:textColor="#ffffffff" android:layout_gravity="bottom|center|right" android:id="@id/exg" android:background="@drawable/av5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="4.0dip" android:layout_marginBottom="4.0dip" />
+            <ImageView android:layout_gravity="start|bottom|center" android:id="@id/ewj" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="14.0dip" android:scaleType="fitStart" />
+            <TextView android:textSize="11.0sp" android:textColor="@color/skin_qq_conversation_unread_red_text_color" android:layout_gravity="end|center|top" android:id="@id/lul" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-10.0dip" android:layout_marginRight="-10.0dip" android:layout_marginEnd="-10.0dip" />
+        </FrameLayout>
+        <TextView android:textSize="12.0dip" android:textColor="@color/skin_black_theme_version2" android:ellipsize="end" android:gravity="center" android:layout_gravity="center" android:id="@id/exf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:maxEms="4" android:singleLine="true" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:id="@id/exa" android:visibility="gone" android:layout_width="1.0dip" android:layout_height="fill_parent">
+        <ImageView android:layout_width="1.0dip" android:layout_height="fill_parent" android:layout_marginTop="8.0dip" android:layout_marginBottom="30.0dip" android:src="@drawable/auy" android:scaleType="fitXY" />
+    </LinearLayout>
+</LinearLayout>

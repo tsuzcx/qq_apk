@@ -4,17 +4,20 @@ import SharpSvrPack.SharpVideoMsg;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import com.tencent.av.SessionMgr;
+import awrn;
 import com.tencent.av.VideoController;
-import com.tencent.av.VideoPackageUtils;
-import com.tencent.av.VideoPackageUtils.VideoPacket;
-import com.tencent.av.app.SessionInfo;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.business.manager.report.VideoNodeManager;
-import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
+import ksn;
+import ktk;
+import ktl;
+import kvq;
+import kyh;
+import kyj;
+import mhx;
 import mqq.app.AccountNotMatchException;
 import mqq.app.BaseActivity;
 import mqq.app.MobileQQ;
@@ -29,54 +32,59 @@ public class VChatActivity
   
   private void a(FromServiceMsg paramFromServiceMsg, String paramString)
   {
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getWupBuffer() != null) && ("SharpSvr.s2c".equalsIgnoreCase(paramString))) {
-      try
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.getWupBuffer() != null) && ("SharpSvr.s2c".equalsIgnoreCase(paramString))) {}
+    try
+    {
+      SharpVideoMsg localSharpVideoMsg = (SharpVideoMsg)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "SharpVideoMsg", new SharpVideoMsg());
+      ktl localktl;
+      String str1;
+      String str2;
+      int i;
+      if (localSharpVideoMsg != null)
       {
-        paramFromServiceMsg = (SharpVideoMsg)Packet.decodePacket(paramFromServiceMsg.getWupBuffer(), "SharpVideoMsg", new SharpVideoMsg());
-        if (paramFromServiceMsg != null)
+        localktl = ktk.a(localSharpVideoMsg.video_buff);
+        if ((localktl != null) && (localktl.a()))
         {
-          paramString = VideoPackageUtils.a(paramFromServiceMsg.video_buff);
-          if ((paramString != null) && (paramString.a()))
+          kyj.a(34);
+          str1 = String.valueOf(localktl.c);
+          str2 = ksn.a(3, str1, new int[0]);
+          kvq localkvq = ksn.a().b(str2);
+          QLog.d("VChatActivity", 1, "onCreate--onRequestVideo,  VideoPacket[" + localktl + "], session[" + localkvq + "]");
+          if (localkvq == null)
           {
-            VideoNodeManager.a(34);
-            int i = paramString.e;
-            String str1 = String.valueOf(paramString.c);
-            paramFromServiceMsg = String.valueOf(paramString.jdField_d_of_type_Long);
-            switch (i)
-            {
+            if (QLog.isColorLevel()) {
+              QLog.d("tagSharpSvr", 2, "<-- VChatActivity cmd = " + paramString + " , msg_type = " + localSharpVideoMsg.msg_type + ", bodyType = " + localktl.jdField_a_of_type_Int);
             }
-            for (;;)
+            mhx.a("VChatActivity", str2, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, localktl);
+            paramFromServiceMsg = paramFromServiceMsg.getAttribute("__timestamp_net2msf");
+            if (paramFromServiceMsg != null)
             {
-              if (paramString.jdField_d_of_type_Int == 1) {}
-              for (boolean bool = true;; bool = false)
-              {
-                int j = paramString.jdField_b_of_type_Int;
-                long l = paramString.jdField_a_of_type_Long;
-                String str2 = SessionMgr.a(3, str1, new int[0]);
-                SessionInfo localSessionInfo = SessionMgr.a().a(str2);
-                QLog.d("VChatActivity", 1, "onCreate  = onRequestVideo " + paramString.toString() + "|" + localSessionInfo);
-                if (localSessionInfo != null) {
-                  return;
-                }
-                this.jdField_a_of_type_ComTencentAvVideoController.a(i, str1, paramFromServiceMsg, null, bool, null, 0, j);
-                paramFromServiceMsg = SessionMgr.a().a(str2);
-                if (paramFromServiceMsg == null) {
-                  return;
-                }
-                paramFromServiceMsg.a(l);
-                return;
-                paramFromServiceMsg = paramString.jdField_b_of_type_JavaLangString + paramString.jdField_a_of_type_JavaLangString;
-                break;
-              }
+              long l = ((Long)paramFromServiceMsg).longValue();
+              this.jdField_a_of_type_ComTencentAvVideoController.a(str1, l);
+            }
+            i = localktl.e;
+            paramFromServiceMsg = mhx.a(localktl);
+            if (localktl.d != 1) {
+              break label320;
             }
           }
         }
       }
-      catch (Exception paramFromServiceMsg)
+      label320:
+      for (boolean bool = true;; bool = false)
       {
-        paramFromServiceMsg.printStackTrace();
+        this.jdField_a_of_type_ComTencentAvVideoController.a(i, str1, paramFromServiceMsg, null, bool, null, 0, localktl.b);
+        paramFromServiceMsg = ksn.a().b(str2);
+        if (paramFromServiceMsg != null) {
+          paramFromServiceMsg.d(localktl.jdField_a_of_type_Long);
+        }
         return;
       }
+      return;
+    }
+    catch (Exception paramFromServiceMsg)
+    {
+      paramFromServiceMsg.printStackTrace();
     }
   }
   
@@ -95,25 +103,26 @@ public class VChatActivity
         HashMap localHashMap = new HashMap();
         localHashMap.put("avuin", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin());
         localHashMap.put("msfuin", String.valueOf(paramString));
-        StatisticCollector.a(super.getApplicationContext()).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "AV_UIN_NOT_MATCH", false, 0L, 0L, localHashMap, "", true);
+        awrn.a(super.getApplicationContext()).a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin(), "AV_UIN_NOT_MATCH", false, 0L, 0L, localHashMap, "", true);
       } while (paramString.equals("0"));
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(paramString);
     }
   }
   
-  public void a(int paramInt)
+  public void a(long paramLong, int paramInt)
   {
-    QLog.d("VChatActivity", 1, "exitVideoProcess reason = " + paramInt);
+    QLog.w("VChatActivity", 1, "exitVideoProcess, reason[" + paramInt + "], seq[" + paramLong + "]");
     super.finish();
     if (this.jdField_a_of_type_ComTencentAvVideoController != null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(paramInt);
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(paramLong, paramInt);
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
+    QLog.d("VChatActivity", 1, "onCreate()");
     if ((super.getAppRuntime() instanceof VideoAppInterface)) {
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = ((VideoAppInterface)super.getAppRuntime());
     }
@@ -127,6 +136,7 @@ public class VChatActivity
     do
     {
       return;
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(false);
       this.jdField_a_of_type_Boolean = false;
       this.jdField_a_of_type_ComTencentAvVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
       paramBundle = super.getIntent();
@@ -143,10 +153,10 @@ public class VChatActivity
     super.finish();
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     super.onDestroy();
-    QLog.d("VChatActivity", 1, "avideo onDestroy");
+    QLog.d("VChatActivity", 1, "onDestroy()");
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
@@ -157,35 +167,43 @@ public class VChatActivity
       return super.onKeyDown(paramInt, paramKeyEvent);
     }
     super.finish();
-    QLog.d("VChatActivity", 1, "exit when KEYCODE_BACK");
-    a(1009);
+    long l = AudioHelper.b();
+    QLog.w("VChatActivity", 1, "exit when KEYCODE_BACK, seq[" + l + "]");
+    a(l, 1009);
     return true;
   }
   
   protected void onNewIntent(Intent paramIntent)
   {
     super.onNewIntent(paramIntent);
-    QLog.d("VChatActivity", 1, "onCreate onNewIntent =  ");
+    QLog.d("VChatActivity", 1, "onNewIntent()");
+    kyh.a();
   }
   
-  protected void onResume()
+  public void onPause()
+  {
+    super.onPause();
+    QLog.d("VChatActivity", 1, "onPause()");
+  }
+  
+  public void onResume()
   {
     super.onResume();
-    QLog.d("VChatActivity", 1, "onResume  " + this.jdField_a_of_type_Boolean);
+    QLog.d("VChatActivity", 1, "onResume()  mIsEffectiveRequest = " + this.jdField_a_of_type_Boolean);
     if (!this.jdField_a_of_type_Boolean) {
       super.finish();
     }
   }
   
-  protected void onStop()
+  public void onStop()
   {
-    QLog.d("VChatActivity", 1, "avideo onStop");
+    QLog.d("VChatActivity", 1, "onStop()");
     super.onStop();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.ui.VChatActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -8,16 +8,16 @@ import java.util.ArrayList;
 public final class GetServerListReq
   extends JceStruct
 {
-  static ArrayList cache_vUin;
+  static ArrayList<String> cache_vUin;
   public byte bLinkType = 1;
   public int iLastTime;
   public int netType;
   public String sImsi = "46000";
-  public ArrayList vUin;
+  public ArrayList<String> vUin;
   
   public GetServerListReq() {}
   
-  public GetServerListReq(ArrayList paramArrayList, int paramInt1, byte paramByte, String paramString, int paramInt2)
+  public GetServerListReq(ArrayList<String> paramArrayList, int paramInt1, byte paramByte, String paramString, int paramInt2)
   {
     this.vUin = paramArrayList;
     this.iLastTime = paramInt1;

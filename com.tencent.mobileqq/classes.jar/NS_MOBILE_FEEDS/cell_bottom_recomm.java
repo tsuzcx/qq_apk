@@ -21,6 +21,7 @@ public final class cell_bottom_recomm
   public int iReportFlag;
   public boolean isSupportFeedback;
   public s_join_list joinlist;
+  public String jsonData = "";
   public s_picdata picinfo;
   public String summary = "";
   public String summaryColor = "";
@@ -33,7 +34,7 @@ public final class cell_bottom_recomm
   
   public cell_bottom_recomm() {}
   
-  public cell_bottom_recomm(s_picdata params_picdata, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt2, s_join_list params_join_list, boolean paramBoolean, int paramInt3, int paramInt4, WeishiDownlowdUrl paramWeishiDownlowdUrl)
+  public cell_bottom_recomm(s_picdata params_picdata, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt2, s_join_list params_join_list, boolean paramBoolean, int paramInt3, int paramInt4, WeishiDownlowdUrl paramWeishiDownlowdUrl, String paramString8)
   {
     this.picinfo = params_picdata;
     this.title = paramString1;
@@ -50,6 +51,7 @@ public final class cell_bottom_recomm
     this.iReportFlag = paramInt3;
     this.iButtonFlag = paramInt4;
     this.downloadUrl = paramWeishiDownlowdUrl;
+    this.jsonData = paramString8;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -69,6 +71,7 @@ public final class cell_bottom_recomm
     this.iReportFlag = paramJceInputStream.read(this.iReportFlag, 12, false);
     this.iButtonFlag = paramJceInputStream.read(this.iButtonFlag, 13, false);
     this.downloadUrl = ((WeishiDownlowdUrl)paramJceInputStream.read(cache_downloadUrl, 14, false));
+    this.jsonData = paramJceInputStream.readString(15, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -108,11 +111,14 @@ public final class cell_bottom_recomm
     if (this.downloadUrl != null) {
       paramJceOutputStream.write(this.downloadUrl, 14);
     }
+    if (this.jsonData != null) {
+      paramJceOutputStream.write(this.jsonData, 15);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_bottom_recomm
  * JD-Core Version:    0.7.0.1
  */

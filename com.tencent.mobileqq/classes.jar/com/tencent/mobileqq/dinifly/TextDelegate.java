@@ -33,6 +33,11 @@ public class TextDelegate
     this.animationView = null;
   }
   
+  private String getText(String paramString)
+  {
+    return paramString;
+  }
+  
   private void invalidate()
   {
     if (this.animationView != null) {
@@ -43,20 +48,20 @@ public class TextDelegate
     }
   }
   
-  public String getText(String paramString)
-  {
-    return paramString;
-  }
-  
   public final String getTextInternal(String paramString)
   {
+    Object localObject;
     if ((this.cacheText) && (this.stringMap.containsKey(paramString))) {
-      return (String)this.stringMap.get(paramString);
+      localObject = (String)this.stringMap.get(paramString);
     }
-    String str = getText(paramString);
-    if (this.cacheText) {
-      this.stringMap.put(paramString, str);
-    }
+    String str;
+    do
+    {
+      return localObject;
+      str = getText(paramString);
+      localObject = str;
+    } while (!this.cacheText);
+    this.stringMap.put(paramString, str);
     return str;
   }
   
@@ -85,7 +90,7 @@ public class TextDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.TextDelegate
  * JD-Core Version:    0.7.0.1
  */

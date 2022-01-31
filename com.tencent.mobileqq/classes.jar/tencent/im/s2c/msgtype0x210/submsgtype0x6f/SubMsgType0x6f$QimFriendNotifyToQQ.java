@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SubMsgType0x6f$QimFriendNotifyToQQ
-  extends MessageMicro
+  extends MessageMicro<QimFriendNotifyToQQ>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34 }, new String[] { "uint32_notify_type", "msg_add_notify_to_qq", "msg_upgrade_notify", "msg_add_not_login_frd_notify_to_qq" }, new Object[] { Integer.valueOf(0), null, null, null }, QimFriendNotifyToQQ.class);
   public SubMsgType0x6f.AddQimNotLoginFrdNotifyToQQ msg_add_not_login_frd_notify_to_qq = new SubMsgType0x6f.AddQimNotLoginFrdNotifyToQQ();

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.ui.RefreshView android:id="@id/l1l" android:background="#ff2e3132" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.nearby.widget.OverCoverFrameLayout android:id="@id/fgf" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <include android:id="@id/vh" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/sw" />
+            <FrameLayout android:id="@id/l1q" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <include android:id="@id/l1u" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/a3h" />
+                <TextView android:textSize="16.0dip" android:textColor="@color/skin_hint_input" android:gravity="center" android:id="@id/l1s" android:background="@color/al3" android:paddingBottom="80.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/ofw" />
+                <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/ege" android:paddingBottom="50.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <TextView android:textSize="16.0dip" android:textColor="@color/skin_hint_input" android:gravity="center" android:background="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ofv" android:drawableTop="@drawable/d29" android:drawablePadding="20.0dip" />
+                    <TextView android:textSize="16.0dip" android:textColor="@color/skin_hint_input" android:gravity="center" android:background="@color/al3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/ofu" android:lineSpacingExtra="5.0dip" />
+                </LinearLayout>
+            </FrameLayout>
+        </com.tencent.mobileqq.nearby.widget.OverCoverFrameLayout>
+    </com.tencent.biz.ui.RefreshView>
+    <ImageView android:id="@id/bxx" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:src="@drawable/f0b" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+</RelativeLayout>

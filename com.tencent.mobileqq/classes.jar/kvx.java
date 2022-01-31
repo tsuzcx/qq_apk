@@ -1,28 +1,27 @@
-import com.tencent.biz.pubaccount.Advertisement.adapter.VideoCoverAdapter;
-import com.tencent.biz.pubaccount.Advertisement.data.VideoCoverItem;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
-import java.util.ArrayList;
+import android.content.Context;
+import android.media.AudioManager;
+import java.lang.reflect.Method;
 
 public class kvx
-  implements Runnable
 {
-  public kvx(VideoCoverAdapter paramVideoCoverAdapter) {}
+  static int a = 0;
+  static int b = 0;
   
-  public void run()
+  public static boolean a(Context paramContext)
   {
-    if ((VideoCoverAdapter.a(this.a) == null) || (VideoCoverAdapter.a(this.a).size() == 0)) {}
-    VideoCoverItem localVideoCoverItem;
-    do
+    try
     {
-      return;
-      localVideoCoverItem = (VideoCoverItem)VideoCoverAdapter.a(this.a).get(0);
-    } while ((localVideoCoverItem == null) || (localVideoCoverItem.a == null));
-    localVideoCoverItem.a.a(VideoCoverAdapter.a(this.a));
+      paramContext = (AudioManager)paramContext.getSystemService("audio");
+      boolean bool = Boolean.parseBoolean(paramContext.getClass().getMethod("isWiredHeadsetOn", new Class[0]).invoke(paramContext, (Object[])null).toString());
+      return bool;
+    }
+    catch (Exception paramContext) {}
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     kvx
  * JD-Core Version:    0.7.0.1
  */

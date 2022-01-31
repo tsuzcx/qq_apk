@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0691" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0692" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04009c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0693" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0403a1" />
-    <ProgressBar android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a04ee" android:visibility="gone" android:layout_width="23.0dip" android:layout_height="23.0dip" android:layout_marginTop="-25.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/common_loading6" android:indeterminateBehavior="repeat" android:layout_centerInParent="true" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0694" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0403a3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0695" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040c0e" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</RelativeLayout>

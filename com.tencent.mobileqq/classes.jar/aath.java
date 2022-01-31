@@ -1,30 +1,29 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
+import com.tencent.mobileqq.activity.ForwardTroopListFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aath
-  implements View.OnTouchListener
+  extends ajee
 {
-  public aath(ARGreetingCardListManager paramARGreetingCardListManager) {}
+  public aath(ForwardTroopListFragment paramForwardTroopListFragment) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void a(int paramInt)
   {
-    switch (paramMotionEvent.getAction())
+    switch (paramInt)
     {
     }
-    for (;;)
+    do
     {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
-    }
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("contacts.fragment.TroopFragment", 2, "onCacheInited " + paramInt);
+      }
+    } while (this.a.a == null);
+    this.a.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aath
  * JD-Core Version:    0.7.0.1
  */

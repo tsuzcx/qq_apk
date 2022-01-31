@@ -1,33 +1,20 @@
-import android.os.Build;
-import com.tencent.mobileqq.ar.arengine.ARReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class aaoo
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aaoo(ARReport paramARReport, long paramLong1, long paramLong2) {}
+  public aaoo(DialogActivity paramDialogActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    HashMap localHashMap = new HashMap();
-    if (ARReport.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARReport, this.jdField_a_of_type_Long)) {
-      localHashMap.put("total_render_all_time", String.valueOf(this.jdField_a_of_type_Long));
-    }
-    if (ARReport.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARReport, this.b)) {
-      localHashMap.put("total_render_success_time", String.valueOf(this.b));
-    }
-    localHashMap.put("buildmodel", Build.MODEL);
-    localHashMap.put("cpuNumber", String.valueOf(ARReport.a()));
-    localHashMap.put("totalram", ARReport.a(BaseApplication.getContext()));
-    localHashMap.put("cpuname", this.jdField_a_of_type_ComTencentMobileqqArArengineARReport.a());
-    StatisticCollector.a(BaseApplication.getContext()).a("", "AndroidactARTotal", true, this.jdField_a_of_type_Long, 0L, localHashMap, "");
+    paramDialogInterface.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaoo
  * JD-Core Version:    0.7.0.1
  */

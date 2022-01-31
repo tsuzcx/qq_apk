@@ -1,34 +1,32 @@
 package com.tencent.mobileqq.webprocess;
 
-import aktg;
-import akth;
-import akti;
+import ajhd;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.util.ArrayMap;
 import android.text.TextUtils;
 import android.view.View;
-import com.tencent.biz.common.util.Util;
+import bbbk;
+import bbdc;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
-import com.tencent.mobileqq.app.DeviceProfileManager.StringToIntParser;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.webview.sonic.SonicRuntimeImpl;
 import com.tencent.mobileqq.webview.swift.WebBrowserViewContainer;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.sonic.sdk.SonicConfig.Builder;
 import com.tencent.sonic.sdk.SonicEngine;
 import java.util.Arrays;
 import java.util.List;
+import mpw;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -62,7 +60,7 @@ public class WebAccelerateHelper
   public static boolean isWebViewCache;
   private static final Object lock = new Object();
   public static View preloadBrowserView;
-  static volatile ArrayMap sWebViewFeatureConfigs;
+  static volatile ArrayMap<String, String> sWebViewFeatureConfigs;
   static volatile Integer[] sWebViewFeatureParams;
   public WebAccelerateHelper.TicketInfoListener mTicketInfoListener;
   public volatile String param;
@@ -82,10 +80,19 @@ public class WebAccelerateHelper
   
   public static SonicEngine getSonicEngine()
   {
-    if (SonicEngine.isGetInstanceAllowed()) {
-      return SonicEngine.getInstance();
+    try
+    {
+      if (SonicEngine.isGetInstanceAllowed()) {
+        return SonicEngine.getInstance();
+      }
+      SonicEngine localSonicEngine = SonicEngine.createInstance(new SonicRuntimeImpl(BaseApplicationImpl.getApplication()), new SonicConfig.Builder().build());
+      return localSonicEngine;
     }
-    return SonicEngine.createInstance(new SonicRuntimeImpl(BaseApplicationImpl.getApplication()), new SonicConfig.Builder().build());
+    catch (Throwable localThrowable)
+    {
+      QLog.e("WebAccelerateHelper", 1, "get sonic engine error: " + localThrowable);
+    }
+    return null;
   }
   
   public static void preInflaterBrowserView()
@@ -122,13 +129,13 @@ public class WebAccelerateHelper
   public void checkCookie(String paramString)
   {
     if ((isCheckCookie()) && (!TextUtils.isEmpty(paramString))) {
-      ThreadManager.post(new akti(this, paramString), 5, null, true);
+      ThreadManager.post(new WebAccelerateHelper.3(this, paramString), 5, null, true);
     }
   }
   
-  public WebViewPluginEngine createWebViewPluginEngine(AppInterface paramAppInterface, Activity paramActivity, CustomWebView paramCustomWebView, WebAccelerateHelper.CommonJsPluginFactory paramCommonJsPluginFactory, List paramList)
+  public WebViewPluginEngine createWebViewPluginEngine(AppInterface paramAppInterface, Activity paramActivity, CustomWebView paramCustomWebView, WebAccelerateHelper.CommonJsPluginFactory paramCommonJsPluginFactory, List<WebViewPlugin> paramList)
   {
-    Util.a("createWebViewPluginEngine");
+    mpw.a("createWebViewPluginEngine");
     if ((paramAppInterface != null) && (paramActivity == null) && (paramCustomWebView == null) && (paramList == null))
     {
       if (QLog.isColorLevel()) {
@@ -138,7 +145,7 @@ public class WebAccelerateHelper
     }
     for (;;)
     {
-      Util.b("createWebViewPluginEngine");
+      mpw.b("createWebViewPluginEngine");
       if (paramAppInterface != null)
       {
         if (QLog.isColorLevel()) {
@@ -177,7 +184,7 @@ public class WebAccelerateHelper
     }
   }
   
-  public WebViewPluginEngine createWebViewPluginEngine(AppInterface paramAppInterface, Activity paramActivity, CustomWebView paramCustomWebView, List paramList)
+  public WebViewPluginEngine createWebViewPluginEngine(AppInterface paramAppInterface, Activity paramActivity, CustomWebView paramCustomWebView, List<WebViewPlugin> paramList)
   {
     return createWebViewPluginEngine(paramAppInterface, paramActivity, paramCustomWebView, new WebAccelerateHelper.CommonJsPluginFactory(), paramList);
   }
@@ -194,7 +201,7 @@ public class WebAccelerateHelper
     }
   }
   
-  public ArrayMap getWebViewFeatureConfigs()
+  public ArrayMap<String, String> getWebViewFeatureConfigs()
   {
     if (sWebViewFeatureConfigs == null) {}
     try
@@ -249,7 +256,7 @@ public class WebAccelerateHelper
         }
         Integer[] arrayOfInteger = new Integer[15];
         Arrays.fill(arrayOfInteger, Integer.valueOf(-1));
-        DeviceProfileManager.a(str, arrayOfInteger, new DeviceProfileManager.StringToIntParser());
+        DeviceProfileManager.a(str, arrayOfInteger, new ajhd());
         sWebViewFeatureParams = arrayOfInteger;
         if (QLog.isColorLevel()) {
           QLog.d("WebAccelerateHelper", 2, "WebView feature params=" + Arrays.toString(sWebViewFeatureParams));
@@ -287,9 +294,9 @@ public class WebAccelerateHelper
   
   public void preCheckOffline(String paramString)
   {
-    SwiftBrowserOfflineHandler localSwiftBrowserOfflineHandler = SwiftBrowserOfflineHandler.a(paramString);
-    if (localSwiftBrowserOfflineHandler != null) {
-      localSwiftBrowserOfflineHandler.a(null, paramString);
+    bbbk localbbbk = bbbk.a(paramString);
+    if (localbbbk != null) {
+      localbbbk.a(new WebAccelerateHelper.4(this), paramString);
     }
   }
   
@@ -322,7 +329,7 @@ public class WebAccelerateHelper
         paramString.printStackTrace();
         return;
       }
-      ThreadManager.post(new aktg(this, bool1, paramString, bool2), 5, null, true);
+      ThreadManager.post(new WebAccelerateHelper.1(this, bool1, paramString, bool2), 5, null, true);
       return;
       label94:
       bool1 = "1".equals(((Uri)localObject).getQueryParameter("x5PreConnect"));
@@ -346,7 +353,7 @@ public class WebAccelerateHelper
   
   public void preGetKey(Intent paramIntent, AppInterface paramAppInterface)
   {
-    preGetKey(SwiftWebViewUtils.a(paramIntent), paramIntent, paramAppInterface);
+    preGetKey(bbdc.a(paramIntent), paramIntent, paramAppInterface);
   }
   
   public void preGetKey(String paramString, Intent paramIntent, AppInterface paramAppInterface)
@@ -360,14 +367,14 @@ public class WebAccelerateHelper
   public Integer[] queryWebViewFeatureParams()
   {
     if (sWebViewFeatureParams == null) {
-      ThreadManager.post(new akth(this), 5, null, true);
+      ThreadManager.post(new WebAccelerateHelper.2(this), 5, null, true);
     }
     return sWebViewFeatureParams;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.webprocess.WebAccelerateHelper
  * JD-Core Version:    0.7.0.1
  */

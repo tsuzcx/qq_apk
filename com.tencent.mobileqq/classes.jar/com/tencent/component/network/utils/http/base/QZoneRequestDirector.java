@@ -26,8 +26,8 @@ import org.apache.http.protocol.HttpRequestExecutor;
 public class QZoneRequestDirector
   extends DefaultRequestDirector
 {
-  private String jdField_a_of_type_JavaLangString = null;
-  private boolean jdField_a_of_type_Boolean = false;
+  private boolean mDirected = false;
+  private String mHost = null;
   
   public QZoneRequestDirector(HttpRequestExecutor paramHttpRequestExecutor, ClientConnectionManager paramClientConnectionManager, ConnectionReuseStrategy paramConnectionReuseStrategy, ConnectionKeepAliveStrategy paramConnectionKeepAliveStrategy, HttpRoutePlanner paramHttpRoutePlanner, HttpProcessor paramHttpProcessor, HttpRequestRetryHandler paramHttpRequestRetryHandler, RedirectHandler paramRedirectHandler, AuthenticationHandler paramAuthenticationHandler1, AuthenticationHandler paramAuthenticationHandler2, UserTokenHandler paramUserTokenHandler, HttpParams paramHttpParams)
   {
@@ -40,7 +40,7 @@ public class QZoneRequestDirector
     if ((paramRoutedRequest != null) && (HttpClientParams.isRedirecting(this.params))) {
       try
       {
-        this.jdField_a_of_type_Boolean = true;
+        this.mDirected = true;
         paramHttpResponse = paramRoutedRequest.getRequest();
         if (paramHttpResponse != null)
         {
@@ -49,7 +49,7 @@ public class QZoneRequestDirector
           }
           paramHttpContext.setAttribute("RedirectURI", paramHttpResponse.getURI().toString());
           paramHttpContext = paramHttpResponse.getURI().getAuthority();
-          this.jdField_a_of_type_JavaLangString = paramHttpContext;
+          this.mHost = paramHttpContext;
           Header[] arrayOfHeader = paramHttpResponse.getAllHeaders();
           if (arrayOfHeader != null)
           {
@@ -63,8 +63,8 @@ public class QZoneRequestDirector
                 if (!TextUtils.isEmpty(paramHttpContext)) {
                   paramHttpResponse.addHeader("Host", paramHttpContext);
                 }
-                if (QDLog.b()) {
-                  QDLog.b("http", "download redirect orig host:" + arrayOfHeader[i].getValue() + " new host:" + paramHttpContext);
+                if (QDLog.isInfoEnable()) {
+                  QDLog.i("http", "download redirect orig host:" + arrayOfHeader[i].getValue() + " new host:" + paramHttpContext);
                 }
               }
               if ("x-online-host".equals(arrayOfHeader[i].getName()))
@@ -73,8 +73,8 @@ public class QZoneRequestDirector
                 if (!TextUtils.isEmpty(paramHttpContext)) {
                   paramHttpResponse.addHeader("x-online-host", paramHttpContext);
                 }
-                if (QDLog.b()) {
-                  QDLog.b("http", "download redirect orig x-online-host:" + arrayOfHeader[i].getValue() + " new x-online-host:" + paramHttpContext);
+                if (QDLog.isInfoEnable()) {
+                  QDLog.i("http", "download redirect orig x-online-host:" + arrayOfHeader[i].getValue() + " new x-online-host:" + paramHttpContext);
                 }
               }
               i += 1;
@@ -85,7 +85,7 @@ public class QZoneRequestDirector
       }
       catch (Throwable paramHttpResponse)
       {
-        QDLog.d("http", "handleResponse error", paramHttpResponse);
+        QDLog.e("http", "handleResponse error", paramHttpResponse);
       }
     }
   }
@@ -93,15 +93,15 @@ public class QZoneRequestDirector
   protected void rewriteRequestURI(RequestWrapper paramRequestWrapper, HttpRoute paramHttpRoute)
   {
     super.rewriteRequestURI(paramRequestWrapper, paramHttpRoute);
-    if ((!this.jdField_a_of_type_Boolean) || (paramRequestWrapper == null)) {}
+    if ((!this.mDirected) || (paramRequestWrapper == null)) {}
     do
     {
       return;
       paramRequestWrapper.removeHeaders("Host");
       paramRequestWrapper.removeHeaders("x-online-host");
-    } while (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString));
-    paramRequestWrapper.addHeader("Host", this.jdField_a_of_type_JavaLangString);
-    paramRequestWrapper.addHeader("x-online-host", this.jdField_a_of_type_JavaLangString);
+    } while (TextUtils.isEmpty(this.mHost));
+    paramRequestWrapper.addHeader("Host", this.mHost);
+    paramRequestWrapper.addHeader("x-online-host", this.mHost);
   }
 }
 

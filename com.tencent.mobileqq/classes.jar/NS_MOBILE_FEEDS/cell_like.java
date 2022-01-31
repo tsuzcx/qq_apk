@@ -8,9 +8,9 @@ import java.util.ArrayList;
 public final class cell_like
   extends JceStruct
 {
-  static ArrayList cache_likemans = new ArrayList();
+  static ArrayList<s_likeman> cache_likemans = new ArrayList();
   public int isliked;
-  public ArrayList likemans;
+  public ArrayList<s_likeman> likemans;
   public int num;
   
   static
@@ -21,7 +21,7 @@ public final class cell_like
   
   public cell_like() {}
   
-  public cell_like(int paramInt1, int paramInt2, ArrayList paramArrayList)
+  public cell_like(int paramInt1, int paramInt2, ArrayList<s_likeman> paramArrayList)
   {
     this.num = paramInt1;
     this.isliked = paramInt2;
@@ -46,7 +46,7 @@ public final class cell_like
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_like
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ProgressBar android:layout_gravity="center|left" android:id="@id/b3h" android:visibility="gone" android:layout_width="18.0dip" android:layout_height="18.0dip" android:indeterminate="true" />
+    <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="@dimen/pk" android:textColor="@color/a6p" android:layout_gravity="center_vertical" android:id="@id/b3i" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sez" android:singleLine="true" />
+    <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="@dimen/pk" android:textColor="@color/a6u" android:layout_gravity="center_vertical" android:id="@id/ezs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sex" android:singleLine="true" />
+</LinearLayout>

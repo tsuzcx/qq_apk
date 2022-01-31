@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.WebViewProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c5a" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="3.0dip" />
-    <LinearLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c5b" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</LinearLayout>

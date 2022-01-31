@@ -1,77 +1,126 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
-import android.os.Message;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.widget.Button;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import java.io.UnsupportedEncodingException;
-import org.json.JSONObject;
+import android.os.Process;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 
-public class kum
-  extends Handler
+class kum
+  extends BroadcastReceiver
 {
-  public kum(AccountDetailActivity paramAccountDetailActivity) {}
+  public static String a;
+  VideoAppInterface a;
   
-  public void handleMessage(Message paramMessage)
+  static
   {
-    switch (paramMessage.what)
+    jdField_a_of_type_JavaLangString = "AccountReceiver";
+  }
+  
+  public kum(VideoAppInterface paramVideoAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+  }
+  
+  public void onReceive(Context paramContext, Intent paramIntent)
+  {
+    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
+    long l;
+    int i;
+    boolean bool;
+    int j;
+    do
     {
-    default: 
-      return;
-    case 3: 
-      this.a.O();
-      return;
-    case 1: 
-      if (this.a.e)
+      do
       {
-        this.a.j();
-        this.a.K();
-      }
-      for (;;)
-      {
-        this.a.c(this.a.getIntent());
-        return;
-        this.a.j();
-      }
-    case 2: 
-      paramMessage = new Intent();
-      paramMessage.putExtra("isNeedFinish", true);
-      this.a.setResult(-1, paramMessage);
-      this.a.finish();
-      return;
-    case 4: 
-      paramMessage = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-      paramMessage.putExtra("BSafeReportPost", true);
-      try
-      {
-        if (this.a.a != null) {
-          paramMessage.putExtra("SafeReportData", this.a.a.toString().getBytes("utf-8"));
-        }
-        paramMessage.putExtra("hide_more_buttonbutton", true);
-        paramMessage.putExtra("ishiderefresh", true);
-        paramMessage.putExtra("ishidebackforward", true);
-        this.a.startActivity(paramMessage.putExtra("url", "http://jubao.mp.qq.com/mobile/reportAccount"));
-        return;
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        for (;;)
+        do
         {
-          localUnsupportedEncodingException.printStackTrace();
+          do
+          {
+            do
+            {
+              return;
+              try
+              {
+                paramContext = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();
+                if (QLog.isColorLevel()) {
+                  QLog.d(jdField_a_of_type_JavaLangString, 2, "recv account broadcast: " + paramIntent.getAction());
+                }
+                if (!paramIntent.getAction().equals("mqq.intent.action.ACCOUNT_KICKED")) {
+                  break;
+                }
+                this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1001);
+                if (paramContext != null) {
+                  paramContext.B();
+                }
+                Process.killProcess(Process.myPid());
+                return;
+              }
+              catch (RuntimeException paramContext) {}
+            } while (!QLog.isColorLevel());
+            QLog.e(jdField_a_of_type_JavaLangString, 2, "RuntimeException", paramContext);
+            return;
+            if (paramIntent.getAction().equals("mqq.intent.action.ACCOUNT_EXPIRED"))
+            {
+              this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1003);
+              if (paramContext != null) {
+                paramContext.B();
+              }
+              Process.killProcess(Process.myPid());
+              return;
+            }
+            if (paramIntent.getAction().equals("mqq.intent.action.LOGOUT"))
+            {
+              this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1002);
+              if (paramContext != null) {
+                paramContext.B();
+              }
+              Process.killProcess(Process.myPid());
+              return;
+            }
+            if (paramIntent.getAction().equals("mqq.intent.action.EXIT_" + this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getPackageName()))
+            {
+              this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1005);
+              if (paramContext != null) {
+                paramContext.B();
+              }
+              Process.killProcess(Process.myPid());
+              return;
+            }
+            if (!"mqq.intent.action.ACCOUNT_CHANGED".equals(paramIntent.getAction())) {
+              break;
+            }
+          } while (paramContext == null);
+          if (paramContext.e) {
+            paramContext.a(paramContext.c, paramContext.a, 74);
+          }
+          if (QLog.isColorLevel()) {
+            QLog.e(jdField_a_of_type_JavaLangString, 2, "ACTION_ACCOUNT_CHANGED, video process exit!");
+          }
+          this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(1004);
+          paramContext.B();
+          Process.killProcess(Process.myPid());
+          return;
+        } while (!"tencent.video.q2v.membersChange".equals(paramIntent.getAction()));
+        l = paramIntent.getLongExtra("relationId", -1L);
+        i = paramIntent.getIntExtra("relationType", 0);
+        if (l != -1L) {
+          break;
         }
-      }
-    }
-    paramMessage = new AlphaAnimation(1.0F, 0.0F);
-    paramMessage.setDuration(500L);
-    this.a.c.startAnimation(paramMessage);
-    this.a.c.setVisibility(8);
+      } while (!QLog.isColorLevel());
+      QLog.e(jdField_a_of_type_JavaLangString, 2, "can not get the right value");
+      return;
+      bool = paramIntent.getBooleanExtra("Exit", false);
+      j = paramIntent.getIntExtra("avtype", 0);
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(79), Long.valueOf(l), Boolean.valueOf(bool), Integer.valueOf(j) });
+    } while ((!bool) || (j == 2));
+    paramContext.b(i, l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     kum
  * JD-Core Version:    0.7.0.1
  */

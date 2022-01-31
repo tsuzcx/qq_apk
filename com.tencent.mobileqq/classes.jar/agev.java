@@ -1,32 +1,33 @@
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.now.NowProxy;
-import com.tencent.open.business.base.AppUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import android.media.ThumbnailUtils;
+import android.provider.MediaStore.Video.Thumbnails;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import java.net.URL;
 
-public final class agev
-  implements Runnable
+public class agev
+  implements axwp
 {
-  public void run()
+  Context jdField_a_of_type_AndroidContentContext;
+  LocalMediaInfo jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo;
+  
+  public agev(Context paramContext, LocalMediaInfo paramLocalMediaInfo)
   {
-    if (AppUtil.a("com.tencent.now"))
-    {
-      QLog.i("NowAnswerPreloadManager", 3, "openAnswerRoom----NOW APP is Exist, will preload It!");
-      Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse("preload://xxx/xx"));
-      localIntent.setFlags(268435456);
-      BaseApplicationImpl.getContext().startActivity(localIntent);
-      return;
-    }
-    QLog.i("NowAnswerPreloadManager", 3, "openAnswerRoom----NOW APP is not Exist, will preload Plugin!");
-    ((NowProxy)((QQAppInterface)BaseApplicationImpl.getApplication().waitAppRuntime(null)).getManager(181)).a(BaseApplicationImpl.getContext());
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
+  }
+  
+  public Bitmap a(URL paramURL)
+  {
+    paramURL = this.jdField_a_of_type_AndroidContentContext.getContentResolver();
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    return ThumbnailUtils.extractThumbnail(MediaStore.Video.Thumbnails.getThumbnail(paramURL, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo._id, 1, localOptions), this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.thumbWidth, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.thumbHeight);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agev
  * JD-Core Version:    0.7.0.1
  */

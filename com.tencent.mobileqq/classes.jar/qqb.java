@@ -1,22 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.gdtad.views.canvas.components.form.GdtCanvasFormComponentView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnticipateInterpolator;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialView;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
 public class qqb
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public qqb(GdtCanvasFormComponentView paramGdtCanvasFormComponentView) {}
+  public qqb(ReadInJoyFastWebBottomSocialView paramReadInJoyFastWebBottomSocialView) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation) {}
+  
+  public void onAnimationRepeat(Animation paramAnimation)
   {
-    if (GdtCanvasFormComponentView.a(this.a)) {
-      GdtCanvasFormComponentView.a(this.a);
+    ImageView localImageView = ReadInJoyFastWebBottomSocialView.c(this.a);
+    if (ReadInJoyFastWebBottomSocialView.a(this.a).a) {}
+    for (int i = 2130842221;; i = 2130842223)
+    {
+      localImageView.setImageResource(i);
+      paramAnimation.setInterpolator(new AnticipateInterpolator());
+      return;
     }
   }
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qqb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,24 @@
-import android.view.WindowManager;
-import com.tencent.mobileqq.activity.qwallet.widget.MyLinearLayout;
-import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose;
+import android.opengl.GLES20;
 
-public class akms
-  implements Runnable
+class akms
+  implements akvt
 {
-  public akms(QQCustomDialogWtihInputAndChoose paramQQCustomDialogWtihInputAndChoose) {}
+  akms(akmr paramakmr) {}
   
-  public void run()
+  public void a()
   {
-    if (this.a.jdField_a_of_type_AndroidViewWindowManager$LayoutParams == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidViewWindowManager.addView(this.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout, this.a.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
-    this.a.b = true;
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetMyLinearLayout.post(new akmt(this));
+    GLES20.glUniform1i(akmr.a(this.a), akmr.b(this.a));
+  }
+  
+  public void a(int paramInt)
+  {
+    akmr.a(this.a, GLES20.glGetUniformLocation(paramInt, "uDisplayType"));
+    akmz.a("glGetUniformLocation uDisplayType");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akms
  * JD-Core Version:    0.7.0.1
  */

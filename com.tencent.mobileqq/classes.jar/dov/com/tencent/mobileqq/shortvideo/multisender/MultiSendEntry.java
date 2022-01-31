@@ -2,32 +2,33 @@ package dov.com.tencent.mobileqq.shortvideo.multisender;
 
 import android.database.Cursor;
 import android.text.TextUtils;
+import atmo;
+import atnz;
+import atoc;
+import bjkm;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.notColumn;
-import com.tencent.mobileqq.persistence.unique;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class MultiSendEntry
-  extends Entity
+  extends atmo
 {
-  @unique
+  @atoc
   public String fakeVid;
   public String md5;
-  @notColumn
-  List messageDataList;
+  @atnz
+  List<bjkm> messageDataList;
   public String messageInfos;
   public int syncToStory;
   public long time;
   public String uploadInfo;
-  @notColumn
-  MessageBaseData uploadMessageData;
+  @atnz
+  bjkm uploadMessageData;
   public String uuid;
   public String videoPath;
   
-  protected boolean entityByCursor(Cursor paramCursor)
+  public boolean entityByCursor(Cursor paramCursor)
   {
     this.fakeVid = paramCursor.getString(paramCursor.getColumnIndex("fakeVid"));
     this.md5 = paramCursor.getString(paramCursor.getColumnIndex("md5"));
@@ -40,7 +41,7 @@ public class MultiSendEntry
     if (!TextUtils.isEmpty(this.uploadInfo)) {}
     try
     {
-      this.uploadMessageData = new MessageBaseData();
+      this.uploadMessageData = new bjkm();
       this.uploadMessageData.a(this.uploadInfo);
       if (TextUtils.isEmpty(this.messageInfos)) {}
     }
@@ -50,7 +51,7 @@ public class MultiSendEntry
       {
         try
         {
-          this.messageDataList = MessageBaseData.a(this.messageInfos);
+          this.messageDataList = bjkm.a(this.messageInfos);
           return true;
           paramCursor = paramCursor;
           paramCursor.printStackTrace();
@@ -72,23 +73,23 @@ public class MultiSendEntry
     }
     Iterator localIterator = this.messageDataList.iterator();
     while (localIterator.hasNext()) {
-      if (((MessageBaseData)localIterator.next()).a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq)) {
+      if (((bjkm)localIterator.next()).a(paramMessageRecord.frienduin, paramMessageRecord.istroop, paramMessageRecord.uniseq)) {
         localIterator.remove();
       }
     }
-    this.messageInfos = MessageBaseData.a(this.messageDataList);
+    this.messageInfos = bjkm.a(this.messageDataList);
   }
   
-  public void setMessageDataList(List paramList)
+  public void setMessageDataList(List<bjkm> paramList)
   {
     this.messageDataList = paramList;
-    this.messageInfos = MessageBaseData.a(paramList);
+    this.messageInfos = bjkm.a(paramList);
   }
   
-  public void setUploadMessageData(MessageBaseData paramMessageBaseData)
+  public void setUploadMessageData(bjkm parambjkm)
   {
-    this.uploadMessageData = paramMessageBaseData;
-    this.uploadInfo = paramMessageBaseData.a();
+    this.uploadMessageData = parambjkm;
+    this.uploadInfo = parambjkm.a();
   }
 }
 

@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.activity;
 
+import abjw;
+import abjx;
+import ajed;
+import akbj;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
-import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.MsgProxy;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import java.util.Observer;
-import tmu;
-import tmv;
 
 public class QQBroadcastActivity
   extends BaseSystemActivity
   implements Observer
 {
+  public abjx a;
   public Handler a;
-  public tmv a;
   
   public QQBroadcastActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new tmu(this);
+    this.jdField_a_of_type_AndroidOsHandler = new abjw(this);
   }
   
   private void c()
@@ -43,10 +43,10 @@ public class QQBroadcastActivity
     }
     for (;;)
     {
-      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131433311) + "(" + i + ")"));
+      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131654133) + "(" + i + ")"));
       return;
       label79:
-      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131433311)));
+      setLeftViewName(getIntent().putExtra("leftViewText", getString(2131654133)));
       return;
       label99:
       i = j;
@@ -60,20 +60,20 @@ public class QQBroadcastActivity
   
   protected CursorAdapter a()
   {
-    if (this.jdField_a_of_type_Tmv == null) {
-      this.jdField_a_of_type_Tmv = new tmv(this, this, this.app.a(0).a(a(), 0));
+    if (this.jdField_a_of_type_Abjx == null) {
+      this.jdField_a_of_type_Abjx = new abjx(this, this, this.app.a(0).a(a(), 0));
     }
-    return this.jdField_a_of_type_Tmv;
+    return this.jdField_a_of_type_Abjx;
   }
   
   protected CharSequence a()
   {
-    return getString(2131434957);
+    return getString(2131654084);
   }
   
   public String a()
   {
-    return String.valueOf(AppConstants.H);
+    return String.valueOf(ajed.J);
   }
   
   protected void a()
@@ -81,7 +81,7 @@ public class QQBroadcastActivity
     c();
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     this.app.a().c(a(), 0);
@@ -89,15 +89,15 @@ public class QQBroadcastActivity
     this.rightViewText.setVisibility(8);
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_Tmv != null) {
-      this.jdField_a_of_type_Tmv.changeCursor(null);
+    if (this.jdField_a_of_type_Abjx != null) {
+      this.jdField_a_of_type_Abjx.changeCursor(null);
     }
   }
   
-  protected void onResume()
+  public void onResume()
   {
     super.onResume();
   }

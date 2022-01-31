@@ -34,38 +34,34 @@ public final class OkHostnameVerifier
   
   private static List<String> getSubjectAltNames(X509Certificate paramX509Certificate, int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
+    localArrayList = new ArrayList();
     try
     {
       paramX509Certificate = paramX509Certificate.getSubjectAlternativeNames();
       if (paramX509Certificate == null) {
         return Collections.emptyList();
       }
-      Iterator localIterator = paramX509Certificate.iterator();
-      for (;;)
+      paramX509Certificate = paramX509Certificate.iterator();
+      while (paramX509Certificate.hasNext())
       {
-        paramX509Certificate = localArrayList;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        paramX509Certificate = (List)localIterator.next();
-        if ((paramX509Certificate != null) && (paramX509Certificate.size() >= 2))
+        Object localObject = (List)paramX509Certificate.next();
+        if ((localObject != null) && (((List)localObject).size() >= 2))
         {
-          Integer localInteger = (Integer)paramX509Certificate.get(0);
+          Integer localInteger = (Integer)((List)localObject).get(0);
           if ((localInteger != null) && (localInteger.intValue() == paramInt))
           {
-            paramX509Certificate = (String)paramX509Certificate.get(1);
-            if (paramX509Certificate != null) {
-              localArrayList.add(paramX509Certificate);
+            localObject = (String)((List)localObject).get(1);
+            if (localObject != null) {
+              localArrayList.add(localObject);
             }
           }
         }
       }
-      return paramX509Certificate;
+      return localArrayList;
     }
     catch (CertificateParsingException paramX509Certificate)
     {
-      paramX509Certificate = Collections.emptyList();
+      return Collections.emptyList();
     }
   }
   
@@ -112,19 +108,17 @@ public final class OkHostnameVerifier
   private boolean verifyHostName(String paramString, X509Certificate paramX509Certificate)
   {
     paramString = paramString.toLowerCase(Locale.US);
-    int j = 0;
     List localList = getSubjectAltNames(paramX509Certificate, 2);
-    int i = 0;
     int k = localList.size();
-    while (i < k)
+    int j = 0;
+    for (int i = 0; j < k; i = 1)
     {
-      j = 1;
-      if (verifyHostName(paramString, (String)localList.get(i))) {
+      if (verifyHostName(paramString, (String)localList.get(j))) {
         return true;
       }
-      i += 1;
+      j += 1;
     }
-    if (j == 0)
+    if (i == 0)
     {
       paramX509Certificate = new DistinguishedNameParser(paramX509Certificate.getSubjectX500Principal()).findMostSpecific("cn");
       if (paramX509Certificate != null) {
@@ -137,8 +131,8 @@ public final class OkHostnameVerifier
   private boolean verifyIpAddress(String paramString, X509Certificate paramX509Certificate)
   {
     paramX509Certificate = getSubjectAltNames(paramX509Certificate, 7);
-    int i = 0;
     int j = paramX509Certificate.size();
+    int i = 0;
     while (i < j)
     {
       if (paramString.equalsIgnoreCase((String)paramX509Certificate.get(i))) {

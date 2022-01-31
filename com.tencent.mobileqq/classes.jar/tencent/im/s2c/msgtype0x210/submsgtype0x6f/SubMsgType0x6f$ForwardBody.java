@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class SubMsgType0x6f$ForwardBody
-  extends MessageMicro
+  extends MessageMicro<ForwardBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 16002, 16010, 16018, 16026, 16034, 16042, 16058, 16066, 16074, 16082, 16090 }, new String[] { "uint32_notify_type", "uint32_op_type", "msg_fanpanzi_notify", "msg_mcard_notification_like", "msg_vip_info_notify", "msg_push_lost_dev_found", "msg_birthday_reminder_push", "msg_push_lost_dev", "msg_babyq_reward_info", "msg_hot_friend_notify", "msg_push_qim_recommend", "msg_mod_qim_friend", "msg_mod_qim_friend_to_qq" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), null, null, null, null, null, null, null, null, null, null, null }, ForwardBody.class);
   public SubMsgType0x6f.RewardInfo msg_babyq_reward_info = new SubMsgType0x6f.RewardInfo();

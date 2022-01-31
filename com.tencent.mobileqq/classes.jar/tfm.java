@@ -1,52 +1,122 @@
-import android.text.Editable;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.LoginVerifyCodeActivity;
-import com.tencent.mobileqq.util.Utils;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.app.ActivityManager.RunningTaskInfo;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class tfm
-  implements Runnable
 {
-  public tfm(LoginVerifyCodeActivity paramLoginVerifyCodeActivity, String paramString1, String paramString2) {}
-  
-  public void run()
+  protected static List<String> a(Context paramContext)
   {
-    int k = 0;
-    String str = Utils.b(this.jdField_a_of_type_JavaLangString, this.b);
-    if ((str != null) && (str.length() == 6) && (LoginVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity) != null) && (!str.equals(LoginVerifyCodeActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity))))
+    ArrayList localArrayList = new ArrayList();
+    paramContext = paramContext.getPackageManager();
+    Intent localIntent = new Intent("android.intent.action.MAIN");
+    localIntent.addCategory("android.intent.category.HOME");
+    paramContext = paramContext.queryIntentActivities(localIntent, 65536).iterator();
+    while (paramContext.hasNext()) {
+      localArrayList.add(((ResolveInfo)paramContext.next()).activityInfo.packageName);
+    }
+    return localArrayList;
+  }
+  
+  protected static void a(int paramInt, QQAppInterface paramQQAppInterface)
+  {
+    if ((paramQQAppInterface != null) && (paramInt != 0)) {
+      paramQQAppInterface.r();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.w("Q.qqstory.protocol", 2, "playSound ringType = " + paramInt);
+    }
+  }
+  
+  protected static boolean a(Context paramContext)
+  {
+    List localList = ((ActivityManager)paramContext.getSystemService("activity")).getRunningTasks(1);
+    if (localList == null) {
+      return false;
+    }
+    return a(paramContext).contains(((ActivityManager.RunningTaskInfo)localList.get(0)).topActivity.getPackageName());
+  }
+  
+  public static boolean a(QQAppInterface paramQQAppInterface)
+  {
+    Object localObject1 = BaseApplicationImpl.getApplication();
+    if (localObject1 == null) {
+      return false;
+    }
+    boolean bool = GesturePWDUtils.getGestureLocking((Context)localObject1);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.protocol", 2, "isQQForeground isQQLock=" + bool);
+    }
+    if ((paramQQAppInterface == null) || (bool)) {
+      return false;
+    }
+    if (a((Context)localObject1)) {
+      return false;
+    }
+    if (!paramQQAppInterface.isBackground_Pause) {
+      return true;
+    }
+    try
     {
-      LoginVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity, str);
-      int m = 1;
-      int i = 0;
-      for (;;)
+      Object localObject2 = (ActivityManager)((Context)localObject1).getApplicationContext().getSystemService("activity");
+      if (localObject2 == null) {
+        return false;
+      }
+      paramQQAppInterface = ((Context)localObject1).getApplicationContext().getPackageName();
+      if (TextUtils.isEmpty(paramQQAppInterface)) {
+        return false;
+      }
+      localObject1 = ((ActivityManager)localObject2).getRunningAppProcesses();
+      if (localObject1 == null) {
+        return false;
+      }
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        int j = m;
-        if (i < 6)
+        localObject2 = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject1).next();
+        if ((((ActivityManager.RunningAppProcessInfo)localObject2).importance == 100) && (((ActivityManager.RunningAppProcessInfo)localObject2).processName != null))
         {
-          Editable localEditable = LoginVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity)[i].getText();
-          if ((localEditable != null) && (localEditable.toString().length() > 0)) {
-            j = 0;
+          if (((ActivityManager.RunningAppProcessInfo)localObject2).processName.equals(paramQQAppInterface + ":video")) {
+            return false;
           }
-        }
-        else
-        {
-          if (j == 0) {
-            break;
-          }
-          i = k;
-          while (i < 6)
+          if (!((ActivityManager.RunningAppProcessInfo)localObject2).processName.equals(paramQQAppInterface))
           {
-            LoginVerifyCodeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityLoginVerifyCodeActivity)[i].setText(str.substring(i, i + 1));
-            i += 1;
+            bool = ((ActivityManager.RunningAppProcessInfo)localObject2).processName.startsWith(paramQQAppInterface + ":");
+            if (!bool) {
+              break;
+            }
+          }
+          else
+          {
+            return true;
           }
         }
-        i += 1;
       }
     }
+    catch (Exception paramQQAppInterface)
+    {
+      paramQQAppInterface.printStackTrace();
+      return false;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tfm
  * JD-Core Version:    0.7.0.1
  */

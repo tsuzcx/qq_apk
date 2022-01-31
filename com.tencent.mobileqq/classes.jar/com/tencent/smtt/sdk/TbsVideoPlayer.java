@@ -77,13 +77,7 @@ class TbsVideoPlayer
         return false;
       }
       this.mUserStateHolder = paramIUserStateHolder;
-      this.mUserStateListener = new IUserStateChangedListener()
-      {
-        public void onUserStateChanged()
-        {
-          TbsVideoPlayer.this.mTbsVideoView.onUserStateChanged();
-        }
-      };
+      this.mUserStateListener = new TbsVideoPlayer.1(this);
       this.mUserStateHolder.setUserStateChangedListener(this.mUserStateListener);
       localBundle.putInt("callMode", 3);
     }
@@ -109,7 +103,7 @@ class TbsVideoPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsVideoPlayer
  * JD-Core Version:    0.7.0.1
  */

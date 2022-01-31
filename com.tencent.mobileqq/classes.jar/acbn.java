@@ -1,31 +1,28 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Book;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
-public final class acbn
-  implements Parcelable.Creator
+public class acbn
+  implements View.OnClickListener
 {
-  public IPSiteModel.Book a(Parcel paramParcel)
-  {
-    IPSiteModel.Book localBook = new IPSiteModel.Book();
-    localBook.cover = paramParcel.readString();
-    localBook.desc = paramParcel.readString();
-    localBook.id = paramParcel.readString();
-    localBook.jumpUrl = paramParcel.readString();
-    localBook.name = paramParcel.readString();
-    localBook.recommDesc = paramParcel.readString();
-    localBook.authorName = paramParcel.readString();
-    return localBook;
-  }
+  public acbn(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public IPSiteModel.Book[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new IPSiteModel.Book[paramInt];
+    paramView = new Intent(this.a, AccountDetailActivity.class);
+    paramView.putExtra("uin", this.a.a.req_uin.get() + "");
+    paramView.putExtra("source", 112);
+    this.a.startActivity(paramView);
+    awqx.b(this.a.app, "P_CliOper", "Grp_public", "", "oper", "Clk_invite", 0, 0, "", "", "", this.a.a.req_uin.get() + "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acbn
  * JD-Core Version:    0.7.0.1
  */

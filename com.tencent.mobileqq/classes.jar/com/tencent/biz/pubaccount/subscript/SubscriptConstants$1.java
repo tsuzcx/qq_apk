@@ -2,10 +2,10 @@ package com.tencent.biz.pubaccount.subscript;
 
 import java.util.HashMap;
 
-final class SubscriptConstants$1
-  extends HashMap
+public final class SubscriptConstants$1
+  extends HashMap<String, String>
 {
-  SubscriptConstants$1()
+  public SubscriptConstants$1()
   {
     put("2", "2958760001");
     put("3", "2192758784");

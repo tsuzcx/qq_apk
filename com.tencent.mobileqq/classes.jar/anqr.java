@@ -1,35 +1,30 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import dov.com.qq.im.QIMCameraCaptureUnit;
-import mqq.app.AppRuntime;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
 
-class anqr
-  implements MediaScanner.OnMediaInfoScannerListener
+public class anqr
+  implements View.OnTouchListener
 {
-  anqr(anqq paramanqq) {}
+  public anqr(ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
   
-  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!paramBoolean)
+    switch (paramMotionEvent.getAction())
     {
-      this.a.a.a(101);
-      return;
     }
-    QIMCameraCaptureUnit.b(this.a.a, false);
-    if (!BaseApplicationImpl.getApplication().getRuntime().isBackground_Pause)
+    for (;;)
     {
-      this.a.a.a(this.a.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult, paramLocalMediaInfo);
-      return;
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
-    this.a.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
-    this.a.a.b = this.a.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$VideoCaptureResult;
-    this.a.a.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anqr
  * JD-Core Version:    0.7.0.1
  */

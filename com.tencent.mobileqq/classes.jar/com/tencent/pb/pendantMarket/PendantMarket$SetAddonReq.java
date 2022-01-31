@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class PendantMarket$SetAddonReq
-  extends MessageMicro
+  extends MessageMicro<SetAddonReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48, 58, 64, 72 }, new String[] { "cmd", "int_platform", "int_version", "long_addon_id", "str_qq_version", "int_valid_days", "str_open_key", "i_key_type", "int_from_type" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), "", Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0) }, SetAddonReq.class);
   public final PBUInt32Field cmd = PBField.initUInt32(0);
@@ -23,7 +23,7 @@ public final class PendantMarket$SetAddonReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.pendantMarket.PendantMarket.SetAddonReq
  * JD-Core Version:    0.7.0.1
  */

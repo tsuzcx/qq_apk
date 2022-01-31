@@ -1,17 +1,12 @@
-import com.tencent.weiyun.utils.Singleton;
-import cooperation.weiyun.channel.WySender;
+import com.tencent.mobileqq.extendfriend.bean.MiniAppRecommInfo;
 
-public final class anpr
-  extends Singleton
+public abstract interface anpr
 {
-  protected WySender a(Void paramVoid)
-  {
-    return new WySender(null);
-  }
+  public abstract void a(boolean paramBoolean, MiniAppRecommInfo paramMiniAppRecommInfo);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anpr
  * JD-Core Version:    0.7.0.1
  */

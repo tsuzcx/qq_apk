@@ -1,44 +1,78 @@
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emoticon.EmojiManager;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
+import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
 
-public final class rzp
-  implements Runnable
+public class rzp
+  extends rzo<WSRedDotPushMsg, WSPushStrategyInfo>
 {
-  public rzp(Emoticon paramEmoticon, EmoticonManager paramEmoticonManager, EmojiManager paramEmojiManager) {}
+  private int a;
   
-  public void run()
+  public rzp(WSRedDotPushMsg paramWSRedDotPushMsg, int paramInt)
   {
-    ArrayList localArrayList;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType == 0)
+    super(paramWSRedDotPushMsg);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
+  {
+    int i = 2;
+    boolean bool1 = true;
+    if (paramWSPushStrategyInfo == null) {
+      return false;
+    }
+    boolean bool2 = TextUtils.isEmpty(paramWSPushStrategyInfo.mScheme);
+    if (!bool2)
     {
-      localArrayList = (ArrayList)this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, true);
-      if ((localArrayList != null) && (localArrayList.size() > 0))
+      rww.a(paramContext, paramWSPushStrategyInfo.mScheme);
+      paramContext = sam.a();
+      if (paramContext != null) {
+        paramContext.a(null);
+      }
+      sam.a();
+    }
+    if (this.jdField_a_of_type_Int == 2) {
+      if (bool2)
       {
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, localArrayList);
-        if (QLog.isColorLevel()) {
-          QLog.d("ChatActivityFacade", 2, "func tryFetchEmosmKey, try fetch normal emotion keys. epId:" + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId + ",cur emo id:" + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId);
+        i = 2;
+        if (this.jdField_a_of_type_Rzh != null) {
+          break label93;
+        }
+        paramContext = "";
+        label74:
+        rzw.a(i, 1, paramContext);
+        label80:
+        if (bool2) {
+          break label133;
         }
       }
     }
-    do
+    for (;;)
     {
-      do
+      return bool1;
+      i = 1;
+      break;
+      label93:
+      paramContext = ((WSRedDotPushMsg)this.jdField_a_of_type_Rzh).mFeedIds;
+      break label74;
+      if (this.jdField_a_of_type_Int != 6) {
+        break label80;
+      }
+      if (bool2) {}
+      for (;;)
       {
-        return;
-      } while ((this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType != 2) && (this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType != 4));
-      localArrayList = new ArrayList();
-      localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiManager.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, localArrayList);
-    } while (!QLog.isColorLevel());
-    QLog.d("ChatActivityFacade", 2, "func tryFetchEmosmKey, try fetch magic emotion key. epId:" + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId + ",cur emo id:" + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId);
+        rzw.d(i);
+        break;
+        i = 1;
+      }
+      label133:
+      bool1 = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rzp
  * JD-Core Version:    0.7.0.1
  */

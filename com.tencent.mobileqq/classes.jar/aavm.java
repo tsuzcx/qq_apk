@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
-class aavm
-  implements Runnable
+public class aavm
+  implements bele
 {
-  aavm(aavl paramaavl, String paramString1, String paramString2) {}
+  public aavm(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void run()
+  public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    ArkAppDeviceModule.a(this.jdField_a_of_type_Aavl.jdField_a_of_type_Aavk.a, this.jdField_a_of_type_Aavl.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b);
+    FriendProfileCardActivity.a(this.a, paramInt1);
+    if ((paramInt1 + paramInt2 != paramInt3) || (paramInt3 <= 0) || (this.a.d()) || (!badq.d(this.a))) {}
+    while ((this.a.a == null) || (!this.a.a.a())) {
+      return;
+    }
+    this.a.a.a();
+    this.a.d(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aavm
  * JD-Core Version:    0.7.0.1
  */

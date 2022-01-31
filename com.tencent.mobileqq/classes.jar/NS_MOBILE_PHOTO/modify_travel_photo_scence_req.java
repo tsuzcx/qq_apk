@@ -11,15 +11,15 @@ public final class modify_travel_photo_scence_req
   extends JceStruct
 {
   static int cache_opetype = 0;
-  static Map cache_picid_time_list;
+  static Map<String, EditPhoto> cache_picid_time_list;
   static stPhotoPoiArea cache_poi = new stPhotoPoiArea();
-  static ArrayList cache_scence = new ArrayList();
+  static ArrayList<modify_travel_photo_scence> cache_scence = new ArrayList();
   public String albumid = "";
   public int opetype;
-  public Map picid_time_list;
+  public Map<String, EditPhoto> picid_time_list;
   public stPhotoPoiArea poi;
   public long poi_area_start_time;
-  public ArrayList scence;
+  public ArrayList<modify_travel_photo_scence> scence;
   
   static
   {
@@ -32,7 +32,7 @@ public final class modify_travel_photo_scence_req
   
   public modify_travel_photo_scence_req() {}
   
-  public modify_travel_photo_scence_req(String paramString, int paramInt, stPhotoPoiArea paramstPhotoPoiArea, long paramLong, ArrayList paramArrayList, Map paramMap)
+  public modify_travel_photo_scence_req(String paramString, int paramInt, stPhotoPoiArea paramstPhotoPoiArea, long paramLong, ArrayList<modify_travel_photo_scence> paramArrayList, Map<String, EditPhoto> paramMap)
   {
     this.albumid = paramString;
     this.opetype = paramInt;

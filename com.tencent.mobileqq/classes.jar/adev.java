@@ -1,54 +1,74 @@
-import com.tencent.mobileqq.filemanager.core.FileVideoManager;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerCallback;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IDownloadMgr;
+import android.os.SystemClock;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.item.FlashPicItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class adev
-  implements FileVideoManager.FileVideoManagerCallback
+public class adev
+  implements View.OnClickListener
 {
-  adev(adeu paramadeu) {}
+  public adev(FlashPicItemBuilder paramFlashPicItemBuilder) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerCallback != null)
+    long l = SystemClock.uptimeMillis();
+    if (l - FlashPicItemBuilder.a(this.a) < 800L) {}
+    adey localadey;
+    label169:
+    for (;;)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerCallback.a(paramInt, paramString);
-      FileVideoManager.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId);
+      return;
+      FlashPicItemBuilder.a(this.a, l);
+      localadey = (adey)aciy.a(paramView);
+      if (localadey != null)
+      {
+        Object localObject2 = localadey.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
+        Object localObject1 = null;
+        paramView = localObject1;
+        if (localObject2 != null)
+        {
+          localObject2 = this.a.a.a().a(((MessageRecord)localObject2).frienduin, ((MessageRecord)localObject2).istroop, ((MessageRecord)localObject2).uniseq);
+          paramView = localObject1;
+          if ((localObject2 instanceof MessageForPic)) {
+            paramView = (MessageForPic)localObject2;
+          }
+        }
+        if (paramView != null)
+        {
+          if (ajke.a(paramView)) {}
+          for (boolean bool = ajke.b(paramView);; bool = ajhz.b(paramView))
+          {
+            if (bool) {
+              break label169;
+            }
+            if (localadey.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 0) {
+              break label171;
+            }
+            if (localadey.jdField_a_of_type_ComTencentImageURLDrawable.isDownloadStarted()) {
+              break;
+            }
+            localadey.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
+            return;
+          }
+        }
+      }
     }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_JavaLangString = paramString1;
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.c = paramString2;
-    FileVideoManager.VideoControl.b(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_Int = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.startPlayWithSavePath(20160714, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_JavaLangString, FileManagerUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.b), 0L, 0, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.b, 0);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.setPlayerState(20160714, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_Int, 6);
-    paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.buildPlayURLMp4(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_Int);
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.hashCode() + "][" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]getDiscPlayUrl, mPlayId[" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_Int + "]");
+    label171:
+    if (localadey.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 2)
+    {
+      localadey.jdField_a_of_type_ComTencentImageURLDrawable.startDownload();
+      return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOpType = 8;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerCallback != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerCallback.a(paramString1, paramString2);
-    }
-  }
-  
-  public void ag_() {}
-  
-  public void ah_()
-  {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerCallback != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerCallback.ah_();
-    }
+    FlashPicItemBuilder.a(this.a, paramView, localadey.jdField_a_of_type_ComTencentMobileqqActivityAioItemFlashPicItemBuilder$FlashPicAIOThumbView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adev
  * JD-Core Version:    0.7.0.1
  */

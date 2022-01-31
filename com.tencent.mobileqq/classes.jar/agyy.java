@@ -1,39 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.qcall.LightalkSwitchHanlder;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.os.MqqHandler;
 
 class agyy
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  agyy(agyx paramagyx, QQCustomDialog paramQQCustomDialog, long paramLong) {}
+  agyy(agxq paramagxq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    boolean bool = true;
-    if (paramInt == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    }
-    while (paramInt != 1) {
-      return;
-    }
-    paramDialogInterface = QCallDetailActivity.a(this.jdField_a_of_type_Agyx.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity);
-    long l = this.jdField_a_of_type_Long;
-    if (!this.jdField_a_of_type_Agyx.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
-      paramDialogInterface.a(l, bool);
-      QCallDetailActivity.a(this.jdField_a_of_type_Agyx.jdField_a_of_type_ComTencentMobileqqQcallQCallDetailActivity).a((byte)0);
-      return;
-      bool = false;
-    }
+    paramView = new Intent(agxq.a(this.a), GuideBindPhoneActivity.class);
+    paramView.putExtra("fromKeyForContactBind", 4);
+    agxq.a(this.a).startActivity(paramView);
+    agxq.a(this.a).getSharedPreferences("contact_bind_info" + agxq.a(this.a).app.getAccount(), 0).edit().putBoolean("key_show_contact_banner", false).commit();
+    this.a.a(15, 0);
+    agxq.a(this.a).removeMessages(11);
+    awqx.a(agxq.a(this.a).app, "dc00898", "", "", "0X8009EE2", "0X8009EE2", 13, 0, "", "", "", "");
+    awqx.b(agxq.a(this.a).app, "CliOper", "", "", "0X80053D9", "0X80053D9", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agyy
  * JD-Core Version:    0.7.0.1
  */

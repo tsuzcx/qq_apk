@@ -2,8 +2,8 @@ package com.tencent.mobileqq.shortvideo.dancemachine;
 
 public class GLViewContext$LoadItem
 {
-  int a;
-  int b;
+  int sampleId;
+  int status;
 }
 
 

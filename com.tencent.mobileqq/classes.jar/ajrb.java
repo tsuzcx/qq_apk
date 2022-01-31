@@ -1,38 +1,26 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
-import com.tencent.mobileqq.troop.widget.LoadMoreXListView;
-
 public class ajrb
-  implements TextWatcher
+  implements ajfe
 {
-  public ajrb(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
+  public void a(boolean paramBoolean) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void b(boolean paramBoolean) {}
+  
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramEditable.length() == 0)
+    switch (paramInt)
     {
-      SearchReciteArticleFragment.a(this.a);
-      SearchReciteArticleFragment.a(this.a, false);
+    default: 
+      return;
+    case 3: 
+      a(paramBoolean);
       return;
     }
-    SearchReciteArticleFragment.a(this.a).a();
-    SearchReciteArticleFragment.a(this.a).notifyDataSetChanged();
-    SearchReciteArticleFragment.a(this.a).a.a(false);
-    SearchReciteArticleFragment.a(this.a, 0);
-    SearchReciteArticleFragment.a(this.a, true);
-    paramEditable = paramEditable.toString();
-    SearchReciteArticleFragment.a(this.a, paramEditable);
+    b(paramBoolean);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajrb
  * JD-Core Version:    0.7.0.1
  */

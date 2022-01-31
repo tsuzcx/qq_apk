@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.ocr.ui;
 
-import aghj;
 import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.view.View.OnTouchListener;
+import atfk;
+import atfl;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 
@@ -11,12 +12,12 @@ public class BaseOCRTextSearchFragment
   extends Fragment
 {
   public View.OnTouchListener a;
+  public atfl a;
   public QQAppInterface a;
-  public BaseOCRTextSearchFragment.SearchActivityInterface a;
   
   public BaseOCRTextSearchFragment()
   {
-    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new aghj(this);
+    this.jdField_a_of_type_AndroidViewView$OnTouchListener = new atfk(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
   }
   
@@ -24,7 +25,7 @@ public class BaseOCRTextSearchFragment
   {
     super.onAttach(paramActivity);
     if ((paramActivity instanceof OCRTextSearchActivity)) {
-      this.jdField_a_of_type_ComTencentMobileqqOcrUiBaseOCRTextSearchFragment$SearchActivityInterface = ((OCRTextSearchActivity)paramActivity).jdField_a_of_type_ComTencentMobileqqOcrUiBaseOCRTextSearchFragment$SearchActivityInterface;
+      this.jdField_a_of_type_Atfl = ((OCRTextSearchActivity)paramActivity).jdField_a_of_type_Atfl;
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
   }

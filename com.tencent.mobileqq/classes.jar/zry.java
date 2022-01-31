@@ -1,28 +1,38 @@
-import android.content.Intent;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class zry
-  implements Runnable
 {
-  public zry(QQAppInterface paramQQAppInterface, long paramLong, Intent paramIntent) {}
-  
-  public void run()
+  public static zrx a(Class<? extends zrx> paramClass, zrw paramzrw)
   {
-    long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.qqhead.broadcast", 2, "runNext, ThreadManager.excute, cost=" + (l1 - l2));
+    if (paramClass == zsx.class) {
+      paramClass = new zsx();
     }
-    QQAppInterface.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentIntent);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a.decrementAndGet();
-    QQAppInterface.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    for (;;)
+    {
+      if (paramClass != null) {
+        paramClass.a(paramzrw);
+      }
+      return paramClass;
+      if (paramClass == ztd.class) {
+        paramClass = new ztd();
+      } else {
+        try
+        {
+          zrx localzrx = (zrx)paramClass.newInstance();
+          paramClass = localzrx;
+        }
+        catch (Exception localException)
+        {
+          QLog.e("DoraemonOpenAPI.moduleFactory", 1, "newInstance error module=" + paramClass, localException);
+          paramClass = null;
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     zry
  * JD-Core Version:    0.7.0.1
  */

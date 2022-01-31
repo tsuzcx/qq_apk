@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class ShareUrlConfig
   extends JceStruct
 {
-  static ArrayList<String> a = new ArrayList();
+  static ArrayList<String> cache_blackList = new ArrayList();
   public ArrayList<String> blackList = null;
   
   static
   {
-    a.add("");
+    cache_blackList.add("");
   }
   
   public ShareUrlConfig() {}
@@ -25,7 +25,7 @@ public final class ShareUrlConfig
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
-    this.blackList = ((ArrayList)paramJceInputStream.read(a, 0, true));
+    this.blackList = ((ArrayList)paramJceInputStream.read(cache_blackList, 0, true));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -35,7 +35,7 @@ public final class ShareUrlConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmassistant.common.jce.ShareUrlConfig
  * JD-Core Version:    0.7.0.1
  */

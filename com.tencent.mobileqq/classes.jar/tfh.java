@@ -1,48 +1,72 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity2;
+import android.content.Context;
+import com.tencent.biz.qqstory.newshare.util.StoryShareEncryptHelper.2;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
+import mqq.os.MqqHandler;
 
 public class tfh
-  extends WtloginObserver
 {
-  public tfh(LoginPhoneNumActivity2 paramLoginPhoneNumActivity2) {}
-  
-  public void OnCheckSMSVerifyLoginAccount(long paramLong1, long paramLong2, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, ErrMsg paramErrMsg)
+  public static void a(Context paramContext, String paramString, tfj paramtfj, bbms parambbms)
   {
-    if (QLog.isColorLevel())
+    ThreadManager.getUIHandler().post(new StoryShareEncryptHelper.2(paramString, parambbms, paramContext, paramtfj));
+  }
+  
+  public static void a(String paramString, HashMap<String, String> paramHashMap)
+  {
+    paramString = paramString.split("&");
+    int j = paramString.length;
+    int i = 0;
+    while (i < j)
     {
-      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount appid=" + paramLong1 + " subAppid=" + paramLong2 + " countryCode=" + paramString1 + " mobile=" + paramString2);
-      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount msg=" + paramString3 + " msgCnt=" + paramInt1 + " timeLimit=" + paramInt2 + " ret=" + paramInt3);
-      if (paramErrMsg != null) {
-        QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount errMsg=" + paramErrMsg.getMessage());
+      String[] arrayOfString = paramString[i].split("=");
+      if (arrayOfString.length == 2) {
+        paramHashMap.put(arrayOfString[0], arrayOfString[1]);
+      }
+      i += 1;
+    }
+  }
+  
+  public static void a(HashMap<String, String> paramHashMap)
+  {
+    HashMap<String, String> localHashMap = null;
+    Iterator localIterator = paramHashMap.keySet().iterator();
+    paramHashMap = localHashMap;
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      if ((!str.equals("src_type")) && (!str.equals("version")) && (!str.equals("from_leba")) && (!str.equals("leba_resid")) && (!str.equals("config_res_plugin_item_name")) && (!str.equals("redtouch_click_timestamp")) && (!str.equals("lebaVersion")) && (!str.equals("redid")))
+      {
+        localHashMap = paramHashMap;
+        if (QLog.isColorLevel())
+        {
+          if (paramHashMap != null) {
+            break label144;
+          }
+          paramHashMap = new StringBuilder();
+        }
+        for (;;)
+        {
+          paramHashMap.append(str);
+          localHashMap = paramHashMap;
+          localIterator.remove();
+          paramHashMap = localHashMap;
+          break;
+          label144:
+          paramHashMap.append('|');
+        }
       }
     }
-    this.a.c();
-    if (this.a.isFinishing()) {
-      return;
+    if ((paramHashMap != null) && (QLog.isColorLevel())) {
+      QLog.d("Q.qqstory.share.trans.helper", 2, "remove attrs:" + paramHashMap);
     }
-    if (paramInt3 == 0)
-    {
-      this.a.a();
-      return;
-    }
-    paramString1 = null;
-    if (paramErrMsg != null) {
-      paramString1 = paramErrMsg.getMessage();
-    }
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      this.a.a(null, paramString1);
-      return;
-    }
-    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tfh
  * JD-Core Version:    0.7.0.1
  */

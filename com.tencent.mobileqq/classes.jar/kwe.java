@@ -1,19 +1,12 @@
-import android.support.v4.view.ViewPager;
-import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
-
-class kwe
-  implements Runnable
+public abstract interface kwe
 {
-  kwe(kwc paramkwc) {}
+  public abstract lep a();
   
-  public void run()
-  {
-    VideoCoverFragment.a(this.a.a).setCurrentItem(VideoCoverFragment.a(this.a.a) + 1, true);
-  }
+  public abstract void a(String paramString, lep paramlep);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     kwe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditTakePhotoSource;
 
-public class usz
-  implements Runnable
+public final class usz
+  implements Parcelable.Creator<EditTakePhotoSource>
 {
-  public usz(XBubbleAnimation paramXBubbleAnimation) {}
-  
-  public void run()
+  public EditTakePhotoSource a(Parcel paramParcel)
   {
-    this.a.d();
+    return new EditTakePhotoSource(paramParcel);
+  }
+  
+  public EditTakePhotoSource[] a(int paramInt)
+  {
+    return new EditTakePhotoSource[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     usz
  * JD-Core Version:    0.7.0.1
  */

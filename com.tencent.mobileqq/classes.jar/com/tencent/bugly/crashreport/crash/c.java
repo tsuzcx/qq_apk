@@ -7,10 +7,7 @@ import com.tencent.bugly.crashreport.crash.jni.NativeExceptionHandler;
 import com.tencent.bugly.proguard.p;
 import com.tencent.bugly.proguard.u;
 import com.tencent.bugly.proguard.w;
-import com.tencent.bugly.proguard.x;
 import com.tencent.bugly.proguard.z;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public final class c
@@ -83,38 +80,7 @@ public final class c
   
   public final void a(long paramLong)
   {
-    w.a().a(new Thread()
-    {
-      public final void run()
-      {
-        if (!z.a(c.b(c.this), "local_crash_lock", 10000L)) {
-          return;
-        }
-        List localList = c.this.p.a();
-        if ((localList != null) && (localList.size() > 0))
-        {
-          int j = localList.size();
-          if (j > 100L)
-          {
-            ArrayList localArrayList = new ArrayList();
-            Collections.sort(localList);
-            int i = 0;
-            for (;;)
-            {
-              localObject = localArrayList;
-              if (i >= 100L) {
-                break;
-              }
-              localArrayList.add(localList.get(j - 1 - i));
-              i += 1;
-            }
-          }
-          Object localObject = localList;
-          c.this.p.a((List)localObject, 0L, false, false, false);
-        }
-        z.b(c.b(c.this), "local_crash_lock");
-      }
-    }, paramLong);
+    w.a().a(new c.2(this), paramLong);
   }
   
   public final void a(StrategyBean paramStrategyBean)
@@ -122,38 +88,7 @@ public final class c
     this.s.a(paramStrategyBean);
     this.t.onStrategyChanged(paramStrategyBean);
     this.w.a(paramStrategyBean);
-    w.a().a(new Thread()
-    {
-      public final void run()
-      {
-        if (!z.a(c.b(c.this), "local_crash_lock", 10000L)) {
-          return;
-        }
-        List localList = c.this.p.a();
-        if ((localList != null) && (localList.size() > 0))
-        {
-          int j = localList.size();
-          if (j > 100L)
-          {
-            ArrayList localArrayList = new ArrayList();
-            Collections.sort(localList);
-            int i = 0;
-            for (;;)
-            {
-              localObject = localArrayList;
-              if (i >= 100L) {
-                break;
-              }
-              localArrayList.add(localList.get(j - 1 - i));
-              i += 1;
-            }
-          }
-          Object localObject = localList;
-          c.this.p.a((List)localObject, 0L, false, false, false);
-        }
-        z.b(c.b(c.this), "local_crash_lock");
-      }
-    }, 3000L);
+    w.a().a(new c.2(this), 3000L);
   }
   
   public final void a(CrashDetailBean paramCrashDetailBean)
@@ -177,32 +112,9 @@ public final class c
     }
   }
   
-  public final void a(final Thread paramThread, final Throwable paramThrowable, boolean paramBoolean1, final String paramString, final byte[] paramArrayOfByte, boolean paramBoolean2)
+  public final void a(Thread paramThread, Throwable paramThrowable, boolean paramBoolean1, String paramString, byte[] paramArrayOfByte, boolean paramBoolean2)
   {
-    this.v.a(new Runnable()
-    {
-      public final void run()
-      {
-        try
-        {
-          x.c("post a throwable %b", new Object[] { Boolean.valueOf(this.a) });
-          c.a(c.this).a(paramThread, paramThrowable, false, paramString, paramArrayOfByte);
-          if (this.f)
-          {
-            x.a("clear user datas", new Object[0]);
-            com.tencent.bugly.crashreport.common.info.a.a(c.b(c.this)).B();
-          }
-          return;
-        }
-        catch (Throwable localThrowable)
-        {
-          if (x.b(localThrowable) != true) {
-            localThrowable.printStackTrace();
-          }
-          x.e("java catch error: %s", new Object[] { paramThrowable.toString() });
-        }
-      }
-    });
+    this.v.a(new c.1(this, false, paramThread, paramThrowable, paramString, paramArrayOfByte, false));
   }
   
   public final void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
@@ -222,11 +134,6 @@ public final class c
   public final void b()
   {
     this.s.b();
-  }
-  
-  public final void b(long paramLong)
-  {
-    this.t.checkUploadRecordCrash(paramLong);
   }
   
   public final void c()
@@ -277,6 +184,11 @@ public final class c
   public final NativeExceptionHandler k()
   {
     return this.t.getNativeExceptionHandler();
+  }
+  
+  public final void l()
+  {
+    this.t.checkUploadRecordCrash();
   }
 }
 

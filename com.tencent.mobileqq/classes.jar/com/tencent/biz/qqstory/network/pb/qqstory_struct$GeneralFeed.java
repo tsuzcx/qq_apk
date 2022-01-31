@@ -10,13 +10,13 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class qqstory_struct$GeneralFeed
-  extends MessageMicro
+  extends MessageMicro<GeneralFeed>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field date = PBField.initUInt32(0);
   public final PBBytesField feed_attr = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField feed_id = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField feed_video_info_list = PBField.initRepeatMessage(qqstory_struct.FeedVideoInfo.class);
+  public final PBRepeatMessageField<qqstory_struct.FeedVideoInfo> feed_video_info_list = PBField.initRepeatMessage(qqstory_struct.FeedVideoInfo.class);
   public final PBUInt32Field hasVideoTag = PBField.initUInt32(0);
   public final PBUInt32Field has_public_video = PBField.initUInt32(0);
   public final PBUInt32Field is_end = PBField.initUInt32(0);
@@ -27,7 +27,7 @@ public final class qqstory_struct$GeneralFeed
   public final PBUInt32Field share_to_discover = PBField.initUInt32(0);
   public qqstory_struct.UserInfo user = new qqstory_struct.UserInfo();
   public final PBUInt32Field video_total = PBField.initUInt32(0);
-  public final PBRepeatField ws_schemas = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> ws_schemas = PBField.initRepeat(PBBytesField.__repeatHelper__);
   
   static
   {
@@ -41,7 +41,7 @@ public final class qqstory_struct$GeneralFeed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.GeneralFeed
  * JD-Core Version:    0.7.0.1
  */

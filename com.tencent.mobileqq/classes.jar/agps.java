@@ -1,20 +1,47 @@
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.pic.PicPreDownloader;
-import com.tencent.mobileqq.pic.StructMsgPicPreDelegate;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPClientConnectListener;
 
-public class agps
-  implements Runnable
+class agps
+  implements EIPClientConnectListener
 {
-  public agps(PicPreDownloader paramPicPreDownloader, MessageForStructing paramMessageForStructing) {}
+  agps(agpq paramagpq, long paramLong) {}
   
-  public void run()
+  public void connectFailed()
   {
-    StructMsgPicPreDelegate.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing, this.jdField_a_of_type_ComTencentMobileqqPicPicPreDownloader.a);
+    agpq.a(this.jdField_a_of_type_Agpq, false);
+    agpq.b(this.jdField_a_of_type_Agpq, false);
+    synchronized (agpq.a(this.jdField_a_of_type_Agpq))
+    {
+      agpq.a(this.jdField_a_of_type_Agpq).notifyAll();
+      if (QLog.isColorLevel()) {
+        QLog.d("QWalletIPCConnector", 2, "connectFailed:" + agpq.a(this.jdField_a_of_type_Agpq));
+      }
+      return;
+    }
+  }
+  
+  public void connectSuccess(EIPCConnection arg1)
+  {
+    long l = System.currentTimeMillis();
+    if (??? != null) {
+      agpq.a(this.jdField_a_of_type_Agpq, ???.procName);
+    }
+    agpq.a(this.jdField_a_of_type_Agpq, true);
+    agpq.b(this.jdField_a_of_type_Agpq, false);
+    synchronized (agpq.a(this.jdField_a_of_type_Agpq))
+    {
+      agpq.a(this.jdField_a_of_type_Agpq).notifyAll();
+      if (QLog.isColorLevel()) {
+        QLog.d("QWalletIPCConnector", 2, "connectSuccess:" + agpq.a(this.jdField_a_of_type_Agpq) + "|" + (l - this.jdField_a_of_type_Long));
+      }
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agps
  * JD-Core Version:    0.7.0.1
  */

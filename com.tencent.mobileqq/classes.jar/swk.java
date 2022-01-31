@@ -1,20 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-
-public class swk
-  implements View.OnClickListener
+public abstract class swk
 {
-  public swk(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  protected int a;
+  protected swi a;
   
-  public void onClick(View paramView)
+  public abstract void a();
+  
+  public void a(swi paramswi)
   {
-    FriendProfileImageActivity.a(this.a);
+    this.jdField_a_of_type_Swi = paramswi;
+  }
+  
+  public boolean a()
+  {
+    if (this.jdField_a_of_type_Int < 1)
+    {
+      this.jdField_a_of_type_Int += 1;
+      urk.d("Q.qqstory.net:BatchNetHandler", String.format("retry request , retry count = %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+      a();
+      return true;
+    }
+    return false;
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Swi != null) {
+      this.jdField_a_of_type_Swi.a(this);
+    }
+  }
+  
+  public void c()
+  {
+    if (this.jdField_a_of_type_Swi != null) {
+      this.jdField_a_of_type_Swi.b(this);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     swk
  * JD-Core Version:    0.7.0.1
  */

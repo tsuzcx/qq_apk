@@ -1,29 +1,16 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent;
-import com.tencent.biz.qqstory.playmode.child.CommentPlayMode;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory.FoundClickableViewListener;
 
-public class nnr
-  extends QQUIEventReceiver
+class nnr
+  implements ViewFactory.FoundClickableViewListener
 {
-  public nnr(@NonNull CommentPlayMode paramCommentPlayMode)
-  {
-    super(paramCommentPlayMode);
-  }
+  nnr(nnq paramnnq, BaseData paramBaseData, Context paramContext, ViewBase paramViewBase) {}
   
-  public void a(@NonNull CommentPlayMode paramCommentPlayMode, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
+  public void onFound(ViewBase paramViewBase)
   {
-    if ((paramUpdateUserInfoEvent.errorInfo.isSuccess()) && (paramUpdateUserInfoEvent.a != null)) {
-      CommentPlayMode.a(paramCommentPlayMode, paramUpdateUserInfoEvent.a);
-    }
-    SLog.b(this.TAG, "UpdateUserInfoEventReceiver. ", paramUpdateUserInfoEvent);
-  }
-  
-  public Class acceptEventClass()
-  {
-    return GetUserInfoHandler.UpdateUserInfoEvent.class;
+    paramViewBase.setOnClickListener(new nns(this));
   }
 }
 

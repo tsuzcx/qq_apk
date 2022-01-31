@@ -1,19 +1,16 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-
 public class ssl
-  implements Runnable
+  extends sfo
 {
-  public ssl(ForwardRecentActivity paramForwardRecentActivity) {}
+  public final String a;
   
-  public void run()
+  public ssl(String paramString)
   {
-    this.a.a.sendAccessibilityEvent(8);
+    this.a = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ssl
  * JD-Core Version:    0.7.0.1
  */

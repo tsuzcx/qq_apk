@@ -98,18 +98,10 @@ public class StoryDownloadView
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null)
-    {
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.end();
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet = null;
-    }
-    if (this.jdField_b_of_type_AndroidAnimationAnimatorSet != null)
-    {
-      this.jdField_b_of_type_AndroidAnimationAnimatorSet.end();
-      this.jdField_b_of_type_AndroidAnimationAnimatorSet.cancel();
-      this.jdField_b_of_type_AndroidAnimationAnimatorSet = null;
-    }
+    this.jdField_d_of_type_Int = 0;
+    super.setEnabled(true);
+    b();
+    super.invalidate();
   }
   
   public void a(Canvas paramCanvas)
@@ -146,6 +138,22 @@ public class StoryDownloadView
       paramCanvas.drawArc((RectF)localObject, 90.0F, 360.0F, true, localPaint);
       paramCanvas.drawArc(localRectF, -90.0F, 360.0F, true, localPaint);
       return;
+    }
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null)
+    {
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet.end();
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet.cancel();
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet = null;
+    }
+    if (this.jdField_b_of_type_AndroidAnimationAnimatorSet != null)
+    {
+      this.jdField_b_of_type_AndroidAnimationAnimatorSet.end();
+      this.jdField_b_of_type_AndroidAnimationAnimatorSet.cancel();
+      this.jdField_b_of_type_AndroidAnimationAnimatorSet = null;
     }
   }
   
@@ -247,7 +255,7 @@ public class StoryDownloadView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.StoryDownloadView
  * JD-Core Version:    0.7.0.1
  */

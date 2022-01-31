@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class C2CType0x211_SubC2CType0xb$MsgBody$RejectNotify
-  extends MessageMicro
+  extends MessageMicro<RejectNotify>
 {
   public static final int ENUM_REJECT_REASON_FIELD_NUMBER = 1;
   public static final int REJECT_BY_REASON_1 = 201;

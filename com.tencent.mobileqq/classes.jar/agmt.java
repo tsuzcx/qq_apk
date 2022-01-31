@@ -1,19 +1,12 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import java.util.Map;
 
-public class agmt
-  implements Runnable
+public abstract interface agmt
 {
-  public agmt(ScanTorchActivity paramScanTorchActivity) {}
-  
-  public void run()
-  {
-    ScanTorchActivity.b(this.a, true, ScanTorchActivity.d(this.a));
-    ScanTorchActivity.w(this.a);
-  }
+  public abstract void a(String paramString, Map<String, String> paramMap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agmt
  * JD-Core Version:    0.7.0.1
  */

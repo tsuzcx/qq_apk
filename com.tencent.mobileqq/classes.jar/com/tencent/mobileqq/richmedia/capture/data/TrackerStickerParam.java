@@ -2,6 +2,7 @@ package com.tencent.mobileqq.richmedia.capture.data;
 
 import android.graphics.PointF;
 import android.text.TextUtils;
+import android.util.Pair;
 import com.tencent.sveffects.SLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,43 +17,64 @@ import org.json.JSONObject;
 
 public class TrackerStickerParam
 {
-  public float a;
-  public int a;
-  public PointF a;
-  public SegmentKeeper a;
-  public String a;
-  public Map a;
-  public float b;
-  public int b;
-  public float c;
-  public float d;
-  public float e;
-  public float f;
+  private static final String KEY_SEGMENTS_DATA = "segmentdata";
+  public PointF centerP;
+  public float height;
+  public int layerHeight;
+  public int layerWidth;
+  public SegmentKeeper mSegmentKeeper = new SegmentKeeper();
+  public Map<Long, TrackerStickerParam.MotionInfo> mapMotionTrack = new HashMap();
+  public String path;
+  public float rotate;
+  public float scale;
+  public float translateXValue;
+  public float translateYValue;
+  public float width;
   
-  public TrackerStickerParam()
+  public TrackerStickerParam() {}
+  
+  public TrackerStickerParam(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, int paramInt1, int paramInt2, String paramString, Map<Long, TrackerStickerParam.MotionInfo> paramMap)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = new SegmentKeeper();
+    this.centerP = new PointF(paramFloat1, paramFloat2);
+    this.scale = paramFloat3;
+    this.rotate = paramFloat4;
+    this.translateXValue = paramFloat5;
+    this.translateYValue = paramFloat6;
+    this.width = paramFloat7;
+    this.height = paramFloat8;
+    this.path = paramString;
+    this.layerWidth = paramInt1;
+    this.layerHeight = paramInt2;
+    this.mapMotionTrack = paramMap;
   }
   
-  public TrackerStickerParam(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, int paramInt1, int paramInt2, String paramString, Map paramMap)
+  public static ArrayList<TrackerStickerParam> FromString(String paramString)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper = new SegmentKeeper();
-    this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(paramFloat1, paramFloat2);
-    this.jdField_a_of_type_Float = paramFloat3;
-    this.jdField_b_of_type_Float = paramFloat4;
-    this.c = paramFloat5;
-    this.d = paramFloat6;
-    this.e = paramFloat7;
-    this.f = paramFloat8;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_JavaUtilMap = paramMap;
+    localArrayList = new ArrayList();
+    try
+    {
+      paramString = new JSONObject(paramString).getJSONArray("TrackList");
+      if ((paramString != null) && (paramString.length() > 0))
+      {
+        int i = 0;
+        while (i < paramString.length())
+        {
+          JSONObject localJSONObject = paramString.getJSONObject(i);
+          TrackerStickerParam localTrackerStickerParam = new TrackerStickerParam();
+          localTrackerStickerParam.FromJson(localJSONObject);
+          localArrayList.add(localTrackerStickerParam);
+          i += 1;
+        }
+      }
+      return localArrayList;
+    }
+    catch (JSONException paramString)
+    {
+      SLog.e("TrackerStickerParam", "TrackList FromString" + paramString.toString());
+    }
   }
   
-  public static String a(ArrayList paramArrayList)
+  public static String ToJsonString(ArrayList<TrackerStickerParam> paramArrayList)
   {
     JSONArray localJSONArray = null;
     Object localObject = localJSONArray;
@@ -68,7 +90,7 @@ public class TrackerStickerParam
         {
           TrackerStickerParam localTrackerStickerParam = (TrackerStickerParam)paramArrayList.get(i);
           if (localTrackerStickerParam != null) {
-            localJSONArray.put(localTrackerStickerParam.a());
+            localJSONArray.put(localTrackerStickerParam.toJSONObject());
           }
           i += 1;
         }
@@ -84,38 +106,12 @@ public class TrackerStickerParam
     {
       for (;;)
       {
-        SLog.a("TrackerStickerParam", "TrackList" + paramArrayList.toString());
+        SLog.e("TrackerStickerParam", "TrackList" + paramArrayList.toString());
       }
     }
   }
   
-  public static ArrayList a(String paramString)
-  {
-    localArrayList = new ArrayList();
-    try
-    {
-      paramString = new JSONObject(paramString).getJSONArray("TrackList");
-      if ((paramString != null) && (paramString.length() > 0))
-      {
-        int i = 0;
-        while (i < paramString.length())
-        {
-          JSONObject localJSONObject = paramString.getJSONObject(i);
-          TrackerStickerParam localTrackerStickerParam = new TrackerStickerParam();
-          localTrackerStickerParam.a(localJSONObject);
-          localArrayList.add(localTrackerStickerParam);
-          i += 1;
-        }
-      }
-      return localArrayList;
-    }
-    catch (JSONException paramString)
-    {
-      SLog.a("TrackerStickerParam", "TrackList FromString" + paramString.toString());
-    }
-  }
-  
-  public static Map a(JSONArray paramJSONArray)
+  public static Map<Long, TrackerStickerParam.MotionInfo> mapMotionFromJarray(JSONArray paramJSONArray)
   {
     HashMap localHashMap = new HashMap();
     if (paramJSONArray != null)
@@ -128,20 +124,20 @@ public class TrackerStickerParam
           {
             JSONObject localJSONObject = (JSONObject)paramJSONArray.get(i);
             TrackerStickerParam.MotionInfo localMotionInfo = new TrackerStickerParam.MotionInfo(false, 0L, 0.0F, 0.0F, 1.0F, 0.0F);
-            localMotionInfo.jdField_a_of_type_Boolean = localJSONObject.getBoolean("isLost");
-            localMotionInfo.jdField_a_of_type_Long = localJSONObject.getLong("frameTime");
-            localMotionInfo.jdField_a_of_type_Float = ((float)localJSONObject.getDouble("motionX"));
-            localMotionInfo.jdField_b_of_type_Float = ((float)localJSONObject.getDouble("motionY"));
-            localMotionInfo.c = ((float)localJSONObject.getDouble("scaleP"));
-            localMotionInfo.d = ((float)localJSONObject.getDouble("rotateP"));
-            localHashMap.put(Long.valueOf(localMotionInfo.jdField_a_of_type_Long), localMotionInfo);
+            localMotionInfo.isLost = localJSONObject.getBoolean("isLost");
+            localMotionInfo.frameTime = localJSONObject.getLong("frameTime");
+            localMotionInfo.x = ((float)localJSONObject.getDouble("motionX"));
+            localMotionInfo.y = ((float)localJSONObject.getDouble("motionY"));
+            localMotionInfo.scale = ((float)localJSONObject.getDouble("scaleP"));
+            localMotionInfo.rotate = ((float)localJSONObject.getDouble("rotateP"));
+            localHashMap.put(Long.valueOf(localMotionInfo.frameTime), localMotionInfo);
             i += 1;
           }
           catch (JSONException localJSONException)
           {
             for (;;)
             {
-              SLog.a("TrackerStickerParam", "mapMotionFromJarray" + localJSONException.toString());
+              SLog.e("TrackerStickerParam", "mapMotionFromJarray" + localJSONException.toString());
             }
           }
         }
@@ -150,7 +146,7 @@ public class TrackerStickerParam
     return localHashMap;
   }
   
-  public static JSONArray a(Map paramMap)
+  public static JSONArray motionMapToJarray(Map<Long, TrackerStickerParam.MotionInfo> paramMap)
   {
     JSONArray localJSONArray = new JSONArray();
     if ((paramMap != null) && (paramMap.size() > 0))
@@ -165,40 +161,83 @@ public class TrackerStickerParam
         {
           JSONObject localJSONObject = new JSONObject();
           localJSONObject.put("frameTime", localLong);
-          localJSONObject.put("motionX", ((TrackerStickerParam.MotionInfo)localObject).jdField_a_of_type_Float);
-          localJSONObject.put("motionY", ((TrackerStickerParam.MotionInfo)localObject).jdField_b_of_type_Float);
-          localJSONObject.put("isLost", ((TrackerStickerParam.MotionInfo)localObject).jdField_a_of_type_Boolean);
-          localJSONObject.put("scaleP", ((TrackerStickerParam.MotionInfo)localObject).c);
-          localJSONObject.put("rotateP", ((TrackerStickerParam.MotionInfo)localObject).d);
+          localJSONObject.put("motionX", ((TrackerStickerParam.MotionInfo)localObject).x);
+          localJSONObject.put("motionY", ((TrackerStickerParam.MotionInfo)localObject).y);
+          localJSONObject.put("isLost", ((TrackerStickerParam.MotionInfo)localObject).isLost);
+          localJSONObject.put("scaleP", ((TrackerStickerParam.MotionInfo)localObject).scale);
+          localJSONObject.put("rotateP", ((TrackerStickerParam.MotionInfo)localObject).rotate);
           localJSONArray.put(localJSONObject);
         }
         catch (JSONException localJSONException)
         {
-          SLog.a("TrackerStickerParam", "motionMapToJarray" + localJSONException.toString());
+          SLog.e("TrackerStickerParam", "motionMapToJarray" + localJSONException.toString());
         }
       }
     }
     return localJSONArray;
   }
   
-  public JSONObject a()
+  public void FromJson(JSONObject paramJSONObject)
+  {
+    try
+    {
+      if (this.centerP == null) {
+        this.centerP = new PointF(0.0F, 0.0F);
+      }
+      this.centerP.x = ((float)paramJSONObject.getDouble("centerPx"));
+      this.centerP.y = ((float)paramJSONObject.getDouble("centerPy"));
+      this.scale = ((float)paramJSONObject.getDouble("scale"));
+      this.rotate = ((float)paramJSONObject.getDouble("rotate"));
+      this.translateXValue = ((float)paramJSONObject.getDouble("translateXValue"));
+      this.translateYValue = ((float)paramJSONObject.getDouble("translateYValue"));
+      this.width = ((float)paramJSONObject.getDouble("width"));
+      this.height = ((float)paramJSONObject.getDouble("height"));
+      this.path = paramJSONObject.getString("path");
+      this.layerWidth = paramJSONObject.getInt("layerWidth");
+      this.layerHeight = paramJSONObject.getInt("layerHeight");
+      this.mapMotionTrack = mapMotionFromJarray(paramJSONObject.getJSONArray("motionTrack"));
+      if (paramJSONObject.has("segmentdata"))
+      {
+        this.mSegmentKeeper.fromJSONObject(paramJSONObject.getJSONObject("segmentdata"));
+        return;
+      }
+      SLog.e("TrackerStickerParam", "FromJSONObject error， segmentdata not exist!");
+      return;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      SLog.e("TrackerStickerParam", "mapMotionFromJarray" + paramJSONObject.toString());
+    }
+  }
+  
+  public boolean isShow(long paramLong)
+  {
+    return this.mSegmentKeeper.isInSegment(paramLong);
+  }
+  
+  public void setSegmentList(List<Pair<Long, Long>> paramList)
+  {
+    this.mSegmentKeeper.setSegmentList(paramList);
+  }
+  
+  public JSONObject toJSONObject()
   {
     JSONObject localJSONObject1 = new JSONObject();
     try
     {
-      localJSONObject1.put("centerPx", this.jdField_a_of_type_AndroidGraphicsPointF.x);
-      localJSONObject1.put("centerPy", this.jdField_a_of_type_AndroidGraphicsPointF.y);
-      localJSONObject1.put("scale", this.jdField_a_of_type_Float);
-      localJSONObject1.put("rotate", this.jdField_b_of_type_Float);
-      localJSONObject1.put("translateXValue", this.c);
-      localJSONObject1.put("translateYValue", this.d);
-      localJSONObject1.put("width", this.e);
-      localJSONObject1.put("height", this.f);
-      localJSONObject1.put("path", this.jdField_a_of_type_JavaLangString);
-      localJSONObject1.put("layerWidth", this.jdField_a_of_type_Int);
-      localJSONObject1.put("layerHeight", this.jdField_b_of_type_Int);
-      localJSONObject1.put("motionTrack", a(this.jdField_a_of_type_JavaUtilMap));
-      JSONObject localJSONObject2 = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.a();
+      localJSONObject1.put("centerPx", this.centerP.x);
+      localJSONObject1.put("centerPy", this.centerP.y);
+      localJSONObject1.put("scale", this.scale);
+      localJSONObject1.put("rotate", this.rotate);
+      localJSONObject1.put("translateXValue", this.translateXValue);
+      localJSONObject1.put("translateYValue", this.translateYValue);
+      localJSONObject1.put("width", this.width);
+      localJSONObject1.put("height", this.height);
+      localJSONObject1.put("path", this.path);
+      localJSONObject1.put("layerWidth", this.layerWidth);
+      localJSONObject1.put("layerHeight", this.layerHeight);
+      localJSONObject1.put("motionTrack", motionMapToJarray(this.mapMotionTrack));
+      JSONObject localJSONObject2 = this.mSegmentKeeper.toJSONObject();
       if (localJSONObject2 != null) {
         localJSONObject1.put("segmentdata", localJSONObject2);
       }
@@ -206,68 +245,25 @@ public class TrackerStickerParam
     }
     catch (JSONException localJSONException)
     {
-      SLog.a("TrackerStickerParam", "toJSONObject" + localJSONException.toString());
+      SLog.e("TrackerStickerParam", "toJSONObject" + localJSONException.toString());
     }
     return localJSONObject1;
-  }
-  
-  public void a(List paramList)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.a(paramList);
-  }
-  
-  public void a(JSONObject paramJSONObject)
-  {
-    try
-    {
-      if (this.jdField_a_of_type_AndroidGraphicsPointF == null) {
-        this.jdField_a_of_type_AndroidGraphicsPointF = new PointF(0.0F, 0.0F);
-      }
-      this.jdField_a_of_type_AndroidGraphicsPointF.x = ((float)paramJSONObject.getDouble("centerPx"));
-      this.jdField_a_of_type_AndroidGraphicsPointF.y = ((float)paramJSONObject.getDouble("centerPy"));
-      this.jdField_a_of_type_Float = ((float)paramJSONObject.getDouble("scale"));
-      this.jdField_b_of_type_Float = ((float)paramJSONObject.getDouble("rotate"));
-      this.c = ((float)paramJSONObject.getDouble("translateXValue"));
-      this.d = ((float)paramJSONObject.getDouble("translateYValue"));
-      this.e = ((float)paramJSONObject.getDouble("width"));
-      this.f = ((float)paramJSONObject.getDouble("height"));
-      this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("path");
-      this.jdField_a_of_type_Int = paramJSONObject.getInt("layerWidth");
-      this.jdField_b_of_type_Int = paramJSONObject.getInt("layerHeight");
-      this.jdField_a_of_type_JavaUtilMap = a(paramJSONObject.getJSONArray("motionTrack"));
-      if (paramJSONObject.has("segmentdata"))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.a(paramJSONObject.getJSONObject("segmentdata"));
-        return;
-      }
-      SLog.a("TrackerStickerParam", "FromJSONObject error， segmentdata not exist!");
-      return;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      SLog.a("TrackerStickerParam", "mapMotionFromJarray" + paramJSONObject.toString());
-    }
-  }
-  
-  public boolean a(long paramLong)
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.a(paramLong);
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("DynamicStickerData{");
-    localStringBuilder.append("centerP=").append(this.jdField_a_of_type_AndroidGraphicsPointF);
-    localStringBuilder.append(", scale=").append(this.jdField_a_of_type_Float);
-    localStringBuilder.append(", rotate=").append(this.jdField_b_of_type_Float);
-    localStringBuilder.append(", translateX=").append(this.c);
-    localStringBuilder.append(", translateY=").append(this.d);
-    localStringBuilder.append(", width=").append(this.e);
-    localStringBuilder.append(", height=").append(this.f);
-    localStringBuilder.append(", layerWidth=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", layerHeight=").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", path='").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    String str = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataSegmentKeeper.toString();
+    localStringBuilder.append("centerP=").append(this.centerP);
+    localStringBuilder.append(", scale=").append(this.scale);
+    localStringBuilder.append(", rotate=").append(this.rotate);
+    localStringBuilder.append(", translateX=").append(this.translateXValue);
+    localStringBuilder.append(", translateY=").append(this.translateYValue);
+    localStringBuilder.append(", width=").append(this.width);
+    localStringBuilder.append(", height=").append(this.height);
+    localStringBuilder.append(", layerWidth=").append(this.layerWidth);
+    localStringBuilder.append(", layerHeight=").append(this.layerHeight);
+    localStringBuilder.append(", path='").append(this.path).append('\'');
+    String str = this.mSegmentKeeper.toString();
     if (!TextUtils.isEmpty(str))
     {
       localStringBuilder.append(",");

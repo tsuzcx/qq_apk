@@ -1,38 +1,122 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
+import android.content.Context;
+import android.content.IntentFilter;
+import android.os.Build.VERSION;
 import android.os.Handler;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.util.DisplayUtil;
-import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import dalvik.system.DexClassLoader;
+import java.util.HashMap;
+import java.util.Map;
+import mqq.app.MobileQQ;
 
 public class kuu
-  implements Runnable
 {
-  public kuu(AccountDetailActivity paramAccountDetailActivity, String paramString) {}
+  private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  private Object jdField_a_of_type_JavaLangObject;
+  private Map<String, Integer> jdField_a_of_type_JavaUtilMap;
+  private kuv jdField_a_of_type_Kuv;
   
-  public void run()
+  public kuu(VideoAppInterface paramVideoAppInterface)
+  {
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+  }
+  
+  public Map<String, Integer> a()
   {
     try
     {
-      int i = DisplayUtil.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity, 110.0F);
-      Bitmap localBitmap = ImageUtil.a(this.jdField_a_of_type_JavaLangString, i, i);
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(ImageUtil.c(localBitmap, i, i));
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivity.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+      Map localMap = this.jdField_a_of_type_JavaUtilMap;
+      return localMap;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void a()
+  {
+    if (Build.VERSION.SDK_INT < 21) {
       return;
     }
-    catch (Exception localException)
+    DexClassLoader localDexClassLoader = mfz.a();
+    if (this.jdField_a_of_type_JavaUtilMap == null) {
+      this.jdField_a_of_type_JavaUtilMap = new HashMap();
+    }
+    if (this.jdField_a_of_type_Kuv == null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, localException.toString());
+        QLog.d("GCameraAvailabilityMonitor", 2, "register camera availability change receiver");
       }
-      localException.printStackTrace();
+      this.jdField_a_of_type_Kuv = new kuv(this);
+      localObject = new IntentFilter();
+      ((IntentFilter)localObject).addAction("com.tencent.mobileqq.qav.camera.availability");
+      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_Kuv, (IntentFilter)localObject);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("GCameraAvailabilityMonitor", 2, "register camera availability change callback");
+    }
+    this.jdField_a_of_type_JavaLangObject = mfz.a(localDexClassLoader, "com.tencent.av.camera2.CameraManagerWrapper");
+    Object localObject = this.jdField_a_of_type_JavaLangObject;
+    Context localContext = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getApplicationContext();
+    String str = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().getPackageName();
+    mfz.a(localDexClassLoader, localObject, "registerAvailabilityCb", new Class[] { Context.class, String.class, Handler.class }, new Object[] { localContext, str, null });
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    try
+    {
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, Integer.valueOf(paramInt));
+      return;
+    }
+    finally
+    {
+      paramString = finally;
+      throw paramString;
+    }
+  }
+  
+  public void b()
+  {
+    if (Build.VERSION.SDK_INT < 21) {}
+    for (;;)
+    {
+      return;
+      if (this.jdField_a_of_type_Kuv != null) {
+        if (QLog.isColorLevel()) {
+          QLog.d("GCameraAvailabilityMonitor", 2, "UnRegister camera availability change receiver");
+        }
+      }
+      try
+      {
+        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication().unregisterReceiver(this.jdField_a_of_type_Kuv);
+        this.jdField_a_of_type_Kuv = null;
+        if (QLog.isColorLevel()) {
+          QLog.d("GCameraAvailabilityMonitor", 2, "UnRegister camera availability change callback");
+        }
+        if (this.jdField_a_of_type_JavaLangObject == null) {
+          continue;
+        }
+        mfz.a(mfz.a(), this.jdField_a_of_type_JavaLangObject, "unRegisterAvailabilityCb", null, null);
+        return;
+      }
+      catch (Exception localException)
+      {
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("GCameraAvailabilityMonitor", 2, "regist e = " + localException);
+          }
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     kuu
  * JD-Core Version:    0.7.0.1
  */

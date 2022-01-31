@@ -9,12 +9,12 @@ import java.util.ArrayList;
 public class PhotoGifDrawable
   extends QzoneAnimationDrawable
 {
-  private static Drawable a = ImageManagerEnv.g().getPhotoGifDefaultDrawable();
+  private static Drawable sDefaultFrame = ImageManagerEnv.g().getPhotoGifDefaultDrawable();
   
   public PhotoGifDrawable(ImageKey paramImageKey)
   {
     super(paramImageKey);
-    setDrawableForDefaultFrame(a);
+    setDrawableForDefaultFrame(sDefaultFrame);
   }
   
   public static boolean isPhotoGif(ImageKey paramImageKey)
@@ -24,7 +24,7 @@ public class PhotoGifDrawable
   
   public static void setDefaultFrame(Drawable paramDrawable)
   {
-    a = paramDrawable;
+    sDefaultFrame = paramDrawable;
   }
   
   public boolean canAnimate()

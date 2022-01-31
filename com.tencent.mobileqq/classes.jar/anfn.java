@@ -1,101 +1,56 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.RemoteException;
+import com.tencent.mobileqq.data.EmoticonResp;
 import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.plugin.OnQZonePluginInstallListner.Stub;
-import cooperation.qzone.plugin.QZonePluginManager;
-import cooperation.qzone.plugin.QZonePluginUpdater;
-import cooperation.qzone.util.NetworkState;
-import cooperation.qzone.util.NetworkState.NetworkStateListener;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-public class anfn
-  extends OnQZonePluginInstallListner.Stub
-  implements NetworkState.NetworkStateListener
+class anfn
+  extends anfq
 {
-  private static int jdField_a_of_type_Int;
-  private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "qzone_live_video_plugin_hack.apk", "qzone_vertical_video_plugin.apk" };
-  private Handler jdField_a_of_type_AndroidOsHandler = new anfo(this, Looper.getMainLooper());
-  private QZonePluginManager jdField_a_of_type_CooperationQzonePluginQZonePluginManager;
-  private QZonePluginUpdater jdField_a_of_type_CooperationQzonePluginQZonePluginUpdater;
-  
-  public anfn(QZonePluginManager paramQZonePluginManager, QZonePluginUpdater paramQZonePluginUpdater)
+  anfn(anfj paramanfj, ajhm paramajhm, angh paramangh, Object paramObject)
   {
-    this.jdField_a_of_type_CooperationQzonePluginQZonePluginUpdater = paramQZonePluginUpdater;
-    this.jdField_a_of_type_CooperationQzonePluginQZonePluginManager = paramQZonePluginManager;
-    NetworkState.addListener(this);
+    super(paramanfj, paramajhm);
   }
   
-  public void a()
+  public void a(boolean paramBoolean, int paramInt, EmoticonResp paramEmoticonResp)
   {
-    if ((QZonePluginManager.b()) && (this.jdField_a_of_type_CooperationQzonePluginQZonePluginUpdater.a() != null)) {
-      try
-      {
-        String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-        int j = arrayOfString.length;
-        int i = 0;
-        while (i < j)
-        {
-          String str = arrayOfString[i];
-          this.jdField_a_of_type_CooperationQzonePluginQZonePluginManager.a(str, this, 0);
-          i += 1;
-        }
-        return;
-      }
-      catch (RemoteException localRemoteException)
-      {
-        QLog.e("QZonePluginPreInstaller", 1, localRemoteException, new Object[0]);
-      }
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+      return;
     }
-  }
-  
-  public void a(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginPreInstaller", 2, "onInstallBegin");
-    }
-  }
-  
-  public void a(String paramString, float paramFloat, long paramLong) {}
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginPreInstaller", 2, "onInstallError, plugin=" + paramString + ", retryInstallNum=" + jdField_a_of_type_Int);
-    }
-    paramInt = QzoneConfig.getInstance().getConfig("LiveSetting", "PluginRetryDownloadTimes", 1);
-    if ((jdField_a_of_type_Int < paramInt) && (this.jdField_a_of_type_CooperationQzonePluginQZonePluginManager != null))
+    ??? = (ajhm)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    int i = paramEmoticonResp.epId;
+    int j = paramEmoticonResp.timestamp;
+    Object localObject1 = (ArrayList)paramEmoticonResp.data;
+    if ((this.jdField_a_of_type_Angh.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Angh.jdField_a_of_type_JavaLangString.equals(paramEmoticonResp.keySeq)))
     {
-      jdField_a_of_type_Int += 1;
-      paramString = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, paramString);
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramString, jdField_a_of_type_Int * 30 * 1000);
+      ((ajhm)???).b(this);
+      this.jdField_a_of_type_Angh.jdField_a_of_type_Boolean = paramBoolean;
+      this.jdField_a_of_type_Angh.jdField_a_of_type_Int = paramEmoticonResp.resultcode;
+      this.jdField_a_of_type_Angh.b = paramEmoticonResp.timeoutReason;
     }
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    jdField_a_of_type_Int = 0;
-    NetworkState.removeListener(this);
-  }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginPreInstaller", 2, "onInstallFinish");
-    }
-  }
-  
-  public void onNetworkConnect(boolean paramBoolean)
-  {
-    if (QZonePluginManager.b()) {
-      a();
+    for (;;)
+    {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
+      {
+        this.jdField_a_of_type_JavaLangObject.notify();
+        if (!QLog.isColorLevel()) {
+          break;
+        }
+        ??? = this.jdField_a_of_type_Anfj.jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder().append("fetchEmoticonEncryptKeys|net get key backepId=").append(i).append(" tstamp=").append(j).append(" list.size=");
+        if (localObject1 == null)
+        {
+          localObject1 = "null";
+          QLog.d((String)???, 2, localObject1 + " encryptSuccess=" + paramBoolean + " type=" + paramInt + " er.resultCode=" + paramEmoticonResp.resultcode);
+          return;
+        }
+      }
+      localObject1 = Integer.valueOf(((ArrayList)localObject1).size());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anfn
  * JD-Core Version:    0.7.0.1
  */

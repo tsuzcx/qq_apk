@@ -1,36 +1,21 @@
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.subaccount.AssociatedAccountOptPopBar;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class aipg
-  implements Observer
+class aipg
+  implements View.OnClickListener
 {
-  public aipg(AssociatedAccountOptPopBar paramAssociatedAccountOptPopBar) {}
+  aipg(aipf paramaipf) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountOptPopBar", 2, "update()");
-    }
-    if ((paramObject instanceof String[]))
-    {
-      paramObservable = (String[])paramObject;
-      if ((paramObservable.length == 2) && (AppConstants.w.equals(paramObservable[0])) && (this.a.a != null) && (this.a.a.app != null) && (!this.a.a.isFinishing()))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("AssociatedAccountOptPopBar", 2, "update() -> before update");
-        }
-        this.a.a.runOnUiThread(new aiph(this));
-      }
-    }
+    aipf.a(this.a, true);
+    this.a.a();
+    aipf.a(this.a, -1, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aipg
  * JD-Core Version:    0.7.0.1
  */

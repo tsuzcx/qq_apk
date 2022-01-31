@@ -1,57 +1,51 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.PhoneUnityManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.biz.webviewplugin.BusinessReportPlugin.1;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
 
-class xaz
-  implements DialogInterface.OnClickListener
+public class xaz
+  extends WebViewPlugin
 {
-  xaz(xax paramxax) {}
+  private Handler a;
+  public boolean a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public xaz()
   {
-    if (this.a.a.jdField_b_of_type_Int == 2) {
-      ReportController.b(this.a.a.app, "CliOper", "", "", "0X8005B8A", "0X8005B8A", 1, 0, "", "", "", "");
-    }
-    for (;;)
+    this.mPluginNameSpace = "JD_REPORT";
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+  }
+  
+  public void a(String paramString)
+  {
+    if (this.jdField_a_of_type_Boolean) {}
+    try
     {
-      paramDialogInterface.dismiss();
-      if (NetworkUtil.d(this.a.a)) {
-        break;
-      }
-      this.a.a.b(2131434629);
-      return;
-      if (this.a.a.jdField_b_of_type_Int == 6) {
-        ReportController.b(this.a.a.app, "CliOper", "", "", "0X8005B8A", "0X8005B8A", 2, 0, "", "", "", "");
-      } else if (this.a.a.jdField_b_of_type_Int == 7) {
-        ReportController.b(this.a.a.app, "CliOper", "", "", "0X8005B8A", "0X8005B8A", 3, 0, "", "", "", "");
-      }
-    }
-    paramDialogInterface = this.a.a.a.a();
-    if ((paramDialogInterface == null) || (paramDialogInterface.nationCode == null) || (paramDialogInterface.mobileNo == null))
-    {
-      this.a.a.setResult(0);
-      this.a.a.finish();
+      this.jdField_a_of_type_AndroidOsHandler.post(new BusinessReportPlugin.1(this, paramString));
       return;
     }
-    if (this.a.a.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
+    catch (Exception paramString)
     {
-      this.a.a.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new xba(this);
-      this.a.a.app.registObserver(this.a.a.jdField_b_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
+      QLog.e("BusinessReporter", 1, "Report Error:" + paramString);
     }
-    PhoneUnityManager localPhoneUnityManager = (PhoneUnityManager)this.a.a.app.getManager(101);
-    this.a.a.a.b(paramDialogInterface.nationCode, paramDialogInterface.mobileNo);
-    this.a.a.a(2131434469, 0L, true);
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_Boolean = nfo.a(paramString);
+  }
+  
+  public Object handleEvent(String paramString, long paramLong)
+  {
+    if (paramLong == 8L) {
+      a(paramString);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xaz
  * JD-Core Version:    0.7.0.1
  */

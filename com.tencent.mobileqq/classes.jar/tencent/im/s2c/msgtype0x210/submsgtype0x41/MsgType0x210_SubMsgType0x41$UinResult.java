@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class MsgType0x210_SubMsgType0x41$UinResult
-  extends MessageMicro
+  extends MessageMicro<UinResult>
 {
   public static final int BYTES_NICKNAME_FIELD_NUMBER = 2;
   public static final int STR_SCORE_FIELD_NUMBER = 4;

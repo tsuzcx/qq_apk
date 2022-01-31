@@ -1,43 +1,68 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import java.util.Iterator;
-import java.util.Set;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.qphone.base.util.QLog;
 
-class abbv
-  implements Runnable
+public class abbv
+  implements CompoundButton.OnCheckedChangeListener
 {
-  abbv(abbu paramabbu, Set paramSet) {}
+  public abbv(LoginInfoActivity paramLoginInfoActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    this.jdField_a_of_type_Abbu.jdField_a_of_type_Abcr.jdField_a_of_type_JavaUtilSet.addAll(this.jdField_a_of_type_JavaUtilSet);
-    if (this.jdField_a_of_type_Abbu.jdField_a_of_type_Abcr.jdField_a_of_type_JavaUtilSet.isEmpty())
+    if (paramCompoundButton == LoginInfoActivity.a(this.a).a())
     {
-      ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("getAppPathByAction, no app name found, task complete, action=%s.%s", new Object[] { this.jdField_a_of_type_Abbu.jdField_a_of_type_Abcr.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Abbu.jdField_a_of_type_Abcr.b }));
-      this.jdField_a_of_type_Abbu.jdField_a_of_type_Abcr.jdField_a_of_type_Boolean = true;
-      ArkLocalAppMgr.a(this.jdField_a_of_type_Abbu.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr, this.jdField_a_of_type_Abbu.jdField_a_of_type_Abcr);
+      paramCompoundButton = this.a.app;
+      if (paramBoolean)
+      {
+        i = 1;
+        awqx.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Mobile_pc_online", 0, i, "", "", "", "");
+        if (!paramBoolean) {
+          break label132;
+        }
+        awqx.b(null, "dc00898", "", "", "0X800A721", "0X800A721", 0, 0, "", "", "", "");
+        if (QLog.isColorLevel()) {
+          QLog.d("DevRpt", 2, "帐号安全页点击“允许手机、电脑同时在线”进行开启！0X800A721");
+        }
+        label94:
+        SettingCloneUtil.writeValue(this.a, this.a.app.getCurrentAccountUin(), "login_accounts", "qqsetting_bothonline_key", paramBoolean);
+        this.a.app.p();
+      }
     }
-    for (;;)
+    label132:
+    do
     {
       return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-      while (localIterator.hasNext())
-      {
-        String str1 = (String)localIterator.next();
-        String str2 = this.jdField_a_of_type_Abbu.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr.a(str1, "0.0.0.0");
-        if (!TextUtils.isEmpty(str2)) {
-          ArkLocalAppMgr.a(this.jdField_a_of_type_Abbu.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr, this.jdField_a_of_type_Abbu.jdField_a_of_type_Abcr, 0, "Found on Local", str2, str1);
-        } else {
-          this.jdField_a_of_type_Abbu.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr.a(str1, "0.0.0.0", null, new abbw(this, str1));
-        }
+      i = 0;
+      break;
+      awqx.b(null, "dc00898", "", "", "0X800A722", "0X800A722", 0, 0, "", "", "", "");
+      if (!QLog.isColorLevel()) {
+        break label94;
       }
+      QLog.d("DevRpt", 2, "帐号安全页点击“允许手机、电脑同时在线”进行关闭！0X800A722");
+      break label94;
+      if ((LoginInfoActivity.b(this.a) != null) && (paramCompoundButton == LoginInfoActivity.b(this.a).a()))
+      {
+        LoginInfoActivity.a(this.a, paramBoolean);
+        return;
+      }
+    } while (paramCompoundButton != LoginInfoActivity.c(this.a).a());
+    paramCompoundButton = this.a.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      awqx.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Security_check", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, null, "security_scan_key", "qqsetting_security_scan_key", paramBoolean);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abbv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,44 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.EmojiIPCAlarmer.TimeoutObserver;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
+import android.graphics.Bitmap;
+import com.tencent.image.SafeBitmapFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.PanelStrategy.1;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
 import com.tencent.qphone.base.util.QLog;
 
 public class acks
-  implements EmojiIPCAlarmer.TimeoutObserver
+  implements agpe
 {
-  public acks(WebIPCOperator paramWebIPCOperator) {}
+  public acks(CustomizeStrategyFactory.PanelStrategy.1 param1) {}
   
-  public void a(int paramInt)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    acku localacku = this.a.a(paramInt);
-    if (localacku != null)
+    paramPathResult = paramPathResult.filePath;
+    if (paramInt == 0) {}
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.emoji.web.EmoWebIPCOperator", 2, "on req timeout seq: " + paramInt);
+      Bitmap localBitmap = SafeBitmapFactory.decodeFile(paramPathResult, bacm.a(paramPathResult, (int)(CustomizeStrategyFactory.a * 50.0F + 0.5D)));
+      if (localBitmap != null) {
+        this.a.a.icon = localBitmap;
       }
-      Bundle localBundle = new Bundle();
-      this.a.a(localBundle, 1001);
-      localacku.a.putBundle("response", localBundle);
-      this.a.a(new ackt(this, localacku));
+      this.a.a.resPath = paramPathResult;
+      if (QLog.isColorLevel()) {
+        QLog.d("CustomizeStrategyFactory", 2, "PanelStrategy info.icon=" + this.a.a.icon + ",resPath=" + this.a.a.resPath);
+      }
     }
+    catch (Throwable paramPathResult)
+    {
+      for (;;)
+      {
+        paramPathResult.printStackTrace();
+      }
+    }
+    CustomizeStrategyFactory.a().a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acks
  * JD-Core Version:    0.7.0.1
  */

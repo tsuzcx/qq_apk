@@ -1,38 +1,24 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.JumpActivity;
-import com.tencent.mobileqq.activity.qwallet.PayCodeEntryActivity;
+import android.content.ComponentCallbacks2;
+import android.content.res.Configuration;
+import com.tencent.common.app.ToolRuntimeBase;
 
 public class xfu
-  implements View.OnClickListener
+  implements ComponentCallbacks2
 {
-  public xfu(PayCodeEntryActivity paramPayCodeEntryActivity, xfw paramxfw) {}
+  public xfu(ToolRuntimeBase paramToolRuntimeBase) {}
   
-  public void onClick(View paramView)
+  public void onConfigurationChanged(Configuration paramConfiguration) {}
+  
+  public void onLowMemory() {}
+  
+  public void onTrimMemory(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity.a("payCodeEntry.cheCode", "actQQWlxclick", "0002");
-    paramView = new Intent("com.tencent.mobileqq.action.jtcode");
-    paramView.setClass(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity, JumpActivity.class);
-    if (!TextUtils.isEmpty(PayCodeEntryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity))) {
-      paramView.putExtra("city_name", PayCodeEntryActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity));
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Xfw.b)) {
-      paramView.putExtra("city_code", this.jdField_a_of_type_Xfw.b);
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Xfw.a)) {
-      paramView.putExtra("ykt_id", this.jdField_a_of_type_Xfw.a);
-    }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_Xfw.c)) {
-      paramView.putExtra("show_name", this.jdField_a_of_type_Xfw.c);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPayCodeEntryActivity.startActivityForResult(paramView, 102);
+    this.a.onTrimMemory(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     xfu
  * JD-Core Version:    0.7.0.1
  */

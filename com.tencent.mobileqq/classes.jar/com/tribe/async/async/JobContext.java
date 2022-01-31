@@ -11,18 +11,13 @@ public abstract interface JobContext<Progress>
   
   public abstract void publishJobProgress(Progress paramProgress);
   
-  public abstract void setCancelListener(@Nullable CancelListener paramCancelListener);
+  public abstract void setCancelListener(@Nullable JobContext.CancelListener paramCancelListener);
   
   public abstract void setValue(int paramInt, Object paramObject);
-  
-  public static abstract interface CancelListener
-  {
-    public abstract void onCancel();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tribe.async.async.JobContext
  * JD-Core Version:    0.7.0.1
  */

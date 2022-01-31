@@ -12,11 +12,11 @@ public class ImageDownloadInfo
   
   private ImageDownloadInfo(ImageDownloadInfo.Builder paramBuilder)
   {
-    this.failCode = ImageDownloadInfo.Builder.a(paramBuilder);
-    this.retCode = ImageDownloadInfo.Builder.b(paramBuilder);
-    this.contentType = ImageDownloadInfo.Builder.a(paramBuilder);
-    this.serverIp = ImageDownloadInfo.Builder.b(paramBuilder);
-    this.clientIp = ImageDownloadInfo.Builder.c(paramBuilder);
+    this.failCode = ImageDownloadInfo.Builder.access$100(paramBuilder);
+    this.retCode = ImageDownloadInfo.Builder.access$200(paramBuilder);
+    this.contentType = ImageDownloadInfo.Builder.access$300(paramBuilder);
+    this.serverIp = ImageDownloadInfo.Builder.access$400(paramBuilder);
+    this.clientIp = ImageDownloadInfo.Builder.access$500(paramBuilder);
     this.nocacheCode = paramBuilder.nocache_code;
     this.downloadDetailInfo = paramBuilder.download_detail_info;
   }

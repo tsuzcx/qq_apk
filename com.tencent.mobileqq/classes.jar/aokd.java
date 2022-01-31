@@ -1,18 +1,19 @@
-import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 
-class aokd
-  implements Runnable
+public class aokd
+  extends aohx
 {
-  aokd(aokc paramaokc, aojz paramaojz) {}
+  int a;
+  int b;
   
-  public void run()
+  public aokd(FileManagerEntity paramFileManagerEntity)
   {
-    this.jdField_a_of_type_Aojz.a(this.jdField_a_of_type_Aojz.a.getProgress());
+    super(paramFileManagerEntity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aokd
  * JD-Core Version:    0.7.0.1
  */

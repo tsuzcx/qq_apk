@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.data;
 
+import com.tencent.mobileqq.config.operation.QQOperationViopTipTask;
 import java.util.ArrayList;
 
 public class OperateVoipTipsInfo
 {
-  public ArrayList taskList;
+  public ArrayList<QQOperationViopTipTask> taskList;
   public String uin;
   public int uinType;
 }

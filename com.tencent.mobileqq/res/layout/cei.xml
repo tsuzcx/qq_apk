@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/dfw" android:layout_width="43.0dip" android:layout_height="62.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.image.URLImageView android:id="@id/lld" android:layout_width="43.0dip" android:layout_height="62.0dip" android:src="@drawable/hzm" android:scaleType="fitXY" />
+    <com.tencent.image.URLImageView android:layout_gravity="center" android:id="@id/df9" android:layout_width="37.0dip" android:layout_height="55.0dip" android:scaleType="fitXY" />
+    <View android:layout_gravity="center" android:id="@id/loading" android:background="@drawable/common_loading6" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="24.0dip" />
+</FrameLayout>

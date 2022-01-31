@@ -1,67 +1,64 @@
-import android.os.Message;
-import android.view.Surface;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.tracker.SimpleStickerTracker2;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.tracker.TrackingDecoderListener;
 
-public class aowa
-  implements TrackingDecoderListener
+class aowa
+  extends wlu
 {
-  public aowa(SimpleStickerTracker2 paramSimpleStickerTracker2) {}
+  aowa(aovz paramaovz) {}
   
-  public Surface a()
+  public void a(boolean paramBoolean, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, ByteStringMicro paramByteStringMicro1, String paramString4, ByteStringMicro paramByteStringMicro2, Bundle paramBundle)
   {
-    return null;
-  }
-  
-  public void a()
-  {
-    SimpleStickerTracker2.a(this.a, System.currentTimeMillis());
-    if (SimpleStickerTracker2.a(this.a) != null)
+    this.a.e = apck.a(paramByteStringMicro1);
+    short s;
+    if ((paramBoolean) && (!TextUtils.isEmpty(this.a.e)))
     {
-      Message localMessage = SimpleStickerTracker2.a(this.a).obtainMessage(1);
-      SimpleStickerTracker2.a(this.a).sendMessage(localMessage);
+      QLog.d("TroopFileModel<FileAssistant>", 2, "downURL:" + this.a.e);
+      this.a.jdField_a_of_type_JavaLangString = paramString3;
+      this.a.b = ("" + paramInt3);
+      this.a.c = apck.a(paramByteStringMicro1);
+      this.a.d = paramString4;
+      this.a.c = apck.a(paramByteStringMicro1);
+      if ((!azjg.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) || (!azjg.c(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) || (paramBundle == null)) {
+        break label418;
+      }
+      paramString1 = paramBundle.getString("strHttpsDomain");
+      if (TextUtils.isEmpty(paramString1)) {
+        break label418;
+      }
+      s = (short)paramBundle.getInt("httpsPort", 0);
+      if (s != 0) {
+        break label413;
+      }
+      paramBoolean = true;
+      s = 443;
     }
-  }
-  
-  public void a(int paramInt, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SimpleStickerTracker2", 2, "SimpleStickerTracker2 onDecodeError errorCode =" + paramInt);
-    }
-    paramThrowable.printStackTrace();
-  }
-  
-  public void a(long paramLong) {}
-  
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void a(byte[] paramArrayOfByte, long paramLong)
-  {
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {
-      SimpleStickerTracker2.a(this.a, paramArrayOfByte, paramLong);
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("SimpleStickerTracker2", 2, "onDecodeFinish ");
-    }
-    if (SimpleStickerTracker2.a(this.a) != null)
+    for (;;)
     {
-      Message localMessage = SimpleStickerTracker2.a(this.a).obtainMessage(3);
-      SimpleStickerTracker2.a(this.a).sendMessage(localMessage);
+      wln.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString3, "" + paramInt3, this.a.c, apck.c(this.a.jdField_a_of_type_Aotf.a()), "/", paramString4, this.a.jdField_a_of_type_Aotf.a(), new aowb(this, paramBoolean, paramString1, s));
+      do
+      {
+        return;
+        QLog.e("TroopFileModel<FileAssistant>", 1, "get preview url failed for troop, retCode[" + paramInt1 + "], retMeg[" + paramString1 + "]");
+        awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_files", null, "oper", "pre_arc_fail", 0, 0, "" + this.a.jdField_a_of_type_Aotf.a().TroopUin, "-1", apck.f(this.a.b()), "1");
+      } while (this.a.jdField_a_of_type_Aovp == null);
+      this.a.jdField_a_of_type_Aovp.a(paramInt1);
+      return;
+      label413:
+      paramBoolean = true;
+      continue;
+      label418:
+      s = 0;
+      paramString1 = null;
+      paramBoolean = false;
     }
   }
-  
-  public void c() {}
-  
-  public void d() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aowa
  * JD-Core Version:    0.7.0.1
  */

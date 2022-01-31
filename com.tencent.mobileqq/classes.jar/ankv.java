@@ -1,19 +1,19 @@
-import cooperation.qzone.webviewplugin.QzonePhotoWallPlugin;
-import java.util.ArrayList;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
-public class ankv
-  implements Runnable
+class ankv
 {
-  public ankv(QzonePhotoWallPlugin paramQzonePhotoWallPlugin, ArrayList paramArrayList) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
   
-  public void run()
-  {
-    QzonePhotoWallPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQzonePhotoWallPlugin, this.jdField_a_of_type_JavaUtilArrayList, true);
-  }
+  private ankv(anks paramanks) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ankv
  * JD-Core Version:    0.7.0.1
  */

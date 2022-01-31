@@ -1,78 +1,98 @@
-import android.content.res.Resources;
-import android.graphics.Paint;
-import android.text.TextUtils;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
-import com.tencent.mobileqq.nearby.interestTag.ShowTagNamePopupWindow;
+import com.tencent.mobileqq.activity.contact.newfriend.connections.ThemeTabLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class aeyx
-  implements View.OnClickListener
+  extends aeyf
+  implements rhj
 {
-  public aeyx(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
-  
-  public void onClick(View paramView)
+  public aeyx(Context paramContext, QQAppInterface paramQQAppInterface, aicw paramaicw, atcu paramatcu)
   {
-    if ((ChooseInterestTagActivity.a(this.a) == 3) || (ChooseInterestTagActivity.a(this.a) == 2) || (ChooseInterestTagActivity.a(this.a) == 1) || (ChooseInterestTagActivity.a(this.a) == 4))
-    {
-      paramView = (InterestTagInfo)paramView.getTag();
-      if (paramView != null)
-      {
-        ChooseInterestTagActivity.a(this.a).remove(paramView);
-        ChooseInterestTagActivity.a(this.a, paramView);
-        ChooseInterestTagActivity.b(this.a, paramView);
-      }
-    }
-    do
-    {
-      for (;;)
-      {
-        return;
-        try
-        {
-          int[] arrayOfInt = new int[2];
-          paramView.getLocationInWindow(arrayOfInt);
-          if (arrayOfInt[0] > 0)
-          {
-            InterestTagInfo localInterestTagInfo = (InterestTagInfo)paramView.getTag();
-            if (localInterestTagInfo != null)
-            {
-              Paint localPaint = new Paint();
-              localPaint.setTextSize((float)(ChooseInterestTagActivity.a(this.a) * 14.0F + 0.5D));
-              localPaint.setColor(this.a.getResources().getColor(2131494261));
-              localPaint.setFakeBoldText(false);
-              localPaint.setAntiAlias(true);
-              Object localObject2 = localInterestTagInfo.tagName;
-              Object localObject1 = localObject2;
-              if (TextUtils.isEmpty((CharSequence)localObject2)) {
-                localObject1 = " ";
-              }
-              localObject2 = localObject1;
-              if (((String)localObject1).length() > 8) {
-                localObject2 = ((String)localObject1).substring(0, 8) + "...";
-              }
-              float f = localPaint.measureText((String)localObject2);
-              int i = (int)(ChooseInterestTagActivity.a(this.a) * 64.0F + 0.5D + f);
-              localObject1 = new ShowTagNamePopupWindow(this.a, arrayOfInt[0], i);
-              ((ShowTagNamePopupWindow)localObject1).a(ChooseInterestTagActivity.a(this.a));
-              ((ShowTagNamePopupWindow)localObject1).a(localInterestTagInfo);
-              ((ShowTagNamePopupWindow)localObject1).showAsDropDown(paramView, -(int)((i - 40.0F * ChooseInterestTagActivity.a(this.a)) / 2.0F), 10);
-              return;
-            }
-          }
-        }
-        catch (Exception paramView) {}
-      }
-    } while (!QLog.isDevelopLevel());
-    QLog.i("choose_interest_tag", 4, paramView.getMessage());
+    super(paramContext, paramQQAppInterface, paramaicw, paramatcu);
   }
+  
+  public View a(int paramInt, View paramView)
+  {
+    paramInt = this.jdField_a_of_type_Aicw.c();
+    int i = this.jdField_a_of_type_Aicw.b();
+    aeyy localaeyy;
+    if ((paramView == null) || (!(paramView.getTag() instanceof aeyy)))
+    {
+      localaeyy = new aeyy();
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495338, null);
+      localaeyy.a = ((ThemeTabLayout)paramView.findViewById(2131311003));
+      localaeyy.a.a(this);
+      if (QLog.isColorLevel()) {
+        QLog.d("NewFriendSlideTabBuilder", 2, "getView new ConnectionsTabLayout tabPosition  ->" + paramInt + ", tabId =" + i);
+      }
+      if ((this.jdField_a_of_type_Atcu != null) || ((this.jdField_a_of_type_Atcu instanceof atcw))) {
+        localaeyy.a.a(((atcw)this.jdField_a_of_type_Atcu).a, i);
+      }
+      localaeyy.a.setOnTabSelectedListener(this);
+      paramView.setTag(localaeyy);
+    }
+    for (;;)
+    {
+      c(paramView);
+      if (QLog.isColorLevel()) {
+        QLog.d("NewFriendSlideTabBuilder", 2, "getView update tabPosition = " + paramInt + ", tabId =" + i);
+      }
+      if ((localaeyy != null) && (localaeyy.a != null) && ((this.jdField_a_of_type_Atcu != null) || ((this.jdField_a_of_type_Atcu instanceof atcw))))
+      {
+        ArrayList localArrayList = ((atcw)this.jdField_a_of_type_Atcu).a;
+        localaeyy.a.b(localArrayList, i);
+      }
+      return paramView;
+      localaeyy = (aeyy)paramView.getTag();
+    }
+  }
+  
+  public ArrayList<afai> a()
+  {
+    if ((this.jdField_a_of_type_Atcu != null) || ((this.jdField_a_of_type_Atcu instanceof atcw))) {
+      return ((atcw)this.jdField_a_of_type_Atcu).a;
+    }
+    return null;
+  }
+  
+  public void a(rho paramrho)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("NewFriendSlideTabBuilder", 2, "builder onTabSelected tab ->" + paramrho.a());
+    }
+    if ((this.jdField_a_of_type_Aicw != null) && (paramrho != null))
+    {
+      this.jdField_a_of_type_Aicw.b(((Integer)paramrho.a()).intValue(), paramrho.a());
+      int i = this.jdField_a_of_type_Aicw.b();
+      awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "frd_recom", "frd_tab_clk", i, 0, "0", "3", "", "");
+    }
+  }
+  
+  public void b(rho paramrho) {}
+  
+  public void c(View paramView)
+  {
+    if (paramView == null) {
+      return;
+    }
+    if (ThemeUtil.isDefaultTheme())
+    {
+      paramView.setBackgroundResource(2130839104);
+      return;
+    }
+    paramView.setBackgroundResource(2130848902);
+  }
+  
+  public void c(rho paramrho) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeyx
  * JD-Core Version:    0.7.0.1
  */

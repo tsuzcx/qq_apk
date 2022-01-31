@@ -1,29 +1,14 @@
-import com.tencent.biz.qqstory.base.QQStoryObserver;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.animation.Animation;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController.1;
 
-public class niv
-  extends QQStoryObserver
+class niv
+  extends beem
 {
-  public niv(MsgTabStoryNodeDelegate paramMsgTabStoryNodeDelegate) {}
+  niv(niu paramniu) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super.a(paramBoolean1, paramBoolean2, paramInt, paramString);
-    if ((paramBoolean1) && (paramBoolean2)) {
-      QQToast.a(this.a.a.a, 2, "已关注，可随时查看对方的最新视频", 0).a();
-    }
-    do
-    {
-      return;
-      if ((!paramBoolean1) && (paramBoolean2))
-      {
-        QQToast.a(this.a.a.a, 1, "关注失败，请稍后重试", 0).a();
-        return;
-      }
-    } while ((paramBoolean1) || (paramBoolean2));
-    QQToast.a(this.a.a.a, 1, "取消关注失败，请稍后重试", 0).a();
+    nit.a(this.a.a.this$0, true);
   }
 }
 

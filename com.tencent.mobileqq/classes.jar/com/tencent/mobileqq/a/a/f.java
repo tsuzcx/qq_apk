@@ -4,11 +4,10 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.auth.b;
-import com.tencent.mobileqq.msf.core.c.j;
+import com.tencent.mobileqq.msf.core.c.k;
 import com.tencent.mobileqq.msf.core.t;
 import com.tencent.mobileqq.msf.service.MsfService;
 import com.tencent.qphone.base.BaseConstants;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -21,28 +20,28 @@ public class f
   private static final int b = 20;
   private static final int c = 30000;
   private static String d = "";
-  private static int e;
-  private static int f;
-  private static long g;
-  private static long h;
-  private static long i;
-  private static boolean j;
+  private static int e = 0;
+  private static int f = 0;
+  private static long g = 0L;
+  private static long h = 0L;
+  private static long i = 0L;
+  private static boolean j = false;
   private static ConcurrentHashMap k = new ConcurrentHashMap(16);
   private static double l = 0.0D;
-  private static long m;
-  private static long n;
-  private static long o;
-  private static long p;
-  private static long q;
+  private static long m = 0L;
+  private static long n = 0L;
+  private static long o = 0L;
+  private static long p = 0L;
+  private static long q = 0L;
   private static double r = 0.0D;
   private static String s = "";
-  private static long t;
-  private static int u;
+  private static long t = 0L;
+  private static int u = 0;
   private static String v = "";
-  private static long w;
-  private static int x;
-  private static boolean y;
-  private static double z;
+  private static long w = 0L;
+  private static int x = 0;
+  private static boolean y = false;
+  private static double z = 0.0D;
   
   public static void a()
   {
@@ -87,12 +86,12 @@ public class f
           u = paramInt1;
         }
         if ((g <= 0L) || (i - g <= 180000L)) {
-          break label369;
+          break label371;
         }
         if (!j)
         {
           j = true;
-          paramString = new HashMap();
+          paramString = new ConcurrentHashMap(32);
           Iterator localIterator = k.entrySet().iterator();
           while (localIterator.hasNext())
           {
@@ -126,7 +125,7 @@ public class f
     } while (MsfService.getCore().getStatReporter() == null);
     MsfService.getCore().getStatReporter().a("ReqQualityStatExceptTemp", true, 0L, 0L, paramString, false, false);
     return;
-    label369:
+    label371:
     i = SystemClock.elapsedRealtime();
     if (k.containsKey(paramString))
     {
@@ -209,8 +208,8 @@ public class f
   private static void c()
   {
     if (TextUtils.isEmpty(d)) {}
-    HashMap localHashMap;
-    label750:
+    ConcurrentHashMap localConcurrentHashMap;
+    label752:
     do
     {
       do
@@ -218,44 +217,44 @@ public class f
         return;
       } while (m == 0L);
       long l1 = SystemClock.elapsedRealtime();
-      localHashMap = new HashMap();
-      localHashMap.put("account", MsfService.getCore().getAccountCenter().i());
-      localHashMap.put("ip", d);
-      localHashMap.put("port", "" + e);
-      localHashMap.put("nettype", "" + f);
-      localHashMap.put("imsi", t.e());
-      localHashMap.put("reqtotalcount", "" + n);
-      localHashMap.put("reqnoresp", "" + o);
-      localHashMap.put("reqcount", "" + m);
-      localHashMap.put("avareqsize", "" + l);
-      localHashMap.put("respcount", "" + p);
-      localHashMap.put("resptotalcount", "" + q);
-      localHashMap.put("avarespsize", "" + r);
-      localHashMap.put("maxreqcmd", s);
-      localHashMap.put("maxreqsize", "" + t);
-      localHashMap.put("maxreqseq", "" + u);
-      localHashMap.put("maxrespcmd", v);
-      localHashMap.put("maxrespsize", "" + w);
-      localHashMap.put("maxrespseq", "" + x);
-      localHashMap.put("avacost", "" + z);
-      localHashMap.put("conntime", "" + g);
-      localHashMap.put("disconntime", "" + l1);
-      localHashMap.put("lastresptime", "" + h);
-      localHashMap.put("lastreqtime", "" + i);
+      localConcurrentHashMap = new ConcurrentHashMap(32);
+      localConcurrentHashMap.put("account", MsfService.getCore().getAccountCenter().i());
+      localConcurrentHashMap.put("ip", d);
+      localConcurrentHashMap.put("port", "" + e);
+      localConcurrentHashMap.put("nettype", "" + f);
+      localConcurrentHashMap.put("imsi", t.e());
+      localConcurrentHashMap.put("reqtotalcount", "" + n);
+      localConcurrentHashMap.put("reqnoresp", "" + o);
+      localConcurrentHashMap.put("reqcount", "" + m);
+      localConcurrentHashMap.put("avareqsize", "" + l);
+      localConcurrentHashMap.put("respcount", "" + p);
+      localConcurrentHashMap.put("resptotalcount", "" + q);
+      localConcurrentHashMap.put("avarespsize", "" + r);
+      localConcurrentHashMap.put("maxreqcmd", s);
+      localConcurrentHashMap.put("maxreqsize", "" + t);
+      localConcurrentHashMap.put("maxreqseq", "" + u);
+      localConcurrentHashMap.put("maxrespcmd", v);
+      localConcurrentHashMap.put("maxrespsize", "" + w);
+      localConcurrentHashMap.put("maxrespseq", "" + x);
+      localConcurrentHashMap.put("avacost", "" + z);
+      localConcurrentHashMap.put("conntime", "" + g);
+      localConcurrentHashMap.put("disconntime", "" + l1);
+      localConcurrentHashMap.put("lastresptime", "" + h);
+      localConcurrentHashMap.put("lastreqtime", "" + i);
       if (y)
       {
         localObject = "1";
-        localHashMap.put("crossOper", localObject);
-        localHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
+        localConcurrentHashMap.put("crossOper", localObject);
+        localConcurrentHashMap.put(BaseConstants.RDM_NoChangeFailCode, "");
         if (!y) {
-          break label750;
+          break label752;
         }
       }
       for (Object localObject = "1";; localObject = "0")
       {
-        localHashMap.put("param_FailCode", localObject);
+        localConcurrentHashMap.put("param_FailCode", localObject);
         if (A.size() <= 0) {
-          break label769;
+          break label771;
         }
         localObject = new StringBuilder();
         Iterator localIterator = A.entrySet().iterator();
@@ -267,10 +266,10 @@ public class f
         localObject = "0";
         break;
       }
-      localHashMap.put("costmap", ((StringBuilder)localObject).toString());
+      localConcurrentHashMap.put("costmap", ((StringBuilder)localObject).toString());
     } while (MsfService.getCore().getStatReporter() == null);
-    label769:
-    MsfService.getCore().getStatReporter().a("ReqQualityStatTemp", true, z, (int)l, localHashMap, false, false);
+    label771:
+    MsfService.getCore().getStatReporter().a("ReqQualityStatTemp", true, z, (int)l, localConcurrentHashMap, false, false);
   }
 }
 

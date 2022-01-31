@@ -1,110 +1,128 @@
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
+import android.os.IBinder;
+import android.os.Parcel;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArConfigInfo;
+import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 
-public class akqe
-  implements View.OnTouchListener
+class akqe
+  implements akqc
 {
-  public akqe(HealthBusinessPlugin paramHealthBusinessPlugin) {}
+  private IBinder a;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  akqe(IBinder paramIBinder)
   {
-    switch (paramMotionEvent.getAction())
+    this.a = paramIBinder;
+  }
+  
+  public void a()
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
     {
-    default: 
-    case 0: 
-    case 2: 
-      for (;;)
-      {
-        return false;
-        this.a.a.x = ((int)paramMotionEvent.getRawX());
-        this.a.a.y = ((int)paramMotionEvent.getRawY());
-        if (QLog.isColorLevel())
-        {
-          QLog.d("HealthBusinessPlugin", 2, "down clicked");
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.d("HealthBusinessPlugin", 2, "move clicked");
-          }
-        }
-      }
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      this.a.transact(1, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("HealthBusinessPlugin", 2, "up clicked");
-    }
-    this.a.b.x = ((int)paramMotionEvent.getRawX());
-    this.a.b.y = ((int)paramMotionEvent.getRawY());
-    if ((Math.abs(this.a.a.y - this.a.b.y) < 8) && (Math.abs(this.a.a.x - this.a.b.x) < 8))
+    finally
     {
-      paramView = new Rect();
-      paramMotionEvent = this.a.e.keySet().iterator();
-      while (paramMotionEvent.hasNext())
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      localParcel1.writeInt(paramInt);
+      this.a.transact(3, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    try
+    {
+      localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+      localParcel1.writeLong(paramLong1);
+      localParcel1.writeLong(paramLong2);
+      this.a.transact(2, localParcel1, localParcel2, 0);
+      localParcel2.readException();
+      return;
+    }
+    finally
+    {
+      localParcel2.recycle();
+      localParcel1.recycle();
+    }
+  }
+  
+  public void a(ArConfigInfo paramArConfigInfo, ArEffectConfig paramArEffectConfig, ARCommonConfigInfo paramARCommonConfigInfo)
+  {
+    Parcel localParcel1 = Parcel.obtain();
+    Parcel localParcel2 = Parcel.obtain();
+    for (;;)
+    {
+      try
       {
-        Object localObject = (String)paramMotionEvent.next();
-        FrameLayout localFrameLayout = (FrameLayout)this.a.e.get(localObject);
-        SeekBar localSeekBar = ((akqw)this.a.jdField_f_of_type_JavaUtilHashMap.get(localObject)).jdField_a_of_type_AndroidWidgetSeekBar;
-        TextView localTextView1 = ((akqw)this.a.jdField_f_of_type_JavaUtilHashMap.get(localObject)).jdField_c_of_type_AndroidWidgetTextView;
-        TextView localTextView2 = ((akqw)this.a.jdField_f_of_type_JavaUtilHashMap.get(localObject)).jdField_b_of_type_AndroidWidgetTextView;
-        ImageView localImageView1 = ((akqw)this.a.jdField_f_of_type_JavaUtilHashMap.get(localObject)).jdField_a_of_type_AndroidWidgetImageView;
-        ImageView localImageView2 = ((akqw)this.a.jdField_f_of_type_JavaUtilHashMap.get(localObject)).jdField_b_of_type_AndroidWidgetImageView;
-        TextView localTextView3 = ((akqw)this.a.jdField_f_of_type_JavaUtilHashMap.get(localObject)).jdField_a_of_type_AndroidWidgetTextView;
-        ImageView localImageView3 = ((akqw)this.a.jdField_f_of_type_JavaUtilHashMap.get(localObject)).jdField_c_of_type_AndroidWidgetImageView;
-        localFrameLayout.getGlobalVisibleRect(paramView);
-        if ((paramView.contains(this.a.a.x, this.a.a.y)) && (paramView.contains(this.a.b.x, this.a.b.y)))
+        localParcel1.writeInterfaceToken("com.tencent.mobileqq.ar.aidl.IArRemoteCallback");
+        if (paramArConfigInfo != null)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("HealthBusinessPlugin", 2, "videoplayer section clicked");
-          }
-          if (localSeekBar.getVisibility() == 4)
+          localParcel1.writeInt(1);
+          paramArConfigInfo.writeToParcel(localParcel1, 0);
+          if (paramArEffectConfig != null)
           {
-            localSeekBar.setVisibility(0);
-            localTextView1.setVisibility(0);
-            localTextView2.setVisibility(0);
-            localImageView3.setVisibility(0);
-            if (((TVK_IMediaPlayer)this.a.d.get(localObject)).isPlaying()) {}
-            for (int i = 2130845085;; i = 2130845367)
-            {
-              localImageView1.setImageResource(i);
-              localImageView1.setVisibility(0);
-              this.a.jdField_f_of_type_Boolean = true;
-              localImageView2.setVisibility(4);
-              localTextView3.setVisibility(4);
-              this.a.c.removeCallbacksAndMessages(null);
-              localObject = new akqf(this, localSeekBar, localTextView1, localTextView2, localImageView3, localImageView1, localImageView2, localTextView3);
-              this.a.c.postDelayed((Runnable)localObject, 3000L);
-              break;
+            localParcel1.writeInt(1);
+            paramArEffectConfig.writeToParcel(localParcel1, 0);
+            if (paramARCommonConfigInfo == null) {
+              break label131;
             }
+            localParcel1.writeInt(1);
+            paramARCommonConfigInfo.writeToParcel(localParcel1, 0);
+            this.a.transact(4, localParcel1, localParcel2, 0);
+            localParcel2.readException();
           }
-          localSeekBar.setVisibility(4);
-          localTextView1.setVisibility(4);
-          localTextView2.setVisibility(4);
-          localImageView3.setVisibility(4);
-          localImageView1.setVisibility(4);
-          this.a.jdField_f_of_type_Boolean = false;
-          localImageView2.setVisibility(0);
-          localTextView3.setVisibility(0);
         }
+        else
+        {
+          localParcel1.writeInt(0);
+          continue;
+        }
+        localParcel1.writeInt(0);
       }
+      finally
+      {
+        localParcel2.recycle();
+        localParcel1.recycle();
+      }
+      continue;
+      label131:
+      localParcel1.writeInt(0);
     }
-    return false;
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akqe
  * JD-Core Version:    0.7.0.1
  */

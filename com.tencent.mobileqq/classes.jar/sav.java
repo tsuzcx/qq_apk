@@ -1,23 +1,38 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
-public final class sav
-  implements DialogInterface.OnClickListener
+class sav
+  implements sbk
 {
-  public sav(ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
+  sav(sau paramsau) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(Object paramObject)
   {
-    if (this.a != null) {
-      this.a.a();
+    if ((paramObject instanceof sbb))
+    {
+      if (!this.a.b) {
+        ((PublicAccountImageCollectionMainActivity)sau.a(this.a)).h();
+      }
+      this.a.b = true;
     }
-    paramDialogInterface.dismiss();
+    while ((paramObject instanceof sbc)) {
+      if (sau.a(this.a))
+      {
+        this.a.d(true);
+        return;
+        ((PublicAccountImageCollectionMainActivity)sau.a(this.a)).g();
+      }
+      else
+      {
+        this.a.d(false);
+        return;
+      }
+    }
+    this.a.d(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     sav
  * JD-Core Version:    0.7.0.1
  */

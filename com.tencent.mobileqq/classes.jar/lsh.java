@@ -1,19 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
 
 public class lsh
-  implements Runnable
+  implements lxc
 {
-  public lsh(ArticleInfoModule paramArticleInfoModule, ArticleInfo paramArticleInfo) {}
+  public lsh(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    this.a.j = true;
+    this.a.L();
+  }
+  
+  public void b()
+  {
+    this.a.j = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lsh
  * JD-Core Version:    0.7.0.1
  */

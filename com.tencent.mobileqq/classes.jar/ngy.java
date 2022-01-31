@@ -1,45 +1,23 @@
-import com.tencent.biz.qqstory.model.TroopNickNameManager;
-import com.tencent.biz.qqstory.model.TroopNickNameManager.TroopNickNameUpdateEvent;
-import com.tencent.mobileqq.data.TroopMemberCardInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatcher.Dispatchable;
-import com.tribe.async.dispatch.Dispatchers;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
 
 class ngy
-  implements Runnable
+  implements View.OnClickListener
 {
-  ngy(ngx paramngx, ArrayList paramArrayList) {}
+  ngy(ngv paramngv) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    String str1 = ((TroopMemberCardInfo)this.jdField_a_of_type_JavaUtilArrayList.get(0)).troopuin;
-    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList.size());
-    Object localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    if (((Iterator)localObject).hasNext())
-    {
-      localTroopMemberCardInfo = (TroopMemberCardInfo)((Iterator)localObject).next();
-      str2 = TroopNickNameManager.a(str1, localTroopMemberCardInfo.memberuin);
-      if ((this.jdField_a_of_type_Ngx.a.a.remove(str2) == null) && (QLog.isColorLevel())) {
-        QLog.d("TroopNickNameManager", 2, "loading not match, return");
-      }
-    }
-    while (localArrayList.size() <= 0)
-    {
-      TroopMemberCardInfo localTroopMemberCardInfo;
-      String str2;
-      return;
-      localArrayList.add(localTroopMemberCardInfo.memberuin);
-      break;
-    }
-    localObject = new TroopNickNameManager.TroopNickNameUpdateEvent();
-    ((TroopNickNameManager.TroopNickNameUpdateEvent)localObject).jdField_a_of_type_JavaUtilList = localArrayList;
-    ((TroopNickNameManager.TroopNickNameUpdateEvent)localObject).jdField_a_of_type_JavaLangString = str1;
-    Dispatchers.get().dispatch((Dispatcher.Dispatchable)localObject);
+    paramView = paramView.getContext();
+    Intent localIntent = new Intent(paramView, AccountDetailActivity.class);
+    localIntent.putExtra("uin", String.valueOf(3434959637L));
+    localIntent.putExtra("uintype", 1008);
+    localIntent.putExtra("source", 121);
+    paramView.startActivity(localIntent);
+    ndn.a(null, "", "0X8009941", "0X8009941", 0, 0, "", "", "", "", false);
   }
 }
 

@@ -1,26 +1,16 @@
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.PoiMapActivity;
 
 public class mlt
-  implements AbsListView.OnScrollListener
+  implements View.OnClickListener
 {
-  public mlt(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  public mlt(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    if (ReadInJoyListViewGroup.a(this.a) == null) {
-      return;
-    }
-    if (paramInt1 > 20)
-    {
-      ReadInJoyListViewGroup.a(this.a).setVisibility(0);
-      return;
-    }
-    ReadInJoyListViewGroup.a(this.a).setVisibility(8);
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 

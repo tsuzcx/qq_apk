@@ -1,20 +1,20 @@
 package com.tencent.mobileqq.nearby.now.model;
 
-import afax;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import aslb;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Comments
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new afax();
+  public static final Parcelable.Creator<Comments> CREATOR = new aslb();
   public long a;
-  public List a;
+  public List<Comments.Comment> a;
   public boolean a;
-  public List b = new ArrayList();
+  public List<Comments.Comment> b = new ArrayList();
   
   public Comments()
   {

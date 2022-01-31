@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager;
+import android.view.View;
 
-public class adhf
-  implements Runnable
+class adhf
+  implements apcz
 {
-  public adhf(ThumbDownloadManager paramThumbDownloadManager, long paramLong, String paramString1, String paramString2) {}
+  adhf(adfw paramadfw) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (ThumbDownloadManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreThumbDownloadManager, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b)) {
-      ThumbDownloadManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreThumbDownloadManager);
-    }
+    paramView = aonj.a();
+    apck.b(this.a.a, paramView);
+    apci.a("0X8007FA2");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adhf
  * JD-Core Version:    0.7.0.1
  */

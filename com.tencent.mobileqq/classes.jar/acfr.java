@@ -1,27 +1,25 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.animation.Animation;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
-public final class acfr
-  implements Runnable
+public class acfr
+  extends beem
 {
-  public acfr(int paramInt, String paramString, boolean paramBoolean, long paramLong) {}
+  public acfr(VisitorsActivity paramVisitorsActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(this.jdField_a_of_type_Int));
-    StatisticCollector.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_JavaLangString, "actEnterHotChatAIO", this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, localHashMap, "");
-    if (QLog.isDevelopLevel()) {
-      NearbyUtils.a("NearbyTransitActivity", "reportResult", new Object[] { "end of report" });
-    }
+    this.a.f = false;
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.c.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acfr
  * JD-Core Version:    0.7.0.1
  */

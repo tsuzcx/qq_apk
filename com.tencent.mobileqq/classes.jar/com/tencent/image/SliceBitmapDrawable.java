@@ -15,7 +15,7 @@ public class SliceBitmapDrawable
 {
   private static final int DEFAULT_PAINT_FLAGS = 6;
   private static final int SLICE_SIZE = 2048;
-  private BitmapState mBitmapState;
+  private SliceBitmapDrawable.BitmapState mBitmapState;
   private int mHeight;
   private boolean mMutated;
   private int mTargetDensity;
@@ -23,17 +23,17 @@ public class SliceBitmapDrawable
   
   public SliceBitmapDrawable(Resources paramResources, Bitmap paramBitmap)
   {
-    this(new BitmapState(paramBitmap), paramResources);
+    this(new SliceBitmapDrawable.BitmapState(paramBitmap), paramResources);
     this.mBitmapState.mTargetDensity = this.mTargetDensity;
   }
   
   public SliceBitmapDrawable(Resources paramResources, SliceBitmap paramSliceBitmap)
   {
-    this(new BitmapState(paramSliceBitmap), paramResources);
+    this(new SliceBitmapDrawable.BitmapState(paramSliceBitmap), paramResources);
     this.mBitmapState.mTargetDensity = this.mTargetDensity;
   }
   
-  private SliceBitmapDrawable(BitmapState paramBitmapState, Resources paramResources)
+  private SliceBitmapDrawable(SliceBitmapDrawable.BitmapState paramBitmapState, Resources paramResources)
   {
     this.mBitmapState = paramBitmapState;
     if (paramResources != null) {}
@@ -114,7 +114,7 @@ public class SliceBitmapDrawable
   {
     if ((!this.mMutated) && (super.mutate() == this))
     {
-      this.mBitmapState = new BitmapState(this.mBitmapState);
+      this.mBitmapState = new SliceBitmapDrawable.BitmapState(this.mBitmapState);
       this.mMutated = true;
     }
     return this;
@@ -175,48 +175,6 @@ public class SliceBitmapDrawable
   public void setTargetDensity(DisplayMetrics paramDisplayMetrics)
   {
     setTargetDensity(paramDisplayMetrics.densityDpi);
-  }
-  
-  static final class BitmapState
-    extends Drawable.ConstantState
-  {
-    int mChangingConfigurations;
-    Paint mPaint = new Paint(6);
-    SliceBitmap mSliceBitmap;
-    int mTargetDensity = 160;
-    
-    BitmapState(Bitmap paramBitmap)
-    {
-      this.mSliceBitmap = new SliceBitmap(paramBitmap);
-    }
-    
-    BitmapState(SliceBitmap paramSliceBitmap)
-    {
-      this.mSliceBitmap = paramSliceBitmap;
-    }
-    
-    BitmapState(BitmapState paramBitmapState)
-    {
-      this.mSliceBitmap = paramBitmapState.mSliceBitmap;
-      this.mChangingConfigurations = paramBitmapState.mChangingConfigurations;
-      this.mTargetDensity = paramBitmapState.mTargetDensity;
-      this.mPaint = new Paint(paramBitmapState.mPaint);
-    }
-    
-    public int getChangingConfigurations()
-    {
-      return this.mChangingConfigurations;
-    }
-    
-    public Drawable newDrawable()
-    {
-      return new SliceBitmapDrawable(this, null, null);
-    }
-    
-    public Drawable newDrawable(Resources paramResources)
-    {
-      return new SliceBitmapDrawable(this, paramResources, null);
-    }
   }
 }
 

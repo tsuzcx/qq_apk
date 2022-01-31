@@ -1,21 +1,38 @@
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
 
-public final class yqi
-  implements Runnable
+class yqi
+  implements GestureDetector.OnGestureListener
 {
-  public yqi(ApolloManager paramApolloManager, QQAppInterface paramQQAppInterface) {}
+  yqi(yqh paramyqh) {}
   
-  public void run()
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    if (ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager) == null) {
-      ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager, this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()));
-    }
+    return true;
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return true;
+  }
+  
+  public void onLongPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return true;
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yqi
  * JD-Core Version:    0.7.0.1
  */

@@ -8,10 +8,10 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class StructMsg$GetCRMMenuResponse
-  extends MessageMicro
+  extends MessageMicro<GetCRMMenuResponse>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 40 }, new String[] { "ret_info", "seqno", "uin", "button_info", "update_type" }, new Object[] { null, Integer.valueOf(0), Long.valueOf(0L), null, Integer.valueOf(0) }, GetCRMMenuResponse.class);
-  public final PBRepeatMessageField button_info = PBField.initRepeatMessage(StructMsg.ButtonInfo.class);
+  public final PBRepeatMessageField<StructMsg.ButtonInfo> button_info = PBField.initRepeatMessage(StructMsg.ButtonInfo.class);
   public StructMsg.RetInfo ret_info = new StructMsg.RetInfo();
   public final PBUInt32Field seqno = PBField.initUInt32(0);
   public final PBUInt64Field uin = PBField.initUInt64(0L);

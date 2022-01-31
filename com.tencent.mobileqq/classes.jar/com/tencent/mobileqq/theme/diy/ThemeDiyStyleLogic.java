@@ -1,14 +1,20 @@
 package com.tencent.mobileqq.theme.diy;
 
+import ajed;
 import android.content.Context;
 import android.os.Bundle;
-import com.tencent.mobileqq.app.AppConstants;
+import axmn;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.theme.ThemeUtil.ThemeInfo;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.HashMap;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class ThemeDiyStyleLogic
 {
@@ -18,9 +24,7 @@ public class ThemeDiyStyleLogic
   static final String BUNDLE_OPERATE_BACK_CODE = "operateBackCode";
   static final String BUNDLE_OPERATE_NEXT = "nextOperate";
   static final String BUNDLE_OPERATE_NOW = "nowOperate";
-  static final String DIR_SCREENSHOT = AppConstants.aK + "custom_background/";
-  static final String DIR_SCREENSHOT_BG = DIR_SCREENSHOT + "bg/";
-  static final String DIR_SCREENSHOT_THEME = DIR_SCREENSHOT + "theme/";
+  private static String DIR_DIY;
   public static final int OPERATE_CODE_GO_ERROR = 8;
   public static final int OPERATE_CODE_GO_OFF = 6;
   public static final int OPERATE_CODE_GO_ON = 4;
@@ -33,19 +37,41 @@ public class ThemeDiyStyleLogic
   public static final int OPERATE_KEY_SAVE_SERVER = 16;
   public static final int OPERATE_KEY_SWITCH_THEME = 15;
   public static final int OPERATE_KEY_UPDATE_PAGE = 18;
-  static final String RES_MALL_URL = "http://i.gtimg.cn/qqshow/admindata/comdata/";
   public static final String SPLIT_KEY = "__";
   static final String TAG = "ThemeDiyStyleLogic";
   QQAppInterface app;
   Context mContext;
-  public HashMap reportMap = new HashMap();
-  public ThemeDiyStyleLogic.StyleCallBack saveDealCallBack;
+  public HashMap<Integer, String> reportMap = new HashMap();
+  public axmn saveDealCallBack;
   public int styleState;
   
   public ThemeDiyStyleLogic(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     this.app = paramQQAppInterface;
     this.mContext = paramContext;
+  }
+  
+  private static void checkDIYDir()
+  {
+    ThreadManager.getFileThreadHandler().post(new ThemeDiyStyleLogic.1());
+  }
+  
+  public static String getDataDIYDir()
+  {
+    String str;
+    if (DIR_DIY == null)
+    {
+      str = BaseApplicationImpl.getContext().getFilesDir().getAbsolutePath();
+      if (!str.endsWith(File.separator)) {
+        break label55;
+      }
+    }
+    label55:
+    for (DIR_DIY = str + "custom_background/";; DIR_DIY = str + File.separator + "custom_background/")
+    {
+      checkDIYDir();
+      return DIR_DIY;
+    }
   }
   
   public static String getDealFileName(ResData paramResData, int paramInt)
@@ -62,6 +88,11 @@ public class ThemeDiyStyleLogic
       return "__99__" + System.currentTimeMillis() + ".jpg";
     }
     return "__" + paramResData.id + "__" + paramResData.name;
+  }
+  
+  public static String getSdcardDIYDir()
+  {
+    return ajed.aU + "custom_background/";
   }
   
   static ThemeUtil.ThemeInfo getThemeInfoByDensity(Context paramContext, ResSuitData.StyleSuit paramStyleSuit)
@@ -115,6 +146,31 @@ public class ThemeDiyStyleLogic
     return bool1;
   }
   
+  private static void iteratorPath(File paramFile, List<File> paramList)
+  {
+    paramFile = paramFile.listFiles();
+    if (paramFile != null)
+    {
+      int j = paramFile.length;
+      int i = 0;
+      if (i < j)
+      {
+        Object localObject = paramFile[i];
+        if (localObject.isFile()) {
+          paramList.add(localObject);
+        }
+        for (;;)
+        {
+          i += 1;
+          break;
+          if (localObject.isDirectory()) {
+            iteratorPath(localObject, paramList);
+          }
+        }
+      }
+    }
+  }
+  
   public int dealDarkBrightness(ThemeDIYData paramThemeDIYData, Bundle paramBundle)
   {
     if ((paramThemeDIYData != null) && (paramThemeDIYData.tryOnBgBigOrgRD != null))
@@ -147,7 +203,7 @@ public class ThemeDiyStyleLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.mobileqq.theme.diy.ThemeDiyStyleLogic
  * JD-Core Version:    0.7.0.1
  */

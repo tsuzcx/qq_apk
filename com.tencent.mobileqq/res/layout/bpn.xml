@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="player_video_cover"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/ksq" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ViewStub android:id="@id/kx3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="player_video_cover_base_cover" />
+        <ViewStub android:id="@id/kx7" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="player_video_cover_net_page" />
+        <ViewStub android:layout_gravity="center" android:id="@id/kx2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="player_video_cover_loading_layout" />
+        <ViewStub android:id="@id/fv4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="player_video_cover_play_icon_container" />
+        <ViewStub android:id="@id/kx4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="player_video_cover_complete_float_page" />
+        <ViewStub android:id="@id/kx6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="player_video_cover_error_page" />
+        <ViewStub android:layout_gravity="bottom|center" android:id="@id/kx0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="player_video_cover_complete_page" />
+        <ViewStub android:layout_gravity="center" android:id="@id/kx1" android:layout_width="@dimen/apl" android:layout_height="@dimen/apk" />
+    </FrameLayout>
+    <ViewStub android:id="@id/kx8" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="player_video_cover_play_control" />
+    <ViewStub android:id="@id/kx5" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="player_video_cover_danmaku" />
+</FrameLayout>

@@ -1,85 +1,46 @@
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController.QQStoryMainView;
-import com.tencent.biz.qqstory.utils.AssertUtils;
-import com.tencent.mobileqq.activity.Now;
+import com.tencent.biz.qqstory.playvideo.dataprovider.MsgTabPlayInfo;
+import com.tencent.biz.qqstory.playvideo.entrance.HomeFeedPlayInfo;
 
 public class tjc
-  implements QQStoryMainController.QQStoryMainView
 {
-  public tjc(Now paramNow) {}
+  private tjq jdField_a_of_type_Tjq;
+  private tjs jdField_a_of_type_Tjs;
+  private tju jdField_a_of_type_Tju = new tjd(this);
+  public tko a;
+  private twt jdField_a_of_type_Twt;
+  private tju b = new tje(this);
   
-  public View a()
+  public void a(MsgTabPlayInfo paramMsgTabPlayInfo)
   {
-    return this.a.jdField_b_of_type_AndroidWidgetRelativeLayout;
+    this.jdField_a_of_type_Tko = new tko(new tkf(paramMsgTabPlayInfo));
+    this.jdField_a_of_type_Twt = new twt(this.jdField_a_of_type_Tko);
+    this.jdField_a_of_type_Twt.b();
   }
   
-  public ImageView a()
+  public void a(HomeFeedPlayInfo paramHomeFeedPlayInfo)
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      AssertUtils.a(bool);
-      return this.a.jdField_a_of_type_AndroidWidgetImageView;
-    }
+    this.jdField_a_of_type_Tko = new tko(new tjl(paramHomeFeedPlayInfo));
+    this.jdField_a_of_type_Twt = new twt(this.jdField_a_of_type_Tko);
   }
   
-  public TextView a()
+  public void onClickTestDown(View paramView)
   {
-    if (this.a.c != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      AssertUtils.a(bool);
-      return this.a.c;
-    }
+    this.jdField_a_of_type_Tko.a(this.b);
+    this.jdField_a_of_type_Tko.b(this.jdField_a_of_type_Tju);
+    this.jdField_a_of_type_Tko.a(this.jdField_a_of_type_Tjs, 2, 1, null);
   }
   
-  public void a()
+  public void onClickTestUp(View paramView)
   {
-    this.a.a();
+    this.jdField_a_of_type_Tko.b(this.b);
+    this.jdField_a_of_type_Tko.a(this.jdField_a_of_type_Tju);
+    this.jdField_a_of_type_Tko.a(this.jdField_a_of_type_Tjs, 0, 1, null);
   }
-  
-  public void a(String paramString)
-  {
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      Now.a(this.a);
-      return;
-    }
-    Now.b(this.a);
-  }
-  
-  public void b()
-  {
-    this.a.b(false);
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(i);
-      return;
-    }
-  }
-  
-  public void c()
-  {
-    this.a.b(true);
-  }
-  
-  public void d() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tjc
  * JD-Core Version:    0.7.0.1
  */

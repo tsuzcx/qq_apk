@@ -1,17 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemPAAudio;
+import android.util.Log;
+import com.tencent.TMG.sdk.AVRoomMulti.RequestViewListCompleteCallback;
+import com.tencent.TMG.sdk.AVView;
 
-public class aiok
-  implements DialogInterface.OnClickListener
+class aiok
+  implements AVRoomMulti.RequestViewListCompleteCallback
 {
-  public aiok(StructMsgItemPAAudio paramStructMsgItemPAAudio) {}
+  aiok(aioe paramaioe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void OnComplete(String[] paramArrayOfString, AVView[] paramArrayOfAVView, int paramInt1, int paramInt2, String paramString)
+  {
+    Log.d("CmGameAvHandler", "RequestViewListCompleteCallback.OnComplete result: " + paramInt2 + paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aiok
  * JD-Core Version:    0.7.0.1
  */

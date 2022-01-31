@@ -1,19 +1,18 @@
-import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy;
-import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.doutu.DoutuData;
 
-public class amxs
-  implements Runnable
+class amxs
 {
-  public amxs(QQIndividualityRemoteProxy paramQQIndividualityRemoteProxy, QQIndividualityRemoteProxy.QQIndividualityRemoteProxyCallWrapper paramQQIndividualityRemoteProxyCallWrapper) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy.a(this.jdField_a_of_type_CooperationQqindividualityIpcQQIndividualityRemoteProxy$QQIndividualityRemoteProxyCallWrapper);
-  }
+  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
+  RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  DoutuData jdField_a_of_type_ComTencentMobileqqDoutuDoutuData;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amxs
  * JD-Core Version:    0.7.0.1
  */

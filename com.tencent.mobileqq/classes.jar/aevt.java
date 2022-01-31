@@ -1,21 +1,27 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.OldBigDataChannelManager;
-import mqq.observer.AccountObserver;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchContactsFragment;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
 
 public class aevt
-  extends AccountObserver
+  extends akgd
 {
-  public aevt(OldBigDataChannelManager paramOldBigDataChannelManager) {}
-  
-  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
+  public aevt(SearchContactsFragment paramSearchContactsFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    ThreadManager.getFileThreadHandler().post(new aevu(this));
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void onLocationFinish(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (paramInt == 0)
+    {
+      SearchContactsFragment.a(this.a, paramSosoLbsInfo.a.a);
+      SearchContactsFragment.b(this.a, paramSosoLbsInfo.a.b);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aevt
  * JD-Core Version:    0.7.0.1
  */

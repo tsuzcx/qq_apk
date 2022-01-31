@@ -1,27 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
-import com.tencent.mobileqq.armap.ShopScanActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.QQLSActivity.20.1;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-class abkt
-  implements View.OnClickListener
+public class abkt
+  implements Animation.AnimationListener
 {
-  abkt(abks paramabks) {}
+  public abkt(QQLSActivity paramQQLSActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(this.a.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo);
+    this.a.a.removeMessages(99);
+    if (befo.g())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQLSActivity", 2, "do SmoothFinish");
+      }
+      QQLSActivity.g(this.a);
+      this.a.finish();
+      return;
     }
-    ShopScanActivity.d(this.a.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity);
-    ShopScanActivity.c(this.a.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity);
-    this.a.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.c.setOnClickListener(this.a.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity);
+    this.a.a.postAtFrontOfQueue(new QQLSActivity.20.1(this));
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abkt
  * JD-Core Version:    0.7.0.1
  */

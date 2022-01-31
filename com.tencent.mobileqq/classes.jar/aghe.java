@@ -1,23 +1,25 @@
-import com.tencent.mobileqq.app.DeviceProfileManager.DPCObserver;
-import com.tencent.mobileqq.ocr.data.OcrDpc;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.album.NewPhotoPreviewActivity;
+import mqq.util.WeakReference;
 
-public final class aghe
-  implements DeviceProfileManager.DPCObserver
+class aghe
+  implements apca
 {
-  public void a(boolean paramBoolean)
+  aghe(aghd paramaghd) {}
+  
+  public void a()
   {
-    if (paramBoolean) {
-      OcrDpc.a();
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.ocr.dpc", 2, "onDpcPullFinished, hasChanged=" + paramBoolean);
-    }
+    this.a.a.d();
+  }
+  
+  public void b()
+  {
+    ((NewPhotoPreviewActivity)this.a.a.a.get()).b.setClickable(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aghe
  * JD-Core Version:    0.7.0.1
  */

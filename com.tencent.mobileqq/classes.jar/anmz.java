@@ -1,25 +1,17 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import cooperation.thirdpay.ThirdPayGate;
+import android.widget.ImageView;
+import com.tencent.image.URLImageView;
 
 public class anmz
-  implements DialogInterface.OnClickListener
 {
-  public anmz(ThirdPayGate paramThirdPayGate, Bundle paramBundle, Activity paramActivity) {}
+  public ImageView a;
+  public URLImageView a;
+  public ImageView b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("isactivityfinish")) {
-      this.jdField_a_of_type_AndroidAppActivity.finish();
-    }
-  }
+  public anmz(anmy paramanmy) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anmz
  * JD-Core Version:    0.7.0.1
  */

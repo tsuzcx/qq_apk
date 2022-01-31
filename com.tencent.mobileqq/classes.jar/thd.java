@@ -1,20 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.NotificationActivity;
+import android.view.View;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
 
 public class thd
-  implements DialogInterface.OnClickListener
+  extends ulp
 {
-  public thd(NotificationActivity paramNotificationActivity) {}
+  public thd(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, View paramView, Object paramObject, unw paramunw)
   {
-    this.a.finish();
+    if ((paramObject instanceof QQUserUIItem))
+    {
+      paramView = (QQUserUIItem)paramObject;
+      skt.a(this.a.a, 10, paramView.uid);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     thd
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package cooperation.qzone.report.lp;
 
 import NS_MOBILE_CLIENT_UPDATE.CLIENT_REPORT_REQ;
 import NS_MOBILE_CLIENT_UPDATE.CLIENT_REPORT_RSP;
+import NS_MOBILE_CLIENT_UPDATE.REPORT_INFO;
 import com.qq.taf.jce.JceStruct;
 import cooperation.qzone.QzoneExternalRequest;
 import java.util.ArrayList;
@@ -11,16 +12,16 @@ public class LpReportRequest
   extends QzoneExternalRequest
 {
   private static final String CMD = "update.ClientReport";
-  private static final String UNI_KEY = "ClientReport";
+  public static final String UNI_KEY = "ClientReport";
   public JceStruct req;
   
-  public LpReportRequest(long paramLong, ArrayList paramArrayList1, Map paramMap, ArrayList paramArrayList2)
+  public LpReportRequest(long paramLong, ArrayList<Map<String, String>> paramArrayList, Map<String, String> paramMap, ArrayList<REPORT_INFO> paramArrayList1)
   {
     CLIENT_REPORT_REQ localCLIENT_REPORT_REQ = new CLIENT_REPORT_REQ();
     localCLIENT_REPORT_REQ.type = paramLong;
-    localCLIENT_REPORT_REQ.info = paramArrayList1;
+    localCLIENT_REPORT_REQ.info = paramArrayList;
     localCLIENT_REPORT_REQ.extra_info = paramMap;
-    localCLIENT_REPORT_REQ.multi_info = paramArrayList2;
+    localCLIENT_REPORT_REQ.multi_info = paramArrayList1;
     this.req = localCLIENT_REPORT_REQ;
   }
   

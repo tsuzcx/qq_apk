@@ -1,77 +1,91 @@
 package com.tencent.open.wadl;
 
-import alrf;
-import alrg;
-import alrh;
 import android.app.Activity;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
+import azzz;
+import bcex;
+import bcey;
+import bchu;
+import bchv;
+import bckd;
+import bckf;
+import bckg;
+import bckh;
+import bcki;
+import bckj;
+import bgsw;
+import bgsx;
+import bgtf;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gamecenter.appointment.GameCenterUtils;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.gamecenter.data.PadFaceAd;
+import com.tencent.mobileqq.gamecenter.fragment.QQGamePadFaceFragment;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.open.appcommon.js.BaseInterface;
-import com.tencent.open.business.base.IJsCallBack;
-import com.tencent.open.business.base.JsCallbackManager;
-import com.tencent.open.downloadnew.UpdateManager;
-import com.tencent.open.downloadnew.UpdateManager.OnCheckUpdateListener;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
-import cooperation.wadl.ipc.WadlProxyServiceUtil;
-import cooperation.wadl.ipc.WadlProxyServiceWrap;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import yez;
 
 public class WadlJsBridge
   extends BaseInterface
-  implements IJsCallBack
+  implements bcex
 {
-  private static WadlJSBridgePackageInstallReceiver jdField_a_of_type_ComTencentOpenWadlWadlJSBridgePackageInstallReceiver;
   private static WadlJsBridge jdField_a_of_type_ComTencentOpenWadlWadlJsBridge;
-  private static boolean b;
   private Activity jdField_a_of_type_AndroidAppActivity;
   private Context jdField_a_of_type_AndroidContentContext = a().getApplication().getBaseContext();
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private UpdateManager.OnCheckUpdateListener jdField_a_of_type_ComTencentOpenDownloadnewUpdateManager$OnCheckUpdateListener;
-  private WadlJsBridgeCall jdField_a_of_type_ComTencentOpenWadlWadlJsBridgeCall;
-  private WadlJsBridgeCallBack jdField_a_of_type_ComTencentOpenWadlWadlJsBridgeCallBack;
+  private bchv jdField_a_of_type_Bchv;
+  private bcki jdField_a_of_type_Bcki;
+  private bckj jdField_a_of_type_Bckj;
   private WebView jdField_a_of_type_ComTencentSmttSdkWebView;
   private String jdField_a_of_type_JavaLangString = "";
   private boolean jdField_a_of_type_Boolean;
   
   public WadlJsBridge(Activity paramActivity, WebView paramWebView)
   {
-    String str = GameCenterUtils.a(this.jdField_a_of_type_AndroidContentContext);
-    WLog.b("WadlJsBridge", "wadlJsBridge init processName=" + str);
+    this(paramActivity, paramWebView, null);
+  }
+  
+  public WadlJsBridge(Activity paramActivity, WebView paramWebView, bckj parambckj)
+  {
+    String str = yez.a(this.jdField_a_of_type_AndroidContentContext);
+    bckd.b("WadlJsBridge", "wadlJsBridge init processName=" + str);
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_ComTencentSmttSdkWebView = paramWebView;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_ComTencentOpenWadlWadlJsBridgeCall = new WadlJsBridgeCall(this.jdField_a_of_type_AndroidContentContext);
-    WadlProxyServiceUtil.a(a());
+    this.jdField_a_of_type_Bcki = new bcki();
+    bgsw.a();
     if ((paramActivity != null) && (paramWebView != null))
     {
-      registerPackageInstallNotificationReceiver(this.jdField_a_of_type_AndroidContentContext, str);
-      JsCallbackManager.a().a(this);
+      bcey.a().a(this);
       this.jdField_a_of_type_Boolean = true;
     }
-    WLog.b("WadlJsBridge", "wadlJsBridge init needJSCallBack=" + this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentOpenWadlWadlJsBridgeCallBack = new WadlJsBridgeCallBack(this.jdField_a_of_type_Boolean, this);
-    WadlProxyServiceUtil.a(this.jdField_a_of_type_ComTencentOpenWadlWadlJsBridgeCallBack);
-    a();
-    WadlProxyServiceUtil.a().c();
+    bckd.b("WadlJsBridge", "wadlJsBridge init needJSCallBack=" + this.jdField_a_of_type_Boolean);
+    paramActivity = parambckj;
+    if (parambckj == null) {
+      paramActivity = new bckj(this.jdField_a_of_type_Boolean, this);
+    }
+    this.jdField_a_of_type_Bckj = paramActivity;
+    bgsw.a(this.jdField_a_of_type_Bckj);
+    bgsw.a().c();
+    bgtf.a().a(this.jdField_a_of_type_Bckj);
   }
   
   private AppRuntime a()
@@ -79,55 +93,29 @@ public class WadlJsBridge
     return BaseApplicationImpl.getApplication().getRuntime();
   }
   
-  private void a()
-  {
-    if (!b)
-    {
-      b = true;
-      ThreadManager.executeOnSubThread(new alrf(this));
-    }
-  }
-  
-  private static void a(Context paramContext, BroadcastReceiver paramBroadcastReceiver)
-  {
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addDataScheme("package");
-    localIntentFilter.addAction("android.intent.action.PACKAGE_ADDED");
-    localIntentFilter.addAction("android.intent.action.PACKAGE_REMOVED");
-    localIntentFilter.addAction("android.intent.action.PACKAGE_REPLACED");
-    if (paramContext != null) {
-      paramContext.registerReceiver(paramBroadcastReceiver, localIntentFilter);
-    }
-  }
-  
-  public static void registerPackageInstallNotificationReceiver(Context paramContext, String paramString)
-  {
-    if ((jdField_a_of_type_ComTencentOpenWadlWadlJSBridgePackageInstallReceiver == null) && (paramContext != null))
-    {
-      WLog.b("WadlJsBridge", "##@registerPackageInstallNotificationReceiver and processName=" + paramString);
-      jdField_a_of_type_ComTencentOpenWadlWadlJSBridgePackageInstallReceiver = new WadlJSBridgePackageInstallReceiver(paramString);
-      a(paramContext, jdField_a_of_type_ComTencentOpenWadlWadlJSBridgePackageInstallReceiver);
-    }
-  }
-  
   public static void startDownload(String paramString, boolean paramBoolean, int paramInt)
   {
-    WLog.b("WadlJsBridge", "##@startDownload(Delay Task):" + paramString + " ," + paramBoolean + "," + paramInt + ",isWiFi=" + AppNetConnInfo.isWifiConn());
+    bckd.b("WadlJsBridge", "##@startDownload(Delay Task):" + paramString + " ," + paramBoolean + "," + paramInt + ",isWiFi=" + AppNetConnInfo.isWifiConn());
     if (jdField_a_of_type_ComTencentOpenWadlWadlJsBridge == null) {
       jdField_a_of_type_ComTencentOpenWadlWadlJsBridge = new WadlJsBridge(null, null);
     }
-    jdField_a_of_type_ComTencentOpenWadlWadlJsBridge.jdField_a_of_type_ComTencentOpenWadlWadlJsBridgeCall.a(paramString, paramBoolean, paramInt);
+    jdField_a_of_type_ComTencentOpenWadlWadlJsBridge.jdField_a_of_type_Bcki.a(paramString, paramBoolean, paramInt);
+  }
+  
+  public bcki a()
+  {
+    return this.jdField_a_of_type_Bcki;
   }
   
   public void checkUpdate(String paramString)
   {
-    WLog.b("WadlJsBridge", "checkUpdate params=" + paramString);
+    bckd.b("WadlJsBridge", "checkUpdate params=" + paramString);
     checkUpdate(paramString, "");
   }
   
   public void checkUpdate(String paramString1, String paramString2)
   {
-    WLog.b("WadlJsBridge", "checkUpdate params=" + paramString1 + ",guid=" + paramString2);
+    bckd.b("WadlJsBridge", "checkUpdate params=" + paramString1 + ",guid=" + paramString2);
     if (!hasRight()) {
       return;
     }
@@ -149,17 +137,17 @@ public class WadlJsBridge
           i += 1;
         }
       }
-      if (this.jdField_a_of_type_ComTencentOpenDownloadnewUpdateManager$OnCheckUpdateListener == null)
+      if (this.jdField_a_of_type_Bchv == null)
       {
-        this.jdField_a_of_type_ComTencentOpenDownloadnewUpdateManager$OnCheckUpdateListener = new alrh(this, paramString1);
-        UpdateManager.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewUpdateManager$OnCheckUpdateListener);
+        this.jdField_a_of_type_Bchv = new bckh(this, paramString1);
+        bchu.a().a(this.jdField_a_of_type_Bchv);
       }
-      UpdateManager.a().a(paramString2);
+      bchu.a().a(paramString2);
       return;
     }
     catch (JSONException paramString1)
     {
-      WLog.a("WadlJsBridge", "##@httpRequest JSONException", paramString1);
+      bckd.a("WadlJsBridge", "##@httpRequest JSONException", paramString1);
     }
   }
   
@@ -175,14 +163,14 @@ public class WadlJsBridge
   
   public void delDelayDownloadTasks(String paramString)
   {
-    WLog.b("WadlJsBridge", "enter delDelayDownloadTasks()");
+    bckd.b("WadlJsBridge", "enter delDelayDownloadTasks()");
     try
     {
       paramString = new JSONObject(paramString).getJSONArray("tasks");
       int i = 0;
       while (i < paramString.length())
       {
-        GameCenterUtils.b(paramString.get(i).toString(), "DELAY_LIST");
+        yez.b(paramString.get(i).toString(), "DELAY_LIST");
         i += 1;
       }
       jsCallBack("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.delDelayDownloadTasks',{\"result\" : 0 });}void(0);");
@@ -190,53 +178,54 @@ public class WadlJsBridge
     }
     catch (Exception paramString)
     {
-      WLog.a("WadlJsBridge", "delDelayDownloadTasks>>>", paramString);
+      bckd.a("WadlJsBridge", "delDelayDownloadTasks>>>", paramString);
     }
   }
   
   public void deleteDownload(String paramString1, String paramString2)
   {
-    WLog.b("WadlJsBridge", "deleteDownload appid=" + paramString1 + ",sendTime=" + paramString2);
-    this.jdField_a_of_type_ComTencentOpenWadlWadlJsBridgeCall.a(0, paramString1, paramString2);
+    bckd.b("WadlJsBridge", "deleteDownload appid=" + paramString1 + ", sendTime=" + paramString2);
+    this.jdField_a_of_type_Bcki.a(0, paramString1, paramString2);
   }
   
   public void destroy()
   {
-    WLog.b("WadlJsBridge", "##@doOnDestroy()");
+    bckd.b("WadlJsBridge", "##@doOnDestroy()");
     super.doOnDestroy();
     this.jdField_a_of_type_Boolean = false;
     if (this.jdField_a_of_type_AndroidAppActivity != null) {
-      JsCallbackManager.a().b(this);
+      bcey.a().b(this);
     }
-    WadlProxyServiceUtil.b(this.jdField_a_of_type_ComTencentOpenWadlWadlJsBridgeCallBack);
-    if (this.jdField_a_of_type_ComTencentOpenDownloadnewUpdateManager$OnCheckUpdateListener != null)
+    bgsw.b(this.jdField_a_of_type_Bckj);
+    if (this.jdField_a_of_type_Bchv != null)
     {
-      UpdateManager.a().b(this.jdField_a_of_type_ComTencentOpenDownloadnewUpdateManager$OnCheckUpdateListener);
-      this.jdField_a_of_type_ComTencentOpenDownloadnewUpdateManager$OnCheckUpdateListener = null;
+      bchu.a().b(this.jdField_a_of_type_Bchv);
+      this.jdField_a_of_type_Bchv = null;
     }
+    bgtf.a().b(this.jdField_a_of_type_Bckj);
   }
   
   public int doDownloadAction(String paramString)
   {
-    WLog.a("WadlJsBridge", 1, "receive webview js call=" + paramString);
+    bckd.a("WadlJsBridge", 1, "receive webview js call=" + paramString);
     String str = "";
     if (this.jdField_a_of_type_ComTencentSmttSdkWebView != null) {
       str = this.jdField_a_of_type_ComTencentSmttSdkWebView.getUrl();
     }
-    int i = this.jdField_a_of_type_ComTencentOpenWadlWadlJsBridgeCall.a(paramString, true, 0, str);
-    WLog.b("WadlJsBridge", "doDownloadAction result=" + i);
+    int i = this.jdField_a_of_type_Bcki.a(paramString, true, 0, str);
+    bckd.b("WadlJsBridge", "doDownloadAction result=" + i);
     return i;
   }
   
   public void doGCDownloadAction(String paramString)
   {
-    WLog.b("WadlJsBridge", "enter doGCDownloadAction(String pParamsJson)");
+    bckd.b("WadlJsBridge", "enter doGCDownloadAction(String pParamsJson)");
     doDownloadAction(paramString);
   }
   
   public String getAppVersionCode(String paramString)
   {
-    WLog.b("WadlJsBridge", "##@getAppVersionCode:" + paramString);
+    bckd.b("WadlJsBridge", "##@getAppVersionCode:" + paramString);
     if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_AndroidContentContext == null)) {
       return "";
     }
@@ -258,7 +247,7 @@ public class WadlJsBridge
   
   public String getAppVersionName(String paramString)
   {
-    WLog.b("WadlJsBridge", "##@getAppVersionName:" + paramString);
+    bckd.b("WadlJsBridge", "##@getAppVersionName:" + paramString);
     if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_AndroidContentContext == null)) {
       return "";
     }
@@ -278,10 +267,21 @@ public class WadlJsBridge
     return "";
   }
   
+  public long getAvailableBytes()
+  {
+    try
+    {
+      long l = azzz.b();
+      return l;
+    }
+    catch (Exception localException) {}
+    return 0L;
+  }
+  
   public void getDelayDownloadTasks()
   {
-    WLog.b("WadlJsBridge", "##@getDelayDownloadTasks() BEGIN");
-    Object localObject = GameCenterUtils.a("DELAY_LIST");
+    bckd.b("WadlJsBridge", "##@getDelayDownloadTasks() BEGIN");
+    Object localObject = yez.a("DELAY_LIST");
     JSONArray localJSONArray = new JSONArray();
     if (!TextUtils.isEmpty((CharSequence)localObject))
     {
@@ -303,20 +303,20 @@ public class WadlJsBridge
           {
             for (;;)
             {
-              WLog.a("WadlJsBridge", "getDelayDownloadTasks>>>", localJSONException);
+              bckd.a("WadlJsBridge", "getDelayDownloadTasks>>>", localJSONException);
             }
           }
         }
       }
     }
     jsCallBack("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.getDelayDownloadTasks',{\"result\" : 0, \"task\":" + localJSONArray.toString() + "});}void(0);");
-    WLog.b("WadlJsBridge", "##@getDelayDownloadTasks() END");
+    bckd.b("WadlJsBridge", "##@getDelayDownloadTasks() END");
   }
   
   public String getDownloadVersion()
   {
-    WLog.b("WadlJsBridge", "enter getDownloadVersion");
-    String str = String.valueOf(3);
+    bckd.b("WadlJsBridge", "enter getDownloadVersion");
+    String str = String.valueOf(4);
     getDownloadVersionJsCallBack(str);
     return str;
   }
@@ -328,7 +328,7 @@ public class WadlJsBridge
   
   public void getInstalledAppVersionCode(String paramString1, String paramString2)
   {
-    WLog.b("WadlJsBridge", "##@enter getInstalledAppVersionCode(BEGIN)" + paramString1 + " : " + paramString2);
+    bckd.b("WadlJsBridge", "##@enter getInstalledAppVersionCode(BEGIN)" + paramString1 + " : " + paramString2);
     if (!hasRight()) {
       return;
     }
@@ -400,22 +400,59 @@ public class WadlJsBridge
   
   public void getQueryDownloadAction(String paramString)
   {
-    this.jdField_a_of_type_ComTencentOpenWadlWadlJsBridgeCall.c(paramString);
+    this.jdField_a_of_type_Bcki.d(paramString);
   }
   
   public void getQueryDownloadAction(String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_ComTencentOpenWadlWadlJsBridgeCall.a(paramString1, paramString2);
+    this.jdField_a_of_type_Bcki.a(paramString1, paramString2);
   }
   
   public void getQueryDownloadActionByVia(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals("ALL_TASK_QUERY_IDENTITY")))
+    if ("ALL_TASK_QUERY_IDENTITY".equals(paramString))
     {
-      this.jdField_a_of_type_ComTencentOpenWadlWadlJsBridgeCall.a();
+      this.jdField_a_of_type_Bcki.c(paramString);
       return;
     }
-    this.jdField_a_of_type_ComTencentOpenWadlWadlJsBridgeCall.d(paramString);
+    this.jdField_a_of_type_Bcki.e(paramString);
+  }
+  
+  public String getValidWebSsoCmds(String paramString)
+  {
+    paramString = (bckf)bckg.a().a("comminfo");
+    JSONArray localJSONArray;
+    if (paramString != null)
+    {
+      paramString = paramString.a();
+      if (paramString != null) {
+        try
+        {
+          localJSONArray = new JSONArray();
+          paramString = paramString.iterator();
+          while (paramString.hasNext())
+          {
+            localJSONArray.put(paramString.next());
+            continue;
+            paramString = "";
+          }
+        }
+        catch (Throwable paramString)
+        {
+          bckd.a("WadlJsBridge", "getValidWebSsoCmds>>>", paramString);
+        }
+      }
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        bckd.b("WadlJsBridge", "getValidWebSsoCmds...cmdsJsonStr=" + paramString);
+      }
+      return paramString;
+      paramString = null;
+      break;
+      paramString = localJSONArray.toString();
+    }
   }
   
   public WebView getWebview()
@@ -434,7 +471,7 @@ public class WadlJsBridge
       return false;
     }
     boolean bool = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("wadl_jstask_file", 0).getBoolean("firstTime", true);
-    WLog.b("WadlJsBridge", "##@firstTime entry:" + bool);
+    bckd.b("WadlJsBridge", "##@firstTime entry:" + bool);
     return bool;
   }
   
@@ -446,19 +483,77 @@ public class WadlJsBridge
   public void jsCallBack(String paramString)
   {
     if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new alrg(this, paramString));
+      this.jdField_a_of_type_AndroidOsHandler.post(new WadlJsBridge.1(this, paramString));
     }
+  }
+  
+  public void queryAllDownloadTask()
+  {
+    this.jdField_a_of_type_Bcki.a();
+  }
+  
+  public boolean queryInterrupt(String paramString)
+  {
+    return false;
   }
   
   public void registerDownloadCallBackListener(String paramString)
   {
-    WLog.b("WadlJsBridge", "enter registerDownloadCallBackListener");
+    bckd.b("WadlJsBridge", "enter registerDownloadCallBackListener");
     this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void requestWebSso(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      bckd.b("WadlJsBridge", "requestWebSso...jsonParams=" + paramString);
+    }
+    try
+    {
+      paramString = new JSONObject(paramString);
+      String str = paramString.getString("webssoCmdId");
+      JSONObject localJSONObject = paramString.getJSONObject("webssoReq");
+      paramString = (bckf)bckg.a().a("comminfo");
+      if (paramString != null) {}
+      for (paramString = paramString.a(); (TextUtils.isEmpty(str)) || (paramString == null) || (!paramString.contains(str)); paramString = bgtf.a)
+      {
+        jsCallBack("javascript:if (typeof(QzoneApp) === 'object' && typeof(QzoneApp.fire) === 'function') { QzoneApp.fire('interface.requestWebSso',{\"cmd\": " + str + ", \"webssoReq\":" + localJSONObject.toString() + ", \"ret\":-2});}void(0);");
+        return;
+      }
+      paramString = new Bundle();
+      paramString.putString("webssoReqJson", localJSONObject.toString());
+      bgtf.a().a(str, localJSONObject, paramString);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      bckd.a("WadlJsBridge", "requestWebSso>>>", paramString);
+    }
+  }
+  
+  public int showPadFace(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      return -1;
+      try
+      {
+        paramString = new PadFaceAd(new JSONObject(paramString));
+        if (paramString.isValid())
+        {
+          QQGamePadFaceFragment.a(this.jdField_a_of_type_AndroidAppActivity, paramString);
+          return 0;
+        }
+      }
+      catch (JSONException paramString) {}
+    }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.wadl.WadlJsBridge
  * JD-Core Version:    0.7.0.1
  */

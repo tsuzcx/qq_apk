@@ -9,7 +9,7 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.mobileqq.app.ThreadManager;
-import peu;
+import mqq.os.MqqHandler;
 
 public class RoundProgressBar
   extends View
@@ -18,6 +18,7 @@ public class RoundProgressBar
   private int jdField_a_of_type_Int = -252645121;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+  Runnable jdField_a_of_type_JavaLangRunnable = new RoundProgressBar.1(this);
   private boolean jdField_a_of_type_Boolean = true;
   private float jdField_b_of_type_Float = 18.0F;
   private int jdField_b_of_type_Int = -1529614848;
@@ -25,6 +26,7 @@ public class RoundProgressBar
   private int jdField_c_of_type_Int = -16777216;
   private int d = 100;
   private int e = 0;
+  private int f;
   
   public RoundProgressBar(Context paramContext)
   {
@@ -43,7 +45,8 @@ public class RoundProgressBar
   
   private void a(int paramInt)
   {
-    ThreadManager.post(new peu(this, paramInt), 8, null, true);
+    this.f = paramInt;
+    ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 30L);
   }
   
   protected void onDraw(Canvas paramCanvas)

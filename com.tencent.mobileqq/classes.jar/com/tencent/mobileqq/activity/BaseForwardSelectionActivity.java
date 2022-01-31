@@ -1,28 +1,29 @@
 package com.tencent.mobileqq.activity;
 
+import aciy;
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import android.support.v4.app.FragmentActivity;
+import aphf;
+import aphp;
+import apjx;
+import awqx;
 import com.tencent.mobileqq.activity.photo.PhotoUtils;
 import com.tencent.mobileqq.activity.photo.SendPhotoActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.mobileqq.forward.ForwardOptionBuilder;
-import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class BaseForwardSelectionActivity
-  extends BaseActivity
+  extends FragmentActivity
 {
   protected Bundle a;
-  public ForwardBaseOption a;
+  public aphp a;
   public boolean a;
+  public boolean b;
   
   private void a()
   {
-    Intent localIntent = AIOUtils.a(new Intent(this, SplashActivity.class), null);
+    Intent localIntent = aciy.a(new Intent(this, SplashActivity.class), null);
     Object localObject = new Bundle(this.jdField_a_of_type_AndroidOsBundle);
     ((Bundle)localObject).putBoolean("PhotoConst.HANDLE_DEST_RESULT", false);
     ((Bundle)localObject).putBoolean("PhotoConst.IS_FORWARD", true);
@@ -53,7 +54,7 @@ public class BaseForwardSelectionActivity
       finish();
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.a(paramInt1, paramInt2, paramIntent);
+    this.jdField_a_of_type_Aphp.a(paramInt1, paramInt2, paramIntent);
   }
   
   public boolean doOnCreate(Bundle paramBundle)
@@ -62,11 +63,11 @@ public class BaseForwardSelectionActivity
     paramBundle = getIntent();
     if (paramBundle != null)
     {
-      this.jdField_a_of_type_Boolean = getIntent().getBooleanExtra("call_by_forward", false);
-      if (this.jdField_a_of_type_Boolean)
+      this.b = getIntent().getBooleanExtra("call_by_forward", false);
+      if (this.b)
       {
-        this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption = ForwardOptionBuilder.a(paramBundle, this.app, this);
-        this.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.a();
+        this.jdField_a_of_type_Aphp = apjx.a(paramBundle, this.app, this);
+        this.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_Aphp.a();
       }
     }
     return true;
@@ -74,17 +75,17 @@ public class BaseForwardSelectionActivity
   
   public void doOnDestroy()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption != null) {
-      this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.s();
+    if (this.jdField_a_of_type_Aphp != null) {
+      this.jdField_a_of_type_Aphp.w();
     }
     super.doOnDestroy();
   }
   
-  protected void doOnNewIntent(Intent paramIntent)
+  public void doOnNewIntent(Intent paramIntent)
   {
     super.doOnNewIntent(paramIntent);
     if (QLog.isColorLevel()) {
-      QLog.d("qqBaseActivity", 2, "qqBaseActivity onNewIntent()");
+      QLog.d("BaseForwardSelectionActivity", 2, "BaseForwardSelectionActivity onNewIntent()");
     }
     if (paramIntent.getBooleanExtra("PhotoConst.SEND_FLAG", false))
     {
@@ -98,20 +99,20 @@ public class BaseForwardSelectionActivity
     paramIntent = (String)paramIntent.get(0);
     this.jdField_a_of_type_AndroidOsBundle.putBoolean("FORWARD_IS_EDITED", true);
     int i = this.jdField_a_of_type_AndroidOsBundle.getInt("key_forward_ability_type", 0);
-    if ((i == ForwardAbility.ForwardAbilityType.f.intValue()) || (i == ForwardAbility.ForwardAbilityType.k.intValue()))
+    if ((i == aphf.f.intValue()) || (i == aphf.k.intValue()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.b(i);
+      this.jdField_a_of_type_Aphp.b(i);
       return;
     }
     this.jdField_a_of_type_AndroidOsBundle.putString("GALLERY.FORWORD_LOCAL_PATH", paramIntent);
     a();
-    ReportController.b(this.app, "CliOper", "", "", "0X800514C", "0X800514C", 0, 0, "", "", "", "");
+    awqx.b(this.app, "CliOper", "", "", "0X800514C", "0X800514C", 0, 0, "", "", "", "");
   }
   
   public void finish()
   {
     super.finish();
-    overridePendingTransition(2131034129, 2131034130);
+    overridePendingTransition(2130771988, 2130771989);
   }
 }
 

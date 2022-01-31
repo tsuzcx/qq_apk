@@ -8,14 +8,14 @@ import java.util.ArrayList;
 public final class ProfileInfoOperResp
   extends JceStruct
 {
-  static ArrayList cache_vecInfo;
+  static ArrayList<ProfileInfoResp> cache_vecInfo;
   public byte cResult;
   public long uin;
-  public ArrayList vecInfo;
+  public ArrayList<ProfileInfoResp> vecInfo;
   
   public ProfileInfoOperResp() {}
   
-  public ProfileInfoOperResp(long paramLong, byte paramByte, ArrayList paramArrayList)
+  public ProfileInfoOperResp(long paramLong, byte paramByte, ArrayList<ProfileInfoResp> paramArrayList)
   {
     this.uin = paramLong;
     this.cResult = paramByte;
@@ -44,7 +44,7 @@ public final class ProfileInfoOperResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     KQQ.ProfileInfoOperResp
  * JD-Core Version:    0.7.0.1
  */

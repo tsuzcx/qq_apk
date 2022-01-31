@@ -1,79 +1,128 @@
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.text.SpannableString;
-import android.text.style.ImageSpan;
+import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import com.tencent.mobileqq.extendfriend.bean.GroupInfo.Label;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
-import com.tencent.widget.RoundBGTextView;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.mobileqq.activity.aio.audiopanel.ChangeVoiceView;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import java.util.List;
 
 public class acqq
-  extends RecyclerView.Adapter
+  extends BaseAdapter
 {
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
+  public int a;
+  Context a;
+  public View.OnClickListener a;
+  public ArrayList<bawt> a;
+  public boolean a;
+  public int b;
   
-  public acqq(ExtendFriendGroupFragment paramExtendFriendGroupFragment, List paramList)
+  public acqq(Context paramContext)
   {
-    if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    this.jdField_a_of_type_Int = 4;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+      return (this.jdField_a_of_type_JavaUtilArrayList.size() + this.jdField_a_of_type_Int - 1) / this.jdField_a_of_type_Int;
     }
+    return 0;
   }
   
-  public acqr a(ViewGroup paramViewGroup, int paramInt)
+  public Object getItem(int paramInt)
   {
-    paramViewGroup = (ViewGroup)LayoutInflater.from(paramViewGroup.getContext()).inflate(2130970348, paramViewGroup, false);
-    return new acqr(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment, paramViewGroup);
-  }
-  
-  public void a(List paramList)
-  {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if (paramList != null) {
-      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > paramInt)) {
+      return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     }
+    return null;
   }
   
-  public int getItemCount()
+  public long getItemId(int paramInt)
   {
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return paramInt;
   }
   
-  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    paramViewHolder = (acqr)paramViewHolder;
-    Object localObject = (GroupInfo.Label)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    if ((((GroupInfo.Label)localObject).labelType == 2001) || ((((GroupInfo.Label)localObject).labelType >= 1000) && (((GroupInfo.Label)localObject).labelType < 2000))) {}
-    for (paramInt = 1; paramInt != 0; paramInt = 0)
+    int j = this.jdField_a_of_type_Int;
+    Object localObject1;
+    int i;
+    Object localObject2;
+    if (paramView == null)
     {
-      paramViewHolder.a.setVisibility(8);
-      return;
-    }
-    paramViewHolder.a.setVisibility(0);
-    paramViewHolder.a.setTextColor(((GroupInfo.Label)localObject).textColor);
-    paramViewHolder.a.setBgColor(((GroupInfo.Label)localObject).bgColor);
-    if (((GroupInfo.Label)localObject).labelType == 1)
-    {
-      localObject = new SpannableString("[icon]" + " " + ((GroupInfo.Label)localObject).labelName);
-      if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment.a == null) {
-        this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment.a = this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment.getResources().getDrawable(2130841467);
+      localObject1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext, null);
+      ((LinearLayout)localObject1).setOrientation(0);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+      i = 0;
+      while (i < this.jdField_a_of_type_Int)
+      {
+        localObject2 = new LinearLayout.LayoutParams(-1, -2);
+        ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
+        paramViewGroup = paramView;
+        if (paramView == null) {
+          paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+        }
+        ((LinearLayout)localObject1).addView(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495037, null), (ViewGroup.LayoutParams)localObject2);
+        i += 1;
+        paramView = paramViewGroup;
       }
-      paramInt = (int)(paramViewHolder.a.a() * 0.8D + 0.5D);
-      this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment.a.setBounds(0, 0, paramInt, paramInt);
-      ((SpannableString)localObject).setSpan(new ImageSpan(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment.a, 1), 0, "[icon]".length(), 17);
-      paramViewHolder.a.setText((CharSequence)localObject);
-      return;
+      paramView = (View)localObject1;
     }
-    paramViewHolder.a.setText(((GroupInfo.Label)localObject).labelName);
+    for (;;)
+    {
+      localObject1 = (ViewGroup)paramView;
+      if (paramInt == 0) {
+        ((ViewGroup)localObject1).setPadding(aciy.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aciy.a(14.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aciy.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aciy.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      }
+      int k;
+      for (;;)
+      {
+        i = 0;
+        for (;;)
+        {
+          if (i >= this.jdField_a_of_type_Int) {
+            break label397;
+          }
+          k = j * paramInt + i;
+          localObject2 = (ChangeVoiceView)((ViewGroup)localObject1).getChildAt(i);
+          if (localObject2 != null) {
+            break;
+          }
+          QLog.e("ChangeVoiceListAdapter", 1, "getView view == null,view=" + ((ViewGroup)localObject1).getChildAt(i));
+          i += 1;
+        }
+        ((ViewGroup)localObject1).setPadding(aciy.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aciy.a(7.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aciy.a(15.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), aciy.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+      }
+      ((ChangeVoiceView)localObject2).b = this.b;
+      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (k < this.jdField_a_of_type_JavaUtilArrayList.size())) {}
+      for (paramViewGroup = (bawt)this.jdField_a_of_type_JavaUtilArrayList.get(k);; paramViewGroup = null)
+      {
+        ((ChangeVoiceView)localObject2).a(paramViewGroup);
+        if (this.jdField_a_of_type_Boolean) {
+          ((ChangeVoiceView)localObject2).a();
+        }
+        if (paramViewGroup != null)
+        {
+          ((ChangeVoiceView)localObject2).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+          break;
+        }
+        ((ChangeVoiceView)localObject2).setOnClickListener(null);
+        break;
+        label397:
+        return paramView;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acqq
  * JD-Core Version:    0.7.0.1
  */

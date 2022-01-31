@@ -1,47 +1,110 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ChannelCoverInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.MultiIncomingCallUICtr.3.1;
+import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
 
 public class ltt
-  implements Runnable
+  extends kur
 {
-  public ltt(ChannelCoverInfoModule paramChannelCoverInfoModule, int paramInt) {}
+  ltt(ltr paramltr) {}
   
-  public void run()
+  protected void a(long paramLong, int paramInt)
   {
-    List localList = ChannelCoverInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelCoverInfoModule, this.jdField_a_of_type_Int);
-    if ((localList != null) && (localList.size() > 0))
+    if (this.a.jdField_b_of_type_Boolean)
     {
-      localStringBuilder = new StringBuilder("loadChannelCoverListFromDB size = " + localList.size() + "\n");
-      localIterator = localList.iterator();
-      while (localIterator.hasNext())
+      long l = AudioHelper.b();
+      if (QLog.isColorLevel()) {
+        QLog.w("MultiIncomingCallUICtr", 1, "onDestroyInviteUI, groupId[" + paramLong + "], mPeerUin[" + this.a.jdField_c_of_type_JavaLangString + "], seq[" + l + "]");
+      }
+      if ((this.a.jdField_c_of_type_JavaLangString != null) && (this.a.jdField_c_of_type_JavaLangString.equals(String.valueOf(paramLong))))
       {
-        localChannelCoverInfo = (ChannelCoverInfo)localIterator.next();
-        if (QLog.isColorLevel()) {
-          localStringBuilder.append("[channelCoverId=").append(localChannelCoverInfo.mChannelCoverId).append(", mChannelCoverName=").append(localChannelCoverInfo.mChannelCoverName).append(", mChannelCoverStyle=").append(localChannelCoverInfo.mChannelCoverStyle).append(", mChannelCoverSummary=").append(localChannelCoverInfo.mChannelCoverSummary).append(", mChannelCoverPicUrl=").append(localChannelCoverInfo.mChannelCoverPicUrl).append(", mChannelJumpUrl=").append(localChannelCoverInfo.mChannelJumpUrl).append(", mArticleIds=").append(localChannelCoverInfo.mArticleId).append(", mChannelType=").append(localChannelCoverInfo.mChannelType).append("]\n");
-        }
+        this.a.a(l, paramInt);
+        this.a.a();
       }
-      if ((QLog.isColorLevel()) && (localStringBuilder != null)) {
-        QLog.d("ChannelCoverInfoModule", 2, localStringBuilder.toString());
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelCoverInfoModule.b(localList, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelCoverInfoModule.d(localList, this.jdField_a_of_type_Int);
     }
-    while (!QLog.isColorLevel())
+    for (;;)
     {
-      StringBuilder localStringBuilder;
-      Iterator localIterator;
-      ChannelCoverInfo localChannelCoverInfo;
+      if (QLog.isColorLevel()) {
+        QLog.d("MultiIncomingCallUICtr", 2, "onDestroyInviteUI, groupId:" + paramLong + ", reason:" + paramInt + ", mGroupId:" + this.a.jdField_a_of_type_Long);
+      }
       return;
+      if ((this.a.jdField_a_of_type_Long == paramLong) || (0L == paramLong)) {
+        this.a.a();
+      }
     }
-    QLog.d("ChannelCoverInfoModule", 2, "loadChannelCoverListFromDB list is null");
+  }
+  
+  protected void a(long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiIncomingCallUICtr", 2, "onCreateRoomSuc-->GroupID=" + paramLong2);
+    }
+    this.a.jdField_a_of_type_Kvq.aj = true;
+    if (this.a.jdField_b_of_type_Int == 1) {
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(paramLong2);
+    }
+  }
+  
+  protected void a(long paramLong, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiIncomingCallUICtr", 2, "notifyCloseGroupVideoInviteMsgBoxByInviteId-->GroupID=" + paramLong);
+    }
+    if ((this.a.jdField_a_of_type_Long == paramLong) && (this.a.e.equals(paramString))) {
+      this.a.a();
+    }
+  }
+  
+  protected void b(long paramLong1, long paramLong2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.w("MultiIncomingCallUICtr", 1, "onEnterRoomSuc, groupId[" + paramLong2 + "], seq[" + paramLong1 + "]");
+    }
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(new MultiIncomingCallUICtr.3.1(this, paramLong2), 500L);
+    this.a.f();
+    loj.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(paramLong1, false);
+    if (this.a.jdField_a_of_type_Lzu != null) {
+      this.a.jdField_a_of_type_Lzu.c();
+    }
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.jdField_c_of_type_JavaLangRunnable, 1000L);
+    miu.a().a(this.a.f);
+  }
+  
+  protected void b(long paramLong1, long paramLong2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiIncomingCallUICtr.troopgroup_vedio.invite", 2, "groupId:" + paramLong1 + ", memUin:" + paramLong2 + ",invitedId:" + paramString + ", mInviterUin:" + this.a.jdField_b_of_type_Long + ", mGroupId:" + this.a.jdField_a_of_type_Long);
+    }
+    if ((paramLong2 == this.a.jdField_b_of_type_Long) && (paramLong1 == this.a.jdField_a_of_type_Long)) {
+      this.a.a();
+    }
+  }
+  
+  protected void e(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiIncomingCallUICtr", 2, "notifyCloseAllGroupVideoInviteMsgBox-->GroupID=" + paramLong);
+    }
+    if (this.a.jdField_a_of_type_Long != paramLong) {
+      this.a.b(0);
+    }
+    this.a.a();
+  }
+  
+  protected void f(long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("MultiIncomingCallUICtr", 2, "notifyCloseGroupVideoInviteMsgBox-->GroupID=" + paramLong);
+    }
+    if (this.a.jdField_a_of_type_Long == paramLong) {
+      this.a.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ltt
  * JD-Core Version:    0.7.0.1
  */

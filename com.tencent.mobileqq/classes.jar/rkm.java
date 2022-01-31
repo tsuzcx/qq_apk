@@ -1,48 +1,28 @@
-import android.content.Intent;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.support.v4.app.FragmentActivity;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
 
-public class rkm
-  extends ClickableSpan
+class rkm
+  implements Animation.AnimationListener
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
+  rkm(rkg paramrkg, ViewGroup paramViewGroup) {}
   
-  public rkm(AboutActivity paramAboutActivity, String paramString, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_AndroidViewViewGroup.setVisibility(8);
+    rkg.a(this.jdField_a_of_type_Rkg).getActivity().doOnBackPressed();
+    rkg.a(this.jdField_a_of_type_Rkg).getActivity().overridePendingTransition(0, 0);
   }
   
-  public void onClick(View paramView)
-  {
-    switch (this.jdField_a_of_type_Int)
-    {
-    }
-    for (;;)
-    {
-      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity, QQBrowserActivity.class);
-      paramView.putExtra("uin", this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app.getCurrentAccountUin());
-      this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.startActivity(paramView.putExtra("url", this.jdField_a_of_type_JavaLangString));
-      return;
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAboutActivity.app, "CliOper", "", "", "0X8005746", "0X8005746", 0, 0, "", "", "", "");
-    }
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-16754769);
-    paramTextPaint.setUnderlineText(true);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rkm
  * JD-Core Version:    0.7.0.1
  */

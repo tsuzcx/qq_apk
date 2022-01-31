@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import com.tencent.biz.common.offline.HtmlOffline;
 import com.tencent.common.app.BaseApplicationImpl;
 import cooperation.qzone.util.QZLog;
+import mof;
 
 public class GdtPreLoadOfflinePackageService
   extends Service
@@ -29,8 +29,8 @@ public class GdtPreLoadOfflinePackageService
         try
         {
           BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-          HtmlOffline.a();
-          HtmlOffline.a(str, localBaseApplicationImpl.getRuntime());
+          mof.a();
+          mof.a(str, localBaseApplicationImpl.getRuntime());
         }
         catch (Exception localException)
         {

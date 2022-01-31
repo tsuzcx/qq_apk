@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.data;
 
+import adcy;
+import aduf;
+import ajjy;
 import android.graphics.drawable.Drawable.ConstantState;
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable.FrameAnimationState;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks.UnlimitedState;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
 import org.json.JSONException;
@@ -19,13 +20,20 @@ public class MessageForPoke
   public static final int INTERACT_TYPE_POKE = 1;
   public static final int INTERACT_TYPE_POKE_OLD = 0;
   public static final int INTERACT_TYPE_VAS_POKE = 126;
+  public static final int POKE_FLAG_BREAKING_ICE_FRD_NEW = 8;
+  public static final int POKE_FLAG_BREAKING_ICE_FRD_OLD = 16;
+  @Deprecated
+  public static final int POKE_FLAG_BREAKING_ICE_POKE = 1;
+  @Deprecated
+  public static final int POKE_FLAG_BREAKING_ICE_POKE_ACK = 2;
   public int doubleHitState;
+  public int flag;
   public boolean hasQuickBackShowed;
   public int interactType = 0;
   public boolean isPlayed;
   public Drawable.ConstantState mBubbleBgState;
-  public CustomFrameAnimationDrawable.FrameAnimationState mFrameState = new CustomFrameAnimationDrawable.FrameAnimationState();
-  public UnlimitedBladeWorks.UnlimitedState mUnlimitedState = new UnlimitedBladeWorks.UnlimitedState();
+  public adcy mFrameState = new adcy();
+  public aduf mUnlimitedState = new aduf();
   public String minVersion;
   public String name;
   public int state;
@@ -46,6 +54,7 @@ public class MessageForPoke
       this.name = localJSONObject.getString("name");
       this.minVersion = localJSONObject.getString("minVersion");
       this.strength = localJSONObject.getInt("strength");
+      this.flag = localJSONObject.optInt("flag", 0);
       return;
     }
     catch (JSONException localJSONException)
@@ -59,28 +68,33 @@ public class MessageForPoke
     switch (this.interactType)
     {
     default: 
-      this.msg = "[戳一戳]";
+      this.msg = ajjy.a(2131640834);
       return;
     case 1: 
-      this.msg = "[戳一戳]";
+      this.msg = ajjy.a(2131640829);
       return;
     case 2: 
-      this.msg = "[比心]";
+      this.msg = ajjy.a(2131640808);
       return;
     case 3: 
-      this.msg = "[点赞]";
+      this.msg = ajjy.a(2131640809);
       return;
     case 4: 
-      this.msg = "[心碎]";
+      this.msg = ajjy.a(2131640796);
       return;
     case 5: 
       this.msg = "[666]";
       return;
     case 6: 
-      this.msg = "[放大招]";
+      this.msg = ajjy.a(2131640811);
       return;
     }
     this.msg = ("[" + this.name + "]");
+  }
+  
+  public boolean isSupportReply()
+  {
+    return true;
   }
   
   public boolean needVipBubble()
@@ -88,12 +102,12 @@ public class MessageForPoke
     return false;
   }
   
-  protected void postRead()
+  public void postRead()
   {
     parse();
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     try
     {
@@ -106,6 +120,7 @@ public class MessageForPoke
       localJSONObject.put("name", this.name);
       localJSONObject.put("minVersion", this.minVersion);
       localJSONObject.put("strength", this.strength);
+      localJSONObject.put("flag", this.flag);
       this.msgData = localJSONObject.toString().getBytes();
       return;
     }

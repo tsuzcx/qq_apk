@@ -1,20 +1,24 @@
-import com.tencent.mobileqq.activity.phone.BindVerifyActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.widget.TextView;
+import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
 
-class wzh
-  implements Runnable
+public class wzh
+  extends AnimatorListenerAdapter
 {
-  wzh(wzg paramwzg) {}
+  public wzh(SingleLyricView paramSingleLyricView) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a.a.a.g();
-    this.a.a.a.f = true;
+    super.onAnimationCancel(paramAnimator);
+    if (SingleLyricView.a(this.a) != null) {
+      SingleLyricView.a(this.a).setAlpha(1.0F);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wzh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,27 @@
-import com.tencent.mobileqq.armap.ipc.ArMapIPCProxy;
-import com.tencent.mobileqq.armap.ipc.IPCConstants;
+import com.tencent.mobileqq.activity.QQSettingMe;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
-import eipc.EIPCResult;
+import mqq.app.QQPermissionCallback;
 
-public class abna
-  implements EIPCOnGetConnectionListener
+class abna
+  implements QQPermissionCallback
 {
-  public abna(ArMapIPCProxy paramArMapIPCProxy) {}
+  abna(abmz paramabmz) {}
   
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramEIPCConnection = paramEIPCConnection.procName;
-    if (paramEIPCConnection.equals(IPCConstants.a))
-    {
-      this.a.a = true;
-      this.a.a(IPCConstants.c, EIPCResult.createResult(0, null));
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ArMapIPCProxy", 2, "onConnectBind " + paramEIPCConnection);
-    }
+    QLog.d("QQSettingRedesign", 1, "User requestPermissions denied...");
+    babr.a(this.a.a.a, paramArrayOfString, paramArrayOfInt);
   }
   
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    paramEIPCConnection = paramEIPCConnection.procName;
-    if (paramEIPCConnection.equals(IPCConstants.a))
-    {
-      this.a.a = false;
-      this.a.a(IPCConstants.c, EIPCResult.createResult(-102, null));
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ArMapIPCProxy", 2, "onConnectUnbind " + paramEIPCConnection);
-    }
+    QLog.d("QQSettingRedesign", 1, "User requestPermissions grant...");
+    this.a.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abna
  * JD-Core Version:    0.7.0.1
  */

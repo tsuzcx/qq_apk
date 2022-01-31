@@ -1,26 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-
-public final class suq
-  implements DialogInterface.OnClickListener
+class suq
+  implements sub
 {
-  public suq(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, ProfileCardInfo paramProfileCardInfo) {}
+  private long jdField_a_of_type_Long;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  suq(suo paramsuo) {}
+  
+  public void a()
   {
-    FriendProfileCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  public void b()
+  {
+    if (this.jdField_a_of_type_Long != 0L) {
+      urp.b("msgtab", "preload_time", (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long), 0, new String[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     suq
  * JD-Core Version:    0.7.0.1
  */

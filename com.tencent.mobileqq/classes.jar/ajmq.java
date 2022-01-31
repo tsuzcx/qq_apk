@@ -1,43 +1,44 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager;
-import com.tencent.mobileqq.troop.data.TroopFileInfo;
-import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil;
-import com.tencent.mobileqq.troop.filemanager.TroopFileTransferUtil.Log;
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadFeedsSender;
+import com.tencent.qphone.base.util.QLog;
 
 class ajmq
-  implements Runnable
+  extends batl
 {
-  ajmq(ajmp paramajmp, String paramString, TroopFileInfo paramTroopFileInfo) {}
+  ajmq(ajmp paramajmp) {}
   
-  public void run()
+  public void onDone(batm parambatm)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangString;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.b)) {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.b;
+    super.onDone(parambatm);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.roammsg.MessageRoamManager", 2, "onDone status: " + parambatm.f + ", url: " + parambatm.a);
     }
-    QQAppInterface localQQAppInterface = TroopFileTransferUtil.a();
-    if (localQQAppInterface == null)
+    int i = parambatm.a.indexOf("?");
+    String str;
+    if (i == -1)
     {
-      TroopFileTransferUtil.Log.a("TroopFileUploadFeedsSender", TroopFileTransferUtil.Log.a, "[" + this.jdField_a_of_type_Ajmp.a.jdField_a_of_type_JavaLangString + "] addToSendCache app=null");
-      return;
+      str = parambatm.a;
+      if (!ajmo.a.contains(str)) {
+        break label105;
+      }
+      this.a.a(parambatm);
     }
-    localObject = (MessageForTroopFile)localQQAppInterface.a().a(String.valueOf(this.jdField_a_of_type_Ajmp.a.jdField_a_of_type_Long), 1, (String)localObject);
-    if (localObject != null)
+    label105:
+    do
     {
-      ((AIOMessageSpreadManager)localQQAppInterface.getManager(271)).a((MessageRecord)localObject);
       return;
-    }
-    TroopFileTransferUtil.Log.a("TroopFileUploadFeedsSender", TroopFileTransferUtil.Log.a, "[" + this.jdField_a_of_type_Ajmp.a.jdField_a_of_type_JavaLangString + "] addToSendCache can't find troopFile Msg, troop[" + this.jdField_a_of_type_Ajmp.a.jdField_a_of_type_Long + "], id:" + this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.b);
+      str = parambatm.a.substring(0, i - 1);
+      break;
+      if ("http://imgcache.qq.com/club/mobile/messageroam/xiaoximanyou2.json".equals(str))
+      {
+        this.a.b(parambatm);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("Q.roammsg.MessageRoamManager", 2, "onDone unkonw url: " + parambatm.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajmq
  * JD-Core Version:    0.7.0.1
  */

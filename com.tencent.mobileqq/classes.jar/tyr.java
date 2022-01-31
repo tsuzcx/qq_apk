@@ -1,42 +1,37 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class tyr
-  implements View.OnClickListener
+  extends QQUIEventReceiver<QQStoryShareGroupProfileActivity, swq>
 {
-  public tyr(SubAccountBindActivity paramSubAccountBindActivity) {}
-  
-  public void onClick(View paramView)
+  public tyr(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.subaccount.SubAccountBindActivity", 2, "onAddAccountClick.onClick:add account");
-    }
-    paramView = (SubAccountManager)this.a.app.getManager(60);
-    if (paramView != null) {}
-    for (int i = paramView.a();; i = 0)
-    {
-      if (i < 2)
-      {
-        paramView = new Intent(this.a, SubLoginActivity.class);
-        paramView.putExtra("fromWhere", this.a.b);
-        this.a.startActivity(paramView);
-        return;
-      }
-      SubAccountControll.a(this.a.app, this.a);
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull swq paramswq)
+  {
+    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramswq.jdField_a_of_type_JavaLangString)) {}
+    while ((paramswq.b) && (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Boolean)) {
       return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "onGetShareGroupVideos: 是否来自缓存=" + paramswq.b + " groupId=" + paramQQStoryShareGroupProfileActivity.b + ", event=" + paramswq.toString());
+    }
+    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramswq);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return swq.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tyr
  * JD-Core Version:    0.7.0.1
  */

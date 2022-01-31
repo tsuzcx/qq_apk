@@ -1,20 +1,19 @@
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.text.Editable;
+import com.tencent.mobileqq.activity.qwallet.fragment.BaseHbUIFragment;
 
-class agmw
-  implements Runnable
+public class agmw
+  extends agnn
 {
-  agmw(agmv paramagmv) {}
+  public agmw(BaseHbUIFragment paramBaseHbUIFragment) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    ScanTorchActivity.a(this.a.a);
-    ScanTorchActivity.c(this.a.a);
-    ScanTorchActivity.b(this.a.a);
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agmw
  * JD-Core Version:    0.7.0.1
  */

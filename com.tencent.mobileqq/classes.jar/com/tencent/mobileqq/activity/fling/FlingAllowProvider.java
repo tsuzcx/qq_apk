@@ -5,7 +5,7 @@ import java.util.List;
 
 public class FlingAllowProvider
 {
-  private static List a = new ArrayList();
+  private static List<String> a = new ArrayList();
   
   public static boolean contain(String paramString)
   {

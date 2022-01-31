@@ -1,40 +1,32 @@
-import com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack;
-import com.tencent.mobileqq.pic.PicInfoInterface.ErrInfo;
-import com.tencent.mobileqq.pic.PicResult;
-import com.tencent.mobileqq.pic.UiCallBack.DownAdapter;
-import java.lang.ref.WeakReference;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.UpdateTroop;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ajyj
-  extends UiCallBack.DownAdapter
+public class ajyj
+  extends ajuc
 {
-  public ajyj(WeakReference paramWeakReference, long paramLong1, int paramInt1, int paramInt2, long paramLong2, String paramString) {}
+  private ajyj(UpdateTroop paramUpdateTroop) {}
   
-  public void a(int paramInt, PicResult paramPicResult)
+  protected void a(boolean paramBoolean)
   {
-    IAIOImageProviderCallBack localIAIOImageProviderCallBack = (IAIOImageProviderCallBack)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localIAIOImageProviderCallBack != null)
-    {
-      if (paramPicResult.jdField_a_of_type_Int == 0) {
-        localIAIOImageProviderCallBack.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1, this.jdField_a_of_type_JavaLangString, paramPicResult.jdField_a_of_type_Boolean);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "updateTroopList:" + paramBoolean);
     }
-    else {
+    if (!paramBoolean)
+    {
+      this.a.a(6);
       return;
     }
-    localIAIOImageProviderCallBack.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 2, "step:" + paramPicResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.jdField_a_of_type_JavaLangString + ", desc:" + paramPicResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.b, paramPicResult.jdField_a_of_type_Boolean);
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    IAIOImageProviderCallBack localIAIOImageProviderCallBack = (IAIOImageProviderCallBack)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localIAIOImageProviderCallBack != null) {
-      localIAIOImageProviderCallBack.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_Long, paramBoolean);
-    }
+    this.a.a.a.edit().putBoolean("isTrooplistok", true).commit();
+    this.a.a.notifyUI(3, true, Integer.valueOf(2));
+    this.a.a(7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajyj
  * JD-Core Version:    0.7.0.1
  */

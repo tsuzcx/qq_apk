@@ -2,6 +2,7 @@ package com.tencent.mobileqq.data;
 
 public class NewFriendSubTitle
 {
+  public boolean showEntrance;
   public String title;
 }
 

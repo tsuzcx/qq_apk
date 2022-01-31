@@ -1,22 +1,17 @@
-import com.tencent.biz.anonymous.AnonymousChatHelper;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.forward.ForwardPluginShareStructMsgOption;
+import android.view.View;
+import android.widget.TextView;
 
 public class adte
-  implements Runnable
+  extends acju
 {
-  public adte(ForwardPluginShareStructMsgOption paramForwardPluginShareStructMsgOption, SessionInfo paramSessionInfo, String paramString) {}
-  
-  public void run()
-  {
-    AnonymousChatHelper.a().a = true;
-    ChatActivityFacade.b(this.jdField_a_of_type_ComTencentMobileqqForwardForwardPluginShareStructMsgOption.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqForwardForwardPluginShareStructMsgOption.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
-  }
+  public TextView a;
+  public TextView b;
+  public View c;
+  public View d;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adte
  * JD-Core Version:    0.7.0.1
  */

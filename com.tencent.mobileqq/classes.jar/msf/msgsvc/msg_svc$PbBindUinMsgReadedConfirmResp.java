@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class msg_svc$PbBindUinMsgReadedConfirmResp
-  extends MessageMicro
+  extends MessageMicro<PbBindUinMsgReadedConfirmResp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field bind_uin = PBField.initUInt64(0L);

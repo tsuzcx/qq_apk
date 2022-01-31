@@ -28,7 +28,7 @@ public abstract class QQUIEventReceiver<T extends IEventReceiver, EVENT extends 
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tribe.async.dispatch.QQUIEventReceiver
  * JD-Core Version:    0.7.0.1
  */

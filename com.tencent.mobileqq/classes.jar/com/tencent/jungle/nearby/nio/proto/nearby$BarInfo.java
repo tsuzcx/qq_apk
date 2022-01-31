@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class nearby$BarInfo
-  extends MessageMicro
+  extends MessageMicro<BarInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_bar_name = PBField.initBytes(ByteStringMicro.EMPTY);

@@ -1,127 +1,231 @@
-import android.os.Message;
 import android.text.TextUtils;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SecSvcHandler;
-import com.tencent.mobileqq.equipmentlock.EquipmentLockImpl;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.util.ProteusReportUtil.1;
+import com.tencent.biz.pubaccount.util.ProteusReportUtil.2;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
-import mqq.manager.AccountManager;
-import mqq.manager.WtloginManager;
-import mqq.observer.WtloginObserver;
-import mqq.os.MqqHandler;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public class rsk
-  extends WtloginObserver
 {
-  public rsk(AuthDevActivity paramAuthDevActivity) {}
-  
-  public void OnCheckDevLockSms(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
+  public static List<String> a(TemplateBean paramTemplateBean)
   {
-    if (this.a.isFinishing()) {}
-    do
+    if (paramTemplateBean == null) {
+      return null;
+    }
+    Object localObject = paramTemplateBean.getDataAttribute(null).get("extra_expose");
+    if (localObject != null)
     {
-      return;
-      AuthDevActivity.a(this.a, true);
-      AuthDevActivity.c(this.a);
-      if (paramInt != 0) {
-        break;
+      paramTemplateBean = new ArrayList();
+      try
+      {
+        localObject = (JSONArray)localObject;
+        if (((JSONArray)localObject).length() > 0)
+        {
+          int i = 0;
+          while (i < ((JSONArray)localObject).length())
+          {
+            paramTemplateBean.add(((JSONArray)localObject).getJSONObject(i).getString("view_id"));
+            i += 1;
+          }
+          return paramTemplateBean;
+        }
       }
-      paramWUserSigInfo = (AccountManager)this.a.app.getManager(0);
-      if (paramWUserSigInfo != null) {
-        paramWUserSigInfo.refreshDA2(this.a.app.getCurrentAccountUin(), null);
-      }
-      AuthDevActivity.b(this.a).setOnCheckedChangeListener(null);
-      AuthDevActivity.b(this.a).setChecked(true);
-      AuthDevActivity.b(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
-      paramWUserSigInfo = (SecSvcHandler)this.a.app.a(34);
-      if (paramWUserSigInfo != null) {
-        paramWUserSigInfo.b();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevActivity", 2, "OnCheckDevLockSms.success");
-      }
-      AuthDevActivity.b(this.a, true);
-      EquipmentLockImpl.a().a(this.a.app, this.a, this.a.app.getCurrentAccountUin(), true);
-      AuthDevActivity.c(this.a, true);
-      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131436578), 0).b(this.a.getTitleBarHeight());
-      AuthDevActivity.d(this.a);
-      paramWUserSigInfo = this.a.app.getHandler(LoginInfoActivity.class);
-    } while (paramWUserSigInfo == null);
-    paramWUserSigInfo.obtainMessage(20140331, 1, 0).sendToTarget();
-    return;
-    if (QLog.isColorLevel())
-    {
-      QLog.d("Q.devlock.AuthDevActivity", 2, "OnCheckDevLockSms.fail ret=" + paramInt);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.AuthDevActivity", 2, "OnCheckDevLockSms.fail errMsg=" + paramErrMsg.getMessage());
+      catch (Exception paramTemplateBean)
+      {
+        QLog.d("ProteusReportUtil", 1, "getReportMultViewId", paramTemplateBean);
       }
     }
-    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
-    {
-      QQToast.a(this.a.getApplicationContext(), 1, paramErrMsg.getMessage(), 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131436609), 0).b(this.a.getTitleBarHeight());
+    return null;
   }
   
-  public void OnCloseDevLock(WUserSigInfo paramWUserSigInfo, int paramInt, ErrMsg paramErrMsg)
+  public static void a(int paramInt, String paramString)
   {
-    if (this.a.isFinishing()) {
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = new oidb_cmd0x80a.AttributeList();
+    ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(1);
+    ((oidb_cmd0x80a.AttributeList)localObject).att_name.set("action");
+    ((oidb_cmd0x80a.AttributeList)localObject).att_value.set(paramInt + "");
+    localArrayList.add(localObject);
+    localObject = new oidb_cmd0x80a.AttributeList();
+    ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(2);
+    ((oidb_cmd0x80a.AttributeList)localObject).att_name.set("bid");
+    ((oidb_cmd0x80a.AttributeList)localObject).att_value.set(paramString + "");
+    localArrayList.add(localObject);
+    localObject = mof.a(paramString) + "";
+    if (paramInt != 1)
+    {
+      oidb_cmd0x80a.AttributeList localAttributeList = new oidb_cmd0x80a.AttributeList();
+      localAttributeList.att_id.set(3);
+      localAttributeList.att_name.set("version");
+      localAttributeList.att_value.set((String)localObject);
+      localArrayList.add(localAttributeList);
+    }
+    paramString = paramString + (String)localObject;
+    if (3 == paramInt)
+    {
+      if (((Boolean)bgmq.a(paramString, Boolean.valueOf(false))).booleanValue()) {
+        return;
+      }
+      bgmq.a(paramString, Boolean.valueOf(true));
+    }
+    rtr.a(200, localArrayList);
+  }
+  
+  public static void a(ArticleInfo paramArticleInfo, String paramString1, String paramString2, int paramInt, Map<String, Object> paramMap)
+  {
+    if ((paramArticleInfo == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
       return;
     }
-    AuthDevActivity.a(this.a, true);
-    AuthDevActivity.c(this.a);
-    if (paramInt == 0)
+    Object localObject = obz.c(paramArticleInfo);
+    try
     {
-      paramWUserSigInfo = (WtloginManager)this.a.app.getManager(1);
-      if (paramWUserSigInfo != null) {
-        paramWUserSigInfo.RefreshMemorySig();
+      localObject = obz.a(paramArticleInfo.mAlgorithmID, obz.a(paramArticleInfo), paramInt, badq.h(null), (String)localObject, paramArticleInfo.innerUniqueID, obz.e(paramArticleInfo), 0, obz.d(), paramArticleInfo);
+      if ((paramMap != null) && (paramMap.entrySet() != null))
+      {
+        paramMap = paramMap.entrySet().iterator();
+        while ((paramMap != null) && (paramMap.hasNext()))
+        {
+          Map.Entry localEntry = (Map.Entry)paramMap.next();
+          ((JSONObject)localObject).put((String)localEntry.getKey(), localEntry.getValue().toString());
+          continue;
+          ndn.a(null, obz.c(paramArticleInfo), paramString1, paramString2, 0, 0, qoe.a(paramArticleInfo.mFeedId), String.valueOf(paramArticleInfo.mArticleID), Integer.toString(paramArticleInfo.mStrategyId), paramMap, false);
+        }
       }
-      AuthDevActivity.b(this.a).setOnCheckedChangeListener(null);
-      AuthDevActivity.b(this.a).setChecked(false);
-      AuthDevActivity.b(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
-      AuthDevActivity.a(this.a).setVisibility(8);
-      AuthDevActivity.b(this.a).setVisibility(8);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevActivity", 2, "OnCloseDevLock.success");
+    }
+    catch (Exception paramMap)
+    {
+      aciy.a("ProteusReportUtil", "reportClickEvent", new IllegalArgumentException(paramMap));
+      paramMap = null;
+    }
+    for (;;)
+    {
+      rvj.a(paramArticleInfo, paramInt);
+      return;
+      paramMap = ((JSONObject)localObject).toString();
+    }
+  }
+  
+  public static void a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    if ((paramBaseArticleInfo == null) || (paramBaseArticleInfo.mProteusTemplateBean == null) || (paramBaseArticleInfo.mProteusTemplateBean.getData() == null)) {
+      QLog.d("ProteusReportUtil", 1, "ExposeReport UG is null");
+    }
+    do
+    {
+      do
+      {
+        return;
+        paramBaseArticleInfo = paramBaseArticleInfo.mProteusTemplateBean;
+      } while (paramBaseArticleInfo == null);
+      paramBaseArticleInfo = paramBaseArticleInfo.getDataAttribute(null).get("ug_expose_report_url");
+    } while (!(paramBaseArticleInfo instanceof JSONArray));
+    a((JSONArray)paramBaseArticleInfo);
+  }
+  
+  public static void a(BaseArticleInfo paramBaseArticleInfo, int paramInt)
+  {
+    paramBaseArticleInfo = pol.a(paramBaseArticleInfo);
+    if (paramBaseArticleInfo == null) {}
+    for (;;)
+    {
+      return;
+      paramBaseArticleInfo = paramBaseArticleInfo.iterator();
+      while (paramBaseArticleInfo.hasNext())
+      {
+        String str = (String)paramBaseArticleInfo.next();
+        str = str + "&acttype=" + paramInt;
+        QLog.d("ProteusReportUtil", 1, "UG report url : " + str);
+        ThreadManager.executeOnNetWorkThread(new ProteusReportUtil.2(str));
       }
-      AuthDevActivity.b(this.a, false);
-      AuthDevActivity.a(this.a).setVisibility(8);
-      EquipmentLockImpl.a().a(this.a.app, this.a, this.a.app.getCurrentAccountUin(), false);
-      QQToast.a(this.a.getApplicationContext(), 2, this.a.getString(2131436607), 0).b(this.a.getTitleBarHeight());
-      paramWUserSigInfo = this.a.app.getHandler(LoginInfoActivity.class);
-      if (paramWUserSigInfo != null) {
-        paramWUserSigInfo.obtainMessage(20140331, 0, 0).sendToTarget();
+    }
+  }
+  
+  public static void a(String paramString1, String paramString2, String paramString3)
+  {
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("bid", paramString1);
+    localHashMap.put("business_name", paramString2);
+    localHashMap.put("style_id", paramString3);
+    localHashMap.put("uin", obz.a());
+    awrn.a(BaseApplicationImpl.getApplication()).a(null, "actKandianProteusShowFail", false, 0L, 0L, localHashMap, null);
+  }
+  
+  public static void a(Map<String, Object> paramMap)
+  {
+    if (paramMap == null) {
+      QLog.d("ProteusReportUtil", 1, "handleUgClickReport UG is null");
+    }
+    for (;;)
+    {
+      return;
+      if (a()) {}
+      for (paramMap = paramMap.get("ug_click_schema_url"); (paramMap instanceof JSONArray); paramMap = paramMap.get("ug_click_default_url"))
+      {
+        a((JSONArray)paramMap);
+        return;
       }
-      AuthDevActivity.a(this.a, null);
-      AuthDevActivity.a(this.a, AuthDevActivity.a(this.a));
+    }
+  }
+  
+  private static void a(JSONArray paramJSONArray)
+  {
+    if (paramJSONArray == null)
+    {
+      QLog.d("ProteusReportUtil", 1, "handleHttpRequest jsarray is null");
       return;
     }
-    if (QLog.isColorLevel())
+    ThreadManager.executeOnNetWorkThread(new ProteusReportUtil.1(paramJSONArray));
+  }
+  
+  public static void a(JSONObject paramJSONObject, Map<String, Object> paramMap)
+  {
+    if ((paramMap != null) && (paramMap.entrySet() != null))
     {
-      QLog.d("Q.devlock.AuthDevActivity", 2, "OnCloseDevLock.fail ret=" + paramInt);
-      if (paramErrMsg != null) {
-        QLog.d("Q.devlock.AuthDevActivity", 2, "OnCloseDevLock.fail errMsg=" + paramErrMsg.getMessage());
+      paramMap = paramMap.entrySet().iterator();
+      for (;;)
+      {
+        if (paramMap != null) {
+          try
+          {
+            if (paramMap.hasNext())
+            {
+              Map.Entry localEntry = (Map.Entry)paramMap.next();
+              paramJSONObject.put((String)localEntry.getKey(), localEntry.getValue().toString());
+            }
+          }
+          catch (JSONException paramJSONObject)
+          {
+            QLog.d("ProteusReportUtil", 1, "", paramJSONObject);
+          }
+        }
       }
     }
-    if ((paramErrMsg != null) && (!TextUtils.isEmpty(paramErrMsg.getMessage())))
-    {
-      QQToast.a(this.a.getApplicationContext(), 1, paramErrMsg.getMessage(), 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    QQToast.a(this.a.getApplicationContext(), 1, this.a.getString(2131436608), 0).b(this.a.getTitleBarHeight());
+  }
+  
+  private static boolean a()
+  {
+    return bady.a(BaseApplicationImpl.getContext(), "com.tencent.weishi");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rsk
  * JD-Core Version:    0.7.0.1
  */

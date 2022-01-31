@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="@dimen/p3" android:layout_height="@dimen/p2"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.qzone.widget.AsyncImageView android:id="@id/im4" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_margin="5.0dip" />
+    <ImageView android:layout_width="15.0dip" android:layout_height="15.0dip" android:src="@drawable/bvi" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</RelativeLayout>

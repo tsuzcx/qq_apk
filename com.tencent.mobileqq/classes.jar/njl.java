@@ -1,18 +1,25 @@
-import android.database.DataSetObserver;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.emosm.Client;
 
 public class njl
-  extends DataSetObserver
+  implements MessageQueue.IdleHandler
 {
-  public njl(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
+  public njl(ReadInJoyArticleDetailActivity paramReadInJoyArticleDetailActivity) {}
   
-  public void onChanged()
+  public boolean queueIdle()
   {
-    if (this.a.a == 0) {
-      ThreadManager.getUIHandler().post(new njm(this));
+    if (!anfc.a().a())
+    {
+      anfc.a().a().doBindService(BaseApplicationImpl.getApplication());
+      anfc.a().a(new njm(this));
+      return false;
     }
+    Bundle localBundle = anah.a("ipc_kandian_hb_close_guid", "onPageStarted", 0, new Bundle());
+    anfc.a().a(localBundle);
+    return false;
   }
 }
 

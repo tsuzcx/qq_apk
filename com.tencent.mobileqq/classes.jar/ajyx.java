@@ -1,38 +1,32 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mapsdk.raster.model.GeoPoint;
-import com.tencent.mobileqq.troop.widget.AutoLocationMapView;
-import com.tencent.mobileqq.troop.widget.AutoLocationMapView.AutoLocationCallback;
-import com.tencent.mobileqq.util.BitmapManager;
-import com.tencent.tencentmap.mapsdk.map.MapController;
-import com.tencent.tencentmap.mapsdk.map.Overlay;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.hiddenchat.HiddenChatSettingFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajyx
-  extends Handler
+  extends ajfo
 {
-  public ajyx(AutoLocationMapView paramAutoLocationMapView) {}
+  public ajyx(HiddenChatSettingFragment paramHiddenChatSettingFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void onSetHiddenSession(boolean paramBoolean, int paramInt)
   {
-    GeoPoint localGeoPoint = (GeoPoint)paramMessage.obj;
-    this.a.clearAllOverlays();
-    if (paramMessage.arg1 == 0)
-    {
-      Object localObject = this.a.getController();
-      ((MapController)localObject).setCenter(localGeoPoint);
-      ((MapController)localObject).setZoom(this.a.getMaxZoomLevel());
-      localObject = new ajyy(BitmapManager.a(this.a.getContext().getResources(), 2130840555), localGeoPoint);
-      this.a.addOverlay((Overlay)localObject);
+    super.onSetHiddenSession(paramBoolean, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("HiddenChatSetting", 2, "onSetHiddenSession " + paramBoolean + " type=" + paramInt);
     }
-    if (this.a.a != null) {
-      this.a.a.a(paramMessage.arg1, localGeoPoint);
+    if (paramInt == 42318) {
+      if (!paramBoolean) {
+        HiddenChatSettingFragment.a(this.a, HiddenChatSettingFragment.a(this.a), ajyy.a(HiddenChatSettingFragment.a(this.a).c(), this.a.getActivity()));
+      }
     }
+    while ((paramInt != 42319) || (paramBoolean)) {
+      return;
+    }
+    HiddenChatSettingFragment.a(this.a, HiddenChatSettingFragment.b(this.a), ajyy.b(HiddenChatSettingFragment.a(this.a).c(), this.a.getActivity()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajyx
  * JD-Core Version:    0.7.0.1
  */

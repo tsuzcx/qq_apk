@@ -1,29 +1,38 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.EPRecommendTask;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.SkinRedPacketStrategy.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.qphone.base.util.QLog;
 
 public class ackw
-  extends VasQuickUpdateManager.CallBacker
+  implements agpe
 {
-  public ackw(EPRecommendTask paramEPRecommendTask) {}
+  public ackw(CustomizeStrategyFactory.SkinRedPacketStrategy.1 param1) {}
   
-  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    paramString2 = (QQAppInterface)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (paramString2 == null) {}
-    while (!"emoji_app_vip_emoji_aio_android_config.json".equals(paramString1)) {
+    paramPathResult = paramPathResult.filePath;
+    if (paramInt == 0) {}
+    try
+    {
+      this.a.a.resPath = paramPathResult;
+      if (QLog.isColorLevel()) {
+        QLog.d("CustomizeStrategyFactory", 2, "TYPE_POP_ANIM path=" + paramPathResult);
+      }
+      CustomizeStrategyFactory.a().a(this.a.a);
       return;
     }
-    ((VasQuickUpdateManager)paramString2.getManager(183)).b(this.a.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
-    paramString1 = VasQuickUpdateManager.a(paramString2, "emoji_app_vip_emoji_aio_android_config.json", false, null);
-    this.a.a(paramString1);
+    catch (Throwable paramPathResult)
+    {
+      for (;;)
+      {
+        paramPathResult.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ackw
  * JD-Core Version:    0.7.0.1
  */

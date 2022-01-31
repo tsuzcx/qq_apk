@@ -1,21 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 
 public class syd
-  implements DialogInterface.OnClickListener
+  extends sfo
 {
-  public syd(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public final String a;
+  public final String b;
+  public final String c;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public syd(ErrorMessage paramErrorMessage, String paramString1, String paramString2, String paramString3)
   {
-    paramDialogInterface.dismiss();
-    this.a.a("0X80081E6", 1);
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
+    this.b = paramString2;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.c = paramString3;
+  }
+  
+  public String toString()
+  {
+    return "ReportEvent{vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", uin='" + this.b + '\'' + ", impeachType=" + this.c + "} " + super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     syd
  * JD-Core Version:    0.7.0.1
  */

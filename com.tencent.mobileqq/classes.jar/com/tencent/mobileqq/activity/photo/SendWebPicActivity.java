@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.activity.photo;
 
+import ageg;
+import ajjy;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,24 +9,22 @@ import android.os.Handler.Callback;
 import android.os.Message;
 import android.text.TextUtils;
 import android.widget.TextView;
+import atqs;
+import axom;
+import axvo;
+import axvs;
+import axvt;
+import badq;
+import baip;
+import bbmy;
+import beez;
 import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pic.CompressInfo;
-import com.tencent.mobileqq.pic.compress.CompressOperator;
-import com.tencent.mobileqq.transfile.BDHCommonUploadProcessor;
-import com.tencent.mobileqq.transfile.TransFileController;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MqqWeakReferenceHandler;
 import java.io.File;
-import xeo;
-import xep;
 
 public class SendWebPicActivity
   extends BaseActivity
@@ -33,8 +33,8 @@ public class SendWebPicActivity
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
-  TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new xep(this);
-  private MqqWeakReferenceHandler jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler;
+  axvs jdField_a_of_type_Axvs = new ageg(this);
+  private beez jdField_a_of_type_Beez;
   private String jdField_a_of_type_JavaLangString;
   private boolean jdField_a_of_type_Boolean;
   private long jdField_b_of_type_Long;
@@ -69,7 +69,7 @@ public class SendWebPicActivity
       setResult(-1);
       finish();
       return;
-      QQToast.a(this, "对不起，图片上传出错...", 0).a();
+      bbmy.a(this, ajjy.a(2131648041), 0).a();
     }
   }
   
@@ -90,7 +90,7 @@ public class SendWebPicActivity
   
   public void a(String paramString)
   {
-    ThreadManager.executeOnSubThread(new xeo(this, paramString));
+    ThreadManager.executeOnSubThread(new SendWebPicActivity.1(this, paramString));
   }
   
   public void b(String paramString)
@@ -100,8 +100,8 @@ public class SendWebPicActivity
     localIntent.putExtra("param_type", 9003);
     localIntent.putExtra("param_only_friends", true);
     localIntent.putExtra("param_donot_need_contacts", true);
-    localIntent.putExtra("param_title", getString(2131438273));
-    localIntent.putExtra("param_done_button_wording", getString(2131432428));
+    localIntent.putExtra("param_title", getString(2131624953));
+    localIntent.putExtra("param_done_button_wording", getString(2131625463));
     localIntent.putExtra("param_exit_animation", 1);
     localIntent.putExtra("param_entrance", 32);
     localIntent.putExtra("param_blesstype", 3);
@@ -118,7 +118,7 @@ public class SendWebPicActivity
     }
     if (TextUtils.isEmpty(paramString))
     {
-      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(1003);
+      this.jdField_a_of_type_Beez.sendEmptyMessage(1003);
       if (QLog.isColorLevel()) {
         QLog.d("SendWebPicActivity", 2, "startUploadPic empty path!");
       }
@@ -130,14 +130,14 @@ public class SendWebPicActivity
       if (((File)localObject).exists()) {
         break;
       }
-      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(1003);
+      this.jdField_a_of_type_Beez.sendEmptyMessage(1003);
     } while (!QLog.isColorLevel());
     QLog.d("SendWebPicActivity", 2, "startUploadPic file not exist, path=" + paramString);
     return;
     this.jdField_a_of_type_Long = ((File)localObject).length();
-    if (!NetworkUtil.g(this))
+    if (!badq.g(this))
     {
-      this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(1004);
+      this.jdField_a_of_type_Beez.sendEmptyMessage(1004);
       return;
     }
     this.jdField_a_of_type_JavaLangString = "";
@@ -145,7 +145,7 @@ public class SendWebPicActivity
     this.d = "";
     CompressInfo localCompressInfo = new CompressInfo(paramString, 0);
     localCompressInfo.f = 0;
-    if (!CompressOperator.a(localCompressInfo)) {
+    if (!atqs.a(localCompressInfo)) {
       QLog.d("SendWebPicActivity", 1, "CompressOperator failed");
     }
     if (TextUtils.isEmpty(localCompressInfo.jdField_e_of_type_JavaLangString)) {}
@@ -157,17 +157,17 @@ public class SendWebPicActivity
         QLog.d("SendWebPicActivity", 2, String.format("startUploadPic outWidth[%s], outHeight[%s], sizeBefore[%s], sizeAfter[%s], compressPath=[%s], originPath[%s]", new Object[] { Integer.valueOf(localCompressInfo.d), Integer.valueOf(localCompressInfo.jdField_e_of_type_Int), Long.valueOf(this.jdField_a_of_type_Long), Long.valueOf(this.jdField_b_of_type_Long), localCompressInfo.jdField_e_of_type_JavaLangString, paramString }));
       }
       paramString = this.app.a();
-      this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler.a(new Class[] { BDHCommonUploadProcessor.class });
-      paramString.a(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
-      localObject = new TransferRequest();
-      ((TransferRequest)localObject).jdField_a_of_type_Boolean = true;
-      ((TransferRequest)localObject).jdField_c_of_type_Int = 51;
-      ((TransferRequest)localObject).i = this.jdField_a_of_type_JavaLangString;
-      ((TransferRequest)localObject).jdField_a_of_type_Long = ((Math.random() * 1000000.0D));
-      ((TransferRequest)localObject).jdField_c_of_type_JavaLangString = "0";
-      ((TransferRequest)localObject).b = 24;
-      ((TransferRequest)localObject).jdField_a_of_type_JavaLangString = "h5UploadPicHit";
-      paramString.a((TransferRequest)localObject);
+      this.jdField_a_of_type_Axvs.addFilter(new Class[] { axom.class });
+      paramString.a(this.jdField_a_of_type_Axvs);
+      localObject = new axvt();
+      ((axvt)localObject).jdField_a_of_type_Boolean = true;
+      ((axvt)localObject).jdField_c_of_type_Int = 51;
+      ((axvt)localObject).i = this.jdField_a_of_type_JavaLangString;
+      ((axvt)localObject).jdField_a_of_type_Long = ((Math.random() * 1000000.0D));
+      ((axvt)localObject).jdField_c_of_type_JavaLangString = "0";
+      ((axvt)localObject).b = 24;
+      ((axvt)localObject).jdField_a_of_type_JavaLangString = "h5UploadPicHit";
+      paramString.a((axvt)localObject);
       return;
     }
   }
@@ -185,11 +185,11 @@ public class SendWebPicActivity
           continue;
         }
         a();
-        localTextView = (TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363418);
-        if (!StringUtil.a(paramString)) {
+        localTextView = (TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131305861);
+        if (!baip.a(paramString)) {
           continue;
         }
-        localTextView.setText(2131434330);
+        localTextView.setText(2131651395);
       }
       catch (Throwable paramString)
       {
@@ -207,22 +207,22 @@ public class SendWebPicActivity
       }
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
       return;
-      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this, 2131624516);
+      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this, 2131690181);
       this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(false);
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
-      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969178);
+      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2131493818);
     }
   }
   
-  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler = new MqqWeakReferenceHandler(this);
+    this.jdField_a_of_type_Beez = new beez(this);
     this.jdField_e_of_type_JavaLangString = getIntent().getStringExtra("edit_video_call_back");
     paramBundle = getIntent().getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
     this.jdField_a_of_type_Int = getIntent().getIntExtra("shareto_web_mode", -1);
@@ -238,10 +238,10 @@ public class SendWebPicActivity
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
     super.doOnDestroy();
-    this.app.a().b(this.jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler);
+    this.app.a().b(this.jdField_a_of_type_Axvs);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -255,7 +255,7 @@ public class SendWebPicActivity
       return false;
     case 1003: 
       a();
-      QQToast.a(this, 1, 2131435319, 0).a();
+      bbmy.a(this, 1, 2131653595, 0).a();
       finish();
       return true;
     case 1001: 
@@ -263,11 +263,11 @@ public class SendWebPicActivity
       return true;
     case 1002: 
       a();
-      d("图片上传中...");
+      d(ajjy.a(2131648042));
       return true;
     }
     a();
-    QQToast.a(this, 1, 2131435619, 0).a();
+    bbmy.a(this, 1, 2131629228, 0).a();
     finish();
     return true;
   }

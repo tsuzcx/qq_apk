@@ -1,36 +1,32 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.util.Log;
+import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
 
-class rxr
-  implements Runnable
+final class rxr
+  implements DialogInterface.OnClickListener
 {
-  rxr(rxq paramrxq, int paramInt) {}
+  rxr(Activity paramActivity, WSDownloadParams paramWSDownloadParams) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Int > 2)
+    if ((paramDialogInterface instanceof rxn)) {
+      rxn.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams);
+    }
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.aio.BaseChatPie", 1, new Object[] { "ForwardWXforTroop failed! result: ", Integer.valueOf(this.jdField_a_of_type_Int), ", type: ", Integer.valueOf(this.jdField_a_of_type_Rxq.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) });
-      }
-      QQToast.a(this.jdField_a_of_type_Rxq.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Rxq.a.jdField_a_of_type_AndroidContentContext.getString(2131438970), 0).b(this.jdField_a_of_type_Rxq.a.a());
-    }
-    if ((this.jdField_a_of_type_Int == 0) && (BaseChatItemLayout.a)) {
-      this.jdField_a_of_type_Rxq.a.a(false, null, false);
-    }
-    if (this.jdField_a_of_type_Rxq.a.c != null) {
-      this.jdField_a_of_type_Rxq.a.c.dismiss();
+      paramDialogInterface.dismiss();
+      rxn.a(125, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams);
+      rzw.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newDownloadWSDownloadParams.mScene, false, true);
+      return;
+      Log.e("weishi-808", "dialog type is error");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rxr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,15 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-
-public class rva
-  implements Runnable
+class rva
 {
-  public rva(BaseChatPie paramBaseChatPie) {}
-  
-  public void run()
-  {
-    if (this.a.a != null) {
-      this.a.a.a = false;
-    }
-  }
+  String a;
+  String b;
+  String c;
+  String d;
+  String e;
+  String f;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rva
  * JD-Core Version:    0.7.0.1
  */

@@ -3,26 +3,19 @@ package com.squareup.okhttp.internal;
 import com.squareup.okhttp.internal.io.FileSystem;
 import java.io.Closeable;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
-import java.util.NoSuchElementException;
 import java.util.concurrent.Executor;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import okio.Buffer;
 import okio.BufferedSink;
 import okio.Okio;
 import okio.Sink;
-import okio.Source;
-import okio.Timeout;
 
 public final class DiskLruCache
   implements Closeable
@@ -40,22 +33,7 @@ public final class DiskLruCache
   private static final String REMOVE = "REMOVE";
   static final String VERSION_1 = "1";
   private final int appVersion;
-  private final Runnable cleanupRunnable = new Runnable()
-  {
-    public void run()
-    {
-      int i = 0;
-      synchronized (DiskLruCache.this)
-      {
-        if (!DiskLruCache.this.initialized) {
-          i = 1;
-        }
-        if ((i | DiskLruCache.this.closed) != 0) {
-          return;
-        }
-      }
-    }
-  };
+  private final Runnable cleanupRunnable = new DiskLruCache.1(this);
   private boolean closed;
   private final File directory;
   private final Executor executor;
@@ -66,7 +44,7 @@ public final class DiskLruCache
   private final File journalFileBackup;
   private final File journalFileTmp;
   private BufferedSink journalWriter;
-  private final LinkedHashMap<String, Entry> lruEntries = new LinkedHashMap(0, 0.75F, true);
+  private final LinkedHashMap<String, DiskLruCache.Entry> lruEntries = new LinkedHashMap(0, 0.75F, true);
   private long maxSize;
   private long nextSequenceNumber = 0L;
   private int redundantOpCount;
@@ -80,27 +58,7 @@ public final class DiskLruCache
     {
       $assertionsDisabled = bool;
       LEGAL_KEY_PATTERN = Pattern.compile("[a-z0-9_-]{1,120}");
-      NULL_SINK = new Sink()
-      {
-        public void close()
-          throws IOException
-        {}
-        
-        public void flush()
-          throws IOException
-        {}
-        
-        public Timeout timeout()
-        {
-          return Timeout.NONE;
-        }
-        
-        public void write(Buffer paramAnonymousBuffer, long paramAnonymousLong)
-          throws IOException
-        {
-          paramAnonymousBuffer.skip(paramAnonymousLong);
-        }
-      };
+      NULL_SINK = new DiskLruCache.4();
       return;
     }
   }
@@ -129,52 +87,60 @@ public final class DiskLruCache
     finally {}
   }
   
-  private void completeEdit(Editor paramEditor, boolean paramBoolean)
-    throws IOException
+  private void completeEdit(DiskLruCache.Editor paramEditor, boolean paramBoolean)
   {
-    Entry localEntry;
+    int k = 0;
+    DiskLruCache.Entry localEntry;
     try
     {
-      localEntry = paramEditor.entry;
-      if (localEntry.currentEditor != paramEditor) {
+      localEntry = DiskLruCache.Editor.access$1700(paramEditor);
+      if (DiskLruCache.Entry.access$900(localEntry) != paramEditor) {
         throw new IllegalStateException();
       }
     }
     finally {}
-    if ((paramBoolean) && (!localEntry.readable))
+    int j = k;
+    if (paramBoolean)
     {
-      i = 0;
-      while (i < this.valueCount)
+      j = k;
+      if (!DiskLruCache.Entry.access$800(localEntry))
       {
-        if (paramEditor.written[i] == 0)
+        int i = 0;
+        for (;;)
         {
-          paramEditor.abort();
-          throw new IllegalStateException("Newly created entry didn't create value for index " + i);
+          j = k;
+          if (i >= this.valueCount) {
+            break;
+          }
+          if (DiskLruCache.Editor.access$1800(paramEditor)[i] == 0)
+          {
+            paramEditor.abort();
+            throw new IllegalStateException("Newly created entry didn't create value for index " + i);
+          }
+          if (!this.fileSystem.exists(DiskLruCache.Entry.access$1400(localEntry)[i]))
+          {
+            paramEditor.abort();
+            return;
+          }
+          i += 1;
         }
-        if (!this.fileSystem.exists(localEntry.dirtyFiles[i]))
-        {
-          paramEditor.abort();
-          return;
-        }
-        i += 1;
       }
     }
-    int i = 0;
     for (;;)
     {
       long l1;
-      if (i < this.valueCount)
+      if (j < this.valueCount)
       {
-        paramEditor = localEntry.dirtyFiles[i];
+        paramEditor = DiskLruCache.Entry.access$1400(localEntry)[j];
         if (paramBoolean)
         {
           if (this.fileSystem.exists(paramEditor))
           {
-            File localFile = localEntry.cleanFiles[i];
+            File localFile = DiskLruCache.Entry.access$1300(localEntry)[j];
             this.fileSystem.rename(paramEditor, localFile);
-            l1 = localEntry.lengths[i];
+            l1 = DiskLruCache.Entry.access$1200(localEntry)[j];
             long l2 = this.fileSystem.size(localFile);
-            localEntry.lengths[i] = l2;
+            DiskLruCache.Entry.access$1200(localEntry)[j] = l2;
             this.size = (this.size - l1 + l2);
           }
         }
@@ -185,19 +151,19 @@ public final class DiskLruCache
       else
       {
         this.redundantOpCount += 1;
-        Entry.access$902(localEntry, null);
-        if ((localEntry.readable | paramBoolean))
+        DiskLruCache.Entry.access$902(localEntry, null);
+        if ((DiskLruCache.Entry.access$800(localEntry) | paramBoolean))
         {
-          Entry.access$802(localEntry, true);
+          DiskLruCache.Entry.access$802(localEntry, true);
           this.journalWriter.writeUtf8("CLEAN").writeByte(32);
-          this.journalWriter.writeUtf8(localEntry.key);
+          this.journalWriter.writeUtf8(DiskLruCache.Entry.access$1500(localEntry));
           localEntry.writeLengths(this.journalWriter);
           this.journalWriter.writeByte(10);
           if (paramBoolean)
           {
             l1 = this.nextSequenceNumber;
             this.nextSequenceNumber = (1L + l1);
-            Entry.access$1602(localEntry, l1);
+            DiskLruCache.Entry.access$1602(localEntry, l1);
           }
         }
         for (;;)
@@ -208,13 +174,13 @@ public final class DiskLruCache
           }
           this.executor.execute(this.cleanupRunnable);
           break;
-          this.lruEntries.remove(localEntry.key);
+          this.lruEntries.remove(DiskLruCache.Entry.access$1500(localEntry));
           this.journalWriter.writeUtf8("REMOVE").writeByte(32);
-          this.journalWriter.writeUtf8(localEntry.key);
+          this.journalWriter.writeUtf8(DiskLruCache.Entry.access$1500(localEntry));
           this.journalWriter.writeByte(10);
         }
       }
-      i += 1;
+      j += 1;
     }
   }
   
@@ -229,129 +195,57 @@ public final class DiskLruCache
     return new DiskLruCache(paramFileSystem, paramFile, paramInt1, paramInt2, paramLong, new ThreadPoolExecutor(0, 1, 60L, TimeUnit.SECONDS, new LinkedBlockingQueue(), Util.threadFactory("OkHttp DiskLruCache", true)));
   }
   
-  /* Error */
-  private Editor edit(String paramString, long paramLong)
-    throws IOException
+  private DiskLruCache.Editor edit(String paramString, long paramLong)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore 8
-    //   3: aload_0
-    //   4: monitorenter
-    //   5: aload_0
-    //   6: invokevirtual 368	com/squareup/okhttp/internal/DiskLruCache:initialize	()V
-    //   9: aload_0
-    //   10: invokespecial 370	com/squareup/okhttp/internal/DiskLruCache:checkNotClosed	()V
-    //   13: aload_0
-    //   14: aload_1
-    //   15: invokespecial 373	com/squareup/okhttp/internal/DiskLruCache:validateKey	(Ljava/lang/String;)V
-    //   18: aload_0
-    //   19: getfield 123	com/squareup/okhttp/internal/DiskLruCache:lruEntries	Ljava/util/LinkedHashMap;
-    //   22: aload_1
-    //   23: invokevirtual 376	java/util/LinkedHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   26: checkcast 21	com/squareup/okhttp/internal/DiskLruCache$Entry
-    //   29: astore 7
-    //   31: lload_2
-    //   32: ldc2_w 30
-    //   35: lcmp
-    //   36: ifeq +35 -> 71
-    //   39: aload 8
-    //   41: astore 6
-    //   43: aload 7
-    //   45: ifnull +21 -> 66
-    //   48: aload 7
-    //   50: invokestatic 380	com/squareup/okhttp/internal/DiskLruCache$Entry:access$1600	(Lcom/squareup/okhttp/internal/DiskLruCache$Entry;)J
-    //   53: lstore 4
-    //   55: lload 4
-    //   57: lload_2
-    //   58: lcmp
-    //   59: ifeq +12 -> 71
-    //   62: aload 8
-    //   64: astore 6
-    //   66: aload_0
-    //   67: monitorexit
-    //   68: aload 6
-    //   70: areturn
-    //   71: aload 7
-    //   73: ifnull +15 -> 88
-    //   76: aload 8
-    //   78: astore 6
-    //   80: aload 7
-    //   82: invokestatic 230	com/squareup/okhttp/internal/DiskLruCache$Entry:access$900	(Lcom/squareup/okhttp/internal/DiskLruCache$Entry;)Lcom/squareup/okhttp/internal/DiskLruCache$Editor;
-    //   85: ifnonnull -19 -> 66
-    //   88: aload_0
-    //   89: getfield 295	com/squareup/okhttp/internal/DiskLruCache:journalWriter	Lokio/BufferedSink;
-    //   92: ldc 36
-    //   94: invokeinterface 301 2 0
-    //   99: bipush 32
-    //   101: invokeinterface 305 2 0
-    //   106: aload_1
-    //   107: invokeinterface 301 2 0
-    //   112: bipush 10
-    //   114: invokeinterface 305 2 0
-    //   119: pop
-    //   120: aload_0
-    //   121: getfield 295	com/squareup/okhttp/internal/DiskLruCache:journalWriter	Lokio/BufferedSink;
-    //   124: invokeinterface 320 1 0
-    //   129: aload 8
-    //   131: astore 6
-    //   133: aload_0
-    //   134: getfield 211	com/squareup/okhttp/internal/DiskLruCache:hasJournalErrors	Z
-    //   137: ifne -71 -> 66
-    //   140: aload 7
-    //   142: astore 6
-    //   144: aload 7
-    //   146: ifnonnull +26 -> 172
-    //   149: new 21	com/squareup/okhttp/internal/DiskLruCache$Entry
-    //   152: dup
-    //   153: aload_0
-    //   154: aload_1
-    //   155: aconst_null
-    //   156: invokespecial 383	com/squareup/okhttp/internal/DiskLruCache$Entry:<init>	(Lcom/squareup/okhttp/internal/DiskLruCache;Ljava/lang/String;Lcom/squareup/okhttp/internal/DiskLruCache$1;)V
-    //   159: astore 6
-    //   161: aload_0
-    //   162: getfield 123	com/squareup/okhttp/internal/DiskLruCache:lruEntries	Ljava/util/LinkedHashMap;
-    //   165: aload_1
-    //   166: aload 6
-    //   168: invokevirtual 387	java/util/LinkedHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   171: pop
-    //   172: new 16	com/squareup/okhttp/internal/DiskLruCache$Editor
-    //   175: dup
-    //   176: aload_0
-    //   177: aload 6
-    //   179: aconst_null
-    //   180: invokespecial 390	com/squareup/okhttp/internal/DiskLruCache$Editor:<init>	(Lcom/squareup/okhttp/internal/DiskLruCache;Lcom/squareup/okhttp/internal/DiskLruCache$Entry;Lcom/squareup/okhttp/internal/DiskLruCache$1;)V
-    //   183: astore_1
-    //   184: aload 6
-    //   186: aload_1
-    //   187: invokestatic 289	com/squareup/okhttp/internal/DiskLruCache$Entry:access$902	(Lcom/squareup/okhttp/internal/DiskLruCache$Entry;Lcom/squareup/okhttp/internal/DiskLruCache$Editor;)Lcom/squareup/okhttp/internal/DiskLruCache$Editor;
-    //   190: pop
-    //   191: aload_1
-    //   192: astore 6
-    //   194: goto -128 -> 66
-    //   197: astore_1
-    //   198: aload_0
-    //   199: monitorexit
-    //   200: aload_1
-    //   201: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	202	0	this	DiskLruCache
-    //   0	202	1	paramString	String
-    //   0	202	2	paramLong	long
-    //   53	3	4	l	long
-    //   41	152	6	localObject1	Object
-    //   29	116	7	localEntry	Entry
-    //   1	129	8	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   5	31	197	finally
-    //   48	55	197	finally
-    //   80	88	197	finally
-    //   88	129	197	finally
-    //   133	140	197	finally
-    //   149	172	197	finally
-    //   172	191	197	finally
+    for (;;)
+    {
+      try
+      {
+        initialize();
+        checkNotClosed();
+        validateKey(paramString);
+        Object localObject = (DiskLruCache.Entry)this.lruEntries.get(paramString);
+        if (paramLong != -1L) {
+          if (localObject != null)
+          {
+            long l = DiskLruCache.Entry.access$1600((DiskLruCache.Entry)localObject);
+            if (l == paramLong) {}
+          }
+          else
+          {
+            paramString = null;
+            return paramString;
+          }
+        }
+        if ((localObject != null) && (DiskLruCache.Entry.access$900((DiskLruCache.Entry)localObject) != null))
+        {
+          paramString = null;
+        }
+        else
+        {
+          this.journalWriter.writeUtf8("DIRTY").writeByte(32).writeUtf8(paramString).writeByte(10);
+          this.journalWriter.flush();
+          if (this.hasJournalErrors)
+          {
+            paramString = null;
+          }
+          else if (localObject == null)
+          {
+            localObject = new DiskLruCache.Entry(this, paramString, null);
+            this.lruEntries.put(paramString, localObject);
+            paramString = (String)localObject;
+            localObject = new DiskLruCache.Editor(this, paramString, null);
+            DiskLruCache.Entry.access$902(paramString, (DiskLruCache.Editor)localObject);
+            paramString = (String)localObject;
+          }
+          else
+          {
+            paramString = (String)localObject;
+          }
+        }
+      }
+      finally {}
+    }
   }
   
   private boolean journalRebuildRequired()
@@ -360,54 +254,35 @@ public final class DiskLruCache
   }
   
   private BufferedSink newJournalWriter()
-    throws FileNotFoundException
   {
-    Okio.buffer(new FaultHidingSink(this.fileSystem.appendingSink(this.journalFile))
-    {
-      static
-      {
-        if (!DiskLruCache.class.desiredAssertionStatus()) {}
-        for (boolean bool = true;; bool = false)
-        {
-          $assertionsDisabled = bool;
-          return;
-        }
-      }
-      
-      protected void onException(IOException paramAnonymousIOException)
-      {
-        assert (Thread.holdsLock(DiskLruCache.this));
-        DiskLruCache.access$602(DiskLruCache.this, true);
-      }
-    });
+    return Okio.buffer(new DiskLruCache.2(this, this.fileSystem.appendingSink(this.journalFile)));
   }
   
   private void processJournal()
-    throws IOException
   {
     this.fileSystem.delete(this.journalFileTmp);
     Iterator localIterator = this.lruEntries.values().iterator();
     while (localIterator.hasNext())
     {
-      Entry localEntry = (Entry)localIterator.next();
+      DiskLruCache.Entry localEntry = (DiskLruCache.Entry)localIterator.next();
       int i;
-      if (localEntry.currentEditor == null)
+      if (DiskLruCache.Entry.access$900(localEntry) == null)
       {
         i = 0;
         while (i < this.valueCount)
         {
-          this.size += localEntry.lengths[i];
+          this.size += DiskLruCache.Entry.access$1200(localEntry)[i];
           i += 1;
         }
       }
       else
       {
-        Entry.access$902(localEntry, null);
+        DiskLruCache.Entry.access$902(localEntry, null);
         i = 0;
         while (i < this.valueCount)
         {
-          this.fileSystem.delete(localEntry.cleanFiles[i]);
-          this.fileSystem.delete(localEntry.dirtyFiles[i]);
+          this.fileSystem.delete(DiskLruCache.Entry.access$1300(localEntry)[i]);
+          this.fileSystem.delete(DiskLruCache.Entry.access$1400(localEntry)[i]);
           i += 1;
         }
         localIterator.remove();
@@ -417,92 +292,91 @@ public final class DiskLruCache
   
   /* Error */
   private void readJournal()
-    throws IOException
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 132	com/squareup/okhttp/internal/DiskLruCache:fileSystem	Lcom/squareup/okhttp/internal/io/FileSystem;
+    //   1: getfield 117	com/squareup/okhttp/internal/DiskLruCache:fileSystem	Lcom/squareup/okhttp/internal/io/FileSystem;
     //   4: aload_0
-    //   5: getfield 143	com/squareup/okhttp/internal/DiskLruCache:journalFile	Ljava/io/File;
-    //   8: invokeinterface 439 2 0
-    //   13: invokestatic 442	okio/Okio:buffer	(Lokio/Source;)Lokio/BufferedSource;
+    //   5: getfield 128	com/squareup/okhttp/internal/DiskLruCache:journalFile	Ljava/io/File;
+    //   8: invokeinterface 425 2 0
+    //   13: invokestatic 428	okio/Okio:buffer	(Lokio/Source;)Lokio/BufferedSource;
     //   16: astore_2
     //   17: aload_2
-    //   18: invokeinterface 447 1 0
+    //   18: invokeinterface 433 1 0
     //   23: astore_3
     //   24: aload_2
-    //   25: invokeinterface 447 1 0
+    //   25: invokeinterface 433 1 0
     //   30: astore 4
     //   32: aload_2
-    //   33: invokeinterface 447 1 0
+    //   33: invokeinterface 433 1 0
     //   38: astore 5
     //   40: aload_2
-    //   41: invokeinterface 447 1 0
+    //   41: invokeinterface 433 1 0
     //   46: astore 6
     //   48: aload_2
-    //   49: invokeinterface 447 1 0
+    //   49: invokeinterface 433 1 0
     //   54: astore 7
-    //   56: ldc 50
+    //   56: ldc 31
     //   58: aload_3
-    //   59: invokevirtual 453	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   59: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   62: ifeq +54 -> 116
-    //   65: ldc 59
+    //   65: ldc 40
     //   67: aload 4
-    //   69: invokevirtual 453	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   69: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   72: ifeq +44 -> 116
     //   75: aload_0
-    //   76: getfield 136	com/squareup/okhttp/internal/DiskLruCache:appVersion	I
-    //   79: invokestatic 458	java/lang/Integer:toString	(I)Ljava/lang/String;
+    //   76: getfield 121	com/squareup/okhttp/internal/DiskLruCache:appVersion	I
+    //   79: invokestatic 444	java/lang/Integer:toString	(I)Ljava/lang/String;
     //   82: aload 5
-    //   84: invokevirtual 453	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   84: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   87: ifeq +29 -> 116
     //   90: aload_0
-    //   91: getfield 149	com/squareup/okhttp/internal/DiskLruCache:valueCount	I
-    //   94: invokestatic 458	java/lang/Integer:toString	(I)Ljava/lang/String;
+    //   91: getfield 134	com/squareup/okhttp/internal/DiskLruCache:valueCount	I
+    //   94: invokestatic 444	java/lang/Integer:toString	(I)Ljava/lang/String;
     //   97: aload 6
-    //   99: invokevirtual 453	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   99: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   102: ifeq +14 -> 116
-    //   105: ldc_w 460
+    //   105: ldc_w 446
     //   108: aload 7
-    //   110: invokevirtual 453	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   110: invokevirtual 439	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   113: ifne +77 -> 190
-    //   116: new 163	java/io/IOException
+    //   116: new 448	java/io/IOException
     //   119: dup
-    //   120: new 243	java/lang/StringBuilder
+    //   120: new 229	java/lang/StringBuilder
     //   123: dup
-    //   124: invokespecial 244	java/lang/StringBuilder:<init>	()V
-    //   127: ldc_w 462
-    //   130: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   124: invokespecial 230	java/lang/StringBuilder:<init>	()V
+    //   127: ldc_w 450
+    //   130: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   133: aload_3
-    //   134: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   137: ldc_w 464
-    //   140: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   134: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   137: ldc_w 452
+    //   140: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   143: aload 4
-    //   145: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   148: ldc_w 464
-    //   151: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   145: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   148: ldc_w 452
+    //   151: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   154: aload 6
-    //   156: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   159: ldc_w 464
-    //   162: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   156: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   159: ldc_w 452
+    //   162: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   165: aload 7
-    //   167: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   170: ldc_w 466
-    //   173: invokevirtual 250	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   176: invokevirtual 257	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   179: invokespecial 467	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   167: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   170: ldc_w 454
+    //   173: invokevirtual 236	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   176: invokevirtual 243	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   179: invokespecial 455	java/io/IOException:<init>	(Ljava/lang/String;)V
     //   182: athrow
     //   183: astore_3
     //   184: aload_2
-    //   185: invokestatic 471	com/squareup/okhttp/internal/Util:closeQuietly	(Ljava/io/Closeable;)V
+    //   185: invokestatic 459	com/squareup/okhttp/internal/Util:closeQuietly	(Ljava/io/Closeable;)V
     //   188: aload_3
     //   189: athrow
     //   190: iconst_0
     //   191: istore_1
     //   192: aload_0
     //   193: aload_2
-    //   194: invokeinterface 447 1 0
-    //   199: invokespecial 474	com/squareup/okhttp/internal/DiskLruCache:readJournalLine	(Ljava/lang/String;)V
+    //   194: invokeinterface 433 1 0
+    //   199: invokespecial 462	com/squareup/okhttp/internal/DiskLruCache:readJournalLine	(Ljava/lang/String;)V
     //   202: iload_1
     //   203: iconst_1
     //   204: iadd
@@ -512,22 +386,22 @@ public final class DiskLruCache
     //   210: aload_0
     //   211: iload_1
     //   212: aload_0
-    //   213: getfield 123	com/squareup/okhttp/internal/DiskLruCache:lruEntries	Ljava/util/LinkedHashMap;
-    //   216: invokevirtual 393	java/util/LinkedHashMap:size	()I
+    //   213: getfield 106	com/squareup/okhttp/internal/DiskLruCache:lruEntries	Ljava/util/LinkedHashMap;
+    //   216: invokevirtual 379	java/util/LinkedHashMap:size	()I
     //   219: isub
-    //   220: putfield 207	com/squareup/okhttp/internal/DiskLruCache:redundantOpCount	I
+    //   220: putfield 189	com/squareup/okhttp/internal/DiskLruCache:redundantOpCount	I
     //   223: aload_2
-    //   224: invokeinterface 477 1 0
+    //   224: invokeinterface 465 1 0
     //   229: ifne +12 -> 241
     //   232: aload_0
-    //   233: invokespecial 203	com/squareup/okhttp/internal/DiskLruCache:rebuildJournal	()V
+    //   233: invokespecial 185	com/squareup/okhttp/internal/DiskLruCache:rebuildJournal	()V
     //   236: aload_2
-    //   237: invokestatic 471	com/squareup/okhttp/internal/Util:closeQuietly	(Ljava/io/Closeable;)V
+    //   237: invokestatic 459	com/squareup/okhttp/internal/Util:closeQuietly	(Ljava/io/Closeable;)V
     //   240: return
     //   241: aload_0
     //   242: aload_0
-    //   243: invokespecial 479	com/squareup/okhttp/internal/DiskLruCache:newJournalWriter	()Lokio/BufferedSink;
-    //   246: putfield 295	com/squareup/okhttp/internal/DiskLruCache:journalWriter	Lokio/BufferedSink;
+    //   243: invokespecial 467	com/squareup/okhttp/internal/DiskLruCache:newJournalWriter	()Lokio/BufferedSink;
+    //   246: putfield 281	com/squareup/okhttp/internal/DiskLruCache:journalWriter	Lokio/BufferedSink;
     //   249: goto -13 -> 236
     // Local variable table:
     //   start	length	slot	name	signature
@@ -552,7 +426,6 @@ public final class DiskLruCache
   }
   
   private void readJournalLine(String paramString)
-    throws IOException
   {
     int i = paramString.indexOf(' ');
     if (i == -1) {
@@ -560,56 +433,52 @@ public final class DiskLruCache
     }
     int j = i + 1;
     int k = paramString.indexOf(' ', j);
-    Object localObject2;
-    Object localObject1;
+    String str;
     if (k == -1)
     {
-      localObject2 = paramString.substring(j);
-      localObject1 = localObject2;
-      if (i != "REMOVE".length()) {
-        break label112;
+      str = paramString.substring(j);
+      if ((i == "REMOVE".length()) && (paramString.startsWith("REMOVE"))) {
+        this.lruEntries.remove(str);
       }
-      localObject1 = localObject2;
-      if (!paramString.startsWith("REMOVE")) {
-        break label112;
-      }
-      this.lruEntries.remove(localObject2);
     }
-    label112:
-    do
+    else
     {
-      return;
-      localObject1 = paramString.substring(j, k);
-      Entry localEntry = (Entry)this.lruEntries.get(localObject1);
-      localObject2 = localEntry;
-      if (localEntry == null)
+      str = paramString.substring(j, k);
+    }
+    for (;;)
+    {
+      DiskLruCache.Entry localEntry2 = (DiskLruCache.Entry)this.lruEntries.get(str);
+      DiskLruCache.Entry localEntry1 = localEntry2;
+      if (localEntry2 == null)
       {
-        localObject2 = new Entry((String)localObject1, null);
-        this.lruEntries.put(localObject1, localObject2);
+        localEntry1 = new DiskLruCache.Entry(this, str, null);
+        this.lruEntries.put(str, localEntry1);
       }
       if ((k != -1) && (i == "CLEAN".length()) && (paramString.startsWith("CLEAN")))
       {
         paramString = paramString.substring(k + 1).split(" ");
-        Entry.access$802((Entry)localObject2, true);
-        Entry.access$902((Entry)localObject2, null);
-        ((Entry)localObject2).setLengths(paramString);
+        DiskLruCache.Entry.access$802(localEntry1, true);
+        DiskLruCache.Entry.access$902(localEntry1, null);
+        DiskLruCache.Entry.access$1000(localEntry1, paramString);
         return;
       }
       if ((k == -1) && (i == "DIRTY".length()) && (paramString.startsWith("DIRTY")))
       {
-        Entry.access$902((Entry)localObject2, new Editor((Entry)localObject2, null));
+        DiskLruCache.Entry.access$902(localEntry1, new DiskLruCache.Editor(this, localEntry1, null));
         return;
       }
-    } while ((k == -1) && (i == "READ".length()) && (paramString.startsWith("READ")));
-    throw new IOException("unexpected journal line: " + paramString);
+      if ((k == -1) && (i == "READ".length()) && (paramString.startsWith("READ"))) {
+        break;
+      }
+      throw new IOException("unexpected journal line: " + paramString);
+    }
   }
   
   private void rebuildJournal()
-    throws IOException
   {
     for (;;)
     {
-      Entry localEntry;
+      DiskLruCache.Entry localEntry;
       try
       {
         if (this.journalWriter != null) {
@@ -627,11 +496,11 @@ public final class DiskLruCache
           if (!localIterator.hasNext()) {
             break;
           }
-          localEntry = (Entry)localIterator.next();
-          if (localEntry.currentEditor != null)
+          localEntry = (DiskLruCache.Entry)localIterator.next();
+          if (DiskLruCache.Entry.access$900(localEntry) != null)
           {
             localBufferedSink1.writeUtf8("DIRTY").writeByte(32);
-            localBufferedSink1.writeUtf8(localEntry.key);
+            localBufferedSink1.writeUtf8(DiskLruCache.Entry.access$1500(localEntry));
             localBufferedSink1.writeByte(10);
             continue;
             localBufferedSink2 = finally;
@@ -644,7 +513,7 @@ public final class DiskLruCache
         localBufferedSink2.writeUtf8("CLEAN").writeByte(32);
       }
       finally {}
-      localBufferedSink2.writeUtf8(localEntry.key);
+      localBufferedSink2.writeUtf8(DiskLruCache.Entry.access$1500(localEntry));
       localEntry.writeLengths(localBufferedSink2);
       localBufferedSink2.writeByte(10);
     }
@@ -658,23 +527,22 @@ public final class DiskLruCache
     this.hasJournalErrors = false;
   }
   
-  private boolean removeEntry(Entry paramEntry)
-    throws IOException
+  private boolean removeEntry(DiskLruCache.Entry paramEntry)
   {
-    if (paramEntry.currentEditor != null) {
-      Editor.access$1902(paramEntry.currentEditor, true);
+    if (DiskLruCache.Entry.access$900(paramEntry) != null) {
+      DiskLruCache.Editor.access$1902(DiskLruCache.Entry.access$900(paramEntry), true);
     }
     int i = 0;
     while (i < this.valueCount)
     {
-      this.fileSystem.delete(paramEntry.cleanFiles[i]);
-      this.size -= paramEntry.lengths[i];
-      paramEntry.lengths[i] = 0L;
+      this.fileSystem.delete(DiskLruCache.Entry.access$1300(paramEntry)[i]);
+      this.size -= DiskLruCache.Entry.access$1200(paramEntry)[i];
+      DiskLruCache.Entry.access$1200(paramEntry)[i] = 0L;
       i += 1;
     }
     this.redundantOpCount += 1;
-    this.journalWriter.writeUtf8("REMOVE").writeByte(32).writeUtf8(paramEntry.key).writeByte(10);
-    this.lruEntries.remove(paramEntry.key);
+    this.journalWriter.writeUtf8("REMOVE").writeByte(32).writeUtf8(DiskLruCache.Entry.access$1500(paramEntry)).writeByte(10);
+    this.lruEntries.remove(DiskLruCache.Entry.access$1500(paramEntry));
     if (journalRebuildRequired()) {
       this.executor.execute(this.cleanupRunnable);
     }
@@ -682,10 +550,9 @@ public final class DiskLruCache
   }
   
   private void trimToSize()
-    throws IOException
   {
     while (this.size > this.maxSize) {
-      removeEntry((Entry)this.lruEntries.values().iterator().next());
+      removeEntry((DiskLruCache.Entry)this.lruEntries.values().iterator().next());
     }
   }
   
@@ -697,7 +564,6 @@ public final class DiskLruCache
   }
   
   public void close()
-    throws IOException
   {
     for (;;)
     {
@@ -708,14 +574,14 @@ public final class DiskLruCache
           this.closed = true;
           return;
         }
-        Entry[] arrayOfEntry = (Entry[])this.lruEntries.values().toArray(new Entry[this.lruEntries.size()]);
+        DiskLruCache.Entry[] arrayOfEntry = (DiskLruCache.Entry[])this.lruEntries.values().toArray(new DiskLruCache.Entry[this.lruEntries.size()]);
         int j = arrayOfEntry.length;
         int i = 0;
         if (i < j)
         {
-          Entry localEntry = arrayOfEntry[i];
-          if (localEntry.currentEditor != null) {
-            localEntry.currentEditor.abort();
+          DiskLruCache.Entry localEntry = arrayOfEntry[i];
+          if (DiskLruCache.Entry.access$900(localEntry) != null) {
+            DiskLruCache.Entry.access$900(localEntry).abort();
           }
         }
         else
@@ -733,25 +599,22 @@ public final class DiskLruCache
   }
   
   public void delete()
-    throws IOException
   {
     close();
     this.fileSystem.deleteContents(this.directory);
   }
   
-  public Editor edit(String paramString)
-    throws IOException
+  public DiskLruCache.Editor edit(String paramString)
   {
     return edit(paramString, -1L);
   }
   
   public void evictAll()
-    throws IOException
   {
     try
     {
       initialize();
-      Entry[] arrayOfEntry = (Entry[])this.lruEntries.values().toArray(new Entry[this.lruEntries.size()]);
+      DiskLruCache.Entry[] arrayOfEntry = (DiskLruCache.Entry[])this.lruEntries.values().toArray(new DiskLruCache.Entry[this.lruEntries.size()]);
       int j = arrayOfEntry.length;
       int i = 0;
       while (i < j)
@@ -766,13 +629,12 @@ public final class DiskLruCache
   
   /* Error */
   public void flush()
-    throws IOException
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 157	com/squareup/okhttp/internal/DiskLruCache:initialized	Z
+    //   3: getfield 142	com/squareup/okhttp/internal/DiskLruCache:initialized	Z
     //   6: istore_1
     //   7: iload_1
     //   8: ifne +6 -> 14
@@ -780,12 +642,12 @@ public final class DiskLruCache
     //   12: monitorexit
     //   13: return
     //   14: aload_0
-    //   15: invokespecial 370	com/squareup/okhttp/internal/DiskLruCache:checkNotClosed	()V
+    //   15: invokespecial 356	com/squareup/okhttp/internal/DiskLruCache:checkNotClosed	()V
     //   18: aload_0
-    //   19: invokespecial 166	com/squareup/okhttp/internal/DiskLruCache:trimToSize	()V
+    //   19: invokespecial 149	com/squareup/okhttp/internal/DiskLruCache:trimToSize	()V
     //   22: aload_0
-    //   23: getfield 295	com/squareup/okhttp/internal/DiskLruCache:journalWriter	Lokio/BufferedSink;
-    //   26: invokeinterface 320 1 0
+    //   23: getfield 281	com/squareup/okhttp/internal/DiskLruCache:journalWriter	Lokio/BufferedSink;
+    //   26: invokeinterface 306 1 0
     //   31: goto -20 -> 11
     //   34: astore_2
     //   35: aload_0
@@ -804,29 +666,28 @@ public final class DiskLruCache
   }
   
   /* Error */
-  public Snapshot get(String paramString)
-    throws IOException
+  public DiskLruCache.Snapshot get(String paramString)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: invokevirtual 368	com/squareup/okhttp/internal/DiskLruCache:initialize	()V
+    //   3: invokevirtual 354	com/squareup/okhttp/internal/DiskLruCache:initialize	()V
     //   6: aload_0
-    //   7: invokespecial 370	com/squareup/okhttp/internal/DiskLruCache:checkNotClosed	()V
+    //   7: invokespecial 356	com/squareup/okhttp/internal/DiskLruCache:checkNotClosed	()V
     //   10: aload_0
     //   11: aload_1
-    //   12: invokespecial 373	com/squareup/okhttp/internal/DiskLruCache:validateKey	(Ljava/lang/String;)V
+    //   12: invokespecial 359	com/squareup/okhttp/internal/DiskLruCache:validateKey	(Ljava/lang/String;)V
     //   15: aload_0
-    //   16: getfield 123	com/squareup/okhttp/internal/DiskLruCache:lruEntries	Ljava/util/LinkedHashMap;
+    //   16: getfield 106	com/squareup/okhttp/internal/DiskLruCache:lruEntries	Ljava/util/LinkedHashMap;
     //   19: aload_1
-    //   20: invokevirtual 376	java/util/LinkedHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   23: checkcast 21	com/squareup/okhttp/internal/DiskLruCache$Entry
+    //   20: invokevirtual 362	java/util/LinkedHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   23: checkcast 212	com/squareup/okhttp/internal/DiskLruCache$Entry
     //   26: astore_3
     //   27: aload_3
     //   28: ifnull +12 -> 40
     //   31: aload_3
-    //   32: invokestatic 234	com/squareup/okhttp/internal/DiskLruCache$Entry:access$800	(Lcom/squareup/okhttp/internal/DiskLruCache$Entry;)Z
+    //   32: invokestatic 220	com/squareup/okhttp/internal/DiskLruCache$Entry:access$800	(Lcom/squareup/okhttp/internal/DiskLruCache$Entry;)Z
     //   35: istore_2
     //   36: iload_2
     //   37: ifne +9 -> 46
@@ -837,7 +698,7 @@ public final class DiskLruCache
     //   44: aload_1
     //   45: areturn
     //   46: aload_3
-    //   47: invokevirtual 555	com/squareup/okhttp/internal/DiskLruCache$Entry:snapshot	()Lcom/squareup/okhttp/internal/DiskLruCache$Snapshot;
+    //   47: invokevirtual 543	com/squareup/okhttp/internal/DiskLruCache$Entry:snapshot	()Lcom/squareup/okhttp/internal/DiskLruCache$Snapshot;
     //   50: astore_3
     //   51: aload_3
     //   52: ifnonnull +8 -> 60
@@ -846,31 +707,31 @@ public final class DiskLruCache
     //   57: goto -15 -> 42
     //   60: aload_0
     //   61: aload_0
-    //   62: getfield 207	com/squareup/okhttp/internal/DiskLruCache:redundantOpCount	I
+    //   62: getfield 189	com/squareup/okhttp/internal/DiskLruCache:redundantOpCount	I
     //   65: iconst_1
     //   66: iadd
-    //   67: putfield 207	com/squareup/okhttp/internal/DiskLruCache:redundantOpCount	I
+    //   67: putfield 189	com/squareup/okhttp/internal/DiskLruCache:redundantOpCount	I
     //   70: aload_0
-    //   71: getfield 295	com/squareup/okhttp/internal/DiskLruCache:journalWriter	Lokio/BufferedSink;
-    //   74: ldc 54
-    //   76: invokeinterface 301 2 0
+    //   71: getfield 281	com/squareup/okhttp/internal/DiskLruCache:journalWriter	Lokio/BufferedSink;
+    //   74: ldc 35
+    //   76: invokeinterface 287 2 0
     //   81: bipush 32
-    //   83: invokeinterface 305 2 0
+    //   83: invokeinterface 291 2 0
     //   88: aload_1
-    //   89: invokeinterface 301 2 0
+    //   89: invokeinterface 287 2 0
     //   94: bipush 10
-    //   96: invokeinterface 305 2 0
+    //   96: invokeinterface 291 2 0
     //   101: pop
     //   102: aload_3
     //   103: astore_1
     //   104: aload_0
-    //   105: invokespecial 199	com/squareup/okhttp/internal/DiskLruCache:journalRebuildRequired	()Z
+    //   105: invokespecial 181	com/squareup/okhttp/internal/DiskLruCache:journalRebuildRequired	()Z
     //   108: ifeq -66 -> 42
     //   111: aload_0
-    //   112: getfield 153	com/squareup/okhttp/internal/DiskLruCache:executor	Ljava/util/concurrent/Executor;
+    //   112: getfield 138	com/squareup/okhttp/internal/DiskLruCache:executor	Ljava/util/concurrent/Executor;
     //   115: aload_0
-    //   116: getfield 130	com/squareup/okhttp/internal/DiskLruCache:cleanupRunnable	Ljava/lang/Runnable;
-    //   119: invokeinterface 326 2 0
+    //   116: getfield 115	com/squareup/okhttp/internal/DiskLruCache:cleanupRunnable	Ljava/lang/Runnable;
+    //   119: invokeinterface 312 2 0
     //   124: aload_3
     //   125: astore_1
     //   126: goto -84 -> 42
@@ -914,7 +775,6 @@ public final class DiskLruCache
   }
   
   public void initialize()
-    throws IOException
   {
     try
     {
@@ -978,23 +838,22 @@ public final class DiskLruCache
   
   /* Error */
   public boolean remove(String paramString)
-    throws IOException
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: invokevirtual 368	com/squareup/okhttp/internal/DiskLruCache:initialize	()V
+    //   3: invokevirtual 354	com/squareup/okhttp/internal/DiskLruCache:initialize	()V
     //   6: aload_0
-    //   7: invokespecial 370	com/squareup/okhttp/internal/DiskLruCache:checkNotClosed	()V
+    //   7: invokespecial 356	com/squareup/okhttp/internal/DiskLruCache:checkNotClosed	()V
     //   10: aload_0
     //   11: aload_1
-    //   12: invokespecial 373	com/squareup/okhttp/internal/DiskLruCache:validateKey	(Ljava/lang/String;)V
+    //   12: invokespecial 359	com/squareup/okhttp/internal/DiskLruCache:validateKey	(Ljava/lang/String;)V
     //   15: aload_0
-    //   16: getfield 123	com/squareup/okhttp/internal/DiskLruCache:lruEntries	Ljava/util/LinkedHashMap;
+    //   16: getfield 106	com/squareup/okhttp/internal/DiskLruCache:lruEntries	Ljava/util/LinkedHashMap;
     //   19: aload_1
-    //   20: invokevirtual 376	java/util/LinkedHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   23: checkcast 21	com/squareup/okhttp/internal/DiskLruCache$Entry
+    //   20: invokevirtual 362	java/util/LinkedHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   23: checkcast 212	com/squareup/okhttp/internal/DiskLruCache$Entry
     //   26: astore_1
     //   27: aload_1
     //   28: ifnonnull +9 -> 37
@@ -1006,7 +865,7 @@ public final class DiskLruCache
     //   36: ireturn
     //   37: aload_0
     //   38: aload_1
-    //   39: invokespecial 193	com/squareup/okhttp/internal/DiskLruCache:removeEntry	(Lcom/squareup/okhttp/internal/DiskLruCache$Entry;)Z
+    //   39: invokespecial 175	com/squareup/okhttp/internal/DiskLruCache:removeEntry	(Lcom/squareup/okhttp/internal/DiskLruCache$Entry;)Z
     //   42: istore_2
     //   43: goto -10 -> 33
     //   46: astore_1
@@ -1043,7 +902,6 @@ public final class DiskLruCache
   }
   
   public long size()
-    throws IOException
   {
     try
     {
@@ -1058,378 +916,18 @@ public final class DiskLruCache
     }
   }
   
-  public Iterator<Snapshot> snapshots()
-    throws IOException
+  public Iterator<DiskLruCache.Snapshot> snapshots()
   {
     try
     {
       initialize();
-      Iterator local3 = new Iterator()
-      {
-        final Iterator<DiskLruCache.Entry> delegate = new ArrayList(DiskLruCache.this.lruEntries.values()).iterator();
-        DiskLruCache.Snapshot nextSnapshot;
-        DiskLruCache.Snapshot removeSnapshot;
-        
-        public boolean hasNext()
-        {
-          if (this.nextSnapshot != null) {
-            return true;
-          }
-          synchronized (DiskLruCache.this)
-          {
-            if (DiskLruCache.this.closed) {
-              return false;
-            }
-            while (this.delegate.hasNext())
-            {
-              DiskLruCache.Snapshot localSnapshot = ((DiskLruCache.Entry)this.delegate.next()).snapshot();
-              if (localSnapshot != null)
-              {
-                this.nextSnapshot = localSnapshot;
-                return true;
-              }
-            }
-          }
-          return false;
-        }
-        
-        public DiskLruCache.Snapshot next()
-        {
-          if (!hasNext()) {
-            throw new NoSuchElementException();
-          }
-          this.removeSnapshot = this.nextSnapshot;
-          this.nextSnapshot = null;
-          return this.removeSnapshot;
-        }
-        
-        /* Error */
-        public void remove()
-        {
-          // Byte code:
-          //   0: aload_0
-          //   1: getfield 74	com/squareup/okhttp/internal/DiskLruCache$3:removeSnapshot	Lcom/squareup/okhttp/internal/DiskLruCache$Snapshot;
-          //   4: ifnonnull +13 -> 17
-          //   7: new 81	java/lang/IllegalStateException
-          //   10: dup
-          //   11: ldc 83
-          //   13: invokespecial 86	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
-          //   16: athrow
-          //   17: aload_0
-          //   18: getfield 24	com/squareup/okhttp/internal/DiskLruCache$3:this$0	Lcom/squareup/okhttp/internal/DiskLruCache;
-          //   21: aload_0
-          //   22: getfield 74	com/squareup/okhttp/internal/DiskLruCache$3:removeSnapshot	Lcom/squareup/okhttp/internal/DiskLruCache$Snapshot;
-          //   25: invokestatic 92	com/squareup/okhttp/internal/DiskLruCache$Snapshot:access$2100	(Lcom/squareup/okhttp/internal/DiskLruCache$Snapshot;)Ljava/lang/String;
-          //   28: invokevirtual 95	com/squareup/okhttp/internal/DiskLruCache:remove	(Ljava/lang/String;)Z
-          //   31: pop
-          //   32: aload_0
-          //   33: aconst_null
-          //   34: putfield 74	com/squareup/okhttp/internal/DiskLruCache$3:removeSnapshot	Lcom/squareup/okhttp/internal/DiskLruCache$Snapshot;
-          //   37: return
-          //   38: astore_1
-          //   39: aload_0
-          //   40: aconst_null
-          //   41: putfield 74	com/squareup/okhttp/internal/DiskLruCache$3:removeSnapshot	Lcom/squareup/okhttp/internal/DiskLruCache$Snapshot;
-          //   44: return
-          //   45: astore_1
-          //   46: aload_0
-          //   47: aconst_null
-          //   48: putfield 74	com/squareup/okhttp/internal/DiskLruCache$3:removeSnapshot	Lcom/squareup/okhttp/internal/DiskLruCache$Snapshot;
-          //   51: aload_1
-          //   52: athrow
-          // Local variable table:
-          //   start	length	slot	name	signature
-          //   0	53	0	this	3
-          //   38	1	1	localIOException	IOException
-          //   45	7	1	localObject	Object
-          // Exception table:
-          //   from	to	target	type
-          //   17	32	38	java/io/IOException
-          //   17	32	45	finally
-        }
-      };
+      DiskLruCache.3 local3 = new DiskLruCache.3(this);
       return local3;
     }
     finally
     {
       localObject = finally;
       throw localObject;
-    }
-  }
-  
-  public final class Editor
-  {
-    private boolean committed;
-    private final DiskLruCache.Entry entry;
-    private boolean hasErrors;
-    private final boolean[] written;
-    
-    private Editor(DiskLruCache.Entry paramEntry)
-    {
-      this.entry = paramEntry;
-      if (DiskLruCache.Entry.access$800(paramEntry)) {}
-      for (this$1 = null;; this$1 = new boolean[DiskLruCache.this.valueCount])
-      {
-        this.written = DiskLruCache.this;
-        return;
-      }
-    }
-    
-    public void abort()
-      throws IOException
-    {
-      synchronized (DiskLruCache.this)
-      {
-        DiskLruCache.this.completeEdit(this, false);
-        return;
-      }
-    }
-    
-    public void abortUnlessCommitted()
-    {
-      synchronized (DiskLruCache.this)
-      {
-        boolean bool = this.committed;
-        if (bool) {}
-      }
-      try
-      {
-        DiskLruCache.this.completeEdit(this, false);
-        label25:
-        return;
-        localObject = finally;
-        throw localObject;
-      }
-      catch (IOException localIOException)
-      {
-        break label25;
-      }
-    }
-    
-    public void commit()
-      throws IOException
-    {
-      synchronized (DiskLruCache.this)
-      {
-        if (this.hasErrors)
-        {
-          DiskLruCache.this.completeEdit(this, false);
-          DiskLruCache.this.removeEntry(this.entry);
-          this.committed = true;
-          return;
-        }
-        DiskLruCache.this.completeEdit(this, true);
-      }
-    }
-    
-    public Sink newSink(int paramInt)
-      throws IOException
-    {
-      synchronized (DiskLruCache.this)
-      {
-        if (DiskLruCache.Entry.access$900(this.entry) != this) {
-          throw new IllegalStateException();
-        }
-      }
-      if (!DiskLruCache.Entry.access$800(this.entry)) {
-        this.written[paramInt] = true;
-      }
-      Object localObject2 = DiskLruCache.Entry.access$1400(this.entry)[paramInt];
-      try
-      {
-        localObject2 = DiskLruCache.this.fileSystem.sink((File)localObject2);
-        localObject2 = new FaultHidingSink((Sink)localObject2)
-        {
-          protected void onException(IOException arg1)
-          {
-            synchronized (DiskLruCache.this)
-            {
-              DiskLruCache.Editor.access$1902(DiskLruCache.Editor.this, true);
-              return;
-            }
-          }
-        };
-        return localObject2;
-      }
-      catch (FileNotFoundException localFileNotFoundException)
-      {
-        Sink localSink = DiskLruCache.NULL_SINK;
-        return localSink;
-      }
-    }
-    
-    public Source newSource(int paramInt)
-      throws IOException
-    {
-      synchronized (DiskLruCache.this)
-      {
-        if (DiskLruCache.Entry.access$900(this.entry) != this) {
-          throw new IllegalStateException();
-        }
-      }
-      if (!DiskLruCache.Entry.access$800(this.entry)) {
-        return null;
-      }
-      try
-      {
-        Source localSource = DiskLruCache.this.fileSystem.source(DiskLruCache.Entry.access$1300(this.entry)[paramInt]);
-        return localSource;
-      }
-      catch (FileNotFoundException localFileNotFoundException) {}
-      return null;
-    }
-  }
-  
-  private final class Entry
-  {
-    private final File[] cleanFiles;
-    private DiskLruCache.Editor currentEditor;
-    private final File[] dirtyFiles;
-    private final String key;
-    private final long[] lengths;
-    private boolean readable;
-    private long sequenceNumber;
-    
-    private Entry(String paramString)
-    {
-      this.key = paramString;
-      this.lengths = new long[DiskLruCache.this.valueCount];
-      this.cleanFiles = new File[DiskLruCache.this.valueCount];
-      this.dirtyFiles = new File[DiskLruCache.this.valueCount];
-      paramString = new StringBuilder(paramString).append('.');
-      int j = paramString.length();
-      int i = 0;
-      while (i < DiskLruCache.this.valueCount)
-      {
-        paramString.append(i);
-        this.cleanFiles[i] = new File(DiskLruCache.this.directory, paramString.toString());
-        paramString.append(".tmp");
-        this.dirtyFiles[i] = new File(DiskLruCache.this.directory, paramString.toString());
-        paramString.setLength(j);
-        i += 1;
-      }
-    }
-    
-    private IOException invalidLengths(String[] paramArrayOfString)
-      throws IOException
-    {
-      throw new IOException("unexpected journal line: " + Arrays.toString(paramArrayOfString));
-    }
-    
-    private void setLengths(String[] paramArrayOfString)
-      throws IOException
-    {
-      if (paramArrayOfString.length != DiskLruCache.this.valueCount) {
-        throw invalidLengths(paramArrayOfString);
-      }
-      int i = 0;
-      try
-      {
-        while (i < paramArrayOfString.length)
-        {
-          this.lengths[i] = Long.parseLong(paramArrayOfString[i]);
-          i += 1;
-        }
-        return;
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        throw invalidLengths(paramArrayOfString);
-      }
-    }
-    
-    DiskLruCache.Snapshot snapshot()
-    {
-      if (!Thread.holdsLock(DiskLruCache.this)) {
-        throw new AssertionError();
-      }
-      Source[] arrayOfSource = new Source[DiskLruCache.this.valueCount];
-      Object localObject = (long[])this.lengths.clone();
-      int i = 0;
-      try
-      {
-        while (i < DiskLruCache.this.valueCount)
-        {
-          arrayOfSource[i] = DiskLruCache.this.fileSystem.source(this.cleanFiles[i]);
-          i += 1;
-        }
-        localObject = new DiskLruCache.Snapshot(DiskLruCache.this, this.key, this.sequenceNumber, arrayOfSource, (long[])localObject, null);
-        return localObject;
-      }
-      catch (FileNotFoundException localFileNotFoundException)
-      {
-        i = 0;
-        while ((i < DiskLruCache.this.valueCount) && (arrayOfSource[i] != null))
-        {
-          Util.closeQuietly(arrayOfSource[i]);
-          i += 1;
-        }
-      }
-      return null;
-    }
-    
-    void writeLengths(BufferedSink paramBufferedSink)
-      throws IOException
-    {
-      long[] arrayOfLong = this.lengths;
-      int j = arrayOfLong.length;
-      int i = 0;
-      while (i < j)
-      {
-        long l = arrayOfLong[i];
-        paramBufferedSink.writeByte(32).writeDecimalLong(l);
-        i += 1;
-      }
-    }
-  }
-  
-  public final class Snapshot
-    implements Closeable
-  {
-    private final String key;
-    private final long[] lengths;
-    private final long sequenceNumber;
-    private final Source[] sources;
-    
-    private Snapshot(String paramString, long paramLong, Source[] paramArrayOfSource, long[] paramArrayOfLong)
-    {
-      this.key = paramString;
-      this.sequenceNumber = paramLong;
-      this.sources = paramArrayOfSource;
-      this.lengths = paramArrayOfLong;
-    }
-    
-    public void close()
-    {
-      Source[] arrayOfSource = this.sources;
-      int j = arrayOfSource.length;
-      int i = 0;
-      while (i < j)
-      {
-        Util.closeQuietly(arrayOfSource[i]);
-        i += 1;
-      }
-    }
-    
-    public DiskLruCache.Editor edit()
-      throws IOException
-    {
-      return DiskLruCache.this.edit(this.key, this.sequenceNumber);
-    }
-    
-    public long getLength(int paramInt)
-    {
-      return this.lengths[paramInt];
-    }
-    
-    public Source getSource(int paramInt)
-    {
-      return this.sources[paramInt];
-    }
-    
-    public String key()
-    {
-      return this.key;
     }
   }
 }

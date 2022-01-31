@@ -1,36 +1,39 @@
-import android.graphics.Bitmap;
-import android.os.Message;
-import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
-import com.tencent.mobileqq.musicgene.MusicPlayerActivity;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.contact.addcontact.AddContactViewPagerTroopFragment;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XListView;
+import mqq.app.QQPermissionCallback;
 
 class aeta
-  implements Runnable
+  implements QQPermissionCallback
 {
-  aeta(aesz paramaesz, int paramInt) {}
+  aeta(aesz paramaesz) {}
   
-  public void run()
+  public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    Object localObject = MusicGeneWebViewPlugin.a(this.jdField_a_of_type_Aesz.jdField_a_of_type_Aeti.c);
-    if (localObject != null)
-    {
-      int i = ((Bitmap)localObject).getWidth();
-      int j = ((Bitmap)localObject).getHeight();
-      if (i * j > 8000)
-      {
-        double d = Math.sqrt(8000.0D / (i * j));
-        Bitmap localBitmap = Bitmap.createScaledBitmap((Bitmap)localObject, (int)(i * d), (int)(j * d), true);
-        ((Bitmap)localObject).recycle();
-        localObject = Message.obtain(MusicPlayerActivity.a(this.jdField_a_of_type_Aesz.jdField_a_of_type_Aesy.a), 55);
-        ((Message)localObject).arg1 = this.jdField_a_of_type_Int;
-        ((Message)localObject).obj = localBitmap;
-        ((Message)localObject).sendToTarget();
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "requestLBSPermissionOnClickListener deny");
     }
+  }
+  
+  public void grant(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ac_ft.AddContactViewPagerTroopFragment", 2, "onclick requestLBSPermissionOnClickListener grant");
+    }
+    this.a.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    this.a.a.jdField_a_of_type_ComTencentWidgetXListView.setVisibility(0);
+    if (akfu.a("recommend_troop") == null)
+    {
+      akfu.a(new aetb(this, "recommend_troop"));
+      return;
+    }
+    this.a.a.jdField_a_of_type_Aesq.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeta
  * JD-Core Version:    0.7.0.1
  */

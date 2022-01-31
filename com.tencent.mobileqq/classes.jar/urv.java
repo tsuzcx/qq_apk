@@ -1,91 +1,65 @@
 import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.SparseArray;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.PanelAdapter.ViewHolder;
-import com.tencent.mobileqq.activity.aio.PlusPanel;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import android.os.SystemClock;
+import com.tencent.biz.qqstory.takevideo.DanceMachineUploadVideoFragment;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.TroopAIOAppInfo;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
-import com.tencent.mobileqq.utils.JumpAction;
-import com.tencent.mobileqq.utils.JumpParser;
-import java.net.URI;
-import java.net.URISyntaxException;
+import com.tencent.mobileqq.data.MessageForDanceMachine;
+import com.tencent.qphone.base.util.QLog;
 
 public class urv
+  extends ajmm
 {
-  public static void a(PlusPanel paramPlusPanel, PanelAdapter.ViewHolder paramViewHolder)
+  public urv(DanceMachineUploadVideoFragment paramDanceMachineUploadVideoFragment) {}
+  
+  public void a(MessageForDanceMachine paramMessageForDanceMachine)
   {
-    if (paramPlusPanel == null) {
-      return;
+    super.a(paramMessageForDanceMachine);
+    if (!DanceMachineUploadVideoFragment.a(this.a)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("UploadDanceMachineVideo", 2, "do not need callback");
+      }
     }
-    switch (paramViewHolder.a)
+    do
     {
-    default: 
-      b(paramPlusPanel, paramViewHolder);
+      return;
+      DanceMachineUploadVideoFragment.a(this.a, false);
+      if (paramMessageForDanceMachine != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("UploadDanceMachineVideo", 2, "mfd is null");
+    return;
+    if (QLog.isColorLevel()) {
+      QLog.d("UploadDanceMachineVideo", 2, "uuid : " + paramMessageForDanceMachine.uuid + "  md5 : " + paramMessageForDanceMachine.md5 + " thumbFilePath : " + paramMessageForDanceMachine.mThumbFilePath);
+    }
+    if (paramMessageForDanceMachine.errorCode == 0)
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("upload_result", true);
+      localIntent.putExtra("upload_video_uuid", paramMessageForDanceMachine.uuid);
+      localIntent.putExtra("upload_video_md5", paramMessageForDanceMachine.md5);
+      localIntent.putExtra("upload_video_thumb", paramMessageForDanceMachine.mThumbFilePath);
+      localIntent.putExtra("share_method", DanceMachineUploadVideoFragment.a(this.a));
+      localIntent.putExtra("current_nickname", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname());
+      localIntent.putExtra("current_uin", this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c());
+      if (DanceMachineUploadVideoFragment.a(this.a) != -1L) {
+        localIntent.putExtra("upload_time_cost", SystemClock.elapsedRealtime() - DanceMachineUploadVideoFragment.a(this.a));
+      }
+      paramMessageForDanceMachine = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+      BaseActivity localBaseActivity = this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
+      paramMessageForDanceMachine.setResult(-1, localIntent);
     }
     for (;;)
     {
-      paramPlusPanel.b(paramViewHolder.b);
+      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
       return;
-      Bundle localBundle = new Bundle();
-      localBundle.putString("extra.GROUP_UIN", paramPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      localBundle.putString("selfSet_leftViewText", "取消");
-      BulkSendMessageFragment.a(paramPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), localBundle);
+      this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setResult(2);
     }
-  }
-  
-  private static void b(PlusPanel paramPlusPanel, PanelAdapter.ViewHolder paramViewHolder)
-  {
-    if (paramViewHolder.a >= 0) {}
-    do
-    {
-      Object localObject;
-      do
-      {
-        return;
-        localObject = null;
-        if (paramPlusPanel.jdField_a_of_type_AndroidUtilSparseArray != null) {
-          localObject = (TroopAIOAppInfo)paramPlusPanel.jdField_a_of_type_AndroidUtilSparseArray.get(paramViewHolder.b);
-        }
-      } while ((localObject == null) || (((TroopAIOAppInfo)localObject).url == null));
-      paramViewHolder = ((TroopAIOAppInfo)localObject).url.replace("$UIN$", paramPlusPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()).replace("$GCODE$", paramPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a).replace("$APPID$", String.valueOf(paramViewHolder.b));
-      int j = 0;
-      int i = j;
-      try
-      {
-        if (TextUtils.equals(new URI(paramViewHolder).getScheme(), "mqqapi"))
-        {
-          localObject = JumpParser.a(paramPlusPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), paramViewHolder);
-          i = j;
-          if (localObject != null)
-          {
-            ((JumpAction)localObject).b();
-            i = 1;
-          }
-        }
-      }
-      catch (URISyntaxException localURISyntaxException)
-      {
-        for (;;)
-        {
-          i = j;
-        }
-      }
-    } while (i != 0);
-    localObject = new Intent(paramPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(), QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", paramViewHolder);
-    ((Intent)localObject).putExtra("selfSet_leftViewText", "返回");
-    paramPlusPanel.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a().startActivity((Intent)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     urv
  * JD-Core Version:    0.7.0.1
  */

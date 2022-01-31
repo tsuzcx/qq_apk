@@ -1,9 +1,9 @@
 package com.tencent.biz.pubaccount.persistence.manager;
 
-import com.tencent.mobileqq.persistence.Entity;
+import atmo;
 
 public class PublicAccountEntityManagerFactory$VerifyEntity
-  extends Entity
+  extends atmo
 {
   public String flags = "public_account_database_verify_entity";
   public String name = "";

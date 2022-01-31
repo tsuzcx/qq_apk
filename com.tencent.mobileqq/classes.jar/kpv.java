@@ -1,43 +1,48 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.lebasearch.SearchProtocol;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qphone.base.util.QLog;
+import java.net.Socket;
+import java.security.KeyStore;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
 
-public final class kpv
-  extends SosoInterface.OnLocationListener
+public class kpv
+  extends org.apache.http.conn.ssl.SSLSocketFactory
 {
-  public kpv(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, SharedPreferences paramSharedPreferences)
+  private SSLContext a = SSLContext.getInstance("TLS");
+  
+  public kpv(KeyStore paramKeyStore)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    super(paramKeyStore);
+    try
+    {
+      paramKeyStore = new kpx();
+      this.a.init(null, new TrustManager[] { paramKeyStore }, null);
+      return;
+    }
+    catch (Exception paramKeyStore)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Translator", 2, "[cancel] cancel task" + paramKeyStore);
+        }
+        paramKeyStore = null;
+      }
+    }
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public Socket createSocket()
   {
-    SharedPreferences.Editor localEditor = this.a.edit();
-    if (paramInt == 0)
-    {
-      SearchProtocol.a = (float)paramSosoLbsInfo.a.a;
-      SearchProtocol.b = (float)paramSosoLbsInfo.a.b;
-      localEditor.putFloat("search_lbs_latitude", SearchProtocol.a);
-      localEditor.putFloat("search_lbs_logitude", SearchProtocol.b);
-    }
-    if ((paramInt == 0) || (paramInt == 1)) {
-      localEditor.remove("search_lbs_delay");
-    }
-    for (;;)
-    {
-      localEditor.putLong("search_lbs_timestamp", System.currentTimeMillis());
-      localEditor.commit();
-      return;
-      localEditor.putInt("search_lbs_delay", 48);
-    }
+    return this.a.getSocketFactory().createSocket();
+  }
+  
+  public Socket createSocket(Socket paramSocket, String paramString, int paramInt, boolean paramBoolean)
+  {
+    return this.a.getSocketFactory().createSocket(paramSocket, paramString, paramInt, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     kpv
  * JD-Core Version:    0.7.0.1
  */

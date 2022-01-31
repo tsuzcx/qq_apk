@@ -37,22 +37,25 @@ public class AppProcHelper
   
   public static boolean isContainsProc(Context paramContext, ArrayList<String> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return true;
+    boolean bool2 = false;
+    boolean bool1;
+    if ((paramArrayList == null) || (paramArrayList.size() == 0))
+    {
+      bool1 = true;
+      return bool1;
     }
     int i = 0;
     for (;;)
     {
+      bool1 = bool2;
       if (i >= paramArrayList.size()) {
-        break label50;
+        break;
       }
       if ((MobileQQ.processName != null) && (MobileQQ.processName.equals(paramArrayList.get(i)))) {
-        break;
+        return true;
       }
       i += 1;
     }
-    label50:
-    return false;
   }
   
   public static boolean isLegalBroadcast(String paramString, ArrayList<String> paramArrayList)

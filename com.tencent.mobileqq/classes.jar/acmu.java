@@ -1,22 +1,66 @@
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
-import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.emotionintegrate.AIOEmotionFragment;
+import com.tencent.mobileqq.transfile.chatpic.PicDownloadExplicitError;
 
-class acmu
-  implements WebProcessManager.WebProcessStartListener
+public class acmu
+  implements View.OnClickListener
 {
-  acmu(acms paramacms) {}
+  private long a;
+  public SessionInfo a;
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean) {
-      this.a.a.a.a();
+    long l = System.currentTimeMillis();
+    if (l - this.jdField_a_of_type_Long < 1000L) {}
+    Object localObject;
+    MessageForPic localMessageForPic;
+    URLDrawable localURLDrawable;
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          this.jdField_a_of_type_Long = l;
+          localObject = (URLImageView)paramView;
+          localMessageForPic = (MessageForPic)((URLImageView)localObject).getTag(2131298566);
+          localURLDrawable = (URLDrawable)((URLImageView)localObject).getDrawable();
+        } while (localURLDrawable == null);
+        switch (localURLDrawable.getStatus())
+        {
+        default: 
+          return;
+        }
+      } while (localURLDrawable.isDownloadStarted());
+      localURLDrawable.startDownload();
+      return;
+      localObject = PicDownloadExplicitError.getFailedTip(localURLDrawable);
+      if (localObject != null)
+      {
+        bbmy.a(paramView.getContext(), (CharSequence)localObject, 0).a();
+        return;
+      }
+    } while (!bace.a(paramView.getContext()));
+    localURLDrawable.restartDownload();
+    return;
+    if (adkt.a(localMessageForPic))
+    {
+      AIOEmotionFragment.a(paramView.getContext(), localMessageForPic, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, xgx.a(paramView));
+      return;
     }
+    localMessageForPic.isInMixedMsg = true;
+    adkt.a(tfy.a(), paramView.getContext(), (View)localObject, localMessageForPic, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, false, true, true, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acmu
  * JD-Core Version:    0.7.0.1
  */

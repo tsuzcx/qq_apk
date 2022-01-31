@@ -1,28 +1,25 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Handler;
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView.OnTrimVDPlayCompelteListener;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity.2.1;
+import com.tencent.qphone.base.util.QLog;
 
 public class aoqr
-  implements MediaPlayer.OnCompletionListener
+  implements alur
 {
-  public aoqr(FixedSizeVideoView paramFixedSizeVideoView) {}
+  public aoqr(FileBrowserActivity paramFileBrowserActivity) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public void a(boolean paramBoolean)
   {
-    if (this.a.a != null)
-    {
-      if (FixedSizeVideoView.a(this.a) != null) {
-        FixedSizeVideoView.a(this.a).removeMessages(0);
-      }
-      this.a.a.a(paramMediaPlayer);
+    if (QLog.isDebugVersion()) {
+      QLog.i("FileBrowserActivity<FileAssistant>", 4, "color note update.");
     }
+    ThreadManagerV2.getUIHandlerV2().post(new FileBrowserActivity.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aoqr
  * JD-Core Version:    0.7.0.1
  */

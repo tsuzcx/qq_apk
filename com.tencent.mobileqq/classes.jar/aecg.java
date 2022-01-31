@@ -1,35 +1,19 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.hydevteam.pluginframework.pluginmanager.UpgradeablePluginManager;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager.CheckListener;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class aecg
-  implements Runnable
+class aecg
+  implements View.OnClickListener
 {
-  public aecg(String paramString, GroupVideoManager.CheckListener paramCheckListener) {}
+  aecg(aecb paramaecb) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      List localList = GroupVideoManager.a().getCachedLatestPlugin(this.jdField_a_of_type_JavaLangString);
-      new Handler(Looper.getMainLooper()).post(new aech(this, localList));
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        Object localObject = null;
-      }
-    }
+    this.a.v(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aecg
  * JD-Core Version:    0.7.0.1
  */

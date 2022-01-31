@@ -1,53 +1,69 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Point;
-import com.tencent.widget.RangeButtonView;
-import com.tencent.widget.RangeButtonView.Title;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class amku
 {
-  private List jdField_a_of_type_JavaUtilList;
+  private String jdField_a_of_type_JavaLangString = "";
+  private boolean jdField_a_of_type_Boolean;
   
-  public amku(RangeButtonView paramRangeButtonView, List paramList)
+  public static amku a(alzs[] paramArrayOfalzs)
   {
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public void a(Canvas paramCanvas, Paint paramPaint)
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
-    for (;;)
-    {
-      return;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        ((RangeButtonView.Title)localIterator.next()).a(paramCanvas, paramPaint, this.jdField_a_of_type_ComTencentWidgetRangeButtonView.a);
-      }
+    if ((paramArrayOfalzs == null) || (paramArrayOfalzs.length <= 0)) {
+      paramArrayOfalzs = null;
     }
-  }
-  
-  public void a(ArrayList paramArrayList, int paramInt)
-  {
-    if (this.jdField_a_of_type_JavaUtilList == null) {}
+    amku localamku;
     for (;;)
     {
-      return;
-      int i = 0;
-      while (i < paramArrayList.size())
+      return paramArrayOfalzs;
+      localamku = new amku();
+      try
       {
-        RangeButtonView.Title localTitle = (RangeButtonView.Title)this.jdField_a_of_type_JavaUtilList.get(i);
-        localTitle.a = new Point(((Integer)paramArrayList.get(i)).intValue() - (localTitle.a() >> 1), paramInt);
-        i += 1;
+        JSONObject localJSONObject = new JSONObject(paramArrayOfalzs[0].jdField_a_of_type_JavaLangString);
+        if (localJSONObject.has("AndroidGroupListJumpURL"))
+        {
+          localamku.jdField_a_of_type_JavaLangString = localJSONObject.getString("AndroidGroupListJumpURL");
+          if (QLog.isColorLevel()) {
+            QLog.d("TencentDocUserConfigBean", 2, "handleTenDocGroupListEntryConfig mAndroidGroupListJumpURL = " + localamku.jdField_a_of_type_JavaLangString);
+          }
+        }
+        paramArrayOfalzs = localamku;
+        if (localJSONObject.has("AndroidGroupListWebEnable"))
+        {
+          localamku.jdField_a_of_type_Boolean = localJSONObject.getBoolean("AndroidGroupListWebEnable");
+          paramArrayOfalzs = localamku;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("TencentDocUserConfigBean", 2, "handleTenDocGroupListEntryConfig AndroidGroupListWebEnable = " + localamku.jdField_a_of_type_Boolean);
+            return localamku;
+          }
+        }
+      }
+      catch (JSONException paramArrayOfalzs)
+      {
+        paramArrayOfalzs.printStackTrace();
       }
     }
+    return localamku;
+  }
+  
+  public String a()
+  {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      return null;
+    }
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
+  public boolean a()
+  {
+    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amku
  * JD-Core Version:    0.7.0.1
  */

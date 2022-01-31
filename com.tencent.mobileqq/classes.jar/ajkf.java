@@ -1,34 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.structmsg.StructMsgFactory;
-import com.tencent.mobileqq.troop.data.TroopTopicDetailInfo;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class ajkf
-  implements Parcelable.Creator
+final class ajkf
+  implements View.OnClickListener
 {
-  public TroopTopicDetailInfo a(Parcel paramParcel)
-  {
-    TroopTopicDetailInfo localTroopTopicDetailInfo = new TroopTopicDetailInfo();
-    localTroopTopicDetailInfo.troopUin = paramParcel.readString();
-    localTroopTopicDetailInfo.msgSeq = paramParcel.readLong();
-    localTroopTopicDetailInfo.bid = paramParcel.readLong();
-    localTroopTopicDetailInfo.pid = paramParcel.readString();
-    paramParcel.readByteArray(localTroopTopicDetailInfo.detailInfoData);
-    if ((localTroopTopicDetailInfo.detailInfoData != null) && (localTroopTopicDetailInfo.detailInfoData.length > 0)) {
-      localTroopTopicDetailInfo.detailStructMsg = StructMsgFactory.a(localTroopTopicDetailInfo.detailInfoData, 0);
-    }
-    localTroopTopicDetailInfo.pVersion = paramParcel.readLong();
-    return localTroopTopicDetailInfo;
-  }
+  ajkf(Dialog paramDialog) {}
   
-  public TroopTopicDetailInfo[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new TroopTopicDetailInfo[paramInt];
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajkf
  * JD-Core Version:    0.7.0.1
  */

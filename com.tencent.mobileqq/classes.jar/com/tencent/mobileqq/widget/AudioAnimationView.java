@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.widget;
 
-import alak;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -22,7 +21,7 @@ public class AudioAnimationView
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  public volatile boolean a;
+  volatile boolean jdField_a_of_type_Boolean = false;
   private int[] jdField_a_of_type_ArrayOfInt;
   private Rect[] jdField_a_of_type_ArrayOfAndroidGraphicsRect;
   private int b;
@@ -33,7 +32,6 @@ public class AudioAnimationView
   public AudioAnimationView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Boolean = false;
     a();
   }
   
@@ -45,7 +43,6 @@ public class AudioAnimationView
   public AudioAnimationView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Boolean = false;
     a();
   }
   
@@ -67,7 +64,7 @@ public class AudioAnimationView
     this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha(204);
   }
   
-  public void b()
+  void b()
   {
     int j = (int)(this.c * 0.6777F);
     int i = 0;
@@ -90,7 +87,7 @@ public class AudioAnimationView
     {
       this.jdField_a_of_type_Boolean = true;
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler.post(new alak(this, null));
+      this.jdField_a_of_type_AndroidOsHandler.post(new AudioAnimationView.Animator(this, null));
     }
   }
   
@@ -234,7 +231,7 @@ public class AudioAnimationView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AudioAnimationView
  * JD-Core Version:    0.7.0.1
  */

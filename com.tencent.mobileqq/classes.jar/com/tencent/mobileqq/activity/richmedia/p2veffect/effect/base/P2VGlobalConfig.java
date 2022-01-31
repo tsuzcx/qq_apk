@@ -7,22 +7,8 @@ import java.io.File;
 public class P2VGlobalConfig
 {
   public static final int COLUMN_COUNT = 3;
+  public static String CONCAT_FINAL_M4A;
   public static String CONCAT_FINAL_MP3;
-  public static final String DEFAULT_BYGONE_BUMPS = "http://dl.stream.qqmusic.qq.com/C100004eoXLb0lKq6P.m4a?fromtag=1";
-  public static final String DEFAULT_BYGONE_BUMPS_ID = "201401670";
-  public static final String DEFAULT_BYGONE_BUMPS_TITLE = "Bygone Bumps";
-  public static final String DEFAULT_GOLDEN_SKIES = "http://dl.stream.qqmusic.qq.com/C100002xUbdh1WNIlH.m4a?fromtag=1";
-  public static final String DEFAULT_GOLDEN_SKIES_ID = "108805100";
-  public static final String DEFAULT_GOLDEN_SKIES_TITLE = "Golden Skies";
-  public static final String DEFAULT_HAVING_LIVED = "http://dl.stream.qqmusic.qq.com/C100001IsOUk1Z0D16.m4a?fromtag=1";
-  public static final String DEFAULT_HAVING_LIVED_ID = "202468810";
-  public static final String DEFAULT_HAVING_LIVED_TITLE = "Having Lived";
-  public static final String DEFAULT_I_HOPE_YOU_FIND_PEACE = "http://dl.stream.qqmusic.qq.com/C100002PzIKz2xBTvu.m4a?fromtag=1";
-  public static final String DEFAULT_I_HOPE_YOU_FIND_PEACE_ID = "103091927";
-  public static final String DEFAULT_I_HOPE_YOU_FIND_PEACE_TITLE = "I Hope You Find Peace";
-  public static final String DEFAULT_XIA_MU_YOU_REN = "http://dl.stream.qqmusic.qq.com/C100002XecyN1bmIBb.m4a?fromtag=1";
-  public static final String DEFAULT_XIA_MU_YOU_REN_ID = "1799404";
-  public static final String DEFAULT_XIA_MU_YOU_REN_TITLE = "春を知らせるもの";
   public static final int ERR_ASYNC_REFRESHPREPARE = 4;
   public static final int ERR_FAST_RENDER_START = 10;
   public static final int ERR_GENERATOR_PREPARE = 6;
@@ -86,6 +72,7 @@ public class P2VGlobalConfig
     VIDEO_CAN_UPLOAD_LIMIT_MS = QzoneConfig.getInstance().getConfig("p2v_config_main_key", "p2v_can_upload_limit_ms_secondary_key", 15000L);
     P2V_VIDEO_CACHE_ROOT = Environment.getExternalStorageDirectory().toString() + File.separator + "tencent" + File.separator + "dynamic_video_cache" + File.separator;
     P2V_VIDEO_ROOT = Environment.getExternalStorageDirectory().toString() + File.separator + "qzone_dynamic_video" + File.separator;
+    CONCAT_FINAL_M4A = P2V_VIDEO_CACHE_ROOT + "concat_final.m4a";
     CONCAT_FINAL_MP3 = P2V_VIDEO_CACHE_ROOT + "concat_final.mp3";
     P2V_MATERIAL_ROOT = P2V_VIDEO_CACHE_ROOT + "p2v_material" + File.separator;
     P2V_MATERIAL_WATER_MARKER_PNG_NAME = P2V_MATERIAL_ROOT + "qzone_p2v_watermark.png";
@@ -94,7 +81,7 @@ public class P2VGlobalConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.p2veffect.effect.base.P2VGlobalConfig
  * JD-Core Version:    0.7.0.1
  */

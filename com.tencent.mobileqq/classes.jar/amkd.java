@@ -1,29 +1,88 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.text.style.ReplacementSpan;
-import com.tencent.widget.MultiImageTextView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class amkd
-  extends ReplacementSpan
+  extends alzl<amkc>
 {
-  private int jdField_a_of_type_Int;
-  
-  public amkd(MultiImageTextView paramMultiImageTextView, int paramInt)
+  public int a()
   {
-    this.jdField_a_of_type_Int = paramInt;
+    return 434;
   }
   
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint) {}
-  
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  @NonNull
+  public amkc a(int paramInt)
   {
-    return this.jdField_a_of_type_Int;
+    if (QLog.isColorLevel()) {
+      QLog.e("SearchBusinessConfProcessor", 2, "migrateOldOrDefaultContent ");
+    }
+    return new amkc();
+  }
+  
+  @Nullable
+  public amkc a(alzs[] paramArrayOfalzs)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchBusinessConfProcessor", 2, "onParsed start");
+    }
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("SearchBusinessConfProcessor", 2, "onParsed " + paramArrayOfalzs.length);
+      }
+      return amkc.a(paramArrayOfalzs[0]);
+    }
+    return null;
+  }
+  
+  public Class<amkc> a()
+  {
+    return amkc.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.e("SearchBusinessConfProcessor", 2, "onReqFailed " + paramInt);
+    }
+  }
+  
+  public void a(amkc paramamkc)
+  {
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder().append("onUpdate ");
+      if (paramamkc == null) {
+        break label43;
+      }
+    }
+    label43:
+    for (paramamkc = paramamkc.toString();; paramamkc = " empty")
+    {
+      QLog.d("SearchBusinessConfProcessor", 2, paramamkc);
+      return;
+    }
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amkd
  * JD-Core Version:    0.7.0.1
  */

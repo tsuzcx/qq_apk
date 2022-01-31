@@ -1,49 +1,31 @@
-import android.os.Handler;
-import com.tencent.biz.common.util.OpenIdObserver;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.open.agent.BindGroupActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class alip
-  extends OpenIdObserver
+class alip
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public alip(BindGroupActivity paramBindGroupActivity) {}
+  alip(alij paramalij, RelativeLayout.LayoutParams paramLayoutParams, View paramView1, View paramView2) {}
   
-  protected void a(boolean paramBoolean, OpenID paramOpenID)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BindGroupActivity", 2, "-->onGetOpenId, isSuccess: " + paramBoolean + " data: " + paramOpenID.toString());
-    }
-    if ((this.a.isFinishing()) || (this.a.jdField_c_of_type_Boolean)) {}
+    if (paramValueAnimator.getAnimatedValue() == null) {}
+    float f;
     do
     {
       return;
-      this.a.jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog.hide();
-      if (this.a.a != null) {
-        this.a.a.removeCallbacksAndMessages(null);
-      }
-      if ((paramBoolean) && (paramOpenID != null) && (paramOpenID.openID != null))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("BindGroupActivity", 2, "openIdObserver success");
-        }
-        this.a.jdField_c_of_type_JavaLangString = paramOpenID.openID;
-        if (!paramOpenID.openID.equals(this.a.jdField_b_of_type_JavaLangString))
-        {
-          this.a.b();
-          return;
-        }
-        this.a.a();
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("BindGroupActivity", 2, "openIdObserver fail");
+      f = ((Integer)paramValueAnimator.getAnimatedValue()).intValue() * 1.0F / 1000.0F;
+      int i = (int)(-this.jdField_a_of_type_Alij.d * f);
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = i;
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
+    } while (!this.jdField_a_of_type_Alij.g);
+    this.b.setAlpha(1.0F - f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alip
  * JD-Core Version:    0.7.0.1
  */

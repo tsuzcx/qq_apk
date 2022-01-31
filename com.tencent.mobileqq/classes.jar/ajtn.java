@@ -1,34 +1,37 @@
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.logic.TroopAvatarWallEditCtrl;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
-import java.util.ArrayList;
-import mqq.observer.AccountObserver;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-public class ajtn
-  extends AccountObserver
+class ajtn
+  implements mgp
 {
-  public ajtn(TroopAvatarWallEditCtrl paramTroopAvatarWallEditCtrl) {}
+  private final azrn jdField_a_of_type_Azrn;
+  private final WeakReference<ajtg> jdField_a_of_type_JavaLangRefWeakReference;
+  private final long[] jdField_a_of_type_ArrayOfLong;
   
-  public void onUpdateSKey(String paramString1, String paramString2)
+  ajtn(ajtg paramajtg, azrn paramazrn, long[] paramArrayOfLong)
   {
-    int i = this.a.jdField_a_of_type_JavaUtilArrayList.size();
-    if (paramString1 == null) {
-      while (i > 0)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.b(this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.b - 1);
-        i -= 1;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramajtg);
+    this.jdField_a_of_type_Azrn = paramazrn;
+    this.jdField_a_of_type_ArrayOfLong = paramArrayOfLong;
+  }
+  
+  public void a(int paramInt1, mgr parammgr, int paramInt2)
+  {
+    parammgr = (ajtg)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((parammgr != null) && (parammgr.app != null))
+    {
+      if (paramInt1 == 0) {
+        parammgr.app.a().a(1, this.jdField_a_of_type_Azrn.a, this.jdField_a_of_type_Azrn.b, this.jdField_a_of_type_ArrayOfLong, 2);
       }
+      return;
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null) {
-      TroopUtils.a(paramString1, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopcode, this.a.jdField_a_of_type_JavaUtilArrayList, this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter);
-    }
+    QLog.e("TroopHandler", 1, "WeakGVideoGrayConfigListener#onResult get weakAppReference " + parammgr);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajtn
  * JD-Core Version:    0.7.0.1
  */

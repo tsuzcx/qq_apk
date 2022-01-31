@@ -1,18 +1,32 @@
-import com.dataline.activities.LiteMutiPicViewerActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.dataline.activities.LiteAdvanceActivity;
+import com.tencent.widget.Switch;
 
-class ce
-  implements Runnable
+public class ce
+  implements CompoundButton.OnCheckedChangeListener
 {
-  ce(cb paramcb) {}
+  public ce(LiteAdvanceActivity paramLiteAdvanceActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    LiteMutiPicViewerActivity.a(this.a.a);
+    if (!LiteAdvanceActivity.a(this.a, paramBoolean))
+    {
+      paramCompoundButton = LiteAdvanceActivity.a(this.a);
+      if (!paramBoolean) {}
+      for (paramBoolean = true;; paramBoolean = false)
+      {
+        paramCompoundButton.setChecked(paramBoolean);
+        bbmy.a(this.a, 1, ajjy.a(2131640398), 0).b(this.a.getTitleBarHeight());
+        return;
+      }
+    }
+    LiteAdvanceActivity.b(this.a, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ce
  * JD-Core Version:    0.7.0.1
  */

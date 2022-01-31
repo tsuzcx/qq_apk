@@ -2,30 +2,23 @@ package com.tencent.component.network.downloader.impl;
 
 import android.text.TextUtils;
 import com.tencent.component.network.downloader.Downloader;
-import pom;
-import pon;
 
 public class ImageDownloaderInitializer
 {
-  public static void a(Downloader paramDownloader)
+  private static final char CHAR_EQUALS = '=';
+  private static final int IMAGE_URL_KP_ALLOWED = 1;
+  public static final int IMAGE_URL_PT_QZONE_ALBUM = 0;
+  
+  public static void initImageDownloader(Downloader paramDownloader)
   {
     if (paramDownloader == null) {
       return;
     }
-    paramDownloader.setPreprocessStrategy(new pom(paramDownloader));
-    paramDownloader.setContentHandler(new pon());
+    paramDownloader.setPreprocessStrategy(new ImageDownloaderInitializer.1(paramDownloader));
+    paramDownloader.setContentHandler(new ImageDownloaderInitializer.2());
   }
   
-  private static boolean c(String paramString)
-  {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((!paramString.endsWith("photo.store.qq.com")) && (!paramString.endsWith("qpic.cn"))) {
-      return false;
-    }
-    return true;
-  }
-  
-  private static boolean d(String paramString)
+  private static boolean isMADomain(String paramString)
   {
     boolean bool1 = false;
     try
@@ -43,6 +36,15 @@ public class ImageDownloaderInitializer
     }
     catch (Exception paramString) {}
     return false;
+  }
+  
+  private static boolean needCookie(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {}
+    while ((!paramString.endsWith("photo.store.qq.com")) && (!paramString.endsWith("qpic.cn"))) {
+      return false;
+    }
+    return true;
   }
 }
 

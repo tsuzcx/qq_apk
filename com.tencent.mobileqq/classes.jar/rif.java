@@ -1,18 +1,10 @@
-import com.tencent.mezs.a;
-
-public class rif
-  extends Thread
+public abstract interface rif
 {
-  public rif(a parama) {}
-  
-  public void run()
-  {
-    a.a(this.a);
-  }
+  public abstract int a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rif
  * JD-Core Version:    0.7.0.1
  */

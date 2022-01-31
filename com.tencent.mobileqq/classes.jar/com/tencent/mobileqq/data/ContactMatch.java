@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class ContactMatch
-  extends Entity
+  extends atmo
 {
   public short age;
   public int commonFriend;
   public short gender = 255;
   public boolean isReaded;
-  @unique
+  @atoc
   public String mobileNo;
   public String name;
   public long timestamp;

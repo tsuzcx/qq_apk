@@ -1,88 +1,56 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.async.JobContext;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Vector;
 
-public class ujq
-  implements Animation.AnimationListener
+class ujq
+  implements slx<syx, syy>
 {
-  public ujq(TroopTransferActivity paramTroopTransferActivity, TranslateAnimation paramTranslateAnimation1, TranslateAnimation paramTranslateAnimation2, int paramInt) {}
+  ujq(ujo paramujo, JobContext paramJobContext, ujb paramujb) {}
   
-  /* Error */
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(@NonNull syx paramsyx, @Nullable syy arg2, @NonNull ErrorMessage paramErrorMessage)
   {
-    // Byte code:
-    //   0: aload_1
-    //   1: aload_0
-    //   2: getfield 17	ujq:jdField_a_of_type_AndroidViewAnimationTranslateAnimation	Landroid/view/animation/TranslateAnimation;
-    //   5: if_acmpne +49 -> 54
-    //   8: aload_0
-    //   9: getfield 15	ujq:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
-    //   12: getfield 34	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidAppDialog	Landroid/app/Dialog;
-    //   15: astore_1
-    //   16: aload_1
-    //   17: ifnull +91 -> 108
-    //   20: aload_0
-    //   21: getfield 15	ujq:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
-    //   24: getfield 34	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidAppDialog	Landroid/app/Dialog;
-    //   27: invokevirtual 39	android/app/Dialog:show	()V
-    //   30: aload_0
-    //   31: getfield 15	ujq:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
-    //   34: getfield 42	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
-    //   37: aconst_null
-    //   38: invokevirtual 47	android/widget/LinearLayout:setAnimation	(Landroid/view/animation/Animation;)V
-    //   41: aload_0
-    //   42: getfield 15	ujq:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
-    //   45: getfield 50	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidViewView	Landroid/view/View;
-    //   48: bipush 8
-    //   50: invokevirtual 56	android/view/View:setVisibility	(I)V
-    //   53: return
-    //   54: aload_1
-    //   55: aload_0
-    //   56: getfield 19	ujq:b	Landroid/view/animation/TranslateAnimation;
-    //   59: if_acmpne +49 -> 108
-    //   62: aload_0
-    //   63: getfield 15	ujq:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
-    //   66: getfield 42	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
-    //   69: aconst_null
-    //   70: invokevirtual 47	android/widget/LinearLayout:setAnimation	(Landroid/view/animation/Animation;)V
-    //   73: aload_0
-    //   74: getfield 15	ujq:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
-    //   77: getfield 42	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
-    //   80: aload_0
-    //   81: getfield 21	ujq:jdField_a_of_type_Int	I
-    //   84: invokevirtual 59	android/widget/LinearLayout:offsetTopAndBottom	(I)V
-    //   87: aload_0
-    //   88: getfield 15	ujq:jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity	Lcom/tencent/mobileqq/activity/TroopTransferActivity;
-    //   91: getfield 42	com/tencent/mobileqq/activity/TroopTransferActivity:jdField_a_of_type_AndroidWidgetLinearLayout	Landroid/widget/LinearLayout;
-    //   94: invokevirtual 62	android/widget/LinearLayout:requestLayout	()V
-    //   97: return
-    //   98: astore_1
-    //   99: aload_1
-    //   100: invokevirtual 65	java/lang/Exception:printStackTrace	()V
-    //   103: return
-    //   104: astore_1
-    //   105: goto -75 -> 30
-    //   108: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	109	0	this	ujq
-    //   0	109	1	paramAnimation	Animation
-    // Exception table:
-    //   from	to	target	type
-    //   0	16	98	java/lang/Exception
-    //   30	53	98	java/lang/Exception
-    //   54	97	98	java/lang/Exception
-    //   20	30	104	java/lang/Exception
+    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    {
+      urk.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "feed comment info pull segment cancel on net respond");
+      return;
+    }
+    if (??? == null)
+    {
+      paramErrorMessage = new syy(paramErrorMessage);
+      synchronized (this.jdField_a_of_type_Ujo)
+      {
+        ujo.a(this.jdField_a_of_type_Ujo, paramErrorMessage);
+        ujo.a(this.jdField_a_of_type_Ujo).remove(paramsyx);
+        ujo.a(this.jdField_a_of_type_Ujo, this.jdField_a_of_type_Ujb);
+        return;
+      }
+    }
+    if (paramErrorMessage.isFail()) {
+      urk.d("Q.qqstory.home.data:HomeFeedAllInfoPullSegment", "request fail for comment request");
+    }
+    spd localspd = (spd)sqg.a(17);
+    Iterator localIterator = ???.jdField_a_of_type_JavaUtilList.iterator();
+    for (;;)
+    {
+      paramErrorMessage = ???;
+      if (!localIterator.hasNext()) {
+        break;
+      }
+      paramErrorMessage = (syz)localIterator.next();
+      localspd.a(paramErrorMessage.jdField_a_of_type_JavaUtilList, paramErrorMessage.jdField_a_of_type_JavaLangString, false, true);
+      if (paramErrorMessage.b == 1) {
+        paramErrorMessage.jdField_a_of_type_JavaUtilList.addAll(localspd.b(paramErrorMessage.jdField_a_of_type_JavaLangString, false));
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ujq
  * JD-Core Version:    0.7.0.1
  */

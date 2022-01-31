@@ -1,20 +1,19 @@
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnBufferingUpdateListener;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class ntv
-  implements IMediaPlayer.OnBufferingUpdateListener
+class ntv
+  implements ViewBase.OnClickListener
 {
-  public ntv(TextureVideoView paramTextureVideoView) {}
+  ntv(ntu paramntu) {}
   
-  public void a(IMediaPlayer paramIMediaPlayer, int paramInt)
+  public void onClick(ViewBase paramViewBase)
   {
-    this.a.f = paramInt;
+    this.a.jdField_a_of_type_Nwk.b(this.a.jdField_a_of_type_Nwx);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ntv
  * JD-Core Version:    0.7.0.1
  */

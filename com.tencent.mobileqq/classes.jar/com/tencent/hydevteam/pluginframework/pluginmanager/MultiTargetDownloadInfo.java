@@ -17,6 +17,12 @@ public class MultiTargetDownloadInfo
     super(paramString2, paramString3, paramLong);
     this.cgiVersion = paramString1;
   }
+  
+  public MultiTargetDownloadInfo(String paramString1, String paramString2, String paramString3, long paramLong, boolean paramBoolean)
+  {
+    super(paramString2, paramString3, paramLong, paramBoolean);
+    this.cgiVersion = paramString1;
+  }
 }
 
 

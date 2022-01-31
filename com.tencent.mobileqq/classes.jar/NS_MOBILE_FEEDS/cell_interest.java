@@ -8,11 +8,11 @@ import java.util.ArrayList;
 public final class cell_interest
   extends JceStruct
 {
-  static ArrayList cache_users = new ArrayList();
+  static ArrayList<s_user> cache_users = new ArrayList();
   public String desc = "";
   public int is_interested;
   public int num;
-  public ArrayList users;
+  public ArrayList<s_user> users;
   
   static
   {
@@ -22,7 +22,7 @@ public final class cell_interest
   
   public cell_interest() {}
   
-  public cell_interest(int paramInt1, ArrayList paramArrayList, String paramString, int paramInt2)
+  public cell_interest(int paramInt1, ArrayList<s_user> paramArrayList, String paramString, int paramInt2)
   {
     this.num = paramInt1;
     this.users = paramArrayList;
@@ -52,7 +52,7 @@ public final class cell_interest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_interest
  * JD-Core Version:    0.7.0.1
  */

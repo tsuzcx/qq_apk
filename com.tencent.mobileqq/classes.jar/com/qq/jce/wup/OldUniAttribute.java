@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-class OldUniAttribute
+public class OldUniAttribute
 {
   protected HashMap<String, HashMap<String, byte[]>> _data = new HashMap();
   JceInputStream _is = new JceInputStream();
@@ -118,37 +118,35 @@ class OldUniAttribute
   }
   
   public <T> T get(String paramString)
-    throws ObjectCreateException
   {
+    Object localObject2 = null;
     if (!this._data.containsKey(paramString)) {
       return null;
     }
     if (this.cachedData.containsKey(paramString)) {
       return this.cachedData.get(paramString);
     }
-    Object localObject3 = (HashMap)this._data.get(paramString);
-    Object localObject2 = null;
-    Object localObject1 = new byte[0];
-    localObject3 = ((HashMap)localObject3).entrySet().iterator();
-    if (((Iterator)localObject3).hasNext())
+    Object localObject1 = ((HashMap)this._data.get(paramString)).entrySet().iterator();
+    if (((Iterator)localObject1).hasNext())
     {
-      localObject1 = (Map.Entry)((Iterator)localObject3).next();
+      localObject1 = (Map.Entry)((Iterator)localObject1).next();
       localObject2 = (String)((Map.Entry)localObject1).getKey();
-      localObject1 = (byte[])((Map.Entry)localObject1).getValue();
     }
-    try
-    {
-      localObject2 = getCacheProxy((String)localObject2);
-      this._is.wrap((byte[])localObject1);
-      this._is.setServerEncoding(this.encodeName);
-      localObject1 = this._is.read(localObject2, 0, true);
-      saveDataCache(paramString, localObject1);
-      return localObject1;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-      throw new ObjectCreateException(paramString);
+    for (localObject1 = (byte[])((Map.Entry)localObject1).getValue();; localObject1 = new byte[0]) {
+      try
+      {
+        localObject2 = getCacheProxy((String)localObject2);
+        this._is.wrap((byte[])localObject1);
+        this._is.setServerEncoding(this.encodeName);
+        localObject1 = this._is.read(localObject2, 0, true);
+        saveDataCache(paramString, localObject1);
+        return localObject1;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        throw new ObjectCreateException(paramString);
+      }
     }
   }
   
@@ -160,31 +158,34 @@ class OldUniAttribute
     if (this.cachedData.containsKey(paramString)) {
       return this.cachedData.get(paramString);
     }
-    Object localObject3 = (HashMap)this._data.get(paramString);
-    Object localObject2 = "";
-    Object localObject1 = new byte[0];
-    localObject3 = ((HashMap)localObject3).entrySet().iterator();
-    if (((Iterator)localObject3).hasNext())
+    Object localObject1 = ((HashMap)this._data.get(paramString)).entrySet().iterator();
+    Object localObject2;
+    if (((Iterator)localObject1).hasNext())
     {
-      localObject1 = (Map.Entry)((Iterator)localObject3).next();
+      localObject1 = (Map.Entry)((Iterator)localObject1).next();
       localObject2 = (String)((Map.Entry)localObject1).getKey();
       localObject1 = (byte[])((Map.Entry)localObject1).getValue();
     }
-    try
+    for (;;)
     {
-      localObject2 = getCacheProxy((String)localObject2);
-      this._is.wrap((byte[])localObject1);
-      this._is.setServerEncoding(this.encodeName);
-      localObject1 = this._is.read(localObject2, 0, true);
-      saveDataCache(paramString, localObject1);
-      return localObject1;
+      try
+      {
+        localObject2 = getCacheProxy((String)localObject2);
+        this._is.wrap((byte[])localObject1);
+        this._is.setServerEncoding(this.encodeName);
+        localObject1 = this._is.read(localObject2, 0, true);
+        saveDataCache(paramString, localObject1);
+        return localObject1;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        saveDataCache(paramString, paramObject);
+        return paramObject;
+      }
+      byte[] arrayOfByte = new byte[0];
+      localObject2 = "";
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-      saveDataCache(paramString, paramObject);
-    }
-    return paramObject;
   }
   
   public String getEncodeName()
@@ -193,7 +194,6 @@ class OldUniAttribute
   }
   
   public <T> T getJceStruct(String paramString)
-    throws ObjectCreateException
   {
     if (!this._data.containsKey(paramString)) {
       return null;
@@ -201,29 +201,29 @@ class OldUniAttribute
     if (this.cachedData.containsKey(paramString)) {
       return this.cachedData.get(paramString);
     }
-    Object localObject3 = (HashMap)this._data.get(paramString);
-    Object localObject2 = null;
-    Object localObject1 = new byte[0];
-    localObject3 = ((HashMap)localObject3).entrySet().iterator();
-    if (((Iterator)localObject3).hasNext())
+    Object localObject1 = ((HashMap)this._data.get(paramString)).entrySet().iterator();
+    if (((Iterator)localObject1).hasNext())
     {
-      localObject1 = (Map.Entry)((Iterator)localObject3).next();
-      localObject2 = (String)((Map.Entry)localObject1).getKey();
-      localObject1 = (byte[])((Map.Entry)localObject1).getValue();
+      localObject2 = (Map.Entry)((Iterator)localObject1).next();
+      localObject1 = (String)((Map.Entry)localObject2).getKey();
     }
-    try
+    for (Object localObject2 = (byte[])((Map.Entry)localObject2).getValue();; localObject2 = new byte[0])
     {
-      localObject2 = getCacheProxy((String)localObject2);
-      this._is.wrap((byte[])localObject1);
-      this._is.setServerEncoding(this.encodeName);
-      localObject1 = this._is.directRead((JceStruct)localObject2, 0, true);
-      saveDataCache(paramString, localObject1);
-      return localObject1;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-      throw new ObjectCreateException(paramString);
+      try
+      {
+        localObject1 = getCacheProxy((String)localObject1);
+        this._is.wrap((byte[])localObject2);
+        this._is.setServerEncoding(this.encodeName);
+        localObject1 = this._is.directRead((JceStruct)localObject1, 0, true);
+        saveDataCache(paramString, localObject1);
+        return localObject1;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        throw new ObjectCreateException(paramString);
+      }
+      localObject1 = null;
     }
   }
   
@@ -261,33 +261,35 @@ class OldUniAttribute
   }
   
   public <T> T remove(String paramString)
-    throws ObjectCreateException
   {
     if (!this._data.containsKey(paramString)) {
       return null;
     }
-    Object localObject2 = (HashMap)this._data.remove(paramString);
-    Object localObject1 = "";
-    paramString = new byte[0];
-    localObject2 = ((HashMap)localObject2).entrySet().iterator();
-    if (((Iterator)localObject2).hasNext())
+    paramString = ((HashMap)this._data.remove(paramString)).entrySet().iterator();
+    Object localObject;
+    if (paramString.hasNext())
     {
-      paramString = (Map.Entry)((Iterator)localObject2).next();
-      localObject1 = (String)paramString.getKey();
+      paramString = (Map.Entry)paramString.next();
+      localObject = (String)paramString.getKey();
       paramString = (byte[])paramString.getValue();
     }
-    try
+    for (;;)
     {
-      localObject1 = BasicClassTypeUtil.createClassByUni((String)localObject1);
-      this._is.wrap(paramString);
-      this._is.setServerEncoding(this.encodeName);
-      paramString = this._is.read(localObject1, 0, true);
-      return paramString;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
-      throw new ObjectCreateException(paramString);
+      try
+      {
+        localObject = BasicClassTypeUtil.createClassByUni((String)localObject);
+        this._is.wrap(paramString);
+        this._is.setServerEncoding(this.encodeName);
+        paramString = this._is.read(localObject, 0, true);
+        return paramString;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        throw new ObjectCreateException(paramString);
+      }
+      paramString = new byte[0];
+      localObject = "";
     }
   }
   

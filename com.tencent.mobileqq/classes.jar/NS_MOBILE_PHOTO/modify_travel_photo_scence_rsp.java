@@ -9,13 +9,13 @@ import java.util.Map;
 public final class modify_travel_photo_scence_rsp
   extends JceStruct
 {
-  static Map cache_photo_result;
-  static Map cache_poi_result;
-  static Map cache_time_range = new HashMap();
-  public Map photo_result;
-  public Map poi_result;
+  static Map<String, Integer> cache_photo_result;
+  static Map<String, Integer> cache_poi_result;
+  static Map<Long, Long> cache_time_range = new HashMap();
+  public Map<String, Integer> photo_result;
+  public Map<String, Integer> poi_result;
   public String poiid = "";
-  public Map time_range;
+  public Map<Long, Long> time_range;
   
   static
   {
@@ -28,12 +28,12 @@ public final class modify_travel_photo_scence_rsp
   
   public modify_travel_photo_scence_rsp() {}
   
-  public modify_travel_photo_scence_rsp(String paramString, Map paramMap1, Map paramMap2, Map paramMap3)
+  public modify_travel_photo_scence_rsp(String paramString, Map<Long, Long> paramMap, Map<String, Integer> paramMap1, Map<String, Integer> paramMap2)
   {
     this.poiid = paramString;
-    this.time_range = paramMap1;
-    this.poi_result = paramMap2;
-    this.photo_result = paramMap3;
+    this.time_range = paramMap;
+    this.poi_result = paramMap1;
+    this.photo_result = paramMap2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)

@@ -1,46 +1,54 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberItem;
-import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberListAdapter;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedVideoInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.GeneralFeed;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryFeed;
+import com.tencent.biz.qqstory.storyHome.model.GeneralFeedItem;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class ujm
-  extends FriendListObserver
+  extends ukv<GeneralFeedItem>
 {
-  public ujm(TroopTransferActivity paramTroopTransferActivity) {}
+  public boolean a;
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public ujm(@NonNull GeneralFeedItem paramGeneralFeedItem)
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a.a(paramString) != null)) {
-      this.a.a.notifyDataSetChanged();
-    }
+    super(paramGeneralFeedItem);
   }
   
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public GeneralFeedItem a()
   {
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
+    return (GeneralFeedItem)super.a();
+  }
+  
+  public boolean a(qqstory_struct.StoryFeed paramStoryFeed)
+  {
+    Object localObject = (qqstory_struct.GeneralFeed)paramStoryFeed.general_feed.get();
+    ((GeneralFeedItem)this.a).covertFrom(paramStoryFeed.feed_id.get().toStringUtf8(), (qqstory_struct.GeneralFeed)localObject);
+    ((GeneralFeedItem)this.a).feedSourceTagType = paramStoryFeed.feed_source_tag_type.get();
+    urk.a("Q.qqstory.home.data.GeneralHomeFeed", "GeneralHomeFeed convertFrom, feedSourceType:%s, feedId:%s", Integer.valueOf(((GeneralFeedItem)this.a).feedSourceTagType), ((GeneralFeedItem)this.a).feedId);
+    paramStoryFeed = new ArrayList();
+    localObject = ((qqstory_struct.GeneralFeed)localObject).feed_video_info_list.get().iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      paramString = this.a.a.a(paramString);
-      if (paramString != null) {
-        break label28;
-      }
+      qqstory_struct.FeedVideoInfo localFeedVideoInfo = (qqstory_struct.FeedVideoInfo)((Iterator)localObject).next();
+      StoryVideoItem localStoryVideoItem = new StoryVideoItem();
+      localStoryVideoItem.convertFrom("Q.qqstory.home.data.GeneralHomeFeed", localFeedVideoInfo);
+      paramStoryFeed.add(localStoryVideoItem);
     }
-    label28:
-    Friends localFriends;
-    do
-    {
-      return;
-      localFriends = ((FriendsManager)this.a.app.getManager(50)).c(paramString.a);
-    } while (localFriends == null);
-    this.a.a(paramString, localFriends);
+    c(paramStoryFeed, true);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ujm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,27 +1,33 @@
 package com.tencent.component.network.utils;
 
+import android.os.Build.VERSION;
 import android.os.Environment;
 import android.os.StatFs;
 import java.io.File;
 
 public class SDCardUtil
 {
-  public static long a()
+  private static final String NO_SDCARD_TIPS = "无SD Card";
+  private static final long UNIT = 1048576L;
+  private static final String UNIT_NAME = "MB";
+  
+  private static String calcCapUnit(int paramInt, float paramFloat)
   {
-    if (!a()) {
-      return -1L;
+    if (paramFloat < 0.0F) {
+      return "";
     }
-    StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
-    long l = localStatFs.getBlockSize();
-    return localStatFs.getBlockCount() * l;
+    if (paramFloat < 1024.0F) {
+      return String.format("%.2f", new Object[] { Float.valueOf(paramFloat) }) + countToUnit(paramInt);
+    }
+    return calcCapUnit(paramInt + 1, paramFloat / 1024.0F);
   }
   
-  public static String a()
+  private static String calcCapUnit(long paramLong)
   {
-    return Environment.getExternalStorageState();
+    return calcCapUnit(0, (float)paramLong);
   }
   
-  private static String a(int paramInt)
+  private static String countToUnit(int paramInt)
   {
     if (paramInt == 0) {
       return "byte";
@@ -44,53 +50,71 @@ public class SDCardUtil
     return "";
   }
   
-  private static String a(int paramInt, float paramFloat)
+  public static long getSDCardCapability()
   {
-    if (paramFloat < 0.0F) {
-      return "";
-    }
-    if (paramFloat < 1024.0F) {
-      return String.format("%.2f", new Object[] { Float.valueOf(paramFloat) }) + a(paramInt);
-    }
-    return a(paramInt + 1, paramFloat / 1024.0F);
-  }
-  
-  private static String a(long paramLong)
-  {
-    return a(0, (float)paramLong);
-  }
-  
-  public static boolean a()
-  {
-    return a().equals("mounted");
-  }
-  
-  public static long b()
-  {
-    if (!a()) {
+    if (!isSDCardMounted()) {
       return -1L;
     }
     StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
     long l = localStatFs.getBlockSize();
-    return localStatFs.getAvailableBlocks() * l;
+    return localStatFs.getBlockCount() * l;
   }
   
-  public static String b()
+  public static String getSDCardCapabilityForDisplay()
   {
-    long l = a();
+    long l = getSDCardCapability();
     if (l >= 0L) {
-      return a(l);
+      return calcCapUnit(l);
     }
     return "无SD Card";
   }
   
-  public static String c()
+  public static long getSDCardRemain()
   {
-    long l = b();
+    if (!isSDCardMounted()) {
+      return -1L;
+    }
+    StatFs localStatFs = new StatFs(Environment.getExternalStorageDirectory().getPath());
+    long l1;
+    if (Build.VERSION.SDK_INT > 17)
+    {
+      l1 = localStatFs.getBlockSizeLong();
+      if (Build.VERSION.SDK_INT <= 17) {
+        break label67;
+      }
+    }
+    label67:
+    for (long l2 = localStatFs.getAvailableBlocksLong();; l2 = localStatFs.getAvailableBlocks())
+    {
+      return l1 * l2;
+      l1 = localStatFs.getBlockSize();
+      break;
+    }
+  }
+  
+  public static String getSDCardRemainForDisplay()
+  {
+    long l = getSDCardRemain();
     if (l >= 0L) {
-      return a(l);
+      return calcCapUnit(l);
     }
     return "无SD Card";
+  }
+  
+  public static String getSDCardState()
+  {
+    return Environment.getExternalStorageState();
+  }
+  
+  public static boolean isSDCardMounted()
+  {
+    return getSDCardState().equals("mounted");
+  }
+  
+  public static boolean isSdCardHasEnoughCapability()
+  {
+    long l = 10485760;
+    return getSDCardRemain() > l;
   }
 }
 

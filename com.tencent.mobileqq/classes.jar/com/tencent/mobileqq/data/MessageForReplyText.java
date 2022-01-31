@@ -1,59 +1,68 @@
 package com.tencent.mobileqq.data;
 
+import akbm;
+import akhp;
+import amrx;
 import android.text.TextUtils;
-import com.tencent.biz.anonymous.AnonymousChatHelper;
+import atnz;
+import awqx;
+import bach;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.utils.MessagePkgUtils;
-import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
-import com.tencent.mobileqq.troop.utils.TroopTopicMgr.GroupPostElemInfo;
-import com.tencent.mobileqq.utils.HexUtil;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.Iterator;
+import java.util.List;
+import mnf;
+import mqq.app.AppRuntime;
 
 public class MessageForReplyText
   extends ChatMessage
+  implements amrx
 {
-  public static final String KEY_IS_PLAYED_PIC_GIF = "reply_msg_is_played_pic_gif";
+  public static final String KEY_BARRAGE_SOURCE_MSG_TYPE = "barrage_source_msg_type";
+  public static final String KEY_BARRAGE_TIME_LOCATION = "barrage_time_location";
   public String action;
-  public TroopTopicMgr.GroupPostElemInfo mGroupPostElemInfo;
+  public int barrageSourceMsgType;
+  public long barrageTimeLocation;
+  public boolean isBarrageMsg;
   public boolean mHasPullHistorySourceMsg;
-  public boolean mIsPlayedPicCommentAnimate;
   public MessageForReplyText.SourceMsgInfo mSourceMsgInfo;
   public int msgVia;
   public CharSequence sb;
+  @atnz
+  private MessageRecord sourceMessage;
   
-  public static final String parseMsgToJsonText(ChatMessage paramChatMessage, String paramString, int paramInt)
+  public static QQAppInterface getAppInterface()
   {
-    for (;;)
+    if (BaseApplicationImpl.getApplication() != null)
     {
-      try
-      {
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("emoji_id", paramString);
-        if ((paramChatMessage instanceof MessageForMixedMsg))
-        {
-          localJSONObject.put("msg_type", 1);
-          localJSONObject.put("submsg_index", paramInt);
-          return localJSONObject.toString();
-        }
-        if ((paramChatMessage instanceof MessageForTroopFile)) {
-          localJSONObject.put("msg_type", 2);
-        } else {
-          localJSONObject.put("msg_type", 0);
-        }
-      }
-      catch (JSONException paramChatMessage)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("zivonchen", 2, "MessageForReplyText parseMsgToJsonText error = " + QLog.getStackTraceString(paramChatMessage));
-        }
-        return null;
+      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime instanceof QQAppInterface)) {
+        return (QQAppInterface)localAppRuntime;
       }
     }
+    return null;
+  }
+  
+  public static boolean needHideLocate(MessageForReplyText paramMessageForReplyText)
+  {
+    if (paramMessageForReplyText == null) {}
+    while (((akbm.c(paramMessageForReplyText.istroop)) && (paramMessageForReplyText.mSourceMsgInfo != null) && (paramMessageForReplyText.mSourceMsgInfo.origUid == 0L)) || (paramMessageForReplyText.mSourceMsgInfo.origUid == -1L)) {
+      return true;
+    }
+    return false;
+  }
+  
+  public static void reportReplyMsg(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, ChatMessage paramChatMessage)
+  {
+    if (paramSessionInfo.jdField_a_of_type_Int == 0)
+    {
+      awqx.b(paramQQAppInterface, "dc00898", "", "", "0X80095E8", "0X80095E8", 0, 0, "", "", "", "");
+      return;
+    }
+    reportReplyMsg(paramQQAppInterface, "Msg_menu", "clk_replyMsg", paramSessionInfo.jdField_a_of_type_JavaLangString, paramChatMessage);
   }
   
   public static void reportReplyMsg(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, ChatMessage paramChatMessage)
@@ -77,12 +86,12 @@ public class MessageForReplyText
         str1 = "Grp_Dis_replyMsg";
         label99:
         String str2 = i + "";
-        if (!AnonymousChatHelper.a(paramChatMessage)) {
+        if (!mnf.a(paramChatMessage)) {
           break label281;
         }
         paramChatMessage = "1";
         label133:
-        ReportController.b(paramQQAppInterface, "P_CliOper", str1, "", paramString1, paramString2, 0, 0, paramString3, str2, paramChatMessage, (String)localObject);
+        awqx.b(paramQQAppInterface, "P_CliOper", str1, "", paramString1, paramString2, 0, 0, paramString3, str2, paramChatMessage, (String)localObject);
         return;
         i = 0;
         localObject = "";
@@ -120,7 +129,7 @@ public class MessageForReplyText
         break label99;
         paramChatMessage = "0";
         break label133;
-        ReportController.b(paramQQAppInterface, "P_CliOper", "Grp_replyMsg", "", paramString1, paramString2, 0, 0, paramString3, "", "", "");
+        awqx.b(paramQQAppInterface, "P_CliOper", "Grp_replyMsg", "", paramString1, paramString2, 0, 0, paramString3, "", "", "");
         return;
       }
       label317:
@@ -129,221 +138,280 @@ public class MessageForReplyText
     }
   }
   
+  public void deepCopySourceMsg(MessageForReplyText paramMessageForReplyText)
+  {
+    if (paramMessageForReplyText == null)
+    {
+      QLog.d("Q.msg.", 1, "originMsg is null");
+      return;
+    }
+    this.mSourceMsgInfo = new MessageForReplyText.SourceMsgInfo(paramMessageForReplyText.mSourceMsgInfo);
+    paramMessageForReplyText = paramMessageForReplyText.sourceMessage;
+    if (paramMessageForReplyText != null) {
+      if (paramMessageForReplyText.msgtype == -1037) {
+        paramMessageForReplyText = ((MessageForLongMsg)paramMessageForReplyText).rebuildLongMsg(true);
+      }
+    }
+    for (;;)
+    {
+      if ((paramMessageForReplyText == null) && (QLog.isColorLevel())) {
+        QLog.d("Q.msg.", 2, "MessageForReplyText deepCopySourceMsg is null");
+      }
+      this.sourceMessage = paramMessageForReplyText;
+      return;
+      if (paramMessageForReplyText.msgtype == -1036)
+      {
+        paramMessageForReplyText = (MessageForMixedMsg)((MessageForLongMsg)paramMessageForReplyText).rebuildLongMsg();
+      }
+      else if (paramMessageForReplyText.msgtype == -1035)
+      {
+        paramMessageForReplyText = ((MessageForMixedMsg)paramMessageForReplyText).rebuildMixedMsg();
+      }
+      else if (paramMessageForReplyText.msgtype == -2011)
+      {
+        paramMessageForReplyText = new MessageForStructing(paramMessageForReplyText);
+      }
+      else
+      {
+        paramMessageForReplyText = (MessageRecord)paramMessageForReplyText.deepCopyByReflect();
+        continue;
+        paramMessageForReplyText = null;
+      }
+    }
+  }
+  
   /* Error */
   protected void doParse()
   {
     // Byte code:
-    //   0: iconst_1
-    //   1: istore_2
-    //   2: aload_0
-    //   3: getfield 131	com/tencent/mobileqq/data/MessageForReplyText:msg	Ljava/lang/String;
-    //   6: astore 4
-    //   8: aload_0
-    //   9: new 133	com/tencent/mobileqq/text/QQText
-    //   12: dup
-    //   13: aload 4
-    //   15: bipush 13
-    //   17: bipush 32
-    //   19: aload_0
-    //   20: invokespecial 136	com/tencent/mobileqq/text/QQText:<init>	(Ljava/lang/CharSequence;IILcom/tencent/mobileqq/data/MessageRecord;)V
-    //   23: putfield 138	com/tencent/mobileqq/data/MessageForReplyText:sb	Ljava/lang/CharSequence;
-    //   26: aload_0
-    //   27: ldc 140
-    //   29: invokevirtual 144	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   32: astore_3
-    //   33: aload_3
-    //   34: invokestatic 150	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   37: ifne +170 -> 207
-    //   40: aload_3
-    //   41: invokestatic 156	java/lang/Boolean:parseBoolean	(Ljava/lang/String;)Z
-    //   44: istore_1
-    //   45: aload_0
-    //   46: ldc 8
-    //   48: invokevirtual 144	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   51: astore_3
-    //   52: aload_0
-    //   53: iconst_0
-    //   54: putfield 158	com/tencent/mobileqq/data/MessageForReplyText:mIsPlayedPicCommentAnimate	Z
-    //   57: aload_3
-    //   58: invokestatic 150	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   61: ifne +11 -> 72
-    //   64: aload_0
-    //   65: aload_3
-    //   66: invokestatic 156	java/lang/Boolean:parseBoolean	(Ljava/lang/String;)Z
-    //   69: putfield 158	com/tencent/mobileqq/data/MessageForReplyText:mIsPlayedPicCommentAnimate	Z
-    //   72: iload_1
-    //   73: ifeq +323 -> 396
-    //   76: getstatic 164	com/tencent/mobileqq/app/BaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/BaseActivity;
-    //   79: instanceof 166
-    //   82: ifne +12 -> 94
-    //   85: getstatic 164	com/tencent/mobileqq/app/BaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/BaseActivity;
-    //   88: instanceof 168
-    //   91: ifeq +305 -> 396
-    //   94: iconst_0
-    //   95: istore_1
-    //   96: aload_0
-    //   97: ldc 170
-    //   99: invokevirtual 144	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   102: astore_3
-    //   103: aload_3
-    //   104: invokestatic 150	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   107: ifne +17 -> 124
-    //   110: aload_0
-    //   111: aload_3
-    //   112: invokestatic 175	com/tencent/mobileqq/utils/HexUtil:a	(Ljava/lang/String;)[B
-    //   115: invokestatic 180	com/tencent/mobileqq/app/utils/MessagePkgUtils:a	([B)Ljava/lang/Object;
-    //   118: checkcast 182	com/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo
-    //   121: putfield 184	com/tencent/mobileqq/data/MessageForReplyText:mSourceMsgInfo	Lcom/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo;
-    //   124: aload_0
-    //   125: ldc 186
-    //   127: invokevirtual 144	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   0: aload_0
+    //   1: getfield 193	com/tencent/mobileqq/data/MessageForReplyText:msg	Ljava/lang/String;
+    //   4: ifnonnull +166 -> 170
+    //   7: ldc 79
+    //   9: astore_2
+    //   10: aload_0
+    //   11: ldc 195
+    //   13: invokevirtual 199	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   16: astore_3
+    //   17: aload_3
+    //   18: invokestatic 205	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   21: ifne +162 -> 183
+    //   24: aload_3
+    //   25: invokestatic 211	java/lang/Boolean:parseBoolean	(Ljava/lang/String;)Z
+    //   28: istore_1
+    //   29: iload_1
+    //   30: ifeq +379 -> 409
+    //   33: getstatic 217	com/tencent/mobileqq/app/BaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/BaseActivity;
+    //   36: instanceof 219
+    //   39: ifne +12 -> 51
+    //   42: getstatic 217	com/tencent/mobileqq/app/BaseActivity:sTopActivity	Lcom/tencent/mobileqq/app/BaseActivity;
+    //   45: instanceof 221
+    //   48: ifeq +361 -> 409
+    //   51: iconst_0
+    //   52: istore_1
+    //   53: aload_0
+    //   54: ldc 223
+    //   56: invokevirtual 199	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   59: astore_3
+    //   60: aload_3
+    //   61: invokestatic 205	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   64: ifne +47 -> 111
+    //   67: aload_0
+    //   68: getfield 61	com/tencent/mobileqq/data/MessageForReplyText:mSourceMsgInfo	Lcom/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo;
+    //   71: ifnonnull +40 -> 111
+    //   74: aload_0
+    //   75: aload_3
+    //   76: invokestatic 228	bach:a	(Ljava/lang/String;)[B
+    //   79: invokestatic 233	akhp:a	([B)Ljava/lang/Object;
+    //   82: checkcast 63	com/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo
+    //   85: putfield 61	com/tencent/mobileqq/data/MessageForReplyText:mSourceMsgInfo	Lcom/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo;
+    //   88: aload_0
+    //   89: getfield 61	com/tencent/mobileqq/data/MessageForReplyText:mSourceMsgInfo	Lcom/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo;
+    //   92: ifnull +19 -> 111
+    //   95: invokestatic 235	com/tencent/mobileqq/data/MessageForReplyText:getAppInterface	()Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   98: astore_3
+    //   99: aload_0
+    //   100: aload_0
+    //   101: getfield 61	com/tencent/mobileqq/data/MessageForReplyText:mSourceMsgInfo	Lcom/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo;
+    //   104: aload_3
+    //   105: invokevirtual 239	com/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo:unPackSourceMsg	(Lcom/tencent/mobileqq/app/QQAppInterface;)Lcom/tencent/mobileqq/data/MessageRecord;
+    //   108: invokevirtual 242	com/tencent/mobileqq/data/MessageForReplyText:setSourceMessageRecord	(Lcom/tencent/mobileqq/data/MessageRecord;)V
+    //   111: aload_0
+    //   112: getstatic 247	awav:i	Ljava/lang/String;
+    //   115: invokevirtual 199	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   118: astore_3
+    //   119: aload_3
+    //   120: invokestatic 205	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   123: ifne +24 -> 147
+    //   126: aload_3
+    //   127: invokestatic 253	com/tencent/mobileqq/data/MessageForText:getTroopMemberInfoFromExtrJson	(Ljava/lang/String;)Ljava/util/ArrayList;
     //   130: astore_3
     //   131: aload_3
-    //   132: invokestatic 150	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   135: ifne +62 -> 197
-    //   138: aload_0
-    //   139: aload_3
-    //   140: invokestatic 175	com/tencent/mobileqq/utils/HexUtil:a	(Ljava/lang/String;)[B
-    //   143: invokestatic 180	com/tencent/mobileqq/app/utils/MessagePkgUtils:a	([B)Ljava/lang/Object;
-    //   146: checkcast 188	com/tencent/mobileqq/troop/utils/TroopTopicMgr$GroupPostElemInfo
-    //   149: putfield 190	com/tencent/mobileqq/data/MessageForReplyText:mGroupPostElemInfo	Lcom/tencent/mobileqq/troop/utils/TroopTopicMgr$GroupPostElemInfo;
-    //   152: invokestatic 59	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   155: ifeq +42 -> 197
-    //   158: new 63	java/lang/StringBuilder
-    //   161: dup
-    //   162: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   165: ldc 192
-    //   167: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   170: astore 5
-    //   172: aload_0
-    //   173: getfield 190	com/tencent/mobileqq/data/MessageForReplyText:mGroupPostElemInfo	Lcom/tencent/mobileqq/troop/utils/TroopTopicMgr$GroupPostElemInfo;
-    //   176: ifnonnull +82 -> 258
-    //   179: ldc 194
-    //   181: astore_3
-    //   182: ldc 196
-    //   184: iconst_2
-    //   185: aload 5
-    //   187: aload_3
-    //   188: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   191: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   194: invokestatic 199	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   197: iload_1
-    //   198: ifne +109 -> 307
-    //   201: return
-    //   202: astore_3
-    //   203: aload_3
-    //   204: invokevirtual 202	java/lang/Exception:printStackTrace	()V
-    //   207: iconst_1
-    //   208: istore_1
-    //   209: goto -164 -> 45
-    //   212: astore_3
-    //   213: aload_3
-    //   214: invokevirtual 202	java/lang/Exception:printStackTrace	()V
-    //   217: goto -145 -> 72
-    //   220: astore_3
-    //   221: invokestatic 59	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   224: ifeq -100 -> 124
-    //   227: ldc 196
-    //   229: iconst_2
-    //   230: new 63	java/lang/StringBuilder
-    //   233: dup
-    //   234: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   237: ldc 204
-    //   239: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   242: aload_3
-    //   243: invokevirtual 207	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   246: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   249: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   252: invokestatic 199	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   255: goto -131 -> 124
-    //   258: aload_0
-    //   259: getfield 190	com/tencent/mobileqq/data/MessageForReplyText:mGroupPostElemInfo	Lcom/tencent/mobileqq/troop/utils/TroopTopicMgr$GroupPostElemInfo;
-    //   262: invokevirtual 208	com/tencent/mobileqq/troop/utils/TroopTopicMgr$GroupPostElemInfo:toString	()Ljava/lang/String;
-    //   265: astore_3
-    //   266: goto -84 -> 182
-    //   269: astore_3
-    //   270: invokestatic 59	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   273: ifeq -76 -> 197
-    //   276: ldc 196
-    //   278: iconst_2
-    //   279: new 63	java/lang/StringBuilder
-    //   282: dup
-    //   283: invokespecial 64	java/lang/StringBuilder:<init>	()V
-    //   286: ldc 204
-    //   288: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   291: aload_3
-    //   292: invokevirtual 207	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   295: invokevirtual 70	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   298: invokevirtual 75	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   301: invokestatic 199	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   304: goto -107 -> 197
-    //   307: aload_0
-    //   308: ldc 210
-    //   310: invokevirtual 144	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   313: astore_3
-    //   314: aload_3
-    //   315: invokestatic 150	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   318: ifne -117 -> 201
-    //   321: aload_0
-    //   322: ldc 212
-    //   324: invokevirtual 144	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
-    //   327: astore 5
-    //   329: aload 5
-    //   331: invokestatic 150	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   334: ifne +57 -> 391
-    //   337: aload 5
-    //   339: ldc 102
-    //   341: invokevirtual 217	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
-    //   344: ifeq +47 -> 391
-    //   347: iload_2
-    //   348: istore_1
-    //   349: iload_1
-    //   350: ifne +11 -> 361
-    //   353: aload_0
-    //   354: ldc 219
-    //   356: aload 4
-    //   358: invokevirtual 223	com/tencent/mobileqq/data/MessageForReplyText:saveExtInfoToExtStr	(Ljava/lang/String;Ljava/lang/String;)V
-    //   361: new 225	java/util/concurrent/CopyOnWriteArrayList
-    //   364: dup
-    //   365: invokespecial 226	java/util/concurrent/CopyOnWriteArrayList:<init>	()V
-    //   368: astore 4
-    //   370: aload 4
-    //   372: aload_0
-    //   373: invokeinterface 232 2 0
-    //   378: pop
-    //   379: aload_0
-    //   380: aload 4
-    //   382: iload_1
-    //   383: aload_3
-    //   384: invokestatic 175	com/tencent/mobileqq/utils/HexUtil:a	(Ljava/lang/String;)[B
-    //   387: invokestatic 237	com/tencent/mqp/app/sec/MQPSensitiveMsgUtil:a	(Lcom/tencent/mobileqq/data/MessageRecord;Ljava/util/List;Z[B)V
-    //   390: return
-    //   391: iconst_0
-    //   392: istore_1
-    //   393: goto -44 -> 349
-    //   396: goto -300 -> 96
+    //   132: ifnull +15 -> 147
+    //   135: aload_3
+    //   136: invokevirtual 259	java/util/ArrayList:size	()I
+    //   139: ifle +8 -> 147
+    //   142: aload_0
+    //   143: aload_3
+    //   144: putfield 263	com/tencent/mobileqq/data/MessageForReplyText:atInfoList	Ljava/util/ArrayList;
+    //   147: aload_0
+    //   148: new 265	axkd
+    //   151: dup
+    //   152: aload_2
+    //   153: bipush 13
+    //   155: invokestatic 269	com/tencent/mobileqq/activity/ChatTextSizeSettingActivity:a	()I
+    //   158: aload_0
+    //   159: invokespecial 272	axkd:<init>	(Ljava/lang/CharSequence;IILcom/tencent/mobileqq/data/MessageRecord;)V
+    //   162: putfield 274	com/tencent/mobileqq/data/MessageForReplyText:sb	Ljava/lang/CharSequence;
+    //   165: iload_1
+    //   166: ifne +100 -> 266
+    //   169: return
+    //   170: aload_0
+    //   171: getfield 193	com/tencent/mobileqq/data/MessageForReplyText:msg	Ljava/lang/String;
+    //   174: astore_2
+    //   175: goto -165 -> 10
+    //   178: astore_3
+    //   179: aload_3
+    //   180: invokevirtual 277	java/lang/Exception:printStackTrace	()V
+    //   183: iconst_1
+    //   184: istore_1
+    //   185: goto -156 -> 29
+    //   188: astore_3
+    //   189: invokestatic 170	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   192: ifeq -81 -> 111
+    //   195: ldc 144
+    //   197: iconst_2
+    //   198: new 104	java/lang/StringBuilder
+    //   201: dup
+    //   202: invokespecial 105	java/lang/StringBuilder:<init>	()V
+    //   205: ldc_w 279
+    //   208: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   211: aload_3
+    //   212: invokevirtual 282	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   215: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   218: invokevirtual 116	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   221: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   224: goto -113 -> 111
+    //   227: astore_3
+    //   228: invokestatic 170	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   231: ifeq -84 -> 147
+    //   234: ldc 144
+    //   236: iconst_2
+    //   237: new 104	java/lang/StringBuilder
+    //   240: dup
+    //   241: invokespecial 105	java/lang/StringBuilder:<init>	()V
+    //   244: ldc_w 279
+    //   247: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   250: aload_3
+    //   251: invokevirtual 282	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   254: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   257: invokevirtual 116	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   260: invokestatic 152	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   263: goto -116 -> 147
+    //   266: aload_0
+    //   267: ldc_w 284
+    //   270: invokevirtual 199	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   273: astore_3
+    //   274: aload_3
+    //   275: invokestatic 205	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   278: ifne +70 -> 348
+    //   281: aload_0
+    //   282: ldc_w 286
+    //   285: invokevirtual 199	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   288: astore 4
+    //   290: aload 4
+    //   292: invokestatic 205	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   295: ifne +109 -> 404
+    //   298: aload 4
+    //   300: ldc 123
+    //   302: invokevirtual 291	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   305: ifeq +99 -> 404
+    //   308: iconst_1
+    //   309: istore_1
+    //   310: iload_1
+    //   311: ifne +11 -> 322
+    //   314: aload_0
+    //   315: ldc_w 293
+    //   318: aload_2
+    //   319: invokevirtual 297	com/tencent/mobileqq/data/MessageForReplyText:saveExtInfoToExtStr	(Ljava/lang/String;Ljava/lang/String;)V
+    //   322: new 299	java/util/concurrent/CopyOnWriteArrayList
+    //   325: dup
+    //   326: invokespecial 300	java/util/concurrent/CopyOnWriteArrayList:<init>	()V
+    //   329: astore_2
+    //   330: aload_2
+    //   331: aload_0
+    //   332: invokeinterface 306 2 0
+    //   337: pop
+    //   338: aload_0
+    //   339: aload_2
+    //   340: iload_1
+    //   341: aload_3
+    //   342: invokestatic 228	bach:a	(Ljava/lang/String;)[B
+    //   345: invokestatic 311	bbsm:a	(Lcom/tencent/mobileqq/data/MessageRecord;Ljava/util/List;Z[B)V
+    //   348: aload_0
+    //   349: ldc 13
+    //   351: invokevirtual 199	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   354: astore_2
+    //   355: aload_2
+    //   356: invokestatic 205	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   359: ifne -190 -> 169
+    //   362: aload_0
+    //   363: iconst_1
+    //   364: putfield 313	com/tencent/mobileqq/data/MessageForReplyText:isBarrageMsg	Z
+    //   367: aload_0
+    //   368: aload_2
+    //   369: invokestatic 319	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
+    //   372: invokevirtual 323	java/lang/Long:longValue	()J
+    //   375: putfield 325	com/tencent/mobileqq/data/MessageForReplyText:barrageTimeLocation	J
+    //   378: aload_0
+    //   379: ldc 10
+    //   381: invokevirtual 199	com/tencent/mobileqq/data/MessageForReplyText:getExtInfoFromExtStr	(Ljava/lang/String;)Ljava/lang/String;
+    //   384: astore_2
+    //   385: aload_2
+    //   386: invokestatic 205	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   389: ifne -220 -> 169
+    //   392: aload_0
+    //   393: aload_2
+    //   394: invokestatic 330	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
+    //   397: invokevirtual 333	java/lang/Integer:intValue	()I
+    //   400: putfield 335	com/tencent/mobileqq/data/MessageForReplyText:barrageSourceMsgType	I
+    //   403: return
+    //   404: iconst_0
+    //   405: istore_1
+    //   406: goto -96 -> 310
+    //   409: goto -356 -> 53
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	399	0	this	MessageForReplyText
-    //   44	349	1	bool1	boolean
-    //   1	347	2	bool2	boolean
-    //   32	156	3	str1	String
-    //   202	2	3	localException1	Exception
-    //   212	2	3	localException2	Exception
-    //   220	23	3	localException3	Exception
-    //   265	1	3	str2	String
-    //   269	23	3	localException4	Exception
-    //   313	71	3	str3	String
-    //   6	375	4	localObject1	Object
-    //   170	168	5	localObject2	Object
+    //   0	412	0	this	MessageForReplyText
+    //   28	378	1	bool	boolean
+    //   9	385	2	localObject1	Object
+    //   16	128	3	localObject2	Object
+    //   178	2	3	localException1	Exception
+    //   188	24	3	localException2	Exception
+    //   227	24	3	localException3	Exception
+    //   273	69	3	str1	String
+    //   288	11	4	str2	String
     // Exception table:
     //   from	to	target	type
-    //   40	45	202	java/lang/Exception
-    //   64	72	212	java/lang/Exception
-    //   96	124	220	java/lang/Exception
-    //   124	179	269	java/lang/Exception
-    //   182	197	269	java/lang/Exception
-    //   258	266	269	java/lang/Exception
+    //   24	29	178	java/lang/Exception
+    //   53	111	188	java/lang/Exception
+    //   111	131	227	java/lang/Exception
+    //   135	147	227	java/lang/Exception
+  }
+  
+  public boolean getHasPulledSourceMsg()
+  {
+    return this.mHasPullHistorySourceMsg;
+  }
+  
+  public MessageRecord getSourceMessage()
+  {
+    return this.sourceMessage;
+  }
+  
+  public MessageForReplyText.SourceMsgInfo getSourceMsgInfo()
+  {
+    return this.mSourceMsgInfo;
   }
   
   public String getSummaryMsg()
@@ -353,7 +421,7 @@ public class MessageForReplyText
   
   public boolean isSupportFTS()
   {
-    return MsgProxyUtils.v(this.istroop);
+    return akbm.v(this.istroop);
   }
   
   public boolean isSupportReply()
@@ -361,51 +429,86 @@ public class MessageForReplyText
     return true;
   }
   
-  protected void postRead()
+  public void postRead()
   {
     super.postRead();
     parse();
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
-    String str2 = getExtInfoFromExtStr("sens_msg_original_text");
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = this.msg;
+    serial();
+  }
+  
+  public void serial()
+  {
+    String str = getExtInfoFromExtStr("sens_msg_original_text");
+    Object localObject = str;
+    if (TextUtils.isEmpty(str)) {
+      localObject = this.msg;
     }
-    this.msg = str1;
-    this.msgData = str1.getBytes();
-    try
+    this.msg = ((String)localObject);
+    if (this.msg == null) {}
+    for (str = "";; str = this.msg)
     {
-      saveExtInfoToExtStr("sens_msg_source_msg_info", HexUtil.a(MessagePkgUtils.a(this.mSourceMsgInfo)));
-      saveExtInfoToExtStr("sens_msg_source_msg_troop_topic_info", HexUtil.a(MessagePkgUtils.a(this.mGroupPostElemInfo)));
-      if (this.mIsPlayedPicCommentAnimate) {}
-      for (str1 = "true";; str1 = "false")
+      this.msg = str;
+      this.msgData = ((String)localObject).getBytes();
+      try
       {
-        saveExtInfoToExtStr("reply_msg_is_played_pic_gif", str1);
+        localObject = getAppInterface();
+        if ((this.sourceMessage != null) && (localObject != null)) {
+          this.mSourceMsgInfo.packSourceMsg((QQAppInterface)localObject, this.sourceMessage);
+        }
+        saveExtInfoToExtStr("sens_msg_source_msg_info", bach.a(akhp.a(this.mSourceMsgInfo)));
+        if (this.isBarrageMsg)
+        {
+          saveExtInfoToExtStr("barrage_time_location", String.valueOf(this.barrageTimeLocation));
+          saveExtInfoToExtStr("barrage_source_msg_type", String.valueOf(this.barrageSourceMsgType));
+        }
         this.extLong |= 0x1;
         return;
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
+      catch (Exception localException)
+      {
+        while (!QLog.isColorLevel()) {}
         QLog.d("Q.msg.", 2, "prewrite MessageForReplyText exception:" + localException.getMessage());
       }
     }
   }
   
-  public void setAnimationPlayed(QQAppInterface paramQQAppInterface)
+  public void setPulledSourceMsg()
   {
-    if (!this.mIsPlayedPicCommentAnimate)
+    this.mHasPullHistorySourceMsg = true;
+  }
+  
+  public void setSourceMessageRecord(MessageRecord paramMessageRecord)
+  {
+    if (paramMessageRecord == null) {}
+    do
     {
-      this.mIsPlayedPicCommentAnimate = true;
-      prewrite();
-      paramQQAppInterface.a().a(this.frienduin, this.istroop, this.uniseq, "extStr", this.extStr);
-      paramQQAppInterface.a().a(this.frienduin, this.istroop, this.uniseq, "extLong", Integer.valueOf(this.extLong));
-    }
+      return;
+      this.sourceMessage = paramMessageRecord;
+      this.sourceMessage.isReplySource = true;
+      this.sourceMessage.isMultiMsg = this.isMultiMsg;
+      this.sourceMessage.isReMultiMsg = this.isReMultiMsg;
+      if ((paramMessageRecord instanceof MessageForMixedMsg))
+      {
+        Object localObject = (MessageForMixedMsg)paramMessageRecord;
+        if (((MessageForMixedMsg)localObject).msgElemList != null)
+        {
+          localObject = ((MessageForMixedMsg)localObject).msgElemList.iterator();
+          while (((Iterator)localObject).hasNext())
+          {
+            MessageRecord localMessageRecord = (MessageRecord)((Iterator)localObject).next();
+            if (localMessageRecord != null) {
+              localMessageRecord.isReplySource = true;
+            }
+          }
+        }
+      }
+    } while (this.mSourceMsgInfo == null);
+    this.mSourceMsgInfo.setUniSeq(paramMessageRecord.uniseq, false);
+    paramMessageRecord.uniseq = this.mSourceMsgInfo.getUniSeq();
   }
 }
 

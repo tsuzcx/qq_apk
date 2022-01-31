@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.observer.GetRedPointExObserver;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetWeather;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
 
 public class tca
-  extends GetRedPointExObserver
+  extends slu
 {
-  public tca(Leba paramLeba) {}
+  public final String a;
+  public final int b;
   
-  protected void a(Object paramObject)
+  public tca(qqstory_service.RspGetWeather paramRspGetWeather)
   {
-    Leba.c(this.a);
+    this.b = paramRspGetWeather.temperature.get();
+    this.a = paramRspGetWeather.wea_desc.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tca
  * JD-Core Version:    0.7.0.1
  */

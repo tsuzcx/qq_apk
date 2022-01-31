@@ -1,23 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-
-class lff
-  implements Runnable
+public class lff
 {
-  lff(lfe paramlfe) {}
+  public int a;
+  public String a;
+  public String b;
   
-  public void run()
+  public lff(int paramInt, String paramString1, String paramString2)
   {
-    KandianMergeManager localKandianMergeManager = (KandianMergeManager)this.a.a.app.getManager(161);
-    if (localKandianMergeManager != null) {
-      localKandianMergeManager.h();
-    }
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lff
  * JD-Core Version:    0.7.0.1
  */

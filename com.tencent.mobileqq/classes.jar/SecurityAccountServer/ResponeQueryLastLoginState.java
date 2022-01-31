@@ -8,9 +8,9 @@ import java.util.ArrayList;
 public final class ResponeQueryLastLoginState
   extends JceStruct
 {
-  static ArrayList cache_lastLoginList;
+  static ArrayList<LastLoginInfo> cache_lastLoginList;
   public long interval;
-  public ArrayList lastLoginList;
+  public ArrayList<LastLoginInfo> lastLoginList;
   public long lastUsedFlag = 1L;
   public String mobileNo = "";
   public String nationCode = "";
@@ -19,7 +19,7 @@ public final class ResponeQueryLastLoginState
   
   public ResponeQueryLastLoginState() {}
   
-  public ResponeQueryLastLoginState(long paramLong1, long paramLong2, long paramLong3, ArrayList paramArrayList, String paramString1, String paramString2, long paramLong4)
+  public ResponeQueryLastLoginState(long paramLong1, long paramLong2, long paramLong3, ArrayList<LastLoginInfo> paramArrayList, String paramString1, String paramString2, long paramLong4)
   {
     this.nextFlag = paramLong1;
     this.timeStamp = paramLong2;

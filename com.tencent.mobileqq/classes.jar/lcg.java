@@ -1,41 +1,24 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-
 public class lcg
-  extends DownloadListener
 {
-  public lcg(EcShopAssistantManager paramEcShopAssistantManager) {}
-  
-  public void onDone(DownloadTask paramDownloadTask)
+  public static int a(String paramString)
   {
-    super.onDone(paramDownloadTask);
-    if ((paramDownloadTask.a == 0) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
+    if ((paramString == null) || (paramString.equals("point"))) {}
+    do
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putLong("last_modified_time", paramDownloadTask.i).commit();
+      return 0;
+      if (paramString.equals("line")) {
+        return 1;
       }
-      this.a.b();
-    }
-    if (QLog.isColorLevel())
-    {
-      File localFile = new File(EcShopAssistantManager.jdField_a_of_type_JavaLangString);
-      long l = 0L;
-      if (localFile.exists()) {
-        l = localFile.lastModified();
+      if (paramString.equals("square")) {
+        return 2;
       }
-      QLog.d("EcShopAssistantManager", 2, "download onDone status=" + paramDownloadTask.a() + ",errCode=" + paramDownloadTask.a + ",httpCode=" + paramDownloadTask.e + ",local lastModify=" + l + ",server lastModify=" + paramDownloadTask.i);
-    }
+    } while (!paramString.equals("ellipse"));
+    return 3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lcg
  * JD-Core Version:    0.7.0.1
  */

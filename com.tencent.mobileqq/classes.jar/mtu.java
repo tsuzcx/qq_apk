@@ -1,18 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
-import com.tencent.util.UiThreadUtil;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class mtu
-  implements Runnable
 {
-  public mtu(ReadInJoyFeedsHeaderViewController paramReadInJoyFeedsHeaderViewController, QQAppInterface paramQQAppInterface) {}
+  Button jdField_a_of_type_AndroidWidgetButton;
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public ImageView b;
+  TextView b;
+  public ImageView c;
+  TextView c;
+  public ImageView d;
   
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyFeedsHeaderViewController.a.a();
-    UiThreadUtil.a(new mtv(this));
-  }
+  mtu(mtc parammtc) {}
 }
 
 

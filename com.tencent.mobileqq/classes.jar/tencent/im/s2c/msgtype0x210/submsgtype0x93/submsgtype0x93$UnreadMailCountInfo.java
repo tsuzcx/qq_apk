@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class submsgtype0x93$UnreadMailCountInfo
-  extends MessageMicro
+  extends MessageMicro<UnreadMailCountInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "uint32_unread_count", "uint32_data_version" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0) }, UnreadMailCountInfo.class);
   public final PBUInt32Field uint32_data_version = PBField.initUInt32(0);

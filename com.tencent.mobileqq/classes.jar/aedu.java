@@ -1,18 +1,30 @@
-import com.tencent.mobileqq.intervideo.od.ODLoadingActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
 
-public class aedu
-  implements Runnable
+class aedu
+  implements Animation.AnimationListener
 {
-  public aedu(ODLoadingActivity paramODLoadingActivity) {}
+  aedu(aedt paramaedt) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ODLoadingActivity.a(this.a);
+    if (this.a.a.q != null)
+    {
+      paramAnimation = AnimationUtils.loadAnimation(this.a.a.a, 2130772209);
+      paramAnimation.setAnimationListener(this);
+      this.a.a.q.startAnimation(paramAnimation);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aedu
  * JD-Core Version:    0.7.0.1
  */

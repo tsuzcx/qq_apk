@@ -1,22 +1,28 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
-import cooperation.qzone.QzoneGiftFullScreenViewController;
+import android.os.Bundle;
 
-class anad
-  implements Runnable
+public abstract class anad
 {
-  anad(anac paramanac, ActionGlobalData paramActionGlobalData) {}
+  private static int seed;
+  public int key;
   
-  public void run()
+  public anad()
   {
-    URLDrawable.pause();
-    ((View)this.jdField_a_of_type_Anac.a.a).setBackgroundColor(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.a);
+    int i = seed;
+    seed = i + 1;
+    this.key = i;
   }
+  
+  public abstract void onBindedToClient();
+  
+  public abstract void onDisconnectWithService();
+  
+  public abstract void onPushMsg(Bundle paramBundle);
+  
+  public abstract void onResponse(Bundle paramBundle);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anad
  * JD-Core Version:    0.7.0.1
  */

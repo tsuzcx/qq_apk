@@ -9,11 +9,11 @@ public final class cluster_identify_face_rsp
   extends JceStruct
 {
   static int cache_mode = 0;
-  static ArrayList cache_results = new ArrayList();
+  static ArrayList<cluster_search_result> cache_results = new ArrayList();
   public boolean has_identify;
   public int mode = 1;
   public String msg = "";
-  public ArrayList results;
+  public ArrayList<cluster_search_result> results;
   public int ret;
   public String url = "";
   
@@ -25,7 +25,7 @@ public final class cluster_identify_face_rsp
   
   public cluster_identify_face_rsp() {}
   
-  public cluster_identify_face_rsp(int paramInt1, String paramString1, boolean paramBoolean, int paramInt2, ArrayList paramArrayList, String paramString2)
+  public cluster_identify_face_rsp(int paramInt1, String paramString1, boolean paramBoolean, int paramInt2, ArrayList<cluster_search_result> paramArrayList, String paramString2)
   {
     this.ret = paramInt1;
     this.msg = paramString1;

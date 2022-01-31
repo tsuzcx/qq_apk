@@ -8,12 +8,12 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 
 public final class hd_video_voip2$CmdPhoneMultiChatKickRspBody
-  extends MessageMicro
+  extends MessageMicro<CmdPhoneMultiChatKickRspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_conf_id = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatMessageField msg_kick_fail_tel = PBField.initRepeatMessage(hd_video_voip2.TelInfo.class);
-  public final PBRepeatMessageField msg_kick_succ_tel = PBField.initRepeatMessage(hd_video_voip2.TelInfo.class);
+  public final PBRepeatMessageField<hd_video_voip2.TelInfo> msg_kick_fail_tel = PBField.initRepeatMessage(hd_video_voip2.TelInfo.class);
+  public final PBRepeatMessageField<hd_video_voip2.TelInfo> msg_kick_succ_tel = PBField.initRepeatMessage(hd_video_voip2.TelInfo.class);
   
   static
   {
@@ -23,7 +23,7 @@ public final class hd_video_voip2$CmdPhoneMultiChatKickRspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.cs.video.voip.hd_video_voip2.CmdPhoneMultiChatKickRspBody
  * JD-Core Version:    0.7.0.1
  */

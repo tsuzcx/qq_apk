@@ -1,14 +1,15 @@
 package cooperation.qzone.model;
 
-import ancr;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
+import bfww;
 
 public class WeishiUserInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ancr();
+  public static final Parcelable.Creator<WeishiUserInfo> CREATOR = new bfww();
+  public String logo;
   public String nickName;
   public long uin;
   
@@ -29,6 +30,7 @@ public class WeishiUserInfo
   {
     paramParcel.writeLong(this.uin);
     paramParcel.writeString(this.nickName);
+    paramParcel.writeString(this.logo);
   }
 }
 

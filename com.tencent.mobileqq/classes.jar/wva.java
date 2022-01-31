@@ -1,84 +1,52 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.os.AsyncTask;
+import android.support.annotation.Nullable;
 import android.view.View;
-import com.tencent.mobileqq.activity.fling.ScreenCapture;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.lang.ref.WeakReference;
+import android.widget.ImageView;
+import com.tencent.biz.videostory.capture.widgets.SquareRoundImageView;
 
-public class wva
-  extends AsyncTask
+class wva
+  implements bhwg<Boolean>
 {
-  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  wva(wut paramwut) {}
   
-  public wva(View paramView)
+  public void a(@Nullable Boolean paramBoolean)
   {
-    if (paramView != null)
+    if (paramBoolean == null) {}
+    do
     {
-      Context localContext = paramView.getContext();
-      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-      paramView.setDrawingCacheEnabled(true);
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramView.getDrawingCache();
-      ScreenCapture.setSnapFile(localContext, false);
-    }
-  }
-  
-  protected Boolean a(String... paramVarArgs)
-  {
-    Boolean localBoolean = Boolean.FALSE;
-    if (isCancelled()) {}
-    while ((this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      return localBoolean;
-    }
-    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
-    paramVarArgs = new File(paramVarArgs[0]);
-    File localFile = paramVarArgs.getParentFile();
-    if (!localFile.exists()) {
-      localFile.mkdirs();
-    }
-    try
-    {
-      paramVarArgs = new FileOutputStream(paramVarArgs);
-      localBitmap.compress(Bitmap.CompressFormat.JPEG, 90, paramVarArgs);
-      paramVarArgs.flush();
-      paramVarArgs.close();
-      paramVarArgs = Boolean.TRUE;
-      return paramVarArgs;
-    }
-    catch (IOException paramVarArgs)
-    {
-      paramVarArgs.printStackTrace();
-    }
-    return localBoolean;
-  }
-  
-  protected void a(Boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localView != null)
+      do
       {
-        if (paramBoolean.booleanValue()) {
-          ScreenCapture.setSnapFile(localView.getContext(), true);
+        return;
+        if (!paramBoolean.booleanValue()) {
+          break label167;
         }
-        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-        localView.setDrawingCacheEnabled(false);
-        localView.destroyDrawingCache();
-      }
-    }
+        if (wut.a(this.a).a())
+        {
+          wut.a(this.a).setVisibility(0);
+          wut.a(this.a).setVisibility(8);
+          wut.a(this.a).setVisibility(8);
+          return;
+        }
+        if (!wut.a(this.a).b()) {
+          break;
+        }
+        wut.a(this.a).setVisibility(0);
+        wut.a(this.a).setVisibility(0);
+      } while (!wut.b(this.a));
+      wut.a(this.a).setVisibility(0);
+      return;
+    } while (!wut.a(this.a).c());
+    wut.a(this.a).setVisibility(0);
+    wut.a(this.a).setVisibility(8);
+    wut.a(this.a).setVisibility(8);
+    return;
+    label167:
+    wut.a(this.a).setVisibility(8);
+    wut.a(this.a).setVisibility(8);
   }
-  
-  protected void onCancelled() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wva
  * JD-Core Version:    0.7.0.1
  */

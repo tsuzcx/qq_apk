@@ -1,38 +1,38 @@
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeed;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeedAdapter;
-import com.tencent.mobileqq.activity.recent.RecentUtil;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.widget.Switch;
 
-public class mvo
-  implements Runnable
+class mvo
+  implements DialogInterface.OnClickListener
 {
-  public mvo(ServiceAccountFolderFeedAdapter paramServiceAccountFolderFeedAdapter, String paramString, ServiceAccountFolderFeed paramServiceAccountFolderFeed) {}
+  mvo(mut parammut, nbu paramnbu, boolean paramBoolean, Switch paramSwitch) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    PublicAccountManager.a().a(ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter), this.jdField_a_of_type_JavaLangString);
-    Object localObject = (PublicAccountDataManager)ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter).getManager(55);
-    if (localObject != null)
-    {
-      ((PublicAccountDataManager)localObject).c(this.jdField_a_of_type_JavaLangString);
-      ((PublicAccountDataManager)localObject).b(this.jdField_a_of_type_JavaLangString);
-      AccountDetail localAccountDetail = ((PublicAccountDataManager)localObject).a(this.jdField_a_of_type_JavaLangString);
-      if (localAccountDetail != null)
+    boolean bool = true;
+    if (paramInt == 0) {
+      if ((3 == this.jdField_a_of_type_Nbu.e) && (this.jdField_a_of_type_Nbu.d == 0))
       {
-        ((PublicAccountDataManager)localObject).a(this.jdField_a_of_type_JavaLangString);
-        localObject = ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter).getEntityManagerFactory().createEntityManager();
-        ((EntityManager)localObject).b(localAccountDetail);
-        ((EntityManager)localObject).a();
+        paramDialogInterface = this.jdField_a_of_type_Mut;
+        localnbu = this.jdField_a_of_type_Nbu;
+        if (!this.jdField_a_of_type_Boolean) {
+          paramDialogInterface.a(localnbu, bool);
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_Mut.a(this.jdField_a_of_type_Nbu, this.jdField_a_of_type_ComTencentWidgetSwitch);
       }
     }
-    ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter).a().a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed.jdField_a_of_type_JavaLangString, 1008);
-    RecentUtil.b(ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter), this.jdField_a_of_type_JavaLangString, 1008);
+    while (paramInt != 1) {
+      for (;;)
+      {
+        nbu localnbu;
+        return;
+        bool = false;
+      }
+    }
+    this.jdField_a_of_type_Mut.a(this.jdField_a_of_type_Nbu, this.jdField_a_of_type_Boolean);
   }
 }
 

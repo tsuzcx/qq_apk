@@ -9,12 +9,12 @@ import java.util.Map;
 public final class s_premovie_adv
   extends JceStruct
 {
-  static Map cache_busi_param;
+  static Map<Integer, String> cache_busi_param;
   static s_premovie_item cache_premovie = new s_premovie_item();
-  static Map cache_report_cookie;
-  public Map busi_param;
+  static Map<Integer, String> cache_report_cookie;
+  public Map<Integer, String> busi_param;
   public s_premovie_item premovie;
-  public Map report_cookie;
+  public Map<Integer, String> report_cookie;
   
   static
   {
@@ -26,7 +26,7 @@ public final class s_premovie_adv
   
   public s_premovie_adv() {}
   
-  public s_premovie_adv(s_premovie_item params_premovie_item, Map paramMap1, Map paramMap2)
+  public s_premovie_adv(s_premovie_item params_premovie_item, Map<Integer, String> paramMap1, Map<Integer, String> paramMap2)
   {
     this.premovie = params_premovie_item;
     this.busi_param = paramMap1;
@@ -55,7 +55,7 @@ public final class s_premovie_adv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_premovie_adv
  * JD-Core Version:    0.7.0.1
  */

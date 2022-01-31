@@ -1,35 +1,35 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.widget.ExpandableListView;
-import com.tencent.widget.ExpandableListView.OnGroupClickListener;
-import com.tencent.widget.PinnedHeaderExpandableListView;
-import com.tencent.widget.PinnedHeaderExpandableListView.ExpandableListAdapter;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class amkk
-  implements View.OnTouchListener
 {
-  public amkk(PinnedHeaderExpandableListView paramPinnedHeaderExpandableListView) {}
+  public static int a = 1;
+  public static int b = 2;
+  public int c = b;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  private static amkk b(String paramString)
   {
-    if (paramMotionEvent.getAction() == 1)
+    amkk localamkk = new amkk();
+    try
     {
-      long l = this.a.a(this.a.getFirstVisiblePosition());
-      if ((ExpandableListView.b(l) == 0) || (ExpandableListView.b(l) == 1))
-      {
-        int i = ExpandableListView.c(l);
-        if ((PinnedHeaderExpandableListView.a(this.a) == null) || (!PinnedHeaderExpandableListView.a(this.a).a(this.a, paramView, i, PinnedHeaderExpandableListView.a(this.a).getGroupId(i)))) {
-          this.a.b(i);
-        }
-      }
+      localamkk.c = new JSONObject(paramString).optInt("action", b);
+      return localamkk;
     }
-    return true;
+    catch (Throwable paramString)
+    {
+      QLog.e("UinSearchConfProcessor", 1, paramString, new Object[0]);
+    }
+    return localamkk;
+  }
+  
+  public boolean a()
+  {
+    return this.c == a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amkk
  * JD-Core Version:    0.7.0.1
  */

@@ -1,44 +1,20 @@
-import com.tencent.mobileqq.ar.FramePerformanceMonitor;
-import com.tencent.mobileqq.ar.FramePerformanceMonitor.FrameRefreshListener;
-import com.tencent.mobileqq.ar.GapDataCollector;
-import com.tencent.mobileqq.ar.GapDataCollector.RefreshData;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
 
 public class aajt
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  private boolean jdField_a_of_type_Boolean;
+  public aajt(ChatSettingActivity paramChatSettingActivity) {}
   
-  private aajt(FramePerformanceMonitor paramFramePerformanceMonitor) {}
-  
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    for (;;)
-    {
-      try
-      {
-        if (this.jdField_a_of_type_Boolean)
-        {
-          if (FramePerformanceMonitor.a(this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor).a() == 0) {
-            Thread.sleep(FramePerformanceMonitor.a(this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor));
-          }
-        }
-        else {
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-      GapDataCollector.RefreshData localRefreshData = FramePerformanceMonitor.a(this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor).a();
-      FramePerformanceMonitor.a(this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor).a(localRefreshData);
-      Thread.sleep(FramePerformanceMonitor.a(this.jdField_a_of_type_ComTencentMobileqqArFramePerformanceMonitor));
-    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aajt
  * JD-Core Version:    0.7.0.1
  */

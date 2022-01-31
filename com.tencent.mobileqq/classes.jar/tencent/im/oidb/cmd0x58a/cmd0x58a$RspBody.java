@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class cmd0x58a$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26 }, new String[] { "msg_cmd_error_code", "uint32_subcmd", "msg_get_conf_list" }, new Object[] { null, Integer.valueOf(0), null }, RspBody.class);
   public cmd0x58a.CmdErrorCode msg_cmd_error_code = new cmd0x58a.CmdErrorCode();
@@ -15,7 +15,7 @@ public final class cmd0x58a$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x58a.cmd0x58a.RspBody
  * JD-Core Version:    0.7.0.1
  */

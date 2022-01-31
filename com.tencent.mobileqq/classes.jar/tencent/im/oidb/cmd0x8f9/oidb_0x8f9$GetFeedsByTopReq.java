@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class oidb_0x8f9$GetFeedsByTopReq
-  extends MessageMicro
+  extends MessageMicro<GetFeedsByTopReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "int32_req_start", "uint32_req_num" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0) }, GetFeedsByTopReq.class);
   public final PBInt32Field int32_req_start = PBField.initInt32(0);
@@ -15,7 +15,7 @@ public final class oidb_0x8f9$GetFeedsByTopReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8f9.oidb_0x8f9.GetFeedsByTopReq
  * JD-Core Version:    0.7.0.1
  */

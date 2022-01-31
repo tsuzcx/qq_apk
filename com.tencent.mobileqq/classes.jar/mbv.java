@@ -1,39 +1,69 @@
-import android.os.Bundle;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
-import com.tencent.biz.pubaccount.readinjoy.struct.KingMomentInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import android.support.v4.view.PagerAdapter;
+import android.util.SparseArray;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.av.ui.funchat.filter.EffectCycleViewPager;
 
 public class mbv
-  extends ReadInJoyObserver
+  extends PagerAdapter
 {
-  public mbv(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
+  private PagerAdapter jdField_a_of_type_AndroidSupportV4ViewPagerAdapter;
   
-  public void a(int paramInt, KingMomentInfo paramKingMomentInfo)
+  public mbv(EffectCycleViewPager paramEffectCycleViewPager, PagerAdapter paramPagerAdapter)
   {
-    if ((paramInt == 0) && (ReadInJoyDeliverVideoActivity.a(this.a)))
-    {
-      ReadInJoyDeliverVideoActivity.a(this.a, new Bundle());
-      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_video_cover_url", paramKingMomentInfo.h);
-      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_video_url", paramKingMomentInfo.g);
-      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_video_title", paramKingMomentInfo.jdField_d_of_type_JavaLangString);
-      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_video_uuid", paramKingMomentInfo.f);
-      ReadInJoyDeliverVideoActivity.a(this.a).putLong("arg_video_duration", paramKingMomentInfo.jdField_a_of_type_Long);
-      ReadInJoyDeliverVideoActivity.a(this.a).putInt("arg_video_cover_width", paramKingMomentInfo.c);
-      ReadInJoyDeliverVideoActivity.a(this.a).putInt("arg_video_cover_height", paramKingMomentInfo.jdField_b_of_type_Int);
-      ReadInJoyDeliverVideoActivity.a(this.a).putInt("arg_video_width", paramKingMomentInfo.e);
-      ReadInJoyDeliverVideoActivity.a(this.a).putInt("arg_video_height", paramKingMomentInfo.jdField_d_of_type_Int);
-      ReadInJoyDeliverVideoActivity.a(this.a).putString("arg_topic_id", paramKingMomentInfo.jdField_a_of_type_Int + "");
-      ReadInJoyDeliverVideoActivity.a(this.a).setHint("#" + paramKingMomentInfo.jdField_a_of_type_JavaLangString + "#");
-      ReadInJoyDeliverVideoActivity.a(this.a, paramKingMomentInfo.jdField_b_of_type_JavaLangString);
-      ReadInJoyDeliverVideoActivity.a(this.a, true);
-      ReadInJoyDeliverVideoActivity.a(this.a, paramKingMomentInfo.h);
+    this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter = paramPagerAdapter;
+    paramPagerAdapter.registerDataSetObserver(new mbw(this, paramEffectCycleViewPager));
+  }
+  
+  int a(int paramInt)
+  {
+    if (paramInt == 0) {
+      return this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getCount() - 1;
     }
+    if (paramInt == this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getCount() + 1) {
+      return 0;
+    }
+    return paramInt - 1;
+  }
+  
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  {
+    int i = a(paramInt);
+    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.a.remove(paramInt);
+    this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.destroyItem(paramViewGroup, i, paramObject);
+  }
+  
+  public int getCount()
+  {
+    int i = this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getCount();
+    if (i > 0) {
+      return i + 2;
+    }
+    return 0;
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    int i = a(paramInt);
+    paramViewGroup = (View)this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.instantiateItem(paramViewGroup, i);
+    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.a.put(paramInt, paramViewGroup);
+    return paramViewGroup;
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.isViewFromObject(paramView, paramObject);
+  }
+  
+  public void notifyDataSetChanged()
+  {
+    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.setCurrentItem(1);
+    super.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mbv
  * JD-Core Version:    0.7.0.1
  */

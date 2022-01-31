@@ -1,48 +1,54 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpeg;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegCommandUnit;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
+import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import org.json.JSONObject;
 
 public class otp
-  extends BroadcastReceiver
+  implements owa
 {
-  public otp(FFmpeg paramFFmpeg) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("android.intent.action.SCREEN_OFF")) {
-      if ((this.a.jdField_a_of_type_Otq != null) && (!this.a.jdField_a_of_type_Otq.a()))
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    return osp.a(paramBaseArticleInfo);
+  }
+  
+  public void a(int paramInt1, Container paramContainer, opw paramopw, int paramInt2)
+  {
+    paramContainer = paramContainer.getVirtualView();
+    Object localObject;
+    if ((paramopw != null) && (paramopw.a() != null) && (AdvertisementInfo.isAdvertisementInfo(paramopw.a())))
+    {
+      localObject = paramContainer.findViewBaseByName("id_article_brand_optimization");
+      TemplateBean localTemplateBean = paramopw.a().mProteusTemplateBean;
+      paramContainer = null;
+      if (localTemplateBean != null) {
+        paramContainer = localTemplateBean.findViewById("id_top_left_mask");
+      }
+      if ((localObject instanceof nqp))
       {
-        this.a.b = true;
-        SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "屏幕灭屏了，FFmpeg还在执行当中");
+        localObject = (nqp)localObject;
+        ((nqp)localObject).a(paramopw);
+        if (paramContainer == null) {
+          break label96;
+        }
+        ((nqp)localObject).a(true);
       }
     }
-    do
-    {
-      do
-      {
-        return;
-      } while ((!paramContext.equals("android.intent.action.SCREEN_ON")) || (!this.a.b));
-      this.a.b = false;
-    } while ((this.a.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegCommandUnit == null) || (this.a.jdField_a_of_type_Int == -9999) || (this.a.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegCommandUnit.a == null));
-    if (this.a.jdField_a_of_type_Int == 1)
-    {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegCommandUnit.a.a("灭屏后，FFmpeg任务执行成功");
-      this.a.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegCommandUnit.a.a(true);
-      SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "灭屏后，FFmpeg任务执行成功");
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_Int = -9999;
-      return;
-      this.a.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegCommandUnit.a.b("灭屏幕，FFmpeg任务执行失败");
-      this.a.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegCommandUnit.a.a(false);
-      SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "灭屏幕，FFmpeg任务执行失败");
-    }
+    return;
+    label96:
+    ((nqp)localObject).a(false);
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, opw paramopw, ViewBase paramViewBase)
+  {
+    return false;
   }
 }
 

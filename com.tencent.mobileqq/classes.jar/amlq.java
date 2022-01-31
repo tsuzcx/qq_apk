@@ -1,39 +1,65 @@
-import android.database.DataSetObservable;
-import android.database.DataSetObserver;
-import com.tencent.widget.XBaseAdapter;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.qphone.base.util.QLog;
 
 public class amlq
-  extends DataSetObservable
+  extends alzl<amlp>
 {
-  public amlq(XBaseAdapter paramXBaseAdapter) {}
-  
-  public void a(int paramInt1, int paramInt2)
+  public static amlp a()
   {
-    for (;;)
-    {
-      int i;
-      synchronized (this.mObservers)
-      {
-        i = this.mObservers.size() - 1;
-        if (i >= 0)
-        {
-          DataSetObserver localDataSetObserver = (DataSetObserver)this.mObservers.get(i);
-          if ((localDataSetObserver instanceof amlp)) {
-            ((amlp)localDataSetObserver).a(paramInt1, paramInt2);
-          } else {
-            localDataSetObserver.onChanged();
-          }
-        }
-      }
-      return;
-      i -= 1;
+    return (amlp)alzw.a().a(338);
+  }
+  
+  public int a()
+  {
+    return 338;
+  }
+  
+  @NonNull
+  public amlp a(int paramInt)
+  {
+    return new amlp();
+  }
+  
+  @Nullable
+  public amlp a(alzs[] paramArrayOfalzs)
+  {
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0)) {
+      return amlp.a(paramArrayOfalzs);
     }
+    return null;
+  }
+  
+  public Class<amlp> a()
+  {
+    return amlp.class;
+  }
+  
+  public void a(int paramInt)
+  {
+    QLog.d("TencentDocGrayTipsProcessor", 1, "TENCENT_DOC_GRAY_TIPS failed, resultCode:" + paramInt);
+  }
+  
+  public void a(amlp paramamlp) {}
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amlq
  * JD-Core Version:    0.7.0.1
  */

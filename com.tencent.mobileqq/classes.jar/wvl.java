@@ -1,23 +1,47 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.videostory.capture.watermark.WaterMarkOnlineUserManager.1.1;
+import com.tencent.ttpic.openapi.watermark.LogicDataManager.OnGetQQNumberEventListener;
+import java.util.Random;
 
-class wvl
-  implements Runnable
+public class wvl
+  implements LogicDataManager.OnGetQQNumberEventListener
 {
-  wvl(wvk paramwvk, int paramInt) {}
+  wvl(wvk paramwvk) {}
   
-  public void run()
+  public int onGetQQNumber()
   {
-    this.jdField_a_of_type_Wvk.jdField_a_of_type_ComTencentMobileqqActivityMainMainAssistObserver.a(32, 16, Integer.valueOf(this.jdField_a_of_type_Int));
-    Intent localIntent = new Intent("com.tencent.qq.syncQQMessage");
-    this.jdField_a_of_type_Wvk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().sendBroadcast(localIntent);
+    long l = System.currentTimeMillis();
+    if (l - wvk.a(this.a) > 60000L)
+    {
+      wvk.a(this.a, l);
+      new Thread(new WaterMarkOnlineUserManager.1.1(this)).start();
+      if (l - wvk.b(this.a) <= 1000L) {
+        break label168;
+      }
+      wvk.b(this.a, l);
+    }
+    for (;;)
+    {
+      synchronized (wvk.a(this.a))
+      {
+        if (wvk.a(this.a) != 0) {
+          wvk.a(this.a, wvk.a(this.a) - 1000 + new Random().nextInt(2000));
+        }
+        return wvk.a(this.a);
+        if (l - wvk.a(this.a) >= 0L) {
+          break;
+        }
+        wvk.a(this.a, l);
+      }
+      label168:
+      if (l - wvk.b(this.a) < 0L) {
+        wvk.b(this.a, l);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wvl
  * JD-Core Version:    0.7.0.1
  */

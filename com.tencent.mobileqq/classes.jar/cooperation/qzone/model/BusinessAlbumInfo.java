@@ -3,17 +3,18 @@ package cooperation.qzone.model;
 import NS_MOBILE_MATERIAL.MaterialFile;
 import NS_MOBILE_MATERIAL.MaterialItem;
 import NS_MOBILE_PHOTO.Album;
-import anbt;
 import android.content.res.Resources;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import bfvv;
+import bfvw;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class BusinessAlbumInfo
   extends BaseBusinessAlbumInfo
 {
-  public static final Parcelable.Creator CREATOR = new anbt();
+  public static final Parcelable.Creator<BusinessAlbumInfo> CREATOR = new bfvv();
   
   private BusinessAlbumInfo(Parcel paramParcel)
   {
@@ -36,6 +37,7 @@ public class BusinessAlbumInfo
       this.jdField_d_of_type_JavaLangString = paramParcel.readString();
       this.g = paramParcel.readInt();
       this.h = paramParcel.readInt();
+      this.i = paramParcel.readInt();
       return;
       bool = false;
     }
@@ -84,6 +86,7 @@ public class BusinessAlbumInfo
       localBusinessAlbumInfo.f = paramAlbum.allow_share;
       localBusinessAlbumInfo.jdField_d_of_type_JavaLangString = a(paramAlbum);
       localBusinessAlbumInfo.g = paramAlbum.is_share;
+      localBusinessAlbumInfo.i = paramAlbum.sort_type;
       return localBusinessAlbumInfo;
       bool = false;
     }
@@ -151,17 +154,17 @@ public class BusinessAlbumInfo
     while (i == 0)
     {
       return null;
-      i = 2131432947;
+      i = 2131652122;
       continue;
-      i = 2131432948;
+      i = 2131652123;
       continue;
-      i = 2131432483;
+      i = 2131651897;
       continue;
-      i = 2131432484;
+      i = 2131651895;
       continue;
-      i = 2131432485;
+      i = 2131651900;
       continue;
-      i = 2131432486;
+      i = 2131651896;
     }
     return BaseApplication.getContext().getResources().getString(i);
   }
@@ -182,7 +185,7 @@ public class BusinessAlbumInfo
   
   public String c()
   {
-    return BusinessAlbumInfo.Privacy.a(this.jdField_b_of_type_Int);
+    return bfvw.a(this.jdField_b_of_type_Int);
   }
   
   public int describeContents()

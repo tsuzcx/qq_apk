@@ -19,12 +19,11 @@ public class LoginWifiProbe
   
   private String getWifiSSID()
   {
-    String str = null;
     WifiInfo localWifiInfo = ((WifiManager)WeakNetLearner.mContext.getSystemService("wifi")).getConnectionInfo();
     if (localWifiInfo != null) {
-      str = localWifiInfo.getSSID();
+      return localWifiInfo.getSSID();
     }
-    return str;
+    return null;
   }
   
   public void doProbe()
@@ -94,7 +93,7 @@ public class LoginWifiProbe
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.highway.netprobe.LoginWifiProbe
  * JD-Core Version:    0.7.0.1
  */

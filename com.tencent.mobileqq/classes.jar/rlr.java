@@ -1,90 +1,231 @@
-import android.content.res.Resources;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.widget.RotateSwitchImageView;
-import com.tencent.mobileqq.widget.ShaderAnimLayout;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule.sheetItemClickProcessor.1;
+import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.lang.ref.WeakReference;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class rlr
-  implements View.OnClickListener
+  extends ruj
 {
-  public rlr(AccountManageActivity paramAccountManageActivity) {}
+  private String jdField_a_of_type_JavaLangString;
+  private WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
+  private List<rly> jdField_a_of_type_JavaUtilList;
+  JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  private boolean jdField_a_of_type_Boolean;
+  private List<rly> b;
   
-  public void onClick(View paramView)
+  public rlr(boolean paramBoolean, List<rly> paramList1, List<rly> paramList2, JSONObject paramJSONObject, WeakReference paramWeakReference, String paramString)
   {
-    if (!this.a.b) {
-      return;
+    this.jdField_a_of_type_OrgJsonJSONObject = paramWeakReference;
+    this.jdField_a_of_type_JavaLangRefWeakReference = paramString;
+    Object localObject;
+    this.jdField_a_of_type_JavaLangString = localObject;
+    this.jdField_a_of_type_Boolean = paramList1;
+    this.jdField_a_of_type_JavaUtilList = paramList2;
+    this.b = paramJSONObject;
+  }
+  
+  protected boolean a(Integer paramInteger)
+  {
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+      return false;
     }
-    paramView = this.a;
-    boolean bool;
-    label102:
     int i;
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      bool = true;
-      paramView.jdField_a_of_type_Boolean = bool;
-      if (!this.a.jdField_a_of_type_Boolean) {
-        break label214;
-      }
-      this.a.rightViewText.setVisibility(8);
-      this.a.rightHighLView.setVisibility(0);
-      this.a.rightViewText.setText(2131434550);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131494275));
-      if (AccountManageActivity.a(this.a) != null)
-      {
-        paramView = AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
-        if ((paramView instanceof ShaderAnimLayout)) {
-          ((ShaderAnimLayout)paramView).f();
-        }
-        AccountManageActivity.a(this.a).a();
-        AccountManageActivity.a(this.a, null);
-      }
-      int j = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
+    if (paramInteger.intValue() == 2) {
       i = 0;
-      label173:
-      if (i >= j) {
-        break label321;
-      }
-      paramView = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-      if ((paramView != null) && (paramView.getTag() != null)) {
-        break label274;
-      }
     }
     for (;;)
     {
-      i += 1;
-      break label173;
-      bool = false;
-      break;
-      label214:
-      this.a.rightViewText.setVisibility(0);
-      this.a.rightHighLView.setVisibility(8);
-      this.a.rightViewText.setText(2131434568);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColorStateList(2131494226));
-      break label102;
-      label274:
-      paramView = paramView.findViewById(2131362758);
-      if (paramView != null)
+      String str1 = BridgeModule.access$400(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule).a(paramInteger.intValue());
+      Object localObject1;
+      if (this.jdField_a_of_type_Boolean)
       {
-        ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-        localLayoutParams.width = ((int)(AccountManageActivity.a(this.a) * AccountManageActivity.b(this.a)));
-        paramView.setLayoutParams(localLayoutParams);
+        localObject1 = BridgeModule.access$400(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule).a(this.jdField_a_of_type_JavaUtilList, this.b, paramInteger.intValue());
+        if ((localObject1 != null) && (((rly)localObject1).jdField_a_of_type_Boolean)) {
+          paramInteger = new JSONObject();
+        }
+      }
+      try
+      {
+        paramInteger.put("type", i);
+        paramInteger.put("action", str1);
+        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramInteger);
+        }
+        label127:
+        return true;
+        if (paramInteger.intValue() == 3)
+        {
+          i = 1;
+          continue;
+        }
+        if (paramInteger.intValue() == 4)
+        {
+          i = 2;
+          continue;
+        }
+        if (paramInteger.intValue() == 5)
+        {
+          i = 3;
+          continue;
+        }
+        if (paramInteger.intValue() == 6)
+        {
+          i = 4;
+          continue;
+        }
+        if (paramInteger.intValue() == 1)
+        {
+          i = 7;
+          continue;
+        }
+        if (paramInteger.intValue() == 14)
+        {
+          i = 8;
+          continue;
+        }
+        i = -1;
+        continue;
+        if (this.jdField_a_of_type_OrgJsonJSONObject == null) {
+          return true;
+        }
+        Object localObject2 = this.jdField_a_of_type_OrgJsonJSONObject.optString("share_url");
+        localObject1 = this.jdField_a_of_type_OrgJsonJSONObject.optString("puin");
+        BridgeModule.access$302(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, true);
+        if (paramInteger.intValue() == 14)
+        {
+          ((ClipboardManager)((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getSystemService("clipboard")).setText((CharSequence)localObject2);
+          vvp.a(2, 2131625733);
+        }
+        for (;;)
+        {
+          localObject1 = new JSONObject();
+          try
+          {
+            ((JSONObject)localObject1).put("type", i);
+            ((JSONObject)localObject1).put("action", str1);
+            if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+              this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, localObject1);
+            }
+            label344:
+            return super.a(paramInteger);
+            if (paramInteger.intValue() == 7)
+            {
+              BridgeModule.access$500(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule).a((String)localObject2);
+              continue;
+            }
+            if (paramInteger.intValue() == 8)
+            {
+              BridgeModule.access$500(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule).b((String)localObject2);
+              continue;
+            }
+            if (paramInteger.intValue() == 1) {
+              continue;
+            }
+            if (paramInteger.intValue() == 12)
+            {
+              localObject1 = (QQAppInterface)obz.a();
+              if (localObject1 == null) {
+                continue;
+              }
+              localObject1 = ((QQAppInterface)localObject1).getAccount();
+              localObject2 = this.jdField_a_of_type_OrgJsonJSONObject.optString("title");
+              String str2 = this.jdField_a_of_type_OrgJsonJSONObject.optString("desc");
+              String str3 = this.jdField_a_of_type_OrgJsonJSONObject.optString("image_url");
+              bfhl.a(0, (String)localObject2, this.jdField_a_of_type_OrgJsonJSONObject.optString("share_url"), null, str2, str3, null, null, false, -1L).c((String)localObject1).b((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), (String)localObject1, 2, null);
+              continue;
+            }
+            if (paramInteger.intValue() == 20)
+            {
+              ThreadManager.executeOnSubThread(new BridgeModule.sheetItemClickProcessor.1(this, (String)localObject2));
+              continue;
+            }
+            if (paramInteger.intValue() == 9)
+            {
+              BridgeModule.access$500(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule).c();
+              continue;
+            }
+            if (paramInteger.intValue() == 10) {
+              continue;
+            }
+            if (paramInteger.intValue() == 13)
+            {
+              BridgeModule.access$500(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule).d((String)localObject2);
+              continue;
+            }
+            if (paramInteger.intValue() == 17)
+            {
+              if (TextUtils.isEmpty((CharSequence)localObject1)) {
+                continue;
+              }
+              localObject1 = AddFriendLogicActivity.a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 1, (String)localObject1, null, 3096, 1, this.jdField_a_of_type_OrgJsonJSONObject.optString("nick_name"), null, null, null, null);
+              ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).startActivity((Intent)localObject1);
+              continue;
+            }
+            if (paramInteger.intValue() == 16)
+            {
+              if (TextUtils.isEmpty((CharSequence)localObject1)) {
+                continue;
+              }
+              localObject2 = aciy.a(new Intent((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), SplashActivity.class), null);
+              ((Intent)localObject2).putExtra("uin", (String)localObject1);
+              ((Intent)localObject2).putExtra("uintype", 0);
+              ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).startActivity((Intent)localObject2);
+              continue;
+            }
+            if (paramInteger.intValue() == 21)
+            {
+              if (TextUtils.isEmpty((CharSequence)localObject1)) {
+                continue;
+              }
+              localObject2 = new Intent((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), AccountDetailActivity.class);
+              ((Intent)localObject2).putExtra("uin", (String)localObject1);
+              ((Intent)localObject2).putExtra("from_js", true);
+              ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).startActivity((Intent)localObject2);
+              continue;
+            }
+            if (paramInteger.intValue() == 11)
+            {
+              localObject1 = BridgeModule.access$400(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule).a(this.jdField_a_of_type_JavaUtilList, this.b, paramInteger.intValue());
+              if (!(localObject1 instanceof rlz)) {
+                continue;
+              }
+              localObject1 = ((rlz)localObject1).b;
+              BridgeModule.access$600(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule, (String)localObject1);
+              continue;
+            }
+            if ((paramInteger.intValue() == 22) || (paramInteger.intValue() == 23)) {
+              continue;
+            }
+            BridgeModule.access$400(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule).a(this.jdField_a_of_type_OrgJsonJSONObject, paramInteger.intValue(), (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
+          }
+          catch (JSONException localJSONException)
+          {
+            break label344;
+          }
+        }
+      }
+      catch (JSONException paramInteger)
+      {
+        break label127;
       }
     }
-    label321:
-    this.a.b();
-    this.a.a(this.a.jdField_a_of_type_Boolean);
-    this.a.b = false;
-    AccountManageActivity.a(this.a).postDelayed(new rls(this), 400L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rlr
  * JD-Core Version:    0.7.0.1
  */

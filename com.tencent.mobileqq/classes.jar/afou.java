@@ -1,55 +1,155 @@
-import android.content.Context;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
-import com.tencent.mobileqq.nearby.profilecard.moment.BaseMomentItemBuilder;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.ReportCallback;
-import com.tencent.mobileqq.widget.QQToast;
-
-class afou
-  implements NearbyMomentManager.ReportCallback
+public class afou
 {
-  afou(afot paramafot, String paramString) {}
+  public double a = -100.0D;
+  public int a;
+  public long a;
+  public String a;
+  public short a;
+  public boolean a;
+  public int b;
+  public long b;
+  public String b = "";
+  public boolean b;
+  public int c;
+  public long c;
+  public String c = "";
+  public boolean c;
+  public int d;
+  public long d;
+  public String d = "";
+  public boolean d;
+  public int e;
+  public String e = "";
+  public int f;
+  public String f = "";
+  public int g;
+  public String g = "";
+  public int h;
+  public String h = "";
+  public int i;
+  public String i = "";
+  public int j;
+  public String j = "";
+  public int k;
+  public String k = "";
+  public int l;
+  public String l = "";
+  public int m;
+  public String m = "";
+  public String n = "";
+  public String o = "";
+  public String p = "";
+  public String q = "";
+  public String r = "";
+  public String s = "";
+  public String t = "";
+  public String u;
+  public String v = "";
+  public String w = "";
+  public String x = "";
   
-  public void a(boolean paramBoolean)
+  public void a(String paramString)
   {
-    Object localObject;
-    int i;
-    if (paramBoolean)
-    {
-      localObject = new NowVideoReporter().h("data_card").i("feed_inform_suc").d("2").a(this.jdField_a_of_type_Afot.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.a(this.jdField_a_of_type_Afot.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder$MomentViewHolder)).b(this.jdField_a_of_type_JavaLangString).c(String.valueOf(this.jdField_a_of_type_Afot.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.a(this.jdField_a_of_type_Afot.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder$MomentViewHolder)));
-      if (this.jdField_a_of_type_Afot.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.jdField_a_of_type_Boolean)
-      {
-        str = "1";
-        ((NowVideoReporter)localObject).e(str).b(this.jdField_a_of_type_Afot.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      }
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    else
-    {
-      localObject = this.jdField_a_of_type_Afot.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.jdField_a_of_type_AndroidContentContext;
-      if (!paramBoolean) {
-        break label157;
-      }
-      i = 2;
-      label131:
-      if (!paramBoolean) {
-        break label162;
-      }
+    this.d = str;
+  }
+  
+  public void b(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    label157:
-    label162:
-    for (String str = "举报成功";; str = "举报失败")
-    {
-      QQToast.a((Context)localObject, i, str, 0).a();
-      return;
-      str = "2";
-      break;
-      i = 1;
-      break label131;
+    this.g = str;
+  }
+  
+  public void c(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
+    this.h = str;
+  }
+  
+  public void d(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.i = str;
+  }
+  
+  public void e(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.j = str;
+  }
+  
+  public void f(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.k = str;
+  }
+  
+  public void g(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.p = str;
+  }
+  
+  public void h(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.l = str;
+  }
+  
+  public void i(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.m = str;
+  }
+  
+  public void j(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.n = str;
+  }
+  
+  public void k(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    this.o = str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afou
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,64 @@
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalTbsViewManager;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalTbsViewManager.LocalTbsViewManagerCallback;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.TbsReaderView.ReaderCallback;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForMyEnterTroop;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class adke
-  implements TbsReaderView.ReaderCallback
+  extends acjb
 {
-  public adke(LocalTbsViewManager paramLocalTbsViewManager, LocalTbsViewManager.LocalTbsViewManagerCallback paramLocalTbsViewManagerCallback) {}
-  
-  public void onCallBackAction(Integer paramInteger, Object paramObject1, Object paramObject2)
+  public adke(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("LocalTbsViewManager<FileAssistant>", 1, "recv actionType[" + paramInteger + "]");
-    }
-    if (paramInteger.intValue() == 5012)
+    super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo);
+  }
+  
+  protected acjc a()
+  {
+    return new adkf(this);
+  }
+  
+  protected View a(MessageRecord paramMessageRecord, acjc paramacjc, View paramView, LinearLayout paramLinearLayout, acmv paramacmv)
+  {
+    paramLinearLayout = (adkf)paramacjc;
+    paramacjc = paramView;
+    if (paramView == null)
     {
-      int i = ((Integer)paramObject1).intValue();
-      if (QLog.isColorLevel()) {
-        QLog.i("LocalTbsViewManager<FileAssistant>", 1, "err Code[" + i + "]");
-      }
-      if (i != 0) {
-        break label129;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, "canOpenFile return ok 1-------");
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewLocalTbsViewManager$LocalTbsViewManagerCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewLocalTbsViewManager$LocalTbsViewManagerCallback.b(true);
-      }
+      paramacjc = LayoutInflater.from(this.a).inflate(2131493226, null);
+      paramLinearLayout.b = ((TextView)paramacjc.findViewById(2131301543));
     }
-    label129:
-    do
+    paramLinearLayout.b.setMovementMethod(null);
+    paramLinearLayout.b.setGravity(17);
+    if ((paramMessageRecord instanceof MessageForMyEnterTroop))
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, "canOpenFile return ok 2-------");
+      paramMessageRecord = (MessageForMyEnterTroop)paramMessageRecord;
+      paramMessageRecord = this.a.getString(2131631765);
+      paramLinearLayout.b.setText(paramMessageRecord);
+      paramView = this.a.getResources().getColorStateList(2131099822);
+      if (paramView != null) {
+        paramLinearLayout.b.setTextColor(paramView);
       }
-    } while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewLocalTbsViewManager$LocalTbsViewManagerCallback == null);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewLocalTbsViewManager$LocalTbsViewManagerCallback.b(false);
+      paramacjc.setContentDescription(paramMessageRecord);
+    }
+    return paramacjc;
+  }
+  
+  public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}
+  
+  public bakj[] a(View paramView)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adke
  * JD-Core Version:    0.7.0.1
  */

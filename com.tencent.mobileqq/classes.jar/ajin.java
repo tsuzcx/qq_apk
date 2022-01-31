@@ -1,40 +1,35 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.data.TroopCreateLogic;
-import com.tencent.mobileqq.troop.data.TroopCreateLogic.TroopCreateCallback;
-import com.tencent.mobileqq.troop.logic.TroopSearchLogic.TroopSearchCallback;
-import com.tencent.mobileqq.troop.utils.TroopNameHelper;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 
 public class ajin
-  implements TroopSearchLogic.TroopSearchCallback
+  implements Animation.AnimationListener
 {
-  public ajin(TroopCreateLogic paramTroopCreateLogic, ArrayList paramArrayList1, BaseActivity paramBaseActivity, TroopCreateLogic.TroopCreateCallback paramTroopCreateCallback, ArrayList paramArrayList2) {}
+  public ajin(FrameHelperActivity paramFrameHelperActivity, View paramView) {}
   
-  public void a(ArrayList paramArrayList)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
-    if (paramArrayList.size() > 0)
-    {
-      paramArrayList = new ArrayList();
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext()) {
-        paramArrayList.add(((ajiv)localIterator.next()).a);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateInfo.c = TroopNameHelper.a(paramArrayList);
-      new Handler(Looper.getMainLooper()).post(new ajio(this));
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(TroopCreateLogic.class).post(new ajip(this));
+    paramAnimation = new AnimationSet(true);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(1.3F, 1.2F, 1.3F, 1.2F, 1, 0.5F, 1, 0.5F);
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.6F, 0.5F);
+    paramAnimation.addAnimation(localScaleAnimation);
+    paramAnimation.addAnimation(localAlphaAnimation);
+    paramAnimation.setDuration(30L);
+    paramAnimation.setFillAfter(true);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajin
  * JD-Core Version:    0.7.0.1
  */

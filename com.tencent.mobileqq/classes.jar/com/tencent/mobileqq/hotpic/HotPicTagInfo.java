@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.hotpic;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class HotPicTagInfo
-  extends Entity
-  implements Comparable
+  extends atmo
+  implements Comparable<HotPicTagInfo>
 {
   public int position;
-  @unique
+  @atoc
   public int tagId;
   public String tagName;
   public int tagType;
@@ -27,7 +27,7 @@ public class HotPicTagInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicTagInfo
  * JD-Core Version:    0.7.0.1
  */

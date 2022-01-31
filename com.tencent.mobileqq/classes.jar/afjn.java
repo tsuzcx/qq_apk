@@ -1,41 +1,22 @@
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
-import java.util.List;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class afjn
-  extends FragmentPagerAdapter
+class afjn
+  implements View.OnClickListener
 {
-  private List jdField_a_of_type_JavaUtilList;
+  afjn(afjl paramafjl, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public afjn(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel, FragmentManager paramFragmentManager, List paramList)
+  public void onClick(View paramView)
   {
-    super(paramFragmentManager);
-    this.jdField_a_of_type_JavaUtilList = paramList;
-  }
-  
-  public Fragment a(int paramInt)
-  {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt)) {
-      return (Fragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_Afjl, 1);
     }
-    return null;
-  }
-  
-  public int getCount()
-  {
-    return 2;
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    return (Fragment)this.jdField_a_of_type_JavaUtilList.get(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afjn
  * JD-Core Version:    0.7.0.1
  */

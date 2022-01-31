@@ -1,33 +1,29 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.nearby.NearbyProxy;
-import com.tencent.mobileqq.util.FaceDecoder.DecodeTaskCompletionListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 
 public class aeve
-  implements FaceDecoder.DecodeTaskCompletionListener
+  implements View.OnClickListener
 {
-  public aeve(NearbyProxy paramNearbyProxy) {}
+  public aeve(SearchBaseActivity paramSearchBaseActivity) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void onClick(View paramView)
   {
-    synchronized (this.a.a)
+    if (TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText()))
     {
-      if (this.a.a.contains(paramString))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("NearbyProxy", 2, "onDecodeTaskCompleted: reqUin=" + paramString + ", avatar=" + paramBitmap);
-        }
-        this.a.a.remove(paramString);
-        NearbyProxy.a(this.a, 4154, new Object[] { Integer.valueOf(paramInt2), paramString, paramBitmap });
-      }
+      this.a.setResult(0);
+      this.a.finish();
       return;
     }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aeve
  * JD-Core Version:    0.7.0.1
  */

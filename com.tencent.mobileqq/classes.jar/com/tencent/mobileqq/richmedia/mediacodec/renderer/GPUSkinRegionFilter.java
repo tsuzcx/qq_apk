@@ -1,0 +1,236 @@
+package com.tencent.mobileqq.richmedia.mediacodec.renderer;
+
+import android.graphics.PointF;
+import android.opengl.EGL14;
+import android.opengl.GLES20;
+import android.os.Build.VERSION;
+import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
+import com.tencent.sveffects.SLog;
+import com.tencent.ttpic.openapi.filter.GPUBaseFilter;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import java.nio.ByteBuffer;
+import java.util.List;
+
+public class GPUSkinRegionFilter
+{
+  private static final String TAG = "GPUSkinRegionFilter";
+  private static final int outputMaskHeight = 240;
+  private static final int outputMaskWidth = 136;
+  private static final int skinComputeHeight = 120;
+  private static final int skinComputeWidth = 68;
+  private static final boolean useFace = false;
+  private int imageHeight;
+  private int imageWidth;
+  private boolean mIsInitialized = false;
+  private RenderBuffer mRenderFBO;
+  private final Object mTextureLock;
+  private RenderBuffer mZoomFBO;
+  private byte[] maskData;
+  private SkinRegionComputeThread skinRegionComputeThread = new SkinRegionComputeThread();
+  private GPUTextureMergeFilter textureMergeFilter = new GPUTextureMergeFilter();
+  private GPUBaseFilter zoomFilter = new GPUBaseFilter();
+  
+  public GPUSkinRegionFilter()
+  {
+    this.skinRegionComputeThread.initRegionCompute(68, 120, 136, 240, false);
+    this.mTextureLock = new Object();
+  }
+  
+  public void init()
+  {
+    if (SLog.isEnable()) {
+      SLog.d("GPUSkinRegionFilter", "GPU Skin RegionFilter init");
+    }
+    if (this.mIsInitialized) {
+      return;
+    }
+    this.mIsInitialized = true;
+    this.textureMergeFilter.init();
+    this.zoomFilter.init();
+    this.zoomFilter.onOutputSizeChanged(68, 120);
+    if (this.mZoomFBO == null) {
+      this.mZoomFBO = new RenderBuffer(false, 68, 120, 33985);
+    }
+    this.maskData = new byte[32640];
+  }
+  
+  public int mergeTexture(List<List<PointF>> arg1, int paramInt1, int paramInt2)
+  {
+    if (this.mRenderFBO == null) {
+      SLog.e("GPUSkinRegionFilter", "mergeTexture error, renderFBO == null");
+    }
+    int i;
+    float f4;
+    float f2;
+    float f1;
+    float f3;
+    label150:
+    label161:
+    label235:
+    label245:
+    do
+    {
+      return paramInt2;
+      if (???.size() > 0)
+      {
+        ??? = (List)???.get(0);
+        i = 0;
+        f4 = 0.0F;
+        f2 = 0.0F;
+        f1 = 0.0F;
+        f3 = 0.0F;
+        PointF localPointF;
+        for (;;)
+        {
+          f5 = f4;
+          f6 = f2;
+          f7 = f1;
+          f8 = f3;
+          if (i >= ???.size()) {
+            break label267;
+          }
+          localPointF = (PointF)???.get(i);
+          if (i != 0) {
+            break;
+          }
+          f1 = localPointF.x;
+          f8 = localPointF.y;
+          f6 = f8;
+          f3 = f1;
+          i += 1;
+          f4 = f8;
+          f2 = f6;
+        }
+        if (f3 < localPointF.x)
+        {
+          f5 = f3;
+          if (f2 >= localPointF.y) {
+            break label235;
+          }
+          if (f1 <= localPointF.x) {
+            break label245;
+          }
+        }
+        for (f7 = f1;; f7 = localPointF.x)
+        {
+          f8 = f4;
+          f6 = f2;
+          f1 = f7;
+          f3 = f5;
+          if (f4 > localPointF.y) {
+            break;
+          }
+          f8 = localPointF.y;
+          f6 = f2;
+          f1 = f7;
+          f3 = f5;
+          break;
+          f5 = localPointF.x;
+          break label150;
+          f2 = localPointF.y;
+          break label161;
+        }
+      }
+      float f5 = 0.0F;
+      float f6 = 0.0F;
+      float f7 = 0.0F;
+      float f8 = 0.0F;
+      f3 = 68.0F / this.imageWidth / 0.25F;
+      f1 = 120.0F / this.imageHeight / 0.25F;
+      f2 = f8 * f3;
+      f3 *= f7;
+      f4 = 120.0F - f6 * f1;
+      f1 = 120.0F - f1 * f5;
+    } while ((f3 - f2) * (f4 - f1) > 4080.0F);
+    label267:
+    if (this.skinRegionComputeThread != null) {}
+    for (;;)
+    {
+      synchronized (this.mTextureLock)
+      {
+        this.mZoomFBO.bind();
+        this.zoomFilter.drawTexture(paramInt1, null, null);
+        this.mZoomFBO.unbind();
+        this.skinRegionComputeThread.skinRegionCompute(this.mZoomFBO.getTexId(), new float[] { f2, f1, f3, f4 });
+        bool = this.skinRegionComputeThread.copyMaskData(this.maskData);
+        if (!bool)
+        {
+          SLog.d("GPUSkinRegionFilter", "maskData not exist, return");
+          return paramInt2;
+        }
+      }
+      ??? = ByteBuffer.wrap(this.maskData);
+      ???.position(0);
+      int[] arrayOfInt = new int[1];
+      GLES20.glGenTextures(1, arrayOfInt, 0);
+      GlUtil.checkGlError("glGenTextures");
+      GLES20.glBindTexture(3553, arrayOfInt[0]);
+      GlUtil.checkGlError("glBindTexture " + arrayOfInt[0]);
+      GLES20.glTexParameterf(3553, 10241, 9729.0F);
+      GLES20.glTexParameterf(3553, 10240, 9729.0F);
+      GLES20.glTexParameteri(3553, 10242, 33071);
+      GLES20.glTexParameteri(3553, 10243, 33071);
+      GLES20.glTexImage2D(3553, 0, 6406, 136, 240, 0, 6406, 5121, ???);
+      i = arrayOfInt[0];
+      GlUtil.checkGlError("glTexParameter");
+      this.mRenderFBO.setTexId(paramInt2);
+      this.mRenderFBO.bind();
+      this.textureMergeFilter.drawTexture(paramInt1, paramInt2, i, null, null);
+      this.mRenderFBO.unbind();
+      return paramInt2;
+      boolean bool = false;
+    }
+  }
+  
+  public void onOutputSizeChanged(int paramInt1, int paramInt2)
+  {
+    this.textureMergeFilter.onOutputSizeChanged(paramInt1, paramInt2);
+    this.imageWidth = paramInt1;
+    this.imageHeight = paramInt2;
+    if (Build.VERSION.SDK_INT >= 17) {
+      this.skinRegionComputeThread.init(paramInt1, paramInt2, EGL14.eglGetCurrentContext(), this.mTextureLock);
+    }
+    if ((this.mRenderFBO == null) || ((this.mRenderFBO.getHeight() != paramInt2) && (paramInt2 != 0)) || ((this.mRenderFBO.getWidth() != paramInt1) && (paramInt1 != 0)))
+    {
+      if (this.mRenderFBO != null) {
+        this.mRenderFBO.destroy();
+      }
+      this.mRenderFBO = new RenderBuffer(false, paramInt1, paramInt2, 33985);
+    }
+  }
+  
+  public void release()
+  {
+    if (this.textureMergeFilter != null)
+    {
+      this.textureMergeFilter.destroy();
+      this.textureMergeFilter = null;
+    }
+    if (this.zoomFilter != null)
+    {
+      this.zoomFilter.destroy();
+      this.zoomFilter = null;
+    }
+    if (this.mRenderFBO != null)
+    {
+      this.mRenderFBO.destroy();
+      this.mRenderFBO = null;
+    }
+    if (this.mZoomFBO != null)
+    {
+      this.mZoomFBO.destroy();
+      this.mZoomFBO = null;
+    }
+    if (this.skinRegionComputeThread != null)
+    {
+      this.skinRegionComputeThread.onDestroy();
+      this.skinRegionComputeThread = null;
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+ * Qualified Name:     com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUSkinRegionFilter
+ * JD-Core Version:    0.7.0.1
+ */

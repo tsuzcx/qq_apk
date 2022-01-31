@@ -1,18 +1,12 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
+import android.view.View;
 
-public class omw
-  implements ValueAnimator.AnimatorUpdateListener
+public abstract interface omw
 {
-  public omw(FaceLayer.FaceItem paramFaceItem) {}
+  public abstract int a();
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    this.a.p = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.b.g();
-  }
+  public abstract qht a();
+  
+  public abstract boolean a(View paramView);
 }
 
 

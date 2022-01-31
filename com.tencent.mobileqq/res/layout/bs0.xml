@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"> android:id="@+id/qz_top_transparent_titlebar_fl"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/title_bar_height_For_Transparent_Height"
+        android:background="@null"
+        android:layout_alignParentTop="true"> <FrameLayout android:id="@id/ha0" android:layout_width="fill_parent" android:layout_height="@dimen/azw" />
+    <include android:id="@id/ha1" android:background="@null" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_marginTop="@dimen/b01" layout="@layout/bkl" />
+</merge>

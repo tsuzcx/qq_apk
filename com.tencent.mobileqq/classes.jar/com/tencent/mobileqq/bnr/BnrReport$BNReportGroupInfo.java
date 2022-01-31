@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class BnrReport$BNReportGroupInfo
-  extends MessageMicro
+  extends MessageMicro<BNReportGroupInfo>
 {
   public static final int ID_FIELD_NUMBER = 1;
   public static final int SEQNO_FIELD_NUMBER = 2;

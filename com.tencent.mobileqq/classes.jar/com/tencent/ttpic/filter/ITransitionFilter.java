@@ -1,6 +1,6 @@
 package com.tencent.ttpic.filter;
 
-import com.tencent.filter.Frame;
+import com.tencent.aekit.openrender.internal.Frame;
 
 public abstract interface ITransitionFilter
 {
@@ -16,7 +16,7 @@ public abstract interface ITransitionFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.filter.ITransitionFilter
  * JD-Core Version:    0.7.0.1
  */

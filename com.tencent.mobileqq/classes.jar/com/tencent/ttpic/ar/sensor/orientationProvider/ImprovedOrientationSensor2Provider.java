@@ -3,9 +3,9 @@ package com.tencent.ttpic.ar.sensor.orientationProvider;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorManager;
-import android.util.Log;
 import com.tencent.ttpic.ar.sensor.representation.MatrixF4x4;
 import com.tencent.ttpic.ar.sensor.representation.Quaternion;
+import com.tencent.ttpic.baseutils.log.LogUtils;
 import java.util.List;
 
 public class ImprovedOrientationSensor2Provider
@@ -69,26 +69,26 @@ public class ImprovedOrientationSensor2Provider
       float f5 = paramSensorEvent.values[1];
       float f4 = paramSensorEvent.values[2];
       this.gyroscopeRotationVelocity = Math.sqrt(f6 * f6 + f5 * f5 + f4 * f4);
-      float f3 = f6;
+      float f3 = f4;
       float f2 = f5;
-      float f1 = f4;
+      float f1 = f6;
       if (this.gyroscopeRotationVelocity > 0.1000000014901161D)
       {
-        f3 = (float)(f6 / this.gyroscopeRotationVelocity);
+        f1 = (float)(f6 / this.gyroscopeRotationVelocity);
         f2 = (float)(f5 / this.gyroscopeRotationVelocity);
-        f1 = (float)(f4 / this.gyroscopeRotationVelocity);
+        f3 = (float)(f4 / this.gyroscopeRotationVelocity);
       }
       double d2 = this.gyroscopeRotationVelocity * (f7 * 1.0E-009F) / 2.0D;
       double d1 = Math.sin(d2);
       d2 = Math.cos(d2);
-      this.deltaQuaternion.setX((float)(f3 * d1));
+      this.deltaQuaternion.setX((float)(f1 * d1));
       this.deltaQuaternion.setY((float)(f2 * d1));
-      this.deltaQuaternion.setZ((float)(f1 * d1));
+      this.deltaQuaternion.setZ((float)(f3 * d1));
       this.deltaQuaternion.setW(-(float)d2);
       this.deltaQuaternion.multiplyByQuat(this.quaternionGyroscope, this.quaternionGyroscope);
       f1 = this.quaternionGyroscope.dotProduct(this.quaternionRotationVector);
       if (Math.abs(f1) >= 0.85F) {
-        break label433;
+        break label431;
       }
       if (Math.abs(f1) < 0.75F) {
         this.panicCounter += 1;
@@ -96,11 +96,11 @@ public class ImprovedOrientationSensor2Provider
       setOrientationQuaternionAndMatrix(this.quaternionGyroscope);
       if (this.panicCounter > 60)
       {
-        Log.d("Rotation Vector", "Panic counter is bigger than threshold; this indicates a Gyroscope failure. Panic reset is imminent.");
+        LogUtils.d("Rotation Vector", "Panic counter is bigger than threshold; this indicates a Gyroscope failure. Panic reset is imminent.");
         if (this.gyroscopeRotationVelocity >= 3.0D) {
-          break label484;
+          break label482;
         }
-        Log.d("Rotation Vector", "Performing Panic-reset. Resetting orientation to rotation-vector value.");
+        LogUtils.d("Rotation Vector", "Performing Panic-reset. Resetting orientation to rotation-vector value.");
         setOrientationQuaternionAndMatrix(this.quaternionRotationVector);
         this.quaternionGyroscope.copyVec4(this.quaternionRotationVector);
         this.panicCounter = 0;
@@ -110,20 +110,20 @@ public class ImprovedOrientationSensor2Provider
     {
       this.timestamp = paramSensorEvent.timestamp;
       return;
-      label433:
+      label431:
       this.quaternionGyroscope.slerp(this.quaternionRotationVector, this.interpolatedQuaternion, (float)(0.009999999776482582D * this.gyroscopeRotationVelocity));
       setOrientationQuaternionAndMatrix(this.interpolatedQuaternion);
       this.quaternionGyroscope.copyVec4(this.interpolatedQuaternion);
       this.panicCounter = 0;
       break;
-      label484:
-      Log.d("Rotation Vector", String.format("Panic reset delayed due to ongoing motion (user is still shaking the device). Gyroscope Velocity: %.2f > 3", new Object[] { Double.valueOf(this.gyroscopeRotationVelocity) }));
+      label482:
+      LogUtils.d("Rotation Vector", String.format("Panic reset delayed due to ongoing motion (user is still shaking the device). Gyroscope Velocity: %.2f > 3", new Object[] { Double.valueOf(this.gyroscopeRotationVelocity) }));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.ar.sensor.orientationProvider.ImprovedOrientationSensor2Provider
  * JD-Core Version:    0.7.0.1
  */

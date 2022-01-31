@@ -6,7 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import anti;
+import bhfp;
+import bhfq;
+import bhfr;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,10 +17,10 @@ public class CaptureModeAdapter
 {
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  private CaptureModeAdapter.OnItemClickListener jdField_a_of_type_DovComQqImCaptureAdapterCaptureModeAdapter$OnItemClickListener;
-  private List jdField_a_of_type_JavaUtilList;
+  private bhfr jdField_a_of_type_Bhfr;
+  private List<bhfq> jdField_a_of_type_JavaUtilList;
   private int jdField_b_of_type_Int = a(-1, 0.6F);
-  private List jdField_b_of_type_JavaUtilList = new ArrayList();
+  private List<TextView> jdField_b_of_type_JavaUtilList = new ArrayList();
   
   public CaptureModeAdapter(Context paramContext)
   {
@@ -37,7 +39,7 @@ public class CaptureModeAdapter
       int i = 0;
       while (i < this.jdField_a_of_type_JavaUtilList.size())
       {
-        if (((CaptureModeAdapter.CaptureMode)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Int == paramInt) {
+        if (((bhfq)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_Int == paramInt) {
           return i;
         }
         i += 1;
@@ -48,7 +50,23 @@ public class CaptureModeAdapter
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if (paramInt == 0)
+    {
+      paramInt = 0;
+      if (paramInt < this.jdField_b_of_type_JavaUtilList.size())
+      {
+        TextView localTextView = (TextView)this.jdField_b_of_type_JavaUtilList.get(paramInt);
+        if (this.jdField_a_of_type_Int == paramInt) {
+          localTextView.setTextColor(-1);
+        }
+        for (;;)
+        {
+          paramInt += 1;
+          break;
+          localTextView.setTextColor(this.jdField_b_of_type_Int);
+        }
+      }
+    }
   }
   
   public void a(int paramInt, float paramFloat)
@@ -77,24 +95,24 @@ public class CaptureModeAdapter
     localTextView.setTextColor(this.jdField_b_of_type_Int);
   }
   
-  public void a(CaptureModeAdapter.OnItemClickListener paramOnItemClickListener)
+  public void a(bhfr parambhfr)
   {
-    this.jdField_a_of_type_DovComQqImCaptureAdapterCaptureModeAdapter$OnItemClickListener = paramOnItemClickListener;
+    this.jdField_a_of_type_Bhfr = parambhfr;
   }
   
-  public void a(List paramList, int paramInt)
+  public void a(List<bhfq> paramList, int paramInt)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
     int i = 0;
     if (i < paramList.size())
     {
-      CaptureModeAdapter.CaptureMode localCaptureMode = (CaptureModeAdapter.CaptureMode)paramList.get(i);
-      TextView localTextView = (TextView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970091, null);
-      localTextView.setText(localCaptureMode.a());
+      bhfq localbhfq = (bhfq)paramList.get(i);
+      TextView localTextView = (TextView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131494966, null);
+      localTextView.setText(localbhfq.a());
       localTextView.setTag(Integer.valueOf(i));
-      localTextView.setContentDescription(localCaptureMode.a());
-      localTextView.setOnClickListener(new anti(this));
-      if (localCaptureMode.a() != paramInt) {
+      localTextView.setContentDescription(localbhfq.b());
+      localTextView.setOnClickListener(new bhfp(this));
+      if (localbhfq.a() != paramInt) {
         localTextView.setTextColor(this.jdField_b_of_type_Int);
       }
       for (;;)
@@ -104,6 +122,19 @@ public class CaptureModeAdapter
         break;
         this.jdField_a_of_type_Int = i;
       }
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    TextView localTextView = (TextView)this.jdField_b_of_type_JavaUtilList.get(this.jdField_a_of_type_Int);
+    if (localTextView != null) {
+      localTextView.setTextColor(this.jdField_b_of_type_Int);
+    }
+    this.jdField_a_of_type_Int = paramInt;
+    localTextView = (TextView)this.jdField_b_of_type_JavaUtilList.get(this.jdField_a_of_type_Int);
+    if (localTextView != null) {
+      localTextView.setTextColor(-1);
     }
   }
   

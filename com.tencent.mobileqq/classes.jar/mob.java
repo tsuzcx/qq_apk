@@ -1,25 +1,44 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
-public class mob
-  implements Runnable
+class mob
+  extends batl
 {
-  public mob(ReadinjoyTabFrame paramReadinjoyTabFrame, long paramLong) {}
+  mob(moa parammoa) {}
   
-  public void run()
+  public void onDone(batm parambatm)
   {
-    PublicAccountReportUtils.a((QQAppInterface)ReadInJoyUtils.a(), "CliOper", "", "", "0X80066F7", "0X80066F7", 1, 1, Long.toString(this.jdField_a_of_type_Long / 1000L), "", "", ReadInJoyUtils.d(), false);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.4tab", 2, "report ReadinjoyTabFrame use time: " + Long.toString(this.jdField_a_of_type_Long / 1000L));
+    if (parambatm.a == 0) {
+      parambatm = parambatm.a().getString("file_path");
     }
+    while (!QLog.isColorLevel()) {
+      try
+      {
+        File localFile = new File(parambatm);
+        String str = bace.b(localFile);
+        if (QLog.isColorLevel()) {
+          QLog.d("CommonConfigBase", 2, "onDone() content =  " + str + ", filePath = " + parambatm);
+        }
+        localFile.delete();
+        this.a.b(str);
+        this.a.a(str);
+        return;
+      }
+      catch (IOException parambatm)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.d("CommonConfigBase", 2, QLog.getStackTraceString(parambatm));
+        return;
+      }
+    }
+    QLog.d("CommonConfigBase", 2, "onError(), errorCode = " + parambatm.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     mob
  * JD-Core Version:    0.7.0.1
  */

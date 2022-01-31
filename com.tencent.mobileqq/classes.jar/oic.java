@@ -1,53 +1,31 @@
-import android.app.Activity;
-import android.content.ContentResolver;
-import android.content.ContentValues;
-import android.graphics.BitmapFactory;
-import android.graphics.BitmapFactory.Options;
-import android.provider.MediaStore.Images.Media;
-import com.dataline.util.file.MediaStoreUtil;
-import com.tencent.biz.qqstory.takevideo.EditPicSave;
-import com.tencent.biz.qqstory.takevideo.EditVideoUi;
-import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-
-class oic
-  implements Runnable
+public class oic
 {
-  oic(oib paramoib, String paramString) {}
+  public int a;
+  public long a;
+  float[] a;
+  public int b;
+  long jdField_b_of_type_Long;
+  float[] jdField_b_of_type_ArrayOfFloat;
+  public int c;
+  public int d;
+  int e;
+  int f;
+  int g;
+  int h;
+  int i;
   
-  public void run()
+  public String a()
   {
-    try
-    {
-      String str = PlusPanelUtils.a();
-      File localFile = new File(str);
-      if (FileUtils.a(new File(this.jdField_a_of_type_JavaLangString), localFile))
-      {
-        Object localObject = new BitmapFactory.Options();
-        ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
-        BitmapFactory.decodeFile(str, (BitmapFactory.Options)localObject);
-        localObject = ((BitmapFactory.Options)localObject).outMimeType;
-        int i = MediaStoreUtil.a(str);
-        ContentValues localContentValues = new ContentValues(7);
-        localContentValues.put("title", localFile.getName());
-        localContentValues.put("_display_name", localFile.getName());
-        localContentValues.put("date_modified", Long.valueOf(localFile.lastModified() / 1000L));
-        localContentValues.put("mime_type", (String)localObject);
-        localContentValues.put("orientation", Integer.valueOf(i));
-        localContentValues.put("_data", str);
-        localContentValues.put("_size", Long.valueOf(localFile.length()));
-        if (this.jdField_a_of_type_Oib.a.a.getActivity().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, localContentValues) == null) {
-          MediaStore.Images.Media.insertImage(this.jdField_a_of_type_Oib.a.a.getActivity().getContentResolver(), str, localFile.getName(), null);
-        }
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("EditPicSave", 2, "savePic " + localException.toString());
+    double d1 = this.g * 1.0D / this.h;
+    double d2 = 1000.0D * d1 / this.jdField_a_of_type_Long;
+    double d3 = this.jdField_a_of_type_ArrayOfFloat[0] / this.i;
+    double d4 = this.jdField_a_of_type_ArrayOfFloat[1] / this.h;
+    double d5 = this.b[0] / this.i;
+    double d6 = this.b[1] / this.h;
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (this.jdField_a_of_type_Int == 1) {}
+    for (int j = 0;; j = 1) {
+      return j + "_" + String.format("%.2f", new Object[] { Double.valueOf(d1) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d2) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d4) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d3) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d6) }) + "_" + String.format("%.2f", new Object[] { Double.valueOf(d5) });
     }
   }
 }

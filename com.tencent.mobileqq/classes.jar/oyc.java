@@ -1,18 +1,27 @@
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class oyc
-  implements Runnable
 {
-  public oyc(QRDisplayActivity paramQRDisplayActivity) {}
-  
-  public void run()
+  public static void a(Context paramContext, ArticleInfo paramArticleInfo)
   {
-    String str = "temp_qrcode_share_" + this.a.c + ".png";
-    str = QRUtils.a(this.a, str, this.a.b);
-    ThreadManager.getUIHandler().post(new oyd(this, str));
+    a(paramContext, paramArticleInfo, false);
+  }
+  
+  public static void a(Context paramContext, ArticleInfo paramArticleInfo, boolean paramBoolean)
+  {
+    if (paramArticleInfo == null)
+    {
+      QLog.d("PGCShortContentUtils", 1, "articleInfo is null");
+      return;
+    }
+    if (paramArticleInfo.isCardJumpUrlAvailable == 1)
+    {
+      obz.e(paramContext, paramArticleInfo.getCardJumpUrl());
+      return;
+    }
+    obz.a(paramContext, paramArticleInfo, paramBoolean);
   }
 }
 

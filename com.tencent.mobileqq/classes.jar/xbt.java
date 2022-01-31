@@ -1,20 +1,56 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.webviewplugin.NewerGuidePlugin;
+import com.tencent.qphone.base.util.QLog;
 
 public class xbt
-  implements DialogInterface.OnDismissListener
+  extends BroadcastReceiver
 {
-  public xbt(CameraPreviewActivity paramCameraPreviewActivity) {}
+  public xbt(NewerGuidePlugin paramNewerGuidePlugin) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a = null;
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("NewerGuidePlugin", 2, String.format("mAvatarReceiver.onReceive action=%s", new Object[] { paramContext }));
+    }
+    if ("ACTION_NEWER_GUIDE_SELECT_AVATAR_RESULT".equals(paramContext))
+    {
+      paramContext = paramIntent.getStringExtra("PhotoConst.SINGLE_PHOTO_PATH");
+      boolean bool = paramIntent.getBooleanExtra("PhotoConst.SYNCQZONE", false);
+      paramIntent = paramIntent.getStringExtra("PhotoConst.SOURCE_FROM");
+      if (!TextUtils.isEmpty(paramContext))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("NewerGuidePlugin", 2, String.format("mAvatarReceiver.onReceive path=%s syncQZone=%s sourceFrom=%s", new Object[] { paramContext, Boolean.valueOf(bool), paramIntent }));
+        }
+        Bundle localBundle = new Bundle();
+        localBundle.putString("key_action", "setAvatar");
+        localBundle.putString("path", paramContext);
+        localBundle.putBoolean("PhotoConst.SYNCQZONE", bool);
+        localBundle.putString("PhotoConst.SOURCE_FROM", paramIntent);
+        paramContext = anah.a("ipc_newer_guide", null, NewerGuidePlugin.a(this.a).key, localBundle);
+        anfc.a().a(paramContext);
+        if (NewerGuidePlugin.a(this.a) == null)
+        {
+          paramContext = this.a.mRuntime.a();
+          int i = paramContext.getResources().getDimensionPixelSize(2131167766);
+          NewerGuidePlugin.a(this.a, new bbms(paramContext, i));
+          NewerGuidePlugin.a(this.a).a(ajjy.a(2131641646));
+        }
+        NewerGuidePlugin.a(this.a).show();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xbt
  * JD-Core Version:    0.7.0.1
  */

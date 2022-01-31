@@ -1,20 +1,23 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.dataline.activities.PrinterDefaultActivity;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.dataline.activities.LiteMutiPicViewerActivity;
+import com.dataline.util.widget.AsyncImageView;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class cl
-  implements View.OnClickListener
 {
-  public cl(PrinterDefaultActivity paramPrinterDefaultActivity) {}
+  public View a;
+  public ImageView a;
+  public RelativeLayout a;
+  public AsyncImageView a;
+  public DataLineMsgRecord a;
   
-  public void onClick(View paramView)
-  {
-    this.a.finish();
-  }
+  public cl(LiteMutiPicViewerActivity paramLiteMutiPicViewerActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     cl
  * JD-Core Version:    0.7.0.1
  */

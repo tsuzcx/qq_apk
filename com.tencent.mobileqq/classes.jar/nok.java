@@ -1,14 +1,26 @@
-import com.tencent.biz.qqstory.playmode.child.MyVideoFromMessageNotifyPlayMode;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.ad.multiVideo.MultiVideoAdFooterView;
 
-public class nok
-  implements Runnable
+class nok
+  extends Handler
 {
-  public nok(MyVideoFromMessageNotifyPlayMode paramMyVideoFromMessageNotifyPlayMode) {}
-  
-  public void run()
+  nok(noj paramnoj, Looper paramLooper)
   {
-    this.a.a.setCurrentItem(0, false);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+    } while ((this.a.a == null) || (this.a.a.a == null));
+    this.a.a.a.a();
   }
 }
 

@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class seu
-  implements FMDialogUtil.FMDialogInterface
+class seu
+  implements View.OnClickListener
 {
-  public seu(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList) {}
+  seu(ser paramser) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    FileManagerUtil.a(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
+    if (ser.a(this.a) != null) {
+      ser.a(this.a).a(ser.a(this.a));
+    }
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     seu
  * JD-Core Version:    0.7.0.1
  */

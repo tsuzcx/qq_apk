@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x5d2$FriendList
-  extends MessageMicro
+  extends MessageMicro<FriendList>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField nick = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -22,7 +22,7 @@ public final class oidb_0x5d2$FriendList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x5d2.oidb_0x5d2.FriendList
  * JD-Core Version:    0.7.0.1
  */

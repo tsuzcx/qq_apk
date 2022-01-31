@@ -1,24 +1,40 @@
-import com.tencent.biz.pubaccount.assistant.PubAccountTipsManager;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.biz.subscribe.utils.SubscribeAdDeviceInfoHelper.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
+import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
 
 public class weg
-  implements Runnable
 {
-  public weg(PublicAccountChatPie paramPublicAccountChatPie, boolean paramBoolean, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3) {}
+  private static weg jdField_a_of_type_Weg;
+  private qq_ad_get.QQAdGet.DeviceInfo jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo;
   
-  public void run()
+  public static weg a()
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (jdField_a_of_type_Weg == null) {}
+    try
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.a.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c);
-      return;
+      if (jdField_a_of_type_Weg == null) {
+        jdField_a_of_type_Weg = new weg();
+      }
+      return jdField_a_of_type_Weg;
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.a.a();
+    finally {}
+  }
+  
+  public qq_ad_get.QQAdGet.DeviceInfo a()
+  {
+    a();
+    return this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet$DeviceInfo;
+  }
+  
+  public void a()
+  {
+    ThreadManager.getFileThreadHandler().post(new SubscribeAdDeviceInfoHelper.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     weg
  * JD-Core Version:    0.7.0.1
  */

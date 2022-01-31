@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajxr;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.data.TroopMemberInfo;
@@ -9,31 +8,31 @@ import java.util.Iterator;
 import java.util.List;
 
 public class TroopNameHelper$FriendNameChanedTask
-  extends ajxr
+  extends TroopNameHelper.Task
 {
-  String jdField_a_of_type_JavaLangString;
+  String a;
   
   TroopNameHelper$FriendNameChanedTask(TroopNameHelper paramTroopNameHelper, String paramString)
   {
     super(paramTroopNameHelper);
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.a = paramString;
   }
   
   public void a()
   {
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopNameHelper.a.a();
+    Object localObject2 = this.this$0.a.a();
     Object localObject1 = new ArrayList();
     localObject2 = ((List)localObject2).iterator();
-    label174:
+    label182:
     for (;;)
     {
       TroopInfo localTroopInfo;
       if (((Iterator)localObject2).hasNext())
       {
         localTroopInfo = (TroopInfo)((Iterator)localObject2).next();
-        if (localTroopInfo != null)
+        if ((localTroopInfo != null) && (!localTroopInfo.hasSetTroopName()))
         {
-          Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopNameHelper.a.b(localTroopInfo.troopuin);
+          Object localObject3 = this.this$0.a.b(localTroopInfo.troopuin);
           if (localObject3 != null)
           {
             localObject3 = ((List)localObject3).iterator();
@@ -44,7 +43,7 @@ public class TroopNameHelper$FriendNameChanedTask
                 break;
               }
               localTroopMemberInfo = (TroopMemberInfo)((Iterator)localObject3).next();
-            } while (!this.jdField_a_of_type_JavaLangString.equals(localTroopMemberInfo.memberuin));
+            } while (!this.a.equals(localTroopMemberInfo.memberuin));
           }
         }
       }
@@ -53,7 +52,7 @@ public class TroopNameHelper$FriendNameChanedTask
         for (int i = 1;; i = 0)
         {
           if (i == 0) {
-            break label174;
+            break label182;
           }
           ((ArrayList)localObject1).add(localTroopInfo.troopuin);
           break;
@@ -69,7 +68,7 @@ public class TroopNameHelper$FriendNameChanedTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopNameHelper.FriendNameChanedTask
  * JD-Core Version:    0.7.0.1
  */

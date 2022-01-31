@@ -20,7 +20,7 @@ final class j
       StatServiceImpl.commitEvents(this.a, -1);
     }
     if (StatConfig.isDebugEnable()) {
-      StatServiceImpl.f().d("Init MTA StatService success, sdk version:2.2.4");
+      StatServiceImpl.f().d("Init MTA StatService success, sdk version:2.4.2");
     }
   }
 }

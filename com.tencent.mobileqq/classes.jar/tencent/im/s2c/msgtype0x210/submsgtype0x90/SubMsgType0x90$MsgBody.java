@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class SubMsgType0x90$MsgBody
-  extends MessageMicro
+  extends MessageMicro<MsgBody>
 {
   public static final int MSG_BODY_FIELD_NUMBER = 2;
   public static final int MSG_HEAD_FIELD_NUMBER = 1;

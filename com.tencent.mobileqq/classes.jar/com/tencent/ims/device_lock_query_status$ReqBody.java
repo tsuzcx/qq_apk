@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class device_lock_query_status$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   public static final int U32_APP_ID_FIELD_NUMBER = 3;
   public static final int U32_SEQ_FIELD_NUMBER = 1;

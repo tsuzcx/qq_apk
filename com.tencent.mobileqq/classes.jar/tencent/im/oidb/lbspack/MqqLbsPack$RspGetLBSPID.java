@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class MqqLbsPack$RspGetLBSPID
-  extends MessageMicro
+  extends MessageMicro<RspGetLBSPID>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_pid = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -21,7 +21,7 @@ public final class MqqLbsPack$RspGetLBSPID
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.lbspack.MqqLbsPack.RspGetLBSPID
  * JD-Core Version:    0.7.0.1
  */

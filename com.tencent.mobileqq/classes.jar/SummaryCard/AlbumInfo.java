@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class AlbumInfo
   extends JceStruct
 {
-  static ArrayList cache_vPhotos;
-  public ArrayList vPhotos;
+  static ArrayList<PhotoInfo> cache_vPhotos;
+  public ArrayList<PhotoInfo> vPhotos;
   
   public AlbumInfo() {}
   
-  public AlbumInfo(ArrayList paramArrayList)
+  public AlbumInfo(ArrayList<PhotoInfo> paramArrayList)
   {
     this.vPhotos = paramArrayList;
   }

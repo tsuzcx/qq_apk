@@ -1,21 +1,19 @@
-import android.graphics.Bitmap;
-import java.util.List;
-
-public abstract interface aola
+class aola
+  extends aokw
 {
-  public abstract void a();
+  public aola(aokk paramaokk)
+  {
+    super(paramaokk);
+  }
   
-  public abstract void a(int paramInt);
-  
-  public abstract void a(int paramInt, long paramLong, Bitmap paramBitmap);
-  
-  public abstract void a(List paramList);
-  
-  public abstract void a(boolean paramBoolean);
+  protected String a()
+  {
+    return "StateGotoOffFileProcess";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aola
  * JD-Core Version:    0.7.0.1
  */

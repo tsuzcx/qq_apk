@@ -9,13 +9,13 @@ import com.tencent.component.media.utils.ImageManagerLog;
 public class IBitmapFactory$DalvikBitmapFactory
   extends IBitmapFactory
 {
-  ByteArrayPool jdField_a_of_type_ComTencentComponentMediaImageByteArrayPool;
-  IDecoder jdField_a_of_type_ComTencentComponentMediaImageIDecoder;
+  ByteArrayPool mByteArrayPool;
+  IDecoder mDecoder;
   
   IBitmapFactory$DalvikBitmapFactory(ByteArrayPool paramByteArrayPool, IDecoder paramIDecoder)
   {
-    this.jdField_a_of_type_ComTencentComponentMediaImageByteArrayPool = paramByteArrayPool;
-    this.jdField_a_of_type_ComTencentComponentMediaImageIDecoder = paramIDecoder;
+    this.mByteArrayPool = paramByteArrayPool;
+    this.mDecoder = paramIDecoder;
   }
   
   @TargetApi(12)
@@ -33,10 +33,10 @@ public class IBitmapFactory$DalvikBitmapFactory
       finally {}
       short s1 = (short)paramInt1;
       short s2 = (short)paramInt2;
-      byte[] arrayOfByte = a(s1, s2, this.jdField_a_of_type_ComTencentComponentMediaImageByteArrayPool);
+      byte[] arrayOfByte = generate(s1, s2, this.mByteArrayPool);
       Object localObject = new BitmapFactory.Options();
       ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.ARGB_8888;
-      localObject = this.jdField_a_of_type_ComTencentComponentMediaImageIDecoder.decodeImage(arrayOfByte, 0, jdField_a_of_type_Int, (BitmapFactory.Options)localObject, -1, -1);
+      localObject = this.mDecoder.decodeImage(arrayOfByte, 0, sEmptyByteSize, (BitmapFactory.Options)localObject, -1, -1);
       if (localObject == null)
       {
         paramConfig = BitmapReference.getBitmapReference(Bitmap.createBitmap(paramInt1, paramInt2, paramConfig));
@@ -51,7 +51,7 @@ public class IBitmapFactory$DalvikBitmapFactory
         }
         else
         {
-          this.jdField_a_of_type_ComTencentComponentMediaImageByteArrayPool.release(arrayOfByte);
+          this.mByteArrayPool.release(arrayOfByte);
           paramConfig = (Bitmap.Config)localObject;
         }
       }

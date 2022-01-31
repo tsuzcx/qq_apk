@@ -1,45 +1,37 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoAutoPlayController;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView.OnDrawCompleteListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.widget.stageview.StageEffectView;
+import com.tencent.av.widget.stageview.StageMemberView;
+import java.util.Comparator;
 
 public class mko
-  implements ReadInJoyBaseListView.OnDrawCompleteListener
+  implements Comparator<StageMemberView>
 {
-  public mko(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter) {}
+  public mko(StageEffectView paramStageEffectView) {}
   
-  public void a(ReadInJoyBaseListView paramReadInJoyBaseListView)
+  public int a(StageMemberView paramStageMemberView1, StageMemberView paramStageMemberView2)
   {
-    ReadInJoyBaseAdapter.e(this.a, false);
-    if (!ReadInJoyBaseAdapter.d(this.a)) {
-      return;
+    if ((paramStageMemberView1 == null) && (paramStageMemberView2 == null)) {
+      return 0;
     }
-    ReadInJoyBaseAdapter.b(this.a, false);
-    if ((this.a.a()) && (ReadInJoyBaseAdapter.a(this.a) != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.readinjoy.video", 2, "onDrawFinish checkplayable!");
-      }
-      if (!ReadInJoyBaseAdapter.a(this.a).b()) {
-        break label122;
-      }
-      ReadInJoyBaseAdapter.a(this.a).postDelayed(new mkp(this, paramReadInJoyBaseListView), 1200L);
+    if (paramStageMemberView2 == null) {
+      return -1;
     }
-    for (;;)
-    {
-      ReadInJoyBaseAdapter.a(this.a, this.a.a.getLastVisiblePosition() + 1, ReadInJoyBaseAdapter.b());
-      return;
-      label122:
-      ReadInJoyBaseAdapter.a(this.a, paramReadInJoyBaseListView, ReadInJoyBaseAdapter.b);
+    if (paramStageMemberView1 == null) {
+      return 1;
     }
+    paramStageMemberView1 = (mku)paramStageMemberView1.getTag();
+    paramStageMemberView2 = (mku)paramStageMemberView2.getTag();
+    if (paramStageMemberView1.a == paramStageMemberView2.a) {
+      return 0;
+    }
+    if (mkj.a(paramStageMemberView1.a - 10000, 20000) < mkj.a(paramStageMemberView2.a - 10000, 20000)) {
+      return -1;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mko
  * JD-Core Version:    0.7.0.1
  */

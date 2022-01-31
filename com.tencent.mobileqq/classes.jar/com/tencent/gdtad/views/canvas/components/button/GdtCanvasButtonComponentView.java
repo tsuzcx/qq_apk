@@ -1,63 +1,106 @@
 package com.tencent.gdtad.views.canvas.components.button;
 
 import android.content.Context;
-import android.text.TextUtils;
+import android.util.AttributeSet;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout.LayoutParams;
-import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.views.GdtViewStatus;
+import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.gdtad.views.canvas.components.GdtCanvasComponentView;
-import com.tencent.gdtad.views.canvas.framework.GdtCanvasButtonView;
+import com.tencent.gdtad.views.xijing.GdtButtonView;
 import java.lang.ref.WeakReference;
-import qpx;
+import yny;
+import ypm;
+import ypy;
+import yqo;
 
 public class GdtCanvasButtonComponentView
   extends GdtCanvasComponentView
 {
   private GdtCanvasButtonComponentData a;
   
-  public GdtCanvasButtonComponentView(Context paramContext, WeakReference paramWeakReference, GdtCanvasButtonComponentData paramGdtCanvasButtonComponentData)
+  public GdtCanvasButtonComponentView(Context paramContext)
+  {
+    super(paramContext);
+  }
+  
+  public GdtCanvasButtonComponentView(Context paramContext, AttributeSet paramAttributeSet)
+  {
+    super(paramContext, paramAttributeSet);
+  }
+  
+  public GdtCanvasButtonComponentView(Context paramContext, WeakReference<yqo> paramWeakReference, GdtCanvasButtonComponentData paramGdtCanvasButtonComponentData)
   {
     super(paramContext, paramWeakReference);
     a(paramContext, paramGdtCanvasButtonComponentData);
   }
   
-  private void a(Context paramContext, GdtCanvasButtonComponentData paramGdtCanvasButtonComponentData)
+  private void a(String paramString1, boolean paramBoolean, String paramString2, String paramString3)
   {
-    g();
-    if ((paramGdtCanvasButtonComponentData == null) || (!paramGdtCanvasButtonComponentData.isValid()))
-    {
-      GdtLog.d("GdtCanvasButtonComponentView", "init error");
-      a(false);
-      return;
+    if (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) {
+      ((yqo)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(paramString1, paramBoolean, paramString2, paramString3);
     }
-    this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsButtonGdtCanvasButtonComponentData = paramGdtCanvasButtonComponentData;
-    setLayoutParams(new FrameLayout.LayoutParams(-1, -2));
-    setPadding(a().paddingLeft, a().paddingTop, a().paddingRight, a().paddingBottom);
-    paramContext = new GdtCanvasButtonView(paramContext, a().button);
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, a().height);
-    localLayoutParams.gravity = 17;
-    addView(paramContext, localLayoutParams);
-    paramGdtCanvasButtonComponentData = paramGdtCanvasButtonComponentData.actionUrl;
-    if (!TextUtils.isEmpty(paramGdtCanvasButtonComponentData)) {
-      paramContext.setOnClickListener(new qpx(this, paramGdtCanvasButtonComponentData));
-    }
-    this.jdField_a_of_type_ComTencentGdtadViewsGdtViewStatus = new GdtViewStatus(new WeakReference(paramContext), new WeakReference(this));
-    a(true);
-  }
-  
-  public GdtViewStatus a()
-  {
-    return this.jdField_a_of_type_ComTencentGdtadViewsGdtViewStatus;
   }
   
   public GdtCanvasButtonComponentData a()
   {
     return this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsButtonGdtCanvasButtonComponentData;
   }
+  
+  public ypm a()
+  {
+    return this.jdField_a_of_type_Ypm;
+  }
+  
+  public void a(Context paramContext, GdtCanvasButtonComponentData paramGdtCanvasButtonComponentData)
+  {
+    g();
+    if ((paramGdtCanvasButtonComponentData == null) || (!paramGdtCanvasButtonComponentData.isValid()) || (getResources() == null))
+    {
+      yny.d("GdtCanvasButtonComponentView", "init error");
+      a(false);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsButtonGdtCanvasButtonComponentData = paramGdtCanvasButtonComponentData;
+    Object localObject;
+    if (a().isFixed)
+    {
+      localObject = new RelativeLayout.LayoutParams(-1, -2);
+      ((RelativeLayout.LayoutParams)localObject).addRule(12);
+      setLayoutParams((ViewGroup.LayoutParams)localObject);
+      setPadding(a().paddingLeft, a().paddingTop, a().paddingRight, a().toBottom + a().paddingBottom);
+      paramContext = new GdtButtonView(paramContext, a().button);
+      localObject = new FrameLayout.LayoutParams(a().width, a().height);
+      ((FrameLayout.LayoutParams)localObject).gravity = (this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsButtonGdtCanvasButtonComponentData.gravity | 0x10);
+      if (this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsButtonGdtCanvasButtonComponentData.gravity != 17) {
+        break label300;
+      }
+      ((FrameLayout.LayoutParams)localObject).gravity = 17;
+    }
+    for (;;)
+    {
+      addView(paramContext, (ViewGroup.LayoutParams)localObject);
+      localObject = paramGdtCanvasButtonComponentData.actionUrl;
+      paramContext.setOnClickListener(new ypy(this, paramGdtCanvasButtonComponentData.linkType, paramGdtCanvasButtonComponentData.isFixed, (String)localObject, paramGdtCanvasButtonComponentData.formModId));
+      this.jdField_a_of_type_Ypm = new ypm(new WeakReference(paramContext), new WeakReference(this));
+      a(true);
+      return;
+      setLayoutParams(new FrameLayout.LayoutParams(-1, -2));
+      setPadding(a().paddingLeft, a().paddingTop, a().paddingRight, a().paddingBottom);
+      break;
+      label300:
+      if (this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsButtonGdtCanvasButtonComponentData.gravity == 3) {
+        ((FrameLayout.LayoutParams)localObject).gravity = 3;
+      } else if (this.jdField_a_of_type_ComTencentGdtadViewsCanvasComponentsButtonGdtCanvasButtonComponentData.gravity == 5) {
+        ((FrameLayout.LayoutParams)localObject).gravity = 5;
+      } else {
+        ((FrameLayout.LayoutParams)localObject).gravity = 17;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.components.button.GdtCanvasButtonComponentView
  * JD-Core Version:    0.7.0.1
  */

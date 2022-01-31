@@ -1,22 +1,26 @@
-import android.os.Handler;
-import com.tencent.mobileqq.armap.FrameBmpCache.EndListener;
-import com.tencent.mobileqq.armap.SdCardImageAnimView;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
 
 public class agnj
-  implements FrameBmpCache.EndListener
+  implements agka
 {
-  public agnj(ScanTorchActivity paramScanTorchActivity) {}
+  public agnj(QzoneHbFragment paramQzoneHbFragment) {}
   
-  public void a(SdCardImageAnimView paramSdCardImageAnimView)
+  public void a() {}
+  
+  public void a(Object paramObject)
   {
-    paramSdCardImageAnimView.a();
-    this.a.a.post(new agnk(this));
+    if ((paramObject instanceof Bitmap))
+    {
+      paramObject = QzoneHbFragment.a(this.a).obtainMessage();
+      paramObject.what = 102;
+      QzoneHbFragment.a(this.a).sendMessage(paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agnj
  * JD-Core Version:    0.7.0.1
  */

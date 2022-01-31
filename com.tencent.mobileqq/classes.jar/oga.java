@@ -1,13 +1,13 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
+import com.tencent.biz.pubaccount.readinjoy.struct.DynamicChannelDataModel;
 
 class oga
-  implements Runnable
+  implements psi<DynamicChannelDataModel>
 {
-  oga(ofz paramofz) {}
+  oga(ofz paramofz, long paramLong) {}
   
-  public void run()
+  public boolean a(DynamicChannelDataModel paramDynamicChannelDataModel)
   {
-    this.a.a.c(true);
+    return paramDynamicChannelDataModel.recommendSeq > this.jdField_a_of_type_Long;
   }
 }
 

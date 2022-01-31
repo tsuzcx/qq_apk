@@ -1,37 +1,63 @@
-import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.widget.ImageView;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.ListIterator;
+import java.util.Map.Entry;
+import java.util.WeakHashMap;
 
 public class ulu
-  implements Runnable
 {
-  public ulu(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  private LinkedHashMap<vpk, WeakReference<ImageView>> jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap(10, 0.75F, true);
+  private WeakHashMap<ImageView, vpk> jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
   
-  public void run()
+  public int a()
   {
-    try
-    {
-      if ((VerifyPhoneNumActivity.a(this.a) == null) && (!this.a.isFinishing()))
-      {
-        VerifyPhoneNumActivity.a(this.a, new QQProgressDialog(this.a.getActivity(), this.a.getTitleBarHeight()));
-        VerifyPhoneNumActivity.a(this.a).c(2131435086);
-      }
-      if ((VerifyPhoneNumActivity.a(this.a) != null) && (!VerifyPhoneNumActivity.a(this.a).isShowing())) {
-        VerifyPhoneNumActivity.a(this.a).show();
-      }
-      return;
+    return this.jdField_a_of_type_JavaUtilLinkedHashMap.size();
+  }
+  
+  public ListIterator<Map.Entry<vpk, WeakReference<ImageView>>> a()
+  {
+    return new ArrayList(this.jdField_a_of_type_JavaUtilLinkedHashMap.entrySet()).listIterator(this.jdField_a_of_type_JavaUtilLinkedHashMap.size());
+  }
+  
+  public vpk a(ImageView paramImageView)
+  {
+    paramImageView = (vpk)this.jdField_a_of_type_JavaUtilWeakHashMap.remove(paramImageView);
+    if (paramImageView != null) {
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramImageView);
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+    return paramImageView;
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilWeakHashMap.clear();
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+  }
+  
+  public void a(ImageView paramImageView, vpk paramvpk)
+  {
+    vpk localvpk = (vpk)this.jdField_a_of_type_JavaUtilWeakHashMap.put(paramImageView, paramvpk);
+    if (localvpk != null) {
+      this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(localvpk);
     }
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.put(paramvpk, new WeakReference(paramImageView));
+  }
+  
+  public void a(vpk paramvpk)
+  {
+    this.jdField_a_of_type_JavaUtilLinkedHashMap.remove(paramvpk);
+  }
+  
+  public vpk b(ImageView paramImageView)
+  {
+    return (vpk)this.jdField_a_of_type_JavaUtilWeakHashMap.get(paramImageView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ulu
  * JD-Core Version:    0.7.0.1
  */

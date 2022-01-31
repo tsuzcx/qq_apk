@@ -1,15 +1,12 @@
-import com.qq.jce.wup.UniAttribute;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.service.qzone.QZoneFeedCountPackeger;
-
-public final class aici
-  implements Runnable
+class aici
 {
-  public aici(UniAttribute paramUniAttribute, QQAppInterface paramQQAppInterface) {}
+  azkr jdField_a_of_type_Azkr;
+  Boolean jdField_a_of_type_JavaLangBoolean;
   
-  public void run()
+  public aici(aicc paramaicc, azkr paramazkr)
   {
-    QZoneFeedCountPackeger.a(this.jdField_a_of_type_ComQqJceWupUniAttribute, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_Azkr = paramazkr;
+    this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
   }
 }
 

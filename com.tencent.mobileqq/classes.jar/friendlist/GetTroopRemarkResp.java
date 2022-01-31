@@ -9,7 +9,7 @@ public final class GetTroopRemarkResp
   extends JceStruct
 {
   static int cache_result;
-  static ArrayList cache_vecTroopRemark;
+  static ArrayList<stTroopRemarkInfo> cache_vecTroopRemark;
   public long GroupCode;
   public long GroupUin;
   public long NextUin;
@@ -17,11 +17,11 @@ public final class GetTroopRemarkResp
   public short errorCode;
   public int result;
   public long uin;
-  public ArrayList vecTroopRemark;
+  public ArrayList<stTroopRemarkInfo> vecTroopRemark;
   
   public GetTroopRemarkResp() {}
   
-  public GetTroopRemarkResp(long paramLong1, long paramLong2, long paramLong3, long paramLong4, ArrayList paramArrayList, long paramLong5, int paramInt, short paramShort)
+  public GetTroopRemarkResp(long paramLong1, long paramLong2, long paramLong3, long paramLong4, ArrayList<stTroopRemarkInfo> paramArrayList, long paramLong5, int paramInt, short paramShort)
   {
     this.uin = paramLong1;
     this.GroupCode = paramLong2;

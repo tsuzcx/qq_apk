@@ -1,24 +1,27 @@
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.PhoneContactHelper;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import android.view.View.OnClickListener;
+import mqq.os.MqqHandler;
 
-public class agzm
-  implements AdapterView.OnItemClickListener
+class agzm
+  implements View.OnClickListener
 {
-  public agzm(QCallDetailActivity paramQCallDetailActivity) {}
+  private final int jdField_a_of_type_Int;
+  private final MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public agzm(int paramInt, MqqHandler paramMqqHandler)
   {
-    paramAdapterView = PhoneContactHelper.a(((TextView)paramView.findViewById(2131369911)).getText().toString());
-    this.a.a(this.a.getActivity(), paramAdapterView);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
+  }
+  
+  public void onClick(View paramView)
+  {
+    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agzm
  * JD-Core Version:    0.7.0.1
  */

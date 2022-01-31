@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ad4" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_alignParentTop="true" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040104" />
-    <com.qqfav.widget.QfavSwipListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ad5" android:focusable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:cacheColorHint="@android:color/transparent" android:divider="@android:color/transparent" android:dividerHeight="1.0px" android:layout_below="@id/rlCommenTitle" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ad6" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04058e" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/rlCommenTitle" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ad7" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040582" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/rlCommenTitle" />
-    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ad8" android:layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040587" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0a1ad5" />
-</RelativeLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cooperation.qzone.QZoneTopGestureLayout android:orientation="vertical" android:id="@id/main" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:qzone="http://schemas.android.com/apk/res-auto">
+    <com.qzone.widget.QZonePullToRefreshListViewForFriendFeeds android:id="@id/j" android:scrollbars="@null" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="0.0dip" android:listSelector="@color/ajr" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" qzone:ptrCoverMode="true" />
+    <ViewStub android:id="@id/ixk" android:layout="@layout/blb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <include android:layout_width="fill_parent" android:layout_height="35.0dip" android:layout_marginTop="@dimen/azy" layout="@layout/bun" />
+    <ViewStub android:id="@id/hh4" android:layout="@layout/bky" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
+    <ViewStub android:id="@id/h_v" android:layout="@layout/bsd" android:inflatedId="@id/h_u" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/azw" android:layout_alignParentRight="true" />
+    <ViewStub android:id="@id/hmc" android:visibility="gone" android:layout="@layout/bol" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/hig" android:layout="@layout/bl5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <ViewStub android:id="@id/d3m" android:layout="@layout/blw" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/j8j" android:layout="@layout/bld" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ViewStub android:id="@id/dtr" android:layout="@layout/bs5" android:layout_width="19.0dip" android:layout_height="19.0dip" android:layout_marginTop="@dimen/azw" android:layout_below="@id/dtb" android:layout_centerHorizontal="true" />
+    <ViewStub android:id="@id/dhc" android:layout="@layout/cdj" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.qzone.widget.AsyncImageView android:id="@id/m4e" android:visibility="invisible" android:layout_width="136.0dip" android:layout_height="48.0dip" />
+    <FrameLayout android:id="@id/dg0" android:visibility="invisible" android:layout_width="75.0dip" android:layout_height="75.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="60.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true">
+        <ImageView android:id="@id/hgu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qzone_skin_feed_plus_icon" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/jth" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</cooperation.qzone.QZoneTopGestureLayout>

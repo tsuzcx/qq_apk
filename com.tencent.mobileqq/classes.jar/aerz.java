@@ -1,92 +1,41 @@
-import android.os.IBinder;
-import android.os.Parcel;
-import com.tencent.mobileqq.music.IQQPlayerCallback;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Calendar;
 
 public class aerz
-  implements IQQPlayerCallback
 {
-  private IBinder a;
+  long jdField_a_of_type_Long;
+  MessageRecord jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+  CharSequence jdField_a_of_type_JavaLangCharSequence;
+  String jdField_a_of_type_JavaLangString;
+  boolean jdField_a_of_type_Boolean;
+  long jdField_b_of_type_Long;
+  CharSequence jdField_b_of_type_JavaLangCharSequence;
   
-  public aerz(IBinder paramIBinder)
+  public aerz(TroopMemberHistoryFragment paramTroopMemberHistoryFragment, String paramString, long paramLong1, CharSequence paramCharSequence, long paramLong2, MessageRecord paramMessageRecord)
   {
-    this.a = paramIBinder;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.jdField_a_of_type_JavaLangCharSequence = paramCharSequence;
+    this.jdField_b_of_type_Long = paramLong2;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramMessageRecord;
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  public void a(int paramInt)
+  public CharSequence a()
   {
-    Parcel localParcel = Parcel.obtain();
-    try
+    if (this.jdField_b_of_type_JavaLangCharSequence == null)
     {
-      localParcel.writeInterfaceToken("com.tencent.mobileqq.music.IQQPlayerCallback");
-      localParcel.writeInt(paramInt);
-      this.a.transact(1, localParcel, null, 1);
-      return;
+      Calendar.getInstance().setTimeInMillis(this.jdField_a_of_type_Long * 1000L);
+      this.jdField_b_of_type_JavaLangCharSequence = baiu.a(BaseApplicationImpl.getApplication().getApplicationContext(), 3, this.jdField_a_of_type_Long * 1000L);
     }
-    finally
-    {
-      localParcel.recycle();
-    }
-  }
-  
-  /* Error */
-  public void a(com.tencent.mobileqq.music.SongInfo paramSongInfo)
-  {
-    // Byte code:
-    //   0: invokestatic 23	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   3: astore_2
-    //   4: aload_2
-    //   5: ldc 25
-    //   7: invokevirtual 29	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-    //   10: aload_1
-    //   11: ifnull +33 -> 44
-    //   14: aload_2
-    //   15: iconst_1
-    //   16: invokevirtual 32	android/os/Parcel:writeInt	(I)V
-    //   19: aload_1
-    //   20: aload_2
-    //   21: iconst_0
-    //   22: invokevirtual 48	com/tencent/mobileqq/music/SongInfo:writeToParcel	(Landroid/os/Parcel;I)V
-    //   25: aload_0
-    //   26: getfield 15	aerz:a	Landroid/os/IBinder;
-    //   29: iconst_2
-    //   30: aload_2
-    //   31: aconst_null
-    //   32: iconst_1
-    //   33: invokeinterface 38 5 0
-    //   38: pop
-    //   39: aload_2
-    //   40: invokevirtual 41	android/os/Parcel:recycle	()V
-    //   43: return
-    //   44: aload_2
-    //   45: iconst_0
-    //   46: invokevirtual 32	android/os/Parcel:writeInt	(I)V
-    //   49: goto -24 -> 25
-    //   52: astore_1
-    //   53: aload_2
-    //   54: invokevirtual 41	android/os/Parcel:recycle	()V
-    //   57: aload_1
-    //   58: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	59	0	this	aerz
-    //   0	59	1	paramSongInfo	com.tencent.mobileqq.music.SongInfo
-    //   3	51	2	localParcel	Parcel
-    // Exception table:
-    //   from	to	target	type
-    //   4	10	52	finally
-    //   14	25	52	finally
-    //   25	39	52	finally
-    //   44	49	52	finally
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
+    return this.jdField_b_of_type_JavaLangCharSequence;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aerz
  * JD-Core Version:    0.7.0.1
  */

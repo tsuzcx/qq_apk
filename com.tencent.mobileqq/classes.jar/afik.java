@@ -1,25 +1,34 @@
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
-import com.tencent.widget.ActionSheet;
+import com.tencent.mobileqq.activity.emogroupstore.ImgPreviewAdapter;
+import com.tencent.mobileqq.data.EmoticonFromGroupEntity;
+import com.tencent.qphone.base.util.QLog;
 
 public class afik
   implements View.OnClickListener
 {
-  public afik(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  public afik(ImgPreviewAdapter paramImgPreviewAdapter) {}
   
   public void onClick(View paramView)
   {
-    paramView = ActionSheet.a(this.a.a);
-    paramView.a(2131432537, 1);
-    paramView.c(2131433029);
-    paramView.a(new afil(this, paramView));
-    paramView.show();
+    EmoticonFromGroupEntity localEmoticonFromGroupEntity = this.a.a(ImgPreviewAdapter.a(this.a).getCurrentItem());
+    if (localEmoticonFromGroupEntity != null)
+    {
+      if (localEmoticonFromGroupEntity.msg != null)
+      {
+        ImgPreviewAdapter.a(this.a).a(ImgPreviewAdapter.a(this.a), localEmoticonFromGroupEntity.msg, paramView);
+        return;
+      }
+      QLog.e("ImgPreviewAdapter.msgnull", 1, "img click msg is null.");
+      return;
+    }
+    QLog.e("ImgPreviewAdapter.emonull", 1, "img click emo is null.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afik
  * JD-Core Version:    0.7.0.1
  */

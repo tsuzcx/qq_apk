@@ -1,72 +1,42 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.FTSDBManager;
-import com.tencent.mobileqq.app.proxy.fts.FTSMsgOperator;
-import com.tencent.mobileqq.app.proxy.fts.FTSMsgUpgrader;
-import com.tencent.mobileqq.app.proxy.fts.FTSSyncHandler;
-import com.tencent.mobileqq.persistence.fts.FTSDatatbase;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class aaca
-  implements Runnable
+class aaca
+  extends WtloginObserver
 {
-  public aaca(FTSMsgUpgrader paramFTSMsgUpgrader) {}
+  aaca(aabz paramaabz) {}
   
-  public void run()
+  public void OnGetStViaSMSVerifyLogin(String paramString, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte, ErrMsg paramErrMsg)
   {
-    if ((!FTSMsgUpgrader.a(this.a)) && (FTSMsgUpgrader.a(this.a).a().a())) {
-      if ((FTSMsgUpgrader.a(this.a) != null) && (FTSMsgUpgrader.a(this.a).a()))
-      {
-        if (!this.a.a) {
-          FTSMsgUpgrader.a(this.a);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.fts.FTSMsgUpgrader", 2, "upgrade history in handle hasReadNativeCursor = " + this.a.a + " mUpgradeCursor=" + FTSMsgUpgrader.a(this.a) + " mUpgradeMaxIndex=" + FTSMsgUpgrader.b(this.a));
-        }
-        if (this.a.a)
-        {
-          if (FTSMsgUpgrader.a(this.a) >= FTSMsgUpgrader.b(this.a)) {
-            break label201;
-          }
-          if (!FTSMsgUpgrader.b(this.a)) {
-            break label186;
-          }
-        }
-      }
-    }
-    label186:
-    label201:
-    while (!QLog.isColorLevel())
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        FTSMsgUpgrader.a(this.a).postDelayed(this, 20L);
-        do
-        {
-          return;
-        } while (!QLog.isColorLevel());
-        QLog.d("Q.fts.FTSMsgUpgrader", 2, "writeNativeIndex failed");
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.fts.FTSMsgUpgrader", 2, "upgrade compeleted in handler");
-        }
-        FTSMsgUpgrader.b(this.a);
-        FTSMsgUpgrader.a(this.a).c();
-        return;
-      } while (!QLog.isColorLevel());
-      StringBuilder localStringBuilder = new StringBuilder().append("upgrade history in handle mDatabase = ");
-      if (FTSMsgUpgrader.a(this.a) == null) {}
-      for (String str = "null";; str = "@@@")
-      {
-        QLog.d("Q.fts.FTSMsgUpgrader", 2, str);
-        return;
+      QLog.d("AutoLoginHelper", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
+      if (paramErrMsg != null) {
+        QLog.d("AutoLoginHelper", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
       }
     }
-    QLog.d("Q.fts.FTSMsgUpgrader", 2, "upgrade history in handle isDestroy = " + FTSMsgUpgrader.a(this.a));
+    if (paramInt2 == 0) {}
+    do
+    {
+      return;
+      aabz.a(this.a);
+    } while (aabz.a(this.a) == null);
+    paramString = new Intent(aabz.a(this.a), LoginActivity.class);
+    paramString.putExtra("uin", aabz.a(this.a));
+    paramString.putExtra("tab_index", MainFragment.b);
+    paramString.addFlags(131072);
+    aabz.a(this.a).startActivity(paramString);
+    aabz.a(this.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaca
  * JD-Core Version:    0.7.0.1
  */

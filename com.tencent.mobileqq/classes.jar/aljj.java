@@ -1,33 +1,29 @@
-import android.os.Handler;
-import android.os.Message;
-import android.widget.RelativeLayout;
-import com.tencent.open.agent.DeviceFriendListOpenFrame;
-import com.tencent.open.agent.DeviceFriendListOpenFrame.FriendListAdapter;
-
 public class aljj
-  extends Handler
+  implements aljg
 {
-  public aljj(DeviceFriendListOpenFrame paramDeviceFriendListOpenFrame) {}
+  public void onRotationUpdateOriginal(float[] paramArrayOfFloat) {}
   
-  public void handleMessage(Message paramMessage)
-  {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 40, 0);
-      return;
-    case 2: 
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 0, 0);
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentOpenAgentDeviceFriendListOpenFrame$FriendListAdapter.notifyDataSetChanged();
-  }
+  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat) {}
+  
+  public void onSensorSupport(int paramInt, boolean paramBoolean) {}
+  
+  public void updateAccelerometer(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong) {}
+  
+  public void updateAzimuth(float paramFloat) {}
+  
+  public void updateGyroscope(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong) {}
+  
+  public void updatePitch(float paramFloat) {}
+  
+  public void updateRoll(float paramFloat) {}
+  
+  public void updateRotation(float paramFloat1, float paramFloat2, float paramFloat3) {}
+  
+  public void updateSensor(float paramFloat1, float paramFloat2, float paramFloat3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aljj
  * JD-Core Version:    0.7.0.1
  */

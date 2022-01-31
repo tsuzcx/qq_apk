@@ -1,25 +1,42 @@
-import com.tencent.mobileqq.activity.phone.PhoneMatchActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class xas
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public xas(PhoneMatchActivity paramPhoneMatchActivity) {}
+  public xas(AbsBaseWebViewActivity paramAbsBaseWebViewActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = this.a.a.c();
-    if ((i == 2) || (i == 3))
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    switch (paramMotionEvent.getAction())
     {
-      this.a.a.h();
-      return;
+    default: 
+      bool1 = false;
     }
-    this.a.a.g();
+    do
+    {
+      return bool1;
+      bool1 = bool2;
+    } while (paramView != AbsBaseWebViewActivity.a(this.a));
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewBase", 2, "vg onTouch");
+    }
+    paramView = new HashMap(2);
+    paramView.put("X", Integer.valueOf((int)paramMotionEvent.getX()));
+    paramView.put("Y", Integer.valueOf((int)paramMotionEvent.getY()));
+    this.a.a(8589934606L, paramView);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xas
  * JD-Core Version:    0.7.0.1
  */

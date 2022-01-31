@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.ar.arengine.AREngine;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.Conversation;
 
-public class aami
-  implements Runnable
+class aami
+  implements View.OnClickListener
 {
-  public aami(AREngine paramAREngine) {}
+  aami(aamh paramaamh) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    AREngine.a(this.a, false);
+    this.a.a.onClick(this.a.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aami
  * JD-Core Version:    0.7.0.1
  */

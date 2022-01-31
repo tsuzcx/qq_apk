@@ -1,27 +1,77 @@
-import android.os.HandlerThread;
-import android.os.Looper;
-import com.tencent.mobileqq.activity.specialcare.VipSpecialCareHandler;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.os.Bundle;
+import com.tencent.ad.tangram.ipc.AdIPCManager;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Params;
+import com.tencent.ad.tangram.ipc.AdIPCManager.Result;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.gdtad.aditem.GdtBaseAdItem;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
 
 public class ymt
-  implements Runnable
+  extends QIPCModule
 {
-  public ymt(VipSpecialCareHandler paramVipSpecialCareHandler) {}
+  private static volatile ymt a;
   
-  public void run()
+  private ymt(String paramString)
   {
-    VipSpecialCareHandler.a(this.a, ThreadManager.newFreeHandlerThread("special-timer", 0));
-    VipSpecialCareHandler.a(this.a).start();
-    Looper localLooper = VipSpecialCareHandler.a(this.a).getLooper();
-    if (localLooper == null) {
-      return;
+    super(paramString);
+  }
+  
+  public static ymt a()
+  {
+    if (a == null) {}
+    try
+    {
+      if (a == null) {
+        a = new ymt("gdt_ipc");
+      }
+      return a;
     }
-    VipSpecialCareHandler.a(this.a, new ymu(this, localLooper));
+    finally {}
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    yny.b("gdt_ipc", "Action  " + paramString);
+    if ("do_app_jump".equals(paramString))
+    {
+      if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
+      {
+        paramString = (ynz)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(110);
+        paramBundle.setClassLoader(getClass().getClassLoader());
+        paramBundle = (GdtBaseAdItem)paramBundle.getParcelable("gdtBaseAdItem");
+        paramString.a(BaseApplicationImpl.getContext(), paramBundle);
+        callbackResult(paramInt, EIPCResult.createSuccessResult(null));
+      }
+      for (;;)
+      {
+        return null;
+        callbackResult(paramInt, EIPCResult.createResult(-1, null));
+      }
+    }
+    if ("analysis_update_config".equals(paramString)) {
+      return yjw.a(this, paramString, paramBundle, paramInt);
+    }
+    AdIPCManager.Params localParams = new AdIPCManager.Params();
+    localParams.bundle = paramBundle;
+    paramString = AdIPCManager.INSTANCE.receive(paramString, localParams);
+    if (paramString == null) {
+      return null;
+    }
+    paramBundle = new EIPCResult();
+    if (paramString.success) {}
+    for (paramInt = 0;; paramInt = -102)
+    {
+      paramBundle.code = paramInt;
+      paramBundle.data = paramString.bundle;
+      return paramBundle;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ymt
  * JD-Core Version:    0.7.0.1
  */

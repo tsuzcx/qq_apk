@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBFloatField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class mobileqq_dynamic_search$ExtensionRequestInfo
-  extends MessageMicro
+  extends MessageMicro<ExtensionRequestInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField action = PBField.initBytes(ByteStringMicro.EMPTY);

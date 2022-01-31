@@ -1,41 +1,27 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.musicgene.BitmapAlgorithms;
-import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
-import java.io.File;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.contact.addcontact.BubbleLayout;
 
-public class aesw
-  implements Runnable
+class aesw
+  extends RecyclerView.ViewHolder
 {
-  public aesw(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin, String paramString, int paramInt, File paramFile) {}
+  public ImageView a;
+  public TextView a;
+  public BubbleLayout a;
   
-  public void run()
+  public aesw(View paramView)
   {
-    Object localObject1 = MusicGeneWebViewPlugin.a(this.jdField_a_of_type_JavaLangString);
-    if (localObject1 != null) {
-      if (this.jdField_a_of_type_Int <= 0) {
-        break label87;
-      }
-    }
-    label87:
-    for (int i = this.jdField_a_of_type_Int;; i = 5)
-    {
-      Object localObject2 = BitmapAlgorithms.a((Bitmap)localObject1, 3, i, i);
-      MusicGeneWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicGeneWebViewPlugin, (Bitmap)localObject2);
-      localObject1 = Message.obtain(MusicGeneWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqMusicgeneMusicGeneWebViewPlugin));
-      ((Message)localObject1).obj = localObject2;
-      localObject2 = new Bundle();
-      ((Bundle)localObject2).putString("BUNDLE_KEY_FILE_PATH", this.jdField_a_of_type_JavaIoFile.getPath());
-      ((Message)localObject1).setData((Bundle)localObject2);
-      ((Message)localObject1).sendToTarget();
-      return;
-    }
+    super(paramView);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131306148));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131306147));
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactBubbleLayout = ((BubbleLayout)paramView.findViewById(2131306146));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aesw
  * JD-Core Version:    0.7.0.1
  */

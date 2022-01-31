@@ -1,20 +1,28 @@
-import com.tencent.biz.troop.VideoCombineHelper.Callback;
 import com.tencent.qphone.base.util.QLog;
 
 class pcd
-  extends pcg
+  implements oli
 {
-  pcd(pbw parampbw, VideoCombineHelper.Callback paramCallback, String paramString)
+  pcd(pcc parampcc) {}
+  
+  public void a()
   {
-    super(parampbw.a);
+    QLog.d(pbz.a(this.a.a), 2, "stopScroll as videoplayer start");
+    pbz.b(this.a.a);
   }
   
-  public void b(boolean paramBoolean)
+  public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.VideoCombineHelper", 2, "watermark doen");
+    QLog.d(pbz.a(this.a.a), 2, "startScroll as videoplayer stop");
+    if (pbz.a(this.a.a) != null) {
+      pbz.a(this.a.a, pbz.a(this.a.a).a());
     }
-    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(this.jdField_a_of_type_JavaLangString, paramBoolean, null);
+  }
+  
+  public void c()
+  {
+    QLog.d(pbz.a(this.a.a), 2, "startScroll as videoplayer complete");
+    pbz.a(this.a.a, 1000L);
   }
 }
 

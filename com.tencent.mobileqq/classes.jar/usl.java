@@ -1,20 +1,23 @@
-import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
-import com.tencent.mobileqq.activity.aio.anim.ComboAnimation3;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
 
-class usl
-  implements Runnable
+public final class usl
+  implements Parcelable.Creator<EditLocalVideoSource>
 {
-  usl(usk paramusk) {}
-  
-  public void run()
+  public EditLocalVideoSource a(Parcel paramParcel)
   {
-    this.a.a.d();
-    this.a.a.a.invalidate();
+    return new EditLocalVideoSource(paramParcel);
+  }
+  
+  public EditLocalVideoSource[] a(int paramInt)
+  {
+    return new EditLocalVideoSource[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     usl
  * JD-Core Version:    0.7.0.1
  */

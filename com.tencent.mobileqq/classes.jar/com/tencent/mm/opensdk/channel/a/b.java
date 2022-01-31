@@ -11,12 +11,12 @@ public final class b
     localStringBuffer.append(paramInt);
     localStringBuffer.append(paramString2);
     localStringBuffer.append("mMcShCsTr");
-    return com.tencent.mm.opensdk.utils.b.e(localStringBuffer.toString().substring(1, 9).getBytes()).getBytes();
+    return com.tencent.mm.opensdk.utils.b.c(localStringBuffer.toString().substring(1, 9).getBytes()).getBytes();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mm.opensdk.channel.a.b
  * JD-Core Version:    0.7.0.1
  */

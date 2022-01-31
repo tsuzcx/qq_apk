@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class ilive_user_basic_info$MedalInfo
-  extends MessageMicro
+  extends MessageMicro<MedalInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field create_time = PBField.initUInt64(0L);

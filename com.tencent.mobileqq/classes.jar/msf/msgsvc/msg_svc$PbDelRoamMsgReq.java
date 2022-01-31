@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class msg_svc$PbDelRoamMsgReq
-  extends MessageMicro
+  extends MessageMicro<PbDelRoamMsgReq>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26 }, new String[] { "c2c_msg", "grp_msg", "dis_msg" }, new Object[] { null, null, null }, PbDelRoamMsgReq.class);
   public msg_svc.PbDelRoamMsgReq.C2CMsg c2c_msg = new msg_svc.PbDelRoamMsgReq.C2CMsg();

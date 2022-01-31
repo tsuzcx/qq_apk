@@ -1,25 +1,28 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.startup.step.NewRuntime;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.apollo.debug.CmGameDebugView;
 
 public class aikf
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public aikf(NewRuntime paramNewRuntime) {}
+  public aikf(CmGameDebugView paramCmGameDebugView) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("sp_hack_dvm", 4);
-    if (NewRuntime.b == 15) {
-      localSharedPreferences.edit().putInt("key_continuous_crash_count", 0);
-    }
-    localSharedPreferences.edit().putLong("key_last_hack_verify_time", 0L).commit();
+    CmGameDebugView.a(this.a).setVisibility(8);
+    CmGameDebugView.b(this.a).setVisibility(8);
+    CmGameDebugView.a(this.a).clearAnimation();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aikf
  * JD-Core Version:    0.7.0.1
  */

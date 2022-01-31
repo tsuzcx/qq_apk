@@ -1,19 +1,67 @@
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderSupporter;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserMiscHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.view.View;
+import android.widget.LinearLayout;
+import com.tencent.widget.AbsListView.LayoutParams;
+import java.lang.reflect.Constructor;
 
-class phq
-  implements Runnable
+public class phq<T extends View>
+  extends pez
 {
-  phq(php paramphp, SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderSupporter paramSwiftBrowserComponentProviderSupporter) {}
+  private Class<T> a;
   
-  public void run()
+  phq(Context paramContext, azwg paramazwg, qoe paramqoe, Class<T> paramClass)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("shareWebPage", 2, "WebView screenshot START. shareUrl=" + this.jdField_a_of_type_Php.a);
+    super(paramContext, paramazwg, paramqoe);
+    this.jdField_a_of_type_JavaLangClass = paramClass;
+  }
+  
+  public pez a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    return g().l().n();
+  }
+  
+  public pez d()
+  {
+    LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+    localLinearLayout.setOrientation(1);
+    localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+    if ((this.jdField_a_of_type_Pey != null) && (this.jdField_a_of_type_Pey.getClass().equals(this.jdField_a_of_type_JavaLangClass))) {
+      localLinearLayout.addView((View)this.jdField_a_of_type_Pey);
     }
-    ((SwiftBrowserMiscHandler)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentProviderSupporter.b().a(32)).a(270, 270, new phr(this));
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentDivider);
+    }
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead != null) {
+      localLinearLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead);
+    }
+    a(localLinearLayout);
+    return this;
+  }
+  
+  public pez e()
+  {
+    return this;
+  }
+  
+  public pez g()
+  {
+    try
+    {
+      this.jdField_a_of_type_Pey = ((pey)this.jdField_a_of_type_JavaLangClass.getConstructor(new Class[] { Context.class }).newInstance(new Object[] { this.jdField_a_of_type_AndroidContentContext }));
+      return this;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
+    return this;
+  }
+  
+  public pez o()
+  {
+    super.o();
+    return this;
   }
 }
 

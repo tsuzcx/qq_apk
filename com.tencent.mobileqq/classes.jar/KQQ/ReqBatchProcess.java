@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class ReqBatchProcess
   extends JceStruct
 {
-  static ArrayList cache_batch_request_list;
-  public ArrayList batch_request_list;
+  static ArrayList<BatchRequest> cache_batch_request_list;
+  public ArrayList<BatchRequest> batch_request_list;
   
   public ReqBatchProcess() {}
   
-  public ReqBatchProcess(ArrayList paramArrayList)
+  public ReqBatchProcess(ArrayList<BatchRequest> paramArrayList)
   {
     this.batch_request_list = paramArrayList;
   }
@@ -38,7 +38,7 @@ public final class ReqBatchProcess
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     KQQ.ReqBatchProcess
  * JD-Core Version:    0.7.0.1
  */

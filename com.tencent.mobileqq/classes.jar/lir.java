@@ -1,30 +1,42 @@
-import com.tencent.ark.ark;
-import com.tencent.biz.pubaccount.readinjoy.ark.ReadInJoyArkViewController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.random.RandomWebProtocol;
+import org.json.JSONObject;
 
 public class lir
-  implements Runnable
+  extends lip
 {
-  public lir(ReadInJoyArkViewController paramReadInJoyArkViewController, String paramString1, String paramString2) {}
+  boolean jdField_b_of_type_Boolean;
+  int c;
   
-  public void run()
+  public lir(RandomWebProtocol paramRandomWebProtocol, lip paramlip, String paramString, boolean paramBoolean, int paramInt)
   {
+    super(paramRandomWebProtocol, paramlip);
+    this.a = 2;
+    this.c = paramString;
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.c = paramInt;
+    this.d = "[m] RequestMulti";
+  }
+  
+  String a()
+  {
+    this.a = null;
     try
     {
-      ark.arkNotify("com.tencent.khala", this.jdField_a_of_type_JavaLangString, this.b, "json");
-      ark.arkNotify("com.tencent.test.khala", this.jdField_a_of_type_JavaLangString, this.b, "json");
-      return;
+      this.a = new JSONObject().put("session_type", this.c);
+      return super.a();
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ReadInJoyArkViewController", 2, "arkNotify failed, .so not loaded");
+      for (;;)
+      {
+        localException.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lir
  * JD-Core Version:    0.7.0.1
  */

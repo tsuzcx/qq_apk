@@ -1,88 +1,25 @@
-import android.text.TextUtils;
-import com.tencent.biz.common.util.ZipUtils;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.util.ConfigSimplifier;
-import dov.com.qq.im.capture.util.ConfigSimplifier.ConfigDownloadCallback;
-import dov.com.qq.im.capture.util.ConfigSimplifier.ZipConfig;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
-import java.io.File;
-import java.io.IOException;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
 
 public class anxb
-  implements INetEngine.INetEngineListener
+  extends BroadcastReceiver
 {
-  public anxb(ConfigSimplifier paramConfigSimplifier, String paramString1, String paramString2, ConfigSimplifier.ZipConfig paramZipConfig, String paramString3, String paramString4, ConfigSimplifier.ConfigDownloadCallback paramConfigDownloadCallback) {}
+  public anxb(FMActivity paramFMActivity) {}
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
-  
-  public void a(NetResp paramNetResp)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ConfigSimplifier_PTV", 2, "onResp resultcode: " + paramNetResp.c + " threadid=" + Thread.currentThread().getId());
-    }
-    File localFile = new File(this.jdField_a_of_type_JavaLangString, this.b);
-    if (!localFile.exists()) {
-      if (QLog.isColorLevel()) {
-        QLog.w("ConfigSimplifier_PTV", 2, "parseFilterConfigZip !zipfile.exists()");
-      }
-    }
-    label212:
-    do
+    if ("com.tencent.qlink.destory.fmactivity".equalsIgnoreCase(paramIntent.getAction()))
     {
-      for (;;)
-      {
-        return;
-        String str = "";
-        try
-        {
-          paramNetResp = FileUtils.b(localFile.getPath());
-          if ((TextUtils.isEmpty(this.jdField_a_of_type_DovComQqImCaptureUtilConfigSimplifier$ZipConfig.c)) || (!this.jdField_a_of_type_DovComQqImCaptureUtilConfigSimplifier$ZipConfig.c.equalsIgnoreCase(paramNetResp))) {}
-        }
-        catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-        {
-          try
-          {
-            do
-            {
-              ZipUtils.a(localFile, this.c);
-              paramNetResp = new File(this.d);
-              if (!paramNetResp.exists()) {
-                break label212;
-              }
-              paramNetResp = QIMPtvTemplateManager.a(paramNetResp);
-              if ((this.jdField_a_of_type_DovComQqImCaptureUtilConfigSimplifier$ConfigDownloadCallback == null) || (paramNetResp == null)) {
-                break;
-              }
-              this.jdField_a_of_type_DovComQqImCaptureUtilConfigSimplifier$ConfigDownloadCallback.a(paramNetResp);
-              return;
-              localUnsatisfiedLinkError = localUnsatisfiedLinkError;
-              paramNetResp = str;
-            } while (!QLog.isColorLevel());
-            localUnsatisfiedLinkError.printStackTrace();
-            paramNetResp = str;
-          }
-          catch (IOException paramNetResp)
-          {
-            for (;;)
-            {
-              if (QLog.isColorLevel()) {
-                paramNetResp.printStackTrace();
-              }
-            }
-          }
-        }
-      }
-    } while (!QLog.isColorLevel());
-    QLog.w("ConfigSimplifier_PTV", 2, "parseFilterConfigZip !jsonFile.exists()");
+      this.a.finish();
+      this.a.overridePendingTransition(0, 0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anxb
  * JD-Core Version:    0.7.0.1
  */

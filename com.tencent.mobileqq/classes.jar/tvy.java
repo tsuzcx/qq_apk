@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.activity.SecurityPickproofActivity;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
 
-public class tvy
-  implements Runnable
+class tvy
+  implements DialogInterface.OnDismissListener
 {
-  public tvy(SecurityPickproofActivity paramSecurityPickproofActivity) {}
+  tvy(tvw paramtvw) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    HttpDownloadUtil.a(this.a.a, this.a);
+    if (tvw.a(this.a) != null) {
+      tvw.a(this.a).c(false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tvy
  * JD-Core Version:    0.7.0.1
  */

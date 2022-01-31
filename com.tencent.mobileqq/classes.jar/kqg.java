@@ -1,38 +1,16 @@
-import android.view.View;
-import com.tencent.biz.now.NowVideoController;
-import com.tencent.mobileqq.widget.PAVideoView;
-import com.tencent.widget.AbsListView;
+import android.content.Context;
 
 public class kqg
-  implements Runnable
+  extends kqj
 {
-  public kqg(NowVideoController paramNowVideoController, int paramInt1, int paramInt2) {}
-  
-  public void run()
+  public static void a(Context paramContext, kpy paramkpy)
   {
-    if (NowVideoController.a(this.jdField_a_of_type_ComTencentBizNowNowVideoController) == null) {}
-    for (;;)
-    {
-      return;
-      int i = this.jdField_a_of_type_Int;
-      while (i <= this.b)
-      {
-        Object localObject = NowVideoController.a(this.jdField_a_of_type_ComTencentBizNowNowVideoController).getChildAt(i - this.jdField_a_of_type_Int);
-        if (localObject != null)
-        {
-          localObject = (PAVideoView)((View)localObject).findViewById(2131362177);
-          if ((localObject != null) && (((PAVideoView)localObject).j == 4)) {
-            ((PAVideoView)localObject).d();
-          }
-        }
-        i += 1;
-      }
-    }
+    a().a(paramContext, "http://passport.imqq.com/App/MobileQQ/ChangeTrans.html", null, null, new kqh(paramkpy));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     kqg
  * JD-Core Version:    0.7.0.1
  */

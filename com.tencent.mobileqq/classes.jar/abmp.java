@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.armap.config.BaseCheckHandler.ItemConfig;
-import com.tencent.mobileqq.armap.config.POICheckHander;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
 public class abmp
-  implements Runnable
+  extends atdh
 {
-  public abmp(POICheckHander paramPOICheckHander, BaseCheckHandler.ItemConfig paramItemConfig) {}
+  public abmp(QQSettingMe paramQQSettingMe) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapConfigPOICheckHander.a(this.jdField_a_of_type_ComTencentMobileqqArmapConfigBaseCheckHandler$ItemConfig);
+    if (this.a.c) {
+      this.a.i();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abmp
  * JD-Core Version:    0.7.0.1
  */

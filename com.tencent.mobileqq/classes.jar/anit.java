@@ -1,40 +1,40 @@
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticonview.EmoticonPanelLinearLayout;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.FilenameFilter;
 
-public final class anit
-  implements FilenameFilter
+public class anit
+  implements arok<EmoticonPackage>
 {
-  public anit(long paramLong1, long paramLong2) {}
+  public anit(EmoticonPanelLinearLayout paramEmoticonPanelLinearLayout, Emoticon paramEmoticon, anht paramanht, anla paramanla) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void a(EmoticonPackage paramEmoticonPackage)
   {
-    if (!paramString.endsWith(".trace")) {}
-    long l;
+    if (paramEmoticonPackage == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("EmotionPanelLinearLayout", 2, "package is null, epId: " + this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId);
+      }
+    }
     do
     {
-      File localFile;
-      do
-      {
-        return false;
-        localFile = new File(paramFile + File.separator + paramString);
-      } while ((localFile == null) || (!localFile.exists()));
-      l = localFile.lastModified();
-      if (QLog.isDevelopLevel())
-      {
-        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file dir: " + paramFile.getName());
-        QLog.d("QZoneAppCtrlUploadFileLogic", 4, "file name: " + paramString + " mStartTime: " + this.a + " mEndTime: " + this.b + " lastModifiedTime: " + l);
+      return;
+      anhs localanhs = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelLinearLayout.jdField_a_of_type_Anhs;
+      if (localanhs != null) {
+        localanhs.a(this.jdField_a_of_type_Anht);
       }
-    } while ((l < this.a) || (l > this.b));
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QZoneAppCtrlUploadFileLogic", 4, "find file name: " + paramString);
+    } while (this.jdField_a_of_type_Anla.d != 2);
+    if ((paramEmoticonPackage.jobType == 0) && (paramEmoticonPackage.subType == 4))
+    {
+      awqx.b(((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelLinearLayout.jdField_a_of_type_AndroidContentContext).app, "CliOper", "", "", "ep_mall", "0X800579F", 0, 0, "", "", "3", "");
+      return;
     }
-    return true;
+    awqx.b(((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonPanelLinearLayout.jdField_a_of_type_AndroidContentContext).app, "CliOper", "", "", "ep_mall", "0X800579F", 0, 0, "", "", "2", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anit
  * JD-Core Version:    0.7.0.1
  */

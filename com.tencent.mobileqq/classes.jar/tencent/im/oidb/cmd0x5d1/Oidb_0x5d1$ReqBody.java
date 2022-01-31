@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class Oidb_0x5d1$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   public static final int MSG_CLEAR_FRIEND_ID_FIELD_NUMBER = 4;
   public static final int MSG_SET_FRIEND_ID_FIELD_NUMBER = 3;
@@ -20,7 +20,7 @@ public final class Oidb_0x5d1$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x5d1.Oidb_0x5d1.ReqBody
  * JD-Core Version:    0.7.0.1
  */

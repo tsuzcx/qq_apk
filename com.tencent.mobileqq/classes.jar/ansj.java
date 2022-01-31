@@ -1,38 +1,44 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil;
-import com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr.DItemInfo;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import android.graphics.Rect;
+import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
 
-class ansj
-  implements View.OnTouchListener
+public class ansj
+  extends RecyclerView.ItemDecoration
 {
-  ansj(ansi paramansi) {}
+  private int a;
+  private int b;
+  private int c;
+  private int d;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public ansj(Fragment paramFragment)
   {
-    if (this.a.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.b == null) {}
-    do
+    this.a = aciy.a(11.0F, paramFragment.getResources());
+    this.b = aciy.a(11.0F, paramFragment.getResources());
+    this.c = aciy.a(8.0F, paramFragment.getResources());
+    this.d = aciy.a(8.0F, paramFragment.getResources());
+  }
+  
+  public void getItemOffsets(Rect paramRect, int paramInt, RecyclerView paramRecyclerView)
+  {
+    int i = paramRecyclerView.getAdapter().getItemCount();
+    if (paramRecyclerView.getAdapter().getItemViewType(paramInt) == 6)
     {
-      return false;
-      if (paramMotionEvent.getAction() == 1)
-      {
-        this.a.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.b.setAlpha(255);
-        this.a.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.a.a(3, this.a.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo.categoryID, this.a.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo.itemID, true);
-        CaptureReportUtil.k();
-        return false;
-      }
-    } while (paramMotionEvent.getAction() != 0);
-    this.a.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.b.setAlpha(100);
-    return false;
+      paramRect.set(0, this.a, 0, 0);
+      return;
+    }
+    if (paramInt == i - 1)
+    {
+      paramRect.set(this.c, this.a, this.d, this.b);
+      return;
+    }
+    paramRect.set(this.c, this.a, this.d, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ansj
  * JD-Core Version:    0.7.0.1
  */

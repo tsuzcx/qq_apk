@@ -7,72 +7,124 @@ import java.util.List;
 
 public class DownloadGlobalStrategy$StrategyLib
 {
-  private int jdField_a_of_type_Int;
-  private DownloadGlobalStrategy.StrategyInfo jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo;
-  private String jdField_a_of_type_JavaLangString;
-  private ArrayList jdField_a_of_type_JavaUtilArrayList;
-  private boolean jdField_a_of_type_Boolean = true;
-  private String b;
-  private String c;
+  private String mBackupIp;
+  private DownloadGlobalStrategy.StrategyInfo mBestStrategyInfo;
+  private String mDirectIp;
+  private String mDnsIP;
+  private DownloadGlobalStrategy.StrategyInfo mOldStrategyInfo;
+  private int mPort;
+  private ArrayList<DownloadGlobalStrategy.StrategyInfo> mStrategyList;
+  private boolean updateEnable = true;
   
   public DownloadGlobalStrategy$StrategyLib(DownloadGlobalStrategy paramDownloadGlobalStrategy)
   {
-    b();
-    this.jdField_a_of_type_Int = 80;
+    ensureData();
+    this.mPort = 80;
   }
   
-  private void b()
+  private void ensureData()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
+    if (this.mStrategyList != null) {
       return;
     }
     if (!NetworkManager.isWap())
     {
-      this.jdField_a_of_type_JavaUtilArrayList = DownloadGlobalStrategy.a();
+      this.mStrategyList = DownloadGlobalStrategy.access$100();
       return;
     }
-    this.jdField_a_of_type_JavaUtilArrayList = DownloadGlobalStrategy.b();
+    this.mStrategyList = DownloadGlobalStrategy.access$200();
   }
   
-  private void c()
+  private void updateStrategyLists()
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.updateEnable) {
       return;
     }
-    boolean bool1 = ProxyStatistics.a().a();
-    boolean bool2 = ProxyStatistics.a().b();
+    boolean bool1 = ProxyStatistics.getInstance().getAllowProxy();
+    boolean bool2 = ProxyStatistics.getInstance().getAPNProxy();
     if (!bool1)
     {
-      this.jdField_a_of_type_JavaUtilArrayList = DownloadGlobalStrategy.a();
+      this.mStrategyList = DownloadGlobalStrategy.access$100();
       return;
     }
     if (bool2)
     {
-      this.jdField_a_of_type_JavaUtilArrayList = DownloadGlobalStrategy.b();
+      this.mStrategyList = DownloadGlobalStrategy.access$200();
       return;
     }
-    this.jdField_a_of_type_JavaUtilArrayList = DownloadGlobalStrategy.c();
+    this.mStrategyList = DownloadGlobalStrategy.access$300();
   }
   
-  public int a()
+  public void addStrategy(List<DownloadGlobalStrategy.StrategyInfo> paramList)
   {
-    return this.jdField_a_of_type_Int;
+    if ((this.mStrategyList == null) || (paramList == null)) {
+      return;
+    }
+    this.mStrategyList.addAll(paramList);
   }
   
-  public DownloadGlobalStrategy.StrategyInfo a()
+  public void copyStrageList()
   {
-    return this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo;
+    if (this.mStrategyList == null)
+    {
+      this.mStrategyList = new ArrayList();
+      return;
+    }
+    this.mStrategyList = new ArrayList(this.mStrategyList);
   }
   
-  public DownloadGlobalStrategy.StrategyInfo a(int paramInt)
+  public void enableUpdate(boolean paramBoolean)
+  {
+    this.updateEnable = paramBoolean;
+  }
+  
+  public String getBackupIP()
+  {
+    return this.mBackupIp;
+  }
+  
+  public int getBestId()
+  {
+    if (this.mBestStrategyInfo != null) {
+      return this.mBestStrategyInfo.id;
+    }
+    return 0;
+  }
+  
+  public DownloadGlobalStrategy.StrategyInfo getBestStrategy()
+  {
+    return this.mBestStrategyInfo;
+  }
+  
+  public String getDirectIP()
+  {
+    return this.mDirectIp;
+  }
+  
+  public String getDnsIP()
+  {
+    return this.mDnsIP;
+  }
+  
+  public DownloadGlobalStrategy.StrategyInfo getOldStrategyInfo()
+  {
+    return this.mOldStrategyInfo;
+  }
+  
+  public int getPort()
+  {
+    return this.mPort;
+  }
+  
+  public DownloadGlobalStrategy.StrategyInfo getStrategyInfo(int paramInt)
   {
     int m = -1;
     int k = paramInt;
     if (paramInt < 0) {
       k = 0;
     }
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo == null) {}
-    for (DownloadGlobalStrategy.StrategyInfo localStrategyInfo1 = (DownloadGlobalStrategy.StrategyInfo)this.jdField_a_of_type_JavaUtilArrayList.get(k % this.jdField_a_of_type_JavaUtilArrayList.size());; localStrategyInfo1 = this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo)
+    if (this.mBestStrategyInfo == null) {}
+    for (DownloadGlobalStrategy.StrategyInfo localStrategyInfo1 = (DownloadGlobalStrategy.StrategyInfo)this.mStrategyList.get(k % this.mStrategyList.size());; localStrategyInfo1 = this.mBestStrategyInfo)
     {
       DownloadGlobalStrategy.StrategyInfo localStrategyInfo2 = localStrategyInfo1;
       if (localStrategyInfo1 == null)
@@ -80,47 +132,47 @@ public class DownloadGlobalStrategy$StrategyLib
         if (!NetworkManager.isWap()) {
           break label383;
         }
-        localStrategyInfo2 = (DownloadGlobalStrategy.StrategyInfo)DownloadGlobalStrategy.b().get(0);
+        localStrategyInfo2 = (DownloadGlobalStrategy.StrategyInfo)DownloadGlobalStrategy.access$200().get(0);
       }
       return localStrategyInfo2;
       if (k > 0) {
         break;
       }
     }
-    if ((this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.jdField_a_of_type_Int != DownloadGlobalStrategy.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.jdField_a_of_type_Int != DownloadGlobalStrategy.d.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.jdField_a_of_type_Int != DownloadGlobalStrategy.e.jdField_a_of_type_Int))
+    if ((this.mBestStrategyInfo.id != DownloadGlobalStrategy.Strategy_DomainDirect.id) && (this.mBestStrategyInfo.id != DownloadGlobalStrategy.Strategy_BACKUPIP.id) && (this.mBestStrategyInfo.id != DownloadGlobalStrategy.Strategy_DOMAIN_FORCE.id))
     {
       if (k == 1) {
-        c();
+        updateStrategyLists();
       }
       paramInt = 0;
       label146:
-      if (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+      if (paramInt >= this.mStrategyList.size()) {
         break label400;
       }
-      if (((DownloadGlobalStrategy.StrategyInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int != this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.jdField_a_of_type_Int) {}
+      if (((DownloadGlobalStrategy.StrategyInfo)this.mStrategyList.get(paramInt)).id != this.mBestStrategyInfo.id) {}
     }
     for (;;)
     {
       if ((k > 0) && (k <= paramInt))
       {
-        localStrategyInfo1 = (DownloadGlobalStrategy.StrategyInfo)this.jdField_a_of_type_JavaUtilArrayList.get(k - 1);
+        localStrategyInfo1 = (DownloadGlobalStrategy.StrategyInfo)this.mStrategyList.get(k - 1);
         break;
         paramInt += 1;
         break label146;
       }
-      localStrategyInfo1 = (DownloadGlobalStrategy.StrategyInfo)this.jdField_a_of_type_JavaUtilArrayList.get(k % this.jdField_a_of_type_JavaUtilArrayList.size());
+      localStrategyInfo1 = (DownloadGlobalStrategy.StrategyInfo)this.mStrategyList.get(k % this.mStrategyList.size());
       break;
       if (k == 1)
       {
-        c();
-        return this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo;
+        updateStrategyLists();
+        return this.mBestStrategyInfo;
       }
       paramInt = 0;
       int j;
-      for (int i = -1; paramInt < this.jdField_a_of_type_JavaUtilArrayList.size(); i = j)
+      for (int i = -1; paramInt < this.mStrategyList.size(); i = j)
       {
         j = i;
-        if (((DownloadGlobalStrategy.StrategyInfo)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.jdField_a_of_type_Int)
+        if (((DownloadGlobalStrategy.StrategyInfo)this.mStrategyList.get(paramInt)).id == this.mBestStrategyInfo.id)
         {
           j = i;
           if (i < 0) {
@@ -132,15 +184,15 @@ public class DownloadGlobalStrategy$StrategyLib
       }
       if ((k > 1) && (k <= m))
       {
-        localStrategyInfo1 = (DownloadGlobalStrategy.StrategyInfo)this.jdField_a_of_type_JavaUtilArrayList.get(k - 2);
+        localStrategyInfo1 = (DownloadGlobalStrategy.StrategyInfo)this.mStrategyList.get(k - 2);
         break;
       }
       if (k > m)
       {
-        localStrategyInfo1 = (DownloadGlobalStrategy.StrategyInfo)this.jdField_a_of_type_JavaUtilArrayList.get(k % this.jdField_a_of_type_JavaUtilArrayList.size());
+        localStrategyInfo1 = (DownloadGlobalStrategy.StrategyInfo)this.mStrategyList.get(k % this.mStrategyList.size());
         break;
         label383:
-        return (DownloadGlobalStrategy.StrategyInfo)DownloadGlobalStrategy.a().get(0);
+        return (DownloadGlobalStrategy.StrategyInfo)DownloadGlobalStrategy.access$100().get(0);
       }
       localStrategyInfo1 = null;
       break;
@@ -149,75 +201,42 @@ public class DownloadGlobalStrategy$StrategyLib
     }
   }
   
-  public String a()
+  public List<DownloadGlobalStrategy.StrategyInfo> getStrategyList()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.mStrategyList;
   }
   
-  public List a()
+  public int getSuggestMaxTimes()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilArrayList);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(String paramString)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-  }
-  
-  public void a(List paramList)
-  {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (paramList == null)) {
-      return;
-    }
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public int b()
-  {
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo != null) {
-      return this.jdField_a_of_type_ComTencentComponentNetworkDownloaderStrategyDownloadGlobalStrategy$StrategyInfo.jdField_a_of_type_Int;
+    if (this.mStrategyList != null) {
+      return this.mStrategyList.size();
     }
     return 0;
   }
   
-  public String b()
+  public void setBackupIP(String paramString)
   {
-    return this.c;
+    this.mBackupIp = paramString;
   }
   
-  public void b(String paramString)
+  public void setDirectIP(String paramString)
   {
-    this.c = paramString;
+    this.mDirectIp = paramString;
   }
   
-  public String c()
+  public void setDnsIP(String paramString)
   {
-    return this.b;
+    this.mDnsIP = paramString;
   }
   
-  public void c(String paramString)
+  public void setOldStrategyInfo(DownloadGlobalStrategy.StrategyInfo paramStrategyInfo)
   {
-    this.b = paramString;
+    this.mOldStrategyInfo = paramStrategyInfo;
+  }
+  
+  public void setPort(int paramInt)
+  {
+    this.mPort = paramInt;
   }
 }
 

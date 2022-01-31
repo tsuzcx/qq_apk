@@ -1,29 +1,13 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.task.OnAddOrDeleGameListener;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.data.ChatMessage;
 
-class acjy
-  implements OnAddOrDeleGameListener
+public abstract interface acjy
 {
-  acjy(acjx paramacjx) {}
-  
-  public void a(long paramLong, String paramString)
-  {
-    Bundle localBundle = new Bundle();
-    if (paramLong == 0L) {}
-    for (int i = 0;; i = 1)
-    {
-      localBundle.putInt("result", i);
-      localBundle.putString("message", paramString);
-      this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
-  }
+  public abstract void a(ChatMessage paramChatMessage, CompoundButton paramCompoundButton, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acjy
  * JD-Core Version:    0.7.0.1
  */

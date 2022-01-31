@@ -1,37 +1,27 @@
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView.IWeiYunImageEvent;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class acyi
-  implements QfileCloudFileTabView.IWeiYunImageEvent
+class acyi
+  implements anjt
 {
-  public acyi(QfileCloudFileTabView paramQfileCloudFileTabView) {}
+  acyi(acyh paramacyh) {}
   
-  public View.OnClickListener a(TextView paramTextView)
+  public void a(int paramInt)
   {
-    this.a.a = paramTextView;
-    return new acyj(this);
-  }
-  
-  public boolean a()
-  {
-    return this.a.c;
-  }
-  
-  public boolean b()
-  {
-    return this.a.b;
-  }
-  
-  public boolean c()
-  {
-    return QfileCloudFileTabView.a(this.a);
+    if (paramInt == 8) {
+      acyh.a(this.a).b();
+    }
+    while ((paramInt != 0) || (acyh.a(this.a) == 0L)) {
+      return;
+    }
+    long l1 = System.currentTimeMillis();
+    long l2 = acyh.a(this.a);
+    awrn.a(BaseApplication.getContext()).a(null, "StickerRecShowCost", true, l1 - l2, 0L, null, "");
+    acyh.a(this.a, 0L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acyi
  * JD-Core Version:    0.7.0.1
  */

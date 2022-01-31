@@ -5,10 +5,10 @@ import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.mobileqq.msf.core.MsfCore;
 import com.tencent.mobileqq.msf.core.a.a;
-import com.tencent.mobileqq.msf.core.c.e;
-import com.tencent.mobileqq.msf.core.c.e.a;
-import com.tencent.mobileqq.msf.core.c.j;
-import com.tencent.mobileqq.msf.core.push.f;
+import com.tencent.mobileqq.msf.core.c.f;
+import com.tencent.mobileqq.msf.core.c.f.a;
+import com.tencent.mobileqq.msf.core.c.k;
+import com.tencent.mobileqq.msf.core.push.g;
 import com.tencent.mobileqq.msf.sdk.MsfCommand;
 import com.tencent.mobileqq.msf.sdk.MsfMessagePair;
 import com.tencent.qphone.base.BaseConstants;
@@ -99,7 +99,7 @@ class b
               paramc.a = false;
               paramc.c = false;
               if ((!"LongConn.OffPicUp".equalsIgnoreCase((String)localObject2)) && (!"ImgStore.GroupPicUp".equalsIgnoreCase((String)localObject2))) {
-                break label1382;
+                break label1453;
               }
               localObject3 = new StringBuilder().append("dispatchMsg:").append((String)localObject2).append(" resp:").append(localMsfMessagePair2.fromServiceMsg.getStringForLog()).append(" req:");
               if (localMsfMessagePair2.toServiceMsg == null) {
@@ -123,7 +123,7 @@ class b
                 QLog.d("MSF.S.AppProcessManager", 1, "dispatchMsg:" + localMsfMessagePair2.fromServiceMsg.getStringForLog() + " processDied:" + bool2 + " isSendToSink:" + bool1);
               }
               if (bool2) {
-                break label908;
+                break label976;
               }
               paramc.i.poll();
               if (bool3) {
@@ -159,17 +159,20 @@ class b
         if (QLog.isColorLevel())
         {
           if (localMsfMessagePair2.toServiceMsg == null) {
-            break label1403;
+            break label1474;
           }
           j = localMsfMessagePair2.toServiceMsg.getWupBuffer().length;
           if (localMsfMessagePair2.fromServiceMsg == null) {
-            break label1408;
+            break label1479;
           }
           k = localMsfMessagePair2.fromServiceMsg.getWupBuffer().length;
           QLog.d("MSF.S.AppProcessManager", 2, "send push " + paramString + ", to=" + j + " from=" + k);
         }
         if (localMsfMessagePair2.toServiceMsg == null)
         {
+          if ((paramString != null) && (paramString.endsWith(":video")) && (localMsfMessagePair2.fromServiceMsg != null) && (localMsfMessagePair2.fromServiceMsg.getServiceCmd().equals("SharpSvr.s2c")) && (localMsfMessagePair2.fromServiceMsg.getAttribute("msf_timestamp") == null)) {
+            localMsfMessagePair2.fromServiceMsg.addAttribute("msf_timestamp", Long.valueOf(System.currentTimeMillis()));
+          }
           ((IMsfServiceCallbacker)localObject1).onRecvPushResp(localMsfMessagePair2.fromServiceMsg);
           QLog.i("MSF.S.AppProcessManager", 1, "SendToApp PUSH process:" + paramString + " fromServiceMsg: " + localMsfMessagePair2.fromServiceMsg.getShortStringForLog() + " cost=" + (System.currentTimeMillis() - l) + " needBoot=" + bool3);
         }
@@ -195,14 +198,14 @@ class b
         bool1 = false;
       }
       break label326;
-      label908:
+      label976:
       if (QLog.isColorLevel()) {
         QLog.d("MSF.S.AppProcessManager", 2, "need boot " + bool3 + " " + paramString + " from:" + localMsfMessagePair2.fromServiceMsg);
       }
       try
       {
-        if ((localMsfMessagePair2.fromServiceMsg.getServiceCmd().equals("MessageSvc.PushNotify")) && (d.e.getStatReporter() != null)) {
-          d.e.getStatReporter().a("dim.Msf.PushRecvFail", true, 0L, 0L, null, true, false);
+        if ((localMsfMessagePair2.fromServiceMsg.getServiceCmd().equals("MessageSvc.PushNotify")) && (e.e.getStatReporter() != null)) {
+          e.e.getStatReporter().a("dim.Msf.PushRecvFail", true, 0L, 0L, null, true, false);
         }
         if (!bool3) {}
       }
@@ -214,23 +217,23 @@ class b
           {
             paramc.a(0, localMsfMessagePair2.fromServiceMsg);
             paramc.d += 1L;
-            if (paramc.d > a.aC())
+            if (paramc.d > a.aD())
             {
               MsfMessagePair localMsfMessagePair1 = (MsfMessagePair)paramc.i.poll();
               localObject2 = new HashMap();
-              d.a((HashMap)localObject2);
+              e.a((HashMap)localObject2);
               ((HashMap)localObject2).put("MsgType", localMsfMessagePair1.fromServiceMsg.toString());
               ((HashMap)localObject2).put("ProcName", paramString);
               ((HashMap)localObject2).put("uin", localMsfMessagePair1.fromServiceMsg.getUin());
               ((HashMap)localObject2).put("appid", String.valueOf(localMsfMessagePair1.fromServiceMsg.getAppId()));
               ((HashMap)localObject2).put("MsgLeft", String.valueOf(paramc.i.size()));
-              QLog.d("MSF.S.AppProcessManager", 1, "dispatchMsg boot too many times:" + a.aC() + " MsgType:" + localMsfMessagePair1.fromServiceMsg.toString() + " ProcName:" + paramString + " MsgLeft:" + String.valueOf(paramc.i.size()));
-              if (d.e.getStatReporter() != null) {
-                d.e.getStatReporter().a("dim.Msf.ForkProcFailed", false, 0L, 0L, (Map)localObject2, true, false);
+              QLog.d("MSF.S.AppProcessManager", 1, "dispatchMsg boot too many times:" + a.aD() + " MsgType:" + localMsfMessagePair1.fromServiceMsg.toString() + " ProcName:" + paramString + " MsgLeft:" + String.valueOf(paramc.i.size()));
+              if (e.e.getStatReporter() != null) {
+                e.e.getStatReporter().a("dim.Msf.ForkProcFailed", false, 0L, 0L, (Map)localObject2, true, false);
               }
               paramc.d = 0L;
               if ((localMsfMessagePair2.fromServiceMsg != null) && (localMsfMessagePair2.fromServiceMsg.getServiceCmd() != null) && (localMsfMessagePair2.fromServiceMsg.getServiceCmd().equals("SharpSvr.s2c"))) {
-                e.a().a(e.a.c, localMsfMessagePair2.fromServiceMsg.getWupBuffer(), 14);
+                f.a().a(f.a.c, localMsfMessagePair2.fromServiceMsg.getWupBuffer(), 14);
               }
             }
             return false;
@@ -249,7 +252,7 @@ class b
       break label438;
       break label438;
       return false;
-      label1382:
+      label1453:
       bool1 = true;
       break label259;
       j = i;
@@ -257,10 +260,10 @@ class b
       bool2 = bool1;
       bool1 = true;
       break label326;
-      label1403:
+      label1474:
       j = 0;
       continue;
-      label1408:
+      label1479:
       k = 0;
     }
   }
@@ -302,13 +305,13 @@ class b
           i = 0;
           label101:
           if (i >= j) {
-            break label1197;
+            break label1203;
           }
           String str = localObject[i];
           if (!localMsfMessagePair.fromServiceMsg.getServiceCmd().startsWith(str)) {}
         }
-        label1064:
-        label1197:
+        label1070:
+        label1203:
         for (i = 1;; i = 0)
         {
           for (;;)
@@ -317,28 +320,28 @@ class b
             {
               paramc.a = false;
               paramc.c = false;
-              i = d.e.getUinPushStatus(localMsfMessagePair.fromServiceMsg.getUin());
-              l.a(BaseApplication.getContext(), paramString, localMsfMessagePair.fromServiceMsg.getUin(), ((c)d.c.get(paramString)).b(), i, localMsfMessagePair.fromServiceMsg);
-              MsfService.getCore().pushManager.i.a();
+              i = e.e.getUinPushStatus(localMsfMessagePair.fromServiceMsg.getUin());
+              q.a(BaseApplication.getContext(), paramString, localMsfMessagePair.fromServiceMsg.getUin(), ((c)e.c.get(paramString)).b(), i, localMsfMessagePair.fromServiceMsg);
+              MsfService.getCore().pushManager.j.a();
               if (QLog.isColorLevel()) {
                 QLog.d("MSF.S.AppProcessManager", 2, "need boot app " + paramString + " from:" + localMsfMessagePair.fromServiceMsg);
               }
               paramc.d += 1L;
               bool1 = bool2;
-              if (paramc.d <= a.aC()) {
+              if (paramc.d <= a.aD()) {
                 break;
               }
               localMsfMessagePair = (MsfMessagePair)paramc.i.poll();
               localObject = new HashMap();
-              d.a((HashMap)localObject);
+              e.a((HashMap)localObject);
               ((HashMap)localObject).put("MsgType", localMsfMessagePair.fromServiceMsg.toString());
               ((HashMap)localObject).put("ProcName", paramString);
               ((HashMap)localObject).put("uin", localMsfMessagePair.fromServiceMsg.getUin());
               ((HashMap)localObject).put("appid", String.valueOf(localMsfMessagePair.fromServiceMsg.getAppId()));
               ((HashMap)localObject).put("MsgLeft", String.valueOf(paramc.i.size()));
-              QLog.d("MSF.S.AppProcessManager", 1, "sendAppMsgPair boot too many times:" + a.aC() + " MsgType:" + localMsfMessagePair.fromServiceMsg.toString() + " ProcName:" + paramString + " MsgLeft:" + String.valueOf(paramc.i.size()));
-              if (d.e.getStatReporter() != null) {
-                d.e.getStatReporter().a("dim.Msf.ForkProcFailed", false, 0L, 0L, (Map)localObject, true, false);
+              QLog.d("MSF.S.AppProcessManager", 1, "sendAppMsgPair boot too many times:" + a.aD() + " MsgType:" + localMsfMessagePair.fromServiceMsg.toString() + " ProcName:" + paramString + " MsgLeft:" + String.valueOf(paramc.i.size()));
+              if (e.e.getStatReporter() != null) {
+                e.e.getStatReporter().a("dim.Msf.ForkProcFailed", false, 0L, 0L, (Map)localObject, true, false);
               }
               paramc.d = 0L;
               return false;
@@ -364,7 +367,7 @@ class b
               }
             }
             if (!paramc.a) {
-              break label1064;
+              break label1070;
             }
             try
             {
@@ -390,11 +393,11 @@ class b
               paramc.d();
               if (j != 0)
               {
-                i = d.e.getUinPushStatus(localMsfMessagePair.fromServiceMsg.getUin());
-                if (d.c.get(paramString) != null)
+                i = e.e.getUinPushStatus(localMsfMessagePair.fromServiceMsg.getUin());
+                if (e.c.get(paramString) != null)
                 {
-                  l.a(BaseApplication.getContext(), paramString, localMsfMessagePair.fromServiceMsg.getUin(), ((c)d.c.get(paramString)).b(), i, localMsfMessagePair.fromServiceMsg);
-                  MsfService.getCore().pushManager.i.a();
+                  q.a(BaseApplication.getContext(), paramString, localMsfMessagePair.fromServiceMsg.getUin(), ((c)e.c.get(paramString)).b(), i, localMsfMessagePair.fromServiceMsg);
+                  MsfService.getCore().pushManager.j.a();
                 }
               }
               for (;;)
@@ -416,28 +419,28 @@ class b
               paramc.i.poll();
               localThrowable.printStackTrace();
               if (!QLog.isColorLevel()) {
-                break label1207;
+                break label1213;
               }
             }
           }
           QLog.d("MSF.S.AppProcessManager", 2, "handle error " + localMsfMessagePair.toString() + " " + localMsfMessagePair.fromServiceMsg + " ", localThrowable);
-          break label1207;
+          break label1213;
           if (j != 0)
           {
-            i = d.e.getUinPushStatus(localMsfMessagePair.fromServiceMsg.getUin());
-            l.a(BaseApplication.getContext(), paramString, localMsfMessagePair.fromServiceMsg.getUin(), ((c)d.c.get(paramString)).b(), i, localMsfMessagePair.fromServiceMsg);
-            MsfService.getCore().pushManager.i.a();
+            i = e.e.getUinPushStatus(localMsfMessagePair.fromServiceMsg.getUin());
+            q.a(BaseApplication.getContext(), paramString, localMsfMessagePair.fromServiceMsg.getUin(), ((c)e.c.get(paramString)).b(), i, localMsfMessagePair.fromServiceMsg);
+            MsfService.getCore().pushManager.j.a();
             return false;
           }
           paramc.i.poll();
           if (!QLog.isColorLevel()) {
-            break label1207;
+            break label1213;
           }
           QLog.d("MSF.S.AppProcessManager", 2, "found " + paramc.g + " notNeedBootMsg," + localMsfMessagePair.fromServiceMsg + " dropped");
-          break label1207;
+          break label1213;
         }
       }
-      label1207:
+      label1213:
       i += 1;
     }
   }
@@ -455,16 +458,16 @@ class b
   
   public void run()
   {
-    d.f.f = false;
+    e.f.f = false;
     while (this.c)
     {
       this.c = false;
       this.d = 0;
-      ??? = d.c.keySet().iterator();
+      ??? = e.c.keySet().iterator();
       while (((Iterator)???).hasNext())
       {
         String str = (String)((Iterator)???).next();
-        c localc = (c)d.c.get(str);
+        c localc = (c)e.c.get(str);
         if (localc != null)
         {
           if (a(str, localc)) {

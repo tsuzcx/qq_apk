@@ -1,55 +1,372 @@
-import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment.RefreshDataListener;
-import com.tencent.mobileqq.activity.contacts.fragment.PublicAccountFragment;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import com.tencent.mobileqq.data.PublicAccountInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
+import java.io.ByteArrayOutputStream;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class wto
-  extends PublicAccountObserver
+  implements wtl
 {
-  public wto(PublicAccountFragment paramPublicAccountFragment) {}
+  private static final Double jdField_a_of_type_JavaLangDouble = Double.valueOf(0.005D);
+  private static final Double b = Double.valueOf(0.01D);
+  private static final Double c = Double.valueOf(0.35D);
+  private JSONObject jdField_a_of_type_OrgJsonJSONObject;
   
-  public void a(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  private String a(Bitmap paramBitmap, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.PublicAccountFragment", 2, "onUnfollowPublicAccount errCode: " + paramInt);
-    }
-    if (paramInt == 0) {
-      this.a.i();
-    }
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.PublicAccountFragment", 2, "onUpdateUserFollowList errCode: " + paramInt + " isFinish:" + paramBoolean);
-    }
-    if (paramBoolean)
+    int i = Math.min(paramBitmap.getWidth(), paramBitmap.getHeight());
+    if (i > paramInt)
     {
-      if (PublicAccountFragment.a(this.a))
-      {
-        if (this.a.a != null) {
-          this.a.a.a(4, true, null);
-        }
-        PublicAccountFragment.a(this.a, false);
-      }
-      this.a.i();
+      paramBitmap = atiu.a(paramBitmap, i / paramInt);
+      localByteArrayOutputStream = new ByteArrayOutputStream();
+      paramBitmap.compress(Bitmap.CompressFormat.JPEG, 100, localByteArrayOutputStream);
+      return wtj.a(localByteArrayOutputStream.toByteArray());
     }
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    paramBitmap.compress(Bitmap.CompressFormat.JPEG, 100, localByteArrayOutputStream);
+    return wtj.a(localByteArrayOutputStream.toByteArray());
   }
   
-  public void b(int paramInt, PublicAccountInfo paramPublicAccountInfo)
+  private JSONObject a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Contacts.PublicAccountFragment", 2, "onFollowPublicAccount errCode: " + paramInt);
+    JSONObject localJSONObject1 = new JSONObject();
+    try
+    {
+      JSONObject localJSONObject2 = new JSONObject(bace.d("video_story_aiSceneParams.json"));
+      return localJSONObject2;
     }
-    if (paramInt == 0) {
-      this.a.i();
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
+    return localJSONObject1;
+  }
+  
+  private JSONObject a(String paramString)
+  {
+    JSONObject localJSONObject1 = new JSONObject();
+    try
+    {
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("raw_base64", paramString);
+      localJSONObject2.put("only_gender", 0);
+      localJSONObject2.put("token", b(paramString));
+      paramString = wtk.a("https://tu.qq.com/cgi-bin/qq/get_face_detail.fcg", localJSONObject2.toString());
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return localJSONObject1;
+  }
+  
+  private wtp a(Bitmap paramBitmap, ArrayList<wtm> paramArrayList)
+  {
+    wtp localwtp = new wtp(this);
+    if ((paramBitmap == null) || (paramArrayList == null)) {
+      return localwtp;
+    }
+    double d1 = paramBitmap.getWidth() * paramBitmap.getHeight();
+    int i = 0;
+    while (i < paramArrayList.size())
+    {
+      paramBitmap = (wtm)paramArrayList.get(i);
+      int j = paramBitmap.jdField_b_of_type_Int;
+      double d2 = paramBitmap.jdField_a_of_type_Int * j;
+      double d3 = localwtp.jdField_a_of_type_Double;
+      localwtp.jdField_a_of_type_Double = (d2 / d1 + d3);
+      if (localwtp.jdField_a_of_type_Double > jdField_a_of_type_JavaLangDouble.doubleValue()) {
+        localwtp.jdField_a_of_type_Boolean = true;
+      }
+      i += 1;
+    }
+    if ((paramArrayList.size() > 1) && (localwtp.jdField_a_of_type_Double > b.doubleValue())) {
+      localwtp.b = true;
+    }
+    return localwtp;
+  }
+  
+  private wtr a(String paramString)
+  {
+    wtr localwtr = new wtr();
+    if (paramString == null) {}
+    do
+    {
+      return null;
+      if (this.jdField_a_of_type_OrgJsonJSONObject != null) {
+        break;
+      }
+      this.jdField_a_of_type_OrgJsonJSONObject = a();
+    } while (this.jdField_a_of_type_OrgJsonJSONObject == null);
+    JSONArray localJSONArray1 = this.jdField_a_of_type_OrgJsonJSONObject.optJSONArray("sceneList");
+    int i = 0;
+    while (i < localJSONArray1.length())
+    {
+      JSONObject localJSONObject1 = localJSONArray1.optJSONObject(i);
+      JSONArray localJSONArray2 = localJSONObject1.optJSONArray("sceneLvTwoList");
+      int j = 0;
+      JSONObject localJSONObject2;
+      if (j < localJSONArray2.length())
+      {
+        localJSONObject2 = localJSONArray2.optJSONObject(j);
+        if (localJSONObject2.optString("sceneName").equals(paramString))
+        {
+          localwtr.jdField_a_of_type_Int = localJSONObject1.optInt("sceneLvOne");
+          localwtr.jdField_b_of_type_Int = localJSONObject2.optInt("sceneLvTwo");
+          localwtr.jdField_a_of_type_JavaLangString = localJSONObject2.optString("sceneName");
+          localwtr.jdField_b_of_type_JavaLangString = localJSONObject2.optString("sceneFilterID");
+          localwtr.jdField_a_of_type_Double = localJSONObject2.optDouble("sceneFilterPercent");
+        }
+      }
+      else
+      {
+        i += 1;
+        continue;
+      }
+      JSONArray localJSONArray3 = localJSONObject2.optJSONArray("sceneLabels");
+      String[] arrayOfString = new String[localJSONArray3.length()];
+      int k = 0;
+      while (k < localJSONArray3.length())
+      {
+        arrayOfString[k] = localJSONArray3.optString(k);
+        k += 1;
+      }
+      int m = arrayOfString.length;
+      k = 0;
+      for (;;)
+      {
+        if (k < m)
+        {
+          if (arrayOfString[k].equals(paramString))
+          {
+            localwtr.jdField_a_of_type_Int = localJSONObject1.optInt("sceneLvOne");
+            localwtr.jdField_b_of_type_Int = localJSONObject2.optInt("sceneLvTwo");
+            localwtr.jdField_a_of_type_JavaLangString = localJSONObject2.optString("sceneName");
+            localwtr.jdField_b_of_type_JavaLangString = localJSONObject2.optString("sceneFilterID");
+            localwtr.jdField_a_of_type_Double = localJSONObject2.optDouble("sceneFilterPercent");
+          }
+        }
+        else
+        {
+          j += 1;
+          break;
+        }
+        k += 1;
+      }
+    }
+    return localwtr;
+  }
+  
+  private wtr a(JSONArray paramJSONArray)
+  {
+    double d2 = -1.0D;
+    Object localObject1 = new wtr();
+    Object localObject2 = localObject1;
+    if (paramJSONArray.length() > 0)
+    {
+      int i = 0;
+      double d3 = -1.0D;
+      localObject2 = localObject1;
+      if (i < paramJSONArray.length())
+      {
+        localObject2 = paramJSONArray.optJSONObject(i);
+        Object localObject3 = ((JSONObject)localObject2).optString("label");
+        double d4 = ((JSONObject)localObject2).optDouble("confidence");
+        wtr localwtr = a((String)localObject3);
+        double d6;
+        double d5;
+        if (localwtr == null)
+        {
+          d6 = d3;
+          d5 = d2;
+          localObject2 = localObject1;
+        }
+        for (;;)
+        {
+          i += 1;
+          localObject1 = localObject2;
+          d2 = d5;
+          d3 = d6;
+          break;
+          localObject2 = localObject1;
+          d5 = d2;
+          d6 = d3;
+          if (localwtr.jdField_b_of_type_Int != -1)
+          {
+            localObject3 = localObject1;
+            double d1 = d2;
+            if (localwtr.jdField_a_of_type_Int == 3)
+            {
+              localObject3 = localObject1;
+              d1 = d2;
+              if (d4 > c.doubleValue())
+              {
+                localObject3 = localObject1;
+                d1 = d2;
+                if (d4 > d2)
+                {
+                  d1 = d4;
+                  localObject3 = localwtr;
+                }
+              }
+            }
+            localObject2 = localObject3;
+            d5 = d1;
+            d6 = d3;
+            if (d4 > d3)
+            {
+              localObject2 = localObject3;
+              d5 = d1;
+              d6 = d3;
+              if (d1 <= 0.0D)
+              {
+                localObject2 = localwtr;
+                d5 = d1;
+                d6 = d4;
+              }
+            }
+          }
+        }
+      }
+    }
+    return localObject2;
+  }
+  
+  private String b(String paramString)
+  {
+    int i = paramString.length();
+    int j = i / 2;
+    paramString = paramString.substring(j, (int)(i * 0.1D) + j);
+    return a(paramString + "9996ef4aa4fb4378826bc1f1a8409dd7");
+  }
+  
+  private JSONObject b(String paramString)
+  {
+    long l = System.currentTimeMillis() / 1000L;
+    String str = String.valueOf(l).hashCode() + "";
+    JSONObject localJSONObject1 = new JSONObject();
+    try
+    {
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("request_id", str);
+      localJSONObject2.put("appid", "10301");
+      localJSONObject2.put("raw_base64", paramString);
+      localJSONObject2.put("user", "PTU");
+      localJSONObject2.put("token", b(paramString));
+      paramString = wtk.a("https://tu.qq.com/cgi-bin/qq/do_image_classify.fcg", localJSONObject2.toString());
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return localJSONObject1;
+  }
+  
+  public String a(String paramString)
+  {
+    try
+    {
+      paramString = String.format("%032x", new Object[] { new BigInteger(1, MessageDigest.getInstance("MD5").digest(paramString.getBytes())) });
+      return paramString;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return null;
+  }
+  
+  public void a(Bitmap paramBitmap, ArrayList<wtm> paramArrayList, wtn paramwtn)
+  {
+    if (paramBitmap == null)
+    {
+      paramwtn.a("image is null");
+      return;
+    }
+    long l = System.currentTimeMillis();
+    wtr localwtr = new wtr();
+    paramArrayList = a(paramBitmap, paramArrayList);
+    paramBitmap = a(paramBitmap, 256);
+    if (paramArrayList.jdField_a_of_type_Boolean) {
+      if (paramArrayList.b) {
+        paramBitmap = a(ajjy.a(2131650036));
+      }
+    }
+    while (paramBitmap == null)
+    {
+      paramwtn.a("unknown error");
+      wtk.a(System.currentTimeMillis() - l, 1);
+      return;
+      paramBitmap = a(paramBitmap);
+      if ((paramBitmap == null) || (paramBitmap.isNull("retcode")))
+      {
+        paramwtn.a("network error");
+        wtk.a(System.currentTimeMillis() - l, 1);
+        return;
+      }
+      if ((paramBitmap != null) && (paramBitmap.has("retcode")) && (paramBitmap.optInt("retcode") == 0))
+      {
+        paramBitmap = paramBitmap.optJSONObject("retdata");
+        int i = paramBitmap.optInt("age");
+        int j = paramBitmap.optInt("gender");
+        if (i <= 5) {
+          paramBitmap = a(ajjy.a(2131650039));
+        } else if (j < 50) {
+          paramBitmap = a(ajjy.a(2131650037));
+        } else {
+          paramBitmap = a(ajjy.a(2131650034));
+        }
+      }
+      else
+      {
+        paramBitmap = a(ajjy.a(2131650038));
+        continue;
+        paramArrayList = b(paramBitmap);
+        if ((paramArrayList == null) || (paramArrayList.isNull("retcode")))
+        {
+          paramwtn.a("network error");
+          l = System.currentTimeMillis() - l;
+          wtk.a(l, 1);
+          wye.a("record_smart_filter", wye.a(1L, l));
+          return;
+        }
+        paramBitmap = localwtr;
+        if (paramArrayList != null)
+        {
+          paramBitmap = localwtr;
+          if (paramArrayList.has("retcode"))
+          {
+            paramBitmap = localwtr;
+            if (paramArrayList.optInt("retcode") == 0)
+            {
+              paramArrayList = paramArrayList.optJSONObject("retdata");
+              paramBitmap = localwtr;
+              if (paramArrayList.has("message"))
+              {
+                paramBitmap = localwtr;
+                if (paramArrayList.optString("message").equals("ok")) {
+                  paramBitmap = a(paramArrayList.optJSONObject("data").optJSONArray("tags"));
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    paramwtn.a(paramBitmap);
+    l = System.currentTimeMillis() - l;
+    wtk.a(l, 0);
+    wye.a("record_smart_filter", wye.a(0L, l));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wto
  * JD-Core Version:    0.7.0.1
  */

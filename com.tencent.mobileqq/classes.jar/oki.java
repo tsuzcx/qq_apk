@@ -1,19 +1,18 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.EditVideoPermission;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
 
 public class oki
-  implements Runnable
+  implements bbgl
 {
-  public oki(EditVideoPermission paramEditVideoPermission) {}
+  public oki(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void run()
+  public void a()
   {
-    if (EditVideoPermission.a(this.a))
+    if (ReadInJoySelfFragment.a(this.a))
     {
-      SLog.b("Q.qqstory.publish.edit.EditVideoPermission", "PermissionSettingActivity launch failed, change state to IDLE");
-      this.a.a.a(0);
-      EditVideoPermission.a(this.a, false);
+      ReadInJoySelfFragment.a(this.a, false);
+      ruf.a("self_tab_cost", null);
+      ruf.a = 4;
+      ruf.a("KANDIAN_FEEDS_COST", null);
     }
   }
 }

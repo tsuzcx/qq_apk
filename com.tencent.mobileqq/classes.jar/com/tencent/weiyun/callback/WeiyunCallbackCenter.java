@@ -31,17 +31,23 @@ public final class WeiyunCallbackCenter
   {
     int i = 0;
     if (paramWeiyunCallback != null) {
-      synchronized (this.mLock)
+      for (;;)
       {
-        Iterator localIterator = this.mCallbackMap.entrySet().iterator();
-        while (localIterator.hasNext()) {
-          if (paramWeiyunCallback.equals(((Map.Entry)localIterator.next()).getValue()))
+        synchronized (this.mLock)
+        {
+          Iterator localIterator = this.mCallbackMap.entrySet().iterator();
+          if (localIterator.hasNext())
           {
-            localIterator.remove();
-            i += 1;
+            if (paramWeiyunCallback.equals(((Map.Entry)localIterator.next()).getValue()))
+            {
+              localIterator.remove();
+              i += 1;
+            }
+          }
+          else {
+            return i;
           }
         }
-        return i;
       }
     }
     return 0;
@@ -85,7 +91,7 @@ public final class WeiyunCallbackCenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.weiyun.callback.WeiyunCallbackCenter
  * JD-Core Version:    0.7.0.1
  */

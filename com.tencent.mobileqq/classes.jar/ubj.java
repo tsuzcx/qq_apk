@@ -1,50 +1,26 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.troop.activity.TroopStoryMainActivity;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
 
 public class ubj
-  implements View.OnClickListener
+  implements bbpw
 {
-  public ubj(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public ubj(QQStoryMainController paramQQStoryMainController) {}
   
-  public void onClick(View paramView)
+  public void a(View paramView, int paramInt)
   {
-    if (System.currentTimeMillis() - this.a.jdField_a_of_type_Long >= 1500L) {
-      try
-      {
-        this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-        switch (paramView.getId())
-        {
-        case 2131375341: 
-          TroopStoryMainActivity.a(this.a);
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopAssistantFeedsJsHandler", 2, "feedsTitle onClick, url:http://qqweb.qq.com/m/qunfeeds/index.html?_wv=1031&_bid=200");
-          }
-          if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {
-            this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-          }
-          StoryReportor.a("grp_help", "clk_video", 0, 0, new String[] { "", "", "", "" });
-          return;
-        }
-      }
-      catch (Exception paramView)
-      {
-        if (QLog.isColorLevel())
-        {
-          QLog.e("TroopAssistantFeedsJsHandler", 2, "feedsTitle onClick:" + paramView.toString());
-          return;
-        }
-      }
+    if (paramInt == 1) {
+      this.a.jdField_a_of_type_Ubl.a();
     }
+    while (paramInt != 7) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.m();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ubj
  * JD-Core Version:    0.7.0.1
  */

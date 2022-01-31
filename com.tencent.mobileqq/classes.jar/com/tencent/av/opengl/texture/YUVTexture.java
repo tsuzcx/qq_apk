@@ -3,40 +3,45 @@ package com.tencent.av.opengl.texture;
 import android.content.Context;
 import android.opengl.GLES20;
 import android.os.Looper;
-import com.tencent.av.opengl.GlStringParser;
-import com.tencent.av.opengl.glrenderer.GLCanvas;
-import com.tencent.av.opengl.glrenderer.GLId;
 import com.tencent.av.opengl.program.TextureProgram;
-import com.tencent.av.opengl.shader.ShaderParameter;
-import com.tencent.av.opengl.utils.Utils;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.mobileqq.utils.SoLoadUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.nio.ByteBuffer;
-import jma;
+import lem;
+import lgc;
+import lgf;
+import lhd;
+import lhf;
+import lhm;
+import lhn;
+import lie;
+import mhr;
 
 public abstract class YUVTexture
-  extends BasicTexture
+  extends lhf
 {
   public static float[] a;
   static boolean jdField_b_of_type_Boolean;
   public float a;
   private long jdField_a_of_type_Long;
-  Context jdField_a_of_type_AndroidContentContext;
-  private GlStringParser jdField_a_of_type_ComTencentAvOpenglGlStringParser;
-  private YUVTexture.GLRenderListener jdField_a_of_type_ComTencentAvOpenglTextureYUVTexture$GLRenderListener;
+  protected Context a;
   private final String jdField_a_of_type_JavaLangString;
-  private jma jdField_a_of_type_Jma;
+  private lem jdField_a_of_type_Lem;
+  private lhm jdField_a_of_type_Lhm;
+  private lhn jdField_a_of_type_Lhn;
   boolean jdField_a_of_type_Boolean = false;
   public float b;
   private long jdField_b_of_type_Long;
-  public float[] b;
+  protected float[] b;
   private long jdField_c_of_type_Long;
-  private boolean jdField_c_of_type_Boolean = true;
+  boolean jdField_c_of_type_Boolean = true;
   private long d;
-  private long e;
-  public int k;
+  public volatile boolean d;
+  private long jdField_e_of_type_Long;
+  private boolean jdField_e_of_type_Boolean = true;
+  protected int k = -1;
   protected int l;
   public int m = -1;
   private int mNativeContext;
@@ -46,32 +51,36 @@ public abstract class YUVTexture
     jdField_a_of_type_ArrayOfFloat = new float[] { 1.0F, 1.0F, 1.0F, 0.0F, 0.00093F, -0.3437F, 1.77216F, 0.0F, 1.401687F, -0.71417F, 0.00099F, 0.0F, -0.7011F, 0.525F, -0.8828F, 1.0F };
   }
   
-  public YUVTexture(Context paramContext, String paramString)
+  public YUVTexture(Context paramContext, String paramString, int paramInt)
   {
     super(null, 0);
     this.jdField_b_of_type_ArrayOfFloat = new float[] { 1.0F, 1.0F, 1.0F, 0.0F, 0.00093F, -0.3437F, 1.77216F, 0.0F, 1.401687F, -0.71417F, 0.00099F, 0.0F, -0.7011F, 0.525F, -0.8828F, 1.0F };
     this.jdField_a_of_type_Float = 1.2F;
     this.jdField_b_of_type_Float = 1.93F;
+    this.jdField_d_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_Int = 1;
-    if (!jdField_b_of_type_Boolean) {}
-    try
-    {
-      SoLoadUtil.a(paramContext, "xplatform", 0, false);
-      jdField_b_of_type_Boolean = true;
-      Looper localLooper1 = Looper.myLooper();
-      if (localLooper1 != null) {
-        this.jdField_a_of_type_Jma = new jma(this, localLooper1);
-      }
+    this.jdField_c_of_type_Boolean = mhr.g();
+    QLog.d("YUVTexture", 1, "ray debug,YUVTexture, initial from config,upLoadWhenGetNewData = " + this.jdField_c_of_type_Boolean);
+    if (AudioHelper.a(22) == 1) {
+      this.jdField_c_of_type_Boolean = true;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    for (;;)
     {
-      for (;;)
+      QLog.d("YUVTexture", 1, "ray debug,YUVTexture, initial upLoadWhenGetNewData = " + this.jdField_c_of_type_Boolean);
+      this.jdField_a_of_type_Int = 1;
+      if (!jdField_b_of_type_Boolean) {}
+      try
       {
+        SoLoadUtil.a(paramContext, "xplatform", 0, false);
+        jdField_b_of_type_Boolean = true;
+        Looper localLooper1 = Looper.myLooper();
+        if (localLooper1 != null) {
+          this.jdField_a_of_type_Lhm = new lhm(this, localLooper1);
+        }
         try
         {
           if (jdField_b_of_type_Boolean) {
-            Init(Utils.a(paramContext), new WeakReference(this));
+            Init(lie.a(paramContext), new WeakReference(this), paramInt);
           }
           return;
         }
@@ -90,14 +99,23 @@ public abstract class YUVTexture
         {
           this.jdField_a_of_type_JavaLangString = (getClass().getSimpleName() + "_" + paramString + "_0x" + Integer.toHexString(this.mNativeContext));
         }
-        localUnsatisfiedLinkError = localUnsatisfiedLinkError;
-        localUnsatisfiedLinkError.printStackTrace();
-        continue;
-        localLooper2 = Looper.getMainLooper();
-        if (localLooper2 != null) {
-          this.jdField_a_of_type_Jma = new jma(this, localLooper2);
-        } else {
-          this.jdField_a_of_type_Jma = null;
+        if (AudioHelper.a(22) != 0) {
+          continue;
+        }
+        this.jdField_c_of_type_Boolean = false;
+      }
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+      {
+        for (;;)
+        {
+          localUnsatisfiedLinkError.printStackTrace();
+          continue;
+          localLooper2 = Looper.getMainLooper();
+          if (localLooper2 != null) {
+            this.jdField_a_of_type_Lhm = new lhm(this, localLooper2);
+          } else {
+            this.jdField_a_of_type_Lhm = null;
+          }
         }
       }
     }
@@ -123,7 +141,7 @@ public abstract class YUVTexture
       if (paramInt == 2)
       {
         if (AudioHelper.jdField_b_of_type_Boolean) {
-          paramObject1.d = System.currentTimeMillis();
+          paramObject1.jdField_d_of_type_Long = System.currentTimeMillis();
         }
         paramObject1.a(2, 0, paramObject2);
         return;
@@ -131,7 +149,7 @@ public abstract class YUVTexture
       if (paramInt == 1)
       {
         if (AudioHelper.jdField_b_of_type_Boolean) {
-          paramObject1.e = System.currentTimeMillis();
+          paramObject1.jdField_e_of_type_Long = System.currentTimeMillis();
         }
         paramObject1.a(1, 0, paramObject2);
         return;
@@ -145,7 +163,7 @@ public abstract class YUVTexture
   
   private native int uploadContent(int[] paramArrayOfInt);
   
-  native void Init(int paramInt, Object paramObject);
+  native void Init(int paramInt1, Object paramObject, int paramInt2);
   
   native void Uninit();
   
@@ -155,66 +173,66 @@ public abstract class YUVTexture
     // Byte code:
     //   0: sipush 3553
     //   3: iload_2
-    //   4: invokestatic 194	android/opengl/GLES20:glBindTexture	(II)V
+    //   4: invokestatic 223	android/opengl/GLES20:glBindTexture	(II)V
     //   7: sipush 3553
     //   10: sipush 10241
-    //   13: ldc 195
-    //   15: invokestatic 199	android/opengl/GLES20:glTexParameterf	(IIF)V
+    //   13: ldc 224
+    //   15: invokestatic 228	android/opengl/GLES20:glTexParameterf	(IIF)V
     //   18: sipush 3553
     //   21: sipush 10240
-    //   24: ldc 200
-    //   26: invokestatic 199	android/opengl/GLES20:glTexParameterf	(IIF)V
+    //   24: ldc 229
+    //   26: invokestatic 228	android/opengl/GLES20:glTexParameterf	(IIF)V
     //   29: sipush 3553
     //   32: sipush 10242
-    //   35: ldc 201
-    //   37: invokestatic 199	android/opengl/GLES20:glTexParameterf	(IIF)V
+    //   35: ldc 230
+    //   37: invokestatic 228	android/opengl/GLES20:glTexParameterf	(IIF)V
     //   40: sipush 3553
     //   43: sipush 10243
-    //   46: ldc 201
-    //   48: invokestatic 199	android/opengl/GLES20:glTexParameterf	(IIF)V
+    //   46: ldc 230
+    //   48: invokestatic 228	android/opengl/GLES20:glTexParameterf	(IIF)V
     //   51: aload_0
-    //   52: getfield 64	com/tencent/av/opengl/texture/YUVTexture:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   55: invokevirtual 207	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   52: getfield 70	com/tencent/av/opengl/texture/YUVTexture:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   55: invokevirtual 236	android/content/Context:getResources	()Landroid/content/res/Resources;
     //   58: iload_1
-    //   59: invokevirtual 213	android/content/res/Resources:openRawResource	(I)Ljava/io/InputStream;
+    //   59: invokevirtual 242	android/content/res/Resources:openRawResource	(I)Ljava/io/InputStream;
     //   62: astore_3
     //   63: aload_3
-    //   64: invokestatic 219	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+    //   64: invokestatic 248	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
     //   67: astore 4
     //   69: aload_3
-    //   70: invokevirtual 224	java/io/InputStream:close	()V
+    //   70: invokevirtual 253	java/io/InputStream:close	()V
     //   73: aload 4
     //   75: ifnull +61 -> 136
     //   78: sipush 3553
     //   81: iconst_0
     //   82: aload 4
     //   84: iconst_0
-    //   85: invokestatic 230	android/opengl/GLUtils:texImage2D	(IILandroid/graphics/Bitmap;I)V
+    //   85: invokestatic 259	android/opengl/GLUtils:texImage2D	(IILandroid/graphics/Bitmap;I)V
     //   88: aload 4
-    //   90: invokevirtual 235	android/graphics/Bitmap:recycle	()V
+    //   90: invokevirtual 264	android/graphics/Bitmap:recycle	()V
     //   93: iload_2
     //   94: ireturn
     //   95: astore_3
     //   96: aload_3
-    //   97: invokevirtual 236	java/io/IOException:printStackTrace	()V
+    //   97: invokevirtual 265	java/io/IOException:printStackTrace	()V
     //   100: goto -27 -> 73
     //   103: astore 4
     //   105: aload_3
-    //   106: invokevirtual 224	java/io/InputStream:close	()V
+    //   106: invokevirtual 253	java/io/InputStream:close	()V
     //   109: iconst_m1
     //   110: ireturn
     //   111: astore_3
     //   112: aload_3
-    //   113: invokevirtual 236	java/io/IOException:printStackTrace	()V
+    //   113: invokevirtual 265	java/io/IOException:printStackTrace	()V
     //   116: goto -7 -> 109
     //   119: astore 4
     //   121: aload_3
-    //   122: invokevirtual 224	java/io/InputStream:close	()V
+    //   122: invokevirtual 253	java/io/InputStream:close	()V
     //   125: aload 4
     //   127: athrow
     //   128: astore_3
     //   129: aload_3
-    //   130: invokevirtual 236	java/io/IOException:printStackTrace	()V
+    //   130: invokevirtual 265	java/io/IOException:printStackTrace	()V
     //   133: goto -8 -> 125
     //   136: iconst_m1
     //   137: ireturn
@@ -255,78 +273,114 @@ public abstract class YUVTexture
       l3 = l6 - this.jdField_c_of_type_Long;
     }
     long l4 = -1L;
-    if (this.d != 0L) {
-      l4 = l6 - this.d;
+    if (this.jdField_d_of_type_Long != 0L) {
+      l4 = l6 - this.jdField_d_of_type_Long;
     }
     long l5 = -1L;
-    if (this.e != 0L) {
-      l5 = l6 - this.e;
+    if (this.jdField_e_of_type_Long != 0L) {
+      l5 = l6 - this.jdField_e_of_type_Long;
     }
     return "TAG[" + this.jdField_a_of_type_JavaLangString + "], onBindTime[" + l1 + "], MSG_SHOW[" + l2 + "], MSG_RENDER[" + l4 + "], MSG_RESET[" + l3 + "], MSG_FLUSH[" + l5 + "], isBind[" + e() + "], Source[" + c() + ", " + d() + "], ImgAngle[" + j() + "]";
   }
   
   public void a(int paramInt1, int paramInt2, Object paramObject)
   {
-    if (this.jdField_a_of_type_Jma != null)
+    if (this.jdField_a_of_type_Lhm != null)
     {
-      paramObject = this.jdField_a_of_type_Jma.obtainMessage(paramInt1, 0, 0, paramObject);
+      paramObject = this.jdField_a_of_type_Lhm.obtainMessage(paramInt1, 0, 0, paramObject);
       if (paramInt2 == 0) {
-        this.jdField_a_of_type_Jma.sendMessage(paramObject);
+        this.jdField_a_of_type_Lhm.sendMessage(paramObject);
       }
     }
     while (!QLog.isColorLevel())
     {
       return;
-      this.jdField_a_of_type_Jma.sendMessageDelayed(paramObject, paramInt2);
+      this.jdField_a_of_type_Lhm.sendMessageDelayed(paramObject, paramInt2);
       return;
     }
     QLog.e(this.jdField_a_of_type_JavaLangString, 2, "notifyUpdateUI|mEventHandler == null");
   }
   
-  public void a(YUVTexture.GLRenderListener paramGLRenderListener)
+  public void a(lhn paramlhn)
   {
-    this.jdField_a_of_type_ComTencentAvOpenglTextureYUVTexture$GLRenderListener = paramGLRenderListener;
+    this.jdField_a_of_type_Lhn = paramlhn;
   }
   
   public void a(boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, new Object[] { "setIsBind, old[%s], new[%s]", Boolean.valueOf(this.jdField_c_of_type_Boolean), Boolean.valueOf(paramBoolean) });
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, new Object[] { "setIsBind, old[%s], new[%s]", Boolean.valueOf(this.jdField_e_of_type_Boolean), Boolean.valueOf(paramBoolean) });
     }
-    this.jdField_c_of_type_Boolean = paramBoolean;
+    this.jdField_e_of_type_Boolean = paramBoolean;
   }
   
-  public boolean a(GLCanvas paramGLCanvas)
+  public boolean a(lgc paramlgc)
   {
+    if (AudioHelper.jdField_b_of_type_Boolean) {
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+    }
+    int i;
     if (!c())
     {
       if (this.jdField_a_of_type_ArrayOfInt == null) {
         this.jdField_a_of_type_ArrayOfInt = new int[3];
       }
-      int i = 0;
+      i = 0;
       while (i < this.jdField_a_of_type_ArrayOfInt.length)
       {
-        this.jdField_a_of_type_ArrayOfInt[i] = paramGLCanvas.a().a();
+        this.jdField_a_of_type_ArrayOfInt[i] = paramlgc.a().a();
         i += 1;
       }
     }
-    TextureProgram localTextureProgram = a();
-    if (this.jdField_c_of_type_Boolean)
+    for (int j = 1;; j = 0)
     {
-      e();
-      this.k = uploadContent(this.jdField_a_of_type_ArrayOfInt);
+      TextureProgram localTextureProgram = a();
+      if (this.jdField_e_of_type_Boolean) {
+        if (this.jdField_c_of_type_Boolean)
+        {
+          if (!this.jdField_d_of_type_Boolean) {
+            break label287;
+          }
+          this.jdField_d_of_type_Boolean = false;
+          i = 1;
+        }
+      }
+      for (;;)
+      {
+        if ((i != 0) || (j != 0)) {
+          e();
+        }
+        for (i = uploadContent(this.jdField_a_of_type_ArrayOfInt);; i = -1)
+        {
+          if (i != -1) {
+            this.k = i;
+          }
+          for (;;)
+          {
+            if (this.k != -1) {
+              GLES20.glUniform1i(localTextureProgram.a()[10].jdField_a_of_type_Int, this.k);
+            }
+            this.jdField_b_of_type_Int = 1;
+            if ((this.jdField_a_of_type_Boolean) && (this.m == -1))
+            {
+              this.m = paramlgc.a().a();
+              this.m = a(2130839683, this.m);
+            }
+            if (this.k == -1) {
+              break label280;
+            }
+            return true;
+            i = 1;
+            break;
+            QLog.w(this.jdField_a_of_type_JavaLangString, 1, "onBind, uploadContent fail, mYuvFormat[" + this.k + "], isBind[" + this.jdField_e_of_type_Boolean + "]");
+          }
+          label280:
+          return false;
+        }
+        label287:
+        i = 0;
+      }
     }
-    if (AudioHelper.jdField_b_of_type_Boolean) {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-    }
-    GLES20.glUniform1i(localTextureProgram.a()[10].jdField_a_of_type_Int, this.k);
-    this.jdField_b_of_type_Int = 1;
-    if ((this.jdField_a_of_type_Boolean) && (this.m == -1))
-    {
-      this.m = paramGLCanvas.a().a();
-      this.m = a(2130839143, this.m);
-    }
-    return true;
   }
   
   public byte[] a()
@@ -334,10 +388,10 @@ public abstract class YUVTexture
     return getFrameTexture();
   }
   
-  public ShaderParameter[] a(GLCanvas paramGLCanvas)
+  public lhd[] a(lgc paramlgc)
   {
     TextureProgram localTextureProgram = a();
-    paramGLCanvas = super.a(paramGLCanvas);
+    paramlgc = super.a(paramlgc);
     try
     {
       GLES20.glUniform1f(localTextureProgram.a()[7].jdField_a_of_type_Int, getImgWidth());
@@ -348,28 +402,23 @@ public abstract class YUVTexture
         GLES20.glEnable(3042);
         GLES20.glBlendFunc(770, 771);
         GLES20.glActiveTexture(33987);
-        Utils.a();
+        lie.a();
         GLES20.glBindTexture(g(), this.m);
-        Utils.a();
+        lie.a();
         GLES20.glUniform1i(localTextureProgram.a()[11].jdField_a_of_type_Int, 3);
-        Utils.a();
+        lie.a();
         GLES20.glUniform1i(localTextureProgram.a()[12].jdField_a_of_type_Int, 1);
-        Utils.a();
+        lie.a();
       }
-      return paramGLCanvas;
+      return paramlgc;
     }
     catch (Exception localException) {}
-    return paramGLCanvas;
+    return paramlgc;
   }
   
   public native boolean addYUVFrame(ByteBuffer paramByteBuffer, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9);
   
   public native boolean addYuvFrame(ByteBuffer paramByteBuffer, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
-  
-  public void b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
   
   public boolean b()
   {
@@ -390,18 +439,18 @@ public abstract class YUVTexture
   
   public void e()
   {
-    if (this.jdField_a_of_type_ComTencentAvOpenglTextureYUVTexture$GLRenderListener != null)
+    if (this.jdField_a_of_type_Lhn != null)
     {
       byte[] arrayOfByte = getFaceFeature();
       if ((arrayOfByte != null) && (arrayOfByte.length > 0)) {
-        this.jdField_a_of_type_ComTencentAvOpenglTextureYUVTexture$GLRenderListener.a(arrayOfByte);
+        this.jdField_a_of_type_Lhn.a(arrayOfByte);
       }
     }
   }
   
   public boolean e()
   {
-    return this.jdField_c_of_type_Boolean;
+    return this.jdField_e_of_type_Boolean;
   }
   
   public native void flush(boolean paramBoolean);
@@ -443,10 +492,19 @@ public abstract class YUVTexture
   
   public int j()
   {
-    if (this.jdField_c_of_type_Boolean) {
+    if (this.jdField_e_of_type_Boolean) {}
+    try
+    {
       this.l = getImgAngle();
+      return this.l;
     }
-    return this.l;
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
   
   public int k()
@@ -462,7 +520,7 @@ public abstract class YUVTexture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.av.opengl.texture.YUVTexture
  * JD-Core Version:    0.7.0.1
  */

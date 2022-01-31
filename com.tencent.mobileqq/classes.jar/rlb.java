@@ -1,25 +1,21 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 
 public class rlb
-  extends MqqHandler
+  implements DialogInterface.OnDismissListener
 {
-  public rlb(AccountManageActivity paramAccountManageActivity) {}
+  public rlb(BridgeModule paramBridgeModule) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.e();
+    if (!BridgeModule.access$300(this.a)) {}
+    BridgeModule.access$302(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rlb
  * JD-Core Version:    0.7.0.1
  */

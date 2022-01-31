@@ -1,5 +1,7 @@
 package com.tencent.biz.qqstory.settings;
 
+import aciy;
+import ajjy;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
@@ -9,16 +11,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.biz.qqstory.base.QQStoryHandler;
-import com.tencent.biz.qqstory.base.QQStoryManager;
-import com.tencent.biz.qqstory.base.QQStoryObserver;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import badq;
+import bbmv;
+import bbmy;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
-import com.tencent.mobileqq.widget.QQToast;
-import nvq;
+import sfm;
+import sfz;
+import sga;
+import sgc;
+import txa;
 
 public class QQStoryBasicSettingsActivity
   extends IphoneTitleBarActivity
@@ -27,10 +29,10 @@ public class QQStoryBasicSettingsActivity
   public int a;
   View jdField_a_of_type_AndroidViewView;
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  public QQStoryHandler a;
-  public QQStoryManager a;
-  QQStoryObserver jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver = new nvq(this);
-  public QQProgressNotifier a;
+  public bbmv a;
+  public sfz a;
+  public sga a;
+  sgc jdField_a_of_type_Sgc = new txa(this);
   View[] jdField_a_of_type_ArrayOfAndroidViewView = new View[3];
   public int b = this.jdField_a_of_type_Int;
   
@@ -55,12 +57,12 @@ public class QQStoryBasicSettingsActivity
   
   protected View a(int paramInt, String paramString)
   {
-    View localView = View.inflate(this, 2130970669, null);
-    ((TextView)localView.findViewById(2131363397)).setText(paramString);
-    ((TextView)localView.findViewById(2131364144)).setText("");
-    paramString = (ImageView)localView.findViewById(2131363462);
+    View localView = View.inflate(this, 2131495572, null);
+    ((TextView)localView.findViewById(2131311534)).setText(paramString);
+    ((TextView)localView.findViewById(2131302466)).setText("");
+    paramString = (ImageView)localView.findViewById(2131297252);
     paramString.setVisibility(4);
-    paramString.setBackgroundResource(2130838496);
+    paramString.setBackgroundResource(2130838997);
     localView.setTag(Integer.valueOf(paramInt));
     localView.setOnClickListener(this);
     return localView;
@@ -70,34 +72,34 @@ public class QQStoryBasicSettingsActivity
   {
     Object localObject = new LinearLayout(this);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
-    ((LinearLayout)localObject).setBackgroundResource(2130838219);
+    ((LinearLayout)localObject).setBackgroundResource(2130838503);
     ((LinearLayout)localObject).setLayoutParams(localLayoutParams);
     ((LinearLayout)localObject).setOrientation(1);
-    ((LinearLayout)localObject).setPadding(0, AIOUtils.a(20.0F, getResources()), 0, 0);
+    ((LinearLayout)localObject).setPadding(0, aciy.a(20.0F, getResources()), 0, 0);
     this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localObject);
     localObject = new TextView(this);
-    ((TextView)localObject).setText("小视频自动播放");
-    ((TextView)localObject).setPadding(getResources().getDimensionPixelSize(2131558774), 0, getResources().getDimensionPixelSize(2131558774), getResources().getDimensionPixelSize(2131558772));
+    ((TextView)localObject).setText(sfm.a + ajjy.a(2131645014));
+    ((TextView)localObject).setPadding(getResources().getDimensionPixelSize(2131167163), 0, getResources().getDimensionPixelSize(2131167163), getResources().getDimensionPixelSize(2131167160));
     ((TextView)localObject).setTextSize(14.0F);
-    ((TextView)localObject).setTextColor(getResources().getColor(2131492891));
+    ((TextView)localObject).setTextColor(getResources().getColor(2131099894));
     this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject);
     localObject = a(0, "移动流量和WiFi");
     this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject);
     this.jdField_a_of_type_ArrayOfAndroidViewView[0] = localObject;
-    ((View)localObject).setBackgroundResource(2130838641);
+    ((View)localObject).setBackgroundResource(2130839160);
     this.jdField_a_of_type_AndroidViewView = ((View)localObject);
     localObject = a(1, "仅WiFi");
     this.jdField_a_of_type_ArrayOfAndroidViewView[1] = localObject;
     this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject);
-    ((View)localObject).setBackgroundResource(2130838639);
+    ((View)localObject).setBackgroundResource(2130839154);
     this.jdField_a_of_type_AndroidViewView = ((View)localObject);
-    localObject = a(2, "关闭");
+    localObject = a(2, ajjy.a(2131645012));
     this.jdField_a_of_type_ArrayOfAndroidViewView[2] = localObject;
     this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject);
-    ((View)localObject).setBackgroundResource(2130838636);
+    ((View)localObject).setBackgroundResource(2130839151);
     this.jdField_a_of_type_AndroidViewView = ((View)localObject);
     super.setContentView(this.jdField_a_of_type_AndroidViewViewGroup);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier = new QQProgressNotifier(this, 2130970591);
+    this.jdField_a_of_type_Bbmv = new bbmv(this, 2131495446);
   }
   
   public void a(int paramInt)
@@ -106,19 +108,19 @@ public class QQStoryBasicSettingsActivity
     if (i < this.jdField_a_of_type_ArrayOfAndroidViewView.length)
     {
       View localView = this.jdField_a_of_type_ArrayOfAndroidViewView[i];
-      ImageView localImageView = (ImageView)localView.findViewById(2131363462);
-      TextView localTextView = (TextView)localView.findViewById(2131363397);
+      ImageView localImageView = (ImageView)localView.findViewById(2131297252);
+      TextView localTextView = (TextView)localView.findViewById(2131311534);
       if (i != paramInt)
       {
         localImageView.setVisibility(4);
-        localView.setContentDescription(localTextView.getText() + " 未选中");
+        localView.setContentDescription(localTextView.getText() + ajjy.a(2131645010));
       }
       for (;;)
       {
         i += 1;
         break;
         localImageView.setVisibility(0);
-        localView.setContentDescription(localTextView.getText() + " 已选中");
+        localView.setContentDescription(localTextView.getText() + ajjy.a(2131645015));
       }
     }
     this.jdField_a_of_type_Int = paramInt;
@@ -138,40 +140,40 @@ public class QQStoryBasicSettingsActivity
     return 2;
   }
   
-  protected boolean doOnCreate(Bundle paramBundle)
+  public boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager = ((QQStoryManager)this.app.getManager(180));
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler = ((QQStoryHandler)this.app.a(98));
+    this.jdField_a_of_type_Sga = ((sga)this.app.getManager(181));
+    this.jdField_a_of_type_Sfz = ((sfz)this.app.a(98));
     a();
-    int i = a(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.a());
+    int i = a(this.jdField_a_of_type_Sga.a());
     this.b = i;
     this.jdField_a_of_type_Int = i;
     a(this.jdField_a_of_type_Int);
-    super.setTitle("小视频浏览设置");
-    this.app.addObserver(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver);
-    if (!NetworkUtil.g(this))
+    super.setTitle(sfm.a + ajjy.a(2131645019));
+    this.app.addObserver(this.jdField_a_of_type_Sgc);
+    if (!badq.g(this))
     {
-      QQToast.a(this, 1, 2131433023, 0).b(getTitleBarHeight());
+      bbmy.a(this, 1, 2131626719, 0).b(getTitleBarHeight());
       super.startTitleProgress();
       return true;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler.d();
+    this.jdField_a_of_type_Sfz.d();
     super.startTitleProgress();
     return true;
   }
   
-  protected void doOnDestroy()
+  public void doOnDestroy()
   {
-    this.app.removeObserver(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver);
+    this.app.removeObserver(this.jdField_a_of_type_Sgc);
     super.doOnDestroy();
   }
   
   public void onClick(View paramView)
   {
-    if (!NetworkUtil.g(this))
+    if (!badq.g(this))
     {
-      QQToast.a(this, 1, 2131433023, 0).b(getTitleBarHeight());
+      bbmy.a(this, 1, 2131626719, 0).b(getTitleBarHeight());
       return;
     }
     int i = ((Integer)paramView.getTag()).intValue();
@@ -181,20 +183,20 @@ public class QQStoryBasicSettingsActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressNotifier.a(0, 2131433021, 0);
+      this.jdField_a_of_type_Bbmv.b(0, 2131652843, 0);
       a(i);
       return;
-      this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler.c(3);
+      this.jdField_a_of_type_Sfz.d(3);
       continue;
-      this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler.c(1);
+      this.jdField_a_of_type_Sfz.d(1);
       continue;
-      this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler.c(2);
+      this.jdField_a_of_type_Sfz.d(2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.settings.QQStoryBasicSettingsActivity
  * JD-Core Version:    0.7.0.1
  */

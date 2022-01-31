@@ -1,25 +1,12 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
-import com.tencent.mobileqq.model.QueryTask.Query;
+import android.view.View.OnLongClickListener;
+import android.view.View.OnTouchListener;
 
-public class acmv
-  implements QueryTask.Query
-{
-  public acmv(EmoticonMainPanel paramEmoticonMainPanel, int paramInt) {}
-  
-  public Integer a(String paramString)
-  {
-    EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.a);
-    int i = this.jdField_a_of_type_Int;
-    if (!TextUtils.isEmpty(paramString)) {
-      i = EmoticonMainPanel.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel, paramString);
-    }
-    return Integer.valueOf(i);
-  }
-}
+public abstract interface acmv
+  extends View.OnLongClickListener, View.OnTouchListener
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acmv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,29 @@
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.PhotoCaptureResult;
-import dov.com.qq.im.QIMCameraCaptureUnit;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendProfileEditFragment;
 
 public class anrg
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public anrg(QIMCameraCaptureUnit paramQIMCameraCaptureUnit, CameraCaptureView.PhotoCaptureResult paramPhotoCaptureResult) {}
+  public anrg(ExtendFriendProfileEditFragment paramExtendFriendProfileEditFragment) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Toast.makeText(BaseApplicationImpl.getContext(), "onPhotoCaptured : " + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$PhotoCaptureResult.a, 1).show();
+    int i = paramMotionEvent.getAction();
+    if (i == 0) {
+      ExtendFriendProfileEditFragment.a(this.a).setVisibility(0);
+    }
+    while ((i != 1) && (i != 3)) {
+      return false;
+    }
+    ExtendFriendProfileEditFragment.a(this.a).setVisibility(8);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     anrg
  * JD-Core Version:    0.7.0.1
  */

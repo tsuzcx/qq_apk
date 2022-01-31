@@ -1,29 +1,32 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.mobileqq.activity.FriendProfileImageModel;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemSelectedListener;
-
 public class sww
-  implements AdapterView.OnItemSelectedListener
 {
-  public sww(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  private long jdField_a_of_type_Long;
+  private String jdField_a_of_type_JavaLangString;
+  public boolean a;
+  private String b;
   
-  public void a(AdapterView paramAdapterView) {}
-  
-  public void b(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public sww(String paramString)
   {
-    if (paramView == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidViewView = paramView;
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel.a(paramInt);
-    this.a.a(paramAdapterView, paramInt);
+    this.b = paramString;
+  }
+  
+  public void a()
+  {
+    swx localswx = new swx(this, false);
+    swy localswy = new swy(this, false);
+    sof.a().a(localswx, localswy);
+  }
+  
+  public void b()
+  {
+    swx localswx = new swx(this, true);
+    swy localswy = new swy(this, true);
+    sof.a().a(localswx, localswy);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sww
  * JD-Core Version:    0.7.0.1
  */

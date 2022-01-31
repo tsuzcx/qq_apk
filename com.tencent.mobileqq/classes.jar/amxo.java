@@ -1,22 +1,32 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.app.UniPayHandler.UniPayUpdateListener;
-import cooperation.qqindividuality.ipc.IndividualityRemoteCommandHandler;
-import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
-import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
-public class amxo
-  extends UniPayHandler.UniPayUpdateListener
+class amxo
+  extends Handler
 {
-  public amxo(IndividualityRemoteCommandHandler paramIndividualityRemoteCommandHandler) {}
-  
-  public void a()
+  amxo(amxm paramamxm, Looper paramLooper)
   {
-    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 2, new Bundle());
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+    } while (amxm.c(this.a));
+    QLog.e("VoiceInputHelper", 1, "checkPermission uncertain");
+    this.a.onGetError(1830002);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amxo
  * JD-Core Version:    0.7.0.1
  */

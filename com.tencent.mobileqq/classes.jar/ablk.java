@@ -1,21 +1,40 @@
-import com.tencent.mobileqq.ar.ARScanFragment;
-import com.tencent.mobileqq.armap.ShopScanActivity;
+import android.graphics.Paint;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class ablk
-  implements Runnable
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public ablk(ShopScanActivity paramShopScanActivity) {}
+  public ablk(QQMapActivity paramQQMapActivity) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    ShopScanActivity.c(this.a);
-    ShopScanActivity.d(this.a);
-    this.a.a.a(false);
+    int i = this.a.jdField_c_of_type_AndroidWidgetLinearLayout.getWidth();
+    if (i > 0)
+    {
+      int j = azvv.a(this.a, 10.0F);
+      Object localObject = new Paint();
+      ((Paint)localObject).setTextSize(azvv.a(this.a, 14.0F));
+      ((Paint)localObject).setAntiAlias(true);
+      int k = (int)(((Paint)localObject).measureText(this.a.e.getText().toString()) + 1.0F);
+      ((Paint)localObject).setTextSize(azvv.a(this.a, 20.0F));
+      if ((int)(((Paint)localObject).measureText(this.a.jdField_c_of_type_AndroidWidgetTextView.getText().toString()) + 1.0F) + (k + j) > i)
+      {
+        localObject = this.a.jdField_c_of_type_AndroidWidgetTextView.getLayoutParams();
+        ((ViewGroup.LayoutParams)localObject).width = (i - j - k);
+        this.a.jdField_c_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      }
+      this.a.jdField_c_of_type_AndroidWidgetLinearLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ablk
  * JD-Core Version:    0.7.0.1
  */

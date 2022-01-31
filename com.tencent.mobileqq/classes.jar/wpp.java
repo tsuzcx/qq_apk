@@ -1,20 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemRequestInfoView;
+import WEISHI_USER_GROWTH.WEISHI.stMetaFeed;
 
 public class wpp
-  implements DialogInterface.OnDismissListener
 {
-  public wpp(SystemRequestInfoView paramSystemRequestInfoView) {}
+  int jdField_a_of_type_Int;
+  WEISHI.stMetaFeed jdField_a_of_type_WEISHI_USER_GROWTHWEISHI$stMetaFeed = null;
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  wpp(WEISHI.stMetaFeed paramstMetaFeed, int paramInt)
   {
-    this.a.a = null;
+    this.jdField_a_of_type_WEISHI_USER_GROWTHWEISHI$stMetaFeed = paramstMetaFeed;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public int a()
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wpp
  * JD-Core Version:    0.7.0.1
  */

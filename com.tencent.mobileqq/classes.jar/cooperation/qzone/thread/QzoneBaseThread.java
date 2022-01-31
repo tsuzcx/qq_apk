@@ -3,9 +3,7 @@ package cooperation.qzone.thread;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.Job;
-import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.Pair;
 
@@ -16,58 +14,51 @@ public class QzoneBaseThread
   
   public QzoneBaseThread(String paramString, int paramInt)
   {
-    if (("Normal_HandlerThread".equals(paramString)) && (2 == BaseApplicationImpl.sProcessId))
-    {
-      this.thread = ((HandlerThread)ThreadManager.getSubThread());
-      this.thread.setName(paramString);
-      this.handler = new BaseHandler(this.thread.getLooper());
-      return;
-    }
     this.thread = new HandlerThread(paramString, paramInt);
     this.thread.start();
     this.handler = new BaseHandler(this.thread.getLooper());
   }
   
   /* Error */
-  private Pair breakRefChain(Runnable paramRunnable)
+  private Pair<Object, Runnable> breakRefChain(Runnable paramRunnable)
   {
     // Byte code:
     //   0: aload_1
-    //   1: invokevirtual 70	java/lang/Object:getClass	()Ljava/lang/Class;
+    //   1: invokevirtual 46	java/lang/Object:getClass	()Ljava/lang/Class;
     //   4: astore_2
     //   5: aload_2
-    //   6: ldc 72
-    //   8: invokevirtual 78	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   6: ldc 48
+    //   8: invokevirtual 54	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
     //   11: astore_3
     //   12: aload_3
     //   13: iconst_1
-    //   14: invokevirtual 84	java/lang/reflect/Field:setAccessible	(Z)V
+    //   14: invokevirtual 60	java/lang/reflect/Field:setAccessible	(Z)V
     //   17: aload_3
     //   18: aload_1
-    //   19: invokevirtual 88	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   19: invokevirtual 64	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   22: astore_2
     //   23: aload_3
     //   24: aload_1
     //   25: aconst_null
-    //   26: invokevirtual 92	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   29: new 94	com/tencent/util/Pair
+    //   26: invokevirtual 68	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   29: new 70	com/tencent/util/Pair
     //   32: dup
     //   33: aload_2
     //   34: aload_1
-    //   35: invokespecial 96	com/tencent/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   35: invokespecial 72	com/tencent/util/Pair:<init>	(Ljava/lang/Object;Ljava/lang/Object;)V
     //   38: areturn
     //   39: astore 4
     //   41: aconst_null
     //   42: astore_3
     //   43: aload_3
     //   44: astore_2
-    //   45: invokestatic 102	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   45: invokestatic 78	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   48: ifeq -19 -> 29
-    //   51: ldc 104
+    //   51: ldc 80
     //   53: iconst_2
-    //   54: ldc 106
+    //   54: ldc 82
     //   56: aload 4
-    //   58: invokestatic 110	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   58: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   61: aload_3
     //   62: astore_2
     //   63: goto -34 -> 29
@@ -76,13 +67,13 @@ public class QzoneBaseThread
     //   69: astore_3
     //   70: aload_3
     //   71: astore_2
-    //   72: invokestatic 102	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   72: invokestatic 78	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   75: ifeq -46 -> 29
-    //   78: ldc 104
+    //   78: ldc 80
     //   80: iconst_2
-    //   81: ldc 112
+    //   81: ldc 88
     //   83: aload 4
-    //   85: invokestatic 110	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   85: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   88: aload_3
     //   89: astore_2
     //   90: goto -61 -> 29
@@ -91,13 +82,13 @@ public class QzoneBaseThread
     //   96: astore_3
     //   97: aload_3
     //   98: astore_2
-    //   99: invokestatic 102	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   99: invokestatic 78	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   102: ifeq -73 -> 29
-    //   105: ldc 104
+    //   105: ldc 80
     //   107: iconst_2
-    //   108: ldc 114
+    //   108: ldc 90
     //   110: aload 4
-    //   112: invokestatic 110	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   112: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   115: aload_3
     //   116: astore_2
     //   117: goto -88 -> 29

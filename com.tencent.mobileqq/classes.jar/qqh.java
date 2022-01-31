@@ -1,22 +1,22 @@
-import android.view.ViewTreeObserver;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyFastWebBottomSocialViewNew;
 
-class qqh
-  implements Runnable
+public class qqh
+  implements nyx
 {
-  qqh(qqg paramqqg) {}
+  public qqh(ReadInJoyFastWebBottomSocialViewNew paramReadInJoyFastWebBottomSocialViewNew, nyx paramnyx) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if ((qqf.a(this.a.a) != null) && (this.a.a.getViewTreeObserver() != null))
-    {
-      this.a.a.getViewTreeObserver().removeOnGlobalLayoutListener(qqf.a(this.a.a));
-      qqf.a(this.a.a, null);
+    ReadInJoyFastWebBottomSocialViewNew.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyFastWebBottomSocialViewNew).setVisibility(8);
+    if (this.jdField_a_of_type_Nyx != null) {
+      this.jdField_a_of_type_Nyx.a(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qqh
  * JD-Core Version:    0.7.0.1
  */

@@ -8,10 +8,10 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class CouponProto$MyBusinessFavourListResp
-  extends MessageMicro
+  extends MessageMicro<MyBusinessFavourListResp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "retcode", "businesses", "ts" }, new Object[] { Integer.valueOf(0), null, Long.valueOf(0L) }, MyBusinessFavourListResp.class);
-  public final PBRepeatMessageField businesses = PBField.initRepeatMessage(CouponProto.Business.class);
+  public final PBRepeatMessageField<CouponProto.Business> businesses = PBField.initRepeatMessage(CouponProto.Business.class);
   public final PBUInt32Field retcode = PBField.initUInt32(0);
   public final PBUInt64Field ts = PBField.initUInt64(0L);
 }

@@ -10,7 +10,7 @@ import tencent.im.msg.im_msg_body.CustomFace;
 import tencent.im.msg.im_msg_body.VideoFile;
 
 public final class oidb_cmd0x991$Goods
-  extends MessageMicro
+  extends MessageMicro<Goods>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_animation_param = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -29,7 +29,7 @@ public final class oidb_cmd0x991$Goods
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x991.oidb_cmd0x991.Goods
  * JD-Core Version:    0.7.0.1
  */

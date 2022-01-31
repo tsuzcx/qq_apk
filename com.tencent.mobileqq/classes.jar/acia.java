@@ -1,27 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.qphone.base.util.QLog;
+import Wallet.AcsMsg;
+import com.tencent.mobileqq.data.MessageRecord;
 
-class acia
-  implements Runnable
+public class acia
 {
-  acia(achz paramachz, FileMsg paramFileMsg) {}
+  public long a;
+  public AcsMsg a;
+  public MessageRecord a;
   
-  public void run()
+  public String toString()
   {
-    if (this.jdField_a_of_type_Achz.a.a == null)
-    {
-      QLog.e("FavroamingManager", 1, "app is null");
-      return;
-    }
-    ((FavroamingDBManager)this.jdField_a_of_type_Achz.a.a.getManager(148)).a(this.jdField_a_of_type_ComTencentMobileqqTransfileFileMsg.g);
+    return "QQReminderOrderModel{messageRecord=" + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord + ", acsMsg=" + this.jdField_a_of_type_WalletAcsMsg + ", orderTime=" + this.jdField_a_of_type_Long + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acia
  * JD-Core Version:    0.7.0.1
  */

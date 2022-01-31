@@ -1,46 +1,24 @@
-import android.graphics.Bitmap;
-import android.os.AsyncTask;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.troop.utils.RollangleImageView;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import mqq.observer.BusinessObserver;
 
 public class ajvh
-  extends AsyncTask
+  implements BusinessObserver
 {
-  private WeakReference a;
+  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle) {}
   
-  public ajvh(RollangleImageView paramRollangleImageView)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.a = new WeakReference(paramRollangleImageView);
-  }
-  
-  protected Bitmap a(Boolean... paramVarArgs)
-  {
-    RollangleImageView localRollangleImageView = (RollangleImageView)this.a.get();
-    if (localRollangleImageView != null) {
-      return RollangleImageView.a(localRollangleImageView, paramVarArgs[0].booleanValue());
-    }
-    return null;
-  }
-  
-  protected void a(Bitmap paramBitmap)
-  {
-    RollangleImageView localRollangleImageView = (RollangleImageView)this.a.get();
-    if (localRollangleImageView != null)
+    switch (paramInt)
     {
-      if (paramBitmap != null) {
-        localRollangleImageView.setImageBitmap(paramBitmap);
-      }
-    }
-    else {
+    default: 
       return;
     }
-    localRollangleImageView.setImageResource(FileManagerUtil.b(localRollangleImageView.a));
+    a(paramBoolean, paramBundle.getInt("msgType", 0), paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajvh
  * JD-Core Version:    0.7.0.1
  */

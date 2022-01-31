@@ -1,90 +1,76 @@
-import com.tencent.mobileqq.ar.arengine.ARResouceDir;
-import com.tencent.mobileqq.ar.arengine.ARResourceDownload.ARResourceDownloadCallback;
-import com.tencent.mobileqq.ar.arengine.ARResourceDownload.DownloadInfo;
-import com.tencent.mobileqq.ar.arengine.ARResourceManagerTools;
-import com.tencent.mobileqq.ar.arengine.ARResourceManagerTools.ARResourceCallback;
-import com.tencent.mobileqq.ar.arengine.ArResourceConfigUtils;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.DiscussionMemberInfo;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 public class aaph
-  implements ARResourceDownload.ARResourceDownloadCallback
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public aaph(ARResourceManagerTools paramARResourceManagerTools, ARResourceManagerTools.ARResourceCallback paramARResourceCallback, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
+  public aaph(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void a(long paramLong1, long paramLong2)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback.a(ARResourceManagerTools.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools, paramLong1, 0));
+    if (AppSetting.c)
+    {
+      paramCompoundButton = this.a.getString(2131626293);
+      DiscussionInfoCardActivity.a(this.a).setContentDescription(paramCompoundButton);
     }
-  }
-  
-  public void a(boolean paramBoolean, ARResourceDownload.DownloadInfo paramDownloadInfo)
-  {
-    QLog.i("AREngine_ARResourceManagerTools", 1, "onARResourceDownloadComplete result" + paramBoolean);
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback.a(paramDownloadInfo.jdField_a_of_type_Int, paramBoolean);
-    }
+    paramCompoundButton = DiscussionInfoCardActivity.a(this.a).a(DiscussionInfoCardActivity.a(this.a), this.a.app.getCurrentAccountUin());
+    int i = paramCompoundButton.flag;
+    label171:
+    QQAppInterface localQQAppInterface;
     if (paramBoolean)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      for (;;)
+      paramCompoundButton.flag = ((byte)(paramCompoundButton.flag | 0x1));
+      if (i != paramCompoundButton.flag)
       {
-        if (localIterator.hasNext())
-        {
-          ARResourceDownload.DownloadInfo localDownloadInfo = (ARResourceDownload.DownloadInfo)localIterator.next();
-          if (!localDownloadInfo.jdField_a_of_type_JavaLangString.equals(paramDownloadInfo.jdField_a_of_type_JavaLangString)) {
-            continue;
-          }
-          if (paramDownloadInfo.jdField_a_of_type_Boolean) {}
-          try
-          {
-            System.currentTimeMillis();
-            if (paramDownloadInfo.jdField_a_of_type_Int == 6)
-            {
-              new File(paramDownloadInfo.c);
-              ArResourceConfigUtils.a(paramDownloadInfo.c, ARResouceDir.c());
-            }
-            for (;;)
-            {
-              QLog.i("AREngine_ARResourceManagerTools", 1, "onARMarkerModelDownloadComplete  ");
-              this.b.remove(localDownloadInfo);
-              break;
-              File localFile = new File(paramDownloadInfo.c);
-              ArResourceConfigUtils.a(paramDownloadInfo.c, localFile.getParentFile().getAbsolutePath() + File.separator + paramDownloadInfo.b + File.separator);
-            }
-            return;
-          }
-          catch (Exception localException)
-          {
-            new File(paramDownloadInfo.c).delete();
-            QLog.i("AREngine_ARResourceManagerTools", 1, "Download end. uncompressZip error. url = ");
-            if (this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback != null) {
-              this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback.a(false);
-            }
-            this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools.a();
-            QLog.i("AREngine_ARResourceManagerTools", 1, "onARMarkerAllDownloadComplete  ");
-          }
+        byte b = (byte)(paramCompoundButton.flag & 0x1);
+        if (QLog.isDevelopLevel()) {
+          QLog.d("DiscussionInfoCardActivity", 4, "DiscussionMemberInfo.flag changed save now:" + paramCompoundButton.flag + " flag:" + b);
         }
+        DiscussionInfoCardActivity.a(this.a).a(Long.valueOf(DiscussionInfoCardActivity.a(this.a)).longValue(), b, paramCompoundButton.flag);
+        if (!paramBoolean) {
+          break label341;
+        }
+        paramCompoundButton = "msg_open";
+        azzx.a("Grp_Dis_set", "Dis_info", paramCompoundButton, 0, 0, new String[] { DiscussionInfoCardActivity.a(this.a), azzx.a(this.a.app, this.a.a) });
       }
-      while (this.b.size() != 0) {}
-      if (this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback.a(true);
+      localQQAppInterface = this.a.app;
+      if (!paramBoolean) {
+        break label347;
       }
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools.a();
+      paramCompoundButton = "1";
+      label231:
+      awqx.b(localQQAppInterface, "CliOper", "", "", "0X800629B", "0X800629B", 0, 0, paramCompoundButton, "", "", "");
+      localQQAppInterface = this.a.app;
+      if (!paramBoolean) {
+        break label353;
+      }
+    }
+    label341:
+    label347:
+    label353:
+    for (paramCompoundButton = "1";; paramCompoundButton = "0")
+    {
+      awqx.b(localQQAppInterface, "CliOper", "", "", "0X8006679", "0X8006679", 0, 0, paramCompoundButton, "", "", "");
+      awqx.b(this.a.app, "CliOper", "", "", "0X8006668", "0X8006668", 0, 0, "", "", "", "");
       return;
+      paramCompoundButton.flag = ((byte)(paramCompoundButton.flag & 0xFFFFFFFE));
+      break;
+      paramCompoundButton = "msg_close";
+      break label171;
+      paramCompoundButton = "0";
+      break label231;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback.a(false);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaph
  * JD-Core Version:    0.7.0.1
  */

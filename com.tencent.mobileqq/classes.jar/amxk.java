@@ -1,51 +1,30 @@
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.IPluginManager;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
+import mqq.app.QQPermissionDenied;
+import mqq.app.QQPermissionGrant;
 
-public class amxk
-  extends OnPluginInstallListener.Stub
+class amxk
 {
-  public amxk(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
+  amxk(amxj paramamxj) {}
   
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
+  @QQPermissionDenied(1819)
+  public void denied()
   {
-    String str = String.valueOf(paramInt);
-    paramString = "个性化插件";
-    if (this.a.b == QQIndividualityBridgeActivity.c) {
-      paramString = "斗图";
-    }
-    for (;;)
-    {
-      IPluginManager.a(str, paramString);
-      int i = NetworkUtil.a(this.a);
-      QLog.e("QQIndividuality", 2, "install plugin fail: " + paramInt + " and netType = " + i);
-      this.a.setResult(1001);
-      QQIndividualityBridgeActivity.c(this.a);
-      ReportController.b(null, "CliOper", "", "", "ep_mall", "0X8006A98", 0, 0, str, String.valueOf(i), "", "");
-      return;
-      if (this.a.b == QQIndividualityBridgeActivity.d) {
-        paramString = "个签";
-      } else if (this.a.b == QQIndividualityBridgeActivity.e) {
-        paramString = "历史签名";
-      }
-    }
+    QLog.e("CameraHelper", 1, "checkPermission user denied");
+    amxj.a(this.a);
+    amxj.a(this.a, false, 1830003);
   }
   
-  public void onInstallFinish(String paramString)
+  @QQPermissionGrant(1819)
+  public void grant()
   {
-    this.a.b();
+    QLog.d("CameraHelper", 1, "checkPermission user grant");
+    amxj.a(this.a);
+    amxj.a(this.a, true, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amxk
  * JD-Core Version:    0.7.0.1
  */

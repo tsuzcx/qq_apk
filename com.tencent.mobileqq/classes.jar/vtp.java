@@ -1,70 +1,58 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
-import com.tencent.mobileqq.app.FlashPicHelper;
-import com.tencent.mobileqq.app.HotChatHelper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import mqq.app.AccountNotMatchException;
+import android.view.View;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
 public class vtp
-  implements Runnable
+  implements begw
 {
-  public vtp(AIOImageProviderService paramAIOImageProviderService, long paramLong) {}
+  public vtp(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    try
-    {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a);
-      ChatMessage localChatMessage = AIOImageProviderService.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService, this.jdField_a_of_type_Long);
-      QQMessageFacade localQQMessageFacade;
-      if (localChatMessage != null)
-      {
-        localQQMessageFacade = localQQAppInterface.a();
-        if (!HotChatHelper.a(localChatMessage)) {
-          break label157;
-        }
-        HotChatHelper.a(localChatMessage);
-        break label180;
-      }
-      for (;;)
-      {
-        localQQMessageFacade.a(localChatMessage.frienduin, localChatMessage.istroop, localChatMessage.uniseq, "extStr", localChatMessage.extStr);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.hotchat", 2, "makeFlashPicReaded,uin:" + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.b + ",type:" + localChatMessage.istroop + ",extStr" + localChatMessage.extStr);
-        }
-        ReportController.b(localQQAppInterface, "CliOper", "", "", "0X8005979", "0X8005979", 0, 0, "", "", "", "");
-        return;
-        label157:
-        FlashPicHelper.a(localChatMessage);
-        Iterator localIterator = localQQMessageFacade.b(localChatMessage.frienduin, localChatMessage.msgtype).iterator();
-        label180:
-        if (localIterator.hasNext())
-        {
-          MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
-          if (localMessageRecord.uniseq != this.jdField_a_of_type_Long) {
-            break;
-          }
-          FlashPicHelper.a(localMessageRecord);
-        }
-      }
+    if (this.a.f) {
       return;
     }
-    catch (AccountNotMatchException localAccountNotMatchException)
+    this.a.f = true;
+    switch (paramInt)
     {
-      QLog.d("Q.hotchat", 2, "setFlashPicReaded，account no match exception");
+    }
+    for (;;)
+    {
+      this.a.b.dismiss();
+      return;
+      if (!this.a.jdField_a_of_type_Boolean)
+      {
+        this.a.e();
+        if ((this.a.g & 0x1) != 0)
+        {
+          awqx.b(this.a.app, "P_CliOper", "flag1", "", "0X800416E", "0X800416E", 0, 0, "", "", "", "");
+          continue;
+          if (!this.a.jdField_a_of_type_Boolean)
+          {
+            this.a.f();
+            if ((this.a.g & 0x1) != 0)
+            {
+              awqx.b(this.a.app, "P_CliOper", "flag1", "", "0X8004170", "0X8004170", 0, 0, "", "", "", "");
+              continue;
+              if (!this.a.jdField_a_of_type_Boolean)
+              {
+                this.a.d();
+                if ((this.a.g & 0x1) != 0) {
+                  awqx.b(this.a.app, "P_CliOper", "flag1", "", "0X8004171", "0X8004171", 0, 0, "", "", "", "");
+                }
+                if (this.a.jdField_c_of_type_Int == 2) {
+                  awqx.b(this.a.app, "P_CliOper", "Grp_set", "", "Grp_data", "qr_save", 0, 0, this.a.jdField_c_of_type_JavaLangString, "", "", String.valueOf(this.a.jdField_a_of_type_Int));
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     vtp
  * JD-Core Version:    0.7.0.1
  */

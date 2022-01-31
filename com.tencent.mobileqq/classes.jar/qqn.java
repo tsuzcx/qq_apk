@@ -1,18 +1,21 @@
-import com.tencent.gdtad.net.GdtHttp.Params;
+import com.tencent.widget.AbsListView;
 
 class qqn
-  extends GdtHttp.Params
+  extends omr
 {
-  public int d = -2147483648;
-  
-  public boolean b()
+  qqn(qqm paramqqm, String paramString, AbsListView paramAbsListView, int paramInt)
   {
-    return (super.b()) && (this.b != null);
+    super(paramString);
+  }
+  
+  public void a(oml paramoml)
+  {
+    paramoml.a(this.jdField_a_of_type_ComTencentWidgetAbsListView, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qqn
  * JD-Core Version:    0.7.0.1
  */

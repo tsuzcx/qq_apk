@@ -8,9 +8,9 @@ import java.util.ArrayList;
 public final class RequestUploadAddressBookNotBind
   extends JceStruct
 {
-  static ArrayList cache_AddressBookList;
+  static ArrayList<AddressBookItem> cache_AddressBookList;
   static byte[] cache_sessionSid = (byte[])new byte[1];
-  public ArrayList AddressBookList;
+  public ArrayList<AddressBookItem> AddressBookList;
   public String MobileUniqueNo = "";
   public long nextFlag;
   public byte[] sessionSid;
@@ -25,7 +25,7 @@ public final class RequestUploadAddressBookNotBind
   
   public RequestUploadAddressBookNotBind() {}
   
-  public RequestUploadAddressBookNotBind(long paramLong, String paramString, byte[] paramArrayOfByte, ArrayList paramArrayList)
+  public RequestUploadAddressBookNotBind(long paramLong, String paramString, byte[] paramArrayOfByte, ArrayList<AddressBookItem> paramArrayList)
   {
     this.nextFlag = paramLong;
     this.MobileUniqueNo = paramString;

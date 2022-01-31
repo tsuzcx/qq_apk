@@ -1,34 +1,192 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.extendfriend.utils.ExtendFriendVoicePlayer;
-import com.tencent.mobileqq.extendfriend.utils.ExtendFriendVoicePlayer.ExtendFriendVoicePlayerListener;
-import com.tencent.mobileqq.transfile.BuddyTransfileProcessor;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import com.tencent.qphone.base.util.MD5;
-import java.io.File;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.confess.ConfessPlugin;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
+import java.util.ArrayList;
 
 public class acse
-  implements Runnable
+  extends baxr
+  implements bbad, bbav, bber, bbev
 {
-  public acse(ExtendFriendVoicePlayer paramExtendFriendVoicePlayer, String paramString) {}
+  private acsb a;
+  protected xdt a;
   
-  public void run()
+  public acse(Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
   {
-    String str = BuddyTransfileProcessor.a(ExtendFriendVoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendUtilsExtendFriendVoicePlayer).app.getCurrentAccountUin(), MD5.toMD5(this.jdField_a_of_type_JavaLangString), 23, null);
-    File localFile = new File(str);
-    int i = HttpDownloadUtil.a(ExtendFriendVoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendUtilsExtendFriendVoicePlayer).app, this.jdField_a_of_type_JavaLangString, localFile);
-    if (i == 0)
-    {
-      ExtendFriendVoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendUtilsExtendFriendVoicePlayer).a(localFile);
-      this.jdField_a_of_type_ComTencentMobileqqExtendfriendUtilsExtendFriendVoicePlayer.a(str);
-      return;
+    super(paramContext, paramActivity, paramAppInterface);
+    super.preInitPluginEngine();
+    this.mWebview = new TouchWebView(paramContext);
+    buildBaseWebView(this.mInterface);
+    this.jdField_a_of_type_Acsb = new acsb(paramActivity, this.mWebview);
+  }
+  
+  public Activity a()
+  {
+    return this.mInActivity;
+  }
+  
+  public TouchWebView a(ViewGroup paramViewGroup)
+  {
+    if (paramViewGroup != null) {
+      paramViewGroup.addView(this.mWebview);
     }
-    ExtendFriendVoicePlayer.a(this.jdField_a_of_type_ComTencentMobileqqExtendfriendUtilsExtendFriendVoicePlayer).f(i);
+    return this.mWebview;
+  }
+  
+  public WebViewFragment a()
+  {
+    return null;
+  }
+  
+  public WebView a()
+  {
+    return this.mWebview;
+  }
+  
+  public xdt a()
+  {
+    return b();
+  }
+  
+  public void a()
+  {
+    super.doOnDestroy();
+  }
+  
+  public void a(String paramString)
+  {
+    this.mUrl = paramString;
+    this.mWebview.loadUrl(this.mUrl);
+  }
+  
+  public void a(boolean paramBoolean) {}
+  
+  public boolean a(String paramString)
+  {
+    return b().a(paramString);
+  }
+  
+  public boolean a(String paramString1, String paramString2, String paramString3, String paramString4, Bundle paramBundle)
+  {
+    return b().a(paramString1, paramString2, paramString3, paramString4, paramBundle);
+  }
+  
+  public String b()
+  {
+    String str2 = this.mUrl;
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2))
+    {
+      str1 = str2;
+      if (this.mWebview != null)
+      {
+        if (TextUtils.isEmpty(this.mWebview.getUrl())) {
+          break label46;
+        }
+        str1 = this.mWebview.getUrl();
+      }
+    }
+    return str1;
+    label46:
+    return this.mInActivity.getIntent().getStringExtra("url");
+  }
+  
+  protected xdt b()
+  {
+    if (this.jdField_a_of_type_Xdt == null)
+    {
+      this.jdField_a_of_type_Xdt = new xdt(this.mInterface, this.mInActivity);
+      this.jdField_a_of_type_Xdt.a(this);
+    }
+    return this.jdField_a_of_type_Xdt;
+  }
+  
+  public void b() {}
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public void bindJavaScript(ArrayList<WebViewPlugin> paramArrayList)
+  {
+    if (paramArrayList != null)
+    {
+      paramArrayList.add(new bbey());
+      paramArrayList.add(new ConfessPlugin());
+      paramArrayList.add(new UiApiPlugin());
+      paramArrayList.add(new aqsg());
+      paramArrayList.add(new xdz());
+      paramArrayList.add(new ndx());
+    }
+  }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_Acsb.a(b());
+  }
+  
+  public CustomWebView getWebView()
+  {
+    return this.mWebview;
+  }
+  
+  public void onPageFinished(WebView paramWebView, String paramString)
+  {
+    super.onPageFinished(paramWebView, paramString);
+  }
+  
+  public final int pluginStartActivityForResult(WebViewPlugin paramWebViewPlugin, Intent paramIntent, byte paramByte)
+  {
+    paramByte = switchRequestCode(paramWebViewPlugin, (byte)1);
+    if (paramByte == -1) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AbsWebView", 2, "pluginStartActivityForResult not handled");
+      }
+    }
+    while (this.mInActivity == null) {
+      return paramByte;
+    }
+    this.mInActivity.startActivityForResult(paramIntent, 15001);
+    return paramByte;
+  }
+  
+  public final int switchRequestCode(WebViewPlugin paramWebViewPlugin, byte paramByte)
+  {
+    CustomWebView localCustomWebView = paramWebViewPlugin.mRuntime.a();
+    if (localCustomWebView == null) {}
+    int i;
+    do
+    {
+      do
+      {
+        return -1;
+      } while (localCustomWebView.getPluginEngine() == null);
+      i = WebViewPluginEngine.a(paramWebViewPlugin);
+      if (i != -1) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("AbsWebView", 2, "switchRequestCode failed: webView index=" + 0 + ", pluginIndex=" + i);
+    return -1;
+    return i << 8 & 0xFF00 | 0x0 | paramByte & 0xFF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acse
  * JD-Core Version:    0.7.0.1
  */

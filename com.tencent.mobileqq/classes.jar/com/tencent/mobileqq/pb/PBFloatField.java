@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.pb;
 
-import java.io.IOException;
-
 public final class PBFloatField
   extends PBPrimitiveField<Float>
 {
@@ -48,14 +46,12 @@ public final class PBFloatField
   }
   
   public void readFrom(CodedInputStreamMicro paramCodedInputStreamMicro)
-    throws IOException
   {
     this.value = paramCodedInputStreamMicro.readFloat();
     setHasFlag(true);
   }
   
   protected Float readFromDirectly(CodedInputStreamMicro paramCodedInputStreamMicro)
-    throws IOException
   {
     return Float.valueOf(paramCodedInputStreamMicro.readFloat());
   }
@@ -72,7 +68,6 @@ public final class PBFloatField
   }
   
   public void writeTo(CodedOutputStreamMicro paramCodedOutputStreamMicro, int paramInt)
-    throws IOException
   {
     if (has()) {
       paramCodedOutputStreamMicro.writeFloat(paramInt, this.value);
@@ -80,7 +75,6 @@ public final class PBFloatField
   }
   
   protected void writeToDirectly(CodedOutputStreamMicro paramCodedOutputStreamMicro, int paramInt, Float paramFloat)
-    throws IOException
   {
     paramCodedOutputStreamMicro.writeFloat(paramInt, paramFloat.floatValue());
   }

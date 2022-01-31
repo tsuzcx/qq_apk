@@ -1,24 +1,41 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.nearby.NearbyEnterUpdateObserver;
-import com.tencent.qphone.base.util.QLog;
-
-public class tcj
-  extends NearbyEnterUpdateObserver
+class tcj
+  implements tcp
 {
-  public tcj(Leba paramLeba) {}
+  tcj(tci paramtci) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(tet paramtet)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("nearby.redpoint", 2, "NearbyEnterUpdateObserver onReceive");
+    if (tci.a(this.a) != null) {
+      tci.a(this.a).a(paramtet.a);
     }
-    Leba.d(this.a);
+    if (tci.a(this.a) != null) {
+      tci.a(this.a).a();
+    }
+  }
+  
+  public void b(tet paramtet)
+  {
+    if (tci.a(this.a) != null) {
+      tci.a(this.a).c(paramtet.a);
+    }
+    if (tci.a(this.a) != null) {
+      tci.a(this.a).a();
+    }
+  }
+  
+  public void c(tet paramtet)
+  {
+    if (tci.a(this.a) != null) {
+      tci.a(this.a).d(paramtet.a);
+    }
+    if (tci.a(this.a) != null) {
+      tci.a(this.a).a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tcj
  * JD-Core Version:    0.7.0.1
  */

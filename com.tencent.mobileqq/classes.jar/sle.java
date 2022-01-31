@@ -1,33 +1,108 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import android.content.Intent;
+import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.portal.PortalManager;
+import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class sle
-  implements View.OnTouchListener
+  extends spv
 {
-  public sle(Conversation paramConversation) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  private boolean a(List<String> paramList)
   {
-    if (paramMotionEvent.getAction() == 1)
+    QQAppInterface localQQAppInterface = (QQAppInterface)QQStoryContext.a();
+    spz localspz = (spz)sqg.a(10);
+    boolean bool;
+    if (paramList.isEmpty())
     {
-      Conversation.a(this.a).removeView(Conversation.a(this.a));
-      paramView = (PortalManager)this.a.a.getManager(78);
-      if (paramView != null) {
-        paramView.a(this.a.a(), true);
+      if (QLog.isColorLevel()) {
+        QLog.d("QQStoryConfigServletHandlerExt", 2, "handleStoryMsgTabNodeConfigCmd data is null!!!");
       }
-      Conversation.a(this.a, null);
+      localspz.b("key_story_msg_tab_show", Boolean.valueOf(false));
+      bool = true;
     }
-    return true;
+    for (;;)
+    {
+      ((sfz)localQQAppInterface.a(98)).notifyUI(1021, true, null);
+      return bool;
+      paramList = (String)paramList.get(0);
+      if (paramList != null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.qqstory.infoTabShow", 2, "config content: " + paramList);
+        }
+        try
+        {
+          paramList = new JSONObject(paramList);
+          if (paramList.getInt("StoryShowInMsgTab") != 0) {}
+          for (bool = true;; bool = false)
+          {
+            localspz.b("key_story_msg_tab_show", Boolean.valueOf(bool));
+            localspz.b("key_story_msg_tab_autoshow_quota", Integer.valueOf(paramList.optInt("StoryAutoExpInMsgTab", 2)));
+            bool = true;
+            break;
+          }
+          bool = false;
+        }
+        catch (JSONException paramList)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.w("Q.qqstory.infoTabShow", 2, paramList.getMessage());
+          }
+        }
+      }
+    }
+  }
+  
+  private boolean b(List<String> paramList)
+  {
+    if (paramList.isEmpty())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQStoryConfigServletHandlerExt", 2, "handleStoryMsgTabNodePreloaderConfigCmd data is null!!!");
+      }
+      return false;
+    }
+    paramList = (String)paramList.get(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.infoTabShow", 2, "handleStoryMsgTabNodePreloaderConfigCmd config content: " + paramList);
+    }
+    try
+    {
+      paramList = new JSONObject(paramList);
+      int i = paramList.getInt("MsgTabPrestrainbNum");
+      paramList = paramList.getString("4G");
+      spz localspz = (spz)sqg.a(10);
+      localspz.b("key_story_msg_tab_node_preload", Integer.valueOf(i));
+      localspz.b("key_story_msg_tab_node_preload_4g", Boolean.valueOf("1".equals(paramList)));
+      return true;
+    }
+    catch (JSONException paramList)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("Q.qqstory.infoTabShow", 2, paramList.getMessage());
+      }
+    }
+    return false;
+  }
+  
+  public boolean a(int paramInt, Intent paramIntent, ConfigurationService.Config paramConfig, List<String> paramList)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    case 243: 
+      return a(paramList);
+    }
+    return b(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sle
  * JD-Core Version:    0.7.0.1
  */

@@ -1,70 +1,44 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import com.tencent.mobileqq.vas.VasApngUtil;
-import com.tencent.mobileqq.vas.VasApngUtil.ApngSoLoadCallBack;
-import dov.com.qq.im.capture.view.QIMCommonLoadingView;
-import java.lang.ref.WeakReference;
-import mqq.app.AppRuntime;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IDownloadMgr;
 
 class aojn
-  implements Runnable
+  implements aojh
 {
-  aojn(aojm paramaojm, boolean paramBoolean) {}
+  aojn(aojj paramaojj, aojh paramaojh) {}
   
-  public void run()
+  public void a(int paramInt, String paramString)
   {
-    ((QIMCommonLoadingView)this.jdField_a_of_type_Aojm.jdField_a_of_type_JavaLangRefWeakReference.get()).setVisibility(8);
-    ((ImageView)this.jdField_a_of_type_Aojm.b.get()).setVisibility(0);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      Object localObject1 = BaseApplicationImpl.sApplication.getRuntime();
-      Object localObject2 = this.jdField_a_of_type_Aojm.jdField_a_of_type_JavaLangString;
-      Object localObject3 = new aojo(this);
-      localObject1 = VasApngUtil.a((AppRuntime)localObject1, (String)localObject2, "-Dynamic-", null, new int[] { 13 }, "-Dynamic-", null, (VasApngUtil.ApngSoLoadCallBack)localObject3);
-      if (localObject1 != null)
-      {
-        localObject3 = (ImageView)this.jdField_a_of_type_Aojm.b.get();
-        if (!this.jdField_a_of_type_Aojm.jdField_a_of_type_Boolean) {
-          break label222;
-        }
-        localObject2 = localObject1;
-        ((ImageView)localObject3).setImageDrawable((Drawable)localObject2);
-        ((ImageView)this.jdField_a_of_type_Aojm.b.get()).setTag(2131362364, Boolean.valueOf(true));
-        if (localObject1 != null)
-        {
-          if (((URLDrawable)localObject1).getStatus() != 1) {
-            ((URLDrawable)localObject1).restartDownload();
-          }
-          if (((URLDrawable)localObject1).getStatus() == 1) {
-            this.jdField_a_of_type_Aojm.jdField_a_of_type_Aojr.onLoadSuccessed((View)this.jdField_a_of_type_Aojm.b.get(), (URLDrawable)localObject1);
-          }
-          localObject2 = (ImageView)this.jdField_a_of_type_Aojm.b.get();
-          if (!this.jdField_a_of_type_Aojm.jdField_a_of_type_Boolean) {
-            break label227;
-          }
-        }
-      }
-      for (;;)
-      {
-        ((ImageView)localObject2).setImageDrawable((Drawable)localObject1);
-        return;
-        label222:
-        localObject2 = null;
-        break;
-        label227:
-        localObject1 = null;
-      }
+    this.jdField_a_of_type_Aojh.a(paramInt, paramString);
+    aojd.a(this.jdField_a_of_type_Aojj.jdField_a_of_type_Aotv.a());
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.jdField_a_of_type_Aojj.b = paramString1;
+    this.jdField_a_of_type_Aojj.d = paramString2;
+    aojj.c(this.jdField_a_of_type_Aojj);
+    this.jdField_a_of_type_Aojj.jdField_a_of_type_Int = this.jdField_a_of_type_Aojj.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.startPlayWithSavePath(20160714, this.jdField_a_of_type_Aojj.b, apck.a(this.jdField_a_of_type_Aojj.c), 0L, 0, this.jdField_a_of_type_Aojj.c, 0);
+    this.jdField_a_of_type_Aojj.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.setPlayerState(20160714, this.jdField_a_of_type_Aojj.jdField_a_of_type_Int, 6);
+    paramString1 = this.jdField_a_of_type_Aojj.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.buildPlayURLMp4(this.jdField_a_of_type_Aojj.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.jdField_a_of_type_Aojj.hashCode() + "][" + this.jdField_a_of_type_Aojj.jdField_a_of_type_Aotv.a() + "]getDiscPlayUrl, mPlayId[" + this.jdField_a_of_type_Aojj.jdField_a_of_type_Int + "]");
     }
-    ((ImageView)this.jdField_a_of_type_Aojm.b.get()).setImageDrawable(URLDrawableHelper.a);
+    this.jdField_a_of_type_Aojh.a(paramString1, paramString2);
+  }
+  
+  public void aF_()
+  {
+    this.jdField_a_of_type_Aojh.aF_();
+  }
+  
+  public void aG_()
+  {
+    this.jdField_a_of_type_Aojh.aG_();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aojn
  * JD-Core Version:    0.7.0.1
  */

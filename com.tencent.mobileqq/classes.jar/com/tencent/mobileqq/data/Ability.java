@@ -1,17 +1,15 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.PrimaryKeyJoinColumn;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
-@PrimaryKeyJoinColumn
 public class Ability
-  extends Entity
+  extends atmo
 {
   public static final int ABILITY_PHOTO = 2;
   public static final int ABILITY_VIDEO = 1;
   public int flags;
-  @unique
+  @atoc
   public String uin;
   
   public static boolean hasAbility(int paramInt1, int paramInt2)

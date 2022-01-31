@@ -1,26 +1,14 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
 
-class aijr
-  implements Runnable
+public abstract interface aijr
 {
-  aijr(aijp paramaijp, String paramString1, boolean paramBoolean, String paramString2) {}
+  public abstract void a(CmGameStartChecker.StartCheckParam paramStartCheckParam);
   
-  public void run()
-  {
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append(" dump");
-    if (this.jdField_a_of_type_Boolean) {}
-    for (String str = "成功，文件路径为" + this.b;; str = "失败")
-    {
-      QQToast.a(localBaseApplicationImpl, str, 2000).a();
-      return;
-    }
-  }
+  public abstract void b(CmGameStartChecker.StartCheckParam paramStartCheckParam);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aijr
  * JD-Core Version:    0.7.0.1
  */

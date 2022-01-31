@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class voip_ivr$RspBody
-  extends MessageMicro
+  extends MessageMicro<RspBody>
 {
   public static final int DIAL_DEMO_BODY_FIELD_NUMBER = 2;
   public static final int HEAD_FIELD_NUMBER = 1;
@@ -18,7 +18,7 @@ public final class voip_ivr$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.voip.ivr.voip_ivr.RspBody
  * JD-Core Version:    0.7.0.1
  */

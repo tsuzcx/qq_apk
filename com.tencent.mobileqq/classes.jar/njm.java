@@ -1,27 +1,21 @@
-import android.view.View;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.mobileqq.now.enter.widget.HongBao2018ListView;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
 
 class njm
-  implements Runnable
+  extends anad
 {
   njm(njl paramnjl) {}
   
-  public void run()
+  public void onBindedToClient()
   {
-    int i = this.a.a.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.getFirstVisiblePosition();
-    if (i < this.a.a.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.getHeaderViewsCount())
-    {
-      View localView = this.a.a.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.getChildAt(0);
-      if (localView == this.a.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeView)
-      {
-        int j = localView.getTop();
-        if ((j < 0) && (j > -localView.getHeight())) {
-          this.a.a.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.setSelection(i + 1);
-        }
-      }
-    }
+    ReadInJoyArticleDetailActivity.a(this.a.a);
   }
+  
+  public void onDisconnectWithService() {}
+  
+  public void onPushMsg(Bundle paramBundle) {}
+  
+  public void onResponse(Bundle paramBundle) {}
 }
 
 

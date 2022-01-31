@@ -1,35 +1,32 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.leba.LebaFeedsAdapter;
-import com.tencent.mobileqq.leba.view.LebaFPSXListView;
-import com.tencent.mobileqq.leba.view.LebaFeedsViewBase;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
-public class aegw
-  implements ValueAnimator.AnimatorUpdateListener
+class aegw
+  implements View.OnClickListener
 {
-  public aegw(LebaFeedsAdapter paramLebaFeedsAdapter, LebaFeedsViewBase paramLebaFeedsViewBase, int paramInt) {}
+  aegw(aego paramaego) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-    if (i <= 240)
-    {
-      float f = i / 240.0F;
-      this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaFeedsViewBase.setAlpha(1.0F - f);
+    aciy.n = true;
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1001) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 10002)) {
+      awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800514F", "0X800514F", 0, 0, "", "", "", "");
     }
-    do
+    for (;;)
     {
+      awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(0), "", "", "");
+      acnc.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
       return;
-      paramValueAnimator = this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaFeedsViewBase.getLayoutParams();
-    } while (paramValueAnimator == null);
-    paramValueAnimator.height = (this.jdField_a_of_type_Int - (int)((i - 240) / 120.0F * this.jdField_a_of_type_Int));
-    this.jdField_a_of_type_ComTencentMobileqqLebaViewLebaFeedsViewBase.setLayoutParams(paramValueAnimator);
-    LebaFeedsAdapter.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsAdapter).requestLayout();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1010) {
+        awqx.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049C6", "0X80049C6", 0, 0, "", "", "", "");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aegw
  * JD-Core Version:    0.7.0.1
  */

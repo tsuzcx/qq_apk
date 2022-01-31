@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.defaultzero;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atnw;
+import atoc;
 import java.io.Serializable;
 
 public class EmoticonPackage
-  extends Entity
+  extends atmo
   implements Serializable
 {
   public static final int BUSINESS_GUIDE_FLAG = 4;
@@ -54,7 +54,7 @@ public class EmoticonPackage
   public String diversionName;
   public int downloadCount;
   public long endTime;
-  @unique
+  @atoc
   public String epId;
   public long expiretime;
   public int extraFlags;
@@ -76,7 +76,7 @@ public class EmoticonPackage
   public boolean isMagicFaceDownloading;
   public boolean isRecommendation;
   public int jobType;
-  @defaultzero
+  @atnw
   public int jsonVersion;
   public String jumpUrl;
   public boolean kandian;
@@ -87,6 +87,7 @@ public class EmoticonPackage
   public String minQQVersion;
   public int mobileFeetype;
   public String name;
+  public boolean newSoundEp;
   public long richIPLastReqTime;
   public long richIPReqTime;
   public int rscType = 0;
@@ -99,6 +100,11 @@ public class EmoticonPackage
   public int upperLeftLable;
   public boolean valid;
   public long wordingId;
+  
+  public boolean isNewVoiceType()
+  {
+    return this.newSoundEp;
+  }
   
   public String toString()
   {

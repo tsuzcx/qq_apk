@@ -1,35 +1,19 @@
-import Wallet.WalletSkinRsp;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.OnGetPathListener;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
 class xgp
-  implements PreloadManager.OnGetPathListener
+  implements View.OnClickListener
 {
-  xgp(xgo paramxgo, String paramString) {}
+  xgp(xgn paramxgn) {}
   
-  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletSkinHandler", 2, "setWalletSkin OnGetPathListener:" + paramInt + "|" + paramPathResult);
-    }
-    if ((paramInt != 0) || (TextUtils.isEmpty(paramPathResult.folderPath)))
-    {
-      QWalletSkinHandler.a(this.jdField_a_of_type_Xgo.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_Xgo.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener, false);
-      return;
-    }
-    QWalletSkinHandler.a(this.jdField_a_of_type_Xgo.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_Xgo.jdField_a_of_type_WalletWalletSkinRsp.skinID);
-    QWalletSkinHandler.a(this.jdField_a_of_type_Xgo.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Xgo.jdField_a_of_type_WalletWalletSkinRsp.zipUrl);
-    QWalletSkinHandler.b(this.jdField_a_of_type_Xgo.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Xgo.jdField_a_of_type_WalletWalletSkinRsp.zipMd5);
-    QWalletSkinHandler.a(this.jdField_a_of_type_Xgo.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_Xgo.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener, true);
-    QWalletSkinHandler.a(this.jdField_a_of_type_Xgo.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler);
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     xgp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.widget.ThemeSquareImageView android:layout_gravity="center" android:id="@id/de8" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <com.tencent.widget.ThemeImageView android:textSize="20.0dip" android:gravity="center" android:layout_gravity="center" android:id="@id/e23" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/des" android:scaleType="center" />
+</merge>

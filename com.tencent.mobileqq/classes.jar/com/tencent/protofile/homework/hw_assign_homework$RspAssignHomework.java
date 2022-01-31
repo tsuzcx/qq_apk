@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class hw_assign_homework$RspAssignHomework
-  extends MessageMicro
+  extends MessageMicro<RspAssignHomework>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16 }, new String[] { "errinfo", "hw_id" }, new Object[] { null, Long.valueOf(0L) }, RspAssignHomework.class);
   public hw_assign_homework.ErrorInfo errinfo = new hw_assign_homework.ErrorInfo();

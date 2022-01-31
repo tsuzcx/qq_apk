@@ -1,20 +1,44 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.AddFriendActivity;
+import com.tencent.biz.pubaccount.readinjoy.viola.videonew.topicvideo.VTopicVideo;
+import com.tencent.viola.core.dispatch.ComponentAppearEvent;
+import com.tencent.viola.core.dispatch.IEvent;
+import com.tencent.viola.core.dispatch.IObserver;
 
 public class rms
-  implements Runnable
+  implements IObserver
 {
-  public rms(AddFriendActivity paramAddFriendActivity, String paramString) {}
+  public rms(VTopicVideo paramVTopicVideo) {}
   
-  public void run()
+  public String getRef()
   {
-    AddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendActivity).setText(this.jdField_a_of_type_JavaLangString);
-    AddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendActivity).setVisibility(0);
+    return this.a.getRef();
+  }
+  
+  public void onReceive(IEvent paramIEvent)
+  {
+    if ((paramIEvent.getRef().equals(this.a.getRef())) && (this.a.getVideoLifeCycleChangeListener() != null))
+    {
+      paramIEvent = (ComponentAppearEvent)paramIEvent;
+      if (!paramIEvent.event.equals("didDisappear")) {
+        break label59;
+      }
+      this.a.getVideoLifeCycleChangeListener().c();
+    }
+    label59:
+    do
+    {
+      return;
+      if (paramIEvent.event.equals("willAppear"))
+      {
+        this.a.getVideoLifeCycleChangeListener().a();
+        return;
+      }
+    } while (!paramIEvent.event.equals("didAppear"));
+    this.a.getVideoLifeCycleChangeListener().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rms
  * JD-Core Version:    0.7.0.1
  */

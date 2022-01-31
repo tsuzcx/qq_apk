@@ -1,17 +1,24 @@
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ViewHolder;
-import com.tencent.mobileqq.activity.selectmember.FriendListInnerFrame;
+import android.graphics.Outline;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewOutlineProvider;
+import com.tencent.gamecenter.common.util.GameCenterAPIJavaScript;
 
 public class yff
-  extends TroopMemberListActivity.ViewHolder
+  extends ViewOutlineProvider
 {
-  public CheckBox a;
+  public yff(GameCenterAPIJavaScript paramGameCenterAPIJavaScript) {}
   
-  private yff(FriendListInnerFrame paramFriendListInnerFrame) {}
+  public void getOutline(View paramView, Outline paramOutline)
+  {
+    if (Build.VERSION.SDK_INT >= 21) {
+      paramOutline.setRoundRect(0, 0, paramView.getWidth(), paramView.getHeight(), aciy.a(5.0F, paramView.getResources()));
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yff
  * JD-Core Version:    0.7.0.1
  */

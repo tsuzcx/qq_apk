@@ -1,32 +1,32 @@
-import android.media.MediaRecorder;
-import android.media.MediaRecorder.OnInfoListener;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.webviewplugin.QzoneAudioRecordPlugin.SimpleAACRecorder;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
+import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter.1;
+import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter.1.1;
+import com.tencent.widget.AbsListView;
 
 public class ankf
-  implements MediaRecorder.OnInfoListener
+  implements begh
 {
-  public ankf(QzoneAudioRecordPlugin.SimpleAACRecorder paramSimpleAACRecorder) {}
+  public ankf(EmotionPanelViewPagerAdapter.1.1 param1) {}
   
-  public void onInfo(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
+  public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    switch (paramInt1)
+    if ((paramInt == 0) || (paramInt == 2))
     {
-    default: 
-      QLog.i("QzoneVoiceRecordPlugin.SimpleRecorder", 4, "start|onInfo|what=" + paramInt1 + ",extra=" + paramInt2);
-      return;
-    case 801: 
-      QLog.i("QzoneVoiceRecordPlugin.SimpleRecorder", 4, "start|onInfo|max file size reached.extra=" + paramInt2);
-      this.a.a();
+      URLDrawable.resume();
+      if (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter$1.jdField_a_of_type_Int == 1) {
+        EmotionPanelViewPagerAdapter.a(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter$1.this$0, this.a.jdField_a_of_type_JavaUtilList, this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter$1.jdField_a_of_type_ComTencentWidgetListView);
+      }
       return;
     }
-    QLog.i("QzoneVoiceRecordPlugin.SimpleRecorder", 4, "start|onInfo|max duration reached.extra=" + paramInt2);
-    this.a.a();
+    URLDrawable.pause();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ankf
  * JD-Core Version:    0.7.0.1
  */

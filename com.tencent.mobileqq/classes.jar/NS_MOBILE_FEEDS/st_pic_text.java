@@ -9,7 +9,7 @@ public final class st_pic_text
   extends JceStruct
 {
   static s_picdata cache_picinfo = new s_picdata();
-  static ArrayList cache_userlist = new ArrayList();
+  static ArrayList<s_user> cache_userlist = new ArrayList();
   public int actiontype;
   public String actionurl = "";
   public String desc_after_click = "";
@@ -20,7 +20,7 @@ public final class st_pic_text
   public String strHeader = "";
   public String summary = "";
   public String title = "";
-  public ArrayList userlist;
+  public ArrayList<s_user> userlist;
   
   static
   {
@@ -30,7 +30,7 @@ public final class st_pic_text
   
   public st_pic_text() {}
   
-  public st_pic_text(s_picdata params_picdata, ArrayList paramArrayList, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
+  public st_pic_text(s_picdata params_picdata, ArrayList<s_user> paramArrayList, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
   {
     this.picinfo = params_picdata;
     this.userlist = paramArrayList;
@@ -97,7 +97,7 @@ public final class st_pic_text
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.st_pic_text
  * JD-Core Version:    0.7.0.1
  */

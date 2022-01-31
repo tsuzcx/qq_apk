@@ -1,24 +1,16 @@
-import com.tencent.biz.qqstory.model.AddressDataProvider;
-import com.tencent.biz.qqstory.model.lbs.BasicLocation;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.LbsUpdateListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class ngl
-  implements LbsManager.LbsUpdateListener
+class ngl
+  implements View.OnClickListener
 {
-  public ngl(AddressDataProvider paramAddressDataProvider) {}
+  ngl(ngk paramngk, String paramString) {}
   
-  public void a(boolean paramBoolean, BasicLocation paramBasicLocation)
+  public void onClick(View paramView)
   {
-    SLog.b("AddressDataProvider", "AddressLbsListener: onLbsUpdate, isSuccess=" + paramBoolean);
-    if ((paramBoolean) && (paramBasicLocation != null))
-    {
-      SLog.a("AddressDataProvider", "AddressLbsListener: onLbsUpdate, [longitude=%s, latitude=%s]", Integer.valueOf(paramBasicLocation.b), Integer.valueOf(paramBasicLocation.a));
-      this.a.a(paramBasicLocation.b, paramBasicLocation.a);
-      return;
+    if (this.jdField_a_of_type_Ngk.jdField_a_of_type_Ngf != null) {
+      this.jdField_a_of_type_Ngk.jdField_a_of_type_Ngf.b(this.jdField_a_of_type_Ngk.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
     }
-    SLog.e("AddressDataProvider", "AddressLbsListener: onLbsUpdate, failed.");
-    this.a.a(false, null);
   }
 }
 

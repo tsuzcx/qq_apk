@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.activity.bless;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class BlessWording
-  extends Entity
+  extends atmo
 {
   private String editingWording;
-  @unique
+  @atoc
   public String wording;
   
   public BlessWording() {}

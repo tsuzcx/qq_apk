@@ -1,39 +1,25 @@
-import android.os.Build;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.startup.step.UpdateArkSo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import android.widget.ViewSwitcher.ViewFactory;
 
-public final class abam
-  implements Runnable
+class abam
+  implements ViewSwitcher.ViewFactory
 {
-  public void run()
+  abam(abai paramabai) {}
+  
+  public View makeView()
   {
-    if ((!ArkAppCenter.b) && (ArkAppCenter.c))
-    {
-      long l1 = System.currentTimeMillis();
-      UpdateArkSo.a(BaseApplicationImpl.getContext(), "png-armeabi-v7a");
-      ArkAppCenter.b = UpdateArkSo.b(BaseApplicationImpl.getContext(), "ark-armeabi-v7a");
-      long l2 = System.currentTimeMillis();
-      QLog.d("ArkApp", 1, "load libark.so for ARMv7!, loaded=" + Boolean.toString(ArkAppCenter.b) + ", time=" + (l2 - l1));
-    }
-    if (ArkAppCenter.e()) {
-      return;
-    }
-    ArkAppCenter.a(true);
-    if (ArkAppCenter.b)
-    {
-      ArkAppCenter.f();
-      ReportController.b(null, "CliOper", "", "", "0X8006365", "ark.lib.load.success", 0, 0, "0", "0", Build.CPU_ABI, Build.CPU_ABI2);
-      return;
-    }
-    ReportController.b(null, "CliOper", "", "", "0X8006365", "ark.lib.load.fail", 1, 1, "1", "1", Build.CPU_ABI, Build.CPU_ABI2);
+    ImageView localImageView = new ImageView(this.a.a());
+    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    return localImageView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abam
  * JD-Core Version:    0.7.0.1
  */

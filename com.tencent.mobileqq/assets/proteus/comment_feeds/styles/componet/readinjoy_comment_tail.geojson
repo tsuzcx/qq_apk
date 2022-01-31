@@ -1,0 +1,165 @@
+{
+    "view_type": "UIView",
+    "layout_type": "layout_relative",
+    "view_id": "id_comment_tail_container",
+    "default_visible": "YES",
+    "margin_top": "5",
+    "height": {
+        "type": "wrap_content"
+    },
+    "width": {
+        "type": "relative",
+        "value": "375"
+    },
+    "subviews": [
+        {
+            "view_type": "UIButton",
+            "event_type": "cmd_comment_dot_click",
+            "view_id": "id_comment_tail_3_dot",
+            "align_parent_right":"YES",
+            "margin_right":"18",
+            "height": {
+                "type": "relative",
+                "value": "18"
+            },
+            "width": {
+                "type": "relative",
+                "value": "18"
+            },
+            "attributes": {
+                "setImages:forStates:": [
+                    [
+                        "rij_comment_3dot"
+                    ],
+                    [
+                        "0"
+                    ]
+                ]
+            }
+        },
+        {
+            "view_type": "UIView",
+            "layout_type": "layout_linear",
+            "direction": "horizontal",
+            "view_id": "id_comment_tail_time_container",
+            "default_visible": "YES",
+            "height": {
+                "type": "wrap_content"
+            },
+            "width": {
+                "type": "relative",
+                "value": "375"
+            },
+            "subviews": [{
+                    "view_type": "UILabel",
+                    "view_id": "id_comment_time_label",
+                    "margin_left": "64",
+                    "height": {
+                        "type": "relative",
+                        "value": "24"
+                    },
+                    "width": {
+                        "type": "wrap_content"
+                    },
+                    "attributes": {
+                        "setText:": "$time",
+                        "setTextColorString:": "#262626",
+                        "setFontSizeString:": "12",
+                        "setNumberOfLinesString:": "1"
+                    }
+                },
+                {
+                    "view_type": "UIView",
+                    "view_id": "id_comment_tail_center_dot",
+                    "margin_left": "6",
+                    "align_parent_center_vertical": "YES",
+                    "height": {
+                        "type": "relative",
+                        "value": "2"
+                    },
+                    "width": {
+                        "type": "relative",
+                        "value": "2"
+                    },
+                    "attributes": {
+                        "setBackgroundColorString:": "#262626",
+                        "setCornerRadiusString:": "1"
+                    }
+                },
+                {
+                    "view_type": "UIButton",
+                    "event_type": "cmd_comment_reply_click",
+                    "view_id": "id_reply_comment_button",
+                    "margin_left": "6",
+                    "padding_left": "15",
+                    "padding_right": "15",
+                    "height": {
+                        "type": "absolutely",
+                        "value": "24"
+                    },
+                    "width": {
+                        "type": "wrap_content"
+                    },
+                    "attributes": {
+                        "setTitle:": "$reply_count",
+                        "setCornerRadiusString:": "12",
+                        "setBorderColorString:": "#00000000",
+                        "setBackgroundColorString:": "#F5F5F5",
+                        "setFontSizeString:": "12",
+                        "setBackgroundColor:forStates:": [
+                            ["#F8F8F8"],
+                            ["1"]
+                        ],
+                        "setTitleColors:forStates:": [
+                                ["#262626", "#99262626", "#99262626"],
+                                ["0", "1", "4"]
+                                ]
+                    }
+                },
+                {
+                    "view_type": "UIButton",
+                    "event_type": "cmd_comment_reply_click",
+                    "view_id": "id_reply_comment_null_button",
+                    "margin_left": "6",
+                    "height": {
+                        "type": "relative",
+                        "value": "24"
+                    },
+                    "width": {
+                        "type": "wrap_content"
+                    },
+                    "attributes": {
+                        "setTitle:": "$reply_count_none",
+                        "setFontSizeString:": "12",
+                        "setTitleColors:forStates:": [
+                            ["#262626", "#99262626", "#99262626"],
+                            ["0", "1", "4"]
+                        ]
+                    }
+                },
+                {
+                    "view_type": "UIButton",
+                    "event_type": "cmd_comment_delete_click",
+                    "view_id": "id_delete_comment_button",
+                    "margin_left": "6",
+                    "height": {
+                        "type": "relative",
+                        "value": "24"
+                    },
+                    "width": {
+                        "type": "wrap_content"
+                    },
+                    "attributes": {
+                        "setTitle:": "delete_comment",
+                        "setFontSizeString:": "12",
+                        "setTitleColors:forStates:": [
+                            ["#262626", "#99262626", "#99262626"],
+                            ["0", "1", "4"]
+                        ]
+                    }
+                }
+
+            ]
+        }
+    ]
+}

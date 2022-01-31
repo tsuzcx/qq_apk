@@ -1,19 +1,14 @@
-import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
-import com.tencent.mobileqq.utils.DESUtil;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
 
 public class acev
-  implements Runnable
+  extends Handler
 {
-  public acev(HotChatFlashPicActivity paramHotChatFlashPicActivity, String paramString) {}
-  
-  public void run()
-  {
-    DESUtil.a(this.jdField_a_of_type_JavaLangString, HotChatFlashPicActivity.c(this.jdField_a_of_type_ComTencentMobileqqDatingHotChatFlashPicActivity));
-  }
+  public acev(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acev
  * JD-Core Version:    0.7.0.1
  */

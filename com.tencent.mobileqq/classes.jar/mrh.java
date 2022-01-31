@@ -1,54 +1,30 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ReportUtil;
-import com.tencent.mobileqq.app.PublicAccountObserver;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-class mrh
-  extends PublicAccountObserver
+final class mrh
+  implements BusinessObserver
 {
-  mrh(mre parammre) {}
+  mrh(QQAppInterface paramQQAppInterface, mrj parammrj) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    mre.a(this.a, true);
-    Context localContext = this.a.jdField_a_of_type_AndroidViewView.getContext();
-    ArticleInfo localArticleInfo = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo.c()) {
-      paramString = "2";
-    }
-    for (;;)
+    if ((paramBoolean) && (paramBundle != null))
     {
-      paramString = ReadInJoyUtils.a(localContext, localArticleInfo, 0, paramString);
-      int i;
-      if (paramBoolean) {
-        i = 1;
-      }
-      try
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
       {
-        for (;;)
-        {
-          paramString.put("is_done", i);
-          ReportUtil.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, "0X800898B", paramString.toString());
-          return;
-          paramString = "1";
-          break;
-          i = 2;
-        }
+        mrf.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, this.jdField_a_of_type_Mrj);
+        return;
       }
-      catch (JSONException localJSONException)
-      {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
+      if (QLog.isColorLevel()) {
+        QLog.e("SplashActivity", 2, "getSameCityCheckTypeInfo success but data is null");
       }
+      this.jdField_a_of_type_Mrj.a("");
+      return;
     }
+    this.jdField_a_of_type_Mrj.a("");
   }
 }
 

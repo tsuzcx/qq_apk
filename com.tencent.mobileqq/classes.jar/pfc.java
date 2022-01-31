@@ -1,24 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.biz.viewplugin.ViewPluginManager;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyUninterestComplainFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.qphone.base.util.QLog;
 
-public class pfc
-  implements Runnable
+class pfc
+  implements bekr
 {
-  public pfc(ViewPluginManager paramViewPluginManager) {}
+  pfc(pez parampez) {}
   
-  public void run()
+  public void a()
   {
-    String str = "http://" + this.a.b + "?_bid=" + this.a.jdField_a_of_type_JavaLangString;
-    if (TextUtils.isEmpty(str)) {
-      return;
-    }
     if (QLog.isColorLevel()) {
-      QLog.i("ViewPluginManager", 2, "checkOfflineUpNotCallback.");
+      QLog.d("FeedItemCell", 2, "onAdComplain");
     }
-    HtmlOffline.b(str, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getAppRuntime());
+    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      Intent localIntent = new Intent();
+      localIntent.putExtra("key_from_type", 1);
+      localIntent.putExtra("key_ad_info", ((opw)this.a.jdField_a_of_type_JavaLangObject).a());
+      PublicFragmentActivity.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, localIntent, ReadInJoyUninterestComplainFragment.class, 9999);
+    }
   }
 }
 

@@ -1,56 +1,255 @@
-import android.os.Bundle;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.statistics.ReportController;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.database.VideoCollectionEntry;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.widget.StoryCoverView;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class uhm
-  implements View.OnClickListener
+  extends BaseAdapter
+  implements AdapterView.OnItemClickListener
 {
-  public uhm(TroopRequestActivity paramTroopRequestActivity) {}
+  private Context jdField_a_of_type_AndroidContentContext;
+  QQUserUIItem jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
+  public String a;
+  private HashMap<String, uhj> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private List<uhj> jdField_a_of_type_JavaUtilList = new ArrayList();
+  private tzn jdField_a_of_type_Tzn;
+  private uhn jdField_a_of_type_Uhn;
+  private ulc jdField_a_of_type_Ulc;
+  public String b;
+  private HashMap<String, WeakReference<unw>> b;
   
-  public void onClick(View paramView)
+  public uhm(Context paramContext)
   {
-    long l = System.currentTimeMillis();
-    if ((l - TroopRequestActivity.c > 0L) && (l - TroopRequestActivity.c < 800L)) {
-      return;
+    this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Ulc = new ulc(8, 0, 1.6F, vms.jdField_a_of_type_JavaUtilHashMap, null);
+    this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = ((sqs)sqg.a(2)).b(QQStoryContext.a().b());
+  }
+  
+  private View a(int paramInt, ViewGroup paramViewGroup)
+  {
+    LayoutInflater localLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
+    if (getItemViewType(paramInt) == 1) {
+      return localLayoutInflater.inflate(2131495697, paramViewGroup, false);
     }
-    TroopRequestActivity.c = l;
-    Bundle localBundle = TroopInfoActivity.a(this.a.jdField_a_of_type_JavaLangString, 4);
-    localBundle.putInt("t_s_f", 1001);
-    int i = this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_msg_type.get();
-    QQAppInterface localQQAppInterface;
-    String str;
-    if ((i == 2) || (i == 10) || (i == 12))
+    return localLayoutInflater.inflate(2131495698, paramViewGroup, false);
+  }
+  
+  private void a(ImageView paramImageView, String paramString)
+  {
+    paramString = vmp.a(paramString);
+    if (!paramString.equals(paramImageView.getTag())) {
+      vms.a(paramImageView, paramString, 80, 128, 4, vms.b, "QQStoryMemory");
+    }
+  }
+  
+  private void a(unw paramunw, int paramInt)
+  {
+    urk.a("Q.qqstory.memories.MemoriesInnerListAdapter", "bindView, position=%d", new Object[] { Integer.valueOf(paramInt) });
+    if (getItemViewType(paramInt) == 1)
     {
-      i = 1;
-      localQQAppInterface = this.a.app;
-      str = this.a.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg.msg.group_code.get() + "";
-      if (i == 0) {
-        break label182;
+      localObject = a(paramInt);
+      if (localObject == null) {
+        return;
+      }
+      StoryCoverView localStoryCoverView = (StoryCoverView)paramunw.a(2131313264);
+      if (((uhj)localObject).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null)
+      {
+        localStoryCoverView.a.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845521));
+        localStoryCoverView.setPollLayout(null, -1, null);
+        localStoryCoverView.setRateLayout(null, -1, -1L, -1);
+      }
+      for (;;)
+      {
+        this.jdField_b_of_type_JavaUtilHashMap.put(((uhj)localObject).jdField_a_of_type_JavaLangString, new WeakReference(paramunw));
+        localStoryCoverView.setContentDescription(sfm.jdField_a_of_type_JavaLangString + " " + (paramInt + 1));
+        return;
+        if (((uhj)localObject).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl != null)
+        {
+          a(localStoryCoverView.a, ((uhj)localObject).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
+          localStoryCoverView.setPollLayout(((uhj)localObject).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getPollLayout(), -1, null);
+          localStoryCoverView.setRateLayout(((uhj)localObject).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getInteractLayout(), -1, -1L, -1);
+        }
       }
     }
-    label182:
-    for (paramView = "0";; paramView = "1")
+    Object localObject = (ImageView)paramunw.a(2131306433);
+    paramunw = (ImageView)paramunw.a(2131306422);
+    QQStoryContext.a();
+    if (ThemeUtil.isInNightMode(QQStoryContext.a()))
     {
-      ReportController.b(localQQAppInterface, "P_CliOper", "Grp_contacts", "", "notice", "see_data", 0, 0, str, paramView, "", "");
-      ChatSettingForTroop.a(this.a, localBundle, 2);
+      paramunw.setBackgroundResource(2130845522);
+      ((ImageView)localObject).setImageResource(2130845526);
+    }
+    for (;;)
+    {
+      ((ImageView)localObject).setContentDescription(ajjy.a(2131640739));
       return;
-      i = 0;
-      break;
+      paramunw.setBackgroundResource(2130845521);
+      ((ImageView)localObject).setImageResource(2130845525);
+    }
+  }
+  
+  public uhj a(int paramInt)
+  {
+    if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
+      return (uhj)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    }
+    urk.a("Q.qqstory.memories.MemoriesInnerListAdapter", "position=%s, list size=%s", Integer.valueOf(paramInt), Integer.valueOf(this.jdField_a_of_type_JavaUtilList.size()));
+    return null;
+  }
+  
+  public void a(String paramString)
+  {
+    this.jdField_b_of_type_JavaLangString = paramString;
+  }
+  
+  public void a(List<uhj> paramList, String paramString)
+  {
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      uhj localuhj = (uhj)paramList.next();
+      this.jdField_a_of_type_JavaUtilHashMap.put(localuhj.jdField_a_of_type_JavaLangString, localuhj);
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    super.notifyDataSetChanged();
+  }
+  
+  public void a(tzn paramtzn)
+  {
+    this.jdField_a_of_type_Tzn = paramtzn;
+  }
+  
+  public void a(uhn paramuhn)
+  {
+    this.jdField_a_of_type_Uhn = paramuhn;
+  }
+  
+  public void b(List<uhj> paramList, String paramString)
+  {
+    if (!this.jdField_a_of_type_JavaLangString.equals(paramString)) {}
+    for (;;)
+    {
+      return;
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        Object localObject = (uhj)paramList.next();
+        paramString = (uhj)this.jdField_a_of_type_JavaUtilHashMap.get(((uhj)localObject).jdField_a_of_type_JavaLangString);
+        if ((paramString == null) || (((uhj)localObject).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem == null))
+        {
+          urk.d("Q.qqstory.memories.MemoriesInnerListAdapter", "why you come hear?");
+        }
+        else
+        {
+          paramString.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((uhj)localObject).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
+          localObject = (WeakReference)this.jdField_b_of_type_JavaUtilHashMap.get(((uhj)localObject).jdField_a_of_type_JavaLangString);
+          if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
+            a(((StoryCoverView)((unw)((WeakReference)localObject).get()).a(2131313264)).a, paramString.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
+          }
+        }
+      }
+    }
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null) {
+      return this.jdField_a_of_type_JavaUtilList.size();
+    }
+    return 0;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < getCount()))
+    {
+      if ((a(paramInt) instanceof uho)) {
+        return 0;
+      }
+      return 1;
+    }
+    return -1;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    if (paramView == null)
+    {
+      paramView = a(paramInt, paramViewGroup);
+      paramView.setFocusable(true);
+    }
+    for (paramViewGroup = new unw(paramView);; paramViewGroup = (unw)paramView.getTag())
+    {
+      a(paramViewGroup, paramInt);
+      return paramView;
+    }
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 2;
+  }
+  
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+  {
+    paramAdapterView = a(paramInt);
+    if (paramAdapterView == null) {}
+    for (;;)
+    {
+      return;
+      if (getItemViewType(paramInt) == 0)
+      {
+        if (this.jdField_a_of_type_Tzn != null) {
+          this.jdField_a_of_type_Tzn.a();
+        }
+      }
+      else
+      {
+        if (this.jdField_a_of_type_Tzn != null)
+        {
+          if (getItemViewType(0) != 0) {
+            break label111;
+          }
+          this.jdField_a_of_type_Tzn.a(this.jdField_a_of_type_JavaLangString, paramInt - 1, paramView, paramAdapterView.jdField_a_of_type_JavaLangString);
+        }
+        while (this.jdField_a_of_type_Uhn != null)
+        {
+          String str = VideoCollectionEntry.getCollectionKey(1, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString);
+          this.jdField_a_of_type_Uhn.a(str, paramInt, paramView, paramAdapterView.jdField_a_of_type_JavaLangString);
+          return;
+          label111:
+          this.jdField_a_of_type_Tzn.a(this.jdField_a_of_type_JavaLangString, paramInt, paramView, paramAdapterView.jdField_a_of_type_JavaLangString);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uhm
  * JD-Core Version:    0.7.0.1
  */

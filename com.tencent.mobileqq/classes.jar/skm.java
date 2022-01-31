@@ -1,28 +1,20 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
 
-class skm
-  implements Runnable
+public class skm
+  implements skf
 {
-  skm(skl paramskl, boolean paramBoolean1, boolean paramBoolean2) {}
+  public skm(StoryVideoUploadTask paramStoryVideoUploadTask, skl paramskl) {}
   
-  public void run()
+  public void a(ske paramske)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Skl.a.a.a.a(15, 2);
-      this.jdField_a_of_type_Skl.a.a.a.a(15, null);
-    }
-    while (!this.b) {
-      return;
-    }
-    this.jdField_a_of_type_Skl.a.a.a.a(15, 0);
-    this.jdField_a_of_type_Skl.a.a.a.a(15, null);
+    this.jdField_a_of_type_Skl.k = ((sjz)paramske).b;
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoUploadTask.a(1, new ErrorMessage());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     skm
  * JD-Core Version:    0.7.0.1
  */

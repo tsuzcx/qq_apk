@@ -4,7 +4,7 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 
 public final class cmd0x938$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50 }, new String[] { "msg_comm_param", "msg_client_param", "msg_datacard_param", "msg_operation_param", "msg_scorelist_param", "msg_floatbutton_param" }, new Object[] { null, null, null, null, null, null }, ReqBody.class);
   public cmd0x938.ClientParam msg_client_param = new cmd0x938.ClientParam();
@@ -16,7 +16,7 @@ public final class cmd0x938$ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x938.cmd0x938.ReqBody
  * JD-Core Version:    0.7.0.1
  */

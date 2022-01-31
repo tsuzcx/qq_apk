@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity;
+import com.tencent.biz.qrcode.activity.QRLoginMgrActivity.6.1;
+import java.util.ArrayList;
 
 public class vuf
-  implements Runnable
+  implements vvm
 {
-  public vuf(PhotoListPanel paramPhotoListPanel) {}
+  public vuf(QRLoginMgrActivity paramQRLoginMgrActivity) {}
   
-  public void run()
+  public void a(ArrayList<vvj> paramArrayList)
   {
-    PhotoListPanel.b(this.a);
+    this.a.runOnUiThread(new QRLoginMgrActivity.6.1(this, paramArrayList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     vuf
  * JD-Core Version:    0.7.0.1
  */

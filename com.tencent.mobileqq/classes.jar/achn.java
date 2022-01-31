@@ -1,33 +1,23 @@
-import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter.WeiyunCallback;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.activateFriend.ReminderListFragment;
 
 public class achn
-  implements WeiYunLogicCenter.WeiyunCallback
+  implements View.OnClickListener
 {
-  public MqqHandler a;
+  public achn(ReminderListFragment paramReminderListFragment) {}
   
-  public achn(MqqHandler paramMqqHandler)
+  public void onClick(View paramView)
   {
-    this.a = paramMqqHandler;
-  }
-  
-  public void a()
-  {
-    if (this.a != null) {
-      this.a.sendEmptyMessageDelayed(100, 1500L);
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (this.a != null) {
-      this.a.sendMessageDelayed(this.a.obtainMessage(101, paramInt, 0, paramString), 1500L);
+    if (ReminderListFragment.a(this.a) != null) {
+      ReminderListFragment.a(this.a).dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     achn
  * JD-Core Version:    0.7.0.1
  */

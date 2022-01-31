@@ -9,11 +9,11 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class DynamicBusinessHotWord$ReqBody
-  extends MessageMicro
+  extends MessageMicro<ReqBody>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field business = PBField.initUInt32(0);
-  public final PBRepeatMessageField rpt_group_id = PBField.initRepeatMessage(DynamicBusinessHotWord.GroupID.class);
+  public final PBRepeatMessageField<DynamicBusinessHotWord.GroupID> rpt_group_id = PBField.initRepeatMessage(DynamicBusinessHotWord.GroupID.class);
   public final PBBytesField version = PBField.initBytes(ByteStringMicro.EMPTY);
   
   static

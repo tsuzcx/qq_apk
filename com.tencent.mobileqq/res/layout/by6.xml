@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout android:layout_gravity="bottom" android:id="@id/bkk" android:layout_width="fill_parent" android:layout_height="216.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TableRow android:layout_height="fill_parent" android:layout_weight="1.0">
+        <ImageView android:gravity="center" android:id="@id/fd1" android:background="@drawable/acz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/et1" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="1" />
+        <ImageView android:gravity="center" android:id="@id/kcn" android:background="@drawable/acz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/et2" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="2" />
+        <ImageView android:gravity="center" android:id="@id/jkn" android:background="@drawable/acz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/et3" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="3" />
+    </TableRow>
+    <TableRow android:layout_height="0.0px" android:layout_weight="1.0">
+        <ImageView android:gravity="center" android:id="@id/ckh" android:background="@drawable/acz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/et4" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="4" />
+        <ImageView android:gravity="center" android:id="@id/cbm" android:background="@drawable/acz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/et5" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="5" />
+        <ImageView android:gravity="center" android:id="@id/iwy" android:background="@drawable/acz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/et6" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="6" />
+    </TableRow>
+    <TableRow android:layout_height="0.0px" android:layout_weight="1.0">
+        <ImageView android:gravity="center" android:id="@id/iqf" android:background="@drawable/acz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/et7" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="7" />
+        <ImageView android:gravity="center" android:id="@id/bu_" android:background="@drawable/acz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/et8" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="8" />
+        <ImageView android:gravity="center" android:id="@id/f_6" android:background="@drawable/acz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/et9" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="9" />
+    </TableRow>
+    <TableRow android:layout_height="0.0px" android:layout_weight="1.0">
+        <ImageView android:gravity="center" android:id="@id/j15" android:background="@drawable/acx" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+        <ImageView android:gravity="center" android:id="@id/l7b" android:background="@drawable/acz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/et0" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="0" />
+        <ImageView android:gravity="center" android:id="@id/bfl" android:background="@drawable/acv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" android:contentDescription="@string/t9a" />
+    </TableRow>
+</TableLayout>

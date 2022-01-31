@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class SttResultPush$TransPttResp
-  extends MessageMicro
+  extends MessageMicro<TransPttResp>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_text = PBField.initBytes(ByteStringMicro.EMPTY);

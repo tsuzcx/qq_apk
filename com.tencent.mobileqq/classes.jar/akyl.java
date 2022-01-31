@@ -1,42 +1,37 @@
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator;
+import com.tencent.mobileqq.ar.view.QRScanEntryView;
+import com.tencent.mobileqq.mini.sdk.MiniAppLauncher.MiniAppLaunchListener;
+import com.tencent.qphone.base.util.QLog;
 
-class akyl
-  implements Runnable
+public class akyl
+  implements MiniAppLauncher.MiniAppLaunchListener
 {
-  akyl(akyk paramakyk, int paramInt) {}
+  public akyl(QRScanEntryView paramQRScanEntryView, String paramString1, String paramString2) {}
   
-  public void run()
+  public void onLaunchResult(boolean paramBoolean, Bundle paramBundle)
   {
-    int i = 0;
-    if (this.jdField_a_of_type_Int == 202)
+    if (paramBoolean)
     {
-      localObject = new String[2];
-      localObject[0] = "https://qc.vip.qq.com/";
-      localObject[1] = "http://m.gamecenter.qq.com";
-      int j = localObject.length;
-      while (i < j)
-      {
-        String str = localObject[i];
-        SwiftBrowserCookieMonster localSwiftBrowserCookieMonster = SwiftBrowserCookieMonster.a(str);
-        if (localSwiftBrowserCookieMonster != null) {
-          localSwiftBrowserCookieMonster.a(str, null, null, null);
-        }
-        i += 1;
-      }
+      paramBundle = new Intent();
+      paramBundle.putExtra("detectType", 2);
+      paramBundle.putExtra("scannerResult", this.jdField_a_of_type_JavaLangString.trim());
+      paramBundle.putExtra("filePath", this.b);
+      ((Activity)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_AndroidContentContext).setResult(13, paramBundle);
+      ((Activity)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_AndroidContentContext).finish();
+      ((Activity)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_AndroidContentContext).overridePendingTransition(0, 0);
+      return;
     }
-    Object localObject = SwiftBrowserCookieMonster.a("http://zb.vip.qq.com/");
-    if (localObject != null) {
-      ((SwiftBrowserCookieMonster)localObject).a("http://zb.vip.qq.com/", null, null, null);
+    if (QLog.isColorLevel()) {
+      QLog.i("AREngine_QRScanEntryView", 2, "onLaunchResult 2 false");
     }
-    this.jdField_a_of_type_Akyk.jdField_a_of_type_AndroidOsBundle.putBoolean("_should_set_cookie_", true);
-    this.jdField_a_of_type_Akyk.jdField_a_of_type_ComTencentMobileqqWebviewSwiftUtilsSwiftWebAccelerator.a(this.jdField_a_of_type_Akyk.jdField_a_of_type_AndroidOsBundle);
+    ((akwo)this.jdField_a_of_type_ComTencentMobileqqArViewQRScanEntryView.jdField_a_of_type_Akwb).b(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akyl
  * JD-Core Version:    0.7.0.1
  */

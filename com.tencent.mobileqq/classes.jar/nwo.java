@@ -1,31 +1,18 @@
-import com.tencent.biz.qqstory.model.QQStoryActivityManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.comment.data.BaseCommentData;
 
-public class nwo
-  implements Runnable
+class nwo
+  extends nwd
 {
-  public nwo(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity) {}
+  nwo(nwn paramnwn) {}
   
-  public void run()
+  public void a(String paramString, int paramInt1, int paramInt2)
   {
-    QQStoryActivityManager localQQStoryActivityManager = (QQStoryActivityManager)SuperManager.a(18);
-    ArrayList localArrayList = localQQStoryActivityManager.a(this.a);
-    int i = localArrayList.size();
-    if (i >= 4)
-    {
-      localQQStoryActivityManager.a(((Integer)localArrayList.get(0)).intValue() + 1, ((Integer)localArrayList.get(i - 1)).intValue());
-      if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, "QQStoryShareGroupProfileActivity activity stack full, size = " + i + ", start clear!");
-      }
-    }
+    this.a.jdField_a_of_type_Nwk.a().a(this.a.jdField_a_of_type_Nwx.a.commentId, paramString, paramInt1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nwo
  * JD-Core Version:    0.7.0.1
  */

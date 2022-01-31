@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class group_mgr$CardCommInfo
-  extends MessageMicro
+  extends MessageMicro<CardCommInfo>
 {
   public static final int CARD_NAME_FIELD_NUMBER = 3;
   public static final int LEVEL_FIELD_NUMBER = 4;
@@ -24,7 +24,7 @@ public final class group_mgr$CardCommInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     tencent.im.hw.group_mgr.CardCommInfo
  * JD-Core Version:    0.7.0.1
  */

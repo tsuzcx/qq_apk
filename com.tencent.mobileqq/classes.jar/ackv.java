@@ -1,57 +1,42 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emoticon.EPRecommendTask;
-import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.SkinRedPacketStrategy.1;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.PathResult;
+import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.util.WeakReference;
-import org.json.JSONObject;
+import java.io.File;
 
 public class ackv
-  implements Runnable
+  implements agpe
 {
-  public ackv(EPRecommendTask paramEPRecommendTask) {}
+  public ackv(CustomizeStrategyFactory.SkinRedPacketStrategy.1 param1) {}
   
-  public void run()
+  public void onResult(int paramInt, PreloadManager.PathResult paramPathResult)
   {
-    long l1 = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("EPRecommendTask", 2, "url:" + this.a.jdField_a_of_type_JavaLangString + ",type:" + this.a.b);
-    }
+    paramPathResult = paramPathResult.folderPath;
+    if (paramInt == 0) {}
     try
     {
-      Object localObject = (QQAppInterface)this.a.jdField_a_of_type_MqqUtilWeakReference.get();
-      if (localObject == null) {
-        return;
+      paramPathResult = paramPathResult + File.separator;
+      this.a.a.specailBackgroundAnimInfo = AnimationView.AnimationInfo.loadFromFolder(paramPathResult + "anim_bg");
+      if (QLog.isColorLevel()) {
+        QLog.d("CustomizeStrategyFactory", 2, "TYPE_SPECAIL_ANIM specailBackgroundAnimInfo=" + this.a.a.specailBackgroundAnimInfo);
       }
-      localObject = VasQuickUpdateManager.a((AppRuntime)localObject, "emoji_app_vip_emoji_aio_android_config.json", true, this.a.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker);
-      this.a.a((JSONObject)localObject);
+      CustomizeStrategyFactory.a().a(this.a.a);
+      return;
     }
-    catch (Exception localException)
+    catch (Throwable paramPathResult)
     {
       for (;;)
       {
-        long l2;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.emoji.EmoDown", 2, localException.getMessage());
-        }
+        paramPathResult.printStackTrace();
       }
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      label103:
-      break label103;
-    }
-    l2 = System.currentTimeMillis();
-    if (QLog.isColorLevel())
-    {
-      QLog.d("EPRecommendTask", 2, "costTime:" + (l2 - l1) + ",type:" + this.a.b);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     ackv
  * JD-Core Version:    0.7.0.1
  */

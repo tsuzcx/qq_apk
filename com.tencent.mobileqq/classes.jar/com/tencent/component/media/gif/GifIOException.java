@@ -10,12 +10,12 @@ public class GifIOException
   
   GifIOException(int paramInt)
   {
-    this(GifError.a(paramInt));
+    this(GifError.fromCode(paramInt));
   }
   
   private GifIOException(GifError paramGifError)
   {
-    super(paramGifError.a());
+    super(paramGifError.getFormattedDescription());
     this.reason = paramGifError;
   }
   

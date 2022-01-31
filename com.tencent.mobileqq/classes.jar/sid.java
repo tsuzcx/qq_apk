@@ -1,51 +1,25 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberCardInfo;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.DBUtils;
+import com.tencent.biz.qqstory.base.preload.PreloadQueue;
 
-class sid
-  implements Runnable
+public final class sid
 {
-  sid(sic paramsic) {}
+  protected int a = 0;
   
-  public void run()
+  public PreloadQueue a()
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    TroopMemberInfo localTroopMemberInfo;
-    if (this.a.a.app != null)
-    {
-      localObject1 = localObject2;
-      if (this.a.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData != null)
-      {
-        localObject1 = DBUtils.a().a(this.a.a.app, this.a.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.a.app.getCurrentAccountUin());
-        if (localObject1 != null) {
-          break label171;
-        }
-        localTroopMemberInfo = DBUtils.a().a(this.a.a.app, this.a.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.a.app.getCurrentAccountUin());
-        localObject1 = localObject2;
-        if (localTroopMemberInfo == null) {}
-      }
-    }
-    label171:
-    for (localObject1 = localTroopMemberInfo.troopnick;; localObject1 = ((TroopMemberCardInfo)localObject1).name)
-    {
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
-      {
-        this.a.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopCard = ((String)localObject1);
-        this.a.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
-      }
-      return;
-    }
+    PreloadQueue localPreloadQueue = new PreloadQueue();
+    PreloadQueue.access$002(localPreloadQueue, this.a);
+    return localPreloadQueue;
+  }
+  
+  public sid a(int paramInt)
+  {
+    this.a = paramInt;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     sid
  * JD-Core Version:    0.7.0.1
  */

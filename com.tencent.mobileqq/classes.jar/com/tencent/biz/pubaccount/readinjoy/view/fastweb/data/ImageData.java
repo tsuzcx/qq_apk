@@ -5,11 +5,12 @@ public class ImageData
 {
   public int a;
   public String a;
+  public boolean a = true;
   public int b;
   
   public ImageData()
   {
-    this.d = 3;
+    super(3);
   }
 }
 

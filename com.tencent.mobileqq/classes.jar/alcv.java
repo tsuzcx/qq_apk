@@ -1,29 +1,153 @@
-import android.view.View;
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
-import com.tencent.mobileqq.widget.NewStyleDropdownView.DropdownCallback;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.ark.ArkAiDictMgr.1;
+import com.tencent.mobileqq.ark.ArkAiDictMgr.3;
+import com.tencent.mobileqq.ark.ArkAiDictMgr.4;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkRecommendLogic;
+import com.tencent.mobileqq.ark.ArkRecommendLogic.ArkWordSegmentThread;
+import com.tencent.mobileqq.startup.step.UpdateArkSo;
+import com.tencent.wordsegment.WordSegment;
+import java.io.File;
 
-class alcv
-  implements Runnable
+public class alcv
 {
-  alcv(alcu paramalcu, View paramView) {}
+  private static String jdField_a_of_type_JavaLangString;
+  private static volatile boolean jdField_a_of_type_Boolean;
+  private java.lang.ref.WeakReference<AppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void run()
+  public alcv(AppInterface paramAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewStyleDropdownView", 2, "arrow clicked and postDelayed 250 run, set icon up and isLastDropDown true");
+    this.jdField_a_of_type_JavaLangRefWeakReference = new mqq.util.WeakReference(paramAppInterface);
+  }
+  
+  public static alcx a(AppInterface paramAppInterface, String paramString)
+  {
+    alcx localalcx = new alcx();
+    localalcx.jdField_a_of_type_JavaLangString = paramString;
+    ArkRecommendLogic.a().a(new ArkAiDictMgr.3(paramAppInterface, localalcx, paramString));
+    return localalcx;
+  }
+  
+  static String a()
+  {
+    return ArkAppCenter.b() + "/WordData/";
+  }
+  
+  public static String a(String paramString)
+  {
+    return a() + paramString;
+  }
+  
+  public static void a()
+  {
+    Object localObject = new File(a());
+    if (((File)localObject).isFile()) {
+      ((File)localObject).delete();
     }
-    ((ImageView)this.jdField_a_of_type_AndroidViewView).setImageDrawable(this.jdField_a_of_type_Alcu.a.b);
-    if (this.jdField_a_of_type_Alcu.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback != null) {
-      this.jdField_a_of_type_Alcu.a.jdField_a_of_type_ComTencentMobileqqWidgetNewStyleDropdownView$DropdownCallback.b();
+    for (;;)
+    {
+      return;
+      localObject = ((File)localObject).listFiles();
+      if (localObject != null)
+      {
+        int j = localObject.length;
+        int i = 0;
+        while (i < j)
+        {
+          localObject[i].delete();
+          i += 1;
+        }
+      }
     }
-    this.jdField_a_of_type_Alcu.a.jdField_a_of_type_Boolean = true;
+  }
+  
+  public static void a(AppInterface paramAppInterface)
+  {
+    if (a())
+    {
+      ArkAppCenter.c("ArkApp.Dict", "initWordData, already inited.");
+      return;
+    }
+    new File(a()).mkdirs();
+    if (!jdField_a_of_type_Boolean) {
+      ArkRecommendLogic.a().a(new ArkAiDictMgr.1());
+    }
+    b(paramAppInterface);
+  }
+  
+  public static boolean a()
+  {
+    return (jdField_a_of_type_Boolean) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString));
+  }
+  
+  public static void b(AppInterface paramAppInterface)
+  {
+    if (!jdField_a_of_type_Boolean)
+    {
+      ArkAppCenter.c("ArkApp.Dict", "reloadWordData, sIsSoLoaded is false");
+      return;
+    }
+    ArkRecommendLogic.a().post(new ArkAiDictMgr.4(paramAppInterface));
+  }
+  
+  private static boolean b(AppInterface paramAppInterface)
+  {
+    if (paramAppInterface == null) {}
+    do
+    {
+      return true;
+      paramAppInterface = amay.b(170).a();
+      if ((paramAppInterface == null) || (paramAppInterface.a() == null))
+      {
+        ArkAppCenter.c("ArkApp.Dict", "getWordInitState, confBean is empty");
+        return true;
+      }
+      paramAppInterface = paramAppInterface.a().d;
+      if (paramAppInterface == null) {
+        break;
+      }
+      ArkAppCenter.c("ArkApp.Dict", String.format("getWordInitState, wordInitState=%s", new Object[] { paramAppInterface }));
+    } while (!paramAppInterface.equals("false"));
+    return false;
+    ArkAppCenter.c("ArkApp.Dict", "getWordInitState, ark_dict_init is empty");
+    return true;
+  }
+  
+  private static void d()
+  {
+    try
+    {
+      if ((alck.b) && (!jdField_a_of_type_Boolean))
+      {
+        jdField_a_of_type_Boolean = UpdateArkSo.b(BaseApplicationImpl.getContext(), "WordSegment");
+        ArkAppCenter.c("ArkApp.Dict", String.format("loadWordSegmentSo, result=%s", new Object[] { Boolean.toString(jdField_a_of_type_Boolean) }));
+        if (jdField_a_of_type_Boolean) {
+          WordSegment.setLogCallback(new alcw());
+        }
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void b()
+  {
+    ArkAppCenter.c("ArkApp.Dict", "clearDict");
+    AppInterface localAppInterface = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    baig.i(localAppInterface.getApp(), localAppInterface.getCurrentAccountUin());
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alcv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,130 +1,102 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.SubAccountInfo;
-import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.qphone.base.remote.SimpleAccount;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class rlh
-  extends FriendListObserver
+  implements wiu
 {
-  public rlh(AccountManageActivity paramAccountManageActivity) {}
+  public rlh(BridgeModule paramBridgeModule, String paramString) {}
   
-  void a(String paramString, int paramInt)
+  public void a(Bundle paramBundle)
   {
-    this.a.runOnUiThread(new rli(this, paramString, paramInt));
-  }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    int j = 0;
-    if ((!paramBoolean) || (paramString == null)) {}
-    for (;;)
+    Object localObject1 = paramBundle.getString("action");
+    if ("onCommentSend".equals(localObject1)) {}
+    do
     {
-      return;
-      int i;
-      if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-        i = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-      }
-      while (j < this.a.jdField_a_of_type_JavaUtilList.size())
+      Object localObject2;
+      Object localObject3;
+      try
       {
-        if ((i > j) && (this.a.jdField_a_of_type_JavaUtilList.get(j) != null) && (paramString.equals(((SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(j)).getUin())))
+        localObject1 = paramBundle.getString("commentId", "");
+        localObject2 = paramBundle.getString("rowKey", "");
+        localObject3 = paramBundle.getString("commentContent", "");
+        int i = paramBundle.getInt("firstLevelComment");
+        paramBundle = new JSONObject();
+        paramBundle.put("commentId", localObject1);
+        paramBundle.put("rowKey", localObject2);
+        paramBundle.put("commentContent", localObject3);
+        paramBundle.put("firstLevelComment", i + 1 + "");
+        paramBundle.put("result", "success");
+        paramBundle.put("type", "onCommentSend");
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, paramBundle);
+        return;
+      }
+      catch (JSONException paramBundle)
+      {
+        paramBundle.printStackTrace();
+        return;
+      }
+      if ("onCommentLike".equals(localObject1)) {
+        try
         {
-          a(paramString, j);
+          localObject1 = paramBundle.getString("commentId", "");
+          localObject2 = paramBundle.getString("rowKey", "");
+          paramBundle = paramBundle.getString("likeStatus", "");
+          localObject3 = new JSONObject();
+          ((JSONObject)localObject3).put("commentId", localObject1);
+          ((JSONObject)localObject3).put("rowKey", localObject2);
+          ((JSONObject)localObject3).put("likeStatus", paramBundle);
+          ((JSONObject)localObject3).put("result", "success");
+          ((JSONObject)localObject3).put("type", "onCommentLike");
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, localObject3);
           return;
         }
-        j += 1;
-        continue;
-        i = 0;
+        catch (JSONException paramBundle)
+        {
+          paramBundle.printStackTrace();
+          return;
+        }
       }
-    }
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    int j = 0;
-    if ((!paramBoolean) || (paramString == null)) {
+      if ("onCommentDelete".equals(localObject1)) {
+        try
+        {
+          localObject1 = paramBundle.getString("commentId", "");
+          paramBundle = paramBundle.getString("rowKey", "");
+          localObject2 = new JSONObject();
+          ((JSONObject)localObject2).put("commentId", localObject1);
+          ((JSONObject)localObject2).put("rowKey", paramBundle);
+          ((JSONObject)localObject2).put("result", "success");
+          ((JSONObject)localObject2).put("type", "onCommentDelete");
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, localObject2);
+          return;
+        }
+        catch (JSONException paramBundle)
+        {
+          paramBundle.printStackTrace();
+          return;
+        }
+      }
+    } while (!"onPanelClose".equals(localObject1));
+    try
+    {
+      paramBundle = paramBundle.getString("rowKey", "");
+      localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("rowKey", paramBundle);
+      ((JSONObject)localObject1).put("result", "success");
+      ((JSONObject)localObject1).put("type", "onPanelClose");
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule.invokeCallJS(this.jdField_a_of_type_JavaLangString, localObject1);
       return;
     }
-    Object localObject2 = (SubAccountManager)this.a.app.getManager(60);
-    Object localObject1 = "";
-    int i = ((SubAccountManager)localObject2).a();
-    if (i == 0)
+    catch (JSONException paramBundle)
     {
-      label43:
-      AccountManageActivity.a(this.a).setRightText((CharSequence)localObject1);
-      if (AppSetting.b) {
-        AccountManageActivity.a(this.a).setContentDescription("关联QQ号" + (String)localObject1);
-      }
-      if (this.a.jdField_a_of_type_AndroidWidgetLinearLayout == null) {
-        break label429;
-      }
-      i = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
-      label112:
-      if (j >= this.a.jdField_a_of_type_JavaUtilList.size()) {
-        break label432;
-      }
-      if ((i > j) && (this.a.jdField_a_of_type_JavaUtilList.get(j) != null) && (paramString.equals(((SimpleAccount)this.a.jdField_a_of_type_JavaUtilList.get(j)).getUin())))
-      {
-        localObject1 = (TextView)this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(j).findViewById(2131362759);
-        localObject2 = (TextView)this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(j).findViewById(2131362760);
-        ((TextView)localObject1).setText(ContactUtils.j(this.a.app, paramString));
-        ((TextView)localObject2).setText(paramString);
-        a(paramString, j);
-      }
-    }
-    else if (i == 1)
-    {
-      SubAccountInfo localSubAccountInfo = ((SubAccountManager)localObject2).a("sub.uin.default");
-      if (localSubAccountInfo == null) {
-        break label434;
-      }
-      localObject2 = ContactUtils.c(this.a.app, localSubAccountInfo.subuin, false);
-      localObject1 = localObject2;
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        if (!TextUtils.isEmpty(localSubAccountInfo.subname))
-        {
-          localObject1 = localObject2;
-          if (((String)localObject2).equals(localSubAccountInfo.subname)) {}
-        }
-        else
-        {
-          localSubAccountInfo.subname = ((String)localObject2);
-          AccountManageActivity.a(this.a).setRightText((CharSequence)localObject2);
-          localObject1 = localObject2;
-          if (AppSetting.b) {
-            AccountManageActivity.a(this.a).setContentDescription("关联QQ号" + (String)localObject2);
-          }
-        }
-      }
-    }
-    label429:
-    label432:
-    label434:
-    for (localObject1 = localObject2;; localObject1 = "")
-    {
-      break label43;
-      localObject1 = i + "个";
-      break label43;
-      j += 1;
-      break label112;
-      i = 0;
-      break label112;
-      break;
+      paramBundle.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rlh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,56 @@
-import NS_MOBILE_AIONewestFeed.AIONewestFeedRsp;
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.observer.QZoneObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextUtils;
 
 public class sae
-  extends QZoneObserver
 {
-  public SessionInfo a;
-  public WeakReference a;
-  
-  protected void a(boolean paramBoolean, Bundle paramBundle)
+  public static Intent a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("UndealCount.QZoneObserver.QZoneFeeds", 2, "onGetQZoneNewestFeed appRef==null");
-      }
+    paramString1 = new Intent("android.intent.action.VIEW", Uri.parse(paramString1));
+    if (!TextUtils.isEmpty(paramString2)) {
+      paramString1.setPackage(paramString2);
     }
-    QQAppInterface localQQAppInterface;
+    paramString1.setFlags(536870912);
+    paramString1.putExtra("big_brother_source_key", "biz_src_jc_gzh_weishi");
+    return paramString1;
+  }
+  
+  public static boolean a(Activity paramActivity)
+  {
+    if (paramActivity == null) {
+      sai.d("AppMarketUtils", "tryGoAppMarket:activity = null");
+    }
+    String str1;
+    String str2;
     do
     {
-      return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((localQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("UndealCount.QZoneObserver.QZoneFeeds", 2, "onGetQZoneNewestFeed app == null || sessionInfo == nul");
-    return;
-    paramBundle = paramBundle.getSerializable("data");
-    if ((paramBoolean) && (paramBundle != null) && ((paramBundle instanceof AIONewestFeedRsp))) {
-      ChatActivityFacade.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (AIONewestFeedRsp)paramBundle);
+      return false;
+      str1 = rxf.a().b();
+      str2 = rxf.a().a();
+      sai.b("AppMarketUtils", "goAppMarket:\nappStorePackageName = " + str2 + "\nappStoreVendorId =" + rxf.a().d() + "\nappStoreScheme =" + str1);
+    } while ((TextUtils.isEmpty(str1)) || (str1.startsWith("http")));
+    return a(paramActivity, str1, str2);
+  }
+  
+  private static boolean a(Activity paramActivity, String paramString1, String paramString2)
+  {
+    sai.b("AppMarketUtils", "goAppMarket :\npackageName = " + paramString2 + "\nurl = " + paramString1);
+    try
+    {
+      paramActivity.startActivity(a(paramString1, paramString2));
+      return true;
     }
-    localQQAppInterface.unRegistObserver(ChatActivityFacade.a());
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
+    catch (Exception paramActivity)
+    {
+      sai.d("AppMarketUtils", "goAppMarket error messaage = " + paramActivity.getMessage());
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     sae
  * JD-Core Version:    0.7.0.1
  */

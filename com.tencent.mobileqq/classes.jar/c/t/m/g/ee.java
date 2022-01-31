@@ -1,255 +1,188 @@
 package c.t.m.g;
 
-import android.annotation.SuppressLint;
-import android.telephony.CellIdentityCdma;
-import android.telephony.CellIdentityGsm;
-import android.telephony.CellIdentityLte;
-import android.telephony.CellIdentityWcdma;
-import android.telephony.CellInfo;
-import android.telephony.CellInfoCdma;
-import android.telephony.CellInfoGsm;
-import android.telephony.CellInfoLte;
-import android.telephony.CellInfoWcdma;
-import android.telephony.CellLocation;
-import android.telephony.CellSignalStrengthCdma;
-import android.telephony.CellSignalStrengthGsm;
-import android.telephony.CellSignalStrengthLte;
-import android.telephony.CellSignalStrengthWcdma;
-import android.telephony.NeighboringCellInfo;
-import android.telephony.SignalStrength;
-import android.telephony.TelephonyManager;
-import android.telephony.cdma.CdmaCellLocation;
-import android.telephony.gsm.GsmCellLocation;
-import android.util.Log;
-import java.util.Collections;
-import java.util.List;
-import org.eclipse.jdt.annotation.NonNull;
-import org.eclipse.jdt.annotation.Nullable;
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.os.Handler;
+import com.tencent.map.geolocation.TencentDirectionListener;
 
 public final class ee
-  extends eh
+  implements SensorEventListener
 {
-  public int a = 0;
-  public int b = 460;
-  public int c = 0;
-  public int d = 0;
-  public int e = 0;
-  public int f = 0;
-  public int g = 2147483647;
-  public int h = 2147483647;
-  private final long i = System.currentTimeMillis();
-  private List<NeighboringCellInfo> j;
+  private static volatile ee h;
+  public volatile boolean a = false;
+  private SensorManager b;
+  private final boolean c;
+  private boolean d;
+  private double e;
+  private int f;
+  private TencentDirectionListener g;
   
-  @SuppressLint({"NewApi"})
-  @Nullable
-  public static ee a(de paramde, CellInfo paramCellInfo)
-  {
-    int k = -88;
-    if (paramCellInfo == null) {
-      paramde = null;
-    }
-    ee localee;
-    do
-    {
-      return paramde;
-      paramde = paramde.f;
-      localee = new ee();
-      int n;
-      int m;
-      try
-      {
-        if ((paramCellInfo instanceof CellInfoCdma))
-        {
-          paramCellInfo = (CellInfoCdma)paramCellInfo;
-          CellIdentityCdma localCellIdentityCdma = paramCellInfo.getCellIdentity();
-          localee.a = 2;
-          localee.a(paramde);
-          localee.c = localCellIdentityCdma.getSystemId();
-          localee.d = localCellIdentityCdma.getNetworkId();
-          localee.e = localCellIdentityCdma.getBasestationId();
-          localee.g = localCellIdentityCdma.getLatitude();
-          localee.h = localCellIdentityCdma.getLongitude();
-          n = paramCellInfo.getCellSignalStrength().getDbm();
-          m = k;
-          if (n > -110)
-          {
-            m = k;
-            if (n < -40) {
-              m = n;
-            }
-          }
-          localee.f = m;
-          return localee;
-        }
-      }
-      catch (Throwable paramde)
-      {
-        Log.e("TxCellInfo", paramde.toString());
-        return localee;
-      }
-      if ((paramCellInfo instanceof CellInfoGsm))
-      {
-        paramde = (CellInfoGsm)paramCellInfo;
-        localee.a = 1;
-        paramCellInfo = paramde.getCellIdentity();
-        localee.d = paramCellInfo.getLac();
-        localee.e = paramCellInfo.getCid();
-        localee.b = paramCellInfo.getMcc();
-        localee.c = paramCellInfo.getMnc();
-        n = paramde.getCellSignalStrength().getDbm();
-        m = k;
-        if (n > -110)
-        {
-          m = k;
-          if (n < -40) {
-            m = n;
-          }
-        }
-        localee.f = m;
-        return localee;
-      }
-      if ((paramCellInfo instanceof CellInfoWcdma))
-      {
-        paramde = (CellInfoWcdma)paramCellInfo;
-        localee.a = 1;
-        paramCellInfo = paramde.getCellIdentity();
-        localee.d = paramCellInfo.getLac();
-        localee.e = paramCellInfo.getCid();
-        localee.b = paramCellInfo.getMcc();
-        localee.c = paramCellInfo.getMnc();
-        n = paramde.getCellSignalStrength().getDbm();
-        m = k;
-        if (n > -110)
-        {
-          m = k;
-          if (n < -40) {
-            m = n;
-          }
-        }
-        localee.f = m;
-        return localee;
-      }
-      paramde = localee;
-    } while (!(paramCellInfo instanceof CellInfoLte));
-    paramde = (CellInfoLte)paramCellInfo;
-    localee.a = 1;
-    paramCellInfo = paramde.getCellIdentity();
-    localee.d = paramCellInfo.getTac();
-    localee.e = paramCellInfo.getCi();
-    localee.b = paramCellInfo.getMcc();
-    localee.c = paramCellInfo.getMnc();
-    k = paramde.getCellSignalStrength().getDbm();
-    if ((k > -110) && (k < -40)) {}
-    for (;;)
-    {
-      localee.f = k;
-      return localee;
-      k = -88;
-    }
-  }
-  
-  @Nullable
-  public static ee a(de paramde, CellLocation paramCellLocation, SignalStrength paramSignalStrength)
-  {
-    if ((!paramde.b()) || (paramCellLocation == null)) {
-      return null;
-    }
-    TelephonyManager localTelephonyManager = paramde.f;
-    paramde = new ee();
-    try
-    {
-      if (!(paramCellLocation instanceof CdmaCellLocation)) {
-        break label123;
-      }
-      paramCellLocation = (CdmaCellLocation)paramCellLocation;
-      paramde.a = 2;
-      paramde.a(localTelephonyManager);
-      paramde.c = paramCellLocation.getSystemId();
-      paramde.d = paramCellLocation.getNetworkId();
-      paramde.e = paramCellLocation.getBaseStationId();
-      paramde.g = paramCellLocation.getBaseStationLatitude();
-      paramde.h = paramCellLocation.getBaseStationLongitude();
-      if (paramSignalStrength == null)
-      {
-        paramde.f = -1;
-        return paramde;
-      }
-    }
-    catch (Throwable paramCellLocation)
-    {
-      ev.a("TxCellInfo", 6, paramCellLocation.toString());
-      return paramde;
-    }
-    paramde.f = paramSignalStrength.getCdmaDbm();
-    return paramde;
-    label123:
-    paramCellLocation = (GsmCellLocation)paramCellLocation;
-    paramde.a = 1;
-    paramde.a(localTelephonyManager);
-    paramde.d = paramCellLocation.getLac();
-    paramde.e = paramCellLocation.getCid();
-    if (paramSignalStrength == null)
-    {
-      paramde.f = -1;
-      return paramde;
-    }
-    paramde.f = (paramSignalStrength.getGsmSignalStrength() * 2 - 113);
-    return paramde;
-  }
-  
-  private void a(TelephonyManager paramTelephonyManager)
-  {
-    int[] arrayOfInt = new int[2];
-    er.a(paramTelephonyManager, arrayOfInt);
-    if ((arrayOfInt[0] > 0) && (arrayOfInt[1] >= 0))
-    {
-      this.b = arrayOfInt[0];
-      this.c = arrayOfInt[1];
-    }
-  }
-  
-  @NonNull
-  public final List<NeighboringCellInfo> a()
+  private ee(Context paramContext)
   {
     try
     {
-      if (this.j == null) {
-        this.j = Collections.emptyList();
-      }
-      List localList = this.j;
-      return localList;
-    }
-    finally {}
-  }
-  
-  public final void a(@Nullable List<NeighboringCellInfo> paramList)
-  {
-    if (paramList != null) {}
-    for (;;)
-    {
-      try
+      this.b = ((SensorManager)paramContext.getSystemService("sensor"));
+      label22:
+      if (this.b != null) {}
+      for (boolean bool = true;; bool = false)
       {
-        this.j = Collections.unmodifiableList(paramList);
+        this.c = bool;
         return;
       }
-      finally {}
-      this.j = Collections.emptyList();
+    }
+    catch (Throwable paramContext)
+    {
+      break label22;
     }
   }
   
-  public final String b()
+  public static ee a(Context paramContext)
   {
-    return this.b + this.c + this.d + this.e;
+    if (h == null) {
+      h = new ee(paramContext);
+    }
+    return h;
   }
   
-  public final String toString()
+  public final int a(Handler paramHandler, TencentDirectionListener paramTencentDirectionListener)
   {
-    return "TxCellInfo [PhoneType=" + this.a + ", MCC=" + this.b + ", MNC=" + this.c + ", LAC=" + this.d + ", CID=" + this.e + ", RSSI=" + this.f + ", LAT=" + this.g + ", LNG=" + this.h + ", mTime=" + this.i + "]";
+    int i = 3;
+    if (!this.c) {
+      i = 2;
+    }
+    for (;;)
+    {
+      return i;
+      Object localObject1;
+      if (!this.d) {
+        localObject1 = null;
+      }
+      try
+      {
+        localObject2 = this.b.getDefaultSensor(11);
+        localObject1 = localObject2;
+      }
+      catch (Throwable localThrowable)
+      {
+        Object localObject2;
+        label38:
+        break label38;
+      }
+      localObject2 = localObject1;
+      if (localObject1 == null) {}
+      try
+      {
+        localObject2 = this.b.getDefaultSensor(3);
+        if (localObject2 == null) {
+          continue;
+        }
+        this.b.registerListener(this, (Sensor)localObject2, 3, paramHandler);
+        this.g = paramTencentDirectionListener;
+        this.d = true;
+        return 0;
+      }
+      catch (Throwable paramHandler)
+      {
+        return 3;
+      }
+    }
+  }
+  
+  public final void a()
+  {
+    try
+    {
+      if (!this.c) {
+        return;
+      }
+      if (this.d)
+      {
+        this.d = false;
+        this.e = (0.0D / 0.0D);
+        this.b.unregisterListener(this);
+        return;
+      }
+    }
+    catch (Exception localException) {}
+  }
+  
+  public final double b()
+  {
+    if (this.d) {
+      try
+      {
+        double d1 = this.e;
+        return d1;
+      }
+      finally {}
+    }
+    return (0.0D / 0.0D);
+  }
+  
+  public final void onAccuracyChanged(Sensor paramSensor, int paramInt)
+  {
+    try
+    {
+      if ((paramSensor.getType() == 11) || (paramSensor.getType() == 3)) {
+        this.f = paramInt;
+      }
+      return;
+    }
+    catch (Throwable paramSensor) {}
+  }
+  
+  public final void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    try
+    {
+      double d1;
+      if (paramSensorEvent.sensor.getType() == 11)
+      {
+        float[] arrayOfFloat1 = new float[16];
+        float[] arrayOfFloat2 = new float[3];
+        SensorManager.getRotationMatrixFromVector(arrayOfFloat1, paramSensorEvent.values);
+        SensorManager.getOrientation(arrayOfFloat1, arrayOfFloat2);
+        d1 = arrayOfFloat2[0];
+        d1 = d1 * 180.0D / 3.1415926D;
+        try
+        {
+          this.e = d1;
+          if (this.g != null) {
+            this.g.onDirectionChanged(this.e, this.f);
+          }
+          return;
+        }
+        finally {}
+      }
+      if (paramSensorEvent.sensor.getType() == 3)
+      {
+        float f2 = paramSensorEvent.values[0] - 360.0F;
+        float f1 = f2;
+        if (f2 <= -180.0F) {
+          f1 = f2 + 360.0F;
+        }
+        d1 = f1;
+        try
+        {
+          this.e = d1;
+          if (this.g != null) {
+            this.g.onDirectionChanged(this.e, this.f);
+          }
+          return;
+        }
+        finally {}
+      }
+      return;
+    }
+    catch (Throwable paramSensorEvent) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     c.t.m.g.ee
  * JD-Core Version:    0.7.0.1
  */

@@ -6,9 +6,9 @@ import com.qq.taf.jce.JceStruct;
 
 public final class stTroopMemberInfo
   extends JceStruct
-  implements Cloneable
 {
   static QzoneUserInfo cache_qzusrinfo = new QzoneUserInfo();
+  static byte[] cache_vecGroupHonor = (byte[])new byte[1];
   public byte Age;
   public short FaceId;
   public byte Gender;
@@ -19,8 +19,11 @@ public final class stTroopMemberInfo
   public byte cApolloFlag;
   public byte cConcerned;
   public byte cGender;
+  public byte cRichCardNameVer;
   public byte cShielded;
   public long dwApolloTimestamp;
+  public long dwBigClubFlag;
+  public long dwBigClubLevel;
   public long dwCreditLevel;
   public long dwFlag;
   public long dwFlagExt;
@@ -29,10 +32,13 @@ public final class stTroopMemberInfo
   public long dwJoinTime;
   public long dwLastSpeakTime;
   public long dwMemberLevel;
+  public long dwNameplate;
   public long dwPoint;
   public long dwShutupTimestap;
   public long dwSpecialTitleExpireTime;
   public long dwTitleId;
+  public long dwVipLevel;
+  public long dwVipType;
   public QzoneUserInfo qzusrinfo;
   public String sEmail = "";
   public String sMemo = "";
@@ -41,10 +47,16 @@ public final class stTroopMemberInfo
   public String sShowName = "";
   public String sSpecialTitle = "";
   public String strAutoRemark = "";
+  public byte[] vecGroupHonor;
+  
+  static
+  {
+    ((byte[])cache_vecGroupHonor)[0] = 0;
+  }
   
   public stTroopMemberInfo() {}
   
-  public stTroopMemberInfo(long paramLong1, short paramShort, byte paramByte1, byte paramByte2, String paramString1, byte paramByte3, String paramString2, String paramString3, byte paramByte4, String paramString4, String paramString5, String paramString6, String paramString7, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7, long paramLong8, byte paramByte5, byte paramByte6, String paramString8, long paramLong9, String paramString9, byte paramByte7, long paramLong10, long paramLong11, long paramLong12, long paramLong13, long paramLong14, QzoneUserInfo paramQzoneUserInfo)
+  public stTroopMemberInfo(long paramLong1, short paramShort, byte paramByte1, byte paramByte2, String paramString1, byte paramByte3, String paramString2, String paramString3, byte paramByte4, String paramString4, String paramString5, String paramString6, String paramString7, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7, long paramLong8, byte paramByte5, byte paramByte6, String paramString8, long paramLong9, String paramString9, byte paramByte7, long paramLong10, long paramLong11, long paramLong12, long paramLong13, long paramLong14, QzoneUserInfo paramQzoneUserInfo, byte paramByte8, long paramLong15, long paramLong16, long paramLong17, long paramLong18, long paramLong19, byte[] paramArrayOfByte)
   {
     this.MemberUin = paramLong1;
     this.FaceId = paramShort;
@@ -78,6 +90,13 @@ public final class stTroopMemberInfo
     this.dwShutupTimestap = paramLong13;
     this.dwGlobalGroupPoint = paramLong14;
     this.qzusrinfo = paramQzoneUserInfo;
+    this.cRichCardNameVer = paramByte8;
+    this.dwVipType = paramLong15;
+    this.dwVipLevel = paramLong16;
+    this.dwBigClubLevel = paramLong17;
+    this.dwBigClubFlag = paramLong18;
+    this.dwNameplate = paramLong19;
+    this.vecGroupHonor = paramArrayOfByte;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -114,6 +133,13 @@ public final class stTroopMemberInfo
     this.dwShutupTimestap = paramJceInputStream.read(this.dwShutupTimestap, 30, false);
     this.dwGlobalGroupPoint = paramJceInputStream.read(this.dwGlobalGroupPoint, 31, false);
     this.qzusrinfo = ((QzoneUserInfo)paramJceInputStream.read(cache_qzusrinfo, 32, false));
+    this.cRichCardNameVer = paramJceInputStream.read(this.cRichCardNameVer, 33, false);
+    this.dwVipType = paramJceInputStream.read(this.dwVipType, 34, false);
+    this.dwVipLevel = paramJceInputStream.read(this.dwVipLevel, 35, false);
+    this.dwBigClubLevel = paramJceInputStream.read(this.dwBigClubLevel, 36, false);
+    this.dwBigClubFlag = paramJceInputStream.read(this.dwBigClubFlag, 37, false);
+    this.dwNameplate = paramJceInputStream.read(this.dwNameplate, 38, false);
+    this.vecGroupHonor = ((byte[])paramJceInputStream.read(cache_vecGroupHonor, 39, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -167,6 +193,15 @@ public final class stTroopMemberInfo
     paramJceOutputStream.write(this.dwGlobalGroupPoint, 31);
     if (this.qzusrinfo != null) {
       paramJceOutputStream.write(this.qzusrinfo, 32);
+    }
+    paramJceOutputStream.write(this.cRichCardNameVer, 33);
+    paramJceOutputStream.write(this.dwVipType, 34);
+    paramJceOutputStream.write(this.dwVipLevel, 35);
+    paramJceOutputStream.write(this.dwBigClubLevel, 36);
+    paramJceOutputStream.write(this.dwBigClubFlag, 37);
+    paramJceOutputStream.write(this.dwNameplate, 38);
+    if (this.vecGroupHonor != null) {
+      paramJceOutputStream.write(this.vecGroupHonor, 39);
     }
   }
 }

@@ -1,25 +1,79 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeCommonPgcVideoSocial;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.VideoController;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.QavPanelSoundWaveView;
 
-public class lwz
-  implements View.OnTouchListener
+class lwz
+  implements Animation.AnimationListener
 {
-  public lwz(FeedItemCellTypeCommonPgcVideoSocial paramFeedItemCellTypeCommonPgcVideoSocial, LinearLayout paramLinearLayout) {}
+  lwz(lwx paramlwx) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(false);
+    if (this.a.jdField_a_of_type_ComTencentAvUiQavPanel != null)
+    {
+      this.a.jdField_a_of_type_ComTencentAvUiQavPanel.clearAnimation();
+      this.a.jdField_a_of_type_ComTencentAvUiQavPanel.startAnimation(this.a.f);
+      if (this.a.jdField_a_of_type_ComTencentAvUiQavPanel.a() != null) {
+        this.a.jdField_a_of_type_ComTencentAvUiQavPanel.a().startAnimation(this.a.jdField_g_of_type_AndroidViewAnimationAnimation);
+      }
     }
-    return false;
+    if (this.a.jdField_a_of_type_AndroidViewView != null)
+    {
+      this.a.jdField_a_of_type_AndroidViewView.clearAnimation();
+      if (this.a.jdField_a_of_type_AndroidViewView.getVisibility() == 0) {
+        this.a.jdField_a_of_type_AndroidViewView.startAnimation(this.a.jdField_c_of_type_AndroidViewAnimationAnimation);
+      }
+    }
+    if (this.a.b != null)
+    {
+      this.a.b.clearAnimation();
+      if (this.a.b.getVisibility() == 0) {
+        this.a.b.startAnimation(this.a.jdField_d_of_type_AndroidViewAnimationAnimation);
+      }
+    }
+    if (this.a.jdField_c_of_type_AndroidViewView != null)
+    {
+      this.a.jdField_c_of_type_AndroidViewView.clearAnimation();
+      if (this.a.jdField_c_of_type_AndroidViewView.getVisibility() == 0) {
+        this.a.jdField_c_of_type_AndroidViewView.startAnimation(this.a.jdField_d_of_type_AndroidViewAnimationAnimation);
+      }
+    }
+    if (this.a.jdField_d_of_type_AndroidViewView != null)
+    {
+      this.a.jdField_d_of_type_AndroidViewView.clearAnimation();
+      if (this.a.jdField_d_of_type_AndroidViewView.getVisibility() == 0) {
+        this.a.jdField_d_of_type_AndroidViewView.startAnimation(this.a.jdField_e_of_type_AndroidViewAnimationAnimation);
+      }
+    }
+    if (this.a.jdField_e_of_type_AndroidViewView != null)
+    {
+      this.a.jdField_e_of_type_AndroidViewView.clearAnimation();
+      if (this.a.jdField_e_of_type_AndroidViewView.getVisibility() == 0) {
+        this.a.jdField_e_of_type_AndroidViewView.startAnimation(this.a.jdField_e_of_type_AndroidViewAnimationAnimation);
+      }
+    }
+    if (this.a.jdField_g_of_type_AndroidViewView != null)
+    {
+      this.a.jdField_g_of_type_AndroidViewView.clearAnimation();
+      if (this.a.jdField_g_of_type_AndroidViewView.getVisibility() == 0) {
+        this.a.jdField_g_of_type_AndroidViewView.startAnimation(this.a.jdField_e_of_type_AndroidViewAnimationAnimation);
+      }
+    }
+    if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a() != null)) {
+      this.a.jdField_a_of_type_ComTencentAvVideoController.a().aq = true;
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lwz
  * JD-Core Version:    0.7.0.1
  */

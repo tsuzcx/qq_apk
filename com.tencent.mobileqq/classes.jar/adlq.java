@@ -1,28 +1,14 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.item.PttAudioWaveView;
 
-public class adlq
-  extends MessageObserver
+public abstract interface adlq
 {
-  public adlq(MPcFileModel paramMPcFileModel) {}
+  public abstract void a(PttAudioWaveView paramPttAudioWaveView);
   
-  protected void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 == 0)
-    {
-      if (MPcFileModel.b(this.a)) {
-        FMToastUtil.a(2131427615);
-      }
-      MPcFileModel.a(this.a, false);
-      QLog.d("MPcFileModel<FileAssistant>[MPFile]", 2, "PC offline!");
-    }
-  }
+  public abstract void a(PttAudioWaveView paramPttAudioWaveView, float paramFloat);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adlq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,158 @@
-import com.tencent.biz.qqstory.view.segment.SegmentList;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.TemplateBean;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout.Params;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class ove
-  implements Runnable
+  implements owa
 {
-  public ove(SegmentList paramSegmentList) {}
-  
-  public void run()
+  private void a(ArticleInfo paramArticleInfo, int paramInt)
   {
-    this.a.springBackOverScrollHeaderView();
+    Object localObject = paramArticleInfo.mNewPolymericInfo;
+    HashMap localHashMap = new HashMap();
+    localObject = (ppv)((ppu)localObject).jdField_a_of_type_JavaUtilList.get(paramInt);
+    localHashMap.put("rowkey", ((ppv)localObject).jdField_g_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(((ppv)localObject).k)) {
+      localHashMap.put("jump_report_info", ((ppv)localObject).k);
+    }
+    qoe.a(paramArticleInfo, "0X8007625", "0X8007625", (int)paramArticleInfo.mChannelID, localHashMap);
+  }
+  
+  private void a(ArticleInfo paramArticleInfo, String paramString)
+  {
+    HashMap localHashMap = new HashMap();
+    if (!TextUtils.isEmpty(paramArticleInfo.mReportCommonData)) {
+      localHashMap.put("jump_report_info", paramString);
+    }
+    qoe.a(paramArticleInfo, "0X8007625", "0X8007625", (int)paramArticleInfo.mChannelID, localHashMap);
+  }
+  
+  public TemplateBean a(int paramInt, JSONObject paramJSONObject)
+  {
+    return null;
+  }
+  
+  public JSONObject a(int paramInt, BaseArticleInfo paramBaseArticleInfo)
+  {
+    if ((paramBaseArticleInfo == null) || (paramBaseArticleInfo.mNewPolymericInfo == null)) {
+      return new JSONObject();
+    }
+    JSONObject localJSONObject1 = new JSONObject();
+    JSONArray localJSONArray = new JSONArray();
+    ppu localppu = paramBaseArticleInfo.mNewPolymericInfo;
+    localJSONObject1.put("style_ID", "ReadInJoy_video_set_card");
+    localJSONObject1.put("common_header_text", localppu.jdField_b_of_type_JavaLangString);
+    localJSONObject1.put("topic_header_big_icon_url", localppu.jdField_a_of_type_JavaLangString);
+    localJSONObject1.put("topic_header_small_icon_url", localppu.e);
+    localJSONObject1.put("topic_header_desc_text", localppu.jdField_c_of_type_JavaLangString);
+    String str2;
+    String str1;
+    label175:
+    label177:
+    ppv localppv;
+    switch (localppu.jdField_b_of_type_Int)
+    {
+    default: 
+      localJSONObject1.put("empty_header_visibility", "1");
+      switch (localppu.jdField_c_of_type_Int)
+      {
+      default: 
+        str2 = "195";
+        str1 = "148";
+        paramInt = 0;
+        if (paramInt >= localppu.jdField_a_of_type_JavaUtilList.size()) {
+          break label398;
+        }
+        localppv = (ppv)localppu.jdField_a_of_type_JavaUtilList.get(paramInt);
+        if (localppv != null) {}
+        break;
+      }
+      break;
+    }
+    for (;;)
+    {
+      paramInt += 1;
+      break label177;
+      localJSONObject1.put("common_header_visibility", "1");
+      break;
+      localJSONObject1.put("topic_header_visibility", "1");
+      break;
+      str2 = "260";
+      str1 = "146";
+      break label175;
+      str2 = "315";
+      str1 = "236";
+      break label175;
+      JSONObject localJSONObject2 = new JSONObject();
+      localJSONObject2.put("style_ID", "ReadInJoy_video_set_card_collection_cell");
+      localJSONObject2.put("videoWidth", str1);
+      localJSONObject2.put("videoHeight", str2);
+      localJSONObject2.put("video_cover_url", localppv.jdField_c_of_type_JavaLangString);
+      localJSONObject2.put("video_title_text", localppv.jdField_a_of_type_JavaLangString);
+      localJSONObject2.put("play_count_text", localppv.j);
+      localJSONObject2.put("comment_count_text", localppv.jdField_g_of_type_Int + "评论");
+      localJSONObject2.put("rowkey", localppv.jdField_g_of_type_JavaLangString);
+      localJSONArray.put(paramInt, localJSONObject2);
+    }
+    label398:
+    if (paramBaseArticleInfo.mNewPolymericInfo.jdField_b_of_type_ComTencentBizPubaccountReadinjoyStructUrlJumpInfo == null) {
+      localJSONObject1.put("canEdgeDrag", "0");
+    }
+    for (;;)
+    {
+      localJSONObject1.put("video_datas", localJSONArray);
+      localJSONObject1.put("card_jump_report_info", "");
+      QLog.d("NewPolymericMultiVideoProteusItem", 1, localJSONObject1.toString());
+      return localJSONObject1;
+      localJSONObject1.put("canEdgeDrag", "1");
+    }
+  }
+  
+  public void a(int paramInt1, Container paramContainer, opw paramopw, int paramInt2)
+  {
+    ArticleInfo localArticleInfo = paramopw.a();
+    if (localArticleInfo == null) {}
+    Object localObject;
+    do
+    {
+      return;
+      localObject = paramContainer.getVirtualView();
+      pbz localpbz = (pbz)((ViewBase)localObject).findViewBaseByName("id_proteus_collection_view");
+      localpbz.a(paramopw);
+      localpbz.a(new ovf(this, localArticleInfo, paramContainer));
+      localpbz.a(new ovg(this, localArticleInfo, paramopw));
+      paramopw = paramContainer.getLayoutParams();
+      localObject = ((ViewBase)localObject).getComLayoutParams();
+    } while ((paramopw == null) || (localObject == null));
+    paramopw.width = ((Layout.Params)localObject).mLayoutWidth;
+    paramopw.height = ((Layout.Params)localObject).mLayoutHeight;
+    paramContainer.setLayoutParams(paramopw);
+  }
+  
+  public boolean a(int paramInt, Container paramContainer, opw paramopw, ViewBase paramViewBase)
+  {
+    if (paramViewBase == null) {}
+    String str;
+    do
+    {
+      do
+      {
+        return false;
+        str = paramViewBase.getClickEvnet();
+      } while (TextUtils.isEmpty(str));
+      paramopw = paramopw.a();
+    } while (!"cmd_video_set_card_click".equals(str));
+    paramViewBase.setOnClickListener(new ovh(this, paramopw, paramContainer));
+    return true;
   }
 }
 

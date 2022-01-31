@@ -1,44 +1,94 @@
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.data.EqqDetail;
-import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager;
+import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.listentogether.ListenTogetherManager;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.qipc.QIPCServerHelper;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class krk
-  implements Runnable
+  extends QIPCModule
 {
-  public krk(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
-  
-  public void run()
+  private krk()
   {
-    int i = 1;
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "updateFollowInfo");
+    super("AioShareMusicIPCMainClient");
+  }
+  
+  public static krk a()
+  {
+    return krm.a();
+  }
+  
+  private void a(Bundle paramBundle)
+  {
+    QQAppInterface localQQAppInterface = null;
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail != null)
+    if (localQQAppInterface != null) {}
+    try
     {
-      this.a.b(this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
-      EqqAccountDetailActivity.b(this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
-      this.a.d();
-      EnterpriseQQManager.a(EqqAccountDetailActivity.g(this.a)).a(EqqAccountDetailActivity.f(this.a), this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.uin, true);
-      if (EqqAccountDetailActivity.a(this.a) != null) {
-        break label130;
-      }
+      ((ListenTogetherManager)localQQAppInterface.getManager(331)).c(new JSONObject(paramBundle.getString("data")));
+      return;
+    }
+    catch (JSONException paramBundle)
+    {
+      paramBundle.printStackTrace();
+    }
+  }
+  
+  public static void a(JSONObject paramJSONObject, String paramString)
+  {
+    boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
+    if (QLog.isColorLevel()) {
+      QLog.d("AioShareMusic.AioShareMusicIPCMainClient", 2, "callWebClient data:" + paramJSONObject.toString() + "  isToolRunning:" + bool);
+    }
+    if (bool)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("data", paramJSONObject.toString());
+      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "AioShareMusicIPCWebClient", paramString, localBundle, null);
+    }
+  }
+  
+  private void b(Bundle paramBundle)
+  {
+    QQAppInterface localQQAppInterface = null;
+    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    }
+    if (localQQAppInterface != null) {}
+    try
+    {
+      ((ListenTogetherManager)localQQAppInterface.getManager(331)).b(new JSONObject(paramBundle.getString("data")));
+      return;
+    }
+    catch (JSONException paramBundle)
+    {
+      paramBundle.printStackTrace();
+    }
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    if ("checkAioShareMusic".equals(paramString)) {
+      b(paramBundle);
     }
     for (;;)
     {
-      if (i != 0) {
-        EqqAccountDetailActivity.b(this.a, new krl(this));
+      return null;
+      if ("startListenAioShareMusic".equals(paramString)) {
+        a(paramBundle);
       }
-      return;
-      label130:
-      i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     krk
  * JD-Core Version:    0.7.0.1
  */

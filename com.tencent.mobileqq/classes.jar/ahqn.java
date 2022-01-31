@@ -1,32 +1,16 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
-import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.selectmember.DiscussionMemberListInnerFrame;
 
-public final class ahqn
-  extends BroadcastReceiver
+public class ahqn
+  extends acav
 {
-  private ahqn(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
+  public CheckBox a;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if ("action_brocassreceiver_for_filter".equals(paramIntent.getAction()))
-    {
-      CaptureVideoFilterManager.a().b();
-      CaptureVideoFilterManager.a().a(new ahqo(this));
-      this.a.c();
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager FilterBroadcastReceiver size=" + this.a.a.size());
-      }
-    }
-  }
+  private ahqn(DiscussionMemberListInnerFrame paramDiscussionMemberListInnerFrame) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahqn
  * JD-Core Version:    0.7.0.1
  */

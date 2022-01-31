@@ -1,0 +1,82 @@
+{
+    "view_type": "UIView",
+    "view_id": "id_daily_module_header",
+    "event_type": "cmd_url_click_no_card_report",
+    "layout_type":"layout_relative",
+    "visible_depend_on_children":"YES",
+    "height":{
+        "type":"relative",
+        "value":"36"
+    },
+    "width":{
+        "type":"relative",
+        "value":"375"
+    },
+    "attributes":{
+        "setAttatchInfo:": "$module_jump_url"
+    },
+    "data_attributes":{
+        "setLocalInfo:": {
+            "click_T":"0X8009CB8"
+        },
+        "setRemoteInfo:":"$module_report_params"
+    },
+    "subviews":[
+        {
+            "view_type":"ReadInjoyAsynImageView",
+            "view_id":"id_module_image",
+            "margin_left":"16",
+            "margin_top":"11.5",
+            "height":{
+                "type":"relative",
+                "value":"21"
+            },
+            "width":{
+                "type":"relative",
+                "value":"230"
+            },
+            "attributes":{
+                "setImageWithURLString:lineup:":["$module_image_url_new","1"],
+                "setScaleType:": "1"
+            }
+        },
+        {
+            "view_type":"ReadInjoyAsynImageView",
+            "view_id":"id_module_sub_image",
+            "align_parent_right":"YES",
+            "visible_depend_on_brother":"id_module_sub_name",
+            "margin_right":"20",
+            "margin_top":"17.5",
+            "height":{
+                "type":"relative",
+                "value":"9.5"
+            },
+            "width":{
+                "type":"relative",
+                "value":"5.5"
+            },
+            "attributes":{
+                "setImageWithURLString:lineup:":["http://qqpublic.qpic.cn/qq_public/0/0-2156135816-4F3A1FA7C2C48FF7318A75F4973D9CAB/0","1"]
+            }
+        },
+        {
+            "view_type":"UILabel",
+            "view_id":"id_module_sub_name",
+            "left_of_view":"id_module_sub_image",
+            "margin_right":"6",
+            "margin_top":"13",
+            "height":{
+                "type":"relative",
+                "value":"18"
+            },
+            "width":{
+                "type":"wrap_content"
+            },
+            "attributes":{
+                "setText:":"$module_sub_name_new",
+                "setTextColorString:":"#B0B3BF",
+                "setFontSizeString:":"12"
+            }
+        }
+    ]
+}

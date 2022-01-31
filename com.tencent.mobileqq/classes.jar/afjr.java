@@ -1,52 +1,81 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.mobileqq.nearby.profilecard.OnTagClickListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Color;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import java.util.ArrayList;
+import java.util.List;
 
 public class afjr
-  implements OnTagClickListener
+  extends RecyclerView.Adapter
 {
-  public afjr(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  public List<String> a = new ArrayList();
   
-  public void a(View paramView, int paramInt, InterestTagInfo paramInterestTagInfo)
+  public afjr(List<String> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyProfileDisplayTribePanel", 2, "click troops item  tuin:" + paramInterestTagInfo.tagJumpUrl);
-    }
-    if (paramInterestTagInfo.tagJumpUrl.equals("icon_more_url"))
+    if (paramList != null)
     {
-      paramView = new Intent(this.a.a, QQBrowserActivity.class);
-      paramView.putExtra("url", this.a.e);
-      this.a.a.startActivity(paramView);
-      paramInterestTagInfo = this.a.a.app;
-      if (this.a.a.e == 2) {}
-      for (paramView = "1";; paramView = "2")
+      this.a.clear();
+      this.a.addAll(paramList);
+    }
+  }
+  
+  public int getItemCount()
+  {
+    if (this.a != null) {
+      return this.a.size();
+    }
+    return 0;
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    paramViewHolder = ((afjs)paramViewHolder).a;
+    if (!TextUtils.isEmpty((String)this.a.get(paramInt)))
+    {
+      if (paramInt != 0) {
+        break label92;
+      }
+      String str = (String)this.a.get(paramInt);
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      localURLDrawableOptions.mFailedDrawable = axwd.a;
+      localURLDrawableOptions.mLoadingDrawable = axwd.a;
+      localURLDrawableOptions.mPlayGifImage = atra.a(str);
+      localURLDrawableOptions.mUseAutoScaleParams = true;
+      paramViewHolder.setImageDrawable(URLDrawable.getFileDrawable(str, localURLDrawableOptions));
+    }
+    label92:
+    do
+    {
+      return;
+      if (paramInt == 1)
       {
-        ReportController.b(paramInterestTagInfo, "dc00899", "grp_lbs", "", "data_card", "clk_more_grp", 0, 0, paramView, "", "", "");
+        paramViewHolder.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        paramViewHolder.setPadding(0, 0, 0, 0);
+        paramViewHolder.setImageDrawable(null);
+        paramViewHolder.setBackgroundColor(Color.parseColor("#9A989EB4"));
         return;
       }
-    }
-    paramView = TroopInfoActivity.a(paramInterestTagInfo.tagJumpUrl, 33);
-    ChatSettingForTroop.a(this.a.a, paramView, -1);
-    paramInterestTagInfo = this.a.a.app;
-    if (this.a.a.e == 2) {}
-    for (paramView = "1";; paramView = "2")
-    {
-      ReportController.b(paramInterestTagInfo, "dc00899", "grp_lbs", "", "data_card", "clk_grp", 0, 0, paramView, "", "", "");
-      return;
-    }
+    } while (paramInt != 2);
+    paramViewHolder.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    paramViewHolder.setPadding(0, 0, 0, 0);
+    paramViewHolder.setImageDrawable(null);
+    paramViewHolder.setBackgroundColor(Color.parseColor("#48989EB4"));
+  }
+  
+  public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    return new afjs(this, LayoutInflater.from(paramViewGroup.getContext()).inflate(2131493458, paramViewGroup, false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afjr
  * JD-Core Version:    0.7.0.1
  */

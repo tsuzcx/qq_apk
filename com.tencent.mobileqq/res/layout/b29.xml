@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mobileqq.widget.FormItemRelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/j2"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:gravity="center_vertical" android:id="@id/gus" android:paddingLeft="@dimen/is" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="10.0dip" android:layout_centerVertical="true" style="@style/w2" />
+    <ImageView android:id="@id/bht" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:src="@drawable/qq_eqlock_closed" android:layout_toLeftOf="@id/bhs" android:layout_centerVertical="true" android:contentDescription="@null" />
+    <TextView android:textSize="@dimen/j9" android:textColor="@color/skin_gray_group_item" android:id="@id/bhs" android:visibility="invisible" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:text="" android:layout_toLeftOf="@id/dce" android:layout_centerVertical="true" />
+    <ProgressBar android:id="@id/g2e" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginRight="8.0dip" android:indeterminateDrawable="@drawable/jr" android:layout_toLeftOf="@id/dce" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/dce" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/iu" android:src="@drawable/skin_icon_arrow_right_normal" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@null" />
+</com.tencent.mobileqq.widget.FormItemRelativeLayout>

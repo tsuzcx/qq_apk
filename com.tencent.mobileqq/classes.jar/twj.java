@@ -1,19 +1,36 @@
-import com.tencent.mobileqq.activity.SendMultiPictureHelper;
-import com.tencent.mobileqq.activity.SendMultiPictureHelper.SendingFileInfo;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class twj
-  implements Runnable
+  extends QQUIEventReceiver<twh, sjc>
 {
-  public twj(SendMultiPictureHelper paramSendMultiPictureHelper, SendMultiPictureHelper.SendingFileInfo paramSendingFileInfo, int paramInt, String paramString1, String paramString2) {}
-  
-  public void run()
+  public twj(@NonNull twh paramtwh)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivitySendMultiPictureHelper$SendingFileInfo.jdField_a_of_type_Long = SendMultiPictureHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivitySendMultiPictureHelper, this.jdField_a_of_type_ComTencentMobileqqActivitySendMultiPictureHelper$SendingFileInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
+    super(paramtwh);
+  }
+  
+  public void a(@NonNull twh paramtwh, @NonNull sjc paramsjc)
+  {
+    if ((paramtwh.a == null) || (paramsjc.a == null) || (!TextUtils.equals(paramtwh.a.a, paramsjc.a.mVid))) {}
+    do
+    {
+      return;
+      paramtwh.i();
+      paramtwh = (tob)paramtwh.a(tob.class);
+    } while (paramtwh == null);
+    paramtwh.d();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return sjc.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     twj
  * JD-Core Version:    0.7.0.1
  */

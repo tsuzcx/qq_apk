@@ -1,43 +1,32 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkActionAppMgr;
-import com.tencent.mobileqq.ark.ArkAppCGI;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppEnvConfig;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-public class abbk
-  implements Runnable
+class abbk
+  implements Animation.AnimationListener
 {
-  public abbk(ArkLocalAppMgr paramArkLocalAppMgr, QQAppInterface paramQQAppInterface) {}
+  abbk(abbj paramabbj, boolean paramBoolean) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Object localObject = BaseApplication.getContext().getSharedPreferences("ArkLocalAppUpdateTime", 0);
-    long l1 = ((SharedPreferences)localObject).getLong("PredownloadAppUpdateTime", 0L);
-    long l2 = (System.currentTimeMillis() - l1) / 1000L / 60L;
-    if ((l2 < 1020L) && (!ArkLocalAppMgr.a())) {
-      return;
+    if ((this.jdField_a_of_type_Boolean) && (abbj.a(this.jdField_a_of_type_Abbj) != null) && (abbj.a(this.jdField_a_of_type_Abbj).size() >= 2)) {
+      abbj.a(this.jdField_a_of_type_Abbj).sendEmptyMessageDelayed(1688002, 1400L);
     }
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putLong("PredownloadAppUpdateTime", System.currentTimeMillis());
-    ((SharedPreferences.Editor)localObject).commit();
-    ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("updatePredownloadAppList, delta=%d, lastUpdateTime=%d", new Object[] { Long.valueOf(l2), Long.valueOf(l1) }));
-    if (1 != ArkAppEnvConfig.a().a()) {}
-    for (localObject = "http://cdn.ark.qq.com/arkapp/app_config.json";; localObject = "http://test.ark.qq.com/arkapp/app_config.json")
+    if (abbj.a(this.jdField_a_of_type_Abbj) != null)
     {
-      ArkAppCenter localArkAppCenter = (ArkAppCenter)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(120);
-      localArkAppCenter.a().a((String)localObject, null, new abbl(this));
-      localArkAppCenter.a().a();
-      return;
+      abbj.a(this.jdField_a_of_type_Abbj).a();
+      abbj.a(this.jdField_a_of_type_Abbj, null);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abbk
  * JD-Core Version:    0.7.0.1
  */

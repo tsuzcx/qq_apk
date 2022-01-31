@@ -1,21 +1,12 @@
-import android.view.ViewGroup.LayoutParams;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
-import com.tencent.widget.GridView;
+import java.util.List;
 
-public class ajzi
-  implements Runnable
+public abstract interface ajzi
 {
-  public ajzi(AvatarWallAdapter paramAvatarWallAdapter, int paramInt, ViewGroup.LayoutParams paramLayoutParams) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.a.setNumColumns(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter.a.setLayoutParams(this.jdField_a_of_type_AndroidViewViewGroup$LayoutParams);
-  }
+  public abstract void a(boolean paramBoolean, List<aelm> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajzi
  * JD-Core Version:    0.7.0.1
  */

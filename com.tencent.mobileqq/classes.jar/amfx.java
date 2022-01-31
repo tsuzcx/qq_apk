@@ -1,86 +1,43 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.AudioDeviceInterface;
-import com.tencent.sharp.jni.TraeAudioSession.ITraeAudioCallback;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.ReentrantLock;
+import org.json.JSONObject;
 
 public class amfx
-  implements TraeAudioSession.ITraeAudioCallback
 {
-  public amfx(AudioDeviceInterface paramAudioDeviceInterface) {}
+  public int a;
+  public String a;
+  public boolean a;
+  public int b;
+  public boolean b;
+  public int c = 1;
+  public int d = -1;
   
-  public void a(int paramInt) {}
-  
-  public void a(int paramInt1, int paramInt2) {}
-  
-  public void a(int paramInt, String paramString)
+  public amfx()
   {
-    if (paramInt == 0) {
-      AudioDeviceInterface.access$400(this.a, paramString);
-    }
+    this.jdField_a_of_type_JavaLangString = "";
   }
   
-  public void a(int paramInt, String paramString, boolean paramBoolean) {}
-  
-  public void a(int paramInt, boolean paramBoolean) {}
-  
-  public void a(int paramInt, String[] paramArrayOfString, String paramString1, String paramString2, String paramString3) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, long paramLong) {}
-  
-  public void a(String paramString1, String paramString2) {}
-  
-  public void a(boolean paramBoolean)
+  public static amfx a(JSONObject paramJSONObject)
   {
-    if (!paramBoolean) {}
-    try
-    {
-      AudioDeviceInterface.access$000(this.a).lock();
-      AudioDeviceInterface.access$102(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, "onVoicecallPreprocessRes signalAll");
-      }
-      AudioDeviceInterface.access$200(this.a).signalAll();
-      AudioDeviceInterface.access$000(this.a).unlock();
-      return;
-    }
-    catch (Exception localException) {}
+    amfx localamfx = new amfx();
+    localamfx.jdField_a_of_type_Boolean = paramJSONObject.optBoolean("show_c2c_chat_setting", false);
+    localamfx.jdField_b_of_type_Boolean = paramJSONObject.optBoolean("show_group_chat_setting", false);
+    localamfx.jdField_a_of_type_Int = paramJSONObject.optInt("service_type", -1);
+    localamfx.jdField_b_of_type_Int = paramJSONObject.optInt("jumpType", -1);
+    localamfx.c = paramJSONObject.optInt("version", -1);
+    localamfx.d = paramJSONObject.optInt("appid", -1);
+    localamfx.jdField_a_of_type_JavaLangString = paramJSONObject.optString("jumpUrl", "");
+    return localamfx;
   }
   
-  public void a(String[] paramArrayOfString, String paramString1, String paramString2, String paramString3)
+  public String toString()
   {
-    if (AudioDeviceInterface.access$300(this.a)) {
-      AudioDeviceInterface.access$400(this.a, paramString1);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("showC2CChatSetting=").append(this.jdField_a_of_type_Boolean).append(" showGroupChatSetting=").append(this.jdField_b_of_type_Boolean).append(" serviceType=").append(this.jdField_a_of_type_Int).append(" jumpType=").append(this.jdField_b_of_type_Int).append(" version=").append(this.c).append(" appId=").append(this.d).append(" jumpUrl=").append(this.jdField_a_of_type_JavaLangString);
+    return localStringBuilder.toString();
   }
-  
-  public void b(int paramInt)
-  {
-    try
-    {
-      AudioDeviceInterface.access$000(this.a).lock();
-      AudioDeviceInterface.access$102(this.a, true);
-      if (QLog.isColorLevel()) {
-        QLog.e("TRAE", 2, "onVoicecallPreprocessRes signalAll");
-      }
-      AudioDeviceInterface.access$200(this.a).signalAll();
-      AudioDeviceInterface.access$000(this.a).unlock();
-      return;
-    }
-    catch (Exception localException) {}
-  }
-  
-  public void b(int paramInt, String paramString) {}
-  
-  public void b(boolean paramBoolean) {}
-  
-  public void c(int paramInt, String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amfx
  * JD-Core Version:    0.7.0.1
  */

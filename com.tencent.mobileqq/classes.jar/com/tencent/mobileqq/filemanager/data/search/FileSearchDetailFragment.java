@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.filemanager.data.search;
 
-import adjd;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -8,63 +7,66 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.tencent.mobileqq.search.adapter.BaseMvpAdapter;
-import com.tencent.mobileqq.util.FaceDecoder;
+import aooj;
+import aool;
+import avkj;
+import azwg;
 import com.tencent.widget.ListView;
 import java.util.List;
 
 public class FileSearchDetailFragment
   extends Fragment
 {
-  private static FileEntitySearchResultModel b;
+  private static aooj b;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  FileEntitySearchResultModel jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileEntitySearchResultModel;
-  BaseMvpAdapter jdField_a_of_type_ComTencentMobileqqSearchAdapterBaseMvpAdapter;
-  public FaceDecoder a;
+  aooj jdField_a_of_type_Aooj;
+  avkj jdField_a_of_type_Avkj;
+  public azwg a;
   ListView jdField_a_of_type_ComTencentWidgetListView;
   String jdField_a_of_type_JavaLangString;
   
-  public static FileSearchDetailFragment a(String paramString, FileEntitySearchResultModel paramFileEntitySearchResultModel)
+  public static FileSearchDetailFragment a(String paramString, aooj paramaooj)
   {
-    b = paramFileEntitySearchResultModel;
-    paramFileEntitySearchResultModel = new FileSearchDetailFragment();
+    b = paramaooj;
+    paramaooj = new FileSearchDetailFragment();
     Bundle localBundle = new Bundle();
     localBundle.putString("keyword", paramString);
-    paramFileEntitySearchResultModel.setArguments(localBundle);
-    return paramFileEntitySearchResultModel;
+    paramaooj.setArguments(localBundle);
+    return paramaooj;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileEntitySearchResultModel = b;
+    this.jdField_a_of_type_Aooj = b;
     b = null;
     this.jdField_a_of_type_JavaLangString = getArguments().getString("keyword");
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2130969071, paramViewGroup, false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131365002));
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131364070));
+    paramLayoutInflater = paramLayoutInflater.inflate(2131493641, paramViewGroup, false);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131301817));
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)paramLayoutInflater.findViewById(2131303596));
     return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.d();
+    if (this.jdField_a_of_type_Azwg != null) {
+      this.jdField_a_of_type_Azwg.d();
     }
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format("%d条与\"%s\"相关的同名文件记录", new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileEntitySearchResultModel.a.size()), this.jdField_a_of_type_JavaLangString }));
-    this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(getActivity(), getActivity().app);
-    this.jdField_a_of_type_ComTencentMobileqqSearchAdapterBaseMvpAdapter = new adjd(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileEntitySearchResultModel, this.jdField_a_of_type_JavaLangString, getActivity().app);
-    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqSearchAdapterBaseMvpAdapter);
+    paramView = getString(2131626952);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(paramView, new Object[] { Integer.valueOf(this.jdField_a_of_type_Aooj.a.size()), this.jdField_a_of_type_JavaLangString }));
+    this.jdField_a_of_type_Azwg = new azwg(getActivity(), getActivity().app);
+    this.jdField_a_of_type_Avkj = new aool(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_Azwg, this.jdField_a_of_type_Aooj, this.jdField_a_of_type_JavaLangString, getActivity().app);
+    this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Avkj);
   }
 }
 

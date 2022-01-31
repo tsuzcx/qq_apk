@@ -1,19 +1,33 @@
-import com.tencent.mobileqq.app.soso.SosoInterface;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class ahwr
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public ahwr(UniteSearchActivity paramUniteSearchActivity) {}
+  public ahwr(SpecailCareListActivity paramSpecailCareListActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    SosoInterface.a(new ahws(this, 3, true, true, 180000L, false, false, "UniteSearch"));
+    this.a.leftView.clearAnimation();
+    this.a.a.clearAnimation();
+    this.a.leftView.setVisibility(4);
+    this.a.a.setVisibility(8);
+    this.a.rightViewText.setClickable(true);
+    this.a.rightViewText.setText(SpecailCareListActivity.b);
+    this.a.rightViewText.setContentDescription(ajjy.a(2131648477));
+    this.a.c = true;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahwr
  * JD-Core Version:    0.7.0.1
  */

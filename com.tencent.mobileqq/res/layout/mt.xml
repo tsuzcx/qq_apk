@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/amy" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/mf6" android:background="@drawable/b7l" android:layout_width="fill_parent" android:layout_height="85.0dip" android:layout_alignParentTop="true" />
+    <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:id="@id/k6e" android:background="@color/br" android:paddingLeft="18.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Client Info:" android:layout_below="@id/ku1" />
+    <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:id="@id/kam" android:background="@color/br" android:paddingLeft="18.0dip" android:paddingTop="2.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Server Info:" android:layout_below="@id/k6e" />
+    <include android:id="@id/kut" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/c37" />
+    <RelativeLayout android:id="@id/ku1" android:layout_width="fill_parent" android:layout_height="@dimen/ac3" android:layout_marginLeft="18.0dip" android:layout_marginRight="16.0dip" android:layout_alignParentTop="true">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ku5" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <dov.com.qq.im.capture.view.PressScaleTextView android:textSize="17.0dip" android:textColor="@color/if" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/lr8" android:shadowColor="@color/by" android:shadowRadius="4.0" />
+        </LinearLayout>
+        <com.tencent.biz.qqstory.view.PressDarkImageButton android:id="@id/kuo" android:background="@color/ajr" android:visibility="visible" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/ha2" android:scaleType="centerCrop" android:layout_toLeftOf="@id/kup" android:layout_centerVertical="true" app:enableCheckedPressDarkImageButton="true" />
+        <com.tencent.biz.qqstory.view.PressDarkImageButton android:id="@id/kup" android:background="@color/ajr" android:visibility="visible" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/ha5" android:scaleType="centerCrop" android:layout_toLeftOf="@id/ku6" android:layout_centerVertical="true" android:contentDescription="@string/lqi" app:enableCheckedPressDarkImageButton="true" />
+        <Button android:textSize="14.0dip" android:textColor="@color/al3" android:id="@id/ku6" android:background="@drawable/g6" android:layout_width="58.0dip" android:layout_height="29.0dip" android:text="@string/lr3" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <View android:id="@id/ku4" android:background="@color/bz" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="249.0dip" android:layout_alignParentBottom="true" />
+    <FrameLayout android:id="@id/kul" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="249.0dip" android:layout_alignParentBottom="true" />
+    <View android:background="@drawable/b7k" android:layout_width="fill_parent" android:layout_height="250.0dip" android:layout_alignParentBottom="true" />
+</RelativeLayout>

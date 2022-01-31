@@ -1,52 +1,58 @@
-import android.content.IntentFilter;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
 
 public class tnl
-  implements Runnable
+  extends tog
+  implements View.OnClickListener
 {
-  public tnl(QQLSActivity paramQQLSActivity) {}
-  
-  public void run()
+  public tnl(@NonNull ViewGroup paramViewGroup)
   {
-    try
+    super(paramViewGroup);
+    this.a.findViewById(2131302254).setOnClickListener(this);
+    this.a.findViewById(2131311381).setOnClickListener(this);
+  }
+  
+  protected View a(ViewGroup paramViewGroup)
+  {
+    return paramViewGroup;
+  }
+  
+  public void a(int paramInt1, int paramInt2, @NonNull tnz paramtnz, StoryPlayerGroupHolder paramStoryPlayerGroupHolder)
+  {
+    super.a(paramInt1, paramInt2, paramtnz, paramStoryPlayerGroupHolder);
+    if (bjeh.a)
     {
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.SCREEN_ON");
-      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
-      localIntentFilter.addAction("android.intent.action.USER_PRESENT");
-      if (QQLSActivity.a(this.a) == 0)
-      {
-        BaseApplicationImpl.getContext().registerReceiver(this.a.a, localIntentFilter);
-        if (QLog.isColorLevel()) {
-          QLog.d("QQLSActivity", 2, "registerScreenListener real mScreenReceiver:" + this.a.a.hashCode() + "context :" + BaseApplicationImpl.getContext().hashCode());
-        }
-        QQLSActivity.a(this.a, 1);
-      }
-      QQLSActivity.a(this.a, AnimationUtils.loadAnimation(this.a, 2131034321));
-      QQLSActivity.a(this.a).setFillAfter(true);
-      if (QLog.isColorLevel()) {
-        QLog.d("QQLSActivity", 2, "registerScreenListener");
-      }
-      return;
+      paramStoryPlayerGroupHolder = (RelativeLayout.LayoutParams)this.a.findViewById(2131302254).getLayoutParams();
+      paramStoryPlayerGroupHolder.topMargin = (vms.a(this.a.getContext(), 5.0F) + 114);
+      this.a.findViewById(2131302254).setLayoutParams(paramStoryPlayerGroupHolder);
     }
-    catch (Exception localException)
-    {
-      do
-      {
-        localException.printStackTrace();
-      } while (!QLog.isColorLevel());
-      QLog.e("QQLSActivity", 2, "registerScreenListener:" + localException.toString());
-    }
+    a().a(this, paramInt1, paramInt2, paramtnz);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    super.a(paramBoolean);
+    a().a(this, paramBoolean);
+  }
+  
+  protected void b()
+  {
+    super.b();
+    a().a(this);
+  }
+  
+  public void onClick(View paramView)
+  {
+    a().a(this, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tnl
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ class i
   {
     long l3 = System.currentTimeMillis();
     long l4 = d.a(this.b, this.a);
-    long l2 = a.ah();
+    long l2 = a.ai();
     long l1 = l2;
     if (l2 <= 0L) {
       l1 = 21600000L;

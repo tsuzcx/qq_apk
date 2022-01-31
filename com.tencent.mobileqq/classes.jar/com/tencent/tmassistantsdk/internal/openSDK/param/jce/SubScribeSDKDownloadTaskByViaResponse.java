@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public final class SubScribeSDKDownloadTaskByViaResponse
   extends JceStruct
 {
-  static ArrayList<String> a = new ArrayList();
+  static ArrayList<String> cache_viaList = new ArrayList();
   public int subscribeType = 0;
   public ArrayList<String> viaList = null;
   
   static
   {
-    a.add("");
+    cache_viaList.add("");
   }
   
   public SubScribeSDKDownloadTaskByViaResponse() {}
@@ -27,7 +27,7 @@ public final class SubScribeSDKDownloadTaskByViaResponse
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
-    this.viaList = ((ArrayList)paramJceInputStream.read(a, 0, true));
+    this.viaList = ((ArrayList)paramJceInputStream.read(cache_viaList, 0, true));
     this.subscribeType = paramJceInputStream.read(this.subscribeType, 1, false);
   }
   
@@ -39,7 +39,7 @@ public final class SubScribeSDKDownloadTaskByViaResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.openSDK.param.jce.SubScribeSDKDownloadTaskByViaResponse
  * JD-Core Version:    0.7.0.1
  */

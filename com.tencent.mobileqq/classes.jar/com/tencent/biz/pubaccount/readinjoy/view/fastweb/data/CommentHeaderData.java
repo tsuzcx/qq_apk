@@ -4,12 +4,6 @@ public class CommentHeaderData
   extends BaseData
 {
   public String a;
-  
-  public CommentHeaderData(String paramString)
-  {
-    this.a = paramString;
-    this.d = 13;
-  }
 }
 
 

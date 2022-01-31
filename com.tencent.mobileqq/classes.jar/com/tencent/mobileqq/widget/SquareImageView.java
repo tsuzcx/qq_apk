@@ -9,6 +9,7 @@ import android.graphics.Paint.FontMetricsInt;
 import android.graphics.Path;
 import android.graphics.Path.Direction;
 import android.graphics.RectF;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
@@ -48,11 +49,12 @@ public class SquareImageView
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.SquareImageView);
-    this.jdField_a_of_type_Float = paramContext.getFloat(0, 1.0F);
-    this.jdField_b_of_type_Float = paramContext.getFloat(1, 0.0F);
-    this.jdField_b_of_type_Int = paramContext.getColor(2, -1);
-    this.jdField_b_of_type_JavaLangString = paramContext.getString(3);
-    this.c = paramContext.getDimensionPixelSize(4, 40);
+    this.jdField_a_of_type_Float = paramContext.getFloat(4, 1.0F);
+    this.jdField_b_of_type_Float = paramContext.getFloat(5, 0.0F);
+    this.jdField_b_of_type_Int = paramContext.getColor(0, -1);
+    this.jdField_b_of_type_JavaLangString = paramContext.getString(1);
+    this.c = paramContext.getDimensionPixelSize(2, 40);
+    this.jdField_a_of_type_Int = paramContext.getDimensionPixelSize(3, 0);
     paramContext.recycle();
   }
   
@@ -71,7 +73,9 @@ public class SquareImageView
       if (this.jdField_a_of_type_AndroidGraphicsPath.isEmpty()) {
         this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, Path.Direction.CW);
       }
-      paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+      if (Build.VERSION.SDK_INT >= 18) {
+        paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
+      }
     }
     super.draw(paramCanvas);
   }
@@ -149,7 +153,7 @@ public class SquareImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SquareImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,26 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoUploadManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pic.UpCallBack;
-import com.tencent.mobileqq.pic.UpCallBack.SendResult;
-import tencent.im.msg.im_msg_body.RichText;
+import android.os.Handler;
+import android.os.Message;
 
-public class mjp
-  implements UpCallBack
+class mjp
+  extends Handler
 {
-  public mjp(VideoUploadManager paramVideoUploadManager) {}
-  
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void handleMessage(Message paramMessage)
   {
-    return null;
+    mjo localmjo = (mjo)paramMessage.obj;
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    localmjo.jdField_a_of_type_Mjm.a(((mjq[])localmjo.jdField_a_of_type_ArrayOfJavaLangObject)[0]);
   }
-  
-  public void a(UpCallBack.SendResult paramSendResult) {}
-  
-  public void b(UpCallBack.SendResult paramSendResult) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     mjp
  * JD-Core Version:    0.7.0.1
  */

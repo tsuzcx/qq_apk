@@ -1,23 +1,17 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 class teb
+  extends tdc
 {
-  View jdField_a_of_type_AndroidViewView;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  ImageView jdField_c_of_type_AndroidWidgetImageView;
-  TextView jdField_c_of_type_AndroidWidgetTextView;
-  TextView d;
+  teb(tdo paramtdo, tew paramtew) {}
   
-  teb(tdz paramtdz) {}
+  public boolean b()
+  {
+    this.jdField_a_of_type_Tew.e = ((String)a("UploadImageJob_out_image_url"));
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     teb
  * JD-Core Version:    0.7.0.1
  */

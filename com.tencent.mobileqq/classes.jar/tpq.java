@@ -1,33 +1,25 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.util.Utils;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager;
 
-class tpq
-  implements Runnable
+public class tpq
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  tpq(tpp paramtpp, String paramString) {}
+  public tpq(XViewPager paramXViewPager) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.jdField_a_of_type_Tpp.a.a.getTop() > QQSettingMe.a(this.jdField_a_of_type_Tpp.a).getBottom()) {
-      this.jdField_a_of_type_Tpp.a.a.setMaxWidth(QQSettingMe.a(this.jdField_a_of_type_Tpp.a) - QQSettingMe.a(this.jdField_a_of_type_Tpp.a).getWidth());
-    }
-    for (;;)
-    {
-      if (!Utils.a(this.jdField_a_of_type_JavaLangString, QQSettingMe.a(this.jdField_a_of_type_Tpp.a)))
-      {
-        QQSettingMe.a(this.jdField_a_of_type_Tpp.a, this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_Tpp.a.a.setText(QQSettingMe.a(this.jdField_a_of_type_Tpp.a));
-      }
-      return;
-      this.jdField_a_of_type_Tpp.a.a.setMaxWidth(QQSettingMe.a(this.jdField_a_of_type_Tpp.a));
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    this.a.scrollTo(i, 0);
+    XViewPager.a(this.a, i);
+    if (XViewPager.a(this.a) != null) {
+      XViewPager.a(this.a).b(2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tpq
  * JD-Core Version:    0.7.0.1
  */

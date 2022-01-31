@@ -1,23 +1,17 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
-import com.tencent.image.URLImageView;
+import java.util.HashMap;
 
-public class ksc
+class ksc
 {
-  public ImageView a;
-  public TextView a;
-  public URLImageView a;
-  public boolean a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
+  HashMap<Integer, kse> a = new HashMap();
   
-  public ksc(AccountDetailBaseAdapter paramAccountDetailBaseAdapter) {}
+  public String toString()
+  {
+    return "size[" + this.a.size() + "]";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     ksc
  * JD-Core Version:    0.7.0.1
  */

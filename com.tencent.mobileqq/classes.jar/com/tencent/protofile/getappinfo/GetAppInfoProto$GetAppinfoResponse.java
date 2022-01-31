@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class GetAppInfoProto$GetAppinfoResponse
-  extends MessageMicro
+  extends MessageMicro<GetAppinfoResponse>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 66, 74, 80, 90 }, new String[] { "ret", "msg", "appName", "appComment", "providerName", "appClass", "iconsURL", "androidInfo", "iosInfo", "client_id", "ads" }, new Object[] { Integer.valueOf(0), "", "", "", "", "", null, null, null, Long.valueOf(0L), null }, GetAppinfoResponse.class);
   public GetAppInfoProto.Ads ads = new GetAppInfoProto.Ads();
@@ -18,7 +18,7 @@ public final class GetAppInfoProto$GetAppinfoResponse
   public final PBStringField appComment = PBField.initString("");
   public final PBStringField appName = PBField.initString("");
   public final PBInt64Field client_id = PBField.initInt64(0L);
-  public final PBRepeatMessageField iconsURL = PBField.initRepeatMessage(GetAppInfoProto.MsgIconsurl.class);
+  public final PBRepeatMessageField<GetAppInfoProto.MsgIconsurl> iconsURL = PBField.initRepeatMessage(GetAppInfoProto.MsgIconsurl.class);
   public GetAppInfoProto.IOSInfo iosInfo = new GetAppInfoProto.IOSInfo();
   public final PBStringField msg = PBField.initString("");
   public final PBStringField providerName = PBField.initString("");

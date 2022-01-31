@@ -1,38 +1,28 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
 
-class aaze
-  implements aazk
+public class aaze
+  implements View.OnClickListener
 {
-  aaze(aayw paramaayw, aazj paramaazj, String paramString, aazl paramaazl) {}
+  public aaze(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
-  public void a(byte[] paramArrayOfByte)
+  public void onClick(View paramView)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      ArkAppCenter.b("ArkApp.Dict.Update", String.format("dictFullUpdate, download fail, name=%s, url=%s", new Object[] { this.jdField_a_of_type_Aazj.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aazj.b }));
-    }
-    for (;;)
+    boolean bool = HongbaoShowerActivity.a(this.a).isChecked();
+    paramView = HongbaoShowerActivity.a(this.a);
+    if (!bool) {}
+    for (bool = true;; bool = false)
     {
-      this.jdField_a_of_type_Aazl.a(false);
+      paramView.setChecked(bool);
       return;
-      if (!aayw.b(paramArrayOfByte, this.jdField_a_of_type_Aazj.d))
-      {
-        ArkAppCenter.b("ArkApp.Dict.Update", String.format("dictFullUpdate, check md5 fail, name=%s, url=%s, md5=%s", new Object[] { this.jdField_a_of_type_Aazj.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aazj.b, this.jdField_a_of_type_Aazj.d }));
-      }
-      else
-      {
-        String str = String.format("%s/%s", new Object[] { this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aazj.jdField_a_of_type_JavaLangString });
-        if (aayw.a(paramArrayOfByte, str)) {
-          break;
-        }
-        ArkAppCenter.b("ArkApp.Dict.Update", String.format("dictFullUpdate, write to file fail, name=%s, url=%s, path=%s", new Object[] { this.jdField_a_of_type_Aazj.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aazj.b, str }));
-      }
     }
-    this.jdField_a_of_type_Aazl.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaze
  * JD-Core Version:    0.7.0.1
  */

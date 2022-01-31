@@ -1,63 +1,33 @@
-import dov.com.qq.im.capture.view.ProviderViewEditContainer;
-import dov.com.qq.im.capture.view.VideoSegmentPickerProviderView;
-import dov.com.tencent.biz.qqstory.takevideo.EditMultiSegmentExport;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView.DoodleEditViewListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
 
 public class aobq
-  implements DoodleEditView.DoodleEditViewListener
+  implements View.OnClickListener
 {
-  public aobq(EditVideoDoodle paramEditVideoDoodle) {}
+  public aobq(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_DovComQqImCaptureViewProviderViewEditContainer.b();
-    if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.b == 27) {
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
-    }
-    if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.b == 36)
+    paramView = (aobx)paramView.getTag();
+    FileInfo localFileInfo = (FileInfo)paramView.jdField_a_of_type_JavaLangObject;
+    switch (paramView.c)
     {
-      EditMultiSegmentExport localEditMultiSegmentExport = (EditMultiSegmentExport)this.a.a(EditMultiSegmentExport.class);
-      if (localEditMultiSegmentExport != null) {
-        localEditMultiSegmentExport.c();
-      }
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
     }
-  }
-  
-  public void a(GestureHelper.ZoomItem paramZoomItem)
-  {
-    if ((EditVideoDoodle.a(this.a) != 0) && (EditVideoPartManager.a(EditVideoDoodle.b(this.a), 268435456)))
+    for (;;)
     {
-      VideoSegmentPickerProviderView localVideoSegmentPickerProviderView = (VideoSegmentPickerProviderView)this.a.jdField_a_of_type_DovComQqImCaptureViewProviderViewEditContainer.a(111);
-      if (localVideoSegmentPickerProviderView != null)
-      {
-        EditMultiSegmentExport localEditMultiSegmentExport = (EditMultiSegmentExport)this.a.a(EditMultiSegmentExport.class);
-        if (localEditMultiSegmentExport != null)
-        {
-          localVideoSegmentPickerProviderView.setPlayMode(localEditMultiSegmentExport.a());
-          localEditMultiSegmentExport.d();
-          localEditMultiSegmentExport.b();
-        }
-      }
-      this.a.jdField_a_of_type_DovComQqImCaptureViewProviderViewEditContainer.a(111, new Object[] { paramZoomItem });
-      if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.b == 0) {
-        this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(36);
-      }
-    }
-    do
-    {
+      this.a.i();
       return;
-      this.a.jdField_a_of_type_DovComQqImCaptureViewProviderViewEditContainer.a(103, new Object[] { paramZoomItem });
-    } while (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.b != 0);
-    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(27);
+      this.a.a.a().ab();
+      this.a.a(localFileInfo, paramView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetAsyncImageView, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aobq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,21 @@
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.RectF;
-import android.view.View;
-import com.tencent.mobileqq.troopgift.TroopGiftActionButton;
-import com.tencent.mobileqq.util.DisplayUtil;
-import org.json.JSONObject;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Comparator;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
 
-public class akci
-  extends View
+class akci
+  implements Comparator<msg_comm.Msg>
 {
-  private int jdField_a_of_type_Int;
-  private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private RectF jdField_a_of_type_AndroidGraphicsRectF;
+  akci(akch paramakch) {}
   
-  public akci(TroopGiftActionButton paramTroopGiftActionButton, Context paramContext)
+  public int a(msg_comm.Msg paramMsg1, msg_comm.Msg paramMsg2)
   {
-    super(paramContext);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor(TroopGiftActionButton.a(paramTroopGiftActionButton).optString("buttonColor")));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(DisplayUtil.a(getContext(), 3.0F));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_AndroidGraphicsRectF.left = (DisplayUtil.a(getContext(), 3.0F) / 2);
-    this.jdField_a_of_type_AndroidGraphicsRectF.top = (DisplayUtil.a(getContext(), 3.0F) / 2);
-    this.jdField_a_of_type_AndroidGraphicsRectF.right = (DisplayUtil.a(getContext(), 68.0F) - DisplayUtil.a(getContext(), 3.0F) / 2);
-    this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (DisplayUtil.a(getContext(), 68.0F) - DisplayUtil.a(getContext(), 3.0F) / 2);
-    a(0);
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    invalidate();
-  }
-  
-  protected void onDraw(Canvas paramCanvas)
-  {
-    super.onDraw(paramCanvas);
-    paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, -(100 - this.jdField_a_of_type_Int) * 360 / 100, false, this.jdField_a_of_type_AndroidGraphicsPaint);
+    return ((msg_comm.MsgHead)paramMsg1.msg_head.get()).msg_time.get() - ((msg_comm.MsgHead)paramMsg2.msg_head.get()).msg_time.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akci
  * JD-Core Version:    0.7.0.1
  */

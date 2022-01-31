@@ -1,42 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.ConfessNewsItemBuilder;
-import com.tencent.mobileqq.confess.ConfessMsgUtil;
-import com.tencent.mobileqq.confess.ConfessNewsBgView;
-import com.tencent.mobileqq.confess.TroopConfessUtil;
-import com.tencent.mobileqq.data.MessageForConfessNews;
+import android.graphics.PointF;
 
-public class vam
-  implements View.OnClickListener
+public abstract interface vam
 {
-  public vam(ConfessNewsItemBuilder paramConfessNewsItemBuilder) {}
-  
-  public void onClick(View paramView)
-  {
-    Object localObject;
-    if ((paramView instanceof ConfessNewsBgView))
-    {
-      localObject = paramView.getTag();
-      if ((localObject instanceof MessageForConfessNews))
-      {
-        localObject = (MessageForConfessNews)localObject;
-        if (((MessageForConfessNews)localObject).istroop != 1) {
-          break label73;
-        }
-      }
-    }
-    label73:
-    for (int i = 1; i != 0; i = 0)
-    {
-      TroopConfessUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, 2, ((MessageForConfessNews)localObject).strGroupUin, ((MessageForConfessNews)localObject).nTopicId, ((MessageForConfessNews)localObject).strConfessorUin, ((MessageForConfessNews)localObject).strRecUin);
-      return;
-    }
-    ConfessMsgUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.getContext(), ((MessageForConfessNews)localObject).nTopicId, ((MessageForConfessNews)localObject).strConfessorUin, ((MessageForConfessNews)localObject).nConfessorSex, ((MessageForConfessNews)localObject).strRecUin);
-  }
+  public abstract void a(boolean paramBoolean1, float paramFloat, int paramInt1, int paramInt2, PointF paramPointF, boolean paramBoolean2, int paramInt3);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vam
  * JD-Core Version:    0.7.0.1
  */

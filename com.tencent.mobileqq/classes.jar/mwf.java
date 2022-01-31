@@ -1,31 +1,50 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsAdapter;
-import java.io.Serializable;
-import java.util.ArrayList;
+import android.content.Context;
+import android.view.MotionEvent;
+import com.tencent.biz.pubaccount.AccountDetail.view.ReadInJoyNewFeedsTopGestureLayout;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.OnGestureListener;
+import com.tencent.mobileqq.activity.fling.TopGestureLayout.TopGestureDetector;
 
-class mwf
-  implements Runnable
+public class mwf
+  extends TopGestureLayout.TopGestureDetector
 {
-  mwf(mwc parammwc, Serializable paramSerializable) {}
-  
-  public void run()
+  public mwf(ReadInJoyNewFeedsTopGestureLayout paramReadInJoyNewFeedsTopGestureLayout, Context paramContext)
   {
-    SubscriptFeedsActivity localSubscriptFeedsActivity;
-    if ((this.jdField_a_of_type_JavaIoSerializable != null) && (SubscriptFeedsActivity.a(this.jdField_a_of_type_Mwc.a) != null))
-    {
-      SubscriptFeedsActivity.a(this.jdField_a_of_type_Mwc.a, (ArrayList)this.jdField_a_of_type_JavaIoSerializable);
-      SubscriptFeedsActivity.a(this.jdField_a_of_type_Mwc.a).b(SubscriptFeedsActivity.a(this.jdField_a_of_type_Mwc.a));
-      SubscriptFeedsActivity.a(this.jdField_a_of_type_Mwc.a).a = true;
-      localSubscriptFeedsActivity = this.jdField_a_of_type_Mwc.a;
-      if (SubscriptFeedsActivity.a(this.jdField_a_of_type_Mwc.a).f != 1) {
-        break label110;
+    super(paramReadInJoyNewFeedsTopGestureLayout, paramContext);
+  }
+  
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    if ((this.a.isGestureIdle()) || (this.a.isGestureEnd())) {
+      return false;
+    }
+    paramFloat1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+    paramFloat2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat1);
+    int i;
+    if (this.a.hasGestureFlag(1)) {
+      if (paramMotionEvent1.getX() <= 0.2133333333333334D * babp.i())
+      {
+        i = 1;
+        if ((i != 0) && (paramFloat1 < 0.0F) && (paramFloat2 < 0.5F) && (this.a.mOnFlingGesture != null))
+        {
+          this.a.setGestureFlag(-1);
+          if (!ReadInJoyNewFeedsTopGestureLayout.a(this.a)) {
+            this.a.mOnFlingGesture.flingLToR();
+          }
+        }
       }
     }
-    label110:
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
-      SubscriptFeedsActivity.a(localSubscriptFeedsActivity, false, false, bool);
-      return;
+      return false;
+      i = 0;
+      break;
+      if ((this.a.hasGestureFlag(2)) && (paramFloat1 > 0.0F) && (paramFloat2 < 0.5F) && (this.a.mOnFlingGesture != null))
+      {
+        this.a.setGestureFlag(-1);
+        if (!ReadInJoyNewFeedsTopGestureLayout.b(this.a)) {
+          this.a.mOnFlingGesture.flingRToL();
+        }
+      }
     }
   }
 }

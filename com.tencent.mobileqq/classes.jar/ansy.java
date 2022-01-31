@@ -1,37 +1,50 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.statistics.QIMReportController;
-import com.tencent.mobileqq.statistics.reportitem.QIMReadWriteReportItem;
-import com.tencent.mobileqq.troop.widget.RedDotImageView;
-import dov.com.qq.im.capture.QIMCaptureController;
-import dov.com.qq.im.capture.banner.QIMCaptureBannerManager;
-import dov.com.qq.im.capture.view.PressScaleAnimDelegate;
+import com.tencent.qphone.base.util.QLog;
 
 public class ansy
-  implements View.OnClickListener
 {
-  public ansy(QIMCaptureController paramQIMCaptureController, RedDotImageView paramRedDotImageView, boolean paramBoolean1, boolean paramBoolean2, QIMCaptureBannerManager paramQIMCaptureBannerManager, boolean paramBoolean3) {}
+  public int a;
+  protected ansl a;
+  protected ansx a;
   
-  public void onClick(View paramView)
+  public ansy(ansx paramansx, ansl paramansl)
   {
-    paramView = new ansz(this);
-    if ((this.jdField_a_of_type_Boolean) && (this.b)) {
-      this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerManager.c(true);
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Ansl = paramansl;
+    this.jdField_a_of_type_Ansx = paramansx;
+  }
+  
+  public void a()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatUiStateMachine", 2, "state " + this.jdField_a_of_type_Int + " onStart");
     }
-    if ((this.jdField_a_of_type_Boolean) && (this.c)) {
-      this.jdField_a_of_type_DovComQqImCaptureBannerQIMCaptureBannerManager.d(true);
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatUiStateMachine", 2, "state " + this.jdField_a_of_type_Int + " start handle event " + paramInt1 + ", subEvent " + paramInt2);
     }
-    PressScaleAnimDelegate.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetRedDotImageView, 200L, paramView);
-    QIMCaptureController.a(this.jdField_a_of_type_DovComQqImCaptureQIMCaptureController, (RelativeLayout)QIMCaptureController.a(this.jdField_a_of_type_DovComQqImCaptureQIMCaptureController).findViewById(2131365916));
-    paramView = new QIMReadWriteReportItem();
-    paramView.d = "0X8008D52";
-    QIMReportController.b(null, paramView);
+    return false;
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatUiStateMachine", 2, "state " + this.jdField_a_of_type_Int + " onEnd");
+    }
+  }
+  
+  public void c()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("LimitChatUiStateMachine", 2, "state " + this.jdField_a_of_type_Int + " onForceEnd");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ansy
  * JD-Core Version:    0.7.0.1
  */

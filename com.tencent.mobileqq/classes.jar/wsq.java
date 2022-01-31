@@ -1,33 +1,34 @@
-import com.tencent.device.devicemgr.SmartDeviceObserver;
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsDeviceAdapter;
-import com.tencent.mobileqq.activity.contacts.fragment.ContactsBaseFragment.RefreshDataListener;
-import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
-import java.util.ArrayList;
+import android.support.annotation.Nullable;
+import com.tencent.biz.videostory.capture.AEVideoStoryDashboardPart.7.1;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class wsq
-  extends SmartDeviceObserver
+  implements bhwg<bgxp>
 {
-  public wsq(DeviceFragment paramDeviceFragment) {}
+  wsq(wsj paramwsj) {}
   
-  protected void a(ArrayList paramArrayList)
+  public void a(@Nullable bgxp parambgxp)
   {
-    if (this.a.e)
+    Object localObject = bgxl.a(parambgxp);
+    parambgxp = new LinkedList();
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      this.a.e = false;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsFragmentContactsBaseFragment$RefreshDataListener != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsFragmentContactsBaseFragment$RefreshDataListener.a(2, true, null);
-      }
+      bgxp localbgxp = (bgxp)((Iterator)localObject).next();
+      wst localwst = new wst(null);
+      localwst.a = localbgxp.toString();
+      parambgxp.add(localwst);
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter.a = ((ArrayList)paramArrayList.clone());
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter.notifyDataSetChanged();
+    ThreadManager.getUIHandler().post(new AEVideoStoryDashboardPart.7.1(this, parambgxp));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wsq
  * JD-Core Version:    0.7.0.1
  */

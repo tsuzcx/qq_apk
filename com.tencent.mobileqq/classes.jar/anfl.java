@@ -1,80 +1,64 @@
+import android.os.Bundle;
+import com.tencent.mobileqq.data.EmoticonPackage;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.plugin.IQZonePluginManager.OnPluginReadyListener;
-import cooperation.qzone.plugin.IQZonePluginManager.PluginParams;
-import cooperation.qzone.plugin.OnQZonePluginInstallListner.Stub;
-import cooperation.qzone.plugin.PluginRecord;
-import cooperation.qzone.plugin.QZonePluginInstaller;
-import cooperation.qzone.plugin.QZonePluginManager;
-import cooperation.qzone.plugin.QZonePluginManager.LaunchState;
 
-public class anfl
-  extends OnQZonePluginInstallListner.Stub
+class anfl
+  extends batl
 {
-  private QZonePluginManager.LaunchState jdField_a_of_type_CooperationQzonePluginQZonePluginManager$LaunchState;
-  
-  public anfl(QZonePluginManager paramQZonePluginManager, QZonePluginManager.LaunchState paramLaunchState)
+  anfl(anfj paramanfj, String paramString1, String paramString2)
   {
-    this.jdField_a_of_type_CooperationQzonePluginQZonePluginManager$LaunchState = paramLaunchState;
+    super(paramString1, paramString2);
   }
   
-  public void a(String paramString)
+  public void onDone(batm parambatm)
   {
+    super.onDone(parambatm);
+    Object localObject = parambatm.a();
+    int j = ((Bundle)localObject).getInt(parambatm.c);
+    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
     if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginManger", 2, "onInstallBegin." + paramString);
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "coverDownloadListener| onDone:epId=" + ((EmoticonPackage)localObject).epId + " task:" + parambatm + " localVersion=" + ((EmoticonPackage)localObject).localVersion + ",latestVersion=" + ((EmoticonPackage)localObject).latestVersion + ",updateFlag=" + ((EmoticonPackage)localObject).updateFlag);
     }
-  }
-  
-  public void a(String paramString, float paramFloat, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginManger", 2, "onInstallDownloadProgress." + paramString);
-    }
-  }
-  
-  public void a(String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginManger", 2, "onInstallError." + paramString + "," + paramInt);
-    }
-    QZonePluginManager.LaunchState localLaunchState = this.jdField_a_of_type_CooperationQzonePluginQZonePluginManager$LaunchState;
-    if ((localLaunchState != null) && (localLaunchState.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$OnPluginReadyListener != null))
+    int i = 0;
+    if (parambatm.a() != 3)
     {
-      paramString = this.jdField_a_of_type_CooperationQzonePluginQZonePluginManager.a(paramString);
-      if ((paramString != null) && (paramString.k != null)) {
-        localLaunchState.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams.c = paramString.k;
+      i = anam.a(parambatm.a);
+      if (anfj.a(j)) {
+        anfj.jdField_a_of_type_Anfi.a((EmoticonPackage)localObject, j, -1, i);
       }
-      paramString = localLaunchState.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$OnPluginReadyListener;
-      if (paramInt != 2) {
-        break label122;
-      }
+      anfj.jdField_a_of_type_Anfi.a((EmoticonPackage)localObject, i, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
-    label122:
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
-      paramString.a(bool, localLaunchState.jdField_a_of_type_AndroidContentContext, localLaunchState.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams);
+      long l1 = parambatm.h;
+      long l2 = parambatm.g;
+      this.a.a((EmoticonPackage)localObject, i, l1 - l2, parambatm.d);
       return;
+      anfj.jdField_a_of_type_Anfi.a((EmoticonPackage)localObject, j, 0, 0);
     }
   }
   
-  public void b(String paramString)
+  public void onDoneFile(batm parambatm)
   {
+    Object localObject = parambatm.a();
+    int i = ((Bundle)localObject).getInt(parambatm.c);
+    localObject = (EmoticonPackage)((Bundle)localObject).getSerializable("emoticonPackage");
     if (QLog.isColorLevel()) {
-      QLog.d("QZonePluginManger", 2, "onInstallFinish." + paramString);
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "coverDownloadListener | onProgress:epId=" + ((EmoticonPackage)localObject).epId + parambatm);
     }
-    paramString = this.jdField_a_of_type_CooperationQzonePluginQZonePluginManager$LaunchState;
-    if ((paramString != null) && (paramString.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$OnPluginReadyListener != null))
-    {
-      PluginRecord localPluginRecord = QZonePluginManager.a(this.jdField_a_of_type_CooperationQzonePluginQZonePluginManager).a(paramString.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams.b);
-      if ((localPluginRecord != null) && (localPluginRecord.k != null)) {
-        paramString.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams.c = localPluginRecord.k;
-      }
-      paramString.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$OnPluginReadyListener.a(true, paramString.jdField_a_of_type_AndroidContentContext, paramString.jdField_a_of_type_CooperationQzonePluginIQZonePluginManager$PluginParams);
+    if (anfj.a(i)) {
+      anfj.jdField_a_of_type_Anfi.a((EmoticonPackage)localObject, i, 0, 0);
     }
+  }
+  
+  public boolean onStart(batm parambatm)
+  {
+    return super.onStart(parambatm);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anfl
  * JD-Core Version:    0.7.0.1
  */

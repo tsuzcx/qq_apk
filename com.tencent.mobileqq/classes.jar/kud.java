@@ -1,29 +1,10 @@
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.qphone.base.util.QLog;
-
-public class kud
-  implements Runnable
+public abstract interface kud
 {
-  public kud(AccountDetailActivity paramAccountDetailActivity) {}
-  
-  public void run()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "initData loadDatabase");
-    }
-    AccountDetailActivity localAccountDetailActivity = this.a;
-    if (!this.a.e()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localAccountDetailActivity.e = bool;
-      AccountDetailActivity.b(this.a, new kue(this));
-      return;
-    }
-  }
+  public abstract void a(int paramInt1, String paramString1, int paramInt2, int paramInt3, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     kud
  * JD-Core Version:    0.7.0.1
  */

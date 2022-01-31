@@ -1,31 +1,46 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.net.Uri;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.GeneralSettingActivity;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.widget.FormSwitchSimpleItem;
+import com.tencent.widget.Switch;
 
-class aaxm
-  implements DialogInterface.OnClickListener
+public class aaxm
+  implements CompoundButton.OnCheckedChangeListener
 {
-  aaxm(aaxl paramaaxl, QQCustomDialog paramQQCustomDialog) {}
+  public aaxm(GeneralSettingActivity paramGeneralSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramDialogInterface = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_Aaxl.a));
-    BaseActivity.sTopActivity.startActivity(paramDialogInterface);
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      return;
+    boolean bool1 = this.a.a.a().isChecked();
+    boolean bool2 = ThemeUtil.isNowThemeIsNight(this.a.app, false, null);
+    int j = awnu.c();
+    int i;
+    if ((bool1) && (bool2)) {
+      i = awnu.b;
     }
-    catch (Exception paramDialogInterface) {}
+    while (paramBoolean)
+    {
+      String str = awnp.b[i];
+      if (!axkz.a(this.a, str, new aaxn(this, paramCompoundButton, bool1, i))) {
+        GeneralSettingActivity.a(this.a, paramCompoundButton, true, bool1, i);
+      }
+      return;
+      i = j;
+      if (bool1)
+      {
+        i = j;
+        if (ThemeUtil.isNowThemeIsNight(this.a.app, false, awnp.b[j])) {
+          i = awnu.d();
+        }
+      }
+    }
+    GeneralSettingActivity.a(this.a, paramCompoundButton, false, bool1, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aaxm
  * JD-Core Version:    0.7.0.1
  */

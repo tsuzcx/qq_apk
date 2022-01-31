@@ -1,23 +1,34 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.now.model.LocationInfo;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.troop.NotificationView;
+import mqq.os.MqqHandler;
 
-public final class afbc
-  implements Parcelable.Creator
+public class afbc
+  extends MqqHandler
 {
-  public LocationInfo a(Parcel paramParcel)
-  {
-    return new LocationInfo(paramParcel);
-  }
+  public afbc(NotificationView paramNotificationView) {}
   
-  public LocationInfo[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return new LocationInfo[paramInt];
+    switch (paramMessage.what)
+    {
+    case 1013: 
+    default: 
+    case 1012: 
+      do
+      {
+        return;
+      } while (this.a.jdField_a_of_type_Afaz == null);
+      this.a.i();
+      this.a.jdField_a_of_type_Afaz.a = axcz.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      this.a.jdField_a_of_type_Afaz.notifyDataSetChanged();
+      return;
+    }
+    this.a.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     afbc
  * JD-Core Version:    0.7.0.1
  */

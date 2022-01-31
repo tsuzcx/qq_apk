@@ -1,20 +1,18 @@
-import cooperation.qzone.music.QzoneWebMusicJsPlugin;
-import cooperation.qzone.remote.logic.RemoteHandleManager;
-import cooperation.qzone.remote.logic.RemoteRequestSender;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
 
 public class ancy
-  implements Runnable
+  implements andd
 {
-  public ancy(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
+  public ancy(DragSortListView paramDragSortListView) {}
   
-  public void run()
+  public float a(float paramFloat, long paramLong)
   {
-    RemoteHandleManager.a().a().a();
+    return this.a.e * paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ancy
  * JD-Core Version:    0.7.0.1
  */

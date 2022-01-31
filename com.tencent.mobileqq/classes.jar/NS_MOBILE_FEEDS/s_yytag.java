@@ -8,10 +8,10 @@ import java.util.ArrayList;
 public final class s_yytag
   extends JceStruct
 {
-  static ArrayList cache_beginEndSeconds = new ArrayList();
+  static ArrayList<Integer> cache_beginEndSeconds = new ArrayList();
   public int actiontype;
   public String actionurl = "";
-  public ArrayList beginEndSeconds;
+  public ArrayList<Integer> beginEndSeconds;
   public String content = "";
   public int displaytype;
   public String logo = "";
@@ -24,7 +24,7 @@ public final class s_yytag
   
   public s_yytag() {}
   
-  public s_yytag(String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2, int paramInt3, ArrayList paramArrayList)
+  public s_yytag(String paramString1, String paramString2, int paramInt1, String paramString3, int paramInt2, int paramInt3, ArrayList<Integer> paramArrayList)
   {
     this.logo = paramString1;
     this.content = paramString2;
@@ -67,7 +67,7 @@ public final class s_yytag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_yytag
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,17 @@
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditBasePanel;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.activity.contacts.view.pullrefresh.CommonRefreshLayout;
 
-public class afhp
-  implements ConditionSearchManager.IConfigListener
+public abstract interface afhp
 {
-  public afhp(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public abstract void onFlingScrollHeader(int paramInt1, int paramInt2);
   
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if ((paramBoolean) && (paramInt == 2))
-    {
-      if ((NearbyPeopleProfileActivity.a(this.a) == null) || (this.a.e != 1)) {
-        break label41;
-      }
-      NearbyPeopleProfileActivity.a(this.a).d();
-    }
-    label41:
-    while (NearbyPeopleProfileActivity.a(this.a) == null) {
-      return;
-    }
-  }
+  public abstract void onTouchMoving(CommonRefreshLayout paramCommonRefreshLayout, int paramInt, MotionEvent paramMotionEvent);
+  
+  public abstract int onViewCompleteAfterRefresh(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afhp
  * JD-Core Version:    0.7.0.1
  */

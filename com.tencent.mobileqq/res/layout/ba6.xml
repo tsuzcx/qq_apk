@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.biz.qqstory.playvideo.CustomViewPager android:id="@id/kve" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:id="@id/ktq" layout="@layout/ba9" />
+    <com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView android:id="@id/ksr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <com.tencent.biz.qqstory.view.widget.QQStoryLoadingView android:textSize="14.0dip" android:textColor="#ff777777" android:id="@id/ds" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fxg" android:drawablePadding="15.0dip" android:layout_centerInParent="true" />
+    <com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView android:id="@id/azb" android:padding="5.0dip" android:visibility="gone" android:layout_width="34.0dip" android:layout_height="34.0dip" android:layout_marginTop="25.5dip" android:layout_marginRight="7.0dip" android:src="@drawable/fcs" android:layout_alignParentRight="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/rb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="22.0dip" android:layout_marginRight="45.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/ra" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/rd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/re" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <ImageView android:id="@id/bet" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <com.tencent.biz.qqstory.playvideo.VideoCoverListBar android:id="@id/kqi" android:layout_width="138.0dip" android:layout_height="44.0dip" android:layout_marginTop="22.0dip" android:layout_marginRight="40.0dip" android:layout_alignParentRight="true" />
+</merge>

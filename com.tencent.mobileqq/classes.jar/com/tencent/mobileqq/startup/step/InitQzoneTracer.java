@@ -3,7 +3,7 @@ package com.tencent.mobileqq.startup.step;
 public class InitQzoneTracer
   extends Step
 {
-  protected boolean a()
+  protected boolean doStep()
   {
     return true;
   }

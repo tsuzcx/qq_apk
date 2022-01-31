@@ -7,18 +7,18 @@ import com.tencent.qphone.base.util.QLog;
 
 public class PluginManagerClient
 {
-  RemotePluginManager a;
+  RemotePluginManager mRemote;
   
   public PluginManagerClient(RemotePluginManager paramRemotePluginManager)
   {
-    this.a = paramRemotePluginManager;
+    this.mRemote = paramRemotePluginManager;
   }
   
   public void cancelInstall(String paramString)
   {
     try
     {
-      this.a.cancelInstall(paramString);
+      this.mRemote.cancelInstall(paramString);
       return;
     }
     catch (RemoteException paramString) {}
@@ -26,24 +26,24 @@ public class PluginManagerClient
   
   public void destory()
   {
-    this.a = null;
+    this.mRemote = null;
   }
   
   public void installPlugin(String paramString)
   {
-    PluginManageHandler.getPluginIOHandler().post(new g(this, paramString));
+    PluginManageHandler.getPluginIOHandler().post(new PluginManagerClient.1(this, paramString));
   }
   
   public void installPlugin(String paramString, OnPluginInstallListener paramOnPluginInstallListener)
   {
-    PluginManageHandler.getPluginIOHandler().post(new h(this, paramString, paramOnPluginInstallListener));
+    PluginManageHandler.getPluginIOHandler().post(new PluginManagerClient.2(this, paramString, paramOnPluginInstallListener));
   }
   
   public boolean isPluginInstalled(String paramString)
   {
     try
     {
-      boolean bool = this.a.isPlugininstalled(paramString);
+      boolean bool = this.mRemote.isPlugininstalled(paramString);
       return bool;
     }
     catch (RemoteException paramString) {}
@@ -54,7 +54,7 @@ public class PluginManagerClient
   {
     try
     {
-      boolean bool = this.a.isReady();
+      boolean bool = this.mRemote.isReady();
       return bool;
     }
     catch (RemoteException localRemoteException) {}
@@ -65,7 +65,7 @@ public class PluginManagerClient
   {
     try
     {
-      paramString = this.a.queryPlugin(paramString);
+      paramString = this.mRemote.queryPlugin(paramString);
       return paramString;
     }
     catch (RemoteException paramString) {}
@@ -76,7 +76,7 @@ public class PluginManagerClient
   {
     try
     {
-      this.a.setListener(paramStub);
+      this.mRemote.setListener(paramStub);
       return;
     }
     catch (RemoteException paramStub) {}
@@ -86,10 +86,10 @@ public class PluginManagerClient
   {
     bool2 = false;
     bool1 = bool2;
-    if (this.a != null) {}
+    if (this.mRemote != null) {}
     try
     {
-      IBinder localIBinder = this.a.asBinder();
+      IBinder localIBinder = this.mRemote.asBinder();
       bool1 = bool2;
       if (localIBinder != null)
       {

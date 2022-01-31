@@ -1,18 +1,42 @@
-import com.tencent.mobileqq.now.enter.NowHongbaoPushManager;
+import com.tencent.mobileqq.activity.photo.TroopClipPic;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class ageq
-  implements Runnable
+class ageq
+  extends ajuc
 {
-  public ageq(NowHongbaoPushManager paramNowHongbaoPushManager) {}
+  ageq(agem paramagem) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, List<TroopClipPic> paramList)
   {
-    NowHongbaoPushManager.a(this.a, null);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((!paramBoolean) || (!azzz.a(paramString1, this.a.jdField_a_of_type_JavaLangString)));
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopPhotoController", 2, String.format("onGetTroopAvatar result=%d", new Object[] { Integer.valueOf(paramInt1) }));
+      }
+    } while (paramInt1 != 0);
+    this.a.a(true);
+  }
+  
+  protected void b(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, List<TroopClipPic> paramList)
+  {
+    if (!azzz.a(paramString1, this.a.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopPhotoController", 2, String.format("onCmdTroopAvatar result=%d", new Object[] { Integer.valueOf(paramInt1) }));
+    }
+    this.a.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ageq
  * JD-Core Version:    0.7.0.1
  */

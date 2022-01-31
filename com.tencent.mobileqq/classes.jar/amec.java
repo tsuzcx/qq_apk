@@ -1,38 +1,72 @@
-import com.tencent.ims.QSecCloudAVEngineMsg.QSecCloudRespBody;
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.CloudAVEngineImpl;
-import com.tencent.qqprotect.qsec.SecSvcHandlerHelper.ISecSvcRespListener;
 
 public class amec
-  implements SecSvcHandlerHelper.ISecSvcRespListener
+  extends alzl<ameb>
 {
-  public amec(CloudAVEngineImpl paramCloudAVEngineImpl) {}
-  
-  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public int a()
   {
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null) && (paramObject != null)) {
+    return 488;
+  }
+  
+  @NonNull
+  public ameb a(int paramInt)
+  {
+    return new ameb();
+  }
+  
+  @Nullable
+  public ameb a(alzs[] paramArrayOfalzs)
+  {
+    if ((paramArrayOfalzs != null) && (paramArrayOfalzs.length > 0) && (paramArrayOfalzs[0] != null))
+    {
+      ameb localameb = ameb.a(paramArrayOfalzs[0].a);
       if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, "server reply packet");
+        QLog.d("PttWithTextSwitchProcessor", 2, "onParsed " + paramArrayOfalzs[0].a);
       }
+      return localameb;
     }
-    try
-    {
-      paramToServiceMsg = new QSecCloudAVEngineMsg.QSecCloudRespBody();
-      paramToServiceMsg.mergeFrom((byte[])paramObject);
-      CloudAVEngineImpl.a(this.a).sendMessage(CloudAVEngineImpl.a(this.a).obtainMessage(4, paramToServiceMsg));
-      return;
+    return null;
+  }
+  
+  public Class<ameb> a()
+  {
+    return ameb.class;
+  }
+  
+  public void a(int paramInt) {}
+  
+  public void a(ameb paramameb)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PttWithTextSwitchProcessor", 2, "onUpdate " + paramameb.toString());
     }
-    catch (Exception paramToServiceMsg)
-    {
-      paramToServiceMsg.printStackTrace();
-    }
+  }
+  
+  public boolean a()
+  {
+    return true;
+  }
+  
+  public int b()
+  {
+    return 0;
+  }
+  
+  public boolean b()
+  {
+    return false;
+  }
+  
+  public boolean c()
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amec
  * JD-Core Version:    0.7.0.1
  */

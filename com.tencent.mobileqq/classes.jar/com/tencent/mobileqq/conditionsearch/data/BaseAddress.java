@@ -14,7 +14,7 @@ public class BaseAddress
   public static final int ADDRESS_TYPE_PROVINCE = 1;
   public int addressType;
   public String code;
-  public LinkedHashMap dataMap;
+  public LinkedHashMap<String, BaseAddress> dataMap;
   public boolean hasCity;
   public boolean hasDistrict;
   public boolean hasProvince;
@@ -60,7 +60,7 @@ public class BaseAddress
     return j;
   }
   
-  public ArrayList getDataList()
+  public ArrayList<BaseAddress> getDataList()
   {
     if (this.dataMap != null) {
       return new ArrayList(this.dataMap.values());

@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class AVRedPacketGameSyncInfo$FocusInfo
-  extends MessageMicro
+  extends MessageMicro<FocusInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8 }, new String[] { "id" }, new Object[] { Integer.valueOf(0) }, FocusInfo.class);
   public final PBUInt32Field id = PBField.initUInt32(0);

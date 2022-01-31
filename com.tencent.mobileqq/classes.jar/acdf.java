@@ -1,25 +1,26 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.Setting;
-
-public final class acdf
-  implements Parcelable.Creator
+public class acdf
 {
-  public Setting a(Parcel paramParcel)
-  {
-    Setting localSetting = new Setting();
-    localSetting.readFromParcel(paramParcel);
-    return localSetting;
-  }
-  
-  public Setting[] a(int paramInt)
-  {
-    return new Setting[paramInt];
-  }
+  public int a;
+  public String a = "";
+  public int b;
+  public String b = "";
+  public String c = "";
+  public String d = "";
+  public String e = "";
+  public String f = "";
+  public String g = "";
+  public String h = "";
+  public String i = "";
+  public String j = "";
+  public String k = "";
+  public String l = "";
+  public String m = "";
+  public String n = "";
+  public String o = "";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     acdf
  * JD-Core Version:    0.7.0.1
  */

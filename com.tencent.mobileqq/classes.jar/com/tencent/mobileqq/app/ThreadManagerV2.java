@@ -8,11 +8,9 @@ import android.os.Looper;
 import android.text.TextUtils;
 import java.lang.reflect.Field;
 import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
@@ -33,14 +31,7 @@ public class ThreadManagerV2
   public static final String TAG = "ThreadManager";
   private static Timer TIMER;
   protected static volatile Handler UI_HANDLER;
-  private static Executor mNetExcutorPool = new ThreadPoolExecutor(5, 9, 1L, TimeUnit.SECONDS, new LinkedBlockingQueue(256), new ThreadFactory()
-  {
-    public Thread newThread(Runnable paramAnonymousRunnable)
-    {
-      ThreadLog.printQLog("ThreadManager", "new NetExcutor5Thread");
-      return new Thread(paramAnonymousRunnable, "NetExcutor5Thread");
-    }
-  });
+  private static Executor mNetExcutorPool = new ThreadPoolExecutor(5, 9, 1L, TimeUnit.SECONDS, new LinkedBlockingQueue(256), new ThreadManagerV2.3());
   public static ThreadWrapContext sThreadWrapContext;
   
   static
@@ -176,42 +167,7 @@ public class ThreadManagerV2
     if (TIMER == null) {}
     try
     {
-      TIMER = new Timer("QQ_Timer")
-      {
-        public void cancel()
-        {
-          ThreadLog.printQLog("ThreadManager", "Can't cancel Global Timer");
-          if (!ThreadSetting.isPublicVersion) {
-            throw new RuntimeException("Can't cancel Global Timer");
-          }
-        }
-        
-        public void schedule(TimerTask paramAnonymousTimerTask, long paramAnonymousLong)
-        {
-          try
-          {
-            super.schedule(paramAnonymousTimerTask, paramAnonymousLong);
-            return;
-          }
-          catch (Exception paramAnonymousTimerTask)
-          {
-            ThreadLog.printQLog("ThreadManager", "timer schedule err", paramAnonymousTimerTask);
-          }
-        }
-        
-        public void schedule(TimerTask paramAnonymousTimerTask, long paramAnonymousLong1, long paramAnonymousLong2)
-        {
-          try
-          {
-            super.schedule(paramAnonymousTimerTask, paramAnonymousLong1, paramAnonymousLong2);
-            return;
-          }
-          catch (Exception paramAnonymousTimerTask)
-          {
-            ThreadLog.printQLog("ThreadManager", "timer schedule2 err", paramAnonymousTimerTask);
-          }
-        }
-      };
+      TIMER = new ThreadManagerV2.4("QQ_Timer");
       return TIMER;
     }
     finally {}
@@ -238,14 +194,7 @@ public class ThreadManagerV2
   
   private static void initRuntimShutDownHook()
   {
-    Runtime.getRuntime().addShutdownHook(new Thread()
-    {
-      public void run()
-      {
-        ThreadManagerV2.IsRunTimeShutDown = true;
-        ThreadLog.printQLog("ThreadManager", "QQ Runtime ShutDown");
-      }
-    });
+    Runtime.getRuntime().addShutdownHook(new ThreadManagerV2.1());
   }
   
   public static HandlerThread newFreeHandlerThread(String paramString, int paramInt)
@@ -272,14 +221,7 @@ public class ThreadManagerV2
   
   public static Executor newSerialExecutor()
   {
-    Executors.newSingleThreadExecutor(new ThreadFactory()
-    {
-      public Thread newThread(Runnable paramAnonymousRunnable)
-      {
-        ThreadLog.printQLog("ThreadManager", "serialExecutor_thread");
-        return new Thread(paramAnonymousRunnable, "serialExecutor_thread");
-      }
-    });
+    return Executors.newSingleThreadExecutor(new ThreadManagerV2.2());
   }
   
   @Deprecated

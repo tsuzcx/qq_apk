@@ -1,51 +1,51 @@
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardListActivity;
-import com.tencent.mobileqq.businessCard.activity.FlowCameraPhotoActivity;
-import com.tencent.mobileqq.businessCard.utilities.BusinessCardUtils;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.widget.AutoCompleteTextView;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import java.util.Locale;
 
 public class abtu
-  implements ActionSheet.OnButtonClickListener
+  implements begw
 {
-  public abtu(BusinessCardEditActivity paramBusinessCardEditActivity, boolean paramBoolean, ActionSheet paramActionSheet) {}
+  public abtu(SubLoginActivity paramSubLoginActivity) {}
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
+    if (this.a.jdField_b_of_type_Boolean) {
       return;
-      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.getActivity(), FlowCameraPhotoActivity.class);
-      paramView.putExtra("extra_return_result", true);
-      this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.startActivityForResult(paramView, 10);
-      if (this.jdField_a_of_type_Boolean) {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.app, "CliOper", "", "", "0X80064EB", "0X80064EB", 0, 0, "", "", "", "");
+    }
+    if (paramInt == 0)
+    {
+      paramView = null;
+      if (SubLoginActivity.a(this.a) != null) {
+        paramView = SubLoginActivity.a(this.a).getText().toString();
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.d != 0)
+      if (TextUtils.isEmpty(paramView)) {
+        break label193;
+      }
+    }
+    label193:
+    for (paramView = String.format(Locale.getDefault(), "%s&account=%s", new Object[] { "https://ti.qq.com/safe/forgetpw?source_id=2756", paramView });; paramView = "https://ti.qq.com/safe/forgetpw?source_id=2756")
+    {
+      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
+      localIntent.putExtra("uin", SubLoginActivity.a(this.a));
+      localIntent.putExtra("reqType", 3);
+      localIntent.putExtra("url", paramView);
+      this.a.startActivity(localIntent);
+      for (;;)
       {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.app, "CliOper", "", "", "0X800774F", "0X800774F", 1, 0, this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.d + "", "", "", "");
-        continue;
-        BusinessCardUtils.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.app, this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity);
-        if (this.jdField_a_of_type_Boolean) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.app, "CliOper", "", "", "0X80064EC", "0X80064EC", 0, 0, "", "", "", "");
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.d != 0)
+        this.a.jdField_b_of_type_Boolean = true;
+        this.a.a.dismiss();
+        return;
+        if (paramInt == 1)
         {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.app, "CliOper", "", "", "0X800774F", "0X800774F", 2, 0, this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.d + "", "", "", "");
-          continue;
-          paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.getActivity(), BusinessCardListActivity.class);
-          paramView.putExtra("Extra_Entrance", 2);
-          this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.startActivityForResult(paramView, 12);
-          if (this.jdField_a_of_type_Boolean) {
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.app, "CliOper", "", "", "0X80064ED", "0X80064ED", 0, 0, "", "", "", "");
-          }
+          paramView = new Intent(this.a, LoginPhoneNumActivity.class);
+          paramView.putExtra("isSubaccount", true);
+          paramView.putExtra("fromWhere", this.a.jdField_b_of_type_JavaLangString);
+          this.a.startActivity(paramView);
         }
       }
     }
@@ -53,7 +53,7 @@ public class abtu
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abtu
  * JD-Core Version:    0.7.0.1
  */

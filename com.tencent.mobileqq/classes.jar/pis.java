@@ -1,13 +1,17 @@
-import com.tencent.biz.widgets.ScannerView;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class pis
-  implements Runnable
+class pis
+  implements View.OnClickListener
 {
-  public pis(ScannerView paramScannerView) {}
+  pis(pir parampir) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ScannerView.a(this.a);
+    paramView = this.a.jdField_a_of_type_Qoe.a();
+    if (paramView != null) {
+      paramView.a(null, ((opw)this.a.jdField_a_of_type_JavaLangObject).a(), 2);
+    }
   }
 }
 

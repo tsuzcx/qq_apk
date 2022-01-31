@@ -7,7 +7,7 @@ import java.util.List;
 public class IPicDownloadListener
   implements Serializable
 {
-  public void onDone(List paramList1, List paramList2) {}
+  public void onDone(List<CustomEmotionData> paramList1, List<CustomEmotionData> paramList2) {}
   
   public void onFileDone(CustomEmotionData paramCustomEmotionData, boolean paramBoolean) {}
 }

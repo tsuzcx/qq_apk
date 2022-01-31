@@ -9,40 +9,51 @@ import android.view.animation.ScaleAnimation;
 public class GLRecognizeRegionView$MatchStatusShow
   implements Animation.AnimationListener
 {
-  int jdField_a_of_type_Int;
-  AnimationSet jdField_a_of_type_AndroidViewAnimationAnimationSet;
-  boolean jdField_a_of_type_Boolean;
-  AnimationSet jdField_b_of_type_AndroidViewAnimationAnimationSet;
-  boolean jdField_b_of_type_Boolean;
-  AnimationSet jdField_c_of_type_AndroidViewAnimationAnimationSet;
-  boolean jdField_c_of_type_Boolean;
+  AnimationSet backgroundAnimation;
+  boolean haveBackgroundStop;
+  boolean haveMongolianStop;
+  boolean haveTypefaceStop;
+  AnimationSet mongolianAnimation;
+  int status;
+  AnimationSet typefaceAnimation;
   
   GLRecognizeRegionView$MatchStatusShow()
   {
-    a();
+    resetStatus();
   }
   
-  private AnimationSet d()
+  private AnimationSet getMatchedTypeAnimation()
   {
-    this.jdField_c_of_type_AndroidViewAnimationAnimationSet = null;
-    switch (this.jdField_a_of_type_Int)
-    {
-    }
-    for (;;)
-    {
-      if (this.jdField_c_of_type_AndroidViewAnimationAnimationSet == null) {
-        this.jdField_c_of_type_Boolean = true;
-      }
-      return this.jdField_c_of_type_AndroidViewAnimationAnimationSet;
-      this.jdField_c_of_type_AndroidViewAnimationAnimationSet = null;
-      continue;
-      this.jdField_c_of_type_AndroidViewAnimationAnimationSet = f();
-      continue;
-      this.jdField_c_of_type_AndroidViewAnimationAnimationSet = g();
-    }
+    AnimationSet localAnimationSet = new AnimationSet(false);
+    Object localObject = new AlphaAnimation(0.0F, 1.0F);
+    ((AlphaAnimation)localObject).setDuration(100L);
+    ((AlphaAnimation)localObject).setFillEnabled(true);
+    ((AlphaAnimation)localObject).setFillBefore(true);
+    localAnimationSet.addAnimation((Animation)localObject);
+    localObject = new ScaleAnimation(3.0F, 1.5F, 3.0F, 1.5F, 1, 0.5F, 1, 0.5F);
+    ((ScaleAnimation)localObject).setDuration(100L);
+    ((ScaleAnimation)localObject).setFillEnabled(true);
+    ((ScaleAnimation)localObject).setFillBefore(true);
+    localAnimationSet.addAnimation((Animation)localObject);
+    localObject = new AlphaAnimation(1.0F, 0.0F);
+    ((AlphaAnimation)localObject).setDuration(100L);
+    ((AlphaAnimation)localObject).setStartOffset(500L);
+    ((AlphaAnimation)localObject).setFillEnabled(true);
+    ((AlphaAnimation)localObject).setFillBefore(false);
+    localAnimationSet.addAnimation((Animation)localObject);
+    localObject = new ScaleAnimation(1.0F, 0.0F, 1.0F, 0.0F, 1, 0.5F, 1, 0.5F);
+    ((ScaleAnimation)localObject).setDuration(100L);
+    ((ScaleAnimation)localObject).setStartOffset(500L);
+    ((ScaleAnimation)localObject).setFillEnabled(true);
+    ((ScaleAnimation)localObject).setFillBefore(false);
+    localAnimationSet.addAnimation((Animation)localObject);
+    localAnimationSet.setFillEnabled(true);
+    localAnimationSet.setFillAfter(true);
+    localAnimationSet.setAnimationListener(this);
+    return localAnimationSet;
   }
   
-  private AnimationSet e()
+  private AnimationSet getMissTypeAnimation()
   {
     AnimationSet localAnimationSet = new AnimationSet(false);
     Object localObject = new AlphaAnimation(0.0F, 1.0F);
@@ -73,38 +84,7 @@ public class GLRecognizeRegionView$MatchStatusShow
     return localAnimationSet;
   }
   
-  private AnimationSet f()
-  {
-    AnimationSet localAnimationSet = new AnimationSet(false);
-    Object localObject = new AlphaAnimation(0.0F, 1.0F);
-    ((AlphaAnimation)localObject).setDuration(100L);
-    ((AlphaAnimation)localObject).setFillEnabled(true);
-    ((AlphaAnimation)localObject).setFillBefore(true);
-    localAnimationSet.addAnimation((Animation)localObject);
-    localObject = new ScaleAnimation(3.0F, 1.5F, 3.0F, 1.5F, 1, 0.5F, 1, 0.5F);
-    ((ScaleAnimation)localObject).setDuration(100L);
-    ((ScaleAnimation)localObject).setFillEnabled(true);
-    ((ScaleAnimation)localObject).setFillBefore(true);
-    localAnimationSet.addAnimation((Animation)localObject);
-    localObject = new AlphaAnimation(1.0F, 0.0F);
-    ((AlphaAnimation)localObject).setDuration(100L);
-    ((AlphaAnimation)localObject).setStartOffset(500L);
-    ((AlphaAnimation)localObject).setFillEnabled(true);
-    ((AlphaAnimation)localObject).setFillBefore(false);
-    localAnimationSet.addAnimation((Animation)localObject);
-    localObject = new ScaleAnimation(1.0F, 0.0F, 1.0F, 0.0F, 1, 0.5F, 1, 0.5F);
-    ((ScaleAnimation)localObject).setDuration(100L);
-    ((ScaleAnimation)localObject).setStartOffset(500L);
-    ((ScaleAnimation)localObject).setFillEnabled(true);
-    ((ScaleAnimation)localObject).setFillBefore(false);
-    localAnimationSet.addAnimation((Animation)localObject);
-    localAnimationSet.setFillEnabled(true);
-    localAnimationSet.setFillAfter(true);
-    localAnimationSet.setAnimationListener(this);
-    return localAnimationSet;
-  }
-  
-  private AnimationSet g()
+  private AnimationSet getPerfectTypeAnimation()
   {
     AnimationSet localAnimationSet = new AnimationSet(false);
     Object localObject = new AlphaAnimation(0.0F, 1.0F);
@@ -135,7 +115,81 @@ public class GLRecognizeRegionView$MatchStatusShow
     return localAnimationSet;
   }
   
-  AnimationSet a()
+  private AnimationSet getTypefaceAnimation()
+  {
+    this.typefaceAnimation = null;
+    switch (this.status)
+    {
+    }
+    for (;;)
+    {
+      if (this.typefaceAnimation == null) {
+        this.haveTypefaceStop = true;
+      }
+      return this.typefaceAnimation;
+      this.typefaceAnimation = null;
+      continue;
+      this.typefaceAnimation = getMatchedTypeAnimation();
+      continue;
+      this.typefaceAnimation = getPerfectTypeAnimation();
+    }
+  }
+  
+  boolean checkHaveStopped()
+  {
+    return (this.haveMongolianStop) && (this.haveBackgroundStop) && (this.haveTypefaceStop);
+  }
+  
+  String getAnimationLog()
+  {
+    return " haveMongolianStop=" + this.haveMongolianStop + " haveBackgroundStop=" + this.haveBackgroundStop + " haveTypefaceStop=" + this.haveTypefaceStop;
+  }
+  
+  AnimationSet getBackGroundAnimation()
+  {
+    this.backgroundAnimation = null;
+    switch (this.status)
+    {
+    }
+    for (;;)
+    {
+      if (this.backgroundAnimation == null) {
+        this.haveBackgroundStop = true;
+      }
+      return this.backgroundAnimation;
+      this.backgroundAnimation = getMissTypeAnimation();
+      continue;
+      this.backgroundAnimation = newMongolianAnimation();
+      continue;
+      this.backgroundAnimation = newMongolianAnimation();
+      continue;
+      this.backgroundAnimation = newMongolianAnimation();
+    }
+  }
+  
+  String getMessageStatus()
+  {
+    switch (this.status)
+    {
+    default: 
+      return "unKnown";
+    case 0: 
+      return "MISS";
+    case 1: 
+      return "GOOD";
+    case 2: 
+      return "GREAT";
+    }
+    return "PERFECT";
+  }
+  
+  AnimationSet getMongolianAnimation()
+  {
+    this.mongolianAnimation = newMongolianAnimation();
+    return this.mongolianAnimation;
+  }
+  
+  AnimationSet newMongolianAnimation()
   {
     AnimationSet localAnimationSet = new AnimationSet(false);
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
@@ -155,97 +209,43 @@ public class GLRecognizeRegionView$MatchStatusShow
     return localAnimationSet;
   }
   
-  String a()
-  {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      return "unKnown";
-    case 0: 
-      return "MISS";
-    case 1: 
-      return "GOOD";
-    case 2: 
-      return "GREAT";
-    }
-    return "PERFECT";
-  }
-  
-  void a()
-  {
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet = null;
-    this.jdField_b_of_type_AndroidViewAnimationAnimationSet = null;
-    this.jdField_c_of_type_AndroidViewAnimationAnimationSet = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
-  }
-  
-  boolean a()
-  {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean) && (this.jdField_c_of_type_Boolean);
-  }
-  
-  AnimationSet b()
-  {
-    this.jdField_a_of_type_AndroidViewAnimationAnimationSet = a();
-    return this.jdField_a_of_type_AndroidViewAnimationAnimationSet;
-  }
-  
-  String b()
-  {
-    return " haveMongolianStop=" + this.jdField_a_of_type_Boolean + " haveBackgroundStop=" + this.jdField_b_of_type_Boolean + " haveTypefaceStop=" + this.jdField_c_of_type_Boolean;
-  }
-  
-  void b()
-  {
-    this.jdField_a_of_type_Boolean = true;
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_c_of_type_Boolean = true;
-  }
-  
-  AnimationSet c()
-  {
-    this.jdField_b_of_type_AndroidViewAnimationAnimationSet = null;
-    switch (this.jdField_a_of_type_Int)
-    {
-    }
-    for (;;)
-    {
-      if (this.jdField_b_of_type_AndroidViewAnimationAnimationSet == null) {
-        this.jdField_b_of_type_Boolean = true;
-      }
-      return this.jdField_b_of_type_AndroidViewAnimationAnimationSet;
-      this.jdField_b_of_type_AndroidViewAnimationAnimationSet = e();
-      continue;
-      this.jdField_b_of_type_AndroidViewAnimationAnimationSet = a();
-      continue;
-      this.jdField_b_of_type_AndroidViewAnimationAnimationSet = a();
-      continue;
-      this.jdField_b_of_type_AndroidViewAnimationAnimationSet = a();
-    }
-  }
-  
   public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_AndroidViewAnimationAnimationSet == paramAnimation) {
-      this.jdField_a_of_type_Boolean = true;
+    if (this.mongolianAnimation == paramAnimation) {
+      this.haveMongolianStop = true;
     }
     do
     {
       return;
-      if (this.jdField_b_of_type_AndroidViewAnimationAnimationSet == paramAnimation)
+      if (this.backgroundAnimation == paramAnimation)
       {
-        this.jdField_b_of_type_Boolean = true;
+        this.haveBackgroundStop = true;
         return;
       }
-    } while (this.jdField_c_of_type_AndroidViewAnimationAnimationSet != paramAnimation);
-    this.jdField_c_of_type_Boolean = true;
+    } while (this.typefaceAnimation != paramAnimation);
+    this.haveTypefaceStop = true;
   }
   
   public void onAnimationRepeat(Animation paramAnimation) {}
   
   public void onAnimationStart(Animation paramAnimation) {}
+  
+  void resetStatus()
+  {
+    this.mongolianAnimation = null;
+    this.backgroundAnimation = null;
+    this.typefaceAnimation = null;
+    this.haveMongolianStop = false;
+    this.haveBackgroundStop = false;
+    this.haveTypefaceStop = false;
+  }
+  
+  void setHaveStopped()
+  {
+    this.haveMongolianStop = true;
+    this.haveBackgroundStop = true;
+    this.haveTypefaceStop = true;
+  }
 }
 
 

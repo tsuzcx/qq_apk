@@ -1,24 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySelfActivity;
-import com.tencent.biz.pubaccount.util.PublicTracker;
-import com.tencent.mobileqq.widget.BounceScrollView.DrawFinishedListener;
+import com.tencent.ttpic.facedetect.TTFaceOriginDataModel;
+import java.util.List;
 
 public class lgo
-  implements BounceScrollView.DrawFinishedListener
 {
-  public lgo(ReadInJoySelfActivity paramReadInJoySelfActivity) {}
+  public int a;
+  public List<TTFaceOriginDataModel> a;
+  public boolean a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
   
-  public void a()
+  public boolean a()
   {
-    if (ReadInJoySelfActivity.a(this.a))
-    {
-      ReadInJoySelfActivity.a(this.a, false);
-      PublicTracker.a("self_tab_cost", null);
-    }
+    return (this.d != 0) && (this.e != 0) && (this.a != null) && (!this.a.isEmpty());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lgo
  * JD-Core Version:    0.7.0.1
  */

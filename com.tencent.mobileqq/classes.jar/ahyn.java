@@ -1,26 +1,16 @@
-import com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine;
-import com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine.FTSSearchResultItem;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.FixSizeImageView;
+import com.tencent.widget.SingleLineTextView;
 
 public class ahyn
-  implements Comparator
 {
-  public ahyn(FTSMessageSearchEngine paramFTSMessageSearchEngine) {}
+  public axak a;
+  public DragTextView a;
+  public FixSizeImageView a;
+  public SingleLineTextView a;
+  public SingleLineTextView b;
   
-  public int a(FTSMessageSearchEngine.FTSSearchResultItem paramFTSSearchResultItem1, FTSMessageSearchEngine.FTSSearchResultItem paramFTSSearchResultItem2)
-  {
-    int j = Long.signum(paramFTSSearchResultItem1.b - paramFTSSearchResultItem2.b);
-    int i = j;
-    if (j == 0)
-    {
-      j = Long.signum(paramFTSSearchResultItem1.c - paramFTSSearchResultItem2.c);
-      i = j;
-      if (j == 0) {
-        i = Long.signum(-paramFTSSearchResultItem1.a + paramFTSSearchResultItem2.a);
-      }
-    }
-    return i;
-  }
+  public ahyn(ahym paramahym) {}
 }
 
 

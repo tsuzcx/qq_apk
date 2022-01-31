@@ -1,23 +1,33 @@
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ConnectionCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class aavv
-  implements Runnable
+public class aavv
+  implements baxq
 {
-  aavv(aavt paramaavt) {}
+  private WeakReference<aqeb> a;
   
-  public void run()
+  public aavv(aqeb paramaqeb)
   {
-    if ((ArkAppEventObserverManager.a(this.a.a) != null) && (!"cellular".equals(ArkAppEventObserverManager.a(this.a.a))))
+    this.a = new WeakReference(paramaqeb);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-      ArkAppEventObserverManager.a(this.a.a).a(true, "cellular");
-      ArkAppEventObserverManager.a(this.a.a, "cellular");
+      aqeb localaqeb = (aqeb)this.a.get();
+      if (localaqeb != null) {
+        localaqeb.a();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendProfileCardActivity", 2, "check friend's profile and preload web-process!");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aavv
  * JD-Core Version:    0.7.0.1
  */

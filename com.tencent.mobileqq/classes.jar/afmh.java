@@ -1,44 +1,21 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.common.galleryactivity.AnimationUtils;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.activity.history.ChatHistoryMediaBaseFragment;
 
-class afmh
-  implements ActionSheet.OnButtonClickListener
+public class afmh
+  implements aais
 {
-  afmh(afmg paramafmg, View paramView, PicInfo paramPicInfo, ActionSheet paramActionSheet) {}
+  public afmh(ChatHistoryMediaBaseFragment paramChatHistoryMediaBaseFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public boolean a(boolean paramBoolean)
   {
-    int i = paramInt;
-    if (this.jdField_a_of_type_Afmg.jdField_a_of_type_Int == 0) {
-      i = paramInt + 1;
+    if (paramBoolean) {
+      bgtr.a(this.a.getActivity());
     }
-    switch (i)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
-      return;
-      this.jdField_a_of_type_Afmg.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.jdField_a_of_type_AndroidWidgetLinearLayout.removeView(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_Afmg.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidViewView, 0);
-      NearbyProfileEditPanel.a(this.jdField_a_of_type_Afmg.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel);
-      continue;
-      paramView = AnimationUtils.a(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_Afmg.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(this.jdField_a_of_type_Afmg.jdField_a_of_type_Int, paramView, this.jdField_a_of_type_Afmg.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.jdField_a_of_type_JavaUtilArrayList);
-      continue;
-      NearbyProfileEditPanel.a(this.jdField_a_of_type_Afmg.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel, this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo, this.jdField_a_of_type_AndroidViewView);
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afmh
  * JD-Core Version:    0.7.0.1
  */

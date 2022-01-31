@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class ComicIPSite$ComicRich
-  extends MessageMicro
+  extends MessageMicro<ComicRich>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34 }, new String[] { "extCover", "extName", "extTitle", "extUrl" }, new Object[] { "", "", "", "" }, ComicRich.class);
   public final PBStringField extCover = PBField.initString("");
@@ -16,7 +16,7 @@ public final class ComicIPSite$ComicRich
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.emosm.ComicIPSite.ComicRich
  * JD-Core Version:    0.7.0.1
  */

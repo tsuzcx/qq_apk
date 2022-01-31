@@ -2,45 +2,62 @@ package com.tencent.component.network.utils.http.pool;
 
 import java.util.concurrent.TimeUnit;
 
-public abstract class PoolEntry
+public abstract class PoolEntry<T, C>
 {
-  private final long jdField_a_of_type_Long;
-  private final Object jdField_a_of_type_JavaLangObject;
-  private final String jdField_a_of_type_JavaLangString;
-  private final long jdField_b_of_type_Long;
-  private final Object jdField_b_of_type_JavaLangObject;
-  private long jdField_c_of_type_Long;
-  private volatile Object jdField_c_of_type_JavaLangObject;
-  private long d;
+  private final C conn;
+  private final long created;
+  private long expiry;
+  private final String id;
+  private final T route;
+  private volatile Object state;
+  private long updated;
+  private final long validUnit;
   
-  public PoolEntry(String paramString, Object paramObject1, Object paramObject2, long paramLong, TimeUnit paramTimeUnit)
+  public PoolEntry(String paramString, T paramT, C paramC)
   {
-    if (paramObject1 == null) {
+    this(paramString, paramT, paramC, 0L, TimeUnit.MILLISECONDS);
+  }
+  
+  public PoolEntry(String paramString, T paramT, C paramC, long paramLong, TimeUnit paramTimeUnit)
+  {
+    if (paramT == null) {
       throw new IllegalArgumentException("Route may not be null");
     }
-    if (paramObject2 == null) {
+    if (paramC == null) {
       throw new IllegalArgumentException("Connection may not be null");
     }
     if (paramTimeUnit == null) {
       throw new IllegalArgumentException("Time unit may not be null");
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangObject = paramObject1;
-    this.jdField_b_of_type_JavaLangObject = paramObject2;
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.id = paramString;
+    this.route = paramT;
+    this.conn = paramC;
+    this.created = System.currentTimeMillis();
     if (paramLong > 0L) {}
-    for (this.jdField_b_of_type_Long = (this.jdField_a_of_type_Long + paramTimeUnit.toMillis(paramLong));; this.jdField_b_of_type_Long = 9223372036854775807L)
+    for (this.validUnit = (this.created + paramTimeUnit.toMillis(paramLong));; this.validUnit = 9223372036854775807L)
     {
-      this.d = this.jdField_b_of_type_Long;
+      this.expiry = this.validUnit;
       return;
     }
   }
   
-  public long a()
+  public abstract void close();
+  
+  public C getConnection()
+  {
+    return this.conn;
+  }
+  
+  public long getCreated()
+  {
+    return this.created;
+  }
+  
+  public long getExpiry()
   {
     try
     {
-      long l = this.jdField_c_of_type_Long;
+      long l = this.expiry;
       return l;
     }
     finally
@@ -50,44 +67,50 @@ public abstract class PoolEntry
     }
   }
   
-  public Object a()
+  public String getId()
   {
-    return this.jdField_a_of_type_JavaLangObject;
+    return this.id;
   }
   
-  public void a(long paramLong, TimeUnit paramTimeUnit)
+  public T getRoute()
   {
-    if (paramTimeUnit == null) {
-      try
-      {
-        throw new IllegalArgumentException("Time unit may not be null");
-      }
-      finally {}
-    }
-    this.jdField_c_of_type_Long = System.currentTimeMillis();
-    if (paramLong > 0L) {}
-    for (paramLong = this.jdField_c_of_type_Long + paramTimeUnit.toMillis(paramLong);; paramLong = 9223372036854775807L)
+    return this.route;
+  }
+  
+  public Object getState()
+  {
+    return this.state;
+  }
+  
+  public long getUpdated()
+  {
+    try
     {
-      this.d = Math.min(paramLong, this.jdField_b_of_type_Long);
-      return;
+      long l = this.updated;
+      return l;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
   
-  public void a(Object paramObject)
+  public long getValidUnit()
   {
-    this.jdField_c_of_type_JavaLangObject = paramObject;
+    return this.validUnit;
   }
   
-  public abstract boolean a();
+  public abstract boolean isClosed();
   
   /* Error */
-  public boolean a(long paramLong)
+  public boolean isExpired(long paramLong)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 51	com/tencent/component/network/utils/http/pool/PoolEntry:d	J
+    //   3: getfield 68	com/tencent/component/network/utils/http/pool/PoolEntry:expiry	J
     //   6: lstore_3
     //   7: lload_1
     //   8: lload_3
@@ -119,29 +142,40 @@ public abstract class PoolEntry
     //   2	7	27	finally
   }
   
-  public Object b()
+  public void setState(Object paramObject)
   {
-    return this.jdField_b_of_type_JavaLangObject;
-  }
-  
-  public abstract void b();
-  
-  public Object c()
-  {
-    return this.jdField_c_of_type_JavaLangObject;
+    this.state = paramObject;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("[id:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.id);
     localStringBuilder.append("][route:");
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangObject);
+    localStringBuilder.append(this.route);
     localStringBuilder.append("][state:");
-    localStringBuilder.append(this.jdField_c_of_type_JavaLangObject);
+    localStringBuilder.append(this.state);
     localStringBuilder.append("]");
     return localStringBuilder.toString();
+  }
+  
+  public void updateExpiry(long paramLong, TimeUnit paramTimeUnit)
+  {
+    if (paramTimeUnit == null) {
+      try
+      {
+        throw new IllegalArgumentException("Time unit may not be null");
+      }
+      finally {}
+    }
+    this.updated = System.currentTimeMillis();
+    if (paramLong > 0L) {}
+    for (paramLong = this.updated + paramTimeUnit.toMillis(paramLong);; paramLong = 9223372036854775807L)
+    {
+      this.expiry = Math.min(paramLong, this.validUnit);
+      return;
+    }
   }
 }
 

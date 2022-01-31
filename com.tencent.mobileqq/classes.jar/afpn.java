@@ -1,42 +1,33 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 class afpn
-  implements Runnable
 {
-  afpn(afpm paramafpm, List paramList, boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
+  private View jdField_a_of_type_AndroidViewView;
+  private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
+  private ImageView jdField_a_of_type_AndroidWidgetImageView;
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private TextView b;
+  private TextView c;
   
-  public void run()
+  public afpn(View paramView)
   {
-    List localList = NearbyMomentManager.a(this.jdField_a_of_type_Afpm.a, this.jdField_a_of_type_JavaUtilList);
-    Object localObject;
-    if (localList == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("NearbyMomentManager", 2, "momentFeedInfoList is null");
-      }
-      localObject = new ArrayList();
-    }
-    for (;;)
-    {
-      ThreadManager.getUIHandler().post(new afpo(this, (List)localObject));
-      return;
-      localObject = localList;
-      if (QLog.isColorLevel())
-      {
-        QLog.i("NearbyMomentManager", 2, "momentFeedInfoList, size=" + this.jdField_a_of_type_JavaUtilList.size());
-        localObject = localList;
-      }
-    }
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131302772);
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131303580));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131303586));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131311622));
+    this.b = ((TextView)paramView.findViewById(2131299354));
+    this.c = ((TextView)paramView.findViewById(2131305156));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131299468));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afpn
  * JD-Core Version:    0.7.0.1
  */

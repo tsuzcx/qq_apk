@@ -1,71 +1,209 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
-import com.tencent.mobileqq.app.MessageHandler;
+import android.database.Cursor;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DeviceProfileManager;
+import com.tencent.mobileqq.app.DeviceProfileManager.DpcNames;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.structmsg.AbsShareMsg;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import java.util.Locale;
 
-public final class ajyo
-  implements BusinessObserver
+public class ajyo
 {
-  public ajyo(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
+  private static String[] a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  static
   {
-    if (paramBoolean) {}
+    String str = DeviceProfileManager.a().a(DeviceProfileManager.DpcNames.struct_msg_global_search.name(), "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|32|35|38|40|41|44|53|54|60");
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.MsgSearch", 2, str);
+    }
+    a = str.split("\\|");
+  }
+  
+  public static FullMessageSearchResult.SearchResultItem a(QQAppInterface paramQQAppInterface, atmp paramatmp, Cursor paramCursor, String paramString1, int paramInt, String paramString2, ajym paramajym)
+  {
+    if ((paramCursor == null) || (paramCursor.getCount() == 0) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    {
+      paramatmp = null;
+      return paramatmp;
+    }
+    String str = paramString2.toLowerCase(Locale.US);
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    if (paramCursor.isBeforeFirst()) {
+      paramCursor.moveToFirst();
+    }
+    label76:
+    Object localObject;
+    if (!paramCursor.isAfterLast())
+    {
+      if ((paramajym.c == 3) || (paramajym.c == 2)) {
+        return null;
+      }
+      localObject = paramCursor.getBlob(paramCursor.getColumnIndex("msgData"));
+      paramInt = paramCursor.getInt(paramCursor.getColumnIndex("msgtype"));
+      paramString2 = "";
+      paramString1 = paramString2;
+      if (localObject == null) {
+        break label590;
+      }
+      paramQQAppInterface = paramString2;
+      paramString1 = paramString2;
+    }
     for (;;)
     {
+      boolean bool;
       try
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          continue;
+        if (localObject.length <= 0) {
+          break label590;
         }
-        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
-        localWebSsoResponseBody.mergeFrom(paramBundle);
-        paramInt = localWebSsoResponseBody.ret.get();
-        if (paramInt == 0)
+        if (paramInt == -1000)
         {
-          if (!QLog.isColorLevel()) {
-            break;
+          paramQQAppInterface = paramString2;
+          paramString1 = new String((byte[])localObject, "utf-8");
+          paramQQAppInterface = paramString1;
+          paramString1 = paramQQAppInterface;
+          if (paramQQAppInterface != null) {}
+        }
+      }
+      catch (Exception paramString1) {}
+      try
+      {
+        paramString1 = new String("");
+        paramQQAppInterface = paramString1;
+        paramString1 = paramString1.toLowerCase(Locale.US);
+        paramQQAppInterface = paramString1;
+        bool = paramString1.contains(str);
+        if (!bool) {
+          break label582;
+        }
+        paramInt = 1;
+        paramQQAppInterface = paramString1;
+      }
+      catch (Exception paramString1)
+      {
+        break label481;
+        paramInt = 0;
+        paramQQAppInterface = paramString1;
+        continue;
+      }
+      if (paramInt != 0)
+      {
+        if (localArrayList1.size() < 1)
+        {
+          paramString1 = (MessageRecord)paramatmp.a(MessageRecord.class, null, paramCursor);
+          if (paramString1 != null)
+          {
+            paramString1.msg = paramQQAppInterface;
+            localArrayList1.add(paramString1);
           }
-          QLog.i(".troop.troop_topic.TroopTopicMgr", 2, "commendTopic cmd=MQUpdateSvc_com_qq_buluo.web.sbar_comment ok~~~");
-          return;
         }
-        paramBundle = new JSONObject(localWebSsoResponseBody.data.get());
-        paramBundle = "commendTopic cmd=MQUpdateSvc_com_qq_buluo.web.sbar_comment failed1, errorCode = " + paramInt + ", msg = " + paramBundle;
-        if (QLog.isColorLevel()) {
-          QLog.w(".troop.troop_topic.TroopTopicMgr", 2, paramBundle);
-        }
+        localArrayList2.add(Long.valueOf(paramCursor.getLong(paramCursor.getColumnIndex("uniseq"))));
       }
-      catch (Exception paramBundle)
+      paramCursor.moveToNext();
+      break label76;
+      if (paramInt == -1035)
       {
-        paramBundle = "commendTopic cmd=MQUpdateSvc_com_qq_buluo.web.sbar_comment failed4, msg = " + QLog.getStackTraceString(paramBundle);
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.w(".troop.troop_topic.TroopTopicMgr", 2, paramBundle);
-        continue;
+        paramQQAppInterface = paramString2;
+        paramString1 = new MessageForMixedMsg();
+        paramQQAppInterface = paramString2;
+        paramString1.msgData = ((byte[])localObject);
+        paramQQAppInterface = paramString2;
+        paramString1.doParse();
+        paramQQAppInterface = paramString2;
+        paramString1 = paramString1.msg;
+        paramQQAppInterface = paramString1;
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq);
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extraflag = 32768;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq, 32768, 1002);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(6003, false, new String[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq) });
-      return;
-      if (QLog.isColorLevel())
+      else
       {
-        QLog.w(".troop.troop_topic.TroopTopicMgr", 2, "commendTopic cmd=MQUpdateSvc_com_qq_buluo.web.sbar_comment failed2, data is null !!!!");
-        continue;
-        paramBundle = "commendTopic cmd=MQUpdateSvc_com_qq_buluo.web.sbar_comment failed3, isSuccess is " + paramBoolean;
-        if (QLog.isColorLevel()) {
-          QLog.w(".troop.troop_topic.TroopTopicMgr", 2, paramBundle + paramBoolean);
+        paramString1 = paramString2;
+        if (paramInt == -2011)
+        {
+          paramQQAppInterface = paramString2;
+          localObject = awuw.a((byte[])localObject);
+          paramString1 = paramString2;
+          if (localObject != null)
+          {
+            paramQQAppInterface = paramString2;
+            bool = a(String.valueOf(((AbsStructMsg)localObject).mMsgServiceID));
+            paramQQAppInterface = paramString2;
+            paramString1 = paramString2;
+            if ((localObject instanceof AbsShareMsg))
+            {
+              paramString1 = paramString2;
+              if (bool)
+              {
+                paramQQAppInterface = paramString2;
+                paramString2 = ((AbsShareMsg)localObject).mContentTitle;
+                paramQQAppInterface = paramString2;
+                paramString1 = paramString2;
+                if (TextUtils.isEmpty(paramString2))
+                {
+                  paramQQAppInterface = paramString2;
+                  paramString1 = paramString2;
+                  if ((localObject instanceof AbsStructMsg))
+                  {
+                    paramQQAppInterface = paramString2;
+                    paramString1 = ((AbsShareMsg)localObject).mMsgBrief;
+                    paramQQAppInterface = paramString1;
+                    continue;
+                    label481:
+                    paramString1.printStackTrace();
+                    paramInt = 0;
+                    continue;
+                    paramQQAppInterface = null;
+                    if (localArrayList1.size() > 0)
+                    {
+                      paramQQAppInterface = new FullMessageSearchResult.SearchResultItem();
+                      paramQQAppInterface.secondPageList = localArrayList1;
+                      paramQQAppInterface.secondPageMessageUniseq = localArrayList2;
+                    }
+                    paramString1 = paramajym.a;
+                    paramatmp = paramQQAppInterface;
+                    if (paramString1 == null) {
+                      break;
+                    }
+                    paramString1.a += paramCursor.getCount();
+                    paramString1.c += localArrayList1.size();
+                    paramString1.c += localArrayList2.size();
+                    return paramQQAppInterface;
+                  }
+                }
+              }
+            }
+          }
+        }
+        label582:
+        label590:
+        paramQQAppInterface = paramString1;
+      }
+    }
+  }
+  
+  public static boolean a(String paramString)
+  {
+    if ((TextUtils.isEmpty(paramString)) || (paramString.equals("0"))) {}
+    for (;;)
+    {
+      return false;
+      if (a != null)
+      {
+        int i = a.length;
+        String[] arrayOfString = a;
+        int j = arrayOfString.length;
+        i = 0;
+        while (i < j)
+        {
+          if (paramString.equals(arrayOfString[i])) {
+            return true;
+          }
+          i += 1;
         }
       }
     }
@@ -73,7 +211,7 @@ public final class ajyo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajyo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.activity.VADActivity;
-import com.tencent.mobileqq.search.fragment.GroupSearchFragment;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
 
 public class ahwp
-  implements View.OnClickListener
+  implements Animation.AnimationListener
 {
-  public ahwp(UniteSearchActivity paramUniteSearchActivity) {}
+  public ahwp(SpecailCareListActivity paramSpecailCareListActivity, ahxh paramahxh, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    VADActivity.a(this.a, 3);
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
+    this.jdField_a_of_type_Ahxh.a.clearAnimation();
+    paramAnimation = new RelativeLayout.LayoutParams(-2, -2);
+    paramAnimation.addRule(10);
+    paramAnimation.addRule(1, 2131302061);
+    paramAnimation.setMargins(0, (int)(22.0F * SpecailCareListActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity)), (int)(23.0F * SpecailCareListActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity) + this.jdField_a_of_type_Int), 0);
+    this.jdField_a_of_type_Ahxh.a.setLayoutParams(paramAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahwp
  * JD-Core Version:    0.7.0.1
  */

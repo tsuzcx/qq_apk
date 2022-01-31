@@ -1,41 +1,38 @@
 package com.tencent.mobileqq.app.automator.step;
 
-import com.tencent.biz.common.offline.OfflineExpire.OfflineExpireCheckUpdate;
-import com.tencent.biz.common.report.BnrReport.BnrReportCheckUpdate;
-import com.tencent.mobileqq.activity.aio.anim.AioAnimationConfigCheckUpdateItem;
+import acny;
+import ajjp;
+import ajoh;
+import ajpd;
+import ajrg;
+import ajrh;
+import ajri;
+import ajxl;
+import ardz;
+import atww;
+import awan;
+import awbp;
+import azyv;
 import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.GetRichSig;
-import com.tencent.mobileqq.app.PreloadInfoCheckUpdateItem;
 import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.PublicAccountHandler.PublicAccountCheckUpdateItem;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ReqDpcInfoNewItem;
-import com.tencent.mobileqq.app.ReqGetSettingsItem;
-import com.tencent.mobileqq.app.ReqSystemMsgNewItem;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.qzonelover.QzoneLoverService;
-import com.tencent.mobileqq.log.WebViewCheckUpdataItem;
-import com.tencent.mobileqq.profile.ProfileCardCheckUpdate;
-import com.tencent.mobileqq.qcall.PstnInfoCheckUpdateItem;
-import com.tencent.mobileqq.service.message.GetBlackListItem;
-import com.tencent.mobileqq.service.profile.GetSimpleInfoCheckUpdateItem;
-import com.tencent.mobileqq.util.QQSettingUtil.UserBitFlagCheckUpdate;
-import zxc;
+import moo;
+import moz;
 
 public class GetCheckUpdate
   extends AsyncStep
 {
-  zxc a;
+  ajxl a;
   
-  protected int a()
+  public int a()
   {
-    FriendListHandler localFriendListHandler = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.a(1);
+    FriendListHandler localFriendListHandler = (FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.a(1);
     if (this.b == 45) {}
     for (int i = 1;; i = 4)
     {
       localFriendListHandler.a(true, i);
-      QzoneLoverService.a().a();
       return 2;
     }
   }
@@ -43,7 +40,7 @@ public class GetCheckUpdate
   public void a()
   {
     super.a();
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b;
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app;
     if (this.b == 45)
     {
       PublicAccountHandler localPublicAccountHandler = (PublicAccountHandler)localQQAppInterface.a(11);
@@ -51,37 +48,35 @@ public class GetCheckUpdate
       {
         Automator localAutomator = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator;
         localPublicAccountHandler.getClass();
-        localAutomator.a(102, new PublicAccountHandler.PublicAccountCheckUpdateItem(localPublicAccountHandler));
+        localAutomator.a(102, new ajpd(localPublicAccountHandler));
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(106, new QQSettingUtil.UserBitFlagCheckUpdate(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b));
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(118, new BnrReport.BnrReportCheckUpdate(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b));
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(127, new OfflineExpire.OfflineExpireCheckUpdate(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b));
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(117, new ReqDpcInfoNewItem(localQQAppInterface));
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(113, new GetSimpleInfoCheckUpdateItem(localQQAppInterface));
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(116, new GetBlackListItem(localQQAppInterface));
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(114, new ReqSystemMsgNewItem(localQQAppInterface));
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(115, new ReqGetSettingsItem(localQQAppInterface));
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(122, new ProfileCardCheckUpdate(localQQAppInterface));
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(119, new GetRichSig(localQQAppInterface));
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(120, new AioAnimationConfigCheckUpdateItem(localQQAppInterface));
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(123, new PreloadInfoCheckUpdateItem(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b));
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(126, new WebViewCheckUpdataItem(localQQAppInterface));
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(128, new PstnInfoCheckUpdateItem(localQQAppInterface, 128));
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(129, new PstnInfoCheckUpdateItem(localQQAppInterface, 129));
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(106, new azyv(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app));
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(118, new moz(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app));
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(127, new moo(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app));
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(117, new ajrg(localQQAppInterface));
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(113, new awbp(localQQAppInterface));
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(116, new awan(localQQAppInterface));
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(114, new ajri(localQQAppInterface));
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(115, new ajrh(localQQAppInterface));
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(122, new atww(localQQAppInterface));
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(119, new ajjp(localQQAppInterface));
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(120, new acny(localQQAppInterface));
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(123, new ajoh(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app));
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.a(126, new ardz(localQQAppInterface));
     }
-    if (this.jdField_a_of_type_Zxc == null)
+    if (this.jdField_a_of_type_Ajxl == null)
     {
-      this.jdField_a_of_type_Zxc = new zxc(this, null);
-      localQQAppInterface.addObserver(this.jdField_a_of_type_Zxc);
+      this.jdField_a_of_type_Ajxl = new ajxl(this, null);
+      localQQAppInterface.addObserver(this.jdField_a_of_type_Ajxl);
     }
   }
   
-  public void c()
+  public void d()
   {
-    if (this.jdField_a_of_type_Zxc != null)
+    if (this.jdField_a_of_type_Ajxl != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.removeObserver(this.jdField_a_of_type_Zxc);
-      this.jdField_a_of_type_Zxc = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.app.removeObserver(this.jdField_a_of_type_Ajxl);
+      this.jdField_a_of_type_Ajxl = null;
     }
   }
 }

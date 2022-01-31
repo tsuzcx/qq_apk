@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.interestTag;
 
-import aezn;
+import ajjy;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -15,11 +15,13 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import asjj;
+import asjk;
+import axsk;
+import azue;
 import com.tencent.common.config.AppSetting;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.transfile.NearbyImgDownloader;
-import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
 import com.tencent.qphone.base.util.QLog;
 
 public class InterestTagItemView
@@ -28,12 +30,12 @@ public class InterestTagItemView
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aezn(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new asjj(this);
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
+  private asjk jdField_a_of_type_Asjk;
   private URLDrawable.URLDrawableOptions jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions;
   private InterestTagInfo jdField_a_of_type_ComTencentMobileqqNearbyInterestTagInterestTagInfo;
-  private InterestTagItemView.IInterestTagItemViewCallback jdField_a_of_type_ComTencentMobileqqNearbyInterestTagInterestTagItemView$IInterestTagItemViewCallback;
   private boolean jdField_a_of_type_Boolean;
   private ImageView b;
   
@@ -46,13 +48,13 @@ public class InterestTagItemView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    paramContext = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970451, this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131370525));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131370526));
-    this.b = ((ImageView)paramContext.findViewById(2131370524));
-    setBackgroundResource(2130842480);
-    int i = getResources().getColor(2131494135);
-    findViewById(2131369805).setBackgroundColor(i);
+    paramContext = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131495282, this);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131302434));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131312709));
+    this.b = ((ImageView)paramContext.findViewById(2131302416));
+    setBackgroundResource(2130844162);
+    int i = getResources().getColor(2131100621);
+    findViewById(2131312975).setBackgroundColor(i);
     this.b.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
@@ -61,16 +63,16 @@ public class InterestTagItemView
   
   public void a()
   {
-    boolean bool = this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagInterestTagItemView$IInterestTagItemViewCallback.a(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagInterestTagInfo);
+    boolean bool = this.jdField_a_of_type_Asjk.a(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagInterestTagInfo);
     if ((!bool) && (this.jdField_a_of_type_Boolean == true)) {
-      this.b.setImageResource(2130844030);
+      this.b.setImageResource(2130846022);
     }
     for (;;)
     {
       this.jdField_a_of_type_Boolean = bool;
       return;
       if ((bool == true) && (!this.jdField_a_of_type_Boolean)) {
-        this.b.setImageResource(2130844031);
+        this.b.setImageResource(2130846023);
       }
     }
   }
@@ -96,7 +98,7 @@ public class InterestTagItemView
     }
     if ((this.jdField_a_of_type_Int == 5) || (this.jdField_a_of_type_Int == 6))
     {
-      localObject1 = getResources().getDrawable(2131493213);
+      localObject1 = getResources().getDrawable(2131100176);
       this.jdField_a_of_type_AndroidWidgetImageView.setPadding(0, 0, 0, 0);
       this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(0);
       label66:
@@ -116,13 +118,13 @@ public class InterestTagItemView
         localObject3 = localObject4;
         localObject2 = this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions;
         localObject3 = localObject4;
-        i = getResources().getDimensionPixelSize(2131559034);
+        i = getResources().getDimensionPixelSize(2131166176);
         localObject3 = localObject4;
         ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = i;
         localObject3 = localObject4;
         localObject2 = this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions;
         localObject3 = localObject4;
-        j = getResources().getDimensionPixelSize(2131559032);
+        j = getResources().getDimensionPixelSize(2131166175);
         localObject3 = localObject4;
         ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = j;
         localObject3 = localObject4;
@@ -130,15 +132,15 @@ public class InterestTagItemView
         localObject3 = localObject4;
         this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions.mLoadingDrawable = ((Drawable)localObject1);
         localObject3 = localObject4;
-        localObject2 = URLDrawable.getDrawable(NearbyImgDownloader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagInterestTagInfo.tagIconUrl), this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions);
+        localObject2 = URLDrawable.getDrawable(axsk.a(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagInterestTagInfo.tagIconUrl), this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions);
         localObject3 = localObject2;
         if (this.jdField_a_of_type_Int != 7) {
           continue;
         }
         localObject3 = localObject2;
-        ((URLDrawable)localObject2).setTag(URLDrawableDecodeHandler.a(j, i, (int)(10.0F * this.jdField_a_of_type_Float)));
+        ((URLDrawable)localObject2).setTag(azue.b(j, i, (int)(10.0F * this.jdField_a_of_type_Float)));
         localObject3 = localObject2;
-        ((URLDrawable)localObject2).setDecodeHandler(URLDrawableDecodeHandler.b);
+        ((URLDrawable)localObject2).setDecodeHandler(azue.c);
       }
       catch (Exception localException)
       {
@@ -160,9 +162,9 @@ public class InterestTagItemView
           continue;
         }
         localObject3 = localObject2;
-        ((URLDrawable)localObject2).setTag(URLDrawableDecodeHandler.a(j, i));
+        ((URLDrawable)localObject2).setTag(azue.a(j, i));
         localObject3 = localObject2;
-        ((URLDrawable)localObject2).setDecodeHandler(URLDrawableDecodeHandler.a);
+        ((URLDrawable)localObject2).setDecodeHandler(azue.a);
         continue;
         localObject1 = localObject2;
         continue;
@@ -179,41 +181,41 @@ public class InterestTagItemView
       this.jdField_a_of_type_AndroidWidgetTextView.setText(paramInterestTagInfo.tagName);
       a();
       setTag(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagInterestTagInfo);
-      if (!AppSetting.b) {
+      if (!AppSetting.c) {
         break;
       }
-      setContentDescription(this.jdField_a_of_type_AndroidWidgetTextView.getText() + ",  兴趣标签 按钮。");
+      setContentDescription(this.jdField_a_of_type_AndroidWidgetTextView.getText() + ajjy.a(2131640010));
       return;
       if (this.jdField_a_of_type_Int == 7)
       {
         localObject1 = new GradientDrawable();
-        ((GradientDrawable)localObject1).setColor(getResources().getColor(2131493213));
+        ((GradientDrawable)localObject1).setColor(getResources().getColor(2131100176));
         ((GradientDrawable)localObject1).setCornerRadius(10.0F * this.jdField_a_of_type_Float);
         ((GradientDrawable)localObject1).setShape(0);
-        i = getResources().getDimensionPixelSize(2131559033);
+        i = getResources().getDimensionPixelSize(2131166174);
         ((GradientDrawable)localObject1).setSize(i, i);
         this.jdField_a_of_type_AndroidWidgetImageView.setPadding(0, 0, 0, 0);
         this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(0);
         break label66;
       }
       localObject1 = new GradientDrawable();
-      ((GradientDrawable)localObject1).setColor(getResources().getColor(2131493213));
+      ((GradientDrawable)localObject1).setColor(getResources().getColor(2131100176));
       ((GradientDrawable)localObject1).setShape(1);
-      i = getResources().getDimensionPixelSize(2131559033);
+      i = getResources().getDimensionPixelSize(2131166174);
       ((GradientDrawable)localObject1).setSize(i, i);
       break label66;
       localObject3 = localObject4;
       localObject2 = this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableOptions;
       localObject3 = localObject4;
-      i = getResources().getDimensionPixelSize(2131559033);
+      i = getResources().getDimensionPixelSize(2131166174);
       localObject3 = localObject4;
       ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = i;
     }
   }
   
-  public void setCallback(InterestTagItemView.IInterestTagItemViewCallback paramIInterestTagItemViewCallback)
+  public void setCallback(asjk paramasjk)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagInterestTagItemView$IInterestTagItemViewCallback = paramIInterestTagItemViewCallback;
+    this.jdField_a_of_type_Asjk = paramasjk;
   }
 }
 

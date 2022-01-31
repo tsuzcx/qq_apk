@@ -1,28 +1,26 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.support.v4.app.FragmentActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
 
-public class rkj
-  implements View.OnClickListener
+class rkj
+  implements Animation.AnimationListener
 {
-  public rkj(AboutActivity paramAboutActivity) {}
+  rkj(rki paramrki) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((AboutActivity.a(this.a) != null) && (AboutActivity.a(this.a).a != null))
-    {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8004DB2", "0X8004DB2", 0, 0, "", "", UpgradeController.a(), "");
-      UpgradeDetailActivity.a(this.a, UpgradeController.a().a(), false, false, true);
-    }
+    rkg.a(this.a.a).getActivity().doOnBackPressed();
+    rkg.a(this.a.a).getActivity().overridePendingTransition(0, 0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     rkj
  * JD-Core Version:    0.7.0.1
  */

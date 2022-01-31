@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_struct$GroupNodeInfo
-  extends MessageMicro
+  extends MessageMicro<GroupNodeInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField feed_id = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -20,8 +20,8 @@ public final class qqstory_struct$GroupNodeInfo
   public final PBUInt32Field feed_video_total = PBField.initUInt32(0);
   public final PBUInt32Field isend = PBField.initUInt32(0);
   public final PBBytesField more_start_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField storyid_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
-  public final PBRepeatMessageField video_list = PBField.initRepeatMessage(qqstory_struct.GroupStoryInfo.class);
+  public final PBRepeatField<ByteStringMicro> storyid_list = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatMessageField<qqstory_struct.GroupStoryInfo> video_list = PBField.initRepeatMessage(qqstory_struct.GroupStoryInfo.class);
   
   static
   {
@@ -33,7 +33,7 @@ public final class qqstory_struct$GroupNodeInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupNodeInfo
  * JD-Core Version:    0.7.0.1
  */

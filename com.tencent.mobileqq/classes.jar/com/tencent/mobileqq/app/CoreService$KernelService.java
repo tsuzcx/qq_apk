@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.app;
 
+import android.app.Notification;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
@@ -52,8 +53,8 @@ public class CoreService$KernelService
     }
     try
     {
-      CoreService.sCore.startForeground(CoreService.NOTIFICATION_ID, CoreService.fakeNotification(true));
-      super.startForeground(CoreService.NOTIFICATION_ID, CoreService.fakeNotification(false));
+      CoreService.sCore.startForeground(CoreService.NOTIFICATION_ID, new Notification());
+      super.startForeground(CoreService.NOTIFICATION_ID, new Notification());
       CoreService.sCore.stopForeground(true);
       return 2;
     }

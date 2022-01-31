@@ -4,7 +4,7 @@ import android.os.AsyncTask;
 import org.json.JSONObject;
 
 class QWalletCommonJsPlugin$GetAllContactTask
-  extends AsyncTask
+  extends AsyncTask<Void, Void, String>
 {
   QWalletCommonJsPlugin$GetAllContactTask(QWalletCommonJsPlugin paramQWalletCommonJsPlugin) {}
   
@@ -19,12 +19,12 @@ class QWalletCommonJsPlugin$GetAllContactTask
   
   protected void onPostExecute(String paramString)
   {
-    QWalletCommonJsPlugin.access$000(this.this$0, paramString);
+    QWalletCommonJsPlugin.access$400(this.this$0, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QWalletCommonJsPlugin.GetAllContactTask
  * JD-Core Version:    0.7.0.1
  */

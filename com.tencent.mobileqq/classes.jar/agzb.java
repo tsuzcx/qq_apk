@@ -1,16 +1,22 @@
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class agzb
-  implements ActionSheet.OnDismissListener
+class agzb
+  implements View.OnClickListener
 {
-  public agzb(QCallDetailActivity paramQCallDetailActivity) {}
+  agzb(agxq paramagxq) {}
   
-  public void onDismiss() {}
+  public void onClick(View paramView)
+  {
+    this.a.a(21, 0);
+    this.a.a(-1, null);
+    awqx.b(agxq.a(this.a).app, "CliOper", "", "", "QQWIFI", "clk_buleClose", 0, 0, "", "", "", "");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agzb
  * JD-Core Version:    0.7.0.1
  */

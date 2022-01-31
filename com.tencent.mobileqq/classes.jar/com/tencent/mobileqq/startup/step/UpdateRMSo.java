@@ -6,7 +6,7 @@ import com.tencent.qphone.base.util.QLog;
 public class UpdateRMSo
   extends Step
 {
-  protected boolean a()
+  protected boolean doStep()
   {
     long l1 = System.currentTimeMillis();
     VideoEnvironment.a(2131230760, 2131230761);

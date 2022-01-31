@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class mobileqq_mp$WebviewWhiteListResponse
-  extends MessageMicro
+  extends MessageMicro<WebviewWhiteListResponse>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField data = PBField.initString("");

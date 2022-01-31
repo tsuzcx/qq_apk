@@ -1,18 +1,25 @@
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.app.TroopHandler;
-import cooperation.troop.TroopPluginManager.TroopPluginCallback;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.Callback;
+import android.support.annotation.NonNull;
+import android.text.SpannableString;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeAwesomeCommentView;
 
-class pbe
-  implements TroopPluginManager.TroopPluginCallback
+public class pbe
+  implements Drawable.Callback
 {
-  pbe(paz parampaz, String paramString1, int paramInt, String paramString2) {}
+  public pbe(NativeAwesomeCommentView paramNativeAwesomeCommentView, SpannableString paramSpannableString) {}
   
-  public void a(int paramInt)
+  public void invalidateDrawable(@NonNull Drawable paramDrawable)
   {
-    if ((paramInt == 0) && (this.jdField_a_of_type_Paz.a.a != null)) {
-      this.jdField_a_of_type_Paz.a.a.a(Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), 510, 0, this.jdField_a_of_type_Int, this.b);
-    }
+    paramDrawable = new wop(paramDrawable);
+    this.jdField_a_of_type_AndroidTextSpannableString.setSpan(paramDrawable, 0, 1, 17);
+    NativeAwesomeCommentView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProteusViewImplNativeAwesomeCommentView).setText(this.jdField_a_of_type_AndroidTextSpannableString);
   }
+  
+  public void scheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable, long paramLong) {}
+  
+  public void unscheduleDrawable(@NonNull Drawable paramDrawable, @NonNull Runnable paramRunnable) {}
 }
 
 

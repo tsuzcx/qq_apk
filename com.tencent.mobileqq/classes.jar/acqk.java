@@ -1,18 +1,27 @@
-import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
+import android.widget.ImageView;
 
-public class acqk
-  extends RecyclerView.ViewHolder
+class acqk
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public acqk(ExtendFriendGroupFragment paramExtendFriendGroupFragment, View paramView)
+  acqk(acqj paramacqj) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    super(paramView);
+    double d = ((Double)paramValueAnimator.getAnimatedValue()).doubleValue();
+    if (acqj.a(this.a) != null) {
+      acqj.a(this.a).setAlpha((float)d);
+    }
+    if (acqj.a(this.a) != null) {
+      acqj.a(this.a).setAlpha((float)d * 2.0F);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acqk
  * JD-Core Version:    0.7.0.1
  */

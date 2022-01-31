@@ -68,15 +68,13 @@ public final class UploadHelper
     }
     do
     {
-      int k;
       int j;
       do
       {
         return i;
-        k = paramUploadResponse.code();
-        j = k;
+        j = paramUploadResponse.code();
         i = j;
-      } while (!UploadError.isCurlError(k));
+      } while (!UploadError.isCurlError(j));
       i = j;
     } while (!isNetworkChange());
     return 1810003;

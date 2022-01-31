@@ -63,7 +63,7 @@ public class NetworkManager$NetworkChangeReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     if ("android.net.conn.CONNECTIVITY_CHANGE".equals(paramIntent.getAction())) {
-      GlobalHandlerThread.a(paramContext).a().post(new NetworkManager.NetworkChangeReceiver.1(this));
+      GlobalHandlerThread.getInstance(paramContext).getHandler().post(new NetworkManager.NetworkChangeReceiver.1(this));
     }
   }
   

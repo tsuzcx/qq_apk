@@ -1,31 +1,104 @@
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.view.animation.Transformation;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
-import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class akuo
-  implements ValueAnimation.AnimationUpdateListener
+class akuo
+  implements moc
 {
-  public akuo(SwiftIphoneTitleBarUI paramSwiftIphoneTitleBarUI, View paramView, int paramInt) {}
+  akuo(akum paramakum, akup paramakup, ArrayList paramArrayList, akul paramakul) {}
   
-  public void a(ValueAnimation paramValueAnimation, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public void loaded(String paramString, int paramInt)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.s) {}
+    QLog.d("AREngine_ARResourceManagerTools", 2, "Load offline package finish, code = " + paramInt + "param1" + paramString);
+    if (paramInt == 0) {
+      if (paramString == null) {
+        if (this.jdField_a_of_type_Akup != null)
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_Akul);
+          if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+          {
+            this.jdField_a_of_type_Akup.a(true);
+            this.jdField_a_of_type_Akup.a(4, true);
+            this.jdField_a_of_type_Akum.a();
+          }
+        }
+      }
+    }
+    label244:
     do
     {
+      do
+      {
+        do
+        {
+          do
+          {
+            do
+            {
+              for (;;)
+              {
+                return;
+                try
+                {
+                  paramString = new JSONObject(paramString);
+                  if (!paramString.has("data")) {
+                    break label244;
+                  }
+                  paramString = paramString.getJSONArray("data");
+                  if (((paramString.length() == 0) || (!paramString.getJSONObject(0).has("bid"))) || (this.jdField_a_of_type_Akup != null))
+                  {
+                    this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_Akul);
+                    if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)
+                    {
+                      this.jdField_a_of_type_Akup.a(true);
+                      this.jdField_a_of_type_Akup.a(4, true);
+                      this.jdField_a_of_type_Akum.a();
+                      return;
+                    }
+                  }
+                }
+                catch (JSONException paramString)
+                {
+                  paramString.printStackTrace();
+                }
+              }
+            } while (this.jdField_a_of_type_Akup == null);
+            this.jdField_a_of_type_Akup.a(false);
+            this.jdField_a_of_type_Akup.a(4, false);
+            this.jdField_a_of_type_Akum.a();
+            return;
+            paramString = this.jdField_a_of_type_Akup;
+          } while (paramString == null);
+          return;
+          if (paramInt != 7) {
+            break;
+          }
+        } while (this.jdField_a_of_type_Akup == null);
+        this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_Akul);
+      } while (this.jdField_a_of_type_JavaUtilArrayList.size() != 0);
+      this.jdField_a_of_type_Akup.a(true);
+      this.jdField_a_of_type_Akup.a(4, true);
+      this.jdField_a_of_type_Akum.a();
       return;
-      this.jdField_a_of_type_AndroidViewView.getBackground().mutate().setAlpha(paramInteger.intValue());
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.d = paramInteger.intValue();
-    } while (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.d != this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.s = false;
+    } while (this.jdField_a_of_type_Akup == null);
+    this.jdField_a_of_type_Akup.a(false);
+    this.jdField_a_of_type_Akup.a(4, false);
+    this.jdField_a_of_type_Akum.a();
+  }
+  
+  public void progress(int paramInt)
+  {
+    QLog.d("AREngine_ARResourceManagerTools", 2, "Load offline progress  = " + paramInt);
+    if (this.jdField_a_of_type_Akup != null) {
+      this.jdField_a_of_type_Akup.a(akum.a(this.jdField_a_of_type_Akum, 0L, paramInt));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akuo
  * JD-Core Version:    0.7.0.1
  */

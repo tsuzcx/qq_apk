@@ -1,70 +1,117 @@
+import android.app.Activity;
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.app.SVIPHandler;
-import com.tencent.mobileqq.bubble.BubbleDiyEntity;
-import com.tencent.mobileqq.bubble.BubbleDiyFetcher;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArraySet;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-class ztn
-  implements BusinessObserver
+public class ztn
+  extends zrx
 {
-  ztn(ztm paramztm, BubbleDiyFetcher paramBubbleDiyFetcher) {}
+  private bafb jdField_a_of_type_Bafb;
+  private begr jdField_a_of_type_Begr;
   
-  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
+  public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull zrt paramzrt)
   {
-    try
+    int j = 0;
+    switch (paramInt)
     {
-      String str1 = String.valueOf(this.jdField_a_of_type_Ztm.a.b());
-      if ((paramObject instanceof List))
+    default: 
+      return false;
+    case 29: 
+      if ((this.jdField_a_of_type_Bafb != null) && (this.jdField_a_of_type_Bafb.isShowing())) {
+        this.jdField_a_of_type_Bafb.dismiss();
+      }
+      paramString = this.jdField_a_of_type_Zrw.a();
+      if ((paramString == null) || (paramString.isFinishing()))
       {
-        paramObject = (List)paramObject;
-        if (paramObject.size() > 0)
+        QLog.e("DoraemonOpenAPI.widget", 1, "execute show dialog activity is null or finish");
+        return false;
+      }
+      this.jdField_a_of_type_Bafb = babr.a(paramString, 230);
+      paramString = paramJSONObject.optString("title");
+      if (!TextUtils.isEmpty(paramString)) {
+        this.jdField_a_of_type_Bafb.setTitle(paramString);
+      }
+      paramString = paramJSONObject.optString("content");
+      if (!TextUtils.isEmpty(paramString)) {
+        this.jdField_a_of_type_Bafb.setMessage(paramString);
+      }
+      paramString = new ztp(paramzrt);
+      paramzrt = paramJSONObject.optString("confirmText");
+      if (!TextUtils.isEmpty(paramzrt)) {
+        this.jdField_a_of_type_Bafb.setPositiveButton(paramzrt, paramString);
+      }
+      paramJSONObject = paramJSONObject.optString("cancelText");
+      if (!TextUtils.isEmpty(paramJSONObject)) {
+        this.jdField_a_of_type_Bafb.setNegativeButton(paramJSONObject, paramString);
+      }
+      this.jdField_a_of_type_Bafb.setOnCancelListener(paramString);
+      this.jdField_a_of_type_Bafb.show();
+    }
+    for (;;)
+    {
+      return true;
+      if ((this.jdField_a_of_type_Begr != null) && (this.jdField_a_of_type_Begr.isShowing())) {
+        this.jdField_a_of_type_Begr.dismiss();
+      }
+      paramString = this.jdField_a_of_type_Zrw.a();
+      if ((paramString == null) || (paramString.isFinishing()))
+      {
+        QLog.e("DoraemonOpenAPI.widget", 1, "execute show action sheet activity is null or finish");
+        return false;
+      }
+      this.jdField_a_of_type_Begr = begr.a(paramString);
+      paramString = paramJSONObject.optJSONArray("itemList");
+      if (paramString == null)
+      {
+        zva.a(paramzrt, -1, "param error");
+      }
+      else
+      {
+        int k = paramString.length();
+        int i = 0;
+        for (paramInt = j; i < k; paramInt = 1)
         {
-          paramObject = paramObject.iterator();
-          while (paramObject.hasNext())
-          {
-            Object localObject = (BubbleDiyEntity)paramObject.next();
-            String str2;
-            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).topLeftId))
-            {
-              str2 = "BubbleDiyFetcher_" + str1 + "_TL_" + ((BubbleDiyEntity)localObject).topLeftId;
-              this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b.add(str2);
-            }
-            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).topRightId))
-            {
-              str2 = "BubbleDiyFetcher_" + str1 + "_TR_" + ((BubbleDiyEntity)localObject).topRightId;
-              this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b.add(str2);
-            }
-            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).bottomRightId))
-            {
-              str2 = "BubbleDiyFetcher_" + str1 + "_BR_" + ((BubbleDiyEntity)localObject).bottomRightId;
-              this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b.add(str2);
-            }
-            if (!TextUtils.isEmpty(((BubbleDiyEntity)localObject).bottomLeftId))
-            {
-              localObject = "BubbleDiyFetcher_" + str1 + "_BL_" + ((BubbleDiyEntity)localObject).bottomLeftId;
-              this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b.add(localObject);
-            }
-          }
+          String str = paramString.optString(i, "");
+          this.jdField_a_of_type_Begr.c(str);
+          i += 1;
+        }
+        paramString = new zto(this.jdField_a_of_type_Begr, paramzrt);
+        paramJSONObject = paramJSONObject.optString("cancelText");
+        if (!TextUtils.isEmpty(paramJSONObject))
+        {
+          this.jdField_a_of_type_Begr.d(paramJSONObject);
+          paramInt = 1;
+        }
+        if (paramInt != 0)
+        {
+          this.jdField_a_of_type_Begr.a(paramString);
+          this.jdField_a_of_type_Begr.setOnCancelListener(paramString);
+          this.jdField_a_of_type_Begr.a(paramString);
+          this.jdField_a_of_type_Begr.show();
+        }
+        else
+        {
+          zva.a(paramzrt, -1, "param error");
         }
       }
-      return;
     }
-    catch (Exception paramObject)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("SVIPHandler", 2, paramObject.getMessage());
-      }
+  }
+  
+  public void b()
+  {
+    if ((this.jdField_a_of_type_Bafb != null) && (this.jdField_a_of_type_Bafb.isShowing())) {
+      this.jdField_a_of_type_Bafb.dismiss();
     }
-    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleDiyFetcher.b();
+    if ((this.jdField_a_of_type_Begr != null) && (this.jdField_a_of_type_Begr.isShowing())) {
+      this.jdField_a_of_type_Begr.dismiss();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ztn
  * JD-Core Version:    0.7.0.1
  */

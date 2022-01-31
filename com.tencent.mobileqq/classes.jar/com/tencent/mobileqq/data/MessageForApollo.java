@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
+import akhp;
 import android.text.TextUtils;
 import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.utils.MessagePkgUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,6 +15,7 @@ public class MessageForApollo
   extends ChatMessage
 {
   public static final int FAKE_MSG_ACTION_ID = 99999;
+  public static final String RESERVE_JSON_KEY_3D_MESSAGE = "mApollo3DMessage";
   public static final String RESERVE_JSON_KEY_ACTION_TYPE = "actionType";
   public static final String RESERVE_JSON_KEY_ARK = "arkInfo";
   public static final String RESERVE_JSON_KEY_AUDIOID = "audioID";
@@ -51,24 +52,25 @@ public class MessageForApollo
   public boolean hasPlayed;
   public String inputText;
   public int isPlayDefaultAudio;
+  public Apollo3DMessage mApollo3DMessage;
   public MessageForArkApp mApolloGameArkMsg;
   public ApolloMessage mApolloMessage;
   public int mGameMode;
   public int msgType;
   public int overType;
-  public List playerList = new ArrayList();
+  public List<Long> playerList = new ArrayList();
   public long roomId;
   public int roomVol;
   public long signTs;
   public String winRecord;
-  public List winnerList = new ArrayList();
+  public List<Long> winnerList = new ArrayList();
   public long winnerUin;
   
   protected void doParse()
   {
     try
     {
-      this.mApolloMessage = ((ApolloMessage)MessagePkgUtils.a(this.msgData));
+      this.mApolloMessage = ((ApolloMessage)akhp.a(this.msgData));
       this.hasPlayed = this.mApolloMessage.isPlayed;
       this.msg = ApolloUtil.a(this);
       if (!TextUtils.isEmpty(this.mApolloMessage.extStr))
@@ -120,11 +122,22 @@ public class MessageForApollo
         this.winRecord = localJSONObject.optString("winRecord");
         this.gameName = localJSONObject.optString("gameName");
         this.extendJson = localJSONObject.optString("extendJson");
+        if (this.gameStatus == 0) {
+          this.gameStatus = ApolloUtil.a(this.extendJson, "gameStatus");
+        }
         this.actionType = localJSONObject.optInt("actionType");
         this.gameArkInfo = localJSONObject.optString("arkInfo");
         this.commInfo = localJSONObject.optString("commInfo");
         this.gameExtendJson = localJSONObject.optString("gameExtendJson");
         this.overType = localJSONObject.optInt("gameOverType");
+        localJSONObject = localJSONObject.optJSONObject("mApollo3DMessage");
+        if (localJSONObject != null)
+        {
+          if (this.mApollo3DMessage == null) {
+            this.mApollo3DMessage = new Apollo3DMessage();
+          }
+          this.mApollo3DMessage.setMessageWithJSONObject(localJSONObject);
+        }
         printGameStatusInfo();
       }
       if ((TextUtils.isEmpty(this.inputText)) && (this.istroop == 0) && (this.mApolloMessage.text != null)) {
@@ -148,6 +161,11 @@ public class MessageForApollo
       }
       QLog.e("MessageForApollo", 1, " Apollo doParse error, e->" + localThrowable.getMessage());
     }
+  }
+  
+  public boolean is3dAction()
+  {
+    return (this.mApollo3DMessage != null) && (ApolloActionData.isAction3DModel(this.mApollo3DMessage.actionID_3D));
   }
   
   public boolean isBarrageMode()
@@ -192,18 +210,18 @@ public class MessageForApollo
     return false;
   }
   
-  protected void postRead()
+  public void postRead()
   {
     parse();
   }
   
-  protected void prewrite()
+  public void prewrite()
   {
     if (this.mApolloMessage != null) {}
     try
     {
       this.mApolloMessage.isPlayed = this.hasPlayed;
-      this.msgData = MessagePkgUtils.a(this.mApolloMessage);
+      this.msgData = akhp.a(this.mApolloMessage);
       return;
     }
     catch (Exception localException)

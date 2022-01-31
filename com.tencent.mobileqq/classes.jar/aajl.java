@@ -1,53 +1,58 @@
-import com.tencent.mobileqq.ar.ArNativeSoManager;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
-import com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload.ARResourceDownloadCallback;
-import com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload.DownloadInfo;
-import com.tencent.qphone.base.util.QLog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class aajl
-  implements ARPreSoResourceDownload.ARResourceDownloadCallback
+  extends ajfo
 {
-  public aajl(ArNativeSoManager paramArNativeSoManager, ARCommonConfigInfo.NativeSoRes paramNativeSoRes) {}
+  public aajl(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void a()
+  protected void onCardDownload(boolean paramBoolean, Object paramObject)
   {
-    ARPreSoResourceDownload.ARResourceDownloadCallback localARResourceDownloadCallback = ArNativeSoManager.a(this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
-    if (localARResourceDownloadCallback != null) {
-      localARResourceDownloadCallback.a();
-    }
-  }
-  
-  public void a(long paramLong1, long paramLong2)
-  {
-    ARPreSoResourceDownload.ARResourceDownloadCallback localARResourceDownloadCallback = ArNativeSoManager.a(this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
-    if (localARResourceDownloadCallback != null) {
-      localARResourceDownloadCallback.a(paramLong1, paramLong2);
-    }
-  }
-  
-  public void a(boolean paramBoolean, ARPreSoResourceDownload.DownloadInfo paramDownloadInfo)
-  {
-    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes onARResourceDownloadComplete. result = " + paramBoolean + ", name = " + this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a + ", filename = " + paramDownloadInfo.c + ", url = " + paramDownloadInfo.a);
-    if (paramBoolean) {
-      if (!ArNativeSoManager.a(this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager, paramDownloadInfo.c, paramDownloadInfo.b))
-      {
-        ArNativeSoManager.a(this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager, paramDownloadInfo.c);
-        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes failed. checkFileValid failed.");
-      }
-    }
-    ARPreSoResourceDownload.ARResourceDownloadCallback localARResourceDownloadCallback;
-    do
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
     {
+      if ((paramBoolean) && (paramObject != null))
+      {
+        if ((ChatSettingActivity.a(this.a) == 0) && (ChatSettingActivity.b(this.a).equals(paramObject.uin)))
+        {
+          String str = babh.a(this.a.app, ChatSettingActivity.b(this.a));
+          if ((!TextUtils.isEmpty(str)) && (!str.equals(ChatSettingActivity.f(this.a)))) {
+            ChatSettingActivity.c(this.a, str);
+          }
+        }
+        if ((this.a.f != null) && (!TextUtils.isEmpty(ChatSettingActivity.b(this.a))) && (ChatSettingActivity.b(this.a).equals(paramObject.uin))) {
+          ChatSettingActivity.a(this.a, ChatSettingActivity.a(this.a, ChatSettingActivity.b(this.a)), this.a.f);
+        }
+      }
       return;
-      if (this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager.a(paramDownloadInfo.d, paramDownloadInfo.c, paramDownloadInfo.b) == 0) {}
-      localARResourceDownloadCallback = ArNativeSoManager.a(this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
-    } while (localARResourceDownloadCallback == null);
-    localARResourceDownloadCallback.a(paramBoolean, paramDownloadInfo);
+    }
+  }
+  
+  protected void onGetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (this.a.d != null) && (paramBoolean2 != this.a.d.a()))
+    {
+      this.a.d.setOnCheckedChangeListener(null);
+      this.a.d.setChecked(paramBoolean2);
+      this.a.d.setOnCheckedChangeListener(this.a);
+    }
+  }
+  
+  protected void onSetBabyQSwitch(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (this.a.d != null) && (paramBoolean2 != this.a.d.a()))
+    {
+      this.a.d.setOnCheckedChangeListener(null);
+      this.a.d.setChecked(paramBoolean2);
+      this.a.d.setOnCheckedChangeListener(this.a);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aajl
  * JD-Core Version:    0.7.0.1
  */

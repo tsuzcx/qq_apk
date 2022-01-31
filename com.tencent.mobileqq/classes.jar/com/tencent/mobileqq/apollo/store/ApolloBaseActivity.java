@@ -7,40 +7,39 @@ import android.graphics.Bitmap;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.text.TextUtils;
+import badq;
+import bbbt;
+import bbca;
+import bbet;
+import bbev;
+import bbex;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
-import com.tencent.biz.webviewplugin.OfflinePlugin;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.mobileqq.webview.swift.WebViewPluginEngine;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserShareMenuHandler;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics;
-import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebStatisticsInterface;
-import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebUiMethodInterface;
-import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebviewReportSpeedInterface;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
 import mqq.app.AppRuntime;
 import org.json.JSONObject;
-import yze;
+import xce;
 
 public class ApolloBaseActivity
   extends AbsBaseWebViewActivity
-  implements WebUiUtils.WebStatisticsInterface, WebUiUtils.WebUiMethodInterface, WebUiUtils.WebviewReportSpeedInterface
+  implements bbet, bbev, bbex
 {
   private static int b;
-  public int a;
-  public long a;
+  protected int a;
+  protected long a;
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private OfflinePlugin jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin;
-  public String a;
+  protected String a;
+  private xce jdField_a_of_type_Xce;
   private boolean jdField_a_of_type_Boolean = true;
   protected TouchWebView b;
-  public long f;
-  public long g;
+  protected long f;
+  protected long g;
   private boolean g;
   protected long h;
   private boolean h;
@@ -55,14 +54,14 @@ public class ApolloBaseActivity
   
   private void d()
   {
-    if ((this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin == null) && (this.jdField_b_of_type_ComTencentBizUiTouchWebView != null))
+    if ((this.jdField_a_of_type_Xce == null) && (this.jdField_b_of_type_ComTencentBizUiTouchWebView != null))
     {
-      Object localObject = this.jdField_b_of_type_ComTencentBizUiTouchWebView.a();
+      Object localObject = this.jdField_b_of_type_ComTencentBizUiTouchWebView.getPluginEngine();
       if (localObject != null)
       {
         localObject = ((WebViewPluginEngine)localObject).a("offline");
-        if ((localObject != null) && ((localObject instanceof OfflinePlugin))) {
-          this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin = ((OfflinePlugin)localObject);
+        if ((localObject != null) && ((localObject instanceof xce))) {
+          this.jdField_a_of_type_Xce = ((xce)localObject);
         }
       }
     }
@@ -77,7 +76,7 @@ public class ApolloBaseActivity
       this.jdField_h_of_type_Boolean = true;
       try
       {
-        k = NetworkUtil.a(getApplicationContext());
+        k = badq.a(getApplicationContext());
         switch (k)
         {
         default: 
@@ -89,7 +88,7 @@ public class ApolloBaseActivity
           if (this.jdField_a_of_type_AndroidContentSharedPreferences == null) {
             this.jdField_a_of_type_AndroidContentSharedPreferences = getSharedPreferences("apollo_WebView_Report_Step", 0);
           }
-          ThreadManager.post(new yze(this, localCharSequence, k), 5, null, false);
+          ThreadManager.post(new ApolloBaseActivity.1(this, localCharSequence, k), 5, null, false);
           return;
         }
       }
@@ -115,13 +114,6 @@ public class ApolloBaseActivity
   {
     return this.jdField_a_of_type_Int;
   }
-  
-  public CustomWebView a()
-  {
-    return this.jdField_b_of_type_ComTencentBizUiTouchWebView;
-  }
-  
-  public void a() {}
   
   public void a(int paramInt)
   {
@@ -150,7 +142,7 @@ public class ApolloBaseActivity
     }
   }
   
-  protected void a(WebView paramWebView, String paramString, Bitmap paramBitmap)
+  public void a(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
     super.a(paramWebView, paramString, paramBitmap);
     if (!this.jdField_a_of_type_Boolean)
@@ -172,7 +164,7 @@ public class ApolloBaseActivity
   
   public void a(boolean paramBoolean) {}
   
-  protected boolean a(WebView paramWebView, String paramString)
+  public boolean a(WebView paramWebView, String paramString)
   {
     if ((paramString.startsWith("http://")) || (paramString.startsWith("https://")))
     {
@@ -204,7 +196,7 @@ public class ApolloBaseActivity
   
   public void b() {}
   
-  protected void b(WebView paramWebView, String paramString)
+  public void b(WebView paramWebView, String paramString)
   {
     super.b(paramWebView, paramString);
     if ((!"about:blank".equalsIgnoreCase(paramString)) && (this.jdField_a_of_type_Int == 2))
@@ -219,14 +211,16 @@ public class ApolloBaseActivity
     return this.mIsResume;
   }
   
-  protected void doOnDestroy()
+  public void c() {}
+  
+  public void doOnDestroy()
   {
     super.doOnDestroy();
     e();
     jdField_b_of_type_Int -= 1;
   }
   
-  protected void doOnNewIntent(Intent paramIntent)
+  public void doOnNewIntent(Intent paramIntent)
   {
     super.doOnNewIntent(paramIntent);
     a(paramIntent);
@@ -246,8 +240,8 @@ public class ApolloBaseActivity
   public long getOpenUrlAfterCheckOfflineTime()
   {
     d();
-    if (this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin != null) {
-      return this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.jdField_a_of_type_Long;
+    if (this.jdField_a_of_type_Xce != null) {
+      return this.jdField_a_of_type_Xce.jdField_a_of_type_Long;
     }
     return 0L;
   }
@@ -255,10 +249,15 @@ public class ApolloBaseActivity
   public long getReadIndexFromOfflineTime()
   {
     d();
-    if (this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin != null) {
-      return this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.b;
+    if (this.jdField_a_of_type_Xce != null) {
+      return this.jdField_a_of_type_Xce.b;
     }
     return 0L;
+  }
+  
+  public CustomWebView getWebView()
+  {
+    return this.jdField_b_of_type_ComTencentBizUiTouchWebView;
   }
   
   public JSONObject getX5Performance()
@@ -334,20 +333,20 @@ public class ApolloBaseActivity
   public boolean isMainPageUseLocalFile()
   {
     d();
-    if (this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin != null) {
-      return this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.e;
+    if (this.jdField_a_of_type_Xce != null) {
+      return this.jdField_a_of_type_Xce.e;
     }
     return false;
   }
   
-  protected boolean onBackEvent()
+  public boolean onBackEvent()
   {
     e();
     return super.onBackEvent();
   }
   
   @TargetApi(14)
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     boolean bool = true;
     if (WebAccelerateHelper.isWebViewCache) {
@@ -357,24 +356,24 @@ public class ApolloBaseActivity
     a(getIntent());
     super.onCreate(paramBundle);
     jdField_b_of_type_Int += 1;
-    if ((this.jdField_b_of_type_ComTencentBizUiTouchWebView != null) && (Build.VERSION.SDK_INT >= 14) && (SwiftBrowserShareMenuHandler.a.length >= 1))
+    if ((this.jdField_b_of_type_ComTencentBizUiTouchWebView != null) && (Build.VERSION.SDK_INT >= 14) && (bbbt.a.length >= 1))
     {
-      int k = SwiftBrowserShareMenuHandler.a[1];
+      int k = bbbt.a[1];
       paramBundle = this.jdField_b_of_type_ComTencentBizUiTouchWebView.getSettings();
       if (paramBundle != null) {
         paramBundle.setTextZoom(k);
       }
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics != null) && (this.mRuntime != null) && (this.mRuntime.getLongAccountUin() != 0L) && (SwiftBrowserStatistics.d != 0))
+    if ((this.jdField_a_of_type_Bbca != null) && (this.mRuntime != null) && (this.mRuntime.getLongAccountUin() != 0L) && (bbca.d != 0))
     {
-      paramBundle = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics;
-      if (this.mRuntime.getLongAccountUin() % SwiftBrowserStatistics.d != 6L) {
+      paramBundle = this.jdField_a_of_type_Bbca;
+      if (this.mRuntime.getLongAccountUin() % bbca.d != 6L) {
         break label147;
       }
     }
     for (;;)
     {
-      paramBundle.e = bool;
+      paramBundle.jdField_i_of_type_Boolean = bool;
       return;
       label147:
       bool = false;
@@ -385,7 +384,7 @@ public class ApolloBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloBaseActivity
  * JD-Core Version:    0.7.0.1
  */

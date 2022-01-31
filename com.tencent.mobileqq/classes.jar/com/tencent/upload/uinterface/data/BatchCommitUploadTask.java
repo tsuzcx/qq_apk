@@ -8,11 +8,17 @@ import SLICE_UPLOAD.FileCommitRsp;
 import SLICE_UPLOAD.stResult;
 import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.upload.common.Const.UploadRetCode;
-import com.tencent.upload.common.FileUtils;
+import com.tencent.upload.common.UploadGlobalConfig;
+import com.tencent.upload.network.session.IUploadSession;
+import com.tencent.upload.network.session.SessionPool;
+import com.tencent.upload.request.impl.BatchCommitRequest;
 import com.tencent.upload.uinterface.AbstractUploadTask;
 import com.tencent.upload.uinterface.IUploadTaskCallback;
 import com.tencent.upload.uinterface.TaskTypeConfig;
+import com.tencent.upload.utils.Const.UploadRetCode;
+import com.tencent.upload.utils.FileUtils;
+import com.tencent.upload.utils.JceEncoder;
+import com.tencent.upload.utils.UploadLog;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -49,11 +55,11 @@ public class BatchCommitUploadTask
     while (localIterator.hasNext())
     {
       ImageUploadTask localImageUploadTask = (ImageUploadTask)localIterator.next();
-      Object localObject = com.tencent.upload.e.b.a(localImageUploadTask.createUploadPicInfoReq());
-      String str = (String)com.tencent.upload.a.c.a.get(localImageUploadTask.getFilePath());
+      Object localObject = JceEncoder.encode(localImageUploadTask.createUploadPicInfoReq());
+      String str = SessionPool.getSessionIdByPath(localImageUploadTask.getFilePath());
       if (!TextUtils.isEmpty(str))
       {
-        localObject = new FileCommitReq(this.iUin + "", str, (byte[])localObject, this.mAppid);
+        localObject = new FileCommitReq(this.iUin + "", str, (byte[])localObject, this.mAppid, null);
         localFileBatchCommitReq.commit_req.put(localImageUploadTask.flowId + "", localObject);
         localStringBuilder.append("[path:").append(localImageUploadTask.getFilePath());
         localStringBuilder.append(", flowId:" + localImageUploadTask.flowId);
@@ -62,7 +68,7 @@ public class BatchCommitUploadTask
       }
     }
     localStringBuilder.append("}");
-    com.tencent.upload.common.b.b("BatchCommitUploadTask", "buildReq preupload.size: " + this.commitImageTasks.size() + " " + localStringBuilder.toString());
+    UploadLog.d("BatchCommitUploadTask", "buildReq preupload.size: " + this.commitImageTasks.size() + " " + localStringBuilder.toString());
     return localFileBatchCommitReq;
   }
   
@@ -73,15 +79,17 @@ public class BatchCommitUploadTask
   
   public boolean onRun()
   {
-    com.tencent.upload.c.a.a locala = new com.tencent.upload.c.a.a(buildReq(), this.flowId);
-    this.mSession = this.mSessionPool.c();
-    if (this.mSession == null)
+    BatchCommitRequest localBatchCommitRequest = new BatchCommitRequest(buildReq(), this.flowId);
+    IUploadSession localIUploadSession = this.mSessionPool.poll();
+    if (localIUploadSession == null)
     {
-      com.tencent.upload.common.b.e("BatchCommitUploadTask", "BatchCommitUploadTask onRun(), get session return null !");
+      UploadLog.e("BatchCommitUploadTask", "BatchCommitUploadTask onRun(), get session return null !");
       retryPollSession();
       return false;
     }
-    return this.mSession.a(locala, this);
+    this.mSavedSession = localIUploadSession;
+    this.mSession = localIUploadSession;
+    return this.mSession.send(localBatchCommitRequest, this);
   }
   
   public boolean onVerifyUploadFile()
@@ -89,12 +97,12 @@ public class BatchCommitUploadTask
     return true;
   }
   
-  protected void processFileBatchCommitRsp(FileBatchCommitRsp paramFileBatchCommitRsp)
+  public void processFileBatchCommitRsp(FileBatchCommitRsp paramFileBatchCommitRsp)
   {
     if ((paramFileBatchCommitRsp == null) || (paramFileBatchCommitRsp.commit_rsp == null))
     {
       onError(Const.UploadRetCode.ERROR_BATCH_COMMIT.getCode(), "rsp invalid");
-      com.tencent.upload.common.b.d("BatchCommitUploadTask", "rsp == null");
+      UploadLog.w("BatchCommitUploadTask", "rsp == null");
       return;
     }
     Object localObject1 = new StringBuilder().append("processBatchCommitRsp commit size:");
@@ -103,7 +111,7 @@ public class BatchCommitUploadTask
     if (paramFileBatchCommitRsp.commit_rsp == null)
     {
       i = 0;
-      com.tencent.upload.common.b.b("BatchCommitUploadTask", i + " flowId:" + this.flowId);
+      UploadLog.d("BatchCommitUploadTask", i + " flowId:" + this.flowId);
       localObject1 = new HashMap();
       localObject2 = this.commitImageTasks.iterator();
     }
@@ -117,25 +125,25 @@ public class BatchCommitUploadTask
       FileCommitRsp localFileCommitRsp = (FileCommitRsp)paramFileBatchCommitRsp.commit_rsp.get(localObject3);
       if ((localFileCommitRsp == null) || (localFileCommitRsp.biz_rsp == null))
       {
-        com.tencent.upload.common.b.e("BatchCommitUploadTask", "fcp == null flowId:" + (String)localObject3);
+        UploadLog.e("BatchCommitUploadTask", "fcp == null flowId:" + (String)localObject3);
         continue;
         i = paramFileBatchCommitRsp.commit_rsp.size();
         break;
       }
       if (localFileCommitRsp.result == null)
       {
-        com.tencent.upload.common.b.e("BatchCommitUploadTask", "fcp.result == null flowId:" + (String)localObject3);
+        UploadLog.e("BatchCommitUploadTask", "fcp.result == null flowId:" + (String)localObject3);
       }
       else if (localFileCommitRsp.result.ret < 0)
       {
-        com.tencent.upload.common.b.e("BatchCommitUploadTask", "fcp.result.ret:" + localFileCommitRsp.result.ret + " flag:" + localFileCommitRsp.result.flag + " flowId:" + (String)localObject3);
+        UploadLog.e("BatchCommitUploadTask", "fcp.result.ret:" + localFileCommitRsp.result.ret + " flag:" + localFileCommitRsp.result.flag + " flowId:" + (String)localObject3);
       }
       else
       {
-        localObject3 = (UploadPicInfoRsp)com.tencent.upload.e.b.a(UploadPicInfoRsp.class, localFileCommitRsp.biz_rsp);
+        localObject3 = (UploadPicInfoRsp)JceEncoder.decode(UploadPicInfoRsp.class, localFileCommitRsp.biz_rsp);
         if (localObject3 == null)
         {
-          com.tencent.upload.common.b.e("BatchCommitUploadTask", "uploadPicInfoRsp == null");
+          UploadLog.e("BatchCommitUploadTask", "uploadPicInfoRsp == null");
         }
         else
         {
@@ -143,7 +151,7 @@ public class BatchCommitUploadTask
             this.uploadTaskCallback.onUploadSucceed(localImageUploadTask, new ImageUploadResult(localImageUploadTask.iUin, localImageUploadTask.flowId, localImageUploadTask.iBatchID, (UploadPicInfoRsp)localObject3));
           }
           ((Map)localObject1).put(localImageUploadTask.flowId + "", localObject3);
-          com.tencent.upload.common.b.b("BatchCommitUploadTask", "processBatchCommitRsp commit flow:" + localImageUploadTask.flowId);
+          UploadLog.d("BatchCommitUploadTask", "processBatchCommitRsp commit flow:" + localImageUploadTask.flowId);
           report(Const.UploadRetCode.ERROR_PRE_UPLOAD_HIT.getCode(), null);
         }
       }
@@ -156,7 +164,7 @@ public class BatchCommitUploadTask
       ((BatchCommitUploadResult)localObject2).mapPicInfoRsp = ((Map)localObject1);
       this.uploadTaskCallback.onUploadSucceed(this, localObject2);
     }
-    com.tencent.upload.common.b.b("BatchCommitUploadTask", "processBatchCommitRsp cancel self");
+    UploadLog.d("BatchCommitUploadTask", "processBatchCommitRsp cancel self");
     super.processFileBatchCommitRsp(paramFileBatchCommitRsp);
   }
   
@@ -166,7 +174,7 @@ public class BatchCommitUploadTask
     while (localIterator.hasNext())
     {
       ImageUploadTask localImageUploadTask = (ImageUploadTask)localIterator.next();
-      Object localObject = com.tencent.upload.common.a.a();
+      Object localObject = UploadGlobalConfig.getContext();
       String str = FileUtils.getFilePathByPrefix((Context)localObject, localImageUploadTask.uploadFilePath, localImageUploadTask.md5);
       if (!TextUtils.isEmpty(str))
       {
@@ -178,7 +186,7 @@ public class BatchCommitUploadTask
     }
   }
   
-  protected void report(int paramInt, String paramString) {}
+  public void report(int paramInt, String paramString) {}
 }
 
 

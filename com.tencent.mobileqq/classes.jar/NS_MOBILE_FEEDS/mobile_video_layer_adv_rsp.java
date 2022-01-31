@@ -10,16 +10,16 @@ import java.util.Map;
 public final class mobile_video_layer_adv_rsp
   extends JceStruct
 {
-  static ArrayList cache_all_feeds_adv = new ArrayList();
-  static ArrayList cache_all_pop_adv;
-  static ArrayList cache_all_premovie_adv;
-  static Map cache_all_tips_adv;
-  static Map cache_mapExt;
-  public ArrayList all_feeds_adv;
-  public ArrayList all_pop_adv;
-  public ArrayList all_premovie_adv;
-  public Map all_tips_adv;
-  public Map mapExt;
+  static ArrayList<single_feed> cache_all_feeds_adv = new ArrayList();
+  static ArrayList<single_feed> cache_all_pop_adv;
+  static ArrayList<s_premovie_adv> cache_all_premovie_adv;
+  static Map<String, single_feed> cache_all_tips_adv;
+  static Map<String, String> cache_mapExt;
+  public ArrayList<single_feed> all_feeds_adv;
+  public ArrayList<single_feed> all_pop_adv;
+  public ArrayList<s_premovie_adv> all_premovie_adv;
+  public Map<String, single_feed> all_tips_adv;
+  public Map<String, String> mapExt;
   
   static
   {
@@ -40,13 +40,13 @@ public final class mobile_video_layer_adv_rsp
   
   public mobile_video_layer_adv_rsp() {}
   
-  public mobile_video_layer_adv_rsp(ArrayList paramArrayList1, Map paramMap1, Map paramMap2, ArrayList paramArrayList2, ArrayList paramArrayList3)
+  public mobile_video_layer_adv_rsp(ArrayList<single_feed> paramArrayList1, Map<String, single_feed> paramMap, Map<String, String> paramMap1, ArrayList<s_premovie_adv> paramArrayList, ArrayList<single_feed> paramArrayList2)
   {
     this.all_feeds_adv = paramArrayList1;
-    this.all_tips_adv = paramMap1;
-    this.mapExt = paramMap2;
-    this.all_premovie_adv = paramArrayList2;
-    this.all_pop_adv = paramArrayList3;
+    this.all_tips_adv = paramMap;
+    this.mapExt = paramMap1;
+    this.all_premovie_adv = paramArrayList;
+    this.all_pop_adv = paramArrayList2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -79,7 +79,7 @@ public final class mobile_video_layer_adv_rsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_video_layer_adv_rsp
  * JD-Core Version:    0.7.0.1
  */

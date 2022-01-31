@@ -1,15 +1,9 @@
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
-
 class ome
-  implements Runnable
+  implements ocp
 {
   ome(omd paramomd) {}
   
-  public void run()
-  {
-    LocalVideoSelectActivity.a(this.a.a).setVisibility(8);
-  }
+  public void a(ocs paramocs) {}
 }
 
 

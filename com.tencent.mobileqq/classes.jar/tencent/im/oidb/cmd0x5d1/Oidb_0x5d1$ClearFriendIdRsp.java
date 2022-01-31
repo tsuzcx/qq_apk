@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class Oidb_0x5d1$ClearFriendIdRsp
-  extends MessageMicro
+  extends MessageMicro<ClearFriendIdRsp>
 {
   public static final int BYTES_ERROR_MSG_FIELD_NUMBER = 3;
   public static final int UINT32_RESULT_FIELD_NUMBER = 1;
@@ -27,7 +27,7 @@ public final class Oidb_0x5d1$ClearFriendIdRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x5d1.Oidb_0x5d1.ClearFriendIdRsp
  * JD-Core Version:    0.7.0.1
  */

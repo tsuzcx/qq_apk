@@ -7,16 +7,16 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class ilive_feeds_near_anchor$GetNearListByRoomIDRsp
-  extends MessageMicro
+  extends MessageMicro<GetNearListByRoomIDRsp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "ret", "anchor_num", "anchor_infos" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), null }, GetNearListByRoomIDRsp.class);
-  public final PBRepeatMessageField anchor_infos = PBField.initRepeatMessage(ilive_feeds_near_anchor.NearAnchorInfo.class);
+  public final PBRepeatMessageField<ilive_feeds_near_anchor.NearAnchorInfo> anchor_infos = PBField.initRepeatMessage(ilive_feeds_near_anchor.NearAnchorInfo.class);
   public final PBUInt32Field anchor_num = PBField.initUInt32(0);
   public final PBUInt32Field ret = PBField.initUInt32(0);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_near_anchor.GetNearListByRoomIDRsp
  * JD-Core Version:    0.7.0.1
  */

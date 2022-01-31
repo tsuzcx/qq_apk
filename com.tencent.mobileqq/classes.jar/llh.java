@@ -1,40 +1,35 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule;
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.CommentLikeObserver;
-import com.tencent.biz.pubaccount.readinjoy.comment.NativeCommentServlet.CommentLikeObserver;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import org.json.JSONObject;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment.3;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment.3.1;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class llh
-  implements NativeCommentServlet.CommentLikeObserver
+  implements bbsh
 {
-  public llh(ArticleCommentModule paramArticleCommentModule, ArticleCommentModule.CommentLikeObserver paramCommentLikeObserver, int paramInt) {}
+  public llh(RedPacketShareFragment.3.1 param1) {}
   
-  public void a(ArticleInfo paramArticleInfo, String paramString1, int paramInt, String paramString2)
+  public void a(BaseResp paramBaseResp)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$CommentLikeObserver != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$CommentLikeObserver.a(paramArticleInfo, paramString1, paramInt, paramString2);
-    }
-  }
-  
-  public void a(ArticleInfo paramArticleInfo, String paramString, JSONObject paramJSONObject)
-  {
-    try
-    {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$CommentLikeObserver != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$CommentLikeObserver.a(paramArticleInfo, paramString, this.jdField_a_of_type_Int);
-      }
+    if ((RedPacketShareFragment.d(this.a.a.this$0) == null) || (!RedPacketShareFragment.d(this.a.a.this$0).equals(paramBaseResp.transaction))) {
       return;
     }
-    catch (Exception paramJSONObject)
+    QLog.d("RedPacketShareFragment", 1, "WL_DEBUG ActionSheetAdapter.CHANNEL_WX_FRIEND onWXShareResp resp.errCode = " + paramBaseResp.errCode);
+    switch (paramBaseResp.errCode)
     {
-      while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$CommentLikeObserver == null) {}
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$CommentLikeObserver.a(paramArticleInfo, paramString, -1, "parser local data error");
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      RedPacketShareFragment.a("0X8008CF8", 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     llh
  * JD-Core Version:    0.7.0.1
  */

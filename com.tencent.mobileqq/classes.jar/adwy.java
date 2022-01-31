@@ -1,29 +1,31 @@
-import com.tencent.ark.ark;
-import com.tencent.mobileqq.gameparty.GamePartyManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.DanceMachineQQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
 
-public class adwy
-  implements Runnable
+class adwy
+  implements View.OnClickListener
 {
-  public adwy(GamePartyManager paramGamePartyManager, String paramString) {}
+  adwy(adww paramadww, AIOShortVideoData paramAIOShortVideoData) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
+    adww.a(this.jdField_a_of_type_Adww, adww.a(this.jdField_a_of_type_Adww), ajjy.a(2131634255));
+    boolean bool = awhg.a().a();
+    paramView = adww.b(this.jdField_a_of_type_Adww);
+    int j = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.g;
+    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOShortVideoData.e;
+    if (bool) {}
+    for (int i = 1;; i = 0)
     {
-      ark.arkNotify("com.tencent.qqopen.teamup", "update_team_info", this.jdField_a_of_type_JavaLangString, "json");
+      DanceMachineQQBrowserActivity.a(paramView, j, str, i, -999, 1, 0, null);
       return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("GamePartyManager", 2, "arkNotify failed, .so not loaded");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adwy
  * JD-Core Version:    0.7.0.1
  */

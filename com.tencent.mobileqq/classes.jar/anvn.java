@@ -1,46 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager.InformationPasterResDownloader;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage.Item;
-import java.util.Iterator;
-import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.animation.AlphaAnimation;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 public class anvn
-  implements Runnable
+  implements View.OnClickListener
 {
-  public anvn(QIMInformationPasterManager paramQIMInformationPasterManager, List paramList) {}
+  public anvn(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString, View paramView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    QIMInformationPasterManager.a(this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager).clear();
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMInformationPasterManager", 2, "patch pull res");
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    InfomationFacePackage.Item localItem;
-    while (localIterator.hasNext())
-    {
-      localItem = (InfomationFacePackage.Item)localIterator.next();
-      if ((!TextUtils.isEmpty(localItem.d)) && (!this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager.a(localItem))) {
-        QIMInformationPasterManager.a(this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager).add(localItem);
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QIMInformationPasterManager", 2, "need download size:" + QIMInformationPasterManager.a(this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager).size());
-    }
-    localIterator = QIMInformationPasterManager.a(this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager).iterator();
-    while (localIterator.hasNext())
-    {
-      localItem = (InfomationFacePackage.Item)localIterator.next();
-      this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager.a.a(localItem, new anvo(this));
-    }
+    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.app.getPreferences().edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
+    paramView = new AlphaAnimation(1.0F, 0.0F);
+    paramView.setDuration(500L);
+    paramView.setAnimationListener(new anvo(this));
+    this.jdField_a_of_type_AndroidViewView.startAnimation(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anvn
  * JD-Core Version:    0.7.0.1
  */

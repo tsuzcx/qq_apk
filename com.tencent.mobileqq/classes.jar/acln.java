@@ -1,44 +1,30 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.SogouEmoji;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
-import com.tencent.mobileqq.model.QueryCallback;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import java.lang.ref.WeakReference;
 
-public class acln
-  implements QueryCallback
+class acln
 {
-  public acln(SogouEmoji paramSogouEmoji, PicEmoticonInfo paramPicEmoticonInfo) {}
+  WeakReference<View> jdField_a_of_type_JavaLangRefWeakReference;
+  WeakReference<aclm> b;
   
-  public void a(EmoticonPackage paramEmoticonPackage)
+  public acln(aclk paramaclk, View paramView, aclm paramaclm)
   {
-    boolean bool;
-    if (paramEmoticonPackage != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.f = paramEmoticonPackage.type;
-      PicEmoticonInfo localPicEmoticonInfo = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo;
-      if (paramEmoticonPackage.isAPNG == 2)
-      {
-        bool = true;
-        localPicEmoticonInfo.b = bool;
-      }
-    }
-    for (;;)
-    {
-      SogouEmoji.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji).a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo);
-      if (QLog.isColorLevel()) {
-        QLog.d("SogouEmoji", 2, "func sendEmoji ends, type:" + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.f);
-      }
-      return;
-      bool = false;
-      break;
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.f = 3;
-    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
+    this.b = new WeakReference(paramaclm);
+  }
+  
+  public aclm a()
+  {
+    return (aclm)this.b.get();
+  }
+  
+  public View a()
+  {
+    return (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acln
  * JD-Core Version:    0.7.0.1
  */

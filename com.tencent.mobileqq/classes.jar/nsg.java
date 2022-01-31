@@ -1,36 +1,10 @@
-import com.tencent.biz.qqstory.playvideo.QQStoryWatcherListActivity;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-
 public class nsg
-  implements AbsListView.OnScrollListener
 {
-  int jdField_a_of_type_Int = 0;
-  int b = 0;
-  int c = 0;
-  
-  public nsg(QQStoryWatcherListActivity paramQQStoryWatcherListActivity) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public static void a(int paramInt)
   {
-    if ((paramInt == 0) && (this.c + this.jdField_a_of_type_Int >= this.b))
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.b) {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a(3);
-      }
+    if ((paramInt == 41516) || (paramInt == 41522)) {
+      ndn.a(null, "", "0X8009EF4", "0X8009EF4", 0, 0, "", "", "", new nse().a().a(paramInt).a(), false);
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a(1);
-    nsj.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryWatcherListActivity.a);
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.c = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-    this.b = paramInt3;
   }
 }
 

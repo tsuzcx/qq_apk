@@ -1,43 +1,39 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.ValueCallback;
 
-public final class akyo
-  implements ValueCallback
+public class akyo
+  implements View.OnTouchListener
 {
-  public akyo(WebViewFragment paramWebViewFragment) {}
+  public akyo(ScanEntryProviderContainerView paramScanEntryProviderContainerView) {}
   
-  public void a(String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("SwiftWebViewUtils", 2, "evaluateJavascript: " + paramString);
+      QLog.d("ScanEntryProviderContainerView", 2, String.format("dispatchTouchEvent onTabClickListener", new Object[0]));
     }
-    Bundle localBundle = new Bundle();
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (String str = paramString.trim();; str = "")
+    long l = System.currentTimeMillis();
+    if (l - ScanEntryProviderContainerView.a(this.a) <= 1000L)
     {
-      if (!TextUtils.isEmpty(str))
-      {
-        paramString = str;
-        if (str.startsWith("\"")) {
-          paramString = str.replaceFirst("\"", "");
-        }
-        str = paramString;
-        if (paramString.endsWith("\"")) {
-          str = paramString.substring(0, paramString.length() - 1);
-        }
-        localBundle.putString("banner_wording", String.format("正在浏览 %s", new Object[] { str }));
-      }
-      this.a.d(localBundle);
-      return;
+      QLog.i("ScanEntryProviderContainerView", 1, "avoid user fast click");
+      return false;
     }
+    ScanEntryProviderContainerView.a(this.a, l);
+    switch (paramMotionEvent.getAction())
+    {
+    default: 
+      return false;
+    }
+    paramView = (Integer)paramView.getTag();
+    ScanEntryProviderContainerView.a(this.a).a(paramView.intValue(), new akyp(this, paramView));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     akyo
  * JD-Core Version:    0.7.0.1
  */

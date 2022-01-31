@@ -14,7 +14,7 @@ public class SmartDevicePluginProxyActivity
     return "qqsmartdevice.apk";
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     if (getIntent().getIntExtra("KEY_OPENAV_ROOM_ID", 0) != 0) {
       getIntent().putExtra("fling_action_key", 0);

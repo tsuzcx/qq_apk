@@ -4,9 +4,11 @@ import android.graphics.PointF;
 
 public class MeshDistortionType
 {
-  public int direction;
+  public float direction;
   public float faceDegree;
   public float faceRatio;
+  public float offsetX;
+  public float offsetY;
   public PointF point = new PointF();
   public float radius;
   public float strength;
@@ -14,7 +16,7 @@ public class MeshDistortionType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.ttpic.model.MeshDistortionType
  * JD-Core Version:    0.7.0.1
  */

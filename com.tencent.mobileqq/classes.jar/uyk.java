@@ -1,69 +1,33 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.mobileqq.activity.aio.doodle.control.RDBaseListLayout;
-import com.tencent.mobileqq.activity.aio.doodle.control.RDBaseViewHolder;
-import java.util.ArrayList;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 
-public class uyk
-  extends BaseAdapter
+class uyk
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  private uyk(RDBaseListLayout paramRDBaseListLayout) {}
+  uyk(uyj paramuyj) {}
   
-  public void a() {}
-  
-  public void b() {}
-  
-  public int getCount()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    return RDBaseListLayout.a(this.a).size();
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return RDBaseListLayout.a(this.a).get(paramInt);
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return paramInt;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = RDBaseListLayout.a(this.a).get(paramInt);
-    if (paramView == null) {
-      paramView = this.a.a(paramInt, paramViewGroup);
+    if (uyh.a(this.a.a) == null) {
+      return;
     }
-    for (;;)
-    {
-      if (paramView == null) {
-        paramViewGroup = null;
-      }
-      View localView;
-      do
-      {
-        return paramViewGroup;
-        paramView = (uyl)paramView.getTag();
-        if (paramView == null) {
-          break label102;
-        }
-        paramView = paramView.a;
-        break;
-        this.a.a(paramInt, paramViewGroup, paramView);
-        localView = ((RDBaseViewHolder)paramView).a();
-        paramViewGroup = localView;
-      } while (localView == null);
-      localView.setTag(new uyl(this.a, paramInt, paramView));
-      return localView;
-      label102:
-      paramView = null;
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.a.l = (this.a.d + this.a.f * f);
+    this.a.m = (this.a.e + this.a.g * f);
+    this.a.j = (this.a.b + this.a.h * f);
+    this.a.k = (this.a.c + this.a.i * f);
+    if (this.a.a.a != null) {
+      this.a.a.a.a(f);
     }
+    if (f == 1.0F) {
+      uyh.a(this.a.a, null);
+    }
+    uyh.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uyk
  * JD-Core Version:    0.7.0.1
  */

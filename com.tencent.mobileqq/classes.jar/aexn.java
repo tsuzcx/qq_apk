@@ -1,25 +1,23 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public final class aexn
-  implements DialogInterface.OnClickListener
+class aexn
+  implements View.OnClickListener
 {
-  public aexn(Context paramContext, String paramString, int paramInt) {}
+  aexn(aexl paramaexl, aexr paramaexr) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface = new Intent(this.jdField_a_of_type_AndroidContentContext, GameRoomInviteActivity.class);
-    paramDialogInterface.putExtra("inviteId", this.jdField_a_of_type_JavaLangString);
-    paramDialogInterface.putExtra("roomNum", this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+    if (this.jdField_a_of_type_Aexl.a != null)
+    {
+      int i = this.jdField_a_of_type_Aexr.getAdapterPosition();
+      this.jdField_a_of_type_Aexl.a.a(paramView, this.jdField_a_of_type_Aexr, i);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aexn
  * JD-Core Version:    0.7.0.1
  */

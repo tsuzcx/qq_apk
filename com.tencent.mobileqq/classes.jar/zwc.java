@@ -1,90 +1,67 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SQLiteDatabase;
-import com.tencent.mobileqq.app.asyncdb.cache.RecentUserCache;
-import com.tencent.mobileqq.data.ConversationInfo;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.AccountManageActivity.3.1;
+import com.tencent.mobileqq.widget.RotateSwitchImageView;
+import com.tencent.mobileqq.widget.ShaderAnimLayout;
+import mqq.os.MqqHandler;
 
 public class zwc
-  implements Runnable
+  implements View.OnClickListener
 {
-  public zwc(RecentUserCache paramRecentUserCache, SharedPreferences paramSharedPreferences) {}
+  public zwc(AccountManageActivity paramAccountManageActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.db.Cache.RecentUserCache", 2, "checkNewFriendUpgrade | start");
+    if (!this.a.b) {
+      return;
     }
-    Object localObject1 = null;
-    label381:
+    paramView = this.a;
+    boolean bool;
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      bool = true;
+      paramView.jdField_a_of_type_Boolean = bool;
+      if (!this.a.jdField_a_of_type_Boolean) {
+        break label245;
+      }
+      this.a.rightViewText.setVisibility(8);
+      this.a.rightHighLView.setVisibility(0);
+      this.a.rightViewText.setText(2131626982);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131101338));
+    }
     for (;;)
     {
-      synchronized (RecentUserCache.a(this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheRecentUserCache))
+      if (AccountManageActivity.a(this.a) != null)
       {
-        Iterator localIterator = RecentUserCache.b(this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheRecentUserCache).values().iterator();
-        if (localIterator.hasNext())
-        {
-          Entity localEntity = (Entity)localIterator.next();
-          if ((localEntity == null) || (!AppConstants.C.equals(((RecentUser)localEntity).uin))) {
-            break label381;
-          }
-          localObject1 = (RecentUser)localEntity;
-          break label381;
+        paramView = AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
+        if ((paramView instanceof ShaderAnimLayout)) {
+          ((ShaderAnimLayout)paramView).f();
         }
+        AccountManageActivity.a(this.a).a();
+        AccountManageActivity.a(this.a, null);
       }
-      try
-      {
-        ??? = RecentUserCache.b(this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheRecentUserCache).a();
-        if (localObject1 != null)
-        {
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheRecentUserCache.a((Entity)localObject1);
-          if (RecentUserCache.c(this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheRecentUserCache).containsKey(localObject1)) {
-            RecentUserCache.d(this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheRecentUserCache).remove(localObject1);
-          }
-        }
-        int i = ((SQLiteDatabase)???).a("recent", "uin=?", new String[] { AppConstants.C });
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.db.Cache.RecentUserCache", 2, "checkNewFriendUpgrade | RecentUser delCount = " + i);
-        }
-        i = ((SQLiteDatabase)???).a(ConversationInfo.getConversationInfoTableName(), "uin=?", new String[] { AppConstants.C });
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.db.Cache.RecentUserCache", 2, "checkNewFriendUpgrade | conversationinfo delCount = " + i);
-        }
-        i = ((SQLiteDatabase)???).a(MessageRecord.getTableName(AppConstants.C, 4000), "frienduin=?", new String[] { AppConstants.C });
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.db.Cache.RecentUserCache", 2, "checkNewFriendUpgrade | MessageRecord.RecommendMsg delCount = " + i);
-        }
-        return;
-      }
-      catch (Exception localException)
-      {
-        do
-        {
-          localException.printStackTrace();
-        } while (!QLog.isColorLevel());
-        QLog.d("Q.db.Cache.RecentUserCache", 2, "checkNewFriendUpgrade | delete recommend error~");
-        return;
-      }
-      finally
-      {
-        this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("check_newfriend_when_upgrade", false).commit();
-      }
-      localObject2 = finally;
-      throw localObject2;
+      this.a.b();
+      this.a.a(this.a.jdField_a_of_type_Boolean);
+      this.a.b = false;
+      AccountManageActivity.a(this.a).postDelayed(new AccountManageActivity.3.1(this), 400L);
+      awqx.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_acc_edit", 0, 0, "", "", "", "");
+      return;
+      bool = false;
+      break;
+      label245:
+      this.a.rightViewText.setVisibility(0);
+      this.a.rightHighLView.setVisibility(8);
+      this.a.rightViewText.setText(2131626377);
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColorStateList(2131101268));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zwc
  * JD-Core Version:    0.7.0.1
  */

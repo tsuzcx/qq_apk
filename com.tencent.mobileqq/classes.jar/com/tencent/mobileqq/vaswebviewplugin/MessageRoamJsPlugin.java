@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
+import anad;
+import anah;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -7,11 +9,9 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.os.Bundle;
+import bbac;
 import com.tencent.mobileqq.app.BrowserAppInterface;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
-import com.tencent.mobileqq.emosm.DataFactory;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 import org.json.JSONException;
@@ -54,7 +54,7 @@ public class MessageRoamJsPlugin
   
   private boolean handleGetRoam(String paramString)
   {
-    sendRemoteReq(DataFactory.a("getRoam", paramString, this.mOnRemoteResp.key, new Bundle()), false, false);
+    sendRemoteReq(anah.a("getRoam", paramString, this.mOnRemoteResp.key, new Bundle()), false, false);
     return true;
   }
   
@@ -95,7 +95,7 @@ public class MessageRoamJsPlugin
     }
     String str = "success";
     Object localObject;
-    if ((paramInt == 1) || (paramInt == 2) || (paramInt == 3) || (paramInt == 4))
+    if ((paramInt == 1) || (paramInt == 2) || (paramInt == 3) || (paramInt == 4) || (paramInt == 5))
     {
       localObject = this.context.getSharedPreferences("vip_message_roam_banner_file", 4);
       if (localObject != null)
@@ -152,7 +152,7 @@ public class MessageRoamJsPlugin
     }
   }
   
-  protected boolean excuteEvent(String paramString, long paramLong, Map paramMap)
+  protected boolean excuteEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
     if (paramLong == 8589934600L)
     {
@@ -180,7 +180,7 @@ public class MessageRoamJsPlugin
     return false;
   }
   
-  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if ((paramString2 == null) || (!paramString2.equalsIgnoreCase("msgRoam"))) {
       log("handleJsRequest returned, pkgName=" + paramString2);
@@ -265,7 +265,7 @@ public class MessageRoamJsPlugin
     return true;
   }
   
-  protected boolean handleSchemaRequest(String paramString1, String paramString2)
+  public boolean handleSchemaRequest(String paramString1, String paramString2)
   {
     paramString2 = null;
     if (!paramString1.startsWith("http://clientui.3g.qq.com/mqqapi/im/roam")) {}
@@ -347,10 +347,10 @@ public class MessageRoamJsPlugin
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("pwd", paramString);
-    sendRemoteReq(DataFactory.a("notifyGetMsgRoam", "notifyGetMsgRoam", this.mOnRemoteResp.key, localBundle), true, false);
+    sendRemoteReq(anah.a("notifyGetMsgRoam", "notifyGetMsgRoam", this.mOnRemoteResp.key, localBundle), true, false);
   }
   
-  protected void onCreate()
+  public void onCreate()
   {
     super.onCreate();
     if ((this.mRuntime.a() != null) && ((this.mRuntime.a() instanceof BrowserAppInterface))) {
@@ -360,7 +360,7 @@ public class MessageRoamJsPlugin
     this.context = this.mRuntime.a().getApplicationContext();
   }
   
-  protected void onDestroy()
+  public void onDestroy()
   {
     super.onDestroy();
     this.context = null;
@@ -416,7 +416,7 @@ public class MessageRoamJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.MessageRoamJsPlugin
  * JD-Core Version:    0.7.0.1
  */

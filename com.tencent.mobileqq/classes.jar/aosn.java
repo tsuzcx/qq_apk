@@ -1,67 +1,30 @@
-import android.widget.SeekBar;
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import tencent.im.oidb.cmd0x6e7.oidb_0x6e7.ReqBody;
 
 public class aosn
-  implements Runnable
 {
-  public aosn(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
-  
-  public void run()
+  public static String a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    if (this.a.b())
-    {
-      if (this.a.b <= 0L) {
-        this.a.h();
-      }
-      ShortVideoPlayActivity.a(this.a, this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion());
-      if (ShortVideoPlayActivity.a(this.a) != 0L)
-      {
-        ShortVideoPlayActivity.a(this.a, (int)(ShortVideoPlayActivity.a(this.a) * 10000L / this.a.b + 0.5D));
-        if (!ShortVideoPlayActivity.a(this.a))
-        {
-          this.a.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(ShortVideoPlayActivity.a(this.a));
-          this.a.b(ShortVideoPlayActivity.a(this.a));
-        }
-      }
-    }
-    if ((this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.a.g != 0L))
-    {
-      if (!this.a.jdField_f_of_type_Boolean) {
-        break label352;
-      }
-      ShortVideoPlayActivity.b(this.a, (int)(this.a.jdField_f_of_type_Long * 10000L / this.a.g));
-    }
-    for (;;)
-    {
-      if (this.a.jdField_a_of_type_AndroidWidgetSeekBar.getSecondaryProgress() != ShortVideoPlayActivity.b(this.a)) {
-        this.a.jdField_a_of_type_AndroidWidgetSeekBar.setSecondaryProgress(ShortVideoPlayActivity.b(this.a));
-      }
-      if ((this.a.c()) && (ShortVideoPlayActivity.c(this.a) > 0) && (ShortVideoPlayActivity.a(this.a) != null) && (ShortVideoPlayActivity.a(this.a).getVisibility() == 0))
-      {
-        String str = ShortVideoUtils.a(this.a.jdField_a_of_type_AndroidContentContext, ShortVideoPlayActivity.c(this.a) * 1024);
-        ShortVideoPlayActivity.a(this.a).setText(str + "/s");
-      }
-      if (!this.a.isFinishing()) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPlayActivity", 2, "check progress, while finishing");
-      }
+    return "http://" + paramString1 + "/ftn_handler/" + paramString2 + "/?fname=" + bach.b(paramString3) + paramString5;
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, long paramLong, aosp paramaosp)
+  {
+    if (paramLong < 0L) {
       return;
-      label352:
-      ShortVideoPlayActivity.b(this.a, 10000);
     }
-    this.a.jdField_a_of_type_MqqOsMqqHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 50L);
+    oidb_0x6e7.ReqBody localReqBody = new oidb_0x6e7.ReqBody();
+    localReqBody.uint64_group_code.set(paramLong);
+    localReqBody.str_app_src.set("android");
+    localReqBody.str_version.set("8.2.6");
+    mmj.b(paramQQAppInterface, new aoso(paramaosp), localReqBody.toByteArray(), "OidbSvc.oidb_0x6e7", 1767, 0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aosn
  * JD-Core Version:    0.7.0.1
  */

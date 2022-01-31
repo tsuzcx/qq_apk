@@ -1,18 +1,21 @@
-import com.dataline.activities.LiteMutiPicViewerActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.dataline.activities.LiteAdvanceActivity;
 
-class cf
-  implements Runnable
+public class cf
+  implements CompoundButton.OnCheckedChangeListener
 {
-  cf(cb paramcb) {}
+  public cf(LiteAdvanceActivity paramLiteAdvanceActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    LiteMutiPicViewerActivity.a(this.a.a);
+    LiteAdvanceActivity.c(this.a, paramBoolean);
+    LiteAdvanceActivity.a(this.a, LiteAdvanceActivity.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     cf
  * JD-Core Version:    0.7.0.1
  */

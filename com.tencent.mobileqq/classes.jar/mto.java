@@ -1,14 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoVolumeControl;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 class mto
-  implements Runnable
 {
-  mto(mtn parammtn) {}
+  ImageView jdField_a_of_type_AndroidWidgetImageView;
+  TextView jdField_a_of_type_AndroidWidgetTextView;
+  TextView b;
   
-  public void run()
-  {
-    FastWebVideoVolumeControl.c(this.a.a, false);
-  }
+  mto(mtc parammtc) {}
 }
 
 

@@ -14,7 +14,6 @@ import com.squareup.okhttp.internal.framed.ErrorCode;
 import com.squareup.okhttp.internal.framed.FramedConnection;
 import com.squareup.okhttp.internal.framed.FramedStream;
 import com.squareup.okhttp.internal.framed.Header;
-import java.io.IOException;
 import java.net.ProtocolException;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -23,10 +22,8 @@ import java.util.Locale;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import okio.ByteString;
-import okio.ForwardingSource;
 import okio.Okio;
 import okio.Sink;
-import okio.Source;
 import okio.Timeout;
 
 public final class Http2xStream
@@ -91,48 +88,41 @@ public final class Http2xStream
   }
   
   public static Response.Builder readHttp2HeadersList(List<Header> paramList)
-    throws IOException
   {
-    Object localObject1 = null;
+    Object localObject = null;
     Headers.Builder localBuilder = new Headers.Builder();
-    int i = 0;
     int j = paramList.size();
+    int i = 0;
     if (i < j)
     {
       ByteString localByteString = ((Header)paramList.get(i)).name;
       String str = ((Header)paramList.get(i)).value.utf8();
-      Object localObject2;
       if (localByteString.equals(Header.RESPONSE_STATUS)) {
-        localObject2 = str;
+        localObject = str;
       }
       for (;;)
       {
         i += 1;
-        localObject1 = localObject2;
         break;
-        localObject2 = localObject1;
-        if (!HTTP_2_SKIPPED_RESPONSE_HEADERS.contains(localByteString))
-        {
+        if (!HTTP_2_SKIPPED_RESPONSE_HEADERS.contains(localByteString)) {
           localBuilder.add(localByteString.utf8(), str);
-          localObject2 = localObject1;
         }
       }
     }
-    if (localObject1 == null) {
+    if (localObject == null) {
       throw new ProtocolException("Expected ':status' header not present");
     }
-    paramList = StatusLine.parse("HTTP/1.1 " + localObject1);
+    paramList = StatusLine.parse("HTTP/1.1 " + localObject);
     return new Response.Builder().protocol(Protocol.HTTP_2).code(paramList.code).message(paramList.message).headers(localBuilder.build());
   }
   
   public static Response.Builder readSpdy3HeadersList(List<Header> paramList)
-    throws IOException
   {
-    Object localObject2 = null;
-    Object localObject1 = "HTTP/1.1";
+    Object localObject1 = null;
+    Object localObject2 = "HTTP/1.1";
     Headers.Builder localBuilder = new Headers.Builder();
-    int i = 0;
     int n = paramList.size();
+    int i = 0;
     while (i < n)
     {
       ByteString localByteString = ((Header)paramList.get(i)).name;
@@ -146,43 +136,26 @@ public final class Http2xStream
           k = str2.length();
         }
         String str1 = str2.substring(j, k);
-        Object localObject3;
-        Object localObject4;
-        if (localByteString.equals(Header.RESPONSE_STATUS))
-        {
-          localObject3 = str1;
-          localObject4 = localObject1;
+        if (localByteString.equals(Header.RESPONSE_STATUS)) {
+          localObject1 = str1;
         }
         for (;;)
         {
           j = k + 1;
-          localObject2 = localObject3;
-          localObject1 = localObject4;
           break;
-          if (localByteString.equals(Header.VERSION))
-          {
-            localObject4 = str1;
-            localObject3 = localObject2;
-          }
-          else
-          {
-            localObject3 = localObject2;
-            localObject4 = localObject1;
-            if (!SPDY_3_SKIPPED_RESPONSE_HEADERS.contains(localByteString))
-            {
-              localBuilder.add(localByteString.utf8(), str1);
-              localObject3 = localObject2;
-              localObject4 = localObject1;
-            }
+          if (localByteString.equals(Header.VERSION)) {
+            localObject2 = str1;
+          } else if (!SPDY_3_SKIPPED_RESPONSE_HEADERS.contains(localByteString)) {
+            localBuilder.add(localByteString.utf8(), str1);
           }
         }
       }
       i += 1;
     }
-    if (localObject2 == null) {
+    if (localObject1 == null) {
       throw new ProtocolException("Expected ':status' header not present");
     }
-    paramList = StatusLine.parse((String)localObject1 + " " + localObject2);
+    paramList = StatusLine.parse((String)localObject2 + " " + localObject1);
     return new Response.Builder().protocol(Protocol.SPDY_3).code(paramList.code).message(paramList.message).headers(localBuilder.build());
   }
   
@@ -196,8 +169,8 @@ public final class Http2xStream
     localArrayList.add(new Header(Header.TARGET_HOST, Util.hostHeader(paramRequest.httpUrl())));
     localArrayList.add(new Header(Header.TARGET_SCHEME, paramRequest.httpUrl().scheme()));
     paramRequest = new LinkedHashSet();
-    int i = 0;
     int k = localHeaders.size();
+    int i = 0;
     if (i < k)
     {
       ByteString localByteString = ByteString.encodeUtf8(localHeaders.name(i).toLowerCase(Locale.US));
@@ -241,26 +214,22 @@ public final class Http2xStream
   }
   
   public Sink createRequestBody(Request paramRequest, long paramLong)
-    throws IOException
   {
     return this.stream.getSink();
   }
   
   public void finishRequest()
-    throws IOException
   {
     this.stream.getSink().close();
   }
   
   public ResponseBody openResponseBody(Response paramResponse)
-    throws IOException
   {
-    StreamFinishingSource localStreamFinishingSource = new StreamFinishingSource(this.stream.getSource());
+    Http2xStream.StreamFinishingSource localStreamFinishingSource = new Http2xStream.StreamFinishingSource(this, this.stream.getSource());
     return new RealResponseBody(paramResponse.headers(), Okio.buffer(localStreamFinishingSource));
   }
   
   public Response.Builder readResponseHeaders()
-    throws IOException
   {
     if (this.framedConnection.getProtocol() == Protocol.HTTP_2) {
       return readHttp2HeadersList(this.stream.getResponseHeaders());
@@ -274,13 +243,11 @@ public final class Http2xStream
   }
   
   public void writeRequestBody(RetryableSink paramRetryableSink)
-    throws IOException
   {
     paramRetryableSink.writeToSocket(this.stream.getSink());
   }
   
   public void writeRequestHeaders(Request paramRequest)
-    throws IOException
   {
     if (this.stream != null) {
       return;
@@ -294,22 +261,6 @@ public final class Http2xStream
       this.stream.readTimeout().timeout(this.httpEngine.client.getReadTimeout(), TimeUnit.MILLISECONDS);
       this.stream.writeTimeout().timeout(this.httpEngine.client.getWriteTimeout(), TimeUnit.MILLISECONDS);
       return;
-    }
-  }
-  
-  class StreamFinishingSource
-    extends ForwardingSource
-  {
-    public StreamFinishingSource(Source paramSource)
-    {
-      super();
-    }
-    
-    public void close()
-      throws IOException
-    {
-      Http2xStream.this.streamAllocation.streamFinished(Http2xStream.this);
-      super.close();
     }
   }
 }

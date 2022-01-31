@@ -2,12 +2,13 @@ package com.tencent.mobileqq.shortvideo.ptvfilter;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.List;
 
 public class GroupVideoFilterList$RandomHistory
   implements Serializable
 {
-  public HashMap createTime;
-  public HashMap randomOrder;
+  public HashMap<String, Long> createTime;
+  public HashMap<String, List<String>> randomOrder;
 }
 
 

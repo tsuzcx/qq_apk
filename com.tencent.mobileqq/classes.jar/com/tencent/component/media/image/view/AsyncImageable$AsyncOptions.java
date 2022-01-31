@@ -9,163 +9,163 @@ import com.tencent.component.media.image.RawImageProcessor;
 
 public class AsyncImageable$AsyncOptions
 {
-  int jdField_a_of_type_Int = -1;
-  Bitmap.Config jdField_a_of_type_AndroidGraphicsBitmap$Config = ImageLoader.Options.DEFAULT_IMAGE_CONFIG;
-  Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-  Animation jdField_a_of_type_AndroidViewAnimationAnimation = null;
-  ImageProcessor jdField_a_of_type_ComTencentComponentMediaImageImageProcessor = null;
-  RawImageProcessor jdField_a_of_type_ComTencentComponentMediaImageRawImageProcessor = null;
-  String jdField_a_of_type_JavaLangString = null;
-  boolean jdField_a_of_type_Boolean = false;
-  int jdField_b_of_type_Int = -1;
-  Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable = null;
-  Animation jdField_b_of_type_AndroidViewAnimationAnimation = null;
-  boolean jdField_b_of_type_Boolean = true;
-  int jdField_c_of_type_Int = 0;
-  boolean jdField_c_of_type_Boolean = false;
-  int jdField_d_of_type_Int = 0;
-  boolean jdField_d_of_type_Boolean = false;
-  boolean e = true;
-  boolean f = false;
-  boolean g = false;
+  boolean alwaysLoad = false;
+  int clipHeight = -1;
+  int clipWidth = -1;
+  Drawable defaultImage = null;
+  int defaultImageId = 0;
+  Drawable failImage = null;
+  int failImageId = 0;
+  String fileRootPath = null;
+  Bitmap.Config imageConfig = ImageLoader.Options.DEFAULT_IMAGE_CONFIG;
+  ImageProcessor imageProcessor = null;
+  Animation inAnimation = null;
+  boolean justCover = true;
+  boolean justMemoryCache = false;
+  boolean needShowGifAnimation = false;
+  Animation outAnimation = null;
+  boolean preferQuality = false;
+  boolean priority = true;
+  RawImageProcessor rawImageProcessor = null;
+  boolean tryStream = false;
   
   public final void fillOptions(ImageLoader.Options paramOptions)
   {
-    paramOptions.clipWidth = this.jdField_a_of_type_Int;
-    paramOptions.clipHeight = this.jdField_b_of_type_Int;
-    paramOptions.preferQuality = this.jdField_a_of_type_Boolean;
-    paramOptions.justCover = this.jdField_b_of_type_Boolean;
-    paramOptions.needShowGifAnimation = this.jdField_d_of_type_Boolean;
-    paramOptions.imageConfig = this.jdField_a_of_type_AndroidGraphicsBitmap$Config;
-    paramOptions.extraProcessor = this.jdField_a_of_type_ComTencentComponentMediaImageImageProcessor;
-    paramOptions.processor = this.jdField_a_of_type_ComTencentComponentMediaImageRawImageProcessor;
-    paramOptions.priority = this.e;
-    paramOptions.fileRootPath = this.jdField_a_of_type_JavaLangString;
+    paramOptions.clipWidth = this.clipWidth;
+    paramOptions.clipHeight = this.clipHeight;
+    paramOptions.preferQuality = this.preferQuality;
+    paramOptions.justCover = this.justCover;
+    paramOptions.needShowGifAnimation = this.needShowGifAnimation;
+    paramOptions.imageConfig = this.imageConfig;
+    paramOptions.extraProcessor = this.imageProcessor;
+    paramOptions.processor = this.rawImageProcessor;
+    paramOptions.priority = this.priority;
+    paramOptions.fileRootPath = this.fileRootPath;
   }
   
-  public void onClipSizeChanged(int paramInt1, int paramInt2) {}
+  protected void onClipSizeChanged(int paramInt1, int paramInt2) {}
   
   public void setAlwaysLoad(boolean paramBoolean)
   {
-    if (this.f != paramBoolean) {
-      this.f = paramBoolean;
+    if (this.alwaysLoad != paramBoolean) {
+      this.alwaysLoad = paramBoolean;
     }
   }
   
   public void setAnimation(Animation paramAnimation1, Animation paramAnimation2)
   {
-    if ((this.jdField_a_of_type_AndroidViewAnimationAnimation != paramAnimation1) || (this.jdField_b_of_type_AndroidViewAnimationAnimation != paramAnimation2))
+    if ((this.inAnimation != paramAnimation1) || (this.outAnimation != paramAnimation2))
     {
-      this.jdField_a_of_type_AndroidViewAnimationAnimation = paramAnimation1;
-      this.jdField_b_of_type_AndroidViewAnimationAnimation = paramAnimation2;
+      this.inAnimation = paramAnimation1;
+      this.outAnimation = paramAnimation2;
     }
   }
   
   public void setClipSize(int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_Int != paramInt1) || (this.jdField_b_of_type_Int != paramInt2))
+    if ((this.clipWidth != paramInt1) || (this.clipHeight != paramInt2))
     {
-      this.jdField_a_of_type_Int = paramInt1;
-      this.jdField_b_of_type_Int = paramInt2;
+      this.clipWidth = paramInt1;
+      this.clipHeight = paramInt2;
       onClipSizeChanged(paramInt1, paramInt2);
     }
   }
   
   public void setDefaultImage(int paramInt)
   {
-    this.jdField_c_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
+    this.defaultImageId = paramInt;
+    this.defaultImage = null;
   }
   
   public void setDefaultImage(Drawable paramDrawable)
   {
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.defaultImageId = 0;
+    this.defaultImage = paramDrawable;
   }
   
   public void setFailImage(int paramInt)
   {
-    this.jdField_d_of_type_Int = paramInt;
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = null;
+    this.failImageId = paramInt;
+    this.failImage = null;
   }
   
   public void setFailImage(Drawable paramDrawable)
   {
-    this.jdField_d_of_type_Int = 0;
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.failImageId = 0;
+    this.failImage = paramDrawable;
   }
   
   public void setFileRootPath(String paramString)
   {
-    if ((paramString != null) && (!paramString.equals(this.jdField_a_of_type_JavaLangString))) {
-      this.jdField_a_of_type_JavaLangString = paramString;
+    if ((paramString != null) && (!paramString.equals(this.fileRootPath))) {
+      this.fileRootPath = paramString;
     }
     while (paramString != null) {
       return;
     }
-    this.jdField_a_of_type_JavaLangString = null;
+    this.fileRootPath = null;
   }
   
   public void setImageConfig(Bitmap.Config paramConfig)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap$Config != paramConfig) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap$Config = paramConfig;
+    if (this.imageConfig != paramConfig) {
+      this.imageConfig = paramConfig;
     }
   }
   
   public void setImageProcessor(ImageProcessor paramImageProcessor)
   {
-    if (this.jdField_a_of_type_ComTencentComponentMediaImageImageProcessor != paramImageProcessor) {
-      this.jdField_a_of_type_ComTencentComponentMediaImageImageProcessor = paramImageProcessor;
+    if (this.imageProcessor != paramImageProcessor) {
+      this.imageProcessor = paramImageProcessor;
     }
   }
   
   public void setJustCover(boolean paramBoolean)
   {
-    if (this.jdField_b_of_type_Boolean != paramBoolean) {
-      this.jdField_b_of_type_Boolean = paramBoolean;
+    if (this.justCover != paramBoolean) {
+      this.justCover = paramBoolean;
     }
   }
   
   public void setJustMemoryCache(boolean paramBoolean)
   {
-    if (this.g != paramBoolean) {
-      this.g = paramBoolean;
+    if (this.justMemoryCache != paramBoolean) {
+      this.justMemoryCache = paramBoolean;
     }
   }
   
   public void setNeedShowGifAnimation(boolean paramBoolean)
   {
-    if (this.jdField_d_of_type_Boolean != paramBoolean) {
-      this.jdField_d_of_type_Boolean = paramBoolean;
+    if (this.needShowGifAnimation != paramBoolean) {
+      this.needShowGifAnimation = paramBoolean;
     }
   }
   
   public void setPreferQuality(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_Boolean != paramBoolean) {
-      this.jdField_a_of_type_Boolean = paramBoolean;
+    if (this.preferQuality != paramBoolean) {
+      this.preferQuality = paramBoolean;
     }
   }
   
   public void setPriority(boolean paramBoolean)
   {
-    if (this.e != paramBoolean) {
-      this.e = paramBoolean;
+    if (this.priority != paramBoolean) {
+      this.priority = paramBoolean;
     }
   }
   
   public void setRawImageProcessor(RawImageProcessor paramRawImageProcessor)
   {
-    if (this.jdField_a_of_type_ComTencentComponentMediaImageRawImageProcessor != paramRawImageProcessor) {
-      this.jdField_a_of_type_ComTencentComponentMediaImageRawImageProcessor = paramRawImageProcessor;
+    if (this.rawImageProcessor != paramRawImageProcessor) {
+      this.rawImageProcessor = paramRawImageProcessor;
     }
   }
   
   public void setTryStream(boolean paramBoolean)
   {
-    if (this.jdField_c_of_type_Boolean != paramBoolean) {
-      this.jdField_c_of_type_Boolean = paramBoolean;
+    if (this.tryStream != paramBoolean) {
+      this.tryStream = paramBoolean;
     }
   }
 }

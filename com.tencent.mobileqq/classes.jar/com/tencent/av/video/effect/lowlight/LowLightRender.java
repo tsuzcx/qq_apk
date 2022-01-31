@@ -22,15 +22,7 @@ public class LowLightRender
     this.mContextReference = new WeakReference(paramContext);
     this.mLowLightImage = LowLightTools.getLowLightImage(3.0F, 0.88F, 0.96F, 1.22F, false);
     Log.d("LowLightRender", "new LowLightRender");
-    addTaskBeforeProcess(new Runnable()
-    {
-      public void run()
-      {
-        LowLightRender.access$002(LowLightRender.this, new QQAVImageLowLightFilter());
-        LowLightRender.this.mLowLightFilter.setLowLightImage(LowLightRender.this.mLowLightImage);
-        LowLightRender.this.mLowLightFilter.init();
-      }
-    });
+    addTaskBeforeProcess(new LowLightRender.2(this));
   }
   
   public LowLightRender(Context paramContext, String paramString)
@@ -38,15 +30,7 @@ public class LowLightRender
     this.mContextReference = new WeakReference(paramContext);
     this.mLowLightImage = LowLightTools.getLowLightImage(paramContext, paramString);
     Log.d("LowLightRender", "new LowLightRender resPath = " + paramString);
-    addTaskBeforeProcess(new Runnable()
-    {
-      public void run()
-      {
-        LowLightRender.access$002(LowLightRender.this, new QQAVImageLowLightFilter());
-        LowLightRender.this.mLowLightFilter.setLowLightImage(LowLightRender.this.mLowLightImage);
-        LowLightRender.this.mLowLightFilter.init();
-      }
-    });
+    addTaskBeforeProcess(new LowLightRender.1(this));
   }
   
   public void destroy()
@@ -84,7 +68,7 @@ public class LowLightRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.av.video.effect.lowlight.LowLightRender
  * JD-Core Version:    0.7.0.1
  */

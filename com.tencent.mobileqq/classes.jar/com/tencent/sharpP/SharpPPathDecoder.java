@@ -7,38 +7,56 @@ import com.tencent.component.media.ImageManagerEnv;
 
 public class SharpPPathDecoder
 {
-  protected SharpPDecoderWrapper.SharpPFeatureWrapper a;
-  protected SharpPDecoderWrapper a;
-  protected String a;
+  private static final String TAG = "SharpPPathDecoder";
+  protected SharpPDecoderWrapper mDecoder = new SharpPDecoderWrapper();
+  protected SharpPDecoderWrapper.SharpPFeatureWrapper mInfo;
+  protected String mPath;
   
   public SharpPPathDecoder(String paramString)
   {
-    this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper = new SharpPDecoderWrapper();
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.mPath = paramString;
   }
   
-  public int a()
+  public void closeDecoder()
   {
-    if (this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper$SharpPFeatureWrapper != null) {
-      return 0;
-    }
-    this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper$SharpPFeatureWrapper = this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper.a();
-    int i = this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper$SharpPFeatureWrapper.a());
-    if (i != 0)
+    this.mInfo = null;
+  }
+  
+  public void closeDecoder(int paramInt)
+  {
+    this.mDecoder.closeDecoderInNative(paramInt);
+    closeDecoder();
+  }
+  
+  public int createDecoder()
+  {
+    if (this.mInfo == null)
     {
-      this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper$SharpPFeatureWrapper = null;
-      ImageManagerEnv.getLogger().e("SharpPPathDecoder", new Object[] { "parseHeader error,res=" + i });
+      int i = parseHeader();
+      if (i != 0)
+      {
+        ImageManagerEnv.getLogger().e("SharpPPathDecoder", new Object[] { "createDecoder error,res=" + i });
+        return i;
+      }
     }
-    return i;
+    return this.mDecoder.createDecoderInNative(this.mPath, this.mInfo.getFeatureInfo());
   }
   
-  public Bitmap a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, SharpPDecoderWrapper.WriteableInteger paramWriteableInteger, Bitmap paramBitmap)
+  public Bitmap decodeSharpP(int paramInt1, int paramInt2, Bitmap.Config paramConfig)
   {
-    if ((this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper$SharpPFeatureWrapper == null) && (a() != 0)) {
+    if ((this.mInfo == null) && (parseHeader() != 0)) {
       return null;
     }
-    if (this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper$SharpPFeatureWrapper.c() == 4) {
-      paramBitmap = this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper.a(paramInt1, paramInt2, paramInt3, paramInt4, paramWriteableInteger, paramBitmap);
+    return this.mDecoder.decodeSharpPInNative(this.mPath, this.mInfo.getFeatureInfo(), paramInt1, paramInt2, paramConfig);
+  }
+  
+  public Bitmap decodeSharpP2GifFrame(int paramInt1, int paramInt2, int paramInt3, int paramInt4, SharpPDecoderWrapper.WriteableInteger paramWriteableInteger, Bitmap paramBitmap)
+  {
+    if ((this.mInfo == null) && (parseHeader() != 0)) {
+      return null;
+    }
+    if (this.mInfo.getImageMode() == 4) {
+      paramBitmap = this.mDecoder.decodeOneFrameWithAlphaInNative(paramInt1, paramInt2, paramInt3, paramInt4, paramWriteableInteger, paramBitmap);
     }
     for (;;)
     {
@@ -48,38 +66,51 @@ public class SharpPPathDecoder
         localBitmap = Bitmap.createBitmap(paramInt3, paramInt4, Bitmap.Config.ARGB_8888);
       }
       paramBitmap = localBitmap;
-      if (this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper.a(paramInt1, paramInt2, localBitmap, paramWriteableInteger) != 0) {
+      if (this.mDecoder.decodeOneFrameInNative(paramInt1, paramInt2, localBitmap, paramWriteableInteger) != 0) {
         paramBitmap = null;
       }
     }
   }
   
-  public Bitmap a(int paramInt1, int paramInt2, Bitmap.Config paramConfig)
+  public Bitmap decodeSharpP2JPG(int paramInt1, int paramInt2, Bitmap.Config paramConfig)
   {
-    if ((this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper$SharpPFeatureWrapper == null) && (a() != 0)) {
+    if ((this.mInfo == null) && (parseHeader() != 0)) {
       return null;
     }
-    return this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper$SharpPFeatureWrapper.a(), paramInt1, paramInt2, paramConfig);
+    return this.mDecoder.decodeImageInNative(this.mPath, this.mInfo.getFeatureInfo(), 4, paramInt1, paramInt2, paramConfig);
   }
   
-  public SharpPDecoderWrapper.SharpPFeatureWrapper a()
+  public Bitmap decodeSharpP2PNG(int paramInt1, int paramInt2, Bitmap.Config paramConfig)
   {
-    if ((this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper$SharpPFeatureWrapper == null) && (a() != 0)) {
+    if ((this.mInfo == null) && (parseHeader() != 0)) {
       return null;
     }
-    return this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper$SharpPFeatureWrapper;
+    return this.mDecoder.decodeSharpP2PNGInNative(this.mPath, this.mInfo.getFeatureInfo(), paramInt1, paramInt2, paramConfig);
   }
   
-  public String a()
+  public int getAllocationByteCount()
   {
-    if ((this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper$SharpPFeatureWrapper == null) && (a() != 0)) {}
-    while (this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper$SharpPFeatureWrapper == null) {
+    return this.mDecoder.getAllocationByteCount();
+  }
+  
+  public SharpPDecoderWrapper.SharpPFeatureWrapper getFeatureInfo()
+  {
+    if ((this.mInfo == null) && (parseHeader() != 0)) {
       return null;
     }
-    switch (this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper$SharpPFeatureWrapper.c())
+    return this.mInfo;
+  }
+  
+  public String getMimeType()
+  {
+    if ((this.mInfo == null) && (parseHeader() != 0)) {}
+    while (this.mInfo == null) {
+      return null;
+    }
+    switch (this.mInfo.getImageMode())
     {
     default: 
-      ImageManagerEnv.getLogger().e("SharpPPathDecoder", new Object[] { "-------unknow mimeType:" + this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper$SharpPFeatureWrapper.c() });
+      ImageManagerEnv.getLogger().e("SharpPPathDecoder", new Object[] { "-------unknow mimeType:" + this.mInfo.getImageMode() });
       return null;
     case 0: 
       return "image/jpg";
@@ -93,50 +124,19 @@ public class SharpPPathDecoder
     return "image/gif";
   }
   
-  public void a()
+  public int parseHeader()
   {
-    this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper$SharpPFeatureWrapper = null;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper.a(paramInt);
-    a();
-  }
-  
-  public int b()
-  {
-    if (this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper$SharpPFeatureWrapper == null)
+    if (this.mInfo != null) {
+      return 0;
+    }
+    this.mInfo = this.mDecoder.createSharpPFeatureWrapper();
+    int i = this.mDecoder.parseHeaderInNative(this.mPath, this.mInfo.getFeatureInfo());
+    if (i != 0)
     {
-      int i = a();
-      if (i != 0)
-      {
-        ImageManagerEnv.getLogger().e("SharpPPathDecoder", new Object[] { "createDecoder error,res=" + i });
-        return i;
-      }
+      this.mInfo = null;
+      ImageManagerEnv.getLogger().e("SharpPPathDecoder", new Object[] { "parseHeader error,res=" + i });
     }
-    return this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper$SharpPFeatureWrapper.a());
-  }
-  
-  public Bitmap b(int paramInt1, int paramInt2, Bitmap.Config paramConfig)
-  {
-    if ((this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper$SharpPFeatureWrapper == null) && (a() != 0)) {
-      return null;
-    }
-    return this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper$SharpPFeatureWrapper.a(), paramInt1, paramInt2, paramConfig);
-  }
-  
-  public int c()
-  {
-    return this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper.a();
-  }
-  
-  public Bitmap c(int paramInt1, int paramInt2, Bitmap.Config paramConfig)
-  {
-    if ((this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper$SharpPFeatureWrapper == null) && (a() != 0)) {
-      return null;
-    }
-    return this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentSharpPSharpPDecoderWrapper$SharpPFeatureWrapper.a(), 4, paramInt1, paramInt2, paramConfig);
+    return i;
   }
 }
 

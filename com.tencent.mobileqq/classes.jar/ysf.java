@@ -1,34 +1,61 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRenderDriver;
-import java.util.concurrent.locks.ReentrantLock;
+import android.os.Handler;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import com.tencent.gdtad.views.video.GdtVideoCommonView;
+import com.tencent.gdtad.views.videoceiling.GdtVideoCeilingLandView;
+import com.tencent.gdtad.views.videoimax.GdtImaxData;
+import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment;
+import com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment.1.1;
 
 public class ysf
-  implements Runnable
+  implements yru
 {
-  public ysf(ApolloRenderDriver paramApolloRenderDriver, String paramString) {}
+  public ysf(GdtVideoImaxFragment paramGdtVideoImaxFragment) {}
   
-  public void run()
+  public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    try
+    if (GdtVideoImaxFragment.a(this.a).getVideoSplicePageStyle() == 1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_ComTencentMobileqqApolloApolloEngine.a(this.jdField_a_of_type_JavaLangString);
+      GdtVideoImaxFragment.a(this.a);
+      GdtVideoImaxFragment.b(this.a);
+    }
+    while (GdtVideoImaxFragment.a(this.a).getVideoSplicePageStyle() != 0) {
       return;
     }
-    catch (Exception localException)
+    GdtVideoImaxFragment.a(this.a).g();
+    paramView = ypk.a(this.a.getActivity());
+    GdtVideoImaxFragment.a(this.a, paramView[1], GdtVideoImaxFragment.a(this.a).getLayoutParams().height, paramView[1]);
+  }
+  
+  public void a(GdtVideoCommonView paramGdtVideoCommonView)
+  {
+    yny.a("GdtVideoImaxFragment", "onPrepared() called with: v = [" + paramGdtVideoCommonView + "]");
+  }
+  
+  public void b(GdtVideoCommonView paramGdtVideoCommonView)
+  {
+    yny.a("GdtVideoImaxFragment", "onStart() called with: ");
+    if (GdtVideoImaxFragment.a(this.a))
     {
-      localException.printStackTrace();
-      return;
+      GdtVideoImaxFragment.a(this.a).removeCallbacks(GdtVideoImaxFragment.a(this.a));
+      GdtVideoImaxFragment.a(this.a).postDelayed(new GdtVideoImaxFragment.1.1(this), 75L);
+      GdtVideoImaxFragment.a(this.a, false);
     }
-    finally
-    {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
-    }
+  }
+  
+  public void c(GdtVideoCommonView paramGdtVideoCommonView)
+  {
+    yny.a("GdtVideoImaxFragment", "onStop() called with: v = [" + paramGdtVideoCommonView + "]");
+  }
+  
+  public void d(GdtVideoCommonView paramGdtVideoCommonView)
+  {
+    yny.a("GdtVideoImaxFragment", "onComplete() called with: v = [" + paramGdtVideoCommonView + "]");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ysf
  * JD-Core Version:    0.7.0.1
  */

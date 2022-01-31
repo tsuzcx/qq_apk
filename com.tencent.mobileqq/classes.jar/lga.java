@@ -1,21 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
-
-class lga
-  implements Runnable
+public abstract interface lga
 {
-  lga(lfz paramlfz) {}
+  public abstract void a(lfz paramlfz);
   
-  public void run()
-  {
-    if ((ReadInJoyNewFeedsActivity.a(this.a.a) == 0) && (ReadInJoyNewFeedsActivity.a(this.a.a) != null) && (ReadInJoyNewFeedsActivity.a(this.a.a).mChannelCoverId == 0) && (!this.a.a.a(0))) {
-      this.a.a.c(true);
-    }
-  }
+  public abstract boolean a(lfz paramlfz);
+  
+  public abstract boolean b(lfz paramlfz);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lga
  * JD-Core Version:    0.7.0.1
  */

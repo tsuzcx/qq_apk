@@ -1,24 +1,41 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.profile.view.ShimmerLinearLayout;
-
 public class agwu
-  implements ValueAnimator.AnimatorUpdateListener
 {
-  public agwu(ShimmerLinearLayout paramShimmerLinearLayout, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public float a;
+  public int a;
+  public float b;
+  public int b;
+  public float c;
+  public int c;
+  public float d;
+  public float e;
+  public float f;
+  public float g;
+  public float h;
+  public float i;
+  public float j;
+  public float k;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public agwu(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5, float paramFloat6, float paramFloat7, float paramFloat8, int paramInt1, int paramInt2)
   {
-    float f1 = Math.max(0.0F, Math.min(1.0F, ((Float)paramValueAnimator.getAnimatedValue()).floatValue()));
-    paramValueAnimator = this.jdField_a_of_type_ComTencentMobileqqProfileViewShimmerLinearLayout;
-    int i = (int)(this.jdField_a_of_type_Int * (1.0F - f1) + this.b * f1);
-    float f2 = this.c;
-    paramValueAnimator.a(i, (int)(f1 * this.d + f2 * (1.0F - f1)));
+    this.jdField_a_of_type_Float = paramFloat1;
+    this.jdField_b_of_type_Float = paramFloat2;
+    this.jdField_c_of_type_Float = paramFloat3;
+    this.f = paramFloat3;
+    this.d = paramFloat5;
+    this.h = paramFloat5;
+    this.e = paramFloat7;
+    this.j = paramFloat7;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt1;
+    this.g = paramFloat4;
+    this.i = paramFloat6;
+    this.k = paramFloat8;
+    this.jdField_c_of_type_Int = paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agwu
  * JD-Core Version:    0.7.0.1
  */

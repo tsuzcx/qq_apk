@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/ajr" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_gravity="center" android:id="@id/fvd" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mobileqq.widget.ImageViewCatchRecycle android:id="@id/duw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
+        <com.tencent.mobileqq.widget.ImageViewCatchRecycle android:id="@id/bo_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
+        <com.tencent.mobileqq.nearby.now.view.widget.HorizontalBallLoadingView android:id="@id/loading" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView android:id="@id/de9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mobileqq.nearby.now.view.OperationView android:layout_gravity="top" android:id="@id/ffc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="14.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center" android:id="@id/i9f" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/qve" android:drawableTop="@drawable/fd2" android:drawablePadding="15.0dip" />
+    <com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView android:layout_gravity="center" android:id="@id/fg9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

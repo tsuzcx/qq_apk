@@ -1,19 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import org.json.JSONObject;
 
-class alhz
-  implements DialogInterface.OnClickListener
+public abstract interface alhz
 {
-  alhz(alhw paramalhw) {}
+  public abstract boolean needProcess(JSONObject paramJSONObject);
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public abstract void process(JSONObject paramJSONObject, alia paramalia, Object paramObject);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alhz
  * JD-Core Version:    0.7.0.1
  */

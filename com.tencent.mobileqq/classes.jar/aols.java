@@ -1,19 +1,19 @@
-import dov.com.tencent.biz.qqstory.takevideo.permission.PermissionPart;
-
-public class aols
+class aols
+  extends aokw
 {
-  public final int a;
-  public final PermissionPart a;
-  
-  public aols(PermissionPart paramPermissionPart, int paramInt)
+  public aols(aokk paramaokk)
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionPermissionPart = paramPermissionPart;
-    this.jdField_a_of_type_Int = paramInt;
+    super(paramaokk);
+  }
+  
+  protected String a()
+  {
+    return "StateUploadoneWhenPause";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aols
  * JD-Core Version:    0.7.0.1
  */

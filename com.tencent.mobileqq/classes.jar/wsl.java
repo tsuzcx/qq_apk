@@ -1,26 +1,26 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsDeviceAdapter;
-import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
-import com.tencent.widget.XListView;
+import android.support.v7.widget.RecyclerView;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 
-public class wsl
-  implements Runnable
+class wsl
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public wsl(DeviceFragment paramDeviceFragment) {}
+  wsl(wsj paramwsj) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter.getCount() > 0))
+    paramCompoundButton = wsj.a(this.a);
+    if (paramBoolean) {}
+    for (int i = 0;; i = 8)
     {
-      int i = this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter.a();
-      if ((i >= 0) && (i < this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDeviceAdapter.getCount())) {
-        this.a.jdField_a_of_type_ComTencentWidgetXListView.setSelection(i);
-      }
+      paramCompoundButton.setVisibility(i);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wsl
  * JD-Core Version:    0.7.0.1
  */

@@ -45,6 +45,8 @@ public abstract class SelectMemberInnerFrame
     this.jdField_a_of_type_AndroidViewLayoutInflater = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getLayoutInflater();
   }
   
+  public void a(ResultRecord paramResultRecord, int paramInt) {}
+  
   public abstract void f();
 }
 

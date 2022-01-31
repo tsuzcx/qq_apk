@@ -1,26 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
-import com.tencent.mobileqq.extendfriend.fragment.GroupItemClickListeneer;
+import android.animation.TypeEvaluator;
+import com.tencent.qphone.base.util.QLog;
 
 class acqo
-  implements View.OnClickListener
+  implements TypeEvaluator
 {
-  acqo(acqm paramacqm, ExtendFriendGroupFragment paramExtendFriendGroupFragment) {}
-  
-  public void onClick(View paramView)
+  public Object evaluate(float paramFloat, Object paramObject1, Object paramObject2)
   {
-    int j = this.jdField_a_of_type_Acqm.getPosition();
-    int i = j;
-    if (j > 0) {
-      i = j - 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("LottieAnimController", 2, "AlphaEvaluator value: " + paramFloat);
     }
-    acqm.a(this.jdField_a_of_type_Acqm).a(i);
+    if ((paramFloat >= 0.0F) && (paramFloat <= 0.02985074626865672D)) {
+      return Double.valueOf(paramFloat * 0.5D / 0.02985074626865672D);
+    }
+    if ((paramFloat > 0.02985074626865672D) && (paramFloat <= 0.9253731343283582D)) {
+      return Double.valueOf(0.5D);
+    }
+    if ((paramFloat > 0.9253731343283582D) && (paramFloat <= 1.0F)) {
+      return Double.valueOf((1.0F - paramFloat) * 0.5D / 0.07462686567164178D);
+    }
+    return Double.valueOf(0.0D);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acqo
  * JD-Core Version:    0.7.0.1
  */

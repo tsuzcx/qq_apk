@@ -1,27 +1,19 @@
 import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.leba.LebaTitleBar;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.HotSearchItem;
+import android.view.View.OnClickListener;
 
-public class aehr
-  implements View.OnFocusChangeListener
+class aehr
+  implements View.OnClickListener
 {
-  public aehr(LebaTitleBar paramLebaTitleBar) {}
+  aehr(aegy paramaegy) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean)
-    {
-      paramView.clearFocus();
-      UniteSearchActivity.a(LebaTitleBar.a(this.a), null, 21, 0L, (HotWordSearchEntryDataModel.HotSearchItem)LebaTitleBar.a(this.a).getTag(), 3);
-    }
+    paramView.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aehr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,33 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.EditText;
-import com.tencent.qqconnect.wtlogin.Login;
-
 public class amdo
-  implements TextWatcher
 {
-  public amdo(Login paramLogin) {}
+  private amdp jdField_a_of_type_Amdp;
+  private String jdField_a_of_type_JavaLangString;
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public amdo()
   {
-    if (paramCharSequence.length() == 0) {
-      this.a.a.setVisibility(4);
-    }
-    for (;;)
-    {
-      this.a.jdField_b_of_type_Boolean = false;
-      this.a.jdField_b_of_type_AndroidWidgetEditText.setText("");
-      return;
-      if (paramInt3 < 2) {
-        this.a.a.setVisibility(0);
-      }
-    }
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_Amdp = new amdp();
+  }
+  
+  public amdo(String paramString, amdp paramamdp)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Amdp = paramamdp;
+  }
+  
+  public amdp a()
+  {
+    return this.jdField_a_of_type_Amdp;
+  }
+  
+  public String a()
+  {
+    return this.jdField_a_of_type_JavaLangString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amdo
  * JD-Core Version:    0.7.0.1
  */

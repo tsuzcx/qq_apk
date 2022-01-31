@@ -3,15 +3,15 @@ package dov.com.tencent.mobileqq.shortvideo.util.videoconverter;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import aozf;
-import com.tencent.mobileqq.persistence.Entity;
+import atmo;
+import bjme;
 import org.json.JSONObject;
 
 public class ShortVideoTravellerManager$TravellerVideoItem
-  extends Entity
+  extends atmo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aozf();
+  public static final Parcelable.Creator<TravellerVideoItem> CREATOR = new bjme();
   public static final String TRAVELLER_PROVIDER_CATEGORY = "category";
   public static final String TRAVELLER_PROVIDER_ITEM_ID = "item_id";
   public static final String TRAVELLER_PROVIDER_TYPE = "type";

@@ -2,7 +2,7 @@ package com.tencent.mobileqq.shortvideo.resource;
 
 public abstract interface LowLightResource
 {
-  public abstract String a();
+  public abstract String getLowLightDir();
 }
 
 

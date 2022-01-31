@@ -1,34 +1,22 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.util.FaceDecoderImpl;
-
 public class akhg
-  extends FriendListObserver
 {
-  private akhg(FaceDecoderImpl paramFaceDecoderImpl) {}
+  public long a;
+  public String a;
+  public long b = -1L;
+  public long c = -1L;
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public akhg(long paramLong)
   {
-    this.a.a(paramBoolean, 1, paramString, 0);
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaLangString = Long.toString(paramLong);
   }
   
-  protected void onUpdateMobileQQHead(boolean paramBoolean, String paramString)
+  public void a()
   {
-    this.a.a(paramBoolean, 11, paramString, 0);
-  }
-  
-  protected void onUpdateQCallHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(paramBoolean1, 16, paramString, paramInt);
-  }
-  
-  protected void onUpdateStrangerHead(boolean paramBoolean1, String paramString, int paramInt, boolean paramBoolean2)
-  {
-    this.a.a(paramBoolean1, 32, paramString, paramInt);
-  }
-  
-  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
-  {
-    this.a.a(paramBoolean, 4, paramString, 0);
+    this.jdField_a_of_type_JavaLangString = null;
+    this.jdField_a_of_type_Long = -1L;
+    this.c = -1L;
+    this.b = -1L;
   }
 }
 

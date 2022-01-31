@@ -1,35 +1,58 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView;
+import java.io.File;
+import java.net.URL;
 
-public final class san
-  implements DialogInterface.OnClickListener
+final class san
+  implements sch
 {
-  public san(QQAppInterface paramQQAppInterface, Context paramContext, ChatActivityUtils.StartVideoListener paramStartVideoListener, int paramInt) {}
+  int jdField_a_of_type_Int = 0;
+  long jdField_a_of_type_Long = System.currentTimeMillis();
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  san(KandianUrlImageView paramKandianUrlImageView) {}
+  
+  public void a(URL paramURL, int paramInt) {}
+  
+  public void a(URL paramURL, Throwable paramThrowable)
   {
-    paramDialogInterface.dismiss();
-    PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, 2, 12);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener.a();
-    }
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (this.jdField_a_of_type_Int == 6) {}
-    for (paramInt = 1;; paramInt = 4)
+    sai.d("WeishiUtils", "url = " + paramURL + ", onLoadFailed!!!");
+    if (this.jdField_a_of_type_Int < 2)
     {
-      ReportController.b(paramDialogInterface, "CliOper", "", "", "0X80063F9", "0X80063F9", paramInt, 0, "", "", "", "");
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      sai.d("WeishiUtils", "");
+      this.jdField_a_of_type_Int += 1;
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.a(paramURL);
       return;
+    }
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a(URL paramURL, rcs paramrcs)
+  {
+    sai.b("WeishiUtils", "onLoadSuccess!!!");
+    this.jdField_a_of_type_Int = 0;
+    if (this.jdField_a_of_type_Long > 0L)
+    {
+      if (paramURL != null)
+      {
+        rxx.b(1, paramURL.toString());
+        long l1 = System.currentTimeMillis() - this.jdField_a_of_type_Long;
+        paramrcs = axoa.a(paramURL.toString());
+        if (paramrcs != null)
+        {
+          String str = paramrcs.getAbsolutePath();
+          long l2 = paramrcs.length();
+          sai.c("actWsFeedPicReqDuration", "--successTime:" + System.currentTimeMillis() + ", downloadCost:" + l1 + ", length:" + l2 + ", url = " + paramURL.toString() + "\n--absolutePath = " + str);
+          rzy.a().a(true, l1, l2);
+        }
+      }
+      this.jdField_a_of_type_Long = 0L;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     san
  * JD-Core Version:    0.7.0.1
  */

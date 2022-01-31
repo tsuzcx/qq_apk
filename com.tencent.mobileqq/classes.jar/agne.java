@@ -1,55 +1,27 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.fragment.LingHbFragment;
 import com.tencent.qphone.base.util.QLog;
 
 public class agne
-  implements Runnable
+  implements View.OnClickListener
 {
-  public agne(ScanTorchActivity paramScanTorchActivity) {}
+  public agne(LingHbFragment paramLingHbFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    String[] arrayOfString = new String[2];
-    arrayOfString[0] = "res/redpack/rank_dialog_bg.png";
-    arrayOfString[1] = "res/redpack/cup.png";
-    int j = arrayOfString.length;
-    int i = 0;
-    for (;;)
+    QLog.i("LingHbFragment", 2, "change others...");
+    if (this.a.channel == 65536) {}
+    for (paramView = "yyhongbao.word.change";; paramView = "klhongbao.word.change")
     {
-      if (i >= j) {
-        return;
-      }
-      String str = arrayOfString[i];
-      try
-      {
-        Bitmap localBitmap = ScanTorchActivity.a(this.a, str, false);
-        if (localBitmap != null) {
-          BaseApplicationImpl.sImageCache.put(str, localBitmap);
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        if (!QLog.isColorLevel()) {
-          break label97;
-        }
-        QLog.e("ScanTorchActivity", 2, "binhai preload img throwable", localThrowable);
-        while ((localThrowable instanceof OutOfMemoryError))
-        {
-          System.gc();
-          break;
-          QLog.d("ScanTorchActivity", 1, "binhai preload img t=" + localThrowable.getMessage());
-        }
-      }
-      i += 1;
+      this.a.addUploadData(paramView, "");
+      return;
     }
-    label97:
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agne
  * JD-Core Version:    0.7.0.1
  */

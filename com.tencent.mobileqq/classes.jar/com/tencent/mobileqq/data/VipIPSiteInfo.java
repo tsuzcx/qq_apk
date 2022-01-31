@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import acdh;
+import amtr;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,13 +9,13 @@ import java.util.List;
 public class VipIPSiteInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new acdh();
+  public static final Parcelable.Creator<VipIPSiteInfo> CREATOR = new amtr();
   public int extId;
   public String extStr;
   public String ipContent;
   public String ipDesc;
   public int ipID;
-  public List ipList;
+  public List<Object> ipList;
   public String ipLogo;
   public String ipName;
   public String ipUrl;
@@ -24,7 +24,7 @@ public class VipIPSiteInfo
   
   public VipIPSiteInfo() {}
   
-  public VipIPSiteInfo(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4, int paramInt3, String paramString5, String paramString6, String paramString7, List paramList)
+  public VipIPSiteInfo(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4, int paramInt3, String paramString5, String paramString6, String paramString7, List<Object> paramList)
   {
     this.ipID = paramInt1;
     this.ipName = paramString1;

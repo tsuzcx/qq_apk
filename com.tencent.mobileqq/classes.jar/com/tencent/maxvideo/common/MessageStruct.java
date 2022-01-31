@@ -54,7 +54,7 @@ public class MessageStruct
   public static final int MSG_VIDEOPLAYER_STOP_AUDIO = 67108869;
   public static final int MSG_VIDEOPLAYER_WRITE_AUDIO = 67108868;
   public int mId;
-  MessageCallBack mMsgCallBack;
+  MessageStruct.MessageCallBack mMsgCallBack;
   public String mName;
   public Object mObj0;
   public Object mObj1;
@@ -77,11 +77,6 @@ public class MessageStruct
   public String toString()
   {
     return "{id:0x" + Integer.toHexString(this.mId).toUpperCase() + ", name=" + this.mName + ", param0:" + this.mParam0 + ", param1:" + this.mParam1 + ", obj0:" + this.mObj0 + ", obj1:" + this.mObj1 + ", msgCallBack:" + this.mMsgCallBack + "}";
-  }
-  
-  public static abstract interface MessageCallBack
-  {
-    public abstract void ProcessMsg(MessageStruct paramMessageStruct, Object paramObject);
   }
 }
 

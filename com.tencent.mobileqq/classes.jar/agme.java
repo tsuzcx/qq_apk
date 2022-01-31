@@ -1,45 +1,31 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.ocr.OcrControl.OcrCallback;
-import com.tencent.mobileqq.ocr.activity.ScanOcrActivity.OcrResultCache;
-import com.tencent.mobileqq.ocr.data.OcrRecogResult;
-import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.List;
 
 public class agme
-  implements OcrControl.OcrCallback
+  implements PopupWindow.OnDismissListener
 {
-  public agme(ScanTorchActivity paramScanTorchActivity) {}
+  public agme(TroopUnAccalimedRedPacketList paramTroopUnAccalimedRedPacketList) {}
   
-  public void a()
+  public void onDismiss()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanTorchActivity", 2, "OcrControl.onExceed3s");
-    }
-  }
-  
-  public void a(int paramInt, OcrRecogResult paramOcrRecogResult, String paramString, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanTorchActivity", 2, String.format("OcrControl.onResult errCode=%s ocrResult=%s imagePath=%s costTime=%s", new Object[] { Integer.valueOf(paramInt), paramOcrRecogResult, paramString, Long.valueOf(paramLong) }));
-    }
-    if ((!ScanTorchActivity.k(this.a)) || (TextUtils.isEmpty(ScanTorchActivity.b(this.a))) || (!ScanTorchActivity.b(this.a).equals(paramString))) {
-      return;
-    }
-    if (ScanTorchActivity.l(this.a))
+    RedPacketManager.getInstance().onActiveAccount();
+    if ((TroopUnAccalimedRedPacketList.a(this.a) != null) && (agmh.a(TroopUnAccalimedRedPacketList.a(this.a)) != null))
     {
-      this.a.runOnUiThread(new agmf(this, paramInt, paramOcrRecogResult, paramString, paramLong));
-      return;
+      agmh.a(TroopUnAccalimedRedPacketList.a(this.a)).clear();
+      TroopUnAccalimedRedPacketList.a(this.a).notifyDataSetChanged();
     }
-    ScanTorchActivity.a(this.a, new ScanOcrActivity.OcrResultCache());
-    ScanTorchActivity.a(this.a).jdField_a_of_type_Int = paramInt;
-    ScanTorchActivity.a(this.a).jdField_a_of_type_ComTencentMobileqqOcrDataOcrRecogResult = paramOcrRecogResult;
-    ScanTorchActivity.a(this.a).jdField_a_of_type_JavaLangString = paramString;
-    ScanTorchActivity.a(this.a).jdField_a_of_type_Long = paramLong;
+    if ((!TroopUnAccalimedRedPacketList.a(this.a)) && (TroopUnAccalimedRedPacketList.a(this.a) != null)) {
+      agwj.a(TroopUnAccalimedRedPacketList.a(this.a), TroopUnAccalimedRedPacketList.a(this.a).getCurrentAccountUin(), 2, "", 0L, 162, "aio.hongbaolist.keyback", "", "");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agme
  * JD-Core Version:    0.7.0.1
  */

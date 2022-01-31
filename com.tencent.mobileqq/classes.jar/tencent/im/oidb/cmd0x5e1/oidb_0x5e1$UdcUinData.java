@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_0x5e1$UdcUinData
-  extends MessageMicro
+  extends MessageMicro<UdcUinData>
 {
   public static final int BYTES_BASIC_CLI_FLAG_FIELD_NUMBER = 21007;
   public static final int BYTES_BASIC_SVR_FLAG_FIELD_NUMBER = 21006;
@@ -106,7 +106,7 @@ public final class oidb_0x5e1$UdcUinData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     tencent.im.oidb.cmd0x5e1.oidb_0x5e1.UdcUinData
  * JD-Core Version:    0.7.0.1
  */

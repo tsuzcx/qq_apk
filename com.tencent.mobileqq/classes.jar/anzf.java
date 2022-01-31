@@ -1,53 +1,31 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.cropvideo.CropVideoActivity;
+import com.tencent.widget.ExpandableListView;
 
-public class anzf
-  implements FFmpegExecuteResponseCallback
+class anzf
+  implements vsl
 {
-  public anzf(CropVideoActivity paramCropVideoActivity) {}
+  anzf(anzd paramanzd, int paramInt) {}
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onStart");
+    String str = (String)this.jdField_a_of_type_Anzd.getGroup(this.jdField_a_of_type_Int);
+    if (anzd.a(this.jdField_a_of_type_Anzd).c(this.jdField_a_of_type_Int))
+    {
+      QQAppInterface.f(str + ajjy.a(2131643840));
+      return;
     }
+    QQAppInterface.f(str + ajjy.a(2131643820));
   }
   
-  public void a(String paramString)
+  public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onSuccess: " + paramString);
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onFinish: " + paramBoolean);
-    }
-    this.a.a.sendEmptyMessage(3);
-  }
-  
-  public void b(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onFailure: " + paramString);
-    }
-    this.a.a.sendEmptyMessage(4);
-  }
-  
-  public void c(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("CropVideoActivity", 2, "ffmpeg onProgress: " + paramString);
-    }
+    QLog.e("ACCESS_SILAS", 1, "onViewFocusClear");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anzf
  * JD-Core Version:    0.7.0.1
  */

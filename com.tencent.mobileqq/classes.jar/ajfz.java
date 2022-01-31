@@ -1,29 +1,49 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.createNewTroop.CateListAdapter;
-import com.tencent.mobileqq.troop.createNewTroop.CateListAdapter.ViewHolder;
-import com.tencent.mobileqq.troop.createNewTroop.NewTroopCateView;
-import com.tencent.mobileqq.troop.createNewTroop.TroopCateListProvider.TroopCateInfo;
+import com.tencent.mobileqq.app.ConditionSearchManager.DownloadTask.1;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import protocol.KQQConfig.GetResourceRespInfo;
 
 public class ajfz
-  implements View.OnClickListener
+  extends axxg
 {
-  public ajfz(CateListAdapter.ViewHolder paramViewHolder) {}
+  public File a;
+  public GetResourceRespInfo a;
   
-  public void onClick(View paramView)
+  public ajfz(QQAppInterface paramQQAppInterface, String paramString, GetResourceRespInfo paramGetResourceRespInfo, File paramFile)
   {
-    paramView = (TroopCateListProvider.TroopCateInfo)paramView.getTag();
-    if (paramView.b == 1)
-    {
-      this.a.a.a.a(paramView.a, null);
-      return;
+    super(paramQQAppInterface, paramString);
+    this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo = paramGetResourceRespInfo;
+    this.jdField_a_of_type_JavaIoFile = paramFile;
+  }
+  
+  protected void realCancel()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ConditionSearch.Manager", 2, "DownloadTask realCancel");
     }
-    this.a.a.a.a(paramView.d, paramView.a);
+  }
+  
+  protected void realStart()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ConditionSearch.Manager", 2, "DownloadTask realStart");
+    }
+    String str = this.key;
+    QQAppInterface localQQAppInterface = this.app;
+    GetResourceRespInfo localGetResourceRespInfo = this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo;
+    ThreadManagerV2.excute(new ConditionSearchManager.DownloadTask.1(this, str, this.jdField_a_of_type_JavaIoFile, localQQAppInterface, localGetResourceRespInfo), 128, null, true);
+  }
+  
+  public String toString()
+  {
+    return "[DownloadTask] url=" + this.key;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajfz
  * JD-Core Version:    0.7.0.1
  */

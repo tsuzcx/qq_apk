@@ -1,18 +1,23 @@
-import android.graphics.Rect;
-import android.hardware.Camera.AutoFocusCallback;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy;
-
 public class aihd
 {
-  public Rect a;
-  public Camera.AutoFocusCallback a;
-  public Rect b;
+  public int a;
+  public float[] a;
+  public int[] a;
+  public float[] b;
+  public int[] b;
   
-  private aihd(CameraProxy paramCameraProxy) {}
+  public aihd()
+  {
+    this.jdField_a_of_type_ArrayOfFloat = new float[4];
+    this.jdField_b_of_type_ArrayOfFloat = new float[4];
+    this.jdField_a_of_type_ArrayOfInt = new int[4];
+    this.jdField_b_of_type_ArrayOfInt = new int[4];
+    this.jdField_a_of_type_Int = 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aihd
  * JD-Core Version:    0.7.0.1
  */

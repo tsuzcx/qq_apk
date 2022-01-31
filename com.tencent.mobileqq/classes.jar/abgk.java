@@ -1,19 +1,22 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
 
 class abgk
-  implements Runnable
+  implements View.OnClickListener
 {
-  abgk(abgj paramabgj) {}
+  abgk(abgi paramabgi) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.a.setVisibility(8);
+    if (abgi.a(this.a) != null) {
+      abgi.a(this.a).m();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abgk
  * JD-Core Version:    0.7.0.1
  */

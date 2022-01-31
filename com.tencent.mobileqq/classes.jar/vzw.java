@@ -1,20 +1,29 @@
-import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
 
-public class vzw
-  implements Runnable
+class vzw
+  implements TextView.OnEditorActionListener
 {
-  public vzw(HotChatPie paramHotChatPie) {}
+  vzw(vzs paramvzs) {}
   
-  public void run()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    ConfigServlet.a(this.a.a, this.a.a.getAccount(), -1);
+    switch (paramInt)
+    {
+    case 5: 
+    default: 
+      return false;
+    }
+    if (vzs.a(this.a) != null) {
+      vzs.a(this.a).a();
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     vzw
  * JD-Core Version:    0.7.0.1
  */

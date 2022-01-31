@@ -35,7 +35,7 @@ public class LpReport_UserInfo_dc02148
     return null;
   }
   
-  public Map toMap()
+  public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
     if (this.uin <= 1000L)

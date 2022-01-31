@@ -1,0 +1,111 @@
+import android.animation.Animator;
+import android.animation.ObjectAnimator;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewStub;
+import android.widget.RelativeLayout;
+import dov.com.qq.im.capture.mode.CaptureModeController;
+import dov.com.qq.im.capture.music.QIMMusicConfigManager;
+
+public class bhif
+  extends bhht
+{
+  private Animator a;
+  public bhqy a;
+  public QIMMusicConfigManager a;
+  private Animator b;
+  
+  public bhif(CaptureModeController paramCaptureModeController)
+  {
+    super(paramCaptureModeController);
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Int = 4;
+    this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager = ((QIMMusicConfigManager)bhfm.a(2));
+  }
+  
+  private void a()
+  {
+    if (this.jdField_a_of_type_AndroidAnimationAnimator == null) {
+      this.jdField_a_of_type_AndroidAnimationAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_Bhqy.a(), "alpha", new float[] { 0.0F, 1.0F }).setDuration(600L);
+    }
+    if ((this.b != null) && (this.b.isRunning())) {
+      this.b.cancel();
+    }
+    this.jdField_a_of_type_Bhqy.a().setVisibility(0);
+    this.jdField_a_of_type_Bhqy.a().bringToFront();
+    if (this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a != null) {
+      this.jdField_a_of_type_DovComQqImCaptureModeCaptureModeController.a.bringToFront();
+    }
+    this.jdField_a_of_type_AndroidAnimationAnimator.start();
+    boolean bool = vnd.a(this.jdField_a_of_type_Bhdi.a());
+    this.jdField_a_of_type_Bhqy.a(bool);
+    if (bool) {}
+    for (int i = 0;; i = 1)
+    {
+      urp.a("weishi_share", "clk_ws_entry", 0, 0, new String[] { String.valueOf(i) });
+      return;
+    }
+  }
+  
+  private void b()
+  {
+    if (this.b == null)
+    {
+      this.b = ObjectAnimator.ofFloat(this.jdField_a_of_type_Bhqy.a(), "alpha", new float[] { 1.0F, 0.0F }).setDuration(600L);
+      this.b.addListener(new bhih(this));
+    }
+    if ((this.jdField_a_of_type_AndroidAnimationAnimator != null) && (this.jdField_a_of_type_AndroidAnimationAnimator.isRunning())) {
+      this.jdField_a_of_type_AndroidAnimationAnimator.cancel();
+    }
+    if (this.jdField_a_of_type_Bhqy.a().getVisibility() != 8) {
+      this.b.start();
+    }
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      g();
+      a();
+    }
+    while (this.jdField_a_of_type_Bhqy == null) {
+      return;
+    }
+    b();
+  }
+  
+  public boolean b()
+  {
+    return this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.b();
+  }
+  
+  public void g()
+  {
+    if (this.jdField_a_of_type_Bhqy == null)
+    {
+      ((ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131313583)).inflate();
+      this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.g();
+      this.jdField_a_of_type_Bhqy = new bhqy(this.jdField_a_of_type_AndroidViewView, "biz_src_jc_hyws");
+      this.jdField_a_of_type_Bhqy.a(this);
+      this.jdField_a_of_type_Bhqy.a(this.jdField_a_of_type_DovComQqImCaptureMusicQIMMusicConfigManager.b);
+      this.jdField_a_of_type_Bhqy.a().setOnTouchListener(new bhig(this));
+    }
+  }
+  
+  public void onClick(View paramView)
+  {
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    }
+    this.jdField_a_of_type_Bhdi.z();
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+ * Qualified Name:     bhif
+ * JD-Core Version:    0.7.0.1
+ */

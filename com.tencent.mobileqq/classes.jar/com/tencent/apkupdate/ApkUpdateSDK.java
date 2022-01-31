@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Message;
 import com.tencent.apkupdate.a.d;
-import com.tencent.apkupdate.logic.a;
+import com.tencent.apkupdate.b.b;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -33,7 +33,7 @@ public class ApkUpdateSDK
   
   public void addListener(ApkUpdateListener paramApkUpdateListener)
   {
-    a.a().a(paramApkUpdateListener);
+    com.tencent.apkupdate.logic.a.a().a(paramApkUpdateListener);
   }
   
   public void checkUpdate(List paramList)
@@ -53,7 +53,7 @@ public class ApkUpdateSDK
   {
     if ((paramList != null) && (paramList.size() > 0))
     {
-      Message localMessage = a.a().obtainMessage();
+      Message localMessage = com.tencent.apkupdate.logic.a.a().obtainMessage();
       localMessage.what = 5;
       localMessage.obj = paramList;
       localMessage.sendToTarget();
@@ -62,13 +62,13 @@ public class ApkUpdateSDK
   
   public void destory()
   {
-    com.tencent.apkupdate.logic.protocol.b.a().c();
+    com.tencent.apkupdate.logic.protocol.a.a().c();
   }
   
   public void init(Context paramContext)
   {
-    com.tencent.apkupdate.logic.protocol.b.a().a(paramContext);
-    com.tencent.apkupdate.c.b.a().a(paramContext);
+    com.tencent.apkupdate.logic.protocol.a.a().a(paramContext);
+    b.a().a(paramContext);
   }
   
   public int patchNewApk(String paramString1, String paramString2, String paramString3)
@@ -78,7 +78,7 @@ public class ApkUpdateSDK
   
   public int patchNewApkByPath(String paramString1, String paramString2, String paramString3)
   {
-    PackageManager localPackageManager = com.tencent.apkupdate.logic.protocol.b.a().b().getPackageManager();
+    PackageManager localPackageManager = com.tencent.apkupdate.logic.protocol.a.a().b().getPackageManager();
     int j = new d().a(paramString1, paramString2, paramString3);
     int i = j;
     if (j == 0)
@@ -93,7 +93,7 @@ public class ApkUpdateSDK
   
   public void removeListener(ApkUpdateListener paramApkUpdateListener)
   {
-    a.a().b(paramApkUpdateListener);
+    com.tencent.apkupdate.logic.a.a().b(paramApkUpdateListener);
   }
 }
 

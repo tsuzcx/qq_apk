@@ -1,35 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.LoginActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.subaccount.AssociatedAccountOptPopBar;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
-public class aipc
-  implements DialogInterface.OnClickListener
+final class aipc
+  implements EIPCResultCallback
 {
-  public aipc(AssociatedAccountOptPopBar paramAssociatedAccountOptPopBar) {}
+  aipc(long paramLong) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
+    paramEIPCResult = paramEIPCResult.data.getString("resData");
+    aing.a().callbackFromRequest(this.a, 0, "sc.script_notify_action_ready.local", paramEIPCResult);
     if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountOptPopBar", 2, "onAccoutChangeFailed -> LoginActivity");
+      QLog.d("cmgame_process.CmGameToolCmdChannel", 2, " GET_ACTION_DATA onCallback resJson:" + paramEIPCResult);
     }
-    paramDialogInterface = new Intent();
-    paramDialogInterface.setPackage(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getPackageName());
-    paramDialogInterface.setClass(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, LoginActivity.class);
-    paramDialogInterface.putExtra("is_change_account", true);
-    paramDialogInterface.putExtra("uin", this.a.jdField_a_of_type_JavaLangString);
-    paramDialogInterface.putExtra("befault_uin", this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getCurrentAccountUin());
-    this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramDialogInterface);
-    this.a.jdField_a_of_type_JavaLangString = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     aipc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,20 @@
-import com.tencent.biz.bmqq.util.BmqqSegmentUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.automator.step.AfterSyncMsg;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
 
 public class zwh
-  implements Runnable
+  implements View.OnClickListener
 {
-  public zwh(AfterSyncMsg paramAfterSyncMsg) {}
+  public zwh(AccountManageActivity paramAccountManageActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (!BmqqSegmentUtil.a.get()) {
-      BmqqSegmentUtil.a(BaseApplicationImpl.getContext());
-    }
+    this.a.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     zwh
  * JD-Core Version:    0.7.0.1
  */

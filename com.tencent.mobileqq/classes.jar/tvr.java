@@ -1,63 +1,53 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.VideoConstants;
-import com.tencent.av.utils.ScoreManager;
-import com.tencent.mobileqq.activity.ScoreQAVFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.statistics.ScoreReportController;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder;
+import com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class tvr
-  implements View.OnClickListener
+  extends QQUIEventReceiver<tvd, tgo>
 {
-  public tvr(ScoreQAVFragment paramScoreQAVFragment) {}
-  
-  public void onClick(View paramView)
+  public tvr(@NonNull tvd paramtvd)
   {
-    this.a.a();
-    long l2 = 0L;
-    long l1 = l2;
-    if (this.a.jdField_b_of_type_JavaLangString != null)
-    {
-      l1 = l2;
-      if (!this.a.jdField_b_of_type_JavaLangString.isEmpty()) {
-        l1 = ScoreManager.a(this.a.jdField_b_of_type_JavaLangString);
-      }
-    }
-    paramView = SharedPreUtils.f(this.a.jdField_d_of_type_JavaLangString);
-    l2 = paramView.getLong("qav_roomid", 0L);
-    long l3 = paramView.getLong(VideoConstants.g, 0L);
-    ScoreReportController.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_Long, this.a.jdField_b_of_type_Long, this.a.jdField_c_of_type_Long, this.a.jdField_d_of_type_Long, this.a.e, this.a.jdField_a_of_type_Int, l3, l1, l2, this.a.jdField_c_of_type_JavaLangString, this.a.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("ScoreActivity", 2, "reportEvent beginTime: " + this.a.jdField_a_of_type_Long + ", endTime: " + this.a.jdField_b_of_type_Long + ", sdkVersion: " + this.a.jdField_a_of_type_Int + ", peerSdkVersion: " + l3 + ", bussinessType: " + this.a.jdField_c_of_type_Long + ", bussinessFlag: " + this.a.jdField_d_of_type_Long + ", ip: " + this.a.jdField_b_of_type_JavaLangString + ", toUin: " + this.a.jdField_c_of_type_JavaLangString + ", score: " + this.a.e + ", problems: " + this.a.jdField_a_of_type_JavaLangString);
-    }
-    paramView.edit().putBoolean(VideoConstants.l, true).commit();
-    if (this.a.f != 0L) {}
-    try
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.a.jdField_c_of_type_JavaLangString, this.a.jdField_b_of_type_Int, this.a.f);
-      this.a.getActivity().finish();
+    super(paramtvd);
+  }
+  
+  public void a(@NonNull tvd paramtvd, @NonNull tgo paramtgo)
+  {
+    if (!TextUtils.equals(paramtgo.b, String.valueOf(paramtvd.hashCode()))) {
       return;
     }
-    catch (Exception paramView)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("ScoreActivity", 2, "removeMsgByUniseq : " + paramView);
-        }
-      }
+    VideoViewVideoHolder localVideoViewVideoHolder = ((StoryPlayerGroupHolder)paramtvd.a()).a();
+    if (localVideoViewVideoHolder != null) {
+      localVideoViewVideoHolder.c(false);
     }
+    paramtvd.l();
+    if (paramtgo.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      urk.a(this.TAG, "generate thumbnail success. shareThumbPath = %s.", paramtgo.jdField_a_of_type_JavaLangString);
+      if (paramtgo.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mIsPicture == 1)
+      {
+        tgm.a().a(paramtvd.b(), paramtgo.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      tgm.a().a(paramtvd.b(), paramtgo.jdField_a_of_type_JavaLangString, paramtgo.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, paramtvd.hashCode());
+      return;
+    }
+    urk.e(this.TAG, "send video to friend failed because generate thumbnail failed.");
+    bbmy.a(BaseApplicationImpl.getContext(), 1, ajjy.a(2131641092), 0).a();
+  }
+  
+  public Class acceptEventClass()
+  {
+    return tgo.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tvr
  * JD-Core Version:    0.7.0.1
  */

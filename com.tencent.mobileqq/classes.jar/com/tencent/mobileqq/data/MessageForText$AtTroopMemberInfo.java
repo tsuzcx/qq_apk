@@ -1,6 +1,8 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.utils.httputils.PkgTools;
+import bakz;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MessageForText$AtTroopMemberInfo
@@ -10,6 +12,32 @@ public class MessageForText$AtTroopMemberInfo
   public short textLen;
   public long uin;
   public short wExtBufLen;
+  
+  public static AtTroopMemberInfo setFromJson(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject == null) {
+      return null;
+    }
+    AtTroopMemberInfo localAtTroopMemberInfo = new AtTroopMemberInfo();
+    try
+    {
+      localAtTroopMemberInfo.flag = ((byte)((Integer)paramJSONObject.get("flag")).intValue());
+      localAtTroopMemberInfo.uin = paramJSONObject.getLong("uin");
+      localAtTroopMemberInfo.startPos = ((short)((Integer)paramJSONObject.get("startPos")).intValue());
+      localAtTroopMemberInfo.textLen = ((short)((Integer)paramJSONObject.get("textLen")).intValue());
+      return localAtTroopMemberInfo;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      QLog.e("MessageForText", 1, paramJSONObject, new Object[0]);
+      return null;
+    }
+    catch (ClassCastException paramJSONObject)
+    {
+      QLog.e("MessageForText", 1, paramJSONObject, new Object[0]);
+    }
+    return null;
+  }
   
   public boolean isIncludingAll()
   {
@@ -36,11 +64,11 @@ public class MessageForText$AtTroopMemberInfo
     if ((paramArrayOfByte == null) || (paramInt < 0) || (paramArrayOfByte.length < paramInt + 11)) {
       return false;
     }
-    this.startPos = PkgTools.a(paramArrayOfByte, paramInt + 0);
-    this.textLen = PkgTools.a(paramArrayOfByte, paramInt + 2);
+    this.startPos = bakz.a(paramArrayOfByte, paramInt + 0);
+    this.textLen = bakz.a(paramArrayOfByte, paramInt + 2);
     this.flag = paramArrayOfByte[(paramInt + 4)];
-    this.uin = PkgTools.a(paramArrayOfByte, paramInt + 5);
-    this.wExtBufLen = PkgTools.a(paramArrayOfByte, paramInt + 9);
+    this.uin = bakz.a(paramArrayOfByte, paramInt + 5);
+    this.wExtBufLen = bakz.a(paramArrayOfByte, paramInt + 9);
     return true;
   }
   
@@ -64,17 +92,17 @@ public class MessageForText$AtTroopMemberInfo
     if ((paramArrayOfByte == null) || (paramInt < 0) || (paramArrayOfByte.length < paramInt + 11)) {
       return false;
     }
-    PkgTools.a(paramArrayOfByte, paramInt + 0, this.startPos);
-    PkgTools.a(paramArrayOfByte, paramInt + 2, this.textLen);
+    bakz.a(paramArrayOfByte, paramInt + 0, this.startPos);
+    bakz.a(paramArrayOfByte, paramInt + 2, this.textLen);
     paramArrayOfByte[(paramInt + 4)] = this.flag;
-    PkgTools.a(paramArrayOfByte, paramInt + 5, this.uin);
-    PkgTools.a(paramArrayOfByte, paramInt + 9, (short)0);
+    bakz.a(paramArrayOfByte, paramInt + 5, this.uin);
+    bakz.a(paramArrayOfByte, paramInt + 9, (short)0);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForText.AtTroopMemberInfo
  * JD-Core Version:    0.7.0.1
  */

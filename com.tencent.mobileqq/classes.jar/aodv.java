@@ -1,26 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoSyncStoryGuide;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
-
-public class aodv
-  implements DialogInterface.OnDismissListener
+abstract interface aodv
 {
-  public aodv(EditVideoSyncStoryGuide paramEditVideoSyncStoryGuide) {}
+  public abstract void a(int paramInt, String paramString);
   
-  public void onDismiss(DialogInterface paramDialogInterface)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "showSyncStoryGuide ->onDismiss-------");
-    }
-    SharedPreUtils.b(this.a.a.a());
-  }
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aodv
  * JD-Core Version:    0.7.0.1
  */

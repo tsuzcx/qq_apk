@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import tencent.im.msg.im_receipt.ReceiptResp;
 
 public final class msg_svc$PbSendMsgResp
-  extends MessageMicro
+  extends MessageMicro<PbSendMsgResp>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 48, 58, 66, 72 }, new String[] { "result", "errmsg", "send_time", "uint32_svrbusy_wait_time", "msg_send_info", "errtype", "trans_svr_info", "receipt_resp", "text_analysis_result" }, new Object[] { Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), null, null, Integer.valueOf(0) }, PbSendMsgResp.class);
   public final PBStringField errmsg = PBField.initString("");

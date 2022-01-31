@@ -1,27 +1,45 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.qwallet.redpacket.widget.ViewPagerTabLayout;
 
-class agvt
-  implements Runnable
+public class agvt
+  implements View.OnClickListener
 {
-  agvt(agvs paramagvs, Bitmap paramBitmap) {}
+  public agvt(ViewPagerTabLayout paramViewPagerTabLayout) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_Agvs.a.a.get("map_key_face");
-    if ((localImageView != null) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null))
+    int i = ViewPagerTabLayout.a(this.a).indexOfChild(paramView);
+    if (i != -1)
     {
-      QLog.d("Q.qqhead.freq", 1, "ProfileHeaderView updateAvatar, bitmap: " + this.jdField_a_of_type_AndroidGraphicsBitmap);
-      localImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      if (ViewPagerTabLayout.a(this.a).getCurrentItem() == i) {
+        break label85;
+      }
+      if (ViewPagerTabLayout.a(this.a)) {
+        break label74;
+      }
+      this.a.setCurrentTab(i, false);
+      if (ViewPagerTabLayout.a(this.a) != null) {
+        ViewPagerTabLayout.a(this.a).a(i);
+      }
     }
+    label74:
+    label85:
+    while (ViewPagerTabLayout.a(this.a) == null) {
+      for (;;)
+      {
+        return;
+        this.a.setCurrentTab(i);
+      }
+    }
+    ViewPagerTabLayout.a(this.a).b(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     agvt
  * JD-Core Version:    0.7.0.1
  */

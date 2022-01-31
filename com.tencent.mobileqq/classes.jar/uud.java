@@ -1,23 +1,29 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgNumAnim;
-import com.tencent.mobileqq.activity.qwallet.widget.NumAnim.AnimListener;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
 
-public class uud
-  implements NumAnim.AnimListener
+class uud
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public uud(GoldMsgNumAnim paramGoldMsgNumAnim) {}
+  uud(uub paramuub, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView) {}
   
-  public void onFinished()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.a.jdField_a_of_type_JavaUtilList.size() < 1) {
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, GoldMsgNumAnim.a(this.a));
-    }
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    int i = (int)((this.jdField_a_of_type_Int - this.b) * f);
+    int j = this.b;
+    int k = (int)(f * (this.c - this.d));
+    int m = this.d;
+    paramValueAnimator = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    paramValueAnimator.leftMargin = (i + j);
+    paramValueAnimator.bottomMargin = (m + k);
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramValueAnimator);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uud
  * JD-Core Version:    0.7.0.1
  */

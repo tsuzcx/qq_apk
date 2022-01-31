@@ -1,22 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomUtils;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
 
 public class aewo
-  implements DialogInterface.OnClickListener
+  implements afhs
 {
-  public aewo(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public aewo(TroopView paramTroopView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public long a()
   {
-    GameRoomUtils.a(this.a, 10);
-    GameRoomInviteActivity.b(this.a);
+    return TroopView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aewo
  * JD-Core Version:    0.7.0.1
  */

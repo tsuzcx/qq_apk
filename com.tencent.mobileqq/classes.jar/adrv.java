@@ -1,21 +1,16 @@
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
+import android.widget.TextView;
 
 public class adrv
-  implements FMDialogUtil.FMDialogInterface
+  extends acjc
 {
-  public adrv(SendBottomBar paramSendBottomBar) {}
+  public TextView b;
+  public TextView c;
   
-  public void a()
-  {
-    SendBottomBar.c(this.a);
-  }
-  
-  public void b() {}
+  public adrv(adrt paramadrt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adrv
  * JD-Core Version:    0.7.0.1
  */

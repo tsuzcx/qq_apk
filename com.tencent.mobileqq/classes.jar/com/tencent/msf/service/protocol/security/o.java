@@ -9,10 +9,10 @@ public final class o
 {
   static byte[] e;
   static byte[] f;
-  public byte[] a;
+  public byte[] a = null;
   public String b = "";
   public String c = "";
-  public byte[] d;
+  public byte[] d = null;
   
   public o() {}
   

@@ -1,36 +1,52 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.device.datadef.DeviceInfo;
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.SimpleObserver;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ssv
-  implements View.OnClickListener
+class ssv
+  extends SimpleObserver<List<tfv>>
 {
-  public ssv(ForwardRecentActivity paramForwardRecentActivity, Resources paramResources, DeviceInfo paramDeviceInfo, String paramString) {}
+  ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public void onClick(View paramView)
+  ssv(ssr paramssr) {}
+  
+  public void a(List<tfv> paramList)
   {
-    if (!NetworkUtil.g(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity))
+    urk.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onNext()");
+    super.onNext(paramList);
+    int i = 0;
+    while (i < paramList.size())
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity, "目前没有网络，请稍后再试!", 1000).b(this.jdField_a_of_type_AndroidContentResResources.getDimensionPixelSize(2131558448));
-      return;
+      tfv localtfv = (tfv)paramList.get(i);
+      if (!localtfv.a) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(localtfv.b);
+      }
+      i += 1;
     }
-    paramView = new Bundle();
-    paramView.putString("uin", String.valueOf(this.jdField_a_of_type_ComTencentDeviceDatadefDeviceInfo.din));
-    paramView.putInt("uintype", 9501);
-    paramView.putString("uinname", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqActivityForwardRecentActivity.a.a(ForwardAbility.ForwardAbilityType.j.intValue(), paramView);
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+  }
+  
+  public void onComplete()
+  {
+    urk.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onComplete()");
+    super.onComplete();
+    this.jdField_a_of_type_Ssr.a(this.jdField_a_of_type_JavaUtilArrayList);
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    urk.b("Q.qqstory.msgTab.MsgTabNodeListLoader", "requestVideoInfoIfNecessary, onError()");
+    super.onError(paramError);
+    this.jdField_a_of_type_Ssr.a(this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     ssv
  * JD-Core Version:    0.7.0.1
  */

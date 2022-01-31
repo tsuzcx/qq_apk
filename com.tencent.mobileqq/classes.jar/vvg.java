@@ -1,35 +1,21 @@
-import com.tencent.mobileqq.activity.aio.qim.QIMUserManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
 
-public class vvg
-  implements Runnable
+class vvg
+  implements View.OnClickListener
 {
-  public vvg(QIMUserManager paramQIMUserManager, String paramString1, String paramString2, boolean paramBoolean) {}
+  vvg(vvd paramvvd, vvj paramvvj) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager, this.jdField_a_of_type_JavaLangString, this.b) == 0) {
-      if (QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager, this.b))
-      {
-        QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager);
-        QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager, 2);
-      }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("QIMUserManager", 2, this.jdField_a_of_type_Boolean + " startDownLoadQimTheme QimIconsState " + QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager));
-      }
-      return;
-      QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager, 4);
-      continue;
-      QIMUserManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioQimQIMUserManager, 3);
+    if (vvd.a(this.jdField_a_of_type_Vvd) != null) {
+      vvd.a(this.jdField_a_of_type_Vvd).c(this.jdField_a_of_type_Vvj);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     vvg
  * JD-Core Version:    0.7.0.1
  */

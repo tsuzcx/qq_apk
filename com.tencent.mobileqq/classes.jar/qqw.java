@@ -1,22 +1,21 @@
-import com.tencent.gdtad.views.canvas.framework.GdtCanvasScrollView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class qqw
-  implements Runnable
+  extends omr
 {
-  public qqw(GdtCanvasScrollView paramGdtCanvasScrollView) {}
-  
-  public void run()
+  public qqw(ReadInJoyListViewGroup paramReadInJoyListViewGroup, String paramString, boolean paramBoolean, int paramInt)
   {
-    if (GdtCanvasScrollView.a(this.a) != this.a.getScrollY())
-    {
-      GdtCanvasScrollView.a(this.a, this.a.getScrollY());
-      this.a.postDelayed(GdtCanvasScrollView.a(this.a), 100L);
-    }
+    super(paramString);
+  }
+  
+  public void a(oml paramoml)
+  {
+    paramoml.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     qqw
  * JD-Core Version:    0.7.0.1
  */

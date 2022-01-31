@@ -1,22 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
-import com.tencent.mobileqq.util.ProfileCardUtil;
+import android.content.Context;
+import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
 
 public class acsv
-  implements View.OnClickListener
+  implements acsl
 {
-  public acsv(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, String paramString) {}
+  public acsv(DoodlePanel paramDoodlePanel) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt)
   {
-    ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.a(), this.jdField_a_of_type_JavaLangString, 0);
+    DoodlePanel.a(this.a);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (paramInt1 == 2)
+    {
+      if (!DoodlePanel.a(this.a))
+      {
+        DoodlePanel.a(this.a, true);
+        acsw localacsw = new acsw(this);
+        babr.a(this.a.getContext(), 230, null, this.a.getContext().getString(2131624351), null, this.a.getContext().getString(2131624340), localacsw, null).show();
+      }
+      return;
+    }
+    bbmy.a(this.a.getContext(), this.a.getContext().getString(2131624343), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acsv
  * JD-Core Version:    0.7.0.1
  */

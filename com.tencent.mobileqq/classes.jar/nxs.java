@@ -1,23 +1,19 @@
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListAdapter;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView.OnHorizontalScrollListener;
-import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
-
-public class nxs
-  implements HorizontalListView.OnScrollStateChangedListener
+class nxs
+  extends nyf
 {
-  public nxs(StoryPickerHorizontalListView paramStoryPickerHorizontalListView) {}
-  
-  public void a(int paramInt)
+  nxs(nxd paramnxd, boolean paramBoolean, String paramString, int paramInt1, int paramInt2)
   {
-    if ((paramInt == 4097) && (this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView$OnHorizontalScrollListener != null)) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView$OnHorizontalScrollListener.a(this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListAdapter.a);
-    }
+    super(paramnxd, null);
+  }
+  
+  void a(nyi paramnyi)
+  {
+    paramnyi.onCommentLikeOrDislike(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     nxs
  * JD-Core Version:    0.7.0.1
  */

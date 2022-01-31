@@ -1,18 +1,22 @@
-import com.tencent.mobileqq.troop.data.TroopCreateLogic;
+import android.os.Handler;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 
-class ajip
-  implements Runnable
+public class ajip
+  extends apgo
 {
-  ajip(ajin paramajin) {}
+  public ajip(FrameHelperActivity paramFrameHelperActivity) {}
   
-  public void run()
+  public void a()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.b);
+    if (this.a.a.hasMessages(17)) {
+      this.a.a.removeMessages(17);
+    }
+    this.a.a.sendEmptyMessage(17);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajip
  * JD-Core Version:    0.7.0.1
  */

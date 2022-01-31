@@ -8,7 +8,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class qqstory_struct$GeneralRecommendFeed
-  extends MessageMicro
+  extends MessageMicro<GeneralRecommendFeed>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField blurb = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -25,7 +25,7 @@ public final class qqstory_struct$GeneralRecommendFeed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.GeneralRecommendFeed
  * JD-Core Version:    0.7.0.1
  */

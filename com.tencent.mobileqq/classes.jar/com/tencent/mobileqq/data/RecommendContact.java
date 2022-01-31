@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.data;
 
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.unique;
+import atmo;
+import atoc;
 
 public class RecommendContact
-  extends Entity
+  extends atmo
 {
   public String contactName;
   public boolean isRead;
-  @unique
+  @atoc
   public String key;
   public String mobileCode;
   public String mobileNo;

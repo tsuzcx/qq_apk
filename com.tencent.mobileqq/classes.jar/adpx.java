@@ -1,24 +1,41 @@
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.vip.CUKingCardHelper.CUKingDialogListener;
+import android.animation.TypeEvaluator;
+import android.graphics.PointF;
+import com.tencent.mobileqq.activity.aio.item.SixCombolEffectView;
 
-public final class adpx
-  implements CUKingCardHelper.CUKingDialogListener
+public class adpx
+  implements TypeEvaluator<PointF>
 {
-  public adpx(FMDialogUtil.FMDialogInterface paramFMDialogInterface) {}
+  private PointF[] jdField_a_of_type_ArrayOfAndroidGraphicsPointF;
   
-  public void callback(int paramInt)
+  public adpx(SixCombolEffectView paramSixCombolEffectView) {}
+  
+  public PointF a(float paramFloat, PointF paramPointF1, PointF paramPointF2)
   {
-    if ((paramInt == 1) || (paramInt == 2))
+    paramPointF1 = this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[0];
+    paramPointF2 = this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[1];
+    PointF localPointF = this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[2];
+    if (paramFloat <= 1.0F)
     {
-      this.a.a();
-      return;
+      float f1 = 1.0F - paramFloat;
+      float f2 = (float)(paramPointF1.x * Math.pow(f1, 2.0D) + 2.0F * paramPointF2.x * paramFloat * f1 + localPointF.x * Math.pow(paramFloat, 2.0D));
+      double d1 = paramPointF1.y;
+      double d2 = Math.pow(f1, 2.0D);
+      return new PointF(f2, (float)(2.0F * paramPointF2.y * paramFloat * f1 + d1 * d2 + localPointF.y * Math.pow(paramFloat, 2.0D)));
     }
-    this.a.b();
+    return this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF[2];
+  }
+  
+  public void a(PointF... paramVarArgs)
+  {
+    if (paramVarArgs.length != 3) {
+      throw new IllegalArgumentException(ajjy.a(2131648396));
+    }
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsPointF = paramVarArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adpx
  * JD-Core Version:    0.7.0.1
  */

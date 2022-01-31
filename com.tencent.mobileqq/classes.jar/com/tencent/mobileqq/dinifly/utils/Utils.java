@@ -1,27 +1,32 @@
 package com.tencent.mobileqq.dinifly.utils;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
 import android.graphics.Matrix;
+import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
 import android.graphics.PointF;
-import android.os.Build.VERSION;
-import android.provider.Settings.Global;
-import android.provider.Settings.System;
+import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.mobileqq.dinifly.L;
-import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.animation.LPaint;
 import com.tencent.mobileqq.dinifly.animation.content.TrimPathContent;
-import com.tencent.mobileqq.dinifly.animation.keyframe.BaseKeyframeAnimation;
+import com.tencent.mobileqq.dinifly.animation.keyframe.FloatKeyframeAnimation;
 import java.io.Closeable;
 
 public final class Utils
 {
+  public static final int SECOND_IN_NANOS = 1000000000;
   private static final float SQRT_2 = (float)Math.sqrt(2.0D);
   private static DisplayMetrics displayMetrics;
+  private static float dpScale = -1.0F;
   private static final PathMeasure pathMeasure = new PathMeasure();
   private static final float[] points;
   private static final Path tempPath = new Path();
@@ -50,46 +55,46 @@ public final class Utils
     float f1 = f2 * paramFloat1;
     paramFloat2 = f2 * paramFloat2;
     paramFloat1 = Math.min(f1, paramFloat2);
-    paramFloat2 = Math.max(f1, paramFloat2);
-    f1 = paramFloat3 * f2;
-    paramFloat3 = paramFloat1 + f1;
-    f1 = paramFloat2 + f1;
+    f1 = Math.max(f1, paramFloat2);
+    paramFloat3 *= f2;
+    paramFloat2 = paramFloat1 + paramFloat3;
+    f1 += paramFloat3;
+    paramFloat3 = paramFloat2;
     paramFloat1 = f1;
-    paramFloat2 = paramFloat3;
-    if (paramFloat3 >= f2)
+    if (paramFloat2 >= f2)
     {
+      paramFloat3 = paramFloat2;
       paramFloat1 = f1;
-      paramFloat2 = paramFloat3;
       if (f1 >= f2)
       {
-        paramFloat2 = MiscUtils.floorMod(paramFloat3, f2);
+        paramFloat3 = MiscUtils.floorMod(paramFloat2, f2);
         paramFloat1 = MiscUtils.floorMod(f1, f2);
       }
     }
-    paramFloat3 = paramFloat2;
-    if (paramFloat2 < 0.0F) {
-      paramFloat3 = MiscUtils.floorMod(paramFloat2, f2);
+    paramFloat2 = paramFloat3;
+    if (paramFloat3 < 0.0F) {
+      paramFloat2 = MiscUtils.floorMod(paramFloat3, f2);
     }
-    paramFloat2 = paramFloat1;
+    paramFloat3 = paramFloat1;
     if (paramFloat1 < 0.0F) {
-      paramFloat2 = MiscUtils.floorMod(paramFloat1, f2);
+      paramFloat3 = MiscUtils.floorMod(paramFloat1, f2);
     }
-    if (paramFloat3 == paramFloat2)
+    if (paramFloat2 == paramFloat3)
     {
       paramPath.reset();
       L.endSection("applyTrimPathIfNeeded");
       return;
     }
-    paramFloat1 = paramFloat3;
-    if (paramFloat3 >= paramFloat2) {
-      paramFloat1 = paramFloat3 - f2;
+    paramFloat1 = paramFloat2;
+    if (paramFloat2 >= paramFloat3) {
+      paramFloat1 = paramFloat2 - f2;
     }
     tempPath.reset();
-    pathMeasure.getSegment(paramFloat1, paramFloat2, tempPath, true);
-    if (paramFloat2 > f2)
+    pathMeasure.getSegment(paramFloat1, paramFloat3, tempPath, true);
+    if (paramFloat3 > f2)
     {
       tempPath2.reset();
-      pathMeasure.getSegment(0.0F, paramFloat2 % f2, tempPath2, true);
+      pathMeasure.getSegment(0.0F, paramFloat3 % f2, tempPath2, true);
       tempPath.addPath(tempPath2);
     }
     for (;;)
@@ -100,7 +105,7 @@ public final class Utils
       if (paramFloat1 < 0.0F)
       {
         tempPath2.reset();
-        pathMeasure.getSegment(f2 + paramFloat1, f2, tempPath2, true);
+        pathMeasure.getSegment(paramFloat1 + f2, f2, tempPath2, true);
         tempPath.addPath(tempPath2);
       }
     }
@@ -108,10 +113,13 @@ public final class Utils
   
   public static void applyTrimPathIfNeeded(Path paramPath, @Nullable TrimPathContent paramTrimPathContent)
   {
-    if (paramTrimPathContent == null) {
+    if ((paramTrimPathContent == null) || (paramTrimPathContent.isHidden())) {
       return;
     }
-    applyTrimPathIfNeeded(paramPath, ((Float)paramTrimPathContent.getStart().getValue()).floatValue() / 100.0F, ((Float)paramTrimPathContent.getEnd().getValue()).floatValue() / 100.0F, ((Float)paramTrimPathContent.getOffset().getValue()).floatValue() / 360.0F);
+    float f1 = ((FloatKeyframeAnimation)paramTrimPathContent.getStart()).getFloatValue();
+    float f2 = ((FloatKeyframeAnimation)paramTrimPathContent.getEnd()).getFloatValue();
+    float f3 = ((FloatKeyframeAnimation)paramTrimPathContent.getOffset()).getFloatValue();
+    applyTrimPathIfNeeded(paramPath, f1 / 100.0F, f2 / 100.0F, f3 / 360.0F);
   }
   
   public static void closeQuietly(Closeable paramCloseable)
@@ -132,9 +140,6 @@ public final class Utils
   public static Path createPath(PointF paramPointF1, PointF paramPointF2, PointF paramPointF3, PointF paramPointF4)
   {
     Path localPath = new Path();
-    if ((paramPointF1 == null) || (paramPointF2 == null)) {
-      return localPath;
-    }
     localPath.moveTo(paramPointF1.x, paramPointF1.y);
     if ((paramPointF3 != null) && (paramPointF4 != null) && ((paramPointF3.length() != 0.0F) || (paramPointF4.length() != 0.0F)))
     {
@@ -145,12 +150,12 @@ public final class Utils
     return localPath;
   }
   
-  public static float getAnimationScale(Context paramContext)
+  public static float dpScale()
   {
-    if (Build.VERSION.SDK_INT >= 17) {
-      return Settings.Global.getFloat(paramContext.getContentResolver(), "animator_duration_scale", 1.0F);
+    if (dpScale == -1.0F) {
+      dpScale = Resources.getSystem().getDisplayMetrics().density;
     }
-    return Settings.System.getFloat(paramContext.getContentResolver(), "animator_duration_scale", 1.0F);
+    return dpScale;
   }
   
   public static float getScale(Matrix paramMatrix)
@@ -185,6 +190,20 @@ public final class Utils
     return displayMetrics.widthPixels;
   }
   
+  public static boolean hasZeroScaleAxis(Matrix paramMatrix)
+  {
+    boolean bool = false;
+    points[0] = 0.0F;
+    points[1] = 0.0F;
+    points[2] = 37394.73F;
+    points[3] = 39575.234F;
+    paramMatrix.mapPoints(points);
+    if ((points[0] == points[2]) || (points[1] == points[3])) {
+      bool = true;
+    }
+    return bool;
+  }
+  
   public static int hashFor(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     int j = 17;
@@ -206,11 +225,11 @@ public final class Utils
     return i;
   }
   
-  public static boolean isAtLeastVersion(LottieComposition paramLottieComposition, int paramInt1, int paramInt2, int paramInt3)
+  public static boolean isAtLeastVersion(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
     boolean bool2 = true;
     boolean bool1;
-    if (paramLottieComposition.getMajorVersion() < paramInt1) {
+    if (paramInt1 < paramInt4) {
       bool1 = false;
     }
     do
@@ -221,14 +240,14 @@ public final class Utils
         {
           return bool1;
           bool1 = bool2;
-        } while (paramLottieComposition.getMajorVersion() > paramInt1);
-        if (paramLottieComposition.getMinorVersion() < paramInt2) {
+        } while (paramInt1 > paramInt4);
+        if (paramInt2 < paramInt5) {
           return false;
         }
         bool1 = bool2;
-      } while (paramLottieComposition.getMinorVersion() > paramInt2);
+      } while (paramInt2 > paramInt5);
       bool1 = bool2;
-    } while (paramLottieComposition.getPatchVersion() >= paramInt3);
+    } while (paramInt3 >= paramInt6);
     return false;
   }
   
@@ -245,10 +264,23 @@ public final class Utils
     }
     return paramMatrix;
   }
+  
+  public static Bitmap renderPath(Path paramPath)
+  {
+    Object localObject = new RectF();
+    paramPath.computeBounds((RectF)localObject, false);
+    localObject = Bitmap.createBitmap((int)((RectF)localObject).right, (int)((RectF)localObject).bottom, Bitmap.Config.ARGB_8888);
+    Canvas localCanvas = new Canvas((Bitmap)localObject);
+    LPaint localLPaint = new LPaint();
+    localLPaint.setAntiAlias(true);
+    localLPaint.setColor(-16776961);
+    localCanvas.drawPath(paramPath, localLPaint);
+    return localObject;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.utils.Utils
  * JD-Core Version:    0.7.0.1
  */

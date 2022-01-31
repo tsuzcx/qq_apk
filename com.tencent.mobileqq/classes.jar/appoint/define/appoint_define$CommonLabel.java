@@ -9,13 +9,13 @@ import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class appoint_define$CommonLabel
-  extends MessageMicro
+  extends MessageMicro<CommonLabel>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField bytes_lable_msg_last = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_lable_msg_pre = PBField.initBytes(ByteStringMicro.EMPTY);
-  public final PBRepeatField rpt_interst_name = PBField.initRepeat(PBBytesField.__repeatHelper__);
-  public final PBRepeatField rpt_interst_type = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
+  public final PBRepeatField<ByteStringMicro> rpt_interst_name = PBField.initRepeat(PBBytesField.__repeatHelper__);
+  public final PBRepeatField<Integer> rpt_interst_type = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
   public final PBUInt32Field uint32_lable_id = PBField.initUInt32(0);
   
   static

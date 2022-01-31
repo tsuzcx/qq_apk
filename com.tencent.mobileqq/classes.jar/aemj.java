@@ -1,38 +1,37 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager.MagicfaceSensorOperation;
-import com.tencent.mobileqq.statistics.ReportController;
-import mqq.app.AppRuntime;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import org.json.JSONObject;
 
-public class aemj
-  implements MagicfaceActionManager.MagicfaceSensorOperation
+class aemj
+  implements aeml
 {
-  public aemj(MagicfaceActionManager paramMagicfaceActionManager) {}
+  aemj(aemi paramaemi) {}
   
-  public void a()
+  public void a(List<aelm> paramList, String paramString1, String paramString2)
   {
-    AppRuntime localAppRuntime;
-    if (this.a.jdField_a_of_type_Int == 1)
+    if (TextUtils.isEmpty(paramString1))
     {
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-        ReportController.b((QQAppInterface)localAppRuntime, "CliOper", "", "", "MbJieshou", "MbWanchengXiaochu", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
+      paramString1 = new StringBuilder().append("OnImgUpdated: empty data or text ").append(paramString1).append(" ");
+      if (paramList == null) {}
+      for (paramList = "null";; paramList = Integer.valueOf(paramList.size()))
+      {
+        QLog.i("StickerRecManager", 2, paramList);
+        return;
       }
     }
-    do
+    paramList = bfrj.a(paramList);
+    if (paramList == null)
     {
+      QLog.i("StickerRecManager", 2, "OnImgUpdated: failed to parse img data");
       return;
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    } while ((localAppRuntime == null) || (!(localAppRuntime instanceof QQAppInterface)));
-    this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-    ReportController.b((QQAppInterface)localAppRuntime, "CliOper", "", "", "MbFasong", "MbZhudongChaozuo", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
+    }
+    bfrj.a().a(paramString1, paramList.toString(), paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aemj
  * JD-Core Version:    0.7.0.1
  */

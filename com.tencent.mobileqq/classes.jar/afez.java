@@ -1,36 +1,46 @@
-import android.content.Context;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.ReportCallback;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.contacts.fragment.DeviceFragment;
 
-class afez
-  implements NearbyMomentProtocol.ReportCallback
+public class afez
+  extends ajmm
 {
-  afez(afey paramafey) {}
+  public afez(DeviceFragment paramDeviceFragment) {}
   
-  public void a(boolean paramBoolean)
+  protected void a(int paramInt1, int paramInt2)
   {
-    Context localContext = this.a.a;
-    int i;
-    if (paramBoolean)
-    {
-      i = 2;
-      if (!paramBoolean) {
-        break label40;
-      }
-    }
-    label40:
-    for (String str = "举报成功";; str = "举报失败")
-    {
-      QQToast.a(localContext, i, str, 0).a();
+    if (this.a.a == null) {
       return;
-      i = 1;
-      break;
+    }
+    DeviceFragment localDeviceFragment = this.a;
+    if (paramInt1 != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localDeviceFragment.c = bool;
+      this.a.a.d();
+      this.a.a.notifyDataSetChanged();
+      return;
+    }
+  }
+  
+  protected void b(int paramInt1, int paramInt2)
+  {
+    if (this.a.a == null) {
+      return;
+    }
+    DeviceFragment localDeviceFragment = this.a;
+    if (paramInt1 != 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localDeviceFragment.d = bool;
+      this.a.a.e();
+      this.a.a.a(this.a.d, ajed.A);
+      this.a.a.notifyDataSetChanged();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     afez
  * JD-Core Version:    0.7.0.1
  */

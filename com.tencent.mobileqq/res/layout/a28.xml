@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/kwv" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tencent="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+    <View android:id="@id/ftf" android:background="@color/bp" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mobileqq.troop.ablum.preview.PictureFlowViewPager android:id="@id/dcu" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:id="@id/ftr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true" />
+    <LinearLayout android:id="@id/ftm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
+    <RelativeLayout android:id="@id/fts" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ar1" android:layout_alignParentBottom="true">
+        <TextView android:id="@id/kxp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/uf" />
+        <com.tencent.mobileqq.troop.ablum.preview.DotNumberView android:id="@id/kxn" android:layout_width="wrap_content" android:layout_height="18.0dip" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</RelativeLayout>

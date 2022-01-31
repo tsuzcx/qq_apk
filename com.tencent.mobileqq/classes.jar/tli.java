@@ -1,70 +1,71 @@
-import android.content.Intent;
-import android.view.View;
-import com.tencent.mobileqq.activity.ChatActivity;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import mqq.os.MqqHandler;
+import android.support.annotation.NonNull;
+import android.view.MotionEvent;
+import android.widget.RelativeLayout;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.database.CommentEntry;
+import com.tencent.biz.qqstory.playvideo.floatdialog.CommentFloatDialog.OnCommentListViewStateChangeListener.1;
+import com.tencent.biz.qqstory.playvideo.floatdialog.StoryPlayerCommentListView;
+import com.tencent.widget.XEditTextEx;
 
 public class tli
-  implements ActionSheet.OnButtonClickListener
+  implements tmb
 {
-  public tli(ProfileCardMoreActivity paramProfileCardMoreActivity, String paramString, ActionSheet paramActionSheet) {}
+  private tli(tla paramtla) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    switch (paramInt)
-    {
+    if (!tla.b(this.a)) {
+      this.a.a();
     }
-    for (;;)
+  }
+  
+  public void a(CommentEntry paramCommentEntry, int paramInt1, int paramInt2)
+  {
+    if (tla.a(this.a) != null) {
+      tla.a(this.a).a(paramCommentEntry, paramInt1, paramInt2);
+    }
+  }
+  
+  public void a(@NonNull ucw paramucw, ErrorMessage paramErrorMessage)
+  {
+    if (paramErrorMessage.isSuccess())
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
+      tla.a(this.a, paramucw);
+      tla.a(this.a).setVisibility(0);
+      tla.a(this.a, new udl(this.a.getContext(), tla.b(this.a), paramucw, false, 4444, new tlf(this.a, null)));
+      if (tla.a(this.a).a != null) {
+        tla.a(this.a).a.setText(tla.a(this.a).a);
+      }
+      if (tla.a(this.a))
+      {
+        tla.a(this.a, false);
+        tla.a(this.a).postDelayed(new CommentFloatDialog.OnCommentListViewStateChangeListener.1(this), 100);
+      }
       return;
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app, "CliOper", "", "", "P_prof", "Pp_more_delete", ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h), 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), "", "", "");
-      if (NetworkUtil.d(BaseApplication.getContext()))
-      {
-        ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app.a(1)).c(this.jdField_a_of_type_JavaLangString, (byte)2);
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app.getHandler(ChatActivity.class);
-        if (paramView != null) {
-          paramView.sendMessage(paramView.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
-        }
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app.getHandler(ChatSettingActivity.class);
-        if (paramView != null) {
-          paramView.sendMessage(paramView.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent == null) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent = new Intent();
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent.putExtra("finchat", true);
-        this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.setResult(-1, this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent);
-        if (Utils.b(this.jdField_a_of_type_JavaLangString)) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app, "dc00898", "", "", "0X8007FDF", "0X8007FDF", 0, 0, "", "", "", "");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.finish();
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.a(2131433274, 1);
-        continue;
-        if (Utils.b(this.jdField_a_of_type_JavaLangString)) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityProfileCardMoreActivity.app, "dc00898", "", "", "0X8007FE0", "0X8007FE0", 0, 0, "", "", "", "");
-        }
-      }
+    }
+    tla.a(this.a).setVisibility(8);
+  }
+  
+  public boolean a(MotionEvent paramMotionEvent)
+  {
+    if ((paramMotionEvent.getAction() == 1) && (tla.a(this.a) != null) && (tla.a(this.a).a()))
+    {
+      tla.a(this.a).c();
+      return true;
+    }
+    return false;
+  }
+  
+  public void b(CommentEntry paramCommentEntry, int paramInt1, int paramInt2)
+  {
+    if (tla.a(this.a) != null) {
+      tla.a(this.a).b(paramCommentEntry, paramInt1, paramInt2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     tli
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,47 @@
-import com.tencent.mobileqq.richmedia.capture.util.CaptureUtil;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView.EffectListener;
+import android.view.View;
+import com.tencent.mobileqq.activity.selectmember.FriendTabView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.PinnedFooterExpandableListView;
 
 public class ahqr
-  implements Runnable
+  implements bely
 {
-  public ahqr(EffectsCameraCaptureView paramEffectsCameraCaptureView) {}
+  public ahqr(FriendTabView paramFriendTabView) {}
   
-  public void run()
+  public void a()
   {
-    EffectsCameraCaptureView.a(this.a, CaptureUtil.b());
-    if (EffectsCameraCaptureView.a(this.a) != null) {
-      EffectsCameraCaptureView.a(this.a).d_(EffectsCameraCaptureView.a(this.a));
+    this.a.a = true;
+    FriendTabView.a(this.a).setFooterEnable(false);
+  }
+  
+  public void a(PinnedFooterExpandableListView paramPinnedFooterExpandableListView, View paramView, int paramInt)
+  {
+    if (!this.a.a)
+    {
+      if (paramInt - 1 >= 0) {
+        paramPinnedFooterExpandableListView.b(paramInt - 1);
+      }
+      for (;;)
+      {
+        this.a.a = true;
+        FriendTabView.a(this.a).setFooterEnable(false);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendTabView", 2, "header group unusal: " + paramInt);
+        }
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("EffectsCameraCaptureView", 2, "onFirstFrameShownInternal soLoaded=" + EffectsCameraCaptureView.a(this.a));
+    if (paramPinnedFooterExpandableListView.c(paramInt))
+    {
+      paramPinnedFooterExpandableListView.b(paramInt);
+      return;
     }
-    this.a.t();
+    paramPinnedFooterExpandableListView.a(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahqr
  * JD-Core Version:    0.7.0.1
  */

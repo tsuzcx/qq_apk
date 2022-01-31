@@ -9,11 +9,11 @@ public final class SvcResponseGetMsgV2
   extends JceStruct
 {
   static int cache_cSyncFlag;
-  static ArrayList cache_vAccostMsg;
+  static ArrayList<AccostMsg> cache_vAccostMsg;
   static byte[] cache_vCookies;
-  static ArrayList cache_vMsgInfos;
+  static ArrayList<SvcGetMsgInfo> cache_vMsgInfos;
   static byte[] cache_vSyncCookie;
-  static ArrayList cache_vUinPairMsg;
+  static ArrayList<UinPairMsg> cache_vUinPairMsg;
   public byte cMoreMsg;
   public byte cReplyCode;
   public int cSyncFlag;
@@ -22,15 +22,15 @@ public final class SvcResponseGetMsgV2
   public short shSumMsg;
   public String strResult = "";
   public int uMsgTime;
-  public ArrayList vAccostMsg;
+  public ArrayList<AccostMsg> vAccostMsg;
   public byte[] vCookies;
-  public ArrayList vMsgInfos;
+  public ArrayList<SvcGetMsgInfo> vMsgInfos;
   public byte[] vSyncCookie;
-  public ArrayList vUinPairMsg;
+  public ArrayList<UinPairMsg> vUinPairMsg;
   
   public SvcResponseGetMsgV2() {}
   
-  public SvcResponseGetMsgV2(long paramLong, byte paramByte1, String paramString, int paramInt1, byte paramByte2, short paramShort, ArrayList paramArrayList1, ArrayList paramArrayList2, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3, ArrayList paramArrayList3)
+  public SvcResponseGetMsgV2(long paramLong, byte paramByte1, String paramString, int paramInt1, byte paramByte2, short paramShort, ArrayList<SvcGetMsgInfo> paramArrayList, ArrayList<AccostMsg> paramArrayList1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3, ArrayList<UinPairMsg> paramArrayList2)
   {
     this.lUin = paramLong;
     this.cReplyCode = paramByte1;
@@ -38,13 +38,13 @@ public final class SvcResponseGetMsgV2
     this.uMsgTime = paramInt1;
     this.cMoreMsg = paramByte2;
     this.shSumMsg = paramShort;
-    this.vMsgInfos = paramArrayList1;
-    this.vAccostMsg = paramArrayList2;
+    this.vMsgInfos = paramArrayList;
+    this.vAccostMsg = paramArrayList1;
     this.vCookies = paramArrayOfByte1;
     this.iAccostTotalUnread = paramInt2;
     this.vSyncCookie = paramArrayOfByte2;
     this.cSyncFlag = paramInt3;
-    this.vUinPairMsg = paramArrayList3;
+    this.vUinPairMsg = paramArrayList2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)

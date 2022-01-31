@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/jqh" android:background="#ff1a1a1a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/b8q" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <TextView android:textSize="14.0dip" android:textColor="#ffaaaaaa" android:gravity="center" android:id="@id/k8k" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/r13" android:includeFontPadding="false" />
+        <RelativeLayout android:id="@id/head_layout" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="45.0dip" android:layout_marginRight="45.0dip" android:layout_below="@id/k8k">
+            <View android:id="@id/d2w" android:background="@drawable/eri" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <View android:id="@id/head" android:layout_width="@dimen/nm" android:layout_height="@dimen/nm" android:layout_marginTop="@dimen/nl" android:layout_marginRight="@dimen/nk" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <com.tencent.widget.CustomImgView android:id="@id/fyc" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/jkp" android:layout_width="fill_parent" android:layout_height="100.0dip">
+        <LinearLayout android:orientation="horizontal" android:id="@id/eei" android:layout_width="fill_parent" android:layout_height="@dimen/azh" android:layout_marginLeft="@dimen/azg" android:layout_marginRight="@dimen/azg" android:layout_centerInParent="true" />
+        <View android:background="@drawable/ah6" android:layout_width="fill_parent" android:layout_height="@dimen/azk" android:layout_marginLeft="@dimen/azj" android:layout_marginRight="@dimen/azj" android:layout_centerInParent="true" />
+        <com.tencent.mobileqq.avatar.dynamicavatar.videodrawable.DrawableSeekbar android:orientation="horizontal" android:id="@id/iln" android:layout_width="fill_parent" android:layout_height="@dimen/azl" android:layout_marginLeft="@dimen/azg" android:layout_marginRight="@dimen/azg" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</LinearLayout>

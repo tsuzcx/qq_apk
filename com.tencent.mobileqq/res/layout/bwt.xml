@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/e60" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditText android:textSize="@dimen/ayy" android:textColor="#ff03081a" android:gravity="center" android:id="@id/kev" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" android:singleLine="true" android:maxLength="1" android:inputType="number" android:textCursorDrawable="@drawable/b3k" />
+    <View android:id="@id/e_z" android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_below="@id/kev" />
+</RelativeLayout>

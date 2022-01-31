@@ -1,50 +1,114 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.EmosmUtils;
-import com.tencent.mobileqq.emoticonview.SmallEmoticonInfo;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.model.QueryTask.Query;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.StringTokenizer;
 
-public final class lem
-  implements QueryTask.Query
+public class lem
 {
-  public char[] a(SmallEmoticonInfo paramSmallEmoticonInfo)
+  private char jdField_a_of_type_Char = '\r';
+  private Map<String, String> jdField_a_of_type_JavaUtilMap;
+  private char b = '\t';
+  
+  public lem()
   {
+    this.jdField_a_of_type_Char = '\r';
+    this.b = '\t';
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+  }
+  
+  public lem(char paramChar1, char paramChar2)
+  {
+    this.jdField_a_of_type_Char = paramChar1;
+    this.b = paramChar2;
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
+  }
+  
+  public int a(String paramString)
+  {
+    return a(paramString, 0);
+  }
+  
+  public int a(String paramString, int paramInt)
+  {
+    String str = (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    int i = paramInt;
+    if (str != null) {}
     try
     {
-      int i = Integer.parseInt(paramSmallEmoticonInfo.a.eId);
-      int j = Integer.parseInt(paramSmallEmoticonInfo.a.epId);
-      Object localObject = EmosmUtils.a(j, i);
-      paramSmallEmoticonInfo = new char[5];
-      paramSmallEmoticonInfo[0] = 20;
-      paramSmallEmoticonInfo[1] = localObject[3];
-      paramSmallEmoticonInfo[2] = localObject[2];
-      paramSmallEmoticonInfo[3] = localObject[1];
-      paramSmallEmoticonInfo[4] = localObject[0];
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if ((localObject instanceof QQAppInterface))
+      i = Integer.parseInt(str);
+      return i;
+    }
+    catch (Exception localException)
+    {
+      QLog.w("GlStringParser", 1, "getInt, key[" + paramString + "], value[" + str + "], def[" + paramInt + "]", localException);
+    }
+    return paramInt;
+  }
+  
+  public String a()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      localStringBuilder.append(str);
+      localStringBuilder.append(this.jdField_a_of_type_Char);
+      localStringBuilder.append((String)this.jdField_a_of_type_JavaUtilMap.get(str));
+      localStringBuilder.append(this.b);
+    }
+    localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+    return localStringBuilder.toString();
+  }
+  
+  public String a(String paramString)
+  {
+    return (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+  }
+  
+  public void a(String paramString)
+  {
+    if (paramString == null) {}
+    for (;;)
+    {
+      return;
+      this.jdField_a_of_type_JavaUtilMap.clear();
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.b);
+      paramString = new StringTokenizer(paramString, ((StringBuilder)localObject).toString());
+      while (paramString.hasMoreElements())
       {
-        localObject = ((EmoticonManager)((AppRuntime)localObject).getManager(13)).a(String.valueOf(j));
-        if ((localObject != null) && (((EmoticonPackage)localObject).isAPNG == 2)) {
-          paramSmallEmoticonInfo[1] = 511;
+        String str = paramString.nextToken();
+        int i = str.indexOf(this.jdField_a_of_type_Char);
+        if (i != -1)
+        {
+          localObject = str.substring(0, i);
+          str = str.substring(i + 1);
+          this.jdField_a_of_type_JavaUtilMap.put(localObject, str);
         }
       }
-      return paramSmallEmoticonInfo;
     }
-    catch (NumberFormatException paramSmallEmoticonInfo)
-    {
-      QLog.e("ReadInJoyBaseDeliverActivity", 1, "kandian fail to send small_emotion. id is not Int.");
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    this.jdField_a_of_type_JavaUtilMap.put(paramString, Integer.toString(paramInt));
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if ((paramString1 == null) || (paramString1.indexOf(this.b) != -1) || (paramString1.indexOf(this.jdField_a_of_type_Char) != -1)) {}
+    while ((paramString2 == null) || (paramString2.indexOf(this.jdField_a_of_type_Char) != -1) || (paramString2.indexOf(this.b) != -1)) {
+      return;
     }
-    return null;
+    this.jdField_a_of_type_JavaUtilMap.put(paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lem
  * JD-Core Version:    0.7.0.1
  */

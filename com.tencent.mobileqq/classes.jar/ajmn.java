@@ -1,19 +1,15 @@
-import com.tencent.mobileqq.troop.filemanager.upload.TroopFileScaner;
-
 public class ajmn
-  implements Runnable
 {
-  public ajmn(TroopFileScaner paramTroopFileScaner, long paramLong) {}
-  
-  public void run()
-  {
-    TroopFileScaner.a(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerUploadTroopFileScaner, this.jdField_a_of_type_Long);
-    TroopFileScaner.a(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerUploadTroopFileScaner);
-  }
+  public int a;
+  public long a = 9223372036854775807L;
+  public String a;
+  public int b = 1000;
+  public int c;
+  public int d = -1;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajmn
  * JD-Core Version:    0.7.0.1
  */

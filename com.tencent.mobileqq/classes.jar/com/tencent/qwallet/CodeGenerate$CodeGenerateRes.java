@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBStringField;
 
 public final class CodeGenerate$CodeGenerateRes
-  extends MessageMicro
+  extends MessageMicro<CodeGenerateRes>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 66, 74, 82, 90, 98 }, new String[] { "retcode", "retmsg", "uin", "cn", "token", "token_md5", "pay_type", "valid_end", "random", "pay_desc", "code_prefix", "forbid_watch" }, new Object[] { "", "", "", "", "", "", "", "", "", "", "", "" }, CodeGenerateRes.class);
   public final PBStringField cn = PBField.initString("");

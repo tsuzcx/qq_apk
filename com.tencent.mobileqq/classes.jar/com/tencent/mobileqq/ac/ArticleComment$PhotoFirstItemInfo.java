@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBField;
 
 public final class ArticleComment$PhotoFirstItemInfo
-  extends MessageMicro
+  extends MessageMicro<PhotoFirstItemInfo>
 {
   static final MessageMicro.FieldMap __fieldMap__;
   public final PBBytesField photo_author_name = PBField.initBytes(ByteStringMicro.EMPTY);

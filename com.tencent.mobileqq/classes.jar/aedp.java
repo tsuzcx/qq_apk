@@ -1,31 +1,24 @@
 import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.intervideo.now.NowWebViewPlugin;
 
-public class aedp
-  implements TroopMemberApiClient.Callback
+class aedp
+  extends atdl
 {
-  public aedp(NowWebViewPlugin paramNowWebViewPlugin) {}
+  aedp(aedo paramaedo) {}
   
-  public void a(Bundle paramBundle)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int i = paramBundle.getInt("msg");
-    if (i == 91)
+    if ((paramInt == 0) && (paramBoolean == true))
     {
-      NowWebViewPlugin.a(this.a, paramBundle.getInt("state"));
-      NowWebViewPlugin.a(this.a, NowWebViewPlugin.a(this.a), NowWebViewPlugin.b(this.a));
+      paramBundle.getInt("gif_ui_show_bid");
+      long l = paramBundle.getLong("gif_ui_show_seq");
+      this.a.e(65536);
+      aedo.a(this.a, Long.valueOf(l).longValue());
     }
-    while (i != 92) {
-      return;
-    }
-    i = paramBundle.getInt("errCode");
-    paramBundle = paramBundle.getString("desc");
-    NowWebViewPlugin.a(this.a, i, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aedp
  * JD-Core Version:    0.7.0.1
  */

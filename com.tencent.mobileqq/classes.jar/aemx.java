@@ -1,33 +1,23 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 
 class aemx
-  implements Runnable
+  implements View.OnClickListener
 {
-  aemx(aemw paramaemw, String paramString) {}
+  aemx(aemw paramaemw) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_Aemw.jdField_a_of_type_Int == 1)
-    {
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        break label48;
-      }
-      this.jdField_a_of_type_Aemw.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a.setVisibility(8);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aemw.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-      return;
-      label48:
-      this.jdField_a_of_type_Aemw.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a.setVisibility(0);
-    }
+    aemw.a(this.a).a();
+    ChatActivityUtils.a(aemw.a(this.a), aemw.a(this.a), aemw.a(this.a).jdField_a_of_type_Int, aemw.a(this.a).jdField_a_of_type_JavaLangString, true, true, null, null);
+    awqx.b(aemw.a(this.a), "CliOper", "", "", "0X8003F00", "0X8003F00", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aemx
  * JD-Core Version:    0.7.0.1
  */

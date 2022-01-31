@@ -1,20 +1,31 @@
-import android.view.View;
-import com.tencent.mobileqq.apollo.ApolloRender;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxData;
+import com.tencent.gdtad.views.form.textbox.GdtFormItemTextBoxView;
 
-public final class yrf
-  implements Runnable
+public class yrf
+  implements TextWatcher
 {
-  public yrf(ApolloRender paramApolloRender, View paramView) {}
+  public yrf(GdtFormItemTextBoxView paramGdtFormItemTextBoxView) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mShowEditWindow = true;
-    ApolloRender.setVisiblePopEidtor(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender);
+    if ((this.a.a() == null) || (!this.a.a().isValid()) || (paramEditable == null))
+    {
+      yny.d("GdtFormItemTextBoxView", "afterTextChanged error");
+      return;
+    }
+    yny.b("GdtFormItemTextBoxView", "afterTextChanged " + paramEditable.toString());
+    this.a.a().content.text = paramEditable.toString();
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     yrf
  * JD-Core Version:    0.7.0.1
  */

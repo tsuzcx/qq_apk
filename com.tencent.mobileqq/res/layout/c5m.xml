@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/l_7" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/lph" android:layout_width="1.0dip" android:layout_height="1.0dip" />
+    <android.opengl.GLSurfaceView android:id="@id/lc2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="18.0sp" android:textColor="@color/al3" android:id="@id/ma5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="[ 正在努力加载中.. ]" android:layout_centerInParent="true" />
+</RelativeLayout>

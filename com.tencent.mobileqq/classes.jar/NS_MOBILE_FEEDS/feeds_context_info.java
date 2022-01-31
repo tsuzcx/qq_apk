@@ -8,12 +8,12 @@ import java.util.ArrayList;
 public final class feeds_context_info
   extends JceStruct
 {
-  static ArrayList cache_video_tag_list = new ArrayList();
+  static ArrayList<String> cache_video_tag_list = new ArrayList();
   public int index;
   public String summary = "";
   public String ugckey = "";
   public String vid = "";
-  public ArrayList video_tag_list;
+  public ArrayList<String> video_tag_list;
   
   static
   {
@@ -22,7 +22,7 @@ public final class feeds_context_info
   
   public feeds_context_info() {}
   
-  public feeds_context_info(int paramInt, String paramString1, String paramString2, ArrayList paramArrayList, String paramString3)
+  public feeds_context_info(int paramInt, String paramString1, String paramString2, ArrayList<String> paramArrayList, String paramString3)
   {
     this.index = paramInt;
     this.ugckey = paramString1;
@@ -59,7 +59,7 @@ public final class feeds_context_info
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     NS_MOBILE_FEEDS.feeds_context_info
  * JD-Core Version:    0.7.0.1
  */

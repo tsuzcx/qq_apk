@@ -1,7 +1,6 @@
 package com.qq.wx.voice.recognizer;
 
 import java.util.List;
-import org.json.JSONObject;
 
 public class VoiceRecognizerResult
 {
@@ -20,16 +19,10 @@ public class VoiceRecognizerResult
   {
     this.isEnd = paramBoolean;
   }
-  
-  public static class Word
-  {
-    public JSONObject semanticJsonObject = null;
-    public String text = null;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.qq.wx.voice.recognizer.VoiceRecognizerResult
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,20 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
 
 public class affg
-  extends AnimatorListenerAdapter
+  extends ajmm
 {
-  public affg(PlayOperationViewModel paramPlayOperationViewModel) {}
+  private affg(FriendFragment paramFriendFragment) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  protected void f()
   {
-    this.a.c = false;
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.b.findViewById(2131370621).setVisibility(8);
-    this.a.c = false;
-  }
-  
-  public void onAnimationPause(Animator paramAnimator)
-  {
-    this.a.c = false;
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.b.findViewById(2131370621).setVisibility(0);
+    if (FriendFragment.b(this.a)) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     affg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,35 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.QzoneEffectsCameraCaptureFragment;
+import android.view.View;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class ahow
-  implements Runnable
+  extends ahpe
 {
-  public ahow(QzoneEffectsCameraCaptureFragment paramQzoneEffectsCameraCaptureFragment) {}
+  protected final BaseChatPie a;
   
-  public void run()
+  public ahow(BaseChatPie paramBaseChatPie)
   {
-    QzoneEffectsCameraCaptureFragment.a(this.a);
+    this.a = paramBaseChatPie;
+  }
+  
+  void a(bakh parambakh, View paramView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    if ((parambakh != null) && (parambakh.a() > 0))
+    {
+      if (this.a == null) {
+        break label43;
+      }
+      if (this.a.g() < 8) {
+        a(paramView, paramInt1, paramInt2, parambakh, paramInt3, false);
+      }
+    }
+    return;
+    label43:
+    a(paramView, paramInt1, paramInt2, parambakh, paramInt3, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ahow
  * JD-Core Version:    0.7.0.1
  */

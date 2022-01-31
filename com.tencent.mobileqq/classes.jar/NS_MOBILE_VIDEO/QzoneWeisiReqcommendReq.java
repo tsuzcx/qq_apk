@@ -9,10 +9,12 @@ public final class QzoneWeisiReqcommendReq
   extends JceStruct
 {
   static int cache_entrance_type = 0;
-  static ArrayList cache_keys = new ArrayList();
+  static ArrayList<QzoneWeisiReqcommendKey> cache_keys = new ArrayList();
+  public String aggregate_name = "";
+  public String aggregate_page_id = "";
   public int entrance_type = 2;
   public int index;
-  public ArrayList keys;
+  public ArrayList<QzoneWeisiReqcommendKey> keys;
   
   static
   {
@@ -22,11 +24,13 @@ public final class QzoneWeisiReqcommendReq
   
   public QzoneWeisiReqcommendReq() {}
   
-  public QzoneWeisiReqcommendReq(ArrayList paramArrayList, int paramInt1, int paramInt2)
+  public QzoneWeisiReqcommendReq(ArrayList<QzoneWeisiReqcommendKey> paramArrayList, int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
     this.keys = paramArrayList;
     this.index = paramInt1;
     this.entrance_type = paramInt2;
+    this.aggregate_page_id = paramString1;
+    this.aggregate_name = paramString2;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -34,6 +38,8 @@ public final class QzoneWeisiReqcommendReq
     this.keys = ((ArrayList)paramJceInputStream.read(cache_keys, 0, false));
     this.index = paramJceInputStream.read(this.index, 1, false);
     this.entrance_type = paramJceInputStream.read(this.entrance_type, 2, false);
+    this.aggregate_page_id = paramJceInputStream.readString(3, false);
+    this.aggregate_name = paramJceInputStream.readString(4, false);
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -43,6 +49,12 @@ public final class QzoneWeisiReqcommendReq
     }
     paramJceOutputStream.write(this.index, 1);
     paramJceOutputStream.write(this.entrance_type, 2);
+    if (this.aggregate_page_id != null) {
+      paramJceOutputStream.write(this.aggregate_page_id, 3);
+    }
+    if (this.aggregate_name != null) {
+      paramJceOutputStream.write(this.aggregate_name, 4);
+    }
   }
 }
 

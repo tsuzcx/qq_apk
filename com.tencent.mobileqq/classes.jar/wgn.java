@@ -1,26 +1,29 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troop.logic.HomeworkTroopController;
-import com.tencent.mobileqq.troop.utils.HWTroopUtils;
-import com.tencent.mobileqq.troop.utils.HWTroopUtils.OnHomeworkTroopIdentityCheckListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.subscribe.widget.commodity.CommodityListView;
+import java.util.ArrayList;
 
-public class wgn
-  implements HWTroopUtils.OnHomeworkTroopIdentityCheckListener
+class wgn
+  implements View.OnClickListener
 {
-  public wgn(TroopChatPie paramTroopChatPie) {}
+  wgn(wgm paramwgm, int paramInt) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    if (!HWTroopUtils.a(paramInt)) {
-      this.a.br();
-    }
-    if (this.a.a != null) {
-      this.a.a.c(HWTroopUtils.b(paramInt));
+    if (this.jdField_a_of_type_Int < wgm.a(this.jdField_a_of_type_Wgm).size())
+    {
+      wgm.b(this.jdField_a_of_type_Wgm).remove(this.jdField_a_of_type_Int);
+      ((ArrayList)this.jdField_a_of_type_Wgm.a.a()).remove(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Wgm.notifyDataSetChanged();
+      if (CommodityListView.a(this.jdField_a_of_type_Wgm.a) != null) {
+        CommodityListView.a(this.jdField_a_of_type_Wgm.a).a(wgm.c(this.jdField_a_of_type_Wgm).size());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     wgn
  * JD-Core Version:    0.7.0.1
  */

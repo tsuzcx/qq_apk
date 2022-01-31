@@ -1,20 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer.OnCloseListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
+import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase.OnClickListener;
 
-public class oub
-  implements View.OnClickListener
+class oub
+  implements ViewBase.OnClickListener
 {
-  public oub(StoryVideoPlayer paramStoryVideoPlayer) {}
+  oub(otz paramotz, opw paramopw, Container paramContainer) {}
   
-  public void onClick(View paramView)
+  public void onClick(ViewBase paramViewBase)
   {
-    if (this.a.a != null)
-    {
-      this.a.a.a(1);
-      this.a.e();
-    }
+    paramViewBase = this.jdField_a_of_type_Opw.a();
+    String str = paramViewBase.mSocialFeedInfo.a.f;
+    obz.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewContainerContainer.getContext(), str, null);
+    qoe.a(paramViewBase, (int)paramViewBase.mChannelID);
+    rvf.a(paramViewBase);
   }
 }
 

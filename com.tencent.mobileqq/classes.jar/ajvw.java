@@ -1,19 +1,25 @@
-import android.content.Context;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Message;
+import com.tencent.mobileqq.app.addfriendverifi.ui.NewFriendVerifyBlockedListFragment;
+import mqq.os.MqqHandler;
 
-public final class ajvw
-  implements Runnable
+public class ajvw
+  extends MqqHandler
 {
-  public ajvw(Context paramContext, int paramInt1, String paramString, int paramInt2) {}
+  public ajvw(NewFriendVerifyBlockedListFragment paramNewFriendVerifyBlockedListFragment) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 0).b(this.b);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    NewFriendVerifyBlockedListFragment.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajvw
  * JD-Core Version:    0.7.0.1
  */

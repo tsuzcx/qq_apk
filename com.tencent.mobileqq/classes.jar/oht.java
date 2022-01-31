@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.EditPicCropPart;
-
-public class oht
-  implements DialogInterface.OnClickListener
+final class oht
+  implements ohx
 {
-  public oht(EditPicCropPart paramEditPicCropPart) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void l()
   {
-    paramDialogInterface.dismiss();
+    ohp.a().a(null, false);
+  }
+  
+  public void m()
+  {
+    ohp.a().a(false);
   }
 }
 

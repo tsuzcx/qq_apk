@@ -1,49 +1,96 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
-import com.tencent.mobileqq.hotpic.HotPicRecyclerView;
+import android.os.IBinder;
+import android.os.Parcel;
+import android.os.RemoteException;
+import com.tencent.mobileqq.pic.CompressInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class adym
-  extends Handler
+class adym
+  implements adyk
 {
-  public adym(HotPicPageView paramHotPicPageView) {}
+  private IBinder a;
   
-  public void handleMessage(Message paramMessage)
+  adym(IBinder paramIBinder)
   {
-    switch (paramMessage.what)
+    this.a = paramIBinder;
+  }
+  
+  public void a(CompressInfo paramCompressInfo)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
     {
-    }
-    int i;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-          } while (HotPicPageView.b);
-          this.a.i();
-          return;
-        } while ((HotPicPageView.b) || (this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.getVisibility() != 0) || (this.a.jdField_a_of_type_Adyx == null) || (this.a.jdField_a_of_type_Adyx.getItemCount() == 0));
-        i = this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.a();
-      } while (i < 0);
-      paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.findViewHolderForPosition(i);
-    } while ((paramMessage == null) || (!(paramMessage instanceof HotPicPageView.MyVideoViewHolder)));
-    paramMessage = (HotPicPageView.MyVideoViewHolder)paramMessage;
-    if (paramMessage.jdField_a_of_type_Int == 0)
-    {
-      this.a.b(paramMessage, i);
+      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+      localParcel.writeParcelable(paramCompressInfo, 1);
+      this.a.transact(1, localParcel, null, 1);
       return;
     }
-    paramMessage.jdField_a_of_type_Boolean = true;
+    catch (RemoteException paramCompressInfo)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ICompressionCallBack", 2, paramCompressInfo.getMessage(), paramCompressInfo);
+      }
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public IBinder asBinder()
+  {
+    return this.a;
+  }
+  
+  public void b(CompressInfo paramCompressInfo)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+      localParcel.writeParcelable(paramCompressInfo, 1);
+      this.a.transact(2, localParcel, null, 1);
+      return;
+    }
+    catch (RemoteException paramCompressInfo)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ICompressionCallBack", 2, paramCompressInfo.getMessage(), paramCompressInfo);
+      }
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
+  }
+  
+  public void c(CompressInfo paramCompressInfo)
+  {
+    Parcel localParcel = Parcel.obtain();
+    try
+    {
+      localParcel.writeInterfaceToken("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+      localParcel.writeParcelable(paramCompressInfo, 1);
+      this.a.transact(3, localParcel, null, 1);
+      return;
+    }
+    catch (RemoteException paramCompressInfo)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("ICompressionCallBack", 2, paramCompressInfo.getMessage(), paramCompressInfo);
+      }
+      return;
+    }
+    finally
+    {
+      localParcel.recycle();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     adym
  * JD-Core Version:    0.7.0.1
  */

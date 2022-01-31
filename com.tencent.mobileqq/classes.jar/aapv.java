@@ -1,46 +1,22 @@
-import android.graphics.drawable.Drawable;
-import android.support.annotation.Nullable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.ar.config.MainDownAni;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.LottieDrawable;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.app.Dialog;
+import android.view.View;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
+import com.tencent.widget.AdapterView;
 
 public class aapv
-  implements OnCompositionLoadedListener
+  implements behi
 {
-  public aapv(MainDownAni paramMainDownAni, aapz paramaapz, aaqg paramaaqg, String paramString) {}
+  public aapv(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_Aapz.e.get();
-    Object localObject = MainDownAni.a(this.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni);
-    StringBuilder localStringBuilder = new StringBuilder().append("onCompositionLoaded, downAniView[");
-    if (localImageView != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.w((String)localObject, 1, bool + "]");
-      if (localImageView != null) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni.a();
-      return;
-    }
-    localObject = new LottieDrawable();
-    ((LottieDrawable)localObject).setImageAssetDelegate(new aapw(this));
-    ((LottieDrawable)localObject).addAnimatorListener(new aapx(this));
-    ((LottieDrawable)localObject).setImagesAssetsFolder(this.jdField_a_of_type_JavaLangString);
-    ((LottieDrawable)localObject).setComposition(paramLottieComposition);
-    ((LottieDrawable)localObject).loop(false);
-    ((LottieDrawable)localObject).playAnimation();
-    localImageView.setImageDrawable((Drawable)localObject);
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionMemberActivity.a(paramView);
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aapv
  * JD-Core Version:    0.7.0.1
  */

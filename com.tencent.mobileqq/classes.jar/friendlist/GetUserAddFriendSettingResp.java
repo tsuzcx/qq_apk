@@ -12,7 +12,7 @@ public final class GetUserAddFriendSettingResp
   static byte[] cache_name1;
   static int cache_queryuinsetting;
   static int cache_result;
-  static ArrayList cache_vecStrUserQuestion;
+  static ArrayList<String> cache_vecStrUserQuestion;
   public boolean contact_bothway_friend;
   public short errorCode;
   public byte[] name;
@@ -21,11 +21,11 @@ public final class GetUserAddFriendSettingResp
   public int queryuinsetting;
   public int result;
   public long uin;
-  public ArrayList vecStrUserQuestion;
+  public ArrayList<String> vecStrUserQuestion;
   
   public GetUserAddFriendSettingResp() {}
   
-  public GetUserAddFriendSettingResp(long paramLong1, long paramLong2, int paramInt1, ArrayList paramArrayList, int paramInt2, short paramShort, byte[] paramArrayOfByte1, boolean paramBoolean, byte[] paramArrayOfByte2)
+  public GetUserAddFriendSettingResp(long paramLong1, long paramLong2, int paramInt1, ArrayList<String> paramArrayList, int paramInt2, short paramShort, byte[] paramArrayOfByte1, boolean paramBoolean, byte[] paramArrayOfByte2)
   {
     this.uin = paramLong1;
     this.queryuin = paramLong2;

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/bg_texture" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:animateLayoutChanges="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:clickable="true" layout="@layout/b1x" />
+    <FrameLayout android:id="@id/m7q" android:layout_width="fill_parent" android:layout_height="fill_parent" android:animateLayoutChanges="true">
+        <LinearLayout android:orientation="vertical" android:id="@id/lr6" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray_group_item" android:gravity="center_vertical" android:background="@drawable/jm" android:paddingLeft="16.0dip" android:layout_width="fill_parent" android:layout_height="38.0dip" android:text="@string/uub" />
+            <View android:id="@id/kmp" android:background="#ffebedf5" android:paddingLeft="16.0dip" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="16.0dip" />
+            <com.tencent.widget.SwipListView android:id="@id/m_9" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@null" android:divider="@null" />
+        </LinearLayout>
+        <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray_group_item" android:gravity="center" android:id="@id/bww" android:background="@color/al3" android:paddingTop="20.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="" />
+    </FrameLayout>
+</LinearLayout>

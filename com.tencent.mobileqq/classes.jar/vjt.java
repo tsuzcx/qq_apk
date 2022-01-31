@@ -1,38 +1,60 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder.Holder;
-import com.tencent.mobileqq.data.MessageForReplyText.LightReplyMsgRich2;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import android.content.Context;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class vjt
-  extends TextItemBuilder.Holder
+  extends moa
 {
-  public ViewGroup a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public ETTextView a;
-  public MessageForReplyText.LightReplyMsgRich2 a;
-  public BubbleImageView a;
-  public View b;
-  public ViewGroup b;
-  public TextView b;
-  public BubbleImageView b;
-  public ViewGroup c;
-  public TextView c;
-  public TextView d;
-  public int e;
+  public boolean a;
   
-  public vjt(ReplyTextItemBuilder paramReplyTextItemBuilder) {}
+  public vjt(Context paramContext, String paramString)
+  {
+    super(paramContext, paramString);
+  }
+  
+  public String a()
+  {
+    return "key_for_troop_dynamic";
+  }
+  
+  public void a(String paramString)
+  {
+    boolean bool = true;
+    this.a = true;
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    for (;;)
+    {
+      try
+      {
+        if (new JSONObject(paramString).getInt("isShowTroopDynamic") != 1) {
+          break label56;
+        }
+        this.a = bool;
+        return;
+      }
+      catch (JSONException paramString) {}
+      if (!QLog.isColorLevel()) {
+        break;
+      }
+      QLog.e("readQuickShotShareToStoryConfig", 2, paramString.getMessage());
+      return;
+      label56:
+      bool = false;
+    }
+  }
+  
+  public String b()
+  {
+    return "key_for_troop_dynamic_version";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     vjt
  * JD-Core Version:    0.7.0.1
  */

@@ -8,16 +8,16 @@ import java.util.ArrayList;
 public final class RequestUploadAddressBook
   extends JceStruct
 {
-  static ArrayList cache_AddressBookList;
+  static ArrayList<AddressBookItem> cache_AddressBookList;
   static byte[] cache_sessionSid;
-  public ArrayList AddressBookList;
+  public ArrayList<AddressBookItem> AddressBookList;
   public String MobileUniqueNo = "";
   public long nextFlag;
   public byte[] sessionSid;
   
   public RequestUploadAddressBook() {}
   
-  public RequestUploadAddressBook(long paramLong, String paramString, byte[] paramArrayOfByte, ArrayList paramArrayList)
+  public RequestUploadAddressBook(long paramLong, String paramString, byte[] paramArrayOfByte, ArrayList<AddressBookItem> paramArrayList)
   {
     this.nextFlag = paramLong;
     this.MobileUniqueNo = paramString;

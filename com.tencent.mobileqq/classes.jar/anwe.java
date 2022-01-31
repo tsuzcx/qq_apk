@@ -1,38 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.text.CaptureComboText;
-import dov.com.qq.im.capture.text.DynamicTextConfigManager.IDynamicTextResDownloadCallback;
+import android.view.animation.Interpolator;
 
-public class anwe
-  implements DynamicTextConfigManager.IDynamicTextResDownloadCallback
+class anwe
+  implements Interpolator
 {
-  public anwe(CaptureComboText paramCaptureComboText) {}
+  anwe(anvy paramanvy) {}
   
-  public void a(float paramFloat, String paramString, int paramInt)
+  public float getInterpolation(float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QComboDText", 2, "CaptureComboText onUpdateProgress, progress is : " + paramFloat);
-    }
-    CaptureComboText.a(this.a, paramFloat);
-  }
-  
-  public void a(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QComboDText", 2, "CaptureComboText onDownloadFinish, success: " + paramBoolean);
-    }
-    if (paramBoolean)
-    {
-      CaptureComboText.a(this.a, 3);
-      this.a.b();
-      return;
-    }
-    CaptureComboText.a(this.a, 2);
-    this.a.a(1);
+    paramFloat -= 1.0F;
+    return 1.0F - paramFloat * (paramFloat * paramFloat * paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     anwe
  * JD-Core Version:    0.7.0.1
  */

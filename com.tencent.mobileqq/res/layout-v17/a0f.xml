@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/e2a" android:layout_width="fill_parent" android:layout_height="180.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.widget.ThemeURLImageView android:id="@id/a8i" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <View android:background="@drawable/wh" android:layout_width="fill_parent" android:layout_height="100.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" android:layout_alignParentStart="true" />
+    <TextView android:textSize="12.0dip" android:textColor="@color/ahb" android:id="@id/icon" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <LinearLayout android:orientation="vertical" android:paddingBottom="6.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:layout_alignParentBottom="true">
+        <TextView android:textSize="@dimen/als" android:textStyle="bold" android:textColor="@color/ahb" android:ellipsize="end" android:id="@id/cb6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" android:maxLines="2" />
+        <TextView android:textSize="@dimen/alr" android:textColor="@color/ahb" android:ellipsize="end" android:id="@id/il1" android:paddingBottom="6.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="10.0dip" app:round_rect_radius="2.0dip">
+        <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/dq" android:background="#fff49358" android:paddingLeft="3.0dip" android:paddingRight="3.0dip" android:layout_width="wrap_content" android:layout_height="16.0dip" android:minWidth="30.0dip" android:text="@string/prk" />
+    </com.tencent.mobileqq.nearby.now.view.widget.RoundRelativeLayout>
+</RelativeLayout>

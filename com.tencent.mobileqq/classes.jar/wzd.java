@@ -1,23 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.biz.videostory.widget.easylyric.SingleLyricView;
+import com.tencent.biz.videostory.widget.easylyric.SingleLyricView.1.1;
 
-class wzd
-  implements DialogInterface.OnClickListener
+public class wzd
+  implements wzb
 {
-  wzd(wyz paramwyz) {}
+  public wzd(SingleLyricView paramSingleLyricView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.setText("");
-    }
+    SingleLyricView.a(this.a).b();
+  }
+  
+  public void a(long paramLong)
+  {
+    this.a.post(new SingleLyricView.1.1(this, paramLong));
+  }
+  
+  public void b()
+  {
+    SingleLyricView.a(this.a).c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     wzd
  * JD-Core Version:    0.7.0.1
  */

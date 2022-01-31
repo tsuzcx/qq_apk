@@ -1,28 +1,33 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.lightReply.LightReplyMenuManager;
-
 public class aekn
-  implements Runnable
 {
-  public aekn(LightReplyMenuManager paramLightReplyMenuManager) {}
+  public double a;
+  public double b;
   
-  public void run()
+  public aekn(double paramDouble1, double paramDouble2)
   {
-    if (this.a.a != null)
-    {
-      this.a.a.setVisibility(8);
-      LightReplyMenuManager.a(this.a, null);
-      this.a.a = null;
-      this.a.b = false;
-      this.a.c = false;
-      LightReplyMenuManager.a(this.a, false);
-      this.a.e();
-    }
+    this.a = paramDouble1;
+    this.b = paramDouble2;
+  }
+  
+  public aekn(aekn paramaekn)
+  {
+    a(paramaekn);
+  }
+  
+  public void a(aekn paramaekn)
+  {
+    this.a = paramaekn.a;
+    this.b = paramaekn.b;
+  }
+  
+  public String toString()
+  {
+    return "Velocity{vx=" + this.a + ", vy=" + this.b + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     aekn
  * JD-Core Version:    0.7.0.1
  */

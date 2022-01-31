@@ -1,27 +1,10 @@
-import com.tencent.mobileqq.earlydownload.handler.ChirpSoHandler;
-import com.tencent.mobileqq.earlydownload.handler.ChirpSoHandler.Callback;
-import java.util.Iterator;
-import java.util.LinkedList;
-
-public class acgv
-  implements Runnable
+public abstract interface acgv
 {
-  public acgv(ChirpSoHandler paramChirpSoHandler) {}
-  
-  public void run()
-  {
-    synchronized (ChirpSoHandler.a(this.a))
-    {
-      Iterator localIterator = ChirpSoHandler.a(this.a).iterator();
-      if (localIterator.hasNext()) {
-        ((ChirpSoHandler.Callback)localIterator.next()).k();
-      }
-    }
-  }
+  public abstract void a(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     acgv
  * JD-Core Version:    0.7.0.1
  */

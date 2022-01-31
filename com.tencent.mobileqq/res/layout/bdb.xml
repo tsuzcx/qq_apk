@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/iep" android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.activity.photo.ProGallery android:id="@id/gallery" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/jt2" android:background="@color/kc" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_alignParentTop="true">
+        <TextView android:gravity="center" android:id="@id/a4c" android:background="@drawable/ag9" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginLeft="8.0dip" android:maxWidth="88.0dip" android:minWidth="55.0dip" android:text="@string/button_back" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/j3" />
+        <TextView android:textSize="17.0dip" android:textColor="#ffffffff" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:layout_centerInParent="true" />
+        <TextView android:gravity="center" android:id="@id/fq2" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="36.0dip" android:layout_marginRight="8.0dip" android:maxWidth="88.0dip" android:minWidth="55.0dip" android:text="@string/cus" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/j3" />
+    </RelativeLayout>
+</RelativeLayout>

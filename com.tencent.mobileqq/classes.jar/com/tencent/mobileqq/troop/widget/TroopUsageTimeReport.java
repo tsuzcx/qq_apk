@@ -4,9 +4,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import awqx;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
 
 @Deprecated
@@ -46,7 +46,7 @@ public class TroopUsageTimeReport
       SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
       if (localSessionInfo != null)
       {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "time", "aio_time", 0, i, 0, localSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "time", "aio_time", 0, i, 0, localSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
         if (QLog.isColorLevel()) {
           QLog.d("TroopUsageTimeReport-->AioUseTime", 2, "uin=" + this.jdField_a_of_type_JavaLangString + ",mTroopUin=" + localSessionInfo.jdField_a_of_type_JavaLangString + ",time=" + l + "s");
         }
@@ -69,7 +69,7 @@ public class TroopUsageTimeReport
       SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
       if (localSessionInfo != null)
       {
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "time", "grp_time", 0, i, 0, localSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
+        awqx.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_AIO", "", "time", "grp_time", 0, i, 0, localSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
         if (QLog.isColorLevel()) {
           QLog.d("TroopUsageTimeReport-->TroopUseTime", 2, "uin=" + this.jdField_a_of_type_JavaLangString + ",mTroopUin=" + localSessionInfo.jdField_a_of_type_JavaLangString + ",time=" + l + "s");
         }
@@ -99,7 +99,7 @@ public class TroopUsageTimeReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\a2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopUsageTimeReport
  * JD-Core Version:    0.7.0.1
  */

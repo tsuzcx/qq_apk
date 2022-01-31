@@ -1,23 +1,71 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewController;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBBCircleFragment;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class lqh
-  implements View.OnClickListener
 {
-  public lqh(ReadInJoyBBCircleFragment paramReadInJoyBBCircleFragment) {}
+  public static String a;
+  private static lqh jdField_a_of_type_Lqh;
+  private int jdField_a_of_type_Int = -1;
+  private Object jdField_a_of_type_JavaLangObject = new Object();
   
-  public void onClick(View paramView)
+  static
   {
-    this.a.a.a(true);
-    ThreadManager.executeOnSubThread(new lqi(this));
+    jdField_a_of_type_JavaLangString = "AIOTopRightButtonConfig";
+  }
+  
+  public static lqh a()
+  {
+    try
+    {
+      if (jdField_a_of_type_Lqh == null) {
+        jdField_a_of_type_Lqh = new lqh();
+      }
+      return jdField_a_of_type_Lqh;
+    }
+    finally {}
+  }
+  
+  public void a(String paramString)
+  {
+    synchronized (this.jdField_a_of_type_JavaLangObject)
+    {
+      this.jdField_a_of_type_Int = 1;
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
+    }
+    try
+    {
+      paramString = new JSONObject(paramString);
+      if ((paramString.has("AVFromRightCornerEnable")) && (!paramString.getBoolean("AVFromRightCornerEnable"))) {
+        this.jdField_a_of_type_Int = 0;
+      }
+      return;
+      paramString = finally;
+      throw paramString;
+    }
+    catch (JSONException paramString)
+    {
+      for (;;)
+      {
+        QLog.w(jdField_a_of_type_JavaLangString, 1, "updateConfig, JSONException", paramString);
+      }
+    }
+  }
+  
+  public boolean a(String paramString)
+  {
+    if (this.jdField_a_of_type_Int == -1) {
+      a(ksj.b(192).jdField_a_of_type_JavaLangString);
+    }
+    return this.jdField_a_of_type_Int == 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     lqh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.widget;
 
+import amwx;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.text.Layout;
@@ -8,13 +9,12 @@ import android.text.style.ClickableSpan;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.dating.widget.DatingCommentTextView.TouchableSpan;
 
 public class StaticLayoutView
   extends View
 {
+  amwx jdField_a_of_type_Amwx;
   private Layout jdField_a_of_type_AndroidTextLayout;
-  DatingCommentTextView.TouchableSpan jdField_a_of_type_ComTencentMobileqqDatingWidgetDatingCommentTextView$TouchableSpan;
   
   public StaticLayoutView(Context paramContext)
   {
@@ -75,10 +75,10 @@ public class StaticLayoutView
           if (i == 1) {
             localObject1[0].onClick(this);
           }
-          if ((localObject1[0] instanceof DatingCommentTextView.TouchableSpan)) {
-            ((DatingCommentTextView.TouchableSpan)localObject1[0]).a(false);
+          if ((localObject1[0] instanceof amwx)) {
+            ((amwx)localObject1[0]).a(false);
           }
-          this.jdField_a_of_type_ComTencentMobileqqDatingWidgetDatingCommentTextView$TouchableSpan = null;
+          this.jdField_a_of_type_Amwx = null;
           postInvalidate();
         }
         for (;;)
@@ -86,19 +86,19 @@ public class StaticLayoutView
           return true;
           if (i == 0)
           {
-            if ((localObject1[0] instanceof DatingCommentTextView.TouchableSpan))
+            if ((localObject1[0] instanceof amwx))
             {
-              ((DatingCommentTextView.TouchableSpan)localObject1[0]).a(true);
-              this.jdField_a_of_type_ComTencentMobileqqDatingWidgetDatingCommentTextView$TouchableSpan = ((DatingCommentTextView.TouchableSpan)localObject1[0]);
+              ((amwx)localObject1[0]).a(true);
+              this.jdField_a_of_type_Amwx = ((amwx)localObject1[0]);
             }
             postInvalidate();
           }
         }
       }
-      if (((i == 1) || (i == 3)) && (this.jdField_a_of_type_ComTencentMobileqqDatingWidgetDatingCommentTextView$TouchableSpan != null))
+      if (((i == 1) || (i == 3)) && (this.jdField_a_of_type_Amwx != null))
       {
-        this.jdField_a_of_type_ComTencentMobileqqDatingWidgetDatingCommentTextView$TouchableSpan.a(false);
-        this.jdField_a_of_type_ComTencentMobileqqDatingWidgetDatingCommentTextView$TouchableSpan = null;
+        this.jdField_a_of_type_Amwx.a(false);
+        this.jdField_a_of_type_Amwx = null;
         postInvalidate();
       }
     }
@@ -113,7 +113,7 @@ public class StaticLayoutView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.widget.StaticLayoutView
  * JD-Core Version:    0.7.0.1
  */

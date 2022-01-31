@@ -6,7 +6,7 @@ import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBInt32Field;
 
 public final class mobileqq_mp$SecMsgConfigsResponse
-  extends MessageMicro
+  extends MessageMicro<SecMsgConfigsResponse>
 {
   static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "int32_ret", "int32_show_in_palist" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0) }, SecMsgConfigsResponse.class);
   public final PBInt32Field int32_ret = PBField.initInt32(0);

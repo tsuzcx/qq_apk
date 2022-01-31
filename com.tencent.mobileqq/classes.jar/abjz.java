@@ -1,76 +1,33 @@
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.util.LruCache;
-import com.tencent.mobileqq.armap.NonMainAppHeadLoader;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
 
-public class abjz
-  extends Handler
+class abjz
+  implements DialogInterface.OnClickListener
 {
-  public abjz(NonMainAppHeadLoader paramNonMainAppHeadLoader, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  abjz(abjy paramabjy) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMessage.what == 1001) {}
-    try
+    switch (paramInt)
     {
-      paramMessage = (ArrayList)paramMessage.obj;
-      if ((paramMessage != null) && (paramMessage.size() > 0))
-      {
-        paramMessage = paramMessage.iterator();
-        while (paramMessage.hasNext())
-        {
-          String str1 = (String)paramMessage.next();
-          String str2 = (String)this.a.b.get(str1);
-          Bitmap localBitmap = BitmapFactory.decodeFile(str2);
-          if (localBitmap != null)
-          {
-            localBitmap = this.a.a(localBitmap);
-            if (localBitmap != null)
-            {
-              Message localMessage = Message.obtain();
-              Bundle localBundle = new Bundle();
-              localBundle.putParcelable("bmp", localBitmap);
-              localBundle.putString("uin", str1);
-              localBundle.putString("path", str2);
-              localMessage.obj = localBundle;
-              localMessage.what = 1002;
-              this.a.a.sendMessage(localMessage);
-              if (QLog.isColorLevel()) {
-                QLog.d("NonMainAppHeadLoader", 2, "decodeFile, uin:" + str1);
-              }
-            }
-          }
-        }
-      }
+    }
+    do
+    {
       return;
-    }
-    catch (OutOfMemoryError paramMessage)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("NonMainAppHeadLoader", 2, "decodeFile, OutOfMemoryError");
-      }
+      this.a.jdField_a_of_type_Abjx.a.app.a().b(this.a.jdField_a_of_type_Abjx.a.a(), 0, this.a.jdField_a_of_type_Long);
+      this.a.jdField_a_of_type_Abjx.a.b();
       return;
-    }
-    catch (Exception paramMessage)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("NonMainAppHeadLoader", 2, "decodeFile, exception:" + paramMessage.toString());
-    }
+    } while (this.a.jdField_a_of_type_Abjx.a.jdField_a_of_type_Abjx.getCount() <= 0);
+    this.a.jdField_a_of_type_Abjx.a.app.a().a(this.a.jdField_a_of_type_Abjx.a.a(), 0);
+    this.a.jdField_a_of_type_Abjx.a.jdField_a_of_type_Abjx.changeCursor(this.a.jdField_a_of_type_Abjx.getCursor());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     abjz
  * JD-Core Version:    0.7.0.1
  */

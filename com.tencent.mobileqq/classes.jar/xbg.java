@@ -1,21 +1,29 @@
-import com.tencent.mobileqq.activity.photo.AlbumListAdapter;
-import com.tencent.mobileqq.utils.LogTag;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
 
-public class xbg
-  implements Runnable
+class xbg
+  implements View.OnClickListener
 {
-  public xbg(AlbumListAdapter paramAlbumListAdapter) {}
+  xbg(xbe paramxbe, String paramString, Activity paramActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    LogTag.a();
-    this.a.a(100);
-    LogTag.a("PEAK", "queryAlbumList");
+    this.jdField_a_of_type_Xbe.a(this.jdField_a_of_type_JavaLangString);
+    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity))
+    {
+      paramView = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppInterface();
+      if ((paramView instanceof NearbyAppInterface)) {
+        ((NearbyAppInterface)paramView).reportClickEvent("dc00899", "grp_lbs", "", "hot_create", "clk_create", 0, 0, "", "", "", "");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     xbg
  * JD-Core Version:    0.7.0.1
  */

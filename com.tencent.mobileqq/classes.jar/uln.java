@@ -1,29 +1,31 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.activity.VerifyCodeActivity;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class uln
-  implements TextWatcher
+  extends QQUIEventReceiver<ull, syp>
 {
-  public uln(VerifyCodeActivity paramVerifyCodeActivity) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public uln(@NonNull ull paramull)
   {
-    if (paramEditable.length() >= 4)
-    {
-      VerifyCodeActivity.c(this.a, true);
-      return;
-    }
-    VerifyCodeActivity.d(this.a, false);
+    super(paramull);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void a(@NonNull ull paramull, @NonNull syp paramsyp)
+  {
+    if ((paramsyp.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramsyp.jdField_a_of_type_JavaUtilList == null)) {
+      return;
+    }
+    paramull.b(paramsyp.jdField_a_of_type_JavaUtilList);
+  }
   
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public Class acceptEventClass()
+  {
+    return syp.class;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     uln
  * JD-Core Version:    0.7.0.1
  */

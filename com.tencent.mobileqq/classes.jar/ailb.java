@@ -1,19 +1,23 @@
-import com.tencent.mfsdk.collector.DropFrameMonitor;
-import com.tencent.mobileqq.statistics.UnifiedMonitor;
-
 public class ailb
-  implements Runnable
 {
-  public ailb(UnifiedMonitor paramUnifiedMonitor) {}
+  public static int a;
+  public static final String a;
+  public static int b;
+  public static int c;
+  public static int d;
   
-  public void run()
+  static
   {
-    DropFrameMonitor.a().c();
+    jdField_a_of_type_Int = 6;
+    b = 1;
+    c = 1;
+    d = 1;
+    jdField_a_of_type_JavaLangString = ajed.aU + ".apollo/game";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     ailb
  * JD-Core Version:    0.7.0.1
  */
